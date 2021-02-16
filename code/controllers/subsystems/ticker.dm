@@ -86,6 +86,7 @@ SUBSYSTEM_DEF(ticker)
 	send2irc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
 	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
 	to_chat(world, "Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds.")
+	world << sound('sound/misc/server-ready.ogg', volume = 100)
 	current_state = GAME_STATE_PREGAME
 	if(Master.initializations_finished_with_no_players_logged_in)
 		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
@@ -292,7 +293,7 @@ SUBSYSTEM_DEF(ticker)
 			switch(M.z)
 				if(0)	//inside a crate or something
 					var/turf/T = get_turf(M)
-					if(T && T.z in GLOB.using_map.station_levels)				//we don't use M.death(0) because it calls a for(/mob) loop and
+					if(T && (T.z in GLOB.using_map.station_levels))				//we don't use M.death(0) because it calls a for(/mob) loop and
 						M.health = 0
 						M.stat = DEAD
 				if(1)	//on a z-level 1 turf.
@@ -408,7 +409,8 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 
-	mode.process()
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	mode.process(dt)
 
 	var/game_finished = 0
 	var/mode_finished = 0

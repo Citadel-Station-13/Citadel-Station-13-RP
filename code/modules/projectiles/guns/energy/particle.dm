@@ -54,7 +54,7 @@
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	force = 10
 	one_handed_penalty = 8 // The thing's heavy and huge.
-	accuracy = 3
+	accuracy = 70
 	charge_cost = 400 // 6 shots
 	self_recharge = 1
 	charge_delay = 15 //won't start charging until it's ready to fire again

@@ -90,7 +90,7 @@
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/ferry
 
-/obj/machinery/cryopod/robot/door/ferry/process()
+/obj/machinery/cryopod/robot/door/ferry/process(delta_time)
 	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
 		time_till_despawn = 0

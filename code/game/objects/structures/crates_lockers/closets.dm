@@ -293,6 +293,9 @@
 			W.forceMove(src.loc)
 	else if(istype(W, /obj/item/packageWrap))
 		return
+	else if(istype(W, /obj/item/extraction_pack)) //so fulton extracts dont open closets
+		src.close()
+		return
 	else if(seal_tool)
 		if(istype(W, seal_tool))
 			var/obj/item/S = W

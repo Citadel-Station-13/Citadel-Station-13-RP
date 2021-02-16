@@ -107,6 +107,10 @@
 			playsound(src.loc, W.usesound, 100, 1)
 			rigged = 0
 			return
+	else if(istype(W, /obj/item/extraction_pack))
+		src.close()
+		return
+
 	else return attack_hand(user)
 
 /obj/structure/closet/crate/ex_act(severity)

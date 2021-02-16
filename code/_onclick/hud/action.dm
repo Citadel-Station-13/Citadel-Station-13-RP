@@ -82,9 +82,6 @@
 /datum/action/proc/Deactivate()
 	return
 
-/datum/action/process()
-	return
-
 /datum/action/proc/CheckRemoval(mob/living/user) // 1 if action is no longer valid for this mob and should be removed
 	return 0
 
@@ -223,3 +220,7 @@
 #undef AB_WEST_OFFSET
 #undef AB_NORTH_OFFSET
 #undef AB_MAX_COLUMNS
+
+
+/datum/action/innate/
+	action_type = AB_INNATE

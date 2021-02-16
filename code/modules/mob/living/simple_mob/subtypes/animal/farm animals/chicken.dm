@@ -83,7 +83,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 /obj/item/reagent_containers/food/snacks/egg/var/amount_grown = 0
 
 // This only starts normally if there are less than MAX_CHICKENS chickens
-/obj/item/reagent_containers/food/snacks/egg/process()
+/obj/item/reagent_containers/food/snacks/egg/process(delta_time)
 	if(isturf(loc))
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)

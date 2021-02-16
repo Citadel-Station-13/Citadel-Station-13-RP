@@ -175,7 +175,7 @@
 	return 1
 
 //Grow clones to maturity then kick them out.  FREELOADERS
-/obj/machinery/clonepod/process()
+/obj/machinery/clonepod/process(delta_time)
 	if(stat & NOPOWER) //Autoeject if power is lost
 		if(occupant)
 			locked = 0
@@ -209,7 +209,7 @@
 			return
 
 		else if((occupant.health >= heal_level || occupant.health == occupant.getMaxHealth()) && (!eject_wait))
-			playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
+			playsound(src, 'sound/machines/medbayscanner1.ogg', 50, 1)
 			audible_message("\The [src] signals that the cloning process is complete.")
 			connected_message("Cloning Process Complete.")
 			locked = 0
@@ -524,8 +524,8 @@
 		buf.dna.SE=new_SE
 		buf.dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
 
-/obj/item/disk/data/New()
-	..()
+/obj/item/disk/data/Initialize(mapload)
+	. = ..()
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 

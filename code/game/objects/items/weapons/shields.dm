@@ -125,7 +125,7 @@
 	desc = "A wrist mounted round shield for close quarters engagement.  Its modern materials are also capable of protecting from less powerful projectiles."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "buckler"
-	slot_flags = SLOT_BACK
+	slot_flags = SLOT_BACK | SLOT_BELT
 	matter = list("wood" = 7500, DEFAULT_WALL_MATERIAL = 1000)
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',

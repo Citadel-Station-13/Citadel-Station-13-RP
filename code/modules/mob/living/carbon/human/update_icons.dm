@@ -1,4 +1,4 @@
-/*
+	/*
 	Global associative list for caching humanoid icons.
 	Index format m or f, followed by a string of 0 and 1 to represent bodyparts followed by husk fat hulk skeleton 1 or 0.
 */
@@ -90,7 +90,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #define TAIL_LAYER_ALT			29		//VOREStation edit. Simply move this up a number if things are added.
 #define MODIFIER_EFFECTS_LAYER	30		//Effects drawn by modifiers
 #define FIRE_LAYER				31		//'Mob on fire' overlay layer
-#define WATER_LAYER				32		//'Mob submerged' overlay layer
+#define MOB_WATER_LAYER				32		//'Mob submerged' overlay layer
 #define TARGETED_LAYER			33		//'Aimed at' overlay layer
 #define TOTAL_LAYERS			33		//VOREStation edit. <---- KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
 //////////////////////////////////
@@ -435,14 +435,21 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 				hair_style = hair_styles_list["Short Hair"]
 
 		if(hair_style && (src.species.get_bodytype(src) in hair_style.species_allowed))
+			var/icon/grad_s
 			var/icon/hair_s = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			var/icon/hair_s_add
 			if(hair_style.icon_add)
 				hair_s_add = new/icon("icon" = hair_style.icon_add, "icon_state" = "[hair_style.icon_state]_s")
 			if(hair_style.do_colouration)
+				if(grad_style)
+					grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_style])
+					grad_s.Blend(hair_s, ICON_AND)
+					grad_s.Blend(rgb(r_grad, g_grad, b_grad), ICON_MULTIPLY)
 				hair_s.Blend(rgb(r_hair, g_hair, b_hair), ICON_MULTIPLY)
 				if(hair_s_add)
 					hair_s.Blend(hair_s_add, ICON_ADD)
+				if(grad_s)
+					hair_s.Blend(grad_s, ICON_OVERLAY)
 
 			face_standing.Blend(hair_s, ICON_OVERLAY)
 
@@ -528,7 +535,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 				standing.underlays += underlay
 
 	for(var/mut in mutations)
-		if(LASER)
+		if(mut == LASER)
 			standing.overlays += "lasereyes_s" //TODO
 
 	overlays_standing[MUTATIONS_LAYER]	= standing
@@ -1050,43 +1057,54 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(QDESTROYING(src))
 		return
 
-	remove_layer(WATER_LAYER)
+	remove_layer(MOB_WATER_LAYER)
 
 	var/depth = check_submerged()
 	if(!depth || lying)
 		return
-
-	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
-
-	apply_layer(WATER_LAYER)
+	if(depth < 3)
+		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "human_swimming_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
+		apply_layer(MOB_WATER_LAYER)
+	if(depth == 4)
+		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+MOB_WATER_LAYER)
+		apply_layer(MOB_WATER_LAYER)
+	if(depth == 5)
+		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_2", layer = BODY_LAYER+MOB_WATER_LAYER)
+		apply_layer(MOB_WATER_LAYER)
+	if(depth == 6)
+		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_1", layer = BODY_LAYER+MOB_WATER_LAYER)
+		apply_layer(MOB_WATER_LAYER)
+	if(depth == 7)
+		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_2", layer = BODY_LAYER+MOB_WATER_LAYER)
+		apply_layer(MOB_WATER_LAYER)
 
 /mob/living/carbon/human/update_acidsub()
 	if(QDESTROYING(src))
 		return
 
-	remove_layer(WATER_LAYER)
+	remove_layer(MOB_WATER_LAYER)
 
 	var/depth = check_submerged()
 	if(!depth || lying)
 		return
 
-	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
 
-	apply_layer(WATER_LAYER)
+	apply_layer(MOB_WATER_LAYER)
 
 /mob/living/carbon/human/update_bloodsub()
 	if(QDESTROYING(src))
 		return
 
-	remove_layer(WATER_LAYER)
+	remove_layer(MOB_WATER_LAYER)
 
 	var/depth = check_submerged()
 	if(!depth || lying)
 		return
 
-	overlays_standing[WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_[depth]", layer = BODY_LAYER+WATER_LAYER) //TODO: Improve
+	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
 
-	apply_layer(WATER_LAYER)
+	apply_layer(MOB_WATER_LAYER)
 
 /mob/living/carbon/human/proc/update_surgery()
 	if(QDESTROYING(src))
@@ -1160,13 +1178,12 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 #undef EYES_LAYER
 #undef FACEMASK_LAYER
 #undef HEAD_LAYER
-#undef COLLAR_LAYER
 #undef HANDCUFF_LAYER
 #undef LEGCUFF_LAYER
 #undef L_HAND_LAYER
 #undef R_HAND_LAYER
 #undef MODIFIER_EFFECTS_LAYER
 #undef FIRE_LAYER
-#undef WATER_LAYER
+#undef MOB_WATER_LAYER
 #undef TARGETED_LAYER
 #undef TOTAL_LAYERS

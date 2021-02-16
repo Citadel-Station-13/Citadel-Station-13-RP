@@ -320,7 +320,7 @@ obj/item/gun/energy/staff/focus
 	force = 5
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
-	projectile_type = /obj/item/projectile/bullet/pistol/medium
+	projectile_type = /obj/item/projectile/bullet/pistol/medium/silver
 	origin_tech = null
 	fire_delay = 10		//Old pistol
 	charge_cost = 480	//to compensate a bit for self-recharging
@@ -368,27 +368,27 @@ obj/item/gun/energy/staff/focus
 /obj/item/gun/energy/service/shatter
 	name = "service weapon (shatter)"
 	icon_state = "service_shatter"
-	projectile_type = /obj/item/projectile/bullet/pellet/shotgun
-	fire_delay = 20		//Doubled for strength.
+	projectile_type = /obj/item/projectile/bullet/pellet/shotgun/silver
+	fire_delay = 15		//Increased by 50% for strength.
 	charge_cost = 600	//Charge increased due to shotgun round.
 
 /obj/item/gun/energy/service/spin
 	name = "service weapon (spin)"
 	icon_state = "service_spin"
 	projectile_type = /obj/item/projectile/bullet/pistol/spin
-	fire_delay = 1		//High fire rate.
-	charge_cost = 100	//Lower cost per shot to encourage rapid fire.
+	fire_delay = 0	//High fire rate.
+	charge_cost = 80	//Lower cost per shot to encourage rapid fire.
 
 /obj/item/gun/energy/service/pierce
 	name = "service weapon (pierce)"
 	icon_state = "service_pierce"
-	projectile_type = /obj/item/projectile/bullet/rifle/a762/ap
-	fire_delay = 20		//Doubled for strength.
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/ap/silver
+	fire_delay = 15		//Increased by 50% for strength.
 	charge_cost = 600	//Charge increased due to sniper round.
 
 /obj/item/gun/energy/service/charge
 	name = "service weapon (charge)"
 	icon_state = "service_charge"
-	projectile_type = /obj/item/projectile/bullet/burstbullet    //Formerly: obj/item/projectile/bullet/gyro. A little too robust.
-	fire_delay = 30
+	projectile_type = /obj/item/projectile/bullet/burstbullet/service    //Formerly: obj/item/projectile/bullet/gyro. A little too robust.
+	fire_delay = 20
 	charge_cost = 800	//Three shots.

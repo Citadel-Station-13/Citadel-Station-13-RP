@@ -7,6 +7,7 @@
 
 	initial_gas_mix = GAS_STRING_VACUUM
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
+	temperature = 2.7
 	can_build_into_floor = TRUE
 	var/keep_sprite = FALSE
 	var/edge = 0		// If we're an edge

@@ -135,7 +135,7 @@
 		invisibility = i ? 101 : 0
 	update_icon()
 
-/obj/machinery/atmospherics/pipe/process()
+/obj/machinery/atmospherics/pipe/process(delta_time)
 	if(!parent) //This should cut back on the overhead calling build_network thousands of times per cycle
 		..()
 	else

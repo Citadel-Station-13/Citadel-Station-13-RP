@@ -28,6 +28,8 @@
 	var/base_state
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
+	drop_sound = 'sound/items/drop/helm.ogg'
+	pickup_sound = 'sound/items/pickup/helm.ogg'
 
 /obj/item/clothing/head/welding/attack_self()
 	toggle()
@@ -111,7 +113,7 @@
 	var/onfire = 0
 	body_parts_covered = HEAD
 
-/obj/item/clothing/head/cakehat/process()
+/obj/item/clothing/head/cakehat/process(delta_time)
 	if(!onfire)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -168,6 +170,8 @@
 	brightness_on = 2
 	light_overlay = "helmet_light"
 	w_class = ITEMSIZE_NORMAL
+	drop_sound = 'sound/items/drop/herb.ogg'
+	pickup_sound = 'sound/items/pickup/herb.ogg'
 
 /*
  * Kitty ears
@@ -253,7 +257,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/clothing/head/psy_crown/process()
+/obj/item/clothing/head/psy_crown/process(delta_time)
 	if(isliving(loc))
 		var/mob/living/L = loc
 		if(world.time >= cooldown && L.is_sentient() && L.get_tension() >= tension_threshold)

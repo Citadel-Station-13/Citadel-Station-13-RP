@@ -1019,7 +1019,7 @@
 	else
 		return 0
 
-/obj/machinery/power/apc/process()
+/obj/machinery/power/apc/process(delta_time)
 
 	if(stat & (BROKEN|MAINT))
 		return
@@ -1264,6 +1264,10 @@ obj/machinery/power/apc/proc/autoset(var/cur_state, var/on)
 					L.on = 1
 					L.broken()
 				sleep(1)
+
+/obj/machinery/power/apc/proc/flicker_lights(var/chance = 100)
+	for(var/obj/machinery/light/L in area)
+		L.flicker(rand(15,25))
 
 /obj/machinery/power/apc/proc/setsubsystem(val)
 	if(cell && cell.charge > 0)

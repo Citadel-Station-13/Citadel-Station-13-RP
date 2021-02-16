@@ -27,7 +27,7 @@
 	my_brain = null
 	return ..()
 
-/obj/item/implant/neural/process()
+/obj/item/implant/neural/process(delta_time)
 	if(my_brain && part)
 		if(my_brain.loc != part.loc)
 			to_chat(my_brain.owner, "<span class='critical'>You feel a pressure in your mind as something is ripped away.</span>")

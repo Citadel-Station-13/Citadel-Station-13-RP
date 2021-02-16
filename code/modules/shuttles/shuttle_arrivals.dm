@@ -22,7 +22,7 @@
 
 // Unlike most shuttles, the arrivals shuttle is completely automated, so we need to put some additional code here.
 // Process the arrivals shuttle even when idle.
-/obj/machinery/computer/shuttle_control/arrivals/process()
+/obj/machinery/computer/shuttle_control/arrivals/process(delta_time)
 	var/datum/shuttle/autodock/ferry/arrivals/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if(shuttle && shuttle.process_state == IDLE_STATE)
 		shuttle.process()
@@ -42,7 +42,7 @@
 			return FALSE
 	return TRUE
 
-/datum/shuttle/autodock/ferry/arrivals/process()
+/datum/shuttle/autodock/ferry/arrivals/process(delta_time)
 	if(process_state == IDLE_STATE)
 
 		if(location)	// If we're off-station (space).

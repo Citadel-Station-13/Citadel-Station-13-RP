@@ -37,6 +37,7 @@
 		if(mind)
 			mind.name = real_name
 
+
 	nutrition = rand(200,400)
 
 	human_mob_list |= src
@@ -243,6 +244,7 @@
 // this handles mulebots and vehicles
 // and now mobs on fire
 /mob/living/carbon/human/Crossed(var/atom/movable/AM)
+	. = ..()
 	if(istype(AM, /mob/living/bot/mulebot))
 		var/mob/living/bot/mulebot/MB = AM
 		MB.runOver(src)
@@ -1054,20 +1056,28 @@
 		if(organ.splinted) //Splints prevent movement.
 			continue
 		for(var/obj/item/O in organ.implants)
+			if(istype(O, /obj/item/melee/spike) && prob(20))
+				embed_object_pain(organ, O)
 			if(!istype(O,/obj/item/implant) && prob(5)) //Moving with things stuck in you could be bad.
-				// All kinds of embedded objects cause bleeding.
-				if(!can_feel_pain(organ.organ_tag))
-					to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
-				else
-					var/msg = pick( \
-						"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside.</span>", \
-						"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>", \
-						"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
-					custom_pain(msg, 40)
+				embed_object_pain(organ, O)
 
-				organ.take_damage(rand(1,3), 0, 0)
-				if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
-					organ.status |= ORGAN_BLEEDING
+/mob/living/carbon/human/proc/embed_object_pain(var/obj/item/organ/external/organ, var/obj/item/O)
+	// All kinds of embedded objects cause bleeding.
+	if(!can_feel_pain(organ.organ_tag))
+		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
+	else
+		var/msg = pick( \
+			"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside.</span>", \
+			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>", \
+			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
+		custom_pain(msg, 40)
+	if(istype(O, /obj/item/melee/spike))
+		organ.take_damage(rand(3,9), 0, 0) // it has spikes on it it's going to stab you
+		to_chat(src, "<span class='danger'>The edges of [O] in your [organ.name] are not doing you any favors.</span>")
+		Weaken(2) // having a very jagged stick jammed into your bits is Bad for your health
+	organ.take_damage(rand(1,3), 0, 0)
+	if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
+		organ.status |= ORGAN_BLEEDING
 
 /mob/living/carbon/human/verb/check_pulse()
 	set category = "Object"
@@ -1180,7 +1190,7 @@
 	if(LAZYLEN(species.descriptors))
 		descriptors = list()
 		for(var/desctype in species.descriptors)
-			var/datum/mob_descriptor.descriptor = species.descriptors[desctype]
+			var/datum/mob_descriptor/descriptor = species.descriptors[desctype]
 			descriptors[desctype] = descriptor.default_value
 
 	spawn(0)
@@ -1262,6 +1272,28 @@
 		W.update_icon()
 		W.message = message
 		W.add_fingerprint(src)
+
+/mob/living/carbon/human/emp_act(severity)
+	if(isSynthetic())
+		switch(severity)
+			if(1)
+				src.take_organ_damage(0,20,emp=1)
+				Confuse(20)
+			if(2)
+				src.take_organ_damage(0,15,emp=1)
+				Confuse(15)
+			if(3)
+				src.take_organ_damage(0,10,emp=1)
+				Confuse(10)
+			if(4)
+				src.take_organ_damage(0,5,emp=1)
+				Confuse(5)
+		flash_eyes()
+		src << "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>"
+		src << "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>"
+		src << "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>"
+		..()
+
 
 /mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	. = 1

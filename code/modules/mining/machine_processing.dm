@@ -64,7 +64,7 @@
 		dat += "<A href='?src=\ref[src];choice=claim'>Claim points.</A><br>"
 	else
 		dat += "No ID inserted.  <A href='?src=\ref[src];choice=insert'>Insert ID.</A><br>"
-
+	dat += "High-speed processing is <A href='?src=\ref[src];toggle_speed=1'>[(machine.speed_process ? "<font color='green'>active</font>" : "<font color='red'>inactive</font>")]."
 	dat += "<hr><table>"
 
 	for(var/ore in machine.ores_processing)
@@ -123,6 +123,10 @@
 
 		show_all_ores = !show_all_ores
 
+	if(href_list["toggle_speed"])
+
+		machine.toggle_speed()
+
 	if(href_list["choice"])
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")
@@ -162,8 +166,8 @@
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/console = null
 	var/sheets_per_tick = 10
-	var/list/ores_processing[0]
-	var/list/ores_stored[0]
+	var/list/ores_processing = list()
+	var/list/ores_stored = list()
 	var/static/list/alloy_data
 	var/active = FALSE
 
@@ -211,7 +215,16 @@
 		if(src.output) break
 	return
 
-/obj/machinery/mineral/processing_unit/process()
+/obj/machinery/mineral/processing_unit/proc/toggle_speed()
+	speed_process = !speed_process // switching gears
+	if(speed_process) // high gear
+		STOP_MACHINE_PROCESSING(src)
+		START_PROCESSING(SSfastprocess, src)
+	else // low gear
+		STOP_PROCESSING(SSfastprocess, src)
+		START_MACHINE_PROCESSING(src)
+
+/obj/machinery/mineral/processing_unit/process(delta_time)
 
 	if (!src.output || !src.input)
 		return

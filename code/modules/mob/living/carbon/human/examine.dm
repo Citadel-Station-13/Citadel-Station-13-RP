@@ -584,8 +584,8 @@
 			message = "<span class='warning'>[t_He] [t_is] extremely hungry. A deep growl occasionally rumbles from [t_his] empty stomach.</span>\n"
 		if(100 to 499)
 			return message //Well that's pretty normal, really.
-		if(500 to 999) // Fat.
-			message = "[t_He] [t_has] a stuffed belly, bloated fat and round from eating too much.\n"
+		if(500 to 999) // range that vampires hit nutrition wise, best to not have vore kink messages forced on them.
+			message = "[t_He] appears to be well-hydrated and invigorated.\n"
 		if(1000 to 1399)
 			message = "[t_He] [t_has] a rotund, thick gut. It bulges from their body obscenely, close to sagging under its own weight.\n"
 		if(1400 to 1934) // One person fully digested.
@@ -673,3 +673,5 @@
 			return "<span class='notice'>[t_He] [t_appear] to be in some sort of torpor.</span>\n"
 	if(feral)
 		return "<span class='warning'>[t_He] [t_has] a crazed, wild look in [t_his] eyes!</span>\n"
+	if(bitten)
+		return "<span class='notice'>[t_He] [t_appear] to have two fresh puncture marks on [t_his] neck.</span>\n"

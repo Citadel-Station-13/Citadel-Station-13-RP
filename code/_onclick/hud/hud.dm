@@ -171,11 +171,14 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 	var/list/adding
 	var/list/other
+	var/list/miniobjs
 	var/list/obj/screen/hotkeybuttons
 
 	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
 	var/list/slot_info
+
+	var/list/minihuds = list()
 
 /datum/hud/New(mob/owner)
 	mymob = owner
@@ -202,6 +205,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	hotkeybuttons = null
 //	item_action_list = null // ?
 	mymob = null
+	minihuds = null
 
 /datum/hud/proc/hidden_inventory_update()
 	if(!mymob) return
@@ -313,6 +317,26 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 /mob/proc/instantiate_hud(var/datum/hud/HUD)
 	return
+
+/datum/hud/proc/apply_minihud(var/datum/mini_hud/MH)
+	if(MH in minihuds)
+		return
+	minihuds += MH
+	if(mymob.client)
+		mymob.client.screen -= miniobjs
+	miniobjs += MH.get_screen_objs()
+	if(mymob.client)
+		mymob.client.screen += miniobjs
+
+/datum/hud/proc/remove_minihud(var/datum/mini_hud/MH)
+	if(!(MH in minihuds))
+		return
+	minihuds -= MH
+	if(mymob.client)
+		mymob.client.screen -= miniobjs
+	miniobjs -= MH.get_screen_objs()
+	if(mymob.client)
+		mymob.client.screen += miniobjs
 
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12(var/full = 0 as null)

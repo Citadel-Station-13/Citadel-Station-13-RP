@@ -162,9 +162,10 @@
 
 	else if(href_list["ejectBeaker"])
 		if(container)
-			var/obj/item/reagent_containers/B = container
-			B.loc = loc
-			container = null
+			container.forceMove(get_turf(src))
+			if(Adjacent(usr)) // So the AI doesn't get a beaker somehow.
+				usr.put_in_hands(container)
+				container = null
 
 	add_fingerprint(usr)
 	return 1 // update UIs attached to this object

@@ -70,3 +70,13 @@
 		var/mob/living/L = AM
 		message_admins("\The [AM] fell out of the sky.")
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
+
+/turf/unsimulated/floor/sky/virgo2_sky
+	name = "virgo 2 atmosphere"
+	desc = "Be careful where you step!"
+	color = "#eacd7c"
+	VIRGO2_SET_ATMOS
+
+/turf/unsimulated/floor/sky/virgo2_sky/Initialize()
+	skyfall_levels = list(z+1)
+	. = ..()

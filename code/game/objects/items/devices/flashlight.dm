@@ -52,7 +52,7 @@
 		to_chat(user, "<span class='notice'>You set the brightness level on \the [src] to [brightness_level].</span>")
 		update_icon()
 
-/obj/item/flashlight/process()
+/obj/item/flashlight/process(delta_time)
 	if(!on || !cell)
 		return PROCESS_KILL
 
@@ -242,6 +242,8 @@
 	desc = "A pen-sized light, used by medical staff."
 	icon_state = "penlight"
 	item_state = "pen"
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
 	slot_flags = SLOT_EARS
 	brightness_on = 2
 	w_class = ITEMSIZE_TINY
@@ -331,12 +333,14 @@
 	var/on_damage = 7
 	var/produce_heat = 1500
 	power_use = 0
+	drop_sound = 'sound/items/drop/gloves.ogg'
+	pickup_sound = 'sound/items/pickup/gloves.ogg'
 
 /obj/item/flashlight/flare/New()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
 	..()
 
-/obj/item/flashlight/flare/process()
+/obj/item/flashlight/flare/process(delta_time)
 	var/turf/pos = get_turf(src)
 	if(pos)
 		pos.hotspot_expose(produce_heat, 5)
@@ -396,7 +400,7 @@
 	fuel = rand(1600, 2000)
 	..()
 
-/obj/item/flashlight/glowstick/process()
+/obj/item/flashlight/glowstick/process(delta_time)
 	fuel = max(fuel - 1, 0)
 	if(!fuel || !on)
 		turn_off()

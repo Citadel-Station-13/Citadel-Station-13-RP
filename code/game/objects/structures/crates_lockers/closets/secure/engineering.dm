@@ -9,10 +9,12 @@
 	req_access = list(access_ce)
 
 	starts_with = list(
+		/obj/item/clothing/shoes/magboots/advanced,
 		/obj/item/clothing/accessory/storage/brown_vest,
 		/obj/item/blueprints,
 		/obj/item/clothing/under/rank/chief_engineer,
 		/obj/item/clothing/under/rank/chief_engineer/skirt,
+		/obj/item/clothing/under/rank/chief_engineer/skirt_pleated,
 		/obj/item/clothing/head/hardhat/white,
 		/obj/item/clothing/head/welding,
 		/obj/item/clothing/gloves/yellow,

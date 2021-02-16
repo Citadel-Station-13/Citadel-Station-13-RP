@@ -132,3 +132,8 @@
 	name = "handcuffs"
 	path =/obj/item/handcuffs
 	hidden = 1
+
+/datum/category_item/autolathe/general/spike
+	name = "jagged spike"
+	path = /obj/item/melee/spike
+	hidden = 1

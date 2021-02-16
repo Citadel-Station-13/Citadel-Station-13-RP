@@ -10,7 +10,7 @@
 
 	START_PROCESSING(SSprocessing, src)
 
-/datum/component/rot/process()
+/datum/component/rot/process(delta_time)
 	var/atom/A = parent
 
 	var/turf/open/T = get_turf(A)
@@ -32,7 +32,7 @@
 		return COMPONENT_INCOMPATIBLE
 	. = ..()
 
-/datum/component/rot/corpse/process()
+/datum/component/rot/corpse/process(delta_time)
 	var/mob/living/carbon/C = parent
 	if(C.stat != DEAD)
 		qdel(src)

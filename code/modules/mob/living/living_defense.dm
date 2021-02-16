@@ -163,7 +163,7 @@
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
 
-/mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0)
+/mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
 	  return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
@@ -458,24 +458,36 @@
 // Called when touching a lava tile.
 // Does roughly 100 damage to unprotected mobs, and 20 to fully protected mobs.
 /mob/living/lava_act()
-	add_modifier(/datum/modifier/fire/intense, 8 SECONDS) // Around 40 total if left to burn and without fire protection per stack.
-	inflict_heat_damage(40) // Another 40, however this is instantly applied to unprotected mobs.
-	adjustFireLoss(20) // Lava cannot be 100% resisted with fire protection.
+	add_modifier(/datum/modifier/fire/intense, 3 SECONDS) // Around 40 total if left to burn and without fire protection per stack.
+	inflict_heat_damage(10) // Another 40, however this is instantly applied to unprotected mobs.
+	adjustFireLoss(10) // Lava cannot be 100% resisted with fire protection.
 
 //Acid
-/mob/living/acid_act()
-	make_dizzy(1)
-	adjustHalLoss(1)
-	if(!confused) confused = 1
-	confused = max(confused, 20)
-	inflict_heat_damage(30) // This is instantly applied to unprotected mobs.
-	inflict_poison_damage(10)
-	adjustFireLoss(15) // Acid cannot be 100% resisted by protection.
-	adjustToxLoss(5)
+/mob/living/acid_act(var/mob/living/H)
+	if(H.mind.isholy)
+		return
+	else
+		make_dizzy(1)
+		adjustHalLoss(1)
+		if(!confused) confused = 1
+		confused = max(confused, 1)
+		inflict_heat_damage(5) // This is instantly applied to unprotected mobs.
+		inflict_poison_damage(5)
+		adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
+		adjustToxLoss(5)
+
+//Blood
+//Acid
+/mob/living/blood_act(var/mob/living/H)
+	if(H.mind.isholy)
+		return
+	else
+		inflict_poison_damage(5)
+		adjustToxLoss(5)
+
 
 /mob/living/proc/reagent_permeability()
 	return 1
-	return round(FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE*(fire_stacks/FIRE_MAX_FIRESUIT_STACKS)**2)
 
 /mob/living/proc/handle_actions()
 	//Pretty bad, i'd use picked/dropped instead but the parent calls in these are nonexistent

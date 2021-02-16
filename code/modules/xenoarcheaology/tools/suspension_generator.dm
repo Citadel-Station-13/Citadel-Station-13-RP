@@ -16,13 +16,13 @@
 	qdel(cell)
 	cell = new /obj/item/cell/high(src)
 
-/obj/machinery/suspension_gen/process()
+/obj/machinery/suspension_gen/process(delta_time)
 	if(suspension_field)
 		cell.charge -= power_use
 
 		var/turf/T = get_turf(suspension_field)
 		for(var/mob/living/M in T)
-			M.weakened = max(M.weakened, 3)
+			M.Weaken(3)
 			cell.charge -= power_use
 			if(prob(5))
 				to_chat(M, "<span class='warning'>[pick("You feel tingly","You feel like floating","It is hard to speak","You can barely move")].</span>")
@@ -209,7 +209,7 @@
 
 	for(var/mob/living/M in T)
 		to_chat(M, "<span class='info'>You no longer feel like floating.</span>")
-		M.weakened = min(M.weakened, 3)
+		M.Weaken(3)
 
 	visible_message("<font color='blue'>\icon[src] [src] deactivates with a gentle shudder.</font>")
 	qdel(suspension_field)

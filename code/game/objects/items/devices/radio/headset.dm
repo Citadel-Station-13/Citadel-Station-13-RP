@@ -20,6 +20,9 @@
 	var/ks1type = null
 	var/ks2type = null
 
+	drop_sound = 'sound/items/drop/component.ogg'
+	pickup_sound = 'sound/items/pickup/component.ogg'
+
 /obj/item/radio/headset/Initialize(mapload)
 	. = ..()
 	internal_channels.Cut()
@@ -98,6 +101,17 @@
 /obj/item/radio/headset/raider/Initialize()
 	. = ..()
 	set_frequency(RAID_FREQ)
+
+/obj/item/radio/headset/trader
+	name = "trade headset"
+	origin_tech = list(TECH_ILLEGAL = 2)
+	syndie = 1
+	adhoc_fallback = TRUE
+	ks1type = /obj/item/encryptionkey/trader
+
+/obj/item/radio/headset/trader/Initialize()
+	. = ..()
+	set_frequency(TRADE_FREQ)
 
 /obj/item/radio/headset/binary
 	origin_tech = list(TECH_ILLEGAL = 3)
@@ -541,6 +555,18 @@
 	name = "sar radio bowman headset"
 	desc = "A bowman headset for search and rescue."
 	icon_state = "sar_headset_alt"
+
+/obj/item/radio/headset/pathfinder
+	name = "pathfinder's headset"
+	desc = "Headset used by Pathfinders for coordinating and executing expeditions."
+	icon_state = "exp_headset_path"
+	adhoc_fallback = TRUE
+	ks2type = /obj/item/encryptionkey/pathfinder
+
+/obj/item/radio/headset/pathfinder/alt
+	name = "pathfinder's bowman headset"
+	desc = "Headset used by Pathfinders for coordinating and executing expeditions."
+	icon_state = "exp_headset_path_alt"
 
 //Headset SC _vr files
 /obj/item/radio/headset/volunteer

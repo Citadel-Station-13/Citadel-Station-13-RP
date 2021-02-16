@@ -297,12 +297,20 @@
 	nif = null
 	return ..()
 
+/mob/living/carbon/brain/caught_soul/ghostize(can_reenter_corpse)
+	. = ..()
+	if(!can_reenter_corpse)
+		qdel(src)
+
 /mob/living/carbon/brain/caught_soul/Life()
 	if(!mind || !key)
 		qdel(src)
 		return
 
 	. = ..()
+
+	if(!client)
+		return
 
 	if(!parent_mob && !transient &&(life_tick % 150 == 0) && soulcatcher.setting_flags & NIF_SC_BACKUPS)
 		SStranscore.m_backup(mind,0) //Passed 0 means "Don't touch the nif fields on the mind record"
@@ -333,7 +341,7 @@
 		return FALSE
 	..()
 
-/mob/living/carbon/brain/caught_soul/show_message()
+/mob/living/carbon/brain/caught_soul/show_message(msg, type, alt, alt_type)
 	if(ext_blind || !client)
 		return FALSE
 	..()
@@ -360,7 +368,7 @@
 	else
 		return ..(direction)
 
-/mob/living/carbon/brain/caught_soul/say(var/message)
+/mob/living/carbon/brain/caught_soul/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if(silent)
 		return FALSE
 	soulcatcher.say_into(message,src,eyeobj)
@@ -510,7 +518,7 @@
 
 ///////////////////
 //Verbs for humans
-/mob/living/carbon/human/proc/nsay(message as text|null)
+/mob/living/carbon/human/proc/nsay(message as text)
 	set name = "NSay"
 	set desc = "Speak into your NIF's Soulcatcher."
 	set category = "IC"
@@ -526,12 +534,12 @@
 		to_chat(src,"<span class='warning'>You need a loaded mind to use NSay.</span>")
 		return
 	if(!message)
-		message = input("Type a message to say.","Speak into Soulcatcher") as text|null
+		return
 	if(message)
 		var/sane_message = sanitize(message)
 		SC.say_into(sane_message,src)
 
-/mob/living/carbon/human/proc/nme(message as text|null)
+/mob/living/carbon/human/proc/nme(message as message)
 	set name = "NMe"
 	set desc = "Emote into your NIF's Soulcatcher."
 	set category = "IC"
@@ -548,7 +556,7 @@
 		return
 
 	if(!message)
-		message = input("Type an action to perform.","Emote into Soulcatcher") as text|null
+		return
 	if(message)
 		var/sane_message = sanitize(message)
 		SC.emote_into(sane_message,src)

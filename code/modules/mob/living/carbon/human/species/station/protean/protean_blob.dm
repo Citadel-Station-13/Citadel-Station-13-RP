@@ -23,8 +23,8 @@
 
 	harm_intent_damage = 2
 	melee_damage_lower = 10
-	melee_damage_upper = 10
-	attacktext = list("slashed")
+	melee_damage_upper = 15 // Mild increase to blob damage
+	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
 
 	aquatic_movement = 1
 	min_oxy = 0
@@ -94,7 +94,7 @@
 /mob/living/simple_mob/protean_blob/updatehealth()
 	if(humanform)
 		//Set the max
-		maxHealth = humanform.getMaxHealth()*2 //HUMANS, and their 'double health', bleh.
+		maxHealth = humanform.getMaxHealth() * 1.6 //As the base humanoid health was increased, the number was changed to make the maxhealth stay at 200
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - humanform.getOxyLoss() - humanform.getToxLoss() - humanform.getCloneLoss() - humanform.getActualFireLoss() - humanform.getActualBruteLoss()
 
@@ -130,10 +130,10 @@
 	else
 		..()
 
-/mob/living/simple_mob/protean_blob/stun_effect_act()
+/mob/living/simple_mob/protean_blob/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
 	return FALSE //ok so tasers hurt protean blobs what the fuck
 
-/mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount)
+/mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
 	if(humanform)
 		humanform.adjustBruteLoss(amount)
 	else
@@ -142,7 +142,7 @@
 /mob/living/simple_mob/protean_blob/ventcrawl_carry()
 	return TRUE //proteans can have literally any small inside them and should still be able to ventcrawl regardless.
 
-/mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount)
+/mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
 	if(humanform)
 		humanform.adjustFireLoss(amount)
 	else
@@ -206,7 +206,7 @@
 	if(refactory && istype(A,/obj/item/stack/material))
 		var/obj/item/stack/material/S = A
 		var/substance = S.material.name
-		var/list/edible_materials = list("steel", "plasteel", "diamond", "mhydrogen") //Can't eat all materials, just useful ones.
+		var/list/edible_materials = list(MAT_STEEL, MAT_SILVER, MAT_GOLD, MAT_URANIUM, MAT_METALHYDROGEN) //Can't eat all materials, just useful ones.
 		var/allowed = FALSE
 		for(var/material in edible_materials)
 			if(material == substance)
@@ -283,6 +283,8 @@
 		pulledby.stop_pulling()
 	stop_pulling()
 
+	var/panel_selected = client?.statpanel == "Protean"
+
 	//Record where they should go
 	var/atom/creation_spot = drop_location()
 
@@ -353,6 +355,9 @@
 	//Mail them to nullspace
 	moveToNullspace()
 
+	if(blob.client && panel_selected)
+		blob.client.statpanel = "Protean"
+
 	//Message
 	blob.visible_message("<b>[src.name]</b> collapses into a gooey blob!")
 
@@ -367,6 +372,19 @@
 		var/obj/belly/B = belly
 		B.forceMove(blob)
 		B.owner = blob
+
+	var/datum/vore_preferences/P = blob.client?.prefs_vr
+
+	if(P)
+		blob.digestable = P.digestable
+		blob.devourable = P.devourable
+		blob.feeding = P.feeding
+		blob.digest_leave_remains = P.digest_leave_remains
+		blob.allowmobvore = P.allowmobvore
+		blob.vore_taste = P.vore_taste
+		blob.permit_healbelly = P.permit_healbelly
+		blob.can_be_drop_prey = P.can_be_drop_prey
+		blob.can_be_drop_pred = P.can_be_drop_pred
 
 	//Return our blob in case someone wants it
 	return blob
@@ -435,6 +453,8 @@
 		pulledby.stop_pulling()
 	stop_pulling()
 
+	var/panel_selected = blob.client?.statpanel == "Protean"
+
 	//Stop healing if we are
 	if(blob.healing)
 		blob.healing.expire()
@@ -460,6 +480,9 @@
 	//Put our owner in it (don't transfer var/mind)
 	ckey = blob.ckey
 	temporary_form = null
+
+	if(client && panel_selected)
+		client.statpanel = "Protean"
 
 	//Transfer vore organs
 	vore_selected = blob.vore_selected

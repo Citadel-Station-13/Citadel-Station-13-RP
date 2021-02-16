@@ -103,19 +103,27 @@
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set category = "Special Verbs"
-	set name = "Global Narrate"
+	set name = "Narration"
 
 	if (!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to everyone:")) as text
+	var/alert = alert(src, "Specify the Narration range.", "Narration", "Global", "Local", "Cancel") //differentiate between global and local
+	if(alert == "Global")
+		var/globalmsg = input("The text you enter will appear without prefix in the chat Globally.\nMessage:", text("Enter the text you wish to narrate to everyone:")) as text
+		to_chat(world, "[globalmsg]") 
+		
+	if(alert == "Local")
+		var/localmsg = input("The text you enter will appear without prefix in the chat Locally.\nMessage:", text("Enter the text you wish to narrate to everyone in view:")) as text
+		for(var/mob/M as mob in view(src))
+			to_chat(M, "[localmsg]")
+		to_chat(src, "[localmsg]") // need to separately message the src since the src doesnt view itself as a type of mob in view
 
-	if (!msg)
-		return
-	to_chat(world, "[msg]")
-	log_admin("GlobalNarrate: [key_name(usr)] : [msg]")
-	message_admins("<font color='blue'><B> GlobalNarrate: [key_name_admin(usr)] : [msg]</B></font>", 1)
+	var/text = "[key_name(usr)] used narration."
+	message_admins(text)
+	log_admin(text)
+	admin_ticket_log(src, text)
 	feedback_add_details("admin_verb","GLN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)	// Targetted narrate -- TLE
@@ -1037,3 +1045,4 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","ICS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+

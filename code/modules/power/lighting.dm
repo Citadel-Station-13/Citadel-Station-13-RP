@@ -694,7 +694,7 @@ var/global/list/light_type_cache = list()
 // timed process
 // use power
 
-/obj/machinery/light/process()
+/obj/machinery/light/process(delta_time)
 	if(auto_flicker && !flickering)
 		if(check_for_player_proximity(src, radius = 12, ignore_ghosts = FALSE, ignore_afk = TRUE))
 			seton(TRUE) // Lights must be on to flicker.
@@ -743,6 +743,8 @@ var/global/list/light_type_cache = list()
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
 	var/brightness_color = LIGHT_COLOR_INCANDESCENT_TUBE
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/light/tube
 	name = "light tube"

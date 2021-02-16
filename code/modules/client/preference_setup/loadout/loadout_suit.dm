@@ -38,6 +38,10 @@
 	display_name = "Civilian Bomber Jacket Alt"
 	path = /obj/item/clothing/suit/storage/bomber/alt
 
+/datum/gear/suit/storage/gothcoat
+	display_name = "Civilian Gothic Coat"
+	path = /obj/item/clothing/suit/storage/gothcoat
+
 /datum/gear/suit/leather_jacket
 	display_name = "Civilian Leather Jacket - Black"
 	path = /obj/item/clothing/suit/storage/toggle/leather_jacket
@@ -171,6 +175,21 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/emt
 	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist")
 
+/datum/gear/suit/labcoat/scientist
+	display_name = "Research Labcoat"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/science
+	allowed_roles = list("Scientist","Roboticist","Research Director")
+
+/datum/gear/suit/labcoat/roboticist
+	display_name = "Research Labcoat - Robotics"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/robotics
+	allowed_roles = list("Roboticist")
+
+/datum/gear/suit/labcoat/rd
+	display_name = "Research Labcoat - Research Director"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/rd
+	allowed_roles = list("Research Director")
+
 /datum/gear/suit/roles/surgical_apron
 	display_name = "Medical Surgical Apron"
 	path = /obj/item/clothing/suit/surgicalapron
@@ -289,6 +308,14 @@ datum/gear/suit/duster
 /datum/gear/suit/roles/poncho/cloak/custom/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/suit/roles/poncho/cloak/cloakglowing
+	display_name = "Civilian Cloak - Glowing Light"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/glowing
+
+/datum/gear/suit/roles/poncho/cloak/cloakglowingdark
+	display_name = "Civilian Cloak - Glowing Dark"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/glowingdark
 
 /datum/gear/suit/unathi_robe
 	display_name = "Civilian Roughspun Robe"

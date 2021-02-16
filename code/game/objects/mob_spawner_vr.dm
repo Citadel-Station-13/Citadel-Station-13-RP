@@ -34,7 +34,7 @@
 	spawned_mobs.Cut()
 	return ..()
 
-/obj/structure/mob_spawner/process()
+/obj/structure/mob_spawner/process(delta_time)
 	if(!can_spawn())
 		return
 	var/chosen_mob = choose_spawn()
@@ -115,7 +115,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	name ="Lazy Mob Spawner"
 	var/range = 10 //range in tiles from the spawner to detect moving stuff
 
-/obj/structure/mob_spawner/scanner/process()
+/obj/structure/mob_spawner/scanner/process(delta_time)
 	if(!can_spawn())
 		return
 	if(world.time > last_spawn + spawn_delay)

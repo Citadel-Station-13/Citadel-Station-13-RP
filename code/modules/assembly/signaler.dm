@@ -165,7 +165,7 @@ Code:
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 	return
 
-/obj/item/assembly/signaler/process()
+/obj/item/assembly/signaler/process(delta_time)
 	if(!deadman)
 		STOP_PROCESSING(SSobj, src)
 	var/mob/M = src.loc
@@ -182,6 +182,7 @@ Code:
 	set src in usr
 	set name = "Threaten to push the button!"
 	set desc = "BOOOOM!"
+	set category = "IC"
 	deadman = TRUE
 	START_PROCESSING(SSobj, src)
 	log_and_message_admins("is threatening to trigger a signaler deadman's switch")

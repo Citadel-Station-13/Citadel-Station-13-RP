@@ -110,7 +110,7 @@
 			/obj/item/clothing/under/lawyer/bluesuit,
 			/obj/item/clothing/under/lawyer/purpsuit,
 			/obj/item/clothing/shoes/black = 2,
-			/obj/item/clothing/shoes/leather,
+			/obj/item/clothing/shoes/laceup/brown,
 			/obj/item/clothing/accessory/wcoat
 			)
 	name = "Formalwear closet"
@@ -313,7 +313,8 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/skirt/swept,
 			/obj/item/clothing/under/skirt/outfit/plaid_blue,
 			/obj/item/clothing/under/skirt/outfit/plaid_purple,
-			/obj/item/clothing/under/skirt/outfit/plaid_red
+			/obj/item/clothing/under/skirt/outfit/plaid_red,
+			/obj/item/clothing/under/skirt/outfit/plaid_green
 			)
 	cost = 40
 	containertype = /obj/structure/closet/crate
@@ -346,7 +347,7 @@ datum/supply_pack/costumes/witch
 			/obj/item/clothing/under/pants/chaps,
 			/obj/item/clothing/under/pants/chaps/black,
 			/obj/item/clothing/under/harness,
-			/obj/item/clothing/shoes/leather,
+			/obj/item/clothing/shoes/laceup/brown,
 			/obj/item/clothing/shoes/boots/jungle,
 			/obj/item/clothing/shoes/boots/jackboots,
 			/obj/item/clothing/shoes/boots/cowboy,

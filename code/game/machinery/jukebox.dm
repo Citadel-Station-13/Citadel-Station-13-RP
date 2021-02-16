@@ -31,7 +31,7 @@
 	var/list/queue = list()
 	//VOREStation Add End
 	var/current_genre = "Electronic" //What is our current genre?
-	var/list/genres = list("Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz", "Metal", "Pop", "Rock") //Avaliable genres.
+	var/list/genres = list("Arcade", "Alternative", "Classical and Orchestral", "Country and Western", "Disco, Funk, Soul, and R&B", "Electronic", "Folk and Indie", "Hip-Hop and Rap", "Jazz and Lounge", "Metal", "Pop", "Rock", "Sol Common Precursors") //Avaliable genres.
 	var/datum/track/current_track
 	var/list/datum/track/tracks = list(
 		new/datum/track("Beyond", 'sound/ambience/ambispace.ogg'),
@@ -59,14 +59,14 @@
 	)
 
 
-/obj/machinery/media/jukebox/New()
+/obj/machinery/media/jukebox/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
 /obj/machinery/media/jukebox/Destroy()
 	qdel(wires)
 	wires = null
-	..()
+	return ..()
 
 // On initialization, copy our tracks from the global list
 /obj/machinery/media/jukebox/Initialize()
@@ -89,7 +89,7 @@
 	else if(!LAZYLEN(tracks)) //We don't even have default tracks
 		stat |= BROKEN // No tracks configured this round!
 
-/obj/machinery/media/jukebox/process()
+/obj/machinery/media/jukebox/process(delta_time)
 	if(!playing)
 		return
 	if(inoperable())
@@ -234,7 +234,7 @@
 			//for(var/mob/living/carbon/M in ohearers(6, src))
 				//if(M.get_ear_protection() >= 2)
 					//continue
-				//M.sleeping = 0
+				//M.SetSleeping(0)
 				//M.stuttering += 20
 				//M.ear_deaf += 30
 				//M.Weaken(3)

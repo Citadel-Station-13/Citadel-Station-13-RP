@@ -131,6 +131,7 @@
 						/obj/random/contraband,
 						/obj/random/contraband,
 						/obj/random/contraband,
+						/obj/item/storage/belt/spike_bandolier,
 						/obj/random/weapon/guarenteed)
 		new loot(user.drop_location())
 		to_chat(user, "You unwrap the package.")
@@ -160,7 +161,7 @@
 		var/loot = pick(/obj/item/clothing/glasses/thermal,
 						/obj/item/clothing/gloves/combat/advanced,
 						/obj/item/clothing/gloves/combat/advanced,
-						/obj/item/clothing/accessory/holster/machete/occupied,
+						/obj/item/clothing/accessory/holster/machete/occupied/deluxe,
 						/obj/item/clothing/accessory/holster/machete/occupied/deluxe,
 						/obj/item/clothing/accessory/holster/machete/occupied/durasteel,
 						/obj/item/clothing/suit/armor/heavy,
@@ -178,7 +179,7 @@
 						/obj/item/bluespace_harpoon,
 						/obj/item/clothing/accessory/permit/gun,
 						/obj/item/perfect_tele,
-						/obj/item/disk/nifsoft/compliance,
+						/obj/item/storage/belt/spike_bandolier,
 						/obj/item/seeds/ambrosiadeusseed,
 						/obj/item/seeds/ambrosiavulgarisseed,
 						/obj/item/seeds/libertymycelium,
@@ -203,7 +204,7 @@
 						/obj/item/stamp/solgov,
 						/obj/item/storage/fancy/cigar/havana,
 						/obj/item/storage/fancy/cigar/cohiba,
-						/obj/random/contraband,
+						/obj/item/storage/belt/spike_bandolier,
 						/obj/random/weapon/guarenteed)
 		new loot(usr.drop_location())
 		to_chat(user, "You unwrap the package.")

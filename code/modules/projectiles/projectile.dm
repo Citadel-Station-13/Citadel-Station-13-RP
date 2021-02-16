@@ -253,7 +253,7 @@
 	if(prob(50))
 		homing_offset_y = -homing_offset_y
 
-/obj/item/projectile/process()
+/obj/item/projectile/process(delta_time)
 	last_process = world.time
 	if(!loc || !fired || !trajectory)
 		fired = FALSE
@@ -450,7 +450,7 @@
 
 /obj/item/projectile/proc/vol_by_damage()
 	if(damage)
-		return clamp((damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then CLAMP the value between 30 and 100
+		return clamp((damage) * 0.67, 30, 100)// Multiply projectile damage by 0.67, then clamp the value between 30 and 100
 	else
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume.
 

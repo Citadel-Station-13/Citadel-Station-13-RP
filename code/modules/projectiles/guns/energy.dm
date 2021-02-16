@@ -5,6 +5,9 @@
 	icon_state = "energy"
 	fire_sound_text = "laser blast"
 
+	accuracy = 100
+	dispersion = -100
+
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 240 //How much energy is needed to fire.
 
@@ -46,7 +49,7 @@
 /obj/item/gun/energy/get_cell()
 	return power_supply
 
-/obj/item/gun/energy/process()
+/obj/item/gun/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
 			if(!power_supply || power_supply.charge >= power_supply.maxcharge)

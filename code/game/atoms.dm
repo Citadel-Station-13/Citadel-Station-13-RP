@@ -18,6 +18,18 @@
 	var/list/atom_colours	 //used to store the different colors on an atom
 							//its inherent color, the colored paint applied on it, special color effect etc...
 
+/*		new overlay system
+	/// a very temporary list of overlays to remove
+	var/list/remove_overlays
+	/// a very temporary list of overlays to add
+	var/list/add_overlays
+*/
+
+	///vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays
+	var/list/managed_vis_overlays
+	///overlays managed by [update_overlays][/atom/proc/update_overlays] to prevent removing overlays that weren't added by the same proc
+	var/list/managed_overlays
+
 	/// The orbiter comopnent if we're being orbited.
 	var/datum/component/orbiter/orbiters
 	///Chemistry.
@@ -26,14 +38,6 @@
 	//var/chem_is_open_container = 0
 	// replaced by OPENCONTAINER flags and atom/proc/is_open_container()
 	///Chemistry.
-
-/*		New overlay system
-	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
-	var/list/remove_overlays // a very temporary list of overlays to remove
-	var/list/add_overlays // a very temporary list of overlays to add
-
-	var/list/managed_vis_overlays //vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays
-*/
 
 	//Detective Work, used for the duplicate data points kept in the scanners
 	var/list/original_atom
@@ -218,6 +222,41 @@
 
 	return distance == -1 || (get_dist(src, user) <= distance)
 
+/// Updates the icon of the atom
+/atom/proc/update_icon()
+	SIGNAL_HANDLER
+
+	var/signalOut = SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON)
+	. = FALSE
+
+	if(!(signalOut & COMSIG_ATOM_NO_UPDATE_ICON_STATE))
+		update_icon_state()
+		. = TRUE
+
+	if(!(signalOut & COMSIG_ATOM_NO_UPDATE_OVERLAYS))
+		if(LAZYLEN(managed_vis_overlays))
+			SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+
+		var/list/new_overlays = update_overlays()
+		if(managed_overlays)
+			cut_overlay(managed_overlays)
+			managed_overlays = null
+		if(length(new_overlays))
+			managed_overlays = new_overlays
+			add_overlay(new_overlays)
+		. = TRUE
+
+	SEND_SIGNAL(src, COMSIG_ATOM_UPDATED_ICON, signalOut, .)
+
+/// Updates the icon state of the atom
+/atom/proc/update_icon_state()
+
+/// Updates the overlays of the atom
+/atom/proc/update_overlays()
+	SHOULD_CALL_PARENT(TRUE)
+	. = list()
+	SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_OVERLAYS, .)
+
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
 /atom/proc/relaymove()
@@ -244,11 +283,6 @@
 
 /atom/proc/melt()
 	return
-
-// Previously this was defined both on /obj/ and /turf/ seperately.  And that's bad.
-/atom/proc/update_icon()
-	return
-
 
 /atom/proc/hitby(atom/movable/AM as mob|obj)
 	if (density)
@@ -471,7 +505,7 @@
 // Use for objects performing visible actions
 // message is output to anyone who can see, e.g. "The [src] does something!"
 // blind_message (optional) is what blind people will hear e.g. "You hear something!"
-/atom/proc/visible_message(var/message, var/blind_message)
+/atom/proc/visible_message(var/message, var/self_message, var/blind_message)
 
 	//VOREStation Edit
 	var/list/see
@@ -490,7 +524,9 @@
 		O.show_message(message, 1, blind_message, 2)
 	for(var/mob in seeing_mobs)
 		var/mob/M = mob
-		if(M.see_invisible >= invisibility && MOB_CAN_SEE_PLANE(M, plane))
+		if(self_message && (M == src))
+			M.show_message( self_message, 1, blind_message, 2)
+		else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
 			M.show_message(message, 1, blind_message, 2)
 		else if(blind_message)
 			M.show_message(blind_message, 2)

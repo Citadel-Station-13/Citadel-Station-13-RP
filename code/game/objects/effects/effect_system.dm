@@ -275,7 +275,7 @@ steam.start() -- spawns the effect
 	for(var/mob/living/L in range(1, src))
 		affect(L)
 
-/obj/effect/effect/smoke/elemental/process()
+/obj/effect/effect/smoke/elemental/process(delta_time)
 	for(var/mob/living/L in range(1, src))
 		affect(L)
 
@@ -531,3 +531,29 @@ steam.start() -- spawns the effect
 				round(min(light, BOMBCAP_LIGHT_RADIUS)),
 				round(min(flash, BOMBCAP_FLASH_RADIUS))
 				)
+
+/obj/effect/effect/teleport_greyscale
+	name = "teleportation"
+	icon_state = "teleport_greyscale"
+	anchored = 1
+	mouse_opacity = 0
+	plane = MOB_PLANE
+	layer = ABOVE_MOB_LAYER
+
+/obj/effect/effect/teleport_greyscale/Initialize()
+	. = ..()
+	QDEL_IN(src, 2 SECONDS)
+
+/datum/effect_system/teleport_greyscale
+	var/color = "#FFFFFF"
+
+	set_up(cl, loca)
+		if(istype(loca, /turf/))
+			location = loca
+		else
+			location = get_turf(loca)
+		color = cl
+
+	start()
+		var/obj/effect/effect/teleport_greyscale/tele = new /obj/effect/effect/teleport_greyscale(src.location)
+		tele.color = color

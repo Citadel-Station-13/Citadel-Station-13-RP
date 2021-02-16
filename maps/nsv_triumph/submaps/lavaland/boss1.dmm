@@ -1,0 +1,45 @@
+"a" = (/turf/template_noop,/area/template_noop)
+"c" = (/turf/simulated/floor/greengrid,/area/lavaland/bosses)
+"e" = (/mob/living/simple_mob/mechanical/cyber_horror/grey,/turf/simulated/floor/greengrid,/area/lavaland/bosses)
+"m" = (/obj/effect/decal/cleanable/blood/gibs,/turf/simulated/floor/greengrid,/area/lavaland/bosses)
+"r" = (/turf/simulated/floor/bluegrid,/area/lavaland/bosses)
+"t" = (/turf/simulated/floor/outdoors/lavaland,/area/template_noop)
+"v" = (/mob/living/simple_mob/mechanical/cyber_horror,/turf/simulated/floor/greengrid,/area/lavaland/bosses)
+"E" = (/obj/effect/floor_decal/corner_steel_grid,/turf/simulated/floor/greengrid,/area/lavaland/bosses)
+"M" = (/obj/effect/floor_decal/corner_techfloor_grid,/turf/simulated/floor/greengrid,/area/lavaland/bosses)
+"O" = (/obj/effect/floor_decal/corner_techfloor_grid/diagonal,/turf/simulated/floor/greengrid,/area/lavaland/bosses)
+"R" = (/obj/random/multiple/treasure,/obj/structure/closet/crate,/turf/simulated/floor/greengrid,/area/lavaland/bosses)
+"S" = (/obj/effect/decal/cleanable/blood/gibs,/turf/simulated/floor/bluegrid,/area/lavaland/bosses)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaattaaaaaaaaaaaaaatttaaaaaa
+aaaatttaaaaaaaaaaaaatttttaaaaa
+aaattttttaaaaaaaaaaatttttaaaaa
+aaatttttaaaaaaaaaaaatttaaaaaaa
+aaaaaaattttaaaattttttaaaaaaaaa
+aaaaaaaatcrcccccrccctaaaaaaaaa
+aaaaaaaatccccrccccMctaaaaaaaaa
+aaaaaaaatccrccrcrcrctaaaaaaaaa
+aaaaaaaatcrvmccccvccaaaaaaaaaa
+aaaaaaaaaccEcrccrcccaaaaaaaaaa
+aaaaaaaaaccrccRrccrcaaaaaaaaaa
+aaaaaaaaarccceccccccaaaaaaaaaa
+aattaaaaaccccrcrcccraaaaaaaaaa
+aatttaaaaccrccOcccSctaaaaattaa
+aaattttatcrcccccrccctaatttttaa
+aaatattttccccrccccrctttttttaaa
+aaaaatttttttaaaaattttttttaaaaa
+aaaaatttttaaaaaaaaattttaaaaaaa
+aaaaattttaaaaaaaaaaatttaaaaaaa
+aaaaatttaaaaaaaaaaaaatttaaaaaa
+aaaattttaaaaaaaaaaaaattttaaaaa
+aaattttttaaaaaaaaaaaatttttaaaa
+aaattaaaaaaaaaaaaaaaattttttaaa
+aaaaaaaaaaaaaaaaaaaaaaaaattaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

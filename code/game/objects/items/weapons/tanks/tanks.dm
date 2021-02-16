@@ -7,6 +7,8 @@ var/list/global/tank_gauge_cache = list()
 	sprite_sheets = list(
 		SPECIES_TESHARI = 'icons/mob/species/teshari/back.dmi'
 		)
+	drop_sound = 'sound/items/drop/gascan.ogg'
+	pickup_sound = 'sound/items/pickup/gascan.ogg'
 
 	var/gauge_icon = "indicator_tank"
 	var/last_gauge_pressure
@@ -246,7 +248,7 @@ var/list/global/tank_gauge_cache = list()
 		else if(src in location)		// or if tank is in the mobs possession
 			if(!location.internal)		// and they do not have any active internals
 				mask_check = 1
-		else if(istype(src.loc, /obj/item/rig) && src.loc in location)	// or the rig is in the mobs possession
+		else if(istype(src.loc, /obj/item/rig) && (src.loc in location))	// or the rig is in the mobs possession
 			if(!location.internal)		// and they do not have any active internals
 				mask_check = 1
 
@@ -348,7 +350,7 @@ var/list/global/tank_gauge_cache = list()
 
 	return remove_air(moles_needed)
 
-/obj/item/tank/process()
+/obj/item/tank/process(delta_time)
 	//Allow for reactions
 	air_contents.react() //cooking up air tanks - add phoron and oxygen, then heat above PHORON_MINIMUM_BURN_TEMPERATURE
 	if(gauge_icon)

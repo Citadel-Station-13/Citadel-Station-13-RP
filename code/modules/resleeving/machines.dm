@@ -120,7 +120,7 @@
 	attempting = 0
 	return 1
 
-/obj/machinery/clonepod/transhuman/process()
+/obj/machinery/clonepod/transhuman/process(delta_time)
 	if(stat & NOPOWER)
 		if(occupant)
 			locked = 0
@@ -221,7 +221,7 @@
 		store_rating = store_rating * MB.rating
 	max_res_amount = store_rating
 
-/obj/machinery/transhuman/synthprinter/process()
+/obj/machinery/transhuman/synthprinter/process(delta_time)
 	if(stat & NOPOWER)
 		if(busy)
 			busy = 0
@@ -594,6 +594,7 @@
 	if(original_occupant)
 		occupant = original_occupant
 
+	playsound(src, 'sound/machines/medbayscanner1.ogg', 100, 1) // Play our sound at the end of the mind injection!
 	return 1
 
 /obj/machinery/transhuman/resleever/proc/go_out(var/mob/M)

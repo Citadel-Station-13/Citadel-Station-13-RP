@@ -16,6 +16,8 @@
 	w_class = ITEMSIZE_SMALL
 	flags = OPENCONTAINER | NOCONDUCT
 	unacidable = 1 //glass doesn't dissolve in acid
+	drop_sound = 'sound/items/drop/bottle.ogg'
+	pickup_sound = 'sound/items/pickup/bottle.ogg'
 
 	var/label_text = ""
 
@@ -132,6 +134,8 @@
 			update_name_label()
 	if(istype(W,/obj/item/storage/bag))
 		..()
+	if(istype(W,/obj/item/reagent_containers/glass) || istype(W,/obj/item/reagent_containers/food/drinks) || istype(W,/obj/item/reagent_containers/food/condiment))
+		return
 	if(W && W.w_class <= w_class && (flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
 		reagents.touch_obj(W, reagents.total_volume)
@@ -153,6 +157,8 @@
 	icon_state = "beaker"
 	item_state = "beaker"
 	matter = list("glass" = 500)
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/reagent_containers/glass/beaker/Initialize()
 	. = ..()
@@ -255,6 +261,9 @@
 	volume = 120
 	flags = OPENCONTAINER
 	unacidable = 0
+	drop_sound = 'sound/items/drop/helm.ogg'
+	pickup_sound = 'sound/items/pickup/helm.ogg'
+
 
 /obj/item/reagent_containers/glass/bucket/attackby(var/obj/item/D, mob/user as mob)
 	if(isprox(D))
@@ -311,6 +320,8 @@ obj/item/reagent_containers/glass/bucket/wood
 	volume = 120
 	flags = OPENCONTAINER
 	unacidable = 0
+	drop_sound = 'sound/items/drop/wooden.ogg'
+	pickup_sound = 'sound/items/pickup/wooden.ogg'
 
 /obj/item/reagent_containers/glass/bucket/wood/attackby(var/obj/D, mob/user as mob)
 	if(isprox(D))

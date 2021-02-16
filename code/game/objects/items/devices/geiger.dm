@@ -22,7 +22,7 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
-/obj/item/geiger/process()
+/obj/item/geiger/process(delta_time)
 	get_radiation()
 
 /obj/item/geiger/proc/get_radiation()

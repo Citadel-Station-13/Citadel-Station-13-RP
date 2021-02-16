@@ -37,12 +37,12 @@ log transactions
 
 /obj/machinery/atm/New()
 	..()
-	machine_id = "[station_name()] RT #[num_financial_terminals++]"
+	machine_id = "ATM Terminal #[num_financial_terminals++]"
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-/obj/machinery/atm/process()
+/obj/machinery/atm/process(delta_time)
 	if(stat & NOPOWER)
 		return
 

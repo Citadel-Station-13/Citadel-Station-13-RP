@@ -189,7 +189,7 @@
 				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [T.him] up!</span>", \
 				"<span class='notice'>You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?</span>")
 			else if(lying || src.sleeping)
-				src.sleeping = max(0,src.sleeping-5)
+				AdjustSleeping(-5)
 				if(src.sleeping == 0)
 					src.resting = 0
 				if(H) H.in_stasis = 0 //VOREStation Add - Just In Case
@@ -306,7 +306,7 @@
 		to_chat(usr, "<font color='red'>You are already sleeping</font>")
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
-		usr.sleeping = 20 //Short nap
+		usr.AdjustSleeping(20)
 
 /mob/living/carbon/Bump(atom/A)
 	if(now_pushing)

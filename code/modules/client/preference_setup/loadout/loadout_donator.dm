@@ -191,3 +191,28 @@
 	slot = slot_wear_suit
 	path = /obj/item/clothing/under/skirt/donator/doopytoots
 	ckeywhitelist = list("doopytoots")
+
+/datum/gear/donator/mikubikini
+	display_name = "starlight singer bikini"
+	path = /obj/item/clothing/under/donator/mikubikini
+	ckeywhitelist = list("grandvegeta")
+
+/datum/gear/donator/mikujacket
+	display_name = "starlight singer jacket"
+	path = /obj/item/clothing/suit/donator/mikujacket
+	ckeywhitelist = list("grandvegeta")
+
+/datum/gear/donator/mikuhair
+	display_name = "starlight singer hair"
+	path = /obj/item/clothing/head/donator/mikuhair
+	ckeywhitelist = list("grandvegeta")
+
+/datum/gear/donator/mikugloves
+	display_name = "starlight singer gloves"
+	path = /obj/item/clothing/gloves/donator/mikugloves
+	ckeywhitelist = list("grandvegeta")
+
+/datum/gear/donator/mikuleggings
+	display_name = "starlight singer leggings"
+	path = /obj/item/clothing/shoes/donator/mikuleggings
+	ckeywhitelist = list("grandvegeta")

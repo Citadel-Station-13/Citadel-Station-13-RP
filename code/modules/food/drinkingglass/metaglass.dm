@@ -653,3 +653,16 @@ Drinks Data
 
 /datum/reagent/ethanol/thebestboy
 	glass_icon_state = "thebestboy"
+
+/datum/reagent/drink/soda/astral_wind
+	glass_icon_state = "astral_wind"
+
+/datum/reagent/drink/soda/solar_wind
+	glass_icon_state = "solar_wind"
+
+/datum/reagent/drink/soda/vortex_chill
+	glass_icon_state = "vortex_chill"
+
+/datum/reagent/ethanol/nebula_riptide
+	glass_icon_state = "nebula_riptide"
+	

@@ -24,6 +24,8 @@
 	var/visible_name = "a syringe"
 	var/time = 30
 	var/drawing = 0
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/reagent_containers/syringe/on_reagent_change()
 	update_icon()
@@ -224,7 +226,7 @@
 			else
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
 
-//		dirty(target,affected) //VOREStation Add -- Removed by Request
+			dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
 
 	return
 /* VOREStation Edit - See syringes_vr.dm

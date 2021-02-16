@@ -214,7 +214,7 @@
 	. = ..()
 	if(old_buckled)
 		for(var/mob/M in old_buckled)
-			buckle_mob(M, force = TRUE)
+			buckle_mob(M, forced = TRUE)
 
 /obj/structure/bed/roller/update_icon()
 	return
@@ -243,6 +243,8 @@
 	w_class = ITEMSIZE_LARGE
 	var/rollertype = /obj/item/roller
 	var/bedtype = /obj/structure/bed/roller
+	drop_sound = 'sound/items/drop/axe.ogg'
+	pickup_sound = 'sound/items/pickup/axe.ogg'
 
 /obj/item/roller/attack_self(mob/user)
 	var/obj/structure/bed/roller/R = new bedtype(user.loc)
