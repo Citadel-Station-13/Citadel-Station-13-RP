@@ -1,5 +1,6 @@
 /mob/living/carbon/human/examine(mob/user)
 	. = ..()
+	. = list()
 	var/skip_gear = 0
 	var/skip_body = 0
 
