@@ -1283,7 +1283,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "Triple Kitsune Tails"
 	desc = ""
 	icon_state = "triple-kitsunetails"
-	extra_overlay = "triple-kitsunetails-tips
+	extra_overlay = "triple-kitsunetails-tips"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
