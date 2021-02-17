@@ -60,15 +60,6 @@
 	base_name = name
 	base_desc = desc
 
-/obj/item/reagent_containers/glass/examine(var/mob/user)
-	if(!..(user, 2))
-		return
-	if(reagents && reagents.reagent_list.len)
-		to_chat(user, "<span class='notice'>It contains [reagents.total_volume] units of liquid.</span>")
-	else
-		to_chat(user, "<span class='notice'>It is empty.</span>")
-	if(!is_open_container())
-		to_chat(user, "<span class='notice'>Airtight lid seals it completely.</span>")
 
 /obj/item/reagent_containers/glass/attack_self()
 	..()

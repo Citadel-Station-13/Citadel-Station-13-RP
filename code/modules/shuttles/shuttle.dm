@@ -274,10 +274,10 @@
 // If you want to conditionally cancel shuttle launches, that logic must go in short_jump() or long_jump()
 /datum/shuttle/proc/perform_shuttle_move(var/obj/effect/shuttle_landmark/destination, var/list/turf_translation)
 	log_shuttle("perform_shuttle_move() current=[current_location] destination=[destination]")
-	//world << "move_shuttle() called for [name] leaving [origin] en route to [destination]."
+	//to_chat(world, "move_shuttle() called for [name] leaving [origin] en route to [destination].")
 
-	//world << "area_coming_from: [origin]"
-	//world << "destination: [destination]"
+	//to_chat(world, "area_coming_from: [origin]")
+	//to_chat(world, "destination: [destination]")
 	ASSERT(current_location != destination)
 
 	// If shuttle has no internal gravity, update our gravity with destination gravity

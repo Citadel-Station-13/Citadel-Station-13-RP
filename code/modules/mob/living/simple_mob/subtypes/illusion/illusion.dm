@@ -43,7 +43,7 @@
 	if(copying)
 		copying.examine(user)
 		return
-	..()
+	
 
 /mob/living/simple_mob/illusion/bullet_act(obj/item/projectile/P)
 	if(!P)

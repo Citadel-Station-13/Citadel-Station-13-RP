@@ -29,8 +29,8 @@
 
 
 /obj/machinery/appliance/cooker/fryer/examine(var/mob/user)
-	if (..())//no need to duplicate adjacency check
-		to_chat(user, "Oil Level: [oil.total_volume]/[optimal_oil]")
+	. = ..()
+	. += "Oil Level: [oil.total_volume]/[optimal_oil]"
 
 /obj/machinery/appliance/cooker/fryer/Initialize(mapload)
 	. = ..()
@@ -40,6 +40,7 @@
 
 	if (prob(20))
 		//Sometimes the fryer will start with much less than full oil, significantly impacting efficiency until filled
+		//hm yes 20% of the time we will make fryers start with less this is very fun and interactive
 		variance = rand()*0.5
 	oil.add_reagent("cornoil", optimal_oil*(1 - variance))
 

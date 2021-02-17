@@ -83,7 +83,7 @@
 	var/new_name = sanitizeSafe(input(src, "Who would you like to be now?", "Communicator", src.client.prefs.real_name)  as text, MAX_NAME_LEN)
 	if(new_name)
 		if(comm)
-			comm.visible_message("<span class='notice'>\icon[comm] [src.name] has left, and now you see [new_name].</span>")
+			comm.visible_message("<span class='notice'>[icon2html(thing = src, target = world)] [src.name] has left, and now you see [new_name].</span>")
 		//Do a bit of logging in-case anyone tries to impersonate other characters for whatever reason.
 		var/msg = "[src.client.key] ([src]) has changed their communicator identity's name to [new_name]."
 		message_admins(msg)
@@ -115,8 +115,8 @@
 			qdel(speech_bubble)
 
 		for(var/mob/M in hearers(comm)) //simplifed since it's just a speech bubble
-			M << speech_bubble
-		src << speech_bubble
+			SEND_IMAGE(M, speech_bubble)
+		SEND_IMAGE(src, speech_bubble)
 
 	..(message, speaking, verb, alt_name, whispering) //mob/living/say() can do the actual talking.
 

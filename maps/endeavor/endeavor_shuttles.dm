@@ -63,7 +63,7 @@
 	icon_keyboard = "flight_center_key"
 	var/wait_time = 30 MINUTES
 
-/obj/machinery/computer/shuttle_control/web/excursion/ui_interact()
+/obj/machinery/computer/shuttle_control/web/excursion/nano_ui_interact()
 	if(world.time < wait_time)
 		to_chat(usr,"<span class='warning'>The console is locked while the shuttle refuels. It will be complete in [round((wait_time - world.time)/10/60)] minute\s.</span>")
 		return FALSE

@@ -82,7 +82,7 @@
 	if(report)
 		report.update_icon()
 		if(report.info)
-			user << report.info
+			to_chat(user, report.info)
 	return
 
 /obj/machinery/microscope/proc/remove_sample(var/mob/living/remover)

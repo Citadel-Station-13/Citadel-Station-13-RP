@@ -627,3 +627,17 @@ datum/projectile_data
 	if (!client_or_usr)
 		return
 	winset(client_or_usr, "mainwindow", "flash=5")
+
+// used for the multiz camera console stolen from vorestatiobn
+/proc/get_bbox_of_atoms(list/atoms)
+	var/list/list_x = list()
+	var/list/list_y = list()
+	for(var/_a in atoms)
+		var/atom/a = _a
+		list_x += a.x
+		list_y += a.y
+	return list(
+		min(list_x),
+		min(list_y),
+		max(list_x),
+		max(list_y))

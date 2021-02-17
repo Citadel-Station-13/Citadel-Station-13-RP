@@ -339,7 +339,7 @@
 	if(equipment && equipment.len)
 		to_chat(user, "It's equipped with:")
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
-			to_chat(user, "\icon[ME] [ME]")
+			to_chat(user, "[icon2html(thing = ME, target = user)] [ME]")
 	return
 
 
@@ -416,7 +416,7 @@
 		target.attack_hand(src.occupant)
 		return 1
 	if(istype(target, /obj/machinery/embedded_controller))
-		target.ui_interact(src.occupant)
+		target.nano_ui_interact(src.occupant)
 		return 1
 	return 0
 
@@ -638,7 +638,7 @@
 	internal_damage |= int_dam_flag
 	pr_internal_damage.start()
 	log_append_to_last("Internal damage of type [int_dam_flag].",1)
-	occupant << sound('sound/mecha/internaldmgalarm.ogg',volume=50) //Better sounding.
+	SEND_SOUND(occupant, sound('sound/mecha/internaldmgalarm.ogg',volume=50)) //Better sounding.
 	return
 
 /obj/mecha/proc/clearInternalDamage(int_dam_flag)
@@ -1042,7 +1042,7 @@
 		to_chat(user,"Genetic sequence or serial number incompatible with locking mechanism.")
 		return 0
 	//Added a message here since people assume their first click failed or something./N
-//	user << "Installing MMI, please stand by."
+//	to_chat(user, "Installing MMI, please stand by.")
 
 	visible_message("<span class='notice'>[usr] starts to insert a brain into [src.name]</span>")
 
@@ -1082,7 +1082,7 @@
 		setDir(dir_in)
 		src.log_message("[mmi_as_oc] moved in as pilot.")
 		if(!hasInternalDamage())
-			src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
+			SEND_SOUND(src.occupant, sound('sound/mecha/nominal.ogg',volume=50))
 		return 1
 	else
 		return 0
@@ -1317,7 +1317,7 @@
 			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
 			return
 
-//	usr << "You start climbing into [src.name]"
+//	to_chat(usr, "You start climbing into [src.name]")
 
 	visible_message("<span class='notice'>\The [usr] starts to climb into [src.name]</span>")
 
@@ -1377,17 +1377,17 @@
 				if(MECH_FACTION_NT)//The good guys category
 					if(firstactivation)//First time = long activation sound
 						firstactivation = 1
-						src.occupant << sound('sound/mecha/LongNanoActivation.ogg',volume=50)
+						SEND_SOUND(src.occupant, sound('sound/mecha/LongNanoActivation.ogg',volume=50))
 					else
-						src.occupant << sound('sound/mecha/nominalnano.ogg',volume=50)
+						SEND_SOUND(src.occupant, sound('sound/mecha/nominalnano.ogg',volume=50))
 				if(MECH_FACTION_SYNDI)//Bad guys
 					if(firstactivation)
 						firstactivation = 1
-						src.occupant << sound('sound/mecha/LongSyndiActivation.ogg',volume=50)
+						SEND_SOUND(src.occupant, sound('sound/mecha/LongSyndiActivation.ogg',volume=50))
 					else
-						src.occupant << sound('sound/mecha/nominalsyndi.ogg',volume=50)
+						SEND_SOUND(src.occupant, sound('sound/mecha/nominalsyndi.ogg',volume=50))
 				else//Everyone else gets the normal noise
-					src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
+					SEND_SOUND(src.occupant, sound('sound/mecha/nominal.ogg',volume=50))
 		return 1
 	else
 		return 0
@@ -1780,7 +1780,7 @@
 /obj/mecha/proc/occupant_message(message as text|null)
 	if(message)
 		if(src.occupant && src.occupant.client)
-			to_chat(src.occupant, "\icon[src] [message]")
+			to_chat(src.occupant, "[icon2html(thing = src, target = src.occupant)] [message]")
 	return
 
 /obj/mecha/proc/log_message(message as text,red=null)

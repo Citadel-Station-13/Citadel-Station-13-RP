@@ -346,7 +346,7 @@
 /obj/machinery/transhuman/synthprinter/attack_hand(mob/user as mob)
 	if((busy == 0) || (stat & NOPOWER))
 		return
-	user << "Current print cycle is [busy]% complete."
+	to_chat(user, "Current print cycle is [busy]% complete.")
 	return
 
 /obj/machinery/transhuman/synthprinter/attackby(obj/item/W as obj, mob/user as mob)
