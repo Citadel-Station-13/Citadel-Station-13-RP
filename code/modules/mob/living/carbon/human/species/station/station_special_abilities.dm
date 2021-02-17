@@ -246,27 +246,27 @@
 					//Strange audio
 					//to_chat(src, "Strange Audio")
 					switch(rand(1,12))
-						if(1) src << 'sound/machines/airlock.ogg'
+						if(1) SEND_SOUND(src, sound('sound/machines/airlock.ogg'))
 						if(2)
-							if(prob(50))src << 'sound/effects/Explosion1.ogg'
-							else src << 'sound/effects/Explosion2.ogg'
-						if(3) src << 'sound/effects/explosionfar.ogg'
-						if(4) src << 'sound/effects/Glassbr1.ogg'
-						if(5) src << 'sound/effects/Glassbr2.ogg'
-						if(6) src << 'sound/effects/Glassbr3.ogg'
-						if(7) src << 'sound/machines/twobeep.ogg'
-						if(8) src << 'sound/machines/windowdoor.ogg'
+							if(prob(50))SEND_SOUND(src, sound('sound/effects/Explosion1.ogg'))
+							else SEND_SOUND(src, sound('sound/effects/Explosion2.ogg'))
+						if(3) SEND_SOUND(src, sound('sound/effects/explosionfar.ogg'))
+						if(4) SEND_SOUND(src, sound('sound/effects/Glassbr1.ogg'))
+						if(5) SEND_SOUND(src, sound('sound/effects/Glassbr2.ogg'))
+						if(6) SEND_SOUND(src, sound('sound/effects/Glassbr3.ogg'))
+						if(7) SEND_SOUND(src, sound('sound/machines/twobeep.ogg'))
+						if(8) SEND_SOUND(src, sound('sound/machines/windowdoor.ogg'))
 						if(9)
 							//To make it more realistic, I added two gunshots (enough to kill)
-							src << 'sound/weapons/Gunshot1.ogg'
+							SEND_SOUND(src, sound('sound/weapons/Gunshot1.ogg'))
 							spawn(rand(10,30))
-								src << 'sound/weapons/Gunshot2.ogg'
-						if(10) src << 'sound/weapons/smash.ogg'
+								SEND_SOUND(src, sound('sound/weapons/Gunshot2.ogg'))
+						if(10) SEND_SOUND(src, sound('sound/weapons/smash.ogg'))
 						if(11)
 							//Same as above, but with tasers.
-							src << 'sound/weapons/Taser.ogg'
+							SEND_SOUND(src, sound('sound/weapons/Taser.ogg'))
 							spawn(rand(10,30))
-								src << 'sound/weapons/Taser.ogg'
+								SEND_SOUND(src, sound('sound/weapons/Taser.ogg'))
 					//Rare audio
 						if(12)
 	//These sounds are (mostly) taken from Hidden: Source
@@ -275,7 +275,7 @@
 								'sound/hallucinations/growl3.ogg', 'sound/hallucinations/im_here1.ogg', 'sound/hallucinations/im_here2.ogg', 'sound/hallucinations/i_see_you1.ogg', 'sound/hallucinations/i_see_you2.ogg',\
 								'sound/hallucinations/look_up1.ogg', 'sound/hallucinations/look_up2.ogg', 'sound/hallucinations/over_here1.ogg', 'sound/hallucinations/over_here2.ogg', 'sound/hallucinations/over_here3.ogg',\
 								'sound/hallucinations/turn_around1.ogg', 'sound/hallucinations/turn_around2.ogg', 'sound/hallucinations/veryfar_noise.ogg', 'sound/hallucinations/wail.ogg')
-							src << pick(creepyasssounds)
+							SEND_SOUND(src, pick(creepyasssounds))
 				if(56 to 60) //5% chance
 					//Flashes of danger
 					//to_chat(src, "Danger Flash")
@@ -373,7 +373,7 @@
 
 	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite in your current state.")
-		return	
+		return
 
 	last_special = world.time + 600
 	src.visible_message("<font color='red'><b>[src] leans in close to [B]...</b></font>")
@@ -397,7 +397,7 @@
 			H.drip(1)
 			sleep(50)
 			H.drip(1)
-				
+
 			if(!B.bitten) // first time biting them
 				src.nutrition += 300
 				B.nutrition -= 150
@@ -410,7 +410,7 @@
 				B.apply_damage(15, BRUTE, BP_TORSO) // if they have nothing to give, this just harms them
 			B.bitten = 1 //debuff tracking for balance
 	else if(!istype(B,/mob/living/carbon) && src.isSynthetic() || istype(B,/mob/living/carbon) && B.isSynthetic() && src.isSynthetic()) // for synths to feed on robots and other synths
-		if(do_after(src, 50, B)) 
+		if(do_after(src, 50, B))
 			if(!Adjacent(B)) return
 			src.visible_message("<font color='red'><b>[src] suddenly lunges at [B]!</b></font>")
 			if(B.nutrition > 100)
@@ -419,7 +419,7 @@
 			if(B.nutrition < 100)
 				B.apply_damage(15, BRUTE, BP_TORSO)
 	else if(istype(B,/mob/living/silicon) && !istype(src,/mob/living/silicon))
-		if(do_after(src, 50, B)) 
+		if(do_after(src, 50, B))
 			to_chat(src, "You don't sense any viable blood...")
 
 

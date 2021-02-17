@@ -101,9 +101,9 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: user - the user doing the examining
 // Description: Allows the user to click a link when examining to look at video if one is going.
 /obj/item/communicator/examine(mob/user)
-	. = ..(user, 1)
-	if(. && video_source)
-		to_chat(user, "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span>")
+	. = ..()
+	if(video_source)
+		. += "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span>"
 
 // Proc: initialize_exonet()
 // Parameters: 1 (user - the person the communicator belongs to)
@@ -245,7 +245,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	initialize_exonet(user)
 	alert_called = 0
 	update_icon()
-	ui_interact(user)
+	nano_ui_interact(user)
 	if(video_source)
 		watch_video(user)
 
@@ -311,7 +311,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/Destroy()
 	for(var/mob/living/voice/voice in contents)
 		voice_mobs.Remove(voice)
-		to_chat(voice, "<span class='danger'>\icon[src] Connection timed out with remote host.</span>")
+		to_chat(voice, "<span class='danger'>[icon2html(thing = src, target = voice)] Connection timed out with remote host.</span>")
 		qdel(voice)
 	close_connection(reason = "Connection timed out")
 
@@ -412,4 +412,3 @@ var/global/list/obj/item/communicator/all_communicators = list()
 		return
 
 	icon_state = initial(icon_state)
-

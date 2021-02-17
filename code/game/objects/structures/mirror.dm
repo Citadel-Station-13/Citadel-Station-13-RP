@@ -28,7 +28,7 @@
 			AC = new(src, user)
 			AC.name = "SalonPro Nano-Mirror&trade;"
 			ui_users[user] = AC
-		AC.ui_interact(user)
+		AC.nano_ui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
 	if(!glass) return
@@ -142,6 +142,7 @@
 				qdel(user)
 	..()
 
+
 //Long mirrors.
 /obj/structure/mirror/long
 	name = "mirror"
@@ -193,4 +194,3 @@
 	icon_state = "long_mir_r_broke"
 	density = 0
 	anchored = 1
-	shattered = 1

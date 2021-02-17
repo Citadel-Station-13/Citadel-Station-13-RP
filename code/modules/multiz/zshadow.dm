@@ -33,12 +33,12 @@
 	QDEL_NULL(shadow)
 	. = ..()
 
-/mob/zshadow/examine(mob/user, distance, infix, suffix)
+/mob/zshadow/examine(mob/user)
 	if(!owner)
 	 	// The only time we should have a null owner is if we are in nullspace. Help figure out why we were examined.
 		stack_trace("[src] ([type]) @ [log_info_line()] was examined by [user] @ [global.log_info_line(user)]")
 		return
-	return owner.examine(user, distance, infix, suffix)
+	return owner.examine(user)
 
 // Relay some stuff they hear
 /mob/zshadow/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "", var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)

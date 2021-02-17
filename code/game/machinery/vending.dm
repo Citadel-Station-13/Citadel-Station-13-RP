@@ -227,7 +227,7 @@
 
 		// This is not a status display message, since it's something the character
 		// themselves is meant to see BEFORE putting the money in
-		to_chat(usr, "\icon[cashmoney] <span class='warning'>That is not enough money.</span>")
+		to_chat(user, "[icon2html(thing = cashmoney, target = user)] <span class='warning'>That is not enough money.</span>")
 		return 0
 
 	if(istype(cashmoney, /obj/item/spacecash))
@@ -236,7 +236,7 @@
 		cashmoney.worth -= currently_vending.price
 
 		if(cashmoney.worth <= 0)
-			usr.drop_from_inventory(cashmoney)
+			user.drop_from_inventory(cashmoney)
 			qdel(cashmoney)
 		else
 			cashmoney.update_icon()
@@ -353,14 +353,14 @@
 			return
 
 	wires.Interact(user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the vending machine.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/vending/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -408,7 +408,7 @@
 /obj/machinery/vending/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	if(usr.stat || usr.restrained())
+	if(!IsAdminGhost(usr) && (usr.stat || usr.restrained()))
 		return
 
 	if(href_list["remove_coin"] && !istype(usr,/mob/living/silicon))
@@ -423,7 +423,7 @@
 		coin = null
 		categories &= ~CAT_COIN
 
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
+	if(IsAdminGhost(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		if((href_list["vend"]) && (vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 				to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
@@ -438,7 +438,7 @@
 			if(!(R.category & categories))
 				return
 
-			if(R.price <= 0)
+			if((R.price <= 0) || IsAdminGhost(usr))
 				vend(R, usr)
 			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
 				to_chat(usr, "<span class='danger'>Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled.</span>")
@@ -1914,6 +1914,8 @@
 					/obj/item/clothing/under/dress/westernbustle = 5,
 					/obj/item/clothing/under/wedding/bride_white = 5,
 					/obj/item/clothing/under/redcoatformal = 2,
+					/obj/item/clothing/under/leotardcolor = 5,
+					/obj/item/clothing/under/leotard = 5,
 					/obj/item/storage/backpack/ = 5,
 					/obj/item/storage/backpack/messenger = 5,
 					/obj/item/storage/backpack/satchel = 5)
@@ -2102,6 +2104,8 @@
 					/obj/item/clothing/under/dress/westernbustle = 25,
 					/obj/item/clothing/under/wedding/bride_white = 25,
 					/obj/item/clothing/under/redcoatformal = 75,
+					/obj/item/clothing/under/leotardcolor = 25,
+					/obj/item/clothing/under/leotard = 25,
 					/obj/item/storage/backpack/ = 25,
 					/obj/item/storage/backpack/messenger = 25,
 					/obj/item/storage/backpack/satchel = 25)

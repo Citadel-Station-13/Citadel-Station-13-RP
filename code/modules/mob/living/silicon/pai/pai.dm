@@ -13,6 +13,7 @@
 	can_pull_mobs = MOB_PULL_SMALLER
 
 	idcard_type = /obj/item/card/id
+	silicon_privileges = PRIVILEGES_PAI
 	var/idaccessible = 0
 
 	var/network = "SS13"

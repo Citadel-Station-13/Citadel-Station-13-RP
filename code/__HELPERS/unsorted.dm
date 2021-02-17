@@ -351,7 +351,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			if(isAI(src))
 				var/mob/living/silicon/ai/A = src
 				oldname = null//don't bother with the records update crap
-				//world << "<b>[newname] is the AI!</b>"
+				//to_chat(world, "<b>[newname] is the AI!</b>")
 				//world << sound('sound/AI/newAI.ogg')
 				// Set eyeobj name
 				A.SetName(newname)
@@ -491,6 +491,12 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	for(var/mob/new_player/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/living/simple_mob/M in sortmob)
+		moblist.Add(M)
+	for(var/mob/living/bot/M in sortmob)
+		moblist.Add(M)
+	for(var/mob/living/captive_brain/M in sortmob)
+		moblist.Add(M)
+	for(var/mob/living/voice/M in sortmob)
 		moblist.Add(M)
 //	for(var/mob/living/silicon/hivebot/M in sortmob)
 //		mob_list.Add(M)

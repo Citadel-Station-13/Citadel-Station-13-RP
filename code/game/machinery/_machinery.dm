@@ -234,7 +234,8 @@ Class Procs:
 		return attack_hand(user)
 
 /obj/machinery/attack_hand(mob/user as mob)
-
+	if(IsAdminGhost(user))
+		return FALSE
 	if(inoperable(MAINT))
 		return 1
 	if(user.lying || user.stat)
@@ -267,7 +268,7 @@ Class Procs:
 
 /obj/machinery/proc/state(var/msg)
 	for(var/mob/O in hearers(src, null))
-		O.show_message("\icon[src] <span class = 'notice'>[msg]</span>", 2)
+		O.show_message("[icon2html(thing = src, target = O)] <span class = 'notice'>[msg]</span>", 2)
 
 /obj/machinery/proc/ping(text=null)
 	if(!text)

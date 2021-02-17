@@ -34,9 +34,9 @@
 			if(src in comm.voice_invites)
 				comm.open_connection(src)
 				return
-			to_chat(src, "<span class='notice'>\icon[origin_atom] Receiving communicator request from [origin_atom].  To answer, use the <b>Call Communicator</b> \
+			to_chat(src, "<span class='notice'>[icon2html(thing = origin_atom, target = src)] Receiving communicator request from [origin_atom].  To answer, use the <b>Call Communicator</b> \
 			verb, and select that name to answer the call.</span>")
-			src << 'sound/machines/defib_SafetyOn.ogg'
+			SEND_SOUND(src, sound('sound/machines/defib_SafetyOn.ogg'))
 			comm.voice_invites |= src
 	if(message == "ping")
 		if(client && client.prefs.communicator_visibility)
@@ -44,8 +44,8 @@
 			random = random / 10
 			exonet.send_message(origin_address, "64 bytes received from [exonet.address] ecmp_seq=1 ttl=51 time=[random] ms")
 	if(message == "text")
-		to_chat(src, "<span class='notice'>\icon[origin_atom] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
-		src << 'sound/machines/defib_safetyOff.ogg'
+		to_chat(src, "<span class='notice'>[icon2html(thing = origin_atom, target = src)] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
+		SEND_SOUND(src, sound('sound/machines/defib_safetyOff.ogg'))
 		exonet_messages.Add("<b>From [origin_atom]:</b><br>[text]")
 		return
 
@@ -74,7 +74,7 @@
 	if(ringer)
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("\icon[src] *beep*"))
+			O.show_message(text("[icon2html(thing = src, target = world)] *beep*"))
 
 	alert_called = 1
 	update_icon()
@@ -85,7 +85,7 @@
 		L = loc
 
 	if(L)
-		to_chat(L, "<span class='notice'>\icon[src] Message from [who].</span>")
+		to_chat(L, "<span class='notice'>[icon2html(thing = src, target = L)] Message from [who].</span>")
 
 // Verb: text_communicator()
 // Parameters: None

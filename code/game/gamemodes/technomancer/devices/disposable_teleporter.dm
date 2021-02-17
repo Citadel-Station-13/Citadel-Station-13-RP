@@ -23,8 +23,8 @@
 	uses = 1
 
 /obj/item/disposable_teleporter/examine(mob/user)
-	..()
-	to_chat(user, "[uses] uses remaining.")
+	. = ..()
+	. += "<span class = 'notice'>There are [uses] uses remaining.</span>"
 
 /obj/item/disposable_teleporter/attack_self(mob/user as mob)
 	if(!uses)
@@ -63,8 +63,8 @@
 				targets.Add(T)
 
 		if(!targets.len)
-			user << "\The [src] was unable to locate a suitable teleport destination, as all the possibilities \
-			were nonexistant or hazardous. Try a different area."
+			to_chat(user, "\The [src] was unable to locate a suitable teleport destination, as all the possibilities \
+			were nonexistant or hazardous. Try a different area.")
 			return
 		var/turf/simulated/destination = null
 

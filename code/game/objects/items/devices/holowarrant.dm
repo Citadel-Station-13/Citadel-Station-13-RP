@@ -14,7 +14,7 @@
 /obj/item/holowarrant/examine(mob/user)
 	. = ..()
 	if(active)
-		to_chat(user, "It's a holographic warrant for '[active.fields["namewarrant"]]'.")
+		. += "It's a holographic warrant for '[active.fields["namewarrant"]]'."
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_content(user)
 	else

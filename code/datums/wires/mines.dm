@@ -23,15 +23,15 @@
 
 	switch(index)
 		if(WIRE_DETONATE)
-			C.visible_message("\icon[C] *BEEE-*", "\icon[C] *BEEE-*")
+			C.visible_message("[icon2html(thing = C, target = world)] *BEEE-*", "[icon2html(thing = C, target = world)] *BEEE-*")
 			C.explode()
 
 		if(WIRE_TIMED_DET)
-			C.visible_message("\icon[C] *BEEE-*", "\icon[C] *BEEE-*")
+			C.visible_message("[icon2html(thing = C, target = world)] *BEEE-*", "[icon2html(thing = C, target = world)] *BEEE-*")
 			C.explode()
 
 		if(WIRE_DISARM)
-			C.visible_message("\icon[C] *click!*", "\icon[C] *click!*")
+			C.visible_message("[icon2html(thing = C, target = world)] *click!*", "[icon2html(thing = C, target = world)] *click!*")
 			new C.mineitemtype(get_turf(C))
 			spawn(0)
 				qdel(C)
@@ -45,7 +45,7 @@
 			return
 
 		if(WIRE_BADDISARM)
-			C.visible_message("\icon[C] *BEEPBEEPBEEP*", "\icon[C] *BEEPBEEPBEEP*")
+			C.visible_message("[icon2html(thing = C, target = world)] *BEEPBEEPBEEP*", "[icon2html(thing = C, target = world)] *BEEPBEEPBEEP*")
 			spawn(20)
 				C.explode()
 	return
@@ -56,24 +56,24 @@
 		return
 	switch(index)
 		if(WIRE_DETONATE)
-			C.visible_message("\icon[C] *beep*", "\icon[C] *beep*")
+			C.visible_message("[icon2html(thing = C, target = world)] *beep*", "[icon2html(thing = C, target = world)] *beep*")
 
 		if(WIRE_TIMED_DET)
-			C.visible_message("\icon[C] *BEEPBEEPBEEP*", "\icon[C] *BEEPBEEPBEEP*")
+			C.visible_message("[icon2html(thing = C, target = world)] *BEEPBEEPBEEP*", "[icon2html(thing = C, target = world)] *BEEPBEEPBEEP*")
 			spawn(20)
 				C.explode()
 
 		if(WIRE_DISARM)
-			C.visible_message("\icon[C] *ping*", "\icon[C] *ping*")
+			C.visible_message("[icon2html(thing = C, target = world)] *ping*", "[icon2html(thing = C, target = world)] *ping*")
 
 		if(WIRE_DUMMY_1)
-			C.visible_message("\icon[C] *ping*", "\icon[C] *ping*")
+			C.visible_message("[icon2html(thing = C, target = world)] *ping*", "[icon2html(thing = C, target = world)] *ping*")
 
 		if(WIRE_DUMMY_2)
-			C.visible_message("\icon[C] *beep*", "\icon[C] *beep*")
+			C.visible_message("[icon2html(thing = C, target = world)] *beep*", "[icon2html(thing = C, target = world)] *beep*")
 
 		if(WIRE_BADDISARM)
-			C.visible_message("\icon[C] *ping*", "\icon[C] *ping*")
+			C.visible_message("[icon2html(thing = C, target = world)] *ping*", "[icon2html(thing = C, target = world)] *ping*")
 	return
 
 /datum/wires/mines/CanUse(var/mob/living/L)

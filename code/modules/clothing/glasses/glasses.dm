@@ -122,6 +122,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	item_flags = AIRTIGHT
 	body_parts_covered = EYES
+	clothing_flags = SCAN_REAGENTS
 
 /obj/item/clothing/glasses/science/New()
 	..()
@@ -478,7 +479,7 @@ BLIND     // can't see anything
 			enables_planes = null
 			to_chat(usr, "You switch \the [src] to flash protection mode.")
 		update_icon()
-		user << activation_sound
+		SEND_SOUND(user, activation_sound)
 		user.recalculate_vis()
 		user.update_inv_glasses()
 		user.update_action_buttons()
