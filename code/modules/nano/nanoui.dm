@@ -57,7 +57,7 @@ nanoui is used to open and update nano browser uis
 	var/list/datum/nanoui/children = list()
 	var/datum/topic_state/state = null
 
-	var/static/datum/asset/simple/nanoui/nano_asset = get_asset_datum(/datum/asset/simple/nanoui)
+	var/static/datum/asset/simple/namespaced/nanoui/nano_asset
 
  /**
   * Create a new nanoui instance.
@@ -74,6 +74,8 @@ nanoui is used to open and update nano browser uis
   * @return /nanoui new nanoui object
   */
 /datum/nanoui/New(mob/nuser, nsrc_object, nui_key, ntemplate_filename, ntitle = 0, nwidth = 0, nheight = 0, var/atom/nref = null, var/datum/nanoui/master_ui = null, var/datum/topic_state/state = default_state)
+	if(!istype(nano_asset))
+		nano_asset = get_asset_datum(/datum/asset/simple/namespaced/nanoui)
 	user = nuser
 	src_object = nsrc_object
 	ui_key = nui_key
