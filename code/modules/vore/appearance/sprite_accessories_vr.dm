@@ -1279,6 +1279,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/tail/triple_kitsune
+	name = "Triple Kitsune Tails"
+	desc = ""
+	icon_state = "triple-kitsunetails"
+	extra_overlay = "triple-kitsunetails-tips"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/tail/redpanda
 	name = "red panda"
 	desc = ""
