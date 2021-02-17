@@ -72,7 +72,7 @@
 
 	var/datum/ship_engine/gas_thruster/controller
 	var/thrust_limit = 1		//Value between 1 and 0 to limit the resulting thrust
-	var/volume_per_burn = 15	//20 litres(with bin)
+	var/volume_per_burn = 10	//20 litres(with bin)
 	var/charge_per_burn = 36000	//10Wh for default 2 capacitor, chews through that battery power! Makes a trade off of fuel efficient vs energy efficient
 	var/boot_time = 35
 	var/next_on
@@ -220,7 +220,7 @@
 	idle_power_usage = 150
 
 	thrust_limit = 1		//Value between 1 and 0 to limit the resulting thrust
-	volume_per_burn = 50
+	volume_per_burn = 20
 	charge_per_burn = 1000
 	boot_time = 10
 
