@@ -1,6 +1,0 @@
-author: "lolman360"
-delete-after: True
-changes: 
-  - soundadd: "tgui console sounds"
-  - code_imp: "tgui + tguichat"
-  - refactor: "examining"
