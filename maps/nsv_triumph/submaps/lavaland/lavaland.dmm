@@ -207,6 +207,8 @@
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
 /obj/structure/sign/warning{
+	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
+	name = "\improper MEMETIC HAZARD";
 	pixel_x = 32
 	},
 /obj/machinery/light/small{
@@ -1795,6 +1797,17 @@
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/greendouble,
 /turf/simulated/floor/carpet/purcarpet,
+/area/lavaland/base/common)
+"Ni" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/sign/warning{
+	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
+	name = "\improper MEMETIC HAZARD";
+	pixel_x = -32
+	},
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/base/common)
 "Nw" = (
 /obj/structure/table/marble,
@@ -10493,7 +10506,7 @@ Hr
 Hr
 Xq
 Hr
-qC
+Ni
 Hr
 Hr
 qC
