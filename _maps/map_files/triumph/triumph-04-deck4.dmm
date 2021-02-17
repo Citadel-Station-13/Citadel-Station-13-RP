@@ -1572,7 +1572,7 @@
 	dir = 9
 	},
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "bfs" = (
 /obj/structure/bookcase/legal/combo,
@@ -7581,7 +7581,7 @@
 	dir = 6
 	},
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "flL" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11913,7 +11913,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "inp" = (
 /obj/machinery/power/breakerbox/activated{
@@ -12002,6 +12002,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "ipk" = (
@@ -12036,7 +12037,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "iqx" = (
 /obj/effect/floor_decal/borderfloor{
@@ -18164,7 +18165,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "mJI" = (
 /obj/structure/table/reinforced,
@@ -20719,7 +20720,7 @@
 "oxJ" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "oxK" = (
 /obj/effect/floor_decal/borderfloor,
@@ -24139,7 +24140,7 @@
 	dir = 10
 	},
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "qDt" = (
 /obj/machinery/door/firedoor,
@@ -24961,7 +24962,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/cockpit)
 "reN" = (
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "rff" = (
 /obj/structure/cable/green{
@@ -25390,7 +25391,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "rrA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -29571,7 +29572,7 @@
 	dir = 5
 	},
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "uoi" = (
 /obj/structure/cable/green{
@@ -30584,7 +30585,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "uXX" = (
 /obj/structure/toilet{
@@ -32496,6 +32497,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "wbW" = (
@@ -33295,7 +33297,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/water/pool,
+/turf/simulated/floor/outdoors/water/indoors,
 /area/triumph/surfacebase/sauna)
 "wHh" = (
 /obj/structure/table/woodentable,
