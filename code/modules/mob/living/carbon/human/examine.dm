@@ -488,7 +488,7 @@
 /mob/living/carbon/human/proc/examine_weight()
 	if(!show_pudge()) //Some clothing or equipment can hide this.
 		return null
-	var/message
+	var/message = FALSE
 	var/weight_examine = round(weight)
 	var/t_He 	= "It" //capitalised for use at the start of each line.
 	var/t_he	= "it"
@@ -555,7 +555,7 @@
 /mob/living/carbon/human/proc/examine_nutrition()
 	if(!show_pudge()) //Some clothing or equipment can hide this.
 		return null
-	var/message
+	var/message = FALSE
 	var/nutrition_examine = round(nutrition)
 	var/t_He 	= "It" //capitalised for use at the start of each line.
 	var/t_His 	= "Its"
@@ -634,12 +634,15 @@
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.50)
 		message = "<font color='blue'>They are small enough that you could easily pick them up!</font>"
 		return message
+	return FALSE
 
 /mob/living/carbon/human/proc/examine_step_size(mob/living/H)
 	var/message
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.75)
 		message = "<font color='red'>They are small enough that you could easily trample them!</font>"
 		return message
+	else
+		return FALSE
 
 /mob/living/carbon/human/proc/examine_nif(mob/living/carbon/human/H)
 	if(nif && nif.examine_msg) //If you have one set, anyway.
