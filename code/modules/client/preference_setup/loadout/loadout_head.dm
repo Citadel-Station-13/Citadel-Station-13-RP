@@ -454,3 +454,24 @@
 	display_name = "Engineering - Operations Cap"
 	path = /obj/item/clothing/head/operations/engineering
 	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+
+// happy valentine's day
+/datum/gear/head/woodcirclet
+	display_name = "Wooden Circlet"
+	path = /obj/item/clothing/head/woodcirclet
+
+/datum/gear/head/rose_crown
+	display_name = "Flower Crown (Rose)"
+	path = /obj/item/clothing/head/rose_crown
+
+/datum/gear/head/sunflower_crown
+	display_name = "Flower Crown (Sunflower)"
+	path = /obj/item/clothing/head/sunflower_crown
+
+/datum/gear/head/lavender_crown
+	display_name = "Flower Crown (Lavender)"
+	path = /obj/item/clothing/head/lavender_crown
+
+/datum/gear/head/poppy_crown
+	display_name = "Flower Crown (Poppy)"
+	path = /obj/item/clothing/head/poppy_crown

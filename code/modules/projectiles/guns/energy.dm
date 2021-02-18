@@ -6,7 +6,7 @@
 	fire_sound_text = "laser blast"
 
 	accuracy = 100
-	dispersion = -100
+	dispersion = list(0)
 
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 240 //How much energy is needed to fire.
