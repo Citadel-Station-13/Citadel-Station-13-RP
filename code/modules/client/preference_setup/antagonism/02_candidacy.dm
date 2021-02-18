@@ -59,7 +59,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 		pref.be_special ^= (1<<num)
 		return TOPIC_REFRESH
 	if(href_list["event_role_help"])
-		to_chat(user, "<span class='boldnotice'>Toggles candidacy/preferences for partaking in certain kinds of events. Note that this doesn't mean you necessarily will or will not be involved in a certain way,
+		to_chat(user, "<span class='boldnotice'>Toggles candidacy/preferences for partaking in certain kinds of events. Note that this doesn't mean you necessarily will or will not be involved in a certain way, \
 		but this may help administrators decide on candidates when necessary.</span>")
 		return
 	if(href_list["event_role_help_flag"])

@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(event_role_list, list(
 
 GLOBAL_LIST_INIT(event_role_descs, list(
 	"[EVENT_PREF_BE_ANTAGONIST_CHAOTIC]" = "<span class='notice'><b>Chaotic Antagonists:</b> Volunteer to partake in more chaotic and high-action/violent antagonism, like murder, hostage taking, destruction, high-risk sabotage, heists, etc.</span>",
-	"[EVENT_PREF_BE_ANTAGONIST_MILD]" = "<span class='notice'><b>Mild Antagonists:</b> Volunteer to partake in more mild-mannered antagonism, like theft, infiltration, espionage, causing general ruckuses, etc. This doesn't mean you will never be
+	"[EVENT_PREF_BE_ANTAGONIST_MILD]" = "<span class='notice'><b>Mild Antagonists:</b> Volunteer to partake in more mild-mannered antagonism, like theft, infiltration, espionage, causing general ruckuses, etc. This doesn't mean you will never be \
 	involved in violence, but these roles are far lower octane than full-on chaotic.</span>",
 	"[EVENT_PREF_BE_HOSTAGE]" = "<span class='notice'><b>Hostage:</b> Volunteer to be hostage by some more dangerous threats.</span>",
 	"[EVENT_PREF_BE_KILLED]" = "<span class='notice'><b>Killed in Action:</b> Volunteer to be the target of assassins, killers, etc. This may or may not result in you being revivable.</span>",
