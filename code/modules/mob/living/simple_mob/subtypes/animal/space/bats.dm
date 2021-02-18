@@ -50,3 +50,8 @@
 
 /mob/living/simple_mob/animal/space/bats/cult/cultify()
 	return
+
+//Lavaland Bats
+/mob/living/simple_mob/animal/space/bats/surt
+	name = "volcanic bat swarm"
+	desc = "A swarm of blood sucking bats that have adapted to exist on this volatile planet. They are extremely hostile."

@@ -226,7 +226,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "fw" = (
-/mob/living/simple_mob/construct/shade,
+/mob/living/simple_mob/construct/shade/surt,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/explored)
 "gb" = (
@@ -377,7 +377,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "ix" = (
-/mob/living/simple_mob/animal/space/bats/roguemines,
+/mob/living/simple_mob/animal/space/bats/surt,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/unexplored)
 "iz" = (
@@ -434,6 +434,14 @@
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
+"jK" = (
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/machinery/airlock_sensor/airlock_exterior{
+	dir = 4;
+	pixel_x = -25
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/base)
 "jY" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light/small{
@@ -1074,7 +1082,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
 "yg" = (
-/mob/living/simple_mob/humanoid/cultist/hunter,
+/mob/living/simple_mob/humanoid/cultist/hunter/surt,
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/explored)
 "yq" = (
@@ -1412,6 +1420,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/cobweb2,
+/obj/machinery/airlock_sensor/airlock_interior{
+	pixel_y = 25
+	},
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "EP" = (
@@ -9937,7 +9949,7 @@ Hr
 Hr
 Hr
 Hr
-Hr
+jK
 nw
 Ma
 hS

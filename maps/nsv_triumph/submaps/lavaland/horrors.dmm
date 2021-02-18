@@ -28,6 +28,10 @@
 /obj/structure/table/bench/sifwooden/padded,
 /turf/simulated/floor/bmarble,
 /area/lavaland/horrors)
+"q" = (
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
+/turf/simulated/floor/wmarble,
+/area/lavaland/horrors)
 "u" = (
 /turf/template_noop,
 /area/template_noop)
@@ -199,7 +203,7 @@ u
 u
 k
 O
-I
+q
 o
 I
 o

@@ -6,7 +6,7 @@
 /turf/simulated/floor/greengrid,
 /area/lavaland/bosses)
 "e" = (
-/mob/living/simple_mob/mechanical/cyber_horror/grey,
+/mob/living/simple_mob/mechanical/cyber_horror/grey/surt,
 /turf/simulated/floor/greengrid,
 /area/lavaland/bosses)
 "h" = (
@@ -46,7 +46,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/template_noop)
 "v" = (
-/mob/living/simple_mob/mechanical/cyber_horror,
+/mob/living/simple_mob/mechanical/cyber_horror/surt,
 /turf/simulated/floor/greengrid,
 /area/lavaland/bosses)
 "z" = (
@@ -117,7 +117,7 @@
 /turf/simulated/wall/solidrock,
 /area/template_noop)
 "V" = (
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
 /turf/simulated/floor/greengrid,
 /area/lavaland/bosses)
 

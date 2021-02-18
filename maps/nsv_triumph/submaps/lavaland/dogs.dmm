@@ -14,7 +14,7 @@
 /turf/simulated/floor/outdoors/lava,
 /area/lavaland/bosses)
 "B" = (
-/mob/living/simple_mob/vore/aggressive/corrupthound,
+/mob/living/simple_mob/vore/aggressive/corrupthound/surt,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "D" = (

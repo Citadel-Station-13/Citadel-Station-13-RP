@@ -47,7 +47,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/idleruins)
 "u" = (
-/mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror,
+/mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/surt,
 /turf/simulated/floor/tiled,
 /area/lavaland/idleruins)
 "v" = (
