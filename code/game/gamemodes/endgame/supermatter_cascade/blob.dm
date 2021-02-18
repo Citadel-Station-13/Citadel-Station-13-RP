@@ -23,7 +23,7 @@
 	STOP_PROCESSING(SSturfs, src)
 	return ..()
 
-/turf/unsimulated/wall/supermatter/process()
+/turf/unsimulated/wall/supermatter/process(delta_time)
 	// Only check infrequently.
 	if(next_check>world.time) return
 

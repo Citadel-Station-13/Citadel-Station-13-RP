@@ -197,7 +197,7 @@ var/list/ai_verbs_default = list(
 		if(i != common_radio.channels.len)
 			radio_text += ", "
 
-	src << radio_text
+	to_chat(src, radio_text)
 
 	// Vorestation Edit: Meta Info for AI's. Mostly used for Holograms
 	if (client)
@@ -317,7 +317,7 @@ var/list/ai_verbs_default = list(
 	. = ..()
 	powered_ai = null
 
-/obj/machinery/ai_powersupply/process()
+/obj/machinery/ai_powersupply/process(delta_time)
 	if(!powered_ai || powered_ai.stat == DEAD)
 		qdel(src)
 		return

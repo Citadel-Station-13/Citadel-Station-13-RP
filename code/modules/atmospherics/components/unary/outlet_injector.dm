@@ -52,7 +52,7 @@
 	if(old_stat != stat)
 		update_icon()
 
-/obj/machinery/atmospherics/unary/outlet_injector/process()
+/obj/machinery/atmospherics/unary/outlet_injector/process(delta_time)
 	..()
 
 	last_power_draw = 0

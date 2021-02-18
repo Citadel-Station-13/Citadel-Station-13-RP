@@ -37,11 +37,10 @@
 	..()
 
 /obj/machinery/particle_smasher/examine(mob/user)
-	..()
-	if(user in view(1))
-		to_chat(user, "<span class='notice'>\The [src] contains:</span>")
-		for(var/obj/item/I in contents)
-			to_chat(user, "<span class='notice'>\the [I]</span>")
+	. = ..()
+	. += "<span class='notice'>\The [src] contains:</span>"
+	for(var/obj/item/I in contents)
+		. += "<span class='notice'>\the [I]</span>"
 
 /obj/machinery/particle_smasher/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.type == /obj/item/analyzer)
@@ -139,7 +138,7 @@
 			TryCraft()
 	return 0
 
-/obj/machinery/particle_smasher/process()
+/obj/machinery/particle_smasher/process(delta_time)
 	if(!src.anchored)	// Rapidly loses focus.
 		if(energy)
 			SSradiation.radiate(src, round(((src.energy-150)/50)*5,1))

@@ -30,7 +30,7 @@ var/list/gyrotrons = list()
 	gyrotrons -= src
 	return ..()
 
-/obj/machinery/power/emitter/gyrotron/process()
+/obj/machinery/power/emitter/gyrotron/process(delta_time)
 	active_power_usage = mega_energy * 50000
 	. = ..()
 

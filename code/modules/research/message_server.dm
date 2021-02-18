@@ -88,7 +88,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	newKey += pick("1", "2", "3", "4", "5", "6", "7", "8", "9", "0")
 	return newKey
 
-/obj/machinery/message_server/process()
+/obj/machinery/message_server/process(delta_time)
 	//if(decryptkey == "password")
 	//	decryptkey = generateKey()
 	if(active && (stat & (BROKEN|NOPOWER)))
@@ -125,18 +125,18 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 				if(2)
 					if(!Console.silent)
 						playsound(Console.loc, 'sound/machines/twobeep.ogg', 50, 1)
-						Console.audible_message(text("\icon[Console] *The Requests Console beeps: 'PRIORITY Alert in [sender]'"),,5)
+						Console.audible_message(text("[icon2html(thing = Console, target = world)] *The Requests Console beeps: 'PRIORITY Alert in [sender]'"),,5)
 					Console.message_log += "<B><FONT color='red'>High Priority message from <A href='?src=\ref[Console];write=[sender]'>[sender]</A></FONT></B><BR>[authmsg]"
 				else
 					if(!Console.silent)
 						playsound(Console.loc, 'sound/machines/twobeep.ogg', 50, 1)
-						Console.audible_message(text("\icon[Console] *The Requests Console beeps: 'Message from [sender]'"),,4)
+						Console.audible_message(text("[icon2html(thing = Console, target = world)] *The Requests Console beeps: 'Message from [sender]'"),,4)
 					Console.message_log += "<B>Message from <A href='?src=\ref[Console];write=[sender]'>[sender]</A></B><BR>[authmsg]"
 			Console.set_light(2)
 
 
 /obj/machinery/message_server/attack_hand(user as mob)
-//	user << "<font color='blue'>There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few CentCom delays.</font>"
+//	to_chat(user, "<font color='blue'>There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few CentCom delays.</font>")
 	to_chat(user, "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]")
 	active = !active
 	update_icon()

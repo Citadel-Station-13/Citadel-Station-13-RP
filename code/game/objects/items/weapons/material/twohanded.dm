@@ -62,7 +62,7 @@
 	force_unwielded = round(force_wielded*unwielded_force_divisor)
 	force = force_unwielded
 	throwforce = round(force*thrown_force_divisor)
-	//world << "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throwforce [throwforce] when made from default material [material.name]"
+	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throwforce [throwforce] when made from default material [material.name]")
 
 /obj/item/material/twohanded/New()
 	..()
@@ -271,7 +271,7 @@
 			G.dust()
 			return
 		else
-			G.stun_effect_act(10 , 50,def_zone = BP_TORSO, src)
+			G.stun_effect_act(10 , 50, BP_TORSO, src)
 			G.take_organ_damage(10)
 			G.Paralyse(20)
 			playsound(src.loc, "sparks", 50, 1)

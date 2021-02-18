@@ -25,7 +25,7 @@
 		if(output)
 			break
 
-/obj/machinery/mineral/unloading_machine/process()
+/obj/machinery/mineral/unloading_machine/process(delta_time)
 	if(output && input)
 		if(locate(/obj/structure/ore_box, input.loc))
 			var/obj/structure/ore_box/BOX = locate(/obj/structure/ore_box, input.loc)

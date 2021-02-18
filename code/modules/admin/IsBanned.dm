@@ -118,5 +118,3 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 		key_cache[key] = 0
 		return ..()	//default pager ban stuff
 #endif
-#undef OVERRIDE_BAN_SYSTEM
-

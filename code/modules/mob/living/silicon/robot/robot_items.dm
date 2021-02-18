@@ -365,7 +365,7 @@
 /obj/item/borg/combat/shield/attack_self(var/mob/living/user)
 	set_shield_level()
 
-/obj/item/borg/combat/shield/process()
+/obj/item/borg/combat/shield/process(delta_time)
 	if(active)
 		if(flash_count && (last_flash + shield_refresh < world.time))
 			flash_count = 0
@@ -429,11 +429,10 @@
 	max_walls = 10
 	max_doors = 5
 
-/obj/item/inflatable_dispenser/examine(var/mob/user)
-	if(!..(user))
-		return
-	to_chat(user, "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored.")
-	to_chat(user, "It is set to deploy [mode ? "doors" : "walls"]")
+/obj/item/inflatable_dispenser/examine(mob/user)
+	. = ..()
+	. += "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored."
+	. += "It is set to deploy [mode ? "doors" : "walls"]"
 
 /obj/item/inflatable_dispenser/attack_self()
 	mode = !mode

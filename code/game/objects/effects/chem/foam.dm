@@ -42,7 +42,7 @@
 		for(var/obj/O in T)
 			reagents.touch_obj(O)
 
-/obj/effect/effect/foam/process()
+/obj/effect/effect/foam/process(delta_time)
 	if(--amount < 0)
 		return
 

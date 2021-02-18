@@ -139,7 +139,7 @@
 	else
 		src.open()
 
-/obj/machinery/atmospherics/valve/process()
+/obj/machinery/atmospherics/valve/process(delta_time)
 	..()
 	. = PROCESS_KILL
 
@@ -327,4 +327,4 @@
 
 /obj/machinery/atmospherics/valve/examine(mob/user)
 	..()
-	to_chat(user, "It is [open ? "open" : "closed"].")
+	. += "It is [open ? "open" : "closed"]."

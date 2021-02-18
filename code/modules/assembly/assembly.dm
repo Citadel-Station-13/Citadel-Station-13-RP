@@ -113,18 +113,18 @@
 	return
 
 
-/obj/item/assembly/process()
+/obj/item/assembly/process(delta_time)
 	STOP_PROCESSING(SSobj, src)
 	return
 
 
 /obj/item/assembly/examine(mob/user)
-	..(user)
+	. = ..()
 	if((in_range(src, user) || loc == user))
 		if(secured)
-			to_chat(user, "\The [src] is ready!")
+			. += "\The [src] is ready!"
 		else
-			to_chat(user, "\The [src] can be attached!")
+			. += "\The [src] can be attached!"
 	return
 
 

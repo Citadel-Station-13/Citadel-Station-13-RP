@@ -55,7 +55,7 @@ var/global/photo_count = 0
 /obj/item/photo/examine(mob/user)
 	if(in_range(user, src))
 		show(user)
-		user << desc
+		return ..()
 	else
 		to_chat(user, "<span class='notice'>It is too far away.</span>")
 

@@ -18,8 +18,8 @@ fundamental differences
 	var/datum/looping_sound/mixer/mixer_loop
 
 /obj/machinery/appliance/mixer/examine(var/mob/user)
-	..()
-	user << span("notice", "It is currently set to make a [selected_option]")
+	. = ..()
+	. += "<span class = 'notice'>It is currently set to make a [selected_option].</span>"
 
 /obj/machinery/appliance/mixer/New()
 	. = ..()
@@ -73,7 +73,7 @@ fundamental differences
 	if (stat)
 		return 1
 	else
-		user << span("warning", "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish.")
+		to_chat(user, span("warning", "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish."))
 
 //Container is not removable
 /obj/machinery/appliance/mixer/removal_menu(var/mob/user)
@@ -149,7 +149,7 @@ fundamental differences
 			mixer_loop.stop(src)
 
 
-/obj/machinery/appliance/mixer/process()
+/obj/machinery/appliance/mixer/process(delta_time)
 	if (!stat)
 		for (var/i in cooking_objs)
 			do_cooking_tick(i)

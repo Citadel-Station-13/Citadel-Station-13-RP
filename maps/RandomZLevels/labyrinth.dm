@@ -185,7 +185,7 @@
 		do_after_cooldown()
 		return
 
-/obj/effect/landmark/mobcorpse/tunnelclown
+/obj/effect/landmark/corpse/tunnelclown
 	name = "dead tunnel clown"
 	corpseuniform = /obj/item/clothing/under/rank/clown
 	corpseshoes = /obj/item/clothing/shoes/clown_shoes
@@ -194,7 +194,7 @@
 	corpsemask = /obj/item/clothing/mask/gas/clown_hat
 	corpsepocket1 = /obj/item/bikehorn
 
-/obj/effect/landmark/mobcorpse/tunnelclown/sentinel
+/obj/effect/landmark/corpse/tunnelclown/sentinel
 	name = "dead clown sentinel"
 	corpsesuit = /obj/item/clothing/suit/cultrobes
 	corpsehelmet = /obj/item/clothing/head/culthood

@@ -119,7 +119,7 @@
 
 	START_PROCESSING(SSobj, src)
 
-/obj/effect/fusion_em_field/process()
+/obj/effect/fusion_em_field/process(delta_time)
 	//make sure the field generator is still intact
 	if(!owned_core || QDELETED(owned_core))
 		qdel(src)

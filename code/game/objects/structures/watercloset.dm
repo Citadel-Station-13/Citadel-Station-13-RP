@@ -299,7 +299,7 @@
 
 	reagents.splash(O, 10)
 
-/obj/machinery/shower/process()
+/obj/machinery/shower/process(delta_time)
 	if(!on) return
 	for(var/thing in loc)
 		var/atom/movable/AM = thing

@@ -85,12 +85,12 @@
 */
 
 /obj/item/assembly_holder/examine(mob/user)
-	..(user)
+	. = ..()
 	if ((in_range(src, user) || src.loc == user))
 		if (src.secured)
-			to_chat(user, "\The [src] is ready!")
+			. += "\The [src] is ready!"
 		else
-			to_chat(user, "\The [src] can be attached!")
+			. += "\The [src] can be attached!"
 	return
 
 
@@ -197,7 +197,7 @@
 /obj/item/assembly_holder/process_activation(var/obj/D, var/normal = 1, var/special = 1)
 	if(!D)	return 0
 	if(!secured)
-		visible_message("\icon[src] *beep* *beep*", "*beep* *beep*")
+		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*", "*beep* *beep*")
 	if((normal) && (a_right) && (a_left))
 		if(a_right != D)
 			a_right.pulsed(0)

@@ -65,7 +65,7 @@
 		throwforce = 150
 
 	//spawn(1)
-	//	world << "[src] has force [force] and throwforce [throwforce] when made from default material [material.name]"
+	//	to_chat(world, "[src] has force [force] and throwforce [throwforce] when made from default material [material.name]")
 
 /obj/item/material/proc/set_material(var/new_material)
 	material = get_material_by_name(new_material)
@@ -160,7 +160,7 @@
 
 /*
 Commenting this out pending rebalancing of radiation based on small objects.
-/obj/item/material/process()
+/obj/item/material/process(delta_time)
 	if(!material.radioactivity)
 		return
 	for(var/mob/living/L in range(1,src))

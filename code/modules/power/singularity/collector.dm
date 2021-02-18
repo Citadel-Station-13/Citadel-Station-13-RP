@@ -25,7 +25,7 @@ var/global/list/rad_collectors = list()
 	rad_collectors -= src
 	return ..()
 
-/obj/machinery/power/rad_collector/process()
+/obj/machinery/power/rad_collector/process(delta_time)
 	//so that we don't zero out the meter if the SM is processed first.
 	last_power = last_power_new
 	last_power_new = 0
@@ -103,9 +103,8 @@ var/global/list/rad_collectors = list()
 	return ..()
 
 /obj/machinery/power/rad_collector/examine(mob/user)
-	if (..(user, 3))
-		to_chat(user, "The meter indicates that \the [src] is collecting [last_power] W.")
-		return 1
+	. = ..()
+	. += "The meter indicates that \the [src] is collecting [last_power] W."
 
 /obj/machinery/power/rad_collector/ex_act(severity)
 	switch(severity)
@@ -157,4 +156,3 @@ var/global/list/rad_collectors = list()
 		flick("ca_deactive", src)
 	update_icons()
 	return
-

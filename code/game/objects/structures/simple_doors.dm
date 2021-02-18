@@ -194,7 +194,7 @@
 			CheckHardness()
 	return
 
-/obj/structure/simple_door/process()
+/obj/structure/simple_door/process(delta_time)
 	if(!material.radioactivity)
 		return
 	SSradiation.radiate(src, round(material.radioactivity/3))

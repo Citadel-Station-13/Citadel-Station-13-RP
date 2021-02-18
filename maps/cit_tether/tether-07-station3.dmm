@@ -2339,7 +2339,7 @@
 	dir = 4
 	},
 /obj/structure/table/steel,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/crowbar,
 /obj/item/retail_scanner/security,
 /obj/machinery/newscaster/security_unit{
@@ -15488,7 +15488,7 @@
 /area/medical/chemistry)
 "zV" = (
 /obj/structure/table/reinforced,
-/obj/item/screwdriver,
+/obj/item/tool/screwdriver,
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
@@ -19159,7 +19159,7 @@
 /area/medical/sleeper)
 "FR" = (
 /obj/structure/table/glass,
-/obj/item/screwdriver,
+/obj/item/tool/screwdriver,
 /obj/item/storage/pill_bottle/tramadol,
 /obj/item/storage/pill_bottle/antitox,
 /obj/item/reagent_containers/syringe/antiviral,

@@ -29,6 +29,7 @@
 	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 	var/recent_struggle = 0
 
+	var/clothing_flags = 0
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
 	return
@@ -622,7 +623,7 @@
 			to_chat(user,"<span class='warning'>You can't fit anyone else into \the [src]!</span>")
 		else
 			var/obj/item/holder/micro/holder = I
-			if(holder.held_mob && holder.held_mob in holder)
+			if(holder.held_mob && (holder.held_mob in holder))
 				to_chat(holder.held_mob,"<span class='warning'>[user] stuffs you into \the [src]!</span>")
 				holder.held_mob.forceMove(src)
 				to_chat(user,"<span class='notice'>You stuff \the [holder.held_mob] into \the [src]!</span>")
@@ -674,7 +675,7 @@
 			recent_squish = 0
 		for(var/mob/living/M in contents)
 			var/emote = pick(inside_emotes)
-			M << emote //VOREStation edit end
+			to_chat(M, emote) //VOREStation edit end
 	return
 
 /obj/item/clothing/shoes/update_clothing_icon()
@@ -864,7 +865,7 @@
 		under_icon = INV_W_UNIFORM_DEF_ICON
 
 	// The _s is because the icon update procs append it.
-	if((under_icon == rolled_down_icon && "[worn_state]_s" in icon_states(under_icon)) || ("[worn_state]_d_s" in icon_states(under_icon)))
+	if((under_icon == rolled_down_icon && ("[worn_state]_s" in icon_states(under_icon))) || ("[worn_state]_d_s" in icon_states(under_icon)))
 		if(rolled_down != 1)
 			rolled_down = 0
 	else
@@ -889,7 +890,7 @@
 		under_icon = INV_W_UNIFORM_DEF_ICON
 
 	// The _s is because the icon update procs append it.
-	if((under_icon == rolled_down_sleeves_icon && "[worn_state]_s" in icon_states(under_icon)) || ("[worn_state]_r_s" in icon_states(under_icon)))
+	if((under_icon == rolled_down_sleeves_icon && ("[worn_state]_s" in icon_states(under_icon))) || ("[worn_state]_r_s" in icon_states(under_icon)))
 		if(rolled_sleeves != 1)
 			rolled_sleeves = 0
 	else
@@ -903,16 +904,16 @@
 
 
 /obj/item/clothing/under/examine(mob/user)
-	..(user)
+	. = ..()
 	switch(src.sensor_mode)
 		if(0)
-			to_chat(user, "Its sensors appear to be disabled.")
+			. += "Its sensors appear to be disabled."
 		if(1)
-			to_chat(user, "Its binary life sensors appear to be enabled.")
+			. += "Its binary life sensors appear to be enabled."
 		if(2)
-			to_chat(user, "Its vital tracker appears to be enabled.")
+			. += "Its vital tracker appears to be enabled."
 		if(3)
-			to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
+			. += "Its vital tracker and tracking beacon appear to be enabled."
 
 /obj/item/clothing/under/proc/set_sensors(mob/usr as mob)
 	var/mob/M = usr

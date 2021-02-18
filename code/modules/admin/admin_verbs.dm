@@ -108,7 +108,8 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/sendFax,
 	/client/proc/despawn_player,
 	/client/proc/addbunkerbypass,
-	/client/proc/revokebunkerbypass
+	/client/proc/revokebunkerbypass,
+	/client/proc/toggle_AI_interact
 	)
 
 var/list/admin_verbs_ban = list(
@@ -120,7 +121,7 @@ var/list/admin_verbs_sounds = list(
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
 	/client/proc/play_web_sound,
-	/client/proc/play_web_sound_manual,
+	/client/proc/manual_play_web_sound,
 	/client/proc/stop_sounds
 	)
 
@@ -279,7 +280,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
 	/client/proc/play_web_sound,
-	/client/proc/play_web_sound_manual,
+	/client/proc/manual_play_web_sound,
 	/client/proc/stop_sounds,
 	/client/proc/object_talk,
 	/datum/admins/proc/cmd_admin_dress,
@@ -868,7 +869,7 @@ var/list/admin_verbs_event_manager = list(
 	if(!S) return
 
 	var/datum/nano_module/law_manager/L = new(S)
-	L.ui_interact(usr, state = admin_state)
+	L.nano_ui_interact(usr, state = admin_state)
 	log_and_message_admins("has opened [S]'s law manager.")
 	feedback_add_details("admin_verb","MSL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1074,7 +1075,7 @@ var/list/admin_verbs_event_manager = list(
 
 	for (var/mob/T as mob in mob_list)
 		to_chat(T, "<br><center><span class='notice'><b><font size=4>Man up.<br> Deal with it.</font></b><br>Move along.</span></center><br>")
-		T << 'sound/voice/ManUp1.ogg'
+		SEND_SOUND(T, sound('sound/voice/ManUp1.ogg'))
 
 	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
 	message_admins("<font color='blue'>[key_name_admin(usr)] told everyone to man up and deal with it.</font>", 1)
@@ -1089,3 +1090,15 @@ var/list/admin_verbs_event_manager = list(
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")
 	message_admins("<font color='blue'>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</font>", 1)
+
+/client/proc/toggle_AI_interact()
+	set name = "Toggle Admin AI Interact"
+	set category = "Admin"
+	set desc = "Allows you to interact with most machines as an AI would as a ghost"
+
+	AI_Interact = !AI_Interact
+	if(mob && IsAdminGhost(mob))
+		mob.silicon_privileges = AI_Interact ? ALL : NONE
+
+	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
+	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")

@@ -98,9 +98,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 				qdel(src)
 			return FALSE
 		else
-			//Free commlink and soulcatcher for return customers
-			new /datum/nifsoft/commlink(src)
-			new /datum/nifsoft/soulcatcher(src)
+			addtimer(CALLBACK(src, .proc/install_free_return_software), 0)
 
 	//Free civilian AR included
 	new /datum/nifsoft/ar_civ(src)
@@ -112,6 +110,12 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 	//Draw me yo.
 	update_icon()
+
+// Creates software after the mob is hopefully loaded in
+/obj/item/nif/proc/install_free_return_software()
+	//Free commlink and soulcatcher for return customers
+	new /datum/nifsoft/commlink(src)
+	new /datum/nifsoft/soulcatcher(src)
 
 //Destructor cleans up references
 /obj/item/nif/Destroy()
@@ -366,12 +370,12 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 /obj/item/nif/proc/notify(var/message,var/alert = 0)
 	if(!human || stat == NIF_TEMPFAIL) return
 
-	to_chat(human,"<b>\[\icon[src.big_icon]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
+	to_chat(human,"<b>\[[icon2html(thing = src.big_icon, target = human)]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
 	if(prob(1)) human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
 	if(alert)
-		human << bad_sound
+		SEND_SOUND(human, bad_sound)
 	else
-		human << good_sound
+		SEND_SOUND(human, good_sound)
 
 //Called to spend nutrition, returns 1 if it was able to
 /obj/item/nif/proc/use_charge(var/use_charge)
@@ -448,7 +452,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			notify("The software \"[soft]\" is not supported in organic life and will be uninstalled.",TRUE)
 			uninstall(soft)
 			return FALSE
-		human << click_sound
+		SEND_SOUND(human, click_sound)
 
 	if(!use_charge(soft.a_drain))
 		notify("Not enough power to activate \"[soft]\" NIFsoft!",TRUE)
@@ -464,8 +468,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 //Deactivate a nifsoft
 /obj/item/nif/proc/deactivate(var/datum/nifsoft/soft)
 	if(human)
-		if(prob(5)) human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
-		human << click_sound
+		if(prob(5))
+			human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
+		SEND_SOUND(human, click_sound)
 
 	if(soft.tick_flags == NIF_ACTIVETICK)
 		nifsofts_life -= soft

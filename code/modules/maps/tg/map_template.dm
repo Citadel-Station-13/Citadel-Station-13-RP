@@ -20,9 +20,10 @@ var/list/global/map_templates = list()
 	var/loaded = 0				// Times loaded this round
 	var/annihilate = FALSE		// If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
 
-	var/cost = null				// The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until \
-	it runs out. The cost of a submap should roughly corrispond with several factors such as size, loot, difficulty, desired scarcity, etc. \
-	Set to -1 to force the submap to always be made.
+	/// The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until
+	/// it runs out. The cost of a submap should roughly corrispond with several factors such as size, loot, difficulty, desired scarcity, etc.
+	/// Set to -1 to force the submap to always be made.
+	var/cost = null
 	var/allow_duplicates = FALSE	// If false, only one map template will be spawned by the game. Doesn't affect admins spawning then manually.
 	var/discard_prob = 0		// If non-zero, there is a chance that the map seeding algorithm will skip this template when selecting potential templates to use.
 
@@ -233,7 +234,7 @@ var/list/global/map_templates = list()
 			continue
 
 		// Did we already place down a very similar submap?
-		if(chosen_template.template_group && chosen_template.template_group in template_groups_used)
+		if(chosen_template.template_group && (chosen_template.template_group in template_groups_used))
 			priority_submaps -= chosen_template
 			potential_submaps -= chosen_template
 			continue
@@ -254,7 +255,7 @@ var/list/global/map_templates = list()
 				var/area/new_area = get_area(check)
 				if(!(istype(new_area, whitelist)))
 					valid = FALSE	// Probably overlapping something important.
-				//	world << "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z])."
+				//	to_chat(world, "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z]).")
 					break
 				CHECK_TICK
 

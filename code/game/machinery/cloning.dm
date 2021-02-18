@@ -175,7 +175,7 @@
 	return 1
 
 //Grow clones to maturity then kick them out.  FREELOADERS
-/obj/machinery/clonepod/process()
+/obj/machinery/clonepod/process(delta_time)
 	if(stat & NOPOWER) //Autoeject if power is lost
 		if(occupant)
 			locked = 0
@@ -524,8 +524,8 @@
 		buf.dna.SE=new_SE
 		buf.dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
 
-/obj/item/disk/data/New()
-	..()
+/obj/item/disk/data/Initialize(mapload)
+	. = ..()
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 
@@ -534,9 +534,8 @@
 	to_chat(user, "You flip the write-protect tab to [read_only ? "protected" : "unprotected"].")
 
 /obj/item/disk/data/examine(mob/user)
-	..(user)
-	to_chat(user, text("The write-protect tab is set to [read_only ? "protected" : "unprotected"]."))
-	return
+	. = ..()
+	. += "<span class = 'notice'>The write-protect tab is set to [read_only ? "protected" : "unprotected"].</span>"
 
 /*
  *	Diskette Box

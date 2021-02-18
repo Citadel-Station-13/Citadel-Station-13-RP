@@ -29,7 +29,7 @@
 			var/obj/item/sample/print/P = new /obj/item/sample/print(user.loc)
 			P.attack(M, user)
 			to_chat(user,"<span class='notice'>Done printing.</span>")
-	//		user << "<span class='notice'>[M]'s Fingerprints: [md5(M.dna.uni_identity)]</span>"
+	//		to_chat(user, "<span class='notice'>[M]'s Fingerprints: [md5(M.dna.uni_identity)]</span>")
 
 	if(reveal_blood && M.blood_DNA && M.blood_DNA.len)
 		to_chat(user,"<span class='notice'>Blood found on [M]. Analysing...</span>")

@@ -65,7 +65,7 @@
 /obj/machinery/mining/drill/get_cell()
 	return cell
 
-/obj/machinery/mining/drill/process()
+/obj/machinery/mining/drill/process(delta_time)
 
 	if(need_player_check)
 		return

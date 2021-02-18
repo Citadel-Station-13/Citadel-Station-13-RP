@@ -176,11 +176,12 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		src.currentrun = active_hotspots.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/obj/fire/fire = currentrun[currentrun.len]
 		currentrun.len--
 		if(fire) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
-			fire.process()
+			fire.process(dt)
 		if(MC_TICK_CHECK)
 			return
 

@@ -112,7 +112,7 @@ var/list/organ_cache = list()
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
 
-/obj/item/organ/process()
+/obj/item/organ/process(delta_time)
 
 	if(loc != owner)
 		owner = null
@@ -158,9 +158,9 @@ var/list/organ_cache = list()
 		handle_germ_effects()
 
 /obj/item/organ/examine(mob/user)
-	..(user)
+	. = ..()
 	if(status & ORGAN_DEAD)
-		to_chat(user, "<span class='notice'>The decay has set in.</span>")
+		. += "<span class='notice'>The decay has set in.</span>"
 
 //A little wonky: internal organs stop calling this (they return early in process) when dead, but external ones cause further damage when dead
 /obj/item/organ/proc/handle_germ_effects()

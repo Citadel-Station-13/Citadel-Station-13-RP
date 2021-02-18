@@ -61,7 +61,7 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 			var/area/area = get_area(src)
 			for(var/mob/living/silicon/ai/AI in living_mob_list)
 				if(!AI.client)	continue
-				AI << "<span class='info'>Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>.</span>"
+				to_chat(AI, "<span class='info'>Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>.</span>")
 		else
 			to_chat(user, "<span class='notice'>A request for AI presence was already sent recently.</span>")
 
@@ -150,7 +150,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		icon_state = "holopad0"
 	return 1
 
-/obj/machinery/hologram/holopad/process()
+/obj/machinery/hologram/holopad/process(delta_time)
 	for (var/mob/living/silicon/ai/master in masters)
 		var/active_ai = (master && !master.stat && master.client && master.eyeobj)//If there is an AI attached, it's not incapacitated, it has a client, and the client eye is centered on the projector.
 		if((stat & NOPOWER) || !active_ai)

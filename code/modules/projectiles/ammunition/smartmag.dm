@@ -34,7 +34,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/item/ammo_magazine/smart/process()
+/obj/item/ammo_magazine/smart/process(delta_time)
 	if(!holding_gun)	// Yes, this is awful, sorry. Don't know a better way to figure out if we've been moved into or out of a gun.
 		if(istype(src.loc, /obj/item/gun))
 			holding_gun = src.loc
@@ -50,12 +50,12 @@
 			produce()
 
 /obj/item/ammo_magazine/smart/examine(mob/user)
-	..()
+	. = ..()
 
 	if(attached_cell)
-		to_chat(user, "<span class='notice'>\The [src] is loaded with a [attached_cell.name]. It is [round(attached_cell.percent())]% charged.</span>")
+		. += "<span class='notice'>\The [src] is loaded with a [attached_cell.name]. It is [round(attached_cell.percent())]% charged.</span>"
 	else
-		to_chat(user, "<span class='warning'>\The [src] does not appear to have a power source installed.</span>")
+		. += "<span class='warning'>\The [src] does not appear to have a power source installed.</span>"
 
 /obj/item/ammo_magazine/smart/update_icon()
 	if(attached_cell)

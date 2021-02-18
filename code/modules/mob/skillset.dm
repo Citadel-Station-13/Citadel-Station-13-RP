@@ -9,5 +9,3 @@
 		return 0
 	else
 		return fail_chance * 2 ** (factor*(SKILL_BASIC - points))
-
-	return FALSE // We don't actually have a skills system, so never fail.

@@ -54,7 +54,7 @@
 	simulation_finish(1)
 	return ..()
 
-/obj/machinery/bomb_tester/process()
+/obj/machinery/bomb_tester/process(delta_time)
 	..()
 	if(test_canister && !Adjacent(test_canister))
 		test_canister = null
