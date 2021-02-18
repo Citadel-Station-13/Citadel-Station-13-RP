@@ -13,7 +13,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/swordcave)
 "e" = (
-/turf/simulated/floor/water,
+/turf/simulated/floor/outdoors/water,
 /area/submap/cave/swordcave)
 "f" = (
 /turf/simulated/floor/outdoors/water/deep,
