@@ -103,10 +103,10 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "cW" = (
-/obj/structure/ore_box,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/base/common)
 "db" = (
@@ -538,10 +538,10 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/explored)
 "lr" = (
-/obj/structure/ore_box,
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/base/common)
 "lt" = (
@@ -1337,7 +1337,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "DA" = (
-/obj/structure/ore_box,
+/obj/machinery/mining/drill,
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/base/common)
 "DK" = (
