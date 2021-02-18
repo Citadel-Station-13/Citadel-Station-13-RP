@@ -26,10 +26,8 @@
 		for (var/y_offset = -field_radius; y_offset <= field_radius; y_offset++)
 			T = locate(gen_turf.x + x_offset, gen_turf.y + y_offset, gen_turf.z)
 			if (is_type_in_list(T,blockedturfs))
-				//check neighbors of T
-				if(noshield)
-					return
-				else
+				if(!T.noshield)
+					//check neighbors of T
 					for(var/i in orange(1, T))
 						if(istype(i, /turf/simulated) && !is_type_in_list(i,blockedturfs))
 							out += T

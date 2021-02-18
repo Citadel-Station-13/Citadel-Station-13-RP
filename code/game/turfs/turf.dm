@@ -32,6 +32,7 @@
 	var/block_tele = FALSE			 // If true, most forms of teleporting to or from this turf tile will fail.
 	var/can_build_into_floor = FALSE // Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
 	var/list/dangerous_objects		 // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
+	var/noshield = 0				// For if you explicitly want a turf to not be affected by shield generators
 
 /turf/Initialize(mapload)
 	. = ..()
