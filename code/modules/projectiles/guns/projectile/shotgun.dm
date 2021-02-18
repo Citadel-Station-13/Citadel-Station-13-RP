@@ -71,7 +71,7 @@
 	name = "warden's shotgun"
 	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
 	icon_state = "shotgun_w"
-	item_state = "wshotgun"
+	item_state = "sawnshotgun"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	w_class = ITEMSIZE_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
