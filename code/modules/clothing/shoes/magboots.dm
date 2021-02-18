@@ -77,11 +77,11 @@
 	wearer = null
 
 /obj/item/clothing/shoes/magboots/examine(mob/user)
-	..(user)
+	. = ..()
 	var/state = "disabled"
 	if(item_flags & NOSLIP)
 		state = "enabled"
-	to_chat(user, "Its mag-pulse traction system appears to be [state].")
+	. += "Its mag-pulse traction system appears to be [state]."
 
 /obj/item/clothing/shoes/magboots/vox
 

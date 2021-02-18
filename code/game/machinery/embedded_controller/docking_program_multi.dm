@@ -178,7 +178,7 @@
 		if ("finish_undocking")
 			docking_enabled = 0
 
-/datum/computer/file/embedded_program/airlock/multi_docking/process()
+/datum/computer/file/embedded_program/airlock/multi_docking/process(delta_time)
 	..()
 
 	if (docking_enabled && !response_sent)

@@ -38,7 +38,7 @@
 	else
 		icon_state = "[state]"
 
-/obj/machinery/bluespace_beacon/process()
+/obj/machinery/bluespace_beacon/process(delta_time)
 	if(!Beacon)
 		var/turf/T = src.loc
 		Beacon = new /obj/item/radio/beacon

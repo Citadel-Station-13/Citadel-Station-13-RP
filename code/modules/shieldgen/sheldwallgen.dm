@@ -78,7 +78,7 @@
 	power = 1	// IVE GOT THE POWER!
 	return 1
 
-/obj/machinery/shieldwallgen/process()
+/obj/machinery/shieldwallgen/process(delta_time)
 	power()
 	if(power)
 		storedpower -= 2500 //the generator post itself uses some power
@@ -261,7 +261,7 @@
 	return
 
 
-/obj/machinery/shieldwall/process()
+/obj/machinery/shieldwall/process(delta_time)
 	if(needs_power)
 		if(isnull(gen_primary)||isnull(gen_secondary))
 			qdel(src)

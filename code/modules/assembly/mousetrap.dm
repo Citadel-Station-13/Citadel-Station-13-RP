@@ -3,14 +3,14 @@
 	desc = "A handy little spring-loaded trap for catching pesty rodents."
 	icon_state = "mousetrap"
 	origin_tech = list(TECH_COMBAT = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 100, "waste" = 10)
+	matter = list(DEFAULT_WALL_MATERIAL = 100)
 	var/armed = 0
 
 
 /obj/item/assembly/mousetrap/examine(mob/user)
-	..(user)
+	. = ..()
 	if(armed)
-		to_chat(user, "It looks like it's armed.")
+		. += "It looks like it's armed."
 
 /obj/item/assembly/mousetrap/update_icon()
 	if(armed)

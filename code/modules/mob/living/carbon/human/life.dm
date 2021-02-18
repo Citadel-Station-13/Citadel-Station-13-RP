@@ -164,8 +164,8 @@ var/last_message = 0
 
 	else //We are in an overpressure or standard atmosphere.
 		pressure_difference = pressure - species.safe_pressure
-	
-	
+
+
 	if(pressure_difference < 5) // If the difference is small, don't bother calculating the fraction.
 		pressure_difference = 0
 
@@ -596,7 +596,7 @@ var/last_message = 0
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
 		if (temp_adj < BODYTEMP_COOLING_MAX) temp_adj = BODYTEMP_COOLING_MAX
-		//world << "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]"
+		//to_chat(world, "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]")
 		bodytemperature += temp_adj
 
 	else if(breath.temperature >= species.heat_discomfort_level)
@@ -655,7 +655,8 @@ var/last_message = 0
 			var/obj/mecha/M = loc
 			loc_temp =  M.return_temperature()
 		else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			loc_temp = loc:air_contents.temperature
+			var/obj/machinery/atmospherics/unary/cryo_cell/CC = loc
+			loc_temp = CC.air_contents.temperature
 		else
 			loc_temp = environment.temperature
 
@@ -806,18 +807,18 @@ var/last_message = 0
 		if(nutrition >= 2) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
 			nutrition -= 2
 		var/recovery_amt = max((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
-		//world << "Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]"
+		//to_chat(world, "Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 	else if(species.cold_level_1 <= bodytemperature && bodytemperature <= species.heat_level_1)
 		var/recovery_amt = body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR
-		//world << "Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]"
+		//to_chat(world, "Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 	else if(bodytemperature > species.heat_level_1) //360.15 is 310.15 + 50, the temperature where you start to feel effects.
 		//We totally need a sweat system cause it totally makes sense...~
 		var/recovery_amt = min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)	//We're dealing with negative numbers
-		//world << "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]"
+		//to_chat(world, "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 
@@ -1412,7 +1413,7 @@ var/last_message = 0
 			see_in_dark = species.darksight
 			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
 
-		var/tmp/glasses_processed = 0
+		var/glasses_processed = 0
 		var/obj/item/rig/rig = back
 		if(istype(rig) && rig.visor)
 			if(!rig.helmet || (head && rig.helmet == head))
@@ -1714,7 +1715,7 @@ var/last_message = 0
 
 		if(heartbeat >= rate)
 			heartbeat = 0
-			src << sound('sound/effects/singlebeat.ogg',0,0,0,50)
+			SEND_SOUND(src, sound('sound/effects/singlebeat.ogg',0,0,0,50))
 		else
 			heartbeat++
 

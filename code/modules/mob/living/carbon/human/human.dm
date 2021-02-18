@@ -36,7 +36,7 @@
 		name = real_name
 		if(mind)
 			mind.name = real_name
-	
+
 
 	nutrition = rand(200,400)
 
@@ -244,6 +244,7 @@
 // this handles mulebots and vehicles
 // and now mobs on fire
 /mob/living/carbon/human/Crossed(var/atom/movable/AM)
+	. = ..()
 	if(istype(AM, /mob/living/bot/mulebot))
 		var/mob/living/bot/mulebot/MB = AM
 		MB.runOver(src)
@@ -432,13 +433,13 @@
 					for (var/datum/data/record/R in data_core.security)
 						if (R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
-								usr << "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]"
+								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Minor Crimes:</b> [R.fields["mi_crim"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["mi_crim_d"]]")
 								to_chat(usr, "<b>Major Crimes:</b> [R.fields["ma_crim"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["ma_crim_d"]]")
 								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-								usr << "<a href='?src=\ref[src];secrecordComment=`'>\[View Comment Log\]</a>"
+								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=`'>\[View Comment Log\]</a>")
 								read = 1
 
 			if(!read)
@@ -462,11 +463,11 @@
 								read = 1
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
-									usr << text("[]", R.fields[text("com_[]", counter)])
+									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
-								usr << "<a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>"
+								to_chat(usr, "<a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
@@ -548,14 +549,14 @@
 					for (var/datum/data/record/R in data_core.medical)
 						if (R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"medical"))
-								usr << "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]"
+								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
 								to_chat(usr, "<b>DNA:</b> [R.fields["b_dna"]]")
 								to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
 								to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
 								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-								usr << "<a href='?src=\ref[src];medrecordComment=`'>\[View Comment Log\]</a>"
+								to_chat(usr, "<a href='?src=\ref[src];medrecordComment=`'>\[View Comment Log\]</a>")
 								read = 1
 
 			if(!read)
@@ -579,11 +580,11 @@
 								read = 1
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
-									usr << text("[]", R.fields[text("com_[]", counter)])
+									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
-								usr << "<a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
+								to_chat(usr, "<a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
@@ -1189,7 +1190,7 @@
 	if(LAZYLEN(species.descriptors))
 		descriptors = list()
 		for(var/desctype in species.descriptors)
-			var/datum/mob_descriptor.descriptor = species.descriptors[desctype]
+			var/datum/mob_descriptor/descriptor = species.descriptors[desctype]
 			descriptors[desctype] = descriptor.default_value
 
 	spawn(0)
@@ -1287,10 +1288,10 @@
 			if(4)
 				src.take_organ_damage(0,5,emp=1)
 				Confuse(5)
-		flash_eyes(affect_human = 1)
-		src << "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>"
-		src << "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>"
-		src << "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>"
+		flash_eyes()
+		to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
+		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
+		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>")
 		..()
 
 

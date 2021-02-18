@@ -215,7 +215,8 @@
 	src.loc = T
 
 // See inventory_sizes.dm for the defines.
-/obj/item/examine(mob/user, var/distance = -1)
+/obj/item/examine(mob/user)
+	. = ..()
 	var/size
 	switch(src.w_class)
 		if(ITEMSIZE_TINY)
@@ -228,7 +229,7 @@
 			size = "bulky"
 		if(ITEMSIZE_HUGE)
 			size = "huge"
-	return ..(user, distance, "", "It is a [size] item.")
+	. += "It is a [size] item."
 
 /obj/item/attack_hand(mob/living/user as mob)
 	if (!user) return
@@ -296,9 +297,9 @@
 
 /obj/item/proc/get_volume_by_throwforce_and_or_w_class() // This is used for figuring out how loud our sounds are for throwing.
 	if(throwforce && w_class)
-		return CLAMP((throwforce + w_class) * 5, 30, 100)// Add the item's throwforce to its weight class and multiply by 5, then clamp the value between 30 and 100
+		return clamp((throwforce + w_class) * 5, 30, 100)// Add the item's throwforce to its weight class and multiply by 5, then clamp the value between 30 and 100
 	else if(w_class)
-		return CLAMP(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
+		return clamp(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
 	else
 		return 0
 
@@ -320,7 +321,6 @@
 
 // apparently called whenever an item is removed from a slot, container, or anything else.
 /obj/item/proc/dropped(mob/user as mob)
-	..()
 	if(zoom)
 		zoom() //binoculars, scope, etc
 	appearance_flags &= ~NO_CLIENT_COLOR
@@ -692,7 +692,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	if((user.stat && !zoom) || !(istype(user,/mob/living/carbon/human)))
 		to_chat(user, "You are unable to focus through the [devicename]")
 		cannotzoom = 1
-	else if(!zoom && GLOB.global_hud.darkMask[1] in user.client.screen)
+	else if(!zoom && (GLOB.global_hud.darkMask[1] in user.client.screen))
 		to_chat(user, "Your visor gets in the way of looking through the [devicename]")
 		cannotzoom = 1
 	else if(!zoom && user.get_active_hand() != src)

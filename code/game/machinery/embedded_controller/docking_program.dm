@@ -150,7 +150,7 @@
 			if (receive_tag == tag_target)
 				reset()
 
-/datum/computer/file/embedded_program/docking/process()
+/datum/computer/file/embedded_program/docking/process(delta_time)
 	switch(dock_state)
 		if (STATE_DOCKING)	// Waiting for our docking port to be ready for docking
 			if (ready_for_docking())
@@ -260,7 +260,7 @@
 	received_confirm = 0
 
 /datum/computer/file/embedded_program/docking/proc/force_undock()
-	//world << "[id_tag]: forcing undock"
+	//to_chat(world, "[id_tag]: forcing undock")
 	if (tag_target)
 		send_docking_command(tag_target, "dock_error")
 	reset()

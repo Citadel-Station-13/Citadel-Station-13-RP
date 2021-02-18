@@ -51,7 +51,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/magic/process()
+/obj/item/gun/magic/process(delta_time)
 	charge_tick++
 	if(charge_tick < recharge_rate || charges >= max_charges)
 		return 0

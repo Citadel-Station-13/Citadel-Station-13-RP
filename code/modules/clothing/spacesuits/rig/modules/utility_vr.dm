@@ -114,7 +114,7 @@
 		list("dexalin",  "dexalin",      0, 20)
 		)
 
-/obj/item/rig_module/rescue_pharm/process()
+/obj/item/rig_module/rescue_pharm/process(delta_time)
 	. = ..()
 	if(active)
 		var/did_work = 0

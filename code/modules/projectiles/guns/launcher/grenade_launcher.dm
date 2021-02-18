@@ -35,11 +35,11 @@
 	update_icon()
 
 /obj/item/gun/launcher/grenade/examine(mob/user)
-	if(..(user, 2))
-		var/grenade_count = grenades.len + (chambered? 1 : 0)
-		to_chat(user, "Has [grenade_count] grenade\s remaining.")
-		if(chambered)
-			to_chat(user, "\A [chambered] is chambered.")
+	. = ..()
+	var/grenade_count = grenades.len + (chambered? 1 : 0)
+	. += "Has [grenade_count] grenade\s remaining."
+	if(chambered)
+		. += "\A [chambered] is chambered."
 
 /obj/item/gun/launcher/grenade/proc/load(obj/item/grenade/G, mob/user)
 	if(G.loadable)
@@ -122,4 +122,4 @@
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 		chambered = null
 	else
-		user << "<span class='warning'>[src] is empty.</span>"
+		to_chat(user, "<span class='warning'>[src] is empty.</span>")

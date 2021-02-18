@@ -133,7 +133,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>\icon[src] [src] pings.</span>")
+			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings.</span>")
 
 	else if(istype(A, /obj/structure/boulder))
 		var/obj/structure/boulder/B = A
@@ -151,7 +151,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>\icon[src] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
+			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
 /obj/item/depth_scanner/attack_self(var/mob/living/user)
 	interact(user)
@@ -235,7 +235,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/beacon_locator/process()
+/obj/item/beacon_locator/process(delta_time)
 	if(target_radio)
 		setDir(get_dir(src,target_radio))
 		switch(get_dist(src,target_radio))
@@ -267,9 +267,9 @@
 						scan_ticks = 0
 						var/turf/T = get_turf(src)
 						if(target_radio)
-							T.visible_message("\icon[src] [src] [pick("chirps","chirrups","cheeps")] happily.")
+							T.visible_message("[icon2html(thing = src, target = world)] [src] [pick("chirps","chirrups","cheeps")] happily.")
 						else
-							T.visible_message("\icon[src] [src] [pick("chirps","chirrups","cheeps")] sadly.")
+							T.visible_message("[icon2html(thing = src, target = world)] [src] [pick("chirps","chirrups","cheeps")] sadly.")
 		else
 			icon_state = "pinoff"
 
@@ -346,4 +346,3 @@
 	set name = "Scan for Anomalies"
 	set desc = "Scan for artifacts and anomalies within your vicinity."
 	anomaly_scanner.interact(user)
-

@@ -123,8 +123,8 @@
 		if(!computer || !computer.hard_drive || !computer.hard_drive.store_file(logfile))
 			if(!computer)
 				// This program shouldn't even be runnable without computer.
+				. = TRUE
 				CRASH("Var computer is null!")
-				return 1
 			if(!computer.hard_drive)
 				computer.visible_message("\The [computer] shows an \"I/O Error - Hard drive connection error\" warning.")
 			else	// In 99.9% cases this will mean our HDD is full
@@ -183,7 +183,7 @@
 /datum/nano_module/program/computer_chatclient
 	name = "NTNet Relay Chat Client"
 
-/datum/nano_module/program/computer_chatclient/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/program/computer_chatclient/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
 	if(!ntnet_global || !ntnet_global.chat_channels)
 		return
 

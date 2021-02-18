@@ -72,7 +72,7 @@
 	START_PROCESSING(SSobj, src)
 	return
 
-/obj/effect/rend/process()
+/obj/effect/rend/process(delta_time)
 	if(!spawn_fast)
 		if(locate(/mob) in loc)
 			return
@@ -128,7 +128,7 @@
 	current_size = STAGE_FOUR
 	allowed_size = STAGE_FOUR
 
-/obj/singularity/wizard/process()
+/obj/singularity/wizard/process(delta_time)
 	move()
 	eat()
 	return
@@ -192,8 +192,8 @@
 		to_chat(user, "<span class='warning'>This artifact can only affect three undead at a time!</span>")
 		return
 
-	M.set_species(/datum/species/skeleton, icon_update=0)
-	M.revive(full_heal = 1, admin_revive = 1)
+	M.set_species(/datum/species/skeleton, regen_icons=0)
+	M.revive()//full_heal = 1, admin_revive = 1)
 	spooky_scaries |= M
 	to_chat(M, "<span class='userdanger'>You have been revived by </span><B>[user.real_name]!</B>")
 	to_chat(M, "<span class='userdanger'>[user] is your master now, assist [user] them even if it costs you your new life!</span>")

@@ -77,9 +77,9 @@
 		)
 
 /obj/item/gun/magnetic/railgun/automatic/examine(var/mob/user)
-	. = ..(user,1)
-	if(.)
-		to_chat(user, "<span class='notice'>Someone has scratched <i>Ultima Ratio Regum</i> onto the side of the barrel.</span>")
+	. = ..()
+	if(Adjacent(user))
+		. += "<span class='notice'>Someone has scratched <i>Ultima Ratio Regum</i> onto the side of the barrel.</span>"
 
 /obj/item/gun/magnetic/railgun/flechette
 	name = "flechette gun"

@@ -22,7 +22,7 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
-/obj/item/geiger/process()
+/obj/item/geiger/process(delta_time)
 	get_radiation()
 
 /obj/item/geiger/proc/get_radiation()
@@ -33,9 +33,9 @@
 	update_sound()
 
 /obj/item/geiger/examine(mob/user)
-	..(user)
+	. = ..()
 	get_radiation()
-	to_chat(user, "<span class='warning'>[scanning ? "Ambient" : "Stored"] radiation level: [radiation_count ? radiation_count : "0"]Bq.</span>")
+	. += "<span class='warning'>[scanning ? "Ambient" : "Stored"] radiation level: [radiation_count ? radiation_count : "0"]Bq.</span>"
 
 /obj/item/geiger/rad_act(amount)
 	if(!amount || !scanning)
@@ -66,7 +66,7 @@
 		STOP_PROCESSING(SSobj, src)
 	update_icon()
 	update_sound()
-	to_chat(user, "<span class='notice'>\icon[src] You switch [scanning ? "on" : "off"] \the [src].</span>")
+	to_chat(user, "<span class='notice'>[icon2html(thing = src, target = user)] You switch [scanning ? "on" : "off"] \the [src].</span>")
 
 /obj/item/geiger/update_icon()
 	if(!scanning)

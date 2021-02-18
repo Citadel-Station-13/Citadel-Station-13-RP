@@ -146,12 +146,12 @@
 	return ..()
 
 /obj/item/organ/external/examine()
-	..()
+	. = ..()
 	if(in_range(usr, src) || istype(usr, /mob/observer/dead))
 		for(var/obj/item/I in contents)
 			if(istype(I, /obj/item/organ))
 				continue
-			to_chat(usr, "<span class='danger'>There is \a [I] sticking out of it.</span>")
+			. += "<span class='danger'>There is \a [I] sticking out of it.</span>"
 	return
 
 /obj/item/organ/external/attackby(obj/item/W as obj, mob/living/user as mob)
@@ -576,7 +576,7 @@ This function completely restores a damaged organ to perfect condition.
 		return 1
 	return 0
 
-/obj/item/organ/external/process()
+/obj/item/organ/external/process(delta_time)
 	if(owner)
 		//Dismemberment
 		//if(parent && parent.is_stump()) //should never happen
@@ -826,7 +826,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		tbrute = 3
 	return "[tbrute][tburn]"
 
-/obj/item/organ/external/take_damage()
+/obj/item/organ/external/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), permutation = 0)
 	..()
 
 	if(!cannot_amputate)

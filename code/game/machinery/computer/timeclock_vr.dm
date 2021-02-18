@@ -66,9 +66,9 @@
 	if(..())
 		return
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/timeclock/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/timeclock/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -236,8 +236,8 @@
 /obj/item/card/id
 	var/last_job_switch
 
-/obj/item/card/id/New()
-	.=..()
+/obj/item/card/id/Initialize(mapload)
+	. = ..()
 	last_job_switch = world.time
 
 //

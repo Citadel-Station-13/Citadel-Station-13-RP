@@ -285,7 +285,7 @@
 	else
 		stat &= ~NOPOWER
 
-/obj/machinery/computer3/process()
+/obj/machinery/computer3/process(delta_time)
 	auto_use_power()
 	power_change()
 	update_icon()

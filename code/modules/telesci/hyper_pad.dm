@@ -112,7 +112,7 @@
 	teleporting = 1
 	addtimer(CALLBACK(src, .proc/doteleport, user), teleport_speed)
 	var/speed = teleport_speed/8
-	for(var/var/obj/machinery/hyperpad/P in linked)
+	for(var/obj/machinery/hyperpad/P in linked)
 		addtimer(CALLBACK(src, .proc/animate_discharge, P), speed)
 		speed += teleport_speed/8
 

@@ -134,7 +134,7 @@
 		to_chat(user, "<span class='warning'> The potion only works on slimes!</span>")
 		return ..()
 //	if(M.is_adult) //Can't tame adults
-//		user << "<span class='warning'> Only baby slimes can be tamed!</span>"
+//		to_chat(user, "<span class='warning'> Only baby slimes can be tamed!</span>")
 //		return..()
 	if(M.stat)
 		to_chat(user, "<span class='warning'> The slime is dead!</span>")
@@ -379,7 +379,7 @@
 		qdel(src)
 
 
-/obj/item/reagent_containers/food/snacks/egg/slime/process()
+/obj/item/reagent_containers/food/snacks/egg/slime/process(delta_time)
 	var/turf/location = get_turf(src)
 	var/datum/gas_mixture/environment = location.return_air()
 	if (environment.phoron > MOLES_PHORON_VISIBLE)//phoron exposure causes the egg to hatch

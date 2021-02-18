@@ -51,7 +51,7 @@
 		to_chat(user, "<span class='warning'>\The [src] only accepts used swabs.</span>")
 		return
 
-/obj/machinery/dnaforensics/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null)
+/obj/machinery/dnaforensics/nano_ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null)
 	if(stat & (NOPOWER)) return
 	if(user.stat || user.restrained()) return
 	var/list/data = list()
@@ -100,7 +100,7 @@
 
 	return 1
 
-/obj/machinery/dnaforensics/process()
+/obj/machinery/dnaforensics/process(delta_time)
 	if(scanning)
 		if(!bloodsamp || bloodsamp.loc != src)
 			bloodsamp = null
@@ -115,7 +115,7 @@
 	last_process_worldtime = world.time
 
 /obj/machinery/dnaforensics/proc/complete_scan()
-	src.visible_message("<span class='notice'>\icon[src] makes an insistent chime.</span>", 2)
+	src.visible_message("<span class='notice'>[icon2html(thing = src, target = world)] makes an insistent chime.</span>", 2)
 	update_icon()
 	if(bloodsamp)
 		var/obj/item/paper/P = new(src)
@@ -139,10 +139,10 @@
 	return
 
 /obj/machinery/dnaforensics/attack_ai(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/dnaforensics/attack_hand(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/dnaforensics/verb/toggle_lid()
 	set category = "Object"

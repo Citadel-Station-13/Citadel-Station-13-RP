@@ -28,7 +28,7 @@
 	changeling.chem_charges -= 30
 
 	var/mob/living/carbon/human/C = src
-	C << "<span class='notice'>Energy rushes through us.  [C.lying ? "We arise." : ""]</span>"
+	to_chat(C, "<span class='notice'>Energy rushes through us.  [C.lying ? "We arise." : ""]</span>")
 	C.stat = 0
 	C.SetParalysis(0)
 	C.SetStunned(0)
@@ -48,7 +48,7 @@
 	name = "Epinephrine"
 	id = "epinephrine"
 	description = "Reduces stun times, but causing toxicity due to high concentration."
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	metabolism = REM * 2
 	overdose = 5 //This is intentionally low, as we want the ling to take some tox damage, to discourage spamming the ability.

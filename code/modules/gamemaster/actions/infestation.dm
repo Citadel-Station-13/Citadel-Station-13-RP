@@ -4,8 +4,8 @@
 #define LOC_LIBRARY 3
 #define LOC_HYDRO 4
 #define LOC_VAULT 5
-#define LOC_CONSTR 6
 #define LOC_TECH 7
+#define LOC_CONSTR 9
 #define LOC_GARDEN 8
 
 #define VERM_MICE 0
@@ -110,6 +110,7 @@
 #undef LOC_VAULT
 #undef LOC_TECH
 #undef LOC_GARDEN
+#undef LOC_CONSTR
 
 #undef VERM_MICE
 #undef VERM_LIZARDS

@@ -12,7 +12,8 @@
 	var/datum/wires/mines/wires = null
 	register_as_dangerous_object = TRUE
 
-/obj/effect/mine/New()
+/obj/effect/mine/Initialize(mapload)
+	. = ..()
 	icon_state = "uglyminearmed"
 	wires = new(src)
 

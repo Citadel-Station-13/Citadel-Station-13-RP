@@ -80,7 +80,7 @@ var/list/global/tank_gauge_cache = list()
 	. = ..()
 
 /obj/item/tank/examine(mob/user)
-	. = ..(user, 0)
+	. = ..()
 	if(.)
 		var/celsius_temperature = air_contents.temperature - T0C
 		var/descriptive
@@ -99,12 +99,12 @@ var/list/global/tank_gauge_cache = list()
 				descriptive = "cold"
 			else
 				descriptive = "bitterly cold"
-		to_chat(user, "<span class='notice'>\The [src] feels [descriptive].</span>")
+		. += "<span class='notice'>\The [src] feels [descriptive].</span>"
 
 	if(src.proxyassembly.assembly || wired)
-		to_chat(user, "<span class='warning'>It seems to have [wired? "some wires ": ""][wired && src.proxyassembly.assembly? "and ":""][src.proxyassembly.assembly ? "some sort of assembly ":""]attached to it.</span>")
+		. += "<span class='warning'>It seems to have [wired? "some wires ": ""][wired && src.proxyassembly.assembly? "and ":""][src.proxyassembly.assembly ? "some sort of assembly ":""]attached to it.</span>"
 	if(src.valve_welded)
-		to_chat(user, "<span class='warning'>\The [src] emergency relief valve has been welded shut!</span>")
+		. += "<span class='warning'>\The [src] emergency relief valve has been welded shut!</span>"
 
 
 /obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)
@@ -210,14 +210,14 @@ var/list/global/tank_gauge_cache = list()
 	add_fingerprint(user)
 	if (!(src.air_contents))
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
 // There's GOT to be a better way to do this
 	if (src.proxyassembly.assembly)
 		src.proxyassembly.assembly.attack_self(user)
 
 
-/obj/item/tank/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/tank/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/mob/living/carbon/location = null
 
 	if(istype(loc, /obj/item/rig))		// check for tanks in rigs
@@ -248,7 +248,7 @@ var/list/global/tank_gauge_cache = list()
 		else if(src in location)		// or if tank is in the mobs possession
 			if(!location.internal)		// and they do not have any active internals
 				mask_check = 1
-		else if(istype(src.loc, /obj/item/rig) && src.loc in location)	// or the rig is in the mobs possession
+		else if(istype(src.loc, /obj/item/rig) && (src.loc in location))	// or the rig is in the mobs possession
 			if(!location.internal)		// and they do not have any active internals
 				mask_check = 1
 
@@ -350,7 +350,7 @@ var/list/global/tank_gauge_cache = list()
 
 	return remove_air(moles_needed)
 
-/obj/item/tank/process()
+/obj/item/tank/process(delta_time)
 	//Allow for reactions
 	air_contents.react() //cooking up air tanks - add phoron and oxygen, then heat above PHORON_MINIMUM_BURN_TEMPERATURE
 	if(gauge_icon)
@@ -465,7 +465,7 @@ var/list/global/tank_gauge_cache = list()
 				return
 			T.assume_air(air_contents)
 			playsound(get_turf(src), 'sound/weapons/Gunshot_shotgun.ogg', 20, 1)
-			visible_message("\icon[src] <span class='danger'>\The [src] flies apart!</span>", "<span class='warning'>You hear a bang!</span>")
+			visible_message("[icon2html(thing = src, target = world)] <span class='danger'>\The [src] flies apart!</span>", "<span class='warning'>You hear a bang!</span>")
 			T.hotspot_expose(air_contents.temperature, 70, 1)
 
 
@@ -510,7 +510,7 @@ var/list/global/tank_gauge_cache = list()
 
 			T.assume_air(leaked_gas)
 			if(!leaking)
-				visible_message("\icon[src] <span class='warning'>\The [src] relief valve flips open with a hiss!</span>", "You hear hissing.")
+				visible_message("[icon2html(thing = src, target = world)] <span class='warning'>\The [src] relief valve flips open with a hiss!</span>", "You hear hissing.")
 				playsound(src.loc, 'sound/effects/spray.ogg', 10, 1, -3)
 				leaking = 1
 				#ifdef FIREDBG
