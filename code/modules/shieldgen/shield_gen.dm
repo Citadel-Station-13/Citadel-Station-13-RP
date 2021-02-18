@@ -24,6 +24,7 @@
 	var/energy_conversion_rate = 0.0006	//how many renwicks per watt?  Higher numbers equals more effiency.
 	var/z_range = 0 // How far 'up and or down' to extend the shield to, in z-levels.  Only works on MultiZ supported z-levels.
 	use_power = USE_POWER_OFF	//doesn't use APC power
+	var/noshield
 
 /obj/machinery/shield_gen/advanced
 	name = "advanced bubble shield generator"
@@ -311,18 +312,21 @@
 		return
 
 	var/turf/T
-	for (var/x_offset = -field_radius; x_offset <= field_radius; x_offset++)
-		T = locate(gen_turf.x + x_offset, gen_turf.y - field_radius, gen_turf.z)
-		if (T) out += T
+	if(noshield)
+		return
+	else
+		for (var/x_offset = -field_radius; x_offset <= field_radius; x_offset++)
+			T = locate(gen_turf.x + x_offset, gen_turf.y - field_radius, gen_turf.z)
+			if (T) out += T
 
-		T = locate(gen_turf.x + x_offset, gen_turf.y + field_radius, gen_turf.z)
-		if (T) out += T
+			T = locate(gen_turf.x + x_offset, gen_turf.y + field_radius, gen_turf.z)
+			if (T) out += T
 
-	for (var/y_offset = -field_radius+1; y_offset < field_radius; y_offset++)
-		T = locate(gen_turf.x - field_radius, gen_turf.y + y_offset, gen_turf.z)
-		if (T) out += T
+		for (var/y_offset = -field_radius+1; y_offset < field_radius; y_offset++)
+			T = locate(gen_turf.x - field_radius, gen_turf.y + y_offset, gen_turf.z)
+			if (T) out += T
 
-		T = locate(gen_turf.x + field_radius, gen_turf.y + y_offset, gen_turf.z)
-		if (T) out += T
+			T = locate(gen_turf.x + field_radius, gen_turf.y + y_offset, gen_turf.z)
+			if (T) out += T
 
 	return out

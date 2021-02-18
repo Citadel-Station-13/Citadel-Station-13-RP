@@ -15153,23 +15153,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "Si" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 1;
-	id = "bar";
-	name = "Bar shutters";
-	pixel_x = 8;
-	pixel_y = -28
-	},
-/obj/machinery/light_switch{
-	dir = 1;
-	pixel_x = -2;
-	pixel_y = -28
-	},
-/obj/machinery/button/holosign{
-	id = "barsign1";
-	pixel_x = -10;
-	pixel_y = -28
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
