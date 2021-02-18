@@ -7,11 +7,11 @@
 #define Z_LEVEL_SURFACE_CAVES				1
 #define Z_LEVEL_SURFACE_MAIN				2
 #define Z_LEVEL_SURFACE_ROOF				3
-#define Z_LEVEL_CENTCOM						4
+//#define Z_LEVEL_CENTCOM						4
 
 /datum/map/penumbra
 	name = "Penumbra"
-	full_name = "NSB Adephagia"
+	full_name = "Penumbra Station"
 	path = "penumbra"
 
 	zlevel_datum_type = /datum/map_z_level/penumbra
@@ -23,14 +23,14 @@
 	holomap_smoosh = list(list(
 		Z_LEVEL_SURFACE_MAIN))
 
-	station_name  = "NSB Adephagia"
-	station_short = "Tether"
+	station_name  = "Penumbra Station"
+	station_short = "Penumbra"
 	dock_name     = "Virgo-3B Colony"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
 	company_name  = "NanoTrasen"
 	company_short = "NT"
-	starsys_name  = "Virgo-Erigone"
+	starsys_name  = "Nerada"
 
 	shuttle_docked_message = "The scheduled Orange Line tram to the %dock_name% has arrived. It will depart in approximately %ETD%."
 	shuttle_leaving_dock = "The Orange Line tram has left the station. Estimate %ETA% until the tram arrives at %dock_name%."

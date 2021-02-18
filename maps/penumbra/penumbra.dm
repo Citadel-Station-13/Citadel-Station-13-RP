@@ -7,7 +7,11 @@
 	//#include "penumbra_shuttle_defs.dm"
 	#include "penumbra_nerada8.dm"
 
-	#include "penumbra_station01.dmm"
+	#if !AWAY_MISSION_TEST //Don't include these for just testing away missions
+		#include "../../_maps/map_files/penumbra/penumbra_station01.dmm"
+		#include "../../_maps/map_files/penumbra/penumbra_station02.dmm"
+		#include "../../_maps/map_files/penumbra/penumbra_station03.dmm"
+	#endif
 
 	//#include "submaps/_penumbra_submaps.dm"
 
