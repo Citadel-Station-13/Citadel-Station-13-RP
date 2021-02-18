@@ -1009,17 +1009,17 @@
 /area/lavaland/base/common)
 "wO" = (
 /obj/structure/table/standard,
-/obj/item/storage/firstaid{
-	pixel_x = -2;
-	pixel_y = -2
-	},
-/obj/item/storage/firstaid{
-	pixel_x = 2;
-	pixel_y = 2
-	},
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 2;
+	pixel_y = 2
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
