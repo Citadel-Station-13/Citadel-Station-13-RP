@@ -38,7 +38,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 /datum/category_item/player_setup_item/antagonism/candidacy/content(var/mob/user)
 	. += "<b>Event Role Preferences</b> <a href='?src=[REF(src)];event_role_help=1'>\[?]</a><br>"
 	for(var/i in GLOB.event_role_list)
-		. += "<b>[i] <a href='?src=[REF(src)];event_role_help_flag=[GLOB.event_role_list[i]]'>\[?]</a>: <a href='?src=[REF(src)];event_role_toggle=[GLOB.event_role_list[i]]'><b>[pref.be_event_role & GLOB.event_role_list[i]? "Yes" : "No"]</b></a><br>"
+		. += "<b>[i]</b> <a href='?src=[REF(src)];event_role_help_flag=[GLOB.event_role_list[i]]'>\[?]</a>: <a href='?src=[REF(src)];event_role_toggle=[GLOB.event_role_list[i]]'><b>[pref.be_event_role & GLOB.event_role_list[i]? "Yes" : "No"]</b></a><br>"
 	. += "<br><br><b>Antagonist Preferences</b><br>"
 	if(jobban_isbanned(user, "Syndicate"))
 		. += "<b>You are banned from antagonist roles.</b>"
@@ -63,7 +63,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 		but this may help administrators decide on candidates when necessary.</span>")
 		return
 	if(href_list["event_role_help_flag"])
-		var/text = GLOB.event_role_descs[href_list["event_role_help_flag"]] || "<span class='warning'>ERROR: No help text defined."
+		var/text = GLOB.event_role_descs[href_list["event_role_help_flag"]] || "<span class='warning'>ERROR: No help text defined.</span>"
 		to_chat(user, text)
 		return
 	if(href_list["event_role_toggle"])
