@@ -33,12 +33,12 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 
 /datum/category_item/player_setup_item/antagonism/candidacy/sanitize_character()
 	pref.be_special	= sanitize_integer(pref.be_special, 0, 65535, initial(pref.be_special))
-	pref.be_event_role = sanitize_integer(pref.be_event_role, default = NONE)
+	pref.be_event_role = sanitize_integer(pref.be_event_role, NONE, ALL, default = NONE)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/content(var/mob/user)
 	. += "<b>Event Role Preferences</b> <a href='?src=[REF(src)];event_role_help=1'>\[?]</a><br>"
 	for(var/i in GLOB.event_role_list)
-		. += "<b>Be [i] <a href='?src=[REF(src)];event_role_help_flag=[GLOB.event_role_list[i]]'>\[?]</a>: <a href='?src=[REF(src)];event_role_toggle=[GLOB.event_role_list[i]]'><b>[pref.be_event_role & GLOB.event_role_list[i]? "Yes" : "No"]</b></a><br>"
+		. += "<b>[i] <a href='?src=[REF(src)];event_role_help_flag=[GLOB.event_role_list[i]]'>\[?]</a>: <a href='?src=[REF(src)];event_role_toggle=[GLOB.event_role_list[i]]'><b>[pref.be_event_role & GLOB.event_role_list[i]? "Yes" : "No"]</b></a><br>"
 	. += "<br><br><b>Antagonist Preferences</b><br>"
 	if(jobban_isbanned(user, "Syndicate"))
 		. += "<b>You are banned from antagonist roles.</b>"
