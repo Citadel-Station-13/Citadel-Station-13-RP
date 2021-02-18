@@ -180,7 +180,7 @@
  //Slightly more durable fodder
 /mob/living/simple_mob/mechanical/cyber_horror/vox
 	name = "Vox shambles"
-	desc = "Once a Vox now torn and changed, peices of a Durand has been grafted onto it."
+	desc = "Once a Vox now torn and changed, peices of a Durand have been grafted onto it."
 	icon_state = "vox_cyber_horror"
 	icon_dead = "vox_cyber_horror_dead"
 
@@ -405,7 +405,7 @@
 //Slightly more durable fodder
 /mob/living/simple_mob/mechanical/cyber_horror/vox/surt
 	name = "ragged shambler"
-	desc = "Once a Vox now torn and changed, peices of a Durand has been grafted onto it. This body seems fresher than the others - perhaps a recent convert."
+	desc = "Once a Vox now torn and changed, peices of a Durand have been grafted onto it. This body seems fresher than the others - perhaps a recent convert."
 
 	heat_resist = 1
 
