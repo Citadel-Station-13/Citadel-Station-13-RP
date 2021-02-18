@@ -434,14 +434,6 @@
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
-"jK" = (
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
-/obj/machinery/airlock_sensor/airlock_exterior{
-	dir = 4;
-	pixel_x = -25
-	},
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/base)
 "jY" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light/small{
@@ -718,6 +710,12 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
+/obj/machinery/airlock_sensor/airlock_exterior{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 25
+	},
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "oU" = (
@@ -9949,7 +9947,7 @@ Hr
 Hr
 Hr
 Hr
-jK
+Hr
 nw
 Ma
 hS

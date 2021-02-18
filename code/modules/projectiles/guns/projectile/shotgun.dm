@@ -71,7 +71,6 @@
 	name = "warden's shotgun"
 	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
 	icon_state = "shotgun_w"
-	item_state = "sawnshotgun"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	w_class = ITEMSIZE_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
@@ -105,10 +104,13 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	options["KS-40 CQC"] = "shotgun_w"
 	options["NT Limted Run CQ-6"] = "shotgun_w_corp"
 	options["WT Sabot Stinger"] = "shotgun_w_sting"
+	options["Donksoft Prank Kit"] = "shotgun_w_donk"
 	var/choice = input(M,"Choose your sprite!","Resprite Gun") in options
 	if(src && choice && !M.stat && in_range(M,src))
 		icon_state = options[choice]
+		item_state = options[choice]
 		to_chat(M, "Your gun is now sprited as [choice]. Lock and load.")
+		update_icon()
 		return 1
 
 /obj/item/gun/projectile/shotgun/doublebarrel
