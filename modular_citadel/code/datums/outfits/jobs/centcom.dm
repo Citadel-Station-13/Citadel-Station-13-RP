@@ -5,10 +5,9 @@
 	l_ear = /obj/item/radio/headset/centcom
 	shoes = /obj/item/clothing/shoes/laceup
 	id_type = /obj/item/card/id/centcom
-	belt = /obj/item/gun/energy/pulse_rifle/M1911
+	pda_type = /obj/item/pda/centcom
 	gloves = /obj/item/clothing/gloves/white
 	head = /obj/item/clothing/head/beret/centcom/officer
-	l_pocket = /obj/item/pda/centcom
 	r_pocket = /obj/item/pda/heads
 	id_pda_assignment = "CentCom Officer"
 
