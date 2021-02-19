@@ -1,0 +1,7 @@
+author: "lolman360"
+delete-after: True
+changes: 
+  - bugfix: "emotes are no longer in tguichat  unsorted tab"
+  - bugfix: "materials on examine are no longer caps always"
+  - bugfix: "crew monitor console map view"
+  - bugfix: "human examine spacing (hopefully)"
