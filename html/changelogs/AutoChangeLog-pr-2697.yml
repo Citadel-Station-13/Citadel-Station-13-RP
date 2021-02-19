@@ -1,0 +1,6 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - rscadd: "Added Bicarilaze, Kelotalaze, Tricoralaze, Inaprovalaze, Sterilaze and Cleansalaze."
+  - rscadd: "Added Neurolaze, a potent painkiller that doesnt slowdown the patient, but makes them Jitter"
+  - rscdel: "Removed old touch chems"
