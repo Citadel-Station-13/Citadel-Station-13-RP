@@ -587,7 +587,7 @@
 /area/lavaland/base/common
 	name = "Lava Land - Mining Base"
 	icon_state = "blue"
-	requires_power = 1
+	requires_power = 0
 /area/lavaland/explored
 	name = "Lava Land - Thoroughfare"
 	icon_state = "red"
