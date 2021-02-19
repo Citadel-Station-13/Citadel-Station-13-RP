@@ -651,10 +651,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"oO" = (
-/mob/living/simple_mob/humanoid/cultist/hunter/surt,
-/turf/simulated/mineral/triumph/lavaland,
-/area/lavaland/explored)
 "pi" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -18699,7 +18695,7 @@ RX
 RX
 MX
 MX
-oO
+MX
 MX
 MX
 MX
