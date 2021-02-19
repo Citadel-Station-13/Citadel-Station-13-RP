@@ -220,12 +220,12 @@
 
 /obj/item/projectile/beam/stun/weak
 	name = "weak stun beam"
-	icon_state = "stun"
+	icon_state = "lightning"
 	agony = 25
 
 /obj/item/projectile/beam/stun/med
 	name = "stun beam"
-	icon_state = "stun"
+	icon_state = "lightning"
 	agony = 30
 
 /obj/item/projectile/beam/stun/disabler
