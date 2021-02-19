@@ -204,7 +204,7 @@
 
 /obj/item/projectile/beam/stun
 	name = "stun beam"
-	icon_state = "lightning"
+	icon_state = "stun"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = 1
 	taser_effect = 1
@@ -214,19 +214,46 @@
 
 	combustion = FALSE
 
-	muzzle_type = /obj/effect/projectile/muzzle/lightning
-	tracer_type = /obj/effect/projectile/tracer/lightning
-	impact_type = /obj/effect/projectile/impact/lightning
+	muzzle_type = /obj/effect/projectile/muzzle/stun
+	tracer_type = /obj/effect/projectile/tracer/stun
+	impact_type = /obj/effect/projectile/impact/stun
 
 /obj/item/projectile/beam/stun/weak
 	name = "weak stun beam"
-	icon_state = "lightning"
+	icon_state = "stun"
 	agony = 25
 
 /obj/item/projectile/beam/stun/med
 	name = "stun beam"
-	icon_state = "lightning"
+	icon_state = "stun"
 	agony = 30
+
+//Disabler Beams - It didn't feel right just to recolor Stun beams. We have uses for them still.
+/obj/item/projectile/beam/disabler
+	name = "disabler beam"
+	icon_state = "lightning"
+	fire_sound = 'sound/weapons/Taser.ogg'
+	nodamage = 1
+	taser_effect = 1
+	agony = 30
+	damage_type = HALLOSS
+	light_color = "#FFFFFF"
+
+	combustion = FALSE
+
+	muzzle_type = /obj/effect/projectile/muzzle/lightning
+	tracer_type = /obj/effect/projectile/tracer/lightning
+	impact_type = /obj/effect/projectile/impact/lightning
+
+/obj/item/projectile/beam/disabler/weak
+	name = "weak disabler beam"
+	icon_state = "lightning"
+	agony = 25
+
+/obj/item/projectile/beam/disabler/strong
+	name = "strong disabler beam"
+	icon_state = "lightning"
+	agony = 40
 
 /obj/item/projectile/beam/stun/disabler
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni

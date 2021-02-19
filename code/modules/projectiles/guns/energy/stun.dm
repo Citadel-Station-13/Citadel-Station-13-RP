@@ -11,7 +11,7 @@
 
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/item/projectile/energy/electrode, modifystate="taser", charge_cost = 240),
-		list(mode_name="disable", projectile_type=/obj/item/projectile/beam/stun/weak, modifystate="taserblue", charge_cost = 160),
+		list(mode_name="disable", projectile_type=/obj/item/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160),
 		)
 
 /obj/item/gun/energy/taser/mounted
