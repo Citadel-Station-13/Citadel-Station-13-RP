@@ -332,7 +332,6 @@
 			if(skip_obstacle)
 				continue
 
-			log_debug("R-UST DEBUG: [AM] is [AM.type]")
 			AM.visible_message("<span class='danger'>The field buckles visibly around \the [AM]!</span>")
 			tick_instability += rand(15,30)
 			AM.emp_act(empsev)
