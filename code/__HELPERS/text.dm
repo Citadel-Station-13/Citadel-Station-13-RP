@@ -273,7 +273,6 @@
 											"dont"="don't",
 											"shouldnt"="shouldn't",
 											" ive "=" I've ",
-											"whos"="who's",
 											"whove"="who've",
 											"whod"="who’d",
 											"whats"="what’s",

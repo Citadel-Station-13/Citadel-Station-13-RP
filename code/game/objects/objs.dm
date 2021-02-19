@@ -205,7 +205,7 @@
 		var/materials_list
 		var/i = 1
 		while(i<matter.len)
-			materials_list += matter[i]
+			materials_list += lowertext(matter[i])
 			materials_list += ", "
 			i++
 		materials_list += matter[i]

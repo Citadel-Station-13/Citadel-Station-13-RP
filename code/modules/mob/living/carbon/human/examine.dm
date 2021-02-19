@@ -335,9 +335,9 @@
 			. += "<span class='deadsay'>[T.He] [T.is] [ssd_msg].</span>"
 		//VOREStation Add Start
 		if(client && ((client.inactivity / 10) / 60 > 10)) //10 Minutes
-			. += "\[Inactive for [round((client.inactivity/10)/60)] minutes\]\n"
+			. += "\[Inactive for [round((client.inactivity/10)/60)] minutes\]"
 		else if(disconnect_time)
-			. += "\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]\n"
+			. += "\[Disconnected/ghosted [round(((world.realtime - disconnect_time)/10)/60)] minutes ago\]"
 		//VOREStation Add End
 
 	var/list/wound_flavor_text = list()
@@ -448,9 +448,9 @@
 
 	// VOREStation Start
 	if(ooc_notes)
-		. += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>\n"
+		. += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[src];ooc_notes=1'>\[View\]</a>"
 
-	. += "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>\n"
+	. += "<span class='deptradio'><a href='?src=\ref[src];vore_prefs=1'>\[Mechanical Vore Preferences\]</a></span>"
 
 	// VOREStation End
 	. += "*---------*</span>"
@@ -488,7 +488,7 @@
 /mob/living/carbon/human/proc/examine_weight()
 	if(!show_pudge()) //Some clothing or equipment can hide this.
 		return null
-	var/message
+	var/message = FALSE
 	var/weight_examine = round(weight)
 	var/t_He 	= "It" //capitalised for use at the start of each line.
 	var/t_he	= "it"
@@ -531,31 +531,31 @@
 
 	switch(weight_examine)
 		if(0 to 74)
-			message = "<span class='warning'>[t_He] [t_is] terribly lithe and frail!</span>\n"
+			message = "<span class='warning'>[t_He] [t_is] terribly lithe and frail!</span>"
 		if(75 to 99)
-			message = "[t_He] [t_has] a very slender frame.\n"
+			message = "[t_He] [t_has] a very slender frame."
 		if(100 to 124)
-			message = "[t_He] [t_has] a lightweight, athletic build.\n"
+			message = "[t_He] [t_has] a lightweight, athletic build."
 		if(125 to 174)
-			message = "[t_He] [t_has] a healthy, average body.\n"
+			message = "[t_He] [t_has] a healthy, average body."
 		if(175 to 224)
-			message = "[t_He] [t_has] a thick, [t_heavy] physique.\n"
+			message = "[t_He] [t_has] a thick, [t_heavy] physique."
 		if(225 to 274)
-			message = "[t_He] [t_has] a plush, chubby figure.\n"
+			message = "[t_He] [t_has] a plush, chubby figure."
 		if(275 to 325)
-			message = "[t_He] [t_has] an especially plump body with a round potbelly and large hips.\n"
+			message = "[t_He] [t_has] an especially plump body with a round potbelly and large hips."
 		if(325 to 374)
-			message = "[t_He] [t_has] a very fat frame with a bulging potbelly, squishy rolls of pudge, very wide hips, and plump set of jiggling thighs.\n"
+			message = "[t_He] [t_has] a very fat frame with a bulging potbelly, squishy rolls of pudge, very wide hips, and plump set of jiggling thighs."
 		if(375 to 474)
-			message = "<span class='warning'>[t_He] [t_is] incredibly obese. [t_His] massive potbelly sags over [t_his] waistline while [t_his] fat ass would probably require two chairs to sit down comfortably!</span>\n"
+			message = "<span class='warning'>[t_He] [t_is] incredibly obese. [t_His] massive potbelly sags over [t_his] waistline while [t_his] fat ass would probably require two chairs to sit down comfortably!</span>"
 		else
-			message += "<span class='warning'>[t_He] [t_is] so morbidly obese, you wonder how [t_he] can even stand, let alone waddle around the station. [t_He] can't get any fatter without being immobilized.</span>\n"
+			message += "<span class='warning'>[t_He] [t_is] so morbidly obese, you wonder how [t_he] can even stand, let alone waddle around the station. [t_He] can't get any fatter without being immobilized.</span>"
 	return message //Credit to Aronai for helping me actually get this working!
 
 /mob/living/carbon/human/proc/examine_nutrition()
 	if(!show_pudge()) //Some clothing or equipment can hide this.
 		return null
-	var/message
+	var/message = FALSE
 	var/nutrition_examine = round(nutrition)
 	var/t_He 	= "It" //capitalised for use at the start of each line.
 	var/t_His 	= "Its"
@@ -587,23 +587,23 @@
 			t_His 	= "Hir"
 	switch(nutrition_examine)
 		if(0 to 49)
-			message = "<span class='warning'>[t_He] [t_is] starving! You can hear [t_his] stomach snarling from across the room!</span>\n"
+			message = "<span class='warning'>[t_He] [t_is] starving! You can hear [t_his] stomach snarling from across the room!</span>"
 		if(50 to 99)
-			message = "<span class='warning'>[t_He] [t_is] extremely hungry. A deep growl occasionally rumbles from [t_his] empty stomach.</span>\n"
+			message = "<span class='warning'>[t_He] [t_is] extremely hungry. A deep growl occasionally rumbles from [t_his] empty stomach.</span>"
 		if(100 to 499)
-			return message //Well that's pretty normal, really.
+			return null //Well that's pretty normal, really.
 		if(500 to 999) // range that vampires hit nutrition wise, best to not have vore kink messages forced on them.
-			message = "[t_He] appears to be well-hydrated and invigorated.\n"
+			message = "[t_He] appears to be well-hydrated and invigorated."
 		if(1000 to 1399)
-			message = "[t_He] [t_has] a rotund, thick gut. It bulges from their body obscenely, close to sagging under its own weight.\n"
+			message = "[t_He] [t_has] a rotund, thick gut. It bulges from their body obscenely, close to sagging under its own weight."
 		if(1400 to 1934) // One person fully digested.
-			message = "<span class='warning'>[t_He] [t_is] sporting a large, round, sagging stomach. It's contains at least their body weight worth of glorping slush.</span>\n"
+			message = "<span class='warning'>[t_He] [t_is] sporting a large, round, sagging stomach. It's contains at least their body weight worth of glorping slush.</span>"
 		if(1935 to 3004) // Two people.
-			message = "<span class='warning'>[t_He] [t_is] engorged with a huge stomach that sags and wobbles as they move. [t_He] must have consumed at least twice their body weight. It looks incredibly soft.</span>\n"
+			message = "<span class='warning'>[t_He] [t_is] engorged with a huge stomach that sags and wobbles as they move. [t_He] must have consumed at least twice their body weight. It looks incredibly soft.</span>"
 		if(3005 to 4074) // Three people.
-			message = "<span class='warning'>[t_His] stomach is firmly packed with digesting slop. [t_He] must have eaten at least a few times worth their body weight! It looks hard for them to stand, and [t_his] gut jiggles when they move.</span>\n"
+			message = "<span class='warning'>[t_His] stomach is firmly packed with digesting slop. [t_He] must have eaten at least a few times worth their body weight! It looks hard for them to stand, and [t_his] gut jiggles when they move.</span>"
 		if(4075 to INFINITY) // Four or more people.
-			message = "<span class='warning'>[t_He] [t_is] so absolutely stuffed that you aren't sure how it's possible to move. [t_He] can't seem to swell any bigger. The surface of [t_his] belly looks sorely strained!</span>\n"
+			message = "<span class='warning'>[t_He] [t_is] so absolutely stuffed that you aren't sure how it's possible to move. [t_He] can't seem to swell any bigger. The surface of [t_his] belly looks sorely strained!</span>"
 	return message
 
 //For OmniHUD records access for appropriate models
@@ -632,18 +632,21 @@
 /mob/living/carbon/human/proc/examine_pickup_size(mob/living/H)
 	var/message
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.50)
-		message = "<font color='blue'>They are small enough that you could easily pick them up!</font>\n"
-	return message
+		message = "<font color='blue'>They are small enough that you could easily pick them up!</font>"
+		return message
+	return FALSE
 
 /mob/living/carbon/human/proc/examine_step_size(mob/living/H)
 	var/message
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.75)
-		message = "<font color='red'>They are small enough that you could easily trample them!</font>\n"
-	return message
+		message = "<font color='red'>They are small enough that you could easily trample them!</font>"
+		return message
+	else
+		return FALSE
 
 /mob/living/carbon/human/proc/examine_nif(mob/living/carbon/human/H)
 	if(nif && nif.examine_msg) //If you have one set, anyway.
-		return "<span class='notice'>[nif.examine_msg]</span>\n"
+		return "<span class='notice'>[nif.examine_msg]</span>"
 
 /mob/living/carbon/human/proc/examine_chimera(mob/living/carbon/human/H)
 	var/t_He 	= "It" //capitalised for use at the start of each line.
@@ -676,10 +679,10 @@
 			t_his 	= "hir"
 	if(revive_ready == REVIVING_NOW || revive_ready == REVIVING_DONE)
 		if(stat == DEAD)
-			return "<span class='warning'>[t_His] body is twitching subtly.</span>\n"
+			return "<span class='warning'>[t_His] body is twitching subtly.</span>"
 		else
-			return "<span class='notice'>[t_He] [t_appear] to be in some sort of torpor.</span>\n"
+			return "<span class='notice'>[t_He] [t_appear] to be in some sort of torpor.</span>"
 	if(feral)
-		return "<span class='warning'>[t_He] [t_has] a crazed, wild look in [t_his] eyes!</span>\n"
+		return "<span class='warning'>[t_He] [t_has] a crazed, wild look in [t_his] eyes!</span>"
 	if(bitten)
-		return "<span class='notice'>[t_He] [t_appear] to have two fresh puncture marks on [t_his] neck.</span>\n"
+		return "<span class='notice'>[t_He] [t_appear] to have two fresh puncture marks on [t_his] neck.</span>"

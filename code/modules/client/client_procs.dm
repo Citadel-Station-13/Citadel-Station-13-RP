@@ -1,3 +1,4 @@
+
 	////////////
 	//SECURITY//
 	////////////
@@ -76,6 +77,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
+	// Tgui Topic middleware.
+	if(tgui_Topic(href_list))
+		return
 
 	//Logs all hrefs, except chat pings
 	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
@@ -88,10 +92,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return
 	if (href_list["asset_cache_preload_data"])
 		asset_cache_preload_data(href_list["asset_cache_preload_data"])
-		return
-
-	// Tgui Topic middleware.
-	if(tgui_Topic(href_list))
 		return
 
 	//Admin PM
