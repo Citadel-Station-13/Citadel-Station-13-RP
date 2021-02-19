@@ -1,78 +1,278 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aN" = (
-/obj/effect/floor_decal/industrial/warning{
+"ad" = (
+/obj/structure/table/standard,
+/obj/item/roller,
+/obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/base)
+/area/lavaland/base/common)
+"aw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
 "aO" = (
 /turf/simulated/floor/outdoors/lava,
 /area/lavaland/unexplored)
-"bb" = (
-/obj/structure/bed/double/padded,
-/obj/item/bedsheet/browndouble,
-/turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/base)
-"cZ" = (
-/obj/machinery/door/airlock{
-	name = "Recovery"
+"bn" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	dir = 8;
+	id = "wind_blue"
 	},
-/turf/simulated/floor/carpet/blucarpet,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"bH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"bQ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 23;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"cd" = (
+/obj/structure/table/standard,
+/obj/item/storage/toolbox/electrical,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"cn" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"cq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"cA" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 8
+	},
+/obj/machinery/meter,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"cC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	frequency = 1384;
+	id_tag = "lava_lock";
+	pixel_y = 25
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"cW" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled/dark,
 /area/lavaland/base/common)
 "db" = (
 /turf/simulated/wall,
 /area/lavaland/base/common)
-"do" = (
-/obj/machinery/media/jukebox{
-	icon_state = "superjuke-nopower";
-	state_base = "superjuke"
+"dg" = (
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
 	},
-/obj/machinery/light{
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"dl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
+"do" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"dH" = (
+/obj/machinery/light/small,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"dK" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 6
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/base/common)
+"em" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"en" = (
+/obj/machinery/atmospherics/pipe/simple/visible/universal{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "er" = (
-/obj/structure/table/marble,
-/obj/machinery/reagentgrinder,
-/obj/item/reagent_containers/glass/rag,
-/turf/simulated/floor/tiled/dark,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"ev" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "ew" = (
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"eF" = (
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_alc/full{
-	dir = 4
+"eE" = (
+/obj/structure/closet/crate,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/dark,
-/area/lavaland/base/common)
-"eT" = (
-/obj/structure/table/rack/shelf,
-/turf/simulated/floor/tiled/steel_grid,
-/area/lavaland/base)
-"eU" = (
-/obj/structure/flora/pottedplant/subterranean,
-/obj/machinery/light{
-	dir = 4
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -23;
+	req_one_access = list(48)
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"fg" = (
-/obj/machinery/light{
-	dir = 1
+"eT" = (
+/obj/machinery/atmospherics/binary/pump/on{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/lavaland/base)
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"eU" = (
+/obj/structure/table/rack,
+/obj/item/storage/bag/ore,
+/obj/structure/sign/warning{
+	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
+	name = "\improper MEMETIC HAZARD";
+	pixel_x = 32
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/item/gun/energy/kinetic_accelerator,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"fg" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "fw" = (
-/mob/living/simple_mob/construct/shade,
+/mob/living/simple_mob/construct/shade/surt,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/explored)
-"fE" = (
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
-/turf/simulated/floor/tiled/dark,
+"gb" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -23;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/lavaland/base/common)
+"ge" = (
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/portable_atmospherics/canister/phoron{
+	start_pressure = 12000
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"gj" = (
+/obj/machinery/atmospherics/unary/freezer{
+	dir = 8;
+	icon_state = "freezer_1";
+	set_temperature = 65;
+	use_power = 1
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"gw" = (
+/obj/structure/table/woodentable,
+/obj/machinery/recharger,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/blucarpet,
+/area/lavaland/base/common)
+"gx" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "gy" = (
 /obj/away_mission_init/lavaland,
@@ -85,107 +285,574 @@
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/base/common)
 "gH" = (
-/obj/machinery/door/airlock/multi_tile/glass,
-/turf/simulated/floor/tiled,
-/area/lavaland/base)
-"hQ" = (
-/turf/simulated/floor/tiled/old_tile,
-/area/lavaland/base)
-"hU" = (
-/obj/structure/bed/chair/sofa/left{
-	dir = 1;
-	icon_state = "sofaend_left"
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Engine Room";
+	req_access = list(48)
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"gU" = (
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"ha" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 9
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"hy" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"hI" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 9
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"hK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"hS" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"hU" = (
+/obj/structure/table/marble,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/lavaland/base)
+/area/lavaland/base/common)
+"ie" = (
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "ix" = (
-/mob/living/simple_mob/animal/space/bats/roguemines,
+/mob/living/simple_mob/animal/space/bats/surt,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/unexplored)
 "iz" = (
-/obj/structure/table/standard,
-/obj/item/towel/random,
-/turf/simulated/floor/tiled/old_tile,
-/area/lavaland/base)
-"iE" = (
-/obj/structure/ore_box,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"kq" = (
-/turf/simulated/floor/tiled,
-/area/lavaland/base)
-"kr" = (
+"iD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"iJ" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"iM" = (
+/obj/machinery/vending/boozeomat{
+	req_access = null;
+	req_log_access = null
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"jo" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/purpledouble,
+/turf/simulated/floor/carpet/oracarpet,
+/area/lavaland/base/common)
+"js" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/phoron{
+	start_pressure = 12000
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -27;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"jH" = (
+/obj/structure/table/marble,
+/obj/machinery/microwave,
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"jY" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/lavaland/base/common)
+"kg" = (
 /obj/structure/bed/chair/sofa/right{
+	dir = 1;
 	icon_state = "sofaend_right"
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
+	dir = 8
 	},
-/obj/effect/decal/cleanable/cobweb,
-/obj/random/mob/mouse,
 /turf/simulated/floor/wood,
-/area/lavaland/base)
+/area/lavaland/base/common)
+"kp" = (
+/obj/machinery/door/airlock{
+	id_tag = "mine_black";
+	name = "Dormitory";
+	req_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/bcarpet,
+/area/lavaland/base/common)
+"kq" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/bar_soft/full,
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"kr" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/table/marble,
+/obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/glass/rag,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"ku" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"kw" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"ky" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"kK" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
 "lb" = (
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/explored)
-"ml" = (
-/obj/structure/table/marble,
-/obj/machinery/light{
+"lr" = (
+/obj/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/base/common)
+"lt" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"lu" = (
+/obj/structure/bed,
+/obj/item/bedsheet/red,
+/turf/simulated/floor/carpet/blucarpet,
+/area/lavaland/base/common)
+"mb" = (
+/turf/simulated/floor/tiled/asteroid_steel,
+/area/lavaland/explored)
 "mr" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lava,
 /area/lavaland/unexplored)
-"mZ" = (
-/obj/structure/closet,
-/turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/base)
-"nr" = (
-/obj/structure/table/marble,
-/turf/simulated/floor/tiled/dark,
+"mt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
+/turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"nz" = (
-/turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/base)
-"oG" = (
-/obj/structure/bed,
-/obj/item/bedsheet,
-/turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/base)
-"pJ" = (
-/obj/structure/table/marble,
-/obj/effect/floor_decal/spline/fancy/wood{
+"mI" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/lavaland/base/common)
+"mK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"mS" = (
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/lavaland/base/common)
+"mT" = (
+/obj/machinery/door/airlock{
+	id_tag = "mine_orange";
+	name = "Dormitory";
+	req_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/oracarpet,
+/area/lavaland/base/common)
+"nb" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/mousetraps,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/mop,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"ni" = (
+/obj/machinery/door/airlock/glass_medical{
+	name = "Triage";
+	req_one_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"nm" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = -11
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"nr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"nw" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"nz" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/blucarpet,
+/area/lavaland/base/common)
+"nF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"nL" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"oF" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(48)
+	},
+/obj/machinery/airlock_sensor/airlock_exterior{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 25
+	},
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"oU" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"pp" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"pJ" = (
+/obj/structure/bed/chair/sofa/left{
+	icon_state = "sofaend_left"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
 /turf/simulated/floor/wood,
-/area/lavaland/base)
+/area/lavaland/base/common)
+"pM" = (
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	dir = 4;
+	target_pressure = 15000
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "qz" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/base/common)
-"qE" = (
-/obj/structure/bed/double/padded,
-/obj/item/bedsheet/hosdouble,
-/turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/base)
-"qJ" = (
-/obj/machinery/light{
-	dir = 1
+"qC" = (
+/obj/machinery/light/small{
+	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/base/common)
+"qE" = (
+/obj/machinery/button/remote/airlock{
+	id = "mine_purp";
+	name = "Door Lock";
+	pixel_x = -25;
+	pixel_y = 26;
+	specialfunctions = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/lavaland/base/common)
+"rs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"ru" = (
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/base)
-"sG" = (
-/obj/machinery/light{
-	dir = 1
+/area/lavaland/base/common)
+"rB" = (
+/obj/machinery/door/airlock{
+	id_tag = "mine_purp";
+	name = "Dormitory";
+	req_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/purcarpet,
+/area/lavaland/base/common)
+"rI" = (
+/obj/machinery/vending/coffee,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"ss" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"su" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"sS" = (
+/obj/machinery/door/airlock{
+	id_tag = "mine_blue";
+	name = "Dormitory";
+	req_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/blucarpet,
+/area/lavaland/base/common)
+"sU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
@@ -193,29 +860,278 @@
 /turf/simulated/floor/outdoors/lava,
 /area/lavaland/base)
 "tv" = (
-/turf/simulated/floor/tiled/monotile,
-/area/lavaland/base)
-"uE" = (
-/turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/base)
-"vA" = (
-/obj/structure/table/rack/shelf,
-/obj/random/multiple/miningdrills,
-/turf/simulated/floor/tiled/steel_grid,
-/area/lavaland/base)
-"xd" = (
-/turf/simulated/mineral/triumph/rich,
-/area/lavaland/unexplored)
-"yX" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/structure/table/woodentable,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"yY" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/curtain/black,
+"un" = (
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	dir = 1;
+	target_pressure = 15000
+	},
 /turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"uv" = (
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	dir = 8;
+	target_pressure = 15000
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"uF" = (
+/obj/structure/urinal{
+	pixel_y = 31
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"uP" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/turf/simulated/wall/r_wall,
+/area/lavaland/base/common)
+"uR" = (
+/obj/structure/table/standard,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -27;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"uY" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"vc" = (
+/obj/machinery/vending/snack,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"vo" = (
+/obj/machinery/door/airlock{
+	name = "Showers";
+	req_one_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"vr" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"vA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"vT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -27;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"wt" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"wC" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/machinery/button/windowtint{
+	id = "wind_blue";
+	pixel_y = -25
+	},
+/turf/simulated/floor/carpet/blucarpet,
+/area/lavaland/base/common)
+"wG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"wO" = (
+/obj/structure/table/standard,
+/obj/machinery/light/small,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"wX" = (
+/obj/machinery/power/generator{
+	anchored = 1
+	},
+/obj/structure/cable/yellow{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"xd" = (
+/turf/simulated/mineral/triumph/rich/lavaland,
+/area/lavaland/unexplored)
+"xh" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"xr" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"xz" = (
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/maintenance{
+	name = "SMES Access";
+	req_access = list(48)
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"xK" = (
+/obj/structure/dispenser/oxygen,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"xX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"yg" = (
+/mob/living/simple_mob/humanoid/cultist/hunter/surt,
+/turf/simulated/mineral/triumph/lavaland,
+/area/lavaland/explored)
+"yq" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/lavaland/base/common)
+"yt" = (
+/obj/machinery/door/airlock{
+	name = "Custodial Supplies";
+	req_one_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"yy" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"yF" = (
+/obj/machinery/atmospherics/binary/circulator{
+	anchored = 1;
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"yH" = (
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"yX" = (
+/obj/machinery/button/remote/airlock{
+	id = "mine_black";
+	name = "Door Lock";
+	pixel_x = -25;
+	pixel_y = -26;
+	specialfunctions = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/lavaland/base/common)
+"zm" = (
+/obj/structure/flora/pottedplant/subterranean,
+/turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "zs" = (
 /obj/structure/flora/pottedplant/smalltree{
@@ -224,57 +1140,373 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"AG" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack/shelf,
-/obj/random/multiple/miningdrills,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/steel_grid,
-/area/lavaland/base)
-"AJ" = (
-/turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/base)
-"Bs" = (
-/obj/machinery/door/airlock{
-	name = "Recovery"
+"zH" = (
+/obj/structure/table/rack,
+/obj/item/storage/bag/ore,
+/obj/item/gun/energy/kinetic_accelerator,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"zN" = (
+/obj/machinery/light{
+	dir = 1
 	},
-/turf/simulated/floor/carpet/bcarpet,
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Ac" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Aj" = (
+/obj/structure/closet/crate/bin,
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Ao" = (
+/obj/machinery/door/firedoor/multi_tile{
+	req_one_access = list(48)
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Lounge";
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Ap" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"As" = (
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"AF" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"AG" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 4;
+	external_pressure_bound = 0;
+	external_pressure_bound_default = 0;
+	frequency = null;
+	icon_state = "map_vent_in";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	internal_pressure_bound_default = 4000;
+	pressure_checks = 2;
+	pressure_checks_default = 2;
+	pump_direction = 0;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/airmix,
+/area/lavaland/base/common)
+"AI" = (
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 1;
+	frequency = 1441;
+	id = "mine_out";
+	power_rating = 5000;
+	use_power = 1
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/base/common)
+"AJ" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"AR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Bb" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
+/obj/machinery/atmospherics/binary/pump/on{
+	dir = 8;
+	name = "Waste"
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Bs" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"BI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"BX" = (
+/obj/structure/closet/crate/large,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Cf" = (
+/obj/structure/table/standard,
+/obj/structure/bedsheetbin,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/old_tile,
 /area/lavaland/base/common)
 "Ch" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/base/common)
-"CL" = (
-/obj/structure/table/marble,
-/obj/item/reagent_containers/glass/rag,
-/obj/item/reagent_containers/food/drinks/shaker,
-/turf/simulated/floor/tiled/dark,
+"Cq" = (
+/obj/machinery/power/smes/buildable/main{
+	charge = 4e+007
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
 /area/lavaland/base/common)
-"EB" = (
-/obj/machinery/door/airlock/external,
-/obj/structure/fans/tiny,
+"CL" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -23;
+	req_one_access = list(48)
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"Fj" = (
-/mob/living/simple_mob/animal/space/bats/roguemines,
-/turf/simulated/mineral/triumph,
-/area/lavaland/explored)
+"CW" = (
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/machinery/button/windowtint{
+	id = "wind_orange";
+	pixel_y = -25
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/lavaland/base/common)
+"Dm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"DA" = (
+/obj/machinery/mining/drill,
+/turf/simulated/floor/tiled/dark,
+/area/lavaland/base/common)
+"DK" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"DQ" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/machinery/door/airlock/glass{
+	name = "Storage";
+	req_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"DZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Eg" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Ek" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/machinery/door/airlock/glass{
+	name = "Transit";
+	req_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Ep" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/double,
+/turf/simulated/floor/carpet/bcarpet,
+/area/lavaland/base/common)
+"EE" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"EL" = (
+/obj/structure/closet/emcloset,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/cobweb2,
+/obj/machinery/airlock_sensor/airlock_interior{
+	pixel_y = 25
+	},
+/obj/effect/map_helper/airlock/sensor/int_sensor,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"EP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/mineral/triumph/lavaland,
+/area/lavaland/base)
+"EV" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/lavaland/base/common)
+"Fs" = (
+/obj/machinery/airlock_sensor{
+	dir = 6;
+	pixel_y = -25
+	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
 "Ft" = (
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/unexplored)
+"Gr" = (
+/obj/machinery/button/remote/airlock{
+	id = "mine_blue";
+	name = "Door Lock";
+	pixel_x = 25;
+	pixel_y = -26;
+	specialfunctions = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/blucarpet,
+/area/lavaland/base/common)
 "GT" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/multi_tile{
+	dir = 1;
+	req_one_access = list(48)
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 2;
+	name = "Lounge";
+	req_access = list(48)
+	},
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
 "GZ" = (
+/obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/wood,
-/area/lavaland/base)
-"Hr" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/curtain/black,
+/area/lavaland/base/common)
+"Hf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Hi" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 6
+	},
+/obj/machinery/meter,
 /turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Ho" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Hr" = (
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/base)
 "Hz" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -282,17 +1514,203 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/base/common)
+"HB" = (
+/obj/machinery/sleep_console,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"HC" = (
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	target_pressure = 15000
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "HM" = (
-/obj/machinery/shower{
+/turf/simulated/wall/r_wall,
+/area/lavaland/base/common)
+"HR" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/old_tile,
-/area/lavaland/base)
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Id" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Ig" = (
+/obj/structure/table/marble,
+/obj/item/storage/box/donkpockets,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Ii" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"It" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Ix" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -23;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/carpet/oracarpet,
+/area/lavaland/base/common)
+"IC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"IE" = (
+/obj/machinery/atmospherics/binary/circulator{
+	anchored = 1;
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"IO" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"IR" = (
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"IV" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "Js" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/monotile,
+/area/lavaland/base/common)
+"JB" = (
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/lavaland/base/common)
+"JO" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	dir = 8;
+	id = "wind_orange"
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"JT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Ku" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Kw" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"KJ" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"KQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -23;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Lf" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -27;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "Lj" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -300,83 +1718,291 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/base/common)
-"LN" = (
-/obj/structure/table/marble,
-/obj/machinery/chemical_dispenser/bar_soft/full{
-	dir = 4
+"LB" = (
+/obj/structure/bed/chair,
+/turf/simulated/floor/carpet/bcarpet,
+/area/lavaland/base/common)
+"LW" = (
+/obj/machinery/button/remote/airlock{
+	id = "mine_orange";
+	name = "Door Lock";
+	pixel_x = 25;
+	pixel_y = 26;
+	specialfunctions = 4
 	},
-/obj/machinery/light{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/carpet/oracarpet,
 /area/lavaland/base/common)
 "LX" = (
-/obj/structure/closet,
-/turf/simulated/floor/carpet/bcarpet,
-/area/lavaland/base)
-"Mv" = (
-/obj/structure/table/standard,
-/obj/machinery/recharger,
-/turf/simulated/floor/carpet/blucarpet,
-/area/lavaland/base)
-"MQ" = (
-/turf/simulated/mineral/triumph/rich,
-/area/lavaland/base)
-"MX" = (
-/turf/simulated/mineral/triumph,
-/area/lavaland/explored)
-"NH" = (
-/obj/structure/bed/chair/sofa/right{
-	dir = 1;
-	icon_state = "sofaend_right"
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Ma" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Md" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/phoron{
+	start_pressure = 12000
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Mi" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Mn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
-/area/lavaland/base)
-"Oo" = (
-/obj/structure/bed/chair/sofa/left{
-	icon_state = "sofaend_left"
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 5
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"MB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
-/turf/simulated/floor/wood,
-/area/lavaland/base)
-"Pr" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/lavaland/base/common)
-"Pt" = (
-/obj/machinery/vending/boozeomat{
-	req_access = null;
-	req_log_access = null
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(48)
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet/blucarpet,
 /area/lavaland/base/common)
-"Qs" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava,
-/area/lavaland/explored)
-"Qy" = (
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/monotile,
+"MP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"MQ" = (
+/turf/simulated/mineral/triumph/rich/lavaland,
 /area/lavaland/base)
-"QN" = (
+"MX" = (
+/turf/simulated/mineral/triumph/lavaland,
+/area/lavaland/explored)
+"Nf" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/greendouble,
+/turf/simulated/floor/carpet/purcarpet,
+/area/lavaland/base/common)
+"Ni" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/sign/warning{
+	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
+	name = "\improper MEMETIC HAZARD";
+	pixel_x = -32
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/base/common)
+"Nw" = (
+/obj/structure/table/marble,
+/obj/machinery/chemical_dispenser/bar_alc/full,
+/obj/effect/decal/cleanable/cobweb,
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"NA" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/access_button{
+	name = "interior access button";
+	pixel_x = -10;
+	pixel_y = 25;
+	req_one_access = null
+	},
+/obj/effect/map_helper/airlock/button/int_button,
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"NH" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/structure/flora/pottedplant/small,
 /turf/simulated/floor/wood,
-/area/lavaland/base)
+/area/lavaland/base/common)
+"NM" = (
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/portable_atmospherics/canister/phoron{
+	start_pressure = 12000
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Oh" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Oo" = (
+/obj/structure/table/marble,
+/obj/machinery/reagentgrinder,
+/obj/item/reagent_containers/glass/rag,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Op" = (
+/obj/machinery/atmospherics/unary/heater{
+	icon_state = "heater"
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Oq" = (
+/turf/simulated/floor/carpet/purcarpet,
+/area/lavaland/base/common)
+"Os" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Pa" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/machinery/access_button{
+	dir = 1;
+	name = "exterior access button";
+	pixel_x = 10;
+	pixel_y = -25;
+	req_one_access = null
+	},
+/obj/effect/map_helper/airlock/button/ext_button,
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/glass_external{
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Pf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Pr" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/lavaland/base/common)
+"Px" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Py" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Pz" = (
+/obj/structure/closet/crate/large,
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"PQ" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"PW" = (
+/turf/simulated/floor/reinforced/airmix,
+/area/lavaland/base/common)
+"Qh" = (
+/obj/structure/bed/chair/sofa/left{
+	dir = 1;
+	icon_state = "sofaend_left"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Qs" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/outdoors/lava,
+/area/lavaland/explored)
+"Qu" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Qy" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"QJ" = (
+/obj/structure/table/standard,
+/obj/item/storage/toolbox/mechanical,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"QN" = (
+/obj/structure/bed/chair/sofa/right{
+	icon_state = "sofaend_right"
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/random/mob/mouse,
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
 "QQ" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass{
-	name = "Study"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
@@ -387,21 +2013,36 @@
 "Ru" = (
 /turf/unsimulated/mineral/triumph,
 /area/lavaland/explored)
-"RA" = (
-/obj/effect/decal/cleanable/cobweb2,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/large,
+"Rw" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/reinforced/airmix,
+/area/lavaland/base/common)
+"RB" = (
+/obj/machinery/door/firedoor/multi_tile{
+	req_one_access = list(48)
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Logistics";
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"RG" = (
+/obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "RK" = (
-/obj/structure/undies_wardrobe,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/base)
+/area/lavaland/base/common)
 "RL" = (
-/turf/simulated/mineral/triumph/rich,
+/turf/simulated/mineral/triumph/rich/lavaland,
 /area/lavaland/explored)
 "RX" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/unexplored)
 "Sm" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -409,39 +2050,102 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/base/common)
-"So" = (
-/obj/structure/closet/crate/freezer/rations,
-/turf/simulated/floor/tiled,
+"SF" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "TW" = (
-/obj/machinery/door/airlock{
-	name = "Showers"
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile,
-/area/lavaland/base)
-"UT" = (
-/obj/machinery/shower{
-	dir = 8
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/old_tile,
-/area/lavaland/base)
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
 "VA" = (
-/obj/structure/closet/crate/large,
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"We" = (
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "Wf" = (
-/obj/structure/closet/crate,
-/turf/simulated/floor/tiled,
-/area/lavaland/base)
-"Wv" = (
-/obj/machinery/door/airlock{
-	name = "Recovery"
+/obj/machinery/air_sensor{
+	frequency = 1443;
+	id_tag = "air_sensor";
+	output = 7
 	},
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/reinforced/airmix,
+/area/lavaland/base/common)
+"Wv" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "Wy" = (
-/turf/simulated/wall,
-/area/lavaland/base)
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"WG" = (
+/obj/machinery/door/firedoor/multi_tile{
+	dir = 1;
+	req_one_access = list(48)
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 2;
+	name = "Dorms";
+	req_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"WJ" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/maintenance{
+	name = "SMES Access";
+	req_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "WK" = (
 /obj/machinery/hyperpad/centre{
 	map_pad_id = "lavaland_away";
@@ -451,32 +2155,150 @@
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/base/common)
 "WW" = (
-/obj/machinery/door/airlock{
-	name = "Recovery"
-	},
-/turf/simulated/floor/carpet/purcarpet,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "WX" = (
 /turf/simulated/floor/outdoors/lava,
 /area/lavaland/explored)
+"Xd" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Xk" = (
+/obj/structure/table/woodentable,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/purcarpet,
+/area/lavaland/base/common)
 "Xq" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/base)
+"Xw" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
 "XG" = (
 /obj/structure/closet/crate/medical,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"Yw" = (
-/obj/machinery/recharge_station,
-/obj/machinery/light{
+"XI" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Yb" = (
+/obj/machinery/media/jukebox{
+	icon_state = "superjuke-nopower";
+	state_base = "superjuke"
+	},
+/turf/simulated/floor/wood,
+/area/lavaland/base/common)
+"Yo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/lavaland/base)
-"ZJ" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"YI" = (
+/obj/machinery/atmospherics/pipe/tank/air{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"YK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"YN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"YU" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Zk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"Zt" = (
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/old_tile,
-/area/lavaland/base)
+/area/lavaland/base/common)
+"ZJ" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/structure/mirror{
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/old_tile,
+/area/lavaland/base/common)
+"ZN" = (
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 10
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"ZU" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"ZV" = (
+/obj/machinery/atmospherics/pipe/manifold4w/visible/cyan,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 
 (1,1,1) = {"
 Ru
@@ -4439,13 +6261,13 @@ Xq
 tg
 tg
 tg
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
 Xq
 tg
 WX
@@ -4580,13 +6402,13 @@ Xq
 tg
 tg
 tg
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
 Xq
 Xq
 Xq
@@ -4721,13 +6543,13 @@ Xq
 Xq
 tg
 tg
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
 Xq
 Xq
 Xq
@@ -4863,13 +6685,13 @@ Xq
 tg
 tg
 tg
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
 Xq
 Xq
 Xq
@@ -4999,20 +6821,20 @@ Xq
 Xq
 Xq
 Xq
-Xq
-Xq
+Hr
+Hr
 tg
 tg
 tg
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+HM
+IO
+IO
+HM
+HM
+JO
+HM
 Xq
 Xq
 Xq
@@ -5134,27 +6956,27 @@ MQ
 MQ
 Xq
 Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+HM
+bn
+HM
+HM
+zs
+QR
+db
+mI
+CW
+HM
 Xq
 Xq
 Xq
@@ -5275,28 +7097,28 @@ Xq
 MQ
 MQ
 MQ
+dK
+AI
 MQ
 MQ
-MQ
-MQ
 Xq
 Xq
 Xq
 Xq
 Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+Hr
+HM
+gw
+wC
+db
+Qu
+sU
+mT
+LW
+EV
+HM
 Xq
 Xq
 Xq
@@ -5416,29 +7238,29 @@ MX
 Xq
 MQ
 MQ
-MQ
-MQ
-MQ
-MQ
-Wy
-Wy
-Wy
-Wy
-Wy
-Wy
-Hr
-Wy
-Wy
-Wy
-Hr
-Wy
-Hr
-Hr
-Wy
-Xq
-Xq
-Xq
-Xq
+HM
+uP
+HM
+HM
+HM
+HM
+HM
+HM
+HM
+HM
+HM
+IO
+HM
+HM
+MB
+Gr
+sS
+Dm
+WW
+db
+jo
+Ix
+HM
 Xq
 Xq
 Xq
@@ -5554,33 +7376,33 @@ MX
 MX
 MX
 MX
-MX
-Xq
-MQ
-MQ
-MQ
-MQ
-MQ
-MQ
-Wy
+HM
+HM
+HM
+HM
+HM
+Bb
+HM
+HM
+Rw
 Wf
-Wf
-Wf
-Wy
+HM
+Nw
+xX
 kr
 QN
 NH
-Wy
-Mv
+kg
+db
 nz
-Wy
-zs
-QR
-Wy
-Xq
-Xq
-Xq
-Xq
+lu
+db
+ew
+Yo
+db
+HM
+HM
+HM
 Xq
 Xq
 Xq
@@ -5696,32 +7518,32 @@ RL
 WX
 WX
 WX
-MX
-Xq
-MQ
-MQ
-MQ
-MQ
-MQ
-MQ
-Wy
+nL
+Op
+hy
+un
+js
+en
+HM
+HM
+PW
 AG
-aN
+HM
 kq
-Wy
+DZ
 Oo
 pJ
 hU
-Wy
-oG
-nz
-cZ
+Qh
+db
+db
+db
+db
 ew
-ew
-Wy
-Wy
-Wy
-Wy
+aw
+vc
+Qy
+Xq
 Xq
 Xq
 Xq
@@ -5838,32 +7660,32 @@ RL
 WX
 WX
 WX
-MX
-Xq
-MQ
-MQ
-MQ
-MQ
-MQ
-MQ
-Wy
+nL
+yH
+Ap
+un
+Md
+dH
+HM
+HM
+HM
 fg
-aN
-kq
-Wy
+HM
+iM
+QQ
 GZ
-GZ
-GZ
-Wy
-Wy
-Wy
-Wy
-sG
+LX
+LX
+LX
+Ao
 ew
-Wy
+ew
+ew
+ew
+Mn
 tv
 Qy
-Wy
+Xq
 Xq
 Xq
 Xq
@@ -5980,32 +7802,32 @@ RL
 WX
 WX
 WX
-MX
-Xq
-MQ
-MQ
-MQ
-MQ
-MQ
-MQ
-Wy
+nL
+Ac
+gU
+yH
+Hi
+IR
+YU
+YI
+HR
 eT
-aN
-kq
-Wy
-GZ
-GZ
-GZ
-Wy
+HM
+Aj
+rs
+Hf
+LX
+LX
+LX
 LX
 AJ
 Bs
 ew
 ew
 Wv
-tv
-Yw
-Wy
+dg
+Qy
+Xq
 Xq
 Xq
 Xq
@@ -6122,32 +7944,32 @@ RL
 WX
 WX
 WX
-MX
+nL
+uv
+IE
+wX
+yF
+pM
+xr
+Id
+hK
+en
+HM
+jH
+Ig
+Ho
+LX
+Yb
+AF
+db
+db
+db
+db
+ew
+aw
+rI
+Qy
 Xq
-MQ
-MQ
-MQ
-MQ
-MQ
-MQ
-Wy
-Wf
-aN
-kq
-Wy
-GZ
-GZ
-GZ
-Wy
-bb
-AJ
-Wy
-ew
-ew
-Wy
-Wy
-Wy
-Wy
 Xq
 Xq
 Xq
@@ -6264,33 +8086,33 @@ RL
 WX
 WX
 WX
-MX
-Xq
-MQ
-MQ
-MQ
-MQ
-MQ
-MQ
-Wy
+nL
+ZN
+ie
+IV
+cA
+EE
+Zk
+Oh
+en
 vA
-aN
-kq
-Wy
+HM
+HM
+HM
 QQ
 GT
-QQ
-Wy
-Wy
-Wy
-Wy
-sG
+db
+db
+db
+LB
+mS
+db
 ew
-Wy
-uE
-mZ
-Wy
-Xq
+KQ
+db
+HM
+HM
+HM
 Xq
 Xq
 Xq
@@ -6406,33 +8228,33 @@ RL
 WX
 WX
 WX
-MX
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Wy
-fg
-aN
-kq
+nL
+NM
+HC
+pp
+ZV
+ha
+nF
+JT
+AR
+ky
+wG
+wG
 gH
-ew
-ew
-ew
+Py
+Pf
+yt
+nm
 db
-fE
-ew
+JB
 yX
-ew
-ew
+kp
+Dm
 WW
-uE
-uE
-Wy
-Xq
+db
+Xk
+gb
+HM
 Xq
 Xq
 Xq
@@ -6548,33 +8370,33 @@ RL
 WX
 WX
 WX
-MX
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Wy
-eT
-aN
-kq
-kq
-ew
-QR
-ew
-db
-eF
+nL
+ge
+HC
+hI
+gj
+HM
+HM
+HM
+HM
+HM
+HM
+HM
+HM
+uY
 ew
 db
-ew
-ew
-Wy
-uE
+nb
+db
+Ep
+jY
+db
+Qu
+ev
+rB
 qE
-Wy
-Xq
+Oq
+HM
 Xq
 Xq
 Xq
@@ -6690,33 +8512,33 @@ RL
 WX
 WX
 WX
-MX
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Wy
-Wy
-Wy
-Wy
-Wy
+HM
+HM
+xz
+WJ
+HM
+HM
+DK
+DK
+db
+uR
+Cf
+As
+db
+dl
 ew
+db
+db
+db
+db
+db
+db
 ew
-ew
-LN
-Pt
-ew
-ml
-ew
-ew
-Wy
-Wy
-Wy
-Wy
-Xq
+It
+db
+yq
+Nf
+HM
 Xq
 Xq
 Xq
@@ -6832,33 +8654,33 @@ RL
 WX
 WX
 WX
-MX
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Wy
+HM
+Cq
+vr
+Kw
+QJ
+HM
+iJ
+ru
+Zt
+su
 RK
-hQ
-Wy
+iD
+vo
+Ii
+wt
+db
+RG
+cW
+lr
+DA
+HM
 ew
-ew
-ew
-ew
-ew
-ew
-nr
-ew
-ew
-ew
-Wy
-Wy
-Xq
-Xq
+WG
+HM
+HM
+HM
+HM
 Xq
 Xq
 Xq
@@ -6974,33 +8796,33 @@ RL
 WX
 WX
 WX
-MX
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+HM
+ZU
+kw
+bQ
+cd
+HM
 Wy
 Wy
-Wy
-Wy
-hQ
-Wy
-Wy
-ew
-ew
-nr
+db
+db
+db
+Zt
+db
+MP
+PQ
+db
 nr
 er
+er
 CL
-ew
-ew
-ew
-ew
-Wy
-Wy
-Xq
+HM
+cq
+Px
+BI
+Lf
+ss
+HM
 Xq
 Xq
 Xq
@@ -7116,36 +8938,36 @@ RL
 WX
 WX
 WX
-MX
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Wy
+HM
+HM
+HM
+HM
+HM
+HM
+HM
+HM
 HM
 HM
 ZJ
-hQ
-hQ
-Wy
+ru
+db
+mK
 ew
+RB
 ew
+Ku
+PQ
 ew
-ew
+oU
+It
 Sm
 gE
 Pr
 ew
-ew
-ew
-yY
+KJ
 Xq
 Xq
-Xq
-Xq
-Xq
+Hr
 WX
 WX
 WX
@@ -7264,30 +9086,30 @@ Xq
 Xq
 Xq
 Xq
+EP
 Xq
-Wy
-qJ
-hQ
-Wy
-Wy
-hQ
+Xq
+HM
+uF
+Xw
+db
 TW
-ew
-ew
-ew
-ew
+Os
+Os
+Os
+xh
+Dm
+Dm
+Ek
+WW
 Hz
 WK
 Ch
 ew
-ew
-ew
-EB
+Qy
 Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
 lb
 WX
 WX
@@ -7407,28 +9229,28 @@ Xq
 Xq
 Xq
 Xq
-Wy
-UT
-UT
-ZJ
-hQ
-hQ
-Wy
+Xq
+HM
+HM
+db
+db
+db
+lt
 ew
+db
+Xd
+YK
+wt
 ew
-ew
-ew
+oU
+It
 qz
 Lj
 Js
 ew
-ew
-ew
-yY
-Xq
-Xq
-Xq
-Xq
+KJ
+Hr
+Hr
 Xq
 WX
 WX
@@ -7549,28 +9371,28 @@ Xq
 Xq
 Xq
 Xq
-Wy
-Wy
-Wy
-Wy
-hQ
-Wy
-Wy
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-Wy
-Wy
 Xq
-Xq
-Xq
+HM
+zN
+vT
+mt
+ni
+bH
+ew
+db
+xK
+do
+ew
+zm
+HM
+ku
+Dm
+XI
+wt
+kK
+HM
+Hr
+Hr
 Xq
 lb
 WX
@@ -7692,28 +9514,28 @@ Xq
 Xq
 Xq
 Xq
-Xq
-Wy
+HM
+HB
 iz
-hQ
-Wy
+wO
+db
 VA
+em
+db
+We
+do
 ew
-XG
-Wy
-ew
-ew
-ew
-Wy
-iE
-ew
-ew
-Wy
-Xq
-Xq
-Xq
-Xq
-Xq
+zH
+HM
+HM
+HM
+DQ
+HM
+HM
+HM
+Hr
+Hr
+Hr
 WX
 WX
 WX
@@ -7834,24 +9656,24 @@ Xq
 Xq
 Xq
 Xq
-Xq
-Wy
-Wy
-Wy
-Wy
-RA
-ew
-So
-Wy
+HM
+XG
+IC
+ad
+HM
+HM
+HM
+HM
+EL
 do
 ew
 eU
-Wy
-iE
-ew
-Wy
-Wy
-Xq
+HM
+HM
+yy
+iz
+eE
+HM
 Xq
 tg
 tg
@@ -7976,24 +9798,24 @@ Xq
 Xq
 Xq
 Xq
-Xq
-Xq
-Xq
-Xq
-Wy
+HM
+cn
+cn
+SF
+HM
 Hr
 Hr
-Hr
-Wy
-Wy
-Hr
-Wy
-Wy
-Hr
-Hr
-Wy
-Xq
-Xq
+HM
+HM
+NA
+Eg
+HM
+HM
+HM
+yy
+Mi
+Pz
+HM
 Xq
 tg
 tg
@@ -8120,24 +9942,24 @@ Xq
 Xq
 Xq
 Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+nw
+Ma
+hS
+Qy
+Hr
+nw
+gx
+IC
+BX
+Qy
+Hr
+Hr
 Xq
 Xq
 WX
@@ -8260,26 +10082,26 @@ tg
 Xq
 Xq
 Xq
+Hr
+Hr
+Hr
+Hr
 Xq
 Xq
+Hr
+Hr
+HM
+cC
+Fs
+HM
+Hr
+HM
+cn
+cn
+SF
+HM
 Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
 Xq
 Xq
 WX
@@ -8409,16 +10231,16 @@ Xq
 Xq
 Xq
 Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+nw
+YN
+hS
+Qy
+Hr
+Hr
+Hr
+Hr
+Hr
 Xq
 Xq
 Xq
@@ -8551,15 +10373,15 @@ Xq
 Xq
 Xq
 Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+HM
+oF
+Pa
+HM
+Hr
+Hr
+Hr
+Hr
 Xq
 Xq
 Xq
@@ -8689,18 +10511,18 @@ MQ
 MQ
 Xq
 Xq
+Hr
+Hr
+Hr
 Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Ni
+Hr
+Hr
+qC
+Hr
+Hr
+Hr
 Xq
 Xq
 Xq
@@ -8833,14 +10655,14 @@ Xq
 Xq
 Xq
 Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
 Xq
 Xq
 Xq
@@ -8976,14 +10798,14 @@ Xq
 Xq
 Xq
 Xq
+Hr
+Hr
 Xq
 Xq
 Xq
-Xq
-Xq
-Xq
-Xq
-Xq
+Hr
+Hr
+Hr
 Xq
 Xq
 Xq
@@ -9124,9 +10946,9 @@ MX
 MX
 MX
 MX
-MX
-MX
-MX
+lb
+lb
+lb
 MX
 MX
 MX
@@ -9266,8 +11088,8 @@ WX
 MX
 MX
 MX
-RL
-MX
+lb
+lb
 lb
 lb
 lb
@@ -9710,8 +11532,8 @@ Ru
 "}
 (66,1,1) = {"
 Ru
-MX
-MX
+mb
+mb
 WX
 MX
 WX
@@ -9852,9 +11674,9 @@ Ru
 "}
 (67,1,1) = {"
 Ru
-MX
-MX
-WX
+mb
+mb
+mb
 WX
 WX
 WX
@@ -9994,9 +11816,9 @@ Ru
 "}
 (68,1,1) = {"
 Ru
-MX
-MX
-MX
+mb
+mb
+mb
 WX
 WX
 WX
@@ -10136,8 +11958,8 @@ Ru
 "}
 (69,1,1) = {"
 Ru
-MX
-MX
+mb
+mb
 WX
 WX
 WX
@@ -11262,7 +13084,7 @@ WX
 WX
 WX
 WX
-RL
+MX
 MX
 MX
 WX
@@ -11403,7 +13225,7 @@ WX
 WX
 WX
 WX
-RL
+MX
 MX
 MX
 WX
@@ -11545,7 +13367,7 @@ WX
 WX
 WX
 MX
-RL
+MX
 MX
 MX
 WX
@@ -11686,7 +13508,7 @@ WX
 WX
 WX
 MX
-RL
+MX
 MX
 MX
 MX
@@ -11828,7 +13650,7 @@ WX
 WX
 WX
 MX
-RL
+MX
 MX
 MX
 MX
@@ -11969,7 +13791,7 @@ WX
 WX
 WX
 WX
-RL
+MX
 MX
 MX
 MX
@@ -13074,7 +14896,7 @@ MX
 MX
 MX
 MX
-Fj
+MX
 RX
 RX
 xd
@@ -16877,7 +18699,7 @@ RX
 RX
 MX
 MX
-MX
+yg
 MX
 MX
 MX
@@ -18566,7 +20388,7 @@ RX
 RX
 RX
 MX
-Fj
+MX
 MX
 MX
 MX
@@ -18855,7 +20677,7 @@ MX
 MX
 MX
 MX
-Fj
+MX
 MX
 MX
 MX
@@ -19141,7 +20963,7 @@ RX
 RX
 RX
 RX
-Fj
+MX
 MX
 RX
 RX
