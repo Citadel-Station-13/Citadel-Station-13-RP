@@ -1124,7 +1124,7 @@ var/list/admin_verbs_event_manager = list(
 			if(!(C.prefs?.be_event_role & flag))
 				continue
 			var/mob/M = C.mob
-			dat += "[ADMIN_FULLMONTY(M)]"
+			dat += "[ADMIN_FULLMONTY(M)]<br>"
 		dat += "</div><br>"
 
 	var/datum/browser/popup = new(src, "event_volunteers", "Event Volunteers (In game)", 800, 1200)
