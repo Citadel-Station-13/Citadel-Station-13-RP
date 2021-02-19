@@ -23,7 +23,7 @@
 	set name = "Fix Keybindings"
 	set desc = "Re-assert all your macros/keybindings."
 	set category = "OOC"
-	if(!SSinput.initialized)
+	if(!SSinput.subsystem_initialized)
 		to_chat(src, "<span class='warning'>Input hasn't been initialized yet. Wait a while.</span>")
 		return
 	log_debug("[src] reset their keybindings.")
