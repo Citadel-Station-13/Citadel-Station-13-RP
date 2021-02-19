@@ -204,7 +204,7 @@
 
 /obj/item/projectile/beam/stun
 	name = "stun beam"
-	icon_state = "stun"
+	icon_state = "lightning"
 	fire_sound = 'sound/weapons/Taser.ogg'
 	nodamage = 1
 	taser_effect = 1
@@ -214,9 +214,9 @@
 
 	combustion = FALSE
 
-	muzzle_type = /obj/effect/projectile/muzzle/stun
-	tracer_type = /obj/effect/projectile/tracer/stun
-	impact_type = /obj/effect/projectile/impact/stun
+	muzzle_type = /obj/effect/projectile/muzzle/lightning
+	tracer_type = /obj/effect/projectile/tracer/lightning
+	impact_type = /obj/effect/projectile/impact/lightning
 
 /obj/item/projectile/beam/stun/weak
 	name = "weak stun beam"
