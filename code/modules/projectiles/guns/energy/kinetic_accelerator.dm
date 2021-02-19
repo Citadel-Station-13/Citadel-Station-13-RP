@@ -71,7 +71,7 @@
 	if(!isturf(proj_turf))
 		return
 	var/datum/gas_mixture/environment = proj_turf.return_air()
-	if(environment.temperature > 250)
+	if(environment.return_pressure() > 60)
 		BB.name = "weakened [BB.name]"
 		BB.damage *= BB.pressure_decrease
 	return BB
