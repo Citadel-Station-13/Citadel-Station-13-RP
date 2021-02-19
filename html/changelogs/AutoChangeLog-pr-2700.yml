@@ -1,0 +1,8 @@
+author: "Ghostcoffeee"
+delete-after: True
+changes: 
+  - rscadd: "Added Protean unarmed verbs"
+  - rscadd: "Added Protean blob resistances/weaknesses"
+  - tweak: "Made Proteans not need to blob to reform single limbs"
+  - balance: "Made Proteans not die instantly to ions, and not blob instantly to lasers"
+  - tweak: "Other tweaks, that in my mind make sense for the hyper-advanced nanoblobs"
