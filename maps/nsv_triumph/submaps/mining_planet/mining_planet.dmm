@@ -15,7 +15,7 @@
 /turf/simulated/mineral/floor/ignore_cavegen,
 /area/mining_planet/explored)
 "w" = (
-/turf/simulated/mineral/triumph/rich,
+/turf/simulated/mineral/rich/triumph,
 /area/mining_planet/unexplored)
 "A" = (
 /turf/simulated/mineral/triumph,

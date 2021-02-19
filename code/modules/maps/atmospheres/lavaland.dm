@@ -1,12 +1,13 @@
 /datum/atmosphere/planet/lavaland
 	base_gases = list(
-	/datum/gas/oxygen = 0.22,
-	/datum/gas/nitrogen = 0.78
+	/datum/gas/oxygen = 0.14,
+	/datum/gas/nitrogen = 0.20,
+	/datum/gas/carbon_dioxide = 0.66
 	)
-	base_target_pressure = 59.9
-	minimum_pressure = 59.9
-	maximum_pressure = 59.9
-	minimum_temp = 293.3
+	base_target_pressure = 35.1
+	minimum_pressure = 32.1
+	maximum_pressure = 37.1
+	minimum_temp = 310.3
 	maximum_temp = 350.1
 
 #define LAVALAND_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_LAVALAND
@@ -49,7 +50,7 @@ LAVALAND_TURF_CREATE(/turf/simulated/mineral/floor/lavaland)
 LAVALAND_TURF_CREATE(/turf/simulated/mineral/floor/cave/lavaland)
 LAVALAND_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen/lavaland)
 LAVALAND_TURF_CREATE(/turf/simulated/mineral/triumph)
-LAVALAND_TURF_CREATE(/turf/simulated/mineral/triumph/rich)
+LAVALAND_TURF_CREATE(/turf/simulated/mineral/rich/triumph)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/bluegrid)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/greengrid)
 LAVALAND_TURF_CREATE(/turf/unsimulated/mineral/triumph)
