@@ -19,6 +19,17 @@
 	set waitfor = FALSE
 	return
 
+/client/verb/fix_macros()
+	set name = "Fix Keybindings"
+	set desc = "Re-assert all your macros/keybindings."
+	set category = "OOC"
+	if(!SSinput.initialized)
+		to_chat(src, "<span class='warning'>Input hasn't been initialized yet. Wait a while.</span>")
+		return
+	log_debug("[src] reset their keybindings.")
+	to_chat(src, "<span class='danger'>Force-reasserting all macros.</span>")
+	set_macros(prefs)
+
 // removes all the existing macros
 /client/proc/erase_all_macros()
 	var/erase_output = ""
