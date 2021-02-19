@@ -109,7 +109,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/despawn_player,
 	/client/proc/addbunkerbypass,
 	/client/proc/revokebunkerbypass,
-	/client/proc/toggle_AI_interact
+	/client/proc/toggle_AI_interact,
+	/client/proc/list_event_volunteers
 	)
 
 var/list/admin_verbs_ban = list(
@@ -1102,3 +1103,30 @@ var/list/admin_verbs_event_manager = list(
 
 	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
 	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
+
+/client/proc/list_event_volunteers()
+	set name = "List Event Volunteers"
+	set category = "Admin"
+	set desc = "See who has event role prefs enabled."
+
+	var/list/dat = list()
+	dat += "<center><b>Only in game players are shown, as these preferences are currently per-character-slot!</b></center><br>"
+	var/list/client/eligible = GLOB.clients.Copy()
+	for(var/i in eligible)
+		var/client/C = i
+		if(isobserver(C.mob))
+			eligible -= C
+	for(var/role in GLOB.event_role_list)
+		var/flag = GLOB.event_role_list[role]
+		dat += "<div class='statusDisplay'><h1>[role]</h1><br>"
+		for(var/i in eligible)
+			var/client/C = i
+			if(!(C.prefs?.be_event_role & flag))
+				continue
+			var/mob/M = C.mob
+			dat += "[ADMIN_FULLMONTY(M)]"
+		dat += "</div><br>"
+
+	var/datum/browser/popup = new(src, "event_volunteers", "Event Volunteers (In game)", 800, 1200)
+	popup.set_content(dat.Join(""))
+	popup.open()
