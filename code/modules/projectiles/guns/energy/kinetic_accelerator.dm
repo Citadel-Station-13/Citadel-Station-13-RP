@@ -4,9 +4,6 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
-	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns_vr.dmi')
 	projectile_type = /obj/item/projectile/kinetic
 	origin_tech = list(TECH_COMBAT = 3, TECH_POWER = 3, TECH_ENGINEERING = 3)
 	can_flashlight = TRUE
@@ -71,7 +68,7 @@
 	if(!isturf(proj_turf))
 		return
 	var/datum/gas_mixture/environment = proj_turf.return_air()
-	if(environment.temperature > 250)
+	if(environment.return_pressure() > 60)
 		BB.name = "weakened [BB.name]"
 		BB.damage *= BB.pressure_decrease
 	return BB

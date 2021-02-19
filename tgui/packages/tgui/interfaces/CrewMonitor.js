@@ -8,7 +8,7 @@ import { Fragment } from 'inferno';
 
 export const CrewMonitor = () => {
   return (
-    <Window 
+    <Window
       width={800}
       height={600}
       resizable>
@@ -129,8 +129,8 @@ export const CrewMonitorContent = (props, context) => {
           ))}
         <NanoMap zoom={mapZoom}>
           {crew
-            .filter(x => 
-              (x.sensor_type === 3 && ~~x.realZ === ~~config.mapZLevel)
+            .filter(x =>
+              (x.sensor_type === 3 && ~~x.z === ~~config.mapZLevel)
             ).map(cm => (
               <NanoMap.Marker
                 key={cm.ref}
