@@ -192,10 +192,10 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "gf" = (
-/obj/structure/closet/crate/large,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "gn" = (
@@ -374,7 +374,6 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "jE" = (
-/obj/structure/closet/crate,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -387,6 +386,7 @@
 	dir = 8;
 	pixel_x = -26
 	},
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "ki" = (
@@ -530,8 +530,8 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/lavaland/base/common)
 "mJ" = (
-/obj/structure/closet/crate/large,
 /obj/machinery/light/small,
+/obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "mN" = (
