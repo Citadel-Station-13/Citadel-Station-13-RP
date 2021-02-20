@@ -8,11 +8,11 @@
 		values = list()
 	if(values.len < 12)
 		values.len = 12
-	var/output = list()
+	var/list/output = list()
 	output += "<form><input type='hidden' name='src' value='[REF(src)]'>"
 	output += "[message]"
 #define MATRIX_FIELD(field, default) "<b><label for='[##field]'>[##field]</label></b> <input type='number' step='0.001' name='[field]' value='[default]'>"
-	output += "<br>"
+	output += "<br><br>"
 	output += MATRIX_FIELD("rr", values[1])
 	output += MATRIX_FIELD("gr", values[4])
 	output += MATRIX_FIELD("br", values[7])
@@ -28,20 +28,20 @@
 	output += MATRIX_FIELD("cr", values[10])
 	output += MATRIX_FIELD("cg", values[11])
 	output += MATRIX_FIELD("cb", values[12])
-	output += "<br>"
+	output += "<br><br>"
 #undef MATRIX_FIELD
 
 	output += {"</ul><div style="text-align:center">
-		<button type="submit" name="button" value="1" style="font-size:large;float:[( Button2 ? "left" : "right" )]">[button1]</button>"}
+		<button type="submit" name="button" value="1" style="font-size:large;float:[( button2 ? "left" : "right" )]">[button1]</button>"}
 
-	if (Button2)
-		output += {"<button type="submit" name="button" value="2" style="font-size:large;[( Button3 ? "" : "float:right" )]">[button2]</button>"}
+	if (button2)
+		output += {"<button type="submit" name="button" value="2" style="font-size:large;[( button3 ? "" : "float:right" )]">[button2]</button>"}
 
-	if (Button3)
+	if (button3)
 		output += {"<button type="submit" name="button" value="3" style="font-size:large;float:right">[button3]</button>"}
 	output += {"</form></div>"}
 
-	..(user, ckey("[user]-[message]-[title]-[world.time]-[rand(1,10000)]"), title, 600, 600, src, stealfocus, timeout)
+	..(user, ckey("[user]-[message]-[title]-[world.time]-[rand(1,10000)]"), title, 400, 400, src, stealfocus, timeout)
 	set_content(output.Join(""))
 
 /datum/browser/modal/color_matrix_picker/Topic(href, list/href_list)

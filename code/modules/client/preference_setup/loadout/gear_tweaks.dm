@@ -51,8 +51,11 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recol
 	return null
 
 /datum/gear_tweak/matrix_recolor/get_metadata(user, metadata)
-	var/list/L = color_matrix_picker(user, "Pick a color matrix for this item", "Matrix Recolor", "Ok", "Erase", "Cancel", TRUE, 10 MINUTES, islist(metadata) && metadata)
-	if(!islist(L) || !ISINRANGE(L.len, 9, 20))
+	var/list/returned = color_matrix_picker(user, "Pick a color matrix for this item", "Matrix Recolor", "Ok", "Erase", "Cancel", TRUE, 10 MINUTES, islist(metadata) && metadata)
+	var/list/L = returned["matrix"]
+	if(returned["button"] == 3)
+		return metadata
+	if((returned["button"] == 2) || !islist(L) || !ISINRANGE(L.len, 9, 20))
 		return null
 	var/identity = TRUE
 	var/static/list/ones = list(1, 5, 9)
@@ -64,7 +67,7 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recol
 
 /datum/gear_tweak/matrix_recolor/tweak_item(obj/item/I, metadata)
 	. = ..()
-	if(!metadata)
+	if(!metadata || !I)
 		return
 	I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
 
