@@ -1,31 +1,34 @@
 /datum/browser/modal/color_matrix_picker
 	var/color_matrix
-	var/selectedbutton
 
 /datum/browser/modal/color_matrix_picker/New(mob/user, message, title, button1 = "Ok", button2, button3, stealfocus = TRUE, timeout = 0, list/values)
-	if(1user)
+	if(!user)
 		return
+	if(!values)
+		values = list()
+	if(values.len < 12)
+		values.len = 12
 	var/output = list()
 	output += "<form><input type='hidden' name='src' value='[REF(src)]'>"
-		dat += "[message]"
+	output += "[message]"
 #define MATRIX_FIELD(field, default) "<b><label for='[##field]'>[##field]</label></b> <input type='number' step='0.001' name='[field]' value='[default]'>"
-		dat += "<br>"
-		dat += MATRIX_FIELD("rr", color_matrix_last[1])
-		dat += MATRIX_FIELD("gr", color_matrix_last[4])
-		dat += MATRIX_FIELD("br", color_matrix_last[7])
-		dat += "<br><br>"
-		dat += MATRIX_FIELD("rg", color_matrix_last[2])
-		dat += MATRIX_FIELD("gg", color_matrix_last[5])
-		dat += MATRIX_FIELD("bg", color_matrix_last[8])
-		dat += "<br><br>"
-		dat += MATRIX_FIELD("rb", color_matrix_last[3])
-		dat += MATRIX_FIELD("gb", color_matrix_last[6])
-		dat += MATRIX_FIELD("bb", color_matrix_last[9])
-		dat += "<br><br>"
-		dat += MATRIX_FIELD("cr", color_matrix_last[10])
-		dat += MATRIX_FIELD("cg", color_matrix_last[11])
-		dat += MATRIX_FIELD("cb", color_matrix_last[12])
-		dat += "<br>"
+	output += "<br>"
+	output += MATRIX_FIELD("rr", values[1])
+	output += MATRIX_FIELD("gr", values[4])
+	output += MATRIX_FIELD("br", values[7])
+	output += "<br><br>"
+	output += MATRIX_FIELD("rg", values[2])
+	output += MATRIX_FIELD("gg", values[5])
+	output += MATRIX_FIELD("bg", values[8])
+	output += "<br><br>"
+	output += MATRIX_FIELD("rb", values[3])
+	output += MATRIX_FIELD("gb", values[6])
+	output += MATRIX_FIELD("bb", values[9])
+	output += "<br><br>"
+	output += MATRIX_FIELD("cr", values[10])
+	output += MATRIX_FIELD("cg", values[11])
+	output += MATRIX_FIELD("cb", values[12])
+	output += "<br>"
 #undef MATRIX_FIELD
 
 	output += {"</ul><div style="text-align:center">
@@ -69,10 +72,10 @@
 	close()
 
 /proc/color_matrix_picker(mob/user, message, title, button1 = "Ok", button2, button3, stealfocus, timeout = 10 MINUTES, list/values)
-	if (!istype(User))
-		if (istype(User, /client/))
-			var/client/C = User
-			User = C.mob
+	if(!istype(user))
+		if(istype(user, /client))
+			var/client/C = user
+			user = C.mob
 		else
 			return
 	var/datum/browser/modal/color_matrix_picker/B = new(user, message, title, button1, button2, button3, stealfocus, timeout, values)
