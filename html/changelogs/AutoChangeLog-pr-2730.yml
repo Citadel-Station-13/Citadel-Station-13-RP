@@ -1,0 +1,5 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "tiny-fans for pools"
+  - tweak: "Adjustments to Bar, Cafe, and Pool"
