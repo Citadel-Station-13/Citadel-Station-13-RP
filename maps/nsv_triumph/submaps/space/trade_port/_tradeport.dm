@@ -30,32 +30,3 @@
 
 /obj/away_mission_init/tradeport/Initialize()
 	return INITIALIZE_HINT_QDEL
-
-//And some special areas, including our shuttle landing spot (must be unique)
-/area/shuttle/excursion/trader
-	name = "\improper Beruang Trade Shuttle"
-
-/area/triumph_away/tradeport
-	name = "Away Mission - Trade Port"
-	icon = 'icons/turf/areas_vr.dmi'
-	icon_state = "dark"
-	flags = RAD_SHIELDED
-	requires_power = 1
-
-/area/triumph_away/tradeport/space
-	icon_state = "debrisunexplored"
-
-/area/triumph_away/tradeport/facility
-	icon_state = "red"
-
-/area/triumph_away/tradeport/engineering
-	icon_state = "yellow"
-
-/area/triumph_away/tradeport/commons
-	icon_state = "green"
-
-/area/triumph_away/tradeport/dock
-	icon_state = "blue"
-
-/area/triumph_away/tradeport/pads
-	icon_state = "purple"

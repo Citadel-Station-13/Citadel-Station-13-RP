@@ -67,14 +67,12 @@
 	return null
 
 /obj/item/melee/energy/examine(mob/user)
-	if(!..(user, 1))
-		return
-
+	. = ..()
 	if(use_cell)
 		if(bcell)
-			to_chat(user, "<span class='notice'>The blade is [round(bcell.percent())]% charged.</span>")
+			. += "<span class='notice'>The blade is [round(bcell.percent())]% charged.</span>"
 		if(!bcell)
-			to_chat(user, "<span class='warning'>The blade does not have a power source installed.</span>")
+			. += "<span class='warning'>The blade does not have a power source installed.</span>"
 
 /obj/item/melee/energy/attack_self(mob/living/user as mob)
 	if(use_cell)
@@ -175,11 +173,10 @@
 		if(energy_color_input)
 			lcolor = sanitize_hexcolor(energy_color_input)
 		update_icon()
-
-/obj/item/melee/energy/examine(mob/user)
-	..()
+	. = ..()
 	if(colorable)
-		to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
+		. += "<span class='notice'>Alt-click to recolor it.</span>"
+
 
 /*
  * Energy Axe
@@ -256,6 +253,8 @@
 	sharp = 1
 	edge = 1
 	colorable = TRUE
+	drop_sound = 'sound/items/drop/sword.ogg'
+	pickup_sound = 'sound/items/pickup/sword.ogg'
 
 
 	projectile_parry_chance = 65
@@ -522,7 +521,7 @@
 /obj/item/melee/energy/blade/dropped()
 	spawn(1) if(src) qdel(src)
 
-/obj/item/melee/energy/blade/process()
+/obj/item/melee/energy/blade/process(delta_time)
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))

@@ -112,7 +112,7 @@
 		if(output)
 			break
 
-/obj/machinery/mineral/stacking_machine/process()
+/obj/machinery/mineral/stacking_machine/process(delta_time)
 	if(!input || !output)
 		return
 	var/turf/inturf = get_turf(input)

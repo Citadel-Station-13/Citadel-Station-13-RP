@@ -3,6 +3,8 @@
 	desc = "a red pillar candle. Its specially-formulated fuel-oxidizer wax mixture allows continued combustion in airless environments."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle1"
+	drop_sound = 'sound/items/drop/gloves.ogg'
+	pickup_sound = 'sound/items/pickup/gloves.ogg'
 	w_class = ITEMSIZE_TINY
 	light_color = "#E09D37"
 	var/wax = 2000
@@ -49,7 +51,7 @@
 		set_light(CANDLE_LUM)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/flame/candle/process()
+/obj/item/flame/candle/process(delta_time)
 	if(!lit)
 		return
 	wax--

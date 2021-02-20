@@ -48,7 +48,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/reagent_containers/borghypo/process() //Every [recharge_time] seconds, recharge some reagents for the cyborg+
+/obj/item/reagent_containers/borghypo/process(delta_time) //Every [recharge_time] seconds, recharge some reagents for the cyborg+
 	if(++charge_tick < recharge_time)
 		return 0
 	charge_tick = 0
@@ -118,10 +118,10 @@
 			to_chat(usr, "<span class='notice'>Synthesizer is now producing '[R.name]'.</span>")
 
 /obj/item/reagent_containers/borghypo/examine(mob/user)
+	var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
 	. = ..()
-	if(get_dist(user, src) <= 2)
-		var/datum/reagent/R = SSchemistry.chemical_reagents[reagent_ids[mode]]
-		. += "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
+	. += "<span class='notice'>It is currently producing [R.name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>"
+
 
 /obj/item/reagent_containers/borghypo/service
 	name = "cyborg drink synthesizer"

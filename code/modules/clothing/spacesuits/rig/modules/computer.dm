@@ -23,7 +23,7 @@
 		to_chat(usr, "Your module is not installed in a hardsuit.")
 		return
 
-	module.holder.ui_interact(usr, nano_state = contained_state)
+	module.holder.nano_ui_interact(usr, nano_state = contained_state)
 
 /obj/item/rig_module/ai_container
 
@@ -46,7 +46,7 @@
 	var/obj/item/ai_card  // Reference to the MMI, posibrain, intellicard or pAI card previously holding the AI.
 	var/obj/item/ai_verbs/verb_holder
 
-/obj/item/rig_module/ai_container/process()
+/obj/item/rig_module/ai_container/process(delta_time)
 	if(integrated_ai)
 		var/obj/item/rig/rig = get_rig()
 		if(rig && rig.ai_override_enabled)
@@ -142,7 +142,7 @@
 	if(!target)
 		if(ai_card)
 			if(istype(ai_card,/obj/item/aicard))
-				ai_card.ui_interact(H, state = deep_inventory_state)
+				ai_card.nano_ui_interact(H, state = deep_inventory_state)
 			else
 				eject_ai(H)
 		update_verb_holder()
@@ -261,7 +261,7 @@
 		var/obj/item/disk/tech_disk/disk = input_device
 		if(disk.stored)
 			if(load_data(disk.stored))
-				user << "<font color='blue'>Download successful; disk erased.</font>"
+				to_chat(user, "<font color='blue'>Download successful; disk erased.</font>")
 				disk.stored = null
 			else
 				to_chat(user, "<span class='warning'>The disk is corrupt. It is useless to you.</span>")
@@ -287,7 +287,7 @@
 		else
 			// Maybe consider a way to drop all your data into a target repo in the future.
 			if(load_data(incoming_files.known_tech))
-				user << "<font color='blue'>Download successful; local and remote repositories synchronized.</font>"
+				to_chat(user, "<font color='blue'>Download successful; local and remote repositories synchronized.</font>")
 			else
 				to_chat(user, "<span class='warning'>Scan complete. There is nothing useful stored on this terminal.</span>")
 		return 1
@@ -416,7 +416,7 @@
 		return 1
 	return 0
 
-/obj/item/rig_module/power_sink/process()
+/obj/item/rig_module/power_sink/process(delta_time)
 
 	if(!interfaced_with)
 		return ..()
@@ -434,7 +434,7 @@
 	H.break_cloak()
 
 	if(!holder.cell)
-		H << "<span class = 'danger'>Your power sink flashes an error; there is no cell in your rig.</span>"
+		to_chat(H, "<span class = 'danger'>Your power sink flashes an error; there is no cell in your rig.</span>")
 		drain_complete(H)
 		return
 
@@ -444,7 +444,7 @@
 		return
 
 	if(holder.cell.fully_charged())
-		H << "<span class = 'warning'>Your power sink flashes an amber light; your rig cell is full.</span>"
+		to_chat(H, "<span class = 'warning'>Your power sink flashes an amber light; your rig cell is full.</span>")
 		drain_complete(H)
 		return
 
@@ -453,7 +453,7 @@
 	var/to_drain = min(12.5*holder.cell.maxcharge, ((holder.cell.maxcharge - holder.cell.charge) / CELLRATE))
 	var/target_drained = interfaced_with.drain_power(0,0,to_drain)
 	if(target_drained <= 0)
-		H << "<span class = 'danger'>Your power sink flashes a red light; there is no power left in [interfaced_with].</span>"
+		to_chat(H, "<span class = 'danger'>Your power sink flashes a red light; there is no power left in [interfaced_with].</span>")
 		drain_complete(H)
 		return
 
@@ -465,9 +465,9 @@
 /obj/item/rig_module/power_sink/proc/drain_complete(var/mob/living/M)
 
 	if(!interfaced_with)
-		if(M) M << "<font color='blue'><b>Total power drained:</b> [round(total_power_drained*CELLRATE)] cell units.</font>"
+		if(M) to_chat(M, "<font color='blue'><b>Total power drained:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
 	else
-		if(M) M << "<font color='blue'><b>Total power drained from [interfaced_with]:</b> [round(total_power_drained*CELLRATE)] cell units.</font>"
+		if(M) to_chat(M, "<font color='blue'><b>Total power drained from [interfaced_with]:</b> [round(total_power_drained*CELLRATE)] cell units.</font>")
 		interfaced_with.drain_power(0,1,0) // Damage the victim.
 
 	drain_loc = null

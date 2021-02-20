@@ -67,6 +67,52 @@
 	ammo_type = /obj/item/ammo_casing/a12g
 	load_method = SINGLE_CASING|SPEEDLOADER
 
+/obj/item/gun/projectile/shotgun/pump/combat/warden
+	name = "warden's shotgun"
+	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
+	icon_state = "shotgun_w"
+	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	w_class = ITEMSIZE_NORMAL
+	ammo_type = /obj/item/ammo_casing/a12g/beanbag
+
+obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
+	set name = "Name Gun"
+	set category = "Object"
+	set desc = "Rename your gun. If you're the Warden."
+
+	var/mob/M = usr
+	if(!M.mind)	return 0
+	var/job = M.mind.assigned_role
+	if(job != "Warden")
+		to_chat(M, "<span class='notice'>You don't feel cool enough to name this gun.</span>")
+		return 0
+
+	var/input = sanitizeSafe(input("What do you want to name the gun?", ,""), MAX_NAME_LEN)
+
+	if(src && input && !M.stat && in_range(M,src))
+		name = input
+		to_chat(M, "You name the gun [input]. Lock and load.")
+		return 1
+
+/obj/item/gun/projectile/shotgun/pump/combat/warden/verb/reskin_gun()
+	set name = "Resprite gun"
+	set category = "Object"
+	set desc = "Click to choose a sprite for your gun."
+
+	var/mob/M = usr
+	var/list/options = list()
+	options["KS-40 CQC"] = "shotgun_w"
+	options["NT Limted Run CQ-6"] = "shotgun_w_corp"
+	options["WT Sabot Stinger"] = "shotgun_w_sting"
+	options["Donksoft Prank Kit"] = "shotgun_w_donk"
+	var/choice = input(M,"Choose your sprite!","Resprite Gun") in options
+	if(src && choice && !M.stat && in_range(M,src))
+		icon_state = options[choice]
+		item_state = options[choice]
+		to_chat(M, "Your gun is now sprited as [choice]. Lock and load.")
+		update_icon()
+		return 1
+
 /obj/item/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
 	desc = "A truely classic weapon. No need to change what works. Uses 12g rounds."
@@ -136,6 +182,7 @@
 	icon_state = "sawnshotgun"
 	item_state = "sawnshotgun"
 	recoil = 3
+	accuracy = 40
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
@@ -143,6 +190,7 @@
 
 /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt
 	icon_state = "shotpistol"
+	accuracy = 40
 
 /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt/holy // A Special Skin for the sawn off,makes it look like the sawn off from Blood.
 	ammo_type = /obj/item/ammo_casing/a12g/silver
@@ -159,6 +207,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	max_shells = 4
 	w_class = ITEMSIZE_LARGE
 	force = 5
+	accuracy = 40
 	slot_flags = SLOT_BACK
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	caliber = "12g"
@@ -177,6 +226,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	icon_state = "supershotgun"
 	item_state = "supershotgun"
 	recoil = 0
+	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
@@ -214,7 +264,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "Brass Flare Gun"
 	desc = "A Brass Flare Gun far more exspensuve and well made then the plastic ones mass produced for signalling. It fires using an odd clockwork mechanism. Loads using 12g"
 	icon_state = "flareg-holy"
-	accuracy = 0 //Strong Gun Better Accuracy
+	accuracy = 50 //Strong Gun Better Accuracy
 	holy = TRUE
 
 /obj/item/gun/projectile/shotgun/doublebarrel/axe

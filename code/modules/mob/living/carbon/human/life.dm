@@ -4,6 +4,7 @@
 #define HUMAN_MAX_OXYLOSS 1 //Defines how much oxyloss humans can get per tick. A tile with no air at all (such as space) applies this value, otherwise it's a percentage of it.
 #define HUMAN_CRIT_MAX_OXYLOSS ( 2.0 / 6) //The amount of damage you'll get when in critical condition. We want this to be a 5 minute deal = 300s. There are 50HP to get through, so (1/6)*last_tick_duration per second. Breaths however only happen every 4 ticks. last_tick_duration = ~2.0 on average
 
+#define HEAT_DAMAGE_SYNTH 1.5 //Amount of damage applied for synths experiencing heat just above 360.15k such as space walking
 #define HEAT_DAMAGE_LEVEL_1 5 //Amount of damage applied when your body temperature just passes the 360.15k safety point
 #define HEAT_DAMAGE_LEVEL_2 10 //Amount of damage applied when your body temperature passes the 400K point
 #define HEAT_DAMAGE_LEVEL_3 20 //Amount of damage applied when your body temperature passes the 1000K point
@@ -22,6 +23,8 @@
 #define COLD_GAS_DAMAGE_LEVEL_3 3 //Amount of damage applied when the current breath's temperature passes the 120K point
 
 #define RADIATION_SPEED_COEFFICIENT 0.1
+
+var/last_message = 0
 
 /mob/living/carbon/human
 	var/oxygen_alert = 0
@@ -155,13 +158,13 @@
 // Calculate how much of the enviroment pressure-difference affects the human.
 /mob/living/carbon/human/calculate_affecting_pressure(var/pressure)
 	var/pressure_difference
-
 	// First get the absolute pressure difference.
 	if(pressure < species.safe_pressure) // We are in an underpressure.
 		pressure_difference = species.safe_pressure - pressure
 
 	else //We are in an overpressure or standard atmosphere.
 		pressure_difference = pressure - species.safe_pressure
+
 
 	if(pressure_difference < 5) // If the difference is small, don't bother calculating the fraction.
 		pressure_difference = 0
@@ -593,7 +596,7 @@
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
 		if (temp_adj < BODYTEMP_COOLING_MAX) temp_adj = BODYTEMP_COOLING_MAX
-		//world << "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]"
+		//to_chat(world, "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]")
 		bodytemperature += temp_adj
 
 	else if(breath.temperature >= species.heat_discomfort_level)
@@ -609,7 +612,26 @@
 		return
 	//Stuff like the xenomorph's plasma regen happens here.
 	species.handle_environment_special(src)
-
+	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
+		species.heat_level_1 = 400
+		species.heat_level_2 = 420 // haha nice
+		species.heat_level_3 = 1000
+		species.cold_level_1 = 275
+		species.cold_level_2 = 250
+		species.cold_level_3 = 200
+		species.cold_discomfort_level = 290
+		species.heat_discomfort_level = 380
+		species.heat_discomfort_strings = list(
+			"You feel heat within your wiring.",
+			"You feel uncomfortably warm.",
+			"Your internal sensors chime at the increase in temperature."
+			)
+		species.cold_discomfort_strings = list(
+			"A small heating element begins warming your system.",
+			"Your focus is briefly stolen by the chill of the air.",
+			"You feel uncomfortably cold.",
+			"You feel a chill within your wiring."
+			)
 	//Moved pressure calculations here for use in skip-processing check.
 	var/pressure = environment.return_pressure()
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)
@@ -633,7 +655,8 @@
 			var/obj/mecha/M = loc
 			loc_temp =  M.return_temperature()
 		else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			loc_temp = loc:air_contents.temperature
+			var/obj/machinery/atmospherics/unary/cryo_cell/CC = loc
+			loc_temp = CC.air_contents.temperature
 		else
 			loc_temp = environment.temperature
 
@@ -673,7 +696,10 @@
 				else
 					burn_dam = HEAT_DAMAGE_LEVEL_2
 			else
-				burn_dam = HEAT_DAMAGE_LEVEL_1
+				if(isSynthetic())
+					burn_dam = HEAT_DAMAGE_SYNTH
+				else
+					burn_dam = HEAT_DAMAGE_LEVEL_1
 
 		take_overall_damage(burn=burn_dam, used_weapon = "High Body Temperature")
 		fire_alert = max(fire_alert, 2)
@@ -781,18 +807,18 @@
 		if(nutrition >= 2) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
 			nutrition -= 2
 		var/recovery_amt = max((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
-		//world << "Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]"
+		//to_chat(world, "Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Cold. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 	else if(species.cold_level_1 <= bodytemperature && bodytemperature <= species.heat_level_1)
 		var/recovery_amt = body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR
-		//world << "Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]"
+		//to_chat(world, "Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Norm. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 	else if(bodytemperature > species.heat_level_1) //360.15 is 310.15 + 50, the temperature where you start to feel effects.
 		//We totally need a sweat system cause it totally makes sense...~
 		var/recovery_amt = min((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), -BODYTEMP_AUTORECOVERY_MINIMUM)	//We're dealing with negative numbers
-		//world << "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]"
+		//to_chat(world, "Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 //				log_debug("Hot. Difference = [body_temperature_difference]. Recovering [recovery_amt]")
 		bodytemperature += recovery_amt
 
@@ -1085,7 +1111,7 @@
 			drowsyness = max(0, drowsyness - 1)
 			eye_blurry = max(2, eye_blurry)
 			if (prob(5))
-				sleeping += 1
+				Sleeping(1)
 				Paralyse(5)
 
 		// If you're dirty, your gloves will become dirty, too.
@@ -1215,6 +1241,15 @@
 				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
 				else							nutrition_icon.icon_state = "nutrition4"
 
+		if(synthbattery_icon)
+			switch(nutrition)
+				if(350 to INFINITY)				synthbattery_icon.icon_state = "charge4"
+				if(250 to 350)					synthbattery_icon.icon_state = "charge3"
+				if(100 to 250)					synthbattery_icon.icon_state = "charge2"
+				else							synthbattery_icon.icon_state = "charge1"
+			if(stat == DEAD)
+				synthbattery_icon.icon_state = "charge0"
+
 		if(pressure)
 			pressure.icon_state = "pressure[pressure_alert]"
 
@@ -1244,42 +1279,62 @@
 					if(260 to 280)			bodytemp.icon_state = "temp-3"
 					else					bodytemp.icon_state = "temp-4"
 			else
-				//TODO: precalculate all of this stuff when the species datum is created
-				var/base_temperature = species.body_temperature
-				if(base_temperature == null) //some species don't have a set metabolic temperature
-					base_temperature = (species.heat_level_1 + species.cold_level_1)/2
-
-				var/temp_step
-				if (bodytemperature >= base_temperature)
-					temp_step = (species.heat_level_1 - base_temperature)/4
-
-					if (bodytemperature >= species.heat_level_1)
-						bodytemp.icon_state = "temp4"
-					else if (bodytemperature >= base_temperature + temp_step*3)
-						bodytemp.icon_state = "temp3"
-					else if (bodytemperature >= base_temperature + temp_step*2)
-						bodytemp.icon_state = "temp2"
-					else if (bodytemperature >= base_temperature + temp_step*1)
-						bodytemp.icon_state = "temp1"
+		if(bodytemperature >= 361)
+			if(isSynthetic())
+				if(world.time >= last_message || last_message == 0)
+					if(src.nutrition <= 50) // do they have enough energy for this?
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Power critical. Unable to deploy cooling systems.</font>")
+						return
 					else
-						bodytemp.icon_state = "temp0"
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
+						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
+						src.nutrition -= 50
+					last_message = world.time + 60 SECONDS
+			//TODO: precalculate all of this stuff when the species datum is created
+			var/base_temperature = species.body_temperature
+			if(base_temperature == null) //some species don't have a set metabolic temperature
+				base_temperature = (species.heat_level_1 + species.cold_level_1)/2
 
-				else if (bodytemperature < base_temperature)
-					temp_step = (base_temperature - species.cold_level_1)/4
+			var/temp_step
+			if (bodytemperature >= base_temperature)
+				temp_step = (species.heat_level_1 - base_temperature)/4
 
-					if (bodytemperature <= species.cold_level_1)
-						bodytemp.icon_state = "temp-4"
-					else if (bodytemperature <= base_temperature - temp_step*3)
-						bodytemp.icon_state = "temp-3"
-					else if (bodytemperature <= base_temperature - temp_step*2)
-						bodytemp.icon_state = "temp-2"
-					else if (bodytemperature <= base_temperature - temp_step*1)
-						bodytemp.icon_state = "temp-1"
-					else
-						bodytemp.icon_state = "temp0"
+				if (bodytemperature >= species.heat_level_1)
+					bodytemp.icon_state = "temp4"
+				else if (bodytemperature >= base_temperature + temp_step*3)
+					bodytemp.icon_state = "temp3"
+				else if (bodytemperature >= base_temperature + temp_step*2)
+					bodytemp.icon_state = "temp2"
+				else if (bodytemperature >= base_temperature + temp_step*1)
+					bodytemp.icon_state = "temp1"
+				else
+					bodytemp.icon_state = "temp0"
 
-		if(blinded)		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
-		else			clear_fullscreens()
+			else if (bodytemperature < base_temperature)
+				temp_step = (base_temperature - species.cold_level_1)/4
+
+				if (bodytemperature <= species.cold_level_1)
+					bodytemp.icon_state = "temp-4"
+				else if (bodytemperature <= base_temperature - temp_step*3)
+					bodytemp.icon_state = "temp-3"
+				else if (bodytemperature <= base_temperature - temp_step*2)
+					bodytemp.icon_state = "temp-2"
+				else if (bodytemperature <= base_temperature - temp_step*1)
+					bodytemp.icon_state = "temp-1"
+				else
+					bodytemp.icon_state = "temp0"
+		if(blinded)
+			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+
+		else
+			clear_fullscreens()
+
+		if(blinded)
+			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+
+		else if(!machine)
+			clear_fullscreens()
 
 		if(disabilities & NEARSIGHTED)	//this looks meh but saves a lot of memory by not requiring to add var/prescription
 			if(glasses)					//to every /obj/item
@@ -1358,7 +1413,7 @@
 			see_in_dark = species.darksight
 			see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
 
-		var/tmp/glasses_processed = 0
+		var/glasses_processed = 0
 		var/obj/item/rig/rig = back
 		if(istype(rig) && rig.visor)
 			if(!rig.helmet || (head && rig.helmet == head))
@@ -1660,7 +1715,7 @@
 
 		if(heartbeat >= rate)
 			heartbeat = 0
-			src << sound('sound/effects/singlebeat.ogg',0,0,0,50)
+			SEND_SOUND(src, sound('sound/effects/singlebeat.ogg',0,0,0,50))
 		else
 			heartbeat++
 

@@ -181,6 +181,7 @@
 	recipes += new/datum/stack_recipe("cardborg suit", /obj/item/clothing/suit/cardborg, 3, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("cardborg helmet", /obj/item/clothing/head/cardborg, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("pizza box", /obj/item/pizzabox, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("large cardboard box", /obj/structure/closet/largecardboard, 3, time = 25, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe_list("folders",list( \
 		new/datum/stack_recipe("blue folder", /obj/item/folder/blue), \
 		new/datum/stack_recipe("grey folder", /obj/item/folder), \
@@ -196,6 +197,8 @@
 	recipes += new/datum/stack_recipe("snowman", /obj/structure/snowman, 2, time = 15)
 	recipes += new/datum/stack_recipe("snow robot", /obj/structure/snowman/borg, 2, time = 10)
 	recipes += new/datum/stack_recipe("snow spider", /obj/structure/snowman/spider, 3, time = 20)
+	recipes += new/datum/stack_recipe("snowman head", /obj/item/clothing/head/snowman, 5, time = 5)
+	recipes += new/datum/stack_recipe("snowman suit", /obj/item/clothing/suit/snowman, 10, time = 10)
 
 /datum/material/snowbrick/generate_recipes()
 	recipes = list()
@@ -266,6 +269,7 @@
 
 /datum/material/gold/generate_recipes()
 	..()
+	recipes += new/datum/stack_recipe("golden crown", /obj/item/clothing/head/crown, 10, time = 30)
 	recipes += new/datum/stack_recipe_list("statues", list( \
 		new/datum/stack_recipe("head of security statue", /obj/structure/statue/gold/hos, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("head of personnel statue", /obj/structure/statue/gold/hop, 20, time = 5, one_per_turf = 1, on_floor = 1), \

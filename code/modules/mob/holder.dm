@@ -28,7 +28,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/holder/process()
+/obj/item/holder/process(delta_time)
 	update_state()
 	drop_items()
 

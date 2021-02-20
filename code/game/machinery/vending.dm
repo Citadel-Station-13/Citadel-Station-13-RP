@@ -227,7 +227,7 @@
 
 		// This is not a status display message, since it's something the character
 		// themselves is meant to see BEFORE putting the money in
-		to_chat(usr, "\icon[cashmoney] <span class='warning'>That is not enough money.</span>")
+		to_chat(user, "[icon2html(thing = cashmoney, target = user)] <span class='warning'>That is not enough money.</span>")
 		return 0
 
 	if(istype(cashmoney, /obj/item/spacecash))
@@ -236,7 +236,7 @@
 		cashmoney.worth -= currently_vending.price
 
 		if(cashmoney.worth <= 0)
-			usr.drop_from_inventory(cashmoney)
+			user.drop_from_inventory(cashmoney)
 			qdel(cashmoney)
 		else
 			cashmoney.update_icon()
@@ -353,14 +353,14 @@
 			return
 
 	wires.Interact(user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the vending machine.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/vending/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -408,7 +408,7 @@
 /obj/machinery/vending/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	if(usr.stat || usr.restrained())
+	if(!IsAdminGhost(usr) && (usr.stat || usr.restrained()))
 		return
 
 	if(href_list["remove_coin"] && !istype(usr,/mob/living/silicon))
@@ -423,7 +423,7 @@
 		coin = null
 		categories &= ~CAT_COIN
 
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
+	if(IsAdminGhost(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		if((href_list["vend"]) && (vend_ready) && (!currently_vending))
 			if((!allowed(usr)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
 				to_chat(usr, "<span class='warning'>Access denied.</span>")	//Unless emagged of course
@@ -438,7 +438,7 @@
 			if(!(R.category & categories))
 				return
 
-			if(R.price <= 0)
+			if((R.price <= 0) || IsAdminGhost(usr))
 				vend(R, usr)
 			else if(istype(usr,/mob/living/silicon)) //If the item is not free, provide feedback if a synth is trying to buy something.
 				to_chat(usr, "<span class='danger'>Lawed unit recognized.  Lawed units cannot complete this transaction.  Purchase canceled.</span>")
@@ -570,7 +570,7 @@
 
 	SSnanoui.update_uis(src)
 
-/obj/machinery/vending/process()
+/obj/machinery/vending/process(delta_time)
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -1787,6 +1787,17 @@
 					/obj/item/clothing/under/dress/maid = 5,
 					/obj/item/clothing/under/dress/maid/sexy = 5,
 					/obj/item/clothing/under/dress/maid/janitor = 5,
+					/obj/item/clothing/under/kamishimo = 5,
+					/obj/item/clothing/under/kimono = 5,
+					/obj/item/clothing/under/kimono_black = 5,
+					/obj/item/clothing/under/kimono_sakura = 5,
+					/obj/item/clothing/under/kimono_fancy = 5,
+					/obj/item/clothing/under/cheong = 5,
+					/obj/item/clothing/under/cheong/white = 5,
+					/obj/item/clothing/under/cheong/red = 5,
+					/obj/item/clothing/under/qipao = 5,
+					/obj/item/clothing/under/qipao/white = 5,
+					/obj/item/clothing/under/qipao/red = 5,
 					/obj/item/clothing/under/moderncoat = 5,
 					/obj/item/clothing/under/permit = 5,
 					/obj/item/clothing/under/oldwoman = 5,
@@ -1850,6 +1861,7 @@
 					/obj/item/clothing/under/skirt/outfit/plaid_blue = 5,
 					/obj/item/clothing/under/skirt/outfit/plaid_red = 5,
 					/obj/item/clothing/under/skirt/outfit/plaid_purple = 5,
+					/obj/item/clothing/under/skirt/outfit/plaid_green = 5,
 					/obj/item/clothing/under/overalls/sleek = 5,
 					/obj/item/clothing/under/sl_suit = 5,
 					/obj/item/clothing/under/gentlesuit = 5,
@@ -1875,6 +1887,12 @@
 					/obj/item/clothing/under/scratch/skirt = 5,
 					/obj/item/clothing/under/sundress = 5,
 					/obj/item/clothing/under/sundress_white = 5,
+					/obj/item/clothing/under/turtlebaggy = 5,
+					/obj/item/clothing/under/turtlebaggy/purple = 5,
+					/obj/item/clothing/under/turtlebaggy/red = 5,
+					/obj/item/clothing/under/turtlebaggy/blue = 5,
+					/obj/item/clothing/under/turtlebaggy/green = 5,
+					/obj/item/clothing/under/turtlebaggy/black = 5,
 					/obj/item/clothing/under/rank/psych/turtleneck/sweater = 5,
 					/obj/item/storage/box/fluff/swimsuit = 5,
 					/obj/item/storage/box/fluff/swimsuit/blue = 5,
@@ -1888,12 +1906,16 @@
 					/obj/item/storage/box/fluff/swimsuit/security = 5,
 					/obj/item/storage/box/fluff/swimsuit/medical = 5,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 5,
+					/obj/item/storage/box/fluff/swimsuit/captain = 5,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
 					/obj/item/clothing/under/fluff/v_nanovest = 5,
 					/obj/item/clothing/under/dress/westernbustle = 5,
 					/obj/item/clothing/under/wedding/bride_white = 5,
+					/obj/item/clothing/under/redcoatformal = 2,
+					/obj/item/clothing/under/leotardcolor = 5,
+					/obj/item/clothing/under/leotard = 5,
 					/obj/item/storage/backpack/ = 5,
 					/obj/item/storage/backpack/messenger = 5,
 					/obj/item/storage/backpack/satchel = 5)
@@ -1955,6 +1977,17 @@
 					/obj/item/clothing/under/dress/maid = 25,
 					/obj/item/clothing/under/dress/maid/sexy = 25,
 					/obj/item/clothing/under/dress/maid/janitor = 25,
+					/obj/item/clothing/under/kamishimo = 25,
+					/obj/item/clothing/under/kimono = 25,
+					/obj/item/clothing/under/kimono_black = 25,
+					/obj/item/clothing/under/kimono_sakura = 25,
+					/obj/item/clothing/under/kimono_fancy = 25,
+					/obj/item/clothing/under/cheong = 25,
+					/obj/item/clothing/under/cheong/white = 25,
+					/obj/item/clothing/under/cheong/red = 25,
+					/obj/item/clothing/under/qipao = 25,
+					/obj/item/clothing/under/qipao/white = 25,
+					/obj/item/clothing/under/qipao/red = 25,
 					/obj/item/clothing/under/moderncoat = 25,
 					/obj/item/clothing/under/permit = 25,
 					/obj/item/clothing/under/oldwoman = 25,
@@ -2018,6 +2051,7 @@
 					/obj/item/clothing/under/skirt/outfit/plaid_blue = 25,
 					/obj/item/clothing/under/skirt/outfit/plaid_red = 25,
 					/obj/item/clothing/under/skirt/outfit/plaid_purple = 25,
+					/obj/item/clothing/under/skirt/outfit/plaid_green = 25,
 					/obj/item/clothing/under/overalls/sleek = 25,
 					/obj/item/clothing/under/sl_suit = 25,
 					/obj/item/clothing/under/gentlesuit = 25,
@@ -2043,6 +2077,12 @@
 					/obj/item/clothing/under/scratch/skirt = 25,
 					/obj/item/clothing/under/sundress = 25,
 					/obj/item/clothing/under/sundress_white = 25,
+					/obj/item/clothing/under/turtlebaggy = 25,
+					/obj/item/clothing/under/turtlebaggy/purple = 25,
+					/obj/item/clothing/under/turtlebaggy/red = 25,
+					/obj/item/clothing/under/turtlebaggy/blue = 25,
+					/obj/item/clothing/under/turtlebaggy/green = 25,
+					/obj/item/clothing/under/turtlebaggy/black = 25,
 					/obj/item/clothing/under/rank/psych/turtleneck/sweater = 25,
 					/obj/item/storage/box/fluff/swimsuit = 25,
 					/obj/item/storage/box/fluff/swimsuit/blue = 25,
@@ -2056,12 +2096,16 @@
 					/obj/item/storage/box/fluff/swimsuit/security = 25,
 					/obj/item/storage/box/fluff/swimsuit/medical = 25,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 25,
+					/obj/item/storage/box/fluff/swimsuit/captain = 25,
 					/obj/item/clothing/under/utility = 25,
 					/obj/item/clothing/under/utility/grey = 25,
 					/obj/item/clothing/under/utility/blue = 25,
 					/obj/item/clothing/under/fluff/v_nanovest = 25,
 					/obj/item/clothing/under/dress/westernbustle = 25,
 					/obj/item/clothing/under/wedding/bride_white = 25,
+					/obj/item/clothing/under/redcoatformal = 75,
+					/obj/item/clothing/under/leotardcolor = 25,
+					/obj/item/clothing/under/leotard = 25,
 					/obj/item/storage/backpack/ = 25,
 					/obj/item/storage/backpack/messenger = 25,
 					/obj/item/storage/backpack/satchel = 25)
@@ -2238,7 +2282,8 @@
 					/obj/item/clothing/suit/varsity/blue = 5,
 					/obj/item/clothing/suit/varsity/brown = 5,
 					/obj/item/clothing/suit/storage/hooded/wintercoat = 5,
-					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 5)
+					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 5,
+					/obj/item/clothing/suit/storage/gothcoat = 3)
 	prices = list(/obj/item/clothing/suit/storage/apron = 25,
 					/obj/item/clothing/suit/storage/flannel/aqua = 25,
 					/obj/item/clothing/suit/storage/toggle/bomber = 25,
@@ -2325,7 +2370,8 @@
 					/obj/item/clothing/suit/varsity/blue = 25,
 					/obj/item/clothing/suit/varsity/brown = 25,
 					/obj/item/clothing/suit/storage/hooded/wintercoat = 25,
-					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 25)
+					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 25,
+					/obj/item/clothing/suit/storage/gothcoat = 25)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/toy/katana = 1)
 /obj/machinery/vending/loadout/costume
@@ -2350,6 +2396,9 @@
 					/obj/item/clothing/shoes/boots/jackboots/toeless/knee = 3,
 					/obj/item/clothing/shoes/boots/jackboots/toeless/thigh = 3,
 					/obj/item/clothing/under/schoolgirl = 3,
+					/obj/item/clothing/under/schoolgirl/red = 3,
+					/obj/item/clothing/under/schoolgirl/green = 3,
+					/obj/item/clothing/under/schoolgirl/orange = 3,
 					/obj/item/clothing/head/kitty = 3,
 					/obj/item/clothing/glasses/sunglasses/blindfold = 3,
 					/obj/item/clothing/head/beret = 3,
@@ -2395,7 +2444,70 @@
 					/obj/item/clothing/mask/gas/sexyclown = 3,
 					/obj/item/clothing/under/sexyclown = 3,
 					/obj/item/clothing/mask/gas/sexymime = 3,
-					/obj/item/clothing/under/sexymime = 3)
+					/obj/item/clothing/under/sexymime = 3,
+					/obj/item/clothing/head/rice = 3,
+					/obj/item/clothing/head/lobster = 1,
+					/obj/item/clothing/under/lobster = 1,
+					/obj/item/clothing/suit/storage/hooded/bee_costume = 1,
+					/obj/item/clothing/suit/storage/hooded/flash_costume = 1,
+					/obj/item/clothing/head/nemes = 1,
+					/obj/item/clothing/head/pharaoh = 1,
+					/obj/item/clothing/suit/pharaoh = 2,
+					/obj/item/clothing/mask/gas/mummy = 2,
+					/obj/item/clothing/under/mummy = 2,
+					/obj/item/clothing/head/scarecrow = 2,
+					/obj/item/clothing/mask/gas/scarecrow = 2,
+					/obj/item/clothing/under/scarecrow = 2,
+					/obj/item/clothing/mask/gas/skeleton = 2,
+					/obj/item/clothing/under/skeleton = 2,
+					/obj/item/clothing/under/drfreeze = 2,
+					/obj/item/clothing/suit/drfreeze = 2,
+					/obj/item/clothing/under/darkholme = 2,
+					/obj/item/clothing/under/geisha = 2,
+					/obj/item/clothing/head/telegram = 2,
+					/obj/item/clothing/under/telegram = 2,
+					/obj/item/clothing/head/widehat_red = 2,
+					/obj/item/clothing/mask/gas/bumba = 2,
+					/obj/item/clothing/mask/gas/demon = 2,
+					/obj/item/clothing/mask/gas/goblin = 2,
+					/obj/item/clothing/mask/gas/guy = 3,
+					/obj/item/clothing/mask/gas/joy = 2,
+					/obj/item/clothing/under/red_mech = 1,
+					/obj/item/clothing/under/white_mech = 1,
+					/obj/item/clothing/under/blue_mech = 1,
+					/obj/item/clothing/head/bunny = 1,
+					/obj/item/clothing/suit/bunny = 1,
+					/obj/item/clothing/head/santa = 1,
+					/obj/item/clothing/head/santa/green = 1,
+					/obj/item/clothing/head/reindeer = 2,
+					/obj/item/clothing/head/holiday = 2,
+					/obj/item/clothing/head/holiday/green = 2,
+					/obj/item/clothing/suit/storage/toggle/holiday = 2,
+					/obj/item/clothing/suit/storage/toggle/holiday/green = 2,
+					/obj/item/clothing/under/christmas = 2,
+					/obj/item/clothing/under/christmas/green = 2,
+					/obj/item/clothing/under/christmasfem = 2,
+					/obj/item/clothing/under/christmasfem/green = 2,
+					/obj/item/clothing/shoes/santa = 1,
+					/obj/item/clothing/shoes/holiday = 2,
+					/obj/item/clothing/shoes/holiday/green = 2,
+					/obj/item/clothing/mask/gas/bat = 2,
+					/obj/item/clothing/mask/gas/bear = 2,
+					/obj/item/clothing/mask/gas/bee = 2,
+					/obj/item/clothing/mask/gas/dolphin = 2,
+					/obj/item/clothing/mask/gas/fox = 2,
+					/obj/item/clothing/mask/gas/frog = 2,
+					/obj/item/clothing/mask/gas/horsehead = 2,
+					/obj/item/clothing/mask/gas/jackal = 2,
+					/obj/item/clothing/mask/gas/monkeymask = 2,
+					/obj/item/clothing/mask/gas/pig = 2,
+					/obj/item/clothing/mask/gas/rat = 2,
+					/obj/item/clothing/mask/gas/raven = 2,
+					/obj/item/clothing/mask/gas/shark = 2,
+					/obj/item/clothing/under/bsing = 1,
+					/obj/item/clothing/shoes/boots/bsing = 1,
+					/obj/item/clothing/under/ysing = 1,
+					/obj/item/clothing/shoes/boots/ysing = 1)
 	prices = list(/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/storage/hooded/carp_costume = 75,
 					/obj/item/clothing/suit/chickensuit = 75,
@@ -2412,6 +2524,9 @@
 					/obj/item/clothing/shoes/boots/jackboots/toeless/knee = 25,
 					/obj/item/clothing/shoes/boots/jackboots/toeless/thigh = 25,
 					/obj/item/clothing/under/schoolgirl = 75,
+					/obj/item/clothing/under/schoolgirl/red = 75,
+					/obj/item/clothing/under/schoolgirl/green = 75,
+					/obj/item/clothing/under/schoolgirl/orange = 75,
 					/obj/item/clothing/head/kitty = 75,
 					/obj/item/clothing/glasses/sunglasses/blindfold = 75,
 					/obj/item/clothing/head/beret = 75,
@@ -2457,7 +2572,75 @@
 					/obj/item/clothing/mask/gas/sexyclown = 150,
 					/obj/item/clothing/under/sexyclown = 75,
 					/obj/item/clothing/mask/gas/sexymime = 150,
-					/obj/item/clothing/under/sexymime = 75)
+					/obj/item/clothing/under/sexymime = 75,
+					/obj/item/clothing/head/rice = 75,
+					/obj/item/clothing/head/lobster = 150,
+					/obj/item/clothing/head/nemes = 200,
+					/obj/item/clothing/head/pharaoh = 200,
+					/obj/item/clothing/head/bunny = 500,
+					/obj/item/clothing/head/rice = 75,
+					/obj/item/clothing/head/lobster = 150,
+					/obj/item/clothing/under/lobster = 150,
+					/obj/item/clothing/suit/storage/hooded/bee_costume = 300,
+					/obj/item/clothing/suit/storage/hooded/flash_costume = 300,
+					/obj/item/clothing/head/nemes = 150,
+					/obj/item/clothing/head/pharaoh = 150,
+					/obj/item/clothing/suit/pharaoh = 150,
+					/obj/item/clothing/mask/gas/mummy = 100,
+					/obj/item/clothing/under/mummy = 100,
+					/obj/item/clothing/head/scarecrow = 100,
+					/obj/item/clothing/mask/gas/scarecrow = 100,
+					/obj/item/clothing/under/scarecrow = 200,
+					/obj/item/clothing/mask/gas/skeleton = 100,
+					/obj/item/clothing/under/skeleton = 100,
+					/obj/item/clothing/under/drfreeze = 100,
+					/obj/item/clothing/suit/drfreeze = 100,
+					/obj/item/clothing/under/darkholme = 150,
+					/obj/item/clothing/under/geisha = 200,
+					/obj/item/clothing/head/telegram = 50,
+					/obj/item/clothing/under/telegram = 100,
+					/obj/item/clothing/head/widehat_red = 2,
+					/obj/item/clothing/mask/gas/bumba = 150,
+					/obj/item/clothing/mask/gas/demon = 150,
+					/obj/item/clothing/mask/gas/goblin = 150,
+					/obj/item/clothing/mask/gas/guy = 100,
+					/obj/item/clothing/mask/gas/joy = 150,
+					/obj/item/clothing/under/red_mech = 500,
+					/obj/item/clothing/under/white_mech = 500,
+					/obj/item/clothing/under/blue_mech = 500,
+					/obj/item/clothing/head/bunny = 500,
+					/obj/item/clothing/suit/bunny = 350,
+					/obj/item/clothing/head/reindeer = 50,
+					/obj/item/clothing/head/holiday = 75,
+					/obj/item/clothing/head/holiday/green = 75,
+					/obj/item/clothing/suit/storage/toggle/holiday = 100,
+					/obj/item/clothing/suit/storage/toggle/holiday/green = 100,
+					/obj/item/clothing/under/christmas = 100,
+					/obj/item/clothing/under/christmas/green = 100,
+					/obj/item/clothing/under/christmasfem = 150,
+					/obj/item/clothing/under/christmasfem/green = 150,
+					/obj/item/clothing/shoes/santa = 200,
+					/obj/item/clothing/head/santa = 150,
+					/obj/item/clothing/head/santa/green = 150,
+					/obj/item/clothing/shoes/holiday = 75,
+					/obj/item/clothing/shoes/holiday/green = 75,
+					/obj/item/clothing/mask/gas/bat = 250,
+					/obj/item/clothing/mask/gas/bear = 250,
+					/obj/item/clothing/mask/gas/bee = 250,
+					/obj/item/clothing/mask/gas/dolphin = 250,
+					/obj/item/clothing/mask/gas/fox = 250,
+					/obj/item/clothing/mask/gas/frog = 250,
+					/obj/item/clothing/mask/gas/horsehead = 250,
+					/obj/item/clothing/mask/gas/jackal = 250,
+					/obj/item/clothing/mask/gas/monkeymask = 250,
+					/obj/item/clothing/mask/gas/pig = 250,
+					/obj/item/clothing/mask/gas/rat = 250,
+					/obj/item/clothing/mask/gas/raven = 250,
+					/obj/item/clothing/mask/gas/shark = 250,
+					/obj/item/clothing/under/bsing = 500,
+					/obj/item/clothing/shoes/boots/bsing = 500,
+					/obj/item/clothing/under/ysing = 500,
+					/obj/item/clothing/shoes/boots/ysing = 500)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/clothing/head/syndicatefake = 1,
 					/obj/item/clothing/suit/syndicatefake = 1)

@@ -66,7 +66,7 @@
 
 /mob/proc/AIize(move=1)
 	if(client)
-		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // stop the jams for AIs
+		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1)) // stop the jams for AIs
 	var/mob/living/silicon/ai/O = new (loc, GLOB.using_map.default_law_type,,1)//No MMI but safety is in effect.
 	O.invisibility = 0
 	O.aiRestorePowerRoutine = 0
@@ -312,8 +312,6 @@
 	if(ispath(MP, /mob/living/simple_mob/animal/space/carp))
 		return 1
 	if(ispath(MP, /mob/living/simple_mob/construct))
-		return 1
-	if(ispath(MP, /mob/living/simple_mob/tomato))
 		return 1
 	if(ispath(MP, /mob/living/simple_mob/animal/passive/mouse))
 		return 1 //It is impossible to pull up the player panel for mice (Fixed! - Nodrak)

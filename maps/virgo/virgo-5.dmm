@@ -115,8 +115,8 @@
 /area/outpost/research/mixing)
 "aw" = (
 /obj/structure/table/standard,
-/obj/item/wrench,
-/obj/item/screwdriver{
+/obj/item/tool/wrench,
+/obj/item/tool/screwdriver{
 	pixel_y = 10
 	},
 /obj/machinery/newscaster{
@@ -2694,7 +2694,7 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/research/hallway/toxins_hallway)
 "fv" = (
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/toxins_misc_lab)
@@ -8537,7 +8537,7 @@
 "qv" = (
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
-/obj/item/screwdriver{
+/obj/item/tool/screwdriver{
 	pixel_y = 15
 	},
 /obj/item/melee/baton/loaded,
@@ -9163,7 +9163,7 @@
 "rH" = (
 /obj/item/storage/excavation,
 /obj/item/pickaxe,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/structure/table/steel,
@@ -9173,7 +9173,7 @@
 "rI" = (
 /obj/item/storage/excavation,
 /obj/item/pickaxe,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/structure/table/steel,
@@ -15089,7 +15089,7 @@
 "Df" = (
 /obj/structure/table/rack,
 /obj/item/pickaxe/hammer,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/crowbar,
 /obj/item/shovel,
 /turf/simulated/floor/tiled/dark,
@@ -15097,7 +15097,7 @@
 "Dg" = (
 /obj/structure/table/rack,
 /obj/item/pickaxe,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/crowbar,
 /obj/item/shovel,
 /obj/machinery/light,
@@ -15136,7 +15136,7 @@
 /area/outpost/mining_main/south_hall)
 "Dl" = (
 /obj/item/crowbar,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/storage/toolbox/mechanical,
 /obj/structure/table/steel,
 /obj/machinery/light,
@@ -15711,9 +15711,9 @@
 /area/outpost/mining_main/refinery)
 "Ey" = (
 /obj/structure/table/steel,
-/obj/item/screwdriver,
+/obj/item/tool/screwdriver,
 /obj/item/crowbar,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/outpost/mining_main/refinery)
 "Ez" = (

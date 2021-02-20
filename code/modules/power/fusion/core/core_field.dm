@@ -119,7 +119,7 @@
 
 	START_PROCESSING(SSobj, src)
 
-/obj/effect/fusion_em_field/process()
+/obj/effect/fusion_em_field/process(delta_time)
 	//make sure the field generator is still intact
 	if(!owned_core || QDELETED(owned_core))
 		qdel(src)
@@ -332,7 +332,6 @@
 			if(skip_obstacle)
 				continue
 
-			log_debug("R-UST DEBUG: [AM] is [AM.type]")
 			AM.visible_message("<span class='danger'>The field buckles visibly around \the [AM]!</span>")
 			tick_instability += rand(15,30)
 			AM.emp_act(empsev)

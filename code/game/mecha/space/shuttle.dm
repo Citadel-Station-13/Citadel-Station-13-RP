@@ -43,12 +43,12 @@
 
 /obj/mecha/working/hoverpod/Initialize()
 	. = ..()
-	ion_trail.stop()
+	ion_trail?.stop()
 
 /obj/mecha/working/hoverpod/shuttlecraft/moved_inside(var/mob/living/carbon/human/H as mob)
 	. = ..(H)
 	if(.)
-		ion_trail.start()
+		ion_trail?.start()
 
 /obj/mecha/working/hoverpod/shuttlecraft/go_out()
 	. = ..()

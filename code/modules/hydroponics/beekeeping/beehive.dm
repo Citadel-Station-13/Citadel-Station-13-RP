@@ -30,10 +30,10 @@
 			if(81 to 100)
 				overlays += "bees3"
 
-/obj/machinery/beehive/examine(var/mob/user)
-	..()
+/obj/machinery/beehive/examine(mob/user)
+	. = ..()
 	if(!closed)
-		to_chat(user, "The lid is open.")
+		. += "The lid is open."
 
 /obj/machinery/beehive/attackby(var/obj/item/I, var/mob/user)
 	if(I.is_crowbar())
@@ -137,7 +137,7 @@
 			to_chat(user, "<span class='notice'>You take all filled honeycombs out.</span>")
 		return
 
-/obj/machinery/beehive/process()
+/obj/machinery/beehive/process(delta_time)
 	if(closed && !smoked && bee_count)
 		pollinate_flowers()
 		update_icon()

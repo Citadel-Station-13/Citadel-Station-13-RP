@@ -49,7 +49,7 @@
 
 	if(prob(speak_chance))
 		for(var/mob/M in view())
-			M << 'sound/effects/mouse_squeak.ogg'
+			SEND_SOUND(M, sound('sound/effects/mouse_squeak.ogg'))
 
 	if(!resting && prob(0.5))
 		lay_down()
@@ -96,8 +96,8 @@
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color='blue'>\icon[src] Squeek!</font>")
-			M << 'sound/effects/mouse_squeak.ogg'
+			M.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] Squeek!</font>")
+			SEND_SOUND(M, sound('sound/effects/mouse_squeak.ogg'))
 	..()
 
 /mob/living/simple_mob/mouse/death()

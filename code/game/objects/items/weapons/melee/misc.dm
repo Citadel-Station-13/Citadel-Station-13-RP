@@ -61,12 +61,11 @@
 		var/mob/living/carbon/human/H = src.loc
 		H.update_inv_l_hand(0)
 		H.update_inv_r_hand()
-	..()
 
 // Randomizes color
-/obj/item/melee/umbrella/random/New()
-	color = "#"+get_random_colour()
-	..()
+/obj/item/melee/umbrella/random/Initialize(mapload)
+	add_atom_colour("#"+get_random_colour(), FIXED_COLOUR_PRIORITY)
+	return ..()
 
 /obj/item/melee/cursedblade
 	name = "crystal blade"

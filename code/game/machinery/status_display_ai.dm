@@ -84,7 +84,7 @@ var/list/ai_status_emotions = list(
 	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions
 	emotion = emote
 
-/obj/machinery/ai_status_display/process()
+/obj/machinery/ai_status_display/process(delta_time)
 	return
 
 /obj/machinery/ai_status_display/proc/update()

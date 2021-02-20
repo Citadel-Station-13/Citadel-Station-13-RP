@@ -15,23 +15,6 @@
 /obj/away_mission_init/mining_planet/Initialize()
 	return INITIALIZE_HINT_QDEL
 
-// Mining Planet world areas
-/area/triumph_away/mining_planet
-	name = "Mining Planet"
-	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/
-	dynamic_lighting = 1
-	dynamic_lighting = TRUE
-
-/area/triumph_away/mining_planet/explored
-	name = "Mining Planet - Explored (E)"
-	icon_state = "red"
-	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
-
-/area/triumph_away/mining_planet/unexplored
-	name = "Mining Planet - Unexplored (UE)"
-	icon_state = "yellow"
-
 // This is a special subtype of the thing that generates ores on a map
 // It will generate more rich ores because of the lower numbers than the normal one
 /datum/random_map/noise/ore/mining_planet

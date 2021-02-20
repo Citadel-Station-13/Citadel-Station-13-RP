@@ -344,9 +344,10 @@
 			/obj/item/storage/belt/security = 3,
 			/obj/item/clothing/glasses/sunglasses/sechud = 3,
 			/obj/item/radio/headset/headset_sec/alt = 3,
-			/obj/item/clothing/suit/storage/hooded/wintercoat/security = 3
+			/obj/item/clothing/suit/storage/hooded/wintercoat/security = 3,
+			/obj/item/storage/belt/dualholster = 3
 			)
-	cost = 10
+	cost = 15
 	containertype = /obj/structure/closet/crate
 	containername = "Security surplus equipment"
 
@@ -603,7 +604,8 @@
 			/obj/item/clothing/accessory/holster/armpit,
 			/obj/item/clothing/accessory/holster/waist,
 			/obj/item/clothing/accessory/holster/hip,
-			/obj/item/clothing/accessory/holster/leg
+			/obj/item/clothing/accessory/holster/leg,
+			/obj/item/storage/belt/dualholster
 			)
 
 /datum/supply_pack/security/kevlarkit
@@ -647,5 +649,26 @@
 			/obj/item/storage/box/trackimp = 1
 			)
 	cost = 30
+	containertype = /obj/structure/closet/crate/secure
+	access = access_armory
+
+/datum/supply_pack/security/battlerifle
+	name = "Battle Rifle Pack"
+	contains = list(
+			/obj/item/gun/projectile/automatic/battlerifle = 2,
+			/obj/item/ammo_magazine/m95 = 4
+			)
+	cost = 60
+	containertype = /obj/structure/closet/crate/secure
+	access = access_armory
+
+/datum/supply_pack/security/quadshot
+	name = "Quad Shotgun Pack"
+	contains = list(
+			/obj/item/gun/projectile/shotgun/doublebarrel/quad = 2,
+			/obj/item/storage/box/shotgunshells = 2,
+			/obj/item/storage/belt/security/tactical/bandolier = 2,
+			)
+	cost = 70
 	containertype = /obj/structure/closet/crate/secure
 	access = access_armory

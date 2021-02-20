@@ -17,5 +17,5 @@
 	log_and_message_admins("has stopped maintaining [src].")
 	return ..()
 
-/obj/item/spell/aura/process()
+/obj/item/spell/aura/process(delta_time)
 	return

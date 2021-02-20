@@ -88,7 +88,7 @@ Thus, the two variables affect pump operation are set in New():
 /obj/machinery/atmospherics/binary/pump/hide(var/i)
 	update_underlays()
 
-/obj/machinery/atmospherics/binary/pump/process()
+/obj/machinery/atmospherics/binary/pump/process(delta_time)
 	last_power_draw = 0
 	last_flow_rate = 0
 
@@ -143,7 +143,7 @@ Thus, the two variables affect pump operation are set in New():
 
 	return 1
 
-/obj/machinery/atmospherics/binary/pump/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/atmospherics/binary/pump/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(stat & (BROKEN|NOPOWER))
 		return
 
@@ -212,7 +212,7 @@ Thus, the two variables affect pump operation are set in New():
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 	usr.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 	return
 
 /obj/machinery/atmospherics/binary/pump/Topic(href,href_list)

@@ -51,7 +51,7 @@
 	else if(W.is_wrench())
 		src.anchored = !src.anchored
 		playsound(src, W.usesound, 75, 1)
-		src.visible_message("<font color='blue'>\icon[src] [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</font>")
+		src.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</font>")
 
 		if(anchored)
 			spawn(0)
@@ -101,7 +101,7 @@
 	user << browse(t, "window=shield_capacitor;size=500x400")
 	user.set_machine(src)
 
-/obj/machinery/shield_capacitor/process()
+/obj/machinery/shield_capacitor/process(delta_time)
 	if (!anchored)
 		active = 0
 

@@ -115,8 +115,8 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/announce() //to be called when round starts
 	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
-	if(round_description) world << "[round_description]"
-	if(round_autoantag) world << "Antagonists will be added to the round automagically as needed."
+	if(round_description) to_chat(world, "[round_description]")
+	if(round_autoantag) to_chat(world, "Antagonists will be added to the round automagically as needed.")
 	if(antag_templates && antag_templates.len)
 		var/antag_summary = "<b>Possible antagonist types:</b> "
 		var/i = 1
@@ -337,7 +337,7 @@ var/global/list/additional_antag_types = list()
 		text += " (<b>[escaped_total>0 ? escaped_total : "none"] [SSemergencyshuttle.evac ? "escaped" : "transferred"]</b>) and <b>[ghosts] ghosts</b>.<br>"
 	else
 		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
-	world << text
+	to_chat(world, text)
 
 	if(clients > 0)
 		feedback_set("round_end_clients",clients)
@@ -505,7 +505,7 @@ proc/display_roundstart_logout_report()
 
 	for(var/mob/M in mob_list)
 		if(M.client && M.client.holder)
-			M << msg
+			to_chat(M, msg)
 
 proc/get_nt_opposed()
 	var/list/dudes = list()
@@ -533,7 +533,7 @@ proc/get_nt_opposed()
 	set category = "OOC"
 
 	if(!SSticker || !SSticker.mode)
-		usr << "Something is terribly wrong; there is no gametype."
+		to_chat(usr, "Something is terribly wrong; there is no gametype.")
 		return
 
 	if(master_mode != "secret")

@@ -9,6 +9,8 @@
 	siemens_coefficient = 0.8
 	species_restricted = null
 	step_volume_mod = 0.5
+	drop_sound = 'sound/items/drop/rubber.ogg'
+	pickup_sound = 'sound/items/pickup/rubber.ogg'
 
 /obj/item/clothing/shoes/mime
 	name = "mime shoes"
@@ -24,6 +26,9 @@
 	item_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
+	drop_sound = 'sound/items/drop/rubber.ogg'
+	pickup_sound = 'sound/items/pickup/rubber.ogg'
+
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
@@ -103,6 +108,8 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "Fluffy!"
 	icon_state = "slippers"
 	species_restricted = null
+	drop_sound = 'sound/items/drop/clothing.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
 /obj/item/clothing/shoes/slippers_worn
 	name = "worn bunny slippers"
@@ -167,6 +174,8 @@ obj/item/clothing/shoes/sandal/clogs
 	force = 0
 	w_class = ITEMSIZE_SMALL
 	species_restricted = null
+	drop_sound = 'sound/items/drop/clothing.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
 /obj/item/clothing/shoes/boots/ranger
 	var/bootcolor = "white"
@@ -204,3 +213,28 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "Roman Caligae"
 	desc = "Hardy leather sandles capable of holding up for many miles."
 	icon_state = "roman"
+
+/obj/item/clothing/shoes/boots/bsing
+	name = "blue performer's boots"
+	desc = "Dancing in these makes you feel lighter than air."
+	icon_state = "bsing"
+
+/obj/item/clothing/shoes/boots/ysing
+	name = "yellow performer's boots"
+	desc = "Dance down the path laid out by your predecessor."
+	icon_state = "ysing"
+
+/obj/item/clothing/shoes/santa
+	name = "santa boots"
+	desc = "If you smack these boots, a cloud of fine coal will sometimes puff out."
+	icon_state = "santaboots"
+
+/obj/item/clothing/shoes/holiday
+	name = "holiday shoes"
+	desc = "These red, fur lined boots keep you warm inside and out."
+	icon_state = "christmasbootsr"
+
+/obj/item/clothing/shoes/holiday/green
+	name = "green holiday shoes"
+	desc = "The tips of these fur lined boots curl slightly, lending them a whimsical flair."
+	icon_state = "christmasbootsg"

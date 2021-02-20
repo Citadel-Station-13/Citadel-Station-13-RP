@@ -10,7 +10,7 @@
 	icon_state = "healthhud"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH)
+	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "Prescription Health Scanner HUD"
@@ -53,29 +53,39 @@
 	icon_state = "glasses"
 	var/datum/nano_module/arscreen
 	var/arscreen_path
+	var/datum/tgui_module/tgarscreen
+	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
+	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED,VIS_CH_BACKUP)
 	plane_slots = list(slot_glasses)
 
 /obj/item/clothing/glasses/omnihud/New()
 	..()
 	if(arscreen_path)
 		arscreen = new arscreen_path(src)
+	if(tgarscreen_path)
+		tgarscreen = new tgarscreen_path(src)
 
 /obj/item/clothing/glasses/omnihud/Destroy()
 	QDEL_NULL(arscreen)
+	QDEL_NULL(tgarscreen)
 	. = ..()
 
 /obj/item/clothing/glasses/omnihud/dropped()
 	if(arscreen)
 		SSnanoui.close_uis(src)
+	if(tgarscreen)
+		SStgui.close_uis(src)
 	..()
 
 /obj/item/clothing/glasses/omnihud/emp_act(var/severity)
 	var/disconnect_ar = arscreen
 	arscreen = null
+	var/disconnect_tgar = tgarscreen
+	tgarscreen = null
 	spawn(20 SECONDS)
 		arscreen = disconnect_ar
+		tgarscreen = disconnect_tgar
 	..()
 
 /obj/item/clothing/glasses/omnihud/proc/flashed()
@@ -116,13 +126,13 @@
 	These have been upgraded with medical records access and virus database integration."
 	mode = "med"
 	action_button_name = "AR Console (Crew Monitor)"
-	arscreen_path = /datum/nano_module/crew_monitor
+	tgarscreen_path = /datum/tgui_module/crew_monitor/glasses
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_AUGMENTED)
 
-	ar_interact(var/mob/living/carbon/human/user)
-		if(arscreen)
-			arscreen.ui_interact(user,"main",null,1,glasses_state)
-		return 1
+/obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
+	if(tgarscreen)
+		tgarscreen.ui_interact(user)
+	return 1
 
 /obj/item/clothing/glasses/omnihud/sec
 	name = "\improper AR-S glasses"
@@ -134,10 +144,10 @@
 	arscreen_path = /datum/nano_module/alarm_monitor/security
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_WANTED,VIS_AUGMENTED)
 
-	ar_interact(var/mob/living/carbon/human/user)
-		if(arscreen)
-			arscreen.ui_interact(user,"main",null,1,glasses_state)
-		return 1
+/obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
+	if(arscreen)
+		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
+	return 1
 
 /obj/item/clothing/glasses/omnihud/eng
 	name = "\improper AR-E glasses"
@@ -148,10 +158,10 @@
 	action_button_name = "AR Console (Station Alerts)"
 	arscreen_path = /datum/nano_module/alarm_monitor/engineering
 
-	ar_interact(var/mob/living/carbon/human/user)
-		if(arscreen)
-			arscreen.ui_interact(user,"main",null,1,glasses_state)
-		return 1
+/obj/item/clothing/glasses/omnihud/eng/ar_interact(var/mob/living/carbon/human/user)
+	if(arscreen)
+		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
+	return 1
 
 /obj/item/clothing/glasses/omnihud/rnd
 	name = "\improper AR-R glasses"
@@ -161,6 +171,7 @@
 	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = null
 	icon_state = "purple"
+	clothing_flags = SCAN_REAGENTS
 
 /obj/item/clothing/glasses/omnihud/eng/meson
 	name = "meson scanner HUD"
@@ -271,4 +282,4 @@
 	icon_state = "medpatch"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH)
+	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)

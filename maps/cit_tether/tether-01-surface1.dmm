@@ -1797,7 +1797,7 @@
 "adU" = (
 /obj/structure/table/rack,
 /obj/item/pickaxe/hammer,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/crowbar,
 /obj/item/pickaxe/shovel,
 /obj/effect/floor_decal/borderfloor,
@@ -1809,7 +1809,7 @@
 "adV" = (
 /obj/structure/table/rack,
 /obj/item/pickaxe,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/crowbar,
 /obj/item/pickaxe/shovel,
 /obj/machinery/light,
@@ -6054,7 +6054,7 @@
 "aoO" = (
 /obj/item/storage/excavation,
 /obj/item/pickaxe,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/structure/table/steel,
@@ -6064,7 +6064,7 @@
 "aoP" = (
 /obj/item/storage/excavation,
 /obj/item/pickaxe,
-/obj/item/wrench,
+/obj/item/tool/wrench,
 /obj/item/measuring_tape,
 /obj/item/stack/flag/yellow,
 /obj/structure/table/steel,
@@ -17479,7 +17479,7 @@
 	pixel_x = -6;
 	pixel_y = 2
 	},
-/obj/item/screwdriver,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "bdZ" = (

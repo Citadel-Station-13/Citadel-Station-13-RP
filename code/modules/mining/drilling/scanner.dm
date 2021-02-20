@@ -12,9 +12,9 @@
 	var/scan_exact_ores = FALSE
 	var/scan_exact_amounts = FALSE
 
-/obj/item/mining_scanner/examine()
+/obj/item/mining_scanner/examine(mob/user)
 	. = ..()
-	to_chat(usr, "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range.")
+	. += "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range."
 
 /obj/item/mining_scanner/AltClick(mob/user)
 	var/newscan = text2num(input(usr,"What would you like to set the scan range to? Maximum of [maxscanrange].","New Scan Range",maxscanrange))
@@ -66,7 +66,7 @@
 				else
 					metals[ore_type] = T.resources[metal]
 
-	to_chat(user, "\icon[src] <span class='notice'>The scanner beeps and displays a readout.</span>")
+	to_chat(user, "[icon2html(thing = src, target = user)] <span class='notice'>The scanner beeps and displays a readout.</span>")
 	var/list/results = list()
 	for(var/ore_type in metals)
 		var/result = "no sign"

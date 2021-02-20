@@ -44,15 +44,15 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the research director"
+	supervisors = "the facility director"
 	selection_color = "#d6d05c"
 	idtype = /obj/item/card/id/explorer/head/pathfinder
 	economic_modifier = 7
 	minimal_player_age = 7
 	alt_titles = list("Expedition Leader", "Lead Pioneer", "Exploration Chief")
 
-	access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
-	minimal_access = list(access_eva, access_maint_tunnels, access_tox, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
+	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
+	minimal_access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	outfit_type = /decl/hierarchy/outfit/job/pathfinder
 
 /datum/job/pilot
@@ -69,8 +69,8 @@
 	economic_modifier = 5
 	minimal_player_age = 3
 	alt_titles = list("Aviator")
-	access = list(access_pilot)
-	minimal_access = list(access_pilot)
+	access = list(access_pilot, access_external_airlocks)
+	minimal_access = list(access_pilot, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/pilot
 
 /datum/job/explorer
@@ -86,8 +86,8 @@
 	idtype = /obj/item/card/id/explorer/explorer
 	economic_modifier = 6
 	alt_titles = list("Field Scout", "Pioneer", "Jr. Explorer")
-	access = list(access_explorer, access_research)
-	minimal_access = list(access_explorer, access_research)
+	access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
+	minimal_access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
 	outfit_type = /decl/hierarchy/outfit/job/explorer2
 
 /datum/job/sar
@@ -104,8 +104,8 @@
 	economic_modifier = 6
 	minimal_player_age = 3
 	alt_titles = list("Search and Rescue")
-	access = list(access_medical, access_eva, access_maint_tunnels, access_research, access_external_airlocks, access_explorer, access_morgue, access_chemistry)
-	minimal_access = list(access_medical, access_explorer, access_morgue, access_research, access_maint_tunnels, access_external_airlocks)
+	access = list(access_medical, access_eva, access_maint_tunnels, access_external_airlocks, access_explorer, access_morgue, access_chemistry)
+	minimal_access = list(access_medical, access_explorer, access_morgue, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/medical/sar
 
 /datum/job/offduty_exploration

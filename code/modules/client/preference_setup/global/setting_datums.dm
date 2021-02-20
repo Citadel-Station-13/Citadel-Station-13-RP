@@ -74,8 +74,8 @@ var/list/_client_preferences_by_type
 
 /datum/client_preference/play_ambiance/toggled(var/mob/preference_mob, var/enabled)
 	if(!enabled)
-		preference_mob << sound(null, repeat = 0, wait = 0, volume = 0, channel = 1)
-		preference_mob << sound(null, repeat = 0, wait = 0, volume = 0, channel = 2)
+		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 1))
+		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 2))
 //VOREStation Add - Need to put it here because it should be ordered riiiight here.
 /datum/client_preference/play_jukebox
 	description ="Play jukebox music"
@@ -152,6 +152,18 @@ var/list/_client_preferences_by_type
 	key = "ATTACK_ICONS"
 	enabled_description = "Show"
 	disabled_description = "Hide"
+
+/datum/client_preference/pickup_sounds
+	description = "Picked Up Item Sounds"
+	key = "SOUND_PICKED"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"
+
+/datum/client_preference/drop_sounds
+	description = "Dropped Item Sounds"
+	key = "SOUND_DROPPED"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"
 
 /datum/client_preference/hotkeys_default
 	description ="Hotkeys Default"
@@ -251,6 +263,19 @@ var/list/_client_preferences_by_type
 	enabled_description = "Announce"
 	disabled_description = "Silent"
 
+/datum/client_preference/status_indicators
+	description = "Status Indicators"
+	key = "SHOW_STATUS"
+	enabled_description = "Show"
+	disabled_description = "Hide"
+
+/datum/client_preference/status_indicators/toggled(mob/preference_mob, enabled)
+	. = ..()
+	if(preference_mob && preference_mob.plane_holder)
+		var/datum/plane_holder/PH = preference_mob.plane_holder
+		PH.set_vis(VIS_STATUS, enabled)
+
+
 /********************
 * Staff Preferences *
 ********************/
@@ -317,3 +342,9 @@ var/list/_client_preferences_by_type
 	enabled_by_default = FALSE
 	enabled_description = "Obfuscate Ghost"
 	disabled_description = "Normal Ghost"
+
+/datum/client_preference/autocorrect
+	description = "Autocorrect"
+	key = "AUTOCORRECT"
+	enabled_description = "Enabled"
+	disabled_description = "Disabled"

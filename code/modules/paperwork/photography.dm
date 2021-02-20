@@ -29,6 +29,8 @@ var/global/photo_count = 0
 	icon_state = "photo"
 	item_state = "paper"
 	w_class = ITEMSIZE_SMALL
+	drop_sound = 'sound/items/drop/paper.ogg'
+	pickup_sound = 'sound/items/pickup/paper.ogg'
 	var/id
 	var/icon/img	//Big photo image
 	var/scribble	//Scribble on the back.
@@ -53,7 +55,7 @@ var/global/photo_count = 0
 /obj/item/photo/examine(mob/user)
 	if(in_range(user, src))
 		show(user)
-		user << desc
+		return ..()
 	else
 		to_chat(user, "<span class='notice'>It is too far away.</span>")
 

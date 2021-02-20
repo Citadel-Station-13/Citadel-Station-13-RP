@@ -19,7 +19,6 @@
 	var/replaces_nutriment = 0
 	var/collects_produce = 0
 	var/removes_dead = 0
-	var/times_idle = 0 //VOREStation Add
 	var/obj/structure/reagent_dispensers/watertank/tank
 
 
@@ -52,7 +51,7 @@
 		dat += "Weed plants: <A href='?src=\ref[src];weed=1'>[uproots_weeds ? "Yes" : "No"]</A><BR>"
 		dat += "<br>Nutriment controls:<br>"
 		dat += "Replace fertilizer: <A href='?src=\ref[src];replacenutri=1'>[replaces_nutriment ? "Yes" : "No"]</A><BR>"
-		/* VOREStation Removal - No whole-job lag-bot automation.
+		/*VOREStation Removal - No whole-job lag-bot automation.
 		dat += "<br>Plant controls:<br>"
 		dat += "Collect produce: <A href='?src=\ref[src];collect=1'>[collects_produce ? "Yes" : "No"]</A><BR>"
 		dat += "Remove dead plants: <A href='?src=\ref[src];removedead=1'>[removes_dead ? "Yes" : "No"]</A><BR>"
@@ -123,20 +122,16 @@
 	if(emagged)
 		for(var/mob/living/carbon/human/H in view(7, src))
 			target = H
-			times_idle = 0 //VOREStation Add - Idle shutoff time
 			return
 	else
 		for(var/obj/machinery/portable_atmospherics/hydroponics/tray in view(7, src))
 			if(confirmTarget(tray))
 				target = tray
-				times_idle = 0 //VOREStation Add - Idle shutoff time
 				return
 		if(!target && refills_water && tank && tank.reagents.total_volume < tank.reagents.maximum_volume)
 			for(var/obj/structure/sink/source in view(7, src))
 				target = source
-				times_idle = 0 //VOREStation Add - Idle shutoff time
 				return
-	if(++times_idle == 150) turn_off() //VOREStation Add - Idle shutoff time
 /mob/living/bot/farmbot/calcTargetPath() // We need to land NEXT to the tray, because the tray itself is impassable
 	for(var/trayDir in list(NORTH, SOUTH, EAST, WEST))
 		target_path = AStar(get_turf(loc), get_step(get_turf(target), trayDir), /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, max_target_dist, id = botcard)

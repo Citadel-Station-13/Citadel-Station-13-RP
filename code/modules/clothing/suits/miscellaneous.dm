@@ -213,6 +213,41 @@
 	flags_inv = HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	item_state_slots = list(slot_r_hand_str = "red_labcoat", slot_l_hand_str = "red_labcoat")
 
+/obj/item/clothing/suit/bunny
+	name = "bunny suit"
+	desc = "For the authentic bouncing experience."
+	icon_state = "bunnysuit"
+	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
+	flags_inv = HIDEJUMPSUIT
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/suit/pharaoh
+	name = "pharaoh's garb"
+	desc = "Look upon my works, ye mighty, and despair."
+	icon_state = "pharaoh"
+	item_state_slots = list(slot_r_hand_str = "leather_coat", slot_l_hand_str = "leather_coat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/suit/drfreeze
+	name = "cryogenic scientist coat"
+	desc = "A thick coat that cannot keep your heart warm. At least you can say it looks ice."
+	icon_state = "drfreeze_coat"
+
+/obj/item/clothing/suit/snowman
+	name = "snowman suit"
+	desc = "A hollowed out snowman, capable of being worn, if you don't mind the chill."
+	icon_state = "snowman"
+
+/obj/item/clothing/suit/storage/toggle/holiday
+	name = "holiday coat"
+	desc = "A fur lined red coat. Wearing this makes you feel slightly more charitable."
+	icon_state = "christmascoatr"
+
+/obj/item/clothing/suit/storage/toggle/holiday/green
+	name = "green holiday coat"
+	desc = "A fur lined green coat. Wearing this makes you feel slightly more charitable."
+	icon_state = "christmascoatg"
+
 /*
  * Misc
  */
@@ -357,6 +392,14 @@ obj/item/clothing/suit/kamishimo
 	icon_state = "slim_leather"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/gothcoat
+	name = "gothic coat"
+	desc = "A sleek black trenchcoat, paired with a stylish red scarf. Worn either by the coolest, or the weirdest."
+	icon_state = "gothcoat"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
 /*

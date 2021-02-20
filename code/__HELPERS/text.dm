@@ -264,6 +264,38 @@
 /proc/capitalize(var/t as text)
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
 
+/proc/autocorrect(var/input as text) // syntax is "stringtoreplace"="stringtoreplacewith"
+	return input = replace_characters(input, list(
+											" i "=" I ",
+											"i'm"="I'm",
+											"s's"="s'",
+											"isnt"="isn't",
+											"dont"="don't",
+											"shouldnt"="shouldn't",
+											" ive "=" I've ",
+											"whove"="who've",
+											"whod"="who’d",
+											"whats"="what’s",
+											"whatd"="what’d",
+											"thats"="that’s",
+											"thatll"="that’ll",
+											"thatd"="that’d",
+											" nows "=" now’s ",
+											"isnt"="isn’t",
+											" arent "=" aren’t ",
+											"wasnt"="wasn’t",
+											"werent"="weren’t",
+											"havent"="haven’t",
+											"hasnt"="hasn’t",
+											"hadnt"="hadn’t",
+											"doesnt"="doesn’t",
+											"didnt"="didn’t",
+											"couldnt"="couldn’t",
+											"wouldnt"="wouldn’t",
+											"mustnt"="mustn’t",
+											"shouldnt"="shouldn’t"
+											))
+
 //This proc strips html properly, remove < > and all text between
 //for complete text sanitizing should be used sanitize()
 /proc/strip_html_properly(var/input)
@@ -346,11 +378,12 @@ proc/TextPreview(var/string,var/len=40)
 //For generating neat chat tag-images
 //The icon var could be local in the proc, but it's a waste of resources
 //	to always create it and then throw it out.
-/var/icon/text_tag_icons = new('./icons/chattags.dmi')
-/proc/create_text_tag(var/tagname, var/tagdesc = tagname, var/client/C = null)
+GLOBAL_VAR_INIT(text_tag_icons, new /icon('./icons/chattags.dmi'))
+
+/proc/create_text_tag(tagname, tagdesc = tagname, client/C)
 	if(!(C && C.is_preference_enabled(/datum/client_preference/chat_tags)))
 		return tagdesc
-	return "<IMG src='\ref[text_tag_icons.icon]' class='text_tag' iconstate='[tagname]'" + (tagdesc ? " alt='[tagdesc]'" : "") + ">"
+	return icon2html(GLOB.text_tag_icons, C, tagname)
 
 /proc/contains_az09(var/input)
 	for(var/i=1, i<=length(input), i++)
@@ -502,4 +535,3 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 
 /proc/random_color()
 	return random_string(6, GLOB.hex_characters)
-

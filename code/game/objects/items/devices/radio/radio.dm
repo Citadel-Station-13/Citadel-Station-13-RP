@@ -96,9 +96,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(b_stat)
 		wires.Interact(user)
 
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
-/obj/item/radio/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/radio/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data["mic_status"] = broadcasting
@@ -234,7 +234,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	var/datum/radio_frequency/connection = null
 	if(channel && channels && channels.len > 0)
 		if (channel == "department")
-			//world << "DEBUG: channel=\"[channel]\" switching to \"[channels[1]]\""
+			//to_chat(world, "DEBUG: channel=\"[channel]\" switching to \"[channels[1]]\"")
 			channel = channels[1]
 		connection = secure_radio_connections[channel]
 	else
@@ -356,7 +356,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		var/list/jamming = is_jammed(src)
 		if(jamming)
 			var/distance = jamming["distance"]
-			to_chat(M,"<span class='danger'>\icon[src] You hear the [distance <= 2 ? "loud hiss" : "soft hiss"] of static.</span>")
+			to_chat(M,"<span class='danger'>[icon2html(thing = src, target = M)] You hear the [distance <= 2 ? "loud hiss" : "soft hiss"] of static.</span>")
 			return FALSE
 
 		// First, we want to generate a new radio signal
@@ -406,7 +406,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			R.receive_signal(signal)
 
 		// Receiving code can be located in Telecommunications.dm
-		if(signal.data["done"] && position.z in signal.data["level"])
+		if(signal.data["done"] && (position.z in signal.data["level"]))
 			return TRUE //Huzzah, sent via subspace
 
 		else if(adhoc_fallback) //Less huzzah, we have to fallback
@@ -461,7 +461,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
 		R.receive_signal(signal)
 
-	if(signal.data["done"] && position.z in signal.data["level"])
+	if(signal.data["done"] && (position.z in signal.data["level"]))
 		if(adhoc_fallback)
 			to_chat(loc,"<span class='notice'>\The [src] pings as it reestablishes subspace communications.</span>")
 			subspace_transmission = TRUE
@@ -554,9 +554,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	. = ..()
 	if ((in_range(src, user) || loc == user))
 		if (b_stat)
-			user.show_message("<span class='notice'>\The [src] can be attached and modified!</span>")
+			. += "<span class='notice'>\The [src] can be attached and modified!</span>"
 		else
-			user.show_message("<span class='notice'>\The [src] can not be modified or attached!</span>")
+			. += "<span class='notice'>\The [src] can not be modified or attached!</span>"
 	return
 
 /obj/item/radio/attackby(obj/item/W as obj, mob/user as mob)
@@ -723,7 +723,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	. = ..()
 
-/obj/item/radio/borg/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/radio/borg/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data["mic_status"] = broadcasting
@@ -799,7 +799,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 //Pathfinder's Subspace Radio
 /obj/item/subspaceradio
 	name = "subspace radio"
-	desc = "A powerful new radio recently gifted to Nanotrasen from Ward Takahashi, this communications device has the ability to send and recieve transmissions from anywhere."
+	desc = "A powerful new radio originally gifted to Nanotrasen from Ward Takahashi. Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere."
 	catalogue_data = list()///datum/category_item/catalogue/information/organization/ward_takahashi)
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_override = 'icons/mob/back_vr.dmi'
@@ -922,3 +922,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	..() //update twohanding
 	if(base_unit)
 		base_unit.reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
+
+/obj/item/subspaceradio/commerce
+	name = "commercial subspace radio"
+	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or NanoTrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."

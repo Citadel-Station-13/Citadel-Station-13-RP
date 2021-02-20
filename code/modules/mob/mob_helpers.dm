@@ -85,6 +85,30 @@ proc/getsensorlevel(A)
 /proc/is_admin(var/mob/user)
 	return check_rights(R_ADMIN, 0, user) != 0
 
+/**
+ * Returns true if the user should have admin AI level access
+ */
+/proc/IsAdminGhost(var/mob/user)
+	if(!user)		//Are they a mob? Auto interface updates call this with a null src
+		return
+	if(!user.client) // Do they have a client?
+		return
+	if(!isobserver(user)) // Are they a ghost?
+		return
+	if(!check_rights(R_ADMIN, 0, user)) // Are they allowed?
+		return
+	if(!user.client.AI_Interact) // Do they have it enabled?
+		return
+	return TRUE
+
+/**
+ * Returns true if the AI has silicon control with those flags
+ */
+/* - Unused until AI interaction refactor
+/atom/proc/hasSiliconAccessInArea(mob/user, flags = PRIVILEDGES_SILICON, all = FALSE)
+	return all? ((user.silicon_privileges & (flags)) == flags) : (user.silicon_privileges & flags)
+*/
+
 /*
 	Miss Chance
 */
@@ -420,7 +444,7 @@ proc/is_blind(A)
 					else										// Everyone else (dead people who didn't ghost yet, etc.)
 						lname = name
 				lname = "<span class='name'>[lname]</span> "
-			to_chat(M, "<span class='deadsay'>" + create_text_tag("dead", "DEAD:", M.client) + " [lname][follow][message]</span>")
+			to_chat(M, "<span class='deadsay'>" + "<b>DEAD:</b> "+ "[lname][follow][message]</span>")
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
 	for(var/mob/M in player_list)
@@ -434,7 +458,7 @@ proc/is_blind(A)
 				lname = "[subject.name] ([subject.x],[subject.y],[subject.z])"
 
 			lname = "<span class='name'>[lname]</span> "
-			to_chat(M, "<span class='deadsay'>" + create_text_tag("event_dead", "EVENT:", M.client) + " [lname][follow][message]</span>")
+			to_chat(M, "<span class='deadsay'>" + "EVENT:"+ " [lname][follow][message]</span>")
 
 //Announces that a ghost has joined/left, mainly for use with wizards
 /proc/announce_ghost_joinleave(O, var/joined_ghosts = 1, var/message = "")
@@ -678,3 +702,6 @@ var/global/image/backplane
 		return
 
 	item.screen_loc = screen_place
+
+/mob/proc/can_see_reagents()
+	return stat == DEAD || issilicon(src) //Dead guys and silicons can always see reagents

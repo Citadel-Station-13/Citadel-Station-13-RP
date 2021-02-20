@@ -42,7 +42,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		next_message = world.time + initial_delay
 		START_PROCESSING(SSobj, src)
 
-/datum/lore/atc_controller/process()
+/datum/lore/atc_controller/process(delta_time)
 	if(world.time >= next_message)
 		next_message = world.time + rand(delay_min, delay_max)
 		random_convo()

@@ -1,9 +1,3 @@
-
-// Turfmakers
-#define TRIUMPH_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_TRIUMPH
-#define TRIUMPH_TURF_CREATE(x)	x/triumph/initial_gas_mix = ATMOSPHERE_ID_TRIUMPH;x/triumph/outdoors=TRUE;x/triumph/allow_gas_overlays = FALSE
-#define TRIUMPH_TURF_CREATE_UN(x)	x/triumph/initial_gas_mix=ATMOSPHERE_ID_TRIUMPH
-
 // Normal map defs
 #define Z_LEVEL_DECK_ONE				1
 #define Z_LEVEL_DECK_TWO				2
@@ -27,7 +21,7 @@
 #define Z_LEVEL_ROGUEMINE_4				18
 
 #define Z_LEVEL_TRADEPORT				19
-
+#define Z_LEVEL_LAVALAND				20
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
 #define NETWORK_TCOMMS "Telecommunications"
@@ -137,13 +131,11 @@
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
 		/area/vacant/vacant_site/east,
-		/area/triumph_away,
 		/area/solar/)
 	unit_test_exempt_from_atmos = list(
 		/area/engineering/atmos/intake,
 		/area/tcommsat/chamber,
 		/area/engineering/engineering_airlock,
-		/area/triumph_away,
 		/area/solar/)
 
 	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
@@ -163,7 +155,8 @@
 		list("Gaia Planet - Z3 Planet"), // Gaia Planet
 		list("Forzen Planet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
-		list("Away Mission - Trade Port") // Trading Post
+		list("Away Mission - Trade Port"), // Trading Post
+		list("Away Mission - Lava Land")
 	)
 
 	ai_shell_restricted = TRUE
@@ -179,16 +172,17 @@
 		Z_LEVEL_DESERT_PLANET,
 		Z_LEVEL_GAIA_PLANET,
 		Z_LEVEL_FROZEN_PLANET,
-		Z_LEVEL_TRADEPORT)
+		Z_LEVEL_TRADEPORT,
+		Z_LEVEL_LAVALAND)
 
 	lateload_single_pick = null //Nothing right now.
 
 /datum/map/triumph/perform_map_generation()
 	return 1
 
-/datum/skybox_settings/triumph
-	icon_state = "space2"
-	use_stars = FALSE
+/datum/skybox_settings/triumph/New()
+	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
+	return icon_state
 
 // Short range computers see only the main levels, others can see the surrounding surface levels.
 /datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE)

@@ -17,16 +17,13 @@
 
 	clicksound = "keyboard"
 
-/obj/machinery/computer/New()
-	overlay_layer = layer
-	..()
-
 /obj/machinery/computer/Initialize()
+	overlay_layer = layer
 	. = ..()
 	power_change()
 	update_icon()
 
-/obj/machinery/computer/process()
+/obj/machinery/computer/process(delta_time)
 	if(stat & (NOPOWER|BROKEN))
 		return 0
 	return 1

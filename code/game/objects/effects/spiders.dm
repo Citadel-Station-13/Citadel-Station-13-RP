@@ -101,7 +101,7 @@
 
 	return ..()
 
-/obj/effect/spider/eggcluster/process()
+/obj/effect/spider/eggcluster/process(delta_time)
 	amount_grown += rand(0,2)
 	if(amount_grown >= 100)
 		var/num = rand(spiders_min, spiders_max)
@@ -170,7 +170,7 @@
 	if(health <= 0)
 		die()
 
-/obj/effect/spider/spiderling/process()
+/obj/effect/spider/spiderling/process(delta_time)
 	if(travelling_in_vent)
 		if(istype(src.loc, /turf))
 			travelling_in_vent = 0
@@ -269,7 +269,7 @@
 	name = "cocoon"
 	desc = "Something wrapped in silky spider web"
 	icon_state = "cocoon1"
-	health = 60
+	health = 10
 
 /obj/effect/spider/cocoon/New()
 		icon_state = pick("cocoon1","cocoon2","cocoon3")

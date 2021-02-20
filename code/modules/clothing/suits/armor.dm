@@ -165,6 +165,12 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 
+/obj/item/clothing/suit/armor/caution
+	name = "improvised armor (caution sign)"
+	desc = "They used to beat you for pointing at the sign. Now, vengeance has come. WARNING: This is just a sign with straps attached to anchor it. Vengeance not guaranteed."
+	icon_state = "caution"
+	blood_overlay_type = "armor"
+	armor = list(melee = 5, bullet = 1, laser = 5, energy = 5, bomb = 1, bio = 50, rad = 0)
 
 //Reactive armor
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)
@@ -503,6 +509,23 @@
 	icon_state = "tdgreen"
 	siemens_coefficient = 1
 
+/obj/item/clothing/suit/armor/samurai
+	name = "karuta-gane"
+	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. Designed for foot combat in an era where melee combat was the predominant focus, this suit offers no protection against ballistics or energy attacks, although its lacquered exterior may occasionally deflect laser bolts."
+	icon_state = "samurai"
+	item_state_slots = list(slot_r_hand_str = "leather_coat", slot_l_hand_str = "leather_coat")
+	armor = list(melee = 100, bullet = 00, laser = 5, energy = 0, bomb = 0, bio = 0, rad = 0)
+	w_class = ITEMSIZE_LARGE
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	flags_inv = HIDETIE|HIDEHOLSTER
+	siemens_coefficient = 0.6
+
+/obj/item/clothing/suit/armor/combat/syndicate
+	name = "syndicate combat vest"
+	desc = "A heavily armored vest worn over a thick coat. The gold embroidery suggests whoever wears this possesses a high rank."
+	icon_state = "syndievest"
+	blood_overlay_type = "armor"
+
 //Modular plate carriers
 /obj/item/clothing/suit/armor/pcarrier
 	name = "plate carrier"
@@ -603,18 +626,20 @@
 /obj/item/clothing/suit/armor/pcarrier/merc
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/merc, /obj/item/clothing/accessory/armor/armguards/merc, /obj/item/clothing/accessory/armor/legguards/merc, /obj/item/clothing/accessory/storage/pouches/large)
 
-/obj/item/clothing/suit/armor/vest/ert/para
+//PARA Armor
+/obj/item/clothing/suit/armor/vest/para
 	name = "PARA light armor"
 	desc = "Light armor emblazoned with the device of an Eye. When equipped by trained PMD agents, runes set into the interior begin to glow."
 	icon_state = "para_ert_armor"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 60, bullet = 60, laser = 60, energy = 60, bomb = 20, bio = 0, rad = 0)
 	action_button_name = "Enable Armor Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE
 
-/obj/item/clothing/suit/armor/vest/ert/para/attack_self(mob/user as mob)
+/obj/item/clothing/suit/armor/vest/para/attack_self(mob/user as mob)
 	if(user.mind.isholy && !anti_magic && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE
@@ -626,3 +651,13 @@
 
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")
+
+/obj/item/clothing/suit/armor/para/inquisitor
+	name = "inquisitor's coat"
+	desc = "A flowing, armored coat adorned with occult iconography."
+	icon_state = "witchhunter"
+	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
+	blood_overlay_type = "armor"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	action_button_name = "Enable Coat Sigils"

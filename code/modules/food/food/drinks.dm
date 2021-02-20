@@ -5,6 +5,8 @@
 	name = "drink"
 	desc = "yummy"
 	icon = 'icons/obj/drinks.dmi'
+	drop_sound = 'sound/items/drop/bottle.ogg'
+	pickup_sound = 'sound/items/pickup/bottle.ogg'
 	icon_state = null
 	flags = OPENCONTAINER
 	amount_per_transfer_from_this = 5
@@ -71,18 +73,17 @@
 	playsound(user.loc, 'sound/items/drink.ogg', rand(10, 50), 1)
 
 /obj/item/reagent_containers/food/drinks/examine(mob/user)
-	if(!..(user, 1))
-		return
+	. = ..()
 	if(!reagents || reagents.total_volume == 0)
-		to_chat(user, "<span class='notice'>\The [src] is empty!</span>")
+		. += "<span class='notice'>\The [src] is empty!</span>"
 	else if (reagents.total_volume <= volume * 0.25)
-		to_chat(user, "<span class='notice'>\The [src] is almost empty!</span>")
+		. += "<span class='notice'>\The [src] is almost empty!</span>"
 	else if (reagents.total_volume <= volume * 0.66)
-		to_chat(user, "<span class='notice'>\The [src] is half full!</span>")
+		. += "<span class='notice'>\The [src] is half full!</span>"
 	else if (reagents.total_volume <= volume * 0.90)
-		to_chat(user, "<span class='notice'>\The [src] is almost full!</span>")
+		. += "<span class='notice'>\The [src] is almost full!</span>"
 	else
-		to_chat(user, "<span class='notice'>\The [src] is full!</span>")
+		. += "<span class='notice'>\The [src] is full!</span>"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -116,6 +117,9 @@
 	icon_state = "milk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
 
 /obj/item/reagent_containers/food/drinks/milk/Initialize()
 	. = ..()
@@ -127,6 +131,9 @@
 	icon_state = "soymilk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
 /obj/item/reagent_containers/food/drinks/soymilk/Initialize()
 	. = ..()
 	reagents.add_reagent("soymilk", 50)
@@ -138,6 +145,8 @@
 	icon_state = "mini-milk"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 /obj/item/reagent_containers/food/drinks/smallmilk/Initialize()
 	. = ..()
 	reagents.add_reagent("milk", 30)
@@ -149,6 +158,8 @@
 	icon_state = "mini-milk_choco"
 	item_state = "carton"
 	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 /obj/item/reagent_containers/food/drinks/smallchocmilk/Initialize()
 	. = ..()
 	reagents.add_reagent("chocolate_milk", 30)
@@ -158,6 +169,8 @@
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
+	drop_sound = 'sound/items/drop/papercup.ogg'
+	pickup_sound = 'sound/items/pickup/papercup.ogg'
 /obj/item/reagent_containers/food/drinks/coffee/Initialize()
 	. = ..()
 	reagents.add_reagent("coffee", 30)
@@ -168,6 +181,8 @@
 	icon_state = "teacup"
 	item_state = "coffee"
 	center_of_mass = list("x"=16, "y"=14)
+	drop_sound = 'sound/items/drop/papercup.ogg'
+	pickup_sound = 'sound/items/pickup/papercup.ogg'
 
 /obj/item/reagent_containers/food/drinks/tea/Initialize()
 	. = ..()
@@ -310,4 +325,3 @@
 
 /obj/item/reagent_containers/food/drinks/britcup/on_reagent_change()
 	..()
-

@@ -54,7 +54,7 @@
 	simulation_finish(1)
 	return ..()
 
-/obj/machinery/bomb_tester/process()
+/obj/machinery/bomb_tester/process(delta_time)
 	..()
 	if(test_canister && !Adjacent(test_canister))
 		test_canister = null
@@ -361,7 +361,7 @@
 		state("Invalid parameters.")
 	else
 		ping("Simulation complete!")
-		playsound(loc, "sound/effects/printer.ogg", 50, 1)
+		playsound(src, "sound/machines/printer.ogg", 50, 1)
 		var/obj/item/paper/P = new(get_turf(src))
 		P.name = "Explosive Simulator printout"
 		P.info = simulation_results

@@ -362,12 +362,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		var/durability = H.nif.durability
 		var/list/nifsofts = H.nif.nifsofts
 		var/list/nif_savedata = H.nif.save_data.Copy()
-		..()
 
 		var/obj/item/nif/nif = new type(H,durability,nif_savedata)
 		nif.nifsofts = nifsofts
-	else
-		..()
 
 /datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 

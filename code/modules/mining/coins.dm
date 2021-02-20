@@ -10,6 +10,8 @@
 	slot_flags = SLOT_EARS
 	var/string_attached
 	var/sides = 2
+	drop_sound = 'sound/items/drop/ring.ogg'
+	pickup_sound = 'sound/items/pickup/ring.ogg'
 
 /obj/item/coin/New()
 	pixel_x = rand(0,16)-8

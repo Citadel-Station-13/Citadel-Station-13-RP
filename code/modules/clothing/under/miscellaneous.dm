@@ -218,6 +218,10 @@
 	icon_state = "black_suit_fem"
 	item_state = "black_formal_skirt"
 
+/obj/item/clothing/under/suit_jacket/female/pleated_skirt
+	name = "executive pleated skirt"
+	icon_state = "black_suit_fem_skirt"
+
 /obj/item/clothing/under/suit_jacket/red
 	name = "red suit"
 	desc = "A red suit and blue tie. Somewhat formal."
@@ -234,6 +238,26 @@
 	desc = "A clean white shirt with a blue collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
 	icon_state = "schoolgirl"
 	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/under/schoolgirl/red
+	name = "frilly red skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a red collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
+	icon_state = "schoolgirlred"
+	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+
+/obj/item/clothing/under/schoolgirl/green
+	name = "frilly green skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a green collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
+	icon_state = "schoolgirlgreen"
+	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/under/schoolgirl/orange
+	name = "frilly orange skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a orange collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
+	icon_state = "schoolgirlorange"
+	item_state_slots = list(slot_r_hand_str = "orange", slot_l_hand_str = "orange")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/overalls
@@ -510,7 +534,7 @@
 /obj/item/clothing/under/pentagramdress
 	name = "pentagram dress"
 	desc = "A black dress with straps over the chest in the shape of a pentagram."
-	icon_state = "pentagram" 
+	icon_state = "pentagram"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/captainformal
@@ -784,6 +808,11 @@
 	name = "cow print bikini"
 	desc = "A rather skimpy cow patterned swimsuit."
 	icon_state = "swim_cow"
+
+/obj/item/clothing/under/swimsuit/stripper/captain
+	name = "sexy captain swimsuit"
+	desc = "A revealing stripper's costume patterned after the Captain's uniform."
+	icon_state = "lewdcap"
 
 /*
  * pyjamas
@@ -1174,10 +1203,11 @@
 	desc = "A comfy red sweater paired with a stylish charcoal skirt!"
 	icon_state = "redskirt"
 
-/obj/item/clothing/under/ert/para
+/obj/item/clothing/under/para
 	name = "PARA tactical uniform"
 	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
 	icon_state = "para_ert_uniform"
+	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
 
 /obj/item/clothing/under/blueshortskirt
 	name = "Short Skirt"
@@ -1208,3 +1238,228 @@
 	name = "Roman Lorica"
 	desc = "Replica lorica segmentata. It doesn't feel like it would actually afford much protection against modern weaponry."
 	icon_state = "roman"
+
+//Costumes - Bring all of them down here sometime to help build categories?
+/obj/item/clothing/under/lobster
+	name = "lobster costume"
+	desc = "If you can dance, you've got a career in Law ahead."
+	icon_state = "lobster"
+
+/obj/item/clothing/under/mummy
+	name = "mummy bandages"
+	desc = "This aged and dirty wrap bears the dust of countless aeons. Keep away from water."
+	icon_state = "mummy"
+
+/obj/item/clothing/under/skeleton
+	name = "skeleton costume"
+	desc = "Too spooky, too scary. Those who don this costume are haunted by xylophones."
+	icon_state = "skeleton"
+
+/obj/item/clothing/under/scarecrow
+	name = "scarecrow costume"
+	desc = "Ideal for stalking someone through a field of hay. This suit is less practical on a space station."
+	icon_state = "scarecrow"
+
+/obj/item/clothing/under/darkholme
+	name = "leather harness costume"
+	desc = "Perferred by bikers, musicial ensembles, and people who need a strong grip."
+	icon_state = "darkholme"
+
+/obj/item/clothing/under/geisha
+	name = "geisha costume"
+	desc = "These silk robes are commonly associated with Old World courtesans and radiate a delicate femininity."
+	icon_state = "geisha"
+
+/obj/item/clothing/under/drfreeze
+	name = "cryogenic scientist costume"
+	desc = "Themed puns aren't required, but they do make you seem cooler."
+	icon_state = "drfreeze"
+
+/obj/item/clothing/under/red_mech
+	name = "red plug suit"
+	desc = "The ideal outfit for a psychotic bitch. Knowledge of German not required."
+	icon_state = "red_mech_suit"
+
+/obj/item/clothing/under/white_mech
+	name = "white plug suit"
+	desc = "For pilots whose color palettes match their personalities."
+	icon_state = "white_mech_suit"
+
+/obj/item/clothing/under/blue_mech
+	name = "blue plug suit"
+	desc = "If you want to sit in your bedroom and cry, this is the suit to do it in."
+	icon_state = "blue_mech_suit"
+
+/obj/item/clothing/under/christmas
+	name = "holiday suit"
+	desc = "This costume hearkens back to Old Earth solstice traditions representing community interaction and an emphemeral concept known as 'holiday cheer'."
+	icon_state = "christmasmaler"
+
+/obj/item/clothing/under/christmas/green
+	name = "green holiday suit"
+	desc = "Commonly associated with faerie-like 'helpers', the color green represents vitality and the coming spring."
+	icon_state = "christmasmaleg"
+
+/obj/item/clothing/under/christmasfem
+	name = "sexy holiday suit"
+	desc = "Appreciation of more physical forms of comfort is important during the holidays. Even when it's cold out."
+	icon_state = "christmasfemaler"
+
+/obj/item/clothing/under/christmasfem/green
+	name = "sexy green holiday suit"
+	desc = "Something special for Santa's little helper."
+	icon_state = "christmasfemaleg"
+
+/obj/item/clothing/under/telegram
+	name = "singing courier"
+	desc = "Living telegram operators experience one of the largest on the job fatality rates of all courier-based occupations."
+	icon_state = "telegram"
+
+//Kimonos and Traditional Japanese
+/obj/item/clothing/under/kimono
+	name = "plain kimono"
+	desc = "The traditional dress of old Earth Japan, the kimono remains ubiquitous across the galaxy due to its comfort, simplicity, and versatility."
+	icon_state = "kimono"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/kimono_black
+	name = "black kimono"
+	desc = "A more somber and reserved pattern of kimono. Wear this to a funeral, or to the climactic sword battle."
+	icon_state = "kimono_black"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/kimono_sakura
+	name = "sakura pattern kimono"
+	desc = "The vibrant pink coloration and subtle flower pattern of this kimono represet the Sakura tree, which was saved from extinction during the Final War thanks to the efforts of conservationists on Luna."
+	icon_state = "kimono_sakura"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/kimono_fancy
+	name = "festival kimono"
+	desc = "A blue kimono similar to those traditionally worn to festivals. Its intricate embroidery and fine coloring are not meant to face much wear and tear."
+	icon_state = "kimono_fancy"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/kamishimo
+	name = "kamishimo"
+	desc = "Popular amongst samurai, these items of clothing are not frequently in vogue. However, their easily recognizable silhouette keeps them from falling into total obscurity."
+	icon_state = "kamishimo"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+//Chinese Traditional
+/obj/item/clothing/under/qipao
+	name = "black qipao"
+	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
+	icon_state = "qipao"
+
+/obj/item/clothing/under/qipao/white
+	name = "white qipao"
+	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
+	icon_state = "qipao_white"
+
+/obj/item/clothing/under/qipao/red
+	name = "red qipao"
+	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
+	icon_state = "qipao_red"
+
+/obj/item/clothing/under/cheong
+	name = "black cheongsam"
+	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
+	icon_state = "cheong"
+
+/obj/item/clothing/under/cheong/white
+	name = "white cheongsam"
+	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
+	icon_state = "cheongw"
+
+/obj/item/clothing/under/cheong/red
+	name = "red cheongsam"
+	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
+	icon_state = "cheongr"
+
+//Baggy Turtlenecks
+/obj/item/clothing/under/turtlebaggy
+	name = "baggy turtleneck (cream)"
+	desc = "A cozy knit turtleneck. It's too baggy and comfortable to be tactical."
+	icon_state = "bb_turtle"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/turtlebaggy/purple
+	name = "baggy turtleneck (purple)"
+	icon_state = "bb_turtlepur"
+
+/obj/item/clothing/under/turtlebaggy/red
+	name = "baggy turtleneck (red)"
+	icon_state = "bb_turtlered"
+
+/obj/item/clothing/under/turtlebaggy/blue
+	name = "baggy turtleneck (blue)"
+	icon_state = "bb_turtleblu"
+
+/obj/item/clothing/under/turtlebaggy/green
+	name = "baggy turtleneck (green)"
+	icon_state = "bb_turtlegrn"
+
+/obj/item/clothing/under/turtlebaggy/black
+	name = "baggy turtleneck (black)"
+	icon_state = "bb_turtleblk"
+
+/obj/item/clothing/under/trader_coveralls
+	name = "nebula gas outfit"
+	desc = "A hardy and practical uniform distributed to Nebula Gas employees, meant to provide protection and comfort in industrial environments."
+	icon_state = "mechanic"
+	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/safari
+	name = "safari uniform"
+	desc = "A sturdy canvas button-up and shorts, designed to provide protection without retaining heat."
+	icon_state = "safari"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/bsing
+	name = "blue performer's outfit"
+	desc = "A truly iconic outfit, still worn by enthusiasts and fans of Old Earth digital media."
+	icon_state = "bsing"
+
+/obj/item/clothing/under/ysing
+	name = "yellow performer's outfit"
+	desc = "Inspired by the original, this outfit is still stylish, although derivative."
+	icon_state = "ysing"
+
+/obj/item/clothing/under/redcoatformal
+	name = "formal red coat"
+	desc = "Raise the taxes on their tea. What can go wrong?"
+	icon_state = "redcoatformal"
+
+//Colored Clown Suits
+/obj/item/clothing/under/rank/clown/orange
+	name = "orange clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "orangeclown"
+
+/obj/item/clothing/under/rank/clown/yellow
+	name = "yellow clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "yellowclown"
+
+/obj/item/clothing/under/rank/clown/green
+	name = "green clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "greenclown"
+
+/obj/item/clothing/under/rank/clown/blue
+	name = "blue clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "blueclown"
+
+/obj/item/clothing/under/rank/clown/purple
+	name = "purple clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "purpleclown"
+
+/obj/item/clothing/under/rank/clown/rainbow
+	name = "rainbow clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "rainbowclown"

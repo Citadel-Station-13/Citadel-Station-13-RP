@@ -6,6 +6,8 @@
 
 /datum/proc/CanUseTopic(var/mob/user, var/datum/topic_state/state)
 	var/src_object = nano_host()
+	if(IsAdminGhost(user))
+		return STATUS_INTERACTIVE
 	return state.can_use_topic(src_object, user)
 
 /datum/topic_state/proc/href_list(var/mob/user)

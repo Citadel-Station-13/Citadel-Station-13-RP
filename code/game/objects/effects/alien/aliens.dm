@@ -254,7 +254,7 @@
 
 	return
 
-/obj/effect/alien/weeds/process()
+/obj/effect/alien/weeds/process(delta_time)
 	set background = 1
 	var/turf/U = get_turf(src)
 /*

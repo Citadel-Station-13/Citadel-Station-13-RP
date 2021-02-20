@@ -186,7 +186,7 @@
 		create_shields()
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
 
-/obj/item/shield_projector/process()
+/obj/item/shield_projector/process(delta_time)
 	if(shield_health < max_shield_health && ( (last_damaged_time + shield_regen_delay) < world.time) )
 		adjust_health(shield_regen_amount)
 		if(always_on && !active) // Make shields as soon as possible if this is set.
@@ -197,9 +197,9 @@
 			playsound(get_turf(src), 'sound/machines/defib_safetyOff.ogg', 75, 0)
 
 /obj/item/shield_projector/examine(var/mob/user)
-	..()
+	. = ..()
 	if(get_dist(src, user) <= 1)
-		to_chat(user, "\The [src]'s shield matrix is at [round( (shield_health / max_shield_health) * 100, 0.01)]% strength.")
+		. += "\The [src]'s shield matrix is at [round( (shield_health / max_shield_health) * 100, 0.01)]% strength."
 
 /obj/item/shield_projector/emp_act(var/severity)
 	adjust_health(-max_shield_health / severity) // A strong EMP will kill the shield instantly, but weaker ones won't on the first hit.
@@ -354,7 +354,7 @@
 	var/obj/mecha/my_mecha = null
 	var/obj/item/mecha_parts/mecha_equipment/combat_shield/my_tool = null
 
-/obj/item/shield_projector/line/exosuit/process()
+/obj/item/shield_projector/line/exosuit/process(delta_time)
 	..()
 	if((my_tool && loc != my_tool) && (my_mecha && loc != my_mecha))
 		forceMove(my_tool)

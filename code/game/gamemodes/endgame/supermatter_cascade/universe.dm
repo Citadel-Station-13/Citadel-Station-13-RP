@@ -39,7 +39,7 @@ var/global/universe_has_ended = 0
 	set background = 1
 	to_chat(world, "<span class='sinister' style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>")
 
-	world << sound('sound/effects/cascade.ogg')
+	SEND_SOUND(world, sound('sound/effects/cascade.ogg'))
 
 	for(var/mob/M in player_list)
 		M.flash_eyes()

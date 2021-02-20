@@ -15,6 +15,8 @@
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	usesound = 'sound/items/ratchet.ogg'
 	toolspeed = 1
+	drop_sound = 'sound/items/drop/wrench.ogg'
+	pickup_sound = 'sound/items/pickup/wrench.ogg'
 
 /obj/item/tool/wrench/is_wrench()
 	return TRUE
@@ -29,7 +31,6 @@
 	name = "strange wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
 	icon = 'icons/obj/tools.dmi'
-	/datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
 	icon_state = "hybwrench"
 	slot_flags = SLOT_BELT
 	force = 8
@@ -41,8 +42,6 @@
 	usesound = 'sound/effects/stealthoff.ogg'
 	toolspeed = 0.5
 	reach = 2
-
-
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wrench
 	name = "Precursor Alpha Object - Fastener Torque Tool"

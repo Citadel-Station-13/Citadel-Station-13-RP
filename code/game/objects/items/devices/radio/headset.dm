@@ -20,6 +20,9 @@
 	var/ks1type = null
 	var/ks2type = null
 
+	drop_sound = 'sound/items/drop/component.ogg'
+	pickup_sound = 'sound/items/pickup/component.ogg'
+
 /obj/item/radio/headset/Initialize(mapload)
 	. = ..()
 	internal_channels.Cut()
@@ -40,11 +43,12 @@
 	return list_secure_channels()
 
 /obj/item/radio/headset/examine(mob/user)
-	if(!(..(user, 1) && radio_desc))
+	. = ..()
+	if(!radio_desc)
 		return
 
-	to_chat(user, "The following channels are available:")
-	to_chat(user, radio_desc)
+	. += "The following channels are available:"
+	. += radio_desc
 
 /obj/item/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
 	if (channel == "special")
@@ -497,7 +501,7 @@
 		return ..(freq, level)
 
 
-/obj/item/radio/headset/mob_headset/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/state = interactive_state)
+/obj/item/radio/headset/mob_headset/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/state = interactive_state)
 	ui = new(user, src, ui_key, "radio_basic.tmpl", "[name]", 400, 430, state = interactive_state)
 	..()
 
@@ -552,6 +556,18 @@
 	name = "sar radio bowman headset"
 	desc = "A bowman headset for search and rescue."
 	icon_state = "sar_headset_alt"
+
+/obj/item/radio/headset/pathfinder
+	name = "pathfinder's headset"
+	desc = "Headset used by Pathfinders for coordinating and executing expeditions."
+	icon_state = "exp_headset_path"
+	adhoc_fallback = TRUE
+	ks2type = /obj/item/encryptionkey/pathfinder
+
+/obj/item/radio/headset/pathfinder/alt
+	name = "pathfinder's bowman headset"
+	desc = "Headset used by Pathfinders for coordinating and executing expeditions."
+	icon_state = "exp_headset_path_alt"
 
 //Headset SC _vr files
 /obj/item/radio/headset/volunteer

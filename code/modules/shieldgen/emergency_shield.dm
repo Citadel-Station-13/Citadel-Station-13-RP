@@ -18,7 +18,7 @@
 	desc = "A weak forcefield which seems to be projected by the station's emergency atmosphere containment field"
 	health = max_health/2 // Half health, it's not suposed to resist much.
 
-/obj/machinery/shield/malfai/process()
+/obj/machinery/shield/malfai/process(delta_time)
 	health -= 0.5 // Slowly lose integrity over time
 	check_failure()
 
@@ -189,7 +189,7 @@
 		create_shields()
 	update_icon()
 
-/obj/machinery/shieldgen/process()
+/obj/machinery/shieldgen/process(delta_time)
 	if (!active || (stat & NOPOWER))
 		return
 
@@ -258,14 +258,14 @@
 		return
 
 	if (src.active)
-		user.visible_message("<font color='blue'>\icon[src] [user] deactivated the shield generator.</font>", \
-			"<font color='blue'>\icon[src] You deactivate the shield generator.</font>", \
+		user.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [user] deactivated the shield generator.</font>", \
+			"<font color='blue'>[icon2html(thing = src, target = user)] You deactivate the shield generator.</font>", \
 			"You hear heavy droning fade out.")
 		src.shields_down()
 	else
 		if(anchored)
-			user.visible_message("<font color='blue'>\icon[src] [user] activated the shield generator.</font>", \
-				"<font color='blue'>\icon[src] You activate the shield generator.</font>", \
+			user.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [user] activated the shield generator.</font>", \
+				"<font color='blue'>[icon2html(thing = src, target = user)] You activate the shield generator.</font>", \
 				"You hear heavy droning.")
 			src.shields_up()
 		else

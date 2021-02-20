@@ -77,7 +77,7 @@
 		update_use_power(USE_POWER_IDLE)
 
 /obj/machinery/oxygen_pump/attack_ai(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/oxygen_pump/proc/attach_mask(var/mob/living/carbon/C)
 	if(C && istype(C))
@@ -149,12 +149,12 @@
 /obj/machinery/oxygen_pump/examine(var/mob/user)
 	. = ..()
 	if(tank)
-		to_chat(user, "The meter shows [round(tank.air_contents.return_pressure())] kPa.")
+		. += "<span class = 'notice'>The meter shows [round(tank.air_contents.return_pressure())] kPa.</span>"
 	else
-		to_chat(user, "<span class='warning'>It is missing a tank!</span>")
+		. += "<span class='warning'>It is missing a tank!</span>"
 
 
-/obj/machinery/oxygen_pump/process()
+/obj/machinery/oxygen_pump/process(delta_time)
 	if(breather)
 		if(!can_apply_to_target(breather))
 			if(tank)
@@ -174,10 +174,10 @@
 	set src in oview(1)
 	set category = "Object"
 	set name = "Show Tank Settings"
-	ui_interact(usr)
+	nano_ui_interact(usr)
 
 //GUI Tank Setup
-/obj/machinery/oxygen_pump/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/oxygen_pump/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	if(!tank)
 		to_chat(usr, "<span class='warning'>It is missing a tank!</span>")
@@ -253,7 +253,7 @@
 
 	var/last_area = null
 
-/obj/machinery/oxygen_pump/mobile/process()
+/obj/machinery/oxygen_pump/mobile/process(delta_time)
 	..()
 
 	var/turf/T = get_turf(src)
@@ -277,7 +277,7 @@
 	name = "portable patient stabilizer"
 	desc = "A portable oxygen pump with a retractable mask used for stabilizing patients in the field."
 
-/obj/machinery/oxygen_pump/mobile/stabilizer/process()
+/obj/machinery/oxygen_pump/mobile/stabilizer/process(delta_time)
 	if(breather)
 		if(!can_apply_to_target(breather))
 			if(tank)

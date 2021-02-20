@@ -50,9 +50,9 @@
 
 /obj/machinery/disease2/isolator/attack_hand(mob/user as mob)
 	if(stat & (NOPOWER|BROKEN)) return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/disease2/isolator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/disease2/isolator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
@@ -109,7 +109,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/disease2/isolator/process()
+/obj/machinery/disease2/isolator/process(delta_time)
 	if (isolating > 0)
 		isolating -= 1
 		if (isolating == 0)

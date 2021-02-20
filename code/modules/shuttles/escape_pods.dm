@@ -47,7 +47,7 @@
 	program = /datum/computer/file/embedded_program/docking/simple
 	var/datum/shuttle/autodock/ferry/escape_pod/pod
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/datum/computer/file/embedded_program/docking/simple/docking_program = program	// Cast to proper type
 
@@ -68,6 +68,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
+/* THIS IS BROKEN
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/Topic(href, href_list)
 	if((. = ..()))
 		return
@@ -82,15 +83,14 @@
 			pod.launch(src)
 		return TOPIC_REFRESH
 	return 0
-
-
+*/
 
 // This controller is for the escape pod berth (station side)
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth
 	name = "escape pod berth controller"
 	program = /datum/computer/file/embedded_program/docking/simple/escape_pod_berth
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/datum/computer/file/embedded_program/docking/simple/docking_program = program	// Cast to proper type
 
@@ -141,7 +141,7 @@
 		return TRUE	// Eat all commands.
 	return ..(command)
 
-/datum/computer/file/embedded_program/docking/simple/escape_pod_berth/process()
+/datum/computer/file/embedded_program/docking/simple/escape_pod_berth/process(delta_time)
 	..()
 	if (eject_time && world.time >= eject_time && !closing)
 		close_door()

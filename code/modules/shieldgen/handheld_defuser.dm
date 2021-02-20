@@ -23,7 +23,7 @@
 /obj/item/shield_diffuser/get_cell()
 	return cell
 
-/obj/item/shield_diffuser/process()
+/obj/item/shield_diffuser/process(delta_time)
 	if(!enabled)
 		return
 

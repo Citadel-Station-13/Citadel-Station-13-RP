@@ -226,7 +226,7 @@
 		chan = power_channel
 	A.use_power(amount, chan)
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/process()
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/process(delta_time)
 	..()
 
 	var/run_pump = FALSE

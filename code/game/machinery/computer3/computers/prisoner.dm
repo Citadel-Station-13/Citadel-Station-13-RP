@@ -64,7 +64,7 @@
 	popup.open()
 	return
 
-/datum/file/program/prisoner/process()
+/datum/file/program/prisoner/process(delta_time)
 	if(!..())
 		interact()
 	return
