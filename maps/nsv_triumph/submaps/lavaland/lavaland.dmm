@@ -133,6 +133,9 @@
 	},
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "fh" = (
@@ -708,8 +711,8 @@
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "qb" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 6
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 4
 	},
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/base/common)
@@ -1074,6 +1077,9 @@
 	id = "wind_blue"
 	},
 /obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "yI" = (
@@ -1160,7 +1166,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/ore_box,
+/obj/machinery/mining/drill,
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/base/common)
 "AG" = (
@@ -1508,10 +1514,6 @@
 	name = "Lounge";
 	req_access = list(48)
 	},
-/turf/simulated/floor/wood,
-/area/lavaland/base/common)
-"GZ" = (
-/obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
 "Hr" = (
@@ -1970,6 +1972,9 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "TJ" = (
@@ -2007,7 +2012,15 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/turf/simulated/wall/r_wall,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "UG" = (
 /obj/structure/grille,
@@ -2016,6 +2029,9 @@
 	id = "wind_orange"
 	},
 /obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "UU" = (
@@ -2028,16 +2044,6 @@
 	},
 /obj/machinery/meter,
 /turf/simulated/floor/plating,
-/area/lavaland/base/common)
-"Vo" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 1;
-	frequency = 1441;
-	id = "mine_out";
-	power_rating = 5000;
-	use_power = 1
-	},
-/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/base/common)
 "Vw" = (
 /obj/machinery/recharge_station,
@@ -2103,7 +2109,9 @@
 /turf/simulated/floor/reinforced/airmix,
 /area/lavaland/base/common)
 "Wh" = (
-/obj/machinery/mining/drill,
+/obj/machinery/mining/brace{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/base/common)
 "Wj" = (
@@ -2260,7 +2268,9 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/ore_box,
+/obj/machinery/mining/brace{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/lavaland/base/common)
 "ZG" = (
@@ -7100,7 +7110,7 @@ MQ
 MQ
 MQ
 qb
-Vo
+bx
 MQ
 MQ
 Xq
@@ -7675,7 +7685,7 @@ fg
 AO
 xJ
 wN
-GZ
+HB
 HB
 HB
 HB
