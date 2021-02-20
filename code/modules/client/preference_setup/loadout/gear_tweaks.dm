@@ -38,7 +38,10 @@
 /datum/gear_tweak/color/tweak_item(var/obj/item/I, var/metadata)
 	if(valid_colors && !(metadata in valid_colors))
 		return
-	I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
+	if(istype(I))
+		I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
+	else
+		I.color = metadata		// fuck off underwear
 
 GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recolor, new)
 
@@ -69,9 +72,12 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recol
 
 /datum/gear_tweak/matrix_recolor/tweak_item(obj/item/I, metadata)
 	. = ..()
-	if(!metadata || !istype(I))
+	if(!metadata)
 		return
-	I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
+	if(istype(I))
+		I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
+	else
+		I.color = metadata		// fuck off underwear
 
 /*
 * Path adjustment
