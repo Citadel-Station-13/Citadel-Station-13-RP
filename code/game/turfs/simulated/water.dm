@@ -86,18 +86,22 @@
 	name = "deep pool"
 	desc = "Don't worry, it's not closed."
 	outdoors = FALSE
+	noshield = 1
 
 /turf/simulated/floor/outdoors/water/pool
 	name = "pool"
 	desc = "Don't worry, it's not closed."
 	under_state = "pool"
 	outdoors = FALSE
+	noshield = 1
 
 /turf/simulated/floor/outdoors/water/indoors
 	outdoors = FALSE
+	noshield = 1
 
 /turf/simulated/floor/outdoors/water/deep/indoors
 	outdoors = FALSE
+	noshield = 1
 
 /mob/living/proc/can_breathe_water()
 	return FALSE

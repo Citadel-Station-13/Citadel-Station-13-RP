@@ -44,7 +44,7 @@
 /turf/template_noop,
 /area/submap/PooledR)
 "l" = (
-/turf/simulated/floor/water,
+/turf/simulated/floor/outdoors/water,
 /area/submap/PooledR)
 "m" = (
 /obj/structure/flora/ausbushes/grassybush,
