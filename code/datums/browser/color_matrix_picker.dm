@@ -5,7 +5,7 @@
 	if(!user)
 		return
 	if(!values)
-		values = list()
+		values = list(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 	if(values.len < 12)
 		values.len = 12
 	var/list/output = list()
@@ -41,7 +41,7 @@
 		output += {"<button type="submit" name="button" value="3" style="font-size:large;float:right">[button3]</button>"}
 	output += {"</form></div>"}
 
-	..(user, ckey("[user]-[message]-[title]-[world.time]-[rand(1,10000)]"), title, 400, 400, src, stealfocus, timeout)
+	..(user, ckey("[user]-[message]-[title]-[world.time]-[rand(1,10000)]"), title, 800, 400, src, stealfocus, timeout)
 	set_content(output.Join(""))
 
 /datum/browser/modal/color_matrix_picker/Topic(href, list/href_list)
