@@ -38,7 +38,33 @@
 /datum/gear_tweak/color/tweak_item(var/obj/item/I, var/metadata)
 	if(valid_colors && !(metadata in valid_colors))
 		return
-	I.color = metadata
+	I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
+
+/datum/gear_tweak/matrix_recolor
+
+/datum/gear_tweak/matrix_recolor/get_contents(var/metadata)
+	return "Matrix Recolor: [metadata? english_list(metadata) : "null"]"
+
+/datum/gear_tweak/matrix_recolor/get_default()
+	return null
+
+/datum/gear_tweak/matrix_recolor/get_metadata(user, metadata)
+	var/list/L = matrix_color_picker(user, "Pick a color matrix for this item", "Matrix Recolor", "Ok", "Erase", "Cancel", TRUE, 10 MINUTES, islist(metadata) && metadata)
+	if(!islist(L) || !ISINRANGE(L.len, 9, 20))
+		return null
+	var/identity = TRUE
+	var/static/list/ones = list(1, 5, 9)
+	for(var/i in 1 to L.len)
+		if(L[i] != ((i in ones)? 1 : 0))
+			identity = FALSE
+			break
+	return identity? null : L
+
+/datum/gear_tweak/matrix_recolor/tweak_item(obj/item/I, metadata)
+	. = ..()
+	if(!metadata)
+		return
+	I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
 
 /*
 * Path adjustment
