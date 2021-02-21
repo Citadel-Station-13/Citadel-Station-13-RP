@@ -16,7 +16,7 @@
 /turf/template_noop,
 /area/submap/DoomP)
 "af" = (
-/turf/simulated/floor/water,
+/turf/simulated/floor/outdoors/water,
 /area/submap/DoomP)
 "ag" = (
 /obj/structure/flora/tree/sif,
@@ -274,7 +274,7 @@
 /area/submap/DoomP)
 "aX" = (
 /obj/structure/lattice,
-/turf/simulated/floor/water,
+/turf/simulated/floor/outdoors/water,
 /area/submap/DoomP)
 "aY" = (
 /obj/machinery/light/small{
