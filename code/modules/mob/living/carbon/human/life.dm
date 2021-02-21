@@ -612,6 +612,10 @@ var/last_message = 0
 		return
 	//Stuff like the xenomorph's plasma regen happens here.
 	species.handle_environment_special(src)
+
+	if(is_incorporeal())
+		return
+
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		species.heat_level_1 = 400
 		species.heat_level_2 = 420 // haha nice

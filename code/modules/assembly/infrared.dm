@@ -242,7 +242,8 @@
 	return
 
 /obj/effect/beam/i_beam/Crossed(atom/movable/AM)
-	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if(istype(AM, /obj/effect/beam))
 		return
 	hit()
