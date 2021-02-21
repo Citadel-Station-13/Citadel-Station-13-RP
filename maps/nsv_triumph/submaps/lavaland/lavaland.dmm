@@ -261,7 +261,7 @@
 /obj/machinery/power/generator{
 	anchored = 1
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -563,7 +563,7 @@
 	name = "interior access button";
 	pixel_x = -10;
 	pixel_y = 25;
-	req_one_access = null
+	req_one_access = list(48)
 	},
 /obj/effect/map_helper/airlock/button/int_button,
 /obj/effect/map_helper/airlock/door/int_door,
@@ -641,7 +641,7 @@
 /obj/machinery/atmospherics/binary/pump/high_power/on{
 	target_pressure = 15000
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -1243,7 +1243,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "Ce" = (
-/obj/structure/cable/yellow{
+/obj/structure/cable/green{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
@@ -1460,7 +1460,8 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1384;
 	id_tag = "lava_lock";
-	pixel_y = 25
+	pixel_y = 25;
+	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
@@ -1536,14 +1537,14 @@
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/base/common)
 "HA" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/door/airlock/maintenance{
 	name = "SMES Access";
 	req_access = list(48)
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
@@ -1676,7 +1677,7 @@
 	name = "exterior access button";
 	pixel_x = 10;
 	pixel_y = -25;
-	req_one_access = null
+	req_one_access = list(48)
 	},
 /obj/effect/map_helper/airlock/button/ext_button,
 /obj/effect/map_helper/airlock/door/ext_door,
@@ -1868,7 +1869,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/random/mob/mouse,
+/mob/living/simple_mob/animal/passive/mouse/gray{
+	name = "Jerry"
+	},
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
 "QR" = (
@@ -2184,13 +2187,13 @@
 /turf/simulated/floor/outdoors/lava,
 /area/lavaland/explored)
 "WZ" = (
-/obj/structure/cable/yellow{
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 9
+	},
+/obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 9
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
@@ -2259,8 +2262,9 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	dir = 4
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
