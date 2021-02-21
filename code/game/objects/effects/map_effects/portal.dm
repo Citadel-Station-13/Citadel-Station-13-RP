@@ -268,7 +268,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	..()
 
 // Allows portals to transfer speech.
-/obj/effect/map_effect/portal/master/hear_talk(mob/M, list/message_pieces, verb)
+/obj/effect/map_effect/portal/master/hear_talk(mob/living/M, list/message_pieces, verb)
 	if(!counterpart)
 		return
 	var/turf/T = counterpart.get_focused_turf()
@@ -277,7 +277,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 
 	for(var/thing in mobs_to_relay)
 		var/mob/mob = thing
-		var/message = mob.combine_message(message_pieces, verb, M)
+		var/message = ""
 		var/name_used = M.GetVoice()
 		var/rendered = null
 		rendered = "<span class='game say'><span class='name'>[name_used]</span> [message]</span>"

@@ -8,8 +8,10 @@
 /*
  * Banana Peals
  */
-/obj/item/bananapeel/Crossed(AM as mob|obj)
+/obj/item/bananapeel/Crossed(atom/movable/AM as mob|obj)
 	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 		M.slip("the [src.name]",4)
@@ -24,10 +26,12 @@
 /obj/item/soap/proc/wet()
 	reagents.add_reagent("cleaner", 5)
 
-/obj/item/soap/Crossed(AM as mob|obj)
+/obj/item/soap/Crossed(atom/movable/AM as mob|obj)
 	. = ..()
-	if (istype(AM, /mob/living))
-		var/mob/living/M =	AM
+	if(AM.is_incorporeal())
+		return
+	if(istype(AM, /mob/living))
+		var/mob/living/M = AM
 		M.slip("the [src.name]",3)
 
 /obj/item/soap/pre_attack(atom/target, mob/user as mob)

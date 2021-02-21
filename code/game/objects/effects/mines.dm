@@ -36,8 +36,10 @@
 		explode()
 	..()
 
-/obj/effect/mine/Crossed(AM as mob|obj)
+/obj/effect/mine/Crossed(atom/movable/AM as mob|obj)
 	. = ..()
+	if(AM.is_incorporeal())
+		return
 	Bumped(AM)
 
 /obj/effect/mine/Bumped(mob/M as mob|obj)
