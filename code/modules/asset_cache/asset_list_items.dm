@@ -1,8 +1,5 @@
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-
-//DEFINITIONS FOR ASSET DATUMS START HERE.
-
 /datum/asset/simple/tgui_common
 	keep_local_name = TRUE
 	assets = list(
@@ -205,11 +202,11 @@
 
 /datum/asset/spritesheet/chat
 	name = "chat"
-/*
+
 /datum/asset/spritesheet/chat/register()
 	InsertAll("emoji", 'icons/emoji.dmi')
 	InsertAll("emoji", 'icons/emoji_32.dmi')
-
+	/*
 	// pre-loading all lanugage icons also helps to avoid meta
 	InsertAll("language", 'icons/misc/language.dmi')
 	// catch languages which are pulling icons from another file
@@ -219,13 +216,14 @@
 		if (icon != 'icons/misc/language.dmi')
 			var/icon_state = initial(L.icon_state)
 			Insert("language-[icon_state]", icon, icon_state=icon_state)
+	*/
 	..()
 
-/datum/asset/simple/lobby
-	assets = list(
-		"playeroptions.css" = 'html/browser/playeroptions.css'
-	)
-*/
+// /datum/asset/simple/lobby
+// 	assets = list(
+// 		"playeroptions.css" = 'html/browser/playeroptions.css'
+// 	)
+
 /datum/asset/simple/namespaced/common
 	assets = list("padlock.png"	= 'html/padlock.png')
 	parents = list("common.css" = 'html/browser/common.css')

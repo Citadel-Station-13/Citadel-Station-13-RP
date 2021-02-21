@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(stealthmin_nicknames, world.file2list("[global.config.directory
 	else
 		key = src.key
 
-	say_dead_direct("<span class='name'>[stafftype]([key])</span> says, <span class='message'>\"[msg]\"</span>")
+	say_dead_direct("<span class='name'>[stafftype]([key])</span> says, <span class='message'>\"[emoji_parse(msg)]\"</span>")
 
 	feedback_add_details("admin_verb","D") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

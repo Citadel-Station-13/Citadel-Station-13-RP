@@ -137,6 +137,9 @@
 
 	var/rawmsg = msg
 
+	if(holder)
+		msg = emoji_parse(msg)
+
 	var/keywordparsedmsg = keywords_lookup(msg)
 
 	if(irc)
@@ -253,12 +256,13 @@
 	if(!msg)
 		return "Error: No message"
 
-	message_admins("IRC message from [sender] to [key_name_admin(C)] : [msg]")
-	log_admin("IRC PM: [sender] -> [key_name(C)] : [msg]")
+	message_admins("External message from [sender] to [key_name_admin(C)] : [msg]")
+	log_admin_private("External PM: [sender] -> [key_name(C)] : [msg]")
+	msg = emoji_parse(msg)
 
-	to_chat(C, "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
-	to_chat(C, "<font color='red'>Admin PM from-<b><a href='?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]</font>")
-	to_chat(C, "<font color='red'><i>Click on the administrator's name to reply.</i></font>")
+	to_chat(C, "<font color='red' size='4'><b>-- Administrator private message --</b></font>", confidential = TRUE)
+	to_chat(C, "<span class='adminsay'>Admin PM from-<b><a href='?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]</span>", confidential = TRUE)
+	to_chat(C, "<span class='adminsay'><i>Click on the administrator's name to reply.</i></span>", confidential = TRUE)
 
 	admin_ticket_log(C, "<font color='blue'>PM From [irc_tagged]: [msg]</font>")
 

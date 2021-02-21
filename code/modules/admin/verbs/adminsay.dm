@@ -8,7 +8,7 @@
 	msg = sanitize(msg)
 	if(!msg)
 		return
-
+	msg = emoji_parse(msg)
 	log_adminsay(msg,src)
 
 	if(check_rights(R_ADMIN|R_MOD,0))

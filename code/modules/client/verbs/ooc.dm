@@ -57,6 +57,8 @@
 	if(!msg)
 		return
 
+	msg = emoji_parse(msg)
+
 	if((msg[1] in list(".",";",":","#") || findtext_char(msg, "say", 1, 5))) //SSticker.HasRoundStarted() &&
 		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 			return
@@ -129,6 +131,8 @@
 	msg = sanitize(msg)
 	if(!msg)
 		return
+
+	msg = emoji_parse(msg)
 
 	if(!is_preference_enabled(/datum/client_preference/show_looc))
 		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")

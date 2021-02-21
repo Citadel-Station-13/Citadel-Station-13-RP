@@ -20,6 +20,8 @@
 	if(!msg)
 		return
 
+	msg = emoji_parse(msg)
+
 	// Name shown to admins.
 	var/display_name = src.key
 	if(holder)
