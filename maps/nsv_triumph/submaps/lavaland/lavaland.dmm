@@ -86,9 +86,6 @@
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/base/common)
-"dy" = (
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/lavaland/explored)
 "dX" = (
 /obj/machinery/shower{
 	dir = 8
@@ -11548,8 +11545,8 @@ Ru
 "}
 (66,1,1) = {"
 Ru
-dy
-dy
+MX
+MX
 WX
 MX
 WX
@@ -11690,9 +11687,9 @@ Ru
 "}
 (67,1,1) = {"
 Ru
-dy
-dy
-dy
+MX
+MX
+MX
 WX
 WX
 WX
@@ -11832,9 +11829,9 @@ Ru
 "}
 (68,1,1) = {"
 Ru
-dy
-dy
-dy
+MX
+MX
+MX
 WX
 WX
 WX
@@ -11974,8 +11971,8 @@ Ru
 "}
 (69,1,1) = {"
 Ru
-dy
-dy
+MX
+MX
 WX
 WX
 WX
