@@ -38,6 +38,8 @@
 /datum/gear_tweak/color/tweak_item(var/obj/item/I, var/metadata)
 	if(valid_colors && !(metadata in valid_colors))
 		return
+	if(!metadata || (metadata == "#ffffff"))
+		return
 	if(istype(I))
 		I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
 	else
@@ -48,7 +50,7 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recol
 /datum/gear_tweak/matrix_recolor
 
 /datum/gear_tweak/matrix_recolor/get_contents(var/metadata)
-	if(metadata)
+	if(islist(metadata) && length(metadata))
 		return "Matrix Recolor: [english_list(metadata)]"
 	return "Matrix Recolor"
 
@@ -61,18 +63,18 @@ GLOBAL_DATUM_INIT(gear_tweak_free_matrix_recolor, /datum/gear_tweak/matrix_recol
 	if(returned["button"] == 3)
 		return metadata
 	if((returned["button"] == 2) || !islist(L) || !ISINRANGE(L.len, 9, 20))
-		return null
+		return list()
 	var/identity = TRUE
 	var/static/list/ones = list(1, 5, 9)
 	for(var/i in 1 to L.len)
 		if(L[i] != ((i in ones)? 1 : 0))
 			identity = FALSE
 			break
-	return identity? null : L
+	return identity? list() : L
 
 /datum/gear_tweak/matrix_recolor/tweak_item(obj/item/I, metadata)
 	. = ..()
-	if(!metadata)
+	if(!islist(metadata) || (length(metadata) < 12))
 		return
 	if(istype(I))
 		I.add_atom_colour(metadata, FIXED_COLOUR_PRIORITY)
