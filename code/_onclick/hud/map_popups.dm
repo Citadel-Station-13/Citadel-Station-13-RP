@@ -7,27 +7,11 @@
 	 */
 	var/list/screen_maps = list()
 
-/obj/screen
-	/**
-	 * Map name assigned to this object.
-	 * Automatically set by /client/proc/register_map_obj.
-	 */
-	var/assigned_map
-	/**
-	 * Mark this object as garbage-collectible after you clean the map
-	 * it was registered on.
-	 *
-	 * This could probably be changed to be a proc, for conditional removal.
-	 * But for now, this works.
-	 */
-	var/del_on_map_removal = TRUE
-
 /**
  * A screen object, which acts as a container for turfs and other things
  * you want to show on the map, which you usually attach to "vis_contents".
  */
 /obj/screen/map_view
-	icon_state = "blank"
 	// Map view has to be on the lowest plane to enable proper lighting
 	layer = SPACE_PLANE
 	plane = SPACE_PLANE

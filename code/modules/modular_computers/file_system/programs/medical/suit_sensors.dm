@@ -1,7 +1,6 @@
 /datum/computer_file/program/suit_sensors
 	filename = "sensormonitor"
 	filedesc = "Suit Sensors Monitoring"
-	tguimodule_path = /datum/tgui_module/crew_monitor/ntos
 	program_icon_state = "crew"
 	program_key_state = "med_key"
 	program_menu_icon = "heart"
@@ -10,3 +9,6 @@
 	requires_ntnet = 1
 	network_destination = "crew lifesigns monitoring system"
 	size = 11
+
+/datum/computer_file/program/camera_monitor/ui_interact(mob/user)
+	GLOB.crewmonitor.show(user, src)

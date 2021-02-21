@@ -5,19 +5,11 @@
 	access = access_medical
 	cost = 625
 	p_drain = 0.025
-	var/datum/tgui_module/crew_monitor/nif/arscreen
-
-/datum/nifsoft/crewmonitor/New()
-	..()
-	arscreen = new(nif)
-
-/datum/nifsoft/crewmonitor/Destroy()
-		QDEL_NULL(arscreen)
-		return ..()
 
 /datum/nifsoft/crewmonitor/activate()
-	if((. = ..()))
-		arscreen.ui_interact(nif.human)
+	. = ..()
+	if(.)
+		GLOB.crewmonitor.show(nif.human, src)
 		return TRUE
 
 /datum/nifsoft/crewmonitor/stat_text()

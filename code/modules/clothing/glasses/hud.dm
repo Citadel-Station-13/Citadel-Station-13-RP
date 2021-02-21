@@ -51,48 +51,39 @@
 	var/obj/item/clothing/glasses/hud/omni/hud = null
 	var/mode = "civ"
 	icon_state = "glasses"
-	var/datum/nano_module/arscreen
-	var/arscreen_path
-	var/datum/tgui_module/tgarscreen
-	var/tgarscreen_path
+	var/datum/nano_module/arscreen = null
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
+	var/emp_ongoing = FALSE
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED,VIS_CH_BACKUP)
 	plane_slots = list(slot_glasses)
 
-/obj/item/clothing/glasses/omnihud/New()
-	..()
-	if(arscreen_path)
-		arscreen = new arscreen_path(src)
-	if(tgarscreen_path)
-		tgarscreen = new tgarscreen_path(src)
+/obj/item/clothing/glasses/omnihud/Initialize()
+	. = ..()
+	if(arscreen)
+		arscreen = new(src)
 
 /obj/item/clothing/glasses/omnihud/Destroy()
 	QDEL_NULL(arscreen)
-	QDEL_NULL(tgarscreen)
-	. = ..()
+	return ..()
 
 /obj/item/clothing/glasses/omnihud/dropped()
-	if(arscreen)
-		SSnanoui.close_uis(src)
-	if(tgarscreen)
-		SStgui.close_uis(src)
+	// do NOT drop all of their uis, instead close these only ones
+	SSnanoui.close_user_uis(src, src, "main")
+	SStgui.close_user_uis(src, src)
 	..()
 
-/obj/item/clothing/glasses/omnihud/emp_act(var/severity)
-	var/disconnect_ar = arscreen
-	arscreen = null
-	var/disconnect_tgar = tgarscreen
-	tgarscreen = null
-	spawn(20 SECONDS)
-		arscreen = disconnect_ar
-		tgarscreen = disconnect_tgar
+/obj/item/clothing/glasses/omnihud/emp_act(severity)
+	emp_ongoing = TRUE
+	SSnanoui.close_user_uis(src, src, "main")
+	SStgui.close_user_uis(src, src)
+	addtimer(VARSET_CALLBACK(src, emp_ongoing, FALSE), 20)
 	..()
 
 /obj/item/clothing/glasses/omnihud/proc/flashed()
 	if(flash_prot && ishuman(loc))
 		to_chat(loc, "<span class='warning'>Your [src.name] darken to try and protect your eyes!</span>")
 
-/obj/item/clothing/glasses/omnihud/prescribe(var/mob/user)
+/obj/item/clothing/glasses/omnihud/prescribe(mob/user)
 	prescription = !prescription
 	playsound(user,'sound/items/screwdriver.ogg', 50, 1)
 	if(prescription)
@@ -113,12 +104,12 @@
 		if(!ar_interact(H))
 			to_chat(user, "<span class='warning'>The [src] does not have any kind of special display.</span>")
 
-/obj/item/clothing/glasses/omnihud/proc/ar_interact(var/mob/living/carbon/human/user)
-	return 0 //The base models do nothing.
+/obj/item/clothing/glasses/omnihud/proc/ar_interact(mob/living/carbon/user)
+	return FALSE
 
 /obj/item/clothing/glasses/omnihud/prescription
 	name = "AR glasses (pr)"
-	prescription = 1
+	prescription = TRUE
 
 /obj/item/clothing/glasses/omnihud/med
 	name = "\improper AR-M glasses"
@@ -126,13 +117,13 @@
 	These have been upgraded with medical records access and virus database integration."
 	mode = "med"
 	action_button_name = "AR Console (Crew Monitor)"
-	tgarscreen_path = /datum/tgui_module/crew_monitor/glasses
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_AUGMENTED)
 
-/obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
-	if(tgarscreen)
-		tgarscreen.ui_interact(user)
-	return 1
+/obj/item/clothing/glasses/omnihud/med/ar_interact(mob/living/carbon/user)
+	if(emp_ongoing)
+		return TRUE
+	GLOB.crewmonitor.show(user,src)
+	return TRUE
 
 /obj/item/clothing/glasses/omnihud/sec
 	name = "\improper AR-S glasses"
@@ -141,13 +132,14 @@
 	mode = "sec"
 	flash_protection = FLASH_PROTECTION_MAJOR
 	action_button_name = "AR Console (Security Alerts)"
-	arscreen_path = /datum/nano_module/alarm_monitor/security
+	arscreen = /datum/nano_module/alarm_monitor/security
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_WANTED,VIS_AUGMENTED)
 
-/obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
-	if(arscreen)
-		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
-	return 1
+/obj/item/clothing/glasses/omnihud/sec/ar_interact(mob/living/carbon/user)
+	if(emp_ongoing)
+		return TRUE
+	arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
+	return TRUE
 
 /obj/item/clothing/glasses/omnihud/eng
 	name = "\improper AR-E glasses"
@@ -156,12 +148,13 @@
 	mode = "eng"
 	flash_protection = FLASH_PROTECTION_MAJOR
 	action_button_name = "AR Console (Station Alerts)"
-	arscreen_path = /datum/nano_module/alarm_monitor/engineering
+	arscreen = /datum/nano_module/alarm_monitor/engineering
 
-/obj/item/clothing/glasses/omnihud/eng/ar_interact(var/mob/living/carbon/human/user)
-	if(arscreen)
-		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
-	return 1
+/obj/item/clothing/glasses/omnihud/eng/ar_interact(mob/living/carbon/user)
+	if(emp_ongoing)
+		return TRUE
+	arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
+	return TRUE
 
 /obj/item/clothing/glasses/omnihud/rnd
 	name = "\improper AR-R glasses"
@@ -193,8 +186,8 @@
 	set name = "Toggle projector"
 	set category = "Object"
 	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(!isliving(usr) || usr.stat) 
+		return
 	if(toggleable)
 		if(active)
 			active = 0

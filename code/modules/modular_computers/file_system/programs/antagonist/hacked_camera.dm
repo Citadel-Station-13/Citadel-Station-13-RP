@@ -1,7 +1,6 @@
 /datum/computer_file/program/camera_monitor/hacked
 	filename = "camcrypt"
 	filedesc = "Camera Decryption Tool"
-	tguimodule_path = /datum/tgui_module/camera/ntos/hacked
 	program_icon_state = "hostile"
 	program_key_state = "security_key"
 	program_menu_icon = "zoomin"

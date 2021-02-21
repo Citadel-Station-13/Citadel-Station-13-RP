@@ -39,18 +39,6 @@
 	board_type = new /datum/frame/frame_types/display
 	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
 
-/obj/item/circuitboard/security/telescreen/entertainment/New()
-	..()
-	network = NETWORK_THUNDER
-
-/obj/item/circuitboard/security/construct(var/obj/machinery/computer/security/C)
-	if (..(C))
-		C.set_network(network.Copy())
-
-/obj/item/circuitboard/security/deconstruct(var/obj/machinery/computer/security/C)
-	if (..(C))
-		network = C.network.Copy()
-
 /obj/item/circuitboard/security/emag_act(var/remaining_charges, var/mob/user)
 	if(emagged)
 		to_chat(user, "Circuit lock is already removed.")

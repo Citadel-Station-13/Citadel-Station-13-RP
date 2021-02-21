@@ -8,9 +8,7 @@
 	//nanoui
 	var/datum/nano_module/NM = null			// If the program uses NanoModule, put it here and it will be automagically opened. Otherwise implement nano_ui_interact.
 	var/nanomodule_path = null				// Path to nanomodule, make sure to set this if implementing new program.
-	// t gui
-	var/datum/tgui_module/TM = null			// If the program uses TGUIModule, put it here and it will be automagically opened. Otherwise implement ui_interact.
-	var/tguimodule_path = null				// Path to tguimodule, make sure to set this if implementing new program.
+
 	// misc program stuff
 	var/program_state = PROGRAM_STATE_KILLED// PROGRAM_STATE_KILLED or PROGRAM_STATE_BACKGROUND or PROGRAM_STATE_ACTIVE - specifies whether this program is running.
 	var/obj/item/modular_computer/computer	// Device that runs this program.
@@ -134,10 +132,6 @@
 		if(nanomodule_path)
 			NM = new nanomodule_path(src, new /datum/topic_manager/program(src), src)
 			NM.using_access = user.GetAccess()
-		if(tguimodule_path)
-			TM = new tguimodule_path(src)
-			TM.using_access = user.GetAccess()
-			TM.ui_interact(user)
 		if(requires_ntnet && network_destination)
 			generate_network_log("Connection opened to [network_destination].")
 		program_state = PROGRAM_STATE_ACTIVE
@@ -150,10 +144,6 @@
 	if(network_destination)
 		generate_network_log("Connection to [network_destination] closed.")
 	QDEL_NULL(NM)
-	if(TM)
-		SStgui.close_uis(TM)
-		qdel(TM)
-		TM = null
 	return 1
 
 // This is called every tick when the program is enabled. Ensure you do parent call if you override it. If parent returns 1 continue with UI initialisation.
@@ -165,9 +155,6 @@
 		return computer.nano_ui_interact(user)
 	if(istype(NM))
 		NM.nano_ui_interact(user, ui_key, null, force_open)
-		return 0
-	if(istype(TM))
-		TM.ui_interact(user)
 		return 0
 	return 1
 
