@@ -5,7 +5,7 @@
 /datum/plane_holder
 	var/mob/my_mob
 	var/list/plane_masters[VIS_COUNT]
-
+// who made this i fucking hate you, i'm going to wipe you out of the main game plane
 /datum/plane_holder/New(mob/this_guy)
 	ASSERT(ismob(this_guy))
 	my_mob = this_guy
@@ -108,11 +108,10 @@
 // The Plane Master
 ////////////////////
 /obj/screen/plane_master
-	screen_loc = "1,1"
-	plane = -100 //Dodge just in case someone instantiates one of these accidentally, don't end up on 0 with plane_master
-	appearance_flags = PLANE_MASTER
-	mouse_opacity = 0	//Normally unclickable
-	alpha = 0	//Hidden from view
+	screen_loc = "CENTER"
+	icon_state = "blank"
+	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
+	blend_mode = BLEND_OVERLAY
 	var/desired_alpha = 255	//What we go to when we're enabled
 	var/invis_toggle = FALSE
 	var/list/sub_planes
@@ -159,6 +158,7 @@
 /////////////////
 //Lighting is weird and has matrix shenanigans. Think of this as turning on/off darkness.
 /obj/screen/plane_master/fullbright
+	name = "fullbright lighting plane master"
 	plane = PLANE_LIGHTING
 	layer = LAYER_HUD_BASE+1 // This MUST be above the lighting plane_master
 	color = null //To break lighting when visible (this is sorta backwards)
@@ -166,19 +166,27 @@
 	invisibility = 101
 	invis_toggle = TRUE
 
+///Contains all lighting objects
 /obj/screen/plane_master/lighting
+	name = "lighting plane master"
 	plane = PLANE_LIGHTING
 	blend_mode = BLEND_MULTIPLY
 	alpha = 255
+	// mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /////////////////
 //Ghosts has a special alpha level
 /obj/screen/plane_master/ghosts
+	name = "ghost plane master"
 	plane = PLANE_GHOSTS
 	desired_alpha = 127 //When enabled, they're like half-transparent
 
 /////////////////
 //The main game planes start normal and visible
 /obj/screen/plane_master/main
+	name = "game world plane master"
+	// plane = GAME_PLANE
+	appearance_flags = PLANE_MASTER //should use client color
+	blend_mode = BLEND_OVERLAY
 	alpha = 255
-	mouse_opacity = 1
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

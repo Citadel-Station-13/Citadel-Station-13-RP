@@ -22,6 +22,14 @@
 	var/obj/screen/background/cam_background
 
 	// interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_SET_MACHINE //| INTERACT_MACHINE_REQUIRES_SIGHT
+	var/list/blacklisted_planes = list(
+		PLANE_ADMIN1, PLANE_ADMIN2, PLANE_ADMIN3,
+		PLANE_CH_STATUS, PLANE_CH_HEALTH, PLANE_CH_LIFE,
+		PLANE_CH_ID, PLANE_CH_WANTED, PLANE_CH_IMPLOYAL,
+		PLANE_CH_IMPTRACK, PLANE_CH_IMPCHEM, PLANE_CH_SPECIAL,
+		PLANE_CH_STATUS_OOC, PLANE_STATUS, PLANE_MESONS
+	)
+	var/list/blacklisted_PM = list(/obj/screen/plane_master/ghosts, /obj/screen/plane_master/fullbright)
 
 /obj/machinery/computer/security/Initialize()
 	. = ..()
@@ -42,6 +50,9 @@
 	cam_plane_masters = list()
 	for(var/plane in subtypesof(/obj/screen/plane_master))
 		var/obj/screen/instance = new plane()
+		if((instance.plane in blacklisted_planes) || is_type_in_list(instance, blacklisted_PM))
+			qdel(instance)
+			continue
 		instance.assigned_map = map_name
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
