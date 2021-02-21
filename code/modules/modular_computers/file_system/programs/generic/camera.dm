@@ -211,7 +211,7 @@
 // Returns the list of cameras accessible from this computer
 /datum/computer_file/program/camera_monitor/proc/get_available_cameras()
 	var/list/L = list()
-	for (var/obj/machinery/camera/cam in GLOB.cameranet.cameras)
+	for (var/obj/machinery/camera/cam in cameranet.cameras)
 		if(!isStationLevel(cam.z))//Only show station cameras.
 			continue
 		L.Add(cam)

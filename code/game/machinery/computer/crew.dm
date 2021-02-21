@@ -8,7 +8,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 250
 	active_power_usage = 500
-	circuit = /obj/item/circuitboard/computer/crew
+	circuit = /obj/item/circuitboard/crew
 
 	light_color = LIGHT_COLOR_BLUE
 
@@ -122,7 +122,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	var/pos_x
 	var/pos_y
 	var/life_status
-	
+
 	for(var/mob/living/carbon/human/H in living_mob_list)
 		var/nanite_sensors = FALSE
 		// if(H in SSnanites.nanite_monitored_mobs)
