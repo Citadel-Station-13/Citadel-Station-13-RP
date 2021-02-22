@@ -271,8 +271,9 @@
 	icon_state = "cocoon1"
 	health = 10
 
-/obj/effect/spider/cocoon/New()
-		icon_state = pick("cocoon1","cocoon2","cocoon3")
+/obj/effect/spider/cocoon/Initialize(mapload)
+	. = ..()
+	icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
 	src.visible_message("<span class='warning'>\The [src] splits open.</span>")

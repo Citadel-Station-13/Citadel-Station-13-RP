@@ -4,10 +4,10 @@
 	icon_state = "x"
 	unacidable = 1//Just to be sure.
 
-/obj/effect/manifest/New()
-
-	src.invisibility = 101
-	return
+/obj/effect/manifest/Initialize(mapload)
+	. = ..()
+	manifest()
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/manifest/proc/manifest()
 	var/dat = "<B>Crew Manifest</B>:<BR>"
@@ -16,6 +16,3 @@
 	var/obj/item/paper/P = new /obj/item/paper( src.loc )
 	P.info = dat
 	P.name = "paper- 'Crew Manifest'"
-	//SN src = null
-	qdel(src)
-	return

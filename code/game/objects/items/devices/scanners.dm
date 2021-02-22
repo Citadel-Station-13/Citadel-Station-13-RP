@@ -382,8 +382,8 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/details = 0
 	var/recent_fail = 0
 
-/obj/item/mass_spectrometer/New()
-	..()
+/obj/item/mass_spectrometer/Initialize(mapload)
+	. = ..()
 	var/datum/reagents/R = new/datum/reagents(5)
 	reagents = R
 	R.my_atom = src

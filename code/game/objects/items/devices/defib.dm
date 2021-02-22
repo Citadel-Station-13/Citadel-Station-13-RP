@@ -19,8 +19,8 @@
 	var/obj/item/shockpaddles/linked/paddles
 	var/obj/item/cell/bcell = null
 
-/obj/item/defib_kit/New() //starts without a cell for rnd
-	..()
+/obj/item/defib_kit/Initialize(mapload) //starts without a cell for rnd
+	. = ..()
 	if(ispath(paddles))
 		paddles = new paddles(src, src)
 	else
