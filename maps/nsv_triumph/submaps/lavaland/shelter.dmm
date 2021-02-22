@@ -13,6 +13,9 @@
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/wood,
 /area/lavaland/idleruins)
+"i" = (
+/turf/simulated/wall,
+/area/template_noop)
 "n" = (
 /turf/simulated/wall,
 /area/lavaland/idleruins)
@@ -28,6 +31,10 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/lavaland/idleruins)
+"x" = (
+/obj/structure/boulder,
+/turf/simulated/floor/outdoors/lavaland,
+/area/template_noop)
 "y" = (
 /obj/structure/boulder,
 /turf/simulated/floor/wood,
@@ -69,9 +76,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/idleruins)
-"V" = (
-/obj/structure/boulder,
-/turf/simulated/floor/outdoors/lavaland,
+"W" = (
+/obj/structure/bed/double,
+/turf/simulated/floor/wood/broken,
 /area/lavaland/idleruins)
 "X" = (
 /turf/simulated/floor/outdoors/lavaland,
@@ -91,24 +98,24 @@ a
 "}
 (2,1,1) = {"
 a
-a
-a
-a
-a
-a
-a
-a
+x
+i
+i
+i
+i
+i
+i
 a
 a
 "}
 (3,1,1) = {"
 a
-V
 n
-n
-n
-n
-n
+d
+d
+W
+d
+B
 n
 a
 a

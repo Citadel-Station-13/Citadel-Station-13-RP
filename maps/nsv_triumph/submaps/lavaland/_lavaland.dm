@@ -111,8 +111,8 @@
 // It will generate more rich ores because of the lower numbers than the normal one
 /datum/random_map/noise/ore/lavaland
 	descriptor = "lava land mine ore distribution map"
-	deep_val = 0.7 //More riches, normal is 0.7 and 0.8
-	rare_val = 0.8
+	deep_val = 0.6 //More riches, normal is 0.7 and 0.8
+	rare_val = 0.4
 
 // The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
 /datum/random_map/noise/ore/lavaland/check_map_sanity()
