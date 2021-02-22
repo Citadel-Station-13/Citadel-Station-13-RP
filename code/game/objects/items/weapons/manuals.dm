@@ -10,9 +10,6 @@
 	icon_state ="bookEngineering"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Station Repairs and Construction"
-
-/obj/item/book/manual/engineering_construction/New()
-	..()
 	dat = {"
 
 		<html><head>
@@ -31,9 +28,6 @@
 	icon_state ="bookParticleAccelerator"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Particle Accelerator User's Guide"
-
-/obj/item/book/manual/engineering_particle_accelerator/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -78,9 +72,6 @@
 	icon_state = "bookSupermatter"
 	author = "Central Engineering Division"
 	title = "Supermatter Engine Operating Manual"
-
-/obj/item/book/manual/supermatter_engine/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -230,9 +221,6 @@
 	icon_state = "bookSupermatter"
 	author = "Cindy Crawfish"
 	title = "R-UST Operating Manual"
-
-/obj/item/book/manual/rust_engine/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -270,9 +258,6 @@
 	icon_state ="bookHacking"
 	author = "Engineering Encyclopedia"		 // Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	title = "Hacking"
-
-/obj/item/book/manual/engineering_hacking/New()
-	..()
 	dat = {"
 
 		<html><head>
@@ -820,16 +805,12 @@
 			</html>
 		"}
 
-
 /obj/item/book/manual/security_space_law
 	name = "Corporate Regulations"
 	desc = "A set of corporate guidelines for keeping law and order on privately-owned space stations."
 	icon_state = "bookSpaceLaw"
 	author = "The Company"
 	title = "Corporate Regulations"
-
-/obj/item/book/manual/security_space_law/New()
-	..()
 	dat = {"
 
 		<html><head>
@@ -843,17 +824,12 @@
 
 		"}
 
-
-
 /obj/item/book/manual/medical_diagnostics_manual
 	name = "Medical Diagnostics Manual"
 	desc = "First, do no harm. A detailed medical practitioner's guide."
 	icon_state = "bookMedical"
 	author = "Medical Department"
 	title = "Medical Diagnostics Manual"
-
-/obj/item/book/manual/medical_diagnostics_manual/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -898,9 +874,6 @@
 	icon_state ="bookEngineering2"
 	author = "Engineering Encyclopedia"
 	title = "Engineering Textbook"
-
-/obj/item/book/manual/engineering_guide/New()
-	..()
 	dat = {"
 
 		<html><head>
@@ -912,7 +885,6 @@
 		</html>
 
 		"}
-
 
 /obj/item/book/manual/chef_recipes
 	name = "Chef Recipes"
@@ -1363,9 +1335,6 @@
 	icon_state = "sop"
 	author = "NanoTrasen"
 	title = "Standard Operating Procedure"
-
-/obj/item/book/manual/standard_operating_procedure/New()
-	..()
 	dat = {"
 
 		<html><head>
@@ -1385,9 +1354,6 @@
 	icon_state = "commandGuide"
 	author = "Jeremiah Acacius"
 	title = "Corporate Regulations"
-
-/obj/item/book/manual/command_guide/New()
-	..()
 	dat = {"
 
 		<html><head>
@@ -1406,9 +1372,6 @@
 	icon_state = "hum_mic"
 	author = "Melora Creager"
 	title = "The Humanized Mice"
-
-/obj/item/book/manual/the_humanized_mice/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1467,9 +1430,6 @@
 	icon_state = "sop_se"
 	author = "NanoTrasen"
 	title = "SOP Volume 1: Alert Levels"
-
-/obj/item/book/manual/legal/sop_vol1/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1576,9 +1536,6 @@
 	icon_state = "sop_se"
 	author = "NanoTrasen"
 	title = "SOP Volume 2: Emergency Situations Protocol"
-
-/obj/item/book/manual/legal/sop_vol2/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1758,9 +1715,6 @@
 	icon_state = "sop_se"
 	author = "NanoTrasen"
 	title = "SOP Volume 3: Legal Clauses"
-
-/obj/item/book/manual/legal/sop_vol3/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1829,9 +1783,6 @@
 	icon_state = "sop_se"
 	author = "NanoTrasen"
 	title = "SOP Volume 4: Courtesy Procedures"
-
-/obj/item/book/manual/legal/sop_vol4/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1895,9 +1846,6 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.1: Department Regulations (Cargo)"
-
-/obj/item/book/manual/legal/sop_vol5_1/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1971,9 +1919,6 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.2: Department Regulations (Engineering)"
-
-/obj/item/book/manual/legal/sop_vol5_2/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2052,9 +1997,6 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.3: Department Regulations (Medical)"
-
-/obj/item/book/manual/legal/sop_vol5_3/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2225,9 +2167,6 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.4: Department Regulations (Research)"
-
-/obj/item/book/manual/legal/sop_vol5_4/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2342,9 +2281,6 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.5: Department Regulations (Security)"
-
-/obj/item/book/manual/legal/sop_vol5_5/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2596,9 +2532,6 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.6: Department Regulations (Command)"
-
-/obj/item/book/manual/legal/sop_vol5_6/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2663,9 +2596,6 @@
 	icon_state = "sop_se_vol5"
 	author = "NanoTrasen"
 	title = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
-
-/obj/item/book/manual/legal/sop_vol5_7/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2799,9 +2729,6 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 1: Introduction"
-
-/obj/item/book/manual/legal/cr_vol1/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2932,9 +2859,6 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 2: Infractions (Low)"
-
-/obj/item/book/manual/legal/cr_vol2/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3190,9 +3114,6 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 3: Infractions (Moderate)"
-
-/obj/item/book/manual/legal/cr_vol3/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3388,9 +3309,6 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 4: Infractions (Severe)"
-
-/obj/item/book/manual/legal/cr_vol4/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3513,9 +3431,6 @@
 	icon_state = "corpreg_se"
 	author = "NanoTrasen"
 	title = "Corporate Regulations Volume 5: Supplementals"
-
-/obj/item/book/manual/legal/cr_vol5/New()
-	..()
 	dat = {"<html>
 				<head>
 				<style>
