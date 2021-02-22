@@ -30,8 +30,8 @@ var/global/list/light_type_cache = list()
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
 
-/obj/machinery/light_construct/New(var/atom/newloc, var/newdir, var/building = 0, var/datum/frame/frame_types/frame_type, var/obj/machinery/light/fixture = null)
-	..(newloc)
+/obj/machinery/light_construct/Initialize(mapload, newdir, building = FALSE, datum/frame/frame_types/frame_type, obj/machinery/light/fixture)
+	. = ..(newloc, newdir)
 	if(fixture)
 		fixture_type = fixture.type
 		fixture.transfer_fingerprints_to(src)
@@ -219,9 +219,8 @@ var/global/list/light_type_cache = list()
 	shows_alerts = FALSE	//VOREStation Edit
 	var/lamp_shade = 1
 
-/obj/machinery/light/flamp/New(atom/newloc, obj/machinery/light_construct/construct = null)
-	..(newloc, construct)
-
+/obj/machinery/light/flamp/Initialize(mapload, obj/machinery/light_construct/construct)
+	. = ..()
 	if(construct)
 		lamp_shade = 0
 		update_icon()
@@ -244,15 +243,15 @@ var/global/list/light_type_cache = list()
 	auto_flicker = TRUE
 
 //VOREStation Add - Shadeless!
-/obj/machinery/light/flamp/noshade/New()
+/obj/machinery/light/flamp/noshade/Initialize(mapload, obj/machinery/light_construct/construct)
+	. = ..()
 	lamp_shade = 0
 	update(0)
-	..()
 //VOREStation Add End
 
 // create a new lighting fixture
-/obj/machinery/light/New(atom/newloc, obj/machinery/light_construct/construct = null)
-	..(newloc)
+/obj/machinery/light/Initialize(mapload, obj/machinery/light_construct/construct)
+	. = ..(newloc)
 
 	if(construct)
 		status = LIGHT_EMPTY
@@ -804,8 +803,8 @@ var/global/list/light_type_cache = list()
 			desc = "A broken [name]."
 
 
-/obj/item/light/New(atom/newloc, obj/machinery/light/fixture = null)
-	..()
+/obj/item/light/Initialize(mapload, obj/machinery/light/fixture)
+	. = ..()
 	if(fixture)
 		status = fixture.status
 		rigged = fixture.rigged

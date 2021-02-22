@@ -104,8 +104,8 @@
 	channels = list("Supply" = 1)
 	networks = list(NETWORK_MINE)
 
-/obj/item/robot_module/drone/mining/New()
-	..()
+/obj/item/robot_module/drone/mining/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/borg/sight/material(src)
 	src.modules += new /obj/item/pickaxe/borgdrill(src)
 	src.modules += new /obj/item/storage/bag/ore(src)

@@ -25,8 +25,8 @@
 		/obj/item/paper_bundle = 3,
 		)
 
-/obj/machinery/papershredder/New()
-	..()
+/obj/machinery/papershredder/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/motor(src)
 	component_parts += new /obj/item/stock_parts/gear(src)
@@ -154,11 +154,12 @@
 	throw_range = 3
 	throw_speed = 1
 
-/obj/item/shreddedp/New()
-	..()
+/obj/item/shreddedp/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(-5,5)
 	pixel_y = rand(-5,5)
-	if(prob(65)) color = pick("#BABABA","#7F7F7F")
+	if(prob(65))
+		color = pick("#BABABA","#7F7F7F")
 
 /obj/item/shreddedp/attackby(var/obj/item/W as obj, var/mob/user)
 	if(istype(W, /obj/item/flame/lighter))

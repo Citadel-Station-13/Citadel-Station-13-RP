@@ -40,8 +40,8 @@
 	no_vore = 1 //Mice can't eat others due to the amount of bugs caused by it.
 	vore_taste = "cheese"
 
-/mob/living/simple_mob/animal/passive/mouse/New()
-	..()
+/mob/living/simple_mob/animal/passive/mouse/Initialize(mapload)
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide

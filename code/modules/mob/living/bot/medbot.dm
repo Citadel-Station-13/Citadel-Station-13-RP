@@ -398,7 +398,7 @@
 	. = ..()
 	return INITIALIZE_HINT_QDEL
 
-/obj/item/fireaid_arm_assembly/LateInitialize()
+/obj/item/firstaid_arm_assembly/LateInitialize()
 	. = ..()
 	if(skin)
 		overlays += image('icons/obj/aibots.dmi', "kit_skin_[src.skin]")

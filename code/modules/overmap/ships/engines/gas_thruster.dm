@@ -191,8 +191,8 @@
 	light_color = "#ed9200"
 	anchored = 1
 
-/obj/effect/engine_exhaust/New(var/turf/nloc, var/ndir, var/flame)
-	..(nloc)
+/obj/effect/engine_exhaust/Initialize(mapload, ndir, flame)
+	. = ..(mapload)
 	if(flame)
 		icon_state = "exhaust"
 		nloc.hotspot_expose(1000,125)

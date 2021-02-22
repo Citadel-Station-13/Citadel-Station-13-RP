@@ -6,9 +6,9 @@
 	parent_organ = BP_TORSO
 	vital = 1
 
-/obj/item/organ/internal/cell/New()
+/obj/item/organ/internal/cell/Initialize(mapload)
+	. = ..()
 	robotize()
-	..()
 
 /obj/item/organ/internal/cell/replaced()
 	..()

@@ -19,8 +19,8 @@
 					"Miss M" = "miss-miner"
 				)
 
-/obj/item/robot_module/robot/miner/New()
-	..()
+/obj/item/robot_module/robot/miner/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/borg/sight/material(src)
 	src.modules += new /obj/item/tool/wrench/cyborg(src)
 	src.modules += new /obj/item/tool/screwdriver/cyborg(src)

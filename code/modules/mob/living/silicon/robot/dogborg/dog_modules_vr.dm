@@ -58,8 +58,8 @@
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
 
-/obj/item/dogborg/boop_module/New()
-	..()
+/obj/item/dogborg/boop_module/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/boop_module/attack_self(mob/user)

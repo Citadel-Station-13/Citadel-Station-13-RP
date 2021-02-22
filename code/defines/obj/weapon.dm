@@ -42,6 +42,9 @@
 
 /obj/item/soap/deluxe
 	icon_state = "soapdeluxe"
+
+/obj/item/soap/deluxe/Initialize(mapload)
+	. = ..()
 	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
 
 /obj/item/soap/syndie

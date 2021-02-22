@@ -88,8 +88,8 @@ var/list/possible_cable_coil_colours = list(
 /obj/structure/cable/white
 	color = COLOR_WHITE
 
-/obj/structure/cable/New()
-	..()
+/obj/structure/cable/Initialize(mapload)
+	. = ..()
 
 	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 
@@ -100,7 +100,8 @@ var/list/possible_cable_coil_colours = list(
 	d2 = text2num( copytext( icon_state, dash+1 ) )
 
 	var/turf/T = src.loc			// hide if turf is not intact
-	if(level==1) hide(!T.is_plating())
+	if(level==1)
+		hide(!T.is_plating())
 	cable_list += src //add it to the global cable list
 
 
@@ -824,8 +825,8 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/stack/cable_coil/cut
 	item_state = "coil2"
 
-/obj/item/stack/cable_coil/cut/New(loc)
-	..()
+/obj/item/stack/cable_coil/cut/Initialize(mapload, new_amount, merge)
+	. = ..()
 	src.amount = rand(1,2)
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
@@ -904,16 +905,16 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	stacktype = /obj/item/stack/cable_coil
 	color = COLOR_BROWN
 
-/obj/item/stack/cable_coil/random/New()
+/obj/item/stack/cable_coil/random/Initialize(mapload, new_amount, merge)
+	. = ..()
 	stacktype = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN, COLOR_SILVER, COLOR_GRAY, COLOR_BLACK, COLOR_MAROON, COLOR_OLIVE, COLOR_LIME, COLOR_TEAL, COLOR_NAVY, COLOR_PURPLE, COLOR_BEIGE, COLOR_BROWN)
-	..()
 
-/obj/item/stack/cable_coil/random_belt/New()
+/obj/item/stack/cable_coil/random_belt/Initialize(mapload, new_amount, merge)
+	. = ..()
 	stacktype = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_YELLOW, COLOR_ORANGE)
 	amount = 30
-	..()
 
 //Endless alien cable coil
 

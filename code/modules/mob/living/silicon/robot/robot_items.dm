@@ -12,8 +12,8 @@
 
 	var/obj/item/loaded_item	//What is currently inside the analyzer.
 
-/obj/item/portable_destructive_analyzer/New()
-	..()
+/obj/item/portable_destructive_analyzer/Initialize(mapload)
+	. = ..()
 	files = new /datum/research/techonly(src) //Setup the research data holder.
 
 /obj/item/portable_destructive_analyzer/attack_self(user as mob)
@@ -354,13 +354,13 @@
 	var/overload_time = 0			//Stores the time of overload
 	var/last_flash = 0				//Stores the time of last flash
 
-/obj/item/borg/combat/shield/New()
+/obj/item/borg/combat/shield/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	..()
 
 /obj/item/borg/combat/shield/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/borg/combat/shield/attack_self(var/mob/living/user)
 	set_shield_level()
