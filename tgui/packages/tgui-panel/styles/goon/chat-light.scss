@@ -274,7 +274,9 @@ a.popt {
 
 .italic,
 .italics,
-
+.emote {
+  font-style: italic;
+}
 
 
 
@@ -309,11 +311,11 @@ em {
   font-weight: bold;
 }
 
-.aooc {
+.antagooc, .aooc {
   color: #b8002e;
   font-weight: bold;
 }
-
+/* vst specif */
 .event_manager {
   color: #660033;
   font-weight: bold;
@@ -345,6 +347,7 @@ em {
   font-weight: bold;
 }
 
+/* vst logging */
 //attack logging!
 .log_message {
   color: #386AFF;
@@ -383,7 +386,7 @@ em {
   font-weight: bold;
 }
 
-//mods!!!!!!!!!
+/* vst spec mods */
 .mod_channel {
   color: #735638;
   font-weight: bold;
@@ -394,9 +397,6 @@ em {
 }
 
 .say {
-}
-
-.emote {
 }
 
 .deadsay {
@@ -427,7 +427,7 @@ em {
 }
 
 .comradio {
-  color: #193A7A;
+  color: #948f02;
 }
 
 .secradio {
@@ -442,8 +442,8 @@ em {
   color: #fb5613;
 }
 
-.supradio {
-  color: #5F4519;
+.suppradio, .supradio {
+  color: #a8732b;
 }
 
 .servradio {
@@ -482,7 +482,9 @@ h1.alert, h2.alert {
   color: #000000;
 }
 
-
+.emote {
+  font-style: italic;
+}
 
 .userdanger {
   color: #ff0000;
@@ -554,6 +556,11 @@ h1.alert, h2.alert {
 
 .tinynotice {
   color: #000099;
+  font-size: 85%;
+}
+
+.tinynoticeital {
+  color: #000099;
   font-style: italic;
   font-size: 85%;
 }
@@ -587,10 +594,6 @@ h1.alert, h2.alert {
   color: #ff0000;
   font-weight: bold;
 }
-
-
-
-
 
 .unconscious {
   color: #0000ff;
@@ -632,40 +635,40 @@ h1.alert, h2.alert {
 }
 
 .cult {
-  color: #960000;
+  color: #973e3b;
 }
 
 .cultitalic {
-  color: #960000;
+  color: #973e3b;
   font-style: italic;
 }
 
 .cultbold {
-  color: #960000;
+  color: #973e3b;
   font-style: italic;
   font-weight: bold;
 }
 
 .cultboldtalic {
-  color: #960000;
+  color: #973e3b;
   font-weight: bold;
   font-size: 185%;
 }
 
 .cultlarge {
-  color: #960000;
+  color: #973e3b;
   font-weight: bold;
   font-size: 185%;
 }
 
 .narsie {
-  color: #960000;
+  color: #973e3b;
   font-weight: bold;
   font-size: 925%;
 }
 
 .narsiesmall {
-  color: #960000;
+  color: #973e3b;
   font-weight: bold;
   font-size: 370%;
 }
@@ -724,6 +727,7 @@ h1.alert, h2.alert {
   font-size: 185%;
 }
 
+/* compatability */
 .umbra {
   color: #5000A0;
 }
@@ -925,6 +929,7 @@ h1.alert, h2.alert {
   font-family: "Courier New", cursive, sans-serif;
 }
 
+/* VST LANG */
 //langs
 .alien {
   color: #543354;
@@ -1017,10 +1022,11 @@ h1.alert, h2.alert {
 .interface {
   color: #330033;
 }
+/* VST LANG END */
 
 .command_headset {
   font-weight: bold;
-  font-size: 160%;
+  font-size: 160%; /* 160% default, changed so command can scream less */
 }
 
 .small {
@@ -1056,7 +1062,7 @@ h1.alert, h2.alert {
 
 .clown {
   color: #FF69Bf;
-  font-size: 160%;
+  font-size: 160%; /* 160% default, changed so "command" can scream less */
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-weight: bold;
 }
@@ -1072,7 +1078,7 @@ h1.alert, h2.alert {
   font-style: italic;
 }
 
-.spooky {
+.spooky { /* cit specific, used by jacq */
   color: #FF9100;
 }
 
@@ -1105,7 +1111,7 @@ h1.alert, h2.alert {
   }
 }
 
-.velvet	{
+.velvet	{ /* cit specific, used by MKU */
   color: #660015;
   font-weight: bold;
   animation: velvet 5000ms infinite;

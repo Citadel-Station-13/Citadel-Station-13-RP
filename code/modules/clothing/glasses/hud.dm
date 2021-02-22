@@ -68,14 +68,16 @@
 
 /obj/item/clothing/glasses/omnihud/dropped()
 	// do NOT drop all of their uis, instead close these only ones
-	SSnanoui.close_user_uis(src, src, "main")
-	SStgui.close_user_uis(src, src)
+	if(arscreen)
+		SSnanoui.close_user_uis(src, arscreen)
+	SStgui.close_user_uis(src, GLOB.crewmonitor)
 	..()
 
 /obj/item/clothing/glasses/omnihud/emp_act(severity)
 	emp_ongoing = TRUE
-	SSnanoui.close_user_uis(src, src, "main")
-	SStgui.close_user_uis(src, src)
+	if(arscreen)
+		SSnanoui.close_user_uis(src, arscreen)
+	SStgui.close_user_uis(src, GLOB.crewmonitor)
 	addtimer(VARSET_CALLBACK(src, emp_ongoing, FALSE), 20)
 	..()
 
@@ -186,7 +188,7 @@
 	set name = "Toggle projector"
 	set category = "Object"
 	set src in usr
-	if(!isliving(usr) || usr.stat) 
+	if(!isliving(usr) || usr.stat)
 		return
 	if(toggleable)
 		if(active)

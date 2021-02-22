@@ -106,10 +106,6 @@
 			usr:swap_hand()
 		if("hand")
 			usr:swap_hand()
-		else
-			if(usr.attack_ui(slot_id))
-				usr.update_inv_l_hand(0)
-				usr.update_inv_r_hand(0)
 
 	if(usr.attack_ui(slot_id))
 		usr.update_inv_hands()
@@ -141,7 +137,7 @@
 	if(!user || !slot_id)
 		return
 
-	var/obj/item/holding = user.get_equipped_item(user.get_active_hand())
+	var/obj/item/holding = user.get_active_hand()
 
 	if(!holding || user.get_equipped_item(slot_id))
 		return
@@ -162,7 +158,7 @@
 /obj/screen/inventory/hand
 	var/mutable_appearance/handcuff_overlay
 	// var/static/mutable_appearance/blocked_overlay = mutable_appearance('icons/mob/screen_gen.dmi', "blocked")
-	var/held_index = 0
+	// var/held_index = 0
 
 /obj/screen/inventory/hand/update_overlays()
 	. = ..()
@@ -183,9 +179,9 @@
 		// 	if(!C.has_hand_for_held_index(held_index))
 		// 		. += blocked_overlay
 
-	if(held_index == hud.mymob.get_active_hand())
-		. += "hand_active"
-
+	// if(held_index == hud.mymob.get_active_hand())
+	// 	. += "hand_active"
+/*
 /obj/screen/inventory/hand/Click(location, control, params)
 	// At this point in client Click() code we have passed the 1/10 sec check and little else
 	// We don't even know if it's a middle click
@@ -206,7 +202,7 @@
 	else
 		user.swap_hand(held_index)
 	return TRUE
-
+*/
 /obj/screen/close
 	name = "close"
 
@@ -230,8 +226,8 @@
 	if(!usr.canClick())
 		return
 
-	if(usr.stat || usr.restrained() || usr.stunned || usr.lying)
-		return 1
+	if(usr.incapacitated()) // ignore_stasis = TRUE
+		return TRUE
 
 	if(!(owner in usr))
 		return 1
@@ -260,10 +256,10 @@
 /obj/screen/storage/Click()
 	if(!usr.canClick())
 		return 1
-	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
-		return 1
-	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-		return 1
+	if(usr.incapacitated()) // ignore_stasis = TRUE
+		return TRUE
+	if(ismecha(usr.loc)) // stops inventory actions in a mech
+		return TRUE
 	if(master)
 		var/obj/item/I = usr.get_active_hand()
 		if(I)
@@ -291,29 +287,29 @@
 
 	return set_selected_zone(choice, usr)
 
-/obj/screen/zone_sel/MouseEntered(location, control, params)
-	MouseMove(location, control, params)
+// /obj/screen/zone_sel/MouseEntered(location, control, params)
+// 	MouseMove(location, control, params)
 
-/obj/screen/zone_sel/MouseMove(location, control, params)
-	if(isobserver(usr))
-		return
+// /obj/screen/zone_sel/MouseMove(location, control, params)
+// 	if(isobserver(usr))
+// 		return
 
-	var/list/PL = params2list(params)
-	var/icon_x = text2num(PL["icon-x"])
-	var/icon_y = text2num(PL["icon-y"])
-	var/choice = get_zone_at(icon_x, icon_y)
+// 	var/list/PL = params2list(params)
+// 	var/icon_x = text2num(PL["icon-x"])
+// 	var/icon_y = text2num(PL["icon-y"])
+// 	var/choice = get_zone_at(icon_x, icon_y)
 
-	if(hovering == choice)
-		return
-	vis_contents -= hover_overlays_cache[hovering]
-	hovering = choice
+// 	if(hovering == choice)
+// 		return
+// 	vis_contents -= hover_overlays_cache[hovering]
+// 	hovering = choice
 
-	var/obj/effect/overlay/zone_sel/overlay_object = hover_overlays_cache[choice]
-	if(!overlay_object)
-		overlay_object = new
-		overlay_object.icon_state = "[choice]"
-		hover_overlays_cache[choice] = overlay_object
-	vis_contents += overlay_object
+// 	var/obj/effect/overlay/zone_sel/overlay_object = hover_overlays_cache[choice]
+// 	if(!overlay_object)
+// 		overlay_object = new
+// 		overlay_object.icon_state = "[choice]"
+// 		hover_overlays_cache[choice] = overlay_object
+// 	vis_contents += overlay_object
 
 /obj/effect/overlay/zone_sel
 	icon = 'icons/mob/screen_gen.dmi'
@@ -396,7 +392,9 @@
 
 
 /obj/screen/Click(location, control, params)
-	if(!usr)	return 1
+	if(usr.incapacitated()) // ignore_stasis = TRUE
+		return TRUE
+
 	switch(name)
 		if("toggle")
 			if(usr.hud_used.inventory_shown)
@@ -409,8 +407,8 @@
 			usr.hud_used.hidden_inventory_update()
 
 		if("equip")
-			if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
-				return 1
+			if(ismecha(usr.loc)) // stops inventory actions in a mech
+				return TRUE
 			if(ishuman(usr))
 				var/mob/living/carbon/human/H = usr
 				H.quick_equip()
@@ -454,83 +452,84 @@
 		if("Reset Machine")
 			usr.unset_machine()
 		if("internal")
-			if(iscarbon(usr))
-				var/mob/living/carbon/C = usr
-				if(!C.stat && !C.stunned && !C.paralysis && !C.restrained())
-					if(C.internal)
-						C.internal = null
-						to_chat(C, "<span class='notice'>No longer running on internals.</span>")
-						if(C.internals)
-							C.internals.icon_state = "internal0"
+			if(!iscarbon(usr))
+				return TRUE
+			var/mob/living/carbon/C = usr
+			if(!C.stat && !C.stunned && !C.paralysis && !C.restrained())
+				if(C.internal)
+					C.internal = null
+					to_chat(C, "<span class='notice'>No longer running on internals.</span>")
+					if(C.internals)
+						C.internals.icon_state = "internal0"
+				else
+
+					var/no_mask
+					if(!(C.wear_mask && C.wear_mask.item_flags & AIRTIGHT))
+						var/mob/living/carbon/human/H = C
+						if(!(H.head && H.head.item_flags & AIRTIGHT))
+							no_mask = 1
+
+					if(no_mask)
+						to_chat(C, "<span class='notice'>You are not wearing a suitable mask or helmet.</span>")
+						return 1
 					else
-
-						var/no_mask
-						if(!(C.wear_mask && C.wear_mask.item_flags & AIRTIGHT))
+						// groan. lazy time.
+						// location name
+						var/list/locnames = list()
+						// tank ref, can include nulls! FIRST VALID TANK FROM THIS IS CHOSEN.
+						var/list/tanks = list()
+						// first, hand
+						locnames += "in your hand"
+						tanks += C.get_active_hand()
+						// yes, the above can result in duplicates.
+						// snowflake rig handling, second highest priority
+						if(istype(C.back, /obj/item/rig))
+							var/obj/item/rig/R = C.back
+							if(R.air_supply && !R.offline)
+								locnames += "in your hardsuit"
+								tanks += R.air_supply
+						// now, slots
+						if(ishuman(C))
 							var/mob/living/carbon/human/H = C
-							if(!(H.head && H.head.item_flags & AIRTIGHT))
-								no_mask = 1
-
-						if(no_mask)
-							to_chat(C, "<span class='notice'>You are not wearing a suitable mask or helmet.</span>")
-							return 1
+							// suit storage
+							locnames += "on your suit"
+							tanks += H.s_store
+							// right/left hands
+							locnames += "in your right hand"
+							tanks += H.r_hand
+							locnames += "in your left hand"
+							tanks += H.l_hand
+							// pockets
+							locnames += "in your left pocket"
+							tanks += H.l_store
+							locnames += "in your right pocket"
+							tanks += H.r_store
+							// belt
+							locnames += "on your belt"
+							tanks += H.belt
+							// back
+							locnames += "on your back"
+							tanks += H.back
 						else
-							// groan. lazy time.
-							// location name
-							var/list/locnames = list()
-							// tank ref, can include nulls! FIRST VALID TANK FROM THIS IS CHOSEN.
-							var/list/tanks = list()
-							// first, hand
-							locnames += "in your hand"
-							tanks += C.get_active_hand()
-							// yes, the above can result in duplicates.
-							// snowflake rig handling, second highest priority
-							if(istype(C.back, /obj/item/rig))
-								var/obj/item/rig/R = C.back
-								if(R.air_supply && !R.offline)
-									locnames += "in your hardsuit"
-									tanks += R.air_supply
-							// now, slots
-							if(ishuman(C))
-								var/mob/living/carbon/human/H = C
-								// suit storage
-								locnames += "on your suit"
-								tanks += H.s_store
-								// right/left hands
-								locnames += "in your right hand"
-								tanks += H.r_hand
-								locnames += "in your left hand"
-								tanks += H.l_hand
-								// pockets
-								locnames += "in your left pocket"
-								tanks += H.l_store
-								locnames += "in your right pocket"
-								tanks += H.r_store
-								// belt
-								locnames += "on your belt"
-								tanks += H.belt
-								// back
-								locnames += "on your back"
-								tanks += H.back
-							else
-								// right/left hands
-								locnames += "in your right hand"
-								tanks += C.r_hand
-								locnames += "in your left hand"
-								tanks += C.l_hand
-								// back
-								locnames += "on your back"
-								tanks += C.back
-							// no more hugbox and stupid "smart" checks. take the first one we can find and use it. they can use active hand to override if needed.
-							for(var/index = 1 to length(tanks))
-								if(!istype(tanks[index], /obj/item/tank))
-									continue
-								C.internal = tanks[index]
-								to_chat(C, "<span class='notice'>You are now running on internals from [tanks[index]] on your [locnames[index]]</span>")
-								if(C.internals)
-									C.internals.icon_state = "internal1"
-								return
-							to_chat(C, "<span class='warning'>You don't have an internals tank.</span>")
+							// right/left hands
+							locnames += "in your right hand"
+							tanks += C.r_hand
+							locnames += "in your left hand"
+							tanks += C.l_hand
+							// back
+							locnames += "on your back"
+							tanks += C.back
+						// no more hugbox and stupid "smart" checks. take the first one we can find and use it. they can use active hand to override if needed.
+						for(var/index = 1 to length(tanks))
+							if(!istype(tanks[index], /obj/item/tank))
+								continue
+							C.internal = tanks[index]
+							to_chat(C, "<span class='notice'>You are now running on internals from [tanks[index]] on your [locnames[index]]</span>")
+							if(C.internals)
+								C.internals.icon_state = "internal1"
 							return
+						to_chat(C, "<span class='warning'>You don't have an internals tank.</span>")
+						return
 		if("act_intent")
 			usr.a_intent_change("right")
 		if(INTENT_HELP)
@@ -558,9 +557,6 @@
 		if("module")
 			if(isrobot(usr))
 				var/mob/living/silicon/robot/R = usr
-//				if(R.module)
-//					R.hud_used.toggle_show_robot_modules()
-//					return 1
 				R.pick_module()
 
 		if("inventory")

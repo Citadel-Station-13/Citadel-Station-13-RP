@@ -5,13 +5,14 @@
 /datum/plane_holder
 	var/mob/my_mob
 	var/list/plane_masters[VIS_COUNT]
-// who made this i fucking hate you, i'm going to wipe you out of the main game plane
+
 /datum/plane_holder/New(mob/this_guy)
 	ASSERT(ismob(this_guy))
 	my_mob = this_guy
 
 	//It'd be nice to lazy init these but some of them are important to just EXIST. Like without ghost planemaster, you can see ghosts. Go figure.
-
+	// whoever thinks it's good to lazy init this i want to punch you
+	// you can THEORATICALLY modify the plane masters to be visible clienside BECAUSE YOU ARE SENDING THE DATA
 	// 'Utility' planes
 	plane_masters[VIS_FULLBRIGHT] 	= new /obj/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
 	plane_masters[VIS_LIGHTING] 	= new /obj/screen/plane_master/lighting							//Lighting system (but different!)
@@ -112,6 +113,10 @@
 	icon_state = "blank"
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
 	blend_mode = BLEND_OVERLAY
+
+	plane = -100 //Dodge just in case someone instantiates one of these accidentally, don't end up on 0 with plane_master
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	alpha = 0
 	var/desired_alpha = 255	//What we go to when we're enabled
 	var/invis_toggle = FALSE
 	var/list/sub_planes

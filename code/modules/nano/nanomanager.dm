@@ -116,24 +116,20 @@
  /**
   * Close /nanoui uis belonging to user
   *
-  * @param user /mob The mob who owns the uis
-  * @param src_object /obj|/mob If src_object is provided, only close uis which are attached to src_object (optional)
-  * @param ui_key string If ui_key is provided, only close uis with a matching ui_key (optional)
+  * * user /mob The mob who owns the uis
+  * * src_object /obj|/mob If src_object is provided, only close uis which are attached to src_object (optional)
+  * * ui_key string [optional] If ui_key is provided, only close uis with a matching ui_key (optional)
   *
   * @return int The number of uis closed
   */
-/datum/controller/subsystem/nanoui/proc/close_user_uis(var/mob/user, src_object = null, ui_key = null)
-	if (isnull(user.open_uis) || !istype(user.open_uis, /list) || open_uis.len == 0)
-		//testing("nanomanager/close_user_uis mob [user.name] has no open uis")
-		return 0 // has no open uis
-
+/datum/controller/subsystem/nanoui/proc/close_user_uis(mob/user, src_object = null, ui_key = null)
 	var/close_count = 0
-	for (var/datum/nanoui/ui in user.open_uis)
-		if ((isnull(src_object) || !isnull(src_object) && ui.src_object == src_object) && (isnull(ui_key) || !isnull(ui_key) && ui.ui_key == ui_key))
+	if(length(user?.open_uis) == 0)
+		return close_count
+	for(var/datum/nanoui/ui in user.open_uis)
+		if(isnull(src_object) || ui.src_object == src_object)
 			ui.close()
 			close_count++
-
-	//testing("nanomanager/close_user_uis mob [user.name] closed [open_uis.len] of [close_count] uis")
 
 	return close_count
 

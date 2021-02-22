@@ -298,30 +298,56 @@ var/list/slot_equipment_priority = list( \
 /mob/proc/get_equipped_item(var/slot)
 	return null
 
-//Outdated but still in use apparently. This should at least be a human proc.
-/mob/proc/get_equipped_items()
-	var/list/items = new/list()
+/**
+ * Used to return a list of equipped items on a mob; does not include held items (use get_all_gear)
+ *
+ * Argument(s):
+ * * Optional - include_pockets (TRUE/FALSE), whether or not to include the pockets and suit storage in the returned list
+ */
+/mob/living/proc/get_equipped_items(include_pockets = FALSE)
+	. = list()
 
-	if(hasvar(src,"back")) if(src:back) items += src:back
-	if(hasvar(src,"belt")) if(src:belt) items += src:belt
-	if(hasvar(src,"l_ear")) if(src:l_ear) items += src:l_ear
-	if(hasvar(src,"r_ear")) if(src:r_ear) items += src:r_ear
-	if(hasvar(src,"glasses")) if(src:glasses) items += src:glasses
-	if(hasvar(src,"gloves")) if(src:gloves) items += src:gloves
-	if(hasvar(src,"head")) if(src:head) items += src:head
-	if(hasvar(src,"shoes")) if(src:shoes) items += src:shoes
-	if(hasvar(src,"wear_id")) if(src:wear_id) items += src:wear_id
-	if(hasvar(src,"wear_mask")) if(src:wear_mask) items += src:wear_mask
-	if(hasvar(src,"wear_suit")) if(src:wear_suit) items += src:wear_suit
-//	if(hasvar(src,"w_radio")) if(src:w_radio) items += src:w_radio  commenting this out since headsets go on your ears now PLEASE DON'T BE MAD KEELIN
-	if(hasvar(src,"w_uniform")) if(src:w_uniform) items += src:w_uniform
+	if(back)
+		. += back
+	if(wear_mask)
+		. += wear_mask
 
-	//if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand
-	//if(hasvar(src,"r_hand")) if(src:r_hand) items += src:r_hand
+/mob/living/carbon/human/get_equipped_items(include_pockets = FALSE)
+	. = ..()
+	if(!.)
+		return list()
+	if(belt)
+		. += belt
+	if(l_ear)
+		. += l_ear
+	if(r_ear)
+		. += r_ear
+	if(glasses)
+		. += glasses
+	if(gloves)
+		. += gloves
+	if(head)
+		. += head
+	if(shoes)
+		. += shoes
+	if(wear_id)
+		. += wear_id
+	if(wear_suit)
+		. += wear_suit
+	if(w_uniform)
+		. += w_uniform
 
-	return items
+	if(include_pockets)
+		if(r_store)
+			. += r_store
+		if(l_store)
+			. += l_store
+
 
 /mob/proc/delete_inventory()
-	for(var/entry in get_equipped_items())
+	return FALSE
+
+/mob/living/delete_inventory()
+	for(var/entry in get_equipped_items(TRUE))
 		drop_from_inventory(entry)
 		qdel(entry)

@@ -176,7 +176,9 @@ class ChatRenderer {
       this.highlightColor = null;
       return;
     }
-    const allowedRegex = /^[a-z0-9_\-\s]+$/ig;
+    // citadel update - ig changed to i for flags,
+    // to fix issues with highlighting only working for every other word.
+    const allowedRegex = /^[a-z0-9_\-\s]+$/i;
     const lines = String(text)
       .split(',')
       .map(str => str.trim())
@@ -313,7 +315,10 @@ class ChatRenderer {
           }
         }
         // Linkify text
-        linkifyNode(node);
+        const linkifyNodes = node.querySelectorAll('.linkify');
+        for (let i = 0; i < linkifyNodes.length; ++i) {
+          linkifyNode(linkifyNodes[i]);
+        }
         // Assign an image error handler
         if (now < message.createdAt + IMAGE_RETRY_MESSAGE_AGE) {
           const imgNodes = node.querySelectorAll('img');

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
- em {
+em {
   font-style: normal;
   font-weight: bold;
 }
@@ -255,7 +255,7 @@ a.popt {
 /* ADD HERE FOR ITALIC */
 
 
-.italic, .italics{
+.italic, .italics, .emote {
   font-style: italic;
 }
 
@@ -292,7 +292,7 @@ em {
   font-weight: bold;
 }
 
-.aooc {
+.antagooc, .aooc {
   color: #b8002e;
   font-weight: bold;
 }
@@ -328,6 +328,7 @@ em {
   font-weight: bold;
 }
 
+/* vst-specific loggy*/
 //attack logging!
 .log_message {
   color: #386AFF;
@@ -355,7 +356,6 @@ em {
   color:#888888;
 }
 
-
 /* cit-specific mentorsay*/
 .mentorsay {
   color: #E236D8;
@@ -367,7 +367,7 @@ em {
   font-weight: bold;
 }
 
-//mods!!!!!!!!!
+/* vst-specific mentorsay*/
 .mod_channel {
   color: #735638;
   font-weight: bold;
@@ -378,9 +378,6 @@ em {
 }
 
 .say {
-}
-
-.emote {
 }
 
 .deadsay {
@@ -408,7 +405,7 @@ em {
 }
 
 .comradio {
-  color: #5064D3;
+  color: #fcdf03;
 }
 
 .secradio {
@@ -423,8 +420,8 @@ em {
   color: #f37746;
 }
 
-.supradio {
-  color: #966C28;
+.suppradio, .supradio {
+  color: #b88646;
 }
 
 .servradio {
@@ -461,6 +458,10 @@ em {
 
 .alert {
   color: #d82020;
+}
+
+.emote {
+  font-style: italic;
 }
 
 .userdanger {
@@ -518,11 +519,21 @@ em {
 
 .tinynotice {
   color: #6685f5;
+  font-size: 85%;
+}
+
+.tinynoticeital {
+  color: #6685f5;
   font-style: italic;
   font-size: 85%;
 }
 
 .smallnotice {
+  color: #6685f5;
+  font-size: 90%;
+}
+
+.smallnoticeital {
   color: #6685f5;
   font-style: italic;
   font-size: 90%;
@@ -587,40 +598,40 @@ em {
 }
 
 .cult {
-  color: #aa1c1c;
+  color: #973e3b;
 }
 
 .cultitalic {
-  color: #aa1c1c;
+  color: #973e3b;
   font-style: italic;
 }
 
 .cultbold {
-  color: #aa1c1c;
+  color: #973e3b;
   font-style: italic;
   font-weight: bold;
 }
 
 .cultboldtalic {
-  color: #aa1c1c;
+  color: #973e3b;
   font-weight: bold;
   font-size: 185%;
 }
 
 .cultlarge {
-  color: #aa1c1c;
+  color: #973e3b;
   font-weight: bold;
   font-size: 185%;
 }
 
 .narsie {
-  color: #aa1c1c;
+  color: #973e3b;
   font-weight: bold;
   font-size: 925%;
 }
 
 .narsiesmall {
-  color: #aa1c1c;
+  color: #973e3b;
   font-weight: bold;
   font-size: 370%;
 }
@@ -697,7 +708,7 @@ em {
 }
 
 .deconversion_message {
-  color: #5000A0;
+  color: #a947ff;
   font-size: 185%;
   font-style: italic;
 }
@@ -880,9 +891,7 @@ em {
   font-family: "Courier New", cursive, sans-serif;
 }
 
-
-
-
+/* VST LANG */
 //langs
 .alien {
   color: #543354;
@@ -975,8 +984,7 @@ em {
 .interface {
   color: #330033;
 }
-
-
+/* VST LANG END*/
 
 .command_headset {
   font-weight: bold;
