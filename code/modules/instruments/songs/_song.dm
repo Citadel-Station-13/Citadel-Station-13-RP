@@ -221,7 +221,7 @@
 
 /// Updates the window for our user. Override in subtypes.
 /datum/song/proc/updateDialog(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /datum/song/process(wait)
 	if(!playing)
@@ -276,7 +276,7 @@
 /datum/song/handheld
 
 /datum/song/handheld/updateDialog(mob/user)
-	parent.ui_interact(user || usr)
+	parent.nano_ui_interact(user || usr)
 
 /datum/song/handheld/should_stop_playing(mob/user)
 	. = ..()
@@ -289,7 +289,7 @@
 /datum/song/stationary
 
 /datum/song/stationary/updateDialog(mob/user)
-	parent.ui_interact(user || usr)
+	parent.nano_ui_interact(user || usr)
 
 /datum/song/stationary/should_stop_playing(mob/user)
 	. = ..()

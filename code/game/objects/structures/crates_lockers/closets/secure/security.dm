@@ -249,7 +249,8 @@
 		/obj/item/gps/security,
 		/obj/item/flashlight/maglight,
 		/obj/item/megaphone,
-		/obj/item/clothing/mask/gas/half)
+		/obj/item/clothing/mask/gas/half,
+		/obj/item/gun/projectile/shotgun/pump/combat/warden)
 
 /obj/structure/closet/secure_closet/warden/Initialize(mapload)
 	if(prob(50))

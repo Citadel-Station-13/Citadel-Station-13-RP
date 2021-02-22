@@ -44,14 +44,14 @@
 	update_icon()
 
 /obj/machinery/embedded_controller/attack_ai(mob/user as mob)
-	src.ui_interact(user)
+	src.nano_ui_interact(user)
 
 /obj/machinery/embedded_controller/attack_hand(mob/user as mob)
 
 	if(!user.IsAdvancedToolUser())
 		return 0
 
-	src.ui_interact(user)
+	src.nano_ui_interact(user)
 
 //
 // Embedded controller with a radio! (Most things (All things?) use this)

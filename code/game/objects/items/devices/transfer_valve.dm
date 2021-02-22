@@ -69,9 +69,9 @@
 
 
 /obj/item/transfer_valve/attack_self(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/item/transfer_valve/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/transfer_valve/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	// this is the data which will be sent to the ui
 	var/data[0]

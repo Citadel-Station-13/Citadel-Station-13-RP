@@ -71,6 +71,7 @@
 	temp_shift = -2
 
 // Medicinal
+/*
 /datum/chemical_reaction/distilling/inaprovalaze
 	name = "Distilling Inaprovalaze"
 	id = "distill_inaprovalaze"
@@ -103,7 +104,7 @@
 	reaction_rate = HALF_LIFE(10)
 
 	temp_range = list(T0C + 115, T0C + 130)
-
+*/
 /datum/chemical_reaction/distilling/spacomycaze
 	name = "Distilling Spacomycaze"
 	id = "distill_spacomycaze"
@@ -114,7 +115,7 @@
 	reaction_rate = HALF_LIFE(10)
 
 	temp_range = list(T0C + 100, T0C + 120)
-
+/*
 /datum/chemical_reaction/distilling/tricorlidaze
 	name = "Distilling Tricorlidaze"
 	id = "distill_tricorlidaze"
@@ -125,7 +126,7 @@
 	reaction_rate = HALF_LIFE(10)
 
 	temp_range = list(T0C + 100, T0C + 120)
-
+*/
 // Alcohol
 /datum/chemical_reaction/distilling/beer
 	name = "Distilling Beer"

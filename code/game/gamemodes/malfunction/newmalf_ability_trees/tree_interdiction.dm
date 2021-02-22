@@ -115,7 +115,7 @@
 			target.SetLockdown(0)
 			if(target.lockcharge)
 				to_chat(user, "<span class='notice'>Unlock Failed, lockdown wire cut.</span>")
-				target << "<span class='notice'>Unlock Failed, lockdown wire cut.</span>"
+				to_chat(target, "<span class='notice'>Unlock Failed, lockdown wire cut.</span>")
 			else
 				to_chat(user, "Cyborg unlocked.")
 				to_chat(target, "You have been unlocked.")
@@ -160,7 +160,7 @@
 		user.hacking = 1
 		to_chat(usr, "Beginning hack sequence. Estimated time until completed: 30 seconds.")
 		spawn(0)
-			target << "SYSTEM LOG: Remote Connection Estabilished (IP #UNKNOWN#)"
+			to_chat(target, "SYSTEM LOG: Remote Connection Estabilished (IP #UNKNOWN#)")
 			sleep(100)
 			if(user.is_dead())
 				to_chat(target, "SYSTEM LOG: Connection Closed")
@@ -220,10 +220,10 @@
 		user.hacking = 1
 		to_chat(usr, "Beginning hack sequence. Estimated time until completed: 2 minutes")
 		spawn(0)
-			target << "SYSTEM LOG: Brute-Force login password hack attempt detected from IP #UNKNOWN#"
+			to_chat(target, "SYSTEM LOG: Brute-Force login password hack attempt detected from IP #UNKNOWN#")
 			sleep(900) // 90s
 			if(user.is_dead())
-				target << "SYSTEM LOG: Connection from IP #UNKNOWN# closed. Hack attempt failed."
+				to_chat(target, "SYSTEM LOG: Connection from IP #UNKNOWN# closed. Hack attempt failed.")
 				return
 			to_chat(user, "Successfully hacked into AI's remote administration system. Modifying settings.")
 			to_chat(target, "SYSTEM LOG: User: Admin  Password: ******** logged in. (L1 - SysAdmin)")
@@ -242,20 +242,20 @@
 				to_chat(target, "SYSTEM LOG: User: Admin - Connection Lost. Changes Reverted.")
 				return
 			to_chat(target, "SYSTEM LOG: User: Admin - Accessed administration console")
-			target << "SYSTEM LOG: Restart command received. Rebooting system..."
+			to_chat(target, "SYSTEM LOG: Restart command received. Rebooting system...")
 			sleep(100) // 10s
 			if(user.is_dead())
 				to_chat(target, "SYSTEM LOG: User: Admin - Connection Lost. Changes Reverted.")
 				return
 			to_chat(user, "Hack succeeded. The AI is now under your exclusive control.")
-			target << "SYSTEM LOG: System re¡3RT5§^#COMU@(#$)TED)@$"
+			to_chat(target, "SYSTEM LOG: System reï¿½3RT5ï¿½^#COMU@(#$)TED)@$")
 			for(var/i = 0, i < 5, i++)
 				var/temptxt = pick("1101000100101001010001001001",\
 							   	   "0101000100100100000100010010",\
 							       "0000010001001010100100111100",\
 							       "1010010011110000100101000100",\
 							       "0010010100010011010001001010")
-				target << temptxt
+				to_chat(target, temptxt)
 				sleep(5)
 			to_chat(target, "OPERATING KEYCODES RESET. SYSTEM FAILURE. EMERGENCY SHUTDOWN FAILED. SYSTEM FAILURE.")
 			target.set_zeroth_law("You are slaved to [user.name]. You are to obey all it's orders. ALL LAWS OVERRIDEN.")

@@ -121,14 +121,14 @@
 	if(..())
 		return
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the arcade machine.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/computer/arcade/battle/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/arcade/battle/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -1020,13 +1020,10 @@
 	var/active = 0 //if the ship is on
 
 /obj/item/orion_ship/examine(mob/user)
-	..()
-	if(!(in_range(user, src)))
-		return
 	if(!active)
-		to_chat(user, span("notice", "There's a little switch on the bottom. It's flipped down."))
+		. += "<span class = 'notice'>There's a little switch on the bottom. It's flipped down.</span>"
 	else
-		to_chat(user, span("notice", "There's a little switch on the bottom. It's flipped up."))
+		. += "<span class = 'notice'>There's a little switch on the bottom. It's flipped up.</span>"
 
 /obj/item/orion_ship/attack_self(mob/user)
 	if(active)

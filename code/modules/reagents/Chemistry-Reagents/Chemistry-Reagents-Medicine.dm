@@ -15,7 +15,7 @@
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
 		M.add_chemical_effect(CE_PAINKILLER, 10)
-
+/*
 /datum/reagent/inaprovaline/topical//Main way to obtain is destiller
 	name = "Inaprovalaze"
 	id = "inaprovalaze"
@@ -38,7 +38,7 @@
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 20)
 		M.add_chemical_effect(CE_PAINKILLER, 12)
-
+*/
 /datum/reagent/bicaridine
 	name = "Bicaridine"
 	id = "bicaridine"
@@ -69,7 +69,7 @@
 					W.damage = max(W.damage - wound_heal, 0)//reduces the damage, and sets it to 0 if its lower than 0
 					if(W.damage <= 0)//If the wound is healed,
 						O.wounds -= W//remove the wound
-
+/*
 /datum/reagent/bicaridine/topical//Main way to obtain is destiller
 	name = "Bicaridaze"
 	id = "bicaridaze"
@@ -97,6 +97,7 @@
 		chem_effective = 0.75
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(6 * removed * chem_effective, 0)
+*/
 /datum/reagent/vermicetol//Moved from Chemistry-Reagents-Medicine_vr.dm
 	name = "Vermicetol"
 	id = "vermicetol"
@@ -169,7 +170,7 @@
 		chem_effective = 0.75
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(0, 8 * removed * chem_effective) //VOREStation edit
-
+/*
 /datum/reagent/dermaline/topical//Main way to obtain is destiller
 	name = "Dermalaze"
 	id = "dermalaze"
@@ -197,7 +198,7 @@
 		chem_effective = 0.75
 	if(alien != IS_DIONA)
 		M.heal_organ_damage(0, 12 * removed * chem_effective)
-
+*/
 /datum/reagent/dylovene
 	name = "Dylovene"
 	id = "anti_toxin"
@@ -322,7 +323,7 @@
 /datum/reagent/tricordrazine/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
 		affect_blood(M, alien, removed * 0.4)
-
+/*
 /datum/reagent/tricorlidaze//Main way to obtain is destiller
 	name = "Tricorlidaze"
 	id = "tricorlidaze"
@@ -357,7 +358,7 @@
 		if(M && M.amount)
 			holder.my_atom.visible_message("<span class='notice'>\The [packname] bubbles.</span>")
 			remove_self(to_produce * 5)
-
+*/
 //Cryo chems
 /datum/reagent/cryoxadone
 	name = "Cryoxadone"

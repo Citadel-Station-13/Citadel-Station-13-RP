@@ -119,7 +119,7 @@
 		active_program = null
 	var/mob/user = usr
 	if(user && istype(user))
-		ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
+		nano_ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
 	update_icon()
 
 // Returns 0 for No Signal, 1 for Low Signal and 2 for Good Signal. 3 is for wired connection (always-on)
@@ -154,7 +154,7 @@
 		run_program(autorun.stored_data)
 
 	if(user)
-		ui_interact(user)
+		nano_ui_interact(user)
 
 /obj/item/modular_computer/proc/minimize_program(mob/user)
 	if(!active_program || !processor_unit)
@@ -163,10 +163,11 @@
 	idle_threads.Add(active_program)
 	active_program.program_state = PROGRAM_STATE_BACKGROUND // Should close any existing UIs
 	SSnanoui.close_uis(active_program.NM ? active_program.NM : active_program)
+	SStgui.close_uis(active_program.TM ? active_program.TM : active_program)
 	active_program = null
 	update_icon()
 	if(istype(user))
-		ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
+		nano_ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
 
 
 /obj/item/modular_computer/proc/run_program(prog)
@@ -202,7 +203,6 @@
 		minimize_program(user)
 
 	if(P.run_program(user))
-		active_program = P
 		update_icon()
 	return 1
 

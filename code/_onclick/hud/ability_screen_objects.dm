@@ -306,7 +306,7 @@
 	if(object_used && verb_to_call)
 		call(object_used,verb_to_call)(arguments_to_use)
 //		call(object_used,verb_to_call)(arguments_to_use)
-//		world << "Attempted to call([object_used],[verb_to_call])([arguments_to_use])"
+//		to_chat(world, "Attempted to call([object_used],[verb_to_call])([arguments_to_use])")
 //		if(hascall(object_used, verb_to_call))
 //			call(object_used,verb_to_call)(arguments_to_use)
 //		else

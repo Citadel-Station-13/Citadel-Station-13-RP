@@ -98,13 +98,13 @@
 	name = "Minor Toxin Resist"
 	desc = "Adds 15% resistance to toxin damage sources."
 	cost = 2
-	var_changes = list("toxin_mod" = 0.85)
+	var_changes = list("toxins_mod" = 0.85)
 
 /datum/trait/toxin_resist_plus
 	name = "Toxin Resist"
 	desc = "Adds 25% resistance to toxin damage sources."
 	cost = 3
-	var_changes = list("toxin_mod" = 0.75)
+	var_changes = list("toxins_mod" = 0.75)
 	excludes = list(/datum/trait/toxin_resist,/datum/trait/toxin_resist_plus)
 
 /datum/trait/oxy_resist
@@ -180,12 +180,12 @@
 	desc = "You bleed 25% slower."
 	cost = 1
 	var_changes = list("bloodloss_rate" = 0.75)
-	
+
 /datum/trait/size_change
 	name = "Sizeshift"
 	desc = "Lets you shift sizes by yourself. Remember that abusing size mechanics is against the rules!"
 	cost = 4
-	
+
 /datum/trait/size_change/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/proc/set_size

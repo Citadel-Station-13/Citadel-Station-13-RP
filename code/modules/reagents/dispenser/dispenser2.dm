@@ -24,8 +24,8 @@
 			add_cartridge(new type(src))
 
 /obj/machinery/chemical_dispenser/examine(mob/user)
-	..()
-	to_chat(user, "It has [cartridges.len] cartridges installed, and has space for [DISPENSER_MAX_CARTRIDGES - cartridges.len] more.")
+	. = ..()
+	. += "It has [cartridges.len] cartridges installed, and has space for [DISPENSER_MAX_CARTRIDGES - cartridges.len] more."
 
 /obj/machinery/chemical_dispenser/proc/add_cartridge(obj/item/reagent_containers/chem_disp_cartridge/C, mob/user)
 	if(!istype(C))
@@ -111,9 +111,11 @@
 	else
 		return ..()
 
-/obj/machinery/chemical_dispenser/ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 1)
-	if(stat & (BROKEN|NOPOWER)) return
-	if(user.stat || user.restrained()) return
+/obj/machinery/chemical_dispenser/nano_ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null, var/force_open = 1)
+	if(stat & (BROKEN|NOPOWER))
+		return
+	if((user.stat || user.restrained()) && !IsAdminGhost(user))
+		return
 
 	// this is the data which will be sent to the ui
 	var/data[0]
@@ -176,4 +178,4 @@
 /obj/machinery/chemical_dispenser/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
 		return
-	ui_interact(user)
+	nano_ui_interact(user)

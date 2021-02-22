@@ -19,7 +19,7 @@
 		gun = G
 		var/image/I = image('icons/effects/Targeted.dmi', src, "locked")
 		I.override = 1
-		usr << I
+		SEND_IMAGE(usr, I)
 		//autodel() //Currently doesn't really work right.
 		return
 

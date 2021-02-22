@@ -416,7 +416,7 @@
 
 	if(loc)
 		for(var/mob/O in hearers(1, get_turf(src)))
-			O.show_message(text("\icon[] *beep* *beep*", src), 3, "*beep* *beep*", 2)
+			to_chat(O, "[icon2html(thing = src, target = O)] *beep beep*")
 
 /obj/item/integrated_circuit/input/EPv2
 	name = "\improper EPv2 circuit"

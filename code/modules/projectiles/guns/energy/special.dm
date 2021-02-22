@@ -297,10 +297,6 @@ obj/item/gun/energy/staff/focus
 	icon_state = "medbeam"
 	item_state = "medbeam"
 	icon = 'icons/obj/gun/energy.dmi'
-	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns_vr.dmi',
-		)
 	slot_flags = SLOT_BELT
 	accuracy = 100
 	fire_delay = 12

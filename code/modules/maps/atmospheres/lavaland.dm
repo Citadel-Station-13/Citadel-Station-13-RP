@@ -3,9 +3,9 @@
 	/datum/gas/oxygen = 0.22,
 	/datum/gas/nitrogen = 0.78
 	)
-	base_target_pressure = 110.1
-	minimum_pressure = 110.1
-	maximum_pressure = 110.1
+	base_target_pressure = 59.9
+	minimum_pressure = 59.9
+	maximum_pressure = 59.9
 	minimum_temp = 293.3
 	maximum_temp = 350.1
 
@@ -22,7 +22,7 @@ LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/grass)
-LAVALAND_TURF_CREATE(/turf/simulated/floor/water)
+LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/water)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/lava)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/water/deep)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/outdoors/water/shoreline)

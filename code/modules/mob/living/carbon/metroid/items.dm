@@ -134,7 +134,7 @@
 		to_chat(user, "<span class='warning'> The potion only works on slimes!</span>")
 		return ..()
 //	if(M.is_adult) //Can't tame adults
-//		user << "<span class='warning'> Only baby slimes can be tamed!</span>"
+//		to_chat(user, "<span class='warning'> Only baby slimes can be tamed!</span>")
 //		return..()
 	if(M.stat)
 		to_chat(user, "<span class='warning'> The slime is dead!</span>")

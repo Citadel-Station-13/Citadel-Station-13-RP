@@ -60,10 +60,7 @@
 
 	load(C)
 
-/mob/living/bot/mulebot/attack_hand(var/mob/user)
-	interact(user)
-
-/mob/living/bot/mulebot/proc/interact(var/mob/user)
+/mob/living/bot/mulebot/ui_interact(mob/user)
 	var/dat
 	dat += "<TT><B>Multiple Utility Load Effector Mk. III</B></TT><BR><BR>"
 	dat += "ID: [suffix]<BR>"
@@ -151,7 +148,7 @@
 		if("safety")
 			safety = !safety
 
-	interact(usr)
+	ui_interact(usr)
 
 /mob/living/bot/mulebot/attackby(var/obj/item/O, var/mob/user)
 	..()

@@ -67,7 +67,7 @@
 		return
 
 	if(F.decals && F.decals.len > 5 && painting_decal != /obj/effect/floor_decal/reset)
-		user << "<span class='warning'>\The [F] has been painted too much; you need to clear it off.</span>"
+		to_chat(user, "<span class='warning'>\The [F] has been painted too much; you need to clear it off.</span>")
 		return
 
 	var/painting_dir = 0
@@ -110,8 +110,8 @@
 		choose_colour()
 
 /obj/item/floor_painter/examine(mob/user)
-	..(user)
-	to_chat(user, "It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [paint_colour] paint.")
+	. = ..()
+	. += "<span class = 'notice'>It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [paint_colour] paint.</span>"
 
 /obj/item/floor_painter/verb/choose_colour()
 	set name = "Choose Colour"

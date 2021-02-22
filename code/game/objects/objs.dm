@@ -58,7 +58,7 @@
 /obj/CanUseTopic(var/mob/user, var/datum/topic_state/state = default_state)
 	if(user.CanUseObjTopic(src))
 		return ..()
-	to_chat(user, "<span class='danger'>\icon[src]Access Denied!</span>")
+	to_chat(user, "<span class='danger'>[icon2html(thing = src, target = user)] Access Denied!</span>")
 	return STATUS_CLOSE
 
 /mob/living/silicon/CanUseObjTopic(var/obj/O)
@@ -135,11 +135,8 @@
 			in_use = 0
 
 /obj/attack_ghost(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 	..()
-
-/obj/proc/interact(mob/user)
-	return
 
 /mob/proc/unset_machine()
 	src.machine = null
@@ -199,3 +196,18 @@
 // Test for if stepping on a tile containing this obj is safe to do, used for things like landmines and cliffs.
 /obj/proc/is_safe_to_step(mob/living/L)
 	return TRUE
+
+/obj/examine(mob/user)
+	. = ..()
+	if(matter)
+		if(!matter.len)
+			return
+		var/materials_list
+		var/i = 1
+		while(i<matter.len)
+			materials_list += lowertext(matter[i])
+			materials_list += ", "
+			i++
+		materials_list += matter[i]
+		. += "<u>It is made out of [materials_list]</u>."
+	return

@@ -62,7 +62,7 @@
 		return
 	if((get_dist(src, user) > 1))
 		if(!istype(user, /mob/living/silicon))
-			user << text("Too far away.")
+			to_chat(user, "Too far away.")
 			user.unset_machine()
 			user << browse(null, "window=ai_slipper")
 			return
@@ -72,7 +72,7 @@
 	if(istype(loc, /turf))
 		loc = loc:loc
 	if(!istype(loc, /area))
-		user << text("Turret badly positioned - loc.loc is [].", loc)
+		to_chat(user, "Turret badly positioned - loc.loc is [loc].")
 		return
 	var/area/area = loc
 	var/t = "<TT><B>AI Liquid Dispenser</B> ([area.name])<HR>"

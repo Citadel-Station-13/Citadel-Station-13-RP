@@ -181,10 +181,10 @@ Any-Mode: (hotkey doesn't need to be on)
 </font>"}
 
 	if(isrobot(src.mob))
-		src << robot_hotkey_mode
-		src << robot_other
+		to_chat(src, robot_hotkey_mode)
+		to_chat(src, robot_other)
 	else
-		src << hotkey_mode
-		src << other
+		to_chat(src, hotkey_mode)
+		to_chat(src, other)
 	if(holder)
-		src << admin
+		to_chat(src, admin)

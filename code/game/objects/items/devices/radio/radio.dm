@@ -96,9 +96,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(b_stat)
 		wires.Interact(user)
 
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
-/obj/item/radio/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/radio/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data["mic_status"] = broadcasting
@@ -234,7 +234,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	var/datum/radio_frequency/connection = null
 	if(channel && channels && channels.len > 0)
 		if (channel == "department")
-			//world << "DEBUG: channel=\"[channel]\" switching to \"[channels[1]]\""
+			//to_chat(world, "DEBUG: channel=\"[channel]\" switching to \"[channels[1]]\"")
 			channel = channels[1]
 		connection = secure_radio_connections[channel]
 	else
@@ -356,7 +356,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		var/list/jamming = is_jammed(src)
 		if(jamming)
 			var/distance = jamming["distance"]
-			to_chat(M,"<span class='danger'>\icon[src] You hear the [distance <= 2 ? "loud hiss" : "soft hiss"] of static.</span>")
+			to_chat(M,"<span class='danger'>[icon2html(thing = src, target = M)] You hear the [distance <= 2 ? "loud hiss" : "soft hiss"] of static.</span>")
 			return FALSE
 
 		// First, we want to generate a new radio signal
@@ -554,9 +554,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	. = ..()
 	if ((in_range(src, user) || loc == user))
 		if (b_stat)
-			user.show_message("<span class='notice'>\The [src] can be attached and modified!</span>")
+			. += "<span class='notice'>\The [src] can be attached and modified!</span>"
 		else
-			user.show_message("<span class='notice'>\The [src] can not be modified or attached!</span>")
+			. += "<span class='notice'>\The [src] can not be modified or attached!</span>"
 	return
 
 /obj/item/radio/attackby(obj/item/W as obj, mob/user as mob)
@@ -723,7 +723,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	. = ..()
 
-/obj/item/radio/borg/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/radio/borg/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data["mic_status"] = broadcasting
