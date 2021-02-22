@@ -21,14 +21,12 @@
 	var/removes_dead = 0
 	var/obj/structure/reagent_dispensers/watertank/tank
 
-
-/mob/living/bot/farmbot/New(var/newloc, var/newTank)
-	..(newloc)
+/mob/living/bot/farmbot/Initialize(mapload, newTank)
+	. = ..(mapload)
 	if(!newTank)
 		newTank = new /obj/structure/reagent_dispensers/watertank(src)
 	tank = newTank
 	tank.forceMove(src)
-
 
 /mob/living/bot/farmbot/attack_hand(var/mob/user as mob)
 	. = ..()

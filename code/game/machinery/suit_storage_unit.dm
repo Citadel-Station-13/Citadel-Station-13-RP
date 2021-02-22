@@ -598,7 +598,7 @@
 /obj/machinery/suit_cycler/Initialize(mapload)
 	. = ..()
 	wires = new(src)
-	if(!length(departments) || !length(speices))
+	if(!length(departments) || !length(species))
 		return INITIALIZE_HINT_QDEL
 	target_department = departments[1]
 	target_species = species[1]

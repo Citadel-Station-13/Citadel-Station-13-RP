@@ -49,7 +49,7 @@
 		icon_state = "pscrubber:0"
 
 /obj/machinery/portable_atmospherics/powered/scrubber/update_overlays()
-	. = list()
+	. = ..()
 	if(holding)
 		. += "scrubber-open"
 

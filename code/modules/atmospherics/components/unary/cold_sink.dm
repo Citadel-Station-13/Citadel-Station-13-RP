@@ -21,8 +21,8 @@
 	var/set_temperature = T20C		// Thermostat
 	var/cooling = 0
 
-/obj/machinery/atmospherics/unary/freezer/New()
-	..()
+/obj/machinery/atmospherics/unary/freezer/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/stock_parts/capacitor(src)

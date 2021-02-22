@@ -22,10 +22,10 @@
 /obj/machinery/atmospherics/pipe/drain_power()
 	return -1
 
-/obj/machinery/atmospherics/pipe/New()
+/obj/machinery/atmospherics/pipe/Initialize(mapload, newdir)
 	if(istype(get_turf(src), /turf/simulated/wall) || istype(get_turf(src), /turf/simulated/shuttle/wall) || istype(get_turf(src), /turf/unsimulated/wall))
 		level = 1
-	..()
+	return ..()
 
 /obj/machinery/atmospherics/pipe/hides_under_flooring()
 	return level != 2

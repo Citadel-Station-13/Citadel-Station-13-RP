@@ -26,7 +26,7 @@
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/mahinery/gibber/autogibber/LateInitialize()
+/obj/machinery/gibber/autogibber/LateInitialize()
 	. = ..()
 	for(var/i in cardinal)
 		var/obj/machinery/mineral/input/input_obj = locate( /obj/machinery/mineral/input, get_step(src.loc, i) )
@@ -58,7 +58,7 @@
 	update_icon()
 
 /obj/machinery/gibber/update_overlays()
-	. = list()
+	. = ..()
 	if (dirty)
 		. += image('icons/obj/kitchen.dmi', "grbloody")
 	if(stat & (NOPOWER|BROKEN))

@@ -18,8 +18,8 @@ var/list/blobs = list()
 	var/mob/observer/blob/overmind = null
 	var/base_name = "blob" // The name that gets appended along with the blob_type's name.
 
-/obj/structure/blob/New(var/newloc, var/new_overmind)
-	..(newloc)
+/obj/structure/blob/Initialize(mapload, new_overmind)
+	. = ..()
 	if(new_overmind)
 		overmind = new_overmind
 	update_icon()
@@ -28,7 +28,6 @@ var/list/blobs = list()
 	setDir(pick(cardinal))
 	blobs += src
 	consume_tile()
-
 
 /obj/structure/blob/Destroy()
 	playsound(src.loc, 'sound/effects/splat.ogg', 50, 1) //Expand() is no longer broken, no check necessary.

@@ -20,8 +20,8 @@
 	hardness -= material.combustion_effect(get_turf(src),temperature, 0.3)
 	CheckHardness()
 
-/obj/structure/simple_door/New(var/newloc, var/material_name)
-	..()
+/obj/structure/simple_door/Initialize(mapload, material_name)
+	. = ..(mapload)
 	if(!material_name)
 		material_name = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name(material_name)

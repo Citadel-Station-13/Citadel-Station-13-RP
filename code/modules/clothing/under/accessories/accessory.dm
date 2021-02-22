@@ -377,8 +377,8 @@
 /obj/item/clothing/accessory/bracelet/material
 	icon_state = "materialbracelet"
 
-/obj/item/clothing/accessory/bracelet/material/New(var/newloc, var/new_material)
-	..(newloc)
+/obj/item/clothing/accessory/bracelet/material/Initialize(mapload, new_material)
+	. = ..(mapload)
 	if(!new_material)
 		new_material = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name(new_material)
@@ -501,8 +501,8 @@
 	var/writtenon = 0
 
 //ywedit start. forces different sprite sheet on equip
-/obj/item/clothing/accessory/collar/New()
-	..()
+/obj/item/clothing/accessory/collar/Initialize(mapload)
+	. = ..()
 	icon_previous_override = icon_override
 
 /obj/item/clothing/accessory/collar/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.

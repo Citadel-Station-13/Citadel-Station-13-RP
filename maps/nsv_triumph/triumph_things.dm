@@ -160,7 +160,7 @@ var/global/list/latejoin_shuttle   = list()
 	display_name = "Shuttle Bay"
 	msg = "has arrived on the shuttle"
 
-/datum/spawnpoint/shuttle/Initialize(mapload)
+/datum/spawnpoint/shuttle/New()
 	. = ..()
 	turfs = latejoin_shuttle
 

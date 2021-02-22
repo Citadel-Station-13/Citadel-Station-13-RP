@@ -46,12 +46,8 @@
 		icon_state = "oncenter"
 		return
 	icon_state = "offcenter"
-/* VOREStation Removal - Doesn't do anything
-/obj/machinery/gateway/centerstation/New()
-	density = 1
-*/ //VOREStation Removal End
 
-obj/machinery/gateway/centerstation/process(delta_time)
+/obj/machinery/gateway/centerstation/process(delta_time)
 	if(stat & (NOPOWER))
 		if(active) toggleoff()
 		return
@@ -176,10 +172,6 @@ obj/machinery/gateway/centerstation/process(delta_time)
 		icon_state = "oncenter"
 		return
 	icon_state = "offcenter"
-
-/obj/machinery/gateway/centeraway/New()
-	density = 1
-
 
 /obj/machinery/gateway/centeraway/proc/detect()
 	linked = list()	//clear the list

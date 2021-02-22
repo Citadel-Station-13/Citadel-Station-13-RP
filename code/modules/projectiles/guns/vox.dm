@@ -18,8 +18,8 @@
 	fire_sound = 'sound/weapons/bladeslice.ogg'
 	fire_sound_text = "a strange noise"
 
-/obj/item/gun/launcher/spikethrower/New()
-	..()
+/obj/item/gun/launcher/spikethrower/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 

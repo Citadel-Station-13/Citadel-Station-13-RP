@@ -9,12 +9,10 @@ var/list/floor_decals = list()
 	plane = DECAL_PLANE
 	var/supplied_dir
 
-/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour)
+/obj/effect/floor_decal/Initialize(mapload, nedir, newcolour)
 	supplied_dir = newdir
-	if(newcolour) color = newcolour
-	..(newloc)
-
-/obj/effect/floor_decal/Initialize(mapload)
+	if(newcolour)
+		color = newcolour
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -610,9 +608,9 @@ var/list/floor_decals = list()
 	name = "random asteroid rubble"
 	icon_state = "asteroid0"
 
-/obj/effect/floor_decal/asteroid/New()
+/obj/effect/floor_decal/asteroid/Initialize(mapload)
 	icon_state = "asteroid[rand(0,9)]"
-	..()
+	return ..()
 
 /obj/effect/floor_decal/chapel
 	name = "chapel"

@@ -55,8 +55,8 @@
 	var/fatigue_pressure = 55*ONE_ATMOSPHERE
 	alert_pressure = 55*ONE_ATMOSPHERE
 
-/obj/machinery/atmospherics/mains_pipe/New()
-	..()
+/obj/machinery/atmospherics/mains_pipe/Initialize(mapload)
+	. = ..()
 
 	supply = new(src)
 	supply.volume = volume
@@ -120,9 +120,9 @@
 	dir = SOUTH
 	initialize_mains_directions = SOUTH|NORTH
 
-/obj/machinery/atmospherics/mains_pipe/simple/New()
+/obj/machinery/atmospherics/mains_pipe/simple/Initialize(mapload, newdir)
 	nodes.len = 2
-	..()
+	. = ..()
 	switch(dir)
 		if(SOUTH || NORTH)
 			initialize_mains_directions = SOUTH|NORTH
@@ -202,9 +202,9 @@
 	initialize_mains_directions = EAST|NORTH|WEST
 	volume = 105
 
-/obj/machinery/atmospherics/mains_pipe/manifold/New()
+/obj/machinery/atmospherics/mains_pipe/manifold/Initialize(mapload, newdir)
 	nodes.len = 3
-	..()
+	. = ..()
 	initialize_mains_directions = (NORTH|SOUTH|EAST|WEST) & ~dir
 
 /obj/machinery/atmospherics/mains_pipe/manifold/atmos_init()
@@ -267,9 +267,9 @@
 	initialize_mains_directions = EAST|NORTH|WEST|SOUTH
 	volume = 105
 
-/obj/machinery/atmospherics/mains_pipe/manifold4w/New()
+/obj/machinery/atmospherics/mains_pipe/manifold4w/Initialize(mapload, newdir)
 	nodes.len = 4
-	..()
+	return ..()
 
 /obj/machinery/atmospherics/mains_pipe/manifold4w/atmos_init()
 	for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,NORTH))
@@ -317,9 +317,9 @@
 	var/obj/machinery/atmospherics/node3
 	var/icon_type
 
-/obj/machinery/atmospherics/mains_pipe/split/New()
+/obj/machinery/atmospherics/mains_pipe/split/Initialize(mapload, newdir)
 	nodes.len = 2
-	..()
+	. = ..()
 	initialize_mains_directions = turn(dir, 90) | turn(dir, -90)
 	initialize_directions = dir // actually have a normal connection too
 
@@ -368,8 +368,8 @@
 /obj/machinery/atmospherics/mains_pipe/split/supply
 	icon_type = "supply"
 
-/obj/machinery/atmospherics/mains_pipe/split/New()
-	..()
+/obj/machinery/atmospherics/mains_pipe/split/Initialize(mapload)
+	. = ..()
 	split_node = supply
 
 /obj/machinery/atmospherics/mains_pipe/split/hidden
@@ -383,8 +383,8 @@
 /obj/machinery/atmospherics/mains_pipe/split/scrubbers
 	icon_type = "scrubbers"
 
-/obj/machinery/atmospherics/mains_pipe/split/New()
-	..()
+/obj/machinery/atmospherics/mains_pipe/split/Initialize(mapload)
+	. = ..()
 	split_node = scrubbers
 
 /obj/machinery/atmospherics/mains_pipe/split/hidden
@@ -398,8 +398,8 @@
 /obj/machinery/atmospherics/mains_pipe/split/aux
 	icon_type = "aux"
 
-/obj/machinery/atmospherics/mains_pipe/split/New()
-	..()
+/obj/machinery/atmospherics/mains_pipe/split/Initialize(mapload)
+	. = ..()
 	split_node = aux
 
 /obj/machinery/atmospherics/mains_pipe/split/hidden
@@ -418,9 +418,9 @@
 	var/obj/machinery/atmospherics/scrubbers_node
 	var/obj/machinery/atmospherics/aux_node
 
-/obj/machinery/atmospherics/mains_pipe/split3/New()
+/obj/machinery/atmospherics/mains_pipe/split3/Initialize(mapload, newdir)
 	nodes.len = 1
-	..()
+	. =..()
 	initialize_mains_directions = dir
 	initialize_directions = cardinal & ~dir // actually have a normal connection too
 
@@ -510,9 +510,9 @@
 	initialize_directions = SOUTH
 	volume = 35
 
-/obj/machinery/atmospherics/mains_pipe/cap/New()
+/obj/machinery/atmospherics/mains_pipe/cap/Initialize(mapload, newdir)
 	nodes.len = 1
-	..()
+	. = ..()
 	initialize_mains_directions = dir
 
 /obj/machinery/atmospherics/mains_pipe/cap/update_icon()

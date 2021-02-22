@@ -48,7 +48,7 @@
 /obj/item/oar/sifwood/Initialize(mapload, material_name)
 	return ..(mapload, MAT_SIFWOOD)
 
-/obj/item/oar/Initialize(mapload)
+/obj/item/oar/Initialize(mapload, material_name)
 	. = ..(mapload)
 	if(!material_name)
 		material_name = "wood"

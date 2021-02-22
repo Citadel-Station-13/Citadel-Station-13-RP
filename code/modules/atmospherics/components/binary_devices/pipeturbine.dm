@@ -19,8 +19,8 @@
 	var/datum/pipe_network/network1
 	var/datum/pipe_network/network2
 
-/obj/machinery/atmospherics/pipeturbine/New()
-	..()
+/obj/machinery/atmospherics/pipeturbine/Initialize(mapload)
+	. = ..()
 	air_in.volume = 200
 	air_out.volume = 800
 	volume_ratio = air_in.volume / (air_in.volume + air_out.volume)
@@ -236,10 +236,13 @@
 	var/kin_to_el_ratio = 0.1	//How much kinetic energy will be taken from turbine and converted into electricity
 	var/obj/machinery/atmospherics/pipeturbine/turbine
 
-/obj/machinery/power/turbinemotor/New()
-	..()
-	spawn(1)
-		updateConnection()
+/obj/machinery/power/turbinemotor/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/power/turbinemotor/LateInitialize()
+	. = ..()
+	updateConnection()
 
 /obj/machinery/power/turbinemotor/proc/updateConnection()
 	turbine = null

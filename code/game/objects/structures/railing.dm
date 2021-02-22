@@ -15,8 +15,8 @@
 	var/maxhealth = 70
 	var/check = 0
 
-/obj/structure/railing/New(loc, constructed = 0)
-	..()
+/obj/structure/railing/Initialize(mapload, constructed = FALSE)
+	. = ..()
 	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
 		anchored = 0

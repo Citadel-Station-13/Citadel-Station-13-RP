@@ -31,7 +31,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 
 	var/chained = 0//Adminbus chain-grab
 
-/obj/singularity/Initialize(mapload, ...)
+/obj/singularity/Initialize(mapload, starting_energy = 50)
 	//CARN: admin-alert for chuckle-fuckery.
 	admin_investigate_setup()
 	energy = starting_energy
