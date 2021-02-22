@@ -13,20 +13,20 @@
 	slot_flags = SLOT_BACK
 
 //Predefined materials go here.
-/obj/item/material/twohanded/baseballbat/metal/New(var/newloc)
-	..(newloc,"steel")
+/obj/item/material/twohanded/baseballbat/metal/Initialize(mapload, material_key)
+	..(mapload,"steel")
 
-/obj/item/material/twohanded/baseballbat/uranium/New(var/newloc)
-	..(newloc,"uranium")
+/obj/item/material/twohanded/baseballbat/uranium/Initialize(mapload, material_key)
+	..(mapload,"uranium")
 
-/obj/item/material/twohanded/baseballbat/gold/New(var/newloc)
-	..(newloc,"gold")
+/obj/item/material/twohanded/baseballbat/gold/Initialize(mapload, material_key)
+	..(mapload,"gold")
 
-/obj/item/material/twohanded/baseballbat/platinum/New(var/newloc)
-	..(newloc,"platinum")
+/obj/item/material/twohanded/baseballbat/platinum/Initialize(mapload, material_key)
+	..(mapload,"platinum")
 
-/obj/item/material/twohanded/baseballbat/diamond/New(var/newloc)
-	..(newloc,"diamond")
+/obj/item/material/twohanded/baseballbat/diamond/Initialize(mapload, material_key)
+	..(mapload,"diamond")
 
 /obj/item/material/twohanded/baseballbat/penbat
 	name = "penetrator"

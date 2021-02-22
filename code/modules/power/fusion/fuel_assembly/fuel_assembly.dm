@@ -53,14 +53,14 @@
 	return ..()
 
 // Mapper shorthand.
-/obj/item/fuel_assembly/deuterium/New(var/newloc)
-	..(newloc, "deuterium")
+/obj/item/fuel_assembly/deuterium/Initialize(mapload, material_key)
+	..(mapload, "deuterium")
 
-/obj/item/fuel_assembly/tritium/New(var/newloc)
-	..(newloc, "tritium")
+/obj/item/fuel_assembly/tritium/Initialize(mapload, material_key)
+	..(mapload, "tritium")
 
-/obj/item/fuel_assembly/phoron/New(var/newloc)
-	..(newloc, "phoron")
+/obj/item/fuel_assembly/phoron/Initialize(mapload, material_key)
+	..(mapload, "phoron")
 
-/obj/item/fuel_assembly/supermatter/New(var/newloc)
-	..(newloc, "supermatter")
+/obj/item/fuel_assembly/supermatter/Initialize(mapload, material_key)
+	..(mapload, "supermatter")

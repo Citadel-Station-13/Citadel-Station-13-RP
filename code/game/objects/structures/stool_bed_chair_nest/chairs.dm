@@ -198,8 +198,8 @@
 		return
 	..()
 
-/obj/structure/bed/chair/wood/New(var/newloc)
-	..(newloc, "wood")
+/obj/structure/bed/chair/wood/Initialize(mapload, material_key)
+	..(mapload, "wood")
 
 /obj/structure/bed/chair/wood/wings
 	icon_state = "wooden_chair_wings"

@@ -2,7 +2,7 @@
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
 
-/mob/living/carbon/human/dummy/mannequin/Initialize(mapload)
+/mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
 	mob_list -= src
 	living_mob_list -= src
@@ -60,35 +60,35 @@
 	h_style = "Sergal Plain"
 	..(new_loc, "Sergal")
 
-/mob/living/carbon/human/akula/New(var/new_loc)
-	..(new_loc, "Akula")
+/mob/living/carbon/human/akula/Initialize(mapload)
+	..(mapload, "Akula")
 
-/mob/living/carbon/human/nevrean/New(var/new_loc)
-	..(new_loc, "Nevrean")
+/mob/living/carbon/human/nevrean/Initialize(mapload)
+	..(mapload, "Nevrean")
 
-/mob/living/carbon/human/xenochimera/New(var/new_loc)
-	..(new_loc, "Xenochimera")
+/mob/living/carbon/human/xenochimera/Initialize(mapload)
+	..(mapload, "Xenochimera")
 
 /mob/living/carbon/human/xenohybrid/New(var/new_loc)
 	..(new_loc, "Xenomorph Hybrid")
 
-/mob/living/carbon/human/spider/New(var/new_loc)
-	..(new_loc, "Vasilissan")
+/mob/living/carbon/human/spider/Initialize(mapload)
+	..(mapload, "Vasilissan")
 
-/mob/living/carbon/human/vulpkanin/New(var/new_loc)
-	..(new_loc, "Vulpkanin")
+/mob/living/carbon/human/vulpkanin/Initialize(mapload)
+	..(mapload, "Vulpkanin")
 
-/mob/living/carbon/human/protean/New(var/new_loc)
-	..(new_loc, "Protean")
+/mob/living/carbon/human/protean/Initialize(mapload)
+	..(mapload, "Protean")
 
-/mob/living/carbon/human/alraune/New(var/new_loc)
-	..(new_loc, "Alraune")
+/mob/living/carbon/human/alraune/Initialize(mapload)
+	..(mapload, "Alraune")
 
-/mob/living/carbon/human/shadekin/New(var/new_loc)
-	..(new_loc, SPECIES_SHADEKIN)
+/mob/living/carbon/human/shadekin/Initialize(mapload)
+	..(mapload, SPECIES_SHADEKIN)
 
 //Fashion Mannequins
-/mob/living/carbon/human/dummy/mannequin/Initialize(mapload)
+/mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -117,7 +117,7 @@
 				H.equip_to_slot_or_del(new PICK(H), slot_shoes)
 				H.update_inv_shoes()
 
-/mob/living/carbon/human/dummy/mannequin/plastic/Initialize(mapload)
+/mob/living/carbon/human/dummy/mannequin/plastic/Initialize()
 	. = ..()
 	name = "Plastic Mannequin"
 	real_name = "Plastic Mannequin"
@@ -147,7 +147,7 @@
 				H.equip_to_slot_or_del(new PICK(H), slot_shoes)
 				H.update_inv_shoes()
 
-/mob/living/carbon/human/dummy/mannequin/samurai/Initialize(mapload)
+/mob/living/carbon/human/dummy/mannequin/samurai/Initialize()
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -179,7 +179,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/samurai, slot_wear_suit)
 				H.update_inv_wear_suit()
 
-/mob/living/carbon/human/dummy/mannequin/animegirl/Initialize(mapload)
+/mob/living/carbon/human/dummy/mannequin/animegirl/Initialize()
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -208,7 +208,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/plain/eyepatch, slot_wear_suit)
 				H.update_inv_glasses()
 
-/mob/living/carbon/human/dummy/mannequin/mummy/Initialize(mapload)
+/mob/living/carbon/human/dummy/mannequin/mummy/Initialize()
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -237,7 +237,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/pharaoh, slot_wear_suit)
 				H.update_inv_wear_suit()
 
-/mob/living/carbon/human/dummy/mannequin/scarecrow/Initialize(mapload)
+/mob/living/carbon/human/dummy/mannequin/scarecrow/Initialize()
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"

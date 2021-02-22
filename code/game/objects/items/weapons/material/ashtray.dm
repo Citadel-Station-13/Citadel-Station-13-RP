@@ -92,11 +92,11 @@ var/global/list/ashtray_cache = list()
 		update_icon()
 	return ..()
 
-/obj/item/material/ashtray/plastic/New(var/newloc)
-	..(newloc, "plastic")
+/obj/item/material/ashtray/plastic/Initialize(mapload, material_key)
+	..(mapload, "plastic")
 
-/obj/item/material/ashtray/bronze/New(var/newloc)
-	..(newloc, "bronze")
+/obj/item/material/ashtray/bronze/Initialize(mapload, material_key)
+	..(mapload, "bronze")
 
-/obj/item/material/ashtray/glass/New(var/newloc)
-	..(newloc, "glass")
+/obj/item/material/ashtray/glass/Initialize(mapload, material_key)
+	..(mapload, "glass")

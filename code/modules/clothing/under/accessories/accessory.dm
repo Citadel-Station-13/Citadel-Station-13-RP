@@ -392,32 +392,32 @@
 /obj/item/clothing/accessory/bracelet/material/get_material()
 	return material
 
-/obj/item/clothing/accessory/bracelet/material/wood/New(var/newloc)
-	..(newloc, "wood")
+/obj/item/clothing/accessory/bracelet/material/wood/Initialize(mapload, material_key)
+	..(mapload, "wood")
 
-/obj/item/clothing/accessory/bracelet/material/plastic/New(var/newloc)
-	..(newloc, "plastic")
+/obj/item/clothing/accessory/bracelet/material/plastic/Initialize(mapload, material_key)
+	..(mapload, "plastic")
 
-/obj/item/clothing/accessory/bracelet/material/iron/New(var/newloc)
-	..(newloc, "iron")
+/obj/item/clothing/accessory/bracelet/material/iron/Initialize(mapload, material_key)
+	..(mapload, "iron")
 
-/obj/item/clothing/accessory/bracelet/material/steel/New(var/newloc)
-	..(newloc, "steel")
+/obj/item/clothing/accessory/bracelet/material/steel/Initialize(mapload, material_key)
+	..(mapload, "steel")
 
-/obj/item/clothing/accessory/bracelet/material/silver/New(var/newloc)
-	..(newloc, "silver")
+/obj/item/clothing/accessory/bracelet/material/silver/Initialize(mapload, material_key)
+	..(mapload, "silver")
 
-/obj/item/clothing/accessory/bracelet/material/gold/New(var/newloc)
-	..(newloc, "gold")
+/obj/item/clothing/accessory/bracelet/material/gold/Initialize(mapload, material_key)
+	..(mapload, "gold")
 
-/obj/item/clothing/accessory/bracelet/material/platinum/New(var/newloc)
-	..(newloc, "platinum")
+/obj/item/clothing/accessory/bracelet/material/platinum/Initialize(mapload, material_key)
+	..(mapload, "platinum")
 
-/obj/item/clothing/accessory/bracelet/material/phoron/New(var/newloc)
-	..(newloc, "phoron")
+/obj/item/clothing/accessory/bracelet/material/phoron/Initialize(mapload, material_key)
+	..(mapload, "phoron")
 
-/obj/item/clothing/accessory/bracelet/material/glass/New(var/newloc)
-	..(newloc, "glass")
+/obj/item/clothing/accessory/bracelet/material/glass/Initialize(mapload, material_key)
+	..(mapload, "glass")
 
 	..()
 

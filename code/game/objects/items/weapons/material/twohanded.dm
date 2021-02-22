@@ -153,8 +153,8 @@
 	desc = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
 	description_info = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
 
-/obj/item/material/twohanded/fireaxe/foam/New(var/newloc)
-	..(newloc,"foam")
+/obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
+	..(mapload,"foam")
 
 /obj/item/material/twohanded/fireaxe/foam/afterattack()
 	return

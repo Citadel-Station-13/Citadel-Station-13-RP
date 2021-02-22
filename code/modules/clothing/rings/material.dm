@@ -19,38 +19,38 @@
 /obj/item/clothing/gloves/ring/material/get_material()
 	return material
 
-/obj/item/clothing/gloves/ring/material/wood/New(var/newloc)
-	..(newloc, "wood")
+/obj/item/clothing/gloves/ring/material/wood/Initialize(mapload, material_key)
+	..(mapload, "wood")
 
-/obj/item/clothing/gloves/ring/material/plastic/New(var/newloc)
-	..(newloc, "plastic")
+/obj/item/clothing/gloves/ring/material/plastic/Initialize(mapload, material_key)
+	..(mapload, "plastic")
 
-/obj/item/clothing/gloves/ring/material/iron/New(var/newloc)
-	..(newloc, "iron")
+/obj/item/clothing/gloves/ring/material/iron/Initialize(mapload, material_key)
+	..(mapload, "iron")
 
-/obj/item/clothing/gloves/ring/material/steel/New(var/newloc)
-	..(newloc, "steel")
+/obj/item/clothing/gloves/ring/material/steel/Initialize(mapload, material_key)
+	..(mapload, "steel")
 
-/obj/item/clothing/gloves/ring/material/silver/New(var/newloc)
-	..(newloc, "silver")
+/obj/item/clothing/gloves/ring/material/silver/Initialize(mapload, material_key)
+	..(mapload, "silver")
 
-/obj/item/clothing/gloves/ring/material/gold/New(var/newloc)
-	..(newloc, "gold")
+/obj/item/clothing/gloves/ring/material/gold/Initialize(mapload, material_key)
+	..(mapload, "gold")
 
-/obj/item/clothing/gloves/ring/material/platinum/New(var/newloc)
-	..(newloc, "platinum")
+/obj/item/clothing/gloves/ring/material/platinum/Initialize(mapload, material_key)
+	..(mapload, "platinum")
 
-/obj/item/clothing/gloves/ring/material/phoron/New(var/newloc)
-	..(newloc, "phoron")
+/obj/item/clothing/gloves/ring/material/phoron/Initialize(mapload, material_key)
+	..(mapload, "phoron")
 
-/obj/item/clothing/gloves/ring/material/glass/New(var/newloc)
-	..(newloc, "glass")
+/obj/item/clothing/gloves/ring/material/glass/Initialize(mapload, material_key)
+	..(mapload, "glass")
 
-/obj/item/clothing/gloves/ring/material/uranium/New(var/newloc)
-	..(newloc, "uranium")
+/obj/item/clothing/gloves/ring/material/uranium/Initialize(mapload, material_key)
+	..(mapload, "uranium")
 
-/obj/item/clothing/gloves/ring/material/osmium/New(var/newloc)
-	..(newloc, "osmium")
+/obj/item/clothing/gloves/ring/material/osmium/Initialize(mapload, material_key)
+	..(mapload, "osmium")
 
-/obj/item/clothing/gloves/ring/material/mhydrogen/New(var/newloc)
-	..(newloc, "mhydrogen")
+/obj/item/clothing/gloves/ring/material/mhydrogen/Initialize(mapload, material_key)
+	..(mapload, "mhydrogen")

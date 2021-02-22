@@ -1729,8 +1729,8 @@
 				slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi',
 				)
 
-/obj/item/material/twohanded/fluff/New(var/newloc)
-	..(newloc," ") //See materials_vr_dmi for more information as to why this is a blank space.
+/obj/item/material/twohanded/fluff/Initialize(mapload, material_key)
+	..(mapload," ") //See materials_vr_dmi for more information as to why this is a blank space.
 
 //General use.
 /obj/item/material/twohanded/fluff/riding_crop

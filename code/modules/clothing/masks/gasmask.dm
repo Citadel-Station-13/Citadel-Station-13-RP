@@ -28,10 +28,10 @@
 	return gas_filtered
 
 // Our clear gas masks don't hide faces, but changing the var on mask/gas would require un-chaging it on all children. This is nicer.
-/obj/item/clothing/mask/gas/New()
+/obj/item/clothing/mask/gas/Initialize(mapload)
+	. = ..()
 	if(type == /obj/item/clothing/mask/gas)
 		flags_inv &= ~HIDEFACE
-	..()
 
 /obj/item/clothing/mask/gas/clear
 	name = "gas mask"
