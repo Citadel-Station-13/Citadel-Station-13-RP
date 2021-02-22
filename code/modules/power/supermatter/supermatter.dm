@@ -379,23 +379,21 @@
 	if(Adjacent(user))
 		return attack_hand(user)
 	else
-		nano_ui_interact(user)
+		ui_interact(user)
 	return
 
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/power/supermatter/attack_hand(mob/user as mob)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... [TU.his] body starts to glow and bursts into flames before flashing into ash.</span>",\
-		"<span class=\"danger\">You reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\
-		"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
-
-	Consume(user)
+/obj/machinery/power/supermatter/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AiSupermatter", name)
+		ui.open()
 
 // This is purely informational UI that may be accessed by AIs or robots
-/obj/machinery/power/supermatter/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
+/obj/machinery/power/supermatter/ui_data(mob/user)
+	var/list/data = list()
 
 	data["integrity_percentage"] = round(get_integrity())
 	var/datum/gas_mixture/env = null
@@ -410,12 +408,16 @@
 		data["ambient_pressure"] = round(env.return_pressure())
 	data["detonating"] = grav_pulling
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "supermatter_crystal.tmpl", "Supermatter Crystal", 500, 300)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
+	return data
+
+/obj/machinery/power/supermatter/attack_hand(mob/user as mob)
+	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... [TU.his] body starts to glow and bursts into flames before flashing into ash.</span>",\
+		"<span class=\"danger\">You reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\
+		"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
+
+	Consume(user)
+
 
 
 /obj/machinery/power/supermatter/attackby(obj/item/W as obj, mob/living/user as mob)

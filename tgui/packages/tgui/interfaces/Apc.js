@@ -194,23 +194,6 @@ const ApcContent = (props, context) => {
                 disabled={locked}
                 onClick={() => act('cover')} />
             )} />
-          <LabeledList.Item
-            label="Emergency Lighting"
-            buttons={(
-              <Button
-                icon="lightbulb-o"
-                content={data.emergencyLights ? 'Enabled' : 'Disabled'}
-                disabled={locked}
-                onClick={() => act('emergency_lighting')} />
-            )} />
-          <LabeledList.Item
-            label="Night Shift Lighting"
-            buttons={(
-              <Button
-                icon="lightbulb-o"
-                content={data.nightshiftLights ? 'Enabled' : 'Disabled'}
-                onClick={() => act('toggle_nightshift')} />
-            )} />
           {data.hijackable === 1 && (
             <LabeledList.Item
               title="Hijacking"

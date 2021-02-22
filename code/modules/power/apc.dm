@@ -767,15 +767,19 @@
 		wires.Interact(user)
 		return	//The panel is visibly dark when the wires are exposed, so we shouldn't be able to interact with it.
 
-	return nano_ui_interact(user)
+	return ui_interact(user)
 
 
-/obj/machinery/power/apc/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	if(!user)
-		return
+/obj/machinery/power/apc/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Apc", name) // 510, 460
+		ui.open()
 
+/obj/machinery/power/apc/ui_data(mob/user)
 	var/list/data = list(
 		"locked" = locked,
+		"normallyLocked" = locked,
 		"emagged" = emagged,
 		"isOperating" = operating,
 		"externalPower" = main_status,
@@ -787,7 +791,7 @@
 		"failTime" = failure_timer * 2,
 		"gridCheck" = grid_check,
 		"coverLocked" = coverlocked,
-		"siliconUser" = issilicon(user) || isobserver(user), //I add observer here so admins can have more control, even if it makes 'siliconUser' seem inaccurate.
+		"siliconUser" = issilicon(user) || (isobserver(user) && is_admin(user)), //I add observer here so admins can have more control, even if it makes 'siliconUser' seem inaccurate.
 
 		"powerChannels" = list(
 			list(
@@ -823,18 +827,64 @@
 		)
 	)
 
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "apc.tmpl", "[area.name] - APC", 520, data["siliconUser"] ? 465 : 440)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
-		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
+	return data
+
+/obj/machinery/power/apc/ui_act(action, params)
+	if(..() || !can_use(usr, TRUE))
+		return TRUE
+
+	// There's a handful of cases where we want to allow users to bypass the `locked` variable.
+	// If can_admin_interact() wasn't only defined on observers, this could just be part of a single-line
+	// conditional.
+	var/locked_exception = FALSE
+	if(issilicon(usr))
+		locked_exception = TRUE
+	if(isobserver(usr))
+		var/mob/observer/dead/D = usr
+		if(D.can_admin_interact())
+			locked_exception = TRUE
+
+	if(locked && !locked_exception)
+		return
+
+	. = TRUE
+	switch(action)
+		if("lock")
+			if(locked_exception) // Yay code reuse
+				if(emagged || (stat & (BROKEN|MAINT)))
+					to_chat(usr, "The APC does not respond to the command.")
+					return
+				locked = !locked
+				update_icon()
+		if("cover")
+			coverlocked = !coverlocked
+		if("breaker")
+			toggle_breaker()
+		if("charge")
+			chargemode = !chargemode
+			if(!chargemode)
+				charging = 0
+				update_icon()
+		if("channel")
+			if(params["eqp"])
+				equipment = setsubsystem(text2num(params["eqp"]))
+				update_icon()
+				update()
+			else if(params["lgt"])
+				lighting = setsubsystem(text2num(params["lgt"]))
+				update_icon()
+				update()
+			else if(params["env"])
+				environ = setsubsystem(text2num(params["env"]))
+				update_icon()
+				update()
+		if("reboot")
+			failure_timer = 0
+			update_icon()
+			update()
+		if("overload")
+			if(locked_exception) // Reusing for simplicity!
+				overload_lighting()
 
 /obj/machinery/power/apc/proc/report()
 	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_equip+lastused_light+lastused_environ]) : [cell? cell.percent() : "N/C"] ([charging])"

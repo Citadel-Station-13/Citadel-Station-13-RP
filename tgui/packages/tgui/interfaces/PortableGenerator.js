@@ -1,15 +1,14 @@
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
+import { round } from 'common/math';
 
 export const PortableGenerator = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    stack_percent,
-  } = data;
+  const stack_percent = (data.fuel_stored / data.fuel_capacity);
   const stackPercentState = (
-    stack_percent > 50 && 'good'
-    || stack_percent > 15 && 'average'
+    stack_percent >= 0.5 && 'good'
+    || stack_percent > 0.15 && 'average'
     || 'bad'
   );
   return (
@@ -27,13 +26,14 @@ export const PortableGenerator = (props, context) => {
               <Button
                 icon={data.active ? 'power-off' : 'times'}
                 onClick={() => act('toggle_power')}
+                selected={data.active}
                 disabled={!data.ready_to_boot}>
                 {data.active ? 'On' : 'Off'}
               </Button>
             </LabeledList.Item>
-            <LabeledList.Item label={data.sheet_name + ' sheets'}>
-              <Box inline color={stackPercentState}>{data.sheets}</Box>
-              {data.sheets >= 1 && (
+            <LabeledList.Item
+              label="Fuel Type"
+              buttons={data.fuel_stored >= 1 && (
                 <Button
                   ml={1}
                   icon="eject"
@@ -41,33 +41,40 @@ export const PortableGenerator = (props, context) => {
                   onClick={() => act('eject')}>
                   Eject
                 </Button>
-              )}
+              )}>
+              <Box color={stackPercentState}>
+                {data.fuel_stored}cm&sup3; {data.sheet_name}
+              </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Current sheet level">
+            <LabeledList.Item label="Current fuel level">
               <ProgressBar
-                value={data.stack_percent / 100}
+                value={data.fuel_stored / data.fuel_capacity}
                 ranges={{
-                  good: [0.1, Infinity],
-                  average: [0.01, 0.1],
-                  bad: [-Infinity, 0.01],
-                }} />
+                  good: [0.5, Infinity],
+                  average: [0.15, 0.5],
+                  bad: [-Infinity, 0.15],
+                }}>
+                {data.fuel_stored}cm&sup3; / {data.fuel_capacity}cm&sup3;
+              </ProgressBar>
             </LabeledList.Item>
-            <LabeledList.Item label="Heat level">
-              {data.current_heat < 100 ? (
-                <Box inline color="good">Nominal</Box>
-              ) : (
-                data.current_heat < 200 ? (
-                  <Box inline color="average">Caution</Box>
-                ) : (
-                  <Box inline color="bad">DANGER</Box>
-                )
-              )}
+            <LabeledList.Item label="Fuel Usage">
+              {data.fuel_usage} cm&sup3;/s
+            </LabeledList.Item>
+            <LabeledList.Item label="Temperature">
+              <ProgressBar
+                value={data.temperature_current}
+                maxValue={data.temperature_max + 30}
+                color={data.temperature_overheat ? "bad" : "good"}>
+                {round(data.temperature_current)}&deg;C
+              </ProgressBar>
             </LabeledList.Item>
           </LabeledList>
         </Section>
         <Section title="Output">
           <LabeledList>
-            <LabeledList.Item label="Current output">
+            <LabeledList.Item
+              label="Current output"
+              color={data.unsafe_output ? "bad" : null}>
               {data.power_output}
             </LabeledList.Item>
             <LabeledList.Item label="Adjust output">

@@ -246,11 +246,11 @@
 
 /obj/machinery/power/smes/attack_ai(mob/user)
 	add_hiddenprint(user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/power/smes/attack_hand(mob/user)
 	add_fingerprint(user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 
 /obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
@@ -314,56 +314,31 @@
 		return 0
 	return 1
 
-/obj/machinery/power/smes/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-
-	if(stat & BROKEN)
-		return
-
-	// this is the data which will be sent to the ui
-	var/data[0]
-	data["nameTag"] = name_tag
-	data["storedCapacity"] = round(100.0*charge/capacity, 0.1)
-	data["storedCapacityAbs"] = round(charge/(1000*60), 0.1)
-	data["storedCapacityMax"] = round(capacity/(1000*60))
-	data["charging"] = inputting
-	data["chargeMode"] = input_attempt
-	data["chargeLevel"] = round(input_level/1000, 0.1)
-	data["chargeMax"] = round(input_level_max/1000)
-	if (terminal && terminal.powernet)
-		data["chargeLoad"] = round(terminal.powernet.avail/1000, 0.1)
-	else
-		data["chargeLoad"] = 0
-	data["outputOnline"] = output_attempt
-	data["outputLevel"] = round(output_level/1000, 0.1)
-	data["outputMax"] = round(output_level_max/1000)
-	data["outputLoad"] = round(output_used/1000, 0.1)
-
-	if(outputting)
-		data["outputting"] = 2			// smes is outputting
-	else if(!outputting && output_attempt)
-		data["outputting"] = 1			// smes is online but not outputting because it's charge level is too low
-	else
-		data["outputting"] = 0			// smes is not outputting
-
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "smes.tmpl", "SMES Unit", 540, 380)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
+/obj/machinery/power/smes/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Smes", name)
 		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
 
-/obj/machinery/power/smes/buildable/main/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "smesmain.tmpl", "SMES Unit", 540, 405)
-		ui.set_auto_update(1)
-	..()
+/obj/machinery/power/smes/ui_data()
+	var/list/data = list(
+		"capacity" = capacity,
+		"capacityPercent" = round(100*charge/capacity, 0.1),
+		"charge" = charge,
+		"inputAttempt" = input_attempt,
+		"inputting" = inputting,
+		"inputLevel" = input_level,
+		"inputLevel_text" = DisplayPower(input_level),
+		"inputLevelMax" = input_level_max,
+		"inputAvailable" = input_available,
+		"outputAttempt" = output_attempt,
+		"outputting" = outputting,
+		"outputLevel" = output_level,
+		"outputLevel_text" = DisplayPower(output_level),
+		"outputLevelMax" = output_level_max,
+		"outputUsed" = output_used,
+	)
+	return data
 
 /obj/machinery/power/smes/proc/Percentage()
 	return round(100.0*charge/capacity, 0.1)
@@ -407,6 +382,52 @@
 	log_game("SMES([x],[y],[z]) [key_name(usr)] changed settings: I:[input_level]([input_attempt]), O:[output_level]([output_attempt])")
 	return 1
 
+/obj/machinery/power/smes/ui_act(action, params)
+	if(..())
+		return TRUE
+	switch(action)
+		if("tryinput")
+			inputting(!input_attempt)
+			update_icon()
+			. = TRUE
+		if("tryoutput")
+			outputting(!output_attempt)
+			update_icon()
+			. = TRUE
+		if("input")
+			var/target = params["target"]
+			var/adjust = text2num(params["adjust"])
+			if(target == "min")
+				target = 0
+				. = TRUE
+			else if(target == "max")
+				target = input_level_max
+				. = TRUE
+			else if(adjust)
+				target = input_level + adjust
+				. = TRUE
+			else if(text2num(target) != null)
+				target = text2num(target)
+				. = TRUE
+			if(.)
+				input_level = clamp(target, 0, input_level_max)
+		if("output")
+			var/target = params["target"]
+			var/adjust = text2num(params["adjust"])
+			if(target == "min")
+				target = 0
+				. = TRUE
+			else if(target == "max")
+				target = output_level_max
+				. = TRUE
+			else if(adjust)
+				target = output_level + adjust
+				. = TRUE
+			else if(text2num(target) != null)
+				target = text2num(target)
+				. = TRUE
+			if(.)
+				output_level = clamp(target, 0, output_level_max)
 
 /obj/machinery/power/smes/proc/ion_act()
 	if(src.z in GLOB.using_map.station_levels)
