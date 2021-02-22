@@ -8,14 +8,11 @@
 */
 /obj/screen
 	name = ""
-	icon = 'icons/mob/screen_gen.dmi'
-	layer = LAYER_HUD_BASE //HUD_LAYER
-	plane = PLANE_PLAYER_HUD //HUD_PLANE
+	icon = 'icons/mob/screen1.dmi'
+	layer = LAYER_HUD_BASE
+	plane = PLANE_PLAYER_HUD
 	// resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	animate_movement = SLIDE_STEPS
-	// speech_span = SPAN_ROBOT
-	vis_flags = VIS_INHERIT_PLANE
-	appearance_flags = APPEARANCE_UI
 	/// A reference to the object in the slot. Grabs or items, generally.
 	var/obj/master = null
 	/// A reference to the owner HUD, if any.
