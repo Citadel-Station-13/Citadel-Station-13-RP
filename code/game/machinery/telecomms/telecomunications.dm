@@ -120,7 +120,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 		var/turf/position = get_turf(src)
 		listening_level = position.z
 
-/obj/machinery/telecomms/Initialize()
+/obj/machinery/telecomms/Initialize(mapload)
 	if(autolinkers.len)
 		// Links nearby machines
 		if(!long_range_link)
@@ -256,7 +256,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	produces_heat = 0
 	circuit = /obj/item/circuitboard/telecomms/receiver
 
-/obj/machinery/telecomms/receiver/Initialize()
+/obj/machinery/telecomms/receiver/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
@@ -325,7 +325,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	netspeed = 40
 	var/list/telecomms_map
 
-/obj/machinery/telecomms/hub/Initialize()
+/obj/machinery/telecomms/hub/Initialize(mapload)
 	. = ..()
 	LAZYINITLIST(telecomms_map)
 	component_parts = list()
@@ -386,7 +386,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	var/broadcasting = 1
 	var/receiving = 1
 
-/obj/machinery/telecomms/relay/Initialize()
+/obj/machinery/telecomms/relay/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
@@ -449,7 +449,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	netspeed = 40
 	var/change_frequency = 0
 
-/obj/machinery/telecomms/bus/Initialize()
+/obj/machinery/telecomms/bus/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
@@ -510,7 +510,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	circuit = /obj/item/circuitboard/telecomms/processor
 	var/process_mode = 1 // 1 = Uncompress Signals, 0 = Compress Signals
 
-/obj/machinery/telecomms/processor/Initialize()
+/obj/machinery/telecomms/processor/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
@@ -579,7 +579,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	..()
 	server_radio = new()
 
-/obj/machinery/telecomms/server/Initialize()
+/obj/machinery/telecomms/server/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)

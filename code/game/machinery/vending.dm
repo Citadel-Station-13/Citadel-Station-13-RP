@@ -68,7 +68,7 @@
 	var/has_logs = 0 //defaults to 0, set to anything else for vendor to have logs
 
 
-/obj/machinery/vending/Initialize()
+/obj/machinery/vending/Initialize(mapload)
 	. = ..()
 	wires = new(src)
 	spawn(4)

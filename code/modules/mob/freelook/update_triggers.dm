@@ -17,7 +17,7 @@
 	updateVisibility(src)
 	return ..()
 
-/turf/simulated/Initialize()
+/turf/simulated/Initialize(mapload)
 	. = ..()
 	updateVisibility(src)
 

@@ -58,7 +58,7 @@
 		will_patrol = FALSE
 
 // Make sure mapped in units start turned on.
-/mob/living/bot/Initialize()
+/mob/living/bot/Initialize(mapload)
 	. = ..()
 	if(on)
 		turn_on() // Update lights and other stuff

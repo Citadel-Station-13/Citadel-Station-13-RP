@@ -98,7 +98,7 @@
 	syndie = 1
 	ks1type = /obj/item/encryptionkey/raider
 
-/obj/item/radio/headset/raider/Initialize()
+/obj/item/radio/headset/raider/Initialize(mapload)
 	. = ..()
 	set_frequency(RAID_FREQ)
 
@@ -109,7 +109,7 @@
 	adhoc_fallback = TRUE
 	ks1type = /obj/item/encryptionkey/trader
 
-/obj/item/radio/headset/trader/Initialize()
+/obj/item/radio/headset/trader/Initialize(mapload)
 	. = ..()
 	set_frequency(TRADE_FREQ)
 

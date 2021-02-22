@@ -2,7 +2,7 @@
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
 
-/mob/living/carbon/human/dummy/mannequin/Initialize()
+/mob/living/carbon/human/dummy/mannequin/Initialize(mapload)
 	. = ..()
 	mob_list -= src
 	living_mob_list -= src
@@ -88,7 +88,7 @@
 	..(new_loc, SPECIES_SHADEKIN)
 
 //Fashion Mannequins
-/mob/living/carbon/human/dummy/mannequin/Initialize()
+/mob/living/carbon/human/dummy/mannequin/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -117,7 +117,7 @@
 				H.equip_to_slot_or_del(new PICK(H), slot_shoes)
 				H.update_inv_shoes()
 
-/mob/living/carbon/human/dummy/mannequin/plastic/Initialize()
+/mob/living/carbon/human/dummy/mannequin/plastic/Initialize(mapload)
 	. = ..()
 	name = "Plastic Mannequin"
 	real_name = "Plastic Mannequin"
@@ -147,7 +147,7 @@
 				H.equip_to_slot_or_del(new PICK(H), slot_shoes)
 				H.update_inv_shoes()
 
-/mob/living/carbon/human/dummy/mannequin/samurai/Initialize()
+/mob/living/carbon/human/dummy/mannequin/samurai/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -179,7 +179,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/samurai, slot_wear_suit)
 				H.update_inv_wear_suit()
 
-/mob/living/carbon/human/dummy/mannequin/animegirl/Initialize()
+/mob/living/carbon/human/dummy/mannequin/animegirl/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -208,7 +208,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/plain/eyepatch, slot_wear_suit)
 				H.update_inv_glasses()
 
-/mob/living/carbon/human/dummy/mannequin/mummy/Initialize()
+/mob/living/carbon/human/dummy/mannequin/mummy/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
@@ -237,7 +237,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/pharaoh, slot_wear_suit)
 				H.update_inv_wear_suit()
 
-/mob/living/carbon/human/dummy/mannequin/scarecrow/Initialize()
+/mob/living/carbon/human/dummy/mannequin/scarecrow/Initialize(mapload)
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"

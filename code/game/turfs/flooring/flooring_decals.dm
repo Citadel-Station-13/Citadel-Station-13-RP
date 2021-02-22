@@ -14,7 +14,7 @@ var/list/floor_decals = list()
 	if(newcolour) color = newcolour
 	..(newloc)
 
-/obj/effect/floor_decal/Initialize()
+/obj/effect/floor_decal/Initialize(mapload)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 

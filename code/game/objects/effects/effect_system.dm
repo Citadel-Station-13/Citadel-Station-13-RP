@@ -103,7 +103,7 @@ steam.start() -- spawns the effect
 	if (istype(T, /turf))
 		T.hotspot_expose(1000,100)
 
-/obj/effect/effect/sparks/Initialize()
+/obj/effect/effect/sparks/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 5 SECONDS)
 
@@ -262,7 +262,7 @@ steam.start() -- spawns the effect
 	opacity = FALSE
 	var/strength = 5 // How much damage to do inside each affect()
 
-/obj/effect/effect/smoke/elemental/Initialize()
+/obj/effect/effect/smoke/elemental/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	return ..()
 
@@ -540,7 +540,7 @@ steam.start() -- spawns the effect
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 
-/obj/effect/effect/teleport_greyscale/Initialize()
+/obj/effect/effect/teleport_greyscale/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 2 SECONDS)
 

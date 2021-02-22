@@ -289,7 +289,7 @@
 	deactivate_string = "Retract Blade"
 	var/obj/item/material/knife/machete/armblade/rig/held_blade
 
-/obj/item/rig_module/armblade/Initialize()
+/obj/item/rig_module/armblade/Initialize(mapload)
 	. = ..()
 	held_blade = new /obj/item/material/knife/machete/armblade/rig
 	held_blade.storing_module = src

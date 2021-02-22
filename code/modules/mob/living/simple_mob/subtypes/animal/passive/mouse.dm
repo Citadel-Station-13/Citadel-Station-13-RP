@@ -115,7 +115,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
-/mob/living/simple_mob/animal/passive/mouse/rat/Initialize()
+/mob/living/simple_mob/animal/passive/mouse/rat/Initialize(mapload)
 	..()
 	adjust_scale(1.2)
 

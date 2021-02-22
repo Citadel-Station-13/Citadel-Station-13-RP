@@ -97,7 +97,7 @@
 	var/amount = 100
 	var/used = FALSE
 
-/obj/item/fbp_backup_cell/Initialize()
+/obj/item/fbp_backup_cell/Initialize(mapload)
 	overlays += image(icon,"[icon_state]1")
 
 /obj/item/fbp_backup_cell/attack(mob/living/M as mob, mob/user as mob)

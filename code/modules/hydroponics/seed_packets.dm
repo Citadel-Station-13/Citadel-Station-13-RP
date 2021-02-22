@@ -13,7 +13,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 	var/datum/seed/seed
 	var/modified = 0
 
-/obj/item/seeds/Initialize()
+/obj/item/seeds/Initialize(mapload)
 	update_seed()
 	. = ..()
 
@@ -75,7 +75,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 /obj/item/seeds/random
 	seed_type = null
 
-/obj/item/seeds/random/Initialize()
+/obj/item/seeds/random/Initialize(mapload)
 	seed = plant_controller.create_random_seed()
 	seed_type = seed.name
 	. = ..()

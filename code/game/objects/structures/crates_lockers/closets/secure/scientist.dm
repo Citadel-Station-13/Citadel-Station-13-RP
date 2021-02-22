@@ -19,7 +19,7 @@
 		/obj/item/gps/science,
 		/obj/item/clothing/shoes/boots/winter/science)
 
-/obj/structure/closet/secure_closet/scientist/Initialize()
+/obj/structure/closet/secure_closet/scientist/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/sci
 	else

@@ -122,7 +122,7 @@
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
 
-/obj/item/reagent_containers/food/drinks/milk/Initialize()
+/obj/item/reagent_containers/food/drinks/milk/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("milk", 50)
 
@@ -135,7 +135,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
-/obj/item/reagent_containers/food/drinks/soymilk/Initialize()
+/obj/item/reagent_containers/food/drinks/soymilk/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("soymilk", 50)
 
@@ -148,7 +148,7 @@
 	center_of_mass = list("x"=16, "y"=9)
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
-/obj/item/reagent_containers/food/drinks/smallmilk/Initialize()
+/obj/item/reagent_containers/food/drinks/smallmilk/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("milk", 30)
 
@@ -161,7 +161,7 @@
 	center_of_mass = list("x"=16, "y"=9)
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
-/obj/item/reagent_containers/food/drinks/smallchocmilk/Initialize()
+/obj/item/reagent_containers/food/drinks/smallchocmilk/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("chocolate_milk", 30)
 
@@ -172,7 +172,7 @@
 	center_of_mass = list("x"=15, "y"=10)
 	drop_sound = 'sound/items/drop/papercup.ogg'
 	pickup_sound = 'sound/items/pickup/papercup.ogg'
-/obj/item/reagent_containers/food/drinks/coffee/Initialize()
+/obj/item/reagent_containers/food/drinks/coffee/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("coffee", 30)
 
@@ -185,7 +185,7 @@
 	drop_sound = 'sound/items/drop/papercup.ogg'
 	pickup_sound = 'sound/items/pickup/papercup.ogg'
 
-/obj/item/reagent_containers/food/drinks/tea/Initialize()
+/obj/item/reagent_containers/food/drinks/tea/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("tea", 30)
 
@@ -194,7 +194,7 @@
 	desc = "Careful, cold ice, do not chew."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
-/obj/item/reagent_containers/food/drinks/ice/Initialize()
+/obj/item/reagent_containers/food/drinks/ice/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("ice", 30)
 
@@ -205,7 +205,7 @@
 	item_state = "coffee"
 	center_of_mass = list("x"=15, "y"=13)
 
-/obj/item/reagent_containers/food/drinks/h_chocolate/Initialize()
+/obj/item/reagent_containers/food/drinks/h_chocolate/Initialize(mapload)
 	..()
 	reagents.add_reagent("hot_coco", 30)
 
@@ -214,7 +214,7 @@
 	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	center_of_mass = list("x"=16, "y"=11)
-/obj/item/reagent_containers/food/drinks/dry_ramen/Initialize()
+/obj/item/reagent_containers/food/drinks/dry_ramen/Initialize(mapload)
 	..()
 	reagents.add_reagent("dry_ramen", 30)
 
@@ -226,7 +226,7 @@
 	volume = 10
 	center_of_mass = list("x"=16, "y"=12)
 
-/obj/item/reagent_containers/food/drinks/sillycup/Initialize()
+/obj/item/reagent_containers/food/drinks/sillycup/Initialize(mapload)
 	. = ..()
 
 /obj/item/reagent_containers/food/drinks/sillycup/on_reagent_change()

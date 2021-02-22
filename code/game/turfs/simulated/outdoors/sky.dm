@@ -9,7 +9,7 @@
 	// Assume there's a vacuum for the purposes of avoiding active edges at initialization, as well as ZAS fun if a window breaks.
 	initial_gas_mix = GAS_STRING_VACUUM
 
-/turf/simulated/sky/Initialize()
+/turf/simulated/sky/Initialize(mapload)
 	. = ..()
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFFFFF")

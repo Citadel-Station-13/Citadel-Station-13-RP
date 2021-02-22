@@ -34,7 +34,7 @@
 	..()
 	update()
 
-/turf/simulated/open/Initialize()
+/turf/simulated/open/Initialize(mapload)
 	. = ..()
 	ASSERT(HasBelow(z))
 	update()

@@ -39,7 +39,7 @@
 	spell_masters = null
 	zone_sel = null
 
-/mob/Initialize()
+/mob/Initialize(mapload)
 	mob_list += src
 	set_focus(src)
 	if(stat == DEAD)

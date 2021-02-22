@@ -20,7 +20,7 @@
 	firemodes = list()
 	var/emp_vuln = TRUE
 
-/obj/item/gun/energy/modular/Initialize()
+/obj/item/gun/energy/modular/Initialize(mapload)
 	..()
 	generatefiremodes()
 

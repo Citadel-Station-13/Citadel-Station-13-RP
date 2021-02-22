@@ -18,7 +18,7 @@ var/global/list/map_sectors = list()
 	var/map_is_to_my
 	var/turf/unsimulated/map/edge/wrap_buddy
 
-/turf/unsimulated/map/edge/Initialize()
+/turf/unsimulated/map/edge/Initialize(mapload)
 	. = ..()
 	// This could be done by using the using_map.overmap_size much faster, HOWEVER, doing it programatically to 'find'
 	//	 the edges this way allows for 'sub overmaps' elsewhere and whatnot.
@@ -46,7 +46,7 @@ var/global/list/map_sectors = list()
 	else
 		. = ..()
 
-/turf/unsimulated/map/Initialize()
+/turf/unsimulated/map/Initialize(mapload)
 	. = ..()
 	name = "[x]-[y]"
 	var/list/numbers = list()

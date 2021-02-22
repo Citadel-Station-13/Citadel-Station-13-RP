@@ -154,7 +154,7 @@
 	name = "bluespace"
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
-/turf/space/bluespace/Initialize()
+/turf/space/bluespace/Initialize(mapload)
 	..()
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
@@ -164,7 +164,7 @@
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
-/turf/space/sandyscroll/Initialize()
+/turf/space/sandyscroll/Initialize(mapload)
 	..()
 	icon_state = "desert_ns"
 
@@ -173,7 +173,7 @@
 /turf/simulated/sky/triumph
 	color = "#FFBBBB"
 
-/turf/simulated/sky/triumph/Initialize()
+/turf/simulated/sky/triumph/Initialize(mapload)
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

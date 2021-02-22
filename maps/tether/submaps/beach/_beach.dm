@@ -53,7 +53,7 @@
 	name = "away mission initializer - beachcave"
 
 // In our case, it initializes the ores and random submaps in the beach's cave, then deletes itself
-/obj/away_mission_init/beachcave/Initialize()
+/obj/away_mission_init/beachcave/Initialize(mapload)
 	// Cave submaps are first.
 	/*seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/normal, /datum/map_template/surface/mountains/normal)
 	seed_submaps(list(z), 50, /area/tether_away/cave/unexplored/deep, /datum/map_template/surface/mountains/deep)

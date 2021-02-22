@@ -111,7 +111,7 @@ var/list/civilian_cartridges = list(
 	icon_state = "cart-s"
 	access_security = 1
 
-/obj/item/cartridge/security/Initialize()
+/obj/item/cartridge/security/Initialize(mapload)
 	radio = new /obj/item/integated_radio/beepsky(src)
 	. = ..()
 
@@ -167,7 +167,7 @@ var/list/civilian_cartridges = list(
 	access_reagent_scanner = 1
 	access_atmos = 1
 
-/obj/item/cartridge/signal/Initialize()
+/obj/item/cartridge/signal/Initialize(mapload)
     radio = new /obj/item/integated_radio/signal(src)
     . = ..()
 
@@ -201,7 +201,7 @@ var/list/civilian_cartridges = list(
 	access_status_display = 1
 	access_security = 1
 
-/obj/item/cartridge/hos/Initialize()
+/obj/item/cartridge/hos/Initialize(mapload)
 	radio = new /obj/item/integated_radio/beepsky(src)
 	. = ..()
 
@@ -226,7 +226,7 @@ var/list/civilian_cartridges = list(
 	access_reagent_scanner = 1
 	access_atmos = 1
 
-/obj/item/cartridge/rd/Initialize()
+/obj/item/cartridge/rd/Initialize(mapload)
 	radio = new /obj/item/integated_radio/signal(src)
 	. = ..()
 

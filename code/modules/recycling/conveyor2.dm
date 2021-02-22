@@ -211,7 +211,7 @@
 
 
 
-/obj/machinery/conveyor_switch/Initialize()
+/obj/machinery/conveyor_switch/Initialize(mapload)
 	..()
 	update()
 	return INITIALIZE_HINT_LATELOAD

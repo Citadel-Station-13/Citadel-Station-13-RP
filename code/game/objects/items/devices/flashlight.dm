@@ -18,7 +18,7 @@
 	var/power_usage
 	var/power_use = 1
 
-/obj/item/flashlight/Initialize()
+/obj/item/flashlight/Initialize(mapload)
 	. = ..()
 
 	if(power_use && cell_type)

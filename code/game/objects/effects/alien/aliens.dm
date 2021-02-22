@@ -197,7 +197,7 @@
 /obj/effect/alien/weeds/node/New()
 	..(src.loc, src)
 
-/obj/effect/alien/weeds/node/Initialize()
+/obj/effect/alien/weeds/node/Initialize(mapload)
 	..()
 	START_PROCESSING(SSobj, src)
 

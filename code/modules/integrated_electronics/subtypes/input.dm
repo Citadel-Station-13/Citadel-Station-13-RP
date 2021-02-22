@@ -354,7 +354,7 @@
 	var/code = 30
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/integrated_circuit/input/signaler/Initialize()
+/obj/item/integrated_circuit/input/signaler/Initialize(mapload)
 	. = ..()
 	set_frequency(frequency)
 	// Set the pins so when someone sees them, they won't show as null
@@ -568,7 +568,7 @@
 		LANGUAGE_TERMINUS
 		)
 
-/obj/item/integrated_circuit/input/microphone/sign/Initialize()
+/obj/item/integrated_circuit/input/microphone/sign/Initialize(mapload)
 	..()
 	for(var/lang in readable_langs)
 		var/datum/language/newlang = GLOB.all_languages[lang]

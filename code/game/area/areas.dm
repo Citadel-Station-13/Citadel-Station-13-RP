@@ -71,7 +71,7 @@
 
 	..()
 
-/area/Initialize()
+/area/Initialize(mapload)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD // Areas tradiationally are initialized AFTER other atoms.
 

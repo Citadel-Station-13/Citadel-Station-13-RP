@@ -194,7 +194,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/binary/dp_vent_pump/Initialize()
+/obj/machinery/atmospherics/binary/dp_vent_pump/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)

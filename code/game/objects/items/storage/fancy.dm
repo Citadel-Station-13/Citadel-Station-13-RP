@@ -121,7 +121,7 @@
 		/obj/item/pen/crayon/purple
 	)
 
-/obj/item/storage/fancy/crayons/Initialize()
+/obj/item/storage/fancy/crayons/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -163,7 +163,7 @@
 		/obj/item/pen/crayon/marker/purple
 	)
 
-/obj/item/storage/fancy/markers/Initialize()
+/obj/item/storage/fancy/markers/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -202,7 +202,7 @@
 		/obj/item/pen/crayon/chalk/blue
 	)
 
-/obj/item/storage/fancy/chalk/Initialize()
+/obj/item/storage/fancy/chalk/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -246,7 +246,7 @@
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette = 6)
 	var/brand = "\improper Trans-Stellar Duty-free"
 
-/obj/item/storage/fancy/cigarettes/Initialize()
+/obj/item/storage/fancy/cigarettes/Initialize(mapload)
 	. = ..()
 	flags |= NOREACT
 	create_reagents(15 * storage_slots)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
@@ -352,7 +352,7 @@
 	icon_type = "cigar"
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar = 7)
 
-/obj/item/storage/fancy/cigar/Initialize()
+/obj/item/storage/fancy/cigar/Initialize(mapload)
 	. = ..()
 	flags |= NOREACT
 	create_reagents(15 * storage_slots)
@@ -404,7 +404,7 @@
 	storage_slots = 6
 	req_access = list(access_virology)
 
-/obj/item/storage/lockbox/vials/Initialize()
+/obj/item/storage/lockbox/vials/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -449,7 +449,7 @@
 		/obj/item/reagent_containers/food/snacks/chocolatepiece/truffle
 	)
 
-/obj/item/storage/fancy/heartbox/Initialize()
+/obj/item/storage/fancy/heartbox/Initialize(mapload)
 	. = ..()
 	update_icon()
 

@@ -281,7 +281,7 @@
 	var/obj/item/mining_scanner/my_scanner = null
 	var/exact_scan = FALSE
 
-/obj/item/mecha_parts/mecha_equipment/tool/orescanner/Initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/orescanner/Initialize(mapload)
 	my_scanner = new(src)
 	return ..()
 
@@ -320,7 +320,7 @@
 	var/spray_amount = 5	//units of liquid per particle. 5 is enough to wet the floor - it's a big fire extinguisher, so should be fine
 	var/max_water = 1000
 
-/obj/item/mecha_parts/mecha_equipment/tool/extinguisher/Initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/extinguisher/Initialize(mapload)
 	. = ..()
 	reagents = new/datum/reagents(max_water)
 	reagents.my_atom = src
@@ -393,7 +393,7 @@
 	var/obj/item/my_tool = null
 	var/tooltype = /obj/item/tool/wrench/power
 
-/obj/item/mecha_parts/mecha_equipment/tool/powertool/Initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/powertool/Initialize(mapload)
 	my_tool = new tooltype(src)
 	my_tool.name = name
 	my_tool.anchored = TRUE
@@ -431,7 +431,7 @@
 	equip_type = EQUIP_SPECIAL
 	var/obj/item/rcd/electric/mounted/mecha/my_rcd = null
 
-/obj/item/mecha_parts/mecha_equipment/tool/rcd/Initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/rcd/Initialize(mapload)
 	my_rcd = new(src)
 	return ..()
 

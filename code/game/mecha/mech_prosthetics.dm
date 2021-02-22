@@ -42,7 +42,7 @@
 	files = new /datum/research(src) //Setup the research data holder.
 	return
 
-/obj/machinery/pros_fabricator/Initialize()
+/obj/machinery/pros_fabricator/Initialize(mapload)
 	. = ..()
 	manufacturer = basic_robolimb.company
 	update_categories()

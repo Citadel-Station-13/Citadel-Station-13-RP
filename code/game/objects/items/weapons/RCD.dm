@@ -41,7 +41,7 @@
 	var/static/image/radial_image_grillewind = image(icon = 'icons/mob/radial.dmi', icon_state = "grillewindow")
 	var/static/image/radial_image_floorwall = image(icon = 'icons/mob/radial.dmi', icon_state = "wallfloor")
 
-/obj/item/rcd/Initialize()
+/obj/item/rcd/Initialize(mapload)
 	src.spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -237,7 +237,7 @@
 // RCD variants.
 
 // This one starts full.
-/obj/item/rcd/loaded/Initialize()
+/obj/item/rcd/loaded/Initialize(mapload)
 	stored_matter = max_stored_matter
 	return ..()
 
@@ -252,7 +252,7 @@
 	can_remove_rwalls = TRUE
 	make_rwalls = TRUE
 
-/obj/item/rcd/shipwright/loaded/Initialize()
+/obj/item/rcd/shipwright/loaded/Initialize(mapload)
 	stored_matter = max_stored_matter
 	return ..()
 
@@ -266,7 +266,7 @@
 	toolspeed = 0.5 // Twice as fast.
 	max_stored_matter = RCD_MAX_CAPACITY * 3 // Three times capacity.
 
-/obj/item/rcd/advanced/loaded/Initialize()
+/obj/item/rcd/advanced/loaded/Initialize(mapload)
 	stored_matter = max_stored_matter
 	return ..()
 
@@ -283,7 +283,7 @@
 	var/make_cell = TRUE // If false, initialize() won't spawn a cell for this.
 	var/electric_cost_coefficent = 83.33 // Higher numbers make it less efficent. 86.3... means it should matche the standard RCD capacity on a 10k cell.
 
-/obj/item/rcd/electric/Initialize()
+/obj/item/rcd/electric/Initialize(mapload)
 	if(make_cell)
 		cell = new /obj/item/cell/high(src)
 	return ..()

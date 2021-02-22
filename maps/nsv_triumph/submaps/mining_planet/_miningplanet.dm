@@ -12,7 +12,7 @@
 /obj/away_mission_init/mining_planet
 	name = "away mission initializer -  Mining Planet"
 
-/obj/away_mission_init/mining_planet/Initialize()
+/obj/away_mission_init/mining_planet/Initialize(mapload)
 	return INITIALIZE_HINT_QDEL
 
 // This is a special subtype of the thing that generates ores on a map

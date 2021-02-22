@@ -245,7 +245,7 @@
 			available_chemicals += new_chemicals
 		return
 
-/obj/machinery/sleeper/Initialize()
+/obj/machinery/sleeper/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -435,6 +435,6 @@
 	icon_state = "sleeper"
 	stasis_level = 100 //Just one setting
 
-/obj/machinery/sleeper/survival_pod/Initialize()
+/obj/machinery/sleeper/survival_pod/Initialize(mapload)
 	..()
 	RefreshParts(1)

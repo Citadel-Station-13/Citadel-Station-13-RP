@@ -2,7 +2,7 @@
 	var/obj/item/storage/internal/pockets
 	var/slots = 2
 
-/obj/item/clothing/suit/storage/Initialize()
+/obj/item/clothing/suit/storage/Initialize(mapload)
 	. = ..()
 	pockets = new/obj/item/storage/internal(src, slots, ITEMSIZE_SMALL)	// Fit only pocket sized items
 	pockets.max_w_class = ITEMSIZE_SMALL				// Fit only pocket sized items

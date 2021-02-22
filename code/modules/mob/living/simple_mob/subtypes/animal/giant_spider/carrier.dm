@@ -40,7 +40,7 @@
 	var/swarmling_faction = "spiders"
 	var/swarmling_prob = 10 // Odds that a spiderling will be a swarmling instead.
 
-/mob/living/simple_mob/animal/giant_spider/carrier/Initialize()
+/mob/living/simple_mob/animal/giant_spider/carrier/Initialize(mapload)
 	spiderling_count = rand(5, 10)
 	adjust_scale(1.2)
 	return ..()

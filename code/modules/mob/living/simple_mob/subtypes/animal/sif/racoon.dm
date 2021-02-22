@@ -149,7 +149,7 @@
 		I.appearance_flags = RESET_COLOR
 		add_overlay(I)
 
-/mob/living/simple_mob/animal/sif/sakimm/Initialize()
+/mob/living/simple_mob/animal/sif/sakimm/Initialize(mapload)
 	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl

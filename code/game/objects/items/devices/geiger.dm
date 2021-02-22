@@ -13,7 +13,7 @@
 	var/radiation_count = 0
 	var/datum/looping_sound/geiger/soundloop
 
-/obj/item/geiger/Initialize()
+/obj/item/geiger/Initialize(mapload)
 	soundloop = new(list(src), FALSE)
 	return ..()
 

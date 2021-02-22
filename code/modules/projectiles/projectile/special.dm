@@ -345,6 +345,6 @@
 	icon_state = "banana"
 	range = 200
 
-/obj/item/projectile/bullet/honker/Initialize()
+/obj/item/projectile/bullet/honker/Initialize(mapload)
 	. = ..()
 	SpinAnimation()

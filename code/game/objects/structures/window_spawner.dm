@@ -23,7 +23,7 @@
 /obj/effect/wingrille_spawn/attack_generic()
 	activate()
 
-/obj/effect/wingrille_spawn/Initialize()
+/obj/effect/wingrille_spawn/Initialize(mapload)
 	. = ..()
 	if(!win_path)
 		return

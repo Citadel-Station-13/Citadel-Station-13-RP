@@ -106,7 +106,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/trinary/atmos_filter/Initialize()
+/obj/machinery/atmospherics/trinary/atmos_filter/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)

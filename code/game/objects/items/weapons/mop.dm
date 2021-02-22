@@ -64,7 +64,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	var/mopmode = MOPMODE_TILE
 	var/sweep_time = 7
 
-/obj/item/mop/Initialize()
+/obj/item/mop/Initialize(mapload)
 	. = ..()
 	create_reagents(30)
 

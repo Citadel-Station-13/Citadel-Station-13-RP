@@ -31,7 +31,7 @@
 
 	RefreshParts()
 
-/obj/machinery/vr_sleeper/Initialize()
+/obj/machinery/vr_sleeper/Initialize(mapload)
 	. = ..()
 	smoke = new
 	update_icon()

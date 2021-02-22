@@ -66,7 +66,7 @@
 	name = "away mission initializer - beachcave"
 
 //In our case, it initializes the ores and random submaps in the beach's cave, then deletes itself
-/obj/away_mission_init/beachcave/Initialize()
+/obj/away_mission_init/beachcave/Initialize(mapload)
 	new /datum/random_map/noise/ore/beachmine(null, 1, 1, Z_LEVEL_ODIN5A_CAVE, 64, 64)
 
 	initialized = TRUE

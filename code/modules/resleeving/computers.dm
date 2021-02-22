@@ -18,7 +18,7 @@
 	var/synthetic_capable = 1
 	var/obj/item/disk/transcore/disk
 
-/obj/machinery/computer/transhuman/resleeving/Initialize()
+/obj/machinery/computer/transhuman/resleeving/Initialize(mapload)
 	. = ..()
 	updatemodules()
 

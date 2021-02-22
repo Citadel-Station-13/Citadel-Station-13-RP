@@ -33,7 +33,7 @@
 	var/activation_cooldown = 30 SECONDS
 	var/last_activation = 0
 
-/obj/structure/cult/pylon/Initialize()
+/obj/structure/cult/pylon/Initialize(mapload)
 	..()
 	START_PROCESSING(SSobj, src)
 

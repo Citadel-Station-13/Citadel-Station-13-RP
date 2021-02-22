@@ -49,7 +49,7 @@
 	var/burn_cost = 1000
 	var/generated_thrust = 4
 
-/obj/machinery/ion_engine/Initialize()
+/obj/machinery/ion_engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
 

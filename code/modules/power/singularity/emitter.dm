@@ -41,7 +41,7 @@
 	src.setDir(turn(src.dir, 270))
 	return 1
 
-/obj/machinery/power/emitter/Initialize()
+/obj/machinery/power/emitter/Initialize(mapload)
 	. = ..()
 	if(state == 2 && anchored)
 		connect_to_network()

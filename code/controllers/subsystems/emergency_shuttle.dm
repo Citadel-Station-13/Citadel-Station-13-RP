@@ -246,8 +246,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 
-/obj/effect/bgstar/New()
-	..()
+/obj/effect/bgstar/Initialize(mapload)
+	. = ..()
 	pixel_x += rand(-2,30)
 	pixel_y += rand(-2,30)
 	var/starnum = pick("1", "1", "1", "2", "3", "4")

@@ -23,7 +23,7 @@
 
 	RefreshParts()
 
-/obj/machinery/vr_sleeper/Initialize()
+/obj/machinery/vr_sleeper/Initialize(mapload)
 	. = ..()
 	update_icon()
 

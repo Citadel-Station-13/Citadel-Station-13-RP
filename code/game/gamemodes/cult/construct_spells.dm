@@ -434,6 +434,7 @@ proc/findNullRod(var/atom/target)
 	force = 0
 	show_examine = FALSE
 	owner = null
+	del_for_null_core = FALSE
 	core = null
 	cast_methods = null			// Controls how the spell is casted.
 	aspect = ASPECT_UNHOLY		// Used for combining spells. Pretty much any cult spell is unholy.
@@ -442,13 +443,13 @@ proc/findNullRod(var/atom/target)
 	cast_sound = null			// Sound file played when this is used.
 	var/last_castcheck = null	// The last time this spell was cast.
 
-/obj/item/spell/construct/New()
-	//..() //This kills the spell, because super on this calls the default spell's New, which checks for a core. Can't have that.
+/obj/item/spell/construct/Initialize(mapload)
 	if(isliving(loc))
 		owner = loc
 	if(!owner)
 		qdel(src)
 	update_icon()
+	return ..()
 
 /obj/item/spell/construct/adjust_instability(var/amount) //The only drawback to the boons of the geometer is the use of a mortal's blood as fuel. Constructs have already paid that price long ago.
 	return

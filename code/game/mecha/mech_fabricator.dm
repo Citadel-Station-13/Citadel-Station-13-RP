@@ -39,7 +39,7 @@
 	files = new /datum/research(src) //Setup the research data holder.
 	return
 
-/obj/machinery/mecha_part_fabricator/Initialize()
+/obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	update_categories()
 	. = ..()
 

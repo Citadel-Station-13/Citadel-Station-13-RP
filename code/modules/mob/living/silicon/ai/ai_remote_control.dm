@@ -1,7 +1,7 @@
 /mob/living/silicon/ai
 	var/mob/living/silicon/robot/deployed_shell = null //For shell control
 
-/mob/living/silicon/ai/Initialize()
+/mob/living/silicon/ai/Initialize(mapload)
 	if(config_legacy.allow_ai_shells)
 		verbs += /mob/living/silicon/ai/proc/deploy_to_shell_act
 	return ..()

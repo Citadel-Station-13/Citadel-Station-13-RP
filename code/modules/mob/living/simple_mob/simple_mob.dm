@@ -155,7 +155,7 @@
 	// contained in a cage
 	var/in_stasis = 0
 
-/mob/living/simple_mob/Initialize()
+/mob/living/simple_mob/Initialize(mapload)
 	verbs -= /mob/verb/observe
 	health = maxHealth
 

@@ -77,7 +77,7 @@
 	pressure_checks = 2
 	pressure_checks_default = 2
 
-/obj/machinery/atmospherics/unary/vent_pump/Initialize()
+/obj/machinery/atmospherics/unary/vent_pump/Initialize(mapload)
 	. = ..()
 	/*
 	soundloop = new(list(src), FALSE)

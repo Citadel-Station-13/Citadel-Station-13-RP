@@ -116,7 +116,7 @@
 	var/last_transmission
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/integated_radio/signal/Initialize()
+/obj/item/integated_radio/signal/Initialize(mapload)
 	. = ..()
 	if(!radio_controller)
 		return

@@ -18,7 +18,7 @@
 
 	var/needs_update = FALSE
 
-/atom/movable/lighting_overlay/Initialize()
+/atom/movable/lighting_overlay/Initialize(mapload)
 	// doesn't need special init
 	flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL

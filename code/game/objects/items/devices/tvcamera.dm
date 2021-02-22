@@ -10,7 +10,7 @@
 	var/obj/machinery/camera/network/thunder/camera
 	var/obj/item/radio/radio
 
-/obj/item/tvcamera/Initialize()
+/obj/item/tvcamera/Initialize(mapload)
 	. = ..()
 	listening_objects += src
 
@@ -27,7 +27,7 @@
 	to_chat(usr, "Video feed is [camera.status ? "on" : "off"]")
 	to_chat(usr, "Audio feed is [radio.broadcasting ? "on" : "off"]")
 
-/obj/item/tvcamera/Initialize()
+/obj/item/tvcamera/Initialize(mapload)
 	. = ..()
 	camera = new(src)
 	camera.c_tag = channel
