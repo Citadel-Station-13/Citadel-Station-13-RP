@@ -4,8 +4,8 @@
 	icon_state = "card_pack_spaceball"
 	parentdeck = "spaceball"
 
-/obj/item/pack/spaceball/New()
-	..()
+/obj/item/pack/spaceball/Initialize(mapload)
+	. = ..()
 	var/datum/playingcard/P
 	var/i
 	var/year = 554 + text2num(time2text(world.timeofday, "YYYY"))

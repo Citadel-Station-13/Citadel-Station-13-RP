@@ -27,8 +27,8 @@
 					"Miss M" = "miss-medical"
 					)
 
-/obj/item/robot_module/robot/medical/surgeon/New()
-	..()
+/obj/item/robot_module/robot/medical/surgeon/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/healthanalyzer(src)
 	src.modules += new /obj/item/reagent_containers/borghypo/surgeon(src)
 	src.modules += new /obj/item/autopsy_scanner(src)
@@ -101,8 +101,8 @@
 					"Miss M" = "miss-medical"
 					)
 
-/obj/item/robot_module/robot/medical/crisis/New()
-	..()
+/obj/item/robot_module/robot/medical/crisis/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/healthanalyzer(src)
 	src.modules += new /obj/item/reagent_scanner/adv(src)
 	src.modules += new /obj/item/roller_holder(src)
@@ -164,7 +164,9 @@
 					"Borgi" = "borgi-medi"
 					)
 
-/obj/item/robot_module/robot/medihound/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/medihound/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/dogborg/jaws/small(src) //In case a patient is being attacked by carp.
 	src.modules += new /obj/item/dogborg/boop_module(src) //Boop the crew.
 	src.modules += new /obj/item/healthanalyzer(src) // See who's hurt specificially.

@@ -18,8 +18,8 @@
 					"Miss M" = "miss-janitor"
 					)
 
-/obj/item/robot_module/robot/janitor/New()
-	..()
+/obj/item/robot_module/robot/janitor/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/soap/nanotrasen(src)
 	src.modules += new /obj/item/storage/bag/trash(src)
 	src.modules += new /obj/item/mop(src)
@@ -78,8 +78,8 @@
 					"Miss M" = "miss-service"
 				  	)
 
-/obj/item/robot_module/robot/clerical/butler/New()
-	..()
+/obj/item/robot_module/robot/clerical/butler/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/gripper/service(src)
 	src.modules += new /obj/item/reagent_containers/glass/bucket(src)
 	src.modules += new /obj/item/material/minihoe(src)
@@ -133,8 +133,8 @@
 					"Miss M" = "miss-service"
 					)
 
-/obj/item/robot_module/robot/clerical/general/New()
-	..()
+/obj/item/robot_module/robot/clerical/general/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/pen/robopen(src)
 	src.modules += new /obj/item/form_printer(src)
 	src.modules += new /obj/item/gripper/paperwork(src)
@@ -161,7 +161,9 @@
 	channels = list("Service" = 1)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/scrubpup/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/scrubpup/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/dogborg/jaws/small(src)
 	src.modules += new /obj/item/dogborg/boop_module(src)
 	src.modules += new /obj/item/pupscrubber(src)
@@ -246,7 +248,9 @@
 	can_be_pushed = 0
 
 // In a nutshell, basicly service/butler robot but in dog form.
-/obj/item/robot_module/robot/clerical/brodog/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/clerical/brodog/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/gripper/service(src)
 	src.modules += new /obj/item/reagent_containers/glass/bucket(src)
 	src.modules += new /obj/item/material/minihoe(src)

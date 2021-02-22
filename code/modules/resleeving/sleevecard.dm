@@ -29,9 +29,9 @@
 	if(istype(rig))
 		rig.forced_move(direction, user)
 
-/obj/item/sleevecard/New()
-	..()
-	overlays += "pai-off"
+/obj/item/sleevecard/Initialize(mapload)
+	. = ..()
+	add_overlay("pai-off")
 	radio = new(src)
 
 /obj/item/sleevecard/Destroy()

@@ -120,10 +120,9 @@
 	desc = "A case containing a backup implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/backup/New()
+/obj/item/implantcase/backup/Initialize(mapload)
 	src.imp = new /obj/item/implant/backup(src)
-	..()
-	return
+	return ..()
 
 //The box of backup implants
 /obj/item/storage/box/backup_kit
@@ -132,11 +131,11 @@
 	icon_state = "implant"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 
-/obj/item/storage/box/backup_kit/New()
-	..()
+/obj/item/storage/box/backup_kit/PopulateContents()
 	for(var/i = 1 to 7)
 		new /obj/item/implantcase/backup(src)
 	new /obj/item/implanter(src)
+
 /* CITADEL CHANGE - Removes this useless shit
 //Purely for fluff
 /obj/item/implant/backup/full

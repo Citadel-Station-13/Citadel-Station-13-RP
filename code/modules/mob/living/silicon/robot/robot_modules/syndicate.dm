@@ -142,8 +142,9 @@
 		"Telemachus" = "toiletbotantag"
 		)
 
-/obj/item/robot_module/robot/syndicate/combat_medic/New(var/mob/living/silicon/robot/R)
-	..()
+/obj/item/robot_module/robot/syndicate/combat_medic/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/borg/sight/hud/med(src)
 	src.modules += new /obj/item/healthanalyzer/advanced(src)
 	src.modules += new /obj/item/reagent_containers/borghypo/merc(src)

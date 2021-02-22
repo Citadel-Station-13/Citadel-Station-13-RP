@@ -190,8 +190,8 @@
 	var/burn_value = 45
 	var/brute_value = 60
 
-/obj/machinery/transhuman/synthprinter/New()
-	..()
+/obj/machinery/transhuman/synthprinter/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
@@ -415,8 +415,8 @@
 
 	var/sleevecards = 2
 
-/obj/machinery/transhuman/resleever/New()
-	..()
+/obj/machinery/transhuman/resleever/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)

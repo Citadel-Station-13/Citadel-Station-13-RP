@@ -21,7 +21,7 @@ fundamental differences
 	. = ..()
 	. += "<span class = 'notice'>It is currently set to make a [selected_option].</span>"
 
-/obj/machinery/appliance/mixer/New()
+/obj/machinery/appliance/mixer/Initialize(mapload, newdir)
 	. = ..()
 	cooking_objs += new /datum/cooking_item(new /obj/item/reagent_containers/cooking_container(src))
 	cooking = 0

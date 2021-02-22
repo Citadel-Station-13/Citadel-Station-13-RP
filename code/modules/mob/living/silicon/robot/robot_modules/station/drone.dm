@@ -6,8 +6,9 @@
 	no_slip = 1
 	networks = list(NETWORK_ENGINEERING)
 
-/obj/item/robot_module/drone/New(var/mob/living/silicon/robot/robot)
-	..()
+/obj/item/robot_module/drone/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/robot = loc
 	src.modules += new /obj/item/borg/sight/meson(src)
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
 	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
@@ -89,8 +90,8 @@
 	channels = list("Engineering" = 1)
 	languages = list()
 
-/obj/item/robot_module/drone/construction/New()
-	..()
+/obj/item/robot_module/drone/construction/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/rcd/electric/mounted/borg/lesser(src)
 
 /obj/item/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)

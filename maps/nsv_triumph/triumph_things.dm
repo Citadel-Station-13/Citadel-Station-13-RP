@@ -160,8 +160,8 @@ var/global/list/latejoin_shuttle   = list()
 	display_name = "Shuttle Bay"
 	msg = "has arrived on the shuttle"
 
-/datum/spawnpoint/shuttle/New()
-	..()
+/datum/spawnpoint/shuttle/Initialize(mapload)
+	. = ..()
 	turfs = latejoin_shuttle
 
 //
@@ -269,8 +269,8 @@ var/global/list/latejoin_shuttle   = list()
 	desc = "Neutralizes toxins and provides a mild analgesic effect."
 	icon_state = "pill2"
 
-/obj/item/reagent_containers/pill/airlock/New()
-	..()
+/obj/item/reagent_containers/pill/airlock/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("anti_toxin", 15)
 	reagents.add_reagent("paracetamol", 5)
 
@@ -289,8 +289,7 @@ var/global/list/latejoin_shuttle   = list()
 	name = "expedition weaponry cabinet"
 	req_one_access = list(access_explorer,access_armory)
 
-/obj/structure/closet/secure_closet/guncabinet/excursion/New()
-	..()
+/obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
 	for(var/i = 1 to 4)
 		new /obj/item/gun/energy/frontier/locked(src)
 	for(var/i = 1 to 4)

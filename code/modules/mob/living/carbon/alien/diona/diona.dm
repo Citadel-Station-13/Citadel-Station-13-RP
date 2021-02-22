@@ -20,9 +20,8 @@
 	holder_type = /obj/item/holder/diona
 	var/obj/item/hat
 
-/mob/living/carbon/alien/diona/New()
-
-	..()
+/mob/living/carbon/alien/diona/Initialize(mapload)
+	. = ..()
 	species = GLOB.all_species[SPECIES_DIONA]
 	add_language(LANGUAGE_ROOTGLOBAL)
 	add_language(LANGUAGE_GALCOM)

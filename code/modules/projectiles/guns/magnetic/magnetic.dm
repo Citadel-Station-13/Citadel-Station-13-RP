@@ -21,12 +21,12 @@
 	var/power_cost = 950                                       // Cost per fire, should consume almost an entire basic cell.
 	var/power_per_tick                                         // Capacitor charge per process(). Updated based on capacitor rating.
 
-/obj/item/gun/magnetic/New()
+/obj/item/gun/magnetic/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	if(capacitor)
 		power_per_tick = (power_cost*0.15) * capacitor.rating
 	update_icon()
-	. = ..()
+	return ..()
 
 /obj/item/gun/magnetic/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -251,7 +251,7 @@
 
 	return new projectile_type(src)
 
-/obj/item/gun/magnetic/fuelrod/New()
+/obj/item/gun/magnetic/fuelrod/Initialize(mapload)
 	cell = new /obj/item/cell/high
 	capacitor = new /obj/item/stock_parts/capacitor
-	. = ..()
+	return ..()

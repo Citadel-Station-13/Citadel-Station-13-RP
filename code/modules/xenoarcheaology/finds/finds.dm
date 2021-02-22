@@ -22,7 +22,8 @@
 	var/datum/geosample/geologic_data
 	origin_tech = list(TECH_MATERIAL = 5)
 
-/obj/item/strangerock/New(loc, var/inside_item_type = 0)
+/obj/item/strangerock/Initialize(mapload, inside_item_type)
+	. = ..()
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
 

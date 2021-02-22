@@ -124,8 +124,8 @@
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
 
-/mob/living/simple_mob/animal/passive/mouse/brown/Tom/New()
-	..()
+/mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize(mapload)
+	. = ..()
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 

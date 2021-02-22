@@ -218,8 +218,8 @@
 	icon = 'icons/obj/survival_pod.dmi'
 	icon_state = "bed"
 
-/obj/structure/bed/pod/New(var/newloc)
-	..(newloc,DEFAULT_WALL_MATERIAL,"cotton")
+/obj/structure/bed/pod/Initialize(mapload)
+	return ..(mapload, DEFAULT_WALL_MATERIAL, "cotton")
 
 //Survival Storage Unit
 /obj/machinery/smartfridge/survival_pod

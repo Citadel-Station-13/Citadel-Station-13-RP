@@ -427,8 +427,8 @@
 	var/client/owner_c = null //They'll be dead when we message them probably.
 	var/state = 0 //0 - New, 1 - Paired, 2 - Breaking, 3 - Broken (same as iconstates)
 
-/obj/item/clothing/accessory/collar/vmcrystal/New()
-	..()
+/obj/item/clothing/accessory/collar/vmcrystal/Initialize(mapload)
+	. = ..()
 	update_state(0)
 
 /obj/item/clothing/accessory/collar/vmcrystal/Destroy() //Waitwaitwait
@@ -520,8 +520,8 @@
 	max_storage_space = ITEMSIZE_COST_SMALL * 2
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/storage/box/vmcrystal/New()
-	..()
+/obj/item/storage/box/vmcrystal/Initialize(mapload)
+	. = ..()
 //	new /obj/item/paper/vmcrystal_manual(src)
 	new /obj/item/clothing/accessory/collar/vmcrystal(src)
 
@@ -977,8 +977,8 @@
 	filling_color = "#FDFFD1"
 	volume = 12
 
-/obj/item/reagent_containers/food/snacks/egg/teshari/New()
-	..()
+/obj/item/reagent_containers/food/snacks/egg/teshari/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("egg", 10)
 	bitesize = 2
 
@@ -1080,8 +1080,8 @@
 	filling_color = "#FDFFD1"
 	volume = 12
 
-/obj/item/reagent_containers/food/snacks/egg/roiz/New()
-	..()
+/obj/item/reagent_containers/food/snacks/egg/roiz/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("egg", 9)
 	bitesize = 2
 
@@ -1110,8 +1110,8 @@
 	icon_state = "friedegg"
 	volume = 12
 
-/obj/item/reagent_containers/food/snacks/friedegg/roiz/New()
-	..()
+/obj/item/reagent_containers/food/snacks/friedegg/roiz/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("protein", 9)
 	bitesize = 2
 
@@ -1122,8 +1122,8 @@
 	icon_state = "egg_roiz"
 	volume = 12
 
-/obj/item/reagent_containers/food/snacks/boiledegg/roiz/New()
-	..()
+/obj/item/reagent_containers/food/snacks/boiledegg/roiz/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("protein", 6)
 	bitesize = 2
 
@@ -1137,8 +1137,8 @@
 	nutriment_desc = list("chocolate" = 5)
 	volume = 18
 
-/obj/item/reagent_containers/food/snacks/chocolateegg/roiz/New()
-	..()
+/obj/item/reagent_containers/food/snacks/chocolateegg/roiz/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("sugar", 6)
 	reagents.add_reagent("coco", 6)
 	reagents.add_reagent("milk", 2)
@@ -1272,8 +1272,8 @@
 	var/list/warned_users = list()
 	var/list/logged_events = list()
 
-/obj/item/perfect_tele/New()
-	..()
+/obj/item/perfect_tele/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 	if(cell_type)
 		power_source = new cell_type(src)
@@ -1552,8 +1552,8 @@
 	var/creator
 	var/warned_users = list()
 
-/obj/item/perfect_tele_beacon/New()
-	..()
+/obj/item/perfect_tele_beacon/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 
 /obj/item/perfect_tele_beacon/Destroy()
@@ -1844,8 +1844,8 @@
 	var/wielded = 0
 	var/base_name = "stunstaff"
 
-/obj/item/melee/baton/fluff/stunstaff/New()
-	..()
+/obj/item/melee/baton/fluff/stunstaff/Initialize(mapload)
+	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
 	return
@@ -1914,8 +1914,8 @@
 	max_w_class = ITEMSIZE_HUGE
 	max_storage_space = 16
 
-/obj/item/storage/backpack/fluff/stunstaff/New()
-	..()
+/obj/item/storage/backpack/fluff/stunstaff/Initialize(mapload)
+	. = ..()
 	new /obj/item/melee/baton/fluff/stunstaff(src)
 
 

@@ -22,8 +22,8 @@
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 
-/obj/item/deck/cards/New()
-	..()
+/obj/item/deck/cards/Initialize(mapload)
+	. = ..()
 	var/datum/playingcard/P
 	for(var/suit in list("spades","clubs","diamonds","hearts"))
 

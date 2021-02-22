@@ -19,7 +19,8 @@
 	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
 	var/obj/item/radio/headset/mmi_radio/radio = null//Let's give it a radio.
 
-/obj/item/mmi/New()
+/obj/item/mmi/Initialize(mapload)
+	. = ..()
 	radio = new(src)//Spawns a radio inside the MMI.
 
 /obj/item/mmi/verb/toggle_radio()
@@ -178,7 +179,8 @@
 	mecha = null//This does not appear to be used outside of reference in mecha.dm.
 	var/ghost_query_type = null
 
-/obj/item/mmi/digital/New()
+/obj/item/mmi/digital/Initialize(mapload)
+	. = ..()
 	src.brainmob = new(src)
 //	src.brainmob.add_language("Robot Talk")//No binary without a binary communication device
 	src.brainmob.add_language(LANGUAGE_GALCOM)
@@ -291,8 +293,8 @@
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/drone_brain
 
-/obj/item/mmi/digital/robot/New()
-	..()
+/obj/item/mmi/digital/robot/Initialize(mapload)
+	. = ..()
 	src.brainmob.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
 	src.brainmob.real_name = src.brainmob.name
 
@@ -334,8 +336,8 @@
 	..()
 	icon_state = "posibrain"
 
-/obj/item/mmi/digital/posibrain/New()
-	..()
+/obj/item/mmi/digital/posibrain/Initialize(mapload)
+	. = ..()
 	src.brainmob.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
 	src.brainmob.real_name = src.brainmob.name
 

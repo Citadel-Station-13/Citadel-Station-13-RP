@@ -6,10 +6,14 @@
 
 	var/obj/item/electronic_assembly/device/EA
 
-/obj/item/assembly/electronic_assembly/New()
+/obj/item/assembly/electronic_assembly/Initialize(mapload)
+	. = ..()
 	EA = new(src)
 	EA.holder = src
-	..()
+
+/obj/item/assembly/electronic_assembly/Destroy()
+	QDEL_NULL(EA)
+	return ..()
 
 /obj/item/assembly/electronic_assembly/attackby(obj/item/I as obj, mob/user as mob)
 	if (I.is_crowbar())

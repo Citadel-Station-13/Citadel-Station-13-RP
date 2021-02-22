@@ -113,12 +113,15 @@ var/sc_safecode5 = "[rand(0,9)]"
 /obj/item/paper/sc_safehint_paper_prison
 	name = "smudged paper"
 
-/obj/item/paper/sc_safehint_paper_prison/New()
+/obj/item/paper/sc_safehint_paper_prison/Initialize(mapload)
+	. = ..()
 	info = "<i>The ink is smudged, you can only make out a couple numbers:</i> '[sc_safecode1]**[sc_safecode4]*'"
 
 /obj/item/paper/sc_safehint_paper_hydro
 	name = "shredded paper"
-/obj/item/paper/sc_safehint_paper_hydro/New()
+
+/obj/item/paper/sc_safehint_paper_hydro/Initialize(mapload)
+	. = ..()
 	info = "<i>Although the paper is shredded, you can clearly see the number:</i> '[sc_safecode2]'"
 
 /obj/item/paper/sc_safehint_paper_caf
@@ -128,7 +131,9 @@ var/sc_safecode5 = "[rand(0,9)]"
 
 /obj/item/paper/sc_safehint_paper_bible
 	name = "hidden paper"
-/obj/item/paper/sc_safehint_paper_bible/New()
+
+/obj/item/paper/sc_safehint_paper_bible/Initialize(mapload)
+	. = ..()
 	info = {"<i>It would appear that the pen hidden with the paper had leaked ink over the paper.
 			However you can make out the last three digits:</i>'[sc_safecode3][sc_safecode4][sc_safecode5]'
 			"}
@@ -152,8 +157,8 @@ var/sc_safecode5 = "[rand(0,9)]"
 /obj/item/storage/secure/safe/sc_ssafe
 	name = "Captain's secure safe"
 
-/obj/item/storage/secure/safe/sc_ssafe/New()
-	..()
+/obj/item/storage/secure/safe/sc_ssafe/Initialize(mapload)
+	. = ..()
 	l_code = "[sc_safecode1][sc_safecode2][sc_safecode3][sc_safecode4][sc_safecode5]"
 	l_set = 1
 	new /obj/item/gun/energy/mindflayer(src)
