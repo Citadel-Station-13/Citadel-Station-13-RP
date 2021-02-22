@@ -381,44 +381,44 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		return
 
-/obj/item/pda/multicaster/command/New()
-	..()
+/obj/item/pda/multicaster/command/Initialize(mapload)
+	. = ..()
 	owner = "Command Department"
 	name = "Command Department (Relay)"
 	cartridges_to_send_to = command_cartridges
 
-/obj/item/pda/multicaster/security/New()
-	..()
+/obj/item/pda/multicaster/security/Initialize(mapload)
+	. = ..()
 	owner = "Security Department"
 	name = "Security Department (Relay)"
 	cartridges_to_send_to = security_cartridges
 
-/obj/item/pda/multicaster/engineering/New()
-	..()
+/obj/item/pda/multicaster/engineering/Initialize(mapload)
+	. = ..()
 	owner = "Engineering Department"
 	name = "Engineering Department (Relay)"
 	cartridges_to_send_to = engineering_cartridges
 
-/obj/item/pda/multicaster/medical/New()
-	..()
+/obj/item/pda/multicaster/medical/Initialize(mapload)
+	. = ..()
 	owner = "Medical Department"
 	name = "Medical Department (Relay)"
 	cartridges_to_send_to = medical_cartridges
 
-/obj/item/pda/multicaster/research/New()
-	..()
+/obj/item/pda/multicaster/research/Initialize(mapload)
+	. = ..()
 	owner = "Research Department"
 	name = "Research Department (Relay)"
 	cartridges_to_send_to = research_cartridges
 
-/obj/item/pda/multicaster/cargo/New()
-	..()
+/obj/item/pda/multicaster/cargo/Initialize(mapload)
+	. = ..()
 	owner = "Cargo Department"
 	name = "Cargo Department (Relay)"
 	cartridges_to_send_to = cargo_cartridges
 
-/obj/item/pda/multicaster/civilian/New()
-	..()
+/obj/item/pda/multicaster/civilian/Initialize(mapload)
+	. = ..()
 	owner = "Civilian Services Department"
 	name = "Civilian Services Department (Relay)"
 	cartridges_to_send_to = civilian_cartridges

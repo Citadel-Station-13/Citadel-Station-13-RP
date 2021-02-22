@@ -14,6 +14,7 @@
 
 /obj/screen/movable/ability_master/Initialize(mapload)
 	. = ..()
+	var/mob/owner = ismob(loc) && loc
 	if(owner)
 		my_mob = owner
 		update_abilities(0, owner)

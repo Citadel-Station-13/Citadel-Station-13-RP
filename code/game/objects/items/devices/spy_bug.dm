@@ -139,18 +139,13 @@
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 
 	var/operating = 0
-//	var/obj/item/radio/bug/radio
 	var/obj/machinery/camera/bug/selected_camera
 	var/list/obj/machinery/camera/bug/cameras = new()
-/*
-/obj/item/bug_monitor/New()
-	radio = new(src)
-*/
+
 /obj/item/bug_monitor/attack_self(mob/user)
 	if(operating)
 		return
 
-//	radio.attack_self(user)
 	view_cameras(user)
 
 /obj/item/bug_monitor/attackby(obj/item/W as obj, mob/living/user as mob)
@@ -229,8 +224,8 @@
 /obj/machinery/camera/bug
 	network = list(NETWORK_SECURITY)
 
-/obj/machinery/camera/bug/New()
-	..()
+/obj/machinery/camera/bug/Initialize(mapload)
+	. = ..()
 	name = "Camera #[rand(1000,9999)]"
 	c_tag = name
 
@@ -238,8 +233,8 @@
 	// These cheap toys are accessible from the mercenary camera console as well - only the antag ones though!
 	network = list(NETWORK_MERCENARY)
 
-/obj/machinery/camera/bug/spy/New()
-	..()
+/obj/machinery/camera/bug/spy/Initialize(mapload)
+	. = ..()
 	name = "DV-136ZB #[rand(1000,9999)]"
 	c_tag = name
 

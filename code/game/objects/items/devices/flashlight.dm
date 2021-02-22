@@ -332,9 +332,9 @@
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
 
-/obj/item/flashlight/flare/New()
+/obj/item/flashlight/flare/Initialize(mapload)
+	. = ..()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
-	..()
 
 /obj/item/flashlight/flare/process(delta_time)
 	var/turf/pos = get_turf(src)

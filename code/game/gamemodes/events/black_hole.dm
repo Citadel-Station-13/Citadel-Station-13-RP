@@ -10,7 +10,7 @@
 	var/process_step = 0
 
 /obj/effect/bhole/Initialize(mapload)
-	= ...()
+	. = ..()
 	START_PROCESSING(SSfastprocess, src)
 
 /obj/effect/bhole/process()

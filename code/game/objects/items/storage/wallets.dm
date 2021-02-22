@@ -82,8 +82,8 @@
 	else
 		return ..()
 
-/obj/item/storage/wallet/random/New()
-	..()
+/obj/item/storage/wallet/random/Initialize(mapload)
+	. = ..()
 	var/amount = rand(50, 100) + rand(50, 100) // Triangular distribution from 100 to 200
 	var/obj/item/spacecash/SC = null
 	SC = new(src)

@@ -28,10 +28,10 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/advscan = 0
 	var/showadvscan = 1
 
-/obj/item/healthanalyzer/New()
+/obj/item/healthanalyzer/Initialize(mapload)
+	. = ..()
 	if(advscan >= 1)
 		verbs += /obj/item/healthanalyzer/proc/toggle_adv
-	..()
 
 /obj/item/healthanalyzer/do_surgery(mob/living/M, mob/living/user)
 	if(user.a_intent != INTENT_HELP) //in case it is ever used as a surgery tool

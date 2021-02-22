@@ -65,9 +65,9 @@
 	var/obj/item/robot_parts/head/head = null
 	var/created_name = ""
 
-/obj/item/robot_parts/robot_suit/New()
-	..()
-	src.updateicon()
+/obj/item/robot_parts/robot_suit/Initialize(mapload)
+	. = ..()
+	updateicon()
 
 /obj/item/robot_parts/robot_suit/proc/updateicon()
 	src.overlays.Cut()
