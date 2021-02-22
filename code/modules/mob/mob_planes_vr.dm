@@ -14,9 +14,11 @@
 	var/state = FALSE //Saves cost with the lists
 	var/mob/my_mob
 
-/obj/screen/plane_master/augmented/New(var/mob/M)
-	..()
-	my_mob = M
+/obj/screen/plane_master/augmented/Initialize(mapload)
+	. = ..()
+	if(!ismob(loc))
+		CRASH("No mob")
+	my_mob = loc
 
 /obj/screen/plane_master/augmented/Destroy()
 	my_mob = null

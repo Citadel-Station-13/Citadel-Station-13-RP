@@ -187,8 +187,8 @@
 		"mhydrogen" = 40,
 		"verdantium" = 60)
 
-/obj/machinery/mineral/processing_unit/New()
-	..()
+/obj/machinery/mineral/processing_unit/Initialize(mapload)
+	. = ..()
 	// initialize static alloy_data list
 	if(!alloy_data)
 		alloy_data = list()

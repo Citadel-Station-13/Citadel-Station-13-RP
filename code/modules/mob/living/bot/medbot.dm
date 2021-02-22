@@ -394,11 +394,14 @@
 	var/skin = null //Same as medbot, set to tox or ointment for the respective kits.
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/firstaid_arm_assembly/New()
-	..()
-	spawn(5) // Terrible. TODO: fix
-		if(skin)
-			overlays += image('icons/obj/aibots.dmi', "kit_skin_[src.skin]")
+/obj/item/firstaid_arm_assembly/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_QDEL
+
+/obj/item/fireaid_arm_assembly/LateInitialize()
+	. = ..()
+	if(skin)
+		overlays += image('icons/obj/aibots.dmi', "kit_skin_[src.skin]")
 
 /obj/item/firstaid_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
