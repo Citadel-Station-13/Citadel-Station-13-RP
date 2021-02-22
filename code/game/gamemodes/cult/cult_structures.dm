@@ -153,8 +153,11 @@
 /obj/effect/gateway/active/cult/cultify()
 	return
 
-/obj/effect/gateway/active/New()
-	spawn(rand(30,60) SECONDS)
-		var/t = pick(spawnable)
-		new t(src.loc)
-		qdel(src)
+/obj/effect/gateway/active/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/spawn_things), rand(30, 60) SECONDS)
+
+/obj/effect/gateway/active/proc/spawn_things()
+	var/t = pick(spawnable)
+	new t(drop_location())
+	qdel(src)

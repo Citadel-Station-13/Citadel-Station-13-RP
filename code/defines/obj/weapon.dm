@@ -42,10 +42,7 @@
 
 /obj/item/soap/deluxe
 	icon_state = "soapdeluxe"
-
-/obj/item/soap/deluxe/New()
 	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
-	..()
 
 /obj/item/soap/syndie
 	desc = "An untrustworthy bar of soap. Smells of fear."
@@ -94,8 +91,8 @@
 /obj/item/cane/concealed
 	var/concealed_blade
 
-/obj/item/cane/concealed/New()
-	..()
+/obj/item/cane/concealed/Initialize(mapload)
+	. = ..()
 	var/obj/item/material/butterfly/switchblade/temp_blade = new(src)
 	concealed_blade = temp_blade
 	temp_blade.attack_self()

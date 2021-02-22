@@ -107,10 +107,9 @@
 	// Multiply this and the hits var to get a rough idea of how penetrating a meteor is.
 	var/wall_power = 100
 
-/obj/effect/meteor/New()
-	..()
+/obj/effect/meteor/Initialize(mapload)
+	. = ..()
 	z_original = z
-
 
 /obj/effect/meteor/Move()
 	if(z != z_original || loc == dest)
@@ -132,8 +131,8 @@
 	walk(src,0) //this cancels the walk_towards() proc
 	return ..()
 
-/obj/effect/meteor/New()
-	..()
+/obj/effect/meteor/Initialize(mapload)
+	. = ..()
 	SpinAnimation()
 
 /obj/effect/meteor/Bump(atom/A)

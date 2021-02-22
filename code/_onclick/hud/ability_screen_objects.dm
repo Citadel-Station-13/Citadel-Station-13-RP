@@ -12,7 +12,8 @@
 
 	var/mob/my_mob = null // The mob that possesses this hud object.
 
-/obj/screen/movable/ability_master/New(owner)
+/obj/screen/movable/ability_master/Initialize(mapload)
+	. = ..()
 	if(owner)
 		my_mob = owner
 		update_abilities(0, owner)

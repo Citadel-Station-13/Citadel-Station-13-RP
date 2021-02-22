@@ -40,11 +40,11 @@ var/global/list/narsie_list = list()
 	var/announce=1
 	var/cause_hell = 1
 
-/obj/singularity/narsie/large/New()
-	..()
+/obj/singularity/narsie/large/Initialize(mapload)
+	. = ..()
 	if(announce)
 		to_chat(world, "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
-		world << sound('sound/effects/weather/wind/wind_5_1.ogg')
+		SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
 	narsie_spawn_animation()
 

@@ -75,9 +75,8 @@
 	if(printing)
 		overlays += "bioprinter_working"
 
-/obj/machinery/organ_printer/New()
-	..()
-
+/obj/machinery/organ_printer/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/manipulator(src)
 	component_parts += new /obj/item/stock_parts/manipulator(src)

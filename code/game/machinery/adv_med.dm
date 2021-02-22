@@ -15,8 +15,8 @@
 	light_color = "#00FF00"
 	var/obj/machinery/body_scanconsole/console
 
-/obj/machinery/bodyscanner/New()
-	..()
+/obj/machinery/bodyscanner/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
@@ -180,8 +180,12 @@
 	var/printing = null
 	var/printing_text = null
 
-/obj/machinery/body_scanconsole/New()
-	..()
+/obj/machinery/body_scanconsole/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/body_scanconsole/LateInitialize()
+	. = ..()
 	findscanner()
 
 /obj/machinery/body_scanconsole/Destroy()
