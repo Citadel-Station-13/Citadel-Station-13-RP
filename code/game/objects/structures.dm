@@ -46,8 +46,8 @@
 		if(3.0)
 			return
 
-/obj/structure/New()
-	..()
+/obj/structure/Initialize(mapload)
+	. = ..()
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
 

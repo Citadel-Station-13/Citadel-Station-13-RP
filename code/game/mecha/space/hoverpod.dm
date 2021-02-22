@@ -26,8 +26,8 @@
 	max_universal_equip = 1
 	max_special_equip = 1
 
-/obj/mecha/working/hoverpod/New()
-	..()
+/obj/mecha/working/hoverpod/Initialize(mapload)
+	. = ..()
 	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
 	ion_trail.start()

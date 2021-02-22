@@ -17,10 +17,9 @@
 	step_energy_drain = 6
 	var/obj/item/clothing/glasses/hud/health/mech/hud
 
-/obj/mecha/medical/odysseus/New()
-	..()
+/obj/mecha/medical/odysseus/Initialize(mapload)
+	. = ..()
 	hud = new /obj/item/clothing/glasses/hud/health/mech(src)
-	return
 
 /obj/mecha/medical/odysseus/moved_inside(var/mob/living/carbon/human/H as mob)
 	if(..())

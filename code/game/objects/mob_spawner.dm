@@ -25,8 +25,8 @@
 
 	var/list/spawned_mobs = list()
 
-/obj/structure/mob_spawner/New()
-	..()
+/obj/structure/mob_spawner/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	last_spawn = world.time + rand(0,spawn_delay)
 

@@ -46,11 +46,9 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/explosion/New()
-	..()
-	spawn (10)
-		qdel(src)
-	return
+/obj/effect/explosion/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 1 SECONDS)
 
 /datum/effect/system/explosion
 	var/turf/location
