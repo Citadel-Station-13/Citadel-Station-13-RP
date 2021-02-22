@@ -125,9 +125,11 @@ Barricades
 	var/locked = 0.0
 //	req_access = list(access_maint_tunnels)
 
-/obj/machinery/deployable/barrier/New()
-	..()
+/obj/machinery/deployable/barrier/Initialize(mapload, newdir)
+	. = ..()
+	update_icon()
 
+/obj/machinery/deployable/barrier/update_icon_state()
 	icon_state = "barrier[locked]"
 
 /obj/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)

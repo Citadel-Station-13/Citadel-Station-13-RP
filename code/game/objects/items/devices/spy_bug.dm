@@ -17,9 +17,8 @@
 	var/obj/machinery/camera/bug/camera
 	var/camtype = /obj/machinery/camera/bug
 
-/obj/item/camerabug/New()
-	..()
-//	radio = new(src)
+/obj/item/camerabug/Initialize(mapload)
+	. = ..()
 	camera = new camtype(src)
 
 /obj/item/camerabug/attack_self(mob/user)

@@ -19,8 +19,8 @@
 
 	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide, /datum/gas/volatile_fuel, /datum/gas/phoron, /datum/gas/nitrous_oxide)
 
-/obj/machinery/portable_atmospherics/powered/scrubber/New()
-	..()
+/obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
+	. = ..()
 	for(var/i in scrubbing_gas)
 		if(!ispath(i))
 			scrubbing_gas -= i
@@ -42,21 +42,19 @@
 
 	..(severity)
 
-/obj/machinery/portable_atmospherics/powered/scrubber/update_icon()
-	src.overlays = 0
-
+/obj/machinery/portable_atmospherics/powered/scrubber/update_icon_state()
 	if(on && cell && cell.charge)
 		icon_state = "pscrubber:1"
 	else
 		icon_state = "pscrubber:0"
 
+/obj/machinery/portable_atmospherics/powered/scrubber/update_overlays()
+	. = list()
 	if(holding)
-		overlays += "scrubber-open"
+		. += "scrubber-open"
 
 	if(connected_port)
-		overlays += "scrubber-connector"
-
-	return
+		. += "scrubber-connector"
 
 /obj/machinery/portable_atmospherics/powered/scrubber/process(delta_time)
 	..()
@@ -166,8 +164,8 @@
 	var/global/gid = 1
 	var/id = 0
 
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/New()
-	..()
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/Initialize(mapload)
+	. = ..()
 	cell = null
 
 	id = gid

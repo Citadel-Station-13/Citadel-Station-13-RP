@@ -10,9 +10,9 @@
 	var/wax = 2000
 	var/icon_type = "candle"
 
-/obj/item/flame/candle/New()
+/obj/item/flame/candle/Initialize(mapload)
+	. = ..()
 	wax -= rand(800, 1000) // Enough for 27-33 minutes. 30 minutes on average.
-	..()
 
 /obj/item/flame/candle/update_icon()
 	var/i
@@ -22,7 +22,6 @@
 		i = 2
 	else i = 3
 	icon_state = "[icon_type][i][lit ? "_lit" : ""]"
-
 
 /obj/item/flame/candle/attackby(obj/item/W as obj, mob/user as mob)
 	..()

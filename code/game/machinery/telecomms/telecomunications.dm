@@ -110,9 +110,9 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 		return 0
 
 
-/obj/machinery/telecomms/New()
+/obj/machinery/telecomms/Initialize(mapload)
+	. = ..()
 	telecomms_list += src
-	..()
 
 	//Set the listening_level if there's none.
 	if(!listening_level)
@@ -575,8 +575,8 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	var/language = "human"
 	var/obj/item/radio/headset/server_radio = null
 
-/obj/machinery/telecomms/server/New()
-	..()
+/obj/machinery/telecomms/server/Initialize(mapload)
+	. = ..()
 	server_radio = new()
 
 /obj/machinery/telecomms/server/Initialize(mapload)

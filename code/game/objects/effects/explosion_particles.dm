@@ -6,15 +6,9 @@
 	anchored = 1
 	mouse_opacity = 0
 
-/obj/effect/expl_particles/New()
-	..()
-	spawn (15)
-		qdel(src)
-	return
-
-/obj/effect/expl_particles/Move()
-	..()
-	return
+/obj/effect/expl_particles/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 15)
 
 /datum/effect/system/expl_particles
 	var/number = 10

@@ -100,13 +100,12 @@
 	desc = "You can recolor it! Fancy! The future is NOW!"
 	icon_state = "wallet-white"
 
-/obj/item/storage/wallet/poly/New()
-	..()
-	verbs |= /obj/item/storage/wallet/poly/proc/change_color
-	color = "#"+get_random_colour()
+/obj/item/storage/wallet/poly/Initialize(mapload)
+	. = ..()
+	add_atom_colour("#"+get_random_colour(), FIXED_COLOUR_PRIORITY)
 	update_icon()
 
-/obj/item/storage/wallet/poly/proc/change_color()
+/obj/item/storage/wallet/poly/verb/change_color()
 	set name = "Change Wallet Color"
 	set category = "Object"
 	set desc = "Change the color of the wallet."
@@ -117,8 +116,8 @@
 
 	var/new_color = input(usr, "Pick a new color", "Wallet Color", color) as color|null
 
-	if(new_color && (new_color != color))
-		color = new_color
+	if(new_color)
+		add_atom_colour(new_color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/storage/wallet/poly/emp_act()
 	var/original_state = icon_state

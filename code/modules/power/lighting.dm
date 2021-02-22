@@ -31,7 +31,7 @@ var/global/list/light_type_cache = list()
 	var/sheets_refunded = 2
 
 /obj/machinery/light_construct/Initialize(mapload, newdir, building = FALSE, datum/frame/frame_types/frame_type, obj/machinery/light/fixture)
-	. = ..(newloc, newdir)
+	. = ..(mapload, newdir)
 	if(fixture)
 		fixture_type = fixture.type
 		fixture.transfer_fingerprints_to(src)
@@ -251,7 +251,7 @@ var/global/list/light_type_cache = list()
 
 // create a new lighting fixture
 /obj/machinery/light/Initialize(mapload, obj/machinery/light_construct/construct)
-	. = ..(newloc)
+	. = ..(mapload)
 
 	if(construct)
 		status = LIGHT_EMPTY

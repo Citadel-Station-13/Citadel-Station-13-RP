@@ -174,19 +174,22 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	name = "Security Newscaster"
 	securityCaster = 1
 
-/obj/machinery/newscaster/New()         //Constructor, ho~
+/obj/machinery/newscaster/Initialize(mapload, newdir)
+	. = ..()
 	allCasters += src
 	paper_remaining = 15            // Will probably change this to something better
 	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
 		unit_no++
 	update_icon() //for any custom ones on the map...
-	spawn(10) //Should be enough time for the node to spawn at tcomms.
-		node = get_exonet_node()
-	..()                                //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/newscaster/LateInitialize()
+	. = ..()
+	node = get_exonet_node()
 
 /obj/machinery/newscaster/Destroy()
 	allCasters -= src
-	..()
+	return ..()
 
 /obj/machinery/newscaster/update_icon()
 	if(!ispowered || isbroken)

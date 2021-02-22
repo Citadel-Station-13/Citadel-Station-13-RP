@@ -24,10 +24,9 @@
 	var/hitcost = 240
 	var/use_external_power = FALSE //only used to determine if it's a cyborg baton
 
-/obj/item/melee/baton/New()
-	..()
+/obj/item/melee/baton/Initialize(mapload)
+	. = ..()
 	update_icon()
-	return
 
 /obj/item/melee/baton/get_cell()
 	return bcell

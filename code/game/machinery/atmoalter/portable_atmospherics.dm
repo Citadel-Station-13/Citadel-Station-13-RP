@@ -13,13 +13,10 @@
 	var/start_pressure = ONE_ATMOSPHERE
 	var/maximum_pressure = 90 * ONE_ATMOSPHERE
 
-/obj/machinery/portable_atmospherics/New()
-	..()
-
+/obj/machinery/portable_atmospherics/Initialize(mapload)
+	. = ..()
 	air_contents.volume = volume
 	air_contents.temperature = T20C
-
-	return 1
 
 /obj/machinery/portable_atmospherics/Destroy()
 	QDEL_NULL(air_contents)

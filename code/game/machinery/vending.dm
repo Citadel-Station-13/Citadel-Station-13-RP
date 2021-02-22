@@ -1196,28 +1196,28 @@
 
 //Port of _vr file
 //Tweaked existing vendors
-/obj/machinery/vending/hydroseeds/New()
+/obj/machinery/vending/hydroseeds/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/seeds/shrinkshroom = 3,/obj/item/seeds/megashroom = 3)
-	..()
 
-/obj/machinery/vending/security/New()
+/obj/machinery/vending/security/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/gun/energy/taser = 8,/obj/item/gun/energy/stunrevolver = 4,
 					/obj/item/reagent_containers/spray/pepper = 6,/obj/item/barrier_tape_roll/police = 6,
 					/obj/item/clothing/glasses/omnihud/sec = 6)
-	..()
 
-/obj/machinery/vending/tool/New()
+/obj/machinery/vending/tool/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/reagent_containers/spray/windowsealant = 5)
-	..()
 
-/obj/machinery/vending/engivend/New()
+/obj/machinery/vending/engivend/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/clothing/glasses/omnihud/eng = 6)
-	..()
 
-/obj/machinery/vending/medical/New()
+/obj/machinery/vending/medical/Initialize(mapload)
+	. = ..()
 	products += list(/obj/item/storage/box/vmcrystal = 4,/obj/item/backup_implanter = 3,
 					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4)
-	..()
 
 //Custom vendors
 /obj/machinery/vending/dinnerware

@@ -392,9 +392,9 @@
 	var/fuel = 0
 	power_use = 0
 
-/obj/item/flashlight/glowstick/New()
+/obj/item/flashlight/glowstick/Initialize(mapload)
+	. = ..()
 	fuel = rand(1600, 2000)
-	..()
 
 /obj/item/flashlight/glowstick/process(delta_time)
 	fuel = max(fuel - 1, 0)

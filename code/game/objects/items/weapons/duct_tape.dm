@@ -146,15 +146,15 @@
 
 	var/obj/item/stuck = null
 
-/obj/item/duct_tape_piece/New()
-	..()
+/obj/item/duct_tape_piece/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 
 /obj/item/duct_tape_piece/examine(mob/user)
 	if(stuck)
 		return stuck.examine(user)
 	else
-		..()
+		return ..()
 
 /obj/item/duct_tape_piece/proc/attach(var/obj/item/W)
 	stuck = W

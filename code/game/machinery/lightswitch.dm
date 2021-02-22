@@ -15,19 +15,22 @@
 	var/otherarea = null
 	var/image/overlay
 
-/obj/machinery/light_switch/New()
-	..()
-	spawn(5)
-		area = get_area(src)
+/obj/machinery/light_switch/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
-		if(otherarea)
-			area = locate(text2path("/area/[otherarea]"))
+/obj/machinery/light_switch/LateInitialize()
+	. = ..()
+	area = get_area(src)
 
-		if(!name)
-			name = "light switch ([area.name])"
+	if(otherarea)
+		area = locate(text2path("/area/[otherarea]"))
 
-		on = area.lightswitch
-		updateicon()
+	if(!name)
+		name = "light switch ([area.name])"
+
+	on = area.lightswitch
+	updateicon()
 
 /obj/machinery/light_switch/proc/updateicon()
 	if(!overlay)
