@@ -1,5 +1,10 @@
 /datum/power/shadekin
 
+/mob/living/carbon/human/is_incorporeal()
+	if(ability_flags & AB_PHASE_SHIFTED) //Shadekin
+		return TRUE
+	return ..()
+
 /////////////////////
 ///  PHASE SHIFT  ///
 /////////////////////
