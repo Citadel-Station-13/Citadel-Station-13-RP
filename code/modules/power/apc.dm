@@ -779,7 +779,6 @@
 /obj/machinery/power/apc/ui_data(mob/user)
 	var/list/data = list(
 		"locked" = locked,
-		"normallyLocked" = locked,
 		"emagged" = emagged,
 		"isOperating" = operating,
 		"externalPower" = main_status,
