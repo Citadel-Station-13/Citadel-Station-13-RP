@@ -376,7 +376,7 @@
 /area/penumbra/perimeter/inner)
 "avQ" = (
 /obj/structure/filingcabinet/chestdrawer,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "awf" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -399,8 +399,8 @@
 /turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "ayo" = (
-/obj/structure/closet/secure_closet/security,
-/turf/simulated/floor/tiled/steel,
+/obj/machinery/autolathe,
+/turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "ayM" = (
 /obj/effect/zone_divider,
@@ -480,7 +480,7 @@
 /area/penumbra)
 "aDO" = (
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 9
+	dir = 1
 	},
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/dark,
@@ -512,10 +512,7 @@
 /turf/simulated/floor,
 /area/penumbra)
 "aGd" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/machinery/mech_recharger,
+/obj/machinery/door/airlock/security,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "aHa" = (
@@ -668,11 +665,14 @@
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/inner)
 "aSk" = (
-/obj/structure/closet/bombclosetsecurity,
+/obj/structure/closet/l3closet/security,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "aSH" = (
 /obj/machinery/flasher/portable,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "aSU" = (
@@ -802,11 +802,8 @@
 /turf/simulated/floor/plating,
 /area/penumbra/perimeter/inner)
 "aYi" = (
-/obj/machinery/flasher/portable,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/structure/closet/secure_closet/security,
+/turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "aYn" = (
 /obj/effect/zone_divider,
@@ -1086,7 +1083,7 @@
 "bmj" = (
 /obj/structure/table/bench,
 /obj/structure/window/reinforced{
-	dir = 4
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
@@ -1262,11 +1259,11 @@
 /turf/simulated/floor/reinforced,
 /area/penumbra/perimeter/inner)
 "btv" = (
-/obj/structure/table/bench,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
 	},
-/turf/simulated/floor/tiled/steel,
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "btL" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -1402,9 +1399,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/penumbra)
 "bAU" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
+/obj/effect/floor_decal/borderfloorblack/corner,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "bBc" = (
@@ -1469,9 +1464,9 @@
 /turf/simulated/floor/tiled/white,
 /area/penumbra)
 "bFh" = (
-/obj/effect/floor_decal/borderfloorblack/corner,
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 8
+/obj/machinery/flasher/portable,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
@@ -1553,8 +1548,9 @@
 /turf/simulated/floor/wood,
 /area/penumbra)
 "bJh" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 8
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
@@ -1619,7 +1615,7 @@
 "bMw" = (
 /obj/machinery/flasher/portable,
 /obj/effect/floor_decal/borderfloorblack{
-	dir = 1
+	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
@@ -1636,11 +1632,11 @@
 /turf/simulated/floor/reinforced,
 /area/penumbra/perimeter/inner)
 "bPb" = (
-/obj/machinery/flasher/portable,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 5
+/obj/structure/table/bench,
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "bPk" = (
 /obj/structure/undies_wardrobe,
@@ -1747,11 +1743,6 @@
 /obj/machinery/camera/network/research,
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/inner)
-"bWy" = (
-/obj/effect/zone_divider,
-/obj/structure/table/steel,
-/turf/simulated/floor/tiled/dark,
-/area/penumbra/perimeter/inner)
 "bWJ" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -1759,7 +1750,7 @@
 /turf/simulated/floor/reinforced/phoron,
 /area/penumbra)
 "bWN" = (
-/obj/machinery/autolathe,
+/obj/structure/closet/bombclosetsecurity,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "bYe" = (
@@ -1826,7 +1817,7 @@
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/penumbra/perimeter/inner)
 "caX" = (
-/obj/machinery/door/airlock/security,
+/obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "cbg" = (
@@ -1950,7 +1941,7 @@
 /turf/simulated/floor/wood,
 /area/penumbra)
 "chL" = (
-/obj/structure/closet/l3closet/security,
+/obj/machinery/flasher/portable,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "cig" = (
@@ -2012,18 +2003,25 @@
 /turf/simulated/floor/reinforced,
 /area/penumbra/perimeter/inner)
 "ckK" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
+/obj/effect/zone_divider,
+/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "ckQ" = (
-/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "cla" = (
-/obj/structure/table/rack/shelf/steel,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "armoryred";
+	name = "Armory Access"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "clh" = (
@@ -2134,7 +2132,7 @@
 /area/penumbra)
 "csa" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/door/window/northleft,
+/obj/machinery/door/window/northright,
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "csP" = (
@@ -2209,7 +2207,9 @@
 /area/engineering/engine_eva)
 "cyS" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/med_data/laptop,
+/obj/machinery/computer/med_data/laptop{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
 "czF" = (
@@ -2271,7 +2271,9 @@
 /area/penumbra)
 "cCQ" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/door/window/northright,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "cCV" = (
@@ -2399,7 +2401,7 @@
 /area/penumbra/perimeter/inner)
 "cNZ" = (
 /obj/effect/wingrille_spawn/reinforced/polarized{
-	id = "cmooffice"
+	id = "cmo_office"
 	},
 /turf/simulated/floor,
 /area/crew_quarters/heads/cmo)
@@ -2417,10 +2419,7 @@
 /turf/simulated/floor/reinforced,
 /area/penumbra/station/engineering/engine)
 "cOA" = (
-/obj/structure/table/steel_reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/machinery/door/window/northright,
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "cOL" = (
@@ -2634,16 +2633,14 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
 /turf/simulated/floor/reinforced,
 /area/penumbra/station/engineering/engine)
-"cXE" = (
+"cYb" = (
+/obj/effect/zone_divider,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
-/area/penumbra/perimeter/inner)
-"cYb" = (
-/obj/effect/zone_divider,
-/obj/structure/table/steel,
-/obj/item/storage/box/flashbangs,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "cYd" = (
@@ -2712,12 +2709,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/penumbra)
 "dbp" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "dbG" = (
@@ -2732,7 +2724,9 @@
 /turf/simulated/floor/tiled/white,
 /area/penumbra)
 "dcj" = (
-/obj/structure/table/steel,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "dcs" = (
@@ -2883,7 +2877,7 @@
 /obj/item/book/manual/legal/sop_vol3,
 /obj/item/book/manual/legal/sop_vol4,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "die" = (
 /obj/structure/flora/ausbushes/ywflowers,
@@ -2916,7 +2910,8 @@
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
 "dko" = (
-/obj/machinery/door/window/northright,
+/obj/structure/table/steel_reinforced,
+/obj/machinery/door/window/northleft,
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "dlb" = (
@@ -2932,10 +2927,8 @@
 /turf/simulated/floor/carpet,
 /area/penumbra)
 "dms" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "armoryred";
-	name = "Armory Access"
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
@@ -2965,8 +2958,11 @@
 /area/penumbra)
 "dnI" = (
 /obj/effect/zone_divider,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
@@ -3069,8 +3065,9 @@
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
 "dtF" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/turf/simulated/floor/tiled/steel,
+/obj/structure/table/steel,
+/obj/item/storage/box/flashbangs,
+/turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "duD" = (
 /obj/structure/table/woodentable,
@@ -3188,6 +3185,20 @@
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
+"dEW" = (
+/obj/structure/table/reinforced,
+/obj/item/folder{
+	pixel_x = -4
+	},
+/obj/item/folder/blue{
+	pixel_x = 5
+	},
+/obj/item/folder/red{
+	pixel_y = 3
+	},
+/obj/item/folder/yellow,
+/turf/simulated/floor/tiled/dark,
+/area/penumbra/perimeter/inner)
 "dFk" = (
 /obj/structure/table/woodentable,
 /obj/machinery/computer/med_data/laptop,
@@ -3201,19 +3212,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "dFD" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-/obj/item/clothing/suit/armor/pcarrier/medium/nt,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/structure/closet/secure_closet/guncabinet,
+/turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "dGh" = (
 /obj/structure/closet/secure_closet/bar,
@@ -3288,12 +3288,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/outer)
-"dLb" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/penumbra/perimeter/inner)
 "dLl" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
@@ -3327,11 +3321,8 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "dNl" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/floor_decal/borderfloorblack{
 	dir = 1
-	},
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
@@ -3533,7 +3524,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "dXD" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3648,9 +3639,18 @@
 /turf/simulated/floor,
 /area/penumbra/perimeter/inner)
 "ejz" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
-	dir = 1
+/obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/armguards,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "ekk" = (
@@ -3696,18 +3696,9 @@
 /turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
 "elB" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 4
 	},
-/obj/item/clothing/accessory/armor/armguards,
-/obj/item/clothing/accessory/armor/armguards,
-/obj/item/clothing/accessory/armor/armguards,
-/obj/item/clothing/accessory/armor/armguards,
-/obj/item/clothing/accessory/armor/armguards,
-/obj/item/clothing/accessory/armor/armguards,
-/obj/item/clothing/accessory/armor/armguards,
-/obj/item/clothing/accessory/armor/armguards,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "elL" = (
@@ -3756,7 +3747,7 @@
 "eqF" = (
 /obj/structure/table/woodentable,
 /obj/item/book/manual/standard_operating_procedure,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "eqX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4144,7 +4135,9 @@
 /area/penumbra/station/engineering/engine)
 "eLg" = (
 /obj/effect/zone_divider,
-/obj/effect/wingrille_spawn/reinforced/polarized,
+/obj/effect/wingrille_spawn/reinforced/polarized{
+	id = "hos_quarters"
+	},
 /turf/simulated/floor,
 /area/penumbra/perimeter/inner)
 "eLs" = (
@@ -4493,6 +4486,9 @@
 "feU" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
+/obj/structure/closet/secure_closet/hos2,
+/obj/item/storage/box/firingpins,
+/obj/item/storage/belt/security,
 /turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "feV" = (
@@ -4934,8 +4930,18 @@
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
 "fzR" = (
-/obj/structure/table/reinforced,
-/obj/item/flashlight/lamp,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/item/clothing/suit/armor/pcarrier/medium/nt,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "fzY" = (
@@ -4947,7 +4953,7 @@
 /turf/simulated/floor/reinforced,
 /area/penumbra/perimeter/inner)
 "fAG" = (
-/obj/structure/closet/secure_closet/hos2,
+/obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "fAH" = (
@@ -5077,18 +5083,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "fHT" = (
-/obj/structure/table/reinforced,
-/obj/item/folder{
-	pixel_x = -4
+/obj/effect/wingrille_spawn/reinforced/polarized{
+	id = "hos_quarters"
 	},
-/obj/item/folder/blue{
-	pixel_x = 5
-	},
-/obj/item/folder/red{
-	pixel_y = 3
-	},
-/obj/item/folder/yellow,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor,
 /area/penumbra/perimeter/inner)
 "fIi" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -5142,10 +5140,11 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_gas)
 "fKY" = (
-/obj/structure/bed/chair/office/dark{
+/obj/effect/zone_divider,
+/obj/structure/toilet{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
 "fLq" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -5539,13 +5538,25 @@
 /turf/simulated/mineral/floor,
 /area/penumbra/perimeter/outer)
 "ghu" = (
-/obj/structure/table/reinforced,
-/obj/item/stamp/internalaffairs,
-/obj/item/stamp/denied{
-	pixel_x = 4;
-	pixel_y = -2
+/obj/effect/zone_divider,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
 	},
-/turf/simulated/floor/tiled/dark,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/machinery/door/window/northleft{
+	dir = 2
+	},
+/obj/structure/curtain/open/shower,
+/obj/item/soap/deluxe,
+/obj/machinery/shower{
+	pixel_y = 20
+	},
+/turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
 "ghL" = (
 /obj/structure/table/wooden_reinforced,
@@ -6028,8 +6039,28 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/penumbra/perimeter/outer)
 "gRl" = (
-/obj/structure/closet/secure_closet/hos,
-/turf/simulated/floor/carpet/bcarpet,
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.6
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/suit_cooling_unit,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/suit/space/void/headofsecurity,
+/obj/item/clothing/head/helmet/space/void/headofsecurity,
+/obj/structure/window/reinforced,
+/obj/machinery/door/window/northleft{
+	dir = 8;
+	name = "Prototype Hardsuit Storage";
+	req_access = list(58)
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "gRs" = (
 /obj/machinery/recharger/wallcharger{
@@ -6098,6 +6129,12 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/white,
 /area/penumbra)
+"gRV" = (
+/obj/effect/wingrille_spawn/reinforced/polarized{
+	id = "hos_office"
+	},
+/turf/simulated/floor,
+/area/penumbra/perimeter/inner)
 "gSb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -6351,13 +6388,10 @@
 /turf/simulated/floor/wood,
 /area/penumbra)
 "hiY" = (
-/obj/structure/table/reinforced,
-/obj/item/clipboard,
-/obj/item/storage/briefcase{
-	pixel_x = -2;
-	pixel_y = -5
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/effect/zone_divider,
+/obj/structure/closet/secure_closet/hos,
+/obj/item/clothing/accessory/poncho/roles/cloak/hos,
+/turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "hjR" = (
 /obj/structure/catwalk,
@@ -6384,11 +6418,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
 "hkq" = (
-/obj/structure/table/reinforced,
-/obj/machinery/computer/skills{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/effect/zone_divider,
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "hkv" = (
 /obj/machinery/keycard_auth{
@@ -6534,21 +6566,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/penumbra/perimeter/inner)
 "htM" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/structure/table/reinforced,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/obj/item/pen/blue{
+/obj/effect/zone_divider,
+/obj/structure/table/woodentable,
+/obj/item/flashlight/lamp/green{
 	pixel_x = -5;
-	pixel_y = -1
+	pixel_y = 2
 	},
-/obj/item/pen/red{
-	pixel_x = -1;
-	pixel_y = 3
-	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "huk" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -6580,7 +6604,7 @@
 /area/penumbra/perimeter/inner)
 "hvC" = (
 /obj/machinery/door/airlock/command,
-/turf/simulated/floor/carpet/bcarpet,
+/turf/simulated/floor/tiled/white,
 /area/penumbra/perimeter/inner)
 "hwh" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red,
@@ -6629,11 +6653,13 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/penumbra/perimeter/outer)
 "hxS" = (
-/obj/machinery/door/airlock/glass_security{
-	name = "Warden's Office";
-	req_access = list(3)
+/obj/machinery/button/windowtint{
+	id = "hos_quarters";
+	pixel_x = 36;
+	pixel_y = -26;
+	req_access = null
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "hxZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
@@ -6742,6 +6768,10 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/penumbra/perimeter/inner)
+"hEO" = (
+/obj/structure/filingcabinet,
+/turf/simulated/floor/wood,
+/area/penumbra/perimeter/inner)
 "hEY" = (
 /obj/effect/zone_divider,
 /obj/item/clothing/accessory/poncho/roles/cloak/captain,
@@ -6753,7 +6783,7 @@
 /turf/simulated/floor/plating,
 /area/penumbra/perimeter/outer)
 "hGl" = (
-/obj/structure/table/woodentable,
+/obj/machinery/disposal,
 /turf/simulated/floor/carpet,
 /area/penumbra/perimeter/inner)
 "hGR" = (
@@ -6916,7 +6946,20 @@
 /turf/simulated/floor/reinforced,
 /area/penumbra/perimeter/outer)
 "hTY" = (
-/obj/machinery/computer/security,
+/obj/structure/table/woodentable,
+/obj/item/paper{
+	desc = "";
+	info = "The Chief of Security at CentCom is debating a new policy. It's not official yet, and probably won't be since it's hard to enforce, but I suggest following it anyway. That policy is, if a security officer claims they need more than two extra magazines (or batteries) to go on routine patrols, fire them. If they cannot subdue a single suspect using all that ammo, they are not competent as Security.\[br]-Jeremiah Acacius";
+	name = "note to the Head of Security"
+	},
+/obj/item/clothing/accessory/permit/gun{
+	desc = "An example of a card indicating that the owner is allowed to carry a firearm. There's a note saying to fax CentCom if you want to order more blank permits.";
+	name = "sample weapon permit";
+	owner = 1
+	},
+/obj/machinery/computer/skills{
+	dir = 1
+	},
 /turf/simulated/floor/carpet,
 /area/penumbra/perimeter/inner)
 "hUs" = (
@@ -7769,6 +7812,13 @@
 /obj/structure/filingcabinet,
 /turf/simulated/floor/carpet/purcarpet,
 /area/penumbra)
+"iUz" = (
+/obj/machinery/door/airlock/glass_security{
+	name = "Warden's Office";
+	req_access = list(3)
+	},
+/turf/simulated/floor/tiled/steel,
+/area/penumbra/perimeter/inner)
 "iUL" = (
 /obj/machinery/atmospherics/omni/atmos_filter{
 	tag_east = 6;
@@ -8181,10 +8231,9 @@
 /turf/simulated/floor,
 /area/penumbra/perimeter/inner)
 "jqH" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
-/turf/simulated/floor/carpet,
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/hosdouble,
+/turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "jrc" = (
 /obj/structure/table/woodentable,
@@ -8691,10 +8740,9 @@
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
 "jPS" = (
-/obj/machinery/computer/secure_data{
-	dir = 1
-	},
-/turf/simulated/floor/carpet,
+/obj/effect/zone_divider,
+/obj/structure/dogbed,
+/turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "jQn" = (
 /obj/effect/floor_decal/corner/beige/diagonal,
@@ -8889,6 +8937,11 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/snow/nerada8,
 /area/penumbra/perimeter/inner)
+"kbb" = (
+/obj/effect/zone_divider,
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet,
+/area/penumbra/perimeter/inner)
 "kbu" = (
 /obj/machinery/door/airlock{
 	name = "Unit 2"
@@ -8906,7 +8959,7 @@
 /area/penumbra)
 "kcc" = (
 /obj/structure/bookcase/legal/combo,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "kcB" = (
 /obj/structure/table/steel,
@@ -8921,8 +8974,13 @@
 /turf/simulated/floor/outdoors/snow/nerada8,
 /area/penumbra/perimeter/outer)
 "kdC" = (
-/obj/machinery/vending/security,
-/turf/simulated/floor/tiled/steel,
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/drinks/flask/barflask{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey,
+/turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "kef" = (
 /obj/machinery/door/airlock{
@@ -10239,8 +10297,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/outer)
 "lkX" = (
-/obj/machinery/door/airlock,
-/turf/simulated/wall/r_wall,
+/obj/machinery/door/airlock/glass_security{
+	name = "Visitors Room";
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "lln" = (
 /obj/effect/landmark/monkey,
@@ -10342,7 +10403,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor,
 /area/penumbra/perimeter/inner)
 "lpQ" = (
 /obj/machinery/door/airlock/glass_external,
@@ -10532,7 +10593,6 @@
 /turf/simulated/shuttle/floor/red,
 /area/penumbra)
 "lCo" = (
-/obj/machinery/door/airlock/glass_security,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -10540,6 +10600,13 @@
 	id = "security_lockdown";
 	name = "Security Blast Doors";
 	opacity = 0
+	},
+/obj/machinery/door/airlock/glass_security{
+	id_tag = "BrigFoyer";
+	layer = 2.8;
+	name = "Security";
+	req_access = null;
+	req_one_access = list(1,38)
 	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
@@ -11215,6 +11282,15 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/penumbra)
+"moV" = (
+/obj/structure/table/reinforced,
+/obj/item/stamp/internalaffairs,
+/obj/item/stamp/denied{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/simulated/floor/tiled/dark,
+/area/penumbra/perimeter/inner)
 "moY" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor,
@@ -11296,6 +11372,20 @@
 "mxk" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/white,
+/area/penumbra/perimeter/inner)
+"mxq" = (
+/obj/effect/zone_divider,
+/obj/structure/table/woodentable,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/folder/red_hos,
+/obj/item/pen/multi,
+/obj/item/tape_recorder{
+	pixel_x = 5
+	},
+/turf/simulated/floor/carpet,
 /area/penumbra/perimeter/inner)
 "mxH" = (
 /obj/structure/table/woodentable,
@@ -11392,6 +11482,13 @@
 "mFj" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/white,
+/area/penumbra/perimeter/inner)
+"mGi" = (
+/obj/structure/table/woodentable,
+/obj/machinery/photocopier/faxmachine{
+	department = "Head of Security"
+	},
+/turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "mGv" = (
 /obj/effect/floor_decal/borderfloor{
@@ -11692,7 +11789,7 @@
 "mTL" = (
 /obj/effect/zone_divider,
 /obj/effect/wingrille_spawn/reinforced/polarized{
-	id = "ceoffice"
+	id = "ce_office"
 	},
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
@@ -11969,7 +12066,7 @@
 /obj/structure/closet/secure_closet/detective,
 /obj/item/reagent_containers/spray/pepper,
 /obj/item/gun/energy/taser,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "njF" = (
 /obj/machinery/conveyor_switch{
@@ -12100,6 +12197,17 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor,
 /area/penumbra)
+"not" = (
+/obj/effect/zone_divider,
+/obj/structure/table/woodentable,
+/obj/item/stamp/hos,
+/obj/item/hand_labeler,
+/obj/item/flashlight/lamp/green{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/turf/simulated/floor/carpet,
+/area/penumbra/perimeter/inner)
 "noR" = (
 /obj/structure/table/reinforced,
 /obj/fiftyspawner/glass,
@@ -12487,6 +12595,10 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/penumbra)
+"nKO" = (
+/obj/machinery/suit_cycler/headofsecurity,
+/turf/simulated/floor/wood,
+/area/penumbra/perimeter/inner)
 "nLI" = (
 /obj/effect/zone_divider,
 /obj/structure/table/bench/wooden,
@@ -13428,13 +13540,19 @@
 /turf/simulated/floor/tiled/monotile,
 /area/penumbra/perimeter/outer)
 "oHs" = (
-/obj/machinery/door/airlock/glass_security,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
 	id = "security_lockdown";
 	name = "Security Blast Doors";
 	opacity = 0
+	},
+/obj/machinery/door/airlock/glass_security{
+	id_tag = "BrigFoyer";
+	layer = 2.8;
+	name = "Security";
+	req_access = null;
+	req_one_access = list(1,38)
 	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
@@ -13667,6 +13785,13 @@
 /obj/machinery/computer/security,
 /turf/simulated/floor/tiled/steel,
 /area/penumbra)
+"oTQ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/skills{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/penumbra/perimeter/inner)
 "oUs" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 4
@@ -14040,6 +14165,23 @@
 "poo" = (
 /turf/simulated/floor/tiled/white,
 /area/penumbra)
+"poy" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen/blue{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/pen/red{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/turf/simulated/floor/tiled/dark,
+/area/penumbra/perimeter/inner)
 "ppl" = (
 /turf/simulated/floor,
 /area/penumbra/perimeter/inner)
@@ -14886,7 +15028,7 @@
 /obj/item/book/manual/legal/cr_vol2,
 /obj/item/book/manual/legal/cr_vol4,
 /obj/item/book/manual/legal/cr_vol5,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "qnx" = (
 /obj/effect/floor_decal/borderfloor{
@@ -16022,6 +16164,11 @@
 /obj/machinery/portable_atmospherics/canister/empty,
 /turf/simulated/floor/tiled/techfloor,
 /area/penumbra)
+"rDC" = (
+/obj/effect/zone_divider,
+/obj/machinery/photocopier,
+/turf/simulated/floor/wood,
+/area/penumbra/perimeter/inner)
 "rDS" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/westleft,
@@ -16068,6 +16215,11 @@
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor,
 /area/penumbra/perimeter/inner)
+"rGN" = (
+/obj/structure/table/reinforced,
+/obj/item/flashlight/lamp,
+/turf/simulated/floor/tiled/dark,
+/area/penumbra/perimeter/inner)
 "rGY" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/fancy/crayons,
@@ -16084,6 +16236,10 @@
 /obj/effect/zone_divider,
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor,
+/area/penumbra/perimeter/inner)
+"rId" = (
+/obj/machinery/computer/security,
+/turf/simulated/floor/carpet,
 /area/penumbra/perimeter/inner)
 "rIB" = (
 /obj/effect/zone_divider,
@@ -16132,6 +16288,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/penumbra/perimeter/outer)
+"rJP" = (
+/obj/machinery/computer/secure_data{
+	dir = 1
+	},
+/turf/simulated/floor/carpet,
+/area/penumbra/perimeter/inner)
 "rKp" = (
 /obj/structure/table/woodentable,
 /obj/item/tvcamera,
@@ -16447,6 +16609,11 @@
 /obj/machinery/floodlight,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/storage)
+"sat" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/box/glasses,
+/turf/simulated/floor/wood,
+/area/penumbra/perimeter/inner)
 "saK" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
@@ -16658,13 +16825,11 @@
 "snX" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/locker_room)
-"sob" = (
-/obj/machinery/navbeacon/delivery/south{
-	location = "QM #1"
+"soL" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/mob/living/bot/mulebot,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
 "spc" = (
 /obj/effect/overlay/snow/floor,
@@ -16944,6 +17109,10 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /turf/simulated/shuttle/floor/white,
+/area/penumbra/perimeter/inner)
+"sCJ" = (
+/obj/machinery/door/airlock/command,
+/turf/simulated/floor/carpet/bcarpet,
 /area/penumbra/perimeter/inner)
 "sCY" = (
 /obj/effect/floor_decal/corner_kafel/purple/diagonal,
@@ -17324,7 +17493,7 @@
 /area/penumbra/perimeter/outer)
 "tco" = (
 /obj/effect/wingrille_spawn/reinforced/polarized{
-	id = "ceoffice"
+	id = "ce_office"
 	},
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
@@ -17405,6 +17574,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/penumbra)
+"tgc" = (
+/obj/machinery/vending/security,
+/turf/simulated/floor/tiled/steel,
+/area/penumbra/perimeter/inner)
 "thB" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood,
@@ -17569,6 +17742,17 @@
 /obj/effect/landmark/start/jobs/librarian,
 /turf/simulated/floor/carpet,
 /area/penumbra)
+"trX" = (
+/obj/structure/closet{
+	name = "Forensics Gear"
+	},
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/evidence,
+/obj/item/storage/box/bodybags,
+/obj/item/storage/briefcase/crimekit,
+/obj/item/storage/briefcase/crimekit,
+/turf/simulated/floor/tiled/white,
+/area/penumbra/perimeter/inner)
 "tsB" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced/full,
@@ -17722,9 +17906,11 @@
 /turf/simulated/floor,
 /area/penumbra)
 "tEb" = (
-/obj/effect/floor_decal/industrial/loading{
-	dir = 1
+/obj/machinery/navbeacon/delivery/south{
+	location = "QM #1"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/mob/living/bot/mulebot,
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
 "tEi" = (
@@ -19784,6 +19970,15 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/penumbra/perimeter/inner)
+"vGE" = (
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/obj/item/storage/briefcase{
+	pixel_x = -2;
+	pixel_y = -5
+	},
+/turf/simulated/floor/tiled/dark,
+/area/penumbra/perimeter/inner)
 "vGM" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -20570,6 +20765,13 @@
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor/plating,
 /area/penumbra/perimeter/outer)
+"wBH" = (
+/obj/effect/zone_divider,
+/obj/effect/wingrille_spawn/reinforced/polarized{
+	id = "hos_office"
+	},
+/turf/simulated/floor,
+/area/penumbra/perimeter/inner)
 "wBY" = (
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/tiled/white,
@@ -20961,6 +21163,12 @@
 /obj/machinery/door/airlock/maintenance/engi,
 /turf/simulated/floor,
 /area/engineering/workshop)
+"wTZ" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/penumbra/perimeter/inner)
 "wUB" = (
 /obj/structure/reagent_dispensers/coolanttank,
 /obj/effect/floor_decal/corner/lime{
@@ -21072,6 +21280,15 @@
 /obj/item/stamp/qm{
 	pixel_x = -6
 	},
+/turf/simulated/floor/wood,
+/area/penumbra/perimeter/inner)
+"wZt" = (
+/obj/structure/table/woodentable,
+/obj/item/book/manual/command_guide{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/book/manual/standard_operating_procedure,
 /turf/simulated/floor/wood,
 /area/penumbra/perimeter/inner)
 "xay" = (
@@ -21271,6 +21488,31 @@
 	},
 /turf/simulated/floor/grass,
 /area/penumbra)
+"xjR" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/machinery/button/windowtint{
+	id = "hos_office";
+	pixel_x = 36;
+	pixel_y = -26;
+	req_access = list(58)
+	},
+/obj/machinery/button/remote/airlock{
+	id = "HoSdoor";
+	name = "Office Door";
+	pixel_x = 28;
+	pixel_y = -24
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "security_lockdown";
+	name = "Brig Lockdown";
+	pixel_x = 28;
+	pixel_y = -36;
+	req_access = list(2)
+	},
+/turf/simulated/floor/carpet,
+/area/penumbra/perimeter/inner)
 "xkh" = (
 /obj/structure/bed/chair/sofa/right,
 /turf/simulated/floor/wood,
@@ -21835,6 +22077,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/penumbra/perimeter/inner)
+"xPS" = (
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	dir = 1
+	},
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood,
+/area/penumbra/perimeter/inner)
 "xPU" = (
 /obj/effect/wingrille_spawn/reinforced,
 /turf/simulated/floor,
@@ -21981,7 +22230,7 @@
 /area/penumbra/perimeter/outer)
 "xXQ" = (
 /obj/effect/wingrille_spawn/reinforced/polarized{
-	id = "cmooffice"
+	id = "cmo_office"
 	},
 /turf/simulated/floor,
 /area/penumbra)
@@ -58523,7 +58772,7 @@ pfl
 kMZ
 kMZ
 gHJ
-kMZ
+iZD
 iZD
 iZD
 iZD
@@ -59036,8 +59285,8 @@ ppl
 ppl
 ppl
 kMZ
-qaG
-kMZ
+dcN
+iZD
 iZD
 iZD
 iZD
@@ -59550,7 +59799,13 @@ ppl
 ppl
 ppl
 kMZ
-gHJ
+dcN
+iZD
+iZD
+iZD
+iZD
+iZD
+iZD
 kMZ
 kMZ
 kMZ
@@ -59558,15 +59813,9 @@ kMZ
 kMZ
 kMZ
 kMZ
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
+kMZ
+kMZ
+kMZ
 kDP
 ppl
 ppl
@@ -60047,24 +60296,33 @@ kMZ
 ppl
 ppl
 ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+bRg
+kMZ
+kMZ
+dcN
+iZD
+iZD
+iZD
+iZD
+iZD
+iZD
+kMZ
 nds
-dVO
+hur
 hur
 hur
 hur
@@ -60072,15 +60330,6 @@ hur
 hur
 hur
 kMZ
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
 vPF
 ppl
 ppl
@@ -60564,21 +60813,30 @@ ppl
 kMZ
 kMZ
 kMZ
+hur
+apy
+hur
+hur
+hur
+dko
+hur
+dFD
+dFD
+maa
+hur
+hur
+hur
 kMZ
-kMZ
-kMZ
-kMZ
-kMZ
-kMZ
-kMZ
-kMZ
-kMZ
-kMZ
-kMZ
-bRg
+dcN
+iZD
+iZD
+iZD
+iZD
+iZD
+iZD
 kMZ
 nds
-dVO
+hur
 hur
 hur
 hur
@@ -60586,15 +60844,6 @@ hur
 hur
 hur
 kMZ
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
 kNR
 ppl
 ppl
@@ -61085,30 +61334,30 @@ hur
 hur
 csa
 hur
-dtF
-dtF
-maa
 hur
 hur
+aoB
 hur
-nds
-dVO
-hur
-aos
-fHT
-hiY
 hur
 hur
 kMZ
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
+dcN
+iZD
+iZD
+iZD
+iZD
+iZD
+iZD
+kMZ
+nds
+hur
+hur
+aos
+dEW
+vGE
+hur
+hur
+kMZ
 pzO
 ppl
 ppl
@@ -61593,7 +61842,7 @@ kMZ
 kMZ
 kMZ
 hur
-apy
+hur
 hur
 hur
 hur
@@ -61605,24 +61854,24 @@ aoB
 hur
 hur
 hur
+kMZ
+dcN
+iZD
+iZD
+iZD
+iZD
+iZD
+iZD
+kMZ
 nds
-dVO
+hur
 hur
 aos
-fKY
-hkq
+soL
+oTQ
 hur
 hur
 kMZ
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
 fsC
 ppl
 ppl
@@ -62115,28 +62364,28 @@ cOA
 hur
 hur
 hur
-aoB
+maa
 hur
-hur
-hur
-nds
-dVO
-hur
-fzR
-ghu
-htM
 hur
 hur
 kMZ
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
+dcN
+iZD
+iZD
+iZD
+iZD
+iZD
+iZD
+kMZ
+nds
+hur
+hur
+rGN
+moV
+poy
+hur
+hur
+kMZ
 kni
 ppl
 ppl
@@ -62620,21 +62869,30 @@ ppl
 kMZ
 kMZ
 kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
 hur
 hur
 hur
-hur
-hur
-dko
-hur
-hur
-hur
-maa
-hur
-hur
-hur
+kMZ
+dcN
+iZD
+iZD
+iZD
+iZD
+iZD
+iZD
+kMZ
 nds
-dVO
+hur
 hur
 hur
 hur
@@ -62642,15 +62900,6 @@ hur
 hur
 hur
 kMZ
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
 mig
 ppl
 ppl
@@ -63131,40 +63380,40 @@ kMZ
 ppl
 ppl
 ppl
+ppl
+ppl
+ppl
+ppl
 kMZ
+aYi
+aYi
+aYi
+aYi
+aYi
+aYi
+hur
 kMZ
-kMZ
-kMZ
-kMZ
-nds
-nds
-nds
-nds
-nds
-nds
-nds
-nds
-hur
-hur
-hur
-nds
-dVO
-hur
-hur
-hur
 hur
 hur
 hur
 kMZ
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
+dcN
+iZD
+iZD
+iZD
+iZD
+iZD
+iZD
+kMZ
+nds
+hur
+hur
+hur
+hur
+hur
+hur
+hur
+kMZ
 liO
 ppl
 ppl
@@ -63650,35 +63899,35 @@ ppl
 ppl
 ppl
 kMZ
-ayo
-ayo
-ayo
-ayo
-ayo
-ayo
-hur
-nds
-hur
-hur
-hur
-nds
-dVO
 hur
 hur
 hur
 hur
-hxS
+hur
+hur
+hur
+maa
+hur
+hur
 hur
 kMZ
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
+dcN
+iZD
+iZD
+iZD
+iZD
+iZD
+iZD
+kMZ
+nds
+hur
+hur
+hur
+hur
+hur
+iUz
+hur
+kMZ
 ppl
 ppl
 ppl
@@ -64165,18 +64414,27 @@ ppl
 ppl
 kMZ
 hur
+bPb
+bPb
+bPb
+bPb
+hur
+hur
+aoB
 hur
 hur
 hur
-hur
-hur
-hur
-maa
-hur
-hur
-hur
+kMZ
+gHJ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
 nds
-kZQ
+nds
 nds
 nds
 nds
@@ -64184,15 +64442,6 @@ nds
 aoB
 nds
 kMZ
-nds
-nds
-nds
-nds
-kMZ
-nds
-nds
-nds
-nds
 nds
 nds
 nds
@@ -65193,13 +65442,13 @@ ppl
 ppl
 kMZ
 hur
-btv
-btv
-btv
-btv
 hur
 hur
-aoB
+hur
+hur
+hur
+hur
+maa
 hur
 hur
 hur
@@ -65706,14 +65955,14 @@ ppl
 ppl
 ppl
 kMZ
+aYi
+aYi
 hur
 hur
+aYi
+aYi
 hur
-hur
-hur
-hur
-hur
-maa
+kMZ
 hur
 hur
 hur
@@ -66220,28 +66469,28 @@ ppl
 ppl
 ppl
 kMZ
-ayo
-ayo
-hur
-hur
-ayo
-ayo
-hur
-nds
+kMZ
+kMZ
+aoB
+aoB
+kMZ
+kMZ
+kMZ
+kMZ
 hur
 hur
 hur
 kMZ
 gHJ
-dOt
-dOt
 kMZ
 kMZ
 kMZ
-dOt
-dOt
-dOt
-dOt
+kMZ
+kMZ
+gRV
+gRV
+gRV
+gRV
 kMZ
 kMZ
 kMZ
@@ -66734,29 +66983,29 @@ ppl
 ppl
 ppl
 kMZ
-nds
-nds
+btv
+dcj
+dcj
+dcj
+dcj
+dcj
+eqd
 aoB
-aoB
-nds
-nds
-nds
-nds
 hur
 hur
 hur
 kMZ
-fbd
-aUj
-aUj
-aUj
+fKY
+rZF
 kMZ
-iYQ
+pzO
+ofh
+kMZ
 hGl
 kKQ
 kKQ
 kKQ
-iYQ
+xPS
 kMZ
 pMs
 hur
@@ -67249,29 +67498,29 @@ ppl
 ppl
 kMZ
 aDO
+aos
 bAU
-bAU
-bAU
-bAU
-bAU
-eqd
+dms
+dms
+elB
+dFo
 aoB
 hur
 hur
 hur
-dOt
-fbd
-aUj
-aUj
-aUj
 kMZ
-iYQ
+ghu
+qpR
+kMZ
+pzO
+kdC
+kMZ
 hTY
-jqH
-jPS
 kKQ
-iYQ
-dOt
+kKQ
+kKQ
+sat
+gRV
 xdn
 hur
 hur
@@ -67762,30 +68011,30 @@ ppl
 ppl
 ppl
 kMZ
-aGd
-aos
-ckQ
-cXE
-cXE
-dLb
+bkY
+bWN
 dFo
-aoB
+dbp
+dtF
+dNl
+dFo
+maa
 hur
 hur
 hur
-dOt
-fbd
-aUj
-aUj
-aUj
 kMZ
-iYQ
-hGl
-hGl
-hGl
+gHJ
+hvC
+kMZ
+pzO
+kMA
+kMZ
+rId
+xjR
+rJP
 kKQ
-iYQ
-dOt
+mGi
+gRV
 xdn
 hur
 hur
@@ -68278,28 +68527,28 @@ qaG
 gHJ
 bam
 aOv
-dve
-bWy
+ckK
+cYb
 cYb
 dnI
 dve
-rZn
+gHJ
 dVO
 dVO
 dVO
 eLg
 feU
 fbd
-fbd
-fbd
+jPS
+szZ
+szZ
 gHJ
-hWm
+mxq
+not
+kbb
 hUB
-hUB
-hUB
-hUB
-hWm
-eLg
+rDC
+wBH
 nLI
 dVO
 dVO
@@ -68792,28 +69041,28 @@ ppl
 kMZ
 bkY
 aSk
-bFh
+dFo
 dbp
 dbp
 dNl
 dFo
-nds
-hur
-hur
-hur
-dOt
-fbd
-aUj
-aUj
-aUj
 kMZ
-iYQ
+hur
+hur
+hur
+fHT
+hiY
+aUj
+aUj
+pzO
+pzO
+kMZ
+kKQ
+wTZ
 kKQ
 kKQ
-kKQ
-kKQ
-iYQ
-dOt
+hEO
+gRV
 xdn
 hur
 hur
@@ -69297,37 +69546,37 @@ iZD
 kMZ
 ppl
 ppl
-ppl
-ppl
-ppl
-ppl
-ppl
-ppl
 kMZ
-bkY
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+bFh
 chL
-dFo
+ckQ
 dcj
 dcj
 dXD
 dFo
-nds
+kMZ
 hur
 hur
 hur
-dOt
-fbd
+fHT
+hkq
+hxS
 aUj
-aUj
-aUj
-hvC
+pzO
+pzO
+sCJ
 kKQ
 kKQ
 kKQ
 kKQ
-kKQ
-kKQ
-dOt
+wZt
+gRV
 pCj
 hur
 hur
@@ -69811,31 +70060,31 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
-kMZ
-kMZ
-kMZ
-kMZ
+aos
+aos
+aos
+aos
+aos
 kMZ
 bMw
 aSH
 bJh
-bAU
-bAU
+bJh
+bJh
 ejz
-dFo
-nds
+fzR
+kMZ
 hur
 hur
 hur
 kMZ
-fbd
-aUj
+htM
+jqH
 fAG
 gRl
+nKO
 kMZ
-kKQ
 kKQ
 kKQ
 kKQ
@@ -70325,34 +70574,34 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
 aos
 aos
+aos
 kMZ
-bPb
-aYi
-ckK
-ckK
-ckK
-elB
-dFD
-nds
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
+kMZ
 hur
 hur
 hur
 kMZ
 gHJ
-dOt
-dOt
+fHT
+fHT
 kMZ
 kMZ
 kMZ
-dOt
+gRV
 jti
-dOt
+gRV
 kMZ
 kMZ
 kMZ
@@ -70839,20 +71088,20 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
 aos
+aos
+aos
+aos
+aos
+aos
 kMZ
-kMZ
-kMZ
-kMZ
-kMZ
-nds
-nds
-nds
-nds
+hur
+hur
+hur
+hur
 hur
 hur
 hur
@@ -70868,8 +71117,8 @@ hur
 hur
 hur
 hur
-kdC
-kMZ
+hur
+rGh
 hur
 hur
 hur
@@ -70877,7 +71126,7 @@ hur
 byK
 hur
 hur
-hur
+tgc
 kMZ
 cyS
 djg
@@ -71353,7 +71602,6 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
@@ -71362,8 +71610,9 @@ aos
 aos
 aos
 aos
-cla
+caX
 kMZ
+hur
 hur
 hur
 hur
@@ -71867,7 +72116,6 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
@@ -71876,8 +72124,9 @@ aos
 aos
 aos
 aos
-cla
+caX
 kMZ
+hur
 hur
 hur
 hur
@@ -71897,7 +72146,7 @@ hur
 hur
 hur
 hur
-aoB
+rGh
 hur
 hur
 hur
@@ -72381,7 +72630,6 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
@@ -72390,8 +72638,9 @@ aos
 aos
 aos
 aos
-cla
+caX
 kMZ
+hur
 hur
 hur
 kMZ
@@ -72895,7 +73144,6 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
@@ -72904,8 +73152,9 @@ aos
 aos
 aos
 aos
-cla
+caX
 kMZ
+hur
 hur
 hur
 kMZ
@@ -72933,7 +73182,7 @@ kMZ
 wXv
 vhD
 kKQ
-kKQ
+pzO
 gBF
 qpR
 qpR
@@ -73409,7 +73658,6 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
@@ -73418,8 +73666,9 @@ aos
 aos
 aos
 aos
-cla
+caX
 kMZ
+hur
 hur
 hur
 kMZ
@@ -73447,7 +73696,7 @@ rGh
 bVg
 cRr
 rrG
-kKQ
+pzO
 kMZ
 kMZ
 gBF
@@ -73923,17 +74172,17 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
 aos
 aos
 aos
-bWN
+ayo
 aos
-cla
+caX
 kMZ
+hur
 hur
 hur
 kMZ
@@ -73961,11 +74210,11 @@ rGh
 kKQ
 kKQ
 kKQ
-kKQ
+pzO
 kMZ
 wOt
 qpR
-qpR
+trX
 kMZ
 rMG
 ppl
@@ -74437,7 +74686,6 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
@@ -74446,8 +74694,9 @@ aos
 aos
 aos
 aos
-cla
+caX
 kMZ
+hur
 hur
 hur
 kMZ
@@ -74473,9 +74722,9 @@ hur
 hur
 rGh
 avQ
-kKQ
-kKQ
-kKQ
+pzO
+pzO
+pzO
 kMZ
 mNu
 qpR
@@ -74951,7 +75200,6 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
@@ -74962,6 +75210,7 @@ aos
 aos
 aos
 kMZ
+hur
 hur
 hur
 kMZ
@@ -74987,9 +75236,9 @@ hur
 hur
 kMZ
 qmP
-kKQ
-kKQ
-kKQ
+pzO
+pzO
+pzO
 kMZ
 mNu
 qpR
@@ -75465,7 +75714,6 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
@@ -75475,7 +75723,8 @@ aos
 aos
 aos
 aos
-dms
+cla
+hur
 hur
 hur
 kMZ
@@ -75501,7 +75750,7 @@ hur
 hur
 kMZ
 dhZ
-kKQ
+pzO
 eqF
 niU
 kMZ
@@ -75979,7 +76228,6 @@ iZD
 kMZ
 ppl
 ppl
-ppl
 kMZ
 aos
 aos
@@ -75989,7 +76237,8 @@ aos
 aos
 aos
 aos
-dms
+cla
+hur
 hur
 hur
 kMZ
@@ -76493,17 +76742,17 @@ kMZ
 kMZ
 nds
 uLd
-nds
 kMZ
 kMZ
 kMZ
 kMZ
 kMZ
 kMZ
-caX
+aGd
 kMZ
 kMZ
 kMZ
+hur
 hur
 hur
 kMZ
@@ -77551,7 +77800,7 @@ hur
 hur
 hur
 hur
-hur
+rGh
 hur
 hur
 hur
@@ -78065,7 +78314,7 @@ hur
 hur
 hur
 hur
-hur
+aoB
 hur
 hur
 hur
@@ -78579,7 +78828,7 @@ hur
 hur
 hur
 hur
-hur
+rGh
 hur
 hur
 hur
@@ -122805,8 +123054,8 @@ hur
 dVO
 hur
 hur
-sob
-sob
+hur
+hur
 nds
 uSL
 hur
@@ -126405,7 +126654,7 @@ hur
 hur
 sAs
 sAs
-hur
+tEb
 nds
 xkh
 pVH
@@ -126919,7 +127168,7 @@ hur
 hur
 hur
 hur
-hur
+tEb
 nds
 lBm
 uop
