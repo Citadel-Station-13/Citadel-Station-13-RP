@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - bugfix: "Tablets now spawn with their proper Battery modules."

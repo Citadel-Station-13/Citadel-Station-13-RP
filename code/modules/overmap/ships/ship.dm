@@ -160,9 +160,9 @@
 		if(direction & SOUTH)
 			adjust_speed(0, -acceleration)
 
-/obj/effect/overmap/visitable/ship/process(wait)
-	var/new_position_x = position_x + (speed[1] * WORLD_ICON_SIZE * wait)
-	var/new_position_y = position_y + (speed[2] * WORLD_ICON_SIZE * wait)
+/obj/effect/overmap/visitable/ship/process(delta_time)
+	var/new_position_x = position_x + (speed[1] * WORLD_ICON_SIZE * delta_time * 10)
+	var/new_position_y = position_y + (speed[2] * WORLD_ICON_SIZE * delta_time * 10)
 
 	// For simplicity we assume that you can't travel more than one turf per tick.  That would be hella-fast.
 	var/new_turf_x = CEILING(new_position_x / WORLD_ICON_SIZE, 1)
@@ -178,12 +178,12 @@
 
 	if(new_loc != loc)
 		var/turf/old_loc = loc
-		Move(new_loc, NORTH, wait)
+		Move(new_loc, NORTH, delta_time * 10)
 		if(get_dist(old_loc, loc) > 1)
 			pixel_x = new_pixel_x
 			pixel_y = new_pixel_y
 			return
-	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = wait, flags = ANIMATION_END_NOW)
+	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = delta_time * 10, flags = ANIMATION_END_NOW)
 
 // If we get moved, update our internal tracking to account for it
 /obj/effect/overmap/visitable/ship/Moved(atom/old_loc, direction, forced = FALSE)
