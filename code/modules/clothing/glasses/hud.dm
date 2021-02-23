@@ -69,15 +69,15 @@
 /obj/item/clothing/glasses/omnihud/dropped()
 	// do NOT drop all of their uis, instead close these only ones
 	if(arscreen)
-		SSnanoui.close_user_uis(src, arscreen)
-	SStgui.close_user_uis(src, GLOB.crewmonitor)
+		SSnanoui.close_user_uis(loc, arscreen)
+	SStgui.close_user_uis(loc, GLOB.crewmonitor)
 	..()
 
 /obj/item/clothing/glasses/omnihud/emp_act(severity)
 	emp_ongoing = TRUE
 	if(arscreen)
-		SSnanoui.close_user_uis(src, arscreen)
-	SStgui.close_user_uis(src, GLOB.crewmonitor)
+		SSnanoui.close_user_uis(loc, arscreen)
+	SStgui.close_user_uis(loc, GLOB.crewmonitor)
 	addtimer(VARSET_CALLBACK(src, emp_ongoing, FALSE), 20)
 	..()
 
