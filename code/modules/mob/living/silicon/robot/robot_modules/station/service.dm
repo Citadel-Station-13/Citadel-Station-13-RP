@@ -15,7 +15,10 @@
 					"Drone" = "drone-janitor",
 					"Misato" = "tall2janitor",
 					"L3P1-D0T" = "Glitterfly-Janitor",
-					"Miss M" = "miss-janitor"
+					"Miss M" = "miss-janitor",
+					"Cleriffin" = "coffin-Clerical",
+					"Coffstodial" = "coffin-Custodial"
+
 					)
 
 /obj/item/robot_module/robot/janitor/New()
