@@ -94,7 +94,12 @@
 	mappath = 'rocks2H.dmm'
 	cost = 5
 
-datum/map_template/Class_H/springcave
+/datum/map_template/Class_H/springcave
 	name = "Desert Cave Spring"
 	mappath = 'springcaveH.dmm'
 	cost = 5
+
+/datum/map_template/Class_H/AuxiliaryResearchFacility
+	name = "Research Facility"
+	mappath = 'AuxiliaryResearchFacility.dmm'
+	cost = 20
