@@ -8,7 +8,11 @@
 	circuit = /obj/item/circuitboard/security
 	light_color = LIGHT_COLOR_RED
 
-	var/list/network = list("ss13")
+	var/list/network = list(
+		"ss13", NETWORK_COMMAND, NETWORK_DEFAULT,
+		NETWORK_ENGINE, NETWORK_ENGINEERING, NETWORK_MEDICAL,
+		NETWORK_RESEARCH, NETWORK_ROBOTS, NETWORK_PRISON,
+		NETWORK_SECURITY, NETWORK_INTERROGATION, NETWORK_TELECOM)
 	var/obj/machinery/camera/active_camera
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
@@ -29,7 +33,10 @@
 		PLANE_CH_IMPTRACK, PLANE_CH_IMPCHEM, PLANE_CH_SPECIAL,
 		PLANE_CH_STATUS_OOC, PLANE_STATUS, PLANE_MESONS
 	)
-	var/list/blacklisted_PM = list(/obj/screen/plane_master/ghosts, /obj/screen/plane_master/fullbright)
+	var/list/blacklisted_PM = list(
+		/obj/screen/plane_master/ghosts,
+		/obj/screen/plane_master/fullbright
+	)
 
 /obj/machinery/computer/security/Initialize()
 	. = ..()
@@ -38,9 +45,9 @@
 	// I wasted 6 hours on this. :agony:
 	map_name = "camera_console_[REF(src)]_map"
 	// Convert networks to lowercase
-	for(var/i in network)
-		network -= i
-		network += lowertext(i)
+	// for(var/i in network)
+	// 	network -= i
+	// 	network += lowertext(i)
 	// Initialize map objects
 	cam_screen = new
 	cam_screen.name = "screen"
@@ -196,20 +203,28 @@
 
 // Returns the list of cameras accessible from this computer
 /obj/machinery/computer/security/proc/get_available_cameras()
-	var/list/L = list()
-	for (var/obj/machinery/camera/C in cameranet.cameras)
-		// if((is_away_level(z) || is_away_level(C.z)) && (C.z != z))//if on away mission, can only receive feed from same z_level cameras
-		// 	continue
-		L.Add(C)
+	var/list/all_networks = list()
+	// Access Based
+	// if(access_based)
+	// 	for(var/network in GLOB.using_map.station_networks)
+	// 		if(can_access_network(user, get_camera_access(network), 1))
+	// 			all_networks.Add(network)
+	// 	for(var/network in GLOB.using_map.secondary_networks)
+	// 		if(can_access_network(user, get_camera_access(network), 0))
+	// 			all_networks.Add(network)
+	// Network Based
+	all_networks = network.Copy()
+
 	var/list/D = list()
-	for(var/obj/machinery/camera/C in L)
+	for(var/obj/machinery/camera/C in cameranet.cameras)
 		if(!C.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue
 		if(!(islist(C.network)))
 			stack_trace("Camera in a cameranet has a non-list camera network")
 			continue
-		var/list/tempnetwork = C.network & network
+
+		var/list/tempnetwork = C.network & all_networks
 		if(tempnetwork.len)
 			D["[C.c_tag]"] = C
 	return D
