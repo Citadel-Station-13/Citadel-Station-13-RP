@@ -178,7 +178,7 @@
 		update_icon()
 	. = ..()
 	if(colorable)
-		. += "<span class='notice'>Alt-click to recolor it.</span>"
+		to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
 
 /*
