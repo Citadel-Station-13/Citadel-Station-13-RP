@@ -329,6 +329,7 @@
 #include "code\datums\browser\_modal.dm"
 #include "code\datums\browser\_onclose.dm"
 #include "code\datums\browser\alert.dm"
+#include "code\datums\browser\color_matrix_picker.dm"
 #include "code\datums\browser\listpicker.dm"
 #include "code\datums\browser\preflikepicker.dm"
 #include "code\datums\components\_component.dm"
