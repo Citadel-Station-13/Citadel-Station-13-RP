@@ -149,8 +149,8 @@
 
 /obj/item/reagent_containers/food/drinks/glass2/afterattack(var/obj/target, var/mob/user, var/proximity)
 	if(istype(target, /obj/machinery/chem_master))
-			to_chat(user, "<span class='warning'>This machine only accepts beakers!</span>")
-			return
+		to_chat(user, "<span class='warning'>This machine only accepts beakers!</span>")
+		return
 	if(user.a_intent == INTENT_HARM) //We only want splashing to be done if they are on harm intent.
 		if(!is_open_container() || !proximity)
 			return 1
