@@ -134,7 +134,7 @@
 		if(!ai_in_use && !is_in_use)
 			in_use = 0
 
-/obj/attack_ghost(mob/user)
+/obj/attack_ghost(mob/observer/dead/user)
 	nano_ui_interact(user)
 	..()
 

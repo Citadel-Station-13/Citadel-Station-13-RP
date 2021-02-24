@@ -1259,6 +1259,34 @@ var/list/WALLITEMS = list(
 			colour += temp_col
 	return colour
 
+/proc/params2turf(scr_loc, turf/origin, client/C)
+	if(!scr_loc)
+		return null
+	var/tX = splittext(scr_loc, ",")
+	var/tY = splittext(tX[2], ":")
+	var/tZ = origin.z
+	tY = tY[1]
+	tX = splittext(tX[1], ":")
+	tX = tX[1]
+	var/list/actual_view = getviewsize(C ? C.view : world.view)
+	tX = clamp(origin.x + text2num(tX) - round(actual_view[1] / 2) - 1, 1, world.maxx)
+	tY = clamp(origin.y + text2num(tY) - round(actual_view[2] / 2) - 1, 1, world.maxy)
+	return locate(tX, tY, tZ)
+
+/proc/screen_loc2turf(text, turf/origin, client/C)
+	if(!text)
+		return null
+	var/tZ = splittext(text, ",")
+	var/tX = splittext(tZ[1], "-")
+	var/tY = text2num(tX[2])
+	tX = splittext(tZ[2], "-")
+	tX = text2num(tX[2])
+	tZ = origin.z
+	var/list/actual_view = getviewsize(C ? C.view : world.view)
+	tX = clamp(origin.x + round(actual_view[1] / 2) - tX, 1, world.maxx)
+	tY = clamp(origin.y + round(actual_view[2] / 2) - tY, 1, world.maxy)
+	return locate(tX, tY, tZ)
+
 GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 //Version of view() which ignores darkness, because BYOND doesn't have it.
@@ -1306,17 +1334,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 // call to generate a stack trace and print to runtime logs
 /proc/crash_with(msg)
 	CRASH(msg)
-
-/proc/screen_loc2turf(scr_loc, turf/origin)
-	var/tX = splittext(scr_loc, ",")
-	var/tY = splittext(tX[2], ":")
-	var/tZ = origin.z
-	tY = tY[1]
-	tX = splittext(tX[1], ":")
-	tX = tX[1]
-	tX = max(1, min(world.maxx, origin.x + (text2num(tX) - (world.view + 1))))
-	tY = max(1, min(world.maxy, origin.y + (text2num(tY) - (world.view + 1))))
-	return locate(tX, tY, tZ)
 
 // Displays something as commonly used (non-submultiples) SI units.
 /proc/format_SI(var/number, var/symbol)

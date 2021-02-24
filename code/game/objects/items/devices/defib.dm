@@ -69,15 +69,15 @@
 	else
 		..()
 
-/obj/item/defib_kit/MouseDrop()
-	if(ismob(src.loc))
-		if(!CanMouseDrop(src))
-			return
-		var/mob/M = src.loc
+/obj/item/defib_kit/MouseDrop(obj/over_object)
+	. = ..()
+	if(ismob(loc))
+		var/mob/M = loc
 		if(!M.unEquip(src))
 			return
-		src.add_fingerprint(usr)
-		M.put_in_any_hand_if_possible(src)
+		if(!M.incapacitated() && istype(over_object, /obj/screen/inventory/hand))
+			var/obj/screen/inventory/hand/H = over_object
+			M.put_in_any_hand_if_possible(src)
 
 
 /obj/item/defib_kit/attackby(obj/item/W, mob/user, params)

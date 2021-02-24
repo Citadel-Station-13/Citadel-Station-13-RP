@@ -833,8 +833,6 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 /obj/item/subspaceradio/MouseDrop()
 	if(ismob(loc))
-		if(!CanMouseDrop(src))
-			return
 		var/mob/M = loc
 		if(!M.unEquip(src))
 			return

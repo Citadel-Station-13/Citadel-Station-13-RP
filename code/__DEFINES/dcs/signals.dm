@@ -77,8 +77,11 @@
 	#define COMPONENT_BLOCK_CONTAMINATION 1
 #define COMSIG_ATOM_RAD_WAVE_PASSING "atom_rad_wave_pass"		//from base of datum/radiation_wave/check_obstructions(): (datum/radiation_wave, width)
   #define COMPONENT_RAD_WAVE_HANDLED 1
-#define COMSIG_ATOM_CANREACH "atom_can_reach"					//from internal loop in atom/movable/proc/CanReach(): (list/next)
-	#define COMPONENT_BLOCK_REACH 1
+*/
+///from internal loop in atom/movable/proc/CanReach(): (list/next)
+#define COMSIG_ATOM_CANREACH "atom_can_reach"
+	#define COMPONENT_ALLOW_REACH (1<<0)
+/*
 #define COMSIG_ATOM_SCREWDRIVER_ACT "atom_screwdriver_act"		//from base of atom/screwdriver_act(): (mob/living/user, obj/item/I)
 #define COMSIG_ATOM_WRENCH_ACT "atom_wrench_act"				//from base of atom/wrench_act(): (mob/living/user, obj/item/I)
 #define COMSIG_ATOM_MULTITOOL_ACT "atom_multitool_act"			//from base of atom/multitool_act(): (mob/living/user, obj/item/I)
@@ -91,11 +94,15 @@
 	#define COMPONENT_BLOCK_TELEPORT 1
 */
 #define COMSIG_ATOM_HEARER_IN_VIEW "atom_hearer_in_view"		//called when an atom with HEAR_1 is added to the hearers on /proc/get_hearers_in_view(): (list/processing_list, list/hearers)
-/*
+
 /////////////////
-#define COMSIG_ATOM_ATTACK_GHOST "atom_attack_ghost"			//from base of atom/attack_ghost(): (mob/dead/observer/ghost)
-#define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"				//from base of atom/attack_hand(): (mob/user)
-#define COMSIG_ATOM_ATTACK_PAW "atom_attack_paw"				//from base of atom/attack_paw(): (mob/user)
+///from base of atom/attack_ghost(): (mob/dead/observer/ghost)
+#define COMSIG_ATOM_ATTACK_GHOST "atom_attack_ghost"
+///from base of atom/attack_hand(): (mob/user)
+#define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"
+///from base of atom/attack_paw(): (mob/user)
+#define COMSIG_ATOM_ATTACK_PAW "atom_attack_paw"
+/*
 	#define COMPONENT_NO_ATTACK_HAND 1							//works on all 3.
 /////////////////
 */
@@ -103,16 +110,26 @@
 #define COMSIG_ENTER_AREA "enter_area" 						//from base of area/Entered(): (/area)
 #define COMSIG_EXIT_AREA "exit_area" 							//from base of area/Exited(): (/area)
 
-/*
-#define COMSIG_CLICK "atom_click"								//from base of atom/Click(): (location, control, params, mob/user)
-#define COMSIG_CLICK_SHIFT "shift_click"						//from base of atom/ShiftClick(): (/mob)
-#define COMSIG_CLICK_CTRL "ctrl_click"							//from base of atom/CtrlClickOn(): (/mob)
-#define COMSIG_CLICK_ALT "alt_click"							//from base of atom/AltClick(): (/mob)
-#define COMSIG_CLICK_CTRL_SHIFT "ctrl_shift_click"				//from base of atom/CtrlShiftClick(/mob)
-#define COMSIG_MOUSEDROP_ONTO "mousedrop_onto"					//from base of atom/MouseDrop(): (/atom/over, /mob/user)
-	#define COMPONENT_NO_MOUSEDROP 1
-#define COMSIG_MOUSEDROPPED_ONTO "mousedropped_onto"			//from base of atom/MouseDrop_T: (/atom/from, /mob/user)
-*/
+
+///from base of atom/Click(): (location, control, params, mob/user)
+#define COMSIG_CLICK "atom_click"
+///from base of atom/ShiftClick(): (/mob)
+#define COMSIG_CLICK_SHIFT "shift_click"
+	#define COMPONENT_ALLOW_EXAMINATE (1<<0) //Allows the user to examinate regardless of client.eye.
+///from base of atom/CtrlClickOn(): (/mob)
+#define COMSIG_CLICK_CTRL "ctrl_click"
+///from base of atom/AltClick(): (/mob)
+#define COMSIG_CLICK_ALT "alt_click"
+///from base of atom/CtrlShiftClick(/mob)
+#define COMSIG_CLICK_CTRL_SHIFT "ctrl_shift_click"
+///from base of atom/MouseDrop(): (/atom/over, /mob/user)
+#define COMSIG_MOUSEDROP_ONTO "mousedrop_onto"
+	#define COMPONENT_NO_MOUSEDROP (1<<0)
+///from base of atom/MouseDrop_T: (/atom/from, /mob/user)
+#define COMSIG_MOUSEDROPPED_ONTO "mousedropped_onto"
+///from base of mob/MouseWheelOn(): (/atom, delta_x, delta_y, params)
+#define COMSIG_MOUSE_SCROLL_ON "mousescroll_on"
+
 
 // /area signals
 #define COMSIG_AREA_ENTERED "area_entered" 						//from base of area/Entered(): (atom/movable/M)
@@ -159,27 +176,46 @@
 */
 #define COMSIG_MOVABLE_CHANGE_GLIDE_SIZE "glide_size_changed"	//from base of atom/movable/set_glide_size(new_glide_size, old_glide_size)
 
-/*
+
 // /mob signals
-#define COMSIG_MOB_DEATH "mob_death"							//from base of mob/death(): (gibbed)
+///from base of /mob/Login(): ()
+// #define COMSIG_MOB_LOGIN "mob_login"
+///from base of /mob/Logout(): ()
+// #define COMSIG_MOB_LOGOUT "mob_logout"
+///from base of mob/set_stat(): (new_stat)
+// #define COMSIG_MOB_STATCHANGE "mob_statchange"
+///from base of mob/clickon(): (atom/A, params)
+#define COMSIG_MOB_CLICKON "mob_clickon"
+///from base of mob/MiddleClickOn(): (atom/A)
+#define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"
+///from base of mob/AltClickOn(): (atom/A)
+#define COMSIG_MOB_ALTCLICKON "mob_altclickon"
+	#define COMSIG_MOB_CANCEL_CLICKON (1<<0)
 
-#define COMSIG_MOB_CLICKON "mob_clickon"						//from base of mob/clickon(): (atom/A, params)
-#define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"			//from base of mob/MiddleClickOn(): (atom/A)
-#define COMSIG_MOB_ALTCLICKON "mob_altclickon"				//from base of mob/AltClickOn(): (atom/A)
-	#define COMSIG_MOB_CANCEL_CLICKON 1
-
-#define COMSIG_MOB_ALLOWED "mob_allowed"						//from base of obj/allowed(mob/M): (/obj) returns bool, if TRUE the mob has id access to the obj
-*/
-#define COMSIG_MOB_RECEIVE_MAGIC "mob_receive_magic"			//from base of mob/anti_magic_check(): (mob/user, magic, holy, tinfoil, chargecost, self, protection_sources)
-	#define COMPONENT_BLOCK_MAGIC 1
+///from base of obj/allowed(mob/M): (/obj) returns bool, if TRUE the mob has id access to the obj
+// #define COMSIG_MOB_ALLOWED "mob_allowed"
+///from base of mob/anti_magic_check(): (mob/user, magic, holy, tinfoil, chargecost, self, protection_sources)
+#define COMSIG_MOB_RECEIVE_MAGIC "mob_receive_magic"
+	#define COMPONENT_BLOCK_MAGIC (1<<0)
+///from base of mob/create_mob_hud(): ()
+#define COMSIG_MOB_HUD_CREATED "mob_hud_created"
 /*
 #define COMSIG_MOB_HUD_CREATED "mob_hud_created"				//from base of mob/create_mob_hud(): ()
 #define COMSIG_MOB_ATTACK_HAND "mob_attack_hand"				//from base of
-#define COMSIG_MOB_ITEM_ATTACK "mob_item_attack"				//from base of /obj/item/attack(): (mob/M, mob/user)
 	#define COMPONENT_ITEM_NO_ATTACK 1
 #define COMSIG_MOB_APPLY_DAMGE	"mob_apply_damage"				//from base of /mob/living/proc/apply_damage(): (damage, damagetype, def_zone)
-#define COMSIG_MOB_ITEM_AFTERATTACK "mob_item_afterattack"		//from base of obj/item/afterattack(): (atom/target, mob/user, proximity_flag, click_parameters)
-#define COMSIG_MOB_ATTACK_RANGED "mob_attack_ranged"			//from base of mob/RangedAttack(): (atom/A, params)
+*/
+///from base of /obj/item/attack(): (mob/M, mob/user)
+#define COMSIG_MOB_ITEM_ATTACK "mob_item_attack"
+///from base of obj/item/afterattack(): (atom/target, mob/user, proximity_flag, click_parameters)
+#define COMSIG_MOB_ITEM_AFTERATTACK "mob_item_afterattack"
+///from base of obj/item/attack_qdeleted(): (atom/target, mob/user, proxiumity_flag, click_parameters)
+#define COMSIG_MOB_ITEM_ATTACK_QDELETED "mob_item_attack_qdeleted"
+///from base of mob/RangedAttack(): (atom/A, params)
+#define COMSIG_MOB_ATTACK_RANGED "mob_attack_ranged"
+///From base of atom/ctrl_click(): (atom/A)
+#define COMSIG_MOB_CTRL_CLICKED "mob_ctrl_clicked"
+/*
 #define COMSIG_MOB_THROW "mob_throw"							//from base of /mob/throw_item(): (atom/target)
 #define COMSIG_MOB_EXAMINATE "mob_examinate"					//from base of /mob/verb/examinate(): (atom/target)
 #define COMSIG_MOB_UPDATE_SIGHT "mob_update_sight"				//from base of /mob/update_sight(): ()
@@ -240,7 +276,10 @@ obj/item signals
 	#define COMPONENT_NO_ATTACK_OBJ 1
 #define COMSIG_ITEM_PRE_ATTACK "item_pre_attack"				//from base of obj/item/pre_attack(): (atom/target, mob/user, params)
 	#define COMPONENT_NO_ATTACK 1
-#define COMSIG_ITEM_AFTERATTACK "item_afterattack"				//from base of obj/item/afterattack(): (atom/target, mob/user, params)
+///from base of obj/item/afterattack(): (atom/target, mob/user, params)
+#define COMSIG_ITEM_AFTERATTACK "item_afterattack"
+///from base of obj/item/attack_qdeleted(): (atom/target, mob/user, params)
+#define COMSIG_ITEM_ATTACK_QDELETED "item_attack_qdeleted"
 #define COMSIG_ITEM_EQUIPPED "item_equip"						//from base of obj/item/equipped(): (/mob/equipper, slot)
 #define COMSIG_ITEM_DROPPED "item_drop"							//from base of obj/item/dropped(): (mob/user)
 #define COMSIG_ITEM_PICKUP "item_pickup"						//from base of obj/item/pickup(): (/mob/taker)

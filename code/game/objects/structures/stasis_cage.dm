@@ -51,9 +51,8 @@
 
 	return ..()
 
-/mob/living/simple_mob/MouseDrop(var/obj/structure/stasis_cage/over_object)
-	if(istype(over_object) && Adjacent(over_object) && CanMouseDrop(over_object, usr))
-
+/mob/living/simple_mob/MouseDrop(obj/structure/stasis_cage/over_object)
+	if(istype(over_object) && Adjacent(over_object))
 		if(!src.buckled || !istype(src.buckled, /obj/effect/energy_net))
 			to_chat(usr, "It's going to be difficult to convince \the [src] to move into \the [over_object] without capturing it in a net.")
 			return

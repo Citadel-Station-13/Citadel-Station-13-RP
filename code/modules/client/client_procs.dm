@@ -357,10 +357,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	send_resources()
 
-	if(!void) //ew. will rework this soon once this gets merged.
-		void = new()
-		void.MakeGreed()
-	screen += void
+	generate_clickcatcher()
+	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
@@ -667,16 +665,25 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	*/
 
 	view = new_size
-
-	/*
+	// mob.hud_used.screentip_text.update_view()
 	apply_clickcatcher()
 	mob.reload_fullscreen()
-	if (isliving(mob))
-		var/mob/living/M = mob
-		M.update_damage_hud()
-	if (prefs.auto_fit_viewport)
-		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
-	*/
+	// if (isliving(mob))
+	// 	var/mob/living/M = mob
+	// 	M.update_damage_hud()
+	// 	M.UpdateDamageIcon()
+	// if (prefs.auto_fit_viewport)
+	// 	addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
+
+/client/proc/generate_clickcatcher()
+	if(!void)
+		void = new()
+		screen += void
+
+/client/proc/apply_clickcatcher()
+	generate_clickcatcher()
+	var/list/actualview = getviewsize(view)
+	void.UpdateGreed(actualview[1],actualview[2])
 
 /mob/proc/MayRespawn()
 	return 0

@@ -2,31 +2,26 @@
 	MouseDrop:
 
 	Called on the atom you're dragging.  In a lot of circumstances we want to use the
-	recieving object instead, so that's the default action.  This allows you to drag
+	receiving object instead, so that's the default action.  This allows you to drag
 	almost anything into a trash can.
 */
+/atom/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
+	if(!usr || !over)
+		return
+	// if(SEND_SIGNAL(src, COMSIG_MOUSEDROP_ONTO, over, usr) & COMPONENT_NO_MOUSEDROP) //Whatever is receiving will verify themselves for adjacency.
+	// 	return
+	if(over == src)
+		return usr.client.Click(src, src_location, src_control, params)
+	if(!Adjacent(usr) || !over.Adjacent(usr))
+		return // should stop you from dragging through windows
 
-/atom/proc/CanMouseDrop(atom/over, var/mob/user = usr)
-	if(!user || !over)
-		return FALSE
-	if(user.incapacitated())
-		return FALSE
-	if(!src.Adjacent(user) || !over.Adjacent(user))
-		return FALSE // should stop you from dragging through windows
-	return TRUE
-
-/atom/MouseDrop(atom/over)
-	if(!usr || !over) return
-	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows
-
-	spawn(0)
-		over.MouseDrop_T(src,usr)
+	over.MouseDrop_T(src,usr)
 	return
 
-// recieve a mousedrop
+// receive a mousedrop. Hey look, it's kevinz's favorite proc :)
 /atom/proc/MouseDrop_T(atom/dropping, mob/user)
+	SEND_SIGNAL(src, COMSIG_MOUSEDROPPED_ONTO, dropping, user)
 	return
-
 /client
 	var/list/atom/selected_target[2]
 	var/obj/item/active_mousedown_item = null
@@ -38,10 +33,8 @@
 	var/atom/middragatom
 
 /client/MouseDown(object, location, control, params)
-	/*
-	if (mouse_down_icon)
-		mouse_pointer_icon = mouse_down_icon
-	*/
+	// if (mouse_down_icon)
+	// 	mouse_pointer_icon = mouse_down_icon
 	var/delay = mob.CanMobAutoclick(object, location, params)
 	if(delay)
 		selected_target[1] = object
@@ -54,10 +47,8 @@
 		active_mousedown_item.onMouseDown(object, location, params, mob)
 
 /client/MouseUp(object, location, control, params)
-	/*
-	if (mouse_up_icon)
-		mouse_pointer_icon = mouse_up_icon
-	*/
+	// if (mouse_up_icon)
+	// 	mouse_pointer_icon = mouse_up_icon
 	selected_target[1] = null
 	if(active_mousedown_item)
 		active_mousedown_item.onMouseUp(object, location, params, mob)
@@ -101,13 +92,13 @@
 	. = automatic
 
 /atom/proc/IsAutoclickable()
-	. = 1
+	return TRUE
 
 /obj/screen/IsAutoclickable()
-	. = 0
+	return FALSE
 
 /obj/screen/click_catcher/IsAutoclickable()
-	. = 1
+	return TRUE
 
 //Please don't roast me too hard
 /client/MouseMove(object,location,control,params)
@@ -128,8 +119,8 @@
 	return
 
 /client/MouseDrag(src_object,atom/over_object,src_location,over_location,src_control,over_control,params)
-	var/list/L = params2list(params)
-	if (L["middle"])
+	var/list/modifiers = params2list(params)
+	if (LAZYACCESS(modifiers, "middle"))
 		if (src_object && src_location != over_location)
 			middragtime = world.time
 			middragatom = src_object
@@ -139,8 +130,8 @@
 	mouseParams = params
 	mouseLocation = over_location
 	mouseObject = over_object
-	mouseControlObject = over_control
-	if(selected_target[1] && over_object && over_object.IsAutoclickable())
+	mouseControlObject = over_control // cit specific
+	if(selected_target[1] && over_object?.IsAutoclickable())
 		selected_target[1] = over_object
 		selected_target[2] = params
 	if(active_mousedown_item)

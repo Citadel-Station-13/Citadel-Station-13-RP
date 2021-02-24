@@ -7,7 +7,7 @@
 	if(!loc)
 		return
 
-	if(machine && !CanMouseDrop(machine, src))
+	if(machine)
 		machine = null
 
 	var/datum/gas_mixture/environment = loc.return_air()
