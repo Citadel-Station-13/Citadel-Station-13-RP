@@ -134,7 +134,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/secondary_system_defense = secondary.sysdef
 
 	/// Is this ship part of the fleet too?
-	var/secdonary_fleet = secondary.fleet
+	// Not set up yet. Leaving commented out until then.
+	//var/secdonary_fleet = secondary.fleet
 
 	var/combined_first_name = "[source_owner][source_prefix] |[source_shipname]|"
 	var/combined_second_name = "[secondary_owner][secondary_prefix] |[secondary_shipname]|"
