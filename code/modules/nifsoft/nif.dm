@@ -89,8 +89,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	examine_msg = saved_examine_msg
 
 	//If given a human on spawn (probably from persistence)
-	if(ishuman(newloc))
-		var/mob/living/carbon/human/H = newloc
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
 		if(!quick_implant(H))
 			WARNING("NIF spawned in [H] failed to implant")
 			spawn(0)

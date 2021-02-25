@@ -273,7 +273,7 @@
 
 /obj/machinery/organ_printer/flesh/full/Initialize(mapload, newdir)
 	. = ..()
-sz	container = new /obj/item/reagent_containers/glass/bottle/biomass(src)
+	container = new /obj/item/reagent_containers/glass/bottle/biomass(src)
 
 /obj/machinery/organ_printer/flesh/dismantle()
 	var/turf/T = get_turf(src)

@@ -10,7 +10,6 @@
 
 /obj/effect/mineral/Initialize(mapload, datum/ore/M)
 	. = ..()
-	..(newloc)
 	name = "[M.display_name] deposit"
 	ore_key = M.name
 	icon_state = "rock_[ore_key]"

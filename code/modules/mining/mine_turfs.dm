@@ -589,7 +589,7 @@ turf/simulated/mineral/floor/light_corner
 	//otherwise, they come out inside a chunk of rock
 	var/obj/item/X
 	if(is_clean)
-		X = new /obj/item/archaeological_find(src, new_item_type = F.find_type)
+		X = new /obj/item/archaeological_find(src, F.find_type)
 	else
 		X = new /obj/item/strangerock(src, F.find_type)
 		geologic_data.UpdateNearbyArtifactInfo(src)
