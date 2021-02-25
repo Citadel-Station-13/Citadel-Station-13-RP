@@ -149,5 +149,5 @@
 /obj/item/material/shard/shrapnel/Initialize(mapload, material_key)
 	. = ..(mapload, "steel")
 
-/obj/item/material/shard/phoron/Initialize(, material_key)
+/obj/item/material/shard/phoron/Initialize(mapload, material_key)
 	. = ..(mapload, "phglass")
