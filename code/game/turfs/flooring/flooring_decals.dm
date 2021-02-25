@@ -9,7 +9,7 @@ var/list/floor_decals = list()
 	plane = DECAL_PLANE
 	var/supplied_dir
 
-/obj/effect/floor_decal/Initialize(mapload, nedir, newcolour)
+/obj/effect/floor_decal/Initialize(mapload, newdir, newcolour)
 	supplied_dir = newdir
 	if(newcolour)
 		color = newcolour
