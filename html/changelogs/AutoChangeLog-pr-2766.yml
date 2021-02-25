@@ -1,0 +1,5 @@
+author: "rpilcrow"
+delete-after: True
+changes: 
+  - bugfix: "Masks no longer block your ability to use swab kits on hands."
+  - tweak: "Slightly altered swab kit text"
