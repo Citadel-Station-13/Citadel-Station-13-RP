@@ -51,18 +51,22 @@
 /datum/gear/eyes/security/prescriptionsec
 	display_name = "Security - Security HUD - Prescription"
 	path = /obj/item/clothing/glasses/hud/security/prescription
+	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
 
 /datum/gear/eyes/security/sunglasshud
 	display_name = "Security - Security HUD - Sunglasses"
 	path = /obj/item/clothing/glasses/sunglasses/sechud
+	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
 
 /datum/gear/eyes/security/aviator
 	display_name = "Security - Security HUD - Aviators"
 	path = /obj/item/clothing/glasses/sunglasses/sechud/aviator
+	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
 
 /datum/gear/eyes/security/aviator/prescription
 	display_name = "Security - Security HUD - Aviators - Prescription"
 	path = /obj/item/clothing/glasses/sunglasses/sechud/aviator/prescription
+	allowed_roles = list("Security Officer","Head of Security","Warden", "Detective")
 
 /datum/gear/eyes/medical
 	display_name = "Medical - Medical HUD"
@@ -72,14 +76,17 @@
 /datum/gear/eyes/medical/prescriptionmed
 	display_name = "Medical - Medical HUD - Prescription"
 	path = /obj/item/clothing/glasses/hud/health/prescription
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/eyes/medical/aviator
 	display_name = "Medical - Medical HUD - Aviators"
 	path = /obj/item/clothing/glasses/hud/health/aviator
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/eyes/medical/aviator/prescription
 	display_name = "Medical - Medical HUD - Aviators - Prescription"
 	path = /obj/item/clothing/glasses/hud/health/aviator/prescription
+	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/eyes/meson
 	display_name = "EngSci and Mining - Optical Meson Scanners"
@@ -89,23 +96,27 @@
 /datum/gear/eyes/meson/prescription
 	display_name = "EngSci and Mining - Optical Meson Scanners - Prescription"
 	path = /obj/item/clothing/glasses/meson/prescription
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")
 
 /datum/gear/eyes/meson/aviator
 	display_name = "EngSci and Mining - Optical Meson Scanners - Aviators"
 	path = /obj/item/clothing/glasses/meson/aviator
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")
 
 /datum/gear/eyes/meson/aviator/prescription
 	display_name = "EngSci and Mining - Optical Meson Scanners - Aviators - Prescription"
 	path = /obj/item/clothing/glasses/meson/aviator/prescription
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")
 
 /datum/gear/eyes/material
 	display_name = "Mining Optical Material Scanners"
 	path = /obj/item/clothing/glasses/material
-	allowed_roles = list("Shaft Miner")
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")
 
 /datum/gear/eyes/material/prescription
 	display_name = "Mining Optical Material Scanners - Prescription"
 	path = /obj/item/clothing/glasses/material/prescription
+	allowed_roles = list("Station Engineer","Chief Engineer","Atmospheric Technician", "Scientist", "Research Director", "Shaft Miner")
 
 /datum/gear/eyes/glasses/fakesun
 	display_name = "Civilian - Sunglasses - Stylish"
@@ -123,14 +134,17 @@
 /datum/gear/eyes/sun/shades
 	display_name = "SecCom - Sunglasses - Fat"
 	path = /obj/item/clothing/glasses/sunglasses/big
+	allowed_roles = list("Security Officer","Head of Security","Warden","Facility Director","Head of Personnel","Quartermaster","Internal Affairs Agent","Detective")
 
 /datum/gear/eyes/sun/aviators
 	display_name = "SecCom - Sunglasses - Aviators"
 	path = /obj/item/clothing/glasses/sunglasses/aviator
+	allowed_roles = list("Security Officer","Head of Security","Warden","Facility Director","Head of Personnel","Quartermaster","Internal Affairs Agent","Detective")
 
 /datum/gear/eyes/sun/prescriptionsun
 	display_name = "SecCom - Sunglasses - Presciption"
 	path = /obj/item/clothing/glasses/sunglasses/prescription
+	allowed_roles = list("Security Officer","Head of Security","Warden","Facility Director","Head of Personnel","Quartermaster","Internal Affairs Agent","Detective")
 
 /datum/gear/eyes/circuitry
 	display_name = "goggles, circuitry (empty)"
