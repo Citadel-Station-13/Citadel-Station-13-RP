@@ -87,7 +87,9 @@ obj/item/gun/energy/laser/retro/sc_retro
 //Barman's shotgun
 /obj/item/gun/projectile/shotgun/pump/sc_pump
 
-/obj/item/gun/projectile/shotgun/pump/sc_pump/New()
+/obj/item/gun/projectile/shotgun/pump/sc_pump/Initialize(mapload, starts_loaded)
+	. = ..()
+
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo

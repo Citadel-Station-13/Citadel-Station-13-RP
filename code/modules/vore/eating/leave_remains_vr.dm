@@ -83,7 +83,10 @@
 	var/pred_ckey
 	var/pred_name
 
-/obj/item/digestion_remains/New(var/newloc,var/mob/living/pred)
+/obj/item/digestion_remains/Initialize(mapload)
+	. = ..()
+
+New(var/newloc,var/mob/living/pred)
 	..(newloc)
 	pred_ckey = pred.ckey
 	pred_name = pred.name

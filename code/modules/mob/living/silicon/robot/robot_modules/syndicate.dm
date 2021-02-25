@@ -31,7 +31,11 @@
 	var/id
 
 // All syndie modules get these, and the base borg items (flash, crowbar, etc).
-/obj/item/robot_module/robot/syndicate/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/syndicate/Initialize(mapload)
+	. = ..()
+
+
+New(var/mob/living/silicon/robot/R)
 	..()
 	loc = R
 	src.modules += new /obj/item/pinpointer/shuttle/merc(src)

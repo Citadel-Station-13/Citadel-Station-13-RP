@@ -38,7 +38,8 @@
 	movement_range = 15
 	energy = -20
 
-/obj/effect/accelerated_particle/New(loc, dir = 2)
+/obj/effect/accelerated_particle/Initialize(mapload, dir = SOUTH)
+	. = ..()
 	src.loc = loc
 	src.setDir(dir)
 	spawn(0)

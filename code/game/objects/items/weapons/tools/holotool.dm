@@ -24,7 +24,7 @@
 											/obj/item/tool/crowbar/switchy = null,
 											/obj/item/multitool/switchy = null)
 	var/list/obj/item/stored_modules = list()
-	var/obj/item/deployed//what's currently in use
+	var/obj/item/deployed //what's currently in use
 	var/switchingtype = "basic"//type for update_icon
 
 	var/static/radial_driver = image(icon = 'icons/obj/tools.dmi', icon_state = "screwdriver") //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -56,8 +56,8 @@
 		return
 	..()
 
-/obj/item/switchtool/New()
-	..()
+/obj/item/switchtool/Initialize(mapload)
+	. = ..()
 	for(var/module in start_modules)//making the modules
 		stored_modules |= new module(src)
 

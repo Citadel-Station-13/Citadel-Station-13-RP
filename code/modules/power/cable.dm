@@ -537,11 +537,10 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		user.visible_message("<span class='suicide'>[user] is strangling [TU.himself] with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return(OXYLOSS)
 
-/obj/item/stack/cable_coil/New(loc, length = MAXCOIL, var/param_color = null)
-	..()
-	src.amount = length
+/obj/item/stack/cable_coil/Initialize(mapload, new_amount = MAXCOIL, merge, param_color)
+	. = ..()
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
-		color = param_color
+		add_atom_colour(param_color, FIXED_COLOUR_PRIORITY)
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
 	update_icon()

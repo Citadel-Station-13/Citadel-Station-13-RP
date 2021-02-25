@@ -463,7 +463,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 /obj/effect/statclick/ahelp
 	var/datum/admin_help/ahelp_datum
 
-/obj/effect/statclick/ahelp/New(loc, datum/admin_help/AH)
+/obj/effect/statclick/ahelp/Initialize(mapload, text, target)
+	. = ..()
+
+New(loc, datum/admin_help/AH)
 	ahelp_datum = AH
 	..(loc)
 
