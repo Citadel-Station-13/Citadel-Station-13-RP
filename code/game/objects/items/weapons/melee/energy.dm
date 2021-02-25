@@ -227,7 +227,7 @@
 	use_cell = TRUE
 	hitcost = 120
 
-/obj/item/melee/energy/axe/charge/loaded/init_outfit_decls()
+/obj/item/melee/energy/axe/charge/loaded/Initialize(mapload)
 	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 

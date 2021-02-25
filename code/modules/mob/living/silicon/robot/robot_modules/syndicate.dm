@@ -61,7 +61,6 @@
 
 /obj/item/robot_module/robot/syndicate/protector/Initialize(mapload)
 	. = ..()
-	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/shield_projector/rectangle/weak(src)
 	src.modules += new /obj/item/gun/energy/dakkalaser(src)
 	src.modules += new /obj/item/handcuffs/cyborg(src)
@@ -77,7 +76,6 @@
 
 /obj/item/robot_module/robot/syndicate/mechanist/Initialize(mapload)
 	. = ..()
-	var/mob/living/silicon/robot/R = loc
 	// General engineering/hacking.
 	src.modules += new /obj/item/borg/sight/meson(src)
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
@@ -146,7 +144,6 @@
 
 /obj/item/robot_module/robot/syndicate/combat_medic/Initialize(mapload)
 	. = ..()
-	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/borg/sight/hud/med(src)
 	src.modules += new /obj/item/healthanalyzer/advanced(src)
 	src.modules += new /obj/item/reagent_containers/borghypo/merc(src)
