@@ -671,3 +671,6 @@
 	if(!T)
 		return TRUE
 	return T.has_gravity()
+
+/atom/proc/is_incorporeal()
+	return FALSE

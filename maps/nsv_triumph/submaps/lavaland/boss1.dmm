@@ -27,10 +27,6 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/simulated/floor/greengrid,
 /area/lavaland/bosses)
-"n" = (
-/obj/item/digestion_remains/ribcage,
-/turf/simulated/floor/greengrid,
-/area/lavaland/bosses)
 "r" = (
 /turf/simulated/floor/bluegrid,
 /area/lavaland/bosses)
@@ -485,7 +481,7 @@ a
 a
 a
 c
-n
+c
 r
 v
 E

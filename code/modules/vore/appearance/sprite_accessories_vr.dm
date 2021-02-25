@@ -159,6 +159,21 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/ears/demon_horns3
+	name = "demon horns, colorable(upward)"
+	desc = ""
+	icon_state = "demon-horns3"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/demon_horns4
+	name = "demon horns, colorable ring(upward)"
+	desc = ""
+	icon_state = "demon-horns4"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "demon-horns4-ring"
+
 /datum/sprite_accessory/ears/dragon_horns
 	name = "dragon horns, colorable"
 	desc = ""

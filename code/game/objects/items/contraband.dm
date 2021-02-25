@@ -209,3 +209,12 @@
 		new loot(usr.drop_location())
 		to_chat(user, "You unwrap the package.")
 		qdel(src)
+
+//Ported from Main.
+
+/obj/item/skub
+	name = "skub"
+	desc = "A standard jar of skub."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "skub"
+	attack_verb = list("skubbed")

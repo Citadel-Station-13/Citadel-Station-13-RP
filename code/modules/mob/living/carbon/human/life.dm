@@ -612,26 +612,35 @@ var/last_message = 0
 		return
 	//Stuff like the xenomorph's plasma regen happens here.
 	species.handle_environment_special(src)
+
+	if(is_incorporeal())
+		return
+	
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
-		species.heat_level_1 = 400
-		species.heat_level_2 = 420 // haha nice
-		species.heat_level_3 = 1000
-		species.cold_level_1 = 275
-		species.cold_level_2 = 250
-		species.cold_level_3 = 200
-		species.cold_discomfort_level = 290
-		species.heat_discomfort_level = 380
-		species.heat_discomfort_strings = list(
-			"You feel heat within your wiring.",
-			"You feel uncomfortably warm.",
-			"Your internal sensors chime at the increase in temperature."
-			)
-		species.cold_discomfort_strings = list(
-			"A small heating element begins warming your system.",
-			"Your focus is briefly stolen by the chill of the air.",
-			"You feel uncomfortably cold.",
-			"You feel a chill within your wiring."
-			)
+		var/mob/living/carbon/human/H = src
+		if(H.species.name == "Protean")
+			return // dont modify protean heat levels
+
+		else
+			species.heat_level_1 = 400
+			species.heat_level_2 = 420 // haha nice
+			species.heat_level_3 = 1000
+			species.cold_level_1 = 275
+			species.cold_level_2 = 250
+			species.cold_level_3 = 200
+			species.cold_discomfort_level = 290
+			species.heat_discomfort_level = 380
+			species.heat_discomfort_strings = list(
+				"You feel heat within your wiring.",
+				"You feel uncomfortably warm.",
+				"Your internal sensors chime at the increase in temperature."
+				)
+			species.cold_discomfort_strings = list(
+				"A small heating element begins warming your system.",
+				"Your focus is briefly stolen by the chill of the air.",
+				"You feel uncomfortably cold.",
+				"You feel a chill within your wiring."
+				)
 	//Moved pressure calculations here for use in skip-processing check.
 	var/pressure = environment.return_pressure()
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)

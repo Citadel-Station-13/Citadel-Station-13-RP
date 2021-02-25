@@ -1483,8 +1483,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	QDEL_NULL(src.pai)
 	return ..()
 
-/obj/item/pda/clown/Crossed(AM as mob|obj) //Clown PDA is slippery.
+/obj/item/pda/clown/Crossed(atom/movable/AM as mob|obj) //Clown PDA is slippery.
 	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 
