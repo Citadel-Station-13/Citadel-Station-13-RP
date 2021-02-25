@@ -6,9 +6,9 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 /datum/lore/atc_controller
 	//Shorter delays means more traffic, which gives the impression of a busier system, but also means a lot more radio noise
 	/// How long between ATC traffic
-	var/delay_min = 2 MINUTES  //25 MINUTES
+	var/delay_min = 20 MINUTES
 	/// Adjusted to give approx 2 per hour, will work out to 10-14 over a full shift
-	var/delay_max = 3 MINUTES //35 DEBUGGING TO TEST FOR NOW
+	var/delay_max = 30 MINUTES
 
 	/// How long to wait before sending the first message of the shift.
 	var/initial_delay = 2 MINUTES
@@ -36,8 +36,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	secchannel = "[rand(850,899)].[rand(1,9)]"
 	sdfchannel = "[rand(900,999)].[rand(1,9)]"
 
-	// DEBUG 450 is default
-	spawn(30 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
+	// 450 was the original time. Reducing to 360 due to lower init times on the server. If this is a problem, revert back to 450 as we had no ATC issues with that time.
+	spawn(360 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
 		/// HEY! if we have listiners for ssticker go use that instead of this snowflake.
 		msg("Crew transfer complete for all vessels. As a reminder, this shift's fleet frequencies are as follows for this shift: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
 		next_message = world.time + initial_delay
@@ -74,8 +74,11 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 /// Next level optimzation for this: datumize the convo (see main holopads/holodisk!)
 /datum/lore/atc_controller/proc/random_convo()
 	/// Resolve to the instances
-	var/datum/lore/organization/source = GLOB.loremaster.organizations[GLOB.loremaster.organizations[1]]
-	message_admins("Admin Log for LOREMASTER: [source]")
+	// OKAY what's happening here is a lot less agony inducing than it might seem. All that's happening here is a weighted RNG choice between the listed options in a variable.
+	// The first, [1], is for NanoTrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
+	// ALL the companies and items this list pulls from can be found in the organizations.dm file in this same folder (busy_space).
+	var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[1]=90,GLOB.loremaster.organizations=20))]
+
 		/// repurposed for new fun stuff
 	var/datum/lore/organization/secondary = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
 
@@ -160,8 +163,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		chatter_type = force_chatter_type
 	//I have to offload this from the chatter_type switch below and do it here. Byond should throw a shitfit because this isn't how you use pick.
 	else if(source_law_abiding && source_fleet)
-		chatter_type = pickweight(list("fleettraffic" = 90, "emerg" = 15, "dockingrequestgeneric" = 10,"dockingrequestsupply" = 10,
-		"dockingrequestrepair" = 10,"undockingrequest" = 10, "normal"))
+		chatter_type = pickweight(list("fleettraffic" = 90, "emerg" = 15, "dockingrequestgeneric" = 5,"dockingrequestsupply" = 5,
+		"dockingrequestrepair" = 5,"undockingrequest" = 2, "normal"))
 
 	else if(source_law_abiding && !source_system_defense)
 		chatter_type = pickweight(list("emerg" = 5, "policescan" = 25, "traveladvisory" = 25,
@@ -266,8 +269,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 				else
 					msg("[source_prefix] [source_shipname], thank you for your report. Please proceed operations as normal. [GLOB.using_map.dock_name], out.")
 			else // For when the fleet has to report something unfortuante has happend
-				var/bad_report = pick("Recent cultist activity on the nearby planet we scouted has deemed the are unsafe for exploration",
-					"The medical wing on our ship is over-filled after the recent rescue operation of the crashed [pick("cruise ship", "trading vessel", "ship")] into a nearby [pick("station","outpost","colony")]. We might need additional aid [pick("at this rate","soon","later")]",
+				var/bad_report = pick("Recent cultist activity on the nearby planet we scouted has deemed the area unsafe for exploration and mining operations",
+					"The medical wing on our ship is over-capacity after the recent rescue operation of the crashed [pick("cruise ship", "trading vessel", "ship")] into a nearby [pick("station","outpost","colony","asteroid")]. We might need additional aid [pick("at this rate","soon","later")]",
 					"A recent hostile boarding action has left our ship severely damaged and we're heading back to dock. We have multiple injured aboard",
 					"The ships food supplies are running low after our hydroponics bay was destroyed due to [pick("uncontrolled plant growth","atmospheric failure","unruly crew")], and we're needing additional supplies",
 					"A recent artifact we recovered on our ship has knocked out our [pick("life support","engines","gyros","AI")]",
