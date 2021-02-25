@@ -24,7 +24,6 @@
 	return INITIALIZE_HINT_NORMAL
 
 /atom/movable/lighting_overlay/Initialize(mapload, no_update = FALSE)
-	. = ..()
 	var/turf/T = loc //If this runtimes atleast we'll know what's creating overlays outside of turfs.
 	if(T.dynamic_lighting)
 		. = ..()
@@ -37,7 +36,7 @@
 			return
 		update_overlay()
 	else
-		qdel(src)
+		return INITIALIZE_HINT_QDEL
 
 /atom/movable/lighting_overlay/proc/update_overlay()
 	set waitfor = FALSE

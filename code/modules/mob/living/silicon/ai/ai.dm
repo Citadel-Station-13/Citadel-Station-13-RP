@@ -96,7 +96,7 @@ var/list/ai_verbs_default = list(
 	src.verbs -= ai_verbs_default
 	src.verbs -= silicon_subsystems
 
-/mob/living/silicon/ai/New(loc, var/datum/ai_laws/L, var/obj/item/mmi/B, var/safety = 0)
+/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = FALSE)
 	announcement = new()
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
@@ -162,6 +162,12 @@ var/list/ai_verbs_default = list(
 	add_language(LANGUAGE_ROOTLOCAL, 1)
 	add_language(LANGUAGE_TERMINUS, 1)
 	add_language(LANGUAGE_ZADDAT, 1)
+	add_language(LANGUAGE_BIRDSONG,		1)
+	add_language(LANGUAGE_SAGARU,		1)
+	add_language(LANGUAGE_CANILUNZT,	1)
+	add_language(LANGUAGE_ECUREUILIAN,	1)
+	add_language(LANGUAGE_DAEMON,		1)
+	add_language(LANGUAGE_ENOCHIAN,		1)
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
@@ -178,8 +184,7 @@ var/list/ai_verbs_default = list(
 		new /obj/machinery/ai_powersupply(src)
 
 	ai_list += src
-	..()
-	return
+	return ..()
 
 /mob/living/silicon/ai/proc/on_mob_init()
 	to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
@@ -302,7 +307,9 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null)
+/obj/machinery/ai_powersupply/Initialize(mapload, newdir)
+	. = ..()
+	var/mob/living/silicon/ai/ai = loc
 	powered_ai = ai
 	powered_ai.psupply = src
 	if(istype(powered_ai,/mob/living/silicon/ai/announcer))	//Don't try to get a loc for a nullspace announcer mob, just put it into it
@@ -310,7 +317,6 @@ var/list/ai_verbs_default = list(
 	else
 		forceMove(powered_ai.loc)
 
-	..()
 	use_power(USE_POWER_IDLE) // Just incase we need to wake up the power system.
 
 /obj/machinery/ai_powersupply/Destroy()

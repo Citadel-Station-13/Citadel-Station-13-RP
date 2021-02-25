@@ -906,9 +906,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/radio/subspacehandset/linked
 	var/obj/item/subspaceradio/base_unit
 
-/obj/item/radio/subspacehandset/linked/New(newloc, obj/item/subspaceradio/radio)
+/obj/item/radio/subspacehandset/linked/Initialize(mapload, obj/item/subspaceradio/radio)
 	base_unit = radio
-	..(newloc)
+	return ..(mapload)
 
 /obj/item/radio/subspacehandset/linked/Destroy()
 	if(base_unit)

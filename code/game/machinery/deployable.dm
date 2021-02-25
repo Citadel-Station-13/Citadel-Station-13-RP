@@ -16,8 +16,8 @@ Barricades
 	var/maxhealth = 100
 	var/datum/material/material
 
-/obj/structure/barricade/New(var/newloc, var/material_name)
-	..(newloc)
+/obj/structure/barricade/Initialize(mapload, material_name)
+	. = ..()
 	if(!material_name)
 		material_name = "wood"
 	material = get_material_by_name("[material_name]")

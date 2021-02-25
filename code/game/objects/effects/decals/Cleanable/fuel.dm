@@ -51,7 +51,7 @@
 	icon_state = "mustard"
 	anchored = 0
 
-/obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel/New(newLoc, amt = 1, d = 0)
+/obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel/Initialize(mapload, amt = 1, d = 0)
 	setDir(d) //Setting this direction means you won't get torched by your own flamethrower.
 	if(istype(newLoc, /turf/simulated))
 		var/turf/simulated/T = newLoc

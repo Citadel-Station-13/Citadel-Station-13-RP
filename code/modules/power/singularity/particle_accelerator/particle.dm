@@ -38,13 +38,11 @@
 	movement_range = 15
 	energy = -20
 
-/obj/effect/accelerated_particle/Initialize(mapload, dir = SOUTH)
+/obj/effect/accelerated_particle/Initialize(mapload, dir = SOUTH`)
 	. = ..()
 	src.loc = loc
 	src.setDir(dir)
-	spawn(0)
-		move(1)
-
+	INVOKE_ASYNC(src, .proc/move, 1)
 
 /obj/effect/accelerated_particle/Bump(atom/A)
 	if (A)

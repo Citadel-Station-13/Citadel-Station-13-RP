@@ -44,8 +44,8 @@
 	w_class = ITEMSIZE_NORMAL
 	var/open = FALSE
 
-/obj/item/melee/umbrella/New()
-	..()
+/obj/item/melee/umbrella/Initialize(mapload)
+	. = ..()
 	update_icon()
 
 /obj/item/melee/umbrella/attack_self()

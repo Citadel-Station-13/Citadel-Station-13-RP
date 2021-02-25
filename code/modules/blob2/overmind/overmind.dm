@@ -23,7 +23,8 @@ var/list/overminds = list()
 	var/ai_controlled = TRUE
 	var/auto_pilot = FALSE // If true, and if a client is attached, the AI routine will continue running.
 
-/mob/observer/blob/New(var/newloc, pre_placed = 0, starting_points = 60, desired_blob_type = null)
+/mob/observer/blob/Initialize(mapload, pre_placed = FALSE, starting_points = 60, desired_blob_type)
+
 	blob_points = starting_points
 	if(pre_placed) //we already have a core!
 		placed = 1
@@ -42,7 +43,7 @@ var/list/overminds = list()
 		blob_core.update_icon()
 		level_seven_blob_announcement(blob_core)
 
-	..(newloc)
+	return ..(mapload)
 
 /mob/observer/blob/Destroy()
 	for(var/BL in blobs)

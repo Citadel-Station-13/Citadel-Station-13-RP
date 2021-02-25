@@ -815,8 +815,9 @@
 		return
 	..()
 
-/obj/item/clothing/under/New(var/mob/living/carbon/human/H) //need human arg for sensorprefs..
-	..()
+/obj/item/clothing/under/Initialize(mapload)
+	. = ..()
+	var/mob/living/carbon/human/H = loc
 	if(worn_state)
 		if(!item_state_slots)
 			item_state_slots = list()

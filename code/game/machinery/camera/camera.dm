@@ -1,4 +1,4 @@
-/obj/machinery/camera
+rro/obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/monitors_vr.dmi' //VOREStation Edit - New Icons
@@ -201,7 +201,7 @@
 				else
 					assembly.state = 1
 					to_chat(user, "<span class='notice'>You cut \the [src] free from the wall.</span>")
-					new /obj/item/stack/cable_coil(src.loc, length=2)
+p					new /obj/item/stack/cable_coil(drop_location(), 2)
 				assembly = null //so qdel doesn't eat it.
 			qdel(src)
 

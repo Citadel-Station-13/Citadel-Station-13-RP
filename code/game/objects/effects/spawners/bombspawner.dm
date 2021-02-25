@@ -151,18 +151,13 @@
 	name = "TTV bomb - proximity"
 	assembly_type = /obj/item/assembly/prox_sensor
 
-/obj/effect/spawner/newbomb/radio/custom/Initialize(newloc)
-	. = ..()
-	desc = "this is for weird code use, don't spawn it!!!"
-New(var/newloc, ph, ox, co)
+/obj/effect/spawner/newbomb/radio/custom/Initialize(newloc, ph, ox, co)
 	if(ph != null) phoron_amt = ph
 	if(ox != null) oxygen_amt = ox
 	if(co != null) carbon_amt = co
-	..()
+	return ..()
 
-/obj/effect/spawner/newbomb/Initialize(newloc)
-	..(newloc)
-
+/obj/effect/spawner/newbomb/Initialize(mapload)
 	var/obj/item/transfer_valve/V = new(src.loc)
 	var/obj/item/tank/phoron/PT = new(V)
 	var/obj/item/tank/oxygen/OT = new(V)
@@ -197,9 +192,7 @@ New(var/newloc, ph, ox, co)
 
 	V.update_icon()
 
-	qdel(src)
-
-
+	return INITIALIZE_HINT_QDEL
 
 ///////////////////////
 //One Tank Bombs, WOOOOOOO! -Luke

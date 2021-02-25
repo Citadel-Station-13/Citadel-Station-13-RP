@@ -8,7 +8,8 @@
 	var/ore_key
 	var/image/scanner_image
 
-/obj/effect/mineral/New(var/newloc, var/datum/ore/M)
+/obj/effect/mineral/Initialize(mapload, datum/ore/M)
+	. = ..()
 	..(newloc)
 	name = "[M.display_name] deposit"
 	ore_key = M.name

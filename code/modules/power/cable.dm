@@ -200,9 +200,9 @@ var/list/possible_cable_coil_colours = list(
 			return
 
 		if(src.d1)	// 0-X cables are 1 unit, X-X cables are 2 units long
-			CC = new/obj/item/stack/cable_coil(T, 2, color)
+			CC = new/obj/item/stack/cable_coil(T, 2, null,color)
 		else
-			CC = new/obj/item/stack/cable_coil(T, 1, color)
+			CC = new/obj/item/stack/cable_coil(T, 1, null, color)
 
 		src.add_fingerprint(user)
 		src.transfer_fingerprints_to(CC)
@@ -265,12 +265,12 @@ var/list/possible_cable_coil_colours = list(
 			qdel(src)
 		if(2.0)
 			if (prob(50))
-				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
+				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
 				qdel(src)
 
 		if(3.0)
 			if (prob(25))
-				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
+				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
 				qdel(src)
 	return
 
@@ -952,7 +952,8 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	stacktype = null
 	toolspeed = 0.25
 
-/obj/item/stack/cable_coil/alien/New(loc, length = MAXCOIL, var/param_color = null)		//There has to be a better way to do this.
+/obj/item/stack/cable_coil/alien/Initialize(mapload, new_amount, merge, param_color)
+	. = ..()
 	if(embed_chance == -1)		//From /obj/item, don't want to do what the normal cable_coil does
 		if(sharp)
 			embed_chance = force/w_class

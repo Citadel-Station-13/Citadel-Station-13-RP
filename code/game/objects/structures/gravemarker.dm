@@ -19,15 +19,15 @@
 
 	var/datum/material/material
 
-/obj/structure/gravemarker/New(var/newloc, var/material_name)
-	..(newloc)
+/obj/structure/gravemarker/Initialize(mapload, material_name)
+	. = ..()
 	if(!material_name)
 		material_name = "wood"
 	material = get_material_by_name("[material_name]")
 	if(!material)
 		qdel(src)
 		return
-	color = material.icon_colour
+	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
 
 /obj/structure/gravemarker/examine(mob/user)
 	. = ..()

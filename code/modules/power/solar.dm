@@ -169,12 +169,11 @@ GLOBAL_LIST_EMPTY(solars_list)
 	return
 
 
-/obj/machinery/power/solar/fake/New(var/turf/loc, var/obj/item/solar_assembly/S)
-	..(loc, S, 0)
+/obj/machinery/power/solar/fake/Initialize(mapload, obj/item/solar_assembly/S)
+	. = ..(mapload, S, FALSE)
 
 /obj/machinery/power/solar/fake/process(delta_time)
-	. = PROCESS_KILL
-	return
+	return PROCESS_KILL
 
 //trace towards SSsun.sun to see if we're in shadow
 /obj/machinery/power/solar/proc/occlusion()

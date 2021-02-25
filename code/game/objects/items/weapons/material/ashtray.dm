@@ -9,8 +9,8 @@ var/global/list/ashtray_cache = list()
 	var/image/base_image
 	var/max_butts = 10
 
-/obj/item/material/ashtray/New(var/newloc, var/material_name)
-	..(newloc, material_name)
+/obj/item/material/ashtray/Initialize(mapload, material_name)
+	. = ..(mapload, material_name)
 	if(!material)
 		qdel(src)
 		return

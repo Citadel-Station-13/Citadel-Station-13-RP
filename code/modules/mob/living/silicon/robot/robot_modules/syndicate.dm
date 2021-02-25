@@ -33,11 +33,7 @@
 // All syndie modules get these, and the base borg items (flash, crowbar, etc).
 /obj/item/robot_module/robot/syndicate/Initialize(mapload)
 	. = ..()
-
-
-New(var/mob/living/silicon/robot/R)
-	..()
-	loc = R
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/pinpointer/shuttle/merc(src)
 	src.modules += new /obj/item/melee/energy/sword(src)
 
@@ -63,8 +59,9 @@ New(var/mob/living/silicon/robot/R)
 		"XI-ALP" = "syndi-heavy"
 		)
 
-/obj/item/robot_module/robot/syndicate/protector/New(var/mob/living/silicon/robot/R)
-	..()
+/obj/item/robot_module/robot/syndicate/protector/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/shield_projector/rectangle/weak(src)
 	src.modules += new /obj/item/gun/energy/dakkalaser(src)
 	src.modules += new /obj/item/handcuffs/cyborg(src)
@@ -78,8 +75,9 @@ New(var/mob/living/silicon/robot/R)
 		"WTOperator" = "sleekhos"
 		)
 
-/obj/item/robot_module/robot/syndicate/mechanist/New(var/mob/living/silicon/robot/R)
-	..()
+/obj/item/robot_module/robot/syndicate/mechanist/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	// General engineering/hacking.
 	src.modules += new /obj/item/borg/sight/meson(src)
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)

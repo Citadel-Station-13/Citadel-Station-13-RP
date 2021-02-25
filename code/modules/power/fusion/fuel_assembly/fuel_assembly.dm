@@ -12,10 +12,10 @@
 	var/radioactivity = 0
 	var/const/initial_amount = 300
 
-/obj/item/fuel_assembly/New(var/newloc, var/_material, var/_colour)
+/obj/item/fuel_assembly/Initialize(mapload, _material, _colour)
+	. = ..()
 	fuel_type = _material
 	fuel_colour = _colour
-	..(newloc)
 
 /obj/item/fuel_assembly/Initialize(mapload)
 	. = ..()

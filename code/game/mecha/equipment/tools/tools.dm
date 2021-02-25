@@ -1051,15 +1051,15 @@
 
 	equip_type = EQUIP_UTILITY
 
-/obj/item/mecha_parts/mecha_equipment/generator/New()
-	..()
+/obj/item/mecha_parts/mecha_equipment/generator/Initialize(mapload)
+	. = ..()
 	init()
-	return
+
 
 /obj/item/mecha_parts/mecha_equipment/generator/Destroy()
 	qdel(pr_mech_generator)
 	pr_mech_generator = null
-	..()
+	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/generator/proc/init()
 	fuel = new /obj/item/stack/material/phoron(src)
@@ -1543,10 +1543,10 @@
 	var/max_cable = 1000
 	required_type = list(/obj/mecha/working)
 
-/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/New()
+/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/Initialize(mapload)
+	. = ..()
 	cable = new(src)
 	cable.amount = 0
-	..()
 
 /obj/item/mecha_parts/mecha_equipment/tool/cable_layer/MoveAction()
 	layCable()

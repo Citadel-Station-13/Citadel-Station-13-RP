@@ -37,8 +37,8 @@
 		stored_mmi = null
 	return ..()
 
-/obj/item/organ/internal/mmi_holder/New(var/mob/living/carbon/human/new_owner, var/internal)
-	..(new_owner, internal)
+/obj/item/organ/internal/mmi_holder/Initialize(mapload, internal)
+	. = ..()
 	var/mob/living/carbon/human/dummy/mannequin/M = new_owner
 	if(istype(M))
 		return

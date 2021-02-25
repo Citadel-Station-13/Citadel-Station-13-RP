@@ -271,9 +271,9 @@
 	icon_state = "bioprinter"
 	circuit = /obj/item/circuitboard/bioprinter
 
-/obj/machinery/organ_printer/flesh/full/New()
+/obj/machinery/organ_printer/flesh/full/Initialize(mapload, newdir)
 	. = ..()
-	container = new /obj/item/reagent_containers/glass/bottle/biomass(src)
+sz	container = new /obj/item/reagent_containers/glass/bottle/biomass(src)
 
 /obj/machinery/organ_printer/flesh/dismantle()
 	var/turf/T = get_turf(src)

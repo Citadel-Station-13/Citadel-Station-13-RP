@@ -71,7 +71,8 @@ obj/item/gun/energy/laser/retro/sc_retro
 /obj/item/gun/projectile/silenced/sc_silenced
 
 //Make it so that these guns only spawn with a couple bullets... if any
-/obj/item/gun/projectile/silenced/sc_silenced/New()
+/obj/item/gun/projectile/silenced/sc_silenced/Initialize(mapload, starts_loaded)
+	. = ..()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo
@@ -79,7 +80,8 @@ obj/item/gun/energy/laser/retro/sc_retro
 //Syndicate sub-machine guns.
 /obj/item/gun/projectile/automatic/c20r/sc_c20r
 
-/obj/item/gun/projectile/automatic/c20r/sc_c20r/New()
+/obj/item/gun/projectile/automatic/c20r/sc_c20r/Initialize(mapload, starts_loaded)
+	. = ..()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo
@@ -89,7 +91,6 @@ obj/item/gun/energy/laser/retro/sc_retro
 
 /obj/item/gun/projectile/shotgun/pump/sc_pump/Initialize(mapload, starts_loaded)
 	. = ..()
-
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo

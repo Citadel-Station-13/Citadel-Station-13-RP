@@ -154,7 +154,7 @@ var/global/list/latejoin_shuttle   = list()
 /obj/effect/landmark/shuttle/New()
 	latejoin_shuttle += loc // Register this turf as shuttle latejoin.
 	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
-	..()
+	return ..()
 
 /datum/spawnpoint/shuttle
 	display_name = "Shuttle Bay"

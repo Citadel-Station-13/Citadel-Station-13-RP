@@ -83,8 +83,8 @@
 	toolspeed = 0.25
 	var/obj/item/tool/wirecutters/power/counterpart = null
 
-/obj/item/tool/crowbar/power/New(newloc, no_counterpart = TRUE)
-	..(newloc)
+/obj/item/tool/crowbar/power/Initialize(mapload, no_counterpart = TRUe)
+	. = ..()
 	if(!counterpart && no_counterpart)
 		counterpart = new(src, FALSE)
 		counterpart.counterpart = src

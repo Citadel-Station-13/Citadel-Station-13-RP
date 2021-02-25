@@ -86,7 +86,7 @@ var/global/list/light_type_cache = list()
 		if (src.stage != 2) return
 		src.stage = 1
 		src.update_icon()
-		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, "red")
+		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, null, "red")
 		user.visible_message("[user.name] removes the wiring from [src].", \
 			"You remove the wiring from [src].", "You hear a noise.")
 		playsound(src.loc, W.usesound, 50, 1)

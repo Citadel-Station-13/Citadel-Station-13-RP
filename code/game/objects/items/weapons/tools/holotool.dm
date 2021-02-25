@@ -335,9 +335,9 @@
 						/obj/item/melee/energy/sword/holoswitch = null,
 						/obj/item/shield/holoswitch = null)
 
-/obj/item/switchtool/holo/New()
-	..()
-	color = light_color
+/obj/item/switchtool/holo/Initialize(mapload)
+	. = ..()
+	add_atom_colour(light_color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/switchtool/holo/deploy(var/obj/item/module) //We lightin' it up in here
 	..()
@@ -349,7 +349,6 @@
 /obj/item/switchtool/holo/undeploy()
 	..()
 	set_light(0)
-
 
 /obj/item/switchtool/holo/CE
 	name = "Chief Engineer's holotool"

@@ -586,7 +586,7 @@ END OF CITADEL CHANGE */
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/multitool(src)
-	new /obj/item/stack/cable_coil(src, 30, "red")
+	new /obj/item/stack/cable_coil(src, 30, null, "red")
 
 /* CITADEL CHANGE - Removes Virgo Fluff
 // molenar:Giliana Gamish

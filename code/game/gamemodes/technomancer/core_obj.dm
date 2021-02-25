@@ -144,7 +144,7 @@
 /obj/spellbutton/Initialize(mapload, path, new_name, new_icon_state)
 	. = ..()
 	if(!path || !ispath(path))
-		message_admins("ERROR: /obj/spellbutton/New() was not given a proper path!")
+		message_admins("ERROR: /obj/spellbutton/Initializesz() was not given a proper path!")
 		return INITIALIZE_HINT_QDEL
 	src.name = new_name
 	src.spellpath = path

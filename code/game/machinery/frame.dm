@@ -240,8 +240,8 @@
 		var/obj/ct = A
 		req_component_names[A] = initial(ct.name)
 
-/obj/structure/frame/New(var/loc, var/dir, var/building = 0, var/datum/frame/frame_types/type, mob/user as mob)
-	..()
+/obj/structure/frame/Initialize(mapload, dir, building = FALSE, datum/frame/frame_types/type, mob/user)
+	. = ..()
 	if(building)
 		frame_type = type
 		state = FRAME_PLACED
