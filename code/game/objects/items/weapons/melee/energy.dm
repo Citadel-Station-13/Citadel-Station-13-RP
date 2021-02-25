@@ -41,6 +41,7 @@
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	set_light(lrange, lpower, lcolor)
+	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
 /obj/item/melee/energy/proc/deactivate(mob/living/user)
 	if(!active)
@@ -177,8 +178,6 @@
 			deactivate()
 		update_icon()
 	. = ..()
-	if(colorable)
-		to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
 
 /*
