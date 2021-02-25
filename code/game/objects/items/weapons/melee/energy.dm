@@ -41,6 +41,7 @@
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	set_light(lrange, lpower, lcolor)
+	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
 /obj/item/melee/energy/proc/deactivate(mob/living/user)
 	if(!active)
@@ -146,11 +147,12 @@
 /obj/item/melee/energy/update_icon()
 	. = ..()
 	var/mutable_appearance/blade_overlay = mutable_appearance(icon, "[icon_state]_blade")
-	if(colorable)
-		blade_overlay.color = lcolor
-	if(rainbow || !colorable)
+	blade_overlay.color = lcolor
+	color = lcolor
+	if(rainbow)
 		blade_overlay = mutable_appearance(icon, "[icon_state]_blade_rainbow")
 		blade_overlay.color = "FFFFFF"
+		color = "FFFFFF"
 	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
 	if(active)
 		add_overlay(blade_overlay)
@@ -171,11 +173,11 @@
 	if(alert("Are you sure you want to recolor your blade?", "Confirm Recolor", "Yes", "No") == "Yes")
 		var/energy_color_input = input(usr,"","Choose Energy Color",lcolor) as color|null
 		if(energy_color_input)
-			lcolor = sanitize_hexcolor(energy_color_input)
+			lcolor = "#[sanitize_hexcolor(energy_color_input)]"
+			color = lcolor
+			deactivate()
 		update_icon()
 	. = ..()
-	if(colorable)
-		. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 
 /*
