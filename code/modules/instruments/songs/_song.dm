@@ -101,7 +101,7 @@
 	/// The kind of sustain we're using
 	var/sustain_mode = SUSTAIN_LINEAR
 	/// When a note is considered dead if it is below this in volume
-	var/sustain_dropoff_volume = 0
+	var/sustain_dropoff_volume = 1
 	/// Total duration of linear sustain for 100 volume note to get to SUSTAIN_DROPOFF
 	var/sustain_linear_duration = 5
 	/// Exponential sustain dropoff rate per decisecond
