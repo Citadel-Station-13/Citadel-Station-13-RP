@@ -282,7 +282,7 @@
 		)
 	cant_hold = list(/obj/item/tool/screwdriver/power)
 
-/obj/item/storage/bag/circuits/PopulateContents()
+/obj/item/storage/bag/circuits/basic/PopulateContents()
 	new /obj/item/storage/bag/circuits/mini/arithmetic(src)
 	new /obj/item/storage/bag/circuits/mini/trig(src)
 	new /obj/item/storage/bag/circuits/mini/input(src)
@@ -304,7 +304,6 @@
 	make_exact_fit()
 
 /obj/item/storage/bag/circuits/all/PopulateContents()
-	. = ..()
 	new /obj/item/storage/bag/circuits/mini/arithmetic/all(src)
 	new /obj/item/storage/bag/circuits/mini/trig/all(src)
 	new /obj/item/storage/bag/circuits/mini/input/all(src)
