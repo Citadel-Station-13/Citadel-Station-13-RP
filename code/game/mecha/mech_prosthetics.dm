@@ -29,8 +29,8 @@
 	var/species = "Human"
 	var/sync_message = ""
 
-/obj/machinery/pros_fabricator/New()
-	..()
+/obj/machinery/pros_fabricator/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/stock_parts/matter_bin(src)

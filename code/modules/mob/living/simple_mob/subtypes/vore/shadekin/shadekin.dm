@@ -77,7 +77,7 @@
 
 	var/list/shadekin_abilities
 
-/mob/living/simple_mob/shadekin/Initialize(mapload)
+/mob/living/simple_mob/shadekin/Initialize()
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_mob/shadekin)
 
@@ -123,7 +123,7 @@
 	var/list/ability_types = subtypesof(/obj/effect/shadekin_ability)
 	shadekin_abilities = list()
 	for(var/type in ability_types)
-		shadekin_abilities += new type(src)
+		shadekin_abilities += new type(null, src)
 
 	update_icon()
 

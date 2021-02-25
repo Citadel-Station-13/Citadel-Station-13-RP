@@ -95,8 +95,8 @@
 /obj/machinery/alarm/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/alarm/server/New()
-	..()
+/obj/machinery/alarm/server/Initialize(mapload)
+	. = ..()
 	req_access = list(access_rd, access_atmospherics, access_engine_equip)
 	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
@@ -115,8 +115,8 @@
 		elect_master(exclude_self = TRUE)
 	return ..()
 
-/obj/machinery/alarm/New()
-	..()
+/obj/machinery/alarm/Initialize(mapload)
+	. = ..()
 	first_run()
 
 /obj/machinery/alarm/proc/first_run()

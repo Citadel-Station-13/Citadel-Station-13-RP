@@ -392,8 +392,8 @@ Alien plants should do something if theres a lot of poison
 	var/ticks = 0
 	var/target_strength = 0
 
-/obj/effect/alien/acid/New(loc, target)
-	..(loc)
+/obj/effect/alien/acid/Initialize(mapload, target)
+	. = ..()
 	src.target = target
 
 	if(isturf(target)) // Turf take twice as long to take down.

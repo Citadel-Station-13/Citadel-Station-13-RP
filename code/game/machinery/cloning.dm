@@ -545,8 +545,7 @@
 	name = "Diskette Box"
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/disks/New()
-	..()
+/obj/item/storage/box/disks/PopulateContents()
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)

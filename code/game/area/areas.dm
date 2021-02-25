@@ -54,7 +54,9 @@
 			minimap_color = I.GetPixel(1,1)
 		else // no icon state? use random.
 			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70))	// This interacts with the map loader, so it needs to be set immediately
+	return ..()
 
+/area/Initialize(mapload)
 	icon_state = ""
 	uid = ++global_uid
 	all_areas += src
@@ -68,10 +70,6 @@
 		luminosity = 0
 	else
 		luminosity = 1
-
-	..()
-
-/area/Initialize(mapload)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD // Areas tradiationally are initialized AFTER other atoms.
 

@@ -15,8 +15,8 @@
 	req_access = list(access_rd) //Only the R&D can change server settings.
 	circuit = /obj/item/circuitboard/rdserver
 
-/obj/machinery/r_n_d/server/New()
-	..()
+/obj/machinery/r_n_d/server/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stack/cable_coil(src)

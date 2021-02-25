@@ -515,10 +515,10 @@
 	w_class = ITEMSIZE_SMALL
 	var/rating = 1
 
-/obj/item/stock_parts/New()
-	src.pixel_x = rand(-5.0, 5)
-	src.pixel_y = rand(-5.0, 5)
-	..()
+/obj/item/stock_parts/Initialize(mapload)
+	. = ..()
+	pixel_x = rand(-5.0, 5)
+	pixel_y = rand(-5.0, 5)
 
 /obj/item/stock_parts/get_rating()
 	return rating
@@ -542,9 +542,9 @@
 	var/charge = 0
 	var/max_charge = 1000
 
-/obj/item/stock_parts/capacitor/New()
+/obj/item/stock_parts/capacitor/Initialize(mapload)
 	. = ..()
-	max_charge *= rating
+	max_charge *= rating	// this is garbage someone remove it later and hardcode
 
 /obj/item/stock_parts/capacitor/proc/charge(var/amount)
 	charge += amount

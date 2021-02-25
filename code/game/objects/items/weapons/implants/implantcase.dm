@@ -121,11 +121,9 @@
 	desc = "A case containing an adrenalin implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/adrenalin/New()
+/obj/item/implantcase/adrenalin/Initialize(mapload)
 	src.imp = new /obj/item/implant/adrenalin( src )
-	..()
-	return
-
+	return ..()
 
 /obj/item/implantcase/dexplosive
 	name = "glass case - 'explosive'"
@@ -150,117 +148,105 @@
 	desc = "A case containing a GalCom language implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/language/New()
+/obj/item/implantcase/language/Initialize(mapload)
 	src.imp = new /obj/item/implant/language( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/language/eal
 	name = "glass case - 'EAL'"
 	desc = "A case containing an Encoded Audio Language implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/language/eal/New()
+/obj/item/implantcase/language/eal/Initialize(mapload)
 	src.imp = new /obj/item/implant/language/eal( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/shades
 	name = "glass case - 'Integrated Shades'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/shades/New()
+/obj/item/implantcase/shades/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/taser
 	name = "glass case - 'Taser'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/taser/New()
+/obj/item/implantcase/taser/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ/limbaugment( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/laser
 	name = "glass case - 'Laser'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/laser/New()
+/obj/item/implantcase/laser/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ/limbaugment/laser( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/dart
 	name = "glass case - 'Dart'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/dart/New()
+/obj/item/implantcase/dart/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ/limbaugment/dart( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/toolkit
 	name = "glass case - 'Toolkit'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/toolkit/New()
+/obj/item/implantcase/toolkit/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ/limbaugment/upperarm( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/medkit
-	name = "glass case - 'Toolkit'"
+	name = "glass case - 'Medikit'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/medkit/New()
+/obj/item/implantcase/medkit/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ/limbaugment/upperarm/medkit( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/surge
 	name = "glass case - 'Muscle Overclocker'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/surge/New()
+/obj/item/implantcase/surge/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ/limbaugment/upperarm/surge( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/analyzer
 	name = "glass case - 'Scanner'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/analyzer/New()
+/obj/item/implantcase/analyzer/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ/limbaugment/wrist( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/sword
-	name = "glass case - 'Scanner'"
+	name = "glass case - 'Sword'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/sword/New()
+/obj/item/implantcase/sword/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ/limbaugment/wrist/sword( src )
-	..()
-	return
+	return ..()
 
 /obj/item/implantcase/sprinter
 	name = "glass case - 'Sprinter'"
 	desc = "A case containing a nanite fabricator implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/sprinter/New()
+/obj/item/implantcase/sprinter/Initialize(mapload)
 	src.imp = new /obj/item/implant/organ/pelvic( src )
-	..()
-	return
+	return ..()

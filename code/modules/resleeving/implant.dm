@@ -52,8 +52,8 @@
 	var/list/obj/item/implant/backup/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
 
-/obj/item/backup_implanter/New()
-	..()
+/obj/item/backup_implanter/Initialize(mapload)
+	. = ..()
 	for(var/i = 1 to max_implants)
 		var/obj/item/implant/backup/imp = new(src)
 		imps |= imp
