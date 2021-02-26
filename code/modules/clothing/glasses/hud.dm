@@ -126,6 +126,7 @@
 	These have been upgraded with medical records access and virus database integration."
 	mode = "med"
 	action_button_name = "AR Console (Crew Monitor)"
+	prescription = 1
 	tgarscreen_path = /datum/tgui_module/crew_monitor/glasses
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_AUGMENTED)
 
@@ -140,6 +141,7 @@
 	These have been upgraded with security records integration and flash protection."
 	mode = "sec"
 	flash_protection = FLASH_PROTECTION_MAJOR
+	prescription = 1
 	action_button_name = "AR Console (Security Alerts)"
 	arscreen_path = /datum/nano_module/alarm_monitor/security
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_WANTED,VIS_AUGMENTED)
@@ -154,6 +156,7 @@
 	desc = "The VM-62-E AR glasses are a design from Vey Med. \
 	These have been upgraded with advanced electrochromic lenses to protect your eyes during welding."
 	mode = "eng"
+	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
 	action_button_name = "AR Console (Station Alerts)"
 	arscreen_path = /datum/nano_module/alarm_monitor/engineering
@@ -168,6 +171,7 @@
 	desc = "The VM-62-R AR glasses are a design from Vey Med. \
 	These have been ... modified ... to fit into a different frame."
 	mode = "sci"
+	prescription = 1
 	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = null
 	icon_state = "purple"
@@ -182,6 +186,7 @@
 	off_state = "projector-off"
 	body_parts_covered = 0
 	toggleable = 1
+	prescription = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
 
 /obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user)
