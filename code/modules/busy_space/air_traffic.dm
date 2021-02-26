@@ -278,7 +278,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 					"We ran into an asteroid belt that wasn't picked up on our scanners and our engines are currently knocked out",
 					"The ship is overrun with excessive vermin and its affecting crew productivity",
 					"A recent fight with pirates has left [pick("one","two")] of our decks de-pressurized. We're attempting to reach the [GLOB.using_map.dock_name] for fleet repairs",
-					"Our medical department is overwhelmed due to [pick("a viral outbreak","a meteor storm","a clown's joke gone wrong"], and we are in need of supplies and personnel")
+					"Our medical department is overwhelmed due to [pick("a viral outbreak","a meteor storm","a clown's joke gone wrong")], and we are in need of supplies and personnel")
 				msg("Attention [GLOB.using_map.dock_name], this is the [combined_first_name] with an urgent report for the fleet. [bad_report].","[source_prefix] [source_shipname]")
 				sleep(5 SECONDS)
 				if(prob(50))
