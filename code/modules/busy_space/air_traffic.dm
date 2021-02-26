@@ -7,8 +7,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	//Shorter delays means more traffic, which gives the impression of a busier system, but also means a lot more radio noise
 	/// How long between ATC traffic
 	var/delay_min = 20 MINUTES
-	/// Adjusted to give approx 2 per hour, will work out to 10-14 over a full shift
-	var/delay_max = 30 MINUTES
+	/// Adjusted to give approx 3 per hour, will work out to 9-15 over a full shift
+	var/delay_max = 25 MINUTES
 
 	/// How long to wait before sending the first message of the shift.
 	var/initial_delay = 2 MINUTES
@@ -36,8 +36,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	secchannel = "[rand(850,899)].[rand(1,9)]"
 	sdfchannel = "[rand(900,999)].[rand(1,9)]"
 
-	// 450 was the original time. Reducing to 360 due to lower init times on the server. If this is a problem, revert back to 450 as we had no ATC issues with that time.
-	spawn(360 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
+	// 450 was the original time. Reducing to 300 due to lower init times on the server. If this is a problem, revert back to 450 as we had no ATC issues with that time.
+	spawn(300 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
 		/// HEY! if we have listiners for ssticker go use that instead of this snowflake.
 		msg("Crew transfer complete for all vessels. As a reminder, this shift's fleet frequencies are as follows for this shift: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
 		next_message = world.time + initial_delay
@@ -77,7 +77,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	// OKAY what's happening here is a lot less agony inducing than it might seem. All that's happening here is a weighted RNG choice between the listed options in a variable.
 	// The first, [1], is for NanoTrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
 	// ALL the companies and items this list pulls from can be found in the organizations.dm file in this same folder (busy_space).
-	var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[1]=90,GLOB.loremaster.organizations=20))]
+	var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[1]=90,pick(GLOB.loremaster.organizations)=20))]
 
 		/// repurposed for new fun stuff
 	var/datum/lore/organization/secondary = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
@@ -278,7 +278,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 					"We ran into an asteroid belt that wasn't picked up on our scanners and our engines are currently knocked out",
 					"The ship is overrun with excessive vermin and its affecting crew productivity",
 					"A recent fight with pirates has left [pick("one","two")] of our decks de-pressurized. We're attempting to reach the [GLOB.using_map.dock_name] for fleet repairs",
-					"Our medical department is overwhelmed due to [pick("a viral outbreak","a meteor storm","a clown's joke gone wrong")], and we are in need of supplies and personnel")
+					"Our medical department is overwhelmed due to [pick("a viral outbreak","a meteor storm","a clown's joke gone wrong")], and we are in need of supplies and personnel",
+					"Our gateway system is malfunctioning and we're dealing with a swarm of [pick("hostile aliens","hostiles in red cloaks","hostiles")]. Possible backup needed")
 				msg("Attention [GLOB.using_map.dock_name], this is the [combined_first_name] with an urgent report for the fleet. [bad_report].","[source_prefix] [source_shipname]")
 				sleep(5 SECONDS)
 				if(prob(50))
