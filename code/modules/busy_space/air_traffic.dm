@@ -6,7 +6,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 /datum/lore/atc_controller
 	//Shorter delays means more traffic, which gives the impression of a busier system, but also means a lot more radio noise
 	/// How long between ATC traffic
-	var/delay_min = 20 MINUTES
+	var/delay_min = 18 MINUTES
 	/// Adjusted to give approx 3 per hour, will work out to 9-15 over a full shift
 	var/delay_max = 25 MINUTES
 
