@@ -52,12 +52,29 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
+"ag" = (
+/obj/machinery/atmospherics/valve/digital{
+	dir = 4;
+	name = "Reserve Fuel"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/portnacelle)
 "ah" = (
 /obj/machinery/telecomms/hub/preset/triumph,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/tcommsat/chamber)
+"ai" = (
+/obj/machinery/camera/xray{
+	dir = 10
+	},
+/turf/space,
+/area/space)
+"aj" = (
+/obj/machinery/camera/xray,
+/turf/space,
+/area/space)
 "ak" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -89,6 +106,11 @@
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
+"an" = (
+/obj/structure/lattice,
+/obj/machinery/camera/xray,
+/turf/space,
+/area/space)
 "ar" = (
 /obj/structure/cable/green{
 	d2 = 4;
@@ -12346,14 +12368,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
-"Nw" = (
-/obj/machinery/camera/network/engineering,
-/obj/machinery/atmospherics/valve/digital{
-	dir = 4;
-	name = "Reserve Fuel"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/portnacelle)
 "Nx" = (
 /obj/structure/closet/secure_closet/atmos_personal,
 /obj/machinery/power/apc{
@@ -21194,7 +21208,7 @@ LO
 ID
 Ch
 Ch
-Nw
+ag
 Ms
 cd
 Ch
@@ -21482,7 +21496,7 @@ Ln
 fM
 wc
 Ch
-fN
+ai
 zz
 zz
 zz
@@ -21508,7 +21522,7 @@ zz
 xv
 xv
 xv
-fN
+aj
 Qt
 Tn
 QP
@@ -22786,7 +22800,7 @@ yz
 qT
 ke
 xv
-Zj
+an
 Qt
 ij
 ij
@@ -22902,7 +22916,7 @@ Ch
 Qb
 Xj
 Ch
-fN
+ai
 zz
 rK
 Tv
