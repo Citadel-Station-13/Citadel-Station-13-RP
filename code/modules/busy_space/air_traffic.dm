@@ -259,7 +259,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 					"We have confirmed visuals of [rand(3,15)] Diona clinging onto the [GLOB.using_map.dock_name] hull. We'll have reports of first contact with them in a moment",
 					"Scanners show the nearby sub-sector of space has increased hostile activity. We advise to route patrols closer to our research vessels, and flagship until we clear it",
 					"The scout team is reporting much lower than usual hostile activity in the sub-sector",
-					"Our vessel is undergoining early transfer procedures for the crew and should be at the [GLOB.using_map.station_name] in roughly [pick("5","10","15")] minutes",
+					"Our vessel is undergoining early transfer procedures for the crew and should be at the [GLOB.using_map.dock_name] in roughly [pick("5","10","15")] minutes",
 					"Mining teams report that they found a resource rich asteroid belt. They're requesting additional fleet support in case of a pirate attack",
 					"All pending issues are resolved on the vessel and we're resuming normal fleet patterns now")
 				msg("This is the [combined_first_name] reporting in to the [GLOB.using_map.dock_name] with fleet updates. [report].","[source_prefix] [source_shipname]")
@@ -277,7 +277,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 					"A recent artifact we recovered on our ship has knocked out our [pick("life support","engines","gyros","AI")]",
 					"We ran into an asteroid belt that wasn't picked up on our scanners and our engines are currently knocked out",
 					"The ship is overrun with excessive vermin and its affecting crew productivity",
-					"A recent fight with pirates has left [pick("one","two")] of our decks de-pressurized. We're attempting to reach the [GLOB.using_map.dock_name] for fleet repairs")
+					"A recent fight with pirates has left [pick("one","two")] of our decks de-pressurized. We're attempting to reach the [GLOB.using_map.dock_name] for fleet repairs",
+					"Our medical department is overwhelmed due to [pick("a viral outbreak","a meteor storm","a clown's joke gone wrong"], and we are in need of supplies and personnel")
 				msg("Attention [GLOB.using_map.dock_name], this is the [combined_first_name] with an urgent report for the fleet. [bad_report].","[source_prefix] [source_shipname]")
 				sleep(5 SECONDS)
 				if(prob(50))
