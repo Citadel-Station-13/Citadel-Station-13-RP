@@ -164,8 +164,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		chatter_type = force_chatter_type
 	//I have to offload this from the chatter_type switch below and do it here. Byond should throw a shitfit because this isn't how you use pick.
 	else if(source_law_abiding && source_fleet)
-		chatter_type = pickweight(list("fleettraffic" = 90, "emerg" = 15, "dockingrequestgeneric" = 5,"dockingrequestsupply" = 5,
-		"dockingrequestrepair" = 5,"undockingrequest" = 2, "normal"))
+		chatter_type = pickweight(list("fleettraffic" = 90, "emerg" = 10, "dockingrequestgeneric" = 10,"dockingrequestsupply" = 10,
+		"dockingrequestrepair" = 10,"undockingrequest" = 5, "normal"))
 
 	else if(source_law_abiding && !source_system_defense)
 		chatter_type = pickweight(list("emerg" = 5, "policescan" = 25, "traveladvisory" = 25,
