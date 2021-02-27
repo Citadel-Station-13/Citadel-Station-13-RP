@@ -294,6 +294,15 @@
 	projectile_type = /obj/item/projectile/bullet/pellet/shotgun/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 360, "silver" = 240)
 
+//Wooden Stake 12g
+/obj/item/ammo_casing/a12g/stake
+	name = "Wooden stake shell"
+	desc = "A specialized shell designed to launch a wooden stake. Bless and Sancitfied to banish otherworlds entities."
+	icon_state = "agshell"
+	caliber = "12g"
+	projectile_type = /obj/item/projectile/bullet/shotgun/stake
+	matter = list(DEFAULT_WALL_MATERIAL = 500)
+
 /*
  * 7.62mm
  */
@@ -328,6 +337,14 @@
 /obj/item/ammo_casing/a762/hunter
 	desc = "A 7.62mm hunting bullet casing."
 	projectile_type = /obj/item/projectile/bullet/rifle/a762/hunter
+
+/obj/item/ammo_casing/a762/sniper
+	desc = "A 7.62mm high velocity bullet casing optimised for a marksman rifle."
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/sniper
+
+/obj/item/ammo_casing/a762/sniperhunter
+	desc = "A 7.62mm high velocity hunter bullet casing optimised for a marksman rifle."
+	projectile_type = /obj/item/projectile/bullet/rifle/a762/sniperhunter
 
 /obj/item/ammo_casing/a762/silver
 	desc = "A 7.62mm hunting bullet casing. Bless and Sancitfied to banish otherworlds entities."
@@ -387,7 +404,7 @@
 
 /obj/item/ammo_casing/a10x24mmcaseless
 	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps."
-	caliber = "10x24mm caseless"
+	caliber = "10mmCL"
 	icon_state = "casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 	matter = list(DEFAULT_WALL_MATERIAL = 180)
@@ -395,14 +412,14 @@
 
 /obj/item/ammo_casing/a10x24mmcaseless/ap
 	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps. This one was meant to shred armored targets."
-	caliber = "10x24mm caseless"
+	caliber = "10mmCL"
 	icon_state = "casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/medium/ap
 	matter = list(DEFAULT_WALL_MATERIAL = 180)
 
 /obj/item/ammo_casing/a10x24mmcaseless/hp
 	desc = "A 10x24mm caseless round, common during the Xenomorph wars due to its use the the battle rifles of the United Solar Marine Corps. This one was meant to shred armored targets."
-	caliber = "10x24mm caseless"
+	caliber = "10mmCL"
 	icon_state = "casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/medium/hp
 	matter = list(DEFAULT_WALL_MATERIAL = 180)

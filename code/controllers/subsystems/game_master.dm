@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(gamemaster)
 			if(!action.enabled)
 				continue
 			// Try to incorporate an action with the top two departments first.
-			if(most_active_departments[1] in action.departments && most_active_departments[2] in action.departments)
+			if((most_active_departments[1] in action.departments) && (most_active_departments[2] in action.departments))
 				best_actions.Add(action)
 				log_debug("[action.name] is being considered because both most active departments are involved.")
 

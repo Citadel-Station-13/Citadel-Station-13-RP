@@ -12,6 +12,8 @@
 	layer = MOB_LAYER
 	pressure_resistance = 1
 	attack_verb = list("bapped")
+	drop_sound = 'sound/items/drop/paper.ogg'
+	pickup_sound = 'sound/items/pickup/paper.ogg'
 	var/page = 1    // current page
 	var/list/pages = list()  // Ordered list of pages as they are to be displayed. Can be different order than src.contents.
 
@@ -95,10 +97,11 @@
 				to_chat(user, "<font color='red'>You must hold \the [P] steady to burn \the [src].</font>")
 
 /obj/item/paper_bundle/examine(mob/user)
-	if(..(user, 1))
+	. = ..()
+	if(Adjacent(user))
 		src.show_content(user)
 	else
-		to_chat(user, "<span class='notice'>It is too far away.</span>")
+		. += "<span class='notice'>It is too far away.</span>"
 	return
 
 /obj/item/paper_bundle/proc/show_content(mob/user as mob)

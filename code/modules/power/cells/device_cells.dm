@@ -38,6 +38,9 @@
 	charge_amount = 160	//Recharges a lot more quickly...
 	charge_delay = 100	//... but it takes a while to get started
 
+/obj/item/cell/device/weapon/recharge/sniper
+	charge_amount = 600
+	charge_delay = 100
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_void_cell
 	name = "Precursor Alpha Object - Void Cell"

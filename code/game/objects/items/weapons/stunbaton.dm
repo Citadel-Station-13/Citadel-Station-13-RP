@@ -12,6 +12,8 @@
 	throwforce = 7
 	flags = NOCONDUCT
 	w_class = ITEMSIZE_NORMAL
+	drop_sound = 'sound/items/drop/metalweapon.ogg'
+	pickup_sound = 'sound/items/pickup/metalweapon.ogg'
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
 	var/lightcolor = "#FF6A00"
@@ -102,13 +104,11 @@
 		set_light(0)
 
 /obj/item/melee/baton/examine(mob/user)
-	if(!..(user, 1))
-		return
-
+	. = ..()
 	if(bcell)
-		user <<"<span class='notice'>The baton is [round(bcell.percent())]% charged.</span>"
+		. += "<span class='notice'>The baton is [round(bcell.percent())]% charged.</span>"
 	if(!bcell)
-		to_chat(user, "<span class='warning'>The baton does not have a power source installed.</span>")
+		. += "<span class='warning'>The baton does not have a power source installed.</span>"
 
 /obj/item/melee/baton/attackby(obj/item/W, mob/user)
 	if(use_external_power)
@@ -179,7 +179,7 @@
 		var/mob/living/carbon/human/H = target
 		affecting = H.get_organ(hit_zone)
 
-	if(user.a_intent == INTENT_HARM || user.a_intent == INTENT_DISARM)
+	if(user.a_intent == INTENT_HARM)
 		. = ..()
 		//whacking someone causes a much poorer electrical contact than deliberately prodding them.
 		agony *= 0.5
@@ -276,3 +276,9 @@
 // Borg version, for the lost module.
 /obj/item/melee/baton/shocker/robot
 	use_external_power = TRUE
+
+/obj/item/melee/baton/stunsword
+	name = "stunsword"
+	desc = "Not actually sharp, this sword is functionally identical to its baton counterpart."
+	icon_state = "stunsword"
+	item_state = "baton"

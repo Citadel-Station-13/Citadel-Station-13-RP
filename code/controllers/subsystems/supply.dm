@@ -6,6 +6,7 @@ SUBSYSTEM_DEF(supply)
 	var/points_per_second = 1.5 / 30
 	var/points_per_slip = 2
 	var/points_per_money = 0.02 // 1 point for $50
+	var/points_per_trash = 0.1 // Weighted value, tentative.
 	// Control
 	var/ordernum
 	var/list/shoppinglist = list()			// Approved orders
@@ -134,6 +135,9 @@ SUBSYSTEM_DEF(supply)
 						EC.contents[EC.contents.len]["quantity"] = cashmoney.worth
 						EC.value += EC.contents[EC.contents.len]["value"]
 
+					// Sell trash
+					if(istype(A, /obj/item/trash))
+						EC.contents[EC.contents.len]["value"] = points_per_trash
 
 
 			// Make a log of it, but it wasn't shipped properly, and so isn't worth anything

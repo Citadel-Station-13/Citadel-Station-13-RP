@@ -1,11 +1,18 @@
 /obj/item/gun/energy/taser
 	name = "taser gun"
-	desc = "The NT Mk30 NL is a small gun used for non-lethal takedowns. Produced by NT, it's actually a licensed version of a W-T design."
+	desc = "The NT Mk31 NL is a small gun used for non-lethal takedowns. An NT exclusive iteration of the Mk30 WT design, the Mk31 features a variable output mechanism which draws from a singular power source, allowing for versatile firing solutions without increased weight."
 	icon_state = "taser"
 	item_state = null	//so the human update icon uses the icon_state instead.
-	projectile_type = /obj/item/projectile/beam/stun
-	charge_cost = 160
+
 	fire_delay = 4
+
+	projectile_type = /obj/item/projectile/energy/electrode
+	modifystate = "taser"
+
+	firemodes = list(
+		list(mode_name="stun", projectile_type=/obj/item/projectile/energy/electrode, modifystate="taser", charge_cost = 240),
+		list(mode_name="disable", projectile_type=/obj/item/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160),
+		)
 
 /obj/item/gun/energy/taser/mounted
 	name = "mounted taser gun"

@@ -65,8 +65,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/obj/item/paicard/pai = null	// A slot for a personal AI device
 
 /obj/item/pda/examine(mob/user)
-	if(..(user, 1))
-		to_chat(user, "The time [stationtime2text()] is displayed in the corner of the screen.")
+	. = ..()
+	. += "The time [stationtime2text()] is displayed in the corner of the screen."
 
 /obj/item/pda/CtrlClick()
 	if (issilicon(usr))
@@ -492,7 +492,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return
 
 
-/obj/item/pda/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/pda/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	ui_tick++
 	var/datum/nanoui/old_ui = SSnanoui.get_open_ui(user, src, "main")
 	var/auto_update = 1
@@ -674,7 +674,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(active_uplink_check(user))
 		return
 
-	ui_interact(user) //NanoUI requires this proc
+	nano_ui_interact(user) //NanoUI requires this proc
 	return
 
 /obj/item/pda/Topic(href, href_list)
@@ -1131,7 +1131,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(!P.conversations.Find("\ref[src]"))
 			P.conversations.Add("\ref[src]")
 
-		to_chat(U, "\icon[src] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
+		to_chat(U, "[icon2html(thing = src, target = U)] <b>Sent message to [P.owner] ([P.ownjob]), </b>\"[t]\"")
 
 
 		if (prob(15)) //Give the AI a chance of intercepting the message
@@ -1152,7 +1152,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if (!beep_silent)
 		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("\icon[src] *[message_tone]*"))
+			O.show_message(text("[icon2html(thing = src, target = world)] *[message_tone]*"))
 	//Search for holder of the PDA.
 	var/mob/living/L = null
 	if(loc && isliving(loc))
@@ -1163,11 +1163,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if(L)
 		if(reception_message)
-			L << reception_message
+			to_chat(L, reception_message)
 		SSnanoui.update_user_uis(L, src) // Update the receiving user's PDA UI so that they can see the new message
 
 /obj/item/pda/proc/new_news(var/message)
-	new_info(news_silent, newstone, news_silent ? "" : "\icon[src] <b>[message]</b>")
+	new_info(news_silent, newstone, news_silent ? "" : "[icon2html(thing = src, target = world)] <b>[message]</b>")
 
 	if(!news_silent)
 		new_news = 1
@@ -1182,7 +1182,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	new_message(sending_device, sending_device.owner, sending_device.ownjob, message)
 
 /obj/item/pda/proc/new_message(var/sending_unit, var/sender, var/sender_job, var/message, var/reply = 1)
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
+	var/reception_message = "[icon2html(thing = src, target = world)] <b>Message from [sender] ([sender_job]), </b>\"[message]\" ([reply ? "<a href='byond://?src=\ref[src];choice=Message;notap=[istype(loc, /mob/living/silicon)];skiprefresh=1;target=\ref[sending_unit]'>Reply</a>" : "Unable to Reply"])"
 	new_info(message_silent, ringtone, reception_message)
 
 	log_pda("(PDA: [sending_unit]) sent \"[message]\" to [name]", usr)
@@ -1194,7 +1194,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(ismob(sending_unit.loc) && isAI(loc))
 		track = "(<a href='byond://?src=\ref[loc];track=\ref[sending_unit.loc];trackname=[html_encode(sender)]'>Follow</a>)"
 
-	var/reception_message = "\icon[src] <b>Message from [sender] ([sender_job]), </b>\"[message]\" (<a href='byond://?src=\ref[src];choice=Message;notap=1;skiprefresh=1;target=\ref[sending_unit]'>Reply</a>) [track]"
+	var/reception_message = "[icon2html(thing = src, target = world)] <b>Message from [sender] ([sender_job]), </b>\"[message]\" (<a href='byond://?src=\ref[src];choice=Message;notap=1;skiprefresh=1;target=\ref[sending_unit]'>Reply</a>) [track]"
 	new_info(message_silent, newstone, reception_message)
 
 	log_pda("(PDA: [sending_unit]) sent \"[message]\" to [name]",usr)
@@ -1372,10 +1372,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 						user.show_message("<span class='notice'>    Limbs are OK.</span>",1)
 
 			if(2)
-				if (!istype(C:dna, /datum/dna))
+				if (!istype(C.dna, /datum/dna))
 					to_chat(user, "<span class='notice'>No fingerprints found on [C]</span>")
 				else
-					to_chat(user, text("<span class='notice'>\The [C]'s Fingerprints: [md5(C:dna.uni_identity)]</span>"))
+					to_chat(user, text("<span class='notice'>\The [C]'s Fingerprints: [md5(C.dna.uni_identity)]</span>"))
 				if ( !(C:blood_DNA) )
 					to_chat(user, "<span class='notice'>No blood found on [C]</span>")
 					if(C:blood_DNA)
@@ -1483,8 +1483,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	QDEL_NULL(src.pai)
 	return ..()
 
-/obj/item/pda/clown/Crossed(AM as mob|obj) //Clown PDA is slippery.
+/obj/item/pda/clown/Crossed(atom/movable/AM as mob|obj) //Clown PDA is slippery.
 	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 

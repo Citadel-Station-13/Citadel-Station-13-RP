@@ -62,8 +62,8 @@
 		stored_modules |= new module(src)
 
 /obj/item/switchtool/examine()
-	..()
-	to_chat(usr, "This one is capable of holding [get_formatted_modules()].")
+	. = ..()
+	. += "This one is capable of holding [get_formatted_modules()]."
 
 /obj/item/switchtool/attack_self(mob/user)
 	if(!user)
@@ -418,7 +418,7 @@
 	desc = "This should not exist."
 	deploytype = "multitool"
 
-/obj/item/weldingtool/holoswitch/process()
+/obj/item/weldingtool/holoswitch/process(delta_time)
 	..()
 	if(get_fuel() < get_max_fuel() && nextrefueltick < world.time)
 		nextrefueltick = world.time + 10

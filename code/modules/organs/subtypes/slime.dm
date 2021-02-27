@@ -79,7 +79,7 @@
 	dead_icon = null
 	standard_pulse_level = PULSE_NONE
 
-/obj/item/organ/internal/heart/grey/colormatch/slime/process()
+/obj/item/organ/internal/heart/grey/colormatch/slime/process(delta_time)
 	..()
 	if(!(QDELETED(src)) && src.loc != owner)
 		visible_message("<span class='notice'>\The [src] splatters!</span>")
@@ -127,7 +127,7 @@
 
 	strain = clamp(strain + amount, 0, min_broken_damage)
 
-/obj/item/organ/internal/regennetwork/process()
+/obj/item/organ/internal/regennetwork/process(delta_time)
 	..()
 
 	if(!(QDELETED(src)) && src.loc != owner)

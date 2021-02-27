@@ -91,9 +91,6 @@
 
 /obj/machinery/door/airlock/vault/temple/New()
 	if(prob(33))
-		new /obj/structure/falsewall/cultspecial(src.loc)
-		qdel(src)
-	if(prob(33))
 		safe = 0
 	if(prob(33))
 		locked = 1
@@ -188,7 +185,7 @@
 		do_after_cooldown()
 		return
 
-/obj/effect/landmark/mobcorpse/tunnelclown
+/obj/effect/landmark/corpse/tunnelclown
 	name = "dead tunnel clown"
 	corpseuniform = /obj/item/clothing/under/rank/clown
 	corpseshoes = /obj/item/clothing/shoes/clown_shoes
@@ -197,11 +194,12 @@
 	corpsemask = /obj/item/clothing/mask/gas/clown_hat
 	corpsepocket1 = /obj/item/bikehorn
 
-/obj/effect/landmark/mobcorpse/tunnelclown/sentinel
+/obj/effect/landmark/corpse/tunnelclown/sentinel
 	name = "dead clown sentinel"
 	corpsesuit = /obj/item/clothing/suit/cultrobes
 	corpsehelmet = /obj/item/clothing/head/culthood
 
+/*
 /mob/living/simple_mob/hostile/tunnelclown
 	name = "tunnel clown"
 	desc = "A clown driven to madness in the depths of the Honk Mother's Catacombs."
@@ -319,6 +317,7 @@
 		return pick(prob(3);/mob/living/simple_mob/hostile/cluwne,
 					prob(2);/mob/living/simple_mob/hostile/tunnelclown/sentinel,
 					prob(1);/mob/living/simple_mob/hostile/tunnelclown)
+*/
 
 /obj/item/paper/awaygate/labyrinth/calypso
 	name = "copy of the Final Flight of Calypso"

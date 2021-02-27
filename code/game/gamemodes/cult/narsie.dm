@@ -16,13 +16,13 @@ var/global/list/narsie_list = list()
 	consume_range = 3 //How many tiles out do we eat
 
 
-/obj/singularity/narsie/New()
-	..()
+/obj/singularity/narsie/Initialize(mapload)
+	. = ..()
 	narsie_list.Add(src)
 
 /obj/singularity/narsie/Destroy()
 	narsie_list.Remove(src)
-	..()
+	return ..()
 
 /obj/singularity/narsie/large
 	name = "Nar-Sie"
@@ -44,7 +44,7 @@ var/global/list/narsie_list = list()
 	..()
 	if(announce)
 		to_chat(world, "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
-		world << sound('sound/effects/weather/wind/wind_5_1.ogg')
+		SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
 	narsie_spawn_animation()
 
@@ -58,7 +58,7 @@ var/global/list/narsie_list = list()
 				SSemergencyshuttle.call_evac()
 				SSemergencyshuttle.launch_time = 0	// Cannot recall
 
-/obj/singularity/narsie/process()
+/obj/singularity/narsie/process(delta_time)
 	eat()
 
 	if (!target || prob(5))

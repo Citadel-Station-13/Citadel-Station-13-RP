@@ -29,6 +29,9 @@
 		mode = WIRING
 		update_icon()
 	else if(mode == WIRING)
+		if(!selected_io)
+			mode = WIRE
+			.()
 		if(io == selected_io)
 			to_chat(user, "<span class='warning'>Wiring \the [selected_io.holder]'s [selected_io.name] into itself is rather pointless.</span>")
 			return
@@ -60,6 +63,9 @@
 		return
 
 	else if(mode == UNWIRING)
+		if(!selected_io)
+			mode = UNWIRE
+			.()
 		if(io == selected_io)
 			to_chat(user, "<span class='warning'>You can't wire a pin into each other, so unwiring \the [selected_io.holder] from \
 			the same pin is rather moot.</span>")

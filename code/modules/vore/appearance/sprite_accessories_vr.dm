@@ -159,6 +159,21 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/ears/demon_horns3
+	name = "demon horns, colorable(upward)"
+	desc = ""
+	icon_state = "demon-horns3"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/demon_horns4
+	name = "demon horns, colorable ring(upward)"
+	desc = ""
+	icon_state = "demon-horns4"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "demon-horns4-ring"
+
 /datum/sprite_accessory/ears/dragon_horns
 	name = "dragon horns, colorable"
 	desc = ""
@@ -257,6 +272,14 @@
 	name = "bunny, colorable"
 	desc = ""
 	icon_state = "bunny"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/bunnyalt
+	name = "bunny 2, dual-color"
+	desc = ""
+	icon_state = "bunny-alt"
+	extra_overlay = "bunny-alt-inner"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
@@ -406,7 +429,7 @@
 	extra_overlay = "vulp_jackal-inner"
 
 /datum/sprite_accessory/ears/bunny_floppy
-	name = "floopy bunny ears (colorable)"
+	name = "floppy bunny ears (colorable)"
 	desc = ""
 	icon_state = "floppy_bun"
 	do_colouration = 1
@@ -633,6 +656,13 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
     desc = ""
     icon_state = "frosted_tips"
     ckeys_allowed = list("tucker0666")
+
+/datum/sprite_accessory/ears/peekinghuman
+	name = "peeking ears"
+	desc = ""
+	icon_state = "earpeek"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /*
 ////////////////////////////
@@ -1261,6 +1291,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "tamamo-kitsunetails"
 	extra_overlay = "tamamo-kitsunetails-tips"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/triple_kitsune
+	name = "Triple Kitsune Tails"
+	desc = ""
+	icon_state = "triple-kitsunetails"
+	extra_overlay = "triple-kitsunetails-tips"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 

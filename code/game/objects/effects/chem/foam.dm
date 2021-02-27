@@ -42,7 +42,7 @@
 		for(var/obj/O in T)
 			reagents.touch_obj(O)
 
-/obj/effect/effect/foam/process()
+/obj/effect/effect/foam/process(delta_time)
 	if(--amount < 0)
 		return
 
@@ -75,6 +75,8 @@
 
 /obj/effect/effect/foam/Crossed(var/atom/movable/AM)
 	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if(metal)
 		return
 	if(istype(AM, /mob/living))

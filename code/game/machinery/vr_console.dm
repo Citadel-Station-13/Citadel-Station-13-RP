@@ -27,7 +27,7 @@
 	. = ..()
 	update_icon()
 
-/obj/machinery/vr_sleeper/process()
+/obj/machinery/vr_sleeper/process(delta_time)
 	if(stat & (NOPOWER|BROKEN))
 		return
 

@@ -9,6 +9,7 @@
 	icon = 'icons/mob/cult.dmi'
 	icon_state = "initiate"
 	faction = "cult"
+	mob_class = MOB_CLASS_DEMONIC
 
 /mob/living/simple_mob/humanoid/cultist/human
 	name = "cultist"
@@ -515,3 +516,14 @@
 /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter //This directs the AI to charge while shooting at its victim then entering Glorious melee combat.
 	pointblank = FALSE
 	closest_distance = 0
+
+////////////////////////////
+//		Ash Hunter
+////////////////////////////
+
+
+/mob/living/simple_mob/humanoid/cultist/hunter/surt // This Mob is not meant to be fair, he is not meant to fight regular crew he is to be pitted against heavily armed explo teams to see if he can wipe them out.
+	name = "Itinerant Blood Hunter"
+	desc = "This Blood Hunter is far from home. Strange energies course around him, protecting him from the environment. What eldritch influence drew him to this place?" // Blood Hunter on vacation.
+
+	heat_resist = 1 //Might make this 0.75 if 1 is too much resistance for a boss monster. This guy's just a placeholder until we get the Miner in anyways.

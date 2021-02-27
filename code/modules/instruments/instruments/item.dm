@@ -75,14 +75,14 @@
 */
 
 /obj/item/instrument/interact(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/item/instrument/ui_interact(mob/living/user)
+/obj/item/instrument/nano_ui_interact(mob/living/user)
 	if(!isliving(user) || user.stat || user.restrained())
 		return
 
 	user.set_machine(src)
-	song.ui_interact(user)
+	song.nano_ui_interact(user)
 
 /obj/item/instrument/violin
 	name = "space violin"
@@ -319,3 +319,13 @@
 			instruments[initial(A.name)] = A
 	return instruments
 */
+
+//Event Reward item.
+/obj/item/instrument/gameboy
+	name = "gameboy"
+	desc = "A bright teal Gameboy Color. This one has a copy of LSDJ slotted into the back. /There's also initals scratched crudely into the lower left hand corner spelling TAS./"
+	icon_state = "gameboy"
+	item_state = "gameboy"
+	attack_verb = ("bitcrushed")
+	hitsound = "sound/weapons/gboy.ogg"
+	allowed_instrument_ids = "square"

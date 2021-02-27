@@ -63,7 +63,7 @@
 		return
 
 	var/chosen_target
-	if(preferred_target && preferred_target in targets)
+	if(preferred_target && (preferred_target in targets))
 		chosen_target = preferred_target
 	else
 		chosen_target = pick(targets)

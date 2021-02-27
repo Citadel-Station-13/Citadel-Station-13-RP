@@ -1,4 +1,3 @@
-#define DOCK_ATTEMPT_TIMEOUT 200	// How long in ticks we wait before assuming the docking controller is broken or blown up.
 
 /datum/shuttle/autodock/ferry
 	var/location  = FERRY_LOCATION_STATION	// 0 = at area_station,  1 = at area_offsite

@@ -6,6 +6,7 @@
 	layer = MOB_LAYER
 	universal_speak = 1
 	density = 0
+	silicon_privileges = PRIVILEGES_BOT
 
 	makes_dirt = FALSE	// No more dirt from Beepsky
 
@@ -68,10 +69,13 @@
 	if(health <= 0)
 		death()
 		return
-	weakened = 0
-	stunned = 0
-	paralysis = 0
+	SetWeakened(0)
+	SetStunned(0)
+	SetParalysis(0)
 
+	if(on && !client && !busy)
+		spawn(0)
+			handleAI()
 	if(on && !client && !busy)
 		spawn(0)
 			handleAI()
@@ -144,12 +148,11 @@
 /mob/living/bot/attack_ai(var/mob/user)
 	return attack_hand(user)
 
-/mob/living/bot/say(var/message)
-	var/verb = "beeps"
+/mob/living/bot/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+	verb = "beeps"
 
 	message = sanitize(message)
-
-	..(message, null, verb)
+	return ..()
 
 /mob/living/bot/speech_bubble_appearance()
 	return "machine"

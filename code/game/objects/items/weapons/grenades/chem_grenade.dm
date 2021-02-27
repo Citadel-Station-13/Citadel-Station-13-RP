@@ -118,9 +118,9 @@
 				to_chat(user, "<span class='warning'>\The [W] is empty.</span>")
 
 /obj/item/grenade/chem_grenade/examine(mob/user)
-	..(user)
+	. = ..()
 	if(detonator)
-		to_chat(user, "With attached [detonator.name]")
+		. += "With attached [detonator.name]"
 
 /obj/item/grenade/chem_grenade/activate(mob/user as mob)
 	if(active) return
@@ -318,9 +318,10 @@
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
 
-	B1.reagents.add_reagent("fluorosurfactant", 40)
-	B2.reagents.add_reagent("holywater", 40)
-	B2.reagents.add_reagent("cleaner", 10)
+	B1.reagents.add_reagent("fluorosurfactant", 30)
+	B1.reagents.add_reagent("cleaner", 30)
+	B2.reagents.add_reagent("water", 30)
+	B2.reagents.add_reagent("holywater", 30)
 
 	detonator = new/obj/item/assembly_holder/timer_igniter(src)
 

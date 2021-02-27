@@ -69,8 +69,8 @@
 	H.key = C.key
 
 	to_chat(H, "<b>You are the Technomancer's apprentice!  Your goal is to assist them in their mission at the [station_name()].</b>")
-	H << "<b>Your service has not gone unrewarded, however. Studying under them, you have learned how to use a Manipulation Core \
-	of your own.  You also have a catalog, to purchase your own functions and equipment as you see fit.</b>"
+	to_chat(H, "<b>Your service has not gone unrewarded, however. Studying under them, you have learned how to use a Manipulation Core \
+	of your own.  You also have a catalog, to purchase your own functions and equipment as you see fit.</b>")
 	to_chat(H, "<b>It would be wise to speak to your master, and learn what their plans are for today.</b>")
 
 	spawn(1)

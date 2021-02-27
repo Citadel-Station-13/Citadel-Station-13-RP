@@ -1,15 +1,16 @@
 /obj/item/clothing/suit/storage
 	var/obj/item/storage/internal/pockets
+	var/slots = 2
 
-/obj/item/clothing/suit/storage/New()
-	..()
-	pockets = new/obj/item/storage/internal(src)
-	pockets.max_w_class = ITEMSIZE_SMALL		//fit only pocket sized items
+/obj/item/clothing/suit/storage/Initialize()
+	. = ..()
+	pockets = new/obj/item/storage/internal(src, slots, ITEMSIZE_SMALL)	// Fit only pocket sized items
+	pockets.max_w_class = ITEMSIZE_SMALL				// Fit only pocket sized items
 	pockets.max_storage_space = ITEMSIZE_COST_SMALL * 2
 
 /obj/item/clothing/suit/storage/Destroy()
 	QDEL_NULL(pockets)
-	return ..()
+	. = ..()
 
 /obj/item/clothing/suit/storage/attack_hand(mob/user as mob)
 	if (pockets.handle_attack_hand(user))
@@ -21,7 +22,8 @@
 
 /obj/item/clothing/suit/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	pockets.attackby(W, user)
+	if(!(W in accessories))		// Make sure that an accessory wasn't successfully attached to suit.
+		pockets.attackby(W, user)
 
 /obj/item/clothing/suit/storage/emp_act(severity)
 	pockets.emp_act(severity)

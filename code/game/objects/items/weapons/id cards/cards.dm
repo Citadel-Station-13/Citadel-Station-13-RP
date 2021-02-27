@@ -25,6 +25,7 @@
 	var/list/sprite_stack
 
 	var/list/files = list(  )
+	pickup_sound = 'sound/items/pickup/card.ogg'
 
 /obj/item/card/New()
 	. = ..()
@@ -59,6 +60,8 @@
 	var/data = "null"
 	var/special = null
 	item_state = "card-id"
+	drop_sound = 'sound/items/drop/disk.ogg'
+	pickup_sound = 'sound/items/pickup/disk.ogg'
 
 /obj/item/card/data/verb/label(t as text)
 	set name = "Label Disk"

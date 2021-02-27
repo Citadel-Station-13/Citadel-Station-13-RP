@@ -37,6 +37,7 @@
 		if(mind)
 			mind.name = real_name
 
+
 	nutrition = rand(200,400)
 
 	human_mob_list |= src
@@ -243,6 +244,9 @@
 // this handles mulebots and vehicles
 // and now mobs on fire
 /mob/living/carbon/human/Crossed(var/atom/movable/AM)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if(istype(AM, /mob/living/bot/mulebot))
 		var/mob/living/bot/mulebot/MB = AM
 		MB.runOver(src)
@@ -431,13 +435,13 @@
 					for (var/datum/data/record/R in data_core.security)
 						if (R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
-								usr << "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]"
+								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Criminal Status:</b> [R.fields["criminal"]]")
 								to_chat(usr, "<b>Minor Crimes:</b> [R.fields["mi_crim"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["mi_crim_d"]]")
 								to_chat(usr, "<b>Major Crimes:</b> [R.fields["ma_crim"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["ma_crim_d"]]")
 								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-								usr << "<a href='?src=\ref[src];secrecordComment=`'>\[View Comment Log\]</a>"
+								to_chat(usr, "<a href='?src=\ref[src];secrecordComment=`'>\[View Comment Log\]</a>")
 								read = 1
 
 			if(!read)
@@ -461,11 +465,11 @@
 								read = 1
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
-									usr << text("[]", R.fields[text("com_[]", counter)])
+									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
-								usr << "<a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>"
+								to_chat(usr, "<a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
@@ -547,14 +551,14 @@
 					for (var/datum/data/record/R in data_core.medical)
 						if (R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"medical"))
-								usr << "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]"
+								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
 								to_chat(usr, "<b>DNA:</b> [R.fields["b_dna"]]")
 								to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
 								to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
 								to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
 								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-								usr << "<a href='?src=\ref[src];medrecordComment=`'>\[View Comment Log\]</a>"
+								to_chat(usr, "<a href='?src=\ref[src];medrecordComment=`'>\[View Comment Log\]</a>")
 								read = 1
 
 			if(!read)
@@ -578,11 +582,11 @@
 								read = 1
 								var/counter = 1
 								while(R.fields[text("com_[]", counter)])
-									usr << text("[]", R.fields[text("com_[]", counter)])
+									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
-								usr << "<a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>"
+								to_chat(usr, "<a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, "<font color='red'>Unable to locate a data core entry for this person.</font>")
@@ -1054,20 +1058,28 @@
 		if(organ.splinted) //Splints prevent movement.
 			continue
 		for(var/obj/item/O in organ.implants)
+			if(istype(O, /obj/item/melee/spike) && prob(20))
+				embed_object_pain(organ, O)
 			if(!istype(O,/obj/item/implant) && prob(5)) //Moving with things stuck in you could be bad.
-				// All kinds of embedded objects cause bleeding.
-				if(!can_feel_pain(organ.organ_tag))
-					to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
-				else
-					var/msg = pick( \
-						"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside.</span>", \
-						"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>", \
-						"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
-					custom_pain(msg, 40)
+				embed_object_pain(organ, O)
 
-				organ.take_damage(rand(1,3), 0, 0)
-				if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
-					organ.status |= ORGAN_BLEEDING
+/mob/living/carbon/human/proc/embed_object_pain(var/obj/item/organ/external/organ, var/obj/item/O)
+	// All kinds of embedded objects cause bleeding.
+	if(!can_feel_pain(organ.organ_tag))
+		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
+	else
+		var/msg = pick( \
+			"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside.</span>", \
+			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>", \
+			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
+		custom_pain(msg, 40)
+	if(istype(O, /obj/item/melee/spike))
+		organ.take_damage(rand(3,9), 0, 0) // it has spikes on it it's going to stab you
+		to_chat(src, "<span class='danger'>The edges of [O] in your [organ.name] are not doing you any favors.</span>")
+		Weaken(2) // having a very jagged stick jammed into your bits is Bad for your health
+	organ.take_damage(rand(1,3), 0, 0)
+	if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
+		organ.status |= ORGAN_BLEEDING
 
 /mob/living/carbon/human/verb/check_pulse()
 	set category = "Object"
@@ -1180,7 +1192,7 @@
 	if(LAZYLEN(species.descriptors))
 		descriptors = list()
 		for(var/desctype in species.descriptors)
-			var/datum/mob_descriptor.descriptor = species.descriptors[desctype]
+			var/datum/mob_descriptor/descriptor = species.descriptors[desctype]
 			descriptors[desctype] = descriptor.default_value
 
 	spawn(0)
@@ -1262,6 +1274,28 @@
 		W.update_icon()
 		W.message = message
 		W.add_fingerprint(src)
+
+/mob/living/carbon/human/emp_act(severity)
+	if(isSynthetic())
+		switch(severity)
+			if(1)
+				src.take_organ_damage(0,20,emp=1)
+				Confuse(20)
+			if(2)
+				src.take_organ_damage(0,15,emp=1)
+				Confuse(15)
+			if(3)
+				src.take_organ_damage(0,10,emp=1)
+				Confuse(10)
+			if(4)
+				src.take_organ_damage(0,5,emp=1)
+				Confuse(5)
+		flash_eyes()
+		to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
+		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
+		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>")
+		..()
+
 
 /mob/living/carbon/human/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	. = 1

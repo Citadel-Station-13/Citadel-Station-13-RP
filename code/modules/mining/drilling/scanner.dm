@@ -8,13 +8,13 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 150)
 	var/scanrange = 2
 	var/maxscanrange = 2
-	var/scan_time = 5 SECONDS
+	var/scan_time = 3 SECONDS
 	var/scan_exact_ores = FALSE
 	var/scan_exact_amounts = FALSE
 
-/obj/item/mining_scanner/examine()
+/obj/item/mining_scanner/examine(mob/user)
 	. = ..()
-	to_chat(usr, "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range.")
+	. += "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range."
 
 /obj/item/mining_scanner/AltClick(mob/user)
 	var/newscan = text2num(input(usr,"What would you like to set the scan range to? Maximum of [maxscanrange].","New Scan Range",maxscanrange))
@@ -28,7 +28,7 @@
 	. = ..()
 
 /obj/item/mining_scanner/attack_self(mob/user)
-	to_chat(user,"You begin sweeping \the [src] about, scanning for metal deposits.")
+	to_chat(user, "<span class='notice'>You begin sweeping \the [src] about, scanning for metal deposits.</span>")
 	playsound(loc, 'sound/items/goggles_charge.ogg', 50, 1, -6)
 
 	if(!do_after(user, scan_time))
@@ -66,7 +66,7 @@
 				else
 					metals[ore_type] = T.resources[metal]
 
-	to_chat(user, "\icon[src] <span class='notice'>The scanner beeps and displays a readout.</span>")
+	to_chat(user, "[icon2html(thing = src, target = user)] <span class='notice'>The scanner beeps and displays a readout.</span>")
 	var/list/results = list()
 	for(var/ore_type in metals)
 		var/result = "no sign"
@@ -83,6 +83,7 @@
 					result = "huge quantities of [ore_type]"
 		results += result
 	to_chat(user, results.Join("<br>"))
+
 
 /obj/item/mining_scanner/advanced
 	name = "advanced ore detector"

@@ -66,7 +66,7 @@
 	nanoui_data = list()
 	update_nano_data()
 
-/obj/item/uplink/hidden/process()
+/obj/item/uplink/hidden/process(delta_time)
 	if(world.time > next_offer_time)
 		discount_item = default_uplink_selection.get_random_item(INFINITY)
 		discount_amount = pick(90;0.9, 80;0.8, 70;0.7, 60;0.6, 50;0.5, 40;0.4, 30;0.3, 20;0.2, 10;0.1)
@@ -96,7 +96,7 @@
 /*
 	NANO UI FOR UPLINK WOOP WOOP
 */
-/obj/item/uplink/hidden/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/uplink/hidden/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/title = "Remote Uplink"
 	var/data[0]
 	uses = user.mind.tcrystals
@@ -120,7 +120,7 @@
 
 // Interaction code. Gathers a list of items purchasable from the paren't uplink and displays it. It also adds a lock button.
 /obj/item/uplink/hidden/interact(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/item/uplink/hidden/CanUseTopic()
 	if(!active)

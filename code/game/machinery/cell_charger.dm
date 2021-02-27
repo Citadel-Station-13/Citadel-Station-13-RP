@@ -27,7 +27,7 @@
 	if(charging && !(stat & (BROKEN|NOPOWER)))
 
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
-		//world << "nl: [newlevel]"
+		//to_chat(world, "nl: [newlevel]")
 
 		if(chargelevel != newlevel)
 
@@ -39,12 +39,10 @@
 		overlays.Cut()
 
 /obj/machinery/cell_charger/examine(mob/user)
-	if(!..(user, 5))
-		return
-
-	to_chat(user, "[charging ? "[charging]" : "Nothing"] is in [src].")
+	. = ..()
+	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"
 	if(charging)
-		to_chat(user, "Current charge: [charging.charge] / [charging.maxcharge]")
+		. += "<span class = 'notice'>Current charge: [charging.charge] / [charging.maxcharge]</span>"
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
@@ -116,8 +114,8 @@
 	..(severity)
 
 
-/obj/machinery/cell_charger/process()
-	//world << "ccpt [charging] [stat]"
+/obj/machinery/cell_charger/process(delta_time)
+	//to_chat(world, "ccpt [charging] [stat]")
 	if((stat & (BROKEN|NOPOWER)) || !anchored)
 		update_use_power(USE_POWER_OFF)
 		return

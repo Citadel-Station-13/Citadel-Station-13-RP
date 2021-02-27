@@ -21,7 +21,13 @@
 					"Needles" = "medicalrobot",
 					"Drone" = "drone-surgery",
 					"Handy" = "handy-med",
-					"Insekt" = "insekt-Med"
+					"Insekt" = "insekt-Med",
+					"Misato" = "tall2medical",
+					"L3P1-D0T" = "Glitterfly-Surgeon",
+					"Miss M" = "miss-medical",
+					"Coffical" = "coffin-Medical",
+					"Coffcue" = "coffin-Rescue"
+
 					)
 
 /obj/item/robot_module/robot/medical/surgeon/New()
@@ -92,7 +98,10 @@
 					"Needles" = "medicalrobot",
 					"Drone - Medical" = "drone-medical",
 					"Drone - Chemistry" = "drone-chemistry",
-					"Insekt" = "insekt-Med"
+					"Insekt" = "insekt-Med",
+					"Misato" = "tall2medical",
+					"L3P1-D0T" = "Glitterfly-Crisis",
+					"Miss M" = "miss-medical"
 					)
 
 /obj/item/robot_module/robot/medical/crisis/New()
@@ -213,7 +222,7 @@
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 
-	if(R.client && R.client.ckey in list("nezuli"))
+	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-med"
 	..()

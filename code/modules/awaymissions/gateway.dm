@@ -51,7 +51,7 @@
 	density = 1
 */ //VOREStation Removal End
 
-obj/machinery/gateway/centerstation/process()
+obj/machinery/gateway/centerstation/process(delta_time)
 	if(stat & (NOPOWER))
 		if(active) toggleoff()
 		return
@@ -126,7 +126,7 @@ obj/machinery/gateway/centerstation/process()
 	if(!awaygate)	return
 
 	use_power(5000)
-	M << 'sound/effects/phasein.ogg'
+	SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 	if(awaygate.calibrated)
 		M.forceMove(get_step(awaygate.loc, SOUTH))
@@ -243,7 +243,7 @@ obj/machinery/gateway/centerstation/process()
 				return
 	M.forceMove(get_step(stationgate.loc, SOUTH))
 	M.setDir(SOUTH)
-	M << 'sound/effects/phasein.ogg'
+	SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 
 

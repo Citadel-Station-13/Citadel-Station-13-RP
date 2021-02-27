@@ -194,4 +194,3 @@
 				H.ExtinguishMob()
 			H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_s_store)
 			H.internal = H.s_store
-			H.internals.icon_state = "internal1"

@@ -69,6 +69,7 @@
 	ahoge
 		name = "Ahoge"
 		icon_state = "hair_ahoge"
+		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = null
 
 	bald //Everyone goes bald.
@@ -662,6 +663,13 @@
 		icon_state = "hair_shorthair3"
 		flags = HAIR_VERY_SHORT
 
+	shortalt2
+		name = "Short Hair 2 Alt"
+		icon_state = "shorthair3a"
+		flags = HAIR_VERY_SHORT
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+
 	short3
 		name = "Short Hair 3"
 		icon_state = "hair_shorthair4"
@@ -964,6 +972,50 @@
 		icon_state = "inkling-colorable"
 		color_blend_mode = ICON_MULTIPLY
 		do_colouration = 1
+
+	myopia
+		name = "Myopia"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "myopia"
+		flags = HAIR_VERY_SHORT
+
+	shortish
+		name = "Shortish"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "bshort-1"
+
+	shortmess
+		name = "Short Mess"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "bshort-2"
+
+	peaked
+		name = "Peaked"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "bshort-3"
+
+	blindbangs
+		name = "Blind Bangs"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "blindbangs"
+		flags = HAIR_TIEABLE
+
+	reallyblindbangs
+		name = "Grudge"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "grudge"
+		flags = HAIR_TIEABLE
+
+
+
+
+
 
 /*
 ///////////////////////////////////
@@ -1907,10 +1959,15 @@
 	var/body_parts = list() //A list of bodyparts this covers, in organ_tag defines
 	//Reminder: BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD
 
-	tat_heart
-		name = "Tattoo (Heart, Torso)"
-		icon_state = "tat_heart"
-		body_parts = list(BP_TORSO)
+	tat_rheart
+		name = "Tattoo (Heart, R. Arm)"
+		icon_state = "tat_rheart"
+		body_parts = list(BP_R_ARM)
+
+	tat_lheart
+		name = "Tattoo (Heart, L. Arm)"
+		icon_state = "tat_lheart"
+		body_parts = list(BP_L_ARM)
 
 	tat_hive
 		name = "Tattoo (Hive, Back)"
@@ -2151,21 +2208,37 @@
 	c_beast_body
 		name = "Cyber Body"
 		icon_state = "c_beast_body"
+		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_TORSO,BP_GROIN)
+
+	c_beast_plating
+		name = "Cyber Plating (Use with Cyber Body)"
+		icon_state = "c_beast_plating"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM)
 
 	c_beast_band
 		name = "Cyber Band (Use with Cybertech head)"
 		icon_state = "c_beast_band"
+		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
 
 	c_beast_cheek_a
-		name = "Cyber Beast Cheeks A(Use A and B)"
-		icon_state = "c_beast_add_a"
+		name = "Cyber Beast Cheeks A (Use A, B and C)"
+		icon_state = "c_beast_a"
+		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
 
 	c_beast_cheek_b
-		name = "Cyber Beast Cheeks B(Use A and B)"
-		icon_state = "c_beast_add_b"
+		name = "Cyber Beast Cheeks B (Use A, B and C)"
+		icon_state = "c_beast_b"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	c_beast_cheek_c
+		name = "Cyber Beast Cheeks c (Use A, B and C)"
+		icon_state = "c_beast_c"
+		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
 
 /datum/sprite_accessory/marking/vr
@@ -2777,6 +2850,35 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_LEG,BP_R_LEG,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN,BP_HEAD)
 		species_allowed = list(SPECIES_TESHARI)
+
+	short_snoot
+		name = "Short Snout"
+		icon_state = "shortsnoot"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	short_snoot_nose
+		name = "Short Snout Nose"
+		icon_state = "snootnose"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	thirdeye
+		name = "Third Eye"
+		icon_state = "thirdeye"
+		body_parts = list(BP_HEAD)
+
+	fullhead
+		name = "Full Head Color"
+		icon_state = "fullhead"
+		body_parts = list(BP_HEAD)
+
+	panda_full
+		name = "Panda Limbs"
+		icon_state = "panda"
+		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
+		color_blend_mode = ICON_ADD
+
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery

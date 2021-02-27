@@ -3,6 +3,8 @@
 	name_plural = "Alraunes"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	num_alternate_languages = 3 //cit lore change
+	language = LANGUAGE_VERNAL
+	species_language = LANGUAGE_VERNAL
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
 	total_health = 100 //standard
 	brute_mod = 1 //nothing special
@@ -306,7 +308,7 @@
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
 		if (temp_adj < BODYTEMP_COOLING_MAX) temp_adj = BODYTEMP_COOLING_MAX
-		//world << "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]"
+		//to_chat(world, "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]")
 		H.bodytemperature += temp_adj
 
 	else if(breath.temperature >= heat_discomfort_level)
@@ -368,7 +370,7 @@
 	create_reagents(usable_volume)
 
 
-/obj/item/organ/internal/fruitgland/process()
+/obj/item/organ/internal/fruitgland/process(delta_time)
 	if(!owner) return
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 	var/before_gen

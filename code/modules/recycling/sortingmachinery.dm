@@ -111,6 +111,8 @@
 	name = "small parcel"
 	icon = 'icons/obj/storage.dmi'	//VOREStation Edit
 	icon_state = "deliverycrate3"
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	var/obj/item/wrapped = null
 	var/sortTag = null
 	var/examtext = null
@@ -350,7 +352,7 @@
 
 	Topic(href, href_list)
 		src.add_fingerprint(usr)
-		if(href_list["nextTag"] && href_list["nextTag"] in tagger_locations)
+		if(href_list["nextTag"] && (href_list["nextTag"] in tagger_locations))
 			src.currTag = href_list["nextTag"]
 		openwindow(usr)
 

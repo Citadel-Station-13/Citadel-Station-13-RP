@@ -10,6 +10,8 @@
 	death_message =    "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/decal/cleanable/ash
+	
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite) // Finally gives them unarmed attacks, along with claws, because what's stopping them from forming a set from their nanite gloop?
 
 	blood_color = "#505050" //This is the same as the 80,80,80 below, but in hex
 	flesh_color = "#505050"
@@ -19,9 +21,12 @@
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
 	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	health_hud_intensity = 2
-	num_alternate_languages = 3
+	num_alternate_languages = 5  // They're hyper-advanced blobs, so they should be able to know more than 4 languages. I think 6 is enough for now.
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
+	
+	item_slowdown_mod = 0.25 // The weight of various items shouldn't bother them too much. I'd make it 0, but the general bulk still slows them down.
+	darksight = 7 // I have no eyes, but I still see. Just makes them have the major darksight trait
 
 	breath_type = null
 	poison_type = null
@@ -30,29 +35,39 @@
 	blood_volume =	0
 	min_age =		18
 	max_age =		200
+	
+	total_health =	125  // Makes them Unathi level tough. Nothing too much, also mildly justified as proteans can't ever go into crit, as they blob instead
 
 	brute_mod =		0.30 // 70% brute reduction
-	burn_mod =		1.4 //60% burn weakness
+	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
 	oxy_mod =		0
+	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
+	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
+	
+	hunger_factor = 0.04 // Better power storage, perhaps? This is not additive. Whoops
  /*
 These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
-A worst-case sev 4 emp will do 88 damage pre-mitigation, and 140.8 post-mitigation (as resist is negative) spread out over all the limbs.
-A best case sev 4 emp will do 55 pre-mitigation damage. This is 88 damage.
-A worst case sev 3 emp will do 66 pre-mitigation damage. This is 105.6 damage.
-A best case sev 3 emp will do 44 pre-mitigation damage. This is 70.4 damage.
-A worst case sev 2 emp will do 55 pre-mitigation damage. This is 88 damage.
-A best case sev 2 emp will do 22 pre-mitigation damage. This is 35.2 damage.
-A worst case sev 1 emp will do 33 pre-mitigation damage.This is 52.8 damage.
-A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
+A worst-case sev 4 emp will do 88 damage pre-mitigation, and 114.4 post-mitigation (as resist is negative) spread out over all the limbs.
+A best case sev 4 emp will do 55 pre-mitigation damage. This is 71.5 damage.
+A worst case sev 3 emp will do 66 pre-mitigation damage. This is 85.8 damage.
+A best case sev 3 emp will do 44 pre-mitigation damage. This is 57.2 damage.
+A worst case sev 2 emp will do 55 pre-mitigation damage. This is 71.5 damage.
+A best case sev 2 emp will do 22 pre-mitigation damage. This is 28.6 damage.
+A worst case sev 1 emp will do 33 pre-mitigation damage.This is 42.9 damage.
+A best case sev 1 emp will do 11 pre-mitigation damage. This is 14.3 damage.
+
+I redid the calculations, as the burn weakness has been changed. This should be good. Hopefully
 */
-	cold_level_1 = 280 //Default 260 - Lower is better
+/*	cold_level_1 = 280 //Default 260 - Lower is better
 	cold_level_2 = 220 //Default 200
 	cold_level_3 = 130 //Default 120
 
 	heat_level_1 = 320 //Default 360
 	heat_level_2 = 370 //Default 400
 	heat_level_3 = 600 //Default 1000
-
+	
+	As the heat/cold levels are listed below, these aren't really necessary
+*/
 	//Space doesn't bother them
 	hazard_low_pressure = -1
 	hazard_high_pressure = INFINITY //Totally pressure immune - in human form (blobform is also completely pressure/heat immune, bringing them both in line with each other.)
@@ -123,7 +138,9 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds) //prots get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/lick_wounds,
+		/mob/living/carbon/human/proc/rig_transform,
+		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
@@ -154,18 +171,18 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	H.synth_color = TRUE
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
-	var/obj/item/stack/material/steel/metal_stack = new()
-	metal_stack.amount = 3
-
-	var/obj/item/clothing/accessory/permit/nanotech/permit = new()
+	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
+	var/obj/item/stack/material/steel/metal_stack = new(box)
+	metal_stack.amount = 5
+	new /obj/item/fbp_backup_cell(box)
+	var/obj/item/clothing/accessory/permit/nanotech/permit = new(box)
 	permit.set_name(H.real_name)
 
 	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(permit, slot_l_hand)
-		H.equip_to_slot_or_del(metal_stack, slot_r_hand)
+		H.equip_to_slot_or_del(box, slot_l_hand)
 	else
-		H.equip_to_slot_or_del(permit, slot_in_backpack)
-		H.equip_to_slot_or_del(metal_stack, slot_in_backpack)
+		H.equip_to_slot_or_del(box, slot_in_backpack)
+
 
 	spawn(0) //Let their real nif load if they have one
 		if(!H.nif)
@@ -173,6 +190,9 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 			new_nif.quick_implant(H)
 		else
 			H.nif.durability = rand(21,25)
+
+	var/obj/item/rig/protean/prig = new /obj/item/rig/protean(H)
+	prig.myprotean = H
 
 /datum/species/protean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 	return ..() //Wut
@@ -190,7 +210,7 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 			H.gib()
 
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.35 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever). The decimal point (0.35 as of now) is the autoblob %hp threshold.
+	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.8 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever). The decimal point (0.8 as of now) is the autoblob %hp threshold. Right, quick maths lesson: making the autoblob threshold 35% does not mean that proteans will blob at 35% health. It means that they'll blob at 65% health, because it's checking if the total damage is higher than the threshold. I've made it that they blob at 20% health now, so they don't instantly blob to everything.
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
@@ -323,8 +343,11 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 /datum/modifier/protean/steel/tick()
 
 	..()
-	holder.adjustBruteLoss(-9 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
-	holder.adjustFireLoss(-2.14,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec.
+	holder.adjustBruteLoss(-10 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec. Previous value was 9, which didn't equal out to 3 per second
+	holder.adjustFireLoss(-2.3 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec. Bit of an adjustment with the updated burn resist
+	holder.adjustToxLoss(-12) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
+	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
+
 
 
 	var/mob/living/carbon/human/H = holder
@@ -348,6 +371,27 @@ A best case sev 1 emp will do 11 pre-mitigation damage. This is 17.6 damage.
 	if(new_name)
 		src.name += " ([new_name])"
 		desc += "\nVALID THROUGH END OF: [time2text(world.timeofday, "Month") +" "+ num2text(text2num(time2text(world.timeofday, "YYYY"))+544)]\nREGISTRANT: [new_name]"
+
+/mob/living/carbon/human/proc/rig_transform()
+	set name = "Modify Form - Hardsuit"
+	set desc = "Allows a protean to solidify its form into one extremely similar to a hardsuit."
+	set category = "Abilities"
+
+	if(istype(loc, /obj/item/rig/protean))
+		var/obj/item/rig/protean/prig = loc
+		src.forceMove(get_turf(prig))
+		prig.forceMove(src)
+		return
+
+	if(isturf(loc))
+		var/obj/item/rig/protean/prig
+		for(var/obj/item/rig/protean/O in contents)
+			prig = O
+			break
+		if(prig)
+			prig.forceMove(get_turf(src))
+			src.forceMove(prig)
+			return
 
 #undef DAM_SCALE_FACTOR
 #undef METAL_PER_TICK

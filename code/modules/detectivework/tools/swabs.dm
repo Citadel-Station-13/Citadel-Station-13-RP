@@ -5,6 +5,8 @@
 	var/gsr = 0
 	var/list/dna
 	var/used
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 /obj/item/forensics/swab/proc/is_used()
 	return used
@@ -20,14 +22,6 @@
 	var/mob/living/carbon/human/H = M
 	var/sample_type
 
-	if(H.wear_mask)
-		to_chat(user, "<span class='warning'>\The [H] is wearing a mask.</span>")
-		return
-
-	if(!H.dna || !H.dna.unique_enzymes)
-		to_chat(user, "<span class='warning'>They don't seem to have DNA!</span>")
-		return
-
 	if(user != H && H.a_intent != "help" && !H.lying)
 		user.visible_message("<span class='danger'>\The [user] tries to take a swab sample from \the [H], but they move away.</span>")
 		return
@@ -36,6 +30,15 @@
 		if(!H.organs_by_name[BP_HEAD])
 			to_chat(user, "<span class='warning'>They don't have a head.</span>")
 			return
+
+		if(H.wear_mask)
+			to_chat(user, "<span class='warning'>Something is blocking \the [H]'s mouth.</span>")
+			return
+
+		if(!H.dna || !H.dna.unique_enzymes)
+			to_chat(user, "<span class='warning'>They don't seem to have DNA!</span>")
+			return
+
 		if(!H.check_has_mouth())
 			to_chat(user, "<span class='warning'>They don't have a mouth.</span>")
 			return
@@ -56,7 +59,7 @@
 			to_chat(user, "<span class='warning'>They don't have any hands.</span>")
 			return
 		user.visible_message("[user] swabs [H]'s palm for a sample.")
-		sample_type = "GSR"
+		sample_type = "residue"
 		gsr = H.gunshot_residue
 	else
 		return

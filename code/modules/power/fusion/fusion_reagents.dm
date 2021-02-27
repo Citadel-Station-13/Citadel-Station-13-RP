@@ -4,7 +4,7 @@
 	name = "helium-3"
 	description = "A colorless, odorless, tasteless and generally inert gas used in fusion reactors. Non-radioactive."
 	id = "helium-3"
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /obj/structure/reagent_dispensers/he3

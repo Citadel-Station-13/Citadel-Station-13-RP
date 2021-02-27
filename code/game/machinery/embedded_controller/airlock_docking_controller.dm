@@ -33,7 +33,7 @@
 	else
 		..()
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/embedded_controller/radio/airlock/docking_port/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/datum/computer/file/embedded_program/docking/airlock/docking_program = program
 	var/datum/computer/file/embedded_program/airlock/docking/airlock_program = docking_program.airlock_program
@@ -104,8 +104,8 @@
 	. = ..(command)
 	. = airlock_program.receive_user_command(command) || .	// Pass along to subprograms; bypass shortcircuit
 
-/datum/computer/file/embedded_program/docking/airlock/process()
-	airlock_program.process()
+/datum/computer/file/embedded_program/docking/airlock/process(delta_time)
+	airlock_program?.process()
 	..()
 
 /datum/computer/file/embedded_program/docking/airlock/receive_signal(datum/signal/signal, receive_method, receive_param)

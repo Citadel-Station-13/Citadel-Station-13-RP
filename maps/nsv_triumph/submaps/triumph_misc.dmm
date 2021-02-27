@@ -420,12 +420,11 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "supply_shuttle_hatch";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Shuttle Hatch"
 	},
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "bR" = (
@@ -545,12 +544,11 @@
 /area/holodeck/source_courtroom)
 "cs" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "supply_shuttle_hatch";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Shuttle Hatch"
 	},
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
 "ct" = (
@@ -610,7 +608,7 @@
 	id_tag = "supply_shuttle";
 	pixel_x = -25;
 	req_one_access = list(13,31);
-	tag_door = "supply_shuttle_hatch"
+	tag_door = null
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
@@ -705,16 +703,15 @@
 /area/holodeck/source_emptycourt)
 "dh" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "supply_shuttle_hatch";
-	locked = 1;
+	frequency = null;
+	id_tag = null;
 	name = "Shuttle Hatch"
 	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "QMLoad"
 	},
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "dj" = (

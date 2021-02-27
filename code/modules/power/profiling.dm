@@ -66,6 +66,6 @@ var/global/list/power_update_requests_by_area = list()
 	if(!check_rights(R_DEBUG))	return
 
 	to_chat(usr, "Total profiling time: [power_profiled_time] ticks")
-	usr << "Total profiling time: [power_profiled_time] ticks"
+	to_chat(usr, "Total profiling time: [power_profiled_time] ticks")
 	for (var/A in power_update_requests_by_area)
-		usr << "[A] = [power_update_requests_by_area[A]]"
+		to_chat(usr, "[A] = [power_update_requests_by_area[A]]")

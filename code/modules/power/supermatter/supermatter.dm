@@ -33,6 +33,10 @@
 
 #define WARNING_DELAY 20			//seconds between warnings.
 
+// Keeps Accent sounds from layering, increase or decrease as preferred.
+#define SUPERMATTER_ACCENT_SOUND_COOLDOWN 2 SECONDS
+
+
 /obj/machinery/power/supermatter
 	name = "Supermatter"
 	desc = "A strangely translucent and iridescent crystal. <font color='red'>You get headaches just from looking at it.</font>"
@@ -87,6 +91,9 @@
 	var/config_hallucination_power = 0.1
 
 	var/debug = 0
+
+	/// Cooldown tracker for accent sounds,
+	var/last_accent_sound = 0
 
 	var/datum/looping_sound/supermatter/soundloop
 
@@ -204,7 +211,7 @@
 			global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
 			for(var/mob/M in player_list) // VOREStation Edit - Rykka adds SM Delam alarm
 				if(!istype(M,/mob/new_player) && !isdeaf(M)) // VOREStation Edit - Rykka adds SM Delam alarm
-					M << message_sound // VOREStation Edit - Rykka adds SM Delam alarm
+					SEND_SOUND(M, message_sound) // VOREStation Edit - Rykka adds SM Delam alarm
 			admin_chat_message(message = "SUPERMATTER DELAMINATING!", color = "#FF2222") //VOREStation Add
 			public_alert = 1
 			log_game("SUPERMATTER([x],[y],[z]) Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
@@ -212,7 +219,7 @@
 			global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
 			for(var/mob/M in player_list)
 				if(!istype(M,/mob/new_player) && !isdeaf(M))
-					M << 'sound/ambience/engine_alert2.ogg'
+					SEND_SOUND(M, sound('sound/ambience/engine_alert2.ogg'))
 		else if(safe_warned && public_alert)
 			global_announcer.autosay(alert_msg, "Supermatter Monitor")
 			public_alert = 0
@@ -231,7 +238,7 @@
 
 	return ..()
 
-/obj/machinery/power/supermatter/process()
+/obj/machinery/power/supermatter/process(delta_time)
 
 	var/turf/L = loc
 
@@ -256,12 +263,28 @@
 		shift_light(4,initial(light_color))
 	if(grav_pulling)
 		supermatter_pull(src)
-
+	// Vary volume by power produced.
 	if(power)
 		// Volume will be 1 at no power, ~12.5 at ENERGY_NITROGEN, and 20+ at ENERGY_PHORON.
 		// Capped to 20 volume since higher volumes get annoying and it sounds worse.
-		soundloop.volume = min(round(power/10)+1, 20)
+		// Formula previously was min(round(power/10)+1, 20)
+		soundloop.volume = clamp((50 + (power / 50)), 50, 100)
 
+	// Swap loops between calm and delamming.
+	if(damage >= 300)
+		soundloop.mid_sounds = list('sound/machines/sm/loops/delamming.ogg' = 1)
+	else
+		soundloop.mid_sounds = list('sound/machines/sm/loops/calm.ogg' = 1)
+
+	// Play Delam/Neutral sounds at rate determined by power and damage.
+	if(last_accent_sound < world.time && prob(20))
+		var/aggression = min(((damage / 800) * (power / 2500)), 1.0) * 100
+		if(damage >= 300)
+			playsound(src, "smdelam", max(50, aggression), FALSE, 10)
+		else
+			playsound(src, "smcalm", max(50, aggression), FALSE, 10)
+		var/next_sound = round((100 - aggression) * 5)
+		last_accent_sound = world.time + max(SUPERMATTER_ACCENT_SOUND_COOLDOWN, next_sound)
 	//Ok, get the air from the turf
 	var/datum/gas_mixture/removed = null
 	var/datum/gas_mixture/env = null
@@ -356,11 +379,11 @@
 	if(Adjacent(user))
 		return attack_hand(user)
 	else
-		ui_interact(user)
+		nano_ui_interact(user)
 	return
 
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/power/supermatter/attack_hand(mob/user as mob)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
@@ -371,7 +394,7 @@
 	Consume(user)
 
 // This is purely informational UI that may be accessed by AIs or robots
-/obj/machinery/power/supermatter/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/supermatter/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data["integrity_percentage"] = round(get_integrity())
@@ -481,7 +504,7 @@
 	START_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/broken_sm/process()
+/obj/item/broken_sm/process(delta_time)
 	SSradiation.radiate(src, 50)
 
 /obj/item/broken_sm/Destroy()

@@ -79,7 +79,7 @@
 	update_nearby_tiles()
 	. = ..()
 
-/obj/machinery/door/process()
+/obj/machinery/door/process(delta_time)
 	if(close_door_at && world.time >= close_door_at)
 		if(autoclose)
 			close_door_at = next_close_time()
@@ -265,7 +265,8 @@
 			return
 
 		if(repairing && I.is_crowbar())
-			var/obj/item/stack/material/repairing_sheet = get_material().place_sheet(loc)
+			var/datum/material/M = get_material()
+			var/obj/item/stack/material/repairing_sheet = M.place_sheet(loc)
 			repairing_sheet.amount += repairing-1
 			repairing = 0
 			to_chat(user, "<span class='notice'>You remove \the [repairing_sheet].</span>")
@@ -329,13 +330,13 @@
 /obj/machinery/door/examine(mob/user)
 	. = ..()
 	if(src.health <= 0)
-		to_chat(user, "\The [src] is broken!")
+		. += "<span class = 'notice'>The [src] is broken!</span>"
 	if(src.health < src.maxhealth / 4)
-		to_chat(user, "\The [src] looks like it's about to break!")
+		. += "<span class = 'notice'>The [src] looks like it's about to break!</span>"
 	else if(src.health < src.maxhealth / 2)
-		to_chat(user, "\The [src] looks seriously damaged!")
+		. += "<span class = 'notice'>The [src] looks seriously damaged!</span>"
 	else if(src.health < src.maxhealth * 3/4)
-		to_chat(user, "\The [src] shows signs of damage!")
+		. += "<span class = 'notice'>The [src] shows signs of damage!</span>"
 
 
 /obj/machinery/door/proc/set_broken()

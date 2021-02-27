@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/drone/say(var/message)
+/mob/living/silicon/robot/drone/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if(local_transmit)
 		if (src.client)
 			if(client.prefs.muted & MUTE_IC)
@@ -33,6 +33,6 @@
 			if (istype(M, /mob/new_player))
 				continue
 			else if(M.stat == DEAD &&  M.is_preference_enabled(/datum/client_preference/ghost_ears))
-				if(M.client) M << "<b>[src]</b> transmits, \"[message]\""
+				if(M.client) to_chat(M, "<b>[src]</b> transmits, \"[message]\"")
 		return 1
 	return ..(message, 0)

@@ -66,7 +66,7 @@
 
 /mob/proc/AIize(move=1)
 	if(client)
-		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // stop the jams for AIs
+		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1)) // stop the jams for AIs
 	var/mob/living/silicon/ai/O = new (loc, GLOB.using_map.default_law_type,,1)//No MMI but safety is in effect.
 	O.invisibility = 0
 	O.aiRestorePowerRoutine = 0
@@ -159,8 +159,15 @@
 
 	if(mind)		//TODO
 		mind.transfer_to(O)
-		if(O.mind.assigned_role == "Cyborg")
+		if(O.mind && O.mind.assigned_role == "Cyborg")
 			O.mind.original = O
+			if(O.mind.role_alt_title == "Drone")
+				O.mmi = new /obj/item/mmi/digital/robot(O)
+			else if(O.mind.role_alt_title == "Robot")
+				O.mmi = new /obj/item/mmi/digital/posibrain(O)
+			else
+				O.mmi = new /obj/item/mmi(O)
+			O.mmi.transfer_identity(src)
 		else if(mind && mind.special_role)
 			O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
 	else
@@ -168,28 +175,18 @@
 
 	O.loc = loc
 	O.job = "Cyborg"
-	if(O.mind.assigned_role == "Cyborg")
-		if(O.mind.role_alt_title == "Robot")
-			O.mmi = new /obj/item/mmi/digital/posibrain(O)
-		else if(O.mind.role_alt_title == "Drone")
-			O.mmi = new /obj/item/mmi/digital/robot(O)
-		else
-			O.mmi = new /obj/item/mmi(O)
-
-		O.mmi.transfer_identity(src)
 
 	if(O.client && O.client.prefs)
 		var/datum/preferences/B = O.client.prefs
 		for(var/language in B.alternate_languages)
 			O.add_language(language)
-		O.resize(B.size_multiplier, animate = TRUE)		//VOREStation Addition: add size prefs to borgs
-		O.fuzzy = B.fuzzy								//VOREStation Addition: add size prefs to borgs
+		O.resize(B.size_multiplier, animate = TRUE)		// Adds size prefs to borgs
+		O.fuzzy = B.fuzzy								// Ditto
 
 	callHook("borgify", list(O))
 	O.Namepick()
 
-	spawn(0)	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned
-		qdel(src)
+	qdel(src) // Queues us for a hard delete
 	return O
 
 //human -> alien
@@ -315,8 +312,6 @@
 	if(ispath(MP, /mob/living/simple_mob/animal/space/carp))
 		return 1
 	if(ispath(MP, /mob/living/simple_mob/construct))
-		return 1
-	if(ispath(MP, /mob/living/simple_mob/tomato))
 		return 1
 	if(ispath(MP, /mob/living/simple_mob/animal/passive/mouse))
 		return 1 //It is impossible to pull up the player panel for mice (Fixed! - Nodrak)

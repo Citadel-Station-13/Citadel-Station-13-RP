@@ -49,7 +49,7 @@
 		activated = 0
 		return
 
-/obj/item/deadringer/process()
+/obj/item/deadringer/process(delta_time)
 	if(activated)
 		if (ismob(src.loc))
 			var/mob/living/carbon/human/H = src.loc

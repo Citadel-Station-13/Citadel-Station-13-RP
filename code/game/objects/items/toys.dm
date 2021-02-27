@@ -321,8 +321,10 @@
 		playsound(src, 'sound/effects/snap.ogg', 50, 1)
 		qdel(src)
 
-/obj/item/toy/snappop/Crossed(H as mob|obj)
+/obj/item/toy/snappop/Crossed(atom/movable/H as mob|obj)
 	. = ..()
+	if(H.is_incorporeal())
+		return
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		if(M.m_intent == "run")
@@ -393,16 +395,16 @@
 				D.reagents.touch_turf(get_turf(D))
 				for(var/atom/T in get_turf(D))
 					D.reagents.touch(T)
-					if(ismob(T) && T:client)
-						T:client << "<span class='warning'>\The [user] has sprayed you with water!</span>"
+					if(ismob(T))
+						to_chat(T, "<span class='warning'>\The [user] has sprayed you with water!</span>")
 				sleep(4)
 			qdel(D)
 
 		return
 
 /obj/item/toy/waterflower/examine(mob/user)
-	if(..(user, 0))
-		user << text("\icon[] [] units of water left!", src, src.reagents.total_volume)
+	. = ..()
+	. += "[src] has [src.reagents.total_volume] units of water left!"
 
 /*
  * Bosun's whistle
@@ -921,7 +923,7 @@
 /obj/item/toy/plushie/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/toy/plushie) || istype(I, /obj/item/organ/external/head))
 		user.visible_message("<span class='notice'>[user] makes \the [I] kiss \the [src]!.</span>", \
-		"<span class='notice'>You make \the [I] kiss \the [src]!.</span>")
+		"<span class='notice'>You make \the [I] kiss \the [src]!</span>")
 	return ..()
 
 /obj/item/toy/plushie/nymph

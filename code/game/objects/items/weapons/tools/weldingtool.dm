@@ -37,6 +37,8 @@
 	var/burned_fuel_for = 0 // Keeps track of how long the welder's been on, used to gradually empty the welder if left one, without RNG.
 	var/always_process = FALSE // If true, keeps the welder on the process list even if it's off.  Used for when it needs to regenerate fuel.
 	toolspeed = 1
+	drop_sound = 'sound/items/drop/weldingtool.ogg'
+	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
 
 /obj/item/weldingtool/Initialize()
 	. = ..()
@@ -55,9 +57,9 @@
 	return ..()
 
 /obj/item/weldingtool/examine(mob/user)
-	if(..(user, 0))
-		if(max_fuel)
-			to_chat(user, text("\icon[] The [] contains []/[] units of fuel!", src, src.name, get_fuel(),src.max_fuel ))
+	. = ..()
+	if(max_fuel)
+		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
 
 /obj/item/weldingtool/attack(atom/A, mob/living/user, def_zone)
 	if(ishuman(A) && user.a_intent == INTENT_HELP)
@@ -114,7 +116,7 @@
 	..()
 	return
 
-/obj/item/weldingtool/process()
+/obj/item/weldingtool/process(delta_time)
 	if(welding)
 		++burned_fuel_for
 		if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
@@ -412,7 +414,7 @@
 	origin_tech = list(TECH_PHORON = 5 ,TECH_ENGINEERING = 5)
 	always_process = TRUE
 
-/obj/item/weldingtool/alien/process()
+/obj/item/weldingtool/alien/process(delta_time)
 	if(get_fuel() <= get_max_fuel())
 		reagents.add_reagent("fuel", 1)
 	..()
@@ -431,7 +433,7 @@
 	always_process = TRUE
 	var/nextrefueltick = 0
 
-/obj/item/weldingtool/experimental/process()
+/obj/item/weldingtool/experimental/process(delta_time)
 	..()
 	if(get_fuel() < get_max_fuel() && nextrefueltick < world.time)
 		nextrefueltick = world.time + 10
@@ -481,7 +483,7 @@
 	mounted_pack = null
 	return ..()
 
-/obj/item/weldingtool/tubefed/process()
+/obj/item/weldingtool/tubefed/process(delta_time)
 	if(mounted_pack)
 		if(!istype(mounted_pack.loc,/mob/living/carbon/human))
 			mounted_pack.return_nozzle()
@@ -548,13 +550,14 @@
 	return power_supply
 
 /obj/item/weldingtool/electric/examine(mob/user)
+	. = ..()
 	if(get_dist(src, user) > 1)
-		to_chat(user, desc)
-	else					// The << need to stay, for some reason
+		return
+	else					// The << need to stay, for some reason no they dont
 		if(power_supply)
-			user << text("\icon[] The [] has [] charge left.", src, src.name, get_fuel())
+			. += "[icon2html(thing = src, target = world)] The [src] has [get_fuel()] charge left."
 		else
-			user << text("\icon[] The [] has no power cell!", src, src.name)
+			. += "[icon2html(thing = src, target = world)] The [src] has no power cell!"
 
 /obj/item/weldingtool/electric/get_fuel()
 	if(use_external_power)

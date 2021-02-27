@@ -10,7 +10,7 @@
 	throw_speed = 1
 	throw_range = 2
 
-	matter = list(DEFAULT_WALL_MATERIAL = 750,"waste" = 750)
+	matter = list(DEFAULT_WALL_MATERIAL = 750)
 
 	origin_tech = list(TECH_POWER = 3, TECH_ILLEGAL = 5)
 	var/drain_rate = 1500000		// amount of power to drain per tick
@@ -119,7 +119,7 @@
 	return 1
 
 
-/obj/item/powersink/process()
+/obj/item/powersink/process(delta_time)
 	drained_this_tick = 0
 	power_drained -= min(dissipation_rate, power_drained)
 	if(power_drained > max_power * 0.95)

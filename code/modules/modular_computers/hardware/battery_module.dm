@@ -74,5 +74,5 @@
 	return ..()
 
 /obj/item/computer_hardware/battery_module/proc/charge_to_full()
-	if(battery)
+	if(battery)//nolonger checks for a valid path, instead checks if battery is set.
 		battery.charge = battery.maxcharge

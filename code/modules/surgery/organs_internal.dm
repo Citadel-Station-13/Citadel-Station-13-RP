@@ -459,9 +459,9 @@
 // To be finished after some tests.
 // /datum/surgery_step/ribcage/heart/cut
 //	allowed_tools = list(
-//	/obj/item/surgical/scalpel = 100,		\
-//	/obj/item/material/knife = 75,	\
-//	/obj/item/material/shard = 50, 		\
+//	/obj/item/surgical/scalpel = 100,
+//	/obj/item/material/knife = 75,
+//	/obj/item/material/shard = 50,
 //	)
 
 //	min_duration = 30

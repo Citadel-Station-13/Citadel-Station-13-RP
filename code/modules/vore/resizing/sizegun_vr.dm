@@ -13,6 +13,7 @@
 	projectile_type = /obj/item/projectile/beam/sizelaser
 	origin_tech = list(TECH_BLUESPACE = 4)
 	modifystate = "sizegun-shrink"
+	no_pin_required = 1
 	battery_lock = 1
 	var/size_set_to = 1
 	firemodes = list(
@@ -46,12 +47,12 @@
 		to_chat(usr, "<span class='notice'>Invalid size.</span>")
 		return
 	size_set_to = (size_select/100)
-	usr << "<span class='notice'>You set the size to [size_select]%</span>"
+	to_chat(usr, "<span class='notice'>You set the size to [size_select]%</span>")
 
 /obj/item/gun/energy/sizegun/examine(mob/user)
-	..()
+	. = ..()
 	var/size_examine = (size_set_to*100)
-	user << "<span class='info'>It is currently set at [size_examine]%</span>"
+	. += "<span class='info'>It is currently set at [size_examine]%</span>"
 
 //
 // Beams for size gun

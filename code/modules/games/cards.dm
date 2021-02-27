@@ -18,6 +18,9 @@
 	name = "deck of cards"
 	desc = "A simple deck of playing cards."
 	icon_state = "deck"
+	drop_sound = 'sound/items/drop/paper.ogg'
+	pickup_sound = 'sound/items/pickup/paper.ogg'
+
 
 /obj/item/deck/cards/New()
 	..()
@@ -280,6 +283,8 @@
 	w_class = ITEMSIZE_TINY
 	var/list/cards = list()
 	var/parentdeck = null // This variable is added here so that card pack dependent card can be mixed together by defining a "parentdeck" for them
+	drop_sound = 'sound/items/drop/paper.ogg'
+	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 
 /obj/item/pack/attack_self(var/mob/user as mob)
@@ -300,6 +305,8 @@
 	desc = "Some playing cards."
 	icon = 'icons/obj/playing_cards.dmi'
 	icon_state = "empty"
+	drop_sound = 'sound/items/drop/paper.ogg'
+	pickup_sound = 'sound/items/pickup/paper.ogg'
 	w_class = ITEMSIZE_TINY
 
 	var/concealed = 0
@@ -347,11 +354,11 @@
 	user.visible_message("<span class = 'notice'>\The [user] [concealed ? "conceals" : "reveals"] their hand.</span>")
 
 /obj/item/hand/examine(mob/user)
-	..(user)
+	. = ..()
 	if((!concealed) && cards.len)
-		to_chat(user,"It contains: ")
+		. += "It contains: "
 		for(var/datum/playingcard/P in cards)
-			to_chat(user,"\The [P.name].")
+			. += "\The [P.name]."
 
 /obj/item/hand/verb/Removecard()
 

@@ -34,8 +34,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	origin_tech = list(TECH_MATERIAL = 1)
 	slot_flags = SLOT_EARS
 	attack_verb = list("burnt", "singed")
+	drop_sound = 'sound/items/drop/food.ogg'
+	pickup_sound = 'sound/items/pickup/food.ogg'
 
-/obj/item/flame/match/process()
+/obj/item/flame/match/process(delta_time)
 	if(isliving(loc))
 		var/mob/living/M = loc
 		M.IgniteMob()
@@ -110,7 +112,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else // else just remove some of the reagents
 			reagents.remove_any(REM)
 
-/obj/item/clothing/mask/smokable/process()
+/obj/item/clothing/mask/smokable/process(delta_time)
 	var/turf/location = get_turf(src)
 	smoke(1)
 	if(smoketime < 1)
@@ -138,21 +140,21 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	..()
 
 /obj/item/clothing/mask/smokable/examine(mob/user)
-	..()
+	. = ..()
 	if(is_pipe)
 		return
 	var/smoke_percent = round((smoketime / max_smoketime) * 100)
 	switch(smoke_percent)
 		if(90 to INFINITY)
-			to_chat(user, "[src] is still fresh.")
+			. += "[src] is still fresh."
 		if(60 to 90)
-			to_chat(user, "[src] has a good amount of burn time remaining.")
+			. += "[src] has a good amount of burn time remaining."
 		if(30 to 60)
-			to_chat(user, "[src] is about half finished.")
+			. += "[src] is about half finished."
 		if(10 to 30)
-			to_chat(user, "[src] is starting to burn low.")
+			. += "[src] is starting to burn low."
 		else
-			to_chat(user, "[src] is nearly burnt out!")
+			. += "[src] is nearly burnt out!"
 
 
 /obj/item/clothing/mask/smokable/proc/light(var/flavor_text = "[usr] lights the [name].")
@@ -528,6 +530,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		item_state = "[base_state]on"
 		if(istype(src, /obj/item/flame/lighter/zippo) )
 			user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
+			playsound(loc, "modular_citadel/sound/items/zippo_open.ogg", 75, 1, -1)
 		else
 			if(prob(95))
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
@@ -547,6 +550,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		item_state = "[base_state]"
 		if(istype(src, /obj/item/flame/lighter/zippo) )
 			user.visible_message("<span class='rose'>You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing.</span>")
+			playsound(loc, "modular_citadel/sound/items/zippo_close.ogg", 75, 1, -1)
 		else
 			user.visible_message("<span class='notice'>[user] quietly shuts off the [src].</span>")
 
@@ -575,7 +579,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else
 		..()
 
-/obj/item/flame/lighter/process()
+/obj/item/flame/lighter/process(delta_time)
 	var/turf/location = get_turf(src)
 	if(location)
 		location.hotspot_expose(700, 5)
@@ -642,3 +646,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/flame/lighter/zippo/cowgirl
 	name = "\improper Cyan Cowgirl Zippo lighter"
 	icon_state = "cowzippo"
+
+/obj/item/flame/lighter/zippo/bullet
+	name = "\improper bullet lighter"
+	desc = "A lighter fashioned out of an old bullet casing."
+	icon_state = "bulletlighter"
+

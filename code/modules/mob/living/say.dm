@@ -16,6 +16,8 @@ var/list/department_radio_keys = list(
 	  ":v" = "Service",		".v" = "Service",
 	  ":p" = "AI Private",	".p" = "AI Private",
 	  ":y" = "Explorer",	".y" = "Explorer",
+	  ":f" = "Trader",		".f" = "Trader",
+	  ":g" = "Common",		".g" = "Common",
 
 	  ":R" = "right ear",	".R" = "right ear",
 	  ":L" = "left ear",	".L" = "left ear",
@@ -33,6 +35,8 @@ var/list/department_radio_keys = list(
 	  ":V" = "Service",		".V" = "Service",
 	  ":P" = "AI Private",	".P" = "AI Private",
 	  ":Y" = "Explorer",	".Y" = "Explorer",
+	  ":F" = "Trader",		".F" = "Trader",
+	  ":G" = "Common",		".G" = "Common",
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
@@ -211,6 +215,10 @@ proc/get_radio_key_from_channel(var/channel)
 	//Autohiss handles auto-rolling tajaran R's and unathi S's/Z's
 	message = handle_autohiss(message, speaking)
 
+	//autocorrect common typos
+	if(client?.is_preference_enabled(/datum/client_preference/autocorrect))
+		message = autocorrect(message)
+
 	//Whisper vars
 	var/w_scramble_range = 5	//The range at which you get ***as*th**wi****
 	var/w_adverb				//An adverb prepended to the verb in whispers
@@ -338,6 +346,17 @@ proc/get_radio_key_from_channel(var/channel)
 	//var/image/speech_bubble = image('icons/mob/talk_vr.dmi',src,"h[speech_bubble_test]") //VOREStation Edit. Commented this out in case we need to reenable.
 	var/speech_type = speech_bubble_appearance()
 	var/image/speech_bubble = image('icons/mob/talk_vr.dmi',src,"[speech_type][speech_bubble_test]") //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
+	var/sb_alpha = 255
+	var/atom/loc_before_turf = src
+	if(isbelly(loc))
+		speech_bubble.pixel_y = -13 //teehee. - Very funny.
+	while(loc_before_turf && !isturf(loc_before_turf.loc))
+		loc_before_turf = loc_before_turf.loc
+		sb_alpha -= 50
+		if(sb_alpha < 0)
+			break
+	speech_bubble.loc = loc_before_turf
+	speech_bubble.alpha = clamp(sb_alpha, 0, 255)
 	images_to_clients[speech_bubble] = list()
 
 	// Attempt Multi-Z Talking
@@ -365,14 +384,14 @@ proc/get_radio_key_from_channel(var/channel)
 					if(M.client)
 						var/image/I1 = listening[M] || speech_bubble
 						images_to_clients[I1] |= M.client
-						M << I1
+						SEND_IMAGE(M, I1)
 					M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 				if(whispering) //Don't even bother with these unless whispering
 					if(dst > message_range && dst <= w_scramble_range) //Inside whisper scramble range
 						if(M.client)
 							var/image/I2 = listening[M] || speech_bubble
 							images_to_clients[I2] |= M.client
-							M << I2
+							SEND_IMAGE(M, I2)
 						M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol*0.2)
 					if(dst > w_scramble_range && dst <= world.view) //Inside whisper 'visible' range
 						M.show_message("<span class='game say'><span class='name'>[src.name]</span> [w_not_heard].</span>", 2)

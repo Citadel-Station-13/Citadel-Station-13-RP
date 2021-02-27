@@ -12,6 +12,8 @@
 	force = 10
 	matter = list(DEFAULT_WALL_MATERIAL = 90)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
+	drop_sound = 'sound/items/drop/gascan.ogg'
+	pickup_sound = 'sound/items/pickup/gascan.ogg'
 
 	var/spray_particles = 3
 	var/spray_amount = 10	//units of liquid per particle
@@ -44,8 +46,8 @@
 	reagents.add_reagent("water", max_water)
 
 /obj/item/extinguisher/examine(mob/user)
-	if(..(user, 0))
-		to_chat(user, text("\icon[] [] contains [] units of water left!", src, src.name, src.reagents.total_volume))
+	. = ..()
+	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
 
 /obj/item/extinguisher/attack_self(mob/user as mob)
 	safety = !safety

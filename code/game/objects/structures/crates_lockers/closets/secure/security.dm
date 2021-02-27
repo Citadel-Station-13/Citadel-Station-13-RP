@@ -11,7 +11,7 @@
 	starts_with = list(
 		/obj/item/storage/backpack/dufflebag/captain,
 		/obj/item/clothing/head/helmet,
-		/obj/item/clothing/suit/storage/vest,
+		/obj/item/clothing/suit/armor/vest/capcarapace,
 		/obj/item/cartridge/captain,
 		/obj/item/storage/lockbox/medal,
 		/obj/item/radio/headset/heads/captain,
@@ -61,6 +61,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/head_of_personnel,
+		/obj/item/clothing/under/rank/head_of_personnel/skirt_pleated,
 		/obj/item/clothing/under/dress/dress_hop,
 		/obj/item/clothing/under/dress/dress_hr,
 		/obj/item/clothing/under/lawyer/female,
@@ -71,7 +72,8 @@
 		/obj/item/clothing/under/lawyer/oldman,
 		/obj/item/clothing/shoes/brown,
 		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/shoes/leather,
+		/obj/item/clothing/shoes/laceup,
+		/obj/item/clothing/shoes/laceup/brown,
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/under/rank/head_of_personnel_whimsy,
 		/obj/item/clothing/head/caphat/hop,
@@ -157,6 +159,8 @@
 		/obj/item/clothing/suit/storage/vest/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
+		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,
+		/obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt,
 		/obj/item/clothing/under/solgov/mildress/marine/command,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
@@ -219,6 +223,7 @@
 		/obj/item/clothing/suit/storage/vest/warden,
 		/obj/item/clothing/under/rank/warden,
 		/obj/item/clothing/under/rank/warden/corp,
+		/obj/item/clothing/under/rank/warden/skirt_pleated,
 		/obj/item/clothing/suit/storage/vest/wardencoat,
 		/obj/item/clothing/suit/storage/vest/wardencoat/alt,
 		/obj/item/clothing/head/helmet/dermal,
@@ -244,7 +249,8 @@
 		/obj/item/gps/security,
 		/obj/item/flashlight/maglight,
 		/obj/item/megaphone,
-		/obj/item/clothing/mask/gas/half)
+		/obj/item/clothing/mask/gas/half,
+		/obj/item/gun/projectile/shotgun/pump/combat/warden)
 
 /obj/structure/closet/secure_closet/warden/Initialize()
 	if(prob(50))
@@ -337,6 +343,10 @@
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
 		/obj/item/clothing/gloves/black,
+		/obj/item/gun/projectile/revolver/detective45,
+		/obj/item/ammo_magazine/s45/rubber,
+		/obj/item/ammo_magazine/s45/rubber,
+		/obj/item/reagent_containers/spray/pepper,
 		///obj/item/gunbox, //VOREStation Removal,
 		/obj/item/storage/belt/detective,
 		/obj/item/storage/box/evidence,

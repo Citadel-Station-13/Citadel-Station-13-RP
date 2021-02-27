@@ -16,7 +16,7 @@
 /turf/template_noop,
 /area/submap/DoomP)
 "af" = (
-/turf/simulated/floor/water,
+/turf/simulated/floor/outdoors/water,
 /area/submap/DoomP)
 "ag" = (
 /obj/structure/flora/tree/sif,
@@ -36,7 +36,7 @@
 /turf/simulated/floor/outdoors/grass/sif/forest,
 /area/submap/DoomP)
 "ak" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/floor/outdoors/water/deep,
 /area/submap/DoomP)
 "al" = (
 /obj/effect/decal/cleanable/blood,
@@ -159,7 +159,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "PAPC";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
@@ -170,8 +169,8 @@
 /area/submap/DoomP)
 "aH" = (
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/plating,
@@ -226,29 +225,26 @@
 /area/submap/DoomP)
 "aR" = (
 /obj/machinery/power/terminal{
-	icon_state = "term";
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/DoomP)
 "aS" = (
 /obj/machinery/power/terminal{
-	icon_state = "term";
 	dir = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/submap/DoomP)
@@ -256,8 +252,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /mob/living/simple_mob/humanoid/merc/melee/sword/poi,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -279,7 +274,7 @@
 /area/submap/DoomP)
 "aX" = (
 /obj/structure/lattice,
-/turf/simulated/floor/water,
+/turf/simulated/floor/outdoors/water,
 /area/submap/DoomP)
 "aY" = (
 /obj/machinery/light/small{
@@ -441,9 +436,7 @@
 "bA" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -469,8 +462,7 @@
 /area/submap/DoomP)
 "bE" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/lime{
 	dir = 10

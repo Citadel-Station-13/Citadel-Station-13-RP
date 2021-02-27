@@ -72,7 +72,7 @@ em						{font-style: normal;font-weight: bold;}
 h1.alert, h2.alert		{color: #000000;}
 .ghostalert				{color: #5c00e6;	font-style: italic; font-weight: bold;}
 
-.emote					{font-style: italic;}
+.emote					{}
 
 /* Game Messages */
 

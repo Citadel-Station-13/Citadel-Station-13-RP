@@ -12,11 +12,20 @@
 	icon_state = "ba_suit_skirt"
 	item_state_slots = list(slot_r_hand_str = "ba_suit", slot_l_hand_str = "ba_suit")
 
+/obj/item/clothing/under/rank/bartender/skirt_pleated
+	name = "bartender's pleated skirt"
+	icon_state = "barman_skirt"
+	rolled_sleeves = -1
+
 /obj/item/clothing/under/rank/captain //Alright, technically not a 'civilian' but its better then giving a .dm file for a single define.
 	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Facility Director\"."
 	name = "Facility Director's jumpsuit"
 	icon_state = "captain"
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/captain/skirt_pleated
+	name = "captain's pleated skirt"
+	icon_state = "captain_skirt"
 
 /obj/item/clothing/under/rank/cargo
 	name = "quartermaster's jumpsuit"
@@ -24,6 +33,10 @@
 	icon_state = "qm"
 	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/cargo/skirt_pleated
+	name = "quartermaster's pleated skirt"
+	icon_state = "qm_skirt"
 
 /obj/item/clothing/under/rank/cargo/jeans
 	name = "quartermaster's jumpjeans"
@@ -55,6 +68,10 @@
 	desc = "Jeeeaaans! They're comfy!"
 	icon_state = "cargojf"
 
+/obj/item/clothing/under/rank/cargotech/skirt_pleated
+	name = "cargo technician's pleated skirt"
+	icon_state = "cargo_skirt"
+
 /obj/item/clothing/under/rank/chaplain
 	desc = "It's a black jumpsuit, often worn by religious folk."
 	name = "chaplain's jumpsuit"
@@ -62,11 +79,19 @@
 	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/chaplain/skirt_pleated
+	name = "chaplain's pleated skirt"
+	icon_state = "chaplain_skirt"
+
 /obj/item/clothing/under/rank/chef
 	desc = "It's an apron which is given only to the most <b>hardcore</b> chefs in space."
 	name = "chef's uniform"
 	icon_state = "chef"
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/chef/skirt_pleated
+	name = "chef's pleated skirt"
+	icon_state = "chef_skirt"
 
 /obj/item/clothing/under/rank/clown
 	name = "clown suit"
@@ -79,6 +104,10 @@
 	name = "head of personnel's jumpsuit"
 	icon_state = "hop"
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/head_of_personnel/skirt_pleated
+	name = "head of personnel's pleated skirt"
+	icon_state = "hop_skirt"
 
 /obj/item/clothing/under/rank/head_of_personnel_whimsy
 	desc = "A blue jacket and red tie, with matching red cuffs! Snazzy. Wearing this makes you feel more important than your job title does."
@@ -94,6 +123,10 @@
 	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
 	permeability_coefficient = 0.50
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/hydroponics/skirt_pleated
+	name = "botanist's pleated skirt"
+	icon_state = "hydroponics_skirt"
 
 /obj/item/clothing/under/rank/internalaffairs
 	desc = "The plain, professional attire of an Internal Affairs Agent. The collar is <i>immaculately</i> starched."
@@ -114,6 +147,10 @@
 	icon_state = "janitor"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/janitor/skirt_pleated
+	name = "janitor's pleated skirt"
+	icon_state = "janitor_skirt"
 
 /obj/item/clothing/under/lawyer
 	desc = "Slick threads."
@@ -193,6 +230,10 @@
 	name = "mime's outfit"
 	desc = "It's not very colourful."
 	icon_state = "mime"
+
+/obj/item/clothing/under/rank/mime/skirt_pleated
+	name = "mime's pleated skirt"
+	icon_state = "mime_skirt"
 
 /obj/item/clothing/under/rank/miner
 	desc = "It's a snappy jumpsuit with a sturdy set of overalls. It is very dirty."

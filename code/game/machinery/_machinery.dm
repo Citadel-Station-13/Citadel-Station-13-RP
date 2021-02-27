@@ -156,7 +156,7 @@ Class Procs:
 				qdel(A)
 	return ..()
 
-/obj/machinery/process()//If you dont use process or power why are you here
+/obj/machinery/process(delta_time)//If you dont use process or power why are you here
 	if(!(use_power || idle_power_usage || active_power_usage))
 		return PROCESS_KILL
 
@@ -234,7 +234,8 @@ Class Procs:
 		return attack_hand(user)
 
 /obj/machinery/attack_hand(mob/user as mob)
-
+	if(IsAdminGhost(user))
+		return FALSE
 	if(inoperable(MAINT))
 		return 1
 	if(user.lying || user.stat)
@@ -267,7 +268,7 @@ Class Procs:
 
 /obj/machinery/proc/state(var/msg)
 	for(var/mob/O in hearers(src, null))
-		O.show_message("\icon[src] <span class = 'notice'>[msg]</span>", 2)
+		O.show_message("[icon2html(thing = src, target = O)] <span class = 'notice'>[msg]</span>", 2)
 
 /obj/machinery/proc/ping(text=null)
 	if(!text)
@@ -307,7 +308,10 @@ Class Procs:
 		return 0
 	if(!component_parts)
 		return 0
-	if(panel_open)
+	to_chat(user, "<span class='notice'>Following parts detected in [src]:</span>")
+	for(var/obj/item/C in component_parts)
+		to_chat(user, "<span class='notice'>    [C.name]</span>")
+	if(panel_open || !R.panel_req)
 		var/obj/item/circuitboard/CB = circuit
 		var/P
 		for(var/obj/item/stock_parts/A in component_parts)
@@ -327,10 +331,6 @@ Class Procs:
 						break
 			update_icon()
 			RefreshParts()
-	else
-		to_chat(user, "<span class='notice'>Following parts detected in the machine:</span>")
-		for(var/obj/item/C in component_parts)
-			to_chat(user, "<span class='notice'>    [C.name]</span>")
 	return 1
 
 // Default behavior for wrenching down machines.  Supports both delay and instant modes.

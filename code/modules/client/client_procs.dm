@@ -1,3 +1,4 @@
+
 	////////////
 	//SECURITY//
 	////////////
@@ -76,6 +77,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
+	// Tgui Topic middleware.
+	if(tgui_Topic(href_list))
+		return
 
 	//Logs all hrefs, except chat pings
 	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
@@ -89,10 +93,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (href_list["asset_cache_preload_data"])
 		asset_cache_preload_data(href_list["asset_cache_preload_data"])
 		return
-
-	// Tgui Topic middleware. Soon:tm:
-	// if(tgui_Topic(href_list))
-	// 	return
 
 	//Admin PM
 	if(href_list["priv_msg"])
@@ -123,8 +123,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return prefs.process_link(usr,href_list)
 		if("vars")
 			return view_var_Topic(href,href_list,hsrc)
-		if("chat")
-			return chatOutput.Topic(href, href_list)
 
 	switch(href_list["action"])
 		if("openLink")
@@ -167,8 +165,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
-	// Initialize goonchat
-	chatOutput = new /datum/chatOutput(src)
+	// Instantiate tgui panel
+	tgui_panel = new(src)
 
 	GLOB.ahelp_tickets.ClientLogin(src)
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
@@ -287,8 +285,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		update_movement_keys()
 
 	// Initialize tgui panel
-	// tgui_panel.initialize()
-	chatOutput.start() // Starts the chat
+	tgui_panel.initialize()
+	// src << browse(file('html/statbrowser.html'), "window=statbrowser")
 
 	//if(alert_mob_dupe_login)
 	//	spawn()
@@ -366,7 +364,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
-		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
+		winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config_legacy.aggressive_changelog)
 			src.changes()
 
@@ -538,9 +536,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/DBQuery/query_accesslog = dbcon.NewQuery("INSERT INTO `erro_connection_log`(`id`,`datetime`,`serverip`,`ckey`,`ip`,`computerid`) VALUES(null,Now(),'[serverip]','[sql_ckey]','[sql_ip]','[sql_computerid]');")
 	query_accesslog.Execute()
 
-#undef TOPIC_SPAM_DELAY
 #undef UPLOAD_LIMIT
-#undef MIN_CLIENT_VERSION
 
 //checks if a client is afk
 //3000 frames = 5 minutes

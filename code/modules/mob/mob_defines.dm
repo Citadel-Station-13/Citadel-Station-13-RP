@@ -34,6 +34,7 @@
 	var/obj/screen/healths = null
 	var/obj/screen/throw_icon = null
 	var/obj/screen/nutrition_icon = null
+	var/obj/screen/synthbattery_icon = null
 	var/obj/screen/pressure = null
 	var/obj/screen/pain = null
 	var/obj/screen/gun/item/item_use_icon = null
@@ -202,6 +203,8 @@
 
 	var/digitalcamo = 0 // Can they be tracked by the AI?
 
+	var/silicon_privileges = NONE // Can they interact with station electronics
+
 	var/list/radar_blips = list() // list of screen objects, radar blips
 	var/radar_open = 0 	// nonzero is radar is open
 
@@ -241,3 +244,5 @@
 	var/attack_icon_state //State for above
 
 	var/registered_z
+
+	var/in_enclosed_vehicle = 0	//For mechs and fighters ambiance. Can be used in other cases.

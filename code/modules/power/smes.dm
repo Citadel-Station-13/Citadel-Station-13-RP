@@ -30,6 +30,7 @@
 	var/output_used = 0				// amount of power actually outputted. may be less than output_level if the powernet returns excess power
 
 	//Holders for powerout event.
+	var/powerout_holders_used = FALSE
 	var/last_output_attempt	= 0
 	var/last_input_attempt	= 0
 	var/last_charge			= 0
@@ -133,7 +134,7 @@
 /obj/machinery/power/smes/proc/chargedisplay()
 	return round(5.5*charge/(capacity ? capacity : 5e6))
 
-/obj/machinery/power/smes/process()
+/obj/machinery/power/smes/process(delta_time)
 	if(stat & BROKEN)	return
 
 	//store machine state to see if we need to update the icon overlays
@@ -245,11 +246,11 @@
 
 /obj/machinery/power/smes/attack_ai(mob/user)
 	add_hiddenprint(user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/power/smes/attack_hand(mob/user)
 	add_fingerprint(user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 
 /obj/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
@@ -313,7 +314,7 @@
 		return 0
 	return 1
 
-/obj/machinery/power/smes/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/smes/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(stat & BROKEN)
 		return
@@ -357,7 +358,7 @@
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
 
-/obj/machinery/power/smes/buildable/main/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/smes/buildable/main/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if (!ui)
 		ui = new(user, src, ui_key, "smesmain.tmpl", "SMES Unit", 540, 405)
@@ -466,7 +467,7 @@
 	output_level = 250000
 	should_be_mapped = 1
 
-/obj/machinery/power/smes/magical/process()
+/obj/machinery/power/smes/magical/process(delta_time)
 	charge = 5000000
 	..()
 
@@ -477,7 +478,7 @@
 	input_level = 500000
 	output_level = 1000000
 
-/obj/machinery/power/smes/buildable/main/process()
+/obj/machinery/power/smes/buildable/main/process(delta_time)
 
 	percentfull = 100.0*charge/capacity
 

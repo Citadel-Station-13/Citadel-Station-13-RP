@@ -249,7 +249,7 @@
 			message = "faints."
 			if(src.sleeping)
 				return //Can't faint while asleep
-			src.sleeping += 10 //Short-short nap
+			Sleeping(10) //Short-short nap
 			m_type = 1
 
 		if("cough", "coughs")
@@ -484,6 +484,12 @@
 					message = "points to [M]."
 				else
 			m_type = 1
+
+		if("crack")
+			if(!restrained())
+				message = "cracks [T.his] knuckles."
+				playsound(src, 'sound/voice/knuckles.ogg', 50, 1,)
+				m_type = 1
 
 		if ("raise")
 			if (!src.restrained())
@@ -807,7 +813,8 @@
 					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
 		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help or *vhelp for a list.</font>") //VOREStation Edit, mention *vhelp for Virgo-specific emotes located in emote_vr.dm.
+			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
+			return
 
 	if (message)
 		custom_emote(m_type,message)
@@ -931,7 +938,7 @@
 				return 1
 			else
 				src.SpinAnimation(7,1)
-				message = "does a flip!"
+				// message = "does a flip!"
 				m_type = 1
 // New emotes below this line
 		if ("purr")

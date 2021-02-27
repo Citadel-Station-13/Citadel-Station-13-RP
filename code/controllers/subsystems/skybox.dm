@@ -136,7 +136,7 @@ SUBSYSTEM_DEF(skybox)
 	for(var/z in zlevels)
 		skybox_cache["[z]"] = generate_skybox(z)
 
-	for(var/client/C)
+	for(var/client/C in GLOB.clients)
 		var/their_z = get_z(C.mob)
 		if(!their_z)	// Nullspace
 			continue
@@ -146,9 +146,9 @@ SUBSYSTEM_DEF(skybox)
 // Settings datum that maps can override to play with their skyboxes
 /datum/skybox_settings
 	var/icon = 'icons/skybox/skybox.dmi'	// Path to our background. Lets us use anything we damn well please. Skyboxes need to be 736x736
-	var/icon_state = "space5"
+	var/icon_state
 	var/color
-	var/random_color = FALSE
+	var/random_color = TRUE
 
 	var/use_stars = TRUE
 	var/star_icon = 'icons/skybox/skybox.dmi'

@@ -121,16 +121,16 @@
 /area/awaymission/snowfield/outside)
 "at" = (
 /obj/machinery/power/smes/buildable{
+	RCon_tag = "Telecommunications Satellite";
 	charge = 2.5e+006;
 	input_attempt = 1;
 	input_level = 250000;
 	inputting = 1;
-	output_level = 250000;
-	RCon_tag = "Telecommunications Satellite"
+	output_level = 250000
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -156,8 +156,8 @@
 	pixel_x = -24
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/outside)
@@ -192,9 +192,7 @@
 	dir = 8
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/outside)
@@ -374,7 +372,6 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/visible{
-	icon_state = "intact";
 	dir = 9
 	},
 /obj/machinery/meter,
@@ -447,7 +444,6 @@
 /area/awaymission/snowfield/outside)
 "bn" = (
 /obj/machinery/atmospherics/unary/freezer{
-	dir = 2;
 	icon_state = "freezer"
 	},
 /obj/effect/floor_decal/corner/green{
@@ -457,7 +453,6 @@
 /area/awaymission/snowfield/outside)
 "bo" = (
 /obj/machinery/atmospherics/unary/heater{
-	dir = 2;
 	icon_state = "heater"
 	},
 /obj/effect/floor_decal/corner/green{
@@ -515,7 +510,6 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/visible{
-	icon_state = "intact";
 	dir = 5
 	},
 /turf/simulated/floor/tiled/hydro,
@@ -532,7 +526,6 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/visible{
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/simulated/floor/tiled/hydro,
@@ -542,7 +535,6 @@
 	dir = 8
 	},
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -594,9 +586,7 @@
 /area/awaymission/snowfield/outside)
 "bE" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/awaymission/snowfield/outside)
@@ -687,7 +677,7 @@
 /area/awaymission/snowfield/outside)
 "bQ" = (
 /obj/structure/table/glass,
-/obj/item/tape_roll,
+/obj/item/duct_tape_roll,
 /obj/item/analyzer/plant_analyzer,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/outside)
@@ -881,9 +871,7 @@
 	dir = 8
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/reinforced,
 /area/awaymission/snowfield/outside)
@@ -901,8 +889,7 @@
 	dir = 4
 	},
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/reinforced,
 /area/awaymission/snowfield/outside)
@@ -921,7 +908,6 @@
 /area/awaymission/snowfield/outside)
 "cw" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -976,16 +962,13 @@
 /area/awaymission/snowfield/outside)
 "cE" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/awaymission/snowfield/outside)
 "cF" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/awaymission/snowfield/outside)
@@ -993,17 +976,14 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/vending/sovietsoda,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/outside)
 "cH" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/outside)
@@ -1020,16 +1000,13 @@
 /area/awaymission/snowfield/outside)
 "cL" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/snowfield/outside)
 "cM" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/snowfield/outside)
@@ -1045,8 +1022,7 @@
 "cP" = (
 /obj/structure/table/standard,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/snowfield/outside)
@@ -1292,26 +1268,21 @@
 "dK" = (
 /obj/structure/closet/firecloset,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/snowfield/outside)
 "dL" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/item/radio/phone,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/snowfield/outside)
 "dM" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/snowfield/outside)
@@ -1329,25 +1300,21 @@
 /area/awaymission/snowfield/outside)
 "dP" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/snowfield/outside)
 "dQ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/snowfield/outside)
 "dR" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/snowfield/outside)
@@ -1462,9 +1429,7 @@
 /area/awaymission/snowfield/outside)
 "ej" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/dark,
@@ -1475,8 +1440,7 @@
 /area/awaymission/snowfield/outside)
 "el" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/dark,
@@ -1513,7 +1477,6 @@
 /area/awaymission/snowfield/outside)
 "er" = (
 /obj/effect/floor_decal/industrial/loading{
-	icon_state = "loadingarea";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -1544,7 +1507,6 @@
 "ew" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
-	dir = 2;
 	id = "away_soviet"
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -1556,7 +1518,6 @@
 /area/awaymission/snowfield/outside)
 "ey" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
-	icon_state = "warningcorner_dust";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -1565,7 +1526,6 @@
 /area/awaymission/snowfield/outside)
 "ez" = (
 /obj/effect/floor_decal/industrial/warning/dust{
-	icon_state = "warning_dust";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -1574,7 +1534,6 @@
 /area/awaymission/snowfield/outside)
 "eA" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
-	icon_state = "warningcorner_dust";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -1586,7 +1545,6 @@
 	id = "away_soviet"
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
-	icon_state = "warning_dust";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -1595,7 +1553,6 @@
 /area/awaymission/snowfield/outside)
 "eC" = (
 /obj/machinery/conveyor{
-	dir = 2;
 	id = "away_soviet"
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -1604,7 +1561,6 @@
 /area/awaymission/snowfield/outside)
 "eD" = (
 /obj/effect/floor_decal/industrial/warning/dust{
-	icon_state = "warning_dust";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -1613,7 +1569,6 @@
 /area/awaymission/snowfield/outside)
 "eE" = (
 /obj/effect/floor_decal/industrial/warning/dust{
-	icon_state = "warning_dust";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
@@ -1634,7 +1589,6 @@
 /area/awaymission/snowfield/outside)
 "eH" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
-	icon_state = "warningcorner_dust";
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1644,7 +1598,6 @@
 /area/awaymission/snowfield/outside)
 "eI" = (
 /obj/effect/floor_decal/industrial/warning/dust{
-	icon_state = "warning_dust";
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1654,7 +1607,6 @@
 /area/awaymission/snowfield/outside)
 "eJ" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
-	icon_state = "warningcorner_dust";
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -1664,7 +1616,6 @@
 /area/awaymission/snowfield/outside)
 "eK" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
-	icon_state = "warningcorner_dust";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel{

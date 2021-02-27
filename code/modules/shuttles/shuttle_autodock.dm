@@ -29,12 +29,12 @@
 	helmets = list()
 
 	// Initial dock
-	active_docking_controller = current_location.docking_controller
+	active_docking_controller = current_location?.docking_controller
 	update_docking_target(current_location)
 	if(active_docking_controller)
 		set_docking_codes(active_docking_controller.docking_codes)
 	else if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/visitable/location = map_sectors["[current_location.z]"]
+		var/obj/effect/overmap/visitable/location = map_sectors["[current_location?.z]"]
 		if(location && location.docking_codes)
 			set_docking_codes(location.docking_codes)
 	dock()
@@ -114,7 +114,7 @@
 	Please ensure that long_jump() and short_jump() are only called from here. This applies to subtypes as well.
 	Doing so will ensure that multiple jumps cannot be initiated in parallel.
 */
-/datum/shuttle/autodock/process()
+/datum/shuttle/autodock/process(delta_time)
 	update_helmets()
 	switch(process_state)
 		if (WAIT_LAUNCH)
@@ -139,7 +139,7 @@
 
 // Not to be confused with the arrived() proc
 /datum/shuttle/autodock/proc/process_arrived()
-	active_docking_controller = next_location.docking_controller
+	active_docking_controller = next_location?.docking_controller
 	update_docking_target(next_location)
 	dock()
 

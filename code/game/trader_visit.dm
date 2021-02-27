@@ -1,12 +1,12 @@
 //Based on the ERT setup
 
-var/global/send_beruang = 0
+var/global/hire_nebula = 0
 var/can_call_traders = 1
 
 /client/proc/trader_ship()
-	set name = "Dispatch Beruang Trader Ship"
+	set name = "Hire Nebula Gas Employees"
 	set category = "Special Verbs"
-	set desc = "Invite players to join the Beruang."
+	set desc = "Invite players to work at the local Nebula Gas station."
 
 	if(!holder)
 		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
@@ -17,26 +17,23 @@ var/can_call_traders = 1
 	if(SSticker.current_state == 1)
 		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
 		return
-	if(send_beruang)
-		to_chat(usr, "<span class='danger'>The Beruang has already been sent this round!</span>")
-		return
-	if(alert("Do you want to dispatch the Beruang trade ship?",,"Yes","No") != "Yes")
+	if(alert("Do you want to hire Nebula Gas attendants?",,"Yes","No") != "Yes")
 		return
 	if(get_security_level() == "red") // Allow admins to reconsider if the alert level is Red
-		switch(alert("The station is in red alert. Do you still want to send traders?",,"Yes","No"))
+		switch(alert("The station is in red alert. Do you still want to hire traders?",,"Yes","No"))
 			if("No")
 				return
-	if(send_beruang)
+	if(hire_nebula)
 		to_chat(usr, "<span class='danger'>Looks like somebody beat you to it!</span>")
 		return
 
-	message_admins("[key_name_admin(usr)] is dispatching the Beruang.", 1)
-	log_admin("[key_name(usr)] used Dispatch Beruang Trader Ship.")
+	message_admins("[key_name_admin(usr)] is hiring Nebula Gas attendants.", 1)
+	log_admin("[key_name(usr)] used Hire Nebula Gas Employees.")
 	trigger_trader_visit()
 
 client/verb/JoinTraders()
 
-	set name = "Join Trader Visit"
+	set name = "Join as Nebula Gas Employee"
 	set category = "IC"
 
 	if(!MayRespawn(1))
@@ -44,9 +41,6 @@ client/verb/JoinTraders()
 		return
 
 	if(istype(usr,/mob/observer/dead) || istype(usr,/mob/new_player))
-		if(!send_beruang)
-			to_chat(usr, "The Beruang is not currently heading to the station.")
-			return
 		if(traders.current_antagonists.len >= traders.hard_cap)
 			to_chat(usr, "The number of trader slots is already full!")
 			return
@@ -57,13 +51,12 @@ client/verb/JoinTraders()
 proc/trigger_trader_visit()
 	if(!can_call_traders)
 		return
-	if(send_beruang)
+	if(hire_nebula)
 		return
 
-	command_announcement.Announce("Incoming cargo hauler: Beruang (Reg: VRS 22EB1F11C2).", "[station_name()] Traffic Control")
+	command_announcement.Announce("Local scans indicate active commercial interest: Nebula Gas Food Mart.", "[station_name()] Traffic Control")
 
 	can_call_traders = 0 // Only one call per round.
-	send_beruang = 1
+	hire_nebula = 1
 
 	sleep(600 * 5)
-	send_beruang = 0 // Can no longer join the traders.

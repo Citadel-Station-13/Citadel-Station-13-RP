@@ -11,6 +11,8 @@
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 //////////////////////////////////////////////////////////////
+//Old Escape Pod
+/*
 /datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1
 	name = "Large Escape Pod 1"
 	location = FERRY_LOCATION_STATION
@@ -21,7 +23,7 @@
 	landmark_transition = "escapepod1_transit"
 	docking_controller_tag = "large_escape_pod_1"
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
-
+*/
 //////////////////////////////////////////////////////////////
 // Supply shuttle
 /datum/shuttle/autodock/ferry/supply/cargo
@@ -178,7 +180,7 @@
 	name = "Belter"
 	location = FERRY_LOCATION_STATION
 	warmup_time = 6
-	move_time = 30
+	move_time = 20 // i am fairly sure this is in seconds
 	shuttle_area = /area/shuttle/belter
 	landmark_station = "belter_station"
 	landmark_offsite = "belter_zone1"
@@ -186,7 +188,7 @@
 	docking_controller_tag = "belter_docking"
 
 /datum/shuttle/autodock/ferry/belter/New()
-	move_time = move_time + rand(-10 SECONDS, 20 SECONDS) //50sec max, 20sec min.
+	move_time = move_time + rand(-5, 10) //30s max, 15s min, probably leaning towards higher values.
 	..()
 
 

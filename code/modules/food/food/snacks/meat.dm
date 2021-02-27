@@ -65,3 +65,7 @@
 	icon_state = "penguinmeat"
 	cooked_icon = "chickenbreast_cooked"
 	filling_color = "#BBBBAA"
+
+/obj/item/reagent_containers/food/snacks/meat/chicken/teshari
+	name = "meat"
+	desc = "Tastes like a really fast chicken. Who'd have guessed?"

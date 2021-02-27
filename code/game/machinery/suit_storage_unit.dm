@@ -73,15 +73,10 @@
 			if(prob(50))
 				dump_everything() //So suits dont survive all the time
 			qdel(src)
-			return
 		if(2.0)
 			if(prob(50))
 				dump_everything()
 				qdel(src)
-			return
-		else
-			return
-	return
 
 /obj/machinery/suit_storage_unit/attack_hand(mob/user as mob)
 	var/dat
@@ -649,9 +644,6 @@
 	req_access = list(access_explorer) //Old Exploration needs fixing up
 	departments = list("Exploration", "No Change")
 
-/obj/machinery/suit_cycler/exploration/Initialize()
-	species -= SPECIES_TESHARI
-	return ..()
 
 /obj/machinery/suit_cycler/pilot
 	name = "Pilot suit cycler"
@@ -916,7 +908,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/suit_cycler/process()
+/obj/machinery/suit_cycler/process(delta_time)
 
 	if(electrified > 0)
 		electrified--
@@ -947,7 +939,7 @@
 
 /obj/machinery/suit_cycler/proc/finished_job()
 	var/turf/T = get_turf(src)
-	T.visible_message("\icon[src]<span class='notice'>The [src] pings loudly.</span>")
+	T.visible_message("[icon2html(thing = src, target = world)]<span class='notice'>The [src] pings loudly.</span>")
 	icon_state = initial(icon_state)
 	active = 0
 	playsound(src, 'sound/machines/boobeebeep.ogg', 50)
@@ -1062,7 +1054,7 @@
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/security/alt
 			parent_suit = /obj/item/clothing/suit/space/void/security/alt
 		//Exploration styles
-		if("Exploration")
+		if("Exploration")//now with Teshari-Sprite from royalderg#0651
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/exploration
 			parent_suit = /obj/item/clothing/suit/space/void/exploration
 		if("Old Exploration")
@@ -1120,8 +1112,7 @@
 					suit.helmet.refit_for_species(target_species)
 	if(helmet && target_department != "No Change")
 		var/obj/item/clothing/H = new parent_helmet
-		helmet.name = "refitted [initial(parent_helmet.name)]"
-		helmet.desc = initial(parent_helmet.desc)
+		helmet.name = "refitted [initial(helmet.name)]"
 		helmet.icon_state = initial(parent_helmet.icon_state)
 		helmet.item_state = initial(parent_helmet.item_state)
 		helmet.light_overlay = initial(parent_helmet.light_overlay)
@@ -1130,8 +1121,7 @@
 
 	if(suit && target_department != "No Change")
 		var/obj/item/clothing/S = new parent_suit
-		suit.name = "refitted [initial(parent_suit.name)]"
-		suit.desc = initial(parent_suit.desc)
+		suit.name = "refitted [initial(suit.name)]"
 		suit.icon_state = initial(parent_suit.icon_state)
 		suit.item_state = initial(parent_suit.item_state)
 		suit.item_state_slots = S.item_state_slots

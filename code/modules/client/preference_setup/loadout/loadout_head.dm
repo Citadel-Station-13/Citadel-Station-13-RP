@@ -147,6 +147,10 @@
 	display_name = "cowboy, black"
 	path = /obj/item/clothing/head/cowboy_hat/black
 
+/datum/gear/head/cowboy/pink
+	display_name = "cowboy, pink"
+	path = /obj/item/clothing/head/cowboy_hat/pink
+
 /datum/gear/head/cowboy/wide
 	display_name = "cowboy, wide"
 	path = /obj/item/clothing/head/cowboy_hat/wide
@@ -203,6 +207,10 @@
 /datum/gear/head/fez
 	display_name = "hat, fez"
 	path = /obj/item/clothing/head/fez
+
+/datum/gear/head/rice
+	display_name = "hat, rice"
+	path = /obj/item/clothing/head/rice
 
 /datum/gear/head/tophat
 	display_name = "hat, tophat"
@@ -318,6 +326,14 @@
 	path = /obj/item/clothing/head/pin/bow
 
 /datum/gear/head/bow/small/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/head/traveller
+	display_name = "traveller's hat"
+	path = /obj/item/clothing/head/traveller
+
+/datum/gear/head/traveller/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
@@ -438,3 +454,24 @@
 	display_name = "Engineering - Operations Cap"
 	path = /obj/item/clothing/head/operations/engineering
 	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+
+// happy valentine's day
+/datum/gear/head/woodcirclet
+	display_name = "Wooden Circlet"
+	path = /obj/item/clothing/head/woodcirclet
+
+/datum/gear/head/rose_crown
+	display_name = "Flower Crown (Rose)"
+	path = /obj/item/clothing/head/rose_crown
+
+/datum/gear/head/sunflower_crown
+	display_name = "Flower Crown (Sunflower)"
+	path = /obj/item/clothing/head/sunflower_crown
+
+/datum/gear/head/lavender_crown
+	display_name = "Flower Crown (Lavender)"
+	path = /obj/item/clothing/head/lavender_crown
+
+/datum/gear/head/poppy_crown
+	display_name = "Flower Crown (Poppy)"
+	path = /obj/item/clothing/head/poppy_crown

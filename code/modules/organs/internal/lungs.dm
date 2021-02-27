@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/lungs
 	name = "lungs"
@@ -7,7 +6,7 @@
 	organ_tag = O_LUNGS
 	parent_organ = BP_TORSO
 
-/obj/item/organ/internal/lungs/process()
+/obj/item/organ/internal/lungs/process(delta_time)
 	..()
 
 	if(!owner)

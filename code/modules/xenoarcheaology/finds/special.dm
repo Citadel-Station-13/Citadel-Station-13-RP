@@ -7,7 +7,7 @@
 	START_PROCESSING(SSobj, src)
 	spawning_id = pick("blood","holywater","lube","stoxin","ethanol","ice","glycerol","fuel","cleaner")
 
-/obj/item/reagent_containers/glass/replenishing/process()
+/obj/item/reagent_containers/glass/replenishing/process(delta_time)
 	reagents.add_reagent(spawning_id, 0.3)
 
 //a talking gas mask!
@@ -20,7 +20,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/clothing/mask/gas/poltergeist/process()
+/obj/item/clothing/mask/gas/poltergeist/process(delta_time)
 	if(heard_talk.len && istype(loc, /mob/living) && prob(10))
 		var/mob/living/M = loc
 		M.say(pick(heard_talk))
@@ -52,7 +52,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/vampiric/process()
+/obj/item/vampiric/process(delta_time)
 	//see if we've identified anyone nearby
 	if(world.time - last_bloodcall > bloodcall_interval && nearby_mobs.len)
 		var/mob/living/carbon/human/M = pop(nearby_mobs)
@@ -93,7 +93,7 @@
 
 	if(charges >= 0.1)
 		if(prob(5))
-			visible_message("<font color='red'>\icon[src] [src]'s eyes glow ruby red for a moment!</font>")
+			visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src]'s eyes glow ruby red for a moment!</font>")
 			charges -= 0.1
 
 	//check on our shadow wights
@@ -112,7 +112,7 @@
 
 /obj/item/vampiric/hear_talk(mob/M as mob, text)
 	..()
-	if(world.time - last_bloodcall >= bloodcall_interval && M in view(7, src))
+	if(world.time - last_bloodcall >= bloodcall_interval && (M in view(7, src)))
 		bloodcall(M)
 
 /obj/item/vampiric/proc/bloodcall(var/mob/living/carbon/human/M)
@@ -140,7 +140,7 @@
 	loc_last_process = loc
 	START_PROCESSING(SSobj, src)
 
-/obj/effect/decal/cleanable/blood/splatter/animated/process()
+/obj/effect/decal/cleanable/blood/splatter/animated/process(delta_time)
 	if(target_turf && loc != target_turf)
 		step_towards(src,target_turf)
 		if(loc == loc_last_process)
@@ -170,7 +170,7 @@
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/effect/shadow_wight/process()
+/obj/effect/shadow_wight/process(delta_time)
 	if(loc)
 		loc = get_turf(pick(orange(1,src)))
 		var/mob/living/carbon/M = locate() in loc
@@ -189,7 +189,7 @@
 			'sound/hallucinations/turn_around1.ogg',\
 			'sound/hallucinations/turn_around2.ogg',\
 			), 50, 1, -3)
-			M.sleeping = max(M.sleeping,rand(5,10))
+			M.Sleeping(rand(5, 10))
 			loc = null
 	else
 		STOP_PROCESSING(SSobj, src)

@@ -93,10 +93,13 @@
 	tally += calculate_turf_slowdown(T, direct)
 
 	// Item related slowdown.
-	if(!(CE_SPEEDBOOST in chem_effects)) //Hyperzine ignores item slowdown
-		var/item_tally = calculate_item_encumbrance()
-		item_tally *= species.item_slowdown_mod
-		tally += item_tally
+	var/item_tally = calculate_item_encumbrance()
+	if(item_tally > 0) // is it greater than 0? run the wacky shit
+		item_tally *= species.item_slowdown_mod // your item slowdown kicks in, but
+		if(!(CE_SPEEDBOOST in chem_effects)) // hyperzine users ignore item slow
+			tally += item_tally // no hyperzine? slowed down by things
+	else
+		tally += item_tally // if it's less than 0 that means it speeds you up, theoretically, so, hit it
 
 	/* removed - kevinz000. A system will eventually be reintroduced to do this, but for the moment I'd rather this Not be a thing.
 	// Dragging heavy objects will also slow you down, similar to above.
@@ -131,7 +134,7 @@
 
 	// Hands are also included, to make the 'take off your armor instantly and carry it with you to go faster' trick no longer viable.
 	// This is done seperately to disallow negative numbers (so you can't hold shoes in your hands to go faster).
-	for(var/obj/item/I in list(r_hand, l_hand) )
+	for(var/obj/item/I in list(r_hand, l_hand))
 		. += max(I.slowdown, 0)
 
 // Similar to above, but for turf slowdown.
@@ -141,7 +144,7 @@
 
 	if(T.movement_cost)
 		var/turf_move_cost = T.movement_cost
-		if(istype(T, /turf/simulated/floor/water))
+		if(istype(T, /turf/simulated/floor/outdoors/water))
 			if(species.water_movement)
 				turf_move_cost = clamp(HUMAN_LOWEST_SLOWDOWN, turf_move_cost + species.water_movement, 15)
 			if(shoes)
@@ -222,6 +225,8 @@
 
 // Handle footstep sounds
 /mob/living/carbon/human/handle_footstep(var/turf/T)
+	if(is_incorporeal())
+		return
 	if(!config_legacy.footstep_volume || !T.footstep_sounds || !T.footstep_sounds.len)
 		return
 	// Future Upgrades - Multi species support

@@ -8,7 +8,7 @@
 	var/spleen_tick = 20 // The number of ticks between Spleen cycles.
 	var/spleen_efficiency = 1 // A multiplier for how efficient this spleen is.
 
-/obj/item/organ/internal/spleen/process()
+/obj/item/organ/internal/spleen/process(delta_time)
 	..()
 	if(!owner) return
 

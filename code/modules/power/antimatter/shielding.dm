@@ -75,7 +75,7 @@ proc/cardinalrange(var/center)
 	. = ..()
 	return FALSE
 
-/obj/machinery/am_shielding/process()
+/obj/machinery/am_shielding/process(delta_time)
 	if(!processing) . = PROCESS_KILL
 	//TODO: core functions and stability
 	//TODO: think about checking the airmix for phoron and increasing power output
@@ -191,7 +191,7 @@ proc/cardinalrange(var/center)
 	throwforce = 5
 	throw_speed = 1
 	throw_range = 2
-	matter = list(DEFAULT_WALL_MATERIAL = 100, "waste" = 2000)
+	matter = list(DEFAULT_WALL_MATERIAL = 100)
 
 /obj/item/am_shielding_container/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/multitool) && istype(src.loc,/turf))

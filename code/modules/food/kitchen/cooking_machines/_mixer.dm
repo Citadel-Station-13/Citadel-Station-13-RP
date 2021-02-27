@@ -15,16 +15,24 @@ fundamental differences
 	cooking_power = 0.4
 	active_power_usage = 3000
 	idle_power_usage = 50
+	var/datum/looping_sound/mixer/mixer_loop
 
 /obj/machinery/appliance/mixer/examine(var/mob/user)
-	..()
-	user << span("notice", "It is currently set to make a [selected_option]")
+	. = ..()
+	. += "<span class = 'notice'>It is currently set to make a [selected_option].</span>"
 
 /obj/machinery/appliance/mixer/New()
 	. = ..()
 	cooking_objs += new /datum/cooking_item(new /obj/item/reagent_containers/cooking_container(src))
 	cooking = 0
 	selected_option = pick(output_options)
+
+	mixer_loop = new(list(src), FALSE)
+
+/obj/machinery/appliance/mixer/Destroy()
+	. = ..()
+
+	QDEL_NULL(mixer_loop)
 
 //Mixers cannot-not do combining mode. So the default option is removed from this. A combine target must be chosen
 /obj/machinery/appliance/mixer/choose_output()
@@ -65,7 +73,7 @@ fundamental differences
 	if (stat)
 		return 1
 	else
-		user << span("warning", "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish.")
+		to_chat(user, span("warning", "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish."))
 
 //Container is not removable
 /obj/machinery/appliance/mixer/removal_menu(var/mob/user)
@@ -133,11 +141,15 @@ fundamental differences
 /obj/machinery/appliance/mixer/update_icon()
 	if (!stat)
 		icon_state = on_icon
+		if(mixer_loop)
+			mixer_loop.start(src)
 	else
 		icon_state = off_icon
+		if(mixer_loop)
+			mixer_loop.stop(src)
 
 
-/obj/machinery/appliance/mixer/process()
+/obj/machinery/appliance/mixer/process(delta_time)
 	if (!stat)
 		for (var/i in cooking_objs)
 			do_cooking_tick(i)

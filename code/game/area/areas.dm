@@ -331,7 +331,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			L.client.time_last_ambience_played = world.time
 
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)
-	A.has_gravity = gravitystate
+	A?.has_gravity = gravitystate
 
 	for(var/mob/M in A)
 		if(has_gravity)
@@ -375,6 +375,10 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 	return 0
 
 /area/proc/shuttle_arrived()
+	for(var/obj/machinery/telecomms/relay/R in contents)
+		R.reset_z()
+	for(var/obj/machinery/power/apc/A in contents)
+		A.update_area()
 	return TRUE
 
 /area/proc/shuttle_departed()

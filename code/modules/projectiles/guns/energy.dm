@@ -5,6 +5,9 @@
 	icon_state = "energy"
 	fire_sound_text = "laser blast"
 
+	accuracy = 100
+	dispersion = list(0)
+
 	var/obj/item/cell/power_supply //What type of power cell this uses
 	var/charge_cost = 240 //How much energy is needed to fire.
 
@@ -46,7 +49,7 @@
 /obj/item/gun/energy/get_cell()
 	return power_supply
 
-/obj/item/gun/energy/process()
+/obj/item/gun/energy/process(delta_time)
 	if(self_recharge) //Every [recharge_time] ticks, recharge a shot for the battery
 		if(world.time > last_shot + charge_delay)	//Doesn't work if you've fired recently
 			if(!power_supply || power_supply.charge >= power_supply.maxcharge)
@@ -170,15 +173,15 @@
 	return null
 
 /obj/item/gun/energy/examine(mob/user)
-	..(user)
+	. = ..()
 	if(power_supply)
 		if(charge_cost)
 			var/shots_remaining = round(power_supply.charge / max(1, charge_cost))	// Paranoia
-			to_chat(user, "Has [shots_remaining] shot\s remaining.")
+			. += "Has [shots_remaining] shot\s remaining."
 		else
-			to_chat(user, "Has infinite shots remaining.")
+			. += "Has infinite shots remaining."
 	else
-		to_chat(user, "Does not have a power cell.")
+		. += "Does not have a power cell."
 	return
 
 /obj/item/gun/energy/update_icon(var/ignore_inhands)

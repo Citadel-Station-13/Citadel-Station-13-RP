@@ -448,7 +448,7 @@
 	gun.Fire(target,holder.wearer)
 	return 1
 
-/obj/item/rig_module/mounted/mop/process()
+/obj/item/rig_module/mounted/mop/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/mop_deploy) in holder.wearer))

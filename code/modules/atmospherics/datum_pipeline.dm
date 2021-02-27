@@ -20,7 +20,7 @@
 	edges = null
 	. = ..()
 
-/datum/pipeline/process()//This use to be called called from the pipe networks
+/datum/pipeline/process(delta_time)//This use to be called called from the pipe networks
 
 	//Check to see if pressure is within acceptable limits
 	var/pressure = air.return_pressure()

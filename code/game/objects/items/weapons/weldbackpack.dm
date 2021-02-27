@@ -9,6 +9,8 @@
 	var/obj/item/nozzle = null //Attached welder, or other spray device.
 	var/nozzle_type = /obj/item/weldingtool/tubefed
 	var/nozzle_attached = 0
+	drop_sound = 'sound/items/drop/backpack.ogg'
+	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
 /obj/item/weldpack/Initialize()
 	. = ..()
@@ -143,8 +145,8 @@
 		src.add_fingerprint(usr)
 
 /obj/item/weldpack/examine(mob/user)
-	..(user)
-	user << text("\icon[] [] units of fuel left!", src, src.reagents.total_volume)
+	. = ..()
+	. += "[icon2html(thing = src, target = world)] [src] has [src.reagents.total_volume] units of fuel left!"
 	return
 
 /obj/item/weldpack/survival
