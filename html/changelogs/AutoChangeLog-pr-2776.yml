@@ -1,4 +1,0 @@
-author: "rpilcrow"
-delete-after: True
-changes: 
-  - bugfix: "Drink glasses no longer fill chem/condimasters when being put into them."
