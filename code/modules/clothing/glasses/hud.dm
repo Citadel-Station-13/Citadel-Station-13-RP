@@ -220,6 +220,7 @@
 	desc = "The CC-62-B AR glasses are a design from Nanotrasen Central Command. \
 	These have been upgraded with every feature the lesser models have. Now we're talkin'."
 	mode = "best"
+	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED)
 
