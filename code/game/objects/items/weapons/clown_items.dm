@@ -85,4 +85,4 @@
 	if(AM.is_incorporeal())
 		return
 	if(istype(AM, /mob/living))
-		playsound(src, honk_sound, 50, 1)
+		playsound(src, 'honk_sound', 50, 1)
