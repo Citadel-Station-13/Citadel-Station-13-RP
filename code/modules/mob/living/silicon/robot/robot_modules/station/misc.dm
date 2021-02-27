@@ -17,7 +17,9 @@
 					"Misato" = "tall2standard",
 					"L3P1-D0T" = "Glitterfly-Standard",
 					"Convict" = "servitor",
-					"Miss M" = "miss-standard"
+					"Miss M" = "miss-standard",
+					"Coffin" = "coffin-Standard"
+
 					)
 
 

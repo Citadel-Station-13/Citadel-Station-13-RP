@@ -27,3 +27,9 @@
 	name = "Ruins 5"
 	mappath = 'ruins5.dmm'
 	cost = 10
+
+/datum/map_template/frozen_planet/HeadscientistHQ
+	name = "HSQ Ship"
+	mappath = 'HeadscientistHQ.dmm'
+	allow_duplicates = 0
+	cost = 30
