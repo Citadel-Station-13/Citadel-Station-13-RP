@@ -15,10 +15,6 @@ var/list/floor_decals = list()
 	..(newloc)
 
 /obj/effect/floor_decal/Initialize()
-	. = ..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/effect/floor_decal/Initialize()
 	add_to_turf_decals()
 	qdel(src)
 
