@@ -77,7 +77,7 @@
 #define LIGHT_COLOR_HALOGEN    "#F0FAFA" //Barely visible cyan-ish hue, as the doctor prescribed. rgb(240, 250, 250)
 
 //Lighting values used by the station lights
-#define LIGHT_COLOR_FLUORESCENT_TUBE "#E0EFFF"
+#define LIGHT_COLOR_FLUORESCENT_TUBE "#B3D7FF"
 #define LIGHT_COLOR_FLUORESCENT_FLASHLIGHT "#CDDDFF"
 #define LIGHT_COLOR_INCANDESCENT_TUBE "#E0EFF0"
 #define LIGHT_COLOR_INCANDESCENT_BULB "#FFFEB8"
