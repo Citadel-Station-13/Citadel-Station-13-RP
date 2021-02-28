@@ -176,7 +176,6 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/techfloor_vr.dmi'
 	icon_base = "techfloor_gray"
 	build_type = /obj/item/stack/tile/floor/techgrey
-	can_paint = null
 
 /decl/flooring/tiling/tech/grid
 	icon_base = "techfloor_grid"

@@ -18,7 +18,7 @@ var/list/floor_decals = list()
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/effect/floor_decal/LateInitialize()
+/obj/effect/floor_decal/Initialize()
 	add_to_turf_decals()
 	qdel(src)
 
@@ -43,7 +43,7 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/reset
 	name = "reset marker"
 
-/obj/effect/floor_decal/reset/LateInitialize()
+/obj/effect/floor_decal/reset/Initialize()
 	var/turf/T = get_turf(src)
 	if(T.decals && T.decals.len)
 		T.decals.Cut()
