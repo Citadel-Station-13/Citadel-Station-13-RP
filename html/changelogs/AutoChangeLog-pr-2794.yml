@@ -1,0 +1,5 @@
+author: "FreeStylaLT"
+delete-after: True
+changes: 
+  - rscadd: "Phoronoid Detective suit."
+  - tweak: "Phoronoids now use the existing Assistant suit."
