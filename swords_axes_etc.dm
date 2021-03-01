@@ -159,7 +159,7 @@
 //okay I know making a stool a weapon is real cringe but the chair material code is fucking bad and I'm tired of fucking with it
 
 /obj/item/melee/stool/faiza
-	name = "Faiza's Stool"
+	name = "Faiza's Stool."
 	desc = "Apply munchkin cat."
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "cn_stool_c"
@@ -168,8 +168,7 @@
 	w_class = ITEMSIZE_SMALL
 	var/on =  0
 	slot_flags = null
-	force = 0
-	hitsound = "sound/items/bikehorn.ogg"
+	force = 10
 
 /obj/item/melee/stool/faiza/attack_self(mob/user as mob)
 
@@ -179,7 +178,7 @@
 		w_class = ITEMSIZE_HUGE
 		on = 1
 	else
-		user.visible_message("<span class='notice'>\ [user] collapses their stool.</span>")
+		user.visible_message("<span class='notice'>\[user] collapses their stool.</span>")
 		icon_state = "cn_stool_c"
 		w_class = ITEMSIZE_SMALL
 		on = 0
