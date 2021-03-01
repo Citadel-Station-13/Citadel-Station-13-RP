@@ -77,7 +77,7 @@
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
 		return
 
-	log_ooc(msg, src)
+	log_ooc(raw_msg, src)
 
 	var/ooc_style = "everyone"
 	if(holder && !holder.fakekey)
