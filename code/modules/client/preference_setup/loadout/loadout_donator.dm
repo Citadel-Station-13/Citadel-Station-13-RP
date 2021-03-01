@@ -18,10 +18,10 @@
 	path = /obj/item/clothing/under/gladiator
 	ckeywhitelist = list("aroche")
 
-/datum/gear/donator/keyholesweater
-	display_name = "Keyhole Sweater"
+/datum/gear/donator/stool
+	display_name = "Faiza's Stool"
 	slot = slot_wear_suit
-	path = /obj/item/clothing/under/donator/crystalnole
+	path = /obj/item/melee/stool/faiza
 	ckeywhitelist = list("crystal9156")
 
 /datum/gear/donator/chayse
