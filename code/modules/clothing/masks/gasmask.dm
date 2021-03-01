@@ -324,3 +324,39 @@
 	name = "skeleton mask"
 	desc = "A crude plastic skull mask that is somehow still airtight."
 	icon_state = "death"
+
+//DONATOR ITEM
+
+
+/obj/item/clothing/mask/gas/orchid
+	name = "Orchid's Mask"
+	desc = "A porcelain mask with black eyes and no mouth."
+	icon_state = "iacc_w"
+	flags_inv = HIDEEARS|HIDEFACE
+	item_state_slots = list(slot_r_hand_str = "iacc", slot_l_hand_str = "iacc")
+	var/design = 1
+
+/obj/item/clothing/mask/gas/orchid/proc/change_mask()
+
+	switch(design)
+		if(0)
+			icon_state = "iacc_w"
+			to_chat("w")
+			design = 1
+		if(1)
+			icon_state = "iacc_r"
+			to_chat("r")
+			design = 2
+		if(2)
+			icon_state = "iacc_b"
+			to_chat("b")
+			design = 0
+	update_clothing_icon()
+
+/obj/item/clothing/mask/gas/orchid/verb/toggle_design()
+
+	set name = "Change Design"
+	set category = "Object"
+	set src in usr
+
+	change_mask(usr)
