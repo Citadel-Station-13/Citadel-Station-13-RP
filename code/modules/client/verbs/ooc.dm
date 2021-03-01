@@ -89,6 +89,8 @@
 		if(holder.rights & R_ADMIN)
 			ooc_style = "admin"
 
+	msg = emoji_parse(msg)
+
 	for(var/client/target in GLOB.clients)
 		if(target.is_preference_enabled(/datum/client_preference/show_ooc))
 			if(target.is_key_ignored(key)) // If we're ignored by this person, then do nothing.
@@ -189,6 +191,8 @@
 	for(var/client/admin in admins)
 		if(!(admin in receivers) && admin.is_preference_enabled(/datum/client_preference/holder/show_rlooc))
 			r_receivers |= admin
+
+	msg = emoji_parse(msg)
 
 	// Send a message
 	for(var/client/target in receivers)
