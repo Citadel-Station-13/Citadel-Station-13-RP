@@ -122,7 +122,7 @@
 	if(!is_melted())
 		if(decay_heat > 0)
 			life = life * 10
-			decay_heat = decay_heat * 10
+			decay_heat = 0 // Original was decay_heat * 10. Setting to 0 to counter memes (Testing phase. Unsure HOW much this is going to destroy everything)
 		else
 			life = 0
 		name = "melted [name]"
