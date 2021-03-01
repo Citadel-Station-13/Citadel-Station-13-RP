@@ -868,7 +868,7 @@ datum/gear/uniform/bodysuitseccom
 datum/gear/uniform/bodysuitcommand
 	display_name = "Command Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitcommand
-	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer")
+	allowed_roles = list("Head of Security","Facility Director","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer", "Command Secretary")
 
 // And after nearly successfully hanging myself, this is where the real game begins
 /datum/gear/uniform/future_fashion_light_blue_striped
