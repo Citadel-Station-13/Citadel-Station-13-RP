@@ -393,11 +393,13 @@
 	SSjobs.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(T)		// Creates the human and transfers vars and mind
-	character = SSjobs.EquipRank(character, rank, 1)	// Equips the human
-	UpdateFactionList(character)
 	//Announces Cyborgs early because it wont work else...
 	if(character.mind.assigned_role == "Cyborg")
 		AnnounceCyborg(character, rank, join_message)
+
+	character = SSjobs.EquipRank(character, rank, 1)	// Equips the human
+	UpdateFactionList(character)
+
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
 	if(character.mind.assigned_role == "AI")
