@@ -57,6 +57,8 @@
 	if(!msg)
 		return
 
+	msg = emoji_parse(msg)
+
 	if((msg[1] in list(".",";",":","#") || findtext_char(msg, "say", 1, 5))) //SSticker.HasRoundStarted() &&
 		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 			return
@@ -88,8 +90,6 @@
 			ooc_style = "developer"
 		if(holder.rights & R_ADMIN)
 			ooc_style = "admin"
-
-	msg = emoji_parse(msg)
 
 	for(var/client/target in GLOB.clients)
 		if(target.is_preference_enabled(/datum/client_preference/show_ooc))
