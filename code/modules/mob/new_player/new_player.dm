@@ -395,6 +395,9 @@
 	var/mob/living/character = create_character(T)		// Creates the human and transfers vars and mind
 	character = SSjobs.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
+	//Announces Cyborgs early because it wont work else...
+	if(character.mind.assigned_role == "Cyborg")
+		AnnounceCyborg(character, rank, join_message)
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
 	if(character.mind.assigned_role == "AI")
@@ -433,8 +436,7 @@
 		//Grab some data from the character prefs for use in random news procs.
 
 		AnnounceArrival(character, rank, join_message)
-	else
-		AnnounceCyborg(character, rank, join_message)
+
 
 	qdel(src)
 
