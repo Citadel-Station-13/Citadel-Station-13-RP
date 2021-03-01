@@ -205,6 +205,8 @@
 
 /datum/asset/spritesheet/chat
 	name = "chat"
+
+/datum/asset/spritesheet/chat/register()
 	InsertAll("emoji", 'icons/emoji.dmi')
 	InsertAll("emoji", 'icons/emoji_32.dmi')
 
@@ -219,6 +221,7 @@
 			var/icon_state = initial(L.icon_state)
 			Insert("language-[icon_state]", icon, icon_state=icon_state)
 */
+
 	..()
 
 /*
