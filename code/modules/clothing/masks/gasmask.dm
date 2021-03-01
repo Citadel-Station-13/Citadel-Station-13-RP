@@ -341,15 +341,12 @@
 	switch(design)
 		if(0)
 			icon_state = "iacc_w"
-			to_chat("w")
 			design = 1
 		if(1)
 			icon_state = "iacc_r"
-			to_chat("r")
 			design = 2
 		if(2)
 			icon_state = "iacc_b"
-			to_chat("b")
 			design = 0
 	update_clothing_icon()
 
