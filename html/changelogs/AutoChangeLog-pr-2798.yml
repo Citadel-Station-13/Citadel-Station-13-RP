@@ -1,5 +1,0 @@
-author: "drofoljaelisglis"
-delete-after: True
-changes: 
-  - bugfix: "Fixed the invisible sprite on the toe-less/digitigrade jackboot variants."
-  - imageadd: "Adjusted the sprite on the knee-length and thigh-length jackboots (normal and toe-less/digitigrade versions) to make them more visually distinct from the regular jackboot sprites. Now they should align with the location they're supposed to reach to."
