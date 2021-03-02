@@ -216,3 +216,8 @@
 	display_name = "starlight singer leggings"
 	path = /obj/item/clothing/shoes/donator/mikuleggings
 	ckeywhitelist = list("grandvegeta")
+
+/datum/gear/donator/iaccmask
+	display_name = "orchid's mask"
+	path = /obj/item/clothing/mask/gas/orchid
+	ckeywhitelist = list("iamcrystalclear")
