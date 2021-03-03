@@ -5,7 +5,7 @@
 	if(!check_rights(R_ADMIN|R_MOD))
 		return
 
-	msg = sanitize(msg)
+	msg = emoji_parse(sanitize(msg))
 	if(!msg)
 		return
 
@@ -30,7 +30,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_SERVER))
 		return
 
-	msg = sanitize(msg)
+	msg = emoji_parse(sanitize(msg))
 	log_modsay(msg,src)
 
 	if (!msg)
@@ -53,7 +53,7 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_EVENT|R_SERVER|R_EVENT))
 		return
 
-	msg = sanitize(msg)
+	msg = emoji_parse(sanitize(msg))
 	log_eventsay(msg,src)
 
 	if (!msg)

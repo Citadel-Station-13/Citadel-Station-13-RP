@@ -92,7 +92,6 @@ var/list/adminlog  = list()
 
 var/list/powernets = list()	// TODO - Move into SSmachines
 
-var/Debug2 = 0
 var/datum/debug/debugobj
 
 var/datum/moduletypes/mods = new()

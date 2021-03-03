@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(jobs)
 
 
 /datum/controller/subsystem/jobs/proc/Debug(var/text)
-	if(!Debug2)
+	if(!GLOB.Debug2)
 		return 0
 	job_debug.Add(text)
 	return 1
