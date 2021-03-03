@@ -157,7 +157,6 @@
 						if(/turf/simulated/mineral/vacuum)
 							place_resources(newturf)
 
-					newturf.update_icon(1)
 				else	// Anything not a turf
 					rm_controller.dbg("ZM(pa): Creating [T].")
 					new T(spot)
