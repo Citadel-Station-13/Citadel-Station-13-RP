@@ -15,12 +15,8 @@ var/list/floor_decals = list()
 	..(newloc)
 
 /obj/effect/floor_decal/Initialize()
-	. = ..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/effect/floor_decal/LateInitialize()
 	add_to_turf_decals()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 // This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.
 /obj/effect/floor_decal/proc/add_to_turf_decals()
@@ -43,12 +39,12 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/reset
 	name = "reset marker"
 
-/obj/effect/floor_decal/reset/LateInitialize()
+/obj/effect/floor_decal/reset/Initialize()
 	var/turf/T = get_turf(src)
 	if(T.decals && T.decals.len)
 		T.decals.Cut()
 		T.update_icon()
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/floor_decal/corner
 	icon_state = "corner_white"
