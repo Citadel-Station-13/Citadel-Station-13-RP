@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(global_listen_count)
 GLOBAL_LIST_EMPTY(event_sources_count)
 GLOBAL_LIST_EMPTY(event_listen_count)
 
-/decl/observ/destroyed/raise_events()
+/decl/observ/destroyed/raise_event()
 	. = ..()
 	if(!.)
 		return
