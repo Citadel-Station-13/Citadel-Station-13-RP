@@ -77,6 +77,10 @@ var/list/table_icon_cache = list()
 	// reset color/alpha, since they're set for nice map previews
 	color = "#ffffff"
 	alpha = 255
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/table/LateInitialize()		// CURSE YOU DUMB AS ROCKS MATERIAL SYSTEM
+	. = ..()
 	update_connections(!mapload)
 	update_icon()
 	update_desc()
@@ -453,8 +457,9 @@ var/list/table_icon_cache = list()
 		if(material && T.material && material.name == T.material.name && flipped == T.flipped)
 			connection_dirs |= T_dir
 		if(propagate)
-			T.update_connections()
-			T.update_icon()
+			spawn(0)
+				T.update_connections()
+				T.update_icon()
 
 	connections = dirs_to_corner_states(connection_dirs)
 

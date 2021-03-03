@@ -201,11 +201,11 @@ turf/simulated/mineral/floor/light_corner
 		if(overlay_detail)
 			add_overlay('icons/turf/flooring/decals.dmi',overlay_detail)
 
-		if(update_neighbors)
-			for(var/direction in alldirs)
-				if(istype(get_step(src, direction), /turf/simulated/mineral))
-					var/turf/simulated/mineral/M = get_step(src, direction)
-					M.update_icon()
+	if(update_neighbors)
+		for(var/direction in alldirs)
+			if(istype(get_step(src, direction), /turf/simulated/mineral))
+				var/turf/simulated/mineral/M = get_step(src, direction)
+				M.update_icon()
 
 /turf/simulated/mineral/ex_act(severity)
 
