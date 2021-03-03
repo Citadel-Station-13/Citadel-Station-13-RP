@@ -144,18 +144,13 @@ turf/simulated/mineral/floor/light_corner
 		overlay_detail = "asteroid[rand(0,9)]"
 	if(random_icon)
 		dir = pick(alldirs)
-		. = INITIALIZE_HINT_LATELOAD
 	if(mineral)
 		if(density)
-			. = INITIALIZE_HINT_LATELOAD
+			MineralSpread(mapload)
 		else
-			UpdateMineral()
+			UpdateMineral(!mapload)
 	else
 		update_icon(!mapload)
-
-/turf/simulated/mineral/LateInitialize()
-	if(density && mineral)
-		MineralSpread()
 
 /turf/simulated/mineral/update_icon(var/update_neighbors)
 
@@ -272,22 +267,21 @@ turf/simulated/mineral/floor/light_corner
 		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
 			M.selected.action(src)
 
-/turf/simulated/mineral/proc/MineralSpread()
-	UpdateMineral()
+/turf/simulated/mineral/proc/MineralSpread(mapload)
+	UpdateMineral(!mapload)
 	if(mineral && mineral.spread)
 		for(var/trydir in cardinal)
 			if(prob(mineral.spread_chance))
 				var/turf/simulated/mineral/target_turf = get_step(src, trydir)
 				if(istype(target_turf) && target_turf.density && !target_turf.mineral)
 					target_turf.mineral = mineral
-					target_turf.UpdateMineral()
-					target_turf.MineralSpread()
+					target_turf.MineralSpread(mapload)
 
-/turf/simulated/mineral/proc/UpdateMineral()
+/turf/simulated/mineral/proc/UpdateMineral(update_neighbors)
 	clear_ore_effects()
 	if(mineral)
 		new /obj/effect/mineral(src, mineral)
-	update_icon()
+	update_icon(update_neighbors)
 
 //Not even going to touch this pile of spaghetti
 /turf/simulated/mineral/attackby(obj/item/W as obj, mob/user as mob)

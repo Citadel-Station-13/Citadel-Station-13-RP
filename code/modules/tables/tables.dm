@@ -77,7 +77,7 @@ var/list/table_icon_cache = list()
 	// reset color/alpha, since they're set for nice map previews
 	color = "#ffffff"
 	alpha = 255
-	update_connections(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
+	update_connections(!mapload)
 	update_icon()
 	update_desc()
 	update_material()
@@ -85,9 +85,7 @@ var/list/table_icon_cache = list()
 /obj/structure/table/Destroy()
 	material = null
 	reinforced = null
-	update_connections(1) // Update tables around us to ignore us (material=null forces no connections)
-	for(var/obj/structure/table/T in oview(src, 1))
-		T.update_icon()
+	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
 	. = ..()
 
 /obj/structure/table/examine(mob/user)
@@ -409,10 +407,10 @@ var/list/table_icon_cache = list()
 /obj/structure/table/proc/update_connections(propagate=0)
 	if(!material)
 		connections = list("0", "0", "0", "0")
-
 		if(propagate)
-			for(var/obj/structure/table/T in oview(src, 1))
+			for(var/obj/structure/table/T in orange(src, 1))
 				T.update_connections()
+				T.update_icon()
 		return
 
 	var/list/blocked_dirs = list()
@@ -450,13 +448,13 @@ var/list/table_icon_cache = list()
 
 	for(var/obj/structure/table/T in orange(src, 1))
 		var/T_dir = get_dir(src, T)
-		if(T_dir in blocked_dirs) continue
+		if(T_dir in blocked_dirs)
+			continue
 		if(material && T.material && material.name == T.material.name && flipped == T.flipped)
 			connection_dirs |= T_dir
 		if(propagate)
-			spawn(0)
-				T.update_connections()
-				T.update_icon()
+			T.update_connections()
+			T.update_icon()
 
 	connections = dirs_to_corner_states(connection_dirs)
 
