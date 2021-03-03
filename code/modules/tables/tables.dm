@@ -77,11 +77,18 @@ var/list/table_icon_cache = list()
 	// reset color/alpha, since they're set for nice map previews
 	color = "#ffffff"
 	alpha = 255
-	return INITIALIZE_HINT_LATELOAD
+	if(mapload)		// screw off
+		return INITIALIZE_HINT_LATELOAD
+	else
+		update_connections(TRUE)
+		update_icon()
+		update_desc()
+		update_material()
+
 
 /obj/structure/table/LateInitialize()		// CURSE YOU DUMB AS ROCKS MATERIAL SYSTEM
 	. = ..()
-	update_connections(!mapload)
+	update_connections(FALSE)
 	update_icon()
 	update_desc()
 	update_material()
