@@ -13,8 +13,6 @@
 	Look at radio.dm for the prequel to this code.
 */
 
-var/global/list/obj/machinery/telecomms/telecomms_list = list()
-
 /obj/machinery/telecomms
 	var/list/links = list() // list of machines this machine is linked to
 	var/traffic = 0 // value increases as traffic increases
@@ -109,31 +107,30 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	else
 		return 0
 
-
 /obj/machinery/telecomms/Initialize(mapload)
 	. = ..()
-	telecomms_list += src
+	GLOB.telecomms_list += src
 
 	//Set the listening_level if there's none.
 	if(!listening_level)
 		//Defaults to our Z level!
 		var/turf/position = get_turf(src)
 		listening_level = position.z
+	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/telecomms/Initialize(mapload)
+/obj/machinery/telecomms/LateInitialize()
 	if(autolinkers.len)
 		// Links nearby machines
 		if(!long_range_link)
 			for(var/obj/machinery/telecomms/T in orange(20, src))
 				add_link(T)
 		else
-			for(var/obj/machinery/telecomms/T in telecomms_list)
+			for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 				add_link(T)
-	. = ..()
 
 /obj/machinery/telecomms/Destroy()
-	telecomms_list -= src
-	for(var/obj/machinery/telecomms/comm in telecomms_list)
+	GLOB.telecomms_list -= src
+	for(var/obj/machinery/telecomms/comm in GLOB.telecomms_list)
 		comm.links -= src
 	links = list()
 	..()
@@ -734,7 +731,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 	//Let's look at hubs and see what we got.
 	var/can_comm = FALSE
-	for(var/obj/machinery/telecomms/hub/H in telecomms_list)
+	for(var/obj/machinery/telecomms/hub/H in GLOB.telecomms_list)
 		if((src_z in H.telecomms_map) && (dst_z in H.telecomms_map))
 			can_comm = TRUE
 			break
