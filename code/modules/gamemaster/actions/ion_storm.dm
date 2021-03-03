@@ -35,7 +35,7 @@
 	while(active)
 		sleep(1)
 		if(botEmagChance)
-			for(var/mob/living/bot/bot in mob_list)
+			for(var/mob/living/bot/bot in GLOB.mob_list)
 				if(prob(botEmagChance))
 					bot.emag_act(1)
 

@@ -4,7 +4,7 @@
 
 /mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	delete_inventory()
@@ -92,7 +92,7 @@
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -121,7 +121,7 @@
 	. = ..()
 	name = "Plastic Mannequin"
 	real_name = "Plastic Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -151,7 +151,7 @@
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -183,7 +183,7 @@
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -212,7 +212,7 @@
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -241,7 +241,7 @@
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)

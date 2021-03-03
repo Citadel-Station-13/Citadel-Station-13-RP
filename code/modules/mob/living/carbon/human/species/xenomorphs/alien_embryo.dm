@@ -116,7 +116,7 @@ Des: Removes all infection images from aliens and places an infection image on a
 			for(var/image/I in alien.client.images)
 				if(dd_hasprefix_case(I.icon_state, "infected"))
 					qdel(I)
-			for(var/mob/living/L in mob_list)
+			for(var/mob/living/L in GLOB.mob_list)
 				if(iscorgi(L) || iscarbon(L))
 					if(L.status_flags & XENO_HOST)
 						var/I = image('icons/mob/alien.dmi', loc = L, icon_state = "infected[stage]")

@@ -641,7 +641,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 	var/list/forenames = list()
 	var/list/ckeys = list()
 	var/founds = ""
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		var/list/indexing = list(M.real_name, M.name)
 		if(M.mind)
 			indexing += M.mind.name
