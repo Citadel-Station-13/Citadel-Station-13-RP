@@ -24,7 +24,9 @@
 					"Insekt" = "insekt-Sec",
 					"Misato" = "tall2security",
 					"L3P1-D0T" = "Glitterfly-Security",
-					"Miss M" = "miss-security"
+					"Miss M" = "miss-security",
+					"Coffcurity" = "coffin-Combat"
+
 					)
 
 /obj/item/robot_module/robot/security/general/Initialize(mapload)

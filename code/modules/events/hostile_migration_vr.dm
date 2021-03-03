@@ -1,9 +1,9 @@
-#define LOC_KITCHEN 0
-#define LOC_LIBRARY 1
-#define LOC_HALLWAYS 2
-#define LOC_RESEARCH 3
-#define LOC_MINING 4
-#define LOC_HYDRO 5
+#define LOC_KITCHEN 1
+#define LOC_LIBRARY 2
+#define LOC_HALLWAYS 3
+#define LOC_RESEARCH 4
+#define LOC_MINING 5
+#define LOC_HYDRO 6
 
 /datum/event/hostile_migration
 	var/location
@@ -34,7 +34,7 @@
 
 
 /datum/event/hostile_migration/start()
-	location = rand(0,5)
+	location = rand(1,6)
 	switch(location)
 		if(LOC_KITCHEN)
 			spawn_area_type = /area/crew_quarters/kitchen
@@ -66,6 +66,11 @@
 			locstring = "hydroponics"
 			spawncount = rand(7 * severity, 18 * severity)
 			boss_spawn_count = rand(1,5)
+	if(!locstring)
+		spawn_area_type = /area/hallway
+		locstring = "public hallways"
+		spawncount = rand(20 * severity, 30 * severity)
+		boss_spawn_count = rand(3,7)
 
 /datum/event/hostile_migration/end()
 	var/list/vents = list()

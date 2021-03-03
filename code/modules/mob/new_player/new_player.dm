@@ -394,6 +394,9 @@
 	SSjobs.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(T)		// Creates the human and transfers vars and mind
+	//Announces Cyborgs early, because that is the only way it works
+	if(character.mind.assigned_role == "Cyborg")
+		AnnounceCyborg(character, rank, join_message)
 	character = SSjobs.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 
@@ -434,8 +437,7 @@
 		//Grab some data from the character prefs for use in random news procs.
 
 		AnnounceArrival(character, rank, join_message)
-	else
-		AnnounceCyborg(character, rank, join_message)
+
 
 	qdel(src)
 

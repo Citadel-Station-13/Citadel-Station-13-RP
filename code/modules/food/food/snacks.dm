@@ -785,6 +785,17 @@
 	reagents.add_reagent("hyperzine", 5)
 	src.bitesize = 3
 
+/obj/item/reagent_containers/food/snacks/horsemeat
+	name = "horse meat"
+	desc = "No no, I said it came from something fast."
+	icon_state = "bearmeat"
+	nutriment_amt = 2
+
+/obj/item/reagent_containers/food/snacks/horsemeat/Initialize()
+	. = ..()
+	reagents.add_reagent("protein", 4)
+	bitesize = 3
+
 /obj/item/reagent_containers/food/snacks/xenomeat // Buff 6 >> 10
 	name = "xenomeat"
 	desc = "A slab of green meat. Smells like acid."
@@ -5526,7 +5537,7 @@ END CITADEL CHANGE */
 */
 
 /obj/item/reagent_containers/food/snacks/sliceable/sushi // Buff 25 >> 35
-	name = "sushi roll"
+	name = "sushi roll (fish)"
 	desc = "A whole sushi roll! Slice it up and enjoy with some soy sauce and wasabi."
 	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi"
@@ -5541,7 +5552,7 @@ END CITADEL CHANGE */
 	bitesize = 5
 
 /obj/item/reagent_containers/food/snacks/slice/sushi/filled
-	name = "piece of sushi"
+	name = "piece of sushi (fish)"
 	desc = "A slice of a larger sushi roll, ready to devour."
 	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi_s"
@@ -5551,6 +5562,83 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/slice/sushi/filled/filled
 	filled = TRUE
 
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab
+	name = "sushi roll (crab)"
+	desc = "A whole sushi roll! Slice it up and enjoy with some soy sauce and wasabi. This one is filled with rare, savory meat!"
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "sushi"
+	slice_path = /obj/item/reagent_containers/food/snacks/slice/sushi/crab/filled
+	slices_num = 5
+	nutriment_desc = list("rice" = 5, "fish" = 5)
+	nutriment_amt = 20
+
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/crab/Initialize()
+	..()
+	reagents.add_reagent("protein", 15)
+	bitesize = 5
+
+/obj/item/reagent_containers/food/snacks/slice/sushi/crab/filled
+	name = "piece of sushi (crab)"
+	desc = "A slice of a larger sushi roll, ready to devour."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "sushi_s"
+	bitesize = 5
+	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/sushi/crab
+
+/obj/item/reagent_containers/food/snacks/slice/sushi/crab/filled/filled
+	filled = TRUE
+
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse
+	name = "sushi roll (horse)"
+	desc = "A whole sushi roll! Slice it up and enjoy with some soy sauce and wasabi. This one is filled with rare, lean meat!"
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "sushi"
+	slice_path = /obj/item/reagent_containers/food/snacks/slice/sushi/horse/filled
+	slices_num = 5
+	nutriment_desc = list("rice" = 5, "fish" = 5)
+	nutriment_amt = 20
+
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/horse/Initialize()
+	..()
+	reagents.add_reagent("protein", 15)
+	bitesize = 5
+
+/obj/item/reagent_containers/food/snacks/slice/sushi/horse/filled
+	name = "piece of sushi (horse)"
+	desc = "A slice of a larger sushi roll, ready to devour."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "sushi_s"
+	bitesize = 5
+	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/sushi/horse
+
+/obj/item/reagent_containers/food/snacks/slice/sushi/horse/filled/filled
+	filled = TRUE
+
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery
+	name = "sushi roll (???)"
+	desc = "A whole sushi roll! Slice it up and enjoy with some soy sauce and wasabi. It's hard to tell where this meat came from."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "sushi"
+	slice_path = /obj/item/reagent_containers/food/snacks/slice/sushi/mystery/filled
+	slices_num = 5
+	nutriment_desc = list("rice" = 5, "fish" = 5)
+	nutriment_amt = 20
+
+/obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery/Initialize()
+	..()
+	reagents.add_reagent("protein", 15)
+	bitesize = 5
+
+/obj/item/reagent_containers/food/snacks/slice/sushi/mystery/filled
+	name = "piece of sushi (???)"
+	desc = "A slice of a larger sushi roll, ready to devour."
+	icon = 'icons/obj/food_vr.dmi'
+	icon_state = "sushi_s"
+	bitesize = 5
+	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery
+
+/obj/item/reagent_containers/food/snacks/slice/sushi/mystery/filled/filled
+	filled = TRUE
 
 /obj/item/reagent_containers/food/snacks/lasagna
 	name = "lasagna"

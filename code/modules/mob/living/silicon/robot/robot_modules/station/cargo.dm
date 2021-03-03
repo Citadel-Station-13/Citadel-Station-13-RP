@@ -16,7 +16,10 @@
 					"Drone" = "drone-miner",
 					"Misato" = "tall2miner",
 					"L3P1-D0T" = "Glitterfly-Miner",
-					"Miss M" = "miss-miner"
+					"Miss M" = "miss-miner",
+					"Carffin" = "coffin-Service",
+					"Coffing" = "coffin-Mining"
+
 				)
 
 /obj/item/robot_module/robot/miner/Initialize(mapload)

@@ -64,6 +64,8 @@
 	if(!is_open_container())
 		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
 		return 1
+	if(target == loc) //prevent filling a machine with a glass you just put into it.
+		return 1
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/self_feed_message(var/mob/user)

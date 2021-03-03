@@ -44,6 +44,10 @@
 	desc = "A suit designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for security use."
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 0)
 
+/obj/item/clothing/suit/space/plasman/sec/detective
+	icon_state = "plasmaman_suitdetective"
+	desc = "A suit designed by NT to keep sleuthy phoronoids from coming into contact with incompatible atmosphere. This one is comes with noir jacket decor."
+
 /obj/item/clothing/suit/space/plasman/sec/warden
 	icon_state = "plasmaman_suitwarden"
 
@@ -64,6 +68,10 @@
 	icon_state = "plasmaman_helmetsecurity"
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 100, rad = 0)
 	desc = "A helmet designed by NT to keep phoronoids from coming into contact with incompatible atmosphere. This one is armored for security use."
+
+/obj/item/clothing/head/helmet/space/plasman/sec/detective
+	icon_state = "plasmaman_helmetdetective"
+	desc = "A helmet designed by NT to keep sleuthy phoronoids from coming into contact with incompatible atmosphere. This one is adorned with an ill-fashioned fedora decal."
 
 /obj/item/clothing/head/helmet/space/plasman/sec/hos
 	icon_state = "plasmaman_helmethos"
@@ -251,6 +259,11 @@
 /obj/item/clothing/head/helmet/space/plasman/janitor
 	icon_state = "plasmaman_helmetjanitor"
 
+/obj/item/clothing/suit/space/plasman/assistant
+	icon_state = "plasmaman_suitassistant"
+
+/obj/item/clothing/head/helmet/space/plasman/assistant
+	icon_state = "plasmaman_helmetassistant"
 //
 // CLOWN AND MIME (im separating these because i made these a while after the rest 4head)
 //

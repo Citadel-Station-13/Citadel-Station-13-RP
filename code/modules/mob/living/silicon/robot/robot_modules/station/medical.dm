@@ -24,7 +24,10 @@
 					"Insekt" = "insekt-Med",
 					"Misato" = "tall2medical",
 					"L3P1-D0T" = "Glitterfly-Surgeon",
-					"Miss M" = "miss-medical"
+					"Miss M" = "miss-medical",
+					"Coffical" = "coffin-Medical",
+					"Coffcue" = "coffin-Rescue"
+
 					)
 
 /obj/item/robot_module/robot/medical/surgeon/Initialize(mapload)

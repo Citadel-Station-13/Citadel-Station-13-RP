@@ -363,8 +363,8 @@
 	path = /obj/item/clothing/head/welding/engie
 	allowed_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Research Director","Roboticist")
 
-/*/datum/gear/head/beret/sol
-	display_name = "beret sol, selection"
+/datum/gear/head/beret/sol
+	display_name = "sol beret selection"
 	path = /obj/item/clothing/head/beret/sol
 
 /datum/gear/head/beret/sol/New()
@@ -373,7 +373,7 @@
 	for(var/sol_style in typesof(/obj/item/clothing/head/beret/sol))
 		var/obj/item/clothing/head/beret/sol/sol = sol_style
 		sols[initial(sol.name)] = sol
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(sols, /proc/cmp_text_asc))*/ // Vorestation removal.
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(sols, /proc/cmp_text_asc))
 
 /datum/gear/head/surgery
 	display_name = "surgical cap selection"
