@@ -968,11 +968,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "dl" = (
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
 	},
-/obj/machinery/door/firedoor,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1520,11 +1518,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/starboardnacelle)
 "fn" = (
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_one_access = null
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
 	},
-/obj/machinery/door/firedoor,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
@@ -4256,7 +4252,6 @@
 	icon_state = "1-8"
 	},
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "nP" = (
@@ -6659,9 +6654,6 @@
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Hallway";
 	req_one_access = null
-	},
-/obj/machinery/light{
-	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
@@ -9075,6 +9067,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
@@ -13349,6 +13344,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "Rc" = (
@@ -25693,7 +25689,7 @@ DE
 XP
 Lv
 xv
-GQ
+dl
 Zv
 qW
 MK
@@ -27967,7 +27963,7 @@ ON
 YJ
 LE
 QX
-fn
+LE
 Tx
 Tx
 Tx
@@ -28109,7 +28105,7 @@ Pf
 YJ
 MT
 FE
-di
+fn
 Tx
 fI
 fI
@@ -31231,7 +31227,7 @@ OD
 OD
 OD
 OD
-dl
+LE
 Fj
 LE
 em

@@ -11972,6 +11972,9 @@
 "kfy" = (
 /obj/structure/table/steel,
 /obj/item/storage/toolbox/mechanical,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "kfH" = (
