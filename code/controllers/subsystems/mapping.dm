@@ -180,11 +180,6 @@ SUBSYSTEM_DEF(mapping)
 	maploader = new()
 	load_map_templates()
 
-	if(config_legacy.generate_map)
-		// Map-gen is still very specific to the map, however putting it here should ensure it loads in the correct order.
-		if(GLOB.using_map.perform_map_generation())
-			GLOB.using_map.refresh_mining_turfs()
-
 	loadEngine()
 	preloadShelterTemplates()
 	// Mining generation probably should be here too

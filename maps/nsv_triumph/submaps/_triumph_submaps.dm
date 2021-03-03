@@ -75,9 +75,6 @@
 	name = "Away Mission - Pirate Base"
 	z = Z_LEVEL_PIRATEBASE
 
-/datum/map_template/triumph_lateload/away_piratebase/on_map_loaded(z)
-	. = ..()
-
 // Mining Planet
 #include "mining_planet/_miningplanet.dm"
 
@@ -91,7 +88,6 @@
 /datum/map_z_level/triumph_lateload/away_mining_planet
 	name = "Away Mission - Mining Planet"
 	z = Z_LEVEL_MININGPLANET
-
 
 /datum/map_template/triumph_lateload/away_mining_planet/on_map_loaded(z)
 	. = ..()

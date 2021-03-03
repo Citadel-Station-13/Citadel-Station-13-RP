@@ -71,7 +71,7 @@
 
 		if(!machine.ores_stored[ore] && !show_all_ores)
 			continue
-		var/datum/ore/O = ore_data[ore]
+		var/datum/ore/O = GLOB.ore_data[ore]
 		if(!O)
 			continue
 		dat += "<tr><td width = 40><b>[capitalize(O.display_name)]</b></td><td width = 30>[machine.ores_stored[ore]]</td><td width = 100>"
@@ -194,14 +194,9 @@
 		alloy_data = list()
 		for(var/alloytype in typesof(/datum/alloy)-/datum/alloy)
 			alloy_data += new alloytype()
-
-	// TODO - Initializing this here is insane. Put it in global lists init or something. ~Leshana
-	if(!ore_data || !ore_data.len)
-		for(var/oretype in typesof(/datum/ore)-/datum/ore)
-			var/datum/ore/OD = new oretype()
-			ore_data[OD.name] = OD
-			ores_processing[OD.name] = 0
-			ores_stored[OD.name] = 0
+	for(var/datum/ore/O in GLOB.ore_data)
+		ores_processing[O.name] = 0
+		ores_stored[O.name] = 0
 
 /obj/machinery/mineral/processing_unit/Initialize(mapload)
 	. = ..()
@@ -255,7 +250,7 @@
 
 		if(ores_stored[metal] > 0 && ores_processing[metal] != 0)
 
-			var/datum/ore/O = ore_data[metal]
+			var/datum/ore/O = GLOB.ore_data[metal]
 
 			if(!O) continue
 
