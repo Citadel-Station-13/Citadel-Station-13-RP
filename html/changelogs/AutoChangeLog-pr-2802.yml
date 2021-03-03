@@ -1,4 +1,0 @@
-author: "drofoljaelisglis"
-delete-after: True
-changes: 
-  - bugfix: "Fixed communicators not displaying any stories in the newsfeed app."
