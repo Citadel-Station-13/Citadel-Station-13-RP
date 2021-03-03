@@ -17,10 +17,6 @@
 	updateVisibility(src)
 	return ..()
 
-/turf/simulated/Initialize(mapload)
-	. = ..()
-	updateVisibility(src)
-
 // STRUCTURES
 
 /obj/structure/Destroy()

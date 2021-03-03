@@ -398,7 +398,7 @@ STARLIGHT 0
 
 ## Enables specific procedural map generation, generally for mining, however it is specific to the loaded map.  Uncomment to enable it, however it can
 ## worth it to keep it disabled if you are not hosting an actual server, to speed up start-up time for testing code.
-# GENERATE_MAP
+GENERATE_MAP
 
 ## Uncomment to enable organ decay outside of a body or storage item.
 #ORGANS_CAN_DECAY

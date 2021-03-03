@@ -106,6 +106,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_SQLITE			40
 #define INIT_ORDER_CHEMISTRY		35
 #define INIT_ORDER_SKYBOX			30
+#define INIT_ORDER_EVENTS			28		// needed because overmaps is shitcode and not doing this makes init far slower
 #define INIT_ORDER_MAPPING			25
 #define INIT_ORDER_DECALS			20
 #define INIT_ORDER_ALARMS			18

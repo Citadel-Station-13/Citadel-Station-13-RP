@@ -35,7 +35,26 @@
 	var/noshield = 0				// For if you explicitly want a turf to not be affected by shield generators
 
 /turf/Initialize(mapload)
-	. = ..()
+	if(flags & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags |= INITIALIZED
+
+	//atom color stuff
+	if(color)
+		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+
+	if(light_power && light_range)
+		update_light()
+
+	if(opacity && isturf(loc))
+		var/turf/T = loc
+		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
+
+/*
+	if (canSmoothWith)
+		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
+*/
+
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
@@ -46,6 +65,10 @@
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
+
+	ComponentInitialize()
+
+	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy()
 	. = QDEL_HINT_IWILLGC

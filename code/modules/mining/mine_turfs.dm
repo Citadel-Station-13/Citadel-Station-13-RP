@@ -142,12 +142,16 @@ turf/simulated/mineral/floor/light_corner
 	. = ..()
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
-	update_icon(1)
-	if(density && mineral)
-		. = INITIALIZE_HINT_LATELOAD
 	if(random_icon)
 		dir = pick(alldirs)
 		. = INITIALIZE_HINT_LATELOAD
+	if(mineral)
+		if(density)
+			. = INITIALIZE_HINT_LATELOAD
+		else
+			UpdateMineral()
+	else
+		update_icon(!mapload)
 
 /turf/simulated/mineral/LateInitialize()
 	if(density && mineral)
@@ -269,6 +273,7 @@ turf/simulated/mineral/floor/light_corner
 			M.selected.action(src)
 
 /turf/simulated/mineral/proc/MineralSpread()
+	UpdateMineral()
 	if(mineral && mineral.spread)
 		for(var/trydir in cardinal)
 			if(prob(mineral.spread_chance))
@@ -651,5 +656,5 @@ turf/simulated/mineral/floor/light_corner
 
 	if(mineral_name && (mineral_name in ore_data))
 		mineral = ore_data[mineral_name]
-		UpdateMineral()
-	update_icon()
+		if(flags & INITIALIZED)
+			UpdateMineral()
