@@ -96,7 +96,7 @@ var/list/ai_verbs_default = list(
 	src.verbs -= ai_verbs_default
 	src.verbs -= silicon_subsystems
 
-/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = FALSE)
+/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = TRUE)
 	announcement = new()
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
@@ -118,7 +118,6 @@ var/list/ai_verbs_default = list(
 	anchored = 1
 	canmove = 0
 	density = 1
-	loc = loc
 
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/communicator/integrated(src)
@@ -179,6 +178,9 @@ var/list/ai_verbs_default = list(
 				B.brainmob.mind.transfer_to(src)
 
 			on_mob_init()
+
+	if(config_legacy.allow_ai_shells)
+		verbs += /mob/living/silicon/ai/proc/deploy_to_shell_act
 
 	spawn(5)
 		new /obj/machinery/ai_powersupply(src)
@@ -873,7 +875,7 @@ var/list/ai_verbs_default = list(
 	return TRUE
 
 //Special subtype kept around for global announcements
-/mob/living/silicon/ai/announcer/
+/mob/living/silicon/ai/announcer
 	is_dummy = 1
 
 /mob/living/silicon/ai/announcer/Initialize(mapload)

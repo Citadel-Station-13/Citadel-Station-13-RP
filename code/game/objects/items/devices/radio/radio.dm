@@ -243,7 +243,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if (!istype(connection))
 		return
 
-	var/static/mob/living/silicon/ai/announcer/A = new /mob/living/silicon/ai/announcer(src, null, null, 1)
+	var/static/mob/living/silicon/ai/announcer/A = new /mob/living/silicon/ai/announcer(null, null, null, 1)
 	A.SetName(from)
 	Broadcast_Message(connection, A,
 						0, "*garbled automated announcement*", src,

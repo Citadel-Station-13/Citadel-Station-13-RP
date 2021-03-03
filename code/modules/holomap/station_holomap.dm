@@ -32,17 +32,13 @@
 	var/datum/station_holomap/holomap_datum
 
 /obj/machinery/station_map/Initialize(mapload)
-	. = ..()
-	holomap_datum = new()
+	holomap_datum = new
 	original_zLevel = loc.z
 	SSholomaps.station_holomaps += src
 	flags |= ON_BORDER // Why? It doesn't help if its not density
-
-/obj/machinery/station_map/Initialize(mapload)
-	. = ..()
 	if(SSholomaps.holomaps_initialized)
-		spawn(1) // Tragically we need to spawn this in order to give the frame construcing us time to set pixel_x/y
-			setup_holomap()
+		setup_holomap()
+	return ..()
 
 /obj/machinery/station_map/Destroy()
 	SSholomaps.station_holomaps -= src

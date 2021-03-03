@@ -45,6 +45,7 @@
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
 
+INITIALIZE_IMMEDIATE(/area) // todo remove this fuck the old maploder
 /area/New()
 	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
 		// generate one using the icon_state

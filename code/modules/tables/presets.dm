@@ -147,7 +147,6 @@
 	color = "#666666"
 
 /obj/structure/table/bench/steel/Initialize(mapload)
-	. = ..()
 	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	return ..()
 
