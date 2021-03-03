@@ -71,7 +71,7 @@
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy()
-	flags_1 &= ~INITIALIZED_1
+	flags &= ~INITIALIZED
 	. = QDEL_HINT_IWILLGC
 	..()
 
