@@ -41,18 +41,10 @@ export class Section extends Component {
       ...rest
     } = this.props;
     const hasTitle = canRender(title) || canRender(buttons);
-    const content = fitted
-      ? children
-      : (
-        <div
-          ref={this.ref}
-          className="Section__content">
-          {children}
-        </div>
-      );
+    const hasContent = canRender(children);
     return (
       <div
-        ref={fitted ? this.ref : undefined}
+        ref={this.ref}
         className={classes([
           'Section',
           'Section--level--' + level,
@@ -74,7 +66,12 @@ export class Section extends Component {
             </div>
           </div>
         )}
-        {content}
+        {fitted && children
+          || hasContent && (
+            <div className="Section__content">
+              {children}
+            </div>
+          )}
       </div>
     );
   }

@@ -24,7 +24,6 @@ export const Knob = props => {
     format,
     maxValue,
     minValue,
-    unclamped,
     onChange,
     onDrag,
     step,
@@ -51,7 +50,6 @@ export const Knob = props => {
         format,
         maxValue,
         minValue,
-        unclamped,
         onChange,
         onDrag,
         step,
@@ -81,7 +79,7 @@ export const Knob = props => {
         const effectiveColor = color
           || keyOfMatchingRange(fillValue ?? value, ranges)
           || 'default';
-        const rotation = Math.min((scaledDisplayValue - 0.5) * 270, 225);
+        const rotation = (scaledDisplayValue - 0.5) * 270;
         return (
           <div
             className={classes([
@@ -129,8 +127,8 @@ export const Knob = props => {
                 className="Knob__ringFill"
                 style={{
                   'stroke-dashoffset': (
-                    Math.max(((bipolar ? 2.75 : 2.00) - scaledFillValue * 1.5)
-                      * Math.PI * 50, 0)
+                    ((bipolar ? 2.75 : 2.00) - scaledFillValue * 1.5)
+                      * Math.PI * 50
                   ),
                 }}
                 cx="50"
