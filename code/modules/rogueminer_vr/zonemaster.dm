@@ -389,9 +389,10 @@
 	/obj/effect/step_trigger/teleporter/roguemine_loop/west))
 
 	for(var/atom/I in myarea.contents)
-		if(isturf(I) && !istype(I, /turf/space))
+		if(isturf(I))
 			var/turf/T = I
-			T.ChangeTurf(/turf/space)
+			if(!istype(T, /turf/space))
+				T.ChangeTurf(/turf/space)
 			continue
 		else if(ignored[I.type])
 			continue
