@@ -166,6 +166,18 @@
 		src.add_fingerprint(user)
 		return
 
+/obj/item/storage/secure/briefcase/MouseDrop(mob/user as mob)
+	if(ismob(src.loc))
+		if ((src.loc == user) && (src.locked == 1))
+			return
+		if(!CanMouseDrop(src))
+			return
+		var/mob/M = src.loc
+		if(!M.unEquip(src))
+			return
+		src.add_fingerprint(usr)
+		M.put_in_active_hand(src)
+
 // -----------------------------
 //        Secure Safe
 // -----------------------------
