@@ -1,6 +1,7 @@
 // Be sure to update planetary_vr.dm and atmosphers.dm when switching to this map.
 /turf/simulated/open/triumph
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
+
 /turf/simulated/open/triumph/Initialize(mapload)
 	. = ..()
 	if(outdoors)

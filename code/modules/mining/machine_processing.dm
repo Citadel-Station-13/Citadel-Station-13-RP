@@ -194,7 +194,8 @@
 		alloy_data = list()
 		for(var/alloytype in typesof(/datum/alloy)-/datum/alloy)
 			alloy_data += new alloytype()
-	for(var/datum/ore/O in GLOB.ore_data)
+	for(var/orename in GLOB.ore_data)
+		var/datum/ore/O = GLOB.ore_data[orename]
 		ores_processing[O.name] = 0
 		ores_stored[O.name] = 0
 

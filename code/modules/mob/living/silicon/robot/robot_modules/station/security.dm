@@ -134,8 +134,6 @@
 		sprites += "Alina"
 		sprites["Alina"] = "alina-sec"
 
-	..()
-
 /obj/item/robot_module/robot/knine/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/flash/F = locate() in src.modules
 	if(F.broken)

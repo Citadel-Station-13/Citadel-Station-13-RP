@@ -191,7 +191,7 @@
 
 	if(is_incorporeal())
 		return 0
-	
+
 	if(!SSticker)
 		to_chat(src, "You cannot attack people before the game has started.")
 		return 0
