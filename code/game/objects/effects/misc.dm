@@ -34,7 +34,7 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/temporary_effect/cleave_attack/Initialize() // Makes the slash fade smoothly. When completely transparent it should qdel itself.
+/obj/effect/temporary_effect/cleave_attack/Initialize(mapload) // Makes the slash fade smoothly. When completely transparent it should qdel itself.
 	. = ..()
 	animate(src, alpha = 0, time = time_to_die - 1)
 
@@ -44,7 +44,7 @@
 	icon_state = "shuttle_warning_still"
 	time_to_die = 4.9 SECONDS
 
-/obj/effect/temporary_effect/shuttle_landing/Initialize()
+/obj/effect/temporary_effect/shuttle_landing/Initialize(mapload)
 	flick("shuttle_warning", src) // flick() forces the animation to always begin at the start.
 	. = ..()
 
@@ -60,7 +60,7 @@
 	time_to_die = 1 SECOND
 	pixel_x = -32
 
-/obj/effect/temporary_effect/lightning_strike/Initialize()
+/obj/effect/temporary_effect/lightning_strike/Initialize(mapload)
 	icon_state += "[rand(1,2)]" // To have two variants of lightning sprites.
 	animate(src, alpha = 0, time = time_to_die - 1)
 	. = ..()

@@ -65,7 +65,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 /obj/structure/cliff/bottom
 	bottom = TRUE
 
-/obj/structure/cliff/automatic/Initialize()
+/obj/structure/cliff/automatic/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD
 

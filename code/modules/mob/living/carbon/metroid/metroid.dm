@@ -61,8 +61,7 @@
 
 	var/core_removal_stage = 0 //For removing cores.
 
-/mob/living/carbon/slime/New(var/location, var/colour="grey")
-
+/mob/living/carbon/slime/Initialize(mapload, colour = "grey")
 	verbs += /mob/living/proc/ventcrawl
 
 	src.colour = colour
@@ -74,7 +73,7 @@
 	var/sanitizedcolour = replacetext(colour, " ", "")
 	coretype = text2path("/obj/item/slime_extract/[sanitizedcolour]")
 	regenerate_icons()
-	..(location)
+	return ..(mapload)
 
 /mob/living/carbon/slime/movement_delay()
 	. = ..()

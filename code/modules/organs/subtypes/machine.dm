@@ -6,9 +6,9 @@
 	parent_organ = BP_TORSO
 	vital = 1
 
-/obj/item/organ/internal/cell/New()
+/obj/item/organ/internal/cell/Initialize(mapload)
+	. = ..()
 	robotize()
-	..()
 
 /obj/item/organ/internal/cell/replaced()
 	..()
@@ -37,9 +37,9 @@
 		stored_mmi = null
 	return ..()
 
-/obj/item/organ/internal/mmi_holder/New(var/mob/living/carbon/human/new_owner, var/internal)
-	..(new_owner, internal)
-	var/mob/living/carbon/human/dummy/mannequin/M = new_owner
+/obj/item/organ/internal/mmi_holder/Initialize(mapload, internal)
+	. = ..()
+	var/mob/living/carbon/human/dummy/mannequin/M = loc
 	if(istype(M))
 		return
 	stored_mmi = new brain_type(src)

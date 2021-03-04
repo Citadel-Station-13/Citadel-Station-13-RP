@@ -101,7 +101,7 @@ var/list/multi_point_spawns
 	var/id     // Group id
 	var/weight // Probability weight for this spawn point
 
-/obj/random_multi/Initialize()
+/obj/random_multi/Initialize(mapload)
 	. = ..()
 	weight = max(1, round(weight))
 

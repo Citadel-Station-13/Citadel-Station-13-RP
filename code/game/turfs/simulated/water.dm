@@ -13,7 +13,7 @@
 	initial_flooring = /decl/flooring/outdoors/water
 	var/depth = 1 // Higher numbers indicates deeper water.
 
-/turf/simulated/floor/outdoors/water/Initialize()
+/turf/simulated/floor/outdoors/water/Initialize(mapload)
 	. = ..()
 	update_icon()
 	handle_fish()
@@ -182,7 +182,7 @@ var/list/shoreline_icon_cache = list()
 	depth = 4
 	layer = WATER_FLOOR_LAYER
 
-/turf/simulated/floor/outdoors/water/acid/Initialize()
+/turf/simulated/floor/outdoors/water/acid/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -303,7 +303,7 @@ var/list/shoreline_icon_cache = list()
 	layer = WATER_FLOOR_LAYER
 	depth = 6
 
-/turf/simulated/floor/outdoors/water/blood/Initialize()
+/turf/simulated/floor/outdoors/water/blood/Initialize(mapload)
 	. = ..()
 	update_icon()
 

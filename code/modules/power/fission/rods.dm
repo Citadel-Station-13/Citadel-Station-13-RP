@@ -20,7 +20,7 @@
 	var/melting_point = 3000 // Entering the danger zone.
 	var/decay_heat = 0 // MJ/mol (Yes, using MegaJoules per Mole. Techincally reduces power, but that reflects reduced lifespan.)
 
-/obj/item/fuelrod/Initialize()
+/obj/item/fuelrod/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 

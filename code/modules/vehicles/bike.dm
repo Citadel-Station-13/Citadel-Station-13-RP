@@ -15,6 +15,7 @@
 
 	fire_dam_coeff = 0.6
 	brute_dam_coeff = 0.5
+	cell = /obj/item/cell/high
 	var/protection_percent = 60
 
 	var/land_speed = 0.5 //if 0 it can't go on turf
@@ -27,23 +28,22 @@
 	var/datum/effect_system/ion_trail_follow/ion
 	var/kickstand = 1
 
-/obj/vehicle/bike/New()
-	..()
-	cell = new /obj/item/cell/high(src)
+/obj/vehicle/bike/Initialize(mapload)
+	. = ..()
+	if(ispath(cell))
+		cell = new cell(src)
 	ion = new /datum/effect_system/ion_trail_follow()
 	ion.set_up(src)
 	turn_off()
 	icon_state = "[bike_icon]_off"
 	update_icon()
 
-/obj/vehicle/bike/built/New()
-	..()
-	qdel(cell)
+/obj/vehicle/bike/built
 	cell = null
 
-/obj/vehicle/bike/random/New()
+/obj/vehicle/bike/random/Initialize(mapload)
+	. = ..()
 	paint_color = rgb(rand(1,255),rand(1,255),rand(1,255))
-	..()
 
 /obj/vehicle/bike/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool) && open)

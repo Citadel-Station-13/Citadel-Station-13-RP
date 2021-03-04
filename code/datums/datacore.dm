@@ -85,10 +85,10 @@
 			misc[name] = rank
 
 	// Synthetics don't have actual records, so we will pull them from here.
-	for(var/mob/living/silicon/ai/ai in mob_list)
+	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 		bot[ai.name] = "Artificial Intelligence"
 
-	for(var/mob/living/silicon/robot/robot in mob_list)
+	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
 		// No combat/syndicate cyborgs, no drones, and no AI shells.
 		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
 			bot[robot.name] = "[robot.modtype] [robot.braintype]"

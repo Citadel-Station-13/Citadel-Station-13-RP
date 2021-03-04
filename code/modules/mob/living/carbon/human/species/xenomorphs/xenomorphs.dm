@@ -7,25 +7,25 @@ proc/create_new_xenomorph(var/alien_caste,var/target)
 	new_alien.set_species("Xenomorph [alien_caste]")
 	return new_alien
 
-/mob/living/carbon/human/xdrone/New(var/new_loc)
+/mob/living/carbon/human/xdrone/Initialize(mapload, new_species)
+	. = ..(mapload, SPECIES_XENO_DRONE)
 	h_style = "Bald"
 	faction = "xeno"
-	..(new_loc, SPECIES_XENO_DRONE)
 
-/mob/living/carbon/human/xsentinel/New(var/new_loc)
+/mob/living/carbon/human/xsentinel/Initialize(mapload, new_species)
+	. = ..(mapload, SPECIES_XENO_SENTINEL)
 	h_style = "Bald"
 	faction = "xeno"
-	..(new_loc, SPECIES_XENO_SENTINEL)
 
-/mob/living/carbon/human/xhunter/New(var/new_loc)
+/mob/living/carbon/human/xhunter/Initialize(mapload, new_species)
+	. = ..(mapload, SPECIES_XENO_HUNTER)
 	h_style = "Bald"
 	faction = "xeno"
-	..(new_loc, SPECIES_XENO_HUNTER)
 
-/mob/living/carbon/human/xqueen/New(var/new_loc)
+/mob/living/carbon/human/xqueen/Initialize(mapload, new_species)
+	. = ..(mapload, SPECIES_XENO_QUEEN)
 	h_style = "Bald"
 	faction = "xeno"
-	..(new_loc, SPECIES_XENO_QUEEN)
 
 // I feel like we should generalize/condense down all the various icon-rendering antag procs.
 /*----------------------------------------
@@ -35,7 +35,7 @@ Des: Gives the client of the alien an image on each infected mob.
 /*
 /mob/living/carbon/human/proc/AddInfectionImages()
 	if (client)
-		for (var/mob/living/C in mob_list)
+		for (var/mob/living/C in GLOB.mob_list)
 			if(C.status_flags & XENO_HOST)
 				var/obj/item/alien_embryo/A = locate() in C
 				var/I = image('icons/mob/alien.dmi', loc = C, icon_state = "infected[A.stage]")

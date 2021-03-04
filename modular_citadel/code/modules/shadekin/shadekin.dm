@@ -94,7 +94,7 @@
 
 	var/list/shadekin_abilities
 
-/mob/living/simple_animal/shadekin/Initialize()
+/mob/living/simple_animal/shadekin/Initialize(mapload)
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_animal/shadekin)
 

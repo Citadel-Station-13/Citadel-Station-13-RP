@@ -7,7 +7,7 @@
 
 	var/obj/machinery/artifact/contained
 
-/obj/structure/anomaly_container/Initialize()
+/obj/structure/anomaly_container/Initialize(mapload)
 	. = ..()
 
 	var/obj/machinery/artifact/A = locate() in loc

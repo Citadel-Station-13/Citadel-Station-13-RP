@@ -28,7 +28,11 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	var/speedlimit = 1/(20 SECONDS)	// Ttop speed for autopilot, 5
 	var/accellimit = 0.001	// Manual limiter for acceleration
 
-/obj/machinery/computer/ship/helm/Initialize()
+/obj/machinery/computer/ship/helm/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/ship/helm/LateInitialize()
 	. = ..()
 	get_known_sectors()
 

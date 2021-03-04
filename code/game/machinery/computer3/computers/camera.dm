@@ -23,11 +23,10 @@
 	allow_disassemble	= 0
 
 	// No operating system
-/obj/machinery/computer3/security/wooden_tv/New()
-	..(built=0)
+/obj/machinery/computer3/security/wooden_tv/Initialize(mapload, built = FALSE)
+	. = ..(mapload, FALSE)
 	os = program
 	circuitb.OS = os
-
 
 /obj/machinery/computer3/security/mining
 	name = "Outpost Cameras"

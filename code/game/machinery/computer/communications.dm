@@ -38,8 +38,8 @@
 	var/datum/lore/atc_controller/ATC
 	var/datum/announcement/priority/crew_announcement = new
 
-/obj/machinery/computer/communications/New()
-	..()
+/obj/machinery/computer/communications/Initialize(mapload)
+	. = ..()
 	ATC = GLOB.lore_atc
 	crew_announcement.newscast = 1
 

@@ -24,7 +24,7 @@
 	// Name of the shuttle, null for generic waypoint
 	var/shuttle_restricted
 
-/obj/effect/shuttle_landmark/Initialize()
+/obj/effect/shuttle_landmark/Initialize(mapload)
 	. = ..()
 	if(docking_controller)
 		. = INITIALIZE_HINT_LATELOAD
@@ -124,7 +124,7 @@
 	landmark_tag = "navpoint"
 	flags = SLANDMARK_FLAG_AUTOSET
 
-/obj/effect/shuttle_landmark/automatic/Initialize()
+/obj/effect/shuttle_landmark/automatic/Initialize(mapload)
 	landmark_tag += "-[x]-[y]-[z]-[random_id("landmarks",1,9999)]"
 	return ..()
 
@@ -136,7 +136,7 @@
 /obj/effect/shuttle_landmark/automatic/clearing
 	var/radius = 10
 
-/obj/effect/shuttle_landmark/automatic/clearing/Initialize()
+/obj/effect/shuttle_landmark/automatic/clearing/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -151,7 +151,7 @@
 /obj/effect/shuttle_landmark/shuttle_initializer
 	var/datum/shuttle/shuttle_type
 
-/obj/effect/shuttle_landmark/shuttle_initializer/Initialize()
+/obj/effect/shuttle_landmark/shuttle_initializer/Initialize(mapload)
 	. = ..()
 	LAZYADD(SSshuttle.shuttles_to_initialize, shuttle_type)	// Queue up for init.
 

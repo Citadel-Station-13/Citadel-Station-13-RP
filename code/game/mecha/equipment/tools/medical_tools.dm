@@ -14,11 +14,10 @@
 	salvageable = 0
 	allow_duplicate = TRUE
 
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper/New()
-	..()
+/obj/item/mecha_parts/mecha_equipment/tool/sleeper/Initialize(mapload)
+	. = ..()
 	pr_mech_sleeper = new /datum/global_iterator/mech_sleeper(list(src),0)
 	pr_mech_sleeper.set_delay(equip_cooldown)
-	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/Destroy()
 	qdel(pr_mech_sleeper)
@@ -304,8 +303,8 @@
 		/datum/reagent/tungsten
 		)
 
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/New()
-	..()
+/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize(mapload)
+	. = ..()
 	flags |= NOREACT
 	syringes = new
 	known_reagents = list("inaprovaline"="Inaprovaline","anti_toxin"="Dylovene")
@@ -313,7 +312,7 @@
 	create_reagents(max_volume)
 	synth = new (list(src),0)
 
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize(mapload)
 	. = ..()
 	//Wow nice, firsties
 	if(LAZYLEN(allowed_reagents) && !istext(allowed_reagents[1]))
@@ -611,7 +610,7 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/Initialize()
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/Initialize(mapload)
 	..()
 	drone_overlay = new(src.icon, icon_state = droid_state)
 

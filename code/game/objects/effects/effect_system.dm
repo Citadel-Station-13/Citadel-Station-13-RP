@@ -96,15 +96,12 @@ steam.start() -- spawns the effect
 	anchored = 1.0
 	mouse_opacity = 0
 
-/obj/effect/effect/sparks/New()
-	..()
-	playsound(src.loc, "sparks", 100, 1)
+/obj/effect/effect/sparks/Initialize(mapload)
+	. = ..()
+	playsound(src, "sparks", 100, 1)
 	var/turf/T = src.loc
 	if (istype(T, /turf))
 		T.hotspot_expose(1000,100)
-
-/obj/effect/effect/sparks/Initialize()
-	. = ..()
 	QDEL_IN(src, 5 SECONDS)
 
 /obj/effect/effect/sparks/Destroy()
@@ -177,12 +174,10 @@ steam.start() -- spawns the effect
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/effect/smoke/New()
-	..()
+/obj/effect/effect/smoke/Initialize(mapload)
+	. = ..()
 	if(time_to_live)
-		spawn (time_to_live)
-			if(!QDELETED(src))
-				qdel(src)
+		QDEL_IN(src, time_to_live)
 
 /obj/effect/effect/smoke/Crossed(mob/living/carbon/M as mob )
 	if(M.is_incorporeal())
@@ -212,9 +207,9 @@ steam.start() -- spawns the effect
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
 
-/obj/effect/effect/smoke/illumination/New(var/newloc, var/lifetime=10, var/range=null, var/power=null, var/color=null)
+/obj/effect/effect/smoke/illumination/Initialize(mapload, lifetime = 10, range, power, color)
 	time_to_live=lifetime
-	..()
+	. = ..(mapload)
 	set_light(range, power, color)
 
 /////////////////////////////////////////////
@@ -264,7 +259,7 @@ steam.start() -- spawns the effect
 	opacity = FALSE
 	var/strength = 5 // How much damage to do inside each affect()
 
-/obj/effect/effect/smoke/elemental/Initialize()
+/obj/effect/effect/smoke/elemental/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	return ..()
 
@@ -542,7 +537,7 @@ steam.start() -- spawns the effect
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 
-/obj/effect/effect/teleport_greyscale/Initialize()
+/obj/effect/effect/teleport_greyscale/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 2 SECONDS)
 

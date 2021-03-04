@@ -15,8 +15,8 @@
 	var/build_eff = 1
 	var/eat_eff = 1
 
-/obj/machinery/biogenerator/New()
-	..()
+/obj/machinery/biogenerator/Initialize(mapload, newdir)
+	. = ..()
 	var/datum/reagents/R = new/datum/reagents(1000)
 	reagents = R
 	R.my_atom = src

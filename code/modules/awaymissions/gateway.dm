@@ -8,7 +8,7 @@
 	var/active = 0
 
 
-/obj/machinery/gateway/Initialize()
+/obj/machinery/gateway/Initialize(mapload)
 	update_icon()
 	if(dir == SOUTH)
 		density = 0
@@ -34,7 +34,7 @@
 	var/wait = 0				//this just grabs world.time at world start
 	var/obj/machinery/gateway/centeraway/awaygate = null
 
-/obj/machinery/gateway/centerstation/Initialize()
+/obj/machinery/gateway/centerstation/Initialize(mapload)
 	update_icon()
 	wait = world.time + config_legacy.gateway_delay	//+ thirty minutes default
 	awaygate = locate(/obj/machinery/gateway/centeraway)
@@ -46,12 +46,8 @@
 		icon_state = "oncenter"
 		return
 	icon_state = "offcenter"
-/* VOREStation Removal - Doesn't do anything
-/obj/machinery/gateway/centerstation/New()
-	density = 1
-*/ //VOREStation Removal End
 
-obj/machinery/gateway/centerstation/process(delta_time)
+/obj/machinery/gateway/centerstation/process(delta_time)
 	if(stat & (NOPOWER))
 		if(active) toggleoff()
 		return
@@ -164,7 +160,7 @@ obj/machinery/gateway/centerstation/process(delta_time)
 	var/obj/machinery/gateway/centeraway/stationgate = null
 
 
-/obj/machinery/gateway/centeraway/Initialize()
+/obj/machinery/gateway/centeraway/Initialize(mapload)
 	update_icon()
 	stationgate = locate(/obj/machinery/gateway/centerstation)
 	. = ..()
@@ -176,10 +172,6 @@ obj/machinery/gateway/centerstation/process(delta_time)
 		icon_state = "oncenter"
 		return
 	icon_state = "offcenter"
-
-/obj/machinery/gateway/centeraway/New()
-	density = 1
-
 
 /obj/machinery/gateway/centeraway/proc/detect()
 	linked = list()	//clear the list

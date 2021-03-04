@@ -17,11 +17,9 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	var/obj/item/lightreplacer/myreplacer = null
 	var/signs = 0	//maximum capacity hardcoded below
 
-
-/obj/structure/janitorialcart/New()
+/obj/structure/janitorialcart/Initialize(mapload, ...)
+	. = ..()
 	create_reagents(300)
-	..()
-
 
 /obj/structure/janitorialcart/examine(mob/user)
 	. = ..()
@@ -179,11 +177,10 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	var/obj/item/storage/bag/trash/mybag	= null
 	var/callme = "pimpin' ride"	//how do people refer to it?
 
-
-/obj/structure/bed/chair/janicart/New()
+/obj/structure/bed/chair/janicart/Initialize(mapload)
+	. = ..()
 	create_reagents(300)
 	update_layer()
-
 
 /obj/structure/bed/chair/janicart/examine(mob/user)
 	. = ..()

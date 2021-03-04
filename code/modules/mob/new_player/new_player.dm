@@ -15,13 +15,14 @@
 
 	anchored = 1	// Don't get pushed around
 
-/mob/new_player/New()
-	mob_list += src
+/mob/new_player/Initialize(mapload)
+	GLOB.mob_list += src
+	flags |= INITIALIZED
+	return INITIALIZE_HINT_NORMAL
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
 	new_player_panel_proc()
-
 
 /mob/new_player/proc/new_player_panel_proc()
 	var/output = "<div align='center'>"
@@ -183,7 +184,7 @@
 	if(href_list["SelectedJob"])
 /*
 		// Prevents people rejoining as same character.
-		for (var/mob/living/carbon/human/C in mob_list)
+		for (var/mob/living/carbon/human/C in GLOB.mob_list)
 			var/char_name = client.prefs.real_name
 			if(char_name == C.real_name)
 				to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>")

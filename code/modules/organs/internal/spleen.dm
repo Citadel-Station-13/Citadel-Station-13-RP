@@ -72,7 +72,7 @@
 	parent_organ = BP_HEAD
 	spleen_efficiency = 0.5
 
-/obj/item/organ/internal/spleen/skrell/Initialize()
+/obj/item/organ/internal/spleen/skrell/Initialize(mapload)
 	..()
 	adjust_scale(0.8,0.7)
 
@@ -82,6 +82,6 @@
 	spleen_efficiency = 0.3
 	spleen_tick = 15
 
-/obj/item/organ/internal/spleen/minor/Initialize()
+/obj/item/organ/internal/spleen/minor/Initialize(mapload)
 	..()
 	adjust_scale(0.7)

@@ -66,8 +66,8 @@
 			"silver" = 3,
 			"phoron" = 25,
 			"lead" = 1))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
 
@@ -99,8 +99,8 @@
 			"silver" = 7,
 			"lead" = 4,
 			"verdantium" = 1))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
 
@@ -159,7 +159,7 @@
 	name = "bluespace"
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
-/turf/space/bluespace/Initialize()
+/turf/space/bluespace/Initialize(mapload)
 	..()
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
@@ -169,7 +169,7 @@
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
-/turf/space/sandyscroll/Initialize()
+/turf/space/sandyscroll/Initialize(mapload)
 	..()
 	icon_state = "desert_ns"
 
@@ -178,7 +178,7 @@
 /turf/simulated/sky/virgo3b
 	color = "#FFBBBB"
 
-/turf/simulated/sky/virgo3b/Initialize()
+/turf/simulated/sky/virgo3b/Initialize(mapload)
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

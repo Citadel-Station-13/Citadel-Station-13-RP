@@ -49,6 +49,17 @@ SUBSYSTEM_DEF(mapping)
 			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Tethermap</span>")
 			config = old_config
 	loadWorld()
+	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
+	maploader = new()
+	load_map_templates()
+
+	loadEngine()
+	preloadShelterTemplates()
+	// Mining generation probably should be here too
+	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
+	if(GLOB.using_map)
+		loadLateMaps()
+
 	return ..()
 
 /datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, orientation = SOUTH)
@@ -171,26 +182,6 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT // Make extra sure we don't initialize twice.
 	shelter_templates = SSmapping.shelter_templates
-
-/datum/controller/subsystem/mapping/Initialize(timeofday)
-	if(subsystem_initialized)
-		return
-	. = ..()
-	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
-	maploader = new()
-	load_map_templates()
-
-	if(config_legacy.generate_map)
-		// Map-gen is still very specific to the map, however putting it here should ensure it loads in the correct order.
-		if(GLOB.using_map.perform_map_generation())
-			GLOB.using_map.refresh_mining_turfs()
-
-	loadEngine()
-	preloadShelterTemplates()
-	// Mining generation probably should be here too
-	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
-	if(GLOB.using_map)
-		loadLateMaps()
 
 /datum/controller/subsystem/mapping/proc/load_map_templates()
 	for(var/T in subtypesof(/datum/map_template))

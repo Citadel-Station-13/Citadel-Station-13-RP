@@ -9,7 +9,7 @@
 
 	cargo_capacity = 1
 
-/obj/mecha/medical/Initialize()
+/obj/mecha/medical/Initialize(mapload)
 	. = ..()
 	var/turf/T = get_turf(src)
 	if(isPlayerLevel(T.z))

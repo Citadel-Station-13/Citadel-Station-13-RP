@@ -97,13 +97,10 @@
 
 	var/datum/looping_sound/supermatter/soundloop
 
-/obj/machinery/power/supermatter/New()
-	..()
+/obj/machinery/power/supermatter/Initialize(mapload)
+	. = ..()
 	uid = gl_uid++
-
-/obj/machinery/power/supermatter/Initialize()
 	soundloop = new(list(src), TRUE)
-	return ..()
 
 /obj/machinery/power/supermatter/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -499,10 +496,10 @@
 	icon = 'icons/obj/engine.dmi'
 	icon_state = "darkmatter_broken"
 
-/obj/item/broken_sm/New()
+/obj/item/broken_sm/Initialize(mapload)
+	. = ..()
 	message_admins("Broken SM shard created at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 	START_PROCESSING(SSobj, src)
-	return ..()
 
 /obj/item/broken_sm/process(delta_time)
 	SSradiation.radiate(src, 50)

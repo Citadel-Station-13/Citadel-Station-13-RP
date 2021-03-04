@@ -365,10 +365,9 @@
 	var/mob/organ_owner = null
 	var/gen_cost = 0.5
 
-/obj/item/organ/internal/fruitgland/New()
-	..()
+/obj/item/organ/internal/fruitgland/Initialize(mapload)
+	. = ..()
 	create_reagents(usable_volume)
-
 
 /obj/item/organ/internal/fruitgland/process(delta_time)
 	if(!owner) return

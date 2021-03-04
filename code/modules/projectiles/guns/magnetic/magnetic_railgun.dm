@@ -20,14 +20,14 @@
 	var/slowdown_worn = 1
 	var/empty_sound = 'sound/machines/twobeep.ogg'
 
-/obj/item/gun/magnetic/railgun/New()
+/obj/item/gun/magnetic/railgun/Initialize(mapload)
 	capacitor = new initial_capacitor_type(src)
 	capacitor.charge = capacitor.max_charge
 
 	cell = new initial_cell_type(src)
 	if (ispath(loaded))
 		loaded = new loaded
-	. = ..()
+	return ..()
 
 // Not going to check type repeatedly, if you code or varedit
 // load_type and get runtime errors, don't come crying to me.

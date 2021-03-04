@@ -12,7 +12,7 @@
 /obj/away_mission_init/lavaland
 	name = "away mission initializer -  lava land"
 
-/obj/away_mission_init/lavaland/Initialize()
+/obj/away_mission_init/lavaland/Initialize(mapload)
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/lavaland_entry

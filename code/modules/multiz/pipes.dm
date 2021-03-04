@@ -28,8 +28,8 @@ obj/machinery/atmospherics/pipe/zpipe
 
 	level = 1
 
-/obj/machinery/atmospherics/pipe/zpipe/New()
-	..()
+/obj/machinery/atmospherics/pipe/zpipe/Initialize(mapload, newdir)
+	. = ..()
 	init_dir()
 
 /obj/machinery/atmospherics/pipe/zpipe/init_dir()

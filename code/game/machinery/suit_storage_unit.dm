@@ -33,7 +33,8 @@
 	HELMET_TYPE = /obj/item/clothing/head/helmet/space
 	MASK_TYPE = /obj/item/clothing/mask/breath
 
-/obj/machinery/suit_storage_unit/New()
+/obj/machinery/suit_storage_unit/Initialize(mapload, newdir)
+	. = ..()
 	update_icon()
 	if(SUIT_TYPE)
 		SUIT = new SUIT_TYPE(src)
@@ -594,13 +595,13 @@
 
 	var/datum/wires/suit_storage_unit/wires = null
 
-/obj/machinery/suit_cycler/New()
-	..()
-
+/obj/machinery/suit_cycler/Initialize(mapload)
+	. = ..()
 	wires = new(src)
+	if(!length(departments) || !length(species))
+		return INITIALIZE_HINT_QDEL
 	target_department = departments[1]
 	target_species = species[1]
-	if(!target_department || !target_species) qdel(src)
 
 /obj/machinery/suit_cycler/Destroy()
 	qdel(wires)

@@ -159,8 +159,8 @@
 
 	return cell.drain_power(drain_check)
 
-/obj/mecha/New()
-	..()
+/obj/mecha/Initialize(mapload)
+	. = ..()
 	events = new
 
 	icon_state += "-open"
@@ -183,7 +183,6 @@
 	log_message("[src.name] created.")
 	loc.Entered(src)
 	mechas_list += src //global mech list
-	return
 
 /obj/mecha/Exit(atom/movable/O)
 	if(O in cargo)

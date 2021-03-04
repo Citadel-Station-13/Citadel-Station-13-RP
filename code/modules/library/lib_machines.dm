@@ -137,7 +137,7 @@ datum/borrowbook // Datum used to keep track of who has borrowed what when and f
 
 	var/static/list/base_genre_books
 
-/obj/machinery/librarycomp/Initialize()
+/obj/machinery/librarycomp/Initialize(mapload)
 	..()
 
 	if(!base_genre_books || !base_genre_books.len)

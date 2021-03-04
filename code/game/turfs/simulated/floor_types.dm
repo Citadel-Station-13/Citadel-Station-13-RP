@@ -85,8 +85,8 @@
 	var/join_group = "shuttle"	// A tag for what other walls to join with. Null if you don't want them to.
 	var/static/list/antilight_cache
 
-/turf/simulated/shuttle/New()
-	..()
+/turf/simulated/shuttle/Initialize(mapload)
+	. = ..()
 	if(!antilight_cache)
 		antilight_cache = list()
 		for(var/diag in cornerdirs)
@@ -216,7 +216,7 @@
 	light_color = "#66ffff"	// Bright cyan.
 	block_tele = TRUE
 
-/turf/simulated/shuttle/floor/alien/Initialize()
+/turf/simulated/shuttle/floor/alien/Initialize(mapload)
 	. = ..()
 	icon_state = "alienpod[rand(1, 9)]"
 
@@ -243,7 +243,7 @@
 	takes_underlays = 1
 	blocks_air = 1	// I'd make these unsimulated but it just fucks with so much stuff so many other places.
 
-/turf/simulated/shuttle/plating/carry/Initialize()
+/turf/simulated/shuttle/plating/carry/Initialize(mapload)
 	. = ..()
 	icon_state = "carry_ingame"
 
@@ -254,7 +254,7 @@
 	takes_underlays = 1
 	blocks_air = 1
 
-/turf/simulated/shuttle/plating/airless/carry/Initialize()
+/turf/simulated/shuttle/plating/airless/carry/Initialize(mapload)
 	. = ..()
 	icon_state = "carry_ingame"
 

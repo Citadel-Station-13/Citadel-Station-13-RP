@@ -33,8 +33,8 @@
 	//var/list/icon_keys = list()		//keys
 	//var/list/ammo_states = list()	//values
 
-/obj/item/gun/projectile/New(loc, var/starts_loaded = 1)
-	..()
+/obj/item/gun/projectile/Initialize(mapload, starts_loaded = TRUE)
+	. = ..()
 	if(starts_loaded)
 		if(ispath(ammo_type) && (load_method & (SINGLE_CASING|SPEEDLOADER)))
 			for(var/i in 1 to max_shells)

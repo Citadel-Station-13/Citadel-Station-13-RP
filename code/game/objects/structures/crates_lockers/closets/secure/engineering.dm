@@ -39,7 +39,7 @@
 		/obj/item/shield_diffuser,
 		/obj/item/switchtool/holo/CE) //Citadel Addition
 
-/obj/structure/closet/secure_closet/engineering_chief/Initialize()
+/obj/structure/closet/secure_closet/engineering_chief/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/industrial
 	else
@@ -112,7 +112,7 @@
 		/obj/item/reagent_containers/spray/windowsealant, //VOREStation Add
 		/obj/item/shield_diffuser) //Citadel Addition
 
-/obj/structure/closet/secure_closet/engineering_personal/Initialize()
+/obj/structure/closet/secure_closet/engineering_personal/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/industrial
 	else
@@ -152,7 +152,7 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/shield_diffuser) //Citadel Addition
 
-/obj/structure/closet/secure_closet/atmos_personal/Initialize()
+/obj/structure/closet/secure_closet/atmos_personal/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/industrial
 	else

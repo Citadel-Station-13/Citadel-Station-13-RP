@@ -37,8 +37,8 @@
 /obj/machinery/atmospherics/binary/algae_farm/filled
 	stored_material = list(MATERIAL_ALGAE = 10000, MATERIAL_CARBON = 0)
 
-/obj/machinery/atmospherics/binary/algae_farm/New()
-	..()
+/obj/machinery/atmospherics/binary/algae_farm/Initialize(mapload)
+	. = ..()
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 	default_apply_parts()
 	update_icon()

@@ -11,7 +11,7 @@
 	var/does_skyfall = TRUE
 	var/list/skyfall_levels
 
-/turf/unsimulated/floor/sky/Initialize()
+/turf/unsimulated/floor/sky/Initialize(mapload)
 	. = ..()
 	if(does_skyfall && !LAZYLEN(skyfall_levels))
 		log_world("[x],[y],[z], [get_area(src)] doesn't have skyfall_levels defined! Can't skyfall!")
@@ -77,6 +77,6 @@
 	color = "#eacd7c"
 	VIRGO2_SET_ATMOS
 
-/turf/unsimulated/floor/sky/virgo2_sky/Initialize()
+/turf/unsimulated/floor/sky/virgo2_sky/Initialize(mapload)
 	skyfall_levels = list(z+1)
 	. = ..()

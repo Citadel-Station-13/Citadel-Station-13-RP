@@ -16,8 +16,8 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool/padded
 	icon_state = "stool_padded_preview" //set for the map
 
-/obj/item/stool/New(var/newloc, var/new_material, var/new_padding_material)
-	..(newloc)
+/obj/item/stool/Initialize(mapload, new_material, new_padding_material)
+	. = ..(mapload)
 	if(!new_material)
 		new_material = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name(new_material)
@@ -29,8 +29,8 @@ var/global/list/stool_cache = list() //haha stool
 	force = round(material.get_blunt_damage()*0.4)
 	update_icon()
 
-/obj/item/stool/padded/New(var/newloc, var/new_material)
-	..(newloc, "steel", "carpet")
+/obj/item/stool/padded/Initialize(mapload, new_material)
+	. = ..(mapload, "steel", "carpet")
 
 /obj/item/stool/update_icon()
 	// Prep icon.

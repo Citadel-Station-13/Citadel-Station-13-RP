@@ -42,8 +42,8 @@
 	opacity = 0
 	health = 120
 
-/obj/effect/alien/resin/New()
-	..()
+/obj/effect/alien/resin/Initialize(mapload)
+	. = ..()
 	var/turf/T = get_turf(src)
 	T.thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
 
@@ -194,28 +194,24 @@
 
 	var/set_color = null
 
-/obj/effect/alien/weeds/node/New()
-	..(src.loc, src)
-
-/obj/effect/alien/weeds/node/Initialize()
-	..()
+/obj/effect/alien/weeds/node/Initialize(mapload)
+	. = ..(mapload, src)
 	START_PROCESSING(SSobj, src)
-
-	spawn(1 SECOND)
-		if(color)
-			set_color = color
+	if(color)
+		set_color = color
 
 /obj/effect/alien/weeds/node/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/effect/alien/weeds/New(pos, node)
-	..()
+/obj/effect/alien/weeds/Initialize(pos, node)
+	. = ..()
 	if(istype(loc, /turf/space))
 		qdel(src)
 		return
 	linked_node = node
-	if(icon_state == "weeds")icon_state = pick("weeds", "weeds1", "weeds2")
+	if(icon_state == "weeds")
+		icon_state = pick("weeds", "weeds1", "weeds2")
 
 	fullUpdateWeedOverlays()
 
@@ -396,8 +392,8 @@ Alien plants should do something if theres a lot of poison
 	var/ticks = 0
 	var/target_strength = 0
 
-/obj/effect/alien/acid/New(loc, target)
-	..(loc)
+/obj/effect/alien/acid/Initialize(mapload, target)
+	. = ..()
 	src.target = target
 
 	if(isturf(target)) // Turf take twice as long to take down.
@@ -460,7 +456,9 @@ Alien plants should do something if theres a lot of poison
 	var/status = BURST //can be GROWING, GROWN or BURST; all mutually exclusive
 	flags = PROXMOVE
 
-/obj/effect/alien/egg/New()
+/obj/effect/alien/egg/Initialize(mapload)
+	. = ..()
+
 /*
 	if(config_legacy.aliens_allowed)
 		..()

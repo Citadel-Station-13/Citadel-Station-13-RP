@@ -91,7 +91,7 @@
 	health = 250
 	instinct = 50
 
-/mob/living/simple_mob/animal/sif/kururak/Initialize()
+/mob/living/simple_mob/animal/sif/kururak/Initialize(mapload)
 	..()
 	if(!instinct)
 		if(prob(20))

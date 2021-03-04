@@ -536,7 +536,7 @@
 	for(var/obj/item/I in contents)
 		remove_from_storage(I, T)
 
-/obj/item/storage/Initialize()
+/obj/item/storage/Initialize(mapload)
 	. = ..()
 
 	if(allow_quick_empty)
@@ -725,7 +725,7 @@
 	else
 		icon_state = closed_state
 
-/obj/item/storage/trinketbox/Initialize()
+/obj/item/storage/trinketbox/Initialize(mapload)
 	if(!open_state)
 		open_state = "[initial(icon_state)]_open"
 	if(!closed_state)

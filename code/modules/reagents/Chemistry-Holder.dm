@@ -399,8 +399,9 @@
 
 /* Atom reagent creation - use it all the time */
 
-/atom/proc/create_reagents(var/max_vol)
-	reagents = new/datum/reagents(max_vol, src)
+/atom/proc/create_reagents(max_vol)
+	reagents = new /datum/reagents(max_vol, src)
+	return reagents
 
 //Spreads the contents of this reagent holder all over the vicinity of the target turf.
 /datum/reagents/proc/splash_area(var/turf/epicentre, var/range = 3, var/portion = 1.0, var/multiplier = 1, var/copy = 0)

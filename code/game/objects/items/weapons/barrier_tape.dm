@@ -14,7 +14,7 @@
 
 	var/apply_tape = FALSE
 
-/obj/item/barrier_tape_roll/Initialize()
+/obj/item/barrier_tape_roll/Initialize(mapload)
 	. = ..()
 	if(apply_tape)
 		var/turf/T = get_turf(src)
@@ -52,8 +52,8 @@ var/list/tape_roll_applications = list()
 			icon_state = "[icon_base]_dir_[crumpled]"
 			dir = tape_dir
 
-/obj/item/barrier_tape_segment/New()
-	..()
+/obj/item/barrier_tape_segment/Initialize(mapload)
+	. = ..()
 	if(!hazard_overlays)
 		hazard_overlays = list()
 		hazard_overlays["[NORTH]"]	= new/image('icons/effects/warning_stripes.dmi', icon_state = "N")

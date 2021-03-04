@@ -105,17 +105,17 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 /obj/structure/loot_pile/proc/produce_common_item()
 	var/path = pick(common_loot)
-	return new path(src)
+	return new path(drop_location())
 
 /obj/structure/loot_pile/proc/produce_uncommon_item()
 	var/path = pick(uncommon_loot)
-	return new path(src)
+	return new path(drop_location())
 
 /obj/structure/loot_pile/proc/produce_rare_item()
 	var/path = pick(rare_loot)
-	return new path(src)
+	return new path(drop_location())
 
-/obj/structure/loot_pile/Initialize()
+/obj/structure/loot_pile/Initialize(mapload)
 	if(icon_states_to_use && icon_states_to_use.len)
 		icon_state = pick(icon_states_to_use)
 	. = ..()

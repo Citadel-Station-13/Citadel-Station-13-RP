@@ -33,7 +33,7 @@
 
 	attack_sharp = TRUE
 
-/mob/living/simple_mob/animal/passive/lizard/large/Initialize()
+/mob/living/simple_mob/animal/passive/lizard/large/Initialize(mapload)
 	..()
 	adjust_scale(rand(12, 20) / 10)
 

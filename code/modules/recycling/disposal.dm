@@ -29,18 +29,21 @@
 
 // create a new disposal
 // find the attached trunk (if present) and init gas resvr.
-/obj/machinery/disposal/New()
-	..()
-	spawn(5)
-		trunk = locate() in src.loc
-		if(!trunk)
-			mode = 0
-			flush = 0
-		else
-			trunk.linked = src	// link the pipe trunk to self
+/obj/machinery/disposal/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
-		air_contents = new/datum/gas_mixture(PRESSURE_TANK_VOLUME)
-		update()
+/obj/machinery/disposal/LateInitialize()
+	. = ..()
+	trunk = locate() in src.loc
+	if(!trunk)
+		mode = 0
+		flush = 0
+	else
+		trunk.linked = src	// link the pipe trunk to self
+
+	air_contents = new/datum/gas_mixture(PRESSURE_TANK_VOLUME)
+	update()
 
 /obj/machinery/disposal/Destroy()
 	eject()
@@ -1308,14 +1311,15 @@
 	icon_state = "pipe-t"
 	var/obj/linked 	// the linked obj/machinery/disposal or obj/disposaloutlet
 
-/obj/structure/disposalpipe/trunk/New()
-	..()
+/obj/structure/disposalpipe/trunk/Initialize(mapload)
+	. = ..()
 	dpdir = dir
-	spawn(1)
-		getlinked()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/structure/disposalpipe/trunk/LateInitialize()
+	. = ..()
+	getlinked()
 	update()
-	return
 
 /obj/structure/disposalpipe/trunk/proc/getlinked()
 	linked = null

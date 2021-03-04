@@ -15,7 +15,7 @@
 	name = "Water"
 	icon_state = "water"
 
-/turf/unsimulated/beach/water/Initialize()
+/turf/unsimulated/beach/water/Initialize(mapload)
 	. = ..()
 	add_overlay(/obj/effect/turf_overlay/beach_water, TRUE)
 
@@ -44,7 +44,7 @@
 	icon = 'icons/turf/desert.dmi'
 	icon_state = "desert"
 
-/turf/simulated/floor/outdoors/beach/sand/desert/Initialize()
+/turf/simulated/floor/outdoors/beach/sand/desert/Initialize(mapload)
 	. = ..()
 	if(prob(5))
 		icon_state = "desert[rand(0,4)]"
@@ -54,7 +54,7 @@
 	icon = 'icons/turf/desert.dmi'
 	icon_state = "lowdesert"
 
-/turf/simulated/floor/outdoors/beach/outdoors/sand/lowdesert/Initialize()
+/turf/simulated/floor/outdoors/beach/outdoors/sand/lowdesert/Initialize(mapload)
 	. = ..()
 	if(prob(5))
 		icon_state = "lowdesert[rand(0,4)]"
@@ -84,7 +84,7 @@
 /turf/simulated/floor/outdoors/beach/water/ocean
 	icon_state = "seadeep"
 
-/turf/simulated/floor/outdoors/beach/water/Initialize()
+/turf/simulated/floor/outdoors/beach/water/Initialize(mapload)
 	. = ..()
 	add_overlay(/obj/effect/turf_overlay/beach_ocean, TRUE)
 

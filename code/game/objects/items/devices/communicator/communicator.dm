@@ -78,8 +78,8 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: None
 // Description: Adds the new communicator to the global list of all communicators, sorts the list, obtains a reference to the Exonet node, then tries to
 //				assign the device to the holder's name automatically in a spectacularly shitty way.
-/obj/item/communicator/New()
-	..()
+/obj/item/communicator/Initialize(mapload)
+	. = ..()
 	all_communicators += src
 	all_communicators = sortList(all_communicators)
 	node = get_exonet_node()
@@ -275,7 +275,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Proc: New()
 // Parameters: None
 // Description: Gives ghosts an exonet address based on their key and ghost name.
-/mob/observer/dead/Initialize()
+/mob/observer/dead/Initialize(mapload)
 	. = ..()
 	exonet = new(src)
 	if(client)
@@ -353,7 +353,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/machinery/camera/communicator
 	network = list(NETWORK_COMMUNICATORS)
 
-/obj/machinery/camera/communicator/Initialize()
+/obj/machinery/camera/communicator/Initialize(mapload)
 	. = ..()
 	client_huds |= GLOB.global_hud.whitense
 	client_huds |= GLOB.global_hud.darkMask

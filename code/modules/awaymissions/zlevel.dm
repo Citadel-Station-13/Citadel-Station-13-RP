@@ -59,13 +59,13 @@ proc/createRandomZlevel()
 //VOREStation Add - This landmark type so it's not so ghetto.
 /obj/effect/landmark/gateway_scatter
 	name = "uncalibrated gateway destination"
-/obj/effect/landmark/gateway_scatter/Initialize()
+/obj/effect/landmark/gateway_scatter/Initialize(mapload)
 	. = ..()
 	awaydestinations += src
 
 /obj/effect/landmark/event_scatter
 	name = "uncalibrated gateway destination"
-/obj/effect/landmark/event_scatter/Initialize()
+/obj/effect/landmark/event_scatter/Initialize(mapload)
 	. = ..()
 	eventdestinations += src
 //VOREStation Add End

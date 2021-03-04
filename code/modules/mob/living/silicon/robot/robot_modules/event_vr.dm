@@ -5,8 +5,9 @@
 					"Stray" = "stray"
 				)
 
-/obj/item/robot_module/robot/stray/New(var/mob/living/silicon/robot/R)
-	..()
+/obj/item/robot_module/robot/stray/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	// General
 	src.modules += new /obj/item/dogborg/boop_module(src)
 

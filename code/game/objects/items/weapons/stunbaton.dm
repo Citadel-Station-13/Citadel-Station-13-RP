@@ -24,10 +24,9 @@
 	var/hitcost = 240
 	var/use_external_power = FALSE //only used to determine if it's a cyborg baton
 
-/obj/item/melee/baton/New()
-	..()
+/obj/item/melee/baton/Initialize(mapload)
+	. = ..()
 	update_icon()
-	return
 
 /obj/item/melee/baton/get_cell()
 	return bcell
@@ -69,11 +68,10 @@
 				usr.put_in_l_hand(src)
 		src.add_fingerprint(usr)
 
-/obj/item/melee/baton/loaded/New() //this one starts with a cell pre-installed.
-	..()
+/obj/item/melee/baton/loaded/Initialize(mapload)
+	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 	update_icon()
-	return
 
 /obj/item/melee/baton/proc/deductcharge(var/chrgdeductamt)
 	if(status == 1)		//Only deducts charge when it's on

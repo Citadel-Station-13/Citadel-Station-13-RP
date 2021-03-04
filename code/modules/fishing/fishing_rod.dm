@@ -47,7 +47,7 @@
 	else
 		..()
 
-/obj/item/material/fishing_rod/Initialize()
+/obj/item/material/fishing_rod/Initialize(mapload)
 	..()
 	update_icon()
 

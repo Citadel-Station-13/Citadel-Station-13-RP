@@ -18,7 +18,7 @@
 /*
  * Soap
  */
-/obj/item/soap/Initialize()
+/obj/item/soap/Initialize(mapload)
 	. = ..()
 	create_reagents(5)
 	wet()

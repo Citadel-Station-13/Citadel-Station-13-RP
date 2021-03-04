@@ -16,14 +16,14 @@
 	var/last_process_worldtime = 0
 	var/report_num = 0
 
-/obj/machinery/dnaforensics/New()
+/obj/machinery/dnaforensics/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/console_screen(src)
 	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	RefreshParts()
-	..()
 
 /obj/machinery/dnaforensics/attackby(var/obj/item/W, mob/user as mob)
 

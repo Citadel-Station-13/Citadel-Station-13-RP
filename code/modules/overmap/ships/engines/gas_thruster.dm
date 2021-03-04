@@ -78,7 +78,7 @@
 	var/next_on
 	var/blockage
 
-/obj/machinery/atmospherics/unary/engine/Initialize()
+/obj/machinery/atmospherics/unary/engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles(need_rebuild=1)
@@ -191,11 +191,13 @@
 	light_color = "#ed9200"
 	anchored = 1
 
-/obj/effect/engine_exhaust/New(var/turf/nloc, var/ndir, var/flame)
-	..(nloc)
+/obj/effect/engine_exhaust/Initialize(mapload, ndir, flame)
+	. = ..(mapload)
 	if(flame)
 		icon_state = "exhaust"
-		nloc.hotspot_expose(1000,125)
+		var/turf/T = loc
+		if(istype(T))
+			T.hotspot_expose(1000,125)
 		set_light(0.5, 3)
 	setDir(ndir)
 	QDEL_IN(src, 20)

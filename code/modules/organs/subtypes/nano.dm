@@ -86,7 +86,7 @@
 	icon_state = "refactory"
 	organ_tag = O_FACT
 	parent_organ = BP_TORSO
-	
+
 	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0)
 	var/max_storage = 10000
 	var/processingbuffs = FALSE
@@ -158,7 +158,7 @@
 	icon = 'icons/mob/species/protean/protean.dmi'
 	icon_state = "posi"
 
-/obj/item/mmi/digital/posibrain/nano/Initialize()
+/obj/item/mmi/digital/posibrain/nano/Initialize(mapload)
 	. = ..()
 	icon_state = "posi"
 

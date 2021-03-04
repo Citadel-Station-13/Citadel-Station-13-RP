@@ -229,8 +229,8 @@
 	use_cell = TRUE
 	hitcost = 120
 
-/obj/item/melee/energy/axe/charge/loaded/New()
-	..()
+/obj/item/melee/energy/axe/charge/loaded/Initialize(mapload)
+	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 
 /*
@@ -431,8 +431,8 @@
 	use_cell = TRUE
 	hitcost = 75
 
-/obj/item/melee/energy/sword/charge/loaded/New()
-	..()
+/obj/item/melee/energy/sword/charge/loaded/Initialize(mapload)
+	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 
 /obj/item/melee/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
@@ -503,8 +503,8 @@
 	projectile_parry_chance = 60
 	lcolor = "#00FF00"
 
-/obj/item/melee/energy/blade/New()
-
+/obj/item/melee/energy/blade/Initialize(mapload)
+	. = ..()
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -514,7 +514,7 @@
 
 /obj/item/melee/energy/blade/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/melee/energy/blade/attack_self(mob/user as mob)
 	user.drop_from_inventory(src)

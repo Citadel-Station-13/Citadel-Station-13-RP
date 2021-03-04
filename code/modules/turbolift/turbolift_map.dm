@@ -14,15 +14,7 @@
 
 	var/list/areas_to_use = list()
 
-/obj/turbolift_map_holder/Destroy()
-	turbolifts -= src
-	return ..()
-
-/obj/turbolift_map_holder/New()
-	turbolifts += src
-	..()
-
-/obj/turbolift_map_holder/Initialize()
+/obj/turbolift_map_holder/Initialize(mapload)
 	. = ..()
 	// Create our system controller.
 	var/datum/turbolift/lift = new()
@@ -225,5 +217,4 @@
 	lift.current_floor = lift.floors[1]
 
 	lift.open_doors()
-
-	qdel(src) // We're done.
+	return INITIALIZE_HINT_QDEL

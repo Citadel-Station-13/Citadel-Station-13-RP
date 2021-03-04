@@ -165,11 +165,11 @@
 /obj/structure/table/survival_pod/update_icon()
 	icon_state = "table"
 
-/obj/structure/table/survival_pod/New()
+/obj/structure/table/survival_pod/Initialize(mapload)
 	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
-	..()
+	return ..()
 
 /obj/structure/table/survival_pod/dismantle(obj/item/tool/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
@@ -218,8 +218,8 @@
 	icon = 'icons/obj/survival_pod.dmi'
 	icon_state = "bed"
 
-/obj/structure/bed/pod/New(var/newloc)
-	..(newloc,DEFAULT_WALL_MATERIAL,"cotton")
+/obj/structure/bed/pod/Initialize(mapload)
+	return ..(mapload, DEFAULT_WALL_MATERIAL, "cotton")
 
 //Survival Storage Unit
 /obj/machinery/smartfridge/survival_pod
@@ -235,7 +235,7 @@
 	pixel_y = -4
 	max_n_of_items = 100
 
-/obj/machinery/smartfridge/survival_pod/Initialize()
+/obj/machinery/smartfridge/survival_pod/Initialize(mapload)
 	. = ..()
 	for(var/obj/item/O in loc)
 		if(accept_check(O))

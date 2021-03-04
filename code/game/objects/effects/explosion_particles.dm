@@ -6,15 +6,9 @@
 	anchored = 1
 	mouse_opacity = 0
 
-/obj/effect/expl_particles/New()
-	..()
-	spawn (15)
-		qdel(src)
-	return
-
-/obj/effect/expl_particles/Move()
-	..()
-	return
+/obj/effect/expl_particles/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 15)
 
 /datum/effect/system/expl_particles
 	var/number = 10
@@ -46,11 +40,9 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/explosion/New()
-	..()
-	spawn (10)
-		qdel(src)
-	return
+/obj/effect/explosion/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 1 SECONDS)
 
 /datum/effect/system/explosion
 	var/turf/location

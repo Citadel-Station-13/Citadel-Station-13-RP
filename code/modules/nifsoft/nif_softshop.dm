@@ -19,7 +19,7 @@
 	opacity = 0
 	var/datum/entopic/entopic
 
-/obj/machinery/vending/nifsoft_shop/Initialize()
+/obj/machinery/vending/nifsoft_shop/Initialize(mapload)
 	. = ..()
 	entopic = new(aholder = src, aicon = icon, aicon_state = "beacon")
 

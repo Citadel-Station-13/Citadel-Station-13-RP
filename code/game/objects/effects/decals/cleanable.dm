@@ -8,7 +8,7 @@
 		return
 	..()
 
-/obj/effect/decal/cleanable/New()
+/obj/effect/decal/cleanable/Initialize(mapload)
+	. = ..()
 	if (random_icon_states && length(src.random_icon_states) > 0)
-		src.icon_state = pick(src.random_icon_states)
-	..()
+		icon_state = pick(src.random_icon_states)

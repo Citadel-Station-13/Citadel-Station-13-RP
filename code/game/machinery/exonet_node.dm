@@ -20,8 +20,8 @@
 // Proc: New()
 // Parameters: None
 // Description: Adds components to the machine for deconstruction.
-/obj/machinery/exonet_node/map/New()
-	..()
+/obj/machinery/exonet_node/map/Initialize(mapload, newdir)
+	. = ..()
 
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
