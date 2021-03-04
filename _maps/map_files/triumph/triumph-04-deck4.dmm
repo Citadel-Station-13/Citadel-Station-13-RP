@@ -1771,6 +1771,7 @@
 "bok" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -2464,6 +2465,19 @@
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/wood,
 /area/lawoffice)
+"bOG" = (
+/obj/effect/floor_decal/chapel,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "bOS" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -4474,8 +4488,12 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -5434,6 +5452,17 @@
 /obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/tiled/dark,
 /area/station/stairs_one)
+"dVU" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/disposalpipe/segment,
+/obj/structure/window/reinforced/polarized{
+	dir = 10;
+	icon_state = "fwindow";
+	id = "chapel"
+	},
+/turf/simulated/floor/plating,
+/area/chapel/office)
 "dWA" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -12774,9 +12803,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/dispenser{
 	phorontanks = 0
 	},
@@ -14155,7 +14182,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
+	dir = 5
 	},
 /obj/machinery/computer/secure_data{
 	dir = 1
@@ -19226,6 +19253,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/glass_security{
 	name = "Equipment Storage";
 	req_one_access = list(2)
@@ -21305,6 +21333,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance/engi,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -21486,6 +21515,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance/engi,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
@@ -25176,6 +25206,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
 "rtF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
@@ -29353,6 +29384,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"ush" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "usl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31920,6 +31960,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -33001,6 +33042,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"wMP" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "wNw" = (
 /obj/machinery/computer/security/telescreen{
 	pixel_y = -128
@@ -34224,6 +34274,12 @@
 /area/security/warden)
 "xDT" = (
 /obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
@@ -42566,7 +42622,7 @@ gvP
 cgH
 bpv
 sfA
-lZt
+wMP
 uEJ
 xim
 wFO
@@ -42708,7 +42764,7 @@ bra
 cgH
 xZu
 qVU
-wFO
+ush
 mMK
 wFO
 sNf
@@ -42850,7 +42906,7 @@ sTa
 cgH
 wFO
 riS
-wFO
+ush
 jjh
 wFO
 sNf
@@ -45407,7 +45463,7 @@ qSQ
 bok
 cqg
 ntW
-uLz
+bOG
 xTl
 iPv
 uLz
@@ -45546,7 +45602,7 @@ uyK
 ksm
 hgG
 hgG
-ucJ
+dVU
 caf
 sqe
 apN
