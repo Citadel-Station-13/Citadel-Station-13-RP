@@ -368,7 +368,7 @@
 	return tally
 
 // Overall 'destroy' proc (marks as unready)
-/datum/rogue/zonemaster/proc/clean_zone(var/delay = 1)
+/datum/rogue/zonemaster/proc/clean_zone()
 	rm_controller.dbg("ZM(cz): Cleaning zone with area [myarea].")
 	to_chat(world.log, "RM(stats): CLEAN start [myarea] at [world.time] prepared at [prepared_at].")	// DEBUG code for playtest stats gathering.
 	rm_controller.unmark_ready(src)
@@ -379,37 +379,24 @@
 	rockspawns.Cut()
 	mobspawns.Cut()
 
-	var/ignored = list(
+	var/ignored = typecacheof(list(
 	/obj/asteroid_spawner,
 	/obj/rogue_mobspawner,
 	/obj/effect/shuttle_landmark,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/north,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/south,
 	/obj/effect/step_trigger/teleporter/roguemine_loop/east,
-	/obj/effect/step_trigger/teleporter/roguemine_loop/west)
+	/obj/effect/step_trigger/teleporter/roguemine_loop/west))
 
 	for(var/atom/I in myarea.contents)
-		if(I.type == /turf/space)
-			I.overlays.Cut()
+		if(isturf(I) && !istype(I, /turf/space))
+			var/turf/T = I
+			T.ChangeTurf(/turf/space)
 			continue
-		else if(!I.simulated)
-			continue
-		else if(I.type in ignored)
-			continue
-		qdel(I)
-		sleep(delay)
-
-	// A deletion so nice that I give it twice
-	for(var/atom/I in myarea.contents)
-		if(I.type == /turf/space)
-			I.overlays.Cut()
-			continue
-		else if(!I.simulated)
-			continue
-		else if(I.type in ignored)
+		else if(ignored[I.type])
 			continue
 		qdel(I)
-		sleep(delay)
+		CHECK_TICK
 
 	// Clean up vars
 	scored = 0

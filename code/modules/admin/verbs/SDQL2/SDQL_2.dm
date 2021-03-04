@@ -669,6 +669,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			for(var/i in found)
 				if(++n == 2500)
 					text_list += "<br><font color='red'><b>TRUNCATED - 2500 OBJECT LIMIT HIT</b></font>"
+					break
 				SDQL_print(i, text_list, print_nulls)
 				select_refs[REF(i)] = TRUE
 				SDQL2_TICK_CHECK
