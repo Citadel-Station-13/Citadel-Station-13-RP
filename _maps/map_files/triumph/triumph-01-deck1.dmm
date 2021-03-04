@@ -1518,11 +1518,26 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/starboardnacelle)
 "fn" = (
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 10
+/obj/structure/catwalk,
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
 	},
-/obj/machinery/light,
-/turf/simulated/floor/tiled,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "fo" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -1566,7 +1581,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "fx" = (
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
@@ -2443,9 +2460,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "hY" = (
+/obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/light,
-/turf/simulated/floor/tiled/techmaint,
-/area/engineering/engine_airlock)
+/turf/simulated/floor/tiled,
+/area/engineering/hallway/lower)
 "hZ" = (
 /obj/structure/cable{
 	d2 = 2;
@@ -3023,18 +3041,9 @@
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
 "jQ" = (
-/obj/structure/toilet{
-	dir = 4
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/effect/landmark{
-	name = "xeno_spawn";
-	pixel_x = -1
-	},
-/turf/simulated/floor/tiled/white,
-/area/engineering/foyer_mezzenine)
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techmaint,
+/area/engineering/engine_airlock)
 "jT" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -3389,14 +3398,18 @@
 /turf/simulated/floor/plating,
 /area/station/stairs_one)
 "la" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/green{
-	dir = 8
+/obj/structure/toilet{
+	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
+/obj/machinery/light/small{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor,
-/area/engineering/atmos)
+/obj/effect/landmark{
+	name = "xeno_spawn";
+	pixel_x = -1
+	},
+/turf/simulated/floor/tiled/white,
+/area/engineering/foyer_mezzenine)
 "lb" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -3787,8 +3800,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
 "my" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -4650,6 +4663,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
+"ph" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/green{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/engineering/atmos)
 "pi" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/cable_coil{
@@ -5995,7 +6017,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
 	},
-/obj/structure/disposalpipe/junction,
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "tx" = (
@@ -7103,8 +7128,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/camera/network/outside{
-	dir = 10
+/obj/machinery/camera/network/engineering{
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -23710,7 +23735,7 @@ IN
 sZ
 HN
 Tf
-hY
+jQ
 IN
 mc
 ke
@@ -26273,7 +26298,7 @@ Vf
 YF
 WJ
 cK
-la
+ph
 WJ
 Bq
 Tm
@@ -28105,7 +28130,7 @@ Pf
 YJ
 MT
 FE
-fn
+fx
 Tx
 fI
 fI
@@ -29240,7 +29265,7 @@ FC
 Cf
 YJ
 by
-NG
+fn
 eP
 ZW
 La
@@ -29951,7 +29976,7 @@ Ai
 gh
 Ji
 bt
-fx
+hY
 Tx
 OM
 OM
@@ -30384,7 +30409,7 @@ oG
 em
 ea
 em
-jQ
+la
 UQ
 iu
 qb
