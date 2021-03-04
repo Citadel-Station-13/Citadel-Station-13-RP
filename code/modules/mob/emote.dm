@@ -81,7 +81,7 @@
 	else
 		input = message
 
-	input = say_emphasis(input)
+	input = emoji_parse(say_emphasis(input))
 
 	if(input)
 		log_ghostemote(input, src)

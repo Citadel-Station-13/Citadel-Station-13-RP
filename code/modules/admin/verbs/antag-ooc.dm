@@ -16,7 +16,7 @@
 			to_chat(usr, "<span class='warning'>Sorry, but your antagonist type is not allowed to speak in AOOC.</span>")
 			return
 
-	msg = sanitize(msg)
+	msg = emoji_parse(sanitize(msg))
 	if(!msg)
 		return
 

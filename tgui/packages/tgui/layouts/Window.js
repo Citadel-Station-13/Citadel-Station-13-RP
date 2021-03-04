@@ -44,7 +44,6 @@ export class Window extends Component {
   render() {
     const {
       resizable,
-      noClose,
       theme,
       title,
       children,
@@ -75,8 +74,7 @@ export class Window extends Component {
           onClose={() => {
             logger.log('pressed close');
             dispatch(backendSuspendStart());
-          }}
-          noClose={noClose} />
+          }} />
         <div
           className={classes([
             'Window__rest',
@@ -144,7 +142,6 @@ const TitleBar = (props, context) => {
     className,
     title,
     status,
-    noClose,
     fancy,
     onDragStart,
     onClose,
@@ -183,7 +180,7 @@ const TitleBar = (props, context) => {
           <Icon name="bug" />
         </div>
       )}
-      {!!fancy && !noClose && (
+      {!!fancy && (
         <div
           className="TitleBar__close TitleBar__clickable"
           // IE8: Synthetic onClick event doesn't work on IE8.

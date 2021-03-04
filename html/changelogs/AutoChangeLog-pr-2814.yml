@@ -1,0 +1,4 @@
+author: "buffyuwu"
+delete-after: True
+changes: 
+  - bugfix: "you can now switch briefcases between hands"
