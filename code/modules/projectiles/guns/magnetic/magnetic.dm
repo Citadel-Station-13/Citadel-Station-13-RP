@@ -71,6 +71,7 @@
 		to_chat(user, "<span class='notice'>It has \a [loaded] loaded.</span>")
 
 /obj/item/gun/magnetic/examine(var/mob/user)
+	. = ..()
 	show_ammo(user)
 
 	if(cell)
