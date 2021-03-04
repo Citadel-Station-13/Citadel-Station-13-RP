@@ -137,6 +137,9 @@
 
 	var/rawmsg = msg
 
+	if(holder)
+		msg = emoji_parse(msg)
+
 	var/keywordparsedmsg = keywords_lookup(msg)
 
 	if(irc)

@@ -32,7 +32,7 @@ var/global/datum/controller/occupations/job_master
 
 
 	proc/Debug(var/text)
-		if(!Debug2)	return 0
+		if(!GLOB.Debug2)	return 0
 		job_debug.Add(text)
 		return 1
 
