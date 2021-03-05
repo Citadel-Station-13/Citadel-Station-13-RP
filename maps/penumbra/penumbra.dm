@@ -1,3 +1,4 @@
+#define FORCE_MAP "_maps/penumbra.json" //temporary snowflake for testing
 #if !defined(USING_MAP_DATUM)
 
 	#include "penumbra_defines.dm"

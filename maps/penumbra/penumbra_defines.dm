@@ -142,7 +142,8 @@
 #define PENUMBRA_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*PENUMBRA_MAP_SIZE) - PENUMBRA_HOLOMAP_CENTER_GUTTER) / 2) // 100
 #define PENUMBRA_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*PENUMBRA_MAP_SIZE)) / 2) // 60
 
-/datum/map_z_level/penumbra/centcom
+/*/datum/map_z_level/penumbra/centcom
 	z = Z_LEVEL_CENTCOM
 	name = "Colony"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+*/
