@@ -1873,8 +1873,8 @@ End Citadel Change */
 	name = "Virgin Sex On The Beach"
 	id = "virginsexonthebeach"
 	description = "A secret combination of orange juice and pomegranate."
-	taste_description = "60% orange juice, 40% pomegranate"
-	color = "#7051E3"
+	taste_description = "a sexy, sandy sunset"
+	color = "#FF0033"
 
 	glass_name = "sex on the beach"
 	glass_desc = "A secret combination of orange juice and pomegranate."
@@ -2165,8 +2165,8 @@ End Citadel Change */
 	name = "Sex On The Beach"
 	id = "sexonthebeach"
 	description = "A concoction of vodka and a secret combination of orange juice and pomegranate."
-	taste_description = "60% orange juice, 40% pomegranate, 100% alcohol"
-	color = "#7051E3"
+	taste_description = "sand, you don't like sand, it's coarse and rough and irritating and it gets everywhere"
+	color = "#FF0033"
 	strength = 15
 
 	glass_name = "sex on the beach"
