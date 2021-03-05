@@ -224,5 +224,5 @@
 
 /datum/gear/donator/vicase
 	display_name = "VI's briefpack"
-	pathe = /obj/item/storage/secure/briefcase/vicase
+	path = /obj/item/storage/secure/briefcase/vicase
 	ckeywhitelist = list("capesh")
