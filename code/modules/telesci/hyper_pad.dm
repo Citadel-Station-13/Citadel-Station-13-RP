@@ -147,8 +147,8 @@
 							continue
 					else
 						continue
-				else if(!isobserver(ROI))
-					continue
+				if(!(istype(ROI,/obj/mecha)))
+					continue //TP mechs
 			if(isobserver(ROI))
 				continue
 			var/datum/effect_system/teleport_greyscale/tele1 = new /datum/effect_system/teleport_greyscale()
