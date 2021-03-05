@@ -1,4 +1,0 @@
-author: "rpilcrow"
-delete-after: True
-changes: 
-  - bugfix: "Fixed hud thermometer sticking at maximum"
