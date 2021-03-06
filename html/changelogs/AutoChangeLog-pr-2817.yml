@@ -1,6 +1,0 @@
-author: "CrystalClearCC"
-delete-after: True
-changes: 
-  - tweak: "Sex on the beach has a working recipe now. (New thematic tastes too.)"
-  - tweak: "Virgin sex on the beach has a new recipe. (With new taste!)"
-  - rscadd: "Both sex on the beach variants have a new sprite."
