@@ -39,14 +39,25 @@
 	var/list/forced_ambience = null
 	var/sound_env = STANDARD_STATION
 	var/turf/base_turf //The base turf type of the area, which can be used to override the z-level's base turf
-	var/global/global_uid = 0
-	var/uid
+
+	/// If false, loading multiple maps with this area type will create multiple instances.
+	var/unique = TRUE
 
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
 
-INITIALIZE_IMMEDIATE(/area) // todo remove this fuck the old maploder
+
+/**
+ * Called when an area loads
+ *
+ *  Adds the item to the GLOB.areas_by_type list based on area type
+ */
 /area/New()
+	// This interacts with the map loader, so it needs to be set immediately
+	// rather than waiting for atoms to initialize.
+	if (unique)
+		GLOB.areas_by_type[type] = src
+
 	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
 		// generate one using the icon_state
 		if(icon_state && icon_state != "unknown")
@@ -59,8 +70,6 @@ INITIALIZE_IMMEDIATE(/area) // todo remove this fuck the old maploder
 
 /area/Initialize(mapload)
 	icon_state = ""
-	uid = ++global_uid
-	all_areas += src
 
 	if(!requires_power)
 		power_light = 0

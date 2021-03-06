@@ -5,7 +5,6 @@
 		for(var/A in neigbours)
 			neigbours[A] = src
 
-/*
 /datum/space_level/proc/set_neigbours(list/L)
 	for(var/datum/space_transition_point/P in L)
 		if(P.x == xi)
@@ -126,7 +125,7 @@
 				S.destination_x = x_pos_transition[side] == 1 ? S.x : x_pos_transition[side]
 				S.destination_y = y_pos_transition[side] == 1 ? S.y : y_pos_transition[side]
 				S.destination_z = zdestination
-
+				
 				// Mirage border code
 				var/mirage_dir
 				if(S.x == 1 + TRANSITIONEDGE)
@@ -142,4 +141,3 @@
 
 				var/turf/place = locate(S.destination_x, S.destination_y, S.destination_z)
 				S.AddComponent(/datum/component/mirage_border, place, mirage_dir)
-*/

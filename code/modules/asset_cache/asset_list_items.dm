@@ -396,7 +396,7 @@
 
 /datum/asset/spritesheet/pipes/register()
 	for (var/each in list('icons/obj/atmospherics/pipes/pipe_item.dmi', 'icons/obj/atmospherics/pipes/disposal.dmi', 'icons/obj/atmospherics/pipes/transit_tube.dmi', 'icons/obj/plumbing/fluid_ducts.dmi'))
-		InsertAll("", each, GLOB.alldirs)
+		InsertAll("", each, GLOB..alldirs)
 	..()
 
 // Representative icons for each research design

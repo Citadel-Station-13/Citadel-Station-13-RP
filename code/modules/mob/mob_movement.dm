@@ -192,7 +192,7 @@
 	if(L.confused)
 		var/newdir = 0
 		if(L.confused > 40)
-			newdir = pick(GLOB.alldirs)
+			newdir = pick(GLOB..alldirs)
 		else if(prob(L.confused * 1.5))
 			newdir = angle2dir(dir2angle(direct) + pick(90, -90))
 		else if(prob(L.confused * 3))
@@ -292,7 +292,7 @@
 		. = mob.SelfMove(n, direct)
 	for (var/obj/item/grab/G in mob)
 		if (G.state == GRAB_NECK)
-			mob.setDir(reverse_dir[direct])
+			mob.setDir(GLOB.reverse_dir[direct])
 		G.adjust_position()
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()

@@ -11,7 +11,7 @@
 										// Note that there is a 'BYOND cap' of 14 due to limitations of get_/step_to().
 
 	// Wandering.
-	var/wander = FALSE					// If true, the mob will randomly move in the four cardinal directions when idle.
+	var/wander = FALSE					// If true, the mob will randomly move in the four GLOB.cardinal directions when idle.
 	var/wander_delay = 0				// How many ticks until the mob can move a tile in handle_wander_movement().
 	var/base_wander_delay = 2			// What the above var gets set to when it wanders. Note that a tick happens every half a second.
 	var/wander_when_pulled = FALSE		// If the mob will refrain from wandering if someone is pulling it.
@@ -136,7 +136,7 @@
 /datum/ai_holder/proc/should_wander()
 	return wander && !leader
 
-// Wanders randomly in cardinal directions.
+// Wanders randomly in GLOB.cardinal directions.
 /datum/ai_holder/proc/handle_wander_movement()
 	ai_log("handle_wander_movement() : Entered.", AI_LOG_TRACE)
 	if(isturf(holder.loc) && can_act())
@@ -147,7 +147,7 @@
 				return
 
 			var/moving_to = 0 // Apparently this is required or it always picks 4, according to the previous developer for simplemob AI.
-			moving_to = pick(cardinal)
+			moving_to = pick(GLOB.cardinal)
 			holder.setDir(moving_to)
 			holder.IMove(get_step(holder,moving_to))
 			wander_delay = base_wander_delay

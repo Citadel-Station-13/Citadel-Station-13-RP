@@ -46,3 +46,8 @@ GLOBAL_LIST_INIT(ore_types, list(
 		"marble" = /obj/item/ore/marble,
 		"lead" = /obj/item/ore/lead
 	))
+
+	//used by jump-to-area etc. Updated by area/updateName()
+GLOBAL_LIST_EMPTY(sortedAreas)
+/// An association from typepath to area instance. Only includes areas with `unique` set.
+GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)
