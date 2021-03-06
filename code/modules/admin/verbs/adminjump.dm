@@ -142,7 +142,7 @@
 	set name = "Send Mob"
 	if(!check_rights(R_ADMIN|R_MOD|R_DEBUG))
 		return
-	var/area/A = input(usr, "Pick an area.", "Pick an area") in return_sorted_areas()
+	var/area/A = input(usr, "Pick an area.", "Pick an area") in GLOB.sortedAreas
 	if(A)
 		if(config_legacy.allow_admin_jump)
 			M.forceMove(pick(get_area_turfs(A)))

@@ -319,7 +319,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!A)
-		A = input(usr, "Select an area:", "Ghost Teleport") as null|anything in return_sorted_areas()
+		A = input(usr, "Select an area:", "Ghost Teleport") as null|anything in GLOB.sortedAreas
 	if(!A)
 		return
 
