@@ -179,51 +179,6 @@
 	display_name = "Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter
 
-/datum/gear/shoes/boots/winter/security
-	display_name = "Security - Winter Boots"
-	path = /obj/item/clothing/shoes/boots/winter/security
-	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
-
-/datum/gear/shoes/boots/winter/science
-	display_name = "Science - Winter Boots"
-	path = /obj/item/clothing/shoes/boots/winter/science
-	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist")
-
-/datum/gear/shoes/boots/winter/command
-	display_name = "Facility Director - Winter Boots"
-	path = /obj/item/clothing/shoes/boots/winter/command
-	allowed_roles = list("Facility Director")
-
-/datum/gear/shoes/boots/winter/engineering
-	display_name = "Engineering - Winter Boots"
-	path = /obj/item/clothing/shoes/boots/winter/engineering
-	allowed_roles = list("Chief Engineer","Atmospheric Technician", "Station Engineer")
-
-/datum/gear/shoes/boots/winter/atmos
-	display_name = "Atmospherics Winter Boots"
-	path = /obj/item/clothing/shoes/boots/winter/atmos
-	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
-
-/datum/gear/shoes/boots/winter/medical
-	display_name = "Medical - Winter Boots"
-	path = /obj/item/clothing/shoes/boots/winter/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Field Medic","Paramedic","Geneticist", "Psychiatrist")
-
-/datum/gear/shoes/boots/winter/mining
-	display_name = "Mining Winter Boots"
-	path = /obj/item/clothing/shoes/boots/winter/mining
-	allowed_roles = list("Shaft Miner")
-
-/datum/gear/shoes/boots/winter/supply
-	display_name = "Supply - Winter Boots"
-	path = /obj/item/clothing/shoes/boots/winter/supply
-	allowed_roles = list("Quartermaster","Cargo Technician")
-
-/datum/gear/shoes/boots/winter/hydro
-	display_name = "Hydroponics Winter Boots"
-	path = /obj/item/clothing/shoes/boots/winter/hydro
-	allowed_roles = list("Botanist", "Xenobiologist")
-
 /datum/gear/shoes/circuitry
 	display_name = "Boots - Circuitry"
 	path = /obj/item/clothing/shoes/circuitry
@@ -231,12 +186,6 @@
 /datum/gear/shoes/cowboy/black
 	display_name = "Cowboy Boots - Black"
 	path = /obj/item/clothing/shoes/cowboyboots/black
-
-/datum/gear/shoes/boots/winter/science
-	allowed_roles = list("Research Director","Scientist", "Roboticist", "Xenobiologist", "Explorer", "Pathfinder")
-
-/datum/gear/shoes/boots/winter/medical
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist", "Psychiatrist", "Field Medic")
 
 /datum/gear/shoes/black/cuffs
 	display_name = "Legwraps - Black"
@@ -254,13 +203,10 @@
 	display_name = "Boots - Siren"
 	path = /obj/item/clothing/shoes/boots/fluff/siren
 
-/datum/gear/shoes/galoshes/black
-	display_name = "Galoshes - Black"
-	path = /obj/item/clothing/shoes/galoshes/citadel/black
-	allowed_roles = list("Janitor")
+/datum/gear/shoes/footwraps
+	display_name = "Cloth Footwraps (Colorable)"
+	path = /obj/item/clothing/shoes/footwraps
 
-/datum/gear/shoes/galoshes/starcon
-	display_name = "Galoshes - Dark-Purple"
-	path = /obj/item/clothing/shoes/galoshes/citadel/starcon
-	allowed_roles = list("Janitor")
-	cost = 2
+/datum/gear/shoes/footwraps/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice

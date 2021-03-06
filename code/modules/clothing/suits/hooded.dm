@@ -127,6 +127,11 @@
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
 
+/obj/item/clothing/suit/storage/hooded/wintercoat/olive
+	name = "olive green winter coat"
+	desc = "A heavy jacket made from 'synthetic' animal furs. Has a coloration similar to military jackets."
+	icon_state = "coatar"
+
 /obj/item/clothing/suit/storage/hooded/wintercoat/captain
 	name = "Facility Director's winter coat"
 	desc = "A heavy jacket made from the most expensive animal furs on the market, hand skinned by the finest of hunters, sewed with the finest of jewels, truly a coat befitting the Director."
@@ -302,3 +307,4 @@
 	siemens_coefficient = 0.9
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/material/knife)
+
