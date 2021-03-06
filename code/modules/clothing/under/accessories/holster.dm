@@ -162,16 +162,16 @@
 
 /obj/item/clothing/accessory/holster/machete/occupied
 	var/holstered_spawn = /obj/item/material/knife/machete
-
+	..()
 /obj/item/clothing/accessory/holster/machete/occupied/Initialize(mapload)
 	holstered = new holstered_spawn
-
+	..()
 /obj/item/clothing/accessory/holster/machete/occupied/deluxe
 	holstered_spawn = /obj/item/material/knife/machete/deluxe
-
+	..()
 /obj/item/clothing/accessory/holster/machete/occupied/durasteel
 	holstered_spawn = /obj/item/material/knife/machete/deluxe/durasteel
-
+	..()
 /obj/item/clothing/accessory/holster/waist/kinetic_accelerator
 	name = "KA holster"
 	desc = "A specialized holster, made specifically for kinetic accelerators."
