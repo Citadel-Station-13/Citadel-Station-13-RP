@@ -26,7 +26,6 @@ var/list/all_maps = list()
 	var/list/zlevels = list()
 	var/zlevel_datum_type			 // If populated, all subtypes of this type will be instantiated and used to populate the *_levels lists.
 
-	var/list/station_levels = list() // Z-levels the station exists on
 	var/list/admin_levels = list()	 // Z-levels for admin functionality (Centcom, shuttle transit, etc)
 	var/list/contact_levels = list() // Z-levels that can be contacted from the station, for eg announcements
 	var/list/player_levels = list()	 // Z-levels a character can typically reach
