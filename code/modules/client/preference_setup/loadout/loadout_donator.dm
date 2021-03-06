@@ -221,3 +221,8 @@
 	display_name = "orchid's mask"
 	path = /obj/item/clothing/mask/gas/orchid
 	ckeywhitelist = list("iamcrystalclear")
+
+/datum/gear/donator/vicase
+	display_name = "VI's briefpack"
+	path = /obj/item/storage/secure/briefcase/vicase
+	ckeywhitelist = list("capesh")
