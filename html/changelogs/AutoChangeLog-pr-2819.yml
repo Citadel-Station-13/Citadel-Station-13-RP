@@ -1,0 +1,5 @@
+author: "nik707"
+delete-after: True
+changes: 
+  - rscadd: "VI's briefpack"
+  - bugfix: "fixed the secure briefcase inhand sprite"
