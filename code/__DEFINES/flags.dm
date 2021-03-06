@@ -1,15 +1,21 @@
-//MARK ALL FLAG CHANGES IN _globals/bitfields.dm!
-//All flags should go in here if possible.
+/*
+	These defines are specific to the atom/flags_1 bitmask
+*/
 #define ALL (~0) //For convenience.
 #define NONE 0
 
 //for convenience
-#define ENABLE_BITFIELD(variable, flag)				(variable |= (flag))
-#define DISABLE_BITFIELD(variable, flag)			(variable &= ~(flag))
-#define CHECK_BITFIELD(variable, flag)				(variable & (flag))
-
-//check if all bitflags specified are present
-#define CHECK_MULTIPLE_BITFIELDS(flagvar, flags)	((flagvar & (flags)) == flags)
+#define ENABLE_BITFIELD(variable, flag) (variable |= (flag))
+#define DISABLE_BITFIELD(variable, flag) (variable &= ~(flag))
+#define CHECK_BITFIELD(variable, flag) (variable & (flag))
+#define TOGGLE_BITFIELD(variable, flag) (variable ^= (flag))
+#define COPY_SPECIFIC_BITFIELDS(a,b,flags)\
+	do{\
+		var/_old = a & ~(flags);\
+		var/_cleaned = b & (flags);\
+		a = _old | _cleaned;\
+	} while(0);
+#define CHECK_MULTIPLE_BITFIELDS(flagvar, flags) (((flagvar) & (flags)) == (flags))
 
 GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768))
 
@@ -60,3 +66,35 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define PRIVILEGES_PAI		(1<<1)
 #define PRIVILEGES_BOT		(1<<2)
 #define PRIVILEGES_DRONE	(1<<3)
+
+#define KEEP_TOGETHER_ORIGINAL "keep_together_original"
+
+//setter for KEEP_TOGETHER to allow for multiple sources to set and unset it
+#define ADD_KEEP_TOGETHER(x, source)\
+	if ((x.appearance_flags & KEEP_TOGETHER) && !HAS_TRAIT(x, TRAIT_KEEP_TOGETHER)) ADD_TRAIT(x, TRAIT_KEEP_TOGETHER, KEEP_TOGETHER_ORIGINAL); \
+	ADD_TRAIT(x, TRAIT_KEEP_TOGETHER, source);\
+	x.appearance_flags |= KEEP_TOGETHER
+
+#define REMOVE_KEEP_TOGETHER(x, source)\
+	REMOVE_TRAIT(x, TRAIT_KEEP_TOGETHER, source);\
+	if(HAS_TRAIT_FROM_ONLY(x, TRAIT_KEEP_TOGETHER, KEEP_TOGETHER_ORIGINAL))\
+		REMOVE_TRAIT(x, TRAIT_KEEP_TOGETHER, KEEP_TOGETHER_ORIGINAL);\
+	else if(!HAS_TRAIT(x, TRAIT_KEEP_TOGETHER))\
+	 	x.appearance_flags &= ~KEEP_TOGETHER
+
+//dir macros
+///Returns true if the dir is diagonal, false otherwise
+#define ISDIAGONALDIR(d) (d&(d-1))
+///True if the dir is north or south, false therwise
+#define NSCOMPONENT(d)   (d&(NORTH|SOUTH))
+///True if the dir is east/west, false otherwise
+#define EWCOMPONENT(d)   (d&(EAST|WEST))
+///Flips the dir for north/south directions
+#define NSDIRFLIP(d)     (d^(NORTH|SOUTH))
+///Flips the dir for east/west directions
+#define EWDIRFLIP(d)     (d^(EAST|WEST))
+///Turns the dir by 180 degrees
+#define DIRFLIP(d)       turn(d, 180)
+
+/// 33554431 (2^24 - 1) is the maximum value our bitflags can reach.
+#define MAX_BITFLAG_DIGITS 8
