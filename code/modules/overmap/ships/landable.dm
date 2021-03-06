@@ -5,7 +5,6 @@
 /obj/effect/overmap/visitable/ship/landable
 	var/shuttle											// Name of associated shuttle.  Must be autodock.
 	var/obj/effect/shuttle_landmark/ship/landmark		// Record our open space landmark for easy reference.
-	var/multiz = 0										// Index of multi-z levels, starts at 0
 	var/status = SHIP_STATUS_LANDED
 	icon_state = "shuttle"
 	moving_state = "shuttle_moving"
@@ -34,10 +33,6 @@
 
 // We autobuild our z levels.
 /obj/effect/overmap/visitable/ship/landable/find_z_levels()
-	for(var/i = 0 to multiz)
-		world.increment_max_z()
-		map_z += world.maxz
-
 	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), world.maxz)
 	landmark = new (center_loc, shuttle)
 	add_landmark(landmark, shuttle)
@@ -48,9 +43,6 @@
 		var/obj/effect/shuttle_landmark/visiting_shuttle/visitor_landmark = new (visitor_turf, landmark, landmark_name)
 		add_landmark(visitor_landmark)
 		visitor_dir = turn(visitor_dir, 90)
-
-	if(multiz)
-		new /obj/effect/landmark/map_data(center_loc, (multiz + 1))
 
 /obj/effect/overmap/visitable/ship/landable/get_areas()
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
