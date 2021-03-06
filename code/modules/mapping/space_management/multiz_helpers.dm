@@ -20,7 +20,6 @@
 		. += other_z
 	return .
 
-
 /proc/get_dir_multiz(turf/us, turf/them)
 	us = get_turf(us)
 	them = get_turf(them)

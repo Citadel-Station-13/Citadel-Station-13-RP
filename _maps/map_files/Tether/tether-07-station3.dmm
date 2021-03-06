@@ -26476,7 +26476,6 @@
 	dynamic_lighting = 0
 	})
 "QT" = (
-/obj/effect/landmark/map_data/virgo3b,
 /turf/space,
 /area/space)
 "QU" = (

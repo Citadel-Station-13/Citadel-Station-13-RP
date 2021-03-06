@@ -39,17 +39,22 @@ What is the naming convention for planes or layers?
 	Also, as it's a define, it is standard practice to use capital letters for the variable so people know this.
 
 */
+#define PLANE_VOID -100
 
-#define SPACE_PLANE				-82	// Reserved for use in space/parallax
-#define PARALLAX_PLANE			-80	// Reserved for use in space/parallax
-#define SKYBOX_PLANE			-79	// Skybox parallax
-#define DUST_PLANE				-78 // For dust overlay on space turfs. Should be above skybox for parallax effect.
+#define CLICKCATCHER_PLANE -99
 
-// OPENSPACE_PLANE reserves all planes between OPENSPACE_PLANE_START and OPENSPACE_PLANE_END inclusive
-#define OPENSPACE_PLANE 		-75 // /turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)
-#define OPENSPACE_PLANE_START	-73
-#define OPENSPACE_PLANE_END		-58
-#define OVER_OPENSPACE_PLANE	-57
+#define PLANE_SPACE -95
+#define PLANE_SPACE_RENDER_TARGET "PLANE_SPACE"
+#define PLANE_SPACE_PARALLAX -90
+#define PLANE_SPACE_PARALLAX_RENDER_TARGET "PLANE_SPACE_PARALLAX"
+
+#define PLANE_SPACE_SKYBOX -81
+#define PLANE_SPACE_DUST -80
+
+#define OPENSPACE_LAYER 17 //Openspace layer over all
+#define OPENSPACE_PLANE -70 //Openspace plane below all turfs
+#define OPENSPACE_BACKDROP_PLANE -69 //Black square just over openspace plane to guaranteed cover all in openspace turf
+
 
 // Turf Planes
 #define PLATING_PLANE			-44 // Plating

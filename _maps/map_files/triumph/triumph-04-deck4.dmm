@@ -21227,7 +21227,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "oVF" = (
-/obj/effect/landmark/map_data/triumph,
 /turf/space,
 /area/space)
 "oVI" = (

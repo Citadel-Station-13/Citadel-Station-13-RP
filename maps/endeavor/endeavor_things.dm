@@ -21,13 +21,6 @@
 /turf/simulated/wall/rshull
 	icon_state = "hull"
 
-//Endeavor map_data obj
-/obj/effect/landmark/map_data/endeavor
-    height = 5
-//Mining Z levels
-/obj/effect/landmark/map_data/endeavor_mining
-    height = 2
-
 //Trash piles should be below the items you find in them
 /obj/structure/trash_pile
 	layer = 2.9
