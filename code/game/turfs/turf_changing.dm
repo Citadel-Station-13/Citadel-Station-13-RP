@@ -102,7 +102,7 @@
 
 	dangerous_objects = old_dangerous_objects
 
-	if(SSlighting.initialized)
+	if(SSlighting.subsystem_initialized)
 		recalc_atom_opacity()
 		lighting_object = old_lighting_object
 		affecting_lights = old_affecting_lights
