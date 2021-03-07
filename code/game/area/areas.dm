@@ -105,7 +105,7 @@
 	if(!length(contents))
 		return
 	var/list/areas_in_z = SSmapping.areas_in_z
-	update_areasize()
+	// update_areasize()
 	if(!z)
 		WARNING("No z found for [src]")
 		return
