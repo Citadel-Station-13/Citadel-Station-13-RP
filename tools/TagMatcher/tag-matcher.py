@@ -87,11 +87,11 @@ for root, subdirs, files in walk(args.dir):
         if filename.endswith('.dm'):
             file_path = path.join(root, filename)
             with open(file_path, 'r') as file:
-				mismatches_by_file[file_path] = defaultdict(list)
-				for line_number, line in enumerate(file, 1):
-					# Then for each line in the file, conduct the tuple open/close matching.
-					mismatches_by_tag = get_tag_matches(line)
-					arrange_mismatches(mismatches_by_file[file_path], line_number, mismatches_by_tag)
+                mismatches_by_file[file_path] = defaultdict(list)
+                for line_number, line in enumerate(file, 1):
+                # Then for each line in the file, conduct the tuple open/close matching.
+                    mismatches_by_tag = get_tag_matches(line)
+                    arrange_mismatches(mismatches_by_file[file_path], line_number, mismatches_by_tag)
 
 # Pretty printing section.
 # Loops over all matches and checks if there is a mismatch of tags.
