@@ -6,7 +6,7 @@
 	icon             = LIGHTING_ICON
 	icon_state       = "transparent"
 	color            = null //we manually set color in init instead
-	plane            = LIGHTING_PLANE
+	plane            = PLANE_LIGHTING
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer            = LIGHTING_LAYER
 	invisibility     = INVISIBILITY_LIGHTING
