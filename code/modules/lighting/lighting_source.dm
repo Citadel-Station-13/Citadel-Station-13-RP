@@ -189,6 +189,7 @@
 		update = TRUE
 
 	if (!light_range || !light_power)
+		stack_trace("Source processed with no light range/light power on source atom [source_atom] ([source_atom? source_atom.type : "NULL"]). This should not happen.")
 		qdel(src)
 		return
 
