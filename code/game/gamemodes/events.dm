@@ -68,7 +68,7 @@ var/hadevent    = 0
 
 
 	var/list/area/areas = list()
-	for(var/area/A in sortedAreas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(istype(A, /area/security/prison) || istype(A, /area/security/brig))
 			areas += A
 

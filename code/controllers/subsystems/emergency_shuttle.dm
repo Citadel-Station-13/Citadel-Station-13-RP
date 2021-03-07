@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 	evac = 1
 	emergency_shuttle_called.Announce(replacetext(GLOB.using_map.emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
-	for(var/area/A in sortedAreas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(istype(A, /area/hallway))
 			A.readyalert()
 
@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	if (evac)
 		emergency_shuttle_recalled.Announce(GLOB.using_map.emergency_shuttle_recall_message)
 
-		for(var/area/A in sortedAreas)
+		for(var/area/A in GLOB.sortedAreas)
 			if(istype(A, /area/hallway))
 				A.readyreset()
 		evac = 0
