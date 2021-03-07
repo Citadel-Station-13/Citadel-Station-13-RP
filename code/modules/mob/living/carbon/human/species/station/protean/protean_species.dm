@@ -218,7 +218,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
 		
 		//Steel adds regen
-		if(H.health < H.maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  A test to see if I can make regen work without blobform
+		if(H.health < H.maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
 			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 		
 		//MHydrogen adds speeeeeed
