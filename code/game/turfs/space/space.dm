@@ -72,7 +72,6 @@
 
 /turf/space/proc/update_starlight()
 	var/power = CONFIG_GET(number/starlight)
-	set_light(0)
 	if(power)
 		for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
 			if(isspaceturf(t))
@@ -80,6 +79,9 @@
 				continue
 			set_light(power)
 			return
+		set_light(0)
+	else
+		set_light(0)
 
 /turf/space/attackby(obj/item/C as obj, mob/user as mob)
 
