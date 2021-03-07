@@ -59,6 +59,8 @@
 	if (unique)
 		GLOB.areas_by_type[type] = src
 
+	uid = ++global_uid
+
 	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
 		// generate one using the icon_state
 		if(icon_state && icon_state != "unknown")
@@ -71,7 +73,6 @@
 
 /area/Initialize(mapload)
 	icon_state = ""
-	uid = ++global_uid
 
 	if(!requires_power)
 		power_light = 0
