@@ -369,7 +369,7 @@
 
 	//	for(var/turf/simulated/t in oview(src,1))
 
-	for(var/d in cardinal)
+	for(var/d in GLOB.cardinal)
 		var/turf/T = get_step(src, d)
 		if(istype(T) && !T.density)
 			if(!LinkBlockedWithAccess(src, T, ID))
@@ -381,7 +381,7 @@
 /turf/proc/TurfsWithAccess(var/obj/item/card/id/ID)
 	var/L[] = new()
 
-	for(var/d in alldirs)
+	for(var/d in GLOB.alldirs)
 		var/turf/T = get_step(src, d)
 		if(istype(T) && !T.density)
 			if(!LinkBlockedWithAccess(src, T, ID))
