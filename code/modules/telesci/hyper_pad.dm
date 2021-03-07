@@ -147,8 +147,8 @@
 							continue
 					else
 						continue
-				if(!(istype(ROI,/obj/mecha)))
-					continue //TP mechs
+				if(!((istype(ROI,/obj/mecha)) || istype(ROI,/obj/vehicle)))
+					continue //TP things that move that are "anchored"
 			if(isobserver(ROI))
 				continue
 			var/datum/effect_system/teleport_greyscale/tele1 = new /datum/effect_system/teleport_greyscale()
