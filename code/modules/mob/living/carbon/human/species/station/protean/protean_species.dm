@@ -38,7 +38,7 @@
 	
 	total_health =	175  // With the increased limb health, this is necessary to not have inexplicable blobbings when you appear generally okay.
 
-	brute_mod =		0.9 // 10% brute reduction, changed with the increase in limb health so they're not near-immune to brute. Also'd make sense as the nanites would still get damaged akin to organic cells
+	brute_mod =		0.8 // 20% brute reduction, changed with the increase in limb health so they're not near-immune to brute. Also'd make sense as the nanites would still get damaged akin to organic cells
 	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
 	oxy_mod =		0
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
