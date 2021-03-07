@@ -2,6 +2,7 @@
 	icon = 'icons/turf/floors.dmi'
 	layer = TURF_LAYER
 	plane = TURF_PLANE
+	luminosity = 1
 	level = 1
 	var/holy = 0
 
@@ -39,16 +40,15 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
+	// by default, vis_contents is inherited from the turf that was here before
+	vis_contents.Cut()
+
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
 	if(light_power && light_range)
 		update_light()
-
-	if(opacity && isturf(loc))
-		var/turf/T = loc
-		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guranteed to be on afterwards anyways.
 
 /*
 	if (canSmoothWith)
@@ -58,9 +58,15 @@
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
-	//Lighting related
-	luminosity = !(dynamic_lighting)
-	has_opaque_atom = (opacity)
+	var/area/A = loc
+	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+		add_overlay(/obj/effect/fullbright)
+
+	if (light_power && light_range)
+		update_light()
+
+	if (opacity)
+		has_opaque_atom = TRUE
 
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.

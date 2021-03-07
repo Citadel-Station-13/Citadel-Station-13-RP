@@ -62,23 +62,31 @@ INITIALIZE_IMMEDIATE(/area) // todo remove this fuck the old maploder
 	uid = ++global_uid
 	all_areas += src
 
-	if(!requires_power)
-		power_light = 0
-		power_equip = 0
-		power_environ = 0
-
-	if(dynamic_lighting)
+	if(requires_power)
 		luminosity = 0
 	else
-		luminosity = 1
+		power_light = TRUE
+		power_equip = TRUE
+		power_environ = TRUE
+
+		if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
+			dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+			luminosity = 0
+		else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
+			dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	if(dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
+		dynamic_lighting = CONFIG_GET(flag/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
+
 	. = ..()
+
+	blend_mode = BLEND_MULTIPLY // Putting this in the constructor so that it stops the icons being screwed up in the map editor.
+
+	if(!IS_DYNAMIC_LIGHTING(src))
+		add_overlay(/obj/effect/fullbright)
+
 	return INITIALIZE_HINT_LATELOAD // Areas tradiationally are initialized AFTER other atoms.
 
 /area/LateInitialize()
-	if(!requires_power || !apc)
-		power_light = 0
-		power_equip = 0
-		power_environ = 0
 	power_change()		// all machines set to current power level, also updates lighting icon
 	return INITIALIZE_HINT_LATELOAD
 
