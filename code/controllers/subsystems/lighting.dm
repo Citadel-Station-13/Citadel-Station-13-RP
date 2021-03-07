@@ -13,15 +13,15 @@ SUBSYSTEM_DEF(lighting)
 	return ..()
 
 /datum/controller/subsystem/lighting/Initialize(timeofday)
-	if(!initialized)
-		if (CONFIG_GET(flag/starlight))
+	if(!subsystem_initialized)
+		if (CONFIG_GET(number/starlight))
 			for(var/I in all_areas)
 				var/area/A = I
 				if (A.dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
 					A.luminosity = 0
 
 		create_all_lighting_objects()
-		initialized = TRUE
+		subsystem_initialized = TRUE
 
 	fire(FALSE, TRUE)
 

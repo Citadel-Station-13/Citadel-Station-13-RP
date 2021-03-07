@@ -14,9 +14,6 @@
 	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
 
 /turf/space/Initialize(mapload)
-	if(config_legacy.starlight)
-		update_starlight()
-
 	// Sprite stuff only beyond here
 	if(keep_sprite)
 		return ..()
@@ -74,10 +71,15 @@
 	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
 
 /turf/space/proc/update_starlight()
-	if(locate(/turf/simulated) in orange(src,1))
-		set_light(config_legacy.starlight)
-	else
-		set_light(0)
+	var/power = CONFIG_GET(number/starlight)
+	set_light(0)
+	if(power)
+		for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
+			if(isspaceturf(t))
+				//let's NOT update this that much pls
+				continue
+			set_light(power)
+			return
 
 /turf/space/attackby(obj/item/C as obj, mob/user as mob)
 
