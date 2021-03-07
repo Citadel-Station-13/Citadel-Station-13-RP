@@ -280,7 +280,7 @@ turf/simulated/mineral/floor/light_corner
 
 /turf/simulated/mineral/proc/UpdateMineral(update_neighbors)
 	clear_ore_effects()
-	if(mineral)
+	if(mineral && density)
 		new /obj/effect/mineral(src, mineral)
 	update_icon(update_neighbors)
 
