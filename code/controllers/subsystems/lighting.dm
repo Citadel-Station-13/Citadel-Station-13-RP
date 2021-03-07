@@ -84,5 +84,5 @@ SUBSYSTEM_DEF(lighting)
 
 
 /datum/controller/subsystem/lighting/Recover()
-	initialized = SSlighting.initialized
+	subsystem_initialized = SSlighting.subsystem_initialized
 	..()
