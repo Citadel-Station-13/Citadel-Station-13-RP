@@ -5,6 +5,9 @@
 	dynamic_lighting = 0
 	plane = SPACE_PLANE
 
+	light_power = 0.25
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+
 	initial_gas_mix = GAS_STRING_VACUUM
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	temperature = 2.7

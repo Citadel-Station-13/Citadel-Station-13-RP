@@ -172,7 +172,7 @@
 	var/atom/source_atom = src.source_atom
 
 	if (QDELETED(source_atom))
-		stack_trace("Source processed with deleted atom [source_atom] ([source_atom? source_atom.type : "NULL"]). This should not happen.")
+		stack_trace("Source processed with deleted atom [source_atom] ([source_atom? "[REF(source_atom)] - [source_atom.type]" : "NULL"]). This should not happen.")
 		qdel(src)
 		return
 
@@ -189,7 +189,7 @@
 		update = TRUE
 
 	if (!light_range || !light_power)
-		stack_trace("Source processed with no light range/light power on source atom [source_atom] ([source_atom? source_atom.type : "NULL"]). This should not happen.")
+		stack_trace("Source processed with no light range/light power on source atom [source_atom] ([source_atom? "[REF(source_atom)] - [source_atom.type]" : "NULL"]). This should not happen.")
 		qdel(src)
 		return
 
