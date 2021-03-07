@@ -57,6 +57,9 @@
 		if(S.zone)
 			S.zone.rebuild()
 
+	changing_turf = TRUE
+	qdel(src)	//Just get the side effects and call Destroy
+
 	if(ispath(N, /turf/simulated/floor))
 		var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
 		if(old_fire)

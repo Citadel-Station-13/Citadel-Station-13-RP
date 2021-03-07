@@ -19,6 +19,8 @@
 	var/temperature = T20C		// Initial turf temperature.
 	var/blocks_air = 0			// Does this turf contain air/let air through?
 
+	var/changing_turf = FALSE
+
 	// General properties.
 	var/icon_old = null
 	var/pathweight = 1			// How much does it cost to pathfind over this turf?
@@ -47,9 +49,6 @@
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
-	if(light_power && light_range)
-		update_light()
-
 /*
 	if (canSmoothWith)
 		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
@@ -76,9 +75,31 @@
 
 	return INITIALIZE_HINT_NORMAL
 
-/turf/Destroy()
-	flags &= ~INITIALIZED
+/turf/Destroy(force)
 	. = QDEL_HINT_IWILLGC
+	if(!changing_turf)
+		stack_trace("Incorrect turf deletion")
+	changing_turf = FALSE
+/*
+	var/turf/T = SSmapping.get_turf_above(src)
+	if(T)
+		T.multiz_turf_del(src, DOWN)
+	T = SSmapping.get_turf_below(src)
+	if(T)
+		T.multiz_turf_del(src, UP)
+*/
+	if(force)
+		..()
+		//this will completely wipe turf state
+		var/turf/B = new world.turf(src)
+		for(var/A in B.contents)
+			qdel(A)
+		return
+	// SSair.remove_from_active(src)
+	visibilityChanged()
+	// QDEL_LIST(blueprint_data)
+	flags_1 &= ~INITIALIZED_1
+	// requires_activation = FALSE
 	..()
 
 /turf/ex_act(severity)

@@ -2,7 +2,6 @@
 	icon = 'icons/turf/space.dmi'
 	name = "\proper space"
 	icon_state = "0"
-	dynamic_lighting = 0
 	plane = SPACE_PLANE
 
 	light_power = 0.25
