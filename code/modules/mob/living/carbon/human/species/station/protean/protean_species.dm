@@ -1,5 +1,5 @@
 #define DAM_SCALE_FACTOR 0.01
-#define METAL_PER_TICK 100
+#define METAL_PER_TICK 50 // I've lowered it due to the generally low amount of steel proteans get during roundstart
 /datum/species/protean
 	name =             SPECIES_PROTEAN
 	name_plural =      "Proteans"
@@ -36,15 +36,15 @@
 	min_age =		18
 	max_age =		200
 	
-	total_health =	125  // Makes them Unathi level tough. Nothing too much, also mildly justified as proteans can't ever go into crit, as they blob instead
+	total_health =	175  // With the increased limb health, this is necessary to not have inexplicable blobbings when you appear generally okay.
 
-	brute_mod =		0.30 // 70% brute reduction
+	brute_mod =		0.9 // 10% brute reduction, changed with the increase in limb health so they're not near-immune to brute. Also'd make sense as the nanites would still get damaged akin to organic cells
 	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
 	oxy_mod =		0
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
 	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
 	
-	hunger_factor = 0.3 // Better power storage, perhaps? This is not additive. Whoops
+	hunger_factor = 0.04 // Better power storage, perhaps? This is not additive. Whoops
  /*
 These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
 A worst-case sev 4 emp will do 88 damage pre-mitigation, and 114.4 post-mitigation (as resist is negative) spread out over all the limbs.
@@ -173,7 +173,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
 	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
 	var/obj/item/stack/material/steel/metal_stack = new(box)
-	metal_stack.amount = 5
+	metal_stack.amount = 3  // Back to 3 sheets at start, due to the regen changes
 	new /obj/item/fbp_backup_cell(box)
 	var/obj/item/clothing/accessory/permit/nanotech/permit = new(box)
 	permit.set_name(H.real_name)
@@ -216,7 +216,11 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 	var/obj/item/organ/internal/nano/refactory/refactory = locate() in H.internal_organs
 	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
-
+		
+		//Steel adds regen
+		if(H.health < H.maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  A test to see if I can make regen work without blobform
+			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
+		
 		//MHydrogen adds speeeeeed
 		if(refactory.get_stored_material(MAT_METALHYDROGEN) >= METAL_PER_TICK)
 			H.add_modifier(/datum/modifier/protean/mhydrogen, origin = refactory)
@@ -343,12 +347,12 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/modifier/protean/steel/tick()
 
 	..()
-	holder.adjustBruteLoss(-10 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec. Previous value was 9, which didn't equal out to 3 per second
-	holder.adjustFireLoss(-2.3 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec. Bit of an adjustment with the updated burn resist
+	holder.adjustBruteLoss(-2.2 ,include_robo = TRUE) //Non blob regen. I made it heal 2 per second, compared to the previous 3/s.
+	holder.adjustFireLoss(-1.6 ,include_robo = TRUE) //Same with burn regen, it's now 2 per second
 	holder.adjustToxLoss(-12) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
 
-
+	// Also, because I'm a bad coder, you'll need to manually disable material modifiers to stop the steel ticking. Turning it on again doesn't start the regen until you get damaged, though.
 
 	var/mob/living/carbon/human/H = holder
 	for(var/organ in H.internal_organs)
