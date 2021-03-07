@@ -352,7 +352,7 @@
 		var/atom/instance
 		var/atype = members[index]
 		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
-		for(var/area/A in all_areas)
+		for(var/area/A in sortedAreas)
 			if(A.type == atype)
 				instance = A
 				break

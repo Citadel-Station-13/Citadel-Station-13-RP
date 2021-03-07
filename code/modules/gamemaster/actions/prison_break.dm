@@ -60,7 +60,7 @@
 
 /datum/gm_action/prison_break/start()
 	..()
-	for(var/area/A in all_areas)
+	for(var/area/A in sortedAreas)
 		if(is_type_in_list(A,areaType) && !is_type_in_list(A,areaNotType))
 			areas += A
 
