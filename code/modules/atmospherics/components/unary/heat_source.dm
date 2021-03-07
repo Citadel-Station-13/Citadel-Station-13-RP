@@ -70,7 +70,8 @@
 		return
 
 	if(network && air_contents.total_moles && air_contents.temperature < set_temperature)
-		air_contents.add_thermal_energy(power_rating * HEATER_PERF_MULT)
+		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * HEATER_PERF_MULT)
+		air_contents.add_thermal_energy(limit)
 		use_power(power_rating)
 
 		heating = 1
