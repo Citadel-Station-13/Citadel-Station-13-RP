@@ -12,7 +12,6 @@ SUBSYSTEM_DEF(lighting)
 	msg = "L:[length(GLOB.lighting_update_lights)]|C:[length(GLOB.lighting_update_corners)]|O:[length(GLOB.lighting_update_objects)]"
 	return ..()
 
-
 /datum/controller/subsystem/lighting/Initialize(timeofday)
 	if(!initialized)
 		if (CONFIG_GET(flag/starlight))
