@@ -96,9 +96,9 @@
 			qdel(A)
 		return
 	// SSair.remove_from_active(src)
-	visibilityChanged()
+	// visibilityChanged()
 	// QDEL_LIST(blueprint_data)
-	flags_1 &= ~INITIALIZED_1
+	flags &= ~INITIALIZED
 	// requires_activation = FALSE
 	..()
 
