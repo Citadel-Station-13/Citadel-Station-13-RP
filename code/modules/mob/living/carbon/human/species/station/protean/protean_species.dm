@@ -210,7 +210,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 			H.gib()
 
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.8 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever). The decimal point (0.8 as of now) is the autoblob %hp threshold. Right, quick maths lesson: making the autoblob threshold 35% does not mean that proteans will blob at 35% health. It means that they'll blob at 65% health, because it's checking if the total damage is higher than the threshold. I've made it that they blob at 20% health now, so they don't instantly blob to everything.
+	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.9 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever). The decimal point (0.9 as of now) is the autoblob %hp threshold. This means a protean will blob at 10% health. I've lowered it still, due to the increase in limb health.
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
