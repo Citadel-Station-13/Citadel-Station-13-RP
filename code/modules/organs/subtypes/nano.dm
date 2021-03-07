@@ -2,67 +2,67 @@
 /obj/item/organ/external/chest/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 50 // <-- This is different from the rest
+	max_damage = 125 // All limb health is increased to prevent instant delimbing via weak EMPs, lasers, etc.
 	min_broken_damage = 1000
 	vital = TRUE // <-- This is different from the rest
 /obj/item/organ/external/groin/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 30 // <-- This is different from the rest
+	max_damage = 125 // All limb health is increased to prevent instant delimbing via weak EMPs, lasers, etc.
 	min_broken_damage = 1000 //Multiple
 	vital = FALSE
 /obj/item/organ/external/head/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 10
+	max_damage = 75
 	min_broken_damage = 1000 //Inheritance
 	vital = FALSE
 /obj/item/organ/external/arm/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 10
+	max_damage = 75
 	min_broken_damage = 1000 //Please
 	vital = FALSE
 /obj/item/organ/external/arm/right/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 10
+	max_damage = 75
 	min_broken_damage = 1000
 	vital = FALSE
 /obj/item/organ/external/leg/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 10
+	max_damage = 75
 	min_broken_damage = 1000
 	vital = FALSE
 /obj/item/organ/external/leg/right/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 10
+	max_damage = 75
 	min_broken_damage = 1000
 	vital = FALSE
 /obj/item/organ/external/hand/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 10
+	max_damage = 75
 	min_broken_damage = 1000
 	vital = FALSE
 /obj/item/organ/external/hand/right/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 10
+	max_damage = 75
 	min_broken_damage = 1000
 	vital = FALSE
 /obj/item/organ/external/foot/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 10
+	max_damage = 75
 	min_broken_damage = 1000
 	vital = FALSE
 /obj/item/organ/external/foot/right/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 10
+	max_damage = 75
 	min_broken_damage = 1000
 	vital = FALSE
 
