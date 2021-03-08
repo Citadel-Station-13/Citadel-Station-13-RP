@@ -122,7 +122,7 @@
 
 /datum/ai_holder/simple_mob/melee/evasive/post_melee_attack(atom/A)
 	if(holder.Adjacent(A))
-		holder.IMove(get_step(holder, pick(alldirs)))
+		holder.IMove(get_step(holder, pick(GLOB.alldirs)))
 		holder.face_atom(A)
 
 

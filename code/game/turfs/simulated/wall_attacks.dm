@@ -14,7 +14,6 @@
 		blocks_air = ZONE_BLOCKED
 		update_icon()
 		update_air()
-		set_light(0)
 		src.blocks_air = 0
 		set_opacity(0)
 		for(var/turf/simulated/turf in loc)
@@ -26,7 +25,6 @@
 		blocks_air = AIR_BLOCKED
 		update_icon()
 		update_air()
-		set_light(1)
 		src.blocks_air = 1
 		set_opacity(1)
 		for(var/turf/simulated/turf in loc)

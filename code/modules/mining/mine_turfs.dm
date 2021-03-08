@@ -85,6 +85,8 @@ turf/simulated/mineral/floor/light_corner
 		return
 	density = 0
 	opacity = 0
+	recalc_atom_opacity()
+	reconsider_lights()
 	blocks_air = 0
 	can_build_into_floor = TRUE
 	SSplanets.addTurf(src)
@@ -98,6 +100,8 @@ turf/simulated/mineral/floor/light_corner
 		return
 	density = 1
 	opacity = 1
+	recalc_atom_opacity()
+	reconsider_lights()
 	blocks_air = 1
 	can_build_into_floor = FALSE
 	update_general()
@@ -144,7 +148,7 @@ turf/simulated/mineral/floor/light_corner
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
 	if(random_icon)
-		dir = pick(alldirs)
+		dir = pick(GLOB.alldirs)
 	if(mineral)
 		if(density)
 			MineralSpread(mapload)
@@ -168,7 +172,7 @@ turf/simulated/mineral/floor/light_corner
 		icon_state = rock_icon_state
 
 		//Apply overlays if we should have borders
-		for(var/direction in cardinal)
+		for(var/direction in GLOB.cardinal)
 			var/turf/T = get_step(src,direction)
 			if(istype(T) && !T.density)
 				add_overlay(get_cached_border(rock_side_icon_state,direction,icon,rock_side_icon_state))
@@ -189,7 +193,7 @@ turf/simulated/mineral/floor/light_corner
 			add_overlay("dug_overlay")
 
 		//Apply overlays if there's space
-		for(var/direction in cardinal)
+		for(var/direction in GLOB.cardinal)
 			if(istype(get_step(src, direction), /turf/space) && !istype(get_step(src, direction), /turf/space/cracked_asteroid))
 				add_overlay(get_cached_border("asteroid_edge",direction,icon,"asteroid_edges", 0))
 
@@ -203,7 +207,7 @@ turf/simulated/mineral/floor/light_corner
 			add_overlay('icons/turf/flooring/decals.dmi',overlay_detail)
 
 	if(update_neighbors)
-		for(var/direction in alldirs)
+		for(var/direction in GLOB.alldirs)
 			if(istype(get_step(src, direction), /turf/simulated/mineral))
 				var/turf/simulated/mineral/M = get_step(src, direction)
 				M.update_icon()
@@ -271,7 +275,7 @@ turf/simulated/mineral/floor/light_corner
 /turf/simulated/mineral/proc/MineralSpread(mapload)
 	UpdateMineral(!mapload)
 	if(mineral && mineral.spread)
-		for(var/trydir in cardinal)
+		for(var/trydir in GLOB.cardinal)
 			if(prob(mineral.spread_chance))
 				var/turf/simulated/mineral/target_turf = get_step(src, trydir)
 				if(istype(target_turf) && target_turf.density && !target_turf.mineral)
@@ -280,7 +284,7 @@ turf/simulated/mineral/floor/light_corner
 
 /turf/simulated/mineral/proc/UpdateMineral(update_neighbors)
 	clear_ore_effects()
-	if(mineral)
+	if(mineral && density)
 		new /obj/effect/mineral(src, mineral)
 	update_icon(update_neighbors)
 

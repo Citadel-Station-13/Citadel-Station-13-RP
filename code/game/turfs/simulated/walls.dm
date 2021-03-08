@@ -45,7 +45,7 @@
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
-	dismantle_wall(null, null, TRUE)
+	dismantle_wall(null, null, TRUE, FALSE)
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
@@ -186,7 +186,7 @@
 
 	return ..()
 
-/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
+/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product, changeturf = TRUE)
 
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
@@ -212,7 +212,9 @@
 	girder_material = null
 	update_connections(1)
 
+
 	src.ChangeTurf(/turf/simulated/floor/plating)
+
 
 /turf/simulated/wall/ex_act(severity)
 	switch(severity)

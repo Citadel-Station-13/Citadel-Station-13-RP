@@ -1,0 +1,3 @@
+## Starlight for exterior walls and breaches. Uncomment for starlight!
+## This is disabled by default to make testing quicker, should be enabled on production servers or testing servers messing with lighting
+#STARLIGHT

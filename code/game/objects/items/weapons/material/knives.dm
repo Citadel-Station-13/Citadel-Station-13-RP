@@ -134,7 +134,7 @@
 	force_divisor = 0.3 // 18 when hardness 60 (steel)
 	attack_verb = list("slashed", "chopped", "gouged", "ripped", "cut")
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	default_material = "plasteel" //VOREStation Edit
 
 /obj/item/material/knife/machete/armblade
