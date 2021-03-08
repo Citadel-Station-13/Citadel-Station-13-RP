@@ -16,7 +16,7 @@
 
 /datum/event/meteor_wave/setup()
 	waves = (2 + rand(1, severity)) * severity
-	start_side = pick(cardinal)
+	start_side = pick(GLOB.cardinal)
 	endWhen = worst_case_end()
 
 /datum/event/meteor_wave/start()
