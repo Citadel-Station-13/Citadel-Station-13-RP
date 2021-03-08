@@ -212,7 +212,7 @@
 	girder_material = null
 	update_connections(1)
 
-	ChangeTurf(/turf/simulated/floor/plating)
+	src.ChangeTurf(/turf/simulated/floor/plating)
 
 /turf/simulated/wall/ex_act(severity)
 	switch(severity)
