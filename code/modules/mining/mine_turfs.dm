@@ -85,6 +85,8 @@ turf/simulated/mineral/floor/light_corner
 		return
 	density = 0
 	opacity = 0
+	recalc_atom_opacity()
+	reconsider_lights()
 	blocks_air = 0
 	can_build_into_floor = TRUE
 	SSplanets.addTurf(src)
@@ -98,6 +100,8 @@ turf/simulated/mineral/floor/light_corner
 		return
 	density = 1
 	opacity = 1
+	recalc_atom_opacity()
+	reconsider_lights()
 	blocks_air = 1
 	can_build_into_floor = FALSE
 	update_general()
