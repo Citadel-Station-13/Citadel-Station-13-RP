@@ -22,7 +22,7 @@
 	. = ..(mapload, )
 	ptype = newtype
 	dir = newdir
-	if(ptype == DISPOSAL_PIPE_STRAIGHT && (dir in cornerdirs))
+	if(ptype == DISPOSAL_PIPE_STRAIGHT && (dir in GLOB.cornerdirs))
 		ptype = DISPOSAL_PIPE_CORNER
 		switch(dir)
 			if(NORTHWEST)
