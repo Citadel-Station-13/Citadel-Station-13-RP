@@ -16,7 +16,7 @@
 
 // Globals.
 GLOBAL_LIST_EMPTY(all_antag_types)
-GLOBAL_LIST_EMPTY(all_antag_types)
+GLOBAL_LIST_EMPTY(all_antag_spawnpoints)
 GLOBAL_LIST_EMPTY(antag_names_to_ids)
 
 // Global procs.
