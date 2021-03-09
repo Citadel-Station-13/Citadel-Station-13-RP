@@ -61,6 +61,11 @@ SUBSYSTEM_DEF(mapping)
 		loadLateMaps()
 	if(!GLOB.using_map.overmap_z)
 		build_overmap()
+	// Set up antagonists.
+	populate_antag_type_list()
+
+	//Set up spawn points.
+	populate_spawn_points()
 
 	return ..()
 

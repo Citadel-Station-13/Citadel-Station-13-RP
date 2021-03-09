@@ -60,12 +60,6 @@ SUBSYSTEM_DEF(ticker)
 	if(!syndicate_code_response)
 		syndicate_code_response = generate_code_phrase()
 
-	// Set up antagonists.
-	populate_antag_type_list()
-
-	//Set up spawn points.
-	populate_spawn_points()
-
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 
 	return ..()
