@@ -1,6 +1,6 @@
 # You can use the "$include" directive to split your configs however you want
 
-#$include game_options.txt
+$include game_options.txt
 #$include dbconfig.txt
 #$include comms.txt
 #$include antag_rep.txt

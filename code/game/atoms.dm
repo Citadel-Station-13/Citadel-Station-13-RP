@@ -105,6 +105,42 @@
 /atom/proc/ComponentInitialize()
 	return
 
+/**
+ * Top level of the destroy chain for most atoms
+ *
+ * Cleans up the following:
+ * * Removes alternate apperances from huds that see them
+ * * qdels the reagent holder from atoms if it exists
+ * * clears the orbiters list
+ * * clears overlays and priority overlays
+ * * clears the light object
+ */
+/atom/Destroy()
+/*
+	if(alternate_appearances)
+		for(var/K in alternate_appearances)
+			var/datum/atom_hud/alternate_appearance/AA = alternate_appearances[K]
+			AA.remove_from_hud(src)
+*/
+
+	if(reagents)
+		qdel(reagents)
+
+	orbiters = null // The component is attached to us normaly and will be deleted elsewhere
+
+	LAZYCLEARLIST(overlays)
+
+/*
+	for(var/i in targeted_by)
+		var/mob/M = i
+		LAZYREMOVE(M.do_afters, src)
+	targeted_by = null
+*/
+
+	QDEL_NULL(light)
+
+	return ..()
+
 /atom/proc/reveal_blood()
 	return
 

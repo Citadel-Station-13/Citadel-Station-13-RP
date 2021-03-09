@@ -27,6 +27,7 @@ SUBSYSTEM_DEF(skybox)
 	normal_space.layer = TURF_LAYER
 	normal_space.icon = 'icons/turf/space.dmi'
 	normal_space.icon_state = "white"
+	normal_space.luminosity = 1			// citadel edit - grrrr shitcode for lighting because this entire subsystem needs to be razed
 
 	// Static
 	for (var/i in 0 to 25)
