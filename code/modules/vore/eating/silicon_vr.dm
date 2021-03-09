@@ -82,15 +82,6 @@
 	if(do_after(user=eyeobj,delay=50,target=prey,needhand=0) && holo && hologram && !hologram.bellied) //Didn't move and still projecting and effect exists and no other bellied people
 		hologram.get_prey(prey)
 
-/*	Can't, lets them examine things in camera blackout areas
-//I basically have to do this, you know?
-/mob/living/silicon/ai/examinate(atom/A as mob|obj|turf in view(eyeobj))
-	set name = "Examine"
-	set category = "IC"
-
-	A.examine(src)
-*/
-
 /mob/living/AIShiftClick(var/mob/user) //Shift-click as AI overridden on mobs to examine.
 	if(user.client)
 		var/list/result = examine(user)
