@@ -93,8 +93,8 @@
 
 /mob/living/AIShiftClick(var/mob/user) //Shift-click as AI overridden on mobs to examine.
 	if(user.client)
-		src.examine(user)
-	return
+		var/list/result = examine(user)
+		to_chat(user, result.Join("\n"))
 
 //This can go here with all the references.
 /obj/effect/overlay/aiholo/examine(mob/user)
