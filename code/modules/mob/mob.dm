@@ -1,5 +1,5 @@
 /mob/Destroy()//This makes sure that mobs withGLOB.clients/keys are not just deleted from the game.
-	mob_list -= src
+	GLOB.mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
 	unset_machine()
@@ -39,8 +39,8 @@
 	spell_masters = null
 	zone_sel = null
 
-/mob/Initialize()
-	mob_list += src
+/mob/Initialize(mapload)
+	GLOB.mob_list += src
 	set_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
@@ -148,7 +148,7 @@
 		M.show_message(msg, 2, deaf_message, 1)
 
 /mob/proc/findname(msg)
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if (M.real_name == text("[]", msg))
 			return M
 	return 0
@@ -500,7 +500,7 @@
 				namecounts[name] = 1
 			creatures[name] = O
 
-	for(var/mob/M in sortList(mob_list))
+	for(var/mob/M in sortList(GLOB.mob_list))
 		var/name = M.name
 		if (names.Find(name))
 			namecounts[name]++

@@ -13,9 +13,8 @@
 	var/mob/living/carbon/human/corpse = null
 	var/mob/living/carbon/human/watchowner = null
 
-
-/obj/item/deadringer/New()
-	..()
+/obj/item/deadringer/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/deadringer/Destroy() //just in case some smartass tries to stay invisible by destroying the watch

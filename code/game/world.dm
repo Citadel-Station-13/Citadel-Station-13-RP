@@ -18,13 +18,14 @@ GLOBAL_LIST(topic_status_cache)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
-	enable_debugger()
+	// enable_debugger()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
+	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 
 
@@ -77,10 +78,6 @@ GLOBAL_LIST(topic_status_cache)
 
 	// Loads all the pre-made submap templates.
 	load_map_templates()
-
-	if(config_legacy.generate_map)
-		if(GLOB.using_map.perform_map_generation())
-			GLOB.using_map.refresh_mining_turfs()
 
 	// Create frame types.
 	populate_frame_types()

@@ -73,9 +73,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/list/planes_visible = list()
 
 //Constructor comes with a free AR HUD
-/obj/item/nif/New(var/newloc,var/wear,var/list/load_data)
-	..(newloc)
-
+/obj/item/nif/Initialize(mapload, wear, list/load_data)
+	. = ..(mapload)
 	//First one to spawn in the game, make a big icon
 	if(!big_icon)
 		big_icon = new(icon,icon_state = "nif_full")
@@ -90,8 +89,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	examine_msg = saved_examine_msg
 
 	//If given a human on spawn (probably from persistence)
-	if(ishuman(newloc))
-		var/mob/living/carbon/human/H = newloc
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
 		if(!quick_implant(H))
 			WARNING("NIF spawned in [H] failed to implant")
 			spawn(0)

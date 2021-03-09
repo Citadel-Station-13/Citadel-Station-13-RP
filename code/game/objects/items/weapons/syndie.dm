@@ -37,7 +37,8 @@
 	light_impact = 7
 	flash_range = 7
 
-/obj/item/syndie/c4explosive/New()
+/obj/item/syndie/c4explosive/Initialize(mapload)
+	. = ..()
 	var/K = rand(1,2000)
 	K = md5(num2text(K)+name)
 	K = copytext(K,1,7)
@@ -53,7 +54,7 @@
 		O.show_message("[icon2html(thing = src, target = world)] <span class = 'warning'> The [src.name] beeps! </span>")
 	sleep(50)
 	explosion(get_turf(src), devastate, heavy_impact, light_impact, flash_range)
-	for(var/dirn in cardinal)		//This is to guarantee that C4 at least breaks down all immediately adjacent walls and doors.
+	for(var/dirn in GLOB.cardinal)		//This is to guarantee that C4 at least breaks down all immediately adjacent walls and doors.
 		var/turf/simulated/wall/T = get_step(src,dirn)
 		if(locate(/obj/machinery/door/airlock) in T)
 			var/obj/machinery/door/airlock/D = locate() in T

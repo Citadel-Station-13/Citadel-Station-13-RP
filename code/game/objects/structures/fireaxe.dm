@@ -13,7 +13,7 @@
 	var/smashed = 0
 	var/hasaxe = 1
 
-/obj/structure/fireaxecabinet/Initialize()
+/obj/structure/fireaxecabinet/Initialize(mapload)
 	..()
 	fireaxe = new /obj/item/material/twohanded/fireaxe()
 

@@ -55,7 +55,7 @@
 	say_list_type = /datum/say_list/glitterfly
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/glitterfly
 
-/mob/living/simple_mob/animal/sif/glitterfly/Initialize()
+/mob/living/simple_mob/animal/sif/glitterfly/Initialize(mapload)
 	..()
 	var/colorlist = list(rgb(rand(100,255), rand(100,255), rand(100,255)) =  10, rgb(rand(5,100), rand(5,100), rand(5,100)) = 2, "#222222" = 1)
 	color = pickweight(colorlist)
@@ -78,7 +78,7 @@
 
 	plane = PLANE_LIGHTING_ABOVE
 
-/mob/living/simple_mob/animal/sif/glitterfly/rare/Initialize()
+/mob/living/simple_mob/animal/sif/glitterfly/rare/Initialize(mapload)
 	..()
 
 /datum/say_list/glitterfly

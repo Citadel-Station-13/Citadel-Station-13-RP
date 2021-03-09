@@ -26,8 +26,8 @@
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/atmospherics/binary/passive_gate/New()
-	..()
+/obj/machinery/atmospherics/binary/passive_gate/Initialize(mapload)
+	. = ..()
 	air1.volume = ATMOS_DEFAULT_VOLUME_PUMP * 2.5
 	air2.volume = ATMOS_DEFAULT_VOLUME_PUMP * 2.5
 
@@ -129,7 +129,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/binary/passive_gate/Initialize()
+/obj/machinery/atmospherics/binary/passive_gate/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)

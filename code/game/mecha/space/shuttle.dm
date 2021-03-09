@@ -41,7 +41,7 @@
 	max_universal_equip = 1
 	max_special_equip = 1
 
-/obj/mecha/working/hoverpod/Initialize()
+/obj/mecha/working/hoverpod/Initialize(mapload)
 	. = ..()
 	ion_trail?.stop()
 

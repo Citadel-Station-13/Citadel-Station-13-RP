@@ -146,15 +146,15 @@
 
 	var/obj/item/stuck = null
 
-/obj/item/duct_tape_piece/New()
-	..()
+/obj/item/duct_tape_piece/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 
 /obj/item/duct_tape_piece/examine(mob/user)
 	if(stuck)
 		return stuck.examine(user)
 	else
-		..()
+		return ..()
 
 /obj/item/duct_tape_piece/proc/attach(var/obj/item/W)
 	stuck = W
@@ -200,7 +200,7 @@
 	var/dir_offset = 0
 	if(target_turf != source_turf)
 		dir_offset = get_dir(source_turf, target_turf)
-		if(!(dir_offset in cardinal))
+		if(!(dir_offset in GLOB.cardinal))
 			to_chat(user, "You cannot reach that from here.")		// can only place stuck papers in cardinal directions, to
 			return											// reduce papers around corners issue.
 

@@ -215,9 +215,9 @@
 	desc = "A frame for the beehive that the bees have filled with honeycombs."
 	honey = 20
 
-/obj/item/honey_frame/filled/New()
-	..()
-	overlays += "honeycomb"
+/obj/item/honey_frame/filled/Initialize(mapload)
+	. = ..()
+	add_overlay("honeycomb")
 
 /obj/item/beehive_assembly
 	name = "beehive assembly"
@@ -232,7 +232,6 @@
 		new /obj/machinery/beehive(get_turf(user))
 		user.drop_from_inventory(src)
 		qdel(src)
-	return
 
 /obj/item/stack/material/wax
 	name = "wax"
@@ -244,8 +243,8 @@
 	pass_color = TRUE
 	strict_color_stacking = TRUE
 
-/obj/item/stack/material/wax/New()
-	..()
+/obj/item/stack/material/wax/Initialize(mapload, new_amount, merge)
+	. = ..()
 	recipes = wax_recipes
 
 /datum/material/wax
@@ -267,20 +266,20 @@ var/global/list/datum/stack_recipe/wax_recipes = list( \
 	icon_state = "beepack"
 	var/full = 1
 
-/obj/item/bee_pack/New()
-	..()
-	overlays += "beepack-full"
+/obj/item/bee_pack/Initialize(mapload)
+	. = ..()
+	add_overlay("beepack-full")
 
 /obj/item/bee_pack/proc/empty()
 	full = 0
 	name = "empty bee pack"
 	desc = "A stasis pack for moving bees. It's empty."
-	overlays.Cut()
-	overlays += "beepack-empty"
+	cut_overlays()
+	add_overlay("beepack-empty")
 
 /obj/item/bee_pack/proc/fill()
 	full = initial(full)
 	name = initial(name)
 	desc = initial(desc)
-	overlays.Cut()
-	overlays += "beepack-full"
+	cut_overlays()
+	add_overlay("beepack-full")

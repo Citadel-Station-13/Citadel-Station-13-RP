@@ -73,39 +73,31 @@
 /obj/item/implanter/loyalty
 	name = "implanter-loyalty"
 
-/obj/item/implanter/loyalty/New()
+/obj/item/implanter/loyalty/Initialize(mapload)
 	src.imp = new /obj/item/implant/loyalty( src )
-	..()
-	update()
-	return
+	return ..()
 
 /obj/item/implanter/explosive
 	name = "implanter (E)"
 
-/obj/item/implanter/explosive/New()
+/obj/item/implanter/explosive/Initialize(mapload)
 	src.imp = new /obj/item/implant/explosive( src )
-	..()
-	update()
-	return
+	return ..()
 
 /obj/item/implanter/adrenalin
 	name = "implanter-adrenalin"
 
-/obj/item/implanter/adrenalin/New()
+/obj/item/implanter/adrenalin/Initialize(mapload)
 	src.imp = new /obj/item/implant/adrenalin(src)
-	..()
-	update()
-	return
+	return ..()
 
 /obj/item/implanter/compressed
 	name = "implanter (C)"
 	icon_state = "cimplanter1"
 
-/obj/item/implanter/compressed/New()
+/obj/item/implanter/compressed/Initialize(mapload)
 	imp = new /obj/item/implant/compressed( src )
-	..()
-	update()
-	return
+	return ..()
 
 /obj/item/implanter/compressed/update()
 	if (imp)

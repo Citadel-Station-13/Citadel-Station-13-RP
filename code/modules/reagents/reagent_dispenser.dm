@@ -16,7 +16,7 @@
 	attackby(obj/item/W as obj, mob/user as mob)
 		return
 
-/obj/structure/reagent_dispensers/Initialize()
+/obj/structure/reagent_dispensers/Initialize(mapload)
 	var/datum/reagents/R = new/datum/reagents(5000)
 	reagents = R
 	R.my_atom = src
@@ -71,7 +71,7 @@
 	icon_state = "watertank"
 	amount_per_transfer_from_this = 10
 
-/obj/structure/reagent_dispensers/watertank/Initialize()
+/obj/structure/reagent_dispensers/watertank/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("water", 1000)
 
@@ -80,7 +80,7 @@
 	desc = "A highly-pressurized water tank made to hold vast amounts of water.."
 	icon_state = "watertank_high"
 
-/obj/structure/reagent_dispensers/watertank/high/Initialize()
+/obj/structure/reagent_dispensers/watertank/high/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("water", 4000)
 
@@ -93,7 +93,7 @@
 	var/modded = 0
 	var/obj/item/assembly_holder/rig = null
 
-/obj/structure/reagent_dispensers/fueltank/Initialize()
+/obj/structure/reagent_dispensers/fueltank/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("fuel",1000)
 
@@ -202,7 +202,7 @@
 	density = 0
 	amount_per_transfer_from_this = 45
 
-/obj/structure/reagent_dispensers/peppertank/Initialize()
+/obj/structure/reagent_dispensers/peppertank/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("condensedcapsaicin",1000)
 
@@ -224,7 +224,7 @@
 	cupholder = 1
 	cups = 10
 
-/obj/structure/reagent_dispensers/water_cooler/Initialize()
+/obj/structure/reagent_dispensers/water_cooler/Initialize(mapload)
 	. = ..()
 	if(bottle)
 		reagents.add_reagent("water",120)
@@ -349,7 +349,7 @@
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 
-/obj/structure/reagent_dispensers/beerkeg/Initialize()
+/obj/structure/reagent_dispensers/beerkeg/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("beer",1000)
 
@@ -367,7 +367,7 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 
-/obj/structure/reagent_dispensers/virusfood/Initialize()
+/obj/structure/reagent_dispensers/virusfood/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("virusfood", 1000)
 
@@ -379,7 +379,7 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 
-/obj/structure/reagent_dispensers/acid/Initialize()
+/obj/structure/reagent_dispensers/acid/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sacid", 1000)
 
@@ -391,7 +391,7 @@
 	icon_state = "oiltank"
 	amount_per_transfer_from_this = 120
 
-/obj/structure/reagent_dispensers/cookingoil/Initialize()
+/obj/structure/reagent_dispensers/cookingoil/Initialize(mapload)
 		..()
 		reagents.add_reagent("cornoil",5000)
 

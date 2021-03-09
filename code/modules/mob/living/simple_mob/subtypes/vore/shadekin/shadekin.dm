@@ -123,7 +123,7 @@
 	var/list/ability_types = subtypesof(/obj/effect/shadekin_ability)
 	shadekin_abilities = list()
 	for(var/type in ability_types)
-		shadekin_abilities += new type(src)
+		shadekin_abilities += new type(null, src)
 
 	update_icon()
 
@@ -380,7 +380,7 @@
 
 				//Random walk
 				if(!moving_to)
-					moving_to = pick(cardinal)
+					moving_to = pick(GLOB.cardinal)
 					dir = moving_to
 
 				var/turf/T = get_step(src,moving_to)

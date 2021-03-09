@@ -27,7 +27,7 @@
 		/obj/item/barrier_tape_roll/engineering,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering)
 
-/obj/structure/closet/secure_closet/engineering_chief_wardrobe/Initialize()
+/obj/structure/closet/secure_closet/engineering_chief_wardrobe/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/industrial
 	else

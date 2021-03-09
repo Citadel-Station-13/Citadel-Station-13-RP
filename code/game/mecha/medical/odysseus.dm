@@ -17,10 +17,9 @@
 	step_energy_drain = 6
 	var/obj/item/clothing/glasses/hud/health/mech/hud
 
-/obj/mecha/medical/odysseus/New()
-	..()
+/obj/mecha/medical/odysseus/Initialize(mapload)
+	. = ..()
 	hud = new /obj/item/clothing/glasses/hud/health/mech(src)
-	return
 
 /obj/mecha/medical/odysseus/moved_inside(var/mob/living/carbon/human/H as mob)
 	if(..())
@@ -123,7 +122,7 @@
 
 			C.images += holder
 */
-/obj/mecha/medical/odysseus/loaded/Initialize()
+/obj/mecha/medical/odysseus/loaded/Initialize(mapload)
 	..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/sleeper
 	ME.attach(src)

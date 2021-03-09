@@ -99,12 +99,12 @@
 			return
 
 // for /obj/machinery/vending/sovietsoda
-/obj/item/reagent_containers/food/drinks/drinkingglass/soda/Initialize()
+/obj/item/reagent_containers/food/drinks/drinkingglass/soda/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sodawater", 50)
 	on_reagent_change()
 
-/obj/item/reagent_containers/food/drinks/drinkingglass/cola/Initialize()
+/obj/item/reagent_containers/food/drinks/drinkingglass/cola/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("cola", 50)
 	on_reagent_change()
@@ -141,7 +141,7 @@
 	volume = 100
 	matter = list("plastic" = 2000)
 
-/obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/Initialize()
+/obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/Initialize(mapload)
 	. = ..()
 	icon_state = pick("fitness-cup_black", "fitness-cup_red", "fitness-cup_black")
 
@@ -169,7 +169,7 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake
 	name = "protein shake"
 
-/obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake/Initialize()
+/obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/proteinshake/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("nutriment", 30)
 	reagents.add_reagent("iron", 10)

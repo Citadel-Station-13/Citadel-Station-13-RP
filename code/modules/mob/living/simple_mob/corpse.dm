@@ -27,8 +27,9 @@
 	var/corpseidaccess = null //This is for access. See access.dm for which jobs give what access. Again, put in quotes. Use "Captain" if you want it to be all access.
 	var/corpseidicon = null //For setting it to be a gold, silver, CentCom etc ID
 
-/obj/effect/landmark/mobcorpse/New()
+/obj/effect/landmark/mobcorpse/Initialize(mapload)
 	createCorpse()
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/mobcorpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
@@ -78,10 +79,6 @@
 			W.assignment = corpseidjob
 		W.registered_name = M.real_name
 		M.equip_to_slot_or_del(W, slot_wear_id)
-	delete_me = 1
-	qdel(src)
-
-
 
 //List of different corpse types
 
@@ -191,8 +188,10 @@
 	name = "vox"
 	corpseid = 0
 
-/obj/effect/landmark/mobcorpse/vox/New()
+/obj/effect/landmark/mobcorpse/vox/Initialize()
+	. = ..()
 	createvoxCorpse()
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/mobcorpse/vox/proc/createvoxCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
 	var/mob/living/carbon/human/vox/M = new /mob/living/carbon/human/vox (src.loc)
@@ -242,9 +241,6 @@
 			W.assignment = corpseidjob
 		W.registered_name = M.real_name
 		M.equip_to_slot_or_del(W, slot_wear_id)
-	delete_me = 1
-	qdel(src)
-
 
 //Types of Vox corpses:
 

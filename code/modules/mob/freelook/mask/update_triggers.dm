@@ -19,8 +19,8 @@
 
 #undef CULT_UPDATE_BUFFER
 
-/mob/living/New()
-	..()
+/mob/living/Initialize(mapload)
+	. = ..()
 	cultnet.updateVisibility(src, 0)
 
 /mob/living/Destroy()

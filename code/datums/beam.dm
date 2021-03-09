@@ -146,7 +146,7 @@
 // 'Reactive' beam parts do something when touched or stood in.
 /obj/effect/ebeam/reactive
 
-/obj/effect/ebeam/reactive/Initialize()
+/obj/effect/ebeam/reactive/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	return ..()
 

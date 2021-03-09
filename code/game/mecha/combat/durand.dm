@@ -22,15 +22,6 @@
 
 	defence_mode_possible = 1
 
-/*
-/obj/mecha/combat/durand/New()
-	..()
-	weapons += new /datum/mecha_weapon/ballistic/lmg(src)
-	weapons += new /datum/mecha_weapon/ballistic/scattershot(src)
-	selected_weapon = weapons[1]
-	return
-*/
-
 //This is for the Mech stats / Menu system. To be moved later on.
 /obj/mecha/combat/durand/get_commands()
 	var/output = {"<div class='wr'>
@@ -42,20 +33,3 @@
 						"}
 	output += ..()
 	return output
-
-
-//Not needed anymore but left for reference.
-/*
-/obj/mecha/combat/durand/get_stats_part()
-	var/output = ..()
-	output += "<b>Defence mode: [defence?"on":"off"]</b>"
-	return output
-*/
-
-/*
-/obj/mecha/combat/durand/Topic(href, href_list)
-	..()
-	if (href_list["toggle_defence_mode"])
-		src.defence_mode()
-	return
-*/

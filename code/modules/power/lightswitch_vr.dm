@@ -109,7 +109,7 @@
 		if (stage == FRAME_WIRED)
 			stage = FRAME_FASTENED
 			user.update_examine_panel(src)
-			new /obj/item/stack/cable_coil(get_turf(src), 1, "red")
+			new /obj/item/stack/cable_coil(get_turf(src), 1, null, "red")
 			user.visible_message("\The [user] removes the wiring from \the [src].", \
 				"You remove the wiring from \the [src].", "You hear a snip.")
 			playsound(src.loc, W.usesound, 50, 1)

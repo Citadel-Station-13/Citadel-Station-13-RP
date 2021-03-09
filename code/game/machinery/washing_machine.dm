@@ -25,8 +25,8 @@
 		/obj/item/clothing/head/helmet/space
 		)
 
-/obj/machinery/washing_machine/New()
-	..()
+/obj/machinery/washing_machine/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/motor(src)
 	component_parts += new /obj/item/stock_parts/gear(src)

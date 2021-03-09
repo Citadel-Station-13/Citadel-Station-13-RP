@@ -1,6 +1,5 @@
-/mob/living/New()
-	..()
-
+/mob/living/Initialize(mapload)
+	. = ..()
 	//Prime this list if we need it.
 	if(has_huds)
 		add_overlay(backplane,TRUE) //Strap this on here, to block HUDs from appearing in rightclick menus: http://www.byond.com/forum/?post=2336679

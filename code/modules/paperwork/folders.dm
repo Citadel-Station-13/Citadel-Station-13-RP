@@ -40,12 +40,12 @@
 	desc = "A white folder with RD markings."
 	icon_state = "folder_rd"
 
-/obj/item/folder/white_rd/New()
+/obj/item/folder/white_rd/Initialize(mapload)
+	. = ..()
 	//add some memos
-	var/obj/item/paper/P = new()
+	var/obj/item/paper/P = new(src)
 	P.name = "Memo RE: proper analysis procedure"
 	P.info = "<br>We keep test dummies in pens here for a reason"
-	src.contents += P
 	update_icon()
 
 /obj/item/folder/yellow_ce

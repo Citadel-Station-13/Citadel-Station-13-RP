@@ -45,8 +45,8 @@
 			"gold" = 3,
 			"silver" = 3,
 			"phoron" = 25))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
 
@@ -74,8 +74,8 @@
 			"gold" = 7,
 			"silver" = 7,
 			"phoron" = 2))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
 
@@ -90,7 +90,7 @@
 /turf/space/bluespace
 	name = "bluespace"
 	icon_state = "bluespace"
-/turf/space/bluespace/Initialize()
+/turf/space/bluespace/Initialize(mapload)
 	..()
 	icon_state = "bluespace"
 
@@ -99,7 +99,7 @@
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
-/turf/space/sandyscroll/Initialize()
+/turf/space/sandyscroll/Initialize(mapload)
 	..()
 	icon_state = "desert_ns"
 
@@ -107,7 +107,7 @@
 	name = "sand transit"
 	icon = 'maps/endeavor/endeavor_turfs.dmi'
 	icon_state = "desert_sn"
-/turf/space/sandyscroll/Initialize()
+/turf/space/sandyscroll/Initialize(mapload)
 	..()
 	icon_state = "desert_sn"
 
@@ -116,7 +116,7 @@
 /turf/simulated/sky/odin5
 	color = "#FFBBBB"
 
-/turf/simulated/sky/odin5/Initialize()
+/turf/simulated/sky/odin5/Initialize(mapload)
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

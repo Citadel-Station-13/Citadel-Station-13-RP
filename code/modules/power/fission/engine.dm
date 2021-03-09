@@ -546,7 +546,7 @@
 	var/mob/living/simple_mob/my_mob
 	var/depleted = FALSE
 
-/obj/nuclear_mistake_spawner/Initialize()
+/obj/nuclear_mistake_spawner/Initialize(mapload)
 	. = ..()
 
 	if(!LAZYLEN(mobs_to_pick_from))

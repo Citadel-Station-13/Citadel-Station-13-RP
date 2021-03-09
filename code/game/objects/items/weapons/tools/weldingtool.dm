@@ -40,7 +40,7 @@
 	drop_sound = 'sound/items/drop/weldingtool.ogg'
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
 
-/obj/item/weldingtool/Initialize()
+/obj/item/weldingtool/Initialize(mapload)
 	. = ..()
 //	var/random_fuel = min(rand(10,20),max_fuel)
 	var/datum/reagents/R = new/datum/reagents(max_fuel)
@@ -470,7 +470,7 @@
 	always_process = TRUE
 	var/obj/item/weldpack/mounted_pack = null
 
-/obj/item/weldingtool/tubefed/Initialize()
+/obj/item/weldingtool/tubefed/Initialize(mapload)
 	. = ..()
 	if(istype(loc, /obj/item/weldpack))
 		var/obj/item/weldpack/holder = loc
@@ -536,7 +536,7 @@
 /obj/item/weldingtool/electric/unloaded
 	cell_type = null
 
-/obj/item/weldingtool/electric/Initialize()
+/obj/item/weldingtool/electric/Initialize(mapload)
 	. = ..()
 	if(cell_type == null)
 		update_icon()

@@ -166,6 +166,34 @@
 		src.add_fingerprint(user)
 		return
 
+/obj/item/storage/secure/briefcase/MouseDrop(mob/user as mob)
+	if(ismob(src.loc))
+		if ((src.loc == user) && (src.locked == 1))
+			return
+		if(!CanMouseDrop(src))
+			return
+		var/mob/M = src.loc
+		if(!M.unEquip(src))
+			return
+		src.add_fingerprint(usr)
+		M.put_in_active_hand(src)
+
+//DONATOR ITEM
+
+/obj/item/storage/secure/briefcase/vicase
+	name = "VI's Secure Briefpack"
+	w_class = ITEMSIZE_LARGE
+	max_w_class = ITEMSIZE_LARGE
+	max_storage_space = INVENTORY_STANDARD_SPACE
+	slot_flags = SLOT_BACK
+	icon = 'icons/obj/clothing/backpack.dmi'
+	icon_state = "securev"
+	item_state_slots = list(slot_r_hand_str = "securev", slot_l_hand_str = "securev")
+	desc = "A large briefcase with a digital locking system and a magnetic attachment system."
+	force = 0
+	throw_speed = 1
+	throw_range = 4
+
 // -----------------------------
 //        Secure Safe
 // -----------------------------

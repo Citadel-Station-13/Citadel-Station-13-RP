@@ -9,7 +9,7 @@
 	var/datum/say_list/say_list = null
 	var/say_list_type = /datum/say_list	// Type to give us on initialization. Default has empty lists, so the mob will be silent.
 
-/mob/living/Initialize()
+/mob/living/Initialize(mapload)
 	if(say_list_type)
 		say_list = new say_list_type(src)
 	return ..()
@@ -155,7 +155,7 @@
 	say_threaten = list("Gets out of heres!")
 	say_stand_down = list("Yaya, runs!", "Kikikiki!")
 	say_escalate = list("Skrek!", "Bringings it!", "Takings shot", "Lock claws!")
-	
+
 
 	//Synth Horror Saylist
 

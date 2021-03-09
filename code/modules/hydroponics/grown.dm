@@ -26,7 +26,7 @@
 	if(planttype)
 		plantname = planttype
 
-/obj/item/reagent_containers/food/snacks/grown/Initialize()
+/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload)
 	..()
 	spawn()
 		if(!plantname)
@@ -356,8 +356,8 @@
 
 var/list/fruit_icon_cache = list()
 
-/obj/item/reagent_containers/food/snacks/fruit_slice/New(var/newloc, var/datum/seed/S)
-	..(newloc)
+/obj/item/reagent_containers/food/snacks/fruit_slice/Initialize(mapload, datum/seed/S)
+	. = ..()
 	// Need to go through and make a general image caching controller. Todo.
 	if(!istype(S))
 		qdel(src)

@@ -16,12 +16,12 @@
 /mob/zshadow/can_fall()
 	return FALSE
 
-/mob/zshadow/New(var/mob/L)
-	if(!istype(L))
-		qdel(src)
-		return
-	owner = L
-	sync_icon(L)
+/mob/zshadow/Initialize(mapload)
+	. = ..()
+	if(!isliving(loc))
+		return INITIALIZE_HINT_QDEL
+	owner = loc
+	sync_icon(loc)
 
 /mob/zshadow/Destroy()
 	owner.shadow = null

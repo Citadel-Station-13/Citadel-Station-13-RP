@@ -37,7 +37,7 @@
 	var/skill_needed = SKILL_ADEPT		// Piloting skill needed to steer it without going in random dir
 	var/operator_skill
 
-/obj/effect/overmap/visitable/ship/Initialize()
+/obj/effect/overmap/visitable/ship/Initialize(mapload)
 	. = ..()
 	min_speed = round(min_speed, SHIP_MOVE_RESOLUTION)
 	max_speed = round(max_speed, SHIP_MOVE_RESOLUTION)

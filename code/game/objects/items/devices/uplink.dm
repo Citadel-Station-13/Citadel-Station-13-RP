@@ -19,8 +19,8 @@
 /obj/item/uplink/nano_host()
 	return loc
 
-/obj/item/uplink/New(var/location, var/datum/mind/owner = null, var/telecrystals = DEFAULT_TELECRYSTAL_AMOUNT)
-	..()
+/obj/item/uplink/Initialize(mapload, datum/mind/owner, telecrystals = DEFAULT_TELECRYSTAL_AMOUNT)
+	. = ..()
 	src.uplink_owner = owner
 	purchase_log = list()
 	world_uplinks += src
@@ -58,11 +58,10 @@
 	var/exploit_id								// Id of the current exploit record we are viewing
 
 // The hidden uplink MUST be inside an obj/item's contents.
-/obj/item/uplink/hidden/New()
-	spawn(2)
-		if(!istype(src.loc, /obj/item))
-			qdel(src)
-	..()
+/obj/item/uplink/hidden/Initialize(mapload)
+	. = ..()
+	if(!isitem(loc))
+		return INITIALIZE_HINT_QDEL
 	nanoui_data = list()
 	update_nano_data()
 
@@ -229,7 +228,8 @@
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 
-/obj/item/multitool/uplink/New()
+/obj/item/multitool/uplink/Initialize(mapload)
+	. = ..()
 	hidden_uplink = new(src)
 
 /obj/item/multitool/uplink/attack_self(mob/user as mob)
@@ -239,7 +239,7 @@
 /obj/item/radio/headset/uplink
 	traitor_frequency = 1445
 
-/obj/item/radio/headset/uplink/New()
-	..()
+/obj/item/radio/headset/uplink/Initialize(mapload)
+	. = ..()
 	hidden_uplink = new(src)
 	hidden_uplink.uses = DEFAULT_TELECRYSTAL_AMOUNT

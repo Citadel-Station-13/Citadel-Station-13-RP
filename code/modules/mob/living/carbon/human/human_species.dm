@@ -4,7 +4,7 @@
 
 /mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	delete_inventory()
@@ -56,43 +56,43 @@
 /mob/living/carbon/human/dummy
 	no_vore = TRUE //Dummies don't need bellies.
 
-/mob/living/carbon/human/sergal/New(var/new_loc)
+/mob/living/carbon/human/sergal/Initialize(mapload, new_species)
 	h_style = "Sergal Plain"
-	..(new_loc, "Sergal")
+	return ..(mapload, "Sergal")
 
-/mob/living/carbon/human/akula/New(var/new_loc)
-	..(new_loc, "Akula")
+/mob/living/carbon/human/akula/Initialize(mapload)
+	return ..(mapload, "Akula")
 
-/mob/living/carbon/human/nevrean/New(var/new_loc)
-	..(new_loc, "Nevrean")
+/mob/living/carbon/human/nevrean/Initialize(mapload)
+	return ..(mapload, "Nevrean")
 
-/mob/living/carbon/human/xenochimera/New(var/new_loc)
-	..(new_loc, "Xenochimera")
+/mob/living/carbon/human/xenochimera/Initialize(mapload)
+	return ..(mapload, "Xenochimera")
 
-/mob/living/carbon/human/xenohybrid/New(var/new_loc)
-	..(new_loc, "Xenomorph Hybrid")
+/mob/living/carbon/human/xenohybrid/Initialize(mapload, new_species)
+	return ..(mapload, "Xenomorph Hybrid")
 
-/mob/living/carbon/human/spider/New(var/new_loc)
-	..(new_loc, "Vasilissan")
+/mob/living/carbon/human/spider/Initialize(mapload)
+	return ..(mapload, "Vasilissan")
 
-/mob/living/carbon/human/vulpkanin/New(var/new_loc)
-	..(new_loc, "Vulpkanin")
+/mob/living/carbon/human/vulpkanin/Initialize(mapload)
+	return ..(mapload, "Vulpkanin")
 
-/mob/living/carbon/human/protean/New(var/new_loc)
-	..(new_loc, "Protean")
+/mob/living/carbon/human/protean/Initialize(mapload)
+	return ..(mapload, "Protean")
 
-/mob/living/carbon/human/alraune/New(var/new_loc)
-	..(new_loc, "Alraune")
+/mob/living/carbon/human/alraune/Initialize(mapload)
+	return ..(mapload, "Alraune")
 
-/mob/living/carbon/human/shadekin/New(var/new_loc)
-	..(new_loc, SPECIES_SHADEKIN)
+/mob/living/carbon/human/shadekin/Initialize(mapload)
+	return ..(mapload, SPECIES_SHADEKIN)
 
 //Fashion Mannequins
 /mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -121,7 +121,7 @@
 	. = ..()
 	name = "Plastic Mannequin"
 	real_name = "Plastic Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -151,7 +151,7 @@
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -183,7 +183,7 @@
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -212,7 +212,7 @@
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)
@@ -241,7 +241,7 @@
 	. = ..()
 	name = "Wooden Mannequin"
 	real_name = "Wooden Mannequin"
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	weight = rand(25,175)

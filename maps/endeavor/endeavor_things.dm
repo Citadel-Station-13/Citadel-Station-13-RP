@@ -209,8 +209,8 @@
 	name = "expedition weaponry cabinet"
 	req_one_access = list(access_explorer,access_armory)
 
-/obj/structure/closet/secure_closet/guncabinet/excursion/New()
-	..()
+/obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 3)
 		new /obj/item/gun/energy/frontier/locked(src)
 
@@ -383,8 +383,8 @@
 	allow_items = 1
 
 //Rust manual
-/obj/item/book/manual/rust_engine/New()
-	..()
+/obj/item/book/manual/rust_engine/Initialize(mapload)
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>

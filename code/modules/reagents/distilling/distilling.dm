@@ -73,7 +73,7 @@
 	Master = null
 	..()
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/Initialize()
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/Initialize(mapload)
 	..()
 
 	Reservoir = new (src)

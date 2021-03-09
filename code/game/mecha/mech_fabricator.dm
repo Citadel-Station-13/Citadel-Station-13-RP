@@ -26,8 +26,8 @@
 	var/category = null
 	var/sync_message = ""
 
-/obj/machinery/mecha_part_fabricator/New()
-	..()
+/obj/machinery/mecha_part_fabricator/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
@@ -37,11 +37,7 @@
 	RefreshParts()
 
 	files = new /datum/research(src) //Setup the research data holder.
-	return
-
-/obj/machinery/mecha_part_fabricator/Initialize()
 	update_categories()
-	. = ..()
 
 /obj/machinery/mecha_part_fabricator/process(delta_time)
 	..()

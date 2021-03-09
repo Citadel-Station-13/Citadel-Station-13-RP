@@ -45,7 +45,7 @@
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
-	dismantle_wall(null, null, TRUE)
+	dismantle_wall(null, null, TRUE, FALSE)
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
@@ -118,7 +118,7 @@
 
 /turf/simulated/wall/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
 	clear_plants()
-	..(N, tell_universe, force_lighting_update, preserve_outdoors)
+	return ..(N, tell_universe, force_lighting_update, preserve_outdoors)
 
 //Appearance
 /turf/simulated/wall/examine(mob/user)
@@ -186,7 +186,7 @@
 
 	return ..()
 
-/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
+/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product, changeturf = TRUE)
 
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
@@ -212,7 +212,8 @@
 	girder_material = null
 	update_connections(1)
 
-	ChangeTurf(/turf/simulated/floor/plating)
+	if(!changeturf)
+		ChangeTurf(/turf/simulated/floor/plating)
 
 /turf/simulated/wall/ex_act(severity)
 	switch(severity)

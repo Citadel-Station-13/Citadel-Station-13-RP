@@ -58,7 +58,7 @@
 	max_universal_equip = 1
 	max_special_equip = 2
 
-/obj/mecha/combat/gygax/dark/Initialize()
+/obj/mecha/combat/gygax/dark/Initialize(mapload)
 	..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot
 	ME.attach(src)
@@ -103,10 +103,9 @@
 
 	var/obj/item/clothing/glasses/hud/health/mech/hud
 
-/obj/mecha/combat/gygax/serenity/New()
-	..()
+/obj/mecha/combat/gygax/serenity/Initialize(mapload)
+	. = ..()
 	hud = new /obj/item/clothing/glasses/hud/health/mech(src)
-	return
 
 /obj/mecha/combat/gygax/serenity/moved_inside(var/mob/living/carbon/human/H as mob)
 	if(..())

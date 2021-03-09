@@ -133,13 +133,17 @@
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 	icon_state = "beanshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
-	starts_with = list(/obj/item/ammo_casing/a12g/beanbag = 8)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
+/obj/item/storage/box/beanbags/PopulateContents()
+	for(var/i in 1 to 8)
+		new /obj/item/ammo_casing/a12g/beanbag(src)
 
-/obj/item/storage/box/beanbags/large/New()
-	starts_with = list(/obj/item/ammo_casing/a12g/beanbag = 16)
+/obj/item/storage/box/beanbags/large/PopulateContents()
+	for(var/i in 1 to 16)
+		new /obj/item/ammo_casing/a12g/beanbag(src)
+
 /obj/item/storage/box/shotgunammo
 	name = "box of shotgun slugs"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."

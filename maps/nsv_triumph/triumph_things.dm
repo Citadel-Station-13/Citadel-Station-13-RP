@@ -95,7 +95,7 @@
 /obj/machinery/smartfridge/chemistry/chemvator/down
 	name = "\improper Smart Chemavator - Lower"
 
-/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize()
+/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize(mapload)
 	. = ..()
 	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator,get_zstep(src,UP))
 	if(istype(above))
@@ -154,14 +154,14 @@ var/global/list/latejoin_shuttle   = list()
 /obj/effect/landmark/shuttle/New()
 	latejoin_shuttle += loc // Register this turf as shuttle latejoin.
 	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
-	..()
+	return ..()
 
 /datum/spawnpoint/shuttle
 	display_name = "Shuttle Bay"
 	msg = "has arrived on the shuttle"
 
 /datum/spawnpoint/shuttle/New()
-	..()
+	. = ..()
 	turfs = latejoin_shuttle
 
 //
@@ -269,8 +269,8 @@ var/global/list/latejoin_shuttle   = list()
 	desc = "Neutralizes toxins and provides a mild analgesic effect."
 	icon_state = "pill2"
 
-/obj/item/reagent_containers/pill/airlock/New()
-	..()
+/obj/item/reagent_containers/pill/airlock/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("anti_toxin", 15)
 	reagents.add_reagent("paracetamol", 5)
 
@@ -289,8 +289,7 @@ var/global/list/latejoin_shuttle   = list()
 	name = "expedition weaponry cabinet"
 	req_one_access = list(access_explorer,access_armory)
 
-/obj/structure/closet/secure_closet/guncabinet/excursion/New()
-	..()
+/obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
 	for(var/i = 1 to 4)
 		new /obj/item/gun/energy/frontier/locked(src)
 	for(var/i = 1 to 4)

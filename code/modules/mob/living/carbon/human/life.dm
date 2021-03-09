@@ -617,25 +617,30 @@ var/last_message = 0
 		return
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
-		species.heat_level_1 = 400
-		species.heat_level_2 = 420 // haha nice
-		species.heat_level_3 = 1000
-		species.cold_level_1 = 275
-		species.cold_level_2 = 250
-		species.cold_level_3 = 200
-		species.cold_discomfort_level = 290
-		species.heat_discomfort_level = 380
-		species.heat_discomfort_strings = list(
-			"You feel heat within your wiring.",
-			"You feel uncomfortably warm.",
-			"Your internal sensors chime at the increase in temperature."
-			)
-		species.cold_discomfort_strings = list(
-			"A small heating element begins warming your system.",
-			"Your focus is briefly stolen by the chill of the air.",
-			"You feel uncomfortably cold.",
-			"You feel a chill within your wiring."
-			)
+		var/mob/living/carbon/human/H = src
+		if(H.species.name == "Protean")
+			return // dont modify protean heat levels
+
+		else
+			species.heat_level_1 = 400
+			species.heat_level_2 = 420 // haha nice
+			species.heat_level_3 = 1000
+			species.cold_level_1 = 275
+			species.cold_level_2 = 250
+			species.cold_level_3 = 200
+			species.cold_discomfort_level = 290
+			species.heat_discomfort_level = 380
+			species.heat_discomfort_strings = list(
+				"You feel heat within your wiring.",
+				"You feel uncomfortably warm.",
+				"Your internal sensors chime at the increase in temperature."
+				)
+			species.cold_discomfort_strings = list(
+				"A small heating element begins warming your system.",
+				"Your focus is briefly stolen by the chill of the air.",
+				"You feel uncomfortably cold.",
+				"You feel a chill within your wiring."
+				)
 	//Moved pressure calculations here for use in skip-processing check.
 	var/pressure = environment.return_pressure()
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)
@@ -1283,6 +1288,38 @@ var/last_message = 0
 					if(260 to 280)			bodytemp.icon_state = "temp-3"
 					else					bodytemp.icon_state = "temp-4"
 			else
+				//TODO: precalculate all of this stuff when the species datum is created
+				var/base_temperature = species.body_temperature
+				if(base_temperature == null) //some species don't have a set metabolic temperature
+					base_temperature = (species.heat_level_1 + species.cold_level_1)/2
+
+				var/temp_step
+				if (bodytemperature >= base_temperature)
+					temp_step = (species.heat_level_1 - base_temperature)/4
+
+					if (bodytemperature >= species.heat_level_1)
+						bodytemp.icon_state = "temp4"
+					else if (bodytemperature >= base_temperature + temp_step*3)
+						bodytemp.icon_state = "temp3"
+					else if (bodytemperature >= base_temperature + temp_step*2)
+						bodytemp.icon_state = "temp2"
+					else if (bodytemperature >= base_temperature + temp_step*1)
+						bodytemp.icon_state = "temp1"
+					else
+						bodytemp.icon_state = "temp0"
+				else if (bodytemperature < base_temperature)
+					temp_step = (base_temperature - species.cold_level_1)/4
+
+					if (bodytemperature <= species.cold_level_1)
+						bodytemp.icon_state = "temp-4"
+					else if (bodytemperature <= base_temperature - temp_step*3)
+						bodytemp.icon_state = "temp-3"
+					else if (bodytemperature <= base_temperature - temp_step*2)
+						bodytemp.icon_state = "temp-2"
+					else if (bodytemperature <= base_temperature - temp_step*1)
+						bodytemp.icon_state = "temp-1"
+					else
+						bodytemp.icon_state = "temp0"
 		if(bodytemperature >= 361)
 			if(isSynthetic())
 				if(world.time >= last_message || last_message == 0)
@@ -1295,39 +1332,6 @@ var/last_message = 0
 						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
 						src.nutrition -= 50
 					last_message = world.time + 60 SECONDS
-			//TODO: precalculate all of this stuff when the species datum is created
-			var/base_temperature = species.body_temperature
-			if(base_temperature == null) //some species don't have a set metabolic temperature
-				base_temperature = (species.heat_level_1 + species.cold_level_1)/2
-
-			var/temp_step
-			if (bodytemperature >= base_temperature)
-				temp_step = (species.heat_level_1 - base_temperature)/4
-
-				if (bodytemperature >= species.heat_level_1)
-					bodytemp.icon_state = "temp4"
-				else if (bodytemperature >= base_temperature + temp_step*3)
-					bodytemp.icon_state = "temp3"
-				else if (bodytemperature >= base_temperature + temp_step*2)
-					bodytemp.icon_state = "temp2"
-				else if (bodytemperature >= base_temperature + temp_step*1)
-					bodytemp.icon_state = "temp1"
-				else
-					bodytemp.icon_state = "temp0"
-
-			else if (bodytemperature < base_temperature)
-				temp_step = (base_temperature - species.cold_level_1)/4
-
-				if (bodytemperature <= species.cold_level_1)
-					bodytemp.icon_state = "temp-4"
-				else if (bodytemperature <= base_temperature - temp_step*3)
-					bodytemp.icon_state = "temp-3"
-				else if (bodytemperature <= base_temperature - temp_step*2)
-					bodytemp.icon_state = "temp-2"
-				else if (bodytemperature <= base_temperature - temp_step*1)
-					bodytemp.icon_state = "temp-1"
-				else
-					bodytemp.icon_state = "temp0"
 		if(blinded)
 			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 

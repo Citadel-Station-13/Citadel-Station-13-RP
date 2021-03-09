@@ -12,5 +12,5 @@
 /obj/away_mission_init/poi_d
 	name = "away mission initializer -  Class D World"
 
-/obj/away_mission_init/poi_d/Initialize()
+/obj/away_mission_init/poi_d/Initialize(mapload)
 	return INITIALIZE_HINT_QDEL

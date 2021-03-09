@@ -107,7 +107,7 @@
 	if(stat)
 		icon_state = "[icon_state]_dead"
 
-/mob/living/simple_mob/animal/space/space_worm/head/Initialize()
+/mob/living/simple_mob/animal/space/space_worm/head/Initialize(mapload)
 	..()
 
 	var/mob/living/simple_mob/animal/space/space_worm/current = src
@@ -394,7 +394,7 @@
 	filling_color = "#551A8B"
 	center_of_mass = list("x"=16, "y"=14)
 
-/obj/item/reagent_containers/food/snacks/meat/worm/Initialize()
+/obj/item/reagent_containers/food/snacks/meat/worm/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 6)
 	reagents.add_reagent("phoron", 3)

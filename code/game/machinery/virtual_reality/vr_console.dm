@@ -23,15 +23,15 @@
 	active_power_usage = 200
 	light_color = "#FF0000"
 
-/obj/machinery/vr_sleeper/New()
-	..()
+/obj/machinery/vr_sleeper/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stack/material/glass/reinforced(src, 2)
 
 	RefreshParts()
 
-/obj/machinery/vr_sleeper/Initialize()
+/obj/machinery/vr_sleeper/Initialize(mapload)
 	. = ..()
 	smoke = new
 	update_icon()

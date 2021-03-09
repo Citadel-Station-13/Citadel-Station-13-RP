@@ -37,10 +37,9 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
 
-/obj/item/toy/balloon/New()
-	var/datum/reagents/R = new/datum/reagents(10)
-	reagents = R
-	R.my_atom = src
+/obj/item/toy/balloon/Initialize(mapload)
+	. = ..()
+	create_reagents(10)
 
 /obj/item/toy/balloon/attack(mob/living/carbon/human/M as mob, mob/user as mob)
 	return
@@ -350,10 +349,9 @@
 	var/empty = 0
 	slot_flags = SLOT_HOLSTER
 
-/obj/item/toy/waterflower/New()
-	var/datum/reagents/R = new/datum/reagents(10)
-	reagents = R
-	R.my_atom = src
+/obj/item/toy/waterflower/Initialize(mapload)
+	. = ..()
+	var/datum/reagents/R = create_reagents(10)
 	R.add_reagent("water", 10)
 
 /obj/item/toy/waterflower/attack(mob/living/carbon/human/M as mob, mob/user as mob)
@@ -514,8 +512,8 @@
 	var/cooldown = 0
 	var/toysay = "What the fuck did you do?"
 
-/obj/item/toy/figure/New()
-	..()
+/obj/item/toy/figure/Initialize(mapload)
+	. = ..()
 	desc = "A \"Space Life\" brand [name]"
 
 /obj/item/toy/figure/attack_self(mob/user as mob)

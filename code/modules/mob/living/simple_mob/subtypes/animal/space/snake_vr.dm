@@ -139,7 +139,7 @@
 	nutriment_amt = 1
 	nutriment_desc = list("sugar" = 1)
 
-/obj/item/reagent_containers/food/snacks/snakesnack/Initialize()
+/obj/item/reagent_containers/food/snacks/snakesnack/Initialize(mapload)
 	..()
 	if(!snack_colour)
 		snack_colour = pick( list("yellow","green","pink","blue") )
@@ -154,7 +154,7 @@
 	icon_state = "sneksnakbox"
 	storage_slots = 7
 
-/obj/item/storage/box/snakesnackbox/New()
+/obj/item/storage/box/snakesnackbox/PopulateContents()
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
@@ -162,4 +162,3 @@
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
 	new /obj/item/reagent_containers/food/snacks/snakesnack(src)
-	..()

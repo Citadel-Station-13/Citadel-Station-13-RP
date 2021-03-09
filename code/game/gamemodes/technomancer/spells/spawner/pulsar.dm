@@ -13,8 +13,8 @@
 	aspect = ASPECT_EMP
 	spawner_type = /obj/effect/temporary_effect/pulse/pulsar
 
-/obj/item/spell/spawner/pulsar/New()
-	..()
+/obj/item/spell/spawner/pulsar/Initialize(mapload)
+	. = ..()
 	set_light(3, 2, l_color = "#2ECCFA")
 
 /obj/item/spell/spawner/pulsar/on_ranged_cast(atom/hit_atom, mob/user)
@@ -30,7 +30,7 @@
 	var/pulses_remaining = 3
 	var/pulse_delay = 2 SECONDS
 
-/obj/effect/temporary_effect/pulse/Initialize()
+/obj/effect/temporary_effect/pulse/Initialize(mapload)
 	spawn(0)
 		pulse_loop()
 	return ..()

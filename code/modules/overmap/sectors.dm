@@ -27,7 +27,7 @@
 
 	var/has_distress_beacon
 
-/obj/effect/overmap/visitable/Initialize()
+/obj/effect/overmap/visitable/Initialize(mapload)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return

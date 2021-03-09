@@ -99,7 +99,7 @@
 		SPECIES_ZORREN_HIGH,
 		SPECIES_VOX
 	)
-/obj/item/clothing/suit/space/void/explorer/Initialize()
+/obj/item/clothing/suit/space/void/explorer/Initialize(mapload)
 	. = ..()
 	sprite_sheets += sprite_sheets_refit
 
@@ -124,6 +124,6 @@
 		SPECIES_ZORREN_HIGH,
 		SPECIES_VOX
 	)
-/obj/item/clothing/head/helmet/space/void/explorer/Initialize()
+/obj/item/clothing/head/helmet/space/void/explorer/Initialize(mapload)
 	. = ..()
 	sprite_sheets += sprite_sheets_refit

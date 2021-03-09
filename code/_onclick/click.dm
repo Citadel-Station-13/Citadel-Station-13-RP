@@ -17,10 +17,14 @@
 */
 
 /atom/Click(var/location, var/control, var/params) // This is their reaction to being clicked on (standard proc)
+	if(!(flags & INITIALIZED))
+		return
 	if(src)
 		usr.ClickOn(src, params)
 
 /atom/DblClick(var/location, var/control, var/params)
+	if(!(flags & INITIALIZED))
+		return
 	if(src)
 		usr.DblClickOn(src, params)
 
@@ -187,7 +191,7 @@
 
 	if(is_incorporeal())
 		return 0
-	
+
 	if(!SSticker)
 		to_chat(src, "You cannot attack people before the game has started.")
 		return 0

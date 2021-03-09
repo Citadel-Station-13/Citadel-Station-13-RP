@@ -12,8 +12,8 @@
 	var/charge = 45
 	var/repair = 0
 
-/obj/machinery/mech_recharger/New()
-	..()
+/obj/machinery/mech_recharger/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stock_parts/capacitor(src)

@@ -218,7 +218,7 @@ MRE Stuff
 	var/opened = FALSE
 	starts_with = list(/obj/item/reagent_containers/food/snacks/slice/meatpizza/filled)
 
-/obj/item/storage/mrebag/Initialize()
+/obj/item/storage/mrebag/Initialize(mapload)
 	. = ..()
 
 /obj/item/storage/mrebag/update_icon()

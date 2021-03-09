@@ -33,7 +33,7 @@
 
 	var/cell_type = /obj/item/cell/device
 
-/obj/item/flash/Initialize()
+/obj/item/flash/Initialize(mapload)
 	..()
 	power_supply = new cell_type(src)
 

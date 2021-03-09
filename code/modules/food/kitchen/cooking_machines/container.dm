@@ -15,7 +15,7 @@
 		/obj/item/organ/internal/brain
 	)
 
-/obj/item/reagent_containers/cooking_container/Initialize()
+/obj/item/reagent_containers/cooking_container/Initialize(mapload)
 	. = ..()
 	create_reagents(max_reagents)
 	flags |= OPENCONTAINER | NOREACT

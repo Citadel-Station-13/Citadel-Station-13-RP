@@ -438,9 +438,9 @@
 	icon_state = "beacon"
 	var/mob/living/carbon/human/parent_human
 
-/mob/observer/eye/ar_soul/New(var/mob/brainmob, var/mob/living/carbon/human/human)
+/mob/observer/eye/ar_soul/Initialize(mapload, mob/brainmob, mob/living/carbon/human/human)
 	ASSERT(brainmob && brainmob.client)
-	..()
+	. = ..()
 
 	owner = brainmob				//Set eyeobj's owner
 	parent_human = human			//E-z reference to human
@@ -579,7 +579,7 @@
 	if(!client || !client.prefs)
 		return //Um...
 
-	eyeobj = new/mob/observer/eye/ar_soul(src,nif.human)
+	eyeobj = new/mob/observer/eye/ar_soul(src, src, nif.human)
 	soulcatcher.notify_into("[src] now AR projecting.")
 
 /mob/living/carbon/brain/caught_soul/verb/jump_to_owner()

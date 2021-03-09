@@ -469,7 +469,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
-	var/list/sortmob = sortList(mob_list, cmp=/proc/cmp_name_asc)
+	var/list/sortmob = sortList(GLOB.mob_list, cmp=/proc/cmp_name_asc)
 	for(var/mob/observer/eye/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/observer/blob/M in sortmob)
@@ -499,9 +499,9 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	for(var/mob/living/voice/M in sortmob)
 		moblist.Add(M)
 //	for(var/mob/living/silicon/hivebot/M in sortmob)
-//		mob_list.Add(M)
+//		GLOB.mob_list.Add(M)
 //	for(var/mob/living/silicon/hive_mainframe/M in sortmob)
-//		mob_list.Add(M)
+//		GLOB.mob_list.Add(M)
 	return moblist
 
 // Format a power value in W, kW, MW, or GW.
@@ -513,14 +513,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	else if(powerused < 1000000000) //Less than a GW
 		return "[round((powerused * 0.000001),0.001)] MW"
 	return "[round((powerused * 0.000000001),0.0001)] GW"
-
-/proc/get_mob_by_ckey(key)
-	if(!key)
-		return
-	var/list/mobs = sortmobs()
-	for(var/mob/M in mobs)
-		if(M.ckey == key)
-			return M
 
 //Forces a variable to be posative
 /proc/modulus(var/M)
@@ -1029,7 +1021,7 @@ proc/oview_or_orange(distance = world.view , center = usr , type)
 
 proc/get_mob_with_client_list()
 	var/list/mobs = list()
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if (M.client)
 			mobs += M
 	return mobs
@@ -1261,8 +1253,8 @@ var/list/WALLITEMS = list(
 
 GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
-//Version of view() which ignores darkness, because BYOND doesn't have it.
-/proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
+//Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
+/proc/dview(range = world.view, center, invis_flags = 0)
 	if(!center)
 		return
 
@@ -1274,34 +1266,44 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	GLOB.dview_mob.loc = null
 
 /mob/dview
+	name = "INTERNAL DVIEW MOB"
 	invisibility = 101
-	density = 0
-
-	anchored = 1
-	simulated = 0
-
+	density = FALSE
 	see_in_dark = 1e6
+	anchored = TRUE
+	/// move_resist = INFINITY
+	var/ready_to_die = FALSE
+
+/mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
+	SHOULD_CALL_PARENT(FALSE)
+	if(flags & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags |= INITIALIZED
+	return INITIALIZE_HINT_NORMAL
+
+/mob/dview/Destroy(force = FALSE)
+	if(!ready_to_die)
+		stack_trace("ALRIGHT WHICH FUCKER TRIED TO DELETE *MY* DVIEW?")
+
+		if (!force)
+			return QDEL_HINT_LETMELIVE
+
+		log_world("EVACUATE THE SHITCODE IS TRYING TO STEAL MUH JOBS")
+		GLOB.dview_mob = new
+	return ..()
+
+
+#define FOR_DVIEW(type, range, center, invis_flags) \
+	GLOB.dview_mob.loc = center;           \
+	GLOB.dview_mob.see_invisible = invis_flags; \
+	for(type in view(range, GLOB.dview_mob))
+
+#define FOR_DVIEW_END GLOB.dview_mob.loc = null
 
 /atom/proc/get_light_and_color(var/atom/origin)
 	if(origin)
 		color = origin.color
 		set_light(origin.light_range, origin.light_power, origin.light_color)
-
-/mob/dview/New()
-	..()
-	// We don't want to be in any mob lists; we're a dummy not a mob.
-	mob_list -= src
-	if(stat == DEAD)
-		dead_mob_list -= src
-	else
-		living_mob_list -= src
-
-/mob/dview/Destroy(var/force)
-	crash_with("Attempt to delete the dview_mob: [log_info_line(src)]")
-	if (!force)
-		return QDEL_HINT_LETMELIVE
-	GLOB.dview_mob = new
-	return ..()
 
 // call to generate a stack trace and print to runtime logs
 /proc/crash_with(msg)

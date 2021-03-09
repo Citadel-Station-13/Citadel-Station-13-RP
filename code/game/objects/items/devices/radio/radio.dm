@@ -243,7 +243,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if (!istype(connection))
 		return
 
-	var/static/mob/living/silicon/ai/announcer/A = new /mob/living/silicon/ai/announcer(src, null, null, 1)
+	var/static/mob/living/silicon/ai/announcer/A = new /mob/living/silicon/ai/announcer(null, null, null, 1)
 	A.SetName(from)
 	Broadcast_Message(connection, A,
 						0, "*garbled automated announcement*", src,
@@ -398,11 +398,11 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	  //#### Sending the signal to all subspace receivers ####//
 
-		for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
+		for(var/obj/machinery/telecomms/receiver/R in GLOB.telecomms_list)
 			R.receive_signal(signal)
 
 		// Allinone can act as receivers.
-		for(var/obj/machinery/telecomms/allinone/R in telecomms_list)
+		for(var/obj/machinery/telecomms/allinone/R in GLOB.telecomms_list)
 			R.receive_signal(signal)
 
 		// Receiving code can be located in Telecommunications.dm
@@ -458,7 +458,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	)
 	signal.frequency = connection.frequency // Quick frequency set
 
-	for(var/obj/machinery/telecomms/receiver/R in telecomms_list)
+	for(var/obj/machinery/telecomms/receiver/R in GLOB.telecomms_list)
 		R.receive_signal(signal)
 
 	if(signal.data["done"] && (position.z in signal.data["level"]))
@@ -906,9 +906,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/radio/subspacehandset/linked
 	var/obj/item/subspaceradio/base_unit
 
-/obj/item/radio/subspacehandset/linked/New(newloc, obj/item/subspaceradio/radio)
+/obj/item/radio/subspacehandset/linked/Initialize(mapload, obj/item/subspaceradio/radio)
 	base_unit = radio
-	..(newloc)
+	return ..(mapload)
 
 /obj/item/radio/subspacehandset/linked/Destroy()
 	if(base_unit)

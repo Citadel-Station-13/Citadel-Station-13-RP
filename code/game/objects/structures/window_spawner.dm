@@ -23,7 +23,7 @@
 /obj/effect/wingrille_spawn/attack_generic()
 	activate()
 
-/obj/effect/wingrille_spawn/Initialize()
+/obj/effect/wingrille_spawn/Initialize(mapload)
 	. = ..()
 	if(!win_path)
 		return
@@ -36,7 +36,7 @@
 		var/obj/structure/grille/G = new /obj/structure/grille(src.loc)
 		handle_grille_spawn(G)
 	var/list/neighbours = list()
-	for (var/dir in cardinal)
+	for (var/dir in GLOB.cardinal)
 		var/turf/T = get_step(src, dir)
 		var/obj/effect/wingrille_spawn/other = locate(/obj/effect/wingrille_spawn) in T
 		if(!other)
