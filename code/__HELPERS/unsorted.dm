@@ -679,7 +679,7 @@ proc/GaussRandRound(var/sigma,var/roundto)
 	for(var/turf/T in contents)
 		turfs_src += T
 	for(var/turf/T in A)
-		turfs_trg + T
+		turfs_trg += T
 
 	var/src_min_x = 0
 	var/src_min_y = 0
