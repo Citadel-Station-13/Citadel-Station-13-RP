@@ -164,7 +164,7 @@
 	var/node1_dir
 	var/node2_dir
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(direction&initialize_mains_directions)
 			if (!node1_dir)
 				node1_dir = direction
@@ -210,7 +210,7 @@
 /obj/machinery/atmospherics/mains_pipe/manifold/atmos_init()
 	var/connect_directions = initialize_mains_directions
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(direction&connect_directions)
 			for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,direction))
 				if(target.initialize_mains_directions & get_dir(target,src))
@@ -221,7 +221,7 @@
 				break
 
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(direction&connect_directions)
 			for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,direction))
 				if(target.initialize_mains_directions & get_dir(target,src))
@@ -232,7 +232,7 @@
 				break
 
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(direction&connect_directions)
 			for(var/obj/machinery/atmospherics/mains_pipe/target in get_step(src,direction))
 				if(target.initialize_mains_directions & get_dir(target,src))
@@ -422,7 +422,7 @@
 	nodes.len = 1
 	. =..()
 	initialize_mains_directions = dir
-	initialize_directions = cardinal & ~dir // actually have a normal connection too
+	initialize_directions = GLOB.cardinal & ~dir // actually have a normal connection too
 
 /obj/machinery/atmospherics/mains_pipe/split3/atmos_init()
 	var/node1_dir

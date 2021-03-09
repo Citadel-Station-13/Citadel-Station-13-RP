@@ -25,6 +25,17 @@
 	on_removed()
 	return ..()
 
+/obj/item/clothing/accessory/MouseDrop(mob/user as mob)
+	if(ismob(src.loc))
+		if(!CanMouseDrop(src))
+			return
+		var/mob/M = src.loc
+		if(!M.unEquip(src))
+			return
+		src.add_fingerprint(usr)
+		M.put_in_active_hand(src)
+
+
 /obj/item/clothing/accessory/proc/get_inv_overlay()
 	if(!inv_overlay)
 		var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
@@ -801,7 +812,6 @@
 	name = "machete sheath"
 	desc = "A handsome synthetic leather sheath with matching belt."
 	icon_state = "holster_machete"
-	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
 	can_hold = list(/obj/item/material/knife/machete)
 	//sound_in = 'sound/effects/holster/sheathin.ogg'

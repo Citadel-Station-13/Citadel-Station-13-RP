@@ -310,7 +310,7 @@
 
 /obj/machinery/computer/scan_consolenew/proc/scan_for_scanner()
 	connected = null
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		connected = locate(/obj/machinery/dna_scannernew) in get_step(src, dir)
 		if(connected)
 			break
