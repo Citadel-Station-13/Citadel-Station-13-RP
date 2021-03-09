@@ -205,6 +205,7 @@
 
 		var/area_path = areas_to_use[az]
 		var/area/areaInstance = new area_path(null)
+		areaInstance.addSorted()
 		for(var/thing in floor_turfs)
 			areaInstance.contents.Add(thing)
 		cfloor.set_area_ref("[REF(areaInstance)]")
