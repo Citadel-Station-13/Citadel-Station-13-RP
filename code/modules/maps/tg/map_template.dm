@@ -111,7 +111,7 @@ var/list/global/map_templates = list()
 		return FALSE
 	SSmapping.add_new_zlevel(name, traits)
 
-//	repopulate_sorted_areas()
+	repopulate_sorted_areas()
 
 	// Initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)
@@ -138,7 +138,8 @@ var/list/global/map_templates = list()
 		return
 
 //	if(!SSmapping.loading_ruins)	// Will be done manually during mapping ss init
-//		repopulate_sorted_areas()
+	if(SSmapping.subsystem_initialized)
+		repopulate_sorted_areas()
 
 	// Initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)

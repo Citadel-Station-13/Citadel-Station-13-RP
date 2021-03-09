@@ -41,11 +41,25 @@
 	var/global/global_uid = 0
 	var/uid
 
+	/// If false, loading multiple maps with this area type will create multiple instances.
+	var/unique = TRUE
+
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
 
-INITIALIZE_IMMEDIATE(/area) // todo remove this fuck the old maploder
+/**
+ * Called when an area loads
+ *
+ *  Adds the item to the GLOB.areas_by_type list based on area type
+ */
 /area/New()
+	// This interacts with the map loader, so it needs to be set immediately
+	// rather than waiting for atoms to initialize.
+	if (unique)
+		GLOB.areas_by_type[type] = src
+
+	uid = ++global_uid
+
 	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
 		// generate one using the icon_state
 		if(icon_state && icon_state != "unknown")
@@ -58,8 +72,6 @@ INITIALIZE_IMMEDIATE(/area) // todo remove this fuck the old maploder
 
 /area/Initialize(mapload)
 	icon_state = ""
-	uid = ++global_uid
-	all_areas += src
 
 	if(requires_power)
 		luminosity = 0
@@ -78,6 +90,8 @@ INITIALIZE_IMMEDIATE(/area) // todo remove this fuck the old maploder
 
 	. = ..()
 
+	reg_in_areas_in_z()
+	
 	blend_mode = BLEND_MULTIPLY // Putting this in the constructor so that it stops the icons being screwed up in the map editor.
 
 	if(!IS_DYNAMIC_LIGHTING(src))
@@ -88,6 +102,52 @@ INITIALIZE_IMMEDIATE(/area) // todo remove this fuck the old maploder
 /area/LateInitialize()
 	power_change()		// all machines set to current power level, also updates lighting icon
 	return INITIALIZE_HINT_LATELOAD
+
+/**
+ * Register this area as belonging to a z level
+ *
+ * Ensures the item is added to the SSmapping.areas_in_z list for this z
+ */
+/area/proc/reg_in_areas_in_z()
+	if(!length(contents))
+		return
+	var/list/areas_in_z = SSmapping.areas_in_z
+	// update_areasize()
+	if(!z)
+		WARNING("No z found for [src]")
+		return
+	if(!areas_in_z["[z]"])
+		areas_in_z["[z]"] = list()
+	areas_in_z["[z]"] += src
+
+/**
+ * Destroy an area and clean it up
+ *
+ * Removes the area from GLOB.areas_by_type and also stops it processing on SSobj
+ *
+ * This is despite the fact that no code appears to put it on SSobj, but
+ * who am I to argue with old coders
+ */
+/area/Destroy()
+	if(GLOB.areas_by_type[type] == src)
+		GLOB.areas_by_type[type] = null
+/*
+	if(base_area)
+		LAZYREMOVE(base_area, src)
+		base_area = null
+	if(sub_areas)
+		for(var/i in sub_areas)
+			var/area/A = i
+			A.base_area = null
+			sub_areas -= A
+			if(A.requires_power)
+				A.power_light = FALSE
+				A.power_equip = FALSE
+				A.power_environ = FALSE
+			INVOKE_ASYNC(A, .proc/power_change)
+*/
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 // Changes the area of T to A. Do not do this manually.
 // Area is expected to be a non-null instance.
@@ -401,7 +461,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 var/list/teleportlocs = list()
 
 /hook/startup/proc/setupTeleportLocs()
-	for(var/area/AR in all_areas)
+	for(var/area/AR in GLOB.sortedAreas)
 		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station)) continue
 		if(teleportlocs.Find(AR.name)) continue
 		var/turf/picked = pick(get_area_turfs(AR.type))
@@ -416,7 +476,7 @@ var/list/teleportlocs = list()
 var/list/ghostteleportlocs = list()
 
 /hook/startup/proc/setupGhostTeleportLocs()
-	for(var/area/AR in all_areas)
+	for(var/area/AR in GLOB.sortedAreas)
 		if(ghostteleportlocs.Find(AR.name)) continue
 		if(istype(AR, /area/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom))
 			ghostteleportlocs += AR.name

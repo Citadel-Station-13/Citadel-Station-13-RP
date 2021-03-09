@@ -349,7 +349,8 @@
 
 /obj/machinery/pros_fabricator/proc/sync()
 	sync_message = "Error: no console found."
-	for(var/obj/machinery/computer/rdconsole/RDC in get_area_all_atoms(get_area(src)))
+	var/area/A = get_area(src)
+	for(var/obj/machinery/computer/rdconsole/RDC in A)
 		if(!RDC.sync)
 			continue
 		for(var/datum/tech/T in RDC.files.known_tech)
