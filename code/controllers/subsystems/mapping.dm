@@ -49,7 +49,6 @@ SUBSYSTEM_DEF(mapping)
 			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Tethermap</span>")
 			config = old_config
 	loadWorld()
-	build_overmap()		// grrrr shitcode
 	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
 	maploader = new()
 	load_map_templates()
@@ -60,6 +59,8 @@ SUBSYSTEM_DEF(mapping)
 	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
 	if(GLOB.using_map)
 		loadLateMaps()
+	if(!GLOB.using_map.overmap_z)
+		build_overmap()
 
 	return ..()
 
