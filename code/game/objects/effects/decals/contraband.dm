@@ -177,7 +177,7 @@
 		add_fingerprint(user)
 
 /obj/structure/sign/poster/proc/roll_and_drop(turf/newloc)
-	var/obj/item/contraband/poster/P = new roll_type(newloc, serial_number)
+	new roll_type(newloc, serial_number)
 	qdel(src)
 
 /datum/poster
