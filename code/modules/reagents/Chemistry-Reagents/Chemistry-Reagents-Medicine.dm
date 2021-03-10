@@ -1235,7 +1235,7 @@
 	id = "sterilizine"
 	description = "Sterilizes wounds in preparation for surgery and thoroughly removes blood."
 	taste_description = "bitterness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	touch_met = 5
 
@@ -1296,7 +1296,7 @@
 	id = "rezadone"
 	description = "A powder with almost magical properties, this substance can effectively treat genetic damage in humanoids, though excessive consumption has side effects."
 	taste_description = "bitterness"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#669900"
 	overdose = REAGENTS_OVERDOSE
 	scannable = 1
