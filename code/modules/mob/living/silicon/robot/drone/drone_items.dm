@@ -1,7 +1,7 @@
 //Simple borg hand.
 //Limited use.
 /obj/item/gripper
-	name = "magnetic gripper"
+	name = "magnetic grabbits"
 	desc = "A simple grasping tool specialized in construction and engineering work."
 	description_info = "Ctrl-Clicking on the gripper will drop whatever it is holding.<br>\
 	Using an object on the gripper will interact with the item inside it, if it exists, instead."
@@ -21,7 +21,8 @@
 		/obj/item/camera_assembly,
 		/obj/item/tank,
 		/obj/item/circuitboard,
-		/obj/item/smes_coil
+		/obj/item/smes_coil,
+		/obj/item/fuelrod/
 		)
 
 	var/obj/item/wrapped = null // Item currently being held.
@@ -39,7 +40,7 @@
 	return
 
 /obj/item/gripper/omni
-	name = "omni gripper"
+	name = "omni grabbits"
 	desc = "A strange grasping tool that can hold anything a human can, but still maintains the limitations of application its more limited cousins have."
 	icon_state = "gripper-omni"
 
@@ -47,7 +48,7 @@
 
 // VEEEEERY limited version for mining borgs. Basically only for swapping cells and upgrading the drills.
 /obj/item/gripper/miner
-	name = "drill maintenance gripper"
+	name = "drill maintenance grabbits"
 	desc = "A simple grasping tool for the maintenance of heavy drilling machines."
 	icon_state = "gripper-mining"
 
@@ -57,7 +58,7 @@
 	)
 
 /obj/item/gripper/security
-	name = "security gripper"
+	name = "security grabbits"
 	desc = "A simple grasping tool for corporate security work."
 	icon_state = "gripper-sec"
 
@@ -73,7 +74,7 @@
 	)
 
 /obj/item/gripper/paperwork
-	name = "paperwork gripper"
+	name = "paperwork grabbits"
 	desc = "A simple grasping tool for clerical work."
 
 	can_hold = list(
@@ -86,7 +87,7 @@
 		)
 
 /obj/item/gripper/medical
-	name = "medical gripper"
+	name = "medical grabbits"
 	desc = "A simple grasping tool for medical work."
 
 	can_hold = list(
@@ -99,7 +100,7 @@
 		)
 
 /obj/item/gripper/research //A general usage gripper, used for toxins/robotics/xenobio/etc
-	name = "scientific gripper"
+	name = "scientific grabbits"
 	icon_state = "gripper-sci"
 	desc = "A simple grasping tool suited to assist in a wide array of research applications."
 
@@ -126,7 +127,7 @@
 		)
 
 /obj/item/gripper/circuit
-	name = "circuit assembly gripper"
+	name = "circuit assembly grabbits"
 	icon_state = "gripper-circ"
 	desc = "A complex grasping tool used for working with circuitry."
 
@@ -147,7 +148,7 @@
 		)
 
 /obj/item/gripper/service //Used to handle food, drinks, and seeds.
-	name = "service gripper"
+	name = "service grabbits"
 	icon_state = "gripper"
 	desc = "A simple grasping tool used to perform tasks in the service sector, such as handling food, drinks, and seeds."
 
@@ -157,11 +158,14 @@
 		/obj/item/seeds,
 		/obj/item/grown,
 		/obj/item/tray,
-		/obj/item/plantspray
+		/obj/item/plantspray,
+		/obj/item/reagent_containers/glass,
+		/obj/item/reagent_containers/food/drinks,
+		/obj/item/storage/box/wings
 		)
 
 /obj/item/gripper/gravekeeper	//Used for handling grave things, flowers, etc.
-	name = "grave gripper"
+	name = "grave grabbits"
 	icon_state = "gripper"
 	desc = "A specialized grasping tool used in the preparation and maintenance of graves."
 
@@ -172,7 +176,7 @@
 		)
 
 /obj/item/gripper/no_use/organ
-	name = "organ gripper"
+	name = "organ grabbits"
 	icon_state = "gripper-flesh"
 	desc = "A specialized grasping tool used to preserve and manipulate organic material."
 
@@ -197,7 +201,7 @@
 			organ.preserved = 0
 
 /obj/item/gripper/no_use/organ/robotics
-	name = "robotics organ gripper"
+	name = "robotics organ grabbits"
 	icon_state = "gripper-flesh"
 	desc = "A specialized grasping tool used in robotics work."
 
@@ -209,7 +213,7 @@
 		)
 
 /obj/item/gripper/no_use/mech
-	name = "exosuit gripper"
+	name = "exosuit grabbits"
 	icon_state = "gripper-mech"
 	desc = "A large, heavy-duty grasping tool used in construction of mechs."
 
@@ -257,7 +261,7 @@
 /obj/item/gripper/verb/drop_item()
 
 	set name = "Drop Item"
-	set desc = "Release an item from your magnetic gripper."
+	set desc = "Release an item from your magnetic grabbits."
 	set category = "Robot Commands"
 
 	if(!wrapped)
