@@ -276,7 +276,7 @@ Alien plants should do something if theres a lot of poison
 		color = linked_node.set_color
 
 	direction_loop:
-		for(var/dirn in cardinal)
+		for(var/dirn in GLOB.cardinal)
 			var/turf/T = get_step(src, dirn)
 
 			if (!istype(T) || T.density || locate(/obj/effect/alien/weeds) in T || istype(T.loc, /area/arrival) || istype(T, /turf/space))

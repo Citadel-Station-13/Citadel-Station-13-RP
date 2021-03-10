@@ -188,8 +188,8 @@
         // Place lights
 		var/turf/placing1 = locate(light_x1, light_y1, cz)
 		var/turf/placing2 = locate(light_x2, light_y2, cz)
-		var/obj/machinery/light/light1 = new(placing1, light)
-		var/obj/machinery/light/light2 = new(placing2, light)
+		var/obj/machinery/light/light1 = new(placing1)
+		var/obj/machinery/light/light2 = new(placing2)
 		if(udir == NORTH || udir == SOUTH)
 			light1.setDir(WEST)
 			light2.setDir(EAST)
