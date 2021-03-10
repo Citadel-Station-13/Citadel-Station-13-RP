@@ -261,7 +261,7 @@
 /obj/item/gripper/verb/drop_item()
 
 	set name = "Drop Item"
-	set desc = "Release an item from your magnetic grippers."
+	set desc = "Release an item from your magnetic gripper."
 	set category = "Robot Commands"
 
 	if(!wrapped)
