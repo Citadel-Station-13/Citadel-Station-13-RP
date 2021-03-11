@@ -223,7 +223,7 @@
 	ckeywhitelist = list("iamcrystalclear")
 
 /datum/gear/donator/vicase
-	display_name = "VI's briefpack"
+	display_name = "VI's secure briefcase"
 	path = /obj/item/storage/secure/briefcase/vicase
 	ckeywhitelist = list("capesh")
 
