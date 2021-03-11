@@ -138,7 +138,7 @@ What is the naming convention for planes or layers?
 #define PLANE_FULLSCREEN		90 //Blindness, mesons, druggy, etc
 	#define OBFUSCATION_LAYER	5 //Where images covering the view for eyes are put
 	#define FULLSCREEN_LAYER	18
-	#define DAMAGE_LAYER		18.1
+	#define DAMAGE_SCREEN_LAYER		18.1
 	#define BLIND_LAYER			18.2
 	#define CRIT_LAYER			18.3
 

@@ -47,6 +47,7 @@
 		Master.StopLoadingMap()
 
 /dmm_suite/proc/load_map_impl(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf, orientation)
+	var/list/areaCache = list()
 	var/tfile = dmm_file//the map file we're creating
 	if(isfile(tfile))
 		tfile = file2text(tfile)
@@ -213,7 +214,7 @@
 								if(!no_afterchange || (key_list[i][j] != space_key))
 									if(!grid_models[key_list[i][j]])
 										throw EXCEPTION("Undefined model key in DMM: [dmm_file], [key_list[i][j]]")
-									parse_grid(grid_models[key_list[i][j]], key_list[i][j], xcrd, ycrd, zcrd, no_afterchange, orientation)
+									parse_grid(grid_models[key_list[i][j]], key_list[i][j], xcrd, ycrd, zcrd, no_afterchange, orientation, areaCache)
 								#ifdef TESTING
 								else
 									++turfsSkipped
@@ -255,7 +256,7 @@
  * 4) Instanciates the atom with its variables
  *
  */
-/dmm_suite/proc/parse_grid(model as text, model_key as text, xcrd as num,ycrd as num,zcrd as num, no_changeturf as num, orientation as num)
+/dmm_suite/proc/parse_grid(model as text, model_key as text, xcrd as num,ycrd as num,zcrd as num, no_changeturf as num, orientation as num, list/areaCache)
 	/*Method parse_grid()
 	- Accepts a text string containing a comma separated list of type paths of the
 		same construction as those contained in a .dmm file, and instantiates them.
@@ -349,15 +350,14 @@
 	//first instance the /area and remove it from the members list
 	index = members.len
 	if(members[index] != /area/template_noop)
-		var/atom/instance
 		var/atype = members[index]
 		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
-		for(var/area/A in all_areas)
-			if(A.type == atype)
-				instance = A
-				break
-		if(!instance)
-			instance = new atype(null)
+		var/atom/instance = areaCache[atype]
+		if (!instance)
+			instance = GLOB.areas_by_type[atype]
+			if (!instance)
+				instance = new atype(null)
+			areaCache[atype] = instance
 		if(crds)
 			instance.contents.Add(crds)
 

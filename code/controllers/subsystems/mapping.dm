@@ -6,6 +6,8 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	flags = SS_NO_FIRE
 
+	var/list/areas_in_z = list()
+
 	/// Zlevel manager list of zlevels.
 	var/list/z_list
 
@@ -49,6 +51,7 @@ SUBSYSTEM_DEF(mapping)
 			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Tethermap</span>")
 			config = old_config
 	loadWorld()
+	repopulate_sorted_areas()
 	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
 	maploader = new()
 	load_map_templates()
@@ -60,6 +63,7 @@ SUBSYSTEM_DEF(mapping)
 	if(GLOB.using_map)
 		loadLateMaps()
 
+	repopulate_sorted_areas()
 	return ..()
 
 /datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, orientation = SOUTH)
