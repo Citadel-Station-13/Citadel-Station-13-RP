@@ -21,7 +21,8 @@
 		/obj/item/camera_assembly,
 		/obj/item/tank,
 		/obj/item/circuitboard,
-		/obj/item/smes_coil
+		/obj/item/smes_coil,
+		/obj/item/fuelrod/
 		)
 
 	var/obj/item/wrapped = null // Item currently being held.
@@ -157,7 +158,10 @@
 		/obj/item/seeds,
 		/obj/item/grown,
 		/obj/item/tray,
-		/obj/item/plantspray
+		/obj/item/plantspray,
+		/obj/item/reagent_containers/glass,
+		/obj/item/reagent_containers/food/drinks,
+		/obj/item/storage/box/wings
 		)
 
 /obj/item/gripper/gravekeeper	//Used for handling grave things, flowers, etc.

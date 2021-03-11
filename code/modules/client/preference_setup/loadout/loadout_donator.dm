@@ -223,6 +223,11 @@
 	ckeywhitelist = list("iamcrystalclear")
 
 /datum/gear/donator/vicase
-	display_name = "VI's briefpack"
+	display_name = "VI's secure briefcase"
 	path = /obj/item/storage/secure/briefcase/vicase
 	ckeywhitelist = list("capesh")
+
+/datum/gear/donator/aura
+	display_name = "KNIGHT-brand Melodic headset"
+	path = /obj/item/clothing/ears/earmuffs/headphones/aura
+	ckeywhitelist = list("theknightofaura")

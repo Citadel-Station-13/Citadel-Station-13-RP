@@ -45,7 +45,7 @@
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
-	dismantle_wall(null, null, TRUE, FALSE)
+	dismantle_wall(null, null, TRUE, !changing_turf)
 	return ..()
 
 /turf/simulated/wall/process(delta_time)
@@ -212,7 +212,7 @@
 	girder_material = null
 	update_connections(1)
 
-	if(!changeturf)
+	if(changeturf)
 		ChangeTurf(/turf/simulated/floor/plating)
 
 /turf/simulated/wall/ex_act(severity)
