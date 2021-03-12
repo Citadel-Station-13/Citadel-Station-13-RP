@@ -1994,3 +1994,13 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	hide_body_parts = list(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT) //Exclude pelvis just in case.
 	clip_mask_icon = 'icons/mob/vore/taurs_vr.dmi'
 	clip_mask_state = "taur_clip_mask_def" //Used to clip off the lower part of suits & uniforms.
+
+/datum/sprite_accessory/tail/digitigradexenotail
+	name = "digitigrade xeno legs with tail"
+	desc = ""
+	icon_state = "digitgrade-xenotail"
+	color_blend_mode = ICON_MULTIPLY
+	do_colouration = 1
+	hide_body_parts = list(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT) //Exclude pelvis just in case.
+	clip_mask_icon = 'icons/mob/vore/taurs_vr.dmi'
+	clip_mask_state = "taur_clip_mask_def" //Used to clip off the lower part of suits & uniforms.
