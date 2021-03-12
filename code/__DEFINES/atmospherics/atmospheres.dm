@@ -19,3 +19,7 @@
 #define ATMOSPHERE_ID_TRIUMPH			/datum/atmosphere/planet/virgo3b
 
 #define ATMOSPHERE_ID_LAVALAND			/datum/atmosphere/planet/lavaland
+
+// Boreas
+
+#define ATMOSPHERE_ID_BOREAS			/datum/atmosphere/planet/boreas
