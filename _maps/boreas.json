@@ -33,23 +33,19 @@
         "Baseturf":"/turf/simulated/open/boreas"
       },
       {
-        "Down":-1,
-    	"Up":1,
-	    "Station":true,
+       "Station":true,
         "Linkage":null,
         "Gravity":true,
         "Baseturf":"/turf/space"
       },
       {
-        "Up":1,
-        "Station":true,
+        "Station":false,
         "Linkage":null,
         "Gravity":true,
         "Baseturf":"/turf/space"
       },
       {
-        "Up":1,
-        "Station":true,
+        "Station":false,
         "Linkage":null,
         "Gravity":true,
         "Baseturf":"/turf/simulated/mineral/boreas"

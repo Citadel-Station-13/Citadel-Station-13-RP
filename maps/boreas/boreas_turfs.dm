@@ -15,8 +15,8 @@
 /turf/simulated/floor/outdoors/snow/boreas
 	BOREAS_SET_ATMOS
 	turf_layers = list(
-//		/turf/simulated/floor/outdoors/rocks/boreas,
-//		/turf/simulated/floor/outdoors/dirt/boreas
+		/turf/simulated/floor/outdoors/rocks/boreas,
+		/turf/simulated/floor/outdoors/dirt/boreas
 		)
 
 

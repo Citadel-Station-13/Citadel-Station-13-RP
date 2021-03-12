@@ -2,8 +2,8 @@
 #define Z_LEVEL_SURFACE_UNDER				1
 #define Z_LEVEL_SURFACE_LOW					2
 #define Z_LEVEL_SURFACE_MID					3
-#define Z_LEVEL_CENTCOM						4
-#define Z_LEVEL_MISC						5
+#define Z_LEVEL_MISC						4
+#define Z_LEVEL_CENTCOM						5
 #define Z_LEVEL_MINING						6
 
 /datum/map/boreas
@@ -11,11 +11,24 @@
 	full_name = "Boreas PRC"
 	path = "boreas"
 
+	zlevel_datum_type = /datum/map_z_level/boreas
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6")
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'
 
+	admin_levels = list()
+	sealed_levels = list()
+	empty_levels = list()
+	station_levels = list(Z_LEVEL_SURFACE_UNDER,
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID)
+	contact_levels = list(Z_LEVEL_SURFACE_UNDER,
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID)
+	player_levels = list(Z_LEVEL_SURFACE_UNDER,
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID)
 
 	station_name  = "Boreas Phoron Research Center"
 	station_short = "Boreas"
@@ -25,6 +38,8 @@
 	company_name  = "NanoTrasen"
 	company_short = "NT"
 	starsys_name  = "Nerada"
+
+
 
 	shuttle_docked_message = "The mass driver is prepping for launch to the %dock_name% has arrived. It will depart in launch %ETD%."
 	shuttle_leaving_dock = "The mass driver has fired. Estimate %ETA% until the pod arrives at %dock_name%."
@@ -90,6 +105,24 @@
 	else
 		return list(srcz) //may prevent runtimes, but more importantly gives gps units a shortwave-esque function
 
+/datum/map_z_level/boreas/under
+	z = Z_LEVEL_SURFACE_UNDER
+	name = "Underground"
+	base_turf = /turf/simulated/floor/outdoors/snow/boreas
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+
+/datum/map_z_level/boreas/ground
+	z = Z_LEVEL_SURFACE_LOW
+	name = "Ground Floor"
+	base_turf = /turf/simulated/mineral
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+
+/datum/map_z_level/boreas/second
+	z = Z_LEVEL_SURFACE_MID
+	name = "Second Floor"
+	base_turf = /turf/simulated/open
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+
 /datum/map_z_level/boreas/colony
 	z = Z_LEVEL_CENTCOM
 	name = "Colony"
@@ -99,10 +132,10 @@
 	z = Z_LEVEL_MISC
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
-/*
+
 /datum/map_z_level/boreas/mining
 	z = Z_LEVEL_MINING
 	name = "Mineral Deposit"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/rocks/boreas
-*/
+	base_turf = /turf/simulated/floor/outdoors/rocks
+
