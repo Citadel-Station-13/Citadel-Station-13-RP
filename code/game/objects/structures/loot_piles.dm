@@ -205,7 +205,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/beartrap,
 		/obj/item/clothing/suit/storage/vest/press,
 		/obj/item/material/knife/tacknife,
-		/obj/item/material/butterfly/switchblade
+		/obj/item/material/butterfly/switchblade,
+		/obj/item/skub
 	)
 
 	rare_loot = list(
@@ -258,7 +259,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/reagent_containers/syringe/steroid,
 		/obj/item/storage/pill_bottle/zoom,
 		/obj/item/storage/pill_bottle/happy,
-		/obj/item/storage/pill_bottle/tramadol
+		/obj/item/storage/pill_bottle/tramadol,
+		/obj/item/skub
 	)
 
 // Contains loads of different types of boxes, which may have items inside!
@@ -298,7 +300,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/storage/box/smokes,
 		/obj/item/storage/box/metalfoam,
 		/obj/item/storage/box/handcuffs,
-		/obj/item/storage/box/seccarts
+		/obj/item/storage/box/seccarts,
+		/obj/item/skub
 	)
 
 	rare_loot = list(
@@ -413,7 +416,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/rig_module/vision/medhud,
 		/obj/item/rig_module/vision/meson,
 		/obj/item/rig_module/vision/sechud,
-		/obj/item/rig_module/sprinter
+		/obj/item/rig_module/sprinter,
+		/obj/item/skub
 	)
 
 	rare_loot = list(
