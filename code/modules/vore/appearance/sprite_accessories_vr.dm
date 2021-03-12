@@ -1294,6 +1294,16 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/tail/foxtail
+	name = "Fox"
+	desc = ""	//leaving this just in case i break something if i just don't include a blank description because this codebase is akin to a house of cards
+	icon_state = "foxtail_but_good"
+	extra_overlay = "foxtail_but_good-tips"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+	ani_state = "foxtail_but_good_w"
+	extra_overlay_w = "foxtail_but_good-tips_w"
+
 /datum/sprite_accessory/tail/triple_kitsune
 	name = "Triple Kitsune Tails"
 	desc = ""
