@@ -212,6 +212,7 @@
 		/obj/item/stack/marker_beacon/thirty,
 		/obj/item/storage/box/survival_knife,
 		/obj/item/material/knife/machete/deluxe,
+		/obj/item/gun/energy/frontier/locked/carbine,
 		/obj/item/gun/projectile/automatic/mini_uzi/custom,
 		/obj/item/ammo_magazine/m45uzi,
 		/obj/item/ammo_magazine/m45uzi,
