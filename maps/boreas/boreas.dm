@@ -11,10 +11,10 @@
 	#if !AWAY_MISSION_TEST //Don't include these for just testing away missions
 		#include "../../_maps/map_files/boreas/boreas-1.dmm"
 		#include "../../_maps/map_files/boreas/boreas-2.dmm"
+		#include "../../_maps/map_files/boreas/boreas-3.dmm"
 		#include "../../_maps/map_files/boreas/boreas-colony.dmm"
 		#include "../../maps/boreas/boreas-mining.dmm"
 		#include "../../maps/boreas/boreas-misc.dmm"
-		#include "../../_maps/map_files/boreas/boreas-u.dmm"
 	#endif
 
 //	#include "submaps/_boreas_submaps.dm"
