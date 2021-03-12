@@ -1,0 +1,5 @@
+author: "nik707"
+delete-after: True
+changes: 
+  - rscdel: "deleted player_panel
+tweak: changed player_panel_new to player_panel"
