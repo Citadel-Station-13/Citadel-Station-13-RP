@@ -37,6 +37,7 @@
 	radio_connection = radio_controller.add_object(src, frequency, null)
 	..()
 */
+/*
 /datum/shuttle/ferry/emergency/dock()
 	..()
 	// Open Doorsunes
@@ -255,4 +256,5 @@
 	name = "Bluespace Jump"
 	my_area = /area/shuttle/excursion/bluespace
 	preferred_interim_area = /area/shuttle/excursion/space_moving
+*/
 */

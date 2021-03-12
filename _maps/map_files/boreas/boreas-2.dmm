@@ -9696,7 +9696,7 @@
 /area/crew_quarters/captain)
 "rE" = (
 /obj/item/beach_ball,
-/turf/simulated/floor/water/deep/pool,
+/turf/simulated/floor/outdoors/water/deep,
 /area/crew_quarters/pool)
 "rN" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -9900,7 +9900,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge_hallway)
 "ux" = (
-/turf/simulated/floor/water/deep/pool,
+/turf/simulated/floor/outdoors/water/deep,
 /area/crew_quarters/pool)
 "uG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10548,7 +10548,7 @@
 /area/bridge)
 "AB" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water,
 /area/crew_quarters/pool)
 "AI" = (
 /obj/structure/table/woodentable,
@@ -11104,7 +11104,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water,
 /area/crew_quarters/pool)
 "FV" = (
 /obj/machinery/computer/card{
@@ -11198,7 +11198,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water,
 /area/crew_quarters/pool)
 "GO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11217,7 +11217,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water,
 /area/crew_quarters/pool)
 "Hb" = (
 /turf/simulated/wall/r_wall,
@@ -11356,7 +11356,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water,
 /area/crew_quarters/pool)
 "IC" = (
 /obj/structure/bed/chair/office/dark{
@@ -11420,7 +11420,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water,
 /area/crew_quarters/pool)
 "IN" = (
 /obj/structure/cable/green{
@@ -11997,7 +11997,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water,
 /area/crew_quarters/pool)
 "Ov" = (
 /obj/machinery/firealarm{
@@ -12879,7 +12879,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water,
 /area/crew_quarters/pool)
 "Ya" = (
 /obj/machinery/camera/network/command,
@@ -12910,7 +12910,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/lounge)
 "YC" = (
-/turf/simulated/floor/water/pool,
+/turf/simulated/floor/outdoors/water,
 /area/crew_quarters/pool)
 "YG" = (
 /obj/structure/bed/chair{

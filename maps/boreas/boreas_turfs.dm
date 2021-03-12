@@ -7,7 +7,6 @@
 	if(outdoors)
 		SSplanets.addTurf(src)
 
-BOREAS_TURF_CREATE(/turf/simulated/floor)
 
 /turf/simulated/floor/boreas_indoors
 	BOREAS_SET_ATMOS
@@ -16,8 +15,8 @@ BOREAS_TURF_CREATE(/turf/simulated/floor)
 /turf/simulated/floor/outdoors/snow/boreas
 	BOREAS_SET_ATMOS
 	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks/boreas,
-		/turf/simulated/floor/outdoors/dirt/boreas
+//		/turf/simulated/floor/outdoors/rocks/boreas,
+//		/turf/simulated/floor/outdoors/dirt/boreas
 		)
 
 

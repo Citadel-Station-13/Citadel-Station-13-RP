@@ -1,5 +1,6 @@
 //////////////////////////////////////////////////////////////
 // Escape shuttle and pods
+/*pain
 /datum/shuttle/ferry/emergency/escape
 	name = "Escape"
 	location = 1 // At offsite
@@ -206,4 +207,5 @@
 	docking_controller_tag = "cruiser_shuttle"
 	dock_target_station = "d1a1_dock"
 	dock_target_offsite = "cruiser_shuttle_bay"
+*/
 */
