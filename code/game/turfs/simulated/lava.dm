@@ -94,6 +94,7 @@
 /turf/simulated/floor/lava/phoron
 	name = "liquid phoron"
 	desc = "A pool of molten phoron."
+	icon = 'icons/turf/flooring/lava.dmi'
 	description_info = "Liquid phoron is an extremely dangerous form of the usually gaseous state of phoron, as it only forms under extreme heat and pressure."
 	icon_state = "plava"
 	light_range = 5
