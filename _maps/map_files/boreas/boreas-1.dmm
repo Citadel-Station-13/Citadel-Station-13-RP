@@ -9067,6 +9067,13 @@
 "rw" = (
 /obj/structure/stairs/south,
 /obj/structure/catwalk,
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/window/basic{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/lower)
 "rx" = (
@@ -80575,12 +80582,12 @@ hm
 Kf
 rN
 Kf
-zy
-zy
-zy
-zy
-zy
-zy
+El
+El
+El
+El
+El
+El
 jR
 jR
 jR
@@ -80897,12 +80904,12 @@ jQ
 Em
 tz
 Sg
-zy
-zy
-zy
-zy
-zy
-zy
+El
+El
+El
+El
+El
+El
 jR
 jS
 kt
@@ -83473,12 +83480,12 @@ cI
 Iq
 rN
 Kf
-zy
-zy
-zy
-zy
-zy
-zy
+El
+El
+El
+El
+El
+El
 jR
 ks
 kA
@@ -83795,12 +83802,12 @@ cI
 Kf
 rN
 Kf
-zy
-zy
-zy
-zy
-zy
-zy
+El
+El
+El
+El
+El
+El
 jR
 jR
 jR
