@@ -1177,6 +1177,7 @@ mob/proc/yank_out_object()
 	set category = "OOC"
 	set desc = "Roll a random number between 1 and a chosen number."
 
+	n = round(n)		// why are you putting in floats??
 	if(n < 2)
 		to_chat(src, "<span class='warning'>[n] must be 2 or above, otherwise why are you rolling?</span>")
 	
