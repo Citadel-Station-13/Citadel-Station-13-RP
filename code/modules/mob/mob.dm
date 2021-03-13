@@ -1180,5 +1180,6 @@ mob/proc/yank_out_object()
 	n = round(n)		// why are you putting in floats??
 	if(n < 2)
 		to_chat(src, "<span class='warning'>[n] must be 2 or above, otherwise why are you rolling?</span>")
-	
+		return
+
 	to_chat(src, "<span class='notice'>Diceroll result: <b>[rand(1, n)]</b></span>")
