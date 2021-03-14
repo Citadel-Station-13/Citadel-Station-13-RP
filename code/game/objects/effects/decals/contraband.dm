@@ -61,7 +61,7 @@
 
 	to_chat(user, "<span class='notice'>You start placing the poster on the wall...</span>") //Looks like it's uncluttered enough. Place the poster.
 
-	var/obj/structure/sign/poster/P = new poster_type(user.loc, placement_dir=get_dir(user, W), serial=serial_number, itemtype = src.type)
+	var/obj/structure/sign/poster/P = new poster_type(user.loc, get_dir(user, W), serial_number, src.type)
 
 	flick("poster_being_set", P)
 	//playsound(W, 'sound/items/poster_being_created.ogg', 100, 1) //why the hell does placing a poster make printer sounds?
@@ -69,7 +69,8 @@
 	var/oldsrc = src //get a reference to src so we can delete it after detaching ourselves
 	src = null
 	spawn(17)
-		if(!P) return
+		if(!P)
+			return
 
 		if(iswall(W) && user && P.loc == user.loc) //Let's check if everything is still there
 			to_chat(user, "<span class='notice'>You place the poster!</span>")
@@ -176,9 +177,7 @@
 		add_fingerprint(user)
 
 /obj/structure/sign/poster/proc/roll_and_drop(turf/newloc)
-	var/obj/item/contraband/poster/P = new roll_type(src, serial_number)
-	P.loc = newloc
-	src.loc = P
+	new roll_type(newloc, serial_number)
 	qdel(src)
 
 /datum/poster
