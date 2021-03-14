@@ -430,8 +430,10 @@
 	playsound(get_turf(src), 'sound/machines/defib_success.ogg', 50, 0)
 
 	make_alive(H)
+
 	H.Confuse(120)
-	H.Weaken(600)
+	var/type_to_give = /datum/modifier/enfeeble/strong
+	H.add_modifier(type_to_give, 10 MINUTES)
 
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
