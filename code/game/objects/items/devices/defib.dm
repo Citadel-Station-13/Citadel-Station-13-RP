@@ -430,6 +430,8 @@
 	playsound(get_turf(src), 'sound/machines/defib_success.ogg', 50, 0)
 
 	make_alive(H)
+	H.Confuse(120)
+	H.Weaken(600)
 
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
