@@ -60,12 +60,12 @@
 			spawn_area_type = /area/quartermaster
 			locstring = "cargo & mining"
 			spawncount = rand(1 , 3 * severity)
-			boss_spawn_count = rand(2,4)
+			boss_spawn_count = rand(1,2)
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics"
 			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(1,5)
+			boss_spawn_count = rand(0,1)
 	if(!locstring)
 		spawn_area_type = /area/hallway
 		locstring = "public hallways"
