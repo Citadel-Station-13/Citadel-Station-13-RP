@@ -5189,7 +5189,6 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "dMC" = (
-/obj/structure/closet/crate/mimic,
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
@@ -23404,10 +23403,6 @@
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
-"qpb" = (
-/obj/structure/closet/crate/mimic,
-/turf/simulated/floor/plating,
-/area/maintenance/chapel)
 "qpo" = (
 /obj/effect/floor_decal/chapel{
 	dir = 1
@@ -29433,7 +29428,6 @@
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/captain)
 "usZ" = (
-/obj/structure/closet/crate/mimic,
 /obj/random/maintenance/security,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
@@ -32423,11 +32417,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
-"wmz" = (
-/obj/random/trash_pile,
-/obj/structure/closet/crate/mimic,
-/turf/simulated/floor/plating,
-/area/maintenance/security/starboard)
 "wmC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -44895,7 +44884,7 @@ hCx
 bRA
 fwU
 ibv
-qpb
+kKQ
 kKQ
 hCx
 kKQ
@@ -50345,7 +50334,7 @@ gMN
 lJa
 qjP
 kpY
-wmz
+lJa
 usZ
 ejP
 nIK

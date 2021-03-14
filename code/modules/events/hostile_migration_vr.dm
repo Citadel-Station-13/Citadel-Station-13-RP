@@ -30,7 +30,7 @@
 	endWhen = 50
 
 /datum/event/hostile_migration/announce()
-	command_announcement.Announce("Unidentified hostile lifesigns detected migrating towards [station_name()]'s [locstring]. Secure any exterior access, including ducting and ventilation.", "Vermin Migration Alert", new_sound = 'sound/AI/aliens.ogg')
+	command_announcement.Announce("Unidentified lifesigns moving through the [station_name()]'s pipe-net heading towards [locstring]. Secure any ducting and ventilation.", "Vermin Migration Alert")
 
 
 /datum/event/hostile_migration/start()
@@ -39,38 +39,38 @@
 		if(LOC_KITCHEN)
 			spawn_area_type = /area/crew_quarters/kitchen
 			locstring = "kitchen"
-			spawncount = rand(6 * severity, 10 * severity)
+			spawncount = rand(1 * severity, 3 * severity)
 			boss_spawn_count = rand(0,2)
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library
 			locstring = "library"
-			spawncount = rand(9 * severity, 12 * severity)
-			boss_spawn_count = rand(0,2)
+			spawncount = rand(1, 3 * severity)
+			boss_spawn_count = rand(0,1)
 		if(LOC_HALLWAYS)
 			spawn_area_type = /area/hallway
 			locstring = "public hallways"
-			spawncount = rand(20 * severity, 30 * severity)
-			boss_spawn_count = rand(3,7)
+			spawncount = rand(2 * severity, 5 * severity)
+			boss_spawn_count = rand(1,2)
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"
-			spawncount = rand(10 * severity, 15 * severity)
-			boss_spawn_count = rand(1,5)
+			spawncount = rand(1 , 2 * severity)
+			boss_spawn_count = rand(1,2)
 		if(LOC_MINING)
 			spawn_area_type = /area/quartermaster
 			locstring = "cargo & mining"
-			spawncount = rand(10 * severity, 19 * severity)
+			spawncount = rand(1 , 3 * severity)
 			boss_spawn_count = rand(2,4)
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics"
-			spawncount = rand(7 * severity, 18 * severity)
+			spawncount = rand(1 * severity, 3 * severity)
 			boss_spawn_count = rand(1,5)
 	if(!locstring)
 		spawn_area_type = /area/hallway
 		locstring = "public hallways"
-		spawncount = rand(20 * severity, 30 * severity)
-		boss_spawn_count = rand(3,7)
+		spawncount = rand(2 * severity, 5 * severity)
+		boss_spawn_count = rand(1,2)
 
 /datum/event/hostile_migration/end()
 	var/list/vents = list()
@@ -98,7 +98,7 @@
 
 // Overmap version
 /datum/event/hostile_migration/overmap/announce()
-	command_announcement.Announce("Unidentified hostile lifesigns detected migrating towards [station_name()]'s [locstring]. Secure any exterior access, including ducting and ventilation.", "Hostile Vermin Boarding Alert", new_sound = 'sound/AI/aliens.ogg')
+	command_announcement.Announce("Unidentified hostile lifesigns detected migrating towards [station_name()]'s [locstring] through the exterior pipes. Secure any exterior access, including ducting and ventilation.", "Hostile Vermin Boarding Alert", new_sound = 'sound/AI/aliens.ogg')
 	return
 
 // override: cancel if not main ship as this is too dumb to target the actual ship crossing it.

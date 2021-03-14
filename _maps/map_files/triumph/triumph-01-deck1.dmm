@@ -8868,10 +8868,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"Dd" = (
-/obj/structure/closet/crate/mimic/closet/cointoss,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 "De" = (
 /obj/structure/closet/radiation,
 /turf/simulated/floor/tiled/techfloor,
@@ -29111,7 +29107,7 @@ ay
 cS
 uA
 Yb
-Dd
+Yb
 dv
 FG
 FG

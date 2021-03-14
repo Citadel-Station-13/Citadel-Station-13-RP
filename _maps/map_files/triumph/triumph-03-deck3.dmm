@@ -183,6 +183,8 @@
 	req_one_access = list(7,29)
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "afL" = (
@@ -1276,21 +1278,14 @@
 	name = "\improper Exam Room 2"
 	})
 "bge" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central6{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/white,
 /area/rnd/research_foyer_auxiliary)
 "bgz" = (
 /obj/item/radio/intercom{
@@ -2442,6 +2437,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
+"cbb" = (
+/turf/simulated/floor/plating,
+/area/space)
 "cbU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4538,6 +4536,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"dPV" = (
+/obj/machinery/optable,
+/turf/simulated/floor/plating,
+/area/space)
 "dQa" = (
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -11493,7 +11495,6 @@
 /area/rnd/rdoffice)
 "jOy" = (
 /obj/random/maintenance/clean,
-/obj/structure/closet/crate/mimic/closet,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "jOA" = (
@@ -11895,6 +11896,10 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
+"kbS" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/space)
 "kcl" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance,
@@ -15757,6 +15762,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/anomaly_lab/containment_one)
+"njF" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "njN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -15786,6 +15797,10 @@
 "nll" = (
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
+"nlo" = (
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/space)
 "nmd" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -16015,6 +16030,14 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
+"nwe" = (
+/obj/structure/table/steel,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "nwW" = (
 /obj/structure/closet,
 /turf/simulated/floor/wood,
@@ -17778,6 +17801,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
+"oRK" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/maintenance/research)
 "oSv" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -20325,6 +20353,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"qBn" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "qBF" = (
 /obj/machinery/light{
 	dir = 1
@@ -21336,7 +21370,6 @@
 /area/rnd/hallway)
 "riD" = (
 /obj/random/maintenance/clean,
-/obj/structure/closet/crate/mimic,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "riG" = (
@@ -24538,13 +24571,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "tzJ" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
-/obj/structure/window/phoronreinforced/full,
-/turf/simulated/floor/plating,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "tzW" = (
 /obj/structure/closet/secure_closet/medical3,
@@ -26655,6 +26688,9 @@
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "vgv" = (
@@ -26807,6 +26843,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
+"vol" = (
+/obj/structure/table/steel,
+/obj/item/storage/firstaid/surgery,
+/turf/simulated/floor/plating,
+/area/space)
 "vps" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -27277,6 +27318,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"vMQ" = (
+/obj/structure/table,
+/turf/simulated/floor/plating,
+/area/space)
 "vNW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -27837,6 +27882,10 @@
 "wjM" = (
 /turf/simulated/wall,
 /area/rnd/rdoffice)
+"wjQ" = (
+/obj/machinery/oxygen_pump/mobile/anesthetic,
+/turf/simulated/floor/plating,
+/area/space)
 "wjS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -28231,6 +28280,13 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"wyV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "wzk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -28364,6 +28420,12 @@
 /obj/machinery/camera/network/outside,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
+"wDD" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "wDR" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
@@ -28419,11 +28481,11 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "wGK" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/phoronreinforced/full,
-/turf/simulated/floor/plating,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "wGU" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -35387,8 +35449,8 @@ eTh
 ejM
 nBE
 boQ
-xDW
-xDW
+qBn
+wDD
 fHG
 slN
 ezT
@@ -35526,10 +35588,10 @@ orO
 uzP
 jYb
 aWV
-nGf
-wpE
+tzJ
+wGK
 afA
-xDW
+wyV
 vgf
 lFp
 slN
@@ -35812,10 +35874,10 @@ bXy
 xgE
 shT
 wpE
-wGK
-gVh
-gVh
-gVh
+boQ
+vMQ
+cbb
+cbb
 czP
 fJH
 sQl
@@ -35955,10 +36017,10 @@ ijJ
 shT
 wpE
 boQ
-gVh
-gVh
-gVh
-czP
+nwe
+cbb
+cbb
+oRK
 ezT
 hnF
 bQu
@@ -36097,9 +36159,9 @@ qlA
 muj
 hfZ
 boQ
-gVh
-gVh
-gVh
+vol
+nlo
+cbb
 czP
 ezT
 sQl
@@ -36239,9 +36301,9 @@ xgE
 shT
 wpE
 boQ
-oCz
-gVh
-gVh
+njF
+cbb
+kbS
 czP
 ezT
 imh
@@ -36381,9 +36443,9 @@ mQO
 oBt
 rNa
 boQ
-oCz
-oCz
-gVh
+cbb
+dPV
+wjQ
 czP
 ezT
 sQl
@@ -36525,7 +36587,7 @@ wpE
 boQ
 boQ
 boQ
-tzJ
+boQ
 vbo
 gaL
 boQ
