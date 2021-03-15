@@ -5735,7 +5735,7 @@
 "eLe" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/wall,
+/turf/simulated/floor/plating,
 /area/hallway/primary/port)
 "eLn" = (
 /obj/machinery/porta_turret/crescent{
