@@ -9887,6 +9887,9 @@
 /obj/structure/closet/hydrant{
 	pixel_x = -32
 	},
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "imh" = (
@@ -10690,6 +10693,7 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "jaT" = (
@@ -10987,9 +10991,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
-	},
-/obj/machinery/light{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/recoveryrestroom)
@@ -12867,9 +12868,7 @@
 /area/maintenance/research)
 "kSR" = (
 /obj/machinery/recharge_station,
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/machinery/light/small,
 /turf/simulated/floor/tiled/white,
 /area/medical/recoveryrestroom)
 "kTk" = (
@@ -16958,6 +16957,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/white,
 /area/medical/recoveryrestroom)
 "onK" = (
@@ -19268,9 +19270,6 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "pLS" = (
@@ -20954,11 +20953,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "qXr" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/structure/toilet{
 	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/recoveryrestroom)
@@ -21692,11 +21691,11 @@
 /turf/simulated/floor/plating,
 /area/medical/patient_c)
 "ruB" = (
-/obj/machinery/camera/network/civilian{
+/obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/holodeck_control)
+/turf/simulated/floor/wood,
+/area/crew_quarters/medbreak)
 "rvf" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor{
@@ -26155,10 +26154,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "uQl" = (
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
-	},
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
@@ -29759,12 +29754,6 @@
 /obj/structure/closet/l3closet/scientist/double,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
-"xGA" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/recoveryrestroom)
 "xGN" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
@@ -35567,7 +35556,7 @@ vwF
 jpk
 omY
 lcc
-xGA
+aIW
 aIW
 ooG
 mmU
@@ -43511,7 +43500,7 @@ rzy
 ltR
 oIJ
 szb
-yhM
+ruB
 yhM
 eeY
 dYE
@@ -43930,7 +43919,7 @@ hMA
 wtS
 uQl
 ilk
-ruB
+wqC
 qWm
 nPh
 mBS
