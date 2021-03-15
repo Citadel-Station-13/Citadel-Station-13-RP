@@ -5487,7 +5487,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "eDV" = (
-/obj/random/maintenance/medical,
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
@@ -9535,6 +9534,8 @@
 	name = "\improper Exam Room 2"
 	})
 "hUt" = (
+/obj/random/trash,
+/obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "hVx" = (
@@ -9946,6 +9947,9 @@
 "ilk" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
@@ -10462,7 +10466,7 @@
 /area/medical/medbay4)
 "iOo" = (
 /obj/structure/table/rack,
-/obj/random/maintenance/medical,
+/obj/random/maintenance/research,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "iPa" = (
@@ -11491,6 +11495,8 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/structure/closet/coffin,
+/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "jNf" = (
@@ -11590,6 +11596,8 @@
 /area/medical/medbay4)
 "jPk" = (
 /obj/structure/closet/crate,
+/obj/random/maintenance/research,
+/obj/random/maintenance/research,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "jPl" = (
@@ -15836,6 +15844,11 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
+/obj/structure/closet,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
+/obj/random/maintenance/medical,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "njN" = (
@@ -16488,6 +16501,7 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
+/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "nRz" = (
@@ -16946,6 +16960,7 @@
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "oji" = (
 /obj/structure/ladder/updown,
+/obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "ojZ" = (
@@ -18580,6 +18595,7 @@
 /area/medical/sleeper)
 "ppa" = (
 /obj/structure/closet/coffin/comfy,
+/obj/random/mre,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "ppz" = (
@@ -19699,6 +19715,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"pVT" = (
+/obj/structure/closet/coffin,
+/obj/random/maintenance/research,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "pWt" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
@@ -20716,6 +20737,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
+"qKf" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "qKG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -21803,11 +21832,10 @@
 /turf/simulated/floor/plating,
 /area/medical/patient_c)
 "ruB" = (
-/obj/machinery/camera/network/civilian{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/holodeck_control)
+/obj/machinery/floodlight,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/plating,
+/area/maintenance/fore)
 "rvf" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor{
@@ -22015,6 +22043,7 @@
 /area/medical/ward)
 "rDR" = (
 /obj/machinery/atmospherics/binary/passive_gate/on,
+/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "rFu" = (
@@ -22525,9 +22554,10 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "sby" = (
-/obj/machinery/hologram/holopad,
-/turf/simulated/floor/tiled/white,
-/area/medical/medbay3)
+/obj/structure/table/rack,
+/obj/random/mre,
+/turf/simulated/floor/plating,
+/area/maintenance/research)
 "sbB" = (
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
@@ -25233,6 +25263,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "tTE" = (
@@ -29439,6 +29470,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"xlc" = (
+/obj/random/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/fpmaint2)
 "xlO" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/medical{
@@ -33604,13 +33639,13 @@ ezT
 kLL
 ezT
 ezT
-ezT
+jOy
 ezT
 kLL
 ezT
 otQ
 ezT
-ezT
+jOy
 ppa
 pRL
 mym
@@ -33751,7 +33786,7 @@ gdI
 oWy
 sQl
 czP
-sQl
+sby
 ezT
 sQl
 pRL
@@ -37866,7 +37901,7 @@ hwt
 kwS
 khH
 oji
-hUt
+ruB
 csv
 mXx
 gjt
@@ -38008,7 +38043,7 @@ lFN
 tTA
 ptI
 hUt
-hUt
+ruB
 csv
 laE
 fyG
@@ -42149,7 +42184,7 @@ qED
 rYj
 auK
 mak
-sby
+uWd
 vtk
 clC
 kYs
@@ -43992,7 +44027,7 @@ eKB
 fJp
 hlY
 vOq
-fJp
+pVT
 gwr
 jMS
 aCH
@@ -44127,11 +44162,11 @@ hMA
 wtS
 uQl
 ilk
-ruB
+wqC
 qWm
 nPh
 mBS
-xZo
+xlc
 xZo
 sXC
 eDV
@@ -44276,7 +44311,7 @@ mBS
 oqL
 gYu
 gwb
-uux
+qKf
 uux
 wOu
 aCH
