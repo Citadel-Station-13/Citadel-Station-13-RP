@@ -1873,9 +1873,6 @@
 "bEP" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/corner/blue/diagonal,
-/obj/structure/closet/secure_closet/medical_wall/pills{
-	pixel_x = -32
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "bFb" = (
@@ -2159,7 +2156,8 @@
 /obj/structure/table/steel_reinforced,
 /obj/structure/closet/secure_closet/medical_wall{
 	name = "O- Blood Locker";
-	pixel_x = -32
+	pixel_x = -32;
+	req_access = list(5)
 	},
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
@@ -3793,7 +3791,8 @@
 "dge" = (
 /obj/structure/closet/secure_closet/medical_wall{
 	name = "O- Blood Locker";
-	pixel_x = -32
+	pixel_x = -32;
+	req_access = null
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research)
@@ -15021,6 +15020,14 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"mDI" = (
+/obj/structure/closet/secure_closet/medical_wall{
+	name = "O- Blood Locker";
+	pixel_x = 32;
+	req_access = list(5)
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "mDZ" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -40870,7 +40877,7 @@ xYU
 gyJ
 bJh
 oXa
-vMK
+mDI
 vMK
 poz
 tiM
