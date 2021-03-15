@@ -253,6 +253,11 @@
 /obj/machinery/ai_status_display{
 	pixel_y = -32
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "alq" = (
@@ -467,7 +472,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "aqW" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
@@ -502,7 +507,9 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "atZ" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -837,26 +844,15 @@
 	pixel_x = 31
 	},
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "aHK" = (
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled,
-/area/bridge/hallway)
+/turf/simulated/floor/plating,
+/area/maintenance/substation/command)
 "aIm" = (
 /turf/simulated/floor/tiled,
 /area/security/brig)
@@ -975,7 +971,7 @@
 /obj/random/maintenance/clean,
 /obj/random/cigarettes,
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "aMJ" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -1465,7 +1461,9 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "bch" = (
 /obj/machinery/camera/network/prison,
 /obj/structure/table/reinforced,
@@ -2228,6 +2226,11 @@
 	pixel_x = 4;
 	pixel_y = 26
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "bDO" = (
@@ -2701,7 +2704,7 @@
 /obj/random/fishing_junk,
 /obj/random/tool,
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "bVl" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/cable/green{
@@ -3019,7 +3022,7 @@
 /obj/random/fishing_junk,
 /obj/random/tool,
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "cgj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -3492,7 +3495,7 @@
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "cyk" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -3714,7 +3717,9 @@
 	name = "Bridge"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/bridge/hallway)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "cDW" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -4001,7 +4006,9 @@
 /area/crew_quarters/sleep/CE_quarters)
 "cQt" = (
 /turf/simulated/wall/r_wall,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "cQu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
@@ -4827,17 +4834,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "dBl" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/turf/simulated/wall,
+/area/maintenance/substation/command)
 "dBB" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -5065,7 +5068,7 @@
 "dIf" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "dIp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5424,15 +5427,24 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/secondary/civilian_hallway_mid)
 "dVI" = (
-/obj/structure/cable{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor/hole,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/primary/aft)
 "dVU" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -5482,7 +5494,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "dYA" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5529,6 +5541,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/station/stairs_one)
@@ -5860,7 +5877,7 @@
 /obj/random/cigarettes,
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "elJ" = (
 /obj/structure/table/reinforced,
 /obj/item/radio,
@@ -6504,6 +6521,11 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "eIm" = (
@@ -6715,7 +6737,9 @@
 	},
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "eND" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_magazine/m9mmt,
@@ -7006,7 +7030,7 @@
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "eUU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -7181,10 +7205,15 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "fcx" = (
-/obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/station/stairs_one)
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/primary/aft)
 "fcP" = (
 /obj/machinery/computer/secure_data,
 /turf/simulated/floor/tiled,
@@ -7879,7 +7908,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "fCb" = (
 /turf/simulated/wall/r_wall,
 /area/vacant/vacant_bar)
@@ -8336,7 +8367,9 @@
 /area/lawoffice)
 "fWb" = (
 /turf/simulated/open,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "fWZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -8858,10 +8891,15 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "gts" = (
-/obj/structure/catwalk,
-/obj/random/trash,
-/turf/simulated/floor/plating,
-/area/station/stairs_one)
+/obj/effect/floor_decal/techfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/primary/aft)
 "gtS" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /obj/effect/floor_decal/rust,
@@ -9734,7 +9772,7 @@
 /obj/random/alcohol,
 /obj/random/tool,
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "hdR" = (
 /obj/structure/table/woodentable,
 /obj/item/stack/material/steel{
@@ -9747,6 +9785,11 @@
 	pixel_y = -31
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "hel" = (
@@ -9833,6 +9876,11 @@
 	},
 /obj/structure/sign/directions/medical{
 	pixel_y = -42
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
@@ -10083,6 +10131,11 @@
 /obj/machinery/ai_status_display{
 	pixel_y = -32
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "hqy" = (
@@ -10153,7 +10206,9 @@
 /area/triumph/surfacebase/sauna)
 "hrX" = (
 /turf/simulated/wall,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "hsj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11071,6 +11126,11 @@
 /obj/machinery/newscaster{
 	pixel_y = -31
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "hQl" = (
@@ -11447,7 +11507,7 @@
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "iaW" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 8
@@ -12804,21 +12864,15 @@
 /turf/simulated/wall,
 /area/crew_quarters/sleep/CMO_quarters)
 "jel" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/primary/aft)
 "jeu" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -13217,14 +13271,21 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "jpU" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
 	},
-/obj/machinery/alarm{
-	pixel_y = 22
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/bridge/hallway)
 "jrj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -13915,7 +13976,7 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "jSu" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -14137,13 +14198,18 @@
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "kaQ" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "kbb" = (
@@ -14870,16 +14936,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
-"kIQ" = (
-/obj/machinery/camera/network/civilian,
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/machinery/newscaster{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
 "kIZ" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -14998,6 +15054,11 @@
 "kLL" = (
 /obj/structure/railing,
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "kMa" = (
@@ -16341,7 +16402,9 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "lEO" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -16700,6 +16763,11 @@
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -22
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
@@ -17434,7 +17502,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "mqT" = (
 /obj/machinery/light_switch{
 	dir = 8;
@@ -17784,7 +17852,9 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "mFS" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -17927,7 +17997,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "mLa" = (
 /obj/item/book/manual/standard_operating_procedure,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -18115,8 +18185,15 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "mRY" = (
 /obj/structure/bookcase{
 	name = "bookcase (Non-Fiction)"
@@ -19287,6 +19364,11 @@
 /obj/machinery/newscaster{
 	pixel_y = -31
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "nHS" = (
@@ -19619,6 +19701,11 @@
 /obj/machinery/newscaster{
 	pixel_y = -31
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "nWP" = (
@@ -19724,7 +19811,7 @@
 /obj/random/maintenance/clean,
 /obj/random/coin,
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "oan" = (
 /obj/structure/table/rack/shelf,
 /obj/item/storage/backpack/parachute{
@@ -19829,11 +19916,6 @@
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
@@ -20050,7 +20132,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "okL" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8
@@ -20764,10 +20846,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
-"oKD" = (
-/obj/structure/closet/emcloset,
-/turf/simulated/floor/plating,
-/area/station/stairs_one)
 "oLh" = (
 /obj/effect/floor_decal/spline/fancy,
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -20820,23 +20898,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
-"oNh" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/station/stairs_one)
 "oNt" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -20887,15 +20948,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallwayaux)
-"oPH" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/techfloor,
-/turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
 "oPJ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -23409,9 +23461,6 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/lawoffice)
-"qqi" = (
-/turf/simulated/floor/plating,
-/area/station/stairs_one)
 "qqE" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/flashbangs,
@@ -23688,6 +23737,11 @@
 "qAn" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -24715,7 +24769,9 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/wall/r_wall,
-/area/bridge/hallway)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "rhT" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -24836,6 +24892,11 @@
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole,
 /obj/machinery/computer/timeclock/premade/south,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "rlI" = (
@@ -25315,18 +25376,6 @@
 /obj/item/storage/firstaid/regular,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
-"rAX" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 21
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
 "rBh" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 32;
@@ -26076,27 +26125,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_cell_hallway)
-"sbT" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/beige/border{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled,
-/area/bridge/hallway)
 "scg" = (
 /obj/machinery/atmospherics/binary/passive_gate/on{
 	dir = 4
@@ -26691,7 +26719,9 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "szd" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -26914,18 +26944,6 @@
 /obj/structure/lightpost,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
-"sFr" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/station/stairs_one)
 "sFB" = (
 /obj/item/clothing/suit/space/void,
 /obj/item/clothing/head/helmet/space/void,
@@ -27096,6 +27114,11 @@
 /area/security/detectives_office)
 "sKM" = (
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "sLt" = (
@@ -27347,7 +27370,9 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "sRA" = (
 /obj/structure/cable/green{
 	d2 = 8;
@@ -27568,6 +27593,11 @@
 /obj/structure/railing,
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/techfloor/hole,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "tab" = (
@@ -27795,6 +27825,11 @@
 /area/security/brig)
 "tmj" = (
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "tmy" = (
@@ -28146,10 +28181,6 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
-"tAQ" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/station/stairs_one)
 "tAW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -28573,7 +28604,9 @@
 "tUY" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "tVk" = (
 /obj/machinery/ai_slipper,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -29038,6 +29071,11 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/effect/floor_decal/corner/red/border,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "ukY" = (
@@ -29349,6 +29387,11 @@
 /area/security/hallwayaux)
 "uuO" = (
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "uuS" = (
@@ -30029,6 +30072,11 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "uSQ" = (
@@ -30056,6 +30104,11 @@
 /obj/effect/floor_decal/techfloor,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
@@ -30481,7 +30534,9 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled,
-/area/bridge/hallway)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "vil" = (
 /obj/structure/table/reinforced,
 /obj/item/stamp/denied,
@@ -30517,8 +30572,19 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 28
+	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "vlb" = (
 /obj/effect/floor_decal/corner/blue/full{
 	dir = 8
@@ -30830,7 +30896,9 @@
 /area/triumph/surfacebase/tram)
 "vtG" = (
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "vtY" = (
 /obj/machinery/firealarm{
 	layer = 3.3;
@@ -31163,7 +31231,9 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "vFI" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
@@ -31563,6 +31633,11 @@
 	dir = 1;
 	pixel_y = -22
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "vPG" = (
@@ -31687,7 +31762,7 @@
 	},
 /obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "vSm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -31806,7 +31881,9 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/station/stairs_one{
+	name = "\improper Station Stairwell Fourth Floor"
+	})
 "vVM" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
@@ -32438,7 +32515,7 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
-/area/station/stairs_one)
+/area/maintenance/security/starboard)
 "wtU" = (
 /obj/machinery/light_switch{
 	dir = 8;
@@ -33275,7 +33352,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one)
+/area/hallway/secondary/civilian_hallway_mid)
 "xbo" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -33527,6 +33604,11 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "xiY" = (
@@ -42486,12 +42568,12 @@ oZg
 vvM
 eHF
 uSJ
-pVs
-pVs
-quD
+aHK
+aHK
+dBl
 bDG
-hvu
-uNu
+dVI
+fcx
 brg
 eXj
 gwZ
@@ -42775,7 +42857,7 @@ pKG
 nge
 vFZ
 hvu
-uNu
+gts
 brg
 aKb
 hFX
@@ -43485,7 +43567,7 @@ pKG
 nge
 pWo
 nyf
-pWo
+jel
 brg
 lEQ
 cuW
@@ -48879,9 +48961,9 @@ wIH
 tmy
 nkj
 qBJ
-jpU
-dZM
-oPH
+wdM
+mIF
+xOV
 dnw
 rMq
 udf
@@ -49022,8 +49104,8 @@ uoy
 nPS
 qBJ
 vSc
-dZM
-dVI
+mIF
+ico
 dnw
 vuF
 udf
@@ -49165,7 +49247,7 @@ mnJ
 qBJ
 okA
 mpW
-jel
+wpZ
 ssJ
 qdA
 vvq
@@ -49305,9 +49387,9 @@ sHu
 ixx
 gQf
 qBJ
-kIQ
-dZM
-oPH
+evb
+mIF
+xOV
 dnw
 sya
 udf
@@ -49449,7 +49531,7 @@ kKd
 qBJ
 dYm
 dZM
-oPH
+xOV
 dnw
 eKl
 udf
@@ -49589,9 +49671,9 @@ uLe
 wWb
 wWb
 qBJ
-rAX
-sFr
-dBl
+bJl
+dVh
+kRw
 dnw
 bOA
 udf
@@ -49732,7 +49814,7 @@ wWb
 axG
 jvD
 mKR
-oNh
+tGj
 xaP
 fre
 smg
@@ -50014,7 +50096,7 @@ vPv
 hxr
 pwZ
 lIC
-xMk
+hrX
 vks
 mRR
 vFH
@@ -50023,9 +50105,9 @@ hdt
 hdt
 bVh
 cfh
-qqi
+gMN
 ekq
-hrX
+lsu
 tcX
 ugw
 jjG
@@ -50156,18 +50238,18 @@ skw
 skw
 skw
 skw
-ogg
+bbO
 vtG
 syM
 asw
 bbO
-tAQ
-gts
-tAQ
-tAQ
-tAQ
+ugw
+jjG
+ugw
+ugw
+ugw
 aqe
-hrX
+lsu
 ugw
 gMN
 gMN
@@ -50298,18 +50380,18 @@ bKz
 vRO
 pwZ
 qIu
-xMk
+hrX
 vtG
 syM
 lEI
 hrX
-oKD
+pww
 aHC
-qqi
-qqi
-tAQ
+gMN
+gMN
+ugw
 jRp
-hrX
+lsu
 jjG
 gMN
 gMN
@@ -50449,9 +50531,9 @@ hrX
 hrX
 hrX
 wtF
-gts
-tAQ
-fcx
+jjG
+ugw
+fIf
 ugw
 gMN
 gMN
@@ -50590,10 +50672,10 @@ vtG
 fWb
 fWb
 cQt
-qqi
-qqi
+gMN
+gMN
 dIf
-hrX
+lsu
 gMN
 gMN
 fnm
@@ -50733,9 +50815,9 @@ fWb
 fWb
 cQt
 aMF
-qqi
+gMN
 nZU
-hrX
+lsu
 gMN
 tZH
 gMN
@@ -50866,17 +50948,17 @@ roY
 cQt
 cQt
 cQt
-dSw
+cQt
 vii
 cDx
 rhG
-dSw
 cQt
 cQt
 cQt
 cQt
-cQt
-cQt
+aSO
+aSO
+aSO
 dSw
 dSw
 dSw
@@ -51016,9 +51098,9 @@ lSG
 xdz
 xdz
 xdz
-aHK
 xdz
-aHK
+xdz
+xdz
 fpA
 lSG
 xdz
@@ -51158,8 +51240,8 @@ pZY
 eve
 eve
 gOt
-sbT
 eve
+jpU
 odm
 gzW
 gfW
