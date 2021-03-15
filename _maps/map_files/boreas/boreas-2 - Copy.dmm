@@ -10,24 +10,136 @@
 /obj/effect/zone_divider,
 /turf/simulated/open/boreas,
 /area/boreas/surfacebase/outside)
+"ai" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock{
+	id_tag = "dorm5";
+	name = "Room 5"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
 "ak" = (
 /obj/effect/zone_divider,
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"aD" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 5
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
 "aM" = (
 /obj/structure/flora/grass/both,
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"aO" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
 "ba" = (
 /turf/simulated/open/boreas,
 /area/boreas/surfacebase/outside)
+"bg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"bI" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/effect/landmark/start{
+	name = "Chemist"
+	},
+/turf/simulated/floor/plating,
+/area/medical)
+"bK" = (
+/obj/structure/table/reinforced,
+/obj/item/hand_labeler,
+/obj/item/packageWrap,
+/obj/item/clothing/glasses/science,
+/obj/item/clothing/glasses/science,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the 'Space' from Space Cleaner and written in Chemistry. Scrawled on the back is, 'Okay, whoever filled this with polytrinic acid, it was only funny the first time. It was hard enough replacing the CMO's first cat!'";
+	name = "Chemistry Cleaner"
+	},
+/obj/item/mass_spectrometer/adv,
+/obj/item/mass_spectrometer/adv,
+/turf/simulated/floor/plating,
+/area/medical)
+"bY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"bZ" = (
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -32
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"cc" = (
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
 "cD" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"dj" = (
+/obj/machinery/door/window/eastright{
+	req_one_access = list(5)
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
 "dM" = (
 /mob/living/simple_mob/animal/giant_spider/frost,
 /turf/simulated/floor/outdoors/snow/boreas,
@@ -40,26 +152,581 @@
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside/wilderness)
+"es" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/outdoors/water,
+/area/crew_quarters)
+"ew" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"eS" = (
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"fb" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/box/donkpockets,
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/light_switch{
+	name = "light switch ";
+	pixel_y = 26
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
 "fl" = (
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"fm" = (
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder,
+/turf/simulated/floor/plating,
+/area/medical)
+"fQ" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"gt" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/wall,
+/area/crew_quarters)
+"hq" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/closet/wardrobe/mixed,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"ie" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"ii" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/water,
+/area/crew_quarters)
 "iz" = (
 /turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside)
+"iH" = (
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"iI" = (
+/obj/machinery/button/remote/airlock{
+	id = "dorm2";
+	name = "Room 2 Lock";
+	pixel_x = -26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"iN" = (
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"iW" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
 "jh" = (
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"jX" = (
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/outdoors/water,
+/area/crew_quarters)
+"kg" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"kz" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock{
+	id_tag = "dorm6";
+	name = "Room 6"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"kJ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/closet/wardrobe/xenos,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"kW" = (
+/obj/item/roller,
+/obj/item/roller{
+	pixel_y = 8
+	},
+/obj/item/roller{
+	pixel_y = 16
+	},
+/obj/structure/table/glass,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"ln" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/purpledouble,
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"lo" = (
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"lx" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"lG" = (
+/obj/machinery/chemical_dispenser/full,
+/turf/simulated/floor/plating,
+/area/medical)
+"lR" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"mo" = (
+/obj/structure/bed/chair/office/dark,
+/obj/effect/landmark/start{
+	name = "Chemist"
+	},
+/turf/simulated/floor/plating,
+/area/medical)
+"nG" = (
+/obj/structure/closet/wardrobe/chemistry_white,
+/turf/simulated/floor/plating,
+/area/medical)
+"nK" = (
+/obj/structure/closet/wardrobe/black,
+/obj/random/maintenance/clean,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/grey/border,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"nP" = (
+/obj/structure/table/glass,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/clothing/mask/rebreather,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"oc" = (
+/obj/machinery/gear_painter,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"po" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/borderfloorwhite/corner2,
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 4;
+	pixel_y = -22
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"pv" = (
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"qM" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/water,
+/area/crew_quarters)
+"qU" = (
+/obj/machinery/washing_machine,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"qY" = (
+/obj/machinery/shower,
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"rb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"rl" = (
+/obj/structure/closet/secure_closet/medical1,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/syringes,
+/obj/item/radio/headset/headset_med,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/fancy/vials,
+/obj/item/storage/fancy/vials,
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for shutters.";
+	id = "chemistry";
+	name = "Chemistry Shutters";
+	pixel_x = -6;
+	pixel_y = 24;
+	req_access = list(5)
+	},
+/turf/simulated/floor/plating,
+/area/medical)
+"sc" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/item/clothing/mask/rebreather,
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"se" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/glass,
+/obj/item/backup_implanter{
+	pixel_y = -12
+	},
+/obj/item/backup_implanter{
+	pixel_y = -5
+	},
+/obj/item/backup_implanter{
+	pixel_y = 2
+	},
+/obj/item/backup_implanter{
+	pixel_y = 9
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"sx" = (
+/obj/structure/table/woodentable,
+/obj/machinery/microwave,
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"sy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"to" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"tA" = (
+/obj/machinery/shower,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"ub" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"uo" = (
+/obj/structure/closet/wardrobe/suit,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/grey/border,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"ur" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"uX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"wd" = (
+/obj/machinery/power/apc{
+	cell_type = /obj/item/cell/super;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
+	},
+/obj/structure/cable/green{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"wW" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 10
+	},
+/obj/structure/table/glass,
+/obj/item/storage/box/body_record_disk,
+/obj/item/paper{
+	desc = "";
+	info = "Bodies designed on the design console must be saved to a disk, provided on the front desk counter, then placed into the resleeving console for printing.";
+	name = "Body Designer Note"
+	},
+/obj/item/sleevemate,
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"wZ" = (
+/obj/machinery/button/remote/airlock{
+	id = "dorm1";
+	name = "Room 1 Lock";
+	pixel_x = 26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"xm" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/turf/simulated/floor/outdoors/water,
+/area/crew_quarters)
+"xp" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock{
+	id_tag = "dorm1";
+	name = "Room 1"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"xw" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"xB" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/machinery/computer/crew{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
 "xL" = (
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"xS" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
 "yj" = (
 /obj/structure/flora/tree/dead,
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"yC" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 9
+	},
+/obj/structure/closet/emcloset,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"yK" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
+/turf/simulated/floor/plating,
+/area/medical)
 "yQ" = (
 /obj/structure/flora/grass/both,
 /obj/effect/spider/spiderling/frost,
@@ -69,6 +736,105 @@
 /mob/living/simple_mob/animal/passive/penguin,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"zk" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"zn" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"zo" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	name = "Medical Forms"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"zB" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"zR" = (
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 28
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"At" = (
+/turf/simulated/floor/outdoors/water/deep,
+/area/crew_quarters)
+"AS" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"BT" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"Cc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
 "Cg" = (
 /obj/structure/flora/tree/dead,
 /mob/living/simple_mob/animal/wolf,
@@ -80,20 +846,118 @@
 "Cp" = (
 /turf/simulated/floor/outdoors/dirt,
 /area/boreas/surfacebase/outside)
+"CV" = (
+/obj/machinery/button/remote/airlock{
+	id = "dorm6";
+	name = "Room 6 Lock";
+	pixel_x = -26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
 "Dg" = (
 /obj/effect/zone_divider,
 /turf/unsimulated/wall/planetary/boreas,
 /area/boreas/surfacebase/outside/wilderness)
+"Dp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"DB" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/plating,
+/area/medical)
+"DJ" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"DU" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/water,
+/area/crew_quarters)
+"DV" = (
+/obj/machinery/button/remote/airlock{
+	id = "dorm4";
+	name = "Room 4 Lock";
+	pixel_x = -26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"Em" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/computer/crew{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
 "Ew" = (
 /obj/structure/flora/tree/dead,
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"EF" = (
+/obj/structure/table/glass,
+/turf/simulated/floor/tiled/white,
+/area/medical)
 "EY" = (
 /obj/structure/flora/tree/dead,
 /obj/effect/spider/spiderling/frost,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"Fl" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/turf/simulated/floor/outdoors/water,
+/area/crew_quarters)
+"Fn" = (
+/obj/structure/table/glass,
+/obj/item/storage/firstaid/regular,
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"Fx" = (
+/obj/structure/reagent_dispensers/water_cooler/full,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 6
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"FC" = (
+/turf/simulated/wall,
+/area/crew_quarters)
+"FN" = (
+/obj/machinery/chem_master,
+/turf/simulated/floor/plating,
+/area/medical)
 "FZ" = (
 /mob/living/simple_mob/animal/wolf,
 /turf/simulated/floor/outdoors/snow/boreas,
@@ -102,11 +966,43 @@
 /mob/living/simple_mob/animal/wolf,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"Hc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"Hp" = (
+/obj/machinery/door/airlock/glass_medical{
+	name = "Chemistry";
+	req_access = list();
+	req_one_access = list(33)
+	},
+/turf/simulated/floor/plating,
+/area/medical)
+"Hv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"HK" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
 "HL" = (
 /obj/effect/zone_divider,
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside/wilderness)
+"HU" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
 "HW" = (
 /obj/effect/zone_divider,
 /obj/effect/step_trigger/teleporter/to_mining,
@@ -116,14 +1012,125 @@
 /mob/living/simple_mob/animal/passive/penguin,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside/wilderness)
+"Ip" = (
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -32
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
 "Iw" = (
 /turf/simulated/floor/lava/phoron,
 /area/boreas/surfacebase/outside/wilderness)
+"IG" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"IS" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/glass,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 5
+	},
+/obj/machinery/computer/med_data/laptop{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"IV" = (
+/turf/simulated/wall,
+/area/medical)
+"Jh" = (
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
 "JO" = (
 /obj/structure/flora/grass/both,
 /mob/living/simple_mob/animal/giant_spider/frost,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"JQ" = (
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"Kx" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock{
+	id_tag = "dorm2";
+	name = "Room 2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"KZ" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 9
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/structure/filingcabinet/medical{
+	desc = "A large cabinet with hard copy medical records.";
+	name = "Medical Records"
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"LO" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock{
+	id_tag = "dorm4";
+	name = "Room 4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
 "LP" = (
 /mob/living/simple_mob/otie/feral,
 /turf/simulated/floor/outdoors/snow/boreas,
@@ -134,15 +1141,190 @@
 "Mk" = (
 /turf/simulated/floor/outdoors/mud,
 /area/boreas/surfacebase/outside)
+"Ni" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"Nu" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 1
+	},
+/obj/structure/closet/wardrobe/white,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"NC" = (
+/obj/machinery/door/window/westleft,
+/obj/machinery/door/window/eastleft{
+	req_one_access = list(33)
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "chemistry";
+	layer = 3.1;
+	name = "Chemistry Shutters"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/medical)
+"NW" = (
+/obj/machinery/button/remote/airlock{
+	id = "dorm3";
+	name = "Room 3 Lock";
+	pixel_x = 26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"Om" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"Ov" = (
+/obj/structure/undies_wardrobe,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/grey/border,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"OU" = (
+/obj/machinery/button/remote/airlock{
+	id = "dorm5";
+	name = "Room 5 Lock";
+	pixel_x = 26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"Pp" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"Pt" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"PB" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"PN" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/water,
+/area/crew_quarters)
+"PW" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
 "Qz" = (
 /obj/structure/flora/grass/both,
 /mob/living/simple_mob/animal/wolf,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"QB" = (
+/obj/machinery/shower,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"QD" = (
+/obj/structure/table/glass,
+/obj/item/radio{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/radio{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"QF" = (
+/obj/machinery/smartfridge/chemistry/chemvator,
+/turf/simulated/wall,
+/area/medical)
 "Rq" = (
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside/wilderness)
+"Rz" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/photocopier,
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"Sq" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
+/turf/simulated/floor/outdoors/water,
+/area/crew_quarters)
+"SL" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/structure/table/glass,
+/turf/simulated/floor/tiled/white,
+/area/medical)
 "SU" = (
 /mob/living/simple_mob/animal/giant_spider/frost,
 /turf/simulated/floor/outdoors/snow/boreas,
@@ -156,6 +1338,32 @@
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"Ul" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
+"UX" = (
+/obj/machinery/door/airlock{
+	name = "Unisex Showers"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
 "Vc" = (
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/boreas,
@@ -172,6 +1380,21 @@
 /mob/living/simple_mob/otie/feral,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"Wm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
 "Wy" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -183,15 +1406,65 @@
 "Xc" = (
 /turf/simulated/floor/tiled,
 /area/rnd/lab)
+"Xm" = (
+/obj/structure/table/woodentable,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/wood,
+/area/crew_quarters)
+"XX" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/grey/border{
+	dir = 5
+	},
+/obj/structure/closet/wardrobe/pjs,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/obj/item/clothing/shoes/boots/winter,
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
 "Yd" = (
 /obj/structure/flora/grass/brown,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"Yi" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters)
 "Yj" = (
 /obj/structure/flora/tree/dead,
 /mob/living/simple_mob/animal/wolf,
 /turf/simulated/floor/outdoors/snow/boreas,
 /area/boreas/surfacebase/outside)
+"Yl" = (
+/turf/simulated/floor/tiled/white,
+/area/medical)
+"Yn" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/dropper,
+/turf/simulated/floor/plating,
+/area/medical)
 "YH" = (
 /turf/simulated/wall,
 /area/arrival)
@@ -206,6 +1479,24 @@
 /turf/simulated/floor/tiled,
 /area/medical)
 "Zj" = (
+/turf/simulated/floor/tiled,
+/area/crew_quarters)
+"Zx" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock{
+	id_tag = "dorm3";
+	name = "Room 3"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters)
 "ZD" = (
@@ -45795,13 +47086,13 @@ YH
 YH
 YH
 YH
+YJ
+YJ
 YH
 YH
 YH
-YH
-YH
-YH
-YH
+YJ
+YJ
 YH
 YH
 YH
@@ -46116,19 +47407,19 @@ ZY
 ZY
 ZY
 ZY
+IV
+KZ
+zo
+lx
+Rz
+kW
+QD
+wW
+IV
 ZY
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+IV
 ZY
 ZY
 ZY
@@ -46438,19 +47729,19 @@ ZY
 ZY
 ZY
 ZY
+IV
+to
+Yl
+Yl
+pv
+Yl
+Yl
+Yl
 ZY
 ZY
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+IV
 ZY
 ZY
 ZY
@@ -46760,19 +48051,19 @@ ZY
 ZY
 ZY
 ZY
+IV
+SL
+zn
+EF
+zn
+Fn
+Yl
+po
+IV
 ZY
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+IV
 ZY
 ZY
 ZY
@@ -47082,19 +48373,19 @@ ZY
 ZY
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+IV
+DJ
+Em
+nP
+xB
+IS
+dj
+se
+IV
+IV
+IV
+IV
+IV
 ZY
 ZY
 ZY
@@ -47404,15 +48695,15 @@ ZY
 ZY
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+aO
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+iH
 ZY
 ZY
 ZY
@@ -47726,15 +49017,15 @@ ZY
 ZY
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+aO
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+iH
 ZY
 ZY
 ZY
@@ -48048,15 +49339,15 @@ ZY
 ZY
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+aO
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+Yl
+iH
 ZY
 ZY
 ZY
@@ -48370,15 +49661,15 @@ ZY
 ZY
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+lR
+IG
+IG
+Yl
+Yl
+Yl
+IG
+IG
+HU
 ZY
 ZY
 ZY
@@ -50308,14 +51599,14 @@ ZY
 YN
 YN
 YN
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+IV
+IV
+IV
+NC
+QF
+IV
+IV
+IV
 ZY
 ZY
 ZY
@@ -50630,14 +51921,14 @@ ZY
 YN
 YN
 YN
+IV
+FN
+lG
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+lG
+FN
+IV
 ZY
 ZY
 ZY
@@ -50952,14 +52243,14 @@ ZY
 YN
 YN
 YN
+IV
+DB
+bI
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+mo
+DB
+IV
 ZY
 ZY
 ZY
@@ -51274,14 +52565,14 @@ ZY
 YN
 YN
 YN
+IV
+yK
+Yn
 ZY
 ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+Yn
+yK
+IV
 ZY
 ZY
 ZY
@@ -51596,14 +52887,14 @@ ZY
 YN
 YN
 YN
+Hp
 ZY
 ZY
 ZY
 ZY
 ZY
 ZY
-ZY
-ZY
+IV
 ZY
 ZY
 ZY
@@ -51918,14 +53209,14 @@ ZY
 YN
 YN
 YN
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
-ZY
+IV
+rl
+nG
+bK
+DB
+fm
+nG
+IV
 ZY
 ZY
 ZY
@@ -52218,11 +53509,11 @@ ZO
 ZO
 ZO
 ZO
-ZO
-ZO
-ZO
-ZO
-ZO
+YH
+YH
+YH
+YH
+YH
 YH
 YH
 YH
@@ -52254,11 +53545,11 @@ YH
 YH
 YH
 YH
-ZO
-ZO
-ZO
-ZO
-ZO
+YH
+YH
+YH
+YH
+YH
 ZO
 ZO
 ZO
@@ -52540,12 +53831,12 @@ ZO
 ZO
 ZO
 ZO
-ZO
-ZO
-ZO
-ZO
 YH
-YH
+ZG
+ZG
+ZG
+ZG
+ZG
 ZG
 ZG
 ZG
@@ -52575,12 +53866,12 @@ ZG
 ZG
 ZG
 ZG
+ZG
+ZG
+ZG
+ZG
+ZG
 YH
-YH
-ZO
-ZO
-ZO
-ZO
 ZO
 ZO
 ZO
@@ -52862,11 +54153,11 @@ ZO
 ZO
 ZO
 ZO
-ZO
-ZO
-ZO
 YH
-YH
+ZG
+ZG
+ZG
+ZG
 ZG
 ZG
 ZG
@@ -52898,11 +54189,11 @@ ZG
 ZG
 ZG
 ZG
+ZG
+ZG
+ZG
+ZG
 YH
-YH
-ZO
-ZO
-ZO
 ZO
 ZO
 ZO
@@ -53184,10 +54475,10 @@ ZO
 ZO
 ZO
 ZO
-ZO
-ZO
 YH
-YH
+ZG
+ZG
+ZG
 ZG
 ZG
 ZG
@@ -53221,10 +54512,10 @@ ZG
 ZG
 ZG
 ZG
+ZG
+ZG
+ZG
 YH
-YH
-ZO
-ZO
 ZO
 ZO
 ZO
@@ -53506,9 +54797,9 @@ ZO
 ZO
 ZO
 ZO
-ZO
 YH
-YH
+ZG
+ZG
 ZG
 ZG
 ZG
@@ -53544,9 +54835,9 @@ ZG
 ZG
 ZG
 ZG
+ZG
+ZG
 YH
-YH
-ZO
 ZO
 ZO
 ZO
@@ -53829,7 +55120,7 @@ ZO
 ZO
 ZO
 YH
-YH
+ZG
 ZG
 ZG
 ZG
@@ -53867,7 +55158,7 @@ ZG
 ZG
 ZG
 ZG
-YH
+ZG
 YH
 ZO
 ZO
@@ -62225,21 +63516,21 @@ Zj
 Zj
 Zj
 Zj
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+FC
+FC
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
 YH
 ZG
 ZG
@@ -62547,21 +63838,21 @@ Zj
 Zj
 Zj
 Zj
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+lo
+lo
+lo
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
 YH
 ZG
 ZG
@@ -62869,21 +64160,21 @@ Zj
 Zj
 Zj
 Zj
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+lo
+lo
+lo
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
 YH
 ZG
 ZG
@@ -63167,45 +64458,45 @@ ZV
 ZV
 ZV
 YH
+FC
+FC
+FC
+ZG
+FC
+FC
+FC
+FC
+FC
+FC
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+FC
+FC
+FC
+FC
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
 YH
 ZG
 ZG
@@ -63489,45 +64780,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+yC
+Zj
+wd
+Cc
+Pp
+Zj
+oc
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
 YH
 ZG
 ZG
@@ -63811,45 +65102,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+Nu
+Zj
+qU
+Ni
+qU
+Zj
+uo
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
 YH
 ZG
 ZG
@@ -64133,45 +65424,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+hq
+Zj
+qU
+Ni
+qU
+Zj
+nK
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+FC
+FC
+kz
+FC
+FC
+FC
+LO
+FC
+FC
+FC
+Kx
 YH
 ZG
 ZG
@@ -64455,45 +65746,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+kJ
+Zj
+qU
+bg
+qU
+Zj
+Ov
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+zB
+CV
+zk
+FC
+zB
+DV
+zk
+FC
+zB
+iI
+zk
 YH
 ZG
 ZG
@@ -64777,45 +66068,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+XX
+Zj
+JQ
+PW
+Zj
+Zj
+Fx
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+Xm
+Hv
+Ip
+FC
+Xm
+Hv
+Ip
+FC
+Xm
+Hv
+Ip
 YH
 ZG
 ZG
@@ -65099,45 +66390,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+FC
+FC
+UX
+FC
+FC
+FC
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+BT
+bY
+lo
+FC
+BT
+bY
+lo
+FC
+BT
+bY
+lo
 YH
 ZG
 ZG
@@ -65421,45 +66712,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+QB
+iN
+iN
+uX
+iN
+iN
+Om
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+fb
+ub
+ln
+FC
+fb
+ub
+ln
+FC
+fb
+ub
+ln
 YH
 ZG
 ZG
@@ -65743,45 +67034,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+FC
+FC
+uX
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+sx
+lo
+sc
+FC
+sx
+lo
+sc
+FC
+sx
+lo
+sc
 YH
 ZG
 ZG
@@ -66065,45 +67356,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+qY
+iN
+iN
+uX
+iN
+iN
+iW
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
 YH
 ZG
 ZG
@@ -66387,45 +67678,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+FC
+FC
+Wm
+FC
+FC
+FC
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+sx
+lo
+sc
+FC
+sx
+lo
+sc
+FC
+sx
+lo
+sc
 YH
 ZG
 ZG
@@ -66709,45 +68000,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+tA
+iN
+iN
+uX
+iN
+Jh
+iW
+FC
+Zj
+xm
+PN
+PN
+PN
+PN
+PN
+qM
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+fb
+Dp
+ln
+FC
+fb
+Dp
+ln
+FC
+fb
+Dp
+ln
 YH
 ZG
 ZG
@@ -67031,45 +68322,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+FC
+FC
+UX
+FC
+FC
+FC
+FC
+Zj
+ii
+At
+At
+At
+At
+At
+es
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+ie
+bY
+lo
+FC
+ie
+bY
+lo
+FC
+ie
+bY
+lo
 YH
 ZG
 ZG
@@ -67353,45 +68644,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+iN
+ew
+iN
+uX
+iN
+kg
+iN
+FC
+Zj
+ii
+At
+At
+At
+At
+At
+es
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+Xm
+rb
+bZ
+FC
+Xm
+rb
+bZ
+FC
+Xm
+rb
+bZ
 YH
 ZG
 ZG
@@ -67675,45 +68966,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+xw
+sy
+ur
+fQ
+xS
+Hc
+HK
+FC
+Zj
+ii
+At
+At
+At
+At
+At
+es
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+cc
+OU
+zk
+FC
+cc
+NW
+zk
+FC
+cc
+wZ
+zk
 YH
 ZG
 ZG
@@ -67997,45 +69288,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+iN
+aD
+FC
+gt
+FC
+Yi
+iN
+FC
+Zj
+ii
+At
+At
+At
+At
+At
+es
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+FC
+FC
+ai
+FC
+FC
+FC
+Zx
+FC
+FC
+FC
+xp
 YH
 ZG
 ZG
@@ -68319,45 +69610,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+iN
+iN
+PB
+AS
+PB
+iN
+iN
+FC
+Zj
+Fl
+DU
+DU
+DU
+DU
+DU
+Sq
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
 YH
 ZG
 ZG
@@ -68641,45 +69932,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+iN
+ew
+iN
+Pt
+iN
+kg
+iN
+FC
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
+lo
 YH
 ZG
 ZG
@@ -68963,45 +70254,45 @@ ZV
 ZV
 ZV
 YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+FC
+FC
+Pt
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+FC
+Zj
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+FC
+FC
+kz
+FC
+FC
+FC
+LO
+FC
+FC
+FC
+Kx
 YH
 ZG
 ZG
@@ -69285,45 +70576,45 @@ ZO
 ZO
 ZO
 YH
-YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+tA
+iN
+iN
+Pt
+iN
+iN
+iW
+FC
+eS
+eS
+eS
+eS
+eS
+lo
+lo
+lo
+lo
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-YH
+FC
+lo
+lo
+FC
+zB
+CV
+zk
+FC
+zB
+DV
+zk
+FC
+zB
+iI
+zk
 YH
 ZO
 ZO
@@ -69606,47 +70897,47 @@ ZO
 ZO
 ZO
 ZO
-ZO
 YH
-YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+FC
+FC
+Ul
+FC
+FC
+FC
+FC
+eS
+jX
+jX
+jX
+eS
+lo
+lo
+lo
+lo
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+Xm
+Hv
+Ip
+FC
+Xm
+Hv
+Ip
+FC
+Xm
+Hv
+Ip
 YH
-YH
-ZO
 ZO
 ZO
 ZO
@@ -69928,47 +71219,47 @@ ZO
 ZO
 ZO
 ZO
-ZO
-ZO
 YH
-YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+tA
+iN
+iN
+Pt
+iN
+iN
+iW
+FC
+eS
+jX
+jX
+jX
+eS
+lo
+lo
+lo
+lo
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+BT
+bY
+lo
+FC
+BT
+bY
+lo
+FC
+BT
+bY
+lo
 YH
-YH
-ZO
-ZO
 ZO
 ZO
 ZO
@@ -70250,47 +71541,47 @@ ZO
 ZO
 ZO
 ZO
-ZO
-ZO
-ZO
 YH
-YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+FC
+FC
+Pt
+FC
+FC
+FC
+FC
+eS
+jX
+jX
+jX
+eS
+lo
+lo
+lo
+lo
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+fb
+ub
+ln
+FC
+fb
+ub
+ln
+FC
+fb
+ub
+ln
 YH
-YH
-ZO
-ZO
-ZO
 ZO
 ZO
 ZO
@@ -70572,47 +71863,47 @@ ZO
 ZO
 ZO
 ZO
-ZO
-ZO
-ZO
-ZO
 YH
-YH
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+QB
+iN
+iN
+zR
+iN
+iN
+Om
+FC
+eS
+eS
+eS
+eS
+eS
+lo
+lo
+lo
+lo
+FC
 Zj
 Zj
 Zj
 ZG
 ZG
 ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+FC
+lo
+lo
+FC
+sx
+lo
+sc
+FC
+sx
+lo
+sc
+FC
+sx
+lo
+sc
 YH
-YH
-ZO
-ZO
-ZO
-ZO
 ZO
 ZO
 ZO
@@ -70894,11 +72185,11 @@ ZO
 ZO
 ZO
 ZO
-ZO
-ZO
-ZO
-ZO
-ZO
+YH
+YH
+YH
+YH
+YH
 YH
 YH
 YH
@@ -70930,11 +72221,11 @@ YH
 YH
 YH
 YH
-ZO
-ZO
-ZO
-ZO
-ZO
+YH
+YH
+YH
+YH
+YH
 ZO
 ZO
 ZO
