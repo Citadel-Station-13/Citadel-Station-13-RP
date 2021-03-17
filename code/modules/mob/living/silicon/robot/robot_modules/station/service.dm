@@ -159,7 +159,8 @@
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
 					"Borgi" = "borgi-jani",
-					"Otieborg" = "otiej"
+					"Otieborg" = "otiej",
+					"Janihound, J9" = "J9"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0

@@ -62,6 +62,13 @@ SUBSYSTEM_DEF(mapping)
 	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
 	if(GLOB.using_map)
 		loadLateMaps()
+	if(!GLOB.using_map.overmap_z)
+		build_overmap()
+	// Set up antagonists.
+	populate_antag_type_list()
+
+	//Set up spawn points.
+	populate_spawn_points()
 
 	repopulate_sorted_areas()
 	return ..()

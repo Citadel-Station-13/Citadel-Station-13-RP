@@ -136,7 +136,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 
 	. = 0
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && QUANTIZE(gas[g] * fire_consumption_rate) >= 0.005)
+		if(GLOB.meta_gas_flags[g] & GAS_FLAG_FUEL && (QUANTIZE(gas[g] * fire_consumption_rate) >= max(0.005, MINIMUM_MOLES_TO_SPARK)))
 			. = 1
 			break
 

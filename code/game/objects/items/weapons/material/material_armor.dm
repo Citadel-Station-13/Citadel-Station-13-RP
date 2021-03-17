@@ -32,6 +32,8 @@ Protectiveness | Armor %
 	var/unbreakable = FALSE
 	var/default_material = null // Set this to something else if you want material attributes on init.
 	var/material_armor_modifer = 1 // Adjust if you want seperate types of armor made from the same material to have different protectiveness (e.g. makeshift vs real armor)
+	/// multiplier for mat slowdown from weight
+	var/material_weight_factor
 
 /obj/item/clothing/Initialize(mapload, material_key)
 	. = ..()
@@ -190,7 +192,7 @@ Protectiveness | Armor %
 
 		if(!isnull(material.conductivity))
 			siemens_coefficient = between(0, material.conductivity / 10, 10)
-		slowdown = between(0, round(material.weight / 10, 0.1), 6)
+		slowdown = clamp(0, round(material.weight / 10, 0.1) * material_weight_factor, 6)
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"

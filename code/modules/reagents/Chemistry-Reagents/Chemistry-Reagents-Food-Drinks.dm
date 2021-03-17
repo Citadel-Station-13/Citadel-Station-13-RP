@@ -3342,7 +3342,8 @@ End Citadel Change */
 	if(alien == IS_VOX)
 		M.adjustToxLoss(-0.5 * removed)
 		return
-	M.adjustToxLoss(3 * removed)
+	else
+		M.adjustToxLoss(3 * removed)
 
 /datum/reagent/ethanol/screamingviking
 	name = "Screaming Viking"

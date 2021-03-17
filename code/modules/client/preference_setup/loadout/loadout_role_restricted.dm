@@ -1003,7 +1003,7 @@
 
 /datum/gear/restricted/eng_sci_supply/eyes/meson/eyepatch
 	display_name = "(Engineering/Science/Supply) Optical Meson Eyepatch"
-	path = /obj/item/clothing/glasses/hud/health/eyepatch
+	path = /obj/item/clothing/glasses/hud/engi/eyepatch
 
 /datum/gear/restricted/eng_sci_supply/eyes/aviator
 	display_name = "(Engineering/Science/Supply) Optical Meson Scanners - Aviators"

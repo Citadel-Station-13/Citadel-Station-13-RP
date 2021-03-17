@@ -204,10 +204,11 @@
 			return
 
 		var/area_path = areas_to_use[az]
+		var/area/areaInstance = new area_path(null)
+		areaInstance.addSorted()
 		for(var/thing in floor_turfs)
-			new area_path(thing)
-		var/area/A = locate(area_path)
-		cfloor.set_area_ref("\ref[A]")
+			areaInstance.contents.Add(thing)
+		cfloor.set_area_ref("[REF(areaInstance)]")
 		az++
 
 	// Place lift panel.
