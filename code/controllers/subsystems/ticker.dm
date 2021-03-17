@@ -60,12 +60,6 @@ SUBSYSTEM_DEF(ticker)
 	if(!syndicate_code_response)
 		syndicate_code_response = generate_code_phrase()
 
-	// Set up antagonists.
-	populate_antag_type_list()
-
-	//Set up spawn points.
-	populate_spawn_points()
-
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 
 	return ..()
@@ -231,7 +225,7 @@ SUBSYSTEM_DEF(ticker)
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		//Cleanup some stuff
-		for(var/obj/effect/landmark/start/S in landmarks_list)
+		for(var/obj/effect/landmark/start/S in GLOB.landmarks_list)
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)

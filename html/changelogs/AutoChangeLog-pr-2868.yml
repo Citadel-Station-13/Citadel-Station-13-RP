@@ -1,0 +1,4 @@
+author: "Kraseo"
+delete-after: True
+changes: 
+  - bugfix: "Bioprinters are actually worth upgrading now."

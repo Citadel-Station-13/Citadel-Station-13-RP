@@ -92,7 +92,16 @@
 /area/submap/HeadscientistHQ)
 "en" = (
 /obj/structure/table/rack/shelf,
-/obj/item/rig/merc,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/fiftyspawner/mhydrogen,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "ep" = (

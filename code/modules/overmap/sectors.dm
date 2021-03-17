@@ -35,9 +35,6 @@
 	find_z_levels()		// This populates map_z and assigns z levels to the ship.
 	register_z_levels()	// This makes external calls to update global z level information.
 
-	if(!GLOB.using_map.overmap_z)
-		build_overmap()
-
 	start_x = start_x || rand(OVERMAP_EDGE, GLOB.using_map.overmap_size - OVERMAP_EDGE)
 	start_y = start_y || rand(OVERMAP_EDGE, GLOB.using_map.overmap_size - OVERMAP_EDGE)
 
