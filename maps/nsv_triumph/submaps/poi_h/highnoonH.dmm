@@ -16,7 +16,7 @@
 /area/poi_h/POIs/WW_Town)
 "dy" = (
 /obj/structure/table/woodentable,
-/obj/item/rig/merc/empty,
+/obj/fiftyspawner/phoron,
 /turf/simulated/floor/wood/classh,
 /area/poi_h/POIs/WW_Town)
 "dI" = (

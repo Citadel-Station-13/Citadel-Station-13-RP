@@ -1,4 +1,0 @@
-author: "CharlesWedge"
-delete-after: True
-changes: 
-  - bugfix: "Added a Else Clause to Vox's delight. It now slightly heals Toxin damage and no longer is toxic to them."

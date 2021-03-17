@@ -421,3 +421,26 @@
 	containertype = /obj/structure/closet/crate/secure
 	containername = "Compact Defibrillator crate"
 	access = access_medical_equip
+
+/datum/supply_pack/med/ml3m
+	name = "Cell-Loaded Medigun crate"
+	contains = list(
+			/obj/item/gun/projectile/cell_loaded/medical = 1,
+			/obj/item/ammo_magazine/cell_mag/medical = 1
+			)
+	cost = 250
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Cell-Loaded Medigun crate"
+	access = access_cmo
+
+/datum/supply_pack/med/ml3m_cells
+	name = "Cell-Loaded Medigun Cell Pack crate"
+	contains = list(
+			/obj/item/ammo_casing/microbattery/medical/brute = 3,
+			/obj/item/ammo_casing/microbattery/medical/burn = 3,
+			/obj/item/ammo_casing/microbattery/medical/stabilize = 3
+			)
+	cost = 100
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Cell-Loaded Medigun Cell Pack crate"
+	access = access_cmo
