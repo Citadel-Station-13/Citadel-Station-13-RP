@@ -260,6 +260,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.player_details[ckey] = player_details
 	*/
 
+	if(log_client_to_db() == "BUNKER_DROPPED")
+		return FALSE
+
 	. = ..()	//calls mob.Login()
 
 	if (byond_version >= 512)
@@ -352,8 +355,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>")
 		to_chat(src, "<span class='alert'>[custom_event_msg]</span>")
 		to_chat(src, "<br>")
-
-	log_client_to_db()
 
 	send_resources()
 
@@ -508,8 +509,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
 			to_chat(src, config_legacy.panic_bunker_message)
-			qdel(src)
-			return 0
+			return "BUNKER_DROPPED"
 	if(player_age == -1)
 		player_age = 0		//math requires this to not be -1.
 
