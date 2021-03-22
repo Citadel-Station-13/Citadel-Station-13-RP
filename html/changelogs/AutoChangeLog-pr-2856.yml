@@ -1,0 +1,5 @@
+author: "Kraseo"
+delete-after: True
+changes: 
+  - rscadd: "Fox tail sprite, with wagging animation."
+  - rscadd: "Slime hat to loadout."
