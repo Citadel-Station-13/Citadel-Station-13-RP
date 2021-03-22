@@ -1,0 +1,7 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "Surgery Maintenance area"
+  - rscadd: "Atmos for missing area"
+  - rscdel: "Mimics removed on all decks."
+  - balance: "Hostile mob spawn"
