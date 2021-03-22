@@ -95,6 +95,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/plating,
 /area/poi_d/Mountain)
 "pJ" = (
@@ -112,6 +113,7 @@
 /turf/simulated/floor/tiled/kafel_full,
 /area/poi_d/Mountain)
 "rc" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/tiled/white,
 /area/poi_d/Mountain)
 "uD" = (
@@ -122,9 +124,14 @@
 /obj/item/reagent_containers/food/condiment/small/saltshaker,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
+"vX" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/airless,
+/area/poi_d/Mountain)
 "wt" = (
 /obj/structure/table/reinforced,
-/obj/item/rig/merc,
+/obj/item/storage/belt/security/tactical/bandolier,
+/obj/item/storage/belt/security/tactical/bandolier,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "xq" = (
@@ -179,6 +186,10 @@
 /obj/item/storage/firstaid/clotting,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
+"CG" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled/kafel_full,
+/area/poi_d/Mountain)
 "Df" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
@@ -201,6 +212,7 @@
 	pixel_x = 24;
 	pixel_y = 6
 	},
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "FF" = (
@@ -211,10 +223,6 @@
 "Hi" = (
 /obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/tiled/kafel_full,
-/area/poi_d/Mountain)
-"Hy" = (
-/mob/living/simple_mob/humanoid/merc/ranged/grenadier,
-/turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "HQ" = (
 /obj/machinery/door/airlock/vault/bolted,
@@ -231,6 +239,10 @@
 /obj/random/trash,
 /turf/simulated/floor/airless,
 /area/poi_d/explored)
+"Jh" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/tiled,
+/area/poi_d/Mountain)
 "JG" = (
 /turf/simulated/mineral/floor/vacuum,
 /area/poi_d/explored)
@@ -292,6 +304,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/plating,
 /area/poi_d/Mountain)
 "RE" = (
@@ -299,7 +312,7 @@
 /turf/simulated/floor/tiled/kafel_full,
 /area/poi_d/Mountain)
 "Tf" = (
-/mob/living/simple_mob/humanoid/merc/melee/sword,
+/mob/living/simple_mob/humanoid/merc/melee/sword/space,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "TB" = (
@@ -317,7 +330,7 @@
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "Us" = (
-/mob/living/simple_mob/humanoid/merc/ranged,
+/mob/living/simple_mob/humanoid/merc/ranged/space/heavy,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "Vq" = (
@@ -377,7 +390,7 @@
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "YM" = (
-/mob/living/simple_mob/humanoid/merc/ranged/smg,
+/mob/living/simple_mob/humanoid/merc/ranged/space/shotgun/auto,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "Zm" = (
@@ -721,7 +734,7 @@ da
 da
 KB
 HS
-HS
+vX
 KB
 Pc
 aV
@@ -758,7 +771,7 @@ KB
 KB
 KB
 uD
-uD
+Jh
 KB
 KB
 KB
@@ -807,7 +820,7 @@ Nd
 uD
 uD
 is
-Us
+uD
 uD
 uD
 KB
@@ -833,7 +846,7 @@ TB
 XU
 uD
 uD
-uD
+Jh
 uD
 uD
 uD
@@ -858,7 +871,7 @@ KB
 Ex
 VY
 nC
-uD
+Jh
 uD
 uD
 uD
@@ -892,9 +905,9 @@ ga
 uD
 LA
 LA
-Hy
 uD
-Hy
+uD
+YM
 LA
 LA
 da
@@ -919,8 +932,8 @@ vP
 Us
 LA
 XL
-uD
-uD
+Jh
+Jh
 uD
 FF
 LA
@@ -936,8 +949,8 @@ da
 da
 KB
 BE
-jG
-jG
+CG
+CG
 jG
 Ac
 uD

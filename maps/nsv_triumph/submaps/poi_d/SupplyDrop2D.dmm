@@ -4,51 +4,51 @@
 /area/template_noop)
 "b" = (
 /turf/template_noop,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "c" = (
 /turf/simulated/floor/airless,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "d" = (
 /obj/structure/girder/displaced,
 /turf/template_noop,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "e" = (
 /turf/simulated/wall/titanium,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "f" = (
 /turf/simulated/floor/reinforced/airless,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "g" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/floor/reinforced/airless,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "h" = (
 /obj/item/flashlight,
 /turf/simulated/floor/reinforced/airless,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "i" = (
 /obj/structure/loot_pile/maint/technical,
 /obj/item/gps/internal/poi,
 /obj/item/cell/device/weapon/empty,
 /obj/item/cell/device/weapon/empty,
 /turf/simulated/floor/reinforced/airless,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "j" = (
 /obj/structure/loot_pile/maint/technical,
 /turf/simulated/floor/reinforced/airless,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "k" = (
 /obj/structure/girder,
 /turf/template_noop,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "l" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/reinforced/airless,
-/area/triumph_away/poi_d/explored)
+/area/space)
 "m" = (
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/airless,
-/area/triumph_away/poi_d/explored)
+/area/space)
 
 (1,1,1) = {"
 a
