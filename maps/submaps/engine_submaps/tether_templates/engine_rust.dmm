@@ -179,8 +179,8 @@
 /area/engineering/engine_room)
 "aB" = (
 /obj/machinery/light{
-	icon_state = "tube1";
-	dir = 8
+	dir = 8;
+	icon_state = "tube1"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -507,22 +507,22 @@
 /area/engineering/engine_room)
 "bv" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	icon_state = "intact";
-	dir = 5
+	dir = 5;
+	icon_state = "intact"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bw" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	icon_state = "intact";
-	dir = 4
+	dir = 4;
+	icon_state = "intact"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	icon_state = "intact";
-	dir = 10
+	dir = 10;
+	icon_state = "intact"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -712,8 +712,7 @@
 "bT" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 10;
-	icon_state = "intact";
-	
+	icon_state = "intact"
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
@@ -726,8 +725,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 8;
-	icon_state = "map";
-	
+	icon_state = "map"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -808,8 +806,8 @@
 "cd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 4
+	dir = 4;
+	icon_state = "warning"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -1025,24 +1023,24 @@
 /area/engineering/engine_room)
 "cB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
-	icon_state = "intact";
-	dir = 5
+	dir = 5;
+	icon_state = "intact"
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	icon_state = "intact";
-	dir = 6
+	dir = 6;
+	icon_state = "intact"
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cD" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	icon_state = "map";
-	dir = 4
+	dir = 4;
+	icon_state = "map"
 	},
 /obj/machinery/meter,
 /turf/simulated/floor,
@@ -1106,8 +1104,8 @@
 /area/engineering/engine_room)
 "cM" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 4
+	dir = 4;
+	icon_state = "warning"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -1208,8 +1206,7 @@
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
 	icon_state = "extinguisher_closed";
-	pixel_y = 32;
-	
+	pixel_y = 32
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
@@ -1247,8 +1244,8 @@
 /area/engineering/engine_room)
 "dc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	icon_state = "intact";
-	dir = 4
+	dir = 4;
+	icon_state = "intact"
 	},
 /obj/machinery/alarm{
 	dir = 1;
@@ -1259,8 +1256,8 @@
 /area/engineering/engine_room)
 "dd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	icon_state = "intact";
-	dir = 9
+	dir = 9;
+	icon_state = "intact"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -1482,8 +1479,8 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
-	dir = 4
+	dir = 4;
+	icon_state = "warning"
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
