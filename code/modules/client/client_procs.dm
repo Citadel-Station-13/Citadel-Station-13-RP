@@ -165,6 +165,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	if(log_client_to_db() == "BUNKER_DROPPED")
+		return FALSE
+
+	. = ..()	//calls mob.Login()
+
 	// Instantiate tgui panel
 	tgui_panel = new(src)
 
@@ -259,11 +264,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 	*/
-
-	if(log_client_to_db() == "BUNKER_DROPPED")
-		return FALSE
-
-	. = ..()	//calls mob.Login()
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
