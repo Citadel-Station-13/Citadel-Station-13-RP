@@ -131,7 +131,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/red{
 	dir = 8
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/engineering/atmos/storage)
 "az" = (
 /obj/machinery/light/small/emergency{
@@ -777,7 +777,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 9
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/engineering/atmos/storage)
 "cW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
@@ -2250,7 +2250,7 @@
 /area/maintenance/engineering)
 "ie" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/red,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/engineering/atmos/storage)
 "if" = (
 /obj/machinery/light/small{
@@ -4021,8 +4021,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tcommsat/entrance)
 "ow" = (
-/turf/simulated/wall/r_wall,
-/area/engineering/workshop)
+/turf/simulated/wall,
+/area/engineering/engine_eva)
 "oA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -4909,7 +4909,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 8
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/engineering/atmos/storage)
 "rv" = (
 /obj/effect/landmark/start{
@@ -6901,11 +6901,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "yk" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/engineering/locker_room)
 "yl" = (
 /obj/structure/sign/department/ass,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/engineering/storage)
 "ym" = (
 /obj/structure/closet/radiation,
@@ -12185,7 +12185,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/maintenance/engi_engine)
 "Rk" = (
 /obj/machinery/door/firedoor/glass,
@@ -13232,9 +13232,6 @@
 /obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
-"UQ" = (
-/turf/simulated/wall/r_wall,
-/area/engineering/foyer_mezzenine)
 "UR" = (
 /turf/simulated/wall,
 /area/maintenance/engineering)
@@ -14390,7 +14387,7 @@
 	},
 /area/tcommsat/chamber)
 "YJ" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall,
 /area/engineering/storage)
 "YK" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -23845,14 +23842,14 @@ xd
 QQ
 Rp
 MJ
-ui
-ui
-ui
-xv
+ow
+ow
+ow
+Qw
 Do
 Ri
-xv
-xv
+Qw
+Qw
 vx
 JU
 Lo
@@ -23987,14 +23984,14 @@ ui
 ui
 RT
 MJ
-ui
+ow
 NO
 XL
-xv
+Qw
 KV
 ac
 Ur
-xv
+Qw
 dp
 Du
 nW
@@ -24132,11 +24129,11 @@ oj
 qi
 kh
 Ts
-xv
+Qw
 DE
 XP
 Lv
-xv
+Qw
 dl
 Zv
 qW
@@ -24271,14 +24268,14 @@ qb
 mN
 RT
 wV
-ui
+ow
 lG
 AQ
-xv
+Qw
 DY
 bj
 Lw
-xv
+Qw
 Yh
 Yj
 VO
@@ -24413,14 +24410,14 @@ xx
 dv
 hz
 gj
-ui
+ow
 AH
-ui
-xv
-xv
-xv
-xv
-xv
+ow
+Qw
+Qw
+Qw
+Qw
+Qw
 Gn
 nl
 am
@@ -24994,10 +24991,10 @@ nl
 am
 yS
 yS
-MK
+yS
 XN
-MK
-MK
+yS
+yS
 ZA
 SC
 Ar
@@ -25276,7 +25273,7 @@ YJ
 GQ
 nl
 am
-ow
+zi
 qe
 Ah
 mT
@@ -26682,7 +26679,7 @@ ho
 dv
 Fy
 fv
-dv
+UR
 RT
 yu
 YJ
@@ -26966,7 +26963,7 @@ dv
 dv
 nF
 US
-dv
+UR
 RT
 yu
 YJ
@@ -27108,7 +27105,7 @@ ID
 kB
 Vt
 gH
-dv
+UR
 Cs
 Ki
 Km
@@ -27250,7 +27247,7 @@ ID
 dv
 dv
 gY
-dv
+UR
 nZ
 uy
 mf
@@ -27392,9 +27389,9 @@ ID
 We
 dv
 Yb
-dv
+UR
 ua
-dv
+UR
 YJ
 YJ
 YJ
@@ -28407,7 +28404,7 @@ ml
 ml
 hw
 vu
-Tx
+zY
 gR
 qb
 dv
@@ -28549,7 +28546,7 @@ rM
 rM
 mb
 DV
-Tx
+zY
 iu
 qb
 dv
@@ -28685,13 +28682,13 @@ ku
 Ud
 bv
 zY
+zY
+zY
 Tx
 Tx
-Tx
-Tx
-Tx
-Tx
-Tx
+zY
+zY
+zY
 iu
 qb
 dv
@@ -28833,7 +28830,7 @@ em
 ea
 em
 jQ
-UQ
+em
 iu
 qb
 dv
@@ -28975,7 +28972,7 @@ em
 nS
 em
 nS
-UQ
+em
 Nk
 qb
 dv
@@ -29117,7 +29114,7 @@ Lc
 Af
 TD
 WO
-UQ
+em
 iu
 qb
 dv
@@ -29259,7 +29256,7 @@ em
 qw
 em
 em
-UQ
+em
 iu
 qb
 dv
@@ -29401,7 +29398,7 @@ em
 Qs
 XF
 jJ
-UQ
+em
 aa
 qb
 dv
@@ -29543,7 +29540,7 @@ em
 TQ
 Bw
 un
-UQ
+em
 AA
 qb
 dv
@@ -29685,7 +29682,7 @@ em
 em
 em
 em
-UQ
+em
 rD
 qb
 dv
@@ -30098,15 +30095,15 @@ ll
 Yb
 UR
 bh
-XH
-XH
+bh
+bh
 XH
 xp
 MU
 Zt
 XH
-XH
-XH
+bh
+bh
 XH
 vr
 dv
