@@ -16,7 +16,7 @@
 "hO" = (/obj/machinery/power/rad_collector,/obj/structure/cable/yellow{d2 = 2; icon_state = "0-2"},/obj/machinery/light/small{dir = 4},/turf/simulated/floor/reinforced,/area/engineering/engine_room)
 "hS" = (/obj/machinery/light,/obj/machinery/firealarm{dir = 1; pixel_y = -24},/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
 "iK" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/atmospherics/pipe/simple/visible/red{dir = 5},/turf/simulated/floor/reinforced,/area/engineering/engine_room)
-"iT" = (/obj/machinery/door/firedoor/glass,/obj/structure/grille,/obj/structure/window/phoronreinforced,/obj/structure/window/phoronreinforced{dir = 1},/obj/structure/window/phoronreinforced/full,/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
+"iT" = (/obj/machinery/atmospherics/pipe/manifold/visible/green{dir = 1},/obj/machinery/camera/network/engine,/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
 "iW" = (/obj/machinery/button/remote/blast_door{desc = "A remote control-switch for the engine charging port."; id = "SupermatterVent"; name = "REACTOR EMERGENCY VENTING"; pixel_y = -26; req_access = list(10)},/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
 "jx" = (/obj/structure/sign/vacuum,/turf/simulated/wall/r_wall,/area/engineering/engine_room)
 "kW" = (/obj/machinery/atmospherics/pipe/manifold/visible/green{dir = 1},/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
@@ -35,7 +35,7 @@
 "rL" = (/obj/structure/dispenser/phoron,/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
 "rX" = (/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
 "tm" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
-"tJ" = (/obj/machinery/camera/network/engineering{dir = 4},/obj/structure/sign/warning/radioactive{pixel_x = -32},/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
+"tJ" = (/obj/structure/closet/radiation,/obj/item/clothing/glasses/meson,/obj/item/clothing/glasses/meson,/obj/machinery/camera/network/engine,/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
 "tW" = (/obj/machinery/atmospherics/unary/vent_scrubber/on{dir = 4},/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
 "ub" = (/obj/machinery/atmospherics/pipe/simple/visible/yellow{dir = 5},/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
 "uy" = (/obj/structure/closet/radiation,/obj/item/clothing/glasses/meson,/obj/item/clothing/glasses/meson,/obj/machinery/firealarm{dir = 8; pixel_x = -26},/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
@@ -97,7 +97,7 @@
 "OB" = (/obj/machinery/atmospherics/pipe/simple/visible/red{dir = 4},/turf/simulated/floor/reinforced,/area/engineering/engine_room)
 "ON" = (/turf/simulated/wall/r_wall,/area/engineering/engine_room)
 "Ps" = (/obj/structure/closet/radiation,/obj/item/clothing/glasses/meson,/obj/item/clothing/glasses/meson,/obj/machinery/camera/network/engine{dir = 9},/obj/machinery/atmospherics/binary/pump/on{dir = 8},/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
-"PN" = (/obj/machinery/camera/network/engine{dir = 9},/obj/structure/table/standard,/obj/item/multitool,/obj/item/tool/wrench,/obj/item/stack/cable_coil/yellow,/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
+"PN" = (/obj/structure/table/standard,/obj/item/multitool,/obj/item/tool/wrench,/obj/item/stack/cable_coil/yellow,/turf/simulated/floor/tiled/techmaint,/area/engineering/engine_room)
 "Qq" = (/obj/machinery/shield_diffuser,/obj/machinery/door/blast/regular{dir = 2; id = "SupermatterVent"; layer = 3.3; name = "Reactor Blast Door"},/turf/simulated/floor/reinforced,/area/engineering/engine_room)
 "Qt" = (/obj/machinery/door/firedoor/glass/hidden/steel{dir = 2},/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
 "QP" = (/obj/machinery/atmospherics/binary/pump{dir = 4},/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
@@ -138,17 +138,17 @@
 
 (1,1,1) = {"
 MgMgMgONONERONONONONONONONONONONONONON
-MgMgMgIcndndCFTVkWkWkWzASvrFwNlYwNxHwN
+MgMgMgIcndndCFTVkWkWiTzASvrFwNlYwNxHwN
 MgMgMgNRwNwNwNWigdgNZJHcUWQWwNwNwNwNwN
 MgMgMgKezYwNwNZEZENDOltmubDmwcwcEwWswN
 MgMgMgONGnTNACKpKpCTIPBWwNQWwNWnOoIzwN
 ONONONONLceTzzwNwNwNNyXCUqBgwNWnQPIzwN
 ONMWzCrLzytWLHqXKFKFKFBxKFKFKFmvTxIIwN
 ONuyrXiWrXasblPseJITYiVfEahOKFcBbhwNwN
-jxRoRoONiTRoViRoKFdOnDYimmdOOpwNQWwNwN
+jxRoRoONONRoViRoKFdOnDYimmdOOpwNQWwNwN
 nSCrCrQqCrCrhEKIxZvwiKRJVcEGmXnPBgwNwN
-jxRoRoONRoRoJBUgKFmVCrVdOBTfJdJRYYQtwN
-ONVZrXTdqXqXhiPNKFxYCrCrCrYLKFtJwNwNwN
+jxRoRoONONRoJBUgKFmVCrVdOBTfJdJRYYQtwN
+ONVZrXTdtJqXhiPNKFxYCrCrCrYLKFcBwNwNwN
 ONHAhSrXrXasXozIKFKFKFKFKFKFKFplNywNwN
 ONONONONQQQQZXONONONONONONONONONONJmSD
 MgMgMgZgQtQthGONwHwHwHwHwHwHwHwHwHwHwH
