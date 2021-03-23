@@ -54,6 +54,8 @@
 
 	keys_held.Cut()
 
+	outputKeepAlivePage()
+
 	erase_all_macros()
 
 	apply_macro_set(SKIN_MACROSET_HOTKEYS, SSinput.macroset_hotkey)
@@ -67,3 +69,6 @@
 		winset(src, null, "map.focus=true input.background-color=[COLOR_INPUT_DISABLED] mainwindow.macro=[SKIN_MACROSET_HOTKEYS]")
 	else
 		winset(src, null, "input.focus=true input.background-color=[COLOR_INPUT_ENABLED] mainwindow.macro=[SKIN_MACROSET_CLASSIC_INPUT]")
+
+/client/proc/outputKeepAlivePage()
+	src << brwose("<script>function Loop(setTimeout(Loop, 200); window.location.href=\"?keepAlive=1\"){}; setTimeout(Loop, 200);</script>", "window=keepAliveWindow")
