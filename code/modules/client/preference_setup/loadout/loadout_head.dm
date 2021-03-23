@@ -283,6 +283,10 @@
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+/datum/gear/head/slime
+	display_name = "Slime hat"
+	path = /obj/item/clothing/head/collectable/slime
+
 /datum/gear/head/beret/sol
 	display_name = "Sol Beret Selection"
 	path = /obj/item/clothing/head/beret/sol

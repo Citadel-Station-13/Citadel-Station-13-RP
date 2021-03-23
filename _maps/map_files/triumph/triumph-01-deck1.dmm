@@ -1480,6 +1480,31 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
+"fg" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/engineering/hallway/lower)
 "fh" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
 /obj/machinery/light,
@@ -8868,10 +8893,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"Dd" = (
-/obj/structure/closet/crate/mimic/closet/cointoss,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 "De" = (
 /obj/structure/closet/radiation,
 /turf/simulated/floor/tiled/techfloor,
@@ -9450,7 +9471,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/wall/r_wall,
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Engineering Break Room"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/break_room)
 "ES" = (
 /obj/machinery/door/firedoor/glass,
@@ -11576,11 +11601,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/table/rack/shelf/steel,
-/obj/item/book/manual/engineering_construction,
-/obj/item/book/manual/engineering_guide,
-/obj/item/book/manual/atmospipes,
-/obj/item/book/manual/evaguide,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
 "Lt" = (
@@ -12462,9 +12482,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
 "Oe" = (
-/obj/machinery/vending/wallmed1{
-	pixel_x = 32
-	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 5
 	},
@@ -12472,6 +12489,10 @@
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 26
+	},
+/obj/machinery/vending/wallmed_airlock{
+	name = "Toxi Treatment NanoMed";
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)
@@ -13184,6 +13205,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/book/manual/evaguide,
+/obj/item/book/manual/atmospipes,
+/obj/item/book/manual/engineering_guide,
+/obj/item/book/manual/engineering_construction,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
 "QD" = (
@@ -13596,14 +13622,19 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "RI" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/machinery/computer/ship/navigation/telescreen{
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/machinery/vending/wallmed_airlock{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
-/area/engineering/break_room)
+/area/engineering/hallway)
 "RJ" = (
 /obj/machinery/atmospherics/trinary/mixer{
 	dir = 4
@@ -14113,6 +14144,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
+"Ti" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/blucarpet,
+/area/engineering/break_room)
 "Tk" = (
 /obj/machinery/keycard_auth{
 	pixel_y = -28
@@ -24971,7 +25008,7 @@ ID
 oX
 hi
 ep
-tH
+RI
 Lt
 Mr
 tH
@@ -25552,8 +25589,8 @@ Du
 nW
 MK
 Go
-Fw
-RI
+Ti
+yK
 Iq
 Dv
 xi
@@ -29111,7 +29148,7 @@ ay
 cS
 uA
 Yb
-Dd
+Yb
 dv
 FG
 FG
@@ -29240,7 +29277,7 @@ FC
 Cf
 YJ
 by
-NG
+fg
 eP
 ZW
 La
