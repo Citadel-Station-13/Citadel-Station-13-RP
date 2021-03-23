@@ -7240,11 +7240,6 @@
 	},
 /turf/space,
 /area/space)
-"zI" = (
-/obj/machinery/door/airlock/maintenance/engi,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
 "zJ" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -20008,7 +20003,7 @@ ik
 yd
 Ef
 Yp
-zI
+ZZ
 ZZ
 ZZ
 ZZ
