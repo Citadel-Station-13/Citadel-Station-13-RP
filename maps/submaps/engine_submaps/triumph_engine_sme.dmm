@@ -40,6 +40,7 @@
 "oh" = (/obj/machinery/atmospherics/pipe/manifold/visible/green{dir = 1},/obj/effect/floor_decal/industrial/warning/corner,/turf/simulated/floor,/area/engineering/engine_room)
 "oR" = (/obj/machinery/power/supermatter{layer = 4},/obj/machinery/mass_driver{dir = 8; id = "enginecore"},/turf/simulated/floor/greengrid/nitrogen,/area/engineering/engine_room)
 "py" = (/obj/machinery/atmospherics/pipe/simple/visible/cyan,/turf/simulated/floor/plating,/area/engineering/engine_room)
+"qb" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 4},/obj/item/radio/intercom{dir = 2; pixel_y = -24},/turf/simulated/floor/plating,/area/engineering/engine_room)
 "qc" = (/obj/machinery/atmospherics/unary/outlet_injector{dir = 4},/obj/machinery/shield_diffuser,/turf/simulated/floor/airless,/area/engineering/engine_room)
 "re" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/visible/yellow{dir = 9},/turf/simulated/floor/plating,/area/engineering/engine_room)
 "rE" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/plating,/area/engineering/engine_room)
@@ -78,7 +79,7 @@
 "Dq" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/door/firedoor/glass/hidden/steel{dir = 2},/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
 "Dv" = (/obj/machinery/atmospherics/pipe/manifold/visible/red{dir = 4; icon_state = "map"},/obj/machinery/meter,/turf/simulated/floor,/area/engineering/engine_room)
 "DC" = (/obj/machinery/power/emitter{anchored = 1; dir = 8; id = "EngineEmitter"; pixel_y = 8; state = 2},/obj/structure/cable/cyan{d1 = 0; d2 = 4; icon_state = "0-4"},/obj/effect/floor_decal/steeldecal/steel_decals6{dir = 6},/obj/effect/floor_decal/steeldecal/steel_decals6{dir = 10},/obj/effect/floor_decal/steeldecal/steel_decals6{dir = 9},/obj/effect/floor_decal/steeldecal/steel_decals6{dir = 5},/turf/simulated/floor/tiled/monotile,/area/engineering/engine_room)
-"Eq" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 9; pixel_y = 0},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 5},/obj/item/radio/intercom{dir = 2; pixel_y = -24},/turf/simulated/floor/plating,/area/engineering/engine_room)
+"Eq" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 9; pixel_y = 0},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 5},/turf/simulated/floor/plating,/area/engineering/engine_room)
 "Ev" = (/obj/machinery/power/apc{name = "south bump"; pixel_y = -28},/obj/structure/cable/cyan{d2 = 4; icon_state = "0-4"},/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/fuel{dir = 8},/obj/structure/cable/cyan{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/tiled/techfloor/grid,/area/engineering/engine_room)
 "EU" = (/obj/effect/floor_decal/industrial/warning{dir = 1},/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/reinforced/nitrogen{initial_gas_mix = "n2=82.1472;TEMP=293.15"},/area/engineering/engine_room)
 "Fa" = (/obj/machinery/atmospherics/pipe/simple/visible/black{dir = 4},/obj/machinery/light,/turf/simulated/floor/plating,/area/engineering/engine_room)
@@ -157,7 +158,7 @@ hJtjEUTQFOTocuIJIJIJIJIJIJIJIJSIQfBpJo
 dFOVoRvXbbHLDCTKFNFNFNmUmUfpAkhCcIBpJo
 hJnsEUSWzUcnFNMWFNFNFNsomhzagCFNFNBpFN
 WZiGOzwFWZVcVSjZVHVHVHuRuRrehhVhVhRgFN
-WZFNCuFNVIXiXnlScxQVkOFamQyhviCurLEqat
+WZFNCuFNVIXiXnlScxQVkOFamQyhviCuqbEqat
 WZWZWZWZMWaThGWZWZWZWZWZWZWZWZWZWZlJYj
 ZaZaZanBXWlbDqWZtdtdtdtdtdtdtdtdtdtdtd
 ZaZaqcPSuLLcSNWZtdtdtdtdtdtdtdtdtdtdtd
