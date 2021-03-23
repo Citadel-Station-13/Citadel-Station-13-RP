@@ -7104,10 +7104,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/hallway/lower)
-"yR" = (
-/obj/structure/sign/vacuum,
-/turf/simulated/wall/r_wall,
-/area/engineering/engine_room)
 "yS" = (
 /turf/simulated/wall,
 /area/engineering/break_room)
@@ -7144,14 +7140,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/stairs_one)
-"yW" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/vault{
-	name = "REACTOR ROOM";
-	req_one_access = list(10)
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/engine_airlock)
 "yY" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -7587,14 +7575,7 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "Bn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/vault{
-	name = "REACTOR ROOM";
-	req_one_access = list(10)
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
 "Bo" = (
 /obj/machinery/firealarm{
@@ -8542,13 +8523,6 @@
 /obj/item/book/manual/supermatter_engine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
-"EG" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
 "EJ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -12597,17 +12571,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
-"Sm" = (
-/obj/machinery/door/airlock/vault{
-	name = "REACTOR ROOM";
-	req_one_access = list(10)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/engine_room)
 "So" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -19346,9 +19309,9 @@ fN
 zz
 zz
 zz
-yR
 zz
-yR
+zz
+zz
 zz
 zz
 zz
@@ -19923,7 +19886,7 @@ ZZ
 ZZ
 ZZ
 ZZ
-EG
+ZZ
 zz
 UZ
 rg
@@ -20066,7 +20029,7 @@ ZZ
 ZZ
 ZZ
 ZZ
-Sm
+ZZ
 eF
 sW
 pC
@@ -21765,7 +21728,7 @@ ZZ
 ZZ
 ZZ
 ZZ
-yW
+Bn
 TR
 TR
 fE
