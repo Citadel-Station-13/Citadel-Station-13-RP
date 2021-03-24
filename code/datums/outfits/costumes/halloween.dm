@@ -121,3 +121,11 @@
 	suit = /obj/item/clothing/suit/storage/hooded/chaplain_hoodie/whiteout
 	gloves = /obj/item/clothing/gloves/white
 	mask = /obj/item/clothing/mask/surgical
+
+/decl/hierarchy/outfit/costume/dummy
+	name = OUTFITU_COSTUME("This sucks and is broken")
+	uniform = /obj/item/clothing/under/color/white{ starting_accessories=list(/obj/item/clothing/accessory/scarf/white) }
+	shoes = /obj/item/clothing/shoes/white
+	suit = /obj/item/clothing/suit/storage/hooded/chaplain_hoodie/whiteout
+	gloves = /obj/item/clothing/gloves/white
+	mask = /obj/item/clothing/mask/surgical
