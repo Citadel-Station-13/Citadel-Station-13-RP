@@ -1,0 +1,6 @@
+author: "Enzo-Leon"
+delete-after: True
+changes: 
+  - rscadd: "Transition effect
+tweak: Adjusted tiling in a few areas on the main maps."
+  - refactor: "updated mapping paths to current CitRP pathing"
