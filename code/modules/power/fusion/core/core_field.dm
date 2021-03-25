@@ -48,7 +48,8 @@
 		/obj/machinery/atmospherics,
 		/obj/machinery/air_sensor,
 		/mob/observer,
-		/obj/machinery/power/hydromagnetic_trap
+		/obj/machinery/power/hydromagnetic_trap,
+		/obj/machinery/camera
 	))
 
 	set_light(light_min_range,light_min_power)
