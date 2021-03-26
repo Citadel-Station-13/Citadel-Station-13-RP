@@ -9,20 +9,6 @@
 /obj/tether_away_spawner/underdark_normal,
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
-"s" = (
-/obj/structure/table,
-/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
-/area/mine/explored/underdark)
-"M" = (
-/obj/item/reagent_containers/glass/bottle/bicaridine,
-/obj/structure/table,
-/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
-/area/mine/explored/underdark)
-"V" = (
-/obj/structure/table,
-/obj/item/flashlight/lantern,
-/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
-/area/mine/explored/underdark)
 
 (1,1,1) = {"
 a
@@ -175,7 +161,7 @@ b
 b
 b
 b
-c
+b
 b
 "}
 (8,1,1) = {"
@@ -211,8 +197,8 @@ a
 a
 a
 a
-V
-s
+b
+b
 b
 b
 b
@@ -233,7 +219,7 @@ a
 a
 a
 a
-s
+b
 b
 b
 b
@@ -255,8 +241,8 @@ a
 a
 a
 a
-s
-M
+b
+b
 b
 b
 b
@@ -270,7 +256,7 @@ b
 b
 b
 b
-c
+b
 b
 b
 a
@@ -304,7 +290,7 @@ b
 b
 b
 b
-c
+b
 b
 b
 b
@@ -408,7 +394,7 @@ b
 b
 b
 b
-c
+b
 b
 b
 b

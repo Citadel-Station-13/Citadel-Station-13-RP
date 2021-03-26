@@ -435,3 +435,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //Holy Weapon defines from Main. Lists null rod weapons and classifies them as HOLY.
 #define HOLY_WEAPONS /obj/item/nullrod
+
+// Makes general computers and devices be able to connect to other overmap z-levels on the same tile.
+#define DEFAULT_OVERMAP_RANGE 0

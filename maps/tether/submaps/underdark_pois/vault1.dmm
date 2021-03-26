@@ -24,11 +24,6 @@
 /obj/random/underdark/uncertain,
 /turf/simulated/floor/virgo3b,
 /area/mine/explored/underdark)
-"N" = (
-/obj/effect/floor_decal/rust,
-/obj/random/underdark/uncertain,
-/turf/simulated/floor/virgo3b,
-/area/mine/explored/underdark)
 
 (1,1,1) = {"
 b
@@ -43,7 +38,7 @@ b
 a
 e
 a
-N
+a
 b
 "}
 (3,1,1) = {"

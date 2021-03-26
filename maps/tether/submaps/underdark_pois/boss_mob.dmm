@@ -9,30 +9,6 @@
 /obj/tether_away_spawner/underdark_boss,
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
-"i" = (
-/obj/structure/outcrop/diamond,
-/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
-/area/mine/explored/underdark)
-"p" = (
-/obj/tether_away_spawner/underdark_normal,
-/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
-/area/mine/explored/underdark)
-"E" = (
-/obj/tether_away_spawner/underdark_hard,
-/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
-/area/mine/explored/underdark)
-"F" = (
-/obj/structure/outcrop/silver,
-/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
-/area/mine/explored/underdark)
-"T" = (
-/obj/structure/outcrop/uranium,
-/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
-/area/mine/explored/underdark)
-"X" = (
-/obj/structure/outcrop/gold,
-/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
-/area/mine/explored/underdark)
 
 (1,1,1) = {"
 a
@@ -40,7 +16,7 @@ a
 a
 b
 b
-p
+b
 b
 a
 a
@@ -49,18 +25,18 @@ a
 (2,1,1) = {"
 a
 a
-i
 b
 b
 b
 b
-i
+b
+b
 a
 a
 "}
 (3,1,1) = {"
 a
-i
+b
 b
 b
 b
@@ -90,17 +66,17 @@ b
 b
 c
 b
-p
+b
 b
 b
 "}
 (6,1,1) = {"
-E
 b
 b
 b
 b
-F
+b
+b
 b
 b
 b
@@ -127,17 +103,17 @@ b
 b
 b
 b
-X
+b
 a
 "}
 (9,1,1) = {"
 a
 a
-T
 b
 b
 b
-E
+b
+b
 b
 a
 a

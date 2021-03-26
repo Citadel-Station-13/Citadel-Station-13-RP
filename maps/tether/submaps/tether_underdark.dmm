@@ -4,18 +4,15 @@
 	icon_state = "0-10"
 	},
 /obj/machinery/power/apc{
+	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
 	pixel_x = 0;
-	pixel_y = 24;
-	alarms_hidden = 1
+	pixel_y = 24
 	},
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
 "b" = (
-/obj/tether_away_spawner/shadekin{
-	faction = "underdark"
-	},
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
 "c" = (
@@ -59,8 +56,8 @@
 	icon_state = "4-10"
 	},
 /obj/machinery/light/small{
-	icon_state = "bulb1";
-	dir = 1
+	dir = 1;
+	icon_state = "bulb1"
 	},
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
@@ -101,7 +98,6 @@
 "t" = (
 /obj/effect/step_trigger/teleporter/from_underdark{
 	dir = 4;
-	icon_state = "";
 	pixel_x = -16
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -114,26 +110,26 @@
 /area/mine/explored/underdark)
 "v" = (
 /obj/machinery/light/small{
-	icon_state = "bulb1";
-	dir = 4
+	dir = 4;
+	icon_state = "bulb1"
 	},
 /obj/structure/railing{
-	icon_state = "railing0";
-	dir = 8
+	dir = 8;
+	icon_state = "railing0"
 	},
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
 "w" = (
 /obj/structure/railing{
-	icon_state = "railing0";
-	dir = 8
+	dir = 8;
+	icon_state = "railing0"
 	},
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
 "x" = (
 /obj/structure/railing{
-	icon_state = "railing0";
-	dir = 1
+	dir = 1;
+	icon_state = "railing0"
 	},
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
@@ -144,14 +140,10 @@
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
-"A" = (
-/obj/machinery/mineral/equipment_vendor,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/mine/explored/underdark)
 "B" = (
 /obj/machinery/light/small{
-	icon_state = "bulb1";
-	dir = 8
+	dir = 8;
+	icon_state = "bulb1"
 	},
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/mine/explored/underdark)
@@ -161,8 +153,8 @@
 /area/mine/explored/underdark)
 "D" = (
 /obj/machinery/light/small{
-	icon_state = "bulb1";
-	dir = 4
+	dir = 4;
+	icon_state = "bulb1"
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
@@ -182,8 +174,8 @@
 /area/mine/explored/underdark)
 "H" = (
 /obj/machinery/light/small{
-	icon_state = "bulb1";
-	dir = 4
+	dir = 4;
+	icon_state = "bulb1"
 	},
 /turf/simulated/mineral/floor/virgo3b,
 /area/mine/explored/underdark)
@@ -222,10 +214,6 @@
 "T" = (
 /obj/effect/decal/remains/mouse,
 /turf/simulated/floor/outdoors/dirt/virgo3b,
-/area/mine/explored/underdark)
-"U" = (
-/obj/machinery/mineral/equipment_vendor/survey,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "W" = (
 /obj/item/bone/skull,
@@ -17714,10 +17702,10 @@ g
 g
 g
 h
-U
-s
-s
-o
+g
+g
+g
+g
 T
 o
 B
@@ -17856,9 +17844,9 @@ g
 g
 g
 h
-A
-s
-o
+g
+g
+g
 o
 R
 o
@@ -17998,7 +17986,7 @@ g
 g
 g
 h
-s
+g
 N
 o
 o

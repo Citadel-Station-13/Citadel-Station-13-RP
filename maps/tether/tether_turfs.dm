@@ -1,24 +1,37 @@
 //Simulated
+VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
-/turf/simulated/open/virgo3b/Initialize(mapload)
-	. = ..()
+/turf/simulated/open/virgo3b/New()
+	..()
 	if(outdoors)
 		SSplanets.addTurf(src)
 
-
+VIRGO3B_TURF_CREATE(/turf/simulated/floor)
 
 /turf/simulated/floor/virgo3b_indoors
 	VIRGO3B_SET_ATMOS
-	allow_gas_overlays = FALSE
 
+///turf/simulated/floor/virgo3b_indoors/update_graphic(list/graphic_add = null, list/graphic_remove = null)
+//	return 0
+
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/reinforced)
+
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
+
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
+/turf/simulated/floor/outdoors/dirt/virgo3b
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
+
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/floor/outdoors/grass/sif
 	turf_layers = list(
 		/turf/simulated/floor/outdoors/rocks/virgo3b,
 		/turf/simulated/floor/outdoors/dirt/virgo3b
 		)
-
-
 
 // Overriding these for the sake of submaps that use them on other planets.
 // This means that mining on tether base and space is oxygen-generating, but solars and mining should use the virgo3b subtype
@@ -37,11 +50,15 @@
 /turf/simulated/mineral/floor/vacuum
 	initial_gas_mix = GAS_STRING_VACUUM
 
-//This proc is responsible for ore generation on surface turfs
+
+VIRGO3B_TURF_CREATE(/turf/simulated/mineral)
+VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
+	//This proc is responsible for ore generation on surface turfs
 /turf/simulated/mineral/virgo3b/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
+	outdoors = TRUE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			"marble" = 3,
@@ -68,10 +85,10 @@
 			"lead" = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
-	update_icon()
+		if(flags & INITIALIZED)
+			UpdateMineral()
 
-/turf/simulated/mineral/virgo3b/rich/make_ore(var/rare_ore)
+turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
@@ -101,16 +118,10 @@
 			"verdantium" = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
-	update_icon()
+		if(flags & INITIALIZED)
+			UpdateMineral()
 
 //Unsimulated
-/turf/unsimulated/wall/planetary/virgo3b
-	name = "facility wall"
-	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
-	alpha = 0xFF
-	VIRGO3B_SET_ATMOS
-
 /turf/unsimulated/mineral/virgo3b
 	blocks_air = TRUE
 
@@ -118,20 +129,11 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "steel"
 
-
-/turf/unsimulated/wall
-	blocks_air = 1
-
-/turf/unsimulated/wall/planetary
-	blocks_air = 0
-
 // Some turfs to make floors look better in centcom tram station.
-
-
 
 /turf/unsimulated/floor/techfloor_grid
 	name = "floor"
-	icon = 'icons/turf/flooring/techfloor_vr.dmi'
+	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_state = "techfloor_grid"
 
 /turf/unsimulated/floor/maglev
@@ -159,7 +161,7 @@
 	name = "bluespace"
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
-/turf/space/bluespace/Initialize(mapload)
+/turf/space/bluespace/Initialize()
 	..()
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
@@ -169,7 +171,7 @@
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
-/turf/space/sandyscroll/Initialize(mapload)
+/turf/space/sandyscroll/Initialize()
 	..()
 	icon_state = "desert_ns"
 
@@ -178,7 +180,7 @@
 /turf/simulated/sky/virgo3b
 	color = "#FFBBBB"
 
-/turf/simulated/sky/virgo3b/Initialize(mapload)
+/turf/simulated/sky/virgo3b/Initialize()
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

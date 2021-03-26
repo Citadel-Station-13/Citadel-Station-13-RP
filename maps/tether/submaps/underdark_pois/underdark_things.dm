@@ -51,9 +51,9 @@
 	prob_fall = 50
 	//guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/animal/giant_spider/hunter = 1,
-		/mob/living/simple_mob/animal/giant_spider/phorogenic/weak = 1,
-		/mob/living/simple_mob/animal/giant_spider/tunneler = 1,
+		/mob/living/simple_mob/animal/giant_spider/hunter = 3,
+		/mob/living/simple_mob/animal/giant_spider/phorogenic/weak = 3,
+		/mob/living/simple_mob/animal/giant_spider/tunneler = 3
 	)
 
 /obj/tether_away_spawner/underdark_hard
@@ -64,8 +64,8 @@
 	prob_fall = 50
 	//guard = 20
 	mobs_to_pick_from = list(
-		/mob/living/simple_mob/vore/aggressive/corrupthound = 1,
-		/mob/living/simple_mob/vore/aggressive/rat/phoron = 2
+		/mob/living/simple_mob/vore/aggressive/corrupthound = 3,
+		/mob/living/simple_mob/vore/aggressive/rat/phoron = 6
 	)
 
 /obj/tether_away_spawner/underdark_boss
@@ -282,7 +282,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/shuttle/floor/voidcraft)
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/kafel_full/yellow)
 
 //Mechbay
-/obj/mecha/working/ripley/abandoned/Initialize(mapload)
+/obj/mecha/working/ripley/abandoned/Initialize()
 	..()
 	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)	//Deletes the beacon so it can't be found easily
 		qdel(B)

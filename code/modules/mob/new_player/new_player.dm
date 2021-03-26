@@ -384,6 +384,7 @@
 	var/list/join_props = SSjobs.LateSpawn(client, rank)
 	var/turf/T = join_props["turf"]
 	var/join_message = join_props["msg"]
+	var/announce_channel = join_props["channel"] || "Common"
 
 	if(!T || !join_message)
 		return 0
@@ -396,7 +397,7 @@
 	var/mob/living/character = create_character(T)		// Creates the human and transfers vars and mind
 	//Announces Cyborgs early, because that is the only way it works
 	if(character.mind.assigned_role == "Cyborg")
-		AnnounceCyborg(character, rank, join_message)
+		AnnounceCyborg(character, rank, join_message, announce_channel, character.z)
 	character = SSjobs.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 

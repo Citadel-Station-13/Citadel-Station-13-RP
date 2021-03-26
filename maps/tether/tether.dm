@@ -22,7 +22,7 @@
 		#include "tether-10-colony.dmm"
 	#endif
 
-//	#include "submaps/_tether_submaps.dm"
+	#include "submaps/_tether_submaps.dm"
 
 	#define USING_MAP_DATUM /datum/map/tether
 

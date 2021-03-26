@@ -34,12 +34,8 @@
 /obj/effect/map_effect/interval/sound_emitter/geiger/ext,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
-"n" = (
-/obj/random/tool/power,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/mine/explored/underdark)
-"r" = (
-/obj/tether_away_spawner/underdark_drone_swarm,
+"I" = (
+/obj/structure/salvageable/server,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 
@@ -69,10 +65,10 @@ a
 a
 e
 d
+I
 d
 d
 d
-r
 b
 a
 "}
@@ -92,9 +88,9 @@ a
 f
 g
 d
-r
+d
 i
-n
+d
 b
 a
 "}
@@ -113,10 +109,10 @@ a
 a
 e
 d
-r
+I
 d
 d
-r
+d
 b
 a
 "}

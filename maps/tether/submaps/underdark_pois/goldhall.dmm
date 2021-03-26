@@ -18,41 +18,12 @@
 /area/mine/explored/underdark)
 "f" = (
 /obj/item/clothing/suit/storage/toggle/hoodie/blue,
-/obj/item/clothing/shoes/slippers_worn,
+/obj/item/clothing/shoes/slippers/worn,
 /turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
 /area/mine/explored/underdark)
 "g" = (
 /obj/effect/decal/remains,
 /obj/item/ore/bluespace_crystal,
-/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
-/area/mine/explored/underdark)
-"p" = (
-/obj/structure/closet/crate,
-/obj/random/gun/random,
-/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
-/area/mine/explored/underdark)
-"F" = (
-/obj/tether_away_spawner/underdark_hard,
-/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
-/area/mine/explored/underdark)
-"H" = (
-/obj/tether_away_spawner/underdark_normal,
-/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
-/area/mine/explored/underdark)
-"L" = (
-/obj/structure/closet/crate/secure/loot,
-/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
-/area/mine/explored/underdark)
-"O" = (
-/obj/tether_away_spawner/underdark_boss,
-/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
-/area/mine/explored/underdark)
-"P" = (
-/obj/random/outcrop,
-/turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
-/area/mine/explored/underdark)
-"U" = (
-/obj/structure/trash_pile,
 /turf/simulated/floor/tiled/kafel_full/yellow/virgo3b,
 /area/mine/explored/underdark)
 
@@ -89,7 +60,7 @@ b
 b
 d
 d
-P
+d
 b
 "}
 (4,1,1) = {"
@@ -110,9 +81,9 @@ b
 d
 d
 d
-F
 d
-L
+d
+d
 d
 a
 "}
@@ -130,8 +101,8 @@ a
 "}
 (7,1,1) = {"
 a
-P
-U
+d
+d
 d
 d
 d
@@ -145,7 +116,7 @@ c
 d
 d
 d
-O
+d
 d
 b
 b
@@ -166,14 +137,14 @@ b
 "}
 (10,1,1) = {"
 a
-P
-H
+d
+d
 d
 e
 g
 d
 d
-p
+d
 a
 "}
 (11,1,1) = {"
@@ -193,7 +164,7 @@ a
 b
 d
 d
-H
+d
 d
 d
 d
@@ -209,7 +180,7 @@ d
 d
 d
 d
-H
+d
 b
 "}
 (14,1,1) = {"
@@ -232,7 +203,7 @@ b
 b
 b
 b
-P
+d
 b
 b
 "}

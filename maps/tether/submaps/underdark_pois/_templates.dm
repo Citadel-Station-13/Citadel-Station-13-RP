@@ -106,7 +106,11 @@
 	mappath = 'spider_nest.dmm'
 	cost = 15
 
-// NOT ANYMORE OMEGALUL GET THAT OUTTA HERE YO
+/datum/map_template/underdark/rykka_easter_egg // bark bark Rykka was here. <3
+	name = "Underdark GSD"
+	mappath = 'rykka_easter_egg.dmm'
+	cost = 5
+	allow_duplicates = FALSE
 
 /datum/map_template/underdark/tree_shrine
 	name = "Underdark Tree"
