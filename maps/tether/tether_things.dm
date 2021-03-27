@@ -267,7 +267,8 @@ var/global/list/latejoin_tram   = list()
 	display_name = "Tram Station"
 	msg = "has arrived on the tram"
 
-/datum/spawnpoint/tram/Initialize(mapload)
+
+/datum/spawnpoint/tram/New()
 	. = ..()
 	turfs = latejoin_tram
 
@@ -358,6 +359,7 @@ var/global/list/latejoin_tram   = list()
 //
 //Holosurgery
 //
+/*
 /obj/machinery/computer/HolodeckControl/holosurgery
 	name = "Don't use this one either."
 	powerdown_program = "Off"
@@ -377,7 +379,7 @@ var/global/list/latejoin_tram   = list()
 /obj/machinery/computer/HolodeckControl/holosurgery
 	name = "holosurgery control"
 	projection_area = /area/medical/surgery/holosurgery
-
+*/
 // Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
 /obj/machinery/power/supermatter/touch_map_edge()
 	qdel(src)

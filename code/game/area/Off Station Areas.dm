@@ -7,6 +7,7 @@
 
 //Triumph specific Areas
 
+
 /area/triumph/surfacebase
 	icon = 'icons/turf/areas.dmi'
 /area/triumph/surfacebase/outside
@@ -352,6 +353,9 @@
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
 
 
+////////////////////////////////////
+//// END TRIUMPH SPECIFIC AREAS ////
+////////////////////////////////////
 
 // Mining Underdark
 
