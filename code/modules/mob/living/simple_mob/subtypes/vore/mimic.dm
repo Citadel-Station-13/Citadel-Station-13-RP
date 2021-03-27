@@ -1,19 +1,23 @@
-/datum/category_item/catalogue/fauna/mimic		//TODO: VIRGO_LORE_WRITING_WIP
+/datum/category_item/catalogue/fauna/mimic
 	name = "Aberration - Mimic"
-	desc = "A being that seems to take the form of a crates, closets, doors and potentially other inanimate objects, for whatever reason. \
-	It seems to lie in wait for it's prey, and then pounce once the unsuspecting person attempts to open it. \
-	For whatever reason, they seem native to underground areas, and they're very tough, and hard to kill, able to pounce fast."
+	desc = "A being that seems to take the form of a crates, closets, doors and even the floor as a means of camouflage. \
+	It seems to lie in wait for it's prey, and then pounce once the unsuspecting person attempts to open it or steps on it. \
+	They are comfortable in near all enviroments and its natural camouflage abilities has allowed it to infiltrate starships \
+	spreading across the wider galaxy from an unknown origin world. These methods are so effective that the species has spread \
+	across the galaxy becoming a ubiquitous but dangerous pest species."
 	value = CATALOGUER_REWARD_HARD
 
 /obj/structure/closet/crate/mimic
 	name = "old crate"
 	desc = "A rectangular steel crate. This one looks particularly unstable."
-	icon = 'icons/mob/animal.dmi'
+	icon = 'icons/mob/mimic.dmi'
 	icon_state = "mimic"
 	icon_opened = "open"
 	icon_closed = "mimic"
 	var/mimic_chance = 30
 	var/mimic_active = TRUE
+
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mimic)
 
 /obj/structure/closet/crate/mimic/open()
 	if(src.opened)
@@ -137,13 +141,15 @@
 //NEW AND TERRIFYING AIRLOCK MIMIC
 
 /obj/structure/closet/crate/mimic/airlock
-	name = "Maintnence Access"
-	desc = "It opens and closes."
-	icon = 'icons/mob/animal.dmi'
+	name = "Dusty Airlock"
+	desc = "It opens and closes. Though it appears it has been a while since it opened."
 	icon_state = "amimic"
 	icon_opened = "amimicopen"
 	icon_closed = "amimic"
-	mimic_chance = 100  //Since It would require shitcode otherwise airlock mimics are always mimics
+	mimic_chance = 30
+	anchored = 1 //You will not be able to push back the airlock mimic
+	density = 1
+	opacity = 1
 
 /obj/structure/closet/crate/mimic/airlock/open()
 	if(src.opened)
@@ -164,6 +170,9 @@
 			new_mimic.icon_state = "amimicopen"
 			new_mimic.icon_living = "amimicopen"
 		else
+			qdel(src.loc)
+			new/obj/machinery/door/airlock/maintenance/common (src.loc) //Places the Airlock
+			qdel(src)//Deletes the "mimic"
 			return ..()
 	else
 		return ..()
@@ -181,12 +190,23 @@
 			qdel(O)
 	..()
 
+/obj/structure/closet/crate/mimic/airlock/safe
+	mimic_chance = 0
+
+/obj/structure/closet/crate/mimic/airlock/guaranteed
+	mimic_chance = 100
+
+/obj/structure/closet/crate/mimic/airlock/dangerous
+	mimic_chance = 70
+
+/obj/structure/closet/crate/mimic/airlock/cointoss
+	mimic_chance = 50
+
 /mob/living/simple_mob/vore/aggressive/mimic/airlock
 	name = "Maintnence Access"
 	desc = "It opens and closes."
 	icon_state = "amimicopen"
 	icon_living = "amimicopen"
-	icon = 'icons/mob/animal.dmi'
 
 	maxHealth = 250
 	health = 250
@@ -276,8 +296,8 @@
 	mimic_chance = 50
 
 /mob/living/simple_mob/vore/aggressive/mimic/closet
-	name = "Maintnence Access"
-	desc = "It opens and closes."
+	name = "old closet"
+	desc = "It's a basic storage unit. It seems awfully rickety."
 	icon_state = "cmimicopen"
 	icon_living = "cmimicopen"
 	icon = 'icons/mob/animal.dmi'
@@ -310,3 +330,224 @@
 		new/obj/structure/closet(src.loc)
 	real_crate = null
 	qdel(src)
+
+//Floor Mimics... Because mimics you have to interact with to activate was not enough...
+
+/obj/effect/floormimic //As Floor Mimics are triggered by bumps rather than click interaction... They are effects rather than structures
+	name = "loose wooden floor"
+	desc = "The boards here look rather loose."
+	density = 0
+	anchored = 1
+	icon = 'icons/mob/mimic.dmi'
+	icon_state = "wmimic"
+	var/mimic_chance = 30
+	var/mimic_active = TRUE
+
+/obj/effect/floormimic/Crossed(AM as mob|obj)
+	. = ..()
+	Bumped(AM)
+
+/obj/effect/floormimic/Bumped(mob/M as mob|obj)
+	if(istype(M, /mob/living/))
+		if(!M.hovering) //Mimics will not activate if you fly over them.
+			awaken(M)
+
+/obj/effect/floormimic/proc/awaken(var/mob/living/M)
+	if(mimic_active)
+		mimic_active = FALSE
+		if(prob(mimic_chance))
+			var/mob/living/simple_mob/vore/aggressive/mimic/floor/new_mimic = new(loc, src)
+			visible_message("<font color='red'><b>The [new_mimic] suddenly growls beneath you as it turns out to be a mimic!</b></font>")
+			forceMove(new_mimic)
+			new_mimic.real_crate = src
+			new_mimic.name = name
+			new_mimic.desc = desc
+			new_mimic.icon = icon
+			new_mimic.icon_state = "wmimicopen"
+			new_mimic.icon_living = "wmimicopen"
+		else
+			qdel(src.loc)
+			qdel(src)
+			return ..()
+	else
+		qdel(src.loc)
+		qdel(src)
+		return ..()
+
+/obj/effect/floormimic/attackby(obj/item/W as obj, mob/M as mob|obj)
+	if(mimic_active)
+		awaken(M)
+	else
+		qdel(src.loc)
+		qdel(src)
+		return ..()
+
+/obj/effect/floormimic/ex_act(severity) //Stores Mimic Contents for later
+	for(var/obj/O in src.contents)
+		qdel(O)
+	qdel(src)
+	return
+
+/obj/effect/floormimic/safe
+	mimic_chance = 0
+
+/obj/effect/floormimic/guaranteed
+	mimic_chance = 100
+
+/obj/effect/floormimic/dangerous
+	mimic_chance = 70
+
+/obj/effect/floormimic/cointoss
+	mimic_chance = 50
+
+/mob/living/simple_mob/vore/aggressive/mimic/floor
+	name = "loose wooden floor"
+	desc = "The boards here look rather loose."
+	icon_state = "wmimicopen"
+	icon_living = "wmimicopen"
+
+	faction = "mimic"
+
+	maxHealth = 100
+	health = 100
+	movement_cooldown = 5
+
+	response_help = "touches"
+	response_disarm = "pushes"
+	response_harm = "hits"
+
+	melee_damage_lower = 5
+	melee_damage_upper = 5
+	base_attack_cooldown = 5
+
+/mob/living/simple_mob/vore/aggressive/mimic/floor/death()
+	..()
+	qdel(src)
+	qdel(src.loc)
+
+obj/effect/floormimic/tile
+	name = "loose floor tiles"
+	desc = "The tiles here look rather loose."
+	density = 0
+	anchored = 1
+	icon_state = "tmimic"
+
+/obj/effect/floormimic/tile/awaken(var/mob/living/M)
+	if(mimic_active)
+		mimic_active = FALSE
+		if(prob(mimic_chance))
+			var/mob/living/simple_mob/vore/aggressive/mimic/floor/new_mimic = new(loc, src)
+			visible_message("<font color='red'><b>The [new_mimic] suddenly growls beneath you as it turns out to be a mimic!</b></font>")
+			forceMove(new_mimic)
+			new_mimic.real_crate = src
+			new_mimic.name = name
+			new_mimic.desc = desc
+			new_mimic.icon = icon
+			new_mimic.icon_state = "tmimicopen"
+			new_mimic.icon_living = "tmimicopen"
+		else
+			qdel(src.loc)
+			qdel(src)
+			return ..()
+	else
+		qdel(src.loc)
+		qdel(src)
+		return ..()
+
+
+/obj/effect/floormimic/tile/safe
+	mimic_chance = 0
+
+/obj/effect/floormimic/tile/guaranteed
+	mimic_chance = 100
+
+/obj/effect/floormimic/tile/dangerous
+	mimic_chance = 70
+
+/obj/effect/floormimic/tile/cointoss
+	mimic_chance = 50
+
+/mob/living/simple_mob/vore/aggressive/mimic/floor/tile
+	name = "loose floor tiles"
+	desc = "The tiles here look rather loose."
+	icon = 'icons/mob/mimic.dmi'
+	icon_state = "tmimicopen"
+	icon_living = "tmimicopen"
+
+	faction = "mimic"
+
+	maxHealth = 125
+	health = 125
+	movement_cooldown = 7
+
+	response_help = "touches"
+	response_disarm = "pushes"
+	response_harm = "hits"
+
+	melee_damage_lower = 15
+	melee_damage_upper = 15
+	base_attack_cooldown = 10
+
+obj/effect/floormimic/plating
+	name = "loose plating"
+	desc = "The plating here looks rather loose."
+	density = 0
+	anchored = 1
+	icon_state = "pmimic"
+
+/obj/effect/floormimic/plating/awaken(var/mob/living/M)
+	if(mimic_active)
+		mimic_active = FALSE
+		if(prob(mimic_chance))
+			var/mob/living/simple_mob/vore/aggressive/mimic/floor/new_mimic = new(loc, src)
+			visible_message("<font color='red'><b>The [new_mimic] suddenly growls beneath you as it turns out to be a mimic!</b></font>")
+			forceMove(new_mimic)
+			new_mimic.real_crate = src
+			new_mimic.name = name
+			new_mimic.desc = desc
+			new_mimic.icon = icon
+			new_mimic.icon_state = "pmimicopen"
+			new_mimic.icon_living = "pmimicopen"
+		else
+			qdel(src.loc)
+			qdel(src)
+			return ..()
+	else
+		qdel(src.loc)
+		qdel(src)
+		return ..()
+
+
+/obj/effect/floormimic/plating/safe
+	mimic_chance = 0
+
+/obj/effect/floormimic/plating/guaranteed
+	mimic_chance = 100
+
+/obj/effect/floormimic/plating/dangerous
+	mimic_chance = 70
+
+/obj/effect/floormimic/plating/cointoss
+	mimic_chance = 50
+
+/mob/living/simple_mob/vore/aggressive/mimic/floor/plating
+	name = "loose plating"
+	desc = "The plating here look rather loose."
+	icon = 'icons/mob/mimic.dmi'
+	icon_state = "pmimicopen"
+	icon_living = "pmimicopen"
+
+	faction = "mimic"
+
+	maxHealth = 150
+	health = 150
+	movement_cooldown = 7
+
+	response_help = "touches"
+	response_disarm = "pushes"
+	response_harm = "hits"
+
+	melee_damage_lower = 15
+	melee_damage_upper = 15
+	base_attack_cooldown = 10
+	attack_armor_pen = 50
