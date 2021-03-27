@@ -42,7 +42,7 @@
 		target.visible_message("<span class='notice'>\The [src] handed \the [I] to \the [target].</span>")
 
 /mob/living/carbon/human/proc/valid_give_mobs()
-	var/static/list/living_typecache = typecacheof(/mob/living))
+	var/static/list/living_typecache = typecacheof(/mob/living)
 	var/list/scan = view(1)		// lmao shitcode
 	. = list()
 	for(var/i in scan)
