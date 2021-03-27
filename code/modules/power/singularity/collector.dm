@@ -129,7 +129,7 @@ var/global/list/rad_collectors = list()
 /obj/machinery/power/rad_collector/proc/receive_pulse(var/pulse_strength)
 	if(P && active)
 		var/power_produced = 0
-		power_produced = /* P.air_contents.gas[/datum/gas/phoron]* */ pulse_strength*120
+		power_produced = /* P.air_contents.gas[/datum/gas/phoron]* */ pulse_strength*300
 		add_avail(power_produced)
 		last_power_new = power_produced
 		return
