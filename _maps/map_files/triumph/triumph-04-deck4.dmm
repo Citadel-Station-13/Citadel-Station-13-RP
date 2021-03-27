@@ -712,6 +712,14 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
+"aBL" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/folder/red,
+/obj/item/folder/blue,
+/obj/item/pen,
+/turf/simulated/floor/tiled/dark,
+/area/bridge)
 "aBZ" = (
 /obj/machinery/photocopier,
 /obj/machinery/alarm{
@@ -1969,6 +1977,10 @@
 /area/triumph/surfacebase/sauna)
 "bup" = (
 /obj/structure/closet/emcloset,
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "buK" = (
@@ -4320,18 +4332,29 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "djA" = (
-/obj/machinery/camera/network/command{
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/radio/intercom{
-	dir = 8;
-	pixel_x = -24
+/obj/machinery/button/remote/driver{
+	dir = 4;
+	id = "enginecore";
+	name = "Emergency Core Eject";
+	pixel_x = -22
 	},
-/obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/folder/red,
-/obj/item/folder/blue,
-/obj/item/pen,
+/obj/effect/floor_decal/industrial/danger/cee{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "EngineVent";
+	name = "Reactor Ventillatory Control";
+	pixel_x = -33;
+	req_access = list(10)
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "djR" = (
@@ -22687,6 +22710,9 @@
 	},
 /obj/effect/floor_decal/corner/yellow{
 	dir = 9
+	},
+/obj/machinery/camera/network/command{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
@@ -52832,7 +52858,7 @@ duy
 dqW
 pox
 iTO
-pox
+aBL
 hYd
 pox
 kzW
