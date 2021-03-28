@@ -5007,6 +5007,13 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
+"eby" = (
+/obj/random/trash,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "ebD" = (
 /obj/structure/bookcase/legal/combo,
 /turf/simulated/floor/wood,
@@ -5548,7 +5555,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
 "eyk" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/steel_reinforced,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/goggles,
 /obj/structure/window/reinforced{
@@ -7407,6 +7414,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
+"fNw" = (
+/obj/structure/closet/crate,
+/obj/random/maintenance/security,
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "fOb" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor{
@@ -8022,6 +8034,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
+"grD" = (
+/obj/structure/lattice,
+/turf/space,
+/area/security/breakroom)
 "grG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -12088,7 +12104,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "jtv" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/steel_reinforced,
 /obj/item/radio{
 	pixel_x = -4
 	},
@@ -13659,10 +13675,6 @@
 "kQE" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/glasses,
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -22
-	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "kQF" = (
@@ -18677,7 +18689,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "oFE" = (
-/obj/structure/closet/crate/mimic/cointoss,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "oFW" = (
@@ -19081,7 +19098,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration/pathfinder_office)
 "oVk" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/steel_reinforced,
 /obj/machinery/cell_charger,
 /obj/machinery/light{
 	dir = 8;
@@ -19427,6 +19444,10 @@
 /area/security/prison)
 "pfZ" = (
 /obj/machinery/media/jukebox,
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
+	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "pgr" = (
@@ -20070,7 +20091,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "pJC" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/steel_reinforced,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/goggles,
 /obj/structure/window/reinforced{
@@ -25334,6 +25355,10 @@
 /obj/structure/table/bench/padded,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"the" = (
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "tii" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
@@ -25727,6 +25752,10 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
+"tzG" = (
+/obj/random/maintenance/medical,
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "tzJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -27516,7 +27545,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/secondary/docking_hallway)
 "uWb" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_magazine/s45/practice,
 /obj/item/ammo_magazine/s45/practice,
 /obj/item/ammo_magazine/clip/c762/practice,
@@ -27524,6 +27553,9 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
+/obj/item/ammo_magazine/m762garand,
+/obj/item/ammo_magazine/m762garand,
+/obj/item/gun/projectile/garand,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "uWf" = (
@@ -29752,7 +29784,7 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "wsk" = (
-/obj/structure/table/steel,
+/obj/structure/table/steel_reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
 	pixel_y = 7
@@ -29906,7 +29938,7 @@
 /area/crew_quarters/sleep/CE_quarters)
 "wyl" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/table/reinforced,
+/obj/structure/table/steel_reinforced,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -30896,7 +30928,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "xlj" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/steel_reinforced,
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/goggles,
 /obj/structure/window/reinforced{
@@ -31773,6 +31805,16 @@
 /obj/item/pen,
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
+"xQo" = (
+/obj/machinery/light/small/emergency{
+	dir = 8
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "xQD" = (
 /obj/machinery/light{
 	dir = 4
@@ -36962,7 +37004,7 @@ gXR
 pfZ
 xhp
 xhp
-nIK
+pkc
 clY
 nIK
 nIK
@@ -37104,7 +37146,7 @@ gXR
 qkS
 xhp
 xhp
-nIK
+pkc
 clY
 nIK
 nIK
@@ -37244,9 +37286,9 @@ xSo
 kYP
 gXR
 kQE
-xhp
-xhp
-nIK
+ooz
+grD
+pkc
 clY
 nIK
 nIK
@@ -37386,9 +37428,9 @@ goI
 ubV
 gXR
 dZO
-xhp
-xhp
-nIK
+ooz
+grD
+pkc
 clY
 nIK
 nIK
@@ -37530,7 +37572,7 @@ gXR
 arG
 xhp
 xhp
-nIK
+pkc
 pkc
 nIK
 nIK
@@ -43765,7 +43807,7 @@ lsu
 gMN
 lJa
 gMN
-coq
+wXE
 lsu
 lJa
 ugw
@@ -45892,7 +45934,7 @@ coq
 pww
 fnm
 gMN
-myb
+fNw
 lsu
 ugw
 ugw
@@ -46464,7 +46506,7 @@ clb
 xNa
 lsu
 gMN
-fnm
+lJa
 lsu
 pQb
 lsu
@@ -46605,9 +46647,9 @@ rOH
 brp
 xox
 lsu
-oFE
-gMN
-gMN
+myb
+fnm
+the
 ugw
 hzP
 lsu
@@ -46751,7 +46793,7 @@ lJa
 gMN
 lsu
 ugw
-gMN
+iWf
 gMN
 gMN
 fnm
@@ -46886,14 +46928,14 @@ gyv
 qZU
 lsu
 dlI
-gMN
+tzG
 ssD
 lsu
 gMN
-gMN
+lJa
 lsu
 ugw
-gMN
+iWf
 lsu
 gMN
 lJa
@@ -47735,10 +47777,10 @@ gMN
 lsu
 gMN
 wJh
-gMN
-gMN
-fnm
-nfb
+oFE
+tMV
+eby
+xQo
 ugw
 aSO
 bNI
