@@ -216,8 +216,11 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/map_template/engine/chosen_type = null
 	var/list/probabilities = CONFIG_GET(keyed_list/engine_submap)
 	if (length(probabilities))
-		var/chosen_name = pickweightAllowZero(probabilties)
-		chosen_type = map_templates[chosen_name]
+		var/chosen_name = lowertext(pickweightAllowZero(probabilties))
+		for(var/mapname in map_templates)
+			// yeah yeah yeah inefficient fight me someone can code me a better subsystem if they want to bother
+			if(lowertext(mapname) == chosen_name)
+				chosen_type = map_templates[mapname]
 		if(!istype(chosen_type))
 			stack_trace("Configured engine map [chosen_name] is not a valid engine map name!")
 	if(!istype(chosen_type))
