@@ -5,4 +5,4 @@
 ## Engine submap probabilities
 ENGINE_SUBMAP Supermatter 40
 ENGINE_SUBMAP RUST 40
-ENGINE_SUBMAP FISSION 20
+ENGINE_SUBMAP Fission 20
