@@ -3,6 +3,9 @@
 #STARLIGHT
 
 ## Engine submap probabilities
-ENGINE_SUBMAP Supermatter 40
-ENGINE_SUBMAP RUST 40
-ENGINE_SUBMAP Fission 20
+## Supermatter
+ENGINE_SUBMAP EngineSubmap_SM 40
+## R-UST Fusion
+ENGINE_SUBMAP EngineSubmap_RUST 40
+## Fission ""engine""
+ENGINE_SUBMAP EngineSubmap_Fission 20
