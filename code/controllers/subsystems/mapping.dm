@@ -214,11 +214,12 @@ SUBSYSTEM_DEF(mapping)
 
 	// Choose an engine type
 	var/datum/map_template/engine/chosen_type = null
-	if (LAZYLEN(config_legacy.engine_map))
-		var/chosen_name = pick(config_legacy.engine_map)
+	var/list/probabilities = CONFIG_GET(keyed_list/engine_submap)
+	if (length(probabilities))
+		var/chosen_name = pickweightAllowZero(probabilties)
 		chosen_type = map_templates[chosen_name]
 		if(!istype(chosen_type))
-			log_world("Configured engine map [chosen_name] is not a valid engine map name!")
+			stack_trace("Configured engine map [chosen_name] is not a valid engine map name!")
 	if(!istype(chosen_type))
 		var/list/engine_types = list()
 		for(var/map in map_templates)
