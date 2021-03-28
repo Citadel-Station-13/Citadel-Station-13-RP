@@ -90,8 +90,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 	//If given a human on spawn (probably from persistence)
 	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
 		if(!quick_implant(H))
-			WARNING("NIF spawned in [human.real_name] failed to implant")
+			WARNING("NIF spawned in [H] failed to implant")
 			spawn(0)
 				qdel(src)
 			return FALSE
