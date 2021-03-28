@@ -4,3 +4,4 @@
 /datum/config_entry/keyed_list/engine_submap
 	key_mode = KEY_MODE_TEXT
 	value_mode = VALUE_MODE_NUM
+	lowercase = TRUE
