@@ -14,7 +14,7 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/engine/rust
-	name = "R-UST Engine"
+	name = "EngineSubmap_RUST"
 	desc = "R-UST Fusion Tokamak Engine"
 	mappath = 'maps/submaps/engine_submaps/triumph_engine_rust.dmm'
 
@@ -27,7 +27,7 @@
 
 
 /datum/map_template/engine/supermatter
-	name = "Supermatter Engine"
+	name = "EngineSubmap_SM"
 	desc = "Old Faithful Supermatter"
 	mappath = 'maps/submaps/engine_submaps/triumph_engine_sme.dmm'
 
@@ -38,12 +38,10 @@
 	mappath = 'maps/submaps/engine_submaps/engine_tesla.dmm'
 */
 
-/datum/map_template/engine/tesla
-	name = "Old Faithful"
+/datum/map_template/engine/fission
+	name = "EngineSubmap_Fission"
 	desc = "The Fission Reactor"
 	mappath = 'maps/submaps/engine_submaps/triumph_engine_fission.dmm'
-
-
 
 // Landmark for where to load in the engine on permament map
 /obj/effect/landmark/engine_loader
