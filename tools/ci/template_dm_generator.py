@@ -3,7 +3,7 @@
 import os
 import sys
 
-folders = ["_maps/submaps"]
+folders = ["_maps/submaps", "_maps/planet_levels", "_maps/submaps"]
 
 generated = "_maps/templates.dm"
 
