@@ -133,8 +133,6 @@
 	..()
 	if(real_crate)
 		real_crate.forceMove(loc)
-	else
-		new/obj/structure/closet/crate(src.loc)
 	real_crate = null
 	qdel(src)
 
@@ -234,7 +232,6 @@
 	qdel(src)
 
 
-
 //Less Terrifying Closet Mimic
 /obj/structure/closet/crate/mimic/closet
 	name = "old closet"
@@ -326,8 +323,6 @@
 	..()
 	if(real_crate)
 		real_crate.forceMove(loc)
-	else
-		new/obj/structure/closet(src.loc)
 	real_crate = null
 	qdel(src)
 
@@ -342,51 +337,43 @@
 	icon_state = "wmimic"
 	var/mimic_chance = 30
 	var/mimic_active = TRUE
+	var/mimic_type = /mob/living/simple_mob/vore/aggressive/mimic/floor
 
-/obj/effect/floormimic/Crossed(AM as mob|obj)
+/obj/effect/floormimic/Crossed(atom/movable/AM)
 	. = ..()
-	Bumped(AM)
+	tryTrigger(AM)
 
-/obj/effect/floormimic/Bumped(mob/M as mob|obj)
-	if(istype(M, /mob/living/))
-		if(!M.hovering) //Mimics will not activate if you fly over them.
-			awaken(M)
+/obj/effect/floormimic/Bumped(atom/movable/AM)
+	. = ..()
+	tryTrigger(AM)
 
-/obj/effect/floormimic/proc/awaken(var/mob/living/M)
-	if(mimic_active)
-		mimic_active = FALSE
-		if(prob(mimic_chance))
-			var/mob/living/simple_mob/vore/aggressive/mimic/floor/new_mimic = new(loc, src)
-			visible_message("<font color='red'><b>The [new_mimic] suddenly growls beneath you as it turns out to be a mimic!</b></font>")
-			forceMove(new_mimic)
-			new_mimic.real_crate = src
-			new_mimic.name = name
-			new_mimic.desc = desc
-			new_mimic.icon = icon
-			new_mimic.icon_state = "wmimicopen"
-			new_mimic.icon_living = "wmimicopen"
-		else
-			qdel(src.loc)
-			qdel(src)
-			return ..()
-	else
-		qdel(src.loc)
+/obj/effect/floormimic/proc/tryTrigger(atom/movable/victim)
+	if(!isliving(victim))
+		return
+	var/mob/living/L = victim
+	if(L.hovering)
+		return
+	awaken(L)
+
+/obj/effect/floormimic/proc/awaken(mob/living/L)
+	if(!mimic_active)
 		qdel(src)
+		return
+	mimic_active = FALSE
+	if(!prob(mimic_chance))
+		qdel(src)
+		return
+	var/mob/living/simple_mob/vore/aggressive/mimic/floor/new_mimic = new mimic_type(drop_location())
+	visible_message("<span class='boldwarning'>The [new_mimic] suddenly growls beneath you as it turns out to be a mimic!</span>")
+
+/obj/effect/floormimic/attackby(obj/item/I, mob/living/L)
+	if(mimic_active)
+		awaken(L)
+	else
 		return ..()
 
-/obj/effect/floormimic/attackby(obj/item/W as obj, mob/M as mob|obj)
-	if(mimic_active)
-		awaken(M)
-	else
-		qdel(src.loc)
-		qdel(src)
-		return ..()
-
-/obj/effect/floormimic/ex_act(severity) //Stores Mimic Contents for later
-	for(var/obj/O in src.contents)
-		qdel(O)
+/obj/effect/floormimic/ex_act(severity)
 	qdel(src)
-	return
 
 /obj/effect/floormimic/safe
 	mimic_chance = 0
@@ -403,6 +390,7 @@
 /mob/living/simple_mob/vore/aggressive/mimic/floor
 	name = "loose wooden floor"
 	desc = "The boards here look rather loose."
+	icon = 'icons/mob/mimic.dmi'
 	icon_state = "wmimicopen"
 	icon_living = "wmimicopen"
 
@@ -421,39 +409,15 @@
 	base_attack_cooldown = 5
 
 /mob/living/simple_mob/vore/aggressive/mimic/floor/death()
-	..()
 	qdel(src)
-	qdel(src.loc)
 
-obj/effect/floormimic/tile
+/obj/effect/floormimic/tile
 	name = "loose floor tiles"
 	desc = "The tiles here look rather loose."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	icon_state = "tmimic"
-
-/obj/effect/floormimic/tile/awaken(var/mob/living/M)
-	if(mimic_active)
-		mimic_active = FALSE
-		if(prob(mimic_chance))
-			var/mob/living/simple_mob/vore/aggressive/mimic/floor/new_mimic = new(loc, src)
-			visible_message("<font color='red'><b>The [new_mimic] suddenly growls beneath you as it turns out to be a mimic!</b></font>")
-			forceMove(new_mimic)
-			new_mimic.real_crate = src
-			new_mimic.name = name
-			new_mimic.desc = desc
-			new_mimic.icon = icon
-			new_mimic.icon_state = "tmimicopen"
-			new_mimic.icon_living = "tmimicopen"
-		else
-			qdel(src.loc)
-			qdel(src)
-			return ..()
-	else
-		qdel(src.loc)
-		qdel(src)
-		return ..()
-
+	mimic_type = /mob/living/simple_mob/vore/aggressive/mimic/floor/tile
 
 /obj/effect/floormimic/tile/safe
 	mimic_chance = 0
@@ -488,35 +452,13 @@ obj/effect/floormimic/tile
 	melee_damage_upper = 15
 	base_attack_cooldown = 10
 
-obj/effect/floormimic/plating
+/obj/effect/floormimic/plating
 	name = "loose plating"
 	desc = "The plating here looks rather loose."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	icon_state = "pmimic"
-
-/obj/effect/floormimic/plating/awaken(var/mob/living/M)
-	if(mimic_active)
-		mimic_active = FALSE
-		if(prob(mimic_chance))
-			var/mob/living/simple_mob/vore/aggressive/mimic/floor/new_mimic = new(loc, src)
-			visible_message("<font color='red'><b>The [new_mimic] suddenly growls beneath you as it turns out to be a mimic!</b></font>")
-			forceMove(new_mimic)
-			new_mimic.real_crate = src
-			new_mimic.name = name
-			new_mimic.desc = desc
-			new_mimic.icon = icon
-			new_mimic.icon_state = "pmimicopen"
-			new_mimic.icon_living = "pmimicopen"
-		else
-			qdel(src.loc)
-			qdel(src)
-			return ..()
-	else
-		qdel(src.loc)
-		qdel(src)
-		return ..()
-
+	mimic_type = /mob/living/simple_mob/vore/aggressive/mimic/floor/plating
 
 /obj/effect/floormimic/plating/safe
 	mimic_chance = 0
