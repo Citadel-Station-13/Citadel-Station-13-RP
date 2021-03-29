@@ -24,7 +24,7 @@ var/next_station_date_change = 1 DAY
 
 #define duration2stationtime(time) time2text(station_time_in_ticks + time, "hh:mm")
 #define worldtime2stationtime(time) time2text(roundstart_hour HOURS + time, "hh:mm")
-#define round_duration_in_ticks (round_start_time ? world.time - round_start_time : 0)
+#define round_duration_in_ticks (SSticker.round_start_time ? world.time - SSticker.round_start_time : 0)
 #define station_time_in_ticks (roundstart_hour HOURS + round_duration_in_ticks)
 
 /proc/stationtime2text()
@@ -68,7 +68,7 @@ var/next_duration_update = 0
 var/last_round_duration = 0
 
 /proc/roundduration2text()
-	if(!SSticker.round_start_time)
+	if(!SSticker.SSticker.round_start_time)
 		return "00:00"
 	if(last_round_duration && world.time < next_duration_update)
 		return last_round_duration
