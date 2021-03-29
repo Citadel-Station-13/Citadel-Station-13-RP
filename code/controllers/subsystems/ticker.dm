@@ -9,9 +9,7 @@ SUBSYSTEM_DEF(ticker)
 	/// Did we attempt an automatic gamemode vote?
 	var/static/auto_gamemode_vote_attempted = FALSE
 
-	/// What world.time we startED the game, set at round start.
-	var/static/round_start_time
-	/// What world.time we endED the game, set at round end.
+	/// What world.time we ended the game, set at round end.
 	var/static/round_end_time
 
 	/// Should we immediately start?
@@ -262,7 +260,6 @@ SUBSYSTEM_DEF(ticker)
 	*/
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
-	round_start_time = world.time
 
 	if(config_legacy.sql_enabled)
 		//THIS REQUIRES THE INVOKE ASYNC.
