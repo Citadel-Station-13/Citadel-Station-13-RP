@@ -7420,9 +7420,6 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
-"HH" = (
-/turf/space,
-/area/space)
 "HJ" = (
 /obj/machinery/atmospherics/binary/passive_gate/on{
 	dir = 1
@@ -18185,7 +18182,7 @@ wN
 wN
 wN
 wN
-HH
+wN
 wN
 wN
 vS

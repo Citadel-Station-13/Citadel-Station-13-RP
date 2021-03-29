@@ -5091,13 +5091,6 @@
 /obj/effect/floor_decal/rust/part_rusted3,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/centcom/evac)
-"jx" = (
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/centcom/evac)
-"jy" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/centcom/evac)
 "jz" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
@@ -5890,10 +5883,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"kP" = (
-/obj/effect/floor_decal/corner_steel_grid/diagonal,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/centcom/evac)
 "kQ" = (
 /obj/machinery/door/airlock/glass_medical{
 	name = "Virology Laboratory"
@@ -19944,10 +19933,10 @@ gY
 iF
 jl
 jv
-jx
-jx
-jx
-jx
+iQ
+iQ
+iQ
+iQ
 lj
 lF
 ab
@@ -20086,10 +20075,10 @@ gY
 iG
 jm
 jw
-jx
-jy
-jy
-jx
+iQ
+iR
+iR
+iQ
 lj
 lF
 ab
@@ -20227,11 +20216,11 @@ gY
 gY
 iH
 jn
-jx
+iQ
 jJ
-jx
-jx
-jx
+iQ
+iQ
+iQ
 lj
 lF
 ab
@@ -20369,10 +20358,10 @@ gY
 gY
 iI
 jo
-jx
-jx
-jx
-jx
+iQ
+iQ
+iQ
+iQ
 jM
 lj
 lF
@@ -20511,11 +20500,11 @@ gY
 gY
 iJ
 jp
-jx
-jy
-jx
-jx
-jx
+iQ
+iR
+iQ
+iQ
+iQ
 lk
 lF
 ab
@@ -20653,11 +20642,11 @@ gY
 gY
 iK
 jq
-jx
-jx
-jx
-jx
-jx
+iQ
+iQ
+iQ
+iQ
+iQ
 lj
 lF
 ab
@@ -20795,11 +20784,11 @@ gY
 gY
 iL
 jr
-jy
-jx
-jx
-jx
-jx
+iR
+iQ
+iQ
+iQ
+iQ
 lj
 lF
 ab
@@ -20937,11 +20926,11 @@ gY
 gY
 iM
 js
-jx
-jx
+iQ
+iQ
 jM
-jx
-jy
+iQ
+iR
 ll
 lF
 ab
@@ -21079,11 +21068,11 @@ hZ
 gY
 iN
 jt
-jx
-jx
-jx
-jx
-jx
+iQ
+iQ
+iQ
+iQ
+iQ
 lj
 lF
 ab
@@ -21221,11 +21210,11 @@ gY
 gY
 iO
 ju
-jx
-jy
-jx
-jx
-jx
+iQ
+iR
+iQ
+iQ
+iQ
 lj
 lF
 ab
@@ -21363,10 +21352,10 @@ gZ
 gY
 iF
 ju
-jx
-jx
-jx
-jx
+iQ
+iQ
+iQ
+iQ
 jM
 lj
 lF
@@ -21506,9 +21495,9 @@ iz
 iP
 hb
 ha
-jx
-jx
-jx
+iQ
+iQ
+iQ
 iz
 lm
 lF
@@ -22361,7 +22350,7 @@ iQ
 iQ
 iQ
 iQ
-kP
+jM
 iQ
 iQ
 iQ

@@ -47,9 +47,6 @@
 /obj/effect/shuttle_landmark/automatic,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/poi_h/explored)
-"E" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
 "H" = (
 /turf/simulated/floor/outdoors/water/classh,
 /area/poi_h/explored)
@@ -494,7 +491,7 @@ g
 g
 g
 g
-E
+g
 g
 l
 g

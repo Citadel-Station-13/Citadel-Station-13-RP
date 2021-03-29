@@ -211,9 +211,6 @@
 "W" = (
 /turf/space,
 /area/space/debrisfield/explored)
-"X" = (
-/turf/space,
-/area/space/debrisfield/explored)
 "Y" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
@@ -15069,7 +15066,7 @@ W
 W
 W
 W
-X
+W
 W
 W
 W
