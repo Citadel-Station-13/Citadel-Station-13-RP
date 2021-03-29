@@ -13,6 +13,6 @@ chmod +x ~/.byond/bin/libbyond-extools.so
 ldd ~/.byond/bin/libbyond-extools.so
 
 cd ci_test
-DreamDaemon tgstation.dmb -close -trusted -verbose -params "log-directory=ci"
+DreamDaemon vorestation.dmb -close -trusted -verbose -params "log-directory=ci"
 cd ..
 cat ci_test/data/logs/ci/clean_run.lk
