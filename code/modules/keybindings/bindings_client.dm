@@ -142,7 +142,7 @@
 // Called every game tick
 /client/keyLoop()
 	holder?.keyLoop(src)
-	mob?.focus?.keyLoop(src)
+	mob.focus?.keyLoop(src)
 
 /client/proc/update_movement_keys(datum/preferences/direct_prefs)
 	var/datum/preferences/D = prefs || direct_prefs

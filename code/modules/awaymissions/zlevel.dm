@@ -1,6 +1,9 @@
 proc/createRandomZlevel()
-	if(awaydestinations.len || defined(UNIT_TESTS))	//crude, but it saves another var! //VOREStation Edit - No loading away missions during Travis testing
+	if(awaydestinations.len)	//crude, but it saves another var! //VOREStation Edit - No loading away missions during Travis testing
 		return
+#ifdef UNIT_TESTS
+	return
+#endif
 
 	var/list/potentialRandomZlevels = list()
 	admin_notice("<font color='red'><B> Searching for away missions...</B></font>", R_DEBUG)
