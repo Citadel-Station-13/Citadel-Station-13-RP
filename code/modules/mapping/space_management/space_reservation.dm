@@ -8,12 +8,14 @@
 	var/bottom_left_coords[3]
 	var/top_right_coords[3]
 	var/wipe_reservation_on_release = TRUE
-	var/turf_type = /turf/open/space
+	var/turf_type = /turf/space
 	var/borderturf
 
+/*
 /datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit
 	borderturf = /turf/open/space/transit/border
+*/
 
 /datum/turf_reservation/proc/Release()
 	var/v = reserved_turfs.Copy()
