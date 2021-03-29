@@ -1,3 +1,4 @@
+
 /datum/atmosphere/planet/gaia_planet
 	base_gases = list(
 	/datum/gas/oxygen = 0.22,
