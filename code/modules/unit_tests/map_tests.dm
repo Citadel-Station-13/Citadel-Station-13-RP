@@ -1,7 +1,7 @@
 /datum/unit_test/apc_area_test
 	name = "MAP: Area Test APC / Scrubbers / Vents Z level 1"
 
-/datum/unit_test/apc_area_test/start_test()
+/datum/unit_test/apc_area_test/Run()
 	var/list/bad_areas = list()
 	var/area_test_count = 0
 	var/list/exempt_areas = typesof(/area/space,
@@ -49,31 +49,18 @@
 
 
 			if(isnull(A.apc) && !(A.type in exempt_from_apc))
-				log_unit_test("[bad_msg] lacks an APC.")
-				area_good = 0
+				Fail("[bad_msg] lacks an APC.")
 
 			if(!A.air_scrub_info.len && !(A.type in exempt_from_atmos))
-				log_unit_test("[bad_msg] lacks an Air scrubber.")
-				area_good = 0
+				Fail("[bad_msg] lacks an Air scrubber.")
 
 			if(!A.air_vent_info.len && !(A.type in exempt_from_atmos))
-				log_unit_test("[bad_msg] lacks an Air vent.")
-				area_good = 0
-
-			if(!area_good)
-				bad_areas.Add(A)
-
-	if(bad_areas.len)
-		fail("\[[bad_areas.len]/[area_test_count]\]Some areas lacked APCs, Air Scrubbers, or Air vents.")
-	else
-		pass("All \[[area_test_count]\] areas contained APCs, Air scrubbers, and Air vents.")
-
-	return 1
+				Fail("[bad_msg] lacks an Air vent.")
 
 /datum/unit_test/wire_test
 	name = "MAP: Cable Test Z level 1"
 
-/datum/unit_test/wire_test/start_test()
+/datum/unit_test/wire_test/Run()
 	var/wire_test_count = 0
 	var/bad_tests = 0
 	var/turf/T = null
@@ -95,21 +82,13 @@
 			wire_test_count++
 			var/combined_dir = "[C.d1]-[C.d2]"
 			if(combined_dir in dirs_checked)
-				bad_tests++
-				log_unit_test("[bad_msg] Contains multiple wires with same direction on top of each other.")
+				Fail("[bad_msg] Contains multiple wires with same direction on top of each other.")
 			dirs_checked.Add(combined_dir)
-
-	if(bad_tests)
-		fail("\[[bad_tests] / [wire_test_count]\] Some turfs had overlapping wires going the same direction.")
-	else
-		pass("All \[[wire_test_count]\] wires had no overlapping cables going the same direction.")
-
-	return 1
 
 /datum/unit_test/active_edges
 	name = "MAP: Active edges (all maps)"
 
-/datum/unit_test/active_edges/start_test()
+/datum/unit_test/active_edges/Run()
 
 	var/active_edges = air_master.active_edges.len
 	var/list/edge_log = list()
@@ -120,8 +99,4 @@
 				edge_log += "+--- Connecting Turf [T] @ [T.x], [T.y], [T.z]"
 
 	if(active_edges)
-		fail("Maps contained [active_edges] active edges at round-start.\n" + edge_log.Join("\n"))
-	else
-		pass("No active edges.")
-
-	return 1
+		Fail("Maps contained [active_edges] active edges at round-start.\n" + edge_log.Join("\n"))

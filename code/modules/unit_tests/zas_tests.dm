@@ -65,17 +65,14 @@
 
 	return test_result
 
-/datum/unit_test/zas_area_test/start_test()
+/datum/unit_test/zas_area_test/Run()
 	var/list/test = test_air_in_area(area_path, expectation)
 
 	if(isnull(test))
-		fail("Check Runtimed")
+		Fail("Check Runtimed")
 
-	if(test["result"] == 1)
-		pass(test["msg"])
-	else
-		fail(test["msg"])
-	return 1
+	if(test["result"] != 1)
+		Fail(test["msg"])
 
 /datum/unit_test/zas_area_test/supply_centcomm
 	name = "ZAS: Supply Shuttle"

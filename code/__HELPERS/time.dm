@@ -66,14 +66,9 @@ proc/isDay(var/month, var/day)
 
 var/next_duration_update = 0
 var/last_round_duration = 0
-var/round_start_time = 0
-
-/hook/roundstart/proc/start_timer()
-	round_start_time = world.time
-	return 1
 
 /proc/roundduration2text()
-	if(!round_start_time)
+	if(!SSticker.round_start_time)
 		return "00:00"
 	if(last_round_duration && world.time < next_duration_update)
 		return last_round_duration

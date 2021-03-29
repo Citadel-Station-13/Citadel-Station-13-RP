@@ -35,11 +35,12 @@
 #endif
 
 //Update this whenever you need to take advantage of more recent byond features
-#define MIN_COMPILER_VERSION 512
-#if DM_VERSION < MIN_COMPILER_VERSION
+#define MIN_COMPILER_VERSION 513
+#define MIN_COMPILER_BUILD 1514
+#if DM_VERSION < MIN_COMPILER_VERSION || DM_BUILD < MIN_COMPILER_BUILD
 //Don't forget to update this part
 #error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
-#error You need version 512 or higher
+#error You need version 513.1514 or higher
 #endif
 
 //Additional code for the above flags.
@@ -51,18 +52,17 @@
 #define FIND_REF_NO_CHECK_TICK
 #endif
 
-#ifdef TRAVISBUILDING
+#ifdef CIBUILDING
 #define UNIT_TESTS
 #endif
 
-#ifdef TRAVISTESTING
+#ifdef CITESTING
 #define TESTING
 #endif
 
-/*
-RENAME THE FILE TO _compile_options.dm AFTER WE PORT TG TRAVIS TEST STUFF AND RID OURSELVES OF MAP TEST DEFINE!!!!!!!
-*/
-
+// A reasonable number of maximum overlays an object needs
+// If you think you need more, rethink it
+#define MAX_ATOM_OVERLAYS 100
 
 /*
 VORESTATION CRAP
@@ -75,8 +75,3 @@ VORESTATION CRAP
 // Comment/Uncomment this to turn off/on shuttle code debugging logs
 #define DEBUG_SHUTTLES
 
-// If we are doing the map test build, do not include the main maps, only the submaps.
-#if MAP_TEST
-	#define USING_MAP_DATUM /datum/map
-	#define MAP_OVERRIDE 1
-#endif
