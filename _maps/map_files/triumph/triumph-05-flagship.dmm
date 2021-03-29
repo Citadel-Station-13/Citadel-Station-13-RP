@@ -14444,14 +14444,10 @@
 	opacity = 0
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AD" = (
 /turf/unsimulated/wall,
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AE" = (
 /obj/machinery/newscaster{
 	pixel_x = -27
@@ -14532,14 +14528,10 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor/steel,
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AN" = (
 /turf/unsimulated/floor/steel,
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AO" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
@@ -14550,18 +14542,14 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/unsimulated/floor/steel,
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AP" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AQ" = (
 /obj/machinery/computer/card,
 /obj/effect/floor_decal/borderfloorblack{
@@ -14574,9 +14562,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AR" = (
 /obj/machinery/computer/secure_data,
 /obj/effect/floor_decal/borderfloorblack{
@@ -14593,9 +14579,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AS" = (
 /obj/item/radio/intercom{
 	dir = 1;
@@ -14607,9 +14591,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AT" = (
 /obj/machinery/door/airlock/security{
 	name = "Security"
@@ -14618,9 +14600,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AU" = (
 /obj/machinery/turretid/stun{
 	check_access = 0;
@@ -14635,9 +14615,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AV" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -14659,9 +14637,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -14685,17 +14661,13 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AX" = (
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "AY" = (
 /obj/machinery/status_display{
 	pixel_x = -31
@@ -14783,15 +14755,11 @@
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bi" = (
 /obj/effect/floor_decal/industrial/outline,
 /turf/unsimulated/floor/steel,
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bj" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
@@ -14822,9 +14790,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bk" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -14839,9 +14805,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bl" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -14859,9 +14823,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bm" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -14879,9 +14841,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bn" = (
 /obj/machinery/computer/arcade/orion_trail,
 /obj/effect/floor_decal/borderfloorblack{
@@ -14989,9 +14949,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bu" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -15004,9 +14962,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bv" = (
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
@@ -15022,9 +14978,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bw" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -15036,9 +14990,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Bx" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = 30
@@ -15053,9 +15005,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "By" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -15209,9 +15159,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "BL" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/security_space_law,
@@ -15222,9 +15170,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "BM" = (
 /obj/structure/table/reinforced,
 /obj/item/camera,
@@ -15239,9 +15185,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "BN" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
@@ -15254,9 +15198,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "BO" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
@@ -15268,9 +15210,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "BP" = (
 /obj/structure/table/reinforced,
 /obj/machinery/microwave,
@@ -15280,9 +15220,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "BQ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
@@ -15295,9 +15233,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "BR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -15411,9 +15347,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/unsimulated/floor/steel,
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Cc" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -15514,9 +15448,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Cq" = (
 /obj/machinery/door/airlock{
 	name = "Unit 2"
@@ -15613,9 +15545,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "CA" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -15649,9 +15579,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "CB" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
 /obj/machinery/door/blast/regular{
@@ -15713,9 +15641,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "CI" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -15730,9 +15656,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "CJ" = (
 /obj/machinery/computer/secure_data{
 	dir = 8
@@ -15748,9 +15672,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "CK" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -15908,9 +15830,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "CV" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/skills,
@@ -15930,9 +15850,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "CW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -15988,9 +15906,7 @@
 	dir = 5;
 	icon_state = "vault"
 	},
-/area/centcom/security{
-	name = "\improper CentCom Residential Security"
-	})
+/area/centcom/security)
 "Dc" = (
 /obj/machinery/door/airlock/security{
 	name = "Security"
