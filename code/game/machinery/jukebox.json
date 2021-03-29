@@ -2857,7 +2857,7 @@
 "artist": "Frank Sinatra",
 "secret": false,
 "lobby": true,
-"jukebox": false,
+"jukebox": true,
 "genre": "Jazz and Lounge"
 },
 {
@@ -2935,6 +2935,16 @@
 "title": "La Vie En Rose",
 "duration": 2050,
 "artist": "Louis Armstrong",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Jazz and Lounge"
+},
+{
+"url": "https://files.catbox.moe/zzfusr.m4a",
+"title": "That's Life",
+"duration": 1870,
+"artist": "Frank Sinatra",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -4580,16 +4590,6 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Pop"
-},
-{
-"url": "https://files.catbox.moe/zzfusr.m4a",
-"title": "That's Life",
-"duration": 1870,
-"artist": "Frank Sinatra",
-"secret": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Jazz and Lounge"
 },
 {
 "url": "https://files.catbox.moe/u7yyft.m4a",
