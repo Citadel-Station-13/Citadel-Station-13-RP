@@ -110,7 +110,7 @@
 
 /datum/map_template/triumph_lateload/lavaland/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_LAVALAND), 40, /area/lavaland/unexplored, /datum/map_template/lavaland)
+	seed_submaps(list(Z_LEVEL_LAVALAND), 40, /area/lavaland/unexplored, /datum/map_template/submap/level_specific/lavaland)
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, Z_LEVEL_LAVALAND, 64, 64)         // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
 
@@ -127,7 +127,7 @@
 
 /datum/map_template/triumph_lateload/away_d_world/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/poi_d/unexplored, /datum/map_template/Class_D)
+	seed_submaps(list(Z_LEVEL_UNKNOWN_PLANET), 150, /area/poi_d/unexplored, /datum/map_template/submap/level_specific/class_d)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
@@ -148,7 +148,7 @@
 
 /datum/map_template/triumph_lateload/away_h_world/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/Class_H)
+	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/submap/level_specific/class_h)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
@@ -168,7 +168,7 @@
 
 /datum/map_template/triumph_lateload/gaia_planet/on_map_loaded(z)
 	. = ..()
-//	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/Class_H)
+//	seed_submaps(list(Z_LEVEL_DESERT_PLANET), 150, /area/poi_h/unexplored, /datum/map_template/submap/level_specific/class_h)
 
 	//new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_UNKNOWN_PLANET, world.maxx - 30, world.maxy - 30)
 	//new /datum/random_map/noise/ore/poi_d(null, 1, 1, Z_LEVEL_UNKNOWN_PLANET, 64, 64)
@@ -190,7 +190,7 @@
 
 /datum/map_template/triumph_lateload/frozen_planet/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/frozen_planet/ruins, /datum/map_template/frozen_planet/)
+	seed_submaps(list(Z_LEVEL_FROZEN_PLANET), 125, /area/frozen_planet/ruins, /datum/map_template/submap/level_specific/frozen_planet/)
 
 
 /datum/map_z_level/triumph_lateload/frozen_planet
