@@ -338,9 +338,7 @@
 /area/awaymission/labs/cave)
 "bv" = (
 /turf/simulated/wall/solidrock,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "bw" = (
 /turf/simulated/wall/solidrock,
 /area/awaymission/labs/cave)
@@ -368,9 +366,7 @@
 	initial_gas_mix = "n2=82.1472;o2=21.8366;TEMP=393.15";
 	name = "Mountain Wall"
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "bA" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor{
@@ -453,9 +449,7 @@
 /area/awaymission/labs/cave)
 "bS" = (
 /turf/simulated/floor/outdoors/dirt,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "bT" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
@@ -590,9 +584,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "cm" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Anomaly Lab Construction"
@@ -614,9 +606,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "cp" = (
 /turf/simulated/wall,
 /area/awaymission/labs/researchdivision)
@@ -783,17 +773,13 @@
 	icon_state = "solarpanel";
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "cM" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "cN" = (
 /obj/effect/alien/weeds/node,
 /turf/simulated/floor,
@@ -858,9 +844,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "cW" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -880,9 +864,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "cX" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -891,15 +873,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "cY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "cZ" = (
 /obj/structure/cable{
 	d2 = 4;
@@ -907,9 +885,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "da" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -929,9 +905,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "db" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -946,9 +920,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "dc" = (
 /turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
@@ -993,16 +965,12 @@
 	icon_state = "solarpanel";
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "dl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "dm" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor,
@@ -1139,9 +1107,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "dD" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Gateway Maintenance Storage"
@@ -1853,9 +1819,7 @@
 	pixel_y = 1
 	},
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "fA" = (
 /obj/machinery/chemical_dispenser,
 /turf/simulated/floor{
@@ -1985,9 +1949,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "fO" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
@@ -2136,9 +2098,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "ge" = (
 /obj/machinery/bodyscanner,
 /turf/simulated/floor{
@@ -3734,9 +3694,7 @@
 "jY" = (
 /obj/machinery/porta_turret,
 /turf/simulated/floor/outdoors/dirt,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "jZ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3895,9 +3853,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kx" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3909,9 +3865,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "ky" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/decal/cleanable/dirt,
@@ -3955,9 +3909,7 @@
 	icon_state = "solarpanel";
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kE" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -3974,9 +3926,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kF" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -3991,9 +3941,7 @@
 	icon_state = "solarpanel";
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kG" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor,
@@ -4041,9 +3989,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kK" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -4075,9 +4021,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kO" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -4087,9 +4031,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kP" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -4148,9 +4090,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kV" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -4162,9 +4102,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kW" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -4181,9 +4119,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kX" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4195,9 +4131,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kY" = (
 /obj/structure/cable{
 	d2 = 4;
@@ -4213,9 +4147,7 @@
 	icon_state = "solarpanel";
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "kZ" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -4236,9 +4168,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "la" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -4272,9 +4202,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lf" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -4355,9 +4283,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lo" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -4368,17 +4294,13 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4389,9 +4311,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4403,9 +4323,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "ls" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/decal/cleanable/dirt,
@@ -4531,9 +4449,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lF" = (
 /obj/structure/grille{
 	layer = 3.3
@@ -4563,9 +4479,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lI" = (
 /obj/structure/cable{
 	d2 = 2;
@@ -4575,9 +4489,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lJ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -4628,9 +4540,7 @@
 	icon_state = "solarpanel";
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lO" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4651,9 +4561,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lP" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4675,15 +4583,11 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/outdoors/dirt,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lR" = (
 /obj/structure/cable{
 	d2 = 4;
@@ -4700,9 +4604,7 @@
 	icon_state = "solarpanel";
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lS" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4726,9 +4628,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lT" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -4744,9 +4644,7 @@
 	icon_state = "solarpanel";
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lU" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -4796,9 +4694,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lY" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4815,9 +4711,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "lZ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4835,9 +4729,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "ma" = (
 /obj/machinery/deployable/barrier,
 /turf/simulated/floor,
@@ -4852,9 +4744,7 @@
 /turf/simulated/floor/plating{
 	temperature = 393.15
 	},
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "mc" = (
 /turf/simulated/wall,
 /area/awaymission/labs/command)
@@ -6213,9 +6103,7 @@
 "pE" = (
 /obj/machinery/conveyor,
 /turf/simulated/floor/outdoors/dirt,
-/area/awaymission/desert{
-	name = "Desert"
-	})
+/area/awaymission/desert)
 "pF" = (
 /obj/effect/decal/mecha_wreckage/ripley,
 /turf/simulated/floor/outdoors/dirt,
