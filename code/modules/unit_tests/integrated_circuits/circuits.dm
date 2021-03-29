@@ -1,6 +1,7 @@
 
 /datum/unit_test/integrated_circuits
 	name = "circuit template"
+	abstrac_type = /datum/unit_test/integrated_circuits
 	var/circuit_type = null
 	var/obj/item/integrated_circuit/IC = null
 	var/list/inputs_to_give = list()
@@ -37,37 +38,27 @@
 		i++
 	return output_wrong
 
-/datum/unit_test/integrated_circuits/start_test()
+/datum/unit_test/integrated_circuits/Run()
 	var/output_wrong = FALSE
 	if(!circuit_type)
-		fail("[name] did not supply a circuit_type path.")
-		return TRUE
-	try
-		// Arrange
-		arrange()
+		Fail("[name] did not supply a circuit_type path.")
+		return
+	// Arrange
+	arrange()
 
-		var/i = 1
-		for(var/input in inputs_to_give)
-			var/datum/integrated_io/io = IC.inputs[i]
-			io.write_data_to_pin(input)
-			i++
+	var/i = 1
+	for(var/input in inputs_to_give)
+		var/datum/integrated_io/io = IC.inputs[i]
+		io.write_data_to_pin(input)
+		i++
 
-		// Act
-		IC.do_work()
+	// Act
+	IC.do_work()
 
-		output_wrong = assess()
+	output_wrong = assess()
 
-		clean_up()
-
-	catch(var/exception/e)
-		log_bad("[name] caught an exception: [e] on [e.file]:[e.line]")
-		output_wrong = TRUE
+	clean_up()
 
 	// Assert
 	if(output_wrong)
-		fail("[name] failed.")
-		return TRUE
-	else
-		pass("[name] matched all expected outputs.")
-		return TRUE
-
+		Fail("[name] failed.")

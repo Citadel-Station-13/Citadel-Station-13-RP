@@ -3323,6 +3323,7 @@
 #include "code\modules\turbolift\turbolift_floor.dm"
 #include "code\modules\turbolift\turbolift_map.dm"
 #include "code\modules\turbolift\turbolift_turfs.dm"
+#include "code\modules\unit_tests\_unit_tests.dm"
 #include "code\modules\variable_settings\variable_setting_controller.dm"
 #include "code\modules\variable_settings\variable_setting_entry.dm"
 #include "code\modules\vehicles\bike.dm"

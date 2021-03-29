@@ -20,6 +20,8 @@ SUBSYSTEM_DEF(ticker)
 	var/ready_for_reboot = FALSE
 	/// Is round end delayed?
 	var/delay_end = FALSE
+	/// Force round end
+	var/force_ending = FALSE
 
 	var/timeLeft						//pregame timer
 	var/start_at
@@ -52,7 +54,6 @@ SUBSYSTEM_DEF(ticker)
 	//station_explosion used to be a variable for every mob's hud. Which was a waste!
 	//Now we have a general cinematic centrally held within the gameticker....far more efficient!
 	var/obj/screen/cinematic = null
-
 
 /datum/controller/subsystem/ticker/Initialize()
 	if(!syndicate_code_phrase)
@@ -415,7 +416,7 @@ SUBSYSTEM_DEF(ticker)
 		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1)) || universe_has_ended
 		mode_finished = game_finished
 
-	if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
+	if(force_ending || (!mode.explosion_in_progress && game_finished && (mode_finished || post_game)))
 		current_state = GAME_STATE_FINISHED
 		round_end_time = world.time
 		Master.SetRunLevel(RUNLEVEL_POSTGAME)
