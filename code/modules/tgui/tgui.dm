@@ -1,4 +1,4 @@
-/**
+/*!
  * Copyright (c) 2020 Aleksej Komarov
  * SPDX-License-Identifier: MIT
  */
@@ -243,7 +243,7 @@
  * Run an update cycle for this UI. Called internally by SStgui
  * every second or so.
  */
-/datum/tgui/process(force = FALSE)
+/datum/tgui/process(delta_time, force = FALSE)
 	if(closing)
 		return
 	var/datum/host = src_object.ui_host(user)
