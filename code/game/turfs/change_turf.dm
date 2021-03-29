@@ -10,7 +10,8 @@
 		qdel(thing, force=TRUE)
 
 	if(turf_type)
-		var/turf/newT = ChangeTurf(turf_type)
+		ChangeTurf(turf_type)
+//		var/turf/newT = ChangeTurf(turf_type)
 /*
 		SSair.remove_from_active(newT)
 		CALCULATE_ADJACENT_TURFS(newT)
