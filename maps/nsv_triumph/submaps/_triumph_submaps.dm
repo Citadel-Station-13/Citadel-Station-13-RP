@@ -6,7 +6,7 @@
 /datum/map_template/triumph_lateload/triumph_misc
 	name = "Triumph - Misc"
 	desc = "Misc areas, like some transit areas, holodecks, merc area."
-	mappath = 'triumph_misc.dmm'
+	mappath = "_maps/map_files/triumph/triumph_misc.dmm"
 
 	associated_map_datum = /datum/map_z_level/triumph_lateload/ships
 
@@ -19,7 +19,7 @@
 /datum/map_template/triumph_lateload/triumph_ships
 	name = "Triumph - Ships"
 	desc = "Ship transit map and whatnot."
-	mappath = 'triumph_ships.dmm'
+	mappath = "_maps/map_files/triumph/triumph_ships.dmm"
 
 	associated_map_datum = /datum/map_z_level/triumph_lateload/ships
 
@@ -31,23 +31,13 @@
 
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
-#if AWAY_MISSION_TEST
-#include "space/debrisfield.dmm"
-#include "space/piratebase.dmm"
-#include "mining_planet/mining_planet.dmm"
-#include "poi_d/Class_D.dmm"
-#include "poi_h/Class_H.dmm"
-#include "frozen_planet/frozen_planet.dmm"
-#include "space/trade_port/tradeport.dmm"
-#include "lavaland/lavaland.dmm"
-#endif
 
 // Debris Fields
 #include "space/_debrisfield.dm"
 /datum/map_template/triumph_lateload/away_debrisfield
 	name = "Debris Field - Z1 Space"
 	desc = "A random debris field out in space."
-	mappath = 'space/debrisfield.dmm'
+	mappath = "_maps/planet_levels/140x140/debrisfield.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_debrisfield
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
 
@@ -66,7 +56,7 @@
 /datum/map_template/triumph_lateload/away_piratebase
 	name = "Away Mission - Pirate Base"
 	desc = "A Vox Marauder Base, oh no!"
-	mappath = 'space/piratebase.dmm'
+	mappath = "_maps/planet_levels/140x140/piratebase.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_piratebase
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
 
@@ -80,7 +70,7 @@
 /datum/map_template/triumph_lateload/away_mining_planet
 	name = "Away Mission - Mining Planet"
 	desc = "Mining Plante. For the miners to get actual supplies."
-	mappath = 'mining_planet/mining_planet.dmm'
+	mappath = "_maps/planet_levels/140x140/mining_planet.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_mining_planet
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -95,11 +85,10 @@
 
 // lavaland start
 #include "lavaland/_lavaland.dm"
-#include "lavaland/_templates.dm"
 /datum/map_template/triumph_lateload/lavaland
 	name = "Away Mission - Lava Land"
 	desc = "The fabled."
-	mappath = 'lavaland/lavaland.dmm'
+	mappath = "_maps/planet_levels/140x140/lavaland.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/lavaland
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -116,11 +105,10 @@
 
 // Class D Rogue Planet Exploration Zone.
 #include "poi_d/_class_d.dm"
-#include "poi_d/_templates.dm"
 /datum/map_template/triumph_lateload/away_d_world
 	name = "ExoPlanet - Z1 Planet"
 	desc = "A random unknown planet."
-	mappath = 'poi_d/Class_D.dmm'
+	mappath = "_maps/planet_levels/140x140/Class_D.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_d_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -137,11 +125,10 @@
 
 // Class H Desert Planet Exploration Zone.
 #include "poi_h/_class_h.dm"
-#include "poi_h/_templates.dm"
 /datum/map_template/triumph_lateload/away_h_world
 	name = "ExoPlanet - Z2 Planet"
 	desc = "A random unknown planet."
-	mappath = 'poi_h/Class_H.dmm'
+	mappath = "_maps/planet_levels/140x140/Class_H.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_h_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -161,7 +148,7 @@
 /datum/map_template/triumph_lateload/gaia_planet
 	name = "Gaia Planet - Z3 Planet"
 	desc = "A lush Gaia Class Planet."
-	mappath = 'gaia_planet/gaia_planet.dmm'
+	mappath = "_maps/planet_levels/140x140/gaia_planet.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/gaia_planet
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -179,11 +166,10 @@
 
 // Frozen Planet Zone.
 #include "frozen_planet/_frozen_planet.dm"
-#include "frozen_planet/_templates.dm"
 /datum/map_template/triumph_lateload/frozen_planet
 	name = "Forzen Planet - Z4 Planet"
 	desc = "A Cold Frozen Planet."
-	mappath = 'frozen_planet/frozen_planet.dmm'
+	mappath = "_maps/planet_levels/140x140//frozen_planet.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/frozen_planet
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -202,7 +188,7 @@
 /datum/map_template/triumph_lateload/away_tradeport
 	name = "Away Mission - Trade Port"
 	desc = "A space gas station! Stretch your legs!"
-	mappath = 'space/trade_port/tradeport.dmm'
+	mappath = "_maps/planet_levels/140x140/tradeport.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/away_tradeport
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
 
@@ -283,7 +269,7 @@
 /datum/map_template/triumph_lateload/roguemines1
 	name = "Asteroid Belt 1"
 	desc = "Mining, but rogue. Zone 1"
-	mappath = 'rogue_mines/rogue_mine1.dmm'
+	mappath = "_maps/planet_levels/140x140/roguemining/rogue_mine1.dmm"
 
 	associated_map_datum = /datum/map_z_level/triumph_lateload/roguemines1
 
@@ -295,7 +281,7 @@
 /datum/map_template/triumph_lateload/tether_roguemines2
 	name = "Asteroid Belt 2"
 	desc = "Mining, but rogue. Zone 2"
-	mappath = 'rogue_mines/rogue_mine2.dmm'
+	mappath = "_maps/planet_levels/140x140/roguemining/rogue_mine2.dmm"
 
 	associated_map_datum = /datum/map_z_level/triumph_lateload/roguemines2
 
@@ -307,7 +293,7 @@
 /datum/map_template/triumph_lateload/tether_roguemines3
 	name = "Asteroid Belt 3"
 	desc = "Mining, but rogue. Zone 3"
-	mappath = 'rogue_mines/rogue_mine3.dmm'
+	mappath = "_maps/planet_levels/140x140/roguemining/rogue_mine3.dmm"
 
 	associated_map_datum = /datum/map_z_level/triumph_lateload/roguemines3
 
@@ -319,7 +305,7 @@
 /datum/map_template/triumph_lateload/tether_roguemines4
 	name = "Asteroid Belt 4"
 	desc = "Mining, but rogue. Zone 4"
-	mappath = 'rogue_mines/rogue_mine4.dmm'
+	mappath = "_maps/planet_levels/140x140/roguemining/rogue_mine4.dmm"
 
 	associated_map_datum = /datum/map_z_level/triumph_lateload/roguemines4
 
