@@ -18,12 +18,14 @@
 
 /atom/Click(var/location, var/control, var/params) // This is their reaction to being clicked on (standard proc)
 	if(!(flags & INITIALIZED))
+		to_chat(usr, "<span class='warning'>[type] initialization failure. Click dropped. Contact a coder or admin.</span>")
 		return
 	if(src)
 		usr.ClickOn(src, params)
 
 /atom/DblClick(var/location, var/control, var/params)
 	if(!(flags & INITIALIZED))
+		to_chat(usr, "<span class='warning'>[type] initialization failure. Click dropped. Contact a coder or admin.</span>")
 		return
 	if(src)
 		usr.DblClickOn(src, params)
