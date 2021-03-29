@@ -4,7 +4,6 @@
 /turf/unsimulated/mineral/triumph,
 /area/mining_planet/unexplored)
 "f" = (
-/obj/away_mission_init/mining_planet,
 /turf/unsimulated/mineral/triumph,
 /area/mining_planet/unexplored)
 "j" = (

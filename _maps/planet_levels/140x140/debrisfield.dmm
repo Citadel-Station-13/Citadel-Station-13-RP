@@ -212,7 +212,6 @@
 /turf/space,
 /area/space/debrisfield/explored)
 "X" = (
-/obj/away_mission_init/debrisfield,
 /turf/space,
 /area/space/debrisfield/explored)
 "Y" = (

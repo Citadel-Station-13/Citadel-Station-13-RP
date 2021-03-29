@@ -50,7 +50,6 @@
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
 "bs" = (
-/obj/away_mission_init/gaia_planet,
 /turf/simulated/floor/outdoors/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "bu" = (

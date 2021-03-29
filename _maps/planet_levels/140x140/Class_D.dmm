@@ -19,7 +19,6 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/poi_d/unexplored)
 "k" = (
-/obj/away_mission_init/poi_d,
 /turf/simulated/mineral/floor/ignore_cavegen,
 /area/poi_d/explored)
 "n" = (

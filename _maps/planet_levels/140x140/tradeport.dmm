@@ -7421,7 +7421,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
 "HH" = (
-/obj/away_mission_init/tradeport,
 /turf/space,
 /area/space)
 "HJ" = (

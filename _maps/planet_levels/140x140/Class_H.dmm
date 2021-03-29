@@ -48,7 +48,6 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/poi_h/explored)
 "E" = (
-/obj/away_mission_init/poi_h,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/poi_h/explored)
 "H" = (

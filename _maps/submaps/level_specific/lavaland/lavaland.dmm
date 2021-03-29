@@ -220,7 +220,6 @@
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "gy" = (
-/obj/away_mission_init/lavaland,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/explored)
 "gE" = (

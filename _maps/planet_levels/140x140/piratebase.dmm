@@ -846,7 +846,6 @@
 	requires_power = 0
 	})
 "GX" = (
-/obj/away_mission_init/piratebase,
 /turf/space,
 /area/space)
 "Hr" = (

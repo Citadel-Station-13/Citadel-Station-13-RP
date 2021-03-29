@@ -225,7 +225,6 @@
 /turf/simulated/floor/outdoors/snow/frozen_world,
 /area/frozen_planet/outside)
 "hC" = (
-/obj/away_mission_init/frozen_planet,
 /turf/simulated/floor/outdoors/snow/frozen_world,
 /area/frozen_planet/outside)
 "hM" = (
