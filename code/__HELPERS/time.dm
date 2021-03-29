@@ -68,7 +68,7 @@ var/next_duration_update = 0
 var/last_round_duration = 0
 
 /proc/roundduration2text()
-	if(!SSticker.SSticker.round_start_time)
+	if(!SSticker.round_start_time)
 		return "00:00"
 	if(last_round_duration && world.time < next_duration_update)
 		return last_round_duration
