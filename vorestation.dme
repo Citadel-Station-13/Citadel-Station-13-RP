@@ -12,6 +12,7 @@
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
 #include "_maps\triumph.dm"
+#include "_maps\map_files\generic\reservation_base_level.dmm"
 #include "code\_compile_options.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
@@ -2187,6 +2188,10 @@
 #include "code\modules\maps\map_assets\tether\tether.dm"
 #include "code\modules\maps\map_assets\triumph\triumph.dm"
 #include "code\modules\maps\submaps\submap.dm"
+#include "code\modules\maps\submaps\level_specific\class_d.dm"
+#include "code\modules\maps\submaps\level_specific\class_h.dm"
+#include "code\modules\maps\submaps\level_specific\debrisfield.dm"
+#include "code\modules\maps\submaps\level_specific\frozen_planet.dm"
 #include "code\modules\maps\submaps\level_specific\lavaland.dm"
 #include "code\modules\maps\tg\dmm_suite.dm"
 #include "code\modules\maps\tg\map_template.dm"

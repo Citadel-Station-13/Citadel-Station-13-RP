@@ -65,11 +65,6 @@ GLOBAL_LIST(topic_status_cache)
 
 	. = ..()
 
-#if UNIT_TEST
-	log_unit_test("Unit Tests Enabled.  This will destroy the world when testing is complete.")
-	log_unit_test("If you did not intend to enable this please check code/__defines/unit_testing.dm")
-#endif
-
 	// Set up roundstart seed list.
 	plant_controller = new()
 
@@ -92,11 +87,6 @@ GLOBAL_LIST(topic_status_cache)
 	createRandomZlevel()
 
 	Master.Initialize(10, FALSE)
-
-#if UNIT_TEST
-	spawn(1)
-		initialize_unit_tests()
-#endif
 
 	spawn(3000)		//so we aren't adding to the round-start lag
 		if(config_legacy.ToRban)

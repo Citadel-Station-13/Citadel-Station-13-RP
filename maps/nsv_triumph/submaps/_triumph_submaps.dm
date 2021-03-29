@@ -44,7 +44,6 @@
 
 // Debris Fields
 #include "space/_debrisfield.dm"
-#include "space/_templates.dm"
 /datum/map_template/triumph_lateload/away_debrisfield
 	name = "Debris Field - Z1 Space"
 	desc = "A random debris field out in space."
@@ -213,26 +212,6 @@
 
 /datum/map_template/triumph_lateload/away_tradeport/on_map_loaded(z)
 	. = ..()
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-// Admin-use z-levels for loading whenever an admin feels like
-#if AWAY_MISSION_TEST
-#include "admin_use/spa.dmm"
-#endif
-
-#include "admin_use/fun.dm"
-/datum/map_template/triumph_lateload/fun/spa
-	name = "Space Spa"
-	desc = "A pleasant spa located in a spaceship."
-	mappath = 'admin_use/spa.dmm'
-
-	associated_map_datum = /datum/map_z_level/triumph_lateload/fun/spa
-
-/datum/map_z_level/triumph_lateload/fun/spa
-	name = "Spa"
-	flags = MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for Triumph lateload maps
