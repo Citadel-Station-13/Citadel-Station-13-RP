@@ -3,23 +3,17 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "ax" = (
 /obj/machinery/light/flamp,
 /turf/simulated/floor/airless,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "aC" = (
 /obj/machinery/sleep_console{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "aF" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -30,9 +24,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/airless,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "be" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -53,24 +45,18 @@
 "bT" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "bW" = (
 /obj/machinery/shower{
 	pixel_y = 18
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "cd" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/medical,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "cJ" = (
 /obj/structure/railing{
 	dir = 1
@@ -85,30 +71,22 @@
 	pixel_y = 23
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "dA" = (
 /obj/structure/dispenser/phoron,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "dN" = (
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "eq" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "ez" = (
 /obj/structure/lattice,
 /obj/structure/railing{
@@ -119,37 +97,27 @@
 "fl" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "fC" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	dir = 2
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "fD" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/phoron,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "fT" = (
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "fV" = (
 /obj/machinery/auto_cloner,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "fY" = (
 /obj/effect/overmap/visitable/sector/pirate_base,
 /turf/space,
@@ -160,49 +128,37 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "gm" = (
 /obj/item/clothing/head/helmet/space/vox/carapace,
 /obj/item/clothing/suit/space/vox/carapace,
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/deuterium,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "gw" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/recharge/captain,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "gQ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/hyper,
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "hc" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/phoron,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/burstlaser,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "hi" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "hB" = (
 /obj/machinery/light{
 	dir = 1
@@ -211,9 +167,7 @@
 /area/shuttle/pirate/general)
 "hT" = (
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "hX" = (
 /obj/machinery/shower{
 	pixel_y = 18
@@ -222,24 +176,18 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "ie" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/food/snacks/dionaroast,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "ig" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/gunsword,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "ip" = (
 /obj/structure/toilet{
 	pixel_y = 16
@@ -248,15 +196,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "iq" = (
 /obj/machinery/sleeper/survival_pod,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "iI" = (
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
@@ -292,16 +236,12 @@
 /obj/item/projectile/beam/medical_cell/omni3,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "kf" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "kg" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -319,9 +259,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "kU" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -342,9 +280,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/bonemed,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "lI" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/gunsword,
@@ -353,9 +289,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "lP" = (
 /obj/effect/step_trigger/teleporter/piratebase_loop/north,
 /turf/space,
@@ -363,30 +297,22 @@
 "mh" = (
 /obj/structure/dispenser/phoron,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "mz" = (
 /obj/structure/bed/padded,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "mE" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/captain,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "mK" = (
 /obj/structure/closet,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "na" = (
 /obj/structure/lattice,
 /turf/space,
@@ -397,16 +323,12 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "nx" = (
 /obj/structure/bed/padded,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "nB" = (
 /obj/structure/railing{
 	dir = 4
@@ -416,17 +338,13 @@
 /area/space)
 "ol" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "op" = (
 /obj/structure/sign/redcross{
 	pixel_x = 32
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "oy" = (
 /obj/structure/closet/secure_closet/guncabinet/rifle,
 /turf/simulated/floor/reinforced,
@@ -437,23 +355,17 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "pp" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "qL" = (
 /obj/structure/closet,
 /obj/random/mre,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "rA" = (
 /obj/machinery/computer/ship/engines,
 /turf/simulated/floor/reinforced,
@@ -465,9 +377,7 @@
 "rM" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "rQ" = (
 /obj/structure/railing{
 	dir = 4
@@ -479,26 +389,20 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/insiderepair,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "sb" = (
 /obj/structure/sign/atmos/phoron{
 	pixel_y = -32
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "tv" = (
 /obj/structure/closet/crate/secure,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "tJ" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
@@ -509,9 +413,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "tO" = (
 /obj/structure/railing{
 	dir = 4
@@ -523,9 +425,7 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "ul" = (
 /obj/structure/railing{
 	dir = 1
@@ -537,18 +437,14 @@
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/mhydrogen,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "uv" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "uH" = (
 /obj/machinery/light,
 /obj/machinery/recharger/wallcharger{
@@ -561,66 +457,48 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/toxin3,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "uJ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/burn3,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "uV" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/energy,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "uX" = (
 /obj/machinery/sleeper{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "vL" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "vW" = (
 /mob/living/simple_mob/mechanical/mecha/combat/marauder/mauler{
 	faction = "voxpirate"
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "vX" = (
 /obj/machinery/door/airlock/phoron,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "wb" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/corpse_mend,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "wF" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/gunsword,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "wN" = (
 /obj/structure/toilet{
 	pixel_y = 16
@@ -630,30 +508,22 @@
 	},
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "wT" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "wZ" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/uranium,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "xo" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/adv,
 /obj/machinery/cell_charger,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "xM" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -663,22 +533,16 @@
 "ye" = (
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "yq" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "yr" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/stabilize2,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "yw" = (
 /obj/structure/catwalk,
 /turf/space,
@@ -688,29 +552,21 @@
 /obj/item/projectile/beam/medical_cell/toxin3,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "yA" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "zT" = (
 /turf/simulated/floor/airless,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Ar" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/clotting,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Az" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
@@ -718,59 +574,43 @@
 	},
 /obj/random/mre,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "AH" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Bd" = (
 /obj/structure/catwalk,
 /turf/space,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Cq" = (
 /obj/structure/closet/crate/critter,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "CZ" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/gold,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Dl" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/medical,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Dz" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/material/sword/katana/durasteel,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "DE" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/slime,
 /obj/random/mre,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "DH" = (
 /obj/machinery/light{
 	dir = 4
@@ -783,9 +623,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "DP" = (
 /obj/effect/overmap/visitable/ship/landable/pirate,
 /obj/effect/shuttle_landmark/triumph/pirate{
@@ -796,9 +634,7 @@
 "DX" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/technician,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Ea" = (
 /obj/machinery/computer/shuttle_control/explore/pirate{
 	dir = 4
@@ -808,16 +644,12 @@
 "Em" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "EB" = (
 /obj/machinery/light,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "EW" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/osmium,
@@ -825,9 +657,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Fl" = (
 /turf/unsimulated/mineral/triumph,
 /area/space)
@@ -835,16 +665,12 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/hyper,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Gb" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "GX" = (
 /turf/space,
 /area/space)
@@ -870,17 +696,13 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/gun/fluff/gunsword,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Il" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Io" = (
 /obj/machinery/power/smes/buildable{
 	charge = 1.5e+007;
@@ -895,16 +717,12 @@
 "Iz" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "IJ" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/food/snacks/chickenfillet,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Jl" = (
 /obj/structure/cable/cyan{
 	d2 = 8;
@@ -920,40 +738,30 @@
 /obj/structure/closet,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "JA" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "JC" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/diamond,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "JF" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "JH" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "JT" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
@@ -963,16 +771,12 @@
 /obj/structure/table/steel_reinforced,
 /obj/random/mre,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Kw" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/stabilize2,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "KP" = (
 /obj/structure/lattice,
 /obj/structure/railing{
@@ -984,9 +788,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/random/cigarettes,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Lg" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/reinforced,
@@ -995,9 +797,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Ls" = (
 /obj/structure/lattice,
 /obj/structure/railing{
@@ -1011,18 +811,14 @@
 "LB" = (
 /obj/structure/closet/crate/secure,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "LM" = (
 /obj/structure/closet/crate/secure,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "LT" = (
 /obj/structure/cable/cyan{
 	d2 = 4;
@@ -1070,9 +866,7 @@
 "Ne" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Nz" = (
 /obj/machinery/light{
 	dir = 1
@@ -1096,9 +890,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/airless,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Of" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -1117,9 +909,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "OI" = (
 /obj/machinery/porta_turret/industrial{
 	faction = "voxpirate"
@@ -1142,23 +932,17 @@
 /obj/machinery/light,
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "PJ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/curseditem,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Qe" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/durasteel,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Qo" = (
 /obj/machinery/light,
 /obj/structure/bed/chair/shuttle{
@@ -1177,18 +961,14 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/brute3,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "QK" = (
 /obj/structure/sink{
 	pixel_y = 23
 	},
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "QV" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/piratebase/facility)
@@ -1196,15 +976,11 @@
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Rx" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "RQ" = (
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/general)
@@ -1245,9 +1021,7 @@
 "Uh" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder,
 /turf/simulated/floor/airless,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Um" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon,
@@ -1255,9 +1029,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Vr" = (
 /obj/structure/railing{
 	dir = 8
@@ -1279,22 +1051,16 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/random/firstaid,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "WS" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/pickaxe/diamonddrill,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Xd" = (
 /obj/structure/closet/crate/critter,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Xf" = (
 /obj/structure/railing,
 /turf/space,
@@ -1311,16 +1077,12 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Yv" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/drinkbottle,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "Yz" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -1331,9 +1093,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/projectile/beam/medical_cell/antirad,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "YV" = (
 /obj/structure/closet,
 /obj/random/mre,
@@ -1342,9 +1102,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility{
-	requires_power = 0
-	})
+/area/piratebase/facility)
 "YY" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
