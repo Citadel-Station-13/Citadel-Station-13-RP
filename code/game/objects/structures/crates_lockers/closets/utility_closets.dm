@@ -230,6 +230,15 @@
 	anchored = 1
 	density = 0
 	wall_mounted = 1
+	
+	starts_with = list(	
+		/obj/item/reagent_containers/hypospray/autoinjector,
+		/obj/item/storage/pill_bottle/paracetamol,
+		/obj/item/reagent_containers/pill/antitox,
+		/obj/item/reagent_containers/pill/antitox,
+		/obj/item/reagent_containers/pill/antitox,
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/ointment)
 
 /obj/structure/closet/medical_wall/update_icon()
 	if(!opened)
