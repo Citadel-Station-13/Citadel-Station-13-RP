@@ -139,6 +139,7 @@
 /mob/living/MouseDrop(var/atom/over_object)
 	if(usr != over_object && usr != src)		// either they or have to do this
 		return		// no
+	// the above is bad code btw but i can't be assed to refactor this until datum component/element holders.
 	var/mob/living/carbon/human/H = over_object
 	if(holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP)) //VOREStation Edit
 		if(!issmall(H) || !istype(src, /mob/living/carbon/human))
