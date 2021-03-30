@@ -50,3 +50,4 @@
 		if(!living_typecache[L.type])
 			continue
 		. += L
+	. -= src
