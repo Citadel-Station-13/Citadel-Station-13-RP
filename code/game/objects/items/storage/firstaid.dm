@@ -316,6 +316,13 @@
 	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
 	bottle_color = "white" // Citadel Change - Recoloring - There are a lot of these.
 	starts_with = list(/obj/item/reagent_containers/pill/spaceacillin = 7)
+	
+/obj/item/storage/pill_bottle/paracetamol
+	name = "bottle of Paracetamol pills"
+	desc = "Contains over the counter pain relieving pills. Only take 2 at a time."
+	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	bottle_color = "purple" // Citadel Change - Recoloring - There are a lot of these.
+	starts_with = list(/obj/item/reagent_containers/pill/paracetamol = 7)
 
 /obj/item/storage/pill_bottle/tramadol
 	name = "bottle of Tramadol pills"
