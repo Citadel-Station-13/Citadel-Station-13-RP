@@ -263,7 +263,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/headmaster)
 "aQ" = (
-/turf/simulated/mineral/triumph/rich,
+/turf/simulated/mineral/triumph,
 /area/awaymission/academy)
 "aR" = (
 /obj/structure/noticeboard,
@@ -399,7 +399,6 @@
 	id = "AcademyAuto"
 	},
 /turf/simulated/floor/plating{
-	 = on_state = "warnplate";
 	dir = 8
 	},
 /area/awaymission/academy/classrooms)
@@ -414,7 +413,6 @@
 	id = "AcademyAuto"
 	},
 /turf/simulated/floor/plating{
-	 = on_state = "warnplate";
 	dir = 4
 	},
 /area/awaymission/academy/classrooms)
@@ -426,7 +424,6 @@
 /area/awaymission/academy/classrooms)
 "by" = (
 /turf/simulated/floor/plating{
-	 = on_state = "warnplate";
 	dir = 8
 	},
 /area/awaymission/academy/classrooms)
@@ -435,7 +432,6 @@
 /area/awaymission/academy/classrooms)
 "bA" = (
 /turf/simulated/floor/plating{
-	 = on_state = "warnplate";
 	dir = 4
 	},
 /area/awaymission/academy/classrooms)
@@ -451,18 +447,14 @@
 /area/awaymission/academy/classrooms)
 "bD" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall";
 	dir = 6
 	},
 /area/awaymission/academy/classrooms)
 "bE" = (
-/turf/simulated/shuttle/wall{
-	 = on_state = "swall_straight"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/academy/classrooms)
 "bF" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall";
 	dir = 10
 	},
 /area/awaymission/academy/classrooms)
@@ -483,7 +475,6 @@
 	dir = 8
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/headmaster)
@@ -502,7 +493,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/headmaster)
@@ -522,7 +512,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/headmaster)
@@ -586,7 +575,6 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/headmaster)
@@ -630,7 +618,6 @@
 /area/awaymission/academy/headmaster)
 "cj" = (
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/headmaster)
@@ -645,7 +632,6 @@
 "cl" = (
 /obj/machinery/computer/area_atmos/area,
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/headmaster)
@@ -675,7 +661,6 @@
 /area/awaymission/academy/classrooms)
 "cq" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall";
 	dir = 1
 	},
 /area/awaymission/academy/classrooms)
@@ -771,13 +756,11 @@
 /area/awaymission/academy/classrooms)
 "cK" = (
 /turf/simulated/floor/plating{
-	 = on_state = "warnplate";
 	dir = 10
 	},
 /area/awaymission/academy/classrooms)
 "cL" = (
 /turf/simulated/floor/plating{
-	 = on_state = "warnplate";
 	dir = 6
 	},
 /area/awaymission/academy/classrooms)
@@ -787,7 +770,6 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/headmaster)
@@ -801,7 +783,6 @@
 /obj/structure/closet/crate,
 /obj/item/tool/crowbar/red,
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/headmaster)
@@ -1149,14 +1130,11 @@
 /area/awaymission/academy/classrooms)
 "ek" = (
 /turf/simulated/floor{
-	 = on_state = "green";
 	dir = 10
 	},
 /area/awaymission/academy/classrooms)
 "el" = (
-/turf/simulated/floor{
-	 = on_state = "green"
-	},
+/turf/simulated/floor,
 /area/awaymission/academy/classrooms)
 "em" = (
 /obj/machinery/vending/hydroseeds{
@@ -1204,7 +1182,6 @@
 /area/awaymission/academy/classrooms)
 "ew" = (
 /turf/simulated/floor/plating{
-	 = on_state = "warnplate";
 	dir = 9
 	},
 /area/awaymission/academy)
@@ -1247,7 +1224,6 @@
 /area/awaymission/academy/classrooms)
 "eG" = (
 /turf/simulated/floor/plating{
-	 = on_state = "warnplate";
 	dir = 8
 	},
 /area/awaymission/academy)
@@ -1275,7 +1251,6 @@
 /area/awaymission/academy/classrooms)
 "eX" = (
 /turf/simulated/floor/plating{
-	 = on_state = "warnplate";
 	dir = 10
 	},
 /area/awaymission/academy)
@@ -1487,9 +1462,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/academy/classrooms)
 "fN" = (
-/turf/simulated/floor{
-	 = on_state = "vault"
-	},
+/turf/simulated/floor,
 /area/awaymission/academy/classrooms)
 "fO" = (
 /obj/structure/cable{
@@ -1497,15 +1470,11 @@
 	icon_state = "0-2";
 	pixel_y = 1
 	},
-/turf/simulated/floor{
-	 = on_state = "vault"
-	},
+/turf/simulated/floor,
 /area/awaymission/academy/classrooms)
 "fP" = (
 /obj/structure/bed/chair,
-/turf/simulated/floor{
-	 = on_state = "vault"
-	},
+/turf/simulated/floor,
 /area/awaymission/academy/classrooms)
 "fR" = (
 /obj/structure/table/reinforced,
@@ -1584,7 +1553,6 @@
 /area/awaymission/academy/academyaft)
 "gg" = (
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1597,7 +1565,6 @@
 /obj/machinery/recharger,
 /obj/structure/table/reinforced,
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1605,14 +1572,12 @@
 /obj/structure/table/reinforced,
 /obj/item/pen/red,
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
 "gj" = (
 /obj/structure/filingcabinet/filingcabinet,
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1647,7 +1612,6 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1665,7 +1629,6 @@
 	dir = 8
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1708,7 +1671,6 @@
 	name = "Summoning Midterm Exam"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1720,14 +1682,12 @@
 	name = "Summoning Midterm Exam"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
 "gD" = (
 /obj/structure/table/standard,
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1754,7 +1714,6 @@
 "gI" = (
 /obj/item/stool/padded,
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1800,7 +1759,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1811,7 +1769,6 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1823,7 +1780,6 @@
 	name = "Summoning Midterm Exam"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
 	dir = 5
 	},
 /area/awaymission/academy/classrooms)
@@ -1945,14 +1901,12 @@
 /area/awaymission/academy/academyaft)
 "hj" = (
 /turf/simulated/floor{
-	 = on_state = "green";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
 "hk" = (
 /obj/item/tool/crowbar/red,
 /turf/simulated/floor{
-	 = on_state = "green";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2066,7 +2020,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "green";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2104,7 +2057,6 @@
 	},
 /obj/item/caution,
 /turf/simulated/floor{
-	 = on_state = "green";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2514,7 +2466,6 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless{
-	 = on_state = "white";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2522,14 +2473,11 @@
 /obj/structure/table/standard,
 /obj/item/soulstone,
 /turf/simulated/floor/airless{
-	 = on_state = "whitered";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
 "iQ" = (
-/obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l"
-	},
+/obj/structure/shuttle/engine/propulsion,
 /turf/space,
 /area/awaymission/academy/academyaft)
 "iR" = (
@@ -2537,9 +2485,7 @@
 /turf/space,
 /area/awaymission/academy/academyaft)
 "iS" = (
-/obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r"
-	},
+/obj/structure/shuttle/engine/propulsion,
 /turf/space,
 /area/awaymission/academy/academyaft)
 "iT" = (
@@ -2569,7 +2515,6 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless{
-	 = on_state = "white";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2580,7 +2525,6 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless{
-	 = on_state = "whitered";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2626,7 +2570,6 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless{
-	 = on_state = "white";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2636,7 +2579,6 @@
 	name = "The preserved brain of Harry Houdini"
 	},
 /turf/simulated/floor/airless{
-	 = on_state = "whitered";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2653,7 +2595,6 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless{
-	 = on_state = "white";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2677,7 +2618,6 @@
 /area/awaymission/academy/academyaft)
 "jp" = (
 /turf/simulated/floor/airless{
-	 = on_state = "white";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
@@ -2685,7 +2625,6 @@
 /obj/structure/table/standard,
 /obj/item/batterer,
 /turf/simulated/floor/airless{
-	 = on_state = "whitered";
 	dir = 4
 	},
 /area/awaymission/academy/academyaft)
