@@ -325,9 +325,10 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/load_map_templates()
 	for(var/T in subtypesof(/datum/map_template))
 		var/datum/map_template/template = T
-		if(!(initial(template.mappath))) // If it's missing the actual path its probably a base type or being used for inheritence.
+		template = new T
+		if(!template.mappath)
+			qdel(template)
 			continue
-		template = new T()
 		map_templates[template.name] = template
 	return TRUE
 
