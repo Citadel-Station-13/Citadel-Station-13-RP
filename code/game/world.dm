@@ -197,6 +197,27 @@ GLOBAL_LIST(topic_status_cache)
 	handler = new handler()
 	return handler.TryRun(input)
 
+/world/proc/FinishTestRun()
+	set waitfor = FALSE
+	var/list/fail_reasons
+	if(GLOB)
+		if(GLOB.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
+#ifdef UNIT_TESTS
+		if(GLOB.failed_any_test)
+			LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
+		if(!GLOB.log_directory)
+			LAZYADD(fail_reasons, "Missing GLOB.log_directory!")
+	else
+		fail_reasons = list("Missing GLOB!")
+	if(!fail_reasons)
+		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
+	else
+		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
+	sleep(0)	//yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src)	//shut it down
+
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
@@ -213,11 +234,9 @@ GLOBAL_LIST(topic_status_cache)
 
 	TgsReboot()
 
-/*
 	if(TEST_RUN_PARAMETER in params)
 		FinishTestRun()
 		return
-*/
 
 /*
 	if(TgsAvailable())
