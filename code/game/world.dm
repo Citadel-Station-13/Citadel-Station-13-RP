@@ -85,11 +85,12 @@ GLOBAL_LIST(topic_status_cache)
 
 	Master.Initialize(10, FALSE)
 
-	spawn(3000)		//so we aren't adding to the round-start lag
-		if(config_legacy.ToRban)
-			ToRban_autoupdate()
+	#ifdef UNIT_TESTS
+	HandleTestRun()
+	#endif
 
-	return
+	if(config_legacy.ToRban)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/ToRban_autoupdate), 5 MINUTES)
 
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)

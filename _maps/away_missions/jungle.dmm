@@ -492,7 +492,7 @@
 	},
 /area/jungle/temple_five)
 "cF" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/floor/water,
 /area/jungle)
 "cG" = (
 /turf/simulated/floor/outdoors/grass/forest,
@@ -543,21 +543,18 @@
 /area/jungle)
 "cV" = (
 /obj/machinery/gateway{
-	 = on_state = "off";
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
 /area/jungle)
 "cW" = (
 /obj/machinery/gateway{
-	 = on_state = "off";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/jungle)
 "cX" = (
 /obj/machinery/gateway{
-	 = on_state = "off";
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -572,7 +569,6 @@
 /area/jungle)
 "db" = (
 /obj/machinery/gateway{
-	 = on_state = "off";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -583,7 +579,6 @@
 /area/jungle)
 "dd" = (
 /obj/machinery/gateway{
-	 = on_state = "off";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -598,7 +593,6 @@
 /area/jungle)
 "dg" = (
 /obj/machinery/gateway{
-	 = on_state = "off";
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -609,7 +603,6 @@
 /area/jungle)
 "di" = (
 /obj/machinery/gateway{
-	 = on_state = "off";
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,

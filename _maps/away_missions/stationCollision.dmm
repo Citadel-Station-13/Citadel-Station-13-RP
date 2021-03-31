@@ -156,7 +156,6 @@
 /area/awaymission/syndishuttle)
 "aP" = (
 /obj/structure/shuttle/engine/heater{
-	on_state = "heater";
 	dir = 8
 	},
 /turf/simulated/floor/airless,
@@ -248,7 +247,6 @@
 /area/awaymission/syndishuttle)
 "bp" = (
 /obj/structure/shuttle/engine/propulsion{
-	on_state = "propulsion";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating,
@@ -259,7 +257,6 @@
 /area/awaymission/syndishuttle)
 "br" = (
 /obj/structure/shuttle/engine/heater{
-	on_state = "heater";
 	dir = 8
 	},
 /turf/simulated/shuttle/plating,
@@ -389,7 +386,6 @@
 /area/awaymission/syndishuttle)
 "bW" = (
 /obj/structure/shuttle/engine/heater{
-	on_state = "heater";
 	dir = 1
 	},
 /turf/simulated/shuttle/plating,
@@ -460,9 +456,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/mob/living/simple_mob/mechanical/hivebot{
-	opensdoors = 0
-	},
+/mob/living/simple_mob/mechanical/hivebot,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "co" = (
@@ -520,14 +514,12 @@
 /area/awaymission/research)
 "cy" = (
 /obj/structure/shuttle/engine/propulsion{
-	on_state = "propulsion";
 	dir = 4
 	},
 /turf/space,
 /area/awaymission/research)
 "cz" = (
 /obj/structure/shuttle/engine/heater{
-	on_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced,
@@ -580,7 +572,6 @@
 /area/awaymission/research)
 "cK" = (
 /obj/structure/shuttle/engine/heater{
-	on_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -683,7 +674,6 @@
 /area/awaymission/northblock)
 "db" = (
 /obj/machinery/shower{
-	on_state = "shower";
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted,
@@ -747,7 +737,6 @@
 /area/awaymission/research)
 "dk" = (
 /obj/machinery/button/remote/airlock{
-	id = "Narsiedoor";
 	name = "Blast Door Control";
 	pixel_x = -28
 	},
@@ -1014,9 +1003,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "eo" = (
-/obj/machinery/atmospherics/unary/freezer{
-	current_temperature = 80
-	},
+/obj/machinery/atmospherics/unary/freezer,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "ep" = (
@@ -1129,7 +1116,6 @@
 /area/awaymission/research)
 "eK" = (
 /obj/structure/shuttle/engine/heater{
-	on_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -1215,7 +1201,6 @@
 	icon_state = "in";
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
-	on = 1;
 	pressure_checks = 2;
 	pump_direction = 0
 	},
@@ -1826,7 +1811,6 @@
 "gX" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor{
-	on_state = "warningcorner";
 	dir = 1
 	},
 /area/awaymission/arrivalblock)
@@ -2205,7 +2189,6 @@
 "if" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Glass Airlock";
-	req_access_txt = "0"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -2621,7 +2604,6 @@
 /obj/machinery/door/airlock/glass_medical{
 	id_tag = null;
 	name = "Glass Airlock";
-	req_access_txt = "0"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
@@ -3051,7 +3033,6 @@
 	pixel_y = -2
 	},
 /turf/simulated/floor{
-	on_state = "warningcorner";
 	dir = 8
 	},
 /area/awaymission/gateroom)
@@ -3076,7 +3057,6 @@
 /obj/structure/table/standard,
 /obj/item/camera,
 /turf/simulated/floor{
-	on_state = "warningcorner";
 	dir = 4
 	},
 /area/awaymission/gateroom)
@@ -3094,7 +3074,6 @@
 /area/awaymission/southblock)
 "lc" = (
 /turf/simulated/floor{
-	on_state = "whitehall";
 	dir = 8
 	},
 /area/awaymission/southblock)
@@ -3175,7 +3154,6 @@
 	dir = 8
 	},
 /turf/simulated/floor{
-	on_state = "whitehall";
 	dir = 8
 	},
 /area/awaymission/southblock)
