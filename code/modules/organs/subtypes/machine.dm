@@ -43,8 +43,7 @@
 	if(istype(M))
 		return
 	stored_mmi = new brain_type(src)
-	sleep(-1)
-	update_from_mmi()
+	addtimer(CALLBACK(src, .proc/update_from_mmi), 0)
 
 /obj/item/organ/internal/mmi_holder/proc/update_from_mmi()
 
