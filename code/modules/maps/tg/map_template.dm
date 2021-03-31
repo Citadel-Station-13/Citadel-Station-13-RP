@@ -1,15 +1,3 @@
-var/list/global/map_templates = list()
-
-// Called when the world starts, in world.dm
-/proc/load_map_templates()
-	for(var/T in subtypesof(/datum/map_template))
-		var/datum/map_template/template = T
-		if(!(initial(template.mappath)))	// If it's missing the actual path its probably a base type or being used for inheritence.
-			continue
-		template = new T()
-		map_templates[template.name] = template
-	return TRUE
-
 /datum/map_template
 	var/name = "Default Template Name"
 	var/desc = "Some text should go here. Maybe."
@@ -193,8 +181,8 @@ var/list/global/map_templates = list()
 	var/list/priority_submaps = list()	// Submaps that will always be placed.
 
 	// Lets go find some submaps to make.
-	for(var/map in map_templates)
-		var/datum/map_template/MT = map_templates[map]
+	for(var/map in SSmapping.map_templates)
+		var/datum/map_template/MT = SSmapping.map_templates[map]
 		if(!MT.allow_duplicates && MT.loaded > 0)	// This probably won't be an issue but we might as well.
 			continue
 		if(!istype(MT, desired_map_template_type))	// Not the type wanted.
