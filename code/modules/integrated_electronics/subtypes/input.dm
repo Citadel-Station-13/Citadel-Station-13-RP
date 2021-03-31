@@ -570,7 +570,7 @@
 		)
 
 /obj/item/integrated_circuit/input/microphone/sign/Initialize(mapload)
-	. = ..()
+	..()
 	for(var/lang in readable_langs)
 		var/datum/language/newlang = GLOB.all_languages[lang]
 		my_langs |= newlang

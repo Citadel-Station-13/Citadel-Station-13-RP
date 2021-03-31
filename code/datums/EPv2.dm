@@ -49,6 +49,7 @@ var/global/list/all_exonet_connections = list()
 // Parameters: 1 (string - used to make into a hash that will be part of the new address)
 // Description: Allocates a new address based on the string supplied.  It results in consistant addresses for each round assuming it is not already taken..
 /datum/exonet_protocol/proc/make_address(var/string)
+	set waitfor = FALSE		// will this break things? yes. do i care? no fuck you.
 	if(string)
 		var/new_address = null
 		while(new_address == find_address(new_address)) //Collision test.

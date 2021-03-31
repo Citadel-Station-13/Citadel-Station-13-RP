@@ -3,7 +3,7 @@
 /turf/space,
 /area)
 "ab" = (
-/turf/simulated/mineral/triumph/rich,
+/turf/simulated/mineral/triumph,
 /area/awaymission)
 "ac" = (
 /turf/simulated/floor/airless,
@@ -533,9 +533,7 @@
 	},
 /area/awaymission/BMPship1)
 "bO" = (
-/turf/simulated/floor{
-	 = on_state = "wood-broken"
-	},
+/turf/simulated/floor,
 /area/awaymission/BMPship3)
 "bP" = (
 /turf/simulated/floor/tiled/dark,
@@ -857,13 +855,13 @@
 /area/awaymission/BMPship1)
 "cV" = (
 /turf/simulated/floor{
-	 = on_state = "carpet15-13";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
 "cW" = (
 /turf/simulated/floor{
-	 = on_state = "carpet15-7";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -874,7 +872,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet15-7";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -933,13 +931,13 @@
 /area/awaymission/BMPship1)
 "dq" = (
 /turf/simulated/floor{
-	 = on_state = "carpet15-14";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
 "dr" = (
 /turf/simulated/floor{
-	 = on_state = "carpet15-11";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -950,7 +948,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet15-11";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1048,26 +1046,26 @@
 	name = "Captain's log entry"
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet6-0";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
 "dK" = (
 /obj/structure/table/standard,
 /turf/simulated/floor{
-	 = on_state = "carpet14-2";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
 "dL" = (
 /turf/simulated/floor{
-	 = on_state = "carpet14-8";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
 "dM" = (
 /turf/simulated/floor{
-	 = on_state = "carpet10-0";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1223,7 +1221,7 @@
 /area/awaymission/BMPship1)
 "ef" = (
 /turf/simulated/floor{
-	 = on_state = "carpet15-15";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1231,25 +1229,25 @@
 /obj/structure/table/standard,
 /obj/machinery/recharger,
 /turf/simulated/floor{
-	 = on_state = "carpet5-0";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
 "eh" = (
 /turf/simulated/floor{
-	 = on_state = "carpet13-1";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
 "ei" = (
 /turf/simulated/floor{
-	 = on_state = "carpet13-4";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
 "ej" = (
 /turf/simulated/floor{
-	 = on_state = "carpet9-0";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1540,7 +1538,7 @@
 "eX" = (
 /obj/structure/table/standard,
 /turf/simulated/floor{
-	 = on_state = "carpet7-3";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1549,7 +1547,7 @@
 	dir = 8
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet11-12";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1560,7 +1558,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet15-15";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1662,7 +1660,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet15-7";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1673,7 +1671,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet15-13";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1684,7 +1682,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet15-7";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1695,7 +1693,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet15-15";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1792,7 +1790,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "carpet15-11";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
@@ -1882,7 +1880,7 @@
 "fY" = (
 /obj/structure/closet,
 /turf/simulated/floor{
-	 = on_state = "carpet15-15";
+
 	dir = 4
 	},
 /area/awaymission/BMPship3)
