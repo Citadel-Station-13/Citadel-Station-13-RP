@@ -76,7 +76,7 @@
 /turf/simulated/floor/dungeon,
 /area/awaymission/snow_outpost/outside)
 "ar" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/floor/water,
 /area/awaymission/snow_outpost/outside)
 "as" = (
 /turf/simulated/wall/r_wall,
@@ -2517,7 +2517,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside)
 "iN" = (
-/turf/simulated/floor/water/deep,
+/turf/simulated/floor/water,
 /area/awaymission/snow_outpost/restricted)
 "iO" = (
 /obj/mecha/combat/phazon/equipped,
