@@ -1,4 +1,0 @@
-author: "Hatterhat"
-delete-after: True
-changes: 
-  - rscadd: "Mining-module equipped stationbound synthetics now get a disruptor blade when given a scrambled module. What's a disruptor blade? Who knows."
