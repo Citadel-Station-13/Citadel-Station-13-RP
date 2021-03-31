@@ -109,7 +109,6 @@
 	anchored = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /area/awaymission/challenge/main)
@@ -137,7 +136,6 @@
 	anchored = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /area/awaymission/challenge/main)
@@ -156,7 +154,6 @@
 	dir = 4;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /area/awaymission/challenge/main)
@@ -178,7 +175,6 @@
 	dir = 8;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /area/awaymission/challenge/main)
@@ -244,7 +240,6 @@
 	dir = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /obj/structure/window/reinforced{
@@ -273,7 +268,6 @@
 	dir = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /obj/structure/window/reinforced{
@@ -295,7 +289,6 @@
 	dir = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /obj/machinery/light,
@@ -312,7 +305,6 @@
 	dir = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /turf/simulated/floor/plating{
@@ -326,7 +318,6 @@
 	anchored = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /obj/structure/window/reinforced{
@@ -388,7 +379,6 @@
 	dir = 8;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /obj/structure/window/reinforced{
@@ -417,7 +407,6 @@
 	dir = 8;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /area/awaymission/challenge/main)
@@ -432,7 +421,6 @@
 	dir = 4;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /area/awaymission/challenge/main)
@@ -469,7 +457,6 @@
 	dir = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /obj/structure/window/reinforced{
@@ -484,7 +471,6 @@
 	dir = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /area/awaymission/challenge/main)
@@ -496,7 +482,6 @@
 	dir = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /obj/structure/window/reinforced{
@@ -511,7 +496,6 @@
 	dir = 1;
 	locked = 1;
 	name = "Energy Cannon";
-	req_access_txt = "100";
 	state = 2
 	},
 /obj/structure/window/reinforced{
@@ -606,7 +590,6 @@
 "cf" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
-	req_access_txt = "109"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)
@@ -694,7 +677,6 @@
 "cx" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Security";
-	req_access_txt = "109"
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -719,7 +701,6 @@
 "cB" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrator";
-	req_access_txt = "109"
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -835,7 +816,6 @@
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
 	icon_state = "pdoor1";
-	id = "challenge";
 	name = "Gateway Shutters"
 	},
 /turf/simulated/floor/bluegrid,
@@ -870,7 +850,6 @@
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
 	icon_state = "pdoor1";
-	id = "challenge";
 	name = "Gateway Shutters"
 	},
 /turf/simulated/floor/bluegrid,
@@ -878,7 +857,6 @@
 "cV" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	icon_state = "pdoor1";
-	id = "challenge";
 	name = "Gateway Shutters"
 	},
 /turf/simulated/floor/bluegrid,
@@ -938,7 +916,6 @@
 /obj/structure/window/reinforced,
 /obj/machinery/door/airlock/voidcraft/vertical{
 	icon_state = "pdoor1";
-	id = "challenge";
 	name = "Gateway Shutters"
 	},
 /turf/simulated/floor/bluegrid,
@@ -951,7 +928,6 @@
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
 	icon_state = "pdoor1";
-	id = "challenge";
 	name = "Gateway Shutters"
 	},
 /turf/simulated/floor/airless,
@@ -1023,7 +999,6 @@
 "dm" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Gateway Access";
-	req_access_txt = "109"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)

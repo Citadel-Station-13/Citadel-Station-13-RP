@@ -1143,7 +1143,6 @@
 /turf/simulated/mineral{
 	icon_state = "sandstone0";
 	mineral = "sandstone";
-	walltype = "sandstone"
 	},
 /area/awaymission/wwmines)
 "fo" = (

@@ -3458,7 +3458,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "jv" = (
 /obj/structure/window/reinforced{
@@ -3468,7 +3468,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "jw" = (
 /obj/structure/window/reinforced{
@@ -3478,7 +3478,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "jx" = (
 /obj/structure/window/reinforced{
@@ -3487,7 +3487,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "jy" = (
 /obj/machinery/door/airlock/silver{
@@ -3555,14 +3555,14 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "jK" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "jL" = (
 /obj/structure/window/reinforced{
@@ -3570,7 +3570,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "jM" = (
 /turf/simulated/floor/tiled/white,
@@ -3651,7 +3651,7 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "jX" = (
 /obj/effect/floor_decal/corner/green{
@@ -3664,7 +3664,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "jZ" = (
 /obj/structure/window/reinforced{
@@ -3674,7 +3674,7 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "ka" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -3814,7 +3814,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "ky" = (
 /obj/effect/floor_decal/corner/green/full{
@@ -3826,7 +3826,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -3834,7 +3834,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -3842,7 +3842,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -3977,7 +3977,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "la" = (
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -3986,7 +3986,7 @@
 	dir = 5
 	},
 /obj/item/coin/gold,
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -4110,7 +4110,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -4131,7 +4131,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -4169,13 +4169,13 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
 "lG" = (
 /obj/item/coin/silver,
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -4183,7 +4183,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -4281,7 +4281,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "lY" = (
 /obj/effect/floor_decal/corner/green/full{
@@ -4291,7 +4291,7 @@
 /area/awaymission/zoo)
 "lZ" = (
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/beach/water{
+/turf/simulated/floor/outdoors/water{
 	icon_state = "seadeep"
 	},
 /area/awaymission/zoo)
@@ -4598,11 +4598,11 @@
 	},
 /area/awaymission/zoo)
 "mJ" = (
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "mK" = (
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "mL" = (
 /obj/structure/window/phoronreinforced{
@@ -4805,7 +4805,7 @@
 /area/awaymission/zoo)
 "nl" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "nm" = (
 /turf/simulated/floor/holofloor/grass{
@@ -4936,7 +4936,7 @@
 	},
 /area/awaymission/zoo)
 "nG" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	dir = 1;
 	icon_state = "beachcorner"
 	},
@@ -4953,7 +4953,7 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/awaymission/zoo)
 "nK" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	icon_state = "beachcorner"
 	},
 /area/awaymission/zoo)
@@ -5143,13 +5143,13 @@
 	},
 /area/awaymission/zoo)
 "og" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	dir = 10;
 	icon_state = "beach"
 	},
 /area/awaymission/zoo)
 "oh" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	dir = 6;
 	icon_state = "beach"
 	},
@@ -5230,10 +5230,10 @@
 	},
 /area/awaymission/zoo)
 "ot" = (
-/turf/simulated/floor/holofloor/beach/water,
+/turf/simulated/floor/holofloor/outdoors/water,
 /area/awaymission/zoo)
 "ou" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	icon_state = "beach"
 	},
 /area/awaymission/zoo)
@@ -5512,7 +5512,7 @@
 /mob/living/carbon/human/sharkm{
 	faction = "zoo"
 	},
-/turf/simulated/floor/holofloor/beach/water,
+/turf/simulated/floor/holofloor/outdoors/water,
 /area/awaymission/zoo)
 "ph" = (
 /mob/living/simple_mob/animal/passive/tindalos{
@@ -5849,19 +5849,19 @@
 	},
 /area/awaymission/zoo)
 "qe" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	dir = 9;
 	icon_state = "beach"
 	},
 /area/awaymission/zoo)
 "qf" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	dir = 1;
 	icon_state = "beach"
 	},
 /area/awaymission/zoo)
 "qg" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	dir = 5;
 	icon_state = "beach"
 	},
@@ -5919,13 +5919,13 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "qn" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	dir = 4;
 	icon_state = "beachcorner"
 	},
 /area/awaymission/zoo)
 "qo" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	dir = 8;
 	icon_state = "beachcorner"
 	},
@@ -6697,19 +6697,19 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "sj" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "sk" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "sl" = (
 /mob/living/simple_mob/animal/space/carp{
@@ -6832,13 +6832,13 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "sw" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "sx" = (
 /obj/structure/window/reinforced{
@@ -6985,7 +6985,7 @@
 /area/awaymission/zoo)
 "sK" = (
 /obj/effect/landmark/away,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "sL" = (
 /mob/living/simple_mob/animal/space/bear{
@@ -7059,17 +7059,17 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "sU" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "sV" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "sW" = (
 /obj/effect/floor_decal/spline{
@@ -7490,7 +7490,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tZ" = (
-/mob/living/simple_mob/tomato{
+/mob/living/simple_mob/hostile/tomato{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -7540,7 +7540,7 @@
 /mob/living/simple_mob/animal/space/goose{
 	faction = "zoo"
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "uf" = (
 /obj/structure/window/reinforced{
@@ -7881,7 +7881,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "uW" = (
-/turf/simulated/floor/holofloor/beach/water{
+/turf/simulated/floor/holofloor/outdoors/water{
 	dir = 8;
 	icon_state = "beach"
 	},
@@ -8024,7 +8024,7 @@
 	icon_living = "evilcrab";
 	icon_state = "evilcrab"
 	},
-/turf/simulated/floor/holofloor/beach/water,
+/turf/simulated/floor/holofloor/outdoors/water,
 /area/awaymission/zoo)
 "vm" = (
 /obj/item/stack/tile/grass,
@@ -8125,7 +8125,7 @@
 /mob/living/simple_mob/animal/space/bear/polar{
 	faction = "zoo"
 	},
-/turf/simulated/floor/beach/water,
+/turf/simulated/floor/outdoors/water,
 /area/awaymission/zoo)
 "vA" = (
 /obj/effect/landmark/away,
