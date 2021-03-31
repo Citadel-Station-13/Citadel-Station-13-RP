@@ -234,9 +234,10 @@ GLOBAL_LIST(topic_status_cache)
 
 	TgsReboot()
 
-	if(TEST_RUN_PARAMETER in params)
-		FinishTestRun()
-		return
+	#ifdef UNIT_TESTS
+	FinishTestRun()
+	return
+	#endif
 
 /*
 	if(TgsAvailable())

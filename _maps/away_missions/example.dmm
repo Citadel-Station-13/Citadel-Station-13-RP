@@ -642,7 +642,6 @@
 	name = "awaystart"
 	},
 /obj/machinery/light_construct/small{
-	 = on_state = "bulb-construct-stage1";
 	dir = 8
 	},
 /turf/simulated/floor,
