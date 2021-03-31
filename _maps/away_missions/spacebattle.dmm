@@ -10,21 +10,21 @@
 /area/awaymission/spacebattle/syndicate2)
 "ad" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r";
+
 	dir = 1
 	},
 /turf/space,
 /area/awaymission/spacebattle/syndicate2)
 "ae" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion";
+
 	dir = 1
 	},
 /turf/space,
 /area/awaymission/spacebattle/syndicate2)
 "af" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l";
+
 	dir = 1
 	},
 /turf/space,
@@ -34,7 +34,7 @@
 /area/awaymission/spacebattle/syndicate2)
 "ai" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -95,21 +95,21 @@
 /area/awaymission/spacebattle/syndicate3)
 "aw" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r";
+
 	dir = 1
 	},
 /turf/space,
 /area/awaymission/spacebattle/syndicate3)
 "ax" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion";
+
 	dir = 1
 	},
 /turf/space,
 /area/awaymission/spacebattle/syndicate3)
 "ay" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l";
+
 	dir = 1
 	},
 /turf/space,
@@ -124,7 +124,7 @@
 /area/awaymission/spacebattle/syndicate3)
 "aC" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -170,21 +170,21 @@
 /area/awaymission/spacebattle/syndicate1)
 "aQ" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r";
+
 	dir = 1
 	},
 /turf/space,
 /area/awaymission/spacebattle/syndicate1)
 "aR" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion";
+
 	dir = 1
 	},
 /turf/space,
 /area/awaymission/spacebattle/syndicate1)
 "aS" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l";
+
 	dir = 1
 	},
 /turf/space,
@@ -202,7 +202,7 @@
 /area/awaymission/spacebattle/syndicate1)
 "aX" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -210,7 +210,7 @@
 "aY" = (
 /obj/structure/window/reinforced,
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -220,7 +220,7 @@
 "aZ" = (
 /obj/structure/window/reinforced,
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -364,7 +364,7 @@
 /area/awaymission/spacebattle/cruiser)
 "bK" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r";
+
 	dir = 1
 	},
 /turf/space,
@@ -375,7 +375,7 @@
 /area/awaymission/spacebattle/cruiser)
 "bM" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l";
+
 	dir = 1
 	},
 /turf/space,
@@ -386,7 +386,7 @@
 "bP" = (
 /obj/structure/window/reinforced,
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -396,7 +396,7 @@
 "bR" = (
 /obj/structure/window/reinforced,
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -404,54 +404,46 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "bU" = (
-/turf/simulated/shuttle/wall{
-	 = on_state = "swall_s"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/spacebattle/cruiser)
 "bV" = (
-/turf/simulated/shuttle/wall{
-	 = on_state = "swall_straight"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/spacebattle/cruiser)
 "bW" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_t";
+
 	dir = 1
 	},
 /area/awaymission/spacebattle/cruiser)
 "bX" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_straight";
+
 	dir = 4
 	},
 /area/awaymission/spacebattle/cruiser)
 "bZ" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "burst_l";
+
 	dir = 4
 	},
 /turf/space,
 /area/awaymission/spacebattle/cruiser)
 "ca" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+
 	dir = 8
 	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor{
-	 = on_state = "engine"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cb" = (
 /obj/machinery/computer/power_monitor,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cc" = (
-/turf/simulated/floor{
-	 = on_state = "damaged5"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cd" = (
 /obj/machinery/computer/pod{
@@ -469,13 +461,13 @@
 /area/awaymission/spacebattle/cruiser)
 "cg" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_straight";
+
 	dir = 1
 	},
 /area/awaymission/spacebattle/cruiser)
 "ch" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion";
+
 	dir = 4
 	},
 /turf/space,
@@ -492,19 +484,13 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "co" = (
-/turf/simulated/floor{
-	 = on_state = "damaged4"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cp" = (
-/turf/simulated/floor{
-	 = on_state = "damaged3"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cr" = (
-/turf/simulated/floor{
-	 = on_state = "damaged1"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cs" = (
 /obj/effect/landmark/corpse/engineer{
@@ -520,19 +506,19 @@
 /area/awaymission/spacebattle/cruiser)
 "cu" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_t";
+
 	dir = 8
 	},
 /area/awaymission/spacebattle/cruiser)
 "cv" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall";
+
 	dir = 10
 	},
 /area/awaymission/spacebattle/cruiser)
 "cw" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall";
+
 	dir = 6
 	},
 /area/awaymission/spacebattle/cruiser)
@@ -546,9 +532,7 @@
 "cy" = (
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
-/turf/simulated/floor{
-	 = on_state = "damaged2"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cz" = (
 /obj/fiftyspawner/steel,
@@ -619,9 +603,7 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cP" = (
-/turf/simulated/floor{
-	 = on_state = "damaged2"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cQ" = (
 /obj/effect/landmark{
@@ -635,7 +617,7 @@
 /area/awaymission/spacebattle/cruiser)
 "cT" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall";
+
 	dir = 5
 	},
 /area/awaymission/spacebattle/cruiser)
@@ -705,7 +687,7 @@
 /area/awaymission/spacebattle/cruiser)
 "dh" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r";
+
 	dir = 4
 	},
 /turf/space,
@@ -743,25 +725,21 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "dq" = (
-/turf/simulated/shuttle/wall{
-	 = on_state = "swall_t"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/spacebattle/cruiser)
 "dw" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_straight";
+
 	dir = 4
 	},
 /area/awaymission/spacebattle/cruiser)
 "dx" = (
-/turf/simulated/shuttle/wall{
-	 = on_state = "swall15"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/spacebattle/cruiser)
 "dy" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_t";
+
 	dir = 4
 	},
 /area/awaymission/spacebattle/cruiser)
@@ -879,9 +857,7 @@
 	mobname = "Clay Dawson";
 	name = "Clay Dawson"
 	},
-/turf/simulated/floor{
-	 = on_state = "damaged5"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "ee" = (
 /obj/structure/grille,
@@ -998,9 +974,7 @@
 /area/awaymission/spacebattle/cruiser)
 "eH" = (
 /obj/structure/table/reinforced,
-/turf/simulated/floor{
-	 = on_state = "bluefull"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eI" = (
 /obj/structure/grille,
@@ -1028,7 +1002,7 @@
 /area/awaymission/spacebattle/cruiser)
 "eM" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall";
+
 	dir = 9
 	},
 /area/awaymission/spacebattle/cruiser)
@@ -1050,9 +1024,7 @@
 /area/awaymission/spacebattle/cruiser)
 "eT" = (
 /obj/machinery/computer/med_data,
-/turf/simulated/floor{
-	 = on_state = "bluefull"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "eU" = (
 /obj/structure/grille,
@@ -1108,9 +1080,7 @@
 /area/awaymission/spacebattle/cruiser)
 "fd" = (
 /obj/machinery/computer/crew,
-/turf/simulated/floor{
-	 = on_state = "bluefull"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fe" = (
 /obj/effect/landmark/corpse/engineer/rig{
@@ -1186,69 +1156,43 @@
 /area/awaymission/spacebattle/cruiser)
 "fz" = (
 /obj/machinery/computer/shuttle,
-/turf/simulated/floor{
-	 = on_state = "bluefull"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fA" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "1"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fB" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "2"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fC" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "3"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fD" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "4"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fE" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "5"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fF" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "6"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fG" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "7"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fH" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "8"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fI" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "9"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fJ" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "10"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fK" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "11"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fL" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "12"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fM" = (
 /obj/structure/closet/crate/internals,
@@ -1264,69 +1208,43 @@
 /area/awaymission/spacebattle/cruiser)
 "fT" = (
 /obj/machinery/computer/communications,
-/turf/simulated/floor{
-	 = on_state = "bluefull"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "fU" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "13"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fV" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "14"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fW" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "15"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fX" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "16"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fY" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "17"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "fZ" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "18"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "ga" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "19"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "gb" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "20"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "gc" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "21"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "gd" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "22"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "ge" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "23"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "gf" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "24"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "gg" = (
 /obj/structure/closet/crate,
@@ -1343,60 +1261,38 @@
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gi" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "25"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /area/awaymission/spacebattle/cruiser)
 "gj" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "26"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /area/awaymission/spacebattle/cruiser)
 "gk" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "27"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /area/awaymission/spacebattle/cruiser)
 "gl" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "28"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /obj/machinery/artillerycontrol,
 /area/awaymission/spacebattle/cruiser)
 "gm" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "29"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /area/awaymission/spacebattle/cruiser)
 "gn" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "30"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /area/awaymission/spacebattle/cruiser)
 "go" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "31"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /area/awaymission/spacebattle/cruiser)
 "gp" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "32"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /area/awaymission/spacebattle/cruiser)
 "gq" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "33"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /area/awaymission/spacebattle/cruiser)
 "gr" = (
-/obj/structure/artilleryplaceholder/decorative{
-	 = on_state = "34"
-	},
+/obj/structure/artilleryplaceholder/decorative,
 /area/awaymission/spacebattle/cruiser)
 "gs" = (
-/obj/structure/artilleryplaceholder{
-	 = on_state = "35"
-	},
+/obj/structure/artilleryplaceholder,
 /area/awaymission/spacebattle/cruiser)
 "gt" = (
 /obj/structure/closet/crate/secure/weapon,
@@ -1472,7 +1368,7 @@
 "gJ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_straight";
+
 	dir = 1
 	},
 /area/awaymission/spacebattle/cruiser)
@@ -1498,9 +1394,7 @@
 /area/awaymission/spacebattle/cruiser)
 "gP" = (
 /obj/machinery/computer/security,
-/turf/simulated/floor{
-	 = on_state = "bluefull"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gQ" = (
 /obj/structure/table/woodentable,
@@ -1513,9 +1407,7 @@
 /area/awaymission/spacebattle/cruiser)
 "gS" = (
 /obj/machinery/computer/secure_data,
-/turf/simulated/floor{
-	 = on_state = "bluefull"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "gT" = (
 /obj/effect/landmark/corpse/engineer/rig{
@@ -1617,7 +1509,7 @@
 /area/awaymission/spacebattle/syndicate7)
 "hq" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+
 	dir = 4
 	},
 /obj/structure/window/reinforced{
@@ -1626,7 +1518,7 @@
 /area/awaymission/spacebattle/syndicate7)
 "hr" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r";
+
 	dir = 8
 	},
 /turf/space,
@@ -1686,7 +1578,7 @@
 /area/awaymission/spacebattle/syndicate7)
 "hA" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l";
+
 	dir = 8
 	},
 /turf/space,
@@ -1799,7 +1691,7 @@
 /area/awaymission/spacebattle/syndicate7)
 "hZ" = (
 /obj/machinery/shower{
-	 = on_state = "shower";
+
 	dir = 4
 	},
 /obj/item/bikehorn/rubberducky,
@@ -1807,7 +1699,7 @@
 /area/awaymission/spacebattle/cruiser)
 "ib" = (
 /obj/machinery/shower{
-	 = on_state = "shower";
+
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -1823,13 +1715,13 @@
 /area/awaymission/spacebattle/cruiser)
 "ie" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_s";
+
 	dir = 8
 	},
 /area/awaymission/spacebattle/cruiser)
 "ig" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall";
+
 	dir = 1
 	},
 /area/awaymission/spacebattle/cruiser)
@@ -1844,14 +1736,14 @@
 /area/awaymission/spacebattle/cruiser)
 "ij" = (
 /obj/machinery/shower{
-	 = on_state = "shower";
+
 	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "ik" = (
 /obj/machinery/shower{
-	 = on_state = "shower";
+
 	dir = 8
 	},
 /obj/item/soap,
@@ -1900,13 +1792,11 @@
 "iy" = (
 /obj/effect/landmark/corpse/syndicatesoldier,
 /obj/item/gun/projectile/automatic/c20r,
-/turf/simulated/floor{
-	 = on_state = "damaged2"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "iz" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "burst_r";
+
 	dir = 4
 	},
 /turf/space,
@@ -1937,34 +1827,34 @@
 "iF" = (
 /obj/machinery/sleeper,
 /turf/simulated/floor/airless{
-	 = on_state = "floor4";
+
 	dir = 10
 	},
 /area)
 "iG" = (
 /turf/simulated/floor/airless{
-	 = on_state = "floor4";
+
 	dir = 10
 	},
 /area)
 "iH" = (
 /obj/effect/landmark/corpse/syndicatesoldier,
 /turf/simulated/floor/airless{
-	 = on_state = "floor4";
+
 	dir = 10
 	},
 /area)
 "iJ" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/airless{
-	 = on_state = "floor4";
+
 	dir = 10
 	},
 /area)
 "iK" = (
 /obj/item/stack/rods,
 /turf/simulated/floor/airless{
-	 = on_state = "floor4";
+
 	dir = 10
 	},
 /area)
@@ -2061,9 +1951,7 @@
 /turf/simulated/wall/phoron,
 /area/awaymission/spacebattle/secret)
 "jq" = (
-/turf/simulated/floor{
-	 = on_state = "alienvault"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/secret)
 "jr" = (
 /obj/machinery/door/airlock/phoron,
@@ -2072,9 +1960,7 @@
 "js" = (
 /obj/item/clothing/suit/space/void/wizard,
 /obj/item/clothing/head/helmet/space/void/wizard,
-/turf/simulated/floor{
-	 = on_state = "alienvault"
-	},
+/turf/simulated/floor,
 /area/awaymission/spacebattle/secret)
 
 (1,1,1) = {"

@@ -231,10 +231,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "aH" = (
-/obj/structure/ladder{
-	height = 1;
-	id = "example"
-	},
+/obj/structure/ladder,
 /turf/simulated/floor/plating,
 /area/awaymission/example)
 "aI" = (
@@ -270,7 +267,7 @@
 /area/awaymission/example)
 "aQ" = (
 /turf/simulated/floor{
-	 = on_state = "yellowfull";
+
 	dir = 8
 	},
 /area/awaymission/example)
@@ -348,7 +345,7 @@
 /area/awaymission/example)
 "bo" = (
 /turf/simulated/floor{
-	 = on_state = "stage_stairs";
+
 	dir = 8
 	},
 /area/awaymission/example)
@@ -554,9 +551,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "cd" = (
-/obj/structure/ladder{
-	id = "example"
-	},
+/obj/structure/ladder,
 /turf/simulated/floor/plating,
 /area/awaymission/example)
 "ce" = (

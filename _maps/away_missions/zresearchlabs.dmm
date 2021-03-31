@@ -513,14 +513,14 @@
 	},
 /obj/effect/alien/weeds/node,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
 "cd" = (
 /obj/machinery/dna_scannernew,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -538,14 +538,14 @@
 /area/awaymission/labs/researchdivision)
 "cf" = (
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
 "cg" = (
 /obj/machinery/computer/scan_consolenew,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -571,7 +571,7 @@
 	dir = 4
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -632,14 +632,14 @@
 /obj/structure/table/reinforced,
 /obj/item/mass_spectrometer,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
 "cv" = (
 /obj/machinery/door/airlock/glass_research,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -651,7 +651,7 @@
 /area/awaymission/labs/researchdivision)
 "cx" = (
 /turf/simulated/floor{
-	 = on_state = "warnwhite";
+
 	dir = 1
 	},
 /area/awaymission/labs/researchdivision)
@@ -702,7 +702,7 @@
 	dir = 8
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -711,7 +711,7 @@
 /obj/item/reagent_containers/blood/empty,
 /obj/item/storage/box/bodybags,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -719,7 +719,7 @@
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/hypospray,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -1374,7 +1374,7 @@
 	pixel_x = 13
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -1384,14 +1384,14 @@
 	dir = 1
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
 "eu" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -1478,7 +1478,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -1487,7 +1487,7 @@
 	charge = 0
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -1571,7 +1571,7 @@
 /area/awaymission/labs/militarydivision)
 "eP" = (
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -1637,7 +1637,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -1710,7 +1710,7 @@
 "fl" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -1720,7 +1720,7 @@
 	name = "Armory Door"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/gateway)
@@ -1785,7 +1785,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -1860,7 +1860,7 @@
 	},
 /obj/item/ammo_magazine/clip/c45,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -1871,7 +1871,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -1881,14 +1881,14 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
 "fG" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -1984,7 +1984,7 @@
 /obj/structure/closet/crate/secure/weapon,
 /obj/item/ammo_magazine/s357,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -1995,7 +1995,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -2004,14 +2004,14 @@
 	dir = 8
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
 "fV" = (
 /obj/machinery/atmospherics/unary/vent_pump,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -2077,7 +2077,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/researchdivision)
@@ -2182,7 +2182,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -2351,9 +2351,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "gI" = (
-/turf/simulated/floor{
-	 = on_state = "warningcorner"
-	},
+/turf/simulated/floor,
 /area/awaymission/labs/researchdivision)
 "gJ" = (
 /obj/machinery/light{
@@ -2375,7 +2373,7 @@
 	name = "James MacDonald"
 	},
 /turf/simulated/floor{
-	 = on_state = "warningcorner";
+
 	dir = 1
 	},
 /area/awaymission/labs/researchdivision)
@@ -2461,7 +2459,7 @@
 "gY" = (
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor{
-	 = on_state = "whitehall";
+
 	dir = 8
 	},
 /area/awaymission/labs/researchdivision)
@@ -2612,7 +2610,7 @@
 /area/awaymission/labs/militarydivision)
 "hr" = (
 /obj/machinery/shower{
-	 = on_state = "shower";
+
 	dir = 4
 	},
 /turf/simulated/floor{
@@ -2640,7 +2638,7 @@
 	dir = 4
 	},
 /turf/simulated/floor{
-	 = on_state = "whitehall";
+
 	dir = 8
 	},
 /area/awaymission/labs/researchdivision)
@@ -2763,7 +2761,7 @@
 /area/awaymission/labs/researchdivision)
 "hH" = (
 /turf/simulated/floor{
-	 = on_state = "whitehall";
+
 	dir = 8
 	},
 /area/awaymission/labs/researchdivision)
@@ -2874,7 +2872,7 @@
 /area/awaymission/labs/researchdivision)
 "hR" = (
 /turf/simulated/floor{
-	 = on_state = "warningcorner";
+
 	dir = 8
 	},
 /area/awaymission/labs/researchdivision)
@@ -2890,7 +2888,7 @@
 	dir = 8
 	},
 /turf/simulated/floor{
-	 = on_state = "warningcorner";
+
 	dir = 4
 	},
 /area/awaymission/labs/researchdivision)
@@ -3501,7 +3499,7 @@
 "js" = (
 /obj/structure/table/standard,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -3513,7 +3511,7 @@
 	name = "Journal Page"
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -3648,13 +3646,13 @@
 	pixel_y = 4
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
 "jP" = (
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -3716,7 +3714,7 @@
 	pixel_y = 8
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/militarydivision)
@@ -4989,21 +4987,21 @@
 /obj/structure/table/standard,
 /obj/item/book/manual/chef_recipes,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
 "mP" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
 "mQ" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5012,14 +5010,14 @@
 	pixel_y = 23
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
 "mS" = (
 /obj/machinery/gibber,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5027,7 +5025,7 @@
 /obj/machinery/vending/dinnerware,
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5117,7 +5115,7 @@
 /area/awaymission/labs/cave)
 "nj" = (
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5129,7 +5127,7 @@
 	on = 1
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5292,7 +5290,7 @@
 "nG" = (
 /obj/machinery/processor,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5472,7 +5470,7 @@
 "od" = (
 /obj/structure/table/standard,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5480,7 +5478,7 @@
 /obj/structure/table/standard,
 /obj/item/material/kitchen/rollingpin,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5491,7 +5489,7 @@
 	pixel_y = 7
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5648,7 +5646,7 @@
 "oA" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5661,7 +5659,7 @@
 	dir = 4
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5787,7 +5785,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5802,7 +5800,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5960,7 +5958,7 @@
 "pk" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -5978,7 +5976,7 @@
 	name = "Kitchen"
 	},
 /turf/simulated/floor{
-	 = on_state = "cafeteria";
+
 	dir = 5
 	},
 /area/awaymission/labs/civilian)
@@ -6341,7 +6339,7 @@
 "qn" = (
 /obj/structure/closet/secure_closet/freezer/money,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 8
 	},
 /area/awaymission/labs/command)
@@ -6350,7 +6348,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 6
 	},
 /area/awaymission/labs/command)
@@ -6358,9 +6356,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor{
-	 = on_state = "vault"
-	},
+/turf/simulated/floor,
 /area/awaymission/labs/command)
 "qq" = (
 /obj/structure/cable{
@@ -6369,7 +6365,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 10
 	},
 /area/awaymission/labs/command)
@@ -6380,7 +6376,7 @@
 	on = 1
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 8
 	},
 /area/awaymission/labs/command)
@@ -6452,20 +6448,18 @@
 /area/awaymission/labs/command)
 "qF" = (
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 1
 	},
 /area/awaymission/labs/command)
 "qG" = (
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 6
 	},
 /area/awaymission/labs/command)
 "qH" = (
-/turf/simulated/floor{
-	 = on_state = "vault"
-	},
+/turf/simulated/floor,
 /area/awaymission/labs/command)
 "qI" = (
 /obj/structure/cable{
@@ -6479,7 +6473,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 10
 	},
 /area/awaymission/labs/command)
@@ -6494,7 +6488,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 4
 	},
 /area/awaymission/labs/command)
@@ -6543,7 +6537,7 @@
 /obj/item/storage/belt/champion,
 /obj/item/cell/infinite,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 1
 	},
 /area/awaymission/labs/command)
@@ -6552,7 +6546,7 @@
 	r_code = "LOLNO"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 8
 	},
 /area/awaymission/labs/command)
@@ -6581,7 +6575,7 @@
 	name = "Silver Crate"
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 4
 	},
 /area/awaymission/labs/command)
@@ -6615,7 +6609,7 @@
 	pixel_y = 11
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 4
 	},
 /area/awaymission/labs/command)
@@ -6666,9 +6660,7 @@
 	locked = 1;
 	req_access_txt = "53"
 	},
-/turf/simulated/floor{
-	 = on_state = "vault"
-	},
+/turf/simulated/floor,
 /area/awaymission/labs/command)
 "rj" = (
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -6968,7 +6960,7 @@
 /area/awaymission/labs/cave)
 "sa" = (
 /obj/machinery/shower{
-	 = on_state = "shower";
+
 	dir = 4
 	},
 /turf/simulated/floor{
@@ -7596,7 +7588,7 @@
 /area/awaymission/labs/medical)
 "tR" = (
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 8
 	},
 /area/awaymission/labs/security)
@@ -7606,7 +7598,7 @@
 	dir = 1
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 8
 	},
 /area/awaymission/labs/security)
@@ -7616,7 +7608,7 @@
 /obj/item/shield/riot,
 /obj/item/clothing/head/helmet/riot,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 8
 	},
 /area/awaymission/labs/security)
@@ -7637,7 +7629,7 @@
 	dir = 1
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 8
 	},
 /area/awaymission/labs/security)
@@ -7719,7 +7711,7 @@
 "uj" = (
 /obj/item/ammo_magazine/clip/c45,
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 8
 	},
 /area/awaymission/labs/security)
@@ -7732,7 +7724,7 @@
 	silenced = 0
 	},
 /turf/simulated/floor{
-	 = on_state = "vault";
+
 	dir = 8
 	},
 /area/awaymission/labs/security)
@@ -7851,13 +7843,13 @@
 /area/awaymission/labs/security)
 "uC" = (
 /turf/simulated/floor{
-	 = on_state = "warningcorner";
+
 	dir = 4
 	},
 /area/awaymission/labs/security)
 "uD" = (
 /turf/simulated/floor{
-	 = on_state = "warningcorner";
+
 	dir = 8
 	},
 /area/awaymission/labs/security)

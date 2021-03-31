@@ -695,9 +695,7 @@
 	},
 /area/jungle/crash_ship_source)
 "dG" = (
-/turf/simulated/shuttle/wall{
-	 = on_state = "swall_straight"
-	},
+/turf/simulated/shuttle/wall,
 /area/jungle/crash_ship_source)
 "dH" = (
 /obj/effect/landmark/loot_spawn/low,

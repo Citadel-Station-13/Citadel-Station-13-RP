@@ -68,19 +68,13 @@
 /turf/unsimulated/beach/sand,
 /area/awaymission/beach)
 "n" = (
-/turf/unsimulated/wall{
-	 = on_state = "sandstone6"
-	},
+/turf/unsimulated/wall,
 /area/awaymission/beach)
 "o" = (
-/turf/unsimulated/wall{
-	 = on_state = "sandstone12"
-	},
+/turf/unsimulated/wall,
 /area/awaymission/beach)
 "p" = (
-/turf/unsimulated/wall{
-	 = on_state = "sandstone10"
-	},
+/turf/unsimulated/wall,
 /area/awaymission/beach)
 "q" = (
 /obj/structure/closet/athletic_mixed,
@@ -94,9 +88,7 @@
 /turf/unsimulated/beach/sand,
 /area/awaymission/beach)
 "s" = (
-/turf/unsimulated/wall{
-	 = on_state = "sandstone3"
-	},
+/turf/unsimulated/wall,
 /area/awaymission/beach)
 "t" = (
 /obj/structure/closet/gmcloset{
@@ -146,17 +138,13 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
 "D" = (
-/turf/unsimulated/wall{
-	 = on_state = "sandstone1"
-	},
+/turf/unsimulated/wall,
 /area/awaymission/beach)
 "E" = (
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
 "F" = (
-/obj/structure/simple_door/wood{
-	 = on_state = "wood"
-	},
+/obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
 "G" = (
@@ -164,9 +152,7 @@
 /turf/unsimulated/beach/sand,
 /area/awaymission/beach)
 "H" = (
-/turf/unsimulated/wall{
-	 = on_state = "sandstone0"
-	},
+/turf/unsimulated/wall,
 /area/awaymission/beach)
 "I" = (
 /obj/structure/table/woodentable,
