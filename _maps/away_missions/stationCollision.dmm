@@ -124,7 +124,6 @@
 /area/awaymission/northblock)
 "aI" = (
 /obj/structure/shuttle/engine/propulsion{
-	on_state = "burst_l";
 	dir = 4
 	},
 /turf/space,
@@ -149,7 +148,6 @@
 /area/awaymission/northblock)
 "aO" = (
 /obj/structure/shuttle/engine/propulsion{
-	on_state = "propulsion_r";
 	dir = 4
 	},
 /turf/space,
@@ -203,7 +201,6 @@
 /area/awaymission/northblock)
 "bd" = (
 /obj/structure/shuttle/engine/propulsion{
-	on_state = "burst_l";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating,
@@ -379,7 +376,6 @@
 /area/awaymission/research)
 "bV" = (
 /obj/structure/shuttle/engine/propulsion{
-	on_state = "burst_r";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating,
@@ -533,7 +529,6 @@
 /area/awaymission/research)
 "cC" = (
 /obj/structure/shuttle/engine/propulsion{
-	on_state = "propulsion_l";
 	dir = 4
 	},
 /turf/space,
@@ -744,7 +739,6 @@
 /area/awaymission/research)
 "dl" = (
 /obj/machinery/door/airlock/voidcraft/survival_pod{
-	id = "Narsiedoor";
 	name = "Blast Doors"
 	},
 /turf/simulated/floor/airless,
@@ -1431,14 +1425,10 @@
 /turf/simulated/floor/plating,
 /area/awaymission/midblock)
 "fO" = (
-/turf/simulated/shuttle/wall{
-	on_state = "swall_s"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "fP" = (
-/turf/simulated/shuttle/wall{
-	on_state = "swall_t"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "fQ" = (
 /obj/structure/window/reinforced,
@@ -1472,9 +1462,7 @@
 /area/awaymission/arrivalblock)
 "fT" = (
 /turf/space,
-/turf/simulated/shuttle/wall{
-	on_state = "swall_straight"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "fU" = (
 /obj/structure/table/woodentable,
@@ -1529,14 +1517,10 @@
 /turf/simulated/floor/plating,
 /area/awaymission/midblock)
 "gc" = (
-/turf/simulated/shuttle/wall{
-	on_state = "swall_straight"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "gd" = (
-/turf/simulated/shuttle/wall{
-	on_state = "swall"
-	},
+/turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "gg" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -2942,9 +2926,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/southblock)
 "kE" = (
-/obj/structure/shuttle/engine/propulsion{
-	on_state = "propulsion_r"
-	},
+/obj/structure/shuttle/engine/propulsion,
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
@@ -2953,21 +2935,14 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
 "kG" = (
-/obj/structure/shuttle/engine/propulsion{
-	on_state = "propulsion_l"
-	},
-/obj/structure/shuttle/engine/propulsion{
-	on_state = "burst_l"
-	},
-/obj/structure/shuttle/engine/propulsion{
-	on_state = "propulsion_l"
-	},
+/obj/structure/shuttle/engine/propulsion,
+/obj/structure/shuttle/engine/propulsion,
+/obj/structure/shuttle/engine/propulsion,
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
 "kH" = (
 /obj/structure/shuttle/engine/propulsion{
-	on_state = "propulsion_l";
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -2975,7 +2950,6 @@
 /area/awaymission/arrivalblock)
 "kI" = (
 /obj/structure/shuttle/engine/propulsion{
-	on_state = "propulsion_r";
 	dir = 1
 	},
 /obj/structure/window/reinforced,
