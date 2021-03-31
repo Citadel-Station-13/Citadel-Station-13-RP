@@ -9,7 +9,7 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/engine/rust
-	name = "R-UST Engine"
+	name = "EngineSubmap_RUST"
 	desc = "R-UST Fusion Tokamak Engine"
 	mappath = "_maps/templates/engine/triumph/triumph_engine_rust.dmm"
 
@@ -22,7 +22,7 @@
 
 
 /datum/map_template/engine/supermatter
-	name = "Supermatter Engine"
+	name = "EngineSubmap_SM"
 	desc = "Old Faithful Supermatter"
 	mappath = "_maps/templates/engine/triumph/triumph_engine_sme.dmm"
 
@@ -33,8 +33,8 @@
 	mappath = '_maps/templates/engine/triumph/engine_tesla.dmm'
 */
 
-/datum/map_template/engine/tesla
-	name = "Old Faithful"
+/datum/map_template/engine/fission
+	name = "EngineSubmap_Fission"
 	desc = "The Fission Reactor"
 	mappath = "_maps/templates/engine/triumph/triumph_engine_fission.dmm"
 
