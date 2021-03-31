@@ -7,7 +7,7 @@
 "c" = (
 /obj/structure/table/woodentable,
 /obj/item/book{
-	dat = The majority of the text has faded or been defaced. Several snippets of prayers are legible, but not enough to determine their intent. The phrases 'Great Designer', 'change', and 'flesh' appear repeatedly.;
+	dat = "The majority of the text has faded or been defaced. Several snippets of prayers are legible, but not enough to determine their intent. The phrases 'Great Designer', 'change', and 'flesh' appear repeatedly.";
 	name = "Tenets of The Great Designer"
 	},
 /turf/simulated/floor/wmarble,
