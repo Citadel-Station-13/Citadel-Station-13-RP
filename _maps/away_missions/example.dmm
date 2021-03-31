@@ -267,7 +267,6 @@
 /area/awaymission/example)
 "aQ" = (
 /turf/simulated/floor{
-
 	dir = 8
 	},
 /area/awaymission/example)
@@ -443,7 +442,6 @@
 "bG" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms";
-	req_access_txt = "0"
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/example)
