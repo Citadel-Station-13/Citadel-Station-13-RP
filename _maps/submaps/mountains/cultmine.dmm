@@ -319,7 +319,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bj" = (
-/mob/living/simple_mob/hostile/malf_drone,
+/mob/living/simple_mob/hostile/combat_drone,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bk" = (

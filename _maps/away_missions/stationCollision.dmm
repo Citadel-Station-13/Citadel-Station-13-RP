@@ -149,14 +149,14 @@
 /area/awaymission/northblock)
 "aO" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r";
+	on_state = "propulsion_r";
 	dir = 4
 	},
 /turf/space,
 /area/awaymission/syndishuttle)
 "aP" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+	on_state = "heater";
 	dir = 8
 	},
 /turf/simulated/floor/airless,
@@ -204,7 +204,7 @@
 /area/awaymission/northblock)
 "bd" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "burst_l";
+	on_state = "burst_l";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating,
@@ -248,7 +248,7 @@
 /area/awaymission/syndishuttle)
 "bp" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion";
+	on_state = "propulsion";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating,
@@ -259,7 +259,7 @@
 /area/awaymission/syndishuttle)
 "br" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+	on_state = "heater";
 	dir = 8
 	},
 /turf/simulated/shuttle/plating,
@@ -382,14 +382,14 @@
 /area/awaymission/research)
 "bV" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "burst_r";
+	on_state = "burst_r";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bW" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+	on_state = "heater";
 	dir = 1
 	},
 /turf/simulated/shuttle/plating,
@@ -520,14 +520,14 @@
 /area/awaymission/research)
 "cy" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion";
+	on_state = "propulsion";
 	dir = 4
 	},
 /turf/space,
 /area/awaymission/research)
 "cz" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+	on_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced,
@@ -541,7 +541,7 @@
 /area/awaymission/research)
 "cC" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l";
+	on_state = "propulsion_l";
 	dir = 4
 	},
 /turf/space,
@@ -580,7 +580,7 @@
 /area/awaymission/research)
 "cK" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+	on_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -683,7 +683,7 @@
 /area/awaymission/northblock)
 "db" = (
 /obj/machinery/shower{
-	 = on_state = "shower";
+	on_state = "shower";
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted,
@@ -1129,7 +1129,7 @@
 /area/awaymission/research)
 "eK" = (
 /obj/structure/shuttle/engine/heater{
-	 = on_state = "heater";
+	on_state = "heater";
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -1447,12 +1447,12 @@
 /area/awaymission/midblock)
 "fO" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_s"
+	on_state = "swall_s"
 	},
 /area/awaymission/arrivalblock)
 "fP" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_t"
+	on_state = "swall_t"
 	},
 /area/awaymission/arrivalblock)
 "fQ" = (
@@ -1488,7 +1488,7 @@
 "fT" = (
 /turf/space,
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_straight"
+	on_state = "swall_straight"
 	},
 /area/awaymission/arrivalblock)
 "fU" = (
@@ -1545,12 +1545,12 @@
 /area/awaymission/midblock)
 "gc" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall_straight"
+	on_state = "swall_straight"
 	},
 /area/awaymission/arrivalblock)
 "gd" = (
 /turf/simulated/shuttle/wall{
-	 = on_state = "swall"
+	on_state = "swall"
 	},
 /area/awaymission/arrivalblock)
 "gg" = (
@@ -1826,7 +1826,7 @@
 "gX" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor{
-	 = on_state = "warningcorner";
+	on_state = "warningcorner";
 	dir = 1
 	},
 /area/awaymission/arrivalblock)
@@ -2961,7 +2961,7 @@
 /area/awaymission/southblock)
 "kE" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r"
+	on_state = "propulsion_r"
 	},
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/shuttle/plating,
@@ -2972,20 +2972,20 @@
 /area/awaymission/arrivalblock)
 "kG" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l"
+	on_state = "propulsion_l"
 	},
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "burst_l"
+	on_state = "burst_l"
 	},
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l"
+	on_state = "propulsion_l"
 	},
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
 "kH" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_l";
+	on_state = "propulsion_l";
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -2993,7 +2993,7 @@
 /area/awaymission/arrivalblock)
 "kI" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "propulsion_r";
+	on_state = "propulsion_r";
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -3051,7 +3051,7 @@
 	pixel_y = -2
 	},
 /turf/simulated/floor{
-	 = on_state = "warningcorner";
+	on_state = "warningcorner";
 	dir = 8
 	},
 /area/awaymission/gateroom)
@@ -3076,7 +3076,7 @@
 /obj/structure/table/standard,
 /obj/item/camera,
 /turf/simulated/floor{
-	 = on_state = "warningcorner";
+	on_state = "warningcorner";
 	dir = 4
 	},
 /area/awaymission/gateroom)
@@ -3094,7 +3094,7 @@
 /area/awaymission/southblock)
 "lc" = (
 /turf/simulated/floor{
-	 = on_state = "whitehall";
+	on_state = "whitehall";
 	dir = 8
 	},
 /area/awaymission/southblock)
@@ -3175,7 +3175,7 @@
 	dir = 8
 	},
 /turf/simulated/floor{
-	 = on_state = "whitehall";
+	on_state = "whitehall";
 	dir = 8
 	},
 /area/awaymission/southblock)
