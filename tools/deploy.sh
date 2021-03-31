@@ -25,6 +25,7 @@ cp -r _maps/* $1/_maps/
 cp -r icons/* $1/icons/
 cp -r sounds/* $1/sounds/
 cp -r config/* $1/config/
+cp -r config/names/* $1/config/names/
 # cp -r icons/runtime/* $1/icons/runtime/
 # cp -r sound/runtime/* $1/sound/runtime/
 # cp -r strings/* $1/strings/
