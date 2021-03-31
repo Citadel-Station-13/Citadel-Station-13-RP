@@ -225,7 +225,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating{
-
 	dir = 9
 	},
 /area/awaymission/challenge/main)
@@ -234,7 +233,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating{
-
 	dir = 1
 	},
 /area/awaymission/challenge/main)
@@ -253,7 +251,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating{
-
 	dir = 1
 	},
 /area/awaymission/challenge/main)
@@ -265,7 +262,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating{
-
 	dir = 5
 	},
 /area/awaymission/challenge/main)
@@ -284,7 +280,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating{
-
 	dir = 8
 	},
 /area/awaymission/challenge/main)
@@ -321,7 +316,6 @@
 	state = 2
 	},
 /turf/simulated/floor/plating{
-
 	dir = 4
 	},
 /area/awaymission/challenge/main)
@@ -339,7 +333,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating{
-
 	dir = 8
 	},
 /area/awaymission/challenge/main)
@@ -362,7 +355,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating{
-
 	dir = 4
 	},
 /area/awaymission/challenge/main)
@@ -376,7 +368,6 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating{
-
 	dir = 10
 	},
 /area/awaymission/challenge/main)
@@ -386,7 +377,6 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating{
-
 	dir = 6
 	},
 /area/awaymission/challenge/main)
@@ -661,7 +651,6 @@
 /area/awaymission/challenge/end)
 "co" = (
 /turf/simulated/floor{
-
 	dir = 8
 	},
 /area/awaymission/challenge/end)
@@ -856,7 +845,6 @@
 	dir = 9
 	},
 /turf/simulated/floor{
-
 	dir = 1
 	},
 /area/awaymission/challenge/end)
@@ -865,7 +853,6 @@
 	dir = 1
 	},
 /turf/simulated/floor{
-
 	dir = 8
 	},
 /area/awaymission/challenge/end)
@@ -874,7 +861,6 @@
 	dir = 5
 	},
 /turf/simulated/floor{
-
 	dir = 4
 	},
 /area/awaymission/challenge/end)
@@ -902,7 +888,6 @@
 	dir = 8
 	},
 /turf/simulated/floor{
-
 	dir = 8
 	},
 /area/awaymission/challenge/end)
@@ -919,7 +904,6 @@
 	dir = 4
 	},
 /turf/simulated/floor{
-
 	dir = 8
 	},
 /area/awaymission/challenge/end)
@@ -928,7 +912,6 @@
 	dir = 10
 	},
 /turf/simulated/floor{
-
 	dir = 4
 	},
 /area/awaymission/challenge/end)
@@ -940,7 +923,6 @@
 	pixel_y = 1
 	},
 /turf/simulated/floor{
-
 	dir = 8
 	},
 /area/awaymission/challenge/end)
@@ -949,7 +931,6 @@
 	dir = 6
 	},
 /turf/simulated/floor{
-
 	dir = 1
 	},
 /area/awaymission/challenge/end)

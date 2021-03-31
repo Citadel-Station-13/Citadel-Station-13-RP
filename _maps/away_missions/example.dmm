@@ -342,12 +342,6 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/awaymission/example)
-"bo" = (
-/turf/simulated/floor{
-
-	dir = 8
-	},
-/area/awaymission/example)
 "bp" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -442,6 +436,7 @@
 "bG" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms";
+	
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/example)
@@ -547,10 +542,6 @@
 "cc" = (
 /obj/machinery/vending/assist,
 /turf/simulated/floor,
-/area/awaymission/example)
-"cd" = (
-/obj/structure/ladder,
-/turf/simulated/floor/plating,
 /area/awaymission/example)
 "ce" = (
 /obj/structure/filingcabinet,
@@ -1833,7 +1824,7 @@ ab
 ac
 aQ
 bk
-bo
+aQ
 bk
 bk
 bk
@@ -2236,7 +2227,7 @@ bN
 bk
 bU
 ab
-cd
+aH
 aw
 aw
 aM
@@ -2361,7 +2352,7 @@ ab
 ac
 aQ
 bk
-bo
+aQ
 bk
 bk
 bk

@@ -969,9 +969,6 @@
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
-"QV" = (
-/turf/simulated/shuttle/wall/voidcraft/green,
-/area/piratebase/facility)
 "Rp" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
@@ -10247,7 +10244,7 @@ Tv
 Tv
 Tv
 Tv
-QV
+ol
 qL
 JA
 hT

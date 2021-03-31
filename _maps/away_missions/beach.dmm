@@ -70,12 +70,6 @@
 "n" = (
 /turf/unsimulated/wall,
 /area/awaymission/beach)
-"o" = (
-/turf/unsimulated/wall,
-/area/awaymission/beach)
-"p" = (
-/turf/unsimulated/wall,
-/area/awaymission/beach)
 "q" = (
 /obj/structure/closet/athletic_mixed,
 /turf/unsimulated/beach/sand,
@@ -86,9 +80,6 @@
 /obj/item/clothing/shoes/sandal,
 /obj/structure/closet/crate,
 /turf/unsimulated/beach/sand,
-/area/awaymission/beach)
-"s" = (
-/turf/unsimulated/wall,
 /area/awaymission/beach)
 "t" = (
 /obj/structure/closet/gmcloset{
@@ -137,9 +128,6 @@
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
-"D" = (
-/turf/unsimulated/wall,
-/area/awaymission/beach)
 "E" = (
 /turf/simulated/floor/tiled/white,
 /area/awaymission/beach)
@@ -150,9 +138,6 @@
 "G" = (
 /obj/effect/overlay/palmtree_l,
 /turf/unsimulated/beach/sand,
-/area/awaymission/beach)
-"H" = (
-/turf/unsimulated/wall,
 /area/awaymission/beach)
 "I" = (
 /obj/structure/table/woodentable,
@@ -531,10 +516,10 @@ a
 e
 e
 n
-s
-D
+n
+n
 F
-H
+n
 e
 e
 e
@@ -557,7 +542,7 @@ R
 a
 e
 e
-o
+n
 t
 E
 E
@@ -584,7 +569,7 @@ R
 a
 e
 e
-o
+n
 u
 E
 E
@@ -611,7 +596,7 @@ R
 a
 e
 e
-o
+n
 v
 E
 E
@@ -638,7 +623,7 @@ R
 a
 e
 e
-o
+n
 w
 E
 E
@@ -665,7 +650,7 @@ R
 a
 e
 e
-o
+n
 x
 E
 E
@@ -692,7 +677,7 @@ R
 a
 e
 e
-o
+n
 y
 E
 E
@@ -719,7 +704,7 @@ R
 a
 e
 e
-o
+n
 z
 E
 E
@@ -746,7 +731,7 @@ R
 a
 e
 e
-o
+n
 A
 E
 E
@@ -773,7 +758,7 @@ R
 a
 e
 e
-o
+n
 B
 E
 E
@@ -800,7 +785,7 @@ R
 a
 e
 e
-o
+n
 C
 E
 E
@@ -827,11 +812,11 @@ R
 a
 e
 e
-p
-s
-s
-s
-D
+n
+n
+n
+n
+n
 e
 e
 e

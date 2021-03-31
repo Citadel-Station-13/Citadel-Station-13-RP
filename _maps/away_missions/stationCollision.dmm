@@ -146,12 +146,6 @@
 /obj/machinery/robotic_fabricator,
 /turf/simulated/floor,
 /area/awaymission/northblock)
-"aO" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 4
-	},
-/turf/space,
-/area/awaymission/syndishuttle)
 "aP" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -240,12 +234,6 @@
 /area/awaymission/syndishuttle)
 "bo" = (
 /obj/structure/closet/syndicate,
-/turf/simulated/shuttle/plating,
-/area/awaymission/syndishuttle)
-"bp" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 4
-	},
 /turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
 "bq" = (
@@ -374,12 +362,6 @@
 /mob/living/carbon/human/monkey,
 /turf/simulated/floor/grass,
 /area/awaymission/research)
-"bV" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 4
-	},
-/turf/simulated/shuttle/plating,
-/area/awaymission/syndishuttle)
 "bW" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1
@@ -527,12 +509,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/research)
-"cC" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 4
-	},
-/turf/space,
-/area/awaymission/syndishuttle)
 "cE" = (
 /obj/machinery/portable_atmospherics/canister/phoron{
 	destroyed = 1
@@ -1427,9 +1403,6 @@
 "fO" = (
 /turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
-"fP" = (
-/turf/simulated/shuttle/wall,
-/area/awaymission/arrivalblock)
 "fQ" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -1516,12 +1489,6 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/awaymission/midblock)
-"gc" = (
-/turf/simulated/shuttle/wall,
-/area/awaymission/arrivalblock)
-"gd" = (
-/turf/simulated/shuttle/wall,
-/area/awaymission/arrivalblock)
 "gg" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
@@ -2173,6 +2140,7 @@
 "if" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Glass Airlock";
+	
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -2588,6 +2556,7 @@
 /obj/machinery/door/airlock/glass_medical{
 	id_tag = null;
 	name = "Glass Airlock";
+	
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
@@ -2942,13 +2911,6 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
 "kH" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/turf/space,
-/area/awaymission/arrivalblock)
-"kI" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1
 	},
@@ -3468,10 +3430,10 @@ aa
 aC
 aC
 bd
-bp
-bp
-bp
-bV
+bd
+bd
+bd
+bd
 aC
 aC
 aa
@@ -3553,21 +3515,21 @@ aa
 aa
 aa
 fO
-gc
+fO
 gz
 gT
 hr
-gc
-gc
-gc
+fO
+fO
+fO
 gz
 gT
 hr
-gc
-gc
-gc
-gc
-gd
+fO
+fO
+fO
+fO
+fO
 aa
 aa
 aa
@@ -3618,7 +3580,7 @@ aa
 aa
 aa
 aa
-fP
+fO
 Fz
 gA
 Fz
@@ -3882,7 +3844,7 @@ aj
 af
 aa
 aa
-fP
+fO
 Fz
 gA
 Fz
@@ -3949,21 +3911,21 @@ aj
 aa
 aa
 fT
-gc
+fO
 gB
 gU
 hs
-gc
-gc
-gc
+fO
+fO
+fO
 gz
 iO
 hr
-gc
-gc
-gc
-gc
-gd
+fO
+fO
+fO
+fO
+fO
 aa
 aa
 aa
@@ -4096,9 +4058,9 @@ hy
 kb
 ks
 fO
-gc
-gc
-gc
+fO
+fO
+fO
 fO
 aa
 aa
@@ -4165,7 +4127,7 @@ kH
 kX
 kX
 kX
-gc
+fO
 aa
 aa
 aa
@@ -4191,7 +4153,7 @@ aa
 aa
 aC
 aI
-aO
+aI
 aC
 bj
 bf
@@ -4199,7 +4161,7 @@ bf
 bB
 bB
 aC
-cC
+aI
 aK
 aC
 af
@@ -4293,11 +4255,11 @@ gC
 jE
 ia
 ks
-kI
+kH
 Fz
 Fz
 Fz
-gc
+fO
 aa
 aa
 aa
@@ -4360,9 +4322,9 @@ jF
 hy
 kt
 fO
-gc
-gc
-gc
+fO
+fO
+fO
 fO
 aa
 aa

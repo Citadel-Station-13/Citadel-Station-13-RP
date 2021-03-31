@@ -11152,19 +11152,6 @@
 	icon_state = "white"
 	},
 /area/centcom/living)
-"vm" = (
-/turf/unsimulated/wall,
-/area/centcom/security)
-"vn" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
 "vo" = (
 /obj/effect/floor_decal/industrial/outline,
 /turf/unsimulated/floor{
@@ -12012,12 +11999,6 @@
 	icon_state = "vault"
 	},
 /area/centcom/security)
-"wF" = (
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
 "wG" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -12764,15 +12745,6 @@
 	icon_state = "carpet"
 	},
 /area/centcom/restaurant)
-"xR" = (
-/obj/machinery/door/airlock/security{
-	name = "Security"
-	},
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
 "xS" = (
 /obj/machinery/door/airlock/glass_security{
 	id_tag = "innerS";
@@ -13144,33 +13116,11 @@
 	icon_state = "vault"
 	},
 /area/centcom/security)
-"ys" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/blue/border,
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
-	dir = 9
-	},
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
 "yt" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /obj/effect/floor_decal/borderfloorblack/corner2,
 /obj/effect/floor_decal/corner/blue/bordercorner2,
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
-"yu" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/blue/border,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -13861,13 +13811,6 @@
 	icon_state = "vault"
 	},
 /area/centcom/security)
-"zw" = (
-/obj/effect/floor_decal/industrial/outline,
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
 "zx" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -14445,9 +14388,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"AD" = (
-/turf/unsimulated/wall,
-/area/centcom/security)
 "AE" = (
 /obj/machinery/newscaster{
 	pixel_x = -27
@@ -14522,16 +14462,6 @@
 	icon_state = "white"
 	},
 /area/centcom/bar)
-"AM" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1
-	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
-"AN" = (
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "AO" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
@@ -14542,13 +14472,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /turf/unsimulated/floor/steel,
-/area/centcom/security)
-"AP" = (
-/obj/effect/wingrille_spawn/reinforced/crescent,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
 /area/centcom/security)
 "AQ" = (
 /obj/machinery/computer/card,
@@ -14592,15 +14515,6 @@
 	icon_state = "vault"
 	},
 /area/centcom/security)
-"AT" = (
-/obj/machinery/door/airlock/security{
-	name = "Security"
-	},
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
 "AU" = (
 /obj/machinery/turretid/stun{
 	check_access = 0;
@@ -14610,28 +14524,6 @@
 	pixel_y = 32;
 	req_access = list(101);
 	req_one_access = list(101)
-	},
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
-"AV" = (
-/obj/machinery/recharger/wallcharger{
-	pixel_x = 4;
-	pixel_y = 26
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
-	dir = 4
 	},
 /turf/unsimulated/floor{
 	dir = 5;
@@ -14657,12 +14549,6 @@
 	name = "Station Intercom (Security)";
 	pixel_y = 27
 	},
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
-"AX" = (
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -14756,10 +14642,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
-"Bi" = (
-/obj/effect/floor_decal/industrial/outline,
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "Bj" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
@@ -14818,24 +14700,6 @@
 	},
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 6
-	},
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
-"Bm" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
-	dir = 8
 	},
 /turf/unsimulated/floor{
 	dir = 5;
@@ -15442,13 +15306,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9,
 /turf/unsimulated/floor/steel,
 /area/centcom/living)
-"Cp" = (
-/obj/machinery/camera/network/crescent,
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
 "Cq" = (
 /obj/machinery/door/airlock{
 	name = "Unit 2"
@@ -15539,13 +15396,6 @@
 	icon_state = "vault"
 	},
 /area/centcom/living)
-"Cz" = (
-/obj/effect/wingrille_spawn/reinforced/crescent,
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
 "CA" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -15621,27 +15471,6 @@
 	icon_state = "steel"
 	},
 /area/centcom/command)
-"CH" = (
-/obj/machinery/computer/card{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 9
-	},
-/obj/effect/floor_decal/corner/blue/border{
-	dir = 9
-	},
-/obj/item/radio/intercom{
-	dir = 1;
-	frequency = 1475;
-	name = "Station Intercom (Security)";
-	pixel_y = 27
-	},
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
-/area/centcom/security)
 "CI" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -24200,16 +24029,16 @@ us
 dk
 dk
 uS
-vm
-vm
-vm
-vm
-vm
-vm
-vm
-vm
-vm
-vm
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
 hP
 hP
 hP
@@ -24342,16 +24171,16 @@ ur
 dk
 dk
 uS
-vn
+te
 vw
 wh
 wE
 xb
-vm
+ho
 xU
 yl
 yx
-vm
+ho
 hP
 hP
 hP
@@ -24487,13 +24316,13 @@ uS
 vo
 vx
 wi
-wF
+ig
 xc
-vm
+ho
 xV
-wF
+ig
 yy
-vm
+ho
 hP
 hP
 hP
@@ -24629,13 +24458,13 @@ dk
 vo
 vy
 wj
-wF
+ig
 xd
-vm
+ho
 xW
-wF
+ig
 yz
-vm
+ho
 hP
 hP
 hP
@@ -24768,16 +24597,16 @@ dk
 dk
 dk
 dk
-vn
+te
 vw
 wk
 wG
 xe
 xH
-wF
+ig
 ym
-wF
-vm
+ig
+ho
 hP
 hP
 hP
@@ -24910,16 +24739,16 @@ uv
 uv
 uv
 vd
-vm
-vm
-vm
-vm
-vm
-vm
-vm
-vm
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
 xH
-vm
+ho
 cP
 cP
 cP
@@ -28619,10 +28448,10 @@ vG
 vG
 At
 vq
-AD
-AD
-AD
-AD
+ho
+ho
+ho
+ho
 uJ
 Cl
 uJ
@@ -28761,10 +28590,10 @@ vt
 vq
 vq
 vq
-AM
+vV
 Bh
-AN
-AM
+kp
+vV
 uJ
 Cm
 uJ
@@ -28903,10 +28732,10 @@ dk
 dk
 dk
 AC
-AN
-Bi
-Bi
-AN
+kp
+tt
+tt
+kp
 Cb
 Cn
 Cn
@@ -29045,10 +28874,10 @@ dk
 dk
 dk
 AC
-AN
-Bi
-Bi
-AN
+kp
+tt
+tt
+kp
 Cb
 uF
 uF
@@ -29187,10 +29016,10 @@ dk
 dk
 dk
 AC
-AN
-Bi
-Bi
-AN
+kp
+tt
+tt
+kp
 Cb
 Co
 Co
@@ -29328,12 +29157,12 @@ vt
 vt
 vq
 vq
-AD
+ho
 AO
 AO
 AO
 AO
-AD
+ho
 Cm
 uJ
 Cm
@@ -29470,12 +29299,12 @@ vG
 vG
 vG
 vI
-AD
-AM
-Bi
-Bi
-AM
-AD
+ho
+vV
+tt
+tt
+vV
+ho
 Cl
 uJ
 Cl
@@ -29612,12 +29441,12 @@ wL
 zM
 zM
 xY
-AD
-AP
+ho
+zG
 Bj
 Bt
-AP
-AD
+zG
+ho
 uJ
 uJ
 uJ
@@ -29754,12 +29583,12 @@ wL
 zM
 zM
 xY
-AD
+ho
 AQ
 Bk
 Bu
 BK
-AD
+ho
 iQ
 iQ
 iQ
@@ -29896,12 +29725,12 @@ vG
 vG
 vG
 vG
-AD
+ho
 AR
-AX
-AX
+ig
+ig
 BL
-AD
+ho
 iQ
 iQ
 iQ
@@ -30038,12 +29867,12 @@ vG
 vG
 vG
 vG
-AD
+ho
 AS
 Bl
 Bv
 BM
-AD
+ho
 iQ
 iQ
 iQ
@@ -30180,12 +30009,12 @@ wL
 zM
 zM
 xY
-AD
-AT
-AD
-AD
-AD
-AD
+ho
+xH
+ho
+ho
+ho
+ho
 iQ
 iQ
 iQ
@@ -30322,12 +30151,12 @@ wL
 zM
 zM
 xY
-AD
+ho
 AU
-Bm
+wY
 Bw
 BN
-AD
+ho
 iQ
 iQ
 iQ
@@ -30464,12 +30293,12 @@ vG
 vG
 vG
 vG
-AD
-AV
-AX
-AX
+ho
+yc
+ig
+ig
 BO
-AD
+ho
 iQ
 iQ
 iQ
@@ -30606,21 +30435,21 @@ vG
 vG
 vG
 vD
-AD
+ho
 AW
-AX
-AX
+ig
+ig
 BP
-AD
-AD
-AD
-AD
-AD
-AD
-AD
-AD
-AD
-AD
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
+ho
 iQ
 iQ
 iQ
@@ -30748,21 +30577,21 @@ vG
 vG
 vG
 Aq
-AD
-AX
+ho
+ig
 Bl
 Bx
 BQ
-AD
-Cp
-AX
-AX
-AX
-AX
-AX
-AX
-AX
-AD
+ho
+Ag
+ig
+ig
+ig
+ig
+ig
+ig
+ig
+ho
 iQ
 iQ
 iQ
@@ -30890,21 +30719,21 @@ vq
 vt
 vt
 vt
-AD
-AT
-AD
-AD
-AD
-AD
-AT
-AD
-AD
-AD
-AD
-AD
-AD
-AT
-AD
+ho
+xH
+ho
+ho
+ho
+ho
+xH
+ho
+ho
+ho
+ho
+ho
+ho
+xH
+ho
 iQ
 iQ
 iQ
@@ -31042,11 +30871,11 @@ dk
 uS
 uS
 uS
-Cz
-CH
+xx
+wh
 CU
-AX
-AD
+ig
+ho
 iQ
 iQ
 iQ
@@ -31186,9 +31015,9 @@ dk
 uS
 CA
 CI
-AX
+ig
 Db
-AD
+ho
 iQ
 iQ
 iQ
@@ -31326,11 +31155,11 @@ dk
 dk
 dk
 By
-Cz
+xx
 CJ
 CV
-AX
-AD
+ig
+ho
 iQ
 iQ
 iQ
@@ -31733,7 +31562,7 @@ ig
 xs
 ho
 yb
-ys
+xd
 rA
 yP
 kp
@@ -31873,10 +31702,10 @@ vT
 ww
 ig
 ig
-xR
+xH
 ig
 ig
-xR
+xH
 kp
 kp
 kp
@@ -32159,7 +31988,7 @@ ig
 xu
 ho
 yd
-yu
+xc
 ho
 yR
 zj
@@ -32301,7 +32130,7 @@ wR
 xv
 ho
 ye
-ys
+xd
 ho
 yS
 zk
@@ -32444,12 +32273,12 @@ xw
 ho
 ye
 ig
-xR
+xH
 ig
 zl
 zv
 ig
-xR
+xH
 ig
 xx
 AG
@@ -33153,7 +32982,7 @@ wV
 xy
 ho
 yd
-yu
+xc
 xx
 yT
 ig
@@ -33295,11 +33124,11 @@ wW
 xz
 ho
 yh
-yu
+xc
 xx
 yU
 ig
-zw
+vo
 ig
 ig
 ig
@@ -33437,11 +33266,11 @@ ig
 xA
 xx
 ye
-yu
+xc
 xx
 yV
 ig
-zw
+vo
 ig
 ig
 zb
@@ -33579,11 +33408,11 @@ ig
 xB
 xx
 yb
-yu
+xc
 xx
 yW
 ig
-zw
+vo
 ig
 zP
 Ai
@@ -33721,11 +33550,11 @@ ig
 ig
 xT
 ig
-yu
+xc
 xx
 yX
 ig
-zw
+vo
 ig
 zP
 zc
@@ -33863,11 +33692,11 @@ ig
 xC
 xx
 ig
-yu
+xc
 xx
 yY
 ig
-zw
+vo
 ig
 ig
 Aj
