@@ -28,7 +28,7 @@
 /turf/simulated/floor/frozen_world,
 /area/frozen_planet/ruins)
 "G" = (
-/obj/item/reagent_containers/food/snacks/pizza/magherita,
+/obj/item/reagent_containers/food/snacks/pizza/margherita,
 /obj/structure/table,
 /turf/simulated/floor/frozen_world,
 /area/frozen_planet/ruins)
