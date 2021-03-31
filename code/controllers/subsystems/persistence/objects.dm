@@ -12,7 +12,10 @@
 	var/jsonfile = file("[current_map_directory]/[PERSISTENCE_FILENAME_OBJECTS]")
 	if(!jsonfile)
 		return
-	var/list/data = json_decode(file2text(jsonfile))
+	var/jsontext = file2text(jsonfile)
+	if(!length(jsontext))
+		return
+	var/list/data = json_decode(jsontext)
 	var/datum/element/persistence/P = SSdcs.GetElement(list(/datum/element/persistence))
 	if(!P)
 		to_chat(world, "<span class='boldwarning'>Persistence subsystem failed to grab the persistence element. !!ALL DATA WILL BE LOST AT ROUND END!!</span>")
