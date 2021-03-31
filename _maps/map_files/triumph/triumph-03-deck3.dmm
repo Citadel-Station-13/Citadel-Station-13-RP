@@ -107,7 +107,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "acp" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -173,9 +173,7 @@
 	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "afA" = (
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Emergecy Flood Storage";
@@ -191,7 +189,7 @@
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/scale,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "afO" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -962,7 +960,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "aMP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -1276,9 +1274,7 @@
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "bge" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -1351,9 +1347,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "bjl" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -1471,9 +1465,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "bmN" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 1
@@ -1867,14 +1859,12 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "bEP" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "bFb" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -2131,9 +2121,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "bOg" = (
 /obj/machinery/sleeper{
 	dir = 8
@@ -2172,7 +2160,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "bPy" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -2610,11 +2598,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
-"clC" = (
-/turf/simulated/wall,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
 "clG" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -2905,9 +2888,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/carpet/blue,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "cwJ" = (
 /obj/machinery/door/airlock{
 	name = "Restroom"
@@ -3016,9 +2997,7 @@
 	pixel_x = -28
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "cCe" = (
 /obj/machinery/light{
 	dir = 8;
@@ -3461,9 +3440,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "cUY" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -3721,6 +3698,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/medbay3)
+"ddh" = (
+/turf/simulated/wall,
+/area/medical/exam_room/exam_2)
 "ddE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3958,9 +3938,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "doH" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -4190,9 +4168,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "dBv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/light{
@@ -4382,9 +4358,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "dHz" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -4595,9 +4569,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "dRj" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4660,7 +4632,7 @@
 /obj/item/bedsheet/medical,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "dTK" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/white,
@@ -4989,9 +4961,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "eeL" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
@@ -5605,9 +5575,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "eHl" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -6055,7 +6023,7 @@
 /area/rnd/test_area)
 "fdT" = (
 /turf/simulated/wall,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "fdU" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/firealarm{
@@ -6346,9 +6314,7 @@
 /obj/item/clothing/head/surgery,
 /obj/item/clothing/under/rank/medical/scrubs,
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "fpS" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
@@ -6901,9 +6867,7 @@
 	network = list("Research","Toxins Test Area")
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "fKa" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -7655,9 +7619,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "grZ" = (
 /turf/simulated/floor/tiled,
 /area/medical/psych_ward)
@@ -7947,9 +7909,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "gAD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -8127,9 +8087,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "gIt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -8513,7 +8471,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "gZq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/purple{
 	dir = 1
@@ -8734,7 +8692,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "hhX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9120,9 +9078,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "hAr" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -9233,9 +9189,7 @@
 	req_access = list()
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "hHp" = (
 /obj/machinery/access_button{
 	master_tag = null;
@@ -9530,9 +9484,7 @@
 "hUs" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "hUt" = (
 /obj/random/trash,
 /obj/structure/railing,
@@ -10375,9 +10327,7 @@
 /obj/item/bedsheet/blue,
 /obj/structure/curtain/open/bed,
 /turf/simulated/floor/carpet/blue,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "iJE" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled,
@@ -10832,9 +10782,7 @@
 "jeQ" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "jfg" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -10885,9 +10833,7 @@
 	req_one_access = list(47)
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "jgE" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 8
@@ -11047,9 +10993,7 @@
 	},
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "jpk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -11999,9 +11943,7 @@
 "kcI" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "kcZ" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -12184,9 +12126,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "klW" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -12420,7 +12360,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "kvz" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -12506,9 +12446,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "kxP" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/beige/border,
@@ -13055,9 +12993,7 @@
 /obj/machinery/light,
 /obj/item/reagent_containers/food/drinks/cup,
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "kYs" = (
 /obj/machinery/alarm{
 	frequency = 1441;
@@ -13065,9 +13001,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "kYP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 4
@@ -13333,9 +13267,7 @@
 	name = "Robotics Operating Table"
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "llO" = (
 /obj/structure/window/reinforced,
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -13443,9 +13375,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "lrR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -14149,9 +14079,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "lXD" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -14232,9 +14160,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "mdq" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 4
@@ -14525,7 +14451,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "mlt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -14736,9 +14662,7 @@
 	},
 /obj/structure/curtain/open/shower/medical,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "mrJ" = (
 /obj/machinery/recharge_station,
 /obj/machinery/camera/network/research{
@@ -14798,9 +14722,7 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/carpet/blue,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "mvb" = (
 /obj/machinery/light{
 	dir = 1
@@ -15242,7 +15164,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "mNb" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green{
@@ -15280,17 +15202,13 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "mNz" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "mOL" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /turf/simulated/floor/tiled,
@@ -15770,9 +15688,7 @@
 /obj/item/mmi/digital/posibrain,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "nfm" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -15890,9 +15806,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "nmP" = (
 /obj/structure/disposaloutlet{
 	dir = 4
@@ -15947,9 +15861,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "noo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -16049,9 +15961,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "ntR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -16378,9 +16288,7 @@
 /obj/machinery/scale,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "nNN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -16882,7 +16790,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "ogR" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
 	frequency = 1445;
@@ -17023,7 +16931,7 @@
 	id = "exam_1"
 	},
 /turf/simulated/floor/plating,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "olq" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light{
@@ -17095,7 +17003,7 @@
 	name = "Exam Room 1"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "oqt" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
@@ -17189,9 +17097,7 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/carpet/blue,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "ots" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloorwhite,
@@ -17307,9 +17213,7 @@
 	name = "Exam Room 2"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "owX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -17556,9 +17460,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "oFm" = (
 /obj/structure/bed/chair/wheelchair,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -17868,9 +17770,7 @@
 /area/medical/morgue)
 "oRt" = (
 /turf/simulated/wall/r_wall,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "oRy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -18090,9 +17990,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "oYN" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -18278,9 +18176,7 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "pdO" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -18671,9 +18567,7 @@
 /obj/item/clothing/under/rank/medical/scrubs,
 /obj/item/clothing/head/surgery,
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "psm" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -18756,9 +18650,7 @@
 "pvt" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "pvP" = (
 /turf/simulated/wall/r_wall,
 /area/medical/ward)
@@ -18978,9 +18870,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "pzW" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/research,
@@ -19007,7 +18897,7 @@
 "pAO" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "pAW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -19043,9 +18933,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "pBu" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -19837,9 +19725,7 @@
 	},
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "qas" = (
 /turf/simulated/wall/r_wall,
 /area/medical/virologyaccess)
@@ -20719,9 +20605,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "qJZ" = (
 /turf/simulated/wall,
 /area/medical/chemistry)
@@ -20876,7 +20760,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "qPW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -21334,9 +21218,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "ref" = (
 /obj/machinery/light{
 	dir = 8;
@@ -21884,9 +21766,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "rxU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -22303,7 +22183,7 @@
 /obj/machinery/hologram/holopad,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "rPd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -22594,9 +22474,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "sef" = (
 /obj/structure/toilet{
 	dir = 1
@@ -22858,9 +22736,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "smZ" = (
 /obj/machinery/camera/network/research{
 	dir = 1
@@ -23936,9 +23812,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "taT" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /obj/effect/floor_decal/techfloor{
@@ -24420,9 +24294,7 @@
 /obj/machinery/cell_charger,
 /obj/item/surgical/bioregen,
 /turf/simulated/floor/tiled/old_cargo/purple,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "tpV" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -24838,9 +24710,7 @@
 	name = "SURGERY - AUTHORIZED PERSONNEL ONLY"
 	},
 /turf/simulated/wall,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "tCs" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
@@ -24951,9 +24821,7 @@
 /obj/item/clothing/accessory/stethoscope,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "tJM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -24978,7 +24846,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "tKl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/purple{
 	dir = 8
@@ -25012,9 +24880,7 @@
 /area/rnd/xenobiology)
 "tLy" = (
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "tLH" = (
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /obj/machinery/door/blast/regular{
@@ -25728,9 +25594,7 @@
 /area/medical/medbay_primary_storage)
 "usN" = (
 /turf/simulated/wall,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "utF" = (
 /obj/structure/table/glass,
 /obj/item/backup_implanter{
@@ -25837,9 +25701,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "uxE" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -26092,9 +25954,7 @@
 /obj/item/mmi,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "uHy" = (
 /obj/machinery/camera/network/research{
 	dir = 4;
@@ -28149,9 +28009,7 @@
 	id = "exam_2"
 	},
 /turf/simulated/floor/plating,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "wor" = (
 /turf/simulated/wall,
 /area/assembly/robotics)
@@ -28185,7 +28043,7 @@
 	name = "Medical Doctor"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "woX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -28763,9 +28621,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "wKv" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -29218,9 +29074,7 @@
 	},
 /obj/item/storage/box/gloves,
 /turf/simulated/floor/tiled/old_cargo/gray,
-/area/medical/surgery{
-	name = "\improper Robotics Surgery Room"
-	})
+/area/assembly/robotics/surgery)
 "xcn" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -29252,7 +29106,7 @@
 	name = "Exam Room 1"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room)
+/area/medical/exam_room/exam_1)
 "xdo" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/cable/green{
@@ -29475,9 +29329,7 @@
 	name = "Exam Room 2"
 	},
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "xlS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -29822,9 +29674,7 @@
 	},
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
-/area/medical/exam_room{
-	name = "\improper Exam Room 2"
-	})
+/area/medical/exam_room/exam_2)
 "xAy" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -30315,9 +30165,7 @@
 /obj/item/clothing/head/surgery,
 /obj/item/clothing/under/rank/medical/scrubs,
 /turf/simulated/floor/tiled/white,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "xUD" = (
 /obj/structure/cable/green{
 	d2 = 4;
@@ -30623,9 +30471,7 @@
 /area/hallway/primary/port)
 "yhl" = (
 /turf/simulated/wall,
-/area/medical/biostorage{
-	name = "\improper Surgeon Break Room"
-	})
+/area/crew_quarters/medbreak/surgery)
 "yhu" = (
 /obj/machinery/light{
 	dir = 8
@@ -41754,13 +41600,13 @@ qJZ
 mak
 hxL
 bPy
-clC
-clC
-clC
-clC
-clC
-clC
-clC
+fdT
+fdT
+fdT
+fdT
+fdT
+fdT
+fdT
 fNm
 cbU
 tRd
@@ -41896,7 +41742,7 @@ nrB
 mak
 hxL
 vtk
-clC
+ddh
 tJn
 dQH
 eHf
@@ -42038,13 +41884,13 @@ gbb
 lUV
 fVB
 tvT
-clC
+ddh
 bEM
 oFe
 hUs
 hUs
 rdx
-clC
+ddh
 jqm
 dcC
 wMb
@@ -42180,7 +42026,7 @@ auK
 mak
 uWd
 vtk
-clC
+ddh
 kYs
 doo
 bdW
@@ -42322,13 +42168,13 @@ qJZ
 mak
 uWd
 ioo
-clC
+ddh
 gAA
 uxC
 wKj
 hUs
 hUs
-clC
+ddh
 tiM
 cbU
 tRd
@@ -42606,13 +42452,13 @@ dFO
 fZZ
 uWd
 csX
-clC
-clC
-clC
-clC
-clC
-clC
-clC
+ddh
+ddh
+ddh
+ddh
+ddh
+ddh
+ddh
 kuM
 nJe
 tRd

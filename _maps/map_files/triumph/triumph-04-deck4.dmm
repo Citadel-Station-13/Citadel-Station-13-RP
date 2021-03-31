@@ -336,9 +336,7 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "aoK" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
@@ -467,9 +465,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "aue" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -1236,16 +1232,12 @@
 	dir = 9
 	},
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "bbO" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "bem" = (
 /obj/structure/table/rack,
 /obj/random/trash,
@@ -3322,9 +3314,7 @@
 	name = "Bridge"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "cDW" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -3439,9 +3429,7 @@
 "cHO" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/carpet,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "cHX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
@@ -3599,9 +3587,7 @@
 /area/crew_quarters/sleep/CE_quarters)
 "cQt" = (
 /turf/simulated/wall/r_wall,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "cRe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4739,9 +4725,7 @@
 /area/triumph/surfacebase/sauna)
 "dOZ" = (
 /turf/simulated/wall/r_wall,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "dPR" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/floor_decal/techfloor/orange{
@@ -6109,9 +6093,7 @@
 	},
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "eND" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -7275,9 +7257,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/camera/network/command,
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "fCb" = (
 /turf/simulated/wall/r_wall,
 /area/vacant/vacant_bar)
@@ -7514,9 +7494,7 @@
 	name = "Official Personal Storage"
 	},
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "fOX" = (
 /obj/structure/sign/department/chapel,
 /turf/simulated/wall,
@@ -7705,9 +7683,7 @@
 /area/lawoffice)
 "fWb" = (
 /turf/simulated/open,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "fWZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -7883,9 +7859,7 @@
 /area/bridge/hallway)
 "ggT" = (
 /turf/simulated/floor/carpet,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "ggU" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 8
@@ -9533,9 +9507,7 @@
 /area/triumph/surfacebase/sauna)
 "hrX" = (
 /turf/simulated/wall,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "hsS" = (
 /obj/structure/table/reinforced,
 /obj/machinery/alarm/alarms_hidden{
@@ -10550,9 +10522,7 @@
 	},
 /obj/structure/flora/pottedplant/flower,
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "hZS" = (
 /obj/machinery/firealarm{
 	layer = 3.3;
@@ -10701,6 +10671,10 @@
 /obj/machinery/camera/network/exploration,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
+"ifn" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless/ceiling,
+/area/bridge/hallway)
 "ify" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
@@ -11189,9 +11163,7 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "iyy" = (
 /obj/structure/loot_pile/maint/boxfort,
 /turf/simulated/floor/plating,
@@ -11451,9 +11423,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "iMD" = (
 /obj/structure/fitness/weightlifter,
 /turf/simulated/floor/tiled/dark,
@@ -13112,9 +13082,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/carpet,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "kgT" = (
 /obj/machinery/camera/network/outside{
 	dir = 10
@@ -13775,9 +13743,7 @@
 	pixel_x = -1
 	},
 /turf/simulated/floor/carpet,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "kMK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -13941,9 +13907,7 @@
 	},
 /obj/structure/table/marble,
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "kSf" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -14538,9 +14502,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "lpR" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/dark,
@@ -15027,9 +14989,7 @@
 	pixel_y = -31
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "lEO" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -16347,9 +16307,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "mFS" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -16368,9 +16326,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "mHf" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -16651,9 +16607,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "mRY" = (
 /obj/structure/bookcase{
 	name = "bookcase (Non-Fiction)"
@@ -17735,9 +17689,7 @@
 	pixel_y = -28
 	},
 /turf/simulated/floor/carpet,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "nFe" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/steel_grid,
@@ -17977,9 +17929,7 @@
 "nRc" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/carpet,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "nRf" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/secure_closet/guncabinet/excursion,
@@ -19086,9 +19036,7 @@
 "oIa" = (
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "oIi" = (
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
@@ -19245,9 +19193,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "oOP" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -21658,9 +21604,7 @@
 /obj/structure/table/marble,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "qsQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -22848,9 +22792,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/wall/r_wall,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "rhT" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/lino,
@@ -23232,9 +23174,7 @@
 /area/hydroponics/garden)
 "ruN" = (
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "ruS" = (
 /turf/simulated/floor/wood/broken,
 /area/maintenance/central)
@@ -24200,9 +24140,7 @@
 "siD" = (
 /obj/machinery/computer/communications,
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "sju" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -24620,9 +24558,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "szd" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -25303,9 +25239,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "sPq" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -25364,9 +25298,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "sRA" = (
 /obj/structure/cable/green{
 	d2 = 8;
@@ -26592,9 +26524,7 @@
 "tUY" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "tVk" = (
 /obj/machinery/ai_slipper,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -26695,9 +26625,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "tZn" = (
 /obj/machinery/camera/network/civilian{
 	dir = 4
@@ -28343,9 +28271,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "vil" = (
 /obj/structure/table/reinforced,
 /obj/item/stamp/denied,
@@ -28398,9 +28324,7 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "vlb" = (
 /obj/effect/floor_decal/corner/blue/full{
 	dir = 8
@@ -28637,9 +28561,7 @@
 /area/triumph/surfacebase/tram)
 "vtG" = (
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "vtY" = (
 /obj/machinery/firealarm{
 	layer = 3.3;
@@ -28988,9 +28910,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "vFI" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
@@ -29614,9 +29534,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/dark,
-/area/station/stairs_one{
-	name = "\improper Station Stairwell Fourth Floor"
-	})
+/area/triumph/station/stairs_four)
 "vVM" = (
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
@@ -29931,9 +29849,7 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
 /turf/simulated/shuttle/floor/voidcraft,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "wfD" = (
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
@@ -30604,6 +30520,15 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/central)
+"wFA" = (
+/obj/machinery/porta_turret/crescent{
+	density = 1;
+	faction = "neutral"
+	},
+/turf/simulated/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/bridge/hallway)
 "wFO" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
@@ -30975,9 +30900,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/wood,
-/area/bridge{
-	name = "\improper Official On-Site Office"
-	})
+/area/bridge/office)
 "wUd" = (
 /obj/machinery/camera/network/exploration,
 /obj/structure/table/bench/steel,
@@ -48655,7 +48578,7 @@ nIK
 clY
 nIK
 dff
-dOZ
+dSw
 dSw
 lfI
 jgZ
@@ -48797,7 +48720,7 @@ nIK
 clY
 nIK
 dff
-dOZ
+dSw
 dSw
 icR
 oqg
@@ -48939,7 +48862,7 @@ nIK
 clY
 pkc
 dff
-dOZ
+dSw
 dSw
 gTD
 bFf
@@ -50217,7 +50140,7 @@ nIK
 clY
 nIK
 nIK
-rYN
+wFA
 dOZ
 iyp
 dOZ
@@ -50359,7 +50282,7 @@ nIK
 clY
 nIK
 nIK
-cBE
+ifn
 nIK
 nIK
 pkc
