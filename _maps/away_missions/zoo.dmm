@@ -6663,9 +6663,7 @@
 /area/awaymission/zoo)
 "sc" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/mimic{
-	faction = "zoo"
-	},
+/obj/structure/closet/crate/mimic,
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
 "sd" = (
