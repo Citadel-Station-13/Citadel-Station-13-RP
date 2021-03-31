@@ -56,8 +56,8 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/reagent_containers/food/drinks/cans/dr_gibb/Initialize(mapload)
-		..()
-		reagents.add_reagent("dr_gibb", 30)
+	. = ..()
+	reagents.add_reagent("dr_gibb", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/starkist
 	name = "\improper Star-kist"

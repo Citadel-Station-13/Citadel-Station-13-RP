@@ -25,6 +25,7 @@ cp -r _maps/* $1/_maps/
 cp -r icons/* $1/icons/
 cp -r sound/* $1/sound/
 cp -r modular_citadel/* $1/modular_citadel/
+cp -r config_static/* $1/config_static/
 # cp -r icons/runtime/* $1/icons/runtime/
 # cp -r sound/runtime/* $1/sound/runtime/
 # cp -r strings/* $1/strings/

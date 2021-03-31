@@ -417,8 +417,10 @@
 	return 1
 
 /obj/structure/closet/proc/mob_breakout(var/mob/living/escapee)
-
-	if(breakout || !req_breakout())
+	if(breakout)
+		return
+	if(!req_breakout() && !opened)
+		open()
 		return
 
 	escapee.setClickCooldown(100)

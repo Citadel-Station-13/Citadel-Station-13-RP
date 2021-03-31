@@ -3498,7 +3498,7 @@ END CITADEL CHANGE */
     center_of_mass = list("x"=16, "y"=15)
 
 /obj/item/reagent_containers/food/snacks/liquidprotein/Initialize(mapload)
-    ..()
+    . = ..()
     reagents.add_reagent("protein", 30)
     reagents.add_reagent("iron", 3)
 
