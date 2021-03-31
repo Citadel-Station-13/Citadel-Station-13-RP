@@ -4,7 +4,7 @@
 	icon_state = "pill10"
 
 /obj/item/reagent_containers/pill/nutriment/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 30)
 
 /obj/item/reagent_containers/pill/protein
@@ -13,7 +13,7 @@
 	icon_state = "pill24"
 
 /obj/item/reagent_containers/pill/protein/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 30)
 
 /obj/item/reagent_containers/pill/rezadone
@@ -22,7 +22,7 @@
 	icon_state = "pill2"
 
 /obj/item/reagent_containers/pill/rezadone/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("rezadone", 5)
 	color = reagents.get_color()
 
@@ -32,7 +32,7 @@
 	icon_state = "pill10"
 
 /obj/item/reagent_containers/pill/peridaxon/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("peridaxon", 10)
 
 /obj/item/reagent_containers/pill/carthatoline
@@ -41,7 +41,7 @@
 	icon_state = "pill4"
 
 /obj/item/reagent_containers/pill/carthatoline/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("carthatoline", 10)
 	color = reagents.get_color()
 
@@ -51,7 +51,7 @@
 	icon_state = "pill3"
 
 /obj/item/reagent_containers/pill/alkysine/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("alkysine", 10)
 	color = reagents.get_color()
 
@@ -61,7 +61,7 @@
 	icon_state = "pill3"
 
 /obj/item/reagent_containers/pill/imidazoline/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("imidazoline", 15)
 	color = reagents.get_color()
 
@@ -71,7 +71,7 @@
 	icon_state = "pill2"
 
 /obj/item/reagent_containers/pill/osteodaxon/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("osteodaxon", 10)
 	color = reagents.get_color()
 
@@ -81,7 +81,7 @@
 	icon_state = "pill1"
 
 /obj/item/reagent_containers/pill/myelamine/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("myelamine", 10)
 	color = reagents.get_color()
 
@@ -91,7 +91,7 @@
 	icon_state = "pill4"
 
 /obj/item/reagent_containers/pill/hyronalin/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("hyronalin", 15)
 	color = reagents.get_color()
 
@@ -101,7 +101,7 @@
 	icon_state = "pill2"
 
 /obj/item/reagent_containers/pill/arithrazine/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("arithrazine", 5)
 	color = reagents.get_color()
 
@@ -111,7 +111,7 @@
 	icon_state = "pill2"
 
 /obj/item/reagent_containers/pill/corophizine/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("corophizine", 5)
 	color = reagents.get_color()
 
@@ -121,6 +121,6 @@
 	icon_state = "pill1"
 
 /obj/item/reagent_containers/pill/healing_nanites/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("healing_nanites", 30)
 	color = reagents.get_color()
