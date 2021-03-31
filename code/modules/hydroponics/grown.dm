@@ -14,9 +14,8 @@
 	var/datum/seed/seed
 	var/potency = -1
 
-/obj/item/reagent_containers/food/snacks/grown/Initialize(newloc,planttype)
-
-	..()
+/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, planttype)
+	. = ..()
 	if(!dried_type)
 		dried_type = type
 	src.pixel_x = rand(-5.0, 5)
@@ -26,50 +25,40 @@
 	if(planttype)
 		plantname = planttype
 
-/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload)
-	. = ..()
-	spawn()
-		if(!plantname)
-			return
+	if(!plantname)
+		return
 
-		if(!plant_controller)
-			sleep(250) // ugly hack, should mean roundstart plants are fine.
-		if(!plant_controller)
-			to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
-			qdel(src)
-			return
+	seed = plant_controller.seeds[plantname]
 
-		seed = plant_controller.seeds[plantname]
+	if(!seed)
+		return
 
-		if(!seed)
-			return
+	name = "[seed.seed_name]"
+	trash = seed.get_trash_type()
 
-		name = "[seed.seed_name]"
-		trash = seed.get_trash_type()
+	update_icon()
 
-		update_icon()
+	if(!seed.chems)
+		return
 
-		if(!seed.chems)
-			return
+	potency = seed.get_trait(TRAIT_POTENCY)
 
-		potency = seed.get_trait(TRAIT_POTENCY)
+	for(var/rid in seed.chems)
+		var/list/reagent_data = seed.chems[rid]
+		if(reagent_data && reagent_data.len)
+			var/rtotal = reagent_data[1]
+			var/list/data = list()
+			if(reagent_data.len > 1 && potency > 0)
+				rtotal += round(potency/reagent_data[2])
+			if(rid == "nutriment")
+				data[seed.seed_name] = max(1,rtotal)
 
-		for(var/rid in seed.chems)
-			var/list/reagent_data = seed.chems[rid]
-			if(reagent_data && reagent_data.len)
-				var/rtotal = reagent_data[1]
-				var/list/data = list()
-				if(reagent_data.len > 1 && potency > 0)
-					rtotal += round(potency/reagent_data[2])
-				if(rid == "nutriment")
-					data[seed.seed_name] = max(1,rtotal)
-
-				reagents.add_reagent(rid,max(1,rtotal),data)
-		update_desc()
-		if(reagents.total_volume > 0)
-			bitesize = 1+round(reagents.total_volume / 2, 1)
-		if(seed.get_trait(TRAIT_STINGS))
-			force = 1
+			reagents.add_reagent(rid,max(1,rtotal),data)
+	update_desc()
+	if(reagents.total_volume > 0)
+		bitesize = 1+round(reagents.total_volume / 2, 1)
+	if(seed.get_trait(TRAIT_STINGS))
+		force = 1
 
 /obj/item/reagent_containers/food/snacks/grown/proc/update_desc()
 

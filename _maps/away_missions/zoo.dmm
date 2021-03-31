@@ -4936,7 +4936,7 @@
 	},
 /area/awaymission/zoo)
 "nG" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	dir = 1;
 	icon_state = "beachcorner"
 	},
@@ -4953,7 +4953,7 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/awaymission/zoo)
 "nK" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	icon_state = "beachcorner"
 	},
 /area/awaymission/zoo)
@@ -5143,13 +5143,13 @@
 	},
 /area/awaymission/zoo)
 "og" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	dir = 10;
 	icon_state = "beach"
 	},
 /area/awaymission/zoo)
 "oh" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	dir = 6;
 	icon_state = "beach"
 	},
@@ -5230,10 +5230,10 @@
 	},
 /area/awaymission/zoo)
 "ot" = (
-/turf/simulated/floor/holofloor/outdoors/water,
+/turf/simulated/floor/holofloor/beach/water,
 /area/awaymission/zoo)
 "ou" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	icon_state = "beach"
 	},
 /area/awaymission/zoo)
@@ -5512,7 +5512,7 @@
 /mob/living/carbon/human/sharkm{
 	faction = "zoo"
 	},
-/turf/simulated/floor/holofloor/outdoors/water,
+/turf/simulated/floor/holofloor/beach/water,
 /area/awaymission/zoo)
 "ph" = (
 /mob/living/simple_mob/animal/passive/tindalos{
@@ -5849,19 +5849,19 @@
 	},
 /area/awaymission/zoo)
 "qe" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	dir = 9;
 	icon_state = "beach"
 	},
 /area/awaymission/zoo)
 "qf" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	dir = 1;
 	icon_state = "beach"
 	},
 /area/awaymission/zoo)
 "qg" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	dir = 5;
 	icon_state = "beach"
 	},
@@ -5919,13 +5919,13 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "qn" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	dir = 4;
 	icon_state = "beachcorner"
 	},
 /area/awaymission/zoo)
 "qo" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	dir = 8;
 	icon_state = "beachcorner"
 	},
@@ -7881,7 +7881,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "uW" = (
-/turf/simulated/floor/holofloor/outdoors/water{
+/turf/simulated/floor/holofloor/beach/water{
 	dir = 8;
 	icon_state = "beach"
 	},
@@ -8024,7 +8024,7 @@
 	icon_living = "evilcrab";
 	icon_state = "evilcrab"
 	},
-/turf/simulated/floor/holofloor/outdoors/water,
+/turf/simulated/floor/holofloor/beach/water,
 /area/awaymission/zoo)
 "vm" = (
 /obj/item/stack/tile/grass,

@@ -24,7 +24,9 @@ cp vorestation.dmb vorestation.rsc $1/
 cp -r _maps/* $1/_maps/
 cp -r icons/* $1/icons/
 cp -r sound/* $1/sound/
+mkdir $1/modular_citadel
 cp -r modular_citadel/* $1/modular_citadel/
+mkdir $1/config_static
 cp -r config_static/* $1/config_static/
 # cp -r icons/runtime/* $1/icons/runtime/
 # cp -r sound/runtime/* $1/sound/runtime/

@@ -236,7 +236,6 @@
 "bn" = (
 /obj/machinery/door/airlock/voidcraft/survival_pod{
 	icon_state = "pdoor1";
-	id = "spacebattlepod3";
 	name = "Front Hull Door";
 	opacity = 1
 	},
