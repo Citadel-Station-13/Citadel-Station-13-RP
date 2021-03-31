@@ -29,7 +29,7 @@ GLOBAL_VAR(test_log)
 	var/turf/run_loc_top_right
 
 	/// The type of turf to allocate for the testing zone
-	var/test_turf_type = /turf/open/floor/plasteel
+	var/test_turf_type = /turf/simulated/floor/tiled/white
 
 	//internal shit
 	var/focus = FALSE
