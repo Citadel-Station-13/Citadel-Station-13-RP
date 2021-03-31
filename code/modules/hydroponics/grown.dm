@@ -27,7 +27,7 @@
 		plantname = planttype
 
 /obj/item/reagent_containers/food/snacks/grown/Initialize(mapload)
-	..()
+	. = ..()
 	spawn()
 		if(!plantname)
 			return

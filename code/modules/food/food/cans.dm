@@ -36,7 +36,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("spacemountainwind", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/thirteenloko
@@ -76,7 +76,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/reagent_containers/food/drinks/cans/space_up/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("space_up", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/lemon_lime
@@ -86,7 +86,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/reagent_containers/food/drinks/cans/lemon_lime/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("lemon_lime", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/iced_tea
@@ -96,7 +96,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/reagent_containers/food/drinks/cans/iced_tea/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("icetea", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/grape_juice
@@ -106,7 +106,7 @@
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/reagent_containers/food/drinks/cans/grape_juice/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("grapejuice", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/tonic

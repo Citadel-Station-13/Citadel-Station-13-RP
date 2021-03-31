@@ -27,7 +27,7 @@
 	delete_me = TRUE
 
 /obj/effect/landmark/corpse/Initialize(mapload)
-	..()
+	. = ..()
 	createCorpse()
 	return INITIALIZE_HINT_QDEL
 

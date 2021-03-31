@@ -33,7 +33,7 @@
 	var/list/starts_with
 
 /obj/structure/closet/Initialize(mapload)
-	..()
+	. = ..()
 	PopulateContents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD

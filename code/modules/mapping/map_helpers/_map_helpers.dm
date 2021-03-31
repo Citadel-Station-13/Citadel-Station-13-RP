@@ -5,7 +5,7 @@
 	var/late = FALSE
 
 /obj/effect/map_helper/Initialize(mapload)
-	..()
+	. = ..()
 	return late ? INITIALIZE_HINT_LATELOAD : INITIALIZE_HINT_QDEL
 
 /*
