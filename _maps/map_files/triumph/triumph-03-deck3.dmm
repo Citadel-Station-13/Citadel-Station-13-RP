@@ -1647,9 +1647,7 @@
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/therapy/green,
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "buX" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -1979,9 +1977,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "bIX" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/cable/green{
@@ -3275,7 +3271,7 @@
 "cLl" = (
 /obj/structure/bed/psych,
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "cLo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /obj/machinery/camera/network/research{
@@ -3475,9 +3471,7 @@
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "cVZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3505,9 +3499,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "cWS" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -4418,9 +4410,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "dLs" = (
 /turf/simulated/wall/r_wall,
 /area/teleporter/departing)
@@ -4508,7 +4498,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "dNE" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -4615,7 +4605,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "dTa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 10
@@ -6249,9 +6239,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "fnL" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	id_tag = "MedbayFoyer";
@@ -7060,7 +7048,7 @@
 	name = "Psychiatrist"
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "fSY" = (
 /obj/machinery/suspension_gen,
 /obj/machinery/light{
@@ -7796,7 +7784,7 @@
 /area/medical/patient_d)
 "gxS" = (
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "gyJ" = (
 /obj/machinery/camera/network/medbay{
 	dir = 8
@@ -7867,7 +7855,7 @@
 "gzM" = (
 /obj/structure/sign/greencross,
 /turf/simulated/wall/r_wall,
-/area/medical/psych_ward)
+/area/medical/medbay4)
 "gzU" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -9492,7 +9480,7 @@
 /area/maintenance/fore)
 "hVx" = (
 /turf/simulated/wall,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "hWa" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -9864,9 +9852,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "ikK" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Isolation Room 1";
@@ -10677,9 +10663,7 @@
 	name = "Psychiatrist"
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "iYU" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -11047,7 +11031,7 @@
 "jrD" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "jrF" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11813,7 +11797,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "jXs" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/item/roller_holder,
@@ -11924,7 +11908,7 @@
 "kcr" = (
 /obj/structure/sign/department/medbay,
 /turf/simulated/wall,
-/area/medical/psych_ward)
+/area/medical/medbay4)
 "kcx" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 4
@@ -11966,7 +11950,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "kdY" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -13227,9 +13211,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "lji" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -14116,7 +14098,7 @@
 "lZE" = (
 /obj/structure/flora/pottedplant/smallcactus,
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "mak" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -14320,9 +14302,7 @@
 /area/maintenance/substation/medical)
 "mhs" = (
 /turf/simulated/wall,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "mht" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -14393,7 +14373,7 @@
 "mjq" = (
 /obj/structure/flora/pottedplant/tropical,
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "mjN" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -14860,9 +14840,7 @@
 	},
 /obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "mzO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance/common,
@@ -15040,7 +15018,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
-/area/medical/psych_ward)
+/area/medical/medbay4)
 "mJN" = (
 /obj/machinery/atmospherics/unary/heat_exchanger{
 	dir = 4
@@ -15101,7 +15079,7 @@
 	pixel_y = 9
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "mKU" = (
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
@@ -15172,7 +15150,7 @@
 	pixel_y = 4
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "mNl" = (
 /obj/structure/table/glass,
 /obj/item/storage/box/beakers,
@@ -15666,7 +15644,7 @@
 	name = "Medical Forms"
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "neu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/tiled,
@@ -16297,9 +16275,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "nNT" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/disposalpipe/segment{
@@ -16339,9 +16315,7 @@
 /area/holodeck_control)
 "nPz" = (
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "nPW" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -16673,9 +16647,7 @@
 "ocR" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "odC" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 8
@@ -16819,7 +16791,7 @@
 	name = "Medical Records"
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "ohL" = (
 /obj/machinery/light/small,
 /obj/structure/catwalk,
@@ -17579,9 +17551,7 @@
 	req_access = list(64)
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "oLg" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -17660,9 +17630,7 @@
 	pixel_y = 9
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "oNN" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -20013,7 +19981,7 @@
 	id = "psyche"
 	},
 /turf/simulated/floor/plating,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "qnK" = (
 /obj/machinery/door/airlock/medical{
 	name = "Psychiatric Ward"
@@ -20698,7 +20666,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "qOS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -21087,7 +21055,7 @@
 "rag" = (
 /obj/structure/sign/warning/nosmoking_1,
 /turf/simulated/wall,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "rat" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/borderfloorwhite,
@@ -21586,9 +21554,7 @@
 "rru" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "rrw" = (
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless/ceiling,
@@ -22795,7 +22761,7 @@
 /obj/machinery/camera/network/medbay,
 /obj/structure/closet/secure_closet/psych,
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "sqH" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/spray/cleaner,
@@ -23378,9 +23344,7 @@
 	name = "Medical Forms"
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "sJv" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -24502,7 +24466,7 @@
 	req_access = list(64)
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "twh" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -24961,7 +24925,7 @@
 /area/medical/ward)
 "tOE" = (
 /turf/simulated/floor/carpet/sblucarpet,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "tOF" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 1;
@@ -25270,9 +25234,7 @@
 	},
 /obj/structure/bed/psych,
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "tZu" = (
 /obj/structure/sink{
 	dir = 4;
@@ -25691,9 +25653,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych{
-	name = "\improper Psych Room 2"
-	})
+/area/medical/psych/psych_2)
 "uxC" = (
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/corner/blue/diagonal,
@@ -26141,7 +26101,7 @@
 	pixel_y = 6
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "uOx" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -27242,7 +27202,7 @@
 /obj/structure/table/woodentable,
 /obj/machinery/computer/med_data/laptop,
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "vIb" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/wood,
@@ -28546,7 +28506,7 @@
 	req_access = list()
 	},
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "wHh" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
 	input_tag = "atmos_out";
@@ -28988,7 +28948,7 @@
 /obj/structure/table/woodentable,
 /obj/item/toy/plushie/kitten,
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "wVq" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -29350,7 +29310,7 @@
 /obj/item/toy/plushie/siamese_cat,
 /obj/item/toy/plushie/therapy/green,
 /turf/simulated/floor/wood,
-/area/medical/psych)
+/area/medical/psych/psych_1)
 "xmf" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -34357,7 +34317,7 @@ hVx
 kcr
 mJq
 gzM
-bCW
+mur
 nhq
 eeL
 nhq

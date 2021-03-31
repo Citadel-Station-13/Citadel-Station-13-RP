@@ -662,9 +662,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "aCV" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/wood,
@@ -869,9 +867,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "aMF" = (
 /obj/structure/closet,
 /obj/random/maintenance/clean,
@@ -7805,9 +7801,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "gdJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -8230,9 +8224,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "gub" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -14921,9 +14913,7 @@
 "lCw" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "lCP" = (
 /obj/item/radio/intercom{
 	dir = 4;
@@ -15098,9 +15088,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "lIz" = (
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
@@ -16124,9 +16112,7 @@
 /obj/structure/window/reinforced,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "myb" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/maintenance/security,
@@ -16950,9 +16936,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "nfb" = (
 /obj/machinery/light/small/emergency{
 	dir = 8
@@ -17388,9 +17372,7 @@
 	phorontanks = 0
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "nuT" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Public Airlock"
@@ -21505,9 +21487,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "qpa" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_security{
@@ -22049,9 +22029,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "qIu" = (
 /obj/structure/closet/hydrant{
 	pixel_x = 32
@@ -23043,9 +23021,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "rqT" = (
 /obj/effect/landmark/start{
 	name = "AI"
@@ -24333,9 +24309,7 @@
 /obj/item/clothing/head/helmet/space/void/security,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "spo" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/floor_decal/grass_edge{
@@ -26041,9 +26015,7 @@
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "txO" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/security,
@@ -26455,9 +26427,7 @@
 /obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "tSR" = (
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
@@ -27447,9 +27417,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "uAw" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/hos)
@@ -27842,9 +27810,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "uRN" = (
 /obj/structure/toilet{
 	dir = 8
@@ -28384,9 +28350,7 @@
 /area/hydroponics/garden)
 "vnf" = (
 /turf/simulated/wall/r_wall,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "vnk" = (
 /obj/machinery/hologram/holopad,
 /obj/effect/floor_decal/corner/red{
@@ -29660,9 +29624,7 @@
 /obj/item/clothing/head/helmet/space/void/security,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "vZU" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
@@ -31859,15 +31821,11 @@
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "xDT" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "xEu" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/railing{
@@ -32102,9 +32060,7 @@
 /area/shuttle/excursion/general)
 "xMj" = (
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "xMk" = (
 /turf/simulated/wall,
 /area/maintenance/central)
@@ -32511,9 +32467,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "ycR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -32523,9 +32477,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "ydn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -32687,9 +32639,7 @@
 	pixel_x = -26
 	},
 /turf/simulated/floor/tiled,
-/area/security/recstorage{
-	name = "\improper Brig EVA Storage"
-	})
+/area/security/eva)
 "yjS" = (
 /obj/item/radio/intercom{
 	dir = 8;
