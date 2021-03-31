@@ -975,7 +975,7 @@
 				H.visible_message("<span class='info'>[H] twitches for a moment, but remains still.</span>") // no nutriment
 
 
-/datum/chemical_reaction/sizeoxadone CITADEL CHANGE - Disables size-changing chems
+/datum/chemical_reaction/sizeoxadone
 	name = "sizeoxadone"
 	id = "sizeoxadone"
 	result = "sizeoxadone"
