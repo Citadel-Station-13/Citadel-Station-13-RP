@@ -2293,9 +2293,6 @@
 /obj/structure/flora/grass/green,
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/snow_outpost/outside)
-"id" = (
-/turf/simulated/floor/water,
-/area/awaymission/snow_outpost/outside)
 "ie" = (
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/dirt,
@@ -2757,10 +2754,10 @@ hZ
 ia
 ia
 ic
-id
-id
-id
-id
+ar
+ar
+ar
+ar
 ib
 ia
 ih
@@ -2898,13 +2895,13 @@ in
 ab
 ia
 ic
-id
-id
 ar
 ar
 ar
-id
-id
+ar
+ar
+ar
+ar
 ia
 ia
 ab
@@ -3039,7 +3036,7 @@ in
 in
 ab
 ib
-id
+ar
 if
 if
 if
@@ -3047,7 +3044,7 @@ if
 il
 ar
 ar
-id
+ar
 io
 ab
 ab
@@ -3181,7 +3178,7 @@ in
 in
 ab
 ia
-id
+ar
 ig
 ii
 ij
@@ -3189,7 +3186,7 @@ ik
 im
 ar
 ar
-id
+ar
 ia
 ab
 ab
@@ -3330,8 +3327,8 @@ if
 if
 il
 ar
-id
-id
+ar
+ar
 io
 ab
 ab
@@ -3468,10 +3465,10 @@ ia
 ia
 ih
 ia
-id
-id
-id
-id
+ar
+ar
+ar
+ar
 ia
 io
 ia
