@@ -4,6 +4,10 @@ set -euo pipefail
 tools/deploy.sh ci_test
 mkdir ci_test/config
 
+# shitcode because fuck you polariscode config grr
+cp config/* ci_test/config/
+cp config/names/* ci_test/config/names/
+
 #test config
 cp tools/ci/ci_config.txt ci_test/config/config.txt
 
