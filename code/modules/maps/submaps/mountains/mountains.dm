@@ -303,3 +303,9 @@
 	suffix = "CrashedMedShuttle1_vr.dmm"	//VOREStation Edit
 	cost = 20
 	fixed_orientation = TRUE
+
+/datum/map_template/surface/mountains/deep/cultmine
+	name = "Cult Mine"
+	desc = "A mining operation that found more than it bargained for."
+	suffix = "cultmine.dmm"
+	cost = 10

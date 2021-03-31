@@ -79,7 +79,7 @@
 /obj/structure/window/reinforced/full{
 	dir = 4
 	},
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
 /turf/simulated/floor/plating,
 /area/submap/farm1)
 "r" = (
@@ -151,7 +151,7 @@
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "D" = (
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
 /turf/simulated/floor/wood,
 /area/submap/farm1)
 "E" = (

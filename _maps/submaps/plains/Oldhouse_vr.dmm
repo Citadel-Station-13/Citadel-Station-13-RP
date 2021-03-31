@@ -256,7 +256,7 @@
 	},
 /area/submap/Oldhouse)
 "ba" = (
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
 /turf/simulated/floor/wood,
 /area/submap/Oldhouse)
 "Uw" = (

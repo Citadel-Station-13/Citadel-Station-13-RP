@@ -60,7 +60,7 @@
 /turf/simulated/floor/wood,
 /area/template_noop)
 "ao" = (
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
 /turf/simulated/floor/wood,
 /area/template_noop)
 "ap" = (

@@ -109,7 +109,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "aw" = (
-/obj/machinery/cooker/cereal,
+/obj/machinery/appliance/cooker/cereal,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
@@ -264,7 +264,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/submap/Diner)
 "aS" = (
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "aT" = (
@@ -286,11 +286,11 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "aX" = (
-/obj/machinery/cooker/fryer,
+/obj/machinery/appliance/cooker/fryer,
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "aY" = (
-/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
 /turf/simulated/floor/tiled,
 /area/submap/Diner)
 "aZ" = (
@@ -310,7 +310,7 @@
 /area/submap/Diner)
 "bb" = (
 /obj/effect/floor_decal/corner/red/diagonal,
-/obj/machinery/cooker/grill,
+/obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/white,
 /area/submap/Diner)
 "bc" = (

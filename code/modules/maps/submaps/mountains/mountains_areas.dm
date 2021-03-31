@@ -135,3 +135,8 @@
 	name = "POI - Trench Outpost"
 	requires_power = FALSE
 	icon_state = "submap2"
+
+//Citadel change
+/area/submap/cave/cultmine
+	name = "Cult Mine"
+	requires_power = FALSE

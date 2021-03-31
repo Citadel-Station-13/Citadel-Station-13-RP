@@ -78,12 +78,8 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/fiftyspawner/steel{
-	amount = 50
-	},
-/obj/fiftyspawner/steel{
-	amount = 50
-	},
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/plasteel,
 /turf/simulated/floor/airless,
@@ -128,7 +124,7 @@
 /area/awaymission/northblock)
 "aI" = (
 /obj/structure/shuttle/engine/propulsion{
-	 = on_state = "burst_l";
+	on_state = "burst_l";
 	dir = 4
 	},
 /turf/space,
