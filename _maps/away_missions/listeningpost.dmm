@@ -37,7 +37,6 @@
 /obj/structure/table/standard,
 /obj/item/paper/monitorkey,
 /obj/item/radio/intercom{
-	!INVALID_VAR! = 1;
 	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
@@ -81,7 +80,6 @@
 /area/awaymission/listeningpost)
 "p" = (
 /obj/item/radio/intercom{
-	!INVALID_VAR! = 1;
 	desc = "Talk through this. Evilly";
 	frequency = 1213;
 	name = "Syndicate Intercom";
