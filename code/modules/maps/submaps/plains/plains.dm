@@ -172,7 +172,7 @@
 
 /datum/map_template/submap/level_specific/plains/SupplyDrop2
 	name = "Supply Drop 2"
-	desc = "A drop pod that"s clearly been here a while, most of the things inside are rusted and worthless."
+	desc = "A drop pod that's clearly been here a while, most of the things inside are rusted and worthless."
 	mappath = "SupplyDrop2.dmm"
 	cost = 8
 
