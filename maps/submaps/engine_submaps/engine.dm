@@ -11,32 +11,32 @@
 /datum/map_template/engine/rust
 	name = "EngineSubmap_RUST"
 	desc = "R-UST Fusion Tokamak Engine"
-	mappath = "_maps/templates/engine/triumph/triumph_engine_rust.dmm"
+	mappath = "_maps/templates/engines/triumph/triumph_engine_rust.dmm"
 
 /*
 /datum/map_template/engine/singulo
 	name = "Singularity Engine"
 	desc = "Lord Singuloth"
-	mappath = '_maps/templates/engine/triumph/engine_singulo.dmm'
+	mappath = '_maps/templates/engines/triumph/engine_singulo.dmm'
 */
 
 
 /datum/map_template/engine/supermatter
 	name = "EngineSubmap_SM"
 	desc = "Old Faithful Supermatter"
-	mappath = "_maps/templates/engine/triumph/triumph_engine_sme.dmm"
+	mappath = "_maps/templates/engines/triumph/triumph_engine_sme.dmm"
 
 /*
 /datum/map_template/engine/tesla
 	name = "Edison's Bane"
 	desc = "The Telsa Engine"
-	mappath = '_maps/templates/engine/triumph/engine_tesla.dmm'
+	mappath = '_maps/templates/engines/triumph/engine_tesla.dmm'
 */
 
 /datum/map_template/engine/fission
 	name = "EngineSubmap_Fission"
 	desc = "The Fission Reactor"
-	mappath = "_maps/templates/engine/triumph/triumph_engine_fission.dmm"
+	mappath = "_maps/templates/engines/triumph/triumph_engine_fission.dmm"
 
 // Landmark for where to load in the engine on permament map
 /obj/effect/landmark/engine_loader
