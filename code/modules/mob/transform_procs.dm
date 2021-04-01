@@ -325,3 +325,22 @@
 
 
 
+/mob/living/carbon/human/proc/pickleize()
+	if (transforming)
+		return
+	for(var/obj/item/W in src)
+		drop_from_inventory(W)
+	regenerate_icons()
+	transforming = 1
+	canmove = 0
+	icon = null
+	invisibility = 101
+	for(var/t in organs)	//this really should not be necessary
+		qdel(t)
+
+	var/mob/living/simple_mob/animal/passive/pickle/E = new /mob/living/simple_mob/animal/passive/pickle (loc)
+	E.key = key
+
+	to_chat(E, "<B>You are now a Pickle. Haha!</B>")
+	qdel(src)
+	return
