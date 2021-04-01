@@ -192,9 +192,6 @@
 	name = "Away Mission - Trade Port"
 	z = Z_LEVEL_TRADEPORT
 
-/datum/map_template/triumph_lateload/away_tradeport/on_map_loaded(z)
-	. = ..()
-
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for Triumph lateload maps
 /datum/map_template/triumph_lateload

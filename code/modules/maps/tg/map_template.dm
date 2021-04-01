@@ -26,8 +26,7 @@
 	if(path)
 		mappath = path
 	if(mappath)
-		spawn(1)
-			preload_size(mappath)
+		preload_size(mappath)
 	if(rename)
 		name = rename
 
@@ -146,14 +145,14 @@
 
 /datum/map_template/proc/annihilate_bounds(turf/origin, centered = FALSE, orientation = SOUTH)
 	var/deleted_atoms = 0
-	log_game("Annihilating objects in submap loading locatation.")
+	log_debug("Annihilating objects in submap loading locatation.")
 	var/list/turfs_to_clean = get_affected_turfs(origin, centered, orientation)
 	if(turfs_to_clean.len)
 		for(var/turf/T in turfs_to_clean)
 			for(var/atom/movable/AM in T)
 				++deleted_atoms
 				qdel(AM)
-	log_game("Annihilated [deleted_atoms] objects.")
+	log_debug("Annihilated [deleted_atoms] objects.")
 
 
 // For your ever biggening badminnery kevinz000
@@ -173,7 +172,7 @@
 		var/turf/T = locate(1, 1, zl)
 		if(!T)
 			CRASH("Z level [zl] does not exist - Not generating submaps")
-	log_game("Seeding submaps for levels [english_lish(z_levels)] with budget [budget], whitelist [whitelist] and template type [desired_map_template_type]")
+	log_debug("Seeding submaps for levels [english_list(z_levels)] with budget [budget], whitelist [whitelist] and template type [desired_map_template_type]")
 
 	var/overall_sanity = 100	// If the proc fails to place a submap more than this, the whole thing aborts.
 	var/list/potential_submaps = list()	// Submaps we may or may not place.
@@ -197,6 +196,7 @@
 
 	var/list/loaded_submap_names = list()
 	var/list/template_groups_used = list()	// Used to avoid spawning three seperate versions of the same PoI.
+	log_debug("[potential_submaps.len] potential with [priority_submaps.len] priority maps. Beginning placement.")
 
 	// Now lets start choosing some.
 	while(budget > 0 && overall_sanity > 0)
@@ -210,7 +210,7 @@
 				chosen_template = pick(potential_submaps)
 
 		else	// We're out of submaps.
-			log_game("Submap loader had no submaps to pick from with [budget] left to spend.")
+			log_debug("Submap loader had no submaps to pick from with [budget] left to spend.")
 			break
 
 		CHECK_TICK
@@ -243,7 +243,7 @@
 				var/area/new_area = get_area(check)
 				if(!(istype(new_area, whitelist)))
 					valid = FALSE	// Probably overlapping something important.
-				//	to_chat(world, "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z]).")
+					// to_chat(world, "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z]).")
 					break
 				CHECK_TICK
 
@@ -252,7 +252,7 @@
 			if(!valid)
 				continue
 
-			log_game("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])\n")
+			log_debug("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])\n")
 
 			// Do loading here.
 			chosen_template.load(T, centered = TRUE, orientation=orientation)	// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
@@ -290,7 +290,7 @@
 			pretty_submap_list += "<b>[submap_name]</b>"
 
 	if(!overall_sanity)
-		log_game("Submap loader gave up with [budget] left to spend.")
+		log_debug("Submap loader gave up with [budget] left to spend.")
 	else
-		log_game("Submaps loaded.")
-	log_game("Loaded: [english_list(pretty_submap_list)]")
+		log_debug("Submaps loaded.")
+	log_debug("Loaded: [english_list(pretty_submap_list)]")
