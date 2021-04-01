@@ -13,7 +13,7 @@
 
 	var/mob/living/carbon/human/target = victim
 
-	var/list/smite_types = list(SMITE_BREAKLEGS,SMITE_BLUESPACEARTILLERY,SMITE_SPONTANEOUSCOMBUSTION,SMITE_LIGHTNINGBOLT,SMITE_DISLOCATEALL,SMITE_PICKLE,SMITE_SHORTPICKLE)
+	var/list/smite_types = list(SMITE_BREAKLEGS,SMITE_BLUESPACEARTILLERY,SMITE_SPONTANEOUSCOMBUSTION,SMITE_LIGHTNINGBOLT,SMITE_DISLOCATEALL,SMITE_PICKLE)
 
 	var/smite_choice = input("Select the type of SMITE for [target]","SMITE Type Choice") as null|anything in smite_types
 	if(!smite_choice)
@@ -33,15 +33,15 @@
 
 		if(SMITE_DISLOCATEALL)
 			var/obj/item/organ/external/left_leg = target.get_organ(BP_L_LEG)
-				left_leg.dislocate()
+			left_leg.dislocate()
 			var/obj/item/organ/external/right_leg = target.get_organ(BP_R_LEG)
-				right_leg.dislocate()
+			right_leg.dislocate()
 			var/obj/item/organ/external/left_arm = target.get_organ(BP_L_ARM)
-				left_arm.dislocate()
+			left_arm.dislocate()
 			var/obj/item/organ/external/right_arm = target.get_organ(BP_R_ARM)
-				right_arm.dislocate()
+			right_arm.dislocate()
 			var/obj/item/organ/external/head = target.get_organ(BP_HEAD)
-				head.dislocate()
+			head.dislocate()
 
 		if(SMITE_BLUESPACEARTILLERY)
 			bluespace_artillery(target,src)
