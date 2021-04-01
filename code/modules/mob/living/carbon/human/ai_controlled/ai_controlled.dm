@@ -138,6 +138,6 @@
 	to_wear_r_hand = null
 
 /mob/living/carbon/human/ai_controlled/replicant/Initialize(mapload)
-	..()
+	. = ..()
 	name = species.get_random_name(gender)
 	add_modifier(/datum/modifier/homeothermic, 0, null)

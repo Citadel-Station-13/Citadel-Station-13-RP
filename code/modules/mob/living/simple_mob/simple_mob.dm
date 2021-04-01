@@ -168,7 +168,6 @@
 		add_eyes()
 	return ..()
 
-
 /mob/living/simple_mob/Destroy()
 	default_language = null
 	if(myid)

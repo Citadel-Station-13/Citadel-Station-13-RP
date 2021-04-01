@@ -384,6 +384,6 @@
 	desc = "Contains drugs for muscle growth."
 
 /obj/item/reagent_containers/syringe/steroid/Initialize(mapload)
-	..()
+	. = ..()
 	//reagents.add_reagent("adrenaline",5) //VOREStation Edit - No thanks.
 	reagents.add_reagent("hyperzine",10)

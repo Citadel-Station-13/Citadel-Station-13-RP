@@ -59,12 +59,12 @@
 	return ..()
 
 /obj/item/radio/intercom/Initialize(mapload)
-	..()
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	circuit = new circuit(src)
 
 /obj/item/radio/intercom/department/medbay/Initialize(mapload)
-	..()
+	. = ..()
 	internal_channels = GLOB.default_medbay_channels.Copy()
 
 /obj/item/radio/intercom/department/security/Initialize(mapload)

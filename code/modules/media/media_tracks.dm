@@ -41,7 +41,7 @@ var/global/list/all_lobby_tracks = list()
 
 // Read the jukebox configuration file on system startup.
 /hook/startup/proc/load_jukebox_tracks()
-	var/jukebox_track_file = "code/game/machinery/jukebox.json"
+	var/jukebox_track_file = "config_static/jukebox.json"
 	if(!fexists(jukebox_track_file))
 		warning("File not found: [jukebox_track_file]")
 		return

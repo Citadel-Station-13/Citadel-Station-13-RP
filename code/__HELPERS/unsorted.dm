@@ -275,6 +275,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 
 
+
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
 /mob/proc/fully_replace_character_name(var/oldname,var/newname)
@@ -295,7 +296,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 					break
 
 		//update our pda and id if we have them on our person
-		var/list/searching = GetAllContents(searchDepth = 3)
+		var/list/searching = GetAllContents()
 		var/search_id = 1
 		var/search_pda = 1
 
@@ -588,16 +589,44 @@ proc/GaussRand(var/sigma)
 proc/GaussRandRound(var/sigma,var/roundto)
 	return round(GaussRand(sigma),roundto)
 
-//Will return the contents of an atom recursivly to a depth of 'searchDepth'
-/atom/proc/GetAllContents(searchDepth = 5)
-	var/list/toReturn = list()
+/*
+	Gets all contents of contents and returns them all in a list.
+*/
 
-	for(var/atom/part in contents)
-		toReturn += part
-		if(part.contents.len && searchDepth)
-			toReturn += part.GetAllContents(searchDepth - 1)
+/atom/proc/GetAllContents(var/T)
+	var/list/processing_list = list(src)
+	var/i = 0
+	var/lim = 1
+	if(T)
+		. = list()
+		while(i < lim)
+			var/atom/A = processing_list[++i]
+			//Byond does not allow things to be in multiple contents, or double parent-child hierarchies, so only += is needed
+			//This is also why we don't need to check against assembled as we go along
+			processing_list += A.contents
+			lim = processing_list.len
+			if(istype(A,T))
+				. += A
+	else
+		while(i < lim)
+			var/atom/A = processing_list[++i]
+			processing_list += A.contents
+			lim = processing_list.len
+		return processing_list
 
-	return toReturn
+/atom/proc/GetAllContentsIgnoring(list/ignore_typecache)
+	if(!length(ignore_typecache))
+		return GetAllContents()
+	var/list/processing = list(src)
+	. = list()
+	var/i = 0
+	var/lim = 1
+	while(i < lim)
+		var/atom/A = processing[++i]
+		if(!ignore_typecache[A.type])
+			processing += A.contents
+			lim = processing.len
+			. += A
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
 /proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.

@@ -14,7 +14,7 @@
   - `code/__HELPERS/_logging.dm`
 
 If you have a dual nano/tgui setup, then make sure to rename all ui procs
-on `/datum`, such as `ui_interact` to `ui_interact`, to avoid namespace
+on `/datum`, such as `ui_interact` to `tgui_interact`, to avoid namespace
 clashing. Usual stuff.
 
 ## Update `ui_interact` proc signatures

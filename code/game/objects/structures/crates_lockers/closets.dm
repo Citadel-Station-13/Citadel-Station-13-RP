@@ -33,7 +33,7 @@
 	var/list/starts_with
 
 /obj/structure/closet/Initialize(mapload)
-	..()
+	. = ..()
 	PopulateContents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
@@ -417,8 +417,10 @@
 	return 1
 
 /obj/structure/closet/proc/mob_breakout(var/mob/living/escapee)
-
-	if(breakout || !req_breakout())
+	if(breakout)
+		return
+	if(!req_breakout() && !opened)
+		open()
 		return
 
 	escapee.setClickCooldown(100)

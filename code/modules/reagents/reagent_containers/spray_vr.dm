@@ -8,5 +8,5 @@
 	volume = 80
 
 /obj/item/reagent_containers/spray/windowsealant/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("silicate", 80)

@@ -77,6 +77,7 @@
 	return
 
 /datum/reagents/proc/handle_reactions()
+	set waitfor = FALSE		// shitcode. reagents shouldn't ever sleep but hey :^)
 	if(QDELETED(my_atom))
 		return FALSE
 	if(my_atom.flags & NOREACT)

@@ -123,7 +123,7 @@
 			C.images += holder
 */
 /obj/mecha/medical/odysseus/loaded/Initialize(mapload)
-	..()
+	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/sleeper
 	ME.attach(src)
 	ME = new /obj/item/mecha_parts/mecha_equipment/tool/sleeper
