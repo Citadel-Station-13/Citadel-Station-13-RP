@@ -18718,9 +18718,7 @@
 "aZg" = (
 /obj/structure/table/reinforced,
 /obj/item/megaphone,
-/obj/machinery/keycard_auth{
-	pixel_w = 28
-	},
+/obj/machinery/keycard_auth,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "aZr" = (
@@ -24217,7 +24215,6 @@
 /obj/structure/sign/directions/engineering{
 	dir = 1;
 	pixel_y = 32;
-	pixel_z = -8
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1;

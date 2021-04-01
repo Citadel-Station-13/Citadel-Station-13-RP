@@ -197,7 +197,7 @@
 		P.rotate_auto(new_bearing)
 
 /obj/structure/prop/prismcontrol/Initialize(mapload)
-	..()
+	. = ..()
 	if(my_turrets.len) //Preset controls.
 		for(var/obj/structure/prop/prism/P in my_turrets)
 			P.remote_dial = src

@@ -28,7 +28,9 @@
 	var/corpseidicon = null //For setting it to be a gold, silver, CentCom etc ID
 
 /obj/effect/landmark/mobcorpse/Initialize(mapload)
+	. = ..()
 	createCorpse()
+	delete_me = TRUE
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/mobcorpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.

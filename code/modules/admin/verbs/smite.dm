@@ -13,7 +13,9 @@
 
 	var/mob/living/carbon/human/target = victim
 
+
 	var/list/smite_types = list(SMITE_BREAKLEGS,SMITE_BLUESPACEARTILLERY,SMITE_SPONTANEOUSCOMBUSTION,SMITE_LIGHTNINGBOLT,SMITE_DISLOCATEALL,SMITE_PICKLE,SMITE_SHORTPICKLE)
+
 
 	var/smite_choice = input("Select the type of SMITE for [target]","SMITE Type Choice") as null|anything in smite_types
 	if(!smite_choice)

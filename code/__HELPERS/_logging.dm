@@ -7,11 +7,11 @@
 #ifdef EXTOOLS_LOGGING
 // proc hooked, so we can just put in standard TRUE and FALSE
 #define WRITE_LOG(log, text) extools_log_write(log,text,TRUE)
-//#define WRITE_LOG_NO_FORMAT(log, text) extools_log_write(log,text,FALSE)
+#define WRITE_LOG_NO_FORMAT(log, text) extools_log_write(log,text,FALSE)
 #else
 //This is an external call, "true" and "false" are how rust parses out booleans
-#define WRITE_LOG(log, text) rustg_log_write(log, text) //, "true"
-//#define WRITE_LOG_NO_FORMAT(log, text) rustg_log_write(log, text, "false")
+#define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
+#define WRITE_LOG_NO_FORMAT(log, text) rustg_log_write(log, text, "false")
 #endif
 //print a warning message to world.log
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [UNLINT(src)] usr: [usr].")
@@ -32,7 +32,7 @@
 #define testing(msg)
 #endif
 
-#ifdef UNIT_TESTS
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 /proc/log_test(text)
 	WRITE_LOG(GLOB.test_log, text)
 	SEND_TEXT(world.log, text)

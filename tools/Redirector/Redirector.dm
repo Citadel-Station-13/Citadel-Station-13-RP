@@ -15,12 +15,12 @@ var/admin_weight = 5 // admins are more likely to join a server with less admins
 var/player_substr = "players=" // search for this substring to locate # of players
 var/admin_substr  = "admins=" // search for this to locate # of admins
 
-world
+/world
 	name = "TGstation Redirector"
 
-	New()
-		..()
-		gen_configs()
+/world/New()
+	..()
+	gen_configs()
 
 /datum/server
 	var/players = 0
@@ -29,14 +29,14 @@ world
 
 	var/link = ""
 
-mob/Login()
+/mob/Login()
 	..()
 
 	var/list/weights = list()
 	var/list/servers = list()
 	for(var/x in global.servers)
 
-		to_chat(world, "[x] [servernames[ global.servers.Find(x) ]]")
+		world << "[x] [servernames[ global.servers.Find(x) ]]"
 
 		var/info = world.Export("[x]?status")
 		var/datum/server/S = new()
@@ -60,7 +60,7 @@ mob/Login()
 
 	src << link(serverlink)
 
-proc/extract(var/data, var/type = PLAYERS)
+/proc/extract(data, type = PLAYERS)
 
 	var/nextpos = 0
 

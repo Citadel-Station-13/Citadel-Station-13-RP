@@ -392,8 +392,8 @@
 	amount_per_transfer_from_this = 120
 
 /obj/structure/reagent_dispensers/cookingoil/Initialize(mapload)
-		..()
-		reagents.add_reagent("cornoil",5000)
+	. = ..()
+	reagents.add_reagent("cornoil",5000)
 
 /obj/structure/reagent_dispensers/cookingoil/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.get_structure_damage())

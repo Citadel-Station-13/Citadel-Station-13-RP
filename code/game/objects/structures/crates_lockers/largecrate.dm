@@ -64,7 +64,7 @@
 	icon_state = "vehiclecrate"
 
 /obj/structure/largecrate/vehicle/Initialize(mapload)
-	..()
+	. = ..()
 	spawn(1)
 		for(var/obj/O in contents)
 			O.update_icon()

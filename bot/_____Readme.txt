@@ -33,7 +33,7 @@ You should see 14 lines of code which look like
 There are some basic comments besides every important config option in here, but I'll summarize them in detail
 NAME - The name the bot assumes when it connects to IRC, so in this example it would join the IRC under the nickname "CC_Nanotrasen"
 SNAME - A list of secondary names, with commas, that the bot will respond to for commands (for example, this setup will allow the bot to respond to "nt, tell quarxink he's a terrible writer")
-DIRECTORY - The directory of the bot files, dmb, python, and config folder IN FORWARD SLASHES, WITH FORWARD SLASH AT THE END(for example, I host my test server from "c:\tgstation\tgstation13\tgstation.dmb" so for me the line would say directory = "c:/tgstation/tgstation13/")
+DIRECTORY - The directory of the bot files, dmb, python, and config folder IN FORWARD SLASHES, WITH FORWARD SLASH AT THE END(for example, I host my test server from "c:\tgstation\tgstation13\vorestation.dmb" so for me the line would say directory = "c:/tgstation/tgstation13/")
 NETWORK - The IRC server it will connect to, such as "irc.rizon.net"
 CHANNEL/CHANNELS - what channel the bot will join (channels allows for multiple channel connections, in the same formatting as SName separates nicknames)
 GREETING - CC_Nanotrasen will store the names of people it has seen before, but when a nickname joins that it hasn't seen before it will greet that person with whatever message is put in this
@@ -42,7 +42,7 @@ PORT - What port to connect to for the IRC server (if you are unsure of what por
 
 Once you have that ready, you're on to step two.
 Open up the config folder in your install dir, and open config.txt
-Scroll to the bottom, right below #FORBID_SINGULO_POSSESSION should be 
+Scroll to the bottom, right below #FORBID_SINGULO_POSSESSION should be
 			##Remove the # mark if you are going to use the SVN irc bot to relay adminhelps
 			#USEIRCBOT
 Just remove the "#" in front of USEIRCBOT (you don't even have to recompile your DMB!
@@ -61,14 +61,14 @@ You can leave notes for other users! Just say "[bot name], tell [other user's na
 TROUBLESHOOTING:
 Attempting to run the bot gives me an error about encoding.utf-8.
 	You've probably installed python to a separate folder than the bot/server, move python's files over and it should run fine
-	
+
 It's telling me connection refused when someone adminhelps.
 	You've moved the bot to a separate folder from the nudge script, most likely.
-	
+
 BYOND asks me on any restart if I want to allow nudge.py to run.
 	Set security to trusted in Dream Daemon
-	
-	
-	
-	
+
+
+
+
 If you have any requests, suggestions, or issues not covered by this guide, I can be contacted as Quarxink at #coderbus on irc.rizon.net (If I don't respond,  leave me a query with your problem and how to reach you [preferably an email address, steam, other irc channel, or aim/msn])
