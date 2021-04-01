@@ -348,3 +348,9 @@ var/list/_client_preferences_by_type
 	key = "AUTOCORRECT"
 	enabled_description = "Enabled"
 	disabled_description = "Disabled"
+
+/datum/client_preference/examine_look
+	description = "Examine Messages"
+	key = "EXAMINE_LOOK"
+	enabled_description = "Show"
+	disabled_description = "Hide"
