@@ -103,7 +103,7 @@
 	var/strain_regen_cooldown = 5 MINUTES
 
 /obj/item/organ/internal/regennetwork/Initialize(mapload)
-	..()
+	. = ..()
 	var/mob/living/carbon/human/H = null
 	spawn(15)
 		if(ishuman(owner))

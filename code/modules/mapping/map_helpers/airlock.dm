@@ -19,7 +19,7 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 	var/tag_addon
 
 /obj/effect/map_helper/airlock/Initialize(mapload)
-	..()
+	. = ..()
 	my_controller = get_controller(get_area(src))
 	my_device = locate(my_device_type) in get_turf(src)
 	if(!my_device)

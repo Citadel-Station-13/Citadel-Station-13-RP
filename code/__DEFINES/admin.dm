@@ -48,6 +48,7 @@
 #define SMITE_DISLOCATEALL 			"Dislocate All Limbs"
 #define SMITE_PICKLE				"Turn into pickle"
 
+
 #define ADMIN_QUE(user) "(<a href='?_src_=holder;adminmoreinfo=\ref[user]'>?</a>)"
 #define ADMIN_FLW(user) "(<a href='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</a>)"
 #define ADMIN_PP(user) "(<a href='?_src_=holder;adminplayeropts=\ref[user]'>PP</a>)"
