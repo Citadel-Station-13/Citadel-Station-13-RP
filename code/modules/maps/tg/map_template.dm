@@ -252,7 +252,7 @@
 			if(!valid)
 				continue
 
-			log_debug("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])\n")
+			log_debug("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])")
 
 			// Do loading here.
 			chosen_template.load(T, centered = TRUE, orientation=orientation)	// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
@@ -285,9 +285,9 @@
 	for(var/submap_name in loaded_submap_names)
 		var/count = loaded_submap_names[submap_name]
 		if(count > 1)
-			pretty_submap_list += "[count] <b>[submap_name]</b>"
+			pretty_submap_list += "[count] [submap_name]"
 		else
-			pretty_submap_list += "<b>[submap_name]</b>"
+			pretty_submap_list += "[submap_name]"
 
 	if(!overall_sanity)
 		log_debug("Submap loader gave up with [budget] left to spend.")
