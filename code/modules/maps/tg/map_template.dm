@@ -146,14 +146,14 @@
 
 /datum/map_template/proc/annihilate_bounds(turf/origin, centered = FALSE, orientation = SOUTH)
 	var/deleted_atoms = 0
-	admin_notice("<span class='danger'>Annihilating objects in submap loading locatation.</span>", R_DEBUG)
+	log_game("Annihilating objects in submap loading locatation.")
 	var/list/turfs_to_clean = get_affected_turfs(origin, centered, orientation)
 	if(turfs_to_clean.len)
 		for(var/turf/T in turfs_to_clean)
 			for(var/atom/movable/AM in T)
 				++deleted_atoms
 				qdel(AM)
-	admin_notice("<span class='danger'>Annihilated [deleted_atoms] objects.</span>", R_DEBUG)
+	log_game("Annihilated [deleted_atoms] objects.")
 
 
 // For your ever biggening badminnery kevinz000
@@ -167,14 +167,13 @@
 	set background = TRUE
 
 	if(!z_levels || !z_levels.len)
-		admin_notice("seed_submaps() was not given any Z-levels.", R_DEBUG)
-		return
+		CRASH("seed_submaps() was not given any Z-levels.")
 
 	for(var/zl in z_levels)
 		var/turf/T = locate(1, 1, zl)
 		if(!T)
-			admin_notice("Z level [zl] does not exist - Not generating submaps", R_DEBUG)
-			return
+			CRASH("Z level [zl] does not exist - Not generating submaps")
+	log_game("Seeding submaps for levels [english_lish(z_levels)] with budget [budget], whitelist [whitelist] and template type [desired_map_template_type]")
 
 	var/overall_sanity = 100	// If the proc fails to place a submap more than this, the whole thing aborts.
 	var/list/potential_submaps = list()	// Submaps we may or may not place.
@@ -211,7 +210,7 @@
 				chosen_template = pick(potential_submaps)
 
 		else	// We're out of submaps.
-			admin_notice("Submap loader had no submaps to pick from with [budget] left to spend.", R_DEBUG)
+			log_game("Submap loader had no submaps to pick from with [budget] left to spend.")
 			break
 
 		CHECK_TICK
@@ -253,7 +252,7 @@
 			if(!valid)
 				continue
 
-			admin_notice("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])\n", R_DEBUG)
+			log_game("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])\n")
 
 			// Do loading here.
 			chosen_template.load(T, centered = TRUE, orientation=orientation)	// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
@@ -291,7 +290,7 @@
 			pretty_submap_list += "<b>[submap_name]</b>"
 
 	if(!overall_sanity)
-		admin_notice("Submap loader gave up with [budget] left to spend.", R_DEBUG)
+		log_game("Submap loader gave up with [budget] left to spend.")
 	else
-		admin_notice("Submaps loaded.", R_DEBUG)
-	admin_notice("Loaded: [english_list(pretty_submap_list)]", R_DEBUG)
+		log_game("Submaps loaded.")
+	log_game("Loaded: [english_list(pretty_submap_list)]")

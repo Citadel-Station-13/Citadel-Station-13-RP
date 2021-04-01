@@ -34,6 +34,7 @@
 /area/frozen_planet/ruins)
 "K" = (
 /obj/random/mob/robotic/hivebot{
+
 	mob_faction = "frozen"
 	},
 /turf/simulated/floor/frozen_world,
