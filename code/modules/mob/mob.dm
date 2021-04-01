@@ -244,7 +244,7 @@
 		if(A.loc != src)
 			for(var/mob/M in viewers(4, src))
 				if(M == src)
-				 	continue
+					continue
 				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
 					to_chat(M, "<span class='tinynotice'><b>\The [src]</b> looks at \the [A].</span>")
 
