@@ -553,7 +553,7 @@
 	input_level = 100000
 	output_level = 200000
 
-/obj/mmachinery/power/smes/buildable/engine/Initialize(mapload)
+/obj/machinery/power/smes/buildable/engine/Initialize(mapload)
 	. = ..()
 	component_parts += new /obj/item/smes_coil/super_io(src)
 	component_parts += new /obj/item/smes_coil(src)
