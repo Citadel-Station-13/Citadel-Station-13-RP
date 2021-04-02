@@ -116,12 +116,12 @@
 	switch(action)
 		if("power")
 			toggle_injecting()
-			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", INVESTIGATE_ATMOS)
+			investigate_log("was turned [injecting ? "on" : "off"] by [key_name(usr)]", INVESTIGATE_ATMOS)
 			. = TRUE
 		if("rate")
 			var/rate = params["rate"]
 			if(rate == "max")
-				rate = MAX_TRANSFER_RATE
+				rate = air_contents.volume
 				. = TRUE
 			else if(rate == "input")
 				rate = input("New transfer rate (0-[air_contents.volume] L/s):", name, volume_rate) as num|null
