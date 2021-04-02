@@ -55,19 +55,26 @@
 		. += "<span class='notice'>The generator is off.</span>"
 
 /obj/machinery/power/port_gen/emp_act(severity)
+	if(!active)
+		return
 	var/duration = 6000 //ten minutes
 	switch(severity)
 		if(1)
 			stat &= BROKEN
-			if(prob(75)) explode()
+			if(prob(75))
+				explode()
 		if(2)
-			if(prob(50)) stat &= BROKEN
-			if(prob(10)) explode()
+			if(prob(50))
+				stat &= BROKEN
+			if(prob(10))
+				explode()
 		if(3)
-			if(prob(25)) stat &= BROKEN
+			if(prob(25))
+				stat &= BROKEN
 			duration = 300
 		if(4)
-			if(prob(10)) stat &= BROKEN
+			if(prob(10))
+				stat &= BROKEN
 			duration = 300
 
 	stat |= EMPED
