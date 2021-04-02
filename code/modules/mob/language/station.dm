@@ -281,7 +281,7 @@
 
 /datum/language/slavic
 	name = LANGUAGE_SLAVIC
-	desc = "The official language of the Independent Colonial Confederation of Gilgamesh, originally established in 2122 by the short-lived United Slavic Confederation on Earth."
+	desc = "Was established in 2122 by the short-lived United Slavic Confederation on Earth."
 	colour = "solcom"
 	key = "g"
 	syllables = list(
