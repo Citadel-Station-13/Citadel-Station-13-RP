@@ -1,11 +1,6 @@
 // This causes engine maps to get 'checked' and compiled, when undergoing a unit test.
 // This is so Travis can validate PoIs, and ensure future changes don't break PoIs, as PoIs are loaded at runtime and the compiler can't catch errors.
 // When adding a new engine, please add it to this list.
-#if MAP_TEST
-#include "triumph_engine_rust.dmm"
-#include "triumph_engine_fission.dmm"
-#include "triumph_engine_sme.dmm"
-#endif
 
 /datum/map_template/engine
 	name = "Engine Content"
@@ -14,36 +9,34 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/engine/rust
-	name = "R-UST Engine"
+	name = "EngineSubmap_RUST"
 	desc = "R-UST Fusion Tokamak Engine"
-	mappath = 'maps/submaps/engine_submaps/triumph_engine_rust.dmm'
+	mappath = "_maps/templates/engines/triumph/triumph_engine_rust.dmm"
 
 /*
 /datum/map_template/engine/singulo
 	name = "Singularity Engine"
 	desc = "Lord Singuloth"
-	mappath = 'maps/submaps/engine_submaps/engine_singulo.dmm'
+	mappath = '_maps/templates/engines/triumph/engine_singulo.dmm'
 */
 
 
 /datum/map_template/engine/supermatter
-	name = "Supermatter Engine"
+	name = "EngineSubmap_SM"
 	desc = "Old Faithful Supermatter"
-	mappath = 'maps/submaps/engine_submaps/triumph_engine_sme.dmm'
+	mappath = "_maps/templates/engines/triumph/triumph_engine_sme.dmm"
 
 /*
 /datum/map_template/engine/tesla
 	name = "Edison's Bane"
 	desc = "The Telsa Engine"
-	mappath = 'maps/submaps/engine_submaps/engine_tesla.dmm'
+	mappath = '_maps/templates/engines/triumph/engine_tesla.dmm'
 */
 
-/datum/map_template/engine/tesla
-	name = "Old Faithful"
+/datum/map_template/engine/fission
+	name = "EngineSubmap_Fission"
 	desc = "The Fission Reactor"
-	mappath = 'maps/submaps/engine_submaps/triumph_engine_fission.dmm'
-
-
+	mappath = "_maps/templates/engines/triumph/triumph_engine_fission.dmm"
 
 // Landmark for where to load in the engine on permament map
 /obj/effect/landmark/engine_loader

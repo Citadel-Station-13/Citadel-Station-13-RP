@@ -12,7 +12,7 @@
 	title = "Station Repairs and Construction"
 
 /obj/item/book/manual/engineering_construction/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -33,7 +33,7 @@
 	title = "Particle Accelerator User's Guide"
 
 /obj/item/book/manual/engineering_particle_accelerator/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -80,7 +80,7 @@
 	title = "Supermatter Engine Operating Manual"
 
 /obj/item/book/manual/supermatter_engine/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -232,7 +232,7 @@
 	title = "R-UST Operating Manual"
 
 /obj/item/book/manual/rust_engine/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -272,7 +272,7 @@
 	title = "Hacking"
 
 /obj/item/book/manual/engineering_hacking/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -829,7 +829,7 @@
 	title = "Corporate Regulations"
 
 /obj/item/book/manual/security_space_law/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -853,7 +853,7 @@
 	title = "Medical Diagnostics Manual"
 
 /obj/item/book/manual/medical_diagnostics_manual/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -900,7 +900,7 @@
 	title = "Engineering Textbook"
 
 /obj/item/book/manual/engineering_guide/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -1365,7 +1365,7 @@
 	title = "Standard Operating Procedure"
 
 /obj/item/book/manual/standard_operating_procedure/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -1387,7 +1387,7 @@
 	title = "Corporate Regulations"
 
 /obj/item/book/manual/command_guide/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -1408,7 +1408,7 @@
 	title = "The Humanized Mice"
 
 /obj/item/book/manual/the_humanized_mice/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1469,7 +1469,7 @@
 	title = "SOP Volume 1: Alert Levels"
 
 /obj/item/book/manual/legal/sop_vol1/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1578,7 +1578,7 @@
 	title = "SOP Volume 2: Emergency Situations Protocol"
 
 /obj/item/book/manual/legal/sop_vol2/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1760,7 +1760,7 @@
 	title = "SOP Volume 3: Legal Clauses"
 
 /obj/item/book/manual/legal/sop_vol3/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1831,7 +1831,7 @@
 	title = "SOP Volume 4: Courtesy Procedures"
 
 /obj/item/book/manual/legal/sop_vol4/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1897,7 +1897,7 @@
 	title = "SOP Volume 5.1: Department Regulations (Cargo)"
 
 /obj/item/book/manual/legal/sop_vol5_1/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1973,7 +1973,7 @@
 	title = "SOP Volume 5.2: Department Regulations (Engineering)"
 
 /obj/item/book/manual/legal/sop_vol5_2/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2054,7 +2054,7 @@
 	title = "SOP Volume 5.3: Department Regulations (Medical)"
 
 /obj/item/book/manual/legal/sop_vol5_3/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2227,7 +2227,7 @@
 	title = "SOP Volume 5.4: Department Regulations (Research)"
 
 /obj/item/book/manual/legal/sop_vol5_4/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2344,7 +2344,7 @@
 	title = "SOP Volume 5.5: Department Regulations (Security)"
 
 /obj/item/book/manual/legal/sop_vol5_5/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2598,7 +2598,7 @@
 	title = "SOP Volume 5.6: Department Regulations (Command)"
 
 /obj/item/book/manual/legal/sop_vol5_6/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2665,7 +2665,7 @@
 	title = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
 
 /obj/item/book/manual/legal/sop_vol5_7/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2801,7 +2801,7 @@
 	title = "Corporate Regulations Volume 1: Introduction"
 
 /obj/item/book/manual/legal/cr_vol1/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2934,7 +2934,7 @@
 	title = "Corporate Regulations Volume 2: Infractions (Low)"
 
 /obj/item/book/manual/legal/cr_vol2/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3192,7 +3192,7 @@
 	title = "Corporate Regulations Volume 3: Infractions (Moderate)"
 
 /obj/item/book/manual/legal/cr_vol3/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3390,7 +3390,7 @@
 	title = "Corporate Regulations Volume 4: Infractions (Severe)"
 
 /obj/item/book/manual/legal/cr_vol4/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3515,7 +3515,7 @@
 	title = "Corporate Regulations Volume 5: Supplementals"
 
 /obj/item/book/manual/legal/cr_vol5/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>

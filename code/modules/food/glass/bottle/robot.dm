@@ -23,3 +23,4 @@
 	icon_state = "bottle-4"
 	reagent = "anti_toxin"
 	prefill = list("anti_toxin" = 60)
+

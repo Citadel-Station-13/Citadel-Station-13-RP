@@ -28,7 +28,7 @@
 	var/last_activate = null
 
 /obj/item/organ/internal/augment/Initialize(mapload)
-	..()
+	. = ..()
 
 	setup_radial_icon()
 
