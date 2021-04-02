@@ -96,20 +96,20 @@
 
 	flick("inject", src)
 
-/obj/machinery/atmospherics/components/unary/outlet_injector/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/atmospherics/unary/outlet_injector/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosPump", name)
 		ui.open()
 
-/obj/machinery/atmospherics/components/unary/outlet_injector/ui_data()
+/obj/machinery/atmospherics/unary/outlet_injector/ui_data()
 	var/data = list()
 	data["on"] = injecting
 	data["rate"] = round(volume_rate)
 	data["max_rate"] = round(air_contents.volume)
 	return data
 
-/obj/machinery/atmospherics/components/unary/outlet_injector/ui_act(action, params)
+/obj/machinery/atmospherics/unary/outlet_injector/ui_act(action, params)
 	if(..())
 		return
 
