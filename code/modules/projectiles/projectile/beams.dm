@@ -1,7 +1,7 @@
 /obj/item/projectile/beam
 	name = "laser"
 	icon_state = "laser"
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 40
 	damage_type = BURN
@@ -30,24 +30,28 @@
 /obj/item/projectile/beam/weaklaser
 	name = "weak laser"
 	icon_state = "laser"
+	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	damage = 15
 
 /obj/item/projectile/beam/smalllaser
 	damage = 25
+	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 
 /obj/item/projectile/beam/burstlaser
 	damage = 30
+	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
 	armor_penetration = 10
 
 
 /obj/item/projectile/beam/midlaser
 	damage = 40
+	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
 	armor_penetration = 10
 
 /obj/item/projectile/beam/heavylaser
 	name = "heavy laser"
 	icon_state = "heavylaser"
-	fire_sound = 'sound/weapons/lasercannonfire.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	damage = 60
 	armor_penetration = 30
 	light_range = 3
