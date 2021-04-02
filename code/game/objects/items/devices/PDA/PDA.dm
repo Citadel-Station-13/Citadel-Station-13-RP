@@ -1583,3 +1583,22 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(isnull(results))
 		results = list(list("entry" = "pressure", "units" = "kPa", "val" = "0", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80))
 	return results
+
+//VR FILE MERGE
+/obj/item/pda/centcom
+	default_cartridge = /obj/item/cartridge/captain
+	icon_state = "pda-h"
+	detonate = 0
+//	hidden = 1
+
+/obj/item/pda/pathfinder
+	default_cartridge = /obj/item/cartridge/signal/science
+	icon_state = "pda-lawyer-old"
+
+/obj/item/pda/explorer
+	default_cartridge = /obj/item/cartridge/signal/science
+	icon_state = "pda-det"
+
+/obj/item/pda/sar
+	default_cartridge = /obj/item/cartridge/medical
+	icon_state = "pda-h"

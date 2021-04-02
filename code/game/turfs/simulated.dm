@@ -12,7 +12,7 @@
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 	var/can_dirty = TRUE	// If false, tile never gets dirty
-	var/can_start_dirty = TRUE	// If false, cannot start dirty roundstart
+	var/can_start_dirty = FALSE	// If false, cannot start dirty roundstart
 	var/dirty_prob = 2	// Chance of being dirty roundstart
 	var/dirt = 0
 
@@ -164,3 +164,6 @@
 		new /obj/effect/decal/cleanable/blood/oil(src)
 	else if(ishuman(M))
 		add_blood(M)
+
+/turf/simulated/floor/plating
+	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
