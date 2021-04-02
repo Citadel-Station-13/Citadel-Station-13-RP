@@ -174,7 +174,7 @@
 		)
 
 /obj/item/organ/internal/augment/armmounted/shoulder/multiple/Initialize(mapload)
-	..()
+	. = ..()
 
 	if(integrated_object)
 		integrated_tools[integrated_object_type] = integrated_object

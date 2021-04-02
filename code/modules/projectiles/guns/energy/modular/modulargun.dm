@@ -21,7 +21,7 @@
 	var/emp_vuln = TRUE
 
 /obj/item/gun/energy/modular/Initialize(mapload)
-	..()
+	. = ..()
 	generatefiremodes()
 
 /obj/item/gun/energy/modular/examine(mob/user)

@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(server_maint)
 	var/list/currentrun = src.currentrun
 
 	/*
-	var/round_started = SSSSticker.HasRoundStarted()
+	var/round_started = SSticker.HasRoundStarted()
 
 	var/kick_inactive = CONFIG_GET(flag/kick_inactive)
 	var/afk_period
