@@ -26,6 +26,7 @@
 	name = LANGUAGE_GALCOM
 	desc = "The common galactic tongue, engineered for cross-species communication."
 	speech_verb = "says"
+	exclaim_verb = list("exclaims","shouts","yells")
 	whisper_verb = "whispers"
 	key = "0"
 	flags = RESTRICTED
@@ -33,15 +34,6 @@
 "vol", "zum", "coo","zoo","bi","do","ooz","ite","og","re","si","ite","ish",
 "ar","at","on","ee","east","ma","da", "rim")
 	partial_understanding = list(LANGUAGE_SKRELLIAN = 30, LANGUAGE_SOL_COMMON = 30)
-
-//TODO flag certain languages to use the mob-type specific say_quote and then get rid of these.
-/datum/language/common/get_spoken_verb(var/msg_end)
-	switch(msg_end)
-		if("!")
-			return pick("exclaims","shouts","yells") //TODO: make the basic proc handle lists of verbs.
-		if("?")
-			return ask_verb
-	return speech_verb
 
 // Galactic common languages (systemwide accepted standards).
 /datum/language/trader
@@ -78,6 +70,7 @@
 	colour = "rough"
 	key = "3"
 	space_chance = 45
+	machine_understands = FALSE
 	partial_understanding = list(LANGUAGE_GALCOM = 10, LANGUAGE_TRADEBAND = 20, LANGUAGE_SOL_COMMON = 20)
 	syllables = list (
 "gra","ba","ba","breh","bra","rah","dur","ra","ro","gro","go","ber","bar","geh","heh", "gra",
