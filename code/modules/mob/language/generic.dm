@@ -139,7 +139,7 @@
 // Rodent language for all the squeaks in the world
 /datum/language/squeakish
 	name = LANGUAGE_SQUEAKISH
-	desc = "A language that the rodents around the region seem to of adopted."
+	desc = "A language that the rodents around the region seem to have adopted."
 	signlang_verb = list("nose wiggles")
 	speech_verb = "squeaks"
 	whisper_verb = "squiks"
