@@ -221,13 +221,13 @@ var/list/name_to_material
 
 // General wall debris product placement.
 // Not particularly necessary aside from snowflakey cult girders.
-/datum/material/proc/place_dismantled_product(var/turf/target)
-	place_sheet(target)
+/datum/material/proc/place_dismantled_product(turf/target, amount)
+	place_sheet(target, amount)
 
 // Debris product. Used ALL THE TIME.
-/datum/material/proc/place_sheet(var/turf/target)
+/datum/material/proc/place_sheet(turf/target, amount)
 	if(stack_type)
-		return new stack_type(target)
+		return new stack_type(target, ispath(stack_type, /obj/item/stack)? amount : null)
 
 // As above.
 /datum/material/proc/place_shard(var/turf/target)
