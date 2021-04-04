@@ -167,6 +167,7 @@
 #include "code\_globalvars\mobs.dm"
 #include "code\_globalvars\sensitive.dm"
 #include "code\_globalvars\traits.dm"
+#include "code\_globalvars\lists\bodyparts.dm"
 #include "code\_globalvars\lists\client.dm"
 #include "code\_globalvars\lists\keybindings.dm"
 #include "code\_globalvars\lists\mapping.dm"
