@@ -46,7 +46,7 @@
 		return // Only relay speech on our acutal z, otherwise we might relay sounds that were themselves relayed up!
 	if(isliving(owner))
 		verb += " from above"
-	return owner.hear_say(message, verb, language, alt_name, italics, speaker, speech_sound, sound_vol)
+	return owner?.hear_say(message, verb, language, alt_name, italics, speaker, speech_sound, sound_vol)
 
 /mob/zshadow/proc/sync_icon(var/mob/M)
 	name = M.name
