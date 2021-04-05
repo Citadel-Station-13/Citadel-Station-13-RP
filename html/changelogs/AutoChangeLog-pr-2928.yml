@@ -1,0 +1,4 @@
+author: "FreeStylaLT"
+delete-after: True
+changes: 
+  - bugfix: "Missing core ejection button from Bridge"
