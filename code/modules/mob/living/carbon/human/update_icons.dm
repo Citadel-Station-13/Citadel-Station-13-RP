@@ -882,7 +882,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	remove_layer(TAIL_LAYER)
 	remove_layer(TAIL_LAYER_ALT) // VOREStation Edit - START - Alt Tail Layer
 
-	var/used_tail_layer = (resting && tail_style.can_loaf) ? HEAD_LAYER : (tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER)
+	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
 
 	var/image/vr_tail_image = get_tail_image()
 	if(vr_tail_image)
