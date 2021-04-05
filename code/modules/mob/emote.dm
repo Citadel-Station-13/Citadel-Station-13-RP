@@ -1,6 +1,6 @@
 #define EMOTE_COOLDOWN 30		//Time in deciseconds that the cooldown lasts
 
-//Emote Cooldown System (it's so simple!)
+//Emote Cooldown System
 /mob/proc/handle_emote_CD(cooldown = EMOTE_COOLDOWN)
 	if(emote_cd == 3) //Spam those emotes
 		return FALSE

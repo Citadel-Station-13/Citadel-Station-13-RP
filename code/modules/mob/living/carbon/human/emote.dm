@@ -36,7 +36,7 @@
 				on_CD = handle_emote_CD()		//proc located in code\modules\mob\emote.dm'
 			else
 				return
-		if("clap","cough","coughs","crack","sneeze","sneezes","slap","slaps","aslap","aslaps","scream","screams","squeak","squeaks","meow","meows","snap","snaps","whistle","whistles","qwhistle")
+		if("clap","cough","coughs","crack","sneeze","sneezes","slap","slaps","aslap","aslaps","scream","screams","squeak","squeaks","meow","meows","snap","snaps","whistle","whistles","qwhistle","flip")
 			if(!src.restrained())
 				on_CD = handle_emote_CD()		//proc located in code\modules\mob\emote.dm'
 			else
