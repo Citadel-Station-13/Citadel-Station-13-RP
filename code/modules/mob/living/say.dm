@@ -196,7 +196,7 @@ proc/get_radio_key_from_channel(var/channel)
 		new_message += message
 		message = new_message
 
-	if(speaking)
+	while(speaking && copytext_char(message, 1, 2) == ",")
 		message = copytext_char(message,2+length_char(speaking.key))
 
 	//HIVEMIND languages always send to all people with that language
