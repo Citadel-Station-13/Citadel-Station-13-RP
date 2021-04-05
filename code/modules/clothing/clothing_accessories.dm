@@ -53,7 +53,7 @@
 		if (!(src.loc == usr))
 			return
 		
-		var/targeted_mouse = (over_object.name == "r_hand) || (over_object.name == "l_hand")
+		var/targeted_mouse = (over_object.name == "r_hand") || (over_object.name == "l_hand")
 		if(!isturf(over_object) && !targeted_mouse)
 			return		// shitcode, we can refactor later.
 
