@@ -29,28 +29,18 @@
 		if("squish")
 			if(species.bump_flag == SLIME)
 				on_CD = handle_emote_CD()		//proc located in code\modules\mob\emote.dm'
-			else
-				return
 		if("shriekloud","shriekshort")
 			if(src.species.name == SPECIES_VOX)
 				on_CD = handle_emote_CD()		//proc located in code\modules\mob\emote.dm'
-			else
-				return
 		if("clap","crack","slap","slaps","aslap","aslaps","flip")
 			if(!src.restrained())
 				on_CD = handle_emote_CD()		//proc located in code\modules\mob\emote.dm'
-			else
-				return
 		if("cough","coughs","sneeze","sneezes","scream","screams","squeak","squeaks","meow","meows","whistle","whistles","qwhistle")
 			if(!muzzled)
 				on_CD = handle_emote_CD()		//proc located in code\modules\mob\emote.dm'
-			else
-				return
 		if("snap","snaps")
 			if(!src.restrained())
 				on_CD = handle_emote_CD(5)		//0.5s. People like to snap quickly.
-			else
-				return
 
 	if(on_CD == 1)	//Check if we need to suppress the emote
 		return		//Suppress the emote
