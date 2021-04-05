@@ -240,7 +240,7 @@
 		return
 
 	face_atom(A)
-	if(!isobserver(src) && !isturf(A))
+	if(!isobserver(src) && !isturf(A) && A != src)
 		if(A.loc != src)
 			for(var/mob/M in viewers(4, src))
 				if(M == src || M.is_blind())
