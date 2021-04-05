@@ -79,7 +79,7 @@
 	footstep_sounds = base_footstep_sounds
 
 	if(flooring && place_product)
-		floor.drop_material(src)
+		flooring.drop_material(src)
 
 	broken = null
 	burnt = null
