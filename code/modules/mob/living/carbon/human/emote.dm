@@ -1,6 +1,9 @@
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
 
+	//Emote Cooldown System
+	//handle_emote_CD() located in [code\modules\mob\emote.dm]
+	var/on_CD = FALSE
 	var/datum/gender/T = gender_datums[get_visible_gender()]
 
 	if (findtext(act, "-", 1, null))
@@ -21,6 +24,25 @@
 
 	if(src.stat == 2.0 && (act != "deathgasp"))
 		return
+
+	switch(act)
+		if("squish")
+			if(species.bump_flag == SLIME)
+				on_CD = handle_emote_CD()		//proc located in code\modules\mob\emote.dm'
+			else
+				return
+		if("shriekloud","shriekshort")
+			if(src.species.name == SPECIES_VOX)
+				on_CD = handle_emote_CD()		//proc located in code\modules\mob\emote.dm'
+			else
+				return
+		if("clap","cough","coughs","crack","sneeze","sneezes","slap","slaps","aslap","aslaps","scream","screams","squeak","squeaks","meow","meows","snap","snaps","whistle","whistles","qwhistle")
+			if(!src.restrained())
+				on_CD = handle_emote_CD()		//proc located in code\modules\mob\emote.dm'
+			else
+				return
+	if(on_CD == 1)	//Check if we need to suppress the emote
+		return		//Suppress the emote
 	if(attempt_vr(src,"handle_emote_vr",list(act,m_type,message))) return //VOREStation Add - Custom Emote Handler
 	switch(act)
 
@@ -35,7 +57,7 @@
 			if(!isSynthetic())
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
 				return
-
+			on_CD = handle_emote_CD()	//proc located in code\modules\mob\emote.dm'
 			var/M = null
 			if(param)
 				for (var/mob/A in view(null, null))
@@ -44,6 +66,8 @@
 						break
 			if(!M)
 				param = null
+			if(on_CD == 1)		//Check if we need to suppress the emote
+				return			//Suppress the emote
 
 			var/display_msg = "beeps"
 			var/use_sound = 'sound/machines/twobeep.ogg'
@@ -870,7 +894,12 @@
 	src << browse(HTML, "window=flavor_changes;size=430x300")
 
 /mob/living/carbon/human/proc/handle_emote_vr(var/act,var/m_type=1,var/message = null)
-
+	var/on_CD = FALSE
+	switch(act)
+		if("awoo","nya","peep","chirp","weh","merp","bark","hiss","squeak","purr")
+			on_CD = handle_emote_CD()	//proc located in code\modules\mob\emote.dm'
+	if(on_CD == 1)	//Check if we need to suppress the emote
+		return		//Suppress the emote
 	switch(act)
 		if ("vwag")
 			if(toggle_tail_vr(message = 1))
