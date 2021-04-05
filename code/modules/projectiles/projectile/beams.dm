@@ -106,7 +106,7 @@
 /obj/item/projectile/beam/cyan
 	name = "cyan beam"
 	icon_state = "cyan"
-	fire_sound = 'sound/weapons/eluger.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_alienlaser.ogg'
 	damage = 40
 	light_color = "#00C6FF"
 
