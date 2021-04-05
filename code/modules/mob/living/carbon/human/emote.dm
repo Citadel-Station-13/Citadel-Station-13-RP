@@ -49,6 +49,7 @@
 		if("snap","snaps")
 			if(!src.restrained())
 				on_CD = handle_emote_CD(5)		//0.5s. People like to snap quickly.
+			else
 				return
 
 	if(on_CD == 1)	//Check if we need to suppress the emote
