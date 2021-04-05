@@ -122,12 +122,10 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
 /mob/living/carbon/human/update_transform()
-	//snowflake taur resting check
-	if(tail_style?.icon_state && GLOB.taur_loafs[tail_style.icon_state])
+	if(tail_style?.can_loaf)
 		// return early after updating taur type
 		update_tail_showing()
 		return
-
 
 	var/desired_scale_x = size_multiplier
 	var/desired_scale_y = size_multiplier
