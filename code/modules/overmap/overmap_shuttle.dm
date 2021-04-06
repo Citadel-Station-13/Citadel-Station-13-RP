@@ -134,7 +134,7 @@
 	var/opened = 0
 	var/parent_shuttle
 
-/obj/structure/fuel_port/Initialize()
+/obj/structure/fuel_port/Initialize(mapload)
 	. = ..()
 	new /obj/item/tank/phoron(src)
 

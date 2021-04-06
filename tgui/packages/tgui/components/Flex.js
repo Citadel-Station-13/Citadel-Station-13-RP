@@ -33,7 +33,7 @@ export const computeFlexProps = props => {
     style: {
       ...rest.style,
       'flex-direction': direction,
-      'flex-wrap': wrap === true ? 'wrap' : wrap,
+      'flex-wrap': wrap,
       'align-items': align,
       'justify-content': justify,
     },

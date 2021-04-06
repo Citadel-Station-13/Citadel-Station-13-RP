@@ -17,7 +17,7 @@
 		"plant-13"
 	)
 
-/obj/machinery/holoplant/Initialize()
+/obj/machinery/holoplant/Initialize(mapload)
 	. = ..()
 	activate()
 

@@ -11,7 +11,7 @@
 	var/id_tag = null
 	var/chime_sound = 'sound/machines/doorbell.ogg'
 
-/obj/machinery/doorbell_chime/Initialize()
+/obj/machinery/doorbell_chime/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -91,17 +91,14 @@
 	icon_state = "doorbell-standby"
 	use_power = USE_POWER_OFF
 
-/obj/machinery/button/doorbell/New(var/loc, var/dir, var/building = 0)
-	..()
+/obj/machinery/button/doorbell/Initialize(mapload, dir, building = FALSE)
+	. = ..()
 	if(building)
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -32 : 32)
 		pixel_y = (dir & 3)? (dir ==1 ? -27 : 27) : 0
 	if (!id)
 		assign_uid()
 		id = num2text(uid)
-
-/obj/machinery/button/doorbell/Initialize()
-	. = ..()
 	update_icon()
 
 /obj/machinery/button/doorbell/power_change()

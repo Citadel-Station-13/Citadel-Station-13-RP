@@ -40,7 +40,7 @@
 	desc = "A mini fire extinguisher for use by burning phoronoids. Let's just hope it works."
 	max_water = 300
 
-/obj/item/extinguisher/Initialize()
+/obj/item/extinguisher/Initialize(mapload)
 	. = ..()
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)

@@ -18,7 +18,7 @@ var/list/fuel_injectors = list()
 	var/injecting = 0
 	var/obj/item/fuel_assembly/cur_assembly
 
-/obj/machinery/fusion_fuel_injector/Initialize()
+/obj/machinery/fusion_fuel_injector/Initialize(mapload)
 	. = ..()
 	fuel_injectors += src
 	default_apply_parts()

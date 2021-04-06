@@ -123,7 +123,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
-#define MAX_MESSAGE_LEN			2048	// I'm not sure about "easily". It can be a little longer.	// Famous last words.
+#define MAX_MESSAGE_LEN			4096	// I'm not sure about "easily". It can be a lot longer.
 #define MAX_PAPER_MESSAGE_LEN	6144
 #define MAX_BOOK_MESSAGE_LEN	24576
 #define MAX_RECORD_LENGTH		24576

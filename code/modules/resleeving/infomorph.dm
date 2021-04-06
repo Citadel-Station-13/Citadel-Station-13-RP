@@ -83,7 +83,7 @@ var/list/infomorph_emotions = list(
 	var/datum/data/record/securityActive1		// Could probably just combine all these into one
 	var/datum/data/record/securityActive2
 
-/mob/living/silicon/infomorph/New(var/obj/item/sleevecard/SC, var/name = "Unknown")
+/mob/living/silicon/infomorph/Initialize(mapload, obj/item/sleevecard/SC, name = "Unknown")
 	ASSERT(SC)
 	name = "[initial(name)] ([name])"
 	src.forceMove(SC)
@@ -114,10 +114,7 @@ var/list/infomorph_emotions = list(
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
 
-	..()
-
-/mob/living/silicon/infomorph/Login()
-	..()
+	return ..()
 
 /////////// STAT PANEL
 /mob/living/silicon/infomorph/Stat()

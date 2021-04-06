@@ -65,11 +65,9 @@
 		clear_holster()
 
 /obj/item/clothing/accessory/holster/attack_hand(mob/user as mob)
-	if (has_suit && (slot & ACCESSORY_SLOT_UTILITY))	//if we are part of a suit
-		if (holstered)
+	if (has_suit && (slot & ACCESSORY_SLOT_UTILITY))
+		if(holstered)
 			unholster(user)
-		return
-
 	..(user)
 
 /obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
@@ -120,7 +118,7 @@
 	if(!H.holstered)
 		var/obj/item/W = usr.get_active_hand()
 		if(!istype(W, /obj/item))
-			to_chat(usr, "<span class='warning'>You need your gun equipped to holster it.</span>")
+			to_chat(usr, "<span class='warning'>You need your weapon equipped to holster it.</span>")
 			return
 		H.holster(W, usr)
 	else
@@ -155,7 +153,6 @@
 	name = "machete scabbard"
 	desc = "A handsome synthetic leather scabbard with matching belt."
 	icon_state = "holster_machete"
-	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
 	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/energy/hfmachete)
 	cant_hold = list(/obj/item/material/knife/machete/armblade)
@@ -166,8 +163,9 @@
 /obj/item/clothing/accessory/holster/machete/occupied
 	var/holstered_spawn = /obj/item/material/knife/machete
 
-/obj/item/clothing/accessory/holster/machete/occupied/Initialize()
+/obj/item/clothing/accessory/holster/machete/occupied/Initialize(mapload)
 	holstered = new holstered_spawn
+	. = ..()
 
 /obj/item/clothing/accessory/holster/machete/occupied/deluxe
 	holstered_spawn = /obj/item/material/knife/machete/deluxe

@@ -17,7 +17,7 @@
 
 	clicksound = "keyboard"
 
-/obj/machinery/computer/Initialize()
+/obj/machinery/computer/Initialize(mapload)
 	overlay_layer = layer
 	. = ..()
 	power_change()

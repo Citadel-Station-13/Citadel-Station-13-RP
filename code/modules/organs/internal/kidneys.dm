@@ -46,10 +46,12 @@
 /obj/item/organ/internal/kidneys/grey
 	icon_state = "kidneys_grey"
 
-/obj/item/organ/internal/kidneys/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/kidneys/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/kidneys/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.species.blood_color)
+			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)

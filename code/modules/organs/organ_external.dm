@@ -219,13 +219,12 @@
 /obj/item/organ/external/update_health()
 	damage = min(max_damage, (brute_dam + burn_dam))
 
-/obj/item/organ/external/New(var/mob/living/carbon/holder)
-	..(holder, 0)
+/obj/item/organ/external/Initialize(mapload)
+	. = ..(mapload, FALSE)
 	if(owner)
 		replaced(owner)
 		sync_colour_to_human(owner)
-	spawn(1)
-		get_icon()
+	addtimer(CALLBACK(src, .proc/get_icon), 1)
 
 /obj/item/organ/external/replaced(var/mob/living/carbon/human/target)
 	owner = target
@@ -918,7 +917,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!clean)
 				// Throw limb around.
 				if(src && istype(loc,/turf))
-					throw_at(get_edge_target_turf(src,pick(alldirs)),rand(1,3),5)
+					throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 				dir = 2
 		if(DROPLIMB_BURN)
 			new /obj/effect/decal/cleanable/ash(droploc)
@@ -937,19 +936,19 @@ Note that amputating the affected organ does in fact remove the infection from t
 					gore.basecolor =  use_blood_colour
 					gore.update_icon()
 
-			gore.throw_at(get_edge_target_turf(src,pick(alldirs)),rand(1,3),5)
+			gore.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			for(var/obj/item/organ/I in internal_organs)
 				I.removed()
 				if(istype(loc,/turf))
-					I.throw_at(get_edge_target_turf(src,pick(alldirs)),rand(1,3),5)
+					I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			for(var/obj/item/I in src)
 				if(I.w_class <= ITEMSIZE_SMALL)
 					qdel(I)
 					continue
 				I.forceMove(droploc)
-				I.throw_at(get_edge_target_turf(src,pick(alldirs)),rand(1,3),5)
+				I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			qdel(src)
 

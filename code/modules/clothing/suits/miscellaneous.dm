@@ -661,6 +661,12 @@ obj/item/clothing/suit/kamishimo
 	icon_state = "yellow_hoodie"
 	item_state_slots = list(slot_r_hand_str = "suit_yellow", slot_l_hand_str = "suit_yellow")
 
+/obj/item/clothing/suit/storage/toggle/hoodie/white
+	name = "white hoodie"
+	desc = "A warm, white sweatshirt."
+	icon_state = "white_hoodie"
+	item_state_slots = list(slot_r_hand_str = "suit_white", slot_l_hand_str = "suit_white")
+
 /obj/item/clothing/suit/storage/toggle/hoodie/cti
 	name = "CTI hoodie"
 	desc = "A warm, black sweatshirt.  It bears the letters CTI on the back, a lettering to the prestigious university in Tau Ceti, Ceti Technical Institute.  There is a blue supernova embroidered on the front, the emblem of CTI."

@@ -40,8 +40,8 @@
 	no_vore = 1 //Mice can't eat others due to the amount of bugs caused by it.
 	vore_taste = "cheese"
 
-/mob/living/simple_mob/animal/passive/mouse/New()
-	..()
+/mob/living/simple_mob/animal/passive/mouse/Initialize(mapload)
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
@@ -59,13 +59,9 @@
 	icon_rest = "mouse_[body_color]_sleep"
 	desc = "A small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 
-/mob/living/simple_mob/animal/passive/mouse/Crossed(AM as mob|obj)
-	//VOREStation Edit begin: SHADEKIN
-	var/mob/SK = AM
-	if(istype(SK))
-		if(SK.shadekin_phasing_check())
-			return
-	//VOREStation Edit end: SHADEKIN
+/mob/living/simple_mob/animal/passive/mouse/Crossed(atom/movable/AM as mob|obj)
+	if(AM.is_incorporeal())
+		return
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
@@ -115,8 +111,8 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
-/mob/living/simple_mob/animal/passive/mouse/rat/Initialize()
-	..()
+/mob/living/simple_mob/animal/passive/mouse/rat/Initialize(mapload)
+	. = ..()
 	adjust_scale(1.2)
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
@@ -124,8 +120,8 @@
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
 
-/mob/living/simple_mob/animal/passive/mouse/brown/Tom/New()
-	..()
+/mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize(mapload)
+	. = ..()
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 

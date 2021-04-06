@@ -146,8 +146,8 @@
 	var/broken = 0
 	var/locked = 1
 
-/obj/structure/closet/crate/secure/New()
-	..()
+/obj/structure/closet/crate/secure/Initialize(mapload)
+	. = ..()
 	if(locked)
 		overlays.Cut()
 		overlays += redlight

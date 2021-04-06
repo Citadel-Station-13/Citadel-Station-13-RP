@@ -24,7 +24,7 @@
 		list("impedrezene" = 15)						= 2,
 		list("zombiepowder" = 10)						= 1)
 
-/obj/item/reagent_containers/glass/beaker/vial/random/Initialize()
+/obj/item/reagent_containers/glass/beaker/vial/random/Initialize(mapload)
 	. = ..()
 	if(is_open_container())
 		flags ^= OPENCONTAINER
@@ -209,3 +209,12 @@
 		new loot(usr.drop_location())
 		to_chat(user, "You unwrap the package.")
 		qdel(src)
+
+//Ported from Main.
+
+/obj/item/skub
+	name = "skub"
+	desc = "A standard jar of skub."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "skub"
+	attack_verb = list("skubbed")

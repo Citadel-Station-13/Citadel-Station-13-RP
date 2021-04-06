@@ -63,8 +63,8 @@
 
 	var/rank //pyro, operative, ammo, stealth. more to come. Do not leave blank.
 
-/mob/living/simple_mob/animal/space/mouse_army/New()
-	..()
+/mob/living/simple_mob/animal/space/mouse_army/Initialize(mapload)
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide

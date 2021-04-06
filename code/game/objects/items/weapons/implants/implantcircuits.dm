@@ -8,8 +8,8 @@
 /obj/item/implant/integrated_circuit/islegal()
 	return TRUE
 
-/obj/item/implant/integrated_circuit/New()
-	..()
+/obj/item/implant/integrated_circuit/Initialize(mapload)
+	. = ..()
 	IC = new(src)
 	IC.implant = src
 

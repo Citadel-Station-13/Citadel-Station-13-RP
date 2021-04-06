@@ -21,8 +21,8 @@ SUBSYSTEM_DEF(server_maint)
 					log_world("Found a null in player_list!")
 				cleanup_SSticker++
 			if (5)
-				if(listclearnulls(mob_list))
-					log_world("Found a null in mob_list!")
+				if(listclearnulls(GLOB.mob_list))
+					log_world("Found a null in GLOB.mob_list!")
 				cleanup_SSticker++
 			if (10)
 				if(listclearnulls(living_mob_list))
@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(server_maint)
 	var/list/currentrun = src.currentrun
 
 	/*
-	var/round_started = SSSSticker.HasRoundStarted()
+	var/round_started = SSticker.HasRoundStarted()
 
 	var/kick_inactive = CONFIG_GET(flag/kick_inactive)
 	var/afk_period

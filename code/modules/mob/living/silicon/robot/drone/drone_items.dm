@@ -21,7 +21,8 @@
 		/obj/item/camera_assembly,
 		/obj/item/tank,
 		/obj/item/circuitboard,
-		/obj/item/smes_coil
+		/obj/item/smes_coil,
+		/obj/item/fuelrod/
 		)
 
 	var/obj/item/wrapped = null // Item currently being held.
@@ -94,7 +95,8 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/blood,
-		/obj/item/stack/material/phoron
+		/obj/item/stack/material/phoron,
+		/obj/item/nif
 		)
 
 /obj/item/gripper/research //A general usage gripper, used for toxins/robotics/xenobio/etc
@@ -119,7 +121,8 @@
 		/obj/item/disposable_teleporter/slime,
 		/obj/item/slimepotion,
 		/obj/item/slime_extract,
-		/obj/item/reagent_containers/food/snacks/monkeycube
+		/obj/item/reagent_containers/food/snacks/monkeycube,
+		/obj/item/nif
 
 		)
 
@@ -155,7 +158,10 @@
 		/obj/item/seeds,
 		/obj/item/grown,
 		/obj/item/tray,
-		/obj/item/plantspray
+		/obj/item/plantspray,
+		/obj/item/reagent_containers/glass,
+		/obj/item/reagent_containers/food/drinks,
+		/obj/item/storage/box/wings
 		)
 
 /obj/item/gripper/gravekeeper	//Used for handling grave things, flowers, etc.

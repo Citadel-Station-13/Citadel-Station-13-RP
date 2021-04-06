@@ -6,8 +6,8 @@
 	amount_per_transfer_from_this = 10
 	volume = 10
 
-/obj/item/reagent_containers/hypospray/autoinjector/miner/Initialize()
-	..()
+/obj/item/reagent_containers/hypospray/autoinjector/miner/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("bicaridine", 5)
 	reagents.add_reagent("tricordrazine", 3)
 	reagents.add_reagent("tramadol", 2)
@@ -18,8 +18,8 @@
 	desc = "Contains emergency trauma autoinjectors."
 	icon_state = "syringe"
 
-/obj/item/storage/box/traumainjectors/Initialize()
-	..()
+/obj/item/storage/box/traumainjectors/Initialize(mapload)
+	. = ..()
 	for (var/i = 1 to 7)
 		new /obj/item/reagent_containers/hypospray/autoinjector/miner(src)
 

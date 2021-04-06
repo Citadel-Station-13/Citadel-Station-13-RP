@@ -130,8 +130,7 @@
 'Ignore' - keywords in the speech won't have any effect.
 'Implant-toggle' - toggles implant."}
 
-/obj/item/implanter/sizecontrol/New()
-	src.imp = new /obj/item/implant/sizecontrol( src )
-	..()
+/obj/item/implanter/sizecontrol/Initialize(mapload)
+	. = ..()
+	imp = new /obj/item/implant/sizecontrol( src )
 	update()
-	return

@@ -316,8 +316,8 @@ var/list/slot_equipment_priority = list( \
 //	if(hasvar(src,"w_radio")) if(src:w_radio) items += src:w_radio  commenting this out since headsets go on your ears now PLEASE DON'T BE MAD KEELIN
 	if(hasvar(src,"w_uniform")) if(src:w_uniform) items += src:w_uniform
 
-	//if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand
-	//if(hasvar(src,"r_hand")) if(src:r_hand) items += src:r_hand
+	if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand
+	if(hasvar(src,"r_hand")) if(src:r_hand) items += src:r_hand
 
 	return items
 

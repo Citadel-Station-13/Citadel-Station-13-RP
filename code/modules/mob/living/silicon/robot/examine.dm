@@ -45,6 +45,4 @@
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		. += "\nIt is [pose]"
 
-	. = ..()
 	user.showLaws(src)
-	return

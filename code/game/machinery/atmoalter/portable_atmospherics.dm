@@ -13,20 +13,17 @@
 	var/start_pressure = ONE_ATMOSPHERE
 	var/maximum_pressure = 90 * ONE_ATMOSPHERE
 
-/obj/machinery/portable_atmospherics/New()
-	..()
-
+/obj/machinery/portable_atmospherics/Initialize(mapload)
+	. = ..()
 	air_contents.volume = volume
 	air_contents.temperature = T20C
-
-	return 1
 
 /obj/machinery/portable_atmospherics/Destroy()
 	QDEL_NULL(air_contents)
 	QDEL_NULL(holding)
 	. = ..()
 
-/obj/machinery/portable_atmospherics/Initialize()
+/obj/machinery/portable_atmospherics/Initialize(mapload)
 	. = ..()
 	spawn()
 		var/obj/machinery/atmospherics/portables_connector/port = locate() in loc
@@ -51,9 +48,6 @@
 
 /obj/machinery/portable_atmospherics/proc/MolesForPressure(var/target_pressure = start_pressure)
 	return (target_pressure * air_contents.volume) / (R_IDEAL_GAS_EQUATION * air_contents.temperature)
-
-/obj/machinery/portable_atmospherics/update_icon()
-	return null
 
 /obj/machinery/portable_atmospherics/proc/connect(obj/machinery/atmospherics/portables_connector/new_port)
 	//Make sure not already connected to something else

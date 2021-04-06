@@ -133,8 +133,8 @@
 	var/gun_type = /obj/item/gun/energy/lasercannon/mounted
 	var/obj/item/gun/gun
 
-/obj/item/rig_module/mounted/New()
-	..()
+/obj/item/rig_module/mounted/Initialize(mapload)
+	. = ..()
 	gun = new gun_type(src)
 
 /obj/item/rig_module/mounted/engage(atom/target)
@@ -289,7 +289,7 @@
 	deactivate_string = "Retract Blade"
 	var/obj/item/material/knife/machete/armblade/rig/held_blade
 
-/obj/item/rig_module/armblade/Initialize()
+/obj/item/rig_module/armblade/Initialize(mapload)
 	. = ..()
 	held_blade = new /obj/item/material/knife/machete/armblade/rig
 	held_blade.storing_module = src

@@ -8,7 +8,7 @@
 	gauge_cap = 3
 	volume = 10
 
-/obj/item/tank/emergency/phoron/double/New()
+/obj/item/tank/emergency/phoron/double/Initialize(mapload)
 	. = ..()
 	air_contents.adjust_gas(/datum/gas/phoron, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 

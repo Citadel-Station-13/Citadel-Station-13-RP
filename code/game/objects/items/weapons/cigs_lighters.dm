@@ -93,7 +93,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/brand
 	blood_sprite_state = null //Can't bloody these
 
-/obj/item/clothing/mask/smokable/Initialize()
+/obj/item/clothing/mask/smokable/Initialize(mapload)
 	. = ..()
 	flags |= NOREACT // so it doesn't react until you light it
 	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
@@ -282,7 +282,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	weldermes = "<span class='notice'>USER casually lights the NAME with FLAME.</span>"
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME.</span>"
 
-/obj/item/clothing/mask/smokable/cigarette/Initialize()
+/obj/item/clothing/mask/smokable/cigarette/Initialize(mapload)
 	. = ..()
 	if(nicotine_amt)
 		reagents.add_reagent("nicotine", nicotine_amt)
@@ -365,7 +365,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	slot_flags = SLOT_EARS
 	throwforce = 1
 
-/obj/item/cigbutt/Initialize()
+/obj/item/cigbutt/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
@@ -400,7 +400,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	ignitermes = "<span class='notice'>USER fiddles with FLAME, and manages to light their NAME with the power of science.</span>"
 	is_pipe = 1
 
-/obj/item/clothing/mask/smokable/pipe/Initialize()
+/obj/item/clothing/mask/smokable/pipe/Initialize(mapload)
 	. = ..()
 	name = "empty [initial(name)]"
 

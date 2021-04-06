@@ -26,7 +26,7 @@
 	var/list/linked = list()
 	var/max_item_teleport = 30
 
-/obj/machinery/hyperpad/centre/Initialize()
+/obj/machinery/hyperpad/centre/Initialize(mapload)
 	. = ..()
 	if(map_pad_id)
 		mapped_hyper_pads[map_pad_id] = src
@@ -147,8 +147,8 @@
 							continue
 					else
 						continue
-				else if(!isobserver(ROI))
-					continue
+				if(!((istype(ROI,/obj/mecha)) || istype(ROI,/obj/vehicle)))
+					continue //TP things that move that are "anchored"
 			if(isobserver(ROI))
 				continue
 			var/datum/effect_system/teleport_greyscale/tele1 = new /datum/effect_system/teleport_greyscale()

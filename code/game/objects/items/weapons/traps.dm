@@ -128,7 +128,9 @@
 	deployed = 0
 	can_buckle = initial(can_buckle)
 
-/obj/item/beartrap/Crossed(AM as mob|obj)
+/obj/item/beartrap/Crossed(atom/movable/AM as mob|obj)
+	if(AM.is_incorporeal())
+		return
 	if(deployed && isliving(AM))
 		var/mob/living/L = AM
 		if(L.m_intent == "run")

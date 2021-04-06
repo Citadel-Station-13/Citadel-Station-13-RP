@@ -41,10 +41,6 @@
 	..()
 	to_chat(user, "<span class='notice'>\The [src] will fill [equip_type?"a [equip_type]":"any"] slot.</span>")
 
-/obj/item/mecha_parts/mecha_equipment/New()
-	..()
-	return
-
 /obj/item/mecha_parts/mecha_equipment/proc/update_chassis_page()
 	if(chassis)
 		send_byjax(chassis.occupant,"exosuit.browser","eq_list",chassis.get_equipment_list())

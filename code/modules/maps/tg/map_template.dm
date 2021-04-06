@@ -1,15 +1,3 @@
-var/list/global/map_templates = list()
-
-// Called when the world starts, in world.dm
-/proc/load_map_templates()
-	for(var/T in subtypesof(/datum/map_template))
-		var/datum/map_template/template = T
-		if(!(initial(template.mappath)))	// If it's missing the actual path its probably a base type or being used for inheritence.
-			continue
-		template = new T()
-		map_templates[template.name] = template
-	return TRUE
-
 /datum/map_template
 	var/name = "Default Template Name"
 	var/desc = "Some text should go here. Maybe."
@@ -38,8 +26,7 @@ var/list/global/map_templates = list()
 	if(path)
 		mappath = path
 	if(mappath)
-		spawn(1)
-			preload_size(mappath)
+		preload_size(mappath)
 	if(rename)
 		name = rename
 
@@ -111,7 +98,7 @@ var/list/global/map_templates = list()
 		return FALSE
 	SSmapping.add_new_zlevel(name, traits)
 
-//	repopulate_sorted_areas()
+	repopulate_sorted_areas()
 
 	// Initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)
@@ -138,7 +125,8 @@ var/list/global/map_templates = list()
 		return
 
 //	if(!SSmapping.loading_ruins)	// Will be done manually during mapping ss init
-//		repopulate_sorted_areas()
+	if(SSmapping.subsystem_initialized)
+		repopulate_sorted_areas()
 
 	// Initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)
@@ -157,14 +145,14 @@ var/list/global/map_templates = list()
 
 /datum/map_template/proc/annihilate_bounds(turf/origin, centered = FALSE, orientation = SOUTH)
 	var/deleted_atoms = 0
-	admin_notice("<span class='danger'>Annihilating objects in submap loading locatation.</span>", R_DEBUG)
+	log_debug("Annihilating objects in submap loading locatation.")
 	var/list/turfs_to_clean = get_affected_turfs(origin, centered, orientation)
 	if(turfs_to_clean.len)
 		for(var/turf/T in turfs_to_clean)
 			for(var/atom/movable/AM in T)
 				++deleted_atoms
 				qdel(AM)
-	admin_notice("<span class='danger'>Annihilated [deleted_atoms] objects.</span>", R_DEBUG)
+	log_debug("Annihilated [deleted_atoms] objects.")
 
 
 // For your ever biggening badminnery kevinz000
@@ -178,22 +166,21 @@ var/list/global/map_templates = list()
 	set background = TRUE
 
 	if(!z_levels || !z_levels.len)
-		admin_notice("seed_submaps() was not given any Z-levels.", R_DEBUG)
-		return
+		CRASH("seed_submaps() was not given any Z-levels.")
 
 	for(var/zl in z_levels)
 		var/turf/T = locate(1, 1, zl)
 		if(!T)
-			admin_notice("Z level [zl] does not exist - Not generating submaps", R_DEBUG)
-			return
+			CRASH("Z level [zl] does not exist - Not generating submaps")
+	log_debug("Seeding submaps for levels [english_list(z_levels)] with budget [budget], whitelist [whitelist] and template type [desired_map_template_type]")
 
 	var/overall_sanity = 100	// If the proc fails to place a submap more than this, the whole thing aborts.
 	var/list/potential_submaps = list()	// Submaps we may or may not place.
 	var/list/priority_submaps = list()	// Submaps that will always be placed.
 
 	// Lets go find some submaps to make.
-	for(var/map in map_templates)
-		var/datum/map_template/MT = map_templates[map]
+	for(var/map in SSmapping.map_templates)
+		var/datum/map_template/MT = SSmapping.map_templates[map]
 		if(!MT.allow_duplicates && MT.loaded > 0)	// This probably won't be an issue but we might as well.
 			continue
 		if(!istype(MT, desired_map_template_type))	// Not the type wanted.
@@ -209,6 +196,7 @@ var/list/global/map_templates = list()
 
 	var/list/loaded_submap_names = list()
 	var/list/template_groups_used = list()	// Used to avoid spawning three seperate versions of the same PoI.
+	log_debug("[potential_submaps.len] potential with [priority_submaps.len] priority maps. Beginning placement.")
 
 	// Now lets start choosing some.
 	while(budget > 0 && overall_sanity > 0)
@@ -222,7 +210,7 @@ var/list/global/map_templates = list()
 				chosen_template = pick(potential_submaps)
 
 		else	// We're out of submaps.
-			admin_notice("Submap loader had no submaps to pick from with [budget] left to spend.", R_DEBUG)
+			log_debug("Submap loader had no submaps to pick from with [budget] left to spend.")
 			break
 
 		CHECK_TICK
@@ -243,7 +231,7 @@ var/list/global/map_templates = list()
 		var/specific_sanity = 100	// A hundred chances to place the chosen submap.
 		while(specific_sanity > 0)
 			specific_sanity--
-			var/orientation = pick(cardinal)
+			var/orientation = SOUTH
 			chosen_template.preload_size(chosen_template.mappath, orientation)
 			var/width_border = TRANSITIONEDGE + SUBMAP_MAP_EDGE_PAD + round(((orientation & NORTH|SOUTH) ? chosen_template.width : chosen_template.height) / 2)
 			var/height_border = TRANSITIONEDGE + SUBMAP_MAP_EDGE_PAD + round(((orientation & NORTH|SOUTH) ? chosen_template.height : chosen_template.width) / 2)
@@ -255,7 +243,7 @@ var/list/global/map_templates = list()
 				var/area/new_area = get_area(check)
 				if(!(istype(new_area, whitelist)))
 					valid = FALSE	// Probably overlapping something important.
-				//	to_chat(world, "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z]).")
+					// to_chat(world, "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z]).")
 					break
 				CHECK_TICK
 
@@ -264,7 +252,7 @@ var/list/global/map_templates = list()
 			if(!valid)
 				continue
 
-			admin_notice("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])\n", R_DEBUG)
+			log_debug("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])")
 
 			// Do loading here.
 			chosen_template.load(T, centered = TRUE, orientation=orientation)	// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
@@ -297,12 +285,12 @@ var/list/global/map_templates = list()
 	for(var/submap_name in loaded_submap_names)
 		var/count = loaded_submap_names[submap_name]
 		if(count > 1)
-			pretty_submap_list += "[count] <b>[submap_name]</b>"
+			pretty_submap_list += "[count] [submap_name]"
 		else
-			pretty_submap_list += "<b>[submap_name]</b>"
+			pretty_submap_list += "[submap_name]"
 
 	if(!overall_sanity)
-		admin_notice("Submap loader gave up with [budget] left to spend.", R_DEBUG)
+		log_debug("Submap loader gave up with [budget] left to spend.")
 	else
-		admin_notice("Submaps loaded.", R_DEBUG)
-	admin_notice("Loaded: [english_list(pretty_submap_list)]", R_DEBUG)
+		log_debug("Submaps loaded.")
+	log_debug("Loaded: [english_list(pretty_submap_list)]")

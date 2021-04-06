@@ -117,7 +117,7 @@
 
 	return ..()
 
-/obj/item/card/id/Initialize()
+/obj/item/card/id/Initialize(mapload)
 	. = ..()
 	var/datum/job/J = SSjobs.GetJob(rank)
 	if(J)
@@ -169,7 +169,7 @@
 	item_state = "idgreen"
 	assignment = "Synthetic"
 
-/obj/item/card/id/synthetic/Initialize()
+/obj/item/card/id/synthetic/Initialize(mapload)
 	. = ..()
 	access = get_all_station_access().Copy() + access_synth
 
@@ -180,11 +180,11 @@
 	registered_name = "Central Command"
 	assignment = "General"
 
-/obj/item/card/id/centcom/Initialize()
+/obj/item/card/id/centcom/Initialize(mapload)
 	. = ..()
 	access = get_all_centcom_access().Copy()
 
-/obj/item/card/id/centcom/station/Initialize()
+/obj/item/card/id/centcom/station/Initialize(mapload)
 	. = ..()
 	access |= get_all_station_access()
 
@@ -199,7 +199,7 @@
 	assignment = "Emergency Response Team"
 	icon_state = "ert-id"
 
-/obj/item/card/id/centcom/ERT/Initialize()
+/obj/item/card/id/centcom/ERT/Initialize(mapload)
 	. = ..()
 	access |= get_all_station_access()
 
@@ -208,7 +208,7 @@
 	assignment = "Paracausal Anomaly Response Agent"
 	icon_state = "ert-id"
 
-/obj/item/card/id/centcom/ERT/PARA/Initialize()
+/obj/item/card/id/centcom/ERT/PARA/Initialize(mapload)
 	. = ..()
 	access |= get_all_station_access()
 

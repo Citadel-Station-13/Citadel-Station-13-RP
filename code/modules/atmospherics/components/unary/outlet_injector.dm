@@ -24,8 +24,8 @@
 
 	level = 1
 
-/obj/machinery/atmospherics/unary/outlet_injector/New()
-	..()
+/obj/machinery/atmospherics/unary/outlet_injector/Initialize(mapload)
+	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500	//Give it a small reservoir for injecting. Also allows it to have a higher flow rate limit than vent pumps, to differentiate injectors a bit more.
 
 /obj/machinery/atmospherics/unary/outlet_injector/Destroy()
@@ -122,7 +122,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/unary/outlet_injector/Initialize()
+/obj/machinery/atmospherics/unary/outlet_injector/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
@@ -197,9 +197,9 @@
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return 1
 
-	if(!can_unwrench())
-		to_chat(user, "<span class='warning'>You cannot unwrench this [src], it is too exerted due to internal pressure.</span>")
-		return 1
+	if(unsafe_pressure())
+		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+	add_fingerprint(user)
 
 	playsound(src, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")

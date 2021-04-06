@@ -28,16 +28,7 @@
 	var/list/dormant_reactant_quantities = list()
 	var/list/particle_catchers = list()
 
-	var/list/ignore_types = list(
-		/obj/item/projectile,
-		/obj/effect,
-		/obj/fire,
-		/obj/structure/cable,
-		/obj/machinery/atmospherics,
-		/obj/machinery/air_sensor,
-		/mob/observer,
-		/obj/machinery/power/hydromagnetic_trap
-		)
+	var/list/ignore_types
 
 	var/light_min_range = 2
 	var/light_min_power = 3
@@ -47,8 +38,19 @@
 	var/last_range
 	var/last_power
 
-/obj/effect/fusion_em_field/New(loc, var/obj/machinery/power/fusion_core/new_owned_core)
-	..()
+/obj/effect/fusion_em_field/Initialize(mapload, obj/machinery/power/fusion_core/new_owned_core)
+	. = ..()
+	ignore_types = typecacheof(list(
+		/obj/effect,
+		/obj/item/projectile,
+		/obj/fire,
+		/obj/structure/cable,
+		/obj/machinery/atmospherics,
+		/obj/machinery/air_sensor,
+		/mob/observer,
+		/obj/machinery/power/hydromagnetic_trap,
+		/obj/machinery/camera
+	))
 
 	set_light(light_min_range,light_min_power)
 	last_range = light_min_range
@@ -323,16 +325,11 @@
 
 			if(AM == src || AM == owned_core || !AM.simulated)
 				continue
-
-			var/skip_obstacle
-			for(var/ignore_path in ignore_types)
-				if(istype(AM, ignore_path))
-					skip_obstacle = TRUE
-					break
-			if(skip_obstacle)
+			if(ignore_types[AM.type])
+				continue
+			if(!isobj(AM) && !ismob(AM))
 				continue
 
-			log_debug("R-UST DEBUG: [AM] is [AM.type]")
 			AM.visible_message("<span class='danger'>The field buckles visibly around \the [AM]!</span>")
 			tick_instability += rand(15,30)
 			AM.emp_act(empsev)

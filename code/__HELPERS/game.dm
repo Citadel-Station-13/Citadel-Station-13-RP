@@ -405,11 +405,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 			return get_step(start, EAST)
 
 /proc/get_mob_by_key(var/key)
-	for(var/mob/M in mob_list)
-		if(M.ckey == lowertext(key))
-			return M
-	return null
-
+	return GLOB.directory[ckey(key)]
 
 // Will return a list of active candidates. It increases the buffer 5 times until it finds a candidate which is active within the buffer.
 /proc/get_active_candidates(var/buffer = 1)

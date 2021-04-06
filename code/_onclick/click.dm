@@ -17,10 +17,16 @@
 */
 
 /atom/Click(var/location, var/control, var/params) // This is their reaction to being clicked on (standard proc)
+	if(!(flags & INITIALIZED))
+		to_chat(usr, "<span class='warning'>[type] initialization failure. Click dropped. Contact a coder or admin.</span>")
+		return
 	if(src)
 		usr.ClickOn(src, params)
 
 /atom/DblClick(var/location, var/control, var/params)
+	if(!(flags & INITIALIZED))
+		to_chat(usr, "<span class='warning'>[type] initialization failure. Click dropped. Contact a coder or admin.</span>")
+		return
 	if(src)
 		usr.DblClickOn(src, params)
 
@@ -184,6 +190,9 @@
 	return
 
 /mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
+
+	if(is_incorporeal())
+		return 0
 
 	if(!SSticker)
 		to_chat(src, "You cannot attack people before the game has started.")

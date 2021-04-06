@@ -7,7 +7,7 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	desc = "How are you reading this?"
 	screen_loc = "1,1"
 
-/obj/effect/lobby_image/Initialize()
+/obj/effect/lobby_image/Initialize(mapload)
 	icon = GLOB.using_map.lobby_icon
 	var/known_icon_states = icon_states(icon)
 	for(var/lobby_screen in GLOB.using_map.lobby_screens)

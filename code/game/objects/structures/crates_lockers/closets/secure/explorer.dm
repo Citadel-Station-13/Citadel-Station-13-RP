@@ -31,7 +31,7 @@
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/cataloguer)
 
-/obj/structure/closet/secure_closet/explorer/Initialize()
+/obj/structure/closet/secure_closet/explorer/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack
 	else
@@ -173,7 +173,7 @@
 		/obj/item/gps/explorer,
 		/obj/item/cataloguer/compact)
 
-/obj/structure/closet/secure_closet/pilot/Initialize()
+/obj/structure/closet/secure_closet/pilot/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack
 	else
@@ -213,17 +213,16 @@
 		/obj/item/storage/box/survival_knife,
 		/obj/item/material/knife/machete/deluxe,
 		/obj/item/gun/energy/frontier/locked/carbine,
-		/obj/item/gun/projectile/automatic/p90/custom,
-		/obj/item/ammo_magazine/m9mmt,
-		/obj/item/ammo_magazine/m9mmp90,
-		/obj/item/ammo_magazine/m9mmp90/hunter,
+		/obj/item/gun/projectile/automatic/mini_uzi/custom,
+		/obj/item/ammo_magazine/m45uzi,
+		/obj/item/ammo_magazine/m45uzi,
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/card/mining_point_card/survey/gimmick,
 		/obj/item/cataloguer/compact/pathfinder)
 
-/obj/structure/closet/secure_closet/pathfinder/Initialize()
+/obj/structure/closet/secure_closet/pathfinder/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack
 	else

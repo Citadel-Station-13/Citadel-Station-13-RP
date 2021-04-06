@@ -293,9 +293,9 @@
 
 	time_till_despawn = 60 //1 second, because gateway.
 
-/obj/machinery/cryopod/New()
+/obj/machinery/cryopod/Initialize(mapload)
+	. = ..()
 	announce = new /obj/item/radio/intercom(src)
-	..()
 
 /obj/machinery/cryopod/Destroy()
 	if(occupant)
@@ -303,7 +303,7 @@
 		occupant.resting = 1
 	return ..()
 
-/obj/machinery/cryopod/Initialize()
+/obj/machinery/cryopod/Initialize(mapload)
 	. = ..()
 
 	find_control_computer()

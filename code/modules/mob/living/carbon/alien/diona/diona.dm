@@ -20,9 +20,8 @@
 	holder_type = /obj/item/holder/diona
 	var/obj/item/hat
 
-/mob/living/carbon/alien/diona/New()
-
-	..()
+/mob/living/carbon/alien/diona/Initialize(mapload)
+	. = ..()
 	species = GLOB.all_species[SPECIES_DIONA]
 	add_language(LANGUAGE_ROOTGLOBAL)
 	add_language(LANGUAGE_GALCOM)
@@ -43,6 +42,6 @@
 	if(D.stat != CONSCIOUS)
 		return
 	if(prob(33) && D.canmove && isturf(D.loc) && !D.pulledby) //won't move if being pulled
-		step(D, pick(cardinal))
+		step(D, pick(GLOB.cardinal))
 	if(prob(1))
 		D.emote(pick("scratch","jump","chirp","roll"))

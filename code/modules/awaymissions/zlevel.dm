@@ -1,6 +1,9 @@
 proc/createRandomZlevel()
-	if(awaydestinations.len || UNIT_TEST)	//crude, but it saves another var! //VOREStation Edit - No loading away missions during Travis testing
+	if(awaydestinations.len)	//crude, but it saves another var! //VOREStation Edit - No loading away missions during Travis testing
 		return
+#ifdef UNIT_TESTS
+	return
+#endif
 
 	var/list/potentialRandomZlevels = list()
 	admin_notice("<font color='red'><B> Searching for away missions...</B></font>", R_DEBUG)
@@ -45,7 +48,7 @@ proc/createRandomZlevel()
 			template.load_new_z()
 			log_world("away mission loaded: [map]")
 		/* VOREStation Removal - We do this in the special landmark init instead.
-		for(var/obj/effect/landmark/L in landmarks_list)
+		for(var/obj/effect/landmark/L in GLOB.landmarks_list)
 			if (L.name != "awaystart")
 				continue
 			awaydestinations.Add(L)
@@ -59,13 +62,13 @@ proc/createRandomZlevel()
 //VOREStation Add - This landmark type so it's not so ghetto.
 /obj/effect/landmark/gateway_scatter
 	name = "uncalibrated gateway destination"
-/obj/effect/landmark/gateway_scatter/Initialize()
+/obj/effect/landmark/gateway_scatter/Initialize(mapload)
 	. = ..()
 	awaydestinations += src
 
 /obj/effect/landmark/event_scatter
 	name = "uncalibrated gateway destination"
-/obj/effect/landmark/event_scatter/Initialize()
+/obj/effect/landmark/event_scatter/Initialize(mapload)
 	. = ..()
 	eventdestinations += src
 //VOREStation Add End

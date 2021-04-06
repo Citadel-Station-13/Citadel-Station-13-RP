@@ -7,8 +7,8 @@
 	name = "Inactive AI Eye"
 	icon_state = "AI-eye"
 
-/mob/observer/eye/aiEye/New()
-	..()
+/mob/observer/eye/aiEye/Initialize(mapload)
+	. = ..()
 	visualnet = cameranet
 
 /mob/observer/eye/aiEye/setLoc(var/T, var/cancel_tracking = 1)
@@ -41,21 +41,27 @@
 		client.eye = new_eye
 
 /mob/living/silicon/ai/proc/create_eyeobj(var/newloc)
-	if(eyeobj) destroy_eyeobj()
-	if(!newloc) newloc = src.loc
+	if(eyeobj)
+		destroy_eyeobj()
+	if(!newloc)
+		newloc = src.loc
 	eyeobj = new /mob/observer/eye/aiEye(newloc)
 	eyeobj.owner = src
 	eyeobj.name = "[src.name] (AI Eye)" // Give it a name
-	if(client) client.eye = eyeobj
+	if(client)
+		client.eye = eyeobj
 	SetName(src.name)
 
 // Intiliaze the eye by assigning it's "ai" variable to us. Then set it's loc to us.
-/mob/living/silicon/ai/New()
-	..()
+/mob/living/silicon/ai/Initialize(mapload)
+	. = ..()
 	create_eyeobj()
-	spawn(5)
-		if(eyeobj)
-			eyeobj.loc = src.loc
+	return INITIALIZE_HINT_LATELOAD
+
+/mob/living/silicon/ai/LateInitialize()
+	. = ..()
+	if(eyeobj && loc)
+		eyeobj.forceMove(loc)
 
 /mob/living/silicon/ai/Destroy()
 	destroy_eyeobj()

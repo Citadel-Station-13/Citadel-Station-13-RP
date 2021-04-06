@@ -43,22 +43,22 @@
 		if(LOC_SECURITY)
 			spawn_area_type = /area/security
 			locstring = "security"
-			spawncount = rand(3 * severity, 5 * severity)
+			spawncount = rand(1 * severity, 3 * severity)
 			boss_spawn_count = rand(0,2)
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"
-			spawncount = rand(1 * severity, 3 * severity)
+			spawncount = rand(1 * severity, 2 * severity)
 			boss_spawn_count = rand(0,1)
 		if(LOC_CHAPEL)
 			spawn_area_type = /area/chapel/main
 			locstring = "chapel"
-			spawncount = rand(1 * severity, 3 * severity)
+			spawncount = rand(1 * severity, 2 * severity)
 			boss_spawn_count = rand(0,1)
 		if(LOC_BRIDGE)
 			spawn_area_type = /area/bridge
 			locstring = "bridge"
-			spawncount = rand(1 * severity, 3 * severity)
+			spawncount = rand(1 * severity, 2 * severity)
 			boss_spawn_count = rand(0,1)
 
 /datum/event/cult/end()

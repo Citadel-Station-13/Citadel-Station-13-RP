@@ -7,7 +7,7 @@
 	opacity = 0
 	density = 1
 
-/obj/structure/foodcart/Initialize()
+/obj/structure/foodcart/Initialize(mapload)
 	. = ..()
 	for(var/obj/item/I in loc)
 		if(istype(I, /obj/item/reagent_containers/food))

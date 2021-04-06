@@ -13,7 +13,7 @@
 	icon_state = "arrow-north"
 	pushdirection = SOUTH	// South because the space tile is scrolling south
 
-/turf/space/transit/north/Initialize()
+/turf/space/transit/north/Initialize(mapload)
 	. = ..()
 
 	var/x_shift = SSskybox.phase_shift_by_x[src.x % (SSskybox.phase_shift_by_x.len - 1) + 1]
@@ -26,7 +26,7 @@
 	icon_state = "arrow-south"
 	pushdirection = SOUTH	// South because the space tile is scrolling south
 
-/turf/space/transit/south/Initialize()
+/turf/space/transit/south/Initialize(mapload)
 	. = ..()
 
 	var/x_shift = SSskybox.phase_shift_by_x[src.x % (SSskybox.phase_shift_by_x.len - 1) + 1]
@@ -40,7 +40,7 @@
 /turf/space/transit/east	// Moving to the east
 	icon_state = "arrow-east"
 	pushdirection = WEST
-/turf/space/transit/east/Initialize()
+/turf/space/transit/east/Initialize(mapload)
 	. = ..()
 
 	var/y_shift = SSskybox.phase_shift_by_y[src.y % (SSskybox.phase_shift_by_y.len - 1) + 1]
@@ -53,7 +53,7 @@
 	icon_state = "arrow-west"
 	pushdirection = WEST
 
-/turf/space/transit/west/Initialize()
+/turf/space/transit/west/Initialize(mapload)
 	. = ..()
 
 	var/y_shift = SSskybox.phase_shift_by_y[src.y % (SSskybox.phase_shift_by_y.len - 1) + 1]

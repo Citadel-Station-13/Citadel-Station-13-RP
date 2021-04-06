@@ -23,7 +23,7 @@
 	max_contents = 3 // Arbitrary number, 3 grill 'racks'
 	container_type = /obj/item/reagent_containers/cooking_container/grill
 
-/obj/machinery/appliance/cooker/grill/Initialize()
+/obj/machinery/appliance/cooker/grill/Initialize(mapload)
 	. = ..()
 	grill_loop = new(list(src), FALSE)
 
@@ -65,7 +65,7 @@
 			usr.visible_message("[usr] turns \the [src] off", "You turn off \the [src].")
 	playsound(src, 'sound/machines/click.ogg', 40, 1)
 	update_icon()
-/obj/machinery/appliance/cooker/grill/Initialize()
+/obj/machinery/appliance/cooker/grill/Initialize(mapload)
 	. = ..()
 	// cooking_objs += new /datum/cooking_item(new /obj/item/weapon/reagent_containers/cooking_container(src))
 	cooking = FALSE

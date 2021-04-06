@@ -11,17 +11,15 @@
 	var/list/oxytanks = list()	//sorry for the similar var names
 	var/list/platanks = list()
 
-
 /obj/structure/dispenser/oxygen
 	phorontanks = 0
 
 /obj/structure/dispenser/phoron
 	oxygentanks = 0
 
-
-/obj/structure/dispenser/New()
+/obj/structure/dispenser/Initialize(mapload)
+	. = ..()
 	update_icon()
-
 
 /obj/structure/dispenser/update_icon()
 	overlays.Cut()

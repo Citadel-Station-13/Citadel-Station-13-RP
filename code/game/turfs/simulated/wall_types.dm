@@ -157,7 +157,7 @@
 	//To allow mappers to rename shuttle walls to like "redfloor interior" or whatever for ease of use.
 	name = true_name
 
-/turf/simulated/shuttle/wall/Initialize()
+/turf/simulated/shuttle/wall/Initialize(mapload)
 	. = ..()
 
 	if(join_group)
@@ -238,7 +238,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green
 	stripe_color = "#00FF00"
 
-/turf/simulated/shuttle/wall/voidcraft/Initialize()
+/turf/simulated/shuttle/wall/voidcraft/Initialize(mapload)
 	. = ..()
 	update_icon()
 

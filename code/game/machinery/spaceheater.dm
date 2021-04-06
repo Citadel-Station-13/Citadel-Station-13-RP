@@ -11,8 +11,8 @@
 	var/set_temperature = T0C + 20	//K
 	var/heating_power = 40000
 
-/obj/machinery/space_heater/New()
-	..()
+/obj/machinery/space_heater/Initialize(mapload, newdir)
+	. = ..()
 	if(cell_type)
 		cell = new cell_type(src)
 	update_icon()

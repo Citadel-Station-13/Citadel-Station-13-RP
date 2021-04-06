@@ -3,7 +3,7 @@
 	desc = "This box contains blood packs."
 	icon_state = "sterile"
 
-/obj/item/storage/box/bloodpacks/Initialize()
+/obj/item/storage/box/bloodpacks/Initialize(mapload)
 		. = ..()
 		new /obj/item/reagent_containers/blood/empty(src)
 		new /obj/item/reagent_containers/blood/empty(src)
@@ -28,7 +28,7 @@
 
 	var/blood_type = null
 
-/obj/item/reagent_containers/blood/Initialize()
+/obj/item/reagent_containers/blood/Initialize(mapload)
 	. = ..()
 	base_name = name
 	base_desc = desc

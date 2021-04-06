@@ -21,7 +21,7 @@
 	if(!GLOB.using_map.use_overmap)
 		return INITIALIZE_HINT_QDEL
 
-	if(known)
+	if(known && !mapload)
 		//layer = ABOVE_LIGHTING_LAYER
 		plane = PLANE_LIGHTING_ABOVE
 		for(var/obj/machinery/computer/ship/helm/H in global.machines)

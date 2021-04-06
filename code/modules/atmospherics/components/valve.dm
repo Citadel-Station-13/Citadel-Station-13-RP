@@ -151,7 +151,7 @@
 	var/node1_dir
 	var/node2_dir
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(direction&initialize_directions)
 			if (!node1_dir)
 				node1_dir = direction
@@ -263,7 +263,7 @@
 	if(frequency)
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/atmospherics/valve/digital/Initialize()
+/obj/machinery/atmospherics/valve/digital/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
@@ -312,10 +312,9 @@
 	if (istype(src, /obj/machinery/atmospherics/valve/digital) && !src.allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return 1
-	if(!can_unwrench())
-		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], it is too exerted due to internal pressure.</span>")
-		add_fingerprint(user)
-		return 1
+	if(unsafe_pressure())
+		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+	add_fingerprint(user)
 	playsound(src, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 	if (do_after(user, 40 * W.toolspeed))

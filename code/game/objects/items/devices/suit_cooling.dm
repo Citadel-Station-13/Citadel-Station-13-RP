@@ -28,7 +28,7 @@
 /obj/item/suit_cooling_unit/ui_action_click()
 	toggle(usr)
 
-/obj/item/suit_cooling_unit/Initialize()
+/obj/item/suit_cooling_unit/Initialize(mapload)
 	. = ..()
 	cell = new/obj/item/cell/high(src)	//comes not with the crappy default power cell - because this is dedicated EVA equipment
 

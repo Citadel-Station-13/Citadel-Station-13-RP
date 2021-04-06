@@ -161,7 +161,7 @@ SUBSYSTEM_DEF(vote)
 				if(isnull(.) || . == "None")
 					antag_add_failed = 1
 				else
-					additional_antag_types |= antag_names_to_ids[.]
+					additional_antag_types |= GLOB.antag_names_to_ids[.]
 
 	if(restart)
 		to_chat(world, "World restarting due to vote...")
@@ -220,8 +220,8 @@ SUBSYSTEM_DEF(vote)
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config_legacy.allow_extra_antags || SSticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
-				for(var/antag_type in all_antag_types)
-					var/datum/antagonist/antag = all_antag_types[antag_type]
+				for(var/antag_type in GLOB.all_antag_types)
+					var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
 					if(!(antag.id in additional_antag_types) && antag.is_votable())
 						choices.Add(antag.role_text)
 				choices.Add("None")

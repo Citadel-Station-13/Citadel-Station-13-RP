@@ -33,10 +33,11 @@
 		return
 	ui_interact(user)
 
+/*
 /obj/machinery/computer/security/attack_ai(mob/user)
 	to_chat(user, "<span class='notice'>You realise its kind of stupid to access a camera console when you have the entire camera network at your metaphorical fingertips</span>")
 	return
-
+*/
 /obj/machinery/computer/security/proc/set_network(list/new_network)
 	network = new_network
 	camera.network = network
@@ -67,7 +68,7 @@
 	circuit = /obj/item/circuitboard/security/telescreen/entertainment
 	var/obj/item/radio/radio = null
 
-/obj/machinery/computer/security/telescreen/entertainment/Initialize()
+/obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)
 	. = ..()
 	radio = new(src)
 	radio.listening = TRUE

@@ -96,7 +96,7 @@ var/list/ai_verbs_default = list(
 	src.verbs -= ai_verbs_default
 	src.verbs -= silicon_subsystems
 
-/mob/living/silicon/ai/New(loc, var/datum/ai_laws/L, var/obj/item/mmi/B, var/safety = 0)
+/mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = TRUE)
 	announcement = new()
 	announcement.title = "A.I. Announcement"
 	announcement.announcement_type = "A.I. Announcement"
@@ -107,7 +107,7 @@ var/list/ai_verbs_default = list(
 	var/pickedName = null
 	while(!pickedName)
 		pickedName = pick(ai_names)
-		for (var/mob/living/silicon/ai/A in mob_list)
+		for (var/mob/living/silicon/ai/A in GLOB.mob_list)
 			if (A.real_name == pickedName && possibleNames.len > 1) //fixing the theoretically possible infinite loop
 				possibleNames -= pickedName
 				pickedName = null
@@ -118,7 +118,6 @@ var/list/ai_verbs_default = list(
 	anchored = 1
 	canmove = 0
 	density = 1
-	loc = loc
 
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/communicator/integrated(src)
@@ -162,6 +161,12 @@ var/list/ai_verbs_default = list(
 	add_language(LANGUAGE_ROOTLOCAL, 1)
 	add_language(LANGUAGE_TERMINUS, 1)
 	add_language(LANGUAGE_ZADDAT, 1)
+	add_language(LANGUAGE_BIRDSONG,		1)
+	add_language(LANGUAGE_SAGARU,		1)
+	add_language(LANGUAGE_CANILUNZT,	1)
+	add_language(LANGUAGE_ECUREUILIAN,	1)
+	add_language(LANGUAGE_DAEMON,		1)
+	add_language(LANGUAGE_ENOCHIAN,		1)
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
@@ -174,12 +179,14 @@ var/list/ai_verbs_default = list(
 
 			on_mob_init()
 
+	if(config_legacy.allow_ai_shells)
+		verbs += /mob/living/silicon/ai/proc/deploy_to_shell_act
+
 	spawn(5)
 		new /obj/machinery/ai_powersupply(src)
 
 	ai_list += src
-	..()
-	return
+	return ..()
 
 /mob/living/silicon/ai/proc/on_mob_init()
 	to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
@@ -302,7 +309,9 @@ var/list/ai_verbs_default = list(
 	var/mob/living/silicon/ai/powered_ai = null
 	invisibility = 100
 
-/obj/machinery/ai_powersupply/New(var/mob/living/silicon/ai/ai=null)
+/obj/machinery/ai_powersupply/Initialize(mapload, newdir)
+	. = ..()
+	var/mob/living/silicon/ai/ai = loc
 	powered_ai = ai
 	powered_ai.psupply = src
 	if(istype(powered_ai,/mob/living/silicon/ai/announcer))	//Don't try to get a loc for a nullspace announcer mob, just put it into it
@@ -310,7 +319,6 @@ var/list/ai_verbs_default = list(
 	else
 		forceMove(powered_ai.loc)
 
-	..()
 	use_power(USE_POWER_IDLE) // Just incase we need to wake up the power system.
 
 /obj/machinery/ai_powersupply/Destroy()
@@ -468,7 +476,7 @@ var/list/ai_verbs_default = list(
 				to_chat(src, "<span class='notice'>Unable to locate the holopad.</span>")
 
 	if (href_list["track"])
-		var/mob/target = locate(href_list["track"]) in mob_list
+		var/mob/target = locate(href_list["track"]) in GLOB.mob_list
 
 		if(target && (!istype(target, /mob/living/carbon/human) || html_decode(href_list["trackname"]) == target:get_face_name()))
 			ai_actual_track(target)
@@ -867,12 +875,12 @@ var/list/ai_verbs_default = list(
 	return TRUE
 
 //Special subtype kept around for global announcements
-/mob/living/silicon/ai/announcer/
+/mob/living/silicon/ai/announcer
 	is_dummy = 1
 
-/mob/living/silicon/ai/announcer/Initialize()
+/mob/living/silicon/ai/announcer/Initialize(mapload)
 	. = ..()
-	mob_list -= src
+	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
 	ai_list -= src
