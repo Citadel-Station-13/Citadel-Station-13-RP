@@ -355,7 +355,7 @@
 		ui = new(user, src, "TurbineControl", name)
 		ui.open()
 
-/obj/machinery/computer/turbine_computer/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/computer/turbine_computer/ui_data(mob/user, datum/tgui/ui)
 	var/list/data = list()
 	data["connected"] = (compressor && compressor.turbine) ? TRUE : FALSE
 	data["compressor_broke"] = (!compressor || (compressor.stat & BROKEN)) ? TRUE : FALSE
@@ -376,7 +376,7 @@
 
 	return data
 
-/obj/machinery/computer/turbine_computer/ui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/computer/turbine_computer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
