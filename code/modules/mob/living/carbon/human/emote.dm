@@ -409,7 +409,13 @@
 				m_type = 1
 			else
 				if (!muzzled)
-					message = "laughs."
+					var/list/laughs = list("lets out a chuckle.", "laughs.", "chuckles.", "cracks up.")
+					message = "[pick(laughs)]"
+					if(get_gender() == MALE)
+						var/list/laughsounds = list('modular_citadel/sound/voice/laughs/masclaugh1.ogg', 'modular_citadel/sound/voice/laughs/masclaugh2.ogg')
+						playsound(loc, pick(laughsounds), 50, 1, -1)
+					else
+						playsound(loc, 'modular_citadel/sound/voice/laughs/femlaugh.ogg', 50, 1, -1)
 					m_type = 2
 				else
 					message = "makes a noise."
@@ -896,6 +902,12 @@
 			message = "lets out a nya."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
+		if ("nyaha")
+			var/list/laughs = list("laughs deviously.", "lets out a catty laugh.", "nya ha ha's.")
+			message = "[pick(laughs)]"
+			m_type = 2
+			var/list/catlaugh = list('modular_citadel/sound/voice/catpeople/nyaha.ogg', 'modular_citadel/sound/voice/catpeople/nyahaha1.ogg', 'modular_citadel/sound/voice/catpeople/nyahaha2.ogg', 'modular_citadel/sound/voice/catpeople/nyahehe.ogg')
+			playsound(loc, pick(catlaugh), 50, 1, -1)
 		if ("peep")
 			message = "peeps like a bird."
 			m_type = 2
