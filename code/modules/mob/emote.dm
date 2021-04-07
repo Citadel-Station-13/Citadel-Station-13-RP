@@ -1,20 +1,13 @@
-#define EMOTE_COOLDOWN 30		//Time in deciseconds that the cooldown lasts
-
 //Emote Cooldown System
-/mob/proc/handle_emote_CD(cooldown = EMOTE_COOLDOWN)
-	if(emote_cd == 3) //Spam those emotes
-		return FALSE
-	if(emote_cd == 2) // Cooldown emotes were disabled by an admin, prevent use
+/mob/proc/handle_emote_cd(cooldown)
+	if(!cooldown)
+		cooldown = CONFIG_GET(number/sound_emote_cooldown)	//Default 30 deciseconds (3 seconds)
+	if(!emote_cd)
+		emote_cd = TRUE	// Starting cooldown
+		addtimer(VARSET_CALLBACK(src, emote_cd, FALSE),cooldown)
+		return FALSE // Proceed with emote
+	else
 		return TRUE
-	if(emote_cd == 1)  // Already on CD, prevent use
-		return TRUE
-
-	emote_cd = TRUE	// Starting cooldown
-	spawn(cooldown)
-		if(emote_cd == 2)
-			return // Don't reset if cooldown emotes were disabled by an admin during the cooldown
-		emote_cd = FALSE // Cooldown complete, ready for more!
-	return FALSE // Proceed with emote
 
 // All mobs should have custom emote, really..
 //m_type == 1 --> visual.

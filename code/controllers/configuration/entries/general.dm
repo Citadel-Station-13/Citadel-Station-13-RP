@@ -31,3 +31,7 @@
 /datum/config_entry/number/client_error_build
 	config_entry_value = null
 	min_val = 0
+
+/datum/config_entry/number/sound_emote_cooldown
+	config_entry_value = 30
+	min_val = 0
