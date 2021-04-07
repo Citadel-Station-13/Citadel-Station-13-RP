@@ -2,7 +2,7 @@
 	var/param = null
 
 	//Emote Cooldown System
-	/handle_emote_cd() located in [code\modules\mob\emote.dm]
+	//handle_emote_cd() located in [code\modules\mob\emote.dm]
 	var/on_CD = FALSE
 	var/datum/gender/T = gender_datums[get_visible_gender()]
 
@@ -28,16 +28,16 @@
 	switch(act)
 		if("squish")
 			if(species.bump_flag == SLIME)
-				on_CD =handle_emote_cd()		//proc located in code\modules\mob\emote.dm'
+				on_CD = handle_emote_cd()		//proc located in code\modules\mob\emote.dm'
 		if("shriekloud","shriekshort")
 			if(src.species.name == SPECIES_VOX)
-				on_CD =handle_emote_cd()		//proc located in code\modules\mob\emote.dm'
+				on_CD = handle_emote_cd()		//proc located in code\modules\mob\emote.dm'
 		if("clap","crack","slap","slaps","aslap","aslaps","flip")
 			if(!src.restrained())
-				on_CD =handle_emote_cd()		//proc located in code\modules\mob\emote.dm'
+				on_CD = handle_emote_cd()		//proc located in code\modules\mob\emote.dm'
 		if("cough","coughs","sneeze","sneezes","scream","screams","squeak","squeaks","meow","meows","whistle","whistles","qwhistle")
 			if(!muzzled)
-				on_CD =handle_emote_cd()		//proc located in code\modules\mob\emote.dm'
+				on_CD = handle_emote_cd()		//proc located in code\modules\mob\emote.dm'
 		if("snap","snaps")
 			if(!src.restrained())
 				on_CD =handle_emote_cd(5)		//0.5s. People like to snap quickly.
