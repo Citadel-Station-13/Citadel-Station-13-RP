@@ -732,11 +732,11 @@ default behaviour is:
 	//Breaking out of a locker?
 	if( src.loc && (istype(src.loc, /obj/structure/closet)) )
 		var/obj/structure/closet/C = loc
-		spawn() C.mob_breakout(src)
+		C.mob_breakout(src)
 		return TRUE
 
 	if(istype(loc,/obj/item/clothing))
-		spawn() escape_clothes(loc)
+		escape_clothes(loc)
 
 	if(attempt_vr(src,"vore_process_resist",args)) return TRUE //VOREStation Code
 

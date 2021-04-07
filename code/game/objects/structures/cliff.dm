@@ -66,7 +66,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 	bottom = TRUE
 
 /obj/structure/cliff/automatic/Initialize(mapload)
-	..()
+	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
 // Paranoid about the maploader, direction is very important to cliffs, since they may get bigger if initialized while facing NORTH.

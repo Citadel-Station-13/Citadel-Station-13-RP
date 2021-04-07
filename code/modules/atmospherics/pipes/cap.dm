@@ -66,9 +66,6 @@
 	if(level == 1 && !T.is_plating()) hide(1)
 	update_icon()
 
-/obj/machinery/atmospherics/pipe/cap/can_unwrench()
-	return 1
-
 /obj/machinery/atmospherics/pipe/cap/visible
 	level = 2
 	icon_state = "cap"
@@ -158,4 +155,4 @@
 	piping_layer = PIPING_LAYER_AUX
 	layer = PIPES_AUX_LAYER
 	icon_connect_type = "-aux"
-	color = PIPE_COLOR_CYAN 
+	color = PIPE_COLOR_CYAN

@@ -178,6 +178,7 @@
 	var/cone_type
 
 /obj/item/reagent_containers/food/snacks/icecream/Initialize(mapload)
+	. = ..()
 	create_reagents(20)
 	reagents.add_reagent("nutriment", 5)
 

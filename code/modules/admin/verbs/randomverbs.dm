@@ -101,46 +101,36 @@
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","SMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
+/client/proc/cmd_admin_world_narrate()
 	set category = "Special Verbs"
-	set name = "Narration"
+	set name = "Global Narrate"
 
-	if (!holder)
-		to_chat(src, "Only administrators may use this command.")
+	if(!check_rights(R_ADMIN))
 		return
 
-	var/alert = alert(src, "Specify the Narration range.", "Narration", "Global", "Local", "Cancel") //differentiate between global and local
-	if(alert == "Global")
-		var/globalmsg = input("The text you enter will appear without prefix in the chat Globally.\nMessage:", text("Enter the text you wish to narrate to everyone:")) as text
-		to_chat(world, "[globalmsg]")
+	var/msg = input("Message:", text("Enter the text you wish to appear to everyone:")) as text|null
 
-	if(alert == "Local")
-		var/localmsg = input("The text you enter will appear without prefix in the chat Locally.\nMessage:", text("Enter the text you wish to narrate to everyone in view:")) as text
-		for(var/mob/M as mob in view(src))
-			to_chat(M, "[localmsg]")
-		to_chat(src, "[localmsg]") // need to separately message the src since the src doesnt view itself as a type of mob in view
+	if (!msg)
+		return
+	to_chat(world, "[msg]")
+	log_admin("GlobalNarrate: [key_name(usr)] : [msg]")
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] Sent a global narrate</span>")
+	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Global Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-	var/text = "[key_name(usr)] used narration."
-	message_admins(text)
-	log_admin(text)
-	admin_ticket_log(src, text)
-	feedback_add_details("admin_verb","GLN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/cmd_admin_direct_narrate(var/mob/M)	// Targetted narrate -- TLE
+/client/proc/cmd_admin_direct_narrate(mob/M)
 	set category = "Special Verbs"
 	set name = "Direct Narrate"
 
-	if(!holder)
-		to_chat(src, "Only administrators and moderators may use this command.")
+	if(!check_rights(R_ADMIN))
 		return
 
 	if(!M)
-		M = input("Direct narrate to who?", "Active Players") as null|anything in get_mob_with_client_list()
+		M = input("Direct narrate to whom?", "Active Players") as null|anything in player_list
 
 	if(!M)
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to your target:")) as text
+	var/msg = input("Message:", text("Enter the text you wish to appear to your target:")) as text|null
 
 	if( !msg )
 		return
@@ -150,7 +140,28 @@
 	msg = "<span class='adminnotice'><b> DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]):</b> [msg]<BR></span>"
 	message_admins(msg)
 	admin_ticket_log(M, msg)
-	feedback_add_details("admin_verb","DIRN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Direct Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_local_narrate(atom/A)
+	set category = "Special Verbs"
+	set name = "Local Narrate"
+
+	if(!check_rights(R_ADMIN))
+		return
+	if(!A)
+		return
+	var/range = input("Range:", "Narrate to mobs within how many tiles:", 7) as num|null
+	if(!range)
+		return
+	var/msg = input("Message:", text("Enter the text you wish to appear to everyone within view:")) as text|null
+	if (!msg)
+		return
+	for(var/mob/M in view(range,A))
+		to_chat(M, msg)
+
+	log_admin("LocalNarrate: [key_name(usr)] at [AREACOORD(A)]: [msg]")
+	message_admins("<span class='adminnotice'><b> LocalNarrate: [key_name_admin(usr)] at [ADMIN_COORDJMP(A)]:</b> [msg]<BR></span>")
+	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Local Narrate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_godmode(mob/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
