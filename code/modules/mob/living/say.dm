@@ -196,8 +196,11 @@ proc/get_radio_key_from_channel(var/channel)
 		new_message += message
 		message = new_message
 
-	while(speaking && copytext_char(message, 1, 2) == ",")
+	while(speaking && is_language_prefix(copytext_char(message, 1, 2)))
 		message = copytext_char(message,2+length_char(speaking.key))
+
+	if(speaking && speaking == GLOB.all_languages["Noise"])
+		message = copytext_char(message,2)
 
 	//HIVEMIND languages always send to all people with that language
 	if(speaking && (speaking.flags & HIVEMIND))
