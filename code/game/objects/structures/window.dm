@@ -300,7 +300,7 @@
 		else
 			playsound(src, W.usesound, 75, 1)
 			visible_message("<span class='notice'>[user] dismantles \the [src].</span>")
-			var/obj/item/stack/material/mats = new glasstype(loc, is_fulltile()? 2 : 1)
+			new glasstype(loc, is_fulltile()? 2 : 1)
 			qdel(src)
 	else if(istype(W, /obj/item/stack/cable_coil) && reinf && state == 0 && !istype(src, /obj/structure/window/reinforced/polarized))
 		var/obj/item/stack/cable_coil/C = W
