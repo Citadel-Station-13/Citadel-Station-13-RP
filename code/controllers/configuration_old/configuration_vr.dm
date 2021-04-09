@@ -3,7 +3,6 @@
 //
 
 /datum/configuration_legacy
-	var/list/engine_map	// Comma separated list of engines to choose from.  Blank means fully random.
 	var/time_off = FALSE
 	var/pto_job_change = FALSE
 	var/limit_interns = -1 //Unlimited by default
@@ -40,8 +39,6 @@
 				config_legacy.chat_webhook_url = value
 			if ("chat_webhook_key")
 				config_legacy.chat_webhook_key = value
-			if ("engine_map")
-				config_legacy.engine_map = splittext(value, ",")
 			if ("items_survive_digestion")
 				config_legacy.items_survive_digestion = 1
 			if ("limit_interns")

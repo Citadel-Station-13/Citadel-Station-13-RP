@@ -200,37 +200,37 @@
 	SSradiation.radiate(src, round(material.radioactivity/3))
 
 /obj/structure/simple_door/iron/Initialize(mapload, material_name)
-	..(mapload, "iron")
+	return ..(mapload, "iron")
 
 /obj/structure/simple_door/silver/Initialize(mapload, material_name)
-	..(mapload, "silver")
+	return ..(mapload, "silver")
 
 /obj/structure/simple_door/gold/Initialize(mapload, material_name)
-	..(mapload, "gold")
+	return ..(mapload, "gold")
 
 /obj/structure/simple_door/uranium/Initialize(mapload, material_name)
-	..(mapload, "uranium")
+	return ..(mapload, "uranium")
 
 /obj/structure/simple_door/sandstone/Initialize(mapload, material_name)
-	..(mapload, "sandstone")
+	return ..(mapload, "sandstone")
 
 /obj/structure/simple_door/phoron/Initialize(mapload, material_name)
-	..(mapload, "phoron")
+	return ..(mapload, "phoron")
 
 /obj/structure/simple_door/diamond/Initialize(mapload, material_name)
-	..(mapload, "diamond")
+	return ..(mapload, "diamond")
 
 /obj/structure/simple_door/wood/Initialize(mapload, material_name)
-	..(mapload, MAT_WOOD)
+	return ..(mapload, MAT_WOOD)
 
 /obj/structure/simple_door/sifwood/Initialize(mapload, material_name)
-	..(mapload, MAT_SIFWOOD)
+	return ..(mapload, MAT_SIFWOOD)
 
 /obj/structure/simple_door/resin/Initialize(mapload, material_name)
-	..(mapload, "resin")
+	return ..(mapload, "resin")
 
 /obj/structure/simple_door/cult/Initialize(mapload, material_name)
-	..(mapload, "cult")
+	return ..(mapload, "cult")
 
 /obj/structure/simple_door/cult/TryToSwitchState(atom/user)
 	if(isliving(user))

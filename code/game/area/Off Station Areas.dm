@@ -351,7 +351,7 @@
 /area/piratebase/facility
 	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
-
+	requires_power = FALSE
 
 ////////////////////////////////////
 //// END TRIUMPH SPECIFIC AREAS ////

@@ -519,7 +519,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	var/species = SPECIES_HUMAN
 
 /obj/item/disk/species/Initialize(mapload)
-	..()
+	. = ..()
 	if(species)
 		name = "[species] [initial(name)]"
 
