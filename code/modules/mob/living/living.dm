@@ -786,6 +786,7 @@ default behaviour is:
 	set name = "Rest"
 	set category = "IC"
 
+	emote("rest")
 	resting = !resting
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 	update_canmove()

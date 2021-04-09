@@ -964,6 +964,13 @@
 			message = "purrs softly."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
+		if("rest")
+			if(!spam_flag)
+				var/dropsound = list('sound/effects/bodyfall1.ogg','sound/effects/bodyfall2.ogg','sound/effects/bodyfall3.ogg','sound/effects/bodyfall4.ogg')
+				playsound(loc, pick(dropsound), 50, 1)
+				spam_flag = TRUE
+				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+			m_type = 1
 
 	if (message)
 		custom_emote(m_type,message)
