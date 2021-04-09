@@ -112,8 +112,8 @@ NERADA8_TURF_CREATE(/turf/simulated/mineral/floor)
 			"gold" = 3,
 			"silver" = 3,
 			"phoron" = 25))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
 
@@ -139,8 +139,8 @@ NERADA8_TURF_CREATE(/turf/simulated/mineral/floor)
 			"diamond" = 2,
 			"gold" = 7,
 			"silver" = 7))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
 
@@ -162,7 +162,7 @@ NERADA8_TURF_CREATE(/turf/simulated/mineral/floor)
 		icon_state = "icerock"
 
 		//Apply overlays if we should have borders
-		for(var/direction in cardinal)
+		for(var/direction in GLOB.cardinal)
 			var/turf/T = get_step(src,direction)
 			if(istype(T) && !T.density)
 				add_overlay(get_cached_border("ice_side",direction,icon,"ice_side"))
@@ -183,7 +183,7 @@ NERADA8_TURF_CREATE(/turf/simulated/mineral/floor)
 			add_overlay("dug_overlay")
 
 		//Apply overlays if there's space
-		for(var/direction in cardinal)
+		for(var/direction in GLOB.cardinal)
 			if(istype(get_step(src, direction), /turf/space) && !istype(get_step(src, direction), /turf/space/cracked_asteroid))
 				add_overlay(get_cached_border("asteroid_edge",direction,icon,"asteroid_edges", 0))
 
@@ -197,11 +197,10 @@ NERADA8_TURF_CREATE(/turf/simulated/mineral/floor)
 			add_overlay('icons/turf/flooring/decals.dmi',overlay_detail)
 
 		if(update_neighbors)
-			for(var/direction in alldirs)
+			for(var/direction in GLOB.alldirs)
 				if(istype(get_step(src, direction), /turf/simulated/mineral))
 					var/turf/simulated/mineral/M = get_step(src, direction)
 					M.update_icon()
-
 
 //Unsimulated
 /turf/unsimulated/wall/planetary/nerada8

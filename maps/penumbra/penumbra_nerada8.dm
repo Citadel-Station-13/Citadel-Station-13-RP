@@ -234,7 +234,7 @@ var/datum/planet/nerada8/planet_nerada8 = null
 
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
-			for(var/dir_checked in cardinal)
+			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
@@ -277,7 +277,7 @@ var/datum/planet/nerada8/planet_nerada8 = null
 
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
-			for(var/dir_checked in cardinal)
+			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
@@ -384,7 +384,7 @@ var/datum/planet/nerada8/planet_nerada8 = null
 						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
 						L.drop_from_inventory(U)
 						U.toggle_umbrella()
-						U.throw_at(get_edge_target_turf(U, pick(alldirs)), 8, 1, L)
+						U.throw_at(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
 
 			// If they have an open umbrella, it'll guard from rain
 			if(istype(L.get_active_hand(), /obj/item/melee/umbrella))
