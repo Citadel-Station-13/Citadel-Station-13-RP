@@ -61,7 +61,7 @@
 					"You have (1) new message!",\
 					"You have (2) new profile views!")
 				if(3)
-					sender = pick("Galactic Payments Association","Better Business Bureau","[GLOB.using_map.starsys_name] E-Payments","NAnoTransen Finance Deparmtent","Luxury Replicas")
+					sender = pick("Galactic Payments Association","Better Business Bureau","[GLOB.using_map.starsys_name] E-Payments","NAnoTrasen Finance Deparmtent","Luxury Replicas")
 					message = pick("Luxury watches for Blowout sale prices!",\
 					"Watches, Jewelry & Accessories, Bags & Wallets !",\
 					"Deposit 100$ and get 300$ totally free!",\
@@ -102,7 +102,7 @@
 			last_spam_time = world.time
 
 			if (prob(50)) //Give the AI an increased chance to intercept the message
-				for(var/mob/living/silicon/ai/ai in mob_list)
+				for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 					// Allows other AIs to intercept the message but the AI won't intercept their own message.
 					if(ai.aiPDA != P && ai.aiPDA != src)
 						ai.show_message("<i>Intercepted message from <b>[sender]</b></i> (Unknown / spam?) <i>to <b>[P:owner]</b>: [message]</i>")

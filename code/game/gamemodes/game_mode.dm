@@ -82,7 +82,7 @@ var/global/list/additional_antag_types = list()
 		if(href_list["debug_antag"] == "self")
 			usr.client.debug_variables(src)
 			return
-		var/datum/antagonist/antag = all_antag_types[href_list["debug_antag"]]
+		var/datum/antagonist/antag = GLOB.all_antag_types[href_list["debug_antag"]]
 		if(antag)
 			usr.client.debug_variables(antag)
 			message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
@@ -90,16 +90,16 @@ var/global/list/additional_antag_types = list()
 		if(antag_tags && (href_list["remove_antag_type"] in antag_tags))
 			to_chat(usr, "Cannot remove core mode antag type.")
 			return
-		var/datum/antagonist/antag = all_antag_types[href_list["remove_antag_type"]]
+		var/datum/antagonist/antag = GLOB.all_antag_types[href_list["remove_antag_type"]]
 		if(antag_templates && antag_templates.len && antag && (antag in antag_templates) && (antag.id in additional_antag_types))
 			antag_templates -= antag
 			additional_antag_types -= antag.id
 			message_admins("Admin [key_name_admin(usr)] removed [antag.role_text] template from game mode.")
 	else if(href_list["add_antag_type"])
-		var/choice = input("Which type do you wish to add?") as null|anything in all_antag_types
+		var/choice = input("Which type do you wish to add?") as null|anything in GLOB.all_antag_types
 		if(!choice)
 			return
-		var/datum/antagonist/antag = all_antag_types[choice]
+		var/datum/antagonist/antag = GLOB.all_antag_types[choice]
 		if(antag)
 			if(!islist(SSticker.mode.antag_templates))
 				SSticker.mode.antag_templates = list()
@@ -155,7 +155,7 @@ var/global/list/additional_antag_types = list()
 	var/enemy_count = 0
 	if(antag_tags && antag_tags.len)
 		for(var/antag_tag in antag_tags)
-			var/datum/antagonist/antag = all_antag_types[antag_tag]
+			var/datum/antagonist/antag = GLOB.all_antag_types[antag_tag]
 			if(!antag)
 				continue
 			var/list/potential = list()
@@ -373,7 +373,7 @@ var/global/list/additional_antag_types = list()
 	var/list/players = list()
 	var/list/candidates = list()
 
-	var/datum/antagonist/antag_template = all_antag_types[antag_id]
+	var/datum/antagonist/antag_template = GLOB.all_antag_types[antag_id]
 	if(!antag_template)
 		return candidates
 
@@ -435,7 +435,7 @@ var/global/list/additional_antag_types = list()
 	if(antag_tags && antag_tags.len)
 		antag_templates = list()
 		for(var/antag_tag in antag_tags)
-			var/datum/antagonist/antag = all_antag_types[antag_tag]
+			var/datum/antagonist/antag = GLOB.all_antag_types[antag_tag]
 			if(antag)
 				antag_templates |= antag
 
@@ -443,7 +443,7 @@ var/global/list/additional_antag_types = list()
 		if(!antag_templates)
 			antag_templates = list()
 		for(var/antag_type in additional_antag_types)
-			var/datum/antagonist/antag = all_antag_types[antag_type]
+			var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
 			if(antag)
 				antag_templates |= antag
 
@@ -457,7 +457,7 @@ var/global/list/additional_antag_types = list()
 //////////////////////////
 proc/display_roundstart_logout_report()
 	var/msg = "<span class='notice'><b>Roundstart logout report</b>\n\n"
-	for(var/mob/living/L in mob_list)
+	for(var/mob/living/L in GLOB.mob_list)
 
 		if(L.ckey)
 			var/found = 0
@@ -484,7 +484,7 @@ proc/display_roundstart_logout_report()
 					continue //Dead
 
 			continue //Happy connected client
-		for(var/mob/observer/dead/D in mob_list)
+		for(var/mob/observer/dead/D in GLOB.mob_list)
 			if(D.mind && (D.mind.original == L || D.mind.current == L))
 				if(L.stat == DEAD)
 					if(L.suiciding)	//Suicider
@@ -503,7 +503,7 @@ proc/display_roundstart_logout_report()
 
 	msg += "</span>" // close the span from right at the top
 
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if(M.client && M.client.holder)
 			to_chat(M, msg)
 

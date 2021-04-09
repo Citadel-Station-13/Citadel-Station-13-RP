@@ -13,13 +13,12 @@
 	var/chargelevel = -1
 	circuit = /obj/item/circuitboard/cell_charger
 
-/obj/machinery/cell_charger/New()
+/obj/machinery/cell_charger/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 5)
 	RefreshParts()
-	..()
-	return
 
 /obj/machinery/cell_charger/update_icon()
 	icon_state = "ccharger[charging ? 1 : 0]"

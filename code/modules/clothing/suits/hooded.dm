@@ -9,10 +9,10 @@
 	var/toggleicon
 	action_button_name = "Toggle Hood"
 
-/obj/item/clothing/suit/storage/hooded/New()
+/obj/item/clothing/suit/storage/hooded/Initialize(mapload)
+	. = ..()
 	toggleicon = "[initial(icon_state)]"
 	MakeHood()
-	..()
 
 /obj/item/clothing/suit/storage/hooded/Destroy()
 	qdel(hood)
@@ -126,6 +126,11 @@
 	hoodtype = /obj/item/clothing/head/hood/winter
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
+
+/obj/item/clothing/suit/storage/hooded/wintercoat/olive
+	name = "olive green winter coat"
+	desc = "A heavy jacket made from 'synthetic' animal furs. Has a coloration similar to military jackets."
+	icon_state = "coatar"
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/captain
 	name = "Facility Director's winter coat"
@@ -302,3 +307,4 @@
 	siemens_coefficient = 0.9
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/material/knife)
+

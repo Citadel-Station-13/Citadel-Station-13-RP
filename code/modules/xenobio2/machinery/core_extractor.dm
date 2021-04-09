@@ -18,8 +18,8 @@
 	var/operatingcolor = "#FFFF22"
 
 
-/obj/machinery/slime/extractor/New()
-	..()
+/obj/machinery/slime/extractor/Initialize(mapload)
+	. = ..()
 	update_light_color()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/manipulator(src)

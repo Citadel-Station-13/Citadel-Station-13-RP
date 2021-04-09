@@ -123,7 +123,7 @@
 	var/list/ability_types = subtypesof(/obj/effect/shadekin_ability)
 	shadekin_abilities = list()
 	for(var/type in ability_types)
-		shadekin_abilities += new type(src)
+		shadekin_abilities += new type(null, src)
 
 	update_icon()
 
@@ -243,6 +243,11 @@
 /mob/living/simple_mob/shadekin/Life()
 	if((. = ..()))
 		handle_shade()
+
+/mob/living/simple_mob/shadekin/is_incorporeal()
+	if(ability_flags & AB_PHASE_SHIFTED)
+		return TRUE
+	return FALSE
 
 /mob/living/simple_mob/shadekin/handle_atmos()
 	if(ability_flags & AB_PHASE_SHIFTED)
@@ -375,7 +380,7 @@
 
 				//Random walk
 				if(!moving_to)
-					moving_to = pick(cardinal)
+					moving_to = pick(GLOB.cardinal)
 					dir = moving_to
 
 				var/turf/T = get_step(src,moving_to)

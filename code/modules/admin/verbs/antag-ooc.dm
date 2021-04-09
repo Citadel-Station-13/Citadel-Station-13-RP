@@ -16,7 +16,7 @@
 			to_chat(usr, "<span class='warning'>Sorry, but your antagonist type is not allowed to speak in AOOC.</span>")
 			return
 
-	msg = sanitize(msg)
+	msg = emoji_parse(sanitize(msg))
 	if(!msg)
 		return
 
@@ -29,7 +29,7 @@
 	// Name shown to other players.  Admins whom are not also antags have their rank displayed.
 	var/player_display = (is_admin && !is_antag) ? "[display_name]([usr.client.holder.rank])" : display_name
 
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if(check_rights(R_ADMIN|R_MOD, 0, M)) // Staff can see AOOC unconditionally, and with more details.
 			to_chat(M, "<span class='ooc'><span class='aooc'>Antag-OOC: <EM>[get_options_bar(src, 0, 1, 1)]([admin_jump_link(usr, M.client.holder)]):</EM> <span class='message'>[msg]</span></span></span>")
 		else if(M.client) // Players can only see AOOC if observing, or if they are an antag type allowed to use AOOC.

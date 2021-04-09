@@ -869,13 +869,13 @@
 
 /obj/item/clothing/under/confederacy
 	name = "\improper Confederacy uniform"
-	desc = "A military uniform belonging to the Confederacy of Man, an independent human government."
+	desc = "A military uniform belonging to the Confederacy of Man, an independent human government." //Name pending review
 	icon_state = "confed"
 	worn_state = "confed"
 
 /obj/item/clothing/under/saare
-	name = "\improper SAARE uniform"
-	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation."
+	name = "SAARE uniform"
+	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation." //Name pending review
 	icon_state = "saare"
 	worn_state = "saare"
 
@@ -934,8 +934,6 @@
 	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has red stripes."
 	icon_state = "future_fashion_red"
 
-//Uniforms end above here.
-
 /obj/item/clothing/under/medigown
 	name = "medical gown"
 	desc = "A flimsy examination gown, the back ties never close."
@@ -993,7 +991,7 @@
 	rolled_down = 0
 	rolled_sleeves = 0
 
-/obj/item/clothing/under/color/ranger/Initialize()
+/obj/item/clothing/under/color/ranger/Initialize(mapload)
 	. = ..()
 	if(icon_state == "ranger_uniform") //allows for custom items
 		name = "[unicolor] ranger uniform"
@@ -1053,7 +1051,7 @@
 /obj/item/clothing/under/btcbartender
 	name = "BTC Bartender"
 	desc = "For the classy bartender who converts their paychecks into Spesscoin."
-	icon_state = "btc_bartender_s"
+	icon_state = "btc_bartender"
 
 /obj/item/clothing/under/paramedunilight
 	name = "\improper Paramedic Uniform"
@@ -1262,11 +1260,11 @@
 
 /obj/item/clothing/under/darkholme
 	name = "leather harness costume"
-	desc = "Perferred by bikers, musicial ensembles, and people who need a strong grip."
+	desc = "The outfit of a dungeon master, and we're not talking about tabletop."
 	icon_state = "darkholme"
 
 /obj/item/clothing/under/geisha
-	name = "geisha costume"
+	name = "geisha outfit"
 	desc = "These silk robes are commonly associated with Old World courtesans and radiate a delicate femininity."
 	icon_state = "geisha"
 
@@ -1463,3 +1461,23 @@
 	name = "rainbow clown suit"
 	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
 	icon_state = "rainbowclown"
+
+/obj/item/clothing/under/hawaiian
+	name = "pink hawaiian suit"
+	desc = "A suit consisting of bright white pants and a pink hawaiian shirt. Makes it feel like it's casual friday."
+	icon_state = "hawaiianpink"
+
+/obj/item/clothing/under/blueshift
+	name = "light blue suit"
+	desc = "A casual suit consisting of a light blue dress shirt, navy pants, and a black tie. Makes you think of a security officer in over his head."
+	icon_state = "blueshift"
+
+/obj/item/clothing/under/office_worker
+	name = "officer worker suit"
+	desc = "A suit consisting of a white dress shirt, white pants, black belt, and red-and-black tie."
+	icon_state = "hlsuit"
+
+/obj/item/clothing/under/tracksuit_blue
+	name = "blue tracksuit"
+	desc = "A dark blue tracksuit. It calls to mind images of excercise, particularly squats."
+	icon_state = "tracksuit_blue"

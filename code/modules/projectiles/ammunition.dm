@@ -16,8 +16,8 @@
 	var/obj/item/projectile/BB = null	//The loaded bullet - make it so that the projectiles are created only when needed?
 	var/caseless = null					//Caseless ammo deletes its self once the projectile is fired.
 
-/obj/item/ammo_casing/New()
-	..()
+/obj/item/ammo_casing/Initialize(mapload)
+	. = ..()
 	if(ispath(projectile_type))
 		BB = new projectile_type(src)
 	pixel_x = rand(-10, 10)
@@ -27,7 +27,7 @@
 /obj/item/ammo_casing/proc/expend()
 	. = BB
 	BB = null
-	setDir(pick(cardinal)) //spin spent casings
+	setDir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
 /obj/item/ammo_casing/attackby(obj/item/W as obj, mob/user as mob)
@@ -91,8 +91,8 @@
 	var/list/icon_keys = list()		//keys
 	var/list/ammo_states = list()	//values
 
-/obj/item/ammo_magazine/New()
-	..()
+/obj/item/ammo_magazine/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
 	if(multiple_sprites)
@@ -152,7 +152,7 @@
 			playsound(user.loc, "casing_sound", 50, 1)
 		for(var/obj/item/ammo_casing/C in stored_ammo)
 			C.loc = user.loc
-			C.setDir(pick(cardinal))
+			C.setDir(pick(GLOB.cardinal))
 		stored_ammo.Cut()
 		update_icon()
 	else

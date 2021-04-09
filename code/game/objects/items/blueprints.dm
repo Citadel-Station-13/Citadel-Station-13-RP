@@ -154,6 +154,7 @@
 	A.power_environ = 0
 	A.always_unpowered = 0
 	move_turfs_to_area(turfs, A)
+	A.addSorted()
 
 	A.always_unpowered = 0
 
@@ -252,7 +253,7 @@
 			return ROOM_ERR_TOOLARGE
 		var/turf/T = pending[1] //why byond havent list::pop()?
 		pending -= T
-		for (var/dir in cardinal)
+		for (var/dir in GLOB.cardinal)
 			var/turf/NT = get_step(T,dir)
 			if (!isturf(NT) || (NT in found) || (NT in pending))
 				continue

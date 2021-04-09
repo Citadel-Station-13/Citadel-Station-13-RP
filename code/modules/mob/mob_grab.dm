@@ -36,8 +36,9 @@
 	w_class = ITEMSIZE_HUGE
 
 
-/obj/item/grab/New(mob/user, mob/victim)
-	..()
+/obj/item/grab/Initialize(mapload, mob/victim)
+	. = ..()
+	var/mob/user = loc
 	loc = user
 	assailant = user
 	affecting = victim

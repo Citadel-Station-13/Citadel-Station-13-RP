@@ -73,11 +73,11 @@
 
 /obj/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
-	layer = DAMAGE_LAYER
+	layer = DAMAGE_SCREEN_LAYER
 
 /obj/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
-	layer = DAMAGE_LAYER
+	layer = DAMAGE_SCREEN_LAYER
 
 /obj/screen/fullscreen/crit
 	icon_state = "passage"

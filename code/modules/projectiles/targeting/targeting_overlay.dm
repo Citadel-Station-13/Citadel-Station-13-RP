@@ -18,10 +18,10 @@
 	var/active =    0          // Is our owner intending to take hostages?
 	var/target_permissions = 0 // Permission bitflags.
 
-/obj/aiming_overlay/New(var/newowner)
-	..()
-	owner = newowner
-	loc = null
+/obj/aiming_overlay/Initialize(mapload)
+	. = ..()
+	owner = loc
+	moveToNullspace()
 	verbs.Cut()
 
 /obj/aiming_overlay/proc/toggle_permission(var/perm)

@@ -460,8 +460,8 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon_state = "datadisk2"
 	var/company = ""
 
-/obj/item/disk/limb/New(var/newloc)
-	..()
+/obj/item/disk/limb/Initialize(mapload)
+	. = ..()
 	if(company)
 		name = "[company] [initial(name)]"
 
@@ -518,8 +518,8 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon_state = "datadisk2"
 	var/species = SPECIES_HUMAN
 
-/obj/item/disk/species/Initialize()
-	..()
+/obj/item/disk/species/Initialize(mapload)
+	. = ..()
 	if(species)
 		name = "[species] [initial(name)]"
 

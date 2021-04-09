@@ -289,7 +289,7 @@
 			else if(prob(50))
 				if(live_cargo) // Something else very much alive and angry.
 					var/spawn_type = pick(/mob/living/simple_mob/animal/space/alien, /mob/living/simple_mob/animal/space/alien/drone, /mob/living/simple_mob/animal/space/alien/sentinel)
-					new spawn_type(C) 
+					new spawn_type(C)
 				else // Just a costume.
 					new /obj/item/clothing/head/xenos(C)
 					new /obj/item/clothing/suit/xenos(C)

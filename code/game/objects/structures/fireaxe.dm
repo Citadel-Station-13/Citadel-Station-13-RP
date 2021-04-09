@@ -13,8 +13,8 @@
 	var/smashed = 0
 	var/hasaxe = 1
 
-/obj/structure/fireaxecabinet/Initialize()
-	..()
+/obj/structure/fireaxecabinet/Initialize(mapload)
+	. = ..()
 	fireaxe = new /obj/item/material/twohanded/fireaxe()
 
 /obj/structure/fireaxecabinet/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri

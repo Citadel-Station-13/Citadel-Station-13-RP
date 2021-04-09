@@ -42,7 +42,7 @@
 
 	var/combine_first = 0//If 1, this appliance will do combinaiton cooking before checking recipes
 
-/obj/machinery/appliance/New()
+/obj/machinery/appliance/Initialize(mapload, newdir)
 	. = ..()
 	component_parts = list()
 	component_parts += /obj/item/circuitboard/cooking

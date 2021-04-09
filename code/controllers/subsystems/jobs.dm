@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(jobs)
 
 
 /datum/controller/subsystem/jobs/proc/Debug(var/text)
-	if(!Debug2)
+	if(!GLOB.Debug2)
 		return 0
 	job_debug.Add(text)
 	return 1
@@ -347,7 +347,7 @@ SUBSYSTEM_DEF(jobs)
 	if(!joined_late)
 		var/obj/S = null
 		var/list/possible_spawns = list()
-		for(var/obj/effect/landmark/start/sloc in landmarks_list)
+		for(var/obj/effect/landmark/start/sloc in GLOB.landmarks_list)
 			if(sloc.name != rank)	continue
 			if(locate(/mob/living) in sloc.loc)	continue
 			possible_spawns.Add(sloc)
@@ -439,7 +439,7 @@ SUBSYSTEM_DEF(jobs)
 
 	H.job = rank
 	log_game("JOINED [key_name(H)] as \"[rank]\"")
-	log_game("SPECIES [key_name(H)] is a: \"[H.species.name]\"") //VOREStation Add
+	log_game("SPECIES [key_name(H)] is a: \"[H.species.name]\" / \"[H.custom_species]\"") //VOREStation Add
 
 	// If they're head, give them the account info for their department
 	if(H.mind && job.head_position)

@@ -21,11 +21,6 @@
 		name = "[material.display_name] wall"
 		desc = "It seems to be a section of hull plated with [material.display_name]."
 
-	if(material.opacity > 0.5 && !opacity)
-		set_light(1)
-	else if(material.opacity < 0.5 && opacity)
-		set_light(0)
-
 	SSradiation.resistance_cache.Remove(src)
 	update_connections(1)
 	update_icon()

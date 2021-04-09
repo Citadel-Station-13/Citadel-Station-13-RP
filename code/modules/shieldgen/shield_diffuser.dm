@@ -13,8 +13,8 @@
 	var/alarm = 0
 	var/enabled = 1
 
-/obj/machinery/shield_diffuser/New()
-	..()
+/obj/machinery/shield_diffuser/Initialize(mapload)
+	. = ..()
 	var/turf/T = get_turf(src)
 	hide(!T.is_plating())
 
@@ -36,7 +36,7 @@
 
 	if(!enabled)
 		return
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/simulated/shielded_tile = get_step(get_turf(src), direction)
 		for(var/obj/effect/energy_field/S in shielded_tile)
 			qdel(S)

@@ -89,9 +89,9 @@
 
 	var/current_pda_messaging = null
 
-/mob/living/silicon/pai/New(var/obj/item/paicard)
-	src.loc = paicard
-	card = paicard
+/mob/living/silicon/pai/Initialize(mapload)
+	. = ..()
+	card = loc
 	sradio = new(src)
 	communicator = new(src)
 	if(card)

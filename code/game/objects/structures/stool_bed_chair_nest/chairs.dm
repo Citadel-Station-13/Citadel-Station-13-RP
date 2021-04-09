@@ -9,11 +9,13 @@
 	buckle_lying = 0 //force people to sit up in chairs when buckled
 	var/propelled = 0 // Check for fire-extinguisher-driven chairs
 
-/obj/structure/bed/chair/New()
-	..() //Todo make metal/stone chairs display as thrones
-	spawn(3)	//sorry. i don't think there's a better way to do this.
-		update_layer()
-	return
+/obj/structure/bed/chair/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/bed/chair/LateInitialize()
+	. = ..()
+	update_layer()
 
 /obj/structure/bed/chair/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -95,32 +97,32 @@
 	desc = "It's a chair. It looks comfy."
 	icon_state = "comfychair_preview"
 
-/obj/structure/bed/chair/comfy/brown/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","leather")
+/obj/structure/bed/chair/comfy/brown/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "leather")
 
-/obj/structure/bed/chair/comfy/red/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","carpet")
+/obj/structure/bed/chair/comfy/red/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "carpet")
 
-/obj/structure/bed/chair/comfy/teal/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","teal")
+/obj/structure/bed/chair/comfy/teal/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "teal")
 
-/obj/structure/bed/chair/comfy/black/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","black")
+/obj/structure/bed/chair/comfy/black/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "black")
 
-/obj/structure/bed/chair/comfy/green/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","green")
+/obj/structure/bed/chair/comfy/green/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "green")
 
-/obj/structure/bed/chair/comfy/purp/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","purple")
+/obj/structure/bed/chair/comfy/purp/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "purple")
 
-/obj/structure/bed/chair/comfy/blue/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","blue")
+/obj/structure/bed/chair/comfy/blue/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "blue")
 
-/obj/structure/bed/chair/comfy/beige/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","beige")
+/obj/structure/bed/chair/comfy/beige/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "beige")
 
-/obj/structure/bed/chair/comfy/lime/New(var/newloc,var/newmaterial)
-	..(newloc,"steel","lime")
+/obj/structure/bed/chair/comfy/lime/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "lime")
 
 /obj/structure/bed/chair/office
 	anchored = 0
@@ -198,8 +200,8 @@
 		return
 	..()
 
-/obj/structure/bed/chair/wood/New(var/newloc)
-	..(newloc, "wood")
+/obj/structure/bed/chair/wood/Initialize(mapload, material_key)
+	return ..(mapload, "wood")
 
 /obj/structure/bed/chair/wood/wings
 	icon_state = "wooden_chair_wings"

@@ -56,8 +56,8 @@
 	emote_see = list("shifts wetly","undulates placidly")
 
 //Constructor allows passing the human to sync damages
-/mob/living/simple_mob/protean_blob/New(var/newloc, var/mob/living/carbon/human/H)
-	..()
+/mob/living/simple_mob/protean_blob/Initialize(mapload, mob/living/carbon/human/H)
+	. = ..()
 	mob_radio = new(src)
 	myid = new(src)
 	if(H)
@@ -257,7 +257,7 @@
 		..()
 
 /mob/living/simple_mob/protean_blob/MouseDrop(var/atom/over_object)
-	if(ishuman(over_object) && usr == src)
+	if(ishuman(over_object) && usr == src && src.Adjacent(over_object))
 		var/mob/living/carbon/human/H = over_object
 		get_scooped(H, TRUE)
 	else

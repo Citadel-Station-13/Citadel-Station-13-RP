@@ -22,11 +22,9 @@
 
 	buckle_lying = 1
 
-	// BubbleWrap
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/New()
-	..()
-// BubbleWrap END
-	color = "#404040" //we don't make use of the fancy overlay system for colours, use this to set the default.
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/Initialize(mapload)
+	. = ..()
+	add_atom_colour("#404040", FIXED_COLOUR_PRIORITY) //we don't make use of the fancy overlay system for colours, use this to set the default.
 
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/init_dir()
 	..()
@@ -47,7 +45,7 @@
 	var/node1_dir
 	var/node2_dir
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(direction&initialize_directions_he)
 			if (!node1_dir)
 				node1_dir = direction

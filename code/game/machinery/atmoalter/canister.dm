@@ -362,90 +362,74 @@ update_flag
 
 	return 1
 
-/obj/machinery/portable_atmospherics/canister/phoron/New()
-	..()
-
+/obj/machinery/portable_atmospherics/canister/phoron/Initialize(mapload)
+	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/phoron, MolesForPressure())
 	src.update_icon()
-	return 1
 
-/obj/machinery/portable_atmospherics/canister/oxygen/New()
-	..()
-
+/obj/machinery/portable_atmospherics/canister/oxygen/Initialize(mapload)
+	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/oxygen, MolesForPressure())
 	src.update_icon()
-	return 1
 
-/obj/machinery/portable_atmospherics/canister/oxygen/prechilled/New()
-	..()
-
+/obj/machinery/portable_atmospherics/canister/oxygen/prechilled/Initialize(mapload)
+	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/oxygen, MolesForPressure())
 	src.air_contents.temperature = 80
 	src.update_icon()
-	return 1
 
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide/New()
-	..()
-
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide/Initialize(mapload)
+	. = ..()
 	air_contents.adjust_gas(/datum/gas/nitrous_oxide, MolesForPressure())
 	src.update_icon()
-	return 1
 
 //Dirty way to fill room with gas. However it is a bit easier to do than creating some floor/engine/n2o -rastaf0
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/New()
-	..()
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/Initialize(mapload)
+	. = ..()
 	air_contents.gas[/datum/gas/nitrous_oxide] = 9*4000
-	spawn(10)
-		var/turf/simulated/location = src.loc
-		if (istype(src.loc))
-			while (!location.air)
-				sleep(10)
-			location.assume_air(air_contents)
-			air_contents = new
-	return 1
+	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/portable_atmospherics/canister/nitrogen/New()
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/LateInitialize()
+	. = ..()
+	var/turf/simulated/location = src.loc
+	if (istype(src.loc))
+		while (!location.air)
+			sleep(10)
+		location.assume_air(air_contents)
+		air_contents = new
 
-	..()
-
+/obj/machinery/portable_atmospherics/canister/nitrogen/Initialize(mapload)
+	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/nitrogen, MolesForPressure())
 	src.update_icon()
-	return 1
 
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide/New()
-	..()
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide/Initialize(mapload)
+	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, MolesForPressure())
 	src.update_icon()
-	return 1
 
-
-/obj/machinery/portable_atmospherics/canister/air/New()
-	..()
+/obj/machinery/portable_atmospherics/canister/air/Initialize(mapload)
+	. = ..()
 	var/list/air_mix = StandardAirMix()
 	src.air_contents.adjust_multi(/datum/gas/oxygen, air_mix[/datum/gas/oxygen], /datum/gas/nitrogen, air_mix[/datum/gas/nitrogen])
-
 	src.update_icon()
-	return 1
 
 //R-UST port
 // Special types used for engine setup admin verb, they contain double amount of that of normal canister.
-/obj/machinery/portable_atmospherics/canister/nitrogen/engine_setup/New()
-	..()
+/obj/machinery/portable_atmospherics/canister/nitrogen/engine_setup/Initialize(mapload)
+	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/nitrogen, MolesForPressure())
 	src.update_icon()
-	return 1
 
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide/engine_setup/New()
-	..()
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide/engine_setup/Initialize(mapload)
+	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, MolesForPressure())
 	src.update_icon()
-	return 1
 
-/obj/machinery/portable_atmospherics/canister/phoron/engine_setup/New()
-	..()
+/obj/machinery/portable_atmospherics/canister/phoron/engine_setup/Initialize(mapload)
+	. = ..()
 	src.air_contents.adjust_gas(/datum/gas/phoron, MolesForPressure())
 	src.update_icon()
-	return 1
 
 /obj/machinery/portable_atmospherics/canister/take_damage(var/damage)
 	src.health -= damage

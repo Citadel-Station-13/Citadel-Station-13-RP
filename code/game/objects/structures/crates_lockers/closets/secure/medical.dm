@@ -61,7 +61,7 @@
 		/obj/item/gps/medical,
 		/obj/item/storage/box/freezer = 3)
 
-/obj/structure/closet/secure_closet/medical3/Initialize()
+/obj/structure/closet/secure_closet/medical3/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/medic
 	else
@@ -141,7 +141,7 @@
 		/obj/item/clothing/accessory/storage/white_vest,
 		/obj/item/barrier_tape_roll/medical)
 
-/obj/structure/closet/secure_closet/paramedic/Initialize()
+/obj/structure/closet/secure_closet/paramedic/Initialize(mapload)
 	starts_with += /obj/item/gps/medical
 	return ..()
 
@@ -180,7 +180,7 @@
 		/obj/item/reagent_containers/glass/beaker/vial, //VOREStation Add
 		/obj/item/clothing/under/rank/chief_medical_officer/turtleneck)
 
-/obj/structure/closet/secure_closet/CMO/Initialize()
+/obj/structure/closet/secure_closet/CMO/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/medic
 	else

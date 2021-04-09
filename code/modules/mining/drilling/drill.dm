@@ -323,9 +323,8 @@
 	circuit = /obj/item/circuitboard/miningdrillbrace
 	var/obj/machinery/mining/drill/connected
 
-/obj/machinery/mining/brace/New()
-	..()
-
+/obj/machinery/mining/brace/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 
 /obj/machinery/mining/brace/attackby(obj/item/W as obj, mob/user as mob)

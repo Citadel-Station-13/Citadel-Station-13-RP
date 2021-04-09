@@ -32,7 +32,7 @@
 	var/datum/gas_mixture/faketank
 	var/faketank_integrity
 
-/obj/machinery/bomb_tester/Initialize()
+/obj/machinery/bomb_tester/Initialize(mapload)
 	.=..()
 	default_apply_parts()
 	RefreshParts()

@@ -81,7 +81,7 @@
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. Uses .45 rounds."
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m45)
+	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash)
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -263,13 +263,13 @@
 		/obj/item/ammo_casing/a545              = "5.45mm"
 		)
 
-/obj/item/gun/projectile/pirate/New()
+/obj/item/gun/projectile/pirate/Initialize(mapload)
 	ammo_type = pick(ammo_types)
 	desc += " Uses [ammo_types[ammo_type]] rounds."
 
 	var/obj/item/ammo_casing/ammo = ammo_type
 	caliber = initial(ammo.caliber)
-	..()
+	return ..()
 
 /obj/item/gun/projectile/derringer
 	name = "derringer"

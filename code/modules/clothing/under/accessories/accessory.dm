@@ -25,6 +25,17 @@
 	on_removed()
 	return ..()
 
+/obj/item/clothing/accessory/MouseDrop(mob/user as mob)
+	if(ismob(src.loc))
+		if(!CanMouseDrop(src))
+			return
+		var/mob/M = src.loc
+		if(!M.unEquip(src))
+			return
+		src.add_fingerprint(usr)
+		M.put_in_active_hand(src)
+
+
 /obj/item/clothing/accessory/proc/get_inv_overlay()
 	if(!inv_overlay)
 		var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
@@ -377,14 +388,13 @@
 /obj/item/clothing/accessory/bracelet/material
 	icon_state = "materialbracelet"
 
-/obj/item/clothing/accessory/bracelet/material/New(var/newloc, var/new_material)
-	..(newloc)
+/obj/item/clothing/accessory/bracelet/material/Initialize(mapload, new_material)
+	. = ..(mapload)
 	if(!new_material)
 		new_material = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name(new_material)
 	if(!istype(material))
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 	name = "[material.display_name] bracelet"
 	desc = "A bracelet made from [material.display_name]."
 	color = material.icon_colour
@@ -392,34 +402,32 @@
 /obj/item/clothing/accessory/bracelet/material/get_material()
 	return material
 
-/obj/item/clothing/accessory/bracelet/material/wood/New(var/newloc)
-	..(newloc, "wood")
+/obj/item/clothing/accessory/bracelet/material/wood/Initialize(mapload, material_key)
+	return ..(mapload, "wood")
 
-/obj/item/clothing/accessory/bracelet/material/plastic/New(var/newloc)
-	..(newloc, "plastic")
+/obj/item/clothing/accessory/bracelet/material/plastic/Initialize(mapload, material_key)
+	return ..(mapload, "plastic")
 
-/obj/item/clothing/accessory/bracelet/material/iron/New(var/newloc)
-	..(newloc, "iron")
+/obj/item/clothing/accessory/bracelet/material/iron/Initialize(mapload, material_key)
+	return ..(mapload, "iron")
 
-/obj/item/clothing/accessory/bracelet/material/steel/New(var/newloc)
-	..(newloc, "steel")
+/obj/item/clothing/accessory/bracelet/material/steel/Initialize(mapload, material_key)
+	return ..(mapload, "steel")
 
-/obj/item/clothing/accessory/bracelet/material/silver/New(var/newloc)
-	..(newloc, "silver")
+/obj/item/clothing/accessory/bracelet/material/silver/Initialize(mapload, material_key)
+	return ..(mapload, "silver")
 
-/obj/item/clothing/accessory/bracelet/material/gold/New(var/newloc)
-	..(newloc, "gold")
+/obj/item/clothing/accessory/bracelet/material/gold/Initialize(mapload, material_key)
+	return ..(mapload, "gold")
 
-/obj/item/clothing/accessory/bracelet/material/platinum/New(var/newloc)
-	..(newloc, "platinum")
+/obj/item/clothing/accessory/bracelet/material/platinum/Initialize(mapload, material_key)
+	return ..(mapload, "platinum")
 
-/obj/item/clothing/accessory/bracelet/material/phoron/New(var/newloc)
-	..(newloc, "phoron")
+/obj/item/clothing/accessory/bracelet/material/phoron/Initialize(mapload, material_key)
+	return ..(mapload, "phoron")
 
-/obj/item/clothing/accessory/bracelet/material/glass/New(var/newloc)
-	..(newloc, "glass")
-
-	..()
+/obj/item/clothing/accessory/bracelet/material/glass/Initialize(mapload, material_key)
+	return ..(mapload, "glass")
 
 /obj/item/clothing/accessory/halfcape
 	name = "half cape"
@@ -501,8 +509,8 @@
 	var/writtenon = 0
 
 //ywedit start. forces different sprite sheet on equip
-/obj/item/clothing/accessory/collar/New()
-	..()
+/obj/item/clothing/accessory/collar/Initialize(mapload)
+	. = ..()
 	icon_previous_override = icon_override
 
 /obj/item/clothing/accessory/collar/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
@@ -579,8 +587,8 @@
 	var/code = 2
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/clothing/accessory/collar/shock/Initialize()
-	..()
+/obj/item/clothing/accessory/collar/shock/Initialize(mapload)
+	. = ..()
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT) // Makes it so you don't need to change the frequency off of default for it to work.
 
 /obj/item/clothing/accessory/collar/shock/Destroy() //Clean up your toys when you're done.
@@ -801,7 +809,6 @@
 	name = "machete sheath"
 	desc = "A handsome synthetic leather sheath with matching belt."
 	icon_state = "holster_machete"
-	slot = ACCESSORY_SLOT_WEAPON
 	concealed_holster = 0
 	can_hold = list(/obj/item/material/knife/machete)
 	//sound_in = 'sound/effects/holster/sheathin.ogg'

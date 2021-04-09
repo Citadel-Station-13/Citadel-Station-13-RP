@@ -19,8 +19,8 @@
 	var/obj/item/shockpaddles/linked/paddles
 	var/obj/item/cell/bcell = null
 
-/obj/item/defib_kit/New() //starts without a cell for rnd
-	..()
+/obj/item/defib_kit/Initialize(mapload) //starts without a cell for rnd
+	. = ..()
 	if(ispath(paddles))
 		paddles = new paddles(src, src)
 	else
@@ -431,6 +431,10 @@
 
 	make_alive(H)
 
+	H.Confuse(120)
+	var/type_to_give = /datum/modifier/enfeeble/strong
+	H.add_modifier(type_to_give, 10 MINUTES)
+
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
 
 
@@ -563,9 +567,9 @@
 /obj/item/shockpaddles/linked
 	var/obj/item/defib_kit/base_unit
 
-/obj/item/shockpaddles/linked/New(newloc, obj/item/defib_kit/defib)
+/obj/item/shockpaddles/linked/Initialize(mapload, obj/item/defib_kit/defib)
+	. = ..()
 	base_unit = defib
-	..(newloc)
 
 /obj/item/shockpaddles/linked/Destroy()
 	if(base_unit)

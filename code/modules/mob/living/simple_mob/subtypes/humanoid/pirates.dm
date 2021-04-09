@@ -431,7 +431,7 @@
 
 	var/obj/item/shield_projector/shields = null
 
-/mob/living/simple_mob/humanoid/pirate/captain/Initialize()
+/mob/living/simple_mob/humanoid/pirate/captain/Initialize(mapload)
 	shields = new /obj/item/shield_projector/rectangle/automatic/drone(src)
 	return ..()
 

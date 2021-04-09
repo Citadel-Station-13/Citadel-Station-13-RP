@@ -11,7 +11,7 @@
 	var/maxhealth = 100
 	anchored = 1.0
 
-/obj/structure/catwalk/Initialize()
+/obj/structure/catwalk/Initialize(mapload)
 	. = ..()
 	for(var/obj/structure/catwalk/O in range(1))
 		O.update_icon()
@@ -30,7 +30,7 @@
 
 /obj/structure/catwalk/update_icon()
 	var/connectdir = 0
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(locate(/obj/structure/catwalk, get_step(src, direction)))
 			connectdir |= direction
 
@@ -88,7 +88,7 @@
 
 /obj/structure/catwalk/Crossed()
 	. = ..()
-	if(isliving(usr))
+	if(isliving(usr) && !usr.is_incorporeal())
 		playsound(src, pick('sound/effects/footstep/catwalk1.ogg', 'sound/effects/footstep/catwalk2.ogg', 'sound/effects/footstep/catwalk3.ogg', 'sound/effects/footstep/catwalk4.ogg', 'sound/effects/footstep/catwalk5.ogg'), 25, 1)
 
 /obj/structure/catwalk/CheckExit(atom/movable/O, turf/target)

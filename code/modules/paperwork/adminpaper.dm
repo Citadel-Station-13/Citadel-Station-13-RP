@@ -16,10 +16,9 @@
 	var/footer = null
 	var/footerOn = FALSE
 
-/obj/item/paper/admin/New()
-	..()
+/obj/item/paper/admin/Initialize(mapload)
+	. = ..()
 	generateInteractions()
-
 
 /obj/item/paper/admin/proc/generateInteractions()
 	//clear first

@@ -1,4 +1,10 @@
-var/global/list/ore_data = list()
+GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
+
+/proc/initialize_ore_data()
+	. = list()
+	for(var/oretype in subtypesof(/datum/ore))
+		var/datum/ore/OD = new oretype
+		.[OD.name] = OD
 
 /datum/ore
 	var/name

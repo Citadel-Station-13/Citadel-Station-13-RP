@@ -91,7 +91,8 @@
 	/// stealthmin vars
 	var/original_name
 
-/mob/observer/dead/New(mob/body)
+/mob/observer/dead/Initialize(mapload)
+	var/mob/body = loc
 	sight |= SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
@@ -129,17 +130,18 @@
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
-	if(!T)	T = pick(latejoin)			//Safety in case we cannot find the body's position
+	if(!T)
+		T = pick(latejoin)			//Safety in case we cannot find the body's position
 	forceMove(T)
 
 	if(!name)							//To prevent nameless ghosts
 		name = capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 	real_name = name
-	..()
+	return ..()
 
 /mob/observer/dead/Topic(href, href_list)
 	if (href_list["track"])
-		var/mob/target = locate(href_list["track"]) in mob_list
+		var/mob/target = locate(href_list["track"]) in GLOB.mob_list
 		if(target)
 			ManualFollow(target)
 	if(href_list["reenter"])
@@ -307,7 +309,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	plane_holder.set_vis(VIS_CH_SPECIAL, antagHUD)
 	to_chat(src,"<font color='blue'><B>AntagHUD [antagHUD ? "Enabled" : "Disabled"]</B></font>")
 
-/mob/observer/dead/proc/dead_tele(var/area/A in return_sorted_areas())
+/mob/observer/dead/proc/dead_tele(var/area/A in GLOB.sortedAreas)
 	set category = "Ghost"
 	set name = "Teleport"
 	set desc = "Teleport to a location"
@@ -317,7 +319,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!A)
-		A = input(usr, "Select an area:", "Ghost Teleport") as null|anything in return_sorted_areas()
+		A = input(usr, "Select an area:", "Ghost Teleport") as null|anything in GLOB.sortedAreas
 	if(!A)
 		return
 

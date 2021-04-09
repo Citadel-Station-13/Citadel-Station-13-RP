@@ -45,13 +45,13 @@
 			A.turret_controls -= src
 	..()
 
-/obj/machinery/turretid/Initialize()
+/obj/machinery/turretid/Initialize(mapload)
 	if(!control_area)
 		control_area = get_area(src)
 	else if(ispath(control_area))
 		control_area = locate(control_area)
 	else if(istext(control_area))
-		for(var/area/A in all_areas)
+		for(var/area/A in GLOB.sortedAreas)
 			if(A.name && A.name==control_area)
 				control_area = A
 				break

@@ -18,12 +18,9 @@
 	circuit = /obj/item/circuitboard/fission_monitor
 	var/obj/machinery/power/fission/linked
 
-/obj/machinery/computer/fission_monitor/New()
-	..()
-
 /obj/machinery/computer/fission_monitor/Destroy()
 	linked = null
-	..()
+	return ..()
 
 /obj/machinery/computer/fission_monitor/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/multitool))

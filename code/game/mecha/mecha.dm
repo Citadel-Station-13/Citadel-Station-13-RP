@@ -159,8 +159,8 @@
 
 	return cell.drain_power(drain_check)
 
-/obj/mecha/New()
-	..()
+/obj/mecha/Initialize(mapload)
+	. = ..()
 	events = new
 
 	icon_state += "-open"
@@ -183,7 +183,6 @@
 	log_message("[src.name] created.")
 	loc.Entered(src)
 	mechas_list += src //global mech list
-	return
 
 /obj/mecha/Exit(atom/movable/O)
 	if(O in cargo)
@@ -297,6 +296,7 @@
 	radio.subspace_transmission = 1
 
 /obj/mecha/proc/add_iterators()
+	set waitfor = FALSE
 	pr_int_temp_processor = new /datum/global_iterator/mecha_preserve_temp(list(src))
 	pr_inertial_movement = new /datum/global_iterator/mecha_intertial_movement(null,0)
 	pr_give_air = new /datum/global_iterator/mecha_tank_give_air(list(src))

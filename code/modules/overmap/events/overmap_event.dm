@@ -16,7 +16,7 @@
 	var/list/victims	// Basically cached events on which Z level
 	color = "#FFFFFF"
 
-/obj/effect/overmap/event/Initialize()
+/obj/effect/overmap/event/Initialize(mapload)
 	. = ..()
 	icon_state = pick(event_icon_states)
 	GLOB.overmap_event_handler.update_hazards(loc)

@@ -9,8 +9,8 @@ var/global/list/ashtray_cache = list()
 	var/image/base_image
 	var/max_butts = 10
 
-/obj/item/material/ashtray/New(var/newloc, var/material_name)
-	..(newloc, material_name)
+/obj/item/material/ashtray/Initialize(mapload, material_name)
+	. = ..(mapload, material_name)
 	if(!material)
 		qdel(src)
 		return
@@ -92,11 +92,11 @@ var/global/list/ashtray_cache = list()
 		update_icon()
 	return ..()
 
-/obj/item/material/ashtray/plastic/New(var/newloc)
-	..(newloc, "plastic")
+/obj/item/material/ashtray/plastic/Initialize(mapload, material_key)
+	return ..(mapload, "plastic")
 
-/obj/item/material/ashtray/bronze/New(var/newloc)
-	..(newloc, "bronze")
+/obj/item/material/ashtray/bronze/Initialize(mapload, material_key)
+	return ..(mapload, "bronze")
 
-/obj/item/material/ashtray/glass/New(var/newloc)
-	..(newloc, "glass")
+/obj/item/material/ashtray/glass/Initialize(mapload, material_key)
+	return ..(mapload, "glass")

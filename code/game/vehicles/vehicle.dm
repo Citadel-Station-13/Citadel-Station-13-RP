@@ -62,8 +62,8 @@
 
 
 
-/obj/vehicle/New()
-	..()
+/obj/vehicle/Initialize(mapload)
+	. = ..()
 	events = new
 	icon_state += "-unmanned"
 	add_radio()
@@ -77,8 +77,6 @@
 	removeVerb(/atom/movable/verb/pull)
 	log_message("[src.name]'s functions initialised. Work protocols active - Entering IDLE mode.")
 	loc.Entered(src)
-	return
-
 
 //################ Helpers ###########################################################
 

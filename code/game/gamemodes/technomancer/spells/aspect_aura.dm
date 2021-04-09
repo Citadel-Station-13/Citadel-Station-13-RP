@@ -41,8 +41,8 @@
 	aspect = ASPECT_CHROMATIC
 	var/glow_color = "#FFFFFF"
 
-/obj/item/spell/aura/New()
-	..()
+/obj/item/spell/aura/Initialize(mapload)
+	. = ..()
 	set_light(7, 4, l_color = glow_color)
 	START_PROCESSING(SSobj, src)
 
@@ -132,4 +132,4 @@
 
 /obj/item/spell/aura/biomed/on_use_cast(mob/living/user)
 	heal_allies_only = !heal_allies_only
-	to_chat(user, "Your aura will now heal [heal_allies_only ? "your allies" : "everyone"] near you.")
+	user << "Your aura will now heal [heal_allies_only ? "your allies" : "everyone"] near you."

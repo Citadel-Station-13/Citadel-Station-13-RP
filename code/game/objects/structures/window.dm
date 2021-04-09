@@ -24,7 +24,7 @@
 	var/silicate = 0 // number of units of silicate
 	var/fulltile = FALSE // Set to true on full-tile variants.
 
-/obj/structure/window/New()
+/obj/structure/window/Initialize(mapload)
 	/// COMPATIBILITY PATCH - Replace this crap with a better solution (maybe copy /tg/'s ASAP!!)
 	check_fullwindow()
 	return ..()
@@ -391,9 +391,8 @@
 	update_nearby_tiles(need_rebuild=1)
 	return
 
-/obj/structure/window/New(Loc, start_dir=null, constructed=0)
-	..()
-
+/obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
+	. = ..(mapload)
 	if (start_dir)
 		setDir(start_dir)
 

@@ -665,4 +665,9 @@ Drinks Data
 
 /datum/reagent/ethanol/nebula_riptide
 	glass_icon_state = "nebula_riptide"
-	
+
+/datum/reagent/ethanol/sexonthebeach
+	glass_icon_state = "sexonthebeachglass"
+
+/datum/reagent/drink/virginsexonthebeach
+	glass_icon_state = "virginsexonthebeachglass"

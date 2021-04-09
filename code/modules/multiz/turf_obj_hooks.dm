@@ -24,17 +24,6 @@
 			// log_debug("[T] ([T.x],[T.y],[T.z]) queued for update for [src].update_icon()")
 			SSopenspace.add_turf(T, 1)
 
-// Ouch... this is painful. But is there any other way?
-/* - No for now
-/obj/New()
-	. = ..()
-	if(SSopenspace.subsystem_initialized && !invisibility)
-		var/turf/T = GetAbove(src)
-		if(isopenspace(T))
-			// log_debug("[T] ([T.x],[T.y],[T.z]) queued for update for [src]New()")
-			SSopenspace.add_turf(T, 1)
-*/
-
 // Just as New() we probably should hook Destroy() If we can think of something more efficient, lets hear it.
 /obj/Destroy()
 	if(SSopenspace.subsystem_initialized && !invisibility && isturf(loc))

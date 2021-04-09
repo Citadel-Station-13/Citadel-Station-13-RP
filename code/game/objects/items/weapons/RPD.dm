@@ -30,7 +30,7 @@
 	var/static/datum/pipe_recipe/first_atmos
 	var/static/datum/pipe_recipe/first_disposal
 
-/obj/item/pipe_dispenser/New()
+/obj/item/pipe_dispenser/Initialize(mapload)
 	. = ..()
 	src.spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)

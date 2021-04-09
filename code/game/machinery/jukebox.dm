@@ -69,7 +69,7 @@
 	return ..()
 
 // On initialization, copy our tracks from the global list
-/obj/machinery/media/jukebox/Initialize()
+/obj/machinery/media/jukebox/Initialize(mapload)
 	. = ..()
 	wires = new/datum/wires/jukebox(src)
 	update_icon()

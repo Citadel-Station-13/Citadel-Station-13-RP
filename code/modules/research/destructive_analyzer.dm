@@ -17,8 +17,8 @@ Note: Must be placed within 3 tiles of the R&D Console
 	active_power_usage = 2500
 	var/rped_recycler_ready = TRUE
 
-/obj/machinery/r_n_d/destructive_analyzer/New()
-	..()
+/obj/machinery/r_n_d/destructive_analyzer/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stock_parts/manipulator(src)

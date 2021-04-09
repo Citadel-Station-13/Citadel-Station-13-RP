@@ -20,7 +20,7 @@
 	var/detail_color = COLOR_ASSEMBLY_BLACK
 
 
-/obj/item/electronic_assembly/Initialize()
+/obj/item/electronic_assembly/Initialize(mapload)
 	battery = new(src)
 	START_PROCESSING(SSobj, src)
 	return ..()

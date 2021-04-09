@@ -1,6 +1,7 @@
 // Be sure to update planetary_vr.dm and atmosphers.dm when switching to this map.
 /turf/simulated/open/triumph
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
+
 /turf/simulated/open/triumph/Initialize(mapload)
 	. = ..()
 	if(outdoors)
@@ -34,7 +35,7 @@
 	initial_gas_mix = GAS_STRING_VACUUM
 
 	//This proc is responsible for ore generation on surface turfs
-/turf/simulated/mineral/triumph/make_ore(var/rare_ore)
+/turf/simulated/mineral/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
@@ -63,12 +64,12 @@
 			"silver" = 3,
 			"phoron" = 25,
 			"lead" = 1))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
-		UpdateMineral()
-	update_icon()
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
+		if(flags & INITIALIZED)
+			UpdateMineral()
 
-/turf/simulated/mineral/triumph/rich/make_ore(var/rare_ore)
+/turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
@@ -96,10 +97,10 @@
 			"silver" = 7,
 			"lead" = 4,
 			"verdantium" = 1))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
-		UpdateMineral()
-	update_icon()
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
+		if(flags & INITIALIZED)
+			UpdateMineral()
 
 //Unsimulated
 /turf/unsimulated/wall/planetary/triumph
@@ -154,8 +155,8 @@
 	name = "bluespace"
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
-/turf/space/bluespace/Initialize()
-	..()
+/turf/space/bluespace/Initialize(mapload)
+	. = ..()
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
 
@@ -164,8 +165,8 @@
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
-/turf/space/sandyscroll/Initialize()
-	..()
+/turf/space/sandyscroll/Initialize(mapload)
+	. = ..()
 	icon_state = "desert_ns"
 
 //Sky stuff!
@@ -173,7 +174,7 @@
 /turf/simulated/sky/triumph
 	color = "#FFBBBB"
 
-/turf/simulated/sky/triumph/Initialize()
+/turf/simulated/sky/triumph/Initialize(mapload)
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

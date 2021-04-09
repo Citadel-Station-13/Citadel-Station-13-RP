@@ -13,8 +13,6 @@
 	Look at radio.dm for the prequel to this code.
 */
 
-var/global/list/obj/machinery/telecomms/telecomms_list = list()
-
 /obj/machinery/telecomms
 	var/list/links = list() // list of machines this machine is linked to
 	var/traffic = 0 // value increases as traffic increases
@@ -109,31 +107,30 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	else
 		return 0
 
-
-/obj/machinery/telecomms/New()
-	telecomms_list += src
-	..()
+/obj/machinery/telecomms/Initialize(mapload)
+	. = ..()
+	GLOB.telecomms_list += src
 
 	//Set the listening_level if there's none.
 	if(!listening_level)
 		//Defaults to our Z level!
 		var/turf/position = get_turf(src)
 		listening_level = position.z
+	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/telecomms/Initialize()
+/obj/machinery/telecomms/LateInitialize()
 	if(autolinkers.len)
 		// Links nearby machines
 		if(!long_range_link)
 			for(var/obj/machinery/telecomms/T in orange(20, src))
 				add_link(T)
 		else
-			for(var/obj/machinery/telecomms/T in telecomms_list)
+			for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 				add_link(T)
-	. = ..()
 
 /obj/machinery/telecomms/Destroy()
-	telecomms_list -= src
-	for(var/obj/machinery/telecomms/comm in telecomms_list)
+	GLOB.telecomms_list -= src
+	for(var/obj/machinery/telecomms/comm in GLOB.telecomms_list)
 		comm.links -= src
 	links = list()
 	..()
@@ -256,7 +253,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	produces_heat = 0
 	circuit = /obj/item/circuitboard/telecomms/receiver
 
-/obj/machinery/telecomms/receiver/Initialize()
+/obj/machinery/telecomms/receiver/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
@@ -325,7 +322,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	netspeed = 40
 	var/list/telecomms_map
 
-/obj/machinery/telecomms/hub/Initialize()
+/obj/machinery/telecomms/hub/Initialize(mapload)
 	. = ..()
 	LAZYINITLIST(telecomms_map)
 	component_parts = list()
@@ -386,7 +383,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	var/broadcasting = 1
 	var/receiving = 1
 
-/obj/machinery/telecomms/relay/Initialize()
+/obj/machinery/telecomms/relay/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
@@ -449,7 +446,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	netspeed = 40
 	var/change_frequency = 0
 
-/obj/machinery/telecomms/bus/Initialize()
+/obj/machinery/telecomms/bus/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
@@ -510,7 +507,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	circuit = /obj/item/circuitboard/telecomms/processor
 	var/process_mode = 1 // 1 = Uncompress Signals, 0 = Compress Signals
 
-/obj/machinery/telecomms/processor/Initialize()
+/obj/machinery/telecomms/processor/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
@@ -575,11 +572,11 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 	var/language = "human"
 	var/obj/item/radio/headset/server_radio = null
 
-/obj/machinery/telecomms/server/New()
-	..()
+/obj/machinery/telecomms/server/Initialize(mapload)
+	. = ..()
 	server_radio = new()
 
-/obj/machinery/telecomms/server/Initialize()
+/obj/machinery/telecomms/server/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/sub_filter(src)
@@ -734,7 +731,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 	//Let's look at hubs and see what we got.
 	var/can_comm = FALSE
-	for(var/obj/machinery/telecomms/hub/H in telecomms_list)
+	for(var/obj/machinery/telecomms/hub/H in GLOB.telecomms_list)
 		if((src_z in H.telecomms_map) && (dst_z in H.telecomms_map))
 			can_comm = TRUE
 			break

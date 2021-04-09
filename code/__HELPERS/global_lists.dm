@@ -4,7 +4,6 @@ var/list/admins = list()							//list of all clients whom are admins
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
 var/global/list/player_list = list()				//List of all mobs **with clients attached**. Excludes /mob/new_player
-var/global/list/mob_list = list()					//List of all mobs, including clientless
 var/global/list/human_mob_list = list()				//List of all human mobs and sub-types, including clientless
 var/global/list/silicon_mob_list = list()			//List of all silicon mobs, including clientless
 var/global/list/ai_list = list()					//List of all AIs, including clientless
@@ -13,15 +12,12 @@ var/global/list/dead_mob_list = list()				//List of all dead mobs, including cli
 var/global/list/listening_objects = list()			//List of all objects which care about receiving messages (communicators, radios, etc)
 
 var/global/list/cable_list = list()					//Index for all cables, so that powernets don't have to look through the entire world all the time
-var/global/list/landmarks_list = list()				//list of all landmarks created
 var/global/list/side_effects = list()				//list of all medical sideeffects types by thier names |BS12
 var/global/list/mechas_list = list()				//list of all mechs. Used by hostile mobs target tracking.
 var/global/list/joblist = list()					//list of all jobstypes, minus borg and AI
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
 #define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")
-
-var/list/mannequins_
 
 // Times that players are allowed to respawn ("ckey" = world.time)
 GLOBAL_LIST_EMPTY(respawn_timers)
@@ -97,13 +93,14 @@ var/global/list/string_slot_flags = list(
 	"holster" = SLOT_HOLSTER
 )
 
-/proc/get_mannequin(var/ckey)
-	if(!mannequins_)
-		mannequins_ = new()
- 	. = mannequins_[ckey]
-	if(!.)
-		. = new/mob/living/carbon/human/dummy/mannequin()
-		mannequins_[ckey] = .
+// To be replaced by tg rendering soon
+GLOBAL_LIST_EMPTY(mannequins)
+/proc/get_mannequin(var/ckey = "NULL")
+	var/mob/living/carbon/human/dummy/mannequin/M = GLOB.mannequins[ckey]
+	if(!istype(M))
+		GLOB.mannequins[ckey] = new /mob/living/carbon/human/dummy/mannequin(null)
+		M = GLOB.mannequins[ckey]
+	return M
 
 //////////////////////////
 /////Initial Building/////

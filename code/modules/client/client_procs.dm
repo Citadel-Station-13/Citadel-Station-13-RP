@@ -1,3 +1,4 @@
+
 	////////////
 	//SECURITY//
 	////////////
@@ -76,6 +77,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
+	// Tgui Topic middleware.
+	if(tgui_Topic(href_list))
+		return
 
 	//Logs all hrefs, except chat pings
 	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
@@ -88,10 +92,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return
 	if (href_list["asset_cache_preload_data"])
 		asset_cache_preload_data(href_list["asset_cache_preload_data"])
-		return
-
-	// Tgui Topic middleware.
-	if(tgui_Topic(href_list))
 		return
 
 	//Admin PM
@@ -215,10 +215,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		world.SetConfig("APP/admin", ckey, null)
 	//END CITADEL EDIT
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
-	prefs = preferences_datums[ckey]
+	prefs = GLOB.preferences_datums[ckey]
 	if(!prefs)
 		prefs = new /datum/preferences(src)
-		preferences_datums[ckey] = prefs
+		GLOB.preferences_datums[ckey] = prefs
 
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
@@ -259,6 +259,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 	*/
+
+	if(log_client_to_db() == "BUNKER_DROPPED")
+		return FALSE
 
 	. = ..()	//calls mob.Login()
 
@@ -352,8 +355,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>")
 		to_chat(src, "<span class='alert'>[custom_event_msg]</span>")
 		to_chat(src, "<br>")
-
-	log_client_to_db()
 
 	send_resources()
 
@@ -508,8 +509,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
 			to_chat(src, config_legacy.panic_bunker_message)
-			qdel(src)
-			return 0
+			return "BUNKER_DROPPED"
 	if(player_age == -1)
 		player_age = 0		//math requires this to not be -1.
 

@@ -2,7 +2,7 @@
 
 
 //allows right clicking mobs to send an admin PM to their client, forwards the selected mob's client to cmd_admin_pm
-/client/proc/cmd_admin_pm_context(mob/M in mob_list)
+/client/proc/cmd_admin_pm_context(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Admin PM Mob"
 	if(!holder)
@@ -136,6 +136,9 @@
 			return
 
 	var/rawmsg = msg
+
+	if(holder)
+		msg = emoji_parse(msg)
 
 	var/keywordparsedmsg = keywords_lookup(msg)
 

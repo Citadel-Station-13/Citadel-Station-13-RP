@@ -47,3 +47,11 @@
 	ghostize()
 	qdel(src)
 	return
+
+//Lavaland Shades
+/mob/living/simple_mob/construct/shade/surt
+	name = "Lingering Shade"
+	real_name = "Lingering Shade"
+	desc = "This spirit was bound to this planet ages ago. Its masters have long since passed, and the war it served in has been forgotten. The energies binding it remain."
+
+	heat_resist = 1
