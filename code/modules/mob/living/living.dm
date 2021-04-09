@@ -786,7 +786,8 @@ default behaviour is:
 	set name = "Rest"
 	set category = "IC"
 
-	if (!src.resting)
+	var/randn = rand(1, 100)
+	if (!src.resting && randn <= 50) // simple rng-based easy antispam where the sound occurs only once every 10 or so rests
 		var/dropsound = list('sound/effects/bodyfall1.ogg','sound/effects/bodyfall2.ogg','sound/effects/bodyfall3.ogg','sound/effects/bodyfall4.ogg')
 		playsound(loc, pick(dropsound), 50, 1)
 	resting = !resting
