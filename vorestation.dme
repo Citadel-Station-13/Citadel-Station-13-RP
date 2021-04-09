@@ -3480,7 +3480,6 @@
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
 #include "maps\penumbra\penumbra.dm"
-#include "maps\nsv_triumph\triumph.dm"
 #include "maps\submaps\_healpers.dm"
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\engine_submaps\engine.dm"
