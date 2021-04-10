@@ -22,7 +22,8 @@
 		/obj/item/tank,
 		/obj/item/circuitboard,
 		/obj/item/smes_coil,
-		/obj/item/fuelrod/
+		/obj/item/fuelrod/,
+		/obj/item/fuel_assembly/
 		)
 
 	var/obj/item/wrapped = null // Item currently being held.

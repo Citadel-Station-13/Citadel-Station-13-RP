@@ -189,7 +189,7 @@
 		if(do_after(user,40 * W.toolspeed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You removed the support struts!</span>")
-			reinf_material.place_dismantled_product(get_turf(src))
+			reinf_material.place_dismantled_product(get_turf(src), 2)
 			reinf_material = null
 			reset_girder()
 
@@ -289,7 +289,7 @@
 	reinforcing = 0
 
 /obj/structure/girder/proc/dismantle()
-	girder_material.place_dismantled_product(get_turf(src))
+	girder_material.place_dismantled_product(get_turf(src), 2)
 	qdel(src)
 
 /obj/structure/girder/attack_hand(mob/user as mob)
