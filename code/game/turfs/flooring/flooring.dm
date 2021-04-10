@@ -44,6 +44,13 @@ var/list/flooring_types
 	var/can_paint
 	var/list/footstep_sounds = list() // key=species name, value = list of soundss
 
+/decl/flooring/proc/drop_product(atom/A)
+	if(ispath(build_type, /obj/item/stack))
+		new build_type(A, build_cost)
+	else
+		for(var/i in 1 to min(build_cost, 50))
+			new build_type(A)
+
 /decl/flooring/grass
 	name = "grass"
 	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
