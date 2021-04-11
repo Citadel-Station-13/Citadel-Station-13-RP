@@ -202,10 +202,11 @@
 	for(var/mob/C in view(range, src)) // get all mobs in the range from us we specified
 		victims += C
 	var/hsbitem = input(usr, "Choose a mob type to clear.", "Delete ALL of this type:") as null|anything in typesof(victims, /mob)
-	var/warning = alert(usr, "Are you ABSOLUTELY CERTAIN you wish to delete ALL  [hsbitem]'s  in  [range]  tiles?", "Warning", "Yes", "Cancel") // safety
+	var/friendlyname = type2top(hsbitem)
+	var/warning = alert(usr, "Are you ABSOLUTELY CERTAIN you wish to delete EVERY [friendlyname] in [range] tiles?", "Warning", "Yes", "Cancel") // safety
 	if (warning == "Yes")
 		if(hsbitem)
-			for(var/atom/O in view(range, src))
+			for(var/mob/O in view(range, src))
 				if(istype(O, hsbitem))
 					qdel(O)
 			log_admin("[key_name(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.")
