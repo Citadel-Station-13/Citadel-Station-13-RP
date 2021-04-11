@@ -1,3 +1,5 @@
+#define FORCE_MAP "_maps/tether.json"
+
 #if !defined(USING_MAP_DATUM)
 
 	#include "tether_defines.dm"
@@ -5,7 +7,6 @@
 	#include "tether_things.dm"
 	#include "tether_phoronlock.dm"
 	#include "tether_areas.dm"
-	#include "tether_areas2.dm"
 	#include "tether_shuttle_defs.dm"
 	#include "tether_shuttles.dm"
 	#include "tether_telecomms.dm"
@@ -23,7 +24,7 @@
 		#include "tether-10-colony.dmm"
 	#endif
 
-	#include "submaps/_tether_submaps.dm"
+//	#include "submaps/_tether_submaps.dm"
 
 	#define USING_MAP_DATUM /datum/map/tether
 

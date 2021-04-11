@@ -7,6 +7,7 @@
 
 //Triumph specific Areas
 
+
 /area/triumph/surfacebase
 	icon = 'icons/turf/areas.dmi'
 /area/triumph/surfacebase/outside
@@ -350,8 +351,11 @@
 /area/piratebase/facility
 	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+	requires_power = FALSE
 
-
+////////////////////////////////////
+//// END TRIUMPH SPECIFIC AREAS ////
+////////////////////////////////////
 
 // Mining Underdark
 

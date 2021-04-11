@@ -5,6 +5,7 @@ var/global/list/map_sectors = list()
 	name = "System Map"
 	icon_state = "start"
 	requires_power = 0
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	base_turf = /turf/unsimulated/map
 
 /turf/unsimulated/map

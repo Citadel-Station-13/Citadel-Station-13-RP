@@ -1276,12 +1276,18 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "bridge"
 	music = "signal"
 
-/area/bridge_hallway
+/area/bridge/bridge_hallway
 	name = "Bridge Hallway"
 	icon_state = "bridge"
 
 /area/bridge/meeting_room
 	name = "Heads of Staff Meeting Room"
+	icon_state = "bridge"
+	music = null
+	sound_env = MEDIUM_SOFTFLOOR
+
+/area/bridge/office
+	name = "Official On-Site Office"
 	icon_state = "bridge"
 	music = null
 	sound_env = MEDIUM_SOFTFLOOR
@@ -2054,6 +2060,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Robotics Lab"
 	icon_state = "robotics"
 
+/area/assembly/robotics/surgery
+	name = "\improper Robotics Surgery"
+	icon_state = "surgery"
+
 /area/assembly/assembly_line //Derelict Assembly Line
 	name = "\improper Assembly Line"
 	icon_state = "ass_line"
@@ -2132,10 +2142,20 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Psych Room"
 	icon_state = "medbay3"
 
+/area/medical/psych/psych_1
+	name = "\improper Psych Room 1"
+
+/area/medical/psych/psych_2
+	name = "\improper Psych Room 2"
+
 /area/crew_quarters/medbreak
 	name = "\improper Break Room"
 	icon_state = "medbay3"
 	music = 'sound/ambience/signal.ogg'
+
+/area/crew_quarters/medbreak/surgery
+	name = "\improper Surgeon Break Room"
+	icon_state = "medbay2"
 
 /area/crew_quarters/medical_restroom
 	name = "\improper Medbay Restroom"
@@ -2219,6 +2239,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Operation Observation Room"
 	icon_state = "surgery"
 
+/area/medical/genetics
+	name = "\improper Genetics Lab"
+	icon_state = "genetics"
 /area/medical/surgeryprep
 	name = "\improper Pre-Op Prep Room"
 	icon_state = "surgery"
@@ -2239,9 +2262,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Exam Room"
 	icon_state = "exam_room"
 
-/area/medical/genetics
-	name = "\improper Genetics Lab"
-	icon_state = "genetics"
+/area/medical/exam_room/exam_1
+	name = "\improper Exam Room 1"
+
+/area/medical/exam_room/exam_2
+	name = "\improper Exam Room 2"
 
 /area/medical/genetics_cloning
 	name = "\improper Cloning Lab"
@@ -3406,6 +3431,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "dk_yellow"
 /area/triumph/station/stairs_three
 	name = "\improper Station Stairwell Third Floor"
+	icon_state = "dk_yellow"
+
+/area/triumph/station/stairs_four
+	name = "\improper Station Stairwell Fourth Floor"
 	icon_state = "dk_yellow"
 /area/triumph/station/dock_one
 	name = "\improper Dock One"
