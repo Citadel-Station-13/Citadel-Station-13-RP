@@ -181,7 +181,7 @@
 
 	// to prevent REALLY stupid deletions
 	var/blocked = list(/obj, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/human, /mob/observer/dead, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
-	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in typesof(/obj) + typesof(/mob) - blocked
+	var/hsbitem = input(usr, "Choose an object to delete. Dear GOD don't do this on live.", "Delete:") as null|anything in typesof(/obj) + typesof(/mob) - blocked
 	if(hsbitem)
 		for(var/atom/O in world)
 			if(istype(O, hsbitem))
@@ -189,6 +189,29 @@
 		log_admin("[key_name(src)] has deleted all instances of [hsbitem].")
 		message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem].", 0)
 	feedback_add_details("admin_verb","DELA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_clear_mobs()
+	set category = "Admin"
+	set name = "Clear Mobs"
+
+	var/range = input(usr, "Choose a range in tiles FROM your location", "If uncertain, enter 25 or below.") as num
+	if(range >= 50) // ridiculously high
+		alert("Please enter a valid range below 50.")
+		return
+	var/list/victims = list()
+	for(var/mob/C in view(range, src)) // get all mobs in the range from us we specified
+		victims += C
+	var/hsbitem = input(usr, "Choose a mob type to clear.", "Delete ALL of this type:") as null|anything in typesof(victims, /mob)
+	var/warning = alert(usr, "Are you ABSOLUTELY CERTAIN you wish to delete ALL  [hsbitem]'s  in  [range]  tiles?", "Warning", "Yes", "Cancel") // safety
+	if (warning == "Yes")
+		if(hsbitem)
+			for(var/atom/O in view(range, src))
+				if(istype(O, hsbitem))
+					qdel(O)
+			log_admin("[key_name(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.")
+			message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.", 0)
+	feedback_add_details("admin_verb","CLRM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
