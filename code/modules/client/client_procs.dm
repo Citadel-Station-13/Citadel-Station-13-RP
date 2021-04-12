@@ -155,13 +155,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
 		return null
 
-	if(!config_legacy.guests_allowed && IsGuestKey(key))
-		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
-		del(src)
-		return
-
-	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
-
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
@@ -260,10 +253,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.player_details[ckey] = player_details
 	*/
 
-	if(log_client_to_db() == "BUNKER_DROPPED")
-		return FALSE
-
 	. = ..()	//calls mob.Login()
+
+	// Initialize tgui panel
+	tgui_panel.initialize()
+	// src << browse(file('html/statbrowser.html'), "window=statbrowser")
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
@@ -283,13 +277,19 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				qdel(src)
 				return
 
+	if(!config_legacy.guests_allowed && IsGuestKey(key))
+		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
+		qdel(src)
+		return
+
+	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
+
+	if(log_client_to_db() == "BUNKER_DROPPED")
+		return FALSE
+
 	if(SSinput.subsystem_initialized)
 		set_macros()
 		update_movement_keys()
-
-	// Initialize tgui panel
-	tgui_panel.initialize()
-	// src << browse(file('html/statbrowser.html'), "window=statbrowser")
 
 	//if(alert_mob_dupe_login)
 	//	spawn()
