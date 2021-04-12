@@ -49,7 +49,7 @@ mob/living/carbon/human/proc/handle_pain()
 		var/msg
 		if(painmsg)
 			switch(maxdam)
-				if(1 to 10) // don't spam a vampires 'victims' with injury messages
+				if(1 to 10)
 					msg =  "<font size=3>Your [damaged_organ.name] [burning ? "burns" : "hurts"].</font>"
 				if(11 to 90)
 					flash_weak_pain()
@@ -57,12 +57,12 @@ mob/living/carbon/human/proc/handle_pain()
 				if(91 to 10000)
 					flash_pain()
 					msg = "<font size=5>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
-		custom_pain(msg, maxdam, prob(50)) // keep this uniform with the other pain values. tox is 2, so this should be 2 for less spam.
+		custom_pain(msg, maxdam, prob(50)) // keep this uniform with the other pain values
 
 	// Damage to internal organs hurts a lot.
 	for(var/obj/item/organ/I in internal_organs)
 		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOT) continue
-		if(I.damage > 2) if(prob(2) && painmsg)
+		if(I.damage > 2) if(prob(50) && painmsg)
 			var/obj/item/organ/external/parent = get_organ(I.parent_organ)
 			src.custom_pain("You feel a sharp pain in your [parent.name]", 50)
 
