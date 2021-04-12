@@ -79,6 +79,7 @@
 	if(world.TgsAvailable())
 		var/datum/tgs_version/version = world.TgsVersion()
 		msg += "Server tools version: [version.raw_parameter]"
+	msg += "\n<b>Connection closed? This community requires registration to enter. </b>\nVisit the #rp-access-requests channel of our Discord to gain access.\n https://discord.gg/E6SQuhz \n"
 
 /*
 	// Game mode odds
