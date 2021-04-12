@@ -50,13 +50,13 @@ mob/living/carbon/human/proc/handle_pain()
 		if(painmsg)
 			switch(maxdam)
 				if(1 to 10) // don't spam a vampires 'victims' with injury messages
-					msg =  "Your [damaged_organ.name] [burning ? "burns" : "hurts"]."
+					msg =  "<font size=3>Your [damaged_organ.name] [burning ? "burns" : "hurts"].</font>"
 				if(11 to 90)
 					flash_weak_pain()
-					msg = "<font size=2>Your [damaged_organ.name] [burning ? "burns" : "hurts"] badly!</font>"
+					msg = "<font size=4>Your [damaged_organ.name] [burning ? "burns" : "hurts"] badly!</font>"
 				if(91 to 10000)
 					flash_pain()
-					msg = "<font size=3>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
+					msg = "<font size=5>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
 		custom_pain(msg, maxdam, prob(50)) // keep this uniform with the other pain values. tox is 2, so this should be 2 for less spam.
 
 	// Damage to internal organs hurts a lot.
