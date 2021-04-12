@@ -1,0 +1,5 @@
+author: "FreeStylaLT"
+delete-after: True
+changes: 
+  - rscadd: "Messages when examining things."
+  - rscadd: "Preference to not see messages when examining things."
