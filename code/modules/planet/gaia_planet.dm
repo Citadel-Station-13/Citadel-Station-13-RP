@@ -7,7 +7,7 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 	name = "Gaia Class world"
 	desc = "A beautiful lush planet that is owned by the Happy Days and Sunshine Corporation."
 	current_time = new /datum/time/gaia_planet()
-	expected_z_levels = list(13) // Debug testing.
+	expected_z_levels = list(14) // Debug testing.
 
 /datum/planet/gaia_planet/New()
 	..()

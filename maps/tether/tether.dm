@@ -1,3 +1,5 @@
+#define FORCE_MAP "_maps/tether.json"
+
 #if !defined(USING_MAP_DATUM)
 
 	#include "tether_defines.dm"

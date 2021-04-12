@@ -503,6 +503,7 @@
 
 // Procs for micros stuffed into boots and the like to escape from them
 /mob/living/proc/escape_clothes(obj/item/clothing/C)
+	set waitfor = FALSE
 	ASSERT(loc == C)
 
 	if(ishuman(C.loc)) //In a /mob/living/carbon/human

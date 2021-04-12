@@ -8,12 +8,6 @@
 	color = "#4e4e4e"	// Bright yellow
 	initial_generic_waypoints = list("poid_main")
 */
-// POI Init
-/obj/away_mission_init/mining_planet
-	name = "away mission initializer -  Mining Planet"
-
-/obj/away_mission_init/mining_planet/Initialize(mapload)
-	return INITIALIZE_HINT_QDEL
 
 // This is a special subtype of the thing that generates ores on a map
 // It will generate more rich ores because of the lower numbers than the normal one

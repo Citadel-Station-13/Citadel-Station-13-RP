@@ -201,7 +201,7 @@
 	..()
 
 /obj/structure/bed/chair/wood/Initialize(mapload, material_key)
-	..(mapload, "wood")
+	return ..(mapload, "wood")
 
 /obj/structure/bed/chair/wood/wings
 	icon_state = "wooden_chair_wings"

@@ -158,5 +158,5 @@
 		)
 
 /obj/item/gun/energy/xray/swarm/Initialize(mapload)
-	..()
+	. = ..()
 	adjust_scale(-1, 1)

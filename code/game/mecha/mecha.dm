@@ -296,6 +296,7 @@
 	radio.subspace_transmission = 1
 
 /obj/mecha/proc/add_iterators()
+	set waitfor = FALSE
 	pr_int_temp_processor = new /datum/global_iterator/mecha_preserve_temp(list(src))
 	pr_inertial_movement = new /datum/global_iterator/mecha_intertial_movement(null,0)
 	pr_give_air = new /datum/global_iterator/mecha_tank_give_air(list(src))
