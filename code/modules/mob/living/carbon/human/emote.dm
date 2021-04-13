@@ -225,7 +225,9 @@
 			m_type = 1
 
 		if ("chuckle")
-			emote("laugh")
+			var/list/laughs = list("lets out a chuckle.", "laughs.", "chuckles.", "cracks up.", "erupts into laughter.", "cackles.")
+			message = "[pick(laughs)]"
+			m_type = 1
 
 		if ("twitch")
 			message = "twitches."
