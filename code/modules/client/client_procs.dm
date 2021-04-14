@@ -285,6 +285,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
 
 	if(log_client_to_db() == "BUNKER_DROPPED")
+		qdel(src)
 		return FALSE
 
 	if(SSinput.subsystem_initialized)
