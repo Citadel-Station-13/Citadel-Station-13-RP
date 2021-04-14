@@ -19,6 +19,7 @@
 	var/can_defib = 1					//Horrible damage (like beheadings) will prevent defibbing organics.
 	var/active_regen = FALSE //Used for the regenerate proc in human_powers.dm
 	var/active_regen_delay = 300
+	var/spam_flag = FALSE	//throws byond:tm: errors if placed in human/emote, but not here
 
 /mob/living/carbon/human/Initialize(mapload, var/new_species = null)
 	if(!dna)

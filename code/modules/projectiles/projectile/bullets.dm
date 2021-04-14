@@ -1,7 +1,7 @@
 /obj/item/projectile/bullet
 	name = "bullet"
 	icon_state = "bullet"
-	fire_sound = 'sound/weapons/Gunshot4.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_rifleshot.ogg'
 	damage = 60
 	damage_type = BRUTE
 	nodamage = 0
@@ -65,7 +65,7 @@
 /* short-casing projectiles, like the kind used in pistols or SMGs */
 
 /obj/item/projectile/bullet/pistol // 9mm pistols and most SMGs. Sacrifice power for capacity.
-	fire_sound = 'sound/weapons/gunshot2.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_smallpistolshot.ogg'
 	damage = 20
 
 /obj/item/projectile/bullet/pistol/ap
@@ -90,7 +90,7 @@
 	holy = TRUE
 
 /obj/item/projectile/bullet/pistol/medium // .45 (and maybe .40 if it ever gets added) caliber security pistols. Balance between capacity and power.
-	fire_sound = 'sound/weapons/gunshot3.ogg' // Snappier sound.
+	fire_sound = 'sound/weapons/weaponsounds_pistolshot.ogg' // Snappier sound.
 	damage = 25
 
 /obj/item/projectile/bullet/pistol/medium/ap
@@ -128,11 +128,11 @@
 	speed = 0.2 // this is 4x projectile speed
 
 /obj/item/projectile/bullet/pistol/strong // .357 and .44 caliber stuff. High power pistols like the Mateba or Desert Eagle. Sacrifice capacity for power.
-	fire_sound = 'sound/weapons/gunshot4.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
 	damage = 60
 
 /obj/item/projectile/bullet/pistol/strong/silver //Because all Demons need to die
-	fire_sound = 'sound/weapons/gunshot4.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg'
 	damage = 40
 	SA_bonus_damage = 80 // 120 total against demons
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
@@ -140,7 +140,7 @@
 	holy = TRUE
 
 /obj/item/projectile/bullet/pistol/rubber/strong // "Rubber" bullets for high power pistols.
-	fire_sound = 'sound/weapons/gunshot3.ogg' // Rubber shots have less powder, but these still have more punch than normal rubber shot.
+	fire_sound = 'sound/weapons/weaponsounds_heavypistolshot.ogg' // Rubber shots have less powder, but these still have more punch than normal rubber shot.
 	damage = 10
 	agony = 60
 	embed_chance = 0
@@ -154,10 +154,10 @@
 	embed_chance = 0
 	sharp = 0
 	check_armour = "melee"
-	fire_sound ='sound/weapons/Gunshot_pathetic.ogg' // Rubber shots have less powder in the casing.
+	fire_sound ='sound/weapons/weaponsounds_smallpistolshot.ogg' // It may be rubber shots but it's still a gun homie it shouldn't be as pathetic as it was
 
 /obj/item/projectile/bullet/pistol/spin // Special weak ammo for Service Spin mode.
-	fire_sound = 'sound/weapons/gunshot2.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_smallpistolshot.ogg'
 	damage = 5
 	SA_bonus_damage = 10 // 15 total against demons
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
@@ -167,7 +167,7 @@
 
 /obj/item/projectile/bullet/shotgun
 	name = "slug"
-	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage = 50
 	armor_penetration = 15
 
@@ -183,7 +183,7 @@
 //Overall less damage than slugs in exchange for more damage at very close range and more embedding
 /obj/item/projectile/bullet/pellet/shotgun
 	name = "shrapnel"
-	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage = 13
 	pellets = 6
 	range_step = 1
@@ -198,7 +198,7 @@
 // This is my boomstick,
 /obj/item/projectile/bullet/pellet/shotgun/silver
 	name = "shrapnel"
-	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage = 10
 	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
 	SA_vulnerability = MOB_CLASS_DEMONIC | MOB_CLASS_ABERRATION
@@ -210,7 +210,7 @@
 
 /obj/item/projectile/bullet/shotgun/stake
 	name = "stake"
-	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	damage = 50
 	armor_penetration = 15
 	SA_bonus_damage = 16 // Potential 156 Damage against demons at point blank.
@@ -242,11 +242,11 @@
 	penetrating = 1
 
 /obj/item/projectile/bullet/rifle/a762
-	fire_sound = 'sound/weapons/Gunshot_heavy.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_heavyrifleshot.ogg'
 	damage = 35
 
 /obj/item/projectile/bullet/rifle/a762/sniper // Hitscan specifically for sniper ammo; to be implimented at a later date, probably for the SVD. -Ace
-	fire_sound = 'sound/weapons/Gunshot_sniper.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_heavyrifleshot.ogg'
 	hitscan = 1 //so the ammo isn't useless as a sniper weapon
 
 /obj/item/projectile/bullet/rifle/a762/ap
@@ -285,7 +285,7 @@
 	holy = TRUE
 
 /obj/item/projectile/bullet/rifle/a545
-	fire_sound = 'sound/weapons/Gunshot_light.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_rifleshot.ogg'
 	damage = 25
 
 /obj/item/projectile/bullet/rifle/a545/ap
@@ -399,7 +399,7 @@
 /obj/item/projectile/bullet/blank
 	name = "blank"
 	damage_type = HALLOSS
-	fire_sound = 'sound/weapons/Gunshot_generic_rifle.ogg' // Blanks still make loud noises.
+	fire_sound = 'sound/weapons/weaponsounds_rifleshot.ogg' // Blanks still make loud noises.
 	damage = 0
 	nodamage = 1
 	embed_chance = 0

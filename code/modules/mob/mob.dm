@@ -240,6 +240,14 @@
 		return
 
 	face_atom(A)
+	if(!isobserver(src) && !isturf(A) && A != src)
+		if(A.loc != src)
+			for(var/mob/M in viewers(4, src))
+				if(M == src || M.is_blind())
+					continue
+				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
+					to_chat(M, "<span class='tinynotice'><b>\The [src]</b> looks at \the [A].</span>")
+
 	var/list/result
 	if(client)
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
