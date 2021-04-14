@@ -310,9 +310,3 @@
 		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
 		return TRUE
 	return FALSE
-
-/**
-  * Returns if things have gravity on us
-  */
-/turf/has_gravity(turf/T)
-	return loc.has_gravity(src)
