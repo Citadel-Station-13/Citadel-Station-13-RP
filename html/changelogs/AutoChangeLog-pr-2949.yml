@@ -1,7 +1,0 @@
-author: "buffyuwu"
-delete-after: True
-changes: 
-  - bugfix: "unsquishes minitest (dev)"
-  - rscadd: "adds laugh sounds from main"
-  - rscadd: "adds a *nyaha emote separately"
-  - bugfix: "adds emote spam protection for commonly spammed emotes"
