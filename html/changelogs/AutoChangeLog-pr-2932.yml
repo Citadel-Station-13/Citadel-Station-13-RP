@@ -1,0 +1,9 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - spellcheck: "Fixed a typo in the squeakish desription."
+  - bugfix: "Pan-Slavic is no longer the language of a non existant fraction."
+  - code_imp: "Language Prefixes differate between upper and lower case"
+  - code_imp: "Language 'verbs' can be lists now."
+  - refactor: "Language Flags are bit shift style now."
+  - refactor: "Two language related _vr-files merged into their respective Parents."
