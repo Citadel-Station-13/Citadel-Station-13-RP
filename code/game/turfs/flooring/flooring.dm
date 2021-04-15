@@ -415,8 +415,8 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
 
-/decl/flooring/outdoors/beach/sand // thanks byond
-	name = "beach"
+/decl/flooring/outdoors/beach/sand/desert
+	name = "sand"
 	icon = 'icons/turf/outdoors.dmi'
 	icon_base = "sand"
 	footstep_sounds = list("human" = list(
@@ -424,4 +424,3 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
-
