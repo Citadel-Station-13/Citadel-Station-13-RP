@@ -543,11 +543,17 @@
 		light_max_range = 10
 		light_max_power = 10
 		alpha = 50
-	else if(plasma_temperature <= 4000) //orange
+	else if(plasma_temperature > 2000) //orange
 		light_color = "#cc7700"
 		light_max_range = 5
 		light_max_power = 5
-		alpha = 10
+		alpha = 40
+	else if(plasma_temperature > 1000)
+		alpha = 30
+	else if(plasma_temperature > 500)
+		alpha = 20
+	else if(plasma_temperature <= 500)
+		alpha = 15
 	return
 //moved the flare to a proc for various reasons. Called on line 225.
 /obj/effect/fusion_em_field/proc/emflare()
