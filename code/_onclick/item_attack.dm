@@ -49,7 +49,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 			return 1
 		else
 			return 0
-	if(attempt_vr(src,"vore_attackby",args)) return //VOREStation Add - The vore, of course.
+	if(attempt_vr(src,"vore_attackby",args))
+		return //VOREStation Add - The vore, of course.
 	return I.attack(src, user, user.zone_sel.selecting, attack_modifier)
 
 // Used to get how fast a mob should attack, and influences click delay.
@@ -98,7 +99,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	return 1
 
 //Called when a weapon is used to make a successful melee attack on a mob. Returns the blocked result
-/obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, var/attack_modifier)
+/obj/item/proc/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone, attack_modifier = 1)
 	user.break_cloak()
 	if(hitsound)
 		playsound(loc, hitsound, 50, 1, -1)

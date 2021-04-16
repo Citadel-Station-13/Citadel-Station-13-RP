@@ -438,12 +438,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
 
-/area/has_gravity()
-	return has_gravity
-
-/area/space/has_gravity()
-	return 0
-
 /area/proc/shuttle_arrived()
 	for(var/obj/machinery/telecomms/relay/R in contents)
 		R.reset_z()
