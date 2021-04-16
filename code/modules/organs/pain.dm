@@ -19,7 +19,7 @@ mob/living/carbon/proc/custom_pain(message, power, force)
 	if(force || (message != last_pain_message) || (world.time >= next_pain_time))
 		last_pain_message = message
 		to_chat(src, message)
-	next_pain_time = world.time + (100-power)
+	next_pain_time = world.time + (500 - power)
 
 mob/living/carbon/human/proc/handle_pain()
 	if(stat)
@@ -47,25 +47,26 @@ mob/living/carbon/human/proc/handle_pain()
 			drop_item()
 		var/burning = damaged_organ.burn_dam > damaged_organ.brute_dam
 		var/msg
-		switch(maxdam)
-			if(1 to 10)
-				msg =  "Your [damaged_organ.name] [burning ? "burns" : "hurts"]."
-			if(11 to 90)
-				flash_weak_pain()
-				msg = "<font size=2>Your [damaged_organ.name] [burning ? "burns" : "hurts"] badly!</font>"
-			if(91 to 10000)
-				flash_pain()
-				msg = "<font size=3>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
-		custom_pain(msg, maxdam, prob(10))
+		if(painmsg)
+			switch(maxdam)
+				if(1 to 10)
+					msg =  "<font size=3>Your [damaged_organ.name] [burning ? "burns" : "hurts"].</font>"
+				if(11 to 90)
+					flash_weak_pain()
+					msg = "<font size=4>Your [damaged_organ.name] [burning ? "burns" : "hurts"] badly!</font>"
+				if(91 to 10000)
+					flash_pain()
+					msg = "<font size=5>OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!</font>"
+		custom_pain(msg, maxdam, prob(50)) // keep this uniform with the other pain values
 
 	// Damage to internal organs hurts a lot.
 	for(var/obj/item/organ/I in internal_organs)
 		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOT) continue
-		if(I.damage > 2) if(prob(2))
+		if(I.damage > 2) if(prob(50) && painmsg)
 			var/obj/item/organ/external/parent = get_organ(I.parent_organ)
 			src.custom_pain("You feel a sharp pain in your [parent.name]", 50)
 
-	if(prob(2))
+	if(prob(50) && painmsg)
 		switch(getToxLoss())
 			if(1 to 10)
 				custom_pain("Your body stings slightly.", getToxLoss())
