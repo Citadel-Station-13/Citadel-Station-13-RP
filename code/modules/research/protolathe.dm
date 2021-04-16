@@ -19,7 +19,7 @@
 
 	hidden_materials = list(MAT_PLASTEEL, MAT_DURASTEEL, MAT_VERDANTIUM, MAT_MORPHIUM, MAT_METALHYDROGEN, MAT_SUPERMATTER)
 
-/obj/machinery/r_n_d/protolathe/Initialize()
+/obj/machinery/r_n_d/protolathe/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
@@ -30,7 +30,7 @@
 	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
 	RefreshParts()
 
-/obj/machinery/r_n_d/protolathe/process()
+/obj/machinery/r_n_d/protolathe/process(delta_time)
 	..()
 	if(stat)
 		update_icon()

@@ -16,13 +16,13 @@ var/global/list/narsie_list = list()
 	consume_range = 3 //How many tiles out do we eat
 
 
-/obj/singularity/narsie/New()
-	..()
+/obj/singularity/narsie/Initialize(mapload)
+	. = ..()
 	narsie_list.Add(src)
 
 /obj/singularity/narsie/Destroy()
 	narsie_list.Remove(src)
-	..()
+	return ..()
 
 /obj/singularity/narsie/large
 	name = "Nar-Sie"
@@ -40,11 +40,11 @@ var/global/list/narsie_list = list()
 	var/announce=1
 	var/cause_hell = 1
 
-/obj/singularity/narsie/large/New()
-	..()
+/obj/singularity/narsie/large/Initialize(mapload)
+	. = ..()
 	if(announce)
 		to_chat(world, "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
-		world << sound('sound/effects/weather/wind/wind_5_1.ogg')
+		SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
 	narsie_spawn_animation()
 
@@ -58,7 +58,7 @@ var/global/list/narsie_list = list()
 				SSemergencyshuttle.call_evac()
 				SSemergencyshuttle.launch_time = 0	// Cannot recall
 
-/obj/singularity/narsie/process()
+/obj/singularity/narsie/process(delta_time)
 	eat()
 
 	if (!target || prob(5))
@@ -101,7 +101,7 @@ var/global/list/narsie_list = list()
 	if(!move_self)
 		return 0
 
-	var/movement_dir = pick(alldirs - last_failed_movement)
+	var/movement_dir = pick(GLOB.alldirs - last_failed_movement)
 
 	if(force_move)
 		movement_dir = force_move
@@ -119,7 +119,7 @@ var/global/list/narsie_list = list()
 	if(!move_self)
 		return 0
 
-	var/movement_dir = pick(alldirs - last_failed_movement)
+	var/movement_dir = pick(GLOB.alldirs - last_failed_movement)
 
 	if(force_move)
 		movement_dir = force_move
@@ -335,7 +335,7 @@ var/global/list/narsie_list = list()
 	chained = 1
 	move_self = 0
 	icon_state ="narsie-chains"
-	for(var/mob/M in mob_list)//removing the client image of nar-sie while it is chained
+	for(var/mob/M in GLOB.mob_list)//removing the client image of nar-sie while it is chained
 		if(M.client)
 			M.see_narsie(src)
 

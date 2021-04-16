@@ -14,11 +14,10 @@
 	salvageable = 0
 	allow_duplicate = TRUE
 
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper/New()
-	..()
+/obj/item/mecha_parts/mecha_equipment/tool/sleeper/Initialize(mapload)
+	. = ..()
 	pr_mech_sleeper = new /datum/global_iterator/mech_sleeper(list(src),0)
 	pr_mech_sleeper.set_delay(equip_cooldown)
-	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/Destroy()
 	qdel(pr_mech_sleeper)
@@ -304,8 +303,8 @@
 		/datum/reagent/tungsten
 		)
 
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/New()
-	..()
+/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize(mapload)
+	. = ..()
 	flags |= NOREACT
 	syringes = new
 	known_reagents = list("inaprovaline"="Inaprovaline","anti_toxin"="Dylovene")
@@ -313,7 +312,7 @@
 	create_reagents(max_volume)
 	synth = new (list(src),0)
 
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize(mapload)
 	. = ..()
 	//Wow nice, firsties
 	if(LAZYLEN(allowed_reagents) && !istext(allowed_reagents[1]))
@@ -527,7 +526,7 @@
 	for(var/datum/reagent/R in A.reagents.reagent_list)
 		if(R.id in known_reagents)
 			occupant_message("Reagent \"[R.name]\" already present in database, skipping.")
-		else if(R.reagent_state == 2 && add_known_reagent(R.id,R.name))
+		else if(R.reagent_state == REAGENT_LIQUID && add_known_reagent(R.id,R.name))
 			occupant_message("Reagent analyzed, identified as [R.name] and added to database.")
 			send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
 		else
@@ -611,8 +610,8 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/Initialize()
-	..()
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/Initialize(mapload)
+	. = ..()
 	drone_overlay = new(src.icon, icon_state = droid_state)
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/Destroy()
@@ -637,7 +636,7 @@
 		to_chat(chassis.occupant, "<span class='notice'>\The [chassis] shudders as something jams!</span>")
 		log_message("[src.name] has malfunctioned. Maintenance required.")
 
-/obj/item/mecha_parts/mecha_equipment/crisis_drone/process()	// Will continually try to find the nearest person above the threshold that is a valid target, and try to heal them.
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/process(delta_time)	// Will continually try to find the nearest person above the threshold that is a valid target, and try to heal them.
 	if(chassis && enabled && chassis.has_charge(energy_drain) && (chassis.occupant || enable_special))
 		var/mob/living/Targ = Target
 		var/TargDamage = 0

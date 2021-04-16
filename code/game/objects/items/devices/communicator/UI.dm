@@ -1,7 +1,7 @@
-// Proc: ui_interact()
+// Proc: nano_ui_interact()
 // Parameters: 4 (standard NanoUI arguments)
 // Description: Uses a bunch of for loops to turn lists into lists of lists, so they can be displayed in nanoUI, then displays various buttons to the user.
-/obj/item/communicator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
+/obj/item/communicator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
 	// this is the data which will be sent to the ui
 	var/data[0]						//General nanoUI information
 	var/communicators[0]			//List of communicators
@@ -116,7 +116,9 @@
 	data["flashlight"] = fon
 	data["manifest"] = PDA_Manifest
 	data["feeds"] = compile_news()
-	//data["latest_news"] = get_recent_news()	//VOREStation Edit, bandaid for catastrophic runtime lag in helper.dm
+	data["latest_news"] = get_recent_news()
+	if(newsfeed_channel)
+		data["target_feed"] = data["feeds"][newsfeed_channel]
 	if(cartridge) // If there's a cartridge, we need to grab the information from it
 		data["cart_devices"] = cartridge.get_device_status()
 		data["cart_templates"] = cartridge.ui_templates
@@ -274,6 +276,9 @@
 	if(href_list["toggle_device"])
 		var/obj/O = cartridge.internal_devices[text2num(href_list["toggle_device"])]
 		cartridge.active_devices ^= list(O) // Exclusive or, will toggle its presence
+
+	if(href_list["newsfeed"])
+		newsfeed_channel = text2num(href_list["newsfeed"])
 
 	if(href_list["cartridge_topic"] && cartridge) // Has to have a cartridge to perform these functions
 		cartridge.Topic(href, href_list)

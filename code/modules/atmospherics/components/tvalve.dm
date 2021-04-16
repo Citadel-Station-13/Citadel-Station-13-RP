@@ -169,7 +169,7 @@
 	else
 		src.go_to_side()
 
-/obj/machinery/atmospherics/tvalve/process()
+/obj/machinery/atmospherics/tvalve/process(delta_time)
 	..()
 	. = PROCESS_KILL
 
@@ -232,7 +232,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/tvalve/return_network_air(datum/network/reference)
+/obj/machinery/atmospherics/tvalve/return_network_air(datum/pipe_network/reference)
 	return null
 
 /obj/machinery/atmospherics/tvalve/disconnect(obj/machinery/atmospherics/reference)
@@ -302,7 +302,7 @@
 
 
 
-/obj/machinery/atmospherics/tvalve/digital/Initialize()
+/obj/machinery/atmospherics/tvalve/digital/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)
@@ -351,10 +351,9 @@
 	if (istype(src, /obj/machinery/atmospherics/tvalve/digital) && !src.allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return 1
-	if(!can_unwrench())
-		to_chat(user, "<span class='warnng'>You cannot unwrench \the [src], it too exerted due to internal pressure.</span>")
-		add_fingerprint(user)
-		return 1
+	if(unsafe_pressure())
+		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+	add_fingerprint(user)
 	playsound(src, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 	if (do_after(user, 40 * W.toolspeed))

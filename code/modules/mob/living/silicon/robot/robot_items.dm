@@ -12,8 +12,8 @@
 
 	var/obj/item/loaded_item	//What is currently inside the analyzer.
 
-/obj/item/portable_destructive_analyzer/New()
-	..()
+/obj/item/portable_destructive_analyzer/Initialize(mapload)
+	. = ..()
 	files = new /datum/research/techonly(src) //Setup the research data holder.
 
 /obj/item/portable_destructive_analyzer/attack_self(user as mob)
@@ -130,8 +130,8 @@
 	var/dummy_card = null
 	var/dummy_card_type = /obj/item/card/id/science/roboticist/dummy_cyborg
 
-/obj/item/card/robot/Initialize()
-	..()
+/obj/item/card/robot/Initialize(mapload)
+	. = ..()
 	dummy_card = new dummy_card_type(src)
 
 /obj/item/card/robot/Destroy()
@@ -148,8 +148,8 @@
 /obj/item/card/id/science/roboticist/dummy_cyborg
 	access = list(access_robotics)
 
-/obj/item/card/id/syndicate/dummy_cyborg/Initialize()
-	..()
+/obj/item/card/id/syndicate/dummy_cyborg/Initialize(mapload)
+	. = ..()
 	access |= access_robotics
 
 //A harvest item for serviceborgs.
@@ -354,18 +354,18 @@
 	var/overload_time = 0			//Stores the time of overload
 	var/last_flash = 0				//Stores the time of last flash
 
-/obj/item/borg/combat/shield/New()
+/obj/item/borg/combat/shield/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	..()
 
 /obj/item/borg/combat/shield/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/borg/combat/shield/attack_self(var/mob/living/user)
 	set_shield_level()
 
-/obj/item/borg/combat/shield/process()
+/obj/item/borg/combat/shield/process(delta_time)
 	if(active)
 		if(flash_count && (last_flash + shield_refresh < world.time))
 			flash_count = 0
@@ -429,11 +429,10 @@
 	max_walls = 10
 	max_doors = 5
 
-/obj/item/inflatable_dispenser/examine(var/mob/user)
-	if(!..(user))
-		return
-	to_chat(user, "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored.")
-	to_chat(user, "It is set to deploy [mode ? "doors" : "walls"]")
+/obj/item/inflatable_dispenser/examine(mob/user)
+	. = ..()
+	. += "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored."
+	. += "It is set to deploy [mode ? "doors" : "walls"]"
 
 /obj/item/inflatable_dispenser/attack_self()
 	mode = !mode

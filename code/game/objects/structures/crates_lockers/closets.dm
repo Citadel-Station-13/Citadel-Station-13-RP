@@ -32,8 +32,8 @@
 
 	var/list/starts_with
 
-/obj/structure/closet/Initialize()
-	..()
+/obj/structure/closet/Initialize(mapload)
+	. = ..()
 	PopulateContents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
@@ -65,21 +65,22 @@
 	return
 
 /obj/structure/closet/examine(mob/user)
-	if(..(user, 1) && !opened)
+	. = ..()
+	if(!opened)
 		var/content_size = 0
 		for(var/obj/item/I in src.contents)
 			if(!I.anchored)
 				content_size += CEILING(I.w_class/2, 1)
 		if(!content_size)
-			to_chat(user, "It is empty.")
+			. += "It is empty."
 		else if(storage_capacity > content_size*4)
-			to_chat(user, "It is barely filled.")
+			. += "It is barely filled."
 		else if(storage_capacity > content_size*2)
-			to_chat(user, "It is less than half full.")
+			. += "It is less than half full."
 		else if(storage_capacity > content_size)
-			to_chat(user, "There is still some free space.")
+			. += "There is still some free space."
 		else
-			to_chat(user, "It is full.")
+			. += "It is full."
 
 /obj/structure/closet/CanAllowThrough(atom/movable/mover, turf/target)
 	if(wall_mounted)
@@ -416,8 +417,10 @@
 	return 1
 
 /obj/structure/closet/proc/mob_breakout(var/mob/living/escapee)
-
-	if(breakout || !req_breakout())
+	if(breakout)
+		return
+	if(!req_breakout() && !opened)
+		open()
 		return
 
 	escapee.setClickCooldown(100)

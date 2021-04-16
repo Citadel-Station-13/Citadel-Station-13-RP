@@ -24,8 +24,8 @@
 
 	var/list/mixing_inputs = list()
 
-/obj/machinery/atmospherics/omni/mixer/New()
-	..()
+/obj/machinery/atmospherics/omni/mixer/Initialize(mapload)
+	. = ..()
 	if(mapper_set())
 		var/con = 0
 		for(var/datum/omni_port/P in ports)
@@ -98,7 +98,7 @@
 
 	return 0
 
-/obj/machinery/atmospherics/omni/mixer/process()
+/obj/machinery/atmospherics/omni/mixer/process(delta_time)
 	if(!..())
 		return 0
 
@@ -124,7 +124,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/omni/mixer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/atmospherics/omni/mixer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	usr.set_machine(src)
 
 	var/list/data = new()

@@ -63,8 +63,8 @@
 
 	var/rank //pyro, operative, ammo, stealth. more to come. Do not leave blank.
 
-/mob/living/simple_mob/animal/space/mouse_army/New()
-	..()
+/mob/living/simple_mob/animal/space/mouse_army/Initialize(mapload)
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
@@ -91,7 +91,7 @@
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color='blue'>\icon[src] Squeek!</font>")
+			M.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] Squeek!</font>")
 			playsound(src, 'sound/effects/mouse_squeak.ogg', 35, 1)
 	..()
 

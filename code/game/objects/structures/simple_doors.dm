@@ -20,8 +20,8 @@
 	hardness -= material.combustion_effect(get_turf(src),temperature, 0.3)
 	CheckHardness()
 
-/obj/structure/simple_door/New(var/newloc, var/material_name)
-	..()
+/obj/structure/simple_door/Initialize(mapload, material_name)
+	. = ..(mapload)
 	if(!material_name)
 		material_name = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name(material_name)
@@ -194,43 +194,43 @@
 			CheckHardness()
 	return
 
-/obj/structure/simple_door/process()
+/obj/structure/simple_door/process(delta_time)
 	if(!material.radioactivity)
 		return
 	SSradiation.radiate(src, round(material.radioactivity/3))
 
-/obj/structure/simple_door/iron/New(var/newloc,var/material_name)
-	..(newloc, "iron")
+/obj/structure/simple_door/iron/Initialize(mapload, material_name)
+	return ..(mapload, "iron")
 
-/obj/structure/simple_door/silver/New(var/newloc,var/material_name)
-	..(newloc, "silver")
+/obj/structure/simple_door/silver/Initialize(mapload, material_name)
+	return ..(mapload, "silver")
 
-/obj/structure/simple_door/gold/New(var/newloc,var/material_name)
-	..(newloc, "gold")
+/obj/structure/simple_door/gold/Initialize(mapload, material_name)
+	return ..(mapload, "gold")
 
-/obj/structure/simple_door/uranium/New(var/newloc,var/material_name)
-	..(newloc, "uranium")
+/obj/structure/simple_door/uranium/Initialize(mapload, material_name)
+	return ..(mapload, "uranium")
 
-/obj/structure/simple_door/sandstone/New(var/newloc,var/material_name)
-	..(newloc, "sandstone")
+/obj/structure/simple_door/sandstone/Initialize(mapload, material_name)
+	return ..(mapload, "sandstone")
 
-/obj/structure/simple_door/phoron/New(var/newloc,var/material_name)
-	..(newloc, "phoron")
+/obj/structure/simple_door/phoron/Initialize(mapload, material_name)
+	return ..(mapload, "phoron")
 
-/obj/structure/simple_door/diamond/New(var/newloc,var/material_name)
-	..(newloc, "diamond")
+/obj/structure/simple_door/diamond/Initialize(mapload, material_name)
+	return ..(mapload, "diamond")
 
-/obj/structure/simple_door/wood/New(var/newloc,var/material_name)
-	..(newloc, MAT_WOOD)
+/obj/structure/simple_door/wood/Initialize(mapload, material_name)
+	return ..(mapload, MAT_WOOD)
 
-/obj/structure/simple_door/sifwood/New(var/newloc,var/material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/structure/simple_door/sifwood/Initialize(mapload, material_name)
+	return ..(mapload, MAT_SIFWOOD)
 
-/obj/structure/simple_door/resin/New(var/newloc,var/material_name)
-	..(newloc, "resin")
+/obj/structure/simple_door/resin/Initialize(mapload, material_name)
+	return ..(mapload, "resin")
 
-/obj/structure/simple_door/cult/New(var/newloc,var/material_name)
-	..(newloc, "cult")
+/obj/structure/simple_door/cult/Initialize(mapload, material_name)
+	return ..(mapload, "cult")
 
 /obj/structure/simple_door/cult/TryToSwitchState(atom/user)
 	if(isliving(user))

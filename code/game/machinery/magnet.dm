@@ -27,8 +27,8 @@
 	var/center_y = 0
 	var/max_dist = 20 // absolute value of center_x,y cannot exceed this integer
 
-/obj/machinery/magnetic_module/New()
-	..()
+/obj/machinery/magnetic_module/Initialize(mapload, newdir)
+	. = ..()
 	var/turf/T = loc
 	hide(!T.is_plating())
 	center = T
@@ -120,7 +120,7 @@
 					spawn()
 						magnetic_process()
 
-/obj/machinery/magnetic_module/process()
+/obj/machinery/magnetic_module/process(delta_time)
 	if(stat & NOPOWER)
 		on = 0
 
@@ -209,8 +209,8 @@
 	var/datum/radio_frequency/radio_connection
 
 
-/obj/machinery/magnetic_controller/New()
-	..()
+/obj/machinery/magnetic_controller/Initialize(mapload, newdir)
+	. = ..()
 
 	if(autolink)
 		for(var/obj/machinery/magnetic_module/M in machines)
@@ -227,7 +227,7 @@
 		filter_path() // renders rpath
 
 
-/obj/machinery/magnetic_controller/process()
+/obj/machinery/magnetic_controller/process(delta_time)
 	if(magnets.len == 0 && autolink)
 		for(var/obj/machinery/magnetic_module/M in machines)
 			if(M.freq == frequency && M.code == code)

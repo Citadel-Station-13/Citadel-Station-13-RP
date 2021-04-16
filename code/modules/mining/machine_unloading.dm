@@ -16,16 +16,16 @@
 
 // wip - why isn't this dirs instead?!
 /obj/machinery/mineral/unloading_machine/LateInitialize()
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 		if(input)
 			break
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 		if(output)
 			break
 
-/obj/machinery/mineral/unloading_machine/process()
+/obj/machinery/mineral/unloading_machine/process(delta_time)
 	if(output && input)
 		if(locate(/obj/structure/ore_box, input.loc))
 			var/obj/structure/ore_box/BOX = locate(/obj/structure/ore_box, input.loc)

@@ -114,11 +114,12 @@ SUBSYSTEM_DEF(planets)
 			return
 
 	var/list/currentrun = src.currentrun
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/datum/planet/P = currentrun[currentrun.len]
 		currentrun.len--
 
-		P.process(last_fire)
+		P.process(dt, last_fire)
 
 		//Sun light needs changing
 		if(P.needs_work & PLANET_PROCESS_SUN)
@@ -157,7 +158,7 @@ SUBSYSTEM_DEF(planets)
 		var/turf/simulated/T = I
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()
-		for(var/C in T.get_corners())
+		for(var/C in list(T.lc_bottomleft, T.lc_bottomright, T.lc_topleft, T.lc_topright))
 			var/datum/lighting_corner/LC = C
 			if(LC.update_gen != update_gen && LC.active)
 				sunlit_corners += LC

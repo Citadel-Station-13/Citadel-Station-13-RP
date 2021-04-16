@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Title: Parts Lathe UI
 Used In File(s): \code\game\machinery\partslathe.dm
  -->
@@ -11,7 +11,7 @@ Used In File(s): \code\game\machinery\partslathe.dm
 	{{for data.materials }}
 		<div class="line">
 			<div class="statusLabel">{{:value.display.toTitleCase()}}</div>
-			<div class="statusValue">{{:helper.displayBar(value.percent, 0, 100, 
+			<div class="statusValue">{{:helper.displayBar(value.percent, 0, 100,
 				(value.percent < 25) ? 'bad' : (value.percent < 50) ? 'average' : 'good',
 				value.qty + "/" + value.max )}}</div>
 			<div class="statusValue">{{:helper.link("Eject", 'eject', {'ejectMaterial' : value.name })}}</div>
@@ -41,6 +41,14 @@ Used In File(s): \code\game\machinery\partslathe.dm
 	</div>
 {{/if}}
 
+
+<h3>Recipies</h3>
+{{for data.recipies}}
+	<div class="clearRight">
+		{{:helper.link(value.name.toTitleCase(), 'plus', {'queue' : value.type})}}
+	</div>
+{{/for}}
+
 {{if data.building }}
 	<h3>Currently Building</h3>
 	<div class="line">
@@ -67,10 +75,3 @@ Used In File(s): \code\game\machinery\partslathe.dm
 		{{/for}}
 	{{/if}}
 </div>
-
-<h3>Recipies</h3>
-{{for data.recipies}}
-	<div class="line">
-		{{:helper.link(value.name.toTitleCase(), 'plus', {'queue' : value.type})}}
-	</div>
-{{/for}}

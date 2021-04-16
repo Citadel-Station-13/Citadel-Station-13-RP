@@ -74,8 +74,8 @@ var/list/_client_preferences_by_type
 
 /datum/client_preference/play_ambiance/toggled(var/mob/preference_mob, var/enabled)
 	if(!enabled)
-		preference_mob << sound(null, repeat = 0, wait = 0, volume = 0, channel = 1)
-		preference_mob << sound(null, repeat = 0, wait = 0, volume = 0, channel = 2)
+		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 1))
+		SEND_SOUND(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 2))
 //VOREStation Add - Need to put it here because it should be ordered riiiight here.
 /datum/client_preference/play_jukebox
 	description ="Play jukebox music"
@@ -356,4 +356,10 @@ var/list/_client_preferences_by_type
 	key = "AUTOCORRECT"
 	enabled_description = "Enabled"
 	disabled_description = "Disabled"
+
+/datum/client_preference/examine_look
+	description = "Examine Messages"
+	key = "EXAMINE_LOOK"
+	enabled_description = "Show"
+	disabled_description = "Hide"
 

@@ -34,8 +34,8 @@ Pipelines + Other Objects -> Pipe network
 	var/obj/machinery/atmospherics/node1
 	var/obj/machinery/atmospherics/node2
 
-/obj/machinery/atmospherics/New(loc, newdir)
-	..()
+/obj/machinery/atmospherics/Initialize(mapload, newdir)
+	. = ..()
 	if(!icon_manager)
 		icon_manager = new()
 	if(!isnull(newdir))
@@ -116,7 +116,7 @@ Pipelines + Other Objects -> Pipe network
 
 	return node.pipe_color
 
-/obj/machinery/atmospherics/process()
+/obj/machinery/atmospherics/process(delta_time)
 	last_flow_rate = 0
 	last_power_draw = 0
 
@@ -153,12 +153,12 @@ Pipelines + Other Objects -> Pipe network
 /obj/machinery/atmospherics/update_icon()
 	return null
 
-/obj/machinery/atmospherics/proc/can_unwrench()
+/obj/machinery/atmospherics/proc/unsafe_pressure()
 	var/datum/gas_mixture/int_air = return_air()
 	var/datum/gas_mixture/env_air = loc.return_air()
 	if((int_air.return_pressure()-env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
-		return 0
-	return 1
+		return TRUE
+	return FALSE
 
 // Deconstruct into a pipe item.
 /obj/machinery/atmospherics/proc/deconstruct()

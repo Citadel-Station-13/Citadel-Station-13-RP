@@ -17,7 +17,7 @@
 	monitor_type = /datum/nano_module/alarm_monitor/all
 	circuit = /obj/item/circuitboard/stationalert_all
 
-/obj/machinery/computer/station_alert/Initialize()
+/obj/machinery/computer/station_alert/Initialize(mapload)
 	alarm_monitor = new monitor_type(src)
 	alarm_monitor.register_alarm(src, /atom/proc/update_icon)
 	. = ..()
@@ -42,7 +42,7 @@
 	return
 
 /obj/machinery/computer/station_alert/interact(mob/user)
-	alarm_monitor.ui_interact(user)
+	alarm_monitor.nano_ui_interact(user)
 
 /obj/machinery/computer/station_alert/update_icon()
 	if(!(stat & (BROKEN|NOPOWER)))

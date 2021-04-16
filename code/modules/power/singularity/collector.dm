@@ -17,15 +17,15 @@ var/global/list/rad_collectors = list()
 	var/locked = 0
 	var/drainratio = 1
 
-/obj/machinery/power/rad_collector/New()
-	..()
+/obj/machinery/power/rad_collector/Initialize(mapload)
+	. = ..()
 	rad_collectors += src
 
 /obj/machinery/power/rad_collector/Destroy()
 	rad_collectors -= src
 	return ..()
 
-/obj/machinery/power/rad_collector/process()
+/obj/machinery/power/rad_collector/process(delta_time)
 	//so that we don't zero out the meter if the SM is processed first.
 	last_power = last_power_new
 	last_power_new = 0
@@ -103,9 +103,8 @@ var/global/list/rad_collectors = list()
 	return ..()
 
 /obj/machinery/power/rad_collector/examine(mob/user)
-	if (..(user, 3))
-		to_chat(user, "The meter indicates that \the [src] is collecting [last_power] W.")
-		return 1
+	. = ..()
+	. += "The meter indicates that \the [src] is collecting [last_power] W."
 
 /obj/machinery/power/rad_collector/ex_act(severity)
 	switch(severity)
@@ -130,7 +129,7 @@ var/global/list/rad_collectors = list()
 /obj/machinery/power/rad_collector/proc/receive_pulse(var/pulse_strength)
 	if(P && active)
 		var/power_produced = 0
-		power_produced = P.air_contents.gas[/datum/gas/phoron]*pulse_strength*20
+		power_produced = (min(P.air_contents.gas[/datum/gas/phoron], 1000)) * pulse_strength * 20
 		add_avail(power_produced)
 		last_power_new = power_produced
 		return
@@ -157,4 +156,3 @@ var/global/list/rad_collectors = list()
 		flick("ca_deactive", src)
 	update_icons()
 	return
-

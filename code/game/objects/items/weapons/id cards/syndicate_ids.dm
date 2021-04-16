@@ -6,11 +6,11 @@
 	var/electronic_warfare = 1
 	var/mob/registered_user = null
 
-/obj/item/card/id/syndicate/Initialize()
+/obj/item/card/id/syndicate/Initialize(mapload)
 	. = ..()
 	access = syndicate_access.Copy()
 
-/obj/item/card/id/syndicate/station_access/Initialize()
+/obj/item/card/id/syndicate/station_access/Initialize(mapload)
 	. = ..() // Same as the normal Syndicate id, only already has all station access
 	access |= get_all_station_access()
 
@@ -36,13 +36,13 @@
 	if(registered_user == user)
 		switch(alert("Would you like edit the ID, or show it?","Show or Edit?", "Edit","Show"))
 			if("Edit")
-				ui_interact(user)
+				nano_ui_interact(user)
 			if("Show")
 				..()
 	else
 		..()
 
-/obj/item/card/id/syndicate/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/item/card/id/syndicate/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/entries[0]
 	entries[++entries.len] = list("name" = "Age", 				"value" = age)

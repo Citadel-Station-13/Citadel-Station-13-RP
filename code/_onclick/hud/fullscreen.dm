@@ -73,11 +73,11 @@
 
 /obj/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
-	layer = DAMAGE_LAYER
+	layer = DAMAGE_SCREEN_LAYER
 
 /obj/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
-	layer = DAMAGE_LAYER
+	layer = DAMAGE_SCREEN_LAYER
 
 /obj/screen/fullscreen/crit
 	icon_state = "passage"
@@ -122,9 +122,5 @@
 	layer = FULLSCREEN_LAYER
 
 /obj/screen/fullscreen/fishbed
-	icon_state = "fishbed" 
+	icon_state = "fishbed"
 
-#undef FULLSCREEN_LAYER
-#undef BLIND_LAYER
-#undef DAMAGE_LAYER
-#undef CRIT_LAYER

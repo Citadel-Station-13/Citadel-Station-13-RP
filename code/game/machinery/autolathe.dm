@@ -32,7 +32,7 @@
 
 	var/filtertext
 
-/obj/machinery/autolathe/Initialize()
+/obj/machinery/autolathe/Initialize(mapload)
 	. = ..()
 	wires = new(src)
 	default_apply_parts()

@@ -70,9 +70,9 @@
 
 /obj/item/material/knife/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user) << pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>", \
+	user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>", \
 	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>", \
-	                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.hes] trying to commit seppuku.</span>")
+	                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.hes] trying to commit seppuku.</span>"))
 	return (BRUTELOSS)
 
 // These no longer inherit from hatchets.
@@ -134,7 +134,7 @@
 	force_divisor = 0.3 // 18 when hardness 60 (steel)
 	attack_verb = list("slashed", "chopped", "gouged", "ripped", "cut")
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	default_material = "plasteel" //VOREStation Edit
 
 /obj/item/material/knife/machete/armblade

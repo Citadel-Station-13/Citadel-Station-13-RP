@@ -4,7 +4,7 @@
 	id = "blood"
 	taste_description = "iron"
 	taste_mult = 1.3
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	metabolism = REM * 5
 	mrate_static = TRUE
 	affects_dead = 1 //so you can pump blood into someone before defibbing them
@@ -112,7 +112,7 @@
 	name = "Antibodies"
 	taste_description = "slime"
 	id = "antibodies"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#0050F0"
 	mrate_static = TRUE
 
@@ -127,7 +127,7 @@
 	id = "water"
 	taste_description = "water"
 	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen."
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#0064C877"
 	metabolism = REM * 10
 
@@ -204,7 +204,7 @@
 	id = "fuel"
 	description = "Required for welders. Flamable."
 	taste_description = "gross metal"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#660000"
 
 	glass_name = "welder fuel"

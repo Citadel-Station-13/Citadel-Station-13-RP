@@ -20,8 +20,8 @@
 // Proc: New()
 // Parameters: None
 // Description: Adds components to the machine for deconstruction.
-/obj/machinery/exonet_node/map/New()
-	..()
+/obj/machinery/exonet_node/map/Initialize(mapload, newdir)
+	. = ..()
 
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
@@ -81,7 +81,7 @@
 // Proc: process()
 // Parameters: None
 // Description: Calls the procs below every tick.
-/obj/machinery/exonet_node/process()
+/obj/machinery/exonet_node/process(delta_time)
 	update_power()
 
 // Proc: attackby()
@@ -103,14 +103,14 @@
 
 // Proc: attack_hand()
 // Parameters: 1 (user - the person clicking on the machine)
-// Description: Opens the NanoUI interface with ui_interact()
+// Description: Opens the NanoUI interface with nano_ui_interact()
 /obj/machinery/exonet_node/attack_hand(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-// Proc: ui_interact()
+// Proc: nano_ui_interact()
 // Parameters: 4 (standard NanoUI arguments)
 // Description: Allows the user to turn the machine on or off, or open or close certain 'ports' for things like external PDA messages, newscasters, etc.
-/obj/machinery/exonet_node/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/exonet_node/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	// this is the data which will be sent to the ui
 	var/data[0]
 

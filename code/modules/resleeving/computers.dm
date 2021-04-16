@@ -18,7 +18,7 @@
 	var/synthetic_capable = 1
 	var/obj/item/disk/transcore/disk
 
-/obj/machinery/computer/transhuman/resleeving/Initialize()
+/obj/machinery/computer/transhuman/resleeving/Initialize(mapload)
 	. = ..()
 	updatemodules()
 
@@ -104,9 +104,9 @@
 
 	updatemodules()
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/transhuman/resleeving/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/transhuman/resleeving/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
@@ -408,4 +408,4 @@
 	icon_state = "harddisk"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	var/datum/transhuman/mind_record/list/stored = list()
+	var/list/datum/transhuman/mind_record/stored = list()

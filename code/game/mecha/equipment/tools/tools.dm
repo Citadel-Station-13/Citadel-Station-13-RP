@@ -756,16 +756,15 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/mecha_parts/mecha_equipment/repair_droid/New()
-	..()
+/obj/item/mecha_parts/mecha_equipment/repair_droid/Initialize(mapload)
+	. = ..()
 	pr_repair_droid = new /datum/global_iterator/mecha_repair_droid(list(src),0)
 	pr_repair_droid.set_delay(equip_cooldown)
-	return
 
 /obj/item/mecha_parts/mecha_equipment/repair_droid/Destroy()
 	qdel(pr_repair_droid)
 	pr_repair_droid = null
-	..()
+	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/repair_droid/attach(obj/mecha/M as obj)
 	..()
@@ -851,11 +850,10 @@
 
 	equip_type = EQUIP_UTILITY
 
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/New()
-	..()
+/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/Initialize(mapload)
+	. = ..()
 	pr_energy_relay = new /datum/global_iterator/mecha_energy_relay(list(src),0)
 	pr_energy_relay.set_delay(equip_cooldown)
-	return
 
 /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/Destroy()
 	qdel(pr_energy_relay)
@@ -968,12 +966,11 @@
 
 	equip_type = EQUIP_HULL
 
-/obj/item/mecha_parts/mecha_equipment/combat_shield/New()
-	..()
+/obj/item/mecha_parts/mecha_equipment/combat_shield/Initialize(mapload)
+	. = ..()
 	my_shield = new my_shield_type
 	my_shield.shield_regen_delay = equip_cooldown
 	my_shield.my_tool = src
-	return
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/critfail()
 	..()
@@ -1054,15 +1051,15 @@
 
 	equip_type = EQUIP_UTILITY
 
-/obj/item/mecha_parts/mecha_equipment/generator/New()
-	..()
+/obj/item/mecha_parts/mecha_equipment/generator/Initialize(mapload)
+	. = ..()
 	init()
-	return
+
 
 /obj/item/mecha_parts/mecha_equipment/generator/Destroy()
 	qdel(pr_mech_generator)
 	pr_mech_generator = null
-	..()
+	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/generator/proc/init()
 	fuel = new /obj/item/stack/material/phoron(src)
@@ -1546,10 +1543,10 @@
 	var/max_cable = 1000
 	required_type = list(/obj/mecha/working)
 
-/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/New()
+/obj/item/mecha_parts/mecha_equipment/tool/cable_layer/Initialize(mapload)
+	. = ..()
 	cable = new(src)
 	cable.amount = 0
-	..()
 
 /obj/item/mecha_parts/mecha_equipment/tool/cable_layer/MoveAction()
 	layCable()

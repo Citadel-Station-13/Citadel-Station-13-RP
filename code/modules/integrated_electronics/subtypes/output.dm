@@ -43,7 +43,7 @@
 	var/list/nearby_things = range(0, get_turf(src))
 	for(var/mob/M in nearby_things)
 		var/obj/O = assembly ? assembly : src
-		to_chat(M, "<span class='notice'>\icon[O] [stuff_to_display]</span>")
+		to_chat(M, "<span class='notice'>[icon2html(thing = O, target = M)] [stuff_to_display]</span>")
 
 /obj/item/integrated_circuit/output/screen/large
 	name = "large screen"
@@ -56,7 +56,7 @@
 /obj/item/integrated_circuit/output/screen/large/do_work()
 	..()
 	var/obj/O = assembly ? loc : assembly
-	O.visible_message("<span class='notice'>\icon[O] [stuff_to_display]</span>")
+	O.visible_message("<span class='notice'>[icon2html(thing = O, target = world)] [stuff_to_display]</span>")
 
 /obj/item/integrated_circuit/output/light
 	name = "light"
@@ -134,7 +134,7 @@
 	text = get_pin_data(IC_INPUT, 1)
 	if(!isnull(text))
 		var/obj/O = assembly ? loc : assembly
-		audible_message("\icon[O] \The [O.name] states, \"[text]\"")
+		audible_message("[icon2html(thing = O, target = world)] \The [O.name] states, \"[text]\"")
 
 /obj/item/integrated_circuit/output/text_to_speech/advanced
 	name = "advanced text-to-speech circuit"
@@ -149,8 +149,8 @@
 
 	var/mob/living/voice/my_voice
 
-/obj/item/integrated_circuit/output/text_to_speech/advanced/Initialize()
-	..()
+/obj/item/integrated_circuit/output/text_to_speech/advanced/Initialize(mapload)
+	. = ..()
 	my_voice = new (src)
 	my_voice.name = "TTS Circuit"
 
@@ -179,8 +179,8 @@
 	power_draw_per_use = 20
 	var/list/sounds = list()
 
-/obj/item/integrated_circuit/output/sound/New()
-	..()
+/obj/item/integrated_circuit/output/sound/Initialize(mapload)
+	. = ..()
 	extended_desc = list()
 	extended_desc += "The first input pin determines which sound is used. The choices are; "
 	extended_desc += jointext(sounds, ", ")
@@ -273,8 +273,8 @@
 	power_draw_idle = 5 // Raises to 80 when on.
 	var/obj/machinery/camera/network/circuits/camera
 
-/obj/item/integrated_circuit/output/video_camera/New()
-	..()
+/obj/item/integrated_circuit/output/video_camera/Initialize(mapload)
+	. = ..()
 	camera = new(src)
 	on_data_written()
 
@@ -478,7 +478,7 @@
 	if(istype(AM) && assembly)
 		if(AM in view(get_turf(src))) // It must be able to 'see' the object it will copy.
 			hologram = new(src)
-			var/icon/holo_icon = getHologramIcon(getFlatIcon(AM), no_color = TRUE)
+			var/icon/holo_icon = getHologramIcon(getFlatIcon(AM))
 		//	holo_icon.GrayScale() // So it looks better colored.
 			if(holo_color) // The color pin should ensure that it is a valid hex.
 				holo_icon.ColorTone(holo_color)

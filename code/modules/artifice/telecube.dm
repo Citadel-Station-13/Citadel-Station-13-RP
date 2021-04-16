@@ -54,7 +54,7 @@
 
 	var/omniteleport = FALSE // Will this teleport anchored things too?
 
-/obj/item/telecube/Initialize()
+/obj/item/telecube/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	last_teleport = world.time
@@ -89,7 +89,7 @@
 
 	return
 
-/obj/item/telecube/process()
+/obj/item/telecube/process(delta_time)
 	..()
 	update_icon()
 

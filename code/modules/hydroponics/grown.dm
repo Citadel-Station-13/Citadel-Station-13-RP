@@ -14,9 +14,8 @@
 	var/datum/seed/seed
 	var/potency = -1
 
-/obj/item/reagent_containers/food/snacks/grown/Initialize(newloc,planttype)
-
-	..()
+/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, planttype)
+	. = ..()
 	if(!dried_type)
 		dried_type = type
 	src.pixel_x = rand(-5.0, 5)
@@ -26,50 +25,40 @@
 	if(planttype)
 		plantname = planttype
 
-/obj/item/reagent_containers/food/snacks/grown/Initialize()
-	..()
-	spawn()
-		if(!plantname)
-			return
+	if(!plantname)
+		return
 
-		if(!plant_controller)
-			sleep(250) // ugly hack, should mean roundstart plants are fine.
-		if(!plant_controller)
-			to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
-			qdel(src)
-			return
+	seed = plant_controller.seeds[plantname]
 
-		seed = plant_controller.seeds[plantname]
+	if(!seed)
+		return
 
-		if(!seed)
-			return
+	name = "[seed.seed_name]"
+	trash = seed.get_trash_type()
 
-		name = "[seed.seed_name]"
-		trash = seed.get_trash_type()
+	update_icon()
 
-		update_icon()
+	if(!seed.chems)
+		return
 
-		if(!seed.chems)
-			return
+	potency = seed.get_trait(TRAIT_POTENCY)
 
-		potency = seed.get_trait(TRAIT_POTENCY)
+	for(var/rid in seed.chems)
+		var/list/reagent_data = seed.chems[rid]
+		if(reagent_data && reagent_data.len)
+			var/rtotal = reagent_data[1]
+			var/list/data = list()
+			if(reagent_data.len > 1 && potency > 0)
+				rtotal += round(potency/reagent_data[2])
+			if(rid == "nutriment")
+				data[seed.seed_name] = max(1,rtotal)
 
-		for(var/rid in seed.chems)
-			var/list/reagent_data = seed.chems[rid]
-			if(reagent_data && reagent_data.len)
-				var/rtotal = reagent_data[1]
-				var/list/data = list()
-				if(reagent_data.len > 1 && potency > 0)
-					rtotal += round(potency/reagent_data[2])
-				if(rid == "nutriment")
-					data[seed.seed_name] = max(1,rtotal)
-
-				reagents.add_reagent(rid,max(1,rtotal),data)
-		update_desc()
-		if(reagents.total_volume > 0)
-			bitesize = 1+round(reagents.total_volume / 2, 1)
-		if(seed.get_trait(TRAIT_STINGS))
-			force = 1
+			reagents.add_reagent(rid,max(1,rtotal),data)
+	update_desc()
+	if(reagents.total_volume > 0)
+		bitesize = 1+round(reagents.total_volume / 2, 1)
+	if(seed.get_trait(TRAIT_STINGS))
+		force = 1
 
 /obj/item/reagent_containers/food/snacks/grown/proc/update_desc()
 
@@ -159,6 +148,9 @@
 	overlays |= plant_icon
 
 /obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
+	. = ..()
+	if(M.is_incorporeal())
+		return
 	if(seed && seed.get_trait(TRAIT_JUICY) == 2)
 		if(istype(M))
 
@@ -177,7 +169,8 @@
 			M.Weaken(5)
 			seed.thrown_at(src,M)
 			sleep(-1)
-			if(src) qdel(src)
+			if(src)
+				qdel(src)
 			return
 
 /obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
@@ -248,7 +241,7 @@
 					to_chat(user, "You slice up \the [src].")
 					var/slices = rand(3,5)
 					var/reagents_to_transfer = round(reagents.total_volume/slices)
-					for(var/i=i;i<=slices;i++)
+					for(var/i in 1 to slices)
 						var/obj/item/reagent_containers/food/snacks/fruit_slice/F = new(get_turf(src),seed)
 						if(reagents_to_transfer) reagents.trans_to_obj(F,reagents_to_transfer)
 					qdel(src)
@@ -352,8 +345,8 @@
 
 var/list/fruit_icon_cache = list()
 
-/obj/item/reagent_containers/food/snacks/fruit_slice/New(var/newloc, var/datum/seed/S)
-	..(newloc)
+/obj/item/reagent_containers/food/snacks/fruit_slice/Initialize(mapload, datum/seed/S)
+	. = ..()
 	// Need to go through and make a general image caching controller. Todo.
 	if(!istype(S))
 		qdel(src)

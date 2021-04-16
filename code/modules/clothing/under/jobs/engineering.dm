@@ -6,11 +6,19 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/chief_engineer/skirt_pleated
+	name = "chief engineer's pleated skirt"
+	icon_state = "chiefengineer_skirt"
+
 /obj/item/clothing/under/rank/atmospheric_technician
 	desc = "It's a jumpsuit worn by atmospheric technicians."
 	name = "atmospheric technician's jumpsuit"
 	icon_state = "atmos"
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/atmospheric_technician/skirt_pleated
+	name = "atmospheric technician's pleated skirt"
+	icon_state = "atmos_skirt"
 
 /obj/item/clothing/under/rank/engineer
 	desc = "It's an orange high visibility jumpsuit worn by engineers. It has minor radiation shielding."
@@ -18,6 +26,10 @@
 	icon_state = "engine"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/engineer/skirt_pleated
+	name = "engineer's pleated skirt"
+	icon_state = "engine_skirt"
 
 /obj/item/clothing/under/rank/engineer/turtleneck
 	name = "engineering turtleneck"
@@ -31,3 +43,7 @@
 	name = "roboticist's jumpsuit"
 	icon_state = "robotics"
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/roboticist/skirt_pleated
+	name = "roboticist's pleated skirt"
+	icon_state = "robotics_skirt"

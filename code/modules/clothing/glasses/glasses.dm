@@ -77,8 +77,8 @@ BLIND     // can't see anything
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
-/obj/item/clothing/glasses/meson/New()
-	..()
+/obj/item/clothing/glasses/meson/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.meson
 
 /obj/item/clothing/glasses/meson/prescription
@@ -122,9 +122,10 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	item_flags = AIRTIGHT
 	body_parts_covered = EYES
+	clothing_flags = SCAN_REAGENTS
 
-/obj/item/clothing/glasses/science/New()
-	..()
+/obj/item/clothing/glasses/science/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.science
 
 /obj/item/clothing/glasses/goggles
@@ -155,8 +156,8 @@ BLIND     // can't see anything
 	species_restricted = list("Vox")
 	flags = PHORONGUARD
 
-/obj/item/clothing/glasses/night/New()
-	..()
+/obj/item/clothing/glasses/night/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.nvg
 
 /obj/item/clothing/glasses/eyepatch
@@ -226,8 +227,8 @@ BLIND     // can't see anything
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
-/obj/item/clothing/glasses/material/New()
-	..()
+/obj/item/clothing/glasses/material/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.material
 
 /obj/item/clothing/glasses/material/prescription
@@ -250,8 +251,8 @@ BLIND     // can't see anything
 	flash_protection = FLASH_PROTECTION_REDUCED
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
-/obj/item/clothing/glasses/graviton/New()
-	..()
+/obj/item/clothing/glasses/graviton/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.material
 
 /obj/item/clothing/glasses/regular
@@ -478,7 +479,7 @@ BLIND     // can't see anything
 			enables_planes = null
 			to_chat(usr, "You switch \the [src] to flash protection mode.")
 		update_icon()
-		user << activation_sound
+		SEND_SOUND(user, activation_sound)
 		user.recalculate_vis()
 		user.update_inv_glasses()
 		user.update_action_buttons()
@@ -526,8 +527,8 @@ BLIND     // can't see anything
 						M.disabilities &= ~NEARSIGHTED
 		..()
 
-/obj/item/clothing/glasses/thermal/New()
-	..()
+/obj/item/clothing/glasses/thermal/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.thermal
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete

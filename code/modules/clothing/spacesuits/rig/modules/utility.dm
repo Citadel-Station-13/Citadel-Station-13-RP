@@ -102,8 +102,8 @@
 
 	device_type = /obj/item/rcd/electric/mounted/rig
 
-/obj/item/rig_module/device/New()
-	..()
+/obj/item/rig_module/device/Initialize(mapload)
+	. = ..()
 	if(device_type) device = new device_type(src)
 
 /obj/item/rig_module/device/engage(atom/target)
@@ -304,8 +304,8 @@
 
 	var/obj/item/voice_changer/voice_holder
 
-/obj/item/rig_module/voice/New()
-	..()
+/obj/item/rig_module/voice/Initialize(mapload)
+	. = ..()
 	voice_holder = new(src)
 	voice_holder.active = 0
 
@@ -393,8 +393,8 @@
 		jets.toggle()
 	return 1
 
-/obj/item/rig_module/maneuvering_jets/New()
-	..()
+/obj/item/rig_module/maneuvering_jets/Initialize(mapload)
+	. = ..()
 	jets = new(src)
 
 /obj/item/rig_module/maneuvering_jets/installed()
@@ -448,7 +448,7 @@
 	gun.Fire(target,holder.wearer)
 	return 1
 
-/obj/item/rig_module/mounted/mop/process()
+/obj/item/rig_module/mounted/mop/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/mop_deploy) in holder.wearer))
@@ -600,8 +600,8 @@
 	var/iastamp
 	var/deniedstamp
 
-/obj/item/rig_module/device/stamp/New()
-	..()
+/obj/item/rig_module/device/stamp/Initialize(mapload)
+	. = ..()
 	iastamp = new /obj/item/stamp/internalaffairs(src)
 	deniedstamp = new /obj/item/stamp/denied(src)
 	device = iastamp

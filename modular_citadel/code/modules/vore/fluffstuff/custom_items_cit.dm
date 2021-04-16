@@ -22,7 +22,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..() //Okfine
 
-/obj/item/clothing/accessory/collar/lifecrystal/process()
+/obj/item/clothing/accessory/collar/lifecrystal/process(delta_time)
 	check_owner()
 	if((state > 1) || !owner)
 		STOP_PROCESSING(SSobj, src)

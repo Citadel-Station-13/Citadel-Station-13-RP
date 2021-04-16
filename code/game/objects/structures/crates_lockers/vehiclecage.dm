@@ -9,11 +9,11 @@
 	var/paint_color = "#666666"
 
 /obj/structure/vehiclecage/examine(mob/user)
-	..()
+	. = ..()
 	if(my_vehicle)
-		to_chat(user, "<span class='notice'>It seems to contain \the [my_vehicle].</span>")
+		. += "<span class='notice'>It seems to contain \the [my_vehicle].</span>"
 
-/obj/structure/vehiclecage/Initialize()
+/obj/structure/vehiclecage/Initialize(mapload)
 	. = ..()
 	if(my_vehicle_type)
 		my_vehicle = new my_vehicle_type(src)

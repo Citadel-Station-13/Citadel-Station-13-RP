@@ -45,10 +45,10 @@
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
-	dismantle_wall(null, null, TRUE)
+	dismantle_wall(null, null, TRUE, !changing_turf)
 	return ..()
 
-/turf/simulated/wall/process()
+/turf/simulated/wall/process(delta_time)
 	// Calling parent will kill processing
 	if(!radiate())
 		return PROCESS_KILL
@@ -118,25 +118,25 @@
 
 /turf/simulated/wall/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
 	clear_plants()
-	..(N, tell_universe, force_lighting_update, preserve_outdoors)
+	return ..(N, tell_universe, force_lighting_update, preserve_outdoors)
 
 //Appearance
 /turf/simulated/wall/examine(mob/user)
-	. = ..(user)
+	. = ..()
 
 	if(!damage)
-		to_chat(user, "<span class='notice'>It looks fully intact.</span>")
+		. += "<span class='notice'>It looks fully intact.</span>"
 	else
 		var/dam = damage / material.integrity
 		if(dam <= 0.3)
-			to_chat(user, "<span class='warning'>It looks slightly damaged.</span>")
+			. += "<span class='warning'>It looks slightly damaged.</span>"
 		else if(dam <= 0.6)
-			to_chat(user, "<span class='warning'>It looks moderately damaged.</span>")
+			. += "<span class='warning'>It looks moderately damaged.</span>"
 		else
-			to_chat(user, "<span class='danger'>It looks heavily damaged.</span>")
+			. += "<span class='danger'>It looks heavily damaged.</span>"
 
 	if(locate(/obj/effect/overlay/wallrot) in src)
-		to_chat(user, "<span class='warning'>There is fungus growing on [src].</span>")
+		. += "<span class='warning'>There is fungus growing on [src].</span>"
 
 //Damage
 
@@ -186,7 +186,7 @@
 
 	return ..()
 
-/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product)
+/turf/simulated/wall/proc/dismantle_wall(var/devastated, var/explode, var/no_product, changeturf = TRUE)
 
 	playsound(src, 'sound/items/Welder.ogg', 100, 1)
 	if(!no_product)
@@ -204,7 +204,7 @@
 			var/obj/structure/sign/poster/P = O
 			P.roll_and_drop(src)
 		else
-			O.loc = src
+			O.forceMove(src)
 
 	clear_plants()
 	material = get_material_by_name("placeholder")
@@ -212,7 +212,8 @@
 	girder_material = null
 	update_connections(1)
 
-	ChangeTurf(/turf/simulated/floor/plating)
+	if(changeturf)
+		ChangeTurf(/turf/simulated/floor/plating)
 
 /turf/simulated/wall/ex_act(severity)
 	switch(severity)

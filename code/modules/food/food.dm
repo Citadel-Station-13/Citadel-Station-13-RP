@@ -13,7 +13,7 @@
 
 	var/list/center_of_mass = list() // Used for table placement
 
-/obj/item/reagent_containers/food/Initialize()
+/obj/item/reagent_containers/food/Initialize(mapload)
 	. = ..()
 	if (center_of_mass.len && !pixel_x && !pixel_y)
 		src.pixel_x = rand(-6.0, 6) //Randomizes postion

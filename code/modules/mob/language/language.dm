@@ -137,7 +137,7 @@
 /mob/proc/hear_broadcast(var/datum/language/language, var/mob/speaker, var/speaker_name, var/message)
 	if((language in languages) && language.check_special_condition(src))
 		var/msg = "<i><span class='game say'>[language.name], <span class='name'>[speaker_name]</span> [message]</span></i>"
-		src << msg
+		to_chat(src, msg)
 
 /mob/new_player/hear_broadcast(var/datum/language/language, var/mob/speaker, var/speaker_name, var/message)
 	return
@@ -154,10 +154,10 @@
 /datum/language/proc/get_spoken_verb(var/msg_end)
 	switch(msg_end)
 		if("!")
-			return exclaim_verb
+			return pick(exclaim_verb)
 		if("?")
-			return ask_verb
-	return speech_verb
+			return pick(ask_verb)
+	return pick(speech_verb)
 
 /datum/language/proc/can_speak_special(var/mob/speaker)
 	. = TRUE

@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(events)
 	name = "Events"
 	wait = 2 SECONDS
+	init_order = INIT_ORDER_EVENTS
 
 	var/tmp/list/currentrun = null
 
@@ -29,17 +30,18 @@ SUBSYSTEM_DEF(events)
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while (currentrun.len)
 		var/datum/event/E = currentrun[currentrun.len]
 		currentrun.len--
 		if(E.processing_active)
-			E.process()
+			E.process(dt)
 		if (MC_TICK_CHECK)
 			return
 
 	for(var/i = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_MAJOR)
-		var/list/datum/event_container/EC = event_containers[i]
-		EC.process()
+		var/datum/event_container/EC = event_containers[i]
+		EC.process(dt)
 
 /datum/controller/subsystem/events/stat_entry()
 	..("E:[active_events.len]")

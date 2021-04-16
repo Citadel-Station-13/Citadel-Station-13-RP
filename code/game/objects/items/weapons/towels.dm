@@ -29,6 +29,6 @@
 	else if(user.fire_stacks < 0)
 		user.fire_stacks = (min(0, user.fire_stacks + 1.5))
 
-/obj/item/towel/random/New()
-	..()
-	color = "#"+get_random_colour()
+/obj/item/towel/random/Initialize(mapload)
+	. = ..()
+	add_atom_colour("#"+get_random_colour(), FIXED_COLOUR_PRIORITY)

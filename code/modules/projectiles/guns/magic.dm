@@ -38,7 +38,7 @@
 		charges--//... drain a charge
 		recharge_newshot()
 
-/obj/item/gun/magic/Initialize()
+/obj/item/gun/magic/Initialize(mapload)
 	. = ..()
 	charges = max_charges
 	chambered = new ammo_type(src)
@@ -51,7 +51,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/gun/magic/process()
+/obj/item/gun/magic/process(delta_time)
 	charge_tick++
 	if(charge_tick < recharge_rate || charges >= max_charges)
 		return 0

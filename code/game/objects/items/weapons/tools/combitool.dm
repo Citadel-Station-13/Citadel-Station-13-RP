@@ -29,10 +29,10 @@
 	if(loc == usr && tools.len)
 		to_chat(usr, "It has the following fittings:")
 		for(var/obj/item/tool in tools)
-			to_chat(usr, "\icon[tool] - [tool.name][tools[current_tool]==tool?" (selected)":""]")
+			to_chat(usr, "[icon2html(thing = tool, target = usr)] - [tool.name][tools[current_tool]==tool?" (selected)":""]")
 
-/obj/item/combitool/New()
-	..()
+/obj/item/combitool/Initialize(mapload)
+	. = ..()
 	for(var/type in spawn_tools)
 		tools |= new type(src)
 

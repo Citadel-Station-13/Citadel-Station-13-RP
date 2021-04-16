@@ -46,23 +46,24 @@
 				index++
 				if(FM.img)
 					usr << browse_rsc(FM.img, "pda_news_tmp_photo_[feeds["channel"]]_[index].png")
-					// News stories are HTML-stripped but require newline replacement to be properly displayed in NanoUI
-					var/body = replacetext(FM.body, "\n", "<br>")
-					messages[++messages.len] = list(
-								"author" = FM.author,
-								"body" = body,
-								"message_type" = FM.message_type,
-								"time_stamp" = FM.time_stamp,
-								"has_image" = (FM.img != null),
-								"caption" = FM.caption,
-								"index" = index
-								)
+				// News stories are HTML-stripped but require newline replacement to be properly displayed in NanoUI
+				var/body = replacetext(FM.body, "\n", "<br>")
+				messages[++messages.len] = list(
+						"author" = FM.author,
+						"body" = body,
+						"message_type" = FM.message_type,
+						"time_stamp" = FM.time_stamp,
+						"has_image" = (FM.img != null),
+						"caption" = FM.caption,
+						"index" = index
+					)
 
 		feeds[++feeds.len] = list(
 					"name" = channel.channel_name,
 					"censored" = channel.censored,
 					"author" = channel.author,
-					"messages" = messages
+					"messages" = messages,
+					"index" = feeds.len + 1 // actually align them, since I guess the population of the list doesn't occur until after the evaluation of the new entry's contents
 					)
 	return feeds
 
@@ -85,14 +86,14 @@
 							"time_stamp" = FM.time_stamp,
 							"has_image" = (FM.img != null),
 							"caption" = FM.caption,
+							"time" = FM.post_time
 							)
 
 	// Cut out all but the youngest three
-	while(news.len > 3)
-		var/oldest = min(news[0]["time_stamp"], news[1]["time_stamp"], news[2]["time_stamp"], news[3]["time_stamp"])
-		for(var/i = 0, i < 4, i++)
-			if(news[i]["time_stamp"] == oldest)
-				news.Remove(news[i])
+	if(news.len > 3)
+		sortByKey(news, "time")
+		news.Cut(1, news.len - 2) // Last three have largest timestamps, youngest posts
+		news.Swap(1, 3) // List is sorted in ascending order of timestamp, we want descending
 
 	return news
 
@@ -170,7 +171,7 @@
 // Weaker than what PDAs appear to do, but as of 7/1/2018 PDA secbot access is nonfunctional
 /obj/item/commcard/proc/get_sec_bot_access()
 	var/sec_bots[0]
-	for(var/mob/living/bot/secbot/S in mob_list)
+	for(var/mob/living/bot/secbot/S in GLOB.mob_list)
 		// Get new bot
 		var/status[0]
 		status[++status.len] = list("tab" = "Name", "val" = sanitize(S.name))
@@ -389,7 +390,7 @@
 		)
 
 // Collects the current status of the supply shuttle
-// Copied from /obj/machinery/computer/supplycomp/ui_interact(),
+// Copied from /obj/machinery/computer/supplycomp/nano_ui_interact(),
 // code\game\machinery\computer\supply.dm, starting at line 55
 /obj/item/commcard/proc/get_supply_shuttle_status()
 	var/shuttle_status[0]
@@ -449,7 +450,7 @@
 	return shuttle_status
 
 // Compiles the list of supply orders
-// Copied from /obj/machinery/computer/supplycomp/ui_interact(),
+// Copied from /obj/machinery/computer/supplycomp/nano_ui_interact(),
 // code\game\machinery\computer\supply.dm, starting at line 130
 /obj/item/commcard/proc/get_supply_orders()
 	var/orders[0]
@@ -472,7 +473,7 @@
 	return orders
 
 // Compiles the list of supply export receipts
-// Copied from /obj/machinery/computer/supplycomp/ui_interact(),
+// Copied from /obj/machinery/computer/supplycomp/nano_ui_interact(),
 // code\game\machinery\computer\supply.dm, starting at line 147
 /obj/item/commcard/proc/get_supply_receipts()
 	var/receipts[0]
@@ -490,7 +491,7 @@
 
 
 // Compiles the list of supply packs for the category currently stored in internal_data["supply_category"]
-// Copied from /obj/machinery/computer/supplycomp/ui_interact(),
+// Copied from /obj/machinery/computer/supplycomp/nano_ui_interact(),
 // code\game\machinery\computer\supply.dm, starting at line 147
 /obj/item/commcard/proc/get_supply_pack_list()
 	var/supply_packs[0]

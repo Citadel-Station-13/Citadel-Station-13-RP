@@ -11,11 +11,13 @@
 					"Drone" = "drone-science",
 					"Handy" = "handy-science",
 					"Insekt" = "insekt-Sci",
-					"L3P1-D0T" = "Glitterfly-Research"
+					"L3P1-D0T" = "Glitterfly-Research",
+					"Coffsearch" = "coffin-Research"
+
 					)
 
-/obj/item/robot_module/robot/research/New()
-	..()
+/obj/item/robot_module/robot/research/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/portable_destructive_analyzer(src)
 	src.modules += new /obj/item/gripper/research(src)
 	src.modules += new /obj/item/gripper/circuit(src)
@@ -74,7 +76,9 @@
 	channels = list("Science" = 1)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/science/New(var/mob/living/silicon/robot/R)
+/obj/item/robot_module/robot/science/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/dogborg/jaws/small(src)
 	src.modules += new /obj/item/dogborg/boop_module(src)
 	src.modules += new /obj/item/gripper/research(src)

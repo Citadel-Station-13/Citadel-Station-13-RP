@@ -47,7 +47,7 @@
 		our_planet.update_sun()
 	log_debug("[our_planet.name]'s weather is now [new_weather], with a temperature of [temperature]&deg;K ([temperature - T0C]&deg;C | [temperature * 1.8 - 459.67]&deg;F).")
 
-/datum/weather_holder/process()
+/datum/weather_holder/process(delta_time)
 	if(world.time >= next_weather_shift)
 		if(!current_weather) // Roundstart (hopefully).
 			initialize_weather()
@@ -115,7 +115,7 @@
 		wind_dir = 0
 		return
 	wind_speed = new_wind_speed
-	wind_dir = pick(alldirs)
+	wind_dir = pick(GLOB.alldirs)
 	var/message = "You feel the wind blowing [wind_speed > 2 ? "strongly ": ""]towards the <b>[dir2text(wind_dir)]</b>."
 	message_all_outdoor_players(span("warning", message))
 

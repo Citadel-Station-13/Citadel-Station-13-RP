@@ -15,18 +15,19 @@ GLOBAL_VAR_INIT(tgs_initialized, FALSE)
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
+//This happens after the Master subsystem new(s) (it's a global datum)
+//So subsystems globals exist, but are not initialised
 /world/New()
-	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || (world.system_type == MS_WINDOWS ? "./byond-extools.dll" : "./libbyond-extools.so")
-	if (fexists(extools))
-		call(extools, "maptick_initialize")()
-	enable_debugger()
-
-	make_datum_reference_lists()
+	// enable_debugger()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+
+	world.Profile(PROFILE_START)
+	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
+
 
 	GLOB.revdata = new
 
@@ -64,23 +65,11 @@ GLOBAL_LIST(topic_status_cache)
 
 	. = ..()
 
-#if UNIT_TEST
-	log_unit_test("Unit Tests Enabled.  This will destroy the world when testing is complete.")
-	log_unit_test("If you did not intend to enable this please check code/__defines/unit_testing.dm")
-#endif
-
 	// Set up roundstart seed list.
 	plant_controller = new()
 
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
-
-	// Loads all the pre-made submap templates.
-	load_map_templates()
-
-	if(config_legacy.generate_map)
-		if(GLOB.using_map.perform_map_generation())
-			GLOB.using_map.refresh_mining_turfs()
 
 	// Create frame types.
 	populate_frame_types()
@@ -96,23 +85,30 @@ GLOBAL_LIST(topic_status_cache)
 
 	Master.Initialize(10, FALSE)
 
-#if UNIT_TEST
-	spawn(1)
-		initialize_unit_tests()
-#endif
+	#ifdef UNIT_TESTS
+	HandleTestRun()
+	#endif
 
-	spawn(3000)		//so we aren't adding to the round-start lag
-		if(config_legacy.ToRban)
-			ToRban_autoupdate()
-
-#undef RECOMMENDED_VERSION
-
-	return
+	if(config_legacy.ToRban)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/ToRban_autoupdate), 5 MINUTES)
 
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
 	GLOB.tgs_initialized = TRUE
+
+/world/proc/HandleTestRun()
+	//trigger things to run the whole process
+	Master.sleep_offline_after_initializations = FALSE
+	SSticker.start_immediately = TRUE
+	CONFIG_SET(number/round_end_countdown, 0)
+	var/datum/callback/cb
+#ifdef UNIT_TESTS
+	cb = CALLBACK(GLOBAL_PROC, /proc/RunUnitTests)
+#else
+	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
+#endif
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/_addtimer, cb, 10 SECONDS))
 
 /world/proc/SetupLogs()
 	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
@@ -143,14 +139,20 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
+#ifdef UNIT_TESTS
+	GLOB.test_log = file("[GLOB.log_directory]/tests.log")
+	start_log(GLOB.test_log)
+#endif
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
 	start_log(GLOB.world_qdel_log)
 	start_log(GLOB.world_map_error_log)
 	start_log(GLOB.world_runtime_log)
+	start_log(GLOB.tgui_log)
 	start_log(GLOB.subsystem_log)
 
 	GLOB.changelog_hash = md5('html/changelog.html') //for telling if the changelog has changed recently
@@ -187,13 +189,34 @@ GLOBAL_LIST(topic_status_cache)
 			break
 
 	if(!handler || initial(handler.log))
-		log_topic("\"[T]\", from:[addr], aster:[master], key:[key]")
+		log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 	if(!handler)
 		return
 
 	handler = new handler()
 	return handler.TryRun(input)
+
+/world/proc/FinishTestRun()
+	set waitfor = FALSE
+	var/list/fail_reasons
+	if(GLOB)
+		if(GLOB.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
+#ifdef UNIT_TESTS
+		if(GLOB.failed_any_test)
+			LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
+		if(!GLOB.log_directory)
+			LAZYADD(fail_reasons, "Missing GLOB.log_directory!")
+	else
+		fail_reasons = list("Missing GLOB!")
+	if(!fail_reasons)
+		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
+	else
+		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
+	sleep(0)	//yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src)	//shut it down
 
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
@@ -211,11 +234,10 @@ GLOBAL_LIST(topic_status_cache)
 
 	TgsReboot()
 
-/*
-	if(TEST_RUN_PARAMETER in params)
-		FinishTestRun()
-		return
-*/
+	#ifdef UNIT_TESTS
+	FinishTestRun()
+	return
+	#endif
 
 /*
 	if(TgsAvailable())

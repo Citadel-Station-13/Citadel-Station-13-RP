@@ -1,34 +1,21 @@
 // Be sure to update planetary_vr.dm and atmosphers.dm when switching to this map.
-
-
-//Simulated
-TRIUMPH_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/triumph
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
+
 /turf/simulated/open/triumph/Initialize(mapload)
 	. = ..()
 	if(outdoors)
 		SSplanets.addTurf(src)
 
-TRIUMPH_TURF_CREATE(/turf/simulated/floor)
-
 /turf/simulated/floor/triumph_indoors
 	TRIUMPH_SET_ATMOS
 	allow_gas_overlays = FALSE
 
-TRIUMPH_TURF_CREATE(/turf/simulated/floor/reinforced)
-TRIUMPH_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
-
-TRIUMPH_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-TRIUMPH_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-TRIUMPH_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/floor/outdoors/grass/sif
 	turf_layers = list(
 		/turf/simulated/floor/outdoors/rocks/triumph,
 		/turf/simulated/floor/outdoors/dirt/triumph
 		)
-
-
 
 // Overriding these for the sake of submaps that use them on other planets.
 // This means that mining on tether base and space is oxygen-generating, but solars and mining should use the triumph subtype
@@ -47,13 +34,12 @@ TRIUMPH_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/mineral/floor/vacuum
 	initial_gas_mix = GAS_STRING_VACUUM
 
-TRIUMPH_TURF_CREATE(/turf/simulated/mineral)
-TRIUMPH_TURF_CREATE(/turf/simulated/mineral/floor)
 	//This proc is responsible for ore generation on surface turfs
-/turf/simulated/mineral/triumph/make_ore(var/rare_ore)
+/turf/simulated/mineral/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
+	outdoors = TRUE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			"marble" = 3,
@@ -78,12 +64,12 @@ TRIUMPH_TURF_CREATE(/turf/simulated/mineral/floor)
 			"silver" = 3,
 			"phoron" = 25,
 			"lead" = 1))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
-		UpdateMineral()
-	update_icon()
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
+		if(flags & INITIALIZED)
+			UpdateMineral()
 
-/turf/simulated/mineral/triumph/rich/make_ore(var/rare_ore)
+/turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
@@ -111,10 +97,10 @@ TRIUMPH_TURF_CREATE(/turf/simulated/mineral/floor)
 			"silver" = 7,
 			"lead" = 4,
 			"verdantium" = 1))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
-		UpdateMineral()
-	update_icon()
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
+		if(flags & INITIALIZED)
+			UpdateMineral()
 
 //Unsimulated
 /turf/unsimulated/wall/planetary/triumph
@@ -138,8 +124,6 @@ TRIUMPH_TURF_CREATE(/turf/simulated/mineral/floor)
 	blocks_air = 0
 
 // Some turfs to make floors look better in centcom tram station.
-
-
 
 /turf/unsimulated/floor/techfloor_grid
 	name = "floor"
@@ -171,8 +155,8 @@ TRIUMPH_TURF_CREATE(/turf/simulated/mineral/floor)
 	name = "bluespace"
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
-/turf/space/bluespace/Initialize()
-	..()
+/turf/space/bluespace/Initialize(mapload)
+	. = ..()
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
 
@@ -181,8 +165,8 @@ TRIUMPH_TURF_CREATE(/turf/simulated/mineral/floor)
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
-/turf/space/sandyscroll/Initialize()
-	..()
+/turf/space/sandyscroll/Initialize(mapload)
+	. = ..()
 	icon_state = "desert_ns"
 
 //Sky stuff!
@@ -190,7 +174,7 @@ TRIUMPH_TURF_CREATE(/turf/simulated/mineral/floor)
 /turf/simulated/sky/triumph
 	color = "#FFBBBB"
 
-/turf/simulated/sky/triumph/Initialize()
+/turf/simulated/sky/triumph/Initialize(mapload)
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

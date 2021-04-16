@@ -11,6 +11,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/cargotech,
 		/obj/item/clothing/under/rank/cargotech/skirt,
+		/obj/item/clothing/under/rank/cargotech/skirt_pleated,
 		/obj/item/clothing/under/rank/cargotech/jeans,
 		/obj/item/clothing/under/rank/cargotech/jeans/female,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/cargo,
@@ -22,7 +23,7 @@
 		/obj/item/clothing/gloves/fingerless,
 		/obj/item/clothing/head/soft)
 
-/obj/structure/closet/secure_closet/cargotech/Initialize()
+/obj/structure/closet/secure_closet/cargotech/Initialize(mapload)
 	if(prob(75))
 		starts_with += /obj/item/storage/backpack
 	else
@@ -44,6 +45,7 @@
 	starts_with = list(
 		/obj/item/clothing/under/rank/cargo,
 		/obj/item/clothing/under/rank/cargo/skirt,
+		/obj/item/clothing/under/rank/cargo/skirt_pleated,
 		/obj/item/clothing/under/rank/cargo/jeans,
 		/obj/item/clothing/under/rank/cargo/jeans/female,
 		/obj/item/clothing/shoes/brown,
@@ -59,7 +61,7 @@
 		/obj/item/clothing/suit/storage/hooded/wintercoat/cargo,
 		/obj/item/clothing/shoes/boots/winter/supply)
 
-/obj/structure/closet/secure_closet/quartermaster/Initialize()
+/obj/structure/closet/secure_closet/quartermaster/Initialize(mapload)
 	if(prob(75))
 		starts_with += /obj/item/storage/backpack
 	else
@@ -94,13 +96,13 @@
 		/obj/item/clothing/shoes/boots/winter/mining,
 		/obj/item/stack/marker_beacon/thirty)
 
-/obj/structure/closet/secure_closet/miner/Initialize()
+/obj/structure/closet/secure_closet/miner/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/industrial
 	else
 		starts_with += /obj/item/storage/backpack/satchel/eng
 	return ..()
 
-/obj/structure/closet/secure_closet/miner/Initialize()
+/obj/structure/closet/secure_closet/miner/Initialize(mapload)
 	starts_with += /obj/item/gps/mining
 	return ..()

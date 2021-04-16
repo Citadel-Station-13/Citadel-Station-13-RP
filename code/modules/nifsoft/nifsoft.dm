@@ -47,7 +47,7 @@
 	ASSERT(nif_load)
 
 	nif = nif_load
-	stat_line = new(src)
+	stat_line = new(null, src)
 	if(!install(nif))
 		qdel(src)
 
@@ -269,8 +269,7 @@
 	desc = "A box of free nifsofts for security employees."
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/nifsofts_security/New()
-	..()
+/obj/item/storage/box/nifsofts_security/PopulateContents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/security(src)
 
@@ -293,8 +292,7 @@
 	desc = "A box of free nifsofts for engineering employees."
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/nifsofts_engineering/New()
-	..()
+/obj/item/storage/box/nifsofts_engineering/PopulateContents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/engineering(src)
 
@@ -316,8 +314,7 @@
 	desc = "A box of free nifsofts for medical employees."
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/nifsofts_medical/New()
-	..()
+/obj/item/storage/box/nifsofts_medical/PopulateContents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/medical(src)
 
@@ -340,7 +337,6 @@
 	desc = "A box of free nifsofts for mining employees."
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/nifsofts_mining/New()
-	..()
+/obj/item/storage/box/nifsofts_mining/PopulateContents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/mining(src)

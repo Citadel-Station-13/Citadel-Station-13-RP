@@ -24,13 +24,13 @@
 
 	var/image/fluid
 
-/obj/machinery/atmospherics/unary/cryo_cell/New()
-	..()
+/obj/machinery/atmospherics/unary/cryo_cell/Initialize(mapload)
+	. = ..()
 	icon = 'icons/obj/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
 
-/obj/machinery/atmospherics/unary/cryo_cell/Initialize()
+/obj/machinery/atmospherics/unary/cryo_cell/Initialize(mapload)
 	. = ..()
 	var/image/tank = image(icon,"tank")
 	tank.alpha = 200
@@ -53,7 +53,7 @@
 		beaker = null
 	. = ..()
 
-/obj/machinery/atmospherics/unary/cryo_cell/process()
+/obj/machinery/atmospherics/unary/cryo_cell/process(delta_time)
 	..()
 	if(!node)
 		return
@@ -80,12 +80,12 @@
 		go_out()
 
 /obj/machinery/atmospherics/unary/cryo_cell/attack_hand(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
  /**
-  * The ui_interact proc is used to open and update Nano UIs
-  * If ui_interact is not used then the UI will not update correctly
-  * ui_interact is currently defined for /atom/movable (which is inherited by /obj and /mob)
+  * The nano_ui_interact proc is used to open and update Nano UIs
+  * If nano_ui_interact is not used then the UI will not update correctly
+  * nano_ui_interact is currently defined for /atom/movable (which is inherited by /obj and /mob)
   *
   * @param user /mob The mob who is interacting with this ui
   * @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (defaut value "main")
@@ -93,7 +93,7 @@
   *
   * @return nothing
   */
-/obj/machinery/atmospherics/unary/cryo_cell/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/atmospherics/unary/cryo_cell/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(user == occupant || user.stat)
 		return

@@ -29,8 +29,8 @@
 	var/species = "Human"
 	var/sync_message = ""
 
-/obj/machinery/pros_fabricator/New()
-	..()
+/obj/machinery/pros_fabricator/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
@@ -42,12 +42,12 @@
 	files = new /datum/research(src) //Setup the research data holder.
 	return
 
-/obj/machinery/pros_fabricator/Initialize()
+/obj/machinery/pros_fabricator/Initialize(mapload)
 	. = ..()
 	manufacturer = basic_robolimb.company
 	update_categories()
 
-/obj/machinery/pros_fabricator/process()
+/obj/machinery/pros_fabricator/process(delta_time)
 	..()
 	if(stat)
 		return
@@ -90,9 +90,9 @@
 		return
 	if(!allowed(user))
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/pros_fabricator/ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/pros_fabricator/nano_ui_interact(var/mob/user, var/ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	var/datum/design/current = queue.len ? queue[1] : null
@@ -225,20 +225,20 @@
 	switch(emagged)
 		if(0)
 			emagged = 0.5
-			visible_message("\icon[src] <b>[src]</b> beeps: \"DB error \[Code 0x00F1\]\"")
+			visible_message("[icon2html(thing = src, target = world)] <b>[src]</b> beeps: \"DB error \[Code 0x00F1\]\"")
 			sleep(10)
-			visible_message("\icon[src] <b>[src]</b> beeps: \"Attempting auto-repair\"")
+			visible_message("[icon2html(thing = src, target = world)] <b>[src]</b> beeps: \"Attempting auto-repair\"")
 			sleep(15)
-			visible_message("\icon[src] <b>[src]</b> beeps: \"User DB corrupted \[Code 0x00FA\]. Truncating data structure...\"")
+			visible_message("[icon2html(thing = src, target = world)] <b>[src]</b> beeps: \"User DB corrupted \[Code 0x00FA\]. Truncating data structure...\"")
 			sleep(30)
-			visible_message("\icon[src] <b>[src]</b> beeps: \"User DB truncated. Please contact your [GLOB.using_map.company_name] system operator for future assistance.\"")
+			visible_message("[icon2html(thing = src, target = world)] <b>[src]</b> beeps: \"User DB truncated. Please contact your [GLOB.using_map.company_name] system operator for future assistance.\"")
 			req_access = null
 			emagged = 1
 			return 1
 		if(0.5)
-			visible_message("\icon[src] <b>[src]</b> beeps: \"DB not responding \[Code 0x0003\]...\"")
+			visible_message("[icon2html(thing = src, target = world)] <b>[src]</b> beeps: \"DB not responding \[Code 0x0003\]...\"")
 		if(1)
-			visible_message("\icon[src] <b>[src]</b> beeps: \"No records in User DB\"")
+			visible_message("[icon2html(thing = src, target = world)] <b>[src]</b> beeps: \"No records in User DB\"")
 
 /obj/machinery/pros_fabricator/proc/update_busy()
 	if(queue.len)
@@ -349,7 +349,8 @@
 
 /obj/machinery/pros_fabricator/proc/sync()
 	sync_message = "Error: no console found."
-	for(var/obj/machinery/computer/rdconsole/RDC in get_area_all_atoms(get_area(src)))
+	var/area/A = get_area(src)
+	for(var/obj/machinery/computer/rdconsole/RDC in A)
 		if(!RDC.sync)
 			continue
 		for(var/datum/tech/T in RDC.files.known_tech)

@@ -4,7 +4,8 @@
 	icon_state = "ano01"
 	var/find_type = 0
 
-/obj/item/archaeological_find/New(loc, var/new_item_type)
+/obj/item/archaeological_find/Initialize(mapload, new_item_type)
+	. = ..()
 	if(new_item_type)
 		find_type = new_item_type
 	else
@@ -104,10 +105,11 @@
 			var/chance = 8
 			for(var/type in typesof(/obj/item/coin))
 				if(prob(chance))
-					new_item = new type(src.loc)
+					new_item = new type(loc)
 					break
 				chance += 10
-
+			if(!new_item)
+				new_item = new /obj/item/coin(loc)
 			item_type = new_item.name
 			apply_prefix = 0
 			apply_material_decorations = 0

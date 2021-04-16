@@ -8,13 +8,13 @@
 	var/max_cable = 100
 	var/on = 0
 
-/obj/machinery/cablelayer/New()
+/obj/machinery/cablelayer/Initialize(mapload, newdir)
+	. = ..()
 	cable = new(src)
 	cable.amount = 100
-	..()
 
 /obj/machinery/cablelayer/Move(new_turf,M_Dir)
-	..()
+	. = ..()
 	layCable(new_turf,M_Dir)
 
 /obj/machinery/cablelayer/attack_hand(mob/user as mob)
@@ -49,8 +49,8 @@
 			to_chat(usr, "<span class='warning'>There's no more cable on the reel.</span>")
 
 /obj/machinery/cablelayer/examine(mob/user)
-	..()
-	to_chat(user, "\The [src]'s cable reel has [cable.amount] length\s left.")
+	. = ..()
+	. +="<span class = 'notice'>The [src]'s cable reel has [cable.amount] lengths left.</span>"
 
 /obj/machinery/cablelayer/proc/load_cable(var/obj/item/stack/cable_coil/CC)
 	if(istype(CC) && CC.amount)

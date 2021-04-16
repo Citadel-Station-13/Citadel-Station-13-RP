@@ -41,7 +41,7 @@
 	var/static/image/radial_image_grillewind = image(icon = 'icons/mob/radial.dmi', icon_state = "grillewindow")
 	var/static/image/radial_image_floorwall = image(icon = 'icons/mob/radial.dmi', icon_state = "wallfloor")
 
-/obj/item/rcd/Initialize()
+/obj/item/rcd/Initialize(mapload)
 	src.spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -73,12 +73,8 @@
 
 
 /obj/item/rcd/examine(mob/user)
-	..()
-	to_chat(user, display_resources())
-
-// Used to show how much stuff (matter units, cell charge, etc) is left inside.
-/obj/item/rcd/proc/display_resources()
-	return "It currently holds [stored_matter]/[max_stored_matter] matter-units."
+	. = ..()
+	. += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
 
 // Used to add new cartridges.
 /obj/item/rcd/attackby(obj/item/W, mob/user)
@@ -237,7 +233,7 @@
 // RCD variants.
 
 // This one starts full.
-/obj/item/rcd/loaded/Initialize()
+/obj/item/rcd/loaded/Initialize(mapload)
 	stored_matter = max_stored_matter
 	return ..()
 
@@ -252,7 +248,7 @@
 	can_remove_rwalls = TRUE
 	make_rwalls = TRUE
 
-/obj/item/rcd/shipwright/loaded/Initialize()
+/obj/item/rcd/shipwright/loaded/Initialize(mapload)
 	stored_matter = max_stored_matter
 	return ..()
 
@@ -266,7 +262,7 @@
 	toolspeed = 0.5 // Twice as fast.
 	max_stored_matter = RCD_MAX_CAPACITY * 3 // Three times capacity.
 
-/obj/item/rcd/advanced/loaded/Initialize()
+/obj/item/rcd/advanced/loaded/Initialize(mapload)
 	stored_matter = max_stored_matter
 	return ..()
 
@@ -283,7 +279,7 @@
 	var/make_cell = TRUE // If false, initialize() won't spawn a cell for this.
 	var/electric_cost_coefficent = 83.33 // Higher numbers make it less efficent. 86.3... means it should matche the standard RCD capacity on a 10k cell.
 
-/obj/item/rcd/electric/Initialize()
+/obj/item/rcd/electric/Initialize(mapload)
 	if(make_cell)
 		cell = new /obj/item/cell/high(src)
 	return ..()
@@ -311,7 +307,7 @@
 /obj/item/rcd/electric/update_icon()
 	return
 
-/obj/item/rcd/electric/display_resources()
+/obj/item/rcd/electric/proc/display_resources()
 	var/obj/item/cell/cell = get_cell()
 	if(cell)
 		return "The power source connected to \the [src] has a charge of [cell.percent()]%."
@@ -405,9 +401,6 @@
 		return FALSE
 	return ..()
 
-/obj/item/rcd/debug/display_resources()
-	return "It has UNLIMITED POWER!"
-
 
 
 // Ammo for the (non-electric) RCDs.
@@ -436,12 +429,8 @@
 	remaining = RCD_MAX_CAPACITY
 
 /obj/item/rcd_ammo/examine(mob/user)
-	..()
-	to_chat(user, display_resources())
-
-// Used to show how much stuff (matter units, cell charge, etc) is left inside.
-/obj/item/rcd_ammo/proc/display_resources()
-	return "It currently holds [remaining]/[initial(remaining)] matter-units."
+	. = ..()
+	. += "It currently holds [remaining]/[initial(remaining)] matter-units."
 
 // RCD Construction Effects
 
@@ -498,4 +487,3 @@
 
 /obj/effect/constructing_effect/proc/end()
 	qdel(src)
-

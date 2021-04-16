@@ -7,6 +7,18 @@
 	icon_state = "director"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 
+/obj/item/clothing/under/rank/research_director/skirt_pleated
+	name = "research director's pleated skirt"
+	icon_state = "director_skirt"
+
+/obj/item/clothing/under/rank/research_director/skirt_pleated/whimsical
+	name = "whimsical research director's pleated skirt"
+	icon_state = "rdwhimsy_skirt"
+
+/obj/item/clothing/under/rank/research_director/skirt_pleated/turtleneck
+	name = "research director's turtleneck pleated skirt"
+	icon_state = "rdturtle_skirt"
+
 /obj/item/clothing/under/rank/research_director/rdalt
 	desc = "A dress suit and slacks stained with hard work and dedication to science. Perhaps other things as well, but mostly hard work and dedication."
 	name = "head researcher uniform"
@@ -37,6 +49,10 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/scientist/skirt_pleated
+	name = "scientist's pleated skirt"
+	icon_state = "toxins_skirt"
+
 /obj/item/clothing/under/rank/scientist/turtleneck
 	name = "science turtleneck"
 	desc = "It's a stylish turtleneck weaved with an explosive-resistant, comfortable mesh. You don't have to look like a dork to be a dork."
@@ -54,6 +70,10 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/chemist/skirt_pleated
+	name = "chemist's pleated skirt"
+	icon_state = "chemistry_skirt"
+
 /*
  * Medical
  */
@@ -65,6 +85,10 @@
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/chief_medical_officer/skirt_pleated
+	name = "chief medical officer's pleated skirt"
+	icon_state = "cmo_skirt"
 
 /obj/item/clothing/under/rank/chief_medical_officer/turtleneck
 	desc = "It's a turtleneck worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection, for an officer with a superior sense of style and practicality."
@@ -81,6 +105,10 @@
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/geneticist/skirt_pleated
+	name = "geneticist's pleated skirt"
+	icon_state = "genetics_skirt"
+
 /obj/item/clothing/under/rank/virologist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it."
 	name = "virologist's jumpsuit"
@@ -89,6 +117,10 @@
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/virologist/skirt_pleated
+	name = "virologist's pleated skirt"
+	icon_state = "virology_skirt"
 
 /obj/item/clothing/under/rank/nursesuit
 	desc = "It's a jumpsuit commonly worn by nursing staff in the medical department."
@@ -126,6 +158,10 @@
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/medical/skirt_pleated
+	name = "medical doctor's pleated skirt"
+	icon_state = "medical_skirt"
 
 /obj/item/clothing/under/rank/medical/turtleneck
 	name = "medical turtleneck"

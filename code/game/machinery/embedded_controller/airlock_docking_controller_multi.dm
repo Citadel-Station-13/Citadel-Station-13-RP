@@ -8,7 +8,7 @@
 	var/child_names_txt
 	var/list/child_names = list()
 
-/obj/machinery/embedded_controller/radio/docking_port_multi/Initialize()
+/obj/machinery/embedded_controller/radio/docking_port_multi/Initialize(mapload)
 	. = ..()
 
 	var/list/names = splittext(child_names_txt, ";")
@@ -19,7 +19,7 @@
 			child_names[tags[i]] = names[i]
 
 
-/obj/machinery/embedded_controller/radio/docking_port_multi/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/embedded_controller/radio/docking_port_multi/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/datum/computer/file/embedded_program/docking/multi/docking_program = program	// Cast to proper type
 
@@ -54,7 +54,7 @@
 	var/master_tag	// For mapping
 	tag_secure = 1
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/datum/computer/file/embedded_program/airlock/multi_docking/airlock_program	// Cast to proper type
 

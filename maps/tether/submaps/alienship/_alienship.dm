@@ -27,7 +27,7 @@
 	var/door_on_mode
 	var/teleport_on_mode
 
-/obj/away_mission_init/alienship/Initialize()
+/obj/away_mission_init/alienship/Initialize(mapload)
 	. = ..()
 
 	if(!mission_mode) //WE ARE NUMBER ONE
@@ -105,7 +105,7 @@
 
 // -- Areas -- //
 
-/area/shuttle/excursion/away_alienship/Initialize()
+/area/shuttle/excursion/away_alienship/Initialize(mapload)
 	. = ..()
 	dump_area = locate(/area/tether_away/alienship/equip_dump)
 
@@ -160,7 +160,7 @@
 				L.drop_from_inventory(I, loc)
 		L.Paralyse(10)
 		L.forceMove(get_turf(pick(teleport_to)))
-		L << 'sound/effects/bamf.ogg'
+		SEND_SOUND(L, sound('sound/effects/bamf.ogg'))
 		to_chat(L,"<span class='warning'>You're starting to come to. You feel like you've been out for a few minutes, at least...</span>")
 
 /area/tether_away/alienship

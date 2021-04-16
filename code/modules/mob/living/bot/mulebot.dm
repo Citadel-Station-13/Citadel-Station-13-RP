@@ -36,9 +36,8 @@
 
 	var/global/amount = 0
 
-/mob/living/bot/mulebot/New()
-	..()
-
+/mob/living/bot/mulebot/Initialize(mapload)
+	. = ..()
 	var/turf/T = get_turf(loc)
 	var/obj/machinery/navbeacon/N = locate() in T
 	if(N)
@@ -60,10 +59,7 @@
 
 	load(C)
 
-/mob/living/bot/mulebot/attack_hand(var/mob/user)
-	interact(user)
-
-/mob/living/bot/mulebot/proc/interact(var/mob/user)
+/mob/living/bot/mulebot/ui_interact(mob/user)
 	var/dat
 	dat += "<TT><B>Multiple Utility Load Effector Mk. III</B></TT><BR><BR>"
 	dat += "ID: [suffix]<BR>"
@@ -151,7 +147,7 @@
 		if("safety")
 			safety = !safety
 
-	interact(usr)
+	ui_interact(usr)
 
 /mob/living/bot/mulebot/attackby(var/obj/item/O, var/mob/user)
 	..()
@@ -255,7 +251,6 @@
 		H.apply_damage(0.5 * damage, BRUTE, BP_R_ARM)
 
 		blood_splatter(src, H, 1)
-	..()
 
 /mob/living/bot/mulebot/relaymove(var/mob/user, var/direction)
 	if(load == user)

@@ -293,9 +293,9 @@
 
 	time_till_despawn = 60 //1 second, because gateway.
 
-/obj/machinery/cryopod/New()
+/obj/machinery/cryopod/Initialize(mapload)
+	. = ..()
 	announce = new /obj/item/radio/intercom(src)
-	..()
 
 /obj/machinery/cryopod/Destroy()
 	if(occupant)
@@ -303,7 +303,7 @@
 		occupant.resting = 1
 	return ..()
 
-/obj/machinery/cryopod/Initialize()
+/obj/machinery/cryopod/Initialize(mapload)
 	. = ..()
 
 	find_control_computer()
@@ -341,7 +341,7 @@
 	return 1
 
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
-/obj/machinery/cryopod/process()
+/obj/machinery/cryopod/process(delta_time)
 	if(occupant)
 		//Allow a ten minute gap between entering the pod and actually despawning.
 		if(world.time - time_entered < time_till_despawn)

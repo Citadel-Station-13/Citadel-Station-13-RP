@@ -34,6 +34,8 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define ADMIN_SPAWNED			(1<<10)
 /// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
 #define HEAR					(1<<11)
+/// Turf only - unused reservation turf
+#define UNUSED_RESERVATION_TURF	(1<<12)
 
 
 //Flags for items (equipment) - Used in /obj/item/var/item_flags
@@ -50,3 +52,13 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define PASSGRILLE				(1<<2)
 #define PASSBLOB				(1<<3)
 #define PASSMOB					(1<<4)
+
+// Flags for the clothing_flags var on /obj/item/clothing
+//flags for clothing_flags. only 1 exists at the moment because this is an examine refactor not aclothing refactor
+#define SCAN_REAGENTS			(1<<10)	// Allows helmets and glasses to scan reagents.
+
+//silicon_privileges flags on /mob
+#define PRIVILEGES_SILICON	(1<<0)
+#define PRIVILEGES_PAI		(1<<1)
+#define PRIVILEGES_BOT		(1<<2)
+#define PRIVILEGES_DRONE	(1<<3)

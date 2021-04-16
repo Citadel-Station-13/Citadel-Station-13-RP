@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 	evac = 1
 	emergency_shuttle_called.Announce(replacetext(GLOB.using_map.emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(istype(A, /area/hallway))
 			A.readyalert()
 
@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	if (evac)
 		emergency_shuttle_recalled.Announce(GLOB.using_map.emergency_shuttle_recall_message)
 
-		for(var/area/A in all_areas)
+		for(var/area/A in GLOB.sortedAreas)
 			if(istype(A, /area/hallway))
 				A.readyreset()
 		evac = 0
@@ -246,8 +246,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 
-/obj/effect/bgstar/New()
-	..()
+/obj/effect/bgstar/Initialize(mapload)
+	. = ..()
 	pixel_x += rand(-2,30)
 	pixel_y += rand(-2,30)
 	var/starnum = pick("1", "1", "1", "2", "3", "4")

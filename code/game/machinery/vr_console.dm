@@ -15,19 +15,19 @@
 	active_power_usage = 200
 	light_color = "#FF0000"
 
-/obj/machinery/vr_sleeper/New()
-	..()
+/obj/machinery/vr_sleeper/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stack/material/glass/reinforced(src, 2)
 
 	RefreshParts()
 
-/obj/machinery/vr_sleeper/Initialize()
+/obj/machinery/vr_sleeper/Initialize(mapload)
 	. = ..()
 	update_icon()
 
-/obj/machinery/vr_sleeper/process()
+/obj/machinery/vr_sleeper/process(delta_time)
 	if(stat & (NOPOWER|BROKEN))
 		return
 
@@ -196,14 +196,14 @@
 		// Get the desired spawn location to put the body
 		var/S = null
 		var/list/vr_landmarks = list()
-		for(var/obj/effect/landmark/virtual_reality/sloc in landmarks_list)
+		for(var/obj/effect/landmark/virtual_reality/sloc in GLOB.landmarks_list)
 			vr_landmarks += sloc.name
 
 		S = input(occupant, "Please select a location to spawn your avatar at:", "Spawn location") as null|anything in vr_landmarks
 		if(!S)
 			return 0
 
-		for(var/obj/effect/landmark/virtual_reality/i in landmarks_list)
+		for(var/obj/effect/landmark/virtual_reality/i in GLOB.landmarks_list)
 			if(i.name == S)
 				S = i
 				break

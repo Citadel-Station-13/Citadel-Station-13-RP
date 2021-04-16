@@ -17,9 +17,8 @@
 	var/obj/machinery/camera/bug/camera
 	var/camtype = /obj/machinery/camera/bug
 
-/obj/item/camerabug/New()
-	..()
-//	radio = new(src)
+/obj/item/camerabug/Initialize(mapload)
+	. = ..()
 	camera = new camtype(src)
 
 /obj/item/camerabug/attack_self(mob/user)
@@ -84,9 +83,8 @@
 	camtype = /obj/machinery/camera/bug/spy
 
 /obj/item/camerabug/examine(mob/user)
-	. = ..(user, 0)
-	if(.)
-		to_chat(user, "It has a tiny camera inside. Needs to be both configured and brought in contact with monitor device to be fully functional.")
+	. = ..()
+	. += "It has a tiny camera inside. Needs to be both configured and brought in contact with monitor device to be fully functional."
 
 /obj/item/camerabug/attackby(obj/item/W as obj, mob/living/user as mob)
 	if(istype(W, /obj/item/bug_monitor))
@@ -140,18 +138,13 @@
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 
 	var/operating = 0
-//	var/obj/item/radio/bug/radio
 	var/obj/machinery/camera/bug/selected_camera
 	var/list/obj/machinery/camera/bug/cameras = new()
-/*
-/obj/item/bug_monitor/New()
-	radio = new(src)
-*/
+
 /obj/item/bug_monitor/attack_self(mob/user)
 	if(operating)
 		return
 
-//	radio.attack_self(user)
 	view_cameras(user)
 
 /obj/item/bug_monitor/attackby(obj/item/W as obj, mob/living/user as mob)
@@ -221,9 +214,8 @@
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1, TECH_ILLEGAL = 3)
 
 /obj/item/bug_monitor/spy/examine(mob/user)
-	. = ..(user, 1)
-	if(.)
-		to_chat(user, "The time '12:00' is blinking in the corner of the screen and \the [src] looks very cheaply made.")
+	. = ..()
+	. += "The time '12:00' is blinking in the corner of the screen and \the [src] looks very cheaply made."
 
 /obj/machinery/camera/bug/check_eye(var/mob/user as mob)
 	return 0
@@ -231,8 +223,8 @@
 /obj/machinery/camera/bug
 	network = list(NETWORK_SECURITY)
 
-/obj/machinery/camera/bug/New()
-	..()
+/obj/machinery/camera/bug/Initialize(mapload)
+	. = ..()
 	name = "Camera #[rand(1000,9999)]"
 	c_tag = name
 
@@ -240,8 +232,8 @@
 	// These cheap toys are accessible from the mercenary camera console as well - only the antag ones though!
 	network = list(NETWORK_MERCENARY)
 
-/obj/machinery/camera/bug/spy/New()
-	..()
+/obj/machinery/camera/bug/spy/Initialize(mapload)
+	. = ..()
 	name = "DV-136ZB #[rand(1000,9999)]"
 	c_tag = name
 

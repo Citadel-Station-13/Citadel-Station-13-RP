@@ -36,8 +36,9 @@
 	w_class = ITEMSIZE_HUGE
 
 
-/obj/item/grab/New(mob/user, mob/victim)
-	..()
+/obj/item/grab/Initialize(mapload, mob/victim)
+	. = ..()
+	var/mob/user = loc
 	loc = user
 	assailant = user
 	affecting = victim
@@ -93,7 +94,7 @@
 		else
 			hud.screen_loc = ui_lhand
 
-/obj/item/grab/process()
+/obj/item/grab/process(delta_time)
 	if(QDELETED(src)) // GC is trying to delete us, we'll kill our processing so we can cleanly GC
 		return PROCESS_KILL
 
@@ -147,9 +148,6 @@
 
 	if(state >= GRAB_NECK)
 		affecting.Stun(3)
-		if(isliving(affecting))
-			var/mob/living/L = affecting
-			L.adjustOxyLoss(1)
 
 	if(state >= GRAB_KILL)
 		//affecting.apply_effect(STUTTER, 5) //would do this, but affecting isn't declared as mob/living for some stupid reason.

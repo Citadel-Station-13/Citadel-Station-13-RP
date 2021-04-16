@@ -3,12 +3,12 @@
 	set name = "Debug-Game"
 	if(!check_rights(R_DEBUG))	return
 
-	if(Debug2)
-		Debug2 = 0
+	if(GLOB.Debug2)
+		GLOB.Debug2 = 0
 		message_admins("[key_name(src)] toggled debugging off.")
 		log_admin("[key_name(src)] toggled debugging off.")
 	else
-		Debug2 = 1
+		GLOB.Debug2 = 1
 		message_admins("[key_name(src)] toggled debugging on.")
 		log_admin("[key_name(src)] toggled debugging on.")
 
@@ -93,7 +93,7 @@
 	usr.show_message(t, 1)
 	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_robotize(var/mob/M in mob_list)
+/client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Robot"
 
@@ -108,7 +108,7 @@
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_animalize(var/mob/M in mob_list)
+/client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
 
@@ -129,13 +129,13 @@
 		M.Animalize()
 
 
-/client/proc/makepAI(var/turf/T in mob_list)
+/client/proc/makepAI(var/turf/T in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make pAI"
 	set desc = "Specify a location to spawn a pAI device, then specify a key to play that pAI"
 
 	var/list/available = list()
-	for(var/mob/C in mob_list)
+	for(var/mob/C in GLOB.mob_list)
 		if(C.key)
 			available.Add(C)
 	var/mob/choice = input("Choose a player to play the pAI", "Spawn pAI") in available
@@ -156,7 +156,7 @@
 			paiController.pai_candidates.Remove(candidate)
 	feedback_add_details("admin_verb","MPAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_alienize(var/mob/M in mob_list)
+/client/proc/cmd_admin_alienize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Alien"
 
@@ -173,22 +173,29 @@
 	else
 		alert("Invalid mob")
 
-
 //TODO: merge the vievars version into this or something maybe mayhaps
-/client/proc/cmd_debug_del_all()
+/client/proc/cmd_debug_del_all(object as text)
 	set category = "Debug"
 	set name = "Del-All"
 
-	// to prevent REALLY stupid deletions
-	var/blocked = list(/obj, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/human, /mob/observer/dead, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
-	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in typesof(/obj) + typesof(/mob) - blocked
+	var/list/matches = get_fancy_list_of_atom_types()
+	if (!isnull(object) && object!="")
+		matches = filter_fancy_list(matches, object)
+
+	if(matches.len==0)
+		return
+	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in matches
 	if(hsbitem)
+		hsbitem = matches[hsbitem]
+		var/counter = 0
 		for(var/atom/O in world)
 			if(istype(O, hsbitem))
+				counter++
 				qdel(O)
-		log_admin("[key_name(src)] has deleted all instances of [hsbitem].")
-		message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem].", 0)
-	feedback_add_details("admin_verb","DELA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+			CHECK_TICK
+		log_admin("[key_name(src)] has deleted all ([counter]) instances of [hsbitem].")
+		message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [hsbitem].")
+		// SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
@@ -267,7 +274,7 @@
 	else
 		. = lines.Join("\n")
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in mob_list)
+/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Grant Full Access"
 
@@ -298,7 +305,7 @@
 	log_admin("[key_name(src)] has granted [M.key] full access.")
 	message_admins("<font color='blue'>[key_name_admin(usr)] has granted [M.key] full access.</font>", 1)
 
-/client/proc/cmd_assume_direct_control(var/mob/M in mob_list)
+/client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Assume direct control"
 	set desc = "Direct intervention"
@@ -341,7 +348,7 @@
 	var/list/areas_with_intercom = list()
 	var/list/areas_with_camera = list()
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(!(A.type in areas_all))
 			areas_all.Add(A.type)
 
@@ -582,17 +589,17 @@
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
 		if("Players")
-			usr << jointext(player_list,",")
+			to_chat(usr, jointext(player_list,","))
 		if("Admins")
-			usr << jointext(admins,",")
+			to_chat(usr, jointext(admins,","))
 		if("Mobs")
-			usr << jointext(mob_list,",")
+			to_chat(usr, jointext(GLOB.mob_list,","))
 		if("Living Mobs")
-			usr << jointext(living_mob_list,",")
+			to_chat(usr, jointext(living_mob_list,","))
 		if("Dead Mobs")
-			usr << jointext(dead_mob_list,",")
+			to_chat(usr, jointext(dead_mob_list,","))
 		if("Clients")
-			usr << jointext(GLOB.clients,",")
+			to_chat(usr, jointext(GLOB.clients,","))
 
 /client/proc/cmd_debug_using_map()
 	set category = "Debug"

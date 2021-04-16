@@ -138,6 +138,8 @@
 /datum/supply_pack/hydro/bee_keeper
 	name = "Beekeeping crate"
 	contains = list(
+			/obj/item/clothing/head/beekeeper,
+			/obj/item/clothing/suit/beekeeper,
 			/obj/item/beehive_assembly,
 			/obj/item/bee_smoker,
 			/obj/item/honey_frame = 5,

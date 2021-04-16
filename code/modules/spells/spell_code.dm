@@ -64,7 +64,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	//still_recharging_msg = "<span class='notice'>[name] is still recharging.</span>"
 	charge_counter = charge_max
 
-/spell/process()
+/spell/process(delta_time)
 	spawn while(charge_counter < charge_max)
 		charge_counter++
 		sleep(1)
@@ -156,7 +156,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	for(var/atom/target in targets)
 		var/location = get_turf(target)
 		if(istype(target,/mob/living) && message)
-			target << text("[message]")
+			to_chat(target, "[message]")
 		if(sparks_spread)
 			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 			sparks.set_up(sparks_amt, 0, location) //no idea what the 0 is
@@ -229,7 +229,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 		switch(charge_type)
 			if(Sp_RECHARGE)
 				if(charge_counter < charge_max)
-					user << still_recharging_msg
+					to_chat(user, still_recharging_msg)
 					return 0
 			if(Sp_CHARGES)
 				if(!charge_counter)
@@ -277,7 +277,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 	if(level_max[Sp_TOTAL] <= ( spell_levels[Sp_SPEED] + spell_levels[Sp_POWER] )) //too many levels, can't do it
 		return 0
 
-	if(upgrade_type && upgrade_type in spell_levels && upgrade_type in level_max)
+	if(upgrade_type && (upgrade_type in spell_levels) && (upgrade_type in level_max))
 		if(spell_levels[upgrade_type] >= level_max[upgrade_type])
 			return 0
 

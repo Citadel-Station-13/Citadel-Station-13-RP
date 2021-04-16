@@ -65,8 +65,8 @@ two tiles on initialization, and which way a cliff is facing may change during m
 /obj/structure/cliff/bottom
 	bottom = TRUE
 
-/obj/structure/cliff/automatic/Initialize()
-	..()
+/obj/structure/cliff/automatic/Initialize(mapload)
+	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
 // Paranoid about the maploader, direction is very important to cliffs, since they may get bigger if initialized while facing NORTH.
@@ -114,7 +114,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 
 	var/subtraction_icon_state = "[icon_state]-subtract"
 	var/cache_string = "[icon_state]_[T.icon]_[T.icon_state]"
-	if(T && subtraction_icon_state in icon_states(icon))
+	if(T && (subtraction_icon_state in icon_states(icon)))
 		cut_overlays()
 		// If we've made the same icon before, just recycle it.
 		if(cache_string in GLOB.cliff_icon_cache)
@@ -160,14 +160,14 @@ two tiles on initialization, and which way a cliff is facing may change during m
 		return FALSE
 
 	var/turf/T = get_turf(L)
-	if(T && get_dir(T, loc) & reverse_dir[dir]) // dir points 'up' the cliff, e.g. cliff pointing NORTH will cause someone to fall if moving SOUTH into it.
+	if(T && get_dir(T, loc) & GLOB.reverse_dir[dir]) // dir points 'up' the cliff, e.g. cliff pointing NORTH will cause someone to fall if moving SOUTH into it.
 		return TRUE
 	return FALSE
 
 /obj/structure/cliff/proc/fall_off_cliff(mob/living/L)
 	if(!istype(L))
 		return FALSE
-	var/turf/T = get_step(src, reverse_dir[dir])
+	var/turf/T = get_step(src, GLOB.reverse_dir[dir])
 	var/displaced = FALSE
 
 	if(dir in list(EAST, WEST)) // Apply an offset if flying sideways, to help maintain the illusion of depth.

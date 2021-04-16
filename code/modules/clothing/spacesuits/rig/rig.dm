@@ -100,23 +100,22 @@
 /obj/item/rig/get_cell()
 	return cell
 
-/obj/item/rig/examine()
-	to_chat(usr, "This is \icon[src][src.name].")
-	to_chat(usr, "[src.desc]")
+/obj/item/rig/examine(mob/user)
+	. = ..()
 	if(wearer)
 		for(var/obj/item/piece in list(helmet,gloves,chest,boots))
 			if(!piece || piece.loc != wearer)
 				continue
-			to_chat(usr, "\icon[piece] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed.")
+			. += "[icon2html(thing = piece, target = user)] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed."
 
 	if(src.loc == usr)
-		to_chat(usr, "The access panel is [locked? "locked" : "unlocked"].")
-		to_chat(usr, "The maintenance panel is [open ? "open" : "closed"].")
-		to_chat(usr, "Hardsuit systems are [offline ? "<font color='red'>offline</font>" : "<font color='green'>online</font>"].")
-		to_chat(usr, "The cooling stystem is [cooling_on ? "active" : "inactive"].")
+		. += "The access panel is [locked? "locked" : "unlocked"]."
+		. += "The maintenance panel is [open ? "open" : "closed"]."
+		. += "Hardsuit systems are [offline ? "<font color='red'>offline</font>" : "<font color='green'>online</font>"]."
+		. += "The cooling stystem is [cooling_on ? "active" : "inactive"]."
 
 		if(open)
-			to_chat(usr, "It's equipped with [english_list(installed_modules)].")
+			. += "It's equipped with [english_list(installed_modules)]."
 
 /obj/item/rig/Initialize(mapload)
 	. = ..()
@@ -468,7 +467,7 @@
 	if(cell.charge <= 0)
 		turn_cooling_off(H, 1)
 
-/obj/item/rig/process()
+/obj/item/rig/process(delta_time)
 	// If we've lost any parts, grab them back.
 	var/mob/living/M
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
@@ -567,7 +566,7 @@
 	else
 		stat(null, text("No Cell Inserted!"))
 
-/obj/item/rig/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/nano_state = inventory_state)
+/obj/item/rig/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/nano_state = inventory_state)
 	if(!user)
 		return
 
@@ -975,13 +974,13 @@
 			return 0
 
 	if(offline || !cell || !cell.charge || locked_down)
-		if(user) user << "<span class='warning'>Your host rig is unpowered and unresponsive.</span>"
+		if(user) to_chat(user, "<span class='warning'>Your host rig is unpowered and unresponsive.</span>")
 		return 0
 	if(!wearer || (wearer.back != src && wearer.belt != src))
-		if(user) user << "<span class='warning'>Your host rig is not being worn.</span>"
+		if(user) to_chat(user, "<span class='warning'>Your host rig is not being worn.</span>")
 		return 0
 	if(!wearer.stat && !control_overridden && !ai_override_enabled)
-		if(user) user << "<span class='warning'>You are locked out of the suit servo controller.</span>"
+		if(user) to_chat(user, "<span class='warning'>You are locked out of the suit servo controller.</span>")
 		return 0
 	return 1
 
@@ -1024,7 +1023,7 @@
 			return 0
 
 	if(malfunctioning)
-		direction = pick(cardinal)
+		direction = pick(GLOB.cardinal)
 
 	// Inside an object, tell it we moved.
 	if(isobj(wearer.loc) || ismob(wearer.loc))

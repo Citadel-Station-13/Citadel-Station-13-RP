@@ -6,7 +6,7 @@
 	var/datum/computer/file/embedded_program/program	// The currently executing program
 	var/on = 1
 
-/obj/machinery/embedded_controller/Initialize()
+/obj/machinery/embedded_controller/Initialize(mapload)
 	if(ispath(program))
 		program = new program(src)
 	return ..()
@@ -37,21 +37,21 @@
 	//if(program)
 	//	return program.receive_user_command(href_list["command"])
 
-/obj/machinery/embedded_controller/process()
+/obj/machinery/embedded_controller/process(delta_time)
 	if(program)
 		program.process()
 
 	update_icon()
 
 /obj/machinery/embedded_controller/attack_ai(mob/user as mob)
-	src.ui_interact(user)
+	src.nano_ui_interact(user)
 
 /obj/machinery/embedded_controller/attack_hand(mob/user as mob)
 
 	if(!user.IsAdvancedToolUser())
 		return 0
 
-	src.ui_interact(user)
+	src.nano_ui_interact(user)
 
 //
 // Embedded controller with a radio! (Most things (All things?) use this)
@@ -71,7 +71,7 @@
 	var/radio_filter = null
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/embedded_controller/radio/Initialize()
+/obj/machinery/embedded_controller/radio/Initialize(mapload)
 	set_frequency(frequency)	// Set it before parent instantiates program
 	. = ..()
 

@@ -27,7 +27,7 @@
 
 	if(monitored_alarm_ids)
 		for(var/obj/machinery/alarm/alarm in machines)
-			if(alarm.alarm_id && alarm.alarm_id in monitored_alarm_ids)
+			if(alarm.alarm_id && (alarm.alarm_id in monitored_alarm_ids))
 				monitored_alarms += alarm
 		// machines may not yet be ordered at this point
 		monitored_alarms = dd_sortedObjectList(monitored_alarms)
@@ -41,10 +41,10 @@
 			var/obj/machinery/alarm/alarm = locate(href_list["alarm"]) in (monitored_alarms.len ? monitored_alarms : machines)
 			if(alarm)
 				var/datum/topic_state/TS = generate_state(alarm)
-				alarm.ui_interact(usr, master_ui = ui_ref, state = TS)
+				alarm.nano_ui_interact(usr, master_ui = ui_ref, state = TS)
 		return 1
 
-/datum/nano_module/atmos_control/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/master_ui = null, var/datum/topic_state/state = default_state)
+/datum/nano_module/atmos_control/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/master_ui = null, var/datum/topic_state/state = default_state)
 	var/list/data = host.initial_data()
 	var/alarms[0]
 	var/turf/T = get_turf(nano_host())

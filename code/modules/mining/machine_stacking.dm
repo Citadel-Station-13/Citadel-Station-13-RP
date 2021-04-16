@@ -103,16 +103,16 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/mineral/stacking_machine/LateInitialize()
-	for (var/dir in cardinal)
+	for (var/dir in GLOB.cardinal)
 		input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 		if(input)
 			break
-	for (var/dir in cardinal)
+	for (var/dir in GLOB.cardinal)
 		output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 		if(output)
 			break
 
-/obj/machinery/mineral/stacking_machine/process()
+/obj/machinery/mineral/stacking_machine/process(delta_time)
 	if(!input || !output)
 		return
 	var/turf/inturf = get_turf(input)

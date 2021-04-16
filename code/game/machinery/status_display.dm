@@ -64,13 +64,13 @@
 	return
 
 // Register for radio system
-/obj/machinery/status_display/Initialize()
+/obj/machinery/status_display/Initialize(mapload)
 	. = ..()
 	if(radio_controller)
 		radio_controller.add_object(src, frequency)
 
 // Timed process
-/obj/machinery/status_display/process()
+/obj/machinery/status_display/process(delta_time)
 	if(stat & NOPOWER)
 		remove_display()
 		return
@@ -247,6 +247,7 @@
 			mode = STATUS_DISPLAY_TIME
 	update()
 
+#undef FONT_SIZE
 #undef FONT_COLOR
 #undef FONT_STYLE
 #undef SCROLL_SPEED

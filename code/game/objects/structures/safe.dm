@@ -22,16 +22,14 @@ FLOOR SAFES
 	var/maxspace = 24	//the maximum combined w_class of stuff in the safe
 
 
-/obj/structure/safe/New()
+/obj/structure/safe/Initialize(mapload)
+	. = ..()
 	tumbler_1_pos = rand(0, 72)
 	tumbler_1_open = rand(0, 72)
 
 	tumbler_2_pos = rand(0, 72)
 	tumbler_2_open = rand(0, 72)
 
-
-/obj/structure/safe/Initialize()
-	. = ..()
 	for(var/obj/item/I in loc)
 		if(space >= maxspace)
 			return
@@ -115,7 +113,7 @@ FLOOR SAFES
 				if(canhear)
 					to_chat(user, "<span class='notice'>You hear a [pick("click", "chink", "clink")] from \the [src].</span>")
 					playsound(user, 'sound/machines/click.ogg', 20, 1)
-			check_unlocked(user, canhear)		
+			check_unlocked(user, canhear)
 
 		updateUsrDialog()
 		return
@@ -175,7 +173,7 @@ obj/structure/safe/ex_act(severity)
 	plane = TURF_PLANE
 	layer = ABOVE_UTILITY
 
-/obj/structure/safe/floor/Initialize()
+/obj/structure/safe/floor/Initialize(mapload)
 	. = ..()
 	var/turf/T = loc
 	if(istype(T) && !T.is_plating())

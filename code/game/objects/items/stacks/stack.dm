@@ -66,9 +66,9 @@
 /obj/item/stack/examine(mob/user)
 	. = ..()
 	if(!uses_charge)
-		to_chat(user, "There are [amount] [singular_name]\s in the stack.")
+		. += "There are [amount] [singular_name]\s in the stack."
 	else
-		to_chat(user, "There is enough charge for [get_amount()].")
+		. += "There is enough charge for [get_amount()]."
 
 /obj/item/stack/attack_self(mob/user as mob)
 	list_recipes(user)
@@ -100,7 +100,7 @@
 		if (istype(E, /datum/stack_recipe))
 			var/datum/stack_recipe/R = E
 			var/max_multiplier = round(src.get_amount() / R.req_amount)
-			var/title as text
+			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier>0)
 			if (R.res_amount>1)
@@ -229,7 +229,7 @@
 		amount -= used
 		if (amount <= 0)
 			if(usr)
-				usr.remove_from_mob(src)
+				usr.remove_from_mob(src, null)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
 		return 1
@@ -240,7 +240,6 @@
 			var/datum/matter_synth/S = synths[i]
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
 		return 1
-	return 0
 
 /obj/item/stack/proc/add(var/extra)
 	if(!uses_charge)

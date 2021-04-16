@@ -4,7 +4,7 @@
 	icon_state = "signaller"
 	item_state = "signaler"
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 200, "waste" = 100)
+	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 200)
 	wires = WIRE_RECEIVE | WIRE_PULSE | WIRE_RADIO_PULSE | WIRE_RADIO_RECEIVE
 
 	secured = TRUE
@@ -17,12 +17,13 @@
 	var/datum/radio_frequency/radio_connection
 	var/deadman = FALSE
 
-/obj/item/assembly/signaler/New()
-	..()
-	spawn(40)
-		set_frequency(frequency)
-	return
+/obj/item/assembly/signaler/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/item/assembly/signaler/LateInitialize()
+	. = ..()
+	set_frequency(frequency)
 
 /obj/item/assembly/signaler/activate()
 	if(cooldown > 0)	return FALSE
@@ -148,7 +149,7 @@ Code:
 
 	if(!holder)
 		for(var/mob/O in hearers(1, src.loc))
-			O.show_message(text("\icon[] *beep* *beep*", src), 3, "*beep* *beep*", 2)
+			to_chat(O,"[icon2html(thing = src, target = O)] *beep beep*")
 	return
 
 
@@ -165,7 +166,7 @@ Code:
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 	return
 
-/obj/item/assembly/signaler/process()
+/obj/item/assembly/signaler/process(delta_time)
 	if(!deadman)
 		STOP_PROCESSING(SSobj, src)
 	var/mob/M = src.loc

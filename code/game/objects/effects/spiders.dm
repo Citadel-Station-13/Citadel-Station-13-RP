@@ -57,7 +57,7 @@
 /obj/effect/spider/stickyweb
 	icon_state = "stickyweb1"
 
-/obj/effect/spider/stickyweb/Initialize()
+/obj/effect/spider/stickyweb/Initialize(mapload)
 	if(prob(50))
 		icon_state = "stickyweb2"
 	return ..()
@@ -83,15 +83,15 @@
 	var/spiders_max = 24
 	var/spider_type = /obj/effect/spider/spiderling
 
-/obj/effect/spider/eggcluster/Initialize()
+/obj/effect/spider/eggcluster/Initialize(mapload)
 	pixel_x = rand(3,-3)
 	pixel_y = rand(3,-3)
 	START_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/spider/eggcluster/New(var/location, var/atom/parent)
+/obj/effect/spider/eggcluster/Initialize(mapload, atom/parent)
+	. = ..()
 	get_light_and_color(parent)
-	..()
 
 /obj/effect/spider/eggcluster/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -101,7 +101,7 @@
 
 	return ..()
 
-/obj/effect/spider/eggcluster/process()
+/obj/effect/spider/eggcluster/process(delta_time)
 	amount_grown += rand(0,2)
 	if(amount_grown >= 100)
 		var/num = rand(spiders_min, spiders_max)
@@ -140,7 +140,8 @@
 /obj/effect/spider/spiderling/frost
 	grow_as = list(/mob/living/simple_mob/animal/giant_spider/frost)
 
-/obj/effect/spider/spiderling/New(var/location, var/atom/parent)
+/obj/effect/spider/spiderling/Initialize(mapload, atom/parent)
+	. = ..()
 	pixel_x = rand(6,-6)
 	pixel_y = rand(6,-6)
 	START_PROCESSING(SSobj, src)
@@ -148,7 +149,6 @@
 	if(prob(50))
 		amount_grown = 1
 	get_light_and_color(parent)
-	..()
 
 /obj/effect/spider/spiderling/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -170,7 +170,7 @@
 	if(health <= 0)
 		die()
 
-/obj/effect/spider/spiderling/process()
+/obj/effect/spider/spiderling/process(delta_time)
 	if(travelling_in_vent)
 		if(istype(src.loc, /turf))
 			travelling_in_vent = 0
@@ -271,8 +271,9 @@
 	icon_state = "cocoon1"
 	health = 10
 
-/obj/effect/spider/cocoon/New()
-		icon_state = pick("cocoon1","cocoon2","cocoon3")
+/obj/effect/spider/cocoon/Initialize(mapload)
+	. = ..()
+	icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
 	src.visible_message("<span class='warning'>\The [src] splits open.</span>")

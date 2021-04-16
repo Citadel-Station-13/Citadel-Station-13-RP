@@ -147,7 +147,7 @@
 	..()
 
 //stealth direct power usage
-/obj/machinery/power/singularity_beacon/process()
+/obj/machinery/power/singularity_beacon/process(delta_time)
 	if(!active)
 		return PROCESS_KILL
 	else

@@ -28,7 +28,7 @@
 /obj/machinery/power/port_gen/proc/handleInactive()
 	return
 
-/obj/machinery/power/port_gen/process()
+/obj/machinery/power/port_gen/process(delta_time)
 	if(active && HasFuel() && !IsBroken() && anchored && powernet)
 		add_avail(power_gen * power_output)
 		UseFuel()
@@ -48,12 +48,11 @@
 		return
 
 /obj/machinery/power/port_gen/examine(mob/user)
-	if(!..(user,1 ))
-		return
+	. = ..()
 	if(active)
-		to_chat(user, "<span class='notice'>The generator is on.</span>")
+		. += "<span class='notice'>The generator is on.</span>"
 	else
-		to_chat(user, "<span class='notice'>The generator is off.</span>")
+		. += "<span class='notice'>The generator is off.</span>"
 
 /obj/machinery/power/port_gen/emp_act(severity)
 	var/duration = 6000 //ten minutes
@@ -110,19 +109,16 @@
 	var/temperature = 0		//The current temperature
 	var/overheating = 0		//if this gets high enough the generator explodes
 
-/obj/machinery/power/port_gen/pacman/Initialize()
+/obj/machinery/power/port_gen/pacman/Initialize(mapload)
 	. = ..()
-	if(anchored)
-		connect_to_network()
-
-/obj/machinery/power/port_gen/pacman/New()
-	..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 2)
 	component_parts += new /obj/item/stock_parts/capacitor(src)
 	RefreshParts()
+	if(anchored)
+		connect_to_network()
 
 /obj/machinery/power/port_gen/pacman/Destroy()
 	DropFuel()
@@ -144,13 +140,13 @@
 	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
 
 /obj/machinery/power/port_gen/pacman/examine(mob/user)
-	..(user)
-	to_chat(user, "\The [src] appears to be producing [power_gen*power_output] W.")
-	to_chat(user, "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper.")
+	. = ..()
+	. += "\The [src] appears to be producing [power_gen*power_output] W."
+	. += "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper."
 	if(IsBroken())
-		to_chat(user, "<span class='warning'>\The [src] seems to have broken down.</span>")
+		. += "<span class='warning'>\The [src] seems to have broken down.</span>"
 	if(overheating)
-		to_chat(user, "<span class='danger'>\The [src] is overheating!</span>")
+		. += "<span class='danger'>\The [src] is overheating!</span>"
 
 /obj/machinery/power/port_gen/pacman/HasFuel()
 	var/needed_sheets = power_output / time_per_sheet
@@ -295,12 +291,12 @@
 	..()
 	if (!anchored)
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/power/port_gen/pacman/attack_ai(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/power/port_gen/pacman/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/port_gen/pacman/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(IsBroken())
 		return
 

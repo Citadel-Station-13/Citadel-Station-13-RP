@@ -21,7 +21,7 @@
 	var/list/filled_reagents = list()
 	var/hyposound	// What sound do we play on use?
 
-/obj/item/reagent_containers/hypospray/Initialize()
+/obj/item/reagent_containers/hypospray/Initialize(mapload)
 	. = ..()
 	if(filled)
 		if(filled_reagents)
@@ -91,7 +91,7 @@
 	var/obj/item/reagent_containers/glass/beaker/vial/loaded_vial //Wow, what a name.
 	volume = 0
 
-/obj/item/reagent_containers/hypospray/vial/Initialize()
+/obj/item/reagent_containers/hypospray/vial/Initialize(mapload)
 	. = ..()
 	loaded_vial = new /obj/item/reagent_containers/glass/beaker/vial(src) //Comes with an empty vial
 	volume = loaded_vial.volume
@@ -155,7 +155,7 @@
 	filled = 0
 	filled_reagents = list()
 
-/obj/item/reagent_containers/hypospray/autoinjector/used/Initialize()
+/obj/item/reagent_containers/hypospray/autoinjector/used/Initialize(mapload)
 	. = ..()
 	flags &= ~OPENCONTAINER
 	icon_state = "[initial(icon_state)]0"
@@ -173,11 +173,11 @@
 		icon_state = "[initial(icon_state)]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user)
-	. = ..(user)
+	. = ..()
 	if(reagents && reagents.reagent_list.len)
-		to_chat(user, "<span class='notice'>It is currently loaded.</span>")
+		. += "<span class='notice'>It is currently loaded.</span>"
 	else
-		to_chat(user, "<span class='notice'>It is spent.</span>")
+		. += "<span class='notice'>It is spent.</span>"
 
 /obj/item/reagent_containers/hypospray/autoinjector/detox
 	name = "autoinjector (antitox)"

@@ -42,6 +42,8 @@
 
 /obj/effect/plant/Crossed(atom/movable/O)
 	. = ..()
+	if(O.is_incorporeal())
+		return
 	if(isliving(O))
 		trodden_on(O)
 
@@ -127,8 +129,8 @@
 				src.visible_message("<span class='danger'>Tendrils lash out from \the [src] and drag \the [victim] in!</span>")
 				victim.forceMove(src.loc)
 				buckle_mob(victim)
-				victim.setDir(pick(cardinal))
-				victim << "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>"
+				victim.setDir(pick(GLOB.cardinal))
+				to_chat(victim, "<span class='danger'>Tendrils [pick("wind", "tangle", "tighten")] around you!</span>")
 				victim.Weaken(1)
 				victim.adjustToxLoss(rand(0.5,1.25))
 				seed.do_thorns(victim,src)

@@ -17,18 +17,14 @@
 	updateVisibility(src)
 	return ..()
 
-/turf/simulated/Initialize()
-	. = ..()
-	updateVisibility(src)
-
 // STRUCTURES
 
 /obj/structure/Destroy()
 	updateVisibility(src)
 	return ..()
 
-/obj/structure/New()
-	..()
+/obj/structure/Initialize(mapload)
+	. = ..()
 	updateVisibility(src)
 
 // EFFECTS
@@ -37,8 +33,8 @@
 	updateVisibility(src)
 	return ..()
 
-/obj/effect/New()
-	..()
+/obj/effect/Initialize(mapload)
+	. = ..()
 	updateVisibility(src)
 
 // DOORS

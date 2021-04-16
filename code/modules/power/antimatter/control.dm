@@ -29,19 +29,17 @@
 	var/stored_power = 0//Power to deploy per tick
 
 
-/obj/machinery/power/am_control_unit/New()
-	..()
+/obj/machinery/power/am_control_unit/Initialize(mapload, newdir)
+	. = ..()
 	linked_shielding = list()
 	linked_cores = list()
-
 
 /obj/machinery/power/am_control_unit/Destroy()//Perhaps damage and run stability checks rather than just qdel on the others
 	for(var/obj/machinery/am_shielding/AMS in linked_shielding)
 		qdel(AMS)
-	..()
+	return ..()
 
-
-/obj/machinery/power/am_control_unit/process()
+/obj/machinery/power/am_control_unit/process(delta_time)
 	if(exploding)
 		explosion(get_turf(src),8,12,18,12)
 		if(src) qdel(src)

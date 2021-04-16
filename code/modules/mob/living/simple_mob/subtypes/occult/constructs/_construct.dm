@@ -100,8 +100,8 @@
 /mob/living/simple_mob/construct/cultify()
 	return
 
-/mob/living/simple_mob/construct/New()
-	..()
+/mob/living/simple_mob/construct/Initialize(mapload)
+	. = ..()
 	name = text("[initial(name)] ([rand(1, 1000)])")
 	real_name = name
 	for(var/spell in construct_spells)
@@ -137,7 +137,7 @@
 
 /mob/living/simple_mob/construct/examine(mob/user)
 	..(user)
-	var/msg = "<span cass='info'>*---------*\nThis is \icon[src] \a <EM>[src]</EM>!\n"
+	var/msg = "<span cass='info'>*---------*\nThis is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())
 		msg += "<span class='warning'>"
 		if (src.health >= src.getMaxHealth()/2)
@@ -147,7 +147,7 @@
 		msg += "</span>"
 	msg += "*---------*</span>"
 
-	user << msg
+	to_chat(user, msg)
 
 //Constructs levitate, can fall from a shuttle with no harm, and are piloted by either damned spirits or some otherworldly entity. Let 'em float in space.
 /mob/living/simple_mob/construct/Process_Spacemove()

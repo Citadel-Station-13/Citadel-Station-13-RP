@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/lungs
 	name = "lungs"
@@ -7,7 +6,7 @@
 	organ_tag = O_LUNGS
 	parent_organ = BP_TORSO
 
-/obj/item/organ/internal/lungs/process()
+/obj/item/organ/internal/lungs/process(delta_time)
 	..()
 
 	if(!owner)
@@ -50,10 +49,12 @@
 /obj/item/organ/internal/lungs/grey
 	icon_state = "lungs_grey"
 
-/obj/item/organ/internal/lungs/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/lungs/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/lungs/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.species.blood_color)
+			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)

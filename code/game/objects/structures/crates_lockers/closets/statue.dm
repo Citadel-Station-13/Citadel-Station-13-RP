@@ -12,7 +12,8 @@
 	var/intialOxy = 0
 	var/timer = 240 //eventually the person will be freed
 
-/obj/structure/closet/statue/New(loc, var/mob/living/L)
+/obj/structure/closet/statue/Initialize(mapload, mob/living/L)
+	. = ..(mapload)
 	if(L && (ishuman(L) || L.isMonkey() || iscorgi(L)))
 		if(L.buckled)
 			L.buckled = 0
@@ -46,7 +47,7 @@
 	START_PROCESSING(SSobj, src)
 	..()
 
-/obj/structure/closet/statue/process()
+/obj/structure/closet/statue/process(delta_time)
 	timer--
 	for(var/mob/living/M in src) //Go-go gadget stasis field
 		M.setToxLoss(intialTox)

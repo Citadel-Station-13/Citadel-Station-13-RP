@@ -23,7 +23,7 @@
 	cell_type = null
 	opened = TRUE
 
-/obj/item/inducer/Initialize()
+/obj/item/inducer/Initialize(mapload)
 	. = ..()
 	if(!cell && cell_type)
 		cell = new cell_type
@@ -245,14 +245,12 @@
 
 /obj/item/inducer/examine(mob/living/M)
 	. = ..()
-	var/dat = ""
 	if(cell)
-		dat += "<br><span class='notice'>Its display shows: [round(cell.charge)] / [cell.maxcharge].</span>"
+		. += "<br><span class='notice'>Its display shows: [round(cell.charge)] / [cell.maxcharge].</span>"
 	else
-		dat += "<br><span class='notice'>Its display is dark.</span>"
+		. += "<br><span class='notice'>Its display is dark.</span>"
 	if(opened)
-		dat += "<br><span class='notice'>Its battery compartment is open.</span>"
-	to_chat(M, dat)
+		. += "<br><span class='notice'>Its battery compartment is open.</span>"
 
 /obj/item/inducer/update_icon()
 	..()
@@ -273,7 +271,7 @@
 	powertransfer = 500
 	opened = TRUE
 
-/obj/item/inducer/sci/Initialize()
+/obj/item/inducer/sci/Initialize(mapload)
 	. = ..()
 	update_icon() //To get the 'open' state applied
 
@@ -308,8 +306,8 @@
 
 	var/mob/living/carbon/human/hume
 
-/obj/item/cell/standin/New(newloc, var/mob/living/carbon/human/H)
-	..()
+/obj/item/cell/standin/Initialize(mapload, mob/living/carbon/human/H)
+	. = ..()
 	hume = H
 	charge = H.nutrition
 	maxcharge = initial(H.nutrition)

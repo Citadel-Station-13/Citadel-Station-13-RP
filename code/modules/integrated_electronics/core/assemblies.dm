@@ -20,7 +20,7 @@
 	var/detail_color = COLOR_ASSEMBLY_BLACK
 
 
-/obj/item/electronic_assembly/Initialize()
+/obj/item/electronic_assembly/Initialize(mapload)
 	battery = new(src)
 	START_PROCESSING(SSobj, src)
 	return ..()
@@ -30,7 +30,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/electronic_assembly/process()
+/obj/item/electronic_assembly/process(delta_time)
 	handle_idle_power()
 
 /obj/item/electronic_assembly/proc/handle_idle_power()
@@ -172,15 +172,11 @@
 			return id_card
 
 /obj/item/electronic_assembly/examine(mob/user)
-	. = ..(user, 1)
-	if(.)
-		for(var/obj/item/integrated_circuit/IC in contents)
-			IC.external_examine(user)
-	//	for(var/obj/item/integrated_circuit/output/screen/S in contents)
-	//		if(S.stuff_to_display)
-	//			to_chat(user, "There's a little screen labeled '[S.name]', which displays '[S.stuff_to_display]'.")
-		if(opened)
-			interact(user)
+	. = ..()
+	for(var/obj/item/integrated_circuit/IC in contents)
+		IC.external_examine(user)
+	if(opened)
+		interact(user)
 
 /obj/item/electronic_assembly/proc/get_part_complexity()
 	. = 0
@@ -351,10 +347,12 @@
 	return FALSE
 
 /obj/item/electronic_assembly/on_loc_moved(oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 
 /obj/item/electronic_assembly/Moved(var/oldloc)
+	. = ..()
 	for(var/obj/O in contents)
 		O.on_loc_moved(oldloc)
 

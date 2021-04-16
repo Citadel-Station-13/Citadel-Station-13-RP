@@ -130,9 +130,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /obj/effect/statclick/ticket_list
 	var/current_state
 
-/obj/effect/statclick/ticket_list/New(loc, name, state)
+INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
+/obj/effect/statclick/ticket_list/Initialize(mapload, name, state)
+	. = ..()
 	current_state = state
-	..()
 
 /obj/effect/statclick/ticket_list/Click()
 	GLOB.ahelp_tickets.BrowseTickets(current_state)
@@ -255,7 +256,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	for(var/client/X in admins)
 		if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
-			X << 'sound/effects/adminhelp.ogg'
+			SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
 		window_flash(X)
 		to_chat(X, chat_msg)
 
@@ -342,7 +343,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	if(initiator)
 		if(initiator.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
-			initiator << 'sound/effects/adminhelp.ogg'
+			SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
 
 		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")
 		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b></font>")
@@ -462,9 +463,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /obj/effect/statclick/ahelp
 	var/datum/admin_help/ahelp_datum
 
-/obj/effect/statclick/ahelp/New(loc, datum/admin_help/AH)
+INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
+/obj/effect/statclick/ahelp/Initialize(mapload, datum/admin_help/AH)
 	ahelp_datum = AH
-	..(loc)
+	return ..(mapload)
 
 /obj/effect/statclick/ahelp/update()
 	return ..(ahelp_datum.name)
@@ -639,7 +641,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/list/forenames = list()
 	var/list/ckeys = list()
 	var/founds = ""
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		var/list/indexing = list(M.real_name, M.name)
 		if(M.mind)
 			indexing += M.mind.name

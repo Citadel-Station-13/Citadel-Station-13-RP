@@ -56,7 +56,7 @@
 /datum/shuttle/autodock/web_shuttle/proc/build_destinations()
 	return
 
-/datum/shuttle/autodock/web_shuttle/process()
+/datum/shuttle/autodock/web_shuttle/process(delta_time)
 	if(moving_status == SHUTTLE_IDLE)
 		if(web_master.autopath)	// We're currently flying a path.
 			autopilot_say("Continuing route.")
@@ -142,7 +142,7 @@
 
 // Note - Searching own area for doors/sensors is fine for legacy web shuttles as they are single-area.
 //		  However if this code is copied to future multi-area shuttles, should search in all shuttle areas
-/obj/machinery/computer/shuttle_control/web/Initialize()
+/obj/machinery/computer/shuttle_control/web/Initialize(mapload)
 	. = ..()
 	var/area/my_area = get_area(src)
 	if(my_doors)
@@ -172,7 +172,7 @@
 		return
 	src.add_fingerprint(user)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 	/*
 	// If nanoUI falls over and you want a non-nanoUI UI, feel free to uncomment this section.
@@ -237,7 +237,7 @@
 	*/
 
 
-/obj/machinery/computer/shuttle_control/web/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/shuttle_control/web/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/list/routes[0]
 	var/datum/shuttle/autodock/web_shuttle/shuttle = SSshuttle.shuttles[shuttle_tag]
@@ -341,7 +341,7 @@
 		return
 
 	if(href_list["refresh"])
-		ui_interact(usr)
+		nano_ui_interact(usr)
 
 	if (WS.moving_status != SHUTTLE_IDLE)
 		to_chat(usr, "<font color='blue'>[WS.visible_name] is busy moving.</font>")
@@ -397,7 +397,7 @@
 
 		if(!check_docking(WS))
 	//		updateUsrDialog()
-			ui_interact(usr)
+			nano_ui_interact(usr)
 			return
 
 		var/datum/shuttle_destination/target_destination = new_route.get_other_side(WS.web_master.current_destination)
@@ -420,7 +420,7 @@
 		else
 			WS.short_jump(target_destination.my_landmark)
 
-	ui_interact(usr)
+	nano_ui_interact(usr)
 
 // Check if we're undocked, give option to force launch
 /obj/machinery/computer/shuttle_control/web/proc/check_docking(datum/shuttle/autodock/MS)
@@ -460,7 +460,7 @@
 	var/shuttle_name		// Text name of the shuttle to connect to
 	var/list/destinations	// Make sure this STARTS with a destination that builds a route to one that always exists as an anchor.
 
-/obj/shuttle_connector/Initialize()
+/obj/shuttle_connector/Initialize(mapload)
 	. = ..()
 	GLOB.shuttle_added.register_global(src, .proc/setup_routes)
 
@@ -495,7 +495,7 @@
 	icon_state = "airlock_sensor_standby"
 	var/id_tag
 
-/obj/machinery/shuttle_sensor/process()
+/obj/machinery/shuttle_sensor/process(delta_time)
 	return PROCESS_KILL	//nty
 
 /obj/machinery/shuttle_sensor/proc/air_list()

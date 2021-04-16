@@ -25,8 +25,8 @@ var/bomb_set
 	                      // 3 is sealant open, 4 is unwrenched, 5 is removed from bolts.
 	use_power = USE_POWER_OFF
 
-/obj/machinery/nuclearbomb/New()
-	..()
+/obj/machinery/nuclearbomb/Initialize(mapload)
+	. = ..()
 	r_code = "[rand(10000, 99999.0)]"//Creates a random code upon object spawn.
 	wires["Red"] = 0
 	wires["Blue"] = 0
@@ -43,7 +43,7 @@ var/bomb_set
 	safety_wire = pick(w)
 	w -= safety_wire
 
-/obj/machinery/nuclearbomb/process()
+/obj/machinery/nuclearbomb/process(delta_time)
 	if(timing)
 		bomb_set = 1 //So long as there is one nuke timing, it means one nuke is armed.
 		timeleft--
@@ -201,7 +201,7 @@ var/bomb_set
 	return
 
 obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
-	var/dat as text
+	var/dat
 	dat += "<TT><B>Nuclear Fission Explosive</B><BR>\nNuclear Device Wires:</A><HR>"
 	for(var/wire in wires)
 		dat += text("[wire] Wire: <A href='?src=\ref[src];wire=[wire];act=wire'>[wires[wire] ? "Mend" : "Cut"]</A> <A href='?src=\ref[src];wire=[wire];act=pulse'>Pulse</A><BR>")
@@ -411,8 +411,8 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 				return
 	return
 
-/obj/item/disk/nuclear/New()
-	..()
+/obj/item/disk/nuclear/Initialize(mapload)
+	. = ..()
 	nuke_disks |= src
 
 /obj/item/disk/nuclear/Destroy()
@@ -420,7 +420,8 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 		var/obj/D = new /obj/item/disk/nuclear(pick(blobstart))
 		message_admins("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
 		log_game("[src], the last authentication disk, has been destroyed. Spawning [D] at ([D.x], [D.y], [D.z]).")
-	..()
+	nuke_disks -= src
+	return ..()
 
 /obj/item/disk/nuclear/touch_map_edge()
 	qdel(src)

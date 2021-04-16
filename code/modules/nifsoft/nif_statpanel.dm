@@ -26,7 +26,8 @@
 	if(nif.stat == NIF_WORKING)
 		stat("- Modules -", "LMB: Toggle, Shift+LMB: Info/Uninstall")
 		for(var/nifsoft in nif.nifsofts)
-			if(!nifsoft) continue
+			if(!nifsoft)
+				continue
 			var/datum/nifsoft/NS = nifsoft
 			var/obj/effect/nif_stat/stat_line = NS.stat_line
 			stat("[stat_line.nifsoft_name]",stat_line.atom_button_text())
@@ -39,8 +40,9 @@
 	var/datum/nifsoft/nifsoft	//Reference to our nifsoft
 	var/toggleable = FALSE		//Won't change, prevents looking it up deeper
 
-/obj/effect/nif_stat/New(var/datum/nifsoft/new_soft)
-	..()
+INITIALIZE_IMMEDIATE(/obj/effect/nif_stat)
+/obj/effect/nif_stat/Initialize(mapload, datum/nifsoft/new_soft)
+	. = ..()
 	nifsoft = new_soft
 	nifsoft_name = new_soft.name
 	name = new_soft.name

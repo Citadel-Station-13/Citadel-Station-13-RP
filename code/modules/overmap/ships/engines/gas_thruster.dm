@@ -57,8 +57,8 @@
 	desc = "Simple rocket nozzle, expelling gas at hypersonic velocities to propell the ship."
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "nozzle"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 	can_atmos_pass = ATMOS_PASS_NO
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_FUEL
 
@@ -78,10 +78,7 @@
 	var/next_on
 	var/blockage
 
-/obj/machinery/atmospherics/unary/engine/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	return 0
-
-/obj/machinery/atmospherics/unary/engine/Initialize()
+/obj/machinery/atmospherics/unary/engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles(need_rebuild=1)
@@ -194,11 +191,13 @@
 	light_color = "#ed9200"
 	anchored = 1
 
-/obj/effect/engine_exhaust/New(var/turf/nloc, var/ndir, var/flame)
-	..(nloc)
+/obj/effect/engine_exhaust/Initialize(mapload, ndir, flame)
+	. = ..(mapload)
 	if(flame)
 		icon_state = "exhaust"
-		nloc.hotspot_expose(1000,125)
+		var/turf/T = loc
+		if(istype(T))
+			T.hotspot_expose(1000,125)
 		set_light(0.5, 3)
 	setDir(ndir)
 	QDEL_IN(src, 20)

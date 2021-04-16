@@ -29,7 +29,7 @@
 	to_chat(usr, "Checking for overlapping pipes...")
 	next_turf:
 		for(var/turf/T in world)
-			for(var/dir in cardinal)
+			for(var/dir in GLOB.cardinal)
 				var/list/connect_types = list(1 = 0, 2 = 0, 3 = 0)
 				for(var/obj/machinery/atmospherics/pipe in T)
 					if(dir & pipe.initialize_directions)
@@ -57,4 +57,4 @@
 		if (!PN.cables || (PN.cables.len < 10))
 			if(PN.cables && (PN.cables.len > 1))
 				var/obj/structure/cable/C = PN.cables[1]
-				usr << "Powernet with fewer than 10 cables! (number [PN.number]) - example cable at [C.x], [C.y], [C.z] in area [get_area(C.loc)]"
+				to_chat(usr, "Powernet with fewer than 10 cables! (number [PN.number]) - example cable at [C.x], [C.y], [C.z] in area [get_area(C.loc)]")

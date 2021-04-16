@@ -78,14 +78,14 @@
 		return
 	user.set_machine(src)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the Holodeck Computer.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/computer/HolodeckControl/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/HolodeckControl/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -182,8 +182,8 @@
 		if (last_to_emag)
 			C.friends = list(last_to_emag)
 
-/obj/machinery/computer/HolodeckControl/New()
-	..()
+/obj/machinery/computer/HolodeckControl/Initialize(mapload)
+	. = ..()
 	current_program = powerdown_program
 	linkedholodeck = locate(projection_area)
 	if(!linkedholodeck)
@@ -204,7 +204,7 @@
 	if (stat != oldstat && active && (stat & NOPOWER))
 		emergencyShutdown()
 
-/obj/machinery/computer/HolodeckControl/process()
+/obj/machinery/computer/HolodeckControl/process(delta_time)
 	for(var/item in holographic_objs) // do this first, to make sure people don't take items out when power is down.
 		if(!(get_turf(item) in linkedholodeck))
 			derez(item, 0)

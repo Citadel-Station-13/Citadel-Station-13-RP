@@ -155,7 +155,7 @@
 	// contained in a cage
 	var/in_stasis = 0
 
-/mob/living/simple_mob/Initialize()
+/mob/living/simple_mob/Initialize(mapload)
 	verbs -= /mob/verb/observe
 	health = maxHealth
 
@@ -167,7 +167,6 @@
 	if(has_eye_glow)
 		add_eyes()
 	return ..()
-
 
 /mob/living/simple_mob/Destroy()
 	default_language = null
@@ -233,7 +232,7 @@
 	// Turf related slowdown
 	var/turf/T = get_turf(src)
 	if(T && T.movement_cost && !hovering) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
-		if(istype(T,/turf/simulated/floor/water) && aquatic_movement)
+		if(istype(T,/turf/simulated/floor/outdoors/water) && aquatic_movement)
 			tally -= aquatic_movement - 1
 		else
 			tally += T.movement_cost
@@ -263,14 +262,14 @@
 	update_icon()
 
 
-/mob/living/simple_mob/say(var/message,var/datum/language/language)
-	var/verb = "says"
+/mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+	verb = "says"
 	if(speak_emote.len)
 		verb = pick(speak_emote)
 
 	message = sanitize(message)
 
-	..(message, null, verb)
+	return ..()
 
 /mob/living/simple_mob/get_speech_ending(verb, var/ending)
 	return verb
@@ -290,7 +289,6 @@
 		else
 			user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
 			gib()
-
 
 /mob/living/simple_mob/is_sentient()
 	return mob_class & MOB_CLASS_HUMANOID|MOB_CLASS_ANIMAL|MOB_CLASS_SLIME // Update this if needed.

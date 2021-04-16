@@ -106,8 +106,10 @@
 		qdel(src)
 	return
 
-/obj/item/material/shard/Crossed(AM as mob|obj)
+/obj/item/material/shard/Crossed(atom/movable/AM as mob|obj)
 	..()
+	if(AM.is_incorporeal())
+		return
 	if(isliving(AM))
 		var/mob/M = AM
 
@@ -146,8 +148,8 @@
 			return
 
 // Preset types - left here for the code that uses them
-/obj/item/material/shard/shrapnel/New(loc)
-	..(loc, "steel")
+/obj/item/material/shard/shrapnel/Initialize(mapload, material_key)
+	. = ..(mapload, "steel")
 
-/obj/item/material/shard/phoron/New(loc)
-	..(loc, "phglass")
+/obj/item/material/shard/phoron/Initialize(mapload, material_key)
+	. = ..(mapload, "phglass")

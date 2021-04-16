@@ -282,60 +282,52 @@
 		)
 	cant_hold = list(/obj/item/tool/screwdriver/power)
 
-/obj/item/storage/bag/circuits/basic/New()
-	..()
-	spawn(2 SECONDS) // So the list has time to initialize.
-//		for(var/obj/item/integrated_circuit/IC in all_integrated_circuits)
-//			if(IC.spawn_flags & IC_SPAWN_DEFAULT)
-//				for(var/i = 1 to 4)
-//					new IC.type(src)
-		new /obj/item/storage/bag/circuits/mini/arithmetic(src)
-		new /obj/item/storage/bag/circuits/mini/trig(src)
-		new /obj/item/storage/bag/circuits/mini/input(src)
-		new /obj/item/storage/bag/circuits/mini/output(src)
-		new /obj/item/storage/bag/circuits/mini/memory(src)
-		new /obj/item/storage/bag/circuits/mini/logic(src)
-		new /obj/item/storage/bag/circuits/mini/time(src)
-		new /obj/item/storage/bag/circuits/mini/reagents(src)
-		new /obj/item/storage/bag/circuits/mini/transfer(src)
-		new /obj/item/storage/bag/circuits/mini/converter(src)
-		new /obj/item/storage/bag/circuits/mini/power(src)
+/obj/item/storage/bag/circuits/basic/PopulateContents()
+	new /obj/item/storage/bag/circuits/mini/arithmetic(src)
+	new /obj/item/storage/bag/circuits/mini/trig(src)
+	new /obj/item/storage/bag/circuits/mini/input(src)
+	new /obj/item/storage/bag/circuits/mini/output(src)
+	new /obj/item/storage/bag/circuits/mini/memory(src)
+	new /obj/item/storage/bag/circuits/mini/logic(src)
+	new /obj/item/storage/bag/circuits/mini/time(src)
+	new /obj/item/storage/bag/circuits/mini/reagents(src)
+	new /obj/item/storage/bag/circuits/mini/transfer(src)
+	new /obj/item/storage/bag/circuits/mini/converter(src)
+	new /obj/item/storage/bag/circuits/mini/power(src)
 
-		new /obj/item/electronic_assembly(src)
-		new /obj/item/assembly/electronic_assembly(src)
-		new /obj/item/assembly/electronic_assembly(src)
-		new /obj/item/multitool(src)
-		new /obj/item/tool/screwdriver(src)
-		new /obj/item/tool/crowbar(src)
-		make_exact_fit()
+	new /obj/item/electronic_assembly(src)
+	new /obj/item/assembly/electronic_assembly(src)
+	new /obj/item/assembly/electronic_assembly(src)
+	new /obj/item/multitool(src)
+	new /obj/item/tool/screwdriver(src)
+	new /obj/item/tool/crowbar(src)
+	make_exact_fit()
 
-/obj/item/storage/bag/circuits/all/New()
-	..()
-	spawn(2 SECONDS) // So the list has time to initialize.
-		new /obj/item/storage/bag/circuits/mini/arithmetic/all(src)
-		new /obj/item/storage/bag/circuits/mini/trig/all(src)
-		new /obj/item/storage/bag/circuits/mini/input/all(src)
-		new /obj/item/storage/bag/circuits/mini/output/all(src)
-		new /obj/item/storage/bag/circuits/mini/memory/all(src)
-		new /obj/item/storage/bag/circuits/mini/logic/all(src)
-		new /obj/item/storage/bag/circuits/mini/smart/all(src)
-		new /obj/item/storage/bag/circuits/mini/manipulation/all(src)
-		new /obj/item/storage/bag/circuits/mini/time/all(src)
-		new /obj/item/storage/bag/circuits/mini/reagents/all(src)
-		new /obj/item/storage/bag/circuits/mini/transfer/all(src)
-		new /obj/item/storage/bag/circuits/mini/converter/all(src)
-		new /obj/item/storage/bag/circuits/mini/power/all(src)
+/obj/item/storage/bag/circuits/all/PopulateContents()
+	new /obj/item/storage/bag/circuits/mini/arithmetic/all(src)
+	new /obj/item/storage/bag/circuits/mini/trig/all(src)
+	new /obj/item/storage/bag/circuits/mini/input/all(src)
+	new /obj/item/storage/bag/circuits/mini/output/all(src)
+	new /obj/item/storage/bag/circuits/mini/memory/all(src)
+	new /obj/item/storage/bag/circuits/mini/logic/all(src)
+	new /obj/item/storage/bag/circuits/mini/smart/all(src)
+	new /obj/item/storage/bag/circuits/mini/manipulation/all(src)
+	new /obj/item/storage/bag/circuits/mini/time/all(src)
+	new /obj/item/storage/bag/circuits/mini/reagents/all(src)
+	new /obj/item/storage/bag/circuits/mini/transfer/all(src)
+	new /obj/item/storage/bag/circuits/mini/converter/all(src)
+	new /obj/item/storage/bag/circuits/mini/power/all(src)
 
-		new /obj/item/electronic_assembly(src)
-		new /obj/item/electronic_assembly/medium(src)
-		new /obj/item/electronic_assembly/large(src)
-		new /obj/item/electronic_assembly/drone(src)
-		new /obj/item/integrated_electronics/wirer(src)
-		new /obj/item/integrated_electronics/debugger(src)
-		new /obj/item/tool/crowbar(src)
-		make_exact_fit()
+	new /obj/item/electronic_assembly(src)
+	new /obj/item/electronic_assembly/medium(src)
+	new /obj/item/electronic_assembly/large(src)
+	new /obj/item/electronic_assembly/drone(src)
+	new /obj/item/integrated_electronics/wirer(src)
+	new /obj/item/integrated_electronics/debugger(src)
+	new /obj/item/tool/crowbar(src)
+	make_exact_fit()
 
-/obj/item/storage/bag/circuits/mini/
+/obj/item/storage/bag/circuits/mini
 	name = "circuit box"
 	desc = "Used to partition categories of circuits, for a neater workspace."
 	w_class = 2
@@ -351,14 +343,12 @@
 /obj/item/storage/bag/circuits/mini/arithmetic/all // Don't believe this will ever be needed.
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/arithmetic/New()
-	..()
+/obj/item/storage/bag/circuits/mini/arithmetic/PopulateContents()
 	for(var/obj/item/integrated_circuit/arithmetic/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/trig
 	name = "trig circuit box"
@@ -368,14 +358,12 @@
 /obj/item/storage/bag/circuits/mini/trig/all // Ditto
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/trig/New()
-	..()
+/obj/item/storage/bag/circuits/mini/trig/PopulateContents()
 	for(var/obj/item/integrated_circuit/trig/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/input
 	name = "input circuit box"
@@ -385,14 +373,12 @@
 /obj/item/storage/bag/circuits/mini/input/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/input/New()
-	..()
+/obj/item/storage/bag/circuits/mini/input/PopulateContents()
 	for(var/obj/item/integrated_circuit/input/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/output
 	name = "output circuit box"
@@ -402,14 +388,12 @@
 /obj/item/storage/bag/circuits/mini/output/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/output/New()
-	..()
+/obj/item/storage/bag/circuits/mini/output/PopulateContents()
 	for(var/obj/item/integrated_circuit/output/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/memory
 	name = "memory circuit box"
@@ -419,14 +403,12 @@
 /obj/item/storage/bag/circuits/mini/memory/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/memory/New()
-	..()
+/obj/item/storage/bag/circuits/mini/memory/PopulateContents()
 	for(var/obj/item/integrated_circuit/memory/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/logic
 	name = "logic circuit box"
@@ -436,14 +418,12 @@
 /obj/item/storage/bag/circuits/mini/logic/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/logic/New()
-	..()
+/obj/item/storage/bag/circuits/mini/logic/PopulateContents()
 	for(var/obj/item/integrated_circuit/logic/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/time
 	name = "time circuit box"
@@ -453,14 +433,12 @@
 /obj/item/storage/bag/circuits/mini/time/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/time/New()
-	..()
+/obj/item/storage/bag/circuits/mini/time/PopulateContents()
 	for(var/obj/item/integrated_circuit/time/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/reagents
 	name = "reagent circuit box"
@@ -470,14 +448,13 @@
 /obj/item/storage/bag/circuits/mini/reagents/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/reagents/New()
-	..()
+/obj/item/storage/bag/circuits/mini/reagents/PopulateContents()
+	. = ..()
 	for(var/obj/item/integrated_circuit/reagent/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/transfer
 	name = "transfer circuit box"
@@ -487,14 +464,12 @@
 /obj/item/storage/bag/circuits/mini/transfer/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/transfer/New()
-	..()
+/obj/item/storage/bag/circuits/mini/transfer/PopulateContents()
 	for(var/obj/item/integrated_circuit/transfer/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/converter
 	name = "converter circuit box"
@@ -504,8 +479,7 @@
 /obj/item/storage/bag/circuits/mini/converter/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/converter/New()
-	..()
+/obj/item/storage/bag/circuits/mini/converter/PopulateContents()
 	for(var/obj/item/integrated_circuit/converter/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
@@ -520,8 +494,8 @@
 /obj/item/storage/bag/circuits/mini/smart/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/smart/New()
-	..()
+/obj/item/storage/bag/circuits/mini/smart/PopulateContents()
+	. = ..()
 	for(var/obj/item/integrated_circuit/smart/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
@@ -536,14 +510,13 @@
 /obj/item/storage/bag/circuits/mini/manipulation/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/manipulation/New()
-	..()
+/obj/item/storage/bag/circuits/mini/manipulation/PopulateContents()
+	. = ..()
 	for(var/obj/item/integrated_circuit/manipulation/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)
 				new IC.type(src)
 	make_exact_fit()
-
 
 /obj/item/storage/bag/circuits/mini/power
 	name = "power circuit box"
@@ -553,8 +526,7 @@
 /obj/item/storage/bag/circuits/mini/power/all
 	spawn_flags_to_use = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
-/obj/item/storage/bag/circuits/mini/power/New()
-	..()
+/obj/item/storage/bag/circuits/mini/power/PopulateContents()
 	for(var/obj/item/integrated_circuit/passive/power/IC in all_integrated_circuits)
 		if(IC.spawn_flags & spawn_flags_to_use)
 			for(var/i = 1 to 4)

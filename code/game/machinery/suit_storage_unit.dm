@@ -33,7 +33,8 @@
 	HELMET_TYPE = /obj/item/clothing/head/helmet/space
 	MASK_TYPE = /obj/item/clothing/mask/breath
 
-/obj/machinery/suit_storage_unit/New()
+/obj/machinery/suit_storage_unit/Initialize(mapload, newdir)
+	. = ..()
 	update_icon()
 	if(SUIT_TYPE)
 		SUIT = new SUIT_TYPE(src)
@@ -73,15 +74,10 @@
 			if(prob(50))
 				dump_everything() //So suits dont survive all the time
 			qdel(src)
-			return
 		if(2.0)
 			if(prob(50))
 				dump_everything()
 				qdel(src)
-			return
-		else
-			return
-	return
 
 /obj/machinery/suit_storage_unit/attack_hand(mob/user as mob)
 	var/dat
@@ -599,13 +595,13 @@
 
 	var/datum/wires/suit_storage_unit/wires = null
 
-/obj/machinery/suit_cycler/New()
-	..()
-
+/obj/machinery/suit_cycler/Initialize(mapload)
+	. = ..()
 	wires = new(src)
+	if(!length(departments) || !length(species))
+		return INITIALIZE_HINT_QDEL
 	target_department = departments[1]
 	target_species = species[1]
-	if(!target_department || !target_species) qdel(src)
 
 /obj/machinery/suit_cycler/Destroy()
 	qdel(wires)
@@ -913,7 +909,7 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/suit_cycler/process()
+/obj/machinery/suit_cycler/process(delta_time)
 
 	if(electrified > 0)
 		electrified--
@@ -944,7 +940,7 @@
 
 /obj/machinery/suit_cycler/proc/finished_job()
 	var/turf/T = get_turf(src)
-	T.visible_message("\icon[src]<span class='notice'>The [src] pings loudly.</span>")
+	T.visible_message("[icon2html(thing = src, target = world)]<span class='notice'>The [src] pings loudly.</span>")
 	icon_state = initial(icon_state)
 	active = 0
 	playsound(src, 'sound/machines/boobeebeep.ogg', 50)

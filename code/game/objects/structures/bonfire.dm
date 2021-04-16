@@ -13,8 +13,8 @@
 	var/set_temperature = T0C + 30	//K
 	var/heating_power = 80000
 
-/obj/structure/bonfire/New(newloc, material_name)
-	..(newloc)
+/obj/structure/bonfire/Initialize(mapload, material_name)
+	. = ..()
 	if(!material_name)
 		material_name = MAT_WOOD
 	material = get_material_by_name("[material_name]")
@@ -24,15 +24,15 @@
 	color = material.icon_colour
 
 // Blue wood.
-/obj/structure/bonfire/sifwood/New(newloc, material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/structure/bonfire/sifwood/Initialize(mapload)
+	. = ..(mapload, MAT_SIFWOOD)
 
-/obj/structure/bonfire/permanent/New(newloc, material_name)
-	..()
+/obj/structure/bonfire/permanent/Initialize(mapload, material_name)
+	. = ..()
 	ignite()
 
-/obj/structure/bonfire/permanent/sifwood/New(newloc, material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/structure/bonfire/permanent/sifwood/Initialize(mapload)
+	. = ..(mapload, MAT_SIFWOOD)
 
 /obj/structure/bonfire/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/rods) && !can_buckle && !grill)
@@ -214,7 +214,7 @@
 		overlays += grille_image
 
 
-/obj/structure/bonfire/process()
+/obj/structure/bonfire/process(delta_time)
 	if(!check_oxygen())
 		extinguish()
 		return
@@ -382,7 +382,7 @@
 	else
 		set_light(0)
 
-/obj/structure/fireplace/process()
+/obj/structure/fireplace/process(delta_time)
 	if(!check_oxygen())
 		extinguish()
 		return

@@ -154,8 +154,8 @@
 	var/use_launcher = 0
 	var/obj/item/gun/launcher/grenade/underslung/launcher
 
-/obj/item/gun/projectile/automatic/z8/New()
-	..()
+/obj/item/gun/projectile/automatic/z8/Initialize(mapload)
+	. = ..()
 	launcher = new(src)
 
 /obj/item/gun/projectile/automatic/z8/attackby(obj/item/I, mob/user)
@@ -188,11 +188,11 @@
 	return
 
 /obj/item/gun/projectile/automatic/z8/examine(mob/user)
-	..()
+	. = ..()
 	if(launcher.chambered)
-		to_chat(user, "\The [launcher] has \a [launcher.chambered] loaded.")
+		. += "\The [launcher] has \a [launcher.chambered] loaded."
 	else
-		to_chat(user, "\The [launcher] is empty.")
+		. += "\The [launcher] is empty."
 
 /obj/item/gun/projectile/automatic/l6_saw
 	name = "light machine gun"
@@ -308,7 +308,7 @@
 
 /obj/item/gun/projectile/automatic/mini_uzi
 	name = "\improper Uzi"
-	desc = "The iconic Uzi is a lightweight, compact, fast firing machine pistol. Cybersun Industries famously still produces these designs, which have changed little since the 20th century. Uses .45 rounds."
+	desc = "The iconic Uzi is a lightweight, compact, fast firing machine pistol. Cybersun Industries were the last major manufacturer of these designs, which have changed little since the 20th century. Uses .45 rounds."
 	icon_state = "mini-uzi"
 	w_class = ITEMSIZE_NORMAL
 	load_method = MAGAZINE
@@ -328,6 +328,18 @@
 		icon_state = "mini-uzi"
 	else
 		icon_state = "mini-uzi-empty"
+
+/obj/item/gun/projectile/automatic/mini_uzi/custom
+	name = "\improper custom Uzi"
+	desc = "The icon Uzi si a lightweight, compact, fast firing machine pistol. These traits make it a popular holdout option for Pathfinders assigned to hazardous expeditions. Uses .45 rounds."
+	icon_state = "mini-uzi-custom"
+
+/obj/item/gun/projectile/automatic/mini_uzi/custom/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "mini-uzi-custom"
+	else
+		icon_state = "mini-uzi-custom-empty"
 
 /obj/item/gun/projectile/automatic/p90
 	name = "personal defense weapon"

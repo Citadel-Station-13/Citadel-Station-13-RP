@@ -13,7 +13,7 @@
 	var/display_name		// For mappers to override docking_program.display_name (how would it show up on docking monitoring program)
 	tag_secure = 1
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port/Initialize()
+/obj/machinery/embedded_controller/radio/airlock/docking_port/Initialize(mapload)
 	. = ..()
 	airlock_program = new/datum/computer/file/embedded_program/airlock/docking(src)
 	docking_program = new/datum/computer/file/embedded_program/docking/airlock(src, airlock_program)
@@ -33,7 +33,7 @@
 	else
 		..()
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/embedded_controller/radio/airlock/docking_port/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 	var/datum/computer/file/embedded_program/docking/airlock/docking_program = program
 	var/datum/computer/file/embedded_program/airlock/docking/airlock_program = docking_program.airlock_program
@@ -104,7 +104,7 @@
 	. = ..(command)
 	. = airlock_program.receive_user_command(command) || .	// Pass along to subprograms; bypass shortcircuit
 
-/datum/computer/file/embedded_program/docking/airlock/process()
+/datum/computer/file/embedded_program/docking/airlock/process(delta_time)
 	airlock_program?.process()
 	..()
 

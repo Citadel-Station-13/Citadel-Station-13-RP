@@ -21,8 +21,8 @@
 
 	var/list/spawnfiles = list()// For mappers, special drives, and data disks
 
-/obj/item/part/computer/storage/New()
-	..()
+/obj/item/part/computer/storage/Initialize(mapload)
+	. = ..()
 	if(islist(spawnfiles))
 		if(removeable && spawnfiles.len)
 			var/obj/item/part/computer/storage/removable/R = src
@@ -167,8 +167,8 @@
 	var/max_volume = 1028
 
 
-/obj/item/disk/file/New()
-	..()
+/obj/item/disk/file/Initialize(mapload)
+	. = ..()
 	icon_state = "datadisk[rand(0,6)]"
 	src.pixel_x = rand(-5, 5)
 	src.pixel_y = rand(-5, 5)

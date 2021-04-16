@@ -161,7 +161,7 @@ SUBSYSTEM_DEF(vote)
 				if(isnull(.) || . == "None")
 					antag_add_failed = 1
 				else
-					additional_antag_types |= antag_names_to_ids[.]
+					additional_antag_types |= GLOB.antag_names_to_ids[.]
 
 	if(restart)
 		to_chat(world, "World restarting due to vote...")
@@ -220,8 +220,8 @@ SUBSYSTEM_DEF(vote)
 			if(VOTE_ADD_ANTAGONIST)
 				if(!config_legacy.allow_extra_antags || SSticker.current_state >= GAME_STATE_SETTING_UP)
 					return 0
-				for(var/antag_type in all_antag_types)
-					var/datum/antagonist/antag = all_antag_types[antag_type]
+				for(var/antag_type in GLOB.all_antag_types)
+					var/datum/antagonist/antag = GLOB.all_antag_types[antag_type]
 					if(!(antag.id in additional_antag_types) && antag.is_votable())
 						choices.Add(antag.role_text)
 				choices.Add("None")
@@ -249,7 +249,7 @@ SUBSYSTEM_DEF(vote)
 
 		to_chat(world, "<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config_legacy.vote_period / 10] seconds to vote.</font>")
 		if(vote_type == VOTE_CREW_TRANSFER || vote_type == VOTE_GAMEMODE || vote_type == VOTE_CUSTOM)
-			world << sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3)
+			SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3))
 
 		time_remaining = round(config_legacy.vote_period / 10)
 		return 1

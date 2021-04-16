@@ -38,12 +38,11 @@
 	movement_range = 15
 	energy = -20
 
-/obj/effect/accelerated_particle/New(loc, dir = 2)
+/obj/effect/accelerated_particle/Initialize(mapload, dir = SOUTH)
+	. = ..()
 	src.loc = loc
 	src.setDir(dir)
-	spawn(0)
-		move(1)
-
+	INVOKE_ASYNC(src, .proc/move, 1)
 
 /obj/effect/accelerated_particle/Bump(atom/A)
 	if (A)
@@ -83,7 +82,7 @@
 	var/radiation = (energy*2)
 	M.apply_effect((radiation*3),IRRADIATE,0)
 	M.updatehealth()
-	//M << "<font color='red'>You feel odd.</font>"
+	//to_chat(M, "<font color='red'>You feel odd.</font>")
 
 
 /obj/effect/accelerated_particle/proc/move(var/lag)

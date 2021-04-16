@@ -79,7 +79,7 @@
 	dead_icon = null
 	standard_pulse_level = PULSE_NONE
 
-/obj/item/organ/internal/heart/grey/colormatch/slime/process()
+/obj/item/organ/internal/heart/grey/colormatch/slime/process(delta_time)
 	..()
 	if(!(QDELETED(src)) && src.loc != owner)
 		visible_message("<span class='notice'>\The [src] splatters!</span>")
@@ -102,8 +102,8 @@
 	var/last_strain_increase = 0	// World time of the last increase in strain.
 	var/strain_regen_cooldown = 5 MINUTES
 
-/obj/item/organ/internal/regennetwork/Initialize()
-	..()
+/obj/item/organ/internal/regennetwork/Initialize(mapload)
+	. = ..()
 	var/mob/living/carbon/human/H = null
 	spawn(15)
 		if(ishuman(owner))
@@ -127,7 +127,7 @@
 
 	strain = clamp(strain + amount, 0, min_broken_damage)
 
-/obj/item/organ/internal/regennetwork/process()
+/obj/item/organ/internal/regennetwork/process(delta_time)
 	..()
 
 	if(!(QDELETED(src)) && src.loc != owner)

@@ -15,15 +15,15 @@
 	var/maxhealth = 70
 	var/check = 0
 
-/obj/structure/railing/New(loc, constructed = 0)
-	..()
+/obj/structure/railing/Initialize(mapload, constructed = FALSE)
+	. = ..()
 	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
 		anchored = 0
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
 
-/obj/structure/railing/Initialize()
+/obj/structure/railing/Initialize(mapload)
 	. = ..()
 	if(src.anchored)
 		update_icon(0)
@@ -55,11 +55,11 @@
 	if(health < maxhealth)
 		switch(health / maxhealth)
 			if(0.0 to 0.5)
-				to_chat(user, "<span class='warning'>It looks severely damaged!</span>")
+				. += "<span class='warning'>It looks severely damaged!</span>"
 			if(0.25 to 0.5)
-				to_chat(user, "<span class='warning'>It looks damaged!</span>")
+				. += "<span class='warning'>It looks damaged!</span>"
 			if(0.5 to 1.0)
-				to_chat(user, "<span class='notice'>It has a few scrapes and dents.</span>")
+				. += "<span class='notice'>It has a few scrapes and dents.</span>"
 
 /obj/structure/railing/take_damage(amount)
 	health -= amount

@@ -10,23 +10,19 @@
 	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
 						 //Setting this to 1 will set locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
 
-/obj/machinery/computer/teleporter/New()
+/obj/machinery/computer/teleporter/Initialize(mapload)
 	id = "[rand(1000, 9999)]"
-	..()
 	underlays.Cut()
 	underlays += image('icons/obj/stationobjs_vr.dmi', icon_state = "telecomp-wires")	//VOREStation Edit: different direction for wires to account for dirs
-	return
-
-/obj/machinery/computer/teleporter/Initialize()
 	. = ..()
 	var/obj/machinery/teleport/station/station
 	var/obj/machinery/teleport/hub/hub
 
 	// Search surrounding turfs for the station, and then search the station's surrounding turfs for the hub.
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		station = locate(/obj/machinery/teleport/station, get_step(src, direction))
 		if(station)
-			for(direction in cardinal)
+			for(direction in GLOB.cardinal)
 				hub = locate(/obj/machinery/teleport/hub, get_step(station, direction))
 				if(hub)
 					break
@@ -46,7 +42,7 @@
 
 		var/obj/L = null
 
-		for(var/obj/effect/landmark/sloc in landmarks_list)
+		for(var/obj/effect/landmark/sloc in GLOB.landmarks_list)
 			if(sloc.name != C.data) continue
 			if(locate(/mob/living) in sloc.loc) continue
 			L = sloc
@@ -177,8 +173,8 @@
 	circuit = /obj/item/circuitboard/teleporter_hub
 	var/obj/machinery/computer/teleporter/com
 
-/obj/machinery/teleport/hub/New()
-	..()
+/obj/machinery/teleport/hub/Initialize(mapload)
+	. = ..()
 	underlays.Cut()
 	underlays += image('icons/obj/stationobjs.dmi', icon_state = "tele-wires")
 
@@ -325,8 +321,8 @@
 	circuit = /obj/item/circuitboard/teleporter_station
 	var/obj/machinery/teleport/hub/com
 
-/obj/machinery/teleport/station/New()
-	..()
+/obj/machinery/teleport/station/Initialize(mapload)
+	. = ..()
 	overlays.Cut()
 	overlays += image('icons/obj/stationobjs.dmi', icon_state = "controller-wires")
 

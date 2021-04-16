@@ -67,8 +67,8 @@
 
 	//Soundy emotey things.
 	var/scream_verb = "screams"
-	var/male_scream_sound		//= 'sound/goonstation/voice/male_scream.ogg' Removed due to licensing, replace!
-	var/female_scream_sound		//= 'sound/goonstation/voice/female_scream.ogg' Removed due to licensing, replace!
+	var/male_scream_sound		= list('modular_citadel/sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_m2.ogg')
+	var/female_scream_sound		= list('modular_citadel/sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_f3.ogg')
 	var/male_cough_sounds = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
 	var/female_cough_sounds = list('sound/effects/mob_effects/f_cougha.ogg','sound/effects/mob_effects/f_coughb.ogg')
 	var/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
@@ -362,12 +362,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		var/durability = H.nif.durability
 		var/list/nifsofts = H.nif.nifsofts
 		var/list/nif_savedata = H.nif.save_data.Copy()
-		..()
 
 		var/obj/item/nif/nif = new type(H,durability,nif_savedata)
 		nif.nifsofts = nifsofts
-	else
-		..()
 
 /datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 

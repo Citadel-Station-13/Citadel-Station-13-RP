@@ -103,6 +103,7 @@
 #undef LOC_VAULT
 #undef LOC_TECH
 #undef LOC_GARDEN
+#undef LOC_CONSTR
 
 #undef VERM_MICE
 #undef VERM_LIZARDS

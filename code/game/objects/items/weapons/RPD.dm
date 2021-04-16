@@ -30,7 +30,7 @@
 	var/static/datum/pipe_recipe/first_atmos
 	var/static/datum/pipe_recipe/first_disposal
 
-/obj/item/pipe_dispenser/New()
+/obj/item/pipe_dispenser/Initialize(mapload)
 	. = ..()
 	src.spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
@@ -147,8 +147,9 @@
 				lines += "<a class='[piping_layer == PIPING_LAYER_SUPPLY ? "linkOn" : "linkOff"]' href='?src=\ref[src];piping_layer=[PIPING_LAYER_SUPPLY]'>Supply</a> "
 				lines += "<a class='[piping_layer == PIPING_LAYER_SCRUBBER ? "linkOn" : "linkOff"]' href='?src=\ref[src];piping_layer=[PIPING_LAYER_SCRUBBER]'>Scrubber</a> "
 				lines += "</div>"
-			for(var/i in 1 to atmos_pipe_recipes[category].len)
-				var/datum/pipe_recipe/PI = atmos_pipe_recipes[category][i]
+			var/list/L = atmos_pipe_recipes[category]
+			for(var/i in 1 to L.len)
+				var/datum/pipe_recipe/PI = L[i]
 				lines += "<div class=\"item\">"
 				lines += "<a class='[recipe == PI ? "linkOn" : ""]' href='?src=\ref[src]&category=[category]&pipe_type=[i]'>[PI.name]</a>"
 				lines += "</div>"
@@ -156,8 +157,9 @@
 	else if(screen == DISPOSALS_MODE)
 		for(var/category in disposal_pipe_recipes)
 			lines += "<div class=\"block\"><h3>[category]:</h3>"
-			for(var/i in 1 to disposal_pipe_recipes[category].len)
-				var/datum/pipe_recipe/PI = disposal_pipe_recipes[category][i]
+			var/list/L = disposal_pipe_recipes[category]
+			for(var/i in 1 to L.len)
+				var/datum/pipe_recipe/PI = L[i]
 				lines += "<div class=\"item\">"
 				lines += "<a class='[recipe == PI ? "linkOn" : ""]' href='?src=\ref[src]&category=[category]&pipe_type=[i]'>[PI.name]</a>"
 				lines += "</div>"

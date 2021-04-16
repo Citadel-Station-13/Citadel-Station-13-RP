@@ -9,8 +9,8 @@
 	var/datum/artifact_effect/secondary_effect
 	var/being_used = 0
 
-/obj/machinery/artifact/New()
-	..()
+/obj/machinery/artifact/Initialize(mapload, newdir)
+	. = ..()
 
 	var/effecttype = pick(typesof(/datum/artifact_effect) - /datum/artifact_effect)
 	my_effect = new effecttype(src)
@@ -64,7 +64,7 @@
 			secondary_effect = null
 
 
-/obj/machinery/artifact/process()
+/obj/machinery/artifact/process(delta_time)
 	var/turf/L = loc
 	if(!istype(L)) 	// We're inside a container or on null turf, either way stop processing effects
 		return

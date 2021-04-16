@@ -190,11 +190,10 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	var/list/secondary_loaded = list()
 	var/list/tertiary_loaded = list()
 
-
-/obj/item/gun/projectile/revolver/lemat/New()
+/obj/item/gun/projectile/revolver/lemat/Initialize(mapload)
 	for(var/i in 1 to secondary_max_shells)
 		secondary_loaded += new secondary_ammo_type(src)
-	..()
+	return ..()
 
 /obj/item/gun/projectile/revolver/lemat/verb/swap_firingmode()
 	set name = "Swap Firing Mode"
@@ -253,20 +252,20 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 			chamber_offset = rand(0,max_shells - loaded.len)
 
 /obj/item/gun/projectile/revolver/lemat/examine(mob/user)
-	..()
+	. = ..()
 	if(secondary_loaded)
 		var/to_print
 		for(var/round in secondary_loaded)
 			to_print += round
-		to_chat(user, "\The [src] has a secondary barrel loaded with \a [to_print]")
+		. += "\The [src] has a secondary barrel loaded with \a [to_print]"
 	else
-		to_chat(user, "\The [src] has a secondary barrel that is empty.")
-		
+		. += "\The [src] has a secondary barrel that is empty."
+
 /obj/item/gun/projectile/revolver/lemat/holy
 	name = "Blessed LeMat Revolver"
 	ammo_type = /obj/item/ammo_casing/a38/silver
 	secondary_ammo_type = /obj/item/ammo_casing/a12g/silver
-	
+
 
 
 //Ported from Bay
@@ -280,7 +279,7 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a44
-	
+
 /obj/item/gun/projectile/revolver/webley/holy
 	name = "blessed service revolver"
 	ammo_type = /obj/item/ammo_casing/a44/silver
@@ -304,7 +303,7 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	ammo_type = /obj/item/ammo_casing/a44
-	
+
 /obj/item/gun/projectile/revolver/dirty_harry/holy
 	name = "Blessed Model 29"
 	ammo_type = /obj/item/ammo_casing/a44/silver

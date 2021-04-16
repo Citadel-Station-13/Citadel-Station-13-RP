@@ -13,8 +13,8 @@
 	var/global/gid = 1
 	var/id = 0
 
-/obj/machinery/portable_atmospherics/powered/pump/huge/New()
-	..()
+/obj/machinery/portable_atmospherics/powered/pump/huge/Initialize(mapload)
+	. = ..()
 	cell = null
 
 	id = gid
@@ -39,7 +39,7 @@
 	if (old_stat != stat)
 		update_icon()
 
-/obj/machinery/portable_atmospherics/powered/pump/huge/process()
+/obj/machinery/portable_atmospherics/powered/pump/huge/process(delta_time)
 	if(!anchored || (stat & (NOPOWER|BROKEN)))
 		on = 0
 		last_flow_rate = 0

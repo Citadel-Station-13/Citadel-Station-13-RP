@@ -16,15 +16,14 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
-/obj/item/a_gift/New()
-	..()
+/obj/item/a_gift/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
 	if(w_class > 0 && w_class < ITEMSIZE_LARGE)
 		icon_state = "gift[w_class]"
 	else
 		icon_state = "gift[pick(1, 2, 3)]"
-	return
 
 /obj/item/gift/attack_self(mob/user as mob)
 	user.drop_item()
@@ -166,8 +165,8 @@
 
 
 /obj/item/wrapping_paper/examine(mob/user)
-	if(..(user, 1))
-		user << text("There is about [] square units of paper left!", src.amount)
+	. = ..()
+	. += "There is about [src.amount] square units of paper left!"
 
 /obj/item/wrapping_paper/attack(mob/target as mob, mob/user as mob)
 	if (!istype(target, /mob/living/carbon/human)) return

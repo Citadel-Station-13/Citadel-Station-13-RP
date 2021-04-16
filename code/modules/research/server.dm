@@ -15,8 +15,8 @@
 	req_access = list(access_rd) //Only the R&D can change server settings.
 	circuit = /obj/item/circuitboard/rdserver
 
-/obj/machinery/r_n_d/server/New()
-	..()
+/obj/machinery/r_n_d/server/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stack/cable_coil(src)
@@ -33,7 +33,7 @@
 		tot_rating += SP.rating
 	idle_power_usage /= max(1, tot_rating)
 
-/obj/machinery/r_n_d/server/Initialize()
+/obj/machinery/r_n_d/server/Initialize(mapload)
 	. = ..()
 	if(!files)
 		files = new /datum/research(src)
@@ -49,7 +49,7 @@
 		for(var/N in temp_list)
 			id_with_download += text2num(N)
 
-/obj/machinery/r_n_d/server/process()
+/obj/machinery/r_n_d/server/process(delta_time)
 	var/datum/gas_mixture/environment = loc.return_air()
 	switch(environment.temperature)
 		if(0 to T0C)
@@ -145,7 +145,7 @@
 				server_ids += num
 		no_id_servers -= S
 
-/obj/machinery/r_n_d/server/centcom/process()
+/obj/machinery/r_n_d/server/centcom/process(delta_time)
 	return PROCESS_KILL //don't need process()
 
 /obj/machinery/computer/rdservercontrol

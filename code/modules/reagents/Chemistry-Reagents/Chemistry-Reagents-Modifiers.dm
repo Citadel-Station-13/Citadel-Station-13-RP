@@ -7,7 +7,7 @@
 	id = "berserkmed"
 	description = "A liquid that is capable of causing a prolonged state of heightened aggression and durability."
 	taste_description = "metal"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#ff5555"
 	metabolism = REM
 
@@ -48,7 +48,7 @@
 	return
 
 /datum/reagent/modapplying/cryofluid/touch_turf(var/turf/T, var/amount)
-	if(istype(T, /turf/simulated/floor/water) && prob(amount))
+	if(istype(T, /turf/simulated/floor/outdoors/water) && prob(amount))
 		T.visible_message("<span class='danger'>\The [T] crackles loudly as the cryogenic fluid causes it to boil away, leaving behind a hard layer of ice.</span>")
 		T.ChangeTurf(/turf/simulated/floor/outdoors/ice, 1, 1, TRUE)
 	else

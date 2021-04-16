@@ -82,25 +82,19 @@
 	name = "Toxin Weakness"
 	desc = "You take 25% more toxin damage"
 	cost = -1
-	var_changes = list("toxin_mod" = 1.25)
+	var_changes = list("toxins_mod" = 1.25)
 
 /datum/trait/toxin_weak_plus
 	name = "Major Toxin Weaness"
 	desc = "You take 50% more toxin damage"
 	cost = -2
-	var_changes = list("toxin_mod" = 1.5)
+	var_changes = list("toxins_mod" = 1.5)
 
 /datum/trait/oxy_weak
 	name = "Breathe Weakness"
 	desc = "You take 25% more breathe damage and require 25% more air (20kpa minimum). Make sure to adjust your emergency EVA tanks."
 	cost = -1
 	var_changes = list("minimum_breath_pressure" = 20, "oxy_mod" = 1.25)
-
-/datum/trait/oxy_weak_plus
-	name = "Major Breathe Weakness"
-	desc = "You take 50% more breathe damage and require 50% more air (24kpa minimum). Make sure to adjust your emergency EVA tanks."
-	cost = -2
-	var_changes = list("minimum_breath_pressure" = 24, "oxy_mod" = 1.5)
 
 /datum/trait/rad_weak
 	name = "Radiation Weakness"

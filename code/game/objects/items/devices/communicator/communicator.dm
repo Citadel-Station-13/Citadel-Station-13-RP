@@ -72,13 +72,14 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	var/datum/exonet_protocol/exonet = null
 	var/list/communicating = list()
 	var/update_ticks = 0
+	var/newsfeed_channel = 0
 
 // Proc: New()
 // Parameters: None
 // Description: Adds the new communicator to the global list of all communicators, sorts the list, obtains a reference to the Exonet node, then tries to
 //				assign the device to the holder's name automatically in a spectacularly shitty way.
-/obj/item/communicator/New()
-	..()
+/obj/item/communicator/Initialize(mapload)
+	. = ..()
 	all_communicators += src
 	all_communicators = sortList(all_communicators)
 	node = get_exonet_node()
@@ -101,9 +102,9 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Parameters: user - the user doing the examining
 // Description: Allows the user to click a link when examining to look at video if one is going.
 /obj/item/communicator/examine(mob/user)
-	. = ..(user, 1)
-	if(. && video_source)
-		to_chat(user, "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span>")
+	. = ..()
+	if(video_source)
+		. += "<span class='notice'>It looks like it's on a video call: <a href='?src=\ref[src];watchvideo=1'>\[view\]</a></span>"
 
 // Proc: initialize_exonet()
 // Parameters: 1 (user - the person the communicator belongs to)
@@ -194,7 +195,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Proc: process()
 // Parameters: None
 // Description: Ticks the update_ticks variable, and checks to see if it needs to disconnect communicators every five ticks..
-/obj/item/communicator/process()
+/obj/item/communicator/process(delta_time)
 	update_ticks++
 	if(update_ticks % 5)
 		if(!node)
@@ -245,7 +246,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	initialize_exonet(user)
 	alert_called = 0
 	update_icon()
-	ui_interact(user)
+	nano_ui_interact(user)
 	if(video_source)
 		watch_video(user)
 
@@ -274,7 +275,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Proc: New()
 // Parameters: None
 // Description: Gives ghosts an exonet address based on their key and ghost name.
-/mob/observer/dead/Initialize()
+/mob/observer/dead/Initialize(mapload)
 	. = ..()
 	exonet = new(src)
 	if(client)
@@ -311,7 +312,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/Destroy()
 	for(var/mob/living/voice/voice in contents)
 		voice_mobs.Remove(voice)
-		to_chat(voice, "<span class='danger'>\icon[src] Connection timed out with remote host.</span>")
+		to_chat(voice, "<span class='danger'>[icon2html(thing = src, target = voice)] Connection timed out with remote host.</span>")
 		qdel(voice)
 	close_connection(reason = "Connection timed out")
 
@@ -352,7 +353,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/machinery/camera/communicator
 	network = list(NETWORK_COMMUNICATORS)
 
-/obj/machinery/camera/communicator/Initialize()
+/obj/machinery/camera/communicator/Initialize(mapload)
 	. = ..()
 	client_huds |= GLOB.global_hud.whitense
 	client_huds |= GLOB.global_hud.darkMask
@@ -412,4 +413,3 @@ var/global/list/obj/item/communicator/all_communicators = list()
 		return
 
 	icon_state = initial(icon_state)
-

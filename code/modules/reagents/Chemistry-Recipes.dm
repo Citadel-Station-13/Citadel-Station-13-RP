@@ -118,7 +118,7 @@
 		var/turf/T = get_turf(container)
 		var/list/seen = viewers(4, T)
 		for(var/mob/M in seen)
-			M.show_message("<span class='notice'>\icon[container] [mix_message]</span>", 1)
+			M.show_message("<span class='notice'>[icon2html(thing = container, target = M)] [mix_message]</span>", 1)
 		playsound(T, reaction_sound, 80, 1)
 
 //obtains any special data that will be provided to the reaction products
@@ -138,14 +138,6 @@
 	required_reagents = list("oxygen" = 1, "carbon" = 1, "sugar" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/inaprovaline/topical
-	//Goes onto the patient
-	name = "Inaprovalaze"
-	id = "inaprovalaze"
-	result = "inaprovalaze"
-	required_reagents = list("inaprovaline" = 2, "sterilizine" = 1, "foaming_agent" = 1) //Main way to obtain is destiller
-	result_amount = 2
-
 /datum/chemical_reaction/tricordrazine
 	//Heals the four standards slowly
 	name = "Tricordrazine"
@@ -154,13 +146,6 @@
 	required_reagents = list("inaprovaline" = 1, "anti_toxin" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/tricorlidaze
-	//Apply onto Patient
-	name = "Tricorlidaze"
-	id = "tricorlidaze"
-	result = "tricorlidaze"
-	required_reagents = list("tricordrazine" = 2, "sterilizine" = 1, "foaming_agent" = 1)//Main way to obtain is destiller
-	result_amount = 2
 /datum/chemical_reaction/dylovene
 	//Heals toxin
 	name = "Dylovene"
@@ -187,14 +172,6 @@
 	inhibitors = list("sugar" = 1) // Messes up with inaprovaline
 	result_amount = 2
 
-/datum/chemical_reaction/bicaridine/topical
-	//Apply onto patient
-	name = "Bicaridaze"
-	id = "bicaridaze"
-	result = "bicaridaze"
-	required_reagents = list("bicaridine" = 2, "sterilizine" = 1, "foaming_agent" = 1)//Main way to obtain is destiller
-	result_amount = 2
-
 /datum/chemical_reaction/vermicetol
 	//heals brute
 	name = "Vermicetol"
@@ -219,14 +196,6 @@
 	result = "dermaline"
 	required_reagents = list("oxygen" = 1, "phosphorus" = 1, "kelotane" = 1)
 	result_amount = 3
-
-/datum/chemical_reaction/dermaline/topical
-	//Apply onto Patient NOT into
-	name = "Dermalaze"
-	id = "dermalaze"
-	result = "dermalaze"
-	required_reagents = list("dermaline" = 2, "sterilizine" = 1, "foaming_agent" = 1)//Main way to obtain is destiller
-	result_amount = 2
 
 /datum/chemical_reaction/dexalin
 	//fixes oxyloss
@@ -629,11 +598,3 @@
 	result = "unsorbitol"
 	required_reagents = list("mutagen" = 3, "lipozine" = 2)
 	result_amount = 5
-
-
-
-
-
-
-
-

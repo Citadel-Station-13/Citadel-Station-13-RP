@@ -8,7 +8,7 @@
 	var/list/targets
 	var/list/datum/disease2/disease/viruses
 
-/obj/item/reagent_containers/syringe/Initialize()
+/obj/item/reagent_containers/syringe/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -17,14 +17,14 @@
 	LAZYCLEARLIST(targets)
 	return ..()
 
-/obj/item/reagent_containers/syringe/process()
+/obj/item/reagent_containers/syringe/process(delta_time)
 	dirtiness = min(dirtiness + targets.len,75)
 	if(dirtiness >= 75)
 		STOP_PROCESSING(SSobj, src)
 	return 1
 
 // The code block below handles the syringes' infection chance among storing a hash of the first user targeted on it.
-// 
+//
 /obj/item/reagent_containers/syringe/proc/dirty(var/mob/living/carbon/human/target, var/obj/item/organ/external/eo)
 	if(!ishuman(loc))
 		return //Avoid borg syringe problems.

@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	sunfrac = cos(p_angle) ** 2
 	//isn't the power recieved from the incoming light proportionnal to cos(p_angle) (Lambert's cosine law) rather than cos(p_angle)^2 ?
 
-/obj/machinery/power/solar/process()//TODO: remove/add this from machines to save on processing as needed ~Carn PRIORITY
+/obj/machinery/power/solar/process(delta_time)//TODO: remove/add this from machines to save on processing as needed ~Carn PRIORITY
 	if(stat & BROKEN)
 		return
 	if(!SSsun.sun || !control) //if there's no SSsun.sun or the panel is not linked to a solar control computer, no need to proceed
@@ -169,12 +169,11 @@ GLOBAL_LIST_EMPTY(solars_list)
 	return
 
 
-/obj/machinery/power/solar/fake/New(var/turf/loc, var/obj/item/solar_assembly/S)
-	..(loc, S, 0)
+/obj/machinery/power/solar/fake/Initialize(mapload, obj/item/solar_assembly/S)
+	. = ..(mapload, S, FALSE)
 
-/obj/machinery/power/solar/fake/process()
-	. = PROCESS_KILL
-	return
+/obj/machinery/power/solar/fake/process(delta_time)
+	return PROCESS_KILL
 
 //trace towards SSsun.sun to see if we're in shadow
 /obj/machinery/power/solar/proc/occlusion()
@@ -310,7 +309,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 /obj/machinery/power/solar_control/config_start
 	auto_start = SOLAR_AUTO_START_CONFIG
 
-/obj/machinery/power/solar_control/Initialize()
+/obj/machinery/power/solar_control/Initialize(mapload)
 	. = ..()
 	connect_to_network()
 	set_panels(cdir)
@@ -463,7 +462,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		src.attack_hand(user)
 	return
 
-/obj/machinery/power/solar_control/process()
+/obj/machinery/power/solar_control/process(delta_time)
 	lastgen = gen
 	gen = 0
 

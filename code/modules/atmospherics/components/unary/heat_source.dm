@@ -21,8 +21,8 @@
 	var/set_temperature = T20C	//thermostat
 	var/heating = 0		//mainly for icon updates
 
-/obj/machinery/atmospherics/unary/heater/New()
-	..()
+/obj/machinery/atmospherics/unary/heater/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/stock_parts/capacitor(src)
@@ -61,7 +61,7 @@
 	return
 
 
-/obj/machinery/atmospherics/unary/heater/process()
+/obj/machinery/atmospherics/unary/heater/process(delta_time)
 	..()
 
 	if(stat & (NOPOWER|BROKEN) || !use_power)
@@ -70,7 +70,8 @@
 		return
 
 	if(network && air_contents.total_moles && air_contents.temperature < set_temperature)
-		air_contents.add_thermal_energy(power_rating * HEATER_PERF_MULT)
+		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * HEATER_PERF_MULT)
+		air_contents.add_thermal_energy(limit)
 		use_power(power_rating)
 
 		heating = 1
@@ -81,12 +82,12 @@
 	update_icon()
 
 /obj/machinery/atmospherics/unary/heater/attack_ai(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/atmospherics/unary/heater/attack_hand(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/atmospherics/unary/heater/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/atmospherics/unary/heater/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	// this is the data which will be sent to the ui
 	var/data[0]
 	data["on"] = use_power ? 1 : 0
@@ -165,6 +166,6 @@
 	..()
 
 /obj/machinery/atmospherics/unary/heater/examine(mob/user)
-	..(user)
+	. = ..()
 	if(panel_open)
-		to_chat(user, "The maintenance hatch is open.")
+		. += "The maintenance hatch is open."

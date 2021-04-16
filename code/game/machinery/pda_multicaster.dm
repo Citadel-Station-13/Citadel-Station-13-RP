@@ -12,8 +12,8 @@
 	var/toggle = 1	// If we /should/ be active or not,
 	var/list/internal_PDAs = list() // Assoc list of PDAs inside of this, with the department name being the index,
 
-/obj/machinery/pda_multicaster/New()
-	..()
+/obj/machinery/pda_multicaster/Initialize(mapload, newdir)
+	. = ..()
 	internal_PDAs = list("command" = new /obj/item/pda/multicaster/command(src),
 		"security" = new /obj/item/pda/multicaster/security(src),
 		"engineering" = new /obj/item/pda/multicaster/engineering(src),
@@ -22,9 +22,8 @@
 		"cargo" = new /obj/item/pda/multicaster/cargo(src),
 		"civilian" = new /obj/item/pda/multicaster/civilian(src))
 
-/obj/machinery/pda_multicaster/prebuilt/New()
-	..()
-
+/obj/machinery/pda_multicaster/prebuilt/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/telecomms/pda_multicaster(src)
 	component_parts += new /obj/item/stock_parts/subspace/ansible(src)
@@ -88,7 +87,7 @@
 		idle_power_usage = 0
 	update_icon()
 
-/obj/machinery/pda_multicaster/process()
+/obj/machinery/pda_multicaster/process(delta_time)
 	update_power()
 
 /obj/machinery/pda_multicaster/emp_act(severity)

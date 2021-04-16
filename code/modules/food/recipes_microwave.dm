@@ -1181,6 +1181,33 @@ I said no!
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi
 
+/datum/recipe/sushi/crab
+	fruit = list("cabbage" = 1)
+	reagents = list("rice" = 20)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meat/crab,
+		/obj/item/reagent_containers/food/snacks/meat/crab
+	)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi/crab
+
+/datum/recipe/sushi/horse
+	fruit = list("cabbage" = 1)
+	reagents = list("rice" = 20)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/horsemeat,
+		/obj/item/reagent_containers/food/snacks/horsemeat
+	)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi/horse
+
+/datum/recipe/sushi/mystery
+	fruit = list("cabbage" = 1)
+	reagents = list("rice" = 20)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meat/human,
+		/obj/item/reagent_containers/food/snacks/meat/human
+	)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery
+
 /datum/recipe/goulash
 	fruit = list("tomato" = 1)
 	items = list(
@@ -1305,3 +1332,11 @@ I said no!
 		/obj/item/pen/crayon/rainbow
 	)
 	result = /obj/item/reagent_containers/food/snacks/crayonburger_rbw
+
+/datum/recipe/rkibble
+	reagents = list("milk" = 5, "oil" = 10)
+	items = list(
+		/obj/item/robot_parts/head,
+		/obj/item/stack/rods
+	)
+	result = /obj/item/trash/rkibble

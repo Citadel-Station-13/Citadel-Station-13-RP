@@ -6,6 +6,7 @@
 	layer = MOB_LAYER
 	universal_speak = 1
 	density = 0
+	silicon_privileges = PRIVILEGES_BOT
 
 	makes_dirt = FALSE	// No more dirt from Beepsky
 
@@ -41,8 +42,8 @@
 	var/frustration = 0
 	var/max_frustration = 0
 
-/mob/living/bot/New()
-	..()
+/mob/living/bot/Initialize(mapload)
+	. = ..()
 	update_icons()
 
 	default_language = GLOB.all_languages[LANGUAGE_GALCOM]
@@ -58,7 +59,7 @@
 		will_patrol = FALSE
 
 // Make sure mapped in units start turned on.
-/mob/living/bot/Initialize()
+/mob/living/bot/Initialize(mapload)
 	. = ..()
 	if(on)
 		turn_on() // Update lights and other stuff
@@ -147,12 +148,11 @@
 /mob/living/bot/attack_ai(var/mob/user)
 	return attack_hand(user)
 
-/mob/living/bot/say(var/message)
-	var/verb = "beeps"
+/mob/living/bot/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+	verb = "beeps"
 
 	message = sanitize(message)
-
-	..(message, null, verb)
+	return ..()
 
 /mob/living/bot/speech_bubble_appearance()
 	return "machine"
@@ -369,7 +369,7 @@
 
 	//	for(var/turf/simulated/t in oview(src,1))
 
-	for(var/d in cardinal)
+	for(var/d in GLOB.cardinal)
 		var/turf/T = get_step(src, d)
 		if(istype(T) && !T.density)
 			if(!LinkBlockedWithAccess(src, T, ID))
@@ -381,7 +381,7 @@
 /turf/proc/TurfsWithAccess(var/obj/item/card/id/ID)
 	var/L[] = new()
 
-	for(var/d in alldirs)
+	for(var/d in GLOB.alldirs)
 		var/turf/T = get_step(src, d)
 		if(istype(T) && !T.density)
 			if(!LinkBlockedWithAccess(src, T, ID))

@@ -94,7 +94,7 @@
 
 	var/list/shadekin_abilities
 
-/mob/living/simple_animal/shadekin/Initialize()
+/mob/living/simple_animal/shadekin/Initialize(mapload)
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_animal/shadekin)
 
@@ -385,7 +385,7 @@
 
 				//Random walk
 				if(!moving_to)
-					moving_to = pick(cardinal)
+					moving_to = pick(GLOB.cardinal)
 					dir = moving_to
 
 				var/turf/T = get_step(src,moving_to)

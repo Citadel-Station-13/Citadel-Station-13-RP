@@ -9,14 +9,12 @@
 	var/recordtype
 
 /datum/gm_action/manifest_malfunction/set_up()
-	severity = pickweight(EVENT_LEVEL_MUNDANE = 6,
+	severity = pickweight(list(EVENT_LEVEL_MUNDANE = 6,
 		EVENT_LEVEL_MODERATE = 2,
 		EVENT_LEVEL_MAJOR = 1
-		)
+		))
 
-	recordtype = pickweight("medical" = 10,"security" = (severity * 15))
-
-	return
+	recordtype = pickweight(list("medical" = 10,"security" = (severity * 15)))
 
 /datum/gm_action/manifest_malfunction/get_weight()
 	. = -10

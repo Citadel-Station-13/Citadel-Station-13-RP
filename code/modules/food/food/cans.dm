@@ -13,7 +13,7 @@
 	icon_state = "cola"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/cola/Initialize()
+/obj/item/reagent_containers/food/drinks/cans/cola/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("cola", 30)
 
@@ -25,7 +25,7 @@
 	drop_sound = 'sound/items/drop/disk.ogg'
 	pickup_sound = 'sound/items/pickup/disk.ogg'
 
-/obj/item/reagent_containers/food/drinks/cans/waterbottle/Initialize()
+/obj/item/reagent_containers/food/drinks/cans/waterbottle/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("water", 30)
 
@@ -35,8 +35,8 @@
 	icon_state = "space_mountain_wind"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind/Initialize()
-	..()
+/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("spacemountainwind", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/thirteenloko
@@ -45,7 +45,7 @@
 	icon_state = "thirteen_loko"
 	center_of_mass = list("x"=16, "y"=8)
 
-/obj/item/reagent_containers/food/drinks/cans/thirteenloko/Initialize()
+/obj/item/reagent_containers/food/drinks/cans/thirteenloko/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("thirteenloko", 30)
 
@@ -55,9 +55,9 @@
 	icon_state = "dr_gibb"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/dr_gibb/Initialize()
-		..()
-		reagents.add_reagent("dr_gibb", 30)
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("dr_gibb", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/starkist
 	name = "\improper Star-kist"
@@ -65,7 +65,7 @@
 	icon_state = "starkist"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/starkist/Initialize()
+/obj/item/reagent_containers/food/drinks/cans/starkist/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("brownstar", 30)
 
@@ -75,8 +75,8 @@
 	icon_state = "space-up"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/space_up/Initialize()
-	..()
+/obj/item/reagent_containers/food/drinks/cans/space_up/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("space_up", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/lemon_lime
@@ -85,8 +85,8 @@
 	icon_state = "lemon-lime"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/lemon_lime/Initialize()
-	..()
+/obj/item/reagent_containers/food/drinks/cans/lemon_lime/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("lemon_lime", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/iced_tea
@@ -95,8 +95,8 @@
 	icon_state = "ice_tea_can"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/iced_tea/Initialize()
-	..()
+/obj/item/reagent_containers/food/drinks/cans/iced_tea/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("icetea", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/grape_juice
@@ -105,8 +105,8 @@
 	icon_state = "purple_can"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/grape_juice/Initialize()
-	..()
+/obj/item/reagent_containers/food/drinks/cans/grape_juice/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("grapejuice", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/tonic
@@ -115,7 +115,7 @@
 	icon_state = "tonic"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/tonic/Initialize()
+/obj/item/reagent_containers/food/drinks/cans/tonic/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("tonic", 50)
 
@@ -125,7 +125,7 @@
 	icon_state = "sodawater"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/sodawater/Initialize()
+/obj/item/reagent_containers/food/drinks/cans/sodawater/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sodawater", 50)
 
@@ -135,6 +135,6 @@
 	icon_state = "gingerale"
 	center_of_mass = list("x"=16, "y"=10)
 
-/obj/item/reagent_containers/food/drinks/cans/gingerale/Initialize()
+/obj/item/reagent_containers/food/drinks/cans/gingerale/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("gingerale", 30)

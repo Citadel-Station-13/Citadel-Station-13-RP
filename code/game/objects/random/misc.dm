@@ -714,3 +714,428 @@
 				/obj/item/reagent_containers/food/condiment/small/packet/crayon/purple,
 				/obj/item/reagent_containers/food/condiment/small/packet/crayon/grey,
 				/obj/item/reagent_containers/food/condiment/small/packet/crayon/brown)
+
+/obj/random/weapon // For Gateway maps and Syndicate. Can possibly spawn almost any gun in the game.
+	name = "Random Illegal Weapon"
+	desc = "This is a random illegal weapon."
+	icon = 'icons/obj/gun/ballistic.dmi'
+	icon_state = "p08"
+	spawn_nothing_percentage = 50
+	item_to_spawn()
+		return pick(prob(11);/obj/random/ammo_all,\
+					prob(11);/obj/item/gun/energy/laser,\
+					prob(11);/obj/item/gun/projectile/pirate,\
+					prob(10);/obj/item/material/twohanded/spear,\
+					prob(10);/obj/item/gun/energy/stunrevolver,\
+					prob(10);/obj/item/gun/energy/taser,\
+					prob(10);/obj/item/gun/projectile/shotgun/doublebarrel/pellet,\
+					prob(10);/obj/item/material/knife,\
+					prob(10);/obj/item/gun/projectile/luger,\
+				/*	prob(10);/obj/item/gun/projectile/pipegun,\ */
+					prob(10);/obj/item/gun/projectile/revolver/detective,\
+					prob(10);/obj/item/gun/projectile/revolver/judge,\
+					prob(10);/obj/item/gun/projectile/colt,\
+					prob(10);/obj/item/gun/projectile/shotgun/pump,\
+					prob(10);/obj/item/gun/projectile/shotgun/pump/rifle,\
+					prob(10);/obj/item/melee/baton,\
+					prob(10);/obj/item/melee/telebaton,\
+					prob(10);/obj/item/melee/classic_baton,\
+					prob(9);/obj/item/gun/projectile/automatic/wt550/lethal,\
+					prob(9);/obj/item/gun/projectile/automatic/pdw,\
+					prob(9);/obj/item/gun/projectile/automatic/sol, \
+					prob(9);/obj/item/gun/energy/crossbow/largecrossbow,\
+					prob(9);/obj/item/gun/projectile/pistol,\
+					prob(9);/obj/item/gun/projectile/shotgun/pump,\
+					prob(9);/obj/item/cane/concealed,\
+					prob(9);/obj/item/gun/energy/gun,\
+					prob(8);/obj/item/gun/energy/retro,\
+					prob(8);/obj/item/gun/energy/gun/eluger,\
+					prob(8);/obj/item/gun/energy/xray,\
+					prob(8);/obj/item/gun/projectile/automatic/c20r,\
+					prob(8);/obj/item/melee/energy/sword,\
+					prob(8);/obj/item/gun/projectile/derringer,\
+					prob(8);/obj/item/gun/projectile/revolver/lemat,\
+				/*	prob(8);/obj/item/gun/projectile/shotgun/pump/rifle/mosin,\ */
+				/*	prob(8);/obj/item/gun/projectile/automatic/m41a,\ */
+					prob(7);/obj/item/material/butterfly,\
+					prob(7);/obj/item/material/butterfly/switchblade,\
+					prob(7);/obj/item/gun/projectile/giskard,\
+					prob(7);/obj/item/gun/projectile/automatic/p90,\
+					prob(7);/obj/item/gun/projectile/automatic/sts35,\
+					prob(7);/obj/item/gun/projectile/shotgun/pump/combat,\
+					prob(6);/obj/item/gun/energy/sniperrifle,\
+					prob(6);/obj/item/gun/projectile/automatic/z8,\
+					prob(6);/obj/item/gun/energy/captain,\
+					prob(6);/obj/item/material/knife/tacknife,\
+					prob(5);/obj/item/gun/projectile/shotgun/pump/USDF,\
+					prob(5);/obj/item/gun/projectile/giskard/olivaw,\
+					prob(5);/obj/item/gun/projectile/revolver/consul,\
+					prob(5);/obj/item/gun/projectile/revolver/mateba,\
+					prob(5);/obj/item/gun/projectile/revolver,\
+					prob(4);/obj/item/gun/projectile/deagle,\
+					prob(4);/obj/item/material/knife/tacknife/combatknife,\
+					prob(4);/obj/item/melee/energy/sword,\
+					prob(4);/obj/item/gun/projectile/automatic/mini_uzi,\
+					prob(4);/obj/item/gun/projectile/contender,\
+					prob(4);/obj/item/gun/projectile/contender/tacticool,\
+					prob(3);/obj/item/gun/projectile/SVD,\
+					prob(3);/obj/item/gun/energy/lasercannon,\
+					prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever,\
+					prob(3);/obj/item/gun/projectile/automatic/bullpup,\
+					prob(2);/obj/item/gun/energy/pulse_rifle,\
+					prob(2);/obj/item/gun/energy/gun/nuclear,\
+					prob(2);/obj/item/gun/projectile/automatic/l6_saw,\
+					prob(2);/obj/item/gun/energy/gun/burst,\
+					prob(2);/obj/item/storage/box/frags,\
+					prob(2);/obj/item/material/twohanded/fireaxe,\
+					prob(2);/obj/item/gun/projectile/luger/brown,\
+					prob(2);/obj/item/gun/launcher/crossbow,\
+				/*	prob(1);/obj/item/gun/projectile/automatic/battlerifle,\ */ // Too OP
+					prob(1);/obj/item/gun/projectile/deagle/gold,\
+					prob(1);/obj/item/gun/energy/imperial,\
+					prob(1);/obj/item/gun/projectile/automatic/as24,\
+					prob(1);/obj/item/gun/launcher/rocket,\
+					prob(1);/obj/item/gun/launcher/grenade,\
+					prob(1);/obj/item/gun/projectile/gyropistol,\
+					prob(1);/obj/item/gun/projectile/heavysniper,\
+					prob(1);/obj/item/plastique,\
+					prob(1);/obj/item/gun/energy/ionrifle,\
+					prob(1);/obj/item/material/sword,\
+					prob(1);/obj/item/cane/concealed,\
+					prob(1);/obj/item/material/sword/katana)
+
+/obj/random/weapon/guarenteed
+	spawn_nothing_percentage = 0
+
+/obj/random/ammo_all
+	name = "Random Ammunition (All)"
+	desc = "This is random ammunition. Spawns all ammo types."
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "666"
+	item_to_spawn()
+		return pick(prob(5);/obj/item/storage/box/shotgunammo,\
+					prob(5);/obj/item/storage/box/shotgunshells,\
+					prob(5);/obj/item/ammo_magazine/clip/c762,\
+					prob(5);/obj/item/ammo_magazine/m380,\
+					prob(5);/obj/item/ammo_magazine/m45,\
+					prob(5);/obj/item/ammo_magazine/m9mm,\
+					prob(5);/obj/item/ammo_magazine/s38,\
+					prob(4);/obj/item/ammo_magazine/clip/c45,\
+					prob(4);/obj/item/ammo_magazine/clip/c9mm,\
+					prob(4);/obj/item/ammo_magazine/m45uzi,\
+					prob(4);/obj/item/ammo_magazine/m9mml,\
+					prob(4);/obj/item/ammo_magazine/m9mmt,\
+					prob(4);/obj/item/ammo_magazine/m9mmp90,\
+					prob(4);/obj/item/ammo_magazine/m10mm,\
+					prob(4);/obj/item/ammo_magazine/m545/small,\
+					prob(3);/obj/item/ammo_magazine/clip/c10mm,\
+					prob(3);/obj/item/ammo_magazine/clip/c44,\
+					prob(3);/obj/item/ammo_magazine/s44,\
+					prob(3);/obj/item/ammo_magazine/m762,\
+					prob(3);/obj/item/ammo_magazine/m545,\
+					prob(3);/obj/item/cell/device/weapon,\
+					prob(2);/obj/item/ammo_magazine/m44,\
+					prob(2);/obj/item/ammo_magazine/s357,\
+					prob(2);/obj/item/ammo_magazine/m762m,\
+					prob(2);/obj/item/ammo_magazine/clip/c12g,
+					prob(2);/obj/item/ammo_magazine/clip/c12g/pellet,\
+					prob(1);/obj/item/ammo_magazine/m45tommy,\
+				/*	prob(1);/obj/item/ammo_magazine/m95,\ */
+					prob(1);/obj/item/ammo_casing/rocket,\
+					prob(1);/obj/item/storage/box/sniperammo,\
+					prob(1);/obj/item/storage/box/flashshells,\
+					prob(1);/obj/item/storage/box/beanbags,\
+					prob(1);/obj/item/storage/box/stunshells,\
+					prob(1);/obj/item/ammo_magazine/mtg,\
+					prob(1);/obj/item/ammo_magazine/m12gdrum,\
+					prob(1);/obj/item/ammo_magazine/m12gdrum/pellet,\
+					prob(1);/obj/item/ammo_magazine/m45tommydrum
+					)
+
+/obj/random/cargopod
+	name = "Random Cargo Item"
+	desc = "Hot Stuff."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "purplecomb"
+
+/obj/random/cargopod/item_to_spawn()
+	return pick(prob(10);/obj/item/contraband/poster,\
+				prob(8);/obj/item/haircomb,\
+				prob(6);/obj/item/material/wirerod,\
+				prob(6);/obj/item/storage/pill_bottle/tramadol,\
+				prob(6);/obj/item/material/butterflyblade,\
+				prob(6);/obj/item/material/butterflyhandle,\
+				prob(4);/obj/item/storage/pill_bottle/happy,\
+				prob(4);/obj/item/storage/pill_bottle/zoom,\
+				prob(4);/obj/item/material/butterfly,\
+				prob(2);/obj/item/material/butterfly/switchblade,\
+				prob(2);/obj/item/clothing/gloves/knuckledusters,\
+				prob(2);/obj/item/reagent_containers/syringe/drugs,\
+				prob(1);/obj/item/material/knife/tacknife,\
+				prob(1);/obj/item/clothing/suit/storage/vest/heavy/merc,\
+				prob(1);/obj/item/beartrap,\
+				prob(1);/obj/item/handcuffs,\
+				prob(1);/obj/item/handcuffs/legcuffs,\
+				prob(1);/obj/item/reagent_containers/syringe/steroid)
+
+//Just overriding this here, no more super medkit so those can be reserved for PoIs and such
+/obj/random/tetheraid
+	name = "Random First Aid Kit"
+	desc = "This is a random first aid kit. Does not include Combat Kits."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "firstaid"
+
+/obj/random/tetheraid/item_to_spawn()
+	return pick(prob(4);/obj/item/storage/firstaid/regular,
+				prob(3);/obj/item/storage/firstaid/toxin,
+				prob(3);/obj/item/storage/firstaid/o2,
+				prob(2);/obj/item/storage/firstaid/adv,
+				prob(3);/obj/item/storage/firstaid/fire)
+
+//Override from maintenance.dm to prevent combat kits from spawning in Tether maintenance
+/obj/random/maintenance/item_to_spawn()
+	return pick(prob(300);/obj/random/tech_supply,
+				prob(200);/obj/random/medical,
+				prob(100);/obj/random/tetheraid,
+				prob(10);/obj/random/contraband,
+				prob(50);/obj/random/action_figure,
+				prob(50);/obj/random/plushie,
+				prob(200);/obj/random/junk,
+				prob(200);/obj/random/material,
+				prob(50);/obj/random/toy,
+				prob(100);/obj/random/tank,
+				prob(50);/obj/random/soap,
+				prob(60);/obj/random/drinkbottle,
+				prob(500);/obj/random/maintenance/clean)
+
+/obj/random/action_figure/supplypack
+	drop_get_turf = FALSE
+
+/obj/random/roguemineloot
+	name = "Random Rogue Mines Item"
+	desc = "Hot Stuff. Hopefully"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "spickaxe"
+	spawn_nothing_percentage = 0
+
+/obj/random/roguemineloot/item_to_spawn()
+	return pick(prob(5);/obj/random/mre,
+				prob(5);/obj/random/maintenance,
+				prob(4);/obj/random/firstaid,
+				prob(3);/obj/random/toolbox,
+				prob(2);/obj/random/multiple/minevault,
+				prob(1);/obj/random/coin,
+				prob(1);/obj/random/drinkbottle,
+				prob(1);/obj/random/tool/alien)
+
+/obj/random/slimecore
+	name = "random slime core"
+	desc = "Random slime core."
+	icon = 'icons/mob/slimes.dmi'
+	icon_state = "rainbow slime extract"
+
+/obj/random/slimecore/item_to_spawn()
+	return pick(prob(3);/obj/item/slime_extract/metal,
+				prob(3);/obj/item/slime_extract/blue,
+				prob(3);/obj/item/slime_extract/purple,
+				prob(3);/obj/item/slime_extract/orange,
+				prob(3);/obj/item/slime_extract/yellow,
+				prob(3);/obj/item/slime_extract/gold,
+				prob(3);/obj/item/slime_extract/silver,
+				prob(3);/obj/item/slime_extract/dark_purple,
+				prob(3);/obj/item/slime_extract/dark_blue,
+				prob(3);/obj/item/slime_extract/red,
+				prob(3);/obj/item/slime_extract/green,
+				prob(3);/obj/item/slime_extract/pink,
+				prob(2);/obj/item/slime_extract/oil,
+				prob(2);/obj/item/slime_extract/bluespace,
+				prob(2);/obj/item/slime_extract/cerulean,
+				prob(2);/obj/item/slime_extract/amber,
+				prob(2);/obj/item/slime_extract/sapphire,
+				prob(2);/obj/item/slime_extract/ruby,
+				prob(2);/obj/item/slime_extract/emerald,
+				prob(2);/obj/item/slime_extract/light_pink,
+				prob(1);/obj/item/slime_extract/grey,
+				prob(1);/obj/item/slime_extract/rainbow)
+
+/obj/random/triumph
+	name = "random triumph loot"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "spickaxe"
+
+/obj/random/triumph/item_to_spawn()
+	return pick(prob(3);/obj/random/multiple/miningdrills,
+				prob(3);/obj/random/multiple/ores,
+				prob(2);/obj/random/multiple/treasure,
+				prob(1);/obj/random/multiple/mechtool)
+
+/obj/random/triumph/uncertain
+	icon_state = "upickaxe"
+	spawn_nothing_percentage = 65	//only 33% to spawn loot
+
+/obj/random/multiple/miningdrills
+	name = "random mining tool loot"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "spickaxe"
+
+/obj/random/multiple/miningdrills/item_to_spawn()
+	return pick(
+				prob(10);list(/obj/item/pickaxe/silver),
+				prob(8);list(/obj/item/pickaxe/drill),
+				prob(6);list(/obj/item/pickaxe/jackhammer),
+				prob(5);list(/obj/item/pickaxe/gold),
+				prob(4);list(/obj/item/pickaxe/plasmacutter),
+				prob(2);list(/obj/item/pickaxe/diamond),
+				prob(1);list(/obj/item/pickaxe/diamonddrill)
+				)
+
+/obj/random/multiple/ores
+	name = "random mining ore loot"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "satchel"
+
+/obj/random/multiple/ores/item_to_spawn()
+	return pick(
+				prob(9);list(
+							/obj/item/storage/bag/ore,
+							/obj/item/shovel,
+							/obj/item/ore/glass,
+							/obj/item/ore/glass,
+							/obj/item/ore/glass,
+							/obj/item/ore/glass,
+							/obj/item/ore/glass,
+							/obj/item/ore/glass,
+							/obj/item/ore/glass,
+							/obj/item/ore/glass,
+							/obj/item/ore/glass,
+							/obj/item/ore/glass,
+							/obj/item/ore/hydrogen,
+							/obj/item/ore/hydrogen,
+							/obj/item/ore/hydrogen,
+							/obj/item/ore/hydrogen,
+							/obj/item/ore/hydrogen,
+							/obj/item/ore/hydrogen
+							),
+				prob(7);list(
+							/obj/item/storage/bag/ore,
+							/obj/item/pickaxe,
+							/obj/item/ore/osmium,
+							/obj/item/ore/osmium,
+							/obj/item/ore/osmium,
+							/obj/item/ore/osmium,
+							/obj/item/ore/osmium,
+							/obj/item/ore/osmium,
+							/obj/item/ore/osmium,
+							/obj/item/ore/osmium,
+							/obj/item/ore/osmium,
+							/obj/item/ore/osmium
+							),
+				prob(4);list(
+							/obj/item/clothing/suit/radiation,
+							/obj/item/clothing/head/radiation,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium,
+							/obj/item/ore/uranium),
+				prob(2);list(
+							/obj/item/flashlight/lantern,
+							/obj/item/clothing/glasses/material,
+							/obj/item/ore/diamond,
+							/obj/item/ore/diamond,
+							/obj/item/ore/diamond,
+							/obj/item/ore/diamond,
+							/obj/item/ore/diamond,
+							/obj/item/ore/diamond,
+							/obj/item/ore/diamond,
+							/obj/item/ore/diamond,
+							/obj/item/ore/diamond,
+							/obj/item/ore/diamond
+							),
+				prob(1);list(
+							/obj/item/mining_scanner,
+							/obj/item/shovel/spade,
+							/obj/item/ore/verdantium,
+							/obj/item/ore/verdantium,
+							/obj/item/ore/verdantium,
+							/obj/item/ore/verdantium,
+							/obj/item/ore/verdantium
+							)
+				)
+
+/obj/random/multiple/treasure
+	name = "random treasure"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "cashbag"
+
+/obj/random/multiple/treasure/item_to_spawn()
+	return pick(
+				prob(5);list(
+							/obj/random/coin,
+							/obj/random/coin,
+							/obj/random/coin,
+							/obj/random/coin,
+							/obj/random/coin,
+							/obj/item/clothing/head/pirate
+							),
+				prob(4);list(
+							/obj/item/storage/bag/cash,
+							/obj/item/spacecash/c500,
+							/obj/item/spacecash/c100,
+							/obj/item/spacecash/c50
+							),
+				prob(3);list(
+							/obj/item/clothing/head/hardhat/orange,
+							/obj/item/stack/material/gold,
+							/obj/item/stack/material/gold,
+							/obj/item/stack/material/gold,
+							/obj/item/stack/material/gold,
+							/obj/item/stack/material/gold,
+							/obj/item/stack/material/gold,
+							/obj/item/stack/material/gold,
+							/obj/item/stack/material/gold,
+							/obj/item/stack/material/gold,
+							/obj/item/stack/material/gold),
+				prob(1);list(
+							/obj/item/stack/material/phoron,
+							/obj/item/stack/material/phoron,
+							/obj/item/stack/material/phoron,
+							/obj/item/stack/material/phoron,
+							/obj/item/stack/material/diamond,
+							/obj/item/stack/material/diamond,
+							/obj/item/stack/material/diamond
+							)
+				)
+
+/obj/random/multiple/mechtool
+	name = "random mech equipment"
+	icon = 'icons/mecha/mecha_equipment.dmi'
+	icon_state = "mecha_clamp"
+
+/obj/random/multiple/mechtool/item_to_spawn()
+	return pick(
+				prob(12);list(/obj/item/mecha_parts/mecha_equipment/tool/drill),
+				prob(10);list(/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp),
+				prob(8);list(/obj/item/mecha_parts/mecha_equipment/generator),
+				prob(7);list(/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot/rigged),
+				prob(6);list(/obj/item/mecha_parts/mecha_equipment/repair_droid),
+				prob(3);list(/obj/item/mecha_parts/mecha_equipment/gravcatapult),
+				prob(2);list(/obj/item/mecha_parts/mecha_equipment/weapon/energy/riggedlaser),
+				prob(2);list(/obj/item/mecha_parts/mecha_equipment/weapon/energy/flamer/rigged),
+				prob(1);list(/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill),
+				)

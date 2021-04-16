@@ -10,12 +10,12 @@
 	if(href_list["track"])
 		if(isAI(usr))
 			var/mob/living/silicon/ai/AI = usr
-			var/mob/living/carbon/human/H = locate(href_list["track"]) in mob_list
+			var/mob/living/carbon/human/H = locate(href_list["track"]) in GLOB.mob_list
 			if(hassensorlevel(H, SUIT_SENSOR_TRACKING))
 				AI.ai_actual_track(H)
 		return 1
 
-/datum/nano_module/crew_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/crew_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
 	var/data[0]
 	var/turf/T = get_turf(nano_host())
 
@@ -43,7 +43,7 @@
 		ui.set_auto_update(1)
 
 /*/datum/nano_module/crew_monitor/proc/scan()
-	for(var/mob/living/carbon/human/H in mob_list)
+	for(var/mob/living/carbon/human/H in GLOB.mob_list)
 		if(istype(H.w_uniform, /obj/item/clothing/under))
 			var/obj/item/clothing/under/C = H.w_uniform
 			if (C.has_sensor)
