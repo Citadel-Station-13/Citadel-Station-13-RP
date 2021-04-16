@@ -1,0 +1,4 @@
+author: "Trilbyspaceclone"
+delete-after: True
+changes: 
+  - bugfix: "Corrects robotics labcoat open sprites to be seeable."

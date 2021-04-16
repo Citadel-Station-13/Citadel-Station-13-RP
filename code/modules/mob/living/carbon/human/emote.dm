@@ -225,7 +225,9 @@
 			m_type = 1
 
 		if ("chuckle")
-			emote("laugh")
+			var/list/laughs = list("lets out a chuckle.", "laughs.", "chuckles.", "cracks up.", "erupts into laughter.", "cackles.")
+			message = "[pick(laughs)]"
+			m_type = 1
 
 		if ("twitch")
 			message = "twitches."
@@ -964,7 +966,14 @@
 			message = "purrs softly."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
-
+		if ("clak")
+			if(!spam_flag)
+				var/msg = list("<font color='grey' size='2'>CLAKS!</font>", "claks!")
+				message = "[pick(msg)]"
+				playsound(loc, 'modular_citadel/sound/spooky/boneclak.ogg', 50, 1, 1)
+				spam_flag = TRUE
+				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+			m_type = 2
 	if (message)
 		custom_emote(m_type,message)
 		return 1

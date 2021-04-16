@@ -184,7 +184,7 @@
 
 	if(matches.len==0)
 		return
-	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in matches
+	var/hsbitem = input(usr, "Choose an object to delete. Use clear-mobs instead on LIVE.", "Delete:") as null|anything in matches
 	if(hsbitem)
 		hsbitem = matches[hsbitem]
 		var/counter = 0
@@ -196,6 +196,30 @@
 		log_admin("[key_name(src)] has deleted all ([counter]) instances of [hsbitem].")
 		message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [hsbitem].")
 		// SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_clear_mobs()
+	set category = "Admin"
+	set name = "Clear Mobs"
+
+	var/range = input(usr, "Choose a range in tiles FROM your location", "If uncertain, enter 25 or below.") as num
+	if(range >= 50) // ridiculously high
+		alert("Please enter a valid range below 50.")
+		return
+	var/list/victims = list()
+	for(var/mob/C in view(range, src)) // get all mobs in the range from us we specified
+		victims += C
+	var/hsbitem = input(usr, "Choose a mob type to clear.", "Delete ALL of this type:") as null|anything in typesof(victims, /mob)
+	var/friendlyname = type2top(hsbitem)
+	var/warning = alert(usr, "Are you ABSOLUTELY CERTAIN you wish to delete EVERY [friendlyname] in [range] tiles?", "Warning", "Yes", "Cancel") // safety
+	if (warning == "Yes")
+		if(hsbitem)
+			for(var/mob/O in view(range, src))
+				if(istype(O, hsbitem))
+					qdel(O)
+			log_admin("[key_name(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.")
+			message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.", 0)
+	feedback_add_details("admin_verb","CLRM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
