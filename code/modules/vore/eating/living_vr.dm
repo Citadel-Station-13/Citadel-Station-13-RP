@@ -30,6 +30,7 @@
 	var/next_preyloop					// For Fancy sound internal loop
 	var/adminbus_trash = FALSE			// For abusing trash eater for event shenanigans.
 	var/bitten = 0
+	var/painmsg = 1
 
 //
 // Hook for generic creation of stuff on new creatures
@@ -91,7 +92,6 @@
 	//Handle case: /obj/item/grab
 	if(istype(I,/obj/item/grab))
 		var/obj/item/grab/G = I
-
 		//Has to be aggressive grab, has to be living click-er and non-silicon grabbed
 		if((G.state >= GRAB_AGGRESSIVE) && (isliving(user) && !issilicon(G.affecting)))
 
