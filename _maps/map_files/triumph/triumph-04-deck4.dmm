@@ -21192,6 +21192,7 @@
 	dir = 1
 	},
 /obj/structure/table/bench/wooden,
+/obj/item/deck/unus,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "qgO" = (
