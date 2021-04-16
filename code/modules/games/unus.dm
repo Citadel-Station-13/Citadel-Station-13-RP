@@ -11,13 +11,17 @@
 	for(var/suit in list("red", "yellow", "blue", "green"))
 
 		for(var/i = 0, i < 2, i++)
-			for(var/number in list("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "draw two", "skip", "reverse"))
+			for(var/number in list("draw two", "skip", "reverse"))
 				P = new()
 				P.name = "[suit] [number]"
-				if(number == "draw two" || "skip" || "reverse")
-					P.card_icon = "unus_[suit]_action"
-				else
-					P.card_icon = "unus_[suit]_number"
+				P.card_icon = "unus_[suit]_action"
+				P.back_icon = "card_back_unus"
+				cards += P
+		for(var/i = 0, i < 2, i++)
+			for(var/number in list("one", "two", "three", "four", "five", "six", "seven", "eight", "nine"))
+				P = new()
+				P.name = "[suit] [number]"
+				P.card_icon = "unus_[suit]_number"
 				P.back_icon = "card_back_unus"
 				cards += P
 		for(var/number in list("zero"))
