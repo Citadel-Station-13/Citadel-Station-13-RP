@@ -42,7 +42,6 @@
 		to_chat(src, "<span class='warning'>\The [destination] blocks your way.</span>")
 		return 0
 
-	var/area/area = get_area(src)
 	if(direction == UP && has_gravity() && !can_overcome_gravity())
 		var/obj/structure/lattice/lattice = locate() in destination.contents
 		if(lattice)
