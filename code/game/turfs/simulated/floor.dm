@@ -78,8 +78,10 @@
 	icon_state = base_icon_state
 	footstep_sounds = base_footstep_sounds
 
-	if(flooring && place_product)
-		flooring.drop_product(src)
+	if(flooring)
+		if(place_product)
+			flooring.drop_product(src)
+		flooring = null
 
 	broken = null
 	burnt = null
