@@ -442,7 +442,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/dress/black_corset
-	name = "black corset"
+	name = "black corset and skirt"
 	desc = "A black corset and skirt for those fancy nights out."
 	icon_state = "black_corset"
 

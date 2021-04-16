@@ -74,3 +74,7 @@
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_MAIN_CITADEL_TESTING, 64, 64)
 */
 	return 1
+
+/turf/simulated/floor/water
+
+/turf/simulated/floor/water/deep
