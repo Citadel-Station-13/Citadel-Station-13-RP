@@ -527,20 +527,20 @@
 		alpha = i
 	if(plasma_temperature > 60000) //high ultraviolet - magenta
 		light_color = "#cc005f"
-		light_max_range = alpha / 30
-		light_max_power = alpha / 30
+		light_max_range = alpha / 5
+		light_max_power = alpha / 5
 	else if(plasma_temperature > 12000) //ultraviolet - blue
 		light_color = "#1b00cc"
-		light_max_range = alpha / 30
-		light_max_power = alpha / 30
+		light_max_range = alpha / 15
+		light_max_power = alpha / 15
 	else if(plasma_temperature > 8000) //nearing ultraviolet - cyan
 		light_color = "#00cccc"
-		light_max_range = alpha / 30
-		light_max_power = alpha / 30
+		light_max_range = alpha / 20
+		light_max_power = alpha / 20
 	else if(plasma_temperature > 4000) // green
 		light_color = "#1ab705"
-		light_max_range = alpha / 30
-		light_max_power = alpha / 30
+		light_max_range = alpha / 25
+		light_max_power = alpha / 25
 	else if(plasma_temperature > 2000) //orange
 		light_color = "#cc7700"
 		light_max_range = alpha / 30
@@ -550,10 +550,10 @@
 /obj/effect/fusion_em_field/proc/emflare()
 		radiation += plasma_temperature/2
 		light_color = "#ff0000"
-		light_max_power = 30
-		light_min_power = 30
-		light_min_range = 30
-		light_max_range = 30
+		light_max_power = alpha
+		light_min_power = alpha
+		light_min_range = alpha
+		light_max_range = alpha
 		visible_message("<span class='danger'>\The [src] flares to eye-searing brightness!</span>")
 		sleep(60)
 		temp_color()
