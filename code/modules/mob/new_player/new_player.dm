@@ -24,11 +24,13 @@
 
 /mob/new_player/proc/verifyage()
 	if(client) // sanity
-		var/alert = alert(src, "This is an 18+ roleplay server.\n(You must confirm that you are 18+ to proceed.)", "Age Verification", "I am 18+", "I am not 18+") 	
-		if(alert != "I am 18+")
+		alert("Please complete additional verification to proceed.")
+		var/check = alert(src, "This is an 18+ roleplay server.\n(You must confirm that you are 18+ to proceed.)", "Age Verification", "I am 18+", "I am not 18+")
+		if(check != "I am 18+")
 			var/text = "[key_name(usr)] failed initial age verification."
 			message_admins(text)
 			log_admin(text)
+			AddBan(client.ckey, client.computer_id, "Failed initial age verification check. Appeal at Citadel-Station.net", "Age Gate", 0, 0)
 			Logout()
 		else
 			client.set_preference(/datum/client_preference/age_verified, 1)
