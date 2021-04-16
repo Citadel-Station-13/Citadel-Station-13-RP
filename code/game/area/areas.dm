@@ -174,6 +174,10 @@
 	for(var/obj/machinery/M in T)
 		M.power_change()
 
+// compatibility wrapper, remove posthaste by making sure nothing checks area has_gravity.
+/area/proc/has_gravity()
+	return has_gravity
+
 /area/proc/get_contents()
 	return contents
 
