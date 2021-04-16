@@ -28,7 +28,7 @@ var/global/list/active_radio_jammers = list()
 
 	origin_tech = list(TECH_ILLEGAL = 7, TECH_BLUESPACE = 5) //Such technology! Subspace jamming!
 
-/obj/item/radio_jammer/Initialize()
+/obj/item/radio_jammer/Initialize(mapload)
 	. = ..()
 	power_source = new(src)
 	update_icon() // So it starts with the full overlay.
@@ -58,7 +58,7 @@ var/global/list/active_radio_jammers = list()
 	on = TRUE
 	update_icon()
 
-/obj/item/radio_jammer/process()
+/obj/item/radio_jammer/process(delta_time)
 	if(!power_source || !power_source.check_charge(tick_cost))
 		var/mob/living/notify
 		if(isliving(loc))

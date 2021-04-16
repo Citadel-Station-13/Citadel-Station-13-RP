@@ -1,5 +1,5 @@
 /mob/Destroy()//This makes sure that mobs withGLOB.clients/keys are not just deleted from the game.
-	mob_list -= src
+	GLOB.mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
 	unset_machine()
@@ -39,8 +39,8 @@
 	spell_masters = null
 	zone_sel = null
 
-/mob/Initialize()
-	mob_list += src
+/mob/Initialize(mapload)
+	GLOB.mob_list += src
 	set_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
@@ -148,7 +148,7 @@
 		M.show_message(msg, 2, deaf_message, 1)
 
 /mob/proc/findname(msg)
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if (M.real_name == text("[]", msg))
 			return M
 	return 0
@@ -228,16 +228,31 @@
 	return
 
 //mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
-/mob/verb/examinate(atom/A as mob|obj|turf in view())
+/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
 
-	if((is_blind(src) || usr.stat) && !isobserver(src))
-		to_chat(src, "<span class='notice'>Something is there but you can't see it.</span>")
-		return 1
+	if(isturf(A) && !(sight & SEE_TURFS) && !(A in view(client ? client.view : world.view, src)))
+		// shift-click catcher may issue examinate() calls for out-of-sight turfs
+		return
+
+	if(is_blind()) //blind people see things differently (through touch)
+		return
 
 	face_atom(A)
-	A.examine(src)
+	if(!isobserver(src) && !isturf(A) && A != src)
+		if(A.loc != src)
+			for(var/mob/M in viewers(4, src))
+				if(M == src || M.is_blind())
+					continue
+				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
+					to_chat(M, "<span class='tinynotice'><b>\The [src]</b> looks at \the [A].</span>")
+
+	var/list/result
+	if(client)
+		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
+
+	to_chat(src, result.Join("\n"))
 
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
@@ -450,7 +465,7 @@
 		prefs.lastchangelog = GLOB.changelog_hash
 		SScharacter_setup.queue_preferences_save(prefs)
 		prefs.save_preferences()
-		winset(src, "rpane.changelog", "background-color=none;font-style=;")
+		winset(src, "infowindow.changelog", "background-color=none;font-style=;")
 
 /mob/verb/observe()
 	set name = "Observe"
@@ -493,7 +508,7 @@
 				namecounts[name] = 1
 			creatures[name] = O
 
-	for(var/mob/M in sortList(mob_list))
+	for(var/mob/M in sortList(GLOB.mob_list))
 		var/name = M.name
 		if (names.Find(name))
 			namecounts[name]++
@@ -576,9 +591,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			for(var/name in H.organs_by_name)
 				var/obj/item/organ/external/e = H.organs_by_name[name]
 				if(e && H.lying)
-					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && e.splinted in e.contents && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
+					if((e.status & ORGAN_BROKEN && (!e.splinted || (e.splinted && (e.splinted in e.contents) && prob(30))) || e.status & ORGAN_BLEEDING) && (H.getBruteLoss() + H.getFireLoss() >= 100))
 						return 1
-						break
 	return 0
 
 /mob/MouseDrop(mob/M as mob)
@@ -616,7 +630,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/see(message)
 	if(!is_active())
 		return 0
-	src << message
+	to_chat(src, message)
 	return 1
 
 /mob/proc/show_viewers(message)
@@ -1165,3 +1179,15 @@ mob/proc/yank_out_object()
 /mob/onTransitZ(old_z, new_z)
 	..()
 	update_client_z(new_z)
+
+/mob/verb/local_diceroll(n as num)
+	set name = "diceroll"
+	set category = "OOC"
+	set desc = "Roll a random number between 1 and a chosen number."
+
+	n = round(n)		// why are you putting in floats??
+	if(n < 2)
+		to_chat(src, "<span class='warning'>[n] must be 2 or above, otherwise why are you rolling?</span>")
+		return
+
+	to_chat(src, "<span class='notice'>Diceroll result: <b>[rand(1, n)]</b></span>")

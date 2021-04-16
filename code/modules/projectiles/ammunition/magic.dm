@@ -34,7 +34,7 @@
 		if(target.anti_magic_check())
 			target.visible_message("<span class='warning'>[src] vanishes on contact with [target]!</span>")
 			return blocked
-		if(target.revive(full_heal = 1))
+		if(target.revive()) // full_heal = TRUE
 			to_chat(target, "<span class='notice'>You rise with a start, you're alive!!!</span>")
 		else if(target.stat != DEAD)
 			to_chat(target, "<span class='notice'>You feel great!</span>")
@@ -81,8 +81,7 @@
 		OpenDoor(target)
 	else
 		var/turf/T = get_turf(target)
-		if(/turf/simulated/wall)
-			CreateDoor(T)
+		CreateDoor(T)
 
 /obj/item/projectile/magic/door/proc/CreateDoor(turf/T)
 	var/door_type = pick(door_types)
@@ -337,6 +336,7 @@
 	var/created = FALSE //prevents creation of more then one locker if it has multiple hits
 	var/locker_suck = TRUE
 
+/*
 /obj/item/projectile/magic/locker/proc/prehit(atom/A, var/mob/living/L)
 	if(ismob(A) && locker_suck)
 		var/mob/M = A
@@ -349,6 +349,7 @@
 		M.forceMove(src)
 		return FALSE
 	return ..()
+*/
 
 /obj/item/projectile/magic/locker/on_hit(target)
 	if(created)
@@ -372,7 +373,7 @@
 	var/weakened_icon = "decursed"
 	var/auto_destroy = TRUE
 
-/obj/structure/closet/decay/Initialize()
+/obj/structure/closet/decay/Initialize(mapload)
 	. = ..()
 	if(auto_destroy)
 		addtimer(CALLBACK(src), 5 MINUTES)
@@ -464,7 +465,7 @@
 			return
 		M.take_overall_damage(0,10) //between this 10 burn, the 10 brute, the explosion brute, and the onfire burn, your at about 65 damage if you stop drop and roll immediately
 	var/turf/T = get_turf(target)
-	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = exp_fire)
+	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0)//, flame_range = exp_fire)
 
 /obj/item/projectile/magic/aoe/fireball/infernal
 	name = "infernal fireball"

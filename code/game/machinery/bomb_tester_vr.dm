@@ -32,7 +32,7 @@
 	var/datum/gas_mixture/faketank
 	var/faketank_integrity
 
-/obj/machinery/bomb_tester/Initialize()
+/obj/machinery/bomb_tester/Initialize(mapload)
 	.=..()
 	default_apply_parts()
 	RefreshParts()
@@ -54,7 +54,7 @@
 	simulation_finish(1)
 	return ..()
 
-/obj/machinery/bomb_tester/process()
+/obj/machinery/bomb_tester/process(delta_time)
 	..()
 	if(test_canister && !Adjacent(test_canister))
 		test_canister = null

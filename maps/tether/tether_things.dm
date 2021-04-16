@@ -34,32 +34,32 @@
 	external_pressure_bound = ONE_ATMOSPHERE * 1.1
 
 
-/obj/effect/step_trigger/teleporter/to_mining/New()
-	..()
+/obj/effect/step_trigger/teleporter/to_mining/Initialize(mapload)
+	. = ..()
 	teleport_x = src.x
 	teleport_y = 2
 	teleport_z = Z_LEVEL_SURFACE_MINE
 
-/obj/effect/step_trigger/teleporter/from_mining/New()
-	..()
+/obj/effect/step_trigger/teleporter/from_mining/Initialize(mapload)
+	. = ..()
 	teleport_x = src.x
 	teleport_y = world.maxy - 1
 	teleport_z = Z_LEVEL_SURFACE_LOW
 
-/obj/effect/step_trigger/teleporter/to_solars/New()
-	..()
+/obj/effect/step_trigger/teleporter/to_solars/Initialize(mapload)
+	. = ..()
 	teleport_x = world.maxx - 1
 	teleport_y = src.y
 	teleport_z = Z_LEVEL_SOLARS
 
-/obj/effect/step_trigger/teleporter/from_solars/New()
-	..()
+/obj/effect/step_trigger/teleporter/from_solars/Initialize(mapload)
+	. = ..()
 	teleport_x = 2
 	teleport_y = src.y
 	teleport_z = Z_LEVEL_SURFACE_LOW
 
-/obj/effect/step_trigger/teleporter/wild/New()
-	..()
+/obj/effect/step_trigger/teleporter/wild/Initialize(mapload)
+	. = ..()
 
 	//If starting on east/west edges.
 	if (src.x == 1)
@@ -80,7 +80,7 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/to_underdark/Initialize()
+/obj/effect/step_trigger/teleporter/to_underdark/Initialize(mapload)
 	. = ..()
 	teleport_x = x
 	teleport_y = y
@@ -93,7 +93,7 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/from_underdark/Initialize()
+/obj/effect/step_trigger/teleporter/from_underdark/Initialize(mapload)
 	. = ..()
 	teleport_x = x
 	teleport_y = y
@@ -159,7 +159,7 @@
 
 	var/area/shock_area = /area/tether/surfacebase/tram
 
-/turf/simulated/floor/maglev/Initialize()
+/turf/simulated/floor/maglev/Initialize(mapload)
 	. = ..()
 	shock_area = locate(shock_area)
 
@@ -202,7 +202,7 @@
 /obj/machinery/smartfridge/chemistry/chemvator/down
 	name = "\improper Smart Chemavator - Lower"
 
-/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize()
+/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize(mapload)
 	. = ..()
 	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator,get_zstep(src,UP))
 	if(istype(above))
@@ -229,7 +229,7 @@
 	time_till_despawn = 10 SECONDS
 	spawnpoint_type = /datum/spawnpoint/tram
 
-/obj/machinery/cryopod/robot/door/tram/process()
+/obj/machinery/cryopod/robot/door/tram/process(delta_time)
 	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
 		time_till_despawn = 0
@@ -261,14 +261,15 @@ var/global/list/latejoin_tram   = list()
 /obj/effect/landmark/tram/New()
 	latejoin_tram += loc // Register this turf as tram latejoin.
 	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
-	..()
+	return ..()
 
 /datum/spawnpoint/tram
 	display_name = "Tram Station"
 	msg = "has arrived on the tram"
 
+
 /datum/spawnpoint/tram/New()
-	..()
+	. = ..()
 	turfs = latejoin_tram
 
 //
@@ -358,6 +359,7 @@ var/global/list/latejoin_tram   = list()
 //
 //Holosurgery
 //
+/*
 /obj/machinery/computer/HolodeckControl/holosurgery
 	name = "Don't use this one either."
 	powerdown_program = "Off"
@@ -377,7 +379,7 @@ var/global/list/latejoin_tram   = list()
 /obj/machinery/computer/HolodeckControl/holosurgery
 	name = "holosurgery control"
 	projection_area = /area/medical/surgery/holosurgery
-
+*/
 // Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
 /obj/machinery/power/supermatter/touch_map_edge()
 	qdel(src)
@@ -399,8 +401,8 @@ var/global/list/latejoin_tram   = list()
 	desc = "Neutralizes toxins and provides a mild analgesic effect."
 	icon_state = "pill2"
 
-/obj/item/reagent_containers/pill/airlock/New()
-	..()
+/obj/item/reagent_containers/pill/airlock/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("anti_toxin", 15)
 	reagents.add_reagent("paracetamol", 5)
 
@@ -419,8 +421,8 @@ var/global/list/latejoin_tram   = list()
 	name = "expedition weaponry cabinet"
 	req_one_access = list(access_explorer,access_armory)
 
-/obj/structure/closet/secure_closet/guncabinet/excursion/New()
-	..()
+/obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 4)
 		new /obj/item/gun/energy/frontier/locked(src)
 	for(var/i = 1 to 4)

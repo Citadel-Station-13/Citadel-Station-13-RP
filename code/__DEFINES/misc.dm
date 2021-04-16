@@ -123,7 +123,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
-#define MAX_MESSAGE_LEN			2048	// I'm not sure about "easily". It can be a little longer.	// Famous last words.
+#define MAX_MESSAGE_LEN			4096	// I'm not sure about "easily". It can be a lot longer.
 #define MAX_PAPER_MESSAGE_LEN	6144
 #define MAX_BOOK_MESSAGE_LEN	24576
 #define MAX_RECORD_LENGTH		24576
@@ -397,11 +397,16 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 
 #define PR_ANNOUNCEMENTS_PER_ROUND	5
+
 //https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
 #define MOUSE_OPACITY_TRANSPARENT	0
 #define MOUSE_OPACITY_ICON			1
 #define MOUSE_OPACITY_OPAQUE		2
 
+//world/proc/shelleo
+#define SHELLEO_ERRORLEVEL 1
+#define SHELLEO_STDOUT 2
+#define SHELLEO_STDERR 3
 
 // Embed chance unset for embed_chance var on /obj/item.
 #define EMBED_CHANCE_UNSET	-1337

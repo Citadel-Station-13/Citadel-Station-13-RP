@@ -73,9 +73,9 @@ steam.start() -- spawns the effect
 				var/obj/effect/effect/steam/steam = new /obj/effect/effect/steam(src.location)
 				var/direction
 				if(src.cardinals)
-					direction = pick(cardinal)
+					direction = pick(GLOB.cardinal)
 				else
-					direction = pick(alldirs)
+					direction = pick(GLOB.alldirs)
 				for(i=0, i<pick(1,2,3), i++)
 					sleep(5)
 					step(steam,direction)
@@ -96,15 +96,12 @@ steam.start() -- spawns the effect
 	anchored = 1.0
 	mouse_opacity = 0
 
-/obj/effect/effect/sparks/New()
-	..()
-	playsound(src.loc, "sparks", 100, 1)
+/obj/effect/effect/sparks/Initialize(mapload)
+	. = ..()
+	playsound(src, "sparks", 100, 1)
 	var/turf/T = src.loc
 	if (istype(T, /turf))
 		T.hotspot_expose(1000,100)
-
-/obj/effect/effect/sparks/Initialize()
-	. = ..()
 	QDEL_IN(src, 5 SECONDS)
 
 /obj/effect/effect/sparks/Destroy()
@@ -145,9 +142,9 @@ steam.start() -- spawns the effect
 				src.total_sparks++
 				var/direction
 				if(src.cardinals)
-					direction = pick(cardinal)
+					direction = pick(GLOB.cardinal)
 				else
-					direction = pick(alldirs)
+					direction = pick(GLOB.alldirs)
 				for(i=0, i<pick(1,2,3), i++)
 					sleep(5)
 					step(sparks,direction)
@@ -177,14 +174,14 @@ steam.start() -- spawns the effect
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/effect/smoke/New()
-	..()
+/obj/effect/effect/smoke/Initialize(mapload)
+	. = ..()
 	if(time_to_live)
-		spawn (time_to_live)
-			if(!QDELETED(src))
-				qdel(src)
+		QDEL_IN(src, time_to_live)
 
 /obj/effect/effect/smoke/Crossed(mob/living/carbon/M as mob )
+	if(M.is_incorporeal())
+		return
 	..()
 	if(istype(M))
 		affect(M)
@@ -210,9 +207,9 @@ steam.start() -- spawns the effect
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
 
-/obj/effect/effect/smoke/illumination/New(var/newloc, var/lifetime=10, var/range=null, var/power=null, var/color=null)
+/obj/effect/effect/smoke/illumination/Initialize(mapload, lifetime = 10, range, power, color)
 	time_to_live=lifetime
-	..()
+	. = ..(mapload)
 	set_light(range, power, color)
 
 /////////////////////////////////////////////
@@ -262,7 +259,7 @@ steam.start() -- spawns the effect
 	opacity = FALSE
 	var/strength = 5 // How much damage to do inside each affect()
 
-/obj/effect/effect/smoke/elemental/Initialize()
+/obj/effect/effect/smoke/elemental/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	return ..()
 
@@ -275,7 +272,7 @@ steam.start() -- spawns the effect
 	for(var/mob/living/L in range(1, src))
 		affect(L)
 
-/obj/effect/effect/smoke/elemental/process()
+/obj/effect/effect/smoke/elemental/process(delta_time)
 	for(var/mob/living/L in range(1, src))
 		affect(L)
 
@@ -354,9 +351,9 @@ steam.start() -- spawns the effect
 			var/direction = src.direction
 			if(!direction)
 				if(src.cardinals)
-					direction = pick(cardinal)
+					direction = pick(GLOB.cardinal)
 				else
-					direction = pick(alldirs)
+					direction = pick(GLOB.alldirs)
 			for(i=0, i<pick(0,1,1,1,2,2,2,3), i++)
 				sleep(10)
 				step(smoke,direction)
@@ -540,7 +537,7 @@ steam.start() -- spawns the effect
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 
-/obj/effect/effect/teleport_greyscale/Initialize()
+/obj/effect/effect/teleport_greyscale/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 2 SECONDS)
 

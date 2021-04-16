@@ -7,7 +7,7 @@
 	qdel(src.radio)
 	radio = null
 
-/obj/item/camerabug/Initialize()
+/obj/item/camerabug/Initialize(mapload)
 	. = ..()
 	listening_objects += src
 	radio = new(src)

@@ -121,7 +121,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 	var/firelevel = 1 //Calculated by gas_mixture.calculate_firelevel()
 
-/obj/fire/process()
+/obj/fire/process(delta_time)
 	. = 1
 
 	var/turf/simulated/my_tile = loc
@@ -152,7 +152,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		A.fire_act(air_contents, air_contents.temperature, air_contents.volume)
 
 	//spread
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/simulated/enemy_tile = get_step(my_tile, direction)
 
 		if(istype(enemy_tile))
@@ -182,14 +182,12 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	animate(src, color = fire_color(air_contents.temperature), 5)
 	set_light(l_color = color)
 
-/obj/fire/New(newLoc,fl)
-	..()
-
+/obj/fire/Initialize(mapload, fl)
+	. = ..()
 	if(!istype(loc, /turf))
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 
-	setDir(pick(cardinal))
+	setDir(pick(GLOB.cardinal))
 
 	var/datum/gas_mixture/air_contents = loc.return_air()
 	color = fire_color(air_contents.temperature)

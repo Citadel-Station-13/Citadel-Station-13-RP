@@ -17,15 +17,15 @@
 	var/fire_resist = 1
 	var/expandType = /obj/effect/blob
 
-/obj/effect/blob/New(loc)
+/obj/effect/blob/Initialize(mapload)
+	. = ..()
 	health = maxHealth
 	update_icon()
-	return ..(loc)
 
-/obj/effect/blob/CanAllowThrough(var/atom/movable/mover, vra/turf/target)
+/obj/effect/blob/CanAllowThrough(atom/movable/mover, turf/target)
 	return FALSE
 
-/obj/effect/blob/ex_act(var/severity)
+/obj/effect/blob/ex_act(severity)
 	switch(severity)
 		if(1)
 			take_damage(rand(100, 120) / brute_resist)
@@ -164,15 +164,15 @@
 /obj/effect/blob/core/update_icon()
 	return
 
-/obj/effect/blob/core/New(loc)
+/obj/effect/blob/core/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	return ..(loc)
 
 /obj/effect/blob/core/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/blob/core/process()
+/obj/effect/blob/core/process(delta_time)
 	pulse(20, list(NORTH, EAST))
 	pulse(20, list(NORTH, WEST))
 	pulse(20, list(SOUTH, EAST))
@@ -188,8 +188,8 @@
 	brute_resist = 1
 	fire_resist = 2
 
-/obj/effect/blob/shield/New()
-	..()
+/obj/effect/blob/shield/Initialize(mapload)
+	. = ..()
 	update_nearby_tiles()
 
 /obj/effect/blob/shield/Destroy()

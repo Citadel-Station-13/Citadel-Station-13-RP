@@ -31,7 +31,7 @@
 	QDEL_NULL(ptank)
 	. = ..()
 
-/obj/item/flamethrower/process()
+/obj/item/flamethrower/process(delta_time)
 	if(!lit)
 		STOP_PROCESSING(SSobj, src)
 		return null
@@ -197,12 +197,11 @@
 	//location.hotspot_expose(1000,500,1)
 	return
 
-/obj/item/flamethrower/full/New(var/loc)
-	..()
+/obj/item/flamethrower/full/Initialize(mapload)
+	. = ..()
 	weldtool = new /obj/item/weldingtool(src)
 	weldtool.status = 0
 	igniter = new /obj/item/assembly/igniter(src)
 	igniter.secured = 0
 	status = 1
 	update_icon()
-	return

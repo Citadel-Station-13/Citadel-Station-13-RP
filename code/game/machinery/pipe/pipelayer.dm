@@ -21,9 +21,9 @@
 		"heat exchange pipes" = /obj/machinery/atmospherics/pipe/simple/heat_exchanging
 	)
 
-/obj/machinery/pipelayer/New()
+/obj/machinery/pipelayer/Initialize(mapload)
+	. = ..()
 	W = new(src)
-	..()
 	default_apply_parts()
 	update_icon()
 
@@ -115,8 +115,8 @@
 	..()
 
 /obj/machinery/pipelayer/examine(mob/user)
-	..()
-	to_chat(user, "\The [src] has [metal] sheet\s, is set to produce [P_type_t], and auto-dismantling is [!a_dis?"de":""]activated.")
+	. = ..()
+	. += "<span class = 'notice'>The [src] has [metal] sheets, is set to produce [P_type_t], and auto-dismantling is [!a_dis?"de":""]activated.</span>"
 
 /obj/machinery/pipelayer/proc/reset()
 	on = 0

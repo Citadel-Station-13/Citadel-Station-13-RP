@@ -44,6 +44,13 @@ var/list/flooring_types
 	var/can_paint
 	var/list/footstep_sounds = list() // key=species name, value = list of soundss
 
+/decl/flooring/proc/drop_product(atom/A)
+	if(ispath(build_type, /obj/item/stack))
+		new build_type(A, build_cost)
+	else
+		for(var/i in 1 to min(build_cost, 50))
+			new build_type(A)
+
 /decl/flooring/grass
 	name = "grass"
 	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
@@ -353,3 +360,58 @@ var/list/flooring_types
 	has_damage_range = 6
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = null
+
+
+/decl/flooring/outdoors/lavaland
+	name = "ash sand"
+	desc = "Soft and ominous."
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_base = "asteroid"
+	flags = TURF_HAS_EDGES
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+/decl/flooring/outdoors/dirt
+	name = "dirt"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "dirt-dark"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+
+/decl/flooring/outdoors/grass
+	name = "grass"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "grass"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/grass1.ogg',
+		'sound/effects/footstep/grass2.ogg',
+		'sound/effects/footstep/grass3.ogg',
+		'sound/effects/footstep/grass4.ogg'))
+
+/decl/flooring/outdoors/water
+	name = "water"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "seashallow"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/water1.ogg',
+		'sound/effects/footstep/water2.ogg',
+		'sound/effects/footstep/water3.ogg',
+		'sound/effects/footstep/water4.ogg'))
+
+/decl/flooring/outdoors/beach
+	name = "beach"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "sand"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+

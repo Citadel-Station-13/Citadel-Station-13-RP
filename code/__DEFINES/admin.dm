@@ -45,6 +45,7 @@
 #define SMITE_BLUESPACEARTILLERY	"Bluespace Artillery"
 #define SMITE_SPONTANEOUSCOMBUSTION	"Spontaneous Combustion"
 #define SMITE_LIGHTNINGBOLT			"Lightning Bolt"
+#define SMITE_DISLOCATEALL			"Dislocate All Limbs"
 
 #define ADMIN_QUE(user) "(<a href='?_src_=holder;adminmoreinfo=\ref[user]'>?</a>)"
 #define ADMIN_FLW(user) "(<a href='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</a>)"

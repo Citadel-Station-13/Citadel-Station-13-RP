@@ -12,7 +12,9 @@
 
 	var/mob/my_mob = null // The mob that possesses this hud object.
 
-/obj/screen/movable/ability_master/New(owner)
+/obj/screen/movable/ability_master/Initialize(mapload)
+	. = ..()
+	var/mob/owner = ismob(loc) && loc
 	if(owner)
 		my_mob = owner
 		update_abilities(0, owner)
@@ -173,13 +175,13 @@
 	return null
 
 /mob/Login()
-	..()
+	. = ..()
 	if(ability_master)
 		ability_master.toggle_open(1)
 		client.screen -= ability_master
 
-/mob/New()
-	..()
+/mob/Initialize(mapload)
+	. = ..()
 	if(!ability_master)	//VOREStation Edit: S H A D E K I N
 		ability_master = new /obj/screen/movable/ability_master(src)
 
@@ -305,7 +307,7 @@
 	if(object_used && verb_to_call)
 		call(object_used,verb_to_call)(arguments_to_use)
 //		call(object_used,verb_to_call)(arguments_to_use)
-//		world << "Attempted to call([object_used],[verb_to_call])([arguments_to_use])"
+//		to_chat(world, "Attempted to call([object_used],[verb_to_call])([arguments_to_use])")
 //		if(hascall(object_used, verb_to_call))
 //			call(object_used,verb_to_call)(arguments_to_use)
 //		else

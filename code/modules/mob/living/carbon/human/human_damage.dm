@@ -343,7 +343,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 //Damages ONE external organ, organ gets randomly selected from damagable ones.
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
-/mob/living/carbon/human/take_organ_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0)
+/mob/living/carbon/human/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
 	var/list/obj/item/organ/external/parts = get_damageable_organs()
 	if(!parts.len)	return
 	var/obj/item/organ/external/picked = pick(parts)
@@ -433,7 +433,7 @@ This function restores all organs.
 	return organs_by_name[zone]
 
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/soaked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
-	if(Debug2)
+	if(GLOB.Debug2)
 		log_world("## DEBUG: human/apply_damage() was called on [src], with [damage] damage, an armor value of [blocked], and a soak value of [soaked].")
 
 	var/obj/item/organ/external/organ = null
@@ -470,7 +470,7 @@ This function restores all organs.
 	if(soaked)
 		damage -= soaked
 
-	if(Debug2)
+	if(GLOB.Debug2)
 		log_world("## DEBUG: [src] was hit for [damage].")
 
 	switch(damagetype)

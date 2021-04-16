@@ -1,6 +1,5 @@
-/mob/living/New()
-	..()
-
+/mob/living/Initialize(mapload)
+	. = ..()
 	//Prime this list if we need it.
 	if(has_huds)
 		add_overlay(backplane,TRUE) //Strap this on here, to block HUDs from appearing in rightclick menus: http://www.byond.com/forum/?post=2336679
@@ -109,7 +108,7 @@ default behaviour is:
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
 	if(istype(src, /mob/living/carbon/human))
-		//world << "DEBUG: burn_skin(), mutations=[mutations]"
+		//to_chat(world, "DEBUG: burn_skin(), mutations=[mutations]")
 		if(mShock in src.mutations) //shockproof
 			return 0
 		if (COLD_RESISTANCE in src.mutations) //fireproof
@@ -143,7 +142,7 @@ default behaviour is:
 		if(actual < desired)
 			temperature = desired
 //	if(istype(src, /mob/living/carbon/human))
-//		world << "[src] ~ [src.bodytemperature] ~ [temperature]"
+//		to_chat(world, "[src] ~ [src.bodytemperature] ~ [temperature]")
 	return temperature
 
 
@@ -566,12 +565,12 @@ default behaviour is:
 	return 0
 
 
-/mob/living/proc/can_inject()
+/mob/living/proc/can_inject(var/mob/user, var/error_msg, var/target_zone, var/ignore_thickness = FALSE)
 	return 1
 
 /mob/living/proc/get_organ_target()
 	var/mob/shooter = src
-	var/t = shooter:zone_sel.selecting
+	var/t = shooter.zone_sel.selecting
 	if ((t in list( O_EYES, O_MOUTH )))
 		t = BP_HEAD
 	var/obj/item/organ/external/def_zone = ran_zone(t)
@@ -585,7 +584,7 @@ default behaviour is:
 	src.updatehealth()
 
 // damage ONE external organ, organ gets randomly selected from damaged ones.
-/mob/living/proc/take_organ_damage(var/brute, var/burn, var/emp=0)
+/mob/living/proc/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
 	if(status_flags & GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
@@ -733,11 +732,11 @@ default behaviour is:
 	//Breaking out of a locker?
 	if( src.loc && (istype(src.loc, /obj/structure/closet)) )
 		var/obj/structure/closet/C = loc
-		spawn() C.mob_breakout(src)
+		C.mob_breakout(src)
 		return TRUE
 
 	if(istype(loc,/obj/item/clothing))
-		spawn() escape_clothes(loc)
+		escape_clothes(loc)
 
 	if(attempt_vr(src,"vore_process_resist",args)) return TRUE //VOREStation Code
 
@@ -1200,8 +1199,8 @@ default behaviour is:
 
 //Adds the anti-magic check back in.
 /mob/living/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
-	. = ..()
-	if(.)
-		return
+//	. = ..()
+//	if(.)
+//		return
 	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
 		return src

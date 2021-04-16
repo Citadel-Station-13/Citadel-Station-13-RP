@@ -34,7 +34,7 @@
 	if(!allowed(user))
 		return
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 	return
 
 /obj/machinery/computer/supplycomp/emag_act(var/remaining_charges, var/mob/user)
@@ -47,7 +47,7 @@
 
 
 
-/obj/machinery/computer/supplycomp/ui_interact(mob/user, ui_key = "supply_records", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
+/obj/machinery/computer/supplycomp/nano_ui_interact(mob/user, ui_key = "supply_records", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
 	var/data[0]
 	var/shuttle_status[0]	// Supply shuttle status
 	var/pack_list[0]		// List of supply packs within the active_category

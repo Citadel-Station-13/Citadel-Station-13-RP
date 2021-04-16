@@ -1,0 +1,4 @@
+author: "Kraseo"
+delete-after: True
+changes: 
+  - imageadd: "Better area icons."

@@ -64,6 +64,8 @@
 	if(!is_open_container())
 		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
 		return 1
+	if(target == loc) //prevent filling a machine with a glass you just put into it.
+		return 1
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/self_feed_message(var/mob/user)
@@ -73,18 +75,17 @@
 	playsound(user.loc, 'sound/items/drink.ogg', rand(10, 50), 1)
 
 /obj/item/reagent_containers/food/drinks/examine(mob/user)
-	if(!..(user, 1))
-		return
+	. = ..()
 	if(!reagents || reagents.total_volume == 0)
-		to_chat(user, "<span class='notice'>\The [src] is empty!</span>")
+		. += "<span class='notice'>\The [src] is empty!</span>"
 	else if (reagents.total_volume <= volume * 0.25)
-		to_chat(user, "<span class='notice'>\The [src] is almost empty!</span>")
+		. += "<span class='notice'>\The [src] is almost empty!</span>"
 	else if (reagents.total_volume <= volume * 0.66)
-		to_chat(user, "<span class='notice'>\The [src] is half full!</span>")
+		. += "<span class='notice'>\The [src] is half full!</span>"
 	else if (reagents.total_volume <= volume * 0.90)
-		to_chat(user, "<span class='notice'>\The [src] is almost full!</span>")
+		. += "<span class='notice'>\The [src] is almost full!</span>"
 	else
-		to_chat(user, "<span class='notice'>\The [src] is full!</span>")
+		. += "<span class='notice'>\The [src] is full!</span>"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -122,7 +123,7 @@
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
 
-/obj/item/reagent_containers/food/drinks/milk/Initialize()
+/obj/item/reagent_containers/food/drinks/milk/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("milk", 50)
 
@@ -135,7 +136,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
-/obj/item/reagent_containers/food/drinks/soymilk/Initialize()
+/obj/item/reagent_containers/food/drinks/soymilk/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("soymilk", 50)
 
@@ -148,7 +149,7 @@
 	center_of_mass = list("x"=16, "y"=9)
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
-/obj/item/reagent_containers/food/drinks/smallmilk/Initialize()
+/obj/item/reagent_containers/food/drinks/smallmilk/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("milk", 30)
 
@@ -161,7 +162,7 @@
 	center_of_mass = list("x"=16, "y"=9)
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
-/obj/item/reagent_containers/food/drinks/smallchocmilk/Initialize()
+/obj/item/reagent_containers/food/drinks/smallchocmilk/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("chocolate_milk", 30)
 
@@ -172,7 +173,7 @@
 	center_of_mass = list("x"=15, "y"=10)
 	drop_sound = 'sound/items/drop/papercup.ogg'
 	pickup_sound = 'sound/items/pickup/papercup.ogg'
-/obj/item/reagent_containers/food/drinks/coffee/Initialize()
+/obj/item/reagent_containers/food/drinks/coffee/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("coffee", 30)
 
@@ -185,7 +186,7 @@
 	drop_sound = 'sound/items/drop/papercup.ogg'
 	pickup_sound = 'sound/items/pickup/papercup.ogg'
 
-/obj/item/reagent_containers/food/drinks/tea/Initialize()
+/obj/item/reagent_containers/food/drinks/tea/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("tea", 30)
 
@@ -194,7 +195,7 @@
 	desc = "Careful, cold ice, do not chew."
 	icon_state = "coffee"
 	center_of_mass = list("x"=15, "y"=10)
-/obj/item/reagent_containers/food/drinks/ice/Initialize()
+/obj/item/reagent_containers/food/drinks/ice/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("ice", 30)
 
@@ -205,8 +206,8 @@
 	item_state = "coffee"
 	center_of_mass = list("x"=15, "y"=13)
 
-/obj/item/reagent_containers/food/drinks/h_chocolate/Initialize()
-	..()
+/obj/item/reagent_containers/food/drinks/h_chocolate/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("hot_coco", 30)
 
 /obj/item/reagent_containers/food/drinks/dry_ramen
@@ -214,8 +215,9 @@
 	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	center_of_mass = list("x"=16, "y"=11)
-/obj/item/reagent_containers/food/drinks/dry_ramen/Initialize()
-	..()
+
+/obj/item/reagent_containers/food/drinks/dry_ramen/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("dry_ramen", 30)
 
 /obj/item/reagent_containers/food/drinks/sillycup
@@ -225,9 +227,6 @@
 	possible_transfer_amounts = null
 	volume = 10
 	center_of_mass = list("x"=16, "y"=12)
-
-/obj/item/reagent_containers/food/drinks/sillycup/Initialize()
-	. = ..()
 
 /obj/item/reagent_containers/food/drinks/sillycup/on_reagent_change()
 	..()
@@ -326,4 +325,3 @@
 
 /obj/item/reagent_containers/food/drinks/britcup/on_reagent_change()
 	..()
-

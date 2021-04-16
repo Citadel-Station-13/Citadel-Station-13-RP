@@ -33,11 +33,11 @@
 	..()
 
 /obj/item/slime_extract/examine(mob/user)
-	..()
+	. = ..()
 	if(uses)
-		to_chat(user, "This extract has [uses] more use\s.")
+		. += "This extract has [uses] more use\s."
 	else
-		to_chat(user, "This extract is inert.")
+		. += "This extract is inert."
 
 /datum/chemical_reaction/slime
 	var/required = null
@@ -53,7 +53,7 @@
 	var/obj/item/slime_extract/T = holder.my_atom
 	T.uses--
 	if(T.uses <= 0)
-		T.visible_message("\icon[T]<span class='notice'>\The [T] goes inert.</span>")
+		T.visible_message("[icon2html(thing = T, target = world)] <span class='notice'>\The [T] goes inert.</span>")
 		T.name = "inert [initial(T.name)]"
 
 
@@ -119,7 +119,7 @@
 	description = "A strange metallic liquid which can rearrange itself to take the form of other metals it touches."
 	taste_description = "metallic"
 	taste_mult = 1.1
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#666666"
 	strength = 20
 
@@ -203,7 +203,7 @@
 	description = "A strange metallic liquid which can bind other metals together that would otherwise require intense heat to alloy."
 	taste_description = "metallic"
 	taste_mult = 1.1
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#666666"
 	strength = 20
 
@@ -227,7 +227,7 @@
 	id = "steel"
 	description = "An 'alloy' of iron and carbon, forced to bind together by another strange metallic liquid."
 	taste_description = "metallic"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#888888"
 
 
@@ -242,7 +242,7 @@
 	id = "plasteel"
 	description = "An 'alloy' of iron, carbon, and platinum, forced to bind together by another strange metallic liquid."
 	taste_description = "metallic"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#AAAAAA"
 
 
@@ -1005,5 +1005,3 @@
 	required_reagents = list("blood" = 5)
 	result_amount = 30
 	required = /obj/item/slime_extract/sapphire
-
-

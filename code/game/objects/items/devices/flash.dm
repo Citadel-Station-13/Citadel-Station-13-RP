@@ -33,8 +33,8 @@
 
 	var/cell_type = /obj/item/cell/device
 
-/obj/item/flash/Initialize()
-	..()
+/obj/item/flash/Initialize(mapload)
+	. = ..()
 	power_supply = new cell_type(src)
 
 /obj/item/flash/attackby(var/obj/item/W, var/mob/user)

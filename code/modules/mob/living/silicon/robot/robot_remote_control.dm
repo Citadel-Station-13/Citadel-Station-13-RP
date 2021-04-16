@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 	var/mob/living/silicon/ai/mainframe = null
 
 // Premade AI shell, for roundstart shells.
-/mob/living/silicon/robot/ai_shell/Initialize()
+/mob/living/silicon/robot/ai_shell/Initialize(mapload)
 	mmi = new /obj/item/mmi/inert/ai_remote(src)
 	post_mmi_setup()
 	return ..()
@@ -131,7 +131,7 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 	icon_state = "x3"
 	delete_me = TRUE
 
-/obj/effect/landmark/free_ai_shell/Initialize()
+/obj/effect/landmark/free_ai_shell/Initialize(mapload)
 	if(config_legacy.allow_ai_shells && config_legacy.give_free_ai_shell)
 		new /mob/living/silicon/robot/ai_shell(get_turf(src))
 	return ..()

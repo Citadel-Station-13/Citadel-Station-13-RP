@@ -49,6 +49,8 @@ var/global/list/image/splatter_cache=list()
 		if(src.loc && isturf(src.loc))
 			for(var/obj/effect/decal/cleanable/blood/B in src.loc)
 				if(B != src)
+					if(mapload)
+						return INITIALIZE_HINT_QDEL
 					if (B.blood_DNA)
 						blood_DNA |= B.blood_DNA.Copy()
 					qdel(B)
@@ -67,6 +69,8 @@ var/global/list/image/splatter_cache=list()
 
 /obj/effect/decal/cleanable/blood/Crossed(mob/living/carbon/human/perp)
 	. = ..()
+	if(perp.is_incorporeal())
+		return
 	if (!istype(perp))
 		return
 	if(amount < 1)
@@ -144,8 +148,8 @@ var/global/list/image/splatter_cache=list()
 	amount = 0
 	var/list/drips = list()
 
-/obj/effect/decal/cleanable/blood/drip/New()
-	..()
+/obj/effect/decal/cleanable/blood/drip/Initialize(mapload)
+	. = ..()
 	drips |= icon_state
 
 /obj/effect/decal/cleanable/blood/writing
@@ -156,8 +160,8 @@ var/global/list/image/splatter_cache=list()
 	amount = 0
 	var/message
 
-/obj/effect/decal/cleanable/blood/writing/New()
-	..()
+/obj/effect/decal/cleanable/blood/writing/Initialize(mapload)
+	. = ..()
 	if(random_icon_states.len)
 		for(var/obj/effect/decal/cleanable/blood/writing/W in loc)
 			random_icon_states.Remove(W.icon_state)
@@ -166,8 +170,8 @@ var/global/list/image/splatter_cache=list()
 		icon_state = "writing1"
 
 /obj/effect/decal/cleanable/blood/writing/examine(mob/user)
-	..(user)
-	to_chat(user, "It reads: <font color='[basecolor]'>\"[message]\"</font>")
+	. = ..()
+	. += "It reads: <font color='[basecolor]'>\"[message]\"</font>"
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"
@@ -238,12 +242,12 @@ var/global/list/image/splatter_cache=list()
 	var/list/datum/disease2/disease/virus2 = list()
 	var/dry=0 // Keeps the lag down
 
-/obj/effect/decal/cleanable/mucus/New()
-	spawn(DRYING_TIME * 2)
-		dry=1
+/obj/effect/decal/cleanable/mucus/Initialize(mapload)
+	. = ..()
+	addtimer(VARSET_CALLBACK(src, dry, TRUE), DRYING_TIME * 2)
 
 //This version should be used for admin spawns and pre-mapped virus vectors (e.g. in PoIs), this version does not dry
-/obj/effect/decal/cleanable/mucus/mapped/New()
-	..()
+/obj/effect/decal/cleanable/mucus/mapped/Initialize(mapload)
+	. = ..()
 	virus2 |= new /datum/disease2/disease
 	virus2[1].makerandom()

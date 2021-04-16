@@ -54,8 +54,8 @@
 	mech_faction = MECH_FACTION_SYNDI
 
 //Note that is the default Marauder
-/obj/mecha/combat/marauder/Initialize()
-	..()
+/obj/mecha/combat/marauder/Initialize(mapload)
+	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse
 	ME.attach(src)
 	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
@@ -68,8 +68,8 @@
 	return
 
 //Note that this is the seraph.
-/obj/mecha/combat/marauder/seraph/Initialize()
-	..()//Let it equip whatever is needed.
+/obj/mecha/combat/marauder/seraph/Initialize(mapload)
+	. = ..()//Let it equip whatever is needed.
 	var/obj/item/mecha_parts/mecha_equipment/ME
 	if(equipment.len)//Now to remove it and equip anew.
 		for(ME in equipment)

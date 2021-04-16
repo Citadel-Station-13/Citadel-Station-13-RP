@@ -85,7 +85,7 @@
 #define COMPFRICTION 5e5
 #define COMPSTARTERLOAD 2800
 
-/obj/machinery/compressor/Initialize()
+/obj/machinery/compressor/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	gas_contained = new()
@@ -142,7 +142,7 @@
 				to_chat(user, "<span class='alert'>Turbine not connected.</span>")
 				stat |= BROKEN
 
-/obj/machinery/compressor/process()
+/obj/machinery/compressor/process(delta_time)
 	if(!turbine)
 		stat = BROKEN
 	if(stat & BROKEN || panel_open)
@@ -192,7 +192,7 @@
 #define TURBGENQ 100000
 #define TURBGENG 0.8
 
-/obj/machinery/power/turbine/Initialize()
+/obj/machinery/power/turbine/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	// The outlet is pointed at the direction of the turbine component
@@ -240,7 +240,7 @@
 				to_chat(user, "<span class='alert'>Compressor not connected.</span>")
 				stat |= BROKEN
 
-/obj/machinery/power/turbine/process()
+/obj/machinery/power/turbine/process(delta_time)
 	if(!compressor)
 		stat = BROKEN
 	if((stat & BROKEN) || panel_open)
@@ -316,7 +316,7 @@
 // Turbine Computer
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/obj/machinery/computer/turbine_computer/Initialize()
+/obj/machinery/computer/turbine_computer/Initialize(mapload)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -347,9 +347,9 @@
 	src.interact(user)
 
 /obj/machinery/computer/turbine_computer/interact(mob/user)
-	return ui_interact(user)
+	return nano_ui_interact(user)
 
-/obj/machinery/computer/turbine_computer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/turbine_computer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/list/data = list()
 	data["connected"] = (compressor && compressor.turbine) ? TRUE : FALSE
 	data["compressor_broke"] = (!compressor || (compressor.stat & BROKEN)) ? TRUE : FALSE

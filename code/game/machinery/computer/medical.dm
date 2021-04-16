@@ -123,7 +123,7 @@
 					dat += "<a href='?src=\ref[src];screen=1'>Back</a>"
 					dat += "<br><b>Medical Robots:</b>"
 					var/bdat = null
-					for(var/mob/living/bot/medbot/M in mob_list)
+					for(var/mob/living/bot/medbot/M in GLOB.mob_list)
 
 						if(M.z != src.z)	continue	//only find medibots on the same z-level as the computer
 						var/turf/bl = get_turf(M)
@@ -156,7 +156,7 @@
 	if (!( data_core.medical.Find(src.active2) ))
 		src.active2 = null
 
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
+	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)) || IsAdminGhost(usr))
 		usr.set_machine(src)
 
 		if (href_list["temp"])
@@ -192,7 +192,7 @@
 
 		else if (href_list["login"])
 
-			if (istype(usr, /mob/living/silicon/ai))
+			if (istype(usr, /mob/living/silicon/ai) || IsAdminGhost(usr))
 				src.active1 = null
 				src.active2 = null
 				src.authenticated = usr.name
@@ -251,7 +251,7 @@
 					if("fingerprint")
 						if (istype(src.active1, /datum/data/record))
 							var/t1 = sanitize(input("Please input fingerprint hash:", "Med. records", src.active1.fields["fingerprint"], null)  as text)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1) && !IsAdminGhost(usr))
 								return
 							src.active1.fields["fingerprint"] = t1
 					if("sex")
@@ -263,61 +263,61 @@
 					if("age")
 						if (istype(src.active1, /datum/data/record))
 							var/t1 = input("Please input age:", "Med. records", src.active1.fields["age"], null)  as num
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1) && !IsAdminGhost(usr))
 								return
 							src.active1.fields["age"] = t1
 					if("mi_dis")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please input minor disabilities list:", "Med. records", src.active2.fields["mi_dis"], null)  as text)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["mi_dis"] = t1
 					if("mi_dis_d")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please summarize minor dis.:", "Med. records", src.active2.fields["mi_dis_d"], null)  as message)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["mi_dis_d"] = t1
 					if("ma_dis")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please input major diabilities list:", "Med. records", src.active2.fields["ma_dis"], null)  as text)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["ma_dis"] = t1
 					if("ma_dis_d")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please summarize major dis.:", "Med. records", src.active2.fields["ma_dis_d"], null)  as message)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["ma_dis_d"] = t1
 					if("alg")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please state allergies:", "Med. records", src.active2.fields["alg"], null)  as text)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["alg"] = t1
 					if("alg_d")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please summarize allergies:", "Med. records", src.active2.fields["alg_d"], null)  as message)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["alg_d"] = t1
 					if("cdi")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please state diseases:", "Med. records", src.active2.fields["cdi"], null)  as text)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["cdi"] = t1
 					if("cdi_d")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please summarize diseases:", "Med. records", src.active2.fields["cdi_d"], null)  as message)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["cdi_d"] = t1
 					if("notes")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please summarize notes:", "Med. records", html_decode(src.active2.fields["notes"]), null)  as message, extra = 0, max_length = MAX_RECORD_LENGTH)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["notes"] = t1
 					if("p_stat")
@@ -332,21 +332,21 @@
 					if("b_dna")
 						if (istype(src.active2, /datum/data/record))
 							var/t1 = sanitize(input("Please input DNA hash:", "Med. records", src.active2.fields["b_dna"], null)  as text)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 								return
 							src.active2.fields["b_dna"] = t1
 					if("vir_name")
 						var/datum/data/record/v = locate(href_list["edit_vir"])
 						if (v)
 							var/t1 = sanitize(input("Please input pathogen name:", "VirusDB", v.fields["name"], null)  as text)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1) && !IsAdminGhost(usr))
 								return
 							v.fields["name"] = t1
 					if("vir_desc")
 						var/datum/data/record/v = locate(href_list["edit_vir"])
 						if (v)
 							var/t1 = sanitize(input("Please input information about pathogen:", "VirusDB", v.fields["description"], null)  as message)
-							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1))
+							if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active1 != a1) && !IsAdminGhost(usr))
 								return
 							v.fields["description"] = t1
 					else
@@ -451,7 +451,7 @@
 					return
 				var/a2 = src.active2
 				var/t1 = sanitize(input("Add Comment:", "Med. records", null, null)  as message)
-				if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2))
+				if ((!( t1 ) || !( src.authenticated ) || usr.stat || usr.restrained() || (!in_range(src, usr) && (!istype(usr, /mob/living/silicon))) || src.active2 != a2) && !IsAdminGhost(usr))
 					return
 				var/counter = 1
 				while(src.active2.fields[text("com_[]", counter)])
@@ -464,7 +464,7 @@
 
 			if (href_list["search"])
 				var/t1 = input("Search String: (Name, DNA, or ID)", "Med. records", null, null)  as text
-				if ((!( t1 ) || usr.stat || !( src.authenticated ) || usr.restrained() || ((!in_range(src, usr)) && (!istype(usr, /mob/living/silicon)))))
+				if ((!( t1 ) || usr.stat || !( src.authenticated ) || usr.restrained() || ((!in_range(src, usr)) && (!istype(usr, /mob/living/silicon))) && !IsAdminGhost(usr)))
 					return
 				src.active1 = null
 				src.active2 = null

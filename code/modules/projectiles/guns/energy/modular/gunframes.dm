@@ -2,8 +2,8 @@
 	name = "modular energy pistol"
 	desc = "A basic, compact, modular energy weapon. The fire controller and power control unit are integral to the frame and are thus unremovable."
 
-/obj/item/gun/energy/modular/basic/Initialize()
-	..()
+/obj/item/gun/energy/modular/basic/Initialize(mapload)
+	. = ..()
 	lasercap = new /obj/item/modularlaser/capacitor/simple/integral(src)
 	circuit = new /obj/item/modularlaser/controller/basic/integral(src)
 
@@ -17,8 +17,8 @@
 	cores = 2
 	icon_state = "mod_carbine"
 
-/obj/item/gun/energy/modular/carbine/Initialize()
-	..()
+/obj/item/gun/energy/modular/carbine/Initialize(mapload)
+	. = ..()
 	lasercooler = new /obj/item/modularlaser/cooling/lame/integral(src)
 
 /obj/item/gun/energy/modular/rifle
@@ -39,8 +39,8 @@
 	icon_state = "taserblue"
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/gun/energy/modular/compact/Initialize()
-	..()
+/obj/item/gun/energy/modular/compact/Initialize(mapload)
+	. = ..()
 	lasercap = new /obj/item/modularlaser/capacitor/simple/integral(src)
 	circuit = new /obj/item/modularlaser/controller/basic/integral(src)
 	lasercooler = new /obj/item/modularlaser/cooling/lame/integral(src)
@@ -50,8 +50,8 @@
 	name = "modular energy scattergun"
 	desc = "A sophisticated modular energy weapon. This scattergun has the capability to mount two cores, and mounts a complex refracting lens to scatter most shots."
 
-/obj/item/gun/energy/modular/rifle/scatter/Initialize()
-	..()
+/obj/item/gun/energy/modular/rifle/scatter/Initialize(mapload)
+	. = ..()
 	laserlens = new /obj/item/modularlaser/lens/scatter/hyper/integral(src)
 
 /obj/item/gun/energy/modular/cannon
@@ -63,8 +63,8 @@
 	icon_state = "mod_cannon"
 	w_class = ITEMSIZE_HUGE
 
-/obj/item/gun/energy/modular/cannon/Initialize()
-	..()
+/obj/item/gun/energy/modular/cannon/Initialize(mapload)
+	. = ..()
 	lasercap = new /obj/item/modularlaser/capacitor/cannon(src)
 	circuit = new /obj/item/modularlaser/controller/basic/integral(src)
 
@@ -82,6 +82,6 @@
 	w_class = ITEMSIZE_HUGE
 
 
-/obj/item/gun/energy/modular/nuke/Initialize()
-	..()
+/obj/item/gun/energy/modular/nuke/Initialize(mapload)
+	. = ..()
 	circuit = new /obj/item/modularlaser/controller/basic/integral(src)

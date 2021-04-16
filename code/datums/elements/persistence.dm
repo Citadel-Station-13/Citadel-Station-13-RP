@@ -60,4 +60,5 @@
 	objects[D] = guid
 
 /datum/element/persistence/Detach(datum/D)
+	. = ..()
 	objects -= D

@@ -1,33 +1,28 @@
-
-// Turfmakers
-#define TRIUMPH_SET_ATMOS	initial_gas_mix = ATMOSPHERE_ID_TRIUMPH
-#define TRIUMPH_TURF_CREATE(x)	x/triumph/initial_gas_mix = ATMOSPHERE_ID_TRIUMPH;x/triumph/outdoors=TRUE;x/triumph/allow_gas_overlays = FALSE
-#define TRIUMPH_TURF_CREATE_UN(x)	x/triumph/initial_gas_mix=ATMOSPHERE_ID_TRIUMPH
-
 // Normal map defs
-#define Z_LEVEL_DECK_ONE				1
-#define Z_LEVEL_DECK_TWO				2
-#define Z_LEVEL_DECK_THREE				3
-#define Z_LEVEL_DECK_FOUR				4
-#define Z_LEVEL_CENTCOM					5
-#define Z_LEVEL_MISC					6
-#define Z_LEVEL_SHIPS					7
+// Z1 is dynamic transit.
+#define Z_LEVEL_DECK_ONE				2
+#define Z_LEVEL_DECK_TWO				3
+#define Z_LEVEL_DECK_THREE				4
+#define Z_LEVEL_DECK_FOUR				5
+#define Z_LEVEL_CENTCOM					6
+#define Z_LEVEL_MISC					7
+#define Z_LEVEL_SHIPS					8
 
-#define Z_LEVEL_DEBRISFIELD				8
-#define Z_LEVEL_PIRATEBASE				9
-#define Z_LEVEL_MININGPLANET			10
-#define Z_LEVEL_UNKNOWN_PLANET			11
-#define Z_LEVEL_DESERT_PLANET			12
-#define Z_LEVEL_GAIA_PLANET				13
-#define Z_LEVEL_FROZEN_PLANET			14
+#define Z_LEVEL_DEBRISFIELD				9
+#define Z_LEVEL_PIRATEBASE				10
+#define Z_LEVEL_MININGPLANET			11
+#define Z_LEVEL_UNKNOWN_PLANET			12
+#define Z_LEVEL_DESERT_PLANET			13
+#define Z_LEVEL_GAIA_PLANET				14
+#define Z_LEVEL_FROZEN_PLANET			15
 
-#define Z_LEVEL_ROGUEMINE_1				15
-#define Z_LEVEL_ROGUEMINE_2				16
-#define Z_LEVEL_ROGUEMINE_3				17
-#define Z_LEVEL_ROGUEMINE_4				18
+#define Z_LEVEL_ROGUEMINE_1				16
+#define Z_LEVEL_ROGUEMINE_2				17
+#define Z_LEVEL_ROGUEMINE_3				18
+#define Z_LEVEL_ROGUEMINE_4				19
 
-#define Z_LEVEL_TRADEPORT				19
-
+#define Z_LEVEL_TRADEPORT				20
+#define Z_LEVEL_LAVALAND				21
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
 #define NETWORK_TCOMMS "Telecommunications"
@@ -49,7 +44,7 @@
 	zlevel_datum_type = /datum/map_z_level/triumph
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8")
+	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\triumph\triumph_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
@@ -137,13 +132,11 @@
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
 		/area/vacant/vacant_site/east,
-		/area/triumph_away,
 		/area/solar/)
 	unit_test_exempt_from_atmos = list(
 		/area/engineering/atmos/intake,
 		/area/tcommsat/chamber,
 		/area/engineering/engineering_airlock,
-		/area/triumph_away,
 		/area/solar/)
 
 	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
@@ -163,7 +156,8 @@
 		list("Gaia Planet - Z3 Planet"), // Gaia Planet
 		list("Forzen Planet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
-		list("Away Mission - Trade Port") // Trading Post
+		list("Away Mission - Trade Port"), // Trading Post
+		list("Away Mission - Lava Land")
 	)
 
 	ai_shell_restricted = TRUE
@@ -179,7 +173,8 @@
 		Z_LEVEL_DESERT_PLANET,
 		Z_LEVEL_GAIA_PLANET,
 		Z_LEVEL_FROZEN_PLANET,
-		Z_LEVEL_TRADEPORT)
+		Z_LEVEL_TRADEPORT,
+		Z_LEVEL_LAVALAND)
 
 	lateload_single_pick = null //Nothing right now.
 

@@ -268,7 +268,7 @@
 
 	var/eye_icon_location = 'icons/mob/human_face.dmi'
 
-/obj/item/organ/external/head/Initialize()
+/obj/item/organ/external/head/Initialize(mapload)
 	if(config_legacy.allow_headgibs)
 		cannot_gib = FALSE
 	return ..()

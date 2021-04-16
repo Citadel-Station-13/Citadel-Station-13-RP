@@ -27,12 +27,12 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/mapped
 	anchored = 1
 
-/obj/machinery/power/fusion_core/Initialize()
+/obj/machinery/power/fusion_core/Initialize(mapload)
 	. = ..()
 	fusion_cores += src
 	default_apply_parts()
 
-/obj/machinery/power/fusion_core/mapped/Initialize()
+/obj/machinery/power/fusion_core/mapped/Initialize(mapload)
 	. = ..()
 	connect_to_network()
 
@@ -44,7 +44,7 @@ var/list/fusion_cores = list()
 	fusion_cores -= src
 	return ..()
 
-/obj/machinery/power/fusion_core/process()
+/obj/machinery/power/fusion_core/process(delta_time)
 	if((stat & BROKEN) || !powernet || !owned_field)
 		Shutdown()
 	if(owned_field)

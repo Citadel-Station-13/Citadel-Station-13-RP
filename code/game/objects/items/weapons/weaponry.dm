@@ -49,8 +49,8 @@
 
 	var/escape_time = 8 SECONDS
 
-/obj/effect/energy_net/New()
-	..()
+/obj/effect/energy_net/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/effect/energy_net/Destroy()
@@ -62,7 +62,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/energy_net/process()
+/obj/effect/energy_net/process(delta_time)
 	if(!has_buckled_mobs())
 		qdel(src)
 

@@ -74,14 +74,14 @@
 /obj/singularity/energy_ball/examine(mob/user)
 	. = ..()
 	if(orbiting_balls.len)
-		to_chat(user, "The amount of orbiting mini-balls is [orbiting_balls.len].")
+		. += "The amount of orbiting mini-balls is [orbiting_balls.len]."
 
 /obj/singularity/energy_ball/proc/move_the_basket_ball(move_amount, time)
 	//we face the last thing we zapped, so this lets us favor that direction a bit
 	var/move_bias = dir
 	var/sleep_time = FLOOR(time/move_amount, world.tick_lag)
 	for(var/i in 0 to move_amount)
-		var/move_dir = pick(global.alldirs + move_bias) //ensures large-ball teslas don't just sit around
+		var/move_dir = pick(global.GLOB.alldirs + move_bias) //ensures large-ball teslas don't just sit around
 		if(target && prob(10))
 			move_dir = get_dir(src,target)
 		var/turf/T = get_step(src, move_dir)

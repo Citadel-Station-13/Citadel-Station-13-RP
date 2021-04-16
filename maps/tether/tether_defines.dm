@@ -125,8 +125,6 @@
 	unit_test_exempt_from_atmos = list(
 		/area/engineering/atmos/intake, // Outside,
 		/area/rnd/external, //  Outside,
-		/area/tether/surfacebase/mining_main/external, // Outside,
-		/area/tether/surfacebase/mining_main/airlock, //  Its an airlock,
 		/area/tether/surfacebase/emergency_storage/rnd,
 		/area/tether/surfacebase/emergency_storage/atrium)
 

@@ -24,7 +24,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	idle_power_usage = 30
 	active_power_usage = 2500
 
-/obj/machinery/r_n_d/circuit_imprinter/Initialize()
+/obj/machinery/r_n_d/circuit_imprinter/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
@@ -33,7 +33,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	component_parts += new /obj/item/reagent_containers/glass/beaker(src)
 	RefreshParts()
 
-/obj/machinery/r_n_d/circuit_imprinter/process()
+/obj/machinery/r_n_d/circuit_imprinter/process(delta_time)
 	..()
 	if(stat)
 		update_icon()

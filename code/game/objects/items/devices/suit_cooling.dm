@@ -28,7 +28,7 @@
 /obj/item/suit_cooling_unit/ui_action_click()
 	toggle(usr)
 
-/obj/item/suit_cooling_unit/Initialize()
+/obj/item/suit_cooling_unit/Initialize(mapload)
 	. = ..()
 	cell = new/obj/item/cell/high(src)	//comes not with the crappy default power cell - because this is dedicated EVA equipment
 
@@ -36,7 +36,7 @@
 	QDEL_NULL(cell)
 	return ..()
 
-/obj/item/suit_cooling_unit/process()
+/obj/item/suit_cooling_unit/process(delta_time)
 	if (!on || !cell)
 		return PROCESS_KILL
 
@@ -79,7 +79,8 @@
 			var/obj/mecha/M = H.loc
 			return M.return_temperature()
 		else if(istype(H.loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			return H.loc:air_contents.temperature
+			var/obj/machinery/atmospherics/unary/cryo_cell/C = H.loc
+			return C.air_contents.temperature
 
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/space))
@@ -178,24 +179,22 @@
 		icon_state = "suitcooler0"
 
 /obj/item/suit_cooling_unit/examine(mob/user)
-	if(!..(user, 1))
-		return
-
-	if (on)
-		if (attached_to_suit(src.loc))
-			to_chat(user, "It's switched on and running.")
+	. = ..()
+	if(on)
+		if(attached_to_suit(src.loc))
+			. += "It's switched on and running."
 		else
-			to_chat(user, "It's switched on, but not attached to anything.")
+			. += "It's switched on, but not attached to anything."
 	else
-		to_chat(user, "It is switched off.")
+		. += "It is switched off."
 
 	if (cover_open)
 		if(cell)
-			to_chat(user, "The panel is open, exposing the [cell].")
+			. += "The panel is open, exposing the [cell]."
 		else
-			to_chat(user, "The panel is open.")
+			. += "The panel is open."
 
 	if (cell)
-		to_chat(user, "The charge meter reads [round(cell.percent())]%.")
+		. += "The charge meter reads [round(cell.percent())]%."
 	else
-		to_chat(user, "It doesn't have a power cell installed.")
+		. += "It doesn't have a power cell installed."

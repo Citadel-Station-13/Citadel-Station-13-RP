@@ -130,31 +130,31 @@
 	desc = "Used in cooking various dishes."
 	icon_state = "enzyme"
 
-/obj/item/reagent_containers/food/condiment/enzyme/Initialize()
+/obj/item/reagent_containers/food/condiment/enzyme/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("enzyme", 50)
 
-/obj/item/reagent_containers/food/condiment/sugar/Initialize()
+/obj/item/reagent_containers/food/condiment/sugar/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sugar", 50)
 
-/obj/item/reagent_containers/food/condiment/ketchup/Initialize()
+/obj/item/reagent_containers/food/condiment/ketchup/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("ketchup", 50)
 
-/obj/item/reagent_containers/food/condiment/hotsauce/Initialize()
+/obj/item/reagent_containers/food/condiment/hotsauce/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("capsaicin", 50)
 
-/obj/item/reagent_containers/food/condiment/cornoil/Initialize()
+/obj/item/reagent_containers/food/condiment/cornoil/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("cornoil", 50)
 
-/obj/item/reagent_containers/food/condiment/coldsauce/Initialize()
+/obj/item/reagent_containers/food/condiment/coldsauce/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("frostoil", 50)
 
-/obj/item/reagent_containers/food/condiment/soysauce/Initialize()
+/obj/item/reagent_containers/food/condiment/soysauce/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("soysauce", 50)
 
@@ -172,7 +172,7 @@
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
 
-/obj/item/reagent_containers/food/condiment/small/saltshaker/Initialize()
+/obj/item/reagent_containers/food/condiment/small/saltshaker/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sodiumchloride", 20)
 
@@ -181,7 +181,7 @@
 	desc = "Often used to flavor food or make people sneeze."
 	icon_state = "peppermillsmall"
 
-/obj/item/reagent_containers/food/condiment/small/peppermill/Initialize()
+/obj/item/reagent_containers/food/condiment/small/peppermill/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("blackpepper", 20)
 
@@ -190,7 +190,7 @@
 	desc = "Sweetness in a bottle"
 	icon_state = "sugarsmall"
 
-/obj/item/reagent_containers/food/condiment/small/sugar/Initialize()
+/obj/item/reagent_containers/food/condiment/small/sugar/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sugar", 20)
 
@@ -208,7 +208,7 @@
 	desc = "Contains 5u of table salt."
 	icon_state = "packet_small_white"
 
-/obj/item/reagent_containers/food/condiment/small/packet/salt/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/salt/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sodiumchloride", 5)
 
@@ -217,7 +217,7 @@
 	desc = "Contains 5u of black pepper."
 	icon_state = "packet_small_black"
 
-/obj/item/reagent_containers/food/condiment/small/packet/pepper/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/pepper/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("blackpepper", 5)
 
@@ -226,7 +226,7 @@
 	desc = "Contains 5u of refined sugar."
 	icon_state = "packet_small_white"
 
-/obj/item/reagent_containers/food/condiment/small/packet/sugar/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/sugar/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sugar", 5)
 
@@ -236,7 +236,7 @@
 	icon_state = "packet_medium"
 	volume = 10
 
-/obj/item/reagent_containers/food/condiment/small/packet/jelly/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/jelly/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("cherryjelly", 10)
 
@@ -246,7 +246,7 @@
 	icon_state = "packet_medium"
 	volume = 10
 
-/obj/item/reagent_containers/food/condiment/small/packet/honey/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/honey/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("honey", 10)
 
@@ -255,7 +255,7 @@
 	desc = "Contains 5u of hot sauce. Enjoy in moderation."
 	icon_state = "packet_small_red"
 
-/obj/item/reagent_containers/food/condiment/small/packet/capsaicin/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/capsaicin/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("capsaicin", 5)
 
@@ -264,7 +264,7 @@
 	desc = "Contains 5u of ketchup."
 	icon_state = "packet_small_red"
 
-/obj/item/reagent_containers/food/condiment/small/packet/ketchup/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/ketchup/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("ketchup", 5)
 
@@ -273,7 +273,7 @@
 	desc = "Contains 5u of mayonnaise."
 	icon_state = "packet_small_white"
 
-/obj/item/reagent_containers/food/condiment/small/packet/mayo/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/mayo/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("mayo", 5)
 
@@ -282,7 +282,7 @@
 	desc = "Contains 5u of soy sauce."
 	icon_state = "packet_small_black"
 
-/obj/item/reagent_containers/food/condiment/small/packet/soy/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/soy/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("soysauce", 5)
 
@@ -290,7 +290,7 @@
 	name = "coffee powder packet"
 	desc = "Contains 5u of coffee powder. Mix with 25u of water and heat."
 
-/obj/item/reagent_containers/food/condiment/small/packet/coffee/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/coffee/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("coffeepowder", 5)
 
@@ -298,7 +298,7 @@
 	name = "tea powder packet"
 	desc = "Contains 5u of black tea powder. Mix with 25u of water and heat."
 
-/obj/item/reagent_containers/food/condiment/small/packet/tea/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/tea/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("tea", 5)
 
@@ -306,7 +306,7 @@
 	name = "cocoa powder packet"
 	desc = "Contains 5u of cocoa powder. Mix with 25u of water and heat."
 
-/obj/item/reagent_containers/food/condiment/small/packet/cocoa/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/cocoa/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("coco", 5)
 
@@ -314,7 +314,7 @@
 	name = "grape juice powder packet"
 	desc = "Contains 5u of powdered grape juice. Mix with 15u of water."
 
-/obj/item/reagent_containers/food/condiment/small/packet/grape/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/grape/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("instantgrape", 5)
 
@@ -322,7 +322,7 @@
 	name = "orange juice powder packet"
 	desc = "Contains 5u of powdered orange juice. Mix with 15u of water."
 
-/obj/item/reagent_containers/food/condiment/small/packet/orange/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/orange/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("instantorange", 5)
 
@@ -330,7 +330,7 @@
 	name = "watermelon juice powder packet"
 	desc = "Contains 5u of powdered watermelon juice. Mix with 15u of water."
 
-/obj/item/reagent_containers/food/condiment/small/packet/watermelon/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/watermelon/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("instantwatermelon", 5)
 
@@ -338,7 +338,7 @@
 	name = "apple juice powder packet"
 	desc = "Contains 5u of powdered apple juice. Mix with 15u of water."
 
-/obj/item/reagent_containers/food/condiment/small/packet/apple/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/apple/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("instantapple", 5)
 
@@ -348,7 +348,7 @@
 	icon_state = "packet_medium"
 	volume = 10
 
-/obj/item/reagent_containers/food/condiment/small/packet/protein/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/protein/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 10)
 
@@ -356,31 +356,31 @@
 	name = "crayon powder packet"
 	desc = "Contains 10u of powdered crayon. Mix with 30u of water."
 	volume = 10
-/obj/item/reagent_containers/food/condiment/small/packet/crayon/generic/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/crayon/generic/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("crayon_dust", 10)
-/obj/item/reagent_containers/food/condiment/small/packet/crayon/red/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/crayon/red/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("crayon_dust_red", 10)
-/obj/item/reagent_containers/food/condiment/small/packet/crayon/orange/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/crayon/orange/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("crayon_dust_orange", 10)
-/obj/item/reagent_containers/food/condiment/small/packet/crayon/yellow/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/crayon/yellow/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("crayon_dust_yellow", 10)
-/obj/item/reagent_containers/food/condiment/small/packet/crayon/green/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/crayon/green/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("crayon_dust_green", 10)
-/obj/item/reagent_containers/food/condiment/small/packet/crayon/blue/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/crayon/blue/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("crayon_dust_blue", 10)
-/obj/item/reagent_containers/food/condiment/small/packet/crayon/purple/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/crayon/purple/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("crayon_dust_purple", 10)
-/obj/item/reagent_containers/food/condiment/small/packet/crayon/grey/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/crayon/grey/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("crayon_dust_grey", 10)
-/obj/item/reagent_containers/food/condiment/small/packet/crayon/brown/Initialize()
+/obj/item/reagent_containers/food/condiment/small/packet/crayon/brown/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("crayon_dust_brown", 10)
 
@@ -396,8 +396,8 @@
 /obj/item/reagent_containers/food/condiment/flour/on_reagent_change()
 	return
 
-/obj/item/reagent_containers/food/condiment/flour/Initialize()
-	..()
+/obj/item/reagent_containers/food/condiment/flour/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("flour", 200)
 	src.pixel_x = rand(-10.0, 10)
 	src.pixel_y = rand(-10.0, 10)
@@ -414,6 +414,6 @@
 /obj/item/reagent_containers/food/condiment/spacespice/on_reagent_change()
 	return
 
-/obj/item/reagent_containers/food/condiment/spacespice/Initialize()
-	..()
+/obj/item/reagent_containers/food/condiment/spacespice/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("spacespice", 40)

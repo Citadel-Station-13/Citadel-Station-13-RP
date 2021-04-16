@@ -54,15 +54,15 @@
 
 	var/list/stat_rig_module/stat_modules = new()
 
-/obj/item/rig_module/examine()
-	..()
+/obj/item/rig_module/examine(mob/user)
+	. = ..()
 	switch(damage)
 		if(0)
-			to_chat(usr, "It is undamaged.")
+			. += "It is undamaged."
 		if(1)
-			to_chat(usr, "It is badly damaged.")
+			. += "It is badly damaged."
 		if(2)
-			to_chat(usr, "It is almost completely destroyed.")
+			. += "It is almost completely destroyed."
 
 /obj/item/rig_module/attackby(obj/item/W as obj, mob/user as mob)
 
@@ -108,8 +108,8 @@
 		return
 	..()
 
-/obj/item/rig_module/New()
-	..()
+/obj/item/rig_module/Initialize(mapload)
+	. = ..()
 	if(suit_overlay_inactive)
 		suit_overlay = suit_overlay_inactive
 
@@ -217,7 +217,7 @@
 	return
 
 // Called by the hardsuit each rig process tick.
-/obj/item/rig_module/process()
+/obj/item/rig_module/process(delta_time)
 	if(active)
 		return active_power_cost
 	else
@@ -308,8 +308,8 @@
 /stat_rig_module/engage/CanUse()
 	return module.usable
 
-/stat_rig_module/select/New()
-	..()
+/stat_rig_module/select/Initialize(mapload)
+	. = ..()
 	name = "Select"
 	module_mode = "select"
 
@@ -319,8 +319,8 @@
 		return 1
 	return 0
 
-/stat_rig_module/charge/New()
-	..()
+/stat_rig_module/charge/Initialize(mapload)
+	. = ..()
 	name = "Change Charge"
 	module_mode = "select_charge_type"
 

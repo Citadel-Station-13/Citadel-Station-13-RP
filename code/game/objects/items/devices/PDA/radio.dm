@@ -15,7 +15,7 @@
 
 	proc/post_signal(var/freq, var/key, var/value, var/key2, var/value2, var/key3, var/value3, s_filter)
 
-		//world << "Post: [freq]: [key]=[value], [key2]=[value2]"
+		//to_chat(world, "Post: [freq]: [key]=[value], [key2]=[value2]")
 		var/datum/radio_frequency/frequency = radio_controller.return_frequency(freq)
 
 		if(!frequency) return
@@ -116,7 +116,7 @@
 	var/last_transmission
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/integated_radio/signal/Initialize()
+/obj/item/integated_radio/signal/Initialize(mapload)
 	. = ..()
 	if(!radio_controller)
 		return

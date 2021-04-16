@@ -21,11 +21,11 @@
 	var/parts = null
 	var/datum/wires/particle_acc/control_box/wires = null
 
-/obj/machinery/particle_accelerator/control_box/New()
+/obj/machinery/particle_accelerator/control_box/Initialize(mapload, newdir)
+	. = ..()
 	wires = new(src)
 	connected_parts = list()
 	active_power_usage = initial(active_power_usage) * (strength + 1)
-	..()
 
 /obj/machinery/particle_accelerator/control_box/Destroy()
 	if(active)
@@ -143,7 +143,7 @@
 		update_use_power(USE_POWER_IDLE)
 
 
-/obj/machinery/particle_accelerator/control_box/process()
+/obj/machinery/particle_accelerator/control_box/process(delta_time)
 	if(src.active)
 		//a part is missing!
 		if( length(connected_parts) < 6 )

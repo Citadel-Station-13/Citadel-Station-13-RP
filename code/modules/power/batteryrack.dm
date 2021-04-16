@@ -14,10 +14,9 @@
 	var/capacitors_amount = 0
 	var/global/list/br_cache = null
 
-/obj/machinery/power/smes/batteryrack/New()
-	..()
+/obj/machinery/power/smes/batteryrack/Initialize(mapload, newdir)
+	. = ..()
 	RefreshParts()
-	return
 
 //Maybe this should be moved up to obj/machinery
 /obj/machinery/power/smes/batteryrack/proc/add_parts()
@@ -25,8 +24,6 @@
 	component_parts += new /obj/item/cell/high
 	component_parts += new /obj/item/cell/high
 	component_parts += new /obj/item/cell/high
-	return
-
 
 /obj/machinery/power/smes/batteryrack/RefreshParts()
 	capacitors_amount = 0
@@ -195,7 +192,7 @@
 
 
 #define SMESRATE 0.05			// rate of internal charge to external power
-/obj/machinery/power/smes/batteryrack/makeshift/process()
+/obj/machinery/power/smes/batteryrack/makeshift/process(delta_time)
 	if(stat & BROKEN)	return
 
 	//store machine state to see if we need to update the icon overlays

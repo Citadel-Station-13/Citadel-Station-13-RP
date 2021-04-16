@@ -41,10 +41,6 @@
 	..()
 	to_chat(user, "<span class='notice'>\The [src] will fill [equip_type?"a [equip_type]":"any"] slot.</span>")
 
-/obj/item/mecha_parts/mecha_equipment/New()
-	..()
-	return
-
 /obj/item/mecha_parts/mecha_equipment/proc/update_chassis_page()
 	if(chassis)
 		send_byjax(chassis.occupant,"exosuit.browser","eq_list",chassis.get_equipment_list())
@@ -92,19 +88,19 @@
 		if(istype(src, /obj/item/mecha_parts/mecha_equipment/weapon))//Gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
-					src.chassis.occupant << sound('sound/mecha/weapdestrnano.ogg',volume=70)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/weapdestrnano.ogg',volume=70))
 				if(MECH_FACTION_SYNDI)
-					src.chassis.occupant  << sound('sound/mecha/weapdestrsyndi.ogg',volume=60)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/weapdestrsyndi.ogg',volume=60))
 				else
-					src.chassis.occupant  << sound('sound/mecha/weapdestr.ogg',volume=50)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/weapdestr.ogg',volume=50))
 		else //Not a gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
-					src.chassis.occupant  << sound('sound/mecha/critdestrnano.ogg',volume=70)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/critdestrnano.ogg',volume=70))
 				if(MECH_FACTION_SYNDI)
-					src.chassis.occupant  << sound('sound/mecha/critdestrsyndi.ogg',volume=70)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/critdestrsyndi.ogg',volume=70))
 				else
-					src.chassis.occupant  << sound('sound/mecha/critdestr.ogg',volume=50)
+					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/critdestr.ogg',volume=50))
 	spawn
 		qdel(src)
 	return
@@ -266,7 +262,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/proc/occupant_message(message)
 	if(chassis)
-		chassis.occupant_message("\icon[src] [message]")
+		chassis.occupant_message("[icon2html(thing = src, target = chassis.occupant)] [message]")
 	return
 
 /obj/item/mecha_parts/mecha_equipment/proc/log_message(message)

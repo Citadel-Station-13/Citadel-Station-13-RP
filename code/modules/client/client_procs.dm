@@ -1,3 +1,4 @@
+
 	////////////
 	//SECURITY//
 	////////////
@@ -76,6 +77,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
+	// Tgui Topic middleware.
+	if(tgui_Topic(href_list))
+		return
 
 	//Logs all hrefs, except chat pings
 	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
@@ -89,10 +93,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (href_list["asset_cache_preload_data"])
 		asset_cache_preload_data(href_list["asset_cache_preload_data"])
 		return
-
-	// Tgui Topic middleware. Soon:tm:
-	// if(tgui_Topic(href_list))
-	// 	return
 
 	//Admin PM
 	if(href_list["priv_msg"])
@@ -123,8 +123,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return prefs.process_link(usr,href_list)
 		if("vars")
 			return view_var_Topic(href,href_list,hsrc)
-		if("chat")
-			return chatOutput.Topic(href, href_list)
 
 	switch(href_list["action"])
 		if("openLink")
@@ -167,8 +165,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
-	// Initialize goonchat
-	chatOutput = new /datum/chatOutput(src)
+	// Instantiate tgui panel
+	tgui_panel = new(src)
 
 	GLOB.ahelp_tickets.ClientLogin(src)
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
@@ -217,10 +215,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		world.SetConfig("APP/admin", ckey, null)
 	//END CITADEL EDIT
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
-	prefs = preferences_datums[ckey]
+	prefs = GLOB.preferences_datums[ckey]
 	if(!prefs)
 		prefs = new /datum/preferences(src)
-		preferences_datums[ckey] = prefs
+		GLOB.preferences_datums[ckey] = prefs
 
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
@@ -262,6 +260,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.player_details[ckey] = player_details
 	*/
 
+	if(log_client_to_db() == "BUNKER_DROPPED")
+		return FALSE
+
 	. = ..()	//calls mob.Login()
 
 	if (byond_version >= 512)
@@ -287,8 +288,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		update_movement_keys()
 
 	// Initialize tgui panel
-	// tgui_panel.initialize()
-	chatOutput.start() // Starts the chat
+	tgui_panel.initialize()
+	// src << browse(file('html/statbrowser.html'), "window=statbrowser")
 
 	//if(alert_mob_dupe_login)
 	//	spawn()
@@ -355,8 +356,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, "<span class='alert'>[custom_event_msg]</span>")
 		to_chat(src, "<br>")
 
-	log_client_to_db()
-
 	send_resources()
 
 	if(!void) //ew. will rework this soon once this gets merged.
@@ -366,7 +365,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
-		winset(src, "rpane.changelog", "background-color=#eaeaea;font-style=bold")
+		winset(src, "infowindow.changelog", "background-color=#eaeaea;font-style=bold")
 		if(config_legacy.aggressive_changelog)
 			src.changes()
 
@@ -510,8 +509,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
 			to_chat(src, config_legacy.panic_bunker_message)
-			qdel(src)
-			return 0
+			return "BUNKER_DROPPED"
 	if(player_age == -1)
 		player_age = 0		//math requires this to not be -1.
 

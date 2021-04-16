@@ -50,20 +50,18 @@
 		"cold"
 	)
 
-/obj/machinery/door/firedoor/New()
+/obj/machinery/door/firedoor/Initialize(mapload, newdir)
 	. = ..()
 	for(var/obj/machinery/door/firedoor/F in loc)
 		if(F != src)
-			spawn(1)
-				qdel(src)
-			return .
+			return INITIALIZE_HINT_QDEL
 	var/area/A = get_area(src)
 	ASSERT(istype(A))
 
 	LAZYADD(A.all_doors, src)
 	areas_added = list(A)
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		A = get_area(get_step(src,direction))
 		if(istype(A) && !(A in areas_added))
 			LAZYADD(A.all_doors, src)
@@ -72,20 +70,20 @@
 /obj/machinery/door/firedoor/Destroy()
 	for(var/area/A in areas_added)
 		LAZYREMOVE(A.all_doors, src)
-	. = ..()
+	return ..()
 
 /obj/machinery/door/firedoor/get_material()
 	return get_material_by_name(DEFAULT_WALL_MATERIAL)
 
 /obj/machinery/door/firedoor/examine(mob/user)
-	. = ..(user, 1)
-	if(!. || !density)
+	. = ..()
+	if(!density)
 		return
 
 	if(pdiff >= FIREDOOR_MAX_PRESSURE_DIFF)
-		to_chat(user, "<span class='warning'>WARNING: Current pressure differential is [pdiff]kPa! Opening door may result in injury!</span>")
+		. += "<span class='warning'>WARNING: Current pressure differential is [pdiff]kPa! Opening door may result in injury!</span>"
 
-	to_chat(user, "<b>Sensor readings:</b>")
+	. += "<b>Sensor readings:</b>"
 	for(var/index = 1; index <= tile_info.len; index++)
 		var/o = "&nbsp;&nbsp;"
 		switch(index)
@@ -107,14 +105,14 @@
 		o += "[celsius]&deg;C</span> "
 		o += "<span style='color:blue'>"
 		o += "[pressure]kPa</span></li>"
-		to_chat(user, o)
+		. += o
 
 	if(islist(users_to_open) && users_to_open.len)
 		var/users_to_open_string = users_to_open[1]
 		if(users_to_open.len >= 2)
 			for(var/i = 2 to users_to_open.len)
 				users_to_open_string += ", [users_to_open[i]]"
-		to_chat(user, "These people have opened \the [src] during an alert: [users_to_open_string].")
+		. += "<span class = 'danger'>These people have opened \the [src] during an alert: [users_to_open_string].</span>"
 
 /obj/machinery/door/firedoor/Bumped(atom/AM)
 	if(p_open || operating)
@@ -345,7 +343,7 @@
 	return ..()
 
 // CHECK PRESSURE
-/obj/machinery/door/firedoor/process()
+/obj/machinery/door/firedoor/process(delta_time)
 	..()
 
 	if(density && next_process_time <= world.time)
@@ -449,7 +447,7 @@
 			overlays += "palert"
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
-				var/cdir = cardinal[d]
+				var/cdir = GLOB.cardinal[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
 					if(dir_alerts[d] & (1<<(i-1)))
 						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)

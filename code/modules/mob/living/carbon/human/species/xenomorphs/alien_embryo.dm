@@ -26,7 +26,7 @@
 			RemoveInfectionImages(affected_mob)
 	..()
 
-/obj/item/alien_embryo/process()
+/obj/item/alien_embryo/process(delta_time)
 	if(!affected_mob)	return
 	if(loc != affected_mob)
 		affected_mob.status_flags &= ~(XENO_HOST)
@@ -96,7 +96,7 @@
 	spawn(6)
 		var/mob/living/carbon/alien/larva/new_xeno = new(affected_mob.loc)
 		new_xeno.key = picked
-		new_xeno << sound('sound/voice/hiss5.ogg',0,0,0,100)	//To get the player's attention
+		SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100))	//To get the player's attention
 		if(gib_on_success)
 			affected_mob.gib()
 		qdel(src)
@@ -116,7 +116,7 @@ Des: Removes all infection images from aliens and places an infection image on a
 			for(var/image/I in alien.client.images)
 				if(dd_hasprefix_case(I.icon_state, "infected"))
 					qdel(I)
-			for(var/mob/living/L in mob_list)
+			for(var/mob/living/L in GLOB.mob_list)
 				if(iscorgi(L) || iscarbon(L))
 					if(L.status_flags & XENO_HOST)
 						var/I = image('icons/mob/alien.dmi', loc = L, icon_state = "infected[stage]")

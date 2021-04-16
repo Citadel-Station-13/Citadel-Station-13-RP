@@ -20,7 +20,7 @@
 	var/melting_point = 3000 // Entering the danger zone.
 	var/decay_heat = 0 // MJ/mol (Yes, using MegaJoules per Mole. Techincally reduces power, but that reflects reduced lifespan.)
 
-/obj/item/fuelrod/Initialize()
+/obj/item/fuelrod/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -28,7 +28,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/fuelrod/process()
+/obj/item/fuelrod/process(delta_time)
 	if(isnull(loc))
 		return PROCESS_KILL
 
@@ -122,7 +122,7 @@
 	if(!is_melted())
 		if(decay_heat > 0)
 			life = life * 10
-			decay_heat = decay_heat * 10
+			decay_heat = 0 // Original was decay_heat * 10. Setting to 0 to counter memes (Testing phase. Unsure HOW much this is going to destroy everything)
 		else
 			life = 0
 		name = "melted [name]"

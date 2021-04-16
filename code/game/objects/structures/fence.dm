@@ -23,7 +23,7 @@
 	var/hole_size= NO_HOLE
 	var/invulnerable = FALSE
 
-/obj/structure/fence/Initialize()
+/obj/structure/fence/Initialize(mapload)
 	update_cut_status()
 	return ..()
 
@@ -32,9 +32,9 @@
 
 	switch(hole_size)
 		if(MEDIUM_HOLE)
-			user.show_message("There is a large hole in \the [src].")
+			. += "There is a large hole in \the [src]."
 		if(LARGE_HOLE)
-			user.show_message("\The [src] has been completely cut through.")
+			. += "\The [src] has been completely cut through."
 
 /obj/structure/fence/get_description_interaction()
 	var/list/results = list()
@@ -123,7 +123,7 @@
 	var/open = FALSE
 	var/locked = FALSE
 
-/obj/structure/fence/door/Initialize()
+/obj/structure/fence/door/Initialize(mapload)
 	update_door_status()
 	return ..()
 

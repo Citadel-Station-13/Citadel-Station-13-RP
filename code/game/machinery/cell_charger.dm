@@ -13,13 +13,12 @@
 	var/chargelevel = -1
 	circuit = /obj/item/circuitboard/cell_charger
 
-/obj/machinery/cell_charger/New()
+/obj/machinery/cell_charger/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 5)
 	RefreshParts()
-	..()
-	return
 
 /obj/machinery/cell_charger/update_icon()
 	icon_state = "ccharger[charging ? 1 : 0]"
@@ -27,7 +26,7 @@
 	if(charging && !(stat & (BROKEN|NOPOWER)))
 
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
-		//world << "nl: [newlevel]"
+		//to_chat(world, "nl: [newlevel]")
 
 		if(chargelevel != newlevel)
 
@@ -39,12 +38,10 @@
 		overlays.Cut()
 
 /obj/machinery/cell_charger/examine(mob/user)
-	if(!..(user, 5))
-		return
-
-	to_chat(user, "[charging ? "[charging]" : "Nothing"] is in [src].")
+	. = ..()
+	. += "<span class = 'notice'>[charging ? "[charging]" : "Nothing"] is in [src].</span>"
 	if(charging)
-		to_chat(user, "Current charge: [charging.charge] / [charging.maxcharge]")
+		. += "<span class = 'notice'>Current charge: [charging.charge] / [charging.maxcharge]</span>"
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
@@ -116,8 +113,8 @@
 	..(severity)
 
 
-/obj/machinery/cell_charger/process()
-	//world << "ccpt [charging] [stat]"
+/obj/machinery/cell_charger/process(delta_time)
+	//to_chat(world, "ccpt [charging] [stat]")
 	if((stat & (BROKEN|NOPOWER)) || !anchored)
 		update_use_power(USE_POWER_OFF)
 		return

@@ -12,7 +12,7 @@
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
-/obj/item/weldpack/Initialize()
+/obj/item/weldpack/Initialize(mapload)
 	. = ..()
 	var/datum/reagents/R = new/datum/reagents(max_fuel) //Lotsa refills
 	reagents = R
@@ -145,8 +145,8 @@
 		src.add_fingerprint(usr)
 
 /obj/item/weldpack/examine(mob/user)
-	..(user)
-	user << text("\icon[] [] units of fuel left!", src, src.reagents.total_volume)
+	. = ..()
+	. += "[icon2html(thing = src, target = world)] [src] has [src.reagents.total_volume] units of fuel left!"
 	return
 
 /obj/item/weldpack/survival

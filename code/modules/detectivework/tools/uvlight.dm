@@ -47,7 +47,7 @@
 			if(I.fluorescent == 2) I.fluorescent = 1
 		reset_objects.Cut()
 
-/obj/item/uv_light/process()
+/obj/item/uv_light/process(delta_time)
 	clear_last_scan()
 	if(on)
 		step_alpha = round(255/range)

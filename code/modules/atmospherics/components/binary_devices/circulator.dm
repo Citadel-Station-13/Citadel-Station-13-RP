@@ -26,8 +26,8 @@
 
 	density = 1
 
-/obj/machinery/atmospherics/binary/circulator/New()
-	..()
+/obj/machinery/atmospherics/binary/circulator/Initialize(mapload)
+	. = ..()
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 	air1.volume = 400
 
@@ -69,7 +69,7 @@
 	stored_energy = 0
 	return last_stored_energy_transferred
 
-/obj/machinery/atmospherics/binary/circulator/process()
+/obj/machinery/atmospherics/binary/circulator/process(delta_time)
 	..()
 
 	if(last_worldtime_transfer < world.time - 50)

@@ -121,7 +121,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		return
 
 	var/target_ref = href_list["target"]
-	var/mob/living/target = locate(target_ref) in mob_list
+	var/mob/living/target = locate(target_ref) in GLOB.mob_list
 	if(!target)
 		to_chat(usr,"<span class='warning'>Unable to operate on that target.</span>")
 		return
@@ -132,7 +132,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 
 	//The actual options
 	if(href_list["mindscan"])
-		if(!target.mind || target.mind.name in prevent_respawns)
+		if(!target.mind || (target.mind.name in prevent_respawns))
 			to_chat(usr,"<span class='warning'>Target seems totally braindead.</span>")
 			return
 
@@ -169,7 +169,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		return
 
 	if(href_list["mindsteal"])
-		if(!target.mind || target.mind.name in prevent_respawns)
+		if(!target.mind || (target.mind.name in prevent_respawns))
 			to_chat(usr,"<span class='warning'>Target seems totally braindead.</span>")
 			return
 

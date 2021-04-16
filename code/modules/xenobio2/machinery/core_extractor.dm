@@ -18,8 +18,8 @@
 	var/operatingcolor = "#FFFF22"
 
 
-/obj/machinery/slime/extractor/New()
-	..()
+/obj/machinery/slime/extractor/Initialize(mapload)
+	. = ..()
 	update_light_color()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/manipulator(src)
@@ -99,7 +99,7 @@
 
 /obj/machinery/slime/extractor/proc/extract_cores()
 	if(!src.occupant)
-		src.visible_message("\icon[src] [src] pings unhappily.")
+		src.visible_message("[icon2html(thing = src, target = world)] [src] pings unhappily.")
 	else if(inuse)
 		return
 

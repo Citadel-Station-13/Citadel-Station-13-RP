@@ -70,8 +70,8 @@
 	desc = "A gift card with a heart on the cover."
 	icon_state = "greetingcard_heart"
 
-/obj/item/paper/card/New()
-	..()
+/obj/item/paper/card/Initialize(mapload)
+	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = null
@@ -102,8 +102,8 @@
 
 //lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
 
-/obj/item/paper/New()
-	..()
+/obj/item/paper/Initialize(mapload)
+	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
@@ -137,11 +137,11 @@
 	free_space -= length(strip_html_properly(new_text))
 
 /obj/item/paper/examine(mob/user)
-	..()
+	. = ..()
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_content(usr)
 	else
-		to_chat(user, "<span class='notice'>You have to go closer if you want to read it.</span>")
+		. += "<span class='notice'>You have to go closer if you want to read it.</span>"
 	return
 
 /obj/item/paper/proc/show_content(var/mob/user, var/forceshow=0)

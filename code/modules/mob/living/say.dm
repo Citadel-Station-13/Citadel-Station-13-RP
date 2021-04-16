@@ -196,8 +196,11 @@ proc/get_radio_key_from_channel(var/channel)
 		new_message += message
 		message = new_message
 
-	if(speaking)
+	while(speaking && is_language_prefix(copytext_char(message, 1, 2)))
 		message = copytext_char(message,2+length_char(speaking.key))
+
+	if(speaking && speaking == GLOB.all_languages["Noise"])
+		message = copytext_char(message,2)
 
 	//HIVEMIND languages always send to all people with that language
 	if(speaking && (speaking.flags & HIVEMIND))
@@ -216,9 +219,9 @@ proc/get_radio_key_from_channel(var/channel)
 	message = handle_autohiss(message, speaking)
 
 	//autocorrect common typos
-	if(client?.is_preference_enabled(/datum/client_preference/autocorrect)) 
+	if(client?.is_preference_enabled(/datum/client_preference/autocorrect))
 		message = autocorrect(message)
-	
+
 	//Whisper vars
 	var/w_scramble_range = 5	//The range at which you get ***as*th**wi****
 	var/w_adverb				//An adverb prepended to the verb in whispers
@@ -356,7 +359,7 @@ proc/get_radio_key_from_channel(var/channel)
 		if(sb_alpha < 0)
 			break
 	speech_bubble.loc = loc_before_turf
-	speech_bubble.alpha = CLAMP(sb_alpha, 0, 255)
+	speech_bubble.alpha = clamp(sb_alpha, 0, 255)
 	images_to_clients[speech_bubble] = list()
 
 	// Attempt Multi-Z Talking
@@ -384,14 +387,14 @@ proc/get_radio_key_from_channel(var/channel)
 					if(M.client)
 						var/image/I1 = listening[M] || speech_bubble
 						images_to_clients[I1] |= M.client
-						M << I1
+						SEND_IMAGE(M, I1)
 					M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 				if(whispering) //Don't even bother with these unless whispering
 					if(dst > message_range && dst <= w_scramble_range) //Inside whisper scramble range
 						if(M.client)
 							var/image/I2 = listening[M] || speech_bubble
 							images_to_clients[I2] |= M.client
-							M << I2
+							SEND_IMAGE(M, I2)
 						M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol*0.2)
 					if(dst > w_scramble_range && dst <= world.view) //Inside whisper 'visible' range
 						M.show_message("<span class='game say'><span class='name'>[src.name]</span> [w_not_heard].</span>", 2)

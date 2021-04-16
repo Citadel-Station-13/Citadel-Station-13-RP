@@ -7,7 +7,7 @@
 	circuit = /obj/item/circuitboard/engine
 	var/display_state = "status"
 
-/obj/machinery/computer/ship/engines/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/ship/engines/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!linked)
 		display_reconnect_dialog(user, "ship control systems")
 		return

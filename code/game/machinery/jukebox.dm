@@ -59,17 +59,17 @@
 	)
 
 
-/obj/machinery/media/jukebox/New()
+/obj/machinery/media/jukebox/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
 /obj/machinery/media/jukebox/Destroy()
 	qdel(wires)
 	wires = null
-	..()
+	return ..()
 
 // On initialization, copy our tracks from the global list
-/obj/machinery/media/jukebox/Initialize()
+/obj/machinery/media/jukebox/Initialize(mapload)
 	. = ..()
 	wires = new/datum/wires/jukebox(src)
 	update_icon()
@@ -89,7 +89,7 @@
 	else if(!LAZYLEN(tracks)) //We don't even have default tracks
 		stat |= BROKEN // No tracks configured this round!
 
-/obj/machinery/media/jukebox/process()
+/obj/machinery/media/jukebox/process(delta_time)
 	if(!playing)
 		return
 	if(inoperable())
@@ -256,9 +256,9 @@
 	if(inoperable())
 		to_chat(usr, "\The [src] doesn't appear to function.")
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/media/jukebox/ui_interact(mob/user, ui_key = "jukebox", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/media/jukebox/nano_ui_interact(mob/user, ui_key = "jukebox", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/title = "RetroBox - Space Style"
 	var/data[0]
 

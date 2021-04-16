@@ -16,7 +16,7 @@
 	attackby(obj/item/W as obj, mob/user as mob)
 		return
 
-/obj/structure/reagent_dispensers/Initialize()
+/obj/structure/reagent_dispensers/Initialize(mapload)
 	var/datum/reagents/R = new/datum/reagents(5000)
 	reagents = R
 	R.my_atom = src
@@ -25,14 +25,12 @@
 	. = ..()
 
 /obj/structure/reagent_dispensers/examine(mob/user)
-	if(!..(user, 2))
-		return
 	to_chat(user, "<span class='notice'>It contains:</span>")
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			to_chat(user, "<span class='notice'>[R.volume] units of [R.name]</span>")
+			. += "<span class='notice'>[R.volume] units of [R.name]</span>"
 	else
-		to_chat(user, "<span class='notice'>Nothing.</span>")
+		. += "<span class='notice'>Nothing.</span>"
 
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -73,7 +71,7 @@
 	icon_state = "watertank"
 	amount_per_transfer_from_this = 10
 
-/obj/structure/reagent_dispensers/watertank/Initialize()
+/obj/structure/reagent_dispensers/watertank/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("water", 1000)
 
@@ -82,7 +80,7 @@
 	desc = "A highly-pressurized water tank made to hold vast amounts of water.."
 	icon_state = "watertank_high"
 
-/obj/structure/reagent_dispensers/watertank/high/Initialize()
+/obj/structure/reagent_dispensers/watertank/high/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("water", 4000)
 
@@ -95,17 +93,16 @@
 	var/modded = 0
 	var/obj/item/assembly_holder/rig = null
 
-/obj/structure/reagent_dispensers/fueltank/Initialize()
+/obj/structure/reagent_dispensers/fueltank/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("fuel",1000)
 
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
-	if(!..(user, 2))
-		return
+	. = ..()
 	if (modded)
-		to_chat(user, "<span class='warning'>Fuel faucet is wrenched open, leaking the fuel!</span>")
+		. += "<span class='warning'>THe fuel faucet is wrenched open, leaking the fuel!</span>"
 	if(rig)
-		to_chat(user, "<span class='notice'>There is some kind of device rigged to the tank.</span>")
+		. += "<span class='notice'>There is some kind of device rigged to the tank.</span>"
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if (rig)
@@ -205,7 +202,7 @@
 	density = 0
 	amount_per_transfer_from_this = 45
 
-/obj/structure/reagent_dispensers/peppertank/Initialize()
+/obj/structure/reagent_dispensers/peppertank/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("condensedcapsaicin",1000)
 
@@ -227,7 +224,7 @@
 	cupholder = 1
 	cups = 10
 
-/obj/structure/reagent_dispensers/water_cooler/Initialize()
+/obj/structure/reagent_dispensers/water_cooler/Initialize(mapload)
 	. = ..()
 	if(bottle)
 		reagents.add_reagent("water",120)
@@ -236,7 +233,7 @@
 /obj/structure/reagent_dispensers/water_cooler/examine(mob/user)
 	..()
 	if(cupholder)
-		to_chat(user, "<span class='notice'>There are [cups] cups in the cup dispenser.</span>")
+		. += "<span class='notice'>There are [cups] cups in the cup dispenser.</span>"
 
 /obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())
@@ -352,7 +349,7 @@
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 
-/obj/structure/reagent_dispensers/beerkeg/Initialize()
+/obj/structure/reagent_dispensers/beerkeg/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("beer",1000)
 
@@ -370,7 +367,7 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 
-/obj/structure/reagent_dispensers/virusfood/Initialize()
+/obj/structure/reagent_dispensers/virusfood/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("virusfood", 1000)
 
@@ -382,7 +379,7 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 
-/obj/structure/reagent_dispensers/acid/Initialize()
+/obj/structure/reagent_dispensers/acid/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sacid", 1000)
 
@@ -394,9 +391,9 @@
 	icon_state = "oiltank"
 	amount_per_transfer_from_this = 120
 
-/obj/structure/reagent_dispensers/cookingoil/Initialize()
-		..()
-		reagents.add_reagent("cornoil",5000)
+/obj/structure/reagent_dispensers/cookingoil/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("cornoil",5000)
 
 /obj/structure/reagent_dispensers/cookingoil/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.get_structure_damage())

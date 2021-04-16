@@ -9,7 +9,7 @@
 	health = 25
 	faction = "xeno"
 
-/mob/living/carbon/alien/larva/Initialize()
+/mob/living/carbon/alien/larva/Initialize(mapload)
 	. = ..()
 	add_language("Xenomorph") //Bonus language.
 	internal_organs |= new /obj/item/organ/internal/xenos/hivenode(src)

@@ -201,7 +201,7 @@
 
 /datum/controller/configuration/proc/Get(entry_type)
 	var/datum/config_entry/E = GetEntryDatum(entry_type)
-	if((E.protection & CONFIG_ENTRY_HIDDEN) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Get" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
+	if(E && (E.protection & CONFIG_ENTRY_HIDDEN) && IsAdminAdvancedProcCall() && GLOB.LastAdminCalledProc == "Get" && GLOB.LastAdminCalledTargetRef == "[REF(src)]")
 		log_admin_private("Config access of [entry_type] attempted by [key_name(usr)]")
 		return
 	return E.config_entry_value
@@ -400,7 +400,7 @@
 	var/list/probabilities = Get(/datum/config_entry/keyed_list/probability)
 	var/list/min_pop = Get(/datum/config_entry/keyed_list/min_pop)
 	var/list/max_pop = Get(/datum/config_entry/keyed_list/max_pop)
-	for(var/T in (gamemode_cache - SSSSticker.mode.type))
+	for(var/T in (gamemode_cache - SSticker.mode.type))
 		var/datum/game_mode/M = new T()
 		if(!(M.config_tag in modes))
 			qdel(M)

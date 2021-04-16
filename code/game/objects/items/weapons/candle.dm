@@ -10,9 +10,9 @@
 	var/wax = 2000
 	var/icon_type = "candle"
 
-/obj/item/flame/candle/New()
+/obj/item/flame/candle/Initialize(mapload)
+	. = ..()
 	wax -= rand(800, 1000) // Enough for 27-33 minutes. 30 minutes on average.
-	..()
 
 /obj/item/flame/candle/update_icon()
 	var/i
@@ -22,7 +22,6 @@
 		i = 2
 	else i = 3
 	icon_state = "[icon_type][i][lit ? "_lit" : ""]"
-
 
 /obj/item/flame/candle/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -51,7 +50,7 @@
 		set_light(CANDLE_LUM)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/flame/candle/process()
+/obj/item/flame/candle/process(delta_time)
 	if(!lit)
 		return
 	wax--
@@ -112,13 +111,13 @@
 /obj/item/flame/candle/everburn
 	wax = 99999
 
-/obj/item/flame/candle/everburn/Initialize()
+/obj/item/flame/candle/everburn/Initialize(mapload)
 	. = ..()
 	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")
 
 /obj/item/flame/candle/candelabra/everburn
 	wax = 99999
 
-/obj/item/flame/candle/candelabra/everburn/Initialize()
+/obj/item/flame/candle/candelabra/everburn/Initialize(mapload)
 	. = ..()
 	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")

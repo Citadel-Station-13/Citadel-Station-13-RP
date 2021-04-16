@@ -56,8 +56,8 @@
 	var/obj/item/reagent_containers/glass/beaker = null
 	var/opened = 0
 
-/obj/machinery/dna_scannernew/New()
-	..()
+/obj/machinery/dna_scannernew/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stock_parts/manipulator(src)
@@ -253,7 +253,7 @@
 	var/selected_ui_target_hex = 1
 	var/radiation_duration = 2.0
 	var/radiation_intensity = 1.0
-	var/list/datum/dna2/record/buffers[3]
+	var/list/datum/dna2/record/buffers
 	var/irradiating = 0
 	var/injector_ready = 0	//Quick fix for issue 286 (screwdriver the screen twice to restore injector)	-Pete
 	var/obj/machinery/dna_scannernew/connected = null
@@ -293,19 +293,27 @@
 		else
 	return
 
-/obj/machinery/computer/scan_consolenew/New()
-	..()
-	for(var/i=0;i<3;i++)
-		buffers[i+1]=new /datum/dna2/record
-	spawn(5)
-		for(dir in list(NORTH,EAST,SOUTH,WEST))
-			connected = locate(/obj/machinery/dna_scannernew, get_step(src, dir))
-			if(!isnull(connected))
-				break
-		spawn(250)
-			src.injector_ready = 1
-		return
-	return
+/obj/machinery/computer/scan_consolenew/Initialize(mapload)
+	. = ..()
+	buffers = list()
+	for(var/i in 1 to 3)
+		buffers +=  new /datum/dna2/record
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/scan_consolenew/LateInitialize()
+	. = ..()
+	scan_for_scanner()
+	addtimer(CALLBACK(src, .proc/recharge_injector), 25 SECONDS)
+
+/obj/machinery/computer/scan_consolenew/proc/recharge_injector()
+	injector_ready = TRUE
+
+/obj/machinery/computer/scan_consolenew/proc/scan_for_scanner()
+	connected = null
+	for(var/dir in GLOB.cardinal)
+		connected = locate(/obj/machinery/dna_scannernew) in get_step(src, dir)
+		if(connected)
+			break
 
 /obj/machinery/computer/scan_consolenew/proc/all_dna_blocks(var/list/buffer)
 	var/list/arr = list()
@@ -323,7 +331,7 @@
 	return 1
 
 /*
-/obj/machinery/computer/scan_consolenew/process() //not really used right now
+/obj/machinery/computer/scan_consolenew/process(delta_time) //not really used right now
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if (!( src.status )) //remove this
@@ -333,16 +341,16 @@
 
 /obj/machinery/computer/scan_consolenew/attack_ai(user as mob)
 	src.add_hiddenprint(user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/computer/scan_consolenew/attack_hand(user as mob)
 	if(!..())
-		ui_interact(user)
+		nano_ui_interact(user)
 
  /**
-  * The ui_interact proc is used to open and update Nano UIs
-  * If ui_interact is not used then the UI will not update correctly
-  * ui_interact is currently defined for /atom/movable (which is inherited by /obj and /mob)
+  * The nano_ui_interact proc is used to open and update Nano UIs
+  * If nano_ui_interact is not used then the UI will not update correctly
+  * nano_ui_interact is currently defined for /atom/movable (which is inherited by /obj and /mob)
   *
   * @param user /mob The mob who is interacting with this ui
   * @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (defaut value "main")
@@ -350,7 +358,7 @@
   *
   * @return nothing
   */
-/obj/machinery/computer/scan_consolenew/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/scan_consolenew/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(!connected || user == connected.occupant || user.stat)
 		return

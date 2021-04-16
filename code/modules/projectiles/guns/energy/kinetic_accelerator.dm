@@ -4,9 +4,6 @@
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
-	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns_vr.dmi')
 	projectile_type = /obj/item/projectile/kinetic
 	origin_tech = list(TECH_COMBAT = 3, TECH_POWER = 3, TECH_ENGINEERING = 3)
 	can_flashlight = TRUE
@@ -22,12 +19,12 @@
 	var/empty_state = "kineticgun_empty"
 
 /obj/item/gun/energy/kinetic_accelerator/examine(mob/user)
-	if(..(user, 1))
-		if(max_mod_capacity)
-			to_chat(user, "<b>[get_remaining_mod_capacity()]%</b> mod capacity remaining.")
-			for(var/A in get_modkits())
-				var/obj/item/borg/upgrade/modkit/M = A
-				to_chat(user, "<span class='notice'>There is a [M.name] mod installed, using <b>[M.cost]%</b> capacity.</span>")
+	. = ..()
+	if(max_mod_capacity)
+		. += "<b>[get_remaining_mod_capacity()]%</b> mod capacity remaining."
+		for(var/A in get_modkits())
+			var/obj/item/borg/upgrade/modkit/M = A
+			. += "<span class='notice'>There is a [M.name] mod installed, using <b>[M.cost]%</b> capacity.</span>"
 
 /obj/item/gun/energy/kinetic_accelerator/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/tool/crowbar))
@@ -71,7 +68,7 @@
 	if(!isturf(proj_turf))
 		return
 	var/datum/gas_mixture/environment = proj_turf.return_air()
-	if(environment.temperature > 250)
+	if(environment.return_pressure() > 60)
 		BB.name = "weakened [BB.name]"
 		BB.damage *= BB.pressure_decrease
 	return BB
@@ -153,8 +150,8 @@
 	var/modifier = 1 //For use in any mod kit that has numerical modifiers
 
 /obj/item/borg/upgrade/modkit/examine(mob/user)
-	if(..(user, 1))
-		to_chat(user, "<span class='notice'>Occupies <b>[cost]%</b> of mod capacity.</span>")
+	. = ..()
+	. += "<span class='notice'>Occupies <b>[cost]%</b> of mod capacity.</span>"
 
 /obj/item/borg/upgrade/modkit/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/gun/energy/kinetic_accelerator) && !issilicon(user))

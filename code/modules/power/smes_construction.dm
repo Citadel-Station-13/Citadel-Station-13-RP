@@ -41,23 +41,23 @@
 
 // These are used on individual outposts as backup should power line be cut, or engineering outpost lost power.
 // 1M Charge, 150K I/O
-/obj/machinery/power/smes/buildable/outpost_substation/New()
-	..(0)
+/obj/machinery/power/smes/buildable/outpost_substation/Initialize(mapload)
+	. = ..(mapload, FALSE)
 	component_parts += new /obj/item/smes_coil/weak(src)
 	recalc_coils()
 
 // This one is pre-installed on engineering shuttle. Allows rapid charging/discharging for easier transport of power to outpost
 // 11M Charge, 2.5M I/O
-/obj/machinery/power/smes/buildable/power_shuttle/New()
-	..(0)
+/obj/machinery/power/smes/buildable/power_shuttle/Initialize(mapload)
+	. = ..(mapload, FALSE)
 	component_parts += new /obj/item/smes_coil/super_io(src)
 	component_parts += new /obj/item/smes_coil/super_io(src)
 	component_parts += new /obj/item/smes_coil(src)
 	recalc_coils()
 
 // Pre-installed and pre-charged SMES hidden from the station, for use in submaps.
-/obj/machinery/power/smes/buildable/point_of_interest/New()
-	..(1)
+/obj/machinery/power/smes/buildable/point_of_interest/Initialize(mapload)
+	. = ..(mapload, TRUE)
 	charge = 1e7 // Should be enough for an individual POI.
 	RCon = FALSE
 	input_level = input_level_max
@@ -100,7 +100,7 @@
 // Parameters: None
 // Description: Uses parent process, but if grounding wire is cut causes sparks to fly around.
 // This also causes the SMES to quickly discharge, and has small chance of breaking lights connected to APCs in the powernet.
-/obj/machinery/power/smes/buildable/process()
+/obj/machinery/power/smes/buildable/process(delta_time)
 	if(!grounding && (Percentage() > 5))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
@@ -127,7 +127,7 @@
 // Proc: New()
 // Parameters: None
 // Description: Adds standard components for this SMES, and forces recalculation of properties.
-/obj/machinery/power/smes/buildable/New(var/install_coils = 1)
+/obj/machinery/power/smes/buildable/Initialize(mapload, install_coils = TRUE)
 	component_parts = list()
 	component_parts += new /obj/item/stack/cable_coil(src,30)
 	wires = new /datum/wires/smes(src)
@@ -137,7 +137,7 @@
 		for(var/i = 1, i <= cur_coils, i++)
 			component_parts += new /obj/item/smes_coil(src)
 		recalc_coils()
-	..()
+	return ..()
 
 // Proc: attack_hand()
 // Parameters: None

@@ -133,8 +133,8 @@
 	var/gun_type = /obj/item/gun/energy/lasercannon/mounted
 	var/obj/item/gun/gun
 
-/obj/item/rig_module/mounted/New()
-	..()
+/obj/item/rig_module/mounted/Initialize(mapload)
+	. = ..()
 	gun = new gun_type(src)
 
 /obj/item/rig_module/mounted/engage(atom/target)
@@ -197,7 +197,7 @@
 
 	gun_type = /obj/item/gun/energy/crossbow/ninja
 
-/obj/item/rig_module/mounted/energy_blade/process()
+/obj/item/rig_module/mounted/energy_blade/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/melee/energy/blade) in holder.wearer))
@@ -289,12 +289,12 @@
 	deactivate_string = "Retract Blade"
 	var/obj/item/material/knife/machete/armblade/rig/held_blade
 
-/obj/item/rig_module/armblade/Initialize()
+/obj/item/rig_module/armblade/Initialize(mapload)
 	. = ..()
 	held_blade = new /obj/item/material/knife/machete/armblade/rig
 	held_blade.storing_module = src
 
-/obj/item/rig_module/armblade/process()
+/obj/item/rig_module/armblade/process(delta_time)
 
 	if(holder && holder.wearer)
 		if(!(locate(/obj/item/material/knife/machete/armblade) in holder.wearer))

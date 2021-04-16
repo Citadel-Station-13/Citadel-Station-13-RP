@@ -53,29 +53,39 @@
 	icon_state = "glasses"
 	var/datum/nano_module/arscreen
 	var/arscreen_path
+	var/datum/tgui_module/tgarscreen
+	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED,VIS_CH_BACKUP)
 	plane_slots = list(slot_glasses)
 
-/obj/item/clothing/glasses/omnihud/New()
-	..()
+/obj/item/clothing/glasses/omnihud/Initialize(mapload)
+	. = ..()
 	if(arscreen_path)
 		arscreen = new arscreen_path(src)
+	if(tgarscreen_path)
+		tgarscreen = new tgarscreen_path(src)
 
 /obj/item/clothing/glasses/omnihud/Destroy()
 	QDEL_NULL(arscreen)
+	QDEL_NULL(tgarscreen)
 	. = ..()
 
 /obj/item/clothing/glasses/omnihud/dropped()
 	if(arscreen)
 		SSnanoui.close_uis(src)
+	if(tgarscreen)
+		SStgui.close_uis(src)
 	..()
 
 /obj/item/clothing/glasses/omnihud/emp_act(var/severity)
 	var/disconnect_ar = arscreen
 	arscreen = null
+	var/disconnect_tgar = tgarscreen
+	tgarscreen = null
 	spawn(20 SECONDS)
 		arscreen = disconnect_ar
+		tgarscreen = disconnect_tgar
 	..()
 
 /obj/item/clothing/glasses/omnihud/proc/flashed()
@@ -116,13 +126,14 @@
 	These have been upgraded with medical records access and virus database integration."
 	mode = "med"
 	action_button_name = "AR Console (Crew Monitor)"
-	arscreen_path = /datum/nano_module/crew_monitor
+	prescription = 1
+	tgarscreen_path = /datum/tgui_module/crew_monitor/glasses
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_AUGMENTED)
 
-	ar_interact(var/mob/living/carbon/human/user)
-		if(arscreen)
-			arscreen.ui_interact(user,"main",null,1,glasses_state)
-		return 1
+/obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
+	if(tgarscreen)
+		tgarscreen.ui_interact(user)
+	return 1
 
 /obj/item/clothing/glasses/omnihud/sec
 	name = "\improper AR-S glasses"
@@ -130,37 +141,41 @@
 	These have been upgraded with security records integration and flash protection."
 	mode = "sec"
 	flash_protection = FLASH_PROTECTION_MAJOR
+	prescription = 1
 	action_button_name = "AR Console (Security Alerts)"
 	arscreen_path = /datum/nano_module/alarm_monitor/security
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_WANTED,VIS_AUGMENTED)
 
-	ar_interact(var/mob/living/carbon/human/user)
-		if(arscreen)
-			arscreen.ui_interact(user,"main",null,1,glasses_state)
-		return 1
+/obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
+	if(arscreen)
+		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
+	return 1
 
 /obj/item/clothing/glasses/omnihud/eng
 	name = "\improper AR-E glasses"
 	desc = "The VM-62-E AR glasses are a design from Vey Med. \
 	These have been upgraded with advanced electrochromic lenses to protect your eyes during welding."
 	mode = "eng"
+	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
 	action_button_name = "AR Console (Station Alerts)"
 	arscreen_path = /datum/nano_module/alarm_monitor/engineering
 
-	ar_interact(var/mob/living/carbon/human/user)
-		if(arscreen)
-			arscreen.ui_interact(user,"main",null,1,glasses_state)
-		return 1
+/obj/item/clothing/glasses/omnihud/eng/ar_interact(var/mob/living/carbon/human/user)
+	if(arscreen)
+		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
+	return 1
 
 /obj/item/clothing/glasses/omnihud/rnd
 	name = "\improper AR-R glasses"
 	desc = "The VM-62-R AR glasses are a design from Vey Med. \
 	These have been ... modified ... to fit into a different frame."
 	mode = "sci"
+	prescription = 1
 	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_override = null
 	icon_state = "purple"
+	clothing_flags = SCAN_REAGENTS
 
 /obj/item/clothing/glasses/omnihud/eng/meson
 	name = "meson scanner HUD"
@@ -171,6 +186,7 @@
 	off_state = "projector-off"
 	body_parts_covered = 0
 	toggleable = 1
+	prescription = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
 
 /obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user)
@@ -204,6 +220,7 @@
 	desc = "The CC-62-B AR glasses are a design from Nanotrasen Central Command. \
 	These have been upgraded with every feature the lesser models have. Now we're talkin'."
 	mode = "best"
+	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED)
 

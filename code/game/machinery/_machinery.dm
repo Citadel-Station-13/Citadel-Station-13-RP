@@ -156,7 +156,7 @@ Class Procs:
 				qdel(A)
 	return ..()
 
-/obj/machinery/process()//If you dont use process or power why are you here
+/obj/machinery/process(delta_time)//If you dont use process or power why are you here
 	if(!(use_power || idle_power_usage || active_power_usage))
 		return PROCESS_KILL
 
@@ -169,7 +169,7 @@ Class Procs:
 		pulse2.icon_state = "empdisable"
 		pulse2.name = "emp sparks"
 		pulse2.anchored = 1
-		pulse2.setDir(pick(cardinal))
+		pulse2.setDir(pick(GLOB.cardinal))
 
 		spawn(10)
 			qdel(pulse2)
@@ -234,7 +234,8 @@ Class Procs:
 		return attack_hand(user)
 
 /obj/machinery/attack_hand(mob/user as mob)
-
+	if(IsAdminGhost(user))
+		return FALSE
 	if(inoperable(MAINT))
 		return 1
 	if(user.lying || user.stat)
@@ -267,7 +268,7 @@ Class Procs:
 
 /obj/machinery/proc/state(var/msg)
 	for(var/mob/O in hearers(src, null))
-		O.show_message("\icon[src] <span class = 'notice'>[msg]</span>", 2)
+		O.show_message("[icon2html(thing = src, target = O)] <span class = 'notice'>[msg]</span>", 2)
 
 /obj/machinery/proc/ping(text=null)
 	if(!text)

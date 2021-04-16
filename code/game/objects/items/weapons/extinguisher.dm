@@ -40,14 +40,14 @@
 	desc = "A mini fire extinguisher for use by burning phoronoids. Let's just hope it works."
 	max_water = 300
 
-/obj/item/extinguisher/Initialize()
+/obj/item/extinguisher/Initialize(mapload)
 	. = ..()
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
 
 /obj/item/extinguisher/examine(mob/user)
-	if(..(user, 0))
-		to_chat(user, text("\icon[] [] contains [] units of water left!", src, src.name, src.reagents.total_volume))
+	. = ..()
+	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
 
 /obj/item/extinguisher/attack_self(mob/user as mob)
 	safety = !safety

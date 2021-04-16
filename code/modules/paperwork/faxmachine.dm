@@ -23,24 +23,25 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	var/department = "Unknown" // our department
 	var/destination = null // the department we're sending to
 
-/obj/machinery/photocopier/faxmachine/New()
+/obj/machinery/photocopier/faxmachine/Initialize(mapload)
+	. = ..()
 	allfaxes += src
-	if(!destination) destination = "[GLOB.using_map.boss_name]"
-	if( !(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
+	if(!destination)
+		destination = "[GLOB.using_map.boss_name]"
+	if(!(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
 		alldepartments |= department
-	..()
 
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
 	user.set_machine(src)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the fax machine.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/photocopier/faxmachine/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/photocopier/faxmachine/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -206,8 +207,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	for(var/client/C in admins)
 		if(check_rights((R_ADMIN|R_MOD),0,C))
-			C << msg
-			C << 'sound/machines/printer.ogg'
+			to_chat(C, msg)
+			SEND_SOUND(C, sound('sound/machines/printer.ogg'))
 
 	// VoreStation Edit Start
 	var/faxid = export_fax(sent)

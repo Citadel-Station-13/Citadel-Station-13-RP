@@ -83,8 +83,8 @@
 		"golem_sword_attack_4" = 3
 	)
 
-/mob/living/simple_animal/technomancer_golem/New()
-	..()
+/mob/living/simple_animal/technomancer_golem/Initialize(mapload)
+	. = ..()
 	core = new(src)
 	sword_image = image(icon, src, "golem_sword")
 	spell_image = image(icon, src, "golem_spell")
@@ -208,9 +208,9 @@
 	name = "[master]'s [initial(name)]"
 
 /mob/living/simple_animal/technomancer_golem/examine(mob/user)
-	..()
+	. = ..()
 	if(user.mind && technomancers.is_antagonist(user.mind))
-		user << "Your pride and joy.  It's a very special synthetic robot, capable of using functions similar to you, and you built it \
+		. += "Your pride and joy.  It's a very special synthetic robot, capable of using functions similar to you, and you built it \
 		yourself!  It'll always stand by your side, ready to help you out.  You have no idea what GOLEM stands for, however..."
 
 /mob/living/simple_animal/technomancer_golem/Life()

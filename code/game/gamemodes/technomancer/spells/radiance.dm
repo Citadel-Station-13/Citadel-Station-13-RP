@@ -16,8 +16,8 @@
 	var/power = 250
 	toggled = 1
 
-/obj/item/spell/radiance/New()
-	..()
+/obj/item/spell/radiance/Initialize(mapload)
+	. = ..()
 	set_light(7, 4, l_color = "#D9D900")
 	START_PROCESSING(SSobj, src)
 	log_and_message_admins("has casted [src].")
@@ -27,7 +27,7 @@
 	log_and_message_admins("has stopped maintaining [src].")
 	return ..()
 
-/obj/item/spell/radiance/process()
+/obj/item/spell/radiance/process(delta_time)
 	var/turf/T = get_turf(src)
 	var/datum/gas_mixture/removed = null
 	var/datum/gas_mixture/env = null

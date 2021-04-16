@@ -13,8 +13,8 @@
 	else
 		return ..()
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/New()
-	..()
+/obj/machinery/portable_atmospherics/hydroponics/soil/Initialize(mapload)
+	. = ..()
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label
 	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/setlight
@@ -27,8 +27,8 @@
 	icon = 'icons/obj/seeds.dmi'
 	icon_state = "blank"
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/New(var/newloc,var/datum/seed/newseed)
-	..()
+/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/Initialize(mapload, datum/seed/newseed)
+	. = ..()
 	seed = newseed
 	dead = 0
 	age = 1
@@ -49,7 +49,7 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil/invisible/die()
 	qdel(src)
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/process()
+/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/process(delta_time)
 	if(!seed)
 		qdel(src)
 		return

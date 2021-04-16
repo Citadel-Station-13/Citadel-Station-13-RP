@@ -179,7 +179,7 @@
 				var/mob/living/carbon/human/I = impersonated[speaker_name]
 
 				if(!I)
-					for(var/mob/living/carbon/human/M in mob_list)
+					for(var/mob/living/carbon/human/M in GLOB.mob_list)
 						if(M.real_name == speaker_name)
 							I = M
 							impersonated[speaker_name] = I
@@ -302,4 +302,4 @@
 	else
 		heard = "<span class = 'game_say'>...<i>You almost hear someone talking</i>...</span>"
 
-	src << heard
+	to_chat(src, heard)

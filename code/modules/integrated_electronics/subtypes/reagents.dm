@@ -4,8 +4,8 @@
 	unacidable = 1
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
 
-/obj/item/integrated_circuit/reagent/New()
-	..()
+/obj/item/integrated_circuit/reagent/Initialize(mapload)
+	. = ..()
 	if(volume)
 		create_reagents(volume)
 
@@ -29,7 +29,6 @@
 /obj/item/integrated_circuit/reagent/smoke/on_reagent_change()
 	set_pin_data(IC_OUTPUT, 1, reagents.total_volume)
 	push_data()
-
 
 /obj/item/integrated_circuit/reagent/smoke/interact(mob/user)
 	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
@@ -147,7 +146,6 @@
 						activate_pin(2)
 					else
 						activate_pin(3)
-					return
 					return
 				var/datum/reagent/B
 				if(istype(T, /mob/living/carbon/human))

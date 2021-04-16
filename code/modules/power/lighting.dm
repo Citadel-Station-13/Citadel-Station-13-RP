@@ -30,8 +30,8 @@ var/global/list/light_type_cache = list()
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
 
-/obj/machinery/light_construct/New(var/atom/newloc, var/newdir, var/building = 0, var/datum/frame/frame_types/frame_type, var/obj/machinery/light/fixture = null)
-	..(newloc)
+/obj/machinery/light_construct/Initialize(mapload, newdir, building = FALSE, datum/frame/frame_types/frame_type, obj/machinery/light/fixture)
+	. = ..(mapload, newdir)
 	if(fixture)
 		fixture_type = fixture.type
 		fixture.transfer_fingerprints_to(src)
@@ -51,16 +51,15 @@ var/global/list/light_type_cache = list()
 			icon_state = "tube-empty"
 
 /obj/machinery/light_construct/examine(mob/user)
-	if(!..(user, 2))
-		return
+	. = ..()
 
 	switch(src.stage)
 		if(1)
-			to_chat(user, "It's an empty frame.")
+			. += "It's an empty frame."
 		if(2)
-			to_chat(user, "It's wired.")
+			. += "It's wired."
 		if(3)
-			to_chat(user, "The casing is closed.")
+			. += "The casing is closed."
 
 /obj/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -87,7 +86,7 @@ var/global/list/light_type_cache = list()
 		if (src.stage != 2) return
 		src.stage = 1
 		src.update_icon()
-		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, "red")
+		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, null, "red")
 		user.visible_message("[user.name] removes the wiring from [src].", \
 			"You remove the wiring from [src].", "You hear a noise.")
 		playsound(src.loc, W.usesound, 50, 1)
@@ -220,9 +219,8 @@ var/global/list/light_type_cache = list()
 	shows_alerts = FALSE	//VOREStation Edit
 	var/lamp_shade = 1
 
-/obj/machinery/light/flamp/New(atom/newloc, obj/machinery/light_construct/construct = null)
-	..(newloc, construct)
-
+/obj/machinery/light/flamp/Initialize(mapload, obj/machinery/light_construct/construct)
+	. = ..()
 	if(construct)
 		lamp_shade = 0
 		update_icon()
@@ -245,15 +243,15 @@ var/global/list/light_type_cache = list()
 	auto_flicker = TRUE
 
 //VOREStation Add - Shadeless!
-/obj/machinery/light/flamp/noshade/New()
+/obj/machinery/light/flamp/noshade/Initialize(mapload, obj/machinery/light_construct/construct)
+	. = ..()
 	lamp_shade = 0
 	update(0)
-	..()
 //VOREStation Add End
 
 // create a new lighting fixture
-/obj/machinery/light/New(atom/newloc, obj/machinery/light_construct/construct = null)
-	..(newloc)
+/obj/machinery/light/Initialize(mapload, obj/machinery/light_construct/construct)
+	. = ..(mapload)
 
 	if(construct)
 		status = LIGHT_EMPTY
@@ -410,16 +408,17 @@ var/global/list/light_type_cache = list()
 
 // examine verb
 /obj/machinery/light/examine(mob/user)
+	. = ..()
 	var/fitting = get_fitting_name()
 	switch(status)
 		if(LIGHT_OK)
-			to_chat(user, "[desc] It is turned [on? "on" : "off"].")
+			. += "[desc] It is turned [on? "on" : "off"]."
 		if(LIGHT_EMPTY)
-			to_chat(user, "[desc] The [fitting] has been removed.")
+			. += "[desc] The [fitting] has been removed."
 		if(LIGHT_BURNED)
-			to_chat(user, "[desc] The [fitting] is burnt out.")
+			. += "[desc] The [fitting] is burnt out."
 		if(LIGHT_BROKEN)
-			to_chat(user, "[desc] The [fitting] has been smashed.")
+			. += "[desc] The [fitting] has been smashed."
 
 /obj/machinery/light/proc/get_fitting_name()
 	var/obj/item/light/L = light_type
@@ -694,7 +693,7 @@ var/global/list/light_type_cache = list()
 // timed process
 // use power
 
-/obj/machinery/light/process()
+/obj/machinery/light/process(delta_time)
 	if(auto_flicker && !flickering)
 		if(check_for_player_proximity(src, radius = 12, ignore_ghosts = FALSE, ignore_afk = TRUE))
 			seton(TRUE) // Lights must be on to flicker.
@@ -804,8 +803,8 @@ var/global/list/light_type_cache = list()
 			desc = "A broken [name]."
 
 
-/obj/item/light/New(atom/newloc, obj/machinery/light/fixture = null)
-	..()
+/obj/item/light/Initialize(mapload, obj/machinery/light/fixture)
+	. = ..()
 	if(fixture)
 		status = fixture.status
 		rigged = fixture.rigged

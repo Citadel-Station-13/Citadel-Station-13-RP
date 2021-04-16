@@ -8,10 +8,9 @@
 	var/shift_mode = NOT_WHILE_SHIFTED
 	var/ab_sound
 
-/obj/effect/shadekin_ability/New(var/new_kin)
-	..()
+/obj/effect/shadekin_ability/Initialize(mapload, mob/living/simple_animal/shadekin/new_kin)
+	. = ..()
 	my_kin = new_kin
-	loc = null
 
 /obj/effect/shadekin_ability/Destroy()
 	my_kin = null

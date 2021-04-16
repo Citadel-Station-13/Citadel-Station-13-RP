@@ -9,9 +9,7 @@ SUBSYSTEM_DEF(ticker)
 	/// Did we attempt an automatic gamemode vote?
 	var/static/auto_gamemode_vote_attempted = FALSE
 
-	/// What world.time we startED the game, set at round start.
-	var/static/round_start_time
-	/// What world.time we endED the game, set at round end.
+	/// What world.time we ended the game, set at round end.
 	var/static/round_end_time
 
 	/// Should we immediately start?
@@ -20,6 +18,8 @@ SUBSYSTEM_DEF(ticker)
 	var/ready_for_reboot = FALSE
 	/// Is round end delayed?
 	var/delay_end = FALSE
+	/// Force round end
+	var/force_ending = FALSE
 
 	var/timeLeft						//pregame timer
 	var/start_at
@@ -53,18 +53,15 @@ SUBSYSTEM_DEF(ticker)
 	//Now we have a general cinematic centrally held within the gameticker....far more efficient!
 	var/obj/screen/cinematic = null
 
+	var/static/round_start_time
+	var/static/list/round_start_events
+	var/static/list/round_end_events
 
 /datum/controller/subsystem/ticker/Initialize()
 	if(!syndicate_code_phrase)
 		syndicate_code_phrase	= generate_code_phrase()
 	if(!syndicate_code_response)
 		syndicate_code_response = generate_code_phrase()
-
-	// Set up antagonists.
-	populate_antag_type_list()
-
-	//Set up spawn points.
-	populate_spawn_points()
 
 	start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 
@@ -86,7 +83,7 @@ SUBSYSTEM_DEF(ticker)
 	send2irc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
 	to_chat(world, "<span class='boldnotice'>Welcome to the pregame lobby!</span>")
 	to_chat(world, "Please set up your character and select ready. The round will start in [CONFIG_GET(number/lobby_countdown)] seconds.")
-	world << sound('sound/misc/server-ready.ogg', volume = 100)
+	SEND_SOUND(world, sound('sound/misc/server-ready.ogg', volume = 100))
 	current_state = GAME_STATE_PREGAME
 	if(Master.initializations_finished_with_no_players_logged_in)
 		start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
@@ -152,6 +149,12 @@ SUBSYSTEM_DEF(ticker)
 	log_game("<span class='boldannounce'>World reboot triggered by ticker. [reason]</span>")
 
 	world.Reboot()
+
+/datum/controller/subsystem/ticker/proc/HasRoundStarted()
+	return current_state >= GAME_STATE_PLAYING
+
+/datum/controller/subsystem/ticker/proc/IsRoundInProgress()
+	return current_state == GAME_STATE_PLAYING
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))
@@ -227,16 +230,23 @@ SUBSYSTEM_DEF(ticker)
 
 	callHook("roundstart")
 
+	for(var/I in round_start_events)
+		var/datum/callback/cb = I
+		cb.InvokeAsync()
+	LAZYCLEARLIST(round_start_events)
+
+	round_start_time = world.time
+
 	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		//Cleanup some stuff
-		for(var/obj/effect/landmark/start/S in landmarks_list)
+		for(var/obj/effect/landmark/start/S in GLOB.landmarks_list)
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)
 		to_chat(world, "<FONT color='blue'><B>Enjoy the game!</B></FONT>")
-		world << sound('sound/AI/welcome.ogg') // Skie
+		SEND_SOUND(world, sound('sound/AI/welcome.ogg')) // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
@@ -256,13 +266,26 @@ SUBSYSTEM_DEF(ticker)
 	*/
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
-	round_start_time = world.time
 
 	if(config_legacy.sql_enabled)
 		//THIS REQUIRES THE INVOKE ASYNC.
 		INVOKE_ASYNC(GLOBAL_PROC, .proc/statistic_cycle) // Polls population totals regularly and stores them in an SQL DB -- TLE
 
 	return 1
+
+//These callbacks will fire after roundstart key transfer
+/datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)
+	if(!HasRoundStarted())
+		LAZYADD(round_start_events, cb)
+	else
+		cb.InvokeAsync()
+
+//These callbacks will fire before roundend report
+/datum/controller/subsystem/ticker/proc/OnRoundend(datum/callback/cb)
+	if(current_state >= GAME_STATE_FINISHED)
+		cb.InvokeAsync()
+	else
+		LAZYADD(round_end_events, cb)
 
 	//Plus it provides an easy way to make cinematics for other events. Just use this as a template :)
 /datum/controller/subsystem/ticker/proc/station_explosion_cinematic(var/station_missed=0, var/override = null)
@@ -293,7 +316,7 @@ SUBSYSTEM_DEF(ticker)
 			switch(M.z)
 				if(0)	//inside a crate or something
 					var/turf/T = get_turf(M)
-					if(T && T.z in GLOB.using_map.station_levels)				//we don't use M.death(0) because it calls a for(/mob) loop and
+					if(T && (T.z in GLOB.using_map.station_levels))				//we don't use M.death(0) because it calls a for(/mob) loop and
 						M.health = 0
 						M.stat = DEAD
 				if(1)	//on a z-level 1 turf.
@@ -309,19 +332,19 @@ SUBSYSTEM_DEF(ticker)
 				if("mercenary") //Nuke wasn't on station when it blew up
 					flick("intro_nuke",cinematic)
 					sleep(35)
-					world << sound('sound/effects/explosionfar.ogg')
+					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 					flick("station_intact_fade_red",cinematic)
 					cinematic.icon_state = "summary_nukefail"
 				else
 					flick("intro_nuke",cinematic)
 					sleep(35)
-					world << sound('sound/effects/explosionfar.ogg')
+					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 					//flick("end",cinematic)
 
 
 		if(2)	//nuke was nowhere nearby	//TODO: a really distant explosion animation
 			sleep(50)
-			world << sound('sound/effects/explosionfar.ogg')
+			SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 
 
 		else	//station was destroyed
@@ -332,25 +355,25 @@ SUBSYSTEM_DEF(ticker)
 					flick("intro_nuke",cinematic)
 					sleep(35)
 					flick("station_explode_fade_red",cinematic)
-					world << sound('sound/effects/explosionfar.ogg')
+					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 					cinematic.icon_state = "summary_nukewin"
 				if("AI malfunction") //Malf (screen,explosion,summary)
 					flick("intro_malf",cinematic)
 					sleep(76)
 					flick("station_explode_fade_red",cinematic)
-					world << sound('sound/effects/explosionfar.ogg')
+					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 					cinematic.icon_state = "summary_malf"
 				if("blob") //Station nuked (nuke,explosion,summary)
 					flick("intro_nuke",cinematic)
 					sleep(35)
 					flick("station_explode_fade_red",cinematic)
-					world << sound('sound/effects/explosionfar.ogg')
+					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 					cinematic.icon_state = "summary_selfdes"
 				else //Station nuked (nuke,explosion,summary)
 					flick("intro_nuke",cinematic)
 					sleep(35)
 					flick("station_explode_fade_red", cinematic)
-					world << sound('sound/effects/explosionfar.ogg')
+					SEND_SOUND(world, sound('sound/effects/explosionfar.ogg'))
 					cinematic.icon_state = "summary_selfdes"
 			for(var/mob/living/M in living_mob_list)
 				if(M.loc.z in GLOB.using_map.station_levels)
@@ -409,7 +432,8 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
 
-	mode.process()
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
+	mode.process(dt)
 
 	var/game_finished = 0
 	var/mode_finished = 0
@@ -420,7 +444,7 @@ SUBSYSTEM_DEF(ticker)
 		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1)) || universe_has_ended
 		mode_finished = game_finished
 
-	if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
+	if(force_ending || (!mode.explosion_in_progress && game_finished && (mode_finished || post_game)))
 		current_state = GAME_STATE_FINISHED
 		round_end_time = world.time
 		Master.SetRunLevel(RUNLEVEL_POSTGAME)
@@ -462,6 +486,10 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	to_chat(world, "<br><br><br><H1>A round of [mode.name] has ended!</H1>")
+	for(var/I in round_end_events)
+		var/datum/callback/cb = I
+		cb.InvokeAsync()
+	LAZYCLEARLIST(round_end_events)
 	for(var/mob/Player in player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
@@ -486,7 +514,7 @@ SUBSYSTEM_DEF(ticker)
 					to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
 	to_chat(world, "<br>")
 
-	for (var/mob/living/silicon/ai/aiPlayer in mob_list)
+	for (var/mob/living/silicon/ai/aiPlayer in GLOB.mob_list)
 		if (aiPlayer.stat != 2)
 			to_chat(world, "<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
 		else
@@ -501,7 +529,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/dronecount = 0
 
-	for (var/mob/living/silicon/robot/robo in mob_list)
+	for (var/mob/living/silicon/robot/robo in GLOB.mob_list)
 
 		if(istype(robo,/mob/living/silicon/robot/drone) && !istype(robo,/mob/living/silicon/robot/drone/swarm))
 			dronecount++

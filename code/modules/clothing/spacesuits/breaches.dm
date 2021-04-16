@@ -19,8 +19,8 @@
 	var/burn_damage = 0                     // Specifically burn damage.
 	var/base_name                           // Used to keep the original name safe while we apply modifiers.
 
-/obj/item/clothing/suit/space/New()
-	..()
+/obj/item/clothing/suit/space/Initialize(mapload)
+	. = ..()
 	base_name = "[name]"
 
 //Some simple descriptors for breaches. Global because lazy, TODO: work out a better way to do this.
@@ -224,7 +224,7 @@ var/global/list/breach_burn_descriptors = list(
 	..()
 
 /obj/item/clothing/suit/space/examine(mob/user)
-	..(user)
+	. = ..()
 	if(can_breach && breaches && breaches.len)
 		for(var/datum/breach/B in breaches)
-			to_chat(user, "<font color='red'><B>It has \a [B.descriptor].</B></font>")
+			. += "<font color='red'><B>It has \a [B.descriptor].</B></font>"

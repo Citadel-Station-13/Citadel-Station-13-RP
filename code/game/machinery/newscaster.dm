@@ -15,6 +15,7 @@
 	var/backup_author = ""
 	var/icon/backup_img = null
 	var/icon/backup_caption = ""
+	var/post_time = 0
 
 /datum/feed_channel
 	var/channel_name=""
@@ -78,6 +79,7 @@
 	newMsg.body = msg
 	newMsg.time_stamp = "[stationtime2text()]"
 	newMsg.is_admin_message = adminMessage
+	newMsg.post_time = round_duration_in_ticks // Should be almost universally unique
 	if(message_type)
 		newMsg.message_type = message_type
 	if(photo)
@@ -174,19 +176,22 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	name = "Security Newscaster"
 	securityCaster = 1
 
-/obj/machinery/newscaster/New()         //Constructor, ho~
+/obj/machinery/newscaster/Initialize(mapload, newdir)
+	. = ..()
 	allCasters += src
 	paper_remaining = 15            // Will probably change this to something better
 	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
 		unit_no++
 	update_icon() //for any custom ones on the map...
-	spawn(10) //Should be enough time for the node to spawn at tcomms.
-		node = get_exonet_node()
-	..()                                //I just realised the newscasters weren't in the global machines list. The superconstructor call will tend to that
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/newscaster/LateInitialize()
+	. = ..()
+	node = get_exonet_node()
 
 /obj/machinery/newscaster/Destroy()
 	allCasters -= src
-	..()
+	return ..()
 
 /obj/machinery/newscaster/update_icon()
 	if(!ispowered || isbroken)
@@ -251,8 +256,8 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		node = get_exonet_node()
 
 	if(!node || !node.on || !node.allow_external_newscasters)
-		user << "<span class='danger'>Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
-		contact the system administrator.</span>"
+		to_chat(user, "<span class='danger'>Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
+		contact the system administrator.</span>")
 		return 0
 
 	if(!user.IsAdvancedToolUser())
@@ -394,7 +399,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					dat+="<I>No feed channels found active...</I><BR>"
 				else
 					for(var/datum/feed_channel/CHANNEL in news_network.network_channels)
-						dat+="<A href='?src=\ref[src];pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : ]<BR>"
+						dat+="<A href='?src=\ref[src];pick_censor_channel=\ref[CHANNEL]'>[CHANNEL.channel_name]</A> [(CHANNEL.censored) ? ("<FONT COLOR='red'>***</FONT>") : null]<BR>"
 				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Cancel</A>"
 			if(11)
 				dat+="<B>[GLOB.using_map.company_name] D-Notice Handler</B><HR>"

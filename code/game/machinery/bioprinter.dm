@@ -17,7 +17,7 @@
 
 	var/print_delay = 100
 	var/base_print_delay = 100	// For Adminbus reasons
-	var/printing
+	var/printing = FALSE // is the bioprinter printing
 	var/loaded_dna //Blood sample for DNA hashing.
 	var/malfunctioning = FALSE	// May cause rejection, or the printing of some alien limb instead!
 
@@ -69,27 +69,23 @@
 	return ..()
 
 /obj/machinery/organ_printer/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(panel_open)
-		overlays += "bioprinter_panel_open"
+		add_overlay("bioprinter_panel_open")
 	if(printing)
-		overlays += "bioprinter_working"
+		add_overlay("bioprinter_working")
 
-/obj/machinery/organ_printer/New()
-	..()
-
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	RefreshParts()
+/obj/machinery/organ_printer/Initialize(mapload, newdir)
+	. = ..()
+	default_apply_parts()
 
 /obj/machinery/organ_printer/examine(var/mob/user)
 	. = ..()
 	var/biomass = get_biomass_volume()
 	if(biomass)
-		to_chat(user, "<span class='notice'>It is loaded with [biomass] units of biomass.</span>")
+		. +="<span class='notice'>It is loaded with [biomass] units of biomass.</span>"
 	else
-		to_chat(user, "<span class='notice'>It is not loaded with any biomass.</span>")
+		. += "<span class='notice'>It is not loaded with any biomass.</span>"
 
 /obj/machinery/organ_printer/RefreshParts()
 	// Print Delay updating
@@ -156,27 +152,27 @@
 	if(!choice || printing || (stat & (BROKEN|NOPOWER)))
 		return
 
-	if(!can_print(choice))
+	if(!can_print(choice, possible_list[choice][2]))
 		return
 
-	container.reagents.remove_reagent("biomass", products[choice][2])
+	container.reagents.remove_reagent("biomass", possible_list[choice][2])
 
-	use_power = USE_POWER_ACTIVE
-	printing = 1
+	update_use_power(USE_POWER_ACTIVE)
+	printing = TRUE
 	update_icon()
 
 	visible_message("<span class='notice'>\The [src] begins churning.</span>")
 
 	sleep(print_delay)
 
-	use_power = USE_POWER_IDLE
-	printing = 0
+	update_use_power(USE_POWER_IDLE)
+	printing = FALSE
 	update_icon()
 
 	if(!choice || !src || (stat & (BROKEN|NOPOWER)))
 		return
 
-	print_organ(choice)
+	print_organ(possible_list[choice][1])
 
 	return
 
@@ -210,10 +206,10 @@
 
 	return biomass_count
 
-/obj/machinery/organ_printer/proc/can_print(var/choice)
+/obj/machinery/organ_printer/proc/can_print(var/choice, var/biomass_needed = 0)
 	var/biomass = get_biomass_volume()
-	if(biomass < products[choice][2])
-		visible_message("<span class='notice'>\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [products[choice][2]] needed.'</span>")
+	if(biomass < biomass_needed)
+		visible_message("<span class='notice'>\The [src] displays a warning: 'Not enough biomass. [biomass] stored and [biomass_needed] needed.'</span>")
 		return 0
 
 	if(!loaded_dna || !loaded_dna["donor"])
@@ -223,7 +219,7 @@
 	return 1
 
 /obj/machinery/organ_printer/proc/print_organ(var/choice)
-	var/new_organ = products[choice][1]
+	var/new_organ = choice
 	var/obj/item/organ/O = new new_organ(get_turf(src))
 	O.status |= ORGAN_CUT_AWAY
 	var/mob/living/carbon/human/C = loaded_dna["donor"]
@@ -272,7 +268,7 @@
 	icon_state = "bioprinter"
 	circuit = /obj/item/circuitboard/bioprinter
 
-/obj/machinery/organ_printer/flesh/full/New()
+/obj/machinery/organ_printer/flesh/full/Initialize(mapload, newdir)
 	. = ..()
 	container = new /obj/item/reagent_containers/glass/bottle/biomass(src)
 

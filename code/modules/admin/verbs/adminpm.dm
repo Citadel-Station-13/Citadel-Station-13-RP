@@ -2,7 +2,7 @@
 
 
 //allows right clicking mobs to send an admin PM to their client, forwards the selected mob's client to cmd_admin_pm
-/client/proc/cmd_admin_pm_context(mob/M in mob_list)
+/client/proc/cmd_admin_pm_context(mob/M in GLOB.mob_list)
 	set category = null
 	set name = "Admin PM Mob"
 	if(!holder)
@@ -137,6 +137,9 @@
 
 	var/rawmsg = msg
 
+	if(holder)
+		msg = emoji_parse(msg)
+
 	var/keywordparsedmsg = keywords_lookup(msg)
 
 	if(irc)
@@ -164,7 +167,7 @@
 
 			//play the recieving admin the adminhelp sound (if they have them enabled)
 			if(recipient.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
-				recipient << 'sound/effects/adminhelp.ogg'
+				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 
 		else
 			if(holder)	//sender is an admin but recipient is not. Do BIG RED TEXT
@@ -179,7 +182,7 @@
 				admin_ticket_log(recipient, "<font color='blue'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>")
 
 				//always play non-admin recipients the adminhelp sound
-				recipient << 'sound/effects/adminhelp.ogg'
+				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 
 				//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config_legacy.txt ~Carn
 				if(config_legacy.popup_admin_pm)
@@ -262,9 +265,9 @@
 
 	admin_ticket_log(C, "<font color='blue'>PM From [irc_tagged]: [msg]</font>")
 
-	window_flash(C, ignorepref = TRUE)
+	window_flash(C)
 	//always play non-admin recipients the adminhelp sound
-	C << 'sound/effects/adminhelp.ogg'
+	SEND_SOUND(C, sound('sound/effects/adminhelp.ogg'))
 
 	C.ircreplyamount = IRCREPLYCOUNT
 

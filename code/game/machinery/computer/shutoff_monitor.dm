@@ -8,16 +8,16 @@
 
 /obj/machinery/computer/shutoff_monitor/attack_hand(var/mob/user)
 	..()
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/computer/shutoff_monitor/attack_robot(var/mob/user) // Borgs and AI will want to see this too
 	..()
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/computer/shutoff_monitor/attack_ai(var/mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/shutoff_monitor/ui_interact(mob/user, ui_key = "shutoff_monitor", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
+/obj/machinery/computer/shutoff_monitor/nano_ui_interact(mob/user, ui_key = "shutoff_monitor", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
 	var/data[0]
 	data["valves"] = list()
 	for(var/obj/machinery/atmospherics/valve/shutoff/S in GLOB.shutoff_valves)

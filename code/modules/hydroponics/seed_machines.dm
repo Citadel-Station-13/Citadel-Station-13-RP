@@ -8,8 +8,8 @@
 	var/list/genes = list()
 	var/genesource = "unknown"
 
-/obj/item/disk/botany/New()
-	..()
+/obj/item/disk/botany/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(-5,5)
 	pixel_y = rand(-5,5)
 
@@ -27,8 +27,7 @@
 	name = "flora disk box"
 	desc = "A box of flora data disks, apparently."
 
-/obj/item/storage/box/botanydisk/New()
-	..()
+/obj/item/storage/box/botanydisk/PopulateContents()
 	for(var/i = 0;i<7;i++)
 		new /obj/item/disk/botany(src)
 
@@ -50,7 +49,7 @@
 	var/failed_task = 0
 	var/disk_needs_genes = 0
 
-/obj/machinery/botany/process()
+/obj/machinery/botany/process(delta_time)
 
 	..()
 	if(!active) return
@@ -62,21 +61,21 @@
 	return attack_hand(user)
 
 /obj/machinery/botany/attack_hand(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/botany/proc/finished_task()
 	active = 0
 	if(failed_task)
 		failed_task = 0
-		visible_message("\icon[src] [src] pings unhappily, flashing a red warning light.")
+		visible_message("[icon2html(thing = src, target = world)] [src] pings unhappily, flashing a red warning light.")
 	else
-		visible_message("\icon[src] [src] pings happily.")
+		visible_message("[icon2html(thing = src, target = world)] [src] pings happily.")
 
 	if(eject_disk)
 		eject_disk = 0
 		if(loaded_disk)
 			loaded_disk.loc = get_turf(src)
-			visible_message("\icon[src] [src] beeps and spits out [loaded_disk].")
+			visible_message("[icon2html(thing = src, target = world)] [src] beeps and spits out [loaded_disk].")
 			loaded_disk = null
 
 /obj/machinery/botany/attackby(obj/item/W as obj, mob/user as mob)
@@ -136,7 +135,7 @@
 	var/datum/seed/genetics // Currently scanned seed genetic structure.
 	var/degradation = 0     // Increments with each scan, stops allowing gene mods after a certain point.
 
-/obj/machinery/botany/extractor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/botany/extractor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(!user)
 		return
@@ -190,14 +189,14 @@
 			plant_controller.seeds[seed.seed.name] = seed.seed
 
 		seed.update_seed()
-		visible_message("\icon[src] [src] beeps and spits out [seed].")
+		visible_message("[icon2html(thing = src, target = world)] [src] beeps and spits out [seed].")
 
 		seed = null
 
 	if(href_list["eject_disk"])
 		if(!loaded_disk) return
 		loaded_disk.loc = get_turf(src)
-		visible_message("\icon[src] [src] beeps and spits out [loaded_disk].")
+		visible_message("[icon2html(thing = src, target = world)] [src] beeps and spits out [loaded_disk].")
 		loaded_disk = null
 
 	usr.set_machine(src)
@@ -265,7 +264,7 @@
 	icon_state = "traitgun"
 	disk_needs_genes = 1
 
-/obj/machinery/botany/editor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/botany/editor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 
 	if(!user)
 		return

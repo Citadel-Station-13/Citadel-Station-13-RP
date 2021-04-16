@@ -39,7 +39,7 @@ var/global/universe_has_ended = 0
 	set background = 1
 	to_chat(world, "<span class='sinister' style='font-size:22pt'>You are blinded by a brilliant flash of energy.</span>")
 
-	world << sound('sound/effects/cascade.ogg')
+	SEND_SOUND(world, sound('sound/effects/cascade.ogg'))
 
 	for(var/mob/M in player_list)
 		M.flash_eyes()
@@ -84,7 +84,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 		return
 
 /datum/universal_state/supermatter_cascade/proc/AreaSet()
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(!istype(A,/area) || istype(A, /area/space) || istype(A,/area/beach))
 			continue
 

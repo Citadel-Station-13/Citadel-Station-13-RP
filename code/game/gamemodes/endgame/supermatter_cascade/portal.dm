@@ -14,14 +14,14 @@
 
 	consume_range = 6
 
-/obj/singularity/narsie/large/exit/New()
-	..()
+/obj/singularity/narsie/large/exit/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/singularity/narsie/large/exit/update_icon()
 	overlays = 0
 
-/obj/singularity/narsie/large/exit/process()
+/obj/singularity/narsie/large/exit/process(delta_time)
 	for(var/mob/M in player_list)
 		if(M.client)
 			M.see_rift(src)
@@ -89,7 +89,7 @@
 		riftimage.pixel_y = new_y
 		riftimage.loc = T_mob
 
-		src << riftimage
+		SEND_IMAGE(src, riftimage)
 	else
 		if(riftimage)
 			qdel(riftimage)

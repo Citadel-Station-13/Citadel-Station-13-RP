@@ -6,7 +6,7 @@
 	description = "A toxic chemical."
 	taste_description = "bitterness"
 	taste_mult = 1.2
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#CF3600"
 	metabolism = REM * 0.25 // 0.05 by default. Hopefully enough to get some help, or die horribly, whatever floats your boat
 	filtered_organs = list(O_LIVER, O_KIDNEYS)
@@ -32,7 +32,7 @@
 	id = "plasticide"
 	description = "Liquid plastic, do not eat."
 	taste_description = "plastic"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#CF3600"
 	strength = 5
 
@@ -41,7 +41,7 @@
 	id = "amatoxin"
 	description = "A powerful poison derived from certain species of mushroom."
 	taste_description = "mushroom"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#792300"
 	strength = 10
 
@@ -50,7 +50,7 @@
 	id = "carpotoxin"
 	description = "A deadly neurotoxin produced by the dreaded space carp."
 	taste_description = "fish"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#003333"
 	strength = 10
 
@@ -59,7 +59,7 @@
 	id = "neurotoxic_protein"
 	description = "A weak neurotoxic chemical commonly found in Sivian fish meat."
 	taste_description = "fish"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#005555"
 	strength = 8
 	skin_danger = 0.4
@@ -68,7 +68,7 @@
 	..()
 	if(alien != IS_DIONA)
 		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
-			step(M, pick(cardinal))
+			step(M, pick(GLOB.cardinal))
 		if(prob(5))
 			M.emote(pick("twitch", "drool", "moan"))
 		if(prob(20))
@@ -122,7 +122,7 @@
 	id = "phoron"
 	description = "Phoron in its liquid form."
 	taste_mult = 1.5
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#9D14DB"
 	strength = 30
 	touch_met = 5
@@ -161,7 +161,7 @@
 	description = "A highly toxic chemical."
 	taste_description = "almond"
 	taste_mult = 0.6
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#CF3600"
 	strength = 20
 	metabolism = REM * 2
@@ -176,7 +176,7 @@
 	id = "mold"
 	description = "A mold is a fungus that causes biodegradation of natural materials. This variant contains mycotoxins, and is dangerous to humans."
 	taste_description = "mold"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	strength = 5
 
 /datum/reagent/toxin/mold/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -190,7 +190,7 @@
 	id = "expired_medicine"
 	description = "Some form of liquid medicine that is well beyond its shelf date. Administering it now would cause illness."
 	taste_description = "bitterness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	strength = 5
 	filtered_organs = list(O_SPLEEN)
 
@@ -230,7 +230,7 @@
 	id = "potassium_chloride"
 	description = "A delicious salt that stops the heart when injected into cardiac muscle."
 	taste_description = "salt"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
 	strength = 0
 	overdose = REAGENTS_OVERDOSE
@@ -256,7 +256,7 @@
 	id = "potassium_chlorophoride"
 	description = "A specific chemical based on Potassium Chloride to stop the heart for surgery. Not safe to eat!"
 	taste_description = "salt"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
 	strength = 10
 	overdose = 20
@@ -279,7 +279,7 @@
 	id = "zombiepowder"
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	taste_description = "numbness"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#669900"
 	metabolism = REM
 	strength = 3
@@ -305,7 +305,7 @@
 	name = "Lich Powder"
 	id = "lichpowder"
 	description = "A stablized nerve agent that puts the subject into a strange state of un-death."
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#666666"
 	metabolism = REM * 0.75
 	strength = 2
@@ -336,7 +336,7 @@
 	description = "A chemical mix good for growing plants with."
 	taste_description = "plant food"
 	taste_mult = 0.5
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	strength = 0.5 // It's not THAT poisonous.
 	color = "#664330"
 
@@ -364,7 +364,7 @@
 	id = "plantbgone"
 	description = "A harmful toxic mixture to kill plantlife. Do not ingest!"
 	taste_mult = 1
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#49002E"
 	strength = 4
 
@@ -402,7 +402,7 @@
 	id = "sifsap"
 	description = "A natural slurry comprised of fluorescent bacteria native to Sif, in the Vir system."
 	taste_description = "sour"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#C6E2FF"
 	strength = 2
 	overdose = 20
@@ -432,7 +432,7 @@
 	id = "pacid"
 	description = "Polytrinic acid is a an extremely corrosive chemical substance."
 	taste_description = "acid"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#8E18A9"
 	power = 10
 	meltdose = 4
@@ -442,7 +442,7 @@
 	id = "stomacid"
 	description = "Some form of digestive slurry."
 	taste_description = "vomit"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#664330"
 	power = 2
 	meltdose = 30
@@ -452,7 +452,7 @@
 	id = "thermite_v"
 	description = "A biologically produced compound capable of melting steel or other metals, similarly to thermite."
 	taste_description = "sweet chalk"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#673910"
 	touch_met = 50
 
@@ -496,7 +496,7 @@
 	id = "lexorin"
 	description = "Lexorin temporarily stops respiration. Causes tissue damage."
 	taste_description = "acid"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	overdose = REAGENTS_OVERDOSE
 
@@ -525,7 +525,7 @@
 	description = "Might cause unpredictable mutations. Keep away from children."
 	taste_description = "slime"
 	taste_mult = 0.9
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#13BC5E"
 
 /datum/reagent/mutagen/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
@@ -619,7 +619,7 @@
 	description = "A gooey semi-liquid produced from one of the deadliest lifeforms in existence. SO REAL."
 	taste_description = "slime"
 	taste_mult = 1.3
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#801E28"
 
 /datum/reagent/slimejelly/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -642,7 +642,7 @@
 	name = "Advanced Mutation Toxin"
 	id = "advmutationtoxin"
 	description = "A corruptive toxin produced by slimes. Turns the subject of the chemical into a Promethean."
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#13BC5E"
 
 /datum/reagent/advmutationtoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -674,7 +674,7 @@
 	id = "stoxin"
 	description = "An effective hypnotic used to treat insomnia."
 	taste_description = "bitterness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#009CA8"
 	metabolism = REM * 0.5
 	ingest_met = REM * 1.5
@@ -722,7 +722,7 @@
 	id = "chloralhydrate"
 	description = "A powerful sedative."
 	taste_description = "bitterness"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#000067"
 	metabolism = REM * 0.5
 	ingest_met = REM * 1.5
@@ -773,7 +773,7 @@
 	id = "beer2"
 	description = "An alcoholic beverage made from malted grains, hops, yeast, and water. The fermentation appears to be incomplete." //If the players manage to analyze this, they deserve to know something is wrong.
 	taste_description = "beer"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#FFD300"
 
 	glass_name = "beer"
@@ -787,7 +787,7 @@
 	description = "An illegal chemical compound used as drug."
 	taste_description = "bitterness"
 	taste_mult = 0.4
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#60A584"
 	metabolism = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
@@ -805,7 +805,7 @@
 
 	M.druggy = max(M.druggy, drug_strength)
 	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
-		step(M, pick(cardinal))
+		step(M, pick(GLOB.cardinal))
 	if(prob(7))
 		M.emote(pick("twitch", "drool", "moan", "giggle"))
 
@@ -814,7 +814,7 @@
 	id = "serotrotium"
 	description = "A chemical compound that promotes concentrated production of the serotonin neurotransmitter in humans."
 	taste_description = "bitterness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#202040"
 	metabolism = REM * 0.25
 	overdose = REAGENTS_OVERDOSE
@@ -847,7 +847,7 @@
 	id = "cryptobiolin"
 	description = "Cryptobiolin causes confusion and dizzyness."
 	taste_description = "sourness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#000055"
 	metabolism = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
@@ -871,7 +871,7 @@
 	id = "impedrezene"
 	description = "Impedrezene is a narcotic that impedes one's ability by slowing down the higher brain cell functions."
 	taste_description = "numbness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
 	overdose = REAGENTS_OVERDOSE
 	filtered_organs = list(O_SPLEEN)
@@ -892,7 +892,7 @@
 	id = "mindbreaker"
 	description = "A powerful hallucinogen, it can cause fatal effects in users."
 	taste_description = "sourness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#B31008"
 	metabolism = REM * 0.25
 	overdose = REAGENTS_OVERDOSE
@@ -960,7 +960,7 @@
 	id = "nicotine"
 	description = "A highly addictive stimulant extracted from the tobacco plant."
 	taste_description = "bitterness"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#181818"
 
 /datum/reagent/talum_quem
@@ -969,7 +969,7 @@
 	description = " A very carefully tailored hallucinogen, for use of the Talum-Katish."
 	taste_description = "bubblegum"
 	taste_mult = 1.6
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#db2ed8"
 	metabolism = REM * 0.5
 	overdose = REAGENTS_OVERDOSE
@@ -986,7 +986,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 
 	M.druggy = max(M.druggy, drug_strength)
 	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
-		step(M, pick(cardinal))
+		step(M, pick(GLOB.cardinal))
 	if(prob(7))
 		M.emote(pick("twitch", "drool", "moan", "giggle"))
 
@@ -997,7 +997,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	id = "mutationtoxin"
 	description = "A corruptive toxin produced by slimes."
 	taste_description = "sludge"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#13BC5E"
 
 /datum/reagent/slimetoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -1027,7 +1027,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	id = "docilitytoxin"
 	description = "A corruptive toxin produced by slimes."
 	taste_description = "sludge"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#FF69B4"
 
 /datum/reagent/aslimetoxin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed) // TODO: check if there's similar code anywhere else
@@ -1062,7 +1062,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	id = "shredding_nanites"
 	description = "Miniature medical robots that swiftly restore bodily damage. These ones seem to be malfunctioning."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	metabolism = REM * 4 // Nanomachines. Fast.
 
@@ -1075,7 +1075,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	id = "irradiated_nanites"
 	description = "Miniature medical robots that swiftly restore bodily damage. These ones seem to be malfunctioning."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	metabolism = REM * 4
 
@@ -1088,7 +1088,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	id = "neurophage_nanites"
 	description = "Miniature medical robots that swiftly restore bodily damage. These ones seem to be completely hostile."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	metabolism = REM * 4
 	filtered_organs = list(O_SPLEEN)
@@ -1103,7 +1103,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	name = "200 V" //in other words a painful shock
 	id = "shockchem"
 	description = "A liquid that quickly dissapates to deliver a painful shock."
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#E4EC2F"
 	metabolism = 2.50
 	var/power = 9

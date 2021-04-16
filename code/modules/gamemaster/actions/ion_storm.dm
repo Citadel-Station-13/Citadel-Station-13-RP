@@ -17,7 +17,7 @@
 	for (var/mob/living/silicon/ai/target in silicon_mob_list)
 		var/law = target.generate_ion_law()
 		to_chat(target, "<font color='red'><b>You have detected a change in your laws information:</b></font>")
-		target << law
+		to_chat(target, law)
 		target.add_ion_law(law)
 		target.show_laws()
 
@@ -35,7 +35,7 @@
 	while(active)
 		sleep(1)
 		if(botEmagChance)
-			for(var/mob/living/bot/bot in mob_list)
+			for(var/mob/living/bot/bot in GLOB.mob_list)
 				if(prob(botEmagChance))
 					bot.emag_act(1)
 

@@ -38,9 +38,10 @@
 			oldlimb.removed()
 			qdel(oldlimb)
 
-		var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
+		// var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 		active_regen = TRUE
-		if(do_after(blob,5 SECONDS))
+		src.visible_message("<B>[src]</B>'s flesh begins to bubble, growing oily tendrils from their limb stump...")  // Gives a visualization for regenerating limbs.
+		if(do_after(src,5 SECONDS))  // Makes you not need to blob to regen a single limb. I'm keeping the full-body regen as blob-only, though
 			var/list/limblist = species.has_limbs[choice]
 			var/limbpath = limblist["path"]
 			var/obj/item/organ/external/new_eo = new limbpath(src)
@@ -48,7 +49,8 @@
 			new_eo.robotize(synthetic ? synthetic.company : null) //Use the base we started with
 			regenerate_icons()
 		active_regen = FALSE
-		nano_outofblob(blob)
+		visible_message("<B>[src]</B>'s tendrils solidify into a [choice].")
+		// nano_outofblob(blob)  No longer needed as we're not going to blob
 		return
 
 	//Organ exists, let's reshape it
@@ -318,14 +320,14 @@
 	//Sizing up
 	if(cost > 0)
 		if(refactory.use_stored_material(MAT_STEEL,cost))
-			user.resize(size_factor)
+			user.resize(size_factor, TRUE)
 		else
 			to_chat(user,"<span class='warning'>That size change would cost [cost] steel, which you don't have.</span>")
 	//Sizing down (or not at all)
 	else if(cost <= 0)
 		cost = abs(cost)
 		var/actually_added = refactory.add_stored_material(MAT_STEEL,cost)
-		user.resize(size_factor)
+		user.resize(size_factor, TRUE)
 		if(actually_added != cost)
 			to_chat(user,"<span class='warning'>Unfortunately, [cost-actually_added] steel was lost due to lack of storage space.</span>")
 

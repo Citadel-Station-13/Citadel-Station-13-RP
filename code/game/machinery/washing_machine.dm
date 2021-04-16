@@ -25,8 +25,8 @@
 		/obj/item/clothing/head/helmet/space
 		)
 
-/obj/machinery/washing_machine/New()
-	..()
+/obj/machinery/washing_machine/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/motor(src)
 	component_parts += new /obj/item/stock_parts/gear(src)
@@ -93,7 +93,7 @@
 			return
 	/*if(W.is_screwdriver())
 		panel = !panel
-		user << "<span class='notice'>You [panel ? "open" : "close"] the [src]'s maintenance panel</span>"*/
+		to_chat(user, "<span class='notice'>You [panel ? "open" : "close"] the [src]'s maintenance panel</span>")*/
 	if(istype(W,/obj/item/pen/crayon) || istype(W,/obj/item/stamp))
 		if(state in list(	1, 3, 6))
 			if(!crayon)

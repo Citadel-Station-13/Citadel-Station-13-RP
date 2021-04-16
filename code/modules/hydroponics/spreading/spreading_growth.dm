@@ -2,7 +2,7 @@
 
 /obj/effect/plant/proc/get_cardinal_neighbors()
 	var/list/cardinal_neighbors = list()
-	for(var/check_dir in cardinal)
+	for(var/check_dir in GLOB.cardinal)
 		var/turf/simulated/T = get_step(get_turf(src), check_dir)
 		if(istype(T))
 			cardinal_neighbors |= T
@@ -41,7 +41,7 @@
 		if(neighbor.seed == src.seed)
 			neighbor.neighbors -= T
 
-/obj/effect/plant/process()
+/obj/effect/plant/process(delta_time)
 
 	// Something is very wrong, kill ourselves.
 	if(!seed)

@@ -32,8 +32,8 @@
 	use_power = USE_POWER_IDLE
 	icon_state = "map_scrubber_on"
 
-/obj/machinery/atmospherics/unary/vent_scrubber/New()
-	..()
+/obj/machinery/atmospherics/unary/vent_scrubber/Initialize(mapload)
+	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
 	for(var/i in scrubbing_gas)
@@ -137,7 +137,7 @@
 		set_frequency(frequency)
 		src.broadcast_status()
 
-/obj/machinery/atmospherics/unary/vent_scrubber/process()
+/obj/machinery/atmospherics/unary/vent_scrubber/process(delta_time)
 	..()
 
 	if (hibernate)
@@ -277,10 +277,9 @@
 	if (node && node.level==1 && isturf(T) && !T.is_plating())
 		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
-	if(!can_unwrench())
-		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], it is too exerted due to internal pressure.</span>")
-		add_fingerprint(user)
-		return 1
+	if(unsafe_pressure())
+		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
+	add_fingerprint(user)
 	playsound(src, W.usesound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 	if (do_after(user, 40 * W.toolspeed))
@@ -291,7 +290,5 @@
 		deconstruct()
 
 /obj/machinery/atmospherics/unary/vent_scrubber/examine(mob/user)
-	if(..(user, 1))
-		user << "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"
-	else
-		to_chat(user, "You are too far away to read the gauge.")
+	. = ..()
+	. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"

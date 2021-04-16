@@ -65,7 +65,7 @@
 /obj/machinery/mining/drill/get_cell()
 	return cell
 
-/obj/machinery/mining/drill/process()
+/obj/machinery/mining/drill/process(delta_time)
 
 	if(need_player_check)
 		return
@@ -323,9 +323,8 @@
 	circuit = /obj/item/circuitboard/miningdrillbrace
 	var/obj/machinery/mining/drill/connected
 
-/obj/machinery/mining/brace/New()
-	..()
-
+/obj/machinery/mining/brace/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 
 /obj/machinery/mining/brace/attackby(obj/item/W as obj, mob/user as mob)

@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	var/lastgenlev = 0
 	var/datum/looping_sound/generator/soundloop
 
-/obj/machinery/power/generator/Initialize()
+/obj/machinery/power/generator/Initialize(mapload)
 	soundloop = new(list(src), FALSE)
 	desc = initial(desc) + " Rated for [round(max_power/1000)] kW."
 	GLOB.all_turbines += src
@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	GLOB.all_turbines -= src
 	return ..()
 
-//generators connect in dir and reverse_dir(dir) directions
+//generators connect in dir and GLOB.reverse_dir(dir) directions
 //mnemonic to determine circulator/generator directions: the cirulators orbit clockwise around the generator
 //so a circulator to the NORTH of the generator connects first to the EAST, then to the WEST
 //and a circulator to the WEST of the generator connects first to the NORTH, then to the SOUTH
@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 					circ2.temperature_overlay = "circ-[extreme]cold"
 		return 1
 
-/obj/machinery/power/generator/process()
+/obj/machinery/power/generator/process(delta_time)
 	if(!circ1 || !circ2 || !anchored || stat & (BROKEN|NOPOWER))
 		stored_energy = 0
 		return
@@ -192,9 +192,9 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	if(stat & (BROKEN|NOPOWER) || !anchored) return
 	if(!circ1 || !circ2) //Just incase the middle part of the TEG was not wrenched last.
 		reconnect()
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/power/generator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/power/generator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	// this is the data which will be sent to the ui
 	var/vertical = 0
 	if (dir == NORTH || dir == SOUTH)

@@ -46,8 +46,8 @@
 	var/list/containers = list()	// Beakers for our liquid biomass
 	var/container_limit = 3			// How many beakers can the machine hold?
 
-/obj/machinery/clonepod/New()
-	..()
+/obj/machinery/clonepod/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/manipulator(src)
 	component_parts += new /obj/item/stock_parts/manipulator(src)
@@ -175,7 +175,7 @@
 	return 1
 
 //Grow clones to maturity then kick them out.  FREELOADERS
-/obj/machinery/clonepod/process()
+/obj/machinery/clonepod/process(delta_time)
 	if(stat & NOPOWER) //Autoeject if power is lost
 		if(occupant)
 			locked = 0
@@ -457,8 +457,8 @@
 		icon_state = "pod_g"
 
 
-/obj/machinery/clonepod/full/New()
-	..()
+/obj/machinery/clonepod/full/Initialize(mapload, newdir)
+	. = ..()
 	for(var/i = 1 to container_limit)
 		containers += new /obj/item/reagent_containers/glass/bottle/biomass(src)
 
@@ -524,8 +524,8 @@
 		buf.dna.SE=new_SE
 		buf.dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
 
-/obj/item/disk/data/New()
-	..()
+/obj/item/disk/data/Initialize(mapload)
+	. = ..()
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 
@@ -534,9 +534,8 @@
 	to_chat(user, "You flip the write-protect tab to [read_only ? "protected" : "unprotected"].")
 
 /obj/item/disk/data/examine(mob/user)
-	..(user)
-	to_chat(user, text("The write-protect tab is set to [read_only ? "protected" : "unprotected"]."))
-	return
+	. = ..()
+	. += "<span class = 'notice'>The write-protect tab is set to [read_only ? "protected" : "unprotected"].</span>"
 
 /*
  *	Diskette Box
@@ -546,8 +545,7 @@
 	name = "Diskette Box"
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/disks/New()
-	..()
+/obj/item/storage/box/disks/PopulateContents()
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)

@@ -6,12 +6,12 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "dirt"
 
-/obj/effect/decal/cleanable/chemcoating/New()
-	..()
+/obj/effect/decal/cleanable/chemcoating/Initialize(mapload)
+	. = ..()
 	create_reagents(100)
 
-/obj/effect/decal/cleanable/chemcoating/Initialize()
-	..()
+/obj/effect/decal/cleanable/chemcoating/Initialize(mapload)
+	. = ..()
 	var/turf/T = get_turf(src)
 	if(T)
 		for(var/obj/O in get_turf(src))

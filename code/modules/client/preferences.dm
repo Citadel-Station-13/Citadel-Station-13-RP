@@ -1,8 +1,8 @@
 #define SAVE_RESET -1
 
-var/list/preferences_datums = list()
+GLOBAL_LIST_EMPTY(preferences_datums)
 
-datum/preferences
+/datum/preferences
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
@@ -21,9 +21,13 @@ datum/preferences
 	var/loadcharcooldown
 
 	//game-preferences
+	var/tgui_fancy = TRUE
+	var/tgui_lock = TRUE
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#010000"			//Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color
 	var/be_special = 0					//Special role selection
+	/// Event role prefs flag
+	var/be_event_role = NONE
 	var/UI_style = "Midnight"
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
@@ -222,7 +226,8 @@ datum/preferences
 			return "God"
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	if(!user || !user.client)	return
+	if(!user || !user.client)
+		return
 
 	if(!get_mob_by_key(client_ckey))
 		to_chat(user, "<span class='danger'>No mob exists for the given client!</span>")

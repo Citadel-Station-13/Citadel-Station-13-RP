@@ -28,7 +28,11 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	var/speedlimit = 1/(20 SECONDS)	// Ttop speed for autopilot, 5
 	var/accellimit = 0.001	// Manual limiter for acceleration
 
-/obj/machinery/computer/ship/helm/Initialize()
+/obj/machinery/computer/ship/helm/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/ship/helm/LateInitialize()
 	. = ..()
 	get_known_sectors()
 
@@ -42,7 +46,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 			R.fields["y"] = S.y
 			known_sectors[S.name] = R
 
-/obj/machinery/computer/ship/helm/process()
+/obj/machinery/computer/ship/helm/process(delta_time)
 	..()
 	if (autopilot && dx && dy)
 		var/turf/T = locate(dx,dy,GLOB.using_map.overmap_z)
@@ -77,7 +81,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		linked.relaymove(user, direction, accellimit)
 		return 1
 
-/obj/machinery/computer/ship/helm/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/ship/helm/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	if(!linked)
@@ -227,7 +231,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	icon_screen = "helm"
 	circuit = /obj/item/circuitboard/nav
 
-/obj/machinery/computer/ship/navigation/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/ship/navigation/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!linked)
 		display_reconnect_dialog(user, "Navigation")
 		return

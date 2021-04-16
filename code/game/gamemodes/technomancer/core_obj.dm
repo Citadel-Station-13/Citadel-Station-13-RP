@@ -36,8 +36,8 @@
 	var/list/wards_in_use = list()	// Wards don't count against the cap for other summons.
 	var/max_summons = 10			// Maximum allowed summoned entities.  Some cores will have different caps.
 
-/obj/item/technomancer_core/New()
-	..()
+/obj/item/technomancer_core/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/technomancer_core/Destroy()
@@ -80,7 +80,7 @@
 	energy = min(energy + amount, max_energy)
 	return 1
 
-/obj/item/technomancer_core/process()
+/obj/item/technomancer_core/process(delta_time)
 	var/old_energy = energy
 	regenerate()
 	pay_dues()
@@ -141,10 +141,11 @@
 	var/obj/item/technomancer_core/core = null
 	var/ability_icon_state = null
 
-/obj/spellbutton/New(loc, var/path, var/new_name, var/new_icon_state)
+/obj/spellbutton/Initialize(mapload, path, new_name, new_icon_state)
+	. = ..()
 	if(!path || !ispath(path))
-		message_admins("ERROR: /obj/spellbutton/New() was not given a proper path!")
-		qdel(src)
+		message_admins("ERROR: /obj/spellbutton/Initializesz() was not given a proper path!")
+		return INITIALIZE_HINT_QDEL
 	src.name = new_name
 	src.spellpath = path
 	src.loc = loc

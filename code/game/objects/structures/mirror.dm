@@ -10,13 +10,13 @@
 	var/list/ui_users = list()
 	var/glass = 1
 
-/obj/structure/mirror/New(var/loc, var/dir, var/building = 0, mob/user as mob)
+/obj/structure/mirror/Initialize(mapload, dir, building = FALSE, mob/user)
+	. = ..()
 	if(building)
 		glass = 0
 		icon_state = "mirror_frame"
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -28 : 28)
 		pixel_y = (dir & 3)? (dir == 1 ? -30 : 30) : 0
-	return
 
 /obj/structure/mirror/attack_hand(mob/user as mob)
 	if(!glass) return
@@ -28,7 +28,7 @@
 			AC = new(src, user)
 			AC.name = "SalonPro Nano-Mirror&trade;"
 			ui_users[user] = AC
-		AC.ui_interact(user)
+		AC.nano_ui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
 	if(!glass) return
@@ -142,6 +142,7 @@
 				qdel(user)
 	..()
 
+
 //Long mirrors.
 /obj/structure/mirror/long
 	name = "mirror"
@@ -193,4 +194,3 @@
 	icon_state = "long_mir_r_broke"
 	density = 0
 	anchored = 1
-	shattered = 1

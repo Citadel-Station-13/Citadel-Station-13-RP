@@ -275,6 +275,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 
 
+
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
 /mob/proc/fully_replace_character_name(var/oldname,var/newname)
@@ -295,7 +296,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 					break
 
 		//update our pda and id if we have them on our person
-		var/list/searching = GetAllContents(searchDepth = 3)
+		var/list/searching = GetAllContents()
 		var/search_id = 1
 		var/search_pda = 1
 
@@ -351,7 +352,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			if(isAI(src))
 				var/mob/living/silicon/ai/A = src
 				oldname = null//don't bother with the records update crap
-				//world << "<b>[newname] is the AI!</b>"
+				//to_chat(world, "<b>[newname] is the AI!</b>")
 				//world << sound('sound/AI/newAI.ogg')
 				// Set eyeobj name
 				A.SetName(newname)
@@ -469,7 +470,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
-	var/list/sortmob = sortList(mob_list, cmp=/proc/cmp_name_asc)
+	var/list/sortmob = sortList(GLOB.mob_list, cmp=/proc/cmp_name_asc)
 	for(var/mob/observer/eye/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/observer/blob/M in sortmob)
@@ -492,10 +493,16 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		moblist.Add(M)
 	for(var/mob/living/simple_mob/M in sortmob)
 		moblist.Add(M)
+	for(var/mob/living/bot/M in sortmob)
+		moblist.Add(M)
+	for(var/mob/living/captive_brain/M in sortmob)
+		moblist.Add(M)
+	for(var/mob/living/voice/M in sortmob)
+		moblist.Add(M)
 //	for(var/mob/living/silicon/hivebot/M in sortmob)
-//		mob_list.Add(M)
+//		GLOB.mob_list.Add(M)
 //	for(var/mob/living/silicon/hive_mainframe/M in sortmob)
-//		mob_list.Add(M)
+//		GLOB.mob_list.Add(M)
 	return moblist
 
 // Format a power value in W, kW, MW, or GW.
@@ -507,14 +514,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	else if(powerused < 1000000000) //Less than a GW
 		return "[round((powerused * 0.000001),0.001)] MW"
 	return "[round((powerused * 0.000000001),0.0001)] GW"
-
-/proc/get_mob_by_ckey(key)
-	if(!key)
-		return
-	var/list/mobs = sortmobs()
-	for(var/mob/M in mobs)
-		if(M.ckey == key)
-			return M
 
 //Forces a variable to be posative
 /proc/modulus(var/M)
@@ -590,16 +589,44 @@ proc/GaussRand(var/sigma)
 proc/GaussRandRound(var/sigma,var/roundto)
 	return round(GaussRand(sigma),roundto)
 
-//Will return the contents of an atom recursivly to a depth of 'searchDepth'
-/atom/proc/GetAllContents(searchDepth = 5)
-	var/list/toReturn = list()
+/*
+	Gets all contents of contents and returns them all in a list.
+*/
 
-	for(var/atom/part in contents)
-		toReturn += part
-		if(part.contents.len && searchDepth)
-			toReturn += part.GetAllContents(searchDepth - 1)
+/atom/proc/GetAllContents(var/T)
+	var/list/processing_list = list(src)
+	var/i = 0
+	var/lim = 1
+	if(T)
+		. = list()
+		while(i < lim)
+			var/atom/A = processing_list[++i]
+			//Byond does not allow things to be in multiple contents, or double parent-child hierarchies, so only += is needed
+			//This is also why we don't need to check against assembled as we go along
+			processing_list += A.contents
+			lim = processing_list.len
+			if(istype(A,T))
+				. += A
+	else
+		while(i < lim)
+			var/atom/A = processing_list[++i]
+			processing_list += A.contents
+			lim = processing_list.len
+		return processing_list
 
-	return toReturn
+/atom/proc/GetAllContentsIgnoring(list/ignore_typecache)
+	if(!length(ignore_typecache))
+		return GetAllContents()
+	var/list/processing = list(src)
+	. = list()
+	var/i = 0
+	var/lim = 1
+	while(i < lim)
+		var/atom/A = processing[++i]
+		if(!ignore_typecache[A.type])
+			processing += A.contents
+			lim = processing.len
+			. += A
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
 /proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
@@ -662,62 +689,6 @@ proc/GaussRandRound(var/sigma,var/roundto)
 	if(A.vars.Find(lowertext(varname))) return 1
 	else return 0
 
-//Returns: all the areas in the world
-/proc/return_areas()
-	var/list/area/areas = list()
-	for(var/area/A in all_areas)
-		areas += A
-	return areas
-
-//Returns: all the areas in the world, sorted.
-/proc/return_sorted_areas()
-	return sortTim(return_areas(), /proc/cmp_area_names_asc)
-
-//Takes: Area type as text string or as typepath OR an instance of the area.
-//Returns: A list of all areas of that type in the world.
-/proc/get_areas(var/areatype)
-	if(!areatype) return null
-	if(istext(areatype)) areatype = text2path(areatype)
-	if(isarea(areatype))
-		var/area/areatemp = areatype
-		areatype = areatemp.type
-
-	var/list/areas = new/list()
-	for(var/area/N in all_areas)
-		if(istype(N, areatype)) areas += N
-	return areas
-
-//Takes: Area type as text string or as typepath OR an instance of the area.
-//Returns: A list of all turfs in areas of that type of that type in the world.
-/proc/get_area_turfs(var/areatype)
-	if(!areatype) return null
-	if(istext(areatype)) areatype = text2path(areatype)
-	if(isarea(areatype))
-		var/area/areatemp = areatype
-		areatype = areatemp.type
-
-	var/list/turfs = new/list()
-	for(var/area/N in all_areas)
-		if(istype(N, areatype))
-			for(var/turf/T in N) turfs += T
-	return turfs
-
-//Takes: Area type as text string or as typepath OR an instance of the area.
-//Returns: A list of all atoms	(objs, turfs, mobs) in areas of that type of that type in the world.
-/proc/get_area_all_atoms(var/areatype)
-	if(!areatype) return null
-	if(istext(areatype)) areatype = text2path(areatype)
-	if(isarea(areatype))
-		var/area/areatemp = areatype
-		areatype = areatemp.type
-
-	var/list/atoms = new/list()
-	for(var/area/N in all_areas)
-		if(istype(N, areatype))
-			for(var/atom/A in N)
-				atoms += A
-	return atoms
-
 /datum/coords //Simple datum for storing coordinates.
 	var/x_pos = null
 	var/y_pos = null
@@ -732,8 +703,12 @@ proc/GaussRandRound(var/sigma,var/roundto)
 
 	if(!A || !src) return 0
 
-	var/list/turfs_src = get_area_turfs(src.type)
-	var/list/turfs_trg = get_area_turfs(A.type)
+	var/list/turfs_src = list()
+	var/list/turfs_trg = list()
+	for(var/turf/T in contents)
+		turfs_src += T
+	for(var/turf/T in A)
+		turfs_trg += T
 
 	var/src_min_x = 0
 	var/src_min_y = 0
@@ -1023,7 +998,7 @@ proc/oview_or_orange(distance = world.view , center = usr , type)
 
 proc/get_mob_with_client_list()
 	var/list/mobs = list()
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if (M.client)
 			mobs += M
 	return mobs
@@ -1255,8 +1230,8 @@ var/list/WALLITEMS = list(
 
 GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
-//Version of view() which ignores darkness, because BYOND doesn't have it.
-/proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
+//Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
+/proc/dview(range = world.view, center, invis_flags = 0)
 	if(!center)
 		return
 
@@ -1268,34 +1243,44 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	GLOB.dview_mob.loc = null
 
 /mob/dview
+	name = "INTERNAL DVIEW MOB"
 	invisibility = 101
-	density = 0
-
-	anchored = 1
-	simulated = 0
-
+	density = FALSE
 	see_in_dark = 1e6
+	anchored = TRUE
+	/// move_resist = INFINITY
+	var/ready_to_die = FALSE
+
+/mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
+	SHOULD_CALL_PARENT(FALSE)
+	if(flags & INITIALIZED)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags |= INITIALIZED
+	return INITIALIZE_HINT_NORMAL
+
+/mob/dview/Destroy(force = FALSE)
+	if(!ready_to_die)
+		stack_trace("ALRIGHT WHICH FUCKER TRIED TO DELETE *MY* DVIEW?")
+
+		if (!force)
+			return QDEL_HINT_LETMELIVE
+
+		log_world("EVACUATE THE SHITCODE IS TRYING TO STEAL MUH JOBS")
+		GLOB.dview_mob = new
+	return ..()
+
+
+#define FOR_DVIEW(type, range, center, invis_flags) \
+	GLOB.dview_mob.loc = center;           \
+	GLOB.dview_mob.see_invisible = invis_flags; \
+	for(type in view(range, GLOB.dview_mob))
+
+#define FOR_DVIEW_END GLOB.dview_mob.loc = null
 
 /atom/proc/get_light_and_color(var/atom/origin)
 	if(origin)
 		color = origin.color
 		set_light(origin.light_range, origin.light_power, origin.light_color)
-
-/mob/dview/New()
-	..()
-	// We don't want to be in any mob lists; we're a dummy not a mob.
-	mob_list -= src
-	if(stat == DEAD)
-		dead_mob_list -= src
-	else
-		living_mob_list -= src
-
-/mob/dview/Destroy(var/force)
-	crash_with("Attempt to delete the dview_mob: [log_info_line(src)]")
-	if (!force)
-		return QDEL_HINT_LETMELIVE
-	GLOB.dview_mob = new
-	return ..()
 
 // call to generate a stack trace and print to runtime logs
 /proc/crash_with(msg)

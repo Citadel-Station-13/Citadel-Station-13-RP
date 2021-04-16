@@ -19,8 +19,8 @@
 
 	var/list/filtering_outputs = list()	//maps gasids to gas_mixtures
 
-/obj/machinery/atmospherics/omni/atmos_filter/New()
-	..()
+/obj/machinery/atmospherics/omni/atmos_filter/Initialize(mapload)
+	. = ..()
 	rebuild_filtering_list()
 	for(var/datum/omni_port/P in ports)
 		P.air.volume = ATMOS_DEFAULT_VOLUME_FILTER
@@ -58,7 +58,7 @@
 
 	return 0
 
-/obj/machinery/atmospherics/omni/atmos_filter/process()
+/obj/machinery/atmospherics/omni/atmos_filter/process(delta_time)
 	if(!..())
 		return 0
 
@@ -86,7 +86,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/omni/atmos_filter/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/atmospherics/omni/atmos_filter/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	usr.set_machine(src)
 
 	var/list/data = new()

@@ -37,8 +37,8 @@
 /obj/machinery/atmospherics/binary/algae_farm/filled
 	stored_material = list(MATERIAL_ALGAE = 10000, MATERIAL_CARBON = 0)
 
-/obj/machinery/atmospherics/binary/algae_farm/New()
-	..()
+/obj/machinery/atmospherics/binary/algae_farm/Initialize(mapload)
+	. = ..()
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 	default_apply_parts()
 	update_icon()
@@ -46,7 +46,7 @@
 	var/image/I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = dir)
 	I.color = PIPE_COLOR_BLUE
 	overlays += I
-	I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = reverse_dir[dir])
+	I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = GLOB.reverse_dir[dir])
 	I.color = PIPE_COLOR_BLACK
 	overlays += I
 
@@ -54,7 +54,7 @@
 	. = ..()
 	internal = null
 
-/obj/machinery/atmospherics/binary/algae_farm/process()
+/obj/machinery/atmospherics/binary/algae_farm/process(delta_time)
 	..()
 	recent_moles_transferred = 0
 
@@ -141,7 +141,7 @@
 /obj/machinery/atmospherics/binary/algae_farm/attack_hand(mob/user)
 	if(..())
 		return 1
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /obj/machinery/atmospherics/binary/algae_farm/RefreshParts()
 	..()
@@ -166,7 +166,7 @@
 
 	moles_per_tick = initial(moles_per_tick) + (manip_rating**2 - 1)
 
-/obj/machinery/atmospherics/binary/algae_farm/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/nano_ui/master_ui = null, var/datum/topic_state/state = default_state)
+/obj/machinery/atmospherics/binary/algae_farm/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/nanoui/master_ui = null, var/datum/topic_state/state = default_state)
 	var/data[0]
 	data["panelOpen"] = panel_open
 
@@ -181,7 +181,7 @@
 	data["materials"] = materials_ui
 	data["last_flow_rate"] = last_flow_rate
 	data["last_power_draw"] = last_power_draw
-	data["inputDir"] = dir2text(reverse_dir[dir])
+	data["inputDir"] = dir2text(GLOB.reverse_dir[dir])
 	data["outputDir"] = dir2text(dir)
 	data["usePower"] = use_power
 	data["errorText"] = ui_error

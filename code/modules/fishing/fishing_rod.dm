@@ -33,11 +33,11 @@
 /obj/item/material/fishing_rod/built
 	strung = FALSE
 
-/obj/item/material/fishing_rod/examine(mob/M as mob)
-	..()
+/obj/item/material/fishing_rod/examine(mob/user)
+	. = ..()
 	if(Bait)
-		to_chat(M, "<span class='notice'>\The [src] has \the [Bait] hanging on its hook.</span>")
-		Bait.examine(M)
+		. += "<span class='notice'>\The [src] has \the [Bait] hanging on its hook.</span>"
+		Bait.examine(user)
 
 /obj/item/material/fishing_rod/CtrlClick(mob/user)
 	if((src.loc == user || Adjacent(user)) && Bait)
@@ -47,8 +47,8 @@
 	else
 		..()
 
-/obj/item/material/fishing_rod/Initialize()
-	..()
+/obj/item/material/fishing_rod/Initialize(mapload)
+	. = ..()
 	update_icon()
 
 /obj/item/material/fishing_rod/attackby(obj/item/I as obj, mob/user as mob)
@@ -130,3 +130,9 @@
 	default_material = "plastic"
 
 	toolspeed = 0.9
+
+/obj/item/material/fishing_rod/modern/strong
+	desc = "A extremely refined rod for catching fish."
+	default_material = "durasteel"
+
+	toolspeed = 0.5

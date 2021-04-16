@@ -22,21 +22,24 @@
 /obj/machinery/gibber/autogibber
 	var/turf/input_plate
 
-/obj/machinery/gibber/autogibber/New()
-	..()
-	spawn(5)
-		for(var/i in cardinal)
-			var/obj/machinery/mineral/input/input_obj = locate( /obj/machinery/mineral/input, get_step(src.loc, i) )
-			if(input_obj)
-				if(isturf(input_obj.loc))
-					input_plate = input_obj.loc
-					gib_throw_dir = i
-					qdel(input_obj)
-					break
+/obj/machinery/gibber/autogibber/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
-		if(!input_plate)
-			log_misc("a [src] didn't find an input plate.")
-			return
+/obj/machinery/gibber/autogibber/LateInitialize()
+	. = ..()
+	for(var/i in GLOB.cardinal)
+		var/obj/machinery/mineral/input/input_obj = locate( /obj/machinery/mineral/input, get_step(src.loc, i) )
+		if(input_obj)
+			if(isturf(input_obj.loc))
+				input_plate = input_obj.loc
+				gib_throw_dir = i
+				qdel(input_obj)
+				break
+
+	if(!input_plate)
+		log_misc("a [src] didn't find an input plate.")
+		return
 
 /obj/machinery/gibber/autogibber/Bumped(var/atom/A)
 	if(!input_plate) return
@@ -50,22 +53,22 @@
 			M.gib()
 
 
-/obj/machinery/gibber/New()
-	..()
-	src.overlays += image('icons/obj/kitchen.dmi', "grjam")
+/obj/machinery/gibber/Initialize(mapload)
+	. = ..()
+	update_icon()
 
-/obj/machinery/gibber/update_icon()
-	overlays.Cut()
+/obj/machinery/gibber/update_overlays()
+	. = ..()
 	if (dirty)
-		src.overlays += image('icons/obj/kitchen.dmi', "grbloody")
+		. += image('icons/obj/kitchen.dmi', "grbloody")
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if (!occupant)
-		src.overlays += image('icons/obj/kitchen.dmi', "grjam")
+		. += image('icons/obj/kitchen.dmi', "grjam")
 	else if (operating)
-		src.overlays += image('icons/obj/kitchen.dmi', "gruse")
+		. += image('icons/obj/kitchen.dmi', "gruse")
 	else
-		src.overlays += image('icons/obj/kitchen.dmi', "gridle")
+		. += image('icons/obj/kitchen.dmi', "gridle")
 
 /obj/machinery/gibber/relaymove(mob/user as mob)
 	src.go_out()
@@ -81,8 +84,8 @@
 		src.startgibbing(user)
 
 /obj/machinery/gibber/examine()
-	..()
-	to_chat(usr, "The safety guard is [emagged ? "<span class='danger'>disabled</span>" : "enabled"].")
+	. = ..()
+	. += "The safety guard is [emagged ? "<span class='danger'>disabled</span>" : "enabled"]."
 
 /obj/machinery/gibber/emag_act(var/remaining_charges, var/mob/user)
 	emagged = !emagged
@@ -232,5 +235,3 @@
 			thing.throw_at(get_edge_target_turf(src,gib_throw_dir),rand(0,3),emagged ? 100 : 50) // Being pelted with bits of meat and bone would hurt.
 
 		update_icon()
-
-

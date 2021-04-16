@@ -3,39 +3,75 @@
 //#define DB_MAJOR_VERSION 5
 //#define DB_MINOR_VERSION 0
 
-//Timing subsystem
-//Don't run if there is an identical unique timer active
-//if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer, and returns the id of the existing timer
+//! ## Timing subsystem
+/**
+ * Don't run if there is an identical unique timer active
+ *
+ * if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer,
+ * and returns the id of the existing timer
+ */
 #define TIMER_UNIQUE			(1<<0)
-//For unique timers: Replace the old timer rather then not start this one
+
+///For unique timers: Replace the old timer rather then not start this one
 #define TIMER_OVERRIDE			(1<<1)
-//Timing should be based on how timing progresses on clients, not the sever.
-//	tracking this is more expensive,
-//	should only be used in conjuction with things that have to progress client side, such as animate() or sound()
+
+/**
+ * Timing should be based on how timing progresses on clients, not the server.
+ *
+ * Tracking this is more expensive,
+ * should only be used in conjuction with things that have to progress client side, such as
+ * animate() or sound()
+ */
 #define TIMER_CLIENT_TIME		(1<<2)
-//Timer can be stopped using deltimer()
+
+///Timer can be stopped using deltimer()
 #define TIMER_STOPPABLE			(1<<3)
-//To be used with TIMER_UNIQUE
-//prevents distinguishing identical timers with the wait variable
+
+///prevents distinguishing identical timers with the wait variable
+///
+///To be used with TIMER_UNIQUE
 #define TIMER_NO_HASH_WAIT		(1<<4)
-//Loops the timer repeatedly until qdeleted
-//In most cases you want a subsystem instead
+
+///Loops the timer repeatedly until qdeleted
+///
+///In most cases you want a subsystem instead, so don't use this unless you have a good reason
 #define TIMER_LOOP				(1<<5)
 
+///Delete the timer on parent datum Destroy() and when deltimer'd
+#define TIMER_DELETE_ME			(1<<6)
+
+///Empty ID define
 #define TIMER_ID_NULL -1
 
-#define INITIALIZATION_INSSATOMS 0	//New should not call Initialize
-#define INITIALIZATION_INNEW_MAPLOAD 1	//New should call Initialize(TRUE)
-#define INITIALIZATION_INNEW_REGULAR 2	//New should call Initialize(FALSE)
+//! ## Initialization subsystem
 
-#define INITIALIZE_HINT_NORMAL   0  //Nothing happens
-#define INITIALIZE_HINT_LATELOAD 1  //Call LateInitialize
-#define INITIALIZE_HINT_QDEL     2  //Call qdel on the atom
+///New should not call Initialize
+#define INITIALIZATION_INSSATOMS 0
+///New should call Initialize(TRUE)
+#define INITIALIZATION_INNEW_MAPLOAD 2
+///New should call Initialize(FALSE)
+#define INITIALIZATION_INNEW_REGULAR 1
 
-//type and all subtypes should always call Initialize in New()
+//! ### Initialization hints
+
+///Nothing happens
+#define INITIALIZE_HINT_NORMAL 0
+/**
+ * call LateInitialize at the end of all atom Initalization
+ *
+ * The item will be added to the late_loaders list, this is iterated over after
+ * initalization of subsystems is complete and calls LateInitalize on the atom
+ * see [this file for the LateIntialize proc](atom.html#proc/LateInitialize)
+ */
+#define INITIALIZE_HINT_LATELOAD 1
+
+///Call qdel on the atom after intialization
+#define INITIALIZE_HINT_QDEL 2
+
+///type and all subtypes should always immediately call Initialize in New()
 #define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
 	..();\
-	if(!initialized) {\
+	if(!(flags & INITIALIZED)) {\
 		args[1] = TRUE;\
 		SSatoms.InitAtom(src, args);\
 	}\
@@ -62,6 +98,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_INPUT			100
 #define INIT_ORDER_SOUNDS			95
 #define INIT_ORDER_JOBS				85
+#define INIT_ORDER_VIS				80
 #define INIT_ORDER_GARBAGE			70
 #define INIT_ORDER_SERVER_MAINT		65
 #define INIT_ORDER_TIMER			60
@@ -70,6 +107,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_CHEMISTRY		35
 #define INIT_ORDER_SKYBOX			30
 #define INIT_ORDER_MAPPING			25
+#define INIT_ORDER_EVENTS			22		// needed because overmaps is shitcode and not doing this makes init far slower
 #define INIT_ORDER_DECALS			20
 #define INIT_ORDER_ALARMS			18
 #define INIT_ORDER_ATOMS			15
@@ -88,7 +126,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_AI				-22
 #define INIT_ORDER_OPENSPACE		-50
 #define INIT_ORDER_PERSISTENCE		-95
-
+#define INIT_ORDER_CHAT				-100 //Should be last to ensure chat remains smooth during init.
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
@@ -97,6 +135,7 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_VOTE			9
 #define FIRE_PRIORITY_AI			10
 #define FIRE_PRIORITY_PING			10
+#define FIRE_PRIORITY_VIS			10
 #define FIRE_PRIORITY_SERVER_MAINT	10
 #define FIRE_PRIORITY_GARBAGE		15
 #define FIRE_PRIORITY_CHARSETUP     25
@@ -109,13 +148,16 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define FIRE_PRIORITY_PLANETS		75
 #define FIRE_PRIORITY_INSTRUMENTS	90
 #define FIRE_PRIORITY_MACHINES		100
+#define FIRE_PRIORITY_TGUI			110
 #define FIRE_PRIORITY_PROJECTILES	150
+#define FIRE_PRIORITY_CHAT			400
 #define FIRE_PRIORITY_OVERLAYS		500
+#define FIRE_PRIORITY_TIMER			700
 #define FIRE_PRIORITY_INPUT			1000		//never drop input
 
 // Macro defining the actual code applying our overlays lists to the BYOND overlays list. (I guess a macro for speed)
 #define COMPILE_OVERLAYS(A)\
-	if (TRUE) {\
+	do {\
 		var/list/oo = A.our_overlays;\
 		var/list/po = A.priority_overlays;\
 		if(LAZYLEN(po)){\
@@ -133,4 +175,13 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 			A.overlays.Cut();\
 		}\
 		A.flags &= ~OVERLAY_QUEUED;\
-	}
+	} while(FALSE)
+
+/**
+	Create a new timer and add it to the queue.
+	* Arguments:
+	* * callback the callback to call on timer finish
+	* * wait deciseconds to run the timer for
+	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+*/
+#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)

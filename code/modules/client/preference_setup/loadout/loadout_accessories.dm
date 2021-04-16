@@ -77,19 +77,6 @@
 		wcoats[initial(wcoat_type.name)] = wcoat_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(wcoats, /proc/cmp_text_asc))
 
-/datum/gear/accessory/holster
-	display_name = "Holster - Selection"
-	path = /obj/item/clothing/accessory/holster
-	allowed_roles = list("Facility Director","Head of Personnel","Security Officer","Warden","Head of Security","Detective","Field Medic","Explorer","Pathfinder")
-
-/datum/gear/accessory/holster/New()
-	..()
-	var/list/holsters = list()
-	for(var/holster in typesof(/obj/item/clothing/accessory/holster))
-		var/obj/item/clothing/accessory/holster_type = holster
-		holsters[initial(holster_type.name)] = holster_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(holsters, /proc/cmp_text_asc))
-
 /datum/gear/accessory/tie
 	display_name = "Tie - Selection"
 	path = /obj/item/clothing/accessory/tie
@@ -147,18 +134,6 @@
 	path = /obj/item/clothing/accessory/collar/lifecrystal
 	description = "A smart medical necklace that pings an offsite recovery facility and acts as a beacon, should you die."
 
-/datum/gear/accessory/brown_vest
-	display_name = "Webbing - Brown"
-	path = /obj/item/clothing/accessory/storage/brown_vest
-
-/datum/gear/accessory/black_vest
-	display_name = "Webbing - Black"
-	path = /obj/item/clothing/accessory/storage/black_vest
-
-/datum/gear/accessory/white_vest
-	display_name = "Webbing - White"
-	path = /obj/item/clothing/accessory/storage/white_vest
-
 /datum/gear/accessory/brown_drop_pouches
 	display_name = "Drop Pouches - Brown"
 	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
@@ -183,11 +158,6 @@
 		var/obj/item/storage/belt/fannypack/fanny_type = fanny
 		fannys[initial(fanny_type.name)] = fanny_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(fannys, /proc/cmp_text_asc))
-
-/datum/gear/accessory/webbing
-	display_name = "Webbing - Simple"
-	path = /obj/item/clothing/accessory/storage/webbing
-	cost = 2
 
 /datum/gear/accessory/chaps
 	display_name = "Chaps - Brown"
@@ -244,11 +214,6 @@
 /datum/gear/accessory/bracelet/friendship
 	display_name = "Friendship Bracelet"
 	path = /obj/item/clothing/accessory/bracelet/friendship
-
-/datum/gear/accessory/stethoscope
-	display_name = "Medical - Stethoscope"
-	path = /obj/item/clothing/accessory/stethoscope
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Psychiatrist","Paramedic", "Field Medic")
 
 /datum/gear/accessory/locket
 	display_name = "Locket"
@@ -351,9 +316,6 @@
 /datum/gear/accessory/webbing
 	cost = 1
 
-/datum/gear/accessory/stethoscope
-	allowed_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Psychiatrist","Paramedic", "Field Medic")
-
 /datum/gear/accessory/vmcrystal
 	display_name = "Life Crystal"
 	path = /obj/item/storage/box/vmcrystal
@@ -366,9 +328,8 @@
 
 /datum/gear/accessory/pilotpin
 	display_name = "Pilot - Qualification Pin"
-	description = "An iron pin denoting the qualification to fly SCG spacecraft."
+	description = "An iron pin denoting the qualification to fly SCG voidcraft."
 	path = /obj/item/clothing/accessory/solgov/specialty/pilot
-	allowed_roles = list("Pathfinder", "Pilot", "Field Medic")
 
 /datum/gear/accessory/flops
 	display_name = "Drop Straps"

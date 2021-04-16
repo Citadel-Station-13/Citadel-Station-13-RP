@@ -49,11 +49,7 @@
 	starts_with = list(
 		/obj/item/clothing/glasses/eyepatch,
 		/obj/item/clothing/glasses/sunglasses,
-		/obj/item/clothing/gloves/swat = 2,
-		/obj/item/clothing/head/helmet/swat = 2,
 		/obj/item/clothing/mask/gas = 2,
-		/obj/item/clothing/shoes/boots/swat = 2,
-		/obj/item/clothing/suit/armor/swat = 2,
 		/obj/item/clothing/under/syndicate/tacticool = 2)
 
 

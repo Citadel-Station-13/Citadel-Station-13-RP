@@ -182,8 +182,8 @@
 	interface_name = "dead man's switch"
 	interface_desc = "An integrated self-destruct module. When the wearer dies, they vanish in smoke. Do not press this button."
 
-/obj/item/rig_module/self_destruct/New()
-	..()
+/obj/item/rig_module/self_destruct/Initialize(mapload)
+	. = ..()
 	src.smoke = new /datum/effect_system/smoke_spread/bad()
 	src.smoke.attach(src)
 
@@ -198,7 +198,7 @@
 /obj/item/rig_module/self_destruct/deactivate()
 	return
 
-/obj/item/rig_module/self_destruct/process()
+/obj/item/rig_module/self_destruct/process(delta_time)
 
 	// Not being worn, leave it alone.
 	if(!holder || !holder.wearer || !holder.wearer.wear_suit == holder)

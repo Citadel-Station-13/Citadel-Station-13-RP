@@ -7,8 +7,8 @@
 	var/list/supported_types
 	var/datum/topic_state/default/must_hack/hack_state
 
-/obj/item/multitool/hacktool/New()
-	..()
+/obj/item/multitool/hacktool/Initialize(mapload)
+	. = ..()
 	known_targets = list()
 	max_known_targets = 5 + rand(1,3)
 	supported_types = list(/obj/machinery/door/airlock)
@@ -39,7 +39,7 @@
 	if(!attempt_hack(user, W))
 		return 0
 
-	W.ui_interact(user, state = hack_state)
+	W.nano_ui_interact(user, state = hack_state)
 	return 1
 
 /obj/item/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
@@ -47,7 +47,7 @@
 		to_chat(user, "<span class='warning'>You are already hacking!</span>")
 		return 0
 	if(!is_type_in_list(target, supported_types))
-		to_chat(user, "\icon[src] <span class='warning'>Unable to hack this target!</span>")
+		to_chat(user, "[icon2html(thing = src, target = user)] <span class='warning'>Unable to hack this target!</span>")
 		return 0
 	var/found = known_targets.Find(target)
 	if(found)

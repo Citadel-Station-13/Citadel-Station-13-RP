@@ -16,7 +16,6 @@
 /turf/unsimulated/wall/planetary/normal,
 /area/tether_away/cave/unexplored/normal)
 "i" = (
-/obj/away_mission_init/beachcave,
 /turf/simulated/mineral/cave,
 /area/tether_away/cave/explored/normal)
 "j" = (

@@ -250,8 +250,8 @@
 	max_uses = 1
 	desc = "This template spellbook was never meant for the eyes of man..."
 
-/obj/item/spellbook/oneuse/New()
-	..()
+/obj/item/spellbook/oneuse/Initialize(mapload)
+	. = ..()
 	name += spellname
 
 /obj/item/spellbook/oneuse/attack_self(mob/user as mob)
@@ -291,7 +291,7 @@
 
 /obj/item/spellbook/oneuse/fireball/recoil(mob/user as mob)
 	..()
-	explosion(user.loc, -1, 0, 2, 3, 0, flame_range = 2)
+	explosion(user.loc, -1, 0, 2, 3, 0)// flame_range = 2)
 	qdel(src)
 
 /obj/item/spellbook/oneuse/smoke

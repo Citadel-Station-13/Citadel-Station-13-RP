@@ -28,7 +28,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/holder/process()
+/obj/item/holder/process(delta_time)
 	update_state()
 	drop_items()
 
@@ -138,7 +138,7 @@
 
 /mob/living/MouseDrop(var/atom/over_object)
 	var/mob/living/carbon/human/H = over_object
-	if(holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP)) //VOREStation Edit
+	if((usr == over_object || usr == src) && holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP)) //VOREStation Edit
 		if(!issmall(H) || !istype(src, /mob/living/carbon/human))
 			get_scooped(H, (usr == src))
 		return

@@ -41,8 +41,8 @@
 	aspect = ASPECT_CHROMATIC
 	var/glow_color = "#FFFFFF"
 
-/obj/item/spell/aura/New()
-	..()
+/obj/item/spell/aura/Initialize(mapload)
+	. = ..()
 	set_light(7, 4, l_color = glow_color)
 	START_PROCESSING(SSobj, src)
 
@@ -50,7 +50,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/item/spell/aura/process()
+/obj/item/spell/aura/process(delta_time)
 	return
 
 /obj/item/spell/aura/fire
@@ -61,7 +61,7 @@
 	aspect = ASPECT_FIRE
 	glow_color = "#FF6A00"
 
-/obj/item/spell/aura/fire/process()
+/obj/item/spell/aura/fire/process(delta_time)
 	if(!pay_energy(100))
 		qdel(src)
 	var/list/nearby_mobs = range(4,owner)
@@ -83,7 +83,7 @@
 	aspect = ASPECT_FROST
 	glow_color = "#FF6A00"
 
-/obj/item/spell/aura/frost/process()
+/obj/item/spell/aura/frost/process(delta_time)
 	if(!pay_energy(100))
 		qdel(src)
 	var/list/nearby_mobs = range(4,owner)
@@ -109,7 +109,7 @@
 	var/regen_tick = 0
 	var/heal_allies_only = 1
 
-/obj/item/spell/aura/biomed/process()
+/obj/item/spell/aura/biomed/process(delta_time)
 	if(!pay_energy(75))
 		qdel(src)
 	regen_tick++

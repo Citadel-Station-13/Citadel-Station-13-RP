@@ -7,7 +7,7 @@
 	idle_power_usage = 5
 	active_power_usage = 10
 	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
+	layer = BELOW_MOB_LAYER
 
 	var/list/network = list(NETWORK_DEFAULT)
 	var/c_tag = null
@@ -58,7 +58,9 @@
 	M.machine_visual = null
 	return 1
 
-/obj/machinery/camera/New()
+/obj/machinery/camera/Initialize(mapload)
+	if (dir == NORTH)
+		layer = ABOVE_MOB_LAYER
 	wires = new(src)
 	assembly = new(src)
 	assembly.state = 4
@@ -81,7 +83,7 @@
 	if(!c_tag)
 		var/area/A = get_area(src)
 		c_tag = "[A ? A.name : "Unknown"] #[rand(111,999)]"
-	..()
+	return ..()
 	// VOREStation Edit End
 
 /obj/machinery/camera/Destroy()
@@ -93,7 +95,7 @@
 	wires = null
 	return ..()
 
-/obj/machinery/camera/process()
+/obj/machinery/camera/process(delta_time)
 	if((stat & EMPED) && world.time >= affected_by_emp_until)
 		stat &= ~EMPED
 		cancelCameraAlarm()
@@ -174,7 +176,7 @@
 	update_coverage()
 	// DECONSTRUCTION
 	if(W.is_screwdriver())
-		//user << "<span class='notice'>You start to [panel_open ? "close" : "open"] the camera's panel.</span>"
+		//to_chat(user, "<span class='notice'>You start to [panel_open ? "close" : "open"] the camera's panel.</span>")
 		//if(toggle_panel(user)) // No delay because no one likes screwdrivers trying to be hip and have a duration cooldown
 		panel_open = !panel_open
 		user.visible_message("<span class='warning'>[user] screws the camera's panel [panel_open ? "open" : "closed"]!</span>",
@@ -199,7 +201,7 @@
 				else
 					assembly.state = 1
 					to_chat(user, "<span class='notice'>You cut \the [src] free from the wall.</span>")
-					new /obj/item/stack/cable_coil(src.loc, length=2)
+					new /obj/item/stack/cable_coil(drop_location(), 2)
 				assembly = null //so qdel doesn't eat it.
 			qdel(src)
 
@@ -222,15 +224,10 @@
 		to_chat(U, "You hold \a [itemname] up to the camera ...")
 		for(var/mob/living/silicon/ai/O in living_mob_list)
 			if(!O.client) continue
-			if(U.name == "Unknown") O << "<b>[U]</b> holds \a [itemname] up to one of your cameras ..."
-			else O << "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ..."
+			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
+			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
-		for(var/mob/O in player_list)
-			if (istype(O.machine, /obj/machinery/computer/security))
-				var/obj/machinery/computer/security/S = O.machine
-				if (S.current_camera == src)
-					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
-					O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
+
 
 	else if (istype(W, /obj/item/camera_bug))
 		if (!src.can_use())
@@ -480,7 +477,7 @@
 	else
 		cameranet.updateVisibility(src, 0)
 
-	invalidateCameraCache()
+
 
 // Resets the camera's wires to fully operational state. Used by one of Malfunction abilities.
 /obj/machinery/camera/proc/reset_wires()

@@ -1,7 +1,7 @@
 //admin verb groups - They can overlap if you so wish. Only one of each verb will exist in the verbs list regardless
 var/list/admin_verbs_default = list(
 	/datum/admins/proc/show_player_panel,	//shows an interface for individual players, with various links (links require additional flags,
-	/client/proc/player_panel,
+//	/client/proc/player_panel,
 	/client/proc/deadmin_self,			//destroys our own admin datum so we can play as a regular player,
 	/client/proc/hide_verbs,			//hides all our adminverbs,
 	/client/proc/hide_most_verbs,		//hides all our hideable adminverbs,
@@ -15,7 +15,7 @@ var/list/admin_verbs_default = list(
 	)
 
 var/list/admin_verbs_admin = list(
-	/client/proc/player_panel_new, //shows an interface for all players, with links to various panels,
+	/client/proc/player_panel, //shows an interface for all players, with links to various panels,
 	/datum/admins/proc/set_tcrystals,
 	/datum/admins/proc/add_tcrystals,
 	/client/proc/invisimin,				//allows our mob to go invisible/visible,
@@ -54,6 +54,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/admin_call_shuttle,	//allows us to call the emergency shuttle,
 	/client/proc/admin_cancel_shuttle,	//allows us to cancel the emergency shuttle, sending it back to CentCom,
 	/client/proc/cmd_admin_direct_narrate,	//send text directly to a player with no padding. Useful for narratives and fluff-text,
+	/client/proc/cmd_admin_local_narrate,
 	/client/proc/cmd_admin_world_narrate,	//sends text to all players with no padding,
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/check_words,			//displays cult-words,
@@ -108,7 +109,9 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/sendFax,
 	/client/proc/despawn_player,
 	/client/proc/addbunkerbypass,
-	/client/proc/revokebunkerbypass
+	/client/proc/revokebunkerbypass,
+	/client/proc/toggle_AI_interact,
+	/client/proc/list_event_volunteers
 	)
 
 var/list/admin_verbs_ban = list(
@@ -120,7 +123,7 @@ var/list/admin_verbs_sounds = list(
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
 	/client/proc/play_web_sound,
-	/client/proc/play_web_sound_manual,
+	/client/proc/manual_play_web_sound,
 	/client/proc/stop_sounds
 	)
 
@@ -274,12 +277,13 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/admin_call_shuttle,
 	/client/proc/admin_cancel_shuttle,
 	/client/proc/cmd_admin_direct_narrate,
+	/client/proc/cmd_admin_local_narrate,
 	/client/proc/cmd_admin_world_narrate,
 	/client/proc/check_words,
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
 	/client/proc/play_web_sound,
-	/client/proc/play_web_sound_manual,
+	/client/proc/manual_play_web_sound,
 	/client/proc/stop_sounds,
 	/client/proc/object_talk,
 	/datum/admins/proc/cmd_admin_dress,
@@ -340,7 +344,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_mod_say,
 	/client/proc/cmd_event_say,
 	/datum/admins/proc/show_player_info,
-	/client/proc/player_panel_new,
+	/client/proc/player_panel,
 	/client/proc/dsay,
 	/datum/admins/proc/show_skills,
 	/datum/admins/proc/show_player_panel,
@@ -522,7 +526,7 @@ var/list/admin_verbs_event_manager = list(
 			to_chat(mob, "<font color='blue'><b>Invisimin on. You are now as invisible as a ghost.</b></font>")
 			mob.alpha = max(mob.alpha - 100, 0)
 
-
+/*
 /client/proc/player_panel()
 	set name = "Player Panel"
 	set category = "Admin"
@@ -530,12 +534,12 @@ var/list/admin_verbs_event_manager = list(
 		holder.player_panel_old()
 	feedback_add_details("admin_verb","PP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
-
-/client/proc/player_panel_new()
-	set name = "Player Panel New"
+*/
+/client/proc/player_panel()
+	set name = "Player Panel"
 	set category = "Admin"
 	if(holder)
-		holder.player_panel_new()
+		holder.player_panel()
 	feedback_add_details("admin_verb","PPN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -656,7 +660,7 @@ var/list/admin_verbs_event_manager = list(
 	var/datum/preferences/D
 	var/client/C = GLOB.directory[warned_ckey]
 	if(C)	D = C.prefs
-	else	D = preferences_datums[warned_ckey]
+	else	D = GLOB.preferences_datums[warned_ckey]
 
 	if(!D)
 		to_chat(src, "<font color='red'>Error: warn(): No such ckey found.</font>")
@@ -712,7 +716,7 @@ var/list/admin_verbs_event_manager = list(
 	message_admins("<font color='blue'>[ckey] creating an admin explosion at [epicenter.loc].</font>")
 	feedback_add_details("admin_verb","DB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/give_disease2(mob/T as mob in mob_list) // -- Giacom
+/client/proc/give_disease2(mob/T as mob in GLOB.mob_list) // -- Giacom
 	set category = "Fun"
 	set name = "Give Disease"
 	set desc = "Gives a Disease to a mob."
@@ -868,7 +872,7 @@ var/list/admin_verbs_event_manager = list(
 	if(!S) return
 
 	var/datum/nano_module/law_manager/L = new(S)
-	L.ui_interact(usr, state = admin_state)
+	L.nano_ui_interact(usr, state = admin_state)
 	log_and_message_admins("has opened [S]'s law manager.")
 	feedback_add_details("admin_verb","MSL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1051,7 +1055,7 @@ var/list/admin_verbs_event_manager = list(
 			to_chat(src, "<b>Enabled maint drones.</b>")
 			message_admins("Admin [key_name_admin(usr)] has enabled maint drones.", 1)
 
-/client/proc/man_up(mob/T as mob in mob_list)
+/client/proc/man_up(mob/T as mob in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Man Up"
 	set desc = "Tells mob to man up and deal with it."
@@ -1072,14 +1076,14 @@ var/list/admin_verbs_event_manager = list(
 
 	if(alert("Are you sure you want to tell the whole server up?","Confirmation","Deal with it","No")=="No") return
 
-	for (var/mob/T as mob in mob_list)
+	for (var/mob/T as mob in GLOB.mob_list)
 		to_chat(T, "<br><center><span class='notice'><b><font size=4>Man up.<br> Deal with it.</font></b><br>Move along.</span></center><br>")
-		T << 'sound/voice/ManUp1.ogg'
+		SEND_SOUND(T, sound('sound/voice/ManUp1.ogg'))
 
 	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
 	message_admins("<font color='blue'>[key_name_admin(usr)] told everyone to man up and deal with it.</font>", 1)
 
-/client/proc/give_spell(mob/T as mob in mob_list) // -- Urist
+/client/proc/give_spell(mob/T as mob in GLOB.mob_list) // -- Urist
 	set category = "Fun"
 	set name = "Give Spell"
 	set desc = "Gives a spell to a mob."
@@ -1089,3 +1093,49 @@ var/list/admin_verbs_event_manager = list(
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")
 	message_admins("<font color='blue'>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</font>", 1)
+
+/client/proc/toggle_AI_interact()
+	set name = "Toggle Admin AI Interact"
+	set category = "Admin"
+	set desc = "Allows you to interact with most machines as an AI would as a ghost"
+
+	AI_Interact = !AI_Interact
+	if(mob && IsAdminGhost(mob))
+		mob.silicon_privileges = AI_Interact ? ALL : NONE
+
+	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
+	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
+
+/client/proc/list_event_volunteers()
+	set name = "List Event Volunteers"
+	set category = "Admin"
+	set desc = "See who has event role prefs enabled."
+
+	var/list/dat = list()
+	dat += "<center><b>Only in game players are shown, as these preferences are currently per-character-slot!</b></center><br>"
+	var/list/client/eligible = GLOB.clients.Copy()
+	for(var/i in eligible)
+		var/client/C = i
+		if(!isliving(C.mob))
+			eligible -= C
+	for(var/role in GLOB.event_role_list)
+		var/flag = GLOB.event_role_list[role]
+		dat += "<div class='statusDisplay'><h1>[role]</h1><br>"
+		for(var/i in eligible)
+			var/client/C = i
+			if(!(C.prefs?.be_event_role & flag))
+				continue
+			var/mob/M = C.mob
+			dat += "[ADMIN_FULLMONTY(M)]<br>"
+		dat += "</div><br>"
+
+	var/datum/browser/popup = new(src, "event_volunteers", "Event Volunteers (In game)", 800, 1200)
+	popup.set_content(dat.Join(""))
+	popup.open()
+
+/client/verb/stop_client_sounds()
+	set name = "Stop Sounds"
+	set category = "Preferences"
+	set desc = "Stop Current Sounds"
+	usr << sound(null)
+	usr.client?.tgui_panel?.stop_music()

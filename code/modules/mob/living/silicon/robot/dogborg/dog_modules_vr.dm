@@ -22,7 +22,7 @@
 	var/emagged = 0
 
 /obj/item/dogborg/jaws/small/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
 		if(emagged)
@@ -58,8 +58,8 @@
 	attack_verb = list("nuzzled", "nosed", "booped")
 	w_class = ITEMSIZE_TINY
 
-/obj/item/dogborg/boop_module/New()
-	..()
+/obj/item/dogborg/boop_module/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/boop_module/attack_self(mob/user)
@@ -148,7 +148,7 @@
 	var/datum/matter_synth/water = null
 	reagent_ids = list("inaprovaline", "dexalin", "bicaridine", "kelotane", "anti_toxin", "alkysine", "imidazoline", "spaceacillin", "paracetamol")
 
-/obj/item/reagent_containers/borghypo/hound/process() //Recharges in smaller steps and uses the water reserves as well.
+/obj/item/reagent_containers/borghypo/hound/process(delta_time) //Recharges in smaller steps and uses the water reserves as well.
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
 		if(R && R.cell)
@@ -175,20 +175,19 @@
 	var/emagged = 0
 	var/datum/matter_synth/water = null
 
-/obj/item/dogborg/tongue/New()
-	..()
+/obj/item/dogborg/tongue/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/dogborg/tongue/examine(user)
-	if(!..(user, 1))
-		return
+	. = ..()
 	if(water.energy)
-		to_chat(user, "<span class='notice'>[src] is wet. Just like it should be.</span>")
+		. += "<span class='notice'>[src] is wet.</span>"
 	if(water.energy < 5)
-		to_chat(user, "<span class='notice'>[src] is dry.</span>")
+		. += "<span class='notice'>[src] is dry.</span>"
 
 /obj/item/dogborg/tongue/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(R.emagged || R.emag_items)
 		emagged = !emagged
 		if(emagged)
@@ -223,7 +222,7 @@
 			to_chat(user, "<span class='notice'>You finish licking off \the [target.name].</span>")
 			water.use_charge(5)
 			qdel(target)
-			var/mob/living/silicon/robot.R = user
+			var/mob/living/silicon/robot/R = user
 			R.cell.charge += 50
 	else if(istype(target,/obj/item))
 		if(istype(target,/obj/item/trash))
@@ -232,7 +231,7 @@
 				user.visible_message("[user] finishes eating \the [target.name].", "<span class='notice'>You finish eating \the [target.name].</span>")
 				to_chat(user, "<span class='notice'>You finish off \the [target.name].</span>")
 				qdel(target)
-				var/mob/living/silicon/robot.R = user
+				var/mob/living/silicon/robot/R = user
 				R.cell.charge += 250
 				water.use_charge(5)
 			return
@@ -241,8 +240,8 @@
 			if(do_after (user, 50))
 				user.visible_message("[user] finishes gulping down \the [target.name].", "<span class='notice'>You finish swallowing \the [target.name].</span>")
 				to_chat(user, "<span class='notice'>You finish off \the [target.name], and gain some charge!</span>")
-				var/mob/living/silicon/robot.R = user
-				var/obj/item/cell.C = target
+				var/mob/living/silicon/robot/R = user
+				var/obj/item/cell/C = target
 				R.cell.charge += C.maxcharge / 3
 				water.use_charge(5)
 				qdel(target)
@@ -256,7 +255,7 @@
 			target.clean_blood()
 	else if(ishuman(target))
 		if(src.emagged)
-			var/mob/living/silicon/robot.R = user
+			var/mob/living/silicon/robot/R = user
 			var/mob/living/L = target
 			if(R.cell.charge <= 666)
 				return
@@ -294,12 +293,12 @@
 	icon_state = "scrub0"
 	var/enabled = FALSE
 
-/obj/item/pupscrubber/New()
-	..()
+/obj/item/pupscrubber/Initialize(mapload)
+	. = ..()
 	flags |= NOBLUDGEON
 
 /obj/item/pupscrubber/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(!enabled)
 		R.scrubbing = TRUE
 		enabled = TRUE

@@ -24,8 +24,8 @@
 	var/weld_power_use = 2300	// power used per point of brute damage repaired. 2.3 kW ~ about the same power usage of a handheld arc welder
 	var/wire_power_use = 500	// power used per point of burn damage repaired.
 
-/obj/machinery/recharge_station/New()
-	..()
+/obj/machinery/recharge_station/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/manipulator(src)
 	component_parts += new /obj/item/stock_parts/manipulator(src)
@@ -40,7 +40,7 @@
 /obj/machinery/recharge_station/proc/has_cell_power()
 	return cell && cell.percent() > 0
 
-/obj/machinery/recharge_station/process()
+/obj/machinery/recharge_station/process(delta_time)
 	if(stat & (BROKEN))
 		return
 	if(!cell) // Shouldn't be possible, but sanity check
@@ -141,8 +141,8 @@
 					rigcell.give(charge_used)
 
 /obj/machinery/recharge_station/examine(mob/user)
-	..(user)
-	to_chat(user, "The charge meter reads: [round(chargepercentage())]%")
+	. = ..()
+	. += "<span class = 'notice'>The charge meter reads: [round(chargepercentage())]%</span>"
 
 /obj/machinery/recharge_station/proc/chargepercentage()
 	if(!cell)

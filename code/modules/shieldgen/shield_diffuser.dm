@@ -13,8 +13,8 @@
 	var/alarm = 0
 	var/enabled = 1
 
-/obj/machinery/shield_diffuser/New()
-	..()
+/obj/machinery/shield_diffuser/Initialize(mapload)
+	. = ..()
 	var/turf/T = get_turf(src)
 	hide(!T.is_plating())
 
@@ -27,7 +27,7 @@
 /obj/machinery/shield_diffuser/hides_under_flooring()
 	return 1
 
-/obj/machinery/shield_diffuser/process()
+/obj/machinery/shield_diffuser/process(delta_time)
 	if(alarm)
 		alarm--
 		if(!alarm)
@@ -36,7 +36,7 @@
 
 	if(!enabled)
 		return
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/simulated/shielded_tile = get_step(get_turf(src), direction)
 		for(var/obj/effect/energy_field/S in shielded_tile)
 			qdel(S)
@@ -69,6 +69,6 @@
 
 /obj/machinery/shield_diffuser/examine(var/mob/user)
 	. = ..()
-	to_chat(user, "It is [enabled ? "enabled" : "disabled"].")
+	. += "It is [enabled ? "enabled" : "disabled"]."
 	if(alarm)
-		to_chat(user, "A red LED labeled \"Proximity Alarm\" is blinking on the control panel.")
+		. += "A red LED labeled \"Proximity Alarm\" is blinking on the control panel."

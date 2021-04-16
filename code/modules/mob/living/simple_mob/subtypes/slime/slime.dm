@@ -69,7 +69,7 @@
 	emote_see = list("bounces", "jiggles", "sways")
 	emote_hear = list("squishes")
 
-/mob/living/simple_mob/slime/Initialize()
+/mob/living/simple_mob/slime/Initialize(mapload)
 	verbs += /mob/living/proc/ventcrawl
 	update_mood()
 	glow_color = color

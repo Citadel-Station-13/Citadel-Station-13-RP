@@ -53,8 +53,8 @@
 	var/emagged = 0
 	var/obj/item/held_item = null //Storage for single item they can hold.
 
-/mob/living/simple_mob/spiderbot/New()
-	..()
+/mob/living/simple_mob/spiderbot/Initialize(mapload)
+	. = ..()
 	add_language(LANGUAGE_GALCOM)
 	default_language = GLOB.all_languages[LANGUAGE_GALCOM]
 	verbs |= /mob/living/proc/ventcrawl
@@ -78,7 +78,7 @@
 						ghost_can_reenter = 1
 						break
 			if(!ghost_can_reenter)
-				user << "<span class='notice'>[O] is completely unresponsive; there's no point.</span>"
+				to_chat(user, "<span class='notice'>[O] is completely unresponsive; there's no point.</span>")
 				return
 
 		if(B.brainmob.stat == DEAD)
@@ -152,7 +152,7 @@
 		to_chat(user, "<span class='notice'>You short out the security protocols and overload [src]'s cell, priming it to explode in a short time.</span>")
 		spawn(100)
 			to_chat(src, "<span class='danger'>Your cell seems to be outputting a lot of power...</span>")
-		spawn(200)	
+		spawn(200)
 			to_chat(src, "<span class='danger'>Internal heat sensors are spiking! Something is badly wrong with your cell!</span>")
 		spawn(300)	src.explode()
 
@@ -199,14 +199,12 @@
 	eject_brain()
 	..()
 
-/mob/living/simple_mob/spiderbot/New()
-
+/mob/living/simple_mob/spiderbot/Initialize(mapload)
+	. = ..()
 	radio = new /obj/item/radio/borg(src)
 	camera = new /obj/machinery/camera(src)
 	camera.c_tag = "spiderbot-[real_name]"
 	camera.replace_networks(list("SS13"))
-
-	..()
 
 /mob/living/simple_mob/spiderbot/death()
 
@@ -291,9 +289,9 @@
 	return 0
 
 /mob/living/simple_mob/spiderbot/examine(mob/user)
-	..(user)
+	. = ..()
 	if(src.held_item)
-		to_chat(user, "It is carrying \icon[src.held_item] \a [src.held_item].")
+		. += "It is carrying [icon2html(thing = src, target = world)] \a [src.held_item]."
 
 /mob/living/simple_mob/spiderbot/cannot_use_vents()
 	return

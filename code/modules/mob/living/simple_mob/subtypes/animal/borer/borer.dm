@@ -46,7 +46,7 @@
 	if(mind)
 		borers.add_antagonist(mind)
 
-/mob/living/simple_mob/animal/borer/Initialize()
+/mob/living/simple_mob/animal/borer/Initialize(mapload)
 	add_language("Cortical Link")
 
 	verbs += /mob/living/proc/ventcrawl
@@ -205,7 +205,7 @@
 	return
 
 // This is awful but its literally say code.
-/mob/living/simple_mob/animal/borer/say(message)
+/mob/living/simple_mob/animal/borer/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	message = sanitize(message)
 	message = capitalize(message)
 

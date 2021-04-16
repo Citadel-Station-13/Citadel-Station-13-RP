@@ -86,10 +86,9 @@
 	playsound(src, 'sound/misc/buzzbeep.ogg', 50, 1)
 
 /obj/item/mmi/digital/posibrain/examine(mob/user)
-	if(!..(user))
-		return
+	. = ..()
 
-	var/msg = "<span class='info'>*---------*</span>\nThis is \icon[src] \a <EM>[src]</EM>!\n[desc]\n"
+	var/msg = "<span class='info'>*---------*</span>\nThis is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n[desc]\n"
 	msg += "<span class='warning'>"
 
 	if(src.brainmob && src.brainmob.key)
@@ -101,7 +100,7 @@
 	else
 		msg += "<span class='deadsay'>It appears to be completely inactive.</span>\n"
 	msg += "</span><span class='info'>*---------*</span>"
-	user << msg
+	. += msg
 	return
 
 /obj/item/mmi/digital/posibrain/emp_act(severity)
@@ -119,7 +118,7 @@
 				src.brainmob.emp_damage += rand(0,5)
 	..()
 
-/obj/item/mmi/digital/posibrain/New()
-	..()
+/obj/item/mmi/digital/posibrain/Initialize(mapload)
+	. = ..()
 	src.brainmob.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
 	src.brainmob.real_name = src.brainmob.name

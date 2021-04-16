@@ -218,6 +218,10 @@
 	icon_state = "black_suit_fem"
 	item_state = "black_formal_skirt"
 
+/obj/item/clothing/under/suit_jacket/female/pleated_skirt
+	name = "executive pleated skirt"
+	icon_state = "black_suit_fem_skirt"
+
 /obj/item/clothing/under/suit_jacket/red
 	name = "red suit"
 	desc = "A red suit and blue tie. Somewhat formal."
@@ -234,6 +238,26 @@
 	desc = "A clean white shirt with a blue collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
 	icon_state = "schoolgirl"
 	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/under/schoolgirl/red
+	name = "frilly red skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a red collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
+	icon_state = "schoolgirlred"
+	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+
+/obj/item/clothing/under/schoolgirl/green
+	name = "frilly green skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a green collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
+	icon_state = "schoolgirlgreen"
+	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/under/schoolgirl/orange
+	name = "frilly orange skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a orange collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
+	icon_state = "schoolgirlorange"
+	item_state_slots = list(slot_r_hand_str = "orange", slot_l_hand_str = "orange")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/overalls
@@ -845,13 +869,13 @@
 
 /obj/item/clothing/under/confederacy
 	name = "\improper Confederacy uniform"
-	desc = "A military uniform belonging to the Confederacy of Man, an independent human government."
+	desc = "A military uniform belonging to the Confederacy of Man, an independent human government." //Name pending review
 	icon_state = "confed"
 	worn_state = "confed"
 
 /obj/item/clothing/under/saare
-	name = "\improper SAARE uniform"
-	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation."
+	name = "SAARE uniform"
+	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation." //Name pending review
 	icon_state = "saare"
 	worn_state = "saare"
 
@@ -910,8 +934,6 @@
 	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has red stripes."
 	icon_state = "future_fashion_red"
 
-//Uniforms end above here.
-
 /obj/item/clothing/under/medigown
 	name = "medical gown"
 	desc = "A flimsy examination gown, the back ties never close."
@@ -969,7 +991,7 @@
 	rolled_down = 0
 	rolled_sleeves = 0
 
-/obj/item/clothing/under/color/ranger/Initialize()
+/obj/item/clothing/under/color/ranger/Initialize(mapload)
 	. = ..()
 	if(icon_state == "ranger_uniform") //allows for custom items
 		name = "[unicolor] ranger uniform"
@@ -1029,7 +1051,7 @@
 /obj/item/clothing/under/btcbartender
 	name = "BTC Bartender"
 	desc = "For the classy bartender who converts their paychecks into Spesscoin."
-	icon_state = "btc_bartender_s"
+	icon_state = "btc_bartender"
 
 /obj/item/clothing/under/paramedunilight
 	name = "\improper Paramedic Uniform"
@@ -1215,6 +1237,7 @@
 	desc = "Replica lorica segmentata. It doesn't feel like it would actually afford much protection against modern weaponry."
 	icon_state = "roman"
 
+//Costumes - Bring all of them down here sometime to help build categories?
 /obj/item/clothing/under/lobster
 	name = "lobster costume"
 	desc = "If you can dance, you've got a career in Law ahead."
@@ -1235,6 +1258,21 @@
 	desc = "Ideal for stalking someone through a field of hay. This suit is less practical on a space station."
 	icon_state = "scarecrow"
 
+/obj/item/clothing/under/darkholme
+	name = "leather harness costume"
+	desc = "The outfit of a dungeon master, and we're not talking about tabletop."
+	icon_state = "darkholme"
+
+/obj/item/clothing/under/geisha
+	name = "geisha outfit"
+	desc = "These silk robes are commonly associated with Old World courtesans and radiate a delicate femininity."
+	icon_state = "geisha"
+
+/obj/item/clothing/under/drfreeze
+	name = "cryogenic scientist costume"
+	desc = "Themed puns aren't required, but they do make you seem cooler."
+	icon_state = "drfreeze"
+
 /obj/item/clothing/under/red_mech
 	name = "red plug suit"
 	desc = "The ideal outfit for a psychotic bitch. Knowledge of German not required."
@@ -1250,6 +1288,32 @@
 	desc = "If you want to sit in your bedroom and cry, this is the suit to do it in."
 	icon_state = "blue_mech_suit"
 
+/obj/item/clothing/under/christmas
+	name = "holiday suit"
+	desc = "This costume hearkens back to Old Earth solstice traditions representing community interaction and an emphemeral concept known as 'holiday cheer'."
+	icon_state = "christmasmaler"
+
+/obj/item/clothing/under/christmas/green
+	name = "green holiday suit"
+	desc = "Commonly associated with faerie-like 'helpers', the color green represents vitality and the coming spring."
+	icon_state = "christmasmaleg"
+
+/obj/item/clothing/under/christmasfem
+	name = "sexy holiday suit"
+	desc = "Appreciation of more physical forms of comfort is important during the holidays. Even when it's cold out."
+	icon_state = "christmasfemaler"
+
+/obj/item/clothing/under/christmasfem/green
+	name = "sexy green holiday suit"
+	desc = "Something special for Santa's little helper."
+	icon_state = "christmasfemaleg"
+
+/obj/item/clothing/under/telegram
+	name = "singing courier"
+	desc = "Living telegram operators experience one of the largest on the job fatality rates of all courier-based occupations."
+	icon_state = "telegram"
+
+//Kimonos and Traditional Japanese
 /obj/item/clothing/under/kimono
 	name = "plain kimono"
 	desc = "The traditional dress of old Earth Japan, the kimono remains ubiquitous across the galaxy due to its comfort, simplicity, and versatility."
@@ -1280,6 +1344,38 @@
 	icon_state = "kamishimo"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
+//Chinese Traditional
+/obj/item/clothing/under/qipao
+	name = "black qipao"
+	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
+	icon_state = "qipao"
+
+/obj/item/clothing/under/qipao/white
+	name = "white qipao"
+	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
+	icon_state = "qipao_white"
+
+/obj/item/clothing/under/qipao/red
+	name = "red qipao"
+	desc = "A popular dress from Old Earth China, commonly worn to festivals. Easily recognizable thanks to its intricate embroidery and bold side slits."
+	icon_state = "qipao_red"
+
+/obj/item/clothing/under/cheong
+	name = "black cheongsam"
+	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
+	icon_state = "cheong"
+
+/obj/item/clothing/under/cheong/white
+	name = "white cheongsam"
+	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
+	icon_state = "cheongw"
+
+/obj/item/clothing/under/cheong/red
+	name = "red cheongsam"
+	desc = "Popular among the men of Old Earth China during festivals. Embroidered and crafted out of fine silk, this is suitable as formal or casual wear."
+	icon_state = "cheongr"
+
+//Baggy Turtlenecks
 /obj/item/clothing/under/turtlebaggy
 	name = "baggy turtleneck (cream)"
 	desc = "A cozy knit turtleneck. It's too baggy and comfortable to be tactical."
@@ -1319,3 +1415,69 @@
 	desc = "A sturdy canvas button-up and shorts, designed to provide protection without retaining heat."
 	icon_state = "safari"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/under/bsing
+	name = "blue performer's outfit"
+	desc = "A truly iconic outfit, still worn by enthusiasts and fans of Old Earth digital media."
+	icon_state = "bsing"
+
+/obj/item/clothing/under/ysing
+	name = "yellow performer's outfit"
+	desc = "Inspired by the original, this outfit is still stylish, although derivative."
+	icon_state = "ysing"
+
+/obj/item/clothing/under/redcoatformal
+	name = "formal red coat"
+	desc = "Raise the taxes on their tea. What can go wrong?"
+	icon_state = "redcoatformal"
+
+//Colored Clown Suits
+/obj/item/clothing/under/rank/clown/orange
+	name = "orange clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "orangeclown"
+
+/obj/item/clothing/under/rank/clown/yellow
+	name = "yellow clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "yellowclown"
+
+/obj/item/clothing/under/rank/clown/green
+	name = "green clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "greenclown"
+
+/obj/item/clothing/under/rank/clown/blue
+	name = "blue clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "blueclown"
+
+/obj/item/clothing/under/rank/clown/purple
+	name = "purple clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "purpleclown"
+
+/obj/item/clothing/under/rank/clown/rainbow
+	name = "rainbow clown suit"
+	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
+	icon_state = "rainbowclown"
+
+/obj/item/clothing/under/hawaiian
+	name = "pink hawaiian suit"
+	desc = "A suit consisting of bright white pants and a pink hawaiian shirt. Makes it feel like it's casual friday."
+	icon_state = "hawaiianpink"
+
+/obj/item/clothing/under/blueshift
+	name = "light blue suit"
+	desc = "A casual suit consisting of a light blue dress shirt, navy pants, and a black tie. Makes you think of a security officer in over his head."
+	icon_state = "blueshift"
+
+/obj/item/clothing/under/office_worker
+	name = "officer worker suit"
+	desc = "A suit consisting of a white dress shirt, white pants, black belt, and red-and-black tie."
+	icon_state = "hlsuit"
+
+/obj/item/clothing/under/tracksuit_blue
+	name = "blue tracksuit"
+	desc = "A dark blue tracksuit. It calls to mind images of excercise, particularly squats."
+	icon_state = "tracksuit_blue"

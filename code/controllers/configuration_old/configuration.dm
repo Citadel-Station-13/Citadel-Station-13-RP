@@ -789,10 +789,6 @@
 					config_legacy.event_delay_upper[EVENT_LEVEL_MODERATE] = MinutesToTicks(values[2])
 					config_legacy.event_delay_upper[EVENT_LEVEL_MAJOR] = MinutesToTicks(values[3])
 
-				if("starlight")
-					value = text2num(value)
-					config_legacy.starlight = value >= 0 ? value : 0
-
 				if("ert_species")
 					config_legacy.ert_species = splittext(value, ";")
 					if(!config_legacy.ert_species.len)

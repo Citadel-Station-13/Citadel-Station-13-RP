@@ -19,24 +19,24 @@
 
 	var/datum/material/material
 
-/obj/structure/gravemarker/New(var/newloc, var/material_name)
-	..(newloc)
+/obj/structure/gravemarker/Initialize(mapload, material_name)
+	. = ..()
 	if(!material_name)
 		material_name = "wood"
 	material = get_material_by_name("[material_name]")
 	if(!material)
 		qdel(src)
 		return
-	color = material.icon_colour
+	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
 
 /obj/structure/gravemarker/examine(mob/user)
-	..()
+	. = ..()
 	if(get_dist(src, user) < 4)
 		if(grave_name)
-			to_chat(user, "Here Lies [grave_name]")
+			. += "Here Lies [grave_name]"
 	if(get_dist(src, user) < 2)
 		if(epitaph)
-			to_chat(user, epitaph)
+			. += epitaph
 
 /obj/structure/gravemarker/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))

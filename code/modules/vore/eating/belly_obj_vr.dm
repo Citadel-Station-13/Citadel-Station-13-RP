@@ -159,10 +159,10 @@
 		"wet_loop"
 		)
 
-/obj/belly/New(var/newloc)
-	..(newloc)
+/obj/belly/Initialize(mapload)
+	. = ..()
 	//If not, we're probably just in a prefs list or something.
-	if(isliving(newloc))
+	if(isliving(loc))
 		owner = loc
 		owner.vore_organs |= src
 		SSbellies.belly_list += src
@@ -525,7 +525,6 @@
 				to_chat(R,"<span class='warning'>Your attempt to escape [lowertext(name)] has failed!</span>")
 				to_chat(owner,"<span class='notice'>The attempt to escape from your [lowertext(name)] has failed!</span>")
 				return
-			return
 	var/struggle_outer_message = pick(struggle_messages_outside)
 	var/struggle_user_message = pick(struggle_messages_inside)
 

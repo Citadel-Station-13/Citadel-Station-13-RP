@@ -200,7 +200,7 @@
 	var/type_name = null
 	projectile_type = /obj/item/projectile/beam
 
-/obj/item/ammo_casing/nsfw_batt/Initialize()
+/obj/item/ammo_casing/nsfw_batt/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-10, 10)
 	pixel_y = rand(-10, 10)

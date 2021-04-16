@@ -14,8 +14,8 @@
 	aspect = ASPECT_FIRE
 	var/obj/item/weldingtool/spell/welder = null
 
-/obj/item/spell/flame_tongue/New()
-	..()
+/obj/item/spell/flame_tongue/Initialize(mapload)
+	. = ..()
 	set_light(3, 2, l_color = "#FF6A00")
 	visible_message("<span class='warning'>\The [loc]'s hand begins to emit a flame.</span>")
 	welder = new /obj/item/weldingtool/spell(src)
@@ -29,7 +29,7 @@
 	name = "flame"
 	eye_safety_modifier = 3
 
-/obj/item/weldingtool/spell/process()
+/obj/item/weldingtool/spell/process(delta_time)
 	return
 
 //Needed to make the spell welder have infinite fuel.  Don't worry, it uses energy instead.

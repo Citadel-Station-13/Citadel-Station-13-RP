@@ -2728,7 +2728,7 @@
 /turf/simulated/floor/plating/airless,
 /area/ship/scrap/maintenance/engine)
 "ex" = (
-/obj/item/screwdriver,
+/obj/item/tool/screwdriver,
 /turf/simulated/floor/plating,
 /area)
 "ey" = (

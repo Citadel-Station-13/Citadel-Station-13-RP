@@ -29,11 +29,8 @@
 	if(.)
 		return
 	user.do_attack_animation(src)
-	take_damage(5 , BRUTE, "melee", 1)
-	if(BRUTE)
-		playsound(loc, 'sound/weapons/egloves.ogg', 80, 1)
-	if(BURN)
-		playsound(loc, 'sound/weapons/egloves.ogg', 80, 1)
+	take_damage(5, BRUTE, "melee", 1)
+	playsound(loc, 'sound/weapons/egloves.ogg', 80, 1)
 
 /obj/structure/holosign/wetsign
 	name = "wet floor sign"

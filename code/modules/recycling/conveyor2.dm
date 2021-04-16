@@ -74,7 +74,7 @@
 		AM.reset_glide_size()
 
 /obj/machinery/conveyor/proc/update_dir()
-	if(!(dir in cardinal)) // Diagonal. Forwards is *away* from dir, curving to the right.
+	if(!(dir in GLOB.cardinal)) // Diagonal. Forwards is *away* from dir, curving to the right.
 		forwards = turn(dir, 135)
 		backwards = turn(dir, 45)
 	else
@@ -97,7 +97,7 @@
 
 	// machine process
 	// move items to the target location
-/obj/machinery/conveyor/process()
+/obj/machinery/conveyor/process(delta_time)
 	if(stat & (BROKEN | NOPOWER))
 		return
 	if(!operating)
@@ -211,8 +211,8 @@
 
 
 
-/obj/machinery/conveyor_switch/Initialize()
-	..()
+/obj/machinery/conveyor_switch/Initialize(mapload)
+	. = ..()
 	update()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -236,7 +236,7 @@
 // timed process
 // if the switch changed, update the linked conveyors
 
-/obj/machinery/conveyor_switch/process()
+/obj/machinery/conveyor_switch/process(delta_time)
 	if(!operated)
 		return
 	operated = 0

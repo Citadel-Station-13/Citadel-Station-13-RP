@@ -38,8 +38,8 @@
 	if(frequency)
 		radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
-/obj/machinery/atmospherics/trinary/atmos_filter/New()
-	..()
+/obj/machinery/atmospherics/trinary/atmos_filter/Initialize(mapload)
+	. = ..()
 	switch(filter_type)
 		if(0) //removing hydrocarbons
 			filtered_out += /datum/gas/phoron
@@ -75,7 +75,7 @@
 		icon_state += "off"
 		update_use_power(USE_POWER_OFF)
 
-/obj/machinery/atmospherics/trinary/atmos_filter/process()
+/obj/machinery/atmospherics/trinary/atmos_filter/process(delta_time)
 	..()
 
 	last_power_draw = 0
@@ -106,7 +106,7 @@
 
 	return 1
 
-/obj/machinery/atmospherics/trinary/atmos_filter/Initialize()
+/obj/machinery/atmospherics/trinary/atmos_filter/Initialize(mapload)
 	. = ..()
 	if(frequency)
 		set_frequency(frequency)

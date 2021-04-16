@@ -19,8 +19,8 @@
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
-/obj/item/stack/tile/New()
-	..()
+/obj/item/stack/tile/Initialize(mapload, new_amount, merge)
+	. = ..()
 	pixel_x = rand(-7, 7)
 	pixel_y = rand(-7, 7)
 

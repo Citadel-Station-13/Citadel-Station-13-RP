@@ -1,5 +1,4 @@
 //Simulated
-VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
 /turf/simulated/open/virgo3b/Initialize(mapload)
@@ -7,18 +6,12 @@ VIRGO3B_TURF_CREATE(/turf/simulated/open)
 	if(outdoors)
 		SSplanets.addTurf(src)
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor)
+
 
 /turf/simulated/floor/virgo3b_indoors
 	VIRGO3B_SET_ATMOS
 	allow_gas_overlays = FALSE
 
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/reinforced)
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
-
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/floor/outdoors/grass/sif
 	turf_layers = list(
 		/turf/simulated/floor/outdoors/rocks/virgo3b,
@@ -44,9 +37,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/grass/sif)
 /turf/simulated/mineral/floor/vacuum
 	initial_gas_mix = GAS_STRING_VACUUM
 
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral)
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
-	//This proc is responsible for ore generation on surface turfs
+//This proc is responsible for ore generation on surface turfs
 /turf/simulated/mineral/virgo3b/make_ore(var/rare_ore)
 	if(mineral || ignore_mapgen)
 		return
@@ -75,8 +66,8 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 			"silver" = 3,
 			"phoron" = 25,
 			"lead" = 1))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
 
@@ -108,8 +99,8 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 			"silver" = 7,
 			"lead" = 4,
 			"verdantium" = 1))
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 	update_icon()
 
@@ -168,8 +159,8 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	name = "bluespace"
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
-/turf/space/bluespace/Initialize()
-	..()
+/turf/space/bluespace/Initialize(mapload)
+	. = ..()
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
 
@@ -178,8 +169,8 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	name = "sand transit"
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "desert_ns"
-/turf/space/sandyscroll/Initialize()
-	..()
+/turf/space/sandyscroll/Initialize(mapload)
+	. = ..()
 	icon_state = "desert_ns"
 
 //Sky stuff!
@@ -187,7 +178,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 /turf/simulated/sky/virgo3b
 	color = "#FFBBBB"
 
-/turf/simulated/sky/virgo3b/Initialize()
+/turf/simulated/sky/virgo3b/Initialize(mapload)
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

@@ -15,8 +15,8 @@
 	light_color = "#00FF00"
 	var/obj/machinery/body_scanconsole/console
 
-/obj/machinery/bodyscanner/New()
-	..()
+/obj/machinery/bodyscanner/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
@@ -77,7 +77,7 @@
 	if(O.anchored)
 		return 0 //mob is anchored???
 	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
-		return 0 //doesn't use adjacent() to allow for non-cardinal (fuck my life)
+		return 0 //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
 	if(!ishuman(user) && !isrobot(user))
 		return 0 //not a borg or human
 	if(panel_open)
@@ -180,8 +180,12 @@
 	var/printing = null
 	var/printing_text = null
 
-/obj/machinery/body_scanconsole/New()
-	..()
+/obj/machinery/body_scanconsole/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/body_scanconsole/LateInitialize()
+	. = ..()
 	findscanner()
 
 /obj/machinery/body_scanconsole/Destroy()
@@ -269,9 +273,9 @@
 		return
 
 	if(scanner)
-		return ui_interact(user)
+		return nano_ui_interact(user)
 
-/obj/machinery/body_scanconsole/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/body_scanconsole/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
 
 	data["connected"] = scanner ? 1 : 0

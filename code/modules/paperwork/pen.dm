@@ -87,8 +87,8 @@
 	flags = OPENCONTAINER
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
-/obj/item/pen/reagent/New()
-	..()
+/obj/item/pen/reagent/Initialize(mapload)
+	. = ..()
 	create_reagents(30)
 
 /obj/item/pen/reagent/attack(mob/living/M as mob, mob/user as mob)
@@ -112,10 +112,9 @@
 	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\""
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
-/obj/item/pen/reagent/sleepy/New()
-	..()
+/obj/item/pen/reagent/sleepy/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("chloralhydrate", 22)	//Used to be 100 sleep toxin//30 Chloral seems to be fatal, reducing it to 22./N
-
 
 /*
  * Parapens
@@ -123,8 +122,8 @@
 /obj/item/pen/reagent/paralysis
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ILLEGAL = 5)
 
-/obj/item/pen/reagent/paralysis/New()
-	..()
+/obj/item/pen/reagent/paralysis/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("zombiepowder", 5)
 	reagents.add_reagent("cryptobiolin", 10)
 
@@ -205,10 +204,11 @@
 
 /obj/item/pen/crayon/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user) << "<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>"
+	user.visible_message("<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to commit suicide.</b></font>")
 	return (BRUTELOSS|OXYLOSS)
 
-/obj/item/pen/crayon/New()
+/obj/item/pen/crayon/Initialize(mapload)
+	. = ..()
 	name = "[colourName] crayon"
 
 /obj/item/pen/crayon/marker
@@ -216,7 +216,8 @@
 	desc = "A chisel-tip permanent marker. Hopefully non-toxic."
 	icon_state = "markerred"
 
-/obj/item/pen/crayon/marker/New()
+/obj/item/pen/crayon/marker/Initialize(mapload)
+	. = ..()
 	name = "[colourName] marker"
 
 //Ritual Chalk
@@ -235,8 +236,9 @@
 
 /obj/item/pen/crayon/chalk/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	viewers(user) << "<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to perform human transmutation!</b></font>"
+	user.visible_message("<font color='red'><b>[user] is jamming the [src.name] up [TU.his] nose and into [TU.his] brain. It looks like [TU.he] [TU.is] trying to perform human transmutation!</b></font>")
 	return (BRUTELOSS|OXYLOSS)
 
-/obj/item/pen/crayon/chalk/New()
+/obj/item/pen/crayon/chalk/Initialize(mapload)
+	. = ..()
 	name = "[colourName] chalk"

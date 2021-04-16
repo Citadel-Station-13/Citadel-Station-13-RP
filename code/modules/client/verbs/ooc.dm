@@ -15,24 +15,24 @@
 		ooc(message)
 
 /client/verb/ooc(msg as text)
-	set name = "OOC"
+	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(src, "<span class='warning'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
-	if(!mob)
-		return
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
 
-	msg = sanitize(msg)
-	if(!msg)	return
-
 	if(!is_preference_enabled(/datum/client_preference/show_ooc))
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
+		return
+
+
+
+	if(!mob)
 		return
 
 	if(!holder)
@@ -40,10 +40,31 @@
 			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
 			return
 		if(!config_legacy.dooc_allowed && (mob.stat == DEAD))
-			to_chat(src, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
+			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
 			return
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
+			return
+	// if(is_banned_from(ckey, "OOC"))
+	// 	to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
+	// 	return
+	if(QDELETED(src))
+		return
+
+	msg = sanitize(msg)
+	var/raw_msg = msg
+
+	if(!msg)
+		return
+
+	msg = emoji_parse(msg)
+
+	if((msg[1] in list(".",";",":","#") || findtext_char(msg, "say", 1, 5))) //SSticker.HasRoundStarted() &&
+		if(alert("Your message \"[raw_msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
+			return
+
+	if(!holder)
+		if(handle_spam_prevention(MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
 			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
@@ -51,10 +72,12 @@
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
-	log_ooc(msg, src)
 
-	if(msg)
-		handle_spam_prevention(MUTE_OOC)
+	if(!is_preference_enabled(/datum/client_preference/show_ooc))
+		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
+		return
+
+	log_ooc(raw_msg, src)
 
 	var/ooc_style = "everyone"
 	if(holder && !holder.fakekey)
@@ -79,10 +102,10 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor && (src.prefs.ooccolor != initial(src.prefs.ooccolor))) // keeping this for the badmins
-				to_chat(target, "<font color='[src.prefs.ooccolor]'><span class='ooc'>" + create_text_tag("ooc", "OOC:", target) + " <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
+			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor) // keeping this for the badmins
+				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM>[msg]</span></span></font>")
 			else
-				to_chat(target, "<span class='ooc'><span class='[ooc_style]'>" + create_text_tag("ooc", "OOC:", target) + " <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></span>")
+				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message linkify'>OOC: <EM>[display_name]: </EM>[msg]</span></span></span>")
 
 /client/proc/looc_wrapper()
 	var/message = input("","looc (text)") as text|null
@@ -169,6 +192,8 @@
 		if(!(admin in receivers) && admin.is_preference_enabled(/datum/client_preference/holder/show_rlooc))
 			r_receivers |= admin
 
+	msg = emoji_parse(msg)
+
 	// Send a message
 	for(var/client/target in receivers)
 		var/admin_stuff = ""
@@ -176,12 +201,12 @@
 		if(target in admins)
 			admin_stuff += "/([key])"
 
-		to_chat(target, "<span class='ooc'><span class='looc'>" + create_text_tag("looc", "LOOC:", target) + " <EM>[display_name][admin_stuff]:</EM> <span class='message'>[msg]</span></span></span>")
+		to_chat(target, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'>[msg]</span></span>")
 
 	for(var/client/target in r_receivers)
 		var/admin_stuff = "/([key])([admin_jump_link(mob, target.holder)])"
 
-		to_chat(target, "<span class='ooc'><span class='looc'>" + create_text_tag("looc", "LOOC:", target) + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]:</EM> <span class='message'>[msg]</span></span></span>")
+		to_chat(target, "<span class='looc'>" + "LOOC: " + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]: </EM> <span class='message'>[msg]</span></span>")
 
 /mob/proc/get_looc_source()
 	return src

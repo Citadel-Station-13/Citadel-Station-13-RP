@@ -11,15 +11,15 @@
 	power_draw_per_use = 1
 	var/number_of_pins = 1
 
-/obj/item/integrated_circuit/memory/New()
+/obj/item/integrated_circuit/memory/Initialize(mapload)
+	. = ..()
 	for(var/i = 1 to number_of_pins)
 		inputs["input [i]"] = IC_PINTYPE_ANY // This is just a string since pins don't get built until ..() is called.
 		outputs["output [i]"] = IC_PINTYPE_ANY
 	complexity = number_of_pins
-	..()
 
 /obj/item/integrated_circuit/memory/examine(mob/user)
-	..()
+	. = ..()
 	var/i
 	for(i = 1, i <= outputs.len, i++)
 		var/datum/integrated_io/O = outputs[i]
@@ -30,7 +30,7 @@
 				data = "[d]"
 		else if(!isnull(O.data))
 			data = O.data
-		to_chat(user, "\The [src] has [data] saved to address [i].")
+		. += "\The [src] has [data] saved to address [i]."
 
 /obj/item/integrated_circuit/memory/do_work()
 	for(var/i = 1 to inputs.len)

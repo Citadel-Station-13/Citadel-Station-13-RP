@@ -50,10 +50,10 @@
 	add_fingerprint(user)
 	if(inoperable())
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/transhuman/designer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	// log_debug("designer.ui_interact([user], force_open = [force_open])")
+/obj/machinery/computer/transhuman/designer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	// log_debug("designer.nano_ui_interact([user], force_open = [force_open])")
 	user.set_machine(src)
 
 	var/data[0]
@@ -386,8 +386,7 @@
 	desc = "A box of body record disks, apparently."
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/body_record_disk/New()
-	..()
+/obj/item/storage/box/body_record_disk/PopulateContents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/body_record(src)
 

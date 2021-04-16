@@ -11,7 +11,7 @@
 	circuit = /obj/item/circuitboard/transhuman_clonepod
 
 //A full version of the pod
-/obj/machinery/clonepod/transhuman/full/Initialize()
+/obj/machinery/clonepod/transhuman/full/Initialize(mapload)
 	. = ..()
 	for(var/i = 1 to container_limit)
 		containers += new /obj/item/reagent_containers/glass/bottle/biomass(src)
@@ -120,7 +120,7 @@
 	attempting = 0
 	return 1
 
-/obj/machinery/clonepod/transhuman/process()
+/obj/machinery/clonepod/transhuman/process(delta_time)
 	if(stat & NOPOWER)
 		if(occupant)
 			locked = 0
@@ -190,8 +190,8 @@
 	var/burn_value = 45
 	var/brute_value = 60
 
-/obj/machinery/transhuman/synthprinter/New()
-	..()
+/obj/machinery/transhuman/synthprinter/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/matter_bin(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
@@ -221,7 +221,7 @@
 		store_rating = store_rating * MB.rating
 	max_res_amount = store_rating
 
-/obj/machinery/transhuman/synthprinter/process()
+/obj/machinery/transhuman/synthprinter/process(delta_time)
 	if(stat & NOPOWER)
 		if(busy)
 			busy = 0
@@ -346,7 +346,7 @@
 /obj/machinery/transhuman/synthprinter/attack_hand(mob/user as mob)
 	if((busy == 0) || (stat & NOPOWER))
 		return
-	user << "Current print cycle is [busy]% complete."
+	to_chat(user, "Current print cycle is [busy]% complete.")
 	return
 
 /obj/machinery/transhuman/synthprinter/attackby(obj/item/W as obj, mob/user as mob)
@@ -415,8 +415,8 @@
 
 	var/sleevecards = 2
 
-/obj/machinery/transhuman/resleever/New()
-	..()
+/obj/machinery/transhuman/resleever/Initialize(mapload)
+	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
@@ -502,7 +502,7 @@
 	if(O.anchored)
 		return 0 //mob is anchored???
 	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
-		return 0 //doesn't use adjacent() to allow for non-cardinal (fuck my life)
+		return 0 //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
 	if(!ishuman(user) && !isrobot(user))
 		return 0 //not a borg or human
 	if(panel_open)

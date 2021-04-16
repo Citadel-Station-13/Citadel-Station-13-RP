@@ -6,6 +6,9 @@
 	description_info = "The projectile of this tool will travel six tiles before dissipating, excavating mineral walls as it does so. It can be reloaded with phoron sheets."
 
 
+	capacitor = new /obj/item/stock_parts/capacitor
+	manipulator = new /obj/item/stock_parts/manipulator
+
 	icon_state = "bore"
 	item_state = "bore"
 	wielded_item_state = "bore-wielded"
@@ -175,3 +178,5 @@
 	projectile_type = /obj/item/projectile/bullet/magnetic/bore/powerful
 	power_cost = 1000
 	max_mat_storage = 20000
+	manipulator = null
+	capacitor = null

@@ -82,9 +82,8 @@
 /obj/effect/plant/single
 	spread_chance = 0
 
-/obj/effect/plant/New(var/newloc, var/datum/seed/newseed, var/obj/effect/plant/newparent)
-	..()
-
+/obj/effect/plant/Initialize(mapload, datum/seed/newseed, obj/effect/plant/newparent)
+	. = ..()
 	if(!newparent)
 		parent = src
 	else
@@ -198,7 +197,7 @@
 
 	var/direction = 16
 
-	for(var/wallDir in cardinal)
+	for(var/wallDir in GLOB.cardinal)
 		var/turf/newTurf = get_step(T,wallDir)
 		if(newTurf.density)
 			direction |= wallDir

@@ -439,7 +439,7 @@
 	var/last_event = 0
 	var/rad_power = 7.5
 
-/obj/machinery/door/airlock/process()
+/obj/machinery/door/airlock/process(delta_time)
 	// Deliberate no call to parent.
 	if(main_power_lost_until > 0 && world.time >= main_power_lost_until)
 		regainMainPower()
@@ -453,7 +453,7 @@
 	if (..() == PROCESS_KILL && !(main_power_lost_until > 0 || backup_power_lost_until > 0 || electrified_until > 0))
 		. = PROCESS_KILL
 
-/obj/machinery/door/airlock/uranium/process()
+/obj/machinery/door/airlock/uranium/process(delta_time)
 	if(world.time > last_event+20)
 		if(prob(50))
 			SSradiation.radiate(src, rad_power)
@@ -813,9 +813,9 @@ About the new airlock wires panel:
 	return
 
 /obj/machinery/door/airlock/attack_ai(mob/user as mob)
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/door/airlock/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/obj/machinery/door/airlock/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
 	var/data[0]
 
 	data["main_power_loss"]		= round(main_power_lost_until 	> 0 ? max(main_power_lost_until - world.time,	0) / 10 : main_power_lost_until,	1)
@@ -1275,9 +1275,7 @@ About the new airlock wires panel:
 		return 0
 	return ..(M)
 
-/obj/machinery/door/airlock/New(var/newloc, var/obj/structure/door_assembly/assembly=null)
-	..()
-
+/obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
 	//if assembly is given, create the new door from the assembly
 	if (assembly && istype(assembly))
 		assembly_type = assembly.type
@@ -1302,7 +1300,7 @@ About the new airlock wires panel:
 		setDir(assembly.dir)
 
 	//wires
-	var/turf/T = get_turf(newloc)
+	var/turf/T = get_turf(loc)
 	if(T && (T.z in GLOB.using_map.admin_levels))
 		secured_wires = 1
 	if (secured_wires)
@@ -1310,7 +1308,6 @@ About the new airlock wires panel:
 	else
 		wires = new/datum/wires/airlock(src)
 
-/obj/machinery/door/airlock/Initialize()
 	if(src.closeOtherId != null)
 		for (var/obj/machinery/door/airlock/A in machines)
 			if(A.closeOtherId == src.closeOtherId && A != src)

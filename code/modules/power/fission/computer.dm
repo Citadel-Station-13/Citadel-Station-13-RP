@@ -18,12 +18,9 @@
 	circuit = /obj/item/circuitboard/fission_monitor
 	var/obj/machinery/power/fission/linked
 
-/obj/machinery/computer/fission_monitor/New()
-	..()
-
 /obj/machinery/computer/fission_monitor/Destroy()
 	linked = null
-	..()
+	return ..()
 
 /obj/machinery/computer/fission_monitor/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(istype(W, /obj/item/multitool))
@@ -44,9 +41,9 @@
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/computer/fission_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/fission_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	if(!src.powered())
 		return
 

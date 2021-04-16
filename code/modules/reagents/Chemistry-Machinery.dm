@@ -1,10 +1,3 @@
-#define SOLID 1
-#define LIQUID 2
-#define GAS 3
-
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -30,11 +23,9 @@
 	flags = OPENCONTAINER
 	clicksound = "button"
 
-/obj/machinery/chem_master/New()
-	..()
-	var/datum/reagents/R = new/datum/reagents(900)	//Just a huge random number so the buffer should (probably) never dump your reagents.
-	reagents = R	//There should be a nano ui thingy to warn of this.
-	R.my_atom = src
+/obj/machinery/chem_master/Initialize(mapload, newdir)
+	. = ..()
+	create_reagents(900)
 
 /obj/machinery/chem_master/ex_act(severity)
 	switch(severity)
@@ -80,14 +71,14 @@
 	if(stat & BROKEN)
 		return
 	user.set_machine(src)
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the chem master.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/chem_master/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/chem_master/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -363,14 +354,13 @@
 	var/static/radial_eject = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_eject")
 	var/static/radial_grind = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_grind")
 
-/obj/machinery/reagentgrinder/New()
-	..()
+/obj/machinery/reagentgrinder/Initialize(mapload, newdir)
+	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/motor(src)
 	component_parts += new /obj/item/stock_parts/gear(src)
 	RefreshParts()
-	return
 
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()

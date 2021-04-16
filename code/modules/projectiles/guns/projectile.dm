@@ -33,8 +33,8 @@
 	//var/list/icon_keys = list()		//keys
 	//var/list/ammo_states = list()	//values
 
-/obj/item/gun/projectile/New(loc, var/starts_loaded = 1)
-	..()
+/obj/item/gun/projectile/Initialize(mapload, starts_loaded = TRUE)
+	. = ..()
 	if(starts_loaded)
 		if(ispath(ammo_type) && (load_method & (SINGLE_CASING|SPEEDLOADER)))
 			for(var/i in 1 to max_shells)
@@ -230,10 +230,10 @@
 		update_icon() //make sure to do this after unsetting ammo_magazine
 
 /obj/item/gun/projectile/examine(mob/user)
-	..(user)
+	. = ..()
 	if(ammo_magazine)
-		to_chat(user, "It has \a [ammo_magazine] loaded.")
-	to_chat(user, "Has [getAmmo()] round\s remaining.")
+		. += "It has \a [ammo_magazine] loaded."
+	. += "Has [getAmmo()] round\s remaining."
 	return
 
 /obj/item/gun/projectile/proc/getAmmo()

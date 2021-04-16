@@ -69,10 +69,8 @@
 
 	var/obj/item/cell/battery	= null // uninterruptible power supply aka battery
 
-/obj/machinery/computer3/New(var/L, var/built = 0)
-	..()
-	spawn(2)
-		power_change()
+/obj/machinery/computer3/Initialize(mapload, built = FALSE)
+	. = ..()
 
 	if(show_keyboard)
 		var/kb_state = "kb[rand(1,15)]"
@@ -114,6 +112,11 @@
 				hdd.addfile(new typekey,1)
 
 	update_icon()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer3/LateInitialize()
+	. = ..()
+	power_change()
 
 /obj/machinery/computer3/verb/ResetComputer()
 	set name = "Reset Computer"
@@ -285,7 +288,7 @@
 	else
 		stat &= ~NOPOWER
 
-/obj/machinery/computer3/process()
+/obj/machinery/computer3/process(delta_time)
 	auto_use_power()
 	power_change()
 	update_icon()

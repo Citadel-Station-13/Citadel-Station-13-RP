@@ -19,11 +19,11 @@
 		return temp_access
 
 /obj/item/card/id/guest/examine(mob/user)
-	..(user)
+	. = ..()
 	if (world.time < expiration_time)
-		to_chat(user, "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>")
+		. += "<span class='notice'>This pass expires at [worldtime2stationtime(expiration_time)].</span>"
 	else
-		to_chat(user, "<span class='warning'>It expired at [worldtime2stationtime(expiration_time)].</span>")
+		. += "<span class='warning'>It expired at [worldtime2stationtime(expiration_time)].</span>"
 
 /obj/item/card/id/guest/read()
 	if(!Adjacent(usr))
@@ -54,7 +54,7 @@
 			expired = 1
 	return ..()
 
-/obj/item/card/id/guest/Initialize()
+/obj/item/card/id/guest/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	update_icon()
@@ -63,7 +63,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/card/id/guest/process()
+/obj/item/card/id/guest/process(delta_time)
 	if(expired == 0 && world.time >= expiration_time)
 		visible_message("<span class='warning'>\The [src] flashes a few times before turning red.</span>")
 		icon_state = "guest_invalid"
@@ -94,10 +94,9 @@
 	var/list/internal_log = list()
 	var/mode = 0  // 0 - making pass, 1 - viewing logs
 
-/obj/machinery/computer/guestpass/New()
-	..()
+/obj/machinery/computer/guestpass/Initialize(mapload)
+	. = ..()
 	uid = "[rand(100,999)]-G[rand(10,99)]"
-
 
 /obj/machinery/computer/guestpass/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id))
@@ -119,14 +118,14 @@
 
 	user.set_machine(src)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the guest pass console.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/computer/guestpass/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/guestpass/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -214,7 +213,7 @@
 				var/dat = "<h3>Activity log of guest pass terminal #[uid]</h3><br>"
 				for (var/entry in internal_log)
 					dat += "[entry]<br><hr>"
-				//usr << "Printing the log, standby..."
+				//to_chat(usr, "Printing the log, standby...")
 				//sleep(50)
 				var/obj/item/paper/P = new/obj/item/paper( loc )
 				P.name = "activity log"
