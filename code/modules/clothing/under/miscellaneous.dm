@@ -1068,7 +1068,7 @@
 /obj/item/clothing/under/dutchuniform
 	name = "\improper Western suit"
 	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
-	icon_state = "dutchuniform"
+	icon_state = "DutchUniform"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/victorianblred
