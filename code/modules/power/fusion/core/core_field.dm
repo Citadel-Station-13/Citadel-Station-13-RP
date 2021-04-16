@@ -1,5 +1,5 @@
 #define FUSION_ENERGY_PER_K 20
-#define FUSION_MAX_ENVIRO_HEAT 5000 //raise this if you want the reactor to dump more energy into the atmosphere
+#define FUSION_MAX_ENVIRO_HEAT INFINITY //raise this if you want the reactor to dump more energy into the atmosphere
 #define PLASMA_TEMP_RADIATION_DIVISIOR 20 //radiation divisior. plasma temp / divisor = radiation.
 
 
