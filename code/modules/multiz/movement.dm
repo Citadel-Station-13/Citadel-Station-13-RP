@@ -202,7 +202,7 @@
 	if(throwing)
 		return
 
-if(ismob(src))
+	if(ismob(src))
 		var/mob/H = src //VOREStation Edit Start. Flight on mobs.
 		if(H.flying) //Some other checks are done in the wings_toggle proc
 			if(H.nutrition > 2)
