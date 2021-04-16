@@ -178,16 +178,13 @@
 	set category = "Debug"
 	set name = "Del-All"
 
-
-	var/blocked = list(/obj, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/human, /mob/observer/dead, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
-	var/hsbitem = input(usr, "Choose an object to delete. Dear GOD don't do this on live.", "Delete:") as null|anything in typesof(/obj) + typesof(/mob) - blocked
 	var/list/matches = get_fancy_list_of_atom_types()
 	if (!isnull(object) && object!="")
 		matches = filter_fancy_list(matches, object)
 
 	if(matches.len==0)
 		return
-	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in matches
+	var/hsbitem = input(usr, "Choose an object to delete. Use clear-mobs instead on LIVE.", "Delete:") as null|anything in matches
 	if(hsbitem)
 		hsbitem = matches[hsbitem]
 		var/counter = 0
