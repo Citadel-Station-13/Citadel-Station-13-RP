@@ -175,7 +175,7 @@
 		M.power_change()
 
 // compatibility wrapper, remove posthaste by making sure nothing checks area has_gravity.
-/area/proc/has_gravity()
+/area/has_gravity()
 	return has_gravity
 
 /area/proc/get_contents()
