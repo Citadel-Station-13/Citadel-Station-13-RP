@@ -8,7 +8,7 @@
 	desc = "A coruscating, barely visible field of energy. It is shaped like a slightly flattened torus."
 	icon = 'icons/obj/machines/power/fusion.dmi'
 	icon_state = "emfield_s1"
-	alpha = 50
+	alpha = 1
 	plane = MOB_PLANE
 	layer = 4
 	light_color = "#cc7700"
@@ -521,39 +521,30 @@
 			environment.add_thermal_energy(plasma_temperature*5000)
 			check_instability()
 
-//Temperature changes depending on color.
+//Temperature changes depending on color. Now, the visibility of the field increases with temperature, along with the glow.
 /obj/effect/fusion_em_field/proc/temp_color()
+	for(var/i=1,i < plasma_temperature / 35, i++)
+		alpha = i
 	if(plasma_temperature > 60000) //high ultraviolet - magenta
 		light_color = "#cc005f"
-		light_max_range = 25
-		light_max_power = 10
-		alpha = 255
+		light_max_range = alpha / 30
+		light_max_power = alpha / 30
 	else if(plasma_temperature > 12000) //ultraviolet - blue
 		light_color = "#1b00cc"
-		light_max_range = 20
-		light_max_power = 10
-		alpha = 165
+		light_max_range = alpha / 30
+		light_max_power = alpha / 30
 	else if(plasma_temperature > 8000) //nearing ultraviolet - cyan
 		light_color = "#00cccc"
-		light_max_range = 15
-		light_max_power = 10
-		alpha = 80
+		light_max_range = alpha / 30
+		light_max_power = alpha / 30
 	else if(plasma_temperature > 4000) // green
 		light_color = "#1ab705"
-		light_max_range = 10
-		light_max_power = 10
-		alpha = 50
+		light_max_range = alpha / 30
+		light_max_power = alpha / 30
 	else if(plasma_temperature > 2000) //orange
 		light_color = "#cc7700"
-		light_max_range = 5
-		light_max_power = 5
-		alpha = 40
-	else if(plasma_temperature > 1000)
-		alpha = 30
-	else if(plasma_temperature > 500)
-		alpha = 20
-	else if(plasma_temperature <= 500)
-		alpha = 15
+		light_max_range = alpha / 30
+		light_max_power = alpha / 30
 	return
 //moved the flare to a proc for various reasons. Called on line 225.
 /obj/effect/fusion_em_field/proc/emflare()
