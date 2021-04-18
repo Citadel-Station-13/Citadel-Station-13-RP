@@ -117,7 +117,7 @@
 	icon = 'icons/obj/dice.dmi'
 	icon_state = "dicecup"
 	w_class = ITEMSIZE_SMALL
-	storage_slots = 5
+	storage_slots = 6
 	can_hold = list(
 		/obj/item/dice,
 		)
@@ -157,5 +157,5 @@
 
 
 /obj/item/storage/dicecup/loaded/PopulateContents()
-	for(var/i = 1 to 5)
+	for(var/i = 1 to 6)
 		new /obj/item/dice( src )

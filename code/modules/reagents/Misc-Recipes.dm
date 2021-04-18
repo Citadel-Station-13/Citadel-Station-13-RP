@@ -983,7 +983,7 @@
 	catalysts = list("phoron" = 5)
 	result_amount = 5
 
- /datum/chemical_reaction/macrocillin
+/datum/chemical_reaction/macrocillin
 	name = "Macrocillin"
 	id = "macrocillin"
 	result = "macrocillin"

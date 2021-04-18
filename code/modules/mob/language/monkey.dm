@@ -6,6 +6,7 @@
 	exclaim_verb = "screeches"
 	key = "6"
 	syllables = list("ook","eek")
+	flags = RESTRICTED
 	machine_understands = 0
 
 /datum/language/skrell/monkey
@@ -13,6 +14,7 @@
 	desc = "Squik squik squik."
 	key = "8"
 	syllables = list("hiss","gronk")
+	flags = RESTRICTED
 	machine_understands = 0
 
 /datum/language/unathi/monkey
@@ -20,6 +22,7 @@
 	desc = "Hiss hiss hiss."
 	key = "7"
 	syllables = list("squick","croak")
+	flags = RESTRICTED
 	machine_understands = 0
 
 /datum/language/tajaran/monkey
@@ -27,6 +30,7 @@
 	desc = "Meow meow meow."
 	key = "9"
 	syllables = list("meow","mew")
+	flags = RESTRICTED
 	machine_understands = 0
 
 /datum/language/corgi
