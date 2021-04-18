@@ -14934,6 +14934,10 @@
 	pixel_x = 32;
 	req_access = list(5)
 	},
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "mDZ" = (

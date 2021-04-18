@@ -5260,6 +5260,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
+"oO" = (
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	dir = 1;
+	pixel_y = -1
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/crew_quarters/freezer)
 "oQ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5756,6 +5763,7 @@
 /obj/machinery/newscaster{
 	pixel_x = 30
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "qn" = (
@@ -7471,6 +7479,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
+"va" = (
+/obj/structure/table/marble,
+/obj/machinery/door/blast/shutters{
+	dir = 4;
+	id = "bar";
+	layer = 3.3;
+	name = "Bar Shutters"
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/item/material/ashtray/glass,
+/turf/simulated/floor/tiled/dark,
+/area/crew_quarters/bar)
 "vb" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -21154,13 +21174,13 @@ Ts
 lK
 KS
 Om
-TZ
+va
 Ub
 TZ
-TZ
+va
 Ub
 CG
-TZ
+va
 FG
 HJ
 HJ
@@ -24280,7 +24300,7 @@ rI
 aU
 HZ
 kr
-kr
+oO
 Zy
 Zy
 Nw

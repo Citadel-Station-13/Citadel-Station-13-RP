@@ -8021,6 +8021,9 @@
 "CR" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/item/clothing/accessory/poncho/roles/cloak/ce,
+/obj/machinery/requests_console/preset/ce{
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "CU" = (

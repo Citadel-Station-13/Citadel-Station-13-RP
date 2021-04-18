@@ -7141,6 +7141,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/HOP_quarters)
+"fza" = (
+/obj/machinery/door/airlock/maintenance/common{
+	req_access = list(38)
+	},
+/turf/simulated/floor/plating,
+/area/lawoffice)
 "fzn" = (
 /obj/structure/cable/green,
 /obj/machinery/power/apc{
@@ -9395,7 +9401,9 @@
 /area/security/warden)
 "hmc" = (
 /obj/structure/table/steel,
-/obj/item/material/ashtray/glass,
+/obj/item/material/ashtray/glass{
+	pixel_y = 48
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "hmi" = (
@@ -27238,6 +27246,10 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
+/obj/machinery/recharger/wallcharger{
+	pixel_x = -22;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "uuO" = (
@@ -27871,6 +27883,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
+"uTz" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "uTH" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -32365,6 +32389,29 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/lobby)
+"xWT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/dark,
+/area/security/hallway)
 "xXe" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/bar_soft/full,
@@ -38949,7 +38996,7 @@ iLa
 iNN
 ooZ
 oAG
-vAk
+xWT
 xSR
 qQW
 mZU
@@ -41208,7 +41255,7 @@ tLP
 msd
 mYQ
 mYQ
-czV
+uTz
 xzh
 xzE
 xzE
@@ -47029,7 +47076,7 @@ udf
 upm
 xqf
 wBy
-fre
+fza
 ugw
 tZH
 lsu
