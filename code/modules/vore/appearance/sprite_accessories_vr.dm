@@ -382,6 +382,13 @@
 	icon_state = "elfs"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+	
+/datum/sprite_accessory/ears/floppyelf
+	name = "floppy elven ears"
+	desc = ""
+	icon_state = "floppy-elf"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/sleek
 	name = "sleek ears"
