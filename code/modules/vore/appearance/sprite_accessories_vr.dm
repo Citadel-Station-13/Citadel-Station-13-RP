@@ -159,6 +159,21 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/ears/demon_horns3
+	name = "demon horns, colorable(upward)"
+	desc = ""
+	icon_state = "demon-horns3"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/ears/demon_horns4
+	name = "demon horns, colorable ring(upward)"
+	desc = ""
+	icon_state = "demon-horns4"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "demon-horns4-ring"
+
 /datum/sprite_accessory/ears/dragon_horns
 	name = "dragon horns, colorable"
 	desc = ""
@@ -642,6 +657,13 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
     icon_state = "frosted_tips"
     ckeys_allowed = list("tucker0666")
 
+/datum/sprite_accessory/ears/peekinghuman
+	name = "peeking ears"
+	desc = ""
+	icon_state = "earpeek"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /*
 ////////////////////////////
 /  =--------------------=  /
@@ -656,6 +678,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 
 	var/color_blend_mode = ICON_ADD // Only appliciable if do_coloration = 1
 	var/extra_overlay // Icon state of an additional overlay to blend in.
+	var/extra_overlay2
 	var/clothing_can_hide = 1 // If true, clothing with HIDETAIL hides it. If the clothing is bulky enough to hide a tail, it should also hide wings.
 	// var/show_species_tail = 1 // Just so // TODO - Seems not needed ~Leshana
 	var/desc = "You should not see this..."
@@ -902,6 +925,75 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/wing/liquidfirefly_gazer
+	name = "gazer eyestalks"
+	desc = ""
+	icon_state = "liquidfirefly-eyestalks"
+
+/datum/sprite_accessory/wing/nevrean
+	name = "nevrean wings/fantail"
+	desc = ""
+	icon_state = "nevrean_s"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/sepulchre_c_yw
+	name = "demon wings (colorable)"
+	desc = ""
+	icon_state = "sepulchre_wingsc"
+	do_colouration = 1
+
+/datum/sprite_accessory/wing/cyberdragon
+	name = "Cyber dragon wing (colorable)"
+	desc = ""
+	icon_state = "cyberdragon_s"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/cyberdragon_red
+	name = "Cyber dragon wing (red)"
+	desc = ""
+	icon_state = "cyberdragon_red_s"
+	do_colouration = 0
+
+/datum/sprite_accessory/wing/cyberdoe
+	name = "Cyber doe wing"
+	desc = ""
+	icon_state = "cyberdoe_s"
+	do_colouration = 0
+
+/datum/sprite_accessory/wing/drago_wing
+	name = "Cybernetic Dragon wings"
+	desc = ""
+	icon_state = "drago_wing"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "drago_wing_2"
+
+/datum/sprite_accessory/wing/harpywings
+	name = "harpy wings, colorable"
+	desc = ""
+	icon_state = "harpywings"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/Harpywings_alt
+	name = "harpy wings alt, archeopteryx"
+	desc = ""
+	icon_state = "Harpywings_alt"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "Neckfur"
+	extra_overlay2 = "Harpywings_altmarkings"
+
+/datum/sprite_accessory/wing/Harpywings_Bat
+	name = "harpy wings, bat"
+	desc = ""
+	icon_state = "Harpywings_Bat"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "Neckfur"
+	extra_overlay2 = "Harpywings_BatMarkings"
 
 /*
 ////////////////////////////
@@ -926,6 +1018,10 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	var/icon/clip_mask_icon = null //Icon file used for clip mask.
 	var/clip_mask_state = null //Icon state to generate clip mask. Clip mask is used to 'clip' off the lower part of clothing such as jumpsuits & full suits.
 	var/icon/clip_mask = null //Instantiated clip mask of given icon and state
+
+	//Loafing vars
+	var/can_loaf = FALSE
+	var/loaf_offset = 0
 
 /datum/sprite_accessory/tail/New()
 	. = ..()
@@ -1269,6 +1365,24 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "tamamo-kitsunetails"
 	extra_overlay = "tamamo-kitsunetails-tips"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/foxtail
+	name = "Fox"
+	desc = ""	//leaving this just in case i break something if i just don't include a blank description because this codebase is akin to a house of cards
+	icon_state = "foxtail_but_good"
+	extra_overlay = "foxtail_but_good-tips"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+	ani_state = "foxtail_but_good_w"
+	extra_overlay_w = "foxtail_but_good-tips_w"
+
+/datum/sprite_accessory/tail/triple_kitsune
+	name = "Triple Kitsune Tails"
+	desc = ""
+	icon_state = "triple-kitsunetails"
+	extra_overlay = "triple-kitsunetails-tips"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
