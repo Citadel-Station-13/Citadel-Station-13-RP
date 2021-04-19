@@ -272,6 +272,9 @@
 		else*/
 		. += "[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id]."
 
+	if(istype(src, /mob/living/carbon/human/dummy))
+		. += "[T.He] [T.is] strangely life like. You feel uneasy staring at [T.him] for too long."
+
 	//Jitters
 	if(is_jittery)
 		if(jitteriness >= 300)
