@@ -358,7 +358,7 @@
 	var/list/choices = list("Drunkenness", "Stuttering", "Jittering")
 	if(src.slurring >= 10 || src.stuttering >= 10 || src.jitteriness >= 100)
 		var/disable = alert(src, "Stop performing impairment? (Do NOT abuse this)", "Impairments", "Yes", "No")
-		if(disable == "Yes") // tick down from 1 to allow the effects to end 'naturally'
+		if(disable == "Yes")
 			acting_expiry()
 			return
 
@@ -368,7 +368,7 @@
 	var/duration = input(src,"Choose a duration to perform [impairment]. (1 - 60 seconds)","Duration in seconds",25) as num|null
 	if(!isnum(duration))
 		return
-	if(duration > 60)
+	if(duration > 60 && !check_rights(R_EVENT, 0)) // admins can do as they please
 		to_chat(src, "Please choose a duration in seconds between 1 to 60.")
 		return
 	if(impairment == "Drunkenness")
@@ -380,10 +380,11 @@
 
 	if(duration)
 		addtimer(CALLBACK(src, .proc/acting_expiry), duration SECONDS)
-		to_chat(src,"You will now performatively act as if you were experiencing [impairment]. (Do NOT abuse this)")
+		var/aduration = duration SECONDS / 10
+		to_chat(src,"You will now performatively act as if you were experiencing [impairment] for [aduration] seconds. (Do NOT abuse this)")
 	feedback_add_details("admin_verb","actimpaired") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /mob/living/carbon/human/proc/acting_expiry()
-	to_chat(src,"You are no longer acting impaired.")
+	to_chat(src,"You are no longer acting impaired.") // tick down from 1 to allow the effects to end 'naturally'
 	slurring = 1
 	stuttering = 1
 	jitteriness = 1
