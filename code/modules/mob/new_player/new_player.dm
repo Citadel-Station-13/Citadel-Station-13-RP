@@ -126,9 +126,9 @@
 				if(verify == FALSE)
 					client.add_system_note("Automated-Age-Gate", "Failed automatic age gate process")
 					//ban them and kick them
-					to_chat(src, "You have failed the initial age verification check. \nIf you believe this was in error, you MUST submit to additional verification on the forums at Citadel-Station.net")
+					to_chat(src, "You have failed the initial age verification check. \nIf you believe this was in error, you MUST submit to additional verification on the forums at citadel-station.net/forum/")
 					if(client)
-						AddBan(ckey, computer_id, "Failed initial age verification check. Appeal at Citadel-Station.net", "SYSTEM", 0, 0)
+						AddBan(ckey, computer_id, "Failed initial age verification check. Appeal at citadel-station.net/forum/", "SYSTEM", 0, 0)
 						Logout()
 					return FALSE
 				else
