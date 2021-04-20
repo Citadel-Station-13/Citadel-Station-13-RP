@@ -33,14 +33,15 @@
 			var/text = "[key_name(usr)] failed initial age verification."
 			message_admins(text)
 			log_admin(text)
-			AddBan(client.ckey, client.computer_id, "Failed initial age verification check. Appeal at Citadel-Station.net", "Age Gate", 0, 0)
+			AddBan(ckey, computer_id, "Failed initial age verification check. Appeal at Citadel-Station.net", "Age Gate", 0, 0)
+			to_chat(src, "Failed initial age verification check. Appeal at Citadel-Station.net")
 			Logout()
 		else
-			client.set_preference(/datum/client_preference/age_verified, 1)
+			client.set_preference(/datum/client_preference/debug/age_verified, 1)
 			SScharacter_setup.queue_preferences_save(client.prefs)
 
 /mob/new_player/proc/new_player_panel_proc()
-	if(client.prefs && !client.is_preference_enabled(/datum/client_preference/age_verified)) // check if the user has already completed the age verification this session
+	if(client.prefs && !client.is_preference_enabled(/datum/client_preference/debug/age_verified))
 		verifyage()
 
 	var/output = "<div align='center'>"

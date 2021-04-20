@@ -344,7 +344,7 @@
 	set category = "Debug"
 	set desc = "Toggles your age verified status."
 
-	var/pref_path = /datum/client_preference/age_verified
+	var/pref_path = /datum/client_preference/debug/age_verified
 
 	toggle_preference(pref_path)
 
