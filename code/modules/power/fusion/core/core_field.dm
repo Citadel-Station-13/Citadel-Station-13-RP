@@ -1,7 +1,7 @@
 #define FUSION_ENERGY_PER_K 20
-#define FUSION_MAX_ENVIRO_HEAT 5000 //raise this if you want the reactor to dump more energy into the atmosphere
 #define PLASMA_TEMP_RADIATION_DIVISIOR 20 //radiation divisior. plasma temp / divisor = radiation.
 
+GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 /obj/effect/fusion_em_field
 	name = "electromagnetic field"
@@ -517,7 +517,7 @@
 /obj/effect/fusion_em_field/proc/temp_dump()
 	if(owned_core && owned_core.loc)
 		var/datum/gas_mixture/environment = owned_core.loc.return_air()
-		if(environment && environment.temperature < (T0C+FUSION_MAX_ENVIRO_HEAT))
+		if(environment && environment.temperature < (GLOB.max_fusion_air_heat))
 			environment.add_thermal_energy(plasma_temperature*5000)
 			check_instability()
 
@@ -662,5 +662,4 @@
 	return
 
 #undef FUSION_HEAT_CAP
-#undef FUSION_MAX_ENVIRO_HEAT
 #undef PLASMA_TEMP_RADIATION_DIVISIOR
