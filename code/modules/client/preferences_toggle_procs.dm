@@ -371,6 +371,11 @@
 	if(duration > 60 && !check_rights(R_EVENT, 0)) // admins can do as they please
 		to_chat(src, "Please choose a duration in seconds between 1 to 60.")
 		return
+	if(duration >= 1000) // unreachable code for anyone but admins who have set the number very high, logging for my sanity
+		message_admins("[src] has set their [impairment] to [duration] via Feign Impairment.")
+	if(duration >= 2000)
+		to_chat(src, "Please choose a duration less than 2000.")
+		return
 	if(impairment == "Drunkenness")
 		slurring = duration
 	if(impairment == "Stuttering")
