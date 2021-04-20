@@ -28,7 +28,7 @@
 	"Empty Court" 		= new/datum/holodeck_program(/area/holodeck/source_emptycourt),
 	"Boxing Ring" 		= new/datum/holodeck_program(/area/holodeck/source_boxingcourt),
 	"Basketball" 		= new/datum/holodeck_program(/area/holodeck/source_basketball),
-	"Thunderdome"		= new/datum/holodeck_program(/area/holodeck/source_thunderdomecourt),
+	"Thunderdome"		= new/datum/holodeck_program(/area/holodeck/source_thunderdomecourt, list('sound/music/THUNDERDOME.ogg')),
 	"Beach" 			= new/datum/holodeck_program(/area/holodeck/source_beach),
 	"Desert" 			= new/datum/holodeck_program(/area/holodeck/source_desert,
 													list(
