@@ -54,9 +54,7 @@
 	description_info = "This gun will stun a slime or other lesser slimy lifeform for about two seconds, if hit with the projectile it fires."
 	description_fluff = "An easy to use weapon designed by NanoTrasen, for NanoTrasen.  This weapon is designed to subdue lesser \
 	slime-based xeno lifeforms at a distance.  It is ineffective at stunning non-slimy lifeforms such as humanoids."
-	firemodes = list(
-		list(mode_name="disable", projectile_type=/obj/item/projectile/beam/stun/xeno/weak, modifystate="taserold", charge_cost = 120),
-		)
+	firemodes = list()
 
 /obj/item/gun/energy/taser/xeno/robot // Borg version
 	self_recharge = 1
