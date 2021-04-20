@@ -3,10 +3,10 @@
 	set desc = "Authorizes your account in the panic bunker of any servers connected to this function."
 	set category = "OOC"
 
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
 	world.send_cross_server_bunker_overrides(key, src)
 
 /world/proc/send_cross_server_bunker_overrides(key, client/C)
+	if(!C.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
 	var/comms_key = CONFIG_GET(string/comms_key)
 	if(!comms_key)
 		return
