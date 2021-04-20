@@ -578,7 +578,7 @@ proc/findNullRod(var/atom/target)
 	light_power = -2
 	light_color = "#FFFFFF"
 	antimagic_check = TRUE
-	antimagic_damage_factor = 0.25
+	antimagic_damage_factor = 0.66
 
 	muzzle_type = /obj/effect/projectile/muzzle/inversion
 	tracer_type = /obj/effect/projectile/tracer/inversion
