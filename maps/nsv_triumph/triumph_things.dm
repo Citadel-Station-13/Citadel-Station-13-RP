@@ -212,7 +212,7 @@ var/global/list/latejoin_shuttle   = list()
 
 	supported_programs = list(
 	"Basketball" 		= new/datum/holodeck_program(/area/houseboat/holodeck/basketball),
-	"Thunderdome"		= new/datum/holodeck_program(/area/houseboat/holodeck/thunderdome),
+	"Thunderdome"		= new/datum/holodeck_program(/area/houseboat/holodeck/thunderdome, list('sound/music/THUNDERDOME.ogg')),
 	"Beach" 			= new/datum/holodeck_program(/area/houseboat/holodeck/beach),
 	"Desert" 			= new/datum/holodeck_program(/area/houseboat/holodeck/desert,
 													list(
