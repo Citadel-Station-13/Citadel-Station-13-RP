@@ -20,13 +20,13 @@
 /obj/item/deadringer/Destroy() //just in case some smartass tries to stay invisible by destroying the watch
 	uncloak()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/deadringer/dropped()
+	. = ..()
 	if(timer > 20)
 		uncloak()
 		watchowner = null
-	return
 
 /obj/item/deadringer/attack_self(var/mob/living/user as mob)
 	var/mob/living/H = src.loc

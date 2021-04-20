@@ -453,10 +453,11 @@
 		i++
 
 /obj/item/hand/dropped(mob/user as mob)
+	. = ..()
 	if(locate(/obj/structure/table, loc))
-		src.update_icon(user.dir)
+		update_icon(user.dir)
 	else
 		update_icon()
 
 /obj/item/hand/pickup(mob/user as mob)
-	src.update_icon()
+	update_icon()

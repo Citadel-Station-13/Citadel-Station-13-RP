@@ -313,6 +313,7 @@ var/last_chew = 0
 		return 1
 
 /obj/item/handcuffs/legcuffs/bola/dropped()
+	. = ..()
 	visible_message("<span class='notice'>\The [src] falls apart!</span>")
 	qdel(src)
 

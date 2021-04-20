@@ -195,6 +195,7 @@
 			overlays += Img
 
 /obj/item/tray/dropped(mob/user)
+	. = ..()
 	var/noTable = null
 
 	spawn() //Allows the tray to udpate location, rather than just checking against mob's location
