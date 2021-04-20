@@ -462,9 +462,10 @@
 		dummy.regenerate_icons()
 		var/image/alpha_mask = new
 		alpha_mask.icon = 'icons/effects/effects.dmi'
-		alpha_mask.icon_State = "scanline"
+		alpha_mask.icon_state = "scanline"
 		alpha_mask.layer = FLY_LAYER
 		alpha_mask.blend_mode = BLEND_SUBTRACT
+		alpha_mask.color = list(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,1,1,1,1)
 		dummy.add_overlay(alpha_mask)
 		COMPILE_OVERLAYS(dummy)
 		dummy.alpha = 192
