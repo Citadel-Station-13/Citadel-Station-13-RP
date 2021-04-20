@@ -165,8 +165,7 @@
 	return
 
 /mob/living/carbon/slime/bullet_act(var/obj/item/projectile/Proj)
-	attacked
-		+= 10
+	attacked += 10
 	..(Proj)
 	return 0
 

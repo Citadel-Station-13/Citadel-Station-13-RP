@@ -128,7 +128,7 @@
 
 	switch(Proj.damage_type)
 		if(BRUTE)
-			take_damage(Proj.get_fianl_damage(src))
+			take_damage(Proj.get_final_damage(src))
 		if(BURN)
 			take_damage(Proj.get_final_damage(src))
 	return 0

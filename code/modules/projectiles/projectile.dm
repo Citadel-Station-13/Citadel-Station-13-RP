@@ -119,6 +119,8 @@
 	var/modifier_type_to_apply = null // If set, will apply a modifier to mobs that are hit by this projectile.
 	var/modifier_duration = null // How long the above modifier should last for. Leave null to be permanent.
 	var/excavation_amount = 0 // How much, if anything, it drills from a mineral turf.
+	/// If this projectile is holy. Silver bullets, etc. Currently no effects.
+	var/holy = FALSE
 
 	// Antimagic
 	/// Should we check for antimagic effects?
@@ -769,11 +771,11 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(issimple(target))
-			var/mob/living/simple_mob/SM = M
+			var/mob/living/simple_mob/SM = L
 			if(SM.mob_class & SA_vulnerability)
 				final_damage += SA_bonus_damage
-	if(target.anti_magic_check(TRUE, TRUE, antimagic_charges_used, FALSE))
-		final_damage *= antimagic_damage_factor
+		if(L.anti_magic_check(TRUE, TRUE, antimagic_charges_used, FALSE))
+			final_damage *= antimagic_damage_factor
 	return final_damage
 
 /**

@@ -1204,7 +1204,7 @@ mob/proc/yank_out_object()
  * @return The datum source of the antimagic
  */
 /mob/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
-	if(!magic && !holy && !tinfoil)
+	if(!magic && !holy)
 		return
 	var/list/protection_sources = list()
 	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, chargecost, self, protection_sources) & COMPONENT_BLOCK_MAGIC)
