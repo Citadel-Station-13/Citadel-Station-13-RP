@@ -247,14 +247,13 @@
 				<body>
 				<br><br>
 				<ol>
-				<li>Put uranium in the portable generator near the gyrotron and turn it to full. This is to provide initial power to the core.</li>
-				<li>Enable and max output on the SMES in the engine room. This is to power the gyrotron.</li>
-				<li>Go into the control room, interact with the fusion core control console. Turn the field on and raise size to 501. Any bigger and it will start EMPing the doors. Any smaller and the fuel pellets might miss.</li>
-				<li>Interact with the gyrotron control computer, set power as high as the SMES can support, usually around 4, and turn it on. This will start increasing the plasma temperature to the point where reactions can occur.</li>
-				<li>Go into the engine room and insert a deuterium fuel assembly and a tritium fuel assembly into two of the fuel injectors. You can make deuterium rods in the fuel compressor if you want to play it safe.</li>
-				<li>Go back to the control room and turn the fuel injectors on. This will start firing pellets into the field.</li>
-				<li>Wait for reactions to start (plasma temperature will spike and fuel amounts will drop). Turn the gyrotron power down until it's keeping up with field instability. This will prevent cumulative instability from the deuterium-tritium reaction fucking up the field. If you're using straight deuterium instability isn't a problem and you can turn the gyrotron off.</li>
-				<li>Configure the SMES, turn the PACMAN off before it explodes.</li>
+				<li>Enable and max output and input on the SMES in the engine room. This is to power the gyrotrons and pumps.</li>
+				<li>Go into the control room, interact with the fusion core control console. Raise the field size to 201 and turn it on. Any smaller will cause the gyrotrons to blast out the walls. Bigger than 500 will cause the field to immediately fail.</li>
+				<li>Interact with the gyrotron control computer and set all the gyrotrons power and timing to 1.</li>
+				<li>Go into the engine room and insert a deuterium fuel assembly and a tritium fuel assembly into two of the fuel injectors. You can make these in the fuel compressor.</li>
+				<li>Go back to the control room and turn the fuel injectors on. This will start firing pellets into the field. Ensure the field and the gyrotrons are already running!</li>
+				<li>Wait for reactions to start (plasma temperature will spike and fuel amounts will drop).</li>
+				<li>Insert all the phoron into the cold loop, and every other gas into the hot loop. Make sure the RUS-T is stable before inserting other gasses! It will release phoron when shut off!</li>
 				</ol>
 				<br>
 				<b>NOTES FOR NEWBIES</b>
