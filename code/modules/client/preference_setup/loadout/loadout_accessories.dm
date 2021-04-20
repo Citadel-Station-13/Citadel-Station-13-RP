@@ -262,7 +262,7 @@
 	path = /obj/item/clothing/accessory/cowledvest
 
 /datum/gear/choker	// A colorable choker
-	display_name = "Choker - Colorable & Tagless"
+	display_name = "Choker"
 	path = /obj/item/clothing/accessory/choker
 	slot = slot_tie
 	sort_category = "Accessories"

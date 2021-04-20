@@ -79,8 +79,8 @@
 	footstep_sounds = base_footstep_sounds
 
 	if(flooring)
-		if(flooring.build_type && place_product)
-			new flooring.build_type(src)
+		if(place_product)
+			flooring.drop_product(src)
 		flooring = null
 
 	broken = null

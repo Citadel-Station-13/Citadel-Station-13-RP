@@ -302,9 +302,9 @@
 		to_chat(user,"<span class='warning'>You don't have a working refactory module!</span>")
 		return
 
-	var/nagmessage = "Adjust your mass to be a size between 25 to 200%. Up-sizing consumes metal, downsizing returns metal."
+	var/nagmessage = "Adjust your mass to be a size between 25 to 150%. Up-sizing consumes metal, downsizing returns metal."
 	var/new_size = input(user, nagmessage, "Pick a Size", user.size_multiplier*100) as num|null
-	if(!new_size || !ISINRANGE(new_size,25,200))
+	if(!new_size || !ISINRANGE(new_size,25,150))
 		return
 
 	var/size_factor = new_size/100
@@ -320,14 +320,14 @@
 	//Sizing up
 	if(cost > 0)
 		if(refactory.use_stored_material(MAT_STEEL,cost))
-			user.resize(size_factor)
+			user.resize(size_factor, TRUE)
 		else
 			to_chat(user,"<span class='warning'>That size change would cost [cost] steel, which you don't have.</span>")
 	//Sizing down (or not at all)
 	else if(cost <= 0)
 		cost = abs(cost)
 		var/actually_added = refactory.add_stored_material(MAT_STEEL,cost)
-		user.resize(size_factor)
+		user.resize(size_factor, TRUE)
 		if(actually_added != cost)
 			to_chat(user,"<span class='warning'>Unfortunately, [cost-actually_added] steel was lost due to lack of storage space.</span>")
 

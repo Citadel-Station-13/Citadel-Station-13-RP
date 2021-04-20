@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for (var/language_name in GLOB.all_languages)
 		var/datum/language/L = GLOB.all_languages[language_name]
 		if(!(L.flags & NONGLOBAL))
-			GLOB.language_keys[lowertext(L.key)] = L
+			GLOB.language_keys[L.key] = L
 
 	var/rkey = 0
 	paths = typesof(/datum/species)

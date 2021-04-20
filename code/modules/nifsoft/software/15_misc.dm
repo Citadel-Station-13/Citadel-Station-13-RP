@@ -133,17 +133,18 @@
 
 	activate()
 		if((. = ..()))
-			var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num
+			var/new_size = input("Put the desired size (25-150%)", "Set Size", 200) as num
 
-			if (!ISINRANGE(new_size,25,200))
+			if (!ISINRANGE(new_size,25,150))
 				to_chat(nif.human,"<span class='notice'>The safety features of the NIF Program prevent you from choosing this size.</span>")
 				return
 			else
-				nif.human.resize(new_size/100)
+				nif.human.resize(new_size/100, TRUE)
 				to_chat(nif.human,"<span class='notice'>You set the size to [new_size]%</span>")
 
 			nif.human.visible_message("<span class='warning'>Swirling grey mist envelops [nif.human] as they change size!</span>","<span class='notice'>Swirling streams of nanites wrap around you as you change size!</span>")
 			nif.human.update_icons() //Apply matrix transform asap
+			log_game("[key_name(nif.human)] was resized to [new_size / 100] scale via nifsoft.")
 
 			if (new_size < 75)
 				to_chat(nif.human,"<span class='warning'>You get dizzy as the floor rushes up to you!</span>")
@@ -151,8 +152,6 @@
 				to_chat(nif.human,"<span class='warning'>You feel disoriented as the floor falls away from you!</span>")
 			else
 				to_chat(nif.human,"<span class='warning'>You feel sick as your mass is rearranged!</span>")
-
-			nif.human.Stun(10)
 
 			deactivate()
 
