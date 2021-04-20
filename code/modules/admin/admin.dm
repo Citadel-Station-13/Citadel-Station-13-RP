@@ -1109,17 +1109,14 @@ var/datum/announcement/minor/admin_min_announcer = new
 		chosen = input("Select an atom type", "Spawn Atom", matches[1]) as null|anything in matches
 		if(!chosen)
 			return
-	var/friendlyname = type2top(chosen)
-	var/warning = alert(usr, "Are you ABSOLUTELY CERTAIN you wish to spawn a [friendlyname]?", "Warning", "Yes", "Cancel") // just in-case there's only one match, prompt the user as a safety so we dont unintentionally spawn tough things to fix like areas or terrible erroneous objs
-	if(warning == "Yes")
-		if(ispath(chosen,/turf))
-			var/turf/T = get_turf(usr.loc)
-			T.ChangeTurf(chosen)
-		else
-			new chosen(usr.loc)
+	if(ispath(chosen,/turf))
+		var/turf/T = get_turf(usr.loc)
+		T.ChangeTurf(chosen)
+	else
+		new chosen(usr.loc)
 
-		log_and_message_admins("spawned [chosen] at ([usr.x],[usr.y],[usr.z])")
-		feedback_add_details("admin_verb","SA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_and_message_admins("spawned [chosen] at ([usr.x],[usr.y],[usr.z])")
+	feedback_add_details("admin_verb","SA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
 /datum/admins/proc/show_traitor_panel(var/mob/M in GLOB.mob_list)
