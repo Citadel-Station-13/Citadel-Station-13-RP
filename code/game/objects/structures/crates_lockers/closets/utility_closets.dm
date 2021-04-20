@@ -71,6 +71,7 @@
 		/obj/item/tank/oxygen/red,
 		/obj/item/extinguisher,
 		/obj/item/clothing/head/hardhat/red,
+		/obj/item/storage/toolbox/emergency,
 		/obj/item/stack/medical/ointment) // CIT ADD
 
 /obj/structure/closet/firecloset/full
@@ -216,6 +217,7 @@
 		/obj/item/tank/oxygen/red,
 		/obj/item/extinguisher,
 		/obj/item/clothing/head/hardhat/red,
+		/obj/item/storage/toolbox/emergency,
 		/obj/item/stack/medical/ointment) // CIT ADD
 
 /*

@@ -137,3 +137,9 @@
 	name = "jagged spike"
 	path = /obj/item/melee/spike
 	hidden = 1
+
+//VR FILE MERGE
+
+/datum/category_item/autolathe/general/holocollar
+	name = "Holo-collar"
+	path =/obj/item/clothing/accessory/collar/holo

@@ -34,3 +34,9 @@
 	name = "electropack"
 	path =/obj/item/radio/electropack
 	hidden = 1
+
+//VR FILE MERGE
+
+/datum/category_item/autolathe/devices/sleevecard
+	name = "sleevecard"
+	path =/obj/item/sleevecard
