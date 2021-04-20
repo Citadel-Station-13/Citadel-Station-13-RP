@@ -10,7 +10,8 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core
 	name = "\improper R-UST Mk. 8 Tokamak core"
 	desc = "An enormous solenoid for generating extremely high power electromagnetic fields. It includes a kinetic energy harvester."
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/obj/machines/power/fusion_core.dmi'
+	layer = ABOVE_MOB_LAYER
 	icon_state = "core0"
 	density = 1
 	use_power = USE_POWER_IDLE
