@@ -345,7 +345,7 @@ var/list/_client_preferences_by_type
 
 
 datum/client_preference/debug/age_verified
-	description = "Age Verified Status"
+	description = "(Debug) Age Verified Status"
 	key = "AGE_VERIFIED"
 	enabled_description = "TRUE"
 	disabled_description = "FALSE"
