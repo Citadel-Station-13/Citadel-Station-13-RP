@@ -240,6 +240,14 @@
 		return
 
 	face_atom(A)
+	if(!isobserver(src) && !isturf(A) && A != src)
+		if(A.loc != src)
+			for(var/mob/M in viewers(4, src))
+				if(M == src || M.is_blind())
+					continue
+				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
+					to_chat(M, "<span class='tinynotice'><b>\The [src]</b> looks at \the [A].</span>")
+
 	var/list/result
 	if(client)
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
@@ -477,7 +485,7 @@
 	var/list/namecounts = list()
 	var/list/creatures = list()
 
-	for(var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
+	/*for(var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
 		if(!O.loc)
 			continue
 		if(istype(O, /obj/item/disk/nuclear))
@@ -499,7 +507,7 @@
 				names.Add(name)
 				namecounts[name] = 1
 			creatures[name] = O
-
+	*/
 	for(var/mob/M in sortList(GLOB.mob_list))
 		var/name = M.name
 		if (names.Find(name))
@@ -1171,3 +1179,15 @@ mob/proc/yank_out_object()
 /mob/onTransitZ(old_z, new_z)
 	..()
 	update_client_z(new_z)
+
+/mob/verb/local_diceroll(n as num)
+	set name = "diceroll"
+	set category = "OOC"
+	set desc = "Roll a random number between 1 and a chosen number."
+
+	n = round(n)		// why are you putting in floats??
+	if(n < 2)
+		to_chat(src, "<span class='warning'>[n] must be 2 or above, otherwise why are you rolling?</span>")
+		return
+
+	to_chat(src, "<span class='notice'>Diceroll result: <b>[rand(1, n)]</b></span>")

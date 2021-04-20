@@ -68,6 +68,7 @@
 	icon_state = "ag_38"
 	ammo_type = /obj/item/ammo_casing/a38/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 780, "silver" = 600)
+
 ///////// .45 /////////
 
 /obj/item/ammo_magazine/m45

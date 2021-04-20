@@ -12,7 +12,7 @@
 	var/lid_color = "black"
 
 /obj/item/reagent_containers/food/drinks/glass2/fitnessflask/Initialize(mapload)
-	..()
+	. = ..()
 	lid_color = pick("black", "red", "blue")
 	update_icon()
 
@@ -24,7 +24,7 @@
 	name = "protein shake"
 
 /obj/item/reagent_containers/food/drinks/glass2/fitnessflask/proteinshake/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("nutriment", 10)
 	reagents.add_reagent("iron", 10)
 	reagents.add_reagent("protein", 30)

@@ -84,7 +84,7 @@
 			lavaland_exit += loc
 			delete_me = 1
 			return
-	landmarks_list += src
+	GLOB.landmarks_list += src
 	return 1
 
 /obj/effect/landmark/proc/delete()
@@ -97,7 +97,7 @@
 
 /obj/effect/landmark/Destroy(var/force = FALSE)
 	if(delete_me || force)
-		landmarks_list -= src
+		GLOB.landmarks_list -= src
 		return ..()
 	return QDEL_HINT_LETMELIVE
 

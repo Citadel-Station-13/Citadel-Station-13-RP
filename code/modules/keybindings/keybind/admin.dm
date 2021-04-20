@@ -25,14 +25,14 @@
 	user.admin_ghost()
 	return TRUE
 
-/datum/keybinding/admin/player_panel_new
+/datum/keybinding/admin/player_panel
 	hotkey_keys = list("F6")
-	name = "player_panel_new"
+	name = "player_panel"
 	full_name = "Player Panel New"
 	description = "Opens up the new player panel"
 
-/datum/keybinding/admin/player_panel_new/down(client/user)
-	user.holder.player_panel_new()
+/datum/keybinding/admin/player_panel/down(client/user)
+	user.holder.player_panel()
 	return TRUE
 
 /datum/keybinding/admin/toggle_buildmode_self

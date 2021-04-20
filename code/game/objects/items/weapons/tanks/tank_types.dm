@@ -103,7 +103,7 @@
 	slot_flags = SLOT_BACK	//these ones have straps!
 
 /obj/item/tank/vox/Initialize(mapload)
-	..()
+	. = ..()
 
 	air_contents.adjust_gas(/datum/gas/phoron, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 	return

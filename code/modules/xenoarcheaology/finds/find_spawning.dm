@@ -105,10 +105,11 @@
 			var/chance = 8
 			for(var/type in typesof(/obj/item/coin))
 				if(prob(chance))
-					new_item = new type(src.loc)
+					new_item = new type(loc)
 					break
 				chance += 10
-
+			if(!new_item)
+				new_item = new /obj/item/coin(loc)
 			item_type = new_item.name
 			apply_prefix = 0
 			apply_material_decorations = 0

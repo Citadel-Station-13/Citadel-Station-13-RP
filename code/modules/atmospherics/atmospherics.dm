@@ -153,12 +153,12 @@ Pipelines + Other Objects -> Pipe network
 /obj/machinery/atmospherics/update_icon()
 	return null
 
-/obj/machinery/atmospherics/proc/can_unwrench()
+/obj/machinery/atmospherics/proc/unsafe_pressure()
 	var/datum/gas_mixture/int_air = return_air()
 	var/datum/gas_mixture/env_air = loc.return_air()
 	if((int_air.return_pressure()-env_air.return_pressure()) > 2*ONE_ATMOSPHERE)
-		return 0
-	return 1
+		return TRUE
+	return FALSE
 
 // Deconstruct into a pipe item.
 /obj/machinery/atmospherics/proc/deconstruct()

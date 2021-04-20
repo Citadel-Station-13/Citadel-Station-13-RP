@@ -52,8 +52,7 @@
 	desc = "Looks slippery."
 
 /turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
-	..()
-	sleep(1 * world.tick_lag)
+	. = ..()
 	if(istype(M, /mob/living))
 		if(M.stunned == 0)
 			to_chat(M, "<span class='warning'>You slide across the ice!</span>")

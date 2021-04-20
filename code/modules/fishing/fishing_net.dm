@@ -23,7 +23,7 @@
 	var/list/accepted_mobs = list(/mob/living/simple_mob/animal/passive/fish)
 
 /obj/item/material/fishing_net/Initialize(mapload)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/material/fishing_net/afterattack(var/atom/A, var/mob/user, var/proximity)

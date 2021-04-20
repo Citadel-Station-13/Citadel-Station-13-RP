@@ -335,7 +335,7 @@
 	center_of_mass = list("x"=16, "y"=4)
 
 /obj/item/reagent_containers/food/drinks/bottle/bitters/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("bitters", 100)
 
 
@@ -396,7 +396,7 @@
 	center_of_mass = list("x"=16, "y"=6)
 
 /obj/item/reagent_containers/food/drinks/bottle/space_up/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("space_up", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind
@@ -406,7 +406,7 @@
 	center_of_mass = list("x"=16, "y"=6)
 
 /obj/item/reagent_containers/food/drinks/bottle/space_mountain_wind/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("spacemountainwind", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/pwine

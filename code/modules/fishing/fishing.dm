@@ -3,15 +3,15 @@
  */
 
 GLOBAL_LIST_INIT(generic_fishing_rare_list, list(
-		/mob/living/simple_mob/animal/passive/fish/solarfish = 1,
-		/mob/living/simple_mob/animal/passive/fish/icebass = 5,
+		/mob/living/simple_mob/animal/passive/fish/solarfish = 0, // was 1, sif meat
+		/mob/living/simple_mob/animal/passive/fish/icebass = 0, // was 5, sif meat
 		/mob/living/simple_mob/animal/passive/fish/koi = 3
 		))
 
 GLOBAL_LIST_INIT(generic_fishing_uncommon_list, list(
 		/mob/living/simple_mob/animal/passive/fish/salmon = 6,
 		/mob/living/simple_mob/animal/passive/fish/pike = 10,
-		/mob/living/simple_mob/animal/passive/fish/javelin = 3,
+		/mob/living/simple_mob/animal/passive/fish/javelin = 0, //was 3, sif meat
 		/mob/living/simple_mob/animal/passive/crab/sif = 1
 		))
 
@@ -19,8 +19,8 @@ GLOBAL_LIST_INIT(generic_fishing_common_list, list(
 		/mob/living/simple_mob/animal/passive/fish/bass = 10,
 		/mob/living/simple_mob/animal/passive/fish/trout = 8,
 		/mob/living/simple_mob/animal/passive/fish/perch = 6,
-		/mob/living/simple_mob/animal/passive/fish/murkin = 8,
-		/mob/living/simple_mob/animal/passive/fish/rockfish = 5,
+		/mob/living/simple_mob/animal/passive/fish/murkin = 0, // was 8, sif meat
+		/mob/living/simple_mob/animal/passive/fish/rockfish = 0, //was 5, contains sif meat which cannot be used to cook
 		/mob/living/simple_mob/animal/passive/crab = 1
 		))
 
@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(indoor_fishing_junk_list, list(
 #define FISHING_JUNK     "junk"
 #define FISHING_NOTHING  "nothing"
 
-GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 5, FISHING_UNCOMMON = 15, FISHING_COMMON = 30, FISHING_JUNK = 30, FISHING_NOTHING = 40))
+GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UNCOMMON = 20, FISHING_COMMON = 35, FISHING_JUNK = 15, FISHING_NOTHING = 40))
 
 /turf/simulated/floor/outdoors/water
 	var/has_fish = TRUE //If the water has fish or not.
@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 5, FISHING_UNC
 
 /turf/simulated/floor/outdoors/water/deep/indoors
 	min_fishing_time = 33
-	max_fishing_time = 99
+	max_fishing_time = 70
 
 /turf/simulated/floor/outdoors/water/deep/indoors/handle_fish()
 	if(has_fish)

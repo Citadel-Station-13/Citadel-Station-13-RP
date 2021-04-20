@@ -24,7 +24,7 @@
 	var/list/clothing_possibilities
 
 /obj/structure/ghost_pod/ghost_activated/human/Initialize(mapload)
-	..()
+	. = ..()
 
 	handle_clothing_setup()
 
@@ -110,7 +110,7 @@
 	H.forceMove(T)
 
 	if(make_antag)
-		var/datum/antagonist/antag = all_antag_types[make_antag]
+		var/datum/antagonist/antag = GLOB.all_antag_types[make_antag]
 		if(antag)
 			if(antag.add_antagonist(H.mind, 1, 1, 0, 1, 1))
 				log_admin("\The [src] made [key_name(src)] into a [antag.role_text].")
@@ -150,7 +150,7 @@
 	var/list/clothing_possibilities
 
 /obj/structure/ghost_pod/manual/human/Initialize(mapload)
-	..()
+	. = ..()
 
 	handle_clothing_setup()
 
@@ -230,7 +230,7 @@
 	H.forceMove(T)
 
 	if(make_antag)
-		var/datum/antagonist/antag = all_antag_types[make_antag]
+		var/datum/antagonist/antag = GLOB.all_antag_types[make_antag]
 		if(antag)
 			if(antag.add_antagonist(H.mind, 1, 1, 0, 1, 1))
 				log_admin("\The [src] made [key_name(src)] into a [antag.role_text].")

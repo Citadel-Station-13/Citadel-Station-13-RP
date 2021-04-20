@@ -91,7 +91,7 @@
 	. = ..()
 
 	reg_in_areas_in_z()
-	
+
 	blend_mode = BLEND_MULTIPLY // Putting this in the constructor so that it stops the icons being screwed up in the map editor.
 
 	if(!IS_DYNAMIC_LIGHTING(src))
@@ -173,6 +173,10 @@
 		A.Entered(AM, old_area)
 	for(var/obj/machinery/M in T)
 		M.power_change()
+
+// compatibility wrapper, remove posthaste by making sure nothing checks area has_gravity.
+/area/has_gravity()
+	return has_gravity
 
 /area/proc/get_contents()
 	return contents
@@ -433,12 +437,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			temp_airlock.prison_open()
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
-
-/area/has_gravity()
-	return has_gravity
-
-/area/space/has_gravity()
-	return 0
 
 /area/proc/shuttle_arrived()
 	for(var/obj/machinery/telecomms/relay/R in contents)
