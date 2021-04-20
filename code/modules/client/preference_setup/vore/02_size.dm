@@ -59,8 +59,8 @@
 
 /datum/category_item/player_setup_item/vore/size/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["size_multiplier"])
-		var/new_size = input(user, "Choose your character's size, ranging from 25% to 200%", "Set Size") as num|null
-		if (!ISINRANGE(new_size,25,200))
+		var/new_size = input(user, "Choose your character's size, ranging from 25% to 150%", "Set Size") as num|null
+		if (!ISINRANGE(new_size,25,150))
 			pref.size_multiplier = 1
 			to_chat(user, "<span class='notice'>Invalid size.</span>")
 			return TOPIC_REFRESH_UPDATE_PREVIEW
