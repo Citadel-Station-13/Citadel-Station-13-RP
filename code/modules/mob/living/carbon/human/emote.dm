@@ -1,7 +1,8 @@
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
 	var/datum/gender/T = gender_datums[get_visible_gender()]
-
+	if(istype(src, /mob/living/carbon/human/dummy))
+		return
 	if (findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		param = copytext(act, t1 + 1, length(act) + 1)
