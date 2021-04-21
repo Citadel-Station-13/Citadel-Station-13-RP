@@ -33,7 +33,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["eyes_blue"]			>> pref.b_eyes
 	S["b_type"]				>> pref.b_type
 	S["disabilities"]		>> pref.disabilities
-	S["mirror"				>> pref.mirror]
+	S["mirror"]				>> pref.mirror
 	S["organ_data"]			>> pref.organ_data
 	S["rlimb_data"]			>> pref.rlimb_data
 	S["body_markings"]		>> pref.body_markings
@@ -69,7 +69,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["eyes_blue"]			<< pref.b_eyes
 	S["b_type"]				<< pref.b_type
 	S["disabilities"]		<< pref.disabilities
-	S["mirror"				<< pref.mirror]
+	S["mirror"]				<< pref.mirror
 	S["organ_data"]			<< pref.organ_data
 	S["rlimb_data"]			<< pref.rlimb_data
 	S["body_markings"]		<< pref.body_markings
@@ -172,6 +172,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			else if(status == "digital")
 				I.digitize()
 
+
 	for(var/N in character.organs_by_name)
 		var/obj/item/organ/external/O = character.organs_by_name[N]
 		O.markings.Cut()
@@ -219,7 +220,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "Needs Glasses: <a href='?src=\ref[src];disabilities=[NEARSIGHTED]'><b>[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
 	. += "Limbs: <a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
 	. += "Internal Organs: <a href='?src=\ref[src];organs=1'>Adjust</a><br>"
-	. += "Respawn Method: <a href='?src=\ref[src];mirror=[1]'><b>[pref.mirror & 0 ? "Off-Site Cloning" : "Mirror"]</b></a><br>"
+	. += "Respawn Method: <a href='?src=\ref[src];mirror=[1]'><b>[pref.mirror ? "Mirror" : "Off-Site Cloning"]</b></a><br>"
 
 	//display limbs below
 	var/ind = 0
@@ -855,6 +856,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["disabilities"])
 		var/disability_flag = text2num(href_list["disabilities"])
 		pref.disabilities ^= disability_flag
+		return TOPIC_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["mirror"])
+		pref.mirror = !pref.mirror
+		world << "[pref.mirror]"
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["toggle_preview_value"])
