@@ -1,9 +1,0 @@
-author: "nevimer"
-delete-after: True
-changes: 
-  - rscadd: "New RUS-T sprites."
-  - rscadd: "New field sprites, dynamic transparency scaled from heat.
-tweak: Stability is tweaked slightly.
-tweak: The field can be much larger now.
-tweak: Size can be scaled much larger, in theory."
-  - code_imp: "The logic behind the scaling of the sprites is ported from Scav Station."
