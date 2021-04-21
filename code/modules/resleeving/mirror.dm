@@ -30,3 +30,7 @@
 /obj/item/implant/mirror/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
 	target.active_mr = stored_mind
 	. = ..()
+
+/obj/item/implant/mirror/positronic
+	name = "Positronic Mirror"
+	desc = "An altered form of the common mirror designed to work with positronic brains."

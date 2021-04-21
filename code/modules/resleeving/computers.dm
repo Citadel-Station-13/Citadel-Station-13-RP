@@ -384,8 +384,9 @@
 				//They were dead, or otherwise available.
 				if(!temp)
 					sleever.putmind(active_mr,mode,override)
-					temp = "Initiating resleeving..."
+					temp = "Initiating resleeving and transferring mirror..."
 					menu = 1
+					qdel(hasmirror)
 
 		//IDK but it broke somehow.
 		else

@@ -409,8 +409,6 @@
 	anchored = 1
 	var/blur_amount
 	var/confuse_amount
-//	var/hasmirror = null
-//	var/stored_mind = null
 
 	var/mob/living/carbon/human/occupant = null
 	var/connected = null
@@ -493,27 +491,6 @@
 		sleevecards++
 		to_chat(user,"<span class='notice'>You store \the [C] in \the [src].</span>")
 		return
-/*	if(istype(W, /obj/item/implant/mirror))
-		user.drop_item()
-		W.forceMove(src)
-		hasmirror = W
-		user.visible_message("[user] inserts the [W] into the [src].", "You insert the [W] into the [src].")
-	return ..()
-
-/obj/machinery/transhuman/resleever/verb/eject_mirror()
-	set category = "Object"
-	set name = "Eject Mirror"
-	set src in oview(1)
-
-	if(hasmirror)
-		to_chat(usr, "You eject the mirror.")
-		(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-		usr.put_in_hands(hasmirror)
-		hasmirror = null
-		stored_mind = null
-	else
-		to_chat(usr, "There is no mirror to eject.")
-*/
 
 /obj/machinery/transhuman/resleever/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
@@ -555,10 +532,7 @@
 		card.sleeveInto(MR)
 		sleevecards--
 		return 1
-/*
-	if(hasmirror)
-	 MR = stored_mind
-*/
+
 	//If we're sleeving a subtarget, briefly swap them to not need to duplicate tons of code.
 	var/mob/living/carbon/human/original_occupant
 	if(override)
@@ -597,9 +571,9 @@
 		occupant.name = occupant.real_name
 		occupant.dna.real_name = occupant.real_name
 
-	//Give them a backup implant
-	var/obj/item/implant/backup/new_imp = new()
-	if(new_imp.handle_implant(occupant, BP_HEAD))
+	//Give them a mirror
+	var/obj/item/implant/mirror/new_imp = new()
+	if(new_imp.handle_implant(occupant, BP_TORSO))
 		new_imp.post_implant(occupant)
 
 	//Inform them and make them a little dizzy.
