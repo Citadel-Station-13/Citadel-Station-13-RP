@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(transcore)
 	var/timer = TICK_USAGE
 
 	INTERNAL_PROCESS_STEP(SSTRANSCORE_IMPLANTS,TRUE,process_implants,cost_implants,SSTRANSCORE_BACKUPS)
-	INTERNAL_PROCESS_STEP(SSTRANSCORE_BACKUPS,FALSE,process_backups,cost_backups,SSTRANSCORE_IMPLANTS)
+//	INTERNAL_PROCESS_STEP(SSTRANSCORE_BACKUPS,FALSE,process_backups,cost_backups,SSTRANSCORE_IMPLANTS)
 
 /datum/controller/subsystem/transcore/proc/process_implants(resumed = 0)
 	if (!resumed)
@@ -65,7 +65,7 @@ SUBSYSTEM_DEF(transcore)
 
 		if(MC_TICK_CHECK)
 			return
-
+/* haha don't need this anymore :v)
 /datum/controller/subsystem/transcore/proc/process_backups(resumed = 0)
 	if (!resumed)
 		src.current_run = backed_up.Copy()
@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(transcore)
 
 		if(MC_TICK_CHECK)
 			return
-
+*/
 /datum/controller/subsystem/transcore/stat_entry()
 	var/msg = list()
 	if(core_dumped)
@@ -119,7 +119,7 @@ SUBSYSTEM_DEF(transcore)
 		return 0
 
 	var/datum/transhuman/mind_record/MR
-
+/* get fucked backups
 	if(mind.name in backed_up)
 		MR = backed_up[mind.name]
 		MR.last_update = world.time
@@ -141,11 +141,11 @@ SUBSYSTEM_DEF(transcore)
 			MR.nif_durability = null
 			MR.nif_software = null
 			MR.nif_savedata = null
+*/
 
-	else
-		MR = new(mind, mind.current, add_to_db = TRUE, one_time = one_time)
+	MR = new(mind, mind.current, add_to_db = FALSE, one_time = one_time)
 
-	return 1
+	return MR
 
 // Send a past-due notification to the medical radio channel.
 /datum/controller/subsystem/transcore/proc/notify(var/name, var/repeated = FALSE)
