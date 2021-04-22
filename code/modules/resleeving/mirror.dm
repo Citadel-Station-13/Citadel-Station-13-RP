@@ -39,12 +39,13 @@
 			to_chat(usr, "This mirror contains a consciousness.")
 	else
 		if(istype(I, /obj/item/mirrortool))
-			var/obj/item/mirrortool/implanter = I
-			if(implanter.imp)
+			var/obj/item/mirrortool/MT = I
+			if(MT.imp)
+				to_chat(usr, "The mirror tool already contains a mirror.")
 				return // It's full.
 			user.drop_from_inventory(src)
-			forceMove(implanter)
-			implanter.imp = src
+			forceMove(MT)
+			MT.imp = src
 
 
 /obj/item/implant/mirror/positronic
@@ -81,11 +82,25 @@
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/mirrortool/attack(mob/living/carbon/human/M, mob/living/user, target_zone)
-	if(target_zone == BP_TORSO)
+/obj/item/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
+	if(target_zone == BP_TORSO && imp == null)
 		for(var/obj/item/organ/I in M.organs)
 			for(var/obj/item/implant/mirror/MI in I.contents)
 				imp = MI
+				qdel(MI)
+	else if (target_zone == BP_TORSO && imp != null)
+		if (imp)
+			M.visible_message("<span class='warning'>[user] is attempting to implant [M].</span>")
+			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.do_attack_animation(M)
+			var/turf/T1 = get_turf(M)
+			if (T1 && ((M == user) || do_after(user, 50)))
+				if(user && M && (get_turf(M) == T1) && src && src.imp)
+					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
+					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
+					if(imp.handle_implant(M))
+						imp.post_implant(M)
+					src.imp = null
 	else
 		to_chat(usr, "You must target the torso.")
 
@@ -94,5 +109,6 @@
 		to_chat(usr, "No mirror is loaded.")
 	else
 		user.put_in_hands(imp)
+		imp = null
 
 
