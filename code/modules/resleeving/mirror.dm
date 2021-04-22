@@ -25,7 +25,7 @@
 
 /obj/item/implant/mirror/post_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
-		stored_mind = SStranscore.m_backup(H.mind, one_time = TRUE)
+		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
 
 /obj/item/implant/mirror/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
 	target.active_mr = stored_mind
@@ -38,7 +38,14 @@
 		else
 			to_chat(usr, "This mirror contains a consciousness.")
 	else
-		..()
+		if(istype(I, /obj/item/mirrortool))
+			var/obj/item/mirrortool/implanter = I
+			if(implanter.imp)
+				return // It's full.
+			user.drop_from_inventory(src)
+			forceMove(implanter)
+			implanter.imp = src
+
 
 /obj/item/implant/mirror/positronic
 	name = "Positronic Mirror"
@@ -58,3 +65,34 @@
 	throw_range = 10
 	matter = list(DEFAULT_WALL_MATERIAL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
+
+/obj/item/mirrortool
+	name = "Mirror Installation Tool"
+	desc = "A tool for the installation and removal of Mirrors"
+	icon = 'icons/obj/device_alt.dmi'
+	icon_state = "sleevemate"
+	item_state = "healthanalyzer"
+	slot_flags = SLOT_BELT
+	throwforce = 3
+	w_class = ITEMSIZE_SMALL
+	throw_speed = 5
+	throw_range = 10
+	matter = list(DEFAULT_WALL_MATERIAL = 200)
+	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
+	var/obj/item/implant/mirror/imp = null
+
+/obj/item/mirrortool/attack(mob/living/carbon/human/M, mob/living/user, target_zone)
+	if(target_zone == BP_TORSO)
+		for(var/obj/item/organ/I in M.organs)
+			for(var/obj/item/implant/mirror/MI in I.contents)
+				imp = MI
+	else
+		to_chat(usr, "You must target the torso.")
+
+/obj/item/mirrortool/attack_self(var/mob/user)
+	if(!imp)
+		to_chat(usr, "No mirror is loaded.")
+	else
+		user.put_in_hands(imp)
+
+

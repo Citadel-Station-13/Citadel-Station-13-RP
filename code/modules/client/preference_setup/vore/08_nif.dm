@@ -24,7 +24,7 @@
 		var/obj/item/nif/N = path
 		pref.nif_id = initial(N.id)
 		S["nif_path"]	<< null		//erase
-		S["nif_id"]		<< pref.nif_id	
+		S["nif_id"]		<< pref.nif_id
 	S["nif_durability"]	>> pref.nif_durability
 	S["nif_savedata"]	>> pref.nif_savedata
 
@@ -54,9 +54,10 @@
 
 		//And now here's the trick. We wipe these so that if they die, they lose the NIF.
 		//Backup implants will start saving this again periodically, and so will cryo'ing out.
-		pref.nif_id = null
-		pref.nif_durability = null
-		pref.nif_savedata = null
+		//YEEEET. We don't want this shit no more.
+		// pref.nif_id = null
+		// pref.nif_durability = null
+		// pref.nif_savedata = null
 		var/savefile/S = new /savefile(pref.path)
 		if(!S)
 			WARNING ("Couldn't load NIF save savefile? [pref.real_name]")
