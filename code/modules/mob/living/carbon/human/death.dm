@@ -22,6 +22,10 @@
 		if(istype(loc,/turf))
 			I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
 
+	for(var/obj/item/organ/I in src.organs)
+		for(var/obj/item/implant/mirror/MI in I.contents)
+			MI.forceMove(src.loc)
+
 	for(var/obj/item/organ/external/E in src.organs)
 		E.droplimb(0,DROPLIMB_EDGE,1)
 
@@ -35,12 +39,23 @@
 	gibs(loc, dna, null, species.get_flesh_colour(src), species.get_blood_colour(src))
 
 /mob/living/carbon/human/dust()
+
+	for(var/obj/item/organ/I in src.organs)
+		for(var/obj/item/implant/mirror/MI in I.contents)
+			MI.forceMove(src.loc)
+
 	if(species)
 		..(species.dusted_anim, species.remains_type)
 	else
 		..()
 
+
 /mob/living/carbon/human/ash()
+
+	for(var/obj/item/organ/I in src.organs)
+		for(var/obj/item/implant/mirror/MI in I.contents)
+			MI.forceMove(src.loc)
+
 	if(species)
 		..(species.dusted_anim)
 	else
