@@ -65,7 +65,7 @@ SUBSYSTEM_DEF(transcore)
 
 		if(MC_TICK_CHECK)
 			return
-/* haha don't need this anymore :v)
+
 /datum/controller/subsystem/transcore/proc/process_backups(resumed = 0)
 	if (!resumed)
 		src.current_run = backed_up.Copy()
@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(transcore)
 
 		if(MC_TICK_CHECK)
 			return
-*/
+
 /datum/controller/subsystem/transcore/stat_entry()
 	var/msg = list()
 	if(core_dumped)
@@ -119,7 +119,7 @@ SUBSYSTEM_DEF(transcore)
 		return 0
 
 	var/datum/transhuman/mind_record/MR
-/* get fucked backups
+
 	if(mind.name in backed_up)
 		MR = backed_up[mind.name]
 		MR.last_update = world.time
@@ -141,11 +141,22 @@ SUBSYSTEM_DEF(transcore)
 			MR.nif_durability = null
 			MR.nif_software = null
 			MR.nif_savedata = null
-*/
+
 
 	MR = new(mind, mind.current, add_to_db = FALSE, one_time = one_time)
 
 	return MR
+
+/datum/controller/subsystem/transcore/proc/m_backupE(var/datum/mind/mind, var/obj/item/nif/nif, var/one_time = FALSE)
+	ASSERT(mind)
+	if(!mind.name || core_dumped)
+		return 0
+
+	var/datum/transhuman/mind_record/MRE
+
+	MRE = new(mind, mind.current, add_to_db = FALSE, one_time = one_time)
+
+	return MRE
 
 // Send a past-due notification to the medical radio channel.
 /datum/controller/subsystem/transcore/proc/notify(var/name, var/repeated = FALSE)

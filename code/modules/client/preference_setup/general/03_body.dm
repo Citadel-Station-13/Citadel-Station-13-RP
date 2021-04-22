@@ -861,11 +861,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["mirror"])
 		if(pref.mirror == 1)
 			pref.mirror = 0
-			alert("Off-Site Cloning means you cannot rejoin a round as the same character if you are killed and cannot be recovered.","Okay")
-		else if(pref.mirror ==0 )
+			alert("Off-Site Cloning means you cannot rejoin a round as the same character if you are killed and cannot be recovered.","Respawn Selection")
+		else if(pref.mirror == 0)
 			pref.mirror = 1
-			alert("A mirror is an implant that, if recovered, will allow you to be resleeved.","Okay")
-		return
+			alert("A mirror is an implant that, if recovered, will allow you to be resleeved.","Respawn Selection")
+		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["toggle_preview_value"])
 		pref.equip_preview_mob ^= text2num(href_list["toggle_preview_value"])
