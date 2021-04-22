@@ -31,6 +31,30 @@
 	target.active_mr = stored_mind
 	. = ..()
 
+/obj/item/implant/mirror/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/mirrorscanner))
+		if(stored_mind == null)
+			to_chat(usr, "No consciousness found.")
+		else
+			to_chat(usr, "This mirror contains a consciousness.")
+	else
+		..()
+
 /obj/item/implant/mirror/positronic
 	name = "Positronic Mirror"
 	desc = "An altered form of the common mirror designed to work with positronic brains."
+
+
+/obj/item/mirrorscanner
+	name = "Mirror Scanner"
+	desc = "A handheld scanner that will display the name of the currently stored consciousness in a mirror."
+	icon = 'icons/obj/device_alt.dmi'
+	icon_state = "sleevemate"
+	item_state = "healthanalyzer"
+	slot_flags = SLOT_BELT
+	throwforce = 3
+	w_class = ITEMSIZE_SMALL
+	throw_speed = 5
+	throw_range = 10
+	matter = list(DEFAULT_WALL_MATERIAL = 200)
+	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
