@@ -541,10 +541,9 @@
 		// Set defer to 1 if you add more crap here so it only recalculates struc_enzymes once. - N3X
 		new_character.dna.SetSEState(GLASSESBLOCK,1,0)
 		new_character.disabilities |= NEARSIGHTED
-	if(client.prefs.mirror == 1)
-		var/obj/item/implant/mirror/E = new /obj/item/implant/mirror(new_character)
-		E.handle_implant(new_character)
-		E.post_implant(new_character)
+	 if(client.prefs.mirror == 1)
+	 	var/obj/item/implant/mirror/E = new /obj/item/implant/mirror
+	 	E.handle_implant(new_character)
 
 
 	for(var/lang in client.prefs.alternate_languages)
