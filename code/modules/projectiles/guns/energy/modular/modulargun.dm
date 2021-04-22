@@ -43,6 +43,7 @@
 	if(circuit)
 		. += "The modular weapon has a [circuit.name] installed in the fire control slot."
 
+// hilariously snowflake proc to force a firemode switch because i can't be assed to do it properly holy shit fuck you
 /obj/item/gun/energy/modular/proc/generatefiremodes()
 	do_generatefiremodes()
 	var/datum/firemode/new_mode = firemodes[1]
