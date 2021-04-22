@@ -6,8 +6,8 @@
 	name = "Mirror"
 	desc = "A small implanted disk that stores a copy of ones conciousness, updated at times of rest."
 	catalogue_data = /datum/category_item/catalogue/technology/resleeving
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "backup_implant"
+	icon = 'icons/obj/items.dmi'
+	icon_state = "mirror_implant"
 	var/stored_mind = null
 
 /obj/item/implant/get_data()
