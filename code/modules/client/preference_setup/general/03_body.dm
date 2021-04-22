@@ -220,7 +220,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "Needs Glasses: <a href='?src=\ref[src];disabilities=[NEARSIGHTED]'><b>[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
 	. += "Limbs: <a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
 	. += "Internal Organs: <a href='?src=\ref[src];organs=1'>Adjust</a><br>"
-	. += "Respawn Method: <a href='?src=\ref[src];mirror=[1]'><b>[pref.mirror ? "Mirror" : "Off-Site Cloning"]</b></a><br>"
+	. += "Respawn Method: <a href='?src=\ref[src];mirror=1'><b>[pref.mirror ? "Mirror" : "Off-Site Cloning"]</b></a><br>"
 
 	//display limbs below
 	var/ind = 0
@@ -858,14 +858,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		pref.disabilities ^= disability_flag
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
-	else if(href_list["mirror"])
-		if(pref.mirror == 1)
-			pref.mirror = 0
-			alert("Off-Site Cloning means you cannot rejoin a round as the same character if you are killed and cannot be recovered.","Okay")
-		else if(pref.mirror ==0 )
-			pref.mirror = 1
-			alert("A mirror is an implant that, if recovered, will allow you to be resleeved.","Okay")
-		return
+	else if(href_list["mirror"]) // maybe dont put an annoying warning popup here twice
+		pref.mirror = !pref.mirror
+		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["toggle_preview_value"])
 		pref.equip_preview_mob ^= text2num(href_list["toggle_preview_value"])
