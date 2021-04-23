@@ -177,15 +177,15 @@
 		var/detonation_damage = src.detonation_damage * (!ishuman(L)? 1 : human_damage_nerf)
 		var/backstab_bonus = src.backstab_bonus * (!ishuman(L)? 1 : human_backstab_nerf)
 		var/thrown_bonus = thrown? (src.thrown_bonus * (!ishuman(L)? 1 : human_damage_nerf)) : 0
-		if((user.dir & backstab_dir) && (L.dir & backstab_dir))
+		if(thrown? (get_dir(src, L) & L.dir) : ((user.dir & backstab_dir) && (L.dir & backstab_dir)))
 			if(!QDELETED(C))
-				C.total_damage += detonation_damage + backstab_bonus //cheat a little and add the total before killing it, so certain mobs don't have much lower chances of giving an item
-			L.apply_damage(detonation_damage + backstab_bonus, BRUTE, blocked = def_check)
-			playsound(user, 'sound/weapons/kenetic_accel.ogg', 100, 1) //Seriously who spelled it wrong
+				C.total_damage += detonation_damage + backstab_bonus + thrown_bonus //cheat a little and add the total before killing it, so certain mobs don't have much lower chances of giving an item
+			L.apply_damage(detonation_damage + backstab_bonus + thrown_bonus, BRUTE, blocked = def_check)
+			playsound(src, 'sound/weapons/kenetic_accel.ogg', 100, 1) //Seriously who spelled it wrong
 		else
 			if(!QDELETED(C))
-				C.total_damage += detonation_damage
-			L.apply_damage(detonation_damage, BRUTE, blocked = def_check)
+				C.total_damage += detonation_damage + thrown_bonus
+			L.apply_damage(detonation_damage + thrown_bonus, BRUTE, blocked = def_check)
 
 /obj/item/kinetic_crusher/throw_impact(atom/hit_atom, speed)
 	. = ..()
@@ -310,8 +310,9 @@
 /obj/item/projectile/destabilizer/on_hit(atom/target, blocked = FALSE)
 	if(isliving(target))
 		var/mob/living/L = target
-		var/had_effect = (L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)) //used as a boolean
-		var/datum/status_effect/crusher_mark/CM = L.apply_status_effect(STATUS_EFFECT_CRUSHERMARK, hammer_synced)
+		L.apply_status_effect(STATUS_EFFECT_CRUSHERMARK, hammer_synced)
+		// var/had_effect = (L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)) //used as a boolean
+		// var/datum/status_effect/crusher_mark/CM = L.apply_status_effect(STATUS_EFFECT_CRUSHERMARK, hammer_synced)
 /*
 		if(hammer_synced)
 			for(var/t in hammer_synced.trophies)
