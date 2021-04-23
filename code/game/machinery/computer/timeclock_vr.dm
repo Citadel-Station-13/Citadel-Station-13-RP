@@ -138,11 +138,15 @@
 		return 1
 	return 1 // Return 1 to update UI
 
+
 /obj/machinery/computer/timeclock/proc/getOpenOnDutyJobs(var/mob/user, var/department)
 	var/list/available_jobs = list()
 	for(var/datum/job/job in SSjobs.occupations)
 		if(job && job.is_position_available() && !job.whitelist_only && !jobban_isbanned(user,job.title) && job.player_old_enough(user.client))
 			if(job.department == department && !job.disallow_jobhop && job.timeoff_factor > 0)
+				if(department == "Command")
+					if(job.title != "Command Secretary")
+						continue
 				available_jobs += job.title
 				if(job.alt_titles)
 					for(var/alt_job in job.alt_titles)
@@ -185,8 +189,6 @@
 	if(!foundjob)
 		return
 	var/real_dept = foundjob.department
-	if(real_dept && real_dept == "Command")
-		real_dept = "Civilian"
 	var/datum/job/ptojob = null
 	for(var/datum/job/job in SSjobs.occupations)
 		if(job.department == real_dept && job.timeoff_factor < 0)
