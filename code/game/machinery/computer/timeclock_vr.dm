@@ -143,10 +143,7 @@
 	var/list/available_jobs = list()
 	for(var/datum/job/job in SSjobs.occupations)
 		if(job && job.is_position_available() && !job.whitelist_only && !jobban_isbanned(user,job.title) && job.player_old_enough(user.client))
-			if(job.department == department && !job.disallow_jobhop && job.timeoff_factor > 0)
-				if(department == "Command")
-					if(job.title != "Command Secretary")
-						continue
+			if(job.department == department && job.allow_jobhop && job.timeoff_factor > 0)
 				available_jobs += job.title
 				if(job.alt_titles)
 					for(var/alt_job in job.alt_titles)
