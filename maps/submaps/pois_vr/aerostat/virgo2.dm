@@ -1,33 +1,5 @@
 #include "virgo2_submap_areas.dm"
 
-#if MAP_TEST
-#include "Flake.dmm"
-#include "MCamp1.dmm"
-#include "Rocky1.dmm"
-#include "Shack1.dmm"
-#include "Smol1.dmm"
-#include "Mudpit.dmm"
-#include "Snowrock1.dmm"
-#include "Boombase.dmm"
-#include "Blackshuttledown.dmm"
-#include "Lab1.dmm"
-#include "Rocky4.dmm"
-#include "DJOutpost1.dmm"
-#include "DJOutpost2.dmm"
-#include "Rockybase.dmm"
-#include "MHR.dmm"
-#include "GovPatrol.dmm"
-#include "DecoupledEngine.dmm"
-#include "DoomP.dmm"
-#include "CaveS.dmm"
-#include "Drugden.dmm"
-#include "Musk.dmm"
-#include "Manor1.dmm"
-#include "Epod3.dmm"
-#include "Epod4.dmm"
-#include "ButcherShack.dmm"
-#endif
-
 /datum/map_template/virgo2
 	name = "Surface Content - Virgo 2"
 	desc = "For seeding submaps on Virgo 2"

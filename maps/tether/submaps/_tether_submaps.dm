@@ -156,17 +156,6 @@
 
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
-#if AWAY_MISSION_TEST
-#include "../../expedition_vr/beach/beach.dmm"
-#include "../../expedition_vr/beach/cave.dmm"
-#include "../../expedition_vr/alienship/alienship.dmm"
-#include "../../expedition_vr/aerostat/aerostat.dmm"
-#include "../../expedition_vr/aerostat/surface.dmm"
-#include "../../expedition_vr/space/debrisfield.dmm"
-#include "../../expedition_vr/space/fueldepot.dmm"
-#include "../../expedition_vr/space/guttersite.dmm"
-#endif
-
 #include "../../expedition_vr/beach/_beach.dm"
 /datum/map_template/tether_lateload/away_beach
 	name = "Desert Planet - Z1 Beach"

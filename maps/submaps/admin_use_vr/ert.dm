@@ -1,7 +1,3 @@
-// Compile in the map for CI testing if we're testing compileability of all the maps
-#if MAP_TEST
-#include "ert.dmm"
-#endif
 
 
 // Map template for spawning the shuttle
@@ -24,7 +20,7 @@
 /area/ship/ert/engineering
 	name = "\improper NRV Von Braun - Engineering Control Room"
 	icon_state = "engine_monitoring"
-	
+
 /area/ship/ert/eng_storage
 	name = "\improper NRV Von Braun - Engineering Storage"
 	icon_state = "storage"
@@ -36,7 +32,7 @@
 /area/ship/ert/atmos
 	name = "\improper NRV Von Braun - Atmospherics"
 	icon_state = "atmos"
-                                   
+
 /area/ship/ert/mech_bay
 	name = "\improper NRV Von Braun - RIG & Mech Bay"
 	icon_state = "yellow"
@@ -176,7 +172,7 @@
 	on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
 	on_store_visible_message_1 = "hums and hisses as it moves"
 	on_store_visible_message_2 = "into cryogenic storage."
-	
+
 //Misc Stuff
 /obj/item/paper/ert_armory_cells
 	name = "ERT Armory Cell Supply"

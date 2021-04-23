@@ -488,3 +488,9 @@ var/const/access_pilot = 67
 	id = access_alien
 	desc = "#%_^&*@!"
 	access_type = ACCESS_TYPE_PRIVATE
+
+/var/const/access_talon = 301
+/datum/access/talon
+	id = access_talon
+	desc = "Talon"
+	access_type = ACCESS_TYPE_PRIVATE

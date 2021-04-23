@@ -85,14 +85,14 @@
 	name = "virgo 2 atmosphere"
 	desc = "Be careful where you step!"
 	color = "#eacd7c"
-	ATMOSPHERE_ID_VIRGO2
+	initial_gas_mix = ATMOSPHERE_ID_VIRGO2
 
 /turf/unsimulated/floor/sky/virgo2_sky/Initialize()
 	skyfall_levels = list(z+1)
 	. = ..()
 
 /turf/simulated/shuttle/wall/voidcraft/green/virgo2
-	ATMOSPHERE_ID_VIRGO2
+	initial_gas_mix = ATMOSPHERE_ID_VIRGO2
 	color = "#eacd7c"
 
 /turf/simulated/shuttle/wall/voidcraft/green/virgo2/nocol
