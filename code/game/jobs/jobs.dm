@@ -35,6 +35,7 @@ var/const/BOTANIST			=(1<<2)
 var/const/CHEF				=(1<<3)
 var/const/JANITOR			=(1<<4)
 var/const/LIBRARIAN			=(1<<5)
+var/const/ENTERTAINER		=(1<<5)
 var/const/QUARTERMASTER		=(1<<6)
 var/const/CARGOTECH			=(1<<7)
 var/const/MINER				=(1<<8)
@@ -107,6 +108,7 @@ var/list/civilian_positions = list(
 	"Chef",
 	"Janitor",
 	"Librarian",
+	"Entertainer",
 	"Lawyer",
 	"Chaplain",
 	"Pilot",

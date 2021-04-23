@@ -144,6 +144,22 @@
 	outfit_type = /decl/hierarchy/outfit/job/librarian
 	alt_titles = list("Journalist", "Historian", "Writer","Film Crew")
 
+/datum/job/entertainer
+	title = "Entertainer"
+	flag = ENTERTAINER
+	department = "Civilian"
+	department_flag = CIVILIAN
+	faction = "Station"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "the head of personnel"
+	selection_color = "#515151"
+	access = list(access_maint_tunnels)
+	minimal_access = list(access_maint_tunnels)
+
+	outfit_type = /decl/hierarchy/outfit/job/entertainer
+	alt_titles = list("Dancer", "Musician", "Singer", "Magician", "Game Master", "Morale Officer")
+
 //var/global/lawyer = 0//Checks for another lawyer //This changed clothes on 2nd lawyer, both IA get the same dreds.
 /datum/job/lawyer
 	title = "Internal Affairs Agent"

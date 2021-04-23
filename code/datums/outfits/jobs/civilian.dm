@@ -32,6 +32,10 @@
 	id_pda_assignment = "Visitor"
 	uniform = /obj/item/clothing/under/assistantformal
 
+/decl/hierarchy/outfit/job/entertainer
+	name = OUTFIT_JOB_NAME("Entertainer")
+	id_pda_assignment = "Entertainer"
+
 /decl/hierarchy/outfit/job/assistant/worker
 	id_type = /obj/item/card/id/civilian
 
