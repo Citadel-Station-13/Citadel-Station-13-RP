@@ -40,6 +40,8 @@
 	var/human_backstab_nerf = 0.25
 	/// damage buff for throw impacts
 	var/thrown_bonus = 35
+	/// do we need to be wielded?
+	var/requires_wield = TRUE
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
@@ -50,13 +52,15 @@
 /*
 /obj/item/kinetic_crusher/Initialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+	if(requires_Wield)
+		RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
+		RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
 
 /obj/item/kinetic_crusher/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/butchering, 60, 110) //technically it's huge and bulky, but this provides an incentive to use it
-	AddComponent(/datum/component/two_handed, force_unwielded=0, force_wielded=20)
+	if(requires_wield)
+		AddComponent(/datum/component/butchering, 60, 110) //technically it's huge and bulky, but this provides an incentive to use it
+		AddComponent(/datum/component/two_handed, force_unwielded=0, force_wielded=20)
 */
 
 /obj/item/kinetic_crusher/Destroy()
@@ -133,7 +137,7 @@
 		var/obj/item/crusher_trophy/T = target
 		T.add_to(src, user)
 */
-	if(!wielded)
+	if(requires_wield && !wielded)
 		return
 	if(!proximity_flag && charged)//Mark a target, or mine a tile.
 		var/turf/proj_turf = user.loc
@@ -203,7 +207,7 @@
 
 /obj/item/kinetic_crusher/ui_action_click(mob/user, actiontype)
 	light_on = !light_on
-	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
+	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_brightness(user)
 	update_icon()
 
@@ -283,6 +287,7 @@
 	name = "proto-kinetic dagger"
 	desc = "A scaled down version of a protokinetic crusher, usually used in a last ditch scenario."
 	icon_state = "glaive-dagger"
+	item_state = "switchblade-ext"
 	w_class = WEIGHT_CLASS_SMALL
 	force = 15
 	// yeah yeah buff but rp mobs are tough as fuck.
@@ -517,14 +522,16 @@
 	if(.)
 		H.force += bonus_value * 0.2
 		H.detonation_damage += bonus_value * 0.8
-//		AddComponent(/datum/component/two_handed, force_wielded=(20 + bonus_value * 0.2))
+		if(requires_wield)
+			AddComponent(/datum/component/two_handed, force_wielded=(20 + bonus_value * 0.2))
 
 /obj/item/crusher_trophy/demon_claws/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
 		H.force -= bonus_value * 0.2
 		H.detonation_damage -= bonus_value * 0.8
-//		AddComponent(/datum/component/two_handed, force_wielded=20)
+		if(requires_wield)
+			AddComponent(/datum/component/two_handed, force_wielded=20)
 
 /*
 /obj/item/crusher_trophy/demon_claws/on_melee_hit(mob/living/target, mob/living/user)
