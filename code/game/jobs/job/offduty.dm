@@ -1,7 +1,18 @@
 //
 // "Off-duty" jobs are for people who want to do nothing and have earned it.
 //
-
+/datum/job/offduty_commander
+	title = "Off-duty Commander"
+	latejoin_only = TRUE
+	timeoff_factor = -1
+	total_positions = -1
+	faction = "Station"
+	department = "Command"
+	supervisors = "nobody! Enjoy your time off"
+	selection_color = "#9b633e"
+	access = list(access_maint_tunnels)
+	minimal_access = list(access_maint_tunnels)
+	outfit_type = /decl/hierarchy/outfit/job/secretary
 /datum/job/offduty_civilian
 	title = "Off-duty Worker"
 	latejoin_only = TRUE

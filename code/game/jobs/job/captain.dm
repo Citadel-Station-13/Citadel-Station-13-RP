@@ -76,7 +76,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department = "Command"
 	head_position = 1
 	department_flag = CIVILIAN
-	disallow_jobhop = TRUE
+	disallow_jobhop = FALSE
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
