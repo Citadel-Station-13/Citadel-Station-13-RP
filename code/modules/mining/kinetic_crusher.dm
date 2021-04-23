@@ -42,6 +42,8 @@
 	var/thrown_bonus = 35
 	/// do we need to be wielded?
 	var/requires_wield = TRUE
+	/// do we have a charge overlay?
+	var/charge_overlay = TRUE
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
@@ -115,7 +117,7 @@
 */
 
 /obj/item/kinetic_crusher/attack(mob/living/target, mob/living/carbon/user)
-	if(!wielded)
+	if(!wielded && requires_wield)
 		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand.")
 		return
 	var/datum/status_effect/crusher_damage/C = target.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
@@ -222,7 +224,7 @@
 
 /obj/item/kinetic_crusher/update_overlays()
 	. = ..()
-	if(!charged)
+	if(!charged && charge_overlay)
 		. += "[icon_state]_uncharged"
 	if(light_on)
 		. += "[icon_state]_lit"
@@ -290,6 +292,8 @@
 	item_state = "switchblade-ext"
 	w_class = WEIGHT_CLASS_SMALL
 	force = 15
+	requires_wield = FALSE
+	charge_overlay = FALSE
 	// yeah yeah buff but rp mobs are tough as fuck.
 	backstab_bonus = 25
 	detonation_damage = 35
@@ -305,6 +309,7 @@
 	damage_type = BRUTE
 	check_armour = "bomb"
 	range = 6
+	accuracy = INFINITY	// NO.
 	// log_override = TRUE
 	var/obj/item/kinetic_crusher/hammer_synced
 
