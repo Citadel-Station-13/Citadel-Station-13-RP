@@ -1,11 +1,4 @@
-// Compile in the map for CI testing if we're testing compileability of all the maps
-#if MAP_TEST
-#include "mackerel_sh.dmm"
-#include "mackerel_lc.dmm"
-#include "mackerel_lc_wreck.dmm"
-#include "mackerel_hc.dmm"
-#include "mackerel_hc_skel.dmm"
-#endif
+
 
 // Map template for spawning the shuttle
 /datum/map_template/om_ships/mackerel_stationhopper
@@ -39,43 +32,43 @@
 	annihilate = TRUE
 
 // The shuttle's area(s)
-/area/shuttle/mackerel_sh	
+/area/shuttle/mackerel_sh
 	name = "\improper Mackerel Stationhopper"
 	icon_state = "green"
 	requires_power = 1
 	has_gravity = 0
-	
-/area/shuttle/mackerel_lc	
+
+/area/shuttle/mackerel_lc
 	name = "\improper Mackerel Light Cargo"
 	icon_state = "green"
 	requires_power = 1
 	has_gravity = 0
-	
-/area/shuttle/mackerel_hc	
+
+/area/shuttle/mackerel_hc
 	name = "\improper Mackerel Heavy Cargo"
 	icon_state = "green"
 	requires_power = 1
 	has_gravity = 0
-	
-/area/shuttle/mackerel_hc_skel	
+
+/area/shuttle/mackerel_hc_skel
 	name = "\improper Mackerel Heavy Cargo Spartan"
 	icon_state = "green"
 	requires_power = 1
 	has_gravity = 0
-	
+
 /area/shuttle/mackerel_hc_skel_cockpit
 	name = "\improper Mackerel Heavy Cargo Cockpit"
 	icon_state = "purple"
 	requires_power = 1
 	has_gravity = 0
-	
+
 /area/shuttle/mackerel_hc_skel_eng
 	name = "\improper Mackerel Heavy Cargo Engineering"
 	icon_state = "yellow"
 	requires_power = 1
 	has_gravity = 0
-	
-/area/shuttle/mackerel_lc_wreck	
+
+/area/shuttle/mackerel_lc_wreck
 	name = "\improper Wrecked Mackerel Light Cargo"
 	icon_state = "green"
 	requires_power = 1
