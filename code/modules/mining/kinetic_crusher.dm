@@ -12,7 +12,7 @@
 	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
 	force = 0 //You can't hit stuff unless wielded
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK
+	slot_flags = SLOT_BACK
 	throwforce = 5
 	throw_speed = 4
 /*
@@ -21,9 +21,12 @@
 */
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
-	sharpness = SHARP_EDGED
-	actions_types = list(/datum/action/item_action/toggle_light)
-	var/list/trophies = list()
+	sharp = TRUE
+	edge = TRUE
+	// sharpness = SHARP_EDGED
+	action_button_name = "Toggle Light"
+	// actions_types = list(/datum/action/item_action/toggle_light)
+	// var/list/trophies = list()
 	var/charged = TRUE
 	var/charge_time = 15
 	var/detonation_damage = 50
@@ -57,7 +60,7 @@
 */
 
 /obj/item/kinetic_crusher/Destroy()
-	QDEL_LIST(trophies)
+	// QDEL_LIST(trophies)
 	return ..()
 
 /obj/item/kinetic_crusher/emag_act()
@@ -83,10 +86,13 @@
 	. = ..()
 	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force + detonation_damage]</b> damage.</span>"
 	. += "<span class='notice'>Does <b>[force + detonation_damage + backstab_bonus]</b> damage if the target is backstabbed, instead of <b>[force + detonation_damage]</b>.</span>"
+/*
 	for(var/t in trophies)
 		var/obj/item/crusher_trophy/T = t
 		. += "<span class='notice'>It has \a [T] attached, which causes [T.effect_desc()].</span>"
+*/
 
+/*
 /obj/item/kinetic_crusher/attackby(obj/item/I, mob/living/user)
 	if(I.tool_behaviour == TOOL_CROWBAR)
 		if(LAZYLEN(trophies))
@@ -102,6 +108,7 @@
 		T.add_to(src, user)
 	else
 		return ..()
+*/
 
 /obj/item/kinetic_crusher/attack(mob/living/target, mob/living/carbon/user)
 	if(!wielded)
@@ -110,18 +117,22 @@
 	var/datum/status_effect/crusher_damage/C = target.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
 	var/target_health = target.health
 	..()
+/*
 	for(var/t in trophies)
 		if(!QDELETED(target))
 			var/obj/item/crusher_trophy/T = t
 			T.on_melee_hit(target, user)
+*/
 	if(!QDELETED(C) && !QDELETED(target))
 		C.total_damage += target_health - target.health //we did some damage, but let's not assume how much we did
 
 /obj/item/kinetic_crusher/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
 	. = ..()
+/*
 	if(istype(target, /obj/item/crusher_trophy))
 		var/obj/item/crusher_trophy/T = target
 		T.add_to(src, user)
+*/
 	if(!wielded)
 		return
 	if(!proximity_flag && charged)//Mark a target, or mine a tile.
@@ -129,9 +140,11 @@
 		if(!isturf(proj_turf))
 			return
 		var/obj/item/projectile/destabilizer/D = new /obj/item/projectile/destabilizer(proj_turf)
+/*
 		for(var/t in trophies)
 			var/obj/item/crusher_trophy/T = t
 			T.on_projectile_fire(D, user)
+*/
 		D.preparePixelProjectile(target, user, clickparams)
 		D.firer = user
 		D.hammer_synced = src
@@ -142,7 +155,7 @@
 		addtimer(CALLBACK(src, .proc/Recharge), charge_time)
 		return
 	if(proximity_flag && isliving(target))
-		detonate(L, user)
+		detonate(target, user)
 
 /obj/item/kinetic_crusher/proc/detonate(mob/living/L, mob/living/user, thrown = FALSE)
 	var/datum/status_effect/crusher_mark/CM = L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)
@@ -150,9 +163,11 @@
 		return
 	var/datum/status_effect/crusher_damage/C = L.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
 	var/target_health = L.health
+/*
 	for(var/t in trophies)
 		var/obj/item/crusher_trophy/T = t
 		T.on_mark_detonation(target, user)
+*/
 	if(!QDELETED(L))
 		if(!QDELETED(C))
 			C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
@@ -283,9 +298,9 @@
 	nodamage = TRUE
 	damage = 0 //We're just here to mark people. This is still a melee weapon.
 	damage_type = BRUTE
-	flag = "bomb"
+	check_armour = "bomb"
 	range = 6
-	log_override = TRUE
+	// log_override = TRUE
 	var/obj/item/kinetic_crusher/hammer_synced
 
 /obj/item/projectile/destabilizer/Destroy()
@@ -297,15 +312,17 @@
 		var/mob/living/L = target
 		var/had_effect = (L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)) //used as a boolean
 		var/datum/status_effect/crusher_mark/CM = L.apply_status_effect(STATUS_EFFECT_CRUSHERMARK, hammer_synced)
+/*
 		if(hammer_synced)
 			for(var/t in hammer_synced.trophies)
 				var/obj/item/crusher_trophy/T = t
 				T.on_mark_application(target, CM, had_effect)
+*/
 	var/target_turf = get_turf(target)
 	if(ismineralturf(target_turf))
-		var/turf/closed/mineral/M = target_turf
+		var/turf/simulated/mineral/M = target_turf
 		new /obj/effect/temp_visual/kinetic_blast(M)
-		M.gets_drilled(firer)
+		M.GetDrilled(firer)
 	..()
 
 /*

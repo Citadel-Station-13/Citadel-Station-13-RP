@@ -29,17 +29,17 @@
 	if(duration != -1)
 		duration = world.time + duration
 	next_tick = world.time + tick_interval
-	if(alert_type)
-		var/obj/screen/alert/status_effect/A = owner.throw_alert(id, alert_type)
-		A.attached_effect = src //so the alert can reference us, if it needs to
-		linked_alert = A //so we can reference the alert, if we need to
+	// if(alert_type)
+		// var/obj/screen/alert/status_effect/A = owner.throw_alert(id, alert_type)
+		// A.attached_effect = src //so the alert can reference us, if it needs to
+		// linked_alert = A //so we can reference the alert, if we need to
 	START_PROCESSING(SSstatus_effects, src)
 	return TRUE
 
 /datum/status_effect/Destroy()
 	STOP_PROCESSING(SSstatus_effects, src)
 	if(owner)
-		owner.clear_alert(id)
+		// owner.clear_alert(id)
 		LAZYREMOVE(owner.status_effects, src)
 		on_remove()
 		owner = null
@@ -69,7 +69,7 @@
 	return TRUE
 
 /datum/status_effect/proc/be_replaced() //Called instead of on_remove when a status effect is replaced by itself or when a status effect with on_remove_on_mob_delete = FALSE has its mob deleted
-	owner.clear_alert(id)
+	// owner.clear_alert(id)
 	LAZYREMOVE(owner.status_effects, src)
 	owner = null
 	qdel(src)
