@@ -3,8 +3,10 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "crusher"
 	item_state = "crusher0"
-	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
+		slot_r_hand_str = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
+		)
 	name = "proto-kinetic crusher"
 	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
 	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
