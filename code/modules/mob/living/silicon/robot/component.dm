@@ -211,7 +211,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 1000)
 
 /obj/item/broken_device/random
-	var/list/possible_icons = list("binradio_broken",
+	var/static/list/possible_icons = list("binradio_broken",
 									"motor_broken",
 									"armor_broken",
 									"camera_broken",
@@ -219,6 +219,7 @@
 									"radio_broken")
 
 /obj/item/broken_device/random/Initialize(mapload)
+	. = ..()
 	icon_state = pick(possible_icons)
 
 /obj/item/robot_parts/robot_component

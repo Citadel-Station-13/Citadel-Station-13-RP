@@ -207,7 +207,7 @@
 	center_of_mass = list("x"=15, "y"=13)
 
 /obj/item/reagent_containers/food/drinks/h_chocolate/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("hot_coco", 30)
 
 /obj/item/reagent_containers/food/drinks/dry_ramen
@@ -215,8 +215,9 @@
 	desc = "Just add 10ml water, self heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	center_of_mass = list("x"=16, "y"=11)
+
 /obj/item/reagent_containers/food/drinks/dry_ramen/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("dry_ramen", 30)
 
 /obj/item/reagent_containers/food/drinks/sillycup
@@ -226,9 +227,6 @@
 	possible_transfer_amounts = null
 	volume = 10
 	center_of_mass = list("x"=16, "y"=12)
-
-/obj/item/reagent_containers/food/drinks/sillycup/Initialize(mapload)
-	. = ..()
 
 /obj/item/reagent_containers/food/drinks/sillycup/on_reagent_change()
 	..()

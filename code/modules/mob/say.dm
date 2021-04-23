@@ -156,10 +156,16 @@
 		return GLOB.all_languages["Noise"]
 
 	if(length_char(message) >= 2 && is_language_prefix(prefix))
-		var/language_prefix = lowertext(copytext_char(message, 2 ,3))
+		var/language_prefix = copytext_char(message, 2 ,3)
 		var/datum/language/L = GLOB.language_keys[language_prefix]
 		if (can_speak(L))
 			return L
 		else
-			return GLOB.all_languages[LANGUAGE_GIBBERISH]
+			var/alert_result = alert(src, "You dont know the langauge you are about to speak, instead you will speak Babel. Do you want to?", "Unknown Language Alert","No","Yes")
+			if(alert_result == "Yes")
+				return GLOB.all_languages[LANGUAGE_GIBBERISH]
+			else 
+				if(isliving(src))
+					var/mob/living/caller = src
+					return GLOB.all_languages[caller.default_language]
 	return null

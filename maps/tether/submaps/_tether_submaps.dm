@@ -50,7 +50,7 @@
 
 /datum/map_template/tether_lateload/tether_plains/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_PLAINS), 120, /area/tether/outpost/exploration_plains, /datum/map_template/surface/plains)
+	seed_submaps(list(Z_LEVEL_PLAINS), 120, /area/tether/outpost/exploration_plains, /datum/map_template/submap/level_specific/plains)
 
 //////////////////////////////////////////////////////////////////////////////
 //Antag/Event/ERT Areas
@@ -187,8 +187,8 @@
 
 /datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_BEACH_CAVE), 120, /area/tether_away/cave/unexplored/normal, /datum/map_template/surface/mountains/normal)
-	//seed_submaps(list(Z_LEVEL_BEACH_CAVE), 70, /area/tether_away/cave/unexplored/normal, /datum/map_template/surface/mountains/deep)
+	seed_submaps(list(Z_LEVEL_BEACH_CAVE), 120, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/normal)
+	//seed_submaps(list(Z_LEVEL_BEACH_CAVE), 70, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/deep)
 
 	// Now for the tunnels.
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_BEACH_CAVE, world.maxx - 4, world.maxy - 4)
@@ -258,7 +258,7 @@
 /datum/map_template/tether_lateload/away_debrisfield/on_map_loaded(z)
 	. = ..()
 	//Commented out until we actually get POIs
-	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 400, /area/space, /datum/map_template/debrisfield)
+	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 400, /area/space, /datum/map_template/submap/level_specific/debrisfield)
 
 /datum/map_z_level/tether_lateload/away_debrisfield
 	name = "Away Mission - Debris Field"

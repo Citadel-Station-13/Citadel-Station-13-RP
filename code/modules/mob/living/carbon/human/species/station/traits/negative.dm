@@ -100,7 +100,7 @@
 	name = "Radiation Weakness"
 	desc = "You take 25% more radition damage"
 	cost = -1
-	var_changes = list("radiation_mod" = 1.35)
+	var_changes = list("radiation_mod" = 1.25)
 
 /datum/trait/rad_weak_plus
 	name = "Major Radiation Weakness"

@@ -30,6 +30,10 @@
 	display_name = "Deck of Cards"
 	path = /obj/item/deck/cards
 
+/datum/gear/unus
+	display_name = "Deck of Unus Cards"
+	path = /obj/item/deck/unus
+
 /datum/gear/tarot
 	display_name = "Deck of Tarot Cards"
 	path = /obj/item/deck/tarot

@@ -94,7 +94,7 @@
 	maxHealth = 50
 
 /mob/living/simple_mob/animal/passive/fish/koi/poisonous/Initialize(mapload)
-	..()
+	. = ..()
 	create_reagents(60)
 	reagents.add_reagent("toxin", 45)
 	reagents.add_reagent("impedrezene", 15)
@@ -201,7 +201,7 @@
 	var/image/belly_image
 
 /mob/living/simple_mob/animal/passive/fish/icebass/Initialize(mapload)
-	..()
+	. = ..()
 	dorsal_color = rgb(rand(min_red,max_red), rand(min_green,max_green), rand(min_blue,max_blue))
 	belly_color = rgb(rand(min_red,max_red), rand(min_green,max_green), rand(min_blue,max_blue))
 	update_icon()
@@ -271,7 +271,7 @@
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif
 
 /mob/living/simple_mob/animal/passive/fish/rockfish/Initialize(mapload)
-	..()
+	. = ..()
 	head_color = rgb(rand(min_red,max_red), rand(min_green,max_green), rand(min_blue,max_blue))
 
 /mob/living/simple_mob/animal/passive/fish/rockfish/update_icon()

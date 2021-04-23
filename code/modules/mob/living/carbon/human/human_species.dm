@@ -1,6 +1,7 @@
 /mob/living/carbon/human/dummy
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
+	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
 
 /mob/living/carbon/human/dummy/mannequin/Initialize()
 	. = ..()
@@ -95,7 +96,7 @@
 	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
-	weight = rand(25,175)
+	weight = rand(100,175)
 	gender = pick(MALE,FEMALE,NEUTER)
 	delete_inventory()
 
@@ -124,7 +125,7 @@
 	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
-	weight = rand(25,175)
+	weight = rand(76,175)
 	gender = pick(MALE,FEMALE,NEUTER)
 	change_skin_color(255, 255, 255)
 	delete_inventory()
@@ -154,7 +155,7 @@
 	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
-	weight = rand(25,175)
+	weight = rand(76,175)
 	gender = pick(MALE,NEUTER)
 	delete_inventory()
 
@@ -186,7 +187,7 @@
 	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
-	weight = rand(25,175)
+	weight = rand(76,175)
 	gender = pick(FEMALE,NEUTER)
 	delete_inventory()
 
@@ -215,7 +216,7 @@
 	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
-	weight = rand(25,175)
+	weight = rand(76,175)
 	gender = pick(MALE,FEMALE,NEUTER)
 	delete_inventory()
 
@@ -244,7 +245,7 @@
 	GLOB.mob_list -= src
 	living_mob_list -= src
 	dead_mob_list -= src
-	weight = rand(25,175)
+	weight = rand(76,175)
 	gender = pick(MALE,FEMALE,NEUTER)
 	delete_inventory()
 

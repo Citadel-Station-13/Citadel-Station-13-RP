@@ -7,7 +7,7 @@
 	center_of_mass = list("x"=16, "y"=14)
 
 /obj/item/reagent_containers/food/snacks/meat/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 6)
 	reagents.add_reagent("triglyceride", 2)
 	src.bitesize = 1.5

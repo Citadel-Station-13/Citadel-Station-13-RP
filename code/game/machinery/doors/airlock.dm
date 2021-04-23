@@ -1382,3 +1382,6 @@ About the new airlock wires panel:
 			qdel(src)
 			return TRUE
 	return FALSE
+
+/obj/machinery/door/airlock/glass_external/public
+	req_one_access = list()

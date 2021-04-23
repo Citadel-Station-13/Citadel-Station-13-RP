@@ -676,9 +676,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	for (var/ch_name in src.channels)
 		if(!radio_controller)
-			sleep(30) // Waiting for the radio_controller to be created.
-		if(!radio_controller)
-			src.name = "broken radio"
+			src.name = "CONTACT CODERS: NO RADIO CONTROLLER"
 			return
 
 		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)

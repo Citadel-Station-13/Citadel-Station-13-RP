@@ -14,7 +14,6 @@
 	var/list/ui_templates = list()     // List of ui templates the commcard can access
 	var/list/internal_data = list()	   // Data that shouldn't be updated every time nanoUI updates, or needs to persist between updates
 
-
 /obj/item/commcard/proc/get_device_status()
 	var/list/L = list()
 	var/i = 1
@@ -24,7 +23,6 @@
 		else
 			L[++L.len] = list("name" = I.name, "active" = 0, "index" = i++)
 	return L
-
 
 // cartridge.get_data() returns a list of tuples:
 // The field element is the tag used to access the information by the template
@@ -36,7 +34,6 @@
 // The helper.link() MUST HAVE 'cartridge_topic' passed into the href in order for cartridge functions to be processed.
 // Doesn't matter what the value of it is for now, it's just a flag to say, "Hey, there's cartridge data to change!"
 /obj/item/commcard/Topic(href, href_list)
-
 	// Signalers
 	if(href_list["signaler_target"])
 
@@ -318,7 +315,6 @@
 			else
 				B.close()
 
-
 // Updates status displays with a new message
 // Copied from /obj/item/cartridge/proc/post_status(),
 // code/game/objects/items/devices/PDA/cart.dm, line 251
@@ -359,11 +355,9 @@
 		if("alert")
 			internal_data["stat_display_special"] = signal.data["picture_state"]
 
-
 ///////////////////////////
 // SUBTYPES
 ///////////////////////////
-
 
 // Engineering Cartridge:
 // Devices
@@ -378,8 +372,6 @@
 /obj/item/commcard/engineering/Initialize(mapload)
 	. = ..()
 	internal_devices |= new /obj/item/halogen_counter(src)
-
-/obj/item/commcard/engineering/Initialize(mapload)
 	internal_data["grid_sensors"] = find_powernet_sensors()
 	internal_data["powernet_target"] = ""
 
@@ -434,7 +426,6 @@
 /obj/item/commcard/medical/chemistry/Initialize(mapload)
 	. = ..()
 	internal_devices |= new /obj/item/reagent_scanner(src)
-
 
 // Detective Cartridge:
 // Devices
@@ -510,7 +501,6 @@
 			list("field" = "janidata", "value" = get_janitorial_locations())
 		)
 
-
 // Signal Cartridge:
 // Devices
 //  *- Signaler
@@ -532,7 +522,6 @@
 			list("field" = "signaler_access", "value" = get_int_signalers())
 		)
 
-
 // Science Cartridge:
 // Devices
 //  *- Signaler
@@ -550,7 +539,6 @@
 	. = ..()
 	internal_devices |= new /obj/item/reagent_scanner(src)
 	internal_devices |= new /obj/item/analyzer(src)
-
 
 // Supply Cartridge:
 // Templates
@@ -594,7 +582,6 @@
 			list("field" = "supply_packs",		"value" = pack_list)
 		)
 
-
 // Command Cartridge:
 // Templates
 //  *- Status Display Access
@@ -614,16 +601,13 @@
 	internal_data["stat_display_active1"] = null
 	internal_data["stat_display_active2"] = null
 	internal_data["stat_display_special"] = null
-
-/obj/item/commcard/head/Initialize(mapload)
 	// Have to register the commcard with the Radio controller to receive updates to the status displays
 	radio_controller.add_object(src, 1435)
-	..()
 
 /obj/item/commcard/head/Destroy()
 	// Have to unregister the commcard for proper bookkeeping
 	radio_controller.remove_object(src, 1435)
-	..()
+	return ..()
 
 /obj/item/commcard/head/get_data()
 	return list(
@@ -791,8 +775,6 @@
 	. = ..()
 	internal_devices |= new /obj/item/analyzer(src)
 	internal_devices |= new /obj/item/halogen_counter(src)
-
-/obj/item/commcard/head/ce/Initialize(mapload)
 	internal_data["grid_sensors"] = find_powernet_sensors()
 	internal_data["powernet_target"] = ""
 
@@ -904,6 +886,7 @@
 		)
 
 /obj/item/commcard/mercenary/Initialize(mapload)
+	. = ..()
 	internal_data["shuttle_door_code"] = "smindicate" // Copied from PDA code
 	internal_data["shuttle_doors"] = find_blast_doors()
 

@@ -8,12 +8,6 @@
 	color = "#4e4e4e"	// Bright yellow
 	initial_generic_waypoints = list("poid_main")
 */
-// POI Init
-/obj/away_mission_init/lavaland
-	name = "away mission initializer -  lava land"
-
-/obj/away_mission_init/lavaland/Initialize(mapload)
-	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/lavaland_entry
 	name = "lavaland_entry"

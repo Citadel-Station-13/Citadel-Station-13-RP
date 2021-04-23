@@ -52,7 +52,7 @@
 		)
 
 /mob/living/silicon/robot/drone/swarm/Initialize(mapload)
-	..()
+	. = ..()
 
 	add_language(LANGUAGE_SWARMBOT, 1)
 

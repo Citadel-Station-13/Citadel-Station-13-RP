@@ -2241,6 +2241,21 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
 
+/datum/sprite_accessory/marking/vr_special
+	icon = 'icons/mob/human_races/markings_vr.dmi'
+
+	abomination
+		name = "Abomination"
+		icon_state = "abomination"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	abomination_alt
+		name = "Abomination Alternate"
+		icon_state = "abomination2"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
 /datum/sprite_accessory/marking/vr
 	icon = 'icons/mob/human_races/markings_vr.dmi'
 
