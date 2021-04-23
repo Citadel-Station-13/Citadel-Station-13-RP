@@ -1,8 +1,3 @@
-// Compile in the map for CI testing if we're testing compileability of all the maps
-#if MAP_TEST
-#include "bearcat.dmm"
-#endif
-
 // -- Datums -- //
 /datum/map_template/om_ships/bearcat
 	name = "OM Ship - Bearcat (New Z)"

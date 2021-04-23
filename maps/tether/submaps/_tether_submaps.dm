@@ -341,9 +341,6 @@
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Admin-use z-levels for loading whenever an admin feels like
-#if AWAY_MISSION_TEST
-#include "../../submaps/admin_use_vr/spa.dmm"
-#endif
 #include "../../submaps/admin_use_vr/fun.dm"
 /datum/map_template/tether_lateload/fun/spa
 	name = "Space Spa"
@@ -547,13 +544,10 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //Offmap Spawn Locations
-//#include "../../offmap_vr/talon/talon.dm"
-//#include "../../offmap_vr/talon/talon_areas.dm"
+#include "../../offmap_vr/talon/talon.dm"
+#include "../../offmap_vr/talon/talon_areas.dm"
 
-#if MAP_TEST
-//#include "../../offmap_vr/talon/talon1.dmm"
-//#include "../../offmap_vr/talon/talon2.dmm"
-#endif
+
 
 // Talon offmap spawn
 /datum/map_template/tether_lateload/offmap/talon1

@@ -1,7 +1,3 @@
-// Compile in the map for CI testing if we're testing compileability of all the maps
-#if MAP_TEST
-#include "curashuttle.dmm"
-#endif
 
 // Map template for spawning the shuttle
 /datum/map_template/om_ships/curabiturmedical

@@ -1,8 +1,3 @@
-// Compile in the map for CI testing if we're testing compileability of all the maps
-#if MAP_TEST
-#include "gecko_sh.dmm"
-#include "gecko_cr.dmm"
-#endif
 
 // Map template for spawning the shuttle
 /datum/map_template/om_ships/gecko_stationhopper
@@ -24,7 +19,7 @@
 	annihilate = TRUE
 
 // The shuttle's area(s)
-/area/shuttle/gecko_sh	
+/area/shuttle/gecko_sh
 	name = "\improper Gecko Stationhopper"
 	icon_state = "green"
 	requires_power = 1
@@ -42,7 +37,7 @@
 	requires_power = 1
 	has_gravity = 0
 
-/area/shuttle/gecko_cr	
+/area/shuttle/gecko_cr
 	name = "\improper Gecko Cargo Hauler Bay"
 	icon_state = "green"
 	requires_power = 1
@@ -60,7 +55,7 @@
 	requires_power = 1
 	has_gravity = 0
 
-/area/shuttle/gecko_cr_wreck	
+/area/shuttle/gecko_cr_wreck
 	name = "\improper Wrecked Gecko Cargo Hauler Bay"
 	icon_state = "green"
 	requires_power = 1

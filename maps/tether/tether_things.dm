@@ -151,7 +151,7 @@
 /obj/effect/ceiling/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf
-	return TRUE
+	return ..()
 
 //
 // TRAM STATION
