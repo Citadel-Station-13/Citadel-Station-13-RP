@@ -308,6 +308,7 @@
 		M.gets_drilled(firer)
 	..()
 
+/*
 //trophies
 /obj/item/crusher_trophy
 	name = "tail spike"
@@ -441,6 +442,7 @@
 	if(.)
 		H.charge_time += bonus_value
 
+/*
 //blood-drunk hunter
 /obj/item/crusher_trophy/miner_eye
 	name = "eye of a blood-drunk hunter"
@@ -453,7 +455,9 @@
 
 /obj/item/crusher_trophy/miner_eye/on_mark_detonation(mob/living/target, mob/living/user)
 	user.apply_status_effect(STATUS_EFFECT_BLOODDRUNK)
+*/
 
+/*
 //ash drake
 /obj/item/crusher_trophy/tail_spike
 	desc = "A spike taken from an ash drake's tail. Suitable as a trophy for a kinetic crusher."
@@ -475,6 +479,7 @@
 /obj/item/crusher_trophy/tail_spike/proc/pushback(mob/living/target, mob/living/user)
 	if(!QDELETED(target) && !QDELETED(user) && (!target.anchored || ismegafauna(target))) //megafauna will always be pushed
 		step(target, get_dir(user, target))
+*/
 
 //bubblegum
 /obj/item/crusher_trophy/demon_claws
@@ -503,11 +508,13 @@
 		H.detonation_damage -= bonus_value * 0.8
 //		AddComponent(/datum/component/two_handed, force_wielded=20)
 
+/*
 /obj/item/crusher_trophy/demon_claws/on_melee_hit(mob/living/target, mob/living/user)
 	user.heal_ordered_damage(bonus_value * 0.1, damage_heal_order)
 
 /obj/item/crusher_trophy/demon_claws/on_mark_detonation(mob/living/target, mob/living/user)
 	user.heal_ordered_damage(bonus_value * 0.4, damage_heal_order)
+*/
 
 //colossus
 /obj/item/crusher_trophy/blaster_tubes
@@ -564,3 +571,5 @@
 
 /obj/effect/temp_visual/hierophant/wall/crusher
 	duration = 75
+*/
+
