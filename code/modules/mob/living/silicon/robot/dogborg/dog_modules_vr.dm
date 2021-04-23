@@ -162,7 +162,7 @@
 /obj/item/reagent_containers/borghypo/hound/lost
 	name = "Hound hypospray"
 	desc = "An advanced chemical synthesizer and injection system utilizing carrier's reserves."
-	reagent_ids = list("bicaridine", "kelotane", "alkysine", "imidazoline", "tricordrazine", "inaprovaline", "bicaridine", "dexalin", "anti_toxin", "tramadol", "spaceacillin", "paracetamol")
+	reagent_ids = list("bicaridine", "kelotane", "alkysine", "imidazoline", "tricordrazine", "inaprovaline", "dexalin", "anti_toxin", "tramadol", "spaceacillin", "paracetamol")
 
 
 //Tongue stuff
