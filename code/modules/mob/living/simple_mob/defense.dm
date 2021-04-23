@@ -189,8 +189,8 @@
 	return poison_resist
 
 // Armor
-/mob/living/simple_mob/getarmor(def_zone, attack_flag)
-	var/armorval = armor[attack_flag]
+/mob/living/simple_mob/getarmor(def_zone, type)
+	var/armorval = armor[type]
 	if(!armorval)
 		return 0
 	else

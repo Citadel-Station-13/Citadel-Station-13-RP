@@ -4,7 +4,7 @@
 	icon_state = "crusher"
 	item_state = "crusher0"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
+		slot_l_hand_str = 'icons/mob/inhands/weapons/hammers_lefthand.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
 		)
 	name = "proto-kinetic crusher"
@@ -15,8 +15,10 @@
 	slot_flags = ITEM_SLOT_BACK
 	throwforce = 5
 	throw_speed = 4
+/*
 	armour_penetration = 10
 	custom_materials = list(/datum/material/iron=1150, /datum/material/glass=2075)
+*/
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
 	sharpness = SHARP_EDGED
@@ -67,7 +69,7 @@
 /obj/item/kinetic_crusher/proc/can_mark(mob/living/victim)
 	if(obj_flags & EMAGGED)
 		return TRUE
-	return victim.mob_size >= MOB_SIZE_LARGE
+	return !ishuman(victim) && !issilicon(victim)
 
 /// triggered on wield of two handed item
 /obj/item/kinetic_crusher/proc/on_wield(obj/item/source, mob/user)
@@ -140,9 +142,9 @@
 		addtimer(CALLBACK(src, .proc/Recharge), charge_time)
 		return
 	if(proximity_flag && isliving(target))
-		detonate(L)
+		detonate(L, user)
 
-/obj/item/kinetic_crusher/proc/detonate(mob/living/L, thrown = FALSE)
+/obj/item/kinetic_crusher/proc/detonate(mob/living/L, mob/living/user, thrown = FALSE)
 	var/datum/status_effect/crusher_mark/CM = L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)
 	if(!CM || CM.hammer_synced != src || !L.remove_status_effect(STATUS_EFFECT_CRUSHERMARK))
 		return
@@ -176,7 +178,7 @@
 		return
 	var/mob/living/L = hit_atom
 	if(!L.has_status_effect(STATUS_EFFECT_CRUSHERMARK))
-		detonate(L, TRUE)
+		detonate(L, thrower, TRUE)
 
 /obj/item/kinetic_crusher/proc/Recharge()
 	if(!charged)
@@ -265,6 +267,8 @@
 /obj/item/kinetic_crusher/dagger
 	name = "proto-kinetic dagger"
 	desc = "A scaled down version of a protokinetic crusher, usually used in a last ditch scenario."
+	icon_state = "glaive-dagger"
+	w_class = WEIGHT_CLASS_SMALL
 	force = 15
 	// yeah yeah buff but rp mobs are tough as fuck.
 	backstab_bonus = 25
@@ -368,6 +372,7 @@
 	if(missing_health > 0)
 		target.adjustBruteLoss(missing_health) //and do that much damage
 
+/*
 //watcher
 /obj/item/crusher_trophy/watcher_wing
 	name = "watcher wing"
@@ -413,6 +418,7 @@
 	desc = "A carefully preserved frozen wing from an icewing watcher. Suitable as a trophy for a kinetic crusher."
 	icon_state = "ice_wing"
 	bonus_value = 8
+*/
 
 //legion
 /obj/item/crusher_trophy/legion_skull
@@ -488,14 +494,14 @@
 	if(.)
 		H.force += bonus_value * 0.2
 		H.detonation_damage += bonus_value * 0.8
-		AddComponent(/datum/component/two_handed, force_wielded=(20 + bonus_value * 0.2))
+//		AddComponent(/datum/component/two_handed, force_wielded=(20 + bonus_value * 0.2))
 
 /obj/item/crusher_trophy/demon_claws/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
 		H.force -= bonus_value * 0.2
 		H.detonation_damage -= bonus_value * 0.8
-		AddComponent(/datum/component/two_handed, force_wielded=20)
+//		AddComponent(/datum/component/two_handed, force_wielded=20)
 
 /obj/item/crusher_trophy/demon_claws/on_melee_hit(mob/living/target, mob/living/user)
 	user.heal_ordered_damage(bonus_value * 0.1, damage_heal_order)
@@ -522,7 +528,7 @@
 		marker.icon_state = "chronobolt"
 		marker.damage = bonus_value
 		marker.nodamage = FALSE
-		marker.pixels_per_second = TILES_TO_PIXELS(5)
+		marker.speed = 2
 		deadly_shot = FALSE
 
 /obj/item/crusher_trophy/blaster_tubes/on_mark_detonation(mob/living/target, mob/living/user)
