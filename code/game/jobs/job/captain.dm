@@ -4,7 +4,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	title = "Facility Director"
 	flag = CAPTAIN
 	department = "Command"
-	disallow_jobhop = TRUE
+	allow_jobhop = FALSE
 	head_position = 1
 	department_flag = ENGSEC
 	faction = "Station"
@@ -40,7 +40,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department = "Command"
 	head_position = 1
 	department_flag = CIVILIAN
-	disallow_jobhop = TRUE
+	allow_jobhop = FALSE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -76,7 +76,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department = "Command"
 	head_position = 1
 	department_flag = CIVILIAN
-	disallow_jobhop = FALSE
+	allow_jobhop = TRUE
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
