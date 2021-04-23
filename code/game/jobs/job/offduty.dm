@@ -2,7 +2,7 @@
 // "Off-duty" jobs are for people who want to do nothing and have earned it.
 //
 /datum/job/offduty_command
-	title = "Off-duty Officer"
+	title = "Off-duty Command"
 	latejoin_only = TRUE
 	timeoff_factor = -1
 	total_positions = -1
@@ -79,7 +79,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/assistant/scientist
 
 /datum/job/offduty_security
-	title = "Off-duty Guard"
+	title = "Off-duty Officer"
 	latejoin_only = TRUE
 	timeoff_factor = -1
 	total_positions = -1
