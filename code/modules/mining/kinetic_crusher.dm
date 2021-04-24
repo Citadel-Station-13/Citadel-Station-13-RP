@@ -44,6 +44,8 @@
 	var/requires_wield = TRUE
 	/// do we have a charge overlay?
 	var/charge_overlay = TRUE
+	/// do we update item state?
+	var/update_item_state = FALSE
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
@@ -220,7 +222,8 @@
 		set_light(0)
 
 /obj/item/kinetic_crusher/update_icon_state()
-	item_state = "crusher[wielded]" // this is not icon_state and not supported by 2hcomponent
+	if(update_item_state)
+		item_state = "crusher[wielded]" // this is not icon_state and not supported by 2hcomponent
 
 /obj/item/kinetic_crusher/update_overlays()
 	. = ..()
@@ -289,7 +292,11 @@
 	name = "proto-kinetic dagger"
 	desc = "A scaled down version of a protokinetic crusher, usually used in a last ditch scenario."
 	icon_state = "glaive-dagger"
-	item_state = "switchblade-ext"
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			)
+	item_state = "machete"
 	w_class = WEIGHT_CLASS_SMALL
 	force = 15
 	requires_wield = FALSE
@@ -299,6 +306,7 @@
 	detonation_damage = 35
 	// woohoo
 	thrown_bonus = 35
+	update_item_state = FALSE
 
 //destablizing force
 /obj/item/projectile/destabilizer
