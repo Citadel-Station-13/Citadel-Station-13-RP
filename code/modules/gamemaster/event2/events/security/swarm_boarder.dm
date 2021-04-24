@@ -51,6 +51,6 @@
 /datum/event2/event/ghost_pod_spawner/swarm_boarder/announce()
 	if(prob(announce_odds))
 		if(atc?.squelched)
-			atc.msg("Attention civilian vessels in [GLOB.using_map.starsys_name] shipping lanes, caution \
+			atc.msg("Attention civilian vessels in [using_map.starsys_name] shipping lanes, caution \
 			is advised as [pick("an unidentified vessel", "a known criminal's vessel", "a derelict vessel")] \
 			has been detected passing multiple local stations.")
