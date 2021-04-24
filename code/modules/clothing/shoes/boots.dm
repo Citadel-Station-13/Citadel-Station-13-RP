@@ -5,11 +5,13 @@
 	force = 3
 	can_hold_knife = 1
 	step_volume_mod = 1.2
+	drop_sound = 'sound/items/drop/boots.ogg'
 
 /obj/item/clothing/shoes/boots/cowboy
 	name = "cowboy boots"
 	desc = "Lacking a durasteel horse to ride."
 	icon_state = "cowboy"
+	drop_sound = 'sound/items/drop/leather.ogg'
 
 /obj/item/clothing/shoes/boots/cowboy/classic
 	name = "classic cowboy boots"
@@ -29,7 +31,6 @@
 	siemens_coefficient = 0.7
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
-
 
 /obj/item/clothing/shoes/boots/jackboots/toeless
 	name = "toe-less jackboots"
@@ -70,6 +71,8 @@
 	icon_state = "workboots"
 	armor = list(melee = 40, bullet = 0, laser = 0, energy = 15, bomb = 20, bio = 0, rad = 20)
 	siemens_coefficient = 0.7
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
 
 /obj/item/clothing/shoes/boots/workboots/toeless
 	name = "toe-less workboots"

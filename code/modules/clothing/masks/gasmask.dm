@@ -13,6 +13,7 @@
 	var/gas_filter_strength = 1			//For gas mask filters
 	var/list/filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide)
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 75, rad = 0)
+	pickup_sound = 'sound/items/pickup/rubber.ogg'
 
 /obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
 	var/datum/gas_mixture/gas_filtered = new
@@ -82,6 +83,22 @@
 
 /obj/item/clothing/mask/gas/half/attack_self(mob/user)
 	adjust_mask(user)
+//Turn it into a hailer mask
+/obj/item/clothing/mask/gas/half/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/hailer))
+		playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+		user.drop_item(src)
+		var/obj/item/clothing/mask/gas/sechailer/N = new /obj/item/clothing/mask/gas/sechailer(src.loc)
+		N.fingerprints = src.fingerprints
+		N.fingerprintshidden = src.fingerprintshidden
+		N.fingerprintslast = src.fingerprintslast
+		N.suit_fibers = src.suit_fibers
+		N.hailer = I
+		I.loc = N
+		if(!isturf(N.loc))
+			user.put_in_hands(N)
+		qdel(src)
+	..()
 
 //Plague Dr suit can be found in clothing/suits/bio.dm
 /obj/item/clothing/mask/gas/plaguedoctor
@@ -91,6 +108,11 @@
 	item_state_slots = list(slot_r_hand_str = "gas", slot_l_hand_str = "gas")
 	armor = list(melee = 0, bullet = 0, laser = 2,energy = 2, bomb = 0, bio = 90, rad = 0)
 	body_parts_covered = HEAD|FACE|EYES
+
+/obj/item/clothing/mask/gas/plaguedoctor/gold
+	name = "gold plague doctor mask"
+	desc = "A modern version of the age old classic, this mask is both capable of filtering air, and connecting to an air supply. This one is gold."
+	icon_state = "plaguedoctor2"
 
 /obj/item/clothing/mask/gas/swat
 	name = "\improper SWAT mask"
