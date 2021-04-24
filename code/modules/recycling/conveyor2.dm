@@ -112,11 +112,12 @@
 	affecting.len = max(min(affecting.len, 10, 150 - T.contents.len), 0)
 	if(!affecting.len)
 		return
+	var/items_moved = 0
 	for(var/atom/movable/A in affecting)
 		if(!A.anchored)
 			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
 				step(A,movedir)
-				items_moved++
+				++items_moved
 		if(items_moved >= 10)
 			break
 /*
