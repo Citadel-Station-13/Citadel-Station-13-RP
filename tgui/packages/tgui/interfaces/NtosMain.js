@@ -2,6 +2,24 @@ import { useBackend } from '../backend';
 import { Button, ColorBox, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
 
+const PROGRAM_ICONS = {
+  compconfig: 'cog',
+  ntndownloader: 'download',
+  filemanager: 'folder',
+  smmonitor: 'radiation',
+  alarmmonitor: 'bell',
+  cardmod: 'id-card',
+  arcade: 'gamepad',
+  ntnrc_client: 'comment-alt',
+  nttransfer: 'exchange-alt',
+  powermonitor: 'plug',
+  job_manage: 'address-book',
+  crewmani: 'clipboard-list',
+  robocontrol: 'robot',
+  atmosscan: 'thermometer-half',
+  shipping: 'tags',
+};
+
 export const NtosMain = (props, context) => {
   const { act, data } = useBackend(context);
   const {
@@ -11,7 +29,6 @@ export const NtosMain = (props, context) => {
     light_on,
     comp_light_color,
     removable_media = [],
-    cardholder,
     login = [],
   } = data;
   return (
@@ -41,27 +58,25 @@ export const NtosMain = (props, context) => {
             </Button>
           </Section>
         )}
-        {!!cardholder && (
-          <Section
-            title="User Login"
-            buttons={(
-              <Button
-                icon="eject"
-                content="Eject ID"
-                disabled={!login.IDName}
-                onClick={() => act('PC_Eject_Disk', { name: "ID" })}
-              />
-            )}>
-            <Table>
-              <Table.Row>
-                ID Name: {login.IDName}
-              </Table.Row>
-              <Table.Row>
-                Assignment: {login.IDJob}
-              </Table.Row>
-            </Table>
-          </Section>
-        )}
+        <Section
+          title="User Login"
+          buttons={(
+            <Button
+              icon="eject"
+              content="Eject ID"
+              disabled={!login.IDName}
+              onClick={() => act('PC_Eject_Disk', { name: "ID" })}
+            />
+          )}>
+          <Table>
+            <Table.Row>
+              ID Name: {login.IDName}
+            </Table.Row>
+            <Table.Row>
+              Assignment: {login.IDJob}
+            </Table.Row>
+          </Table>
+        </Section>
         {!!removable_media.length && (
           <Section title="Media Eject">
             <Table>
@@ -88,8 +103,9 @@ export const NtosMain = (props, context) => {
                 <Table.Cell>
                   <Button
                     fluid
-                    color={program.alert ? 'yellow' : 'transparent'}
-                    icon={program.icon}
+                    color="transparent"
+                    icon={PROGRAM_ICONS[program.name]
+                      || 'window-maximize-o'}
                     content={program.desc}
                     onClick={() => act('PC_runprogram', {
                       name: program.name,
@@ -106,6 +122,18 @@ export const NtosMain = (props, context) => {
                         name: program.name,
                       })} />
                   )}
+                </Table.Cell>
+                <Table.Cell collapsing width="18px">
+                  <Button
+                    color="transparent"
+                    tooltip="Set Autorun"
+                    tooltipPosition="left"
+                    selected={program.autorun}
+                    onClick={() => act("PC_setautorun", {
+                      name: program.name,
+                    })}>
+                    AR
+                  </Button>
                 </Table.Cell>
               </Table.Row>
             ))}
