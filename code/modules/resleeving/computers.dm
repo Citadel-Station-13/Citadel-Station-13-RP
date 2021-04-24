@@ -103,7 +103,6 @@
 
 	if(hasmirror)
 		to_chat(usr, "You eject the mirror.")
-		(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 		usr.put_in_hands(hasmirror)
 		hasmirror = null
 		active_mr = null
