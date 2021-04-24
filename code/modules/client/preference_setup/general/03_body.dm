@@ -104,6 +104,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.g_eyes			= sanitize_integer(pref.g_eyes, 0, 255, initial(pref.g_eyes))
 	pref.b_eyes			= sanitize_integer(pref.b_eyes, 0, 255, initial(pref.b_eyes))
 	pref.b_type			= sanitize_text(pref.b_type, initial(pref.b_type))
+	if(pref.mirror == null)
+		pref.mirror = TRUE
 
 	pref.disabilities	= sanitize_integer(pref.disabilities, 0, 65535, initial(pref.disabilities))
 	if(!pref.organ_data) pref.organ_data = list()
@@ -859,12 +861,12 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["mirror"])
-		if(pref.mirror == 1)
-			pref.mirror = 0
-			alert("Off-Site Cloning means you cannot rejoin a round as the same character if you are killed and cannot be recovered.","Respawn Selection")
-		else if(pref.mirror == 0)
-			pref.mirror = 1
-			alert("A mirror is an implant that, if recovered, will allow you to be resleeved.","Respawn Selection")
+		if(pref.mirror)
+			pref.mirror = FALSE
+			to_chat(src, "Off-Site Cloning means you cannot rejoin a round as the same character if you are killed and cannot be recovered.")
+		else
+			pref.mirror = TRUE
+			to_chat(src, "A mirror is an implant that, if recovered, will allow you to be resleeved.")
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["toggle_preview_value"])
