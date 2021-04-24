@@ -65,7 +65,7 @@
 		START_PROCESSING(SSobj, src)
 
 /obj/item/reagent_containers/syringe/proc/infect_limb(var/obj/item/organ/external/eo)
-	eo.queue_infection()
+	eo.queue_syringe_infection()
 
 //Allow for capped syringe mode
 /obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
