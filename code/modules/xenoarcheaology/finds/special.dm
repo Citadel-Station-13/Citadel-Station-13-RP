@@ -110,7 +110,7 @@
 		else if(get_dist(W, src) > 10)
 			shadow_wights.Remove(wight_check_index)
 
-/obj/item/vampiric/hear_talk(mob/M as mob, text)
+/obj/item/vampiric/hear_talk(mob/M, list/message_pieces, verb)
 	..()
 	if(world.time - last_bloodcall >= bloodcall_interval && (M in view(7, src)))
 		bloodcall(M)
@@ -118,7 +118,7 @@
 /obj/item/vampiric/proc/bloodcall(var/mob/living/carbon/human/M)
 	last_bloodcall = world.time
 	if(istype(M))
-		playsound(loc, pick('sound/hallucinations/wail.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/far_noise.ogg'), 50, 1, -3)
+		playsound(src, pick('sound/hallucinations/wail.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/far_noise.ogg'), 50, 1, -3)
 		nearby_mobs.Add(M)
 
 		var/target = pick(M.organs_by_name)

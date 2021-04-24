@@ -36,7 +36,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "flashgun"
 	item_state = "lampgreen"
-	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3, TECH_ARCANE = 1)
+	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3)
 	matter = list(DEFAULT_WALL_MATERIAL = 10000,"glass" = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
@@ -133,7 +133,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings.</span>")
+			to_chat(user, "<span class='notice'>[bicon(src)] [src] pings.</span>")
 
 	else if(istype(A, /obj/structure/boulder))
 		var/obj/structure/boulder/B = A
@@ -151,69 +151,73 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
+			to_chat(user, "<span class='notice'>[bicon(src)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
 /obj/item/depth_scanner/attack_self(var/mob/living/user)
-	interact(user)
+	tgui_interact(user)
 
-/obj/item/depth_scanner/interact(var/mob/user as mob)
-	var/dat = "<b>Coordinates with positive matches</b><br>"
+/obj/item/depth_scanner/tgui_state(mob/user)
+	return GLOB.tgui_deep_inventory_state
 
-	dat += "<A href='?src=\ref[src];clear=0'>== Clear all ==</a><br>"
+/obj/item/depth_scanner/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "XenoarchDepthScanner", name)
+		ui.open()
 
+/obj/item/depth_scanner/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+	var/list/data = ..()
+
+	data["current"] = list()
 	if(current)
-		dat += "Time: [current.time]<br>"
-		dat += "Coords: [current.coords]<br>"
-		dat += "Anomaly depth: [current.depth] cm<br>"
-		dat += "Anomaly size: [current.clearance] cm<br>"
-		dat += "Dissonance spread: [current.dissonance_spread]<br>"
+		data["current"] = list(
+			"time" = current.time,
+			"coords" = current.coords,
+			"depth" = current.depth,
+			"clearance" = current.clearance,
+			"dissonance_spread" = current.dissonance_spread,
+			"index" = current.record_index,
+		)
+		data["current"]["material"] = "Unknown"
 		var/index = responsive_carriers.Find(current.material)
-		if(index > 0 && index <= finds_as_strings.len)
-			dat += "Anomaly material: [finds_as_strings[index]]<br>"
-		else
-			dat += "Anomaly material: Unknown<br>"
-		dat += "<A href='?src=\ref[src];clear=[current.record_index]'>clear entry</a><br>"
-	else
-		dat += "Select an entry from the list<br>"
-		dat += "<br><br><br><br>"
-	dat += "<hr>"
-	if(positive_locations.len)
-		for(var/index = 1 to positive_locations.len)
-			var/datum/depth_scan/D = positive_locations[index]
-			dat += "<A href='?src=\ref[src];select=[index]'>[D.time], coords: [D.coords]</a><br>"
-	else
-		dat += "No entries recorded."
+		if(index > 0 && index <= LAZYLEN(finds_as_strings))
+			data["current"]["material"] = finds_as_strings[index]
 
-	dat += "<hr>"
-	dat += "<A href='?src=\ref[src];refresh=1'>Refresh</a><br>"
-	dat += "<A href='?src=\ref[src];close=1'>Close</a><br>"
-	user << browse(dat,"window=depth_scanner;size=300x500")
-	onclose(user, "depth_scanner")
+	var/list/plocs = list()
+	data["positive_locations"] = plocs
+	for(var/i in 1 to LAZYLEN(positive_locations))
+		var/datum/depth_scan/D = positive_locations[i]
+		plocs.Add(list(list(
+			"index" = i,
+			"time" = D.time,
+			"coords" = D.coords,
+		)))
 
-/obj/item/depth_scanner/Topic(href, href_list)
-	..()
-	usr.set_machine(src)
+	return data
 
-	if(href_list["select"])
-		var/index = text2num(href_list["select"])
-		if(index && index <= positive_locations.len)
-			current = positive_locations[index]
-	else if(href_list["clear"])
-		var/index = text2num(href_list["clear"])
-		if(index)
-			if(index <= positive_locations.len)
-				var/datum/depth_scan/D = positive_locations[index]
-				positive_locations.Remove(D)
-				qdel(D)
-		else
-			//GC will hopefully pick them up before too long
-			positive_locations = list()
-			qdel(current)
-	else if(href_list["close"])
-		usr.unset_machine()
-		usr << browse(null, "window=depth_scanner")
+/obj/item/depth_scanner/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+	if(..())
+		return TRUE
 
-	updateSelfDialog()
+	switch(action)
+		if("select")
+			var/index = text2num(params["select"])
+			if(index && index <= LAZYLEN(positive_locations))
+				current = positive_locations[index]
+			return TRUE
+		if("clear")
+			var/index = text2num(params["clear"])
+			if(index)
+				if(index <= LAZYLEN(positive_locations))
+					var/datum/depth_scan/D = positive_locations[index]
+					positive_locations.Remove(D)
+					qdel(D)
+					current = null
+			else
+				QDEL_LIST_NULL(positive_locations)
+				positive_locations = list()
+				QDEL_NULL(current)
+			return TRUE
 
 /obj/item/beacon_locator
 	name = "locater device"
@@ -237,7 +241,7 @@
 
 /obj/item/beacon_locator/process(delta_time)
 	if(target_radio)
-		setDir(get_dir(src,target_radio))
+		set_dir(get_dir(src,target_radio))
 		switch(get_dist(src,target_radio))
 			if(0 to 3)
 				icon_state = "pinondirect"
@@ -257,8 +261,8 @@
 					if(datum_flags & DF_ISPROCESSING)
 						//scan radios in the world to try and find one
 						var/cur_dist = 999
-						for(var/obj/item/radio/beacon/R in GLOB.all_beacons)
-							if(R.z == z && R.frequency == frequency)
+						for(var/obj/item/radio/beacon/R in all_beacons)
+							if(R.z == src.z && R.frequency == src.frequency)
 								var/check_dist = get_dist(src,R)
 								if(check_dist < cur_dist)
 									cur_dist = check_dist
@@ -267,49 +271,52 @@
 						scan_ticks = 0
 						var/turf/T = get_turf(src)
 						if(target_radio)
-							T.visible_message("[icon2html(thing = src, target = world)] [src] [pick("chirps","chirrups","cheeps")] happily.")
+							T.visible_message("[bicon(src)] [src] [pick("chirps","chirrups","cheeps")] happily.")
 						else
-							T.visible_message("[icon2html(thing = src, target = world)] [src] [pick("chirps","chirrups","cheeps")] sadly.")
+							T.visible_message("[bicon(src)] [src] [pick("chirps","chirrups","cheeps")] sadly.")
 		else
 			icon_state = "pinoff"
 
-/obj/item/beacon_locator/attack_self(var/mob/user as mob)
-	return interact(user)
+/obj/item/beacon_locator/attack_self(mob/user)
+	return tgui_interact(user)
 
-/obj/item/beacon_locator/interact(var/mob/user as mob)
-	var/dat = "<b>Radio frequency tracker</b><br>"
-	dat += {"
-				<A href='byond://?src=\ref[src];reset_tracking=1'>Reset tracker</A><BR>
-				Frequency:
-				<A href='byond://?src=\ref[src];freq=-10'>-</A>
-				<A href='byond://?src=\ref[src];freq=-2'>-</A>
-				[format_frequency(frequency)]
-				<A href='byond://?src=\ref[src];freq=2'>+</A>
-				<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
-				"}
+/obj/item/beacon_locator/tgui_state(mob/user)
+	return GLOB.tgui_inventory_state
 
-	dat += "<A href='?src=\ref[src];close=1'>Close</a><br>"
-	user << browse(dat,"window=locater;size=300x150")
-	onclose(user, "locater")
+/obj/item/beacon_locator/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "BeaconLocator", name)
+		ui.open()
 
-/obj/item/beacon_locator/Topic(href, href_list)
-	..()
-	usr.set_machine(src)
+/obj/item/beacon_locator/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+	var/list/data = ..()
 
-	if(href_list["reset_tracking"])
-		scan_ticks = 1
-		target_radio = null
-	else if(href_list["freq"])
-		var/new_frequency = (frequency + text2num(href_list["freq"]))
-		if (frequency < 1200 || frequency > 1600)
-			new_frequency = sanitize_frequency(new_frequency, 1499)
-		frequency = new_frequency
+	data["scan_ticks"] = scan_ticks
+	data["degrees"] = null
+	if(target_radio)
+		data["degrees"] = round(Get_Angle(get_turf(src), get_turf(target_radio)))
 
-	else if(href_list["close"])
-		usr.unset_machine()
-		usr << browse(null, "window=locater")
+	data["rawfreq"] = frequency
+	data["minFrequency"] = RADIO_LOW_FREQ
+	data["maxFrequency"] = RADIO_HIGH_FREQ
 
-	updateSelfDialog()
+	return data
+
+/obj/item/beacon_locator/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+	if(..())
+		return TRUE
+
+	switch(action)
+		if("reset_tracking")
+			scan_ticks = 1
+			target_radio = null
+			return TRUE
+		if("setFrequency")
+			var/new_frequency = (text2num(params["freq"]))
+			new_frequency = sanitize_frequency(new_frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
+			frequency = new_frequency
+			return TRUE
 
 /obj/item/xenoarch_multi_tool
 	name = "xenoarcheology multitool"
@@ -317,7 +324,7 @@
 	icon_state = "ano_scanner2"
 	item_state = "lampgreen"
 	icon = 'icons/obj/xenoarchaeology.dmi'
-	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2, TECH_ARCANE = 1)
+	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 10000,"glass" = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
@@ -331,7 +338,7 @@
 	depth_scanner = new/obj/item/depth_scanner(src)
 
 /obj/item/xenoarch_multi_tool/attack_self(var/mob/living/user)
-	depth_scanner.interact(user)
+	depth_scanner.tgui_interact(user)
 
 /obj/item/xenoarch_multi_tool/verb/swap_settings(var/mob/living/user)
 	set name = "Swap Functionality"
@@ -346,3 +353,4 @@
 	set name = "Scan for Anomalies"
 	set desc = "Scan for artifacts and anomalies within your vicinity."
 	anomaly_scanner.interact(user)
+

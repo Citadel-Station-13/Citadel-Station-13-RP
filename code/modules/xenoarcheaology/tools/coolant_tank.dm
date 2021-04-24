@@ -18,10 +18,10 @@
 	explode()
 
 /obj/structure/reagent_dispensers/coolanttank/proc/explode()
-	var/datum/effect_system/smoke_spread/S = new /datum/effect_system/smoke_spread
+	var/datum/effect/effect/system/smoke_spread/S = new /datum/effect/effect/system/smoke_spread
 	S.set_up(5, 0, src.loc)
 
-	playsound(src.loc, 'sound/effects/smoke.ogg', 50, 1, -3)
+	playsound(src, 'sound/effects/smoke.ogg', 50, 1, -3)
 	spawn(0)
 		S.start()
 

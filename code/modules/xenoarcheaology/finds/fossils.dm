@@ -8,19 +8,13 @@
 	icon_state = "bone"
 	desc = "It's a fossil."
 	var/animal = 1
-	var/processable = FALSE
 
 /obj/item/fossil/base/Initialize(mapload)
-	. = ..()
-	var/list/l = list("/obj/item/fossil/bone"=9,"/obj/item/fossil/skull"=3,
-	"/obj/item/fossil/skull/horned"=2)
+	var/list/l = list(/obj/item/fossil/bone = 9,/obj/item/fossil/skull = 3,
+	/obj/item/fossil/skull/horned = 2)
 	var/t = pickweight(l)
-	var/obj/item/W = new t(drop_location())
-	var/turf/T = get_turf(src)
-	if(istype(T, /turf/simulated/mineral))
-		var/turf/simulated/mineral/M = T
-		M.last_find = W
-	qdel(src)
+	new t(loc)
+	return INITIALIZE_HINT_QDEL
 
 /obj/item/fossil/bone
 	name = "Fossilised bone"
@@ -56,8 +50,7 @@
 	var/bstate = 0
 	var/plaque_contents = "Unnamed alien creature"
 
-/obj/skeleton/Initialize(mapload)
-	. = ..()
+/obj/skeleton/New()
 	breq = rand(6)+3
 	desc = "An incomplete skeleton, looks like it could use [breq-bnum] more bones."
 
@@ -84,7 +77,7 @@
 			..()
 	else if(istype(W,/obj/item/pen))
 		plaque_contents = sanitize(input("What would you like to write on the plaque:","Skeleton plaque",""))
-		user.visible_message("[user] writes something on the base of [src].","You relabel the plaque on the base of [icon2html(thing = src, target = user)] [src].")
+		user.visible_message("[user] writes something on the base of [src].","You relabel the plaque on the base of [bicon(src)] [src].")
 		if(contents.Find(/obj/item/fossil/skull/horned))
 			desc = "A creature made of [contents.len-1] assorted bones and a horned skull. The plaque reads \'[plaque_contents]\'."
 		else
@@ -103,8 +96,6 @@
 	icon_state = "plant1"
 	desc = "It's fossilised plant remains."
 	animal = 0
-	processable = "seed"
-
 
 /obj/item/fossil/plant/Initialize(mapload)
 	. = ..()
