@@ -18,8 +18,8 @@
 	if(..())
 		return TRUE
 
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD = computer.hard_drive
-	var/obj/item/weapon/computer_hardware/hard_drive/RHDD = computer.portable_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
+	var/obj/item/computer_hardware/hard_drive/RHDD = computer.portable_drive
 
 	switch(action)
 		if("PRG_openfile")
@@ -143,15 +143,15 @@
 /datum/computer_file/program/filemanager/tgui_data(mob/user)
 	var/list/data = get_header_data()
 
-	var/obj/item/weapon/computer_hardware/hard_drive/HDD = computer.hard_drive
-	var/obj/item/weapon/computer_hardware/hard_drive/portable/RHDD = computer.portable_drive
+	var/obj/item/computer_hardware/hard_drive/HDD = computer.hard_drive
+	var/obj/item/computer_hardware/hard_drive/portable/RHDD = computer.portable_drive
 
 	data["error"] = null
 	if(error)
 		data["error"] = error
 	if(!computer || !HDD)
 		data["error"] = "I/O ERROR: Unable to access hard drive."
-	
+
 	data["filedata"] = null
 	data["filename"] = null
 	data["files"] = list()
