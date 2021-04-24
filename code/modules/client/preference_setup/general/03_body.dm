@@ -863,10 +863,10 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	else if(href_list["mirror"])
 		if(pref.mirror)
 			pref.mirror = FALSE
-			to_chat(src, "Off-Site Cloning means you cannot rejoin a round as the same character if you are killed and cannot be recovered.")
+			to_chat(usr, "Off-Site Cloning means you cannot rejoin a round as the same character if you are killed and cannot be recovered.")
 		else
 			pref.mirror = TRUE
-			to_chat(src, "A mirror is an implant that, if recovered, will allow you to be resleeved.")
+			to_chat(usr, "A mirror is an implant that, if recovered, will allow you to be resleeved.")
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["toggle_preview_value"])
