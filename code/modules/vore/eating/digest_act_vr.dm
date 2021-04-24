@@ -3,10 +3,14 @@
 //return non-negative integer: Amount of nutrition/charge gained (scaled to nutrition, other end can multiply for charge scale).
 
 // Ye default implementation.
-/obj/item/proc/digest_act(var/atom/movable/item_storage = null)
-	if(istype(item_storage,/obj/item/dogborg/sleeper))
+/obj/item/proc/digest_act(atom/movable/item_storage = null)
+	if(istype(item_storage, /obj/item/dogborg/sleeper))
+		if(istype(src, /obj/item/pda))
+			var/obj/item/pda/P = src
+			if(P.id)
+				P.id = null
 		for(var/obj/item/O in contents)
-			if(istype(O,/obj/item/storage/internal)) //Dump contents from dummy pockets.
+			if(istype(O, /obj/item/storage/internal)) //Dump contents from dummy pockets.
 				for(var/obj/item/SO in O)
 					if(item_storage)
 						SO.forceMove(item_storage)
@@ -15,17 +19,24 @@
 				O.forceMove(item_storage)
 		qdel(src)
 		return w_class
+
 	var/g_damage = 1
 	if(digest_stage == null)
 		digest_stage = w_class
+
 	if(isbelly(item_storage))
 		var/obj/belly/B = item_storage
 		g_damage = 0.25 * (B.digest_brute + B.digest_burn)
+
 	if(digest_stage > 0)
 		if(g_damage > digest_stage)
 			g_damage = digest_stage
 		digest_stage -= g_damage
-	else
+	if(digest_stage <= 0)
+		if(istype(src, /obj/item/pda))
+			var/obj/item/pda/P = src
+			if(P.id)
+				P.id = null
 		for(var/obj/item/O in contents)
 			if(istype(O,/obj/item/storage/internal)) //Dump contents from dummy pockets.
 				for(var/obj/item/SO in O)
@@ -35,6 +46,8 @@
 			else if(item_storage)
 				O.forceMove(item_storage)
 		qdel(src)
+	if(g_damage > w_class)
+		return w_class
 	return g_damage
 
 /////////////
@@ -64,26 +77,24 @@
 /////////////
 // Some special treatment
 /////////////
-//PDAs need to lose their ID to not take it with them, so we can get a digested ID
-/obj/item/pda/digest_act(var/atom/movable/item_storage = null)
-	if(id)
-		if(istype(item_storage,/obj/item/dogborg/sleeper) || (!isnull(digest_stage) && digest_stage <= 0))
-			id = null
-	. = ..()
 
 /obj/item/card/id
 	var/lost_access = list()
 
-/obj/item/card/id/digest_act(var/atom/movable/item_storage = null)
-	desc = "A partially digested card that has seen better days. The damage appears to be only cosmetic, but the access codes need to be reprogrammed at the HoP office."
-	icon = 'icons/obj/card_vr.dmi'
-	icon_state = "[initial(icon_state)]_digested"
+/obj/item/card/id/digest_act(atom/movable/item_storage = null)
+	desc = "A partially digested card that has seen better days. The damage appears to be only cosmetic, but the access codes need to be reprogrammed at the HoP office or ID restoration terminal."
+	if(!sprite_stack || !istype(sprite_stack) || !(sprite_stack.len))
+		icon = 'icons/obj/card_vr.dmi'
+		icon_state = "[initial(icon_state)]_digested"
+	else
+		sprite_stack += "digested"
+	update_icon()
 	if(!(LAZYLEN(lost_access)) && LAZYLEN(access))
 		lost_access = access	//Do not forget what access we lose
 	access = list()			// Then lose it
 	return FALSE
 
-/obj/item/reagent_containers/food/digest_act(var/atom/movable/item_storage = null)
+/obj/item/reagent_containers/food/digest_act(atom/movable/item_storage = null)
 	if(isbelly(item_storage))
 		var/obj/belly/B = item_storage
 		if(ishuman(B.owner))
@@ -96,7 +107,7 @@
 		return w_class
 	. = ..()
 
-/obj/item/holder/digest_act(var/atom/movable/item_storage = null)
+/obj/item/holder/digest_act(atom/movable/item_storage = null)
 	for(var/mob/living/M in contents)
 		if(item_storage)
 			M.forceMove(item_storage)
@@ -104,7 +115,7 @@
 
 	. = ..()
 
-/obj/item/organ/digest_act(var/atom/movable/item_storage = null)
+/obj/item/organ/digest_act(atom/movable/item_storage = null)
 	if((. = ..()))
 		if(isbelly(item_storage))
 			var/obj/belly/B = item_storage
@@ -112,7 +123,7 @@
 		else
 			. += 30 //Organs give a little more
 
-/obj/item/storage/digest_act(var/atom/movable/item_storage = null)
+/obj/item/storage/digest_act(atom/movable/item_storage = null)
 	for(var/obj/item/I in contents)
 		I.screen_loc = null
 
@@ -121,7 +132,7 @@
 /////////////
 // Some more complicated stuff
 /////////////
-/obj/item/mmi/digital/posibrain/digest_act(var/atom/movable/item_storage = null)
+/obj/item/mmi/digital/posibrain/digest_act(atom/movable/item_storage = null)
 	//Replace this with a VORE setting so all types of posibrains can/can't be digested on a whim
 	return FALSE
 

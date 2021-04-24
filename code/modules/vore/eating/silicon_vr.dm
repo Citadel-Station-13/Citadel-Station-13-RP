@@ -21,7 +21,7 @@
 
 /obj/effect/overlay/aiholo/proc/get_prey(var/mob/living/prey)
 	if(bellied) return
-	playsound('sound/effects/stealthoff.ogg',50,0)
+	playsound(src, 'sound/effects/stealthoff.ogg',50,0)
 	bellied = prey
 	prey.forceMove(src)
 	visible_message("[src] entirely engulfs [prey] in hardlight holograms!")
@@ -34,10 +34,10 @@
 
 /obj/effect/overlay/aiholo/proc/drop_prey()
 	if(!bellied) return
-	playsound('sound/effects/stealthoff.ogg',50,0)
+	playsound(src, 'sound/effects/stealthoff.ogg',50,0)
 	bellied.forceMove(get_turf(src))
 	bellied.Weaken(2)
-	bellied.visible_message("[bellied] flops out of \the [src].","You flop out of \the [src].","You hear a thud.")
+	bellied.visible_message("[bellied] flops out of [src].","You flop out of [src].","You hear a thud.")
 	bellied = null
 
 	desc = "[initial(desc)]"
@@ -64,7 +64,7 @@
 
 	//Already full
 	if (hologram.bellied)
-		var/choice = alert("You can only contain one person. [hologram.bellied] is in you.","Already Full","Drop Mob","Cancel")
+		var/choice = alert("You can only contain one person. [hologram.bellied] is in you.", "Already Full", "Drop Mob", "Cancel")
 		if(choice == "Drop Mob")
 			hologram.drop_prey()
 		return
@@ -82,16 +82,27 @@
 	if(do_after(user=eyeobj,delay=50,target=prey,needhand=0) && holo && hologram && !hologram.bellied) //Didn't move and still projecting and effect exists and no other bellied people
 		hologram.get_prey(prey)
 
+/*	Can't, lets them examine things in camera blackout areas
+//I basically have to do this, you know?
+/mob/living/silicon/ai/examinate(atom/A as mob|obj|turf in view(eyeobj))
+	set name = "Examine"
+	set category = "IC"
+
+	A.examine(src)
+*/
+
 /mob/living/AIShiftClick(var/mob/user) //Shift-click as AI overridden on mobs to examine.
 	if(user.client)
-		var/list/result = examine(user)
-		to_chat(user, result.Join("\n"))
+		examine(user)
+	return
 
 //This can go here with all the references.
 /obj/effect/overlay/aiholo/examine(mob/user)
 	. = ..()
+	if(master)
+		var/flavor_text = master.print_flavor_text()
+		if(flavor_text)
+			. += "[flavor_text]"
 
-	//If you need an ooc_notes copy paste, this is NOT the one to use.
-	var/ooc_notes = master.ooc_notes
-	if(ooc_notes)
-		. += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[master];ooc_notes=1'>\[View\]</a>\n"
+		if(master.ooc_notes)
+			. += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[master];ooc_notes=1'>\[View\]</a>"
