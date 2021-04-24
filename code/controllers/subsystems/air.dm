@@ -92,7 +92,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		currentrun = null
 	if(current_step != SSAIR_DONE)
 		stack_trace("current_step was [current_step] instead of [SSAIR_DONE]")
-		current_step = SSAIR_TURFS
+		current_step = SSAIR_DONE
 	else
 		current_step = null
 
