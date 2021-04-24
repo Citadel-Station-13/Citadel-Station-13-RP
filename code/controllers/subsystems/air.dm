@@ -73,10 +73,11 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	if(!resumed)
 		if(LAZYLEN(currentrun) != 0)
 			stack_trace("Currentrun not empty when it should be. [english_list(currentrun)]")
-			currentrun = list()
+		currentrun = list()
 		if(current_step != null)
 			stack_trace("current_step was [current_step] instead of null")
-			current_step = SSAIR_TURFS
+		current_step = SSAIR_TURFS
+		current_cycle++
 
 	INTERNAL_PROCESS_STEP(SSAIR_TURFS, TRUE, process_tiles_to_update, cost_turfs, SSAIR_EDGES)
 	INTERNAL_PROCESS_STEP(SSAIR_EDGES, FALSE, process_active_edges, cost_edges, SSAIR_FIREZONES)
@@ -87,14 +88,10 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	// Okay, we're done! Woo! Got thru a whole air_master cycle!
 	if(LAZYLEN(currentrun) != 0)
 		stack_trace("Currentrun not empty when it should be. [english_list(currentrun)]")
-		currentrun = list()
-	else
-		currentrun = null
+	currentrun = null
 	if(current_step != SSAIR_DONE)
 		stack_trace("current_step was [current_step] instead of [SSAIR_DONE]")
-		current_step = SSAIR_DONE
-	else
-		current_step = null
+	current_step = null
 
 /datum/controller/subsystem/air/proc/process_tiles_to_update(resumed = 0)
 	if (!resumed)
