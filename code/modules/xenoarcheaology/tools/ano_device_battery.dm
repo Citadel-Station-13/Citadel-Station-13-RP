@@ -66,7 +66,7 @@
 		ui = new(user, src, "XenoarchHandheldPowerUtilizer", name)
 		ui.open()
 
-/obj/item/anodevice/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/obj/item/anodevice/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
 
 	data["inserted_battery"] = inserted_battery
@@ -88,7 +88,7 @@
 
 	return data
 
-/obj/item/anodevice/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/item/anodevice/ui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
 	if(..())
 		return TRUE
 

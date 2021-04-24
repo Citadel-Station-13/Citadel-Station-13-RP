@@ -19,18 +19,13 @@
 
 	circuit = /obj/item/circuitboard/xenobioinjectormachine
 
-/obj/machinery/xenobio2/manualinjector/Initialize(mapload)
+/obj/machinery/xenobio2/manualinjector/Initialize()
 	. = ..()
 	var/datum/reagents/R = new/datum/reagents(1000)
 	reagents = R
 	R.my_atom = src
 	beaker = new /obj/item/reagent_containers/glass/beaker(src)
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	RefreshParts()
+	default_apply_parts()
 
 /obj/machinery/xenobio2/manualinjector/update_icon()
 	if(beaker)

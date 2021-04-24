@@ -124,14 +124,7 @@
 
 /obj/machinery/xenobio/extractor/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	RefreshParts()
+	default_apply_parts()
 
 /obj/machinery/xenobio/extractor/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/xenoproduct))
@@ -266,14 +259,7 @@
 
 /obj/machinery/xenobio/editor/Initialize(mapload, newdir)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	RefreshParts()
+	default_apply_parts()
 
 /obj/machinery/xenobio/editor/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/grab))

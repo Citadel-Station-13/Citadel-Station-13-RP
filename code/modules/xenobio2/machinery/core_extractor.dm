@@ -20,14 +20,8 @@
 
 /obj/machinery/slime/extractor/Initialize(mapload)
 	. = ..()
+	default_apply_parts()
 	update_light_color()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	RefreshParts()
 
 /obj/machinery/slime/extractor/attackby(var/obj/item/W, var/mob/user)
 

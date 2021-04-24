@@ -47,7 +47,7 @@
 		ui = new(user, src, "XenoarchArtifactHarvester", name)
 		ui.open()
 
-/obj/machinery/artifact_harvester/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/artifact_harvester/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
 
 	data["info"] = list(
@@ -72,7 +72,7 @@
 				data["info"]["inserted_battery"]["artifact_id"] = "N/A"
 	return data
 
-/obj/machinery/artifact_harvester/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/artifact_harvester/ui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
 	if(..())
 		return TRUE
 

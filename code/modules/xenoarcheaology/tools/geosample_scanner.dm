@@ -124,7 +124,7 @@
 		ui = new(user, src, "XenoarchSpectrometer", name)
 		ui.open()
 
-/obj/machinery/radiocarbon_spectrometer/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/radiocarbon_spectrometer/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
 
 	// this is the data which will be sent to the ui
@@ -156,7 +156,7 @@
 
 	return data
 
-/obj/machinery/radiocarbon_spectrometer/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/radiocarbon_spectrometer/ui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
 	if(..())
 		return TRUE
 

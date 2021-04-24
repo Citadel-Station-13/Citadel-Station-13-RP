@@ -19,12 +19,7 @@
 
 /obj/machinery/slime/replicator/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/micro_laser(src)
-	RefreshParts()
+	default_apply_parts()
 	update_light_color()
 
 /obj/machinery/slime/replicator/attackby(var/obj/item/W, var/mob/user)
