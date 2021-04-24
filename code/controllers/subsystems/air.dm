@@ -108,7 +108,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		//have valid zones when the self-zone-blocked turfs update.
 		//This ensures that doorways don't form their own single-turf zones, since doorways are self-zone-blocked and
 		//can merge with an adjacent zone, whereas zones that are formed on adjacent turfs cannot merge with the doorway.
-		ASSERT(src.selfblock_deferred == null) // Sanity check to make sure it was not remaining from last cycle somehow.
+		if(src.selfblock_deferred != null) // Sanity check to make sure it was not remaining from last cycle somehow.
+			stack_trace("WARNING: SELFBLOCK_DEFFERED WAS NOT NULL. Something went wrong.")
 		src.selfblock_deferred = list()
 
 	//cache for sanic speed (lists are references anyways)
@@ -135,7 +136,9 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		if(MC_TICK_CHECK)
 			return
 
-	ASSERT(LAZYLEN(currentrun) == 0)
+	if(LAZYLEN(currentrun) != 0)
+		stack_trace("WARNING: Currentrun was not empty when it should be.")
+	currentrun = list()
 
 	// Run thru the deferred list and processing them
 	while(selfblock_deferred.len)
@@ -149,8 +152,9 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		#endif
 		if(MC_TICK_CHECK)
 			return
-
-	ASSERT(LAZYLEN(selfblock_deferred) == 0)
+	
+	if(LAZYLEN(selfblock_deferred) != 0)
+		stack_trace("WARNING: selfblock_deffered was not empty (length [LAZYLEN(selfblock_deferred)])")
 	src.selfblock_deferred = null
 
 /datum/controller/subsystem/air/proc/process_active_edges(resumed = 0)
