@@ -178,7 +178,7 @@
 		spark_system.attach(A)
 
 		while(C.charge < C.maxcharge)
-			if(do_after(user, 2 SECONDS, target = user) && cell.charge)
+			if(do_after(user, 2 SECONDS, target = user) && cell?.charge)
 				done_any = TRUE
 				induce(C, coefficient)
 				spark_system.start()
