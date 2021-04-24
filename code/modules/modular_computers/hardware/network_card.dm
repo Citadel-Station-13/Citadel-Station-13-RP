@@ -1,6 +1,6 @@
 var/global/ntnet_card_uid = 1
 
-/obj/item/computer_hardware/network_card/
+/obj/item/weapon/computer_hardware/network_card/
 	name = "basic NTNet network card"
 	desc = "A basic network card for usage with standard NTNet frequencies."
 	power_usage = 50
@@ -14,7 +14,7 @@ var/global/ntnet_card_uid = 1
 	var/ethernet = 0 // Hard-wired, therefore always on, ignores NTNet wireless checks.
 	malfunction_probability = 1
 
-/obj/item/computer_hardware/network_card/diagnostics(var/mob/user)
+/obj/item/weapon/computer_hardware/network_card/diagnostics(var/mob/user)
 	..()
 	to_chat(user, "NIX Unique ID: [identification_id]")
 	to_chat(user, "NIX User Tag: [identification_string]")
@@ -25,12 +25,12 @@ var/global/ntnet_card_uid = 1
 	if(ethernet)
 		to_chat(user, "OpenEth (Physical Connection) - Physical network connection port")
 
-/obj/item/computer_hardware/network_card/Initialize(mapload)
-	. = ..()
+/obj/item/weapon/computer_hardware/network_card/New(var/l)
+	..(l)
 	identification_id = ntnet_card_uid
 	ntnet_card_uid++
 
-/obj/item/computer_hardware/network_card/advanced
+/obj/item/weapon/computer_hardware/network_card/advanced
 	name = "advanced NTNet network card"
 	desc = "An advanced network card for usage with standard NTNet frequencies. It's transmitter is strong enough to connect even when far away."
 	long_range = 1
@@ -39,7 +39,28 @@ var/global/ntnet_card_uid = 1
 	icon_state = "netcard_advanced"
 	hardware_size = 1
 
-/obj/item/computer_hardware/network_card/wired
+/obj/item/weapon/computer_hardware/network_card/quantum
+	name = "quantum NTNet network card"
+	desc = "A network card that can connect to NTnet from anywhere, using quantum entanglement."
+	long_range = 1
+	origin_tech = list(TECH_DATA = 6, TECH_ENGINEERING = 7)
+	power_usage = 200 // Infinite range but higher power usage.
+	icon_state = "netcard_advanced"
+	hardware_size = 1
+
+/obj/item/weapon/computer_hardware/network_card/quantum/get_signal(var/specific_action = 0)
+	if(!holder2)
+		return 0
+
+	if(!enabled)
+		return 0
+
+	if(!check_functionality() || !ntnet_global || is_banned())
+		return 0
+
+	return 2
+
+/obj/item/weapon/computer_hardware/network_card/wired
 	name = "wired NTNet network card"
 	desc = "An advanced network card for usage with standard NTNet frequencies. This one also supports wired connection."
 	ethernet = 1
@@ -48,21 +69,21 @@ var/global/ntnet_card_uid = 1
 	icon_state = "netcard_ethernet"
 	hardware_size = 3
 
-/obj/item/computer_hardware/network_card/Destroy()
+/obj/item/weapon/computer_hardware/network_card/Destroy()
 	if(holder2 && (holder2.network_card == src))
 		holder2.network_card = null
 	holder2 = null
 	return ..()
 
 // Returns a string identifier of this network card
-/obj/item/computer_hardware/network_card/proc/get_network_tag()
+/obj/item/weapon/computer_hardware/network_card/proc/get_network_tag()
 	return "[identification_string] (NID [identification_id])"
 
-/obj/item/computer_hardware/network_card/proc/is_banned()
+/obj/item/weapon/computer_hardware/network_card/proc/is_banned()
 	return ntnet_global.check_banned(identification_id)
 
 // 0 - No signal, 1 - Low signal, 2 - High signal. 3 - Wired Connection
-/obj/item/computer_hardware/network_card/proc/get_signal(var/specific_action = 0)
+/obj/item/weapon/computer_hardware/network_card/proc/get_signal(var/specific_action = 0)
 	if(!holder2) // Hardware is not installed in anything. No signal. How did this even get called?
 		return 0
 
@@ -79,22 +100,33 @@ var/global/ntnet_card_uid = 1
 		return 0
 
 	if(holder2)
-		var/turf/T = get_turf(holder2)
-		if(!istype(T)) //no reception in nullspace
+		var/holderz = get_z(holder2)
+		if(!holderz) //no reception in nullspace
 			return 0
-		if(T.z in GLOB.using_map.station_levels)
-			// Computer is on station. Low/High signal depending on what type of network card you have
-			if(long_range)
-				return 2
-			else
-				return 1
-		if(T.z in GLOB.using_map.contact_levels) //not on station, but close enough for radio signal to travel
-			if(long_range) // Computer is not on station, but it has upgraded network card. Low signal.
-				return 1
+		var/list/zlevels_in_range = using_map.get_map_levels(holderz, FALSE)
+		var/list/zlevels_in_long_range = using_map.get_map_levels(holderz, TRUE, om_range = DEFAULT_OVERMAP_RANGE) - zlevels_in_range
+		var/best = 0
+		for(var/relay in ntnet_global.relays)
+			var/obj/machinery/ntnet_relay/R = relay
+			//Relay is down
+			if(!R.operable())
+				continue
+			//We're on the same z
+			if(R.z == holderz)
+				best = 2 //Every network card gets high signal on the same z as the relay
+				break // No point in going further
+			//Not on the same z but within range anyway
+			if(R.z in zlevels_in_range)
+				best = long_range ? 2 : 1 //High-power network cards get good signal further away
+				break
+			//Only in long range
+			if(long_range && (R.z in zlevels_in_long_range))
+				best = 1 //High-power network cards can get low signal even at long range
+				break
+		return best
+	return 0 // No computer!
 
-	return 0 // Computer is not on station and does not have upgraded network card. No signal.
-
-/obj/item/computer_hardware/network_card/Destroy()
+/obj/item/weapon/computer_hardware/network_card/Destroy()
 	if(holder2 && (holder2.network_card == src))
 		holder2.network_card = null
-	..()
+	return ..()

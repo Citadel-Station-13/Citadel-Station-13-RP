@@ -16,6 +16,12 @@
 		return TRUE
 	return FALSE
 
+/obj/item/modular_computer/get_cell()
+	if(battery_module)
+		return battery_module.battery
+	else
+		..()
+
 // Tries to use power from APC, if present.
 /obj/item/modular_computer/proc/apc_power(var/power_usage = 0)
 	apc_powered = TRUE
@@ -32,13 +38,13 @@
 		power_usage += tesla_link.passive_charging_rate
 		battery_module.battery.give(tesla_link.passive_charging_rate * CELLRATE)
 
-	A.use_power(power_usage, EQUIP)
+	A.use_power_oneoff(power_usage, EQUIP)
 	return TRUE
 
 // Handles power-related things, such as battery interaction, recharging, shutdown when it's discharged
 /obj/item/modular_computer/proc/handle_power()
 	var/power_usage = screen_on ? base_active_power_usage : base_idle_power_usage
-	for(var/obj/item/computer_hardware/H in get_all_components())
+	for(var/obj/item/weapon/computer_hardware/H in get_all_components())
 		if(H.enabled)
 			power_usage += H.power_usage
 	last_power_usage = power_usage

@@ -3,6 +3,7 @@
 	desc = "A wall-mounted touchscreen computer."
 	icon = 'icons/obj/modular_telescreen.dmi'
 	icon_state = "telescreen"
+	layer = ABOVE_WINDOW_LAYER
 	icon_state_unpowered = "telescreen"
 	icon_state_menu = "menu"
 	icon_state_screensaver = "standby"
@@ -18,12 +19,12 @@
 	broken_damage = 150
 	w_class = ITEMSIZE_HUGE
 
-/obj/item/modular_computer/telescreen/Initialize(mapload)
-	. = ..()
+/obj/item/modular_computer/telescreen/New()
+	..()
 	// Allows us to create "north bump" "south bump" etc. named objects, for more comfortable mapping.
 	name = "telescreen"
 
-/obj/item/modular_computer/telescreen/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/item/modular_computer/telescreen/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	if(W.is_crowbar())
 		if(anchored)
 			shutdown_computer()

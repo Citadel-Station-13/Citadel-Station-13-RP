@@ -2,7 +2,7 @@
 /proc/get_camera_access(var/network)
 	if(!network)
 		return 0
-	. = GLOB.using_map.get_network_access(network)
+	. = using_map.get_network_access(network)
 	if(.)
 		return
 
@@ -15,8 +15,14 @@
 			return access_research
 		if(NETWORK_ERT)
 			return access_cent_specops
+		//VOREStation Add Start
+		if(NETWORK_TALON_SHIP)
+			return access_talon
+		if(NETWORK_TALON_HELMETS)
+			return access_talon
+		//VOREStation Add End
 
-	if(network in GLOB.using_map.station_networks)
+	if(network in using_map.station_networks)
 		return access_security // Default for all other station networks
 	else
 		return 999	//Inaccessible if not a station network and not mentioned above
