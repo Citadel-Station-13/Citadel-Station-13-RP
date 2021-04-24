@@ -29,6 +29,11 @@
 
 	for(var/direction in GLOB.cardinal)
 		var/turf/simulated/shielded_tile = get_step(get_turf(src), direction)
+		for(var/obj/effect/shield/S in shielded_tile)
+			// 10kJ per pulse, but gap in the shield lasts for longer than regular diffusers.
+			if(istype(S) && !S.diffused_for && !S.disabled_for && cell.checked_use(10 KILOWATTS * CELLRATE))
+				S.diffuse(20)
+		// Legacy shield support
 		for(var/obj/effect/energy_field/S in shielded_tile)
 			if(istype(S) && cell.checked_use(10 KILOWATTS * CELLRATE))
 				qdel(S)
@@ -39,14 +44,14 @@
 	else
 		icon_state = "hdiffuser_off"
 
-/obj/item/shield_diffuser/attack_self()
+/obj/item/shield_diffuser/attack_self(mob/user)
 	enabled = !enabled
 	update_icon()
 	if(enabled)
 		START_PROCESSING(SSobj, src)
 	else
 		STOP_PROCESSING(SSobj, src)
-	to_chat(usr, "You turn \the [src] [enabled ? "on" : "off"].")
+	to_chat(user, "You turn \the [src] [enabled ? "on" : "off"].")
 
 /obj/item/shield_diffuser/examine()
 	. = ..()
