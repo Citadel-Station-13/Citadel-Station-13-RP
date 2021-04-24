@@ -546,8 +546,6 @@
 		E.handle_implant(new_character)
 		E.post_implant(new_character)
 
-
-
 	for(var/lang in client.prefs.alternate_languages)
 		var/datum/language/chosen_language = GLOB.all_languages[lang]
 		if(chosen_language)
