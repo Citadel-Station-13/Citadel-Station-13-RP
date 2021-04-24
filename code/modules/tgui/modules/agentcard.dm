@@ -5,7 +5,7 @@
 /datum/tgui_module/agentcard/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
 
-	var/obj/item/card/id/syndicate/S = tgui_host()
+	var/obj/item/card/id/syndicate/S = ui_host()
 	if(!istype(S))
 		return list()
 
@@ -27,7 +27,7 @@
 	return data
 
 /datum/tgui_module/agentcard/tgui_status(mob/user, datum/tgui_state/state)
-	var/obj/item/card/id/syndicate/S = tgui_host()
+	var/obj/item/card/id/syndicate/S = ui_host()
 	if(!istype(S))
 		return UI_CLOSE
 	if(user != S.registered_user)
@@ -38,7 +38,7 @@
 	if(..())
 		return TRUE
 
-	var/obj/item/card/id/syndicate/S = tgui_host()
+	var/obj/item/card/id/syndicate/S = ui_host()
 	switch(action)
 		if("electronic_warfare")
 			S.electronic_warfare = !S.electronic_warfare

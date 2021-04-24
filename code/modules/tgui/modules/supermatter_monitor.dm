@@ -17,7 +17,7 @@
 // Refreshes list of active supermatter crystals
 /datum/tgui_module/supermatter_monitor/proc/refresh()
 	supermatters = list()
-	var/z = get_z(tgui_host())
+	var/z = get_z(ui_host())
 	if(!z)
 		return
 	var/valid_z_levels = GLOB.using_map.get_map_levels(z)

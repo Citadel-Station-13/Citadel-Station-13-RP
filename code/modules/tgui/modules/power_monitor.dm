@@ -62,7 +62,7 @@
 	grid_sensors = list()
 
 	// Handle ultranested programs
-	var/turf/T = get_turf(tgui_host())
+	var/turf/T = get_turf(ui_host())
 
 	var/list/levels = list()
 	if(!T) // Safety check

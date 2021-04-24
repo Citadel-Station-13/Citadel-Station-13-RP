@@ -301,7 +301,7 @@
 	if(custom_state)
 		ui.set_state(custom_state)
 
-/datum/tgui_module/appearance_changer/tgui_static_data(mob/user)
+/datum/tgui_module/appearance_changer/ui_static_data(mob/user)
 	var/list/data = ..()
 
 	generate_data(usr)
@@ -399,13 +399,13 @@
 		data["facial_hair_color"] = rgb(target.r_facial, target.g_facial, target.b_facial)
 	return data
 
-/datum/tgui_module/appearance_changer/tgui_static_data(mob/user)
+/datum/tgui_module/appearance_changer/ui_static_data(mob/user)
 	var/list/data = ..()
 	data["mapRef"] = map_name
 	return data
 
 /datum/tgui_module/appearance_changer/proc/update_active_camera_screen()
-	var/turf/newturf = get_turf(customize_usr ? tgui_host() : owner)
+	var/turf/newturf = get_turf(customize_usr ? ui_host() : owner)
 	if(newturf == last_camera_turf)
 		return
 

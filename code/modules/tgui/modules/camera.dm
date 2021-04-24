@@ -93,7 +93,7 @@
 			concurrent_users += user_ref
 		// Turn on the console
 		if(length(concurrent_users) == 1 && is_living)
-			playsound(tgui_host(), 'sound/machines/terminal_on.ogg', 25, FALSE)
+			playsound(ui_host(), 'sound/machines/terminal_on.ogg', 25, FALSE)
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
 		for(var/plane in cam_plane_masters)
@@ -114,7 +114,7 @@
 		)
 	return data
 
-/datum/tgui_module/camera/tgui_static_data(mob/user)
+/datum/tgui_module/camera/ui_static_data(mob/user)
 	var/list/data = ..()
 	data["mapRef"] = map_name
 	var/list/cameras = get_available_cameras(user)
@@ -134,7 +134,7 @@
 		return TRUE
 
 	if(action && !issilicon(usr))
-		playsound(tgui_host(), "terminal_type", 50, 1)
+		playsound(ui_host(), "terminal_type", 50, 1)
 
 	if(action == "switch_camera")
 		var/c_tag = params["name"]
@@ -144,7 +144,7 @@
 			GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
 		active_camera = C
 		GLOB.moved_event.register(active_camera, src, .proc/update_active_camera_screen)
-		playsound(tgui_host(), get_sfx("terminal_type"), 25, FALSE)
+		playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
 		update_active_camera_screen()
 		return TRUE
 
@@ -171,7 +171,7 @@
 					GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
 				active_camera = target
 				GLOB.moved_event.register(active_camera, src, .proc/update_active_camera_screen)
-				playsound(tgui_host(), get_sfx("terminal_type"), 25, FALSE)
+				playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
 				update_active_camera_screen()
 				. = TRUE
 
@@ -276,7 +276,7 @@
 		if(active_camera)
 			GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
 		active_camera = null
-		playsound(tgui_host(), 'sound/machines/terminal_off.ogg', 25, FALSE)
+		playsound(ui_host(), 'sound/machines/terminal_off.ogg', 25, FALSE)
 
 // NTOS Version
 // Please note, this isn't a very good replacement for converting modular computers 100% to TGUI

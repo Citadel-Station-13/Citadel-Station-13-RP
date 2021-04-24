@@ -212,7 +212,7 @@
 		return
 	download_progress = min(download_progress + netspeed, downloading.size)
 	if(download_progress >= downloading.size)
-		var/obj/item/modular_computer/MC = tgui_host()
+		var/obj/item/modular_computer/MC = ui_host()
 		if(!istype(MC) || !MC.hard_drive || !MC.hard_drive.check_functionality())
 			error = "Error uploading file. Are you using a functional and NTOSv2-compliant device?"
 			downloading = null
@@ -393,7 +393,7 @@
 
 		if("save")
 			// Fully dependant on modular computers here.
-			var/obj/item/modular_computer/MC = tgui_host()
+			var/obj/item/modular_computer/MC = ui_host()
 
 			if(!istype(MC) || !MC.hard_drive || !MC.hard_drive.check_functionality())
 				error = "Error exporting file. Are you using a functional and NTOS-compliant device?"
@@ -415,7 +415,7 @@
 			return 1
 
 		if("addattachment")
-			var/obj/item/modular_computer/MC = tgui_host()
+			var/obj/item/modular_computer/MC = ui_host()
 			msg_attachment = null
 
 			if(!istype(MC) || !MC.hard_drive || !MC.hard_drive.check_functionality())
@@ -457,7 +457,7 @@
 		if("downloadattachment")
 			if(!current_account || !current_message || !current_message.attachment)
 				return 1
-			var/obj/item/modular_computer/MC = tgui_host()
+			var/obj/item/modular_computer/MC = ui_host()
 			if(!istype(MC) || !MC.hard_drive || !MC.hard_drive.check_functionality())
 				error = "Error downloading file. Are you using a functional and NTOSv2-compliant device?"
 				return 1
