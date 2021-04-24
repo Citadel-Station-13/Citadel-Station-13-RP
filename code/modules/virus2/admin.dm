@@ -4,7 +4,7 @@
 
 	if(href_list["info"])
 		// spawn or admin privileges to see info about viruses
-		if(!check_rights(R_ADMIN|R_SPAWN)) return
+		if(!check_rights(R_ADMIN|R_SPAWN|R_EVENT)) return
 
 		to_chat(usr, "Infection chance: [infectionchance]; Speed: [speed]; Spread type: [spreadtype]")
 		to_chat(usr, "Affected species: [english_list(affected_species)]")
@@ -15,7 +15,6 @@
 
 		return 1
 
-/*
 /datum/disease2/disease/vv_get_header()
 	. = list()
 	for(var/datum/disease2/effectholder/E in effects)
@@ -29,7 +28,6 @@
 	return ..() + {"
 		<option value='?src=\ref[src];info=1'>Show info</option>
 	"}
-*/
 
 /datum/admins/var/datum/virus2_editor/virus2_editor_datum = new
 /client/proc/virus2_editor()
@@ -186,7 +184,8 @@
 							candidates["[G.name][G.client ? "" : " (no client)"]"] = G
 						else
 							candidates["[G.name] ([G.species.get_bodytype()])[G.client ? "" : " (no client)"]"] = G
-				if(!candidates.len) to_chat(usr, "No possible candidates found!")
+				if(!candidates.len)
+					to_chat(usr, "No possible candidates found!")
 
 				var/I = input("Choose initial infectee", "Infectee", infectee) as null|anything in candidates
 				if(!I || !candidates[I]) return

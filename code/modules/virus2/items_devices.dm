@@ -37,7 +37,7 @@
 /obj/item/virusdish
 	name = "virus dish"
 	icon = 'icons/obj/items.dmi'
-	icon_state = "implantcase-b"
+	icon_state = "virussample"
 	var/datum/disease2/disease/virus2 = null
 	var/growth = 0
 	var/basic_info = null
@@ -81,7 +81,7 @@
 /obj/item/ruinedvirusdish
 	name = "ruined virus sample"
 	icon = 'icons/obj/items.dmi'
-	icon_state = "implantcase-b"
+	icon_state = "virussample-ruined"
 	desc = "The bacteria in the dish are completely dead."
 
 /obj/item/ruinedvirusdish/attackby(var/obj/item/W as obj,var/mob/living/carbon/user as mob)
