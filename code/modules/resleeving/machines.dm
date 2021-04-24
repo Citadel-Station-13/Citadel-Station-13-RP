@@ -6,7 +6,7 @@
 /////// Grower Pod ///////
 /obj/machinery/clonepod/transhuman
 	name = "grower pod"
-	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/khi,
 						/datum/category_item/catalogue/technology/resleeving)
 	circuit = /obj/item/circuitboard/transhuman_clonepod
 
@@ -85,15 +85,9 @@
 		H.add_modifier(modifier_type)
 
 	//Apply damage
-	H.adjustCloneLoss((H.getMaxHealth() - config_legacy.health_threshold_dead)*-0.75)
+	H.adjustCloneLoss(H.getMaxHealth()*1.5)
 	H.Paralyse(4)
 	H.updatehealth()
-
-	//Grower specific mutations
-	if(heal_level < 60)
-		randmutb(H)
-		H.dna.UpdateSE()
-		H.dna.UpdateUI()
 
 	//Update appearance, remake icons
 	H.UpdateAppearance()
@@ -134,10 +128,10 @@
 			connected_message("Clone Rejected: Deceased.")
 			return
 
-		else if(occupant.health < heal_level && occupant.getCloneLoss() > 0)
+		else if(occupant.getCloneLoss() > 0)
 
 			 //Slowly get that clone healed and finished.
-			occupant.adjustCloneLoss(-2 * heal_rate)
+			occupant.adjustCloneLoss(-3 * heal_rate)
 
 			//Premature clones may have brain damage.
 			occupant.adjustBrainLoss(-(CEILING((0.5*heal_rate), 1)))
@@ -152,8 +146,8 @@
 			use_power(7500) //This might need tweaking.
 			return
 
-		else if(((occupant.health >= heal_level) || (occupant.health == occupant.maxHealth)) && (!eject_wait))
-			playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
+		else if(((occupant.health == occupant.maxHealth)) && (!eject_wait))
+			playsound(src, 'sound/machines/ding.ogg', 50, 1)
 			audible_message("\The [src] signals that the growing process is complete.")
 			connected_message("Growing Process Complete.")
 			locked = 0
@@ -168,11 +162,16 @@
 
 	return
 
+/obj/machinery/clonepod/transhuman/get_completion()
+	if(occupant)
+		return 100 * ((occupant.health + abs(config.health_threshold_dead)) / (occupant.maxHealth + abs(config.health_threshold_dead)))
+	return 0
+
 //Synthetic version
 /obj/machinery/transhuman/synthprinter
 	name = "SynthFab 3000"
 	desc = "A rapid fabricator for synthetic bodies."
-	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/khi,
 						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/machines/synthpod.dmi'
 	icon_state = "pod_0"
@@ -221,7 +220,7 @@
 		store_rating = store_rating * MB.rating
 	max_res_amount = store_rating
 
-/obj/machinery/transhuman/synthprinter/process(delta_time)
+/obj/machinery/transhuman/synthprinter/process()
 	if(stat & NOPOWER)
 		if(busy)
 			busy = 0
@@ -399,7 +398,7 @@
 /obj/machinery/transhuman/resleever
 	name = "resleeving pod"
 	desc = "Used to combine mind and body into one unit."
-	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
+	catalogue_data = list(/datum/category_item/catalogue/information/organization/khi,
 						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/obj/machines/implantchair.dmi'
 	icon_state = "implantchair"
@@ -409,14 +408,15 @@
 	anchored = 1
 	var/blur_amount
 	var/confuse_amount
+	var/sickness_duration
 
 	var/mob/living/carbon/human/occupant = null
 	var/connected = null
 
 	var/sleevecards = 2
 
-/obj/machinery/transhuman/resleever/Initialize(mapload)
-	. = ..()
+/obj/machinery/transhuman/resleever/New()
+	..()
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
@@ -438,29 +438,44 @@
 		manip_rating += M.rating
 	blur_amount = (48 - manip_rating * 8)
 
+	var/total_rating = manip_rating + scan_rating
+	sickness_duration = (45 - (total_rating-4)*1.875) MINUTES		// 45 minutes default, 30 minutes with max non-anomaly upgrades, 15 minutes with max anomaly ones
+
 /obj/machinery/transhuman/resleever/attack_hand(mob/user as mob)
-	user.set_machine(src)
-	var/health_text = ""
-	var/mind_text = ""
-	if(src.occupant)
-		if(src.occupant.stat >= DEAD)
-			health_text = "<FONT color=red>DEAD</FONT>"
-		else if(src.occupant.health < 0)
-			health_text = "<FONT color=red>[round(src.occupant.health,0.1)]</FONT>"
-		else
-			health_text = "[round(src.occupant.health,0.1)]"
+	tgui_interact(user)
 
-		if(src.occupant.mind)
-			mind_text = "Mind present: [occupant.mind.name]"
-		else
-			mind_text = "Mind absent."
+/obj/machinery/transhuman/resleever/tgui_interact(mob/user, datum/tgui/ui = null)
+	if(stat & (NOPOWER|BROKEN))
+		return
 
-	var/dat ="<B>Resleever Status</B><BR>"
-	dat +="<B>Current occupant:</B> [src.occupant ? "<BR>Name: [src.occupant]<BR>Health: [health_text]<BR>" : "<FONT color=red>None</FONT>"]<BR>"
-	dat +="<B>Mind status:</B> [mind_text]<BR>"
-	user.set_machine(src)
-	user << browse(dat, "window=resleever")
-	onclose(user, "resleever")
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ResleevingPod", "Resleever")
+		ui.open()
+
+/obj/machinery/transhuman/resleever/ui_data(mob/user)
+	var/list/data = list()
+
+	data["occupied"] = !!occupant
+	if(occupant)
+		data["name"] = occupant.name
+		data["health"] = occupant.health
+		data["maxHealth"] = occupant.maxHealth
+		data["stat"] = occupant.stat
+		data["mindStatus"] = !!occupant.mind
+		data["mindName"] = occupant.mind?.name
+
+		if(occupant.has_modifier_of_type(/datum/modifier/resleeving_sickness) || occupant.has_modifier_of_type(/datum/modifier/faux_resleeving_sickness))
+			data["resleeveSick"] = TRUE
+		else
+			data["resleeveSick"] = FALSE
+
+		if(occupant.confused || occupant.eye_blurry)
+			data["initialSick"] = TRUE
+		else
+			data["initialSick"] = FALSE
+
+	return data
 
 /obj/machinery/transhuman/resleever/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -474,10 +489,6 @@
 		var/obj/item/grab/G = W
 		if(!ismob(G.affecting))
 			return
-		for(var/mob/living/carbon/slime/M in range(1, G.affecting))
-			if(M.Victim == G.affecting)
-				to_chat(usr, "[G.affecting:name] will not fit into the [src.name] because they have a slime latched onto their head.")
-				return
 		var/mob/M = G.affecting
 		if(put_mob(M))
 			qdel(G)
@@ -489,7 +500,7 @@
 		C.removePersonality()
 		qdel(C)
 		sleevecards++
-		to_chat(user,"<span class='notice'>You store \the [C] in \the [src].</span>")
+		to_chat(user, "<span class='notice'>You store \the [C] in \the [src].</span>")
 		return
 
 	return ..()
@@ -502,7 +513,7 @@
 	if(O.anchored)
 		return 0 //mob is anchored???
 	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
-		return 0 //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
+		return 0 //doesn't use adjacent() to allow for non-cardinal (fuck my life)
 	if(!ishuman(user) && !isrobot(user))
 		return 0 //not a borg or human
 	if(panel_open)
@@ -557,7 +568,7 @@
 	occupant.apply_vore_prefs() //Cheap hack for now to give them SOME bellies.
 	if(MR.one_time)
 		var/how_long = round((world.time - MR.last_update)/10/60)
-		to_chat(occupant,"<span class='danger'>Your mind backup was a 'one-time' backup. \
+		to_chat(occupant, "<span class='danger'>Your mind backup was a 'one-time' backup. \
 		You will not be able to remember anything since the backup, [how_long] minutes ago.</span>")
 
 	//Re-supply a NIF if one was backed up with them.
@@ -586,7 +597,20 @@
 		to_chat(occupant, "<span class='warning'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  </span>")
 	//cit change end
 	occupant.confused = max(occupant.confused, confuse_amount)
+
+	occupant.confused = max(occupant.confused, confuse_amount)									// Apply immedeate effects
 	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)
+
+	// Vore deaths get a fake modifier labeled as such
+	if(!occupant.mind)
+		log_debug("[occupant] didn't have a mind to check for vore_death, which may be problematic.")
+
+	if(occupant.mind?.vore_death)
+		occupant.add_modifier(/datum/modifier/faux_resleeving_sickness, sickness_duration)
+		occupant.mind.vore_death = FALSE
+	// Normal ones get a normal modifier to nerf charging into combat
+	else
+		occupant.add_modifier(/datum/modifier/resleeving_sickness, sickness_duration)
 
 	if(occupant.mind && occupant.original_player && ckey(occupant.mind.key) != occupant.original_player)
 		log_and_message_admins("is now a cross-sleeved character. Body originally belonged to [occupant.real_name]. Mind is now [occupant.mind.name].",occupant)
