@@ -15,7 +15,7 @@
 		spawn(3)
 			var/mob/living/carbon/human/H = player.current
 			if(istype(H))
-				H.change_appearance(APPEARANCE_ALL, H.loc, H, species_whitelist = valid_species, state = z_state)
+				H.change_appearance(APPEARANCE_ALL, H, species_whitelist = valid_species, state = GLOB.tgui_self_state)
 	return player.current
 
 /datum/antagonist/proc/update_access(var/mob/living/player)
@@ -78,11 +78,11 @@
 
 /datum/antagonist/proc/update_current_antag_max()
 	cur_max = hard_cap
-	if(SSticker && SSticker.mode)
-		if(SSticker.mode.antag_tags && (id in SSticker.mode.antag_tags))
+	if(ticker && ticker.mode)
+		if(ticker.mode.antag_tags && (id in ticker.mode.antag_tags))
 			cur_max = hard_cap_round
 
-	if(SSticker.mode.antag_scaling_coeff)
+	if(ticker.mode.antag_scaling_coeff)
 
 		var/count = 0
 		for(var/mob/living/M in player_list)
@@ -91,4 +91,4 @@
 
 		// Minimum: initial_spawn_target
 		// Maximum: hard_cap or hard_cap_round
-		cur_max = max(initial_spawn_target,min(round(count/SSticker.mode.antag_scaling_coeff),cur_max))
+		cur_max = max(initial_spawn_target,min(round(count/ticker.mode.antag_scaling_coeff),cur_max))
