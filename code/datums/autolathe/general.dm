@@ -6,41 +6,48 @@
 	name = "water-cooler bottle"
 	path =/obj/item/reagent_containers/glass/cooler_bottle
 
-/datum/category_item/autolathe/general/drinkingglass_square
+/datum/category_item/autolathe/general/drinkingglass
+	is_stack = TRUE
+
+/datum/category_item/autolathe/general/drinkingglass/square
 	name = "half-pint glass"
 	path =/obj/item/reagent_containers/food/drinks/glass2/square
 
-/datum/category_item/autolathe/general/drinkingglass_rocks
+/datum/category_item/autolathe/general/drinkingglass/rocks
 	name = "rocks glass"
 	path =/obj/item/reagent_containers/food/drinks/glass2/rocks
 
-/datum/category_item/autolathe/general/drinkingglass_shake
+/datum/category_item/autolathe/general/drinkingglass/shake
 	name = "milkshake glass"
 	path =/obj/item/reagent_containers/food/drinks/glass2/shake
 
-/datum/category_item/autolathe/general/drinkingglass_cocktail
+/datum/category_item/autolathe/general/drinkingglass/cocktail
 	name = "cocktail glass"
 	path =/obj/item/reagent_containers/food/drinks/glass2/cocktail
 
-/datum/category_item/autolathe/general/drinkingglass_shot
+/datum/category_item/autolathe/general/drinkingglass/shot
 	name = "shot glass"
 	path =/obj/item/reagent_containers/food/drinks/glass2/shot
 
-/datum/category_item/autolathe/general/drinkingglass_pint
+/datum/category_item/autolathe/general/drinkingglass/pint
 	name = "pint glass"
 	path =/obj/item/reagent_containers/food/drinks/glass2/pint
 
-/datum/category_item/autolathe/general/drinkingglass_mug
+/datum/category_item/autolathe/general/drinkingglass/mug
 	name = "glass mug"
 	path =/obj/item/reagent_containers/food/drinks/glass2/mug
 
-/datum/category_item/autolathe/general/drinkingglass_wine
+/datum/category_item/autolathe/general/drinkingglass/wine
 	name = "wine glass"
 	path =/obj/item/reagent_containers/food/drinks/glass2/wine
 
-/datum/category_item/autolathe/general/drinkingglass_pitcher
-	name = "drinks pitcher"
-	path =/obj/item/reagent_containers/food/drinks/glass2/pitcher
+/datum/category_item/autolathe/general/drinkingglass/metaglass
+	name = "metamorphic glass"
+	path =/obj/item/reagent_containers/food/drinks/metaglass
+
+/datum/category_item/autolathe/general/drinkingglass/metaglass/metapint
+	name = "metamorphic pint glass"
+	path =/obj/item/reagent_containers/food/drinks/metaglass/metapint
 
 /datum/category_item/autolathe/general/flashlight
 	name = "flashlight"
@@ -56,6 +63,10 @@
 
 /datum/category_item/autolathe/general/jar
 	name = "jar"
+	path =/obj/item/glass_jar
+
+/datum/category_item/autolathe/general/fishtank
+	name = "fish tank"
 	path =/obj/item/glass_jar
 
 /datum/category_item/autolathe/general/radio_headset
@@ -97,6 +108,9 @@
 	path =/obj/item/stack/rods
 	is_stack = TRUE
 	no_scale = TRUE //prevents material duplication exploits
+/datum/category_item/autolathe/general/spraybottle
+	name = "spray bottle"
+	path = /obj/item/reagent_containers/spray
 
 /datum/category_item/autolathe/general/knife
 	name = "kitchen knife"
@@ -104,7 +118,7 @@
 
 /datum/category_item/autolathe/general/taperecorder
 	name = "tape recorder"
-	path =/obj/item/tape_recorder
+	path =/obj/item/taperecorder
 
 /datum/category_item/autolathe/general/tube
 	name = "light tube"
@@ -128,18 +142,18 @@
 	name = "maglight"
 	path =/obj/item/flashlight/maglight
 
+/datum/category_item/autolathe/general/idcard
+	name = "ID Card"
+	path = /obj/item/card/id
+	resources = list(DEFAULT_WALL_MATERIAL = 100, MAT_GLASS = 100, MAT_PLASTIC = 300)
+	man_rating = 2
+
 /datum/category_item/autolathe/general/handcuffs
 	name = "handcuffs"
 	path =/obj/item/handcuffs
 	hidden = 1
 
-/datum/category_item/autolathe/general/spike
-	name = "jagged spike"
-	path = /obj/item/melee/spike
+/datum/category_item/autolathe/general/legcuffs
+	name = "legcuffs"
+	path =/obj/item/handcuffs/legcuffs
 	hidden = 1
-
-//VR FILE MERGE
-
-/datum/category_item/autolathe/general/holocollar
-	name = "Holo-collar"
-	path =/obj/item/clothing/accessory/collar/holo

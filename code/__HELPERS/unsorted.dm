@@ -1283,7 +1283,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		set_light(origin.light_range, origin.light_power, origin.light_color)
 
 // call to generate a stack trace and print to runtime logs
-/proc/crash_with(msg)
+/proc/CRASH(msg)
 	CRASH(msg)
 
 /proc/screen_loc2turf(scr_loc, turf/origin)

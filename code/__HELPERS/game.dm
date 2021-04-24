@@ -304,7 +304,7 @@
 		//VOREStation Edit - Trying to fix some vorestation bug.
 		if(!istype(mob, /mob))
 			player_list -= mob
-			crash_with("There is a null or non-mob reference inside player_list ([mob]).")
+			CRASH("There is a null or non-mob reference inside player_list ([mob]).")
 			continue
 		//VOREStation Edit End - Trying to fix some vorestation bug.
 		if(get_turf(mob) in hearturfs)
