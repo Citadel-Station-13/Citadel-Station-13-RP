@@ -1,7 +1,0 @@
-author: "Auris456852"
-delete-after: True
-changes: 
-  - bugfix: "R-UST's hot loop now is set in the right direction and the wiring works."
-  - bugfix: "No more duplicate borosilicate engine windows.
-tweak: Every engine submap now has radiator window shutters.
-tweak: Removes the rogue button in the middle of the R-UST pipes."
