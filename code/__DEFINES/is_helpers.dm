@@ -78,3 +78,5 @@
 #define isbot(A) istype(A, /mob/living/bot)
 
 #define isxeno(A) istype(A, /mob/living/simple_mob/xeno)
+
+#define issimple(A) istype(A, /mob/living/simple_mob)

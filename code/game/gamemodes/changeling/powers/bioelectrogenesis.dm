@@ -123,9 +123,8 @@
 		new /obj/effect/effect/sparks(T)
 
 /obj/item/electric_hand/dropped(mob/user)
-	spawn(1)
-		if(src)
-			qdel(src)
+	. = ..()
+	qdel(src)
 
 /obj/item/electric_hand/afterattack(var/atom/target, var/mob/living/carbon/human/user, proximity)
 	if(!target)

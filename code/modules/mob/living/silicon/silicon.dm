@@ -106,9 +106,9 @@
 	if(!Proj.nodamage)
 		switch(Proj.damage_type)
 			if(BRUTE)
-				adjustBruteLoss(Proj.damage)
+				adjustBruteLoss(Proj.get_final_damage(src))
 			if(BURN)
-				adjustFireLoss(Proj.damage)
+				adjustFireLoss(Proj.get_final_damage(src))
 
 	Proj.on_hit(src,2)
 	updatehealth()
