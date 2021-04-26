@@ -5260,13 +5260,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
-"oO" = (
-/obj/machinery/chemical_dispenser/bar_soft/full{
-	dir = 1;
-	pixel_y = -1
-	},
-/turf/simulated/floor/tiled/freezer,
-/area/crew_quarters/freezer)
 "oQ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -7224,6 +7217,9 @@
 "un" = (
 /obj/machinery/computer/security/telescreen{
 	pixel_x = 32
+	},
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	pixel_y = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
@@ -24300,7 +24296,7 @@ rI
 aU
 HZ
 kr
-oO
+kr
 Zy
 Zy
 Nw
