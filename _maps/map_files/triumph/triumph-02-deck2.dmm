@@ -330,6 +330,12 @@
 	dir = 8
 	},
 /obj/machinery/light,
+/obj/item/deck/unus{
+	pixel_x = 7
+	},
+/obj/item/deck/cah{
+	pixel_x = -8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aU" = (
@@ -2821,6 +2827,9 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "ig" = (
@@ -2941,9 +2950,6 @@
 /area/maintenance/bar/lower)
 "iv" = (
 /obj/machinery/vending/hydronutrients,
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hydroponics)
 "iw" = (
@@ -4328,9 +4334,6 @@
 /obj/machinery/newscaster{
 	layer = 3.3;
 	pixel_x = -27
-	},
-/obj/machinery/light{
-	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -5746,6 +5749,7 @@
 /obj/machinery/newscaster{
 	pixel_x = 30
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "qn" = (
