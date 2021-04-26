@@ -1,4 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - balance: "inversion beams get dampened by antimagic"
