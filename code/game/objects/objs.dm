@@ -1,6 +1,10 @@
 /obj
 	layer = OBJ_LAYER
 	plane = OBJ_PLANE
+
+	var/obj_flags = CAN_BE_HIT
+	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
+
 	//Used to store information about the contents of the object.
 	var/list/matter
 	var/w_class // Size of the object.
@@ -24,7 +28,16 @@
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
-	return ..()
+	. = ..()
+	if (set_obj_flags)
+		var/flagslist = splittext(set_obj_flags,";")
+		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
+		for (var/flag in flagslist)
+			if(flag[1] == "!")
+				flag = copytext(flag, length(flag[1]) + 1) // Get all but the initial !
+				obj_flags &= ~string_to_objflag[flag]
+			else
+				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
 	STOP_PROCESSING(SSobj, src)

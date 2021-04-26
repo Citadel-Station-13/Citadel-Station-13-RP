@@ -18,6 +18,13 @@
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
 /mob/living/Destroy()
+	if(LAZYLEN(status_effects))
+		for(var/s in status_effects)
+			var/datum/status_effect/S = s
+			if(S.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
+				qdel(S)
+			else
+				S.be_replaced()
 	dsoverlay.loc = null //I'll take my coat with me
 	dsoverlay = null
 	if(nest) //Ew.
