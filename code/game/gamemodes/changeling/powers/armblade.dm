@@ -75,18 +75,17 @@
 		src.creator = loc
 
 /obj/item/melee/changeling/dropped(mob/user)
+	. = ..()
 	visible_message("<span class='warning'>With a sickening crunch, [creator] reforms their arm!</span>",
 	"<span class='notice'>We assimilate the weapon back into our body.</span>",
 	"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 	playsound(src, 'sound/effects/blobattack.ogg', 30, 1)
-	spawn(1)
-		if(src)
-			qdel(src)
+	qdel(src)
 
 /obj/item/melee/changeling/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	creator = null
-	..()
+	return ..()
 
 /obj/item/melee/changeling/suicide_act(mob/user)
 	var/datum/gender/T = gender_datums[user.get_visible_gender()]

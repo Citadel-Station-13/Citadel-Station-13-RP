@@ -40,7 +40,6 @@
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
-
 /obj/item/nullrod/attack_self(mob/user)
 	if(user && (user.mind.isholy) && !reskinned)
 		reskin_holy_weapon(user)
