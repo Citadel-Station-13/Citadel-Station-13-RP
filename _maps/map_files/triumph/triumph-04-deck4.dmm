@@ -7195,6 +7195,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
 "fzM" = (
@@ -12451,6 +12454,9 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
 "jAN" = (
@@ -12764,6 +12770,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
@@ -15524,6 +15533,9 @@
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/prison/cell_block)
@@ -38476,7 +38488,7 @@ kIp
 lAD
 nXp
 uAw
-vAk
+vjU
 nbt
 uNU
 sfo
