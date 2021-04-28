@@ -107,7 +107,7 @@
 	name = "POI - Destroyed Mining Outpost"
 
 /area/submap/debrisfield/tinyshuttle
-	name = "Tiny Shuttle"
+	secret_name = 0
 
 /area/submap/debrisfield/tinyshuttle/crew
 	name = "Crew Bay"
@@ -130,6 +130,7 @@
 	shuttle_area = list(/area/submap/debrisfield/tinyshuttle/crew, /area/submap/debrisfield/tinyshuttle/bridge, /area/submap/debrisfield/tinyshuttle/hangar, /area/submap/debrisfield/tinyshuttle/engine)
 	fuel_consumption = 3
 	defer_initialisation = TRUE
+	move_direction = WEST
 
 /obj/effect/shuttle_landmark/shuttle_initializer/tinycarrier
 	name = "Debris Field"
@@ -183,6 +184,27 @@
 /obj/machinery/computer/shuttle_control/explore/tinycarrier
 	shuttle_tag = "Debris Carrier"
 	req_one_access = list()
+
+/obj/mecha/combat/fighter/baron/loaded/busted
+	starting_components = list(/obj/item/mecha_parts/component/hull/lightweight,/obj/item/mecha_parts/component/actuator/hispeed,/obj/item/mecha_parts/component/armor,/obj/item/mecha_parts/component/gas,/obj/item/mecha_parts/component/electrical/high_current)
+
+/obj/mecha/combat/fighter/baron/loaded/busted/Initialize()
+	. = ..()
+	health = round(rand(50,120))
+	cell?.charge = 0
+	for(var/slot in internal_components)
+		var/obj/item/mecha_parts/component/comp = internal_components[slot]
+		if(!istype(comp))
+			continue
+		comp.adjust_integrity(-(round(rand(comp.max_integrity - 10, 0))))
+
+	setInternalDamage(MECHA_INT_SHORT_CIRCUIT)
+
+/obj/structure/fuel_port/empty_tank/Initialize()
+	. = ..()
+	var/obj/item/tank/phoron/T = locate() in src
+	if(T)
+		T.air_contents.remove(T.air_contents.total_moles)
 
 /area/submap/debrisfield/misc_debris //for random bits of debris that should use dynamic lights
 	requires_power = 1
