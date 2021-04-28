@@ -38,6 +38,7 @@
 				) //it's a miracle this thing works
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 	fuel_consumption = 4 //chonker uses more fuel
+	move_direction = NORTH
 	ceiling_type = /turf/simulated/floor/reinforced/airless
 
 // A shuttle lateloader landmark
@@ -60,7 +61,6 @@
 	vessel_mass = 3500
 	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Bearcat"
-	fore_dir = NORTH
 
 // The shuttle's 'shuttle' computer
 /obj/machinery/computer/shuttle_control/explore/bearcat
