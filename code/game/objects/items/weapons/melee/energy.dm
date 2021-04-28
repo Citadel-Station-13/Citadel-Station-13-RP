@@ -726,14 +726,14 @@
 		for(var/obj/effect/plantsegment/P in range(mover,0))
 			qdel(P)
 
-/obj/item/melee/energy/hfmachete/attackby(obj/item/weapon/W, mob/living/user)
+/obj/item/melee/energy/hfmachete/attackby(obj/item/W, mob/living/user)
 	..()
 	if(istype(W, /obj/item/melee/energy/hfmachete))
 		to_chat(user, "<span class='notice'>You combine the two [W] together, making a single scissor-bladed weapon! You feel fucking invincible!</span>")
 		qdel(W)
 		W = null
 		qdel(src)
-		var/B = new /obj/item/weapon/bloodlust(user.loc)
+		var/B = new /obj/item/bloodlust(user.loc)
 		user.put_in_hands(B)
 		// blust one day lads.
 */
