@@ -8,8 +8,8 @@
 	var/net_type = /obj/effect/energy_net
 
 /obj/item/energy_net/dropped()
-	spawn(10)
-		if(src) qdel(src)
+	. = ..()
+	QDEL_IN(src, 10)
 
 /obj/item/energy_net/throw_impact(atom/hit_atom)
 	..()

@@ -319,15 +319,30 @@
 	else
 		playsound(src, drop_sound, 30, preference = /datum/client_preference/drop_sounds)
 
-// apparently called whenever an item is removed from a slot, container, or anything else.
-/obj/item/proc/dropped(mob/user as mob)
+/// Called when a mob drops an item.
+/obj/item/proc/dropped(mob/user, silent = FALSE)
+	SHOULD_CALL_PARENT(TRUE)
+/*
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.Remove(user)
+	if(item_flags & DROPDEL)
+		qdel(src)
+	item_flags &= ~IN_INVENTORY
+*/
+	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
+	// if(!silent)
+	// 	playsound(src, drop_sound, DROP_SOUND_VOLUME, ignore_walls = FALSE)
+	// user?.update_equipment_speed_mods()
 	if(zoom)
 		zoom() //binoculars, scope, etc
 	appearance_flags &= ~NO_CLIENT_COLOR
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	// item_flags |= IN_INVENTORY
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)

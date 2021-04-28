@@ -459,7 +459,7 @@
 	desc = "A grenade launcher produced for SWAT use; fires flashbangs."
 	icon_state = "mecha_grenadelnchr"
 	projectile = /obj/item/grenade/flashbang
-	fire_sound = 'sound/effects/bang.ogg'
+	fire_sound = 'sound/effects/weaponsounds_grenadelaunch.ogg'
 	projectiles = 6
 	missile_speed = 1.5
 	projectile_energy_cost = 800
