@@ -1856,7 +1856,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "atmos"
 	sound_env = LARGE_ENCLOSED
 	ambience = AMBIENCE_ATMOS
-	)
 
 /area/engineering/atmos/backup
 	name = "\improper Backup Atmospherics"
@@ -2162,7 +2161,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Medbay Restroom"
 	icon_state = "medbay_restroom"
 	ambience = AMBIENCE_ATMOS
-	)
 
 /area/medical/patients_rooms
 	name = "\improper Patient's Rooms"
