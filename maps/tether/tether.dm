@@ -18,7 +18,6 @@
 	#include "../../_maps/map_files/tether/tether-07-station3.dmm"
 	#include "../../_maps/map_files/tether/tether-08-mining.dmm"
 	#include "../../_maps/map_files/tether/tether-09-solars.dmm"
-	#include "../../_maps/map_files/tether/tether-10-colony.dmm"
 
 	#include "submaps/_tether_submaps.dm"
 
