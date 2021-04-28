@@ -438,9 +438,11 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/pilot
 	name = "pilot's laptop"
 
+/* PENDING HARDSYNC!
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/pilot/install_default_programs()
 	..()
 	hard_drive.store_file(new/datum/computer_file/program/ship_nav())
+*/
 
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/talon/engineer
 	name = "engineer's laptop"
