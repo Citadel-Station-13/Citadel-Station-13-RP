@@ -160,6 +160,7 @@
 	var/obj/item/rig_module/armblade/storing_module
 
 /obj/item/material/knife/machete/armblade/rig/dropped(mob/user)
+	. = ..()
 	if(storing_module)
 		src.forceMove(storing_module)
 		user.visible_message(
@@ -188,3 +189,10 @@
 	return TRUE
 
 */
+
+/obj/item/material/knife/machete/deluxe
+	name = "deluxe machete"
+	desc = "A fine example of a machete, with a polished blade, wooden handle and a leather cord loop."
+	icon = 'icons/obj/weapons_vr.dmi'
+	icon_state = "machetedx"
+	item_state = "machete"
