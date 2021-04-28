@@ -88,6 +88,7 @@
 	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
 	src.modules += new /obj/item/tool/wrench/cyborg(src)
 	src.modules += new /obj/item/robotanalyzer(src)
+	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
 	src.modules += new /obj/item/stack/cable_coil/cyborg(src)
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
 	src.modules += new /obj/item/multitool(src)
