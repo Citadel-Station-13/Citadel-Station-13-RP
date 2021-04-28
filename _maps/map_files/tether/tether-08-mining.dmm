@@ -191,6 +191,9 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "aE" = (
+/obj/machinery/computer/shuttle_control/surface_mining_outpost{
+	dir = 8
+	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
@@ -1625,6 +1628,14 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/airlock)
+"hw" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/machinery/mining/drill/loaded,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/drill_equipment)
 "hK" = (
 /turf/simulated/wall/r_wall,
 /area/outpost/mining_main/dorms)
@@ -1874,6 +1885,10 @@
 /obj/structure/bed/padded,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
+"Lp" = (
+/obj/machinery/mining/drill/loaded,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/outpost/mining_main/drill_equipment)
 "Ma" = (
 /obj/machinery/door/airlock/mining{
 	name = "Quarters"
@@ -5731,9 +5746,9 @@ ab
 ab
 ab
 ab
-bZ
+hw
 ch
-ch
+Lp
 ch
 ch
 ch

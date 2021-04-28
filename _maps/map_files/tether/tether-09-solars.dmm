@@ -378,11 +378,11 @@
 /area/tether/outpost/solars_outside)
 "aO" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Power - Solar Array";
 	charge = 0;
 	cur_coils = 3;
 	output_attempt = 0;
-	outputting = 0
+	outputting = 0;
+	RCon_tag = "Power - Solar Array"
 	},
 /obj/structure/cable/heavyduty,
 /turf/simulated/floor/virgo3b_indoors,
@@ -444,8 +444,8 @@
 /area/mine/explored)
 "aV" = (
 /obj/machinery/power/terminal{
-	dir = 1;
-	icon_state = "term"
+	icon_state = "term";
+	dir = 1
 	},
 /obj/structure/cable/yellow{
 	d2 = 8;
@@ -1094,8 +1094,8 @@
 /area/rnd/outpost/testing)
 "cy" = (
 /obj/effect/floor_decal/industrial/warning/cee{
-	dir = 1;
-	icon_state = "warningcee"
+	icon_state = "warningcee";
+	dir = 1
 	},
 /turf/simulated/floor/greengrid,
 /area/rnd/outpost/testing)
@@ -1416,8 +1416,8 @@
 	pixel_y = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central5{
-	dir = 4;
-	icon_state = "steel_decals_central5"
+	icon_state = "steel_decals_central5";
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
@@ -1543,8 +1543,8 @@
 "dv" = (
 /obj/structure/dispenser,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	icon_state = "tube1";
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/testing)
@@ -1587,8 +1587,8 @@
 /area/rnd/outpost/eva)
 "dA" = (
 /obj/machinery/vending/coffee{
-	dir = 8;
-	icon_state = "coffee"
+	icon_state = "coffee";
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
@@ -1706,8 +1706,8 @@
 	},
 /obj/machinery/meter,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	icon_state = "tube1";
+	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple{
 	dir = 6
@@ -1762,8 +1762,8 @@
 /area/rnd/outpost/testing)
 "dV" = (
 /obj/machinery/vending/cola{
-	dir = 8;
-	icon_state = "Soda_Machine"
+	icon_state = "Soda_Machine";
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
@@ -1900,8 +1900,8 @@
 /area/rnd/outpost/mixing)
 "ej" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 9;
-	icon_state = "intact"
+	icon_state = "intact";
+	dir = 9
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -1920,8 +1920,8 @@
 /area/rnd/outpost/mixing)
 "el" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6;
-	icon_state = "intact"
+	icon_state = "intact";
+	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 9
@@ -2559,10 +2559,10 @@
 /area/maintenance/substation/outpost)
 "ff" = (
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Science Outpost";
 	charge = 0;
 	output_attempt = 0;
-	outputting = 0
+	outputting = 0;
+	RCon_tag = "Substation - Science Outpost"
 	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
@@ -2755,8 +2755,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	icon_state = "tube1";
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
@@ -3348,8 +3348,8 @@
 /area/mine/explored)
 "gv" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 1;
-	icon_state = "map"
+	icon_state = "map";
+	dir = 1
 	},
 /obj/machinery/meter,
 /obj/machinery/button/ignition{
@@ -3384,8 +3384,8 @@
 /area/rnd/outpost/heating)
 "gy" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 10;
-	icon_state = "intact"
+	icon_state = "intact";
+	dir = 10
 	},
 /obj/machinery/light{
 	dir = 1
@@ -3604,8 +3604,8 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/industrial/warning/cee{
-	dir = 1;
-	icon_state = "warningcee"
+	icon_state = "warningcee";
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
@@ -3887,8 +3887,8 @@
 /area/rnd/outpost/heating)
 "hp" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 1;
-	icon_state = "map"
+	icon_state = "map";
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple,
 /turf/simulated/floor/tiled/white,
@@ -3896,8 +3896,8 @@
 "hq" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 1;
-	icon_state = "map"
+	icon_state = "map";
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
@@ -4436,8 +4436,8 @@
 /area/rnd/outpost/atmos)
 "il" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 10;
-	icon_state = "intact"
+	icon_state = "intact";
+	dir = 10
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
@@ -4516,15 +4516,15 @@
 /area/rnd/outpost/heating)
 "iu" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 1;
-	icon_state = "map"
+	icon_state = "map";
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "iv" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 5;
-	icon_state = "intact"
+	icon_state = "intact";
+	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
@@ -5006,8 +5006,8 @@
 	dir = 1
 	},
 /obj/structure/railing{
-	dir = 4;
-	icon_state = "railing0"
+	icon_state = "railing0";
+	dir = 4
 	},
 /turf/simulated/floor/virgo3b,
 /area/mine/explored)
@@ -5311,8 +5311,8 @@
 "kb" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 6;
-	icon_state = "intact"
+	icon_state = "intact";
+	dir = 6
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
@@ -5543,8 +5543,8 @@
 /area/rnd/outpost/anomaly_lab/airlock)
 "ky" = (
 /obj/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb1"
+	icon_state = "bulb1";
+	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "anomaly_testing_v";
@@ -6169,8 +6169,8 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4;
-	icon_state = "map-scrubbers"
+	icon_state = "map-scrubbers";
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -6264,8 +6264,8 @@
 /area/rnd/outpost)
 "ly" = (
 /obj/effect/floor_decal/industrial/warning{
-	dir = 8;
-	icon_state = "warning"
+	icon_state = "warning";
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
@@ -6459,8 +6459,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4;
-	icon_state = "map-scrubbers"
+	icon_state = "map-scrubbers";
+	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6696,8 +6696,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 2;
-	icon_state = "door_open"
+	icon_state = "door_open";
+	dir = 2
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -6800,8 +6800,8 @@
 /area/rnd/outpost/anomaly_lab)
 "ms" = (
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 1;
-	icon_state = "door_open"
+	icon_state = "door_open";
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -6820,8 +6820,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/railing{
-	dir = 4;
-	icon_state = "railing0"
+	icon_state = "railing0";
+	dir = 4
 	},
 /turf/simulated/floor/virgo3b,
 /area/mine/explored)
@@ -7345,8 +7345,8 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 1;
-	icon_state = "door_open"
+	icon_state = "door_open";
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -7423,8 +7423,8 @@
 	icon_state = "1-8"
 	},
 /obj/structure/railing{
-	dir = 4;
-	icon_state = "railing0"
+	icon_state = "railing0";
+	dir = 4
 	},
 /obj/structure/railing,
 /turf/simulated/floor/virgo3b,
@@ -7574,8 +7574,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 1;
-	icon_state = "door_open"
+	icon_state = "door_open";
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
@@ -7786,8 +7786,8 @@
 	name = "Science Outpost Personal Quarters"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4;
-	icon_state = "intact-scrubbers"
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -7797,8 +7797,8 @@
 /area/rnd/outpost/breakroom)
 "op" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4;
-	icon_state = "intact-scrubbers"
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9;
@@ -7886,8 +7886,8 @@
 /area/rnd/outpost/breakroom)
 "oA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4;
-	icon_state = "intact-scrubbers"
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -8081,8 +8081,8 @@
 	pixel_y = 0
 	},
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	icon_state = "tube1";
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -8097,8 +8097,8 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5;
-	icon_state = "intact-supply"
+	icon_state = "intact-supply";
+	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)

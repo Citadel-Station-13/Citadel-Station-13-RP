@@ -455,6 +455,9 @@
 /obj/machinery/vending/coffee{
 	dir = 1
 	},
+/obj/machinery/holoposter{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "Y" = (
