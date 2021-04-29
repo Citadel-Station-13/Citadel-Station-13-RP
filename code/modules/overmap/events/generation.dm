@@ -74,7 +74,7 @@
 
 /datum/overmap_event/pirate
 	name = "Pirate Cutter"
-	count = 1
-	radius = 1
+	count = 7
+	radius = 3
 	continuous = FALSE
 	hazards = /obj/effect/overmap/event/pirate
