@@ -80,6 +80,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
+		if(CONFIG_GET(flag/emergency_tgui_logging))
+			log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 		return
 
 	//Logs all hrefs
