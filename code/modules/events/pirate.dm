@@ -20,7 +20,7 @@
 	endWhen = 45
 
 /datum/event/pirate/announce()
-	command_announcement.Announce("Incoming Transmission: Attention Landlubers of the [station_name()], hand over your booty and your ship and no one gets hurt!", "Active Teleporter Detected!", new_sound = sound('sound/effects/siren.ogg',volume=5))
+	command_announcement.Announce("Attention Landlubers of the [station_name()], hand over your booty and your ship and no one gets hurt!", "Incoming Transmission:", new_sound = sound('sound/effects/siren.ogg', volume=25))
 
 /datum/event/pirate/start()
 	location = rand(0,4)
@@ -29,27 +29,27 @@
 			spawn_area_type = /area/quartermaster
 			locstring = "cargo & mining"
 			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(0,1)
+			boss_spawn_count = 1
 		if(LOC_SECURITY)
 			spawn_area_type = /area/security
 			locstring = "security"
 			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(0,2)
+			boss_spawn_count = rand(1,2)
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"
 			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(0,2)
+			boss_spawn_count = rand(1,2)
 		if(LOC_HALLWAYS)
 			spawn_area_type =  /area/hallway
 			locstring = "public hallways"
-			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(0,2)
+			spawncount = rand(2 * severity, 4 * severity)
+			boss_spawn_count = rand(1,2)
 		if(LOC_BRIDGE)
 			spawn_area_type = /area/bridge
 			locstring = "bridge"
 			spawncount = rand(1 * severity, 3 * severity)
-			boss_spawn_count = rand(0,2)
+			boss_spawn_count = rand(1,2)
 
 /datum/event/pirate/end()
 	var/list/vents = list()
@@ -76,12 +76,12 @@
 		while(vents.len > 0 && bossnum > 0)
 			bossnum--
 			var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
-			var/spawn_type = pirate_boss
+			var/spawn_type = pick(pirate_boss)
 			new spawn_type(V.loc)
 
 // Overmap version
 /datum/event/pirate/overmap/announce()
-	command_announcement.Announce("Incoming Transmission: Attention Landlubers of [station_name()], you are trespassing on pirate territory, We are sending over some boys to collect collect your ship and your fee.", "Active Teleporter Detected!", new_sound = 'sound/effects/siren.ogg')//,volume=5)
+	command_announcement.Announce("Attention Landlubers of [station_name()], you are trespassing on pirate territory, we are sending over some boys to collect your ship and your loot.", "Incoming Transmission:", new_sound = sound('sound/effects/siren.ogg', volume=25))
 	return
 
 /datum/event/pirate/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship

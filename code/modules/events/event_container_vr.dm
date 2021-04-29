@@ -108,6 +108,8 @@
 	add_disabled_events(list(
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Blob",				/datum/event/blob, 				10,		list(ASSIGNMENT_ENGINEER = 60), 1),
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Supply Demand",		/datum/event/supply_demand,		0,		list(ASSIGNMENT_ANY = 5, ASSIGNMENT_SCIENCE = 15, ASSIGNMENT_GARDENER = 10, ASSIGNMENT_ENGINEER = 10, ASSIGNMENT_MEDICAL = 15), 1),
+		//Disabled until balanced agaround play tests.
+		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Pirate Boarders",		/datum/event/pirate, 			0,		list(ASSIGNMENT_SECURITY = 15), 1),
 	))
 
 #undef ASSIGNMENT_ANY
