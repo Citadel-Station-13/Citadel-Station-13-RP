@@ -570,6 +570,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"ayC" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/hydroponics/garden)
 "aza" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2514,10 +2523,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/obj/effect/floor_decal/grass_edge{
-	dir = 1
-	},
-/turf/simulated/floor/grass,
+/turf/simulated/wall,
 /area/hydroponics/garden)
 "bXv" = (
 /obj/structure/filingcabinet/filingcabinet,
@@ -3679,6 +3685,12 @@
 	},
 /obj/structure/lightpost,
 /turf/simulated/floor/grass,
+/area/hydroponics/garden)
+"cVg" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "cVO" = (
 /turf/simulated/floor/tiled,
@@ -9211,6 +9223,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
@@ -17139,6 +17154,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/flora/pottedplant/orientaltree,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "nls" = (
@@ -21218,6 +21234,7 @@
 	dir = 1
 	},
 /obj/structure/table/bench/wooden,
+/obj/item/clothing/shoes/swimmingfins,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "qgO" = (
@@ -21946,6 +21963,9 @@
 	dir = 1
 	},
 /obj/machinery/shield_diffuser,
+/obj/structure/sign/warning/falling{
+	pixel_y = 34
+	},
 /turf/simulated/floor/outdoors/water,
 /area/hydroponics/garden)
 "qEc" = (
@@ -22211,6 +22231,12 @@
 /obj/item/reagent_containers/food/snacks/fishandchips,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
+"qMT" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/hydroponics/garden)
 "qNn" = (
 /obj/machinery/light{
 	dir = 1
@@ -23193,6 +23219,9 @@
 "rtS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
@@ -31666,7 +31695,7 @@
 	},
 /obj/structure/railing,
 /obj/effect/floor_decal/grass_edge{
-	dir = 1
+	dir = 5
 	},
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/machinery/firealarm{
@@ -32055,7 +32084,7 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/railing,
 /obj/effect/floor_decal/grass_edge{
-	dir = 1
+	dir = 9
 	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -32233,6 +32262,13 @@
 /obj/machinery/vending/fishing,
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
+"xOL" = (
+/obj/machinery/hologram/holopad,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/hydroponics/garden)
 "xOV" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -32294,7 +32330,9 @@
 "xQh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/flora/pottedplant/orientaltree,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "xQn" = (
@@ -43001,7 +43039,7 @@ hLJ
 lFS
 bjU
 wdF
-nen
+ayC
 xJI
 hGE
 fuD
@@ -43143,7 +43181,7 @@ bfm
 xqQ
 gkx
 cKH
-xJI
+cVg
 qXg
 wzj
 vmR
@@ -43285,7 +43323,7 @@ xsj
 btG
 rZq
 vWU
-xJI
+cVg
 xJI
 wns
 ecI
@@ -43427,7 +43465,7 @@ bXk
 qDS
 iNL
 oxG
-eqv
+xOL
 xJI
 wns
 ccJ
@@ -43569,7 +43607,7 @@ xIk
 prc
 iSJ
 wkS
-xJI
+cVg
 xJI
 wns
 rSA
@@ -43711,7 +43749,7 @@ sXD
 xQh
 hgh
 rtS
-xJI
+qMT
 xJI
 xJI
 qXg
