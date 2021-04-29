@@ -59,33 +59,42 @@
 			if(temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 				vents += temp_vent
 
-	var/pirate_spawn = list(/mob/living/simple_mob/humanoid/pirate, /mob/living/simple_mob/humanoid/pirate/armored, /mob/living/simple_mob/humanoid/pirate/machete,
-	/mob/living/simple_mob/humanoid/pirate/machete/armored, /mob/living/simple_mob/humanoid/pirate/shield, /mob/living/simple_mob/humanoid/pirate/shield/armored,
-	/mob/living/simple_mob/humanoid/pirate/shield/machete, /mob/living/simple_mob/humanoid/pirate/shield/machete/armored, /mob/living/simple_mob/humanoid/pirate/ranged,
-	/mob/living/simple_mob/humanoid/pirate/ranged/armored, /mob/living/simple_mob/humanoid/pirate/ranged/handcannon, /mob/living/simple_mob/humanoid/pirate/ranged/shotgun)
-	var/pirate_boss = list(/mob/living/simple_mob/humanoid/pirate/mate, /mob/living/simple_mob/humanoid/pirate/mate/ranged,
-	/mob/living/simple_mob/humanoid/pirate/mate/ranged/shotgun, /mob/living/simple_mob/humanoid/pirate/mate/ranged/rifle)
-	spawn(0)
-		var/num = spawncount
-		while(vents.len > 0 && num > 0)
-			var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
-			num--
-			var/spawn_type = pick(pirate_spawn)
-			new spawn_type(V.loc)
-		var/bossnum = boss_spawn_count
-		while(vents.len > 0 && bossnum > 0)
-			bossnum--
-			var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
-			var/spawn_type = pick(pirate_boss)
-			new spawn_type(V.loc)
+	var/pirate_spawn = list(/mob/living/simple_mob/humanoid/pirate, 
+	/mob/living/simple_mob/humanoid/pirate/armored, 
+	/mob/living/simple_mob/humanoid/pirate/machete,
+	/mob/living/simple_mob/humanoid/pirate/machete/armored, 
+	/mob/living/simple_mob/humanoid/pirate/shield, 
+	/mob/living/simple_mob/humanoid/pirate/shield/armored,
+	/mob/living/simple_mob/humanoid/pirate/shield/machete, 
+	/mob/living/simple_mob/humanoid/pirate/shield/machete/armored, 
+	/mob/living/simple_mob/humanoid/pirate/ranged,
+	/mob/living/simple_mob/humanoid/pirate/ranged/armored, 
+	/mob/living/simple_mob/humanoid/pirate/ranged/handcannon, 
+	/mob/living/simple_mob/humanoid/pirate/ranged/shotgun)
+	
+	var/pirate_boss = list(/mob/living/simple_mob/humanoid/pirate/mate, 
+	/mob/living/simple_mob/humanoid/pirate/mate/ranged,
+	/mob/living/simple_mob/humanoid/pirate/mate/ranged/shotgun, 
+	/mob/living/simple_mob/humanoid/pirate/mate/ranged/rifle)
+
+	var/num = spawncount
+	while(vents.len > 0 && num > 0)
+		var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
+		num--
+		var/spawn_type = pick(pirate_spawn)
+		new spawn_type(V.loc)
+	var/bossnum = boss_spawn_count
+	while(vents.len > 0 && bossnum > 0)
+		bossnum--
+		var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
+		var/spawn_type = pick(pirate_boss)
+		new spawn_type(V.loc)
 
 // Overmap version
 /datum/event/pirate/overmap/announce()
 	command_announcement.Announce("Attention Landlubers of [station_name()], you are trespassing on pirate territory, we are sending over some boys to collect your ship and your loot.", "Incoming Transmission:", new_sound = sound('sound/effects/siren.ogg', volume=25))
-	return
+
 
 /datum/event/pirate/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship
 	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
 		kill()
-		return
-	return ..()
