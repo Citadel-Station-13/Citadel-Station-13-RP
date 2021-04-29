@@ -23,7 +23,7 @@
 // Unlike most shuttles, the arrivals shuttle is completely automated, so we need to put some additional code here.
 // Process the arrivals shuttle even when idle.
 /obj/machinery/computer/shuttle_control/arrivals/process()
-	var/datum/shuttle/autodock/ferry/arrivals/shuttle = SSshuttles.shuttles[shuttle_tag]
+	var/datum/shuttle/autodock/ferry/arrivals/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if(shuttle && shuttle.process_state == IDLE_STATE)
 		shuttle.process()
 	..()

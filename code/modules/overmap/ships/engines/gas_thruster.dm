@@ -83,7 +83,7 @@
 	controller = new(src)
 	update_nearby_tiles(need_rebuild=1)
 
-	for(var/ship in SSshuttles.ships)
+	for(var/ship in SSshuttle.ships)
 		var/obj/effect/overmap/visitable/ship/S = ship
 		if(S.check_ownership(src))
 			S.engines |= controller

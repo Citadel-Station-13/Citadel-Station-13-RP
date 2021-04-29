@@ -11,8 +11,8 @@
 	moving_state = "shuttle_moving"
 
 /obj/effect/overmap/visitable/ship/landable/Destroy()
-	GLOB.shuttle_pre_move_event.unregister(SSshuttles.shuttles[shuttle], src)
-	GLOB.shuttle_moved_event.unregister(SSshuttles.shuttles[shuttle], src)
+	GLOB.shuttle_pre_move_event.unregister(SSshuttle.shuttles[shuttle], src)
+	GLOB.shuttle_moved_event.unregister(SSshuttle.shuttles[shuttle], src)
 	return ..()
 
 /obj/effect/overmap/visitable/ship/landable/can_burn()
@@ -26,7 +26,7 @@
 	return ..()
 
 /obj/effect/overmap/visitable/ship/landable/check_ownership(obj/object)
-	var/datum/shuttle/shuttle_datum = SSshuttles.shuttles[shuttle]
+	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(!shuttle_datum)
 		return
 	var/list/areas = shuttle_datum.find_childfree_areas()
@@ -61,14 +61,14 @@
 	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
 
 /obj/effect/overmap/visitable/ship/landable/get_areas()
-	var/datum/shuttle/shuttle_datum = SSshuttles.shuttles[shuttle]
+	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(!shuttle_datum)
 		return list()
 	return shuttle_datum.find_childfree_areas()
 
 /obj/effect/overmap/visitable/ship/landable/populate_sector_objects()
 	..()
-	var/datum/shuttle/shuttle_datum = SSshuttles.shuttles[shuttle]
+	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(istype(shuttle_datum,/datum/shuttle/autodock/overmap))
 		var/datum/shuttle/autodock/overmap/oms = shuttle_datum
 		oms.myship = src
@@ -137,7 +137,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/datum/shuttle/boss_shuttle = SSshuttles.shuttles[core_landmark.shuttle_name]
+	var/datum/shuttle/boss_shuttle = SSshuttle.shuttles[core_landmark.shuttle_name]
 	if(boss_shuttle.current_location != core_landmark)
 		return FALSE // Only available when our governing shuttle is in space.
 	if(shuttle == boss_shuttle) // Boss shuttle only lands on main landmark
@@ -157,14 +157,14 @@
 //
 
 /obj/effect/overmap/visitable/ship/landable/proc/pre_shuttle_jump(datum/shuttle/given_shuttle, obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
-	if(given_shuttle != SSshuttles.shuttles[shuttle])
+	if(given_shuttle != SSshuttle.shuttles[shuttle])
 		return
 	if(into == landmark)
 		setup_overmap_location() // They're coming boys, better actually exist!
-		GLOB.shuttle_pre_move_event.unregister(SSshuttles.shuttles[shuttle], src)
+		GLOB.shuttle_pre_move_event.unregister(SSshuttle.shuttles[shuttle], src)
 
 /obj/effect/overmap/visitable/ship/landable/proc/on_shuttle_jump(datum/shuttle/given_shuttle, obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
-	if(given_shuttle != SSshuttles.shuttles[shuttle])
+	if(given_shuttle != SSshuttle.shuttles[shuttle])
 		return
 	var/datum/shuttle/autodock/auto = given_shuttle
 	if(into == auto.landmark_transition)
@@ -180,9 +180,9 @@
 
 /obj/effect/overmap/visitable/ship/landable/proc/on_landing(obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
 	var/obj/effect/overmap/visitable/target = get_overmap_sector(get_z(into))
-	var/datum/shuttle/shuttle_datum = SSshuttles.shuttles[shuttle]
+	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(into.landmark_tag == shuttle_datum.motherdock) // If our motherdock is a landable ship, it won't be found properly here so we need to find it manually.
-		for(var/obj/effect/overmap/visitable/ship/landable/landable in SSshuttles.ships)
+		for(var/obj/effect/overmap/visitable/ship/landable/landable in SSshuttle.ships)
 			if(landable.shuttle == shuttle_datum.mothershuttle)
 				target = landable
 				break

@@ -72,7 +72,7 @@
 
 	return data
 
-/obj/machinery/computer/ship/sensors/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/computer/ship/sensors/tgui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
@@ -103,7 +103,7 @@
 				if(tgui_status(usr, state) != STATUS_INTERACTIVE)
 					return FALSE
 				if(nrange)
-					sensors.set_range(CLAMP(nrange, 1, world.view))
+					sensors.set_range(clamp(nrange, 1, world.view))
 				. = TRUE
 			if("toggle_sensor")
 				sensors.toggle()

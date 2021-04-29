@@ -163,7 +163,7 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 
 	return data
 
-/obj/machinery/computer/ship/disperser/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/computer/ship/disperser/tgui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 

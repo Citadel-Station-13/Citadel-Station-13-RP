@@ -18,7 +18,7 @@
 	if(..())
 		return TRUE
 
-	var/datum/shuttle/autodock/multi/shuttle = SSshuttles.shuttles[shuttle_tag]
+	var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[shuttle_tag]
 	if(!istype(shuttle))
 		to_chat(usr, "<span class='warning'>Unable to establish link with the shuttle.</span>")
 		return TRUE

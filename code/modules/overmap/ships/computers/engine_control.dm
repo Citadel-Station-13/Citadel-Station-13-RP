@@ -16,7 +16,7 @@
 		ui = new(user, src, "OvermapEngines", "[linked.name] Engines Control") // 390, 530
 		ui.open()
 
-/obj/machinery/computer/ship/engines/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/computer/ship/engines/tgui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = list()
 	data["global_state"] = linked.engines_state
 	data["global_limit"] = round(linked.thrust_limit*100)
@@ -42,7 +42,7 @@
 	data["total_thrust"] = total_thrust
 	return data
 
-/obj/machinery/computer/ship/engines/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/computer/ship/engines/tgui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
