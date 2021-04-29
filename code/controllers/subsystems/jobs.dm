@@ -26,6 +26,8 @@ SUBSYSTEM_DEF(jobs)
 /datum/controller/subsystem/job/proc/SetupOccupations(faction = "Station")
 	occupations = list()
 	var/list/all_jobs = subtypesof(/datum/job)
+	if(GLOB.using_map.allowed_jobs)
+		all_jobs &= GLOB.using_map.allowed_jobs
 	if(!all_jobs.len)
 		to_chat(world, span("warning", "Error setting up jobs, no job datums found"))
 		return FALSE
