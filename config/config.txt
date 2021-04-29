@@ -6,6 +6,7 @@ $include game_options.txt
 #$include antag_rep.txt
 $include resources.txt
 # Cit-specific imports
+$include logging.txt
 $include entries/urls.txt
 $include entries/fail2topic.txt
 $include entries/lobby.txt
