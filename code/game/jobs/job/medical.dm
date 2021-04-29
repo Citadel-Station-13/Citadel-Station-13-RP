@@ -27,10 +27,13 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
 	alt_titles = list ("Chief Physician","Director of Medicine","Chief Surgeon")
 
+//////////////////////////////////
+//		Medical Doctor
+//////////////////////////////////
 /datum/job/doctor
 	title = "Medical Doctor"
 	flag = DOCTOR
-	department = "Medical"
+	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 5
@@ -42,6 +45,9 @@
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_eva)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology, access_eva)
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor
+	job_description = "A Medical Doctor is a Jack-of-All-Trades Medical title, covering a variety of skill levels and minor specializations. They are likely \
+						familiar with basic first aid, and a number of accompanying medications, and can generally save, if not cure, a majority of the \
+						patients they encounter."
 	alt_titles = list(
 		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
 		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,
@@ -51,36 +57,48 @@
 		"Medical Intern")
 
 //Chemist is a medical job damnit	//YEAH FUCK YOU SCIENCE	-Pete	//Guys, behave -Erro
+//////////////////////////////////
+//			Chemist
+//////////////////////////////////
 /datum/job/chemist
 	title = "Chemist"
 	flag = CHEMIST
-	department = "Medical"
+	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief medical officer"
+	supervisors = "the Chief Medical Officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/card/id/medical/chemist
 	economic_modifier = 5
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
-	alt_titles = list("Pharmacist", "Apothecary")
-
 	minimal_player_age = 3
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/chemist
+	job_description = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
+						They are likely to know the use and dangers of many lab-produced chemicals."
+	alt_titles = list("Pharmacist" = /datum/alt_title/pharmacist)
+
+// Chemist Alt Titles
+/datum/alt_title/pharmacist
+	title = "Pharmacist"
+	title_blurb = "A Pharmacist focuses on the chemical needs of the Medical Department, and often offers to fill crew prescriptions at their discretion."
 
 /* I'm commenting out Geneticist so you can't actually see it in the job menu, given that you can't play as one - Jon.
+//////////////////////////////////
+//			Geneticist
+//////////////////////////////////
 /datum/job/geneticist
 	title = "Geneticist"
 	flag = GENETICIST
-	department = "Medical"
+	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 0
 	spawn_positions = 0
-	supervisors = "the chief medical officer and research director"
+	supervisors = "the Chief Medical Officer and Research Director"
 	selection_color = "#013D3B"
 	idtype = /obj/item/card/id/medical/geneticist
 	economic_modifier = 7
@@ -88,18 +106,23 @@
 	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
 
 	outfit_type = /decl/hierarchy/outfit/job/medical/geneticist
+	job_description = "A Geneticist operates genetic manipulation equipment to repair any genetic defects encountered in crew, from cloning or radiation as examples. \
+						When required, geneticists have the skills to clone, and are the superior choice when available for doing so."
 */
 
+//////////////////////////////////
+//			Psychiatrist
+//////////////////////////////////
 /datum/job/psychiatrist
 	title = "Psychiatrist"
 	flag = PSYCHIATRIST
-	department = "Medical"
+	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	economic_modifier = 5
-	supervisors = "the chief medical officer"
+	supervisors = "the Chief Medical Officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/card/id/medical/psychiatrist
 	access = list(access_medical, access_medical_equip, access_morgue, access_psychiatrist)
@@ -110,15 +133,18 @@
 	"Therapist",
 	"Counselor")
 
+//////////////////////////////////
+//			Paramedic
+//////////////////////////////////
 /datum/job/paramedic
 	title = "Paramedic"
 	flag = PARAMEDIC
-	department = "Medical"
+	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief medical officer"
+	supervisors = "the Chief Medical Officer"
 	selection_color = "#013D3B"
 	idtype = /obj/item/card/id/medical/paramedic
 	economic_modifier = 4

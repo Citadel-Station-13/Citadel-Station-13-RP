@@ -1,7 +1,11 @@
+//////////////////////////////////
+//			Assistant
+//////////////////////////////////
 /datum/job/assistant
 	title = "Assistant"
 	flag = ASSISTANT
-	department = "Civilian"
+	departments = list(DEPARTMENT_CIVILIAN)
+	sorting_order = -1
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = -1
@@ -11,6 +15,7 @@
 	economic_modifier = 1
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
+
 	outfit_type = /decl/hierarchy/outfit/job/assistant
 	alt_titles = list("Visitor" = /decl/hierarchy/outfit/job/assistant/visitor, "Server" = /decl/hierarchy/outfit/job/service/server, "Assistant", "Entertainer", "Morale Officer")
 
