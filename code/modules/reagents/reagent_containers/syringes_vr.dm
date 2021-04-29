@@ -65,12 +65,7 @@
 		START_PROCESSING(SSobj, src)
 
 /obj/item/reagent_containers/syringe/proc/infect_limb(var/obj/item/organ/external/eo)
-	src = null
-	var/datum/weakref/limb_ref = WEAKREF(eo)
-	spawn(rand(5 MINUTES,10 MINUTES))
-		var/obj/item/organ/external/found_limb = limb_ref.resolve()
-		if(istype(found_limb))
-			eo.germ_level += INFECTION_LEVEL_ONE+30
+	eo.queue_syringe_infection()
 
 //Allow for capped syringe mode
 /obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
