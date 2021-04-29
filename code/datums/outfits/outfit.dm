@@ -39,7 +39,9 @@ var/list/outfits_decls_by_type_
 	var/suit_store = null
 	var/r_hand = null
 	var/l_hand = null
-	var/list/backpack_contents = list() // In the list(path=count,otherpath=count) format
+	// In the list(path=count,otherpath=count) format
+	var/list/uniform_accessories = list() // webbing, armbands etc - fits in slot_tie
+	var/list/backpack_contents = list()
 
 	var/id_type
 	var/id_desc
@@ -87,7 +89,7 @@ var/list/outfits_decls_by_type_
 /decl/hierarchy/outfit/proc/equip(mob/living/carbon/human/H, var/rank, var/assignment)
 	equip_base(H)
 
-	rank = id_pda_assignment || rank
+	rank = rank || id_pda_assignment
 	assignment = id_pda_assignment || assignment || rank
 	var/obj/item/card/id/W = equip_id(H, rank, assignment)
 	if(W)
@@ -101,6 +103,7 @@ var/list/outfits_decls_by_type_
 			H.equip_to_slot_or_del(new path(H), slot_in_backpack)
 
 	post_equip(H)
+
 	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
 		H.set_id_info(W)
 	return 1
@@ -144,6 +147,12 @@ var/list/outfits_decls_by_type_
 		H.put_in_l_hand(new l_hand(H))
 	if(r_hand)
 		H.put_in_r_hand(new r_hand(H))
+
+	for(var/path in uniform_accessories)
+		var/number = uniform_accessories[path]
+		for(var/i=0,i<number,i++)
+			H.equip_to_slot_or_del(new path(H), slot_tie)
+
 	if(H.species)
 		H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)
 
