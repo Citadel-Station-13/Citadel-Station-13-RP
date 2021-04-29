@@ -144,7 +144,6 @@ var/list/admin_verbs_fun = list(
 	/client/proc/roll_dices,
 	/datum/admins/proc/call_supply_drop,
 	/datum/admins/proc/call_drop_pod,
-	/client/proc/smite_vr, //VOREStation Add,
 	/client/proc/smite,
 	/client/proc/admin_lightning_strike
 	)
@@ -178,6 +177,7 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/toggleAI,
 	/client/proc/cmd_admin_delete,		//delete an instance/object/mob/etc,
 	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/adrev,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
@@ -326,6 +326,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_debug_using_map,
 	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_admin_clear_mobs,
 	/client/proc/cmd_debug_tog_aliens,
 	/client/proc/cmd_display_del_log,
 	/client/proc/air_report,
@@ -375,6 +376,7 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/debug_variables,
 	/client/proc/check_antagonists,
 	/client/proc/aooc,
+	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/paralyze_mob,
 	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/allow_character_respawn,

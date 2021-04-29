@@ -33,7 +33,6 @@
 		detect()
 	set_light(3, 1, newcolor)
 
-
 /obj/machinery/hyperpad/operable()
 	return 1
 

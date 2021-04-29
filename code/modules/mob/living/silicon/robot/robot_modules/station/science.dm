@@ -95,6 +95,7 @@
 	src.modules += new /obj/item/storage/part_replacer(src)
 	src.modules += new /obj/item/card/robot(src)
 	src.modules += new /obj/item/shockpaddles/robot/jumper(src)
+	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
 	src.emag = new /obj/item/hand_tele(src)
 	src.modules += new /obj/item/dogborg/jaws/small(src)
 

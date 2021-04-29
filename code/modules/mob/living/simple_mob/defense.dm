@@ -1,14 +1,3 @@
-// Hit by a projectile.
-/mob/living/simple_mob/bullet_act(var/obj/item/projectile/P)
-	//Projectiles with bonus SA damage
-	if(!P.nodamage)
-	//	if(!P.SA_vulnerability || P.SA_vulnerability == intelligence_level)
-		if(P.SA_vulnerability & mob_class)
-			P.damage += P.SA_bonus_damage
-
-	. = ..()
-
-
 // When someone clicks us with an empty hand
 /mob/living/simple_mob/attack_hand(mob/living/L)
 	..()
@@ -189,8 +178,8 @@
 	return poison_resist
 
 // Armor
-/mob/living/simple_mob/getarmor(def_zone, attack_flag)
-	var/armorval = armor[attack_flag]
+/mob/living/simple_mob/getarmor(def_zone, type)
+	var/armorval = armor[type]
 	if(!armorval)
 		return 0
 	else

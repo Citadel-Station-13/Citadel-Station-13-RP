@@ -329,6 +329,13 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
+/obj/machinery/light,
+/obj/item/deck/unus{
+	pixel_x = 7
+	},
+/obj/item/deck/cah{
+	pixel_x = -8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aU" = (
@@ -2038,9 +2045,6 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "fW" = (
@@ -2823,6 +2827,9 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "ig" = (
@@ -2943,9 +2950,6 @@
 /area/maintenance/bar/lower)
 "iv" = (
 /obj/machinery/vending/hydronutrients,
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hydroponics)
 "iw" = (
@@ -3338,7 +3342,7 @@
 /area/crew_quarters/recreation_area)
 "jB" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/metal{
+/obj/machinery/door/airlock/multi_tile/glass{
 	name = "Crew Cryo Bay"
 	},
 /obj/structure/cable/green{
@@ -4331,9 +4335,6 @@
 	layer = 3.3;
 	pixel_x = -27
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "mz" = (
@@ -4485,9 +4486,6 @@
 /obj/item/reagent_containers/glass/rag,
 /obj/machinery/camera/network/civilian{
 	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -5751,6 +5749,7 @@
 /obj/machinery/newscaster{
 	pixel_x = 30
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "qn" = (
@@ -7212,6 +7211,9 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_x = 32
 	},
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "uo" = (
@@ -7222,6 +7224,9 @@
 /obj/item/retail_scanner/civilian,
 /obj/item/retail_scanner/civilian,
 /obj/item/clothing/accessory/hawaii/random,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "up" = (
@@ -8640,7 +8645,6 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_y = -32
 	},
-/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "yI" = (
@@ -9200,6 +9204,9 @@
 	dir = 4;
 	pixel_x = -11
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "AA" = (
@@ -9724,9 +9731,6 @@
 "Cc" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
-	},
-/obj/machinery/light{
-	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
@@ -13351,6 +13355,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"Nu" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_office)
 "Nv" = (
 /obj/machinery/camera/network/cargo{
 	dir = 4
@@ -14360,9 +14368,6 @@
 "QI" = (
 /obj/structure/dogbed,
 /obj/machinery/camera/network/civilian,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
@@ -14449,6 +14454,9 @@
 	pixel_x = 32
 	},
 /obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -16466,7 +16474,6 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "Wv" = (
@@ -16478,7 +16485,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "Ww" = (
@@ -25565,7 +25571,7 @@ sk
 tQ
 tQ
 tQ
-tQ
+Nu
 wc
 gg
 xg

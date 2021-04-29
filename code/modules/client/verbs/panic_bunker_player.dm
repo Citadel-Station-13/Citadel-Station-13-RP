@@ -6,6 +6,7 @@
 	world.send_cross_server_bunker_overrides(key, src)
 
 /world/proc/send_cross_server_bunker_overrides(key, client/C)
+	if(!C.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
 	var/comms_key = CONFIG_GET(string/comms_key)
 	if(!comms_key)
 		return

@@ -343,8 +343,23 @@ var/list/_client_preferences_by_type
 	enabled_description = "Obfuscate Ghost"
 	disabled_description = "Normal Ghost"
 
+
+datum/client_preference/debug/age_verified
+	description = "(Debug) Age Verified Status"
+	key = "AGE_VERIFIED"
+	enabled_description = "TRUE"
+	disabled_description = "FALSE"
+	enabled_by_default = FALSE
+
 /datum/client_preference/autocorrect
 	description = "Autocorrect"
 	key = "AUTOCORRECT"
 	enabled_description = "Enabled"
 	disabled_description = "Disabled"
+
+/datum/client_preference/examine_look
+	description = "Examine Messages"
+	key = "EXAMINE_LOOK"
+	enabled_description = "Show"
+	disabled_description = "Hide"
+

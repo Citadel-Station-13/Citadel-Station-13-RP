@@ -16,6 +16,8 @@
 
 #define isspaceturf(A) istype(A, /turf/space)
 
+#define ismineralturf(A) istype(A, /turf/simulated/mineral)
+
 //Objs
 #define isobj(A) istype(A, /obj) //override the byond proc because it returns true on children of /atom/movable that aren't objs
 
@@ -78,3 +80,5 @@
 #define isbot(A) istype(A, /mob/living/bot)
 
 #define isxeno(A) istype(A, /mob/living/simple_mob/xeno)
+
+#define issimple(A) istype(A, /mob/living/simple_mob)

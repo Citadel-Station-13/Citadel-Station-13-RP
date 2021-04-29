@@ -420,7 +420,7 @@
 /area/tether/surfacebase/medical/recoveryward
 	name = "\improper Medbay Recovery Ward"
 	icon = 'icons/turf/areas.dmi'
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 /area/tether/surfacebase/medical/recoveryward/storage
 	name = "\improper Medbay Recovery Storage"
 /area/tether/surfacebase/medical/bathroom
@@ -973,25 +973,25 @@
 
 /area/crew_quarters/sleep/maintDorm1
 	name = "\improper Construction Dorm 1"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/maintDorm2
 	name = "\improper Construction Dorm 2"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/maintDorm3
 	name = "\improper Construction Dorm 3"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/maintDorm4
 	name = "\improper Construction Dorm 4"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 

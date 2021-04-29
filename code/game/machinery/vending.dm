@@ -2175,7 +2175,8 @@
 					/obj/item/pack/spaceball = 10,
 					/obj/item/storage/pill_bottle/dice = 5,
 					/obj/item/storage/pill_bottle/dice_nerd = 5,
-					/obj/item/melee/umbrella/random = 10)
+					/obj/item/melee/umbrella/random = 10,
+					/obj/item/deck/unus = 5)
 	prices = list(/obj/item/cane = 100,
 					/obj/item/pack/cardemon = 100,
 					/obj/item/deck/holder = 100,
@@ -2186,7 +2187,8 @@
 					/obj/item/pack/spaceball = 100,
 					/obj/item/storage/pill_bottle/dice = 100,
 					/obj/item/storage/pill_bottle/dice_nerd = 100,
-					/obj/item/melee/umbrella/random = 100)
+					/obj/item/melee/umbrella/random = 100,
+					/obj/item/deck/unus = 100)
 	premium = list(/obj/item/toy/bosunwhistle = 1)
 	contraband = list(/obj/item/toy/katana = 1)
 /obj/machinery/vending/loadout/overwear
