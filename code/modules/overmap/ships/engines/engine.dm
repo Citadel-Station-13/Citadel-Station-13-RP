@@ -19,7 +19,7 @@ var/list/ship_engines = list()
 
 //Returns status string for this engine
 /datum/ship_engine/proc/get_status()
-	return "All systems nominal"
+	return list("All systems nominal")
 
 /datum/ship_engine/proc/get_thrust()
 	return 1
@@ -39,7 +39,7 @@ var/list/ship_engines = list()
 
 /datum/ship_engine/Destroy()
 	ship_engines -= src
-	for(var/obj/effect/overmap/visitable/ship/S in SSshuttle.ships)
+	for(var/obj/effect/overmap/visitable/ship/S in SSshuttles.ships)
 		S.engines -= src
 	holder = null
 	. = ..()
