@@ -38,8 +38,9 @@
 /datum/job/pathfinder
 	title = "Pathfinder"
 	flag = PATHFINDER
-	department = "Exploration"
-	head_position = 1
+	departments = list(DEPARTMENT_PLANET)
+	departments_managed = list(DEPARTMENT_PLANET)
+	sorting_order = 1 // above the other explorers
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 1
@@ -50,6 +51,8 @@
 	economic_modifier = 7
 	minimal_player_age = 7
 	alt_titles = list("Expedition Leader", "Lead Pioneer", "Exploration Chief")
+	pto_type = PTO_EXPLORATION
+	dept_time_required = 20
 
 	access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	minimal_access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
@@ -58,25 +61,34 @@
 /datum/job/pilot
 	title = "Pilot"
 	flag = PILOT
-	department = "Exploration"
-	department_flag = MEDSCI
+	departments = list(DEPARTMENT_CIVILIAN)
+	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 4
 	spawn_positions = 2
 	supervisors = "the pathfinder and the head of personnel"
-	selection_color = "#999440"
 	idtype = /obj/item/card/id/explorer/pilot
+	selection_color = "#515151"
 	economic_modifier = 5
 	minimal_player_age = 3
 	alt_titles = list("Aviator")
 	access = list(access_pilot, access_external_airlocks)
 	minimal_access = list(access_pilot, access_external_airlocks)
+	pto_type = PTO_EXPLORATION
 	outfit_type = /decl/hierarchy/outfit/job/pilot
+
+/datum/alt_title/co_pilot
+	title = "Co-Pilot"
+	title_blurb = "A Co-Pilot is there primarily to assist main pilot as well as learn from them"
+
+/datum/alt_title/navigator
+	title = "Navigator"
+
 
 /datum/job/explorer
 	title = "Explorer"
 	flag = EXPLORER
-	department = "Exploration"
+	departments = list(DEPARTMENT_PLANET)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 4
@@ -90,15 +102,22 @@
 	minimal_access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
 	outfit_type = /decl/hierarchy/outfit/job/explorer2
 
+/datum/alt_title/surveyor
+	title = "Surveyor"
+
+/datum/alt_title/offsite_scout
+	title = "Offsite Scout"
+
+
 /datum/job/sar
 	title = "Field Medic"
 	flag = SAR
-	department = "Exploration"
+	departments = list(DEPARTMENT_PLANET, DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the pathfinder and the chief medical officer"
+	supervisors = "the Pathfinder and the Chief Medical Officer"
 	selection_color = "#999440"
 	idtype = /obj/item/card/id/medical/sar
 	economic_modifier = 6
