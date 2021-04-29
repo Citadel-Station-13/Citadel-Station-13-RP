@@ -36,6 +36,21 @@
 	// Description of the job's role and minimum responsibilities.
 	var/job_description = "This Job doesn't have a description! Please report it!"
 
+	//Requires a ckey to be whitelisted in jobwhitelist.txt
+	var/whitelist_only = 0
+
+	//Does not display this job on the occupation setup screen
+	var/latejoin_only = 0
+
+	//Every hour playing this role gains this much time off. (Can be negative for off duty jobs!)
+	var/timeoff_factor = 3
+
+	//What type of PTO is that job earning?
+	var/pto_type
+
+	//Disallow joining as this job midround from off-duty position via going on-duty
+	var/disallow_jobhop = FALSE
+
 /datum/job/New()
 	. = ..()
 	department_accounts = department_accounts || departments_managed
@@ -94,7 +109,7 @@
 	. = outfit.equip_base(H, title, alt_title)
 
 /datum/job/proc/get_access()
-	if(!config || config.jobs_have_minimal_access)
+	if(!config || config_legacy.jobs_have_minimal_access)
 		return src.minimal_access.Copy()
 	else
 		return src.access.Copy()
@@ -104,7 +119,7 @@
 	return (available_in_days(C) == 0) //Available in 0 days = available right now = player is old enough to play.
 
 /datum/job/proc/available_in_days(client/C)
-	if(C && config.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
+	if(C && config_legacy.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
 		return max(0, minimal_player_age - C.player_age)
 	return 0
 
@@ -159,3 +174,18 @@
 		var/obj/O = mannequin.back
 		mannequin.drop_from_inventory(O)
 		qdel(O)
+
+// Check client-specific availability rules.
+/datum/job/proc/player_has_enough_pto(client/C)
+	return timeoff_factor >= 0 || (C && LAZYACCESS(C.department_hours, pto_type) > 0)
+
+/datum/job/proc/equip_backpack(var/mob/living/carbon/human/H)
+	switch(H.backbag)
+		if(2)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), slot_back)
+		if(3)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), slot_back)
+		if(4)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), slot_back)
+		if(5)
+			H.equip_to_slot_or_del(new /obj/item/storage/backpack/messenger(H), slot_back)
