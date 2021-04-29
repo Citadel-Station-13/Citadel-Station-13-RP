@@ -55,7 +55,7 @@
 // Topic
 //
 /obj/machinery/computer/ship/tgui_state()
-	return GLOB.tgui_default_state
+	return GLOB.default_state
 
 //
 // Interaction
