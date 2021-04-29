@@ -5,7 +5,7 @@
 	var/optimal_power = 0.1//cooking power at 100%
 
 	var/loss = 1	//Temp lost per proc when equalising
-	var/resistance = 320000	//Resistance to heating. combines with active power usage to determine how long heating takes
+	var/resistance = 162000	//Resistance to heating. combines with active power usage to determine how long heating takes
 
 	var/light_x = 0
 	var/light_y = 0

@@ -41,8 +41,11 @@
 
 /obj/item/clothing/gloves/gauntlets/restore_over_objects(mob/living/carbon/human/wearer)
 	if(ring)
-		gloves.ring = ring
-		ring.forceMove(gloves)
+		if(gloves && !gloves.ring)
+			gloves.ring = ring
+			ring.forceMove(gloves)
+		else
+			ring.forceMove(get_turf(src))
 		ring = null
 	. = ..()
 	if(gloves)

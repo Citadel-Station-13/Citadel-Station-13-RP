@@ -42,6 +42,7 @@
 	hood.forceMove(src)
 
 /obj/item/clothing/suit/storage/hooded/dropped()
+	. = ..()
 	RemoveHood()
 
 /obj/item/clothing/suit/storage/hooded/proc/ToggleHood()

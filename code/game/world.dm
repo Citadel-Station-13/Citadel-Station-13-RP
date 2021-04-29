@@ -345,7 +345,7 @@ GLOBAL_LIST(topic_status_cache)
 	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
 	s += "</a>"
 	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
-	s += "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
+	s += CONFIG_GET(string/tagline)
 
 	s += ")"
 

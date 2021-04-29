@@ -160,6 +160,7 @@
 	var/obj/item/rig_module/armblade/storing_module
 
 /obj/item/material/knife/machete/armblade/rig/dropped(mob/user)
+	. = ..()
 	if(storing_module)
 		src.forceMove(storing_module)
 		user.visible_message(

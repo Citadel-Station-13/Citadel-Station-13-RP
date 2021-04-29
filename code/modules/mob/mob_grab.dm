@@ -340,9 +340,8 @@
 		devour(affecting, assailant)
 
 /obj/item/grab/dropped()
-	loc = null
-	if(!QDELETED(src))
-		qdel(src)
+	. = ..()
+	qdel(src)
 
 /obj/item/grab/proc/reset_kill_state()
 	if(state == GRAB_KILL)
