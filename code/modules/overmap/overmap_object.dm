@@ -22,7 +22,7 @@
 		return INITIALIZE_HINT_QDEL
 
 	if(known && !mapload)
-		SSovermaps.queue_helm_known_sectors_rebuild()
+		SSovermaps.queue_helm_computer_rebuild()
 	update_icon()
 
 /obj/effect/overmap/Crossed(var/obj/effect/overmap/visitable/other)
