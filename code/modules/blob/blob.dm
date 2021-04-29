@@ -128,9 +128,9 @@
 
 	switch(Proj.damage_type)
 		if(BRUTE)
-			take_damage(Proj.damage / brute_resist)
+			take_damage(Proj.get_final_damage(src))
 		if(BURN)
-			take_damage(Proj.damage / fire_resist)
+			take_damage(Proj.get_final_damage(src))
 	return 0
 
 /obj/effect/blob/attackby(var/obj/item/W, var/mob/user)

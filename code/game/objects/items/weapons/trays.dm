@@ -167,6 +167,7 @@
 	return val
 
 /obj/item/tray/pickup(mob/user)
+	. = ..()
 
 	if(!isturf(loc))
 		return
@@ -183,7 +184,7 @@
 			if(calc_carry() + add >= max_carry)
 				break
 			var/image/Img = new(src.icon)
-			I.loc = src
+			I.forceMove(src)
 			carrying.Add(I)
 			Img.icon = I.icon
 			Img.icon_state = I.icon_state
@@ -195,6 +196,7 @@
 			overlays += Img
 
 /obj/item/tray/dropped(mob/user)
+	. = ..()
 	var/noTable = null
 
 	spawn() //Allows the tray to udpate location, rather than just checking against mob's location
