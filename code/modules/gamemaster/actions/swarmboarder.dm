@@ -1,6 +1,6 @@
 /datum/gm_action/swarm_boarder
 	name = "swarmer shell"
-	departments = list(ROLE_EVERYONE, ROLE_SECURITY, ROLE_ENGINEERING)
+	departments = list(DEPARTMENT_EVERYONE, DEPARTMENT_SECURITY, DEPARTMENT_ENGINEERING)
 	chaotic = 30
 	observers_used = TRUE
 	var/area/target_area	// Chosen target area
@@ -67,7 +67,7 @@
 	new swarmertype(target_turf)
 
 /datum/gm_action/swarm_boarder/get_weight()
-	return -60 + (metric.count_people_in_department(ROLE_SECURITY) * 20 + metric.count_people_in_department(ROLE_SYNTHETIC) * 5 + metric.count_people_in_department(ROLE_EVERYONE) * 1)
+	return -60 + (metric.count_people_in_department(DEPARTMENT_SECURITY) * 20 + metric.count_people_in_department(DEPARTMENT_SYNTHETIC) * 5 + metric.count_people_in_department(DEPARTMENT_EVERYONE) * 1)
 
 /datum/gm_action/swarm_boarder/announce()
 	spawn(rand(5 MINUTES, 15 MINUTES))

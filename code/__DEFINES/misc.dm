@@ -269,16 +269,26 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Job groups
-#define ROLE_COMMAND			"command"
-#define ROLE_SECURITY			"security"
-#define ROLE_ENGINEERING		"engineering"
-#define ROLE_MEDICAL			"medical"
-#define ROLE_RESEARCH			"research"
-#define ROLE_CARGO				"cargo"
-#define ROLE_CIVILIAN			"civilian"
-#define ROLE_SYNTHETIC			"synthetic"
-#define ROLE_UNKNOWN			"unknown"
-#define ROLE_EVERYONE			"everyone"
+#define DEPARTMENT_COMMAND			"command"
+#define DEPARTMENT_SECURITY			"security"
+#define DEPARTMENT_ENGINEERING		"engineering"
+#define DEPARTMENT_MEDICAL			"medical"
+#define DEPARTMENT_RESEARCH			"research"
+#define DEPARTMENT_CARGO				"cargo"
+#define DEPARTMENT_CIVILIAN			"civilian"
+#define DEPARTMENT_SYNTHETIC			"synthetic"
+#define DEPARTMENT_UNKNOWN			"unknown"
+#define DEPARTMENT_EVERYONE			"everyone"
+
+// vorstation off-duty time
+#define PTO_SECURITY		"Security"
+#define PTO_MEDICAL			"Medical"
+#define PTO_ENGINEERING 	"Engineering"
+#define PTO_SCIENCE			"Science"
+#define PTO_EXPLORATION 	"Exploration"
+#define PTO_CARGO			"Cargo"
+#define PTO_CIVILIAN		"Civilian"
+#define PTO_CYBORG			"Cyborg"
 
 // Canonical spellings of TSCs, so typos never have to happen again due to human error.
 #define TSC_NT		"NanoTrasen"
