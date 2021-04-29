@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		linked.relaymove(user, direction, accellimit)
 		return 1
 
-/obj/machinery/computer/ship/helm/tgui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/ship/helm/ui_interact(mob/user, datum/tgui/ui)
 	if(!linked)
 		display_reconnect_dialog(user, "helm")
 		return
@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	data["locations"] = locations
 	return data
 
-/obj/machinery/computer/ship/helm/tgui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
@@ -273,8 +273,8 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 /obj/machinery/computer/ship/navigation/sync_linked(user)
 	return nav_tgui?.sync_linked()
 
-/obj/machinery/computer/ship/navigation/tgui_interact(mob/user, datum/tgui/ui)
-	return nav_tgui?.tgui_interact(user, ui)
+/obj/machinery/computer/ship/navigation/ui_interact(mob/user, datum/tgui/ui)
+	return nav_tgui?.ui_interact(user, ui)
 
 /obj/machinery/computer/ship/navigation/telescreen	//little hacky but it's only used on one ship so it should be okay
 	icon_state = "tele_nav"

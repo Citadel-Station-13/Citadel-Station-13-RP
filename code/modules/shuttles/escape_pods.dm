@@ -4,9 +4,9 @@
 
 /datum/shuttle/autodock/ferry/escape_pod/New()
 	move_time = move_time + rand(-30, 60)
-	if(name in SSemergency_shuttle.escape_pods)
+	if(name in SSemergencyshuttle.escape_pods)
 		CRASH("An escape pod with the name '[name]' has already been defined.")
-	SSemergency_shuttle.escape_pods[name] = src
+	SSemergencyshuttle.escape_pods[name] = src
 
 	..()
 
@@ -54,12 +54,12 @@
 		"docking_status" = docking_program.get_docking_status(),
 		"override_enabled" = docking_program.override_enabled,
 		"exterior_status" =	docking_program.memory["door_status"],
-		"can_force" = pod.can_force() || (SSemergency_shuttle.departed && pod.can_launch()),	//allow players to manually launch ahead of time if the shuttle leaves
+		"can_force" = pod.can_force() || (SSemergencyshuttle.departed && pod.can_launch()),	//allow players to manually launch ahead of time if the shuttle leaves
 		"armed" = pod.arming_controller.armed,
 		"internalTemplateName" = "EscapePodConsole",
 	)
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/tgui_act(action, params)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -70,7 +70,7 @@
 		if("force_launch")
 			if(pod.can_force())
 				pod.force_launch(src)
-			else if(SSemergency_shuttle.departed && pod.can_launch())	//allow players to manually launch ahead of time if the shuttle leaves
+			else if(SSemergencyshuttle.departed && pod.can_launch())	//allow players to manually launch ahead of time if the shuttle leaves
 				pod.launch(src)
 			. = TRUE
 

@@ -20,7 +20,7 @@
 			sensors = S
 			break
 
-/obj/machinery/computer/ship/sensors/tgui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/ship/sensors/ui_interact(mob/user, datum/tgui/ui)
 	if(!linked)
 		display_reconnect_dialog(user, "sensors")
 		return
@@ -64,7 +64,7 @@
 				continue
 			if(!O.scannable)
 				continue
-			var/bearing = round(90 - ATAN2(O.x - linked.x, O.y - linked.y),5)
+			var/bearing = round(90 - arctan(O.x - linked.x, O.y - linked.y),5)
 			if(bearing < 0)
 				bearing += 360
 			contacts.Add(list(list("name"=O.name, "ref"="\ref[O]", "bearing"=bearing)))
@@ -72,7 +72,7 @@
 
 	return data
 
-/obj/machinery/computer/ship/sensors/tgui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/sensors/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 

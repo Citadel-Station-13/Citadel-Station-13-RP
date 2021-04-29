@@ -6,7 +6,7 @@
 	icon_screen = "engines"
 	circuit = /obj/item/circuitboard/engine
 
-/obj/machinery/computer/ship/engines/tgui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/ship/engines/ui_interact(mob/user, datum/tgui/ui)
 	if(!linked)
 		display_reconnect_dialog(user, "ship control systems")
 		return
@@ -42,7 +42,7 @@
 	data["total_thrust"] = total_thrust
 	return data
 
-/obj/machinery/computer/ship/engines/tgui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/engines/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 

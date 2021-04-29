@@ -50,7 +50,7 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 // 	ui_interact(user)
 // 	return TRUE
 
-/obj/machinery/computer/ship/tgui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 	switch(action)

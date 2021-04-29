@@ -186,7 +186,13 @@
 	req_one_access = list()
 
 /obj/mecha/combat/fighter/baron/loaded/busted
-	starting_components = list(/obj/item/mecha_parts/component/hull/lightweight,/obj/item/mecha_parts/component/actuator/hispeed,/obj/item/mecha_parts/component/armor,/obj/item/mecha_parts/component/gas,/obj/item/mecha_parts/component/electrical/high_current)
+	starting_components = list(
+		/obj/item/mecha_parts/component/hull/lightweight,
+		/obj/item/mecha_parts/component/actuator/hispeed,
+		/obj/item/mecha_parts/component/armor,
+		/obj/item/mecha_parts/component/gas,
+		/obj/item/mecha_parts/component/electrical/high_current
+		)
 
 /obj/mecha/combat/fighter/baron/loaded/busted/Initialize()
 	. = ..()

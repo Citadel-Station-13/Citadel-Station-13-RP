@@ -66,7 +66,7 @@
 // If you perform direct interactions in here, you are responsible for ensuring that full interactivity checks have been made (i.e CanInteract).
 // The checks leading in to here only guarantee that the user should be able to view a UI.
 /obj/machinery/computer/ship/proc/interface_interact(var/mob/user)
-	tgui_interact(user)
+	ui_interact(user)
 	return TRUE
 
 /obj/machinery/computer/ship/attack_ai(mob/user)

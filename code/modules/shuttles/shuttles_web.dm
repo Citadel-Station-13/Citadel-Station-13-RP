@@ -291,7 +291,7 @@
 
 	return data
 
-/obj/machinery/computer/shuttle_control/web/tgui_act(action, list/params)
+/obj/machinery/computer/shuttle_control/web/ui_act(action, list/params)
 	if(..())
 		return TRUE
 

@@ -19,7 +19,7 @@
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return 1
 
-	tgui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/computer/shuttle_control/proc/shuttlerich_tgui_data(var/datum/shuttle/autodock/shuttle)
 	var/shuttle_state
@@ -73,8 +73,7 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/computer/shuttle_control/Topic(href, href_list)
-/obj/machinery/computer/shuttle_control/tgui_act(action, list/params)
+/obj/machinery/computer/shuttle_control/ui_act(action, list/params)
 	if(..())
 		return TRUE
 	if(skip_act)
@@ -108,7 +107,7 @@
 				shuttle.set_docking_codes(uppertext(newcode))
 			return TRUE
 
-/obj/machinery/computer/shuttle_control/tgui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/shuttle_control/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "ShuttleControl", "[shuttle_tag] Shuttle Control") // 470, 360

@@ -118,7 +118,7 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 	if(B)
 		return B
 
-/obj/machinery/computer/ship/disperser/tgui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+/obj/machinery/computer/ship/disperser/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	if(!linked)
 		display_reconnect_dialog(user, "disperser synchronization")
 		return
@@ -163,7 +163,7 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 
 	return data
 
-/obj/machinery/computer/ship/disperser/tgui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/disperser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
