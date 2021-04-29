@@ -1,18 +1,23 @@
 var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
+//////////////////////////////////
+//			Captain
+//////////////////////////////////
+
 /datum/job/captain
 	title = "Facility Director"
 	flag = CAPTAIN
-	department = "Command"
 	disallow_jobhop = TRUE
-	head_position = 1
+	departments = list(DEPARTMENT_COMMAND)
+	sorting_order = 3 // Above everyone.
+	departments_managed = list(DEPARTMENT_COMMAND)
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "company officials and Corporate Regulations"
-	selection_color = "#1D1D4F"
 	idtype = /obj/item/card/id/gold
+	selection_color = "#2F2F7F"
 	req_admin_notify = 1
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
@@ -24,6 +29,9 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 	outfit_type = /decl/hierarchy/outfit/job/captain
 	alt_titles = list("Site Manager", "Overseer", "Director of Operations","Captain")
+	job_description = "The Site Manager manages the other Command Staff, and through them the rest of the station. Though they have access to everything, \
+						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Site Manager is expected to \
+						have an understanding of Standard Operating Procedure, and is subject to it, and legal action, in the same way as every other crew member."
 
 /*
 /datum/job/captain/equip(var/mob/living/carbon/human/H)
@@ -31,22 +39,28 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	if(.)
 		H.implant_loyalty(src)
 */
+
 /datum/job/captain/get_access()
 	return get_all_station_access().Copy()
 
+
+//////////////////////////////////
+//		Head of Personnel
+//////////////////////////////////
 /datum/job/hop
 	title = "Head of Personnel"
 	flag = HOP
-	department = "Command"
-	head_position = 1
+	departments = list(DEPARTMENT_COMMAND, DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)
+	sorting_order = 2 // Above the QM, below captain.
+	departments_managed = list(DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)
 	department_flag = CIVILIAN
 	disallow_jobhop = TRUE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Facility Director"
-	selection_color = "#2F2F7F"
 	idtype = /obj/item/card/id/silver/hop
+	selection_color = "#1D1D4F"
 	req_admin_notify = 1
 	minimal_player_age = 10
 	economic_modifier = 10
@@ -56,6 +70,9 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 
 	outfit_type = /decl/hierarchy/outfit/job/hop
 	alt_titles = list("Crew Resources Officer","First Officer", "Executive Officer", "Deputy Director")
+	job_description = "The Head of Personnel manages the Service department, the Exploration team, and most other civilians. They also \
+						manage the Supply department, through the Quartermaster. In addition, the Head of Personnel oversees the personal accounts \
+						of the crew, including their money and access. If necessary, the Head of Personnel is first in line to assume Acting Command."
 
 	access = list(access_security, access_sec_doors, access_brig, access_forensics_lockers,
 			            access_medical, access_engine, access_change_ids, access_ai_upload, access_eva, access_heads,
@@ -70,19 +87,26 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 			            access_chapel_office, access_library, access_research, access_mining, access_heads_vault, access_mining_station,
 			            access_hop, access_RC_announce, access_keycard_auth, access_gateway)
 
+// HOP Alt Titles
+/datum/alt_title/cro
+	title = "Crew Resources Officer"
+
+//////////////////////////////////
+//		Command Secretary
+//////////////////////////////////
+
 /datum/job/secretary
 	title = "Command Secretary"
 	flag = BRIDGE
-	department = "Command"
-	head_position = 1
+	departments = list(DEPARTMENT_COMMAND)
+	department_accounts = list(DEPARTMENT_COMMAND)
 	department_flag = CIVILIAN
 	disallow_jobhop = TRUE
 	faction = "Station"
-	total_positions = 3
+	total_positions = 2
 	spawn_positions = 2
 	supervisors = "command staff"
-	selection_color = "#2F2F7F"
-	idtype = /obj/item/card/id/silver/secretary
+	selection_color = "#1D1D4F"
 	minimal_player_age = 5
 	economic_modifier = 7
 
