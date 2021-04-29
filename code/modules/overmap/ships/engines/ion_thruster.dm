@@ -80,5 +80,5 @@
 	origin_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 2)
 	req_components = list(
 							/obj/item/stack/cable_coil = 2,
-							/obj/item/weapon/stock_parts/matter_bin = 1,
-							/obj/item/weapon/stock_parts/capacitor = 2)
+							/obj/item/stock_parts/matter_bin = 1,
+							/obj/item/stock_parts/capacitor = 2)

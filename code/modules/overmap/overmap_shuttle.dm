@@ -78,7 +78,7 @@
 		var/list/waypoints = S.get_waypoints(name)
 		for(var/obj/effect/shuttle_landmark/LZ in waypoints)
 			if(LZ.is_valid(src))
-				res["[waypoints[LZ]] - [LZ.name]"] = LZ	
+				res["[waypoints[LZ]] - [LZ.name]"] = LZ
 	return res
 
 /datum/shuttle/autodock/overmap/get_location_name()
@@ -133,7 +133,7 @@
 	var/icon_full = "fuel_port_full"
 	var/opened = 0
 	var/parent_shuttle
-	var/base_tank = /obj/item/weapon/tank/phoron
+	var/base_tank = /obj/item/tank/phoron
 
 /obj/structure/fuel_port/Initialize(mapload)
 	. = ..()
@@ -141,7 +141,7 @@
 		new base_tank(src)
 
 /obj/structure/fuel_port/heavy
-	base_tank = /obj/item/weapon/tank/phoron/pressurized
+	base_tank = /obj/item/tank/phoron/pressurized
 
 /obj/structure/fuel_port/empty
 	base_tank = null	//oops, no gas!

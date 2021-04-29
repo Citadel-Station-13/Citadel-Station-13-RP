@@ -55,7 +55,7 @@ proc/get_deepspace(x,y)
 
 	return TRUE
 
-/obj/item/device/uav/lost_in_space()
+/obj/item/uav/lost_in_space()
 	if(state == 1)
 		return FALSE
 	return ..()
