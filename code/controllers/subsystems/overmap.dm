@@ -2,7 +2,6 @@ SUBSYSTEM_DEF(overmaps)
 	name = "Overmaps"
 	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_OVERMAPS
-	/// Helm computers queued for rebuild
 
 /datum/controller/subsystem/overmaps/Initialize()
 	if(GLOB.using_map.use_overmap)
