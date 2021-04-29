@@ -200,6 +200,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					used_skillpoints += 6 * multiplier
 
+
 /datum/preferences/proc/GetSkillClass(points)
 	return CalculateSkillClass(points, age)
 
