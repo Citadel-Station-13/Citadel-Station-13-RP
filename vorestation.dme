@@ -249,6 +249,7 @@
 #include "code\controllers\subsystems\nanoui.dm"
 #include "code\controllers\subsystems\openspace.dm"
 #include "code\controllers\subsystems\overlays.dm"
+#include "code\controllers\subsystems\overmap.dm"
 #include "code\controllers\subsystems\persist_vr.dm"
 #include "code\controllers\subsystems\planets.dm"
 #include "code\controllers\subsystems\radiation.dm"
