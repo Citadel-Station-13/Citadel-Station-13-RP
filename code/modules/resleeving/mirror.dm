@@ -24,8 +24,11 @@
 	return dat
 
 /obj/item/implant/mirror/post_implant(var/mob/living/carbon/human/H)
-	if(istype(H))
-		spawn(20)
+	spawn(20)
+	if((H.client.prefs.organ_data[O_BRAIN] == "mechanical") || (H.client.prefs.organ_data[O_BRAIN] == "digital") || (H.client.prefs.organ_data[O_BRAIN] == "assisted"))
+		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
+		return
+	else
 		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
 		icon_state = "mirror_implant"
 
@@ -51,9 +54,17 @@
 
 
 /obj/item/implant/mirror/positronic
-	name = "Positronic Mirror"
-	desc = "An altered form of the common mirror designed to work with positronic brains."
+	name = "Synthetic Mirror"
+	desc = "An altered form of the common mirror designed to work with synthetic brains."
 
+/obj/item/implant/mirror/positronic/post_implant(var/mob/living/carbon/human/H)
+	spawn(20)
+	if((H.client.prefs.organ_data[O_BRAIN] == "mechanical") || (H.client.prefs.organ_data[O_BRAIN] == "digital") || (H.client.prefs.organ_data[O_BRAIN] == "assisted"))
+		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
+		icon_state = "mirror_implant"
+	else
+		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
+		return
 
 /obj/item/mirrorscanner
 	name = "Mirror Scanner"

@@ -543,9 +543,9 @@
 		new_character.disabilities |= NEARSIGHTED
 	if(client.prefs.mirror == TRUE)
 		if((client.prefs.organ_data[O_BRAIN] == "mechanical") || (client.prefs.organ_data[O_BRAIN] == "digital") || (client.prefs.organ_data[O_BRAIN] == "assisted"))
-			var/obj/item/implant/mirror/positronic/E = new /obj/item/implant/mirror/positronic(new_character)
-			E.handle_implant(new_character)
-			E.post_implant(new_character)
+			var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)
+			F.handle_implant(new_character)
+			F.post_implant(new_character)
 		else
 			var/obj/item/implant/mirror/E = new /obj/item/implant/mirror(new_character)
 			E.handle_implant(new_character)
