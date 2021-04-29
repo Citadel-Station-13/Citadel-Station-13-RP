@@ -18,12 +18,12 @@ SUBSYSTEM_DEF(jobs)
 	var/debug_messages = FALSE
 
 /datum/controller/subsystem/job/Initialize(timeofday)
-	setup_departments()
-	setup_occupations()
+	SetupDepartments()
+	SetupOccupations()
 	LoadJobs("config_legacy/jobs.txt")
 	return ..()
 
-/datum/controller/subsystem/job/proc/setup_occupations(faction = "Station")
+/datum/controller/subsystem/job/proc/SetupOccupations(faction = "Station")
 	occupations = list()
 	var/list/all_jobs = subtypesof(/datum/job)
 	if(!all_jobs.len)
@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(jobs)
 		name_occupations[job.title] = job
 		type_occupations[J] = job
 		if(LAZYLEN(job.departments))
-			add_to_departments(job)
+			AddToDepartments(job)
 
 	sortTim(occupations, /proc/cmp_job_datums)
 	for(var/D in department_datums)
@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(jobs)
 
 	return TRUE
 
-/datum/controller/subsystem/job/proc/add_to_departments(datum/job/J)
+/datum/controller/subsystem/job/proc/AddToDepartments(datum/job/J)
 	// Adds to the regular job lists in the departments, which allow multiple departments for a job.
 	for(var/D in J.departments)
 		var/datum/department/dept = LAZYACCESS(department_datums, D)
@@ -69,39 +69,39 @@ SUBSYSTEM_DEF(jobs)
 		else
 			dept.primary_jobs[J.title] = J
 
-/datum/controller/subsystem/job/proc/setup_departments()
+/datum/controller/subsystem/job/proc/SetupDepartments()
 	for(var/t in subtypesof(/datum/department))
 		var/datum/department/D = new t()
 		department_datums[D.name] = D
 
 	sortTim(department_datums, /proc/cmp_department_datums, TRUE)
 
-/datum/controller/subsystem/job/proc/get_all_department_datums()
+/datum/controller/subsystem/job/proc/GetAllDepartmentDatums()
 	var/list/dept_datums = list()
 	for(var/D in department_datums)
 		dept_datums += department_datums[D]
 	return dept_datums
 
-/datum/controller/subsystem/job/proc/get_job(rank)
+/datum/controller/subsystem/job/proc/GetJob(rank)
 	if(!occupations.len)
 		setup_occupations()
 	return name_occupations[rank]
 
-/datum/controller/subsystem/job/proc/get_job_type(jobtype)
+/datum/controller/subsystem/job/proc/GetJobType(jobtype)
 	if(!occupations.len)
 		setup_occupations()
 	return type_occupations[jobtype]
 
 // Determines if a job title is inside of a specific department.
 // Useful to replace the old `if(job_title in command_positions)` code.
-/datum/controller/subsystem/job/proc/is_job_in_department(rank, target_department_name)
+/datum/controller/subsystem/job/proc/IsJobInDepartment(rank, target_department_name)
 	var/datum/department/D = LAZYACCESS(department_datums, target_department_name)
 	if(istype(D))
 		return LAZYFIND(D.jobs, rank) ? TRUE : FALSE
 	return FALSE
 
 // Returns a list of all job names in a specific department.
-/datum/controller/subsystem/job/proc/get_job_titles_in_department(target_department_name)
+/datum/controller/subsystem/job/proc/GetJobTitlesInDepartment(target_department_name)
 	var/datum/department/D = LAZYACCESS(department_datums, target_department_name)
 	if(istype(D))
 		var/list/job_titles = list()
@@ -114,12 +114,12 @@ SUBSYSTEM_DEF(jobs)
 
 // Returns a reference to the primary department datum that a job is in.
 // Can receive job datum refs, typepaths, or job title strings.
-/datum/controller/subsystem/job/proc/get_primary_department_of_job(datum/job/J)
+/datum/controller/subsystem/job/proc/GetPrimaryDepartmentOfJob(datum/job/J)
 	if(!istype(J, /datum/job))
 		if(ispath(J))
-			J = get_job_type(J)
+			J = GetJobType(J)
 		else if(istext(J))
-			J = get_job(J)
+			J = GetJob(J)
 
 	if(!istype(J))
 		job_debug_message("Was asked to get department for job '[J]', but input could not be resolved into a job datum.")
@@ -138,7 +138,7 @@ SUBSYSTEM_DEF(jobs)
 
 /datum/controller/subsystem/job/proc/job_debug_message(message)
 	if(debug_messages)
-		log_debug("JOB DEBUG: [message]")
+		subsystem_log("JOB DEBUG: [message]")
 
 /datum/controller/subsystem/jobs/proc/GetPlayerAltTitle(mob/new_player/player, rank)
 	return player.client.prefs.GetPlayerAltTitle(GetJob(rank))
