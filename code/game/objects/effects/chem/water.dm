@@ -31,10 +31,10 @@
 			for(var/atom/movable/AM in T)
 				if(!isobj(AM) && !ismob(AM))
 					continue
-				if(A in touched)
+				if(AM in touched)
 					continue
-				touched |= A
-				reagents.touch(A, reagents.total_volume)
+				touched |= AM
+				reagents.touch(AM, reagents.total_volume)
 		sleep(delay)
 
 /obj/effect/effect/water/Crossed(atom/movable/AM, oldloc)
@@ -44,7 +44,7 @@
 	if(AM in touched)
 		return
 	touched |= AM
-	reagents?.touch(A, reagents.total_volume)
+	reagents?.touch(AM, reagents.total_volume)
 
 //Used by spraybottles.
 /obj/effect/effect/water/chempuff
