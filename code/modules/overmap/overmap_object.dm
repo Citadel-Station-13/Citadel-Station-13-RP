@@ -22,10 +22,7 @@
 		return INITIALIZE_HINT_QDEL
 
 	if(known && !mapload)
-		//layer = ABOVE_LIGHTING_LAYER
-		plane = PLANE_LIGHTING_ABOVE
-		for(var/obj/machinery/computer/ship/helm/H in global.machines)
-			H.get_known_sectors()
+		SSovermaps.queue_helm_computer_rebuild()
 	update_icon()
 
 /obj/effect/overmap/Crossed(var/obj/effect/overmap/visitable/other)
