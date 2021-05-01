@@ -250,9 +250,9 @@
 				<li>Enable and max output and input on the SMES in the engine room. This is to power the gyrotrons and pumps.</li>
 				<li>Go into the control room, interact with the fusion core control console. Raise the field size to 201 and turn it on. Any smaller will cause the gyrotrons to blast out the walls. Bigger than 500 will cause the field to immediately fail.</li>
 				<li>Interact with the gyrotron control computer and set all the gyrotrons power and timing to 1.</li>
-				<li>Start the gyrotrons and wait for reactions to start. Once the field is visible, you may shut the gyrotrons off to conserve power.</li>
+				<li>Start the gyrotrons and wait for the field to heat up. Once the field is fully visible, you may switch off the gyrotrons to save power.</li>
 				<li>Insert a can of phoron in the cold loop (green and blue) and a can of CO2 in the hot loop (red and orange).</li>
-				<li>In the event you must switch the RUS-T off, switch off fuel injections and allow the field to cool below 1000 kelvin.</li>
+				<li>In the event you must switch the RUS-T off, stop all fuel injection allow the field to cool below 1000 kelvin.</li>
 				</ol>
 				<br>
 				<b>NOTES FOR NEWBIES</b>
