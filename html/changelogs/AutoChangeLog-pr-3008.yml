@@ -1,0 +1,7 @@
+author: "nik707"
+delete-after: True
+changes: 
+  - rscadd: "Mirror Implant"
+  - rscdel: "Comments out a lot of transcore code
+tweak: NIFs are not given upon resleeving
+tweak: Body scanners can initiate manual mirror backups"
