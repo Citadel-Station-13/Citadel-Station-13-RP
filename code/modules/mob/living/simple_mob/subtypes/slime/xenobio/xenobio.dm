@@ -92,6 +92,8 @@
 				. += "It looks rather obedient."
 			else if(AI.discipline)
 				. += "It has been subjugated by force, at least for now."
+		if(user in friends)
+			. += "It looks rather friendly... to you."
 
 /mob/living/simple_mob/slime/xenobio/proc/make_adult()
 	if(is_adult)
