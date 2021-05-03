@@ -42,20 +42,18 @@
 
 // Reset dir when picked back up
 /obj/item/retail_scanner/pickup(mob/user)
-	src.dir = SOUTH
-	src.pixel_y = 0
-
+	. = ..()
+	setDir(SOUTH)
+	pixel_y = 0
 
 /obj/item/retail_scanner/attack_self(mob/user as mob)
 	user.set_machine(src)
 	interact(user)
 
-
 /obj/item/retail_scanner/AltClick(var/mob/user)
 	if(Adjacent(user))
 		user.set_machine(src)
 		interact(user)
-
 
 /obj/item/retail_scanner/interact(mob/user as mob)
 	var/dat = "<h2>Retail Scanner<hr></h2>"

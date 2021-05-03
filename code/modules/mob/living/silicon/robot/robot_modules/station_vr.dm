@@ -44,9 +44,13 @@
 	sprites += vr_sprites
 	return
 
-/obj/item/robot_module/robot/medical/surgeon/vr_new() //Surgeon Bot
-	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
-	. = ..() //Any Global vore modules will come from here
+// /obj/item/robot_module/robot/medical/surgeon/vr_new() //Surgeon Bot
+// 	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
+// 	. = ..() //Any Global vore modules will come from here
+
+// /obj/item/robot_module/robot/medical/crisis/vr_new() //Crisis Bot
+// 	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
+// 	. = ..() //Any Global vore modules will come from here
 
 /obj/item/robot_module/robot/medical/surgeon
 	vr_sprites = list(

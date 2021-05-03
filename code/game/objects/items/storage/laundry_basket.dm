@@ -42,21 +42,19 @@
 	return ..()
 
 /obj/item/storage/laundry_basket/pickup(mob/user)
+	. = ..()
 	var/obj/item/storage/laundry_basket/offhand/O = new(user)
 	O.name = "[name] - second hand"
 	O.desc = "Your second grip on the [name]."
 	O.linked = src
 	user.put_in_inactive_hand(O)
 	linked = O
-	return
 
-/obj/item/storage/laundry_basket/update_icon()
+/obj/item/storage/laundry_basket/update_icon_state()
 	if(contents.len)
 		icon_state = "laundry-full"
 	else
 		icon_state = "laundry-empty"
-	return
-
 
 /obj/item/storage/laundry_basket/MouseDrop(obj/over_object as obj)
 	if(over_object == usr)
@@ -81,7 +79,7 @@
 	name = "second hand"
 	use_to_pickup = 0
 
-/obj/item/storage/laundry_basket/offhand/dropped(mob/user as mob)
+/obj/item/storage/laundry_basket/offhand/dropped(mob/user)
+	. = ..()
 	user.drop_from_inventory(linked)
-	return
 

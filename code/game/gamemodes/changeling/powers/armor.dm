@@ -49,6 +49,7 @@
 		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 
 /obj/item/clothing/suit/space/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/clothing/head/helmet/space/changeling
@@ -61,6 +62,7 @@
 	canremove = 0
 
 /obj/item/clothing/head/helmet/space/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/clothing/shoes/magboots/changeling

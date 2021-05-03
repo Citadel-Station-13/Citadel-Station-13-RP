@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 		FLAG(PHASING),
 		FLAG(VENTCRAWLING),
 		FLAG(FLOATING)
-		)
+		),
 /*
 	"sight" = list(
 		"SEE_INFRA" = SEE_INFRA,
@@ -62,6 +62,12 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"SEE_BLACKNESS" = SEE_BLACKNESS,
 		"BLIND" = BLIND
 		),
+*/
+	"obj_flags" = list(
+		"EMAGGED" = EMAGGED,
+		"CAN_BE_HIT" = CAN_BE_HIT
+	)
+/*
 	"obj_flags" = list(
 		"EMAGGED" = EMAGGED,
 		"IN_USE" = IN_USE,
@@ -72,6 +78,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"UNIQUE_RENAME" = UNIQUE_RENAME,
 		"USES_TGUI" = USES_TGUI,
 		"FROZEN" = FROZEN,
+		"SHOVABLE_ONTO" = SHOVABLE_ONTO
 		),
 
 	"item_flags" = list(
