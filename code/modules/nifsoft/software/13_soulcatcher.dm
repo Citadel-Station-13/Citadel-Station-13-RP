@@ -469,7 +469,9 @@
 		dummy.add_overlay(alpha_mask)
 		COMPILE_OVERLAYS(dummy)
 		dummy.alpha = 192
-
+		
+		// remove hudlist
+		dummy.overlays -= dummy.hud_list
 		// appearance clone immediately
 		appearance = dummy.appearance
 		qdel(dummy)

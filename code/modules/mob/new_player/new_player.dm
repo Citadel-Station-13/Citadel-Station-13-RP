@@ -115,6 +115,8 @@
 	return age_gate_result
 
 /mob/new_player/proc/verifyage()
+	if(client.holder)		// they're an admin
+		return TRUE
 	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) //make sure they are verified
 		if(!client.prefs)
 			message_admins("Blocked [src] from new player panel because age gate could not access client preferences.")
