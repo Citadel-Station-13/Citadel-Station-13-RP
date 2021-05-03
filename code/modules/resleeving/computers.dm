@@ -17,6 +17,7 @@
 	var/organic_capable = 1
 	var/synthetic_capable = 1
 	var/obj/item/disk/transcore/disk
+	var/hasmirror = null
 
 /obj/machinery/computer/transhuman/resleeving/Initialize(mapload)
 	. = ..()
@@ -88,9 +89,25 @@
 		menu = 4
 		to_chat(user, "<span class='notice'>\The [src] loads the body record from \the [W] before ejecting it.</span>")
 		attack_hand(user)
+	if(istype(W, /obj/item/implant/mirror))
+		user.drop_item()
+		W.forceMove(src)
+		hasmirror = W
+		user.visible_message("[user] inserts the [W] into the [src].", "You insert the [W] into the [src].")
+	return ..()
+
+/obj/machinery/computer/transhuman/resleeving/verb/eject_mirror()
+	set category = "Object"
+	set name = "Eject Mirror"
+	set src in oview(1)
+
+	if(hasmirror)
+		to_chat(usr, "You eject the mirror.")
+		usr.put_in_hands(hasmirror)
+		hasmirror = null
+		active_mr = null
 	else
-		..()
-	return
+		to_chat(usr, "There is no mirror to eject.")
 
 /obj/machinery/computer/transhuman/resleeving/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -366,8 +383,9 @@
 				//They were dead, or otherwise available.
 				if(!temp)
 					sleever.putmind(active_mr,mode,override)
-					temp = "Initiating resleeving..."
+					temp = "Initiating resleeving and transferring mirror..."
 					menu = 1
+					qdel(hasmirror)
 
 		//IDK but it broke somehow.
 		else
