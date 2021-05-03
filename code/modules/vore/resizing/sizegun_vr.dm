@@ -42,8 +42,8 @@
 	set category = "Object"
 	set src in view(1)
 
-	var/size_select = input("Put the desired size (25-150%)", "Set Size", size_set_to*100) as num
-	if(size_select>150 || size_select<25)
+	var/size_select = input("Put the desired size (25-200%)", "Set Size", size_set_to*100) as num
+	if(size_select>200 || size_select<25)
 		to_chat(usr, "<span class='notice'>Invalid size.</span>")
 		return
 	size_set_to = (size_select/100)
