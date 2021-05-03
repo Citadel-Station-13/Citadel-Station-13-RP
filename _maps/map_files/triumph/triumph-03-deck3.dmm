@@ -1892,6 +1892,7 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
+/obj/structure/closet/bombcloset,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "bGD" = (

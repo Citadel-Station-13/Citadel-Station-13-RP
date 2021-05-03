@@ -321,18 +321,21 @@
 	return 1
 
 /obj/item/clothing/gloves/dropped()
-	..()
+	. = ..()
 
 	if(!wearer)
 		return
 
-	var/mob/living/carbon/human/H = wearer
-	if(ring && istype(H))
-		if(!H.equip_to_slot_if_possible(ring, slot_gloves))
-			ring.forceMove(get_turf(src))
-		src.ring = null
+	if(ishuman(wearer))
+		restore_over_objects(wearer)
 	punch_force = initial(punch_force)
 	wearer = null
+
+/obj/item/clothing/gloves/proc/restore_over_objects(mob/living/carbon/human/wearer)
+	if(ring)
+		if(!wearer.equip_to_slot_if_possible(ring, slot_gloves))
+			ring.forceMove(get_turf(src))
+		ring = null
 
 /obj/item/clothing/gloves
 	var/datum/unarmed_attack/special_attack = null //do the gloves have a special unarmed attack?
