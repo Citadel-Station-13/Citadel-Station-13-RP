@@ -48,23 +48,11 @@
 	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
 	. = ..() //Any Global vore modules will come from here
 
-/obj/item/robot_module/robot/medical/crisis/vr_new() //Crisis Bot
-	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
-	. = ..() //Any Global vore modules will come from here
-
 /obj/item/robot_module/robot/medical/surgeon
 	vr_sprites = list(
 						"Acheron" = "mechoid-Medical",
 						"Shellguard Noble" = "Noble-MED",
 						"ZOOM-BA" = "zoomba-medical"
-					 )
-
-/obj/item/robot_module/robot/medical/crisis
-	vr_sprites = list(
-						"Handy" = "handy-med",
-						"Acheron" = "mechoid-Medical",
-						"Shellguard Noble" = "Noble-MED",
-						"ZOOM-BA" = "zoomba-crisis"
 					 )
 
 /obj/item/robot_module/robot/clerical/butler

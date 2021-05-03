@@ -6,7 +6,7 @@
 	can_be_pushed = 0
 
 /obj/item/robot_module/robot/medical/surgeon
-	name = "surgeon robot module"
+	name = "medical robot module"
 	sprites = list(
 					"M-USE NanoTrasen" = "robotMedi",
 					"Cabeiri" = "eyebot-medical",
@@ -35,6 +35,9 @@
 	src.modules += new /obj/item/healthanalyzer(src)
 	src.modules += new /obj/item/reagent_containers/borghypo/surgeon(src)
 	src.modules += new /obj/item/autopsy_scanner(src)
+	src.modules += new /obj/item/reagent_scanner/adv(src)
+	src.modules += new /obj/item/roller_holder(src)
+	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)
 	src.modules += new /obj/item/surgical/scalpel/cyborg(src)
 	src.modules += new /obj/item/surgical/hemostat/cyborg(src)
 	src.modules += new /obj/item/surgical/retractor/cyborg(src)
@@ -53,11 +56,15 @@
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
 
-	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(10000)
+	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(15000)
 	synths += medicine
 
+	var/obj/item/stack/medical/advanced/ointment/O = new /obj/item/stack/medical/advanced/ointment(src)
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	var/obj/item/stack/medical/advanced/bruise_pack/B = new /obj/item/stack/medical/advanced/bruise_pack(src)
+	O.uses_charge = 1
+	O.charge_costs = list(1000)
+	O.synths = list(medicine)
 	N.uses_charge = 1
 	N.charge_costs = list(1000)
 	N.synths = list(medicine)
@@ -66,6 +73,7 @@
 	B.synths = list(medicine)
 	src.modules += N
 	src.modules += B
+	src.modules += O
 
 /obj/item/robot_module/robot/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 
@@ -81,78 +89,7 @@
 		PS.reagents.add_reagent("pacid", 2 * amount)
 
 	..()
-
-/obj/item/robot_module/robot/medical/crisis
-	name = "crisis robot module"
-	sprites = list(
-					"M-USE NanoTrasen" = "robotMedi",
-					"Cabeiri" = "eyebot-medical",
-					"Haruka" = "marinaMD",
-					"Minako" = "arachne",
-					"Usagi" = "tallwhite",
-					"Telemachus" = "toiletbotmedical",
-					"WTOperator" = "sleekmedic",
-					"XI-ALP" = "heavyMed",
-					"Basic" = "Medbot",
-					"Advanced Droid" = "droid-medical",
-					"Needles" = "medicalrobot",
-					"Drone - Medical" = "drone-medical",
-					"Drone - Chemistry" = "drone-chemistry",
-					"Insekt" = "insekt-Med",
-					"Misato" = "tall2medical",
-					"L3P1-D0T" = "Glitterfly-Crisis",
-					"Miss M" = "miss-medical"
-					)
-
-/obj/item/robot_module/robot/medical/crisis/Initialize(mapload)
-	. = ..()
-	src.modules += new /obj/item/healthanalyzer(src)
-	src.modules += new /obj/item/reagent_scanner/adv(src)
-	src.modules += new /obj/item/roller_holder(src)
-	src.modules += new /obj/item/reagent_containers/borghypo/lost(src)
-	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)
-	src.modules += new /obj/item/reagent_containers/dropper/industrial(src)
-	src.modules += new /obj/item/reagent_containers/syringe(src)
-	src.modules += new /obj/item/gripper/no_use/organ(src)
-	src.modules += new /obj/item/gripper/medical(src)
-	src.modules += new /obj/item/shockpaddles/robot(src)
-	src.emag = new /obj/item/reagent_containers/spray(src)
-	src.emag.reagents.add_reagent("pacid", 250)
-	src.emag.name = "Polyacid spray"
-
-	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(15000)
-	synths += medicine
-
-	var/obj/item/stack/medical/advanced/ointment/O = new /obj/item/stack/medical/advanced/ointment(src)
-	var/obj/item/stack/medical/advanced/bruise_pack/B = new /obj/item/stack/medical/advanced/bruise_pack(src)
-	var/obj/item/stack/medical/splint/S = new /obj/item/stack/medical/splint(src)
-	O.uses_charge = 1
-	O.charge_costs = list(1000)
-	O.synths = list(medicine)
-	B.uses_charge = 1
-	B.charge_costs = list(1000)
-	B.synths = list(medicine)
-	S.uses_charge = 1
-	S.charge_costs = list(1000)
-	S.synths = list(medicine)
-	src.modules += O
-	src.modules += B
-	src.modules += S
-
-/obj/item/robot_module/robot/medical/crisis/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-
-	var/obj/item/reagent_containers/syringe/S = locate() in src.modules
-	if(S.mode == 2)
-		S.reagents.clear_reagents()
-		S.mode = initial(S.mode)
-		S.desc = initial(S.desc)
-		S.update_icon()
-
-	if(src.emag)
-		var/obj/item/reagent_containers/spray/PS = src.emag
-		PS.reagents.add_reagent("pacid", 2 * amount)
-
-	..()
+//Crisis module removed - 5/2/2021
 
 /obj/item/robot_module/robot/medihound
 	name = "MediHound module"
@@ -211,9 +148,12 @@
 
 	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(15000) // BEGIN CITADEL CHANGES - adds trauma kits to medihounds
 	synths += medicine
-
+	var/obj/item/stack/nanopaste/P = new /obj/item/stack/nanopaste(src)
 	var/obj/item/stack/medical/advanced/ointment/K = new /obj/item/stack/medical/advanced/ointment(src)
 	var/obj/item/stack/medical/advanced/bruise_pack/L = new /obj/item/stack/medical/advanced/bruise_pack(src)
+	P.uses_charge = 1
+	P.charge_costs = list(1000)
+	P.synths = list(medicine)
 	K.uses_charge = 1
 	K.charge_costs = list(1000)
 	K.synths = list(medicine)
@@ -221,7 +161,9 @@
 	L.charge_costs = list(1000)
 	L.synths = list(medicine)
 	src.modules += K
-	src.modules += L // END CITADEL CHANGES
+	src.modules += L 
+	src.modules += P 
+	// END CITADEL CHANGES
 
 	R.icon = 'icons/mob/widerobot_vr.dmi'
 	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
