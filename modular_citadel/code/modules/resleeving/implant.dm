@@ -1,3 +1,4 @@
+/*
 /obj/item/implant/backup
 	desc = "An implant that stores a copy of the brainwaves on a central server."
 
@@ -6,3 +7,4 @@
 
 /obj/item/storage/box/backup_kit
 	desc = "A standard Vey-Med case of backup implants."
+*/

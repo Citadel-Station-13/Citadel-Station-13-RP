@@ -5,14 +5,14 @@
 	req_tech = list(TECH_MATERIAL = 5, TECH_BIO = 5, TECH_DATA = 4, TECH_ENGINEERING = 4) //This is not an easy to make implant.
 	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 7000, "gold" = 2000, "diamond" = 3000)
 	build_path = /obj/item/implantcase/vrlanguage
-*/
+
 /datum/design/item/implant/backup
 	name = "Backup implant"
 	id = "implant_backup"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000)
 	build_path = /obj/item/implantcase/backup
-
+*/
 /datum/design/item/weapon/sizegun
 	name = "Size gun"
 	id = "sizegun"
@@ -28,7 +28,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
 	build_path = /obj/item/clothing/under/bluespace
 	sort_string = "TAAAC"
-
+/*
 /datum/design/item/sleevemate
 	name = "SleeveMate 3700"
 	id = "sleevemate"
@@ -43,7 +43,7 @@
 	req_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ILLEGAL = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
 	build_path = /obj/item/bodysnatcher
-
+*/
 /datum/design/item/item/pressureinterlock
 	name = "APP pressure interlock"
 	id = "pressureinterlock"

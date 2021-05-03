@@ -83,7 +83,7 @@ datum/design/item/general/laserpointer
 	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 2000, "uranium" = 2000)
 	build_path = /obj/item/gun/energy/sizegun
 	sort_string = "TAVAB"
-
+/*
 /datum/design/item/general/bodysnatcher
 	name = "Body Snatcher"
 	id = "bodysnatcher"
@@ -91,7 +91,7 @@ datum/design/item/general/laserpointer
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
 	build_path = /obj/item/bodysnatcher
 	sort_string = "TBVAA"
-
+*/
 /datum/design/item/general/inducer_sci
 	name = "Inducer (Scientific)"
 	id = "inducersci"

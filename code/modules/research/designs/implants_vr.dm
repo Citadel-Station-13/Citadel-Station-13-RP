@@ -1,3 +1,4 @@
+/*
 /datum/design/item/implant/backup
 	name = "Backup implant"
 	id = "implant_backup"
@@ -14,7 +15,7 @@
 	build_path = /obj/item/implanter/sizecontrol
 	sort_string = "MFAVB"
 
-/* Make language great again
+//Make language great again
 /datum/design/item/implant/language
 	name = "Language implant"
 	id = "implant_language"
