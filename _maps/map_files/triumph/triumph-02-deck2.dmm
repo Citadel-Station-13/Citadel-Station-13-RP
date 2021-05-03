@@ -4021,9 +4021,6 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -10716,9 +10713,6 @@
 	},
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
