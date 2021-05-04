@@ -53,6 +53,7 @@
 	blood_color = "#9066BD"
 	flesh_color = "#a3a593"
 	base_color = "#2e3302"
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
 
 	reagent_tag = IS_VOX
 

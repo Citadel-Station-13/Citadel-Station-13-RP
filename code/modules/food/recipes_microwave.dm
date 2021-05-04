@@ -1340,3 +1340,60 @@ I said no!
 		/obj/item/stack/rods
 	)
 	result = /obj/item/trash/rkibble
+
+//Goblin Food Goblin Food
+/datum/recipe/cavenuggets
+	fruit = list("mushroom" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meatball,
+		/obj/item/reagent_containers/food/snacks/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/spreads/butter
+	)
+	result = /obj/item/reagent_containers/food/snacks/cavenuggets
+
+/datum/recipe/diggerstew
+	fruit = list("carrot" = 1, "mushroom" = 1)
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/diggerstew
+
+/datum/recipe/diggerstew_pot
+	fruit = list("carrot" = 1, "potato" = 1, "mushroom" = 1)
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/diggerstew_pot
+
+/datum/recipe/full_goss
+	fruit = list("carrot" = 1, "mushroom" = 1)
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/friedegg,
+		/obj/item/reagent_containers/food/snacks/meat/grubmeat
+	)
+	result = /obj/item/reagent_containers/food/snacks/full_goss
+
+/datum/recipe/greenham
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/greenham
+
+/datum/recipe/greenhamandeggs
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/greenham
