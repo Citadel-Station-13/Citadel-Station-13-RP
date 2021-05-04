@@ -27,7 +27,6 @@
 			if(!(T in touched))
 				touched |= T
 				reagents.touch_turf(T)
-			var/mob/M
 			for(var/atom/movable/AM in T)
 				if(!isobj(AM) && !ismob(AM))
 					continue
