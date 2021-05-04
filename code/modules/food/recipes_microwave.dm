@@ -1373,7 +1373,6 @@ I said no!
 
 /datum/recipe/full_goss
 	fruit = list("carrot" = 1, "mushroom" = 1)
-	reagents = list("spacespice" = 2, "water" = 10)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/friedegg,
 		/obj/item/reagent_containers/food/snacks/meat/grubmeat
@@ -1397,3 +1396,10 @@ I said no!
 		/obj/item/reagent_containers/food/snacks/worm
 	)
 	result = /obj/item/reagent_containers/food/snacks/greenham
+
+/datum/recipe/voxjerky
+	reagents = list("sodiumchloride" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meat/vox
+	)
+	result = /obj/item/reagent_containers/food/snacks/voxjerky
