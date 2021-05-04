@@ -726,8 +726,7 @@
 	if(enabled)
 		chassis.visible_message("<span class='notice'>\The [chassis]'s [src] buzzes as its drone returns to port.</span>")
 		toggle_drone()
-	if(!isnull(Target))
-		Target = null
+	Target = null
 	if(MyBeam)
 		QDEL_NULL(MyBeam)
 
@@ -764,6 +763,10 @@
 			set_ready_state(1)
 			log_message("Deactivated.")
 			chassis.overlays -= drone_overlay
+
+/obj/item/mecha_parts/mecha_equipment/crisis_drone/action(var/mob/living/carbon/human/target)
+	. = ..()
+	Target = target
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/Topic(href, href_list)
 	..()
