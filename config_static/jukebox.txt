@@ -50,6 +50,16 @@
 "genre": "Arcade"
 },
 {
+"url": "https://files.catbox.moe/u5c95n.mp3",
+"title": "Coalescence",
+"duration": 3390,
+"artist": "Chris Christodoulou",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
 "url": "https://files.catbox.moe/4c0lmk.m4a",
 "title": "Dessert",
 "duration": 1840,
@@ -60,7 +70,7 @@
 "genre": "Arcade"
 },
 {
-"url": "https://files.catbox.moe/xus5a7.ogg",
+"url": "https://files.catbox.moe/mkjrt9.mp3",
 "title": "[ERR!ERR!012#%] E1M1 - At Doom's Gate",
 "duration": 1010,
 "artist": "Robert Prince",
@@ -116,6 +126,16 @@
 "title": "Welcome to VA-11 Hall-A",
 "duration": 1880,
 "artist": "Garoad",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Arcade"
+},
+{
+"url": "https://files.catbox.moe/q97myf.mp3",
+"title": "Vitality",
+"duration": 1370,
+"artist": "Mittsies",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -1736,7 +1756,7 @@
 "lobby": true,
 "jukebox": true,
 "genre": "Electronic"
-}, 
+},
 {
 "url": "https://files.catbox.moe/qxadpn.m4a",
 "title": "Turbo Killer",
@@ -1778,6 +1798,17 @@
 "genre": "Electronic"
 },
 {
+"url": "https://files.catbox.moe/fw803f.mp3",
+"title": "[ER%*] Welcome To The Cum Zone",
+"duration": 1570,
+"artist": "OblivionFall",
+"secret": false,
+"emag": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
 "url": "https://files.catbox.moe/mefmj3.m4a",
 "title": "WeMoveForward",
 "duration": 4870,
@@ -1803,6 +1834,17 @@
 "duration": 2700,
 "artist": "Haddaway",
 "secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/b9yko5.mp3",
+"title": "[ERR-Cu*] Your Cum Won't Last",
+"duration": 2000,
+"artist": "OblivionFall",
+"secret": false,
+"emag":true,
 "lobby": false,
 "jukebox": true,
 "genre": "Electronic"
@@ -1888,6 +1930,16 @@
 "genre": "Folk and Indie"
 },
 {
+"url": "https://files.catbox.moe/jka0a6.mp3",
+"title": "Far Away",
+"duration": 1850,
+"artist": "EASHA",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
 "url": "https://files.catbox.moe/yfg6if.m4a",
 "title": "Far Away",
 "duration": 2810,
@@ -1932,6 +1984,16 @@
 "title": "Honey, There's No Time",
 "duration": 2610,
 "artist": "Feng Suave",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/6or7s1.mp3",
+"title": "Hush",
+"duration": 1810,
+"artist": "The Marias",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -2002,6 +2064,16 @@
 "title": "Rock On Rockall",
 "duration": 1740,
 "artist": "The Wolfe Tones",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Folk and Indie"
+},
+{
+"url": "https://files.catbox.moe/zsla19.mp3",
+"title": "Rocky",
+"duration": 1670,
+"artist": "Still Woozy",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -2460,7 +2532,7 @@
 "lobby": true,
 "jukebox": false,
 "genre": "Jazz and Lounge"
-}, 
+},
 {
 "url": "https://files.catbox.moe/rze7qx.m4a",
 "title": "(I Always Kill) The Things I Love",
@@ -3406,6 +3478,16 @@
 "title": "As Long as You Love Me",
 "duration": 2140,
 "artist": "Backstreet Boys",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Pop"
+},
+{
+"url": "https://files.catbox.moe/g5s0aq.mp3",
+"title": "Baby I'm Yours",
+"duration": 2150,
+"artist": "Breakbot ",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -4898,6 +4980,17 @@
 "genre": "Rock"
 },
 {
+"url": "https://files.catbox.moe/xuollf.mp3",
+"title": "In The Zone",
+"duration": 3000,
+"artist": "Ken Ashcorp",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
 "url": "https://files.catbox.moe/si6d9p.m4a",
 "title": "Is This Love",
 "duration": 2840,
@@ -5589,6 +5682,16 @@
 "title": "ばかみたい (Bakamitai)",
 "duration": 2910,
 "artist": "Kazuma Kiryuu",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Sol Common Precursors"
+},
+{
+"url": "https://files.catbox.moe/4otqsl.mp3",
+"title": "タイニーリトルアシアンタム (Tiny Little Adiantum)",
+"duration": 3510,
+"artist": "Shibayan",
 "secret": false,
 "lobby": false,
 "jukebox": true,
