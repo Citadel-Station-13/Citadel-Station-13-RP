@@ -492,8 +492,6 @@
 		to_chat(user,"<span class='notice'>You store \the [C] in \the [src].</span>")
 		return
 
-	return ..()
-
 /obj/machinery/transhuman/resleever/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
 		return 0 //not a mob
@@ -573,9 +571,9 @@
 		occupant.name = occupant.real_name
 		occupant.dna.real_name = occupant.real_name
 
-	//Give them a backup implant
-	var/obj/item/implant/backup/new_imp = new()
-	if(new_imp.handle_implant(occupant, BP_HEAD))
+	//Give them a mirror
+	var/obj/item/implant/mirror/new_imp = new()
+	if(new_imp.handle_implant(occupant, BP_TORSO))
 		new_imp.post_implant(occupant)
 
 	//Inform them and make them a little dizzy.

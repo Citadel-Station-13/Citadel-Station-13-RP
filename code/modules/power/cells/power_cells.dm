@@ -86,6 +86,7 @@
 	maxcharge = 10000
 	matter = null
 	self_recharge = TRUE
+	charge_amount = 750
 
 //Not actually a cell, but if people look for it, they'll probably look near other cells
 /obj/item/fbp_backup_cell
