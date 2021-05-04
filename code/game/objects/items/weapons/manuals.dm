@@ -12,7 +12,7 @@
 	title = "Station Repairs and Construction"
 
 /obj/item/book/manual/engineering_construction/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -33,7 +33,7 @@
 	title = "Particle Accelerator User's Guide"
 
 /obj/item/book/manual/engineering_particle_accelerator/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -80,7 +80,7 @@
 	title = "Supermatter Engine Operating Manual"
 
 /obj/item/book/manual/supermatter_engine/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -232,7 +232,7 @@
 	title = "R-UST Operating Manual"
 
 /obj/item/book/manual/rust_engine/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -247,14 +247,13 @@
 				<body>
 				<br><br>
 				<ol>
-				<li>Put uranium in the portable generator near the gyrotron and turn it to full. This is to provide initial power to the core.</li>
-				<li>Enable and max output on the SMES in the engine room. This is to power the gyrotron.</li>
-				<li>Go into the control room, interact with the fusion core control console. Turn the field on and raise size to 501. Any bigger and it will start EMPing the doors. Any smaller and the fuel pellets might miss.</li>
-				<li>Interact with the gyrotron control computer, set power as high as the SMES can support, usually around 4, and turn it on. This will start increasing the plasma temperature to the point where reactions can occur.</li>
-				<li>Go into the engine room and insert a deuterium fuel assembly and a tritium fuel assembly into two of the fuel injectors. You can make deuterium rods in the fuel compressor if you want to play it safe.</li>
-				<li>Go back to the control room and turn the fuel injectors on. This will start firing pellets into the field.</li>
-				<li>Wait for reactions to start (plasma temperature will spike and fuel amounts will drop). Turn the gyrotron power down until it's keeping up with field instability. This will prevent cumulative instability from the deuterium-tritium reaction fucking up the field. If you're using straight deuterium instability isn't a problem and you can turn the gyrotron off.</li>
-				<li>Configure the SMES, turn the PACMAN off before it explodes.</li>
+				<li>Enable and max output and input on the SMES in the engine room. This is to power the gyrotrons and pumps.</li>
+				<li>Go into the control room, interact with the fusion core control console. Raise the field size to 201 and turn it on. Any smaller will cause the gyrotrons to blast out the walls. Bigger than 500 will cause the field to immediately fail.</li>
+				<li>Interact with the gyrotron control computer and set all the gyrotrons power and timing to 1.</li>
+				<li>Go into the engine room and insert a deuterium fuel assembly and a tritium fuel assembly into two of the fuel injectors. You can make these in the fuel compressor.</li>
+				<li>Go back to the control room and turn the fuel injectors on. This will start firing pellets into the field. Ensure the field and the gyrotrons are already running!</li>
+				<li>Wait for reactions to start (plasma temperature will spike and fuel amounts will drop).</li>
+				<li>Insert all the phoron into the cold loop, and every other gas into the hot loop. Make sure the RUS-T is stable before inserting other gasses! It will release phoron when shut off!</li>
 				</ol>
 				<br>
 				<b>NOTES FOR NEWBIES</b>
@@ -272,7 +271,7 @@
 	title = "Hacking"
 
 /obj/item/book/manual/engineering_hacking/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -829,7 +828,7 @@
 	title = "Corporate Regulations"
 
 /obj/item/book/manual/security_space_law/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -853,7 +852,7 @@
 	title = "Medical Diagnostics Manual"
 
 /obj/item/book/manual/medical_diagnostics_manual/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -900,7 +899,7 @@
 	title = "Engineering Textbook"
 
 /obj/item/book/manual/engineering_guide/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -1365,7 +1364,7 @@
 	title = "Standard Operating Procedure"
 
 /obj/item/book/manual/standard_operating_procedure/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -1387,7 +1386,7 @@
 	title = "Corporate Regulations"
 
 /obj/item/book/manual/command_guide/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"
 
 		<html><head>
@@ -1408,7 +1407,7 @@
 	title = "The Humanized Mice"
 
 /obj/item/book/manual/the_humanized_mice/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1469,7 +1468,7 @@
 	title = "SOP Volume 1: Alert Levels"
 
 /obj/item/book/manual/legal/sop_vol1/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1578,7 +1577,7 @@
 	title = "SOP Volume 2: Emergency Situations Protocol"
 
 /obj/item/book/manual/legal/sop_vol2/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1760,7 +1759,7 @@
 	title = "SOP Volume 3: Legal Clauses"
 
 /obj/item/book/manual/legal/sop_vol3/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1831,7 +1830,7 @@
 	title = "SOP Volume 4: Courtesy Procedures"
 
 /obj/item/book/manual/legal/sop_vol4/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1897,7 +1896,7 @@
 	title = "SOP Volume 5.1: Department Regulations (Cargo)"
 
 /obj/item/book/manual/legal/sop_vol5_1/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -1973,7 +1972,7 @@
 	title = "SOP Volume 5.2: Department Regulations (Engineering)"
 
 /obj/item/book/manual/legal/sop_vol5_2/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2054,7 +2053,7 @@
 	title = "SOP Volume 5.3: Department Regulations (Medical)"
 
 /obj/item/book/manual/legal/sop_vol5_3/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2227,7 +2226,7 @@
 	title = "SOP Volume 5.4: Department Regulations (Research)"
 
 /obj/item/book/manual/legal/sop_vol5_4/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2344,7 +2343,7 @@
 	title = "SOP Volume 5.5: Department Regulations (Security)"
 
 /obj/item/book/manual/legal/sop_vol5_5/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2598,7 +2597,7 @@
 	title = "SOP Volume 5.6: Department Regulations (Command)"
 
 /obj/item/book/manual/legal/sop_vol5_6/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2665,7 +2664,7 @@
 	title = "SOP Volume 5.7: Department Regulations (Internal Affairs)"
 
 /obj/item/book/manual/legal/sop_vol5_7/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2801,7 +2800,7 @@
 	title = "Corporate Regulations Volume 1: Introduction"
 
 /obj/item/book/manual/legal/cr_vol1/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -2934,7 +2933,7 @@
 	title = "Corporate Regulations Volume 2: Infractions (Low)"
 
 /obj/item/book/manual/legal/cr_vol2/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3192,7 +3191,7 @@
 	title = "Corporate Regulations Volume 3: Infractions (Moderate)"
 
 /obj/item/book/manual/legal/cr_vol3/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3390,7 +3389,7 @@
 	title = "Corporate Regulations Volume 4: Infractions (Severe)"
 
 /obj/item/book/manual/legal/cr_vol4/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>
@@ -3515,7 +3514,7 @@
 	title = "Corporate Regulations Volume 5: Supplementals"
 
 /obj/item/book/manual/legal/cr_vol5/Initialize(mapload)
-	..()
+	. = ..()
 	dat = {"<html>
 				<head>
 				<style>

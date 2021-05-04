@@ -78,6 +78,9 @@
 
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
+	
+	/// makes this dumb as fuck mechanic slightly less awful - records queued syringe infections instead of a spawn()
+	var/syringe_infection_queued
 
 /obj/item/organ/external/Destroy()
 
@@ -1378,3 +1381,15 @@ Note that amputating the affected organ does in fact remove the infection from t
 						covering_clothing |= bling
 
 	return covering_clothing
+
+/obj/item/organ/external/proc/queue_syringe_infection()
+	if(!syringe_infection_queued)
+		syringe_infection_queued = 100
+		addtimer(CALLBACK(src, .proc/do_syringe_infection), rand(5, 10) MINUTES)
+	else
+		syringe_infection_queued = clamp(syringe_infection_queued + 10, 0, 300)
+
+/obj/item/organ/external/proc/do_syringe_infection()
+	if(germ_level < syringe_infection_queued)
+		germ_level = syringe_infection_queued
+	syringe_infection_queued = null

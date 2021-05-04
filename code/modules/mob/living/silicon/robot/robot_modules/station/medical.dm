@@ -175,7 +175,7 @@
 	src.modules += new /obj/item/healthanalyzer(src) // See who's hurt specificially.
 	src.modules += new /obj/item/reagent_containers/syringe(src) //In case the chemist is nice!
 	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)//For holding the chemicals when the chemist is nice
-	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
+	// src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
 	src.modules += new /obj/item/shockpaddles/robot/hound(src) //Paws of life
 	src.emag 	 = new /obj/item/dogborg/pounce(src) //Pounce
 
@@ -227,4 +227,3 @@
 	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-med"
-	..()

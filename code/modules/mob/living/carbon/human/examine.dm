@@ -272,6 +272,9 @@
 		else*/
 		. += "[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id]."
 
+	if(istype(src, /mob/living/carbon/human/dummy))
+		. += "[T.He] [T.is] strangely life like. You feel uneasy staring at [T.him] for too long."
+
 	//Jitters
 	if(is_jittery)
 		if(jitteriness >= 300)
@@ -323,12 +326,14 @@
 					to_chat(user, "<span class='deadsay'>[T.He] [T.has] a pulse!</span>")
 
 	if(fire_stacks)
-		. += "[T.He] [T.is] covered in some liquid."
+		. += "[T.He] [T.is] soaking wet."
 	if(on_fire)
 		. += "<span class='warning'>[T.He] [T.is] on fire!.</span>"
 
 	var/ssd_msg = species.get_ssd(src)
 	if(ssd_msg && (!should_have_organ("brain") || has_brain()) && stat != DEAD)
+		if(istype(src, /mob/living/carbon/human/dummy)) // mannequins arent asleep
+			return
 		if(!key)
 			. += "<span class='deadsay'>[T.He] [T.is] [ssd_msg]. It doesn't look like [T.he] [T.is] waking up anytime soon.</span>"
 		else if(!client)

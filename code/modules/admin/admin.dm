@@ -1096,6 +1096,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 	for(var/path in types)
 		if(findtext("[path]", object))
+			CHECK_TICK
 			matches += path
 
 	if(matches.len==0)
@@ -1108,7 +1109,6 @@ var/datum/announcement/minor/admin_min_announcer = new
 		chosen = input("Select an atom type", "Spawn Atom", matches[1]) as null|anything in matches
 		if(!chosen)
 			return
-
 	if(ispath(chosen,/turf))
 		var/turf/T = get_turf(usr.loc)
 		T.ChangeTurf(chosen)

@@ -382,6 +382,13 @@
 	icon_state = "elfs"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+	
+/datum/sprite_accessory/ears/floppyelf
+	name = "floppy elven ears"
+	desc = ""
+	icon_state = "floppy-elf"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/ears/sleek
 	name = "sleek ears"
@@ -1019,6 +1026,10 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	var/clip_mask_state = null //Icon state to generate clip mask. Clip mask is used to 'clip' off the lower part of clothing such as jumpsuits & full suits.
 	var/icon/clip_mask = null //Instantiated clip mask of given icon and state
 
+	//Loafing vars
+	var/can_loaf = FALSE
+	var/loaf_offset = 0
+
 /datum/sprite_accessory/tail/New()
 	. = ..()
 	if(clip_mask_icon && clip_mask_state)
@@ -1363,6 +1374,16 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	extra_overlay = "tamamo-kitsunetails-tips"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/foxtail
+	name = "Fox"
+	desc = ""	//leaving this just in case i break something if i just don't include a blank description because this codebase is akin to a house of cards
+	icon_state = "foxtail_but_good"
+	extra_overlay = "foxtail_but_good-tips"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+	ani_state = "foxtail_but_good_w"
+	extra_overlay_w = "foxtail_but_good-tips_w"
 
 /datum/sprite_accessory/tail/triple_kitsune
 	name = "Triple Kitsune Tails"

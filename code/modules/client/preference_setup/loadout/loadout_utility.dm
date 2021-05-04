@@ -107,12 +107,6 @@
 	slot = "implant"
 	exploitable = 0
 
-/datum/gear/utility/implant/backup
-	display_name= "Implant - Mind Backup"
-	slot = "implant"
-	cost = 2
-	path = /obj/item/implant/backup
-
 /datum/gear/utility/implant/tracking
 	display_name = "Implant - Tracking"
 	slot = "implant"

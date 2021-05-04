@@ -39,12 +39,6 @@
 	icon_state = "armorsec"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 
-/obj/item/clothing/suit/armor/vest/capcarapace
-	name = "captain's carapace"
-	desc = "A fireproof, armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
-	icon_state = "capcarapace"
-	armor = list(melee = 50, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
-
 /obj/item/clothing/suit/armor/riot
 	name = "riot vest"
 	desc = "A vest with heavy padding to protect against melee attacks."
@@ -463,6 +457,12 @@
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	slowdown = 0
+
+/obj/item/clothing/suit/storage/vest/capcarapace
+	name = "captain's carapace"
+	desc = "A fireproof, armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
+	icon_state = "capcarapace"
+	armor = list(melee = 50, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
 
 //All of the armor below is mostly unused
 

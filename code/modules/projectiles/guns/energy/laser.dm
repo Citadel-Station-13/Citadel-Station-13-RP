@@ -287,7 +287,7 @@
 
 /obj/item/gun/energy/zip
 	name = "Zip-Las"
-	desc = "A homemade (and somehow safe) laser gun deisgined around shooting single powerful laser beam draining the cell entirely. Better not miss and better have spare cells."
+	desc = "A homemade (and somehow safe) laser gun designed around shooting single powerful laser beam draining the cell entirely. Better not miss and better have spare cells."
 	icon_state = "ziplas"
 	item_state = "ziplas"
 	w_class = ITEMSIZE_SMALL

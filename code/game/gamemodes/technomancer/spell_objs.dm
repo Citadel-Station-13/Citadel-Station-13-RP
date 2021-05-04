@@ -285,9 +285,8 @@
 // Parameters: 0
 // Description: Deletes the spell object immediately.
 /obj/item/spell/dropped()
-	spawn(1)
-		if(src)
-			qdel(src)
+	. = ..()
+	qdel(src)
 
 // Proc: throw_impact()
 // Parameters: 1 (hit_atom - the atom that got hit by the spell as it was thrown)

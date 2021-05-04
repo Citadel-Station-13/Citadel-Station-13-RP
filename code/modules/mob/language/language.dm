@@ -154,10 +154,10 @@
 /datum/language/proc/get_spoken_verb(var/msg_end)
 	switch(msg_end)
 		if("!")
-			return exclaim_verb
+			return pick(exclaim_verb)
 		if("?")
-			return ask_verb
-	return speech_verb
+			return pick(ask_verb)
+	return pick(speech_verb)
 
 /datum/language/proc/can_speak_special(var/mob/speaker)
 	. = TRUE

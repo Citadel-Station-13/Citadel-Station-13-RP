@@ -1,8 +1,8 @@
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
-
 	var/datum/gender/T = gender_datums[get_visible_gender()]
-
+	if(istype(src, /mob/living/carbon/human/dummy))
+		return
 	if (findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		param = copytext(act, t1 + 1, length(act) + 1)
@@ -226,16 +226,7 @@
 			m_type = 1
 
 		if ("chuckle")
-			if(miming)
-				message = "appears to chuckle."
-				m_type = 1
-			else
-				if (!muzzled)
-					message = "chuckles."
-					m_type = 2
-				else
-					message = "makes a noise."
-					m_type = 2
+			emote("laugh")
 
 		if ("twitch")
 			message = "twitches."
@@ -409,7 +400,18 @@
 				m_type = 1
 			else
 				if (!muzzled)
-					message = "laughs."
+					var/list/laughs = list("lets out a chuckle.", "laughs.", "chuckles.", "cracks up.", "erupts into laughter.", "cackles.")
+					message = "[pick(laughs)]"
+					if(!spam_flag)
+						if(get_gender() == MALE)
+							var/list/laughsounds = list('modular_citadel/sound/voice/laughs/masclaugh1.ogg', 'modular_citadel/sound/voice/laughs/masclaugh2.ogg')
+							playsound(loc, pick(laughsounds), 50, 1, -1)
+							spam_flag = TRUE
+							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+						else
+							playsound(loc, 'modular_citadel/sound/voice/laughs/femlaugh.ogg', 50, 1, -1)
+							spam_flag = TRUE
+							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 					m_type = 2
 				else
 					message = "makes a noise."
@@ -725,12 +727,17 @@
 				if(!muzzled)
 					message = "[species.scream_verb]!"
 					m_type = 2
-					// Citchange. Re-enabled for species that do have a defined scream sound. If a species lacks it, no sound will be played.
 					if(get_gender() == FEMALE)
-						playsound(loc, "[species.female_scream_sound]", 80, 1)
-					else
-						playsound(loc, "[species.male_scream_sound]", 80, 1) //default to male screams if no gender is present.
+						if(!spam_flag)
+							playsound(loc, "[pick(species.female_scream_sound)]", 80, 1)
+							spam_flag = TRUE
+							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 
+					else
+						if(!spam_flag)
+							playsound(loc, "[pick(species.male_scream_sound)]", 80, 1) //default to male screams if no gender is present.
+							spam_flag = TRUE
+							addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 				else
 					message = "makes a very loud noise."
 					m_type = 2
@@ -807,7 +814,7 @@
 				message = "makes a light spitting noise, a poor attempt at a whistle."
 
 		if ("help")
-			to_chat(src, "awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
+			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \
 					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
 					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
@@ -818,6 +825,10 @@
 
 	if (message)
 		custom_emote(m_type,message)
+
+
+
+
 
 /mob/living/carbon/human/verb/pose()
 	set name = "Set Pose"
@@ -896,6 +907,15 @@
 			message = "lets out a nya."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/nya.ogg', 50, 1, -1)
+		if ("nyaha")
+			if(!spam_flag)
+				var/list/catlaugh = list('modular_citadel/sound/voice/catpeople/nyaha.ogg', 'modular_citadel/sound/voice/catpeople/nyahaha1.ogg', 'modular_citadel/sound/voice/catpeople/nyahaha2.ogg', 'modular_citadel/sound/voice/catpeople/nyahehe.ogg')
+				playsound(loc, pick(catlaugh), 50, 1, -1)
+				spam_flag = TRUE
+				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+			var/list/laughs = list("laughs deviously.", "lets out a catty laugh.", "nya ha ha's.")
+			message = "[pick(laughs)]"
+			m_type = 2
 		if ("peep")
 			message = "peeps like a bird."
 			m_type = 2
@@ -945,12 +965,22 @@
 			message = "purrs softly."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
-
+		if ("clak")
+			if(!spam_flag)
+				var/msg = list("<font color='grey' size='2'>CLAKS!</font>", "claks!")
+				message = "[pick(msg)]"
+				playsound(loc, 'modular_citadel/sound/spooky/boneclak.ogg', 50, 1, 1)
+				spam_flag = TRUE
+				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+			m_type = 2
 	if (message)
 		custom_emote(m_type,message)
 		return 1
 
 	return 0
+
+/mob/living/carbon/human/proc/spam_flag_false() //used for addtimer
+	spam_flag = FALSE
 
 /mob/living/carbon/human/proc/toggle_tail_vr(var/setting,var/message = 0)
 	if(!tail_style || !tail_style.ani_state)

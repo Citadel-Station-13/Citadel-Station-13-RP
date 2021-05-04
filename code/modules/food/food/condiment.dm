@@ -397,7 +397,7 @@
 	return
 
 /obj/item/reagent_containers/food/condiment/flour/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("flour", 200)
 	src.pixel_x = rand(-10.0, 10)
 	src.pixel_y = rand(-10.0, 10)
@@ -415,5 +415,5 @@
 	return
 
 /obj/item/reagent_containers/food/condiment/spacespice/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("spacespice", 40)

@@ -34,3 +34,4 @@
 	src.modules += new /obj/item/mining_scanner(src)
 	src.emag = new /obj/item/pickaxe/plasmacutter(src)
 	src.emag = new /obj/item/pickaxe/diamonddrill(src)
+	src.emag = new /obj/item/melee/disruptor/borg(src)

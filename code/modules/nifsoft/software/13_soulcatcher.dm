@@ -430,6 +430,9 @@
 
 	to_chat(src,"<span class='warning'>There's no way out! You're stuck in VR.</span>")
 
+/mob/living/carbon/brain/caught_soul/set_typing_indicator(state)
+	return eyeobj?.set_typing_indicator(state)
+
 ///////////////////
 //A projected AR soul thing
 /mob/observer/eye/ar_soul
@@ -454,14 +457,24 @@
 
 	//Time to play dressup
 	if(brainmob.client.prefs)
-		var/mob/living/carbon/human/dummy/dummy = new ()
+		var/mob/living/carbon/human/dummy/dummy = new
 		brainmob.client.prefs.dress_preview_mob(dummy)
-		sleep(1 SECOND) //Strange bug in preview code? Without this, certain things won't show up. Yay race conditions?
 		dummy.regenerate_icons()
-
-		var/icon/new_icon = getHologramIcon(getCompoundIcon(dummy))
+		var/image/alpha_mask = new
+		alpha_mask.icon = 'icons/effects/effects.dmi'
+		alpha_mask.icon_state = "scanline"
+		alpha_mask.layer = FLY_LAYER
+		alpha_mask.blend_mode = BLEND_SUBTRACT
+		alpha_mask.color = list(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,1,1,1,1)
+		dummy.add_overlay(alpha_mask)
+		COMPILE_OVERLAYS(dummy)
+		dummy.alpha = 192
+		
+		// remove hudlist
+		dummy.overlays -= dummy.hud_list
+		// appearance clone immediately
+		appearance = dummy.appearance
 		qdel(dummy)
-		icon = new_icon
 
 /mob/observer/eye/ar_soul/Destroy()
 	if(parent_human) //It's POSSIBLE they've been deleted before the NIF somehow

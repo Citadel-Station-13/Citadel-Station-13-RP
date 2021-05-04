@@ -275,6 +275,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 
 
+
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
 /mob/proc/fully_replace_character_name(var/oldname,var/newname)
@@ -295,7 +296,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 					break
 
 		//update our pda and id if we have them on our person
-		var/list/searching = GetAllContents(searchDepth = 3)
+		var/list/searching = GetAllContents()
 		var/search_id = 1
 		var/search_pda = 1
 
@@ -588,16 +589,44 @@ proc/GaussRand(var/sigma)
 proc/GaussRandRound(var/sigma,var/roundto)
 	return round(GaussRand(sigma),roundto)
 
-//Will return the contents of an atom recursivly to a depth of 'searchDepth'
-/atom/proc/GetAllContents(searchDepth = 5)
-	var/list/toReturn = list()
+/*
+	Gets all contents of contents and returns them all in a list.
+*/
 
-	for(var/atom/part in contents)
-		toReturn += part
-		if(part.contents.len && searchDepth)
-			toReturn += part.GetAllContents(searchDepth - 1)
+/atom/proc/GetAllContents(var/T)
+	var/list/processing_list = list(src)
+	var/i = 0
+	var/lim = 1
+	if(T)
+		. = list()
+		while(i < lim)
+			var/atom/A = processing_list[++i]
+			//Byond does not allow things to be in multiple contents, or double parent-child hierarchies, so only += is needed
+			//This is also why we don't need to check against assembled as we go along
+			processing_list += A.contents
+			lim = processing_list.len
+			if(istype(A,T))
+				. += A
+	else
+		while(i < lim)
+			var/atom/A = processing_list[++i]
+			processing_list += A.contents
+			lim = processing_list.len
+		return processing_list
 
-	return toReturn
+/atom/proc/GetAllContentsIgnoring(list/ignore_typecache)
+	if(!length(ignore_typecache))
+		return GetAllContents()
+	var/list/processing = list(src)
+	. = list()
+	var/i = 0
+	var/lim = 1
+	while(i < lim)
+		var/atom/A = processing[++i]
+		if(!ignore_typecache[A.type])
+			processing += A.contents
+			lim = processing.len
+			. += A
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
 /proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
@@ -1394,3 +1423,61 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	animate(src, pixel_x = pixel_x + shiftx, pixel_y = pixel_y + shifty, time = 0.2, loop = duration)
 	pixel_x = initialpixelx
 	pixel_y = initialpixely
+
+//VR FILE MERGE
+/*
+	get_holder_at_turf_level(): Similar to get_turf(), will return the "highest up" holder of this atom, excluding the turf.
+	Example: A fork inside a box inside a locker will return the locker. Essentially, get_just_before_turf().
+*/ //Credit to /vg/
+/proc/get_holder_at_turf_level(const/atom/movable/O)
+	if(!istype(O)) //atom/movable does not include areas
+		return
+	var/atom/A
+	for(A=O, A && !isturf(A.loc), A=A.loc);  // semicolon is for the empty statement
+	return A
+
+/proc/get_safe_ventcrawl_target(var/obj/machinery/atmospherics/unary/vent_pump/start_vent)
+	if(!start_vent.network || !start_vent.network.normal_members.len)
+		return
+	var/list/vent_list = list()
+	for(var/obj/machinery/atmospherics/unary/vent_pump/vent in start_vent.network.normal_members)
+		if(vent == start_vent)
+			continue
+		if(vent.welded)
+			continue
+		if(istype(get_area(vent), /area/crew_quarters/sleep)) //No going to dorms
+			continue
+		vent_list += vent
+	if(!vent_list.len)
+		return
+	return pick(vent_list)
+
+/proc/split_into_3(var/total)
+	if(!total || !isnum(total))
+		return
+
+	var/part1 = rand(0,total)
+	var/part2 = rand(0,total)
+	var/part3 = total-(part1+part2)
+
+	if(part3<0)
+		part1 = total-part1
+		part2 = total-part2
+		part3 = -part3
+
+	return list(part1, part2, part3)
+
+//Sender is optional
+/proc/admin_chat_message(var/message = "Debug Message", var/color = "#FFFFFF", var/sender)
+	if(message)	//CITADEL CHANGE - adds TGS3 integration to those fancy verbose round event messages
+		world.TgsTargetedChatBroadcast(message, TRUE)	//CITADEL CHANGE - ditto
+	if (!config_legacy.chat_webhook_url || !message)
+		return
+	spawn(0)
+		var/query_string = "type=adminalert"
+		query_string += "&key=[url_encode(config_legacy.chat_webhook_key)]"
+		query_string += "&msg=[url_encode(message)]"
+		query_string += "&color=[url_encode(color)]"
+		if(sender)
+			query_string += "&from=[url_encode(sender)]"
+		world.Export("[config_legacy.chat_webhook_url]?[query_string]")

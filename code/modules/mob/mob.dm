@@ -240,6 +240,14 @@
 		return
 
 	face_atom(A)
+	if(!isobserver(src) && !isturf(A) && A != src)
+		if(A.loc != src)
+			for(var/mob/M in viewers(4, src))
+				if(M == src || M.is_blind())
+					continue
+				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
+					to_chat(M, "<span class='tinynotice'><b>\The [src]</b> looks at \the [A].</span>")
+
 	var/list/result
 	if(client)
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
@@ -464,6 +472,7 @@
 	set category = "OOC"
 	var/is_admin = 0
 
+	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
 	if(client.holder && (client.holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
@@ -477,7 +486,7 @@
 	var/list/namecounts = list()
 	var/list/creatures = list()
 
-	for(var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
+	/*for(var/obj/O in world)				//EWWWWWWWWWWWWWWWWWWWWWWWW ~needs to be optimised
 		if(!O.loc)
 			continue
 		if(istype(O, /obj/item/disk/nuclear))
@@ -499,7 +508,7 @@
 				names.Add(name)
 				namecounts[name] = 1
 			creatures[name] = O
-
+	*/
 	for(var/mob/M in sortList(GLOB.mob_list))
 		var/name = M.name
 		if (names.Find(name))
@@ -1183,3 +1192,26 @@ mob/proc/yank_out_object()
 		return
 
 	to_chat(src, "<span class='notice'>Diceroll result: <b>[rand(1, n)]</b></span>")
+
+/**
+ * Checks for anti magic sources.
+ *
+ * @params
+ * - magic - wizard-type magic
+ * - holy - cult-type magic, stuff chaplains/nullrods/similar should be countering
+ * - chargecost - charges to remove from antimagic if applicable/not a permanent source
+ * - self - check if the antimagic is ourselves
+ *
+ * @return The datum source of the antimagic
+ */
+/mob/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
+	if(!magic && !holy)
+		return
+	var/list/protection_sources = list()
+	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, chargecost, self, protection_sources) & COMPONENT_BLOCK_MAGIC)
+		if(protection_sources.len)
+			return pick(protection_sources)
+		else
+			return src
+	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
+		return src

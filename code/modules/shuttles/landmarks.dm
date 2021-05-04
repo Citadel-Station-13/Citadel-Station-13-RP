@@ -137,7 +137,7 @@
 	var/radius = 10
 
 /obj/effect/shuttle_landmark/automatic/clearing/Initialize(mapload)
-	..()
+	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/effect/shuttle_landmark/automatic/clearing/LateInitialize()

@@ -394,8 +394,7 @@
 		new_material = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name(new_material)
 	if(!istype(material))
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL
 	name = "[material.display_name] bracelet"
 	desc = "A bracelet made from [material.display_name]."
 	color = material.icon_colour
@@ -404,33 +403,31 @@
 	return material
 
 /obj/item/clothing/accessory/bracelet/material/wood/Initialize(mapload, material_key)
-	..(mapload, "wood")
+	return ..(mapload, "wood")
 
 /obj/item/clothing/accessory/bracelet/material/plastic/Initialize(mapload, material_key)
-	..(mapload, "plastic")
+	return ..(mapload, "plastic")
 
 /obj/item/clothing/accessory/bracelet/material/iron/Initialize(mapload, material_key)
-	..(mapload, "iron")
+	return ..(mapload, "iron")
 
 /obj/item/clothing/accessory/bracelet/material/steel/Initialize(mapload, material_key)
-	..(mapload, "steel")
+	return ..(mapload, "steel")
 
 /obj/item/clothing/accessory/bracelet/material/silver/Initialize(mapload, material_key)
-	..(mapload, "silver")
+	return ..(mapload, "silver")
 
 /obj/item/clothing/accessory/bracelet/material/gold/Initialize(mapload, material_key)
-	..(mapload, "gold")
+	return ..(mapload, "gold")
 
 /obj/item/clothing/accessory/bracelet/material/platinum/Initialize(mapload, material_key)
-	..(mapload, "platinum")
+	return ..(mapload, "platinum")
 
 /obj/item/clothing/accessory/bracelet/material/phoron/Initialize(mapload, material_key)
-	..(mapload, "phoron")
+	return ..(mapload, "phoron")
 
 /obj/item/clothing/accessory/bracelet/material/glass/Initialize(mapload, material_key)
-	..(mapload, "glass")
-
-	..()
+	return ..(mapload, "glass")
 
 /obj/item/clothing/accessory/halfcape
 	name = "half cape"
@@ -538,6 +535,7 @@
 	..(S, user)
 
 /obj/item/clothing/accessory/collar/dropped()
+	. = ..()
 	icon_override = icon_previous_override
 //ywedit end
 
@@ -591,7 +589,7 @@
 	var/datum/radio_frequency/radio_connection
 
 /obj/item/clothing/accessory/collar/shock/Initialize(mapload)
-	..()
+	. = ..()
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT) // Makes it so you don't need to change the frequency off of default for it to work.
 
 /obj/item/clothing/accessory/collar/shock/Destroy() //Clean up your toys when you're done.

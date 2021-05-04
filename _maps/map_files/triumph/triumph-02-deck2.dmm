@@ -283,7 +283,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "aQ" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -328,6 +328,13 @@
 /obj/item/deck/cards,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
+	},
+/obj/machinery/light,
+/obj/item/deck/unus{
+	pixel_x = 7
+	},
+/obj/item/deck/cah{
+	pixel_x = -8
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -430,7 +437,7 @@
 "bj" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "bl" = (
 /turf/simulated/wall/r_wall,
 /area/triumph/surfacebase/bar_backroom)
@@ -1124,7 +1131,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "dH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -1743,9 +1750,6 @@
 "fj" = (
 /obj/structure/coatrack,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/machinery/alarm{
-	pixel_y = 22
-	},
 /obj/machinery/button/remote/airlock{
 	id = "Dressroom";
 	name = "Dressroom lock";
@@ -1754,7 +1758,7 @@
 	specialfunctions = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/vacant/vacant_site)
+/area/vacant/vacant_shop)
 "fk" = (
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
@@ -2041,9 +2045,6 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
 "fW" = (
@@ -2321,7 +2322,7 @@
 	pixel_x = -23
 	},
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "gI" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plating,
@@ -2332,7 +2333,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "gK" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2810,17 +2811,8 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/item/stool/padded,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/vacant/vacant_site)
+/area/vacant/vacant_shop)
 "id" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
@@ -2834,6 +2826,9 @@
 	},
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_x = -32
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
@@ -2955,9 +2950,6 @@
 /area/maintenance/bar/lower)
 "iv" = (
 /obj/machinery/vending/hydronutrients,
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/hydroponics)
 "iw" = (
@@ -3350,7 +3342,7 @@
 /area/crew_quarters/recreation_area)
 "jB" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/metal{
+/obj/machinery/door/airlock/multi_tile/glass{
 	name = "Crew Cryo Bay"
 	},
 /obj/structure/cable/green{
@@ -4343,9 +4335,6 @@
 	layer = 3.3;
 	pixel_x = -27
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "mz" = (
@@ -4358,7 +4347,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "mB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -4408,7 +4397,7 @@
 	dir = 8
 	},
 /turf/simulated/wall,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "mG" = (
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_10)
@@ -4497,9 +4486,6 @@
 /obj/item/reagent_containers/glass/rag,
 /obj/machinery/camera/network/civilian{
 	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
@@ -5763,8 +5749,9 @@
 /obj/machinery/newscaster{
 	pixel_x = 30
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "qn" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_7)
@@ -5995,7 +5982,7 @@
 /area/quartermaster/foyer)
 "ra" = (
 /turf/simulated/wall,
-/area/vacant/vacant_site2)
+/area/vacant/vacant_office)
 "rd" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -6388,13 +6375,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "sk" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/wood,
-/area/vacant/vacant_shop)
+/turf/simulated/floor/plating,
+/area/vacant/vacant_office)
 "sl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7027,8 +7009,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "tQ" = (
-/turf/simulated/wall,
-/area/vacant/vacant_site)
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_office)
 "tS" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -7229,6 +7211,9 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_x = 32
 	},
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "uo" = (
@@ -7239,6 +7224,9 @@
 /obj/item/retail_scanner/civilian,
 /obj/item/retail_scanner/civilian,
 /obj/item/clothing/accessory/hawaii/random,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "up" = (
@@ -7515,7 +7503,7 @@
 "vh" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "vj" = (
 /obj/machinery/power/solar_control,
 /obj/structure/cable/yellow{
@@ -7631,11 +7619,6 @@
 "vB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "vC" = (
@@ -8557,11 +8540,6 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "yu" = (
@@ -8667,7 +8645,6 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_y = -32
 	},
-/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "yI" = (
@@ -9227,6 +9204,9 @@
 	dir = 4;
 	pixel_x = -11
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "AA" = (
@@ -9345,13 +9325,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/vacant/vacant_site)
+/area/vacant/vacant_shop)
 "AT" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -9757,9 +9732,6 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "Cd" = (
@@ -10067,13 +10039,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "CX" = (
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/wood,
-/area/vacant/vacant_shop)
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
+/area/vacant/vacant_office)
 "CY" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -10256,7 +10227,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "DD" = (
 /obj/machinery/light_switch{
 	dir = 8;
@@ -10291,7 +10262,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "DI" = (
 /obj/structure/stairs/north,
 /turf/simulated/floor/tiled,
@@ -10827,11 +10798,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "Fm" = (
@@ -11166,13 +11132,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/vacant/vacant_site)
+/area/vacant/vacant_shop)
 "Gi" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Solar Farm - SMES 1"
@@ -12382,7 +12343,7 @@
 	name = "Vacant lobby"
 	},
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "JT" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
@@ -12876,7 +12837,7 @@
 "Lx" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "Ly" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -13394,6 +13355,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"Nu" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_office)
 "Nv" = (
 /obj/machinery/camera/network/cargo{
 	dir = 4
@@ -14403,9 +14368,6 @@
 "QI" = (
 /obj/structure/dogbed,
 /obj/machinery/camera/network/civilian,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
@@ -14492,6 +14454,9 @@
 	pixel_x = 32
 	},
 /obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -14842,7 +14807,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "RV" = (
 /obj/effect/landmark/start{
 	name = "Chef"
@@ -14949,11 +14914,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
@@ -15078,13 +15038,8 @@
 	id_tag = "Dressroom";
 	name = "Dressing Room"
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/wood,
-/area/vacant/vacant_site)
+/area/vacant/vacant_shop)
 "SD" = (
 /obj/structure/sink{
 	dir = 8;
@@ -15515,11 +15470,6 @@
 "TN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
@@ -16070,7 +16020,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "Vr" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light/small{
@@ -16524,9 +16474,8 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
-/obj/machinery/light,
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "Wv" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -16536,7 +16485,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/bar_backroom)
 "Ww" = (
@@ -17663,7 +17611,7 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/area/vacant/vacant_office)
 "Zs" = (
 /obj/machinery/chem_master/condimaster,
 /turf/simulated/floor/tiled/dark,
@@ -25055,8 +25003,8 @@ mF
 Zr
 Vq
 gH
-xj
-mQ
+sk
+ra
 oE
 iM
 oE
@@ -25193,12 +25141,12 @@ ub
 mM
 As
 Ny
-mQ
-xj
-xj
-xj
-xj
-mQ
+ra
+sk
+sk
+sk
+sk
+ra
 oE
 oE
 oE
@@ -25333,14 +25281,14 @@ AF
 SY
 pc
 Qc
-mQ
-mQ
-mQ
+ra
+ra
+ra
 vh
 gJ
 mA
 mA
-Qj
+CX
 Pm
 sl
 sl
@@ -25477,10 +25425,10 @@ jr
 kO
 JP
 DC
-xj
-GM
+sk
+tQ
 DH
-xj
+sk
 Wu
 wc
 wc
@@ -25619,11 +25567,11 @@ Vv
 mM
 bj
 RU
-xj
-GM
-GM
-GM
-GM
+sk
+tQ
+tQ
+tQ
+Nu
 wc
 gg
 xg
@@ -25759,13 +25707,13 @@ RE
 sc
 rL
 Wn
-mQ
+ra
 aO
-xj
-xj
-GM
-xj
-xj
+sk
+sk
+tQ
+sk
+sk
 wc
 kn
 km
@@ -25901,12 +25849,12 @@ vd
 gO
 Vv
 PT
-mQ
+ra
 qm
 dG
-xj
-xj
-xj
+sk
+sk
+sk
 Lx
 wc
 qG
@@ -26032,10 +25980,10 @@ Sv
 Nb
 EW
 Gx
-tQ
-tQ
-tQ
-ra
+mQ
+mQ
+mQ
+mQ
 RE
 vd
 vd
@@ -26043,13 +25991,13 @@ vd
 gO
 Vv
 mM
-mQ
-mQ
-mQ
-mQ
-mQ
-mQ
-mQ
+ra
+ra
+ra
+ra
+ra
+ra
+ra
 wc
 DA
 wc
@@ -26174,10 +26122,10 @@ Sv
 dD
 ul
 dD
-tQ
+mQ
 ib
 AR
-tQ
+mQ
 RE
 vd
 vd
@@ -26316,10 +26264,10 @@ Sv
 Hp
 yk
 dD
-tQ
+mQ
 fj
 Gf
-tQ
+mQ
 IX
 RE
 RE
@@ -26458,10 +26406,10 @@ Sv
 Sv
 Ya
 Sv
-tQ
-tQ
+mQ
+mQ
 SC
-tQ
+mQ
 mQ
 mQ
 mQ
@@ -26886,8 +26834,8 @@ gz
 sf
 mQ
 wY
-CX
-sk
+Py
+Py
 Sl
 vB
 yt
