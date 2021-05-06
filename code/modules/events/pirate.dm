@@ -20,7 +20,7 @@
 	endWhen = 45
 
 /datum/event/pirate/announce()
-	command_announcement.Announce("Attention Landlubers of the [station_name()], hand over your booty and your ship and no one gets hurt!", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
+	command_announcement.Announce("Attention Landlubbers of the [station_name()], hand over your booty and your ship and no one gets hurt!", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
 
 /datum/event/pirate/start()
 	location = rand(0,4)
@@ -92,7 +92,7 @@
 
 // Overmap version
 /datum/event/pirate/overmap/announce()
-	command_announcement.Announce("Attention Landlubers of [station_name()], you are trespassing on pirate territory, we are sending over some boys to collect your ship and your loot.", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
+	command_announcement.Announce("Attention Landlubbers of [station_name()], you are trespassing on pirate territory, we are sending over some boys to collect your ship and your loot.", "Incoming Transmission", new_sound = sound('sound/effects/siren.ogg', volume=25))
 
 
 /datum/event/pirate/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship
