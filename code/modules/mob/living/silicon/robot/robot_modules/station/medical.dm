@@ -178,6 +178,7 @@
 	// src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
 	src.modules += new /obj/item/shockpaddles/robot/hound(src) //Paws of life
 	src.emag 	 = new /obj/item/dogborg/pounce(src) //Pounce
+	src.modules += new /obj/item/dogborg/mirrortool(src)
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"
