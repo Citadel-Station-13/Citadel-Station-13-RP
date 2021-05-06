@@ -228,7 +228,7 @@
 /obj/item/book/manual/rust_engine
 	name = "R-UST Operating Manual"
 	icon_state = "bookSupermatter"
-	author = "Cindy Crawfish"
+	author = "Nanotrasen Engineering Safety Board"
 	title = "R-UST Operating Manual"
 
 /obj/item/book/manual/rust_engine/Initialize(mapload)
@@ -250,10 +250,9 @@
 				<li>Enable and max output and input on the SMES in the engine room. This is to power the gyrotrons and pumps.</li>
 				<li>Go into the control room, interact with the fusion core control console. Raise the field size to 201 and turn it on. Any smaller will cause the gyrotrons to blast out the walls. Bigger than 500 will cause the field to immediately fail.</li>
 				<li>Interact with the gyrotron control computer and set all the gyrotrons power and timing to 1.</li>
-				<li>Go into the engine room and insert a deuterium fuel assembly and a tritium fuel assembly into two of the fuel injectors. You can make these in the fuel compressor.</li>
-				<li>Go back to the control room and turn the fuel injectors on. This will start firing pellets into the field. Ensure the field and the gyrotrons are already running!</li>
-				<li>Wait for reactions to start (plasma temperature will spike and fuel amounts will drop).</li>
-				<li>Insert all the phoron into the cold loop, and every other gas into the hot loop. Make sure the RUS-T is stable before inserting other gasses! It will release phoron when shut off!</li>
+				<li>Start the gyrotrons and wait for the field to heat up. Once the field is fully visible, you may switch off the gyrotrons to save power.</li>
+				<li>Insert a can of phoron in the cold loop (green and blue) and a can of CO2 in the hot loop (red and orange).</li>
+				<li>In the event you must switch the RUS-T off, stop all fuel injection allow the field to cool below 1000 kelvin.</li>
 				</ol>
 				<br>
 				<b>NOTES FOR NEWBIES</b>
