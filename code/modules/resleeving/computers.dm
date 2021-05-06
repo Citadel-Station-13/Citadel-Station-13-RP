@@ -386,6 +386,7 @@
 					temp = "Initiating resleeving and transferring mirror..."
 					menu = 1
 					qdel(hasmirror)
+					active_mr = null
 
 		//IDK but it broke somehow.
 		else
