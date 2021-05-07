@@ -126,19 +126,27 @@
 	newavail = 0
 
 /datum/powernet/proc/get_electrocute_damage()
-	switch(avail)
-		if (1000000 to INFINITY)
-			return min(rand(50,160),rand(50,160))
-		if (200000 to 1000000)
-			return min(rand(25,80),rand(25,80))
-		if (100000 to 200000)//Ave powernet
-			return min(rand(20,60),rand(20,60))
-		if (50000 to 100000)
-			return min(rand(15,40),rand(15,40))
-		if (1000 to 50000)
-			return min(rand(10,20),rand(10,20))
-		else
-			return 0
+	var/mob/living/carbon/human/H
+	for(var/i = 1, i < avail, i++)
+		var/species_for_damage = H.species.total_health
+		var/shock_damage = avail / (species_for_damage / 1300 * 470000)
+		log_admin("[key_name(usr)] has shocked themselves for [shock_damage]")
+		if(shock_damage > 50)
+			power_failure(FALSE)
+		return shock_damage
+	// switch(avail)
+	// 	if (1000000 to INFINITY)
+	// 		return min(rand(50,160),rand(50,160))
+	// 	if (200000 to 1000000)
+	// 		return min(rand(25,80),rand(25,80))
+	// 	if (100000 to 200000)//Ave powernet
+	// 		return min(rand(20,60),rand(20,60))
+	// 	if (50000 to 100000)
+	// 		return min(rand(15,40),rand(15,40))
+	// 	if (1000 to 50000)
+	// 		return min(rand(10,20),rand(10,20))
+	// 	else
+	// 		return 0
 
 ////////////////////////////////////////////////
 // Misc.
