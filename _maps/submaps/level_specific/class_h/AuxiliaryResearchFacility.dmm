@@ -1479,8 +1479,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/steel,
 /area/submap/AuxiliaryResearchFacility)
-"Jm" = (
-)
 "Jq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -2148,7 +2146,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/oracarpet,
 /area/submap/AuxiliaryResearchFacility)
 "YY" = (
@@ -2262,7 +2259,7 @@ On
 On
 On
 On
-Jm
+On
 "}
 (2,1,1) = {"
 On
