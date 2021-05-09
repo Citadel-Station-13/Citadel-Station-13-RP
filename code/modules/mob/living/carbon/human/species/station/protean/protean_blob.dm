@@ -171,8 +171,8 @@
 /mob/living/simple_mob/protean_blob/Life()
 	. = ..()
 	if(. && istype(refactory) && humanform)
-		if(!healing && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 100)
-			healing = humanform.add_modifier(/datum/modifier/protean/steel, origin = refactory)
+		if(!healing && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 50)
+			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
 		else if(healing && health == maxHealth)
 			healing.expire()
 			healing = null
@@ -519,3 +519,31 @@
 		if("Plain")
 			icon_living = "puddle0"
 			update_icon()
+
+/datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp/ventcrawling
+	name = "Protean Blob Effect - Steel"
+	desc = "You're affected by the presence of steel."
+
+	on_created_text = "<span class='notice'>You feel new nanites being produced from your stockpile of steel, healing you.</span>"
+	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
+
+	material_name = MAT_STEEL
+
+/datum/modifier/protean/steelBlob/tick()
+
+	..()
+	holder.adjustBruteLoss(-20 ,include_robo = TRUE) //This is for the blob-regen. As there's now non-blob regen, I've increased it to have a reason to blob other than ventcrawling
+	holder.adjustFireLoss(-7.7 ,include_robo = TRUE) // Both brute and burn are ~10/s for blob regen
+	holder.adjustToxLoss(-36) // Still keeping these in, for the just-in-case scenario
+	holder.radiation = max(holder.radiation - 90, 0)
+
+
+	var/mob/living/carbon/human/H = holder
+	for(var/organ in H.internal_organs)
+		var/obj/item/organ/O = organ
+		// Fix internal damage
+		if(O.damage > 0)
+			O.damage = max(0,O.damage-3) // The major part of blob regen. The quick organ repair, compared to non-blob regen
+		// If not damaged, but dead, fix it
+		else if(O.status & ORGAN_DEAD)
+			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely
