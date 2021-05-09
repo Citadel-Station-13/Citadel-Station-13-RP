@@ -37,7 +37,7 @@
 	
 	total_health =	125  // Makes them Unathi level tough. Nothing too much, also mildly justified as proteans can't ever go into crit, as they blob instead
 
-	brute_mod =		0.7 // 30% brute reduction, this with the increased limb health makes them not die instantly
+	brute_mod =		0.5 // 50% brute reduction
 	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
 	oxy_mod =		0
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
@@ -82,7 +82,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 	body_temperature =      290
 
-	siemens_coefficient =   1.4
+	siemens_coefficient =   1.1 // Changed in accordance to the 'what to do now' section of the rework document
 
 	rarity_value =          5
 
