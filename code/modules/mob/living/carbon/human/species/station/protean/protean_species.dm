@@ -1,5 +1,5 @@
 #define DAM_SCALE_FACTOR 0.01
-#define METAL_PER_TICK 50 // I've lowered it due to the generally low amount of steel proteans get during roundstart
+#define METAL_PER_TICK 100
 /datum/species/protean
 	name =             SPECIES_PROTEAN
 	name_plural =      "Proteans"
