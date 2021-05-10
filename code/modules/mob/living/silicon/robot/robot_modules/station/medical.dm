@@ -49,6 +49,7 @@
 	src.modules += new /obj/item/shockpaddles/robot(src)
 	src.modules += new /obj/item/reagent_containers/dropper(src) // Allows surgeon borg to fix necrosis
 	src.modules += new /obj/item/reagent_containers/syringe(src)
+	src.modules += new /obj/item/dogborg/mirrortool(src)
 	src.emag = new /obj/item/reagent_containers/spray(src)
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
@@ -116,6 +117,7 @@
 	src.modules += new /obj/item/gripper/no_use/organ(src)
 	src.modules += new /obj/item/gripper/medical(src)
 	src.modules += new /obj/item/shockpaddles/robot(src)
+	src.modules += new /obj/item/dogborg/mirrortool(src)
 	src.emag = new /obj/item/reagent_containers/spray(src)
 	src.emag.reagents.add_reagent("pacid", 250)
 	src.emag.name = "Polyacid spray"
@@ -178,6 +180,7 @@
 	// src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
 	src.modules += new /obj/item/shockpaddles/robot/hound(src) //Paws of life
 	src.emag 	 = new /obj/item/dogborg/pounce(src) //Pounce
+	src.modules += new /obj/item/dogborg/mirrortool(src)
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"
@@ -227,3 +230,4 @@
 	if(R.client && (R.client.ckey in list("nezuli")))
 		sprites += "Alina"
 		sprites["Alina"] = "alina-med"
+
