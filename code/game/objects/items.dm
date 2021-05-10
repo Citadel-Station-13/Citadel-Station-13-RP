@@ -342,6 +342,8 @@
 /obj/item/proc/pickup(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	pixel_x = initial(pixel_x)
+	pixel_y = initial(pixel_y)
 	// item_flags |= IN_INVENTORY
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.

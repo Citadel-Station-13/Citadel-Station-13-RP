@@ -607,8 +607,6 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	else
 		. += "A coil of power cable. There are [get_amount()] lengths of cable in the coil."
 
-
-
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"
 	set category = "Object"
@@ -960,6 +958,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		else
 			embed_chance = force/(w_class*3)
 	update_icon()
+	verbs -= /obj/item/stack/cable_coil/verb/make_restraint
 
 /obj/item/stack/cable_coil/alien/update_icon()
 	icon_state = initial(icon_state)

@@ -139,13 +139,13 @@
 
 //General stuff
 
-/datum/design/item/medical/sleevemate
-	name = "SleeveMate 3700"
-	id = "sleevemate"
-	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 2, TECH_BIO = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
-	build_path = /obj/item/sleevemate
-	sort_string = "KCAVA"
+// /datum/design/item/medical/sleevemate
+// 	name = "SleeveMate 3700"
+// 	id = "sleevemate"
+// 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 2, TECH_BIO = 2)
+// 	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
+// 	build_path = /obj/item/sleevemate
+// 	sort_string = "KCAVA"
 
 /datum/design/item/medical/protohypospray
 	name = "prototype hypospray"

@@ -116,6 +116,7 @@
 
 /mob/new_player/proc/verifyage()
 	if(client.holder)		// they're an admin
+		client.set_preference(/datum/client_preference/debug/age_verified, 1)
 		return TRUE
 	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) //make sure they are verified
 		if(!client.prefs)
@@ -663,6 +664,15 @@
 		// Set defer to 1 if you add more crap here so it only recalculates struc_enzymes once. - N3X
 		new_character.dna.SetSEState(GLASSESBLOCK,1,0)
 		new_character.disabilities |= NEARSIGHTED
+	if(client.prefs.mirror == TRUE)
+		if((client.prefs.organ_data[O_BRAIN] == "mechanical") || (client.prefs.organ_data[O_BRAIN] == "digital") || (client.prefs.organ_data[O_BRAIN] == "assisted"))
+			var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)
+			F.handle_implant(new_character)
+			F.post_implant(new_character)
+		else
+			var/obj/item/implant/mirror/E = new /obj/item/implant/mirror(new_character)
+			E.handle_implant(new_character)
+			E.post_implant(new_character)
 
 	for(var/lang in client.prefs.alternate_languages)
 		var/datum/language/chosen_language = GLOB.all_languages[lang]
