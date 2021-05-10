@@ -20,7 +20,6 @@
 	mappath = '_maps/templates/engines/triumph/engine_singulo.dmm'
 */
 
-
 /datum/map_template/engine/supermatter
 	name = "EngineSubmap_SM"
 	desc = "Old Faithful Supermatter"
@@ -32,6 +31,11 @@
 	desc = "The Telsa Engine"
 	mappath = '_maps/templates/engines/triumph/engine_tesla.dmm'
 */
+/datum/map_template/engine/burnchamber
+	name = "EngineSubmap_Burn"
+	desc = "Burn Chamber Engine"
+	mappath = "_maps/templates/engines/triumph/triumph_engine_burnchamber.dmm"
+
 
 /datum/map_template/engine/fission
 	name = "EngineSubmap_Fission"
