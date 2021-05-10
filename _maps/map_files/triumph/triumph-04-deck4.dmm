@@ -32252,6 +32252,10 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/hanger)
+"xKt" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/primary/aft)
 "xKG" = (
 /obj/structure/bed/chair/sofa/right{
 	icon_state = "sofaend_right"
@@ -43576,7 +43580,7 @@ mIQ
 tXz
 gto
 xiF
-pFE
+xKt
 cyH
 ugw
 ugw
