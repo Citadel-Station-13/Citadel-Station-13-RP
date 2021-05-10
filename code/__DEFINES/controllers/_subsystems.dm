@@ -107,7 +107,6 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_CHEMISTRY		35
 #define INIT_ORDER_SKYBOX			30
 #define INIT_ORDER_MAPPING			25
-#define INIT_ORDER_EVENTS			22		// needed because overmaps is shitcode and not doing this makes init far slower
 #define INIT_ORDER_DECALS			20
 #define INIT_ORDER_ALARMS			18
 #define INIT_ORDER_ATOMS			15
@@ -120,6 +119,8 @@ var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_G
 #define INIT_ORDER_ASSETS			-4
 #define INIT_ORDER_HOLOMAPS			-5
 #define INIT_ORDER_OVERLAY			-6
+#define INIT_ORDER_EVENTS			-8
+#define INIT_ORDER_OVERMAPS			-9
 #define INIT_ORDER_TICKER			-10
 #define INIT_ORDER_XENOARCH			-20
 #define INIT_ORDER_CIRCUIT			-21

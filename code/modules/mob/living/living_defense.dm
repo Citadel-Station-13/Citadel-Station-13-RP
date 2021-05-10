@@ -117,6 +117,7 @@
 	var/absorb = run_armor_check(def_zone, P.check_armour, P.armor_penetration)
 	var/proj_sharp = is_sharp(P)
 	var/proj_edge = has_edge(P)
+	var/final_damage = P.get_final_damage(src)
 
 	if ((proj_sharp || proj_edge) && (soaked >= round(P.damage*0.8)))
 		proj_sharp = 0
@@ -131,12 +132,12 @@
 		stun_effect_act(0, P.agony, def_zone, P)
 		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
 		if(!P.nodamage)
-			apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+			apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 		qdel(P)
 		return
 
 	if(!P.nodamage)
-		apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+		apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 	P.on_hit(src, absorb, soaked, def_zone)
 
 	if(absorb == 100)

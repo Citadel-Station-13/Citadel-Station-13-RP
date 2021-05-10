@@ -518,10 +518,11 @@
 
 /obj/item/melee/energy/blade/attack_self(mob/user as mob)
 	user.drop_from_inventory(src)
-	spawn(1) if(src) qdel(src)
+	qdel(src)
 
 /obj/item/melee/energy/blade/dropped()
-	spawn(1) if(src) qdel(src)
+	. = ..()
+	qdel(src)
 
 /obj/item/melee/energy/blade/process(delta_time)
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))

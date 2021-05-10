@@ -671,3 +671,9 @@ Drinks Data
 
 /datum/reagent/drink/virginsexonthebeach
 	glass_icon_state = "virginsexonthebeachglass"
+
+/datum/reagent/drink/phobos
+	glass_icon_state = "phobos"
+
+/datum/reagent/drink/greenstuff
+	glass_icon_state = "greenstuff"

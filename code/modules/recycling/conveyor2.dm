@@ -24,7 +24,6 @@
 	var/backwards		// hopefully self-explanatory
 	var/movedir			// the actual direction to move stuff in
 
-	var/list/affecting	// the list of all items that will be moved this ptick
 	var/id = ""			// the control ID	- must match controller ID
 
 /obj/machinery/conveyor/centcom_auto
@@ -97,22 +96,34 @@
 
 	// machine process
 	// move items to the target location
-/obj/machinery/conveyor/process(delta_time)
+/obj/machinery/conveyor/process()
 	if(stat & (BROKEN | NOPOWER))
 		return
 	if(!operating)
 		return
 	use_power(10)
+	var/list/affecting = loc.contents - src		// moved items will be all in loc
+	addtimer(CALLBACK(src, .proc/convey, affecting), 1)
 
-	affecting = loc.contents - src		// moved items will be all in loc
+/obj/machinery/conveyor/proc/convey(list/affecting)
+	var/turf/T = get_step(src, movedir)
+	if(!T)
+		return
+	affecting.len = max(min(affecting.len, 10, 150 - T.contents.len), 0)
+	if(!affecting.len)
+		return
 	var/items_moved = 0
 	for(var/atom/movable/A in affecting)
 		if(!A.anchored)
 			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
 				step(A,movedir)
-				items_moved++
+				++items_moved
 		if(items_moved >= 10)
 			break
+/*
+		if((A.loc == loc) && A.has_gravity())
+			A.ConveyorMove(movedir)
+*/
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(var/obj/item/I, mob/user)

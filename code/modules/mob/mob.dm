@@ -472,6 +472,7 @@
 	set category = "OOC"
 	var/is_admin = 0
 
+	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
 	if(client.holder && (client.holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
@@ -1191,3 +1192,26 @@ mob/proc/yank_out_object()
 		return
 
 	to_chat(src, "<span class='notice'>Diceroll result: <b>[rand(1, n)]</b></span>")
+
+/**
+ * Checks for anti magic sources.
+ *
+ * @params
+ * - magic - wizard-type magic
+ * - holy - cult-type magic, stuff chaplains/nullrods/similar should be countering
+ * - chargecost - charges to remove from antimagic if applicable/not a permanent source
+ * - self - check if the antimagic is ourselves
+ *
+ * @return The datum source of the antimagic
+ */
+/mob/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
+	if(!magic && !holy)
+		return
+	var/list/protection_sources = list()
+	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, chargecost, self, protection_sources) & COMPONENT_BLOCK_MAGIC)
+		if(protection_sources.len)
+			return pick(protection_sources)
+		else
+			return src
+	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
+		return src

@@ -112,9 +112,12 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 // Creates software after the mob is hopefully loaded in
 /obj/item/nif/proc/install_free_return_software()
+	var/old = durability
 	//Free commlink and soulcatcher for return customers
 	new /datum/nifsoft/commlink(src)
 	new /datum/nifsoft/soulcatcher(src)
+	durability = old
+	wear(0)
 
 //Destructor cleans up references
 /obj/item/nif/Destroy()
