@@ -12120,6 +12120,10 @@
 	req_access = list(58)
 	},
 /obj/structure/bed/chair/comfy/black,
+/obj/machinery/light_switch{
+	pixel_x = -36;
+	pixel_y = -35
+	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "jmm" = (
@@ -14908,6 +14912,9 @@
 /obj/item/storage/box/firingpins,
 /obj/item/storage/belt/security,
 /obj/item/megaphone,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
 "lAR" = (
