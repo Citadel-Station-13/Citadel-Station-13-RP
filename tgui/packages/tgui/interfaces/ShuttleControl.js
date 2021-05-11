@@ -259,7 +259,7 @@ const ShuttleControlConsoleWeb = (props, context) => {
             Ensure that all non-cycling capable hatches and doors are closed,
             as the automated system may not be able to control them.
             Docking and flight controls are locked. To unlock, disable the
-             automated flight system.
+            automated flight system.
           </Box>
         </Section>
       ) || null}
@@ -316,8 +316,8 @@ const ShuttleControlConsoleWeb = (props, context) => {
                     </Button>
                   </Fragment>
                 }>
-                  <Box bold inline>{getDockingStatus(docking_status,
-                    docking_override)}</Box>
+                  <Box bold inline>
+                  {getDockingStatus(docking_status,docking_override)}</Box>
                 </LabeledList.Item>
               ) || null}
               {can_cloak && (
@@ -474,8 +474,8 @@ export const ShuttleControl = (props, context) => {
     subtemplate,
   } = data;
   return (
-    <Window width={470} height={(subtemplate === "ShuttleControlConsoleWeb") ?
-    560 : 370} resizable>
+    <Window width={470} height={(subtemplate === "ShuttleControlConsoleWeb")
+      ? 560 : 370} resizable>
       <Window.Content>
         {SubtemplateList[subtemplate]}
       </Window.Content>
