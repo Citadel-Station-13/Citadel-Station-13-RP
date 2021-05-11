@@ -186,6 +186,12 @@
 	/obj/item/healthanalyzer,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
 	/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle)
 
+/obj/item/clothing/suit/storage/hooded/wintercoat/medical/genetics
+	name = "genetics winter coat"
+	desc = "A white winter coat with a DNA helix for the zipper tab. "
+	icon_state = "coatgenetics"
+	hoodtype = /obj/item/clothing/head/hood/winter/genetics
+
 /obj/item/clothing/suit/storage/hooded/wintercoat/medical/chemistry
 	name = "chemistry winter coat"
 	desc = "A lab-grade winter coat made with acid resistant polymers. For the enterprising chemist who was exiled to a frozen wasteland on the go."
@@ -309,7 +315,7 @@
 	desc = "A purple-and-beige winter coat that smells of space cleaner."
 	icon_state = "coatjanitor"
 	hoodtype = /obj/item/clothing/head/hood/winter/janitor
-/obj/item/clothing/suit/storage/hooded/wintercoatt/cargo
+/obj/item/clothing/suit/storage/hooded/wintercoat/cargo
 	name = "cargo winter coat"
 	desc = "A tan-and-grey winter coat that has a crate for its zipper pull tab. It fills you with the warmth of a fierce independence."
 	icon_state = "coatcargo"
