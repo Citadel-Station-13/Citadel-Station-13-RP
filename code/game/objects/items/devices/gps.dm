@@ -76,7 +76,7 @@ var/list/GPS_list = list()
  // Compiles all the data not available directly from the GPS
  // Like the positions and directions to all other GPS units
 /obj/item/gps/proc/display_list()
-	var/list/dat = list()
+	var/list/list/dat = list()
 
 	var/turf/curr = get_turf(src)
 	var/area/my_area = get_area(src)
@@ -133,7 +133,7 @@ var/list/GPS_list = list()
 		return
 
 	var/list/dat = list()
-	var/list/gps_data = display_list()
+	var/list/list/gps_data = display_list()
 
 	dat += "Current location: [gps_data["my_area_name"]] <b>([gps_data["curr_x"]], [gps_data["curr_y"]], [gps_data["curr_z_name"]])</b>"
 	dat += "[hide_signal ? "Tagged" : "Broadcasting"] as '[gps_tag]'. <a href='?src=\ref[src];tag=1'>\[Change Tag\]</a> \
@@ -383,7 +383,7 @@ var/list/GPS_list = list()
 		return
 
 	var/list/dat = list()
-	var/list/gps_data = display_list()
+	var/list/list/gps_data = display_list()
 
 	dat += "Current location: [gps_data["my_area_name"]] <b>([gps_data["curr_x"]], [gps_data["curr_y"]], [gps_data["curr_z_name"]])</b>"
 	dat += "[hide_signal ? "Tagged" : "Broadcasting"] as '[gps_tag]'. <a href='?src=\ref[src];tag=1'>\[Change Tag\]</a> \

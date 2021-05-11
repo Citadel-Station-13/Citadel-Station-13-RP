@@ -56,7 +56,7 @@
 		ui.open()
 
 /obj/machinery/mineral/processing_unit_console/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	var/list/data = ..()
+	var/list/list/data = ..()
 	data["unclaimedPoints"] = machine.points
 
 	if(inserted_id)

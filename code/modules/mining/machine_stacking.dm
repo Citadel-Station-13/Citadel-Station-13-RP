@@ -34,7 +34,7 @@
 		ui.open()
 
 /obj/machinery/mineral/stacking_unit_console/ui_data(mob/user)
-	var/list/data = ..()
+	var/list/list/data = ..()
 
 	data["stacktypes"] = list()
 	for(var/stacktype in machine.stack_storage)
