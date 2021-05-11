@@ -325,11 +325,11 @@ const SupplyConsoleMenuOrderList = (props, context) => {
       {displayedOrders.map((order, i) => (
         <Section title={"Order " + (i + 1)} key={i} buttons={(mode === "All"
          && order_auth) ? (
-           <Button
-              color="red"
-              icon="trash"
-              content="Delete Record"
-              onClick={() => act("delete_order", { ref: order.ref })} />
+            <Button
+             color="red"
+             icon="trash"
+             content="Delete Record"
+             onClick={() => act("delete_order", { ref: order.ref })} />
           ) : null}>
           <LabeledList>
             {order.entries.map(field => field.entry ? (
@@ -392,13 +392,13 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
           <LabeledList>
             {r.title.map(title => (
               <LabeledList.Item label={title.field} key={title.field}
-              buttons={order_auth ? (
-                <Button
-                  icon="pen"
-                  content="Edit"
-                  onClick={() => act("export_edit", { ref: r.ref, edit:
+                buttons={order_auth ? (
+                  <Button
+                    icon="pen"
+                    content="Edit"
+                    onClick={() => act("export_edit", { ref: r.ref, edit:
                     title.field, default: title.entry })} />
-              ) : null}>
+                ) : null}>
                 {title.entry}
               </LabeledList.Item>
             ))}
@@ -408,27 +408,27 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
               </LabeledList.Item>
             ) : r.contents.map((item, i) => (
               <LabeledList.Item label={item.object} key={i} buttons={order_auth
-                 ? (
-                <Fragment>
-                  <Button
-                    icon="pen"
-                    content="Edit"
-                    onClick={() => act("export_edit_field", {
-                      ref: r.ref,
-                      index: i + 1,
-                      edit: "meow",
-                      default: item.object,
-                    })} />
-                  <Button
-                    icon="trash"
-                    color="red"
-                    content="Delete"
-                    onClick={() => act("export_delete_field", {
-                      ref: r.ref,
-                      index: i + 1,
-                    })} />
-                </Fragment>
-              ) : null}>
+                ? (
+                  <Fragment>
+                    <Button
+                      icon="pen"
+                      content="Edit"
+                      onClick={() => act("export_edit_field", {
+                        ref: r.ref,
+                        index: i + 1,
+                        edit: "meow",
+                        default: item.object,
+                      })} />
+                    <Button
+                      icon="trash"
+                      color="red"
+                      content="Delete"
+                      onClick={() => act("export_delete_field", {
+                        ref: r.ref,
+                        index: i + 1,
+                      })} />
+                  </Fragment>
+                ) : null}>
                 {item.quantity}x -&gt; {item.value} points
               </LabeledList.Item>
             ))}
