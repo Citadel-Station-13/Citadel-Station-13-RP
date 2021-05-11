@@ -10,46 +10,116 @@
 /obj/item/clothing/head/hood/winter
 	name = "winter hood"
 	desc = "A hood attached to a heavy winter jacket."
-	icon_state = "generic_hood"
+	icon_state = "winterhood"
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
-/obj/item/clothing/head/hood/winter/captain
-	name = "Facility Director's winter hood"
-	armor = list(melee = 20, bullet = 15, laser = 20, energy = 10, bomb = 15, bio = 0, rad = 0)
+/obj/item/clothing/head/hooded/winterhood/paramedic
+	desc = "A white winter coat hood with blue markings."
+	icon_state = "winterhood_paramed"
 
-/obj/item/clothing/head/hood/winter/security
-	name = "security winter hood"
-	armor = list(melee = 25, bullet = 20, laser = 20, energy = 15, bomb = 20, bio = 0, rad = 0)
+/obj/item/clothing/head/hooded/winterhood/viro
+	desc = "A white winter coat hood with green markings."
+	icon_state = "winterhood_viro"
 
-/obj/item/clothing/head/hood/winter/medical
-	name = "medical winter hood"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0)
+/obj/item/clothing/head/hooded/winterhood/chemistry
+	desc = "A white winter coat hood."
+	icon_state = "winterhood_chemistry"
 
-/obj/item/clothing/head/hood/winter/science
-	name = "science winter hood"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
+/obj/item/clothing/head/hooded/winterhood/cmo
+	desc = "A white winter coat hood."
+	icon_state = "winterhood_cmo"
 
-/obj/item/clothing/head/hood/winter/engineering
-	name = "engineering winter hood"
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 20)
+/obj/item/clothing/head/hooded/winterhood/medical
+	desc = "A white winter coat hood."
+	icon_state = "winterhood_medical"
 
-/obj/item/clothing/head/hood/winter/engineering/atmos
-	name = "atmospherics winter hood"
+/obj/item/clothing/head/hooded/winterhood/hos
+	desc = "A red, armor-padded winter hood, lovingly woven with a Kevlar interleave. Definitely not bulletproof, especially not the part where your face goes."
+	icon_state = "winterhood_hos"
 
-/obj/item/clothing/head/hood/winter/hydro
-	name = "hydroponics winter hood"
+/obj/item/clothing/head/hooded/winterhood/security
+	desc = "A red, armor-padded winter hood."
+	icon_state = "winterhood_security"
 
-/obj/item/clothing/head/hood/winter/cargo
-	name = "cargo winter hood"
+/obj/item/clothing/head/hooded/winterhood/hop
+	desc = "A cozy winter hood attached to a heavy winter jacket."
+	icon_state = "winterhood_hop"
 
-/obj/item/clothing/head/hood/winter/miner
-	name = "mining winter hood"
-	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+/obj/item/clothing/head/hooded/winterhood/captain
+	desc = "A blue and yellow hood attached to a heavy winter jacket."
+	icon_state = "winterhood_captain"
 
-/obj/item/clothing/head/hood/winter/ronin
-	name = "ronin heating coils"
-	desc = "Glowing coils designed to ward off cold temperatures."
-	flags_inv = null
+/obj/item/clothing/head/hooded/winterhood/centcom
+	icon_state = "winterhood_centcom"
+
+/obj/item/clothing/head/hooded/winterhood/science
+	desc = "A white winter coat hood. This one will keep your brain warm. About as much as the others, really."
+	icon_state = "winterhood_science"
+
+/obj/item/clothing/head/hooded/winterhood/robotics
+	desc = "A black winter coat hood. You can pull it down over your eyes and pretend that you're an outdated, late 1980s interpretation of a futuristic mechanized police force. They'll fix you. They fix everything."
+	icon_state = "winterhood_robotics"
+
+/obj/item/clothing/head/hooded/winterhood/genetics
+	desc = "A white winter coat hood. It's warm."
+	icon_state = "winterhood_genetics"
+
+/obj/item/clothing/head/hooded/winterhood/rd
+	desc = "A white winter coat hood. It smells faintly of hair gel."
+	icon_state = "winterhood_rd"
+
+/obj/item/clothing/head/hooded/winterhood/ce
+	desc = "A white winter coat hood. Feels surprisingly heavy. The tag says that it's not child safe."
+	icon_state = "winterhood_ce"
+
+/obj/item/clothing/head/hooded/winterhood/engineering
+	desc = "A yellow winter coat hood. Definitely not a replacement for a hard hat."
+	icon_state = "winterhood_engineer"
+
+/obj/item/clothing/head/hooded/winterhood/engineering/atmos
+	desc = "A yellow and blue winter coat hood."
+	icon_state = "winterhood_atmos"
+
+/obj/item/clothing/head/hooded/winterhood/hydro
+	desc = "A green winter coat hood."
+	icon_state = "winterhood_hydro"
+
+/obj/item/clothing/head/hooded/winterhood/cosmic
+	desc = "A starry winter hood."
+	icon_state = "winterhood_cosmic"
+
+/obj/item/clothing/head/hooded/winterhood/janitor
+	desc = "A purple hood that smells of space cleaner."
+	icon_state = "winterhood_janitor"
+
+/obj/item/clothing/head/hooded/winterhood/cargo
+	desc = "A grey hood for a winter coat."
+	icon_state = "winterhood_cargo"
+/obj/item/clothing/head/hooded/winterhood/qm
+	desc = "A dark brown winter hood"
+	icon_state = "winterhood_qm"
+
+/obj/item/clothing/head/hooded/winterhood/aformal
+	desc = "A black winter coat hood."
+	icon_state = "winterhood_aformal"
+
+/obj/item/clothing/head/hooded/winterhood/miner
+	desc = "A dusty winter coat hood."
+	icon_state = "winterhood_miner"
+
+/obj/item/clothing/head/hooded/winterhood/ratvar
+	icon_state = "winterhood_ratvar"
+	desc = "A brass-plated winter hood that glows softly, hinting at its divinity."
+	light_range = 3
+	light_power = 1
+	light_color = "#B18B25" //clockwork slab background top color
+
+/obj/item/clothing/head/hooded/winterhood/narsie
+	desc = "A black winter hood full of whispering secrets that only She shall ever know."
+	icon_state = "winterhood_narsie"
+
+/obj/item/clothing/head/hooded/winterhood/durathread
+	icon_state = "winterhood_durathread"
 
 // Explorer gear
 /obj/item/clothing/head/hood/explorer
