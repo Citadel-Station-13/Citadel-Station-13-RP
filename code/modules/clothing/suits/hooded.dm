@@ -214,7 +214,7 @@
 	name = "paramedic winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs, it has an aura of underappreciation."
 	icon_state = "coatpara"
-	hoodtype = /obj/item/clothing/head/hood/winter/para
+	hoodtype = /obj/item/clothing/head/hood/winter/paramedic
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/science
 	name = "science winter coat"
