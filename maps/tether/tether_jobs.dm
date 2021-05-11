@@ -136,7 +136,7 @@
 /decl/hierarchy/outfit/job/talon_captain
 	name = OUTFIT_JOB_NAME("Talon Captain")
 
-	id_type = /obj/item/weapon/card/id/gold
+	id_type = /obj/item/card/id/gold
 	id_slot = slot_wear_id
 	pda_type = null
 
@@ -166,7 +166,7 @@
 	name = OUTFIT_JOB_NAME("Talon Doctor")
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	id_type = /obj/item/weapon/card/id/medical
+	id_type = /obj/item/card/id/medical
 	id_slot = slot_wear_id
 	pda_type = null
 
@@ -184,7 +184,7 @@
 	name = OUTFIT_JOB_NAME("Talon Security")
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	id_type = /obj/item/weapon/card/id/security
+	id_type = /obj/item/card/id/security
 	id_slot = slot_wear_id
 	pda_type = null
 	backpack_contents = list(/obj/item/weapon/handcuffs = 1)
@@ -202,7 +202,7 @@
 	name = OUTFIT_JOB_NAME("Talon Engineer")
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	id_type = /obj/item/weapon/card/id/engineering
+	id_type = /obj/item/card/id/engineering
 	id_slot = slot_wear_id
 	pda_type = null
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL

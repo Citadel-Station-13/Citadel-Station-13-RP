@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(GPS_list)
+var/list/GPS_list = list()
 
 /obj/item/gps
 	name = "global positioning system"
@@ -11,20 +11,21 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	matter = list(DEFAULT_WALL_MATERIAL = 500)
 	var/gps_tag = "GEN0"
 	var/emped = FALSE
+	var/updating = TRUE			// Lets users lock the UI so they don't have to deal with constantly shifting signals
 	var/tracking = FALSE		// Will not show other signals or emit its own signal if false.
 	var/long_range = FALSE		// If true, can see farther, depending on get_map_levels().
 	var/local_mode = FALSE		// If true, only GPS signals of the same Z level are shown.
 	var/hide_signal = FALSE		// If true, signal is not visible to other GPS devices.
 	var/can_hide_signal = FALSE	// If it can toggle the above var.
 
-/obj/item/gps/Initialize(mapload)
+/obj/item/gps/Initialize()
 	. = ..()
-	GLOB.GPS_list += src
+	GPS_list += src
 	name = "global positioning system ([gps_tag])"
 	update_icon()
 
 /obj/item/gps/Destroy()
-	GLOB.GPS_list -= src
+	GPS_list -= src
 	return ..()
 
 /obj/item/gps/AltClick(mob/user)
@@ -66,7 +67,11 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		add_overlay("working")
 
 /obj/item/gps/attack_self(mob/user)
-	display(user)
+	ui_interact(user)
+
+/obj/item/gps/examine(mob/user)
+	. = ..()
+	. += display()
 
  // Compiles all the data not available directly from the GPS
  // Like the positions and directions to all other GPS units
@@ -81,21 +86,22 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	dat["curr_y"] = curr.y
 	dat["curr_z"] = curr.z
 	dat["curr_z_name"] = GLOB.using_map.get_zlevel_name(curr.z)
-	var/list/gps_list = list()
-	dat["gps_list"] = gps_list
+	dat["gps_list"] = list()
 	dat["z_level_detection"] = GLOB.using_map.get_map_levels(curr.z, long_range)
 
-	for(var/obj/item/gps/G in GLOB.GPS_list - src)
+	for(var/obj/item/gps/G in GPS_list - src)
 		if(!G.tracking || G.emped || G.hide_signal)
 			continue
 
 		var/turf/T = get_turf(G)
+		if(!T)
+			continue
 		if(local_mode && curr.z != T.z)
 			continue
 		if(!(T.z in dat["z_level_detection"]))
 			continue
 
-		var/list/gps_data[0]
+		var/gps_data[0]
 		gps_data["ref"] = G
 		gps_data["gps_tag"] = G.gps_tag
 
@@ -113,16 +119,17 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		gps_data["local"] = (curr.z == T.z)
 		gps_data["x"] = T.x
 		gps_data["y"] = T.y
-		gps_list[++gps_list.len] = gps_data
+
+		dat["gps_list"][++dat["gps_list"].len] = gps_data
 
 	return dat
 
-/obj/item/gps/proc/display(mob/user)
+/obj/item/gps/proc/display()
 	if(!tracking)
-		to_chat(user, "The device is off. Alt-click it to turn it on.")
+		. = "The device is off. Alt-click it to turn it on."
 		return
 	if(emped)
-		to_chat(user, "It's busted!")
+		. = "It's busted!"
 		return
 
 	var/list/dat = list()
@@ -133,8 +140,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
 	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
 
-	var/list/gps_list = gps_data["gps_list"]
-	if(gps_list.len)
+	if(gps_data["gps_list"].len)
 		dat += "Detected signals;"
 		for(var/gps in gps_data["gps_list"])
 			if(istype(gps_data["ref"], /obj/item/gps/internal/poi))
@@ -144,8 +150,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	else
 		dat += "No other signals detected."
 
-	var/result = dat.Join("<br>")
-	to_chat(user, result)
+	. = dat
 
 /obj/item/gps/Topic(var/href, var/list/href_list)
 	if(..())
@@ -169,6 +174,85 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		hide_signal = !hide_signal
 		to_chat(usr, "You set the device to [hide_signal ? "not " : ""]broadcast a signal while scanning for other signals.")
 
+/obj/item/gps/ui_interact(mob/user, datum/tgui/ui)
+	if(emped)
+		to_chat(user, "<span class='hear'>[src] fizzles weakly.</span>")
+		return
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Gps", name)
+		ui.open()
+	ui.set_autoupdate(updating)
+
+/obj/item/gps/ui_data(mob/user)
+	var/list/data = list()
+	data["power"] = tracking
+	data["tag"] = gps_tag
+	data["updating"] = updating
+	data["globalmode"] = !local_mode
+	if(!tracking || emped) //Do not bother scanning if the GPS is off or EMPed
+		return data
+
+	var/turf/curr = get_turf(src)
+	data["currentArea"] = "[get_area_name(curr, TRUE)]"
+	data["currentCoords"] = list(curr.x, curr.y, curr.z)
+	data["currentCoordsText"] = "[curr.x], [curr.y], [GLOB.using_map.get_zlevel_name(curr.z)]"
+
+	data["zLevelDetection"] = GLOB.using_map.get_map_levels(curr.z, long_range)
+
+	var/list/signals = list()
+	data["signals"] = list()
+
+	for(var/obj/item/gps/G in GPS_list - src)
+		if(!G.tracking || G.emped || G.hide_signal)
+			continue
+
+		var/turf/T = get_turf(G)
+		if(!T)
+			continue
+		if(local_mode && curr.z != T.z)
+			continue
+		if(!(T.z in data["zLevelDetection"]))
+			continue
+
+		var/list/signal = list()
+		signal["entrytag"] = G.gps_tag //Name or 'tag' of the GPS
+		signal["coords"] = list(T.x, T.y, T.z)
+		signal["coordsText"] = "[T.x], [T.y], [GLOB.using_map.get_zlevel_name(T.z)]"
+		if(T.z == curr.z) //Distance/Direction calculations for same z-level only
+			signal["dist"] = max(get_dist(curr, T), 0) //Distance between the src and remote GPS turfs
+			signal["degrees"] = round(Get_Angle(curr, T)) //0-360 degree directional bearing, for more precision.
+		signals += list(signal) //Add this signal to the list of signals
+	data["signals"] = signals
+	return data
+
+/obj/item/gps/ui_act(action, params)
+	if(..())
+		return TRUE
+
+	switch(action)
+		if("rename")
+			var/a = stripped_input(usr, "Please enter desired tag.", name, gps_tag, 20)
+
+			if(!a)
+				return
+
+			gps_tag = a
+			name = "global positioning system ([gps_tag])"
+			. = TRUE
+
+		if("power")
+			toggletracking(usr)
+			. = TRUE
+
+		if("updating")
+			updating = !updating
+			. = TRUE
+
+		if("globalmode")
+			local_mode = !local_mode
+			. = TRUE
+
 /obj/item/gps/on // Defaults to off to avoid polluting the signal list with a bunch of GPSes without owners. If you need to spawn active ones, use these.
 	tracking = TRUE
 
@@ -186,11 +270,25 @@ GLOBAL_LIST_EMPTY(GPS_list)
 /obj/item/gps/security/on
 	tracking = TRUE
 
+/obj/item/gps/security/hos
+	icon_state = "gps-sec-hos"
+	gps_tag = "HOS0"
+
+/obj/item/gps/security/hos/on
+	tracking = TRUE
+
 /obj/item/gps/medical
 	icon_state = "gps-med"
 	gps_tag = "MED0"
 
 /obj/item/gps/medical/on
+	tracking = TRUE
+
+/obj/item/gps/medical/cmo
+	icon_state = "gps-med-cmo"
+	gps_tag = "CMO0"
+
+/obj/item/gps/medical/cmo/on
 	tracking = TRUE
 
 /obj/item/gps/science
@@ -201,30 +299,11 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	tracking = TRUE
 
 /obj/item/gps/science/rd
-	icon_state = "gps-rd"
+	icon_state = "gps-sci-rd"
 	gps_tag = "RD0"
 
-/obj/item/gps/security
-	icon_state = "gps-sec"
-	gps_tag = "SEC0"
-
-/obj/item/gps/security/on
+/obj/item/gps/science/rd/on
 	tracking = TRUE
-
-/obj/item/gps/security/hos
-	icon_state = "gps-hos"
-	gps_tag = "HOS0"
-
-/obj/item/gps/medical
-	icon_state = "gps-med"
-	gps_tag = "MED0"
-
-/obj/item/gps/medical/on
-	tracking = TRUE
-
-/obj/item/gps/medical/cmo
-	icon_state = "gps-cmo"
-	gps_tag = "CMO0"
 
 /obj/item/gps/engineering
 	icon_state = "gps-eng"
@@ -233,13 +312,19 @@ GLOBAL_LIST_EMPTY(GPS_list)
 /obj/item/gps/engineering/on
 	tracking = TRUE
 
+/obj/item/gps/engineering/atmos
+	icon_state = "gps-eng-atm"
+	gps_tag = "ATM0"
+
+/obj/item/gps/engineering/atmos/on
+	tracking = TRUE
+
 /obj/item/gps/engineering/ce
-	icon_state = "gps-ce"
+	icon_state = "gps-eng-ce"
 	gps_tag = "CE0"
 
-/obj/item/gps/engineering/atmos
-	icon_state = "gps-atm"
-	gps_tag = "ATM0"
+/obj/item/gps/engineering/ce/on
+	tracking = TRUE
 
 /obj/item/gps/mining
 	icon_state = "gps-mine"
@@ -255,15 +340,6 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	desc = "A positioning system helpful for rescuing trapped or injured explorers, keeping one on you at all times while exploring might just save your life. Alt+click to toggle power."
 
 /obj/item/gps/explorer/on
-	tracking = TRUE
-
-/obj/item/gps/survival
-	icon_state = "gps-exp"
-	gps_tag = "SOS0"
-	long_range = FALSE
-	local_mode = TRUE
-
-/obj/item/gps/survival/on
 	tracking = TRUE
 
 /obj/item/gps/robot
@@ -300,27 +376,25 @@ GLOBAL_LIST_EMPTY(GPS_list)
 
 /obj/item/gps/syndie/display(mob/user)
 	if(!tracking)
-		to_chat(user, "The device is off. Alt-click it to turn it on.")
+		. = "The device is off. Alt-click it to turn it on."
 		return
 	if(emped)
-		to_chat(user, "It's busted!")
+		. = "It's busted!"
 		return
 
 	var/list/dat = list()
 	var/list/gps_data = display_list()
-	var/list/gps_list = gps_data["gps_list"]
 
 	dat += "Current location: [gps_data["my_area_name"]] <b>([gps_data["curr_x"]], [gps_data["curr_y"]], [gps_data["curr_z_name"]])</b>"
 	dat += "[hide_signal ? "Tagged" : "Broadcasting"] as '[gps_tag]'. <a href='?src=\ref[src];tag=1'>\[Change Tag\]</a> \
 	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
 	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
 
-	if(gps_list.len)
+	if(gps_data["gps_list"].len)
 		dat += "Detected signals;"
 		for(var/gps in gps_data["gps_list"])
 			dat += "     [gps["gps_tag"]]: [gps["area_name"]] ([gps["x"]], [gps["y"]], [gps["z_name"]]) [gps["local"] ? "Dist: [gps["distance"]]m Dir: [gps["degrees"]]° ([gps["direction"]])" :""]"
 	else
 		dat += "No other signals detected."
 
-	var/result = dat.Join("<br>")
-	to_chat(user, result)
+	. = dat

@@ -423,7 +423,10 @@
 
 
 		// if paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
-		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
+		if(istype(loc, /obj/item/clipboard) || istype(loc, /obj/structure/noticeboard) || istype(loc, /obj/item/folder))
+			if(loc.loc != usr && !in_range(loc, usr))
+				return
+		else if(loc != usr && !Adjacent(usr))
 			return
 /*
 		t = checkhtml(t)

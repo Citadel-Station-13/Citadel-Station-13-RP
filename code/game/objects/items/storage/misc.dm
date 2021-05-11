@@ -85,8 +85,8 @@
 	can_hold = list(
 		/obj/item/pen/crayon/chalk,
 		/obj/item/reagent_containers/pill,
-		/obj/item/gps/survival,
+		/obj/item/gps/mining,
 		/obj/item/flame/match,
 		/obj/item/flame/lighter
 		)
-	starts_with = list(/obj/item/pen/crayon/chalk, /obj/item/reagent_containers/pill/nutriment, /obj/item/gps/survival)
+	starts_with = list(/obj/item/pen/crayon/chalk, /obj/item/reagent_containers/pill/nutriment, /obj/item/gps/mining)
