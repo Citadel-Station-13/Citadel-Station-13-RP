@@ -49,6 +49,18 @@
 	component_parts += new /obj/item/stack/cable_coil(src,5)
 	RefreshParts()
 
+/obj/machinery/conveyor/proc/toggle_speed(var/forced)
+	if(forced)
+		speed_process = forced
+	else
+		speed_process = !speed_process // switching gears
+	if(speed_process) // high gear
+		STOP_MACHINE_PROCESSING(src)
+		START_PROCESSING(SSfastprocess, src)
+	else // low gear
+		STOP_PROCESSING(SSfastprocess, src)
+		START_MACHINE_PROCESSING(src)
+
 /obj/machinery/conveyor/proc/setmove()
 	if(operating == FORWARDS)
 		movedir = forwards
@@ -219,7 +231,7 @@
 
 	var/list/conveyors		// the list of converyors that are controlled by this switch
 	anchored = 1
-
+	var/speed_active = FALSE // are the linked conveyors on SSfastprocess?
 
 
 /obj/machinery/conveyor_switch/Initialize(mapload)
@@ -232,6 +244,15 @@
 	for(var/obj/machinery/conveyor/C in machines)
 		if(C.id == id)
 			conveyors += C
+
+/obj/machinery/conveyor_switch/proc/toggle_speed(var/forced)
+	speed_active = !speed_active // switching gears
+	if(speed_active) // high gear
+		for(var/obj/machinery/conveyor/C in conveyors)
+			C.toggle_speed(TRUE)
+	else // low gear
+		for(var/obj/machinery/conveyor/C in conveyors)
+			C.toggle_speed(FALSE)
 
 // update the icon depending on the position
 
