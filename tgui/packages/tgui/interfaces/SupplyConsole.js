@@ -326,10 +326,10 @@ const SupplyConsoleMenuOrderList = (props, context) => {
         <Section title={"Order " + (i + 1)} key={i} buttons={(mode === "All"
          && order_auth) ? (
             <Button
-             color="red"
-             icon="trash"
-             content="Delete Record"
-             onClick={() => act("delete_order", { ref: order.ref })} />
+              color="red"
+              icon="trash"
+              content="Delete Record"
+              onClick={() => act("delete_order", { ref: order.ref })} />
           ) : null}>
           <LabeledList>
             {order.entries.map(field => field.entry ? (
