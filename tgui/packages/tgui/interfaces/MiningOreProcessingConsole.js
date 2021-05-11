@@ -76,7 +76,8 @@ const processingOptions = [
 ];
 
 // Higher in the list == closer to top
-// This is just kind of an arbitrary list to sort by because the machine has no predictable ore order in it's list
+// This is just kind of an arbitrary list to sort by because the machine has no
+//predictable ore order in it's list
 // and alphabetizing them doesn't really make sense
 const oreOrder = [
   "verdantium",
@@ -123,7 +124,8 @@ const MOPCOres = (props, context) => {
     }>
       <LabeledList>
         {ores.length && ores.sort(oreSorter).map(ore => (
-          <LabeledList.Item key={ore.ore} label={toTitleCase(ore.name)} buttons={
+          <LabeledList.Item key={ore.ore}
+          label={toTitleCase(ore.name)} buttons={
             <Dropdown
               width="120px"
               color={

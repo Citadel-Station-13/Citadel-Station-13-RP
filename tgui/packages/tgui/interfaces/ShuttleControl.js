@@ -1,7 +1,8 @@
 import { toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
+import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section,
+  AnimatedNumber } from "../components";
 import { Window } from "../layouts";
 
 /* Helpers */
@@ -257,7 +258,8 @@ const ShuttleControlConsoleWeb = (props, context) => {
             This vessel will start and stop automatically.
             Ensure that all non-cycling capable hatches and doors are closed,
             as the automated system may not be able to control them.
-            Docking and flight controls are locked. To unlock, disable the automated flight system.
+            Docking and flight controls are locked. To unlock, disable the
+             automated flight system.
           </Box>
         </Section>
       ) || null}
@@ -300,19 +302,22 @@ const ShuttleControlConsoleWeb = (props, context) => {
                   <Fragment>
                     <Button
                       selected={docking_status === "docked"}
-                      disabled={docking_status !== "undocked" && docking_status !== "docked"}
+                      disabled={docking_status !== "undocked" && docking_status
+                      !== "docked"}
                       onClick={() => act("dock_command")}>
                       Dock
                     </Button>
                     <Button
                       selected={docking_status === "undocked"}
-                      disabled={docking_status !== "docked" && docking_status !== "undocked"}
+                      disabled={docking_status !== "docked" && docking_status
+                      !== "undocked"}
                       onClick={() => act("undock_command")}>
                       Undock
                     </Button>
                   </Fragment>
                 }>
-                  <Box bold inline>{getDockingStatus(docking_status, docking_override)}</Box>
+                  <Box bold inline>{getDockingStatus(docking_status,
+                    docking_override)}</Box>
                 </LabeledList.Item>
               ) || null}
               {can_cloak && (
@@ -469,7 +474,8 @@ export const ShuttleControl = (props, context) => {
     subtemplate,
   } = data;
   return (
-    <Window width={470} height={(subtemplate === "ShuttleControlConsoleWeb") ? 560 : 370} resizable>
+    <Window width={470} height={(subtemplate === "ShuttleControlConsoleWeb") ?
+    560 : 370} resizable>
       <Window.Content>
         {SubtemplateList[subtemplate]}
       </Window.Content>

@@ -1,5 +1,6 @@
 import { useBackend } from '../backend';
-import { Box, Button, Dropdown, Flex, Icon, LabeledList, Modal, Section } from '../components';
+import { Box, Button, Dropdown, Flex, Icon, LabeledList, Modal, Section } from
+'../components';
 import { Window } from '../layouts';
 
 export const ShuttleConsole = (props, context) => {
@@ -132,7 +133,8 @@ const ShuttleConsoleContent = (props, context) => {
                 width="240px"
                 options={locations.map(location => location.name)}
                 disabled={locked || authorization_required}
-                selected={getLocationNameById(locations, destination) || "Select a Destination"}
+                selected={getLocationNameById(locations, destination) ||
+                 "Select a Destination"}
                 onSelected={value => act('set_destination', {
                   destination: getLocationIdByName(locations, value),
                 })} />)}
