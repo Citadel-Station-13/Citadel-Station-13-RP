@@ -37,7 +37,7 @@
 	prize_list["Gear"] = list(
 		// TODO EQUIPMENT("Advanced Scanner",	/obj/item/device/t_scanner/adv_mining_scanner,										800),
 		// TODO EQUIPMENT("Explorer's Webbing",	/obj/item/storage/belt/mining,														500),
-		EQUIPMENT("Defense Equipment - Plasteel Machete",		/obj/item/material/knife/machete,							500),
+		EQUIPMENT("Defense Equipment - Plasteel Machete",		/obj/item/clothing/accessory/holster/machete/occupied,							500),
 		EQUIPMENT("Defense Equipment - Razor Drone Deployer",	/obj/item/grenade/spawnergrenade/manhacks/station/locked,	1000),
 		EQUIPMENT("Defense Equipment - Sentry Drone Deployer",	/obj/item/grenade/spawnergrenade/ward,						1500),
 		EQUIPMENT("Defense Equipment - Smoke Bomb",				/obj/item/grenade/smokebomb,									100),
@@ -45,6 +45,7 @@
 		EQUIPMENT("Fishing Net",								/obj/item/material/fishing_net,								500),
 		EQUIPMENT("Titanium Fishing Rod",						/obj/item/material/fishing_rod/modern,						1000),
 		EQUIPMENT("Fulton Beacon",								/obj/item/fulton_core,												500),
+		EQUIPMENT("Wormhole Fulton Beacon",						/obj/item/extraction_pack/wormhole,							1000),
 		EQUIPMENT("Geiger Counter",								/obj/item/geiger,											750),
 		EQUIPMENT("GPS Device",									/obj/item/gps/mining,										100),
 		// EQUIPMENT("Mining Conscription Kit",					/obj/item/storage/backpack/duffelbag/mining_conscript,				1000),
