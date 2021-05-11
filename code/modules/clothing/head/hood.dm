@@ -17,6 +17,10 @@
 	desc = "A white winter coat hood with blue markings."
 	icon_state = "winterhood_paramed"
 
+
+/obj/item/clothing/head/hood/winter/bar
+	desc = "A winter hood that smells faintly of booze."
+
 /obj/item/clothing/head/hood/winter/viro
 	desc = "A white winter coat hood with green markings."
 	icon_state = "winterhood_viro"
@@ -120,6 +124,11 @@
 
 /obj/item/clothing/head/hood/winter/durathread
 	icon_state = "winterhood_durathread"
+
+/obj/item/clothing/head/hood/winter/ronin
+	name = "ronin heating coils"
+	desc = "Glowing coils designed to ward off cold temperatures."
+	flags_inv = NONE
 
 // Explorer gear
 /obj/item/clothing/head/hood/explorer

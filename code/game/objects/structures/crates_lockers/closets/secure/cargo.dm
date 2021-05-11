@@ -55,7 +55,7 @@
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/gloves/fingerless,
 		/obj/item/clothing/suit/fire/firefighter,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/cargo/qm,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/qm,
 		/obj/item/tank/emergency/oxygen,
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/glasses/meson,
