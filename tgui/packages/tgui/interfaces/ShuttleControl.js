@@ -318,7 +318,7 @@ const ShuttleControlConsoleWeb = (props, context) => {
                 }>
                   <Box bold inline>
                     {getDockingStatus(docking_status, docking_override)}
-                    </Box>
+                </Box>
                 </LabeledList.Item>)
                 || null}
               {can_cloak && (
