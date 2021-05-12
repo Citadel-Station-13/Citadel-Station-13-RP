@@ -71,7 +71,7 @@
 
 			for(var/A in SSxenoarch.digsite_spawning_turfs)
 				var/turf/simulated/mineral/T = A
-				if(T.density && T.finds && T.finds.len)
+				if(istype(T) && T.density && T.finds && T.finds.len)
 					if(T.z == cur_turf.z)
 						var/cur_dist = get_dist(cur_turf, T) * 2
 						if(nearestSimpleTargetDist < 0 || cur_dist < nearestSimpleTargetDist)
@@ -333,16 +333,19 @@
 /obj/item/xenoarch_multi_tool/attack_self(var/mob/living/user)
 	depth_scanner.interact(user)
 
-/obj/item/xenoarch_multi_tool/verb/swap_settings(var/mob/living/user)
+/obj/item/xenoarch_multi_tool/verb/swap_settings()
 	set name = "Swap Functionality"
 	set desc = "Swap between the scanning and measuring functionality.."
 	mode = !mode
+	set src in loc
 	if(mode)
 		to_chat(user, "The device will now scan for artifacts.")
 	else
 		to_chat(user, "The device will now measure depth dug.")
 
-/obj/item/xenoarch_multi_tool/verb/scan_for_anomalies(var/mob/living/user)
+/obj/item/xenoarch_multi_tool/verb/scan_for_anomalies()
 	set name = "Scan for Anomalies"
 	set desc = "Scan for artifacts and anomalies within your vicinity."
+	set src in loc
+	
 	anomaly_scanner.interact(user)
