@@ -202,7 +202,7 @@
 		var/name = R.fields["name"]
 		var/rank = R.fields["rank"]
 		var/real_rank = make_list_rank(R.fields["real_rank"])
-		if(real rank in command_positions)
+		if(real_rank in command_positions)
 			command[name] = rank
 		else if(real_rank in security_positions)
 			security[name] = rank
@@ -215,7 +215,7 @@
 		else if(real_rank in cargo_positions)
 			cargo[name] = rank
 		else if(real_rank in planet_positions)
-			exploratoin[name] = rank
+			exploration[name] = rank
 		else if(real_rank in civilian_positions)
 			civilian[name] = rank
 		else
