@@ -163,16 +163,16 @@
 
 /datum/world_topic/jsonstatus/Run(list/input, addr)
 	. = list()
-	.["Gamemode"] = master_mode
-	.["Round ID"] = GLOB.round_id
-	.["Players"] = GLOB.clients.len
+	.["mode"] = master_mode
+	.["round_id"] = GLOB.round_id
+	.["players"] = GLOB.clients.len
 	var/list/adm = get_admin_counts()
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
-	.["Admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
-	.["Security Level"] = get_security_level()
-	.["Round Duration"] = roundduration2text()
-	.["Time Dilation (Avg)"] = SStime_track.time_dilation_avg
+	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
+	.["security_level"] = get_security_level()
+	.["round_duration"] = roundduration2text()
+	.["map"] = SSmapping.config.map_name
 	return json_encode(.)
 
 /datum/world_topic/jsonplayers
@@ -251,7 +251,9 @@
 	.["branch"] = "master"
 	.["data"] = revdata.date
 	.["dd_version"] = world.byond_build
+	.["dd_build"] = world.byond_version
 	.["dm_version"] = DM_BUILD
+	.["dm_build"] = DM_VERSION
 	.["gameid"] = GLOB.round_id
 	.["revision"] = revdata.commit
 	return json_encode(.)
