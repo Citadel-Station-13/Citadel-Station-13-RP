@@ -653,7 +653,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "aBZ" = (
-/obj/machinery/photocopier,
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
@@ -663,6 +662,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/libraryscanner,
 /turf/simulated/floor/wood,
 /area/library)
 "aCC" = (
@@ -14495,6 +14495,7 @@
 	pixel_y = -24
 	},
 /obj/machinery/light/small,
+/obj/machinery/photocopier,
 /turf/simulated/floor/wood,
 /area/library)
 "loy" = (

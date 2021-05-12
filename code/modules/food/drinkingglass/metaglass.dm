@@ -677,3 +677,6 @@ Drinks Data
 
 /datum/reagent/drink/greenstuff
 	glass_icon_state = "greenstuff"
+
+/datum/reagent/drink/erebusmoonrise
+	glass_icon_state = "erebusmoonrise"
