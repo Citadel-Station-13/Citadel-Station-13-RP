@@ -164,7 +164,7 @@
 /datum/world_topic/jsonstatus/Run(list/input, addr)
 	. = list()
 	.["mode"] = master_mode
-	.["round_id"] = GLOB.round_id
+	.["round_id"] = "NOT SUPPORTED" // GLOB.round_id
 	.["players"] = GLOB.clients.len
 	var/list/adm = get_admin_counts()
 	var/list/presentmins = adm["present"]
@@ -254,7 +254,7 @@
 	.["dd_build"] = world.byond_version
 	.["dm_version"] = DM_BUILD
 	.["dm_build"] = DM_VERSION
-	.["gameid"] = GLOB.round_id
+	.["gameid"] = "NOT SUPPORTED" // "[GLOB.round_id]"
 	.["revision"] = revdata.commit
 	return list2params(.)
 
