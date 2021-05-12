@@ -103,9 +103,9 @@
 					else
 						display_name = holder.fakekey
 			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor) // keeping this for the badmins
-				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM>[msg]</span></span></font>")
+				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
 			else
-				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message linkify'>OOC: <EM>[display_name]: </EM>[msg]</span></span></span>")
+				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message'>OOC: <EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></span>")
 
 /client/proc/looc_wrapper()
 	var/message = input("","looc (text)") as text|null
@@ -201,12 +201,12 @@
 		if(target in admins)
 			admin_stuff += "/([key])"
 
-		to_chat(target, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'>[msg]</span></span>")
+		to_chat(target, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
 
 	for(var/client/target in r_receivers)
 		var/admin_stuff = "/([key])([admin_jump_link(mob, target.holder)])"
 
-		to_chat(target, "<span class='looc'>" + "LOOC: " + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]: </EM> <span class='message'>[msg]</span></span>")
+		to_chat(target, "<span class='looc'>" + "LOOC: " + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]: </EM> <span class='message'><span class='linkify'>[msg]</span></span></span>")
 
 /mob/proc/get_looc_source()
 	return src

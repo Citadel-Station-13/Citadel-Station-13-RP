@@ -156,8 +156,12 @@
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")
 				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
-				usr.put_in_hands(inserted_id)
-				inserted_id = null
+				if(ishuman(usr))
+					usr.put_in_hands(inserted_id)
+					inserted_id = null
+				else
+					inserted_id.forceMove(get_turf(src))
+					inserted_id = null
 		else if(href_list["choice"] == "insert")
 			var/obj/item/card/id/I = usr.get_active_hand()
 			if(istype(I) && !inserted_id && usr.unEquip(I))

@@ -116,6 +116,7 @@
 
 /mob/new_player/proc/verifyage()
 	if(client.holder)		// they're an admin
+		client.set_preference(/datum/client_preference/debug/age_verified, 1)
 		return TRUE
 	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) //make sure they are verified
 		if(!client.prefs)
