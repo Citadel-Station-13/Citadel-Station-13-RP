@@ -337,7 +337,7 @@
 	set name = "Swap Functionality"
 	set desc = "Swap between the scanning and measuring functionality.."
 	mode = !mode
-	set src in loc
+	set src in usr
 	if(mode)
 		to_chat(user, "The device will now scan for artifacts.")
 	else
@@ -346,6 +346,6 @@
 /obj/item/xenoarch_multi_tool/verb/scan_for_anomalies()
 	set name = "Scan for Anomalies"
 	set desc = "Scan for artifacts and anomalies within your vicinity."
-	set src in loc
+	set src in usr
 	
 	anomaly_scanner.interact(user)
