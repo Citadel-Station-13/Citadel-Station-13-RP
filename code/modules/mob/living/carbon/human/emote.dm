@@ -817,7 +817,7 @@
 			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \
 					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
+					twitch_v, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
 		else
 			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
@@ -950,6 +950,22 @@
 		if ("nme")
 			nme()
 			return TRUE
+		if ("mchitter")
+			message = "chitters."
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/mothchitter.ogg', 50, 1, -1)
+		if ("mlaugh")
+			message = "laughs."
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/mothlaugh.ogg', 50, 1, -1)
+		if ("mscream")
+			message = "screams!"
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/scream_moth.ogg', 50, 1, -1)
+		if ("msqueak")
+			message = "lets out a squeak."
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/mothsqueak.ogg', 50, 1, -1)
 		if ("flip")
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			//Check if they are physically capable
