@@ -204,10 +204,10 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	return rgb(80,80,80,230)
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H)
-	to_chat(H,"<span class='warning'>You died as a Protean. Please sit out of the round for at least 30 minutes before respawning, to represent the time it would take to ship a new-you to the station.</span>")
-	spawn(1) //This spawn is here so that if the protean_blob calls qdel, it doesn't try to gib the humanform.
-		if(H)
-			H.gib()
+	if(istype(temporary_form, /mob/living/simple_mob/protean_blob))
+		H.nano_outofblob(temporary_form)
+	to_chat(H, "<span class='warning'>You died as a Protean. Please sit out of the round for at least 30 minutes before respawning, to represent the time it would take to ship a new-you to the station.</span>")
+	H.gib()
 
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
 	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.8 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever). The decimal point (0.8 as of now) is the autoblob %hp threshold. Right, quick maths lesson: making the autoblob threshold 35% does not mean that proteans will blob at 35% health. It means that they'll blob at 65% health, because it's checking if the total damage is higher than the threshold. I've made it that they blob at 20% health now, so they don't instantly blob to everything.
