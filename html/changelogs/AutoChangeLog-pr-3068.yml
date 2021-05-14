@@ -1,7 +1,0 @@
-author: "nik707"
-delete-after: True
-changes: 
-  - rscadd: "Mirror tool for borgs"
-  - bugfix: "fixed a bug that would allow infinite mirror production
-tweak: tweaks spawn in text when resleeving"
-  - rscadd: "further sanity checks to the mirror tool for more easy usage"
