@@ -5,7 +5,7 @@
 	var/optimal_power = 0.1//cooking power at 100%
 
 	var/loss = 1	//Temp lost per proc when equalising
-	var/resistance = 162000	//Resistance to heating. combines with active power usage to determine how long heating takes
+	var/resistance = 81000	//Resistance to heating. combines with active power usage to determine how long heating takes
 
 	var/light_x = 0
 	var/light_y = 0
@@ -21,7 +21,8 @@
 				. += span("notice", "It is running at [round(get_efficiency(), 0.1)]% efficiency!")
 			. += "Temperature: [round(temperature - T0C, 0.1)]C / [round(optimal_temp - T0C, 0.1)]C"
 		else
-	. += span("warning", "It is switched off.")
+			if(stat)
+				. += span("warning", "It is switched off.")
 
 /obj/machinery/appliance/cooker/list_contents(var/mob/user)
 	if (cooking_objs.len)
@@ -98,7 +99,7 @@
 			playsound(src, 'sound/machines/click.ogg', 20, 1)
 			use_power = 2.//If we're heating we use the active power
 			update_icon()
-		temperature += active_power_usage / resistance
+		temperature += active_power_usage / (resistance/2)
 		update_cooking_power()
 		return 1
 	else
