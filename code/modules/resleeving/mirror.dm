@@ -110,19 +110,26 @@
 							add_attack_logs(user,M,"Mirror removed by [user]")
 							src.imp = MI
 							qdel(MI)
+				if(MI == null)
+					to_chat(usr, "This person has no mirror installed.")
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
-			M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
-			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-			user.do_attack_animation(M)
-			var/turf/T1 = get_turf(M)
-			if (T1 && ((M == user) || do_after(user, 20)))
-				if(user && M && (get_turf(M) == T1) && src && src.imp)
-					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
-					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
-					if(imp.handle_implant(M))
-						imp.post_implant(M)
-					src.imp = null
+			for(var/obj/item/organ/I in M.organs)
+				for(var/obj/item/implant/mirror/MI in I.contents)
+					if(MI)
+						to_chat(usr, "This person already has a mirror!")
+						return
+				M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
+				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+				user.do_attack_animation(M)
+				var/turf/T1 = get_turf(M)
+				if (T1 && ((M == user) || do_after(user, 20)))
+					if(user && M && (get_turf(M) == T1) && src && src.imp)
+						M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
+						add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
+						if(imp.handle_implant(M))
+							imp.post_implant(M)
+						src.imp = null
 	else
 		to_chat(usr, "You must target the torso.")
 

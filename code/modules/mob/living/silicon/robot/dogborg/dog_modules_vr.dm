@@ -437,3 +437,43 @@
 	T.apply_damage(20, HALLOSS,, armor_block, armor_soak)
 	if(prob(33))
 		T.apply_effect(3, WEAKEN, armor_block)
+
+/obj/item/dogborg/mirrortool
+	name = "Mirror Installation Tool"
+	desc = "A tool for the installation and removal of Mirrors"
+	icon = 'icons/obj/device_alt.dmi'
+	icon_state = "sleevemate"
+	item_state = "healthanalyzer"
+	w_class = ITEMSIZE_SMALL
+	var/obj/item/implant/mirror/imp = null
+
+/obj/item/dogborg/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
+	if(target_zone == BP_TORSO && imp == null)
+		for(var/obj/item/organ/I in M.organs)
+			for(var/obj/item/implant/mirror/MI in I.contents)
+				if(imp == null)
+					M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
+					user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+					user.do_attack_animation(M)
+					var/turf/T1 = get_turf(M)
+					if (T1 && ((M == user) || do_after(user, 20)))
+						if(user && M && (get_turf(M) == T1) && src)
+							M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
+							add_attack_logs(user,M,"Mirror removed by [user]")
+							src.imp = MI
+							qdel(MI)
+	else if (target_zone == BP_TORSO && imp != null)
+		if (imp)
+			M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
+			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.do_attack_animation(M)
+			var/turf/T1 = get_turf(M)
+			if (T1 && ((M == user) || do_after(user, 20)))
+				if(user && M && (get_turf(M) == T1) && src && src.imp)
+					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
+					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
+					if(imp.handle_implant(M))
+						imp.post_implant(M)
+					src.imp = null
+	else
+		to_chat(usr, "You must target the torso.")

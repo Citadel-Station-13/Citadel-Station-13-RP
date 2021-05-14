@@ -1421,3 +1421,17 @@
 	result = "monstertamer"
 	required_reagents = list("whiskey" = 1, "protein" = 1)
 	result_amount = 2
+
+/datum/chemical_reaction/drinks/phobos
+	name = "Phobos"
+	id = "phobos"
+	result = "phobos"
+	required_reagents = list("hooch" = 1, "erebusmoonrise" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/greenstuff
+	name = "Green Stuff"
+	id = "greenstuff"
+	result = "greenstuff"
+	required_reagents = list("manlydorf" = 3, "absinthe" = 2)
+	result_amount = 5
