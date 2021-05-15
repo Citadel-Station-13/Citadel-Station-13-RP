@@ -74,10 +74,19 @@
 	sort_string = "NBAAC"
 
 /datum/design/item/engineering/atmosanalyzer
-	name = "Analyzer"
+	name = "Atmospheric Analyzer"
 	desc = "A hand-held environmental scanner which reports current gas levels."
 	id = "atmosanalyzer"
 	req_tech = list(TECH_ENGINEERING = 2)
 	materials = list(DEFAULT_WALL_MATERIAL = 200, "glass" = 100)
 	build_path = /obj/item/analyzer
 	sort_string = "NBABA"
+
+/datum/design/item/engineering/atmosanalyzerlongrange
+	name = "Long Range Atmospheric Analyzer"
+	desc = "A hand-held environmental scanner which reports current gas levels from a distance."
+	id = "atmosanalyzerlr"
+	req_tech = list(TECH_ENGINEERING = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 200, "glass" = 200)
+	build_path = /obj/item/analyzer/longrange
+	sort_string = "NBABB"
