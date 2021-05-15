@@ -130,7 +130,7 @@ var/global/list/total_extraction_beacons = list()
 			for(var/turf/T in range(1, beacon))
 				if(T.density)
 					continue
-				flooring_near_beacon += floor
+				flooring_near_beacon += T
 			if(!length(flooring_near_beacon))
 				holder_obj.forceMove(get_turf(beacon))
 			else
