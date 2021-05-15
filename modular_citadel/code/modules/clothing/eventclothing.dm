@@ -1,6 +1,6 @@
 /obj/item/clothing/under/event_reward/foxmiko
 	name = "Miko Garb"
-	desc = "The creative reintripretation of Shinto miko attire."
+	desc = "The creative reinterpretation of Shinto miko attire."
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	icon = 'modular_citadel/icons/obj/clothing/eventclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/eventclothing.dmi'
