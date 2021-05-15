@@ -531,7 +531,24 @@
 
 /datum/gear/restricted/medical/suit/wintercoat/paramedic
 	display_name = "Medical Winter Coat, Paramedic"
-	path = /obj/item/clothing/suit/storage/hooded/wintercoat/para
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/para
+
+/datum/gear/restricted/medical/suit/wintercoat/chemist
+	display_name = "Medical Winter Coat, Chemist"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/chemistry
+
+/datum/gear/restricted/medical/suit/wintercoat/viro
+	display_name = "Medical Winter Coat, Virologist"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/viro
+
+/datum/gear/restricted/medical/suit/wintercoat/genetics
+	display_name = "Medical Winter Coat, Geneticist"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/genetics
+
+/datum/gear/restricted/medical/suit/wintercoat/cmo
+	display_name = "Medical Winter Coat, CMO"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/cmo
+	allowed_roles = list("Chief Medical Officer")
 
 /datum/gear/restricted/medical/suit/surgical_apron
 	display_name = "Medical Surgical Apron"
@@ -648,6 +665,11 @@
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos
 	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
 
+/datum/gear/restricted/engineering/suit/wintercoat/ce
+	display_name = "Chief Engineer's Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/ce
+	allowed_roles = list("Chief Engineer")
+
 /datum/gear/restricted/engineering/suit/operations_coat
 	display_name = "Engineering Operations Jacket"
 	path = /obj/item/clothing/suit/storage/toggle/operations_coat/engineering
@@ -752,6 +774,11 @@
 	display_name = "Cargo Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/cargo
 
+/datum/gear/restricted/supply/suit/wintercoat/qm
+	display_name = "Quartermaster's Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/qm
+	allowed_roles = list("Quartermaster")
+
 /datum/gear/restricted/supply/suit/wintercoat/mining
 	display_name = "Mining Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/miner
@@ -838,6 +865,16 @@
 /datum/gear/restricted/science/suit/wintercoat
 	display_name = "Science Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science
+
+/datum/gear/restricted/science/suit/wintercoat/rd
+	display_name = "Research Director's Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science/rd
+	allowed_roles = list("Research Director")
+
+/datum/gear/restricted/science/suit/wintercoat/robotics
+	display_name = "Robotics Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science/robotics
+
 
 /datum/gear/restricted/science/suit/snowsuit
 	display_name = "Science Snowsuit"
@@ -965,6 +1002,11 @@
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain
 	allowed_roles = list("Facility Director")
 
+/datum/gear/restricted/command/suit/wintercoat_hop
+	display_name = "Head of Personnel - Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain/hop
+	allowed_roles = list("Head of Personnel")
+
 /datum/gear/restricted/command/suit/cloak
 	display_name = "Facility Director - Cloak"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/captain
@@ -1085,6 +1127,11 @@
 /datum/gear/restricted/misc/shoes/janitor
 	display_name = "Janitor Galoshes - Black"
 	path = /obj/item/clothing/shoes/galoshes/citadel/black
+	allowed_roles = list("Janitor")
+
+/datum/gear/restricted/janitor/wintercoat
+	display_name = "Janitor's Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/janitor
 	allowed_roles = list("Janitor")
 
 /datum/gear/restricted/misc/shoes/janitor/alt
