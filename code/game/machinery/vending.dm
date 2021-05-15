@@ -2284,6 +2284,7 @@
 					/obj/item/clothing/suit/varsity/blue = 5,
 					/obj/item/clothing/suit/varsity/brown = 5,
 					/obj/item/clothing/suit/storage/hooded/wintercoat = 5,
+					/obj/item/clothing/suit/storage/hooded/wintercoat/aformal = 5,
 					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 5,
 					/obj/item/clothing/suit/storage/gothcoat = 3)
 	prices = list(/obj/item/clothing/suit/storage/apron = 25,
@@ -2372,6 +2373,7 @@
 					/obj/item/clothing/suit/varsity/blue = 25,
 					/obj/item/clothing/suit/varsity/brown = 25,
 					/obj/item/clothing/suit/storage/hooded/wintercoat = 25,
+					/obj/item/clothing/suit/storage/hooded/wintercoat/aformal = 25,
 					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 25,
 					/obj/item/clothing/suit/storage/gothcoat = 25)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
