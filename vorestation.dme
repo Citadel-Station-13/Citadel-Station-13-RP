@@ -3459,6 +3459,7 @@
 #include "modular_citadel\code\game\objects\random\random_cit.dm"
 #include "modular_citadel\code\modules\admin\verbs\debug_vr.dm"
 #include "modular_citadel\code\modules\clothing\donatorclothing.dm"
+#include "modular_citadel\code\modules\clothing\eventclothing.dm"
 #include "modular_citadel\code\modules\clothing\head\misc_cit.dm"
 #include "modular_citadel\code\modules\clothing\shoes\miscellaneous_cit.dm"
 #include "modular_citadel\code\modules\clothing\spacesuits\rig\modules\utility.dm"
