@@ -220,6 +220,9 @@ var/redspace_abduction_z
 
 	target.transforming = FALSE
 
+/* There is a reported issue with this smite: Users will have the autosave icon return and lag their game out periodically throughout the round apparently. Unable to isolate breakage.
+This smite is also slated for transfer to the non Vore section shortly. Will coincide with fix.
+
 /proc/fake_autosave(var/mob/living/target, var/client/user, var/wide)
 	if(!istype(target) || !target.client)
 		to_chat(user, "<span class='warning'>Skipping [target] because they are not a /mob/living or have no client.</span>")
@@ -262,3 +265,4 @@ var/redspace_abduction_z
 			to_chat(target, "<span class='notice' style='font: small-caps bold large monospace!important'>Autosave complete!</span>")
 			if(target.client)
 				target.client.screen -= loader
+*/
