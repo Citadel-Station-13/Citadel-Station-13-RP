@@ -46,7 +46,8 @@
 	name = "mining winter hood"
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 
-/obj/item/clothing/head/hood/winter/ronin
+//Ronin Coat Hood
+/obj/item/clothing/head/hood/ronin
 	name = "ronin heating coils"
 	desc = "Glowing coils designed to ward off cold temperatures."
 	flags_inv = null
