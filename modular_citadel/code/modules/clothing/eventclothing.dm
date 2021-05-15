@@ -103,7 +103,7 @@
 	if(usr.stat) return
 	var/obj/item/clothing/accessory/A //obj for accessory we are targeting
 	if(LAZYLEN(accessories)) //If the list contains accessories - it is valid
-		A = input("Select an accessory to remove from [src]") as null|anything in accessories
+		A = input("Select an accessory to hide on [src]") as null|anything in accessories
 	if(A) //If a selection is made, call the other proc
 		hide_accessory(usr,A)
 	if(!LAZYLEN(accessories)) //But if there are no accessories, list will be empty, meaning we ought to remove access to verb
