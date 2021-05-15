@@ -8,7 +8,7 @@
 	if(!istype(target))
 		return
 
-	var/list/smite_types = list(SMITE_SHADEKIN_ATTACK,SMITE_SHADEKIN_NOMF,SMITE_REDSPACE_ABDUCT,SMITE_AUTOSAVE,SMITE_AUTOSAVE_WIDE)
+	var/list/smite_types = list(SMITE_SHADEKIN_ATTACK,SMITE_SHADEKIN_NOMF,SMITE_REDSPACE_ABDUCT) //,SMITE_AUTOSAVE,SMITE_AUTOSAVE_WIDE (Removed temporarily.)
 
 	var/smite_choice = input("Select the type of SMITE for [target]","SMITE Type Choice") as null|anything in smite_types
 	if(!smite_choice)
@@ -121,13 +121,13 @@
 
 		if(SMITE_REDSPACE_ABDUCT)
 			redspace_abduction(target, src)
-
+/*
 		if(SMITE_AUTOSAVE)
 			fake_autosave(target, src)
 
 		if(SMITE_AUTOSAVE_WIDE)
 			fake_autosave(target, src, TRUE)
-
+*/
 		else
 			return //Injection? Don't print any messages.
 
