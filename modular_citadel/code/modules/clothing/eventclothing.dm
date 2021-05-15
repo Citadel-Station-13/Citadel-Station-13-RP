@@ -11,6 +11,7 @@
 	var/kimono = 0 //Custom vars for tracking kimono and skirt state
 	var/skirt = 0
     
+	
 /obj/item/clothing/under/event_reward/foxmiko/verb/partkimono() //Verb for parting kimono - kinky. User reporting, flips state, and updates icon
     set name = "Adjust Kimono"
     set category = "Object"
@@ -74,7 +75,6 @@
 		else //But skirt is not lifted too - default state
 			item_state_slots[slot_w_uniform_str] = "[worn_state]"
 			icon_state = "foxmiko"
-
 
 
 /obj/item/clothing/under/event_reward/foxmiko/proc/hide_accessory(mob/user, obj/item/clothing/accessory/A) //Proc, handles hiding and concealing accessories and user reporting
