@@ -1,7 +1,7 @@
 /obj/machinery/appliance/cooker
 	var/temperature = T20C
 	var/min_temp = 80 + T0C	//Minimum temperature to do any cooking
-	var/optimal_temp = 200 + T0C	//Temperature at which we have 100% efficiency. efficiency is lowered on either side of this
+	var/optimal_temp = 200 + T0C	//Temperature at which we have 100% efficiency. - Edit, efficiency is not lowered anymore for being too hot, because why would that slow down cooking?
 	var/optimal_power = 0.1//cooking power at 100%
 
 	var/loss = 1	//Temp lost per proc when equalising
@@ -89,8 +89,11 @@
 			else
 				temp_scale = 1 - (temp_scale - 1)
 
+	if(temperature > optimal_temp)
+		cooking_power = optimal_power
+	else
+		cooking_power = optimal_power * temp_scale
 
-	cooking_power = optimal_power * temp_scale
 	//RefreshParts()
 
 /obj/machinery/appliance/cooker/proc/heat_up()
