@@ -2461,6 +2461,10 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_11)
 "gY" = (
+/obj/machinery/light_switch{
+	pixel_x = -9;
+	pixel_y = 30
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
 "hc" = (
@@ -4814,6 +4818,11 @@
 /obj/structure/bed/padded,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
+	},
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_x = -2;
+	pixel_y = -28
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
@@ -15875,6 +15884,10 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "UU" = (
+/obj/machinery/light_switch{
+	pixel_x = -9;
+	pixel_y = 30
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "UV" = (
