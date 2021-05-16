@@ -13,16 +13,28 @@
 	to_chat(user, "<span class='warning'>Your [src] flashes a red light as it fails to analyze \the [A].</span>")
 	return 0
 
+/obj/proc/analyze_gases_ghost(var/atom/A, var/mob/user)
+	var/list/result = A.atmosanalyze(user)
+	if(result && result.len)
+		to_chat(user, "<span class='notice'>Results of the analysis[src == A ? "" : " of \the [A]"]</span>")
+		for(var/line in result)
+			to_chat(user, "<span class='notice'>[line]</span>")
+		return 1
+
+	to_chat(user, "<span class='warning'>That [A] does not contain atmosphere.</span>")
+	return 0
+
 /proc/atmosanalyzer_scan(var/atom/target, var/datum/gas_mixture/mixture, var/mob/user)
 	var/list/results = list()
 
 	if (mixture && mixture.total_moles > 0)
 		var/pressure = mixture.return_pressure()
 		var/total_moles = mixture.total_moles
-		results += "<span class='notice'>Pressure: [round(pressure,0.1)] kPa</span>"
+		results += "<span class='notice'>Pressure: [round(pressure,0.01)] kPa</span>"
 		for(var/mix in mixture.gas)
 			results += "<span class='notice'>[GLOB.meta_gas_names[mix]]: [round((mixture.gas[mix] / total_moles) * 100)]%</span>"
 		results += "<span class='notice'>Temperature: [round(mixture.temperature-T0C)]&deg;C</span>"
+		results += "<span class='notice'>Total Moles: [round(total_moles,0.01)]</span>"
 	else
 		results += "<span class='notice'>\The [target] is empty!</span>"
 
