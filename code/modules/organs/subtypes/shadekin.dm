@@ -39,4 +39,4 @@
 	min_broken_damage = 7
 
 /obj/item/organ/external/hand/right/crewkin
-	min_broken_damage = 7 
+	min_broken_damage = 7
