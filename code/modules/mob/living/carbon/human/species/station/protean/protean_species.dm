@@ -204,8 +204,8 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	return rgb(80,80,80,230)
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H)
-	if(istype(temporary_form, /mob/living/simple_mob/protean_blob))
-		H.nano_outofblob(temporary_form)
+	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
+		H.nano_outofblob(H.temporary_form)
 	to_chat(H, "<span class='warning'>You died as a Protean. Please sit out of the round for at least 30 minutes before respawning, to represent the time it would take to ship a new-you to the station.</span>")
 	H.gib()
 
