@@ -184,7 +184,7 @@
 		if(C.holder?.fakekey)
 			. += C.holder.fakekey
 			continue
-		. += C.key		. += C.key
+		. += C.key
 	return json_encode(.)
 
 /datum/world_topic/jsonmanifest
