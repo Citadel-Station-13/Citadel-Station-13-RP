@@ -60,7 +60,7 @@
 		if(SSxenoarch) //Sanity check due to runtimes ~Z
 			for(var/A in SSxenoarch.artifact_spawning_turfs)
 				var/turf/simulated/mineral/T = A
-				if(T.density && T.artifact_find)
+				if(istype(T) && T.density && T.artifact_find)
 					if(T.z == cur_turf.z)
 						var/cur_dist = get_dist(cur_turf, T) * 2
 						if(nearestTargetDist < 0 || cur_dist < nearestTargetDist)
@@ -331,7 +331,7 @@
 	depth_scanner = new/obj/item/depth_scanner(src)
 
 /obj/item/xenoarch_multi_tool/attack_self(var/mob/living/user)
-	depth_scanner.interact(user)
+	depth_scanner.interact(usr)
 
 /obj/item/xenoarch_multi_tool/verb/swap_settings()
 	set name = "Swap Functionality"
@@ -348,4 +348,4 @@
 	set desc = "Scan for artifacts and anomalies within your vicinity."
 	set src in usr
 	
-	anomaly_scanner.interact(user)
+	anomaly_scanner.interact(usr)
