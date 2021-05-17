@@ -1,5 +1,0 @@
-author: "nevimer"
-delete-after: True
-changes: 
-  - rscadd: "Moles measurement to pipes and cannisters"
-  - rscadd: "Ghosts can inspect pipes"
