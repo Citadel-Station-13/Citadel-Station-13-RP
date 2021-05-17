@@ -10,6 +10,9 @@
 	icon_state = "mirror_implant_f"
 	var/stored_mind = null
 
+/obj/item/implant/mirror/digest_act(var/atom/movable/item_storage = null)
+    return FALSE
+
 /obj/item/implant/get_data()
 	var/dat = {"
 <b>Implant Specifications:</b><BR>
