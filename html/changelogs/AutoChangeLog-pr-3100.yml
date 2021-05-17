@@ -1,0 +1,5 @@
+author: "Knouli"
+delete-after: True
+changes: 
+  - rscadd: "Miko Garb custom sprite"
+  - code_imp: "New .dms for event rewards, separate from donator sprites"
