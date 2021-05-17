@@ -336,16 +336,17 @@
 /obj/item/xenoarch_multi_tool/verb/swap_settings()
 	set name = "Swap Functionality"
 	set desc = "Swap between the scanning and measuring functionality.."
+	if(!(src in usr))
+		return
 	mode = !mode
-	set src in usr
 	if(mode)
-		to_chat(user, "The device will now scan for artifacts.")
+		to_chat(usr, "The device will now scan for artifacts.")
 	else
-		to_chat(user, "The device will now measure depth dug.")
+		to_chat(usr, "The device will now measure depth dug.")
 
 /obj/item/xenoarch_multi_tool/verb/scan_for_anomalies()
 	set name = "Scan for Anomalies"
 	set desc = "Scan for artifacts and anomalies within your vicinity."
-	set src in usr
-	
+	if(!(src in usr))
+		return
 	anomaly_scanner.interact(usr)
