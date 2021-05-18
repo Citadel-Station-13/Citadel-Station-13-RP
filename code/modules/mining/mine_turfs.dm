@@ -107,7 +107,7 @@ turf/simulated/mineral/floor/light_corner
 	update_general()
 
 /turf/simulated/mineral/proc/update_general()
-	if(!flags & INITIALIZED)
+	if(!(flags & INITIALIZED))
 		update_icon(TRUE)
 		recalc_atom_opacity()
 	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
