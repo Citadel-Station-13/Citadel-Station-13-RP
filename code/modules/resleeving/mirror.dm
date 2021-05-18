@@ -97,32 +97,41 @@
 
 /obj/item/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
 	if(target_zone == BP_TORSO && imp == null)
-		for(var/obj/item/organ/I in M.organs)
-			for(var/obj/item/implant/mirror/MI in I.contents)
-				if(imp == null)
-					M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
-					user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-					user.do_attack_animation(M)
-					var/turf/T1 = get_turf(M)
-					if (T1 && ((M == user) || do_after(user, 20)))
-						if(user && M && (get_turf(M) == T1) && src)
-							M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
-							add_attack_logs(user,M,"Mirror removed by [user]")
-							src.imp = MI
-							qdel(MI)
-	else if (target_zone == BP_TORSO && imp != null)
-		if (imp)
-			M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
+		var/obj/item/organ/I = locate()in M.organs
+		var/obj/item/implant/mirror/MI = locate(/obj/item/implant/mirror) in I.contents
+		if(imp == null && MI)
+			M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(M)
 			var/turf/T1 = get_turf(M)
 			if (T1 && ((M == user) || do_after(user, 20)))
-				if(user && M && (get_turf(M) == T1) && src && src.imp)
-					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
-					add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
-					if(imp.handle_implant(M))
-						imp.post_implant(M)
-					src.imp = null
+				if(user && M && (get_turf(M) == T1) && src)
+					M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
+					add_attack_logs(user,M,"Mirror removed by [user]")
+					src.imp = MI
+					qdel(MI)
+		else
+			to_chat(usr, "This person has no mirror installed.")
+
+	else if (target_zone == BP_TORSO && imp != null)
+		if (imp)
+			var/obj/item/organ/I = locate()in M.organs
+			var/obj/item/implant/mirror/MI = locate(/obj/item/implant/mirror) in I.contents
+			if(MI)
+				to_chat(usr, "This person already has a mirror!")
+				return
+			if(!MI)
+				M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
+				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+				user.do_attack_animation(M)
+				var/turf/T1 = get_turf(M)
+				if (T1 && ((M == user) || do_after(user, 20)))
+					if(user && M && (get_turf(M) == T1) && src && src.imp)
+						M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
+						add_attack_logs(user,M,"Implanted with [imp.name] using [name]")
+						if(imp.handle_implant(M))
+							imp.post_implant(M)
+						src.imp = null
 	else
 		to_chat(usr, "You must target the torso.")
 
