@@ -153,11 +153,13 @@
 	if(humanform)
 		// ckey transfer you dumb fuck
 		humanform.ckey = ckey
+		humanform.forceMove(drop_location())
 		humanform.death(gibbed = gibbed)
 		for(var/organ in humanform.internal_organs)
 			var/obj/item/organ/internal/O = organ
 			O.removed()
-			O.forceMove(drop_location())
+			if(!QDELETED(O))		// MMI_HOLDERS ARE ABSTRACT and qdel themselves :)
+				O.forceMove(drop_location())
 		var/list/items = humanform.get_equipped_items()
 		if(prev_left_hand)
 			items += prev_left_hand
