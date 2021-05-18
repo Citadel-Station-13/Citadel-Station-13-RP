@@ -1,7 +1,0 @@
-author: "Ghostcoffeee"
-delete-after: True
-changes: 
-  - rscadd: "Added non-blob regen
-tweak: Increased blob regen, so that there's some incentive to use it over the normal
-tweak: Changed Protean limb health from 10 hp/limb to the standard 80 hp/limb"
-  - balance: "Changes to a few resistances and other values"
