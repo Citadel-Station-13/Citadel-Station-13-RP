@@ -82,19 +82,18 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		linked.relaymove(user, direction, accellimit)
 		return 1
 
-/obj/machinery/computer/ship/helm/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/ship/helm/ui_interact(mob/usr, datum/tgui/ui = null, var/force_open = 1)
 	if(!linked)
-		display_reconnect_dialog(user, "helm")
+		display_reconnect_dialog(usr, "helm")
 		return
 
-	ui = SStgui.try_update_ui(user, src, ui)
+	ui = SStgui.try_update_ui(usr, src, ui)
 	if(!ui)
-		ui = new(user, src, "OvermapHelm", "[linked.name] Helm Control") // 565, 545
+		ui = new(usr, src, "OvermapHelm", "[linked.name] Helm Control") // 565, 545
 		ui.open()
 
 /obj/machinery/computer/ship/helm/ui_data(mob/user)
 	var/list/data = ..()
-
 	var/turf/T = get_turf(linked)
 	var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
 
@@ -111,7 +110,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	data["heading"] = linked.get_heading_degrees()
 	data["autopilot_disabled"] = autopilot_disabled
 	data["autopilot"] = autopilot
-	data["manual_control"] = viewing_overmap(user)
+	data["manual_control"] = viewing_overmap(usr)
 	data["canburn"] = linked.can_burn()
 	data["accellimit"] = accellimit*1000
 
@@ -141,6 +140,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 
 	data["locations"] = locations
 	return data
+
 
 /obj/machinery/computer/ship/helm/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
@@ -250,9 +250,64 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 			. = TRUE
 
 	add_fingerprint(usr)
-	if(. && !issilicon(usr))
-		playsound(src, "terminal_type", 50, 1)
+	playsound(src, "terminal_type", 50, 1)
 	updateUsrDialog()
+// you get both UI's for now, I can't figure out why silicons don't get the TGUI. Fix me PLEASE.
+/obj/machinery/computer/ship/helm/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	var/data[0]
+
+	if(!linked)
+		display_reconnect_dialog(user, "helm")
+	else
+		var/turf/T = get_turf(linked)
+		var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
+
+		data["sector"] = current_sector ? current_sector.name : "Deep Space"
+		data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
+		data["landed"] = linked.get_landed_info()
+		data["s_x"] = linked.x
+		data["s_y"] = linked.y
+		data["dest"] = dy && dx
+		data["d_x"] = dx
+		data["d_y"] = dy
+		data["speedlimit"] = speedlimit ? speedlimit*1000 : "Halted"
+		data["accel"] = min(round(linked.get_acceleration()*1000, 0.01),accellimit*1000)
+		data["heading"] = linked.get_heading_degrees()
+		data["autopilot"] = autopilot
+		data["manual_control"] = viewing_overmap(user)
+		data["canburn"] = linked.can_burn()
+		data["accellimit"] = accellimit*1000
+
+		var/speed = round(linked.get_speed()*1000, 0.01)
+		if(linked.get_speed() < SHIP_SPEED_SLOW)
+			speed = "<span class='good'>[speed]</span>"
+		if(linked.get_speed() > SHIP_SPEED_FAST)
+			speed = "<span class='average'>[speed]</span>"
+		data["speed"] = speed
+
+		if(linked.get_speed())
+			data["ETAnext"] = "[round(linked.ETA()/10)] seconds"
+		else
+			data["ETAnext"] = "N/A"
+
+		var/list/locations[0]
+		for (var/key in known_sectors)
+			var/datum/computer_file/data/waypoint/R = known_sectors[key]
+			var/list/rdata[0]
+			rdata["name"] = R.fields["name"]
+			rdata["x"] = R.fields["x"]
+			rdata["y"] = R.fields["y"]
+			rdata["reference"] = "\ref[R]"
+			locations.Add(list(rdata))
+
+		data["locations"] = locations
+
+		ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+		if (!ui)
+			ui = new(user, src, ui_key, "helm.tmpl", "[linked.name] Helm Control", 565, 545)
+			ui.set_initial_data(data)
+			ui.open()
+			ui.set_auto_update(1)
 
 /obj/machinery/computer/ship/navigation
 	name = "navigation console"
@@ -261,11 +316,51 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	circuit = /obj/item/circuitboard/nav
 	var/datum/tgui_module/ship/nav_tgui/nav_tgui
 
+/obj/machinery/computer/ship/navigation/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	if(!linked)
+		display_reconnect_dialog(user, "Navigation")
+		return
 
+	var/data[0]
+
+
+	var/turf/T = get_turf(linked)
+	var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
+
+	data["sector"] = current_sector ? current_sector.name : "Deep Space"
+	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
+	data["s_x"] = linked.x
+	data["s_y"] = linked.y
+	data["speed"] = round(linked.get_speed()*1000, 0.01)
+	data["accel"] = round(linked.get_acceleration()*1000, 0.01)
+	data["heading"] = linked.get_heading_degrees()
+	data["viewing"] = viewing_overmap(user)
+
+	if(linked.get_speed())
+		data["ETAnext"] = "[round(linked.ETA()/10)] seconds"
+	else
+		data["ETAnext"] = "N/A"
+
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	if (!ui)
+		ui = new(user, src, ui_key, "nav.tmpl", "[linked.name] Navigation Screen", 380, 530)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
+
+/obj/machinery/computer/ship/navigation/OnTopic(var/mob/user, var/list/href_list)
+	if(..())
+		return TOPIC_HANDLED
+
+	if (!linked)
+		return TOPIC_NOACTION
+
+	if (href_list["viewing"])
+		viewing_overmap(user) ? unlook(user) : look(user)
+		return TOPIC_REFRESH
 
 /obj/machinery/computer/ship/navigation/telescreen	// Little hacky but it's only used on one ship so it should be okay
 	icon_state = "tele_nav"
-	layer = ABOVE_WINDOW_LAYER
 	icon_keyboard = null
 	icon_screen = null
 	circuit = /obj/item/circuitboard/nav/tele
