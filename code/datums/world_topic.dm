@@ -158,6 +158,117 @@
 
 */
 
+/datum/world_topic/jsonstatus
+	keyword = "jsonstatus"
+
+/datum/world_topic/jsonstatus/Run(list/input, addr)
+	. = list()
+	.["mode"] = master_mode
+	// .["round_id"] = null // GLOB.round_id
+	.["players"] = GLOB.clients.len
+	var/list/adm = get_admin_counts()
+	var/list/presentmins = adm["present"]
+	var/list/afkmins = adm["afk"]
+	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
+	.["security_level"] = get_security_level()
+	.["round_duration"] = roundduration2text()
+	.["map"] = SSmapping.config.map_name
+	return json_encode(.)
+
+/datum/world_topic/jsonplayers
+	keyword = "jsonplayers"
+
+/datum/world_topic/jsonplayers/Run(list/input, addr)
+	. = list()
+	for(var/client/C in GLOB.clients)
+		if(C.holder?.fakekey)
+			. += C.holder.fakekey
+			continue
+		. += C.key
+	return json_encode(.)
+
+/datum/world_topic/jsonmanifest
+	keyword = "jsonmanifest"
+
+/datum/world_topic/jsonmanifest/Run(list/input, addr)
+	var/list/command = list()
+	var/list/security = list()
+	var/list/engineering = list()
+	var/list/medical = list()
+	var/list/science = list()
+	var/list/cargo = list()
+	var/list/exploration = list()
+	var/list/civilian = list()
+	var/list/silicons = list()
+	var/list/misc = list()
+	for(var/datum/data/record/R in data_core.general)
+		var/name = R.fields["name"]
+		var/rank = R.fields["rank"]
+		var/real_rank = make_list_rank(R.fields["real_rank"])
+		if(real_rank in command_positions)
+			command[name] = rank
+		else if(real_rank in security_positions)
+			security[name] = rank
+		else if(real_rank in engineering_positions)
+			engineering[name] = rank
+		else if(real_rank in medical_positions)
+			medical[name] = rank
+		else if(real_rank in science_positions)
+			science[name] = rank
+		else if(real_rank in cargo_positions)
+			cargo[name] = rank
+		else if(real_rank in planet_positions)
+			exploration[name] = rank
+		else if(real_rank in civilian_positions)
+			civilian[name] = rank
+		else
+			misc[name] = rank
+
+	// Synthetics don't have actual records, so we will pull them from here.
+	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
+		silicons[ai.name] = "Artificial Intelligence"
+
+	for(var/mob/living/silicon/robot/robot in GLOB.mob_list)
+		// No combat/syndicate cyborgs, no drones, and no AI shells.
+		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
+			silicons[robot.name] = "[robot.modtype] [robot.braintype]"
+	. = list()
+	.["Command"] = command
+	.["Security"] = security
+	.["Engineering"] = engineering
+	.["Medical"] = medical
+	.["Science"] = science
+	.["Cargo"] = cargo
+	.["Exploration"] = exploration
+	.["Civilian"] = civilian
+	.["Silicons"] = silicons
+	.["Misc"] = misc
+	return json_encode(.)
+
+/datum/world_topic/jsonrevision
+	keyword = "jsonrevision"
+
+/datum/world_topic/jsonrevision/Run(list/input, addr)
+    var/datum/getrev/revdata = GLOB.revdata
+    var/list/data = list(
+        "date" = copytext(revdata.date, 1, 11),
+        "dd_version" = world.byond_version,
+        "dd_build" = world.byond_build,
+        "dm_version" = DM_VERSION,
+        "dm_build" = DM_BUILD,
+        "revision" = revdata.commit,
+        "testmerge_base_url" = "[CONFIG_GET(string/githuburl)]/pull/"
+    )
+    if (revdata.testmerge.len)
+        for (var/datum/tgs_revision_information/test_merge/TM in revdata.testmerge)
+            data["testmerges"] += list(list(
+                "id" = TM.number,
+                "desc" = TM.title,
+                "author" = TM.author
+            ))
+
+    return json_encode(data)
+
 /datum/world_topic/status
 	keyword = "status"
 
