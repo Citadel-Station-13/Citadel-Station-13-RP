@@ -30,7 +30,7 @@
 		/obj/item/flash,
 		/obj/item/t_scanner/upgraded,
 		/obj/item/barrier_tape_roll/engineering,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering/ce,
 		/obj/item/clothing/shoes/boots/winter/engineering,
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering/ce,

@@ -25,10 +25,10 @@
 /obj/item/assembly/timer/toggle_secure()
 	secured = !secured
 	if(secured)
-		START_PROCESSING(SSobj, src)
+		START_PROCESSING(SSprocessing, src)
 	else
 		timing = 0
-		STOP_PROCESSING(SSobj, src)
+		STOP_PROCESSING(SSprocessing, src)
 	update_icon()
 	return secured
 

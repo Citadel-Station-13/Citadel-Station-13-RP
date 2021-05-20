@@ -178,7 +178,7 @@
 		breath.adjust_gas(/datum/gas/oxygen, BREATH_MOLES)
 		breath.temperature = T20C
 		return breath
-
+/*
 /datum/nifsoft/mindbackup
 	name = "Mind Backup"
 	desc = "Backup your mind on the go. Stores a one-time sync of your current mindstate upon activation."
@@ -197,3 +197,4 @@
 
 	stat_text()
 		return "Store Backup"
+*/
