@@ -27,11 +27,13 @@
 /datum/ai_holder/proc/list_targets()
 	. = hearers(vision_range, holder) - holder // Remove ourselves to prevent suicidal decisions. ~ SRC is the ai_holder.
 
-	var/static/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/mecha))
+	var/static/list/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/mecha))
+	var/static/list/ignore = typecacheof(list(/mob/observer))
 
 	for(var/HM in typecache_filter_list(range(vision_range, holder), hostile_machines))
 		if(can_see(holder, HM, vision_range))
 			. += HM
+	. = typecache_filter_list_reverse(., ignore)
 
 // Step 2, filter down possible targets to things we actually care about.
 /datum/ai_holder/proc/find_target(var/list/possible_targets, var/has_targets_list = FALSE)

@@ -139,3 +139,10 @@
 		..()
 	else
 		. = PROCESS_KILL
+
+/obj/machinery/atmospherics/pipe/attack_ghost(mob/user)
+	. = ..()
+	if(user.client && user.client.inquisitive_ghost)
+		analyze_gases_ghost(src, user)
+	else
+		to_chat(user, "<span class='warning'>[src] doesn't have a pipenet, which is probably a bug.</span>")
