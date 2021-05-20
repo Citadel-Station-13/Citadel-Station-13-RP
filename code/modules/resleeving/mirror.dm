@@ -9,6 +9,9 @@
 	icon = 'icons/obj/mirror.dmi'
 	icon_state = "mirror_implant_f"
 	var/stored_mind = null
+	var/tmp/mob/living/carbon/human/human
+//holder to prevent having to find it each time
+/mob/living/carbon/human/var/obj/item/implant/mirror/mirror
 
 /obj/item/implant/mirror/digest_act(var/atom/movable/item_storage = null)
     return FALSE
@@ -34,6 +37,8 @@
 	else
 		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
 		icon_state = "mirror_implant"
+		human = H
+		human.mirror = src
 
 /obj/item/implant/mirror/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
 	target.active_mr = stored_mind
