@@ -117,6 +117,14 @@
 	var/panic_bunker_message = "Sorry, this server is not accepting connections from never seen before players."
 	var/paranoia_logging = 0
 
+	var/ip_reputation = FALSE		//Should we query IPs to get scores? Generates HTTP traffic to an API service.
+	var/ipr_email					//Left null because you MUST specify one otherwise you're making the internet worse.
+	var/ipr_block_bad_ips = FALSE	//Should we block anyone who meets the minimum score below? Otherwise we just log it (If paranoia logging is on, visibly in chat).
+	var/ipr_bad_score = 1			//The API returns a value between 0 and 1 (inclusive), with 1 being 'definitely VPN/Tor/Proxy'. Values equal/above this var are considered bad.
+	var/ipr_allow_existing = FALSE 	//Should we allow known players to use VPNs/Proxies? If the player is already banned then obviously they still can't connect.
+	var/ipr_minimum_age = 5
+	var/ipqualityscore_apikey //API key for ipqualityscore.com
+
 	var/serverurl
 	var/server
 	var/banappeals
@@ -816,6 +824,24 @@
 
 				if ("paranoia_logging")
 					config_legacy.paranoia_logging = 1
+
+				if("ip_reputation")
+					config_legacy.ip_reputation = 1
+
+				if("ipr_email")
+					config_legacy.ipr_email = value
+
+				if("ipr_block_bad_ips")
+					config_legacy.ipr_block_bad_ips = 1
+
+				if("ipr_bad_score")
+					config_legacy.ipr_bad_score = text2num(value)
+
+				if("ipr_allow_existing")
+					config_legacy.ipr_allow_existing = 1
+
+				if("ipr_minimum_age")
+					config_legacy.ipr_minimum_age = text2num(value)
 
 				if("minute_click_limit")
 					config_legacy.minute_click_limit = text2num(value)

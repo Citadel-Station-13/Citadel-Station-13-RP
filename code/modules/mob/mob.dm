@@ -399,7 +399,7 @@
 		return 	// Don't set it, no need
 
 /mob/verb/abandon_mob()
-	set name = "Return to Menu"
+	set name = "Respawn (Return to Menu)"
 	set category = "OOC"
 
 	if(stat != DEAD || !SSticker)
