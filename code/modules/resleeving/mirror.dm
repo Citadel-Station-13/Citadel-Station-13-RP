@@ -105,9 +105,7 @@
 
 /obj/item/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
 	if(target_zone == BP_TORSO && imp == null)
-		var/obj/item/organ/I = locate()in M.organs
-		var/obj/item/implant/mirror/MI = locate(/obj/item/implant/mirror) in I.contents
-		if(imp == null && MI)
+		if(imp == null && M.mirror)
 			M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
 			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 			user.do_attack_animation(M)
@@ -116,19 +114,18 @@
 				if(user && M && (get_turf(M) == T1) && src)
 					M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
 					add_attack_logs(user,M,"Mirror removed by [user]")
-					src.imp = MI
-					qdel(MI)
+					src.imp = M.mirror
+					qdel(M.mirror)
+					M.mirror = null
 		else
 			to_chat(usr, "This person has no mirror installed.")
 
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
-			var/obj/item/organ/I = locate()in M.organs
-			var/obj/item/implant/mirror/MI = locate(/obj/item/implant/mirror) in I.contents
-			if(MI)
+			if(M.mirror)
 				to_chat(usr, "This person already has a mirror!")
 				return
-			if(!MI)
+			if(!M.mirror)
 				M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
 				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 				user.do_attack_animation(M)
@@ -149,5 +146,3 @@
 	else
 		user.put_in_hands(imp)
 		imp = null
-
-
