@@ -1,0 +1,7 @@
+author: "nevimer"
+delete-after: True
+changes: 
+  - rscadd: "IP reputation checking
+tweak: return to menu is now respawn."
+  - config: "new things to config: IP rep"
+  - admin: "IP rep admin verb"
