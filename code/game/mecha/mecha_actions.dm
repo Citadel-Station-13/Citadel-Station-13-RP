@@ -263,7 +263,7 @@
 	defence_mode = !defence_mode
 	if(defence_mode)
 		deflect_chance = defence_deflect
-		src.occupant_message("<font color='blue'>You enable [src] defence mode.</font>")
+		src.occupant_message("<font color=#4F49AF>You enable [src] defence mode.</font>")
 	else
 		deflect_chance = initial(deflect_chance)
 		src.occupant_message("<font color='red'>You disable [src] defence mode.</font>")
@@ -292,7 +292,7 @@
 		overload = 0
 		step_in = initial(step_in)
 		step_energy_drain = initial(step_energy_drain)
-		src.occupant_message("<font color='blue'>You disable leg actuators overload.</font>")
+		src.occupant_message("<font color=#4F49AF>You disable leg actuators overload.</font>")
 	else
 		overload = 1
 		step_in = min(1, round(step_in/2))

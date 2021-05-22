@@ -637,7 +637,7 @@
 /mob/living/carbon/human/proc/examine_pickup_size(mob/living/H)
 	var/message
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.50)
-		message = "<font color='blue'>They are small enough that you could easily pick them up!</font>"
+		message = "<font color=#4F49AF>They are small enough that you could easily pick them up!</font>"
 		return message
 	return FALSE
 
