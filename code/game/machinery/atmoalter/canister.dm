@@ -299,6 +299,8 @@ update_flag
 
 
 /obj/machinery/portable_atmospherics/canister/ui_act(action, params)
+	if(..())
+		return TRUE
 
 	switch(action)
 		if("relabel")
