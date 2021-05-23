@@ -20,21 +20,14 @@
 	var/healthAlarm = 0
 	var/oxy = 1 //oxygen beeping toggle
 
-/obj/machinery/computer/operating/New()
-	..()
+/obj/machinery/computer/operating/Initialize(mapload)
+	. = ..()
 	for(var/direction in list(NORTH,EAST,SOUTH,WEST))
 		table = locate(/obj/machinery/optable, get_step(src, direction))
 		if(table)
 			table.computer = src
 			break
 
-/obj/machinery/computer/operating/Destroy()
-	if(table)
-		table.computer = null
-		table = null
-	if(victim)
-		victim = null
-	return ..()
 
 /obj/machinery/computer/operating/attack_ai(mob/user)
 	add_fingerprint(user)
