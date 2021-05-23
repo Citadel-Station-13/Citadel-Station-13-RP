@@ -382,7 +382,7 @@
 	icon_state = "elfs"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
-	
+
 /datum/sprite_accessory/ears/floppyelf
 	name = "floppy elven ears"
 	desc = ""
@@ -578,6 +578,16 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "moth_antenna_fluff_whitefly"
 
+//Mushroom Heads - Ha.
+/datum/sprite_accessory/ears/fungal_muscaria
+    name = "fungal muscaria cap"
+    desc = ""
+    icon_state = "fungal_muscaria"
+
+/datum/sprite_accessory/ears/fungal_polypore
+    name = "fungal polyporous cap"
+    desc = ""
+    icon_state = "fungal_polypore"
 
 // Special snowflake ears go below here.
 
