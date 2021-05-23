@@ -205,9 +205,7 @@
 		var/name = R.fields["name"]
 		var/rank = R.fields["rank"]
 		var/real_rank = make_list_rank(R.fields["real_rank"])
-		if(real_rank in command_positions)
-			command[name] = rank
-		else if(real_rank in security_positions)
+		if(real_rank in security_positions)
 			security[name] = rank
 		else if(real_rank in engineering_positions)
 			engineering[name] = rank
@@ -217,12 +215,15 @@
 			science[name] = rank
 		else if(real_rank in cargo_positions)
 			cargo[name] = rank
-		else if(real_rank in planet_positions)
-			exploration[name] = rank
 		else if(real_rank in civilian_positions)
 			civilian[name] = rank
 		else
 			misc[name] = rank
+		// mixed departments, /datum/department when?
+		if(real_rank in command_positions)
+			command[name] = rank
+		if(real_rank in planet_positions)
+			exploration[name] = rank
 
 	// Synthetics don't have actual records, so we will pull them from here.
 	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
