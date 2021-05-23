@@ -259,15 +259,16 @@ update_flag
 
 	SStgui.update_uis(src) // Update all NanoUIs attached to src
 
-/obj/machinery/portable_atmospherics/canister/attack_ai(var/mob/user as mob)
-	return src.attack_hand(user)
+/obj/machinery/portable_atmospherics/canister/attack_ghost(mob/user)
+	ui_interact(user)
 
-/obj/machinery/portable_atmospherics/canister/attack_hand(var/mob/user as mob)
-	return src.ui_interact(user)
+/obj/machinery/portable_atmospherics/canister/attack_ai(mob/user)
+	attack_hand(user)
+
+/obj/machinery/portable_atmospherics/canister/attack_hand(mob/user)
+	ui_interact(user)
 
 /obj/machinery/portable_atmospherics/canister/ui_interact(mob/user, datum/tgui/ui)
-	if(src.destroyed)
-		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Canister", name)
@@ -295,7 +296,6 @@ update_flag
 
 	return data
 
-	SStgui.update_uis(src) // Update all NanoUIs attached to src
 
 
 /obj/machinery/portable_atmospherics/canister/ui_act(action, params)
@@ -364,6 +364,7 @@ update_flag
 
 	src.add_fingerprint(usr)
 	update_icon()
+	SStgui.update_uis(src) // Update all NanoUIs attached to src
 
 	return 1
 

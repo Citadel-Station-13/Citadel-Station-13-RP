@@ -82,14 +82,25 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 		linked.relaymove(user, direction, accellimit)
 		return 1
 
-/obj/machinery/computer/ship/helm/ui_interact(mob/usr, datum/tgui/ui = null, var/force_open = 1)
+/obj/machinery/computer/ship/helm/attack_ghost(mob/user)
+	ui_interact(user)
+
+/obj/machinery/computer/ship/helm/attack_ai(mob/user)
+	attack_hand(user)
+
+/obj/machinery/computer/ship/helm/attack_hand(mob/user)
+	ui_interact(user)
+
+
+/obj/machinery/computer/ship/helm/ui_interact(mob/user, datum/tgui/ui = null)
+
 	if(!linked)
-		display_reconnect_dialog(usr, "helm")
+		display_reconnect_dialog(user, "helm")
 		return
 
-	ui = SStgui.try_update_ui(usr, src, ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(usr, src, "OvermapHelm", "[linked.name] Helm Control") // 565, 545
+		ui = new(user, src, "OvermapHelm", "[linked.name] Helm Control") // 565, 545
 		ui.open()
 
 /obj/machinery/computer/ship/helm/ui_data(mob/user)
@@ -253,61 +264,61 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	playsound(src, "terminal_type", 50, 1)
 	updateUsrDialog()
 // you get both UI's for now, I can't figure out why silicons don't get the TGUI. Fix me PLEASE.
-/obj/machinery/computer/ship/helm/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
+// /obj/machinery/computer/ship/helm/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+// 	var/data[0]
 
-	if(!linked)
-		display_reconnect_dialog(user, "helm")
-	else
-		var/turf/T = get_turf(linked)
-		var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
+// 	if(!linked)
+// 		display_reconnect_dialog(user, "helm")
+// 	else
+// 		var/turf/T = get_turf(linked)
+// 		var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
 
-		data["sector"] = current_sector ? current_sector.name : "Deep Space"
-		data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
-		data["landed"] = linked.get_landed_info()
-		data["s_x"] = linked.x
-		data["s_y"] = linked.y
-		data["dest"] = dy && dx
-		data["d_x"] = dx
-		data["d_y"] = dy
-		data["speedlimit"] = speedlimit ? speedlimit*1000 : "Halted"
-		data["accel"] = min(round(linked.get_acceleration()*1000, 0.01),accellimit*1000)
-		data["heading"] = linked.get_heading_degrees()
-		data["autopilot"] = autopilot
-		data["manual_control"] = viewing_overmap(user)
-		data["canburn"] = linked.can_burn()
-		data["accellimit"] = accellimit*1000
+// 		data["sector"] = current_sector ? current_sector.name : "Deep Space"
+// 		data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
+// 		data["landed"] = linked.get_landed_info()
+// 		data["s_x"] = linked.x
+// 		data["s_y"] = linked.y
+// 		data["dest"] = dy && dx
+// 		data["d_x"] = dx
+// 		data["d_y"] = dy
+// 		data["speedlimit"] = speedlimit ? speedlimit*1000 : "Halted"
+// 		data["accel"] = min(round(linked.get_acceleration()*1000, 0.01),accellimit*1000)
+// 		data["heading"] = linked.get_heading_degrees()
+// 		data["autopilot"] = autopilot
+// 		data["manual_control"] = viewing_overmap(user)
+// 		data["canburn"] = linked.can_burn()
+// 		data["accellimit"] = accellimit*1000
 
-		var/speed = round(linked.get_speed()*1000, 0.01)
-		if(linked.get_speed() < SHIP_SPEED_SLOW)
-			speed = "<span class='good'>[speed]</span>"
-		if(linked.get_speed() > SHIP_SPEED_FAST)
-			speed = "<span class='average'>[speed]</span>"
-		data["speed"] = speed
+// 		var/speed = round(linked.get_speed()*1000, 0.01)
+// 		if(linked.get_speed() < SHIP_SPEED_SLOW)
+// 			speed = "<span class='good'>[speed]</span>"
+// 		if(linked.get_speed() > SHIP_SPEED_FAST)
+// 			speed = "<span class='average'>[speed]</span>"
+// 		data["speed"] = speed
 
-		if(linked.get_speed())
-			data["ETAnext"] = "[round(linked.ETA()/10)] seconds"
-		else
-			data["ETAnext"] = "N/A"
+// 		if(linked.get_speed())
+// 			data["ETAnext"] = "[round(linked.ETA()/10)] seconds"
+// 		else
+// 			data["ETAnext"] = "N/A"
 
-		var/list/locations[0]
-		for (var/key in known_sectors)
-			var/datum/computer_file/data/waypoint/R = known_sectors[key]
-			var/list/rdata[0]
-			rdata["name"] = R.fields["name"]
-			rdata["x"] = R.fields["x"]
-			rdata["y"] = R.fields["y"]
-			rdata["reference"] = "\ref[R]"
-			locations.Add(list(rdata))
+// 		var/list/locations[0]
+// 		for (var/key in known_sectors)
+// 			var/datum/computer_file/data/waypoint/R = known_sectors[key]
+// 			var/list/rdata[0]
+// 			rdata["name"] = R.fields["name"]
+// 			rdata["x"] = R.fields["x"]
+// 			rdata["y"] = R.fields["y"]
+// 			rdata["reference"] = "\ref[R]"
+// 			locations.Add(list(rdata))
 
-		data["locations"] = locations
+// 		data["locations"] = locations
 
-		ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-		if (!ui)
-			ui = new(user, src, ui_key, "helm.tmpl", "[linked.name] Helm Control", 565, 545)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+// 		ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+// 		if (!ui)
+// 			ui = new(user, src, ui_key, "helm.tmpl", "[linked.name] Helm Control", 565, 545)
+// 			ui.set_initial_data(data)
+// 			ui.open()
+// 			ui.set_auto_update(1)
 
 /obj/machinery/computer/ship/navigation
 	name = "navigation console"
