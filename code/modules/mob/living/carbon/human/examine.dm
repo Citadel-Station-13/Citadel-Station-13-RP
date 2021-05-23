@@ -1,12 +1,11 @@
 /mob/living/carbon/human/examine(mob/user)
-	. = ..()
+	..()
 	. = list()
 	var/skip_gear = 0
 	var/skip_body = 0
 
 	if(alpha <= EFFECTIVE_INVIS)
-		src.loc.examine(user)
-		return
+		return loc.examine(user)
 
 	var/looks_synth = looksSynthetic()
 
@@ -369,36 +368,37 @@
 			if(temp.status & ORGAN_DESTROYED)
 				wound_flavor_text["[temp.name]"] = "<span class='warning'><b>[T.He] [T.is] missing [T.his] [temp.name].</b></span>"
 				continue
+			var/built = ""
 
 			if(!looks_synth && temp.robotic == ORGAN_ROBOT)
 				if(!(temp.brute_dam + temp.burn_dam))
-					wound_flavor_text["[temp.name]"] = "[T.He] [T.has] a [temp.name]."
+					built = "[T.He] [T.has] a [temp.name]."
 				else
-					wound_flavor_text["[temp.name]"] = "<span class='warning'>[T.He] [T.has] a [temp.name] with [temp.get_wounds_desc()]!</span>"
+					built = "<span class='warning'>[T.He] [T.has] a [temp.name] with [temp.get_wounds_desc()]!</span>"
 				continue
 			else if(temp.wounds.len > 0 || temp.open)
 				if(temp.is_stump() && temp.parent_organ && organs_by_name[temp.parent_organ])
 					var/obj/item/organ/external/parent = organs_by_name[temp.parent_organ]
-					wound_flavor_text["[temp.name]"] = "<span class='warning'>[T.He] has [temp.get_wounds_desc()] on [T.his] [parent.name].</span>"
+					built = "<span class='warning'>[T.He] has [temp.get_wounds_desc()] on [T.his] [parent.name].</span>"
 				else
-					wound_flavor_text["[temp.name]"] = "<span class='warning'>[T.He] has [temp.get_wounds_desc()] on [T.his] [temp.name].</span>"
-			else
-				wound_flavor_text["[temp.name]"] = ""
+					built = "<span class='warning'>[T.He] has [temp.get_wounds_desc()] on [T.his] [temp.name].</span>"
 			if(temp.dislocated == 2)
-				wound_flavor_text["[temp.name]"] += "<span class='warning'>[T.His] [temp.joint] is dislocated!</span>"
+				built += "<span class='warning'>[T.His] [temp.joint] is dislocated!</span>"
 			if(temp.brute_dam > temp.min_broken_damage || (temp.status & (ORGAN_BROKEN | ORGAN_MUTATED)))
-				wound_flavor_text["[temp.name]"] += "<span class='warning'>[T.His] [temp.name] is dented and swollen!</span>"
+				built += "<span class='warning'>[T.His] [temp.name] is dented and swollen!</span>"
 
 			if(temp.germ_level > INFECTION_LEVEL_TWO && !(temp.status & ORGAN_DEAD))
-				wound_flavor_text["[temp.name]"] += "<span class='warning'>[T.His] [temp.name] looks very infected!</span>"
+				built += "<span class='warning'>[T.His] [temp.name] looks very infected!</span>"
 			else if(temp.status & ORGAN_DEAD)
-				wound_flavor_text["[temp.name]"] += "<span class='warning'>[T.His] [temp.name] looks rotten!</span>"
+				built += "<span class='warning'>[T.His] [temp.name] looks rotten!</span>"
 
 			if(temp.status & ORGAN_BLEEDING)
-				is_bleeding["[temp.name]"] += "<span class='danger'>[T.His] [temp.name] is bleeding!</span>"
+				is_bleeding["[temp.name]"] = "<span class='danger'>[T.His] [temp.name] is bleeding!</span>"
 
 			if(temp.applied_pressure == src)
 				applying_pressure = "<span class='info'>[T.He] is applying pressure to [T.his] [temp.name].</span>"
+			if(length(built))
+				wound_flavor_text["[temp.name]"] = built
 
 	for(var/limb in wound_flavor_text)
 		. += wound_flavor_text[limb]
