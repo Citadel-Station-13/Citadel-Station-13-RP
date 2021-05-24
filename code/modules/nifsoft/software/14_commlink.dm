@@ -12,6 +12,7 @@
 	install()
 		if((. = ..()))
 			nif.comm = new(nif,src)
+			nif.comm.initialize_exonet(nif.human)
 
 	uninstall()
 		var/obj/item/nif/lnif = nif //Awkward. Parent clears it in an attempt to clean up.
@@ -20,7 +21,6 @@
 
 	activate()
 		if((. = ..()))
-			nif.comm.initialize_exonet(nif.human)
 			nif.comm.nano_ui_interact(nif.human,key_state = commlink_state)
 			spawn(0)
 				deactivate()
