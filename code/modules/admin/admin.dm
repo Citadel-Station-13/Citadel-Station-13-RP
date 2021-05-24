@@ -891,7 +891,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 /datum/admins/proc/toggleaban()
 	set category = "Server"
 	set desc = "Respawn basically"
-	set name = "Toggle Return to Menu"
+	set name = "Toggle Respawn"
 	config_legacy.abandon_allowed = !(config_legacy.abandon_allowed)
 	if(config_legacy.abandon_allowed)
 		to_chat(world, "<B>Returning to menu as a ghost is now allowed.</B>")

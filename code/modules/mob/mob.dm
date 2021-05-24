@@ -398,11 +398,19 @@
 	else
 		return 	// Don't set it, no need
 
-/mob/verb/abandon_mob()
-	set name = "Respawn (Return to Menu)"
+/// Alias for respawn
+/mob/verb/return_to_menu()
+	set name = "Return to Menu"
 	set category = "OOC"
+	set desc = "Return to the lobby."
+	return abandon_mob()
 
-	if(stat != DEAD || !SSticker)
+/mob/verb/abandon_mob()
+	set name = "Respawn"
+	set category = "OOC"
+	set desc = "Return to the lobby."
+
+	if(stat != DEAD)
 		to_chat(usr, "<span class='notice'><B>You must be dead to use this!</B></span>")
 		return
 
