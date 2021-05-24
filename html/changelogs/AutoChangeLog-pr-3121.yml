@@ -1,4 +1,0 @@
-author: "nevimer"
-delete-after: True
-changes: 
-  - bugfix: "TTS Devices are now usable in while sitting in chairs and from pockets."
