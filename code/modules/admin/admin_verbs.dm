@@ -144,6 +144,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/roll_dices,
 	/datum/admins/proc/call_supply_drop,
 	/datum/admins/proc/call_drop_pod,
+	/client/proc/smite_vr, //VOREStation Add,
 	/client/proc/smite,
 	/client/proc/admin_lightning_strike
 	)
@@ -189,6 +190,7 @@ var/list/admin_verbs_server = list(
 	/client/proc/modify_server_news,
 	/client/proc/recipe_dump,
 	/client/proc/panicbunker,
+	/client/proc/ip_reputation,
 	/client/proc/paranoia_logging
 	)
 
