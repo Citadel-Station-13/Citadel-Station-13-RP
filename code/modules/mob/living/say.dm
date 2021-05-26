@@ -230,7 +230,7 @@ proc/get_radio_key_from_channel(var/channel)
 	//Handle language-specific verbs and adverb setup if necessary
 	if(!whispering) //Just doing normal 'say' (for now, may change below)
 		verb = say_quote(message, speaking)
-		usr.say_overhead(message, speaking)
+		//usr.say_overhead(message, speaking) Disabled until I get this finished.
 	else if(whispering && speaking.whisper_verb) //Language has defined whisper verb
 		verb = speaking.whisper_verb
 		w_not_heard = "[verb] something"
