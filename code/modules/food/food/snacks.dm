@@ -155,11 +155,11 @@
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
-		. += "<font color='blue'>\The [src] was bitten by someone!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten by someone!</font>"
 	else if (bitecount<=3)
-		. += "<font color='blue'>\The [src] was bitten [bitecount] times!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten [bitecount] times!</font>"
 	else
-		. += "<font color='blue'>\The [src] was bitten multiple times!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten multiple times!</font>"
 
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -179,7 +179,7 @@
 
 			user.visible_message( \
 				"[user] scoops up some [src] with \the [U]!", \
-				"<font color='blue'>You scoop up some [src] with \the [U]!</font>" \
+				"<font color=#4F49AF>You scoop up some [src] with \the [U]!</font>" \
 			)
 
 			src.bitecount++
@@ -595,10 +595,10 @@
 		var/clr = C.colourName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, "<font color='blue'>The egg refuses to take on this color!</font>")
+			to_chat(usr, "<font color=#4F49AF>The egg refuses to take on this color!</font>")
 			return
 
-		to_chat(usr, "<font color='blue'>You color \the [src] [clr]</font>")
+		to_chat(usr, "<font color=#4F49AF>You color \the [src] [clr]</font>")
 		icon_state = "egg-[clr]"
 	else
 		. = ..()

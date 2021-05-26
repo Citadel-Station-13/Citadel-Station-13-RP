@@ -204,10 +204,10 @@
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
 	active = !( active )
 	if (active)
-		to_chat(user, "<font color='blue'>The reactive armor is now active.</font>")
+		to_chat(user, "<font color=#4F49AF>The reactive armor is now active.</font>")
 		icon_state = "reactive"
 	else
-		to_chat(user, "<font color='blue'>The reactive armor is now inactive.</font>")
+		to_chat(user, "<font color=#4F49AF>The reactive armor is now inactive.</font>")
 		icon_state = "reactiveoff"
 		add_fingerprint(user)
 	return
@@ -643,11 +643,11 @@
 	if(user.mind.isholy && !anti_magic && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE
-		to_chat(user, "<font color='blue'>You enable the armor's protective sigils.</font>")
+		to_chat(user, "<font color=#4F49AF>You enable the armor's protective sigils.</font>")
 	else
 		anti_magic = FALSE
 		blessed = FALSE
-		to_chat(user, "<font color='blue'>You disable the armor's protective sigils.</font>")
+		to_chat(user, "<font color=#4F49AF>You disable the armor's protective sigils.</font>")
 
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")

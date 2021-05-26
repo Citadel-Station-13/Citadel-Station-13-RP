@@ -245,7 +245,7 @@ SUBSYSTEM_DEF(ticker)
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)
-		to_chat(world, "<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+		to_chat(world, "<font color=#4F49AF><B>Enjoy the game!</B></FONT>")
 		SEND_SOUND(world, sound('sound/AI/welcome.ogg')) // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
@@ -496,7 +496,7 @@ SUBSYSTEM_DEF(ticker)
 				var/turf/playerTurf = get_turf(Player)
 				if(SSemergencyshuttle.departed && SSemergencyshuttle.evac)
 					if(isNotAdminLevel(playerTurf.z))
-						to_chat(Player, "<font color='blue'><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></font>")
+						to_chat(Player, "<font color=#4F49AF><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></font>")
 					else
 						to_chat(Player, "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font>")
 				else if(isAdminLevel(playerTurf.z))
@@ -504,7 +504,7 @@ SUBSYSTEM_DEF(ticker)
 				else if(issilicon(Player))
 					to_chat(Player, "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>")
 				else
-					to_chat(Player, "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>")
+					to_chat(Player, "<font color=#4F49AF><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>")
 			else
 				if(istype(Player,/mob/observer/dead))
 					var/mob/observer/dead/O = Player
