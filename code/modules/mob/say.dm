@@ -1,6 +1,18 @@
 /mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
+/mob/proc/say_overhead(var/message, var/datum/language/speaking = null)
+	var/list/speech_bubble_hearers = list()
+	var/italics = 0
+	for(var/mob/M in get_mobs_in_view(7, src))
+		if(M.client)
+			speech_bubble_hearers += M.client
+	if(length(speech_bubble_hearers))
+		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
+		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
+
 /mob/proc/whisper_wrapper()
 	var/message = input("","whisper (text)") as text|null
 	if(message)

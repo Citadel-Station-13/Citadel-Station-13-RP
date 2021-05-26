@@ -1,12 +1,11 @@
-/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
-	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)  //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
-	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)			//VOREStation Edit
-	if(istype(bubble_loc, /atom/movable))
-		var/atom/movable/AM = bubble_loc
-		var/x_scale = AM.get_icon_scale_x()
-		if(abs(x_scale) < 2) // reset transform on bubbles, except for the Very Large
-			I.pixel_z = (AM.icon_expected_height * (x_scale-1))
-			I.appearance_flags |= RESET_TRANSFORM
+/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER, list/show_to)
+	var/image/I = image('icons/mob/talk_vr.dmi')  //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
+
+	var/list/speech_bubble_hearers = list()
+	for(var/mob/M in get_mobs_in_view(7, src))
+		if(M.client)
+			speech_bubble_hearers += M.client
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/animate_speech_bubble, I, speech_bubble_hearers , 30)
 
 	return I
 
