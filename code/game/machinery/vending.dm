@@ -2666,3 +2666,37 @@
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/clothing/head/syndicatefake = 1,
 					/obj/item/clothing/suit/syndicatefake = 1)
+
+/obj/machinery/vending/glukoz
+	name = "Glukoz Pharmavenda"
+	desc = "An illicit injector vendor stocked and maintained by the allegedly defunct pharmaceuticals company Glukoz Ltd."
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "rxvendor"
+	icon_vend = "rxvendor"
+	product_slogans = "Glukoz Pharmavenda, voted top street pharmaceuticals vendor, 2519!"
+	product_ads = "Back so soon?;The hits keep comin'!;If you can afford it, it's only a habit!;Who's gonna know?;In a pinch? It's just a pinch!;Remove the cap!;You'll be back!"
+	products = list(/obj/item/reagent_containers/hypospray/glukoz = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/certaphil = 5,
+					/obj/item/reagent_containers/hypospray/glukoz/downer = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/fuckit = 2,
+					/obj/item/reagent_containers/hypospray/glukoz/hangup = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/hypnogamma = 5,
+					/obj/item/reagent_containers/hypospray/glukoz/medcon = 1,
+					/obj/item/reagent_containers/hypospray/glukoz/multibuzz = 3,
+					/obj/item/reagent_containers/hypospray/glukoz/numplus = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/oxyduo = 2,
+					/obj/item/reagent_containers/hypospray/glukoz/pyrholidon = 3,
+					/obj/item/reagent_containers/hypospray/glukoz/viraplus = 10)
+	prices = list(/obj/item/reagent_containers/hypospray/glukoz = 100,
+					/obj/item/reagent_containers/hypospray/glukoz/certaphil = 350,
+					/obj/item/reagent_containers/hypospray/glukoz/downer = 200,
+					/obj/item/reagent_containers/hypospray/glukoz/fuckit = 500,
+					/obj/item/reagent_containers/hypospray/glukoz/hangup = 200,
+					/obj/item/reagent_containers/hypospray/glukoz/hypnogamma = 350,
+					/obj/item/reagent_containers/hypospray/glukoz/medcon = 1000,
+					/obj/item/reagent_containers/hypospray/glukoz/multibuzz = 500,
+					/obj/item/reagent_containers/hypospray/glukoz/numplus = 200,
+					/obj/item/reagent_containers/hypospray/glukoz/oxyduo = 500,
+					/obj/item/reagent_containers/hypospray/glukoz/pyrholidon = 400,
+					/obj/item/reagent_containers/hypospray/glukoz/viraplus = 200)
+	idle_power_usage = 211
