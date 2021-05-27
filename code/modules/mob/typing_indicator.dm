@@ -2,7 +2,7 @@
 	var/image/I = image('icons/mob/talk_vr.dmi')  //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
 
 	var/list/speech_bubble_hearers = list()
-	for(var/mob/M in get_mobs_in_view(7, src))
+	for(var/mob/M in get_mobs_in_view(7, usr))
 		if(M.client)
 			speech_bubble_hearers += M.client
 		INVOKE_ASYNC(GLOBAL_PROC, .proc/animate_speech_bubble, I, speech_bubble_hearers , 30)
