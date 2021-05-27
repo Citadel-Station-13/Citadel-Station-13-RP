@@ -69,6 +69,7 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	var/light_toggled = 0
 	var/light_brightness = 5
+	var/light_strength = 1
 	var/light_rgb = "#FFFFFF"
 	power_draw_idle = 0 // Adjusted based on brightness.
 
@@ -79,7 +80,7 @@
 /obj/item/integrated_circuit/output/light/proc/update_lighting()
 	if(light_toggled)
 		if(assembly)
-			assembly.set_light(l_range = light_brightness, l_power = 1, l_color = light_rgb)
+			assembly.set_light(l_range = light_brightness, l_power = light_strength, l_color = light_rgb)
 	else
 		if(assembly)
 			assembly.set_light(0)
