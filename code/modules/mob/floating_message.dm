@@ -14,9 +14,9 @@ var/list/floating_chat_colors = list()
 	message = replacetext(message, html_metachars, "")
 
 	var/style	//additional style params for the message
-	var/fontsize = 6
+	var/fontsize = 4
 	if(small)
-		fontsize = 4
+		fontsize = 2
 	var/limit = 160
 	if(copytext_char(message, length_char(message) - 1) == "!!")
 		fontsize = 8
@@ -53,15 +53,15 @@ var/list/floating_chat_colors = list()
 
 	//style = "font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: [size]px; [style]"
 
-	I.maptext = "<center><span style=\"[style] font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: 4px; \">[message]</span></center>"
+	I.maptext = "<center><span style=\"[style] font: 'Small Fonts'; -dm-text-outline: 1px black; \">[message]</span></center>"
 	animate(I, 1, alpha = 255, pixel_y = 16)
 
 	for(var/image/old in holder.stored_chat_text)
 		animate(old, 2, pixel_y = old.pixel_y + 8)
 	LAZYADD(holder.stored_chat_text, I)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_floating_text, holder, I), duration)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_images_from_clients, I, show_to), duration + 4)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_floating_text, holder, I), duration + 16)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/remove_images_from_clients, I, show_to), duration + 18)
 
 	return I
 
