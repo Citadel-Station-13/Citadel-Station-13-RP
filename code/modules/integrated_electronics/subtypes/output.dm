@@ -69,7 +69,7 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	var/light_toggled = 0
 	var/light_brightness = 5
-	var/light_strength = 1
+	var/light_strength = 2
 	var/light_rgb = "#FFFFFF"
 	power_draw_idle = 0 // Adjusted based on brightness.
 
