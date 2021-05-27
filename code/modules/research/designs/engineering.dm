@@ -87,6 +87,6 @@
 	desc = "A hand-held environmental scanner which reports current gas levels from a distance."
 	id = "atmosanalyzerlr"
 	req_tech = list(TECH_ENGINEERING = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 200, "glass" = 200)
+	materials = list(DEFAULT_WALL_MATERIAL = 300, "glass" = 300)
 	build_path = /obj/item/analyzer/longrange
 	sort_string = "NBABB"
