@@ -17,7 +17,7 @@ var/list/floating_chat_colors = list()
 	var/fontsize = 6
 	if(small)
 		fontsize = 4
-	var/limit = 50
+	var/limit = 160
 	if(copytext_char(message, length_char(message) - 1) == "!!")
 		fontsize = 8
 		limit = 160
@@ -26,9 +26,9 @@ var/list/floating_chat_colors = list()
 	if(length_char(message) > limit)
 		message = "[copytext_char(message, 1, limit)]..."
 
-	if(!floating_chat_colors[name])
-		floating_chat_colors[name] = get_random_colour(0,160,230)
-	style += "color: [floating_chat_colors[name]];"
+	if(!floating_chat_colors[src])
+		floating_chat_colors[src] = get_random_colour(0,160,230)
+	style += "color: [floating_chat_colors[src]];"
 
 	// create 2 messages, one that appears if you know the language, and one that appears when you don't know the language
 	var/image/understood = generate_floating_text(src, capitalize(message), style, fontsize, duration, show_to)
@@ -53,7 +53,7 @@ var/list/floating_chat_colors = list()
 
 	//style = "font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: [size]px; [style]"
 
-	I.maptext = "<center><span style=\"colour: white; font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: 4px; \">[message]</span></center>"
+	I.maptext = "<center><span style=\"[style] font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: 4px; \">[message]</span></center>"
 	animate(I, 1, alpha = 255, pixel_y = 16)
 
 	for(var/image/old in holder.stored_chat_text)
