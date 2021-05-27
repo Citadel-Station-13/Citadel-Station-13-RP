@@ -20,7 +20,7 @@ var/list/floating_chat_colors = list()
 	var/limit = 50
 	if(copytext_char(message, length_char(message) - 1) == "!!")
 		fontsize = 8
-		limit = 80
+		limit = 160
 		style += "font-weight: bold;"
 
 	if(length_char(message) > limit)
@@ -45,15 +45,15 @@ var/list/floating_chat_colors = list()
 	var/image/I = image(null, holder)
 	I.plane = PLANE_PLAYER_HUD
 	I.layer = PLANE_PLAYER_HUD_ITEMS
-	I.alpha = 0
-	I.maptext_width = 80
+	I.alpha = 15
+	I.maptext_width = 160
 	I.maptext_height = 64
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	I.pixel_x = -round(I.maptext_width/2) + 16
 
 	//style = "font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: [size]px; [style]"
 
-	I.maptext = "<center><span style=\"colour: white; font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: 5px; font-weight: bold; \">[message]</span></center>"
+	I.maptext = "<center><span style=\"colour: white; font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: 4px; \">[message]</span></center>"
 	animate(I, 1, alpha = 255, pixel_y = 16)
 
 	for(var/image/old in holder.stored_chat_text)
