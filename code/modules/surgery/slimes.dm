@@ -29,8 +29,8 @@
 	"You start cutting through [target]'s flesh with \the [tool].")
 
 /datum/surgery_step/slime/cut_flesh/end_step(mob/living/user, mob/living/simple_mob/slime/target, target_zone, obj/item/tool)
-	user.visible_message("<font color='blue'>[user] cuts through [target]'s flesh with \the [tool].</font>",	\
-	"<font color='blue'>You cut through [target]'s flesh with \the [tool], revealing its silky innards.</font>")
+	user.visible_message("<font color=#4F49AF>[user] cuts through [target]'s flesh with \the [tool].</font>",	\
+	"<font color=#4F49AF>You cut through [target]'s flesh with \the [tool], revealing its silky innards.</font>")
 	target.core_removal_stage = 1
 
 /datum/surgery_step/slime/cut_flesh/fail_step(mob/living/user, mob/living/simple_mob/slime/target, target_zone, obj/item/tool)
@@ -57,8 +57,8 @@
 	"You start cutting [target]'s silky innards apart with \the [tool].")
 
 /datum/surgery_step/slime/cut_innards/end_step(mob/living/user, mob/living/simple_mob/slime/target, target_zone, obj/item/tool)
-	user.visible_message("<font color='blue'>[user] cuts [target]'s innards apart with \the [tool], exposing the cores.</font>",	\
-	"<font color='blue'>You cut [target]'s innards apart with \the [tool], exposing the cores.</font>")
+	user.visible_message("<font color=#4F49AF>[user] cuts [target]'s innards apart with \the [tool], exposing the cores.</font>",	\
+	"<font color=#4F49AF>You cut [target]'s innards apart with \the [tool], exposing the cores.</font>")
 	target.core_removal_stage = 2
 
 /datum/surgery_step/slime/cut_innards/fail_step(mob/living/user, mob/living/simple_mob/slime/target, target_zone, obj/item/tool)
@@ -85,8 +85,8 @@
 
 /datum/surgery_step/slime/saw_core/end_step(mob/living/user, mob/living/simple_mob/slime/target, target_zone, obj/item/tool)
 	target.cores--
-	user.visible_message("<font color='blue'>[user] cuts out one of [target]'s cores with \the [tool].</font>",,	\
-	"<font color='blue'>You cut out one of [target]'s cores with \the [tool]. [target.cores] cores left.</font>")
+	user.visible_message("<font color=#4F49AF>[user] cuts out one of [target]'s cores with \the [tool].</font>",,	\
+	"<font color=#4F49AF>You cut out one of [target]'s cores with \the [tool]. [target.cores] cores left.</font>")
 
 	if(target.cores >= 0)
 		new target.coretype(target.loc)

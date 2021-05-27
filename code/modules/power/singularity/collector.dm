@@ -77,7 +77,7 @@ var/global/list/rad_collectors = list()
 			return 1
 	else if(W.is_wrench())
 		if(P)
-			to_chat(user, "<font color='blue'>Remove the phoron tank first.</font>")
+			to_chat(user, "<font color=#4F49AF>Remove the phoron tank first.</font>")
 			return 1
 		playsound(src, W.usesound, 75, 1)
 		src.anchored = !src.anchored

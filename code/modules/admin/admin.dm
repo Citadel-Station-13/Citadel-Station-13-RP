@@ -854,7 +854,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 		SSticker.current_state = GAME_STATE_SETTING_UP
 		Master.SetRunLevel(RUNLEVEL_SETUP)
 		log_admin("[usr.key] has started the game.")
-		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
+		message_admins("<font color=#4F49AF>[usr.key] has started the game.</font>")
 		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return 1
 	else
@@ -871,7 +871,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	else
 		to_chat(world, "<B>New players may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled new player game entering.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled new player game entering.</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] toggled new player game entering.</font>", 1)
 	world.update_status()
 	feedback_add_details("admin_verb","TE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -897,7 +897,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 		to_chat(world, "<B>Returning to menu as a ghost is now allowed.</B>")
 	else
 		to_chat(world, "<B>Returning to menu as a ghost is no longer allowed :(</B>")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].</font>", 1)
 	log_admin("[key_name(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].")
 	world.update_status()
 	feedback_add_details("admin_verb","TR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -959,7 +959,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc="Toggle admin jumping"
 	set name="Toggle Jump"
 	config_legacy.allow_admin_jump = !(config_legacy.allow_admin_jump)
-	message_admins("<font color='blue'>Toggled admin jumping to [config_legacy.allow_admin_jump].</font>")
+	message_admins("<font color=#4F49AF>Toggled admin jumping to [config_legacy.allow_admin_jump].</font>")
 	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adspawn()
@@ -967,7 +967,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc="Toggle admin spawning"
 	set name="Toggle Spawn"
 	config_legacy.allow_admin_spawning = !(config_legacy.allow_admin_spawning)
-	message_admins("<font color='blue'>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
+	message_admins("<font color=#4F49AF>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adrev()
@@ -975,7 +975,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc="Toggle admin revives"
 	set name="Toggle Revive"
 	config_legacy.allow_admin_rev = !(config_legacy.allow_admin_rev)
-	message_admins("<font color='blue'>Toggled reviving to [config_legacy.allow_admin_rev].</font>")
+	message_admins("<font color=#4F49AF>Toggled reviving to [config_legacy.allow_admin_rev].</font>")
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/unprison(var/mob/M in GLOB.mob_list)
@@ -1231,7 +1231,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	else
 		to_chat(world, "<B>Guests may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.</font>", 1)
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/output_ai_laws()

@@ -645,12 +645,12 @@
 	internal_damage &= ~int_dam_flag
 	switch(int_dam_flag)
 		if(MECHA_INT_TEMP_CONTROL)
-			occupant_message("<font color='blue'><b>Life support system reactivated.</b></font>")
+			occupant_message("<font color=#4F49AF><b>Life support system reactivated.</b></font>")
 			pr_int_temp_processor.start()
 		if(MECHA_INT_FIRE)
-			occupant_message("<font color='blue'><b>Internal fire extinquished.</b></font>")
+			occupant_message("<font color=#4F49AF><b>Internal fire extinquished.</b></font>")
 		if(MECHA_INT_TANK_BREACH)
-			occupant_message("<font color='blue'><b>Damaged internal tank has been sealed.</b></font>")
+			occupant_message("<font color=#4F49AF><b>Damaged internal tank has been sealed.</b></font>")
 	return
 
 
@@ -1988,7 +1988,7 @@
 		if(do_after(100))
 			if(T == src.loc)
 				src.clearInternalDamage(MECHA_INT_CONTROL_LOST)
-				src.occupant_message("<font color='blue'>Recalibration successful.</font>")
+				src.occupant_message("<font color=#4F49AF>Recalibration successful.</font>")
 				src.log_message("Recalibration of coordination system finished with 0 errors.")
 			else
 				src.occupant_message("<font color='red'>Recalibration failed.</font>")

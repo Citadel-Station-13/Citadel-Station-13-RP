@@ -262,10 +262,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.player_details[ckey] = player_details
 	*/
 
-	if(log_client_to_db() == "BUNKER_DROPPED")
-		return FALSE
-
 	. = ..()	//calls mob.Login()
+
+	if(log_client_to_db() == "BUNKER_DROPPED")
+		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
+		return FALSE
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
@@ -282,7 +283,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			if(connecting_admin)
 				to_chat(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
 			else
-				qdel(src)
+				disconnect_with_message("Your version of BYOND ([byond_version].[byond_build]) is blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]]. Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")
 				return
 
 	if(SSinput.subsystem_initialized)
@@ -313,7 +314,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (connecting_admin)
 			to_chat(src, "Because you are an admin, you are being allowed to walk past this limitation, But it is still STRONGLY suggested you upgrade")
 		else
-			qdel(src)
+			disconnect_with_message("Your BYOND version ([byond_version].[byond_build]) is too old. Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 			return 0
 	else if (byond_version < cwv)	//We have words for this client.
 		if(CONFIG_GET(flag/client_warn_popup))
