@@ -1,9 +1,7 @@
 /obj/machinery/chemical_dispenser
 	name = "chemical dispenser"
-	desc = "Automagically fabricates chemicals from electricity."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "dispenser"
-	clicksound = "switch"
 
 	var/list/spawn_cartridges = null // Set to a list of types to spawn one of each on New()
 
@@ -19,7 +17,7 @@
 	idle_power_usage = 100
 	anchored = 1
 
-/obj/machinery/chemical_dispenser/Initialize()
+/obj/machinery/chemical_dispenser/Initialize(mapload)
 	. = ..()
 	if(spawn_cartridges)
 		for(var/type in spawn_cartridges)
@@ -28,17 +26,6 @@
 /obj/machinery/chemical_dispenser/examine(mob/user)
 	. = ..()
 	. += "It has [cartridges.len] cartridges installed, and has space for [DISPENSER_MAX_CARTRIDGES - cartridges.len] more."
-
-/obj/machinery/chemical_dispenser/verb/rotate_clockwise()
-	set name = "Rotate Dispenser Clockwise"
-	set category = "Object"
-	set src in oview(1)
-
-	if (src.anchored || usr:stat)
-		to_chat(usr, "It is fastened down!")
-		return 0
-	src.set_dir(turn(src.dir, 270))
-	return 1
 
 /obj/machinery/chemical_dispenser/proc/add_cartridge(obj/item/reagent_containers/chem_disp_cartridge/C, mob/user)
 	if(!istype(C))
@@ -65,9 +52,9 @@
 		user.drop_from_inventory(C)
 		to_chat(user, "<span class='notice'>You add \the [C] to \the [src].</span>")
 
-	C.loc = src
+	C.forceMove(src)
 	cartridges[C.label] = C
-	cartridges = sortAssoc(cartridges)
+	cartridges = sortTim(cartridges, /proc/cmp_text_asc)
 	SStgui.update_uis(src)
 
 /obj/machinery/chemical_dispenser/proc/remove_cartridge(label)
@@ -117,8 +104,10 @@
 
 		container =  RC
 		user.drop_from_inventory(RC)
-		RC.loc = src
+		RC.forceMove(src)
 		to_chat(user, "<span class='notice'>You set \the [RC] on \the [src].</span>")
+		SStgui.update_uis(src) // update all UIs attached to src
+
 	else
 		return ..()
 
@@ -194,7 +183,7 @@
 /obj/machinery/chemical_dispenser/attack_ghost(mob/user)
 	if(stat & BROKEN)
 		return
-	tgui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/chemical_dispenser/attack_ai(mob/user)
 	attack_hand(user)
@@ -202,4 +191,4 @@
 /obj/machinery/chemical_dispenser/attack_hand(mob/user)
 	if(stat & BROKEN)
 		return
-	tgui_interact(user)
+	ui_interact(user)
