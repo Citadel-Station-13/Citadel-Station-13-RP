@@ -136,7 +136,7 @@
   * * action - The action passed by tgui
   * * params - The params passed by tgui
   */
-/obj/machinery/chem_master/proc/ui_act_modal(action, params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/chem_master/proc/ui_act_modal(action, params, datum/tgui/ui, datum/ui_state/state)
 	. = TRUE
 	var/id = params["id"] // The modal's ID
 	var/list/arguments = istext(params["arguments"]) ? json_decode(params["arguments"]) : params["arguments"]

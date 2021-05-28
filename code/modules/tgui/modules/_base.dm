@@ -29,7 +29,7 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 /datum/tgui_module/proc/check_eye(mob/user)
 	return -1
 
-/datum/tgui_module/proc/can_still_topic(mob/user, datum/tgui_state/state)
+/datum/tgui_module/proc/can_still_topic(mob/user, datum/ui_state/state)
 	return (ui_status(user, state) == UI_INTERACTIVE)
 
 /datum/tgui_module/proc/check_access(mob/user, access)
