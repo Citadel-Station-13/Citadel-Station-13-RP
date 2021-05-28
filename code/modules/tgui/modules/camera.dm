@@ -69,7 +69,7 @@
 
 /datum/tgui_module/camera/Destroy()
 	if(active_camera)
-		GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
+		UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 	active_camera = null
 	last_camera_turf = null
 	qdel(cam_screen)
@@ -141,9 +141,9 @@
 		var/list/cameras = get_available_cameras(usr)
 		var/obj/machinery/camera/C = cameras["[ckey(c_tag)]"]
 		if(active_camera)
-			GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
+			UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 		active_camera = C
-		GLOB.moved_event.register(active_camera, src, .proc/update_active_camera_screen)
+		RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
 		playsound(tgui_host(), get_sfx("terminal_type"), 25, FALSE)
 		update_active_camera_screen()
 		return TRUE
@@ -168,9 +168,9 @@
 
 			if(target)
 				if(active_camera)
-					GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
+					UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 				active_camera = target
-				GLOB.moved_event.register(active_camera, src, .proc/update_active_camera_screen)
+				RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
 				playsound(tgui_host(), get_sfx("terminal_type"), 25, FALSE)
 				update_active_camera_screen()
 				. = TRUE
@@ -220,10 +220,10 @@
 	var/list/all_networks = list()
 	// Access Based
 	if(access_based)
-		for(var/network in using_map.station_networks)
+		for(var/network in GLOB.using_map.station_networks)
 			if(can_access_network(user, get_camera_access(network), 1))
 				all_networks.Add(network)
-		for(var/network in using_map.secondary_networks)
+		for(var/network in GLOB.using_map.secondary_networks)
 			if(can_access_network(user, get_camera_access(network), 0))
 				all_networks.Add(network)
 	// Network Based
@@ -295,4 +295,4 @@
 	additional_networks = list(NETWORK_MERCENARY, NETWORK_ERT, NETWORK_CRESCENT)
 
 /datum/tgui_module/camera/ntos/hacked/New(host)
-	. = ..(host, using_map.station_networks.Copy())
+	. = ..(host, GLOB.using_map.station_networks.Copy())

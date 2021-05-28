@@ -19,12 +19,12 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 	if(ntos)
 		tgui_id = "Ntos" + tgui_id
 
-/datum/tgui_module/tgui_host()
-	return host ? host.tgui_host() : src
+/datum/tgui_module/ui_host()
+	return host ? host.ui_host() : src
 
-/datum/tgui_module/tgui_close(mob/user)
+/datum/tgui_module/ui_close(mob/user)
 	if(host)
-		host.tgui_close(user)
+		host.ui_close(user)
 
 /datum/tgui_module/proc/check_eye(mob/user)
 	return -1
