@@ -186,7 +186,7 @@
 	return icon_state
 
 // Short range computers see only the main levels, others can see the surrounding surface levels.
-/datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE)
+/datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
 	if (long_range && (srcz in map_levels))
 		return map_levels
 	else if (srcz == Z_LEVEL_SHIPS || srcz == Z_LEVEL_MISC)
