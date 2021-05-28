@@ -17,27 +17,38 @@
 /obj/machinery/computer/security/Initialize()
 	. = ..()
 	if(!LAZYLEN(network))
-		network = GLOB.using_map.station_networks.Copy()
+		network = get_default_networks()
 	camera = new(src, network)
+
+/obj/machinery/computer/security/proc/get_default_networks()
+	. = GLOB.using_map.station_networks.Copy()
 
 /obj/machinery/computer/security/Destroy()
 	QDEL_NULL(camera)
 	return ..()
 
-/obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui = null)
-	camera.ui_interact(user, ui)
+/obj/machinery/computer/security/tgui_interact(mob/user, datum/tgui/ui = null)
+	camera.tgui_interact(user, ui)
 
 /obj/machinery/computer/security/attack_hand(mob/user)
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	ui_interact(user)
+	tgui_interact(user)
 
-/*
+/obj/machinery/computer/security/attack_robot(mob/user)
+	if(isrobot(user))
+		var/mob/living/silicon/robot/R = user
+		if(!R.shell)
+			return attack_hand(user)
+	..()
+
 /obj/machinery/computer/security/attack_ai(mob/user)
-	to_chat(user, "<span class='notice'>You realise its kind of stupid to access a camera console when you have the entire camera network at your metaphorical fingertips</span>")
-	return
-*/
+	if(isAI(user))
+		to_chat(user, "<span class='notice'>You realise its kind of stupid to access a camera console when you have the entire camera network at your metaphorical fingertips</span>")
+		return
+	attack_hand(user)
+
 /obj/machinery/computer/security/proc/set_network(list/new_network)
 	network = new_network
 	camera.network = network
@@ -48,8 +59,7 @@
 	name = "Telescreen"
 	desc = "Used for watching an empty arena."
 	icon_state = "wallframe"
-	plane = TURF_PLANE
-	layer = ABOVE_TURF_LAYER
+	layer = ABOVE_WINDOW_LAYER
 	icon_keyboard = null
 	icon_screen = null
 	light_range_on = 0
@@ -68,7 +78,7 @@
 	circuit = /obj/item/circuitboard/security/telescreen/entertainment
 	var/obj/item/radio/radio = null
 
-/obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)
+/obj/machinery/computer/security/telescreen/entertainment/Initialize()
 	. = ..()
 	radio = new(src)
 	radio.listening = TRUE
@@ -112,10 +122,8 @@
 	circuit = /obj/item/circuitboard/security/engineering
 	light_color = "#FAC54B"
 
-/obj/machinery/computer/security/engineering/Initialize(mapload)
-	if(!network)
-		network = engineering_networks.Copy()
-	. = ..()
+/obj/machinery/computer/security/engineering/get_default_networks()
+	. = engineering_networks.Copy()
 
 /obj/machinery/computer/security/nuclear
 	name = "head mounted camera monitor"
@@ -123,7 +131,4 @@
 	icon_state = "syndicam"
 	network = list(NETWORK_MERCENARY)
 	circuit = null
-
-/obj/machinery/computer/security/nuclear/Initialize(mapload)
-	. = ..()
 	req_access = list(150)
