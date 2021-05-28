@@ -3,7 +3,7 @@
 	desc = "Used to seperate and package chemicals in to patches, pills, or bottles. Warranty void if used to create Space Drugs."
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/chemical_vr.dmi'
 	icon_state = "mixer0"
 	circuit = /obj/item/circuitboard/chem_master
 	use_power = USE_POWER_IDLE
@@ -123,7 +123,7 @@
 	data["printing"] = printing
 
 	// Transfer modal information if there is one
-	data["modal"] = tgui_modal_data(src)
+	data["modal"] = ui_modal_data(src)
 
 	return data
 
@@ -138,8 +138,8 @@
 	. = TRUE
 	var/id = params["id"] // The modal's ID
 	var/list/arguments = istext(params["arguments"]) ? json_decode(params["arguments"]) : params["arguments"]
-	switch(tgui_modal_act(src, action, params))
-		if(TGUI_MODAL_OPEN)
+	switch(ui_modal_act(src, action, params))
+		if(ui_modal_OPEN)
 			switch(id)
 				if("analyze")
 					var/idx = text2num(arguments["idx"]) || 0
@@ -156,7 +156,7 @@
 						result["blood_dna"] = B.data["blood_DNA"]
 
 					arguments["analysis"] = result
-					tgui_modal_message(src, id, "", null, arguments)
+					ui_modal_message(src, id, "", null, arguments)
 				// if("change_pill_bottle_style")
 				// 	if(!loaded_pill_bottle)
 				// 		return
@@ -175,19 +175,19 @@
 				// 			COLOR_MAROON = "Brown"
 				// 		)
 				// 	var/current = pill_bottle_wrappers[loaded_pill_bottle.wrapper_color] || "Default"
-				// 	tgui_modal_choice(src, id, "Please select a pill bottle wrapper:", null, arguments, current, pill_bottle_wrappers)
+				// 	ui_modal_choice(src, id, "Please select a pill bottle wrapper:", null, arguments, current, pill_bottle_wrappers)
 				if("addcustom")
 					if(!beaker || !beaker.reagents.total_volume)
 						return
-					tgui_modal_input(src, id, "Please enter the amount to transfer to buffer:", null, arguments, useramount)
+					ui_modal_input(src, id, "Please enter the amount to transfer to buffer:", null, arguments, useramount)
 				if("removecustom")
 					if(!reagents.total_volume)
 						return
-					tgui_modal_input(src, id, "Please enter the amount to transfer to [mode ? "beaker" : "disposal"]:", null, arguments, useramount)
+					ui_modal_input(src, id, "Please enter the amount to transfer to [mode ? "beaker" : "disposal"]:", null, arguments, useramount)
 				if("create_condi_pack")
 					if(!condi || !reagents.total_volume)
 						return
-					tgui_modal_input(src, id, "Please name your new condiment pack:", null, arguments, reagents.get_master_reagent_name(), MAX_CUSTOM_NAME_LEN)
+					ui_modal_input(src, id, "Please name your new condiment pack:", null, arguments, reagents.get_master_reagent_name(), MAX_CUSTOM_NAME_LEN)
 				if("create_pill")
 					if(condi || !reagents.total_volume)
 						return
@@ -198,16 +198,16 @@
 					var/amount_per_pill = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_PILL)
 					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_pill]u)"
 					var/pills_text = num == 1 ? "new pill" : "[num] new pills"
-					tgui_modal_input(src, id, "Please name your [pills_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
+					ui_modal_input(src, id, "Please name your [pills_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
 				if("create_pill_multiple")
 					if(condi || !reagents.total_volume)
 						return
-					tgui_modal_input(src, id, "Please enter the amount of pills to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
+					ui_modal_input(src, id, "Please enter the amount of pills to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
 				if("change_pill_style")
 					var/list/choices = list()
 					for(var/i = 1 to MAX_PILL_SPRITE)
 						choices += "pill[i].png"
-					tgui_modal_bento(src, id, "Please select the new style for pills:", null, arguments, pillsprite, choices)
+					ui_modal_bento(src, id, "Please select the new style for pills:", null, arguments, pillsprite, choices)
 				if("create_patch")
 					if(condi || !reagents.total_volume)
 						return
@@ -218,11 +218,11 @@
 					var/amount_per_patch = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_PATCH)
 					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_patch]u)"
 					var/patches_text = num == 1 ? "new patch" : "[num] new patches"
-					tgui_modal_input(src, id, "Please name your [patches_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
+					ui_modal_input(src, id, "Please name your [patches_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
 				if("create_patch_multiple")
 					if(condi || !reagents.total_volume)
 						return
-					tgui_modal_input(src, id, "Please enter the amount of patches to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
+					ui_modal_input(src, id, "Please enter the amount of patches to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
 						return
@@ -233,19 +233,19 @@
 					var/amount_per_bottle = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_BOTTLE)
 					var/default_name = "[reagents.get_master_reagent_name()]"
 					var/bottles_text = num == 1 ? "new bottle" : "[num] new bottles"
-					tgui_modal_input(src, id, "Please name your [bottles_text] ([amount_per_bottle]u in bottle):", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
+					ui_modal_input(src, id, "Please name your [bottles_text] ([amount_per_bottle]u in bottle):", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
 				if("create_bottle_multiple")
 					if(condi || !reagents.total_volume)
 						return
-					tgui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
+					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
 				if("change_bottle_style")
 					var/list/choices = list()
 					for(var/i = 1 to MAX_BOTTLE_SPRITE)
 						choices += "bottle-[i].png"
-					tgui_modal_bento(src, id, "Please select the new style for bottles:", null, arguments, bottlesprite, choices)
+					ui_modal_bento(src, id, "Please select the new style for bottles:", null, arguments, bottlesprite, choices)
 				else
 					return FALSE
-		if(TGUI_MODAL_ANSWER)
+		if(ui_modal_ANSWER)
 			var/answer = params["answer"]
 			switch(id)
 				// if("change_pill_bottle_style")

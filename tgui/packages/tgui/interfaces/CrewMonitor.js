@@ -27,7 +27,7 @@ const getStatColor = cm => {
 
 export const CrewMonitor = () => {
   return (
-    <Window 
+    <Window
       width={800}
       height={600}
       resizable>
@@ -161,7 +161,7 @@ const CrewMonitorMapView = (props, context) => {
   return (
     <Box height="526px" mb="0.5rem" overflow="hidden">
       <NanoMap onZoom={v => setZoom(v)}>
-        {data.crewmembers.filter(x => 
+        {data.crewmembers.filter(x =>
           (x.sensor_type === 3 && ~~x.realZ === ~~config.mapZLevel)
         ).map(cm => (
           <NanoMap.Marker
