@@ -142,6 +142,6 @@
 			/obj/item/reagent_containers/chem_disp_cartridge/lemon,
 			/obj/item/reagent_containers/chem_disp_cartridge/lime,
 			/obj/item/reagent_containers/chem_disp_cartridge/berry,
-			/obj/item/reagent_containers/chem_disp_cartridge/greentea,
-			/obj/item/reagent_containers/chem_disp_cartridge/decaf
+			// /obj/item/reagent_containers/chem_disp_cartridge/greentea,
+			// /obj/item/reagent_containers/chem_disp_cartridge/decaf
 		)

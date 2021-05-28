@@ -22,11 +22,9 @@
 	flags = OPENCONTAINER
 	clicksound = "button"
 
-/obj/machinery/chem_master/New()
-	..()
-	var/datum/reagents/R = new/datum/reagents(900)	//Just a huge random number so the buffer should (probably) never dump your reagents.
-	reagents = R	//There should be a nano ui thingy to warn of this.
-	R.my_atom = src
+/obj/machinery/chem_master/Initialize(mapload, newdir)
+	. = ..()
+	create_reagents(1000)
 
 /obj/machinery/chem_master/ex_act(severity)
 	switch(severity)
@@ -383,7 +381,7 @@
 		else
 			return FALSE
 
-/obj/machinery/chem_master/ui_act(action, params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/chem_master/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 

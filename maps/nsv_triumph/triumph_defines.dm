@@ -185,21 +185,6 @@
 	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
 	return icon_state
 
-// Short range computers see only the main levels, others can see the surrounding surface levels.
-/datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
-	if (long_range && (srcz in map_levels))
-		return map_levels
-	else if (srcz == Z_LEVEL_SHIPS || srcz == Z_LEVEL_MISC)
-		return list() //no longer return signals in key transit levels, this means some runtimes from CWCs but
-	else if (srcz >= Z_LEVEL_DECK_ONE && srcz <= Z_LEVEL_DECK_FOUR)
-		return list(
-		Z_LEVEL_DECK_ONE,
-		Z_LEVEL_DECK_TWO,
-		Z_LEVEL_DECK_THREE,
-		Z_LEVEL_DECK_FOUR)
-	else
-		return list(srcz)	// May prevent runtimes, but more importantly gives gps units a shortwave-esque function
-
 // For making the 4-in-1 holomap, we calculate some offsets
 #define TRIUMPH_MAP_SIZE 140 // Width and height of compiled in triumph z levels.
 #define TRIUMPH_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
