@@ -24,17 +24,17 @@ GLOBAL_LIST(ui_modals)
 	. = null
 	switch(action)
 		if("modal_open") // Params: id, arguments
-			return ui_modal_OPEN
+			return UI_MODAL_OPEN
 		if("modal_answer") // Params: id, answer, arguments
 			params["answer"] = ui_modal_preprocess_answer(source, params["answer"])
-			if(ui_modal_answer(source, params["id"], params["answer"])) // If there's a current modal with a delegate that returned TRUE, no need to continue
-				. = ui_modal_DELEGATE
+			if(UI_MODAL_answer(source, params["id"], params["answer"])) // If there's a current modal with a delegate that returned TRUE, no need to continue
+				. = UI_MODAL_DELEGATE
 			else
-				. = ui_modal_ANSWER
+				. = UI_MODAL_ANSWER
 			ui_modal_clear(source)
 		if("modal_close") // Params: id
 			ui_modal_clear(source)
-			return ui_modal_CLOSE
+			return UI_MODAL_CLOSE
 
 /**
   * Call this from ui_data() to return modal information if needed
@@ -102,7 +102,7 @@ GLOBAL_LIST(ui_modals)
   * * value - The default value of the input
   * * max_length - The maximum char length of the input
   */
-/datum/proc/ui_modal_input(datum/source = src, id, text = "Default modal message", delegate, arguments, value = "", max_length = ui_modal_INPUT_MAX_LENGTH)
+/datum/proc/ui_modal_input(datum/source = src, id, text = "Default modal message", delegate, arguments, value = "", max_length = UI_MODAL_INPUT_MAX_LENGTH)
 	ASSERT(length(id))
 	ASSERT(max_length > 0)
 
@@ -199,7 +199,7 @@ GLOBAL_LIST(ui_modals)
   * * id - The ID of the modal
   * * answer - The provided answer
   */
-/datum/proc/ui_modal_answer(datum/source = src, id, answer = "")
+/datum/proc/UI_MODAL_answer(datum/source = src, id, answer = "")
 	ASSERT(istype(source))
 
 	var/datum/ui_modal/current = LAZYACCESS(GLOB.ui_modals, REF(source))
@@ -250,7 +250,7 @@ GLOBAL_LIST(ui_modals)
   * * answer - The answer, a nullable text
   */
 /datum/ui_modal/proc/preprocess_answer(answer)
-	return reject_bad_text(answer, ui_modal_INPUT_MAX_LENGTH) // bleh
+	return reject_bad_text(answer, UI_MODAL_INPUT_MAX_LENGTH) // bleh
 
 /**
   * Called when a modal receives an answer
@@ -303,7 +303,7 @@ GLOBAL_LIST(ui_modals)
 	var/choices
 
 /datum/ui_modal/input/choice/New(id, text, delegate, list/arguments, value, choices)
-	..(id, text, delegate, arguments, value, ui_modal_INPUT_MAX_LENGTH) // Max length doesn't really matter in dropdowns, but whatever
+	..(id, text, delegate, arguments, value, UI_MODAL_INPUT_MAX_LENGTH) // Max length doesn't really matter in dropdowns, but whatever
 	src.choices = choices
 
 /datum/ui_modal/input/choice/on_answer(answer)
@@ -325,7 +325,7 @@ GLOBAL_LIST(ui_modals)
 	var/choices
 
 /datum/ui_modal/input/bento/New(id, text, delegate, list/arguments, value, choices)
-	..(id, text, delegate, arguments, text2num(value), ui_modal_INPUT_MAX_LENGTH) // Max length doesn't really matter in here, but whatever
+	..(id, text, delegate, arguments, text2num(value), UI_MODAL_INPUT_MAX_LENGTH) // Max length doesn't really matter in here, but whatever
 	src.choices = choices
 
 /datum/ui_modal/input/bento/preprocess_answer(answer)

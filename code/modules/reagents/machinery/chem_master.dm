@@ -139,7 +139,7 @@
 	var/id = params["id"] // The modal's ID
 	var/list/arguments = istext(params["arguments"]) ? json_decode(params["arguments"]) : params["arguments"]
 	switch(ui_modal_act(src, action, params))
-		if(ui_modal_OPEN)
+		if(UI_MODAL_OPEN)
 			switch(id)
 				if("analyze")
 					var/idx = text2num(arguments["idx"]) || 0
@@ -245,7 +245,7 @@
 					ui_modal_bento(src, id, "Please select the new style for bottles:", null, arguments, bottlesprite, choices)
 				else
 					return FALSE
-		if(ui_modal_ANSWER)
+		if(UI_MODAL_ANSWER)
 			var/answer = params["answer"]
 			switch(id)
 				// if("change_pill_bottle_style")
