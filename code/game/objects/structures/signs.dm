@@ -412,11 +412,6 @@
 	desc = "This sign bears some rather rude looking graffiti instructing you to PIS OFF."
 	icon_state = "pisoff"
 
-/obj/structure/sign/shrine_seal
-	name = "shrine seal"
-	desc = "Ornately twisted rope holding up a religious seal."
-	icon_state = "shrine_seal"
-
 //Eris signs
 
 /obj/structure/sign/ironhammer
