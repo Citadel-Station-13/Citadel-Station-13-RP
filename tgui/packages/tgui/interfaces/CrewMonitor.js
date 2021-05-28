@@ -141,12 +141,12 @@ export const CrewMonitorContent = (props, context) => {
           onClick={() => setTabIndex(0)}>
           <Icon name="table" /> Data View
         </Tabs.Tab>
-        <Tabs.Tab
+        {/* <Tabs.Tab
           key="MapView"
           selected={1 === tabIndex}
           onClick={() => setTabIndex(1)}>
           <Icon name="map-marked-alt" /> Map View
-        </Tabs.Tab>
+        </Tabs.Tab> */}
       </Tabs>
       <Box m={2}>
         {body}
