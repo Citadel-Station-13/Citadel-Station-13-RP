@@ -518,10 +518,10 @@ const AirlockConsoleDocking = (props, context) => {
       <Section title="Dock" buttons={
         (data.airlock_disabled || data.override_enabled)
           ? <Button
-            icon="exclamation-triangle"
-            color={data.override_enabled ? 'red' : ''}
-            content="Override"
-            onClick={() => act('toggle_override')} />
+              icon="exclamation-triangle"
+              color={data.override_enabled ? 'red' : ''}
+              content="Override"
+              onClick={() => act('toggle_override')} />
           : null
       }>
         <DockStatus />

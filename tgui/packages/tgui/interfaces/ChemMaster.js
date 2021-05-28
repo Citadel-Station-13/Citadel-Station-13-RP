@@ -109,16 +109,16 @@ const ChemMasterBeaker = (props, context) => {
       title="Beaker"
       buttons={bufferNonEmpty
         ? <Button.Confirm
-          icon="eject"
-          disabled={!beaker}
-          content="Eject and Clear Buffer"
-          onClick={() => act('eject')}
+            icon="eject"
+            disabled={!beaker}
+            content="Eject and Clear Buffer"
+            onClick={() => act('eject')}
         />
         : <Button
-          icon="eject"
-          disabled={!beaker}
-          content="Eject and Clear Buffer"
-          onClick={() => act('eject')}
+            icon="eject"
+            disabled={!beaker}
+            content="Eject and Clear Buffer"
+            onClick={() => act('eject')}
         />}>
       {beaker
         ? <BeakerContents
@@ -146,18 +146,18 @@ const ChemMasterBeaker = (props, context) => {
                 />)
               )}
               <Button
-                  content="All"
-                  mb="0"
-                  onClick={() => act('add', {
-                  id: chemical.id,
-                  amount: chemical.volume,
+                content="All"
+                mb="0"
+                onClick={() => act('add', {
+                id: chemical.id,
+                amount: chemical.volume,
                 })}
               />
               <Button
-                  content="Custom.."
-                  mb="0"
-                  onClick={() => modalOpen(context, 'addcustom', {
-                  id: chemical.id,
+                content="Custom.."
+                mb="0"
+                onClick={() => modalOpen(context, 'addcustom', {
+                id: chemical.id,
                 })}
               />
             </Box>

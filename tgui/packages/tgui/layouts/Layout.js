@@ -13,7 +13,7 @@ import { addScrollableNode, removeScrollableNode } from '../events';
  *
  * Commonly used to keep the content scrollable in IE.
  */
- export const refocusLayout = () => {
+export const refocusLayout = () => {
   // IE8: Focus method is seemingly fucked.
   if (Byond.IS_LTE_IE8) {
     return;
