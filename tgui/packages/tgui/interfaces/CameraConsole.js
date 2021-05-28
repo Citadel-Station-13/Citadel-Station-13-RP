@@ -146,6 +146,7 @@ export const CameraConsoleSearch = (props, context) => {
                 && 'Button--selected',
             ])}
             onClick={() => {
+              refocusLayout();
               act('switch_camera', {
                 name: camera.name,
               });

@@ -3,7 +3,7 @@
 	desc = "Used to seperate and package chemicals in to patches, pills, or bottles. Warranty void if used to create Space Drugs."
 	density = 1
 	anchored = 1
-	icon = 'icons/obj/chemical_vr.dmi'
+	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	circuit = /obj/item/circuitboard/chem_master
 	use_power = USE_POWER_IDLE
