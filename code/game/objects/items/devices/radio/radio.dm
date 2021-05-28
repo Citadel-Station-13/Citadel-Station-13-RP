@@ -182,7 +182,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 /obj/item/radio/CanUseTopic()
 	if(!on)
-		return STATUS_CLOSE
+		return UI_CLOSE
 	return ..()
 
 /obj/item/radio/Topic(href, href_list)
