@@ -23,7 +23,7 @@
 		if("track")
 			if(isAI(usr))
 				var/mob/living/silicon/ai/AI = usr
-				var/mob/living/carbon/human/H = locate(params["track"]) in mob_list
+				var/mob/living/carbon/human/H = locate(params["track"]) in GLOB.mob_list
 				if(hassensorlevel(H, SUIT_SENSOR_TRACKING))
 					AI.ai_actual_track(H)
 			return TRUE
@@ -54,7 +54,7 @@
 	data["isAI"] = isAI(user)
 
 	var/z = get_z(user)
-	var/list/map_levels = uniquelist(GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
+	var/list/map_levels = uniqueList(GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
 	data["map_levels"] = map_levels
 
 	var/list/crewmembers = list()

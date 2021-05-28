@@ -262,7 +262,7 @@
 	cam_background.fill_rect(1, 1, default_map_size, default_map_size)
 	local_skybox.cut_overlays()
 
-/datum/tgui_module/camera/tgui_close(mob/user)
+/datum/tgui_module/camera/ui_close(mob/user)
 	. = ..()
 	var/user_ref = REF(user)
 	var/is_living = isliving(user)
@@ -274,7 +274,7 @@
 	// Turn off the console
 	if(length(concurrent_users) == 0 && is_living)
 		if(active_camera)
-			GLOB.moved_event.unregister(active_camera, src, .proc/update_active_camera_screen)
+			UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 		active_camera = null
 		playsound(ui_host(), 'sound/machines/terminal_off.ogg', 25, FALSE)
 
