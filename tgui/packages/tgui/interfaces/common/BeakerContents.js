@@ -1,5 +1,5 @@
 import { Box } from '../../components';
-const PropTypes = require('prop-types');
+// const PropTypes = require('prop-types');
 
 const formatUnits = a => a + ' unit' + (a === 1 ? '' : 's');
 
@@ -37,17 +37,17 @@ export const BeakerContents = props => {
   );
 };
 
-BeakerContents.propTypes = {
-  /**
-   * Whether there is a loaded beaker or not
-   */
-  beakerLoaded: PropTypes.bool,
-  /**
-   * The reagents in the beaker
-   */
-  beakerContents: PropTypes.array,
-  /**
-   * The buttons to display next to each reagent line
-   */
-  buttons: PropTypes.arrayOf(PropTypes.element),
-};
+// BeakerContents.propTypes = {
+//   /**
+//    * Whether there is a loaded beaker or not
+//    */
+//   beakerLoaded: PropTypes.bool,
+//   /**
+//    * The reagents in the beaker
+//    */
+//   beakerContents: PropTypes.array,
+//   /**
+//    * The buttons to display next to each reagent line
+//    */
+//   buttons: PropTypes.arrayOf(PropTypes.element),
+// };

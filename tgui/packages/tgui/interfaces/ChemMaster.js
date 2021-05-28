@@ -125,11 +125,11 @@ const ChemMasterBeaker = (props, context) => {
           beakerLoaded
           beakerContents={beakerReagents}
           buttons={(chemical, i) => (
-            <Box mb={(i < beakerReagents.length - 1) && "2px"}>
+              <Box mb={(i < beakerReagents.length - 1) && "2px"}>
               <Button
-                content="Analyze"
-                mb="0"
-                onClick={() => modalOpen(context, 'analyze', {
+                  content="Analyze"
+                  mb="0"
+                  onClick={() => modalOpen(context, 'analyze', {
                   idx: i + 1,
                   beaker: 1,
                 })}
@@ -146,22 +146,22 @@ const ChemMasterBeaker = (props, context) => {
                 />)
               )}
               <Button
-                content="All"
-                mb="0"
-                onClick={() => act('add', {
+                  content="All"
+                  mb="0"
+                  onClick={() => act('add', {
                   id: chemical.id,
                   amount: chemical.volume,
                 })}
               />
               <Button
-                content="Custom.."
-                mb="0"
-                onClick={() => modalOpen(context, 'addcustom', {
+                  content="Custom.."
+                  mb="0"
+                  onClick={() => modalOpen(context, 'addcustom', {
                   id: chemical.id,
                 })}
               />
             </Box>
-          )}
+            )}
         />
         : (
           <Box color="label">
@@ -197,11 +197,11 @@ const ChemMasterBuffer = (props, context) => {
           beakerLoaded
           beakerContents={bufferReagents}
           buttons={(chemical, i) => (
-            <Box mb={(i < bufferReagents.length - 1) && "2px"}>
+              <Box mb={(i < bufferReagents.length - 1) && "2px"}>
               <Button
-                content="Analyze"
-                mb="0"
-                onClick={() => modalOpen(context, 'analyze', {
+                  content="Analyze"
+                  mb="0"
+                  onClick={() => modalOpen(context, 'analyze', {
                   idx: i + 1,
                   beaker: 0,
                 })}
@@ -218,22 +218,22 @@ const ChemMasterBuffer = (props, context) => {
                 />)
               )}
               <Button
-                content="All"
-                mb="0"
-                onClick={() => act('remove', {
+                  content="All"
+                  mb="0"
+                  onClick={() => act('remove', {
                   id: chemical.id,
                   amount: chemical.volume,
                 })}
               />
               <Button
-                content="Custom.."
-                mb="0"
-                onClick={() => modalOpen(context, 'removecustom', {
+                  content="Custom.."
+                  mb="0"
+                  onClick={() => modalOpen(context, 'removecustom', {
                   id: chemical.id,
                 })}
               />
             </Box>
-          )}
+            )}
         />
         : (
           <Box color="label">

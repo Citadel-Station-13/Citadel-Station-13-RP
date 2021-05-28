@@ -8374,6 +8374,7 @@ resolve@^2.0.0-next.3:
     jest-circus: ^26.6.3
     jsdom: ^16.5.3
     mini-css-extract-plugin: ^1.4.1
+    prop-types: ^15.7.2
     sass: ^1.32.8
     sass-loader: ^11.0.1
     style-loader: ^2.0.0
@@ -8397,6 +8398,7 @@ resolve@^2.0.0-next.3:
     inferno-vnode-flags: ^7.4.8
     js-yaml: ^4.1.0
     marked: ^2.0.3
+    prop-types: ^15.7.2
     tgui-dev-server: "workspace:*"
     tgui-polyfill: "workspace:*"
   languageName: unknown

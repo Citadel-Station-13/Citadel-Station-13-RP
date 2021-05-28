@@ -82,7 +82,7 @@
 
 /obj/machinery/chem_master/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/chem_master),
+		get_asset_datum(/datum/asset/simple/namespaced/chem_master),
 	)
 
 /obj/machinery/chem_master/ui_interact(mob/user, datum/tgui/ui = null)
