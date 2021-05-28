@@ -3,7 +3,7 @@ GLOBAL_DATUM_INIT(tgui_glasses_state, /datum/tgui_state/glasses_state, new)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.glasses == src_object)
-			return user.shared_tgui_interaction()
+			return user.shared_ui_interaction()
 
 	return UI_CLOSE
 
@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(tgui_nif_state, /datum/tgui_state/nif_state, new)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.nif && H.nif.stat == NIF_WORKING && src_object == H.nif)
-			return user.shared_tgui_interaction()
+			return user.shared_ui_interaction()
 
 	return UI_CLOSE
 
@@ -25,9 +25,9 @@ GLOBAL_DATUM_INIT(tgui_nif_main_state, /datum/tgui_state/nif_main_state, new)
 			return UI_CLOSE
 
 		if(H.nif.stat == NIF_WORKING)
-			return user.shared_tgui_interaction()
+			return user.shared_ui_interaction()
 		else
-			return min(user.shared_tgui_interaction(), UI_UPDATE)
+			return min(user.shared_ui_interaction(), UI_UPDATE)
 
 	return UI_CLOSE
 
@@ -36,6 +36,6 @@ GLOBAL_DATUM_INIT(tgui_commlink_state, /datum/tgui_state/commlink_state, new)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.nif && H.nif.stat == NIF_WORKING && H.nif.comm == src_object)
-			return user.shared_tgui_interaction()
+			return user.shared_ui_interaction()
 
 	return UI_CLOSE

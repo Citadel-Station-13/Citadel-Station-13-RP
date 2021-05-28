@@ -46,7 +46,7 @@
 			. = TRUE
 		if("age")
 			var/new_age = input(usr,"What age would you like to put on this card?","Agent Card Age", S.age) as null|num
-			if(!isnull(new_age) && tgui_status(usr, state) == UI_INTERACTIVE)
+			if(!isnull(new_age) && ui_status(usr, state) == UI_INTERACTIVE)
 				if(new_age < 0)
 					S.age = initial(S.age)
 				else
@@ -55,14 +55,14 @@
 				. = TRUE
 		if("appearance")
 			var/datum/card_state/choice = input(usr, "Select the appearance for this card.", "Agent Card Appearance") as null|anything in id_card_states()
-			if(choice && tgui_status(usr, state) == UI_INTERACTIVE)
+			if(choice && ui_status(usr, state) == UI_INTERACTIVE)
 				S.icon_state = choice.icon_state
 				S.item_state = choice.item_state
 				to_chat(usr, "<span class='notice'>Appearance changed to [choice].</span>")
 				. = TRUE
 		if("assignment")
 			var/new_job = sanitize(input(usr,"What assignment would you like to put on this card?\nChanging assignment will not grant or remove any access levels.","Agent Card Assignment", S.assignment) as null|text)
-			if(!isnull(new_job) && tgui_status(usr, state) == UI_INTERACTIVE)
+			if(!isnull(new_job) && ui_status(usr, state) == UI_INTERACTIVE)
 				S.assignment = new_job
 				to_chat(usr, "<span class='notice'>Occupation changed to '[new_job]'.</span>")
 				S.update_name()
@@ -74,7 +74,7 @@
 				if(H.dna)
 					default = H.dna.b_type
 			var/new_blood_type = sanitize(input(usr,"What blood type would you like to be written on this card?","Agent Card Blood Type",default) as null|text)
-			if(!isnull(new_blood_type) && tgui_status(usr, state) == UI_INTERACTIVE)
+			if(!isnull(new_blood_type) && ui_status(usr, state) == UI_INTERACTIVE)
 				S.blood_type = new_blood_type
 				to_chat(usr, "<span class='notice'>Blood type changed to '[new_blood_type]'.</span>")
 				. = TRUE
@@ -85,7 +85,7 @@
 				if(H.dna)
 					default = H.dna.unique_enzymes
 			var/new_dna_hash = sanitize(input(usr,"What DNA hash would you like to be written on this card?","Agent Card DNA Hash",default) as null|text)
-			if(!isnull(new_dna_hash) && tgui_status(usr, state) == UI_INTERACTIVE)
+			if(!isnull(new_dna_hash) && ui_status(usr, state) == UI_INTERACTIVE)
 				S.dna_hash = new_dna_hash
 				to_chat(usr, "<span class='notice'>DNA hash changed to '[new_dna_hash]'.</span>")
 				. = TRUE
@@ -96,13 +96,13 @@
 				if(H.dna)
 					default = md5(H.dna.uni_identity)
 			var/new_fingerprint_hash = sanitize(input(usr,"What fingerprint hash would you like to be written on this card?","Agent Card Fingerprint Hash",default) as null|text)
-			if(!isnull(new_fingerprint_hash) && tgui_status(usr, state) == UI_INTERACTIVE)
+			if(!isnull(new_fingerprint_hash) && ui_status(usr, state) == UI_INTERACTIVE)
 				S.fingerprint_hash = new_fingerprint_hash
 				to_chat(usr, "<span class='notice'>Fingerprint hash changed to '[new_fingerprint_hash]'.</span>")
 				. = TRUE
 		if("name")
 			var/new_name = sanitizeName(input(usr,"What name would you like to put on this card?","Agent Card Name", S.registered_name) as null|text)
-			if(!isnull(new_name) && tgui_status(usr, state) == UI_INTERACTIVE)
+			if(!isnull(new_name) && ui_status(usr, state) == UI_INTERACTIVE)
 				S.registered_name = new_name
 				S.update_name()
 				to_chat(usr, "<span class='notice'>Name changed to '[new_name]'.</span>")
@@ -113,12 +113,12 @@
 			. = TRUE
 		if("sex")
 			var/new_sex = sanitize(input(usr,"What sex would you like to put on this card?","Agent Card Sex", S.sex) as null|text)
-			if(!isnull(new_sex) && tgui_status(usr, state) == UI_INTERACTIVE)
+			if(!isnull(new_sex) && ui_status(usr, state) == UI_INTERACTIVE)
 				S.sex = new_sex
 				to_chat(usr, "<span class='notice'>Sex changed to '[new_sex]'.</span>")
 				. = TRUE
 		if("factoryreset")
-			if(alert("This will factory reset the card, including access and owner. Continue?", "Factory Reset", "No", "Yes") == "Yes" && tgui_status(usr, state) == UI_INTERACTIVE)
+			if(alert("This will factory reset the card, including access and owner. Continue?", "Factory Reset", "No", "Yes") == "Yes" && ui_status(usr, state) == UI_INTERACTIVE)
 				S.age = initial(S.age)
 				S.access = syndicate_access.Copy()
 				S.assignment = initial(S.assignment)

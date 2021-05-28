@@ -62,7 +62,7 @@
 			var/desc = input("Please select a location to lock in.", "Locking Menu") in L|null
 			if(!desc)
 				return FALSE
-			if(tgui_status(usr, state) != UI_INTERACTIVE)
+			if(ui_status(usr, state) != UI_INTERACTIVE)
 				return FALSE
 
 			locked = L[desc]

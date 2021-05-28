@@ -31,7 +31,7 @@
 
 	data["all_sensors"] = sensors
 	if(focus)
-		data["focus"] = focus.tgui_data(user)
+		data["focus"] = focus.ui_data(user)
 	else
 		data["focus"] = null
 

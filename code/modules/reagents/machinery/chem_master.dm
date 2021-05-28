@@ -78,7 +78,7 @@
 	if(stat & BROKEN)
 		return
 	user.set_machine(src)
-	tgui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/chem_master/ui_assets(mob/user)
 	return list(
@@ -130,7 +130,7 @@
 	return data
 
 /**
-  * Called in tgui_act() to process modal actions
+  * Called in ui_act() to process modal actions
   *
   * Arguments:
   * * action - The action passed by tgui
@@ -269,12 +269,12 @@
 					var/amount = isgoodnumber(text2num(answer))
 					if(!amount || !arguments["id"])
 						return
-					tgui_act("add", list("id" = arguments["id"], "amount" = amount), ui, state)
+					ui_act("add", list("id" = arguments["id"], "amount" = amount), ui, state)
 				if("removecustom")
 					var/amount = isgoodnumber(text2num(answer))
 					if(!amount || !arguments["id"])
 						return
-					tgui_act("remove", list("id" = arguments["id"], "amount" = amount), ui, state)
+					ui_act("remove", list("id" = arguments["id"], "amount" = amount), ui, state)
 				if("create_condi_pack")
 					if(!condi || !reagents.total_volume)
 						return
@@ -314,7 +314,7 @@
 				if("create_pill_multiple")
 					if(condi || !reagents.total_volume)
 						return
-					tgui_act("modal_open", list("id" = "create_pill", "arguments" = list("num" = answer)), ui, state)
+					ui_act("modal_open", list("id" = "create_pill", "arguments" = list("num" = answer)), ui, state)
 				if("change_pill_style")
 					var/new_style = CLAMP(text2num(answer) || 0, 0, MAX_PILL_SPRITE)
 					if(!new_style)
@@ -347,7 +347,7 @@
 				if("create_patch_multiple")
 					if(condi || !reagents.total_volume)
 						return
-					tgui_act("modal_open", list("id" = "create_patch", "arguments" = list("num" = answer)), ui, state)
+					ui_act("modal_open", list("id" = "create_patch", "arguments" = list("num" = answer)), ui, state)
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
 						return
@@ -372,7 +372,7 @@
 				if("create_bottle_multiple")
 					if(condi || !reagents.total_volume)
 						return
-					tgui_act("modal_open", list("id" = "create_bottle", "arguments" = list("num" = answer)), ui, state)
+					ui_act("modal_open", list("id" = "create_bottle", "arguments" = list("num" = answer)), ui, state)
 				if("change_bottle_style")
 					var/new_style = CLAMP(text2num(answer) || 0, 0, MAX_BOTTLE_SPRITE)
 					if(!new_style)
@@ -387,7 +387,7 @@
 	if(..())
 		return TRUE
 
-	if(tgui_act_modal(action, params, ui, state))
+	if(ui_act_modal(action, params, ui, state))
 		return TRUE
 
 	add_fingerprint(usr)

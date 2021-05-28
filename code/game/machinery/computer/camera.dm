@@ -28,13 +28,13 @@
 	return ..()
 
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui = null)
-	camera.tgui_interact(user, ui)
+	camera.ui_interact(user, ui)
 
 /obj/machinery/computer/security/attack_hand(mob/user)
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	tgui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/computer/security/attack_robot(mob/user)
 	if(isrobot(user))

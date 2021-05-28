@@ -97,6 +97,6 @@
 			var/obj/effect/overmap/visitable/ship/V = locate(params["ref"])
 			if(istype(V))
 				var/datum/tgui_module/ship/fullmonty/F = new(src, V)
-				F.tgui_interact(usr, null, ui)
+				F.ui_interact(usr, null, ui)
 
 			return TRUE

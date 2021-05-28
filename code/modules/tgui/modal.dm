@@ -7,7 +7,7 @@
 GLOBAL_LIST(tgui_modals)
 
 /**
-  * Call this from a proc that is called in tgui_act() to process modal actions
+  * Call this from a proc that is called in ui_act() to process modal actions
   *
   * Example: /obj/machinery/chem_master/proc/ui_act_modal
   * You can then switch based on the return value and show different
@@ -36,7 +36,7 @@ GLOBAL_LIST(tgui_modals)
 			return TGUI_MODAL_CLOSE
 
 /**
-  * Call this from tgui_data() to return modal information if needed
+  * Call this from ui_data() to return modal information if needed
 
   * Arguments:
   * * source - The source datum
