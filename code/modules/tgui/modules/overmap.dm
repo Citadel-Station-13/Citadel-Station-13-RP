@@ -17,7 +17,7 @@
 				unlook(M)
 	. = ..()
 
-/datum/tgui_module/ship/tgui_status(mob/user)
+/datum/tgui_module/ship/ui_status(mob/user)
 	. = ..()
 	if(. > UI_DISABLED)
 		if(viewing_overmap(user))

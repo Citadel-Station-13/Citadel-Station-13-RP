@@ -1,5 +1,3 @@
-
-
 /obj/structure/reagent_dispensers
 	name = "Dispenser"
 	desc = "..."
@@ -10,27 +8,44 @@
 	anchored = 0
 	pressure_resistance = 2*ONE_ATMOSPHERE
 
+	var/obj/item/hose_connector/input/active/InputSocket
+	var/obj/item/hose_connector/output/active/OutputSocket
+
 	var/amount_per_transfer_from_this = 10
 	var/possible_transfer_amounts = list(10,25,50,100)
 
-	attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/reagent_dispensers/attackby(obj/item/W as obj, mob/user as mob)
 		return
 
-/obj/structure/reagent_dispensers/Initialize(mapload)
+/obj/structure/reagent_dispensers/Destroy()
+	QDEL_NULL(InputSocket)
+	QDEL_NULL(OutputSocket)
+
+	..()
+
+/obj/structure/reagent_dispensers/Initialize()
 	var/datum/reagents/R = new/datum/reagents(5000)
 	reagents = R
 	R.my_atom = src
 	if (!possible_transfer_amounts)
 		src.verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
+
+	InputSocket = new(src)
+	InputSocket.carrier = src
+	OutputSocket = new(src)
+	OutputSocket.carrier = src
+
 	. = ..()
 
 /obj/structure/reagent_dispensers/examine(mob/user)
-	to_chat(user, "<span class='notice'>It contains:</span>")
-	if(reagents && reagents.reagent_list.len)
-		for(var/datum/reagent/R in reagents.reagent_list)
-			. += "<span class='notice'>[R.volume] units of [R.name]</span>"
-	else
-		. += "<span class='notice'>Nothing.</span>"
+	. = ..()
+	if(get_dist(user, src) <= 2)
+		. += "<span class='notice'>It contains:</span>"
+		if(reagents && reagents.reagent_list.len)
+			for(var/datum/reagent/R in reagents.reagent_list)
+				. += "<span class='notice'>[R.volume] units of [R.name]</span>"
+		else
+			. += "<span class='notice'>Nothing.</span>"
 
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -67,11 +82,11 @@
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
 	desc = "A watertank."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/objects_vr.dmi' //VOREStation Edit
 	icon_state = "watertank"
 	amount_per_transfer_from_this = 10
 
-/obj/structure/reagent_dispensers/watertank/Initialize(mapload)
+/obj/structure/reagent_dispensers/watertank/Initialize()
 	. = ..()
 	reagents.add_reagent("water", 1000)
 
@@ -80,29 +95,63 @@
 	desc = "A highly-pressurized water tank made to hold vast amounts of water.."
 	icon_state = "watertank_high"
 
-/obj/structure/reagent_dispensers/watertank/high/Initialize(mapload)
+/obj/structure/reagent_dispensers/watertank/high/Initialize()
 	. = ..()
 	reagents.add_reagent("water", 4000)
 
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A fueltank."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/objects_vr.dmi' //VOREStation Edit
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	var/modded = 0
 	var/obj/item/assembly_holder/rig = null
 
-/obj/structure/reagent_dispensers/fueltank/Initialize(mapload)
+/obj/structure/reagent_dispensers/fueltank/Initialize()
 	. = ..()
 	reagents.add_reagent("fuel",1000)
 
+//VOREStation Add
+/obj/structure/reagent_dispensers/fueltank/high
+	name = "high-capacity fuel tank"
+	desc = "A highly-pressurized fuel tank made to hold vast amounts of fuel."
+	icon_state = "weldtank_high"
+
+/obj/structure/reagent_dispensers/fueltank/high/Initialize()
+	. = ..()
+	reagents.add_reagent("fuel",4000)
+
+/obj/structure/reagent_dispensers/foam
+	name = "foamtank"
+	desc = "A foam tank."
+	icon = 'icons/obj/objects_vr.dmi'
+	icon_state = "foamtank"
+	amount_per_transfer_from_this = 10
+
+/obj/structure/reagent_dispensers/foam/Initialize()
+	. = ..()
+	reagents.add_reagent("firefoam",1000)
+
+/obj/structure/reagent_dispensers/fueltank/barrel
+	name = "hazardous barrel"
+	desc = "An open-topped barrel full of nasty-looking liquid."
+	icon_state = "barrel"
+	modded = TRUE
+
+/obj/structure/reagent_dispensers/fueltank/barrel/attackby(obj/item/W as obj, mob/user as mob)
+	if (W.is_wrench()) //can't wrench it shut, it's always open
+		return
+	return ..()
+//VOREStation Add End
+
 /obj/structure/reagent_dispensers/fueltank/examine(mob/user)
 	. = ..()
-	if (modded)
-		. += "<span class='warning'>THe fuel faucet is wrenched open, leaking the fuel!</span>"
-	if(rig)
-		. += "<span class='notice'>There is some kind of device rigged to the tank.</span>"
+	if(get_dist(user, src) <= 2)
+		if(modded)
+			. += "<span class='warning'>Fuel faucet is wrenched open, leaking the fuel!</span>"
+		if(rig)
+			. += "<span class='notice'>There is some kind of device rigged to the tank.</span>"
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand()
 	if (rig)
@@ -202,7 +251,7 @@
 	density = 0
 	amount_per_transfer_from_this = 45
 
-/obj/structure/reagent_dispensers/peppertank/Initialize(mapload)
+/obj/structure/reagent_dispensers/peppertank/Initialize()
 	. = ..()
 	reagents.add_reagent("condensedcapsaicin",1000)
 
@@ -224,22 +273,33 @@
 	cupholder = 1
 	cups = 10
 
-/obj/structure/reagent_dispensers/water_cooler/Initialize(mapload)
+/obj/structure/reagent_dispensers/water_cooler/Initialize()
 	. = ..()
 	if(bottle)
 		reagents.add_reagent("water",120)
 	update_icon()
 
 /obj/structure/reagent_dispensers/water_cooler/examine(mob/user)
-	..()
+	. = ..()
 	if(cupholder)
 		. += "<span class='notice'>There are [cups] cups in the cup dispenser.</span>"
+
+/obj/structure/reagent_dispensers/water_cooler/verb/rotate_clockwise()
+	set name = "Rotate Cooler Clockwise"
+	set category = "Object"
+	set src in oview(1)
+
+	if (src.anchored || usr:stat)
+		to_chat(usr, "It is fastened to the floor!")
+		return 0
+	src.set_dir(turn(src.dir, 270))
+	return 1
 
 /obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.is_wrench())
 		src.add_fingerprint(user)
 		if(bottle)
-			playsound(loc, I.usesound, 50, 1)
+			playsound(src, I.usesound, 50, 1)
 			if(do_after(user, 20) && bottle)
 				to_chat(user, "<span class='notice'>You unfasten the jug.</span>")
 				var/obj/item/reagent_containers/glass/cooler_bottle/G = new /obj/item/reagent_containers/glass/cooler_bottle( src.loc )
@@ -258,12 +318,12 @@
 				if(!src) return
 				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 				anchored = !anchored
-				playsound(loc, I.usesound, 50, 1)
+				playsound(src, I.usesound, 50, 1)
 		return
 
 	if(I.is_screwdriver())
 		if(cupholder)
-			playsound(loc, I.usesound, 50, 1)
+			playsound(src, I.usesound, 50, 1)
 			to_chat(user, "<span class='notice'>You take the cup dispenser off.</span>")
 			new /obj/item/stack/material/plastic( src.loc )
 			if(cups)
@@ -274,7 +334,7 @@
 			update_icon()
 			return
 		if(!bottle && !cupholder)
-			playsound(loc, I.usesound, 50, 1)
+			playsound(src, I.usesound, 50, 1)
 			to_chat(user, "<span class='notice'>You start taking the water-cooler apart.</span>")
 			if(do_after(user, 20 * I.toolspeed) && !bottle && !cupholder)
 				to_chat(user, "<span class='notice'>You take the water-cooler apart.</span>")
@@ -308,7 +368,7 @@
 				var/obj/item/stack/material/plastic/P = I
 				src.add_fingerprint(user)
 				to_chat(user, "<span class='notice'>You start to attach a cup dispenser onto the water-cooler.</span>")
-				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
+				playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
 				if(do_after(user, 20) && !cupholder && anchored)
 					if (P.use(1))
 						to_chat(user, "<span class='notice'>You attach a cup dispenser onto the water-cooler.</span>")
@@ -324,7 +384,7 @@
 	if(cups)
 		new /obj/item/reagent_containers/food/drinks/sillycup(src.loc)
 		cups--
-		update_icon()
+		flick("[icon_state]-vend", src)
 		return
 
 /obj/structure/reagent_dispensers/water_cooler/update_icon()
@@ -333,12 +393,6 @@
 	var/image/I
 	if(bottle)
 		I = image(icon, "water_cooler_bottle")
-		overlays += I
-	if(cupholder)
-		I = image(icon, "water_cooler_cupholder")
-		overlays += I
-	if(cups)
-		I = image(icon, "water_cooler_cups")
 		overlays += I
 	return
 
@@ -349,7 +403,7 @@
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10
 
-/obj/structure/reagent_dispensers/beerkeg/Initialize(mapload)
+/obj/structure/reagent_dispensers/beerkeg/Initialize()
 	. = ..()
 	reagents.add_reagent("beer",1000)
 
@@ -367,7 +421,7 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 
-/obj/structure/reagent_dispensers/virusfood/Initialize(mapload)
+/obj/structure/reagent_dispensers/virusfood/Initialize()
 	. = ..()
 	reagents.add_reagent("virusfood", 1000)
 
@@ -379,7 +433,7 @@
 	amount_per_transfer_from_this = 10
 	anchored = 1
 
-/obj/structure/reagent_dispensers/acid/Initialize(mapload)
+/obj/structure/reagent_dispensers/acid/Initialize()
 	. = ..()
 	reagents.add_reagent("sacid", 1000)
 
@@ -391,9 +445,9 @@
 	icon_state = "oiltank"
 	amount_per_transfer_from_this = 120
 
-/obj/structure/reagent_dispensers/cookingoil/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("cornoil",5000)
+/obj/structure/reagent_dispensers/cookingoil/New()
+		..()
+		reagents.add_reagent("cornoil",5000)
 
 /obj/structure/reagent_dispensers/cookingoil/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.get_structure_damage())
@@ -406,3 +460,14 @@
 	reagents.splash_area(get_turf(src), 3)
 	visible_message(span("danger", "The [src] bursts open, spreading oil all over the area."))
 	qdel(src)
+
+/obj/structure/reagent_dispensers/he3
+	name = "fueltank"
+	desc = "A fueltank."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "weldtank"
+	amount_per_transfer_from_this = 10
+
+/obj/structure/reagent_dispenser/he3/Initialize()
+	..()
+	reagents.add_reagent("helium3",1000)

@@ -5,7 +5,7 @@
 /datum/tgui_module/appearance_changer/vore/tgui_state(mob/user)
 	return GLOB.tgui_conscious_state
 
-/datum/tgui_module/appearance_changer/vore/tgui_status(mob/user, datum/tgui_state/state)
+/datum/tgui_module/appearance_changer/vore/ui_status(mob/user, datum/tgui_state/state)
 	if(!isbelly(owner.loc))
 		return UI_CLOSE
 	return ..()

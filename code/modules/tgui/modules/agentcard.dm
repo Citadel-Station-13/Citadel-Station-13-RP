@@ -26,7 +26,7 @@
 
 	return data
 
-/datum/tgui_module/agentcard/tgui_status(mob/user, datum/tgui_state/state)
+/datum/tgui_module/agentcard/ui_status(mob/user, datum/tgui_state/state)
 	var/obj/item/weapon/card/id/syndicate/S = tgui_host()
 	if(!istype(S))
 		return UI_CLOSE
