@@ -54,10 +54,10 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 
 	return 0
 
-/datum/tgui_module/tgui_static_data()
+/datum/tgui_module/ui_static_data()
 	. = ..()
 
-	var/obj/item/modular_computer/host = tgui_host()
+	var/obj/item/modular_computer/host = ui_host()
 	if(istype(host))
 		. += host.get_header_data()
 
@@ -65,7 +65,7 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 	if(..())
 		return TRUE
 
-	var/obj/item/modular_computer/host = tgui_host()
+	var/obj/item/modular_computer/host = ui_host()
 	if(istype(host))
 		if(action == "PC_exit")
 			host.kill_program()

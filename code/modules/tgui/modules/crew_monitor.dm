@@ -12,7 +12,7 @@
 		return TRUE
 
 	if(action && !issilicon(usr))
-		playsound(tgui_host(), "terminal_type", 50, 1)
+		playsound(ui_host(), "terminal_type", 50, 1)
 
 	var/turf/T = get_turf(usr)
 	if(!T || !(T.z in GLOB.using_map.player_levels))

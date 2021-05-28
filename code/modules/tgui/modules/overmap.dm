@@ -31,7 +31,7 @@
 	unlook(user)
 
 /datum/tgui_module/ship/proc/sync_linked()
-	var/obj/effect/overmap/visitable/ship/sector = get_overmap_sector(get_z(tgui_host()))
+	var/obj/effect/overmap/visitable/ship/sector = get_overmap_sector(get_z(ui_host()))
 	if(!sector)
 		return
 	return attempt_hook_up_recursive(sector)
@@ -46,7 +46,7 @@
 /datum/tgui_module/ship/proc/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
 	if(!istype(sector))
 		return
-	if(sector.check_ownership(tgui_host()))
+	if(sector.check_ownership(ui_host()))
 		linked = sector
 		return 1
 
@@ -68,7 +68,7 @@
 	return (weakref(user) in viewers)
 
 /datum/tgui_module/ship/check_eye(var/mob/user)
-	if(!get_dist(user, tgui_host()) > 1 || user.blinded || !linked)
+	if(!get_dist(user, ui_host()) > 1 || user.blinded || !linked)
 		unlook(user)
 		return -1
 	else
@@ -81,7 +81,7 @@
 
 /datum/tgui_module/ship/nav/ui_interact(mob/user, datum/tgui/ui)
 	if(!linked)
-		var/obj/machinery/computer/ship/navigation/host = tgui_host()
+		var/obj/machinery/computer/ship/navigation/host = ui_host()
 		if(istype(host))
 			// Real Computer path
 			host.display_reconnect_dialog(user, "Navigation")
@@ -93,7 +93,7 @@
 			if(ui)
 				ui.close(can_be_suspended = FALSE)
 			if(ntos)
-				var/obj/item/modular_computer/M = tgui_host()
+				var/obj/item/modular_computer/M = ui_host()
 				if(istype(M))
 					M.kill_program()
 		return

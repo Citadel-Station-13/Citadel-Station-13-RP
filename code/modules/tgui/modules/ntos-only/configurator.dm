@@ -5,7 +5,7 @@
 	var/obj/item/modular_computer/movable = null
 
 /datum/tgui_module/computer_configurator/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
-	movable = tgui_host()
+	movable = ui_host()
 	// No computer connection, we can't get data from that.
 	if(!istype(movable))
 		return 0

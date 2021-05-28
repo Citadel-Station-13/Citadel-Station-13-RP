@@ -28,7 +28,7 @@
 	data["in_use"] = LAZYLEN(viewers)
 
 	var/list/paired_map = list()
-	var/obj/item/modular_computer/mc_host = tgui_host()
+	var/obj/item/modular_computer/mc_host = ui_host()
 	if(istype(mc_host))
 		for(var/puav in mc_host.paired_uavs)
 			var/weakref/wr = puav
@@ -58,7 +58,7 @@
 
 		if("del_uav")
 			var/refstring = params["del_uav"] //This is a \ref to the UAV itself
-			var/obj/item/modular_computer/mc_host = tgui_host()
+			var/obj/item/modular_computer/mc_host = ui_host()
 			//This is so we can really scrape up any weakrefs that can't resolve
 			for(var/weakref/wr in mc_host.paired_uavs)
 				if(wr.ref == refstring)
@@ -114,7 +114,7 @@
 	// 0 is none
 	// 1 is weak
 	// 2 is strong
-	var/obj/item/modular_computer/host = tgui_host() //Better not add this to anything other than modular computers.
+	var/obj/item/modular_computer/host = ui_host() //Better not add this to anything other than modular computers.
 	if(!istype(host))
 		return
 	var/our_signal = host.get_ntnet_status() //1 low, 2 good, 3 wired, 0 none
@@ -184,8 +184,8 @@
 	if(!current_uav)
 		return
 
-	if(user.machine != tgui_host())
-		user.set_machine(tgui_host())
+	if(user.machine != ui_host())
+		user.set_machine(ui_host())
 	user.reset_view(current_uav)
 	current_uav.add_master(user)
 	LAZYDISTINCTADD(viewers, weakref(user))
@@ -198,7 +198,7 @@
 	LAZYREMOVE(viewers, weakref(user))
 
 /datum/tgui_module/uav/check_eye(mob/user)
-	if(get_dist(user, tgui_host()) > 1 || user.blinded || !current_uav)
+	if(get_dist(user, ui_host()) > 1 || user.blinded || !current_uav)
 		unlook(user)
 		return -1
 
