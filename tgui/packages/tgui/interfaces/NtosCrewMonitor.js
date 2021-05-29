@@ -12,4 +12,4 @@ export const NtosCrewMonitor = () => {
       </NtosWindow.Content>
     </NtosWindow>
   );
-}; 
+};
