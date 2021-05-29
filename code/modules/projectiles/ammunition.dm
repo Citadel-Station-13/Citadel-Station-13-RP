@@ -33,7 +33,7 @@
 /obj/item/ammo_casing/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
 		if(!BB)
-			to_chat(user, "<font color='blue'>There is no bullet in the casing to inscribe anything into.</font>")
+			to_chat(user, "<font color=#4F49AF>There is no bullet in the casing to inscribe anything into.</font>")
 			return
 
 		var/tmp_label = ""
@@ -41,10 +41,10 @@
 		if(length(label_text) > 20)
 			to_chat(user, "<font color='red'>The inscription can be at most 20 characters long.</font>")
 		else if(!label_text)
-			to_chat(user, "<font color='blue'>You scratch the inscription off of [initial(BB)].</font>")
+			to_chat(user, "<font color=#4F49AF>You scratch the inscription off of [initial(BB)].</font>")
 			BB.name = initial(BB.name)
 		else
-			to_chat(user, "<font color='blue'>You inscribe \"[label_text]\" into \the [initial(BB.name)].</font>")
+			to_chat(user, "<font color=#4F49AF>You inscribe \"[label_text]\" into \the [initial(BB.name)].</font>")
 			BB.name = "[initial(BB.name)] (\"[label_text]\")"
 
 /obj/item/ammo_casing/update_icon()

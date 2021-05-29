@@ -406,20 +406,32 @@
 	path = /obj/item/clothing/under/kamishimo
 
 /datum/gear/uniform/kimono
-	display_name = "Plain Kimono"
+	display_name = "Kimono - Plain"
 	path = /obj/item/clothing/under/kimono
 
 /datum/gear/uniform/kimono_black
-	display_name = "Black Kimono"
+	display_name = "Kimono - Black"
 	path = /obj/item/clothing/under/kimono_black
 
 /datum/gear/uniform/kimono_sakura
-	display_name = "Sakura Kimono"
+	display_name = "Kimono - Sakura"
 	path = /obj/item/clothing/under/kimono_sakura
 
 /datum/gear/uniform/kimono_fancy
-	display_name = "Festival Kimono"
+	display_name = "Kimono - Festival"
 	path = /obj/item/clothing/under/kimono_fancy
+
+/datum/gear/uniform/kimono_selection
+	display_name = "Kimono Selection"
+	description = "Colorful variants of the basic kimono. Stylish and comfy!"
+
+/datum/gear/uniform/kimono_selection/New()
+	..()
+	var/list/kimonos = list()
+	for(var/kimono in typesof(/obj/item/clothing/under/kimono))
+		var/obj/item/clothing/under/kimono/kimono_type = kimono
+		kimonos[initial(kimono_type.name)] = kimono_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(kimonos, /proc/cmp_text_asc))
 
 /datum/gear/uniform/wrappedcoat
 	display_name = "Modern Wrapped Coat"

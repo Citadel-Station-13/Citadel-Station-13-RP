@@ -192,7 +192,7 @@
 				if(!input || !(usr in view(1,src)))
 					return
 				CentCom_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
+				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown
@@ -209,7 +209,7 @@
 				if(!input || !(usr in view(1,src)))
 					return
 				Syndicate_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
+				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown

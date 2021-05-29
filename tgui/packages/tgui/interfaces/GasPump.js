@@ -68,4 +68,8 @@ export const GasPump = (props, context) => {
       </Window.Content>
     </Window>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> citrp/master

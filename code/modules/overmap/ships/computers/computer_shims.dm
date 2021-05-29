@@ -66,7 +66,7 @@
 	if((. = ..()))
 		return
 	state = state || DefaultTopicState() || global.default_state
-	if(CanUseTopic(usr, state, href_list) == STATUS_INTERACTIVE)
+	if(CanUseTopic(usr, state, href_list) == UI_INTERACTIVE)
 		CouldUseTopic(usr)
 		return OnTopic(usr, href_list, state)
 	CouldNotUseTopic(usr)
@@ -88,7 +88,7 @@
 	return TRUE
 
 /obj/machinery/computer/ship/attack_ai(mob/user)
-	if(CanUseTopic(user, DefaultTopicState()) > STATUS_CLOSE)
+	if(CanUseTopic(user, DefaultTopicState()) > UI_CLOSE)
 		return interface_interact(user)
 
 // After a recent rework this should mostly be safe.
@@ -100,5 +100,5 @@
 /obj/machinery/computer/ship/attack_hand(mob/user)
 	if((. = ..()))
 		return
-	if(CanUseTopic(user, DefaultTopicState()) > STATUS_CLOSE)
+	if(CanUseTopic(user, DefaultTopicState()) > UI_CLOSE)
 		return interface_interact(user)

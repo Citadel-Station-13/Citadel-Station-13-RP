@@ -413,7 +413,7 @@
 
 	else if (href_list["obj_announce"])
 		var/obj_count = 1
-		to_chat(current, "<font color='blue'>Your current objectives:</font>")
+		to_chat(current, "<font color=#4F49AF>Your current objectives:</font>")
 		for(var/datum/objective/objective in objectives)
 			to_chat(current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 			obj_count++

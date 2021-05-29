@@ -61,7 +61,7 @@
 
 	// In the far future no checks are made in an overriding Topic() beyond if(..()) return
 	// Instead any such checks are made in CanUseTopic()
-	if(CanUseTopic(usr, state, href_list) == STATUS_INTERACTIVE)
+	if(CanUseTopic(usr, state, href_list) == UI_INTERACTIVE)
 		CouldUseTopic(usr)
 		return 0
 
@@ -72,7 +72,7 @@
 	if(user.CanUseObjTopic(src))
 		return ..()
 	to_chat(user, "<span class='danger'>[icon2html(thing = src, target = user)] Access Denied!</span>")
-	return STATUS_CLOSE
+	return UI_CLOSE
 
 /mob/living/silicon/CanUseObjTopic(var/obj/O)
 	var/id = src.GetIdCard()

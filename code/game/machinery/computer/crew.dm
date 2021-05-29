@@ -10,13 +10,14 @@
 	circuit = /obj/item/circuitboard/crew
 	var/datum/tgui_module/crew_monitor/crew_monitor
 
-/obj/machinery/computer/crew/Initialize(mapload)
+/obj/machinery/computer/crew/New()
 	crew_monitor = new(src)
-	return ..()
+	..()
 
 /obj/machinery/computer/crew/Destroy()
-	QDEL_NULL(crew_monitor)
-	return ..()
+	qdel(crew_monitor)
+	crew_monitor = null
+	..()
 
 /obj/machinery/computer/crew/attack_ai(mob/user)
 	attack_hand(user)
