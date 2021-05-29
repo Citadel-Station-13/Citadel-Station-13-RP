@@ -107,19 +107,21 @@ const ChemMasterBeaker = (props, context) => {
   return (
     <Section
       title="Beaker"
-      buttons={bufferNonEmpty
-        ? <Button.Confirm
+      buttons={bufferNonEmpty ? (
+        <Button.Confirm
           icon="eject"
           disabled={!beaker}
           content="Eject and Clear Buffer"
           onClick={() => act('eject')} />
-        : <Button
+      ) : (
+        <Button
           icon="eject"
           disabled={!beaker}
           content="Eject and Clear Buffer"
-          onClick={() => act('eject')} />}>
-      {beaker
-        ? <BeakerContents
+          onClick={() => act('eject')} />
+      )}>
+      {beaker ? (
+        <BeakerContents
           beakerLoaded
           beakerContents={beakerReagents}
           buttons={(chemical, i) => (
@@ -161,11 +163,11 @@ const ChemMasterBeaker = (props, context) => {
             </Box>
           )}
         />
-        : (
-          <Box color="label">
-            No beaker loaded.
-          </Box>
-        )}
+      ) : (
+        <Box color="label">
+          No beaker loaded.
+        </Box>
+      )}
     </Section>
   );
 };
@@ -190,8 +192,8 @@ const ChemMasterBuffer = (props, context) => {
           />
         </Box>
       }>
-      {(bufferReagents.length > 0)
-        ? <BeakerContents
+      {(bufferReagents.length > 0) ? (
+        <BeakerContents
           beakerLoaded
           beakerContents={bufferReagents}
           buttons={(chemical, i) => (
@@ -233,11 +235,11 @@ const ChemMasterBuffer = (props, context) => {
             </Box>
           )}
         />
-        : (
-          <Box color="label">
-            Buffer is empty.
-          </Box>
-        )}
+      ) : (
+        <Box color="label">
+          Buffer is empty.
+        </Box>
+      )}
     </Section>
   );
 };
