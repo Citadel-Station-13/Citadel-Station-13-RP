@@ -620,14 +620,20 @@
 
 	if (href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
+		if(get_dist(src, get_turf(I)) > 7)
+			return
 		src.examinate(I)
 
 	if (href_list["lookmob"])
 		var/mob/M = locate(href_list["lookmob"])
+		if(get_dist(src, get_turf(M)) > 7)
+			return
 		src.examinate(M)
 
 	if (href_list["clickitem"])
 		var/obj/item/I = locate(href_list["clickitem"])
+		if(get_dist(src, get_turf(I)) > 7)
+			return
 		if(src.client)
 			src.ClickOn(I)
 
