@@ -2676,16 +2676,16 @@
 	product_slogans = "Glukoz Pharmavenda, voted top street pharmaceuticals vendor, 2519!"
 	product_ads = "Back so soon?;The hits keep comin'!;If you can afford it, it's only a habit!;Who's gonna know?;In a pinch? It's just a pinch!;Remove the cap!;You'll be back!"
 	products = list(/obj/item/reagent_containers/hypospray/glukoz = 10,
-					/obj/item/reagent_containers/hypospray/glukoz/certaphil = 5,
+					/obj/item/reagent_containers/hypospray/glukoz/certaphil = 10,
 					/obj/item/reagent_containers/hypospray/glukoz/downer = 10,
-					/obj/item/reagent_containers/hypospray/glukoz/fuckit = 2,
+					/obj/item/reagent_containers/hypospray/glukoz/fuckit = 10,
 					/obj/item/reagent_containers/hypospray/glukoz/hangup = 10,
-					/obj/item/reagent_containers/hypospray/glukoz/hypnogamma = 5,
-					/obj/item/reagent_containers/hypospray/glukoz/medcon = 1,
-					/obj/item/reagent_containers/hypospray/glukoz/multibuzz = 3,
+					/obj/item/reagent_containers/hypospray/glukoz/hypnogamma = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/medcon = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/multibuzz = 10,
 					/obj/item/reagent_containers/hypospray/glukoz/numplus = 10,
-					/obj/item/reagent_containers/hypospray/glukoz/oxyduo = 2,
-					/obj/item/reagent_containers/hypospray/glukoz/pyrholidon = 3,
+					/obj/item/reagent_containers/hypospray/glukoz/oxyduo = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/pyrholidon = 10,
 					/obj/item/reagent_containers/hypospray/glukoz/viraplus = 10)
 	prices = list(/obj/item/reagent_containers/hypospray/glukoz = 100,
 					/obj/item/reagent_containers/hypospray/glukoz/certaphil = 350,

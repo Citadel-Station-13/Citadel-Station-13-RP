@@ -484,6 +484,7 @@
 	name = "FUCK!T"
 	desc = "A colorful steel autoinjector with a menacing aura. ‘A LAST RESORT YOU CAN COUNT ON! Danger: amphetamines are highly addictive. Use only in times of extreme duress.’"
 	icon_state = "fuckit"
+	amount_per_transfer_from_this = 60
 	volume = 60
 	filled_reagents = list("stimm" = 40, "oxycodone" = 20)
 
