@@ -112,14 +112,12 @@ const ChemMasterBeaker = (props, context) => {
           icon="eject"
           disabled={!beaker}
           content="Eject and Clear Buffer"
-          onClick={() => act('eject')}
-        />
+          onClick={() => act('eject')} />
         : <Button
           icon="eject"
           disabled={!beaker}
           content="Eject and Clear Buffer"
-          onClick={() => act('eject')}
-        />}>
+          onClick={() => act('eject')} />}>
       {beaker
         ? <BeakerContents
           beakerLoaded
