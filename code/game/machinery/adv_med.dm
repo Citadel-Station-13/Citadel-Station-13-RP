@@ -454,7 +454,7 @@
 
 	if(scanner)
 		var/mob/living/carbon/human/occupant = scanner.occupant
-		dat = "<font color='blue'><b>Occupant Statistics:</b></font><br>" //Blah obvious
+		dat = "<font color=#4F49AF><b>Occupant Statistics:</b></font><br>" //Blah obvious
 		if(istype(occupant)) //is there REALLY someone in there?
 			var/t1
 			switch(occupant.stat) // obvious, see what their status is
@@ -578,7 +578,7 @@
 
 				if(unknown_body)
 					imp += "Unknown body present:"
-				if(!AN && !open && !infected & !imp)
+				if(!AN && !open && !infected && !imp)
 					AN = "None:"
 				if(!(e.status & ORGAN_DESTROYED))
 					dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured][o_dead]</td>"

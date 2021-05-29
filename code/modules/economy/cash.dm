@@ -163,4 +163,4 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	. = ..()
 	if (!(user in view(2)) && user!=src.loc)
 		return
-	. += "<font color='blue'>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"
+	. += "<font color=#4F49AF>Charge card's owner: [src.owner_name]. Thalers remaining: [src.worth].</font>"

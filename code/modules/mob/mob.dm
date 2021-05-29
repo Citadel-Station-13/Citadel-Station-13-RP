@@ -353,9 +353,9 @@
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
 		if(length(msg) <= 40)
-			return "<font color='blue'>[msg]</font>"
+			return "<font color=#4F49AF>[msg]</font>"
 		else
-			return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
+			return "<font color=#4F49AF>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
 
 /*
 /mob/verb/help()
@@ -398,11 +398,19 @@
 	else
 		return 	// Don't set it, no need
 
-/mob/verb/abandon_mob()
+/// Alias for respawn
+/mob/verb/return_to_menu()
 	set name = "Return to Menu"
 	set category = "OOC"
+	set desc = "Return to the lobby."
+	return abandon_mob()
 
-	if(stat != DEAD || !SSticker)
+/mob/verb/abandon_mob()
+	set name = "Respawn"
+	set category = "OOC"
+	set desc = "Return to the lobby."
+
+	if(stat != DEAD)
 		to_chat(usr, "<span class='notice'><B>You must be dead to use this!</B></span>")
 		return
 
@@ -476,7 +484,7 @@
 	if(client.holder && (client.holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		to_chat(usr, "<font color='blue'>You must be observing to use this!</font>")
+		to_chat(usr, "<font color=#4F49AF>You must be observing to use this!</font>")
 		return
 
 	if(is_admin && stat == DEAD)

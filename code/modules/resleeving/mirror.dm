@@ -9,6 +9,12 @@
 	icon = 'icons/obj/mirror.dmi'
 	icon_state = "mirror_implant_f"
 	var/stored_mind = null
+	var/tmp/mob/living/carbon/human/human
+//holder to prevent having to find it each time
+/mob/living/carbon/human/var/obj/item/implant/mirror/mirror
+
+/obj/item/implant/mirror/digest_act(var/atom/movable/item_storage = null)
+    return FALSE
 
 /obj/item/implant/get_data()
 	var/dat = {"
@@ -31,6 +37,8 @@
 	else
 		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
 		icon_state = "mirror_implant"
+		human = H
+		human.mirror = src
 
 /obj/item/implant/mirror/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
 	target.active_mr = stored_mind
@@ -97,28 +105,27 @@
 
 /obj/item/mirrortool/attack(mob/living/carbon/human/M as mob, mob/user as mob, target_zone)
 	if(target_zone == BP_TORSO && imp == null)
-		for(var/obj/item/organ/I in M.organs)
-			for(var/obj/item/implant/mirror/MI in I.contents)
-				if(imp == null)
-					M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
-					user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-					user.do_attack_animation(M)
-					var/turf/T1 = get_turf(M)
-					if (T1 && ((M == user) || do_after(user, 20)))
-						if(user && M && (get_turf(M) == T1) && src)
-							M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
-							add_attack_logs(user,M,"Mirror removed by [user]")
-							src.imp = MI
-							qdel(MI)
-				if(MI == null)
-					to_chat(usr, "This person has no mirror installed.")
+		if(imp == null && M.mirror)
+			M.visible_message("<span class='warning'>[user] is attempting remove [M]'s mirror!</span>")
+			user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
+			user.do_attack_animation(M)
+			var/turf/T1 = get_turf(M)
+			if (T1 && ((M == user) || do_after(user, 20)))
+				if(user && M && (get_turf(M) == T1) && src)
+					M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
+					add_attack_logs(user,M,"Mirror removed by [user]")
+					src.imp = M.mirror
+					qdel(M.mirror)
+					M.mirror = null
+		else
+			to_chat(usr, "This person has no mirror installed.")
+
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
-			for(var/obj/item/organ/I in M.organs)
-				for(var/obj/item/implant/mirror/MI in I.contents)
-					if(MI)
-						to_chat(usr, "This person already has a mirror!")
-						return
+			if(M.mirror)
+				to_chat(usr, "This person already has a mirror!")
+				return
+			if(!M.mirror)
 				M.visible_message("<span class='warning'>[user] is attempting to implant [M] with a mirror.</span>")
 				user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 				user.do_attack_animation(M)
@@ -139,5 +146,3 @@
 	else
 		user.put_in_hands(imp)
 		imp = null
-
-

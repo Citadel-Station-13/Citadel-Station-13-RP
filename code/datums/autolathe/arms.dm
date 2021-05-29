@@ -248,7 +248,7 @@
 	category = "Arms and Ammunition"
 
 /datum/category_item/autolathe/arms/pistol_45uzi
-	name = "uzi magazine (.45)"
+	name = "stick magazine (.45)"
 	path =/obj/item/ammo_magazine/m45uzi/empty
 	category = "Arms and Ammunition"
 	hidden = 1
