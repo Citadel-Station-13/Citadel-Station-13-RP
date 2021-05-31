@@ -27,6 +27,8 @@
 
 /obj/machinery/mineral/unloading_machine/process(delta_time)
 	if(output && input)
+		if(length(output.loc.contents) > 100)		// let's not!
+			return
 		var/obj/structure/ore_box/O = locate() in input.loc
 		if(O)
 			for(var/i in 1 to 10)
