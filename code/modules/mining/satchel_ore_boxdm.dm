@@ -43,12 +43,14 @@
 	qdel(O)
 
 /obj/structure/ore_box/proc/deposit(atom/newloc)
-	if(!length(stored_ore))
+	if(isEmpty())
 		return FALSE
-	new stored_ore[1](newloc)
-	stored_ore[stored_ore[1]]--
-	if(stored_ore[stored_ore[1]] <= 0)
-		stored_ore -= stored_ore[1]
+	var/path = stored_ore[1]
+	new path(newloc)
+	stored_ore[path]--
+	if(stored_ore[path] <= 0)
+		stored_ore -= path
+	return TRUE
 
 /obj/structure/ore_box/proc/isEmpty()
 	return !length(stored_ore)
@@ -71,7 +73,7 @@
 
 	add_fingerprint(usr)
 
-	if(contents.len < 1)
+	if(isEmpty())
 		to_chat(usr,"<span class='warning'>The ore box is empty.</span>")
 		return
 
