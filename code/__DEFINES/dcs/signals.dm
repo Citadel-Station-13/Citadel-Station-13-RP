@@ -372,3 +372,9 @@ obj/item signals
 #define COMSIG_XENO_TURF_CLICK_CTRL "xeno_turf_click_alt"					//from turf AltClickOn(): (/mob)
 #define COMSIG_XENO_MONKEY_CLICK_CTRL "xeno_monkey_click_ctrl"				//from monkey CtrlClickOn(): (/mob)
 */
+
+// conflict checking elements
+/// (id) - returns flags - Registered on something by conflict checking elements.
+#define COMSIG_CONFLICT_ELEMENT_CHECK
+	/// A conflict was found
+	#define ELEMENT_CONFLICT_FOUND

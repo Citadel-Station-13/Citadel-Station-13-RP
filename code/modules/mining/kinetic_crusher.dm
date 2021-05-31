@@ -53,6 +53,10 @@
 	detonation_damage = 60
 	wielded = 1
 
+/obj/item/kinetic_crusher/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/conflict_checking, CONFLICT_ELEMENT_CRUSHER)
+
 /*
 /obj/item/kinetic_crusher/Initialize()
 	. = ..()
@@ -160,7 +164,7 @@
 		D.fire()
 		charged = FALSE
 		update_icon()
-		addtimer(CALLBACK(src, .proc/Recharge), charge_time)
+		addtimer(CALLBACK(src, .proc/Recharge), charge_time * ConflictElementCount(CONFLICT_ELEMENT_CRUSHER))
 		return
 	if(proximity_flag && isliving(target))
 		detonate(target, user)
@@ -302,8 +306,8 @@
 	requires_wield = FALSE
 	charge_overlay = FALSE
 	// yeah yeah buff but rp mobs are tough as fuck.
-	backstab_bonus = 25
-	detonation_damage = 35
+	backstab_bonus = 30
+	detonation_damage = 30
 	// woohoo
 	thrown_bonus = 35
 	update_item_state = FALSE
