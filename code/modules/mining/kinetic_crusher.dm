@@ -164,7 +164,7 @@
 		D.fire()
 		charged = FALSE
 		update_icon()
-		addtimer(CALLBACK(src, .proc/Recharge), charge_time * ConflictElementCount(CONFLICT_ELEMENT_CRUSHER))
+		addtimer(CALLBACK(src, .proc/Recharge), charge_time * (user?.ConflictElementCount(CONFLICT_ELEMENT_CRUSHER) || 1))
 		return
 	if(proximity_flag && isliving(target))
 		detonate(target, user)
