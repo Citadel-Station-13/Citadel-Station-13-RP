@@ -83,5 +83,9 @@
 			if(!do_after(usr,5,src))
 				to_chat(usr,"<span class='notice'>You stop emptying the ore box.</span>")
 				return
+			var/atom/A = drop_location()
+			if(!A || length(A.contents > 1000))
+				to_chat(usr, "<span class='warning'>The area under the box is too full.</span>")
+				return
 			for(var/i in 1 to 20)
-				deposit(drop_location())
+				deposit(A)
