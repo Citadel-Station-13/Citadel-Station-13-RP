@@ -306,8 +306,8 @@
 	requires_wield = FALSE
 	charge_overlay = FALSE
 	// yeah yeah buff but rp mobs are tough as fuck.
-	backstab_bonus = 30
-	detonation_damage = 30
+	backstab_bonus = 35
+	detonation_damage = 25
 	// woohoo
 	thrown_bonus = 35
 	update_item_state = FALSE
