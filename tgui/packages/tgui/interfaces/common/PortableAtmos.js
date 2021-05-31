@@ -1,6 +1,6 @@
 import { useBackend } from '../../backend';
 import { Fragment } from 'inferno';
-import { Box, Section, LabeledList, Button, AnimatedNumber } from '../../components';
+import { Box, Section, LabeledList, Button, AnimatedNumber, ProgressBar } from '../../components';
 
 export const PortableBasicInfo = (props, context) => {
   const { act, data } = useBackend(context);
@@ -10,6 +10,9 @@ export const PortableBasicInfo = (props, context) => {
     holding,
     on,
     pressure,
+    powerDraw,
+    cellCharge,
+    cellMaxCharge,
   } = data;
 
   return (
@@ -32,6 +35,22 @@ export const PortableBasicInfo = (props, context) => {
             label="Port"
             color={connected ? 'good' : 'average'}>
             {connected ? 'Connected' : 'Not Connected'}
+          </LabeledList.Item>
+          <LabeledList.Item label="Load">
+            {powerDraw} W
+          </LabeledList.Item>
+          <LabeledList.Item label="Cell Charge">
+            <ProgressBar
+              value={cellCharge}
+              minValue={0}
+              maxValue={cellMaxCharge}
+              ranges={{
+                good: [cellMaxCharge * 0.5, Infinity],
+                average: [cellMaxCharge * 0.25, cellMaxCharge * 0.5],
+                bad: [-Infinity, cellMaxCharge * 0.25],
+              }} >
+              {cellCharge} W
+            </ProgressBar>
           </LabeledList.Item>
         </LabeledList>
       </Section>

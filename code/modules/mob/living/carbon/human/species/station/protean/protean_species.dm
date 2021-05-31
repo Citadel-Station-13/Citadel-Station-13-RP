@@ -11,7 +11,7 @@
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/decal/cleanable/ash
 	
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite) // Finally gives them unarmed attacks, along with claws, because what's stopping them from forming a set from their nanite gloop?
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
 
 	blood_color = "#505050" //This is the same as the 80,80,80 below, but in hex
 	flesh_color = "#505050"
@@ -21,12 +21,11 @@
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
 	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	health_hud_intensity = 2
-	num_alternate_languages = 5  // They're hyper-advanced blobs, so they should be able to know more than 4 languages. I think 6 is enough for now.
+	num_alternate_languages = 3  // Let's not make them know every language, past me.
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
 	
-	item_slowdown_mod = 0.25 // The weight of various items shouldn't bother them too much. I'd make it 0, but the general bulk still slows them down.
-	darksight = 7 // I have no eyes, but I still see. Just makes them have the major darksight trait
+	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
 
 	breath_type = null
 	poison_type = null
@@ -38,7 +37,7 @@
 	
 	total_health =	125  // Makes them Unathi level tough. Nothing too much, also mildly justified as proteans can't ever go into crit, as they blob instead
 
-	brute_mod =		0.30 // 70% brute reduction
+	brute_mod =		0.5 // 50% brute reduction
 	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
 	oxy_mod =		0
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
@@ -83,7 +82,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 	body_temperature =      290
 
-	siemens_coefficient =   1.4
+	siemens_coefficient =   1.1 // Changed in accordance to the 'what to do now' section of the rework document
 
 	rarity_value =          5
 
@@ -173,7 +172,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
 	var/obj/item/storage/box/box = new /obj/item/storage/box/survival/synth(H)
 	var/obj/item/stack/material/steel/metal_stack = new(box)
-	metal_stack.amount = 5
+	metal_stack.amount = 3 // Less starting steel due to regen changes
 	new /obj/item/fbp_backup_cell(box)
 	var/obj/item/clothing/accessory/permit/nanotech/permit = new(box)
 	permit.set_name(H.real_name)
@@ -210,12 +209,16 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 			H.gib()
 
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.8 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever). The decimal point (0.8 as of now) is the autoblob %hp threshold. Right, quick maths lesson: making the autoblob threshold 35% does not mean that proteans will blob at 35% health. It means that they'll blob at 65% health, because it's checking if the total damage is higher than the threshold. I've made it that they blob at 20% health now, so they don't instantly blob to everything.
+	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.85 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
 	var/obj/item/organ/internal/nano/refactory/refactory = locate() in H.internal_organs
 	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
+
+		//Steel adds regen
+		if(H.health < H.maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
+			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 
 		//MHydrogen adds speeeeeed
 		if(refactory.get_stored_material(MAT_METALHYDROGEN) >= METAL_PER_TICK)
@@ -343,14 +346,14 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/modifier/protean/steel/tick()
 
 	..()
-	holder.adjustBruteLoss(-10 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec. Previous value was 9, which didn't equal out to 3 per second
-	holder.adjustFireLoss(-2.3 ,include_robo = TRUE) //Looks high, but these are modified by species resistances to equal out at 3hp/sec. Bit of an adjustment with the updated burn resist
+	holder.adjustBruteLoss(-3.3 ,include_robo = TRUE) //This is for non-blob regen and equals out to ~2 hp/s
+	holder.adjustFireLoss(-1.6 ,include_robo = TRUE) //Same with burns
 	holder.adjustToxLoss(-12) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
 
+	// I'm a bad coder, so you'll have to manually disable material augments to make the steel ticking stop. Otherwise, it'll turn off automatically when steel runs out
 
-
-	var/mob/living/carbon/human/H = holder
+	/* var/mob/living/carbon/human/H = holder
 	for(var/organ in H.internal_organs)
 		var/obj/item/organ/O = organ
 		// Fix internal damage
@@ -359,7 +362,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		// If not damaged, but dead, fix it
 		else if(O.status & ORGAN_DEAD)
 			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely
-
+	*/ //Commented out, so the only way to regen organ damage is blobform.
 // PAN Card
 /obj/item/clothing/accessory/permit/nanotech
 	name = "\improper P.A.N. card"

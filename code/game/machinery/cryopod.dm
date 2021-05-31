@@ -382,7 +382,7 @@
 	//Recursively despawn mobs
 	for(var/mob/M in to_despawn)
 		despawn_occupant(M)
-
+	SStranscore.m_backup(to_despawn)
 	// VOREStation
 	hook_vr("despawn", list(to_despawn, src))
 	if(isliving(to_despawn))

@@ -10,7 +10,7 @@ export const ComputerFabricator = (props, context) => {
     <Window
       title="Personal Computer Vendor"
       width={500}
-      height={400}
+      height={420}
       resizable>
       <Window.Content>
         <Section italic fontSize="20px">
@@ -96,7 +96,7 @@ const CfStep2 = (props, context) => {
       minHeight="282px"
       buttons={(
         <Box bold color="good">
-          {data.totalprice} cr
+          {data.totalprice}₮
         </Box>
       )}>
       <Table>
@@ -271,67 +271,65 @@ const CfStep2 = (props, context) => {
           </Table.Cell>
         </Table.Row>
         {data.devtype !== 2 && (
-          <Fragment>
-            <Table.Row>
-              <Table.Cell bold position="relative">
-                Processor Unit:
-                <Tooltip
-                  content={multiline`
-                    A component critical for your device's functionality.
-                    It allows you to run programs from your hard drive.
-                    Advanced CPUs use more power, but allow you to run
-                    more programs on background at once.
-                  `}
-                  position="right" />
-              </Table.Cell>
-              <Table.Cell>
-                <Button
-                  content="Standard"
-                  selected={data.hw_cpu === 1}
-                  onClick={() => act('hw_cpu', {
-                    cpu: '1',
-                  })} />
-              </Table.Cell>
-              <Table.Cell>
-                <Button
-                  content="Advanced"
-                  selected={data.hw_cpu === 2}
-                  onClick={() => act('hw_cpu', {
-                    cpu: '2',
-                  })} />
-              </Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell bold position="relative">
-                Tesla Relay:
-                <Tooltip
-                  content={multiline`
+          <Table.Row>
+            <Table.Cell bold position="relative">
+              Processor Unit:
+              <Tooltip
+                content={multiline`
+                  A component critical for your device's functionality.
+                  It allows you to run programs from your hard drive.
+                  Advanced CPUs use more power, but allow you to run
+                  more programs on background at once.
+                `}
+                position="right" />
+            </Table.Cell>
+            <Table.Cell>
+              <Button
+                content="Standard"
+                selected={data.hw_cpu === 1}
+                onClick={() => act('hw_cpu', {
+                  cpu: '1',
+                })} />
+            </Table.Cell>
+            <Table.Cell>
+              <Button
+                content="Advanced"
+                selected={data.hw_cpu === 2}
+                onClick={() => act('hw_cpu', {
+                  cpu: '2',
+                })} />
+            </Table.Cell>
+          </Table.Row>
+        )}
+        <Table.Row>
+          <Table.Cell bold position="relative">
+            Tesla Relay:
+            <Tooltip
+              content={multiline`
                     An advanced wireless power relay that allows your device
                     to connect to nearby area power controller to provide
                     alternative power source. This component is currently
                     unavailable on tablet computers due to size restrictions.
                   `}
-                  position="right" />
-              </Table.Cell>
-              <Table.Cell>
-                <Button
-                  content="None"
-                  selected={data.hw_tesla === 0}
-                  onClick={() => act('hw_tesla', {
-                    tesla: '0',
-                  })} />
-              </Table.Cell>
-              <Table.Cell>
-                <Button
-                  content="Standard"
-                  selected={data.hw_tesla === 1}
-                  onClick={() => act('hw_tesla', {
-                    tesla: '1',
-                  })} />
-              </Table.Cell>
-            </Table.Row>
-          </Fragment>
-        )}
+              position="right" />
+          </Table.Cell>
+          <Table.Cell>
+            <Button
+              content="None"
+              selected={data.hw_tesla === 0}
+              onClick={() => act('hw_tesla', {
+                tesla: '0',
+              })} />
+          </Table.Cell>
+          <Table.Cell>
+            <Button
+              content="Standard"
+              selected={data.hw_tesla === 1}
+              onClick={() => act('hw_tesla', {
+                tesla: '1',
+              })} />
+          </Table.Cell>
+        </Table.Row>
       </Table>
       <Button
         fluid
@@ -364,38 +362,13 @@ const CfStep3 = (props, context) => {
         textAlign="center"
         fontSize="16px">
         <Box inline>
-          Please insert the required
+          Please swipe your ID now to authorize payment of:
         </Box>
-        {' '}
+        &nbsp;
         <Box inline color="good">
-          {data.totalprice} cr
+          {data.totalprice}₮
         </Box>
       </Box>
-      <Box
-        bold
-        mt={1}
-        textAlign="center"
-        fontSize="18px">
-        Current:
-      </Box>
-      <Box
-        bold
-        mt={0.5}
-        textAlign="center"
-        fontSize="18px"
-        color={data.credits >= data.totalprice ? "good" : "bad"}>
-        {data.credits} cr
-      </Box>
-      <Button
-        fluid
-        content="Purchase"
-        disabled={data.credits < data.totalprice}
-        mt={8}
-        color="good"
-        textAlign="center"
-        fontSize="20px"
-        lineHeight={2}
-        onClick={() => act('purchase')} />
     </Section>
   );
 };

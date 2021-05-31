@@ -264,7 +264,7 @@
 			miss_chance = max(15*(distance-2), 0)
 
 		if (prob(miss_chance))
-			visible_message("<font color='blue'>\The [O] misses [src] narrowly!</font>")
+			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
 			return
 
 		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")

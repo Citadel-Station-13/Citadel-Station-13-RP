@@ -208,16 +208,14 @@
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		ignite()
 	else
-		..()
+		return ..()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W) && W.force && W.damtype == BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
 	else
-		..()
-
-
+		return ..()
 
 /mob/living/simple_mob/slime/xenobio/dark_blue
 	desc = "This slime makes other entities near it feel much colder, and is more resilient to the cold.  It tends to kill other slimes rather quickly."
@@ -305,8 +303,7 @@
 		P.reflected = TRUE
 		return PROJECTILE_CONTINUE // complete projectile permutation
 	else
-		..()
-
+		return ..()
 
 // Tier 3
 
@@ -446,7 +443,7 @@
 
 /mob/living/simple_mob/slime/xenobio/amber/proc/feed_aura()
 	for(var/mob/living/L in view(2, src))
-		if(L == src) // Don't feed themselves, or it is impossible to stop infinite slimes without killing all of the ambers.
+		if(istype(L, type))
 			continue
 		if(istype(L, /mob/living/simple_mob/slime/xenobio))
 			var/mob/living/simple_mob/slime/xenobio/X = L
@@ -668,7 +665,7 @@
 		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		explode()
 	else
-		..()
+		return ..()
 
 /mob/living/simple_mob/slime/xenobio/oil/attackby(obj/item/W, mob/living/user)
 	if(istype(W) && W.force && W.damtype == BURN)

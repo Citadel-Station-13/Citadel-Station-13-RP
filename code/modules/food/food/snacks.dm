@@ -155,11 +155,11 @@
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
-		. += "<font color='blue'>\The [src] was bitten by someone!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten by someone!</font>"
 	else if (bitecount<=3)
-		. += "<font color='blue'>\The [src] was bitten [bitecount] times!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten [bitecount] times!</font>"
 	else
-		. += "<font color='blue'>\The [src] was bitten multiple times!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten multiple times!</font>"
 
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -179,7 +179,7 @@
 
 			user.visible_message( \
 				"[user] scoops up some [src] with \the [U]!", \
-				"<font color='blue'>You scoop up some [src] with \the [U]!</font>" \
+				"<font color=#4F49AF>You scoop up some [src] with \the [U]!</font>" \
 			)
 
 			src.bitecount++
@@ -595,10 +595,10 @@
 		var/clr = C.colourName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, "<font color='blue'>The egg refuses to take on this color!</font>")
+			to_chat(usr, "<font color=#4F49AF>The egg refuses to take on this color!</font>")
 			return
 
-		to_chat(usr, "<font color='blue'>You color \the [src] [clr]</font>")
+		to_chat(usr, "<font color=#4F49AF>You color \the [src] [clr]</font>")
 		icon_state = "egg-[clr]"
 	else
 		. = ..()
@@ -3231,6 +3231,19 @@
 /obj/item/reagent_containers/food/snacks/tehsariroast/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 2)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/voxjerky
+	name = "vox jerky"
+	desc = "Dehydrated Vox meat, cut into tough strips. A good source of protein, if you have strong teeth."
+	icon_state = "voxjerky"
+	nutriment_amt = 6
+	nutriment_desc = list("spicy teriyaki" = 6)
+
+/obj/item/reagent_containers/food/snacks/voxjerky/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	reagents.add_reagent("phoron", 6)
 	bitesize = 2
 
 ///////////////////////////////////////////
@@ -6017,3 +6030,89 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/wolpincube
 	name = "wolpin cube"
 	monkey_type = "Wolpin"
+
+//Goblin food, yes?
+/obj/item/reagent_containers/food/snacks/cavenuggets
+	name = "cave nuggets"
+	desc = "A favorite of Tyrmalin street vendors on Mars. Contains a delicious mix of mystery meat."
+	icon_state = "cavenuggets"
+	trash = /obj/item/trash/plate
+	nutriment_amt = 6
+	nutriment_desc = list("protein" = 4, "grease" = 2, "oil" = 1, "butter" = 2)
+
+/obj/item/reagent_containers/food/snacks/cavenuggets/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/diggerstew
+	name = "digger stew"
+	desc = "A thick, hearty Stew, usually cooked in large portions for hungry Tyrmalin miners."
+	icon_state = "diggerstew"
+	trash = /obj/item/trash/bowl
+	filling_color = "#9E673A"
+	nutriment_amt = 6
+	nutriment_desc = list("mushroom" = 2, "carrot" = 2, "bugflesh" = 2)
+
+/obj/item/reagent_containers/food/snacks/diggerstew/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	reagents.add_reagent("tomatojuice", 5)
+	reagents.add_reagent("imidazoline", 5)
+	reagents.add_reagent("water", 5)
+	bitesize = 10
+
+/obj/item/reagent_containers/food/snacks/diggerstew_pot
+	name = "pot of digger stew"
+	desc = "A thick, hearty Stew, usually cooked in large portions for hungry Tyrmalin miners. The larger pot means more veggies!"
+	icon_state = "diggerstew_pot"
+	filling_color = "#9E673A"
+	nutriment_amt = 10
+	nutriment_desc = list("mushroom" = 2, "carrot" = 2, "potato" = 2, "bugflesh" = 2, "oil" = 1)
+
+/obj/item/reagent_containers/food/snacks/diggerstew/pot/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	reagents.add_reagent("tomatojuice", 5)
+	reagents.add_reagent("imidazoline", 5)
+	reagents.add_reagent("water", 5)
+	bitesize = 10
+
+/obj/item/reagent_containers/food/snacks/full_goss
+	name = "full Goss Aguz breakfast"
+	desc = "Fried mushrooms, grilled roots, fried egg, and a slice of smoked bugmeat! Just like Broodmomma used to make it."
+	icon_state = "fullgoss"
+	trash = /obj/item/tray
+	nutriment_amt = 10
+	nutriment_desc = list("mushroom" = 2, "earthy spice" = 2, "egg" = 2, "bugflesh" = 2, "oil" = 1)
+
+/obj/item/reagent_containers/food/snacks/full_goss/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 10)
+	bitesize = 6
+
+/obj/item/reagent_containers/food/snacks/greenham
+	name = "green ham"
+	desc = "When the Tyrmalin migrated to Mars, they brought many strange foods with them. This specially pickled meat was initially met with much skepticism."
+	icon_state = "greenham"
+	trash = /obj/item/trash/plate
+	nutriment_amt = 6
+	nutriment_desc = list("mushroom" = 2, "bugflesh" = 2)
+
+/obj/item/reagent_containers/food/snacks/greenham/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	bitesize = 6
+
+/obj/item/reagent_containers/food/snacks/greenhamandeggs
+	name = "green ham and eggs"
+	desc = "The same pickling processes behind green ham can, controversially, also be used to prepare eggs."
+	icon_state = "greenhamandeggs"
+	trash = /obj/item/trash/plate
+	nutriment_amt = 6
+	nutriment_desc = list("mushroom" = 2, "egg" = 2, "bugflesh" = 2)
+
+/obj/item/reagent_containers/food/snacks/greenhamandeggs/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	bitesize = 6

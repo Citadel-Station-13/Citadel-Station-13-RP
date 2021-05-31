@@ -109,7 +109,7 @@
 		/obj/item/multitool,
 		/obj/item/stack/cable_coil/random_belt,
 		/obj/item/extinguisher/mini,
-		/obj/item/analyzer
+		/obj/item/analyzer/longrange
 	)
 
 /obj/item/storage/belt/medical

@@ -70,7 +70,7 @@
 
 	if(!holder && !current_ticket)	//no ticket? https://www.youtube.com/watch?v=iHSPf6x1Fdo
 		to_chat(src, "<font color='red'>You can no longer reply to this ticket, please open another one by using the Adminhelp verb if need be.</font>")
-		to_chat(src, "<font color='blue'>Message: [msg]</font>")
+		to_chat(src, "<font color=#4F49AF>Message: [msg]</font>")
 		return
 
 	var/client/recipient
@@ -143,7 +143,7 @@
 	var/keywordparsedmsg = keywords_lookup(msg)
 
 	if(irc)
-		to_chat(src, "<font color='blue'>PM to-<b>Admins</b>: [rawmsg]</font>")
+		to_chat(src, "<font color=#4F49AF>PM to-<b>Admins</b>: [rawmsg]</font>")
 		admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, TRUE)]</b> to <i>IRC</i>: [keywordparsedmsg]</font>")
 		ircreplyamount--
 		send2irc("Reply: [ckey]",rawmsg)
@@ -151,7 +151,7 @@
 		if(recipient.holder)
 			if(holder)	//both are admins
 				to_chat(recipient, "<font color='red'>Admin PM from-<b>[key_name(src, recipient, 1)]</b>: [keywordparsedmsg]</font>")
-				to_chat(src, "<font color='blue'>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: [keywordparsedmsg]</font>")
+				to_chat(src, "<font color=#4F49AF>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: [keywordparsedmsg]</font>")
 
 				//omg this is dumb, just fill in both their tickets
 				var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, 1)]</b> to-<b>[key_name(recipient, src, 1)]</b>: [keywordparsedmsg]</font>"
@@ -163,7 +163,7 @@
 				var/replymsg = "<font color='red'>Reply PM from-<b>[key_name(src, recipient, 1)]</b>: [keywordparsedmsg]</font>"
 				admin_ticket_log(src, replymsg)
 				to_chat(recipient, replymsg)
-				to_chat(src, "<font color='blue'>PM to-<b>Admins</b>: [msg]</font>")
+				to_chat(src, "<font color=#4F49AF>PM to-<b>Admins</b>: [msg]</font>")
 
 			//play the recieving admin the adminhelp sound (if they have them enabled)
 			if(recipient.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
@@ -177,9 +177,9 @@
 				to_chat(recipient, "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
 				to_chat(recipient, "<font color='red'>Admin PM from-<b>[key_name(src, recipient, 0)]</b>: [msg]</font>")
 				to_chat(recipient, "<font color='red'><i>Click on the administrator's name to reply.</i></font>")
-				to_chat(src, "<font color='blue'>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: [msg]</font>")
+				to_chat(src, "<font color=#4F49AF>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: [msg]</font>")
 
-				admin_ticket_log(recipient, "<font color='blue'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>")
+				admin_ticket_log(recipient, "<font color=#4F49AF>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>")
 
 				//always play non-admin recipients the adminhelp sound
 				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
@@ -204,13 +204,13 @@
 	if(irc)
 		log_admin("PM: [key_name(src)]->IRC: [rawmsg]")
 		for(var/client/X in admins)
-			to_chat(X, "<font color='blue'><B>PM: [key_name(src, X, 0)]-&gt;IRC:</B> [keywordparsedmsg]</font>")
+			to_chat(X, "<font color=#4F49AF><B>PM: [key_name(src, X, 0)]-&gt;IRC:</B> [keywordparsedmsg]</font>")
 	else
 		log_admin("PM: [key_name(src)]->[key_name(recipient)]: [rawmsg]")
 		//we don't use message_admins here because the sender/receiver might get it too
 		for(var/client/X in admins)
 			if(X.key!=key && X.key!=recipient.key)	//check client/X is an admin and isn't the sender or recipient
-				to_chat(X, "<font color='blue'><B>PM: [key_name(src, X, 0)]-&gt;[key_name(recipient, X, 0)]:</B> [keywordparsedmsg]</font>" )
+				to_chat(X, "<font color=#4F49AF><B>PM: [key_name(src, X, 0)]-&gt;[key_name(recipient, X, 0)]:</B> [keywordparsedmsg]</font>" )
 
 /proc/IrcPm(target,msg,sender)
 	var/client/C = GLOB.directory[target]
@@ -263,7 +263,7 @@
 	to_chat(C, "<font color='red'>Admin PM from-<b><a href='?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]</font>")
 	to_chat(C, "<font color='red'><i>Click on the administrator's name to reply.</i></font>")
 
-	admin_ticket_log(C, "<font color='blue'>PM From [irc_tagged]: [msg]</font>")
+	admin_ticket_log(C, "<font color=#4F49AF>PM From [irc_tagged]: [msg]</font>")
 
 	window_flash(C)
 	//always play non-admin recipients the adminhelp sound

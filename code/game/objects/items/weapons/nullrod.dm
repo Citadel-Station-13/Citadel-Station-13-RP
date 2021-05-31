@@ -432,6 +432,8 @@
 	force = 4
 	throwforce = 0
 	attack_verb = list("whipped", "repented", "lashed", "flagellated")
+	drop_sound = 'sound/items/drop/card.ogg'
+	pickup_sound = 'sound/items/pickup/card.ogg'
 	var/praying = FALSE
 	var/deity_name = "Coderbus" //This is the default, hopefully won't actually appear if the religion subsystem is running properly
 

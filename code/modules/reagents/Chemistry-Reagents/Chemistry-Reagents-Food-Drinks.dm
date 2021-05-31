@@ -3830,6 +3830,26 @@ End Citadel Change */
 	glass_name = "The Best Boy"
 	glass_desc = "An eternal tribute to the best crewmember to ever work on Space Station 13. Keep away from washing machines."
 
+/datum/reagent/ethanol/phobos
+	name = "Phobos"
+	id = "phobos"
+	description = "A drink invented by Tyrmalin Moonshiners to cope with the harsh Martian climate."
+	taste_description = "grain alcohol"
+	strength = 70
+
+	glass_name = "Phobos"
+	glass_desc = "A drink invented by Tyrmalin Moonshiners to cope with the harsh Martian climate."
+
+/datum/reagent/ethanol/greenstuff
+	name = "Green Stuff"
+	id = "greenstuff"
+	description = "Tyrmalin grog aggressively blended with unfiltered absinthe."
+	taste_description = "black licorice and thick malt"
+	strength = 70
+
+	glass_name = "Green Stuff"
+	glass_desc = "Tyrmalin grog aggressively blended with unfiltered absinthe."
+
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
 ///////////////////////////////////////////////

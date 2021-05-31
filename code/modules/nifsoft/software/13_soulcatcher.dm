@@ -119,7 +119,7 @@
 	"Catching Prey \[[setting_flags & NIF_SC_CATCHING_OTHERS ? "Enabled" : "Disabled"]\]" = NIF_SC_CATCHING_OTHERS,
 	"Ext. Hearing \[[setting_flags & NIF_SC_ALLOW_EARS ? "Enabled" : "Disabled"]\]" = NIF_SC_ALLOW_EARS,
 	"Ext. Vision \[[setting_flags & NIF_SC_ALLOW_EYES ? "Enabled" : "Disabled"]\]" = NIF_SC_ALLOW_EYES,
-	"Mind Backups \[[setting_flags & NIF_SC_BACKUPS ? "Enabled" : "Disabled"]\]" = NIF_SC_BACKUPS,
+//	"Mind Backups \[[setting_flags & NIF_SC_BACKUPS ? "Enabled" : "Disabled"]\]" = NIF_SC_BACKUPS,
 	"AR Projecting \[[setting_flags & NIF_SC_PROJECTING ? "Enabled" : "Disabled"]\]" = NIF_SC_PROJECTING,
 	"Design Inside",
 	"Erase Contents")
@@ -161,12 +161,12 @@
 	var/notify_message
 	//Special treatment
 	switch(flag)
-		if(NIF_SC_BACKUPS)
+/*		if(NIF_SC_BACKUPS)
 			if(setting_flags & NIF_SC_BACKUPS)
 				notify_message = "Mind backup system enabled."
 			else
 				notify_message = "Mind backup system disabled."
-
+*/
 		if(NIF_SC_CATCHING_ME)
 			if(setting_flags & NIF_SC_CATCHING_ME)
 				nif.set_flag(NIF_O_SCMYSELF,NIF_FLAGS_OTHER)
@@ -470,6 +470,8 @@
 		COMPILE_OVERLAYS(dummy)
 		dummy.alpha = 192
 
+		// remove hudlist
+		dummy.overlays -= dummy.hud_list
 		// appearance clone immediately
 		appearance = dummy.appearance
 		qdel(dummy)

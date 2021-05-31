@@ -1216,7 +1216,7 @@
 
 /obj/machinery/vending/medical/Initialize(mapload)
 	. = ..()
-	products += list(/obj/item/storage/box/vmcrystal = 4,/obj/item/backup_implanter = 3,
+	products += list(/obj/item/storage/box/vmcrystal = 4,/*/obj/item/backup_implanter = 3,*/
 					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4)
 
 //Custom vendors
@@ -1792,6 +1792,15 @@
 					/obj/item/clothing/under/kimono_black = 5,
 					/obj/item/clothing/under/kimono_sakura = 5,
 					/obj/item/clothing/under/kimono_fancy = 5,
+					/obj/item/clothing/under/kimono/red = 5,
+					/obj/item/clothing/under/kimono/orange = 5,
+					/obj/item/clothing/under/kimono/yellow = 5,
+					/obj/item/clothing/under/kimono/green = 5,
+					/obj/item/clothing/under/kimono/blue = 5,
+					/obj/item/clothing/under/kimono/purple = 5,
+					/obj/item/clothing/under/kimono/violet = 5,
+					/obj/item/clothing/under/kimono/pink = 5,
+					/obj/item/clothing/under/kimono/earth = 5,
 					/obj/item/clothing/under/cheong = 5,
 					/obj/item/clothing/under/cheong/white = 5,
 					/obj/item/clothing/under/cheong/red = 5,
@@ -1982,6 +1991,15 @@
 					/obj/item/clothing/under/kimono_black = 25,
 					/obj/item/clothing/under/kimono_sakura = 25,
 					/obj/item/clothing/under/kimono_fancy = 25,
+					/obj/item/clothing/under/kimono/red = 25,
+					/obj/item/clothing/under/kimono/orange = 25,
+					/obj/item/clothing/under/kimono/yellow = 25,
+					/obj/item/clothing/under/kimono/green = 25,
+					/obj/item/clothing/under/kimono/blue = 25,
+					/obj/item/clothing/under/kimono/purple = 25,
+					/obj/item/clothing/under/kimono/violet = 25,
+					/obj/item/clothing/under/kimono/pink = 25,
+					/obj/item/clothing/under/kimono/earth = 25,
 					/obj/item/clothing/under/cheong = 25,
 					/obj/item/clothing/under/cheong/white = 25,
 					/obj/item/clothing/under/cheong/red = 25,
@@ -2284,6 +2302,7 @@
 					/obj/item/clothing/suit/varsity/blue = 5,
 					/obj/item/clothing/suit/varsity/brown = 5,
 					/obj/item/clothing/suit/storage/hooded/wintercoat = 5,
+					/obj/item/clothing/suit/storage/hooded/wintercoat/aformal = 5,
 					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 5,
 					/obj/item/clothing/suit/storage/gothcoat = 3)
 	prices = list(/obj/item/clothing/suit/storage/apron = 25,
@@ -2372,6 +2391,7 @@
 					/obj/item/clothing/suit/varsity/blue = 25,
 					/obj/item/clothing/suit/varsity/brown = 25,
 					/obj/item/clothing/suit/storage/hooded/wintercoat = 25,
+					/obj/item/clothing/suit/storage/hooded/wintercoat/aformal = 25,
 					/obj/item/clothing/suit/storage/teshari/cloak/standard/white_grey = 25,
 					/obj/item/clothing/suit/storage/gothcoat = 25)
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)

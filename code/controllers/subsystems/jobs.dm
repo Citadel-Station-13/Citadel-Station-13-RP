@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(jobs)
 			Debug("FOC is_job_whitelisted failed, Player: [player]")
 			continue
 		//VOREStation Code End
-		if(flag && (!player.client.prefs.be_special & flag))
+		if(flag && !(player.client.prefs.be_special & flag))
 			Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 			continue
 		if(player.client.prefs.GetJobDepartment(job, level) & job.flag)

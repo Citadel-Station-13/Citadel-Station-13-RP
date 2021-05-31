@@ -45,7 +45,6 @@ export const Photocopier = (props, context) => {
 const Toner = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    has_toner,
     max_toner,
     current_toner,
   } = data;
@@ -55,15 +54,7 @@ const Toner = (props, context) => {
 
   return (
     <Section
-      title="Toner"
-      buttons={
-        <Button
-          disabled={!has_toner}
-          onClick={() => act('remove_toner')}
-          icon="eject">
-          Eject
-        </Button>
-      }>
+      title="Toner">
       <ProgressBar
         ranges={{
           good: [average_toner, max_toner],
@@ -80,8 +71,6 @@ const Toner = (props, context) => {
 const Options = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    color_mode,
-    is_photo,
     num_copies,
     has_enough_toner,
   } = data;
@@ -114,42 +103,11 @@ const Options = (props, context) => {
             ml={0.2}
             icon="copy"
             textAlign="center"
-            disabled={!has_enough_toner}
             onClick={() => act('make_copy')}>
             Copy
           </Button>
         </Flex.Item>
       </Flex>
-      {!!is_photo && (
-        <Flex mt={0.5}>
-          <Flex.Item
-            mr={0.4}
-            width="50%">
-            <Button
-              fluid
-              textAlign="center"
-              selected={color_mode === "Greyscale"}
-              onClick={() => act('color_mode', {
-                mode: "Greyscale",
-              })}>
-              Greyscale
-            </Button>
-          </Flex.Item>
-          <Flex.Item
-            ml={0.4}
-            width="50%">
-            <Button
-              fluid
-              textAlign="center"
-              selected={color_mode === "Color"}
-              onClick={() => act('color_mode', {
-                mode: "Color",
-              })}>
-              Color
-            </Button>
-          </Flex.Item>
-        </Flex>
-      )}
       <Button
         mt={0.5}
         textAlign="center"

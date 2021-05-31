@@ -190,8 +190,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	_interactions = list()
 
 	if(is_bwoink)
-		AddInteraction("<font color='blue'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>")
-		message_admins("<font color='blue'>Ticket [TicketHref("#[id]")] created</font>")
+		AddInteraction("<font color=#4F49AF>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>")
+		message_admins("<font color=#4F49AF>Ticket [TicketHref("#[id]")] created</font>")
 	else
 		MessageNoRecipient(parsed_message)
 
