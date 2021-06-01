@@ -3,11 +3,17 @@
  */
 /datum/underground_ore_data
 	/// Ore list. ore type = threshold.
-	var/list/ores = DEFAULT_UNDERGROUND_ORES
+	var/list/ores = list(
+
+	)
 	/// Ore amounts
-	var/list/ore_amount_low = DEFAULT_UNDERGROUND_ORE_LOW
+	var/list/ore_amount_low = list(
+
+	)
 	/// Ore amounts
-	var/list/ore_amount_high = DEFAULT_UNDERGROUND_ORE_HIGH
+	var/list/ore_amount_high = list(
+
+	)
 	/// Generated seeds
 	var/list/seeds = list()
 	/// Static seeds: ore type = seed (number)
