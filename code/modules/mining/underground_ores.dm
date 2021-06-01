@@ -41,7 +41,7 @@
 /**
  * Fully excavate and drop our ores.
  */
-/turf/proc/fully_excavate_underground_ores(atom/drop_at)
+/turf/proc/fully_excavate_underground_ores(atom/drop_at, divisor = 1)
 	if(!drop_at)
 		drop_at = src
 	var/list/acquired = generate_underground_ores()
@@ -49,7 +49,7 @@
 		return
 	for(var/path in acquired)
 		var/amount = acquired[path]
-		for(var/i in 1 to min(amount, 100))
+		for(var/i in 1 to min(CEILING(amount / divisor, 1), 100))
 			new path(drop_at)
 	underground_ores = null
 
