@@ -632,6 +632,8 @@
 			src.ClickOn(I)
 
 	if (href_list["flavor_change"])
+		if(usr != src)
+			return
 		switch(href_list["flavor_change"])
 			if("done")
 				src << browse(null, "window=flavor_changes")
