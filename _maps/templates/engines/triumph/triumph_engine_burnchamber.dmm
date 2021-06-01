@@ -924,14 +924,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/item/storage/belt/utility/atmostech,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/engine_room)
-"DA" = (
 /obj/item/paper{
 	info = "1. Start and maximize all pumps. 2. Fill the loop with a minimum of 4 phoron cans.3. Start the burn mix from the mixer in space - 50 north, 25 east, 25 south.You may with to modify the litres intake from the computer. But beward: You could run out of fuel!";
 	name = "Notice to Engineers"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"DA" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/purple{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "DC" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -996,10 +999,8 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Fw" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/purple{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techmaint,
+/obj/structure/sign/warning/fire,
+/turf/simulated/wall/r_lead,
 /area/engineering/engine_room)
 "FT" = (
 /obj/structure/lattice,
@@ -1113,8 +1114,13 @@
 /turf/simulated/wall/r_lead,
 /area/engineering/engine_room)
 "Kx" = (
-/obj/structure/sign/warning/fire,
-/turf/simulated/wall/r_lead,
+/obj/machinery/camera/network/engine{
+	dir = 4
+	},
+/obj/structure/lattice,
+/obj/machinery/shield_diffuser,
+/obj/machinery/atmospherics/pipe/simple/visible/black,
+/turf/space,
 /area/engineering/engine_room)
 "KO" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
@@ -1143,13 +1149,29 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "LJ" = (
-/obj/machinery/camera/network/engine{
-	dir = 4
+/obj/structure/table/rack{
+	dir = 8;
+	layer = 2.6
 	},
-/obj/structure/lattice,
-/obj/machinery/shield_diffuser,
-/obj/machinery/atmospherics/pipe/simple/visible/black,
-/turf/space,
+/obj/machinery/door/window/northleft{
+	dir = 4;
+	name = "Engineering Hardsuits";
+	req_access = list(11)
+	},
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/suit/space/void/engineering,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/head/helmet/space/void/engineering,
+/obj/item/clothing/head/helmet/space/void/engineering,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/suit/space/void/engineering,
+/obj/item/clothing/shoes/magboots,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/purple,
+/obj/structure/window/phoronreinforced,
+/turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "LW" = (
 /obj/effect/floor_decal/techfloor/orange,
@@ -1267,28 +1289,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ry" = (
-/obj/structure/table/rack{
-	dir = 8;
-	layer = 2.6
+/obj/machinery/atmospherics/binary/pump{
+	dir = 8
 	},
-/obj/machinery/door/window/northleft{
-	dir = 4;
-	name = "Engineering Hardsuits";
-	req_access = list(11)
-	},
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/engineering,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/helmet/space/void/engineering,
-/obj/item/clothing/head/helmet/space/void/engineering,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/void/engineering,
-/obj/item/clothing/shoes/magboots,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/purple,
-/obj/structure/window/phoronreinforced,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "RZ" = (
@@ -1377,8 +1380,8 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "WE" = (
-/obj/machinery/atmospherics/binary/pump{
-	dir = 8
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
@@ -1396,12 +1399,6 @@
 	},
 /obj/machinery/atmospherics/unary/heat_exchanger,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/engine_room)
-"Xp" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "XC" = (
 /obj/structure/window/phoronreinforced,
@@ -1576,8 +1573,8 @@ Lb
 Sp
 nz
 Gk
+LJ
 Ry
-WE
 MZ
 Uk
 Uk
@@ -1596,7 +1593,7 @@ VR
 KR
 Pc
 VR
-Fw
+DA
 VR
 oT
 Gk
@@ -1619,7 +1616,7 @@ wn
 yA
 Pc
 tV
-Xp
+WE
 Gk
 Rh
 SI
@@ -1680,7 +1677,7 @@ gM
 Vb
 gM
 Af
-Kx
+Fw
 sK
 uM
 MZ
@@ -1701,7 +1698,7 @@ go
 Ey
 Os
 ry
-LJ
+Kx
 Ec
 MQ
 MZ
@@ -1862,7 +1859,7 @@ ul
 MZ
 Aa
 SI
-DA
+SI
 SI
 vp
 kL
