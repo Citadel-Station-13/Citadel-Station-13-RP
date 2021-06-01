@@ -925,8 +925,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/item/storage/belt/utility/atmostech,
 /obj/item/paper{
-	info = "1. Start and maximize all pumps. 2. Fill the loop with a minimum of 4 phoron cans.3. Start the burn mix from the mixer in space - 50 north, 25 east, 25 south.You may with to modify the litres intake from the computer. But beward: You could run out of fuel!";
-	name = "Notice to Engineers"
+	info = "1. Start and maximize all pumps. 2. Fill the loop with a minimum of 4 phoron cans.3. Start the burn mix from the mixer in space - 50 north, 25 east, 25 south.You may wish to modify the litres intake from the computer. But beware: You could run out of fuel!";
+	name = "Simple Burn Chamber Guide"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
