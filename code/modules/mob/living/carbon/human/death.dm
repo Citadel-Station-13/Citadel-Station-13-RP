@@ -62,15 +62,15 @@
 		..()
 
 /mob/living/carbon/human/death(gibbed)
-
-	if(stat == DEAD) return
+	if(stat == DEAD)
+		return
 
 	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
 	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
 	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
 
 	//Handle species-specific deaths.
-	species.handle_death(src)
+	species.handle_death(src, gibbed)
 	animate_tail_stop()
 	stop_flying() //VOREStation Edit.
 

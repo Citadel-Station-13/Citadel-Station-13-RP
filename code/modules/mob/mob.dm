@@ -1223,3 +1223,8 @@ mob/proc/yank_out_object()
 			return src
 	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
 		return src
+
+/mob/drop_location()
+	if(temporary_form)
+		return temporary_form.drop_location()
+	return ..()
