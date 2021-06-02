@@ -474,6 +474,7 @@
 		dummy.overlays -= dummy.hud_list
 		// appearance clone immediately
 		appearance = dummy.appearance
+		plane = AUGMENTED_PLANE
 		qdel(dummy)
 
 /mob/observer/eye/ar_soul/Destroy()
