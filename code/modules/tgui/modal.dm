@@ -1,4 +1,10 @@
 /**
+ * NOTICE: The usage of these for new interfaces, unless porting from vorestation or another codebase, is banned.
+ * Modals should be directly handled in tgui, potentially as as new component, rather than in DM.
+ */
+#define UID_MAX SHORT_REAL_LIMIT
+
+/**
  * tgui modals
  *
  * Allows creation of modals within tgui.
@@ -236,8 +242,13 @@ GLOBAL_LIST(ui_modals)
 	var/delegate
 	var/list/arguments
 	var/modal_type = "message"
+	var/static/uid_next = 0
+	var/uid
 
 /datum/ui_modal/New(id, text, delegate, list/arguments)
+	uid = ++uid_next
+	if(uid_next >= UID_MAX)
+		uid_next = 0
 	src.id = id
 	src.text = text
 	src.delegate = delegate
@@ -268,6 +279,7 @@ GLOBAL_LIST(ui_modals)
   */
 /datum/ui_modal/proc/to_data()
 	. = list()
+	.["uid"] = uid
 	.["id"] = id
 	.["text"] = text
 	.["args"] = arguments || list()
