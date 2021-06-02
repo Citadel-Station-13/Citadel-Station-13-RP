@@ -95,7 +95,7 @@ export const ComplexModal = (props, context) => {
   if (bodyOverrides[id]) {
     modalBody = bodyOverrides[id](data.modal, context);
   } else if (type === "input") {
-    const [curValue, setCurValue] = useLocalState(context, 'curValue' + data.modal.uid.toString() , data.modal.value.toString());
+    const [curValue, setCurValue] = useLocalState(context, 'curValue' + data.modal.uid.toString(), data.modal.value.toString());
     modalOnEnter = e => modalAnswer(context, id, curValue);
     modalBody = (
       <Input
