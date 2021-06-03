@@ -395,7 +395,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
 
 	var/cloaked = FALSE
-	var/cloaked_alpha = 40			// Lower = Harder to see.
+	var/cloaked_alpha = 60			// Lower = Harder to see.
 	var/cloaked_bonus_damage = 5	// This is added on top of the normal melee damage.
 	var/cloaked_weaken_amount = 1	// How long to stun for.
 	var/cloak_cooldown = 10 SECONDS	// Amount of time needed to re-cloak after losing it.
