@@ -2,7 +2,8 @@
  * Simple conflict checking for getting number of conflicting things on someone with the same ID.
  */
 /datum/element/conflict_checking
-	element_flags = ELEMENT_BESPOKE
+	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH
+	id_arg_index = 1
 	/// we don't need to KNOW who has us, only our ID.
 	var/id
 
