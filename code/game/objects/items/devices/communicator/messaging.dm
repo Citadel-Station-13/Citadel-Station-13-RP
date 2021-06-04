@@ -78,7 +78,7 @@
 	if(ringer)
 		playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("[bicon(src)] *beep*"))
+			O.show_message(text("[icon2html(src, world)] *beep*"))
 
 	alert_called = 1
 	update_icon()
@@ -89,7 +89,7 @@
 		L = loc
 
 	if(L)
-		to_chat(L, "<span class='notice'>[bicon(src)] Message from [who].</span>")
+		to_chat(L, "<span class='notice'>[icon2html(src, world)] Message from [who].</span>")
 
 // Verb: text_communicator()
 // Parameters: None

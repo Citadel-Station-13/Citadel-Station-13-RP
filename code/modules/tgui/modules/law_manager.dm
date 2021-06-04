@@ -27,7 +27,7 @@
 			if(laws.selectable)
 				player_laws += laws
 
-/datum/tgui_module/law_manager/ui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/law_manager/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
@@ -216,9 +216,9 @@
 	log_and_message_admins("has syncronized [AI]'s laws with its borgs.")
 
 /datum/tgui_module/law_manager/robot
-/datum/tgui_module/law_manager/robot/tgui_state(mob/user)
+/datum/tgui_module/law_manager/robot/ui_state(mob/user)
 	return GLOB.tgui_self_state
 
 /datum/tgui_module/law_manager/admin
-/datum/tgui_module/law_manager/admin/tgui_state(mob/user)
+/datum/tgui_module/law_manager/admin/ui_state(mob/user)
 	return GLOB.tgui_admin_state

@@ -98,16 +98,16 @@
 	cam_background.fill_rect(1, 1, (video_range * 2), (video_range * 2))
 	local_skybox.cut_overlays()
 
-// Proc: tgui_state()
+// Proc: ui_state()
 // Parameters: User
 // Description: This tells TGUI to only allow us to be interacted with while in a mob inventory.
-/obj/item/communicator/tgui_state(mob/user)
+/obj/item/communicator/ui_state(mob/user)
 	return GLOB.tgui_inventory_state
 
-// Proc: tgui_interact()
+// Proc: ui_interact()
 // Parameters: User, UI, Parent UI
 // Description: This proc handles opening the UI. It's basically just a standard stub.
-/obj/item/communicator/tgui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui, datum/tgui_state/custom_state)
+/obj/item/communicator/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui, datum/ui_state/custom_state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	// Update the camera every SStgui tick in case it moves
 	update_active_camera_screen()
@@ -125,10 +125,10 @@
 	if(custom_state) // Just in case
 		ui.set_state(custom_state)
 
-// Proc: tgui_data()
+// Proc: ui_data()
 // Parameters: User, UI, State
 // Description: Uses a bunch of for loops to turn lists into lists of lists, so they can be displayed in nanoUI, then displays various buttons to the user.
-/obj/item/communicator/tgui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/obj/item/communicator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	// this is the data which will be sent to the ui
 	var/list/data = list()						//General nanoUI information
 	var/list/communicators = list()			    //List of communicators
@@ -300,10 +300,10 @@
 
 	return data
 
-// Proc: tgui_static_data()
+// Proc: ui_static_data()
 // Parameters: User, UI, State
-// Description: Just like tgui_data, except it only gets called once when the user opens the UI, not every tick.
-/obj/item/communicator/tgui_static_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+// Description: Just like ui_data, except it only gets called once when the user opens the UI, not every tick.
+/obj/item/communicator/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 	// Update manifest'
 	if(data_core)
@@ -313,9 +313,9 @@
 	return data
 
 // Proc: tgui-act()
-// Parameters: 4 (standard tgui_act arguments)
+// Parameters: 4 (standard ui_act arguments)
 // Description: Responds to UI button presses.
-/obj/item/communicator/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/item/communicator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 

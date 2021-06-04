@@ -14,7 +14,7 @@
 	data["manifest"] = PDA_Manifest
 	return data
 
-/datum/tgui_module/cardmod/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/cardmod/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/datum/computer_file/program/card_mod/program = host
 	if(!istype(program))
 		return 0

@@ -4,7 +4,7 @@
 	name = "Admin Shuttle Controller"
 	tgui_id = "AdminShuttleController"
 
-/datum/tgui_module/admin_shuttle_controller/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/admin_shuttle_controller/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	var/list/shuttles = list()
@@ -29,10 +29,10 @@
 
 	return data
 
-/datum/tgui_module/admin_shuttle_controller/tgui_state(mob/user)
+/datum/tgui_module/admin_shuttle_controller/ui_state(mob/user)
 	return GLOB.tgui_admin_state
 
-/datum/tgui_module/admin_shuttle_controller/ui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/admin_shuttle_controller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return
 

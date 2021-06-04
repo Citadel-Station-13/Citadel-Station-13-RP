@@ -8,7 +8,7 @@
 	var/list/viewers //Who's viewing a UAV through us
 	var/adhoc_range = 30 //How far we can operate on a UAV without NTnet
 
-/datum/tgui_module/uav/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/uav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	if(current_uav)
@@ -38,7 +38,7 @@
 	data["paired_uavs"] = paired_map
 	return data
 
-/datum/tgui_module/uav/ui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/uav/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 

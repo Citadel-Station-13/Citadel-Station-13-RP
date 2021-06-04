@@ -224,7 +224,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	initialize_exonet(user)
 	alert_called = 0
 	update_icon()
-	tgui_interact(user)
+	ui_interact(user)
 
 // Proc: MouseDrop()
 //Same thing PDAs do
@@ -288,7 +288,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/Destroy()
 	for(var/mob/living/voice/voice in contents)
 		voice_mobs.Remove(voice)
-		to_chat(voice, "<span class='danger'>[bicon(src)] Connection timed out with remote host.</span>")
+		to_chat(voice, "<span class='danger'>[icon2html(src, world)] Connection timed out with remote host.</span>")
 		qdel(voice)
 	close_connection(reason = "Connection timed out")
 
