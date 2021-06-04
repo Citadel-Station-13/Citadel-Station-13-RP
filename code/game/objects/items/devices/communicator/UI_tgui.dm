@@ -102,7 +102,7 @@
 // Parameters: User
 // Description: This tells TGUI to only allow us to be interacted with while in a mob inventory.
 /obj/item/communicator/ui_state(mob/user)
-	return GLOB.tgui_inventory_state
+	return GLOB.inventory_state
 
 // Proc: ui_interact()
 // Parameters: User, UI, Parent UI
@@ -436,5 +436,3 @@
 
 		if("newsfeed")
 			newsfeed_channel = text2num(params["newsfeed"])
-
-#undef DEFAULT_MAP_SIZE

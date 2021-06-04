@@ -231,10 +231,11 @@
 //                list/message_pieces - what is being said w/ baked languages,
 //                verb - the word used to describe how text is being said)
 // Description: Relays the speech to all linked communicators.
-/obj/item/communicator/hear_talk(mob/M, list/message_pieces, verb)
+/obj/item/communicator/hear_talk(mob/M, text)
 	for(var/obj/item/communicator/comm in communicating)
 		var/turf/T = get_turf(comm)
-		if(!T) return
+		if(!T)
+			return
 		//VOREStation Edit Start for commlinks
 		var/list/mobs_to_relay
 		if(istype(comm,/obj/item/communicator/commlink))
@@ -246,7 +247,7 @@
 		//VOREStation Edit End
 
 		for(var/mob/mob in mobs_to_relay)
-			var/message = mob.combine_message(message_pieces, verb, M)
+			var/message = text
 			var/name_used = M.GetVoice()
 			var/rendered = null
 			rendered = "<span class='game say'>[icon2html(src, world)] <span class='name'>[name_used]</span> [message]</span>"

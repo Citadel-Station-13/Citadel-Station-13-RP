@@ -34,7 +34,7 @@
 			if(src in comm.voice_invites)
 				comm.open_connection(src)
 				return
-			to_chat(src, "<span class='notice'>[bicon(origin_atom)] Receiving communicator request from [origin_atom].  To answer, use the <b>Call Communicator</b> \
+			to_chat(src, "<span class='notice'>[icon2html(origin_atom, src)] Receiving communicator request from [origin_atom].  To answer, use the <b>Call Communicator</b> \
 			verb, and select that name to answer the call.</span>")
 			src << 'sound/machines/defib_SafetyOn.ogg'
 			comm.voice_invites |= src
@@ -44,7 +44,7 @@
 			random = random / 10
 			exonet.send_message(origin_address, "64 bytes received from [exonet.address] ecmp_seq=1 ttl=51 time=[random] ms")
 	if(message == "text")
-		to_chat(src, "<span class='notice'>[bicon(origin_atom)] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
+		to_chat(src, "<span class='notice'>[icon2html(origin_atom, src)] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
 		src << 'sound/machines/defib_safetyOff.ogg'
 		exonet_messages.Add("<b>From [origin_atom]:</b><br>[text]")
 		return
@@ -99,7 +99,7 @@
 	set name = "Text Communicator"
 	set desc = "If there is a communicator available, send a text message to it."
 
-	if(ticker.current_state < GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
 		return
 
@@ -109,7 +109,7 @@
 	if (usr != src)
 		return //something is terribly wrong
 
-	for(var/mob/living/L in mob_list) //Simple check so you don't have dead people calling.
+	for(var/mob/living/L in GLOB.mob_list) //Simple check so you don't have dead people calling.
 		if(src.client.prefs.real_name == L.real_name)
 			to_chat(src, "<span class='danger'>Your identity is already present in the game world.  Please load in a different character first.</span>")
 			return

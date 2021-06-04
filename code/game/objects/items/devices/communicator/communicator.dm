@@ -82,7 +82,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/Initialize()
 	. = ..()
 	all_communicators += src
-	all_communicators = sortAtom(all_communicators)
+	sortTim(all_communicators, /proc/cmp_name_asc)
 	node = get_exonet_node()
 	START_PROCESSING(SSobj, src)
 	camera = new(src)
@@ -336,8 +336,8 @@ var/global/list/obj/item/communicator/all_communicators = list()
 
 /obj/machinery/camera/communicator/New()
 	..()
-	client_huds |= global_hud.whitense
-	client_huds |= global_hud.darkMask
+	client_huds |= GLOB.global_hud.whitense
+	client_huds |= GLOB.global_hud.darkMask
 
 //It's the 26th century. We should have smart watches by now.
 /obj/item/communicator/watch

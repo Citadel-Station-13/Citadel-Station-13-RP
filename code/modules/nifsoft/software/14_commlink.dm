@@ -57,7 +57,7 @@
 	nif.save_data["commlink_name"] = owner
 
 //So that only the owner's chat is relayed to others.
-/obj/item/communicator/commlink/hear_talk(mob/living/M, list/message_pieces, verb)
+/obj/item/communicator/commlink/hear_talk(mob/living/M, text)
 	if(M != nif.human)
 		return
 
@@ -77,10 +77,10 @@
 			mobs_to_relay = in_range["mobs"]
 
 		for(var/mob/mob in mobs_to_relay)
-			var/message = mob.combine_message(message_pieces, verb, M)
+			var/message = text
 			var/name_used = M.GetVoice()
 			var/rendered = null
-			rendered = "<span class='game say'>[bicon(icon_object)] <span class='name'>[name_used]</span> [message]</span>"
+			rendered = "<span class='game say'>[icon2html(icon_object, world)] <span class='name'>[name_used]</span> [message]</span>"
 			mob.show_message(rendered, 2)
 
 //Not supported by the internal one
