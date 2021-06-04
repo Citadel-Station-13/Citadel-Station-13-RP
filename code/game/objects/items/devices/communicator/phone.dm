@@ -246,9 +246,11 @@
 			mobs_to_relay = in_range["mobs"]
 		//VOREStation Edit End
 
+		var/mob/living/L = (isliving(M) && M) || null
+		var/message = text
+		var/name_used = L?.GetVoice() || M.name
+
 		for(var/mob/mob in mobs_to_relay)
-			var/message = text
-			var/name_used = M.GetVoice()
 			var/rendered = null
 			rendered = "<span class='game say'>[icon2html(src, world)] <span class='name'>[name_used]</span> [message]</span>"
 			mob.show_message(rendered, 2)
@@ -276,7 +278,7 @@
 	set name = "Call Communicator"
 	set desc = "If there is a communicator available, send a request to speak through it.  This will reset your respawn timer, if someone picks up."
 
-	if(ticker.current_state < GAME_STATE_PLAYING)
+	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
 		return
 
@@ -291,11 +293,11 @@
 	if(confirm == "No")
 		return
 
-	if(config.antag_hud_restricted && has_enabled_antagHUD == 1)
+	if(config_legacy.antag_hud_restricted && has_enabled_antagHUD == 1)
 		to_chat(src, "<span class='danger'>You have used the antagHUD and cannot respawn or use communicators!</span>")
 		return
 
-	for(var/mob/living/L in mob_list) //Simple check so you don't have dead people calling.
+	for(var/mob/living/L in GLOB.mob_list) //Simple check so you don't have dead people calling.
 		if(src.client.prefs.real_name == L.real_name)
 			to_chat(src, "<span class='danger'>Your identity is already present in the game world.  Please load in a different character first.</span>")
 			return
