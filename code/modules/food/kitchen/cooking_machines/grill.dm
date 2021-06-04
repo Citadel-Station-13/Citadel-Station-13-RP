@@ -67,7 +67,7 @@
 	update_icon()
 /obj/machinery/appliance/cooker/grill/Initialize(mapload)
 	. = ..()
-	// cooking_objs += new /datum/cooking_item(new /obj/item/weapon/reagent_containers/cooking_container(src))
+	// cooking_objs += new /datum/cooking_item(new /obj/item/reagent_containers/cooking_container(src))
 	cooking = FALSE
 /obj/machinery/appliance/cooker/grill/has_space(var/obj/item/I)
 	var/datum/cooking_item/CI = cooking_objs[1]
