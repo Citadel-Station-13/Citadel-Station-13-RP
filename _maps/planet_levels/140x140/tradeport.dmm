@@ -605,7 +605,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "cY" = (
-/obj/structure/mob_spawner/mouse_nest,
+/obj/structure/mob_spawner/pest_nest,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "cZ" = (
