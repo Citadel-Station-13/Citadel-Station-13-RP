@@ -29,13 +29,14 @@
 	// flight_y_offset = 9
 	// automatic_charge_overlays = FALSE
 	projectile_type = /obj/item/projectile/kinetic
-	charge_cost = 500
+	charge_cost = 1200
 	battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 	var/overheat_time = 16
 	var/holds_charge = FALSE
 	var/unique_frequency = FALSE // modified by KA modkits
 	var/overheat = FALSE
+	var/emptystate = "kineticgun_empty"
 	// can_bayonet = TRUE
 	// knife_x_offset = 20
 	// knife_y_offset = 12
@@ -52,6 +53,9 @@
 	if(.)
 		var/obj/item/projectile/P = .
 		modify_projectile(P)
+
+/obj/item/gun/energy/kinetic_accelerator/handle_post_fire(mob/user, atom/target, pointblank, reflex)
+	. = ..()
 	attempt_reload()
 
 /*
@@ -142,7 +146,7 @@
 
 /obj/item/gun/energy/kinetic_accelerator/equipped(mob/user)
 	. = ..()
-	if(overheat)
+	if(power_supply.charge < charge_cost)
 		attempt_reload()
 
 /obj/item/gun/energy/kinetic_accelerator/dropped(mob/user)
@@ -169,6 +173,7 @@
 	if(!recharge_time)
 		recharge_time = overheat_time
 	overheat = TRUE
+	update_icon()
 
 	var/carried = max(1, loc.ConflictElementCount(CONFLICT_ELEMENT_KA))
 
@@ -185,13 +190,13 @@
 	playsound(src, 'sound/weapons/kenetic_reload.ogg', 60, 1)
 	// else
 		// to_chat(loc, "<span class='warning'>[src] silently charges up.</span>")
-	update_icon()
 	overheat = FALSE
+	update_icon()
 
 /obj/item/gun/energy/kinetic_accelerator/update_icon()
 	cut_overlays()
-	if(overheat)
-		add_overlay("[icon_state]_empty")
+	if(overheat || (power_supply.charge == 0))
+		add_overlay(emptystate)
 
 //Projectiles
 /obj/item/projectile/kinetic
@@ -221,14 +226,14 @@
 		var/list/mods = kinetic_gun.get_modkits()
 		for(var/obj/item/borg/upgrade/modkit/M in mods)
 			M.projectile_prehit(src, target, kinetic_gun)
-	if(!lavaland_environment_check(get_turf(src)))
+	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
 		damage = damage * pressure_decrease
 		pressure_decrease_active = TRUE
 	return ..()
 
 /obj/item/projectile/kinetic/attack_mob(mob/living/target_mob, distance, miss_modifier)
-	if(!lavaland_environment_check(get_turf(src)))
+	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
 		damage = damage * pressure_decrease
 		pressure_decrease_active = TRUE
@@ -243,7 +248,7 @@
 	. = ..()
 
 /obj/item/projectile/kinetic/proc/strike_thing(atom/target)
-	if(!lavaland_environment_check(get_turf(src)))
+	if(!pressure_decrease_active && !lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
 		damage = damage * pressure_decrease
 		pressure_decrease_active = TRUE
@@ -319,8 +324,7 @@
 				break
 	if(KA.get_remaining_mod_capacity() >= cost)
 		if(.)
-			if(!user.drop_from_inventory(src, KA))
-				return FALSE
+			user.drop_from_inventory(src, KA)
 			// if(!user.transferItemToLoc(src, KA))
 				// return FALSE
 			to_chat(user, "<span class='notice'>You install the modkit.</span>")
