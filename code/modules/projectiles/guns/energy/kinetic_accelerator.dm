@@ -2,7 +2,7 @@
  * This is here for now
  */
 /proc/lavaland_environment_check(turf/simulated/T)
-	. = FAFLSE
+	. = FALSE
 	if(!istype(T))
 		return
 	var/datum/gas_mixture/environment = T.return_air()
@@ -188,10 +188,10 @@
 	update_icon()
 	overheat = FALSE
 
-/obj/item/gun/energy/kinetic_accelerator/update_overlays()
-	. = ..()
+/obj/item/gun/energy/kinetic_accelerator/update_icon()
+	cut_overlays()
 	if(overheat)
-		. += "[icon_state]_empty"
+		add_overlay("[icon_state]_empty")
 
 //Projectiles
 /obj/item/projectile/kinetic
