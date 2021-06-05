@@ -43,6 +43,9 @@ ehck/**
 	var/recharge_timerid
 
 /obj/item/gun/energy/kinetic_accelerator/consume_next_projectile()
+	attempt_reload()
+	if(overheat)
+		return
 	. = ..()
 	if(.)
 		var/obj/item/projectile/P = .
@@ -67,7 +70,7 @@ ehck/**
 	. = TRUE
 	if(modkits.len)
 		to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
-		I.play_tool_sound(src, 100)
+		// I.play_tool_sound(src, 100)
 		for(var/obj/item/borg/upgrade/modkit/M in modkits)
 			M.uninstall(src)
 	else
@@ -123,7 +126,7 @@ ehck/**
 	return ..()
 
 /obj/item/gun/energy/kinetic_accelerator/minebot
-	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
+	// trigger_guard = TRIGGER_GUARD_ALLOW_ALL
 	overheat_time = 20
 	holds_charge = TRUE
 	unique_frequency = TRUE
@@ -134,13 +137,9 @@ ehck/**
 		empty()
 	AddElement(/datum/element/conflict_checking, CONFLICT_ELEMENT_KA)
 
-/obj/item/gun/energy/kinetic_accelerator/shoot_live_shot(mob/living/user, pointblank = FALSE, mob/pbtarget, message = 1, stam_cost = 0)
-	. = ..()
-	attempt_reload()
-
 /obj/item/gun/energy/kinetic_accelerator/equipped(mob/user)
 	. = ..()
-	if(!can_shoot())
+	if(overheat)
 		attempt_reload()
 
 /obj/item/gun/energy/kinetic_accelerator/dropped(mob/user)
@@ -160,7 +159,7 @@ ehck/**
 	update_icon()
 
 /obj/item/gun/energy/kinetic_accelerator/proc/attempt_reload(recharge_time)
-	if(!cell)
+	if(!power_supply)
 		return
 	if(overheat)
 		return
@@ -178,7 +177,7 @@ ehck/**
 
 /obj/item/gun/energy/kinetic_accelerator/proc/reload()
 	power_supply.give(power_supply.maxcharge)
-	process_chamber()
+	// process_chamber()
 	// if(!suppressed)
 	playsound(src, 'sound/weapons/kenetic_reload.ogg', 60, 1)
 	// else
@@ -188,7 +187,7 @@ ehck/**
 
 /obj/item/gun/energy/kinetic_accelerator/update_overlays()
 	. = ..()
-	if(!can_shoot())
+	if(overheat)
 		. += "[icon_state]_empty"
 
 //Projectiles
@@ -197,7 +196,7 @@ ehck/**
 	icon_state = null
 	damage = 30
 	damage_type = BRUTE
-	flag = "bomb"
+	check_armour = "bomb"
 	range = 4
 	// log_override = TRUE
 
@@ -214,17 +213,16 @@ ehck/**
 	kinetic_gun = null
 	return ..()
 
-/obj/item/projectile/kinetic/prehit(atom/target)
-	. = ..()
-	if(.)
-		if(kinetic_gun)
-			var/list/mods = kinetic_gun.get_modkits()
-			for(var/obj/item/borg/upgrade/modkit/M in mods)
-				M.projectile_prehit(src, target, kinetic_gun)
-		if(!lavaland_environment_check(get_turf(target)))
-			name = "weakened [name]"
-			damage = damage * pressure_decrease
-			pressure_decrease_active = TRUE
+/obj/item/projectile/kinetic/Bump(atom/target)
+	if(kinetic_gun)
+		var/list/mods = kinetic_gun.get_modkits()
+		for(var/obj/item/borg/upgrade/modkit/M in mods)
+			M.projectile_prehit(src, target, kinetic_gun)
+	if(!lavaland_environment_check(get_turf(target)))
+		name = "weakened [name]"
+		damage = damage * pressure_decrease
+		pressure_decrease_active = TRUE
+	return ..()
 
 /obj/item/projectile/kinetic/on_range()
 	strike_thing()
@@ -245,8 +243,8 @@ ehck/**
 		for(var/obj/item/borg/upgrade/modkit/M in mods)
 			M.projectile_strike(src, target_turf, target, kinetic_gun)
 	if(ismineralturf(target_turf))
-		var/turf/closed/mineral/M = target_turf
-		M.gets_drilled(firer)
+		var/turf/simulated/mineral/M = target_turf
+		M.GetDrilled(TRUE)
 	var/obj/effect/temp_visual/kinetic_blast/K = new /obj/effect/temp_visual/kinetic_blast(target_turf)
 	K.color = color
 
@@ -305,8 +303,10 @@ ehck/**
 				break
 	if(KA.get_remaining_mod_capacity() >= cost)
 		if(.)
-			if(!user.transferItemToLoc(src, KA))
+			if(!user.drop_from_inventory(src, KA))
 				return FALSE
+			// if(!user.transferItemToLoc(src, KA))
+				// return FALSE
 			to_chat(user, "<span class='notice'>You install the modkit.</span>")
 			playsound(loc, 'sound/items/screwdriver.ogg', 100, 1)
 			KA.modkits += src
@@ -423,7 +423,7 @@ ehck/**
 		for(var/mob/living/L in range(1, target_turf) - K.firer - target)
 			var/armor = L.run_armor_check(K.def_zone, K.check_armour)
 			// var/armor = L.run_armor_check(K.def_zone, K.flag, null, null, K.armour_penetration)
-			L.apply_damage(K.damage*mob_aoe, K.damage_type, K.def_zone, armor)
+			L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
 			// L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
 			to_chat(L, "<span class='userdanger'>You're struck by a [K.name]!</span>")
 
@@ -499,10 +499,10 @@ ehck/**
 	if(target_turf && !ismineralturf(target_turf)) //Don't make fields on mineral turfs.
 		var/obj/effect/resonance/R = locate(/obj/effect/resonance) in target_turf
 		if(R)
-			R.damage_multiplier = modifier
+			R.resonance_damage *= modifier
 			R.burst()
 			return
-		new /obj/effect/temp_visual/resonance(target_turf, K.firer, null, 30)
+		new /obj/effect/resonance(target_turf, K.firer, 30)
 
 /*
 /obj/item/borg/upgrade/modkit/bounty

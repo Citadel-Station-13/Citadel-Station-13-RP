@@ -26,7 +26,7 @@
 /**
  * Counts number of conflicts on something that have a conflict checking element.
  */
-/atom/movable/proc/ConflictElementCount(id)
+/atom/proc/ConflictElementCount(id)
 	. = 0
 	for(var/i in GetAllContents())
 		var/atom/movable/AM = i
