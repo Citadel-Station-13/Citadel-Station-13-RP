@@ -17,7 +17,7 @@ ehck/**
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
 	// ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
-	cell_type = /obj/item/stock_parts/cell/emproof
+	cell_type = /obj/item/cell/device/weapon/emproof
 	item_flags = NONE
 	// obj_flags = UNIQUE_RENAME
 	// weapon_weight = WEAPON_LIGHT
@@ -66,16 +66,6 @@ ehck/**
 			var/obj/item/borg/upgrade/modkit/M = A
 			. += "<span class='notice'>There is \a [M] installed, using <b>[M.cost]%</b> capacity.</span>"
 
-/obj/item/gun/energy/kinetic_accelerator/crowbar_act(mob/living/user, obj/item/I)
-	. = TRUE
-	if(modkits.len)
-		to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
-		// I.play_tool_sound(src, 100)
-		for(var/obj/item/borg/upgrade/modkit/M in modkits)
-			M.uninstall(src)
-	else
-		to_chat(user, "<span class='notice'>There are no modifications currently installed.</span>")
-
 /obj/item/gun/energy/kinetic_accelerator/Exited(atom/movable/AM)
 	. = ..()
 	if((AM in modkits) && istype(AM, /obj/item/borg/upgrade/modkit))
@@ -83,6 +73,14 @@ ehck/**
 		M.uninstall(src, FALSE)
 
 /obj/item/gun/energy/kinetic_accelerator/attackby(obj/item/I, mob/user)
+	if(istype(A, /obj/item/tool/crowbar))
+		if(modkits.len)
+			to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
+			playsound(loc, A.usesound, 100, 1)
+			for(var/obj/item/borg/upgrade/modkit/M in modkits)
+				M.uninstall(src)
+		else
+			to_chat(user, "<span class='notice'>There are no modifications currently installed.</span>")
 	if(istype(I, /obj/item/borg/upgrade/modkit))
 		var/obj/item/borg/upgrade/modkit/MK = I
 		MK.install(src, user)
@@ -275,11 +273,13 @@ ehck/**
 	else
 		..()
 
+/*
 /obj/item/borg/upgrade/modkit/afterInstall(mob/living/silicon/robot/R)
 	for(var/obj/item/gun/energy/kinetic_accelerator/H in R.module.modules)
 		if(install(H, R)) //It worked
 			return
 	to_chat(R, "<span class='alert'>Upgrade error - Aborting Kinetic Accelerator linking.</span>") //No applicable KA found, insufficient capacity, or some other problem.
+*/
 
 /obj/item/borg/upgrade/modkit/proc/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
 	. = TRUE
