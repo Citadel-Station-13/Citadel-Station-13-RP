@@ -1,4 +1,4 @@
-/**
+ehck/**
  * This is here for now
  */
 /proc/lavaland_environment_check(turf/simulated/T)
@@ -27,6 +27,7 @@
 	// automatic_charge_overlays = FALSE
 	projectile_type = /obj/item/projectile/kinetic
 	charge_cost = 500
+	battery_lock = TRUE
 	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 	var/overheat_time = 16
 	var/holds_charge = FALSE
@@ -52,21 +53,7 @@
 	desc = "A premium kinetic accelerator fitted with an extended barrel and increased pressure tank."
 	icon_state = "premiumgun"
 	item_state = "premiumgun"
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-	ammo_type = list(/obj/item/ammo_casing/energy/kinetic/premium)
-
-/obj/item/ammo_casing/energy/kinetic/premium
 	projectile_type = /obj/item/projectile/kinetic/premium
-
-/obj/item/projectile/kinetic/premium
-	name = "kinetic force"
-	icon_state = null
-	damage = 50
-	damage_type = BRUTE
-	flag = "bomb"
-	range = 4
-	log_override = TRUE
 
 /obj/item/gun/energy/kinetic_accelerator/examine(mob/user)
 	. = ..()
@@ -168,8 +155,8 @@
 		empty()
 
 /obj/item/gun/energy/kinetic_accelerator/proc/empty()
-	if(cell)
-		cell.use(cell.charge)
+	if(power_supply)
+		power_supply.use(power_supply.charge)
 	update_icon()
 
 /obj/item/gun/energy/kinetic_accelerator/proc/attempt_reload(recharge_time)
@@ -190,12 +177,12 @@
 	return
 
 /obj/item/gun/energy/kinetic_accelerator/proc/reload()
-	cell.give(cell.maxcharge)
+	power_supply.give(power_supply.maxcharge)
 	process_chamber()
-	if(!suppressed)
-		playsound(src, 'sound/weapons/kenetic_reload.ogg', 60, 1)
-	else
-		to_chat(loc, "<span class='warning'>[src] silently charges up.</span>")
+	// if(!suppressed)
+	playsound(src, 'sound/weapons/kenetic_reload.ogg', 60, 1)
+	// else
+		// to_chat(loc, "<span class='warning'>[src] silently charges up.</span>")
 	update_icon()
 	overheat = FALSE
 
@@ -208,15 +195,20 @@
 /obj/item/projectile/kinetic
 	name = "kinetic force"
 	icon_state = null
-	damage = 40
+	damage = 30
 	damage_type = BRUTE
 	flag = "bomb"
-	range = 3
-	log_override = TRUE
+	range = 4
+	// log_override = TRUE
 
 	var/pressure_decrease_active = FALSE
 	var/pressure_decrease = 0.25
 	var/obj/item/gun/energy/kinetic_accelerator/kinetic_gun
+
+/obj/item/projectile/kinetic/premium
+	damage = 40
+	damage_type = BRUTE
+	range = 5
 
 /obj/item/projectile/kinetic/Destroy()
 	kinetic_gun = null
@@ -229,7 +221,7 @@
 			var/list/mods = kinetic_gun.get_modkits()
 			for(var/obj/item/borg/upgrade/modkit/M in mods)
 				M.projectile_prehit(src, target, kinetic_gun)
-		if(!lavaland_equipment_pressure_check(get_turf(target)))
+		if(!lavaland_environment_check(get_turf(target)))
 			name = "weakened [name]"
 			damage = damage * pressure_decrease
 			pressure_decrease_active = TRUE
@@ -267,7 +259,7 @@
 	icon_state = "modkit"
 	w_class = WEIGHT_CLASS_SMALL
 	require_module = 1
-	module_type = list(/obj/item/robot_module/miner)
+	// module_type = list(/obj/item/robot_module/miner)
 	var/denied_type = null
 	var/maximum_of_type = 1
 	var/cost = 30
@@ -426,11 +418,13 @@
 		for(var/T in RANGE_TURFS(1, target_turf) - target_turf)
 			if(ismineralturf(T))
 				var/turf/simulated/mineral/M = T
-				M.gets_drilled(K.firer)
+				M.GetDrilled(TRUE)
 	if(modifier)
 		for(var/mob/living/L in range(1, target_turf) - K.firer - target)
-			var/armor = L.run_armor_check(K.def_zone, K.flag, null, null, K.armour_penetration)
-			L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
+			var/armor = L.run_armor_check(K.def_zone, K.check_armour)
+			// var/armor = L.run_armor_check(K.def_zone, K.flag, null, null, K.armour_penetration)
+			L.apply_damage(K.damage*mob_aoe, K.damage_type, K.def_zone, armor)
+			// L.apply_damage(K.damage*modifier, K.damage_type, K.def_zone, armor)
 			to_chat(L, "<span class='userdanger'>You're struck by a [K.name]!</span>")
 
 /obj/item/borg/upgrade/modkit/aoe/turfs
@@ -476,6 +470,7 @@
 		KA.overheat = FALSE
 		KA.attempt_reload(KA.overheat_time * 0.25) //If you hit, the cooldown drops to 0.75 seconds.
 
+/*
 /obj/item/borg/upgrade/modkit/lifesteal
 	name = "lifesteal crystal"
 	desc = "Causes kinetic accelerator shots to slightly heal the firer on striking a living target."
@@ -491,6 +486,7 @@
 			return
 		L = K.firer
 		L.heal_ordered_damage(modifier, damage_heal_order)
+*/
 
 /obj/item/borg/upgrade/modkit/resonator_blasts
 	name = "resonator blast"
@@ -501,13 +497,14 @@
 
 /obj/item/borg/upgrade/modkit/resonator_blasts/projectile_strike(obj/item/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
 	if(target_turf && !ismineralturf(target_turf)) //Don't make fields on mineral turfs.
-		var/obj/effect/temp_visual/resonance/R = locate(/obj/effect/temp_visual/resonance) in target_turf
+		var/obj/effect/resonance/R = locate(/obj/effect/resonance) in target_turf
 		if(R)
 			R.damage_multiplier = modifier
 			R.burst()
 			return
 		new /obj/effect/temp_visual/resonance(target_turf, K.firer, null, 30)
 
+/*
 /obj/item/borg/upgrade/modkit/bounty
 	name = "death syphon"
 	desc = "Killing or assisting in killing a creature permanently increases your damage against that type of creature."
@@ -546,6 +543,7 @@
 		bounties_reaped[L.type] = min(modifier * bonus_mod, maximum_bounty)
 	else
 		bounties_reaped[L.type] = min(bounties_reaped[L.type] + (modifier * bonus_mod), maximum_bounty)
+*/
 
 //Indoors
 /obj/item/borg/upgrade/modkit/indoors
@@ -561,6 +559,8 @@
 
 
 //Trigger Guard
+
+/*
 /obj/item/borg/upgrade/modkit/trigger_guard
 	name = "modified trigger guard"
 	desc = "Allows creatures normally incapable of firing guns to operate the weapon when installed."
@@ -575,7 +575,7 @@
 /obj/item/borg/upgrade/modkit/trigger_guard/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
 	KA.trigger_guard = TRIGGER_GUARD_NORMAL
 	..()
-
+*/
 
 //Cosmetic
 
