@@ -434,7 +434,7 @@
 //Glukoz Brand Injectors:
 /obj/item/reagent_containers/hypospray/glukoz/viraplus
 	name = "Viraplus"
-	desc = "A colorful plastic autoinjector – it’s well past its expiry date. This one depicts a virus getting shot by a beam."
+	desc = "A colorful plastic autoinjector. This one depicts a virus getting shot by a beam."
 	icon_state = "viraplus"
 	filled_reagents = list("corophizine" = 15, "toxin" = 5)
 
@@ -446,37 +446,37 @@
 
 /obj/item/reagent_containers/hypospray/glukoz/oxyduo
 	name = "OxyDuo"
-	desc = "A colorful plastic autoinjector – it’s well past its expiry date. ‘10% more opiate than leading competitors!’"
+	desc = "A colorful plastic autoinjector. ‘10% more opiate than leading competitors!’"
 	icon_state = "oxyduo"
 	filled_reagents = list("oxycodone" = 15, "toxin" = 5)
 
 /obj/item/reagent_containers/hypospray/glukoz/numplus
 	name = "Numplus"
-	desc = "A colorful plastic autoinjector – it’s well past its expiry date. This one depicts a stick figure gripping its knee in pain."
+	desc = "A colorful plastic autoinjector. This one depicts a stick figure gripping its knee in pain."
 	icon_state = "numplus"
-	filled_reagents = list("bicaridine" = 15, "toxin" = 5)
+	filled_reagents = list("tramadol" = 15, "toxin" = 5)
 
 /obj/item/reagent_containers/hypospray/glukoz/multibuzz
 	name = "Multibuzz"
-	desc = "A colorful plastic autoinjector – miraculously, it’s not expired. ‘Our premium blend of narcotics is guaranteed to ease tension!’"
+	desc = "A colorful plastic autoinjector. ‘Our premium blend of narcotics is guaranteed to ease tension!’"
 	icon_state = "multibuzz"
 	filled_reagents = list("mindbreaker" = 10, "paroxetine" = 10)
 
 /obj/item/reagent_containers/hypospray/glukoz/medcon
 	name = "Medcon"
-	desc = "A colorful plastic autoinjector – miraculously, it’s not expired. ‘Intended for emergency use only. One dose relieves pain and fights internal bleeding.’"
+	desc = "A colorful plastic autoinjector. ‘Intended for emergency use only. One dose relieves pain and fights internal bleeding.’"
 	icon_state = "medcon"
 	filled_reagents = list("myelamine" = 15, "oxycodone" = 5)
 
 /obj/item/reagent_containers/hypospray/glukoz/hypnogamma
 	name = "Hypnogamma"
-	desc = "A colorful plastic autoinjector – miraculously, it’s not expired. ‘Our premium blend of performance enhancers will help you rise to the occasion.’"
+	desc = "A colorful plastic autoinjector. ‘Our premium blend of performance enhancers will help you rise to the occasion.’"
 	icon_state = "hypnogamma"
 	filled_reagents = list("hyperzine" = 5, "methylphenidate" = 15)
 
 /obj/item/reagent_containers/hypospray/glukoz/hangup
 	name = "Hangup"
-	desc = "A colorful plastic autoinjector – it’s well past its expiry date. ‘The only hangover cure that really works!’"
+	desc = "A colorful plastic autoinjector. ‘The only hangover cure that really works!’"
 	icon_state = "hangup"
 	filled_reagents = list("ethylredoxrazine" = 15, "toxin" = 5)
 
@@ -490,13 +490,13 @@
 
 /obj/item/reagent_containers/hypospray/glukoz/downer
 	name = "Downer"
-	desc = "A colorful plastic autoinjector – miraculously, it’s not expired. ‘For when you’ve got too much on your mind!’"
+	desc = "A colorful plastic autoinjector. ‘For when you’ve got too much on your mind!’"
 	icon_state = "downer"
 	filled_reagents = list("cryptobiolin" = 20)
 
 /obj/item/reagent_containers/hypospray/glukoz/certaphil
 	name = "Certaphil"
-	desc = "A colorful plastic autoinjector – miraculously, it’s not expired. ‘Clinical trials have proven Certaphil to be the market’s leading sleep aid. Please use responsibly.’"
+	desc = "A colorful plastic autoinjector. ‘Clinical trials have proven Certaphil to be the market’s leading sleep aid. Please use responsibly.’"
 	icon_state = "cosbytrine"
 	filled_reagents = list("stoxin" = 20)
 
