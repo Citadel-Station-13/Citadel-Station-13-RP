@@ -59,6 +59,7 @@
 #define LANGUAGE_GIBBERISH "Babel"
 #define LANGUAGE_SQUEAKISH "Squeakish"
 #define LANGUAGE_VERNAL "Vernal"
+#define LANGUAGE_ADHERENT          "Protocol"
 
 //Languages from _vr file
 #define LANGUAGE_SLAVIC "Pan-Slavic"

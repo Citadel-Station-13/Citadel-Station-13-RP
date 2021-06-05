@@ -485,6 +485,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/can_overcome_gravity(var/mob/living/carbon/human/H)
 	return FALSE
 
+/datum/species/proc/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
+	return FALSE
+
 // Used for any extra behaviour when falling and to see if a species will fall at all.
 /datum/species/proc/can_fall(var/mob/living/carbon/human/H)
 	return TRUE
