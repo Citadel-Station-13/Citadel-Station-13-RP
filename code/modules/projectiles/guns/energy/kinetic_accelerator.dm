@@ -1,9 +1,10 @@
-ehck/**
+/**
  * This is here for now
  */
 /proc/lavaland_environment_check(turf/simulated/T)
+	. = FAFLSE
 	if(!istype(T))
-		return FALSE
+		return
 	var/datum/gas_mixture/environment = T.return_air()
 	if(!istype(environment))
 		return
@@ -14,11 +15,13 @@ ehck/**
 /obj/item/gun/energy/kinetic_accelerator
 	name = "proto-kinetic accelerator"
 	desc = "A self recharging, ranged mining tool that does increased damage in low pressure."
+	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
 	// ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
 	cell_type = /obj/item/cell/device/weapon/empproof
 	item_flags = NONE
+	charge_meter = FALSE
 	// obj_flags = UNIQUE_RENAME
 	// weapon_weight = WEAPON_LIGHT
 	// can_flashlight = 1
@@ -43,20 +46,22 @@ ehck/**
 	var/recharge_timerid
 
 /obj/item/gun/energy/kinetic_accelerator/consume_next_projectile()
-	attempt_reload()
 	if(overheat)
 		return
 	. = ..()
 	if(.)
 		var/obj/item/projectile/P = .
 		modify_projectile(P)
+	attempt_reload()
 
+/*
 /obj/item/gun/energy/kinetic_accelerator/premiumka
 	name = "premium accelerator"
 	desc = "A premium kinetic accelerator fitted with an extended barrel and increased pressure tank."
 	icon_state = "premiumgun"
 	item_state = "premiumgun"
 	projectile_type = /obj/item/projectile/kinetic/premium
+*/
 
 /obj/item/gun/energy/kinetic_accelerator/examine(mob/user)
 	. = ..()
@@ -216,7 +221,14 @@ ehck/**
 		var/list/mods = kinetic_gun.get_modkits()
 		for(var/obj/item/borg/upgrade/modkit/M in mods)
 			M.projectile_prehit(src, target, kinetic_gun)
-	if(!lavaland_environment_check(get_turf(target)))
+	if(!lavaland_environment_check(get_turf(src)))
+		name = "weakened [name]"
+		damage = damage * pressure_decrease
+		pressure_decrease_active = TRUE
+	return ..()
+
+/obj/item/projectile/kinetic/attack_mob(mob/living/target_mob, distance, miss_modifier)
+	if(!lavaland_environment_check(get_turf(src)))
 		name = "weakened [name]"
 		damage = damage * pressure_decrease
 		pressure_decrease_active = TRUE
@@ -231,6 +243,10 @@ ehck/**
 	. = ..()
 
 /obj/item/projectile/kinetic/proc/strike_thing(atom/target)
+	if(!lavaland_environment_check(get_turf(src)))
+		name = "weakened [name]"
+		damage = damage * pressure_decrease
+		pressure_decrease_active = TRUE
 	var/turf/target_turf = get_turf(target)
 	if(!target_turf)
 		target_turf = get_turf(src)
