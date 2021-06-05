@@ -42,3 +42,4 @@
 
 // Conflict element IDs
 #define CONFLICT_ELEMENT_CRUSHER			"crusher"
+#define CONFLICT_ELEMENT_KA					"kinetic_accelerator"
