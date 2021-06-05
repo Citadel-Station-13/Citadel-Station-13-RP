@@ -17,7 +17,7 @@ ehck/**
 	icon_state = "kineticgun"
 	item_state = "kineticgun"
 	// ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
-	cell_type = /obj/item/cell/device/weapon/emproof
+	cell_type = /obj/item/cell/device/weapon/empproof
 	item_flags = NONE
 	// obj_flags = UNIQUE_RENAME
 	// weapon_weight = WEAPON_LIGHT
@@ -73,10 +73,10 @@ ehck/**
 		M.uninstall(src, FALSE)
 
 /obj/item/gun/energy/kinetic_accelerator/attackby(obj/item/I, mob/user)
-	if(istype(A, /obj/item/tool/crowbar))
+	if(istype(I, /obj/item/tool/crowbar))
 		if(modkits.len)
 			to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
-			playsound(loc, A.usesound, 100, 1)
+			playsound(loc, I.usesound, 100, 1)
 			for(var/obj/item/borg/upgrade/modkit/M in modkits)
 				M.uninstall(src)
 		else
