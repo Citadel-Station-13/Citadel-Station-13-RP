@@ -20,7 +20,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	desc = "A personal device used to enable long range dialog between two people, utilizing existing telecommunications infrastructure to allow \
 	communications across different stations, planets, or even star systems."
 	icon = 'icons/obj/device.dmi'
-	icon_state = "communicator"
+	icon_state = "communicator_home"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
 	show_messages = 1
@@ -315,17 +315,17 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Proc: update_icon()
 // Parameters: None
 // Description: Self explanatory
-/obj/item/communicator/update_icon()
+/obj/item/communicator/update_icon_state()
 	if(video_source)
-		icon_state = "communicator-video"
+		icon_state = "communicator_wave"
 		return
 
 	if(voice_mobs.len || communicating.len)
-		icon_state = "communicator-active"
+		icon_state = "communicator_talk"
 		return
 
 	if(alert_called)
-		icon_state = "communicator-called"
+		icon_state = "communicator_alert"
 		return
 
 	icon_state = initial(icon_state)
@@ -348,7 +348,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	icon_state = "commwatch"
 	slot_flags = SLOT_GLOVES
 
-/obj/item/communicator/watch/update_icon()
+/obj/item/communicator/watch/update_icon_state
 	if(video_source)
 		icon_state = "commwatch-video"
 		return

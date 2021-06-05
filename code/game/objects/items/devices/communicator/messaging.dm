@@ -149,8 +149,6 @@
 						continue
 					M.show_message("Comm IM - [src] -> [chosen_communicator]: [text_message]")
 
-
-
 // Verb: show_text_messages()
 // Parameters: None
 // Description: Lets ghosts review messages they've sent or received.

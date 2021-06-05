@@ -101,6 +101,7 @@
 #include "code\__DEFINES\dcs\flags.dm"
 #include "code\__DEFINES\dcs\helpers.dm"
 #include "code\__DEFINES\dcs\signals.dm"
+#include "code\__DEFINES\flags\interaction_flags.dm"
 #include "code\__DEFINES\flags\movement.dm"
 #include "code\__DEFINES\flags\obj_flags.dm"
 #include "code\__DEFINES\flags\preferences.dm"
