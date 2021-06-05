@@ -72,6 +72,7 @@
 	B.uses_charge = 1
 	B.charge_costs = list(1000)
 	B.synths = list(medicine)
+	src.modules += O
 	src.modules += N
 	src.modules += B
 

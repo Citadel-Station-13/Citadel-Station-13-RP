@@ -32,7 +32,7 @@ export const NtosNetChat = (props, context) => {
                   width: '200px',
                 }}>
                 <Box
-                  height="537px"
+                  height="560px"
                   overflowY="scroll">
                   <Button.Input
                     fluid
@@ -115,7 +115,7 @@ export const NtosNetChat = (props, context) => {
                   width: '150px',
                 }}>
                 <Box
-                  height="477px"
+                  height="465px"
                   overflowY="scroll">
                   {clients.map(client => (
                     <Box key={client.name}>

@@ -53,7 +53,7 @@
 	for(var/obj/item/grab/G in src)
 		G.process(2)
 
-	if(handle_regular_status_updates()) // Status & health update, are we dead or alive etc.
+	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
 		handle_disabilities() // eye, ear, brain damages
 		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
 
@@ -92,7 +92,7 @@
 			stop_pulling()
 
 //This updates the health and status of the mob (conscious, unconscious, dead)
-/mob/living/proc/handle_regular_status_updates()
+/mob/living/proc/handle_regular_UI_updates()
 	updatehealth()
 	if(stat != DEAD)
 		if(paralysis)

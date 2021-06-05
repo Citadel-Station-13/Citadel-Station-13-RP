@@ -77,7 +77,7 @@
 
 	return //TODO: DEFERRED
 
-/mob/living/carbon/slime/handle_regular_status_updates()
+/mob/living/carbon/slime/handle_regular_UI_updates()
 
 	src.blinded = null
 

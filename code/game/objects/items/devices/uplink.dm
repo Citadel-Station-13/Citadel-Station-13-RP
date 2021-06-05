@@ -123,7 +123,7 @@
 
 /obj/item/uplink/hidden/CanUseTopic()
 	if(!active)
-		return STATUS_CLOSE
+		return UI_CLOSE
 	return ..()
 
 // The purchasing code.

@@ -323,7 +323,7 @@
 		return 0
 
 /obj/mecha/examine(mob/user)
-	..(user)
+	. = ..()
 	var/integrity = health/initial(health)*100
 	switch(integrity)
 		if(85 to 100)
@@ -422,16 +422,16 @@
 
 /obj/mecha/contents_nano_distance(var/src_object, var/mob/living/user)
 	. = user.shared_living_nano_distance(src_object) //allow them to interact with anything they can interact with normally.
-	if(. != STATUS_INTERACTIVE)
+	if(. != UI_INTERACTIVE)
 		//Allow interaction with the mecha or anything that is part of the mecha
 		if(src_object == src || (src_object in src))
-			return STATUS_INTERACTIVE
+			return UI_INTERACTIVE
 		if(src.Adjacent(src_object))
 			src.occupant_message("<span class='notice'>Interfacing with [src_object]...</span>")
 			src.log_message("Interfaced with [src_object].")
-			return STATUS_INTERACTIVE
+			return UI_INTERACTIVE
 		if(src_object in view(2, src))
-			return STATUS_UPDATE //if they're close enough, allow the occupant to see the screen through the viewport or whatever.
+			return UI_UPDATE //if they're close enough, allow the occupant to see the screen through the viewport or whatever.
 
 /obj/mecha/proc/melee_action(atom/target)
 	return
