@@ -334,8 +334,8 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/machinery/camera/communicator
 	network = list(NETWORK_COMMUNICATORS)
 
-/obj/machinery/camera/communicator/New()
-	..()
+/obj/machinery/camera/communicator/Initialize(mapload)
+	. = ..()
 	client_huds |= GLOB.global_hud.whitense
 	client_huds |= GLOB.global_hud.darkMask
 
@@ -348,7 +348,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	icon_state = "commwatch"
 	slot_flags = SLOT_GLOVES
 
-/obj/item/communicator/watch/update_icon_state
+/obj/item/communicator/watch/update_icon_state()
 	if(video_source)
 		icon_state = "commwatch-video"
 		return
