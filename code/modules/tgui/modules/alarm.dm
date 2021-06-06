@@ -15,11 +15,11 @@
 
 // Subtype for glasses_state
 /datum/tgui_module/alarm_monitor/all/glasses
-/datum/tgui_module/alarm_monitor/all/glasses/tgui_state(mob/user)
+/datum/tgui_module/alarm_monitor/all/glasses/ui_state(mob/user)
 	return GLOB.tgui_glasses_state
 
 /datum/tgui_module/alarm_monitor/all/robot
-/datum/tgui_module/alarm_monitor/all/robot/tgui_state(mob/user)
+/datum/tgui_module/alarm_monitor/all/robot/ui_state(mob/user)
 	return GLOB.tgui_self_state
 
 /datum/tgui_module/alarm_monitor/engineering
@@ -29,12 +29,12 @@
 
 // Subtype for glasses_state
 /datum/tgui_module/alarm_monitor/engineering/glasses
-/datum/tgui_module/alarm_monitor/engineering/glasses/tgui_state(mob/user)
+/datum/tgui_module/alarm_monitor/engineering/glasses/ui_state(mob/user)
 	return GLOB.tgui_glasses_state
 
 // Subtype for nif_state
 /datum/tgui_module/alarm_monitor/engineering/nif
-/datum/tgui_module/alarm_monitor/engineering/nif/tgui_state(mob/user)
+/datum/tgui_module/alarm_monitor/engineering/nif/ui_state(mob/user)
 	return GLOB.tgui_nif_state
 
 // Subtype for NTOS
@@ -48,7 +48,7 @@
 
 // Subtype for glasses_state
 /datum/tgui_module/alarm_monitor/security/glasses
-/datum/tgui_module/alarm_monitor/security/glasses/tgui_state(mob/user)
+/datum/tgui_module/alarm_monitor/security/glasses/ui_state(mob/user)
 	return GLOB.tgui_glasses_state
 
 // Subtype for NTOS

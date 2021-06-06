@@ -13,7 +13,7 @@ package-lock.json
 !/.yarn/lock.yml
 
 ## Build artifacts
-# /public/.tmp/**/*
+/public/.tmp/**/*
 # /public/**/*
 # !/public/*.html
 

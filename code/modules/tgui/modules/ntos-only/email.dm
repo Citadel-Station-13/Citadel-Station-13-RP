@@ -67,7 +67,7 @@
 	last_message_count = 0
 	read_message_count = 0
 
-/datum/tgui_module/email_client/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/email_client/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	// Password has been changed by other client connected to this email account

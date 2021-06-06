@@ -78,7 +78,7 @@
 	cut_data()
 	return ..()
 
-/datum/tgui_module/appearance_changer/ui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/appearance_changer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
@@ -277,7 +277,7 @@
 		// VOREStation Add End
 	return FALSE
 
-/datum/tgui_module/appearance_changer/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null, datum/tgui_state/custom_state)
+/datum/tgui_module/appearance_changer/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null, datum/ui_state/custom_state)
 	var/mob/living/carbon/human/target = owner
 	if(customize_usr)
 		if(!ishuman(user))
@@ -331,7 +331,7 @@
 
 	return data
 
-/datum/tgui_module/appearance_changer/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/appearance_changer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	generate_data(user)

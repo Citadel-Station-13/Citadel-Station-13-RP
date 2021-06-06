@@ -56,14 +56,14 @@
 /*
 We can't just insert in HTML into the nanoUI so we need the raw data to play with.
 Instead of creating this list over and over when someone leaves their PDA open to the page
-we'll only update it when it changes.  The PDA_Manifest global list is zeroed out upon any change
+we'll only update it when it changes.  The GLOB.PDA_Manifest global list is zeroed out upon any change
 using /datum/datacore/proc/manifest_inject( ), or manifest_insert( )
 */
 
-var/global/list/PDA_Manifest = list()
+GLOBAL_LIST_EMPTY(PDA_Manifest)
 
 /datum/datacore/proc/get_manifest_list()
-	if(PDA_Manifest.len)
+	if(GLOB.PDA_Manifest.len)
 		return
 	var/list/heads = list()
 	var/list/sec = list()
@@ -150,7 +150,7 @@ var/global/list/PDA_Manifest = list()
 		bot[++bot.len] = list("name" = robot.real_name, "rank" = "[robot.modtype] [robot.braintype]", "active" = "Active")
 
 
-	PDA_Manifest = list(
+	GLOB.PDA_Manifest = list(
 		list("cat" = "Command", "elems" = heads),
 		list("cat" = "Security", "elems" = sec),
 		list("cat" = "Engineering", "elems" = eng),
