@@ -487,8 +487,8 @@
 
 	// Delete them from datacore.
 
-	if(PDA_Manifest.len)
-		PDA_Manifest.Cut()
+	if(GLOB.PDA_Manifest.len)
+		GLOB.PDA_Manifest.Cut()
 	for(var/datum/data/record/R in data_core.medical)
 		if((R.fields["name"] == to_despawn.real_name))
 			qdel(R)

@@ -22,6 +22,10 @@ export const COLORS = {
     cargo: '#f39c12',
     centcom: '#00c100',
     other: '#c38312',
+    exploration: '#c38312',
+    silicon: '#c38312',
+    miscellaneous: '#c38312',
+    civillian: '#c38312',
   },
   // Damage type colors
   damageType: {

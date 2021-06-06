@@ -1061,7 +1061,7 @@ TabToTemplate[WTHRTAB] = <WeatherTab />;
 
 /* Crew Manifest */
 // Lol just steal it from the existing template
-// TabToTemplate[MANITAB] = <CrewManifestContent />;  DISABLED UNTIL SYNC
+TabToTemplate[MANITAB] = <CrewManifestContent />;
 
 /* Settings */
 const SettingsTab = (props, context) => {
