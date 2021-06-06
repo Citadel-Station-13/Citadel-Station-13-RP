@@ -39,7 +39,11 @@ export const CrewManifestContent = (props, context) => {
       {manifest.map(category => !!category.elems.length && (
         <Section
           title={(
-            <Box backgroundColor={COLORS.department[category.cat.toLowerCase()]} m={-1} pt={1} pb={1}>
+            <Box
+              backgroundColor={COLORS.department[category.cat.toLowerCase()]}
+              m={-1}
+              pt={1}
+              pb={1}>
               <Box ml={1} textAlign="center" fontSize={1.4}>
                 {category.cat}
               </Box>
