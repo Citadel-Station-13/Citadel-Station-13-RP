@@ -24,7 +24,7 @@
 		var/obj/item/nif/N = path
 		pref.nif_id = initial(N.id)
 		S["nif_path"]	<< null		//erase
-		S["nif_id"]		<< pref.nif_id	
+		S["nif_id"]		<< pref.nif_id
 	S["nif_durability"]	>> pref.nif_durability
 	S["nif_savedata"]	>> pref.nif_savedata
 
@@ -51,7 +51,7 @@
 	if((character.type == /mob/living/carbon/human) && pref.nif_id && pref.nif_durability)
 		var/nif_path = GLOB.nif_id_lookup[pref.nif_id]
 		new nif_path(character,pref.nif_durability,pref.nif_savedata)
-
+/*
 		//And now here's the trick. We wipe these so that if they die, they lose the NIF.
 		//Backup implants will start saving this again periodically, and so will cryo'ing out.
 		pref.nif_id = null
@@ -62,7 +62,7 @@
 			WARNING ("Couldn't load NIF save savefile? [pref.real_name]")
 		S.cd = "/character[pref.default_slot]"
 		save_character(S)
-
+*/
 /datum/category_item/player_setup_item/vore/nif/content(var/mob/user)
 	. += "<b>NIF:</b> [pref.nif_id ? "Present" : "None"]"
 

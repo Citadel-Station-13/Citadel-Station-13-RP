@@ -308,7 +308,7 @@ log transactions
 						T.time = stationtime2text()
 						authenticated_account.transaction_log.Add(T)
 
-						to_chat(usr, "<font color='blue'>[icon2html(thing = src, target = usr)] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
+						to_chat(usr, "<font color=#4F49AF>[icon2html(thing = src, target = usr)] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
 
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
@@ -461,7 +461,7 @@ log transactions
 			if(I)
 				authenticated_account = attempt_account_access(I.associated_account_number)
 				if(authenticated_account)
-					to_chat(human_user, "<font color='blue'>[icon2html(thing = src, target = human_user)] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
+					to_chat(human_user, "<font color=#4F49AF>[icon2html(thing = src, target = human_user)] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
 
 					//create a transaction log entry
 					var/datum/transaction/T = new()

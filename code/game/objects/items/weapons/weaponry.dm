@@ -8,8 +8,8 @@
 	var/net_type = /obj/effect/energy_net
 
 /obj/item/energy_net/dropped()
-	spawn(10)
-		if(src) qdel(src)
+	. = ..()
+	QDEL_IN(src, 10)
 
 /obj/item/energy_net/throw_impact(atom/hit_atom)
 	..()
@@ -81,7 +81,7 @@
 /obj/effect/energy_net/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	user.setClickCooldown(user.get_attack_speed())
 	visible_message("<span class='danger'>[user] begins to tear at \the [src]!</span>")
-	if(do_after(usr, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
+	if(do_after(user, escape_time, src, incapacitation_flags = INCAPACITATION_DEFAULT & ~(INCAPACITATION_RESTRAINED | INCAPACITATION_BUCKLED_FULLY)))
 		if(!has_buckled_mobs())
 			return
 		visible_message("<span class='danger'>[user] manages to tear \the [src] apart!</span>")

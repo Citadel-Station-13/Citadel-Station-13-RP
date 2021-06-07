@@ -91,7 +91,7 @@
 		dat+= "<HEAD><TITLE>Suit storage unit: Maintenance panel</TITLE></HEAD>"
 		dat+= "<Font color ='black'><B>Maintenance panel controls</B></font><HR>"
 		dat+= "<font color ='grey'>The panel is ridden with controls, button and meters, labeled in strange signs and symbols that <BR>you cannot understand. Probably the manufactoring world's language.<BR> Among other things, a few controls catch your eye.</font><BR><BR>"
-		dat+= text("<font color ='black'>A small dial with a small lambda symbol on it. It's pointing towards a gauge that reads []</font>.<BR> <font color='blue'><A href='?src=\ref[];toggleUV=1'> Turn towards []</A></font><BR>",(issuperUV ? "15nm" : "185nm"),src,(issuperUV ? "185nm" : "15nm"))
+		dat+= text("<font color ='black'>A small dial with a small lambda symbol on it. It's pointing towards a gauge that reads []</font>.<BR> <font color=#4F49AF><A href='?src=\ref[];toggleUV=1'> Turn towards []</A></font><BR>",(issuperUV ? "15nm" : "185nm"),src,(issuperUV ? "185nm" : "15nm"))
 		dat+= text("<font color ='black'>A thick old-style button, with 2 grimy LED lights next to it. The [] LED is on.</font><BR><font color ='blue'><A href='?src=\ref[];togglesafeties=1'>Press button</a></font>",(safetieson? "<font color='green'><B>GREEN</B></font>" : "<font color='red'><B>RED</B></font>"),src)
 		dat+= text("<HR><BR><A href='?src=\ref[];mach_close=suit_storage_unit'>Close panel</A>", user)
 		//user << browse(dat, "window=ssu_m_panel;size=400x500")
@@ -106,7 +106,7 @@
 	else
 		if(!isbroken)
 			dat+= "<HEAD><TITLE>Suit storage unit</TITLE></HEAD>"
-			dat+= "<font color='blue'><font size = 4><B>U-Stor-It Suit Storage Unit, model DS1900</B></FONT><BR>"
+			dat+= "<font color=#4F49AF><font size = 4><B>U-Stor-It Suit Storage Unit, model DS1900</B></FONT><BR>"
 			dat+= "<B>Welcome to the Unit control panel.</B></FONT><HR>"
 			dat+= text("<font color='black'>Helmet storage compartment: <B>[]</B></font><BR>",(HELMET ? HELMET.name : "</font><font color ='grey'>No helmet detected."))
 			if(HELMET && isopen)
@@ -398,9 +398,9 @@
 
 	if(OCCUPANT.client)
 		if(user != OCCUPANT)
-			to_chat(OCCUPANT, "<font color='blue'>The machine kicks you out!</font>")
+			to_chat(OCCUPANT, "<font color=#4F49AF>The machine kicks you out!</font>")
 		if(user.loc != src.loc)
-			to_chat(OCCUPANT, "<font color='blue'>You leave the not-so-cozy confines of the SSU.</font>")
+			to_chat(OCCUPANT, "<font color=#4F49AF>You leave the not-so-cozy confines of the SSU.</font>")
 
 		OCCUPANT.client.eye = OCCUPANT.client.mob
 		OCCUPANT.client.perspective = MOB_PERSPECTIVE
@@ -470,7 +470,7 @@
 	if(I.is_screwdriver())
 		panelopen = !panelopen
 		playsound(src, I.usesound, 100, 1)
-		to_chat(user, "<font color='blue'>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
+		to_chat(user, "<font color=#4F49AF>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
 		updateUsrDialog()
 		return
 	if(istype(I, /obj/item/grab))
@@ -510,7 +510,7 @@
 			return
 		var/obj/item/clothing/suit/space/S = I
 		if(SUIT)
-			to_chat(user, "<font color='blue'>The unit already contains a suit.</font>")
+			to_chat(user, "<font color=#4F49AF>The unit already contains a suit.</font>")
 			return
 		to_chat(user, "You load the [S.name] into the storage compartment.")
 		user.drop_item()
@@ -524,7 +524,7 @@
 			return
 		var/obj/item/clothing/head/helmet/H = I
 		if(HELMET)
-			to_chat(user, "<font color='blue'>The unit already contains a helmet.</font>")
+			to_chat(user, "<font color=#4F49AF>The unit already contains a helmet.</font>")
 			return
 		to_chat(user, "You load the [H.name] into the storage compartment.")
 		user.drop_item()
@@ -538,7 +538,7 @@
 			return
 		var/obj/item/clothing/mask/M = I
 		if(MASK)
-			to_chat(user, "<font color='blue'>The unit already contains a mask.</font>")
+			to_chat(user, "<font color=#4F49AF>The unit already contains a mask.</font>")
 			return
 		to_chat(user, "You load the [M.name] into the storage compartment.")
 		user.drop_item()

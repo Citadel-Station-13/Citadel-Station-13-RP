@@ -51,6 +51,9 @@ proc/get_deepspace(x,y)
 /mob/lost_in_space()
 	return isnull(client)
 
+/mob/observer/lost_in_space()		// heeyyyyyy buddy can we not :)
+	return FALSE
+
 /mob/living/carbon/human/lost_in_space()
 	return isnull(client) && !key && stat == DEAD
 

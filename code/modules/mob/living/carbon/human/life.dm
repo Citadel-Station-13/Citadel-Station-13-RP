@@ -982,7 +982,7 @@
 	return //TODO: DEFERRED
 
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
-/mob/living/carbon/human/handle_regular_status_updates()
+/mob/living/carbon/human/handle_regular_UI_updates()
 	if(!handle_some_updates())
 		return 0
 

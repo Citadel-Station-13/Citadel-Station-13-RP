@@ -3,12 +3,11 @@
 
 /proc/spacevine_infestation(var/potency_min=40, var/potency_max=80, var/maturation_min=5, var/maturation_max=15)
 	spawn() //to stop the secrets panel hanging
-		var/list/turf/simulated/floor/turfs = list() //list of all the empty floor turfs in the hallway areas
-		for(var/areapath in typesof(/area/hallway))
-			var/area/A = locate(areapath)
-			for(var/turf/simulated/floor/F in A.contents)
-				if(turf_clear(F))
-					turfs += F
+		var/list/turf/simulated/floor/turfs = get_area_turfs(typesof(/area/hallway)) //list of all the empty floor turfs in the hallway areas
+		for(var/i in turfs)
+			var/turf/T = i
+			if(!(T.z in GLOB.using_map.station_levels))
+				turfs -= T
 
 		if(turfs.len) //Pick a turf to spawn at if we can
 			var/turf/simulated/floor/T = pick(turfs)

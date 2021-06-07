@@ -518,10 +518,11 @@
 
 /obj/item/melee/energy/blade/attack_self(mob/user as mob)
 	user.drop_from_inventory(src)
-	spawn(1) if(src) qdel(src)
+	qdel(src)
 
 /obj/item/melee/energy/blade/dropped()
-	spawn(1) if(src) qdel(src)
+	. = ..()
+	qdel(src)
 
 /obj/item/melee/energy/blade/process(delta_time)
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
@@ -726,14 +727,14 @@
 		for(var/obj/effect/plantsegment/P in range(mover,0))
 			qdel(P)
 
-/obj/item/melee/energy/hfmachete/attackby(obj/item/weapon/W, mob/living/user)
+/obj/item/melee/energy/hfmachete/attackby(obj/item/W, mob/living/user)
 	..()
 	if(istype(W, /obj/item/melee/energy/hfmachete))
 		to_chat(user, "<span class='notice'>You combine the two [W] together, making a single scissor-bladed weapon! You feel fucking invincible!</span>")
 		qdel(W)
 		W = null
 		qdel(src)
-		var/B = new /obj/item/weapon/bloodlust(user.loc)
+		var/B = new /obj/item/bloodlust(user.loc)
 		user.put_in_hands(B)
 		// blust one day lads.
 */

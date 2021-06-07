@@ -1344,6 +1344,44 @@
 	icon_state = "kamishimo"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
+//Keek's Kimonos
+/obj/item/clothing/under/kimono/red
+	name = "red kimono"
+	desc = "The traditional dress of old Earth Japan, the kimono remains ubiquitous across the galaxy due to its comfort, simplicity, and versatility."
+	icon_state = "kimono_red"
+
+/obj/item/clothing/under/kimono/orange
+	name = "orange kimono"
+	icon_state = "kimono_orange"
+
+/obj/item/clothing/under/kimono/yellow
+	name = "yellow kimono"
+	icon_state = "kimono_yellow"
+
+/obj/item/clothing/under/kimono/green
+	name = "green kimono"
+	icon_state = "kimono_green"
+
+/obj/item/clothing/under/kimono/blue
+	name = "blue kimono"
+	icon_state = "kimono_blue"
+
+/obj/item/clothing/under/kimono/purple
+	name = "purple kimono"
+	icon_state = "kimono_purple"
+
+/obj/item/clothing/under/kimono/violet
+	name = "violet kimono"
+	icon_state = "kimono_violet"
+
+/obj/item/clothing/under/kimono/pink
+	name = "pink kimono"
+	icon_state = "kimono_pink"
+
+/obj/item/clothing/under/kimono/earth
+	name = "earth kimono"
+	icon_state = "kimono_earth"
+
 //Chinese Traditional
 /obj/item/clothing/under/qipao
 	name = "black qipao"

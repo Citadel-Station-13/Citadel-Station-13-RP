@@ -10714,12 +10714,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
-"up" = (
-/obj/machinery/newscaster{
-	pixel_y = 32
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/main_hall)
 "uq" = (
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/industrial/outline,
@@ -11152,6 +11146,14 @@
 	icon_state = "white"
 	},
 /area/centcom/living)
+"vl" = (
+/obj/effect/floor_decal/industrial/outline,
+/obj/structure/bed/chair,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/main_hall)
 "vo" = (
 /obj/effect/floor_decal/industrial/outline,
 /turf/unsimulated/floor{
@@ -23599,7 +23601,7 @@ hP
 hP
 hP
 ud
-up
+dk
 dk
 dk
 uS
@@ -24167,7 +24169,7 @@ hP
 hP
 hP
 cP
-ur
+vl
 dk
 dk
 uS

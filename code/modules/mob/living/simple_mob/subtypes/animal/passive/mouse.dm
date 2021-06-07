@@ -65,7 +65,7 @@
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] Squeek!</font>")
+			M.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] Squeek!</font>")
 			playsound(src, 'sound/effects/mouse_squeak.ogg', 35, 1)
 	..()
 

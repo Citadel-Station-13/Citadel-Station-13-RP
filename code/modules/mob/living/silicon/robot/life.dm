@@ -9,7 +9,7 @@
 
 	//Status updates, death etc.
 	clamp_values()
-	handle_regular_status_updates()
+	handle_regular_UI_updates()
 	handle_actions()
 	handle_instability()
 	// For some reason borg Life() doesn't call ..()
@@ -66,7 +66,7 @@
 			lights_on = 0
 			set_light(0)
 
-/mob/living/silicon/robot/handle_regular_status_updates()
+/mob/living/silicon/robot/handle_regular_UI_updates()
 
 	if(src.camera && !scrambledcodes)
 		if(src.stat == 2 || wires.IsIndexCut(BORG_WIRE_CAMERA))

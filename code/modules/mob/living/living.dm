@@ -18,6 +18,13 @@
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
 /mob/living/Destroy()
+	if(LAZYLEN(status_effects))
+		for(var/s in status_effects)
+			var/datum/status_effect/S = s
+			if(S.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
+				qdel(S)
+			else
+				S.be_replaced()
 	dsoverlay.loc = null //I'll take my coat with me
 	dsoverlay = null
 	if(nest) //Ew.
@@ -87,9 +94,9 @@ default behaviour is:
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
 		src.death()
-		to_chat(src, "<font color='blue'>You have given up life and succumbed to death.</font>")
+		to_chat(src, "<font color=#4F49AF>You have given up life and succumbed to death.</font>")
 	else
-		to_chat(src, "<font color='blue'>You are not injured enough to succumb to death!</font>")
+		to_chat(src, "<font color=#4F49AF>You are not injured enough to succumb to death!</font>")
 
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
@@ -1196,11 +1203,3 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
-
-//Adds the anti-magic check back in.
-/mob/living/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
-//	. = ..()
-//	if(.)
-//		return
-	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
-		return src

@@ -54,6 +54,7 @@
 	description_info = "This gun will stun a slime or other lesser slimy lifeform for about two seconds, if hit with the projectile it fires."
 	description_fluff = "An easy to use weapon designed by NanoTrasen, for NanoTrasen.  This weapon is designed to subdue lesser \
 	slime-based xeno lifeforms at a distance.  It is ineffective at stunning non-slimy lifeforms such as humanoids."
+	firemodes = list()
 
 /obj/item/gun/energy/taser/xeno/robot // Borg version
 	self_recharge = 1
@@ -62,7 +63,7 @@
 
 /obj/item/gun/energy/taser/xeno/sec //NT's corner-cutting option for their on-station security.
 	desc = "An NT Mk30 NL retrofitted to fire beams for subduing non-humanoid slimy xeno life forms."
-	icon_state = "taserblue"
+	icon_state = "taserold"
 	item_state = "taser"
 	projectile_type = /obj/item/projectile/beam/stun/xeno/weak
 	charge_cost = 480

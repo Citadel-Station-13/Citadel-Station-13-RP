@@ -65,7 +65,7 @@
 	economic_modifier = 5
 	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
 	minimal_access = list(access_medical, access_medical_equip, access_chemistry)
-	alt_titles = list("Pharmacist", "Apothecary")
+	alt_titles = list("Pharmacist")
 
 	minimal_player_age = 3
 

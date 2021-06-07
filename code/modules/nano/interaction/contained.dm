@@ -5,7 +5,7 @@
 
 /datum/topic_state/contained_state/can_use_topic(var/atom/src_object, var/mob/user)
 	if(!src_object.contains(user))
-		return STATUS_CLOSE
+		return UI_CLOSE
 
 	return user.shared_nano_interaction()
 

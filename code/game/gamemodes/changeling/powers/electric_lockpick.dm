@@ -38,10 +38,9 @@
 		to_chat(loc, "<span class='notice'>We shape our finger to fit inside electronics, and are ready to force them open.</span>")
 
 /obj/item/finger_lockpick/dropped(mob/user)
+	. = ..()
 	to_chat(user, "<span class='notice'>We discreetly shape our finger back to a less suspicious form.</span>")
-	spawn(1)
-		if(src)
-			qdel(src)
+	qdel(src)
 
 /obj/item/finger_lockpick/afterattack(var/atom/target, var/mob/living/user, proximity)
 	if(!target)

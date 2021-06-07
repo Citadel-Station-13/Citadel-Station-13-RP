@@ -74,11 +74,8 @@
 
 
 /obj/item/assembly/prox_sensor/dropped()
-	spawn(0)
-		sense()
-		return
-	return
-
+	. = ..()
+	INVOKE_ASYNC(src, .proc/sense)
 
 /obj/item/assembly/prox_sensor/proc/toggle_scan()
 	if(!secured)	return 0

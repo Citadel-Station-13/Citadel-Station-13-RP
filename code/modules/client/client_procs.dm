@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				topiclimiter[ADMINSWARNED_AT] = minute
 				msg += " Administrators have been informed."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
-				message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
+				message_admins("[ADMIN_LOOKUPFLW(usr)] [ADMIN_KICK(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 			to_chat(src, "<span class='danger'>[msg]</span>")
 			return
 
@@ -77,13 +77,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
-	// Tgui Topic middleware.
+
+	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
+		if(CONFIG_GET(flag/emergency_tgui_logging))
+			log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 		return
 
-	//Logs all hrefs, except chat pings
-	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
-		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
+	//Logs all hrefs
+	log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
@@ -260,10 +262,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.player_details[ckey] = player_details
 	*/
 
-	if(log_client_to_db() == "BUNKER_DROPPED")
-		return FALSE
-
 	. = ..()	//calls mob.Login()
+
+	if(log_client_to_db() == "BUNKER_DROPPED")
+		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
+		return FALSE
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
@@ -280,7 +283,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			if(connecting_admin)
 				to_chat(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
 			else
-				qdel(src)
+				disconnect_with_message("Your version of BYOND ([byond_version].[byond_build]) is blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]]. Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")
 				return
 
 	if(SSinput.subsystem_initialized)
@@ -311,7 +314,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (connecting_admin)
 			to_chat(src, "Because you are an admin, you are being allowed to walk past this limitation, But it is still STRONGLY suggested you upgrade")
 		else
-			qdel(src)
+			disconnect_with_message("Your BYOND version ([byond_version].[byond_build]) is too old. Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 			return 0
 	else if (byond_version < cwv)	//We have words for this client.
 		if(CONFIG_GET(flag/client_warn_popup))
@@ -513,6 +516,27 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(player_age == -1)
 		player_age = 0		//math requires this to not be -1.
 
+	if(config_legacy.ip_reputation)
+		if(config_legacy.ipr_allow_existing && player_age >= config_legacy.ipr_minimum_age)
+			log_admin("Skipping IP reputation check on [key] with [address] because of player age")
+		else if(update_ip_reputation()) //It is set now
+			if(ip_reputation >= config_legacy.ipr_bad_score) //It's bad
+				//Log it
+				if(config_legacy.paranoia_logging) //We don't block, but we want paranoia log messages
+					log_and_message_admins("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")
+				else //We just log it
+					log_admin("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")
+
+				//Take action if required
+				if(config_legacy.ipr_block_bad_ips && config_legacy.ipr_allow_existing) //We allow players of an age, but you don't meet it
+					disconnect_with_message("Sorry, we only allow VPN/Proxy/Tor usage for players who have spent at least [config_legacy.ipr_minimum_age] days on the server. If you are unable to use the internet without your VPN/Proxy/Tor, please contact an admin out-of-game to let them know so we can accommodate this.")
+					return 0
+				else if(config_legacy.ipr_block_bad_ips) //We don't allow players of any particular age
+					disconnect_with_message("Sorry, we do not accept connections from users via VPN/Proxy/Tor connections. If you believe this is in error, contact an admin out-of-game.")
+					return 0
+		else
+			log_admin("Couldn't perform IP check on [key] with [address]")
+
 	// VOREStation Edit Start - Department Hours
 	if(config_legacy.time_off)
 		var/DBQuery/query_hours = dbcon.NewQuery("SELECT department, hours FROM vr_player_hours WHERE ckey = '[sql_ckey]'")
@@ -710,3 +734,69 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/proc/AnnouncePR(announcement)
 	//if(prefs && prefs.chat_toggles & CHAT_PULLR)
 	to_chat(src, announcement)
+
+//This is for getipintel.net.
+//You're welcome to replace this proc with your own that does your own cool stuff.
+//Just set the client's ip_reputation var and make sure it makes sense with your config settings (higher numbers are worse results)
+/client/proc/update_ip_reputation()
+	var/request = "http://check.getipintel.net/check.php?ip=[address]&contact=[config_legacy.ipr_email]"
+	var/http[] = world.Export(request)
+
+	/* Debug
+	to_world_log("Requested this: [request]")
+	for(var/entry in http)
+		to_world_log("[entry] : [http[entry]]")
+	*/
+
+	if(!http || !islist(http)) //If we couldn't check, the service might be down, fail-safe.
+		log_admin("Couldn't connect to getipintel.net to check [address] for [key]")
+		return FALSE
+
+	//429 is rate limit exceeded
+	if(text2num(http["STATUS"]) == 429)
+		log_and_message_admins("getipintel.net reports HTTP status 429. IP reputation checking is now disabled. If you see this, let a developer know.")
+		config_legacy.ip_reputation = FALSE
+		return FALSE
+
+	var/content = file2text(http["CONTENT"]) //world.Export actually returns a file object in CONTENT
+	var/score = text2num(content)
+	if(isnull(score))
+		return FALSE
+
+	//Error handling
+	if(score < 0)
+		var/fatal = TRUE
+		var/ipr_error = "getipintel.net IP reputation check error while checking [address] for [key]: "
+		switch(score)
+			if(-1)
+				ipr_error += "No input provided"
+			if(-2)
+				fatal = FALSE
+				ipr_error += "Invalid IP provided"
+			if(-3)
+				fatal = FALSE
+				ipr_error += "Unroutable/private IP (spoofing?)"
+			if(-4)
+				fatal = FALSE
+				ipr_error += "Unable to reach database"
+			if(-5)
+				ipr_error += "Our IP is banned or otherwise forbidden"
+			if(-6)
+				ipr_error += "Missing contact info"
+
+		log_and_message_admins(ipr_error)
+		if(fatal)
+			config_legacy.ip_reputation = FALSE
+			log_and_message_admins("With this error, IP reputation checking is disabled for this shift. Let a developer know.")
+		return FALSE
+
+	//Went fine
+	else
+		ip_reputation = score
+		return TRUE
+
+/client/proc/disconnect_with_message(var/message = "You have been intentionally disconnected by the server.<br>This may be for security or administrative reasons.")
+	message = "<head><title>You Have Been Disconnected</title></head><body><hr><center><b>[message]</b></center><hr><br>If you feel this is in error, you can contact an administrator out-of-game (for example, on Discord).</body>"
+	window_flash(src)
+	src << browse(message,"window=dropmessage;size=480x360;can_close=1")
+	qdel(src)
