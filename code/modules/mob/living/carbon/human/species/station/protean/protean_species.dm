@@ -10,7 +10,7 @@
 	death_message =    "rapidly loses cohesion, dissolving into a cloud of gray dust..."
 	knockout_message = "collapses inwards, forming a disordered puddle of gray goo."
 	remains_type = /obj/effect/decal/cleanable/ash
-	
+
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite) // Regular human attack verbs are enough.
 
 	blood_color = "#505050" //This is the same as the 80,80,80 below, but in hex
@@ -24,7 +24,7 @@
 	num_alternate_languages = 3  // Let's not make them know every language, past me.
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
-	
+
 	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
 
 	breath_type = null
@@ -34,7 +34,7 @@
 	blood_volume =	0
 	min_age =		18
 	max_age =		200
-	
+
 	total_health =	125  // Makes them Unathi level tough. Nothing too much, also mildly justified as proteans can't ever go into crit, as they blob instead
 
 	brute_mod =		0.5 // 50% brute reduction
@@ -42,7 +42,7 @@
 	oxy_mod =		0
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
 	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
-	
+
 	hunger_factor = 0.04 // Better power storage, perhaps? This is not additive. Whoops
  /*
 These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
@@ -64,7 +64,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	heat_level_1 = 320 //Default 360
 	heat_level_2 = 370 //Default 400
 	heat_level_3 = 600 //Default 1000
-	
+
 	As the heat/cold levels are listed below, these aren't really necessary
 */
 	//Space doesn't bother them
@@ -202,11 +202,14 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/species/protean/get_flesh_colour(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
 
-/datum/species/protean/handle_death(var/mob/living/carbon/human/H)
-	to_chat(H,"<span class='warning'>You died as a Protean. Please sit out of the round for at least 30 minutes before respawning, to represent the time it would take to ship a new-you to the station.</span>")
-	spawn(1) //This spawn is here so that if the protean_blob calls qdel, it doesn't try to gib the humanform.
-		if(H)
-			H.gib()
+/datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
+	var/deathmsg = "<span class='warning'>You died as a Protean. Please sit out of the round for at least 30 minutes before respawning, to represent the time it would take to ship a new-you to the station.</span>"
+	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
+		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
+		to_chat(B, deathmsg)
+	else if(!gibbed)
+		to_chat(H)
+		H.gib()
 
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
 	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.85 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).

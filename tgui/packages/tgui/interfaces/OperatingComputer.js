@@ -1,166 +1,265 @@
+import { round } from 'common/math';
 import { Fragment } from 'inferno';
-import { useBackend, useSharedState } from '../backend';
-import { AnimatedNumber, Button, LabeledList, NoticeBox, ProgressBar, Section, Tabs } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from "../backend";
+import { Window } from "../layouts";
+import { Box, Button, Flex, Icon, Knob, LabeledList, Section, Tabs, ProgressBar } from "../components";
 
-const damageTypes = [
-  {
-    label: 'Brute',
-    type: 'bruteLoss',
-  },
-  {
-    label: 'Burn',
-    type: 'fireLoss',
-  },
-  {
-    label: 'Toxin',
-    type: 'toxLoss',
-  },
-  {
-    label: 'Respiratory',
-    type: 'oxyLoss',
-  },
+const stats = [
+  ['good', 'Conscious'],
+  ['average', 'Unconscious'],
+  ['bad', 'DEAD'],
+];
+
+const damages = [
+  ['Resp.', 'oxyLoss'],
+  ['Toxin', 'toxLoss'],
+  ['Brute', 'bruteLoss'],
+  ['Burn', 'fireLoss'],
+];
+
+const damageRange = {
+  average: [0.25, 0.5],
+  bad: [0.5, Infinity],
+};
+
+const tempColors = [
+  'bad',
+  'average',
+  'average',
+  'good',
+  'average',
+  'average',
+  'bad',
 ];
 
 export const OperatingComputer = (props, context) => {
-  const [tab, setTab] = useSharedState(context, 'tab', 1);
+  const { act, data } = useBackend(context);
+  const {
+    hasOccupant,
+    choice,
+  } = data;
+  let body;
+  if (!choice) {
+    body = hasOccupant
+      ? <OperatingComputerPatient />
+      : <OperatingComputerUnoccupied />;
+  } else {
+    body = <OperatingComputerOptions />;
+  }
   return (
     <Window
-      width={350}
-      height={470}
+      width={650}
+      height={455}
       resizable>
-      <Window.Content scrollable>
+      <Window.Content>
         <Tabs>
           <Tabs.Tab
-            selected={tab === 1}
-            onClick={() => setTab(1)}>
-            Patient State
+            selected={!choice}
+            icon="user"
+            onClick={() => act('choiceOff')}>
+            Patient
           </Tabs.Tab>
           <Tabs.Tab
-            selected={tab === 2}
-            onClick={() => setTab(2)}>
-            Surgery Procedures
+            selected={!!choice}
+            icon="cog"
+            onClick={() => act('choiceOn')}>
+            Options
           </Tabs.Tab>
         </Tabs>
-        {tab === 1 && (
-          <PatientStateView />
-        )}
-        {tab === 2 && (
-          <SurgeryProceduresView />
-        )}
+        <Section flexGrow="1">
+          {body}
+        </Section>
       </Window.Content>
     </Window>
   );
 };
 
-const PatientStateView = (props, context) => {
-  const { act, data } = useBackend(context);
+const OperatingComputerPatient = (props, context) => {
+  const { data } = useBackend(context);
   const {
-    table,
-    procedures = [],
-    patient = {},
+    occupant,
   } = data;
-  if (!table) {
-    return (
-      <NoticeBox>
-        No Table Detected
-      </NoticeBox>
-    );
-  }
   return (
     <Fragment>
-      <Section title="Patient State">
-        {patient && (
-          <LabeledList>
-            <LabeledList.Item
-              label="State"
-              color={patient.statstate}>
-              {patient.stat}
-            </LabeledList.Item>
-            <LabeledList.Item label="Blood Type">
-              {patient.blood_type}
-            </LabeledList.Item>
-            <LabeledList.Item label="Health">
+      <Section title="Patient" level="2">
+        <LabeledList>
+          <LabeledList.Item label="Name">
+            {occupant.name}
+          </LabeledList.Item>
+          <LabeledList.Item label="Status" color={stats[occupant.stat][0]}>
+            {stats[occupant.stat][1]}
+          </LabeledList.Item>
+          <LabeledList.Item label="Health">
+            <ProgressBar
+              min="0"
+              max={occupant.maxHealth}
+              value={occupant.health / occupant.maxHealth}
+              ranges={{
+                good: [0.5, Infinity],
+                average: [0, 0.5],
+                bad: [-Infinity, 0],
+              }}
+            />
+          </LabeledList.Item>
+          {damages.map((d, i) => (
+            <LabeledList.Item key={i} label={d[0] + " Damage"}>
               <ProgressBar
-                value={patient.health}
-                minValue={patient.minHealth}
-                maxValue={patient.maxHealth}
-                color={patient.health >= 0 ? 'good' : 'average'}>
-                <AnimatedNumber value={patient.health} />
+                key={i}
+                min="0"
+                max="100"
+                value={occupant[d[1]] / 100}
+                ranges={damageRange}>
+                {round(occupant[d[1]])}
               </ProgressBar>
             </LabeledList.Item>
-            {damageTypes.map(type => (
-              <LabeledList.Item key={type.type} label={(patient.is_robotic_organism && type.label === 'Toxin') ? 'Corruption' : type.label}>
+          ))}
+          <LabeledList.Item label="Temperature">
+            <ProgressBar
+              min="0"
+              max={occupant.maxTemp}
+              value={occupant.bodyTemperature / occupant.maxTemp}
+              color={tempColors[occupant.temperatureSuitability + 3]}>
+              {round(occupant.btCelsius)}&deg;C, {round(occupant.btFaren)}&deg;F
+            </ProgressBar>
+          </LabeledList.Item>
+          {!!occupant.hasBlood && (
+            <Fragment>
+              <LabeledList.Item label="Blood Level">
                 <ProgressBar
-                  value={patient[type.type] / patient.maxHealth}
-                  color="bad">
-                  <AnimatedNumber value={patient[type.type]} />
+                  min="0"
+                  max={occupant.bloodMax}
+                  value={occupant.bloodLevel / occupant.bloodMax}
+                  ranges={{
+                    bad: [-Infinity, 0.6],
+                    average: [0.6, 0.9],
+                    good: [0.6, Infinity],
+                  }}>
+                  {occupant.bloodPercent}%, {occupant.bloodLevel}cl
                 </ProgressBar>
+              </LabeledList.Item>
+              <LabeledList.Item label="Pulse">
+                {occupant.pulse} BPM
+              </LabeledList.Item>
+            </Fragment>
+          )}
+        </LabeledList>
+      </Section>
+      <Section title="Current Procedure" level="2">
+        {(occupant.surgery && occupant.surgery.length) ? (
+          <LabeledList>
+            {occupant.surgery.map(limb => (
+              <LabeledList.Item key={limb.name} label={limb.name}>
+                <LabeledList>
+                  <LabeledList.Item label="Current State">
+                    {limb.currentStage}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Possible Next Steps">
+                    {limb.nextSteps.map(step => (
+                      <div key={step}>
+                        {step}
+                      </div>
+                    ))}
+                  </LabeledList.Item>
+                </LabeledList>
               </LabeledList.Item>
             ))}
           </LabeledList>
-        ) || (
-          'No Patient Detected'
+        ) : (
+          <Box color="label">
+            No procedure ongoing.
+          </Box>
         )}
       </Section>
-      {procedures.length === 0 && (
-        <Section>
-          No Active Procedures
-        </Section>
-      )}
-      {procedures.map(procedure => (
-        <Section
-          key={procedure.name}
-          title={procedure.name}>
-          <LabeledList>
-            <LabeledList.Item label="Next Step">
-              {procedure.next_step}
-              {procedure.chems_needed && (
-                <Fragment>
-                  <b>Required Chemicals:</b>
-                  <br />
-                  {procedure.chems_needed}
-                </Fragment>
-              )}
-            </LabeledList.Item>
-            {!!data.alternative_step && (
-              <LabeledList.Item label="Alternative Step">
-                {procedure.alternative_step}
-                {procedure.alt_chems_needed && (
-                  <Fragment>
-                    <b>Required Chemicals:</b>
-                    <br />
-                    {procedure.alt_chems_needed}
-                  </Fragment>
-                )}
-              </LabeledList.Item>
-            )}
-          </LabeledList>
-        </Section>
-      ))}
     </Fragment>
   );
 };
 
-const SurgeryProceduresView = (props, context) => {
+const OperatingComputerUnoccupied = () => {
+  return (
+    <Flex textAlign="center" height="100%">
+      <Flex.Item grow="1" align="center" color="label">
+        <Icon
+          name="user-slash"
+          mb="0.5rem"
+          size="5"
+        /><br />
+        No patient detected.
+      </Flex.Item>
+    </Flex>
+  );
+};
+
+const OperatingComputerOptions = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    surgeries = [],
+    verbose,
+    health,
+    healthAlarm,
+    oxy,
+    oxyAlarm,
+    crit,
   } = data;
   return (
-    <Section title="Advanced Surgery Procedures">
-      <Button
-        icon="download"
-        content="Sync Research Database"
-        onClick={() => act('sync')} />
-      {surgeries.map(surgery => (
-        <Section
-          title={surgery.name}
-          key={surgery.name}
-          level={2}>
-          {surgery.desc}
-        </Section>
-      ))}
-    </Section>
+    <LabeledList>
+      <LabeledList.Item label="Loudspeaker">
+        <Button
+          selected={verbose}
+          icon={verbose ? "toggle-on" : "toggle-off"}
+          content={verbose ? "On" : "Off"}
+          onClick={() => act(verbose ? 'verboseOff' : 'verboseOn')}
+        />
+      </LabeledList.Item>
+      <LabeledList.Item label="Health Announcer">
+        <Button
+          selected={health}
+          icon={health ? "toggle-on" : "toggle-off"}
+          content={health ? "On" : "Off"}
+          onClick={() => act(health ? 'healthOff' : 'healthOn')}
+        />
+      </LabeledList.Item>
+      <LabeledList.Item label="Health Announcer Threshold">
+        <Knob
+          bipolar
+          minValue="-100"
+          maxValue="100"
+          value={healthAlarm}
+          stepPixelSize="5"
+          ml="0"
+          format={val => val + "%"}
+          onChange={(e, val) => act('health_adj', {
+            new: val,
+          })}
+        />
+      </LabeledList.Item>
+      <LabeledList.Item label="Oxygen Alarm">
+        <Button
+          selected={oxy}
+          icon={oxy ? "toggle-on" : "toggle-off"}
+          content={oxy ? "On" : "Off"}
+          onClick={() => act(oxy ? 'oxyOff' : 'oxyOn')}
+        />
+      </LabeledList.Item>
+      <LabeledList.Item label="Oxygen Alarm Threshold">
+        <Knob
+          bipolar
+          minValue="-100"
+          maxValue="100"
+          value={oxyAlarm}
+          stepPixelSize="5"
+          ml="0"
+          onChange={(e, val) => act('oxy_adj', {
+            new: val,
+          })}
+        />
+      </LabeledList.Item>
+      <LabeledList.Item label="Critical Alert">
+        <Button
+          selected={crit}
+          icon={crit ? "toggle-on" : "toggle-off"}
+          content={crit ? "On" : "Off"}
+          onClick={() => act(crit ? 'critOff' : 'critOn')}
+        />
+      </LabeledList.Item>
+    </LabeledList>
   );
 };

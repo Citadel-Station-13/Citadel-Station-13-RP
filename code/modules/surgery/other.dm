@@ -41,8 +41,8 @@
 
 /datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] has patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>", \
-		"<font color='blue'>You have patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] has patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>", \
+		"<font color=#4F49AF>You have patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>")
 
 	for(var/datum/wound/W in affected.wounds) if(W.internal)
 		affected.wounds -= W
@@ -92,8 +92,8 @@
 
 /datum/surgery_step/fix_dead_tissue/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] has cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</font>", \
-		"<font color='blue'>You have cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] has cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</font>", \
+		"<font color=#4F49AF>You have cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</font>")
 	affected.open = 3
 
 /datum/surgery_step/fix_dead_tissue/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -158,8 +158,8 @@
 		affected.status &= ~ORGAN_DEAD
 		affected.owner.update_icons_body()
 
-		user.visible_message("<font color='blue'>[user] applies [trans] units of the solution to affected tissue in [target]'s [affected.name].</font>", \
-			"<font color='blue'>You apply [trans] units of the solution to affected tissue in [target]'s [affected.name] with \the [tool].</font>")
+		user.visible_message("<font color=#4F49AF>[user] applies [trans] units of the solution to affected tissue in [target]'s [affected.name].</font>", \
+			"<font color=#4F49AF>You apply [trans] units of the solution to affected tissue in [target]'s [affected.name] with \the [tool].</font>")
 
 /datum/surgery_step/treat_necrosis/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)

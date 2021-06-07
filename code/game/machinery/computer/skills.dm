@@ -293,8 +293,8 @@ What a mess.*/
 				temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
 
 			if ("Purge All Records")
-				if(PDA_Manifest.len)
-					PDA_Manifest.Cut()
+				if(GLOB.PDA_Manifest.len)
+					GLOB.PDA_Manifest.Cut()
 				for(var/datum/data/record/R in data_core.security)
 					qdel(R)
 				temp = "All Employment records deleted."
@@ -306,8 +306,8 @@ What a mess.*/
 					temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
 //RECORD CREATE
 			if ("New Record (General)")
-				if(PDA_Manifest.len)
-					PDA_Manifest.Cut()
+				if(GLOB.PDA_Manifest.len)
+					GLOB.PDA_Manifest.Cut()
 				active1 = data_core.CreateGeneralRecord()
 
 //FIELD FUNCTIONS
@@ -368,16 +368,16 @@ What a mess.*/
 				switch(href_list["choice"])
 					if ("Change Rank")
 						if (active1)
-							if(PDA_Manifest.len)
-								PDA_Manifest.Cut()
+							if(GLOB.PDA_Manifest.len)
+								GLOB.PDA_Manifest.Cut()
 							active1.fields["rank"] = href_list["rank"]
 							if(href_list["rank"] in joblist)
 								active1.fields["real_rank"] = href_list["real_rank"]
 
 					if ("Delete Record (ALL) Execute")
 						if (active1)
-							if(PDA_Manifest.len)
-								PDA_Manifest.Cut()
+							if(GLOB.PDA_Manifest.len)
+								GLOB.PDA_Manifest.Cut()
 							for(var/datum/data/record/R in data_core.medical)
 								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									qdel(R)
@@ -408,8 +408,8 @@ What a mess.*/
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Parolled", "Released")
 				if(5)
 					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
-					if(PDA_Manifest.len)
-						PDA_Manifest.Cut()
+					if(GLOB.PDA_Manifest.len)
+						GLOB.PDA_Manifest.Cut()
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
 			continue

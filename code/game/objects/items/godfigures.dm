@@ -47,6 +47,7 @@
 	options["Sun Gem"] = "sun"
 	options["Moon Gem"] = "moon"
 	options["Tajaran Figure"] = "catrobe"
+	options["Shinto Ema"] = "ema"
 
 	var/choice = input(M,"Choose your icon!","Customize Figure") in options
 	if(src && choice && !M.stat && in_range(M,src))
@@ -109,6 +110,8 @@
 			desc = "A holy figure of a small planetoid."
 		else if(options[choice] == "catrobe")
 			desc = "A painted holy figure of a plain looking Tajaran in a robe."
+		else if(options[choice] == "ema")
+			desc = "A plain wooden board with a prayer painted on it."
 
 		to_chat(M, "The religious icon is now a [choice]. All hail!")
 		return 1

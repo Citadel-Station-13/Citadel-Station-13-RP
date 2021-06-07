@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, NumberInput, Section } from '../components';
+import { Button, LabeledList, Slider, Section } from '../components';
 import { Window } from '../layouts';
 import { PortableBasicInfo } from './common/PortableAtmos';
 
@@ -7,7 +7,6 @@ export const PortablePump = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     direction,
-    holding,
     target_pressure,
     default_pressure,
     min_pressure,
@@ -15,9 +14,10 @@ export const PortablePump = (props, context) => {
   } = data;
   return (
     <Window
-      width={300}
-      height={315}>
-      <Window.Content>
+      width={330}
+      height={375}
+      resizable>
+      <Window.Content scrollable>
         <PortableBasicInfo />
         <Section
           title="Pump"
@@ -30,13 +30,14 @@ export const PortablePump = (props, context) => {
           )}>
           <LabeledList>
             <LabeledList.Item label="Output">
-              <NumberInput
-                value={target_pressure}
-                unit="kPa"
-                width="75px"
+              <Slider
+                mt="0.4em"
+                animated
                 minValue={min_pressure}
                 maxValue={max_pressure}
-                step={10}
+                value={target_pressure}
+                unit="kPa"
+                stepPixelSize={0.3}
                 onChange={(e, value) => act('pressure', {
                   pressure: value,
                 })} />

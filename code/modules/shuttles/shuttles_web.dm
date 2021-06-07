@@ -344,7 +344,7 @@
 		nano_ui_interact(usr)
 
 	if (WS.moving_status != SHUTTLE_IDLE)
-		to_chat(usr, "<font color='blue'>[WS.visible_name] is busy moving.</font>")
+		to_chat(usr, "<font color=#4F49AF>[WS.visible_name] is busy moving.</font>")
 		return
 
 	if(href_list["rename_command"])

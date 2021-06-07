@@ -25,7 +25,7 @@
 
 /obj/machinery/embedded_controller/radio/airlock/CanUseTopic(var/mob/user)
 	if(!allowed(user))
-		return min(STATUS_UPDATE, ..())
+		return min(UI_UPDATE, ..())
 	else
 		return ..()
 

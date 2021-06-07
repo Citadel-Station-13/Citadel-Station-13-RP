@@ -171,6 +171,7 @@ var/list/outfits_decls_by_type_
 		pda.name = "PDA-[H.real_name] ([assignment])"
 		if(H.client.prefs.ringtone) // if null we use the job default
 			pda.ringtone = H.client.prefs.ringtone
+		sortTim(GLOB.PDAs, /proc/cmp_name_asc)
 		return pda
 
 /decl/hierarchy/outfit/dd_SortValue()

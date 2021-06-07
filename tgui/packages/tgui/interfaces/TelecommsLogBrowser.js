@@ -1,199 +1,241 @@
-/**
- * @file
- * @copyright 2020 LetterN (https://github.com/LetterN)
- * @license MIT
- */
+import { round } from 'common/math';
 import { Fragment } from 'inferno';
-import { Window } from '../layouts';
-import { useBackend, useSharedState } from '../backend';
-import { Button, LabeledList, NoticeBox, Section, Tabs, Input } from '../components';
+import { useBackend } from "../backend";
+import { Box, Button, Flex, NoticeBox, LabeledList, Section } from "../components";
+import { Window } from "../layouts";
 
 export const TelecommsLogBrowser = (props, context) => {
   const { act, data } = useBackend(context);
+
   const {
-    notice,
-    network = "NULL",
+    universal_translate,
+    network,
+    temp,
     servers,
-    selected = null,
-    selected_logs,
+    selectedServer,
   } = data;
-  const [
-    tab,
-    setTab,
-  ] = useSharedState(context, 'tab', 'servers');
-  const operational = (selected && selected.status);
+  
   return (
     <Window
-      theme="ntos"
       width={575}
-      height={400}>
+      height={450}
+      resizable>
       <Window.Content scrollable>
-        <Fragment>
-          {!!notice && (
-            <NoticeBox>
-              {notice}
-            </NoticeBox>
-          )}
-          <Section title="Network Control">
-            <LabeledList>
-              <LabeledList.Item label="Network">
-                <Input
-                  value={network}
-                  width="150px"
-                  maxLength={15}
-                  onChange={(e, value) => act('network', {
-                    'value': value,
-                  })} />
-              </LabeledList.Item>
-              <LabeledList.Item
-                label="Memory"
-                buttons={(
-                  <Fragment>
-                    <Button
-                      icon="minus-circle"
-                      disabled={!servers.length || !!selected}
-                      onClick={() => act('release')}>
-                      Flush Buffer
-                    </Button>
-                    <Button
-                      icon="sync"
-                      disabled={selected}
-                      onClick={() => act('probe')}>
-                      Probe Network
-                    </Button>
-                  </Fragment>
-                )}>
-                {servers ? (
-                  `${servers.length} currently probed and buffered`
-                ) : (
-                  'Buffer is empty!'
-                )}
-              </LabeledList.Item>
-              <LabeledList.Item
-                label="Selected Server"
-                buttons={(
+        {(temp && temp.length) ? (
+          <NoticeBox warning>
+            <Box display="inline-box" verticalAlign="middle">
+              {temp}
+            </Box>
+            <Button
+              icon="times-circle"
+              float="right"
+              onClick={() => act('cleartemp')} />
+            <Box clear="both" />
+          </NoticeBox>
+        ) : null}
+        <Section title="Network Control">
+          <LabeledList>
+            <LabeledList.Item
+              label="Current Network"
+              buttons={(
+                <Fragment>
                   <Button
-                    disabled={!selected}
-                    onClick={() => act('mainmenu')}>
-                    Disconnect
-                  </Button>
-                )}>
-                {selected ? (
-                  `${selected.name} (${selected.id})`
-                ) : (
-                  "None (None)"
-                )}
-              </LabeledList.Item>
-              <LabeledList.Item label="Recorded Traffic">
-                {selected ? (
-                  selected.traffic <= 1024 ? (
-                    `${selected.traffic} Gigabytes`
-                  ) : (
-                    `${Math.round(selected.traffic/1024)} Terrabytes`
-                  )
-                ) : (
-                  '0 Gigabytes'
-                )}
-              </LabeledList.Item>
-              <LabeledList.Item
-                label="Server Status"
-                color={operational ? 'good' : 'bad'}>
-                {operational ? (
-                  'Running'
-                ) : (
-                  'Server down!'
-                )}
-              </LabeledList.Item>
-            </LabeledList>
-          </Section>
-          <Tabs>
-            <Tabs.Tab
-              selected={tab === "servers"}
-              icon="server"
-              onClick={() => setTab("servers")}>
-              Servers
-            </Tabs.Tab>
-            <Tabs.Tab
-              disabled={!operational}
-              icon="file"
-              selected={tab === "messages"}
-              onClick={() => setTab("messages")}>
-              Messages
-            </Tabs.Tab>
-          </Tabs>
-          {(tab === "messages" && operational) ? (
-            <Section title="Logs">
-              {(operational && selected_logs) ? (
-                selected_logs.map(logs => (
-                  <Section
-                    level={4}
-                    key={logs.ref}>
-                    <LabeledList>
-                      <LabeledList.Item
-                        label="Filename"
-                        buttons={(
-                          <Button
-                            onClick={() => act('delete', {
-                              'value': logs.ref,
-                            })}>
-                            Delete
-                          </Button>
-                        )}>
-                        {logs.name}
-                      </LabeledList.Item>
-                      <LabeledList.Item label="Data type">
-                        {logs.input_type}
-                      </LabeledList.Item>
-                      {logs.source && (
-                        <LabeledList.Item label="Source">
-                          {`[${logs.source.name}]
-                          (Job: [${logs.source.job}])`}
-                        </LabeledList.Item>
-                      )}
-                      {logs.race && (
-                        <LabeledList.Item label="Class">
-                          {logs.race}
-                        </LabeledList.Item>
-                      )}
-                      <LabeledList.Item label="Contents">
-                        {logs.message}
-                      </LabeledList.Item>
-                    </LabeledList>
-                  </Section>
-                ))
-              ) : (
-                "No server selected!"
-              )}
-            </Section>
+                    icon="search"
+                    content="Refresh"
+                    onClick={() => act("scan")} />
+                  <Button
+                    color="bad"
+                    icon="exclamation-triangle"
+                    content="Flush Buffer"
+                    disabled={servers.length === 0}
+                    onClick={() => act('release')} />
+                </Fragment>
+              )}>
+              <Button
+                content={network}
+                icon="pen"
+                onClick={() => act('network')} />
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
+        {selectedServer
+          ? (
+            <TelecommsSelectedServer
+              network={network}
+              server={selectedServer}
+              universal_translate={universal_translate} />
           ) : (
-            <Section>
-              {(servers && servers.length) ? (
-                <LabeledList>
-                  {servers.map(server => (
-                    <LabeledList.Item
-                      key={server.name}
-                      label={`${server.ref}`}
-                      buttons={(
-                        <Button
-                          selected={data.selected
-                          && (server.ref === data.selected.ref)}
-                          onClick={() => act('viewmachine', {
-                            'value': server.id,
-                          })}>
-                          Connect
-                        </Button>
-                      )}>
-                      {`${server.name} (${server.id})`}
-                    </LabeledList.Item>
-                  ))}
-                </LabeledList>
-              ) : (
-                '404 Servers not found. Have you tried scanning the network?'
-              )}
-            </Section>
+            <TelecommsServerSelection
+              network={network}
+              servers={servers} />
           )}
-        </Fragment>
       </Window.Content>
     </Window>
+  );
+};
+
+const TelecommsServerSelection = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    network,
+    servers,
+  } = props;
+
+  if (!servers || !servers.length) {
+    return (
+      <Section title="Detected Telecommunications Servers">
+        <Box color="bad">
+          No servers detected.
+        </Box>
+        <Button
+          fluid
+          content="Scan"
+          icon="search"
+          onClick={() => act('scan')} />
+      </Section>
+    );
+  }
+
+  return (
+    <Section title="Detected Telecommunication Servers">
+      <LabeledList>
+        {servers.map(server => (
+          <LabeledList.Item
+            key={server.id}
+            label={server.name+ " (" + server.id + ")"}>
+            <Button
+              content="View"
+              icon="eye"
+              onClick={() => act('view', { id: server.id })} />
+          </LabeledList.Item>
+        ))}
+      </LabeledList>
+    </Section>
+  );
+};
+
+const TelecommsSelectedServer = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    network,
+    server,
+    universal_translate,
+  } = props;
+
+  return (
+    <Section
+      title={"Server (" + server.id + ")"}
+      buttons={
+        <Button
+          content="Return"
+          icon="undo"
+          onClick={() => act("mainmenu")} />
+      }>
+      <LabeledList>
+        <LabeledList.Item label="Total Recorded Traffic">
+          {server.totalTraffic >= 1024 
+            ? round(server.totalTraffic / 1024) + " Terrabytes"
+            : server.totalTraffic + " Gigabytes"}
+        </LabeledList.Item>
+      </LabeledList>
+      <Section title="Stored Logs" mt="4px">
+        <Flex wrap="wrap">
+          {(!server.logs || !server.logs.length)
+            ? "No Logs Detected."
+            : server.logs.map(log => (
+              <Flex.Item m="2px" key={log.id} basis="49%" grow={log.id % 2}>
+                <Section
+                  title={(universal_translate
+                      || log.parameters["uspeech"]
+                      || log.parameters["intelligible"]
+                      || log.input_type === "Execution Error")
+                    ? log.input_type
+                    : "Audio File"}
+                  buttons={
+                    <Button.Confirm
+                      confirmContent="Delete Log?"
+                      color="bad"
+                      icon="trash"
+                      confirmIcon="trash"
+                      onClick={() => act('delete', { id: log.id })} />
+                  }>
+                  {log.input_type === "Execution Error" ? (
+                    <LabeledList>
+                      <LabeledList.Item label="Data type">
+                        Error
+                      </LabeledList.Item>
+                      <LabeledList.Item label="Output">
+                        {log.parameters["message"]}
+                      </LabeledList.Item>
+                      <LabeledList.Item label="Delete">
+                        <Button
+                          icon="trash"
+                          onClick={() => act('delete', { id: log.id })} />
+                      </LabeledList.Item>
+                    </LabeledList>
+                  ) : (universal_translate
+                      || log.parameters["uspeech"]
+                      || log.parameters["intelligible"])
+                    ? <TelecommsLog log={log} />
+                    : <TelecommsLog error />}
+                </Section>
+              </Flex.Item>
+            )) }
+        </Flex>
+      </Section>
+    </Section>
+  );
+};
+
+
+const TelecommsLog = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    log,
+    error,
+  } = props;
+
+  const {
+    timecode,
+    name,
+    race,
+    job,
+    message,
+  } = (log && log.parameters) || { "none": "none" };
+
+  if (error) {
+    return (
+      <LabeledList>
+        <LabeledList.Item label="Time Recieved">
+          {timecode}
+        </LabeledList.Item>
+        <LabeledList.Item label="Source">
+          Unidentifiable
+        </LabeledList.Item>
+        <LabeledList.Item label="Class">
+          {race}
+        </LabeledList.Item>
+        <LabeledList.Item label="Contents">
+          Unintelligible
+        </LabeledList.Item>
+      </LabeledList>
+    );
+  }
+
+  return (
+    <LabeledList>
+      <LabeledList.Item label="Time Recieved">
+        {timecode}
+      </LabeledList.Item>
+      <LabeledList.Item label="Source">
+        {name} (Job: {job})
+      </LabeledList.Item>
+      <LabeledList.Item label="Class">
+        {race}
+      </LabeledList.Item>
+      <LabeledList.Item label="Contents" className="LabeledList__breakContents">
+        {message}
+      </LabeledList.Item>
+    </LabeledList>
   );
 };

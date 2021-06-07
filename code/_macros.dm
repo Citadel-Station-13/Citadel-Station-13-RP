@@ -17,7 +17,7 @@
 
 #define show_browser(target, browser_content, browser_name) target << browse(browser_content, browser_name)
 
-#define CanInteract(user, state) (CanUseTopic(user, state) == STATUS_INTERACTIVE)
+#define CanInteract(user, state) (CanUseTopic(user, state) == UI_INTERACTIVE)
 
 
 #define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
