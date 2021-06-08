@@ -29,7 +29,7 @@
 	endWhen = 45
 
 /datum/event/cult/announce()
-	command_announcement.Announce("Attention [station_name()], unknown humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivity aboard gets hindered!", "Screaming Signals Detected", new_sound = sound('sound/effects/c_alarm.mp3',volume=5))
+	command_announcement.Announce("Attention [station_name()], unknown humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Detected", new_sound = sound('sound/effects/c_alarm.mp3',volume=5))
 
 
 /datum/event/cult/start()
@@ -69,9 +69,22 @@
 			if(temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 				vents += temp_vent
 
-	var/cult_spawn = list(/mob/living/simple_mob/humanoid/cultist/human, /mob/living/simple_mob/humanoid/cultist/tesh,
-	/mob/living/simple_mob/humanoid/cultist/lizard, /mob/living/simple_mob/humanoid/cultist/castertesh)
-	var/cult_boss = /mob/living/simple_mob/humanoid/cultist/elite
+	var/cult_spawn = list(/mob/living/simple_mob/humanoid/cultist/human,
+	/mob/living/simple_mob/humanoid/cultist/human/bloodjaunt,
+	/mob/living/simple_mob/humanoid/cultist/initiate,
+	/mob/living/simple_mob/humanoid/cultist/tesh,
+	/mob/living/simple_mob/humanoid/cultist/lizard,
+	 /mob/living/simple_mob/humanoid/cultist/castertesh,
+	 /mob/living/simple_mob/faithless/cult/strong,
+	 /mob/living/simple_mob/construct/artificer,
+	 /mob/living/simple_mob/construct/shade)
+
+	var/cult_boss = list(/mob/living/simple_mob/humanoid/cultist/elite,
+	/mob/living/simple_mob/creature/cult/strong,
+	 /mob/living/simple_mob/humanoid/cultist/caster,
+	/mob/living/simple_mob/construct/artificer/caster,
+	/mob/living/simple_mob/construct/wraith)
+
 	spawn(0)
 		var/num = spawncount
 		while(vents.len > 0 && num > 0)
@@ -83,7 +96,7 @@
 		while(vents.len > 0 && bossnum > 0)
 			bossnum--
 			var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
-			var/spawn_type = cult_boss
+			var/spawn_type = pick(cult_boss)
 			new spawn_type(V.loc)
 
 // Overmap version
