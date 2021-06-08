@@ -1013,7 +1013,6 @@
 	dir = 6
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/fiftyspawner/iron,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "dS" = (
