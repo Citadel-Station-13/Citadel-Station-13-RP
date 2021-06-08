@@ -129,6 +129,20 @@
 		if(prob(10))
 			L.Stun(2)
 
+//Roach Types
+/obj/item/holder/roach
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/roachling
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/panzer
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/jager
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/seuche
+	w_class = ITEMSIZE_TINY
+/obj/item/holder/fuhrer
+	w_class = ITEMSIZE_TINY
+
 /obj/item/holder/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
