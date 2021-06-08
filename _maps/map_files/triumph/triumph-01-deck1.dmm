@@ -4006,10 +4006,8 @@
 /area/storage/tech)
 "oq" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/material/wood,
-/obj/item/stack/material/wood{
-	amount = 50
-	},
+/obj/fiftyspawner/wood,
+/obj/fiftyspawner/wood,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "ov" = (
@@ -4166,11 +4164,9 @@
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/computer/general_air_control/supermatter_core{
 	dir = 1;
-	frequency = 1438;
 	input_tag = "cooling_in";
 	name = "Engine Cooling Control";
 	output_tag = "cooling_out";
-	pressure_setting = 100;
 	sensors = list("engine_sensor" = "Engine Core");
 	throwpass = 1
 	},
@@ -6887,15 +6883,11 @@
 	dir = 8;
 	layer = 2.6
 	},
-/obj/item/stack/material/steel{
-	amount = 50
-	},
-/obj/item/stack/material/steel{
-	amount = 50
-	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "yk" = (
@@ -8996,12 +8988,8 @@
 	dir = 8;
 	layer = 2.6
 	},
-/obj/item/stack/material/glass{
-	amount = 50
-	},
-/obj/item/stack/material/glass{
-	amount = 50
-	},
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "FX" = (
