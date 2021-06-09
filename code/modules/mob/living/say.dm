@@ -376,8 +376,6 @@ proc/get_radio_key_from_channel(var/channel)
 					listening[item] = z_speech_bubble
 			listening_obj |= results["objs"]
 		above = above.shadow
-	if(!whispering)
-		usr.say_overhead(say_emphasis(message), speaking)
 
 	//Main 'say' and 'whisper' message delivery
 	for(var/mob/M in listening)

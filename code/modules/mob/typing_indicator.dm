@@ -1,11 +1,9 @@
-/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER, list/show_to)
+/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER, list/show_to, duration)
 	var/image/I = image('icons/mob/talk_vr.dmi')  //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
-
-	var/list/speech_bubble_hearers = list()
-	for(var/mob/M in get_mobs_in_view(7, usr))
-		if(M.client)
-			speech_bubble_hearers += M.client
-		INVOKE_ASYNC(GLOBAL_PROC, .proc/animate_speech_bubble, I, speech_bubble_hearers , 30)
+	for(var/client/C in show_to)
+		C.images += I
+	animate(I, transform = 0, alpha = 255, time = 0.2 SECONDS, easing = EASE_IN)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/fade_out, I, show_to), (duration - 0.5 SECONDS))
 
 	return I
 

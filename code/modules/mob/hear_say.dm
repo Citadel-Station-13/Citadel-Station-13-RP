@@ -72,6 +72,7 @@
 		if(check_mentioned(message) && is_preference_enabled(/datum/client_preference/check_mention))
 			message_to_send = "<font size='3'><b>[message_to_send]</b></font>"
 
+		usr.say_overhead(message)
 		on_hear_say(message_to_send)
 
 		if (speech_sound && (get_dist(speaker, src) <= world.view && src.z == speaker.z))

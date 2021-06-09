@@ -8,9 +8,6 @@
 		if(M.client)
 			speech_bubble_hearers += M.client
 	if(length(speech_bubble_hearers))
-		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
-		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
 		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
 
 /mob/proc/whisper_wrapper()
