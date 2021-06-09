@@ -88,15 +88,15 @@
 				to_chat(M, "<span class='notice'>You unwillingly chew a bit of [src].</span>")
 			if (fullness > 550 && fullness <= 650)
 				to_chat(M, "<span class='notice'>You swallow some more of the [src], causing your belly to swell out a little.</span>")
-			if (fullness > 650 && fullness <= 1000)
+			if (fullness > 650 && fullness <= 750)
 				to_chat(M, "<span class='notice'>You stuff yourself with the [src]. Your stomach feels very heavy.</span>")
-			if (fullness > 1000 && fullness <= 3000)
+			if (fullness > 750 && fullness <= 850)
 				to_chat(M, "<span class='notice'>You gluttonously swallow down the hunk of [src]. You're so gorged, it's hard to stand.</span>")
-			if (fullness > 3000 && fullness <= 5500)
+			if (fullness > 850 && fullness <= 950)
 				to_chat(M, "<span class='danger'>You force the piece of [src] down your throat. You can feel your stomach getting firm as it reaches its limits.</span>")
-			if (fullness > 5500 && fullness <= 6000)
+			if (fullness > 950 && fullness <= 1250)
 				to_chat(M, "<span class='danger'>You barely glug down the bite of [src], causing undigested food to force into your intestines. You can't take much more of this!</span>")
-			if (fullness > 6000) // There has to be a limit eventually.
+			if (fullness > 1250) // There has to be a limit eventually.
 				to_chat(M, "<span class='danger'>Your stomach blorts and aches, prompting you to stop. You literally cannot force any more of [src] to go down your throat.</span>")
 				return 0
 			/*if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
