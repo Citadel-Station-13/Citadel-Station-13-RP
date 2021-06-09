@@ -506,18 +506,18 @@
 
 	has_organ = list(
 		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
-		O_STRATA =   /obj/item/organ/internal/diona/strata,
-		O_BRAIN = /obj/item/organ/internal/brain/cephalon,
+		O_STRATA   = /obj/item/organ/internal/diona/strata,
+		O_BRAIN    = /obj/item/organ/internal/brain/cephalon,
 		O_RESPONSE = /obj/item/organ/internal/diona/node,
 		O_GBLADDER = /obj/item/organ/internal/diona/bladder,
-		O_POLYP =    /obj/item/organ/internal/diona/polyp,
-		O_ANCHOR =   /obj/item/organ/internal/diona/ligament
+		O_POLYP    = /obj/item/organ/internal/diona/polyp,
+		O_ANCHOR   = /obj/item/organ/internal/diona/ligament
 		)
 
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/diona/chest),
 		BP_GROIN =  list("path" = /obj/item/organ/external/diona/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/no_eyes/diona),
+		BP_HEAD  =  list("path" = /obj/item/organ/external/head/no_eyes/diona),
 		BP_L_ARM =  list("path" = /obj/item/organ/external/diona/arm),
 		BP_R_ARM =  list("path" = /obj/item/organ/external/diona/arm/right),
 		BP_L_LEG =  list("path" = /obj/item/organ/external/diona/leg),
@@ -527,6 +527,8 @@
 		BP_L_FOOT = list("path" = /obj/item/organ/external/diona/foot),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/diona/foot/right)
 		)
+
+	dispersed_eyes = TRUE//Its a bunch of nymphes that means it has eyes everywhere
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/diona_split_nymph,
@@ -546,7 +548,7 @@
 
 	body_temperature = T0C + 15		//make the plant people have a bit lower body temperature, why not
 
-	flags = NO_SCAN | IS_PLANT | NO_PAIN | NO_SLIP | NO_MINOR_CUT
+	flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 	blood_color = "#004400"
@@ -1106,7 +1108,7 @@
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
-	
+
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest/crewkin),
 		BP_GROIN =  list("path" = /obj/item/organ/external/groin/crewkin),
@@ -1125,5 +1127,5 @@
 	return SPECIES_SHADEKIN
 
 /datum/species/shadekin/can_breathe_water()
-	return TRUE	//they dont quite breathe 
+	return TRUE	//they dont quite breathe
 
