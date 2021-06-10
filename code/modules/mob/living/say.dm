@@ -281,7 +281,7 @@ proc/get_radio_key_from_channel(var/channel)
 		var/msg
 		if(!speaking || !(speaking.flags & NO_TALK_MSG))
 			msg = "<span class='notice'>\The [src] talks into \the [used_radios[1]]</span>"
-		for(var/mob/living/M in hearers(5, src))
+		for(var/mob/living/M in hearers(7, src))
 			if((M != src) && msg)
 				M.show_message(msg)
 			if (speech_sound)
@@ -376,6 +376,11 @@ proc/get_radio_key_from_channel(var/channel)
 					listening[item] = z_speech_bubble
 			listening_obj |= results["objs"]
 		above = above.shadow
+	if(!used_radios.len)
+		if(!whispering)
+			usr.say_overhead(message, language)
+		if(whispering)
+			usr.say_overhead(stars(message), language)
 
 	//Main 'say' and 'whisper' message delivery
 	for(var/mob/M in listening)
