@@ -378,9 +378,9 @@ proc/get_radio_key_from_channel(var/channel)
 		above = above.shadow
 	if(!used_radios.len)
 		if(!whispering)
-			usr.say_overhead(message, language)
+			usr.say_overhead(message, speaking)
 		if(whispering)
-			usr.say_overhead(stars(message), language)
+			usr.say_overhead(stars(message), speaking)
 
 	//Main 'say' and 'whisper' message delivery
 	for(var/mob/M in listening)
