@@ -378,7 +378,7 @@ proc/get_radio_key_from_channel(var/channel)
 		above = above.shadow
 	if(!used_radios.len)
 		if(!whispering)
-			usr.say_overhead(message, speaking)
+			usr.say_overhead(say_emphasis(message), speaking)
 		if(whispering)
 			usr.say_overhead(stars(message), speaking)
 
