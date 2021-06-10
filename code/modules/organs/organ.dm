@@ -25,6 +25,7 @@ var/list/organ_cache = list()
 	var/list/trace_chemicals = list()	// Traces of chemicals in the organ.
 	var/datum/dna/dna					// Original DNA.
 	var/datum/species/species			// Original species.
+	var/s_base
 
 	// Damage vars.
 	var/min_bruised_damage = 10			// Damage before considered bruised
@@ -100,6 +101,8 @@ var/list/organ_cache = list()
 		if(blood_DNA)
 			blood_DNA.Cut()
 			blood_DNA[dna.unique_enzymes] = dna.b_type
+	s_base = new_dna.s_base
+
 
 /obj/item/organ/proc/die()
 	if(robotic < ORGAN_ROBOT)

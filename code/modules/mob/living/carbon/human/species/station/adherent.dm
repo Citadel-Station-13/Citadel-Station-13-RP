@@ -17,8 +17,8 @@
 //	cyborg_noun =             null
 
 //	icon_template =           'icons/mob/human_races/adherent/template.dmi'
-	icobase =                 'icons/mob/human_races/adherent/body.dmi'
-	deform =                  'icons/mob/human_races/adherent/body.dmi'
+	icobase =                 'icons/mob/human_races/r_adherent.dmi'
+//	deform =                  'icons/mob/human_races/r_adherent.dmi'
 //	preview_icon =            'icons/mob/human_races/adherent/preview.dmi'
 	damage_overlays =         'icons/mob/human_races/adherent/damage_overlay.dmi'
 	damage_mask =             'icons/mob/human_races/adherent/damage_mask.dmi'
@@ -45,10 +45,9 @@
 	heat_level_1 = 500
 	heat_level_2 = 1000
 	heat_level_3 = 2000
-
-	spawn_flags =   SPECIES_CAN_JOIN | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN
-
-	appearance_flags = HAS_EYE_COLOR | HAS_SKIN_COLOR
+	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
+	spawn_flags =   SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	appearance_flags = HAS_EYE_COLOR | BASE_SKIN_COLOR
 	blood_color = "#2de00d"
 	flesh_color = "#90edeb"
 	base_color = "#066000"
@@ -96,18 +95,18 @@
 		BP_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins
 		)
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/snake
-/*
-	base_skin_colours = list(
-		"Turquoise"   = "",
-		"Emerald"     = "_green",
-		"Amethyst"    = "_purple",
-		"Sapphire"    = "_blue",
-		"Ruby"        = "_red",
-		"Topaz"       = "_yellow",
-		"Quartz"      = "_white",
-		"Jet"         = "_black"
-	)
 
+	base_skin_colours = list(
+		"",
+		"_green",
+		"_purple",
+		"_blue",
+		"_red",
+		"_yellow",
+		"_white",
+		"_black"
+	)
+/*
 /datum/species/adherent/New()
 	equip_adjust = list(
 		"[slot_l_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
