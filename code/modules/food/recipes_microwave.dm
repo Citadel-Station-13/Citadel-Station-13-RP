@@ -1407,7 +1407,6 @@ I said no!
 /datum/recipe/roach_burger
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,
-		/obj/item/reagent_containers/food/snacks/meat,
 		/obj/item/holder/roach
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger
@@ -1415,7 +1414,6 @@ I said no!
 /datum/recipe/roach_burger/armored
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,
-		/obj/item/reagent_containers/food/snacks/meat,
 		/obj/item/holder/panzer
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/armored
@@ -1423,7 +1421,6 @@ I said no!
 /datum/recipe/roach_burger/pale
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,
-		/obj/item/reagent_containers/food/snacks/meat,
 		/obj/item/holder/jager
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/pale
@@ -1431,7 +1428,6 @@ I said no!
 /datum/recipe/roach_burger/purple
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,
-		/obj/item/reagent_containers/food/snacks/meat,
 		/obj/item/holder/seuche
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/purple
@@ -1439,7 +1435,6 @@ I said no!
 /datum/recipe/roach_burger/big
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,
-		/obj/item/reagent_containers/food/snacks/meat,
 		/obj/item/holder/roach,
 		/obj/item/holder/roach,
 		/obj/item/holder/jager,
@@ -1450,7 +1445,6 @@ I said no!
 /datum/recipe/roach_burger/reich
 	items = list(
 		/obj/item/reagent_containers/food/snacks/bun,
-		/obj/item/reagent_containers/food/snacks/meat,
 		/obj/item/holder/fuhrer
 	)
 	result = /obj/item/reagent_containers/food/snacks/roach_burger/reich
