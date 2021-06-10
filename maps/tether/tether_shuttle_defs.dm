@@ -72,7 +72,7 @@
 	move_time = 60
 	current_location = "merc_base"
 	shuttle_area = /area/shuttle/mercenary
-	destinations = list(
+/*	destinations = list(
 		"merc_base",
 		"aerostat_south",
 		"beach_e",
@@ -85,6 +85,7 @@
 		"tether_space_SW",
 		"tether_dockarm_d2l"	// End of right docking arm
 		)
+*/
 	docking_controller_tag = "merc_shuttle"
 	announcer = "Automated Traffic Control"
 	arrival_message = "Attention. An unregistered vessel is approaching Virgo-3B."
@@ -102,6 +103,7 @@
 	current_location = "ninja_base"
 	landmark_transition = "ninja_transit"
 	shuttle_area = /area/shuttle/ninja
+/*
 	destinations = list(
 		"ninja_base",
 		"aerostat_northeast",
@@ -115,6 +117,7 @@
 		"tether_space_SW",
 		"tether_dockarm_d1a3"	// Inside of left dockarm
 		)
+*/
 	docking_controller_tag = "ninja_shuttle"
 	announcer = "Automated Traffic Control"
 	arrival_message = "Attention. An unregistered vessel is approaching Virgo-3B."
@@ -131,6 +134,7 @@
 	current_location = "skipjack_base"
 	landmark_transition = "skipjack_transit"
 	shuttle_area = /area/shuttle/skipjack
+/*
 	destinations = list(
 		"skipjack_base",
 		"aerostat_south",
@@ -149,6 +153,7 @@
 		"Mercenary base" = "merc_base",
 		"Tether spaceport" = "nuke_shuttle_dock_airlock",
 		)
+*/
 	announcer = "Automated Traffic Control"
 
 	arrival_message = "Attention. An unregistered vessel is approaching Virgo-3B."

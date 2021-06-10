@@ -296,6 +296,7 @@
 	radio.subspace_transmission = 1
 
 /obj/mecha/proc/add_iterators()
+	set waitfor = FALSE
 	pr_int_temp_processor = new /datum/global_iterator/mecha_preserve_temp(list(src))
 	pr_inertial_movement = new /datum/global_iterator/mecha_intertial_movement(null,0)
 	pr_give_air = new /datum/global_iterator/mecha_tank_give_air(list(src))
@@ -322,7 +323,7 @@
 		return 0
 
 /obj/mecha/examine(mob/user)
-	..(user)
+	. = ..()
 	var/integrity = health/initial(health)*100
 	switch(integrity)
 		if(85 to 100)
@@ -421,16 +422,16 @@
 
 /obj/mecha/contents_nano_distance(var/src_object, var/mob/living/user)
 	. = user.shared_living_nano_distance(src_object) //allow them to interact with anything they can interact with normally.
-	if(. != STATUS_INTERACTIVE)
+	if(. != UI_INTERACTIVE)
 		//Allow interaction with the mecha or anything that is part of the mecha
 		if(src_object == src || (src_object in src))
-			return STATUS_INTERACTIVE
+			return UI_INTERACTIVE
 		if(src.Adjacent(src_object))
 			src.occupant_message("<span class='notice'>Interfacing with [src_object]...</span>")
 			src.log_message("Interfaced with [src_object].")
-			return STATUS_INTERACTIVE
+			return UI_INTERACTIVE
 		if(src_object in view(2, src))
-			return STATUS_UPDATE //if they're close enough, allow the occupant to see the screen through the viewport or whatever.
+			return UI_UPDATE //if they're close enough, allow the occupant to see the screen through the viewport or whatever.
 
 /obj/mecha/proc/melee_action(atom/target)
 	return
@@ -644,12 +645,12 @@
 	internal_damage &= ~int_dam_flag
 	switch(int_dam_flag)
 		if(MECHA_INT_TEMP_CONTROL)
-			occupant_message("<font color='blue'><b>Life support system reactivated.</b></font>")
+			occupant_message("<font color=#4F49AF><b>Life support system reactivated.</b></font>")
 			pr_int_temp_processor.start()
 		if(MECHA_INT_FIRE)
-			occupant_message("<font color='blue'><b>Internal fire extinquished.</b></font>")
+			occupant_message("<font color=#4F49AF><b>Internal fire extinquished.</b></font>")
 		if(MECHA_INT_TANK_BREACH)
-			occupant_message("<font color='blue'><b>Damaged internal tank has been sealed.</b></font>")
+			occupant_message("<font color=#4F49AF><b>Damaged internal tank has been sealed.</b></font>")
 	return
 
 
@@ -1987,7 +1988,7 @@
 		if(do_after(100))
 			if(T == src.loc)
 				src.clearInternalDamage(MECHA_INT_CONTROL_LOST)
-				src.occupant_message("<font color='blue'>Recalibration successful.</font>")
+				src.occupant_message("<font color=#4F49AF>Recalibration successful.</font>")
 				src.log_message("Recalibration of coordination system finished with 0 errors.")
 			else
 				src.occupant_message("<font color='red'>Recalibration failed.</font>")
@@ -2254,3 +2255,54 @@
 	//src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
 */
+
+
+//VR FILE MERGE
+
+#ifdef T_BOARD_MICRO_MECHA
+#error T_BOARD_MICRO_MECHA already defined elsewhere, we can't use it.
+#endif
+#define T_BOARD_MICRO_MECHA(name)	"exosuit module circuit board (" + (name) + ")"
+
+/obj/item/circuitboard/mecha/gopher
+		origin_tech = list(TECH_DATA = 3)
+
+/obj/item/circuitboard/mecha/gopher/peripherals
+		name = T_BOARD_MICRO_MECHA("Gopher peripherals control")
+		icon_state = "mcontroller"
+
+/obj/item/circuitboard/mecha/gopher/main
+		name = T_BOARD_MICRO_MECHA("Gopher central control")
+		icon_state = "mainboard"
+
+/obj/item/circuitboard/mecha/polecat
+		origin_tech = list(TECH_DATA = 4)
+
+/obj/item/circuitboard/mecha/polecat/peripherals
+		name = T_BOARD_MICRO_MECHA("Polecat peripherals control")
+		icon_state = "mcontroller"
+
+/obj/item/circuitboard/mecha/polecat/targeting
+		name = T_BOARD_MICRO_MECHA("Polecat weapon control and targeting")
+		icon_state = "mcontroller"
+		origin_tech = list(TECH_DATA = 4, TECH_COMBAT = 4)
+
+/obj/item/circuitboard/mecha/polecat/main
+		name = T_BOARD_MICRO_MECHA("Polecat central control")
+		icon_state = "mainboard"
+
+/obj/item/circuitboard/mecha/weasel
+		origin_tech = list(TECH_DATA = 4)
+
+/obj/item/circuitboard/mecha/weasel/peripherals
+		name = T_BOARD_MICRO_MECHA("Weasel peripherals control")
+		icon_state = "mcontroller"
+
+/obj/item/circuitboard/mecha/weasel/targeting
+		name = T_BOARD_MICRO_MECHA("Weasel weapon control and targeting")
+		icon_state = "mcontroller"
+		origin_tech = list(TECH_DATA = 4, TECH_COMBAT = 4)
+
+/obj/item/circuitboard/mecha/weasel/main
+		name = T_BOARD_MICRO_MECHA("Weasel central control")
+		icon_state = "mainboard"

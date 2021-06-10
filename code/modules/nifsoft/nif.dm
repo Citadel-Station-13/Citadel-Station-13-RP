@@ -112,9 +112,12 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 // Creates software after the mob is hopefully loaded in
 /obj/item/nif/proc/install_free_return_software()
+	var/old = durability
 	//Free commlink and soulcatcher for return customers
 	new /datum/nifsoft/commlink(src)
 	new /datum/nifsoft/soulcatcher(src)
+	durability = old
+	wear(0)
 
 //Destructor cleans up references
 /obj/item/nif/Destroy()
@@ -370,7 +373,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	if(!human || stat == NIF_TEMPFAIL) return
 
 	to_chat(human,"<b>\[[icon2html(thing = src.big_icon, target = human)]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
-	if(prob(1)) human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
+	if(prob(1)) human.visible_message("<span class='notice'>\The [human.real_name] [pick(look_messages)].</span>")
 	if(alert)
 		SEND_SOUND(human, bad_sound)
 	else
@@ -440,7 +443,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	if(stat != NIF_WORKING) return FALSE
 
 	if(human)
-		if(prob(5)) human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
+		if(prob(5)) human.visible_message("<span class='notice'>\The [human.real_name] [pick(look_messages)].</span>")
 		var/applies_to = soft.applies_to
 		var/synth = human.isSynthetic()
 		if(synth && !(applies_to & NIF_SYNTHETIC))
@@ -468,7 +471,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 /obj/item/nif/proc/deactivate(var/datum/nifsoft/soft)
 	if(human)
 		if(prob(5))
-			human.visible_message("<span class='notice'>\The [human] [pick(look_messages)].</span>")
+			human.visible_message("<span class='notice'>\The [human.real_name] [pick(look_messages)].</span>")
 		SEND_SOUND(human, click_sound)
 
 	if(soft.tick_flags == NIF_ACTIVETICK)

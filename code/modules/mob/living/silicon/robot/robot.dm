@@ -455,7 +455,8 @@
 
 /mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
 	..(Proj)
-	if(prob(75) && Proj.damage > 0) spark_system.start()
+	if(prob(75) && Proj.damage > 0)
+		spark_system.start()
 	return 2
 
 /mob/living/silicon/robot/attackby(obj/item/W as obj, mob/user as mob)
@@ -477,7 +478,7 @@
 					C.brute_damage = WC.brute
 					C.electronics_damage = WC.burn
 
-				to_chat(usr, "<font color='blue'>You install the [W.name].</font>")
+				to_chat(usr, "<font color=#4F49AF>You install the [W.name].</font>")
 
 				return
 

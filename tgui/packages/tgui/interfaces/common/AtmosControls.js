@@ -38,11 +38,11 @@ export const Vent = (props, context) => {
         <LabeledList.Item label="Mode">
           <Button
             icon="sign-in-alt"
-            content={direction ? 'Pressurizing' : 'Scrubbing'}
-            color={!direction && 'danger'}
+            content={direction !== "siphon" ? 'Pressurizing' : 'Siphoning'}
+            color={direction === "siphon" && 'danger'}
             onClick={() => act('direction', {
               id_tag,
-              val: Number(!direction),
+              val: Number(direction === "siphon"),
             })} />
         </LabeledList.Item>
         <LabeledList.Item label="Pressure Regulator">
@@ -122,7 +122,7 @@ export const Scrubber = (props, context) => {
     scrubbing,
     id_tag,
     widenet,
-    filter_types,
+    filters,
   } = scrubber;
   return (
     <Section
@@ -148,26 +148,18 @@ export const Scrubber = (props, context) => {
               id_tag,
               val: Number(!scrubbing),
             })} />
-          <Button
-            icon={widenet ? 'expand' : 'compress'}
-            selected={widenet}
-            content={widenet ? 'Expanded range' : 'Normal range'}
-            onClick={() => act('widenet', {
-              id_tag,
-              val: Number(!widenet),
-            })} />
         </LabeledList.Item>
         <LabeledList.Item label="Filters">
           {scrubbing
-            && filter_types.map(filter => (
-              <Button key={filter.gas_id}
-                icon={filter.enabled ? 'check-square-o' : 'square-o'}
-                content={getGasLabel(filter.gas_id, filter.gas_name)}
-                title={filter.gas_name}
-                selected={filter.enabled}
-                onClick={() => act('toggle_filter', {
+            && filters.map(filter => (
+              <Button key={filter.name}
+                icon={filter.val ? 'check-square-o' : 'square-o'}
+                content={filter.name}
+                title={filter.name}
+                selected={filter.val}
+                onClick={() => act(filter.command, {
                   id_tag,
-                  val: filter.gas_id,
+                  val: !filter.val,
                 })} />
             ))
             || 'N/A'}

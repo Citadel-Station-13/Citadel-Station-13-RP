@@ -492,8 +492,6 @@
 		to_chat(user,"<span class='notice'>You store \the [C] in \the [src].</span>")
 		return
 
-	return ..()
-
 /obj/machinery/transhuman/resleever/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
 		return 0 //not a mob
@@ -573,17 +571,17 @@
 		occupant.name = occupant.real_name
 		occupant.dna.real_name = occupant.real_name
 
-	//Give them a backup implant
-	var/obj/item/implant/backup/new_imp = new()
-	if(new_imp.handle_implant(occupant, BP_HEAD))
+	//Give them a mirror
+	var/obj/item/implant/mirror/new_imp = new()
+	if(new_imp.handle_implant(occupant, BP_TORSO))
 		new_imp.post_implant(occupant)
 
 	//Inform them and make them a little dizzy.
 	if(confuse_amount + blur_amount <= 16)
 	//cit change start
-		to_chat(occupant, "<span class='notice'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory. </span>")
+		to_chat(occupant, "<span class='notice'>You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory. </span>")
 	else
-		to_chat(occupant, "<span class='warning'>You feel a small pain in your head as you're given a new backup implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  </span>")
+		to_chat(occupant, "<span class='warning'>You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  </span>")
 	//cit change end
 	occupant.confused = max(occupant.confused, confuse_amount)
 	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)

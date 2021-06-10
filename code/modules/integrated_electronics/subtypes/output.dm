@@ -68,7 +68,8 @@
 	activators = list("toggle light" = IC_PINTYPE_PULSE_IN)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	var/light_toggled = 0
-	var/light_brightness = 3
+	var/light_brightness = 5
+	var/light_strength = 2
 	var/light_rgb = "#FFFFFF"
 	power_draw_idle = 0 // Adjusted based on brightness.
 
@@ -79,7 +80,7 @@
 /obj/item/integrated_circuit/output/light/proc/update_lighting()
 	if(light_toggled)
 		if(assembly)
-			assembly.set_light(l_range = light_brightness, l_power = light_brightness, l_color = light_rgb)
+			assembly.set_light(l_range = light_brightness, l_power = light_strength, l_color = light_rgb)
 	else
 		if(assembly)
 			assembly.set_light(0)
@@ -92,7 +93,7 @@
 /obj/item/integrated_circuit/output/light/advanced
 	name = "advanced light"
 	desc = "This light can turn on and off on command, in any color, and in various brightness levels."
-	extended_desc = "The brightness is limited to values between 1 and 6."
+	extended_desc = "The brightness is limited to values between 1 and 8."
 	icon_state = "light_adv"
 	complexity = 8
 	inputs = list(
@@ -108,7 +109,7 @@
 	var/brightness = get_pin_data(IC_INPUT, 2)
 
 	if(new_color && isnum(brightness))
-		brightness = clamp(brightness, 0, 6)
+		brightness = clamp(brightness, 0, 8)
 		light_rgb = new_color
 		light_brightness = brightness
 
@@ -150,7 +151,7 @@
 	var/mob/living/voice/my_voice
 
 /obj/item/integrated_circuit/output/text_to_speech/advanced/Initialize(mapload)
-	..()
+	. = ..()
 	my_voice = new (src)
 	my_voice.name = "TTS Circuit"
 

@@ -67,8 +67,8 @@
 
 	end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		var/obj/item/organ/external/chest/affected = target.get_organ(target_zone)
-		user.visible_message("<font color='blue'>[user] makes some space inside [target]'s [get_cavity(affected)] cavity with \the [tool].</font>", \
-		"<font color='blue'>You make some space inside [target]'s [get_cavity(affected)] cavity with \the [tool].</font>" )
+		user.visible_message("<font color=#4F49AF>[user] makes some space inside [target]'s [get_cavity(affected)] cavity with \the [tool].</font>", \
+		"<font color=#4F49AF>You make some space inside [target]'s [get_cavity(affected)] cavity with \the [tool].</font>" )
 
 ///////////////////////////////////////////////////////////////
 // Cavity Closing Surgery
@@ -101,8 +101,8 @@
 
 /datum/surgery_step/cavity/close_space/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/chest/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] mends [target]'s [get_cavity(affected)] cavity walls with \the [tool].</font>", \
-	"<font color='blue'> You mend[target]'s [get_cavity(affected)] cavity walls with \the [tool].</font>" )
+	user.visible_message("<font color=#4F49AF>[user] mends [target]'s [get_cavity(affected)] cavity walls with \the [tool].</font>", \
+	"<font color=#4F49AF> You mend[target]'s [get_cavity(affected)] cavity walls with \the [tool].</font>" )
 
 ///////////////////////////////////////////////////////////////
 // Item Implantation Surgery
@@ -130,16 +130,16 @@
 
 /datum/surgery_step/cavity/place_item/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] starts putting \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>", \
-	"<font color='blue'>You start putting \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>" ) //Nobody will probably ever see this, but I made these two blue. ~CK
+	user.visible_message("<font color=#4F49AF>[user] starts putting \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>", \
+	"<font color=#4F49AF>You start putting \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>" ) //Nobody will probably ever see this, but I made these two blue. ~CK
 	target.custom_pain("The pain in your chest is living hell!",1)
 	..()
 
 /datum/surgery_step/cavity/place_item/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/chest/affected = target.get_organ(target_zone)
 
-	user.visible_message("<font color='blue'>[user] puts \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>", \
-	"<font color='blue'>You put \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>" )
+	user.visible_message("<font color=#4F49AF>[user] puts \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>", \
+	"<font color=#4F49AF>You put \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>" )
 	if (tool.w_class > get_max_wclass(affected)/2 && prob(50) && (affected.robotic < ORGAN_ROBOT))
 		to_chat(user, "<font color='red'> You tear some blood vessels trying to fit such a big object in this cavity.</font>")
 		var/datum/wound/internal_bleeding/I = new (10)
@@ -178,8 +178,8 @@
 
 /datum/surgery_step/cavity/implant_removal/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] starts poking around inside [target]'s [affected.name] with \the [tool].</font>", \
-	"<font color='blue'>You start poking around inside [target]'s [affected.name] with \the [tool].</font>" )
+	user.visible_message("<font color=#4F49AF>[user] starts poking around inside [target]'s [affected.name] with \the [tool].</font>", \
+	"<font color=#4F49AF>You start poking around inside [target]'s [affected.name] with \the [tool].</font>" )
 	target.custom_pain("The pain in your [affected.name] is living hell!",1)
 	..()
 
@@ -202,8 +202,8 @@
 			find_prob +=50
 
 		if (prob(find_prob))
-			user.visible_message("<font color='blue'>[user] takes something out of incision on [target]'s [affected.name] with \the [tool]!</font>", \
-			"<font color='blue'>You take [obj] out of incision on [target]'s [affected.name]s with \the [tool]!</font>" )
+			user.visible_message("<font color=#4F49AF>[user] takes something out of incision on [target]'s [affected.name] with \the [tool]!</font>", \
+			"<font color=#4F49AF>You take [obj] out of incision on [target]'s [affected.name]s with \the [tool]!</font>" )
 			affected.implants -= obj
 
 			ENABLE_BITFIELD(target.hud_updateflag, IMPLOYAL_HUD)
@@ -225,11 +225,11 @@
 					imp.implanted = 0
 				else if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.unimplant(target)} //VOREStation Add - NIF support
 		else
-			user.visible_message("<font color='blue'>[user] removes \the [tool] from [target]'s [affected.name].</font>", \
-			"<font color='blue'>There's something inside [target]'s [affected.name], but you just missed it this time.</font>" )
+			user.visible_message("<font color=#4F49AF>[user] removes \the [tool] from [target]'s [affected.name].</font>", \
+			"<font color=#4F49AF>There's something inside [target]'s [affected.name], but you just missed it this time.</font>" )
 	else
-		user.visible_message("<font color='blue'>[user] could not find anything inside [target]'s [affected.name], and pulls \the [tool] out.</font>", \
-		"<font color='blue'>You could not find anything inside [target]'s [affected.name].</font>" )
+		user.visible_message("<font color=#4F49AF>[user] could not find anything inside [target]'s [affected.name], and pulls \the [tool] out.</font>", \
+		"<font color=#4F49AF>You could not find anything inside [target]'s [affected.name].</font>" )
 
 /datum/surgery_step/cavity/implant_removal/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	..()

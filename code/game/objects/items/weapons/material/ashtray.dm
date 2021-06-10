@@ -93,10 +93,10 @@ var/global/list/ashtray_cache = list()
 	return ..()
 
 /obj/item/material/ashtray/plastic/Initialize(mapload, material_key)
-	..(mapload, "plastic")
+	return ..(mapload, "plastic")
 
 /obj/item/material/ashtray/bronze/Initialize(mapload, material_key)
-	..(mapload, "bronze")
+	return ..(mapload, "bronze")
 
 /obj/item/material/ashtray/glass/Initialize(mapload, material_key)
-	..(mapload, "glass")
+	return ..(mapload, "glass")

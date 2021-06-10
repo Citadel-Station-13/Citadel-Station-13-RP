@@ -185,7 +185,7 @@
 	var/turf/T = get_turf(src)
 	if(!locked)
 		return TRUE
-	if(T.z in GLOB.using_map.map_levels)
+	if(T.z in GLOB.using_map.station_levels)
 		return FALSE
 	return TRUE
 

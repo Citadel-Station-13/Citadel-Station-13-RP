@@ -44,6 +44,13 @@ var/list/flooring_types
 	var/can_paint
 	var/list/footstep_sounds = list() // key=species name, value = list of soundss
 
+/decl/flooring/proc/drop_product(atom/A)
+	if(ispath(build_type, /obj/item/stack))
+		new build_type(A, build_cost)
+	else
+		for(var/i in 1 to min(build_cost, 50))
+			new build_type(A)
+
 /decl/flooring/grass
 	name = "grass"
 	desc = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
@@ -400,6 +407,37 @@ var/list/flooring_types
 
 /decl/flooring/outdoors/beach
 	name = "beach"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "sand"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/asteroid1.ogg',
+		'sound/effects/footstep/asteroid2.ogg',
+		'sound/effects/footstep/asteroid3.ogg',
+		'sound/effects/footstep/asteroid4.ogg'))
+
+
+/turf/simulated/floor/flesh
+	name = "flesh"
+	desc = "This slick flesh ripples and squishes under your touch"
+	icon = 'icons/turf/stomach_vr.dmi'
+	icon_state = "flesh_floor"
+	initial_flooring = /decl/flooring/flesh
+
+/turf/simulated/floor/flesh/colour
+	icon_state = "c_flesh_floor"
+	initial_flooring = /decl/flooring/flesh
+
+/turf/simulated/floor/flesh/attackby()
+	return
+
+/decl/flooring/flesh
+	name = "flesh"
+	desc = "This slick flesh ripples and squishes under your touch"
+	icon = 'icons/turf/stomach_vr.dmi'
+	icon_base = "flesh_floor"
+  
+/decl/flooring/outdoors/beach/sand/desert
+	name = "sand"
 	icon = 'icons/turf/outdoors.dmi'
 	icon_base = "sand"
 	footstep_sounds = list("human" = list(

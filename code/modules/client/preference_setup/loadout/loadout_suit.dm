@@ -222,6 +222,18 @@ datum/gear/suit/duster
 	display_name = "Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat
 
+/datum/gear/suit/wintercoat
+	display_name = "Winter Coat - Assistant Formal"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/aformal
+
+/datum/gear/suit/wintercoat/brass
+	display_name = "Winter Coat - Brassy"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/ratvar/fake
+
+/datum/gear/suit/wintercoat/runed
+	display_name = "Winter Coat - Runed"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/narsie/fake
+
 /datum/gear/suit/wintercoat/olive
 	display_name = "Winter Coat - Olive Green"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/olive

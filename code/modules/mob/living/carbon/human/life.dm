@@ -24,8 +24,6 @@
 
 #define RADIATION_SPEED_COEFFICIENT 0.1
 
-var/last_message = 0
-
 /mob/living/carbon/human
 	var/oxygen_alert = 0
 	var/phoron_alert = 0
@@ -35,6 +33,8 @@ var/last_message = 0
 	var/temperature_alert = 0
 	var/in_stasis = 0
 	var/heartbeat = 0
+	var/last_synthcooling_message = 0 		// to whoever is looking at git blame in the future, i'm not the author, and this is shitcode, but what came before i changed it
+	// made me vomit
 
 /mob/living/carbon/human/Life()
 
@@ -641,6 +641,17 @@ var/last_message = 0
 				"You feel uncomfortably cold.",
 				"You feel a chill within your wiring."
 				)
+			if(bodytemperature > species.heat_discomfort_level)
+				if(world.time >= last_synthcooling_message || last_synthcooling_message == 0)
+					if(src.nutrition <= 50) // do they have enough energy for this?
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Power critical. Unable to deploy cooling systems.</font>")
+						return
+					else
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
+						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
+						src.nutrition -= 50
+					last_synthcooling_message = world.time + 60 SECONDS
 	//Moved pressure calculations here for use in skip-processing check.
 	var/pressure = environment.return_pressure()
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)
@@ -971,7 +982,7 @@ var/last_message = 0
 	return //TODO: DEFERRED
 
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
-/mob/living/carbon/human/handle_regular_status_updates()
+/mob/living/carbon/human/handle_regular_UI_updates()
 	if(!handle_some_updates())
 		return 0
 
@@ -1320,18 +1331,6 @@ var/last_message = 0
 						bodytemp.icon_state = "temp-1"
 					else
 						bodytemp.icon_state = "temp0"
-		if(bodytemperature >= 361)
-			if(isSynthetic())
-				if(world.time >= last_message || last_message == 0)
-					if(src.nutrition <= 50) // do they have enough energy for this?
-						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
-						to_chat(src, "<font color='red' face='fixedsys'>Warning: Power critical. Unable to deploy cooling systems.</font>")
-						return
-					else
-						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
-						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
-						src.nutrition -= 50
-					last_message = world.time + 60 SECONDS
 		if(blinded)
 			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 

@@ -30,6 +30,7 @@
 	var/next_preyloop					// For Fancy sound internal loop
 	var/adminbus_trash = FALSE			// For abusing trash eater for event shenanigans.
 	var/bitten = 0
+	var/painmsg = 1
 
 //
 // Hook for generic creation of stuff on new creatures
@@ -91,7 +92,6 @@
 	//Handle case: /obj/item/grab
 	if(istype(I,/obj/item/grab))
 		var/obj/item/grab/G = I
-
 		//Has to be aggressive grab, has to be living click-er and non-silicon grabbed
 		if((G.state >= GRAB_AGGRESSIVE) && (isliving(user) && !issilicon(G.affecting)))
 
@@ -503,46 +503,47 @@
 
 // Procs for micros stuffed into boots and the like to escape from them
 /mob/living/proc/escape_clothes(obj/item/clothing/C)
+	set waitfor = FALSE
 	ASSERT(loc == C)
 
 	if(ishuman(C.loc)) //In a /mob/living/carbon/human
 		var/mob/living/carbon/human/H = C.loc
 		if(H.shoes == C) //Being worn
-			to_chat(src,"<font color='blue'> You start to climb around the larger creature's feet and ankles!</font>")
+			to_chat(src,"<font color=#4F49AF> You start to climb around the larger creature's feet and ankles!</font>")
 			to_chat(H,"<font color='red'>Something is trying to climb out of your [C]!</font>")
 			var/original_loc = H.loc
 			for(var/escape_time = 100,escape_time > 0,escape_time--)
 				if(H.loc != original_loc)
 					to_chat(src,"<font color='red'>You're pinned back underfoot!</font>")
-					to_chat(H,"<font color='blue'>You pin the escapee back underfoot!</font>")
+					to_chat(H,"<font color=#4F49AF>You pin the escapee back underfoot!</font>")
 					return
 				if(src.loc != C)
 					return
 				sleep(1)
 
-			to_chat(src,"<font color='blue'>You manage to escape \the [C]!</font>")
+			to_chat(src,"<font color=#4F49AF>You manage to escape \the [C]!</font>")
 			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
 			forceMove(H.loc)
 
 		else //Being held by a human
-			to_chat(src,"<font color='blue'>You start to climb out of \the [C]!</font>")
+			to_chat(src,"<font color=#4F49AF>You start to climb out of \the [C]!</font>")
 			to_chat(H,"<font color='red'>Something is trying to climb out of your [C]!</font>")
 			for(var/escape_time = 60,escape_time > 0,escape_time--)
 				if(H.shoes == C)
 					to_chat(src,"<font color='red'>You're pinned underfoot!</font>")
-					to_chat(H,"<font color='blue'>You pin the escapee underfoot!</font>")
+					to_chat(H,"<font color=#4F49AF>You pin the escapee underfoot!</font>")
 					return
 				if(src.loc != C)
 					return
 				sleep(1)
-			to_chat(src,"<font color='blue'>You manage to escape \the [C]!</font>")
+			to_chat(src,"<font color=#4F49AF>You manage to escape \the [C]!</font>")
 			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
 			forceMove(H.loc)
 
-	to_chat(src,"<font color='blue'>You start to climb out of \the [C]!</font>")
+	to_chat(src,"<font color=#4F49AF>You start to climb out of \the [C]!</font>")
 	sleep(50)
 	if(loc == C)
-		to_chat(src,"<font color='blue'>You climb out of \the [C]!</font>")
+		to_chat(src,"<font color=#4F49AF>You climb out of \the [C]!</font>")
 		forceMove(C.loc)
 	return
 

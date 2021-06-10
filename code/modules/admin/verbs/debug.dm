@@ -84,11 +84,11 @@
 
 	var/datum/gas_mixture/env = T.return_air()
 
-	var/t = "<font color='blue'>Coordinates: [T.x],[T.y],[T.z]\n</font>"
+	var/t = "<font color=#4F49AF>Coordinates: [T.x],[T.y],[T.z]\n</font>"
 	t += "<font color='red'>Temperature: [env.temperature]\n</font>"
 	t += "<font color='red'>Pressure: [env.return_pressure()]kPa\n</font>"
 	for(var/g in env.gas)
-		t += "<font color='blue'>[g]: [env.gas[g]] / [env.gas[g] * R_IDEAL_GAS_EQUATION * env.temperature / env.volume]kPa\n</font>"
+		t += "<font color=#4F49AF>[g]: [env.gas[g]] / [env.gas[g] * R_IDEAL_GAS_EQUATION * env.temperature / env.volume]kPa\n</font>"
 
 	usr.show_message(t, 1)
 	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -173,22 +173,53 @@
 	else
 		alert("Invalid mob")
 
-
 //TODO: merge the vievars version into this or something maybe mayhaps
-/client/proc/cmd_debug_del_all()
+/client/proc/cmd_debug_del_all(object as text)
 	set category = "Debug"
 	set name = "Del-All"
 
-	// to prevent REALLY stupid deletions
-	var/blocked = list(/obj, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/human, /mob/observer/dead, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
-	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in typesof(/obj) + typesof(/mob) - blocked
+	var/list/matches = get_fancy_list_of_atom_types()
+	if (!isnull(object) && object!="")
+		matches = filter_fancy_list(matches, object)
+
+	if(matches.len==0)
+		return
+	var/hsbitem = input(usr, "Choose an object to delete. Use clear-mobs instead on LIVE.", "Delete:") as null|anything in matches
 	if(hsbitem)
+		hsbitem = matches[hsbitem]
+		var/counter = 0
 		for(var/atom/O in world)
 			if(istype(O, hsbitem))
+				counter++
 				qdel(O)
-		log_admin("[key_name(src)] has deleted all instances of [hsbitem].")
-		message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem].", 0)
-	feedback_add_details("admin_verb","DELA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+			CHECK_TICK
+		log_admin("[key_name(src)] has deleted all ([counter]) instances of [hsbitem].")
+		message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [hsbitem].")
+		// SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_clear_mobs()
+	set category = "Admin"
+	set name = "Clear Mobs"
+
+	var/range = input(usr, "Choose a range in tiles FROM your location", "If uncertain, enter 25 or below.") as num
+	if(range >= 50) // ridiculously high
+		alert("Please enter a valid range below 50.")
+		return
+	var/list/victims = list()
+	for(var/mob/C in view(range, src)) // get all mobs in the range from us we specified
+		victims += C
+	var/hsbitem = input(usr, "Choose a mob type to clear.", "Delete ALL of this type:") as null|anything in typesof(victims, /mob)
+	var/friendlyname = type2top(hsbitem)
+	var/warning = alert(usr, "Are you ABSOLUTELY CERTAIN you wish to delete EVERY [friendlyname] in [range] tiles?", "Warning", "Yes", "Cancel") // safety
+	if (warning == "Yes")
+		if(hsbitem)
+			for(var/mob/O in view(range, src))
+				if(istype(O, hsbitem))
+					qdel(O)
+			log_admin("[key_name(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.")
+			message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.", 0)
+	feedback_add_details("admin_verb","CLRM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
@@ -296,7 +327,7 @@
 		alert("Invalid mob")
 	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(src)] has granted [M.key] full access.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] has granted [M.key] full access.</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] has granted [M.key] full access.</font>", 1)
 
 /client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
@@ -310,7 +341,7 @@
 		else
 			var/mob/observer/dead/ghost = new/mob/observer/dead(M,1)
 			ghost.ckey = M.ckey
-	message_admins("<font color='blue'>[key_name_admin(usr)] assumed direct control of [M].</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] assumed direct control of [M].</font>", 1)
 	log_admin("[key_name(usr)] assumed direct control of [M].")
 	var/mob/adminmob = src.mob
 	M.ckey = src.ckey
@@ -570,7 +601,7 @@
 
 
 	log_admin("[key_name(usr)] setup the supermatter engine [response == "Setup except coolant" ? "without coolant" : ""]")
-	message_admins("<font color='blue'>[key_name_admin(usr)] setup the supermatter engine  [response == "Setup except coolant" ? "without coolant": ""]</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] setup the supermatter engine  [response == "Setup except coolant" ? "without coolant": ""]</font>", 1)
 	return
 
 

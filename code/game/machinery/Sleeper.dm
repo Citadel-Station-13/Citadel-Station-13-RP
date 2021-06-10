@@ -156,7 +156,7 @@
 				S.inject_chemical(usr, href_list["chemical"], text2num(href_list["amount"]))
 	if(href_list["change_stasis"])
 		var/new_stasis = input("Levels deeper than 50% stasis level will render the patient unconscious.","Stasis Level") as null|anything in S.stasis_choices
-		if(new_stasis && CanUseTopic(usr, default_state) == STATUS_INTERACTIVE)
+		if(new_stasis && CanUseTopic(usr, default_state) == UI_INTERACTIVE)
 			S.stasis_level = S.stasis_choices[new_stasis]
 
 	return 1
@@ -439,5 +439,5 @@
 	stasis_level = 100 //Just one setting
 
 /obj/machinery/sleeper/survival_pod/Initialize(mapload)
-	..()
+	. = ..()
 	RefreshParts(1)

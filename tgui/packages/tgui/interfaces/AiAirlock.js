@@ -6,7 +6,7 @@ import { Window } from '../layouts';
 const dangerMap = {
   2: {
     color: 'good',
-    localStatusText: 'Offline',
+    localStatusText: 'Optimal',
   },
   1: {
     color: 'average',
@@ -14,7 +14,7 @@ const dangerMap = {
   },
   0: {
     color: 'bad',
-    localStatusText: 'Optimal',
+    localStatusText: 'Offline',
   },
 };
 
@@ -112,15 +112,6 @@ export const AiAirlock = (props, context) => {
               )}>
               {!data.wires.id_scanner && '[Wires have been cut!]'}
             </LabeledList.Item>
-            <LabeledList.Item
-              label="Emergency Access"
-              buttons={(
-                <Button
-                  icon={data.emergency ? 'power-off' : 'times'}
-                  content={data.emergency ? 'Enabled' : 'Disabled'}
-                  selected={data.emergency}
-                  onClick={() => act('emergency-toggle')} />
-              )} />
             <LabeledList.Divider />
             <LabeledList.Item
               label="Door Bolts"

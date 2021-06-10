@@ -8,49 +8,37 @@ import { Window } from '../layouts';
 export const Canister = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    portConnected,
-    tankPressure,
+    connected,
+    can_relabel,
+    pressure,
     releasePressure,
     defaultReleasePressure,
     minReleasePressure,
     maxReleasePressure,
     valveOpen,
-    isPrototype,
-    hasHoldingTank,
-    holdingTank,
-    restricted,
+    holding,
   } = data;
   return (
     <Window
-      width={300}
-      height={232}>
+      width={360}
+      height={242}
+      resizable>
       <Window.Content>
         <Section
           title="Canister"
           buttons={(
-            <Fragment>
-              {!!isPrototype && (
-                <Button
-                  mr={1}
-                  icon={restricted ? 'lock' : 'unlock'}
-                  color="caution"
-                  content={restricted
-                    ? 'Engineering'
-                    : 'Public'}
-                  onClick={() => act('restricted')} />
-              )}
-              <Button
-                icon="pencil-alt"
-                content="Relabel"
-                onClick={() => act('relabel')} />
-            </Fragment>
+            <Button
+              icon="pencil-alt"
+              disabled={!can_relabel}
+              content="Relabel"
+              onClick={() => act('relabel')} />
           )}>
           <LabeledControls>
             <LabeledControls.Item
               minWidth="66px"
-              label="Pressure">
+              label="Tank Pressure">
               <AnimatedNumber
-                value={tankPressure}
+                value={pressure}
                 format={value => {
                   if (value < 10000) {
                     return toFixed(value) + ' kPa';
@@ -63,13 +51,13 @@ export const Canister = (props, context) => {
                 position="relative"
                 left="-8px">
                 <Knob
+                  forcedInputWidth="60px"
                   size={1.25}
                   color={!!valveOpen && 'yellow'}
                   value={releasePressure}
                   unit="kPa"
                   minValue={minReleasePressure}
                   maxValue={maxReleasePressure}
-                  step={5}
                   stepPixelSize={1}
                   onDrag={(e, value) => act('pressure', {
                     pressure: value,
@@ -103,7 +91,7 @@ export const Canister = (props, context) => {
                 lineHeight={2}
                 fontSize="11px"
                 color={valveOpen
-                  ? (hasHoldingTank ? 'caution' : 'danger')
+                  ? (holding ? 'caution' : 'danger')
                   : null}
                 content={valveOpen ? 'Open' : 'Closed'}
                 onClick={() => act('valve')} />
@@ -114,10 +102,10 @@ export const Canister = (props, context) => {
               <Box position="relative">
                 <Icon
                   size={1.25}
-                  name={portConnected ? 'plug' : 'times'}
-                  color={portConnected ? 'good' : 'bad'} />
+                  name={connected? 'plug' : 'times'}
+                  color={connected? 'good' : 'bad'} />
                 <Tooltip
-                  content={portConnected
+                  content={connected
                     ? 'Connected'
                     : 'Disconnected'}
                   position="top" />
@@ -127,24 +115,24 @@ export const Canister = (props, context) => {
         </Section>
         <Section
           title="Holding Tank"
-          buttons={!!hasHoldingTank && (
+          buttons={!!holding && (
             <Button
               icon="eject"
               color={valveOpen && 'danger'}
               content="Eject"
               onClick={() => act('eject')} />
           )}>
-          {!!hasHoldingTank && (
+          {!!holding && (
             <LabeledList>
               <LabeledList.Item label="Label">
-                {holdingTank.name}
+                {holding.name}
               </LabeledList.Item>
               <LabeledList.Item label="Pressure">
-                <AnimatedNumber value={holdingTank.tankPressure} /> kPa
+                <AnimatedNumber value={holding.pressure} /> kPa
               </LabeledList.Item>
             </LabeledList>
           )}
-          {!hasHoldingTank && (
+          {!holding && (
             <Box color="average">
               No Holding Tank
             </Box>

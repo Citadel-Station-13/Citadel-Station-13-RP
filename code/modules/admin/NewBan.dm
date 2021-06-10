@@ -168,7 +168,7 @@ var/savefile/Banlist
 /datum/admins/proc/unbanpanel()
 	var/count = 0
 	var/dat
-	//var/dat = "<HR><B>Unban Player:</B> <font color='blue'>(U) = Unban</font> , (E) = Edit Ban <font color='green'>(Total<HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 ></font>"
+	//var/dat = "<HR><B>Unban Player:</B> <font color=#4F49AF>(U) = Unban</font> , (E) = Edit Ban <font color='green'>(Total<HR><table border=1 rules=all frame=void cellspacing=0 cellpadding=3 ></font>"
 	Banlist.cd = "/base"
 	for (var/A in Banlist.dir)
 		count++

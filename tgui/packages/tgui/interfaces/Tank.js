@@ -4,16 +4,43 @@ import { Window } from '../layouts';
 
 export const Tank = (props, context) => {
   const { act, data } = useBackend(context);
+
+  const {
+    connected,
+    showToggle = true,
+    maskConnected,
+    tankPressure,
+    releasePressure,
+    defaultReleasePressure,
+    minReleasePressure,
+    maxReleasePressure,
+  } = data;
+
   return (
     <Window
       width={400}
-      height={120}>
+      height={320}
+      resizable>
       <Window.Content>
+        <Section title="Status" buttons={!!showToggle && (
+          <Button
+            icon={connected ? "air-freshener" : "lock-open"}
+            selected={connected}
+            disabled={!maskConnected}
+            content="Mask Release Valve"
+            onClick={() => act("toggle")} />
+        )}>
+          <LabeledList>
+            <LabeledList.Item label="Mask Connected">
+              {maskConnected ? "Yes" : "No"}
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
         <Section>
           <LabeledList>
             <LabeledList.Item label="Pressure">
               <ProgressBar
-                value={data.tankPressure / 1013}
+                value={tankPressure / 1013}
                 ranges={{
                   good: [0.35, Infinity],
                   average: [0.15, 0.35],
@@ -25,30 +52,30 @@ export const Tank = (props, context) => {
             <LabeledList.Item label="Pressure Regulator">
               <Button
                 icon="fast-backward"
-                disabled={data.ReleasePressure === data.minReleasePressure}
+                disabled={releasePressure === minReleasePressure}
                 onClick={() => act('pressure', {
                   pressure: 'min',
                 })} />
               <NumberInput
                 animated
-                value={parseFloat(data.releasePressure)}
+                value={parseFloat(releasePressure)}
                 width="65px"
                 unit="kPa"
-                minValue={data.minReleasePressure}
-                maxValue={data.maxReleasePressure}
+                minValue={minReleasePressure}
+                maxValue={maxReleasePressure}
                 onChange={(e, value) => act('pressure', {
                   pressure: value,
                 })} />
               <Button
                 icon="fast-forward"
-                disabled={data.ReleasePressure === data.maxReleasePressure}
+                disabled={releasePressure === maxReleasePressure}
                 onClick={() => act('pressure', {
                   pressure: 'max',
                 })} />
               <Button
                 icon="undo"
                 content=""
-                disabled={data.ReleasePressure === data.defaultReleasePressure}
+                disabled={releasePressure === defaultReleasePressure}
                 onClick={() => act('pressure', {
                   pressure: 'reset',
                 })} />

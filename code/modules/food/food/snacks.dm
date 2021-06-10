@@ -155,11 +155,11 @@
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
-		. += "<font color='blue'>\The [src] was bitten by someone!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten by someone!</font>"
 	else if (bitecount<=3)
-		. += "<font color='blue'>\The [src] was bitten [bitecount] times!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten [bitecount] times!</font>"
 	else
-		. += "<font color='blue'>\The [src] was bitten multiple times!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten multiple times!</font>"
 
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -179,7 +179,7 @@
 
 			user.visible_message( \
 				"[user] scoops up some [src] with \the [U]!", \
-				"<font color='blue'>You scoop up some [src] with \the [U]!</font>" \
+				"<font color=#4F49AF>You scoop up some [src] with \the [U]!</font>" \
 			)
 
 			src.bitecount++
@@ -595,10 +595,10 @@
 		var/clr = C.colourName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, "<font color='blue'>The egg refuses to take on this color!</font>")
+			to_chat(usr, "<font color=#4F49AF>The egg refuses to take on this color!</font>")
 			return
 
-		to_chat(usr, "<font color='blue'>You color \the [src] [clr]</font>")
+		to_chat(usr, "<font color=#4F49AF>You color \the [src] [clr]</font>")
 		icon_state = "egg-[clr]"
 	else
 		. = ..()
@@ -3233,6 +3233,19 @@
 	reagents.add_reagent("protein", 2)
 	bitesize = 2
 
+/obj/item/reagent_containers/food/snacks/voxjerky
+	name = "vox jerky"
+	desc = "Dehydrated Vox meat, cut into tough strips. A good source of protein, if you have strong teeth."
+	icon_state = "voxjerky"
+	nutriment_amt = 6
+	nutriment_desc = list("spicy teriyaki" = 6)
+
+/obj/item/reagent_containers/food/snacks/voxjerky/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	reagents.add_reagent("phoron", 6)
+	bitesize = 2
+
 ///////////////////////////////////////////
 // new old food stuff from bs12
 ///////////////////////////////////////////
@@ -3455,7 +3468,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("chalk" = 6)
 
 /obj/item/reagent_containers/food/snacks/liquidfood/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("iron", 3)
 
 /obj/item/reagent_containers/food/snacks/liquidvitamin
@@ -3469,7 +3482,7 @@ END CITADEL CHANGE */
 	center_of_mass = list("x"=16, "y"=15)
 
 /obj/item/reagent_containers/food/snacks/liquidvitamin/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("nutriflour", 20)
 	reagents.add_reagent("tricordrazine", 5)
 	reagents.add_reagent("paracetamol", 5)
@@ -3498,7 +3511,7 @@ END CITADEL CHANGE */
     center_of_mass = list("x"=16, "y"=15)
 
 /obj/item/reagent_containers/food/snacks/liquidprotein/Initialize(mapload)
-    ..()
+    . = ..()
     reagents.add_reagent("protein", 30)
     reagents.add_reagent("iron", 3)
 
@@ -5536,7 +5549,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("gargonzola" = 2, "burning" = 2)
 
 /obj/item/reagent_containers/food/snacks/my_new_food/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 2) //For meaty things.
 	bitesize = 3 //How many reagents to transfer per bite?
 */
@@ -5552,7 +5565,7 @@ END CITADEL CHANGE */
 	nutriment_amt = 20
 
 /obj/item/reagent_containers/food/snacks/sliceable/sushi/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 15)
 	bitesize = 5
 
@@ -5654,7 +5667,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("tomato" = 4, "meat" = 2)
 
 /obj/item/reagent_containers/food/snacks/lasagna/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 2) //For meaty things.
 
 
@@ -5668,7 +5681,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("meat" = 2, "vegetables" = 2, "seasoning" = 5)
 
 /obj/item/reagent_containers/food/snacks/goulash/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 3) //For meaty things.
 	reagents.add_reagent("water", 5)
 
@@ -5682,7 +5695,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("vegetables" = 2, "seasoned meat" = 5)
 
 /obj/item/reagent_containers/food/snacks/donerkebab/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 2) //For meaty things.
 
 
@@ -5696,7 +5709,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("cooked meat" = 5)
 
 /obj/item/reagent_containers/food/snacks/roastbeef/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 4) //For meaty things.
 	bitesize = 2
 
@@ -5710,7 +5723,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("chocolate" = 4, "colors" = 2)
 
 /obj/item/reagent_containers/food/snacks/reishicup/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("psilocybin", 3)
 	bitesize = 6
 
@@ -5725,7 +5738,7 @@ END CITADEL CHANGE */
 	foldable = null
 
 /obj/item/storage/box/wings/Initialize(mapload)
-	..()
+	. = ..()
 	for(var/i=1 to startswith)
 		new /obj/item/reagent_containers/food/snacks/chickenwing(src)
 	update_icon()
@@ -5746,7 +5759,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("chicken" = 2, "unplacable flavor sauce" = 4)
 
 /obj/item/reagent_containers/food/snacks/chickenwing/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 1)
 	bitesize = 3
 
@@ -5761,7 +5774,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("spicyness" = 4, "sourness" = 4, "tofu" = 1)
 
 /obj/item/reagent_containers/food/snacks/hotandsoursoup/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 2
 
 
@@ -5775,7 +5788,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("fried egg" = 2, "egg noodles" = 4)
 
 /obj/item/reagent_containers/food/snacks/kitsuneudon/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/generalschicken
@@ -5788,7 +5801,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("sweet and spicy sauce" = 5, "chicken" = 3)
 
 /obj/item/reagent_containers/food/snacks/generalschicken/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 4)
 	bitesize = 2
 
@@ -5800,7 +5813,7 @@ END CITADEL CHANGE */
 	center_of_mass = list("x"=16, "y"=10)
 
 /obj/item/reagent_containers/food/snacks/meat/grubmeat/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("shockchem", 6)
 	bitesize = 6
@@ -5817,7 +5830,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("crunchy shell bits" = 5)
 
 /obj/item/reagent_containers/food/snacks/bugball/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("carbon", 5)
 	bitesize = 7
@@ -5832,7 +5845,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("sparkles" = 5, "ancient inca culture" =3)
 
 /obj/item/reagent_containers/food/snacks/pillbug/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 3)
 	reagents.add_reagent("shockchem", 6)
 	bitesize = 6
@@ -5846,7 +5859,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("crunchy shell bits" = 5)
 
 /obj/item/reagent_containers/food/snacks/pillbug/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("carbon", 5)
 	bitesize = 3
@@ -5861,7 +5874,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("brothy sweet goodness" = 5)
 
 /obj/item/reagent_containers/food/snacks/mammi/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/makaroni
@@ -5874,7 +5887,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("cheese" = 5, "eggs" = 3, "pasta" = 4, "sparkles" = 3)
 
 /obj/item/reagent_containers/food/snacks/makaroni/Initialize(mapload)
-	..()
+	. = ..()
 	reagents.add_reagent("protein", 1)
 	reagents.add_reagent("shockchem", 6)
 	bitesize = 7
@@ -5887,7 +5900,7 @@ END CITADEL CHANGE */
 	nutriment_amt = 5
 
 /obj/item/reagent_containers/food/snacks/lobster/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 0.1
 
 /obj/item/reagent_containers/food/snacks/lobstercooked
@@ -5900,7 +5913,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("lemon" = 2, "lobster" = 5, "salad" = 2)
 
 /obj/item/reagent_containers/food/snacks/lobstercooked/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 5
 	reagents.add_reagent("protein", 20)
 	reagents.add_reagent("tricordrazine", 5)
@@ -5914,7 +5927,7 @@ END CITADEL CHANGE */
 	nutriment_amt = 5
 
 /obj/item/reagent_containers/food/snacks/cuttlefish/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 10
 
 /obj/item/reagent_containers/food/snacks/cuttlefishcooked
@@ -5926,7 +5939,7 @@ END CITADEL CHANGE */
 	nutriment_desc = list("cuttlefish" = 5, "rubber" = 5, "grease" = 1)
 
 /obj/item/reagent_containers/food/snacks/cuttlefishcooked/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 5
 	reagents.add_reagent("protein", 10)
 
@@ -5942,7 +5955,7 @@ END CITADEL CHANGE */
 	trash = /obj/item/reagent_containers/food/snacks/sliceable/monkfishremains
 
 /obj/item/reagent_containers/food/snacks/sliceable/monkfish/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/monkfishfillet
@@ -5953,7 +5966,7 @@ END CITADEL CHANGE */
 	nutriment_amt = 5
 
 /obj/item/reagent_containers/food/snacks/monkfishfillet/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 3
 	reagents.add_reagent("protein", 1)
 
@@ -5967,7 +5980,7 @@ END CITADEL CHANGE */
 	trash = /obj/item/trash/fancyplate
 
 /obj/item/reagent_containers/food/snacks/monkfishcooked/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 4
 	reagents.add_reagent("protein", 5)
 
@@ -5982,7 +5995,7 @@ END CITADEL CHANGE */
 	slices_num = 1
 
 /obj/item/reagent_containers/food/snacks/sliceable/monkfishremains/Initialize(mapload)
-	..()
+	. = ..()
 	bitesize = 0.01 //impossible to eat
 	reagents.add_reagent("carbon", 5)
 
@@ -6018,194 +6031,160 @@ END CITADEL CHANGE */
 	name = "wolpin cube"
 	monkey_type = "Wolpin"
 
-/obj/item/reagent_containers/food/snacks/pizza/margfrozen
-	name = "frozen margherita pizza"
-	desc = "It's frozen rock solid, better thaw it in a microwave."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "margharita_pizza_frozen"
-	center_of_mass = list("x"=16, "y"=11)
-	nutriment_amt = 15
-	nutriment_desc = list("ice" = 5, "toothache" = 1, "frozen cheese" = 5, "frozen tomato" = 5)
+//Goblin food, yes?
+/obj/item/reagent_containers/food/snacks/cavenuggets
+	name = "cave nuggets"
+	desc = "A favorite of Tyrmalin street vendors on Mars. Contains a delicious mix of mystery meat."
+	icon_state = "cavenuggets"
+	trash = /obj/item/trash/plate
+	nutriment_amt = 6
+	nutriment_desc = list("protein" = 4, "grease" = 2, "oil" = 1, "butter" = 2)
 
-/obj/item/reagent_containers/food/snacks/pizza/margfrozen/Initialize(mapload)
-	..()
-	bitesize = 20
-	//reagents.add_reagent("frostoil",3)
+/obj/item/reagent_containers/food/snacks/cavenuggets/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	bitesize = 2
 
-/obj/item/reagent_containers/food/snacks/sliceable/pizza/margcargo
-	name = "Margherita"
-	desc = "The golden standard of pizzas, it looks drowned in tomato sauce."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "margharita_pizza_cargo"
-	slice_path = /obj/item/reagent_containers/food/snacks/slice/margcargo
-	slices_num = 6
-	center_of_mass = list("x"=16, "y"=11)
-	nutriment_desc = list("pizza crust" = 10, "tomato" = 15, "cheese" = 5)
+/obj/item/reagent_containers/food/snacks/diggerstew
+	name = "digger stew"
+	desc = "A thick, hearty Stew, usually cooked in large portions for hungry Tyrmalin miners."
+	icon_state = "diggerstew"
+	trash = /obj/item/trash/bowl
+	filling_color = "#9E673A"
+	nutriment_amt = 6
+	nutriment_desc = list("mushroom" = 2, "carrot" = 2, "bugflesh" = 2)
+
+/obj/item/reagent_containers/food/snacks/diggerstew/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	reagents.add_reagent("tomatojuice", 5)
+	reagents.add_reagent("imidazoline", 5)
+	reagents.add_reagent("water", 5)
+	bitesize = 10
+
+/obj/item/reagent_containers/food/snacks/diggerstew_pot
+	name = "pot of digger stew"
+	desc = "A thick, hearty Stew, usually cooked in large portions for hungry Tyrmalin miners. The larger pot means more veggies!"
+	icon_state = "diggerstew_pot"
+	filling_color = "#9E673A"
 	nutriment_amt = 10
+	nutriment_desc = list("mushroom" = 2, "carrot" = 2, "potato" = 2, "bugflesh" = 2, "oil" = 1)
 
-/obj/item/reagent_containers/food/snacks/sliceable/pizza/margcargo/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 2)
-	reagents.add_reagent("tomatojuice", 10)
-	bitesize = 2
-	//reagents.remove_reagent("frostoil",3)
+/obj/item/reagent_containers/food/snacks/diggerstew/pot/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	reagents.add_reagent("tomatojuice", 5)
+	reagents.add_reagent("imidazoline", 5)
+	reagents.add_reagent("water", 5)
+	bitesize = 10
 
-/obj/item/reagent_containers/food/snacks/slice/margcargo
-	name = "Margherita slice"
-	desc = "A slice of the classic pizza, it's hard not to spill any tomato juice on yourself."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "margharita_pizza_slice_cargo"
-	filling_color = "#BAA14C"
-	bitesize = 2
-	center_of_mass = list("x"=16, "y"=13)
-	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/pizza/margcargo
-
-/obj/item/reagent_containers/food/snacks/slice/margcargo/filled
-	filled = TRUE
-
-/obj/item/reagent_containers/food/snacks/pizza/meatfrozen
-	name = "frozen meat pizza"
-	desc = "It's frozen rock solid, better thaw it in a microwave."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "meat_pizza_frozen"
-	center_of_mass = list("x"=16, "y"=11)
-	nutriment_amt = 15
-	nutriment_desc = list("ice" = 5, "toothache" = 1, "frozen meat" = 5, "frozen cow screams" = 5)
-
-/obj/item/reagent_containers/food/snacks/pizza/meatfrozen/Initialize(mapload)
-	..()
-	bitesize = 20
-	//reagents.add_reagent("frostoil",3)
-
-/obj/item/reagent_containers/food/snacks/sliceable/pizza/meatcargo
-	name = "Meatpizza"
-	desc = "A pizza with meat topping, some of it suspiciously pink."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "meat_pizza_cargo"
-	slice_path = /obj/item/reagent_containers/food/snacks/slice/meatcargo
-	slices_num = 6
-	center_of_mass = list("x"=16, "y"=11)
-	nutriment_desc = list("meat" = 10, "beef" = 10, "squeaky pork" = 15, "longpig" = 5)
+/obj/item/reagent_containers/food/snacks/full_goss
+	name = "full Goss Aguz breakfast"
+	desc = "Fried mushrooms, grilled roots, fried egg, and a slice of smoked bugmeat! Just like Broodmomma used to make it."
+	icon_state = "fullgoss"
+	trash = /obj/item/tray
 	nutriment_amt = 10
+	nutriment_desc = list("mushroom" = 2, "earthy spice" = 2, "egg" = 2, "bugflesh" = 2, "oil" = 1)
 
-/obj/item/reagent_containers/food/snacks/sliceable/pizza/meatcargo/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 20)
-	reagents.add_reagent("tomatojuice", 6)
-	bitesize = 2
-	//reagents.remove_reagent("frostoil",3)
+/obj/item/reagent_containers/food/snacks/full_goss/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 10)
+	bitesize = 6
 
-/obj/item/reagent_containers/food/snacks/slice/meatcargo
-	name = "Meatpizza slice"
-	desc = "A slice of a meaty pizza, there are some bits of supiciously pink meat."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "meat_pizza_slice_cargo"
-	filling_color = "#BAA14C"
-	bitesize = 2
-	center_of_mass = list("x"=16, "y"=13)
-	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatcargo
+/obj/item/reagent_containers/food/snacks/greenham
+	name = "green ham"
+	desc = "When the Tyrmalin migrated to Mars, they brought many strange foods with them. This specially pickled meat was initially met with much skepticism."
+	icon_state = "greenham"
+	trash = /obj/item/trash/plate
+	nutriment_amt = 6
+	nutriment_desc = list("mushroom" = 2, "bugflesh" = 2)
 
-/obj/item/reagent_containers/food/snacks/slice/meatcargo/filled
-	filled = TRUE
+/obj/item/reagent_containers/food/snacks/greenham/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	bitesize = 6
 
-/obj/item/reagent_containers/food/snacks/pizza/mushfrozen
-	name = "frozen mushroom pizza"
-	desc = "It's frozen rock solid, better thaw it in a microwave."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "mushroom_pizza_frozen"
-	center_of_mass = list("x"=16, "y"=11)
-	nutriment_amt = 15
-	nutriment_desc = list("ice" = 5, "toothache" = 1, "frozen mushrooms" = 5, "frozen cream" = 5)
+/obj/item/reagent_containers/food/snacks/greenhamandeggs
+	name = "green ham and eggs"
+	desc = "The same pickling processes behind green ham can, controversially, also be used to prepare eggs."
+	icon_state = "greenhamandeggs"
+	trash = /obj/item/trash/plate
+	nutriment_amt = 6
+	nutriment_desc = list("mushroom" = 2, "egg" = 2, "bugflesh" = 2)
 
-/obj/item/reagent_containers/food/snacks/pizza/mushfrozen/Initialize(mapload)
-	..()
-	bitesize = 20
-	//reagents.add_reagent("frostoil",3)
+/obj/item/reagent_containers/food/snacks/greenhamandeggs/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 6)
+	bitesize = 6
 
-/obj/item/reagent_containers/food/snacks/sliceable/pizza/mushcargo
-	name = "Mushroompizza"
-	desc = "Very special pizza, it looks to be drowned in cream."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "mushroom_pizza_cargo"
-	slice_path = /obj/item/reagent_containers/food/snacks/slice/mushcargo
-	slices_num = 6
-	center_of_mass = list("x"=16, "y"=11)
-	nutriment_desc = list("pizza crust" = 10, "cheese" = 5, "creamy sauce" = 5, "mushroom" = 5)
-	nutriment_amt = 10
+/obj/item/reagent_containers/food/snacks/roach_burger
+	name = "roach burger"
+	desc = "Often used to help curb food shortages on overpopulated worlds, stations, or trains, some people just inexplicably like these."
+	icon_state = "brown_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
 
-/obj/item/reagent_containers/food/snacks/sliceable/pizza/mushcargo/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 4)
-	bitesize = 2
-	//reagents.remove_reagent("frostoil",3)
+/obj/item/reagent_containers/food/snacks/roach_burger/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/slice/mushcargo
-	name = "Mushroompizza slice"
-	desc = "Very special pizza slice, it looks to be drowned in cream."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "mushroom_pizza_slice_cargo"
-	filling_color = "#BAA14C"
-	bitesize = 2
-	center_of_mass = list("x"=16, "y"=13)
-	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/pizza/mushcargo
+/obj/item/reagent_containers/food/snacks/roach_burger/armored
+	name = "crunchy roach burger"
+	desc = "As if it wasn't hard enough to eat already."
+	icon_state = "armor_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
 
-/obj/item/reagent_containers/food/snacks/slice/mushcargp/filled
-	filled = TRUE
+/obj/item/reagent_containers/food/snacks/roach_burger/armored/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/pizza/vegfrozen
-	name = "frozen vegtable pizza"
-	desc = "It's frozen rock solid, better thaw it in a microwave."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "vegetable_pizza_frozen"
-	center_of_mass = list("x"=16, "y"=11)
-	nutriment_amt = 15
-	nutriment_desc = list("ice" = 5, "toothache" = 1, "frozen vegtable chunks" = 5)
+/obj/item/reagent_containers/food/snacks/roach_burger/pale
+	name = "pale roach burger"
+	desc = "It's almost as green as your face will be."
+	icon_state = "green_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
 
-/obj/item/reagent_containers/food/snacks/pizza/vegfrozen/Initialize(mapload)
-	..()
-	bitesize = 20
-	//reagents.add_reagent("frostoil",3)
+/obj/item/reagent_containers/food/snacks/roach_burger/pale/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegcargo
-	name = "Vegetablepizza"
-	desc = "At least 10 of Tomato Sapiens were harmed during making this pizza."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "vegetable_pizza_cargo"
-	slice_path = /obj/item/reagent_containers/food/snacks/slice/vegcargo
-	slices_num = 6
-	center_of_mass = list("x"=16, "y"=11)
-	nutriment_desc = list("pizza crust" = 10, "tomato" = 20, "cheese" = 5, "eggplant" = 5, "carrot" = 5, "corn" = 5)
-	nutriment_amt = 5
+/obj/item/reagent_containers/food/snacks/roach_burger/purple
+	name = "purple roach burger"
+	desc = "It's almost pretty enough to forget."
+	icon_state = "purple_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
 
-/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegcargo/Initialize(mapload)
-	..()
-	reagents.add_reagent("protein", 4)
-	reagents.add_reagent("tomatojuice", 15)
-	reagents.add_reagent("imidazoline", 10)
-	bitesize = 2
-	//reagents.remove_reagent("frostoil",3)
+/obj/item/reagent_containers/food/snacks/roach_burger/purple/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
 
-/obj/item/reagent_containers/food/snacks/slice/vegcargo
-	name = "Vegtablepizza slice"
-	desc = "At least 10 of Tomato Sapiens were harmed during making this pizza."
-	icon = 'icons/obj/food_vr.dmi'
-	icon_state = "vegetable_pizza_slice_cargo"
-	filling_color = "#BAA14C"
-	bitesize = 2
-	center_of_mass = list("x"=16, "y"=13)
-	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/pizza/vegcargo
+/obj/item/reagent_containers/food/snacks/roach_burger/big
+	name = "tall roach burger"
+	desc = "You're either disturbed, or a Tyrmalin. Either way, I hope you sharpened your teeth."
+	icon_state = "big_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
 
-/obj/item/reagent_containers/food/snacks/slice/vegcargo/filled
-	filled = TRUE
+/obj/item/reagent_containers/food/snacks/roach_burger/big/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
 
-/obj/item/pizzabox/margherita/Initialize(mapload)
-	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/margcargo(src)
+/obj/item/reagent_containers/food/snacks/roach_burger/reich
+	name = "royal roach burger"
+	desc = "I want to be the hunter, and not the food."
+	icon_state = "reich_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
 
-/obj/item/pizzabox/vegetable/Initialize(mapload)
-	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/vegcargo(src)
-
-/obj/item/pizzabox/mushroom/Initialize(mapload)
-	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/mushcargo(src)
-
-/obj/item/pizzabox/meat/Initialize(mapload)
-	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/meatcargo(src)
+/obj/item/reagent_containers/food/snacks/roach_burger/reich/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3

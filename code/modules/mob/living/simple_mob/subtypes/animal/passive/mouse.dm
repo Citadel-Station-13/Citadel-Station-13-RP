@@ -65,7 +65,7 @@
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] Squeek!</font>")
+			M.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] Squeek!</font>")
 			playsound(src, 'sound/effects/mouse_squeak.ogg', 35, 1)
 	..()
 
@@ -112,7 +112,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 /mob/living/simple_mob/animal/passive/mouse/rat/Initialize(mapload)
-	..()
+	. = ..()
 	adjust_scale(1.2)
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)

@@ -74,7 +74,7 @@
 		viables.Remove(type)
 		construction[button_desc] = type
 
-	fail_message = "<font color='blue'>[icon2html(thing = src, target = world)] a [pick("loud","soft","sinister","eery","triumphant","depressing","cheerful","angry")] \
+	fail_message = "<font color=#4F49AF>[icon2html(thing = src, target = world)] a [pick("loud","soft","sinister","eery","triumphant","depressing","cheerful","angry")] \
 		[pick("horn","beep","bing","bleep","blat","honk","hrumph","ding")] sounds and a \
 		[pick("yellow","purple","green","blue","red","orange","white")] \
 		[pick("light","dial","meter","window","protrusion","knob","antenna","swirly thing")] \

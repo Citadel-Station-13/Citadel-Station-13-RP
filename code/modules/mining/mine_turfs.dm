@@ -107,7 +107,7 @@ turf/simulated/mineral/floor/light_corner
 	update_general()
 
 /turf/simulated/mineral/proc/update_general()
-	if(!flags & INITIALIZED)
+	if(!(flags & INITIALIZED))
 		update_icon(TRUE)
 		recalc_atom_opacity()
 	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
@@ -233,6 +233,7 @@ turf/simulated/mineral/floor/light_corner
 				resources[ore] = 0
 
 /turf/simulated/mineral/bullet_act(var/obj/item/projectile/Proj) // only emitters for now
+	. = ..()
 	if(Proj.excavation_amount)
 		var/newDepth = excavation_level + Proj.excavation_amount // Used commonly below
 		if(newDepth >= 200) // first, if the turf is completely drilled then don't bother checking for finds and just drill it

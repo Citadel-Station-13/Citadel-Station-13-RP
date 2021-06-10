@@ -263,7 +263,7 @@ var/list/mob_hat_cache = list()
 //Easiest to check this here, then check again in the robot proc.
 //Standard robots use config for crit, which is somewhat excessive for these guys.
 //Drones killed by damage will gib.
-/mob/living/silicon/robot/drone/handle_regular_status_updates()
+/mob/living/silicon/robot/drone/handle_regular_UI_updates()
 	var/turf/T = get_turf(src)
 	if(!T || health <= -35 )
 		timeofdeath = world.time

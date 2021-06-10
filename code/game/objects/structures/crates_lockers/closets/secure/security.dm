@@ -11,7 +11,7 @@
 	starts_with = list(
 		/obj/item/storage/backpack/dufflebag/captain,
 		/obj/item/clothing/head/helmet,
-		/obj/item/clothing/suit/armor/vest/capcarapace,
+		/obj/item/clothing/suit/storage/vest/capcarapace,
 		/obj/item/cartridge/captain,
 		/obj/item/storage/lockbox/medal,
 		/obj/item/radio/headset/heads/captain,
@@ -77,6 +77,7 @@
 		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/under/rank/head_of_personnel_whimsy,
 		/obj/item/clothing/head/caphat/hop,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/captain/hop,
 		/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit,
 		/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit/skirt,
 		/obj/item/clothing/glasses/sunglasses)

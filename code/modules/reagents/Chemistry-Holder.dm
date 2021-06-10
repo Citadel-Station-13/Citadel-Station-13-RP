@@ -77,6 +77,7 @@
 	return
 
 /datum/reagents/proc/handle_reactions()
+	set waitfor = FALSE		// shitcode. reagents shouldn't ever sleep but hey :^)
 	if(QDELETED(my_atom))
 		return FALSE
 	if(my_atom.flags & NOREACT)
@@ -139,6 +140,13 @@
 	else
 		stack_trace("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
 	return 0
+
+/datum/reagents/proc/isolate_reagent(reagent)
+	for(var/A in reagent_list)
+		var/datum/reagent/R = A
+		if(R.id != reagent)
+			del_reagent(R.id)
+			update_total()
 
 /datum/reagents/proc/remove_reagent(var/id, var/amount, var/safety = 0)
 	if(!isnum(amount))

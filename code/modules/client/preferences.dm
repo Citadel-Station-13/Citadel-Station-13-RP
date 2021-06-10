@@ -125,6 +125,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/gen_record = ""
 	var/exploit_record = ""
 	var/disabilities = 0
+	var/mirror = TRUE
 
 	var/economic_status = "Average"
 

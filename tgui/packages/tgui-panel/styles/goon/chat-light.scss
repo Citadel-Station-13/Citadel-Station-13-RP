@@ -273,8 +273,9 @@ a.popt {
 
 
 .italic,
-.italics,
-
+.italics {
+  font-style: italic;
+}
 
 
 
@@ -345,6 +346,7 @@ em {
   font-weight: bold;
 }
 
+
 //attack logging!
 .log_message {
   color: #386AFF;
@@ -393,10 +395,7 @@ em {
   font-weight: bold;
 }
 
-.say {
-}
-
-.emote {
+.say, .emote, .infoplain {
 }
 
 .deadsay {
@@ -431,11 +430,11 @@ em {
 }
 
 .secradio {
-  color: #a30000;
+  color: #A30000;
 }
 
 .medradio {
-  color: #337296;
+  color: #008160;
 }
 
 .engradio {
@@ -446,8 +445,12 @@ em {
   color: #5F4519;
 }
 
-.servradio {
+.srvradio {
   color: #6eaa2c;
+}
+
+.expradio {
+  color: #555555;
 }
 
 .syndradio {
@@ -481,8 +484,6 @@ em {
 h1.alert, h2.alert {
   color: #000000;
 }
-
-
 
 .userdanger {
   color: #ff0000;
@@ -535,6 +536,11 @@ h1.alert, h2.alert {
   font-weight: bold;
 }
 
+.minorannounce {
+  font-weight: bold;
+  font-size: 185%;
+}
+
 .greenannounce {
   color: #00ff00;
   font-weight: bold;
@@ -553,6 +559,11 @@ h1.alert, h2.alert {
 }
 
 .tinynotice {
+  color: #000099;
+  font-size: 85%;
+}
+
+.tinynoticeital {
   color: #000099;
   font-style: italic;
   font-size: 85%;
@@ -587,10 +598,6 @@ h1.alert, h2.alert {
   color: #ff0000;
   font-weight: bold;
 }
-
-
-
-
 
 .unconscious {
   color: #0000ff;
@@ -632,40 +639,40 @@ h1.alert, h2.alert {
 }
 
 .cult {
-  color: #960000;
+  color: #973e3b;
 }
 
 .cultitalic {
-  color: #960000;
+  color: #973e3b;
   font-style: italic;
 }
 
 .cultbold {
-  color: #960000;
+  color: #973e3b;
   font-style: italic;
   font-weight: bold;
 }
 
 .cultboldtalic {
-  color: #960000;
+  color: #973e3b;
   font-weight: bold;
   font-size: 185%;
 }
 
 .cultlarge {
-  color: #960000;
+  color: #973e3b;
   font-weight: bold;
   font-size: 185%;
 }
 
 .narsie {
-  color: #960000;
+  color: #973e3b;
   font-weight: bold;
   font-size: 925%;
 }
 
 .narsiesmall {
-  color: #960000;
+  color: #973e3b;
   font-weight: bold;
   font-size: 370%;
 }
@@ -724,6 +731,7 @@ h1.alert, h2.alert {
   font-size: 185%;
 }
 
+/* compatability */
 .umbra {
   color: #5000A0;
 }
@@ -925,102 +933,14 @@ h1.alert, h2.alert {
   font-family: "Courier New", cursive, sans-serif;
 }
 
-//langs
-.alien {
-  color: #543354;
-}
-
-
-.tajaran {
-  color: #803B56;
-}
-
-
-.tajaran_signlang {
-  color: #941C1C;
-}
-
-.akhani {
-  color: #AC398C;
-}
-
-.skrell {
-  color: #00B0B3;
-}
-
-.skrellfar {
-  color: #70FCFF;
-}
-
-.soghun {
-  color: #228B22;
-}
-
-.solcom {
-  color: #22228B;
-}
-
-.changeling {
-  color: #800080;
-}
-
-.sergal {
-  color: #0077FF;
-}
-
-.birdsongc {
-  color: #CC9900;
-}
-
-.vulpkanin {
-  color: #B97A57;
-}
-
-.enochian {
-  color: #848A33;
-  letter-spacing:-1pt;
-  word-spacing:4pt;
-  font-family: "Lucida Sans Unicode","Lucida Grande", sans-serif;
-}
-
-.daemon {
-  color: #5E339E;
-	letter-spacing:-1pt;
-	word-spacing:0pt;
-	font-family: "Courier New", Courier, monospace;
-}
-
-.bug {
-	color: #9e9e39;
-}
-
-.vox {
-  color: #AA00AA;
-}
-
-.zaddat {
-  color: #941C1C;
-}
-
-.rough {
-  font-family: "Trebuchet MS", cursive, sans-serif;
-}
-
-.say_quote {
-  font-family: Georgia, Verdana, sans-serif;
-}
-
-.terminus {
-  font-family: "Times New Roman", Times, serif, sans-serif
-}
-
-.interface {
-  color: #330033;
+.tape_recorder {
+  color: #800000;
+  font-family: "Courier New", cursive, sans-serif;
 }
 
 .command_headset {
   font-weight: bold;
-  font-size: 160%;
+  font-size: 125%; /* 160% default, changed so command can scream less */
 }
 
 .small {
@@ -1056,7 +976,7 @@ h1.alert, h2.alert {
 
 .clown {
   color: #FF69Bf;
-  font-size: 160%;
+  font-size: 125%;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-weight: bold;
 }
@@ -1072,7 +992,7 @@ h1.alert, h2.alert {
   font-style: italic;
 }
 
-.spooky {
+.spooky { /* cit specific, used by jacq */
   color: #FF9100;
 }
 
@@ -1105,7 +1025,7 @@ h1.alert, h2.alert {
   }
 }
 
-.velvet	{
+.velvet	{ /* cit specific, used by MKU */
   color: #660015;
   font-weight: bold;
   animation: velvet 5000ms infinite;
@@ -1222,7 +1142,98 @@ h1.alert, h2.alert {
   font-weight: bold;
 }
 
+/* LANGAUGES */
+.alien {
+  color: #543354;
+}
 
+
+.tajaran {
+  color: #803B56;
+}
+
+
+.tajaran_signlang {
+  color: #941C1C;
+}
+
+.akhani {
+  color: #AC398C;
+}
+
+.skrell {
+  color: #00B0B3;
+}
+
+.skrellfar {
+  color: #70FCFF;
+}
+
+.soghun {
+  color: #228B22;
+}
+
+.solcom {
+  color: #22228B;
+}
+
+.changeling {
+  color: #800080;
+}
+
+.sergal {
+  color: #0077FF;
+}
+
+.birdsongc {
+  color: #CC9900;
+}
+
+.vulpkanin {
+  color: #B97A57;
+}
+
+.enochian {
+  color: #848A33;
+  letter-spacing:-1pt;
+  word-spacing:4pt;
+  font-family: "Lucida Sans Unicode","Lucida Grande", sans-serif;
+}
+
+.daemon {
+  color: #5E339E;
+	letter-spacing:-1pt;
+	word-spacing:0pt;
+	font-family: "Courier New", Courier, monospace;
+}
+
+.bug {
+	color: #9e9e39;
+}
+
+.vox {
+  color: #AA00AA;
+}
+
+.zaddat {
+  color: #941C1C;
+}
+
+.rough {
+  font-family: "Trebuchet MS", cursive, sans-serif;
+}
+
+.say_quote {
+  font-family: Georgia, Verdana, sans-serif;
+}
+
+.terminus {
+  font-family: "Times New Roman", Times, serif, sans-serif
+}
+
+.interface {
+  color: #330033;
+}
 
 /* HELPER CLASSES */
 

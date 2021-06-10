@@ -43,8 +43,7 @@
 	if(istype(M))
 		return
 	stored_mmi = new brain_type(src)
-	sleep(-1)
-	update_from_mmi()
+	addtimer(CALLBACK(src, .proc/update_from_mmi), 0)
 
 /obj/item/organ/internal/mmi_holder/proc/update_from_mmi()
 
@@ -77,7 +76,7 @@
 
 	if(stored_mmi)
 		. = stored_mmi //VOREStation Code
-		stored_mmi.loc = get_turf(src)
+		stored_mmi.forceMove(drop_location())
 		if(owner.mind)
 			owner.mind.transfer_to(stored_mmi.brainmob)
 	..()

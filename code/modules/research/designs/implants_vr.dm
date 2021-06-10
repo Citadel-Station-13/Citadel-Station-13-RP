@@ -1,10 +1,10 @@
-/datum/design/item/implant/backup
-	name = "Backup implant"
-	id = "implant_backup"
-	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000)
-	build_path = /obj/item/implantcase/backup
-	sort_string = "MFAVA"
+// /datum/design/item/implant/backup
+// 	name = "Backup implant"
+// 	id = "implant_backup"
+// 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
+// 	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000)
+// 	build_path = /obj/item/implantcase/backup
+// 	sort_string = "MFAVA"
 
 /datum/design/item/implant/sizecontrol
 	name = "Size control implant"

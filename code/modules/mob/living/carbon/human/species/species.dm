@@ -67,8 +67,8 @@
 
 	//Soundy emotey things.
 	var/scream_verb = "screams"
-	var/male_scream_sound		//= 'sound/goonstation/voice/male_scream.ogg' Removed due to licensing, replace!
-	var/female_scream_sound		//= 'sound/goonstation/voice/female_scream.ogg' Removed due to licensing, replace!
+	var/male_scream_sound		= list('modular_citadel/sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_m2.ogg')
+	var/female_scream_sound		= list('modular_citadel/sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_f3.ogg')
 	var/male_cough_sounds = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
 	var/female_cough_sounds = list('sound/effects/mob_effects/f_cougha.ogg','sound/effects/mob_effects/f_coughb.ogg')
 	var/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
@@ -393,6 +393,11 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		H.visible_message( \
 			"<span class='notice'>[H] shakes [target]'s hand.</span>", \
 			"<span class='notice'>You shake [target]'s hand.</span>", )
+	//Ports nose booping
+	else if(H.zone_sel.selecting == "mouth")
+		H.visible_message( \
+			"<span class='notice'>[H] boops [target]'s nose.</span>", \
+			"<span class='notice'>You boop [target] on the nose.</span>", )
 	else H.visible_message("<span class='notice'>[H] hugs [target] to make [t_him] feel better!</span>", \
 					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>") //End VOREStation Edit
 
@@ -415,7 +420,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	H.mob_push_flags = push_flags
 	H.pass_flags = pass_flags
 
-/datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events (such as dionaea nymph spawns).
+/datum/species/proc/handle_death(var/mob/living/carbon/human/H, gibbed = FALSE) //Handles any species-specific death events (such as dionaea nymph spawns).
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.

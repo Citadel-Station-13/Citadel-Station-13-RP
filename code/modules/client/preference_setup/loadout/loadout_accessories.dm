@@ -262,7 +262,7 @@
 	path = /obj/item/clothing/accessory/cowledvest
 
 /datum/gear/choker	// A colorable choker
-	display_name = "Choker - Colorable & Tagless"
+	display_name = "Choker"
 	path = /obj/item/clothing/accessory/choker
 	slot = slot_tie
 	sort_category = "Accessories"
@@ -339,3 +339,16 @@
 /datum/gear/accessory/flops/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/accessory/gaiter
+	display_name = "Neck Gaiter - Selection"
+	path = /obj/item/clothing/accessory/gaiter
+	cost = 1
+
+/datum/gear/accessory/gaiter/New()
+	..()
+	var/list/gaiters = list()
+	for(var/gaiter in typesof(/obj/item/clothing/accessory/gaiter))
+		var/obj/item/clothing/accessory/gaiter_type = gaiter
+		gaiters[initial(gaiter_type.name)] = gaiter_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(gaiters, /proc/cmp_text_asc))

@@ -61,6 +61,9 @@
 		recharge_newshot()
 	return 1
 
+/obj/item/gun/magic/consume_next_projectile()
+	return chambered?.BB
+
 /obj/item/gun/magic/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	to_chat(user, "<span class='warning'>The [name] whizzles quietly.</span>")
 

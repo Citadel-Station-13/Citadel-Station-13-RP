@@ -54,6 +54,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/admin_call_shuttle,	//allows us to call the emergency shuttle,
 	/client/proc/admin_cancel_shuttle,	//allows us to cancel the emergency shuttle, sending it back to CentCom,
 	/client/proc/cmd_admin_direct_narrate,	//send text directly to a player with no padding. Useful for narratives and fluff-text,
+	/client/proc/cmd_admin_local_narrate,
 	/client/proc/cmd_admin_world_narrate,	//sends text to all players with no padding,
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/check_words,			//displays cult-words,
@@ -177,6 +178,7 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/toggleAI,
 	/client/proc/cmd_admin_delete,		//delete an instance/object/mob/etc,
 	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/adrev,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
@@ -188,6 +190,7 @@ var/list/admin_verbs_server = list(
 	/client/proc/modify_server_news,
 	/client/proc/recipe_dump,
 	/client/proc/panicbunker,
+	/client/proc/ip_reputation,
 	/client/proc/paranoia_logging
 	)
 
@@ -276,6 +279,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/admin_call_shuttle,
 	/client/proc/admin_cancel_shuttle,
 	/client/proc/cmd_admin_direct_narrate,
+	/client/proc/cmd_admin_local_narrate,
 	/client/proc/cmd_admin_world_narrate,
 	/client/proc/check_words,
 	/client/proc/play_local_sound,
@@ -324,6 +328,7 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_debug_using_map,
 	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_admin_clear_mobs,
 	/client/proc/cmd_debug_tog_aliens,
 	/client/proc/cmd_display_del_log,
 	/client/proc/air_report,
@@ -373,6 +378,7 @@ var/list/admin_verbs_event_manager = list(
 	/client/proc/debug_variables,
 	/client/proc/check_antagonists,
 	/client/proc/aooc,
+	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/paralyze_mob,
 	/client/proc/cmd_admin_direct_narrate,
 	/client/proc/allow_character_respawn,
@@ -521,7 +527,7 @@ var/list/admin_verbs_event_manager = list(
 			mob.alpha = max(mob.alpha + 100, 255)
 		else
 			mob.invisibility = INVISIBILITY_OBSERVER
-			to_chat(mob, "<font color='blue'><b>Invisimin on. You are now as invisible as a ghost.</b></font>")
+			to_chat(mob, "<font color=#4F49AF><b>Invisimin on. You are now as invisible as a ghost.</b></font>")
 			mob.alpha = max(mob.alpha - 100, 0)
 
 /*
@@ -711,7 +717,7 @@ var/list/admin_verbs_event_manager = list(
 			var/light_impact_range = input("Light impact range (in tiles):") as num
 			var/flash_range = input("Flash range (in tiles):") as num
 			explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range)
-	message_admins("<font color='blue'>[ckey] creating an admin explosion at [epicenter.loc].</font>")
+	message_admins("<font color=#4F49AF>[ckey] creating an admin explosion at [epicenter.loc].</font>")
 	feedback_add_details("admin_verb","DB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/give_disease2(mob/T as mob in GLOB.mob_list) // -- Giacom
@@ -743,7 +749,7 @@ var/list/admin_verbs_event_manager = list(
 
 	feedback_add_details("admin_verb","GD2") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] a [greater] disease2 with infection chance [D.infectionchance].")
-	message_admins("<font color='blue'>[key_name_admin(usr)] gave [key_name(T)] a [greater] disease2 with infection chance [D.infectionchance].</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] gave [key_name(T)] a [greater] disease2 with infection chance [D.infectionchance].</font>", 1)
 
 /client/proc/admin_give_modifier(var/mob/living/L)
 	set category = "Debug"
@@ -780,7 +786,7 @@ var/list/admin_verbs_event_manager = list(
 		for (var/mob/V in hearers(O))
 			V.show_message(message, 2)
 		log_admin("[key_name(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound")
-		message_admins("<font color='blue'>[key_name_admin(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound.</font>", 1)
+		message_admins("<font color=#4F49AF>[key_name_admin(usr)] made [O] at [O.x], [O.y], [O.z]. make a sound.</font>", 1)
 		feedback_add_details("admin_verb","MS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -814,7 +820,7 @@ var/list/admin_verbs_event_manager = list(
 		to_chat(usr, "<b>Disabled air processing.</b>")
 	feedback_add_details("admin_verb","KA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] used 'kill air'.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] used 'kill air'.</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] used 'kill air'.</font>", 1)
 
 /client/proc/readmin_self()
 	set name = "Re-Admin self"
@@ -1065,7 +1071,7 @@ var/list/admin_verbs_event_manager = list(
 	to_chat(T, "<span class='notice'>Move along.</span>")
 
 	log_admin("[key_name(usr)] told [key_name(T)] to man up and deal with it.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] told [key_name(T)] to man up and deal with it.</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] told [key_name(T)] to man up and deal with it.</font>", 1)
 
 /client/proc/global_man_up()
 	set category = "Fun"
@@ -1079,7 +1085,7 @@ var/list/admin_verbs_event_manager = list(
 		SEND_SOUND(T, sound('sound/voice/ManUp1.ogg'))
 
 	log_admin("[key_name(usr)] told everyone to man up and deal with it.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] told everyone to man up and deal with it.</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] told everyone to man up and deal with it.</font>", 1)
 
 /client/proc/give_spell(mob/T as mob in GLOB.mob_list) // -- Urist
 	set category = "Fun"
@@ -1090,7 +1096,7 @@ var/list/admin_verbs_event_manager = list(
 	T.spell_list += new S
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")
-	message_admins("<font color='blue'>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] gave [key_name(T)] the spell [S].</font>", 1)
 
 /client/proc/toggle_AI_interact()
 	set name = "Toggle Admin AI Interact"

@@ -83,6 +83,7 @@
 		new /datum/data/mining_equipment("Defense Equipment - Razor Drone Deployer",/obj/item/grenade/spawnergrenade/manhacks/station/locked,	1000),
 		new /datum/data/mining_equipment("Defense Equipment - Sentry Drone Deployer",/obj/item/grenade/spawnergrenade/ward,			1500),
 		new /datum/data/mining_equipment("Defense Equipment - Plasteel Machete",	/obj/item/clothing/accessory/holster/machete/occupied,				500),
+		new /datum/data/mining_equipment("Defense Equipment - Kinetic Dagger",	/obj/item/kinetic_crusher/dagger,				1200),
 		new /datum/data/mining_equipment("Fishing Net",					/obj/item/material/fishing_net,								500),
 		new /datum/data/mining_equipment("Titanium Fishing Rod",		/obj/item/material/fishing_rod/modern,						1000),
 		new /datum/data/mining_equipment("Durasteel Fishing Rod",		/obj/item/material/fishing_rod/modern/strong,				7500),
@@ -155,8 +156,12 @@
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")
 				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
-				usr.put_in_hands(inserted_id)
-				inserted_id = null
+				if(ishuman(usr))
+					usr.put_in_hands(inserted_id)
+					inserted_id = null
+				else
+					inserted_id.forceMove(get_turf(src))
+					inserted_id = null
 		else if(href_list["choice"] == "insert")
 			var/obj/item/card/id/I = usr.get_active_hand()
 			if(istype(I) && !inserted_id && usr.unEquip(I))

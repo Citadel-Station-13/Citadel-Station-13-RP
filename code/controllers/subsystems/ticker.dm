@@ -9,9 +9,7 @@ SUBSYSTEM_DEF(ticker)
 	/// Did we attempt an automatic gamemode vote?
 	var/static/auto_gamemode_vote_attempted = FALSE
 
-	/// What world.time we startED the game, set at round start.
-	var/static/round_start_time
-	/// What world.time we endED the game, set at round end.
+	/// What world.time we ended the game, set at round end.
 	var/static/round_end_time
 
 	/// Should we immediately start?
@@ -20,6 +18,8 @@ SUBSYSTEM_DEF(ticker)
 	var/ready_for_reboot = FALSE
 	/// Is round end delayed?
 	var/delay_end = FALSE
+	/// Force round end
+	var/force_ending = FALSE
 
 	var/timeLeft						//pregame timer
 	var/start_at
@@ -53,6 +53,9 @@ SUBSYSTEM_DEF(ticker)
 	//Now we have a general cinematic centrally held within the gameticker....far more efficient!
 	var/obj/screen/cinematic = null
 
+	var/static/round_start_time
+	var/static/list/round_start_events
+	var/static/list/round_end_events
 
 /datum/controller/subsystem/ticker/Initialize()
 	if(!syndicate_code_phrase)
@@ -147,6 +150,12 @@ SUBSYSTEM_DEF(ticker)
 
 	world.Reboot()
 
+/datum/controller/subsystem/ticker/proc/HasRoundStarted()
+	return current_state >= GAME_STATE_PLAYING
+
+/datum/controller/subsystem/ticker/proc/IsRoundInProgress()
+	return current_state == GAME_STATE_PLAYING
+
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))
 		return max(0, start_at - world.time)
@@ -221,6 +230,13 @@ SUBSYSTEM_DEF(ticker)
 
 	callHook("roundstart")
 
+	for(var/I in round_start_events)
+		var/datum/callback/cb = I
+		cb.InvokeAsync()
+	LAZYCLEARLIST(round_start_events)
+
+	round_start_time = world.time
+
 	// TODO Dear God Fix This.  Fix all of this. Not just this line, this entire proc. This entire file!
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
@@ -229,7 +245,7 @@ SUBSYSTEM_DEF(ticker)
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)
-		to_chat(world, "<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+		to_chat(world, "<font color=#4F49AF><B>Enjoy the game!</B></FONT>")
 		SEND_SOUND(world, sound('sound/AI/welcome.ogg')) // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
@@ -250,13 +266,26 @@ SUBSYSTEM_DEF(ticker)
 	*/
 
 	Master.SetRunLevel(RUNLEVEL_GAME)
-	round_start_time = world.time
 
 	if(config_legacy.sql_enabled)
 		//THIS REQUIRES THE INVOKE ASYNC.
 		INVOKE_ASYNC(GLOBAL_PROC, .proc/statistic_cycle) // Polls population totals regularly and stores them in an SQL DB -- TLE
 
 	return 1
+
+//These callbacks will fire after roundstart key transfer
+/datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)
+	if(!HasRoundStarted())
+		LAZYADD(round_start_events, cb)
+	else
+		cb.InvokeAsync()
+
+//These callbacks will fire before roundend report
+/datum/controller/subsystem/ticker/proc/OnRoundend(datum/callback/cb)
+	if(current_state >= GAME_STATE_FINISHED)
+		cb.InvokeAsync()
+	else
+		LAZYADD(round_end_events, cb)
 
 	//Plus it provides an easy way to make cinematics for other events. Just use this as a template :)
 /datum/controller/subsystem/ticker/proc/station_explosion_cinematic(var/station_missed=0, var/override = null)
@@ -415,7 +444,7 @@ SUBSYSTEM_DEF(ticker)
 		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1)) || universe_has_ended
 		mode_finished = game_finished
 
-	if(!mode.explosion_in_progress && game_finished && (mode_finished || post_game))
+	if(force_ending || (!mode.explosion_in_progress && game_finished && (mode_finished || post_game)))
 		current_state = GAME_STATE_FINISHED
 		round_end_time = world.time
 		Master.SetRunLevel(RUNLEVEL_POSTGAME)
@@ -457,13 +486,17 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	to_chat(world, "<br><br><br><H1>A round of [mode.name] has ended!</H1>")
+	for(var/I in round_end_events)
+		var/datum/callback/cb = I
+		cb.InvokeAsync()
+	LAZYCLEARLIST(round_end_events)
 	for(var/mob/Player in player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
 				var/turf/playerTurf = get_turf(Player)
 				if(SSemergencyshuttle.departed && SSemergencyshuttle.evac)
 					if(isNotAdminLevel(playerTurf.z))
-						to_chat(Player, "<font color='blue'><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></font>")
+						to_chat(Player, "<font color=#4F49AF><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></font>")
 					else
 						to_chat(Player, "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font>")
 				else if(isAdminLevel(playerTurf.z))
@@ -471,7 +504,7 @@ SUBSYSTEM_DEF(ticker)
 				else if(issilicon(Player))
 					to_chat(Player, "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>")
 				else
-					to_chat(Player, "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>")
+					to_chat(Player, "<font color=#4F49AF><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>")
 			else
 				if(istype(Player,/mob/observer/dead))
 					var/mob/observer/dead/O = Player

@@ -50,7 +50,7 @@ nanoui is used to open and update nano browser uis
 	// set to 1 to update the ui automatically every master_controller tick
 	var/is_auto_updating = 0
 	// the current status/visibility of the ui
-	var/status = STATUS_INTERACTIVE
+	var/status = UI_INTERACTIVE
 
 	// Relationship between a master interface and its children. Used in update_status
 	var/datum/nanoui/master_ui
@@ -130,7 +130,7 @@ nanoui is used to open and update nano browser uis
   */
 /datum/nanoui/proc/set_status(state, push_update)
 	if (state != status) // Only update if it is different
-		if (status == STATUS_DISABLED)
+		if (status == UI_DISABLED)
 			status = state
 			if (push_update)
 				update()
@@ -153,7 +153,7 @@ nanoui is used to open and update nano browser uis
 		new_status = min(new_status, master_ui.status)
 
 	set_status(new_status, push_update)
-	if(new_status == STATUS_CLOSE)
+	if(new_status == UI_CLOSE)
 		close()
 
  /**
@@ -414,7 +414,7 @@ nanoui is used to open and update nano browser uis
 	if (width && height)
 		window_size = "size=[width]x[height];"
 	update_status(0)
-	if(status == STATUS_CLOSE)
+	if(status == UI_CLOSE)
 		return
 
 	user << browse(get_html(), "window=[window_id];[window_size][window_options]")
@@ -470,7 +470,7 @@ nanoui is used to open and update nano browser uis
   */
 /datum/nanoui/proc/push_data(data, force_push = 0)
 	update_status(0)
-	if (status == STATUS_DISABLED && !force_push)
+	if (status == UI_DISABLED && !force_push)
 		return // Cannot update UI, no visibility
 
 	var/list/send_data = get_send_data(data)
@@ -480,14 +480,14 @@ nanoui is used to open and update nano browser uis
 
  /**
   * This Topic() proc is called whenever a user clicks on a link within a Nano UI
-  * If the UI status is currently STATUS_INTERACTIVE then call the src_object Topic()
+  * If the UI status is currently UI_INTERACTIVE then call the src_object Topic()
   * If the src_object Topic() returns 1 (true) then update all UIs attached to src_object
   *
   * @return nothing
   */
 /datum/nanoui/Topic(href, href_list)
 	update_status(0) // update the status
-	if (status != STATUS_INTERACTIVE || user != usr) // If UI is not interactive or usr calling Topic is not the UI user
+	if (status != UI_INTERACTIVE || user != usr) // If UI is not interactive or usr calling Topic is not the UI user
 		return
 
 	// This is used to toggle the nano map ui

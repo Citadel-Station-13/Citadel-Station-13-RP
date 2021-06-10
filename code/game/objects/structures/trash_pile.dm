@@ -9,7 +9,7 @@
 	var/list/searchedby	= list()// Characters that have searched this trashpile, with values of searched time.
 	var/mob/living/hider		// A simple animal that might be hiding in the pile
 
-	var/obj/structure/mob_spawner/mouse_nest/mouse_nest = null
+	var/obj/structure/mob_spawner/pest_nest/pest_nest = null
 
 	var/chance_alpha	= 79	// Alpha list is junk items and normal random stuff.
 	var/chance_beta		= 20	// Beta list is actually maybe some useful illegal items. If it's not alpha or gamma, it's beta.
@@ -43,11 +43,11 @@
 		"boxfort",
 		"trashbag",
 		"brokecomp")
-	mouse_nest = new(src)
+	pest_nest = new(src)
 
 /obj/structure/trash_pile/Destroy()
-	qdel(mouse_nest)
-	mouse_nest = null
+	qdel(pest_nest)
+	pest_nest = null
 	return ..()
 
 /obj/structure/trash_pile/attackby(obj/item/W as obj, mob/user as mob)
@@ -240,8 +240,8 @@
 					prob(1);/obj/item/clothing/head/helmet/medieval/crusader,
 					prob(1);/obj/item/clothing/suit/armor/medieval/crusader/dark,
 					prob(1);/obj/item/radio_jammer,
-					prob(1);/obj/item/sleevemate,
-					prob(1);/obj/item/bodysnatcher,
+					// prob(1);/obj/item/sleevemate,
+					// prob(1);/obj/item/bodysnatcher,
 					prob(1);/obj/item/beartrap,
 					prob(1);/obj/item/cell/hyper/empty,
 					prob(1);/obj/item/disk/nifsoft/compliance,
@@ -271,9 +271,9 @@
 	else
 		return produce_beta_item()
 
-/obj/structure/mob_spawner/mouse_nest
+/obj/structure/mob_spawner/pest_nest
 	name = "trash"
-	desc = "A small heap of trash, perfect for mice to nest in."
+	desc = "A small heap of trash, perfect for vermin to nest in."
 	icon = 'icons/obj/trash_piles.dmi'
 	icon_state = "randompile"
 	spawn_types = list(/mob/living/simple_mob/animal/passive/mouse)
@@ -281,7 +281,7 @@
 	destructible = 1
 	spawn_delay = 1 HOUR
 
-/obj/structure/mob_spawner/mouse_nest/Initialize(mapload)
+/obj/structure/mob_spawner/pest_nest/Initialize(mapload)
 	. = ..()
 	last_spawn = rand(world.time - spawn_delay, world.time)
 	icon_state = pick(
@@ -297,11 +297,11 @@
 		"trashbag",
 		"brokecomp")
 
-/obj/structure/mob_spawner/mouse_nest/do_spawn(var/mob_path)
+/obj/structure/mob_spawner/pest_nest/do_spawn(var/mob_path)
 	. = ..()
 	var/atom/A = get_holder_at_turf_level(src)
 	A.visible_message("[.] crawls out of \the [src].")
 
-/obj/structure/mob_spawner/mouse_nest/get_death_report(var/mob/living/L)
+/obj/structure/mob_spawner/pest_nest/get_death_report(var/mob/living/L)
 	..()
 	last_spawn = rand(world.time - spawn_delay, world.time)

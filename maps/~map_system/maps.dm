@@ -165,13 +165,13 @@ var/list/all_maps = list()
 			return list(srcz)
 
 		// Just the sector we're in
-		if(om_range == -1)
+		if(!long_range || (om_range < 0))
 			return O.map_z.Copy()
 
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
 		var/turf/T = get_turf(O)
-		for(var/obj/effect/overmap/visitable/V in range(long_range ? om_range : -1, T))
+		for(var/obj/effect/overmap/visitable/V in range(om_range, T))
 			connections += V.map_z	// Adding list to list adds contents
 		return connections
 

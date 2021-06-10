@@ -47,7 +47,7 @@
 	var/icon_add = 'icons/mob/human_face.dmi'
 	//Enhanced colours and hair for all
 	var/color_blend_mode = ICON_MULTIPLY
-	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN) //This lets all races use the default hairstyles.
+	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW) //This lets all races use the default hairstyles.
 	var/flags
 
 	eighties
@@ -1805,7 +1805,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_short"
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 	shadekin_hair_poofy
@@ -1813,7 +1813,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_poofy"
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 	shadekin_hair_long
@@ -1821,7 +1821,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_long"
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 	shadekin_hair_rivyr
@@ -1830,7 +1830,7 @@
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_rivyr"
 		ckeys_allowed = list("verysoft")
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 /datum/sprite_accessory/facial_hair
@@ -2238,6 +2238,21 @@
 	c_beast_cheek_c
 		name = "Cyber Beast Cheeks c (Use A, B and C)"
 		icon_state = "c_beast_c"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+/datum/sprite_accessory/marking/vr_special
+	icon = 'icons/mob/human_races/markings_vr.dmi'
+
+	abomination
+		name = "Abomination"
+		icon_state = "abomination"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_HEAD)
+
+	abomination_alt
+		name = "Abomination Alternate"
+		icon_state = "abomination2"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
 
@@ -2791,7 +2806,7 @@
 		icon_state = "shadekin-snoot"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 
 	taj_nose_alt
 		name = "Nose Color, alt. (Taj)"
