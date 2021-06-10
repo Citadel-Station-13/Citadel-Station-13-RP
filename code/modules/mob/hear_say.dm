@@ -67,9 +67,9 @@
 		var/message_to_send = null
 		if(language)
 			message_to_send = "<span class='game say'><span class='name'>[speaker_name]</span>[alt_name] [track][language.format_message(message, verb)]</span>"
+			usr.say_overhead(message, language)
 		else
 			message_to_send = "<span class='game say'><span class='name'>[speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='body'>\"[message]\"</span></span></span>"
-			usr.say_overhead(message)
 		if(check_mentioned(message) && is_preference_enabled(/datum/client_preference/check_mention))
 			message_to_send = "<font size='3'><b>[message_to_send]</b></font>"
 
@@ -88,7 +88,6 @@
 
 /mob/proc/on_hear_say(var/message)
 	to_chat(src, message)
-	usr.say_overhead(message)
 	if(teleop)
 		to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[message]")
 
