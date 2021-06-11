@@ -2,15 +2,15 @@
  * This is here for now
  */
 /proc/lavaland_environment_check(turf/simulated/T)
-	. = FALSE
+	. = TRUE
 	if(!istype(T))
 		return
 	var/datum/gas_mixture/environment = T.return_air()
 	if(!istype(environment))
 		return
 	var/pressure = environment.return_pressure()
-	if(pressure <= LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
-		. = TRUE
+	if(pressure > LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
+		. = FALSE
 
 /obj/item/gun/energy/kinetic_accelerator
 	name = "proto-kinetic accelerator"
