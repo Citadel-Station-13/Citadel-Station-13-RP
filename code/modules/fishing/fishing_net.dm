@@ -51,7 +51,7 @@
 			to_chat(user, "[A] can't be trapped in \the [src].")
 			return
 		var/mob/L = A
-		user.visible_message("<span class='notice'>[user] snatches [L] with \the [src].</span>", "<span class='notice'>You snatch [L] with \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] grabs [L] with \the [src].</span>", "<span class='notice'>You snatch [L] with \the [src].</span>")
 		L.forceMove(src)
 		update_icon()
 		update_weight()
