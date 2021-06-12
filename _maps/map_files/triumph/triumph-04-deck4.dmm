@@ -14766,9 +14766,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 8
-	},
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "lvd" = (
