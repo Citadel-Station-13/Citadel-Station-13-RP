@@ -45,7 +45,7 @@
 				accept = TRUE
 		for(var/atom/At in src.contents)
 			if(isliving(At))
-				to_chat(user, "<span class='notice'>Your net is already holding something!</span>")
+				to_chat(user, "<span class='notice'>Your net is fat as fuck.</span>")
 				accept = FALSE
 		if(!accept)
 			to_chat(user, "[A] can't be trapped in \the [src].")
