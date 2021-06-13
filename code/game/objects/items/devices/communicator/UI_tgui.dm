@@ -239,6 +239,11 @@
 
 	//Actual messages.
 	for(var/I in im_list)
+		var/origin = I["address"]
+		var/dest = I["to_address"]
+		var/ours = origin == exonet.address
+		if(ours? (dest != target_address) : (origin != target_address))
+			continue
 		im_list_ui.Add(list(list(
 			"address" = I["address"],
 			"to_address" = I["to_address"],
