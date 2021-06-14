@@ -1550,6 +1550,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
 "boP" = (
