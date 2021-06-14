@@ -14,6 +14,8 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
+	/// Are we EMP immune?
+	var/emp_proof = FALSE
 	var/charge
 	var/maxcharge = 1000
 	var/rigged = 0		// true if rigged to explode
@@ -202,6 +204,9 @@
 		rigged = 1 //broken batteries are dangerous
 
 /obj/item/cell/emp_act(severity)
+	. = ..()
+	if(emp_proof)
+		return
 	//remove this once emp changes on dev are merged in
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
@@ -212,7 +217,6 @@
 		charge = 0
 
 	update_icon()
-	..()
 
 /obj/item/cell/ex_act(severity)
 

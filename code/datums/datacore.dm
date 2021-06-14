@@ -347,8 +347,8 @@
 	return M
 
 /datum/datacore/proc/ResetPDAManifest()
-	if(PDA_Manifest.len)
-		PDA_Manifest.Cut()
+	if(GLOB.PDA_Manifest.len)
+		GLOB.PDA_Manifest.Cut()
 
 /proc/find_general_record(field, value)
 	return find_record(field, value, data_core.general)

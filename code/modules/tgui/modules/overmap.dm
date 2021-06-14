@@ -100,7 +100,7 @@
 
 	. = ..()
 
-/datum/tgui_module/ship/nav/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/ship/nav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	var/turf/T = get_turf(linked)
@@ -151,7 +151,7 @@
 	// SENSORS
 	var/obj/machinery/shipsensors/sensors
 
-/datum/tgui_module/ship/fullmonty/tgui_state(mob/user)
+/datum/tgui_module/ship/fullmonty/ui_state(mob/user)
 	return GLOB.tgui_admin_state
 
 /datum/tgui_module/ship/fullmonty/New(host, obj/effect/overmap/visitable/ship/new_linked)
@@ -184,7 +184,7 @@
 	return ..()
 
 // Beware ye eyes. This holds all of the data from helm, engine, and sensor control all at once.
-/datum/tgui_module/ship/fullmonty/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/ship/fullmonty/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	// HELM

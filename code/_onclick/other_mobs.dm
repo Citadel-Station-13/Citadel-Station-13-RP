@@ -59,14 +59,14 @@
 	. = ..()
 	if(!.)
 		return
-	if(!anchored) // && (interaction_flags_atom & INTERACT_ATOM_REQUIRES_ANCHORED))
+	if(!anchored && (interaction_flags_atom & INTERACT_ATOM_REQUIRES_ANCHORED))
 		return FALSE
 
 /atom/proc/interact(mob/user)
-	// if(interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_INTERACT)
-	// 	add_hiddenprint(user)
-	// else
-	// 	add_fingerprint(user)
+	if(interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_INTERACT)
+		add_hiddenprint(user)
+	else
+		add_fingerprint(user)
 	// if(interaction_flags_atom & INTERACT_ATOM_UI_INTERACT)
 	return (ui_interact(user) || nano_ui_interact(user))
 	// return FALSE

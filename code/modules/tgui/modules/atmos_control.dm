@@ -27,7 +27,7 @@
 			if(ui_ref)
 				var/obj/machinery/alarm/alarm = locate(params["alarm"]) in (monitored_alarms.len ? monitored_alarms : machines)
 				if(alarm)
-					var/datum/tgui_state/TS = generate_state(alarm)
+					var/datum/ui_state/TS = generate_state(alarm)
 					alarm.ui_interact(usr, parent_ui = ui_ref, state = TS)
 			return 1
 		if("setZLevel")
@@ -83,16 +83,16 @@
 	ui_ref = null
 
 /datum/tgui_module/atmos_control/proc/generate_state(air_alarm)
-	var/datum/tgui_state/air_alarm_remote/state = new()
+	var/datum/ui_state/air_alarm_remote/state = new()
 	state.atmos_control = src
 	state.air_alarm = air_alarm
 	return state
 
-/datum/tgui_state/air_alarm_remote
+/datum/ui_state/air_alarm_remote
 	var/datum/tgui_module/atmos_control/atmos_control	= null
 	var/obj/machinery/alarm/air_alarm					= null
 
-/datum/tgui_state/air_alarm_remote/can_use_topic(src_object, mob/user)
+/datum/ui_state/air_alarm_remote/can_use_topic(src_object, mob/user)
 	if(!atmos_control.ui_ref)
 		qdel(src)
 		return UI_CLOSE
@@ -100,10 +100,10 @@
 		return UI_INTERACTIVE
 	return UI_UPDATE
 
-/datum/tgui_state/air_alarm_remote/proc/has_access(var/mob/user)
+/datum/ui_state/air_alarm_remote/proc/has_access(var/mob/user)
 	return user && (isAI(user) || atmos_control.access.allowed(user) || atmos_control.emagged || air_alarm.rcon_setting == RCON_YES || (air_alarm.alarm_area.atmosalm && air_alarm.rcon_setting == RCON_AUTO) || (access_ce in user.GetAccess()))
 
-/datum/tgui_state/air_alarm_remote/Destroy()
+/datum/ui_state/air_alarm_remote/Destroy()
 	atmos_control = null
 	air_alarm = null
 
@@ -111,5 +111,5 @@
 	ntos = TRUE
 
 /datum/tgui_module/atmos_control/robot
-/datum/tgui_module/atmos_control/robot/tgui_state(mob/user)
+/datum/tgui_module/atmos_control/robot/ui_state(mob/user)
 	return GLOB.tgui_self_state

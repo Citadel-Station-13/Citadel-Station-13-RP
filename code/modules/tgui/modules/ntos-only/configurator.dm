@@ -4,7 +4,7 @@
 	tgui_id = "Configuration"
 	var/obj/item/modular_computer/movable = null
 
-/datum/tgui_module/computer_configurator/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
+/datum/tgui_module/computer_configurator/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	movable = ui_host()
 	// No computer connection, we can't get data from that.
 	if(!istype(movable))
@@ -25,7 +25,7 @@
 
 	var/list/hardware = movable.get_all_components()
 	var/list/all_entries[0]
-	for(var/obj/item/weapon/computer_hardware/H in hardware)
+	for(var/obj/item/computer_hardware/H in hardware)
 		all_entries.Add(list(list(
 		"name" = H.name,
 		"desc" = H.desc,
@@ -42,7 +42,7 @@
 		return
 	switch(action)
 		if("PC_toggle_component")
-			var/obj/item/weapon/computer_hardware/H = movable.find_hardware_by_name(params["name"])
+			var/obj/item/computer_hardware/H = movable.find_hardware_by_name(params["name"])
 			if(H && istype(H))
 				H.enabled = !H.enabled
 			. = TRUE

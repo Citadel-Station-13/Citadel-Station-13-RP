@@ -114,5 +114,5 @@
 	ntos = TRUE
 
 /datum/tgui_module/rcon/robot
-/datum/tgui_module/rcon/robot/tgui_state(mob/user)
+/datum/tgui_module/rcon/robot/ui_state(mob/user)
 	return GLOB.tgui_self_state

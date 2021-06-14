@@ -126,7 +126,7 @@
 
 		var/data[0]
 		// This is dumb, but NanoUI breaks if it has no data to send
-		data["manifest"] = PDA_Manifest
+		data["manifest"] = GLOB.PDA_Manifest
 
 		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
