@@ -1325,6 +1325,10 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/turcarpet,
 /area/gaia_planet/inside)
+"CY" = (
+/obj/item/pickaxe/hand,
+/turf/simulated/mineral/floor/gaia_world,
+/area/gaia_planet/outside)
 "CZ" = (
 /mob/living/bot/farmbot{
 	replaces_nutriment = 1
@@ -21868,7 +21872,7 @@ QH
 MV
 MV
 MV
-MV
+CY
 MV
 sL
 QH
