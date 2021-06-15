@@ -4,7 +4,7 @@
 	head_position = 1
 	department = "Engineering"
 	department_flag = ENGSEC
-	disallow_jobhop = TRUE
+	allow_jobhop = FALSE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1

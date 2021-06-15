@@ -38,7 +38,7 @@
 	var/timeoff_factor = 3
 
 	//Disallow joining as this job midround from off-duty position via going on-duty
-	var/disallow_jobhop = FALSE
+	var/allow_jobhop = TRUE
 
 // Check client-specific availability rules.
 /datum/job/proc/player_has_enough_pto(client/C)
