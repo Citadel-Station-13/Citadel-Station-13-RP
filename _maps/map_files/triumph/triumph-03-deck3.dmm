@@ -21272,7 +21272,8 @@
 	},
 /obj/machinery/alarm/monitor/isolation{
 	alarm_id = "xenopenvent";
-	pixel_y = 24
+	pixel_y = 24;
+	target_temperature = 79.5
 	},
 /turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
