@@ -380,8 +380,7 @@ proc/get_radio_key_from_channel(var/channel)
 		if(!isobserver(usr) || !IsAdminGhost(usr))
 			if(!whispering)
 				usr.say_overhead(say_emphasis(message), speaking)
-			if(whispering)
-				return
+
 
 	//Main 'say' and 'whisper' message delivery
 	for(var/mob/M in listening)
