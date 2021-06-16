@@ -6,69 +6,63 @@ import { Window } from '../layouts';
 export const PortableTurret = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    silicon_user,
     locked,
     on,
+    lethal,
+    lethal_is_configurable,
+    targetting_is_configurable,
     check_weapons,
+    neutralize_noaccess,
+    neutralize_norecord,
     neutralize_criminals,
     neutralize_all,
+    neutralize_nonsynth,
     neutralize_unidentified,
-    neutralize_nonmindshielded,
-    neutralize_cyborgs,
-    neutralize_heads,
-    manual_control,
-    allow_manual_control,
-    lasertag_turret,
+    neutralize_down,
   } = data;
   return (
-    <Window
-      width={310}
-      height={lasertag_turret ? 110 : 292}>
-      <Window.Content>
+    <Window width={500} height={400} resizable>
+      <Window.Content scrollable>
         <NoticeBox>
           Swipe an ID card to {locked ? 'unlock' : 'lock'} this interface.
         </NoticeBox>
-        <Fragment>
-          <Section>
-            <LabeledList>
-              <LabeledList.Item
-                label="Status"
-                buttons={!lasertag_turret && (!!allow_manual_control
-                  || (!!manual_control && !!silicon_user)) && (
-                  <Button
-                    icon={manual_control ? "wifi" : "terminal"}
-                    content={manual_control
-                      ? "Remotely Controlled"
-                      : "Manual Control"}
-                    disabled={manual_control}
-                    color="bad"
-                    onClick={() => act('manual')} />
-                )}>
+        <Section>
+          <LabeledList>
+            <LabeledList.Item label="Status">
+              <Button
+                icon={on ? 'power-off' : 'times'}
+                content={on ? 'On' : 'Off'}
+                selected={on}
+                disabled={locked}
+                onClick={() => act('power')} />
+            </LabeledList.Item>
+            {!!lethal_is_configurable && (
+              <LabeledList.Item label="Lethals">
                 <Button
-                  icon={on ? 'power-off' : 'times'}
-                  content={on ? 'On' : 'Off'}
-                  selected={on}
+                  icon={lethal ? 'exclamation-triangle' : 'times'}
+                  content={lethal ? 'On' : 'Off'}
+                  color={lethal ? "bad" : ""}
                   disabled={locked}
-                  onClick={() => act('power')} />
+                  onClick={() => act('lethal')} />
               </LabeledList.Item>
-            </LabeledList>
-          </Section>
-          {!lasertag_turret && (
-            <Section
-              title="Target Settings"
-              buttons={(
-                <Button.Checkbox
-                  checked={!neutralize_heads}
-                  content="Ignore Command"
-                  disabled={locked}
-                  onClick={() => act('shootheads')} />
-              )}>
+            )}
+          </LabeledList>
+        </Section>
+        {!!targetting_is_configurable && (
+          <Fragment>
+            <Section title="Humanoid Targets">
               <Button.Checkbox
                 fluid
-                checked={neutralize_all}
-                content="Non-Security and Non-Command"
+                checked={neutralize_criminals}
+                content="Wanted Criminals"
                 disabled={locked}
-                onClick={() => act('shootall')} />
+                onClick={() => act('autharrest')} />
+              <Button.Checkbox
+                fluid
+                checked={neutralize_norecord}
+                content="No Sec Record"
+                disabled={locked}
+                onClick={() => act('authnorecord')} />
               <Button.Checkbox
                 fluid
                 checked={check_weapons}
@@ -77,31 +71,39 @@ export const PortableTurret = (props, context) => {
                 onClick={() => act('authweapon')} />
               <Button.Checkbox
                 fluid
-                checked={neutralize_unidentified}
-                content="Unidentified Life Signs"
+                checked={neutralize_noaccess}
+                content="Unauthorized Access"
                 disabled={locked}
-                onClick={() => act('checkxenos')} />
-              <Button.Checkbox
-                fluid
-                checked={neutralize_nonmindshielded}
-                content="Non-Mindshielded"
-                disabled={locked}
-                onClick={() => act('checkloyal')} />
-              <Button.Checkbox
-                fluid
-                checked={neutralize_criminals}
-                content="Wanted Criminals"
-                disabled={locked}
-                onClick={() => act('shootcriminals')} />
-              <Button.Checkbox
-                fluid
-                checked={neutralize_cyborgs}
-                content="Cyborgs"
-                disabled={locked}
-                onClick={() => act('shootborgs')} />
+                onClick={() => act('authaccess')} />
             </Section>
-          )}
-        </Fragment>
+            <Section title="Other Targets">
+              <Button.Checkbox
+                fluid
+                checked={neutralize_unidentified}
+                content="Unidentified Lifesigns (Xenos, Animals, Etc)"
+                disabled={locked}
+                onClick={() => act('authxeno')} />
+              <Button.Checkbox
+                fluid
+                checked={neutralize_nonsynth}
+                content="All Non-Synthetics"
+                disabled={locked}
+                onClick={() => act('authsynth')} />
+              <Button.Checkbox
+                fluid
+                checked={neutralize_down}
+                content="Downed Targets"
+                disabled={locked}
+                onClick={() => act('authdown')} />
+              <Button.Checkbox
+                fluid
+                checked={neutralize_all}
+                content="All Entities"
+                disabled={locked}
+                onClick={() => act('authall')} />
+            </Section>
+          </Fragment>
+        )}
       </Window.Content>
     </Window>
   );

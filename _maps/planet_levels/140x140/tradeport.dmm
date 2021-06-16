@@ -605,7 +605,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "cY" = (
-/obj/structure/mob_spawner/mouse_nest,
+/obj/structure/mob_spawner/pest_nest,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "cZ" = (
@@ -5997,7 +5997,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/vending/cigarette,
+/obj/machinery/vending/glukoz,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "Bw" = (
@@ -6495,11 +6495,7 @@
 /turf/simulated/floor/airless,
 /area/tradeport/cyndi)
 "DL" = (
-/obj/machinery/vending/assist{
-	contraband = null;
-	name = "Old Vending Machine";
-	products = list(/obj/item/assembly/prox_sensor = 5, /obj/item/assembly/signaler = 4, /obj/item/assembly/infra = 4, /obj/item/assembly/prox_sensor = 4, /obj/item/handcuffs = 8, /obj/item/flash = 4, /obj/item/cartridge/signal = 4, /obj/item/clothing/glasses/sunglasses = 4)
-	},
+/obj/machinery/vending/cigarette,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
 "DM" = (
@@ -9892,6 +9888,12 @@
 /obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	name = "Nebula Gas - Employees Only"
+	},
+/obj/machinery/access_button{
+	frequency = 1380;
+	pixel_x = -6;
+	pixel_y = 25;
+	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)

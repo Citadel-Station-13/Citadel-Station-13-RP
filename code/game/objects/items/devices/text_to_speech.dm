@@ -7,7 +7,7 @@
 	var/named
 
 /obj/item/text_to_speech/attack_self(mob/user as mob)
-	if(user.incapacitated(INCAPACITATION_ALL)) //Are you in a state to actual use the device?
+	if(user.incapacitated(INCAPACITATION_KNOCKDOWN) || user.incapacitated(INCAPACITATION_DISABLED)) // EDIT: We can use the device only if we are not in certain types of incapacitation. We don't want chairs stopping us from texting!!
 		to_chat(user, "You cannot activate the device in your state.")
 		return
 
@@ -37,3 +37,6 @@
 			speech_bubble_hearers += M.client
 	if(length(speech_bubble_hearers))
 		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_hearers, 30)
+
+/obj/item/text_to_speech/AltClick(mob/user) // QOL Change
+	attack_self(user)

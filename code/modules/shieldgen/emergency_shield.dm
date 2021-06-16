@@ -258,14 +258,14 @@
 		return
 
 	if (src.active)
-		user.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [user] deactivated the shield generator.</font>", \
-			"<font color='blue'>[icon2html(thing = src, target = user)] You deactivate the shield generator.</font>", \
+		user.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [user] deactivated the shield generator.</font>", \
+			"<font color=#4F49AF>[icon2html(thing = src, target = user)] You deactivate the shield generator.</font>", \
 			"You hear heavy droning fade out.")
 		src.shields_down()
 	else
 		if(anchored)
-			user.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [user] activated the shield generator.</font>", \
-				"<font color='blue'>[icon2html(thing = src, target = user)] You activate the shield generator.</font>", \
+			user.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [user] activated the shield generator.</font>", \
+				"<font color=#4F49AF>[icon2html(thing = src, target = user)] You activate the shield generator.</font>", \
 				"You hear heavy droning.")
 			src.shields_up()
 		else
@@ -282,10 +282,10 @@
 	if(W.is_screwdriver())
 		playsound(src, W.usesound, 100, 1)
 		if(is_open)
-			to_chat(user, "<font color='blue'>You close the panel.</font>")
+			to_chat(user, "<font color=#4F49AF>You close the panel.</font>")
 			is_open = 0
 		else
-			to_chat(user, "<font color='blue'>You open the panel and expose the wiring.</font>")
+			to_chat(user, "<font color=#4F49AF>You open the panel and expose the wiring.</font>")
 			is_open = 1
 
 	else if(istype(W, /obj/item/stack/cable_coil) && malfunction && is_open)
@@ -305,15 +305,15 @@
 			return
 		if(anchored)
 			playsound(src, W.usesound, 100, 1)
-			to_chat(user, "<font color='blue'>You unsecure the [src] from the floor!</font>")
+			to_chat(user, "<font color=#4F49AF>You unsecure the [src] from the floor!</font>")
 			if(active)
-				to_chat(user, "<font color='blue'>The [src] shuts off!</font>")
+				to_chat(user, "<font color=#4F49AF>The [src] shuts off!</font>")
 				src.shields_down()
 			anchored = 0
 		else
 			if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
 			playsound(src, W.usesound, 100, 1)
-			to_chat(user, "<font color='blue'>You secure the [src] to the floor!</font>")
+			to_chat(user, "<font color=#4F49AF>You secure the [src] to the floor!</font>")
 			anchored = 1
 
 

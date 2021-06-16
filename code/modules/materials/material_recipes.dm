@@ -230,6 +230,27 @@
 	recipes = list()
 	recipes += new/datum/stack_recipe("woven net", /obj/item/material/fishing_net, 10, time = 30 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("bedsheet", /obj/item/bedsheet, 10, time = 30 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe_list("colored bedsheets", list( \
+		new/datum/stack_recipe("red bedsheet", /obj/item/bedsheet/red, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("orange bedsheet", /obj/item/bedsheet/orange, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("yellow bedsheet", /obj/item/bedsheet/yellow, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("green bedsheet", /obj/item/bedsheet/green, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("blue bedsheet", /obj/item/bedsheet/blue, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("purple bedsheet", /obj/item/bedsheet/purple, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("brown bedsheet", /obj/item/bedsheet/brown, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("rainbow bedsheet", /obj/item/bedsheet/rainbow, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		))
+	recipes += new/datum/stack_recipe("double bedsheet", /obj/item/bedsheet/double, 10, time = 30 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe_list("colored double bedsheets", list( \
+		new/datum/stack_recipe("red double bedsheet", /obj/item/bedsheet/reddouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("orange doudble bedsheet", /obj/item/bedsheet/orangedouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("yellow double bedsheet", /obj/item/bedsheet/yellowdouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("green double bedsheet", /obj/item/bedsheet/greendouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("blue double bedsheet", /obj/item/bedsheet/bluedouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("purple double bedsheet", /obj/item/bedsheet/purpledouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("brown double bedsheet", /obj/item/bedsheet/browndouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("rainbow double bedsheet", /obj/item/bedsheet/rainbowdouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		))
 	recipes += new/datum/stack_recipe("uniform", /obj/item/clothing/under/color/white, 8, time = 15 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("foot wraps", /obj/item/clothing/shoes/footwraps, 2, time = 5 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("gloves", /obj/item/clothing/gloves/white, 2, time = 5 SECONDS, pass_stack_color = TRUE)
@@ -244,6 +265,7 @@
 	recipes += new/datum/stack_recipe("belt pouch", /obj/item/storage/belt/fannypack/white, 25, time = 1 MINUTE, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("crude bandage", /obj/item/stack/medical/crude_pack, 1, time = 2 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("empty sandbag", /obj/item/stack/material/emptysandbag, 1, 5, 10, time = 2 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("shrine seal", /obj/structure/shrine_seal, 2, time = 5 SECONDS)
 
 /datum/material/resin/generate_recipes()
 	recipes = list()

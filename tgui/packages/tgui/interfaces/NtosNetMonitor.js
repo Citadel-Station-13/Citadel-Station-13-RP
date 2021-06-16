@@ -17,6 +17,7 @@ export const NtosNetMonitor = (props, context) => {
     ntnetmaxlogs,
     maxlogs,
     minlogs,
+    banned_nids,
     ntnetlogs = [],
   } = data;
   return (
@@ -96,6 +97,22 @@ export const NtosNetMonitor = (props, context) => {
             </Fragment>
           )}
           <LabeledList>
+            <LabeledList.Item label="Banned NIDs" buttons={(
+              <Fragment>
+                <Button
+                  icon="ban"
+                  onClick={() => act("ban_nid")}>
+                  Ban NID
+                </Button>
+                <Button
+                  icon="balance-scale"
+                  onClick={() => act("unban_nid")}>
+                  Unban NID
+                </Button>
+              </Fragment>
+            )}>
+              {banned_nids.join(", ") || "None"}
+            </LabeledList.Item>
             <LabeledList.Item
               label="IDS Status"
               buttons={(

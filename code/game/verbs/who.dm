@@ -77,9 +77,9 @@
 	var/num_event_managers_online = 0
 	if(holder)
 		for(var/client/C in admins)
-			if(R_ADMIN & C.holder.rights || (!R_MOD & C.holder.rights && !R_EVENT & C.holder.rights))	//Used to determine who shows up in admin rows
+			if(C.holder.rights & (R_ADMIN|R_MOD|R_EVENT))	//Used to determine who shows up in admin rows
 
-				if(C.holder.fakekey && (!R_ADMIN & holder.rights && !R_MOD & holder.rights))		//Event Managerss can't see stealthmins
+				if(C.holder.fakekey && !((R_ADMIN|R_MOD) & holder.rights))		//Event Managerss can't see stealthmins
 					continue
 
 				msg += "\t[C] is a [C.holder.rank]"
@@ -156,7 +156,7 @@
 
 	else
 		for(var/client/C in admins)
-			if(R_ADMIN & C.holder.rights || (!R_MOD & C.holder.rights && !R_EVENT & C.holder.rights))
+			if(C.holder.rights & (R_ADMIN | R_EVENT | R_MOD))
 				if(!C.holder.fakekey)
 					msg += "\t[C] is a [C.holder.rank]\n"
 					num_admins_online++

@@ -34,7 +34,7 @@
 	adjustToxLoss(-(rads))
 	return
 
-/mob/living/carbon/alien/handle_regular_status_updates()
+/mob/living/carbon/alien/handle_regular_UI_updates()
 
 	if(status_flags & GODMODE)	return 0
 

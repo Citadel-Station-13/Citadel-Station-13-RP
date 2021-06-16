@@ -59,14 +59,6 @@
 						"ZOOM-BA" = "zoomba-medical"
 					 )
 
-/obj/item/robot_module/robot/medical/crisis
-	vr_sprites = list(
-						"Handy" = "handy-med",
-						"Acheron" = "mechoid-Medical",
-						"Shellguard Noble" = "Noble-MED",
-						"ZOOM-BA" = "zoomba-crisis"
-					 )
-
 /obj/item/robot_module/robot/clerical/butler
 	vr_sprites = list(
 						"Handy - Service" = "handy-service",

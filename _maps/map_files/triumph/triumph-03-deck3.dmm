@@ -11915,6 +11915,12 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/suit/straight_jacket,
+/obj/structure/closet/secure_closet/personal{
+	name = "hazardous patient closet";
+	req_access = list(45)
+	},
 /turf/simulated/floor/tiled,
 /area/medical/psych_ward)
 "kcI" = (
@@ -14036,7 +14042,7 @@
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control switch for the medbay recovery room door.";
 	dir = 8;
-	id = "er1";
+	id = "er2";
 	name = "Exam Room 2 Lock";
 	pixel_x = 26;
 	pixel_y = 10;
@@ -23173,6 +23179,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"sDI" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/white,
+/area/medical/psych_ward)
 "sEn" = (
 /obj/machinery/portable_atmospherics/canister/empty,
 /obj/effect/floor_decal/industrial/warning/full,
@@ -23387,6 +23400,17 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical_science)
+"sOG" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/closet/crate/bin{
+	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
+	icon_closed = "biohazard";
+	icon_opened = "biohazardopen";
+	icon_state = "biohazard";
+	name = "biohazard bin"
+	},
+/turf/simulated/floor/tiled/old_cargo/gray,
+/area/assembly/robotics/surgery)
 "sOK" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/xenobiology/xenoflora)
@@ -32813,7 +32837,7 @@ pIL
 oHo
 uTo
 cOK
-aFS
+sDI
 goc
 uXJ
 wwW
@@ -36329,7 +36353,7 @@ usN
 tpO
 pZI
 sed
-kcI
+sOG
 sGT
 xqe
 jEz
