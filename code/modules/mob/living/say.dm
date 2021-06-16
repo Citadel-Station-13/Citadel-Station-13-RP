@@ -377,10 +377,11 @@ proc/get_radio_key_from_channel(var/channel)
 			listening_obj |= results["objs"]
 		above = above.shadow
 	if(!used_radios.len)
-		if(!whispering)
-			usr.say_overhead(say_emphasis(message), speaking)
-		if(whispering)
-			usr.say_overhead(stars(message), speaking)
+		if(!isobserver(usr) || !IsAdminGhost(usr))
+			if(!whispering)
+				usr.say_overhead(say_emphasis(message), speaking)
+			if(whispering)
+				return
 
 	//Main 'say' and 'whisper' message delivery
 	for(var/mob/M in listening)
