@@ -579,7 +579,7 @@
 			src.log_message("Interfaced with [src_object].")
 			return UI_INTERACTIVE
 		if(src_object in view(2, src))
-			return STATUS_UPDATE //if they're close enough, allow the occupant to see the screen through the viewport or whatever.
+			return UI_UPDATE //if they're close enough, allow the occupant to see the screen through the viewport or whatever.
 
 /obj/mecha/proc/melee_action(atom/target)
 	return

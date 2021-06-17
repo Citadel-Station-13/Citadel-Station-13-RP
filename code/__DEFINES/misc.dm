@@ -458,3 +458,8 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define JOB_SILICON_ROBOT	0x2
 #define JOB_SILICON_AI		0x4
 #define JOB_SILICON			0x6 // 2|4, probably don't set jobs to this, but good for checking
+
+#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
+#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+#define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+#define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"
