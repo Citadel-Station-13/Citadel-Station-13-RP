@@ -568,7 +568,7 @@
 		return 1
 	return 0
 
-/obj/mecha/contents_tgui_distance(var/src_object, var/mob/living/user)
+/obj/mecha/contents_ui_distance(src_object, mob/living/user)
 	. = user.shared_living_ui_distance(src_object) //allow them to interact with anything they can interact with normally.
 	if(. != UI_INTERACTIVE)
 		//Allow interaction with the mecha or anything that is part of the mecha

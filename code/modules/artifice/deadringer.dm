@@ -88,7 +88,7 @@
 /obj/item/deadringer/proc/reveal()
 	if(watchowner)
 		watchowner.alpha = 255
-		playsound(get_turf(src), 'sound/effects/reveal.ogg', 35, 1, -1)
+		playsound(get_turf(src), 'sound/effects/uncloak.ogg', 35, 1, -1)
 	return
 
 /obj/item/deadringer/proc/makeacorpse(var/mob/living/carbon/human/H)

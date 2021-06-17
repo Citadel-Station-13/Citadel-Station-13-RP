@@ -70,6 +70,22 @@
 
 	to_chat(user, "<span class='notice'>Changed color to '[colour].'</span>")
 
+/obj/item/pen/click
+	name = "clicker pen"
+
+/obj/item/pen/click/attack_self(mob/user as mob)
+	if(user.a_intent == INTENT_HELP)
+		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] idly.</span>","<span class='notice'>You click [src] idly.</span>")
+		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
+	else if (user.a_intent == INTENT_HARM)
+		user.visible_message("<span class='warning'><b>\The [user]</b> clicks [src] angrily!</span>","<span class='warning'>You click [src] angrily!</span>")
+		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
+	else if (user.a_intent == INTENT_GRAB)
+		user.visible_message("<span class='warning'><b>\The [user]</b> spins [src] in their fingers!</span>","<span class='warning'>You spin [src] in your fingers!</span>")
+	else
+		user.visible_message("<span class='notice'><b>\The [user]</b> clicks [src] rhythmically.</span>","<span class='notice'>You click [src] rhythmically.</span>")
+		playsound(user, 'sound/weapons/flipblade.ogg', 20, 1)
+
 /obj/item/pen/invisible
 	desc = "It's an invisble pen marker."
 	icon_state = "pen"

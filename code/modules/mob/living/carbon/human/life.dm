@@ -1140,8 +1140,8 @@
 
 	return 1
 
-/mob/living/carbon/human/proc/set_stat(var/new_stat)
-	stat = new_stat
+/mob/living/carbon/human/set_stat(var/new_stat)
+	. = ..()
 	if(stat)
 		update_skin(1)
 
