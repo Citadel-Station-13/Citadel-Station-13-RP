@@ -16,6 +16,7 @@
 	var/datum/radio_frequency/radio_connection
 
 /obj/machinery/mech_sensor/CanPass(atom/movable/mover, turf/target)
+	. = ..()
 	if(!enabled())
 		return TRUE
 

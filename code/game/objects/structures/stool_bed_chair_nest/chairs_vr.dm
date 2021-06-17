@@ -123,34 +123,34 @@
 	buckle_movable = 1
 
 /obj/structure/bed/chair/bay/chair/padded/red/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, carpet)
+	return ..(mapload, new_material, "carpet")
 
 /obj/structure/bed/chair/bay/chair/padded/brown/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, leather)
+	return ..(mapload, new_material, "leather")
 
 /obj/structure/bed/chair/bay/chair/padded/teal/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, teal)
+	return ..(mapload, new_material, "teal")
 
 /obj/structure/bed/chair/bay/chair/padded/black/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, black)
+	return ..(mapload, new_material, "black")
 
 /obj/structure/bed/chair/bay/chair/padded/green/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, green)
+	return ..(mapload, new_material, "green")
 
 /obj/structure/bed/chair/bay/chair/padded/purple/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, purple)
+	return ..(mapload, new_material, "purple")
 
 /obj/structure/bed/chair/bay/chair/padded/blue/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, blue)
+	return ..(mapload, new_material, "bllue")
 
 /obj/structure/bed/chair/bay/chair/padded/beige/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, beige)
+	return ..(mapload, new_material, "beige")
 
 /obj/structure/bed/chair/bay/chair/padded/lime/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, lime)
+	return ..(mapload, new_material, "lime")
 
 /obj/structure/bed/chair/bay/chair/padded/yellow/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, yellow)
+	return ..(mapload, new_material, "yellow")
 
 /obj/structure/bed/chair/bay/comfy
 	name = "comfy mounted chair"
@@ -159,34 +159,34 @@
 	base_icon = "bay_comfychair"
 
 /obj/structure/bed/chair/bay/comfy/red/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, carpet)
+	return ..(mapload, new_material, "carpet")
 
 /obj/structure/bed/chair/bay/comfy/brown/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, leather)
+	return ..(mapload, new_material, "leather")
 
 /obj/structure/bed/chair/bay/comfy/teal/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, teal)
+	return ..(mapload, new_material, "teal")
 
 /obj/structure/bed/chair/bay/comfy/black/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, black)
+	return ..(mapload, new_material, "black")
 
 /obj/structure/bed/chair/bay/comfy/green/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, green)
+	return ..(mapload, new_material, "green")
 
 /obj/structure/bed/chair/bay/comfy/purple/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, purple)
+	return ..(mapload, new_material, "purple")
 
 /obj/structure/bed/chair/bay/comfy/blue/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, blue)
+	return ..(mapload, new_material, "bllue")
 
 /obj/structure/bed/chair/bay/comfy/beige/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, beige)
+	return ..(mapload, new_material, "beige")
 
 /obj/structure/bed/chair/bay/comfy/lime/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, lime)
+	return ..(mapload, new_material, "lime")
 
 /obj/structure/bed/chair/bay/comfy/yellow/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, yellow)
+	return ..(mapload, new_material, "yellow")
 
 /obj/structure/bed/chair/bay/comfy/captain
 	name = "captain chair"
@@ -202,7 +202,7 @@
 	add_overlay(I)
 
 /obj/structure/bed/chair/bay/comfy/captain/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, DEFAULT_WALL_MATERIAL, blue)
+	return ..(mapload, DEFAULT_WALL_MATERIAL, "blue")
 
 /obj/structure/bed/chair/bay/shuttle
 	name = "shuttle seat"

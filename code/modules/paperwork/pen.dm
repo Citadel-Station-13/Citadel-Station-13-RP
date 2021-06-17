@@ -27,7 +27,7 @@
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/pen/attack_self(var/mob/user)
-	if(!user.checkClickCooldown())
+	if(user.next_move > world.time)
 		return
 	user.setClickCooldown(1 SECOND)
 	to_chat(user, "<span class='notice'>Click.</span>")

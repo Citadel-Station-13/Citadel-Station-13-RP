@@ -3105,6 +3105,7 @@
 #include "code\modules\projectiles\projectile\change.dm"
 #include "code\modules\projectiles\projectile\energy.dm"
 #include "code\modules\projectiles\projectile\energy_vr.dm"
+#include "code\modules\projectiles\projectile\explosive.dm"
 #include "code\modules\projectiles\projectile\force.dm"
 #include "code\modules\projectiles\projectile\hook.dm"
 #include "code\modules\projectiles\projectile\magic.dm"

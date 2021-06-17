@@ -376,7 +376,7 @@
 	However, the apellation has stuck to these creatures due to their trademark predation mechanism.\
 	Early settlers who encountered these roaches believed that the only possible way they could be\
 	appearing was for them to be utilizing a form of Bluespace transit. In reality, these roaches\
-	possess a natural cloaking mechanism, similar to other mutant species. No roaches are known to\
+	possess a natural stealthing mechanism, similar to other mutant species. No roaches are known to\
 	genuinely infest Bluespace at this time."
 	value = CATALOGUER_REWARD_TRIVIAL
 
@@ -406,46 +406,79 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
 
-// Called by things that break cloaks, like Technomancer wards.
-/mob/living/simple_mob/animal/roach/zeitraum/break_cloak()
-	uncloak()
+	var/stealthed = FALSE
+	var/stealthed_alpha = 60			// Lower = Harder to see.
+	var/stealthed_bonus_damage = 5	// This is added on top of the normal melee damage.
+	var/stealthed_weaken_amount = 1	// How long to stun for.
+	var/stealth_cooldown = 10 SECONDS	// Amount of time needed to re-stealth after losing it.
+	var/last_unstealth = 0			// world.time
 
 
-/mob/living/simple_mob/animal/roach/zeitraum/is_cloaked()
-	return cloaked
+/mob/living/simple_mob/animal/roach/zeitraum/proc/stealth()
+	if(stealthed)
+		return
+	animate(src, alpha = stealthed_alpha, time = 1 SECOND)
+	stealthed = TRUE
+
+
+/mob/living/simple_mob/animal/roach/zeitraum/proc/unstealth()
+	last_unstealth = world.time // This is assigned even if it isn't stealthed already, to 'reset' the timer if the spider is continously getting attacked.
+	if(!stealthed)
+		return
+	animate(src, alpha = initial(alpha), time = 1 SECOND)
+	stealthed = FALSE
+
+
+// Check if stealthing if possible.
+/mob/living/simple_mob/animal/roach/zeitraum/proc/can_stealth()
+	if(stat)
+		return FALSE
+	if(last_unstealth + stealth_cooldown > world.time)
+		return FALSE
+
+	return TRUE
+
+
+// Called by things that break stealths, like Technomancer wards.
+/mob/living/simple_mob/animal/roach/zeitraum/break_stealth()
+	unstealth()
+
+
+/mob/living/simple_mob/animal/roach/zeitraum/is_stealthed()
+	return stealthed
 
 
 // Cloaks the spider automatically, if possible.
 /mob/living/simple_mob/animal/roach/zeitraum/handle_special()
-	if(!cloaked && can_cloak())
-		cloak()
+	if(!stealthed && can_stealth())
+		stealth()
 
 
-// Applies bonus base damage if cloaked.
+// Applies bonus base damage if stealthed.
 /mob/living/simple_mob/animal/roach/zeitraum/apply_bonus_melee_damage(atom/A, damage_amount)
-	if(cloaked)
-		return damage_amount + cloaked_bonus_damage
+	if(stealthed)
+		return damage_amount + stealthed_bonus_damage
 	return ..()
 
-// Applies stun, then uncloaks.
+// Applies stun, then unstealths.
 /mob/living/simple_mob/animal/roach/zeitraum/apply_melee_effects(atom/A)
-	if(cloaked)
+	if(stealthed)
 		if(isliving(A))
 			var/mob/living/L = A
-			L.Weaken(cloaked_weaken_amount)
+			L.Weaken(stealthed_weaken_amount)
 			to_chat(L, span("danger", "\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
-	uncloak()
+	unstealth()
 	..() // For the poison.
 
-// Force uncloaking if attacked.
+// Force unstealthing if attacked.
 /mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/item/projectile/P)
 	. = ..()
-	break_cloak()
+	break_stealth()
 
 /mob/living/simple_mob/animal/roach/zeitraum/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
 	. = ..()
-	break_cloak()
+	break_stealth()
 
 //King? Look around you! King of what?
 /datum/category_item/catalogue/fauna/roach/fuhrer
