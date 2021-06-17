@@ -78,25 +78,25 @@
 
 			 // Vorestation edits in this section.
 			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
-			if (fullness <= 50)
+			if (fullness <= 100)
 				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
-			if (fullness > 50 && fullness <= 150)
+			if (fullness > 100 && fullness <= 300)
 				to_chat(M, "<span class='notice'>You hungrily begin to eat [src].</span>")
-			if (fullness > 150 && fullness <= 350)
+			if (fullness > 300 && fullness <= 700)
 				to_chat(M, "<span class='notice'>You take a bite of [src].</span>")
-			if (fullness > 350 && fullness <= 550)
+			if (fullness > 700 && fullness <= 1100)
 				to_chat(M, "<span class='notice'>You unwillingly chew a bit of [src].</span>")
-			if (fullness > 550 && fullness <= 650)
+			if (fullness > 1100 && fullness <= 1300)
 				to_chat(M, "<span class='notice'>You swallow some more of the [src], causing your belly to swell out a little.</span>")
-			if (fullness > 650 && fullness <= 750)
+			if (fullness > 1300 && fullness <= 1500)
 				to_chat(M, "<span class='notice'>You stuff yourself with the [src]. Your stomach feels very heavy.</span>")
-			if (fullness > 750 && fullness <= 850)
+			if (fullness > 1500 && fullness <= 1700)
 				to_chat(M, "<span class='notice'>You gluttonously swallow down the hunk of [src]. You're so gorged, it's hard to stand.</span>")
-			if (fullness > 850 && fullness <= 950)
+			if (fullness > 1700 && fullness <= 1900)
 				to_chat(M, "<span class='danger'>You force the piece of [src] down your throat. You can feel your stomach getting firm as it reaches its limits.</span>")
-			if (fullness > 950 && fullness <= 1250)
+			if (fullness > 1900 && fullness <= 2100)
 				to_chat(M, "<span class='danger'>You barely glug down the bite of [src], causing undigested food to force into your intestines. You can't take much more of this!</span>")
-			if (fullness > 1250) // There has to be a limit eventually.
+			if (fullness > 2100) // There has to be a limit eventually.
 				to_chat(M, "<span class='danger'>Your stomach blorts and aches, prompting you to stop. You literally cannot force any more of [src] to go down your throat.</span>")
 				return 0
 			/*if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
