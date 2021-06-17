@@ -1083,7 +1083,49 @@
 		if("Head of Security")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/headofsecurity
 			parent_suit = /obj/item/clothing/suit/space/void/headofsecurity
-
+		//BEGIN: Space for additional downstream variants
+		//VOREStation Addition Start
+		if("Manager")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/captain
+			parent_suit = /obj/item/clothing/suit/space/void/captain
+		if("Prototype")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/headofsecurity
+			parent_suit = /obj/item/clothing/suit/space/void/headofsecurity
+		if("Talon Crew")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/talon
+		if("Talon Engineering")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/engineering/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/engineering/talon
+		if("Talon Medical (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/medical/alt/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/medical/talon
+		if("Talon Medical (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/medical/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/medical/talon
+		if("Talon Marine")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/marine/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/marine/talon
+		if("Talon Officer")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/officer/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/officer/talon
+		if("Talon Pilot (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/pilot/talon
+		if("Talon Pilot (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/pilot/talon
+		if("Talon Research (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/research/alt/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/research/talon
+		if("Talon Research (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/research/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/research/talon
+		if("Talon Mercenary")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/mercenary/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/mercenary/talon
+		//VOREStation Addition End
+		//END: downstream variant space
 	if(target_species)
 		//Only run these checks if they have a sprite sheet defined, otherwise they use human's anyways, and there is almost definitely a sprite.
 		if((helmet!=null&&(target_species in helmet.sprite_sheets_obj))||(suit!=null&&(target_species in suit.sprite_sheets_obj)))

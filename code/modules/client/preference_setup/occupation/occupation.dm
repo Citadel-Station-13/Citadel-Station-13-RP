@@ -50,10 +50,10 @@
 	pref.job_engsec_low 	= sanitize_integer(pref.job_engsec_low, 0, 65535, initial(pref.job_engsec_low))
 	if(!(pref.player_alt_titles)) pref.player_alt_titles = new()
 
-	if(!SSjobs)
+	if(!SSjob)
 		return
 
-	for(var/datum/job/job in SSjobs.occupations)
+	for(var/datum/job/job in SSjob.occupations)
 		var/alt_title = pref.player_alt_titles[job.title]
 		if(alt_title && !(alt_title in job.alt_titles))
 			pref.player_alt_titles -= job.title
@@ -68,8 +68,8 @@
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
-	if (!SSjobs)		return
-	for(var/datum/job/job in SSjobs.occupations)
+	if (!SSjob)		return
+	for(var/datum/job/job in SSjob.occupations)
 		if(job.latejoin_only) continue //VOREStation Code
 		if((++index >= limit) || (job.title in splitJobs))
 /*******
@@ -98,7 +98,7 @@
 		if((pref.job_civilian_low & ASSISTANT) && job.type != /datum/job/assistant)
 			. += "<font color=grey>[rank]</font></td><td></td></tr>"
 			continue
-		if((rank in command_positions) || (rank == "AI"))//Bold head jobs
+		if((rank in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND)) || (rank == "AI"))//Bold head jobs
 			. += "<b>[rank]</b>"
 		else
 			. += "[rank]"
@@ -177,7 +177,7 @@
 		pref.player_alt_titles[job.title] = new_title
 
 /datum/category_item/player_setup_item/occupation/proc/SetJob(mob/user, role)
-	var/datum/job/job = SSjobs.GetJob(role)
+	var/datum/job/job = SSjob.get_job(role)
 	if(!job)
 		return 0
 

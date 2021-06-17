@@ -206,7 +206,7 @@
 			"<font color=#4F49AF>You take [obj] out of incision on [target]'s [affected.name]s with \the [tool]!</font>" )
 			affected.implants -= obj
 
-			ENABLE_BITFIELD(target.hud_updateflag, IMPLOYAL_HUD)
+			BITSET(target.hud_updateflag, IMPLOYAL_HUD)
 
 			//Handle possessive brain borers.
 			if(istype(obj,/mob/living/simple_mob/animal/borer))

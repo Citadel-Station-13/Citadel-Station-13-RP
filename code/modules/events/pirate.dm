@@ -59,22 +59,22 @@
 			if(temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 				vents += temp_vent
 
-	var/pirate_spawn = list(/mob/living/simple_mob/humanoid/pirate, 
-	/mob/living/simple_mob/humanoid/pirate/armored, 
+	var/pirate_spawn = list(/mob/living/simple_mob/humanoid/pirate,
+	/mob/living/simple_mob/humanoid/pirate/armored,
 	/mob/living/simple_mob/humanoid/pirate/machete,
-	/mob/living/simple_mob/humanoid/pirate/machete/armored, 
-	/mob/living/simple_mob/humanoid/pirate/shield, 
+	/mob/living/simple_mob/humanoid/pirate/machete/armored,
+	/mob/living/simple_mob/humanoid/pirate/shield,
 	/mob/living/simple_mob/humanoid/pirate/shield/armored,
-	/mob/living/simple_mob/humanoid/pirate/shield/machete, 
-	/mob/living/simple_mob/humanoid/pirate/shield/machete/armored, 
+	/mob/living/simple_mob/humanoid/pirate/shield/machete,
+	/mob/living/simple_mob/humanoid/pirate/shield/machete/armored,
 	/mob/living/simple_mob/humanoid/pirate/ranged,
-	/mob/living/simple_mob/humanoid/pirate/ranged/armored, 
-	/mob/living/simple_mob/humanoid/pirate/ranged/handcannon, 
+	/mob/living/simple_mob/humanoid/pirate/ranged/armored,
+	/mob/living/simple_mob/humanoid/pirate/ranged/handcannon,
 	/mob/living/simple_mob/humanoid/pirate/ranged/shotgun)
-	
-	var/pirate_boss = list(/mob/living/simple_mob/humanoid/pirate/mate, 
+
+	var/pirate_boss = list(/mob/living/simple_mob/humanoid/pirate/mate,
 	/mob/living/simple_mob/humanoid/pirate/mate/ranged,
-	/mob/living/simple_mob/humanoid/pirate/mate/ranged/shotgun, 
+	/mob/living/simple_mob/humanoid/pirate/mate/ranged/shotgun,
 	/mob/living/simple_mob/humanoid/pirate/mate/ranged/rifle)
 
 	var/num = spawncount

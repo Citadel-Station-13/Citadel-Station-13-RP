@@ -16,7 +16,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/Rocky4)
 "f" = (
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Rocky4)
 
 (1,1,1) = {"

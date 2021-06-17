@@ -32,7 +32,7 @@
 /area/gaia_planet/inside)
 "ba" = (
 /obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "bg" = (
 /obj/structure/table/woodentable,
@@ -50,7 +50,7 @@
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
 "bs" = (
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "bu" = (
 /obj/structure/mirror{
@@ -97,7 +97,7 @@
 /area/gaia_planet/outside)
 "cw" = (
 /mob/living/simple_mob/animal/passive/fish/bass,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "cL" = (
 /obj/structure/fence,
@@ -195,7 +195,7 @@
 /area/gaia_planet/inside)
 "fe" = (
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "fg" = (
 /obj/structure/bonfire,
@@ -304,7 +304,7 @@
 /area/gaia_planet/outside)
 "hr" = (
 /mob/living/simple_mob/animal/passive/fish/solarfish,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "hv" = (
 /obj/structure/bed/double/padded,
@@ -418,7 +418,7 @@
 /turf/simulated/floor/tiled,
 /area/gaia_planet/inside)
 "jz" = (
-/turf/simulated/floor/outdoors/water/gaia_world,
+/turf/simulated/floor/water/gaia_world,
 /area/gaia_planet/outside)
 "jF" = (
 /obj/effect/floor_decal/grass_edge,
@@ -469,7 +469,7 @@
 /turf/simulated/floor/carpet,
 /area/gaia_planet/inside)
 "lG" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/gaia_world,
+/turf/simulated/floor/water/shoreline/corner/gaia_world,
 /area/gaia_planet/outside)
 "lJ" = (
 /obj/structure/closet/chefcloset,
@@ -533,7 +533,7 @@
 /area/gaia_planet/outside)
 "mT" = (
 /obj/structure/fence/end,
-/turf/simulated/floor/outdoors/water/shoreline/gaia_world,
+/turf/simulated/floor/water/shoreline/gaia_world,
 /area/gaia_planet/outside)
 "mY" = (
 /obj/structure/bed/chair/comfy/black{
@@ -564,7 +564,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "nx" = (
 /obj/structure/bed/double/padded,
@@ -579,7 +579,7 @@
 /area/gaia_planet/inside)
 "nK" = (
 /obj/structure/flora/ausbushes/fernybush,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "nW" = (
 /obj/structure/flora/tree/jungle_small,
@@ -708,7 +708,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/gaia_planet/inside)
 "ql" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/gaia_world{
+/turf/simulated/floor/water/shoreline/corner/gaia_world{
 	dir = 1
 	},
 /area/gaia_planet/outside)
@@ -750,7 +750,7 @@
 /obj/structure/fence/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/gaia_world{
 	dir = 4
 	},
 /area/gaia_planet/outside)
@@ -1043,7 +1043,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/gaia_planet/inside)
 "wD" = (
-/turf/simulated/floor/outdoors/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/gaia_world{
 	dir = 4
 	},
 /area/gaia_planet/outside)
@@ -1308,7 +1308,7 @@
 /area/gaia_planet/inside)
 "CC" = (
 /mob/living/simple_mob/animal/passive/fish/perch,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "CD" = (
 /obj/structure/table/woodentable,
@@ -1385,7 +1385,7 @@
 /turf/simulated/floor/outdoors/grass/gaia_world,
 /area/gaia_planet/outside)
 "DZ" = (
-/turf/simulated/floor/outdoors/water/shoreline/gaia_world,
+/turf/simulated/floor/water/shoreline/gaia_world,
 /area/gaia_planet/outside)
 "El" = (
 /turf/simulated/floor/outdoors/dirt/gaia_world,
@@ -1554,7 +1554,7 @@
 /area/gaia_planet/inside)
 "HC" = (
 /obj/effect/overmap/visitable/sector/gaia_planet,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "HE" = (
 /obj/structure/flora/tree/jungle,
@@ -1858,7 +1858,7 @@
 /area/gaia_planet/outside)
 "Pu" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "Pv" = (
 /obj/machinery/door/airlock{
@@ -1976,10 +1976,10 @@
 /area/gaia_planet/inside)
 "RB" = (
 /mob/living/simple_mob/animal/passive/fish/salmon,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "RF" = (
-/turf/simulated/floor/outdoors/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/gaia_world{
 	dir = 6
 	},
 /area/gaia_planet/outside)
@@ -2037,7 +2037,7 @@
 /turf/simulated/floor/tiled/gaia_world,
 /area/gaia_planet/outside)
 "Td" = (
-/turf/simulated/floor/outdoors/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/gaia_world{
 	dir = 8
 	},
 /area/gaia_planet/outside)
@@ -2102,7 +2102,7 @@
 /area/gaia_planet/inside)
 "Vc" = (
 /mob/living/simple_mob/animal/passive/fish/rockfish,
-/turf/simulated/floor/outdoors/water/deep/gaia_world,
+/turf/simulated/floor/water/deep/gaia_world,
 /area/gaia_planet/outside)
 "Ve" = (
 /obj/structure/closet/secure_closet/hydroponics{
@@ -2237,7 +2237,7 @@
 /turf/simulated/floor/tiled/white,
 /area/gaia_planet/inside)
 "XI" = (
-/turf/simulated/floor/outdoors/water/shoreline/gaia_world{
+/turf/simulated/floor/water/shoreline/gaia_world{
 	dir = 10
 	},
 /area/gaia_planet/outside)

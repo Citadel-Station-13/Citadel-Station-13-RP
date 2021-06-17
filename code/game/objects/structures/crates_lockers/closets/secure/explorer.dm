@@ -208,7 +208,7 @@
 		/obj/item/geiger,
 		/obj/item/cell/device,
 		/obj/item/radio,
-		/obj/item/subspaceradio,
+		/obj/item/bluespace_radio,
 		/obj/item/stack/marker_beacon/thirty,
 		/obj/item/storage/box/survival_knife,
 		/obj/item/material/knife/machete/deluxe,

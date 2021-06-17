@@ -3913,7 +3913,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "sq" = (
-/turf/simulated/floor/outdoors/water/shoreline,
+/turf/simulated/floor/water/shoreline,
 /area/tradeport/safarizoo)
 "su" = (
 /obj/structure/flora/tree/dead,

@@ -147,3 +147,10 @@
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
 	build_path = /obj/item/circuitboard/quantumpad
 	sort_string = "HAAC"
+
+/datum/design/circuit/vitals_monitor
+	name = "vitals monitor"
+	id = "vitals"
+	req_tech = list(TECH_DATA = 3, TECH_BIO = 4, TECH_ENGINEERING = 2)
+	build_path = /obj/item/circuitboard/machine/vitals_monitor
+	sort_string = "HAAF"

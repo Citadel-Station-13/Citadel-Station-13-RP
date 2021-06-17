@@ -251,7 +251,7 @@
 /turf/simulated/floor/reinforced,
 /area/submap/AuxiliaryResearchFacility)
 "fn" = (
-/turf/simulated/floor/outdoors/water/deep/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/submap/AuxiliaryResearchFacility)
 "fo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1317,7 +1317,7 @@
 /area/submap/AuxiliaryResearchFacility)
 "Fo" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/outdoors/water/deep/indoors,
+/turf/simulated/floor/water/deep/indoors,
 /area/submap/AuxiliaryResearchFacility)
 "FG" = (
 /obj/structure/simple_door/wood,
