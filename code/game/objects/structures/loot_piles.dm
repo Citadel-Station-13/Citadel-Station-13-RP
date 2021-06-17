@@ -712,7 +712,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/mecha_parts/mecha_equipment/tool/safety_clamp,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/riggedlaser,
 		/obj/item/mecha_parts/mecha_equipment/repair_droid,
 		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay

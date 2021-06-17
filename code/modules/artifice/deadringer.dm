@@ -18,14 +18,14 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/deadringer/Destroy() //just in case some smartass tries to stay invisible by destroying the watch
-	uncloak()
+	reveal()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/deadringer/dropped()
 	. = ..()
 	if(timer > 20)
-		uncloak()
+		reveal()
 		watchowner = null
 
 /obj/item/deadringer/attack_self(var/mob/living/user as mob)
@@ -66,7 +66,7 @@
 	if(timer > 0)
 		timer--
 	if(timer == 20)
-		uncloak()
+		reveal()
 		if(corpse)
 			new /obj/effect/effect/smoke/chem(corpse.loc)
 			qdel(corpse)
@@ -85,10 +85,10 @@
 	makeacorpse(watchowner)
 	return
 
-/obj/item/deadringer/proc/uncloak()
+/obj/item/deadringer/proc/reveal()
 	if(watchowner)
 		watchowner.alpha = 255
-		playsound(get_turf(src), 'sound/effects/uncloak.ogg', 35, 1, -1)
+		playsound(get_turf(src), 'sound/effects/reveal.ogg', 35, 1, -1)
 	return
 
 /obj/item/deadringer/proc/makeacorpse(var/mob/living/carbon/human/H)

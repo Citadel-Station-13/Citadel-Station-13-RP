@@ -13,7 +13,7 @@
 	var/repair = 0
 	var/list/chargable_types = list(
 		/obj/mecha,
-		/mob/living/silicon/robot/platform
+		// /mob/living/silicon/robot/platform
 	)
 
 /obj/machinery/mech_recharger/Initialize()
