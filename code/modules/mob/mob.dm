@@ -1228,3 +1228,9 @@ mob/proc/yank_out_object()
 	if(temporary_form)
 		return temporary_form.drop_location()
 	return ..()
+
+/**
+ * Returns whether or not we should be allowed to examine a target
+ */
+/mob/proc/allow_examine(atom/A)
+	return client && (client.eye == src)
