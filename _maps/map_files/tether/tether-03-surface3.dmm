@@ -3008,7 +3008,7 @@
 /obj/item/flash,
 /obj/random/drinkbottle,
 /obj/item/camera_film,
-/obj/item/tape/random,
+/obj/item/cassette_tape/random,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/iaa/officecommon)
 "aeu" = (
@@ -14398,7 +14398,6 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 9
 	},
-/obj/fiftyspawner/copper,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "axD" = (
@@ -15535,7 +15534,6 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 1
 	},
-/obj/fiftyspawner/copper,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "azp" = (
@@ -16345,7 +16343,7 @@
 	dir = 1
 	},
 /obj/item/camera,
-/obj/item/tape,
+/obj/item/cassette_tape,
 /turf/simulated/floor/carpet,
 /area/tether/surfacebase/library/study)
 "aAx" = (
@@ -37729,8 +37727,8 @@
 /obj/item/camera,
 /obj/item/camera_film,
 /obj/item/tape_recorder,
-/obj/item/tape/random,
-/obj/item/tape/random,
+/obj/item/cassette_tape/random,
+/obj/item/cassette_tape/random,
 /obj/item/storage/secure/briefcase,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officea)
@@ -43215,8 +43213,8 @@
 /obj/item/camera,
 /obj/item/camera_film,
 /obj/item/tape_recorder,
-/obj/item/tape/random,
-/obj/item/tape/random,
+/obj/item/cassette_tape/random,
+/obj/item/cassette_tape/random,
 /obj/item/storage/secure/briefcase,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officeb)

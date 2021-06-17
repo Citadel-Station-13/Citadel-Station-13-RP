@@ -20809,9 +20809,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "nitrogen=500;TEMP=80";
 	},
 /area/server)
 "aKM" = (
@@ -20821,9 +20819,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "nitrogen=500;TEMP=80";
 	},
 /area/server)
 "aKN" = (
@@ -21154,9 +21150,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "nitrogen=500;TEMP=80";
 	},
 /area/server)
 "aLu" = (
@@ -21168,9 +21162,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "nitrogen=500;TEMP=80";
 	},
 /area/server)
 "aLv" = (
@@ -21551,9 +21543,7 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "nitrogen=500;TEMP=80";
 	},
 /area/server)
 "aMh" = (
@@ -21564,9 +21554,7 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/bluegrid{
 	name = "Server Base";
-	nitrogen = 500;
-	oxygen = 0;
-	temperature = 80
+	initial_gas_mix = "nitrogen=500;TEMP=80";
 	},
 /area/server)
 "aMi" = (

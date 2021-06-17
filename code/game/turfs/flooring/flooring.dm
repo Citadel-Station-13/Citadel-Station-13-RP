@@ -523,4 +523,5 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
-
+/turf/simulated/floor/tiled/freezer/cold
+	temperature = T0C - 5
