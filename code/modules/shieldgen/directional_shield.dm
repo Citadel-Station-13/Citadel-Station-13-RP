@@ -54,6 +54,7 @@
 	return ..()
 
 /obj/effect/directional_shield/CanPass(atom/movable/mover, turf/target)
+	. = ..()
 	if(istype(mover, /obj/item/projectile))
 		var/obj/item/projectile/P = mover
 		if(istype(P, /obj/item/projectile/test)) // Turrets need to try to kill the shield and so their test bullet needs to penetrate.
@@ -101,14 +102,29 @@
 	START_PROCESSING(SSobj, src)
 	if(always_on)
 		create_shields()
-	GLOB.moved_event.register(src, src, .proc/moved_event)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/moved_event)
 	..()
 
 /obj/item/shield_projector/Destroy()
 	destroy_shields()
 	STOP_PROCESSING(SSobj, src)
-	GLOB.moved_event.unregister(src, src, .proc/moved_event)
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	return ..()
+
+/obj/item/shield_projector/pickup(mob/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/moved_event)
+
+/obj/item/shield_projector/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+
+/obj/item/shield_projector/Moved(atom/oldloc)
+	. = ..()
+	if(!ismob(loc) && !isturf(loc))
+		destroy_shields()
+
+// WIP: recursive for non mob movement detection sometime?
 
 /obj/item/shield_projector/proc/moved_event()
 	update_shield_positions()
@@ -187,7 +203,7 @@
 			return
 		set_on(FALSE)
 	else
-		set_dir(user.dir) // Needed for linear shields.
+		setDir(user.dir) // Needed for linear shields.
 		set_on(TRUE)
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
 
@@ -381,9 +397,9 @@
 		destroy_shields()
 	else
 		if(istype(user.loc, /obj/mecha))
-			set_dir(user.loc.dir)
+			setDir(user.loc.dir)
 		else
-			set_dir(user.dir)
+			setDir(user.dir)
 		create_shields()
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
 

@@ -110,7 +110,7 @@
 	for(var/obj/item/stock_parts/micro_laser/M in component_parts) // Not resetting T is intended; time_coeff is affected by both
 		T += M.rating
 	time_coeff = T / 2 // 1 -> 3
-	update_ui_static_data(usr)
+	update_static_data(usr)
 
 
 /**
@@ -414,7 +414,7 @@
 		for(var/datum/design/D in RDC.files.known_designs)
 			files.AddDesign2Known(D)
 		files.RefreshResearch()
-		update_ui_static_data(usr)
+		update_static_data(usr)
 		atom_say("Successfully synchronized with R&D server.")
 		return
 

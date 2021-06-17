@@ -569,7 +569,7 @@
 	return 0
 
 /obj/mecha/contents_tgui_distance(var/src_object, var/mob/living/user)
-	. = user.shared_living_tgui_distance(src_object) //allow them to interact with anything they can interact with normally.
+	. = user.shared_living_ui_distance(src_object) //allow them to interact with anything they can interact with normally.
 	if(. != UI_INTERACTIVE)
 		//Allow interaction with the mecha or anything that is part of the mecha
 		if(src_object == src || (src_object in src))
@@ -959,7 +959,7 @@
 	return call((proc_res["dynabsorbdamage"]||src), "dynabsorbdamage")(damage,damage_type)
 
 /obj/mecha/proc/dynabsorbdamage(damage,damage_type)
-	return damage*(listgetindex(get_damage_absorption(),damage_type) || 1)
+	return damage*(SAFEACCESS(get_damage_absorption(),damage_type) || 1)
 
 /obj/mecha/airlock_crush(var/crush_damage)
 	..()
@@ -2500,7 +2500,7 @@
 		var/mob/occupant = P.occupant
 
 		user.visible_message("<span class='notice'>\The [user] begins opening the hatch on \the [P]...</span>", "<span class='notice'>You begin opening the hatch on \the [P]...</span>")
-		if (!do_after(user, 40, needhand=0))
+		if (!do_after(user, 40))
 			return
 
 		user.visible_message("<span class='notice'>\The [user] opens the hatch on \the [P] and removes [occupant]!</span>", "<span class='notice'>You open the hatch on \the [P] and remove [occupant]!</span>")
@@ -2618,7 +2618,6 @@
 				AI.icon_state = "ai-crash"
 			src.occupant = cur_occupant
 */
-	return
 
 ///////////////////////
 ///// Power stuff /////
