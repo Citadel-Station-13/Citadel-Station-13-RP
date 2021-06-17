@@ -235,11 +235,11 @@
 
 
 // Called by things that break stealths, like Technomancer wards.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/break_stealth()
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/break_cloak()
 	unstealth()
 
 
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/is_stealthed()
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/is_cloaked()
 	return stealthed
 
 
@@ -269,11 +269,11 @@
 // Force unstealthing if attacked.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/bullet_act(obj/item/projectile/P)
 	. = ..()
-	break_stealth()
+	break_cloak()
 
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
 	. = ..()
-	break_stealth()
+	break_cloak()
 
 //Arcing Ranged Mob
 /mob/living/simple_mob/mechanical/cyber_horror/grey

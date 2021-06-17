@@ -314,11 +314,11 @@
 
 
 // Called by things that break stealths, like Technomancer wards.
-/mob/living/simple_mob/animal/space/mouse_army/stealth/break_stealth()
+/mob/living/simple_mob/animal/space/mouse_army/stealth/break_cloak()
 	unstealth()
 
 
-/mob/living/simple_mob/animal/space/mouse_army/stealth/is_stealthed()
+/mob/living/simple_mob/animal/space/mouse_army/stealth/is_cloaked()
 	return stealthed
 
 
@@ -348,11 +348,11 @@
 // Force unstealthing if attacked.
 /mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/item/projectile/P)
 	. = ..()
-	break_stealth()
+	break_cloak()
 
 /mob/living/simple_mob/animal/space/mouse_army/stealth/hit_with_weapon(obj/item/O, mob/living/user, effective_force, hit_zone)
 	. = ..()
-	break_stealth()
+	break_cloak()
 
 
 // Mouse noises
