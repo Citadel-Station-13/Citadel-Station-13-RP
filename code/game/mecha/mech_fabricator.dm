@@ -406,7 +406,7 @@
 	return queued_parts
 
 /obj/machinery/mecha_part_fabricator/proc/sync()
-	for(var/obj/machinery/computer/rdconsole/RDC in get_area_all_atoms(get_area(src)))
+	for(var/obj/machinery/computer/rdconsole/RDC in get_area(src))
 		if(!RDC.sync)
 			continue
 		for(var/datum/tech/T in RDC.files.known_tech)

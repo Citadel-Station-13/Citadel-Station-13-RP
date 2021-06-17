@@ -351,7 +351,7 @@
 		C.forceMove(src)
 		cell = C
 		return
-	cell = new /obj/item/cell/mech(src)
+	cell = new /obj/item/cell/high(src)
 
 /obj/mecha/get_cell()
 	return cell
