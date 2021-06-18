@@ -462,7 +462,7 @@
 	name = "Reactor Vent"
 	},
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "aaR" = (
@@ -639,7 +639,7 @@
 /area/maintenance/station/eng_lower)
 "abj" = (
 /turf/simulated/floor/reinforced/nitrogen{
-	nitrogen = 82.1472
+	initial_gas_mix = "n2=82.1472;TEMP=293.15"
 	},
 /area/engineering/engine_room)
 "abk" = (
@@ -2049,7 +2049,7 @@
 "aei" = (
 /obj/structure/table/reinforced,
 /obj/machinery/camera/network/engineering,
-/obj/item/clothing/shoes/magboots/adv,
+/obj/item/clothing/shoes/magboots/advanced,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "aej" = (
@@ -4401,7 +4401,7 @@
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "ahP" = (
-/obj/item/clothing/head/cone,
+/obj/item/caution/cone,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "ahQ" = (
@@ -7857,7 +7857,7 @@
 	},
 /obj/fiftyspawner/plastic,
 /obj/fiftyspawner/plastic,
-/obj/fiftyspawner/copper,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "aoQ" = (
@@ -13483,7 +13483,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central5{
 	dir = 4
 	},
-/mob/living/simple_mob/animal/passive/opossum/poppy,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/workshop)
 "azg" = (
@@ -20211,7 +20210,6 @@
 /obj/random/junk,
 /obj/structure/closet,
 /obj/random/maintenance/clean,
-/obj/item/taperoll/engineering,
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "bZS" = (
@@ -23324,7 +23322,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "uZR" = (
-/obj/machinery/gravity_generator/main/station,
+/obj/machinery/gravity_generator,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/gravity_gen)
 "vbm" = (
@@ -23433,7 +23431,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_lobby)
 "vyI" = (
-/mob/living/simple_mob/animal/passive/bird/parrot/poly,
+/mob/living/simple_mob/animal/passive/bird/parrot/polly,
 /turf/simulated/floor/outdoors/grass/forest,
 /area/crew_quarters/heads/chief)
 "vzc" = (

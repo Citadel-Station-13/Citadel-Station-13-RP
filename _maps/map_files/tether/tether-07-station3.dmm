@@ -3722,7 +3722,6 @@
 /obj/machinery/camera/network/security{
 	dir = 5
 	},
-/obj/item/storage/box/holowarrants,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "ahH" = (
@@ -18292,7 +18291,6 @@
 	name = "secure briefcase"
 	},
 /obj/machinery/light,
-/obj/item/storage/mrebag/pill/sleevingcure,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "aPC" = (
