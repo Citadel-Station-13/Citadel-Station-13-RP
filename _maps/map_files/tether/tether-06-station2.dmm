@@ -453,14 +453,14 @@
 /area/security/brig/visitation)
 "aW" = (
 /obj/structure/table/rack/steel,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
-/obj/random/tech_supply/component/nofail,
+/obj/random/tech_supply/component,
+/obj/random/tech_supply/component,
+/obj/random/tech_supply/component,
+/obj/random/tech_supply/component,
+/obj/random/tech_supply/component,
+/obj/random/tech_supply/component,
+/obj/random/tech_supply/component,
+/obj/random/tech_supply/component,
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "aX" = (
@@ -1631,7 +1631,7 @@
 /turf/simulated/floor,
 /area/security/riot_control)
 "cy" = (
-/obj/structure/device/piano,
+/obj/structure/musician/piano,
 /turf/simulated/mineral/floor/vacuum,
 /area/mine/explored/upper_level)
 "cz" = (
@@ -2213,7 +2213,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/vending/hydronutrients/brig{
+/obj/machinery/vending/hydronutrients{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -5643,11 +5643,6 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/item/aiModule/consuming_eradicator,
-/obj/item/aiModule/guard_dog,
-/obj/item/aiModule/pleasurebot,
-/obj/item/aiModule/protective_shell,
-/obj/item/aiModule/scientific_pursuer,
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "iQ" = (
@@ -6602,8 +6597,8 @@
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/void/expedition_medical,
-/obj/item/clothing/head/helmet/space/void/expedition_medical,
+/obj/item/clothing/suit/space/void/medical/emt,
+/obj/item/clothing/head/helmet/space/void/medical/emt,
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24
@@ -7382,8 +7377,8 @@
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/void/expedition_medical,
-/obj/item/clothing/head/helmet/space/void/expedition_medical,
+/obj/item/clothing/suit/space/void/medical/emt,
+/obj/item/clothing/head/helmet/space/void/medical/emt,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "lr" = (
@@ -8001,24 +7996,24 @@
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/circuitboard/grill{
+/obj/machinery/appliance/cooker/grill{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/circuitboard/fryer{
+/obj/machinery/appliance/cooker/fryer{
 	pixel_x = -2;
 	pixel_y = 2
 	},
-/obj/item/circuitboard/oven{
+/obj/machinery/appliance/cooker/oven{
 	pixel_x = -1;
 	pixel_y = 1
 	},
 /obj/item/circuitboard/microwave,
-/obj/item/circuitboard/cerealmaker{
+/obj/machinery/appliance/mixer/cereal{
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/obj/item/circuitboard/candymachine{
+/obj/machinery/appliance/mixer/candy{
 	pixel_x = 2;
 	pixel_y = -2
 	},
@@ -9493,7 +9488,7 @@
 	pixel_y = 1
 	},
 /obj/item/circuitboard/arcade/battle,
-/obj/item/circuitboard/arcade/clawmachine{
+/obj/item/circuitboard/arcade{
 	pixel_x = 1;
 	pixel_y = -1
 	},
@@ -11215,7 +11210,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/fiftyspawner/copper,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled,
 /area/ai_monitored/storage/eva)
 "sa" = (
@@ -18196,7 +18191,7 @@
 /turf/simulated/floor/airless,
 /area/medical/patient_c)
 "Jc" = (
-/obj/machinery/seed_storage/brig{
+/obj/machinery/seed_storage{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -18810,7 +18805,7 @@
 /area/maintenance/station/sec_lower)
 "NN" = (
 /obj/structure/table/glass,
-/obj/item/taperoll/medical,
+/obj/item/duct_tape_roll,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/medical,
 /turf/simulated/floor,

@@ -437,21 +437,21 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_thunderdomecourt)
 "bs" = (
-/turf/simulated/fitness,
+/turf/simulated/floor/wood,
 /area/holodeck/source_boxingcourt)
 "bt" = (
 /obj/structure/bed/chair/holochair,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bu" = (
-/obj/structure/fitness/boxing_ropes{
+/obj/machinery/fitness/heavy/lifter{
 	dir = 1
 	},
-/obj/structure/fitness/boxing_turnbuckle{
+/obj/machinery/fitness/punching_bag/clown{
 	dir = 8;
 	layer = 3.4
 	},
-/turf/simulated/fitness,
+/turf/simulated/floor/wood,
 /area/holodeck/source_boxingcourt)
 "bv" = (
 /obj/structure/window/reinforced/holowindow{
@@ -461,20 +461,20 @@
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "bw" = (
-/obj/structure/fitness/boxing_ropes{
+/obj/machinery/fitness/heavy/lifter{
 	dir = 1
 	},
-/turf/simulated/fitness,
+/turf/simulated/floor/wood,
 /area/holodeck/source_boxingcourt)
 "bx" = (
-/obj/structure/fitness/boxing_ropes{
+/obj/machinery/fitness/heavy/lifter{
 	dir = 1
 	},
-/obj/structure/fitness/boxing_turnbuckle{
+/obj/machinery/fitness/punching_bag/clown{
 	dir = 4;
 	layer = 3.4
 	},
-/turf/simulated/fitness,
+/turf/simulated/floor/wood,
 /area/holodeck/source_boxingcourt)
 "by" = (
 /obj/machinery/light{
@@ -489,37 +489,37 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
 "bA" = (
-/obj/structure/fitness/boxing_ropes{
+/obj/machinery/fitness/punching_bag/clown{
 	dir = 8
 	},
-/turf/simulated/fitness,
+/turf/simulated/floor/wood,
 /area/holodeck/source_boxingcourt)
 "bB" = (
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_picnicarea)
 "bC" = (
-/obj/structure/fitness/boxing_ropes{
+/obj/machinery/fitness/heavy/lifter{
 	dir = 4
 	},
-/turf/simulated/fitness,
+/turf/simulated/floor/wood,
 /area/holodeck/source_boxingcourt)
 "bD" = (
-/obj/structure/fitness/boxing_turnbuckle{
+/obj/machinery/vending/fitness{
 	dir = 8
 	},
-/obj/structure/fitness/boxing_ropes_bottom,
-/turf/simulated/fitness,
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/wood,
 /area/holodeck/source_boxingcourt)
 "bE" = (
-/obj/structure/fitness/boxing_ropes_bottom,
-/turf/simulated/fitness,
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/wood,
 /area/holodeck/source_boxingcourt)
 "bF" = (
-/obj/structure/fitness/boxing_turnbuckle{
+/obj/machinery/vending/fitness{
 	dir = 4
 	},
-/obj/structure/fitness/boxing_ropes_bottom,
-/turf/simulated/fitness,
+/obj/machinery/vending/fitness,
+/turf/simulated/floor/wood,
 /area/holodeck/source_boxingcourt)
 "bG" = (
 /obj/effect/floor_decal/spline/plain{
@@ -586,10 +586,6 @@
 /obj/structure/bed/chair/holochair,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
-"bN" = (
-/obj/effect/landmark/ai_multicam_room,
-/turf/unsimulated/ai_visible,
-/area/ai_multicam_room)
 "bO" = (
 /obj/structure/shuttle/engine/propulsion,
 /obj/effect/shuttle_landmark{
@@ -721,7 +717,7 @@
 /area/holodeck/source_courtroom)
 "cd" = (
 /turf/unsimulated/wall,
-/area/ai_multicam_room)
+/area/ai_upload)
 "ce" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /turf/space/transit/south,
@@ -746,8 +742,8 @@
 /turf/space/transit/south,
 /area/space)
 "ci" = (
-/turf/unsimulated/ai_visible,
-/area/ai_multicam_room)
+/turf/simulated/floor/reinforced,
+/area/ai_upload)
 "cj" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -761,10 +757,6 @@
 /obj/machinery/door/airlock/alien/public,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm3)
-"cm" = (
-/obj/item/toy/chess/pawn_white,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
 "cn" = (
 /obj/item/bedsheet/rddouble,
 /obj/structure/bed/double/padded,
@@ -785,9 +777,6 @@
 	icon = 'icons/turf/transit_vr.dmi'
 	},
 /area/space)
-"cr" = (
-/turf/simulated/shuttle/wall/alien/blue/hard_corner,
-/area/unknown/dorm5)
 "cs" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
@@ -850,13 +839,10 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "cC" = (
-/turf/simulated/shuttle/wall/alien/blue,
+/turf/simulated/shuttle/wall,
 /area/unknown/dorm5)
-"cD" = (
-/turf/simulated/shuttle/wall/alien/blue/hard_corner,
-/area/unknown/dorm6)
 "cE" = (
-/turf/simulated/shuttle/wall/alien/blue,
+/turf/simulated/shuttle/wall,
 /area/unknown/dorm6)
 "cF" = (
 /obj/machinery/recharge_station,
@@ -1193,7 +1179,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "dy" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "Unknown";
 	tele_network = "unkfive"
 	},
@@ -1252,7 +1238,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "dL" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "Unknown";
 	tele_network = "unksix"
 	},
@@ -1335,12 +1321,6 @@
 "dZ" = (
 /turf/unsimulated/wall,
 /area/centcom/simulated/terminal)
-"ea" = (
-/obj/structure/prop/alien/computer/hybrid{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/alien,
-/area/unknown/dorm5)
 "eb" = (
 /obj/structure/prop/alien/dispenser,
 /turf/simulated/shuttle/floor/alien,
@@ -1440,12 +1420,6 @@
 /obj/structure/table/woodentable/holotable,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_meetinghall)
-"er" = (
-/obj/structure/prop/alien/computer/hybrid{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/alien,
-/area/unknown/dorm6)
 "es" = (
 /obj/item/clothing/glasses/sunglasses,
 /turf/simulated/floor/holofloor/beach/sand,
@@ -1495,10 +1469,6 @@
 /obj/structure/table/alien/blue,
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm6)
-"eD" = (
-/obj/effect/floor_decal/sign/small_4,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "eE" = (
 /obj/machinery/telecomms/relay/preset/tether,
 /turf/unsimulated/floor/steel,
@@ -1556,7 +1526,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm6)
 "eR" = (
-/obj/machinery/telecomms/allinone/ert,
+/obj/machinery/telecomms/allinone,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eS" = (
@@ -2145,7 +2115,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor/corner,
-/obj/structure/closet/walllocker_double/hydrant/south,
+/obj/structure/closet/walllocker,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "ii" = (
@@ -2245,10 +2215,6 @@
 /obj/machinery/telecomms/server/presets/centcomm,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"kw" = (
-/obj/effect/floor_decal/sign/small_5,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "kU" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
@@ -2312,10 +2278,6 @@
 /obj/machinery/chemical_dispenser/full,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
-"nj" = (
-/obj/item/toy/chess/rook_white,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
 "nn" = (
 /obj/machinery/telecomms/allinone/antag{
 	intercept = 1
@@ -2340,29 +2302,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
-"nV" = (
-/obj/item/toy/chess/rook_black,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
-"nW" = (
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "oI" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /turf/space/transit/east,
 /area/space)
-"oT" = (
-/obj/item/toy/chess/pawn_black,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
 "pb" = (
 /obj/machinery/telecomms/processor/preset_cent,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "pf" = (
-/obj/effect/floor_decal/sign/small_8,
 /turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
+/area/holodeck/source_plating)
 "pk" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -2397,9 +2347,6 @@
 	},
 /turf/space/transit/east,
 /area/space)
-"pT" = (
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "pX" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
@@ -2420,38 +2367,22 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/bar)
-"qv" = (
-/obj/effect/floor_decal/sign/small_h,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "qz" = (
 /turf/space,
 /turf/space/internal_edge/bottomright,
 /area/space)
-"qV" = (
-/obj/effect/floor_decal/sign/small_6,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "rh" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/random/forgotten_tram,
+/obj/random,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
-"ru" = (
-/obj/item/toy/chess/pawn_black,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "rE" = (
 /obj/machinery/telecomms/bus/preset_cent,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
-"sb" = (
-/obj/item/toy/chess/knight_white,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
 "sl" = (
 /turf/space/internal_edge/top,
 /area/space)
@@ -2595,10 +2526,6 @@
 	initial_flooring = null
 	},
 /area/space)
-"uM" = (
-/obj/item/toy/chess/knight_black,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
 "vu" = (
 /obj/effect/step_trigger/thrower{
 	affect_ghosts = 1;
@@ -2617,22 +2544,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
-"vW" = (
-/obj/effect/floor_decal/sign/small_a,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
-"wa" = (
-/obj/effect/floor_decal/sign/small_3,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "wd" = (
 /obj/structure/sign/warning/nosmoking_2,
 /turf/unsimulated/wall,
 /area/centcom/simulated/terminal)
-"wh" = (
-/obj/item/toy/chess/knight_black,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "wj" = (
 /turf/space/internal_edge/left,
 /area/space)
@@ -2876,10 +2791,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
-"Bm" = (
-/obj/item/toy/chess/bishop_black,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "Bs" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
@@ -2895,10 +2806,6 @@
 /obj/effect/overlay/palmtree_r,
 /turf/unsimulated/beach/sand,
 /area/beach)
-"BG" = (
-/obj/item/toy/chess/king_black,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
 "BK" = (
 /turf/space,
 /turf/space/internal_edge/bottomleft,
@@ -2960,17 +2867,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
-"CJ" = (
-/obj/item/toy/chess/pawn_white,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
-"CK" = (
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
-"Di" = (
-/obj/effect/floor_decal/sign/small_2,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "Dk" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -3007,10 +2903,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
-"DL" = (
-/obj/effect/floor_decal/sign/small_b,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "DR" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/tiled/white,
@@ -3018,10 +2910,6 @@
 "El" = (
 /turf/space/transit/west,
 /area/space)
-"Eo" = (
-/obj/effect/floor_decal/sign/small_g,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "Et" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -3031,10 +2919,6 @@
 "ET" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
-"EX" = (
-/obj/item/toy/chess/bishop_black,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
 "Fa" = (
 /obj/structure/table/standard,
 /turf/unsimulated/beach/sand,
@@ -3124,13 +3008,9 @@
 "Gz" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor,
-/obj/random/forgotten_tram,
+/obj/random,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
-"GW" = (
-/obj/item/toy/chess/king_white,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "Hf" = (
 /obj/effect/shuttle_landmark/transit{
 	base_area = /area/space;
@@ -3140,14 +3020,6 @@
 	},
 /turf/space/transit/north,
 /area/space)
-"Hk" = (
-/obj/effect/floor_decal/sign/small_7,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
-"Hr" = (
-/obj/item/toy/chess/rook_black,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "Hv" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/grilledcheese,
@@ -3159,10 +3031,6 @@
 	icon_state = "rock"
 	},
 /area/space)
-"HL" = (
-/obj/effect/floor_decal/sign/small_1,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "HQ" = (
 /obj/machinery/telecomms/broadcaster/preset_cent,
 /turf/unsimulated/floor/steel,
@@ -3238,17 +3106,13 @@
 /obj/item/defib_kit/loaded,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
-"Jc" = (
-/obj/item/toy/chess/bishop_white,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "Jq" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid,
 /obj/item/toy/nanotrasenballoon,
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/o2,
-/obj/structure/closet/walllocker/medical/west,
+/obj/structure/closet/walllocker,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
 "Jw" = (
@@ -3273,10 +3137,6 @@
 /obj/machinery/smartfridge/drinks,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/bar)
-"JI" = (
-/obj/item/toy/chess/rook_white,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "JL" = (
 /obj/effect/step_trigger/thrower{
 	affect_ghosts = 1;
@@ -3320,10 +3180,6 @@
 	},
 /turf/simulated/sky/virgo3b/south,
 /area/space)
-"Kn" = (
-/obj/effect/floor_decal/sign/small_d,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "KO" = (
 /obj/machinery/body_scanconsole,
 /obj/effect/floor_decal/corner_steel_grid{
@@ -3331,10 +3187,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
-"KQ" = (
-/obj/effect/floor_decal/sign/small_f,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "Lg" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -3371,12 +3223,7 @@
 	},
 /area/space)
 "Me" = (
-/turf/simulated/floor/smole/desert,
-/area/holodeck/source_smoleworld)
-"Mi" = (
-/obj/item/toy/chess/bishop_white,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
+/turf/simulated/floor/outdoors/beach/sand/desert)
 "Mq" = (
 /obj/machinery/light{
 	dir = 8
@@ -3476,10 +3323,6 @@
 "Om" = (
 /turf/unsimulated/wall,
 /area/centcom/simulated/bar)
-"Or" = (
-/obj/item/toy/chess/knight_white,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "OS" = (
 /obj/machinery/camera/network/crescent,
 /turf/simulated/floor/tiled,
@@ -3543,8 +3386,7 @@
 	},
 /area/space)
 "PM" = (
-/turf/simulated/floor/smole/megablocks,
-/area/holodeck/source_smoleworld)
+/turf/simulated/floor/tiled/steel_grid)
 "PU" = (
 /obj/effect/floor_decal/transit/orange{
 	dir = 4
@@ -3560,10 +3402,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
-"Qs" = (
-/obj/item/toy/chess/queen_black,
-/turf/simulated/floor/holofloor/bmarble,
-/area/holodeck/source_chess)
 "QY" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-21"
@@ -3650,7 +3488,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
 	},
-/obj/structure/closet/walllocker_double/hydrant/north,
+/obj/structure/closet/walllocker,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "Ru" = (
@@ -3705,7 +3543,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
 	},
-/obj/structure/closet/walllocker_double/hydrant/south,
+/obj/structure/closet/walllocker,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "RF" = (
@@ -3738,7 +3576,7 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
 	},
-/obj/structure/closet/walllocker_double/hydrant/north,
+/obj/structure/closet/walllocker,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "Sf" = (
@@ -3765,11 +3603,8 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
-"Sm" = (
-/turf/simulated/shuttle/wall/alien/blue/hard_corner,
-/area/unknown/dorm4)
 "Sn" = (
-/turf/simulated/shuttle/wall/alien/blue,
+/turf/simulated/shuttle/wall,
 /area/unknown/dorm4)
 "So" = (
 /obj/machinery/recharge_station,
@@ -3847,7 +3682,7 @@
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm4)
 "SC" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "Unknown";
 	tele_network = "unkfour"
 	},
@@ -3856,12 +3691,6 @@
 "SD" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
-/turf/simulated/shuttle/floor/alien,
-/area/unknown/dorm4)
-"SE" = (
-/obj/structure/prop/alien/computer/hybrid{
-	dir = 8
-	},
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm4)
 "SF" = (
@@ -3933,7 +3762,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "SW" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "Transfer";
 	tele_network = "centcom"
 	},
@@ -4036,7 +3865,7 @@
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm3)
 "Tr" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "Unknown";
 	tele_network = "unkthree"
 	},
@@ -4190,7 +4019,7 @@
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm2)
 "Ub" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "Unknown";
 	tele_network = "unktwo"
 	},
@@ -4359,7 +4188,7 @@
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm1)
 "UN" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "Unknown";
 	tele_network = "unkone"
 	},
@@ -4681,9 +4510,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/restaurant)
 "Wf" = (
-/obj/item/toy/chess/queen_white,
-/turf/simulated/floor/holofloor/wmarble,
-/area/holodeck/source_chess)
+/turf/simulated/floor/holofloor,
+/area/holodeck/source_plating)
 "Wh" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -4797,7 +4625,7 @@
 /area/centcom/simulated/main_hall)
 "WF" = (
 /obj/structure/table/standard,
-/obj/random/forgotten_tram,
+/obj/random,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
 "WH" = (
@@ -5434,16 +5262,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
-"YX" = (
-/obj/effect/floor_decal/sign/small_e,
-/turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
 "YY" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/o2,
-/obj/structure/closet/walllocker/medical/east,
+/obj/structure/closet/walllocker,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
 "YZ" = (
@@ -5624,9 +5448,9 @@
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
 "ZQ" = (
-/obj/effect/floor_decal/sign/small_c,
+/obj/effect/floor_decal/sign,
 /turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_chess)
+/area/holodeck/source_plating)
 "ZZ" = (
 /obj/structure/table/standard,
 /obj/machinery/light,
@@ -6558,19 +6382,19 @@ ae
 ae
 ae
 ae
-Sm
-Sn
-Sm
 Sn
 Sn
 Sn
 Sn
 Sn
 Sn
-Sm
 Sn
 Sn
-Sm
+Sn
+Sn
+Sn
+Sn
+Sn
 ae
 ae
 ae
@@ -6702,14 +6526,14 @@ ae
 ae
 Sn
 So
-Sm
+Sn
 SA
 SB
 Su
-SE
+Sw
 SK
 SK
-Sm
+Sn
 Sw
 SQ
 Sn
@@ -6986,14 +6810,14 @@ ae
 ae
 Sn
 Sq
-Sm
+Sn
 Sx
 Sp
 Sp
 Sp
 Sp
 SO
-Sm
+Sn
 Sw
 SS
 Sn
@@ -7268,19 +7092,19 @@ ae
 ae
 ae
 ae
-Sm
-Sn
-Sm
 Sn
 Sn
 Sn
 Sn
 Sn
 Sn
-Sm
 Sn
 Sn
-Sm
+Sn
+Sn
+Sn
+Sn
+Sn
 ae
 ae
 ae
@@ -8262,19 +8086,19 @@ ae
 ae
 ae
 ae
-cr
-cC
-cr
 cC
 cC
 cC
 cC
 cC
 cC
-cr
 cC
 cC
-cr
+cC
+cC
+cC
+cC
+cC
 ae
 ae
 ae
@@ -8406,14 +8230,14 @@ ae
 ae
 cC
 cF
-cr
+cC
 cV
 dn
 dp
-ea
+cW
 ev
 ev
-cr
+cC
 cW
 eF
 cC
@@ -8690,14 +8514,14 @@ ae
 ae
 cC
 cH
-cr
+cC
 cX
 cG
 cG
 cG
 cG
 ez
-cr
+cC
 cW
 eH
 cC
@@ -8972,19 +8796,19 @@ ae
 ae
 ae
 ae
-cr
-cC
-cr
 cC
 cC
 cC
 cC
 cC
 cC
-cr
 cC
 cC
-cr
+cC
+cC
+cC
+cC
+cC
 ae
 ae
 ae
@@ -9966,19 +9790,19 @@ ae
 ae
 ae
 ae
-cD
-cE
-cD
 cE
 cE
 cE
 cE
 cE
 cE
-cD
 cE
 cE
-cD
+cE
+cE
+cE
+cE
+cE
 ae
 ae
 ae
@@ -10110,14 +9934,14 @@ ae
 ae
 cE
 cJ
-cD
+cE
 cZ
 do
 dC
-er
+db
 ex
 ex
-cD
+cE
 db
 eN
 cE
@@ -10394,14 +10218,14 @@ ae
 ae
 cE
 cL
-cD
+cE
 dc
 cK
 cK
 cK
 cK
 eB
-cD
+cE
 db
 eP
 cE
@@ -10676,19 +10500,19 @@ ae
 ae
 ae
 ae
-cD
-cE
-cD
 cE
 cE
 cE
 cE
 cE
 cE
-cD
 cE
 cE
-cD
+cE
+cE
+cE
+cE
+cE
 ae
 ae
 ae
@@ -13019,16 +12843,16 @@ ap
 "}
 (53,1,1) = {"
 as
-nW
 pf
-Hk
-qV
-kw
-eD
-wa
-Di
-HL
-nW
+pf
+ZQ
+ZQ
+ZQ
+ZQ
+ZQ
+ZQ
+ZQ
+pf
 dB
 Me
 Me
@@ -13161,16 +12985,16 @@ ap
 "}
 (54,1,1) = {"
 as
-nW
-nV
-ru
-CK
-pT
-CK
-pT
-cm
-JI
-vW
+pf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+ZQ
 dB
 Me
 Me
@@ -13303,16 +13127,16 @@ iO
 "}
 (55,1,1) = {"
 as
-nW
-wh
-oT
-pT
-CK
-pT
-CK
-CJ
-sb
-DL
+pf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+ZQ
 dB
 Me
 Me
@@ -13445,15 +13269,15 @@ iO
 "}
 (56,1,1) = {"
 as
-nW
-EX
-ru
-CK
-pT
-CK
-pT
-cm
-Jc
+pf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
 ZQ
 dB
 Me
@@ -13587,16 +13411,16 @@ iO
 "}
 (57,1,1) = {"
 as
-nW
-Qs
-oT
-pT
-CK
-pT
-CK
-CJ
+pf
 Wf
-Kn
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+ZQ
 dB
 Me
 Me
@@ -13729,16 +13553,16 @@ iO
 "}
 (58,1,1) = {"
 as
-nW
-BG
-ru
-CK
-pT
-CK
-pT
-cm
-GW
-YX
+pf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+ZQ
 dB
 Me
 Me
@@ -13871,16 +13695,16 @@ iO
 "}
 (59,1,1) = {"
 as
-nW
-Bm
-oT
-pT
-CK
-pT
-CK
-CJ
-Mi
-KQ
+pf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+ZQ
 dB
 Me
 Me
@@ -14013,16 +13837,16 @@ iO
 "}
 (60,1,1) = {"
 as
-nW
-uM
-ru
-CK
-pT
-CK
-pT
-cm
-Or
-Eo
+pf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+ZQ
 dB
 Me
 Me
@@ -14155,16 +13979,16 @@ iO
 "}
 (61,1,1) = {"
 as
-nW
-Hr
-oT
-pT
-CK
-pT
-CK
-CJ
-nj
-qv
+pf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+Wf
+ZQ
 dB
 Me
 Me
@@ -14297,16 +14121,16 @@ iO
 "}
 (62,1,1) = {"
 as
-nW
-nW
-nW
-nW
-nW
-nW
-nW
-nW
-nW
-nW
+pf
+pf
+pf
+pf
+pf
+pf
+pf
+pf
+pf
+pf
 dB
 Me
 Me
@@ -14896,7 +14720,7 @@ ci
 ci
 ci
 ci
-bN
+ci
 ci
 ci
 ci

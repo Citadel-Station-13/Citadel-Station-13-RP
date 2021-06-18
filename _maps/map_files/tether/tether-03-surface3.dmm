@@ -3000,7 +3000,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
 	},
-/obj/structure/closet/walllocker_double{
+/obj/structure/closet/walllocker{
 	dir = 4;
 	pixel_x = 28
 	},
@@ -7456,7 +7456,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/suit_cycler/captain,
+/obj/machinery/suit_cycler/director,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aln" = (
@@ -9436,7 +9436,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "apa" = (
-/obj/structure/closet/secure_closet/hydroponics/sci{
+/obj/structure/closet/secure_closet/hydroponics{
 	req_access = list(77)
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -11321,10 +11321,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
-"arZ" = (
-/mob/living/simple_mob/vore/rabbit/brown/george,
-/turf/simulated/floor/grass,
-/area/hydroponics)
 "asa" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -11672,7 +11668,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "asF" = (
-/obj/structure/closet/secure_closet/hydroponics/sci{
+/obj/structure/closet/secure_closet/hydroponics{
 	req_access = list(77)
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -18782,11 +18778,6 @@
 /obj/structure/bookcase{
 	name = "bookcase (Fiction)"
 	},
-/obj/item/book/custom_library/fiction/blacksmithandkinglybloke,
-/obj/item/book/custom_library/fiction/irishairmanforseesdeath,
-/obj/item/book/custom_library/fiction/myrock,
-/obj/item/book/custom_library/fiction/starsandsometimesfallingones,
-/obj/item/book/custom_library/fiction/truelovehathmyheart,
 /turf/simulated/floor/wood,
 /area/library)
 "aEE" = (
@@ -18810,7 +18801,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/bookcase/bookcart,
 /turf/simulated/floor/wood,
 /area/library)
 "aEI" = (
@@ -18819,7 +18809,6 @@
 	},
 /obj/item/book/codex/lore/robutt,
 /obj/item/book/codex,
-/obj/item/book/custom_library/nonfiction/freesirisailightbulbs,
 /turf/simulated/floor/wood,
 /area/library)
 "aEJ" = (
@@ -19047,10 +19036,6 @@
 /obj/structure/bookcase{
 	name = "bookcase (Religious)"
 	},
-/obj/item/book/custom_library/religious/feastofkubera,
-/obj/item/book/custom_library/religious/storyoflordganesha,
-/obj/item/book/custom_library/religious/sungoddessofkorea,
-/obj/item/book/custom_library/religious/wayofbleedingswan,
 /turf/simulated/floor/wood,
 /area/library)
 "aFe" = (
@@ -19299,7 +19284,7 @@
 /area/rnd/research/testingrange)
 "aFx" = (
 /obj/item/clothing/under/color/grey,
-/obj/item/clothing/mask/gas/wwii,
+/obj/item/clothing/mask/gas,
 /obj/item/storage/belt/utility/full,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/shuttle_pad)
@@ -20109,7 +20094,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "aGI" = (
-/obj/machinery/vending/cola/soft,
+/obj/machinery/vending/cola,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -20256,7 +20241,7 @@
 /obj/item/dice/d20,
 /obj/item/deck/cards,
 /obj/item/folder/yellow,
-/obj/structure/closet/walllocker_double{
+/obj/structure/closet/walllocker{
 	dir = 8;
 	pixel_x = -28
 	},
@@ -20376,7 +20361,6 @@
 /obj/item/book/manual/engineering_singularity_safety,
 /obj/item/book/manual/evaguide,
 /obj/item/book/manual/excavation,
-/obj/item/book/custom_library/reference/fistfulofd6splayersguide,
 /turf/simulated/floor/wood,
 /area/library)
 "aHh" = (
@@ -20581,7 +20565,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aHz" = (
-/obj/structure/device/piano,
+/obj/structure/musician/piano,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
@@ -26892,10 +26876,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
-"aTP" = (
-/obj/item/card/id/gold/captain/spare/fakespare,
-/turf/simulated/floor/plating,
-/area/tether/surfacebase/surface_three_hall)
 "aTQ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -27082,7 +27062,7 @@
 /area/tether/surfacebase/servicebackroom)
 "aUh" = (
 /obj/structure/kitchenspike,
-/obj/machinery/alarm/freezer{
+/obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -28375,7 +28355,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "aWs" = (
-/obj/machinery/suit_cycler/prototype,
+/obj/machinery/suit_cycler,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/hos)
 "aWt" = (
@@ -31809,7 +31789,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/vending/entertainer,
+/obj/machinery/vending,
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
 "bck" = (
@@ -32194,7 +32174,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/mob/living/simple_mob/vore/rabbit/white/lennie,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "bcO" = (
@@ -33849,7 +33828,7 @@
 	name = "box of measuring cups";
 	pixel_x = 2;
 	pixel_y = 3;
-	starts_with = list(/obj/item/reagent_containers/glass/beaker/measuring_cup = 7)
+	starts_with = list(/obj/item/measuring_tape = 7)
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
@@ -33868,7 +33847,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/item/book/manual/cook_guide,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "bgq" = (
@@ -33984,7 +33962,6 @@
 /obj/machinery/camera/network/civilian{
 	dir = 9
 	},
-/obj/item/book/manual/bar_guide,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "bgA" = (
@@ -37720,7 +37697,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/closet/walllocker_double{
+/obj/structure/closet/walllocker{
 	dir = 8;
 	pixel_x = -28
 	},
@@ -40163,8 +40140,8 @@
 	req_access = list(58)
 	},
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/void/security/prototype,
-/obj/item/clothing/head/helmet/space/void/security/prototype,
+/obj/item/clothing/suit/space/void/security,
+/obj/item/clothing/head/helmet/space/void/security,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/hos)
 "lSv" = (
@@ -43206,7 +43183,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/closet/walllocker_double{
+/obj/structure/closet/walllocker{
 	dir = 4;
 	pixel_x = 28
 	},
@@ -56931,7 +56908,7 @@ aZR
 bbi
 ayx
 aqO
-aTP
+aqO
 asT
 aPp
 asT
@@ -60611,7 +60588,7 @@ acV
 avb
 awu
 arL
-arZ
+aop
 aop
 asQ
 auk
