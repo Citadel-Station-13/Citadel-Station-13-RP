@@ -1,5 +1,3 @@
-// This causes triumph submap maps to get 'checked' and compiled, when undergoing a unit test.
-// This is so Travis can validate PoIs, and ensure future changes don't break PoIs, as PoIs are loaded at runtime and the compiler can't catch errors.
 
 //////////////////////////////////////////////////////////////////////////////
 /// Static Load
