@@ -5,6 +5,11 @@
 			if(!fexists(initial(S.prefix) + initial(S.suffix)))
 				Fail("Failed to resolve [path]'s prefix+suffix to a file - [initial(S.prefix) + initial(S.suffix)].")
 			continue
+		if(ispath(path, /datum/map_template/shuttle))
+			var/datum/map_template/shuttle/S = path
+			if(!fexists(initial(S.prefix) + initial(S.suffix)))
+				Fail("Failed to resolve [path]'s prefix+suffix to a file - [initial(S.prefix) + initial(S.suffix)].")
+			continue
 		var/datum/map_template/M = path
 		if(!fexists(initial(M.mappath)))
 			Fail("Failed to resolve [path]'s initial mappath to a file - [initial(M.mappath)].")
