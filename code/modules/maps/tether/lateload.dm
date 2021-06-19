@@ -71,7 +71,7 @@
 /datum/map_template/tether_lateload/tether_roguemines1
 	name = "Asteroid Belt 1"
 	desc = "Mining, but rogue. Zone 1"
-	mappath = '_maps/planet_levels/140x40/roguemining/rogue_mine1.dmm'
+	mappath = '_maps/map_levels/140x40/roguemining/rogue_mine1.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/roguemines1
 
 /datum/map_z_level/tether_lateload/roguemines1
@@ -81,7 +81,7 @@
 /datum/map_template/tether_lateload/tether_roguemines2
 	name = "Asteroid Belt 2"
 	desc = "Mining, but rogue. Zone 2"
-	mappath = '_maps/planet_levels/140x40/roguemining/rogue_mine2.dmm'
+	mappath = '_maps/map_levels/140x40/roguemining/rogue_mine2.dmm'
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/roguemines2
 
@@ -126,7 +126,7 @@
 /datum/map_template/tether_lateload/away_alienship
 	name = "Alien Ship - Z1 Ship"
 	desc = "The alien ship away mission."
-	mappath = "_maps/planet_levels/140x140/alienship.dmm"
+	mappath = "_maps/map_levels/140x140/alienship.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_alienship
 
 /datum/map_z_level/tether_lateload/away_alienship
@@ -135,7 +135,7 @@
 /datum/map_template/tether_lateload/away_aerostat
 	name = "Remmi Aerostat - Z1 Aerostat"
 	desc = "The Virgo 2 Aerostat away mission."
-	mappath = "_maps/planet_levels/140x140/virgo2_aerostat.dmm"
+	mappath = "_maps/map_levels/140x140/virgo2_aerostat.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat
 
 /datum/map_z_level/tether_lateload/away_aerostat
@@ -145,7 +145,7 @@
 /datum/map_template/tether_lateload/away_aerostat_surface
 	name = "Remmi Aerostat - Z2 Surface"
 	desc = "The surface from the Virgo 2 Aerostat."
-	mappath = "_maps/planet_levels/140x140/virgo2_surface.dmm"
+	mappath = "_maps/map_levels/140x140/virgo2_surface.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat_surface
 
 /datum/map_template/tether_lateload/away_aerostat_surface/on_map_loaded(z)

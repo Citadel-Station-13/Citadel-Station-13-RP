@@ -36,11 +36,3 @@
 		message_admins("\The [A] fell out of the sky.")
 		var/mob/living/L = A
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
-
-//////////////////////////////////////////////////////////////////////////////
-//Offmap Spawn Locations
-#include "../../offmap_vr/talon/talon.dm"
-#include "../../offmap_vr/talon/talon_areas.dm"
-
-
-
