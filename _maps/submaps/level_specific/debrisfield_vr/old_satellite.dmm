@@ -10,7 +10,7 @@
 /obj/machinery/doppler_array,
 /obj/structure/lattice,
 /turf/space,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "d" = (
 /obj/structure/window/phoronbasic{
 	dir = 1
@@ -19,14 +19,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "e" = (
 /obj/structure/window/phoronbasic{
 	dir = 1
 	},
 /obj/structure/salvageable/server,
 /turf/simulated/floor/bluegrid/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "f" = (
 /obj/structure/window/phoronbasic{
 	dir = 1
@@ -36,7 +36,7 @@
 	},
 /obj/random/tech_supply/component,
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "g" = (
 /obj/item/material/shard,
 /turf/template_noop,
@@ -50,7 +50,7 @@
 	adir = 135
 	},
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "i" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -63,7 +63,7 @@
 	adir = 135
 	},
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "j" = (
 /obj/structure/window/phoronbasic{
 	dir = 8
@@ -73,7 +73,7 @@
 	},
 /obj/random/tech_supply/component,
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "k" = (
 /obj/structure/AIcore{
 	anchored = 1;
@@ -88,14 +88,14 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/bluegrid/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "l" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/random/tech_supply/component,
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "m" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -104,14 +104,14 @@
 	stat = 1
 	},
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "n" = (
 /obj/structure/window/phoronbasic{
 	dir = 8
 	},
 /obj/structure/window/phoronbasic,
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "o" = (
 /obj/structure/lattice,
 /obj/item/material/shard,
@@ -121,13 +121,13 @@
 /obj/structure/window/phoronbasic,
 /obj/machinery/telecomms/broadcaster,
 /turf/simulated/floor/bluegrid/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "q" = (
 /obj/item/material/shard/phoron,
 /obj/item/ore/iron,
 /obj/random/tech_supply/component,
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/old_sat)
+/area/submap/debrisfield_vr/old_sat)
 "r" = (
 /obj/item/ore/iron,
 /obj/item/ore/iron,

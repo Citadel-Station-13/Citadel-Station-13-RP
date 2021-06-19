@@ -4,20 +4,20 @@
 /area/space)
 "b" = (
 /turf/simulated/mineral/vacuum,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "c" = (
 /turf/simulated/mineral/floor/vacuum,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "d" = (
 /turf/simulated/wall/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "e" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/item/reagent_containers/food/snacks/carpmeat,
 /obj/item/reagent_containers/food/snacks/carpmeat,
 /obj/item/reagent_containers/food/snacks/carpmeat,
 /turf/simulated/floor/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "f" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/condiment/coldsauce,
@@ -25,19 +25,19 @@
 /obj/item/reagent_containers/food/condiment/hotsauce,
 /obj/item/reagent_containers/food/condiment/soysauce,
 /turf/simulated/floor/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "g" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "h" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "i" = (
 /turf/simulated/floor/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "j" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/food/snacks/taco,
@@ -48,23 +48,23 @@
 /obj/item/reagent_containers/food/snacks/cheeseburrito,
 /obj/item/reagent_containers/food/snacks/cheeseburrito,
 /turf/simulated/floor/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "k" = (
 /obj/structure/table/woodentable,
 /obj/machinery/cash_register{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "l" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/taco,
 /turf/simulated/floor/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 "m" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
-/area/submap/debrisfield/foodstand)
+/area/submap/debrisfield_vr/foodstand)
 
 (1,1,1) = {"
 a

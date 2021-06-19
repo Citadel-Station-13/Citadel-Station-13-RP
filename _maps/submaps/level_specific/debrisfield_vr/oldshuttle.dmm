@@ -13,55 +13,55 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/plating/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ad" = (
 /turf/simulated/shuttle/wall/voidcraft,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ae" = (
 /obj/item/material/shard,
 /obj/item/material/shard,
 /obj/structure/grille/broken,
 /turf/simulated/shuttle/plating/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ag" = (
 /obj/structure/lattice,
 /turf/space,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ah" = (
 /turf/space,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ai" = (
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aj" = (
 /obj/structure/table/steel,
 /obj/item/clothing/head/pilot,
 /obj/random/unidentified_medicine/drug_den,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ak" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "al" = (
 /obj/structure/table/steel,
 /obj/item/clothing/head/pilot,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "am" = (
 /obj/structure/frame/computer,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "an" = (
-/obj/tether_away_spawner/debrisfield/carp/hard,
+/obj/tether_away_spawner/debrisfield_vr/carp/hard,
 /turf/space,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ao" = (
 /obj/structure/bed/chair/comfy/blue{
 	icon_state = "comfychair_preview";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ap" = (
 /obj/machinery/light{
 	dir = 1
@@ -69,7 +69,7 @@
 /obj/structure/table/rack/shelf,
 /obj/item/suit_cooling_unit,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aq" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -77,7 +77,7 @@
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ar" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -85,7 +85,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "as" = (
 /obj/machinery/light{
 	dir = 1
@@ -98,16 +98,16 @@
 /obj/item/clothing/suit/space/void/pilot,
 /obj/item/clothing/head/helmet/space/void/pilot,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "at" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/shuttle/plating/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "au" = (
 /obj/machinery/door/airlock/voidcraft,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "av" = (
 /obj/structure/table/rack/shelf,
 /obj/item/clothing/mask/breath,
@@ -119,11 +119,11 @@
 /obj/item/tank/emergency/oxygen/engi,
 /obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aw" = (
 /obj/structure/bed/chair/shuttle,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ax" = (
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -133,7 +133,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ay" = (
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -143,36 +143,36 @@
 	pixel_x = 32
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "az" = (
 /obj/machinery/sleeper{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aA" = (
 /obj/machinery/sleep_console,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aB" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aC" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/shuttle/floor/darkred/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aD" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/space_heater,
 /turf/simulated/shuttle/floor/darkred/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aE" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/shuttle/floor/darkred/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aF" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -180,7 +180,7 @@
 	dir = 6
 	},
 /turf/simulated/shuttle/plating/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aG" = (
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
@@ -192,14 +192,14 @@
 	id_tag = "expshuttle_docker_pump_out_internal"
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aH" = (
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aI" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -210,20 +210,20 @@
 	id_tag = "expshuttle_vent"
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 10
 	},
 /turf/simulated/shuttle/wall/voidcraft,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aK" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aL" = (
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
@@ -235,7 +235,7 @@
 	id_tag = "expshuttle_docker_pump_out_internal"
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aM" = (
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
@@ -247,27 +247,27 @@
 	id_tag = "expshuttle_vent"
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aN" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 4
 	},
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aO" = (
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aP" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
 	},
 /turf/simulated/shuttle/wall/voidcraft,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aQ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
@@ -278,11 +278,11 @@
 	id_tag = "expshuttle_docker_pump_out_internal"
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aR" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aS" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
@@ -297,48 +297,48 @@
 	id_tag = "expshuttle_vent"
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aT" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 4
 	},
 /turf/simulated/shuttle/wall/voidcraft,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aU" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/shuttle/floor/black,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aV" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	icon_state = "warningcorner";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aW" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 10
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aX" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/darkred/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aY" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/darkred/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "aZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 9
 	},
 /turf/simulated/shuttle/wall/voidcraft,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "ba" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -346,7 +346,7 @@
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "bb" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/wall_mounted{
 	dir = 1;
@@ -355,7 +355,7 @@
 	power_rating = 20000
 	},
 /turf/simulated/shuttle/wall/voidcraft,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "bc" = (
 /obj/structure/closet/crate/medical,
 /obj/random/unidentified_medicine/old_medicine,
@@ -365,7 +365,7 @@
 /obj/random/unidentified_medicine/fresh_medicine,
 /obj/random/unidentified_medicine/combat_medicine,
 /turf/simulated/shuttle/floor/darkred/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "bd" = (
 /obj/item/storage/mre/random,
 /obj/item/storage/mre/random,
@@ -375,9 +375,9 @@
 /obj/item/storage/mre/random,
 /obj/structure/closet/crate,
 /turf/simulated/shuttle/floor/darkred/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "be" = (
-/obj/tether_away_spawner/debrisfield/carp,
+/obj/tether_away_spawner/debrisfield_vr/carp,
 /turf/space,
 /area/space)
 "bf" = (
@@ -386,29 +386,29 @@
 "bg" = (
 /obj/structure/lattice,
 /turf/space,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "bh" = (
 /turf/space,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "bi" = (
 /obj/machinery/door/airlock/multi_tile/metal,
 /turf/simulated/shuttle/floor/black/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "bj" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/shuttle/plating/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "bk" = (
 /turf/simulated/mineral/floor/vacuum,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "bl" = (
 /obj/effect/immovablerod,
 /turf/simulated/mineral/floor/vacuum,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "bm" = (
 /obj/structure/loot_pile/mecha/durand,
 /turf/simulated/mineral/floor/vacuum,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
 bf

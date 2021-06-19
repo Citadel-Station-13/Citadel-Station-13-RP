@@ -4,16 +4,16 @@
 /area/space)
 "b" = (
 /turf/template_noop,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "c" = (
 /turf/simulated/floor/hull/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /obj/machinery/power/pointdefense{
 	dir = 4
 	},
 /turf/simulated/floor/hull/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
 /obj/structure/lattice,
 /turf/space,
@@ -21,7 +21,7 @@
 "f" = (
 /obj/structure/lattice,
 /turf/space,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
 a

@@ -16,10 +16,10 @@
 "e" = (
 /obj/structure/lattice,
 /turf/space,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "f" = (
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
 a

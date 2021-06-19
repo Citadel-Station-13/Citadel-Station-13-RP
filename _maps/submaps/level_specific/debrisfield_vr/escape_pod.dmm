@@ -5,14 +5,14 @@
 	pixel_x = -16
 	},
 /turf/simulated/shuttle/wall/hard_corner,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "b" = (
 /turf/simulated/shuttle/wall,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "c" = (
 /obj/machinery/door/unpowered/shuttle,
 /turf/simulated/shuttle/floor/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "d" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -22,7 +22,7 @@
 	layer = 2.5
 	},
 /turf/simulated/shuttle/floor/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "e" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -34,12 +34,12 @@
 	req_access = list()
 	},
 /turf/simulated/shuttle/floor/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "f" = (
 /obj/structure/shuttle/window,
 /obj/structure/grille,
 /turf/simulated/floor/airless,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 
 (1,1,1) = {"
 a

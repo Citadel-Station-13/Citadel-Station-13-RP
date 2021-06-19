@@ -7,20 +7,20 @@
 /area/space)
 "c" = (
 /turf/template_noop,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /turf/simulated/mineral/floor/vacuum,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "e" = (
 /turf/simulated/mineral/vacuum,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "f" = (
-/obj/tether_away_spawner/debrisfield/carp,
+/obj/tether_away_spawner/debrisfield_vr/carp,
 /turf/simulated/mineral/floor/vacuum,
-/area/submap/debrisfield/misc_debris)
+/area/submap/debrisfield_vr/misc_debris)
 "g" = (
 /turf/simulated/mineral/vacuum,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
 a

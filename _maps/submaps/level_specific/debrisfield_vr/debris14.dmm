@@ -6,17 +6,17 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "b" = (
 /obj/structure/girder,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "c" = (
 /turf/template_noop,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
 /obj/structure/lattice,
 /turf/space,
@@ -24,31 +24,31 @@
 "f" = (
 /obj/item/stack/rods,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "g" = (
 /obj/structure/lattice,
 /obj/item/stack/rods,
 /turf/space,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "h" = (
 /obj/structure/lattice,
 /obj/structure/lattice,
 /turf/space,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "i" = (
 /obj/item/material/shard/shrapnel,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "j" = (
 /obj/structure/lattice,
 /turf/space,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "k" = (
 /turf/template_noop,
 /area/space)
 "l" = (
 /turf/simulated/wall,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
 b

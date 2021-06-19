@@ -18,18 +18,18 @@
 "f" = (
 /obj/structure/closet/crate/radiation,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "g" = (
 /obj/structure/table/rack,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "h" = (
 /turf/simulated/wall/lead,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "i" = (
 /obj/structure/sign/warning/radioactive,
 /turf/simulated/wall/lead,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
 a

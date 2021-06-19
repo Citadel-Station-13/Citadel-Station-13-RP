@@ -4,7 +4,7 @@
 /area/space)
 "b" = (
 /turf/simulated/wall/shull,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "c" = (
 /obj/item/stack/rods,
 /turf/template_noop,
@@ -14,13 +14,13 @@
 	dir = 6
 	},
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
 /obj/machinery/atmospherics/unary/engine{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "f" = (
 /obj/structure/lattice,
 /turf/template_noop,
@@ -28,16 +28,16 @@
 "g" = (
 /obj/structure/girder,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "h" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "i" = (
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "j" = (
 /obj/structure/lattice,
 /obj/item/material/shard/shrapnel,

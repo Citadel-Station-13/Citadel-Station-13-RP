@@ -18,7 +18,7 @@
 "e" = (
 /obj/item/stack/rods,
 /turf/simulated/floor/airless,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "f" = (
 /obj/structure/lattice,
 /turf/space,

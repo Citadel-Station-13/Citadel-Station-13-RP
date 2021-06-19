@@ -1,6 +1,6 @@
 // -- Datums -- //
 
-/obj/effect/overmap/visitable/sector/debrisfield
+/obj/effect/overmap/visitable/sector/debrisfield_vr
 	name = "Debris Field"
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Transponder[/i]: Various faint signals
@@ -13,43 +13,43 @@
 // -- Objs -- //
 
 
-/obj/effect/step_trigger/teleporter/debrisfield_loop/north/Initialize(mapload)
+/obj/effect/step_trigger/teleporter/debrisfield_vr_loop/north/Initialize(mapload)
 	. = ..()
 	teleport_x = x
 	teleport_y = 2
 	teleport_z = z
 
-/obj/effect/step_trigger/teleporter/debrisfield_loop/south/Initialize(mapload)
+/obj/effect/step_trigger/teleporter/debrisfield_vr_loop/south/Initialize(mapload)
 	. = ..()
 	teleport_x = x
 	teleport_y = world.maxy - 1
 	teleport_z = z
 
-/obj/effect/step_trigger/teleporter/debrisfield_loop/west/Initialize(mapload)
+/obj/effect/step_trigger/teleporter/debrisfield_vr_loop/west/Initialize(mapload)
 	. = ..()
 	teleport_x = world.maxx - 1
 	teleport_y = y
 	teleport_z = z
 
-/obj/effect/step_trigger/teleporter/debrisfield_loop/east/Initialize(mapload)
+/obj/effect/step_trigger/teleporter/debrisfield_vr_loop/east/Initialize(mapload)
 	. = ..()
 	teleport_x = 2
 	teleport_y = y
 	teleport_z = z
 
 //This does nothing right now, but is framework if we do POIs for this place
-/obj/away_mission_init/debrisfield
+/obj/away_mission_init/debrisfield_vr
 	name = "away mission initializer - debrisfield"
 
-/obj/away_mission_init/debrisfield/Initialize(mapload)
+/obj/away_mission_init/debrisfield_vr/Initialize(mapload)
 	return INITIALIZE_HINT_QDEL
 
-/area/tether_away/debrisfield
+/area/tether_away/debrisfield_vr
 	name = "Away Mission - Debris Field"
 	icon = 'icons/turf/areas_vr.dmi'
 	icon_state = "dark"
 
-/area/tether_away/debrisfield/shuttle_buffer //For space around shuttle landmarks to keep submaps from generating to block them
+/area/tether_away/debrisfield_vr/shuttle_buffer //For space around shuttle landmarks to keep submaps from generating to block them
 	icon_state = "debrisexplored"
 	name = "\improper Space"
 	requires_power = 1
@@ -61,65 +61,65 @@
 	power_environ = 0
 	ambience = AMBIENCE_SPACE
 
-/area/submap/debrisfield
+/area/submap/debrisfield_vr
 	icon = 'icons/turf/areas_vr.dmi'
 	icon_state = "debrisunexplored"
 
-/area/submap/debrisfield/derelict
+/area/submap/debrisfield_vr/derelict
 	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
 
 //TFF 26/12/19 - Sub-areas for the APCs.
 
-/area/submap/debrisfield/derelict/ai_access_port
+/area/submap/debrisfield_vr/derelict/ai_access_port
 	name = "POI - Abandoned Derelict AI Acess Port"
 
-/area/submap/debrisfield/derelict/ai_access_starboard
+/area/submap/debrisfield_vr/derelict/ai_access_starboard
 	name = "POI - Abandoned Derelict AI Access Starboard"
 
-/area/submap/debrisfield/derelict/ai_chamber
+/area/submap/debrisfield_vr/derelict/ai_chamber
 	name = "POI - Abandoned Derelict AI Chamber"
 
-/area/submap/debrisfield/derelict/bridge
+/area/submap/debrisfield_vr/derelict/bridge
 	name = "POI - Abandoned Derelict Bridge"
 
-/area/submap/debrisfield/derelict/interior
+/area/submap/debrisfield_vr/derelict/interior
 	name = "POI - Abandoned Derelict Interior"
 
-/area/submap/debrisfield/foodstand
+/area/submap/debrisfield_vr/foodstand
 	name = "POI - Foodstand"
 
-/area/submap/debrisfield/sci_overrun
+/area/submap/debrisfield_vr/sci_overrun
 	name = "POI - Overrun Science Ship"
 	requires_power = 0
 
-/area/submap/debrisfield/old_sat
+/area/submap/debrisfield_vr/old_sat
 	name = "POI - Old Satellite"
 
-/area/submap/debrisfield/old_tele
+/area/submap/debrisfield_vr/old_tele
 	name = "POI - Old Teleporter"
 
-/area/submap/debrisfield/mining_drone_ship
+/area/submap/debrisfield_vr/mining_drone_ship
 	name = "POI - Disabled Mining Drone"
 	requires_power = 0
 
-/area/submap/debrisfield/mining_outpost
+/area/submap/debrisfield_vr/mining_outpost
 	name = "POI - Destroyed Mining Outpost"
 
-/area/submap/debrisfield/tinyshuttle
+/area/submap/debrisfield_vr/tinyshuttle
 	// secret_name = 0
 
-/area/submap/debrisfield/tinyshuttle/crew
+/area/submap/debrisfield_vr/tinyshuttle/crew
 	name = "Crew Bay"
 
-/area/submap/debrisfield/tinyshuttle/bridge
+/area/submap/debrisfield_vr/tinyshuttle/bridge
 	name = "Bridge"
 
-/area/submap/debrisfield/tinyshuttle/hangar
+/area/submap/debrisfield_vr/tinyshuttle/hangar
 	name = "Hangar"
 	has_gravity = 0
 
-/area/submap/debrisfield/tinyshuttle/engine
+/area/submap/debrisfield_vr/tinyshuttle/engine
 	name = "Systems Bay"
 
 /datum/shuttle/autodock/overmap/tinycarrier
@@ -127,7 +127,7 @@
 	warmup_time = 0
 	current_location = "debris_field_carrier_start"
 	docking_controller_tag = "debris_carrier_docker"
-	shuttle_area = list(/area/submap/debrisfield/tinyshuttle/crew, /area/submap/debrisfield/tinyshuttle/bridge, /area/submap/debrisfield/tinyshuttle/hangar, /area/submap/debrisfield/tinyshuttle/engine)
+	shuttle_area = list(/area/submap/debrisfield_vr/tinyshuttle/crew, /area/submap/debrisfield_vr/tinyshuttle/bridge, /area/submap/debrisfield_vr/tinyshuttle/hangar, /area/submap/debrisfield_vr/tinyshuttle/engine)
 	fuel_consumption = 3
 	defer_initialisation = TRUE
 	move_direction = WEST
@@ -211,7 +211,7 @@
 	if(T)
 		T.air_contents.remove(T.air_contents.total_moles)
 
-/area/submap/debrisfield/misc_debris //for random bits of debris that should use dynamic lights
+/area/submap/debrisfield_vr/misc_debris //for random bits of debris that should use dynamic lights
 	requires_power = 1
 	always_unpowered = 1
 	has_gravity = 0

@@ -7,10 +7,10 @@
 /area/space)
 "c" = (
 /turf/space,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "d" = (
 /turf/simulated/mineral/vacuum,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 
 (1,1,1) = {"
 a

@@ -2,7 +2,7 @@
 "a" = (
 /obj/structure/lattice,
 /turf/space,
-/area/tether_away/debrisfield/shuttle_buffer)
+/area/tether_away/debrisfield_vr/shuttle_buffer)
 "b" = (
 /obj/structure/lattice,
 /turf/space,
