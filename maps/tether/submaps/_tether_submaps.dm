@@ -38,31 +38,6 @@
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
 
 //////////////////////////////////////////////////////////////////////////////
-//Overmap ship spawns
-
-#include "../../offmap_vr/om_ships/hybridshuttle.dm"
-#include "../../offmap_vr/om_ships/screebarge.dm"
-//#include "../../offmap_vr/om_ships/aro.dm"
-//#include "../../offmap_vr/om_ships/aro2.dm"
-#include "../../offmap_vr/om_ships/bearcat.dm"
-#include "../../offmap_vr/om_ships/cruiser.dm"
-#include "../../offmap_vr/om_ships/vespa.dm"
-#include "../../offmap_vr/om_ships/generic_shuttle.dm"
-#include "../../offmap_vr/om_ships/salamander.dm"
-#include "../../offmap_vr/om_ships/geckos.dm"
-#include "../../offmap_vr/om_ships/mackerels.dm"
-#include "../../offmap_vr/om_ships/mercenarybase.dm"
-#include "../../offmap_vr/om_ships/mercship.dm"
-#include "../../offmap_vr/om_ships/curashuttle.dm"
-#include "../../offmap_vr/om_ships/itglight.dm"
-#include "../../offmap_vr/om_ships/abductor.dm"
-
-//////////////////////////////////////////////////////////////////////////////
-//Capsule deployed ships
-#include "../../offmap_vr/om_ships/shelter_5.dm"
-#include "../../offmap_vr/om_ships/shelter_6.dm"
-
-//////////////////////////////////////////////////////////////////////////////
 //Offmap Spawn Locations
 #include "../../offmap_vr/talon/talon.dm"
 #include "../../offmap_vr/talon/talon_areas.dm"
