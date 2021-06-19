@@ -1,10 +1,10 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/screebarge
+/datum/map_template/shuttle/overmap/tether/screebarge
 	name = "OM Ship - Battle Barge"
 	desc = "The BATTLE BARGE."
-	mappath = 'screebarge.dmm'
+	suffix = "screebarge.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)

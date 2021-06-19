@@ -1,10 +1,10 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/escapepod
+/datum/map_template/shuttle/overmap/tether/escapepod
 	name = "OM Ship - Escape Pod"
 	desc = "An escape pod."
-	mappath = 'shelter_5.dmm'
+	suffix = "shelter_5.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)

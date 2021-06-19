@@ -1,21 +1,21 @@
 
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/gecko_stationhopper
+/datum/map_template/shuttle/overmap/tether/gecko_stationhopper
 	name = "OM Ship - Gecko Stationhopper (new Z)"
 	desc = "A medium personnel transport shuttle."
-	mappath = 'gecko_sh.dmm'
+	suffix = "gecko_sh.dmm"
 	annihilate = TRUE
 
-/datum/map_template/om_ships/gecko_cargohauler
+/datum/map_template/shuttle/overmap/tether/gecko_cargohauler
 	name = "OM Ship - Gecko Cargo Hauler (new Z)"
 	desc = "A medium supply transport shuttle."
-	mappath = 'gecko_cr.dmm'
+	suffix = "gecko_cr.dmm"
 	annihilate = TRUE
 
-/datum/map_template/om_ships/gecko_cargohauler_wreck
+/datum/map_template/shuttle/overmap/tether/gecko_cargohauler_wreck
 	name = "OM Ship - Wrecked Gecko Cargo Hauler (new Z)"
 	desc = "A wrecked medium supply transport shuttle."
-	mappath = 'gecko_cr_wreck.dmm'
+	suffix = "gecko_cr_wreck.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)

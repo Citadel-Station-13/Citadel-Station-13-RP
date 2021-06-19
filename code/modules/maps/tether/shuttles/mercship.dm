@@ -1,9 +1,9 @@
 
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/syndicatecarrier
+/datum/map_template/shuttle/overmap/tether/syndicatecarrier
 	name = "OM Ship - Mercenary Ship (New Z)"
 	desc = "Mercenary Ship."
-	mappath = 'mercship.dmm'
+	suffix = "mercship.dmm"
 
 	// The ship's area(s)
 /area/ship/mercenary

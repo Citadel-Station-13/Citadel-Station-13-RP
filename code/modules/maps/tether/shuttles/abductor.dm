@@ -1,8 +1,8 @@
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/abductor
+/datum/map_template/shuttle/overmap/tether/abductor
 	name = "OM Ship - Abductor Ship (New Z)"
 	desc = "A ship for spooky aliens to kidnap farmers and unfortunate spacemen."
-	mappath = 'abductor.dmm'
+	suffix = "abductor.dmm"
 
 /area/abductor
 	requires_power = 0

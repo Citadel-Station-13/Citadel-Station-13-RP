@@ -1,8 +1,8 @@
 // -- Datums -- //
-/datum/map_template/om_ships/bearcat
+/datum/map_template/shuttle/overmap/tether/bearcat
 	name = "OM Ship - Bearcat (New Z)"
 	desc = "An old salvage ship, abandoned but seemingly intact."
-	mappath = 'bearcat.dmm'
+	suffix = "bearcat.dmm"
 
 // The 'shuttle'
 /datum/shuttle/autodock/overmap/bearcat

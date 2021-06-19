@@ -1,10 +1,10 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/vespa
+/datum/map_template/shuttle/overmap/tether/vespa
 	name = "OM Ship - Vespa (New Z)"
 	desc = "The Vespa, a Hephaestus Industries vessel."
-	mappath = 'vespa.dmm'
+	suffix = "vespa.dmm"
 
 // The shuttle's area(s)
 /area/ship/expe

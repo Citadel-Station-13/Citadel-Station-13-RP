@@ -1,10 +1,10 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/hybrid
+/datum/map_template/shuttle/overmap/tether/hybrid
 	name = "OM Ship - Generic Shuttle"
 	desc = "A small privately-owned vessel."
-	mappath = 'generic_shuttle.dmm'
+	suffix = "generic_shuttle.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)

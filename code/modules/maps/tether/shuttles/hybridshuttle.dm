@@ -1,10 +1,10 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/hybrid
+/datum/map_template/shuttle/overmap/tether/hybrid
 	name = "OM Ship - Hybrid Shuttle"
 	desc = "A prototype human/alien tech hybrid shuttle."
-	mappath = 'hybridshuttle.dmm'
+	suffix = "hybridshuttle.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)

@@ -1,34 +1,34 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/mackerel_stationhopper
+/datum/map_template/shuttle/overmap/tether/mackerel_stationhopper
 	name = "OM Ship - Mackerel Stationhopper (new Z)"
 	desc = "A small personnel transport shuttle."
-	mappath = 'mackerel_sh.dmm'
+	suffix = "mackerel_sh.dmm"
 	annihilate = TRUE
 
-/datum/map_template/om_ships/mackerel_lightcargo
+/datum/map_template/shuttle/overmap/tether/mackerel_lightcargo
 	name = "OM Ship - Mackerel Light Cargo (new Z)"
 	desc = "A small light cargo transport shuttle."
-	mappath = 'mackerel_lc.dmm'
+	suffix = "mackerel_lc.dmm"
 	annihilate = TRUE
 
-/datum/map_template/om_ships/mackerel_heavycargo
+/datum/map_template/shuttle/overmap/tether/mackerel_heavycargo
 	name = "OM Ship - Mackerel Heavy Cargo (new Z)"
 	desc = "A small secure cargo transport shuttle."
-	mappath = 'mackerel_hc.dmm'
+	suffix = "mackerel_hc.dmm"
 	annihilate = TRUE
 
-/datum/map_template/om_ships/mackerel_heavycargo_skel
+/datum/map_template/shuttle/overmap/tether/mackerel_heavycargo_skel
 	name = "OM Ship - Mackerel Heavy Cargo Spartanized (new Z)"
 	desc = "A small heavy cargo transport shuttle."
-	mappath = 'mackerel_hc_skel.dmm'
+	suffix = "mackerel_hc_skel.dmm"
 	annihilate = TRUE
 
-/datum/map_template/om_ships/mackerel_lightcargo_wreck
+/datum/map_template/shuttle/overmap/tether/mackerel_lightcargo_wreck
 	name = "OM Ship - Mackerel Light Cargo Wreck (new Z)"
 	desc = "A small light cargo transport shuttle, struck by... something. Ouch."
-	mappath = 'mackerel_lc_wreck.dmm'
+	suffix = "mackerel_lc_wreck.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)

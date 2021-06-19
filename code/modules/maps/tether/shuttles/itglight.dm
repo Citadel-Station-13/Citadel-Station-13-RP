@@ -1,9 +1,9 @@
 
 // Map template for spawning the shuttle
-/datum/map_template/om_ships/itglight
+/datum/map_template/shuttle/overmap/tether/itglight
 	name = "OM Ship - ITG Dauntless (New Z)"
 	desc = "A small, well armed interstellar cargo ship!!"
-	mappath = 'itglight.dmm'
+	suffix = "itglight.dmm"
 
 /area/itglight
 	requires_power = 1
