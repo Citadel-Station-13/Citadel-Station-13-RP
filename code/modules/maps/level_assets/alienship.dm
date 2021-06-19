@@ -13,7 +13,7 @@
 
 /obj/away_mission_init/alienship
 	name = "away mission initializer - alienship"
-	icon = 'alienship.dmi'
+	icon = 'icons/map_assets/level/alienship.dmi'
 	icon_state = null
 	mouse_opacity = 0
 	invisibility = 101
@@ -97,7 +97,7 @@
 /obj/item/reagent_containers/hypospray/autoinjector/alien
 	name = "alien injector(?)"
 	desc = "It appears to contain some sort of liquid and has a needle for injecting."
-	icon = 'alienship.dmi'
+	icon = 'icons/map_assets/level/alienship.dmi'
 	icon_state = "alien_injector"
 	item_state = "autoinjector"
 	filled_reagents = list("rezadone" = 4, "corophizine" = 1)

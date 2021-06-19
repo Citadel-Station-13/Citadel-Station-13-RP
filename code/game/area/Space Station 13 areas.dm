@@ -895,6 +895,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Engineering Pump Station"
 	icon_state = "maint_pumpstation"
 
+/area/submap/pa_room
+	name = "Particle Accelerator Room"
+
 /area/maintenance/solars
 	name = "\improper Solars Maintenance"
 

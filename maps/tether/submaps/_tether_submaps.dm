@@ -59,12 +59,12 @@
 /datum/map_template/admin_use/ert
 	name = "Special Area - ERT"
 	desc = "It's the ERT ship! Lorge."
-	mappath = 'maps/submaps/admin_use_vr/ert.dmm'
+	mappath = '_maps/templates/admin/ert.dmm'
 
 /datum/map_template/admin_use/trader
 	name = "Special Area - Trader"
 	desc = "Big trader ship."
-	mappath = 'maps/submaps/admin_use_vr/tradeship.dmm'
+	mappath = '_maps/templates/admin/tradeship.dmm'
 
 /datum/map_template/admin_use/salamander_trader
 	name = "Special Area - Salamander Trader"
@@ -74,32 +74,32 @@
 /datum/map_template/admin_use/mercenary
 	name = "Special Area - Merc Ship"
 	desc = "Prepare tae be boarded, arr!"
-	mappath = 'maps/submaps/admin_use_vr/kk_mercship.dmm'
+	mappath = '_maps/templates/admin/kk_mercship.dmm'
 
 /datum/map_template/admin_use/old_mercenary
 	name = "Special Area - Old Merc Base"
 	desc = "So much red!"
-	mappath = 'maps/submaps/admin_use_vr/mercbase.dmm'
+	mappath = '_maps/templates/admin/mercbase.dmm'
 
 /datum/map_template/admin_use/skipjack
 	name = "Special Area - Skipjack Base"
 	desc = "Stinky!"
-	mappath = 'maps/submaps/admin_use_vr/skipjack.dmm'
+	mappath = '_maps/templates/admin/skipjack.dmm'
 
 /datum/map_template/admin_use/thunderdome
 	name = "Special Area - Thunderdome"
 	desc = "Thunderrrrdomeee"
-	mappath = 'maps/submaps/admin_use_vr/thunderdome.dmm'
+	mappath = '_maps/templates/admin/thunderdome.dmm'
 
 /datum/map_template/admin_use/wizardbase
 	name = "Special Area - Wizard Base"
 	desc = "Wingardium Levosia"
-	mappath = 'maps/submaps/admin_use_vr/wizard.dmm'
+	mappath = '_maps/templates/admin/wizard.dmm'
 
 /datum/map_template/admin_use/dojo
 	name = "Special Area - Ninja Dojo"
 	desc = "Sneaky"
-	mappath = 'maps/submaps/admin_use_vr/dojo.dmm'
+	mappath = '_maps/templates/admin/dojo.dmm'
 
 //////////////////////////////////////////////////////////////////////////////
 //Rogue Mines Stuff
@@ -107,7 +107,7 @@
 /datum/map_template/tether_lateload/tether_roguemines1
 	name = "Asteroid Belt 1"
 	desc = "Mining, but rogue. Zone 1"
-	mappath = 'maps/submaps/rogue_mines_vr/rogue_mine1.dmm'
+	mappath = '_maps/planet_levels/140x40/roguemining/rogue_mine1.dmm'
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/roguemines1
 
@@ -119,7 +119,7 @@
 /datum/map_template/tether_lateload/tether_roguemines2
 	name = "Asteroid Belt 2"
 	desc = "Mining, but rogue. Zone 2"
-	mappath = 'maps/submaps/rogue_mines_vr/rogue_mine2.dmm'
+	mappath = '_maps/planet_levels/140x40/roguemining/rogue_mine2.dmm'
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/roguemines2
 
@@ -170,18 +170,16 @@
 /datum/map_template/tether_lateload/away_alienship
 	name = "Alien Ship - Z1 Ship"
 	desc = "The alien ship away mission."
-	mappath = 'maps/expedition_vr/alienship/alienship.dmm'
+	mappath = "_maps/planet_levels/140x140/alienship.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_alienship
 
 /datum/map_z_level/tether_lateload/away_alienship
 	name = "Away Mission - Alien Ship"
 
-
-#include "../../expedition_vr/aerostat/_aerostat.dm"
 /datum/map_template/tether_lateload/away_aerostat
 	name = "Remmi Aerostat - Z1 Aerostat"
 	desc = "The Virgo 2 Aerostat away mission."
-	mappath = 'maps/expedition_vr/aerostat/aerostat.dmm'
+	mappath = "_maps/planet_levels/140x140/virgo2_aerostat.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat
 
 /datum/map_z_level/tether_lateload/away_aerostat
@@ -192,12 +190,12 @@
 /datum/map_template/tether_lateload/away_aerostat_surface
 	name = "Remmi Aerostat - Z2 Surface"
 	desc = "The surface from the Virgo 2 Aerostat."
-	mappath = 'maps/expedition_vr/aerostat/surface.dmm'
+	mappath = "_maps/planet_levels/140x140/virgo2_surface.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat_surface
 
 /datum/map_template/tether_lateload/away_aerostat_surface/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_AEROSTAT_SURFACE), 120, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/virgo2)
+	seed_submaps(list(Z_LEVEL_AEROSTAT_SURFACE), 120, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/submap/level_specific/virgo2)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, Z_LEVEL_AEROSTAT_SURFACE, world.maxx - 4, world.maxy - 4)
 	new /datum/random_map/noise/ore/virgo2(null, 1, 1, Z_LEVEL_AEROSTAT_SURFACE, 64, 64)
 
@@ -302,7 +300,7 @@
 /datum/map_template/tether_lateload/fun/spa
 	name = "Space Spa"
 	desc = "A pleasant spa located in a spaceship."
-	mappath = 'maps/submaps/admin_use_vr/spa.dmm'
+	mappath = '_maps/templates/admin/spa.dmm'
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/fun/spa
 
