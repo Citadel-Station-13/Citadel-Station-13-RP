@@ -31,8 +31,7 @@
 	health = 1e+006
 	},
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "aae" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/security/iaa)
@@ -65,8 +64,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "aah" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/medical/triage)
@@ -198,8 +196,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "aas" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/medical,
@@ -232,8 +229,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "aau" = (
 /obj/structure/table/bench/steel,
 /obj/effect/floor_decal/borderfloor{
@@ -526,8 +522,7 @@
 /area/tether/surfacebase/security/upperhall)
 "aaQ" = (
 /turf/simulated/open,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "aaR" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -679,8 +674,7 @@
 	dir = 1
 	},
 /turf/simulated/open,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "abb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -869,8 +863,7 @@
 /area/tether/surfacebase/medical/surgery2)
 "abq" = (
 /turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "abr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -893,8 +886,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "abt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1404,8 +1396,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "acd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -1824,13 +1815,11 @@
 /obj/structure/railing,
 /obj/machinery/light,
 /turf/simulated/open,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "acN" = (
 /obj/structure/railing,
 /turf/simulated/open,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "acO" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2778,8 +2767,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "aef" = (
 /obj/machinery/light{
 	dir = 1
@@ -12562,8 +12550,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "auu" = (
 /turf/simulated/open,
 /area/rnd/staircase/thirdfloor)
@@ -16344,8 +16331,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aAy" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin{
@@ -16372,8 +16358,7 @@
 /area/library)
 "aAB" = (
 /turf/simulated/wall,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aAC" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -17733,8 +17718,7 @@
 	RCon_tag = "Surface Civilian Substation Bypass"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aCM" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -17783,8 +17767,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aCQ" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -17795,8 +17778,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aCR" = (
 /obj/structure/flora/ausbushes/sunnybush,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -18813,8 +18795,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aEL" = (
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/effect/floor_decal/borderfloor{
@@ -18879,8 +18860,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aEP" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -19063,8 +19043,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aFi" = (
 /obj/structure/table/glass,
 /obj/machinery/cell_charger,
@@ -19580,8 +19559,7 @@
 /obj/structure/table/steel,
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aFY" = (
 /obj/machinery/button/windowtint{
 	id = "draama";
@@ -19965,8 +19943,7 @@
 	name = "Bar Substation"
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "aGA" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -25973,8 +25950,7 @@
 	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "aSj" = (
 /obj/structure/window/basic/full,
 /obj/structure/window/basic{
@@ -26008,8 +25984,7 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "aSl" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -34115,8 +34090,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "bgQ" = (
 /obj/machinery/door/airlock{
 	name = "Bar Backroom";
@@ -39223,8 +39197,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/white,
-/area/tether/surfacebase/medical/uppernorthstairwell
-)
+/area/tether/surfacebase/medical/uppernorthstairwell)
 "iQr" = (
 /obj/machinery/hologram/holopad,
 /obj/effect/landmark/start{
@@ -39848,8 +39821,7 @@
 	name = "HIGH VOLTAGE"
 	},
 /turf/simulated/wall,
-/area/maintenance/substation/bar
-)
+/area/maintenance/substation/bar)
 "kTn" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/unary/vent_pump/on{
