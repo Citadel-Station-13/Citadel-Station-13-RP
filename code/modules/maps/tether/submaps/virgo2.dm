@@ -1,5 +1,3 @@
-#include "virgo2_submap_areas.dm"
-
 /datum/map_template/submap/level_specific/virgo2
 	name = "Surface Content - Virgo 2"
 	desc = "For seeding submaps on Virgo 2"

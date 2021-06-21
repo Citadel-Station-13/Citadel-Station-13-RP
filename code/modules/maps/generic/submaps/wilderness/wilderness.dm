@@ -134,20 +134,20 @@
 
 /datum/map_template/submap/level_specific/wilderness/deep/Boombase
 	name = "Boombase"
-	desc = "What happens when you don"t follow SOP."
+	desc = "What happens when you don't follow SOP."
 	mappath = "Boombase.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/wilderness/deep/BSD
 	name = "Black Shuttle Down"
-	desc = "You REALLY shouldn"t be near this."
+	desc = "You REALLY shouldn't be near this."
 	mappath = "Blackshuttledown.dmm"
 	cost = 30
 	template_group = "Shuttle Down"
 
 /datum/map_template/submap/level_specific/wilderness/deep/BluSD
 	name = "Blue Shuttle Down"
-	desc = "You REALLY shouldn"t be near this. Mostly because they"re Police."
+	desc = "You REALLY shouldn't be near this. Mostly because they're Police."
 	mappath = "Blueshuttledown.dmm"
 	cost = 50
 	template_group = "Shuttle Down"
@@ -220,7 +220,7 @@
 
 /datum/map_template/submap/level_specific/wilderness/normal/ButcherShack
 	name = "Butcher Shack"
-	desc = "An old, bloody butcher"s shack. Get your meat here!"
+	desc = "An old, bloody butcher's shack. Get your meat here!"
 	mappath = "ButcherShack.dmm"
 	cost = 5
 
