@@ -11,7 +11,6 @@
 	color = "#ffd300" //Sandy
 	in_space = 0
 	initial_generic_waypoints = list("beach_e", "beach_c", "beach_nw")
-	extra_z_levels = list(Z_LEVEL_BEACH_CAVE)
 
 //This is a special subtype of the thing that generates ores on a map
 //It will generate more rich ores because of the lower numbers than the normal one
