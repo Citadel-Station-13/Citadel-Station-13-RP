@@ -94,7 +94,7 @@
 /datum/map_template/tether_lateload/away_beach
 	name = "Desert Planet - Z1 Beach"
 	desc = "The beach away mission."
-	mappath = '_maps/map_levels/140x140/virgo2_beach.dmm'
+	mappath = "_maps/map_levels/140x140/virgo4_beach.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach
 
 /datum/map_z_level/tether_lateload/away_beach
@@ -104,7 +104,7 @@
 /datum/map_template/tether_lateload/away_beach_cave
 	name = "Desert Planet - Z2 Cave"
 	desc = "The beach away mission's cave."
-	mappath = '_maps/map_levels/140x140/virgo4_cave.dmm'
+	mappath = "_maps/map_levels/140x140/virgo4_cave.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach_cave
 
 /datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
@@ -246,13 +246,13 @@
 /datum/map_template/tether_lateload/offmap/talon1
 	name = "Offmap Ship - Talon Z1"
 	desc = "Offmap spawn ship, the Talon."
-	mappath = 'maps/offmap_vr/talon/talon1.dmm'
+	mappath = "_maps/map_levels/140x140/talon/talon1.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/talon1
 
 /datum/map_template/tether_lateload/offmap/talon2
 	name = "Offmap Ship - Talon Z2"
 	desc = "Offmap spawn ship, the Talon."
-	mappath = 'maps/offmap_vr/talon/talon2.dmm'
+	mappath = "_maps/map_levels/140x140/talon/talon2.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/talon2
 
 /datum/map_z_level/tether_lateload/talon1
