@@ -71,7 +71,7 @@
 /datum/map_template/tether_lateload/tether_roguemines1
 	name = "Asteroid Belt 1"
 	desc = "Mining, but rogue. Zone 1"
-	mappath = '_maps/map_levels/140x40/roguemining/rogue_mine1.dmm'
+	mappath = "_maps/map_levels/140x140/roguemining/rogue_mine1.dmm"
 	associated_map_datum = /datum/map_z_level/tether_lateload/roguemines1
 
 /datum/map_z_level/tether_lateload/roguemines1
@@ -81,7 +81,7 @@
 /datum/map_template/tether_lateload/tether_roguemines2
 	name = "Asteroid Belt 2"
 	desc = "Mining, but rogue. Zone 2"
-	mappath = '_maps/map_levels/140x40/roguemining/rogue_mine2.dmm'
+	mappath = "_maps/map_levels/140x140/roguemining/rogue_mine2.dmm"
 
 	associated_map_datum = /datum/map_z_level/tether_lateload/roguemines2
 
@@ -90,11 +90,11 @@
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 
 //////////////////////////////////////////////////////////////////////////////
-/// Away Missions
+/// Away Missionsw
 /datum/map_template/tether_lateload/away_beach
 	name = "Desert Planet - Z1 Beach"
 	desc = "The beach away mission."
-	mappath = 'maps/expedition_vr/beach/beach.dmm'
+	mappath = '_maps/map_levels/140x140/virgo2_beach.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach
 
 /datum/map_z_level/tether_lateload/away_beach
@@ -104,7 +104,7 @@
 /datum/map_template/tether_lateload/away_beach_cave
 	name = "Desert Planet - Z2 Cave"
 	desc = "The beach away mission's cave."
-	mappath = 'maps/expedition_vr/beach/cave.dmm'
+	mappath = '_maps/map_levels/140x140/virgo4_cave.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach_cave
 
 /datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
@@ -161,7 +161,7 @@
 /datum/map_template/tether_lateload/away_debrisfield
 	name = "Debris Field - Z1 Space"
 	desc = "The Virgo 3 Debris Field away mission."
-	mappath = 'maps/expedition_vr/space/debrisfield.dmm'
+	mappath = '_maps/map_levels/140x140/debrisfield_vr.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_debrisfield
 
 /datum/map_template/tether_lateload/away_debrisfield/on_map_loaded(z)
@@ -175,7 +175,7 @@
 /datum/map_template/tether_lateload/away_fueldepot
 	name = "Fuel Depot - Z1 Space"
 	desc = "An unmanned fuel depot floating in space."
-	mappath = 'maps/expedition_vr/space/fueldepot.dmm'
+	mappath = '_maps/map_levels/140x140/fueldepot.dmm'
 	associated_map_datum = /datum/map_z_level/tether_lateload/away_fueldepot
 
 /datum/map_z_level/tether_lateload/away_fueldepot

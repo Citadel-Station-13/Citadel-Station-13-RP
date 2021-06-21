@@ -155,11 +155,11 @@
 /area/shuttle/triumph/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/triumph
+	base_turf = /turf/simulated/floor/outdoors/dirt
 /area/shuttle/triumph/crash2
 	name = "\improper Crash Site 2"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/triumph
+	base_turf = /turf/simulated/floor/outdoors/dirt
 
 // Frozen planet world areas
 /area/frozen_planet
