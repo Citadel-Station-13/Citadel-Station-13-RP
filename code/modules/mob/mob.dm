@@ -228,7 +228,7 @@
 	return
 
 //mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
-/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
+/mob/verb/examinate(atom/A as mob|obj|turf in view(get_turf(src))) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
 
@@ -1228,3 +1228,9 @@ mob/proc/yank_out_object()
 	if(temporary_form)
 		return temporary_form.drop_location()
 	return ..()
+
+/**
+ * Returns whether or not we should be allowed to examine a target
+ */
+/mob/proc/allow_examine(atom/A)
+	return client && (client.eye == src)

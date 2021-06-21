@@ -401,6 +401,9 @@
 		eyeobj.pixel_y--
 		eyeobj.is_shifted = TRUE
 
+/mob/living/carbon/brain/caught_soul/allow_examine(atom/A)
+	return TRUE
+
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
 	if(silent)
 		return FALSE
@@ -474,6 +477,7 @@
 		dummy.overlays -= dummy.hud_list
 		// appearance clone immediately
 		appearance = dummy.appearance
+		plane = PLANE_AUGMENTED
 		qdel(dummy)
 
 /mob/observer/eye/ar_soul/Destroy()

@@ -35,7 +35,15 @@
 		var/obj/item/ore/O = ore
 		to_chat(user,"- [stored_ore[ore]] [initial(O.name)]")
 
+/// Sigh.
+/obj/structure/ore_box/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(istype(AM, /obj/item/ore))
+		take(AM)
+
 /obj/structure/ore_box/proc/take(obj/item/ore/O)
+	if(!istype(O))
+		return
 	if(!stored_ore[O.type])
 		stored_ore[O.type] = 1
 	else
