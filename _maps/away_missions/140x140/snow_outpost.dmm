@@ -204,8 +204,6 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	!INVALID_VAR! = 100;
-	!INVALID_VAR! = 0;
 	temperature = 80
 	},
 /area/awaymission/snow_outpost/powered)
@@ -232,8 +230,6 @@
 "aQ" = (
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	!INVALID_VAR! = 100;
-	!INVALID_VAR! = 0;
 	temperature = 80
 	},
 /area/awaymission/snow_outpost/powered)
@@ -243,8 +239,6 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	!INVALID_VAR! = 100;
-	!INVALID_VAR! = 0;
 	temperature = 80
 	},
 /area/awaymission/snow_outpost/powered)
@@ -593,8 +587,6 @@
 /mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	!INVALID_VAR! = 100;
-	!INVALID_VAR! = 0;
 	temperature = 80
 	},
 /area/awaymission/snow_outpost/powered)
