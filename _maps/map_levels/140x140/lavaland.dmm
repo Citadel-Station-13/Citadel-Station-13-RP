@@ -552,7 +552,6 @@
 	pixel_y = 25;
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
@@ -1663,7 +1662,6 @@
 	pixel_y = -25;
 	req_one_access = list(48)
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)

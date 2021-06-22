@@ -562,9 +562,8 @@
 /turf/simulated/shuttle/plating/airless,
 /area/tether_away/fueldepot)
 "bn" = (
-/obj/machinery/atmospherics/pipe/tank/phoron/full{
-	dir = 4;
-	start_pressure = 30000
+/obj/effect/floor_decal/borderfloorwhite/full{
+	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -577,9 +576,8 @@
 /turf/simulated/shuttle/plating/airless,
 /area/tether_away/fueldepot)
 "bp" = (
-/obj/machinery/atmospherics/pipe/tank/phoron/full{
-	dir = 8;
-	start_pressure = 30000
+/obj/effect/floor_decal/borderfloorwhite/full{
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1040,7 +1038,7 @@
 /turf/simulated/shuttle/plating/airless,
 /area/tether_away/fueldepot)
 "cn" = (
-/obj/machinery/atmospherics/pipe/tank/air/full{
+/obj/effect/floor_decal/borderfloorwhite/full{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline,

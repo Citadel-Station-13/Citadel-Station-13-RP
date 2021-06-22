@@ -142,14 +142,6 @@
 /area/syndicate_mothership{
 	name = "\improper Trader Base"
 	})
-"at" = (
-/obj/effect/landmark/late_antag/trader,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/syndicate_mothership{
-	name = "\improper Trader Base"
-	})
 "au" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
@@ -3101,10 +3093,10 @@ aa
 ab
 aj
 al
-at
-at
-at
-at
+al
+al
+al
+al
 al
 aj
 aj
@@ -3143,10 +3135,10 @@ aa
 ab
 aj
 al
-at
-at
-at
-at
+al
+al
+al
+al
 al
 aj
 aj
