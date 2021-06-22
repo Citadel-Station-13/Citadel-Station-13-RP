@@ -238,7 +238,7 @@
 /obj/item/perfect_tele_beacon{
 	icon_state = "beacon";
 	tele_name = "Hybrid Shuttle";
-	!INVALID_VAR! = "hybridshuttle"
+	
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor/grid,

@@ -981,7 +981,7 @@
 	},
 /obj/item/perfect_tele_beacon{
 	tele_name = "ERT";
-	!INVALID_VAR! = "centcom"
+	
 	},
 /obj/machinery/newscaster{
 	pixel_x = 32

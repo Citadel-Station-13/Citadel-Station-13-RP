@@ -16234,7 +16234,7 @@
 "ZN" = (
 /obj/item/perfect_tele_beacon{
 	tele_name = "CentCom";
-	!INVALID_VAR! = "centcom"
+	
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"

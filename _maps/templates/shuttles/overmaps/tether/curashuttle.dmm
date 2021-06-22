@@ -471,8 +471,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/shield_gen{
-	!INVALID_VAR! = 2133;
-	!INVALID_VAR! = 50000
+	
 	},
 /obj/structure/curtain/black,
 /turf/simulated/floor/tiled,

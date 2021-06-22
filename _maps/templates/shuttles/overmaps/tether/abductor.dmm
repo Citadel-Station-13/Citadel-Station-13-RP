@@ -148,7 +148,6 @@
 /obj/machinery/turretid/stun{
 	ailock = 1;
 	check_arrest = 0;
-	!INVALID_VAR! = 0;
 	check_records = 0;
 	control_area = /area/abductor/interior;
 	desc = "A firewall prevents AIs from interacting with this device.";
@@ -605,7 +604,6 @@
 /obj/machinery/turretid/stun{
 	ailock = 1;
 	check_arrest = 0;
-	!INVALID_VAR! = 0;
 	check_records = 0;
 	control_area = /area/abductor/exterior;
 	desc = "A firewall prevents AIs from interacting with this device.";
@@ -810,7 +808,6 @@
 /area/abductor/interior)
 "UK" = (
 /obj/structure/prop/alien/computer{
-	!INVALID_VAR! = null;
 	icon_state = "camera_flipped"
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -846,7 +843,7 @@
 /area/abductor/interior)
 "WC" = (
 /obj/structure/prop/alien/computer{
-	!INVALID_VAR! = null
+	
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)

@@ -6783,7 +6783,7 @@
 	dir = 1
 	},
 /obj/machinery/shield_gen{
-	!INVALID_VAR! = 1
+	
 	},
 /obj/structure/cable/orange{
 	d2 = 2;

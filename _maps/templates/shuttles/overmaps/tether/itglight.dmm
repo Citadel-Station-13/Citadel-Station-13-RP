@@ -1757,7 +1757,6 @@
 "ky" = (
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	!INVALID_VAR! = 3;
 	pixel_y = -25
 	},
 /obj/structure/cable/pink,
@@ -2135,7 +2134,6 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 8;
-	!INVALID_VAR! = 3;
 	pixel_x = -25
 	},
 /obj/structure/cable/pink{
@@ -2483,7 +2481,6 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 8;
-	!INVALID_VAR! = 3;
 	pixel_x = -25
 	},
 /obj/structure/cable/pink{
@@ -3948,7 +3945,6 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 4;
-	!INVALID_VAR! = 3;
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
@@ -5626,7 +5622,6 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 1;
-	!INVALID_VAR! = 3;
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
@@ -5827,7 +5822,6 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 1;
-	!INVALID_VAR! = 3;
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
@@ -5896,7 +5890,6 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 4;
-	!INVALID_VAR! = 3;
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{

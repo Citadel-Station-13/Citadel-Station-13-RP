@@ -2218,8 +2218,7 @@
 	},
 /obj/machinery/shield_gen{
 	field_radius = 49;
-	!INVALID_VAR! = 2113;
-	!INVALID_VAR! = 49
+	
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
@@ -2412,7 +2411,7 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/item/perfect_tele_beacon{
 	tele_name = "Daedalus";
-	!INVALID_VAR! = "centcom"
+	
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)

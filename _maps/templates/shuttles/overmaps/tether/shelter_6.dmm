@@ -417,7 +417,6 @@
 /obj/machinery/shield_gen{
 	density = 0;
 	field_radius = 9;
-	!INVALID_VAR! = 2113;
 	layer = 2.45;
 	plane = -44
 	},
@@ -1109,7 +1108,7 @@
 	},
 /obj/item/perfect_tele_beacon{
 	tele_name = "Tabiranth";
-	!INVALID_VAR! = "centcom"
+	
 	},
 /obj/effect/floor_decal/industrial/hatch,
 /turf/simulated/floor/tiled/white,

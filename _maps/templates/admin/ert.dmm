@@ -4896,7 +4896,7 @@
 "Jx" = (
 /obj/item/perfect_tele_beacon{
 	tele_name = "NRB Robineau";
-	!INVALID_VAR! = "centcom"
+	
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/ert_ship_boat)
@@ -5383,7 +5383,7 @@
 "Mv" = (
 /obj/item/perfect_tele_beacon{
 	tele_name = "NRV Von Braun Teleporter Room";
-	!INVALID_VAR! = "centcom"
+	
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/teleporter)
