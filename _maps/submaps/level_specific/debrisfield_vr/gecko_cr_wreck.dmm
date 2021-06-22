@@ -9,8 +9,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "aF" = (
