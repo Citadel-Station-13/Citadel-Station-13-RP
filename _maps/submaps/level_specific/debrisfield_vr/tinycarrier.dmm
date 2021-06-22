@@ -565,7 +565,6 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "bc" = (
 /obj/machinery/sleeper{
-	!INVALID_VAR! = 1;
 	dir = 8
 	},
 /obj/machinery/light{
