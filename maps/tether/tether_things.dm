@@ -461,3 +461,21 @@ var/global/list/latejoin_tram   = list()
 	layer = ABOVE_WINDOW_LAYER
 /obj/structure/noticeboard
 	layer = ABOVE_WINDOW_LAYER
+
+//Labyrinth Away Missions
+/obj/structure/HonkMother
+	name = "The Honk Mother"
+	desc = "A monolithic effigy of the legendary Honk Mother, adorned with dazzling rainbow bananium."
+	icon = 'icons/effects/160x160.dmi'
+	pixel_x = -64
+
+/obj/structure/HonkMother/Apex
+	icon_state = "HonkMotherApex"
+
+/obj/structure/HonkMother/Base
+	icon_state = "HonkMotherBase"
+
+/obj/effect/decal/mecha_wreckage/honker/cluwne
+	name = "cluwne mech wreckage"
+	icon_state = "cluwne-broken"
+	desc = "Not so funny anymore."

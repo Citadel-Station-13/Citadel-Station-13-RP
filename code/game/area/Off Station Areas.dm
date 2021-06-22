@@ -905,3 +905,31 @@
 	icon_state = "green"
 /area/awaymission/challenge/end
 	icon_state = "blue"
+
+//Labyrinth
+/area/awaymission/labyrinth/temple/north_west
+	icon_state = "red"
+/area/awaymission/labyrinth/temple/north
+	icon_state = "yellow"
+/area/awaymission/labyrinth/temple/north_east
+	icon_state = "green"
+/area/awaymission/labyrinth/temple/center
+	icon_state = "blue"
+/area/awaymission/labyrinth/temple/east
+	icon_state = "red"
+/area/awaymission/labyrinth/temple/west
+	icon_state = "yellow"
+/area/awaymission/labyrinth/temple/south_east
+	icon_state = "green"
+/area/awaymission/labyrinth/temple/south
+	icon_state = "blue"
+/area/awaymission/labyrinth/temple/south_west
+	icon_state = "red"
+/area/awaymission/labyrinth/arrival
+	icon_state = "yellow"
+/area/awaymission/labyrinth/temple/entry
+	icon_state = "green"
+/area/awaymission/labyrinth/boss
+	icon_state = "blue"
+/area/awaymission/labyrinth/cave
+	icon_state = "red"
