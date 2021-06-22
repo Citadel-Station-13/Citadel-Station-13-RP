@@ -533,17 +533,24 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
+/obj/machinery/camera/network/cargo,
 /obj/item/clothing/accessory/permit/gun/planetside,
 /obj/item/clothing/accessory/permit/gun/planetside,
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/structure/closet/secure_closet/guncabinet/phase{
-	name = "mining weapon cabinet";
+/obj/item/clothing/accessory/permit/gun/planetside,
+/obj/item/clothing/accessory/permit/gun/planetside,
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/southright{
 	req_one_access = list(48)
 	},
-/obj/machinery/camera/network/cargo,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "bI" = (
