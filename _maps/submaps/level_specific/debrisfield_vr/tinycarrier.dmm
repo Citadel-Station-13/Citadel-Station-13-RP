@@ -3,11 +3,6 @@
 /turf/space,
 /area/space)
 "ab" = (
-/obj/machinery/porta_turret/stationary/CIWS{
-	dir = 8;
-	icon_state = "destroyed_target_prism_industrial";
-	stat = 1
-	},
 /obj/structure/lattice,
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -25,8 +20,8 @@
 /turf/simulated/wall/thull,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "ae" = (
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass,
@@ -133,8 +128,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /obj/machinery/door/blast/regular/open{
@@ -185,8 +180,8 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "au" = (
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
@@ -241,7 +236,7 @@
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "az" = (
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aA" = (
@@ -255,10 +250,10 @@
 "aB" = (
 /obj/item/clothing/head/service,
 /obj/item/clothing/head/service,
-/obj/item/clothing/under/solgov/utility/fleet/combat,
-/obj/item/clothing/under/solgov/utility/fleet/combat,
-/obj/item/clothing/suit/storage/solgov/service/fleet,
-/obj/item/clothing/suit/storage/solgov/service/fleet,
+/obj/item/clothing/under/solgov/utility/fleet,
+/obj/item/clothing/under/solgov/utility/fleet,
+/obj/item/clothing/suit/storage/toggle/dress/fleet,
+/obj/item/clothing/suit/storage/toggle/dress/fleet,
 /obj/structure/closet/wardrobe/black{
 	starts_with = list()
 	},
@@ -387,7 +382,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aM" = (
-/obj/item/trash/coffee,
+/obj/item/reagent_containers/food/drinks/coffee,
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aN" = (
@@ -480,11 +475,6 @@
 /turf/simulated/wall/thull,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "aV" = (
-/obj/machinery/porta_turret/stationary/CIWS{
-	dir = 10;
-	icon_state = "destroyed_target_prism_industrial";
-	stat = 1
-	},
 /obj/structure/lattice,
 /obj/structure/cable/green,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -575,7 +565,7 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "bc" = (
 /obj/machinery/sleeper{
-	controls_inside = 1;
+	!INVALID_VAR! = 1;
 	dir = 8
 	},
 /obj/machinery/light{
@@ -848,15 +838,15 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bx" = (
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular/open{
 	id = "tinycarrier_bridge"
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -950,8 +940,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
 	id = "tinycarrier_bridge"
@@ -1049,7 +1039,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bP" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
 	id = "tinycarrier_hangar"
 	},
@@ -1175,7 +1165,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "cf" = (
-/obj/item/material/shard/titaniumglass,
+/obj/item/material/shard/phoron,
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
@@ -1230,7 +1220,7 @@
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cm" = (
 /obj/structure/lattice,
-/obj/item/material/shard/titaniumglass,
+/obj/item/material/shard/phoron,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 

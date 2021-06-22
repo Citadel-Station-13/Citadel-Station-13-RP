@@ -52,7 +52,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "an" = (
-/obj/tether_away_spawner/debrisfield_vr/carp/hard,
+/obj/tether_away_spawner/debrisfield/carp/hard,
 /turf/space,
 /area/submap/debrisfield_vr/misc_debris)
 "ao" = (
@@ -377,7 +377,7 @@
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "be" = (
-/obj/tether_away_spawner/debrisfield_vr/carp,
+/obj/tether_away_spawner/debrisfield/carp,
 /turf/space,
 /area/space)
 "bf" = (

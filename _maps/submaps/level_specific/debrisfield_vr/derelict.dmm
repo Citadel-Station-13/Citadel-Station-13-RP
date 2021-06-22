@@ -77,7 +77,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/debrisfield_vr/derelict/bridge)
 "al" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict,
+/obj/mob_spawner/derelict,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/debrisfield_vr/derelict/bridge)
 "am" = (
@@ -134,7 +134,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/debrisfield_vr/derelict/interior)
 "ax" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/corrupt_maint_swarm,
+/obj/mob_spawner/derelict/corrupt_maint_swarm,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -161,7 +161,7 @@
 /turf/simulated/floor/bluegrid,
 /area/submap/debrisfield_vr/derelict/interior)
 "az" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/corrupt_maint_swarm,
+/obj/mob_spawner/derelict/corrupt_maint_swarm,
 /turf/simulated/floor/tiled/monotile,
 /area/submap/debrisfield_vr/derelict/interior)
 "aA" = (
@@ -175,7 +175,7 @@
 /turf/simulated/floor/bluegrid,
 /area/submap/debrisfield_vr/derelict/interior)
 "aB" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/corrupt_maint_swarm,
+/obj/mob_spawner/derelict/corrupt_maint_swarm,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -421,7 +421,7 @@
 /turf/simulated/floor/reinforced,
 /area/submap/debrisfield_vr/derelict/interior)
 "br" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict,
+/obj/mob_spawner/derelict,
 /turf/simulated/floor/reinforced,
 /area/submap/debrisfield_vr/derelict/interior)
 "bs" = (
@@ -453,7 +453,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/debrisfield_vr/derelict/interior)
 "bv" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/mech_wizard,
+/obj/mob_spawner/derelict/mech_wizard,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/debrisfield_vr/derelict/interior)
 "bw" = (
@@ -461,7 +461,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
 "bx" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/corrupt_maint_swarm,
+/obj/mob_spawner/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
 	faction = "derelict"
 	},
@@ -486,7 +486,7 @@
 /turf/simulated/floor/reinforced,
 /area/submap/debrisfield_vr/derelict/interior)
 "bB" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict,
+/obj/mob_spawner/derelict,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/debrisfield_vr/derelict/interior)
 "bC" = (
@@ -502,7 +502,7 @@
 /turf/simulated/floor/reinforced,
 /area/submap/debrisfield_vr/derelict/interior)
 "bF" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/corrupt_maint_swarm,
+/obj/mob_spawner/derelict/corrupt_maint_swarm,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -620,7 +620,7 @@
 /turf/simulated/floor/reinforced,
 /area/submap/debrisfield_vr/derelict/interior)
 "bT" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/corrupt_maint_swarm,
+/obj/mob_spawner/derelict/corrupt_maint_swarm,
 /turf/simulated/floor/reinforced,
 /area/submap/debrisfield_vr/derelict/interior)
 "bU" = (
@@ -642,7 +642,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
 "bX" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/corrupt_maint_swarm,
+/obj/mob_spawner/derelict/corrupt_maint_swarm,
 /mob/living/simple_mob/mechanical/corrupt_maint_drone{
 	faction = "derelict"
 	},
@@ -851,7 +851,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/submap/debrisfield_vr/derelict/interior)
 "cC" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/corrupt_maint_swarm,
+/obj/mob_spawner/derelict/corrupt_maint_swarm,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/submap/debrisfield_vr/derelict/interior)
 "cD" = (
@@ -1021,7 +1021,7 @@
 /turf/simulated/floor/plating,
 /area/submap/debrisfield_vr/derelict/ai_access_starboard)
 "dh" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/corrupt_maint_swarm,
+/obj/mob_spawner/derelict/corrupt_maint_swarm,
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/ai_access_port)
 "di" = (
@@ -1029,7 +1029,7 @@
 /turf/simulated/floor/plating,
 /area/submap/debrisfield_vr/derelict/ai_access_port)
 "dj" = (
-/obj/tether_away_spawner/debrisfield_vr/derelict/mech_wizard,
+/obj/mob_spawner/derelict/mech_wizard,
 /turf/simulated/floor/plating,
 /area/submap/debrisfield_vr/derelict/ai_access_starboard)
 "dk" = (

@@ -57,8 +57,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/AuxiliaryResearchFacility)
 "aZ" = (
-/mob/living/simple_mob/mechanical/viscerator/mercenary,
 /obj/effect/floor_decal/corner/red/border,
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/tiled/dark,
 /area/submap/AuxiliaryResearchFacility)
 "bf" = (
@@ -234,8 +234,8 @@
 /turf/simulated/floor/reinforced,
 /area/submap/AuxiliaryResearchFacility)
 "eT" = (
-/mob/living/simple_mob/humanoid/merc/ranged/smg,
 /obj/effect/floor_decal/corner/red/border,
+/mob/living/simple_mob/humanoid/merc/ranged/smg,
 /turf/simulated/floor/tiled/dark,
 /area/submap/AuxiliaryResearchFacility)
 "fd" = (
@@ -589,13 +589,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/submap/AuxiliaryResearchFacility)
-"kv" = (
-/obj/structure/table/standard,
-/obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/submap/AuxiliaryResearchFacility)
 "kz" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/industrial/warning,
@@ -660,8 +653,8 @@
 /area/submap/AuxiliaryResearchFacility)
 "mk" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_mob/mechanical/viscerator/mercenary,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/tiled/dark,
 /area/submap/AuxiliaryResearchFacility)
 "mx" = (
@@ -1000,8 +993,8 @@
 /turf/simulated/floor/reinforced,
 /area/submap/AuxiliaryResearchFacility)
 "vY" = (
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran,
 /turf/simulated/floor/tiled/white,
 /area/submap/AuxiliaryResearchFacility)
 "wc" = (
@@ -1343,10 +1336,10 @@
 /area/template_noop)
 "Gr" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror,
 /turf/simulated/floor/reinforced,
 /area/submap/AuxiliaryResearchFacility)
 "Gt" = (
@@ -1533,7 +1526,7 @@
 /turf/simulated/floor/wood/classh,
 /area/submap/AuxiliaryResearchFacility)
 "KB" = (
-/obj/machinery/pros_fabricator,
+/obj/machinery/mecha_part_fabricator,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
@@ -1936,8 +1929,8 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "Tr" = (
-/mob/living/simple_mob/humanoid/merc/ranged/garand,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged/garand,
 /turf/simulated/floor/tiled/dark,
 /area/submap/AuxiliaryResearchFacility)
 "Tt" = (
@@ -3854,7 +3847,7 @@ MJ
 du
 jL
 pr
-kv
+cb
 Hu
 fo
 aZ
