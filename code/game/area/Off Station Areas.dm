@@ -869,3 +869,30 @@
 
 /area/awaymission/zoo/pirateship
 	icon_state = "bluenew"
+
+//Jungle Areas
+
+/area/jungle/temple_one
+	icon_state = "red"
+/area/jungle/temple_two
+	icon_state = "yellow"
+/area/jungle/temple_three
+	icon_state = "green"
+/area/jungle/temple_four
+	icon_state = "blue"
+/area/jungle/temple_five
+	icon_state = "purple"
+/area/jungle/temple_six
+	icon_state = "away"
+/area/jungle/crash_ship_one
+	icon_state = "red"
+/area/jungle/crash_ship_two
+	icon_state = "yellow"
+/area/jungle/crash_ship_three
+	icon_state = "green"
+/area/jungle/crash_ship_four
+	icon_state = "blue"
+/area/jungle/crash_ship_source
+	icon_state = "purple"
+/area/jungle/crash_ship_clean
+	icon_state = "away"
