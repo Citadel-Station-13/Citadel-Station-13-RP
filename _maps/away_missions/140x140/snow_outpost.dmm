@@ -204,8 +204,8 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
+	!INVALID_VAR! = 100;
+	!INVALID_VAR! = 0;
 	temperature = 80
 	},
 /area/awaymission/snow_outpost/powered)
@@ -232,8 +232,8 @@
 "aQ" = (
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
+	!INVALID_VAR! = 100;
+	!INVALID_VAR! = 0;
 	temperature = 80
 	},
 /area/awaymission/snow_outpost/powered)
@@ -243,8 +243,8 @@
 	},
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
+	!INVALID_VAR! = 100;
+	!INVALID_VAR! = 0;
 	temperature = 80
 	},
 /area/awaymission/snow_outpost/powered)
@@ -593,8 +593,8 @@
 /mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/floor/bluegrid{
 	name = "Mainframe Base";
-	nitrogen = 100;
-	oxygen = 0;
+	!INVALID_VAR! = 100;
+	!INVALID_VAR! = 0;
 	temperature = 80
 	},
 /area/awaymission/snow_outpost/powered)
@@ -1039,7 +1039,7 @@
 /area/awaymission/snow_outpost/dark)
 "dJ" = (
 /obj/structure/table/woodentable,
-/obj/item/cell/void,
+/obj/item/cell/device/weapon/recharge/alien,
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "dK" = (

@@ -4,53 +4,39 @@
 /area/awaymission/snowfield/restricted)
 "ab" = (
 /turf/simulated/floor/outdoors/snow{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/restricted)
 "ac" = (
 /obj/effect/blocker,
 /turf/simulated/floor/outdoors/snow{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/restricted)
 "ad" = (
 /turf/simulated/floor/outdoors/snow{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/outside)
 "ae" = (
 /turf/simulated/floor/outdoors/snow{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield)
 "af" = (
 /obj/effect/landmark/gateway_scatter,
 /turf/simulated/floor/outdoors/snow{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield)
 "ag" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/outdoors/snow{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
 "ah" = (
 /turf/simulated/floor/outdoors/snow{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1528,8 +1514,6 @@
 /area/awaymission/snowfield/base)
 "es" = (
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1539,8 +1523,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1550,8 +1532,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1561,8 +1541,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1575,8 +1553,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1586,8 +1562,6 @@
 	id = "away_soviet"
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1597,8 +1571,6 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1608,24 +1580,18 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
 "eA" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
 "eB" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1636,8 +1602,6 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1648,8 +1612,6 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1660,8 +1622,6 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
@@ -1671,23 +1631,17 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/asteroid_steel{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
 "eG" = (
 /turf/simulated/floor/reinforced{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/base)
 "Bw" = (
 /obj/effect/overmap/visitable/sector/tether_gateway/snowfield,
 /turf/simulated/floor/outdoors/snow{
-	nitrogen = 93.7835;
-	oxygen = 20.7263;
 	temperature = 243.15
 	},
 /area/awaymission/snowfield/restricted)
