@@ -26,7 +26,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/mob/living/simple_mob/vore/woof/cass,
+/mob/living/simple_mob/animal/wolf,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)
 "ac" = (
@@ -48,15 +48,11 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/pointdefense{
-	id_tag = "dauntless_pd"
-	},
 /turf/simulated/floor/airless,
 /area/itglight/readyroom)
 "af" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/paper/dockingcodes,
-/obj/item/card/id/itg/event/captain,
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -32
 	},
@@ -87,8 +83,7 @@
 /obj/item/clothing/suit/chef,
 /obj/item/clothing/suit/chef/classic,
 /obj/item/clothing/head/chefhat,
-/obj/item/clothing/suit/storage/solgov/service/army/service,
-/obj/item/card/id/itg/event/service,
+/obj/item/clothing/suit/storage/vest/solgov,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "ah" = (
@@ -113,9 +108,8 @@
 	name = "dauntless headset"
 	},
 /obj/item/clothing/suit/storage/hooded/wintercoat/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/clothing/suit/storage/solgov/service/army/engineering,
-/obj/item/card/id/itg/event/engineer,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/clothing/suit/storage/vest/solgov,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "ai" = (
@@ -140,8 +134,7 @@
 	name = "dauntless headset"
 	},
 /obj/item/clothing/suit/storage/hooded/wintercoat/medical,
-/obj/item/clothing/suit/storage/solgov/service/army/medical,
-/obj/item/card/id/itg/event/medical,
+/obj/item/clothing/suit/storage/vest/solgov,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "aj" = (
@@ -167,8 +160,7 @@
 	},
 /obj/item/clothing/suit/storage/hooded/wintercoat/security,
 /obj/item/clothing/suit/storage/trench,
-/obj/item/clothing/suit/storage/solgov/service/army/security,
-/obj/item/card/id/itg/event/security,
+/obj/item/clothing/suit/storage/vest/solgov,
 /obj/item/clothing/accessory/holster/hip,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
@@ -181,7 +173,7 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/itglight/captain)
 "aq" = (
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	pixel_x = -24
 	},
 /obj/item/radio,
@@ -328,9 +320,6 @@
 /turf/simulated/floor/airless,
 /area/itglight/captain)
 "bq" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "dauntless_pd"
-	},
 /obj/structure/cable/pink{
 	d2 = 8;
 	icon_state = "0-8"
@@ -749,8 +738,8 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/mre/random,
 /obj/random/plushie,
-/obj/random/contraband/nofail,
-/obj/random/drinksoft,
+/obj/random/contraband,
+/obj/machinery/vending/cola,
 /obj/item/radio,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew1)
@@ -892,12 +881,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/eris/steel/brown_platform,
-/area/itglight/metingroom)
-"eQ" = (
-/obj/structure/sign/itg{
-	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
@@ -1268,13 +1251,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/gray_platform,
 /area/itglight/cockpit)
-"hr" = (
-/obj/structure/sign/itg{
-	dir = 8;
-	pixel_x = 32
-	},
-/turf/space,
-/area/space)
 "hs" = (
 /obj/structure/bed/chair/bay/chair/padded/brown{
 	dir = 8
@@ -1307,9 +1283,6 @@
 	pixel_y = 4;
 	req_one_access = list()
 	},
-/obj/structure/sign/itg{
-	pixel_y = 26
-	},
 /turf/simulated/floor/tiled/eris/dark/gray_platform,
 /area/itglight/cockpit)
 "hC" = (
@@ -1325,13 +1298,6 @@
 /obj/machinery/bodyscanner,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
-"hK" = (
-/obj/structure/sign/itg{
-	dir = 4;
-	pixel_x = -32
-	},
-/turf/space,
-/area/space)
 "hO" = (
 /obj/structure/cable/pink{
 	d1 = 1;
@@ -1460,8 +1426,8 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/mre/random,
 /obj/random/plushie,
-/obj/random/contraband/nofail,
-/obj/random/drinksoft,
+/obj/random/contraband,
+/obj/machinery/vending/cola,
 /obj/item/radio,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew2)
@@ -1648,7 +1614,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "jm" = (
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	pixel_x = 24
 	},
 /obj/item/radio,
@@ -1791,12 +1757,12 @@
 "ky" = (
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
-	nightshift_setting = 3;
+	!INVALID_VAR! = 3;
 	pixel_y = -25
 	},
 /obj/structure/cable/pink,
 /obj/item/radio,
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	pixel_x = 32
 	},
 /obj/item/flash,
@@ -2093,9 +2059,6 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "mo" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "dauntless_pd"
-	},
 /obj/structure/cable/pink{
 	d2 = 4;
 	icon_state = "0-4"
@@ -2172,7 +2135,7 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 8;
-	nightshift_setting = 3;
+	!INVALID_VAR! = 3;
 	pixel_x = -25
 	},
 /obj/structure/cable/pink{
@@ -2520,7 +2483,7 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 8;
-	nightshift_setting = 3;
+	!INVALID_VAR! = 3;
 	pixel_x = -25
 	},
 /obj/structure/cable/pink{
@@ -2744,7 +2707,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "qU" = (
-/obj/item/stool/baystool/padded,
+/obj/item/stool,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3026,23 +2989,6 @@
 "tj" = (
 /turf/simulated/floor/airless,
 /area/itglight/shuttlebay)
-"tl" = (
-/obj/structure/sign/itg{
-	dir = 8;
-	pixel_x = 32
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/airless,
-/area/itglight/portsolars)
 "to" = (
 /obj/machinery/power/solar_control,
 /obj/structure/cable/heavyduty{
@@ -3645,8 +3591,8 @@
 	req_access = list(778)
 	},
 /obj/item/radio,
-/obj/random/drinksoft,
-/obj/random/contraband/nofail,
+/obj/machinery/vending/cola,
+/obj/random/contraband,
 /obj/random/plushie,
 /obj/item/storage/mre/random,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -3654,21 +3600,6 @@
 	},
 /obj/item/clothing/suit/space/void/captain,
 /obj/item/clothing/head/helmet/space/void/captain,
-/obj/item/card/id/itg/event,
-/obj/item/card/id/itg/event,
-/obj/item/card/id/itg/event,
-/obj/item/card/id/itg/event,
-/obj/item/card/id/itg/event,
-/obj/item/card/id/itg/event/passengerliason,
-/obj/item/card/id/itg/event/pilot,
-/obj/item/card/id/itg/event/research,
-/obj/item/card/id/itg/event/research,
-/obj/item/card/id/itg/event/security,
-/obj/item/card/id/itg/event/service,
-/obj/item/card/id/itg/event/engineer,
-/obj/item/card/id/itg/event/engineer,
-/obj/item/card/id/itg/event/medical,
-/obj/item/card/id/itg/event/medical,
 /obj/item/clothing/suit/storage/hooded/wintercoat/cargo{
 	name = "dauntless winter coat"
 	},
@@ -3676,7 +3607,7 @@
 	desc = "The Captain's coat!";
 	name = "captain's coat"
 	},
-/obj/item/clothing/suit/storage/solgov/service/army/command,
+/obj/item/clothing/suit/storage/vest/solgov,
 /obj/item/reagent_containers/food/snacks/candy/proteinbar,
 /obj/item/reagent_containers/food/snacks/candy/proteinbar,
 /obj/item/reagent_containers/food/snacks/candy/proteinbar,
@@ -3995,10 +3926,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew3)
-"zt" = (
-/obj/structure/sign/itg,
-/turf/simulated/wall/rshull,
-/area/itglight/portdocking)
 "zv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -4008,23 +3935,6 @@
 "zB" = (
 /turf/space,
 /area/itglight/portengi)
-"zD" = (
-/obj/structure/sign/itg{
-	dir = 4;
-	pixel_x = -32
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/airless,
-/area/itglight/starboardsolars)
 "zG" = (
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
@@ -4038,7 +3948,7 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 4;
-	nightshift_setting = 3;
+	!INVALID_VAR! = 3;
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
@@ -4371,8 +4281,8 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/mre/random,
 /obj/random/plushie,
-/obj/random/contraband/nofail,
-/obj/random/drinksoft,
+/obj/random/contraband,
+/obj/machinery/vending/cola,
 /obj/item/radio,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew4)
@@ -4474,7 +4384,7 @@
 /turf/simulated/floor,
 /area/itglight/portdocking)
 "Ct" = (
-/obj/item/stool/baystool/padded,
+/obj/item/stool,
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 25
@@ -4549,11 +4459,11 @@
 /turf/simulated/floor,
 /area/itglight/portdocking)
 "CQ" = (
-/obj/machinery/suit_cycler/vintage/tcrew,
+/obj/machinery/suit_cycler/vintage,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "CU" = (
-/obj/machinery/atmospherics/pipe/tank/phoron/full{
+/obj/effect/floor_decal/borderfloorwhite/full{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -4607,7 +4517,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/itglight/portdocking)
 "Dc" = (
-/obj/machinery/atmospherics/pipe/tank/phoron/full{
+/obj/effect/floor_decal/borderfloorwhite/full{
 	dir = 8
 	},
 /turf/simulated/floor,
@@ -4664,8 +4574,8 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/mre/random,
 /obj/random/plushie,
-/obj/random/contraband/nofail,
-/obj/random/drinksoft,
+/obj/random/contraband,
+/obj/machinery/vending/cola,
 /obj/item/radio,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew3)
@@ -4739,23 +4649,6 @@
 	},
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
-"DJ" = (
-/obj/structure/cable/pink{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/effect/floor_decal/emblem/itgdauntless{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/itglight/forehall)
 "DK" = (
 /obj/structure/cable/pink{
 	d1 = 1;
@@ -4779,24 +4672,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/effect/floor_decal/emblem/itgdauntless,
-/turf/simulated/floor/tiled/monotile,
-/area/itglight/forehall)
-"DP" = (
-/obj/structure/cable/pink{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/effect/floor_decal/emblem/itgdauntless{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/forehall)
 "DQ" = (
@@ -5161,7 +5036,7 @@
 /turf/space,
 /area/space)
 "FB" = (
-/obj/item/stool/baystool/padded,
+/obj/item/stool,
 /obj/structure/window/reinforced{
 	pixel_y = -3
 	},
@@ -5380,19 +5255,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/itglight/portdocking)
-"GD" = (
-/obj/structure/cable/pink{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/emblem/itgdauntless{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/eris/steel/brown_platform,
-/area/itglight/shuttlebay)
 "GG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5631,10 +5493,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/itglight/starboarddocking)
-"HX" = (
-/obj/structure/sign/itg,
-/turf/simulated/wall/rshull,
-/area/itglight/starboarddocking)
 "Ia" = (
 /obj/structure/cable/pink{
 	d1 = 4;
@@ -5768,7 +5626,7 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 1;
-	nightshift_setting = 3;
+	!INVALID_VAR! = 3;
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
@@ -5969,7 +5827,7 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 1;
-	nightshift_setting = 3;
+	!INVALID_VAR! = 3;
 	pixel_y = 25
 	},
 /obj/structure/cable/pink{
@@ -6009,9 +5867,6 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/shuttlebay)
 "Kv" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "dauntless_pd"
-	},
 /obj/structure/cable/pink{
 	d2 = 8;
 	icon_state = "0-8"
@@ -6041,7 +5896,7 @@
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	dir = 4;
-	nightshift_setting = 3;
+	!INVALID_VAR! = 3;
 	pixel_x = 25
 	},
 /obj/structure/cable/pink{
@@ -6556,9 +6411,6 @@
 /turf/simulated/floor/tiled/white,
 /area/itglight/restrooms)
 "NS" = (
-/obj/effect/floor_decal/emblem/itgdauntless{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/itglightshuttle)
 "NV" = (
@@ -6707,8 +6559,8 @@
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,
-/obj/random/snack,
-/obj/random/snack,
+/obj/item/reagent_containers/food/snacks,
+/obj/item/reagent_containers/food/snacks,
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/lockers)
 "OC" = (
@@ -6741,8 +6593,8 @@
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,
-/obj/random/snack,
-/obj/random/snack,
+/obj/item/reagent_containers/food/snacks,
+/obj/item/reagent_containers/food/snacks,
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/lockers)
 "OH" = (
@@ -6934,7 +6786,7 @@
 /turf/simulated/wall/shull,
 /area/itglight/showers)
 "Qo" = (
-/obj/machinery/atmospherics/pipe/tank/phoron/full,
+/obj/effect/floor_decal/borderfloorwhite/full,
 /turf/simulated/floor,
 /area/itglight/portengi)
 "Qp" = (
@@ -7079,11 +6931,11 @@
 /area/itglight/medbay)
 "Ra" = (
 /obj/structure/table/glass,
-/obj/item/storage/box/khcrystal,
-/obj/item/storage/box/khcrystal,
-/obj/item/storage/box/khcrystal,
-/obj/item/storage/box/khcrystal,
-/obj/item/storage/box/khcrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
 /obj/item/sleevemate,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
@@ -7636,19 +7488,15 @@
 	},
 /turf/space,
 /area/itglight/portengi)
-"UX" = (
-/obj/machinery/atmospherics/pipe/tank/air/full,
-/turf/simulated/floor,
-/area/itglight/portengi)
 "UY" = (
 /obj/structure/table/glass,
 /obj/item/sleevemate,
 /obj/item/book/manual/resleeving,
-/obj/item/storage/box/khcrystal,
-/obj/item/storage/box/khcrystal,
-/obj/item/storage/box/khcrystal,
-/obj/item/storage/box/khcrystal,
-/obj/item/storage/box/khcrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
+/obj/item/clothing/accessory/collar/lifecrystal,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "UZ" = (
@@ -7723,9 +7571,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/pointdefense_control{
-	id_tag = "dauntless_pd"
-	},
 /turf/simulated/floor,
 /area/itglight/starboardengi)
 "VC" = (
@@ -7753,26 +7598,9 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew1)
 "VE" = (
-/obj/machinery/atmospherics/pipe/tank/phoron/full,
+/obj/effect/floor_decal/borderfloorwhite/full,
 /turf/simulated/floor,
 /area/itglight/starboardengi)
-"VG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/pink{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/sign/itg{
-	pixel_y = 26
-	},
-/turf/simulated/floor/tiled/eris/steel/brown_platform,
-/area/itglight/afthall)
 "VK" = (
 /obj/structure/table/standard,
 /obj/item/bikehorn/rubberducky,
@@ -7824,9 +7652,6 @@
 /turf/space,
 /area/itglight/starboardengi)
 "We" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "dauntless_pd"
-	},
 /obj/structure/cable/pink{
 	d2 = 4;
 	icon_state = "0-4"
@@ -8115,9 +7940,6 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew1)
 "XO" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "dauntless_pd"
-	},
 /obj/structure/cable/pink{
 	d2 = 8;
 	icon_state = "0-8"
@@ -8440,7 +8262,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "Zp" = (
-/obj/item/stool/baystool/padded,
+/obj/item/stool,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "Zq" = (
@@ -16044,7 +15866,7 @@ FI
 FI
 FI
 FI
-tl
+FI
 lv
 EV
 sX
@@ -16570,7 +16392,7 @@ Um
 Um
 Um
 Um
-hr
+Um
 Um
 Um
 Um
@@ -16724,7 +16546,7 @@ Wq
 Wq
 LF
 LF
-zt
+LF
 Ca
 LF
 LF
@@ -17039,7 +16861,7 @@ Pg
 Pg
 AK
 Za
-UX
+Qo
 gA
 RL
 HM
@@ -17181,7 +17003,7 @@ NY
 eF
 AK
 Za
-UX
+Qo
 Dg
 Rj
 pU
@@ -17742,7 +17564,7 @@ Xv
 Kj
 Tb
 ZG
-VG
+Vd
 Qt
 IH
 IH
@@ -18287,7 +18109,7 @@ Ng
 Ep
 Ng
 Ng
-DJ
+Iu
 Ng
 Ng
 Ep
@@ -18414,7 +18236,7 @@ hS
 ow
 kn
 lH
-eQ
+vf
 ov
 qq
 iI
@@ -18457,7 +18279,7 @@ pn
 Ij
 OC
 EZ
-GD
+bs
 bs
 TS
 dE
@@ -18571,7 +18393,7 @@ Ng
 Ev
 Ng
 AF
-DP
+Iu
 Ng
 Ng
 Ev
@@ -19162,7 +18984,7 @@ Nd
 yc
 YM
 Qi
-VG
+Vd
 Qt
 Yt
 Yt
@@ -20132,7 +19954,7 @@ TU
 TU
 uq
 uq
-HX
+uq
 Fe
 uq
 uq
@@ -20262,7 +20084,7 @@ Um
 Um
 Um
 Um
-hK
+Um
 Um
 Um
 Um
@@ -20872,7 +20694,7 @@ Yy
 Yy
 Yy
 Yy
-zD
+Yy
 zM
 ZM
 rF

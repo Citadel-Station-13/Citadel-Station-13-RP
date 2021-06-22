@@ -3,36 +3,39 @@
 /turf/template_noop,
 /area/template_noop)
 "ab" = (
-/turf/simulated/shuttle/wall/alien/blue,
+/turf/simulated/shuttle/wall/alien,
 /area/shuttle/blue_fo)
 "ac" = (
 /obj/structure/railing{
 	icon_state = "railing0";
 	dir = 1
 	},
-/turf/simulated/shuttle/wall/alien/blue/hard_corner,
+/obj/item/stack/flag/blue,
+/turf/space,
 /area/shuttle/blue_fo)
 "ad" = (
 /obj/machinery/ion_engine,
-/turf/simulated/shuttle/floor/alienplating/blue/half{
+/obj/item/stack/flag/blue{
 	dir = 8
 	},
+/turf/space,
 /area/shuttle/blue_fo)
 "ae" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "af" = (
 /obj/machinery/ion_engine,
-/turf/simulated/shuttle/floor/alienplating/blue/half{
+/obj/item/stack/flag/blue{
 	dir = 4
 	},
+/turf/space,
 /area/shuttle/blue_fo)
 "ag" = (
 /obj/structure/table/alien/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "ah" = (
-/obj/structure/prop/alien/pod/hybrid,
+/obj/structure/prop/alien/pod,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "ai" = (
@@ -69,7 +72,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "ak" = (
-/obj/machinery/power/smes/buildable/hybrid,
+/obj/machinery/power/smes/buildable,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -77,7 +80,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "al" = (
-/obj/effect/map_effect/perma_light/brighter,
+/obj/machinery/light,
 /obj/structure/bed/chair/bay/shuttle{
 	icon_state = "shuttle_chair_preview";
 	dir = 1
@@ -92,7 +95,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "an" = (
-/obj/effect/map_effect/perma_light/brighter,
+/obj/machinery/light,
 /obj/structure/handrail{
 	icon_state = "handrail";
 	dir = 1
@@ -107,18 +110,20 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "ap" = (
-/turf/simulated/shuttle/wall/alien/blue/hard_corner,
+/obj/item/stack/flag/blue,
+/turf/space,
 /area/shuttle/blue_fo)
 "aq" = (
 /obj/machinery/door/airlock/alien/blue,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "ar" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/structure/window/reinforced/full,
-/turf/simulated/shuttle/floor/alienplating/blue/half{
+/obj/item/stack/flag/blue{
 	dir = 8
 	},
+/turf/space,
 /area/shuttle/blue_fo)
 "as" = (
 /obj/machinery/sleeper{
@@ -211,11 +216,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aC" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/structure/window/reinforced/full,
-/turf/simulated/shuttle/floor/alienplating/blue/half{
+/obj/item/stack/flag/blue{
 	dir = 4
 	},
+/turf/space,
 /area/shuttle/blue_fo)
 "aD" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -228,11 +234,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aF" = (
-/obj/effect/map_effect/perma_light/brighter,
-/obj/item/perfect_tele_beacon/stationary{
+/obj/machinery/light,
+/obj/item/perfect_tele_beacon{
 	icon_state = "beacon";
 	tele_name = "Hybrid Shuttle";
-	tele_network = "hybridshuttle"
+	!INVALID_VAR! = "hybridshuttle"
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -242,7 +248,7 @@
 /turf/simulated/shuttle/floor/alien,
 /area/shuttle/blue_fo)
 "aH" = (
-/obj/effect/map_effect/perma_light/brighter,
+/obj/machinery/light,
 /obj/structure/table/alien/blue,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
@@ -404,11 +410,11 @@
 	dir = 1
 	},
 /obj/structure/table/alien/blue,
-/obj/item/perfect_tele/alien/bluefo{
+/obj/item/tool/screwdriver/alien{
 	pixel_x = 6;
 	pixel_y = 3
 	},
-/obj/item/perfect_tele/alien/bluefo{
+/obj/item/tool/screwdriver/alien{
 	pixel_x = -6;
 	pixel_y = 3
 	},
@@ -426,7 +432,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bb" = (
-/obj/structure/prop/alien/computer/hybrid,
+/obj/structure/prop/alien/computer,
 /obj/effect/floor_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
@@ -453,7 +459,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "be" = (
-/obj/effect/map_effect/perma_light/brighter,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bf" = (
@@ -465,11 +471,11 @@
 /area/shuttle/blue_fo)
 "bg" = (
 /obj/structure/table/alien/blue,
-/obj/item/perfect_tele/alien/bluefo{
+/obj/item/tool/screwdriver/alien{
 	pixel_x = -6;
 	pixel_y = 3
 	},
-/obj/item/perfect_tele/alien/bluefo{
+/obj/item/tool/screwdriver/alien{
 	pixel_x = 6;
 	pixel_y = 3
 	},
@@ -496,7 +502,7 @@
 	id_tag = "hybrid_shuttle_afts";
 	req_one_access = list(19,43,67)
 	},
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "bk" = (
@@ -561,9 +567,10 @@
 /obj/machinery/shipsensors{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor/alienplating/blue/half{
+/obj/item/stack/flag/blue{
 	dir = 8
 	},
+/turf/space,
 /area/shuttle/blue_fo)
 "br" = (
 /obj/structure/railing{
@@ -616,9 +623,10 @@
 /turf/simulated/shuttle/floor/alien,
 /area/shuttle/blue_fo)
 "bx" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/structure/window/reinforced/full,
-/turf/simulated/shuttle/floor/alienplating/blue/half,
+/obj/item/stack/flag/blue,
+/turf/space,
 /area/shuttle/blue_fo)
 "by" = (
 /obj/machinery/computer/shuttle_control/explore/hybridshuttle,
@@ -640,9 +648,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "bC" = (
-/turf/simulated/shuttle/floor/alienplating/blue/half{
+/obj/item/stack/flag/blue{
 	dir = 4
 	},
+/turf/space,
 /area/shuttle/blue_fo)
 
 (1,1,1) = {"

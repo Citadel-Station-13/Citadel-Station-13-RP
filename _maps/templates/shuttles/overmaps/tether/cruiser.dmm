@@ -455,12 +455,6 @@
 /obj/structure/closet/crate/bin,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
-"bc" = (
-/obj/machinery/porta_turret/industrial/military,
-/turf/simulated/floor/reinforced/airless{
-	name = "outer hull"
-	},
-/area/mothership/bridge)
 "bd" = (
 /turf/simulated/wall/rpshull,
 /area/mothership/hydroponics)
@@ -2222,10 +2216,10 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/shield_generator/charged{
+/obj/machinery/shield_gen{
 	field_radius = 49;
-	initial_shield_modes = 2113;
-	target_radius = 49
+	!INVALID_VAR! = 2113;
+	!INVALID_VAR! = 49
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
@@ -2416,9 +2410,9 @@
 /area/mothership/teleporter)
 "eQ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "Daedalus";
-	tele_network = "centcom"
+	!INVALID_VAR! = "centcom"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
@@ -2669,7 +2663,7 @@
 	pixel_y = 22;
 	target_temperature = 274.15
 	},
-/obj/machinery/power/port_gen/pacman/super/potato{
+/obj/machinery/power/port_gen/pacman/super{
 	sheets = 100
 	},
 /obj/structure/cable{
@@ -2690,7 +2684,7 @@
 	icon_state = "0-2";
 	pixel_y = 0
 	},
-/obj/machinery/power/port_gen/pacman/super/potato{
+/obj/machinery/power/port_gen/pacman/super{
 	sheets = 100
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -3081,7 +3075,7 @@
 	pixel_x = 0
 	},
 /obj/structure/cable,
-/obj/machinery/power/port_gen/pacman/super/potato{
+/obj/machinery/power/port_gen/pacman/super{
 	sheets = 100
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -3094,7 +3088,7 @@
 	pixel_y = -25
 	},
 /obj/structure/cable,
-/obj/machinery/power/port_gen/pacman/super/potato{
+/obj/machinery/power/port_gen/pacman/super{
 	sheets = 100
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -5834,14 +5828,14 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "lF" = (
-/obj/item/gun/energy/frontier/locked/carbine/unlocked,
-/obj/item/gun/energy/frontier/locked/carbine/unlocked,
-/obj/item/gun/energy/frontier/locked/carbine/unlocked,
-/obj/item/gun/energy/frontier/locked/carbine/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
+/obj/item/gun/energy/frontier/locked,
+/obj/item/gun/energy/frontier/locked,
+/obj/item/gun/energy/frontier/locked,
+/obj/item/gun/energy/frontier/locked,
+/obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/gun/energy/frontier/locked/holdout,
 /obj/structure/closet/secure_closet/guncabinet{
 	req_one_access = list(103)
 	},
@@ -6198,9 +6192,6 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/bridge)
 "mr" = (
-/obj/machinery/pointdefense_control{
-	id_tag = "warship_pd"
-	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/bridge)
 "ms" = (
@@ -6556,8 +6547,8 @@
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
-/obj/item/gun/energy/gun/protector,
-/obj/item/gun/energy/gun/protector,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nc" = (
@@ -8958,7 +8949,7 @@
 	name = "Drone Hangar"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/telecomms2)
 "sr" = (
@@ -9354,14 +9345,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
-"uh" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "warship_pd"
-	},
-/turf/simulated/floor/reinforced/airless{
-	name = "outer hull"
-	},
-/area/mothership/bridge)
 "uI" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
@@ -10329,7 +10312,7 @@
 	name = "Drone Hangar"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/telecomms1)
 "WN" = (
@@ -18192,37 +18175,37 @@ aa
 aa
 aa
 aa
-bc
 cq
 cq
-uh
 cq
 cq
-bc
 cq
 cq
-uh
 cq
 cq
-bc
 cq
 cq
-uh
 cq
 cq
-bc
 cq
 cq
-uh
 cq
 cq
-bc
 cq
 cq
-uh
 cq
 cq
-bc
+cq
+cq
+cq
+cq
+cq
+cq
+cq
+cq
+cq
+cq
+cq
 mi
 om
 om
@@ -18230,10 +18213,10 @@ om
 pe
 ps
 pe
-bc
+cq
 vb
 vb
-uh
+cq
 aa
 aa
 aa
@@ -18378,7 +18361,7 @@ pe
 pe
 pe
 pe
-bc
+cq
 aa
 aa
 aa
@@ -18804,7 +18787,7 @@ Kd
 Kd
 AL
 pe
-uh
+cq
 aa
 aa
 aa
@@ -18887,17 +18870,17 @@ aa
 aa
 aa
 aa
-bc
+cq
 Su
 bd
 bC
 bC
 bd
-uh
+cq
 cr
 cI
 cr
-bc
+cq
 df
 df
 dJ
@@ -19024,7 +19007,7 @@ aa
 aa
 aa
 aa
-uh
+cq
 tG
 au
 au
@@ -19590,7 +19573,7 @@ aa
 aa
 aa
 aa
-bc
+cq
 tG
 tG
 ao
@@ -19874,7 +19857,7 @@ aa
 aa
 aa
 aa
-uh
+cq
 WN
 ac
 ao
@@ -20371,7 +20354,7 @@ sA
 iw
 cq
 cq
-bc
+cq
 aa
 aa
 aa
@@ -20513,7 +20496,7 @@ sB
 sF
 sP
 cq
-bc
+cq
 aa
 aa
 aa
@@ -20868,7 +20851,7 @@ aa
 aa
 aa
 aa
-uh
+cq
 WN
 ac
 ao
@@ -21152,7 +21135,7 @@ aa
 aa
 aa
 aa
-bc
+cq
 tG
 tG
 at
@@ -21722,7 +21705,7 @@ aa
 aa
 aa
 aa
-uh
+cq
 tG
 aC
 aC
@@ -21869,17 +21852,17 @@ aa
 aa
 aa
 aa
-bc
+cq
 cq
 bi
 bQ
 bQ
 bi
-uh
+cq
 cr
 cT
 cr
-bc
+cq
 dr
 dr
 dV
@@ -22070,7 +22053,7 @@ vi
 vi
 KA
 qs
-uh
+cq
 aa
 aa
 aa
@@ -22496,7 +22479,7 @@ qs
 qs
 qs
 qs
-bc
+cq
 aa
 aa
 aa
@@ -22594,37 +22577,37 @@ aa
 aa
 aa
 aa
-bc
 cq
 cq
-uh
 cq
 cq
-bc
 cq
 cq
-uh
 cq
 cq
-bc
 cq
 cq
-uh
 cq
 cq
-bc
 cq
 cq
-uh
 cq
 cq
-bc
 cq
 cq
-uh
 cq
 cq
-bc
+cq
+cq
+cq
+cq
+cq
+cq
+cq
+cq
+cq
+cq
+cq
 lq
 oA
 oA
@@ -22632,10 +22615,10 @@ oA
 qs
 pT
 qs
-bc
 cq
 cq
-uh
+cq
+cq
 aa
 aa
 aa

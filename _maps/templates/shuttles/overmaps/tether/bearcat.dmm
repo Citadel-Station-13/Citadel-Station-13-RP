@@ -3518,12 +3518,6 @@
 "lF" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/maintenance_storage)
-"mr" = (
-/obj/machinery/pointdefense_control{
-	id_tag = "bearcat_pd"
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/bearcat/command)
 "mQ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3572,9 +3566,6 @@
 /turf/simulated/floor/plating,
 /area/shuttle/bearcat/maintenance_engine_pod_starboard)
 "sg" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "bearcat_pd"
-	},
 /turf/simulated/floor/airless,
 /area/shuttle/bearcat/dock_starboard)
 "sn" = (
@@ -3632,9 +3623,6 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/bearcat/maintenance_engine_pod_starboard)
 "Di" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "bearcat_pd"
-	},
 /turf/simulated/floor/airless,
 /area/shuttle/bearcat/dock_port)
 "Ea" = (
@@ -4683,7 +4671,7 @@ aa
 aa
 ai
 hA
-mr
+aj
 lw
 ar
 ay

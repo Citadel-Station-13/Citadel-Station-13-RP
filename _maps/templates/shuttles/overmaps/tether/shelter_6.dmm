@@ -1,18 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/machinery/porta_turret/industrial/military,
-/turf/simulated/floor/reinforced/airless{
-	name = "outer hull"
-	},
-/area/shuttle/tabiranth)
-"ab" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "tabiranth_pd"
-	},
-/turf/simulated/floor/reinforced/airless{
-	name = "outer hull"
-	},
-/area/shuttle/tabiranth)
 "ac" = (
 /turf/simulated/shuttle/wall/voidcraft/blue{
 	hard_corner = 1;
@@ -135,7 +121,7 @@
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/holobadge,
-/obj/item/storage/box/holowarrants,
+/obj/item/holowarrant,
 /obj/item/storage/box/flare,
 /obj/item/storage/box/flare,
 /obj/item/storage/box/flare,
@@ -144,12 +130,12 @@
 /obj/item/storage/box/metalfoam,
 /obj/item/storage/box/metalfoam,
 /obj/item/storage/box/metalfoam,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
 /obj/item/tank/oxygen,
 /obj/item/tank/oxygen,
 /obj/item/tank/oxygen,
@@ -181,15 +167,15 @@
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/belt/utility/full,
-/obj/item/clothing/suit/space/void/responseteam/command,
-/obj/item/clothing/suit/space/void/responseteam/engineer,
-/obj/item/clothing/suit/space/void/responseteam/engineer,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
+/obj/item/rig/ert,
+/obj/item/rig/ert/engineer,
+/obj/item/rig/ert/engineer,
+/obj/item/rig/ert/medical,
+/obj/item/rig/ert/medical,
+/obj/item/rig/ert/security,
+/obj/item/rig/ert/security,
+/obj/item/rig/ert/security,
+/obj/item/rig/ert/security,
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "af" = (
@@ -300,10 +286,10 @@
 /obj/item/storage/box/stunshells,
 /obj/item/storage/box/flashshells,
 /obj/item/storage/box/flashshells,
-/obj/item/gun/energy/frontier/locked/carbine/unlocked,
-/obj/item/gun/energy/frontier/locked/carbine/unlocked,
-/obj/item/gun/energy/frontier/locked/carbine/unlocked,
-/obj/item/gun/energy/frontier/locked/carbine/unlocked,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
@@ -347,7 +333,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "ah" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
 	destroy_hits = 1000;
 	id = "tabi-hangar1"
@@ -428,10 +414,10 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "ap" = (
-/obj/machinery/power/shield_generator/charged{
+/obj/machinery/shield_gen{
 	density = 0;
 	field_radius = 9;
-	initial_shield_modes = 2113;
+	!INVALID_VAR! = 2113;
 	layer = 2.45;
 	plane = -44
 	},
@@ -537,7 +523,7 @@
 /turf/simulated/floor/bluegrid,
 /area/shuttle/tabiranth)
 "aD" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien/blue/locked{
 	req_one_access = list(101)
 	},
@@ -678,7 +664,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien/blue/locked{
 	req_one_access = list(101)
 	},
@@ -696,7 +682,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien/blue/locked{
 	req_one_access = list(101)
 	},
@@ -777,13 +763,13 @@
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
 /obj/item/gun/projectile/pistol,
 /obj/item/gun/projectile/pistol,
 /obj/item/gun/projectile/pistol,
@@ -832,12 +818,12 @@
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
+/obj/item/modular_computer/laptop,
+/obj/item/modular_computer/laptop,
+/obj/item/modular_computer/laptop,
+/obj/item/modular_computer/laptop,
+/obj/item/modular_computer/laptop,
+/obj/item/modular_computer/laptop,
 /obj/item/survivalcapsule,
 /obj/item/survivalcapsule,
 /obj/item/survivalcapsule,
@@ -1121,9 +1107,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "Tabiranth";
-	tele_network = "centcom"
+	!INVALID_VAR! = "centcom"
 	},
 /obj/effect/floor_decal/industrial/hatch,
 /turf/simulated/floor/tiled/white,
@@ -1196,7 +1182,7 @@
 /obj/item/rig/light/ninja,
 /obj/item/gun/energy/modular/cannon,
 /obj/item/gun/energy/modular/carbine,
-/obj/item/gun/energy/modular/pistol,
+/obj/item/gun/energy/modular,
 /obj/item/gun/energy/medigun,
 /obj/item/gun/energy/captain,
 /obj/item/material/knife/machete/deluxe{
@@ -1346,9 +1332,7 @@
 	},
 /obj/item/survivalcapsule/military,
 /obj/item/survivalcapsule/military,
-/obj/item/survivalcapsule/escapepod,
-/obj/item/technomancer_catalog/universal,
-/obj/item/technomancer_core/universal,
+/obj/item/survivalcapsule,
 /obj/item/storage/secure/briefcase/money{
 	desc = "An sleek tidy briefcase.";
 	name = "secure briefcase"
@@ -1377,9 +1361,9 @@
 /obj/item/radio/uplink,
 /obj/item/spaceflare,
 /obj/item/spaceflare,
-/obj/item/perfect_tele/frontier/unknown/four,
+/obj/item/perfect_tele,
 /obj/item/healthanalyzer/phasic,
-/obj/item/bluespaceradio/tether_prelinked,
+/obj/item/bluespace_radio/commerce,
 /obj/item/cat_box,
 /obj/item/cat_box,
 /obj/item/cat_box/black,
@@ -1425,18 +1409,17 @@
 /obj/item/ammo_magazine/m762/ap,
 /obj/item/storage/box/sniperammo,
 /obj/item/storage/box/sniperammo,
-/obj/item/modular_computer/laptop/preset/custom_loadout/hybrid,
-/obj/item/modular_computer/tablet/preset/custom_loadout/hybrid,
-/obj/item/perfect_tele/alien,
-/obj/item/perfect_tele/frontier/staff,
+/obj/item/modular_computer/laptop,
+/obj/item/perfect_tele,
+/obj/item/perfect_tele,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/item/inducer/hybrid,
-/obj/item/cell/device/weapon/recharge/alien/hybrid,
-/obj/item/cell/device/weapon/recharge/alien/hybrid,
-/obj/item/cell/device/weapon/recharge/alien/hybrid,
-/obj/item/cell/device/weapon/recharge/alien/hybrid,
+/obj/item/inducer,
+/obj/item/cell/device/weapon/recharge/alien,
+/obj/item/cell/device/weapon/recharge/alien,
+/obj/item/cell/device/weapon/recharge/alien,
+/obj/item/cell/device/weapon/recharge/alien,
 /obj/item/circuitboard/machine/abductor/core/hybrid,
 /obj/item/circuitboard/machine/abductor/core/hybrid,
 /turf/simulated/floor/tiled/techmaint,
@@ -1454,7 +1437,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "bl" = (
-/obj/machinery/power/smes/buildable/hybrid{
+/obj/machinery/power/smes/buildable{
 	input_level = 200000;
 	output_level = 200000
 	},
@@ -1475,9 +1458,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bn" = (
-/obj/machinery/pointdefense_control{
-	id_tag = "tabiranth_pd"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bo" = (
@@ -1732,7 +1712,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bJ" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/airlock/alien/blue/locked{
 	req_one_access = list(101)
 	},
@@ -1797,7 +1777,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "wz" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
 	destroy_hits = 1000;
 	id = "tabi-hangar2"
@@ -1810,13 +1790,13 @@ ba
 ba
 ba
 ba
-aa
+aM
 ac
 aD
 ac
 aM
-ab
-aa
+aM
+aM
 ac
 ad
 ad
@@ -1825,7 +1805,7 @@ ad
 ba
 "}
 (2,1,1) = {"
-aa
+aM
 ac
 ah
 ah
@@ -1841,10 +1821,10 @@ bj
 bq
 bx
 ad
-aa
+aM
 "}
 (3,1,1) = {"
-ab
+aM
 ad
 ai
 bO
@@ -1860,7 +1840,7 @@ bk
 br
 by
 ac
-ab
+aM
 "}
 (4,1,1) = {"
 ac
@@ -1958,7 +1938,7 @@ bE
 bG
 "}
 (9,1,1) = {"
-ab
+aM
 ad
 ao
 aq
@@ -1974,10 +1954,10 @@ bo
 bv
 bC
 ac
-ab
+aM
 "}
 (10,1,1) = {"
-aa
+aM
 ac
 wz
 wz
@@ -1993,20 +1973,20 @@ bp
 bw
 bD
 ad
-aa
+aM
 "}
 (11,1,1) = {"
 ba
 ba
 ba
 ba
-aa
+aM
 ac
 bJ
 ac
 aT
-ab
-aa
+aM
+aM
 ac
 ad
 ad

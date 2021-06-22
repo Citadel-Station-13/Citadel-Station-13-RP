@@ -461,7 +461,7 @@
 	id = "mercboatshutters";
 	name = "Shuttle Blast Door"
 	},
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)
 "aZ" = (
@@ -1006,9 +1006,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/barracks)
 "bW" = (
-/obj/machinery/pointdefense_control{
-	id_tag = "merc_pd"
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
@@ -1069,7 +1066,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
+/obj/item/modular_computer/laptop,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/bridge)
 "cc" = (
@@ -1333,7 +1330,7 @@
 	name = "Secure Airtight Hatch";
 	req_one_access = list(150)
 	},
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)
 "cw" = (
@@ -2268,9 +2265,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall1)
 "dY" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "merc_pd"
-	},
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/external,
 /area/ship/mercenary/med)
@@ -2902,9 +2896,6 @@
 /turf/simulated/floor/plating,
 /area/ship/mercenary/engine)
 "fj" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "merc_pd"
-	},
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/external,
 /area/ship/mercenary/barracks)
@@ -3490,7 +3481,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/machinery/power/shield_generator/upgraded,
+/obj/machinery/shield_gen,
 /turf/simulated/floor,
 /area/ship/mercenary/med)
 "gh" = (
@@ -3530,30 +3521,18 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineering)
 "gk" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "merc_pd"
-	},
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/external,
 /area/ship/mercenary/bridge)
 "gl" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "merc_pd"
-	},
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/external,
 /area/ship/mercenary/engineeringcntrl)
 "gm" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "merc_pd"
-	},
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/external,
 /area/ship/mercenary/armoury)
 "gn" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "merc_pd"
-	},
 /obj/effect/decal/warning_stripes,
 /turf/simulated/floor/plating/external,
 /area/ship/mercenary/engineering)
@@ -4230,7 +4209,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/engineeringcntrl)
 "hv" = (
-/obj/machinery/power/port_gen/pacman/super/potato,
+/obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},

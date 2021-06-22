@@ -308,10 +308,6 @@
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
-"aJ" = (
-/obj/effect/landmark/late_antag/ert,
-/turf/simulated/shuttle/floor/black,
-/area/shuttle/specops/centcom)
 "aK" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	icon_state = "intact";
@@ -730,10 +726,10 @@
 /obj/item/ammo_magazine/m9mm/large/preban,
 /obj/item/ammo_magazine/m9mm/large/preban,
 /obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/gun/projectile/p92x/large/preban,
-/obj/item/gun/projectile/p92x/large/preban,
-/obj/item/gun/projectile/p92x/large/preban,
-/obj/item/gun/projectile/p92x/large/preban,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bx" = (
@@ -792,7 +788,7 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/glucose,
 /obj/item/storage/pill_bottle/iron,
 /obj/item/storage/pill_bottle/iron,
-/obj/item/storage/pill_bottle/sleevingcure/full,
+/obj/item/storage/pill_bottle,
 /obj/item/extinguisher/mini,
 /obj/item/extinguisher/mini,
 /obj/item/extinguisher/mini,
@@ -983,9 +979,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "ERT";
-	tele_network = "centcom"
+	!INVALID_VAR! = "centcom"
 	},
 /obj/machinery/newscaster{
 	pixel_x = 32
@@ -1025,12 +1021,12 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "cb" = (
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
 /obj/item/flash,
 /obj/item/flash,
 /obj/item/flash,
@@ -1406,11 +1402,11 @@
 /area/shuttle/specops/centcom)
 "cL" = (
 /obj/structure/table/rack/steel,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/item/shield/energy,
@@ -1524,7 +1520,7 @@
 	req_access = list(160)
 	},
 /obj/structure/table/rack,
-/obj/item/clothing/suit/space/void/responseteam/command,
+/obj/item/rig/ert,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dc" = (
@@ -1950,10 +1946,10 @@
 /obj/item/storage/backpack/ert/engineer,
 /obj/item/storage/backpack/ert/engineer,
 /obj/item/storage/backpack/ert/engineer,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dR" = (
@@ -2114,10 +2110,10 @@
 	pixel_y = 32
 	},
 /obj/structure/table/rack/steel,
-/obj/item/clothing/suit/space/void/responseteam/engineer,
-/obj/item/clothing/suit/space/void/responseteam/engineer,
-/obj/item/clothing/suit/space/void/responseteam/engineer,
-/obj/item/clothing/suit/space/void/responseteam/engineer,
+/obj/item/rig/ert/engineer,
+/obj/item/rig/ert/engineer,
+/obj/item/rig/ert/engineer,
+/obj/item/rig/ert/engineer,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "rB" = (
@@ -2143,26 +2139,14 @@
 	pixel_y = -32
 	},
 /obj/structure/table/rack/steel,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/turf/simulated/shuttle/floor/black,
-/area/shuttle/specops/centcom)
-"TT" = (
-/obj/structure/table/rack/steel,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
+/obj/item/rig/ert/medical,
+/obj/item/rig/ert/medical,
+/obj/item/rig/ert/medical,
+/obj/item/rig/ert/medical,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "WJ" = (
 /obj/structure/table/rack/steel,
-/obj/item/clothing/suit/space/void/responseteam/janitor,
-/obj/item/clothing/suit/space/void/responseteam/janitor,
-/obj/item/clothing/suit/space/void/responseteam/janitor,
-/obj/item/clothing/suit/space/void/responseteam/janitor,
 /obj/item/storage/belt/janitor,
 /obj/item/storage/belt/janitor,
 /obj/item/storage/belt/janitor,
@@ -2866,7 +2850,7 @@ aj
 aj
 ap
 az
-aJ
+aH
 az
 ap
 ap
@@ -2904,8 +2888,8 @@ aj
 aj
 ap
 az
-aJ
-aJ
+aH
+aH
 bh
 ap
 bF
@@ -2942,7 +2926,7 @@ aj
 aj
 aq
 aA
-aJ
+aH
 aU
 aH
 bt
@@ -2980,7 +2964,7 @@ aj
 aj
 ar
 az
-aJ
+aH
 aU
 aH
 aH
@@ -3018,11 +3002,11 @@ aj
 aj
 as
 az
-aJ
+aH
 aV
 bi
 ap
-TT
+bS
 bd
 cb
 cs

@@ -423,12 +423,6 @@
 	name = "plating"
 	},
 /area/skipjack_station)
-"bb" = (
-/obj/effect/landmark/late_antag/raider,
-/turf/unsimulated/floor{
-	icon_state = "wood"
-	},
-/area/skipjack_station)
 "bc" = (
 /turf/unsimulated/floor{
 	icon_state = "wood"
@@ -522,13 +516,6 @@
 /turf/unsimulated/floor{
 	name = "plating";
 	icon_state = "asteroid_dug"
-	},
-/area/skipjack_station)
-"bo" = (
-/obj/effect/landmark/late_antag/raider,
-/turf/unsimulated/floor{
-	icon = 'icons/turf/flooring/wood.dmi';
-	icon_state = "wood_broken3"
 	},
 /area/skipjack_station)
 "bp" = (
@@ -1891,9 +1878,9 @@ aa
 aa
 ab
 aN
-bb
 bc
-bb
+bc
+bc
 bu
 ab
 ae
@@ -1979,9 +1966,9 @@ ab
 ab
 ab
 aP
-bb
 bc
-bb
+bc
+bc
 bv
 ab
 af
@@ -2067,9 +2054,9 @@ af
 af
 ab
 aQ
-bb
 bc
-bo
+bc
+bi
 bw
 ab
 bl

@@ -21,8 +21,8 @@
 /turf/simulated/wall/rdshull,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "ae" = (
-/obj/structure/window/plastitanium/full,
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "window"
 	},
@@ -39,8 +39,8 @@
 /turf/simulated/floor/plating,
 /area/shuttle/curabitur/curashuttle/med)
 "af" = (
-/obj/structure/window/plastitanium/full,
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "window"
 	},
@@ -153,18 +153,8 @@
 /area/shuttle/curabitur/curashuttle/med)
 "at" = (
 /obj/structure/closet/crate/large,
-/obj/item/gun/projectile/multi_cannon,
-/obj/item/gun/projectile/multi_cannon,
-/obj/item/ammo_casing/macrobattery/buff,
-/obj/item/ammo_casing/macrobattery/buff,
-/obj/item/ammo_casing/macrobattery/detox,
-/obj/item/ammo_casing/macrobattery/detox,
-/obj/item/ammo_casing/macrobattery/healie,
-/obj/item/ammo_casing/macrobattery/healie,
-/obj/item/ammo_casing/macrobattery/ouchie,
-/obj/item/ammo_casing/macrobattery/ouchie,
-/obj/item/ammo_casing/macrobattery/stabilize,
-/obj/item/ammo_casing/macrobattery/stabilize,
+/obj/item/gun/energy/particle/cannon,
+/obj/item/gun/energy/particle/cannon,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/curabitur/curashuttle/cockpit)
 "au" = (
@@ -199,7 +189,7 @@
 	dir = 8;
 	icon_state = "computer"
 	},
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced{
 	dir = 4;
 	icon_state = "window"
 	},
@@ -298,7 +288,7 @@
 	pixel_y = 8
 	},
 /obj/machinery/atmospherics/pipe/vent,
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced{
 	dir = 4;
 	icon_state = "window"
 	},
@@ -468,21 +458,21 @@
 /obj/item/wheelchair,
 /obj/item/cane/crutch,
 /obj/item/cane/crutch,
-/obj/item/cane/white/collapsible,
+/obj/item/cane/whitecane/collapsible,
 /obj/item/clothing/accessory/stethoscope,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/curabitur/curashuttle/med)
 "aU" = (
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "window"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/shield_generator/charged{
-	initial_shield_modes = 2133;
-	input_cap = 50000
+/obj/machinery/shield_gen{
+	!INVALID_VAR! = 2133;
+	!INVALID_VAR! = 50000
 	},
 /obj/structure/curtain/black,
 /turf/simulated/floor/tiled,
@@ -555,8 +545,8 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/curabitur/curashuttle/med)
 "bb" = (
-/obj/structure/window/plastitanium,
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1;
 	icon_state = "window"
 	},
@@ -650,8 +640,8 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/curabitur/curashuttle/med)
 "bj" = (
-/obj/structure/window/plastitanium/full,
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "window"
 	},
@@ -682,8 +672,8 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/curabitur/curashuttle/med)
 "bn" = (
-/obj/structure/window/plastitanium/full,
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 4;
 	icon_state = "window"
 	},
@@ -730,13 +720,13 @@
 "bu" = (
 /obj/structure/table/darkglass,
 /obj/machinery/atmospherics/pipe/vent,
-/obj/item/reagent_containers/food/snacks/bagelsunflower,
+/obj/item/reagent_containers/food/snacks/bun,
 /obj/item/reagent_containers/food/snacks/applepie,
 /obj/item/reagent_containers/food/snacks/carrotfries,
-/obj/item/reagent_containers/food/snacks/cube/nutriment,
-/obj/item/reagent_containers/food/snacks/cube/protein,
-/obj/item/reagent_containers/food/snacks/cube/protein,
-/obj/item/reagent_containers/food/snacks/cube/protein,
+/obj/item/storage/box/monkeycubes/sobakacubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
 /obj/item/reagent_containers/food/snacks/cracker,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/shuttle/curabitur/curashuttle/med)
@@ -1019,7 +1009,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/curabitur/curashuttle/med)
 "bM" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/airlock/external/glass/bolted{
 	frequency = 1480;
 	id_tag = "curadocking"
@@ -1125,11 +1115,11 @@
 	},
 /area/shuttle/curabitur/curashuttle/eng)
 "bY" = (
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced{
 	dir = 8;
 	icon_state = "window"
 	},
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced{
 	dir = 4;
 	icon_state = "window"
 	},
@@ -1307,7 +1297,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/curabitur/curashuttle/hangar)
 "ct" = (
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
 	id = "medihangar"
 	},

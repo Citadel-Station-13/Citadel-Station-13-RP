@@ -36,9 +36,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander)
 "bk" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "salamander_pd"
-	},
 /turf/simulated/floor/plating,
 /area/shuttle/salamander_q2)
 "br" = (
@@ -84,7 +81,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	dir = 8;
 	pixel_x = -32
 	},
@@ -166,7 +163,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	dir = 8;
 	pixel_x = -32
 	},
@@ -350,7 +347,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	dir = 8;
 	pixel_x = -32
 	},
@@ -417,7 +414,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	pixel_y = 32
 	},
 /obj/structure/railing/grey{
@@ -657,19 +654,18 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
 /obj/random/cigarettes,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
-/obj/random/snack,
 /obj/structure/closet/walllocker_double/south{
 	name = "Storage Locker"
 	},
@@ -738,7 +734,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	dir = 4;
 	pixel_x = 32
 	},
@@ -805,7 +801,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	dir = 1;
 	pixel_y = -32
 	},
@@ -910,12 +906,11 @@
 /obj/random/medical,
 /obj/random/medical,
 /obj/random/medical,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
+/obj/random/contraband,
+/obj/random/contraband,
 /obj/random/cigarettes,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
-/obj/random/snack,
 /obj/structure/closet/walllocker_double/south{
 	name = "Storage Locker"
 	},
@@ -930,12 +925,11 @@
 /obj/random/medical,
 /obj/random/medical,
 /obj/random/medical,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
+/obj/random/contraband,
+/obj/random/contraband,
 /obj/random/cigarettes,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
-/obj/random/snack,
 /obj/structure/closet/walllocker_double/south{
 	name = "Storage Locker"
 	},
@@ -948,12 +942,11 @@
 /obj/random/firstaid,
 /obj/random/firstaid,
 /obj/random/firstaid,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
+/obj/random/contraband,
+/obj/random/contraband,
 /obj/random/cigarettes,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
-/obj/random/snack,
 /obj/structure/closet/walllocker_double/south{
 	name = "Storage Locker"
 	},
@@ -1023,13 +1016,6 @@
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/storage/box/donkpockets,
 /obj/item/storage/box/donkpockets,
-/obj/random/snack,
-/obj/random/snack,
-/obj/random/snack,
-/obj/random/snack,
-/obj/random/snack,
-/obj/random/snack,
-/obj/random/snack,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_galley)
 "ot" = (
@@ -1039,11 +1025,6 @@
 /turf/simulated/floor/plating,
 /area/shuttle/salamander_cockpit)
 "oC" = (
-/obj/machinery/pointdefense_control{
-	id_tag = "salamander_pd";
-	name = "salamander defense control";
-	req_one_access = list(160)
-	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_cockpit)
 "oF" = (
@@ -1053,11 +1034,10 @@
 	dir = 4;
 	pixel_x = 22
 	},
-/obj/effect/landmark/late_antag/trader,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "oI" = (
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
@@ -1150,7 +1130,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	dir = 8;
 	pixel_x = -32
 	},
@@ -1162,7 +1142,7 @@
 	dir = 8;
 	pixel_x = -22
 	},
-/obj/random/pizzabox,
+/obj/item/pizzabox,
 /obj/structure/closet/walllocker_double/kitchen/south,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_galley)
@@ -1188,8 +1168,8 @@
 /obj/structure/closet/crate{
 	dir = 8
 	},
-/obj/random/material/refined,
-/obj/random/material/refined,
+/obj/random/material,
+/obj/random/material,
 /obj/random/toolbox,
 /turf/simulated/floor/plating,
 /area/shuttle/salamander)
@@ -1255,12 +1235,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_engineering)
-"tA" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "salamander_pd"
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/salamander_engineering)
 "ur" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -1273,7 +1247,7 @@
 /area/shuttle/salamander_cockpit)
 "vi" = (
 /obj/structure/table/steel,
-/obj/machinery/microwave/advanced,
+/obj/machinery/microwave,
 /obj/machinery/alarm/alarms_hidden{
 	dir = 8;
 	pixel_x = 26
@@ -1378,7 +1352,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	dir = 8;
 	pixel_x = -32
 	},
@@ -1393,13 +1367,12 @@
 /obj/random/tech_supply/component/nofail,
 /obj/random/tech_supply/component/nofail,
 /obj/random/tech_supply/component/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
+/obj/random/contraband,
+/obj/random/contraband,
 /obj/random/powercell,
 /obj/random/powercell,
-/obj/random/drinksoft,
-/obj/random/drinksoft,
-/obj/random/snack,
+/obj/machinery/vending/cola,
+/obj/machinery/vending/cola,
 /obj/structure/closet/walllocker_double/north{
 	name = "Storage Locker"
 	},
@@ -1443,8 +1416,8 @@
 /area/shuttle/salamander_galley)
 "ES" = (
 /obj/structure/closet/crate,
-/obj/random/material/refined,
-/obj/random/material/refined,
+/obj/random/material,
+/obj/random/material,
 /obj/random/toolbox,
 /turf/simulated/floor/plating,
 /area/shuttle/salamander)
@@ -1582,13 +1555,12 @@
 /obj/random/tech_supply/nofail,
 /obj/random/tech_supply/nofail,
 /obj/random/tech_supply/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
+/obj/random/contraband,
+/obj/random/contraband,
 /obj/random/powercell,
 /obj/random/powercell,
-/obj/random/drinksoft,
-/obj/random/drinksoft,
-/obj/random/snack,
+/obj/machinery/vending/cola,
+/obj/machinery/vending/cola,
 /obj/structure/closet/walllocker_double/north{
 	name = "Storage Locker"
 	},
@@ -1711,13 +1683,12 @@
 /obj/random/tech_supply/component/nofail,
 /obj/random/tech_supply/component/nofail,
 /obj/random/tech_supply/component/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
+/obj/random/contraband,
+/obj/random/contraband,
 /obj/random/powercell,
 /obj/random/powercell,
-/obj/random/drinksoft,
-/obj/random/drinksoft,
-/obj/random/snack,
+/obj/machinery/vending/cola,
+/obj/machinery/vending/cola,
 /obj/structure/closet/walllocker_double/north{
 	name = "Storage Locker"
 	},
@@ -1730,7 +1701,6 @@
 	dir = 8;
 	pixel_x = 26
 	},
-/obj/effect/landmark/late_antag/trader,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "RU" = (
@@ -1937,13 +1907,12 @@
 /obj/random/tech_supply/nofail,
 /obj/random/tech_supply/nofail,
 /obj/random/tech_supply/nofail,
-/obj/random/contraband/nofail,
-/obj/random/contraband/nofail,
+/obj/random/contraband,
+/obj/random/contraband,
 /obj/random/powercell,
 /obj/random/powercell,
-/obj/random/drinksoft,
-/obj/random/drinksoft,
-/obj/random/snack,
+/obj/machinery/vending/cola,
+/obj/machinery/vending/cola,
 /obj/structure/closet/walllocker_double/north{
 	name = "Storage Locker"
 	},
@@ -1978,7 +1947,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/salamander)
 "ZK" = (
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	dir = 1;
 	pixel_y = -32
 	},
@@ -2135,7 +2104,7 @@ WP
 (8,1,1) = {"
 WP
 WP
-tA
+dj
 Wj
 bK
 ey
@@ -2146,7 +2115,7 @@ Wv
 ey
 oa
 Wj
-tA
+dj
 WP
 WP
 "}

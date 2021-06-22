@@ -353,7 +353,6 @@
 /turf/simulated/floor,
 /area/ship/expe/atmospherics)
 "bb" = (
-/obj/item/clothing/head/cone,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/maintenancerim)
 "bc" = (
@@ -8355,7 +8354,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicaleq)
 "pl" = (
-/obj/machinery/power/shield_generator/upgraded,
+/obj/machinery/shield_gen,
 /turf/simulated/floor/bluegrid,
 /area/ship/expe/corridor4)
 "pm" = (
@@ -8426,8 +8425,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "pt" = (
-/obj/machinery/power/smes/buildable/hybrid{
-	recharge_rate = 10000
+/obj/machinery/power/smes/buildable{
+	!INVALID_VAR! = 10000
 	},
 /obj/structure/cable{
 	d2 = 8;

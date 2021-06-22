@@ -488,7 +488,7 @@
 /obj/effect/landmark{
 	name = "Syndicate-Spawn"
 	},
-/obj/item/bedsheet/pirate,
+/obj/item/bedsheet/red,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -526,12 +526,12 @@
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/item/shield/energy,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
 	pixel_y = 32
@@ -653,7 +653,7 @@
 /obj/effect/landmark{
 	name = "Syndicate-Spawn"
 	},
-/obj/item/bedsheet/pirate,
+/obj/item/bedsheet/red,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -1694,10 +1694,10 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/item/clothing/mask/gas/wwii,
-/obj/item/clothing/mask/gas/wwii,
-/obj/item/clothing/mask/gas/wwii,
-/obj/item/clothing/mask/gas/wwii,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
 /turf/unsimulated/floor{
 	dir = 2;
 	icon_state = "dark"
@@ -3320,13 +3320,6 @@
 /obj/structure/sign/department/operational,
 /turf/simulated/shuttle/wall/dark,
 /area/shuttle/mercenary)
-"fq" = (
-/obj/effect/landmark/late_antag/mercenary,
-/turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
-	},
-/area/antag/antag_base)
 "fr" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/bed/chair{
@@ -3396,13 +3389,6 @@
 	},
 /turf/simulated/shuttle/plating/airless,
 /area/shuttle/mercenary)
-"fA" = (
-/obj/effect/landmark/late_antag/mercenary,
-/turf/unsimulated/floor{
-	dir = 2;
-	icon_state = "dark"
-	},
-/area/antag/antag_base)
 "fB" = (
 /obj/item/radio/intercom{
 	desc = "Talk through this. Evilly";
@@ -3666,7 +3652,7 @@
 /area/shuttle/mercenary)
 "fZ" = (
 /obj/structure/closet/syndicate,
-/obj/item/clothing/mask/gas/wwii,
+/obj/item/clothing/mask/gas,
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -3683,7 +3669,7 @@
 /area/shuttle/mercenary)
 "ga" = (
 /obj/structure/closet/syndicate,
-/obj/item/clothing/mask/gas/wwii,
+/obj/item/clothing/mask/gas,
 /obj/item/clothing/head/helmet,
 /obj/item/clothing/shoes/boots/jackboots,
 /obj/item/clothing/suit/armor/vest,
@@ -3926,7 +3912,7 @@
 	syndie = 1
 	},
 /obj/structure/closet/syndicate,
-/obj/item/clothing/mask/gas/wwii,
+/obj/item/clothing/mask/gas,
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -5829,9 +5815,9 @@ aY
 ah
 ah
 ah
-fq
-fq
-fA
+ah
+ah
+aq
 aq
 aq
 aq
@@ -5891,9 +5877,9 @@ ab
 ah
 ah
 cg
-fq
-fq
-fA
+ah
+ah
+aq
 aq
 aq
 aq

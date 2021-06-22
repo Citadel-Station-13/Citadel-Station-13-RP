@@ -101,10 +101,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
-"as" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced,
-/area/ship/manta/hangar)
 "au" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -115,7 +111,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -310,7 +306,7 @@
 	pixel_y = 32
 	},
 /obj/structure/curtain/open/bed,
-/obj/item/bedsheet/pirate,
+/obj/item/bedsheet/red,
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "bn" = (
@@ -431,17 +427,11 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
-"bG" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
-/turf/simulated/floor/reinforced,
-/area/ship/manta/armoury_st)
 "bI" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/techfloor{
@@ -458,7 +448,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/light_switch{
@@ -481,12 +471,6 @@
 "bR" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
-"bT" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
-/turf/simulated/floor/reinforced,
-/area/ship/manta/hangar)
 "bY" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/syndie_kit/demolitions_super_heavy{
@@ -523,7 +507,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -550,10 +534,6 @@
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
-"cb" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/manta/dock_port)
 "ce" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
@@ -652,12 +632,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
-"cI" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
-/turf/simulated/floor/reinforced,
-/area/ship/manta/med)
 "cK" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -717,10 +691,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/ship/manta/armoury_st)
-"cS" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced,
 /area/ship/manta/armoury_st)
 "cW" = (
 /obj/structure/undies_wardrobe,
@@ -834,7 +804,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -878,10 +848,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
-"dI" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced,
-/area/ship/manta/med)
 "dJ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -923,7 +889,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -990,7 +956,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1037,7 +1003,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -1052,10 +1018,6 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "eG" = (
-/turf/simulated/floor/reinforced,
-/area/ship/manta/hallways_port)
-"eH" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
 /turf/simulated/floor/reinforced,
 /area/ship/manta/hallways_port)
 "eJ" = (
@@ -1077,7 +1039,7 @@
 /obj/machinery/vending/food{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "eR" = (
@@ -1142,7 +1104,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1188,7 +1150,6 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/machinery/pointdefense_control,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/manta/bridge)
 "fE" = (
@@ -1290,10 +1251,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
-"fZ" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced,
-/area/ship/manta/recreation)
 "gb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1308,7 +1265,7 @@
 /obj/item/card/id/syndicate,
 /obj/item/card/id/syndicate,
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/item/card/id/syndicate,
 /obj/item/card/id/syndicate,
 /turf/simulated/floor/tiled/techfloor,
@@ -1348,7 +1305,7 @@
 	dir = 4;
 	pixel_x = 26
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1399,7 +1356,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1427,7 +1384,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -1528,12 +1485,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
-"hq" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
-/turf/simulated/floor/reinforced,
-/area/ship/manta/hallways_port)
 "hs" = (
 /obj/structure/bed/chair/bay/comfy/red{
 	dir = 8
@@ -1676,7 +1627,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/item/gun/projectile/automatic/c20r,
@@ -1685,7 +1636,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "hV" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1730,7 +1681,7 @@
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45/ap,
-/obj/item/ammo_magazine/m45/hp,
+/obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45/rubber,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -1803,7 +1754,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1830,7 +1781,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/light_switch{
@@ -1972,7 +1923,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2039,17 +1990,11 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
-"jh" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
-/turf/simulated/floor/reinforced,
-/area/ship/manta/recreation)
 "jl" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -2100,7 +2045,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2111,7 +2056,7 @@
 /area/ship/manta/hallways_aft)
 "jx" = (
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -2256,7 +2201,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -2355,10 +2300,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
-"kO" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced,
-/area/ship/manta/hallways_star)
 "kP" = (
 /obj/structure/closet/crate{
 	dir = 1
@@ -2513,7 +2454,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2612,7 +2553,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -2633,12 +2574,12 @@
 /area/ship/manta/barracks)
 "lZ" = (
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /obj/machinery/shield_diffuser,
-/obj/structure/window/titanium,
+/obj/structure/window/phoronreinforced,
 /obj/machinery/door/blast/regular{
 	closed_layer = 4;
 	dir = 4;
@@ -2694,7 +2635,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -2762,7 +2703,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/structure/closet/walllocker/emerglocker/south,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
@@ -2839,7 +2780,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -2909,7 +2850,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2962,12 +2903,6 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "nI" = (
-/turf/simulated/floor/reinforced,
-/area/ship/manta/mech_bay)
-"nJ" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
 /turf/simulated/floor/reinforced,
 /area/ship/manta/mech_bay)
 "nL" = (
@@ -3044,11 +2979,11 @@
 "oa" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
@@ -3221,7 +3156,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3237,7 +3172,7 @@
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45/ap,
-/obj/item/ammo_magazine/m45/hp,
+/obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45/rubber,
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -3320,7 +3255,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3329,12 +3264,6 @@
 /obj/effect/landmark/map_data/manta_ship,
 /turf/space,
 /area/space)
-"pi" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ship/manta/dock_star)
 "pn" = (
 /turf/simulated/floor/reinforced,
 /area/ship/manta/hallways_star)
@@ -3450,7 +3379,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3696,11 +3625,11 @@
 "rs" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
@@ -3753,7 +3682,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -3786,19 +3715,9 @@
 /obj/structure/bed/chair/bay/comfy/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
-"rR" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
-/turf/simulated/floor/reinforced,
-/area/ship/manta/holding)
 "rS" = (
 /turf/simulated/floor/reinforced,
 /area/ship/manta/holding)
-"rT" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced,
-/area/ship/manta/mech_bay)
 "rU" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Lander Fuel Storage";
@@ -3876,7 +3795,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4008,10 +3927,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
-"sZ" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced,
-/area/ship/manta/holding)
 "th" = (
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 26
@@ -4058,12 +3973,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
-"ts" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
-/turf/simulated/floor/reinforced,
-/area/ship/manta/hallways_star)
 "tt" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -4071,7 +3980,7 @@
 /obj/machinery/firealarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4111,13 +4020,13 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "tJ" = (
-/obj/structure/closet/wardrobe/merc,
+/obj/structure/closet/wardrobe/tactical,
 /obj/item/storage/box/syndie_kit/combat_armor,
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
@@ -4228,9 +4137,9 @@
 "uk" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
-/obj/structure/window/plastitanium/full,
-/obj/structure/window/plastitanium,
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4351,7 +4260,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4363,7 +4272,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4391,7 +4300,7 @@
 /obj/machinery/firealarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -4403,7 +4312,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4423,12 +4332,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "uZ" = (
-/obj/machinery/power/port_gen/pacman/super/potato,
+/obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4486,7 +4395,7 @@
 /obj/machinery/firealarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4518,7 +4427,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 5
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -4531,7 +4440,7 @@
 	},
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "vH" = (
@@ -4548,7 +4457,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4592,7 +4501,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4790,7 +4699,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -5149,7 +5058,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -5189,7 +5098,7 @@
 	},
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "xW" = (
@@ -5240,12 +5149,12 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "yj" = (
-/obj/machinery/power/port_gen/pacman/super/potato,
+/obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5275,10 +5184,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
-"yn" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/manta/dock_star)
 "yo" = (
 /turf/simulated/floor/reinforced/airless,
 /area/ship/manta/dock_port)
@@ -5311,7 +5216,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -5546,7 +5451,7 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "zk" = (
@@ -5718,7 +5623,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 9
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -5759,7 +5664,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/catwalk_plated/dark,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/light_switch{
@@ -5800,7 +5705,7 @@
 /obj/machinery/computer/ship/helm{
 	req_one_access = list(150)
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -5864,7 +5769,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /obj/structure/bed/chair/bay/shuttle{
@@ -6065,11 +5970,11 @@
 "Cf" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -6221,8 +6126,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "CP" = (
-/obj/structure/closet/wardrobe/merc,
-/obj/machinery/light/no_nightshift{
+/obj/structure/closet/wardrobe/tactical,
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/item/storage/box/syndie_kit/combat_armor,
@@ -6248,7 +6153,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6320,7 +6225,7 @@
 /obj/machinery/firealarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6336,7 +6241,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6345,7 +6250,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6392,7 +6297,7 @@
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6686,7 +6591,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "EN" = (
@@ -6785,7 +6690,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "Fj" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -6813,7 +6718,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6840,12 +6745,12 @@
 /area/ship/manta/dock_star)
 "FL" = (
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
@@ -6877,8 +6782,8 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/machinery/power/shield_generator/charged{
-	hacked = 1
+/obj/machinery/shield_gen{
+	!INVALID_VAR! = 1
 	},
 /obj/structure/cable/orange{
 	d2 = 2;
@@ -6886,12 +6791,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/manta/bridge)
-"FZ" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "mercenary_pd"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ship/manta/engine)
 "Gd" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/glasses/square{
@@ -6899,7 +6798,7 @@
 	pixel_y = 4
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/effect/floor_decal/corner/white{
 	dir = 1
 	},
@@ -6938,7 +6837,7 @@
 /obj/item/pen{
 	pixel_y = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -6955,7 +6854,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/structure/window/titanium,
+/obj/structure/window/phoronreinforced,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Gz" = (
@@ -6976,12 +6875,12 @@
 /area/ship/manta/dock_port)
 "GE" = (
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
@@ -6992,12 +6891,12 @@
 /area/ship/manta/holding)
 "GH" = (
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
@@ -7010,7 +6909,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "GI" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/freezer,
 /area/ship/manta/barracks)
 "GN" = (
@@ -7137,7 +7036,7 @@
 	dir = 8;
 	pixel_x = 23
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7318,7 +7217,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7357,10 +7256,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
-"II" = (
-/obj/machinery/porta_turret/stationary/syndie/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/manta/engine)
 "IJ" = (
 /obj/structure/table/rack,
 /obj/item/gun/energy/gun,
@@ -7388,7 +7283,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7432,7 +7327,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7447,12 +7342,12 @@
 	opacity = 0
 	},
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
@@ -7607,7 +7502,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7630,7 +7525,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "Kd" = (
@@ -7638,7 +7533,7 @@
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /mob/living/simple_mob/animal/passive/fox/syndicate{
@@ -7768,7 +7663,6 @@
 /area/ship/manta/barracks)
 "KG" = (
 /obj/structure/table/bench/steel,
-/obj/effect/landmark/late_antag/mercenary,
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "KH" = (
@@ -7806,7 +7700,6 @@
 /area/ship/manta/hallways_aft)
 "KP" = (
 /obj/structure/table/bench/steel,
-/obj/effect/landmark/late_antag/mercenary,
 /obj/machinery/light_switch{
 	dir = 8;
 	pixel_x = 23
@@ -7818,7 +7711,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -7869,7 +7762,7 @@
 	dir = 1;
 	pixel_y = -26
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -7963,7 +7856,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/light_switch{
@@ -8130,7 +8023,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/structure/window/titanium,
+/obj/structure/window/phoronreinforced,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Mw" = (
@@ -8203,7 +8096,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -8323,7 +8216,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/item/cell/device/weapon,
@@ -8351,7 +8244,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/item/cell/device/weapon,
@@ -8367,7 +8260,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8400,7 +8293,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8461,7 +8354,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8474,7 +8367,7 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -8506,7 +8399,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8520,7 +8413,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8567,7 +8460,7 @@
 /area/ship/manta/radiator_star)
 "OQ" = (
 /obj/machinery/recharge_station,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -8581,7 +8474,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8615,7 +8508,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8629,7 +8522,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8648,7 +8541,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -8663,9 +8556,9 @@
 	opacity = 0
 	},
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass,
@@ -8693,12 +8586,12 @@
 	opacity = 0
 	},
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
@@ -8778,11 +8671,11 @@
 "PW" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -8804,12 +8697,12 @@
 	opacity = 0
 	},
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
@@ -8836,7 +8729,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8896,7 +8789,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9001,7 +8894,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/white,
@@ -9097,12 +8990,12 @@
 	opacity = 0
 	},
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
@@ -9200,7 +9093,7 @@
 	},
 /obj/machinery/door/firedoor/border_only,
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "Sb" = (
@@ -9260,7 +9153,7 @@
 	icon_state = "frame";
 	pixel_x = -32
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -9455,7 +9348,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
@@ -9571,7 +9464,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "TS" = (
@@ -9625,7 +9518,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9645,7 +9538,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 10
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -9792,7 +9685,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9928,7 +9821,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/light_switch{
@@ -9955,12 +9848,12 @@
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/item/shield/energy,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
-/obj/item/melee/energy/sword/red,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -10268,7 +10161,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "Xq" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -10332,7 +10225,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10538,7 +10431,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -10570,7 +10463,7 @@
 	icon_state = "0-4"
 	},
 /obj/effect/catwalk_plated/dark,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -10673,7 +10566,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10711,12 +10604,12 @@
 "Zv" = (
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
-/obj/structure/window/titanium/full,
-/obj/structure/window/titanium,
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/structure/window/titanium{
+/obj/structure/window/phoronreinforced{
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor{
@@ -16746,9 +16639,9 @@ yz
 nI
 nI
 nI
-nJ
 nI
 nI
+nI
 yz
 yz
 yz
@@ -16756,7 +16649,7 @@ yz
 kW
 kW
 kW
-jh
+kW
 kW
 kW
 yz
@@ -16884,24 +16777,24 @@ yz
 yz
 yz
 yz
-rT
+nI
 oc
 oc
 oc
 oc
 oc
 oc
-fZ
 kW
 kW
-jh
+kW
+kW
 lm
 lm
 lm
 lm
 lm
 lm
-fZ
+kW
 yz
 yz
 yz
@@ -17167,7 +17060,7 @@ yz
 yz
 yz
 yz
-nJ
+nI
 oc
 oc
 vl
@@ -17329,7 +17222,7 @@ Yi
 hD
 CQ
 lm
-jh
+kW
 yz
 yz
 yz
@@ -17592,7 +17485,7 @@ yz
 yz
 yz
 yz
-eH
+eG
 oc
 oc
 oc
@@ -17614,7 +17507,7 @@ gh
 gf
 ik
 lm
-fZ
+kW
 yz
 rm
 rm
@@ -18017,7 +17910,7 @@ yz
 yz
 yz
 yz
-hq
+eG
 ht
 oe
 ht
@@ -18442,7 +18335,7 @@ yz
 yz
 yz
 yz
-eH
+eG
 ht
 kT
 ov
@@ -18867,7 +18760,7 @@ yz
 yz
 yz
 yz
-bG
+aE
 ZT
 ic
 bR
@@ -19193,7 +19086,7 @@ lg
 IE
 WF
 WF
-cb
+yo
 yz
 yz
 yz
@@ -19292,7 +19185,7 @@ yz
 yz
 yz
 yz
-cS
+aE
 ZT
 ZT
 ZT
@@ -19575,7 +19468,7 @@ yz
 yz
 yz
 yz
-bG
+aE
 ZT
 ZT
 eJ
@@ -19620,7 +19513,7 @@ Zy
 xd
 RZ
 WF
-FZ
+WA
 WA
 WA
 WA
@@ -19766,7 +19659,7 @@ XE
 XE
 XE
 XE
-II
+WA
 yz
 yz
 yz
@@ -20001,7 +19894,7 @@ yz
 yz
 yz
 yz
-bT
+ag
 Vp
 Vp
 Vp
@@ -20284,7 +20177,7 @@ yz
 yz
 yz
 yz
-as
+ag
 Vp
 Vp
 dX
@@ -20479,7 +20372,7 @@ XE
 XE
 XE
 XE
-II
+WA
 yz
 yz
 yz
@@ -20622,7 +20515,7 @@ XE
 XE
 XE
 XE
-FZ
+WA
 yz
 yz
 yz
@@ -21332,7 +21225,7 @@ XE
 XE
 XE
 XE
-FZ
+WA
 yz
 yz
 yz
@@ -21473,7 +21366,7 @@ XE
 XE
 XE
 XE
-II
+WA
 yz
 yz
 yz
@@ -21562,7 +21455,7 @@ yz
 yz
 yz
 yz
-as
+ag
 Vp
 Vp
 el
@@ -21847,7 +21740,7 @@ yz
 yz
 yz
 yz
-bT
+ag
 Vp
 Pn
 Pn
@@ -22180,7 +22073,7 @@ XE
 XE
 XE
 XE
-II
+WA
 yz
 yz
 yz
@@ -22273,7 +22166,7 @@ yz
 yz
 yz
 yz
-cI
+cr
 dl
 eF
 fU
@@ -22318,7 +22211,7 @@ rJ
 xB
 ZW
 PK
-pi
+Ly
 WA
 WA
 WA
@@ -22558,7 +22451,7 @@ yz
 yz
 yz
 yz
-dI
+cr
 dl
 hc
 kh
@@ -22743,7 +22636,7 @@ vV
 Lm
 PK
 PK
-yn
+Ly
 yz
 yz
 yz
@@ -22985,7 +22878,7 @@ yz
 yz
 yz
 yz
-cI
+cr
 dl
 ky
 nf
@@ -23412,7 +23305,7 @@ yz
 yz
 yz
 yz
-dI
+cr
 dl
 nz
 rE
@@ -23839,7 +23732,7 @@ yz
 yz
 yz
 yz
-cI
+cr
 dl
 rM
 rM
@@ -24266,7 +24159,7 @@ yz
 yz
 yz
 yz
-dI
+cr
 dl
 rM
 ch
@@ -24288,7 +24181,7 @@ ch
 hN
 Th
 mT
-kO
+pn
 yz
 XO
 XO
@@ -24571,7 +24464,7 @@ tL
 ch
 cq
 mT
-ts
+pn
 yz
 yz
 yz
@@ -24693,7 +24586,7 @@ yz
 yz
 yz
 yz
-rR
+rS
 ch
 ch
 yR
@@ -24978,24 +24871,24 @@ yz
 yz
 yz
 yz
-sZ
+rS
 ch
 ch
 ch
 ch
 ch
 ch
-sZ
 rS
 rS
-rR
+rS
+rS
 ch
 ch
 ch
 ch
 ch
 ch
-sZ
+rS
 yz
 yz
 yz
@@ -25124,7 +25017,7 @@ yz
 rS
 rS
 rS
-rR
+rS
 rS
 rS
 yz
@@ -25134,7 +25027,7 @@ yz
 rS
 rS
 rS
-rR
+rS
 rS
 rS
 yz

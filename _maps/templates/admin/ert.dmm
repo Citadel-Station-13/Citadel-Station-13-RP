@@ -3,18 +3,8 @@
 /obj/effect/overmap/visitable/ship/ert_ship,
 /turf/space,
 /area/space)
-"ab" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/barracks)
 "ac" = (
-/obj/machinery/light/no_nightshift,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/dock_port)
-"ad" = (
-/obj/machinery/porta_turret/stationary/CIWS,
+/obj/machinery/light,
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/dock_port)
 "ae" = (
@@ -29,24 +19,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "af" = (
-/obj/machinery/light/no_nightshift,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/mech_bay)
-"ag" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
-	},
+/obj/machinery/light,
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/mech_bay)
 "ah" = (
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/mech_bay)
-"ai" = (
-/obj/machinery/porta_turret/stationary/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/mech_bay)
 "aj" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/engine)
 "ak" = (
@@ -79,7 +59,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_port)
 "an" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -111,12 +91,6 @@
 "az" = (
 /obj/machinery/shipsensors{
 	dir = 4
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/med_surg)
-"aC" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/med_surg)
@@ -164,7 +138,7 @@
 "aQ" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/surgery,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/item/surgical/bone_clamp,
@@ -173,12 +147,6 @@
 /obj/item/stack/nanopaste,
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
-"aV" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/eng_storage)
 "bp" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /turf/simulated/floor/tiled/techfloor,
@@ -206,12 +174,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/bridge)
 "bI" = (
 /obj/structure/table/rack/steel,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -232,7 +200,7 @@
 	dir = 8
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -244,11 +212,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/atmos)
 "bR" = (
-/obj/machinery/light/no_nightshift,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/atmos)
-"bW" = (
-/obj/machinery/porta_turret/stationary/CIWS,
+/obj/machinery/light,
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/atmos)
 "ch" = (
@@ -293,13 +257,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
 "cJ" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/hallways_aft)
 "cL" = (
-/obj/machinery/telecomms/allinone/ert,
+/obj/machinery/telecomms/allinone,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/atmos)
 "cO" = (
@@ -353,7 +317,7 @@
 	dir = 8
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -415,7 +379,7 @@
 "ds" = (
 /obj/structure/table/rack,
 /obj/item/storage/backpack/ert/commander,
-/obj/item/clothing/suit/space/void/responseteam/command,
+/obj/item/rig/ert,
 /obj/item/clothing/head/helmet/ert/command,
 /obj/item/clothing/suit/armor/vest/ert/command,
 /turf/simulated/floor/wood,
@@ -495,7 +459,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "dW" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -582,10 +546,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/ship/ert/engine)
-"eD" = (
-/obj/machinery/porta_turret/stationary/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/med)
 "eF" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
@@ -656,7 +616,7 @@
 "fx" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/rig_module/sprinter,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -721,20 +681,20 @@
 /obj/machinery/bodyscanner{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/ert/med_surg)
 "gh" = (
 /obj/machinery/mech_recharger,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/mecha/combat/gygax/serenity,
 /obj/effect/floor_decal/industrial/outline,
 /obj/machinery/button/remote/blast_door{
-	description_fluff = "\(OOC) DO NOT TOUCH THIS BUTTON WITHOUT THE EXPLICIT PERMISSION OF AN ADMINISTRATOR.";
+	description_fluff = "\\(OOC) DO NOT TOUCH THIS BUTTON WITHOUT THE EXPLICIT PERMISSION OF AN ADMINISTRATOR.";
 	dir = 4;
 	id = "NRV_MECHS";
 	name = "MECH BAY CONTROL";
@@ -749,7 +709,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
 "gn" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -799,7 +759,7 @@
 /area/ship/ert/armoury_st)
 "gy" = (
 /obj/structure/table/rack/steel,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse,
@@ -909,10 +869,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "hs" = (
-/obj/machinery/pointdefense_control{
-	id_tag = "vonbraun_pd"
-	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -921,7 +878,7 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -932,7 +889,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1009,18 +966,11 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
-	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/hangar)
-"hY" = (
-/obj/machinery/porta_turret/stationary/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/dock_star)
 "ia" = (
 /obj/structure/table/rack/steel,
 /obj/item/clothing/accessory/holster/leg,
@@ -1036,10 +986,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
-	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1196,7 +1143,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "kh" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1295,7 +1242,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/ert/atmos)
 "kL" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -1308,10 +1255,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/ship/ert/barracks)
-"kO" = (
-/obj/machinery/porta_turret/stationary/CIWS,
-/turf/simulated/floor/reinforced/airless,
 /area/ship/ert/barracks)
 "kP" = (
 /obj/machinery/atmospherics/pipe/tank/air{
@@ -1326,7 +1269,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/atmos)
 "kT" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1371,7 +1314,7 @@
 /area/ship/ert/hallways_aft)
 "lv" = (
 /obj/structure/closet/wardrobe/ert,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
+/obj/item/modular_computer/laptop,
 /obj/item/storage/box/survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
@@ -1587,14 +1530,14 @@
 /obj/fiftyspawner/durasteel,
 /obj/fiftyspawner/durasteel,
 /obj/fiftyspawner/durasteel,
-/obj/fiftyspawner/titanium_glass,
-/obj/fiftyspawner/titanium_glass,
-/obj/fiftyspawner/titanium_glass,
-/obj/fiftyspawner/titanium_glass,
-/obj/fiftyspawner/plastitanium_glass,
-/obj/fiftyspawner/plastitanium_glass,
-/obj/fiftyspawner/plastitanium_glass,
-/obj/fiftyspawner/plastitanium_glass,
+/obj/fiftyspawner/phoronglass,
+/obj/fiftyspawner/phoronglass,
+/obj/fiftyspawner/phoronglass,
+/obj/fiftyspawner/phoronglass,
+/obj/fiftyspawner/phoronrglass,
+/obj/fiftyspawner/phoronrglass,
+/obj/fiftyspawner/phoronrglass,
+/obj/fiftyspawner/phoronrglass,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
 "mN" = (
@@ -1679,7 +1622,7 @@
 /obj/structure/table/rack/steel,
 /obj/item/gun/energy/xray,
 /obj/item/gun/energy/xray,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
@@ -1868,7 +1811,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/mech_bay)
 "nX" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/engine{
@@ -1990,7 +1933,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2024,9 +1967,9 @@
 /obj/item/storage/backpack/ert/engineer,
 /obj/item/storage/backpack/ert/engineer,
 /obj/item/storage/backpack/ert/engineer,
-/obj/item/clothing/suit/space/void/responseteam/engineer,
-/obj/item/clothing/suit/space/void/responseteam/engineer,
-/obj/item/clothing/suit/space/void/responseteam/engineer,
+/obj/item/rig/ert/engineer,
+/obj/item/rig/ert/engineer,
+/obj/item/rig/ert/engineer,
 /obj/item/clothing/head/helmet/ert/engineer,
 /obj/item/clothing/head/helmet/ert/engineer,
 /obj/item/clothing/head/helmet/ert/engineer,
@@ -2069,10 +2012,10 @@
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/machinery/light/no_nightshift,
+/obj/item/rig/ert/medical,
+/obj/item/rig/ert/medical,
+/obj/item/rig/ert/medical,
+/obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/clothing/head/helmet/ert/medical,
 /obj/item/clothing/head/helmet/ert/medical,
@@ -2103,9 +2046,9 @@
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
-/obj/item/clothing/suit/space/void/responseteam/medical,
+/obj/item/rig/ert/medical,
+/obj/item/rig/ert/medical,
+/obj/item/rig/ert/medical,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/clothing/head/helmet/ert/medical,
 /obj/item/clothing/head/helmet/ert/medical,
@@ -2145,15 +2088,11 @@
 /area/ship/ert/med)
 "pt" = (
 /obj/structure/table/rack/steel,
-/obj/item/clothing/suit/space/void/responseteam/janitor,
-/obj/item/clothing/suit/space/void/responseteam/janitor,
-/obj/item/clothing/suit/space/void/responseteam/janitor,
-/obj/item/clothing/suit/space/void/responseteam/janitor,
 /obj/item/storage/belt/janitor,
 /obj/item/storage/belt/janitor,
 /obj/item/storage/belt/janitor,
 /obj/item/storage/belt/janitor,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "pv" = (
@@ -2208,7 +2147,7 @@
 /obj/item/lightreplacer,
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "pI" = (
@@ -2233,7 +2172,7 @@
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/mounted/taser,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -2349,7 +2288,7 @@
 "qz" = (
 /obj/mecha/working/ripley/firefighter,
 /obj/machinery/mech_recharger,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2359,7 +2298,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -2392,7 +2331,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "qF" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -2442,7 +2381,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
@@ -2458,7 +2397,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/dock_star)
 "ry" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2502,7 +2441,7 @@
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2553,10 +2492,10 @@
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/machinery/light/no_nightshift,
+/obj/item/rig/ert/security,
+/obj/item/rig/ert/security,
+/obj/item/rig/ert/security,
+/obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/clothing/head/helmet/ert/security,
 /obj/item/clothing/head/helmet/ert/security,
@@ -2592,11 +2531,11 @@
 /area/ship/ert/teleporter)
 "sz" = (
 /obj/structure/closet/wardrobe/ert,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
+/obj/item/modular_computer/laptop,
 /obj/item/storage/box/survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
 /turf/simulated/floor/tiled/techfloor,
@@ -2613,12 +2552,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
-"sB" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/hallways_aft)
 "sC" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -2666,7 +2599,7 @@
 /area/ship/ert/barracks)
 "sS" = (
 /obj/machinery/shieldwallgen,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -2725,7 +2658,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2784,14 +2717,14 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/ert_ship_boat)
 "tW" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -2812,7 +2745,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "tZ" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -2906,7 +2839,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2935,7 +2868,7 @@
 /obj/machinery/sleeper{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -2981,7 +2914,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3005,7 +2938,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways_aft)
 "vK" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -3058,7 +2991,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/ert/teleporter)
 "wo" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/teleport/hub,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techmaint,
@@ -3123,7 +3056,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3145,12 +3078,12 @@
 	pixel_y = 23
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/gun/projectile/p92x/large/preban,
-/obj/item/gun/projectile/p92x/large/preban,
-/obj/item/gun/projectile/p92x/large/preban,
-/obj/item/gun/projectile/p92x/large/preban,
-/obj/item/gun/projectile/p92x/large/preban,
-/obj/item/gun/projectile/p92x/large/preban,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
+/obj/item/gun/projectile/p92x,
 /obj/item/ammo_magazine/m9mm/large/preban,
 /obj/item/ammo_magazine/m9mm/large/preban,
 /obj/item/ammo_magazine/m9mm/large/preban,
@@ -3182,7 +3115,7 @@
 /obj/structure/table/rack/steel,
 /obj/item/storage/box/flashbangs,
 /obj/item/storage/box/flashbangs,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -3217,7 +3150,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "xx" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/hallways_aft)
 "xz" = (
@@ -3236,12 +3169,12 @@
 /area/ship/ert/med)
 "xA" = (
 /obj/structure/table/rack/steel,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
-/obj/item/clothing/shoes/magboots/adv,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
+/obj/item/clothing/shoes/magboots/advanced,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
@@ -3303,7 +3236,7 @@
 "yf" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/space_heater,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3413,7 +3346,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
 "yD" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/structure/sign/vacuum{
@@ -3437,7 +3370,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/chemical_dispenser/biochemistry/full,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/med)
 "yR" = (
@@ -3512,7 +3445,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "zk" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
@@ -3601,7 +3534,7 @@
 	id_tag = "von_braun_master";
 	pixel_y = -22
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "Ah" = (
@@ -3614,7 +3547,6 @@
 /obj/structure/table/woodentable,
 /obj/item/implantpad,
 /obj/item/implanter,
-/obj/item/storage/box/admints,
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
 "Ai" = (
@@ -3740,7 +3672,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3768,7 +3700,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3865,10 +3797,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_st)
-"BI" = (
-/obj/machinery/porta_turret/stationary/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/engineering)
 "BU" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -3928,16 +3856,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/med)
-"Cr" = (
-/obj/machinery/porta_turret/stationary/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/med_surg)
 "Cx" = (
 /turf/simulated/wall/shull,
 /area/ship/ert/mech_bay)
 "CH" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/structure/fans/hardlight,
+/obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
 	id = "Von_Braun_Hangar";
 	name = "Hangar Blast Door"
@@ -3994,7 +3918,7 @@
 /area/ship/ert/atmos)
 "CZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
@@ -4040,10 +3964,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/atmos)
-"Do" = (
-/obj/machinery/porta_turret/stationary/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/engine)
 "Dt" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -4152,9 +4072,9 @@
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
-/obj/item/clothing/suit/space/void/responseteam/security,
+/obj/item/rig/ert/security,
+/obj/item/rig/ert/security,
+/obj/item/rig/ert/security,
 /obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
@@ -4169,7 +4089,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "Ed" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/yellow{
@@ -4190,7 +4110,7 @@
 	dir = 8
 	},
 /obj/machinery/portable_atmospherics/powered/pump/filled,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -4266,7 +4186,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -4275,7 +4195,7 @@
 /obj/item/modular_computer/console/preset/ert{
 	dir = 4
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4284,7 +4204,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4307,13 +4227,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/med)
 "Fd" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/med)
 "Ff" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/structure/sign/vacuum{
 	pixel_y = -32
 	},
@@ -4397,7 +4317,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4409,13 +4329,13 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways)
 "FO" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/dock_star)
 "FP" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/med_surg)
 "FQ" = (
@@ -4520,11 +4440,11 @@
 /area/ship/ert/hallways_aft)
 "Gw" = (
 /obj/structure/closet/wardrobe/ert,
-/obj/item/modular_computer/tablet/preset/custom_loadout/elite,
+/obj/item/modular_computer/laptop,
 /obj/item/storage/box/survival/comp{
 	starts_with = list(/obj/item/tool/prybar/red,/obj/item/clothing/glasses/goggles,/obj/item/reagent_containers/hypospray/autoinjector,/obj/item/stack/medical/bruise_pack,/obj/item/flashlight/glowstick,/obj/item/reagent_containers/food/snacks/candy/proteinbar,/obj/item/clothing/mask/breath,/obj/item/tank/emergency/oxygen/engi)
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -4540,10 +4460,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
-"GJ" = (
-/obj/machinery/porta_turret/stationary/CIWS,
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/eng_storage)
 "GK" = (
 /obj/structure/closet/crate{
 	dir = 1
@@ -4604,7 +4520,7 @@
 /area/ship/ert/hangar)
 "GZ" = (
 /obj/structure/bed/chair/bay/shuttle,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4680,7 +4596,7 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/fitnessflask/glucose,
 /obj/item/storage/pill_bottle/iron,
 /obj/item/storage/pill_bottle/iron,
-/obj/item/storage/pill_bottle/sleevingcure/full,
+/obj/item/storage/pill_bottle,
 /obj/item/storage/box/syringes,
 /obj/item/storage/box/syringes{
 	pixel_x = 2;
@@ -4747,7 +4663,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/bridge)
 "Ia" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -4902,7 +4818,7 @@
 	},
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/o2,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4929,7 +4845,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hallways)
 "Jg" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -4978,9 +4894,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/hallways)
 "Jx" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "NRB Robineau";
-	tele_network = "centcom"
+	!INVALID_VAR! = "centcom"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/ert_ship_boat)
@@ -5032,7 +4948,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/ert_ship_boat)
 "JW" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/unary/engine{
 	dir = 4
 	},
@@ -5066,7 +4982,7 @@
 /area/ship/ert/engine)
 "JZ" = (
 /obj/structure/table/rack/steel,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/alarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
@@ -5106,12 +5022,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/teleporter)
 "Kk" = (
-/obj/effect/landmark/late_antag/ert,
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "Kq" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/machinery/atmospherics/portables_connector/fuel{
@@ -5126,7 +5041,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
 "Kr" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/yellow{
@@ -5225,7 +5140,7 @@
 /area/ship/ert/bridge)
 "KO" = (
 /obj/machinery/vending/tool,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5261,7 +5176,7 @@
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
 /obj/item/grenade/chem_grenade/metalfoam,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
 "KW" = (
@@ -5282,10 +5197,10 @@
 /area/ship/ert/bridge)
 "Lg" = (
 /obj/structure/table/rack/steel,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/eng_storage)
@@ -5321,12 +5236,12 @@
 "Lq" = (
 /obj/structure/table/rack/steel,
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "LA" = (
@@ -5361,7 +5276,7 @@
 /area/ship/ert/med_surg)
 "LC" = (
 /obj/structure/table/rack/steel,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -5402,7 +5317,7 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/button/remote/blast_door{
-	description_fluff = "\(OOC) DO NOT TOUCH THIS BUTTON WITHOUT THE EXPLICIT PERMISSION OF AN ADMINISTRATOR.";
+	description_fluff = "\\(OOC) DO NOT TOUCH THIS BUTTON WITHOUT THE EXPLICIT PERMISSION OF AN ADMINISTRATOR.";
 	dir = 1;
 	id = "NRV_DELTA";
 	name = "DELTA ACCESS CONTROL";
@@ -5466,9 +5381,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "Mv" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "NRV Von Braun Teleporter Room";
-	tele_network = "centcom"
+	!INVALID_VAR! = "centcom"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/teleporter)
@@ -5610,17 +5525,8 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/ert_ship_boat)
-"Nk" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
-	},
-/obj/machinery/light/no_nightshift{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/engine)
 "Np" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5649,7 +5555,7 @@
 "NI" = (
 /obj/structure/table/rack,
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid,
-/obj/item/storage/belt/explorer/pathfinder{
+/obj/item/storage/belt/security/tactical{
 	name = "ERT Commander's belt"
 	},
 /turf/simulated/floor/wood,
@@ -5669,7 +5575,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engine)
 "NR" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -5815,7 +5721,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_dl)
 "Oq" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5970,7 +5876,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/shield_generator/charged,
+/obj/machinery/shield_gen,
 /obj/structure/cable/yellow{
 	d2 = 8;
 	icon_state = "0-8"
@@ -6012,7 +5918,7 @@
 	color = "#0000FF"
 	},
 /obj/effect/floor_decal/corner/white,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6145,13 +6051,13 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "Qh" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -6265,7 +6171,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/ert_ship_boat)
 "Rd" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless,
@@ -6420,7 +6326,7 @@
 /turf/simulated/floor/plating,
 /area/ship/ert/med)
 "Sr" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /turf/simulated/floor/reinforced/airless,
 /area/ship/ert/barracks)
 "St" = (
@@ -6501,7 +6407,7 @@
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
 "SE" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6755,9 +6661,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
 "VC" = (
-/obj/machinery/power/port_gen/pacman/super/potato,
+/obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable/green,
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/effect/decal/cleanable/greenglow,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
@@ -6818,7 +6724,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/atmos)
 "Wj" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 8
 	},
 /obj/structure/cable/yellow{
@@ -6830,7 +6736,7 @@
 /area/ship/ert/teleporter)
 "Wl" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 1
 	},
 /obj/item/defib_kit/compact/combat/loaded,
@@ -6887,12 +6793,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/hangar)
-"WF" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/med)
 "WH" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
@@ -7070,7 +6970,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/teleporter)
 "Yr" = (
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7132,7 +7032,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/light/no_nightshift{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7186,7 +7086,7 @@
 /obj/item/roller/adv{
 	pixel_y = 12
 	},
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/med)
@@ -7200,12 +7100,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
-"ZL" = (
-/obj/machinery/power/pointdefense{
-	id_tag = "vonbraun_pd"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/ship/ert/engine)
 "ZM" = (
 /turf/simulated/wall/rshull,
 /area/ship/ert/bridge)
@@ -7221,7 +7115,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/ert/med)
 "ZU" = (
-/obj/machinery/light/no_nightshift,
+/obj/machinery/light,
 /obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
@@ -12029,7 +11923,7 @@ yz
 yz
 yz
 yz
-Nk
+kL
 yz
 yz
 yz
@@ -12167,7 +12061,7 @@ yz
 yz
 yz
 yz
-Do
+lZ
 yz
 yz
 yz
@@ -12175,7 +12069,7 @@ Hf
 yz
 yz
 yz
-Do
+lZ
 yz
 yz
 yz
@@ -12304,7 +12198,7 @@ yz
 yz
 yz
 lZ
-ZL
+lZ
 kL
 yz
 yz
@@ -12322,7 +12216,7 @@ yz
 yz
 yz
 kL
-ZL
+lZ
 lZ
 yz
 yz
@@ -12587,7 +12481,7 @@ yz
 yz
 yz
 yz
-Do
+lZ
 Hf
 Hf
 uh
@@ -12607,7 +12501,7 @@ et
 tL
 Hf
 Hf
-Do
+lZ
 yz
 yz
 yz
@@ -13155,7 +13049,7 @@ yz
 yz
 yz
 yz
-ZL
+lZ
 Hf
 Hf
 vd
@@ -13175,7 +13069,7 @@ Hf
 Hf
 Hf
 Hf
-ZL
+lZ
 yz
 yz
 yz
@@ -13864,7 +13758,7 @@ yz
 yz
 yz
 yz
-bW
+bO
 kJ
 pV
 kY
@@ -13886,7 +13780,7 @@ JG
 VC
 XW
 XW
-BI
+YR
 yz
 yz
 yz
@@ -14573,7 +14467,7 @@ yz
 yz
 yz
 yz
-sB
+Ib
 DS
 cS
 rM
@@ -14597,7 +14491,7 @@ lu
 rM
 cS
 DS
-sB
+Ib
 yz
 yz
 yz
@@ -15140,7 +15034,7 @@ yz
 yz
 yz
 yz
-ad
+HE
 JB
 cW
 dX
@@ -15166,7 +15060,7 @@ uJ
 JJ
 fk
 Sz
-hY
+nC
 yz
 yz
 yz
@@ -15850,7 +15744,7 @@ yz
 yz
 yz
 yz
-kO
+Ye
 Zo
 Bo
 ia
@@ -15876,7 +15770,7 @@ Br
 PS
 zc
 XG
-GJ
+Ci
 yz
 yz
 yz
@@ -16134,7 +16028,7 @@ yz
 yz
 yz
 yz
-ab
+Ye
 Zo
 Bo
 ef
@@ -16160,7 +16054,7 @@ sW
 PS
 zc
 XG
-aV
+Ci
 yz
 yz
 yz
@@ -17128,7 +17022,7 @@ yz
 yz
 yz
 yz
-ab
+Ye
 Zo
 Gw
 Kk
@@ -17154,7 +17048,7 @@ eI
 Zv
 ZU
 XG
-aV
+Ci
 yz
 yz
 yz
@@ -17412,7 +17306,7 @@ yz
 yz
 yz
 yz
-kO
+Ye
 Zo
 Bo
 Bo
@@ -17438,7 +17332,7 @@ pz
 KI
 KI
 ZT
-eD
+TU
 yz
 yz
 yz
@@ -17695,7 +17589,7 @@ yz
 yz
 yz
 yz
-ab
+Ye
 Zo
 an
 WH
@@ -17723,7 +17617,7 @@ Pq
 Pq
 ZF
 ZT
-WF
+TU
 yz
 yz
 yz
@@ -18405,7 +18299,7 @@ yz
 yz
 yz
 yz
-ab
+Ye
 Zo
 bI
 WH
@@ -18433,7 +18327,7 @@ Pq
 Pq
 yJ
 ZT
-WF
+TU
 yz
 yz
 yz
@@ -18690,7 +18584,7 @@ yz
 yz
 yz
 yz
-kO
+Ye
 Zo
 Bo
 Bo
@@ -18716,7 +18610,7 @@ VJ
 KI
 KI
 ZT
-eD
+TU
 yz
 yz
 yz
@@ -19542,7 +19436,7 @@ yz
 yz
 yz
 yz
-ag
+ah
 bM
 Cx
 fx
@@ -19568,7 +19462,7 @@ ij
 hv
 dq
 MZ
-aC
+ci
 yz
 yz
 yz
@@ -19968,7 +19862,7 @@ yz
 yz
 yz
 yz
-ai
+ah
 bM
 Cx
 fU
@@ -19994,7 +19888,7 @@ LJ
 hS
 dq
 MZ
-Cr
+ci
 yz
 yz
 yz
@@ -20820,7 +20714,7 @@ yz
 yz
 yz
 yz
-ai
+ah
 bM
 bM
 gF
@@ -20846,7 +20740,7 @@ CP
 wZ
 dq
 MZ
-Cr
+ci
 yz
 yz
 yz
@@ -21246,7 +21140,7 @@ yz
 yz
 yz
 yz
-ag
+ah
 bM
 bM
 hk
@@ -21272,7 +21166,7 @@ LJ
 vb
 dq
 MZ
-aC
+ci
 yz
 yz
 yz
@@ -21531,7 +21425,7 @@ yz
 yz
 yz
 yz
-ai
+ah
 bM
 bM
 kn
@@ -21555,7 +21449,7 @@ sT
 sT
 MZ
 MZ
-Cr
+ci
 yz
 yz
 yz
@@ -21817,11 +21711,11 @@ yz
 yz
 yz
 yz
-ag
+ah
 bM
 bM
 bM
-ai
+ah
 yz
 yz
 yz
@@ -21833,11 +21727,11 @@ yz
 yz
 yz
 yz
-Cr
+ci
 MZ
 MZ
 MZ
-aC
+ci
 yz
 yz
 yz
@@ -21960,7 +21854,7 @@ yz
 yz
 yz
 yz
-ai
+ah
 bM
 bM
 tZ
@@ -21978,7 +21872,7 @@ yz
 FP
 MZ
 MZ
-Cr
+ci
 yz
 yz
 yz
@@ -22246,7 +22140,7 @@ yz
 yz
 yz
 yz
-ag
+ah
 yz
 yz
 yz
@@ -22260,7 +22154,7 @@ yz
 yz
 yz
 yz
-aC
+ci
 yz
 yz
 yz

@@ -321,12 +321,6 @@
 	dir = 5
 	},
 /area/wizard_station)
-"aM" = (
-/obj/effect/landmark/late_antag/wizard,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/wizard_station)
 "aN" = (
 /obj/item/reagent_containers/food/snacks/cheesewedge,
 /turf/unsimulated/floor{
@@ -1123,12 +1117,6 @@
 	icon_state = "dark"
 	},
 /area/wizard_station)
-"cE" = (
-/obj/effect/landmark/late_antag/technomancer,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/wizard_station)
 
 (1,1,1) = {"
 aa
@@ -1746,7 +1734,7 @@ aa
 ac
 al
 ar
-aM
+ay
 ay
 ay
 ay
@@ -1812,7 +1800,7 @@ ab
 at
 ay
 aF
-cE
+ay
 aT
 ay
 aE

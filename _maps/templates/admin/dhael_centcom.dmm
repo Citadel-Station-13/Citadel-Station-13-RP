@@ -161,11 +161,11 @@
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -447,12 +447,12 @@
 /area/centcom/specops)
 "bg" = (
 /obj/structure/table/rack,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
-/obj/item/taperoll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
+/obj/item/barrier_tape_roll/police,
 /obj/item/flash,
 /obj/item/flash,
 /obj/item/flash,
@@ -1427,12 +1427,12 @@
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
-/obj/item/taperoll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
+/obj/item/barrier_tape_roll/engineering,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2248,7 +2248,7 @@
 	},
 /area/centcom/control)
 "ey" = (
-/obj/structure/device/piano{
+/obj/structure/musician/piano{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/yellow/diagonal,
@@ -3125,7 +3125,7 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword/red,
+/obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -3176,7 +3176,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword/green,
+/obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4007,11 +4007,11 @@
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
-/obj/item/melee/energy/sword/blue,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
+/obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -4413,7 +4413,7 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/clotting,
 /obj/item/storage/firstaid/bonemed,
-/obj/item/storage/pill_bottle/sleevingcure/full,
+/obj/item/storage/pill_bottle,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -16232,9 +16232,9 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "ZN" = (
-/obj/item/perfect_tele_beacon/stationary{
+/obj/item/perfect_tele_beacon{
 	tele_name = "CentCom";
-	tele_network = "centcom"
+	!INVALID_VAR! = "centcom"
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"

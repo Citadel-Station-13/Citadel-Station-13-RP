@@ -77,7 +77,7 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword/red,
+/obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -128,7 +128,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/melee/baton/loaded,
-/obj/item/melee/energy/sword/green,
+/obj/item/melee/energy/sword,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
