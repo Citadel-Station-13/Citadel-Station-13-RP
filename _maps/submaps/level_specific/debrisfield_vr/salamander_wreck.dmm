@@ -43,8 +43,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_head)
 "bu" = (
@@ -80,8 +79,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_galley)
 "bK" = (
@@ -106,8 +104,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_head)
 "bP" = (
@@ -123,8 +120,7 @@
 	pixel_y = 23
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_head)
 "bY" = (
@@ -172,8 +168,7 @@
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_head)
 "cC" = (
@@ -185,8 +180,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_head)
 "cX" = (
@@ -201,8 +195,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "dm" = (
@@ -239,8 +232,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_head)
 "dT" = (
@@ -280,8 +272,7 @@
 "eG" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "eJ" = (
@@ -348,8 +339,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_engineering)
 "fG" = (
@@ -370,8 +360,7 @@
 /obj/structure/railing/grey,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "fR" = (
@@ -383,8 +372,7 @@
 	},
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "fX" = (
@@ -398,8 +386,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "gl" = (
@@ -415,8 +402,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "gv" = (
@@ -452,8 +438,7 @@
 "gC" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "gD" = (
@@ -581,8 +566,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_engineering)
 "is" = (
@@ -688,8 +672,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "jT" = (
@@ -761,8 +744,7 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_engineering)
 "kU" = (
@@ -774,8 +756,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "kZ" = (
@@ -790,8 +771,7 @@
 	},
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "lc" = (
@@ -803,8 +783,7 @@
 	},
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "ld" = (
@@ -855,8 +834,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "lt" = (
@@ -901,16 +879,14 @@
 /obj/item/tool/crowbar/red,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_engineering)
 "ma" = (
 /obj/structure/cable,
 /obj/structure/frame,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_engineering)
 "mg" = (
@@ -944,8 +920,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "mJ" = (
@@ -958,8 +933,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "mO" = (
@@ -969,8 +943,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "mR" = (
@@ -979,8 +952,7 @@
 "mY" = (
 /obj/machinery/computer/ship/sensors,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "nB" = (
@@ -996,8 +968,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "nE" = (
@@ -1044,8 +1015,7 @@
 /obj/item/reagent_containers/food/snacks,
 /obj/item/reagent_containers/food/snacks,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_galley)
 "ot" = (
@@ -1056,8 +1026,7 @@
 /area/shuttle/salamander_wreck_cockpit)
 "oC" = (
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "oF" = (
@@ -1068,8 +1037,7 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "oI" = (
@@ -1148,8 +1116,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "qn" = (
@@ -1175,8 +1142,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "qu" = (
@@ -1187,8 +1153,7 @@
 	},
 /obj/structure/closet/walllocker_double/kitchen/south,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_galley)
 "qx" = (
@@ -1290,8 +1255,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_galley)
 "vI" = (
@@ -1355,8 +1319,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_engineering)
 "zQ" = (
@@ -1364,8 +1327,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "AD" = (
@@ -1394,8 +1356,7 @@
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "Bf" = (
@@ -1407,8 +1368,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "BE" = (
@@ -1535,8 +1495,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "IQ" = (
@@ -1562,8 +1521,7 @@
 	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "Kn" = (
@@ -1603,16 +1561,14 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "Lf" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "LJ" = (
@@ -1632,8 +1588,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_galley)
 "NR" = (
@@ -1669,8 +1624,7 @@
 	},
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "OU" = (
@@ -1744,8 +1698,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "RO" = (
@@ -1756,8 +1709,7 @@
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "RU" = (
@@ -1765,8 +1717,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_galley)
 "Sb" = (
@@ -1797,8 +1748,7 @@
 /obj/machinery/light,
 /obj/item/paper/unity_notice,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_q2)
 "Td" = (
@@ -1819,8 +1769,7 @@
 	},
 /obj/item/smes_coil,
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_engineering)
 "Tg" = (
@@ -1843,8 +1792,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "TG" = (
@@ -1881,8 +1829,7 @@
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_engineering)
 "Vs" = (
@@ -1965,8 +1912,7 @@
 	name = "Voidsuit Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "Xn" = (
@@ -1979,8 +1925,7 @@
 	name = "Storage Locker"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 "Xr" = (
@@ -2005,8 +1950,7 @@
 	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck_engineering)
 "XJ" = (
@@ -2042,8 +1986,7 @@
 	start_charge = 0
 	},
 /turf/simulated/floor/tiled/techfloor{
-	!INVALID_VAR! = 0;
-	!INVALID_VAR! = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	},
 /area/shuttle/salamander_wreck)
 
