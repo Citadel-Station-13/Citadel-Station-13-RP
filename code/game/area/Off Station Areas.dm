@@ -871,7 +871,6 @@
 	icon_state = "bluenew"
 
 //Jungle Areas
-
 /area/jungle/temple_one
 	icon_state = "red"
 /area/jungle/temple_two
@@ -896,3 +895,13 @@
 	icon_state = "purple"
 /area/jungle/crash_ship_clean
 	icon_state = "away"
+
+//Challenge
+/area/awaymission/challenge/start
+	icon_state = "red"
+/area/awaymission/challenge/laser_retro
+	icon_state = "yellow"
+/area/awaymission/challenge/main
+	icon_state = "green"
+/area/awaymission/challenge/end
+	icon_state = "blue"
