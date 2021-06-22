@@ -296,7 +296,7 @@
 	icon_state = "0-8"
 	},
 /obj/item/frame/apc,
-/obj/item/trash/material/circuit,
+/obj/item/integrated_circuit,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_lc_wreck)
 "sL" = (

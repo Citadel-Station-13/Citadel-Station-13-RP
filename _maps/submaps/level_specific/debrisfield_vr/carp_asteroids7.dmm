@@ -15,7 +15,7 @@
 /turf/simulated/mineral/vacuum,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "f" = (
-/obj/tether_away_spawner/debrisfield_vr/carp/hard,
+/obj/tether_away_spawner/debrisfield/carp/hard,
 /turf/simulated/mineral/floor/vacuum,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 

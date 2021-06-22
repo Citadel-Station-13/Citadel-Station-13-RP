@@ -8,12 +8,6 @@
 "c" = (
 /turf/simulated/floor/hull/airless,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
-"d" = (
-/obj/machinery/power/pointdefense{
-	dir = 4
-	},
-/turf/simulated/floor/hull/airless,
-/area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
 /obj/structure/lattice,
 /turf/space,
@@ -64,7 +58,7 @@ a
 a
 c
 c
-d
+c
 c
 c
 c

@@ -6,7 +6,7 @@
 /turf/simulated/mineral/vacuum,
 /area/space)
 "c" = (
-/mob/living/simple_mob/mechanical/mining_drone{
+/mob/living/simple_mob/mechanical/corrupt_maint_drone{
 	faction = "poi_mining_drones"
 	},
 /turf/simulated/floor/airless,
@@ -23,9 +23,9 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/smes/batteryrack/mapped{
+/obj/machinery/power/smes/batteryrack{
 	input_attempt = 1;
-	mode = 3;
+	!INVALID_VAR! = 3;
 	output_attempt = 1
 	},
 /turf/simulated/floor/tiled/airless,

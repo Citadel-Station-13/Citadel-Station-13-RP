@@ -6,8 +6,8 @@
 /turf/simulated/wall/rthull,
 /area/submap/debrisfield_vr/mining_drone_ship)
 "ac" = (
-/obj/structure/window/plastitanium/full,
-/obj/structure/window/plastitanium{
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
 	dir = 1
 	},
 /turf/simulated/floor/airless,
@@ -524,7 +524,7 @@
 /obj/item/ore/diamond,
 /obj/item/ore/phoron,
 /obj/item/ore/phoron,
-/obj/machinery/light/poi,
+/obj/machinery/light_construct,
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_drone_ship)
 "aW" = (
@@ -573,7 +573,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/light/small/poi{
+/obj/item/computer_hardware/processor_unit/small{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
