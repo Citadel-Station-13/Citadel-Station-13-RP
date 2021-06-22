@@ -212,6 +212,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/awaymission/labs/cave)
 "aS" = (
+/turf/space,
 /area/awaymission/labs/cave)
 "aV" = (
 /obj/structure/ore_box,
@@ -460,8 +461,7 @@
 	pixel_x = 11
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	
+	dir = 8
 	},
 /obj/effect/alien/weeds/node,
 /turf/simulated/floor{
@@ -508,8 +508,7 @@
 "cc" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	frequency = 1379;
-	id_tag = "medsci_pump";
-	
+	id_tag = "medsci_pump"
 	},
 /obj/effect/alien/weeds/node,
 /turf/simulated/floor{
@@ -616,8 +615,7 @@
 /area/awaymission/labs/researchdivision)
 "ct" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	
+	dir = 1
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -937,8 +935,7 @@
 "dj" = (
 /obj/item/bedsheet,
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -1183,8 +1180,7 @@
 "dP" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	
+	dir = 8
 	},
 /obj/effect/alien/weeds/node,
 /turf/simulated/floor{
@@ -1660,8 +1656,7 @@
 "fh" = (
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -1925,8 +1920,7 @@
 /area/awaymission/desert)
 "fO" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -2129,8 +2123,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
-	id_tag = "mining_maineast_pump";
-	
+	id_tag = "mining_maineast_pump"
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -2392,6 +2385,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/militarydivision)
 "gU" = (
+/turf/space,
 /area/awaymission/labs/militarydivision)
 "gW" = (
 /obj/structure/sink{
@@ -2400,8 +2394,7 @@
 	pixel_y = 2
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/simulated/floor{
 	dir = 4;
@@ -2710,8 +2703,7 @@
 	pixel_y = 2
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/simulated/floor{
 	dir = 4;
@@ -3045,8 +3037,7 @@
 /area/awaymission/labs/militarydivision)
 "it" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/militarydivision)
@@ -3174,8 +3165,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
-	id_tag = "mining_maineast_pump";
-	
+	id_tag = "mining_maineast_pump"
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -3598,7 +3588,7 @@
 /area/awaymission/labs/militarydivision)
 "jQ" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/gun/projectile/silenced/sc_silenced{
+/obj/item/gun/projectile/silenced{
 	desc = "A sidearm commonly favored by terrestrial security forces.";
 	icon_state = "g115 Pistol";
 	name = "Pistol";
@@ -3615,6 +3605,7 @@
 /turf/simulated/floor,
 /area/awaymission/labs/militarydivision)
 "jT" = (
+/turf/space,
 /area/awaymission/labs/researchdivision)
 "jW" = (
 /obj/machinery/door/airlock/glass_research{
@@ -3640,8 +3631,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/simulated/floor{
 	icon_state = "carpet"
@@ -3814,8 +3804,7 @@
 /area/awaymission/labs/solars)
 "kz" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -4010,8 +3999,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
-	id_tag = "engineering_aux_pump";
-	
+	id_tag = "engineering_aux_pump"
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -4400,8 +4388,7 @@
 "lG" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	frequency = 1379;
-	id_tag = "medsci_pump";
-	
+	id_tag = "medsci_pump"
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -4839,6 +4826,7 @@
 /area/awaymission/labs/cargo)
 "mF" = (
 /obj/effect/decal/mecha_wreckage/ripley,
+/turf/space,
 /area/awaymission/labs/cargo)
 "mG" = (
 /turf/simulated/floor/airless{
@@ -4848,8 +4836,7 @@
 "mH" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	frequency = 1379;
-	id_tag = "medsci_pump";
-	
+	id_tag = "medsci_pump"
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/cargo)
@@ -4987,8 +4974,7 @@
 /area/awaymission/labs/civilian)
 "mX" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -4996,8 +4982,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
-	id_tag = "mining_outpost_pump";
-	
+	id_tag = "mining_outpost_pump"
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -5053,8 +5038,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
-	id_tag = "engineering_aux_pump";
-	
+	id_tag = "engineering_aux_pump"
 	},
 /turf/simulated/floor{
 	dir = 5
@@ -5341,12 +5325,12 @@
 	},
 /area/awaymission/labs/cargo)
 "nX" = (
-/mob/living/bot/mulebot,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/mob/living/bot/mulebot,
 /turf/simulated/floor{
 	icon_state = "bot"
 	},
@@ -5763,8 +5747,7 @@
 /area/awaymission/labs/command)
 "oW" = (
 /obj/machinery/door/airlock/glass_command{
-	name = "Bridge";
-	
+	name = "Bridge"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -5822,8 +5805,7 @@
 /area/awaymission/labs/command)
 "pb" = (
 /obj/machinery/door/airlock/glass_command{
-	name = "Bridge";
-	
+	name = "Bridge"
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
@@ -6098,8 +6080,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
-	id_tag = "engineering_aux_pump";
-	
+	id_tag = "engineering_aux_pump"
 	},
 /turf/simulated/floor{
 	icon_state = "wood"
@@ -6284,8 +6265,7 @@
 "qr" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	frequency = 1379;
-	id_tag = "medsci_pump";
-	
+	id_tag = "medsci_pump"
 	},
 /turf/simulated/floor{
 	dir = 8
@@ -6536,8 +6516,7 @@
 /area/awaymission/labs/civilian)
 "re" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	
+	dir = 1
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
@@ -6556,15 +6535,13 @@
 "ri" = (
 /obj/machinery/door/airlock/vault{
 	icon_state = "door_locked";
-	locked = 1;
-	
+	locked = 1
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/command)
 "rj" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	
+	dir = 1
 	},
 /obj/effect/alien/weeds/node,
 /turf/simulated/floor{
@@ -6934,8 +6911,7 @@
 /area/awaymission/labs/civilian)
 "so" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/civilian)
@@ -7289,8 +7265,7 @@
 /obj/item/folder/white,
 /obj/item/clothing/accessory/stethoscope,
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	
+	dir = 1
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -7323,8 +7298,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
-	id_tag = "engineering_aux_pump";
-	
+	id_tag = "engineering_aux_pump"
 	},
 /turf/simulated/floor,
 /area/awaymission/labs/security)
@@ -7403,8 +7377,7 @@
 /area/awaymission/labs/medical)
 "tG" = (
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	
+	dir = 1
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -7454,8 +7427,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	frequency = 1379;
-	id_tag = "engineering_aux_pump";
-	
+	id_tag = "engineering_aux_pump"
 	},
 /turf/simulated/floor{
 	icon_state = "white"
@@ -7486,7 +7458,7 @@
 	},
 /area/awaymission/labs/security)
 "tS" = (
-/obj/item/gun/projectile/shotgun/pump/sc_pump,
+/obj/item/gun/projectile/shotgun/pump,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -7606,7 +7578,7 @@
 /area/awaymission/labs/security)
 "uk" = (
 /obj/item/ammo_magazine/clip/c45,
-/obj/item/gun/projectile/silenced/sc_silenced{
+/obj/item/gun/projectile/silenced{
 	desc = "A sidearm commonly favored by terrestrial security forces.";
 	icon_state = "g115 Pistol";
 	name = "Pistol";
@@ -7813,8 +7785,7 @@
 /obj/machinery/recharger,
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/simulated/floor{
 	dir = 1;
@@ -7843,6 +7814,7 @@
 /area/awaymission/labs/security)
 "uT" = (
 /obj/machinery/light,
+/turf/space,
 /area/awaymission/labs/security)
 
 (1,1,1) = {"

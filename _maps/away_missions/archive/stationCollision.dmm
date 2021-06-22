@@ -291,11 +291,6 @@
 /obj/structure/table/standard,
 /turf/simulated/shuttle/plating,
 /area/awaymission/syndishuttle)
-"bD" = (
-/obj/structure/table/standard,
-/obj/item/paper/sc_safehint_paper_shuttle,
-/turf/simulated/shuttle/plating,
-/area/awaymission/syndishuttle)
 "bF" = (
 /turf/simulated/floor/airless,
 /turf/simulated/shuttle/wall{
@@ -692,7 +687,7 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/head/helmet/swat,
 /obj/effect/decal/remains/human,
-/obj/item/gun/energy/laser/practice/sc_laser,
+/obj/item/gun/energy/laser/practice,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "dj" = (
@@ -703,7 +698,7 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/head/helmet/swat,
 /obj/effect/decal/remains/human,
-/obj/item/gun/energy/laser/practice/sc_laser,
+/obj/item/gun/energy/laser/practice,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "dk" = (
@@ -868,7 +863,7 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/head/helmet/swat,
 /obj/effect/decal/remains/human,
-/obj/item/gun/energy/laser/practice/sc_laser,
+/obj/item/gun/energy/laser/practice,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "dK" = (
@@ -1351,7 +1346,7 @@
 	},
 /obj/item/clothing/shoes/syndigaloshes,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/gun/projectile/silenced/sc_silenced,
+/obj/item/gun/projectile/silenced,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "fH" = (
@@ -1496,7 +1491,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "gh" = (
-/obj/item/storage/secure/safe/sc_ssafe{
+/obj/structure/closet/crate/mimic/closet/safe{
 	pixel_x = 4;
 	pixel_y = -26
 	},
@@ -1508,7 +1503,7 @@
 /obj/item/clothing/under/rank/captain,
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/gun/energy/laser/retro/sc_retro,
+/obj/item/gun/energy/retro,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "gk" = (
@@ -1679,7 +1674,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/gun/projectile/shotgun/pump/sc_pump,
+/obj/item/gun/projectile/shotgun/pump,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gJ" = (
@@ -1722,7 +1717,6 @@
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
 	name = "Syndicate agent remains"
 	},
-/obj/effect/landmark/sc_bible_spawner,
 /turf/simulated/floor/carpet,
 /area/awaymission/midblock)
 "gQ" = (
@@ -1922,8 +1916,7 @@
 	dir = 8
 	},
 /obj/item/clothing/suit/space/syndicate,
-/obj/item/paper/sc_safehint_paper_prison,
-/obj/item/gun/projectile/shotgun/pump/sc_pump,
+/obj/item/gun/projectile/shotgun/pump,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "hA" = (
@@ -2057,18 +2050,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
-"hV" = (
-/obj/effect/decal/remains/human{
-	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
-	name = "Syndicate agent remains"
-	},
-/obj/item/ammo_casing/a10mm,
-/obj/item/paper/sc_safehint_paper_caf,
-/obj/item/clothing/under/syndicate,
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/item/gun/projectile/automatic/c20r/sc_c20r,
-/turf/simulated/floor,
-/area/awaymission/midblock)
 "hW" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/airless,
@@ -2139,8 +2120,7 @@
 /area/awaymission/arrivalblock)
 "if" = (
 /obj/machinery/door/airlock/glass_security{
-	name = "Glass Airlock";
-	
+	name = "Glass Airlock"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -2201,7 +2181,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/item/gun/projectile/automatic/c20r/sc_c20r,
+/obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "im" = (
@@ -2268,7 +2248,7 @@
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/gun/projectile/automatic/c20r/sc_c20r,
+/obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "iC" = (
@@ -2289,7 +2269,7 @@
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/item/gun/projectile/automatic/c20r/sc_c20r,
+/obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "iE" = (
@@ -2555,8 +2535,7 @@
 "jw" = (
 /obj/machinery/door/airlock/glass_medical{
 	id_tag = null;
-	name = "Glass Airlock";
-	
+	name = "Glass Airlock"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
@@ -2939,7 +2918,6 @@
 	desc = "This guy seemed to have died in terrible way! Half his remains are dust.";
 	name = "Syndicate agent remains"
 	},
-/obj/item/paper/sc_safehint_paper_hydro,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "kO" = (
@@ -4290,7 +4268,7 @@ aC
 bl
 bf
 bf
-bD
+bC
 bf
 aC
 aD
@@ -6093,7 +6071,7 @@ gl
 gl
 hn
 gl
-hV
+iD
 ik
 gl
 fX

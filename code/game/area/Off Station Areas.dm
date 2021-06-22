@@ -933,3 +933,51 @@
 	icon_state = "blue"
 /area/awaymission/labyrinth/cave
 	icon_state = "red"
+//Station Collison
+/area/awaymission/northblock
+	icon_state = "red"
+/area/awaymission/syndishuttle
+	icon_state = "yellow"
+/area/awaymission/research
+	icon_state = "green"
+/area/awaymission/midblock
+	icon_state = "blue"
+/area/awaymission/arrivalblock
+	icon_state = "purple"
+/area/awaymission/southblock
+	icon_state = "red"
+/area/awaymission/gateroom
+	icon_state = "yellow"
+//ZResearch
+/area/awaymission/labs/cave
+	icon_state = "red"
+/area/awaymission/labs/researchdivision
+	icon_state = "yellow"
+/area/awaymission/labs/gateway
+	icon_state = "green"
+/area/awaymission/labs/militarydivision
+	icon_state = "blue"
+/area/awaymission/labs/solars
+	icon_state = "purple"
+/area/awaymission/labs/command
+	icon_state = "red"
+/area/awaymission/labs/cargo
+	icon_state = "yellow"
+/area/awaymission/labs/civilian
+	icon_state = "green"
+/area/awaymission/labs/security
+	icon_state = "blue"
+/area/awaymission/labs/medical
+	icon_state = "purple"
+//Academy
+/area/awaymission/academy
+	icon_state = "red"
+/area/awaymission/academy/headmaster
+	icon_state = "yellow"
+/area/awaymission/academy/classrooms
+	icon_state = "green"
+/area/awaymission/academy/academyaft
+	icon_state = "blue"
+/area/awaymission/academy/academygate
+	icon_state = "purple"
+

@@ -1133,9 +1133,6 @@
 	dir = 10
 	},
 /area/awaymission/academy/classrooms)
-"el" = (
-/turf/simulated/floor,
-/area/awaymission/academy/classrooms)
 "em" = (
 /obj/machinery/vending/hydroseeds{
 	slogan_delay = 700
@@ -1461,9 +1458,6 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/awaymission/academy/classrooms)
-"fN" = (
-/turf/simulated/floor,
-/area/awaymission/academy/classrooms)
 "fO" = (
 /obj/structure/cable{
 	d2 = 2;
@@ -1665,7 +1659,7 @@
 /area/awaymission/academy/academyaft)
 "gB" = (
 /obj/structure/table/standard,
-/obj/item/gun/projectile/shotgun/pump/sc_pump,
+/obj/item/gun/projectile/shotgun/pump,
 /obj/item/paper{
 	info = "Grade: A+ Educator's Notes: Excellent form.";
 	name = "Summoning Midterm Exam"
@@ -2477,14 +2471,6 @@
 	},
 /area/awaymission/academy/academyaft)
 "iQ" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/space,
-/area/awaymission/academy/academyaft)
-"iR" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/space,
-/area/awaymission/academy/academyaft)
-"iS" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/space,
 /area/awaymission/academy/academyaft)
@@ -9501,7 +9487,7 @@ gV
 iD
 iE
 iI
-iR
+iQ
 aa
 aa
 aa
@@ -9631,7 +9617,7 @@ iB
 iE
 iE
 iI
-iR
+iQ
 aa
 aa
 aa
@@ -9761,7 +9747,7 @@ gV
 iE
 iE
 iI
-iS
+iQ
 aa
 aa
 aa
@@ -12338,7 +12324,7 @@ cW
 bT
 bT
 bC
-fN
+bx
 gg
 gg
 gv
@@ -12719,7 +12705,7 @@ bx
 dr
 bx
 dr
-el
+bx
 bC
 cZ
 cZ
@@ -12728,7 +12714,7 @@ fe
 cZ
 cZ
 bC
-fN
+bx
 gj
 gg
 gg
@@ -12849,7 +12835,7 @@ bx
 dT
 bx
 dT
-el
+bx
 bC
 cZ
 cZ
@@ -12858,7 +12844,7 @@ fe
 fn
 cZ
 bC
-fN
+bx
 gg
 gg
 gg
@@ -12979,7 +12965,7 @@ bx
 bx
 bx
 bx
-el
+bx
 bC
 eB
 eN
@@ -13109,7 +13095,7 @@ bx
 dr
 bx
 bx
-el
+bx
 bC
 eC
 cZ
@@ -13239,7 +13225,7 @@ bx
 dG
 bx
 dT
-el
+bx
 bC
 cZ
 cZ
@@ -13661,7 +13647,7 @@ RP
 iE
 iE
 iI
-iR
+iQ
 aa
 aa
 aa
@@ -13791,7 +13777,7 @@ gV
 iD
 iE
 iI
-iR
+iQ
 aa
 aa
 aa
@@ -13921,7 +13907,7 @@ gV
 iH
 iE
 iI
-iS
+iQ
 aa
 aa
 aa
