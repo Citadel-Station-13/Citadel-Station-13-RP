@@ -12,7 +12,7 @@
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "e" = (
-/obj/tether_away_spawner/debrisfield_vr/carp,
+/obj/tether_away_spawner/debrisfield/carp,
 /turf/template_noop,
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 

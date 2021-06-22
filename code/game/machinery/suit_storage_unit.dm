@@ -666,6 +666,36 @@
 	departments = list("Head of Security", "No Change")
 	species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
 
+/obj/machinery/suit_cycler/vintage
+	name = "Vintage Crew suit cycler"
+	model_text = "Vintage"
+	departments = list("Vintage Crew","No Change")
+	req_access = null
+
+/obj/machinery/suit_cycler/vintage/pilot
+	name = "Vintage Pilot suit cycler"
+	model_text = "Vintage Pilot"
+	departments = list("Vintage Pilot (Bubble Helm)","Vintage Pilot (Closed Helm)","No Change")
+
+/obj/machinery/suit_cycler/vintage/medsci
+	name = "Vintage MedSci suit cycler"
+	model_text = "Vintage MedSci"
+	departments = list("Vintage Medical (Bubble Helm)","Vintage Medical (Closed Helm)","Vintage Research (Bubble Helm)","Vintage Research (Closed Helm)","No Change")
+
+/obj/machinery/suit_cycler/vintage/rugged
+	name = "Vintage Ruggedized suit cycler"
+	model_text = "Vintage Ruggedized"
+	departments = list("Vintage Engineering","Vintage Marine","Vintage Officer","Vintage Mercenary","No Change")
+
+/obj/machinery/suit_cycler/vintage/omni
+	name = "Vintage Master suit cycler"
+	model_text = "Vintage Master"
+	departments = list("Vintage Crew","Vintage Engineering","Vintage Pilot (Bubble Helm)","Vintage Pilot (Closed Helm)","Vintage Medical (Bubble Helm)","Vintage Medical (Closed Helm)","Vintage Research (Bubble Helm)","Vintage Research (Closed Helm)","Vintage Marine","Vintage Officer","Vintage Mercenary","No Change")
+
+/obj/machinery/suit_cycler/vintage/Initialize()
+	species -= SPECIES_TESHARI
+	return ..()
+
 /obj/machinery/suit_cycler/attack_ai(mob/user as mob)
 	return attack_hand(user)
 

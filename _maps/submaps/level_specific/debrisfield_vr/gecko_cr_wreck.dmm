@@ -9,8 +9,8 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "aF" = (
@@ -147,8 +147,8 @@
 /obj/item/tank/oxygen/yellow,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "dS" = (
@@ -591,8 +591,8 @@
 "lw" = (
 /obj/machinery/suit_cycler/vintage/rugged,
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "lB" = (
@@ -696,8 +696,8 @@
 	pixel_y = -29
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_cockpit_wreck)
 "om" = (
@@ -716,8 +716,8 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "oI" = (
@@ -733,8 +733,8 @@
 	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "oL" = (
@@ -876,8 +876,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_cockpit_wreck)
 "rj" = (
@@ -1137,8 +1137,8 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "wG" = (
@@ -1201,8 +1201,8 @@
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "xU" = (
@@ -1602,8 +1602,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "FE" = (
@@ -1880,8 +1880,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_cockpit_wreck)
 "KA" = (
@@ -1970,8 +1970,8 @@
 	},
 /obj/item/frame/apc,
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "Mf" = (
@@ -2089,8 +2089,8 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "NR" = (
@@ -2295,8 +2295,8 @@
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "PJ" = (
@@ -2336,8 +2336,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "QC" = (
@@ -2435,8 +2435,8 @@
 	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_wreck)
 "RG" = (
@@ -2588,8 +2588,8 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "UY" = (
@@ -2706,8 +2706,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "Wr" = (
@@ -2802,8 +2802,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "Xs" = (
@@ -2812,8 +2812,8 @@
 	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "XJ" = (
@@ -2849,8 +2849,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_engineering_wreck)
 "Yj" = (
@@ -2864,8 +2864,8 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techfloor{
-	nitrogen = 0;
-	oxygen = 0
+	!INVALID_VAR! = 0;
+	!INVALID_VAR! = 0
 	},
 /area/shuttle/gecko_cr_cockpit_wreck)
 "Yx" = (

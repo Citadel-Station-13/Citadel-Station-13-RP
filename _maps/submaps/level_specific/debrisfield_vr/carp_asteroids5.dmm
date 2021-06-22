@@ -15,7 +15,7 @@
 /turf/simulated/mineral/vacuum,
 /area/submap/debrisfield_vr/misc_debris)
 "f" = (
-/obj/tether_away_spawner/debrisfield_vr/carp,
+/mob/living/simple_mob/animal/space/carp,
 /turf/simulated/mineral/floor/vacuum,
 /area/submap/debrisfield_vr/misc_debris)
 "g" = (

@@ -205,3 +205,7 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	dir = EAST
 /turf/simulated/sky/virgo3b/moving/west
 	dir = WEST
+
+/turf/simulated/floor/tiled/techmaint/airless
+	initial_gas_mix = GAS_STRING_VACUUM
+	temperature = TCMB
