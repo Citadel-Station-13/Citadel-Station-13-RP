@@ -25,7 +25,6 @@
 	},
 /obj/machinery/power/smes/batteryrack{
 	input_attempt = 1;
-	!INVALID_VAR! = 3;
 	output_attempt = 1
 	},
 /turf/simulated/floor/tiled/airless,
