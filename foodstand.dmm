@@ -1,0 +1,27 @@
+"a" = (/turf/template_noop,/area/debrisfield/unexplored)
+"b" = (/turf/simulated/mineral/vacuum,/area/debrisfield/explored)
+"c" = (/turf/simulated/mineral/floor/vacuum,/area/debrisfield/explored)
+"d" = (/turf/simulated/wall/wood,/area/debrisfield/explored)
+"e" = (/obj/structure/closet/secure_closet/freezer/meat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"f" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/condiment/coldsauce{pixel_x = 4; pixel_y = 16},/obj/item/reagent_containers/food/condiment/ketchup,/obj/item/reagent_containers/food/condiment/hotsauce{pixel_x = 8},/obj/item/reagent_containers/food/condiment/soysauce{pixel_x = -8},/turf/simulated/floor/airless,/area/debrisfield/explored)
+"g" = (/obj/structure/table/woodentable,/obj/machinery/microwave,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"h" = (/obj/structure/simple_door/wood,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"i" = (/turf/simulated/floor/airless,/area/debrisfield/explored)
+"j" = (/obj/structure/closet/crate/freezer,/obj/item/reagent_containers/food/snacks/taco,/obj/item/reagent_containers/food/snacks/taco,/obj/item/reagent_containers/food/snacks/taco,/obj/item/reagent_containers/food/snacks/hotdog,/obj/item/reagent_containers/food/snacks/hotdog,/obj/item/reagent_containers/food/snacks/cheeseburrito,/obj/item/reagent_containers/food/snacks/cheeseburrito,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"k" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/snacks/taco,/obj/item/reagent_containers/food/snacks/taco,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"l" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/snacks/taco,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"m" = (/obj/structure/table/woodentable,/obj/machinery/cash_register{dir = 1},/turf/simulated/floor/airless,/area/debrisfield/explored)
+
+(1,1,1) = {"
+aabbbbaaaaaaa
+abbbbbbccaaaa
+bbbbbcccccaaa
+bbbccccccccaa
+cbccdddddccaa
+ccccdefgdccca
+cccchiijdcccc
+acccdmlkdcccc
+accccccccccca
+aacccccccccaa
+aaaaacccccaaa
+"}

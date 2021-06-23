@@ -1,0 +1,139 @@
+"aa" = (/turf/template_noop,/area/debrisfield/explored)
+"ab" = (/turf/simulated/wall/r_wall,/area/debrisfield/explored)
+"ac" = (/turf/simulated/floor/airless,/area/debrisfield/explored)
+"ad" = (/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"ae" = (/obj/machinery/portable_atmospherics/hydroponics,/obj/effect/floor_decal/corner/green{dir = 9},/obj/effect/floor_decal/corner/green{dir = 6},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"af" = (/obj/machinery/botany/editor,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"ag" = (/obj/machinery/vending/hydronutrients,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"ah" = (/obj/machinery/seed_extractor,/obj/machinery/light/flicker{dir = 1},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"ai" = (/obj/machinery/seed_storage/xenobotany,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aj" = (/obj/machinery/botany/extractor,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"ak" = (/obj/item/seeds/killertomatoseed,/obj/effect/floor_decal/corner/green{dir = 9},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"al" = (/obj/structure/railing,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"am" = (/obj/structure/railing{dir = 4},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"an" = (/obj/structure/reagent_dispensers/watertank/high,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"ao" = (/obj/structure/railing{dir = 8},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"ap" = (/obj/structure/table/rack,/obj/item/shovel/spade,/obj/item/shovel/spade,/obj/item/material/minihoe,/obj/item/material/minihoe,/obj/item/material/knife/machete/hatchet,/obj/item/material/knife/machete/hatchet,/obj/item/reagent_containers/glass/bucket,/obj/item/reagent_containers/glass/bucket,/obj/item/analyzer/plant_analyzer,/obj/item/analyzer/plant_analyzer,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aq" = (/obj/structure/railing{dir = 1},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"ar" = (/mob/living/simple_mob/hostile/tomato/space,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"as" = (/obj/structure/table/rack,/obj/random/tool,/obj/random/tool,/obj/random/tool,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"at" = (/obj/machinery/door/airlock/science{req_one_access = list(0)},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"au" = (/obj/item/clothing/head/collectable/slime,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"av" = (/obj/structure/sign/hydro,/turf/simulated/wall,/area/debrisfield/explored)
+"aw" = (/obj/structure/closet/firecloset,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"ax" = (/obj/machinery/door/airlock/maintenance/rnd{name = "Research Airlock"; req_one_access = list(0)},/turf/simulated/floor/airless,/area/debrisfield/explored)
+"ay" = (/obj/structure/sign/xenobio,/turf/simulated/wall,/area/debrisfield/explored)
+"az" = (/obj/item/slime_scanner,/obj/item/slime_scanner,/obj/structure/table/reinforced,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aA" = (/obj/structure/table/reinforced,/obj/item/gun/energy/taser/xeno,/obj/item/melee/baton/slime/loaded,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aB" = (/obj/structure/table/reinforced,/obj/item/reagent_containers/chem_disp_cartridge/plantbgone,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aC" = (/obj/structure/table/reinforced,/obj/item/reagent_containers/food/snacks/monkeycube,/obj/item/reagent_containers/food/snacks/monkeycube/farwacube,/obj/item/reagent_containers/food/snacks/monkeycube/neaeracube,/obj/item/reagent_containers/food/snacks/monkeycube/sarucube,/obj/item/reagent_containers/food/snacks/monkeycube/sobakacube,/obj/item/reagent_containers/food/snacks/monkeycube/sparracube,/obj/item/reagent_containers/food/snacks/monkeycube/stokcube,/obj/item/reagent_containers/food/snacks/monkeycube/wolpincube,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aD" = (/obj/machinery/processor,/obj/item/slime_extract/dark_blue,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aE" = (/obj/machinery/door/firedoor/glass,/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/phoronreinforced/full,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"aF" = (/obj/item/reagent_containers/spray/plantbgone,/obj/effect/floor_decal/corner/green{dir = 6},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aG" = (/obj/item/reagent_containers/spray/chemsprayer,/obj/effect/floor_decal/corner/green{dir = 6},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aH" = (/obj/mob_spawner/carp,/turf/template_noop,/area/debrisfield/explored)
+"aI" = (/obj/effect/decal/remains,/obj/item/clothing/under/rank/hydroponics,/obj/item/clothing/suit/storage/toggle/labcoat/green,/obj/item/clothing/head/greenbandana,/obj/effect/floor_decal/corner/green{dir = 6},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aJ" = (/obj/structure/table/rack,/obj/item/slime_extract/rainbow,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"aK" = (/obj/item/gun/energy/temperature,/obj/structure/table/rack,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/machinery/light/flicker{dir = 8},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"aL" = (/obj/structure/grille,/obj/machinery/door/firedoor,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/phoronreinforced/full,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"aM" = (/obj/machinery/computer/shuttle{dir = 8},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"aN" = (/obj/structure/bed/chair/comfy/purp{dir = 4},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"aO" = (/obj/item/gun/energy/decloner,/obj/structure/table/rack,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/machinery/light/flicker{dir = 8},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"aP" = (/obj/structure/filingcabinet/filingcabinet,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aQ" = (/obj/structure/table/reinforced,/obj/item/stack/material/phoron{amount = 10},/obj/item/flashlight/pen,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aR" = (/obj/structure/table/reinforced,/obj/item/paper_bin,/obj/item/pen/blue,/obj/item/reagent_containers/chem_disp_cartridge/rezadone,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aS" = (/obj/structure/table/reinforced,/obj/item/folder/white,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aT" = (/turf/template_noop,/area/debrisfield/unexplored)
+"aU" = (/obj/structure/table/rack,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/item/material/shard,/obj/item/clothing/mask/breath,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"aV" = (/obj/structure/bed/chair/office/light{dir = 1},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aW" = (/obj/item/airlock_electronics,/obj/effect/floor_decal/borderfloor,/obj/effect/floor_decal/industrial/danger,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aX" = (/obj/item/material/shard,/obj/effect/floor_decal/borderfloor,/obj/effect/floor_decal/industrial/danger,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"aY" = (/obj/structure/closet/emcloset,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"aZ" = (/obj/machinery/door/unpowered/shuttle,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"ba" = (/obj/item/clothing/suit/storage/toggle/labcoat/purple,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"bb" = (/obj/effect/decal/remains,/obj/item/clothing/under/rank/scientist,/obj/item/clothing/suit/storage/toggle/labcoat/blue,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"bc" = (/obj/structure/closet/secure_closet/scientist{name = "scientist locker"; req_access = list(0)},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"bd" = (/obj/structure/bed,/obj/item/bedsheet/blue,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"be" = (/obj/structure/shuttle/engine/heater{dir = 8},/turf/simulated/wall/r_wall,/area/debrisfield/explored)
+"bf" = (/obj/structure/curtain/open/shower,/obj/effect/floor_decal/steeldecal/steel_decals5,/obj/effect/floor_decal/steeldecal/steel_decals5{dir = 1},/obj/machinery/shower{dir = 1},/obj/effect/floor_decal/steeldecal/steel_decals10{dir = 10},/obj/effect/floor_decal/steeldecal/steel_decals10{dir = 9},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"bg" = (/turf/simulated/wall,/area/debrisfield/explored)
+"bh" = (/obj/structure/shuttle/engine/propulsion{dir = 8},/turf/simulated/floor/airless,/area/debrisfield/explored)
+"bi" = (/obj/structure/table/rack,/obj/random/firstaid,/obj/random/firstaid,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"bj" = (/obj/structure/table/rack,/obj/random/unidentified_medicine/scientific,/obj/random/unidentified_medicine/scientific,/obj/random/unidentified_medicine/scientific,/obj/random/unidentified_medicine/scientific,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"bk" = (/obj/machinery/door/airlock/command{name = "Research Airlock"; req_one_access = list(0)},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"bl" = (/obj/effect/floor_decal/corner/green{dir = 9},/mob/living/simple_mob/hostile/tomato/space,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"bm" = (/obj/structure/closet/crate,/obj/item/stack/material/uranium{amount = 11},/turf/simulated/floor/airless,/area/debrisfield/explored)
+"bn" = (/obj/machinery/power/port_gen/pacman/super,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"bo" = (/obj/structure/table/reinforced,/obj/random/slimecore,/obj/random/slimecore,/obj/random/slimecore,/obj/random/slimecore,/obj/random/slimecore,/obj/random/slimecore,/obj/random/slimecore,/obj/random/slimecore,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"bp" = (/obj/item/tool/prybar/red,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"bq" = (/mob/living/simple_mob/slime/feral/dark_blue,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"br" = (/obj/effect/floor_decal/corner/green{dir = 6},/mob/living/simple_mob/hostile/tomato/space,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"bs" = (/obj/effect/floor_decal/borderfloor,/obj/effect/floor_decal/industrial/danger,/mob/living/simple_mob/slime/feral/dark_blue,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"cP" = (/obj/machinery/door/airlock/maintenance/rnd{name = "Research Airlock"; req_one_access = list(0)},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"dy" = (/obj/machinery/vending/snack,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"ed" = (/obj/effect/floor_decal/corner/green{dir = 6},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"eY" = (/turf/simulated/floor/reinforced,/area/debrisfield/explored)
+"fd" = (/obj/machinery/door/firedoor/glass,/obj/structure/grille,/obj/structure/window/reinforced,/obj/structure/window/phoronreinforced/full,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"gn" = (/obj/effect/floor_decal/corner/green{dir = 9},/obj/machinery/light/flicker,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"gH" = (/turf/space,/area/debrisfield/explored)
+"mJ" = (/obj/machinery/light/flicker{dir = 1},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"sU" = (/obj/random/trash,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"va" = (/obj/machinery/door/airlock/science{req_one_access = list(0)},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"zd" = (/obj/structure/bed/chair/comfy/brown{dir = 8},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"Bm" = (/obj/item/material/shard,/turf/simulated/floor/reinforced,/area/debrisfield/explored)
+"CC" = (/obj/item/reagent_containers/spray/plantbgone,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"FB" = (/obj/machinery/door/firedoor,/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/machinery/door/blast/regular{density = 0; icon_state = "pdoor0"; id = "xenobio7"; name = "Containment Blast Doors"; opacity = 0},/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/phoronreinforced/full,/turf/simulated/floor/reinforced,/area/debrisfield/explored)
+"Ht" = (/obj/effect/floor_decal/corner/green{dir = 9},/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"IN" = (/obj/structure/closet/crate/bin{anchored = 1},/obj/random/trash,/obj/random/trash,/obj/random/trash,/obj/random/trash,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"Jo" = (/obj/structure/bed/chair/comfy/brown{dir = 4},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"Kg" = (/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"Kz" = (/obj/machinery/washing_machine,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"LN" = (/obj/machinery/shipsensors/weak,/turf/simulated/floor/airless,/area/debrisfield/explored)
+"LO" = (/obj/machinery/door/airlock{name = "Restroom"},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"MV" = (/obj/structure/closet/crate,/obj/item/stack/material/phoron{amount = 10},/turf/simulated/floor/airless,/area/debrisfield/explored)
+"NF" = (/obj/random/trash,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"Oa" = (/obj/structure/toilet{dir = 8; pixel_x = 8},/obj/structure/sink{dir = 8; pixel_x = -12},/obj/structure/loot_pile/surface/medicine_cabinet{pixel_x = -32},/obj/machinery/light/small/flicker{dir = 8},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"Ou" = (/obj/structure/bed,/obj/item/bedsheet/green,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"Pz" = (/mob/living/simple_mob/slime/feral/dark_blue,/turf/simulated/floor/reinforced,/area/debrisfield/explored)
+"PD" = (/obj/item/seeds/killertomatoseed,/obj/effect/floor_decal/corner/green{dir = 6},/obj/machinery/light/flicker,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"Qa" = (/obj/effect/floor_decal/borderfloor,/obj/effect/floor_decal/industrial/danger,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"Qr" = (/obj/machinery/light/small/flicker,/turf/simulated/floor/reinforced,/area/debrisfield/explored)
+"Qx" = (/mob/living/simple_mob/hostile/tomato/space,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"QV" = (/obj/machinery/light/flicker,/obj/structure/bed/chair/comfy/brown{dir = 8},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"SJ" = (/obj/machinery/light/flicker,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"Tj" = (/obj/machinery/light/small/flicker{dir = 8},/turf/simulated/floor/airless,/area/debrisfield/explored)
+"Tz" = (/obj/machinery/door/airlock/science{req_one_access = list(0)},/turf/simulated/floor/tiled,/area/debrisfield/explored)
+"TY" = (/obj/machinery/vending/sovietsoda,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"WA" = (/obj/structure/closet/firecloset,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"Xa" = (/obj/structure/closet/crate/bin{desc = "A large bin for medical and other personnel that deals with bio-grade waste."; icon_closed = "biohazard"; icon_opened = "biohazardopen"; icon_state = "biohazard"; name = "biohazard bin"},/obj/random/trash,/obj/random/trash,/obj/random/trash,/obj/random/trash,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"Yf" = (/obj/machinery/light/flicker{dir = 4},/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+"Yi" = (/mob/living/simple_mob/slime/feral/dark_blue,/turf/simulated/floor/tiled/airless,/area/debrisfield/explored)
+"Zg" = (/obj/structure/table/reinforced,/turf/simulated/floor/tiled/white/airless,/area/debrisfield/explored)
+
+(1,1,1) = {"
+aTaTaTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTaTaTaTaTaTaTaT
+aTaTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTaTaTaTaTaT
+aTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTaTaTaT
+aaaaaaabababababaEaEababaEaEabababaEabababababaEababaaaaaTaTaTaT
+aaaaaabhbeasacbgKzKzbgbcOubcbdbgaeHtafagahaiajaFaeabaaaaaaaTaTaT
+aaaaaabhbeasacbgadadbgadadadadbgaeakQxKgalKgCCaGaeabaaaaaaaHaaaT
+aaaaaaababacacaxadYfbgadNFaradbgaeHtQxamanaoQxaIaeabaaaaaaaaaaaa
+aaaaaaababTjacbgadadbgadYfbgLObgaeHtKgamapaoKgedaeababaaaaaaaaaa
+aaaaaabhbebibqbgadNFatadaubgOabgaeblKgKgaqQxKgbraeababaEaEabaaaa
+aaaaaabhbebjacbgadadbgbcOubgbfbgaegnKgQxKgKgKgPDaeabadadaJababaa
+aaaaaaababbgbgbgadadbgbgbgbgbgbgbgbgbgavTzbgbgbgbgabaKadadadaLaa
+aaaaaagHbpbgaYbgadadJoZgzdadmJadadadaradadadadadawabadadadaMaLaa
+aaaaaagHacaZadaZadadadadadadNFadadadadadadadNFadadbkadadaNaMaLaa
+aaaaaagHacbgaYbgadadadSJadadadJoZgQVadadadadadSJawabadadadaMaLaa
+aaaaaaababbgbgbgadarbgbgbgbgbgbgbgbgbgbgbgayvabgbgabaOadbaadaLaa
+aaaaaabhbebmbmbgadadbgaPaQaRaSaBXaKgKgKgKgKgKgKgazabadadaUababaa
+aaaaaabhbeacacbgadadbgKgKgaVKgKgKgKgKgKgKgbbKgKgaAababfdfdabaaaa
+aaaaaaababacacbgadINbgQaaWQaQabsQaaXaWQaKgKgKgKgboabLNaaaaaaaaaa
+aaaaaaababTjaccPadYfbgFBBmbgFBBmbgFBeYbgWAKgsUKgboabaaaaaaaaaaaa
+aaaaaabhbeacacbgaddybgeYPzbgeYeYbgeYPzbgWAKgKgKgaCabaaaaaaaaaaaT
+aaaaaabhbeMVbnbgadTYbgeYQrbgQreYbgeYQrbgWAKgKgYiaDabaaaaaaaaaTaT
+aaaaaaabababababfdfdabababababababababababfdabfdababaaaaaaaTaTaT
+aTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTaTaTaT
+aTaTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTaTaTaTaT
+aTaTaTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaTaTaTaTaTaTaTaT
+"}
