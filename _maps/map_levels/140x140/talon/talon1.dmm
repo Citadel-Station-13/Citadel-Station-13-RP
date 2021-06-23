@@ -731,7 +731,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	pixel_y = -24
 	},
 /obj/structure/closet/hydrant{
@@ -1274,7 +1274,6 @@
 "cF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/floor_decal/emblem/talon_big,
 /obj/machinery/camera/network/talon{
 	dir = 10
 	},
@@ -1411,7 +1410,7 @@
 /area/talon/deckone/port_eng)
 "cQ" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/frontier/locked/holdout/unlocked,
+/obj/item/gun/energy/frontier,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "cR" = (
@@ -1671,7 +1670,6 @@
 	pixel_x = 2;
 	pixel_y = 5
 	},
-/obj/structure/closet/walllocker/medical/south,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "en" = (
@@ -1751,7 +1749,6 @@
 "eB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/emblem/talon_big/center,
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/central_hallway)
 "eI" = (
@@ -2056,7 +2053,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	pixel_x = -27
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -2114,9 +2111,6 @@
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "jD" = (
-/obj/effect/floor_decal/emblem/talon_big{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/central_hallway)
 "jE" = (
@@ -2473,7 +2467,7 @@
 "mS" = (
 /obj/structure/table/standard,
 /obj/fiftyspawner/steel,
-/obj/fiftyspawner/copper,
+/obj/structure/outcrop/lead,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "mT" = (
@@ -2504,12 +2498,6 @@
 "nc" = (
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/central_hallway)
-"nu" = (
-/obj/effect/floor_decal/emblem/talon_big{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/talon/deckone/central_hallway)
 "nz" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
@@ -2526,7 +2514,6 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "nT" = (
-/obj/effect/floor_decal/emblem/talon,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -2607,12 +2594,6 @@
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
-"oV" = (
-/obj/effect/floor_decal/emblem/talon_big{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/talon/deckone/central_hallway)
 "pc" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
@@ -2697,7 +2678,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	pixel_y = -24
 	},
 /obj/structure/closet/hydrant{
@@ -3230,10 +3211,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_eng)
-"we" = (
-/obj/effect/floor_decal/emblem/talon,
-/turf/simulated/floor/hull/airless,
-/area/talon/maintenance/deckone_starboard_aft_wing)
 "wh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -3350,7 +3327,6 @@
 /obj/item/storage/firstaid/fire,
 /obj/item/storage/firstaid/adv,
 /obj/item/storage/firstaid/adv,
-/obj/structure/closet/walllocker/medical/east,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "xH" = (
@@ -3655,7 +3631,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/closet/autolok_wall{
+/obj/structure/closet/walllocker/autolok_wall{
 	pixel_x = 27
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -4314,14 +4290,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/brig)
-"IF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/emblem/talon_big{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/talon/deckone/central_hallway)
 "II" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -4755,10 +4723,6 @@
 	},
 /turf/simulated/floor/greengrid/airless,
 /area/talon/maintenance/deckone_port)
-"Mr" = (
-/obj/effect/floor_decal/emblem/talon,
-/turf/simulated/floor/hull/airless,
-/area/talon/maintenance/deckone_port_aft_wing)
 "Mv" = (
 /obj/machinery/camera/network/talon,
 /turf/simulated/floor/tiled/eris/steel,
@@ -4907,10 +4871,6 @@
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
-"Nx" = (
-/obj/effect/floor_decal/emblem/talon,
-/turf/simulated/floor/hull/airless,
-/area/talon/maintenance/deckone_starboard_fore_wing)
 "Ny" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5151,10 +5111,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/central_hallway)
-"RW" = (
-/obj/effect/floor_decal/emblem/talon,
-/turf/simulated/floor/hull/airless,
-/area/talon/maintenance/deckone_port_fore_wing)
 "RX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -5204,12 +5160,6 @@
 	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
-"SD" = (
-/obj/effect/floor_decal/emblem/talon_big{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/talon/deckone/central_hallway)
 "SE" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
@@ -5419,18 +5369,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
-"UC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/effect/floor_decal/emblem/talon_big{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/talon/deckone/central_hallway)
 "UG" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -5540,9 +5478,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/obj/effect/floor_decal/emblem/talon_big{
-	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/central_hallway)
@@ -13024,7 +12959,7 @@ Dh
 Dh
 Dh
 Dh
-Mr
+Dh
 Dh
 Dh
 Dh
@@ -13430,7 +13365,7 @@ aa
 aa
 aa
 rJ
-RW
+rJ
 rJ
 aa
 aa
@@ -15712,7 +15647,7 @@ ur
 bQ
 bQ
 Gh
-SD
+jD
 jD
 Ve
 PD
@@ -15854,7 +15789,7 @@ uB
 eI
 cA
 MW
-IF
+eB
 eB
 cF
 dL
@@ -15996,9 +15931,9 @@ ur
 bQ
 bQ
 KI
-nu
-oV
-UC
+jD
+jD
+Ve
 PD
 Bj
 Bj
@@ -18258,7 +18193,7 @@ aa
 aa
 aa
 EF
-Nx
+EF
 EF
 aa
 aa
@@ -18704,7 +18639,7 @@ Ru
 Ru
 Ru
 Ru
-we
+Ru
 Ru
 Ru
 Ru
