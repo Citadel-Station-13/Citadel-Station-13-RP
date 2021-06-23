@@ -99,7 +99,7 @@
 	specialfunctions = 4
 	},
 /obj/structure/table/standard,
-/obj/item/multitool/triumph_buffered,
+/obj/item/multitool,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "aeD" = (
@@ -740,16 +740,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
-"aFu" = (
-/obj/effect/shuttle_landmark/automatic/station_dockpoint1,
-/turf/space,
-/area/space)
 "aFw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "aFX" = (
-/obj/machinery/atmospherics/unary/engine/small{
+/obj/machinery/atmospherics/unary/engine{
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -906,13 +902,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/lobby)
-"aNG" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/effect/landmark/shuttle,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/hallway/primary/aft)
 "aNI" = (
 /turf/space,
 /area/shuttle/specops/station)
@@ -1338,7 +1327,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "bhx" = (
@@ -1758,7 +1746,7 @@
 /turf/space,
 /area/space)
 "bwh" = (
-/obj/machinery/atmospherics/unary/engine/small{
+/obj/machinery/atmospherics/unary/engine{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -2462,7 +2450,6 @@
 /area/security/armoury)
 "bWp" = (
 /obj/effect/floor_decal/techfloor,
-/obj/effect/landmark/shuttle,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -2715,7 +2702,6 @@
 	req_one_access = list(13)
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "cgH" = (
@@ -3005,7 +2991,6 @@
 	pixel_y = -9;
 	req_one_access = list(13)
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "ctb" = (
@@ -6196,10 +6181,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/white,
 /area/security/brig)
-"ePg" = (
-/obj/effect/landmark/shuttle,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/hallway/primary/aft)
 "ePz" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -6802,7 +6783,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "fkU" = (
-/obj/effect/landmark/shuttle,
 /obj/machinery/computer/cryopod{
 	name = "asset retention console";
 	pixel_y = -30
@@ -7674,7 +7654,6 @@
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/obj/effect/map_helper/airlock/button/ext_button,
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -7781,7 +7760,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "fYE" = (
@@ -7908,13 +7886,6 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge)
-"giI" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
-/obj/effect/overmap/visitable/ship/triumph,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "giY" = (
@@ -10058,13 +10029,13 @@
 /obj/structure/dogbed{
 	name = "pet bed"
 	},
-/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
 /obj/machinery/light{
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
 "hJV" = (
@@ -10980,7 +10951,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/sauna)
 "ipk" = (
-/obj/machinery/cryopod/robot/door/shuttle,
+/obj/machinery/cryopod/robot/door,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
@@ -11425,7 +11396,6 @@
 /area/library)
 "iKO" = (
 /obj/machinery/computer/timeclock/premade/south,
-/obj/effect/landmark/shuttle,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
@@ -13416,8 +13386,6 @@
 /turf/simulated/floor/tiled,
 /area/security/lobby)
 "kvk" = (
-/obj/effect/shuttle_landmark/triumph/deck4/civvie,
-/obj/effect/overmap/visitable/ship/landable/civvie,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1384;
@@ -14658,7 +14626,6 @@
 /area/hallway/primary/aft)
 "lst" = (
 /obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley,
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
@@ -14668,6 +14635,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley,
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "lsu" = (
@@ -14691,7 +14659,6 @@
 /obj/effect/floor_decal/spline/fancy{
 	dir = 4
 	},
-/obj/effect/landmark/shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "ltW" = (
@@ -17056,7 +17023,6 @@
 	pixel_y = 22;
 	req_one_access = null
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -17492,7 +17458,6 @@
 	pixel_y = 24;
 	req_one_access = null
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "nvw" = (
@@ -18998,7 +18963,6 @@
 	pixel_y = 9;
 	req_one_access = list(13)
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "oEE" = (
@@ -19498,10 +19462,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"oVF" = (
-/obj/effect/landmark/map_data/triumph,
-/turf/space,
-/area/space)
 "oVI" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -20782,12 +20742,10 @@
 	pixel_x = -27
 	},
 /obj/effect/map_helper/airlock/door/int_door,
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "pTM" = (
 /obj/effect/overmap/visitable/ship/landable/excursion,
-/obj/effect/shuttle_landmark/triumph/deck4/excursion,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "pUS" = (
@@ -20948,7 +20906,6 @@
 /area/exploration/explorer_prep)
 "pXl" = (
 /obj/effect/floor_decal/techfloor,
-/obj/effect/landmark/shuttle,
 /obj/effect/floor_decal/corner/red/border,
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
@@ -22496,10 +22453,6 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "qTZ" = (
-/obj/machinery/computer/shuttle_control/explore/civvie{
-	dir = 8;
-	req_one_access = null
-	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "qUs" = (
@@ -23632,10 +23585,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
-"rIM" = (
-/obj/effect/shuttle_landmark/automatic/station_dockpoint2,
-/turf/space,
-/area/space)
 "rIS" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -25418,7 +25367,6 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 27
 	},
-/obj/effect/landmark/shuttle,
 /obj/structure/sign/warning/evac{
 	pixel_x = -32
 	},
@@ -25490,7 +25438,6 @@
 	pixel_y = -25;
 	req_one_access = null
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -25557,7 +25504,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
-/obj/effect/landmark/shuttle,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "sXA" = (
@@ -25887,7 +25833,6 @@
 	pixel_y = 23;
 	req_one_access = list(13)
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "tnk" = (
@@ -25896,7 +25841,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/cryopod/robot/door/shuttle,
+/obj/machinery/cryopod/robot/door,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
@@ -26623,10 +26568,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
-"tUV" = (
-/obj/effect/shuttle_landmark/triumph/deck4/excursion_space,
-/turf/space,
-/area/space)
 "tUY" = (
 /obj/structure/sign/deck/fourth,
 /turf/simulated/wall,
@@ -26654,7 +26595,7 @@
 /area/hallway/primary/aft)
 "tVr" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/cryopod/robot/door/shuttle,
+/obj/machinery/cryopod/robot/door,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
 "tVJ" = (
@@ -29830,7 +29771,6 @@
 	pixel_x = -23;
 	pixel_y = 32
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "wbC" = (
@@ -33285,7 +33225,7 @@ nIK
 nIK
 nIK
 nIK
-oVF
+nIK
 nIK
 "}
 (3,1,1) = {"
@@ -36525,7 +36465,7 @@ nIK
 nIK
 nIK
 nIK
-tUV
+nIK
 nIK
 nIK
 nIK
@@ -38761,8 +38701,8 @@ brg
 dQv
 dQv
 vtg
-aNG
-ePg
+ssI
+pFE
 pXl
 vma
 vma
@@ -38904,7 +38844,7 @@ dQv
 dQv
 xPq
 ssI
-ePg
+pFE
 bWp
 vma
 cDe
@@ -44806,7 +44746,7 @@ nIK
 nIK
 nIK
 nIK
-aFu
+nIK
 nIK
 cgx
 nHU
@@ -46948,7 +46888,7 @@ oEc
 lAR
 crT
 nIK
-rIM
+nIK
 nIK
 nIK
 nIK
@@ -50967,7 +50907,7 @@ baP
 kWa
 lYt
 vmI
-giI
+ubE
 euH
 vlb
 pox

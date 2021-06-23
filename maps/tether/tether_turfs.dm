@@ -129,6 +129,39 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "steel"
 
+/turf/simulated/mineral/virgo3b/rich/make_ore(var/rare_ore)
+	if(mineral || ignore_mapgen)
+		return
+	var/mineral_name
+	if(rare_ore)
+		mineral_name = pickweight(list(
+			"marble" = 7,
+			"uranium" = 10,
+			"platinum" = 10,
+			"hematite" = 10,
+			"carbon" = 10,
+			"diamond" = 4,
+			"gold" = 15,
+			"silver" = 15,
+			"lead" = 5,
+			"verdantium" = 2))
+	else
+		mineral_name = pickweight(list(
+			"marble" = 5,
+			"uranium" = 7,
+			"platinum" = 7,
+			"hematite" = 28,
+			"carbon" = 28,
+			"diamond" = 2,
+			"gold" = 7,
+			"silver" = 7,
+			"lead" = 4,
+			"verdantium" = 1))
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
+		UpdateMineral()
+	update_icon()
+
 // Some turfs to make floors look better in centcom tram station.
 
 /turf/unsimulated/floor/techfloor_grid

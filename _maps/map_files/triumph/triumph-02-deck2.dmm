@@ -590,7 +590,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "bR" = (
-/obj/machinery/atmospherics/unary/engine/small{
+/obj/machinery/atmospherics/unary/engine{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -2979,10 +2979,6 @@
 /obj/structure/fitness/punchingbag,
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
-"iB" = (
-/obj/structure/stairs/south,
-/turf/simulated/floor/tiled,
-/area/station/stairs_two)
 "iD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -4162,9 +4158,6 @@
 /area/crew_quarters/fitness)
 "lY" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/computer/shuttle_control/explore/mining{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "lZ" = (
@@ -7630,11 +7623,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
-"vC" = (
-/obj/structure/stairs/west,
-/obj/structure/railing,
-/turf/simulated/floor/tiled,
-/area/hallway/primary/port)
 "vD" = (
 /obj/structure/bed/chair/comfy/teal{
 	dir = 8
@@ -9151,10 +9139,6 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
-"Ap" = (
-/obj/effect/shuttle_landmark/triumph/deck2/port,
-/turf/space,
-/area/space)
 "Aq" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -10011,10 +9995,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/sleep/Dorm_10)
-"CO" = (
-/obj/effect/shuttle_landmark/triumph/deck2/starboard,
-/turf/space,
-/area/space)
 "CP" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -10272,10 +10252,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
-"DI" = (
-/obj/structure/stairs/north,
-/turf/simulated/floor/tiled,
-/area/station/stairs_two)
 "DK" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/blucarpet,
@@ -11278,13 +11254,6 @@
 /obj/item/clothing/gloves/boxing/blue,
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
-"GE" = (
-/obj/structure/stairs/west,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/port)
 "GJ" = (
 /turf/simulated/wall,
 /area/crew_quarters/coffee_shop)
@@ -11694,16 +11663,16 @@
 /turf/simulated/wall,
 /area/crew_quarters/fitness)
 "HZ" = (
-/mob/living/simple_mob/animal/passive/penguin/emperor{
-	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
-	name = "Skipper"
-	},
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
+	},
+/mob/living/simple_mob/animal/passive/penguin/emperor{
+	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
+	name = "Skipper"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
@@ -13109,8 +13078,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/shuttle_landmark/triumph/deck2/mining,
-/obj/effect/overmap/visitable/ship/landable/mining,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "MF" = (
@@ -13776,10 +13743,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
-"OF" = (
-/obj/structure/stairs/west,
-/turf/simulated/floor/tiled,
-/area/hallway/primary/port)
 "OG" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -17182,10 +17145,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
-"Yf" = (
-/obj/effect/shuttle_landmark/triumph/deck2/trade,
-/turf/space,
-/area/space)
 "Yg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -21721,7 +21680,7 @@ ii
 ii
 ii
 ii
-Yf
+ii
 ii
 SA
 ys
@@ -24721,13 +24680,13 @@ ZF
 KX
 Ej
 Ij
-OF
-vC
+hK
+vJ
 sU
 eK
 mM
-GE
-OF
+Wh
+hK
 Ij
 fI
 gk
@@ -28077,7 +28036,7 @@ ii
 ii
 ii
 ii
-Ap
+ii
 ii
 ii
 ii
@@ -33808,7 +33767,7 @@ dD
 Dt
 dD
 mq
-DI
+pg
 pg
 pg
 gD
@@ -33816,7 +33775,7 @@ GX
 NU
 pg
 pg
-iB
+pg
 mq
 nj
 CU
@@ -33950,7 +33909,7 @@ Gy
 Dt
 bM
 mq
-DI
+pg
 pg
 pg
 Kd
@@ -33958,7 +33917,7 @@ pg
 NU
 pg
 pg
-iB
+pg
 mq
 qH
 CU
@@ -34115,7 +34074,7 @@ ii
 ii
 ii
 ii
-CO
+ii
 ii
 ii
 ii

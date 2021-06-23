@@ -1180,8 +1180,7 @@
 /area/holodeck/source_emptycourt)
 "dy" = (
 /obj/item/perfect_tele_beacon{
-	tele_name = "Unknown";
-	tele_network = "unkfive"
+	tele_name = "Unknown"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm5)

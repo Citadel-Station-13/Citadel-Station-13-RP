@@ -32,7 +32,6 @@
 	pixel_x = 23;
 	pixel_y = -23
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos/storage)
@@ -47,7 +46,7 @@
 /turf/space,
 /area/space)
 "ah" = (
-/obj/machinery/telecomms/hub/preset/triumph,
+/obj/machinery/telecomms/hub/preset,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -703,12 +702,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"cG" = (
-/obj/machinery/telecomms/relay/preset/triumph/deck_one,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
-/area/tcommsat/chamber)
 "cI" = (
 /obj/structure/railing{
 	dir = 4
@@ -2402,7 +2395,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "iN" = (
-/obj/machinery/telecomms/relay/preset/triumph/deck_two,
+/obj/machinery/telecomms/relay/preset,
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -3114,10 +3107,6 @@
 	},
 /turf/space,
 /area/engineering/starboardnacelle)
-"le" = (
-/obj/turbolift_map_holder/triumph,
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/engineering/hallway/lower)
 "lf" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
@@ -3521,10 +3510,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"mO" = (
-/obj/effect/shuttle_landmark/triumph/deck1/port,
-/turf/space,
-/area/space)
 "mQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/meter,
@@ -4114,7 +4099,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/starboardnacelle)
 "oP" = (
-/obj/machinery/telecomms/server/presets/service/triumph,
+/obj/machinery/requests_console/preset,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -5328,7 +5313,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "sS" = (
-/obj/machinery/telecomms/relay/preset/triumph/deck_three,
+/obj/machinery/telecomms/relay/preset,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -9718,7 +9703,6 @@
 	pixel_x = 23;
 	pixel_y = 23
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /obj/structure/catwalk,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
@@ -11718,10 +11702,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
-"PJ" = (
-/obj/effect/shuttle_landmark/triumph/deck1/starboard,
-/turf/space,
-/area/space)
 "PL" = (
 /obj/structure/lattice,
 /obj/structure/grille,
@@ -11824,10 +11804,6 @@
 	},
 /turf/simulated/floor/airless/ceiling,
 /area/space)
-"Qi" = (
-/obj/structure/stairs/west,
-/turf/simulated/floor/tiled,
-/area/station/stairs_one)
 "Qj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -12210,7 +12186,6 @@
 	pixel_x = 23;
 	pixel_y = 24
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
@@ -12634,7 +12609,6 @@
 	pixel_x = 24;
 	pixel_y = -23
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /obj/machinery/shield_diffuser,
 /obj/structure/catwalk,
 /obj/item/sign{
@@ -12977,12 +12951,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/engineering/foyer_mezzenine)
-"TE" = (
-/obj/machinery/telecomms/relay/preset/triumph/deck_four,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
-/area/tcommsat/chamber)
 "TG" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -13161,7 +13129,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "UC" = (
-/obj/machinery/telecomms/bus/preset_two/triumph,
+/obj/machinery/telecomms/bus/preset_two,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -13400,7 +13368,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "Vo" = (
-/obj/machinery/telecomms/receiver/preset_right/triumph,
+/obj/machinery/telecomms/receiver/preset_right,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -17628,7 +17596,7 @@ fN
 fN
 fN
 fN
-PJ
+fN
 fN
 fN
 fN
@@ -22554,7 +22522,7 @@ Yp
 xv
 XQ
 Tq
-le
+Tq
 XQ
 MT
 QM
@@ -25798,7 +25766,7 @@ qb
 Se
 rH
 OW
-TE
+sS
 sS
 PQ
 pd
@@ -26082,7 +26050,7 @@ qb
 Se
 jV
 PQ
-cG
+sS
 ah
 PQ
 Vo
@@ -30181,7 +30149,7 @@ fN
 fN
 fN
 fN
-mO
+fN
 fN
 fN
 fN
@@ -30221,15 +30189,15 @@ SQ
 Ib
 MH
 bh
-Qi
-Qi
+Yq
+Yq
 Nt
 tp
 iQ
 PB
 nL
-Qi
-Qi
+Yq
+Yq
 XH
 if
 Ei
