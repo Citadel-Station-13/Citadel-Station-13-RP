@@ -1,5 +1,5 @@
-"a" = (/turf/template_noop,/area/space/debrisfield/explored)
-"W" = (/obj/structure/closet/coffin,/obj/item/bone/ribs,/obj/item/bone/arm,/obj/item/bone/arm,/obj/item/bone/leg,/obj/item/bone/leg,/obj/random/multiple/treasure,/obj/random/multiple/gun/projectile/handgun,/obj/item/bone/skull,/turf/space,/area/space/debrisfield/explored)
+"a" = (/turf/template_noop,/area/debrisfield/explored)
+"W" = (/obj/structure/closet/coffin,/obj/item/bone/ribs,/obj/item/bone/arm,/obj/item/bone/arm,/obj/item/bone/leg,/obj/item/bone/leg,/obj/random/multiple/treasure,/obj/random/multiple/gun/projectile/handgun,/obj/item/bone/skull,/turf/space,/area/debrisfield/explored)
 
 (1,1,1) = {"
 aaa
