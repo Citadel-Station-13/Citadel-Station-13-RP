@@ -501,7 +501,6 @@
 /area/ship/mercenary/hangar)
 "bc" = (
 /obj/machinery/airlock_sensor/airlock_interior{
-	pixel_w = -25;
 	id_tag = "northinteriorsensor";
 	master_tag = "northairlock";
 	frequency = 1313
@@ -989,10 +988,7 @@
 	icon_state = "onestar_chair_red";
 	dir = 4
 	},
-/obj/machinery/recharger/wallcharger{
-	pixel_z = -2;
-	pixel_w = -23
-	},
+/obj/machinery/recharger/wallcharger,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)
 "bV" = (
@@ -1313,9 +1309,7 @@
 	icon_state = "map_vent_out";
 	dir = 4
 	},
-/obj/machinery/recharger/wallcharger{
-	pixel_w = -25
-	},
+/obj/machinery/recharger/wallcharger,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -1535,8 +1529,7 @@
 	icon_state = "onestar_chair_red";
 	dir = 8
 	},
-/obj/machinery/recharger/wallcharger{
-	},
+/obj/machinery/recharger/wallcharger,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)
 "cP" = (
@@ -1756,9 +1749,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/bridge)
 "de" = (
-/obj/machinery/recharger/wallcharger{
-	pixel_w = -25
-	},
+/obj/machinery/recharger/wallcharger,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -2039,8 +2030,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 5
 	},
-/obj/structure/sign/department/bridge{
-	},
+/obj/structure/sign/department/bridge,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall2)
 "dE" = (
@@ -2100,9 +2090,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/structure/sign/department/bridge{
-	pixel_z = -32
-	},
+/obj/structure/sign/department/bridge,
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall2)
 "dJ" = (
@@ -2844,7 +2832,6 @@
 	frequency = 1414;
 	id_tag = "southinteriorsensor";
 	master_tag = "southairlock";
-	pixel_w = -25
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -3139,7 +3126,6 @@
 /area/ship/mercenary/hall2)
 "fH" = (
 /obj/machinery/airlock_sensor/airlock_exterior{
-	pixel_z = -25;
 	id_tag = "northairlock";
 	master_tag = "northexteriorsensor";
 	frequency = 1313
@@ -3733,10 +3719,7 @@
 	icon_state = "onestar_chair_red";
 	dir = 4
 	},
-/obj/machinery/recharger/wallcharger{
-	pixel_z = -2;
-	pixel_w = -23
-	},
+/obj/machinery/recharger/wallcharger,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)
 "gE" = (
@@ -3744,8 +3727,7 @@
 	icon_state = "onestar_chair_red";
 	dir = 8
 	},
-/obj/machinery/recharger/wallcharger{
-	},
+/obj/machinery/recharger/wallcharger,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)
 "gF" = (

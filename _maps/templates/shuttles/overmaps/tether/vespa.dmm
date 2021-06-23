@@ -604,8 +604,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/machinery/firealarm{
-	},
+/obj/machinery/firealarm,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
 "bE" = (
@@ -7375,8 +7374,7 @@
 	icon_state = "bordercolor";
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	},
+/obj/machinery/firealarm,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/sechall)
 "nG" = (
@@ -8843,8 +8841,7 @@
 	icon_state = "bordercolor";
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	},
+/obj/machinery/firealarm,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby)
 "pZ" = (
@@ -8879,8 +8876,7 @@
 	icon_state = "bordercolor";
 	dir = 6
 	},
-/obj/machinery/firealarm{
-	},
+/obj/machinery/firealarm,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby2)
 "qb" = (
