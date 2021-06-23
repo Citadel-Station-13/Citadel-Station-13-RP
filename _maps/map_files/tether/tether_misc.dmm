@@ -3669,8 +3669,7 @@
 /area/unknown/dorm4)
 "SC" = (
 /obj/item/perfect_tele_beacon{
-	tele_name = "Unknown";
-	tele_network = "unkfour"
+	tele_name = "Unknown"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm4)
@@ -3749,8 +3748,7 @@
 /area/centcom/simulated/main_hall)
 "SW" = (
 /obj/item/perfect_tele_beacon{
-	tele_name = "Transfer";
-	tele_network = "centcom"
+	tele_name = "Transfer"
 	},
 /obj/machinery/light{
 	dir = 1
@@ -3852,8 +3850,7 @@
 /area/unknown/dorm3)
 "Tr" = (
 /obj/item/perfect_tele_beacon{
-	tele_name = "Unknown";
-	tele_network = "unkthree"
+	tele_name = "Unknown"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm3)
@@ -4006,8 +4003,7 @@
 /area/unknown/dorm2)
 "Ub" = (
 /obj/item/perfect_tele_beacon{
-	tele_name = "Unknown";
-	tele_network = "unktwo"
+	tele_name = "Unknown"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm2)
@@ -4175,8 +4171,7 @@
 /area/unknown/dorm1)
 "UN" = (
 /obj/item/perfect_tele_beacon{
-	tele_name = "Unknown";
-	tele_network = "unkone"
+	tele_name = "Unknown"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm1)
