@@ -328,16 +328,29 @@
 	name = "Away Mission - Debris Field"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
+	requires_power = 0
+	dynamic_lighting = 0
+	base_turf = /turf/space
 
-/area/space/debrisfield/explored
+ /area/debrisfield/explored
 	icon_state = "debrisexplored"
 
-/area/space/debrisfield/unexplored
+/area/debrisfield/unexplored
 	icon_state = "debrisunexplored"
 
 /area/debrisfield/derelict
 	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+
+/area/debrisfield/pirate_oupost
+	name = "Asteroid Base"
+	icon_state = "debrisexplored"
+	has_gravity = 1
+
+/area/debrisfield/unidentified_corvette
+	name = "Unidentified Corvette"
+	icon_state = "debrisexplored"
+	has_gravity = 1
 
 //Pirate base
 /area/shuttle/excursion/piratebase
