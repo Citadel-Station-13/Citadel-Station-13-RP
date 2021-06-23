@@ -3,7 +3,6 @@
 "ac" = (/obj/structure/flora/pottedplant/flower,/mob/living/simple_mob/humanoid/pirate/las,/turf/simulated/floor/wood,/area/debrisfield/pirate_oupost)
 "ad" = (/obj/item/stool/padded,/obj/effect/floor_decal/borderfloorblack{dir = 4},/mob/living/simple_mob/humanoid/pirate/ranged,/turf/simulated/floor/tiled,/area/debrisfield/pirate_oupost)
 "ae" = (/obj/item/stool/padded,/obj/effect/floor_decal/borderfloorblack{dir = 1},/mob/living/simple_mob/humanoid/pirate/ranged/handcannon,/turf/simulated/floor/tiled,/area/debrisfield/pirate_oupost)
-"af" = (/obj/effect/shuttle_landmark/triumph/pirate/outpost,/turf/simulated/floor/tiled/techfloor/grid,/area/debrisfield/pirate_oupost)
 "aw" = (/obj/structure/dispenser{phorontanks = 0},/turf/simulated/floor/tiled/techfloor/grid,/area/debrisfield/pirate_oupost)
 "bm" = (/obj/machinery/door/blast/shutters{dir = 4},/turf/simulated/floor/tiled/techfloor/grid,/area/debrisfield/pirate_oupost)
 "by" = (/obj/structure/table/marble,/obj/item/material/knife/butch,/turf/simulated/floor/tiled/dark,/area/debrisfield/pirate_oupost)
@@ -157,7 +156,7 @@ ZDZDZDZDZDZDVyvQjcjcjcjcjcjcjcjcjcjcjcjcmajcmajcjcjcjcjcjcjcjcjcvQVyVyVytNtNtNVy
 ZDZDZDZDZDVyVyvQjcqWqWqWbZqWqWqWqWqWqWqWqWbZqWqWqWqWqWqWbZqWqWwCtNtNVyVytNtNtNVyVytNVytNVyVyZDZDZDZD
 ZDZDZDZDZDVyVyvQjcqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
 ZDZDZDVyVyVyVyvQjcqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
-ZDZDVyvQvQvQvQvQjcUiqWqWqWqWqWqWqWqWqWqWqWafqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDVyvQvQvQvQvQjcUiqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
 ZDVyVyvQjcjcjcjcjcqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
 ZDVyVyvQjcuquqqWbmqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
 ZDZDVyvQjcqWqWqWbmqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
