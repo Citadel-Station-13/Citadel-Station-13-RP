@@ -158,3 +158,4 @@
 	suffix = "merc_corvette.dmm"
 	cost = 30
 	discard_prob = 20
+	
