@@ -2270,7 +2270,6 @@
 #include "code\modules\maps\tg\map_template.dm"
 #include "code\modules\maps\tg\map_template_vr.dm"
 #include "code\modules\maps\tg\reader.dm"
-#include "code\modules\maps\triumph\lateload.dm"
 #include "code\modules\maps\triumph\levels\classd.dm"
 #include "code\modules\maps\triumph\levels\classh.dm"
 #include "code\modules\maps\triumph\levels\frozen_planet.dm"
