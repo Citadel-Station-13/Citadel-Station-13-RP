@@ -199,7 +199,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/spacecash/c20,
 		/obj/item/camera_assembly,
 		/obj/item/caution,
-		/obj/item/caution/cone,
+		/obj/obj/item/clothing/head/cone,
 		/obj/item/card/emag_broken,
 		/obj/item/camera,
 		/obj/item/pda,
