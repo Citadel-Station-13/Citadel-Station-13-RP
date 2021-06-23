@@ -6,43 +6,64 @@
 /datum/map_template/submap/level_specific/debrisfield/asteroids1
 	name = "Asteroids 1"
 	suffix = "asteroids1.dmm"
-	cost = 2
+	cost = 1
 	allow_duplicates = TRUE
 
 /datum/map_template/submap/level_specific/debrisfield/asteroids2
 	name = "Asteroids 2"
 	suffix = "asteroids2.dmm"
-	cost = 2
+	cost = 1
 	allow_duplicates = TRUE
 
 /datum/map_template/submap/level_specific/debrisfield/asteroids3
 	name = "Asteroids 3"
 	suffix = "asteroids3.dmm"
-	cost = 2
+	cost = 1
 	allow_duplicates = TRUE
+
+//These repeat templates should increase the probability of Asteroid spawning allowing for dense Debris Field.
+
+/datum/map_template/submap/level_specific/debrisfield/asteroids4
+	name = "Asteroids 1"
+	suffix = "asteroids1.dmm"
+	cost = 1
+	allow_duplicates = TRUE
+
+/datum/map_template/submap/level_specific/debrisfield/asteroids5
+	name = "Asteroids 2"
+	suffix = "asteroids2.dmm"
+	cost = 1
+	allow_duplicates = TRUE
+
+/datum/map_template/submap/level_specific/debrisfield/asteroids6
+	name = "Asteroids 3"
+	suffix = "asteroids3.dmm"
+	cost = 1
+	allow_duplicates = TRUE
+
 
 /datum/map_template/submap/level_specific/debrisfield/carp_asteroids1
 	name = "Carp Asteroids 1"
 	suffix = "carp_asteroids1.dmm"
-	cost = 5
+	cost = 2
 	allow_duplicates = TRUE
 
 /datum/map_template/submap/level_specific/debrisfield/carp_asteroids2
 	name = "Carp Asteroids 2"
 	suffix = "carp_asteroids2.dmm"
-	cost = 5
+	cost = 2
 	allow_duplicates = TRUE
 
 /datum/map_template/submap/level_specific/debrisfield/carp_asteroids3
 	name = "Carp Asteroids 3"
 	suffix = "carp_asteroids3.dmm"
-	cost = 5
+	cost = 2
 	allow_duplicates = TRUE
 
 /datum/map_template/submap/level_specific/debrisfield/carp_asteroids4
 	name = "Carp Asteroids 4"
 	suffix = "carp_asteroids4.dmm"
-	cost = 5
+	cost = 2
 	allow_duplicates = TRUE
 
 /datum/map_template/submap/level_specific/debrisfield/foodstand
@@ -53,37 +74,38 @@
 /datum/map_template/submap/level_specific/debrisfield/debris1
 	name = "Debris 1"
 	suffix = "debris1.dmm"
-	cost = 2
+	cost = 5
 
 /datum/map_template/submap/level_specific/debrisfield/debris2
 	name = "Debris 2"
 	suffix = "debris2.dmm"
-	cost = 2
+	cost = 5
 
 /datum/map_template/submap/level_specific/debrisfield/debris3
 	name = "Debris 3"
 	suffix = "debris3.dmm"
-	cost = 2
+	cost = 5
 
 /datum/map_template/submap/level_specific/debrisfield/debris4
 	name = "Debris 4"
 	suffix = "debris4.dmm"
-	cost = 2
+	cost = 5
 
 /datum/map_template/submap/level_specific/debrisfield/debris5
 	name = "Debris 5"
 	suffix = "debris5.dmm"
-	cost = 2
+	cost = 5
 
 /datum/map_template/submap/level_specific/debrisfield/debris6
 	name = "Debris 6"
 	suffix = "debris6.dmm"
-	cost = 2
+	cost = 5
 
 /datum/map_template/submap/level_specific/debrisfield/ship_sup_exploded
 	name = "Exploded Cargo Ship"
 	suffix = "ship_sup_exploded.dmm"
 	cost = 35
+	discard_prob = 25
 
 /datum/map_template/submap/level_specific/debrisfield/ship_med_crashed
 	name = "Crashed Medical Ship"
@@ -94,13 +116,45 @@
 	name = "Overrun Research Ship"
 	suffix = "ship_sci_overrun.dmm"
 	cost = 35
+	discard_prob = 25
 
 /datum/map_template/submap/level_specific/debrisfield/oldshuttle
 	name = "Old Expedition Shuttle"
 	suffix = "oldshuttle.dmm"
 	cost = 30
+	discard_prob = 20
 
 /datum/map_template/submap/level_specific/debrisfield/alien_massive_derelict
 	name = "Alien Derelict"
 	suffix = "derelict.dmm"
 	cost = 35
+	discard_prob = 25
+
+/datum/map_template/submap/level_specific/debrisfield/hivebot
+	name = "Hivebot Cruiser"
+	suffix = "ship_hivebot.dmm"
+	cost = 30
+
+/datum/map_template/submap/level_specific/debrisfield/pirate_outpost
+	name = "Pirate Outpost"
+	suffix = "pirate_outpost.dmm"
+	cost = 30
+	discard_prob = 20
+
+/datum/map_template/submap/level_specific/debrisfield/space_burial
+	name = "Space Burial"
+	suffix = "space_burial.dmm"
+	cost = 15
+	discard_prob = 5
+
+/datum/map_template/submap/level_specific/debrisfield/rv
+	name = "Space RV"
+	suffix = "space_rv.dmm"
+	cost = 20
+	discard_prob = 10
+
+/datum/map_template/submap/level_specific/debrisfield/merc_corvette
+	name = "Mercenary Corvette"
+	suffix = "merc_corvette.dmm"
+	cost = 30
+	discard_prob = 20
