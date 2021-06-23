@@ -160,8 +160,6 @@
 	dir = 10
 	},
 /obj/machinery/airlock_sensor{
-	pixel_z = 0;
-	pixel_w = 28;
 	id_tag = "northchambersensor";
 	frequency = 1313
 	},
@@ -218,7 +216,6 @@
 	frequency = 1313;
 	id_tag = "northairlock";
 	name = "North Airlock Controller";
-	pixel_w = 27;
 	tag_airpump = "northpump";
 	tag_chamber_sensor = "northchambersensor";
 	tag_exterior_door = "northexteriordoor";
@@ -1317,7 +1314,6 @@
 	dir = 4
 	},
 /obj/machinery/recharger/wallcharger{
-	pixel_z = 0;
 	pixel_w = -25
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -1540,8 +1536,6 @@
 	dir = 8
 	},
 /obj/machinery/recharger/wallcharger{
-	pixel_w = 32;
-	pixel_z = 0
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)
@@ -1763,7 +1757,6 @@
 /area/ship/mercenary/bridge)
 "de" = (
 /obj/machinery/recharger/wallcharger{
-	pixel_z = 0;
 	pixel_w = -25
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -2047,7 +2040,6 @@
 	dir = 5
 	},
 /obj/structure/sign/department/bridge{
-	pixel_z = 31
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/mercenary/hall2)
@@ -2955,7 +2947,6 @@
 	frequency = 1414;
 	id_tag = "southairlock";
 	name = "South Airlock Controller";
-	pixel_w = 22;
 	tag_airpump = "southpump";
 	tag_chamber_sensor = "southchambersensor";
 	tag_exterior_door = "southexteriordoor";
@@ -3017,8 +3008,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1414;
 	id_tag = "southchambersensor";
-	pixel_w = 28;
-	pixel_z = 0
 	},
 /turf/simulated/floor,
 /area/ship/mercenary/southairlock)
@@ -3385,7 +3374,6 @@
 	frequency = 1414;
 	id_tag = "southairlock";
 	master_tag = "southexteriorsensor";
-	pixel_z = 24
 	},
 /turf/space,
 /area/space)
@@ -3757,8 +3745,6 @@
 	dir = 8
 	},
 /obj/machinery/recharger/wallcharger{
-	pixel_w = 32;
-	pixel_z = 0
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/mercboat)

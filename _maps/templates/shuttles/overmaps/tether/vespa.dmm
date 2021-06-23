@@ -605,8 +605,6 @@
 	icon_state = "tube1"
 	},
 /obj/machinery/firealarm{
-	pixel_z = 1;
-	pixel_w = 31
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
@@ -7378,8 +7376,6 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	pixel_z = 1;
-	pixel_w = 31
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/sechall)
@@ -8426,7 +8422,7 @@
 /area/ship/expe/engineeringpower)
 "pt" = (
 /obj/machinery/power/smes/buildable{
-	
+
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -8639,8 +8635,6 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26;
-	pixel_z = 1;
-	pixel_w = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
@@ -8850,8 +8844,6 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	pixel_z = 1;
-	pixel_w = 31
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby)
@@ -8888,8 +8880,6 @@
 	dir = 6
 	},
 /obj/machinery/firealarm{
-	pixel_z = 1;
-	pixel_w = 31
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby2)
@@ -12567,8 +12557,6 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26;
-	pixel_z = 1;
-	pixel_w = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
@@ -12590,8 +12578,6 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26;
-	pixel_z = 1;
-	pixel_w = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor3)
@@ -12613,8 +12599,6 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26;
-	pixel_z = 1;
-	pixel_w = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor3)
@@ -12633,8 +12617,6 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26;
-	pixel_z = 1;
-	pixel_w = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
@@ -12650,8 +12632,6 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26;
-	pixel_z = 1;
-	pixel_w = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -12670,8 +12650,6 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26;
-	pixel_z = 1;
-	pixel_w = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
@@ -12690,8 +12668,6 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26;
-	pixel_z = 1;
-	pixel_w = 0
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)

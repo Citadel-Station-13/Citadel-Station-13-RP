@@ -10,7 +10,6 @@
 /obj/item/bedsheet/hos,
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_w = 0;
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -33,7 +32,6 @@
 /obj/structure/bed/padded,
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_w = 0;
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -370,7 +368,6 @@
 /obj/item/melee/telebaton,
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_w = 0;
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -646,7 +643,6 @@
 /obj/structure/bed/padded,
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_w = 0;
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -1233,7 +1229,6 @@
 "bP" = (
 /obj/machinery/computer/security/telescreen/entertainment{
 	icon_state = "frame";
-	pixel_w = 0;
 	pixel_x = 0;
 	pixel_y = 32
 	},

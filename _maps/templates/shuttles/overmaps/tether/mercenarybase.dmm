@@ -194,7 +194,6 @@
 	frequency = 1200;
 	id_tag = "westairlock";
 	master_tag = "westexteriorsensor";
-	pixel_w = 26
 	},
 /turf/simulated/mineral/floor,
 /area/mercbase/roid)
@@ -207,7 +206,6 @@
 	frequency = 1200;
 	id_tag = "westairlock";
 	master_tag = "westchambersensor";
-	pixel_z = 23
 	},
 /turf/simulated/floor,
 /area/mercbase/airlock)
@@ -216,7 +214,6 @@
 	frequency = 1200;
 	id_tag = "westairlock";
 	master_tag = "westinteriorsensor";
-	pixel_z = 23
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
@@ -1452,7 +1449,6 @@
 	dir = 8
 	},
 /obj/structure/closet/hydrant{
-	pixel_w = 32
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/medicalOR)

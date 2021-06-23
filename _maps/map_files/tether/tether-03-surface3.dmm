@@ -9372,9 +9372,7 @@
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "aoX" = (
 /turf/simulated/wall,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "aoY" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -9730,22 +9728,16 @@
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "apw" = (
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "apx" = (
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "apy" = (
 /obj/machinery/shower{
 	dir = 8;
@@ -9753,9 +9745,7 @@
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "apz" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/research,
@@ -10057,25 +10047,19 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "apV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "apW" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "apX" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -10547,9 +10531,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "aqK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -10569,17 +10551,13 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "aqL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "aqM" = (
 /obj/machinery/light{
 	dir = 4
@@ -10588,9 +10566,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "aqN" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/engineering,
@@ -10848,18 +10824,14 @@
 "arl" = (
 /obj/item/bikehorn/rubberducky,
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "arm" = (
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/white,
-/area/crew_quarters/recreation_area_restroom{
-	name = "\improper Recreation Area Showers"
-	})
+/area/crew_quarters/recreation_area_restroom)
 "arn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
