@@ -48,7 +48,7 @@
 
 /datum/map_template/triumph_lateload/away_debrisfield/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 125, /area/space/debrisfield/unexplored, /datum/map_template/submap/level_specific/debrisfield)
+	seed_submaps(list(Z_LEVEL_DEBRISFIELD), 150, /area/debrisfield/unexplored, /datum/map_template/submap/level_specific/debrisfield)
 
 // Pirate base
 #include "space/_piratebase.dm"
