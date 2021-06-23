@@ -1238,8 +1238,7 @@
 /area/holodeck/source_basketball)
 "dL" = (
 /obj/item/perfect_tele_beacon{
-	tele_name = "Unknown";
-	tele_network = "unksix"
+	tele_name = "Unknown"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm6)
