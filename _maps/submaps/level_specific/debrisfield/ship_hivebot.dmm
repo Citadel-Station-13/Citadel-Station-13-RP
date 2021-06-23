@@ -1,0 +1,62 @@
+"a" = (/turf/space,/area/space/debrisfield/explored)
+"c" = (/obj/structure/table/standard,/obj/item/aiModule/tyrant,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"e" = (/obj/random/mob/robotic/hivebot,/obj/machinery/recharge_station,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"f" = (/obj/structure/table/rack/shelf/steel,/obj/fiftyspawner/rglass,/obj/fiftyspawner/rglass,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"g" = (/obj/machinery/atmospherics/pipe/tank/phoron{dir = 8; volume = 30000},/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"h" = (/mob/living/simple_mob/mechanical/hivebot/support/logistics,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"i" = (/obj/machinery/door/airlock/vault/bolted,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"m" = (/obj/random/mob/robotic/hivebot,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"n" = (/obj/structure/table/rack/shelf/steel,/obj/fiftyspawner/durasteel,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"p" = (/obj/structure/shuttle/engine/heater{dir = 8},/obj/machinery/atmospherics/pipe/simple/hidden{dir = 10},/turf/simulated/shuttle/wall/voidcraft,/area/space/debrisfield/explored)
+"q" = (/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"s" = (/obj/machinery/power/smes/buildable{charge = 1.5e+007; cur_coils = 3},/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"t" = (/obj/structure/table/standard,/obj/item/aiModule/oxygen,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"u" = (/obj/machinery/telecomms/server/presets/unused,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"v" = (/obj/machinery/telecomms/hub,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"x" = (/obj/structure/table/rack/shelf/steel,/obj/fiftyspawner/iron,/obj/fiftyspawner/iron,/obj/fiftyspawner/iron,/obj/fiftyspawner/iron,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"z" = (/obj/machinery/telecomms/broadcaster,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"A" = (/obj/structure/shuttle/engine/heater{dir = 8},/obj/machinery/atmospherics/pipe/manifold/hidden{dir = 4},/turf/simulated/shuttle/wall/voidcraft,/area/space/debrisfield/explored)
+"B" = (/turf/simulated/shuttle/wall/voidcraft,/area/space/debrisfield/explored)
+"C" = (/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"D" = (/obj/machinery/atmospherics/pipe/simple/hidden{dir = 6},/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"E" = (/obj/machinery/porta_turret/poi,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"F" = (/obj/machinery/atmospherics/pipe/manifold/hidden,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"G" = (/obj/structure/table/standard,/obj/item/stack/cable_coil,/obj/item/stack/cable_coil,/obj/item/stack/cable_coil,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"H" = (/obj/machinery/atmospherics/binary/pump{dir = 8; name = "main fuel pump"},/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"I" = (/mob/living/simple_mob/mechanical/hivebot/support/commander/autofollow,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"K" = (/turf/simulated/mineral/floor/vacuum,/area/space/debrisfield/explored)
+"L" = (/obj/structure/shuttle/engine/propulsion{dir = 8},/turf/simulated/shuttle/plating/airless,/area/space/debrisfield/explored)
+"N" = (/obj/structure/table/rack/shelf/steel,/obj/fiftyspawner/gold,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"O" = (/obj/structure/shuttle/engine/heater{dir = 8},/obj/machinery/atmospherics/pipe/manifold/hidden,/turf/simulated/shuttle/wall/voidcraft,/area/space/debrisfield/explored)
+"P" = (/obj/structure/table/rack/shelf/steel,/obj/fiftyspawner/phoron,/obj/fiftyspawner/phoron,/obj/fiftyspawner/phoron,/obj/fiftyspawner/phoron,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"R" = (/obj/structure/table/standard,/obj/item/aiModule/antimov,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"S" = (/obj/machinery/door/airlock/hatch,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"T" = (/turf/simulated/mineral/vacuum,/area/space/debrisfield/explored)
+"U" = (/obj/machinery/recharge_station,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"V" = (/obj/structure/table/rack/shelf/steel,/obj/fiftyspawner/uranium,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"W" = (/obj/machinery/atmospherics/pipe/manifold/hidden{dir = 8},/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"X" = (/obj/machinery/power/port_gen/pacman{anchored = 1},/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"Y" = (/obj/machinery/shipsensors/weak,/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+
+(1,1,1) = {"
+TTTTTTTaaaaaaTTTTTTTTaaaT
+TBBBBBTTTTaaTTTTTTTTTaaTT
+TBViqBBBBTTYTTTBBBBBTTTTT
+TBBBqfxhBBBBBBBBvuzBBTTTa
+TTTBmqqqBXmXmXBqmqIRBTTTa
+aaTBNPnqSqqqqqSqqmqtBTTTa
+aaTBBBBBBBSBBBBqmqqcBTTTT
+aaTTTTTTBGqCBqBBUUUBBTTTT
+aTTTTaaLpGDgBqmBBBBBTTTTT
+aTTTaaaLAGWgBqqBEKKKKKKTT
+aaaaaaaLAqWgBqqSKKKKKKKTT
+aTTTaaaLAmWgBqqSKKKKTTKTT
+aTTTTaaLOHFgBqmBEKKTTKKTT
+TTBBBTTTBBSBBSBBBBBTTKKTT
+TBBsBBBBBmqqqqUUUeBTKKTTT
+TBsqqqqmSqqqqqqqqqBTKKTTa
+TBBsBBBBBUUUUqUUUeBTKKKaa
+TTBBBTTTBBBBBBBBBBBTTTKaa
+aTTTTTTTTTTTTTTTTTTTTTTaa
+aaTTTTaaaaaaaaaaaaaaaaaaa
+"}

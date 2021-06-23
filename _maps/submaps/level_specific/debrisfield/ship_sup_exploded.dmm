@@ -267,18 +267,59 @@
 /area/space/debrisfield/explored)
 "jk" = (
 /obj/machinery/giga_drill,
+/obj/machinery/mech_recharger,
+/turf/simulated/shuttle/floor/airless,
+/area/space/debrisfield/explored)
+"jw" = (
+/obj/machinery/light/small/flicker{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/airless,
+/area/space/debrisfield/explored)
+"uZ" = (
+/obj/machinery/light/flicker,
 /turf/simulated/shuttle/floor/airless,
 /area/space/debrisfield/explored)
 "wb" = (
 /obj/effect/gibspawner/human,
 /turf/simulated/shuttle/floor/white/airless,
 /area/space/debrisfield/explored)
+"xK" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall,
+/area/space/debrisfield/explored)
 "HF" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
 /turf/simulated/shuttle/floor/airless,
 /area/space/debrisfield/explored)
+"Mp" = (
+/obj/machinery/light/small/flicker,
+/turf/simulated/shuttle/floor/white/airless,
+/area/space/debrisfield/explored)
 "NO" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
+/turf/simulated/shuttle/floor/white/airless,
+/area/space/debrisfield/explored)
+"TF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/flicker{
+	dir = 8
+	},
+/turf/simulated/shuttle/plating/airless,
+/area/space/debrisfield/explored)
+"Xh" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall/hard_corner,
+/area/space/debrisfield/explored)
+"Zl" = (
+/obj/item/inflatable/torn,
+/obj/machinery/light/flicker{
+	dir = 8
+	},
 /turf/simulated/shuttle/floor/white/airless,
 /area/space/debrisfield/explored)
 
@@ -345,8 +386,8 @@ aa
 (3,1,1) = {"
 aa
 ac
-bd
-ag
+Xh
+TF
 ad
 am
 bb
@@ -390,11 +431,11 @@ ah
 ah
 ai
 aj
-aj
+Mp
 ab
 aQ
 aQ
-aA
+uZ
 ab
 ab
 aa
@@ -436,7 +477,7 @@ aa
 aa
 aa
 ac
-bd
+Xh
 am
 ah
 aa
@@ -449,7 +490,7 @@ bb
 ah
 ag
 ag
-ar
+Zl
 au
 ab
 aR
@@ -466,7 +507,7 @@ aa
 aa
 aa
 ae
-ab
+xK
 am
 ax
 ah
@@ -526,7 +567,7 @@ aa
 aa
 aa
 aa
-ab
+xK
 ah
 ah
 aa
@@ -556,7 +597,7 @@ aa
 aa
 aa
 ac
-ab
+xK
 ap
 ah
 aG
@@ -586,7 +627,7 @@ aa
 aa
 aa
 ac
-ab
+xK
 aq
 ag
 bb
@@ -616,8 +657,8 @@ aa
 aa
 aa
 ac
-ab
-aA
+xK
+jw
 aD
 ah
 aa
@@ -630,11 +671,11 @@ ab
 aj
 wb
 aj
-aj
+Mp
 ab
 aU
 aU
-aA
+uZ
 ab
 ab
 aa
@@ -646,7 +687,7 @@ aa
 aa
 aa
 ac
-ab
+xK
 aA
 aA
 ag

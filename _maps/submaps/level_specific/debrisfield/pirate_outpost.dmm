@@ -1,0 +1,174 @@
+"aw" = (/obj/structure/dispenser{phorontanks = 0},/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"bm" = (/obj/machinery/door/blast/shutters{dir = 4},/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"by" = (/obj/structure/table/marble,/obj/item/material/knife/butch,/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"bH" = (/obj/machinery/vending/dinnerware,/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"bZ" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"ca" = (/obj/machinery/light/small{dir = 4},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"cC" = (/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"cD" = (/obj/structure/closet/emcloset,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"de" = (/obj/structure/bed/chair{dir = 4},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"dk" = (/obj/effect/floor_decal/borderfloorblack{dir = 1},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"dr" = (/obj/structure/closet/secure_closet/freezer/meat{anchored = 1},/turf/simulated/floor/tiled/freezer,/area/space/debrisfield/explored)
+"dY" = (/obj/structure/table/woodentable,/obj/item/flashlight/lamp/green,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"eH" = (/obj/machinery/light,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"fx" = (/obj/effect/floor_decal/borderfloorblack/corner{dir = 4},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"fC" = (/obj/machinery/light/small/flicker{dir = 8},/turf/simulated/floor,/area/space/debrisfield/explored)
+"fI" = (/obj/structure/closet/crate/bin{anchored = 1},/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"gb" = (/obj/structure/table/rack/shelf/steel,/obj/fiftyspawner/uranium,/obj/fiftyspawner/uranium,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"gc" = (/obj/structure/closet/emcloset,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"gp" = (/obj/machinery/atmospherics/unary/vent_scrubber/on{dir = 1},/obj/structure/table/marble,/obj/item/reagent_containers/food/condiment/small/saltshaker{pixel_x = -3},/obj/item/reagent_containers/food/condiment/small/saltshaker{pixel_x = -9},/obj/item/reagent_containers/food/condiment/small/peppermill{pixel_x = 3},/obj/item/reagent_containers/food/condiment/small/peppermill{pixel_x = 9},/obj/item/reagent_containers/food/condiment/spacespice{pixel_x = -8; pixel_y = 13},/obj/item/reagent_containers/food/condiment/enzyme{layer = 5; pixel_y = 16},/obj/item/reagent_containers/food/condiment/soysauce{pixel_x = 8; pixel_y = 16},/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"gq" = (/obj/structure/reagent_dispensers/fueltank,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"gA" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"hf" = (/obj/structure/bed,/obj/item/bedsheet/orange,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"hn" = (/obj/structure/table/woodentable,/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"hq" = (/obj/machinery/door/airlock/freezer,/turf/simulated/floor/tiled/freezer,/area/space/debrisfield/explored)
+"ij" = (/turf/simulated/wall,/area/space/debrisfield/explored)
+"jc" = (/turf/simulated/wall/r_wall,/area/space/debrisfield/explored)
+"jh" = (/obj/machinery/microwave,/obj/structure/table/marble,/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"jv" = (/obj/structure/table/standard,/obj/random/tool/powermaint,/obj/random/tool/powermaint,/obj/random/tool/powermaint,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"jC" = (/obj/structure/bed/double,/obj/item/bedsheet/browndouble,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"ko" = (/turf/simulated/floor/carpet,/area/space/debrisfield/explored)
+"lQ" = (/obj/structure/table/marble,/obj/machinery/reagentgrinder,/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"ma" = (/obj/machinery/door/airlock/glass_external,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"mc" = (/obj/machinery/door/airlock/engineering,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"mP" = (/turf/simulated/floor/tiled/freezer,/area/space/debrisfield/explored)
+"nz" = (/obj/structure/loot_pile/surface/medicine_cabinet/fresh{pixel_x = -28},/turf/simulated/floor/tiled/white,/area/space/debrisfield/explored)
+"nY" = (/obj/structure/bed/chair,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"oh" = (/mob/living/simple_mob/humanoid/pirate/ranged/handcannon/armored,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"oi" = (/obj/machinery/light/small,/turf/simulated/floor/tiled/freezer,/area/space/debrisfield/explored)
+"or" = (/obj/machinery/appliance/cooker/oven,/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"pF" = (/obj/machinery/power/port_gen/pacman/super,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"pT" = (/turf/simulated/shuttle/wall/voidcraft/hard_corner,/area/space/debrisfield/explored)
+"qd" = (/obj/structure/fitness/punchingbag,/turf/simulated/floor/carpet,/area/space/debrisfield/explored)
+"qw" = (/obj/structure/fitness/weightlifter,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"qV" = (/obj/structure/closet/crate/trashcart,/obj/random/trash,/obj/random/trash,/obj/random/trash,/obj/random/trash,/obj/random/trash,/obj/random/trash,/obj/random/trash,/obj/random/trash,/obj/random/trash,/turf/simulated/floor,/area/space/debrisfield/explored)
+"qW" = (/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"rA" = (/obj/structure/table/woodentable,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"rN" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"tf" = (/obj/structure/table/rack/shelf/steel,/obj/random/toolbox,/obj/random/toolbox,/obj/random/toolbox,/obj/random/toolbox,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"tl" = (/obj/machinery/shower{pixel_y = 18},/obj/structure/curtain/open/shower,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"tp" = (/obj/structure/closet/firecloset,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"tv" = (/obj/machinery/door/airlock{name = "Restroom"},/turf/simulated/floor/tiled/white,/area/space/debrisfield/explored)
+"tN" = (/turf/simulated/mineral/floor/vacuum,/area/space/debrisfield/explored)
+"tZ" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/drinks/bottle/cola,/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"uj" = (/obj/structure/bed/chair/comfy/black{dir = 8},/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"uk" = (/mob/living/simple_mob/humanoid/pirate/ranged,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"uq" = (/obj/machinery/portable_atmospherics/canister/empty/phoron,/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"ur" = (/obj/machinery/door/window/northright{dir = 8},/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"uG" = (/obj/structure/closet/cabinet,/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey,/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey,/obj/item/reagent_containers/food/drinks/bottle/specialwhiskey,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"uJ" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/drinks/bottle/rum,/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"va" = (/obj/structure/closet{anchored = 1},/obj/item/clothing/under/pirate,/obj/random/mre,/obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"vw" = (/obj/structure/closet/secure_closet/engineering_electrical,/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"vx" = (/obj/machinery/vending/fitness,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"vy" = (/turf/simulated/shuttle/wall/voidcraft/green,/area/space/debrisfield/explored)
+"vE" = (/mob/living/simple_mob/humanoid/pirate/mate/ranged/shotgun,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"vQ" = (/turf/simulated/wall/solidrock,/area/space/debrisfield/explored)
+"wC" = (/obj/machinery/door/blast/regular,/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"wG" = (/obj/structure/table/gamblingtable,/obj/item/storage/dicecup/loaded{pixel_x = 6},/obj/item/deck/cards{pixel_x = -6; pixel_y = 8},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"xe" = (/obj/machinery/fitness/punching_bag,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"xs" = (/obj/machinery/suit_storage_unit/standard_unit,/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"xO" = (/obj/structure/dispenser,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"xQ" = (/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"xZ" = (/obj/machinery/fitness/heavy/lifter,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"yq" = (/obj/structure/mirror{pixel_x = 26},/obj/structure/sink{dir = 4; pixel_x = 11},/turf/simulated/floor/tiled/white,/area/space/debrisfield/explored)
+"yJ" = (/obj/structure/bed/chair{dir = 1},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"zf" = (/obj/machinery/door/airlock/command,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"zk" = (/obj/machinery/light,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"zm" = (/obj/machinery/portable_atmospherics/canister/oxygen,/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"zx" = (/obj/structure/closet{anchored = 1},/obj/item/clothing/under/pirate,/obj/random/mre,/obj/item/gun/energy/zip,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"zS" = (/obj/structure/bed,/obj/item/bedsheet/green,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Al" = (/obj/machinery/door/airlock,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Aq" = (/obj/machinery/vending/boozeomat,/turf/simulated/wall,/area/space/debrisfield/explored)
+"AC" = (/obj/structure/closet/secure_closet/engineering_welding,/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"AX" = (/mob/living/simple_mob/humanoid/pirate/ranged/shotgun/armored,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"Bd" = (/obj/machinery/light{dir = 4; use_power = 0},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Bx" = (/obj/structure/bed,/obj/item/bedsheet/rainbow,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Bz" = (/obj/machinery/light,/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"Ci" = (/mob/living/simple_mob/humanoid/pirate/ranged/shotgun/armored,/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"CE" = (/mob/living/simple_mob/humanoid/pirate/las,/obj/structure/flora/pottedplant/flower,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"CG" = (/obj/effect/floor_decal/borderfloorblack{dir = 4},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"CI" = (/obj/structure/table/woodentable,/obj/machinery/light{dir = 8},/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{pixel_x = -4; pixel_y = 8},/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{pixel_x = -4},/obj/item/reagent_containers/food/drinks/bottle/vodka{pixel_x = 6; pixel_y = 4},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"DC" = (/obj/machinery/door/airlock/maintenance/common,/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"DM" = (/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"Fa" = (/obj/structure/sink{dir = 8; pixel_x = -12; pixel_y = 2},/obj/structure/mirror{pixel_x = -26},/obj/structure/loot_pile/surface/medicine_cabinet/fresh{pixel_x = 28},/turf/simulated/floor/tiled/white,/area/space/debrisfield/explored)
+"FY" = (/obj/item/stool/padded,/mob/living/simple_mob/humanoid/pirate/ranged/handcannon,/obj/effect/floor_decal/borderfloorblack{dir = 1},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"HU" = (/obj/structure/bed/chair{dir = 8},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"IH" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Js" = (/obj/machinery/light/small/flicker{dir = 1},/turf/simulated/floor,/area/space/debrisfield/explored)
+"Lv" = (/obj/item/stool/padded,/obj/effect/floor_decal/borderfloorblack{dir = 4},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"LB" = (/obj/machinery/light/small/flicker{dir = 1},/turf/simulated/floor/airless,/area/space/debrisfield/explored)
+"Mv" = (/obj/machinery/door/airlock/maintenance/int,/turf/simulated/floor,/area/space/debrisfield/explored)
+"MW" = (/obj/structure/bed,/obj/item/bedsheet/red,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"NK" = (/obj/structure/table/woodentable,/obj/machinery/light/small,/obj/item/paper_bin{pixel_x = -3; pixel_y = 7},/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"NR" = (/obj/machinery/gibber,/turf/simulated/floor/tiled/freezer,/area/space/debrisfield/explored)
+"Pm" = (/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Pq" = (/obj/structure/janitorialcart,/obj/item/reagent_containers/glass/bucket,/turf/simulated/floor,/area/space/debrisfield/explored)
+"Pw" = (/obj/structure/closet/secure_closet/freezer/fridge{anchored = 1},/turf/simulated/floor/tiled/freezer,/area/space/debrisfield/explored)
+"QU" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"QY" = (/obj/structure/sink/kitchen{pixel_y = 28},/turf/simulated/floor,/area/space/debrisfield/explored)
+"RS" = (/obj/machinery/door/airlock/external,/obj/structure/fans/tiny,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Sa" = (/obj/item/stool/padded,/mob/living/simple_mob/humanoid/pirate/ranged,/obj/effect/floor_decal/borderfloorblack{dir = 4},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Ue" = (/obj/structure/closet{anchored = 1},/obj/item/clothing/under/pirate,/obj/random/mre,/obj/item/gun/projectile/pirate,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Ui" = (/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"Uw" = (/obj/structure/closet/jcloset,/obj/random/soap,/obj/item/mop,/obj/item/storage/bag/trash,/obj/item/lightreplacer,/obj/item/storage/box/mousetraps,/obj/item/storage/box/mousetraps,/turf/simulated/floor,/area/space/debrisfield/explored)
+"UA" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"UD" = (/obj/item/stool/padded,/obj/effect/floor_decal/borderfloorblack{dir = 1},/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"UP" = (/obj/structure/table/sifwoodentable,/obj/machinery/light/small,/obj/item/moneybag/vault,/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"Vi" = (/turf/simulated/floor,/area/space/debrisfield/explored)
+"Vk" = (/obj/structure/bed/chair/office/dark{dir = 4},/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"Vy" = (/turf/simulated/mineral/vacuum,/area/space/debrisfield/explored)
+"VT" = (/obj/structure/bed,/obj/item/bedsheet/purple,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"VU" = (/obj/machinery/light/small,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"WD" = (/obj/structure/toilet{pixel_y = 16},/turf/simulated/floor/tiled/white,/area/space/debrisfield/explored)
+"WM" = (/obj/structure/table/rack/shelf/steel,/obj/fiftyspawner/phoron,/obj/fiftyspawner/phoron,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"WU" = (/obj/effect/shuttle_landmark/triumph/pirate/outpost{docking_controller = "pirate_docker"},/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"XF" = (/obj/random/trash_pile,/turf/simulated/floor,/area/space/debrisfield/explored)
+"XH" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"Yp" = (/obj/structure/table/marble,/obj/item/material/kitchen/rollingpin,/turf/simulated/floor/tiled/dark,/area/space/debrisfield/explored)
+"Zo" = (/obj/structure/closet/toolcloset,/turf/simulated/floor/tiled/techfloor/grid,/area/space/debrisfield/explored)
+"Zu" = (/obj/structure/bed/chair/comfy/black{dir = 4},/turf/simulated/floor/wood,/area/space/debrisfield/explored)
+"ZC" = (/obj/structure/window/reinforced/full,/obj/structure/grille,/turf/simulated/floor/tiled,/area/space/debrisfield/explored)
+"ZD" = (/turf/space,/area/space/debrisfield/explored)
+
+(1,1,1) = {"
+ZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZD
+ZDZDVyVyVyVyVyZDZDZDZDZDZDZDVyVyVyVyVyVyVyVyVyVyVyVyZDZDZDZDZDZDZDZDZDZDZDZDVyVyVyVyVyVyVyVyZDZDZDZD
+ZDVyVyVyVyVyVyZDZDZDZDZDZDVyVyvQvQvQvQvQvQvQvQvQvQVyZDZDZDZDZDZDZDZDVyVyVyVyVyVyVyVyVyVyVyVyVyVyZDZD
+ZDVyVyVyVyVyVyVyVyVyVyVyVyVyVyvQijijijijijijijijvQVyVyZDZDVyVyVyVyVyVyVyVyVyvQvQvQvQvQvQvQvQvQVyZDZD
+ZDVyVyVyVyVyVyVyVyVyVyVyVyVyVyvQijUwPqQYViJsXFijvQVyVyVyVyVyVyVyVyVyVyVyVyVyvQijijijijijijijvQVyVyZD
+ZDVyVyVyVyVyVyvQvQvQvQvQvQvQvQvQijfCViViViViqVijvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQijijWDtlijWDijvQVyVyZD
+ZDVyVyVyVyVyVyvQijijijijijijijijijijijijijMvijijijijijijijijijijijijijijijijijijijnzyqijFaijvQVyVyZD
+ZDZDVyVyVyVyVyvQijuGxQjCijxQxQxQxQxQCEijPmPmPmPmPmUAPmPmPmPmPmUAPmPmPmPmPmPmUAPmijtvijijtvijvQVyVyZD
+ZDZDZDVyVyVyVyvQijxQxQxQzfvEVkdYrNxQxQzfPmPmPmPmPmPmPmPmPmPmPmPmPmPmPmPmPmPmPmPmijPmPmPmPmijvQVyVyZD
+ZDZDZDVyVyVyVyvQijZuUPujijfIxQNKxQxQgcijPmPmPmijijijijijijijijAlijijijPmPmPmPmPmAlPmPmPmPmijvQVyVyZD
+ZDZDZDVyVyVyVyvQijijijijijijijijijzfijijIHPmPmijnYPmCGurDMDMDMDMDMbHijcDPmPmPmcDijPmPmPmgAijvQVyVyZD
+ZDZDZDVyVyVyVyvQijpFPmpFijxQxeQUxQxQqwijPmPmPmijCIPmLvhnDMlQYporDMjhijxOVUPmPmtpijzSPmPmBxijvQVyVyZD
+ZDZDZDVyVyVyvQijijPmPmPmmcxQkokokokoxQijPmPmPmijyJPmLvtZDMbyDMDMDMgpijpTvyXHvypTijUePmPmUeijvQVyVyZD
+ZDZDZDZDVyVyvQijgqPmPmPmijfIkokokokoqwijPmPmPmijPmPmSahnCiDMDMAqhqijijpTPmPmPmpTijVTPmohhfijvQVyVyZD
+ZDZDZDZDVyVyvQijjvPmPmPmijxQkokokokoAXijPmPmBdijPmPmCGijhnhnuJijmPPwijpTPmPmcapTijUePmPmzxijvQVyVyZD
+ZDZDZDZDZDVyvQijjvPmPmgAijxQkokokokoxQAlPmPmPmAlPmPmfxdkUDUDFYijmPdrijpTvyRSvypTijMWukPmzSijvQVyVyZD
+ZDZDZDZDZDVyvQijjvPmPmPmijxZkokokokoxQZCPmPmPmZCPmPmPmPmPmPmPmijoiNRijvQcCcCLBvQijzxeHPmvaijvQVyVyZD
+ZDZDZDZDZDVyvQijijPmPmPmijxQkokoqdkoxQAlPmPmPmAlPmPmPmPmPmnYPmijijijijvQcCcCcCvQijijijijijijvQVyZDZD
+ZDZDZDZDZDZDVyvQijgbtfWMijxZxQxQzkxQvxijPmeHPmijderAHUeHdewGHUijvQvQvQvQcCcCcCvQvQvQvQvQvQvQvQVyZDZD
+ZDZDZDZDZDZDVyvQjcjcjcjcjcjcjcjcjcjcjcjcmajcmajcjcjcjcjcjcjcjcjcvQVyVyVytNtNtNVyVyVyVyVyVyVyVyZDZDZD
+ZDZDZDZDZDVyVyvQjcqWqWqWbZqWqWqWqWqWqWqWqWbZqWqWqWqWqWqWbZqWqWwCtNtNVyVytNtNtNVyVytNVytNVyVyZDZDZDZD
+ZDZDZDZDZDVyVyvQjcqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDZDVyVyVyVyvQjcqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDVyvQvQvQvQvQjcUiqWqWqWqWqWqWqWqWqWqWqWWUqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDVyVyvQjcjcjcjcjcqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDVyVyvQjcuquqqWbmqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDVyvQjcqWqWqWbmqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDVyvQjcuquqqWbmqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDVyvQjcjcjcjcjcUiqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDVyvQjcZoACvwjcqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDVyvQjcqWqWqWDCqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDVyvQjcqWqWqWjcUiqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDVyVyvQjcqWqWqWDCqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDVyVyvQjcxsawzmjcqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWqWwCtNtNtNtNtNtNtNtNtNtNtNtNtNZDZDZDZDZD
+ZDZDVyvQjcjcjcjcjcqWqWqWBzqWqWqWqWqWqWqWqWBzqWqWqWqWqWqWBzqWqWwCtNVyVytNVyVyVyVyVyVyVytNtNZDZDZDZDZD
+ZDZDVyvQvQvQvQvQjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcjcvQVyVyVyVyVyVyVyVyVyVyVyVyVyZDZDZDZD
+ZDVyVyVyVyVyVyvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQVyVyVyVyVyVyVyVyVyVyVyVyVyZDZDZDZD
+ZDVyVyVyZDZDVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyZDZDZDZDZD
+ZDVyVyZDZDZDZDZDVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyZDVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyVyZDZDZDZDZDZDZDZD
+ZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZDZD
+"}

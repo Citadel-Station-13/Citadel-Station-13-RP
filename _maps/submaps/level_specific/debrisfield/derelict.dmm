@@ -843,6 +843,10 @@
 "JC" = (
 /turf/simulated/floor/plating/external,
 /area/space/debrisfield/explored)
+"Kw" = (
+/obj/effect/decal/mecha_wreckage/durand,
+/turf/simulated/floor/plating/external,
+/area/space/debrisfield/explored)
 "LM" = (
 /obj/structure/shuttle/engine/heater,
 /turf/simulated/wall,
@@ -2097,7 +2101,7 @@ aa
 (24,1,1) = {"
 aa
 aq
-dZ
+Kw
 JC
 JC
 aq
