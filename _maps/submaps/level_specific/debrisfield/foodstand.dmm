@@ -1,27 +1,288 @@
-"a" = (/turf/template_noop,/area/debrisfield/unexplored)
-"b" = (/turf/simulated/mineral/vacuum,/area/debrisfield/explored)
-"c" = (/turf/simulated/mineral/floor/vacuum,/area/debrisfield/explored)
-"d" = (/turf/simulated/wall/wood,/area/debrisfield/explored)
-"e" = (/obj/structure/closet/secure_closet/freezer/meat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/obj/item/reagent_containers/food/snacks/carpmeat,/turf/simulated/floor/airless,/area/debrisfield/explored)
-"f" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/condiment/coldsauce{pixel_x = 4; pixel_y = 16},/obj/item/reagent_containers/food/condiment/ketchup,/obj/item/reagent_containers/food/condiment/hotsauce{pixel_x = 8},/obj/item/reagent_containers/food/condiment/soysauce{pixel_x = -8},/turf/simulated/floor/airless,/area/debrisfield/explored)
-"g" = (/obj/structure/table/woodentable,/obj/machinery/microwave,/turf/simulated/floor/airless,/area/debrisfield/explored)
-"h" = (/obj/structure/simple_door/wood,/turf/simulated/floor/airless,/area/debrisfield/explored)
-"i" = (/turf/simulated/floor/airless,/area/debrisfield/explored)
-"j" = (/obj/structure/closet/crate/freezer,/obj/item/reagent_containers/food/snacks/taco,/obj/item/reagent_containers/food/snacks/taco,/obj/item/reagent_containers/food/snacks/taco,/obj/item/reagent_containers/food/snacks/hotdog,/obj/item/reagent_containers/food/snacks/hotdog,/obj/item/reagent_containers/food/snacks/cheeseburrito,/obj/item/reagent_containers/food/snacks/cheeseburrito,/turf/simulated/floor/airless,/area/debrisfield/explored)
-"k" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/snacks/taco,/obj/item/reagent_containers/food/snacks/taco,/turf/simulated/floor/airless,/area/debrisfield/explored)
-"l" = (/obj/structure/table/woodentable,/obj/item/reagent_containers/food/snacks/taco,/turf/simulated/floor/airless,/area/debrisfield/explored)
-"m" = (/obj/structure/table/woodentable,/obj/machinery/cash_register{dir = 1},/turf/simulated/floor/airless,/area/debrisfield/explored)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/debrisfield/unexplored)
+"b" = (
+/turf/simulated/mineral/vacuum,
+/area/debrisfield/explored)
+"c" = (
+/turf/simulated/mineral/floor/vacuum,
+/area/debrisfield/explored)
+"d" = (
+/turf/simulated/wall/wood,
+/area/debrisfield/explored)
+"e" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/obj/item/reagent_containers/food/snacks/carpmeat,
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"f" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/condiment/coldsauce{
+	pixel_x = 4;
+	pixel_y = 16
+	},
+/obj/item/reagent_containers/food/condiment/ketchup,
+/obj/item/reagent_containers/food/condiment/hotsauce{
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/food/condiment/soysauce{
+	pixel_x = -8
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"g" = (
+/obj/structure/table/woodentable,
+/obj/machinery/microwave,
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"h" = (
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"i" = (
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"j" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/food/snacks/taco,
+/obj/item/reagent_containers/food/snacks/taco,
+/obj/item/reagent_containers/food/snacks/taco,
+/obj/item/reagent_containers/food/snacks/hotdog,
+/obj/item/reagent_containers/food/snacks/hotdog,
+/obj/item/reagent_containers/food/snacks/cheeseburrito,
+/obj/item/reagent_containers/food/snacks/cheeseburrito,
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"k" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/taco,
+/obj/item/reagent_containers/food/snacks/taco,
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"l" = (
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/snacks/taco,
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"m" = (
+/obj/structure/table/woodentable,
+/obj/machinery/cash_register{
+	dir = 1
+	},
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"p" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/airless,
+/area/debrisfield/explored)
+"t" = (
+/turf/simulated/floor/tiled/airless,
+/area/debrisfield/explored)
+"v" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/tiled/airless,
+/area/debrisfield/explored)
+"K" = (
+/obj/structure/closet/crate/trashcart,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/obj/random/trash,
+/turf/simulated/floor/tiled/airless,
+/area/debrisfield/explored)
+"M" = (
+/obj/structure/toilet{
+	pixel_y = 12
+	},
+/turf/simulated/floor/airless,
+/area/debrisfield/explored)
+"Y" = (
+/obj/machinery/light/small/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/airless,
+/area/debrisfield/explored)
 
 (1,1,1) = {"
-aabbbbaaaaaaa
-abbbbbbccaaaa
-bbbbbcccccaaa
-bbbccccccccaa
-cbccdddddccaa
-ccccdefgdccca
-cccchiijdcccc
-acccdmlkdcccc
-accccccccccca
-aacccccccccaa
-aaaaacccccaaa
+a
+a
+b
+b
+c
+c
+c
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+b
+b
+b
+b
+c
+c
+c
+c
+a
+a
+"}
+(3,1,1) = {"
+b
+b
+d
+d
+d
+Y
+t
+t
+t
+t
+a
+"}
+(4,1,1) = {"
+b
+b
+d
+M
+h
+t
+t
+t
+t
+t
+a
+"}
+(5,1,1) = {"
+b
+b
+d
+d
+d
+d
+h
+d
+t
+t
+a
+"}
+(6,1,1) = {"
+b
+b
+c
+c
+d
+e
+i
+m
+v
+t
+c
+"}
+(7,1,1) = {"
+a
+b
+c
+c
+d
+f
+i
+l
+v
+t
+c
+"}
+(8,1,1) = {"
+a
+c
+c
+c
+d
+g
+j
+k
+v
+t
+c
+"}
+(9,1,1) = {"
+a
+c
+c
+c
+d
+d
+d
+d
+t
+t
+c
+"}
+(10,1,1) = {"
+a
+a
+c
+c
+t
+K
+p
+t
+t
+t
+c
+"}
+(11,1,1) = {"
+a
+a
+a
+c
+t
+t
+t
+t
+t
+t
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+c
+c
+c
+c
+a
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+c
+c
+a
+a
+a
 "}
