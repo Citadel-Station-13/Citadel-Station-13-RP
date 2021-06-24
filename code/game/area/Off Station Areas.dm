@@ -326,13 +326,12 @@
 
 /area/debrisfield
 	name = "Away Mission - Debris Field"
-	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
 	requires_power = 0
 	dynamic_lighting = 0
 	base_turf = /turf/space
 
- /area/debrisfield/explored
+/area/debrisfield/explored
 	icon_state = "debrisexplored"
 
 /area/debrisfield/unexplored
