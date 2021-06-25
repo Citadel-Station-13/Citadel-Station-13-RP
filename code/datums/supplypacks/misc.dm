@@ -261,7 +261,7 @@
 	containername = "ami hardsuit crate"
 	access = access_rd
 
-/datum/supply_pack/misc/ce_rig
+/*/datum/supply_pack/misc/ce_rig
 	name = "advanced voidsuit (empty)"
 	contains = list(
 			/obj/item/rig/ce = 1
@@ -269,4 +269,4 @@
 	cost = 150
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "advanced voidsuit crate"
-	access = access_ce
+	access = access_ce*/
