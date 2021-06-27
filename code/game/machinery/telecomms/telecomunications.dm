@@ -13,8 +13,6 @@
 	Look at radio.dm for the prequel to this code.
 */
 
-var/global/list/obj/machinery/telecomms/GLOB.telecomms_list = list()
-
 /obj/machinery/telecomms
 	icon = 'icons/obj/stationobjs_vr.dmi' //VOREStation Add
 	var/list/links = list() // list of machines this machine is linked to

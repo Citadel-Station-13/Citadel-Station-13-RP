@@ -1,4 +1,4 @@
-/obj/effect/effect/water
+/obj/effect/water
 	name = "water"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
@@ -6,14 +6,14 @@
 	pass_flags = PASSTABLE | PASSGRILLE | PASSBLOB
 	var/list/touched
 
-/obj/effect/effect/water/Initialize(mapload)
+/obj/effect/water/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 15 SECONDS)
 
-/obj/effect/effect/water/proc/set_color() // Call it after you move reagents to it
+/obj/effect/water/proc/set_color() // Call it after you move reagents to it
 	icon += reagents.get_color()
 
-/obj/effect/effect/water/proc/set_up(var/turf/target, var/step_count = 5, var/delay = 5)
+/obj/effect/water/proc/set_up(var/turf/target, var/step_count = 5, var/delay = 5)
 	if(!target)
 		return
 	touched = list()
@@ -36,7 +36,7 @@
 				reagents.touch(AM, reagents.total_volume)
 		sleep(delay)
 
-/obj/effect/effect/water/Crossed(atom/movable/AM, oldloc)
+/obj/effect/water/Crossed(atom/movable/AM, oldloc)
 	. = ..()
 	if(!isobj(AM) && !ismob(AM))
 		return
@@ -46,7 +46,7 @@
 	reagents?.touch(AM, reagents.total_volume)
 
 //Used by spraybottles.
-/obj/effect/effect/water/chempuff
+/obj/effect/water/chempuff
 	name = "chemicals"
 	icon = 'icons/obj/chempuff.dmi'
 	icon_state = ""
