@@ -2376,7 +2376,6 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/random,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
 "rE" = (
@@ -3002,7 +3001,6 @@
 "Gz" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor,
-/obj/random,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
 "Hf" = (
@@ -4600,7 +4598,6 @@
 /area/centcom/simulated/main_hall)
 "WF" = (
 /obj/structure/table/standard,
-/obj/random,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/escape)
 "WH" = (
