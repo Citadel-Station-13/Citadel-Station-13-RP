@@ -76,12 +76,6 @@
         "Linkage":null,
         "Gravity":true,
         "Baseturf":"/turf/simulated/floor/outdoors/grass/sif/virgo3b"
-      },
-      {
-        "Station":false,
-        "Linkage":null,
-        "Gravity":true,
-        "Baseturf":"/turf/simulated/floor/outdoors/grass/sif/virgo3b"
       }
    ],
    "minetype":"none"

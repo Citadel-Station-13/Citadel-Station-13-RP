@@ -29,14 +29,8 @@
 /turf/unsimulated/mineral/virgo3b,
 /area/space)
 "af" = (
-/obj/structure/shuttle/engine/propulsion{
-	icon_state = "burst_l"
-	},
-/turf/space,
-/turf/simulated/shuttle/plating/airless/carry{
-	dir = 1
-	},
-/area/shuttle/supply)
+/turf/simulated/floor/outdoors/beach/sand/desert,
+/area/space)
 "ag" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -64,12 +58,8 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "ai" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/space,
-/turf/simulated/shuttle/plating/airless/carry{
-	dir = 1
-	},
-/area/shuttle/supply)
+/turf/simulated/floor/tiled/steel_grid,
+/area/space)
 "aj" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel_grid,
@@ -586,22 +576,29 @@
 /obj/structure/bed/chair/holochair,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
-"bO" = (
-/obj/structure/shuttle/engine/propulsion,
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	landmark_tag = "supply_cc";
-	name = "Centcom Supply Depot"
+"bN" = (
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "burst_l"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
 	dir = 1
 	},
 /area/shuttle/supply)
+"bO" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry{
+	dir = 1
+	},
+/area/shuttle/supply)
 "bP" = (
-/obj/structure/shuttle/engine/propulsion{
-	icon_state = "burst_r"
+/obj/structure/shuttle/engine/propulsion,
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	landmark_tag = "supply_cc";
+	name = "Centcom Supply Depot"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry{
@@ -757,6 +754,15 @@
 /obj/machinery/door/airlock/alien/public,
 /turf/simulated/shuttle/floor/alienplating,
 /area/unknown/dorm3)
+"cm" = (
+/obj/structure/shuttle/engine/propulsion{
+	icon_state = "burst_r"
+	},
+/turf/space,
+/turf/simulated/shuttle/plating/airless/carry{
+	dir = 1
+	},
+/area/shuttle/supply)
 "cn" = (
 /obj/item/bedsheet/rddouble,
 /obj/structure/bed/double/padded,
@@ -776,6 +782,20 @@
 /turf/simulated/floor/maglev{
 	icon = 'icons/turf/transit_vr.dmi'
 	},
+/area/space)
+"cr" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 4;
+	teleport_z_offset = 4
+	},
+/turf/space,
+/turf/space/transit/north,
 /area/space)
 "cs" = (
 /obj/machinery/door/airlock/glass_external{
@@ -1629,20 +1649,6 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
-"fg" = (
-/obj/effect/step_trigger/teleporter/random{
-	affect_ghosts = 1;
-	name = "escapeshuttle_leave";
-	teleport_x = 25;
-	teleport_x_offset = 245;
-	teleport_y = 25;
-	teleport_y_offset = 245;
-	teleport_z = 4;
-	teleport_z_offset = 4
-	},
-/turf/space,
-/turf/space/transit/north,
-/area/space)
 "fn" = (
 /obj/structure/holostool,
 /obj/effect/floor_decal/carpet{
@@ -2306,7 +2312,7 @@
 /area/centcom/control)
 "pf" = (
 /turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_plating)
+/area/space)
 "pk" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -3210,8 +3216,6 @@
 	initial_flooring = null
 	},
 /area/space)
-"Me" = (
-/turf/simulated/floor/outdoors/beach/sand/desert)
 "Mq" = (
 /obj/machinery/light{
 	dir = 8
@@ -3371,8 +3375,6 @@
 	initial_flooring = null
 	},
 /area/space)
-"PM" = (
-/turf/simulated/floor/tiled/steel_grid)
 "PU" = (
 /obj/effect/floor_decal/transit/orange{
 	dir = 4
@@ -4484,7 +4486,7 @@
 /area/centcom/simulated/restaurant)
 "Wf" = (
 /turf/simulated/floor/holofloor,
-/area/holodeck/source_plating)
+/area/space)
 "Wh" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -5389,7 +5391,7 @@
 "ZQ" = (
 /obj/effect/floor_decal/sign,
 /turf/simulated/floor/holofloor/wood,
-/area/holodeck/source_plating)
+/area/space)
 "ZZ" = (
 /obj/structure/table/standard,
 /obj/machinery/light,
@@ -12793,16 +12795,16 @@ ZQ
 ZQ
 pf
 dB
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
 fZ
 ap
 ap
@@ -12935,16 +12937,16 @@ Wf
 Wf
 ZQ
 dB
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
 fZ
 ap
 ap
@@ -13077,16 +13079,16 @@ Wf
 Wf
 ZQ
 dB
-Me
-Me
-PM
-PM
-PM
-PM
-PM
-PM
-Me
-Me
+af
+af
+ai
+ai
+ai
+ai
+ai
+ai
+af
+af
 fZ
 ap
 ap
@@ -13219,16 +13221,16 @@ Wf
 Wf
 ZQ
 dB
-Me
-Me
-PM
-PM
-PM
-PM
-PM
-PM
-Me
-Me
+af
+af
+ai
+ai
+ai
+ai
+ai
+ai
+af
+af
 fZ
 ap
 ap
@@ -13361,16 +13363,16 @@ Wf
 Wf
 ZQ
 dB
-Me
-Me
-PM
-PM
-PM
-PM
-PM
-PM
-Me
-Me
+af
+af
+ai
+ai
+ai
+ai
+ai
+ai
+af
+af
 fZ
 cd
 cd
@@ -13503,16 +13505,16 @@ Wf
 Wf
 ZQ
 dB
-Me
-Me
-PM
-PM
-PM
-PM
-PM
-PM
-Me
-Me
+af
+af
+ai
+ai
+ai
+ai
+ai
+ai
+af
+af
 fZ
 cd
 ci
@@ -13645,16 +13647,16 @@ Wf
 Wf
 ZQ
 dB
-Me
-Me
-PM
-PM
-PM
-PM
-PM
-PM
-Me
-Me
+af
+af
+ai
+ai
+ai
+ai
+ai
+ai
+af
+af
 fZ
 cd
 ci
@@ -13787,16 +13789,16 @@ Wf
 Wf
 ZQ
 dB
-Me
-Me
-PM
-PM
-PM
-PM
-PM
-PM
-Me
-Me
+af
+af
+ai
+ai
+ai
+ai
+ai
+ai
+af
+af
 fZ
 cd
 ci
@@ -13929,16 +13931,16 @@ Wf
 Wf
 ZQ
 dB
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
 fZ
 cd
 ci
@@ -14071,16 +14073,16 @@ pf
 pf
 pf
 dB
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
-Me
+af
+af
+af
+af
+af
+af
+af
+af
+af
+af
 fZ
 cd
 ci
@@ -15011,10 +15013,10 @@ Jz
 Jz
 Jz
 Jz
-fg
-fg
-fg
-fg
+cr
+cr
+cr
+cr
 iO
 El
 El
@@ -15156,7 +15158,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -15298,7 +15300,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -15440,7 +15442,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -15582,7 +15584,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -15724,7 +15726,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -15866,7 +15868,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -16008,7 +16010,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -16150,7 +16152,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -16292,7 +16294,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -16434,7 +16436,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -16576,7 +16578,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -16718,7 +16720,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -16860,7 +16862,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -17002,7 +17004,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -17144,7 +17146,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -17286,7 +17288,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -17428,7 +17430,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -17570,7 +17572,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -17712,7 +17714,7 @@ jf
 Gs
 Gs
 Gs
-fg
+cr
 iO
 El
 El
@@ -17831,30 +17833,30 @@ ae
 ap
 ap
 ap
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
-fg
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
+cr
 iO
 El
 El
@@ -21194,7 +21196,7 @@ di
 by
 bc
 bc
-af
+bN
 aq
 ae
 ae
@@ -21336,7 +21338,7 @@ di
 bn
 bn
 dE
-ai
+bO
 aq
 ae
 ae
@@ -21478,7 +21480,7 @@ di
 bn
 bn
 dE
-bO
+bP
 aq
 ae
 ae
@@ -21620,7 +21622,7 @@ bn
 bn
 bn
 dE
-ai
+bO
 aq
 ae
 ae
@@ -21762,7 +21764,7 @@ bn
 bz
 bc
 bc
-bP
+cm
 aq
 ae
 ae
