@@ -3,8 +3,8 @@
 	icon_state = "mfoam" //Whiter
 	color = "#A6FAFF"
 	var/lifetime = 3
-	// dries = FALSE // We do this ourselves
-	// slips = FALSE
+	dries = FALSE // We do this ourselves
+	slips = FALSE
 
 /obj/effect/effect/foam/firefighting/Initialize()
 	. = ..()
