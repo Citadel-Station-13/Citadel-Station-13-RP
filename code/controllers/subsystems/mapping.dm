@@ -351,7 +351,7 @@ SUBSYSTEM_DEF(mapping)
 			if(lowertext(mapname) == chosen_name)
 				chosen_type = map_templates[mapname]
 		if(!istype(chosen_type))
-			stack_trace("Configured engine map [chosen_name] is not a valid engine map name!")
+			log_config("Configured engine map [chosen_name] is not a valid engine map name!")
 	if(!istype(chosen_type))
 		var/list/engine_types = list()
 		for(var/map in map_templates)
