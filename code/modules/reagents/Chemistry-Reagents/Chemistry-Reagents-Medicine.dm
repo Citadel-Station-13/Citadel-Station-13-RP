@@ -1561,7 +1561,7 @@
 	name = "Firefighting Foam"
 	id = "firefoam"
 	description = "A historical fire suppressant. Originally believed to simply displace oxygen to starve fires, it actually interferes with the combustion reaction itself. Vastly superior to the cheap water-based extinguishers found on most NT vessels."
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#A6FAFF"
 	taste_description = "the inside of a fire extinguisher"
 
@@ -1577,7 +1577,7 @@
 	var/min_temperature = T0C + 100 // 100C, the boiling point of water
 
 	var/hotspot = (locate(/obj/fire) in T)
-	if(hotspot && !isspace(T))
+	if(hotspot && !isspaceturf(T))
 		var/datum/gas_mixture/lowertemp = T.remove_air(T.air.total_moles)
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
 		lowertemp.react()
