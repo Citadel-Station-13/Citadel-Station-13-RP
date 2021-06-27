@@ -1251,6 +1251,16 @@
 "genre": "Electronic"
 },
 {
+"url": "https://files.catbox.moe/wfpw55.mp3",
+"title": "Astrix on Mushrooms",
+"duration": 6050,
+"artist": "Infected Mushroom",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
 "url": "https://files.catbox.moe/eippys.m4a",
 "title": "Atlantis 1997",
 "duration": 2170,
@@ -2000,9 +2010,9 @@
 "genre": "Electronic"
 },
 {
-"url": "https://s.put.re/uDpZrL1L.mp3",
+"url": "https://files.catbox.moe/60mr3h.mp3",
 "title": "Tin Tin on the Moon (Remix)",
-"duration": 2320,
+"duration": 2400,
 "artist": "Jeroen Tel (Remixed by Cuboos)",
 "secret": false,
 "lobby": true,
@@ -2658,6 +2668,27 @@
 "genre": "Hip-Hop and Rap"
 },
 {
+"url": "https://files.catbox.moe/9vtmkz.mp3",
+"title": "Takyon (Death Yon)",
+"duration": 1800,
+"artist": "Death Grips",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
+"url": "https://files.catbox.moe/jggdx9.mp3",
+"title": "[ERR!·][E#R#$] - OH SHIT I'M FEELING IT",
+"duration": 2250,
+"artist": "Death Grips (A /k/ production)",
+"secret": false,
+"emag": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
 "url": "https://files.catbox.moe/jjoob7.mp3",
 "title": "The Message",
 "duration": 3790,
@@ -3124,7 +3155,7 @@
 {
 "url": "https://files.catbox.moe/py3zrg.mp3",
 "title": "A Shattered Illusion",
-"duration": 1800,
+"duration": 1900,
 "artist": "Heaven Pierce Her",
 "secret": false,
 "lobby": false,
