@@ -13,7 +13,7 @@
 	Look at radio.dm for the prequel to this code.
 */
 
-var/global/list/obj/machinery/telecomms/telecomms_list = list()
+var/global/list/obj/machinery/telecomms/GLOB.telecomms_list = list()
 
 /obj/machinery/telecomms
 	icon = 'icons/obj/stationobjs_vr.dmi' //VOREStation Add
@@ -112,7 +112,7 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 
 
 /obj/machinery/telecomms/Initialize()
-	telecomms_list += src
+	GLOB.telecomms_list += src
 	. = ..()
 
 	//Set the listening_level if there's none.
@@ -128,13 +128,13 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 			for(var/obj/machinery/telecomms/T in orange(20, src))
 				add_link(T)
 		else
-			for(var/obj/machinery/telecomms/T in telecomms_list)
+			for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 				add_link(T)
 	. = ..()
 
 /obj/machinery/telecomms/Destroy()
-	telecomms_list -= src
-	for(var/obj/machinery/telecomms/comm in telecomms_list)
+	GLOB.telecomms_list -= src
+	for(var/obj/machinery/telecomms/comm in GLOB.telecomms_list)
 		comm.links -= src
 	links = list()
 	..()

@@ -161,7 +161,6 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 		mineral = GLOB.ore_data[mineral_name]
 		if(flags & INITIALIZED)
 			UpdateMineral()
-	update_icon()
 
 // Some turfs to make floors look better in centcom tram station.
 
