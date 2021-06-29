@@ -21,6 +21,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/debrisfield/unidentified_corvette)
+"bC" = (
+/obj/machinery/door/airlock/security{
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/steel,
+/area/debrisfield/unidentified_corvette)
 "ca" = (
 /turf/simulated/floor/airless,
 /area/debrisfield/unidentified_corvette)
@@ -51,7 +57,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
 "dd" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	density = 1;
+	frequency = 1331;
+	id_tag = "merc_shuttle_outer";
+	name = "Ship External Access";
+	req_access = list(150)
+	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
@@ -72,6 +84,15 @@
 /area/debrisfield/unidentified_corvette)
 "dW" = (
 /obj/structure/table/woodentable,
+/turf/simulated/floor/tiled/steel,
+/area/debrisfield/unidentified_corvette)
+"ei" = (
+/obj/structure/table/steel,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
+/obj/random/mre,
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
 "eu" = (
@@ -154,7 +175,10 @@
 /turf/simulated/floor/tiled/white,
 /area/debrisfield/unidentified_corvette)
 "lh" = (
-/obj/machinery/door/airlock/external,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
 "lM" = (
@@ -216,7 +240,7 @@
 /turf/simulated/floor/tiled/yellow,
 /area/debrisfield/unidentified_corvette)
 "sT" = (
-/obj/machinery/porta_turret/poi,
+/obj/machinery/porta_turret/stationary/syndie,
 /turf/simulated/floor/airless,
 /area/debrisfield/unidentified_corvette)
 "tn" = (
@@ -300,6 +324,10 @@
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/debrisfield/unidentified_corvette)
+"zA" = (
+/obj/machinery/vending/dinnerware,
+/turf/simulated/floor/tiled/steel,
+/area/debrisfield/unidentified_corvette)
 "zD" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/steel,
@@ -345,6 +373,7 @@
 "Bt" = (
 /obj/structure/table/steel,
 /obj/item/material/knife,
+/obj/item/material/kitchen/utensil/fork,
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
 "By" = (
@@ -469,6 +498,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
+"JD" = (
+/obj/structure/table/steel,
+/obj/item/pizzabox/meat,
+/turf/simulated/floor/tiled/steel,
+/area/debrisfield/unidentified_corvette)
 "Ka" = (
 /obj/machinery/body_scanconsole,
 /obj/effect/floor_decal/corner/green/border{
@@ -509,15 +543,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
-"NK" = (
-/obj/machinery/door/airlock/security{
-	locked = 1
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel,
-/area/debrisfield/unidentified_corvette)
 "Og" = (
 /mob/living/simple_mob/mechanical/viscerator,
 /mob/living/simple_mob/mechanical/viscerator,
@@ -527,13 +552,18 @@
 /obj/machinery/door/airlock/security{
 	locked = 1
 	},
-/obj/effect/floor_decal/borderfloor,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
 "OR" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
 	},
+/turf/simulated/floor/tiled/steel,
+/area/debrisfield/unidentified_corvette)
+"Pf" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/vending/sovietsoda,
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
 "Pz" = (
@@ -592,6 +622,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
 "Rd" = (
+/turf/simulated/floor/tiled/steel,
+/area/debrisfield/unidentified_corvette)
+"Rn" = (
+/obj/structure/table/steel,
+/obj/item/pizzabox/vegetable,
 /turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
 "Rw" = (
@@ -699,6 +734,11 @@
 	icon_state = "dark6";
 	name = "Unknown Shuttle"
 	},
+/area/debrisfield/unidentified_corvette)
+"Xe" = (
+/obj/structure/table/steel,
+/obj/item/pizzabox/mushroom,
+/turf/simulated/floor/tiled/steel,
 /area/debrisfield/unidentified_corvette)
 "Ya" = (
 /obj/machinery/light{
@@ -1128,7 +1168,7 @@ MH
 MH
 MH
 MH
-NK
+Ox
 Ox
 MH
 MH
@@ -1237,12 +1277,12 @@ MH
 MH
 MH
 MH
-IU
+lh
 Rd
 tn
 Rd
 Rd
-QZ
+Pf
 MH
 MH
 MH
@@ -1346,12 +1386,12 @@ MH
 MH
 MH
 Ah
-lh
+Ah
 CT
 MH
 MH
-Jz
-Jz
+bC
+bC
 MH
 MH
 CT
@@ -1390,7 +1430,7 @@ Rd
 Rd
 Rd
 Rd
-zD
+ei
 MH
 IU
 QZ
@@ -1462,7 +1502,7 @@ MH
 Rd
 LH
 ar
-zD
+JD
 LH
 Rd
 MH
@@ -1535,8 +1575,8 @@ cB
 MH
 Rd
 LH
-zD
-zD
+Rn
+Xe
 LH
 Sr
 MH
@@ -1612,7 +1652,7 @@ Rd
 Rd
 Rd
 Rd
-Rd
+zA
 MH
 Rd
 Rd
