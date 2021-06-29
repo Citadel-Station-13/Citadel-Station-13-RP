@@ -226,8 +226,16 @@
 			m_type = 1
 
 		if ("chuckle")
-			message = "chuckles."
-			m_type = 1
+			if(miming)
+                message = "appears to chuckle."
+                m_type = 1
+            else
+                if (!muzzled)
+                    message = "chuckles."
+                    m_type = 2
+                else
+                    message = "makes a noise."
+                    m_type = 2
 
 		if ("twitch")
 			message = "twitches."
