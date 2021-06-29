@@ -226,7 +226,8 @@
 			m_type = 1
 
 		if ("chuckle")
-			emote("laugh")
+			message = "chuckles."
+			m_type = 1
 
 		if ("twitch")
 			message = "twitches."
