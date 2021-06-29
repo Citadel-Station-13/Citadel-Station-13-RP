@@ -73,6 +73,7 @@
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a357
 	action_sound = 'sound/weapons/riflebolt.ogg'
+	one_handed_penalty = 15
 
 /obj/item/gun/projectile/shotgun/pump/rifle/lever/holy
 	name = "blessed lever-action"

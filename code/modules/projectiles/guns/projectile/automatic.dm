@@ -55,7 +55,7 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-//	one_handed_penalty = 15
+	one_handed_penalty = 15
 
 /obj/item/gun/projectile/automatic/c20r/update_icon()
 	..()
@@ -82,7 +82,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
 
-//	one_handed_penalty = 30
+	one_handed_penalty = 30
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -142,7 +142,7 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-//	one_handed_penalty = 60
+	one_handed_penalty = 60
 
 	burst_delay = 4
 	firemodes = list(
@@ -211,7 +211,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
 
-//	one_handed_penalty = 90
+	one_handed_penalty = 90
 
 	var/cover_open = 0
 
@@ -290,7 +290,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
 	projectile_type = /obj/item/projectile/bullet/shotgun
 
-//	one_handed_penalty = 60
+	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -411,7 +411,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 
-//	one_handed_penalty = 45
+	one_handed_penalty = 45
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -496,7 +496,7 @@ obj/item/gun/projectile/automatic/automat/holy
 	allowed_magazines = list(/obj/item/ammo_magazine/holyshot_mag, /obj/item/ammo_magazine/holyshot_mag/stake)
 	projectile_type = /obj/item/projectile/bullet/shotgun
 
-//	one_handed_penalty = 60
+	one_handed_penalty = 40
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
