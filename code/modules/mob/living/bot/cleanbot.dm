@@ -302,14 +302,6 @@
 				L.adjustFireLoss(damage/2)
 		attack_cooldown()
 
-	else if (istype(W, /obj/item/pen))
-		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
-		if (!t)
-			return
-		if (!in_range(src, usr) && src.loc != usr)
-			return
-		src.created_name = t
-
 /mob/living/bot/cleanbot/roomba/update_icons()
 	if(busy)
 		icon_state = "roombot-c"
