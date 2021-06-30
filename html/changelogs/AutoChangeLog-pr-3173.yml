@@ -1,0 +1,5 @@
+author: "nik707"
+delete-after: True
+changes: 
+  - rscdel: "Removed nutrition based examine texts
+tweak: Tweaked max nutrition, and drain to compensate"
