@@ -17665,11 +17665,8 @@
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/melee/baton/stunsword,
-/obj/item/melee/baton/stunsword{
-	pixel_x = 3;
-	pixel_y = -4
-	},
+/obj/item/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "nAS" = (
