@@ -12,7 +12,8 @@
 	selection_color = "#9b633e"
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
-	outfit_type = /decl/hierarchy/outfit/job/secretary
+	outfit_type = /decl/hierarchy/outfit/job/assistant/worker
+
 /datum/job/offduty_civilian
 	title = "Off-duty Worker"
 	latejoin_only = TRUE
