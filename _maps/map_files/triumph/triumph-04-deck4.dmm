@@ -1546,9 +1546,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/structure/window/reinforced/polarized{
+	id = "sauna_tint"
+	},
+/obj/structure/window/reinforced/polarized{
+	dir = 1;
+	id = "pool_tint"
 	},
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/sauna)
@@ -17665,11 +17668,8 @@
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/melee/baton/stunsword,
-/obj/item/melee/baton/stunsword{
-	pixel_x = 3;
-	pixel_y = -4
-	},
+/obj/item/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "nAS" = (
@@ -21531,6 +21531,11 @@
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
+	},
+/obj/machinery/button/windowtint{
+	dir = 4;
+	id = "pool_tint";
+	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/triumph/surfacebase/sauna)
@@ -26402,6 +26407,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
+"tGp" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor,
+/obj/structure/window/reinforced/polarized{
+	dir = 1;
+	id = "pool_tint"
+	},
+/obj/structure/window/reinforced/polarized{
+	id = "sauna_tint"
+	},
+/turf/simulated/floor/plating,
+/area/triumph/surfacebase/sauna)
 "tGt" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -27943,6 +27961,12 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
+	},
+/obj/machinery/button/windowtint{
+	dir = 4;
+	id = "sauna_tint";
+	pixel_x = -25;
+	req_access = null
 	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
@@ -46965,7 +46989,7 @@ lZG
 jVA
 rri
 uXQ
-boN
+tGp
 unJ
 fls
 bQR

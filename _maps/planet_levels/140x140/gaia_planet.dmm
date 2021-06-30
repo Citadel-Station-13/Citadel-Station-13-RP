@@ -4,11 +4,6 @@
 /obj/structure/closet/lasertag/blue,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
-"ah" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
 "aj" = (
 /obj/machinery/appliance/mixer/candy,
 /turf/simulated/floor/tiled/dark,
@@ -21,6 +16,10 @@
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/outdoors/grass/gaia_world,
+/area/gaia_planet/outside)
+"aR" = (
+/obj/effect/mist,
+/turf/simulated/floor/outdoors/water/gaia_world,
 /area/gaia_planet/outside)
 "aS" = (
 /obj/structure/table/woodentable,
@@ -171,6 +170,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/gaia_planet/inside)
+"ev" = (
+/obj/structure/curtain/black,
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "ex" = (
 /obj/structure/table/marble,
 /obj/structure/window/reinforced{
@@ -240,6 +243,21 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/gaia_world,
+/area/gaia_planet/inside)
+"ge" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
+"gf" = (
+/obj/structure/table/bench/wooden,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wmarble,
 /area/gaia_planet/inside)
 "gm" = (
 /obj/machinery/biogenerator,
@@ -360,6 +378,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/gaia_planet/inside)
+"it" = (
+/obj/effect/floor_decal/spline/fancy/wood/corner,
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
 "iw" = (
 /obj/machinery/light{
 	dir = 8
@@ -424,6 +446,12 @@
 /obj/effect/floor_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt/gaia_world,
 /area/gaia_planet/outside)
+"jG" = (
+/obj/structure/table/woodentable,
+/obj/item/paper_bin,
+/obj/item/pen/multi,
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "jH" = (
 /obj/structure/flora/pottedplant/crystal,
 /turf/simulated/floor/wood/gaia_world,
@@ -438,6 +466,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/gaia_planet/outside)
+"ks" = (
+/obj/structure/table/woodentable,
+/obj/structure/bedsheetbin,
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "kz" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -448,16 +481,38 @@
 	},
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"kQ" = (
+/obj/machinery/door/window/westright{
+	name = "Onsen Reception"
+	},
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "kU" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/wood,
 /area/gaia_planet/outside)
+"kZ" = (
+/obj/structure/table/bench/wooden,
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
+"lb" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "lp" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/gaia_world,
 /area/gaia_planet/outside)
+"lr" = (
+/obj/machinery/door/airlock/freezer{
+	id_tag = "Wmn-WC";
+	name = "WC"
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "ls" = (
 /turf/simulated/mineral/gaia_world,
 /area/gaia_planet/outside)
@@ -490,6 +545,21 @@
 /obj/item/bedsheet/bluedouble,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"lN" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
+"lQ" = (
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
+"lW" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "ma" = (
 /obj/machinery/door/window/westright{
 	name = "Self-Service Bar"
@@ -500,11 +570,6 @@
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/gaia_world,
 /area/gaia_planet/inside)
-"mi" = (
-/obj/structure/flora/tree/jungle,
-/obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
 "mm" = (
 /obj/item/stool/padded,
 /obj/machinery/light{
@@ -514,6 +579,13 @@
 /area/gaia_planet/inside)
 "mr" = (
 /obj/structure/flora/pottedplant/subterranean,
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
+"mF" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted/frosted,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
 "mI" = (
@@ -649,6 +721,16 @@
 /obj/item/bone/skull/unknown,
 /turf/simulated/mineral/floor/gaia_world,
 /area/gaia_planet/outside)
+"px" = (
+/obj/structure/table/woodentable,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "pF" = (
 /obj/machinery/light{
 	dir = 1
@@ -691,6 +773,12 @@
 /obj/structure/closet/secure_closet,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"qg" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
 "qj" = (
 /obj/machinery/button/remote/airlock{
 	id = "room1";
@@ -712,6 +800,10 @@
 	dir = 1
 	},
 /area/gaia_planet/outside)
+"qy" = (
+/obj/machinery/washing_machine,
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "qI" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
@@ -891,10 +983,19 @@
 /obj/structure/flora/tree/jungle_small,
 /turf/simulated/floor/outdoors/dirt/gaia_world,
 /area/gaia_planet/outside)
+"ty" = (
+/obj/machinery/door/airlock/sandstone{
+	name = "Korakuen Hot Springs"
+	},
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "tz" = (
 /obj/item/bone/ribs,
 /turf/simulated/mineral/floor/gaia_world,
 /area/gaia_planet/outside)
+"tA" = (
+/turf/simulated/floor/wmarble,
+/area/gaia_planet/inside)
 "tB" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -998,6 +1099,12 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"vM" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/wmarble,
+/area/gaia_planet/inside)
 "vR" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/carpet/turcarpet,
@@ -1017,6 +1124,13 @@
 /obj/structure/flora/ausbushes/palebush,
 /turf/simulated/floor/outdoors/grass/gaia_world,
 /area/gaia_planet/outside)
+"wb" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "wl" = (
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/outdoors/grass/gaia_world,
@@ -1051,10 +1165,20 @@
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"wN" = (
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "xc" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"xk" = (
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
 "xr" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/white,
@@ -1074,6 +1198,12 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/outdoors/grass/gaia_world,
 /area/gaia_planet/outside)
+"xQ" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
 "yd" = (
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/outdoors/dirt/gaia_world,
@@ -1088,11 +1218,24 @@
 /obj/item/bedsheet/rainbowdouble,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"yw" = (
+/obj/machinery/door/airlock/freezer{
+	id_tag = "Men-WC";
+	name = "WC"
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "yF" = (
 /obj/structure/flora/tree/jungle_small,
 /obj/structure/flora/tree/jungle,
 /turf/simulated/floor/outdoors/grass/gaia_world,
 /area/gaia_planet/outside)
+"yG" = (
+/obj/structure/curtain/black{
+	name = "Men's Onsen"
+	},
+/turf/simulated/floor/wmarble,
+/area/gaia_planet/inside)
 "yJ" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /mob/living/simple_mob/animal/passive/snake,
@@ -1129,6 +1272,10 @@
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/simulated/floor/tiled/dark,
 /area/gaia_planet/inside)
+"zb" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/outdoors/dirt/gaia_world,
+/area/gaia_planet/outside)
 "zg" = (
 /obj/machinery/light,
 /turf/simulated/floor/wood/gaia_world,
@@ -1137,6 +1284,11 @@
 /mob/living/simple_mob/animal/passive/bird/european_robin,
 /turf/simulated/floor/outdoors/grass/gaia_world,
 /area/gaia_planet/outside)
+"zx" = (
+/obj/structure/table/woodentable,
+/obj/item/clipboard,
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "zy" = (
 /obj/structure/flora/ausbushes/brflowers,
 /mob/living/simple_mob/animal/passive/bird/european_robin,
@@ -1235,6 +1387,13 @@
 	},
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"AT" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted/frosted,
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "Be" = (
 /obj/structure/table/rack,
 /obj/item/stack/material/log{
@@ -1321,6 +1480,16 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/turcarpet,
 /area/gaia_planet/inside)
+"CQ" = (
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 8
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
+"CY" = (
+/obj/item/pickaxe/hand,
+/turf/simulated/mineral/floor/gaia_world,
+/area/gaia_planet/outside)
 "CZ" = (
 /mob/living/bot/farmbot{
 	replaces_nutriment = 1
@@ -1361,6 +1530,13 @@
 "DD" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
+"DE" = (
+/obj/structure/closet/crate/trashcart{
+	color = "#72B6F7";
+	name = "laundry cart"
+	},
+/turf/simulated/floor/bmarble,
 /area/gaia_planet/inside)
 "DI" = (
 /obj/structure/window/reinforced{
@@ -1633,6 +1809,12 @@
 	},
 /turf/simulated/floor/outdoors/grass/gaia_world,
 /area/gaia_planet/outside)
+"JV" = (
+/obj/machinery/door/airlock/sandstone{
+	name = "Employees Only"
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "JW" = (
 /obj/machinery/chem_master/condimaster,
 /obj/machinery/light{
@@ -1701,11 +1883,6 @@
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/tiled,
 /area/gaia_planet/inside)
-"KM" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
 "KR" = (
 /obj/structure/railing,
 /turf/simulated/floor/wood,
@@ -1713,10 +1890,6 @@
 "KY" = (
 /obj/structure/fence/post,
 /turf/simulated/floor/outdoors/grass/gaia_world,
-/area/gaia_planet/outside)
-"KZ" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/outdoors/dirt/gaia_world,
 /area/gaia_planet/outside)
 "Lg" = (
 /obj/machinery/appliance/cooker/fryer,
@@ -1745,6 +1918,10 @@
 	},
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"LR" = (
+/obj/item/material/knife/machete/hatchet,
+/turf/simulated/mineral/floor/gaia_world,
+/area/gaia_planet/outside)
 "LS" = (
 /obj/machinery/vending/wallmed1{
 	pixel_x = -32
@@ -1796,6 +1973,15 @@
 /area/gaia_planet/inside)
 "NM" = (
 /obj/machinery/light/small,
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
+"NP" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 1
+	},
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
 "Oi" = (
@@ -1974,6 +2160,10 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/gaia_planet/inside)
+"Rz" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/simulated/floor/outdoors/dirt/gaia_world,
+/area/gaia_planet/outside)
 "RB" = (
 /mob/living/simple_mob/animal/passive/fish/salmon,
 /turf/simulated/floor/outdoors/water/deep/gaia_world,
@@ -1989,6 +2179,10 @@
 /obj/item/storage/dicecup/loaded,
 /turf/simulated/floor/carpet/turcarpet,
 /area/gaia_planet/inside)
+"RK" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
 "RU" = (
 /obj/machinery/door/window/eastright,
 /turf/simulated/floor/carpet/bcarpet,
@@ -2007,6 +2201,12 @@
 /obj/structure/fence,
 /turf/simulated/floor/outdoors/grass/gaia_world,
 /area/gaia_planet/outside)
+"Su" = (
+/obj/structure/closet/secure_closet,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "SB" = (
 /obj/machinery/shower{
 	pixel_y = 16
@@ -2030,12 +2230,22 @@
 	},
 /turf/simulated/floor/outdoors/beach/sand/gaia_world,
 /area/gaia_planet/outside)
+"SU" = (
+/obj/structure/curtain/black{
+	name = "Women's Onsen"
+	},
+/turf/simulated/floor/wmarble,
+/area/gaia_planet/inside)
 "SV" = (
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "gaia_2"
 	},
 /turf/simulated/floor/tiled/gaia_world,
 /area/gaia_planet/outside)
+"SY" = (
+/obj/structure/flora/pottedplant/orientaltree,
+/turf/simulated/floor/bmarble,
+/area/gaia_planet/inside)
 "Td" = (
 /turf/simulated/floor/outdoors/water/shoreline/gaia_world{
 	dir = 8
@@ -2059,6 +2269,16 @@
 "Tx" = (
 /turf/simulated/floor/outdoors/grass/gaia_world,
 /area/gaia_planet/outside)
+"TC" = (
+/obj/structure/closet/secure_closet,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/wmarble,
+/area/gaia_planet/inside)
 "TD" = (
 /obj/machinery/button/remote/airlock{
 	id = "room6";
@@ -2083,6 +2303,13 @@
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/tiled/gaia_world,
 /area/gaia_planet/inside)
+"Uu" = (
+/obj/machinery/washing_machine,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "Ux" = (
 /obj/structure/kitchenspike,
 /turf/simulated/floor/tiled/freezer,
@@ -2090,6 +2317,12 @@
 "UD" = (
 /mob/living/simple_mob/animal/passive/mouse/brown,
 /turf/simulated/floor/outdoors/grass/gaia_world,
+/area/gaia_planet/outside)
+"UP" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/outside)
 "UQ" = (
 /turf/simulated/mineral/floor,
@@ -2177,6 +2410,19 @@
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled/gaia_world,
 /area/gaia_planet/inside)
+"Wt" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/wmarble,
+/area/gaia_planet/inside)
+"Wv" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 1
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/inside)
 "Wz" = (
 /obj/structure/flora/pottedplant/orientaltree,
 /turf/simulated/floor/tiled,
@@ -2255,6 +2501,12 @@
 /obj/item/material/knife/plastic,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"Yg" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
 "Yp" = (
 /obj/machinery/light/flamp,
 /turf/simulated/floor/carpet,
@@ -2312,6 +2564,15 @@
 	},
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"Zp" = (
+/obj/structure/closet/secure_closet,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wmarble,
+/area/gaia_planet/inside)
 "Zr" = (
 /obj/machinery/door/airlock{
 	id_tag = "room5";
@@ -2319,6 +2580,13 @@
 	},
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"Zw" = (
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 8
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
 "Zx" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/outdoors/grass/gaia_world,
@@ -2353,6 +2621,12 @@
 /obj/item/melee/umbrella,
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
+"ZU" = (
+/obj/effect/floor_decal/spline/fancy/wood/corner{
+	dir = 1
+	},
+/turf/simulated/floor/wood/gaia_world,
+/area/gaia_planet/outside)
 
 (1,1,1) = {"
 Ez
@@ -17854,7 +18128,7 @@ Tx
 Tx
 Tx
 Tx
-Tx
+El
 Tx
 Tx
 nW
@@ -17996,7 +18270,7 @@ El
 Tx
 Tx
 Tx
-nW
+El
 Tx
 Tx
 Tx
@@ -18004,11 +18278,11 @@ Tx
 ZO
 Tx
 Tx
-Tx
-Tx
-Tx
-Tx
-mP
+Am
+Am
+Am
+Am
+Am
 Tx
 Dj
 Tx
@@ -18136,7 +18410,7 @@ Tx
 El
 Tx
 Tx
-Pf
+Tx
 Tx
 Tx
 Tx
@@ -18146,11 +18420,11 @@ Pf
 Tx
 Tx
 mP
-Tx
-Tx
-Pf
-Tx
-Tx
+Am
+AT
+ge
+NP
+Am
 Pf
 Tx
 Tx
@@ -18281,18 +18555,18 @@ Tx
 Tx
 Tx
 Tx
-Tx
-Pf
-Pf
-Tx
-Tx
-Tx
+El
 Tx
 Pf
 Tx
 Tx
 Tx
 Tx
+Am
+iY
+iY
+zg
+Am
 Tx
 Tx
 Tx
@@ -18421,20 +18695,20 @@ Tx
 Tx
 Tx
 Tx
-mP
 Tx
+El
+El
 Pf
-Pf
-Tx
-nW
 Tx
 Tx
 Tx
 Tx
 Tx
-Tx
-Tx
-Tx
+Am
+lr
+Am
+Am
+Am
 Tx
 Tx
 Tx
@@ -18564,22 +18838,22 @@ Tx
 Tx
 Tx
 Tx
-Tx
-Pf
-Tx
-Tx
-lp
-Pf
-Pf
-Pf
-mP
-Dj
-Pf
+El
 Tx
 Tx
 Tx
-mP
-Pf
+Tx
+Tx
+Am
+Am
+Am
+it
+lN
+ZU
+Am
+Am
+Am
+Am
 El
 El
 Wj
@@ -18704,24 +18978,24 @@ El
 El
 Tx
 Tx
-Pf
-Pf
-Tx
-Tx
-Tx
-Tx
-ZO
-Tx
-Tx
-Pf
-Pf
-Tx
-Tx
-Tx
-Tx
-Tx
-KZ
-El
+Am
+Am
+ty
+Am
+Am
+Am
+Am
+Am
+Am
+it
+lN
+xQ
+aR
+Yg
+lN
+lN
+xk
+Am
 El
 El
 QH
@@ -18845,23 +19119,23 @@ Vs
 El
 El
 Tx
-mP
 Tx
-Tx
-Tx
-Tx
-Tx
-Pf
-Tx
-Tx
-Tx
-Tx
-Tx
-Tx
-mP
-Tx
-Pf
-Tx
+Am
+SY
+tA
+SY
+Am
+px
+tA
+DE
+Am
+RK
+aR
+aR
+jz
+aR
+aR
+Rz
 El
 QH
 QH
@@ -18988,23 +19262,23 @@ El
 Tx
 Tx
 Tx
-Tx
-Tx
-Tx
-nW
-Pf
-Tx
-Tx
-Dj
-Tx
-Tx
-Pf
-Tx
-Tx
-Tx
-Dj
-Tx
-El
+Am
+gf
+tA
+tA
+SU
+tA
+wN
+tA
+ev
+RK
+jz
+jz
+jz
+jz
+aR
+aR
+zb
 QH
 QH
 QH
@@ -19130,22 +19404,22 @@ jF
 Tx
 Tx
 Tx
-Tx
-nW
-Tx
-Pf
-Tx
-Dj
-Tx
-mP
-Tx
-Pf
-Pf
-Tx
-Tx
-Tx
-Dj
-mP
+Am
+lb
+tA
+wN
+Am
+Su
+Zp
+Su
+Am
+kZ
+jz
+jz
+jz
+jz
+jz
+aR
 El
 QH
 QH
@@ -19272,22 +19546,22 @@ jF
 Vs
 Tx
 Tx
-Tx
-UD
-Pf
-Tx
-Tx
-Tx
-Tx
-Pf
-Tx
-Pf
-Pf
-Tx
-mP
-Tx
-ss
-El
+Am
+Wt
+tA
+tA
+Am
+Am
+Am
+Am
+Am
+kZ
+jz
+jz
+jz
+jz
+jz
+aR
 El
 QH
 QH
@@ -19414,22 +19688,22 @@ jF
 fJ
 Tx
 Tx
-Tx
-Tx
-Pf
-Tx
-Tx
-Tx
-Tx
-Tx
-Pf
-Tx
-Pf
-Tx
-Tx
-Tx
-El
-Tx
+Am
+lb
+tA
+wN
+Am
+Su
+TC
+Su
+Am
+kZ
+aR
+jz
+jz
+jz
+jz
+aR
 Wj
 QH
 QH
@@ -19555,23 +19829,23 @@ El
 jF
 fC
 Tx
-Pf
 Tx
-Pf
-Tx
-ZO
-Tx
-Pf
-Tx
-Tx
-Tx
-Tx
-Pf
-Tx
-Tx
-El
-El
-El
+Am
+vM
+tA
+tA
+yG
+tA
+wN
+tA
+Am
+CQ
+UP
+aR
+aR
+aR
+aR
+Rz
 QH
 QH
 QH
@@ -19698,22 +19972,22 @@ jF
 gZ
 Tx
 Tx
-Tx
-Tx
-Tx
-Tx
-Tx
-Dj
-Pf
-mP
-Dj
-Pf
-Tx
-Tx
-Tx
-El
-QH
-QH
+Am
+kQ
+zx
+jG
+Am
+px
+tA
+DE
+Am
+lQ
+CQ
+qg
+qg
+qg
+qg
+qg
 QH
 QH
 QH
@@ -19840,22 +20114,22 @@ jF
 Ga
 Tx
 Tx
-Tx
-Pf
-Tx
-Pf
-Tx
-Tx
-Tx
-Tx
-Tx
-Tx
-Tx
-Tx
-El
-El
-QH
-QH
+Am
+wN
+lW
+wN
+Am
+Am
+ev
+Am
+Am
+Am
+Am
+Am
+Am
+JV
+Am
+Am
 QH
 QH
 QH
@@ -19982,22 +20256,22 @@ jF
 Tx
 Tx
 Tx
-Tx
-Pf
-Tx
-Tx
-nW
-Tx
-Tx
-Tx
-mP
-Tx
-Tx
-El
-El
-El
-QH
-QH
+Am
+Am
+Am
+Am
+Am
+it
+lN
+lN
+lN
+lN
+lN
+lN
+JV
+iY
+ks
+Am
 QH
 QH
 QH
@@ -20125,26 +20399,26 @@ Vs
 Tx
 Tx
 mP
-Pf
 Tx
-Tx
-Tx
-Tx
-Tx
-Tx
-Tx
-Tx
-Tx
+Am
+Am
+it
+xQ
+aR
+aR
+aR
+aR
+Rz
 El
+Am
+iY
+iY
+Am
 QH
 QH
 QH
-QH
-QH
-QH
-QH
-QH
-QH
+aR
+aR
 MV
 MV
 MV
@@ -20267,27 +20541,27 @@ Tx
 Tx
 Tx
 Tx
-Pf
 Tx
-mP
-ah
-Pf
-Pf
-Tx
-Tx
+Am
+it
+xQ
+jz
+jz
+jz
+jz
+aR
+aR
 El
-El
-El
+Am
+qy
+Uu
+Am
 QH
 QH
-QH
-QH
-QH
-QH
-QH
-QH
-QH
-QH
+MV
+aR
+aR
+MV
 vX
 MV
 MV
@@ -20410,26 +20684,26 @@ Tx
 Tx
 nW
 Tx
-Tx
-Tx
-Tx
-Tx
-Tx
-ZO
-Tx
-Tx
+Am
+kZ
+jz
+jz
+jz
+jz
+jz
+jz
+aR
 El
+Am
+Am
+Am
+Am
 QH
 QH
-QH
-QH
-QH
-QH
-QH
-QH
-QH
-QH
-QH
+MV
+MV
+MV
+MV
 MV
 MV
 MV
@@ -20551,17 +20825,17 @@ Tx
 Tx
 Tx
 Tx
-Pf
 Tx
-Tx
-Tx
-Tx
-Tx
-Pf
-Tx
-El
-El
-QH
+Am
+kZ
+jz
+jz
+jz
+jz
+jz
+jz
+aR
+Rz
 QH
 QH
 QH
@@ -20694,16 +20968,16 @@ Pf
 Pf
 Tx
 Tx
-Pf
-Tx
-mP
-Tx
-Tx
-Tx
-Tx
-El
-El
-QH
+Am
+kZ
+aR
+jz
+jz
+jz
+jz
+jz
+aR
+Wj
 QH
 QH
 QH
@@ -20836,20 +21110,20 @@ Tx
 Tx
 Tx
 Tx
-Pf
-Tx
-Tx
-Tx
-Pf
-mP
-Dj
+Am
+CQ
+UP
+aR
+aR
+aR
+aR
+aR
 El
 QH
 QH
 QH
 QH
-QH
-QH
+LR
 QH
 QH
 QH
@@ -20978,20 +21252,20 @@ mP
 Tx
 Tx
 Tx
-Pf
-Pf
-Tx
-Tx
-Tx
-KM
-Tx
+Am
+Am
+Zw
+qg
+qg
+UP
 El
+El
+zb
 QH
 QH
 QH
-QH
-QH
-QH
+MV
+MV
 QH
 QH
 QH
@@ -21121,20 +21395,20 @@ Tx
 Tx
 Pf
 ZO
-Tx
-Tx
-Tx
-mi
-Tx
-Tx
-El
+Am
+Am
+yw
+Am
+Am
+Am
+Am
 QH
 QH
 QH
 QH
-QH
-QH
-QH
+MV
+MV
+MV
 QH
 QH
 QH
@@ -21264,11 +21538,11 @@ Pf
 Tx
 Tx
 Tx
-Tx
-Dj
-Tx
-Tx
-Pf
+Am
+iY
+iY
+zg
+Am
 El
 QH
 QH
@@ -21276,11 +21550,11 @@ QH
 QH
 QH
 QH
-QH
-QH
-QH
-QH
-QH
+MV
+MV
+MV
+MV
+MV
 MV
 MV
 MV
@@ -21406,11 +21680,11 @@ mP
 Tx
 Tx
 Dj
-Dj
-Tx
-nW
-Tx
-Tx
+Am
+mF
+wb
+Wv
+Am
 El
 QH
 QH
@@ -21434,11 +21708,11 @@ MV
 MV
 MV
 MV
-QH
-QH
-QH
-QH
-QH
+MV
+MV
+MV
+MV
+MV
 QH
 QH
 QH
@@ -21548,11 +21822,11 @@ Tx
 Tx
 Tx
 Pf
-Tx
-Tx
-Tx
-Tx
-El
+Am
+Am
+Am
+Am
+Am
 El
 QH
 QH
@@ -21578,10 +21852,10 @@ vX
 sL
 QH
 QH
-QH
-QH
-QH
-QH
+MV
+vX
+MV
+MV
 QH
 QH
 QH
@@ -21695,7 +21969,7 @@ Pf
 Tx
 El
 El
-QH
+El
 QH
 QH
 QH
@@ -21720,10 +21994,10 @@ MV
 MV
 QH
 QH
-QH
-QH
-QH
-QH
+MV
+MV
+MV
+MV
 QH
 QH
 QH
@@ -21861,12 +22135,12 @@ QH
 QH
 QH
 QH
-QH
-QH
-QH
-QH
-QH
-QH
+MV
+MV
+MV
+CY
+MV
+sL
 QH
 QH
 QH
@@ -22004,8 +22278,8 @@ QH
 QH
 QH
 QH
-QH
-QH
+MV
+sL
 QH
 QH
 QH

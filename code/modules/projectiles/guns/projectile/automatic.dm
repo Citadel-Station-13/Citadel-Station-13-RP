@@ -333,6 +333,7 @@
 	name = "\improper custom Uzi"
 	desc = "The icon Uzi si a lightweight, compact, fast firing machine pistol. These traits make it a popular holdout option for Pathfinders assigned to hazardous expeditions. Uses .45 rounds."
 	icon_state = "mini-uzi-custom"
+	pin = /obj/item/firing_pin/explorer
 
 /obj/item/gun/projectile/automatic/mini_uzi/custom/update_icon()
 	..()
