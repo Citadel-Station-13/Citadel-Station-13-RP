@@ -219,20 +219,6 @@
 	icon_state = "space5"
 	use_stars = FALSE
 
-/datum/planet/virgo3b
-	expected_z_levels = list(
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_SURFACE_MINE,
-		Z_LEVEL_SOLARS,
-		Z_LEVEL_PLAINS
-		)
-/datum/planet/virgo4
-	expected_z_levels = list(
-		Z_LEVEL_BEACH
-	)
-
 // Overmap represetation of tether
 /obj/effect/overmap/visitable/sector/virgo3b
 	name = "Virgo 3B"
