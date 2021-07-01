@@ -43,4 +43,4 @@
 							  signal.data["name"], signal.data["job"],
 							  signal.data["realname"], signal.data["vname"], DATA_NORMAL,
 							  signal.data["compression"], list(0), connection.frequency,
-							  signal.data["verb"], forced_radios)
+							  signal.data["verb"], signal.data["language"], forced_radios)
