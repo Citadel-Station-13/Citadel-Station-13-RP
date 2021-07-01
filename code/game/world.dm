@@ -39,8 +39,6 @@ GLOBAL_LIST(topic_status_cache)
 
 #ifndef USE_CUSTOM_ERROR_HANDLER
 	world.log = file("[GLOB.log_directory]/dd.log")
-#elif SPACEMAN_DMM
-	world.log = file("[GLOB.log_directory]/dd.log")
 #else
 	if (TgsAvailable())
 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
