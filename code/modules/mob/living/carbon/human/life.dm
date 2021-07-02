@@ -921,7 +921,7 @@
 			for(var/obj/item/I in src)
 				if(I.contaminated)
 					if(check_belly(I)) continue //VOREStation Edit
-					if(src.species && src.species.get_bodytype() != "Vox" && src.species.get_bodytype() != "Shadekin")	//VOREStation Edit: shadekin
+					if(src.species && src.species.get_bodytype() != "Vox" && src.species.get_bodytype() != "Shadekin" && src.species.get_bodytype() != "Black-Eyed Shadekin")	//VOREStation Edit: shadekin; CitadelRP: Black-Eyed Shadekin don't get afflicted from contaminated clothing
 						// This is hacky, I'm so sorry.
 						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
