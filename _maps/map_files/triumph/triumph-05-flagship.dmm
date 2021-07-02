@@ -2411,6 +2411,10 @@
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
+"dT" = (
+/obj/machinery/pros_fabricator,
+/turf/unsimulated/floor/steel,
+/area/centcom/control)
 "dU" = (
 /obj/machinery/mecha_part_fabricator,
 /turf/unsimulated/floor/steel,
@@ -7171,7 +7175,7 @@
 	},
 /area/centcom/evac)
 "no" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/shuttle,
 /turf/unsimulated/floor/steel,
 /area/centcom/evac)
 "np" = (
@@ -34344,7 +34348,7 @@ cE
 aG
 aG
 dm
-dU
+dT
 eh
 em
 em

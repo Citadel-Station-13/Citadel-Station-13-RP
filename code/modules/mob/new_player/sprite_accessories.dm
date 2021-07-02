@@ -179,14 +179,17 @@
 	bun
 		name = "Bun"
 		icon_state = "hair_bun"
+		flags = HAIR_TIEABLE
 
 	bun2
 		name = "Bun 2"
 		icon_state = "hair_bun2"
+		flags = HAIR_TIEABLE
 
 	bun3
 		name = "Bun 3"
 		icon_state = "hair_bun3"
+		flags = HAIR_TIEABLE
 
 	bun
 		name = "Bun Casual"
@@ -450,6 +453,7 @@
 	modern
 		name = "Modern"
 		icon_state = "hair_modern"
+		flags = HAIR_TIEABLE
 
 	mohawk
 		name = "Mohawk"

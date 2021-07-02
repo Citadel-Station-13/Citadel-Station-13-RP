@@ -5,21 +5,21 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/mob/living/simple_mob/slime/xenobio/rainbow/kendrick,
 /obj/machinery/light{
 	dir = 1
 	},
-/mob/living/simple_mob/slime/xenobio/rainbow/kendrick,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "aab" = (
 /obj/machinery/camera/network/medbay,
+/mob/living/simple_mob/animal/passive/cat/runtime,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/mob/living/simple_mob/animal/passive/cat/runtime,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "aac" = (
@@ -64,6 +64,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
+"abH" = (
+/obj/structure/stairs/north,
+/turf/simulated/floor/tiled,
+/area/rnd/research_foyer_auxiliary)
 "abM" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -1864,7 +1868,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "bFw" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/unary/engine/small{
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -5280,6 +5284,10 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics)
+"euX" = (
+/obj/effect/shuttle_landmark/triumph/deck3/starboard,
+/turf/space,
+/area/space)
 "evb" = (
 /obj/machinery/atmospherics/binary/pump/high_power/on{
 	dir = 1
@@ -6677,6 +6685,10 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
+"fEu" = (
+/obj/structure/stairs/south,
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_three)
 "fEI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -9170,6 +9182,7 @@
 	pixel_x = 32;
 	pixel_y = 23
 	},
+/obj/effect/map_helper/airlock/button/ext_button,
 /turf/space,
 /area/space)
 "hHP" = (
@@ -10004,6 +10017,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"irr" = (
+/obj/structure/stairs/west,
+/obj/structure/railing,
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood,
+/area/hallway/primary/aft)
 "isq" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -11702,6 +11721,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/research_restroom)
+"jUy" = (
+/obj/effect/shuttle_landmark/triumph/deck3/port,
+/turf/space,
+/area/space)
 "jUz" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -13272,6 +13295,7 @@
 	name = "interior access button";
 	pixel_y = -23
 	},
+/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "loD" = (
@@ -13660,6 +13684,9 @@
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
 "lJz" = (
+/obj/machinery/computer/shuttle_control/explore/emt{
+	dir = 8
+	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
 	},
@@ -17403,6 +17430,8 @@
 	tag_interior_door = "emt_shuttle_interior";
 	tag_interior_sensor = "emt_int_sensor"
 	},
+/obj/effect/shuttle_landmark/triumph/deck3/emt,
+/obj/effect/overmap/visitable/ship/landable/emt,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},
@@ -18159,6 +18188,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/map_helper/airlock/button/ext_button,
 /obj/machinery/access_button{
 	master_tag = null;
 	name = "exterior access button";
@@ -22862,6 +22892,10 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
+"sws" = (
+/obj/structure/stairs/north,
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_three)
 "swA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -23293,7 +23327,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
-/obj/machinery/mecha_part_fabricator,
+/obj/machinery/pros_fabricator,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "sMd" = (
@@ -27431,6 +27465,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/int_door,
+/obj/effect/map_helper/airlock/button/int_button,
 /obj/machinery/access_button{
 	dir = 1;
 	master_tag = null;
@@ -36182,7 +36217,7 @@ dct
 gYe
 vcU
 duK
-uGD
+sws
 uGD
 taT
 nJf
@@ -36190,7 +36225,7 @@ ylr
 dmV
 jSv
 uGD
-uGD
+fEu
 ioO
 ykq
 yiY
@@ -36324,7 +36359,7 @@ xqe
 jEz
 rKa
 duK
-uGD
+sws
 uGD
 jgE
 kcx
@@ -36332,7 +36367,7 @@ iQG
 mfT
 yjF
 uGD
-uGD
+fEu
 ioO
 ykq
 xZU
@@ -36945,7 +36980,7 @@ gVh
 gVh
 gVh
 gVh
-gVh
+euX
 gVh
 gVh
 gVh
@@ -39422,7 +39457,7 @@ gVh
 oCz
 oCz
 boQ
-nGf
+abH
 nGf
 rlQ
 vQO
@@ -39564,7 +39599,7 @@ bdR
 oCz
 oCz
 boQ
-nGf
+abH
 nGf
 lLh
 fIx
@@ -39706,7 +39741,7 @@ gVh
 oCz
 oCz
 boQ
-nGf
+abH
 nGf
 gYt
 epw
@@ -41158,7 +41193,7 @@ ful
 pPC
 eWy
 lDb
-jSa
+irr
 wCQ
 fZt
 guX
@@ -45785,7 +45820,7 @@ gVh
 gVh
 gVh
 gVh
-gVh
+jUy
 gVh
 gVh
 gVh
@@ -45981,13 +46016,13 @@ oLu
 tix
 uGD
 uGD
-uGD
+fEu
 ioO
 mzl
 xhr
 jfg
 ioO
-uGD
+sws
 uGD
 uGD
 djB
@@ -46123,13 +46158,13 @@ clf
 tix
 uGD
 uGD
-uGD
+fEu
 ioO
 uGD
 wZI
 uGD
 ioO
-uGD
+sws
 uGD
 uGD
 djB
