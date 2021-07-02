@@ -1,0 +1,7 @@
+author: "MitztheKat"
+delete-after: True
+changes: 
+  - rscadd: "Added orange ale. A slightly cursed but overwhelmingly fizzy combination of orange juice and ginger ale."
+  - spellcheck: "A local service cyborg blasted some typos from existence."
+  - bugfix: "you can now make peanut butter milkshakes again."
+  - bugfix: "you now correctly taste shirley temples."
