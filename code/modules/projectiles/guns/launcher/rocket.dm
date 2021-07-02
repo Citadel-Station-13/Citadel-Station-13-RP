@@ -10,6 +10,7 @@
 	slot_flags = 0
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 5)
 	fire_sound = 'sound/weapons/rpg.ogg'
+	one_handed_penalty = 30
 
 	release_force = 15
 	throw_distance = 30
