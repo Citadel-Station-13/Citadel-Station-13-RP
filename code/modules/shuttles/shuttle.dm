@@ -249,16 +249,18 @@
 		log_shuttle("Shuttle [src] aborting attempt_move() because current_location=[current_location] refuses.")
 		return FALSE
 
-	log_shuttle("[src] moving to [destination]. Areas are [english_list(shuttle_area)]")
-	var/list/translation = list()
-	for(var/area/A in shuttle_area)
-		log_shuttle("Translating [A]")
-		translation += get_turf_translation(get_turf(current_location), get_turf(destination), A.contents)
-	var/old_location = current_location
-
 	// Observer pattern pre-move
+	var/old_location = current_location
 	GLOB.shuttle_pre_move_event.raise_event(src, old_location, destination)
 	current_location.shuttle_departed(src)
+
+	if(debug_logging)
+		log_shuttle("[src] moving to [destination]. Areas are [english_list(shuttle_area)]")
+	var/list/translation = list()
+	for(var/area/A in shuttle_area)
+		if(debug_logging)
+			log_shuttle("Translating [A]")
+		translation += get_turf_translation(get_turf(current_location), get_turf(destination), A.contents)
 
 	// Actually do it! (This never fails)
 	perform_shuttle_move(destination, translation)
