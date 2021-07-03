@@ -5,22 +5,22 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/engine/rust
-	name = "R-UST Engine"
+	name = "EngineSubmap_RUST"
 	desc = "R-UST Fusion Tokamak Engine"
 	mappath = '_maps/templates/engines/tether/engine_rust.dmm'
 
 /datum/map_template/engine/singulo
-	name = "Singularity Engine"
+	name = "EngineSubmap_Singulo"
 	desc = "Lord Singuloth"
 	mappath = '_maps/templates/engines/tether/engine_singulo.dmm'
 
 /datum/map_template/engine/supermatter
-	name = "Supermatter Engine"
+	name = "EngineSubmap_SM"
 	desc = "Old Faithful Supermatter"
 	mappath = '_maps/templates/engines/tether/engine_sme.dmm'
 
 /datum/map_template/engine/tesla
-	name = "Edison's Bane"
+	name = "EngineSubmap_Tesla"
 	desc = "The Telsa Engine"
 	mappath = '_maps/templates/engines/tether/engine_tesla.dmm'
 
