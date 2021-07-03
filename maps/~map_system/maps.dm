@@ -241,8 +241,11 @@ var/list/all_maps = list()
 	var/custom_skybox = null  // Can override skybox type here for this z
 
 // Default constructor applies itself to the parent map datum
-/datum/map_z_level/New(var/datum/map/map)
-	if(!z) return
+/datum/map_z_level/New(var/datum/map/map, _z)
+	if(_z)
+		src.z = _z
+	if(!z)
+		return
 	map.zlevels["[z]"] = src
 	if(flags & MAP_LEVEL_STATION) map.station_levels += z
 	if(flags & MAP_LEVEL_ADMIN) map.admin_levels += z
@@ -254,7 +257,8 @@ var/list/all_maps = list()
 		if(!map.empty_levels) map.empty_levels = list()
 		map.empty_levels += z
 	if(flags & MAP_LEVEL_CONSOLES)
-		if (!map.map_levels) map.map_levels = list()
+		if (!map.map_levels)
+			map.map_levels = list()
 		map.map_levels += z
 	if(base_turf)
 		map.base_turf_by_z["[z]"] = base_turf

@@ -185,9 +185,10 @@
 	var/turf/T = get_turf(src)
 	if(!locked)
 		return TRUE
-	if(T.z in GLOB.using_map.station_levels)
-		return FALSE
-	return TRUE
+	var/lock_override = SSmapping.level_trait(T.z, ZTRAIT_FACILITY_SAFETY)
+	if(isnull(lock_override))
+		return SSmapping.level_trait(T.z, ZTRAIT_STATION)
+	return lock_override
 
 //Allows swiping an armoury access ID on an explorer locked gun to unlock it
 /obj/item/gun/attackby(obj/item/I, mob/user)
