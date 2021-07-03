@@ -181,7 +181,7 @@
 			to_chat(user, "<spawn class='warning'>\The [src] door is still closed!")
 			return
 		if(contents.len == 0)
-			user.unEquip(W, src)
+			user.unEquip(W, target = src)
 	update_icon()
 
 // Walls hide stuff inside them, but we want to be visible.
