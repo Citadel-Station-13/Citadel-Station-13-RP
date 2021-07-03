@@ -254,12 +254,10 @@
 	GLOB.shuttle_pre_move_event.raise_event(src, old_location, destination)
 	current_location.shuttle_departed(src)
 
-	if(debug_logging)
-		log_shuttle("[src] moving to [destination]. Areas are [english_list(shuttle_area)]")
+	log_shuttle("[src] moving to [destination]. Areas are [english_list(shuttle_area)]")
 	var/list/translation = list()
 	for(var/area/A in shuttle_area)
-		if(debug_logging)
-			log_shuttle("Translating [A]")
+		log_shuttle("Translating [A]")
 		translation += get_turf_translation(get_turf(current_location), get_turf(destination), A.contents)
 
 	// Actually do it! (This never fails)
