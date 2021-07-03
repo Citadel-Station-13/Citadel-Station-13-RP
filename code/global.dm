@@ -150,9 +150,6 @@ var/static/list/scarySounds = list(
 // Bomb cap!
 var/max_explosion_range = 14
 
-// Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
-GLOBAL_DATUM_INIT(global_announcer, /obj/item/radio/intercom/omni, new)
-
 var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Exploration", "Civilian") //VOREStation Edit
 
 //Icons for in-game HUD glasses. Why don't we just share these a little bit?
