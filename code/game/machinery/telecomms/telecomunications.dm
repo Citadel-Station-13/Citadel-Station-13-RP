@@ -108,7 +108,6 @@
 	else
 		return 0
 
-
 /obj/machinery/telecomms/Initialize()
 	GLOB.telecomms_list += src
 	. = ..()
@@ -118,8 +117,9 @@
 		//Defaults to our Z level!
 		var/turf/position = get_turf(src)
 		listening_level = position.z
+	return INITIALIZE_HINT_LATELOAD
 
-/obj/machinery/telecomms/Initialize()
+/obj/machinery/telecomms/LateInitialize()
 	if(autolinkers.len)
 		// Links nearby machines
 		if(!long_range_link)
@@ -128,7 +128,7 @@
 		else
 			for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 				add_link(T)
-	. = ..()
+	return ..()
 
 /obj/machinery/telecomms/Destroy()
 	GLOB.telecomms_list -= src
