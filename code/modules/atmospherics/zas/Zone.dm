@@ -157,7 +157,7 @@ Class Procs:
 		var/list/added = returned - turf_graphics
 		for(var/turf/simulated/T in contents)
 			T.vis_contents -= removed
-			if(T.allow_gas_overlays)
+			if(T.allow_gas_overlays && !T.outdoors)
 				T.vis_contents += added
 		turf_graphics = returned
 

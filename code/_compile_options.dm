@@ -16,6 +16,8 @@
 
 #define DEBUG_SHUTTLES
 
+#define TIMER_LOOP_DEBUGGING
+
 //#define GC_FAILURE_HARD_LOOKUP	//makes paths that fail to GC call find_references before del'ing.
 									//implies FIND_REF_NO_CHECK_TICK
 
