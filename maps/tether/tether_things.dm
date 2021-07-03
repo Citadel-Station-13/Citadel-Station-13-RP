@@ -247,13 +247,10 @@
 	// Otherwise just operate normally
 	return ..()
 
-/obj/machinery/cryopod/robot/door/tram/Bumped(var/atom/movable/AM)
-	if(!ishuman(AM))
-		return
-
-	var/mob/living/carbon/human/user = AM
-
-	var/choice = alert("Do you want to depart via the tram? Your character will leave the round.","Departure","Yes","No")
+/obj/machinery/cryopod/robot/door/tram/go_in(mob/living/M, mob/living/user)
+	if(M != user)
+		return ..()
+	var/choice = alert(user, "Do you want to depart via the shuttle? Your character will leave the round.","Departure","No","Yes")
 	if(user && Adjacent(user) && choice == "Yes")
 		var/mob/observer/dead/newghost = user.ghostize()
 		newghost.timeofdeath = world.time
