@@ -1691,7 +1691,9 @@
 "BD" = (
 /obj/machinery/embedded_controller/radio/airlock/phoron{
 	id_tag = "mining_outpost_airlock";
-	pixel_y = -25
+	pixel_y = -25;
+	tag_chamber_sensor = "mining_outpost_airlock_sensor";
+	tag_scrubber = "mining_outpost_airlock_scrubber"
 	},
 /obj/machinery/airlock_sensor/phoron{
 	id_tag = "mining_outpost_airlock_sensor";
