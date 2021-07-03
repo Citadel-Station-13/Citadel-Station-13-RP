@@ -2,15 +2,15 @@
 VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
-/turf/simulated/open/virgo3b/New()
-	..()
+/turf/simulated/open/virgo3b/Initialize(mapload)
+	. = ..()
 	if(outdoors)
 		SSplanets.addTurf(src)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor)
 
 /turf/simulated/floor/virgo3b_indoors
-	VIRGO3B_SET_ATMOS
+	initial_gas_mix = ATMOSPHERE_ID_VIRGO3B
 
 ///turf/simulated/floor/virgo3b_indoors/update_graphic(list/graphic_add = null, list/graphic_remove = null)
 //	return 0
