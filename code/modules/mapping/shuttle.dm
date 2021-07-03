@@ -1,5 +1,5 @@
 /datum/map_template/shuttle
-
+	abstract_type = /datum/map_template/shuttle
 	var/prefix = null
 	var/suffix = null
 
@@ -9,3 +9,6 @@
 
 	mappath = prefix + suffix
 	..(path = mappath)
+
+/datum/map_template/shuttle/overmap
+	abstract_type = /datum/map_template/shuttle/overmap

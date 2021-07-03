@@ -158,6 +158,7 @@
 	return ..()
 
 /obj/effect/spawner/newbomb/Initialize(mapload)
+	. = ..()
 	var/obj/item/transfer_valve/V = new(src.loc)
 	var/obj/item/tank/phoron/PT = new(V)
 	var/obj/item/tank/oxygen/OT = new(V)

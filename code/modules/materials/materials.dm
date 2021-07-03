@@ -1238,5 +1238,5 @@ var/list/name_to_material
 	icon_state = "sandbags"
 	no_variants = FALSE
 
-	default_type = "sandbags"
+	default_type = "sandbag"
 	perunit = 1

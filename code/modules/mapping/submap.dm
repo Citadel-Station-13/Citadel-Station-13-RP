@@ -1,5 +1,5 @@
 /datum/map_template/submap
-
+	abstract_type = /datum/map_template/submap
 	var/prefix = null
 	var/suffix = null
 

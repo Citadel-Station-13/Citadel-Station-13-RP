@@ -103,7 +103,7 @@
 	if(always_on)
 		create_shields()
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/moved_event)
-	..()
+	return ..()
 
 /obj/item/shield_projector/Destroy()
 	destroy_shields()
