@@ -128,7 +128,7 @@
 		target = src
 
 	var/turf/T = get_turf(target)
-	if(T.z in GLOB.using_map.map_levels)
+	if(onstation_weapon_locked(T.z))
 		target.visible_message("<span class='danger'>\The [src] lets out a loud beep as safeties trigger, before imploding and falling apart.</span>")
 		target.overlays -= image_overlay
 		qdel(src)

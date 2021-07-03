@@ -185,9 +185,15 @@
 	var/turf/T = get_turf(src)
 	if(!locked)
 		return TRUE
-	var/lock_override = SSmapping.level_trait(T.z, ZTRAIT_FACILITY_SAFETY)
+	return !onstation_weapon_locked(T.z)
+
+/// Checks for facility weapon safety interlocks. Returns TRUE if weapons should lock.
+/proc/onstation_weapon_locked(z)
+	if(!z)
+		return FALSE
+	var/lock_override = SSmapping.level_trait(z, ZTRAIT_FACILITY_SAFETY)
 	if(isnull(lock_override))
-		return SSmapping.level_trait(T.z, ZTRAIT_STATION)
+		return SSmapping.level_trait(z, ZTRAIT_STATION)
 	return lock_override
 
 //Allows swiping an armoury access ID on an explorer locked gun to unlock it
