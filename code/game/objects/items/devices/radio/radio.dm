@@ -429,7 +429,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		"server" = null, // the last server to log this signal
 		"reject" = 0,	// if nonzero, the signal will not be accepted by any broadcasting machinery
 		"level" = pos_z, // The source's z level
-		"verb" = verb
+		"verb" = verb,
+		"language" = speaking
 	)
 	signal.frequency = connection.frequency // Quick frequency set
 
