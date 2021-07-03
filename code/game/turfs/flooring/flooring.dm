@@ -473,6 +473,11 @@ var/list/flooring_types
 		'sound/effects/footstep/grass3.ogg',
 		'sound/effects/footstep/grass4.ogg'))
 
+/decl/flooring/outdoors/grass/sif
+	name = "growth"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "grass_sif"
+
 /decl/flooring/water
 	name = "water"
 	desc = "Water is wet, gosh, who knew!"
