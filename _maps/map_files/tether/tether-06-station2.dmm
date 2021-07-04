@@ -4223,8 +4223,7 @@
 	dir = 10
 	},
 /obj/structure/bed/chair/comfy/beige{
-	dir = 8;
-	icon_state = "comfychair_preview"
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
@@ -4489,8 +4488,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/comfy/beige{
-	dir = 1;
-	icon_state = "comfychair_preview"
+	dir = 1
 	},
 /obj/machinery/camera/network/exploration{
 	dir = 1
@@ -4526,8 +4524,7 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/comfy/beige{
-	dir = 1;
-	icon_state = "comfychair_preview"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
@@ -11863,7 +11860,6 @@
 /area/medical/resleeving)
 "tV" = (
 /obj/structure/table/glass,
-/obj/item/sleevemate,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -11871,6 +11867,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
+/obj/item/mirrortool,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "tW" = (
@@ -13816,7 +13813,6 @@
 	dir = 4
 	},
 /obj/structure/closet/crate{
-	icon_state = "crate";
 	name = "Grenade Crate"
 	},
 /obj/item/grenade/chem_grenade,

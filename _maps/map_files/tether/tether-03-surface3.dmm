@@ -2361,18 +2361,6 @@
 /obj/structure/table/glass,
 /obj/item/packageWrap,
 /obj/item/hand_labeler,
-/obj/item/backup_implanter{
-	pixel_y = -12
-	},
-/obj/item/backup_implanter{
-	pixel_y = -5
-	},
-/obj/item/backup_implanter{
-	pixel_y = 2
-	},
-/obj/item/backup_implanter{
-	pixel_y = 9
-	},
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
 	dir = 8;
@@ -3538,9 +3526,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/surfacebase/outside/outside3)
-"afj" = (
-/turf/simulated/wall,
-/area/crew_quarters/recreation_area_restroom)
 "afk" = (
 /obj/structure/cable{
 	icon_state = "32-4"
@@ -29429,9 +29414,7 @@
 /area/bridge)
 "aYk" = (
 /obj/machinery/papershredder,
-/obj/machinery/light{
-	dir = 2
-	},
+/obj/machinery/light,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
@@ -36441,7 +36424,6 @@
 /area/tether/surfacebase/medical/storage)
 "bmk" = (
 /obj/structure/closet/crate{
-	icon_state = "crate";
 	name = "Grenade Crate"
 	},
 /obj/item/grenade/chem_grenade,
@@ -36862,7 +36844,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "bno" = (
-/obj/item/sleevemate,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -37144,18 +37125,6 @@
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
-	},
-/obj/item/backup_implanter{
-	pixel_y = 9
-	},
-/obj/item/backup_implanter{
-	pixel_y = 2
-	},
-/obj/item/backup_implanter{
-	pixel_y = -5
-	},
-/obj/item/backup_implanter{
-	pixel_y = -12
 	},
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled/white,
@@ -51428,9 +51397,9 @@ akT
 akS
 akS
 akS
-afj
-afj
-afj
+aoX
+aoX
+aoX
 aac
 afM
 afM
@@ -51567,12 +51536,12 @@ akY
 apo
 apO
 aqB
-afj
+aoX
 aMw
 arD
 afQ
 awL
-afj
+aoX
 aac
 aEi
 aXH
@@ -51709,12 +51678,12 @@ akY
 air
 ajR
 akx
-afj
+aoX
 ajK
 avF
-afj
-afj
-afj
+aoX
+aoX
+aoX
 afi
 aXG
 adL
@@ -51851,12 +51820,12 @@ akY
 app
 ajR
 aiD
-afj
+aoX
 rAe
 sla
 awk
 axf
-afj
+aoX
 arn
 aEi
 aXJ
@@ -51996,9 +51965,9 @@ avj
 aiH
 opE
 xvN
-afj
-afj
-afj
+aoX
+aoX
+aoX
 arn
 afh
 aXL
@@ -52135,12 +52104,12 @@ akZ
 apr
 apQ
 aiG
-afj
+aoX
 aqD
 awo
 awM
 aXI
-afj
+aoX
 arn
 afh
 aeu
@@ -52277,12 +52246,12 @@ akZ
 aix
 apQ
 aqE
-afj
-afj
-afj
-afj
-afj
-afj
+aoX
+aoX
+aoX
+aoX
+aoX
+aoX
 arn
 atG
 aud

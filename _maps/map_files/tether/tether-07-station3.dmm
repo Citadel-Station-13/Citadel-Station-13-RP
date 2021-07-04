@@ -4933,9 +4933,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ai)
 "all" = (
-/obj/machinery/ai_slipper{
-	icon_state = "motion0"
-	},
+/obj/machinery/ai_slipper,
 /obj/machinery/turretid/stun{
 	check_synth = 1;
 	control_area = /area/ai;
@@ -5165,9 +5163,7 @@
 /turf/simulated/floor,
 /area/maintenance/station/sec_upper)
 "alM" = (
-/obj/machinery/ai_slipper{
-	icon_state = "motion0"
-	},
+/obj/machinery/ai_slipper,
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 4;
@@ -5218,9 +5214,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
 "alP" = (
-/obj/machinery/ai_slipper{
-	icon_state = "motion0"
-	},
+/obj/machinery/ai_slipper,
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 8;
@@ -14187,7 +14181,6 @@
 "aGp" = (
 /obj/structure/table/glass,
 /obj/item/storage/box/body_record_disk,
-/obj/item/sleevemate,
 /obj/item/paper{
 	desc = "";
 	info = "Bodies designed on the design console must be saved to a disk, provided on the front desk counter, then placed into the resleeving console for printing.";
@@ -14248,18 +14241,6 @@
 	dir = 8
 	},
 /obj/structure/table/glass,
-/obj/item/backup_implanter{
-	pixel_y = -12
-	},
-/obj/item/backup_implanter{
-	pixel_y = -5
-	},
-/obj/item/backup_implanter{
-	pixel_y = 2
-	},
-/obj/item/backup_implanter{
-	pixel_y = 9
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
 	},
@@ -18222,9 +18203,7 @@
 /turf/simulated/floor/bluegrid,
 /area/ai_core_foyer)
 "aPc" = (
-/obj/machinery/ai_slipper{
-	icon_state = "motion0"
-	},
+/obj/machinery/ai_slipper,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -18245,9 +18224,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_core_foyer)
 "aPh" = (
-/obj/machinery/ai_slipper{
-	icon_state = "motion0"
-	},
+/obj/machinery/ai_slipper,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
