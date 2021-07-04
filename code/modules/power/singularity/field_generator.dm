@@ -37,7 +37,7 @@ field_generator power level display
 	var/field_power_draw = 1750	//power needed per field object
 
 /obj/machinery/field_generator/update_overlays()
-	. = list()
+	. = ..()
 	if(warming_up)
 		. += "+a[warming_up]"
 	if(fields.len)

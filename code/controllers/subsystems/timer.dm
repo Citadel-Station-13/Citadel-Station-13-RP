@@ -494,7 +494,6 @@ SUBSYSTEM_DEF(timer)
  * Debugging: Brute force searches bucket lists for ourselves
  */
 /datum/timedevent/proc/searchAdvBucketList()
-	var/list/bucket_list = SStimer.bucket_list
 	to_chat(usr, "Searching for [name] in SStimer.bucket_list")
 	for(var/pos in 1 to BUCKET_LEN)
 		var/datum/timedevent/buckethead = SStimer.bucket_list[pos]
