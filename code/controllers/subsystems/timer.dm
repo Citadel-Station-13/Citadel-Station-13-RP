@@ -426,7 +426,7 @@ SUBSYSTEM_DEF(timer)
 /datum/timedevent/proc/testEject()
 	var/bucketpos = BUCKET_POS(src)
 	to_chat(usr, "Bucketpos: [bucketpos]")
-	var/should_second_queue = timeToRun < TIMER_MAX
+	var/should_second_queue = timeToRun > TIMER_MAX
 	to_chat(usr, should_second_queue? "Should be in second queue" : "Should be in buckets")
 	to_chat(usr, "Finding timer...")
 	if(should_second_queue)
