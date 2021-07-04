@@ -483,8 +483,12 @@
 
 			for(var/cat in part_sets)
 				// Find all matching categories.
-				if(!(cat in D.category))
-					continue
+				if(istext(D.category))
+					if(cat != D.category)
+						continue
+				else
+					if(!(cat in D.category))
+						continue
 
 				buildable_parts[cat] += list(part)
 
