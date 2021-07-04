@@ -6593,7 +6593,7 @@
 	dir = 4
 	},
 /obj/structure/table/rack/shelf,
-/obj/item/tank/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
@@ -6761,7 +6761,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/science{
 	name = "Pathfinder";
-	req_access = list(62,43,67);
+	req_access = 62;
 	req_one_access = newlist()
 	},
 /obj/structure/disposalpipe/segment,
@@ -6868,7 +6868,7 @@
 /area/tether/exploration/hallway)
 "kD" = (
 /obj/structure/table/rack/shelf,
-/obj/item/tank/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /obj/item/suit_cooling_unit,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -6902,7 +6902,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/item/tank/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /obj/item/suit_cooling_unit,
 /obj/machinery/light_switch{
 	name = "light switch ";
@@ -7343,7 +7343,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
-/obj/structure/flora/pottedplant/unusual,
+/obj/machinery/suit_cycler/medical,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "lp" = (
@@ -7373,7 +7373,7 @@
 	dir = 5
 	},
 /obj/structure/table/rack/shelf,
-/obj/item/tank/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
@@ -7619,9 +7619,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/pathfinder{
-	req_access = list(62,43,67)
-	},
+/obj/structure/closet/secure_closet/pathfinder,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/pathfinder_office)
 "lI" = (
@@ -8190,13 +8188,12 @@
 	dir = 4
 	},
 /obj/structure/table/rack/shelf,
-/obj/item/tank/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/exploration,
+/obj/item/clothing/suit/space/void/exploration/pathfinder,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/head/helmet/space/void/exploration,
-/obj/item/tank/jetpack/carbondioxide,
+/obj/item/clothing/head/helmet/space/void/exploration/pathfinder,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/pathfinder_office)
 "mA" = (
@@ -20783,7 +20780,7 @@
 	dir = 9
 	},
 /obj/structure/table/rack/shelf,
-/obj/item/tank/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
