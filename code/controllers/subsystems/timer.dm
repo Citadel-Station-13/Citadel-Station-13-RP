@@ -166,7 +166,7 @@ SUBSYSTEM_DEF(timer)
 			if (!timer.spent)
 				#ifdef TIMER_LOOP_DEBUGGING
 					if(timer.timeToRun > world.time)
-						stack_trace("Invalid TTR (less than world.time on execution) halted.")
+						stack_trace("TIMER_DBG: Timer with Invalid TTR (more than world.time on execution) halted. Something is horribly wrong! [get_timer_debug_string(timer)]")
 						timer.spent = world.time
 						qdel(timer)
 						continue
