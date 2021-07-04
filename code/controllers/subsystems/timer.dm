@@ -164,14 +164,6 @@ SUBSYSTEM_DEF(timer)
 
 			// Invoke callback if possible
 			if (!timer.spent)
-				#ifdef TIMER_LOOP_DEBUGGING
-					if(timer.timeToRun > world.time)
-						stack_trace("TIMER_DBG: Timer with Invalid TTR (more than world.time on execution) halted. Something is horribly wrong! [get_timer_debug_string(timer)]")
-						timer.spent = world.time
-						callBack.InvokeAsync()
-						qdel(timer)
-						continue
-				#endif
 				timer.spent = world.time
 				callBack.InvokeAsync()
 				last_invoke_tick = world.time
@@ -424,6 +416,106 @@ SUBSYSTEM_DEF(timer)
 	next = null
 	prev = null
 	return QDEL_HINT_IWILLGC
+
+
+#ifdef TIMER_LOOP_DEBUGGING
+
+/**
+ * Debug proc : Find our location in timers, and then ensure bucketeject is able to eject us properly.
+ */
+/datum/timedevent/proc/testEject()
+	var/bucketpos = BUCKET_POS(src)
+	to_chat(usr, "Bucketpos: [bucketpos]")
+	var/should_second_queue = timeToRun < TIMER_MAX
+	to_chat(usr, should_second_queue? "Should be in second queue" : "Should be in buckets")
+	to_chat(usr, "Finding timer...")
+	if(should_second_queue)
+		var/pos = SStimer.second_queue.Find(src)
+		if(!pos)
+			to_chat(usr, "NOT FOUND - should be in second queue. Using advanced bucket search...")
+			searchAdvBucketList()
+			return
+		else
+			to_chat(usr, "Found in expected location: second queue at index [pos]")
+	else
+		var/datum/timedevent/buckethead = SStimer.bucket_list[bucketpos]
+		if(buckethead == src)
+			to_chat(usr, "Found ourselves in bucket head position")
+		else if(buckethead)
+			var/start = buckethead
+			buckethead = buckethead.next
+			var/i = 1
+			var/found = FALSE
+			while(buckethead != start)
+				if(buckethead == src)
+					found = TRUE
+					break
+				buckethead = buckethead.next
+			if(found)
+				to_chat(usr, "Found ourselves: [i] positions from head")
+			else
+				to_chat(usr, "NOT FOUND - should be in bucket list. Using advanced bucket search...")
+				searchAdvBucketList()
+				return
+		else
+			to_chat(usr, "NOT FOUNd - Bucket was empty. Using advanced bucket search...")
+			searchAdvBucketList()
+			return
+
+	to_chat(usr, "Testing eject...")
+	bucketEject()
+	if(should_second_queue)
+		if(SStimer.second_queue.Find(src))
+			to_chat(usr, "Could not properly eject from second queue.")
+		else
+			to_chat(usr, "Ejected successfully from second queue.")
+	else
+		var/datum/timedevent/buckethead = SStimer.bucket_list[bucketpos]
+		if(buckethead == src)
+			to_chat(usr, "Failed to eject from bucket list. Head was still us.")
+		else if(buckethead)
+			var/start = buckethead
+			buckethead = buckethead.next
+			var/i = 1
+			var/found = FALSE
+			while(buckethead != start)
+				if(buckethead == src)
+					found = TRUE
+					break
+				buckethead = buckethead.next
+			if(found)
+				to_chat(usr, "Failed to eject from bucket list: [i] positions from head")
+			else
+				to_chat(usr, "Successfully ejected from bucket list")
+		else
+			to_chat(usr, "Bucket position was empty, this is probably a success.")
+
+/**
+ * Debugging: Brute force searches bucket lists for ourselves
+ */
+/datum/timedevent/proc/searchAdvBucketList()
+	var/list/bucket_list = SStimer.bucket_list
+	to_chat(usr, "Searching for [name] in SStimer.bucket_list")
+	for(var/pos in 1 to BUCKET_LEN)
+		var/datum/timedevent/buckethead = SStimer.bucket_list[pos]
+		if(buckethead == src)
+			to_chat(usr, "Found at position [pos] as head.")
+			break
+		else if(buckethead)
+			var/start = buckethead
+			buckethead = buckethead.next
+			var/i = 1
+			var/found = FALSE
+			while(buckethead != start)
+				if(buckethead == src)
+					found = TRUE
+					break
+				buckethead = buckethead.next
+			if(found)
+				to_chat(usr, "Found at position [pos] with offset [i] from head")
+				break
+	to_chat(usr, "Search concluded")
+#endif
 
 /**
  * Removes this timed event from any relevant buckets, or the secondary queue
