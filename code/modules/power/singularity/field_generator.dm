@@ -36,24 +36,20 @@ field_generator power level display
 	var/gen_power_draw = 4500	//power needed per generator
 	var/field_power_draw = 1750	//power needed per field object
 
-
-/obj/machinery/field_generator/update_icon()
-	overlays.Cut()
+/obj/machinery/field_generator/update_overlays()
+	. = list()
 	if(!active)
 		if(warming_up)
-			overlays += "+a[warming_up]"
+			. += "+a[warming_up]"
 	if(fields.len)
-		overlays += "+on"
+		. += "+on"
 	// Power level indicator
 	// Scale % power to % num_power_levels and truncate value
 	var/level = round(num_power_levels * power / field_generator_max_power)
 	// Clamp between 0 and num_power_levels for out of range power values
 	level = between(0, level, num_power_levels)
 	if(level)
-		overlays += "+p[level]"
-
-	return
-
+		. += "+p[level]"
 
 /obj/machinery/field_generator/Initialize(mapload)
 	. = ..()
