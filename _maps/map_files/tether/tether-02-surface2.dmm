@@ -1429,7 +1429,6 @@
 /obj/structure/sign/nosmoking_1{
 	pixel_x = -32
 	},
-/obj/item/sleevemate,
 /obj/machinery/alarm{
 	pixel_y = 28
 	},
@@ -1442,6 +1441,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 9
 	},
+/obj/item/mirrortool,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/resleeving)
 "acc" = (
@@ -20793,8 +20793,8 @@
 	use_power = 1
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aKM" = (
@@ -20803,8 +20803,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aKN" = (
@@ -21130,8 +21130,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aLu" = (
@@ -21142,8 +21142,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aLv" = (
@@ -21523,8 +21523,8 @@
 	use_power = 1
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aMh" = (
@@ -21534,8 +21534,8 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aMi" = (
