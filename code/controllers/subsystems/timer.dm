@@ -168,6 +168,7 @@ SUBSYSTEM_DEF(timer)
 					if(timer.timeToRun > world.time)
 						stack_trace("TIMER_DBG: Timer with Invalid TTR (more than world.time on execution) halted. Something is horribly wrong! [get_timer_debug_string(timer)]")
 						timer.spent = world.time
+						callBack.InvokeAsync()
 						qdel(timer)
 						continue
 				#endif
