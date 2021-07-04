@@ -38,9 +38,8 @@ field_generator power level display
 
 /obj/machinery/field_generator/update_overlays()
 	. = list()
-	if(!active)
-		if(warming_up)
-			. += "+a[warming_up]"
+	if(warming_up)
+		. += "+a[warming_up]"
 	if(fields.len)
 		. += "+on"
 	// Power level indicator
@@ -170,6 +169,7 @@ field_generator power level display
 
 /obj/machinery/field_generator/proc/turn_off()
 	active = 0
+	warming_up = 0
 	spawn(1)
 		src.cleanup()
 	update_icon()
