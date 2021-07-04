@@ -2426,7 +2426,6 @@
 	amount = 15
 	},
 /obj/item/cell{
-	charge = 100;
 	maxcharge = 15000
 	},
 /turf/simulated/shuttle/floor/darkred,

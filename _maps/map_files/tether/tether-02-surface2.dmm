@@ -11108,7 +11108,6 @@
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/machinery/status_display{

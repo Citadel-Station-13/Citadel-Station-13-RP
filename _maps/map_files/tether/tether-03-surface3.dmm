@@ -8549,11 +8549,9 @@
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/machinery/newscaster{
@@ -15706,25 +15704,21 @@
 	name = "robotics parts"
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
@@ -34999,7 +34993,6 @@
 	pixel_y = -7
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/stack/cable_coil{
@@ -35007,7 +35000,6 @@
 	pixel_y = -7
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/storage/toolbox/mechanical{
