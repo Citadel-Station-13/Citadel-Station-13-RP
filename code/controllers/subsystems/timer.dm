@@ -164,6 +164,13 @@ SUBSYSTEM_DEF(timer)
 
 			// Invoke callback if possible
 			if (!timer.spent)
+				#ifdef TIMER_LOOP_DEBUGGING
+					if(timer.timeToRun > world.time)
+						stack_trace("Invalid TTR (less than world.time on execution) halted.")
+						timer.spent = world.time
+						qdel(timer)
+						continue
+				#endif
 				timer.spent = world.time
 				callBack.InvokeAsync()
 				last_invoke_tick = world.time
@@ -467,10 +474,6 @@ SUBSYSTEM_DEF(timer)
  * If the timed event is tracking client time, it will be added to a special bucket.
  */
 /datum/timedevent/proc/bucketJoin()
-#ifdef TIMER_LOOP_DEBUGGING
-	if(timeToRun < world.time + wait)
-		CRASH("Invalid TTR (less than world.time + wait) halted.")
-#endif
 	// Generate debug-friendly name for timer
 	var/static/list/bitfield_flags = list("TIMER_UNIQUE", "TIMER_OVERRIDE", "TIMER_CLIENT_TIME", "TIMER_STOPPABLE", "TIMER_NO_HASH_WAIT", "TIMER_LOOP")
 	name = "Timer: [id] (\ref[src]), TTR: [timeToRun], wait:[wait] Flags: [jointext(bitfield2list(flags, bitfield_flags), ", ")], \
