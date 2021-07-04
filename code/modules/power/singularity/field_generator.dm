@@ -33,8 +33,8 @@ field_generator power level display
 	var/clean_up = 0
 
 	//If keeping field generators powered is hard then increase the emitter active power usage.
-	var/gen_power_draw = 5500	//power needed per generator
-	var/field_power_draw = 2000	//power needed per field object
+	var/gen_power_draw = 4500	//power needed per generator
+	var/field_power_draw = 1750	//power needed per field object
 
 
 /obj/machinery/field_generator/update_icon()
@@ -200,13 +200,8 @@ field_generator power level display
 		src.power = field_generator_max_power
 
 	var/power_draw = gen_power_draw
-	for(var/obj/machinery/field_generator/FG in connected_gens)
-		if (!isnull(FG))
-			power_draw += gen_power_draw
 	for (var/obj/machinery/containment_field/F in fields)
-		if (!isnull(F))
-			power_draw += field_power_draw
-	power_draw /= 2	//because this will be mirrored for both generators
+		power_draw += field_power_draw / 2		// mirrored for the other generator
 	if(draw_power(round(power_draw)) >= power_draw)
 		return 1
 	else
