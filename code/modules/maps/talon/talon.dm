@@ -261,9 +261,11 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/clothing/suit/storage/vest,
 		/obj/item/melee/telebaton,
 		/obj/item/flash,
+		/obj/item/radio,
 		/obj/item/radio/headset/talon,
 		/obj/item/clothing/head/helmet/space/void/refurb/officer/talon,
 		/obj/item/clothing/suit/space/void/refurb/officer/talon,
+		/obj/item/clothing/shoes/magboots,
 		/obj/item/tank/oxygen,
 		/obj/item/suit_cooling_unit,
 		/obj/item/gps/command/taloncap
@@ -286,10 +288,12 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/flashlight/maglight,
 		/obj/item/clothing/glasses/sunglasses,
 		/obj/item/storage/belt/security,
+		/obj/item/radio,
 		/obj/item/radio/headset/talon,
 		/obj/item/clothing/accessory/solgov/department/security,
 		/obj/item/clothing/head/helmet/space/void/refurb/marine/talon,
 		/obj/item/clothing/suit/space/void/refurb/marine/talon,
+		/obj/item/clothing/shoes/magboots,
 		/obj/item/tank/oxygen,
 		/obj/item/suit_cooling_unit,
 		/obj/item/gps/security/talonguard,
@@ -308,9 +312,11 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/clothing/suit/storage/toggle/labcoat,
 		/obj/item/clothing/suit/storage/toggle/fr_jacket,
 		/obj/item/clothing/shoes/white,
+		/obj/item/radio,
 		/obj/item/radio/headset/talon,
 		/obj/item/clothing/head/helmet/space/void/refurb/medical/alt/talon,
 		/obj/item/clothing/suit/space/void/refurb/medical/talon,
+		/obj/item/clothing/shoes/magboots,
 		/obj/item/tank/oxygen,
 		/obj/item/suit_cooling_unit,
 		/obj/item/gps/medical/talonmed
@@ -325,6 +331,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/clothing/accessory/storage/brown_vest,
 		/obj/item/flashlight,
 		/obj/item/extinguisher,
+		/obj/item/radio,
 		/obj/item/radio/headset/talon,
 		/obj/item/clothing/suit/storage/hazardvest,
 		/obj/item/clothing/mask/gas,
@@ -332,6 +339,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/clothing/head/helmet/space/void/refurb/engineering/talon,
 		/obj/item/clothing/suit/space/void/refurb/engineering/talon,
+		/obj/item/clothing/shoes/magboots,
 		/obj/item/tank/oxygen,
 		/obj/item/suit_cooling_unit,
 		/obj/item/gps/engineering/taloneng
@@ -359,28 +367,11 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/flashlight/color/orange,
 		/obj/item/clothing/head/helmet/space/void/refurb/pilot/talon,
 		/obj/item/clothing/suit/space/void/refurb/pilot/talon,
+		/obj/item/clothing/shoes/magboots,
 		/obj/item/tank/oxygen,
 		/obj/item/suit_cooling_unit,
 		/obj/item/gps/explorer/talonpilot
 	)
-
-/obj/machinery/vending/medical_talon //Not a subtype for *reasons*
-	name = "NanoMed Plus"
-	desc = "Medical drug dispenser."
-	icon_state = "med"
-	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
-	req_access = list(access_talon)
-	products = list(/obj/item/reagent_containers/glass/bottle/antitoxin = 4,/obj/item/reagent_containers/glass/bottle/inaprovaline = 4,
-					/obj/item/reagent_containers/glass/bottle/stoxin = 4,/obj/item/reagent_containers/glass/bottle/toxin = 4,
-					/obj/item/reagent_containers/syringe/antiviral = 4,/obj/item/reagent_containers/syringe = 12,
-					/obj/item/healthanalyzer = 5,/obj/item/reagent_containers/glass/beaker = 4, /obj/item/reagent_containers/dropper = 2,
-					/obj/item/stack/medical/advanced/bruise_pack = 6, /obj/item/stack/medical/advanced/ointment = 6, /obj/item/stack/medical/splint = 4,
-					/obj/item/storage/pill_bottle/carbon = 2, /obj/item/clothing/glasses/omnihud/med = 4,
-					/obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4)
-	contraband = list(/obj/item/reagent_containers/pill/tox = 3,/obj/item/reagent_containers/pill/stox = 4,/obj/item/reagent_containers/pill/antitox = 6)
-	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
-	req_log_access = access_talon
-	has_logs = 1
 
 ///////////////////////////
 //// Computers
