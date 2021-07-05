@@ -291,6 +291,7 @@
 	pixel_y = 26
 	},
 /obj/structure/closet/secure_closet/talon_captain,
+/obj/item/binoculars/spyglass,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/talon/decktwo/cap_room)
 "aQ" = (
@@ -336,10 +337,6 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -25
 	},
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
@@ -717,6 +714,10 @@
 /obj/machinery/camera/network/talon{
 	dir = 9
 	},
+/obj/item/firing_pin,
+/obj/item/firing_pin,
+/obj/item/firing_pin,
+/obj/item/firing_pin,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bF" = (
@@ -856,15 +857,10 @@
 /area/talon/maintenance/decktwo_starboard)
 "bR" = (
 /obj/structure/table/steel,
-/obj/random/ammo_all,
-/obj/random/ammo_all,
-/obj/random/ammo_all,
-/obj/random/ammo_all,
-/obj/random/ammo,
-/obj/random/ammo,
-/obj/random/ammo,
-/obj/random/ammo,
-/obj/random/ammo,
+/obj/item/melee/energy/hfmachete,
+/obj/item/melee/energy/sword/imperial,
+/obj/item/nullrod,
+/obj/item/nullrod,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bS" = (
