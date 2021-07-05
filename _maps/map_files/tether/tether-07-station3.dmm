@@ -20981,10 +20981,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
-"aYR" = (
-/obj/machinery/mineral/stacking_unit_console,
-/turf/simulated/wall,
-/area/quartermaster/belterdock/refinery)
 "aYT" = (
 /turf/simulated/wall,
 /area/security/breakroom)
@@ -21020,10 +21016,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/forest,
 /area/quartermaster/qm)
-"aZj" = (
-/obj/machinery/mineral/stacking_machine,
-/turf/simulated/floor/plating,
-/area/quartermaster/belterdock/refinery)
 "aZl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/wall/rshull,
@@ -21095,19 +21087,9 @@
 	dir = 5;
 	id = "miningops"
 	},
-/obj/machinery/mineral/input,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "aZH" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "miningops";
-	movedir = null
-	},
-/turf/simulated/floor/plating,
-/area/quartermaster/belterdock/refinery)
-"aZI" = (
-/obj/machinery/mineral/output,
 /obj/machinery/conveyor{
 	dir = 8;
 	id = "miningops";
@@ -40721,8 +40703,8 @@ aMD
 aWK
 aXI
 aYI
-aYR
-aZI
+aMD
+aZH
 adD
 aVz
 bab
@@ -40864,7 +40846,7 @@ aUe
 aXJ
 aUe
 aUe
-aZj
+aZH
 adD
 baa
 bad
