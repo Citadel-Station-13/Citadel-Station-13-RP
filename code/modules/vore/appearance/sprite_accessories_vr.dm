@@ -681,6 +681,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+//Ears
+/datum/sprite_accessory/ears/inkling
+	name = "colorable mature inkling tentacles"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_state = "inkling-colorable"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /*
 ////////////////////////////
 /  =--------------------=  /
