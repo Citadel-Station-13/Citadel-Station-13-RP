@@ -488,7 +488,6 @@
 	pixel_y = 3
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -568,7 +567,6 @@
 	name = "grid checker info"
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/storage/box/lights/mixed,
@@ -14996,7 +14994,6 @@
 "aCf" = (
 /obj/structure/table/reinforced,
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/machinery/camera/network/engineering,
@@ -15309,7 +15306,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/tool/wrench,
@@ -15317,11 +15313,9 @@
 	dir = 1
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /turf/simulated/floor/tiled,
