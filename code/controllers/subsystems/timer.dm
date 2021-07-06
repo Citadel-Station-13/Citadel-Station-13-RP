@@ -175,8 +175,6 @@ SUBSYSTEM_DEF(timer)
 
 #ifdef TIMER_LOOP_DEBUGGING
 			var/bucketOld = practical_offset
-			if(timer.timeToRun != world.time)
-				stack_trace("WARNING: [get_timer_debug_string(timer)] fired on the wrong tick: TTR [timer.timeToRun] vs time [world.time]")
 #endif
 
 			timer.bucketEject() //pop the timer off of the bucket list.
