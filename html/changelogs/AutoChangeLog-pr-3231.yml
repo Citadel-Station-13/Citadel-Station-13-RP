@@ -1,4 +1,0 @@
-author: "Kraseo"
-delete-after: True
-changes: 
-  - bugfix: "Synthetics no longer carry over every single character save."
