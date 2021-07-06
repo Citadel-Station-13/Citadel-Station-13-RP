@@ -189,11 +189,9 @@
 /obj/item/airlock_electronics,
 /obj/item/module/power_control,
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/machinery/light,

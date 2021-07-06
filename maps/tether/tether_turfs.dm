@@ -216,6 +216,7 @@ turf/simulated/mineral/rich/make_ore(var/rare_ore)
 	color = "#FFBBBB"
 
 /turf/simulated/sky/virgo3b/Initialize()
+	. = ..()
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

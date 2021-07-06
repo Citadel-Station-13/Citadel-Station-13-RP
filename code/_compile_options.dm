@@ -11,10 +11,12 @@
 #define USE_CUSTOM_ERROR_HANDLER
 #endif
 
+#define DEBUG_SHUTTLES
+
+#define TIMER_LOOP_DEBUGGING
+
 #ifdef TESTING
 #define DATUMVAR_DEBUGGING_MODE
-
-#define DEBUG_SHUTTLES
 
 //#define GC_FAILURE_HARD_LOOKUP	//makes paths that fail to GC call find_references before del'ing.
 									//implies FIND_REF_NO_CHECK_TICK
@@ -73,7 +75,3 @@ VORESTATION CRAP
 // ZAS Compile Options
 //#define ZASDBG	 	// Uncomment to turn on super detailed ZAS debugging that probably won't even compile.
 #define MULTIZAS		// Uncomment to turn on Multi-Z ZAS Support!
-
-// Comment/Uncomment this to turn off/on shuttle code debugging logs
-#define DEBUG_SHUTTLES
-

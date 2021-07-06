@@ -54,6 +54,10 @@
 		name = "80's"
 		icon_state = "hair_80s"
 
+	eighties_alt
+		name = "80's (Alternative)"
+		icon_state = "hair_80s_alt"
+
 	afro
 		name = "Afro"
 		icon_state = "hair_afro"
@@ -969,13 +973,6 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "hair_twincurl"
-
-	inkling
-		name = "colorable mature inkling hair"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_state = "inkling-colorable"
-		color_blend_mode = ICON_MULTIPLY
-		do_colouration = 1
 
 	myopia
 		name = "Myopia"

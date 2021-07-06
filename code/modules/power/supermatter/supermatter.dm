@@ -21,6 +21,7 @@
 #define CRITICAL_TEMPERATURE 5000	//K
 #define CHARGING_FACTOR 0.05
 #define DAMAGE_RATE_LIMIT 3			//damage rate cap at power = 300, scales linearly with power
+#define DAMAGE_HARD_LIMIT 50		// max damage per tick, 1000 div 50 = 20 * 2 = 80 seconds
 
 
 // Base variants are applied to everyone on the same Z level
@@ -290,7 +291,7 @@
 
 	//ensure that damage doesn't increase too quickly due to super high temperatures resulting from no coolant, for example. We dont want the SM exploding before anyone can react.
 	//We want the cap to scale linearly with power (and explosion_point). Let's aim for a cap of 5 at power = 300 (based on testing, equals roughly 5% per SM alert announcement).
-	var/damage_inc_limit = (power/300)*(explosion_point/1000)*DAMAGE_RATE_LIMIT
+	var/damage_inc_limit = min((power/300)*(explosion_point/1000)*DAMAGE_RATE_LIMIT, DAMAGE_HARD_LIMIT)
 
 	if(!istype(L, /turf/space))
 		env = L.return_air()

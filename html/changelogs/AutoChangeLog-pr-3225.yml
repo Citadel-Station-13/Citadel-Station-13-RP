@@ -1,0 +1,4 @@
+author: "MonaraMir"
+delete-after: True
+changes: 
+  - bugfix: "Fixed the missing oxygen and phoron pressure tanks on the fuel depot."

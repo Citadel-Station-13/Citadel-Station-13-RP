@@ -46,7 +46,7 @@
 
 /datum/map_template/tether_lateload/tether_underdark/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 100, /area/mine/unexplored/underdark, /datum/map_template/submap/level_specific/underdark)
+	seed_submaps(list(z), 150, /area/mine/unexplored/underdark, /datum/map_template/submap/level_specific/underdark)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, z, 64, 64)         // Create the mining ore distribution map.
 
@@ -63,7 +63,7 @@
 
 /datum/map_template/tether_lateload/tether_plains/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 120, /area/tether/outpost/exploration_plains, /datum/map_template/submap/level_specific/plains)
+	seed_submaps(list(z), 150, /area/tether/outpost/exploration_plains, /datum/map_template/submap/level_specific/plains)
 
 //////////////////////////////////////////////////////////////////////////////
 //Rogue Mines Stuff
@@ -109,7 +109,7 @@
 
 /datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 120, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/normal)
+	seed_submaps(list(z), 150, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/normal)
 	//seed_submaps(list(z), 70, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/deep)
 
 	// Now for the tunnels.
@@ -150,7 +150,7 @@
 
 /datum/map_template/tether_lateload/away_aerostat_surface/on_map_loaded(z)
 	. = ..()
-	seed_submaps(list(z), 120, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/submap/level_specific/virgo2)
+	seed_submaps(list(z), 150, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/submap/level_specific/virgo2)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z, world.maxx - 4, world.maxy - 4)
 	new /datum/random_map/noise/ore/virgo2(null, 1, 1, z, 64, 64)
 

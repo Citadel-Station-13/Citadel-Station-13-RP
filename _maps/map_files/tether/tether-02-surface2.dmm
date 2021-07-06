@@ -1429,7 +1429,6 @@
 /obj/structure/sign/nosmoking_1{
 	pixel_x = -32
 	},
-/obj/item/sleevemate,
 /obj/machinery/alarm{
 	pixel_y = 28
 	},
@@ -1442,6 +1441,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 9
 	},
+/obj/item/mirrortool,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/resleeving)
 "acc" = (
@@ -1469,6 +1469,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
+/obj/machinery/computer/transhuman/designer,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/resleeving)
 "ace" = (
@@ -11108,7 +11109,6 @@
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/machinery/status_display{
@@ -20794,8 +20794,8 @@
 	use_power = 1
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aKM" = (
@@ -20804,8 +20804,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aKN" = (
@@ -21131,8 +21131,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aLu" = (
@@ -21143,8 +21143,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aLv" = (
@@ -21524,8 +21524,8 @@
 	use_power = 1
 	},
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aMh" = (
@@ -21535,8 +21535,8 @@
 	},
 /obj/structure/window/reinforced,
 /turf/simulated/floor/bluegrid{
-	name = "Server Base";
 	initial_gas_mix = "nitrogen=500;TEMP=80";
+	name = "Server Base"
 	},
 /area/server)
 "aMi" = (
@@ -34309,6 +34309,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
+"eAD" = (
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/east_stairs_two)
 "eKn" = (
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
@@ -47962,7 +47966,7 @@ aWm
 aWm
 aYv
 aYV
-aZs
+eAD
 aZQ
 aNo
 aLX
