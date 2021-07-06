@@ -15,169 +15,169 @@
 /datum/map_template/submap/level_specific/plains/farm1
 	name = "Farm 1"
 	desc = "A small farm tended by a farmbot."
-	mappath = "farm1_vr.dmm" //VOREStation Edit
+	suffix = "farm1_vr.dmm" //VOREStation Edit
 	cost = 10
 
 /datum/map_template/submap/level_specific/plains/construction1
 	name = "Construction Site 1"
 	desc = "A structure being built. It seems laziness is not limited to engineers."
-	mappath = "construction1.dmm"
+	suffix = "construction1.dmm"
 	cost = 10
 
 /datum/map_template/submap/level_specific/plains/camp1
 	name = "Camp Site 1"
 	desc = "A small campsite, complete with housing and bonfire."
-	mappath = "camp1_vr.dmm" //VOREStation Edit
+	suffix = "camp1_vr.dmm" //VOREStation Edit
 	cost = 10
 
 /datum/map_template/submap/level_specific/plains/house1
 	name = "House 1"
 	desc = "A fair sized house out in the frontier, that belonged to a well-traveled explorer."
-	mappath = "house1_vr.dmm" //VOREStation Edit
+	suffix = "house1_vr.dmm" //VOREStation Edit
 	cost = 10
 
 /datum/map_template/submap/level_specific/plains/beacons
 	name = "Collection of Marker Beacons"
 	desc = "A bunch of marker beacons, scattered in a strange pattern."
-	mappath = "beacons.dmm"
+	suffix = "beacons.dmm"
 	cost = 5
 	fixed_orientation = TRUE
 
 /datum/map_template/submap/level_specific/plains/Epod
 	name = "Emergency Pod"
 	desc = "A vacant Emergency pod in the middle of nowhere."
-	mappath = "Epod.dmm"
+	suffix = "Epod.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/Epod2
 	name = "Emergency Pod 2"
 	desc = "A locked Emergency pod in the middle of nowhere."
-	mappath = "Epod2.dmm"
+	suffix = "Epod2.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/normal/Rocky2
 	name =  "Rocky2"
 	desc = "More rocks."
-	mappath = "maps/submaps/surface_submaps/wilderness/Rocky2.dmm"
+	suffix = "maps/submaps/surface_submaps/wilderness/Rocky2.dmm"
 	allow_duplicates = TRUE
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/PascalB
 	name = "Irradiated Manhole Cover"
 	desc = "How did this old thing get all the way out here?"
-	mappath = "PascalB.dmm"
+	suffix = "PascalB.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/bonfire
 	name = "Abandoned Bonfire"
 	desc = "Someone seems to enjoy orange juice a bit too much."
-	mappath = "bonfire.dmm"
+	suffix = "bonfire.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/Rocky5
 	name = "Rocky 5"
 	desc = "More rocks, Less Stalone"
-	mappath = "Rocky5.dmm"
+	suffix = "Rocky5.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/Shakden
 	name = "Shakden"
 	desc = "Not to be confused with Shaq Den"
-	mappath = "Shakden_vr.dmm" //VOREStation Edit
+	suffix = "Shakden_vr.dmm" //VOREStation Edit
 	cost = 10
 
 /datum/map_template/submap/level_specific/plains/Field1
 	name = "Field 1"
 	desc = "A regular field with a tug on it"
-	mappath = "Field1.dmm"
+	suffix = "Field1.dmm"
 	cost = 20
 
 /datum/map_template/submap/level_specific/plains/Thiefc
 	name = "Thieves Cave"
 	desc = "A thieves stash"
-	mappath = "Thiefc_vr.dmm" //VOREStation Edit
+	suffix = "Thiefc_vr.dmm" //VOREStation Edit
 	cost = 20
 
 /datum/map_template/submap/level_specific/plains/smol2
 	name = "Small 2"
 	desc = "A small formation of mishaped surgery"
-	mappath = "smol2.dmm"
+	suffix = "smol2.dmm"
 	cost = 10
 
 /datum/map_template/submap/level_specific/plains/Mechpt
 	name = "Mechpit"
 	desc = "A illmade Mech brawling ring"
-	mappath = "Mechpt.dmm"
+	suffix = "Mechpt.dmm"
 	cost = 15
 
 /datum/map_template/submap/level_specific/plains/Boathouse
 	name = "Boathouse"
 	desc = "A fance house on a lake."
-	mappath = "Boathouse_vr.dmm" //VOREStation Edit
+	suffix = "Boathouse_vr.dmm" //VOREStation Edit
 	cost = 30
 
 /datum/map_template/submap/level_specific/plains/PooledR
 	name = "Pooled Rocks"
 	desc = "An intresting rocky location"
-	mappath = "PooledR_vr.dmm" //VOREStation Edit
+	suffix = "PooledR_vr.dmm" //VOREStation Edit
 	cost = 15
 
 /datum/map_template/submap/level_specific/plains/Smol3
 	name = "Small 3"
 	desc = "A small stand"
-	mappath = "Smol3.dmm"
+	suffix = "Smol3.dmm"
 	cost = 10
 
 /datum/map_template/submap/level_specific/plains/Diner
 	name = "Diner"
 	desc = "Old Timey Tasty"
-	mappath = "Diner_vr.dmm" //VOREStation Edit
+	suffix = "Diner_vr.dmm" //VOREStation Edit
 	cost = 25
 
 /datum/map_template/submap/level_specific/plains/snow1
 	name = "Snow1"
 	desc = "Snow"
-	mappath = "snow1.dmm"
+	suffix = "snow1.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/snow2
 	name = "Snow2"
 	desc = "More snow"
-	mappath = "snow2.dmm"
+	suffix = "snow2.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/snow3
 	name = "Snow3"
 	desc = "Snow Snow Snow"
-	mappath = "snow3.dmm"
+	suffix = "snow3.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/snow4
 	name = "Snow4"
 	desc = "Too much snow"
-	mappath = "snow4.dmm"
+	suffix = "snow4.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/snow5
 	name = "Snow5"
 	desc = "Please stop the snow"
-	mappath = "snow5.dmm"
+	suffix = "snow5.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/RationCache
 	name = "Ration Cache"
 	desc = "A forgotten cache of emergency rations."
-	mappath = "RationCache_vr.dmm" //VOREStation Edit
+	suffix = "RationCache_vr.dmm" //VOREStation Edit
 	cost = 5
 
 /datum/map_template/submap/level_specific/plains/SupplyDrop2
 	name = "Supply Drop 2"
 	desc = "A drop pod that's clearly been here a while, most of the things inside are rusted and worthless."
-	mappath = "SupplyDrop2.dmm"
+	suffix = "SupplyDrop2.dmm"
 	cost = 8
 
 /datum/map_template/submap/level_specific/plains/Oldhouse
 	name = "Oldhouse"
 	desc = "Someones old library it seems.."
-	mappath = "Oldhouse_vr.dmm" //VOREStation Edit
+	suffix = "Oldhouse_vr.dmm" //VOREStation Edit
 	cost = 15
