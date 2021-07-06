@@ -37374,6 +37374,7 @@
 	pixel_y = -22;
 	target_temperature = 312.15
 	},
+/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "gae" = (
@@ -37392,6 +37393,9 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "geQ" = (
@@ -40531,6 +40535,9 @@
 /obj/structure/table/woodentable,
 /obj/item/towel/random,
 /obj/item/towel/random,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "pPs" = (
@@ -43350,6 +43357,7 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/item/clothing/under/swimsuit/stripper/stripper_pink,
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
+/obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_restroom)
 "xXZ" = (
@@ -53465,7 +53473,7 @@ akY
 akY
 akY
 akY
-alc
+aoX
 rLB
 glT
 jsT

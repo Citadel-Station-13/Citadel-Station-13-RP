@@ -4176,7 +4176,7 @@
 /area/talon/decktwo/tech)
 "RI" = (
 /obj/machinery/door/airlock/vault/bolted{
-	id_tag = talon_vault;
+	id_tag = "talon_vault";
 	name = "Talon Trading Goods";
 	req_one_access = list(301)
 	},
