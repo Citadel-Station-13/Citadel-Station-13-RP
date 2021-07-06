@@ -17906,6 +17906,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/effect/floor_decal/industrial/loading{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/cargostore/warehouse)
 "aDt" = (
@@ -18189,12 +18192,16 @@
 	dir = 1
 	},
 /obj/machinery/conveyor_switch/oneway{
+	convdir = -1;
 	id = "gloriouscargopipeline";
 	name = "Mining Ops conveyor switch";
 	pixel_x = -5;
 	pixel_y = -3;
 	req_access = list(48);
 	req_one_access = list(48)
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/cargostore/warehouse)
@@ -18209,6 +18216,9 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/cargostore/warehouse)
@@ -18276,6 +18286,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/cargostore/warehouse)
@@ -18355,11 +18368,17 @@
 	pixel_x = -32
 	},
 /obj/structure/closet/crate,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/cargostore/warehouse)
 "aEk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/cargostore/warehouse)
@@ -33432,6 +33451,12 @@
 "iKy" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/lower/mining_eva)
+"iPZ" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty,
+/area/tether/surfacebase/cargostore/warehouse)
 "iUF" = (
 /obj/structure/table/steel,
 /obj/machinery/alarm{
@@ -49877,7 +49902,7 @@ gJK
 afO
 aBE
 aCr
-aDt
+iPZ
 aEd
 aEo
 aFd
