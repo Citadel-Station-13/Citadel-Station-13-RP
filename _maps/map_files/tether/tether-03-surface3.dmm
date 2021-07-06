@@ -3330,6 +3330,7 @@
 /obj/machinery/alarm{
 	pixel_y = 32
 	},
+/obj/item/surgical/bioregen,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/surgery1)
 "aeT" = (
@@ -25674,6 +25675,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/item/surgical/bioregen,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/surgery2)
 "aTM" = (
@@ -36770,6 +36772,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/surgical/bioregen,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics/surgeryroom2)
 "dDy" = (
