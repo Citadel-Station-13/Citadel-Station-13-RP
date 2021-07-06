@@ -970,13 +970,6 @@
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "hair_twincurl"
 
-	inkling
-		name = "colorable mature inkling hair"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_state = "inkling-colorable"
-		color_blend_mode = ICON_MULTIPLY
-		do_colouration = 1
-
 	myopia
 		name = "Myopia"
 		icon = 'icons/mob/human_face_vr.dmi'
