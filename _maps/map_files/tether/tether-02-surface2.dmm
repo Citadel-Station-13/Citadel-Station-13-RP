@@ -1469,6 +1469,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
+/obj/machinery/computer/transhuman/designer,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/resleeving)
 "ace" = (
@@ -34308,6 +34309,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
+"eAD" = (
+/obj/machinery/computer/timeclock/premade/west,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/east_stairs_two)
 "eKn" = (
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
@@ -47961,7 +47966,7 @@ aWm
 aWm
 aYv
 aYV
-aZs
+eAD
 aZQ
 aNo
 aLX
