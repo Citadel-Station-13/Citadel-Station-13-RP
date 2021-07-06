@@ -9760,6 +9760,7 @@
 	pixel_y = -7
 	},
 /obj/item/cell/high{
+	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/stack/cable_coil{
@@ -9767,6 +9768,7 @@
 	pixel_y = -7
 	},
 /obj/item/cell/high{
+	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/storage/toolbox/mechanical{
