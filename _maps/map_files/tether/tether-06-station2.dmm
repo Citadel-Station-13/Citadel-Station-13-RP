@@ -8910,7 +8910,6 @@
 "nx" = (
 /obj/structure/table/steel,
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/stack/cable_coil,
@@ -11668,11 +11667,9 @@
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000
 	},
 /obj/item/stack/cable_coil{

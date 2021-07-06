@@ -222,11 +222,7 @@
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "ax" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/tank/oxygen,
-/obj/item/tank/oxygen,
-/obj/item/tank/oxygen,
-/obj/item/tank/oxygen,
+/obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "ay" = (
@@ -285,12 +281,18 @@
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/deckone_port)
 "aD" = (
-/obj/structure/table/rack/steel,
 /obj/machinery/camera/network/talon,
-/obj/item/suit_cooling_unit,
-/obj/item/suit_cooling_unit,
-/obj/item/suit_cooling_unit,
-/obj/item/suit_cooling_unit,
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 3
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = -3
+	},
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "aE" = (
@@ -345,10 +347,10 @@
 /area/talon/maintenance/deckone_port_fore_wing)
 "aJ" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/suit/space/void/mining,
+/obj/item/clothing/suit/space/void/mining,
+/obj/item/clothing/head/helmet/space/void/mining,
+/obj/item/clothing/head/helmet/space/void/mining,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "aK" = (
@@ -375,23 +377,15 @@
 /area/talon/maintenance/deckone_port)
 "aN" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
+/obj/item/clothing/suit/space/void/refurb/talon,
+/obj/item/clothing/suit/space/void/refurb/talon,
+/obj/item/clothing/head/helmet/space/void/refurb/talon,
+/obj/item/clothing/head/helmet/space/void/refurb/talon,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "aO" = (
 /turf/simulated/wall,
 /area/talon/maintenance/deckone_starboard)
-"aP" = (
-/obj/structure/table/rack/steel,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/syndicate/black,
-/obj/item/clothing/head/helmet/space/syndicate/black,
-/turf/simulated/floor/tiled/eris/white/danger,
-/area/talon/deckone/armory)
 "aQ" = (
 /obj/machinery/computer/ship/engines{
 	dir = 8;
@@ -435,11 +429,16 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_port)
 "aW" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
 /obj/machinery/alarm/talon{
 	dir = 1;
 	pixel_y = -25
 	},
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "aX" = (
@@ -483,6 +482,7 @@
 "be" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/table/standard,
+/obj/random/soap,
 /obj/item/clothing/gloves/sterile/nitrile,
 /obj/item/clothing/mask/surgical,
 /obj/item/clothing/suit/surgicalapron,
@@ -741,6 +741,9 @@
 /area/talon/deckone/bridge)
 "bE" = (
 /obj/machinery/vending/engineering{
+	icon = 'icons/obj/vending_vr.dmi';
+	icon_deny = null;
+	icon_state = "sovietsoda";
 	products = list(/obj/item/clothing/under/rank/chief_engineer = 4, /obj/item/clothing/under/rank/engineer = 4, /obj/item/clothing/shoes/orange = 4, /obj/item/clothing/head/hardhat = 4, /obj/item/storage/belt/utility = 4, /obj/item/clothing/glasses/meson = 4, /obj/item/clothing/gloves/yellow = 4, /obj/item/tool/screwdriver = 12, /obj/item/tool/crowbar = 12, /obj/item/tool/wirecutters = 12, /obj/item/multitool = 12, /obj/item/tool/wrench = 12, /obj/item/t_scanner = 12, /obj/item/stack/cable_coil/heavyduty = 8, /obj/item/cell = 8, /obj/item/weldingtool = 8, /obj/item/clothing/head/welding = 8, /obj/item/light/tube = 10, /obj/item/clothing/head/hardhat/red = 4, /obj/item/clothing/suit/fire = 4, /obj/item/stock_parts/scanning_module = 5, /obj/item/stock_parts/micro_laser = 5, /obj/item/stock_parts/matter_bin = 5, /obj/item/stock_parts/manipulator = 5, /obj/item/stock_parts/console_screen = 5);
 	req_access = list(301);
 	req_log_access = 301;
@@ -756,6 +759,7 @@
 /obj/machinery/alarm/talon{
 	pixel_y = 28
 	},
+/obj/item/inducer/syndicate,
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/port_eng_store)
 "bG" = (
@@ -1228,7 +1232,7 @@
 /obj/machinery/camera/network/talon{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "cz" = (
 /obj/structure/catwalk,
@@ -1308,13 +1312,17 @@
 /area/talon/maintenance/deckone_port)
 "cI" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/gun/burst,
+/obj/item/clothing/accessory/holster/waist,
 /obj/item/cell/device/weapon{
 	pixel_x = -5;
 	pixel_y = 2
 	},
+/obj/item/cell/device/weapon{
+	pixel_x = 5;
+	pixel_y = 2
+	},
 /obj/item/cell/device/weapon,
-/obj/item/clothing/accessory/holster/waist,
+/obj/item/gun/energy/gun/burst,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "cJ" = (
@@ -1337,7 +1345,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "cL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1410,6 +1418,8 @@
 /area/talon/deckone/port_eng)
 "cQ" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/frontier,
+/obj/item/gun/energy/frontier,
 /obj/item/gun/energy/frontier,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
@@ -1552,8 +1562,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/vending/medical_talon{
-	dir = 4
+/obj/machinery/vending/medical{
+	req_access = list(301);
+	req_log_access = list(301)
 	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
@@ -1674,7 +1685,11 @@
 /area/talon/deckone/medical)
 "en" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/space/void/refurb/talon,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/shoes/magboots,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "eo" = (
@@ -1784,6 +1799,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
 "fJ" = (
@@ -2037,7 +2053,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "iP" = (
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "iR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -2082,6 +2098,12 @@
 /obj/machinery/suit_cycler/vintage/tguard,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
+"jn" = (
+/obj/structure/table/rack/steel,
+/obj/item/inducer/syndicate,
+/obj/item/inducer/syndicate,
+/turf/simulated/floor/tiled/eris/white/danger,
+/area/talon/deckone/armory)
 "jp" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/eris/white,
@@ -2368,6 +2390,7 @@
 	dir = 9
 	},
 /obj/structure/table/standard,
+/obj/item/storage/box/flare,
 /turf/simulated/floor/tiled/eris/white/gray_platform,
 /area/shuttle/talonboat)
 "mf" = (
@@ -2467,7 +2490,8 @@
 "mS" = (
 /obj/structure/table/standard,
 /obj/fiftyspawner/steel,
-/obj/structure/outcrop/lead,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "mT" = (
@@ -2538,13 +2562,8 @@
 /area/talon/deckone/central_hallway)
 "oc" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/netgun,
-/obj/item/cell/device/weapon{
-	pixel_x = -5;
-	pixel_y = 2
-	},
 /obj/item/cell/device/weapon,
-/obj/item/clothing/accessory/holster/waist,
+/obj/item/gun/energy/ionrifle,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "oh" = (
@@ -2579,7 +2598,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/disposalpipe/junction,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "oS" = (
 /obj/structure/bed/chair/bay/comfy/yellow{
@@ -2728,6 +2747,9 @@
 	name = "north bump";
 	pixel_y = 28
 	},
+/obj/machinery/suit_cycler/mining{
+	req_access = list(301)
+	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
 "qo" = (
@@ -2789,6 +2811,10 @@
 	},
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_starboard_fore_wing)
+"qG" = (
+/obj/structure/vehiclecage/quadbike,
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
 "qL" = (
 /obj/machinery/light/small,
 /obj/machinery/power/port_gen/pacman{
@@ -2923,9 +2949,13 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "sK" = (
-/obj/machinery/suit_cycler/vintage/tcrew,
-/turf/simulated/floor/tiled/eris/dark/danger,
-/area/talon/deckone/secure_storage)
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/holster/machete,
+/obj/item/clothing/accessory/holster/machete,
+/obj/item/material/knife/machete,
+/obj/item/material/knife/machete,
+/turf/simulated/floor/tiled/eris/white/danger,
+/area/talon/deckone/armory)
 "sL" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -2937,9 +2967,16 @@
 /area/talon/maintenance/deckone_starboard)
 "sS" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/cell/device/weapon{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/item/cell/device/weapon,
 /obj/item/gun/energy/gun,
-/obj/item/clothing/accessory/holster/machete,
-/obj/item/material/knife/machete,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "sY" = (
@@ -3219,9 +3256,7 @@
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
 "wj" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/space/void/refurb/talon,
-/obj/item/clothing/head/helmet/space/void/refurb/talon,
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "wk" = (
@@ -3962,7 +3997,7 @@
 	pixel_y = 31
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "ES" = (
 /obj/structure/grille,
@@ -4005,9 +4040,6 @@
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
-"Fl" = (
-/turf/simulated/floor/tiled/eris/white/danger,
-/area/talon/deckone/armory)
 "Fs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4178,6 +4210,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/machinery/suit_cycler/vintage/tcrew,
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
 "Hl" = (
@@ -4212,6 +4245,9 @@
 "Hy" = (
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/brig)
+"HC" = (
+/turf/simulated/floor/tiled/eris/white/orangecorner,
+/area/talon/deckone/armory)
 "HQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -4221,7 +4257,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "HW" = (
 /obj/machinery/computer/ship/sensors,
@@ -4267,7 +4303,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/catwalk_plated,
-/turf/simulated/floor/plating/eris/under,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "Ij" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -4578,7 +4614,7 @@
 "KP" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "La" = (
 /obj/structure/grille,
@@ -4658,7 +4694,11 @@
 /area/talon/deckone/brig)
 "LO" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/head/helmet/space/void/refurb/talon,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "LU" = (
@@ -4944,7 +4984,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "OS" = (
 /obj/machinery/atmospherics/unary/engine/bigger{
@@ -5227,6 +5267,17 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
+/obj/item/cell/super{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/cell/super{
+	pixel_y = 10
+	},
+/obj/item/cell/super{
+	pixel_x = 5;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
 "Te" = (
@@ -5319,9 +5370,18 @@
 /area/talon/maintenance/deckone_port)
 "TX" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/netgun,
+/obj/item/clothing/accessory/holster/waist,
+/obj/item/clothing/accessory/holster/waist,
 /obj/item/cell/device/weapon{
 	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 5;
 	pixel_y = 2
 	},
 /obj/item/cell/device/weapon{
@@ -5329,7 +5389,9 @@
 	pixel_y = 2
 	},
 /obj/item/cell/device/weapon,
-/obj/item/clothing/accessory/holster/waist,
+/obj/item/cell/device/weapon,
+/obj/item/gun/energy/netgun,
+/obj/item/gun/energy/netgun,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "Uq" = (
@@ -5347,7 +5409,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "Ut" = (
 /obj/structure/table/standard,
@@ -5456,7 +5518,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "UY" = (
 /obj/structure/grille,
@@ -5491,7 +5553,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "VB" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -5590,6 +5652,9 @@
 "Wt" = (
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/atm{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/talon/deckone/central_hallway)
@@ -5832,7 +5897,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/eris/white/gray_platform,
+/turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "Zj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
@@ -5866,7 +5931,7 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/deckone/central_hallway)
 "Zt" = (
-/turf/simulated/floor/tiled/eris/white/orangecorner,
+/turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "Zz" = (
 /obj/machinery/alarm/talon{
@@ -15069,7 +15134,7 @@ ab
 ac
 aD
 kN
-sK
+xV
 kN
 aW
 aR
@@ -15107,7 +15172,7 @@ zE
 dL
 wk
 cr
-Bj
+qG
 Bj
 bS
 ki
@@ -16348,7 +16413,7 @@ ac
 zx
 Gd
 uM
-Zt
+HC
 kV
 bQ
 bQ
@@ -16488,9 +16553,9 @@ ab
 ab
 ac
 aE
-Fl
-aP
-Fl
+Zt
+jn
+Zt
 bG
 aY
 aO
@@ -16630,9 +16695,9 @@ aa
 ab
 ac
 TX
-Fl
+Zt
 oc
-Fl
+Zt
 cI
 aY
 aO
@@ -16773,7 +16838,7 @@ ab
 ac
 cQ
 le
-cQ
+sK
 bK
 sS
 aY

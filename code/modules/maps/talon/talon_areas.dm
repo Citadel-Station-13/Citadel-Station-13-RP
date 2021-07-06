@@ -18,7 +18,7 @@
 	icon_state = "gray-s"
 /area/talon/maintenance/deckone_port_fore_wing
 	name = "\improper Deck One - Fore Port Wing"
-	icon_state = "gray-p"	
+	icon_state = "gray-p"
 /area/talon/maintenance/deckone_starboard_fore_wing
 	name = "\improper Deck One - Fore Starboard Wing"
 	icon_state = "gray-s"
@@ -107,3 +107,6 @@
 /area/talon/decktwo/bridge_upper
 	name = "\improper Deck Two - Upper Bridge"
 	icon_state = "blue"
+/area/talon/decktwo/vault
+	name = "\improper Deck Two - Vault"
+	icon_state = "red"

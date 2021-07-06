@@ -2218,7 +2218,7 @@
 	},
 /obj/machinery/shield_gen{
 	field_radius = 49;
-	
+
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
@@ -2411,7 +2411,7 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/item/perfect_tele_beacon{
 	tele_name = "Daedalus";
-	
+
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
@@ -6631,25 +6631,21 @@
 	name = "First-Aid (empty)"
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
 	},
 /obj/item/cell/high{
-	charge = 100;
 	maxcharge = 15000;
 	pixel_x = 5;
 	pixel_y = -5
