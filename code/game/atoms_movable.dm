@@ -50,6 +50,9 @@
 	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 
+	///Reference to atom being orbited
+	var/atom/orbit_target
+
 /atom/movable/Destroy()
 	. = ..()
 	if(reagents)
