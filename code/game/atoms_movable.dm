@@ -52,6 +52,9 @@
 
 	var/cloaked = FALSE //If we're cloaked or not
 	var/image/cloaked_selfimage //The image we use for our client to let them see where we are
+=======
+	///Reference to atom being orbited
+	var/atom/orbit_target
 
 /atom/movable/Destroy()
 	. = ..()
