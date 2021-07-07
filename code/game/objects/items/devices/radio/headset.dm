@@ -128,6 +128,7 @@
 	name = "security bowman headset"
 	desc = "This is used by your elite security force."
 	icon_state = "sec_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/headset_sec
 
 /obj/item/radio/headset/headset_eng
@@ -140,6 +141,7 @@
 	name = "engineering bowman headset"
 	desc = "When the engineers wish to chat like girls."
 	icon_state = "eng_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/headset_eng
 
 /obj/item/radio/headset/headset_rob
@@ -158,6 +160,7 @@
 	name = "medical bowman headset"
 	desc = "A headset for the trained staff of the medbay."
 	icon_state = "med_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/headset_med
 
 /obj/item/radio/headset/headset_sci
@@ -188,6 +191,7 @@
 	name = "command bowman headset"
 	desc = "A headset with a commanding channel."
 	icon_state = "com_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/headset_com
 
 
@@ -201,6 +205,7 @@
 	name = "Facility Director's bowman headset"
 	desc = "The headset of the boss."
 	icon_state = "com_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/heads/captain
 
 /obj/item/radio/headset/heads/captain/sfr
@@ -234,6 +239,7 @@
 	name = "research director's bowman headset"
 	desc = "Headset of the researching God."
 	icon_state = "com_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/heads/rd
 
 /obj/item/radio/headset/heads/hos
@@ -246,6 +252,7 @@
 	name = "head of security's bowman headset"
 	desc = "The headset of the man who protects your worthless lifes."
 	icon_state = "com_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/heads/hos
 
 /obj/item/radio/headset/heads/ce
@@ -258,6 +265,7 @@
 	name = "chief engineer's bowman headset"
 	desc = "The headset of the guy who is in charge of morons"
 	icon_state = "com_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/heads/ce
 
 /obj/item/radio/headset/heads/cmo
@@ -270,6 +278,7 @@
 	name = "chief medical officer's bowman headset"
 	desc = "The headset of the highly trained medical chief."
 	icon_state = "com_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/heads/cmo
 
 /obj/item/radio/headset/heads/hop
@@ -282,6 +291,7 @@
 	name = "head of personnel's bowman headset"
 	desc = "The headset of the guy who will one day be Facility Director."
 	icon_state = "com_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/heads/hop
 
 /obj/item/radio/headset/headset_mine
@@ -301,6 +311,7 @@
 	name = "supply bowman headset"
 	desc = "A bowman headset used by the QM and his slaves."
 	icon_state = "cargo_headset_alt"
+	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/headset_cargo
 
 /obj/item/radio/headset/headset_service
@@ -321,6 +332,7 @@
 	name = "emergency response team bowman headset"
 	desc = "The headset of the boss's boss."
 	icon_state = "com_headset_alt"
+	ear_protection = 1
 //	freerange = 1
 	ks2type = /obj/item/encryptionkey/ert
 
@@ -480,6 +492,7 @@
 /obj/item/radio/headset/centcom/alt
 	name = "centcom bowman headset"
 	icon_state = "com_headset_alt"
+	ear_protection = 1
 
 /obj/item/radio/headset/nanotrasen
 	name = "\improper NT radio headset"
@@ -532,6 +545,7 @@
 	name = "pilot's bowman headset"
 	desc = "A bowman headset used by pilots, has access to supply and explorer channels."
 	icon_state = "pilot_headset_alt"
+	ear_protection = 1
 
 /obj/item/radio/headset/explorer
 	name = "explorer's headset"
@@ -544,6 +558,7 @@
 	name = "explorer's bowman headset"
 	desc = "Bowman headset used by explorers for exploring. Access to the explorer channel."
 	icon_state = "exp_headset_alt"
+	ear_protection = 1
 
 /obj/item/radio/headset/sar
 	name = "sar radio headset"
@@ -556,6 +571,7 @@
 	name = "sar radio bowman headset"
 	desc = "A bowman headset for search and rescue."
 	icon_state = "sar_headset_alt"
+	ear_protection = 1
 
 /obj/item/radio/headset/pathfinder
 	name = "pathfinder's headset"
@@ -568,6 +584,7 @@
 	name = "pathfinder's bowman headset"
 	desc = "Headset used by Pathfinders for coordinating and executing expeditions."
 	icon_state = "exp_headset_path_alt"
+	ear_protection = 1
 
 //Headset SC _vr files
 /obj/item/radio/headset/volunteer
