@@ -823,13 +823,9 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/random/weapon/guarenteed,
 /obj/random/weapon/guarenteed,
-/obj/random/weapon/guarenteed,
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/random/weapon/guarenteed,
-/obj/random/projectile,
-/obj/random/projectile,
 /obj/random/projectile,
 /obj/random/projectile,
 /turf/simulated/floor/reinforced,
@@ -2640,7 +2636,6 @@
 /obj/structure/sign/department/bar{
 	pixel_x = 29
 	},
-/obj/item/nullrod,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "tJ" = (
@@ -3314,7 +3309,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/item/nullrod,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "DT" = (
