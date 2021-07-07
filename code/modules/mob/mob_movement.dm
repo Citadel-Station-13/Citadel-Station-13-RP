@@ -50,7 +50,7 @@
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
 	return
 
-/// until movespeed modifiersare done - kevinz000
+/// until movespeed modifiers are done - silicons
 /mob/proc/movement_delay()
 	return 0
 
@@ -301,7 +301,7 @@
 	add_delay = max(add_delay, move_delay_add_grab)
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
-		add_delay *= 2
+		add_delay *= SQUARE_2
 	mob.move_delay += add_delay
 /*
 	if(.) // If mob is null here, we deserve the runtime
