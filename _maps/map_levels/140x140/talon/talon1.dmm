@@ -1308,6 +1308,9 @@
 	dir = 8;
 	pixel_x = 22
 	},
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_port)
 "cI" = (
@@ -1333,6 +1336,9 @@
 /obj/machinery/alarm/talon{
 	dir = 4;
 	pixel_x = -22
+	},
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
@@ -1600,7 +1606,7 @@
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
 "dH" = (
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/talon/deckone/brig)
 "dI" = (
 /obj/machinery/door/firedoor/glass/talon,
@@ -1782,7 +1788,7 @@
 /obj/machinery/door/blast/regular{
 	id = "talon_brigblast1"
 	},
-/turf/simulated/floor/tiled/eris/techmaint_panels,
+/turf/simulated/wall/r_wall,
 /area/talon/deckone/brig)
 "fi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2528,6 +2534,13 @@
 	},
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port_aft_wing)
+"nF" = (
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating/eris/under,
+/area/talon/maintenance/deckone_starboard)
 "nN" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -2967,6 +2980,7 @@
 /area/talon/maintenance/deckone_starboard)
 "sS" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/accessory/holster/waist,
 /obj/item/cell/device/weapon{
 	pixel_x = -5;
 	pixel_y = 2
@@ -3269,6 +3283,18 @@
 	},
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
+"wt" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating/eris/under,
+/area/talon/maintenance/deckone_port)
 "wD" = (
 /obj/machinery/power/terminal{
 	dir = 8
@@ -3816,6 +3842,18 @@
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
+"Dc" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating/eris/under,
+/area/talon/maintenance/deckone_starboard)
 "Dh" = (
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port_aft_wing)
@@ -5489,7 +5527,7 @@
 /obj/machinery/door/blast/regular{
 	id = "talon_brigblast2"
 	},
-/turf/simulated/floor/tiled/eris/techmaint_panels,
+/turf/simulated/wall/r_wall,
 /area/talon/deckone/brig)
 "UU" = (
 /obj/machinery/power/pointdefense{
@@ -14030,7 +14068,7 @@ aV
 Ow
 JY
 gg
-am
+dP
 am
 am
 gb
@@ -15424,7 +15462,7 @@ bL
 bQ
 Ym
 aM
-xK
+wt
 aM
 Bj
 Mg
@@ -16276,7 +16314,7 @@ aX
 bQ
 jp
 aO
-nN
+Dc
 aO
 Bj
 Mg
@@ -17722,7 +17760,7 @@ cd
 TO
 Dz
 Ee
-qA
+nF
 qA
 qA
 ix

@@ -366,6 +366,7 @@
 	pixel_y = 32;
 	starts_with = list(/obj/item/clothing/suit/fire/firefighter = 2, /obj/item/clothing/mask/gas = 2, /obj/item/flashlight = 2, /obj/item/tank/oxygen/red = 2, /obj/item/extinguisher = 2, /obj/item/clothing/head/hardhat/red = 2)
 	},
+/obj/item/paper/talon_shields,
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "ba" = (
@@ -563,6 +564,7 @@
 /area/talon/decktwo/tech)
 "bq" = (
 /obj/structure/table/standard,
+/obj/item/paicard,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/bar)
 "br" = (
@@ -656,13 +658,13 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/structure/table/standard,
-/obj/item/paper/talon_shields,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "bB" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/moneybag/vault,
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c1000,
@@ -671,11 +673,6 @@
 /obj/random/multiple/treasure,
 /obj/random/multiple/treasure,
 /obj/random/multiple/treasure,
-/obj/item/stolenpackageplus,
-/obj/item/stolenpackageplus,
-/obj/item/stolenpackageplus,
-/obj/item/stolenpackageplus,
-/obj/item/stolenpackageplus,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bC" = (
@@ -718,6 +715,22 @@
 /obj/item/firing_pin,
 /obj/item/firing_pin,
 /obj/item/firing_pin,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/card/emag,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bF" = (
@@ -808,16 +821,17 @@
 	pixel_x = 24
 	},
 /obj/structure/table/rack/shelf/steel,
-/obj/random/projectile,
 /obj/random/weapon/guarenteed,
 /obj/random/weapon/guarenteed,
 /obj/random/weapon/guarenteed,
-/obj/random/multiple/gun/projectile/rifle,
-/obj/random/multiple/gun/projectile/shotgun,
-/obj/random/multiple/gun/projectile/smg,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/random/weapon/guarenteed,
+/obj/random/projectile,
+/obj/random/projectile,
+/obj/random/projectile,
+/obj/random/projectile,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bN" = (
@@ -858,9 +872,8 @@
 "bR" = (
 /obj/structure/table/steel,
 /obj/item/melee/energy/hfmachete,
-/obj/item/melee/energy/sword/imperial,
-/obj/item/nullrod,
-/obj/item/nullrod,
+/obj/item/cane/concealed,
+/obj/item/melee/sabre,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bS" = (
@@ -1182,6 +1195,7 @@
 /area/talon/decktwo/eng_room)
 "dz" = (
 /obj/structure/table/woodentable,
+/obj/item/disk/nifsoft/engineering,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "dA" = (
@@ -1433,6 +1447,7 @@
 /area/talon/decktwo/med_room)
 "eV" = (
 /obj/structure/table/woodentable,
+/obj/item/disk/nifsoft/medical,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
 "eW" = (
@@ -1467,6 +1482,7 @@
 /area/talon/decktwo/sec_room)
 "fb" = (
 /obj/structure/table/woodentable,
+/obj/item/disk/nifsoft/security,
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
 "fc" = (
@@ -1904,6 +1920,9 @@
 	id = "talon_aio";
 	network = "Talon"
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "iv" = (
@@ -1959,6 +1978,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "iL" = (
@@ -1967,12 +1990,6 @@
 "iM" = (
 /obj/machinery/ntnet_relay,
 /turf/simulated/floor/bluegrid,
-/area/talon/decktwo/tech)
-"iV" = (
-/obj/machinery/computer/ship/engines{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "jy" = (
 /obj/machinery/cryopod/talon{
@@ -2117,7 +2134,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/light/small,
 /obj/structure/railing{
 	dir = 4
 	},
@@ -2319,6 +2335,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
+"nX" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/area/talon/decktwo/tech)
 "ol" = (
 /obj/structure/sign/poster{
 	dir = 1;
@@ -2618,15 +2640,12 @@
 /obj/structure/sign/department/bar{
 	pixel_x = 29
 	},
+/obj/item/nullrod,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "tJ" = (
 /turf/simulated/wall/rshull,
 /area/talon/decktwo/vault)
-"tM" = (
-/obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/plating/eris/under,
-/area/talon/maintenance/decktwo_starboard)
 "tN" = (
 /obj/structure/table/steel,
 /obj/item/paper/dockingcodes,
@@ -3162,9 +3181,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "Ci" = (
@@ -3247,6 +3263,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "CZ" = (
@@ -3295,6 +3314,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/nullrod,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "DT" = (
@@ -3511,9 +3531,6 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/machinery/computer/ship/helm{
-	req_one_access = list(301)
-	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "HV" = (
@@ -3567,6 +3584,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
+	},
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/decktwo_starboard)
@@ -3672,8 +3692,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/railing,
-/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/obj/structure/cable/green,
+/obj/machinery/shield_capacitor,
+/turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/tech)
 "JG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3734,6 +3755,9 @@
 	},
 /obj/structure/sign/directions/evac{
 	pixel_y = -38
+	},
+/obj/structure/railing{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
@@ -3814,9 +3838,6 @@
 	},
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
-"MF" = (
-/turf/simulated/floor/plating/eris/under,
-/area/talon/maintenance/decktwo_starboard)
 "MJ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -3832,6 +3853,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "MO" = (
@@ -4090,6 +4112,9 @@
 	name = "east bump";
 	pixel_x = 24
 	},
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/decktwo_port)
 "Qm" = (
@@ -4164,15 +4189,16 @@
 /area/talon/maintenance/decktwo_solars)
 "RH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/obj/structure/cable/green,
+/obj/machinery/shield_capacitor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/tech)
 "RI" = (
 /obj/machinery/door/airlock/vault/bolted{
@@ -4535,7 +4561,7 @@
 /obj/structure/table/woodentable,
 /obj/item/pen,
 /obj/item/paper_bin,
-/obj/item/modular_computer/tablet,
+/obj/item/modular_computer/tablet/preset/custom_loadout/advanced,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "Xa" = (
@@ -13068,7 +13094,7 @@ dm
 dm
 dm
 bG
-dm
+kS
 dm
 fh
 dm
@@ -14346,8 +14372,8 @@ bF
 ds
 aZ
 bA
+nX
 Db
-iV
 ds
 eN
 eN
@@ -15756,9 +15782,9 @@ CZ
 mS
 ax
 ax
+ax
+ax
 bQ
-tM
-MF
 cp
 cc
 au
@@ -15898,9 +15924,9 @@ wE
 pi
 pi
 pi
+pi
+pi
 bQ
-MF
-MF
 cq
 cc
 Pb
@@ -16040,8 +16066,8 @@ mC
 pi
 pi
 pi
-bQ
-bQ
+pi
+pi
 bQ
 cq
 cF
@@ -16192,7 +16218,7 @@ fx
 fx
 fx
 bL
-fx
+LH
 fx
 cv
 fx
