@@ -3136,12 +3136,12 @@
 "aeF" = (
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 4;
-	req_access = list(77);
+	req_access = list(30, 35, 47, 77);
 	req_one_access = newlist()
 	},
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 8;
-	req_access = list(77);
+	req_access = list(30, 35, 47, 77);
 	req_one_access = newlist()
 	},
 /obj/machinery/door/firedoor,
@@ -4307,7 +4307,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(77)
+	req_one_access = list(30, 35, 47, 77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -6046,8 +6046,8 @@
 /area/maintenance/lower/medsec_maintenance)
 "aiZ" = (
 /obj/machinery/door/window/brigdoor/southright{
-	req_access = list(77);
-	req_one_access = newlist()
+	req_access = list(30, 35, 47, 77);
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -7461,11 +7461,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(77)
+	req_one_access = list(30, 35, 47, 77)
 	},
-/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology/xenoflora_storage)
 "alA" = (
@@ -10352,7 +10352,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(77)
+	req_one_access = list(30, 35, 47, 77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -10560,7 +10560,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(77)
+	req_one_access = list(30, 35, 47, 77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -14584,7 +14584,7 @@
 "ayK" = (
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(77)
+	req_one_access = list(30, 35, 47, 77)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
@@ -15467,7 +15467,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/glass_research{
-	name = "Research Lobby"
+	name = "Research Lobby";
+	req_one_access = null
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)

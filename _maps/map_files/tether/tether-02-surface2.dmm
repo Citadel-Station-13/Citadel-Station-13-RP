@@ -8875,7 +8875,7 @@
 	dir = 9
 	},
 /obj/structure/railing{
-	dir = 4
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
@@ -13782,6 +13782,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
+/obj/random/trash_pile,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/lower/bar)
 "awq" = (
@@ -14070,6 +14071,7 @@
 	dir = 1
 	},
 /obj/structure/catwalk,
+/obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "awU" = (
@@ -14082,6 +14084,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
+/obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "awV" = (
@@ -14089,14 +14092,15 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
+/obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "awW" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
+	},
+/obj/structure/railing{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
@@ -14105,6 +14109,9 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/lower/bar)
 "awY" = (
@@ -14768,16 +14775,6 @@
 /obj/structure/disposalpipe/down,
 /turf/simulated/open,
 /area/maintenance/lower/bar)
-"ayr" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor/orange{
-	dir = 4
-	},
-/obj/random/trash_pile,
-/turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
 "ays" = (
 /obj/structure/railing{
 	dir = 4
@@ -15140,14 +15137,15 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/obj/structure/railing{
-	dir = 4
-	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "azj" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "azk" = (
@@ -15159,20 +15157,24 @@
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "azl" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/techfloor/orange,
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
 "azm" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
+/obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "azn" = (
@@ -34234,6 +34236,16 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/fish_farm)
+"ckv" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/random/trash_pile,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/lower/bar)
 "cJE" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -34618,6 +34630,15 @@
 /obj/item/flame/lighter/zippo/moff,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
+"sjb" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/lower/bar)
 "swg" = (
 /obj/structure/railing,
 /obj/structure/catwalk,
@@ -50337,7 +50358,7 @@ avL
 awp
 awW
 axM
-ayr
+axM
 axM
 azm
 azW
@@ -50478,10 +50499,10 @@ avb
 avL
 anU
 awX
-ays
-ays
-ays
-ays
+sjb
+ckv
+sjb
+sjb
 ays
 aAv
 avL
