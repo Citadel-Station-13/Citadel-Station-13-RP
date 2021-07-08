@@ -255,7 +255,7 @@
 	desc = "A durable suit designed for medical rescue in high risk areas."
 	icon_state = "medical_rig"
 	armor = list(melee = 30, bullet = 15, laser = 20, energy = 60, bomb = 30, bio = 100, rad = 100)
-	slowdown = 1
+	slowdown = 0
 	offline_vision_restriction = 1
 	siemens_coefficient= 0.75
 
