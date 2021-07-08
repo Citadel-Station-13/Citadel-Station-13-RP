@@ -4387,6 +4387,7 @@
 /obj/machinery/newscaster{
 	pixel_y = -29
 	},
+/obj/machinery/mineral/equipment_vendor/survey,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
 "gR" = (

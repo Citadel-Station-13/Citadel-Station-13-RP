@@ -21718,11 +21718,6 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/closet/secure_closet/guncabinet/excursion,
 /obj/item/pickaxe,
-/obj/item/gun/energy/frontier/locked/holdout,
-/obj/item/gun/energy/frontier/locked/carbine,
-/obj/item/gun/energy/frontier/locked/carbine,
-/obj/item/gun/energy/frontier/locked/carbine,
-/obj/item/gun/energy/frontier/locked/carbine,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/general)
 "coc" = (

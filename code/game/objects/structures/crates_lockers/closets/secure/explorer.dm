@@ -16,6 +16,7 @@
 		/obj/item/clothing/mask/gas/explorer,
 		/obj/item/clothing/shoes/boots/winter/explorer,
 		/obj/item/clothing/gloves/black,
+		/obj/item/gun/energy/frontier/locked/holdout,
 		/obj/item/radio/headset/explorer,
 		/obj/item/flashlight,
 		/obj/item/gps/explorer,
