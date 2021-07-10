@@ -225,7 +225,6 @@
 					imp.implanted = 0
 					if(istype(obj, /obj/item/implant/mirror))
 						target.mirror = null
-
 				else if(istype(tool,/obj/item/nif)){var/obj/item/nif/N = tool;N.unimplant(target)} //VOREStation Add - NIF support
 		else
 			user.visible_message("<font color=#4F49AF>[user] removes \the [tool] from [target]'s [affected.name].</font>", \
