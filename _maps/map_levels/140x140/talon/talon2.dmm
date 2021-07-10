@@ -314,9 +314,7 @@
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/decktwo/bar)
 "aT" = (
-/obj/machinery/vending/coffee{
-	dir = 1
-	},
+/obj/machinery/vending/glukoz,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/decktwo/bar)
 "aU" = (
@@ -540,8 +538,7 @@
 /obj/structure/cable/green,
 /obj/machinery/power/apc/talon{
 	name = "south bump";
-	pixel_y = -28;
-	req_access = list()
+	pixel_y = -28
 	},
 /obj/machinery/light{
 	dir = 4
@@ -673,9 +670,6 @@
 /obj/random/multiple/treasure,
 /obj/item/stolenpackageplus,
 /obj/item/stolenpackageplus,
-/obj/item/stolenpackageplus,
-/obj/item/stolenpackageplus,
-/obj/item/stolenpackageplus,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bC" = (
@@ -714,10 +708,6 @@
 /obj/machinery/camera/network/talon{
 	dir = 9
 	},
-/obj/item/firing_pin,
-/obj/item/firing_pin,
-/obj/item/firing_pin,
-/obj/item/firing_pin,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bF" = (
@@ -811,10 +801,6 @@
 /obj/random/projectile,
 /obj/random/weapon/guarenteed,
 /obj/random/weapon/guarenteed,
-/obj/random/weapon/guarenteed,
-/obj/random/multiple/gun/projectile/rifle,
-/obj/random/multiple/gun/projectile/shotgun,
-/obj/random/multiple/gun/projectile/smg,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -857,10 +843,12 @@
 /area/talon/maintenance/decktwo_starboard)
 "bR" = (
 /obj/structure/table/steel,
-/obj/item/melee/energy/hfmachete,
-/obj/item/melee/energy/sword/imperial,
-/obj/item/nullrod,
-/obj/item/nullrod,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/toy,
+/obj/random/toy,
+/obj/random/toy,
+/obj/random/toy,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bS" = (
@@ -1368,12 +1356,8 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/empty,
 /obj/item/cell/device/weapon/empty,
-/obj/item/cell/device/weapon/empty,
-/obj/item/cell/device/weapon/empty,
-/obj/item/cell/device/weapon/empty,
-/obj/random/energy,
-/obj/random/energy,
-/obj/random/energy,
+/obj/random/energy/sec,
+/obj/random/energy/sec,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "ev" = (
@@ -1987,8 +1971,7 @@
 	},
 /obj/machinery/power/apc/talon{
 	name = "south bump";
-	pixel_y = -28;
-	req_access = list()
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/decktwo/bridge_upper)
@@ -3786,8 +3769,6 @@
 /area/talon/maintenance/decktwo_starboard)
 "LX" = (
 /obj/structure/table/steel,
-/obj/random/firstaid,
-/obj/random/firstaid,
 /obj/random/firstaid,
 /obj/random/firstaid,
 /turf/simulated/floor/reinforced,

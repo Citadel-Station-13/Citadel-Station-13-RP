@@ -298,11 +298,10 @@
 "aE" = (
 /obj/machinery/camera/network/talon,
 /obj/structure/table/rack/steel,
-/obj/item/clothing/shoes/leg_guard/combat,
-/obj/item/clothing/gloves/arm_guard/combat,
-/obj/item/clothing/under/syndicate/combat,
-/obj/item/clothing/suit/armor/combat,
-/obj/item/clothing/head/helmet/combat,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "aF" = (
@@ -345,14 +344,6 @@
 	},
 /turf/simulated/floor/plating/eris/under/airless,
 /area/talon/maintenance/deckone_port_fore_wing)
-"aJ" = (
-/obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/clothing/head/helmet/space/void/mining,
-/obj/item/clothing/head/helmet/space/void/mining,
-/turf/simulated/floor/tiled/eris/dark/danger,
-/area/talon/deckone/secure_storage)
 "aK" = (
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/deckone_starboard)
@@ -432,13 +423,12 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
 /obj/machinery/alarm/talon{
 	dir = 1;
 	pixel_y = -25
 	},
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "aX" = (
@@ -768,15 +758,9 @@
 	pixel_y = -25
 	},
 /obj/structure/table/rack/steel,
-/obj/item/whetstone{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/grenade/spawnergrenade/manhacks/mercenary{
-	pixel_x = -5;
-	pixel_y = 4
-	},
 /obj/item/spaceflare,
+/obj/item/storage/box/flare,
+/obj/item/gun/projectile/shotgun/flare,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "bH" = (
@@ -1182,7 +1166,6 @@
 /obj/item/defib_kit/jumper_kit/loaded,
 /obj/item/defib_kit/loaded,
 /obj/item/storage/belt/medical/emt,
-/obj/item/sleevemate,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "cu" = (
@@ -1312,17 +1295,8 @@
 /area/talon/maintenance/deckone_port)
 "cI" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/accessory/holster/waist,
-/obj/item/cell/device/weapon{
-	pixel_x = -5;
-	pixel_y = 2
-	},
-/obj/item/cell/device/weapon{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/obj/item/cell/device/weapon,
-/obj/item/gun/energy/gun/burst,
+/obj/item/storage/box/shotgunshells,
+/obj/item/gun/projectile/shotgun/doublebarrel,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "cJ" = (
@@ -1418,6 +1392,7 @@
 /area/talon/deckone/port_eng)
 "cQ" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/frontier,
 /obj/item/gun/energy/frontier,
 /obj/item/gun/energy/frontier,
 /obj/item/gun/energy/frontier,
@@ -1685,7 +1660,6 @@
 /area/talon/deckone/medical)
 "en" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/shoes/magboots,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/shoes/magboots,
@@ -2100,8 +2074,10 @@
 /area/talon/deckone/brig)
 "jn" = (
 /obj/structure/table/rack/steel,
-/obj/item/inducer/syndicate,
-/obj/item/inducer/syndicate,
+/obj/item/stack/marker_beacon/thirty,
+/obj/item/stack/marker_beacon/thirty,
+/obj/item/stack/marker_beacon/thirty,
+/obj/item/stack/marker_beacon/thirty,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "jp" = (
@@ -2562,8 +2538,7 @@
 /area/talon/deckone/central_hallway)
 "oc" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon,
-/obj/item/gun/energy/ionrifle,
+/obj/item/inducer/syndicate,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "oh" = (
@@ -2952,6 +2927,10 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/accessory/holster/machete,
 /obj/item/clothing/accessory/holster/machete,
+/obj/item/clothing/accessory/holster/machete,
+/obj/item/clothing/accessory/holster/machete,
+/obj/item/material/knife/machete,
+/obj/item/material/knife/machete,
 /obj/item/material/knife/machete,
 /obj/item/material/knife/machete,
 /turf/simulated/floor/tiled/eris/white/danger,
@@ -2967,16 +2946,9 @@
 /area/talon/maintenance/deckone_starboard)
 "sS" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
-	pixel_x = -5;
-	pixel_y = 2
-	},
-/obj/item/cell/device/weapon{
-	pixel_x = 5;
-	pixel_y = 2
-	},
 /obj/item/cell/device/weapon,
-/obj/item/gun/energy/gun,
+/obj/item/cell/device/weapon,
+/obj/item/gun/energy/netgun,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "sY" = (
@@ -4698,7 +4670,6 @@
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
-/obj/item/suit_cooling_unit,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "LU" = (
@@ -5370,28 +5341,8 @@
 /area/talon/maintenance/deckone_port)
 "TX" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/accessory/holster/waist,
-/obj/item/clothing/accessory/holster/waist,
-/obj/item/cell/device/weapon{
-	pixel_x = -5;
-	pixel_y = 2
-	},
-/obj/item/cell/device/weapon{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/obj/item/cell/device/weapon{
-	pixel_x = 5;
-	pixel_y = 2
-	},
-/obj/item/cell/device/weapon{
-	pixel_x = -5;
-	pixel_y = 2
-	},
-/obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/gun/energy/netgun,
-/obj/item/gun/energy/netgun,
+/obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/gun/energy/frontier/locked/holdout,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "Uq" = (
@@ -14850,7 +14801,7 @@ ab
 ac
 ax
 dQ
-aJ
+aN
 bJ
 en
 aR
