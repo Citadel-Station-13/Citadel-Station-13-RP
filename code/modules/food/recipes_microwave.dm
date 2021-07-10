@@ -1176,8 +1176,9 @@ I said no!
 	fruit = list("cabbage" = 1)
 	reagents = list("rice" = 20)
 	items = list(
+		/obj/item/reagent_containers/food/snacks/carpmeat,
 		/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-		/obj/item/reagent_containers/food/snacks/carpmeat/fish
+		/obj/item/reagent_containers/food/snacks/carpmeat/sif
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi
 
