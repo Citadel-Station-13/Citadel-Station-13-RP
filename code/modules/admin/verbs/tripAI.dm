@@ -7,7 +7,7 @@
 		return
 
 	if(SSjob && SSticker)
-		var/datum/job/job = job_master.get_job("AI")
+		var/datum/job/job = job_master.GetJob("AI")
 		if(!job)
 			to_chat(usr, "Unable to locate the AI job")
 			return
