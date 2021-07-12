@@ -544,7 +544,6 @@
 	holder.adjustToxLoss(-10)
 	holder.radiation = max(holder.radiation - 50, 0)
 
-
 	var/mob/living/carbon/human/H = holder
 	for(var/organ in H.internal_organs)
 		var/obj/item/organ/O = organ
