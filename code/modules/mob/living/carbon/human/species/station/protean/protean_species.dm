@@ -221,7 +221,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
 
 		//Steel adds regen
-		if(H.health < H.maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
+		if(protean_requires_healing(H) && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
 			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 
 		//MHydrogen adds speeeeeed
@@ -241,6 +241,9 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 			H.add_modifier(/datum/modifier/protean/silver, origin = refactory)
 
 	return ..()
+
+/proc/protean_requires_healing(mob/living/carbon/human/H)
+	return H.getActualBruteLoss() || H.getActualFireLoss() || H.getToxLoss()
 
 /datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
 	return ..() //Hmm, what could be done here?
@@ -349,7 +352,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	material_use = 10	// don't use as much as blobform since it heals less
 
 /datum/modifier/protean/steel/check_if_valid()
-	if(!holder || (holder.health >= holder.maxHealth))
+	if(!protean_requires_healing(holder))
 		expire()
 		return
 	return ..()
