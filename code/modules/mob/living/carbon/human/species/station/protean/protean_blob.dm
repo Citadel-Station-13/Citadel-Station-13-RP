@@ -10,8 +10,8 @@
 	icon_dead = "puddle"
 
 	faction = "neutral"
-	maxHealth = 300
-	health = 300
+	maxHealth = 250
+	health = 250
 	say_list_type = /datum/say_list/protean_blob
 
 	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
@@ -538,9 +538,9 @@
 /datum/modifier/protean/steelBlob/tick()
 
 	..()
-	// 7.5 hp/s regen per tick
-	holder.adjustBruteLoss(-7.5 * 2 / 0.5 ,include_robo = TRUE)
-	holder.adjustFireLoss(-7.5 * 2 / 1.3 ,include_robo = TRUE)
+	// 5 hp/s regen per tick
+	holder.adjustBruteLoss(-5 * 2 / 0.5 ,include_robo = TRUE)
+	holder.adjustFireLoss(-5 * 2 / 1.3 ,include_robo = TRUE)
 	holder.adjustToxLoss(-10)
 	holder.radiation = max(holder.radiation - 50, 0)
 
