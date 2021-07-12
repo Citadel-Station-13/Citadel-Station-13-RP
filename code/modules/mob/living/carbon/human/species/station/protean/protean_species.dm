@@ -216,7 +216,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		H.gib()
 
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > ((100 + H.maxhealth) * force_blob_ratio) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
+	if((H.getActualBruteLoss() + H.getActualFireLoss()) > ((100 + H.maxHealth) * force_blob_ratio) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
