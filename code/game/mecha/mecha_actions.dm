@@ -15,7 +15,7 @@
 /obj/mecha/proc/GrantActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
 		eject_action.Grant(user, src)
-	//internals_action.Grant(user, src)
+	internals_action.Grant(user, src)
 	cycle_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	stats_action.Grant(user, src)
@@ -35,11 +35,13 @@
 		phasing_action.Grant(user, src)
 	if(switch_dmg_type_possible)
 		switch_damtype_action.Grant(user, src)
+	if(cloak_possible)
+		cloak_action.Grant(user, src)
 
 /obj/mecha/proc/RemoveActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
 		eject_action.Remove(user, src)
-	//internals_action.Remove(user, src)
+	internals_action.Remove(user, src)
 	cycle_action.Remove(user, src)
 	lights_action.Remove(user, src)
 	stats_action.Remove(user, src)
@@ -52,7 +54,7 @@
 	phasing_action.Remove(user, src)
 	switch_damtype_action.Remove(user, src)
 	overload_action.Remove(user, src)
-
+	cloak_action.Remove(user, src)
 
 
 //
@@ -80,7 +82,7 @@
 	chassis.lights()
 
 
-/*
+
 /datum/action/innate/mecha/mech_toggle_internals
 	name = "Toggle Internal Airtank Usage"
 	button_icon_state = "mech_internals_off"
@@ -89,7 +91,7 @@
 	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "off" : "on"]"
 	button.UpdateIcon()
 	chassis.internal_tank()
-*/
+
 
 
 /datum/action/innate/mecha/mech_view_stats
@@ -185,6 +187,9 @@
 	var/list/available_equipment = list()
 	available_equipment = chassis.equipment
 
+	if(chassis.weapons_only_cycle)
+		available_equipment = chassis.weapon_equipment
+
 	if(available_equipment.len == 0)
 		chassis.occupant_message("No equipment available.")
 		return
@@ -239,6 +244,15 @@
 
 
 
+/datum/action/innate/mecha/mech_toggle_cloaking
+	name = "Toggle Mech phasing"
+	button_icon_state = "mech_phasing_off"
+
+/datum/action/innate/mecha/mech_toggle_cloaking/Activate()
+	button_icon_state = "mech_phasing_[chassis.cloaked ? "off" : "on"]"
+	button.UpdateIcon()
+	chassis.toggle_cloaking()
+
 
 
 /////
@@ -263,7 +277,7 @@
 	defence_mode = !defence_mode
 	if(defence_mode)
 		deflect_chance = defence_deflect
-		src.occupant_message("<font color=#4F49AF>You enable [src] defence mode.</font>")
+		src.occupant_message("<font color='blue'>You enable [src] defence mode.</font>")
 	else
 		deflect_chance = initial(deflect_chance)
 		src.occupant_message("<font color='red'>You disable [src] defence mode.</font>")
@@ -290,12 +304,10 @@
 		return
 	if(overload)
 		overload = 0
-		step_in = initial(step_in)
 		step_energy_drain = initial(step_energy_drain)
-		src.occupant_message("<font color=#4F49AF>You disable leg actuators overload.</font>")
+		src.occupant_message("<font color='blue'>You disable leg actuators overload.</font>")
 	else
 		overload = 1
-		step_in = min(1, round(step_in/2))
 		step_energy_drain = step_energy_drain*overload_coeff
 		src.occupant_message("<font color='red'>You enable leg actuators overload.</font>")
 	src.log_message("Toggled leg actuators overload.")
@@ -351,7 +363,7 @@
 		src.occupant_message("<font color='[src.zoom?"blue":"red"]'>Zoom mode [zoom?"en":"dis"]abled.</font>")
 		if(zoom)
 			src.occupant.set_viewsize(12)
-			SEND_SOUND(src.occupant, sound('sound/mecha/imag_enh.ogg',volume=50))
+			src.occupant << sound('sound/mecha/imag_enh.ogg',volume=50)
 		else
 			src.occupant.set_viewsize() // Reset to default
 	return
@@ -418,3 +430,36 @@
 	src.occupant_message("<font color=\"[phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")
 	return
 
+
+/obj/mecha/verb/toggle_cloak()
+	set category = "Exosuit Interface"
+	set name = "Toggle cloaking"
+	set src = usr.loc
+	set popup_menu = 0
+	toggle_cloaking()
+
+/obj/mecha/proc/toggle_cloaking()
+	if(usr!=src.occupant)
+		return
+
+	if(cloaked)
+		uncloak()
+	else
+		cloak()
+
+	src.occupant_message("<font color=\"[cloaked?"#00f\">En":"#f00\">Dis"]abled cloaking.</font>")
+	return
+
+/obj/mecha/verb/toggle_weapons_only_cycle()
+	set category = "Exosuit Interface"
+	set name = "Toggle weapons only cycling"
+	set src = usr.loc
+	set popup_menu = 0
+	set_weapons_only_cycle()
+
+/obj/mecha/proc/set_weapons_only_cycle()
+	if(usr!=src.occupant)
+		return
+	weapons_only_cycle = !weapons_only_cycle
+	src.occupant_message("<font color=\"[weapons_only_cycle?"#00f\">En":"#f00\">Dis"]abled weapons only cycling.</font>")
+	return

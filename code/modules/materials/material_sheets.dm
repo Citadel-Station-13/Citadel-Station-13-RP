@@ -468,7 +468,7 @@
 	no_variants = FALSE
 	var/fill_type = /obj/item/stack/material/sandbags
 
-	default_type = "emptysandbag"
+	default_type = "empty sandbag"
 	perunit = 1
 
 /obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
@@ -496,5 +496,5 @@
 	icon_state = "sandbags"
 	no_variants = FALSE
 
-	default_type = "sandbags"
+	default_type = "sandbag"
 	perunit = 1

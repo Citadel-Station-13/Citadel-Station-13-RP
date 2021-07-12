@@ -16,7 +16,7 @@
 	cam_background.fill_rect(1, 1, 1, 1)
 	local_skybox.cut_overlays()
 
-/datum/tgui_module/appearance_changer/vore/tgui_close(mob/user)
+/datum/tgui_module/appearance_changer/vore/ui_close(mob/user)
 	. = ..()
 	QDEL_IN(src, 1)
 

@@ -178,6 +178,11 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/action_buttons_hidden = 0
 	var/list/slot_info
 
+	// pending hardsync
+	var/icon/ui_style
+	var/ui_color
+	var/ui_alpha
+
 	var/list/minihuds = list()
 
 /datum/hud/New(mob/owner)
@@ -296,9 +301,9 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 /datum/hud/proc/instantiate()
 	if(!ismob(mymob)) return 0
 	if(!mymob.client) return 0
-	var/ui_style = ui_style2icon(mymob.client.prefs.UI_style)
-	var/ui_color = mymob.client.prefs.UI_style_color
-	var/ui_alpha = mymob.client.prefs.UI_style_alpha
+	ui_style = ui_style2icon(mymob.client.prefs.UI_style)
+	ui_color = mymob.client.prefs.UI_style_color
+	ui_alpha = mymob.client.prefs.UI_style_alpha
 
 	if(ishuman(mymob))
 		human_hud(ui_style, ui_color, ui_alpha, mymob) // Pass the player the UI style chosen in preferences

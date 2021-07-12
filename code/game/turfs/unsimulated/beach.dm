@@ -75,7 +75,7 @@
 /turf/simulated/floor/outdoors/beach/water
 	name = "Water"
 	icon_state = "water"
-	initial_flooring = /decl/flooring/outdoors/water
+	initial_flooring = /decl/flooring/water
 
 /turf/simulated/floor/outdoors/beach/water/ocean
 	icon_state = "seadeep"

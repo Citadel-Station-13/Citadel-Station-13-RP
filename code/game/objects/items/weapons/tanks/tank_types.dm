@@ -114,9 +114,17 @@
 
 /obj/item/tank/vox/Initialize(mapload)
 	. = ..()
-
 	air_contents.adjust_gas(/datum/gas/phoron, (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
-	return
+
+/obj/item/tank/phoron/pressurized
+	name = "fuel can"
+	icon_state = "phoron_vox"
+	w_class = ITEMSIZE_NORMAL
+
+/obj/item/tank/phoron/pressurized/Initialize()
+	. = ..()
+	adjust_scale(0.8)
+	air_contents.adjust_gas(/datum/gas/phoron, (7*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
 /obj/item/tank/emergency/phoron/double
 	name = "double emergency phoron tank"

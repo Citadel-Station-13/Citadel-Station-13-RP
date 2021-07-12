@@ -116,6 +116,10 @@
 	icon_state = "cell"
 	spawn_nothing_percentage = 25
 
+/obj/random/tech_supply/nofail
+	name = "guaranteed random tech supply"
+	spawn_nothing_percentage = 0
+
 /obj/random/tech_supply/item_to_spawn()
 	return pick(prob(3);/obj/random/powercell,
 				prob(2);/obj/random/technology_scanner,
@@ -138,6 +142,10 @@
 	desc = "This is a random machine component."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "portable_analyzer"
+
+/obj/random/tech_supply/component/nofail
+	name = "guaranteed random tech supply"
+	spawn_nothing_percentage = 0
 
 /obj/random/tech_supply/component/item_to_spawn()
 	return pick(prob(3);/obj/item/stock_parts/gear,

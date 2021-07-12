@@ -1140,8 +1140,8 @@
 
 	return 1
 
-/mob/living/carbon/human/proc/set_stat(var/new_stat)
-	stat = new_stat
+/mob/living/carbon/human/set_stat(var/new_stat)
+	. = ..()
 	if(stat)
 		update_skin(1)
 
@@ -1732,7 +1732,7 @@
 	This proc below is only called when those HUD elements need to change as determined by the mobs hud_updateflag.
 */
 /mob/living/carbon/human/proc/handle_hud_list()
-	if (CHECK_BITFIELD(hud_updateflag, HEALTH_HUD))
+	if (BITTEST(hud_updateflag, HEALTH_HUD))
 		var/image/holder = grab_hud(HEALTH_HUD)
 		if(stat == DEAD)
 			holder.icon_state = "-100" 	// X_X
@@ -1740,7 +1740,7 @@
 			holder.icon_state = RoundHealth((health-config_legacy.health_threshold_crit)/(getMaxHealth()-config_legacy.health_threshold_crit)*100)
 		apply_hud(HEALTH_HUD, holder)
 
-	if (CHECK_BITFIELD(hud_updateflag, LIFE_HUD))
+	if (BITTEST(hud_updateflag, LIFE_HUD))
 		var/image/holder = grab_hud(LIFE_HUD)
 		if(isSynthetic())
 			holder.icon_state = "hudrobo"
@@ -1750,7 +1750,7 @@
 			holder.icon_state = "hudhealthy"
 		apply_hud(LIFE_HUD, holder)
 
-	if (CHECK_BITFIELD(hud_updateflag, STATUS_HUD))
+	if (BITTEST(hud_updateflag, STATUS_HUD))
 		var/foundVirus = 0
 		for (var/ID in virus2)
 			if (ID in virusDB)
@@ -1783,7 +1783,7 @@
 		apply_hud(STATUS_HUD, holder)
 		apply_hud(STATUS_HUD_OOC, holder2)
 
-	if (CHECK_BITFIELD(hud_updateflag, ID_HUD))
+	if (BITTEST(hud_updateflag, ID_HUD))
 		var/image/holder = grab_hud(ID_HUD)
 		if(wear_id)
 			var/obj/item/card/id/I = wear_id.GetID()
@@ -1796,7 +1796,7 @@
 
 		apply_hud(ID_HUD, holder)
 
-	if (CHECK_BITFIELD(hud_updateflag, WANTED_HUD))
+	if (BITTEST(hud_updateflag, WANTED_HUD))
 		var/image/holder = grab_hud(WANTED_HUD)
 		holder.icon_state = "hudblank"
 		var/perpname = name
@@ -1823,9 +1823,9 @@
 
 		apply_hud(WANTED_HUD, holder)
 
-	if (  CHECK_BITFIELD(hud_updateflag, IMPLOYAL_HUD) \
-	   || CHECK_BITFIELD(hud_updateflag,  IMPCHEM_HUD) \
-	   || CHECK_BITFIELD(hud_updateflag, IMPTRACK_HUD))
+	if (  BITTEST(hud_updateflag, IMPLOYAL_HUD) \
+	   || BITTEST(hud_updateflag,  IMPCHEM_HUD) \
+	   || BITTEST(hud_updateflag, IMPTRACK_HUD))
 
 		var/image/holder1 = grab_hud(IMPTRACK_HUD)
 		var/image/holder2 = grab_hud(IMPLOYAL_HUD)
@@ -1849,7 +1849,7 @@
 		apply_hud(IMPLOYAL_HUD, holder2)
 		apply_hud(IMPCHEM_HUD, holder3)
 
-	if (CHECK_BITFIELD(hud_updateflag, SPECIALROLE_HUD))
+	if (BITTEST(hud_updateflag, SPECIALROLE_HUD))
 		var/image/holder = grab_hud(SPECIALROLE_HUD)
 		holder.icon_state = "hudblank"
 		if(mind && mind.special_role)
@@ -1891,21 +1891,21 @@
 /mob/living/carbon/human/proc/handle_hud_list_vr()
 
 	//Right-side status hud updates with left side one.
-	if (CHECK_BITFIELD(hud_updateflag, STATUS_HUD))
+	if (BITTEST(hud_updateflag, STATUS_HUD))
 		var/image/other_status = hud_list[STATUS_HUD]
 		var/image/status_r = grab_hud(STATUS_R_HUD)
 		status_r.icon_state = other_status.icon_state
 		apply_hud(STATUS_R_HUD, status_r)
 
 	//Our custom health bar HUD
-	if (CHECK_BITFIELD(hud_updateflag, HEALTH_HUD))
+	if (BITTEST(hud_updateflag, HEALTH_HUD))
 		var/image/other_health = hud_list[HEALTH_HUD]
 		var/image/health_us = grab_hud(HEALTH_VR_HUD)
 		health_us.icon_state = other_health.icon_state
 		apply_hud(HEALTH_VR_HUD, health_us)
 
 	//Backup implant hud status
-	if (CHECK_BITFIELD(hud_updateflag, BACKUP_HUD))
+	if (BITTEST(hud_updateflag, BACKUP_HUD))
 		var/image/holder = grab_hud(BACKUP_HUD)
 
 		holder.icon_state = "hudblank"
@@ -1924,7 +1924,7 @@
 		apply_hud(BACKUP_HUD, holder)
 
 	//VOREStation Antag Hud
-	if (CHECK_BITFIELD(hud_updateflag, VANTAG_HUD))
+	if (BITTEST(hud_updateflag, VANTAG_HUD))
 		var/image/vantag = grab_hud(VANTAG_HUD)
 		if(vantag_pref)
 			vantag.icon_state = vantag_pref

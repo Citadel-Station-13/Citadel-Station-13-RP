@@ -394,7 +394,8 @@
 
 #define VIS_STATUS			27
 
-#define VIS_COUNT			27 //Must be highest number from above.
+#define VIS_CLOAKED			28
+#define VIS_COUNT			28 //Must be highest number from above.
 
 //Some mob icon layering defines
 #define BODY_LAYER		-100

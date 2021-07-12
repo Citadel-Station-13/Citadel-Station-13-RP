@@ -9,10 +9,10 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/Boathouse)
 "ad" = (
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Boathouse)
 "ae" = (
-/turf/simulated/floor/outdoors/water/deep,
+/turf/simulated/floor/water/deep,
 /area/submap/Boathouse)
 "af" = (
 /obj/structure/flora/tree/sif,
@@ -66,11 +66,11 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Boathouse)
 "ap" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Boathouse)
 "aq" = (
 /obj/item/stool/padded,
@@ -99,7 +99,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Boathouse)
 "ax" = (
 /obj/structure/table/woodentable,
@@ -128,11 +128,11 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Boathouse)
 "aE" = (
 /obj/vehicle/boat/sifwood,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Boathouse)
 "aF" = (
 /obj/structure/window/reinforced/full,
@@ -156,7 +156,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Boathouse)
 "aL" = (
 /obj/structure/simple_door/wood,

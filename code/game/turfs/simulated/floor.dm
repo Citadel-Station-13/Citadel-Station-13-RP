@@ -81,7 +81,11 @@
 	if(flooring)
 		if(place_product)
 			flooring.drop_product(src)
-		flooring = null
+		var/newtype = flooring.get_plating_type()
+		if(newtype) // Has a custom plating type to become
+			set_flooring(get_flooring_data(newtype))
+		else
+			flooring = null
 
 	broken = null
 	burnt = null
