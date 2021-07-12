@@ -37,7 +37,7 @@
 	max_age =		200
 
 	total_health =	150 // blob-crit at 100 damage regardless, but give a higher buffer
-	/// damage ratio to force into blobform at. we want them to blob at 100, so 100 / (crit health + maxhealth) as crithealth has 100 as a buffer too.
+	/// damage ratio to force into blobform at. we want them to blob at 100, so 100 / (crit health + maxHealth) as crithealth has 100 as a buffer too.
 	var/force_blob_ratio = 100 / (100 + 150)
 	
 
@@ -352,7 +352,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	material_use = METAL_PER_TICK / 5		// 5 times weaker
 
 /datum/modifier/protean/steel/check_if_valid()
-	if(!protean_requires_healing(holder) || istype(holder.alternate_form, /mob/living/simple_mob/protean_blob))
+	if(!protean_requires_healing(holder) || istype(holder.temporary_form, /mob/living/simple_mob/protean_blob))
 		expire()
 		return
 	return ..()
