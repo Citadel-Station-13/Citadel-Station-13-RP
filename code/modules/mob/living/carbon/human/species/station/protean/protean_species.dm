@@ -348,11 +348,14 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	material_name = MAT_STEEL
 	material_use = METAL_PER_TICK / 10	// don't use as much as blobform since it heals less
 
+/datum/modifier/protean/steel/check_if_valid()
+	if(!holder || (holder.health >= holder.maxhealth))
+		expire()
+		return
+	return ..()
+
 /datum/modifier/protean/steel/tick()
 	..()
-	if(holder.health >= holder.maxhealth)
-		holder.remove_modifiers_of_type(/datum/modifier/protean/steel)
-		return
 	holder.adjustBruteLoss(-4, include_robo = TRUE) //This is for non-blob regen and equals out to ~2 hp/s
 	holder.adjustFireLoss(-3.5 * 1.3, include_robo = TRUE) //Same with burns
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
