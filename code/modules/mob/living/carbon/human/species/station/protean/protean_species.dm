@@ -359,8 +359,8 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 /datum/modifier/protean/steel/tick()
 	..()
-	holder.adjustBruteLoss(-4, include_robo = TRUE) //This is for non-blob regen and equals out to ~2 hp/s
-	holder.adjustFireLoss(-3.5 * 1.3, include_robo = TRUE) //Same with burns
+	holder.adjustBruteLoss(-4 / 0.5, include_robo = TRUE) //This is for non-blob regen and equals out to ~2 hp/s
+	holder.adjustFireLoss(-3.5 / 1.3, include_robo = TRUE) //Same with burns
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
 
