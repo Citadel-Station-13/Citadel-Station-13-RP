@@ -1,0 +1,4 @@
+author: "buffyuwu"
+delete-after: True
+changes: 
+  - bugfix: "fixes sushi being ruined when using sif meat"
