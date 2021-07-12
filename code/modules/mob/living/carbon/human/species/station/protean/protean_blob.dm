@@ -534,6 +534,7 @@
 	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
 
 	material_name = MAT_STEEL
+	material_use = METAL_PER_TICK
 
 /datum/modifier/protean/steelBlob/tick()
 
