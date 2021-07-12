@@ -36,7 +36,12 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
-	maxbodytemp = 900
+	maxbodytemp = INFINITY
+	heat_resist = 1
+	cold_resist = 1
+	shock_resist = 0.9
+	poison_resist = 1
+	
 	movement_cooldown = 0
 
 	var/mob/living/carbon/human/humanform
