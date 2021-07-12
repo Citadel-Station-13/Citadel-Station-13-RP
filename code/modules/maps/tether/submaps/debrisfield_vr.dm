@@ -267,7 +267,7 @@
 	allow_duplicates = FALSE
 	discard_prob = 25
 
-/datum/map_template/submap/level_specific/debrisfield_vr/gutted_mackerel
+/datum/map_template/submap/level_specific/debrisfield_vr/wrecked_salamander
 	name = "Wrecked Salamander"
 	suffix = "maps/offmap_vr/om_ships/salamander_wreck.dmm"
 	cost = 35

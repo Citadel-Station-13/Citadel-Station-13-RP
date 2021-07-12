@@ -4,7 +4,7 @@
 /datum/map_template/shuttle/overmap/tether/manta_ship
 	name = "OM Ship - Mercenary Cruiser (New Z)"
 	desc = "Mercenary Manta Cruiser."
-	suffix = "kk_mercship.dmm"
+	mappath = "_maps\templates\admin\kk_mercship.dmm"
 
 // The ship's area(s)
 /area/ship/manta
