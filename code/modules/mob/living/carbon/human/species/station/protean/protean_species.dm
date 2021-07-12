@@ -346,10 +346,10 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
 
 	material_name = MAT_STEEL
-	material_use = METAL_PER_TICK / 10	// don't use as much as blobform since it heals less
+	material_use = 10	// don't use as much as blobform since it heals less
 
 /datum/modifier/protean/steel/check_if_valid()
-	if(!holder || (holder.health >= holder.maxhealth))
+	if(!holder || (holder.health >= holder.maxHealth))
 		expire()
 		return
 	return ..()
