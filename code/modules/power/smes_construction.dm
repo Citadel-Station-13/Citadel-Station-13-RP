@@ -90,7 +90,7 @@
 	input_attempt = 1
 
 /obj/machinery/power/smes/buildable/engine/rust
-	cur_coils = 4
+	cur_coils = 3
 
 /obj/machinery/power/smes/buildable/Destroy()
 	qdel(wires)
