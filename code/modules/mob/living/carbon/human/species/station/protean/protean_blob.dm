@@ -94,7 +94,7 @@
 /mob/living/simple_mob/protean_blob/updatehealth()
 	if(humanform)
 		//Set the max
-		maxHealth = humanform.getMaxHealth()
+		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - humanform.getOxyLoss() - humanform.getToxLoss() - humanform.getCloneLoss() - humanform.getActualFireLoss() - humanform.getActualBruteLoss()
 
