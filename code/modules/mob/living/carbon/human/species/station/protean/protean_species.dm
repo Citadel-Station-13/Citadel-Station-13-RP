@@ -39,7 +39,7 @@
 	total_health =	150 // blob-crit at 100 damage regardless, but give a higher buffer
 	/// damage ratio to force into blobform at. we want them to blob at 100, so 100 / (crit health + maxHealth) as crithealth has 100 as a buffer too.
 	var/force_blob_ratio = 100 / (100 + 150)
-	
+
 
 	brute_mod =		0.5 // 50% brute reduction
 	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%

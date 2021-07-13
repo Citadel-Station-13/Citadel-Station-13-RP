@@ -78,7 +78,7 @@
 
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
-	
+
 	/// makes this dumb as fuck mechanic slightly less awful - records queued syringe infections instead of a spawn()
 	var/syringe_infection_queued
 
@@ -114,16 +114,14 @@
 	if(!(robotic >= ORGAN_ROBOT))
 		return
 	var/burn_damage = 0
-	for(var/i = 1; i <= robotic; i++)
-		switch (severity)
-			if (1)
-				burn_damage += rand(5, 8)
-			if (2)
-				burn_damage += rand(4, 6)
-			if(3)
-				burn_damage += rand(2, 5)
-			if(4)
-				burn_damage += rand(1, 3)
+	if (1)
+		burn_damage += rand(10, 16)
+	if (2)
+		burn_damage += rand(8, 12)
+	if(3)
+		burn_damage += rand(4, 10)
+	if(4)
+		burn_damage += rand(2, 6)
 
 	if(burn_damage)
 		take_damage(0, burn_damage)
