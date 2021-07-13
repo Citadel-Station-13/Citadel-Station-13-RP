@@ -120,7 +120,7 @@
 		if (2)
 			burn_damage += rand(8, 12)
 		if(3)
-			burn_damage += rand(4, 10)
+			burn_damage += rand(4, 8)
 		if(4)
 			burn_damage += rand(2, 6)
 
