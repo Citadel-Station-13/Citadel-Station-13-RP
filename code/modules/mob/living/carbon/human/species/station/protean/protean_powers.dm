@@ -1,4 +1,4 @@
-#define PER_LIMB_STEEL_COST SHEET_MATERIAL_AMOUNT
+#define PER_LIMB_STEEL_COST (10000 / 10)
 ////
 //  One-part Refactor
 ////
@@ -31,8 +31,6 @@
 		var/regen = alert(src,"That limb is missing, do you want to regenerate it in exchange for [PER_LIMB_STEEL_COST] steel?","Regenerate limb?","Yes","No")
 		if(regen != "Yes")
 			return
-		if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,PER_LIMB_STEEL_COST))
-			return
 		if(organs_by_name[choice])
 			var/obj/item/organ/external/oldlimb = organs_by_name[choice]
 			oldlimb.removed()
@@ -42,6 +40,8 @@
 		active_regen = TRUE
 		src.visible_message("<B>[src]</B>'s flesh begins to bubble, growing oily tendrils from their limb stump...")  // Gives a visualization for regenerating limbs.
 		if(do_after(src,5 SECONDS))  // Makes you not need to blob to regen a single limb. I'm keeping the full-body regen as blob-only, though
+			if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,PER_LIMB_STEEL_COST))
+				return
 			var/list/limblist = species.has_limbs[choice]
 			var/limbpath = limblist["path"]
 			var/obj/item/organ/external/new_eo = new limbpath(src)
