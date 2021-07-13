@@ -1,7 +1,0 @@
-author: "MonaraMir"
-delete-after: True
-changes: 
-  - rscadd: "Added a vault to store loot, and use randomly generated loot for trading."
-  - rscadd: "Added inducers to engineering and weapon storage, a few super power cells and materials to the workroom, some more weapons and power cells to weapon storage, and a spyglass to the captain's quarters.
-tweak: Shuffled stuff around in the Talon's bar and captain's quarters."
-  - bugfix: "Fixed oversights with Talon's vendor access, Talon's vendors being invisible, and missing magboots/shortrange radios from Talon crew's lockers."
