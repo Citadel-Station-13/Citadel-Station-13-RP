@@ -28,7 +28,7 @@
 /datum/map_template/shuttle/overmap/tether/mackerel_lightcargo_wreck
 	name = "OM Ship - Mackerel Light Cargo Wreck (new Z)"
 	desc = "A small light cargo transport shuttle, struck by... something. Ouch."
-	suffix = "mackerel_lc_wreck.dmm"
+	mappath = "_maps/submaps/level_specific/debrisfield_vr/mackerel_lc_wreck.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)
