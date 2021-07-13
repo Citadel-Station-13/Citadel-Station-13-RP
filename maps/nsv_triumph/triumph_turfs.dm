@@ -175,6 +175,7 @@
 	color = "#FFBBBB"
 
 /turf/simulated/sky/triumph/Initialize(mapload)
+	. = ..()
 	SSplanets.addTurf(src)
 	set_light(2, 2, "#FFBBBB")
 

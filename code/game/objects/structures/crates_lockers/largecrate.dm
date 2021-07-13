@@ -251,3 +251,21 @@
 	starts_with = list(pick(/mob/living/simple_mob/vore/fennec,
 						/mob/living/simple_mob/vore/fennix;0.5))
 	return ..()
+
+/obj/structure/closet/crate/large/aether
+	name = "large atmospherics crate"
+	desc = "A hefty metal crate, painted in Aether Atmospherics and Recycling colours."
+/obj/structure/closet/crate/large/einstein
+	name = "large crate"
+	desc = "A hefty metal crate, painted in Einstein Engines colours."
+/obj/structure/closet/crate/large/nanotrasen
+	name = "large crate"
+	desc = "A hefty metal crate, painted in standard NanoTrasen livery."
+/obj/structure/closet/crate/large/xion
+	name = "large crate"
+	desc = "A hefty metal crate, painted in Xion Manufacturing Group orange."
+/obj/structure/closet/crate/large/secure/heph
+	desc = "A hefty metal crate with an electronic locking system, marked with Hephaestus Industries colours."
+
+/obj/structure/closet/crate/large/secure/xion
+	desc = "A hefty metal crate with an electronic locking system, painted in Xion Manufacturing Group orange."

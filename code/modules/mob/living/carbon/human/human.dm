@@ -410,7 +410,7 @@
 										modified = 1
 
 										spawn()
-											ENABLE_BITFIELD(hud_updateflag, WANTED_HUD)
+											BITSET(hud_updateflag, WANTED_HUD)
 											if(istype(usr,/mob/living/carbon/human))
 												var/mob/living/carbon/human/U = usr
 												U.handle_regular_hud_updates()

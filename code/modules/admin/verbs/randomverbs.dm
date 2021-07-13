@@ -516,7 +516,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//If desired, apply equipment.
 	if(equipment)
 		if(charjob)
-			SSjobs.EquipRank(new_character, charjob, 1)
+			job_master.EquipRank(new_character, charjob, 1)
 		//equip_custom_items(new_character)	//VOREStation Removal
 
 	//If desired, add records.
@@ -632,8 +632,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if (!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	if(SSjobs)
-		for(var/datum/job/job in SSjobs.occupations)
+	if(SSjob)
+		for(var/datum/job/job in SSjob.occupations)
 			to_chat(src, "[job.title]: [job.total_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1017,7 +1017,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if(isAI(M))
 			var/mob/living/silicon/ai/ai = M
 			empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(ai.loc)
-			global_announcer.autosay("[ai] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
+			GLOB.global_announcer.autosay("[ai] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
 			ai.clear_client()
 			return
 		else

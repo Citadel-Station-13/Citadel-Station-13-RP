@@ -6,6 +6,8 @@
 	desc = "Protected by FRM."
 	icon = 'icons/obj/module.dmi'
 	icon_state = "cyborg_upgrade"
+	///	Bitflags listing module compatibility. Used in the exosuit fabricator for creating sub-categories.
+	var/list/module_flags = NONE
 	var/locked = 0
 	var/require_module = 0
 	var/installed = 0
@@ -38,7 +40,7 @@
 	var/heldname = "default name"
 
 /obj/item/borg/upgrade/rename/attack_self(mob/user as mob)
-	heldname = capitalize(sanitizeSafe(input(user, "Enter new robot name", "Robot Reclassification", heldname), MAX_NAME_LEN))
+	heldname = sanitizeSafe(input(user, "Enter new robot name", "Robot Reclassification", heldname), MAX_NAME_LEN)
 
 /obj/item/borg/upgrade/rename/action(var/mob/living/silicon/robot/R)
 	if(..()) return 0
@@ -66,7 +68,7 @@
 			if(ghost.mind && ghost.mind.current == R)
 				R.key = ghost.key
 
-	R.stat = CONSCIOUS
+	R.set_stat(CONSCIOUS)
 	dead_mob_list -= R
 	living_mob_list |= R
 	R.notify_ai(ROBOT_NOTIFICATION_NEW_UNIT)
@@ -95,6 +97,7 @@
 	desc = "Used to cool a mounted taser, increasing the potential current in it and thus its recharge rate."
 	icon_state = "cyborg_upgrade3"
 	item_state = "cyborg_upgrade"
+	module_flags = BORG_MODULE_SECURITY
 	require_module = 1
 
 
@@ -152,7 +155,7 @@
 
 /obj/item/borg/upgrade/advhealth
 	name = "advanced health analyzer module"
-	desc = "A module for determining a patient's injuries."
+	desc = "A carbon dioxide jetpack suitable for low-gravity operations."
 	icon_state = "cyborg_upgrade3"
 	item_state = "cyborg_upgrade"
 	require_module = 1
@@ -210,30 +213,5 @@
 	R.add_language(LANGUAGE_ROOTLOCAL, 1)
 	R.add_language(LANGUAGE_TERMINUS, 1)
 	R.add_language(LANGUAGE_ZADDAT, 1)
-	R.add_language(LANGUAGE_BIRDSONG,		1)
-	R.add_language(LANGUAGE_SAGARU,			1)
-	R.add_language(LANGUAGE_CANILUNZT,		1)
-	R.add_language(LANGUAGE_ECUREUILIAN,	1)
-	R.add_language(LANGUAGE_DAEMON,			1)
-	R.add_language(LANGUAGE_ENOCHIAN,		1)
-	R.add_language(LANGUAGE_SLAVIC,		1)
 
-	return 1
-
-//Robot resizing module
-
-/obj/item/borg/upgrade/sizeshift
-	name = "robot size alteration module"
-	desc = "Using technology similar to one used in sizeguns, allows cyborgs to adjust their own size as neccesary."
-	icon_state = "cyborg_upgrade2"
-	item_state = "cyborg_upgrade"
-	require_module = 1
-
-/obj/item/borg/upgrade/sizeshift/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
-
-	if(/mob/living/proc/set_size in R.verbs)
-		return 0
-
-	R.verbs += /mob/living/proc/set_size
 	return 1

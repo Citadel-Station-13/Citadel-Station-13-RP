@@ -731,6 +731,14 @@
 	required_reagents = list("orangejuice" = 2, "cola" = 1)
 	result_amount = 3
 
+
+/datum/chemical_reaction/drinks/orangeale
+	name = "Orange Ale"
+	id = "orangeale"
+	result = "orangeale"
+	required_reagents = list("orangejuice" = 1, "gingerale" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/drinks/milkshake
 	name = "Milkshake"
 	id = "milkshake"
@@ -742,8 +750,8 @@
 	name = "Peanutbutter Milkshake"
 	id = "peanutmilkshake"
 	result = "peanutmilkshake"
-	required_reagents = list("cream" = 1, "ice" = 1, "peanutbutter" = 2, "milk" = 1)
-	result_amount = 5
+	required_reagents = list("milkshake" = 2, "peanutbutter" = 1)
+	result_amount = 3
 
 /datum/chemical_reaction/drinks/rewriter
 	name = "Rewriter"

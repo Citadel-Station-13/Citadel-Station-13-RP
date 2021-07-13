@@ -6,65 +6,65 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/poi_h/explored)
 "e" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 9
 	},
 /area/poi_h/explored)
 "g" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh,
+/turf/simulated/floor/water/shoreline/classh,
 /area/poi_h/explored)
 "h" = (
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/poi_h/explored)
 "i" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 10
 	},
 /area/poi_h/explored)
 "j" = (
-/turf/simulated/floor/outdoors/water/classh,
+/turf/simulated/floor/water/classh,
 /area/poi_h/explored)
 "q" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 1
 	},
 /area/poi_h/explored)
 "s" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 8
 	},
 /area/poi_h/explored)
 "u" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 5
 	},
 /area/poi_h/explored)
 "A" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 8
 	},
 /area/poi_h/explored)
 "B" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 6
 	},
 /area/poi_h/explored)
 "C" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 1
 	},
 /area/poi_h/explored)
 "I" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh,
+/turf/simulated/floor/water/shoreline/corner/classh,
 /area/poi_h/explored)
 "N" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 4
 	},
 /area/poi_h/explored)
 "V" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 4
 	},
 /area/poi_h/explored)

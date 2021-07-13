@@ -576,6 +576,20 @@ END OF CITADEL CHANGES */
 	icon = 'icons/obj/items_vr.dmi'
 	icon_state = "verkdisk"
 
+//Brass Variant of Eggnerd
+/datum/robolimb/vulkanwrks
+	company = "Vulkan Brassworks Inc."
+	desc = "This limb is crafted out of hammered brass. Unlike other prosthetics, the internals of this device run off of a complex system of clockwork gears and arms, with a wired superstructure layered on top. This level of craftsmanship is incredibly atypical."
+	icon = 'icons/mob/human_races/cyberlimbs/_fluff_vr/brassworks.dmi'
+	blood_color = "#1F2631"
+	unavailable_to_build = 1
+
+/obj/item/disk/limb/vulkanwrks
+	company = "Vulcan Brassworks Inc."
+	icon = 'icons/obj/items_vr.dmi'
+	icon_state = "datadisk2"
+
+
 //////////////// General VS-only ones /////////////////
 /datum/robolimb/talon //They're buildable by default due to being extremely basic.
 	company = "Talon LLC"

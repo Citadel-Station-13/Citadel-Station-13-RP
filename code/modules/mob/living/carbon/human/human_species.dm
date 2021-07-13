@@ -1,15 +1,3 @@
-/mob/living/carbon/human/dummy
-	real_name = "Test Dummy"
-	status_flags = GODMODE|CANPUSH
-	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
-
-/mob/living/carbon/human/dummy/mannequin/Initialize()
-	. = ..()
-	GLOB.mob_list -= src
-	living_mob_list -= src
-	dead_mob_list -= src
-	delete_inventory()
-
 /mob/living/carbon/human/skrell/Initialize(var/new_loc)
 	h_style = "Skrell Short Tentacles"
 	return ..(new_loc, SPECIES_SKRELL)
@@ -87,6 +75,18 @@
 
 /mob/living/carbon/human/shadekin/Initialize(mapload)
 	return ..(mapload, SPECIES_SHADEKIN)
+
+/mob/living/carbon/human/dummy
+	real_name = "Test Dummy"
+	status_flags = GODMODE|CANPUSH
+	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
+
+// /mob/living/carbon/human/dummy/mannequin/Initialize()
+// 	. = ..()
+// 	GLOB.mob_list -= src
+// 	living_mob_list -= src
+// 	dead_mob_list -= src
+// 	delete_inventory()
 
 //Fashion Mannequins
 /mob/living/carbon/human/dummy/mannequin/Initialize()

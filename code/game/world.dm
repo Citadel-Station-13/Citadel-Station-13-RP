@@ -66,7 +66,11 @@ GLOBAL_LIST(topic_status_cache)
 	. = ..()
 
 	// Set up roundstart seed list.
-	plant_controller = new()
+	plant_controller = new
+
+	// *sighs*
+	job_master = new
+	job_master.SetupOccupations()
 
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
