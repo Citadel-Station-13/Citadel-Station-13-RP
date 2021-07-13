@@ -36,9 +36,9 @@
 	min_age =		18
 	max_age =		200
 
-	total_health =	150 // blob-crit at 100 damage regardless, but give a higher buffer
+	total_health =	250 // blob-crit at 100 damage regardless, but give a higher buffer
 	/// damage ratio to force into blobform at. we want them to blob at 100, so 100 / (crit health + maxHealth) as crithealth has 100 as a buffer too.
-	var/force_blob_ratio = 100 / (100 + 150)
+	var/force_blob_ratio = 100 / (100 + 250)
 
 
 	brute_mod =		0.5 // 50% brute reduction
@@ -275,12 +275,12 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/modifier/protean/on_applied()
 	. = ..()
 	if(holder.temporary_form)
-		to_chat(holder.temporary_form,on_created_text)
+		to_chat(holder.temporary_form, on_created_text)
 
 /datum/modifier/protean/on_expire()
 	. = ..()
 	if(holder.temporary_form)
-		to_chat(holder.temporary_form,on_expired_text)
+		to_chat(holder.temporary_form, on_expired_text)
 
 /datum/modifier/protean/check_if_valid()
 	//No origin set

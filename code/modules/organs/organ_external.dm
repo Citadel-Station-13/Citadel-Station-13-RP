@@ -26,6 +26,8 @@
 	var/last_dam = -1                  // used in healing/processing calculations.
 	var/spread_dam = 0
 	var/thick_skin = 0                 // If a needle has a chance to fail to penetrate.
+	/// EMP damage multiplier
+	var/emp_mod = 1
 
 	// Appearance vars.
 	var/nonsolid                       // Snowflake warning, reee. Used for slime limbs.
@@ -125,7 +127,7 @@
 			burn_damage += rand(2, 6)
 
 	if(burn_damage)
-		take_damage(0, burn_damage)
+		take_damage(0, burn_damage * emp_mod)
 
 /obj/item/organ/external/attack_self(var/mob/living/user)
 	if(!contents.len)

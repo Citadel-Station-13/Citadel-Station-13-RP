@@ -234,14 +234,14 @@
 	var/obj/item/organ/internal/nano/refactory/refactory = nano_get_refactory()
 	//Missing the organ that does this
 	if(!istype(refactory))
-		to_chat(src,"<span class='warning'>You don't have a working refactory module!</span>")
+		to_chat(temporary_form? temporary_form : src, "<span class='warning'>You don't have a working refactory module!</span>")
 		return
 	if(refactory.processingbuffs)
-		to_chat(src,"<span class='warning'>You toggle material consumption off.</span>")
+		to_chat(temporary_form? temporary_form : src, "<span class='warning'>You toggle material consumption off.</span>")
 		refactory.processingbuffs = FALSE
 	else
 		refactory.processingbuffs = TRUE
-		to_chat(src,"<span class='warning'>You toggle material consumption on.</span>")
+		to_chat(temporary_form? temporary_form : src, "<span class='warning'>You toggle material consumption on.</span>")
 
 ////
 //  Blob Form
