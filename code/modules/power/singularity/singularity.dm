@@ -50,20 +50,19 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	consume(user)
 	return 1
 
-/obj/singularity/ex_act(severity)
-	if(current_size == STAGE_SUPER)//IT'S UNSTOPPABLE
-		return
+/obj/singularity/ex_act(severity, target)
 	switch(severity)
-		if(1.0)
-			if(prob(25))
-				investigate_log("has been destroyed by an explosion.", I_SINGULO)
+		if(1)
+			if(current_size <= STAGE_TWO)
+				investigate_log("has been destroyed by a heavy explosion.", INVESTIGATE_SINGULO)
 				qdel(src)
 				return
 			else
-				energy += 50
-		if(2.0 to 3.0)
-			energy += round((rand(20,60)/2),1)
-			return
+				energy -= round(((energy+1)/2),1)
+		if(2)
+			energy -= round(((energy+1)/3),1)
+		if(3)
+			energy -= round(((energy+1)/4),1)
 
 /obj/singularity/bullet_act(obj/item/projectile/P)
 	return 0 //Will there be an impact? Who knows. Will we see it? No.
