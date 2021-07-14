@@ -54,7 +54,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	switch(severity)
 		if(1)
 			if(current_size <= STAGE_TWO)
-				investigate_log("has been destroyed by a heavy explosion.", INVESTIGATE_SINGULO)
+				investigate_log("has been destroyed by a heavy explosion.", I_SINGULO)
 				qdel(src)
 				return
 			else
