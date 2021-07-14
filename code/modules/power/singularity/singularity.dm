@@ -310,11 +310,11 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	step(src, movement_dir)
 
 /obj/singularity/proc/check_cardinals_range(steps, retry_with_move = FALSE)
-	. = length(GLOB.cardinals)			//Should be 4.
-	for(var/i in GLOB.cardinals)
+	. = length(GLOB.cardinal)			//Should be 4.
+	for(var/i in GLOB.cardinal)
 		. -= check_turfs_in(i, steps)	//-1 for each working direction
 	if(. && retry_with_move)			//If there's still a positive value it means it didn't pass. Retry with move if applicable
-		for(var/i in GLOB.cardinals)
+		for(var/i in GLOB.cardinal)
 			if(step(src, i))			//Move in each direction.
 				if(check_cardinals_range(steps, FALSE))		//New location passes, return true.
 					return TRUE
@@ -376,10 +376,10 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 /obj/singularity/proc/can_move(turf/T)
 	if(!T)
 		return 0
-	if((locate(/obj/machinery/field/containment) in T)||(locate(/obj/machinery/shieldwall) in T))
+	if((locate(/obj/machinery/containment_field) in T)||(locate(/obj/machinery/shieldwall) in T))
 		return 0
-	else if(locate(/obj/machinery/field/generator) in T)
-		var/obj/machinery/field/generator/G = locate(/obj/machinery/field/generator) in T
+	else if(locate(/obj/machinery/field_generator) in T)
+		var/obj/machinery/field_generator/G = locate(/obj/machinery/field_generator) in T
 		if(G && G.active)
 			return 0
 	else if(locate(/obj/machinery/shieldwallgen) in T)
