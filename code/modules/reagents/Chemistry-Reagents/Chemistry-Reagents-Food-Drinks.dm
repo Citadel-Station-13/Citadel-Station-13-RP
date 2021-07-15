@@ -1315,7 +1315,7 @@ End Citadel Change */
 
 	glass_name = "Brown Star"
 	glass_desc = "It's not what it sounds like..."
-	
+
 /datum/reagent/drink/soda/orangeale
 	name = "Orange Ale"
 	id = "orangeale"
@@ -4162,3 +4162,5 @@ End Citadel Change */
 	if(M.species.gets_food_nutrition)
 		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
 			M.nutrition += (alt_nutriment_factor * removed)
+
+//This Is A Test Drink
