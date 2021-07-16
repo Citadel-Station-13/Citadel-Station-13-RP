@@ -14,6 +14,7 @@ export const Gps = (props, context) => {
   const {
     currentArea,
     currentCoords,
+    currentCoordsText,
     globalmode,
     power,
     tag,
@@ -25,8 +26,8 @@ export const Gps = (props, context) => {
       // that's why we roll our own calculations here.
       const dist = signal.dist && (
         Math.round(vecLength(vecSubtract(
-          coordsToVec(currentCoords),
-          coordsToVec(signal.coords))))
+          currentCoords,
+          signal.coords)))
       );
       return { ...signal, dist, index };
     }),
@@ -79,7 +80,7 @@ export const Gps = (props, context) => {
           <Fragment>
             <Section title="Current Location">
               <Box fontSize="18px">
-                {currentArea} ({currentCoords})
+                {currentArea} ({currentCoordsText})
               </Box>
             </Section>
             <Section title="Detected Signals">
@@ -115,7 +116,7 @@ export const Gps = (props, context) => {
                       )}
                     </Table.Cell>
                     <Table.Cell collapsing>
-                      {signal.coords}
+                      {signal.coordsText}
                     </Table.Cell>
                   </Table.Row>
                 ))}

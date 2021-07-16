@@ -292,8 +292,13 @@ em {
   font-weight: bold;
 }
 
-.antagooc {
+.aooc {
   color: #b8002e;
+  font-weight: bold;
+}
+
+.event_manager {
+  color: #660033;
   font-weight: bold;
 }
 
@@ -323,6 +328,34 @@ em {
   font-weight: bold;
 }
 
+//attack logging!
+.log_message {
+  color: #386AFF;
+  font-weight: bold;
+}
+
+/* Debug Logs */
+.debug_error {
+  color:#FF0000;
+  font-weight:bold;
+}
+
+.debug_warning {
+  color:#FF0000;
+}
+
+.debug_info {
+}
+
+.debug_debug {
+  color:#0000FF;
+}
+
+.debug_trace {
+  color:#888888;
+}
+
+
 /* cit-specific mentorsay*/
 .mentorsay {
   color: #E236D8;
@@ -331,6 +364,12 @@ em {
 
 .mentorsay_admin {
   color: #8A2BE2;
+  font-weight: bold;
+}
+
+//mods!!!!!!!!!
+.mod_channel {
+  color: #735638;
   font-weight: bold;
 }
 
@@ -557,40 +596,40 @@ em {
 }
 
 .cult {
-  color: #973e3b;
+  color: #aa1c1c;
 }
 
 .cultitalic {
-  color: #973e3b;
+  color: #aa1c1c;
   font-style: italic;
 }
 
 .cultbold {
-  color: #973e3b;
+  color: #aa1c1c;
   font-style: italic;
   font-weight: bold;
 }
 
 .cultboldtalic {
-  color: #973e3b;
+  color: #aa1c1c;
   font-weight: bold;
   font-size: 185%;
 }
 
 .cultlarge {
-  color: #973e3b;
+  color: #aa1c1c;
   font-weight: bold;
   font-size: 185%;
 }
 
 .narsie {
-  color: #973e3b;
+  color: #aa1c1c;
   font-weight: bold;
   font-size: 925%;
 }
 
 .narsiesmall {
-  color: #973e3b;
+  color: #aa1c1c;
   font-weight: bold;
   font-size: 370%;
 }
@@ -1059,10 +1098,100 @@ em {
   font-weight: bold;
 }
 
+/* LANGAUGES */
+.alien {
+  color: #543354;
+}
 
+
+.tajaran {
+  color: #803B56;
+}
+
+
+.tajaran_signlang {
+  color: #941C1C;
+}
+
+.akhani {
+  color: #AC398C;
+}
+
+.skrell {
+  color: #00B0B3;
+}
+
+.skrellfar {
+  color: #70FCFF;
+}
+
+.soghun {
+  color: #228B22;
+}
+
+.solcom {
+  color: #22228B;
+}
+
+.changeling {
+  color: #800080;
+}
+
+.sergal {
+  color: #0077FF;
+}
+
+.birdsongc {
+  color: #CC9900;
+}
+
+.vulpkanin {
+  color: #B97A57;
+}
+
+.enochian {
+  color: #848A33;
+  letter-spacing:-1pt;
+  word-spacing:4pt;
+  font-family: "Lucida Sans Unicode","Lucida Grande", sans-serif;
+}
+
+.daemon {
+  color: #5E339E;
+	letter-spacing:-1pt;
+	word-spacing:0pt;
+	font-family: "Courier New", Courier, monospace;
+}
+
+.bug {
+	color: #9e9e39;
+}
+
+.vox {
+  color: #AA00AA;
+}
+
+.zaddat {
+  color: #941C1C;
+}
+
+.rough {
+  font-family: "Trebuchet MS", cursive, sans-serif;
+}
+
+.say_quote {
+  font-family: Georgia, Verdana, sans-serif;
+}
+
+.terminus {
+  font-family: "Times New Roman", Times, serif, sans-serif
+}
+
+.interface {
+  color: #330033;
+}
 
 /* HELPER CLASSES */
-
 
 .text-normal {
   font-weight: normal;

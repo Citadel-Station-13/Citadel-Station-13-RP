@@ -7,38 +7,38 @@
 /area/poi_h/explored)
 "i" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/water/classh,
+/turf/simulated/floor/water/classh,
 /area/poi_h/explored)
 "o" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 1
 	},
 /area/poi_h/explored)
 "v" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 4
 	},
 /area/poi_h/explored)
 "B" = (
-/turf/simulated/floor/outdoors/water/classh,
+/turf/simulated/floor/water/classh,
 /area/poi_h/explored)
 "C" = (
 /turf/simulated/mineral/floor/classh,
 /area/poi_h/explored)
 "S" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 9
 	},
 /area/poi_h/explored)
 "V" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 9
 	},
 /area/poi_h/explored)
 "Y" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 1
 	},
 /area/poi_h/explored)

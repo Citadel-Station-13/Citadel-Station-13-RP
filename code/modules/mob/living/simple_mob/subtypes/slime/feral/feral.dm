@@ -88,6 +88,8 @@
 
 /mob/living/simple_mob/slime/feral/dark_blue/proc/chill(mob/living/L)
 	L.inflict_cold_damage(10)
+	if(QDELETED(L))
+		return
 	if(L.get_cold_protection() < 1)
 		L.add_modifier(/datum/modifier/chilled, 5 SECONDS, src)
 

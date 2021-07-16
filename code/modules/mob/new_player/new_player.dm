@@ -115,6 +115,9 @@
 	return age_gate_result
 
 /mob/new_player/proc/verifyage()
+	if(client.holder)		// they're an admin
+		client.set_preference(/datum/client_preference/debug/age_verified, 1)
+		return TRUE
 	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) //make sure they are verified
 		if(!client.prefs)
 			message_admins("Blocked [src] from new player panel because age gate could not access client preferences.")
@@ -472,7 +475,7 @@
 	return timer - world.time
 
 /mob/new_player/proc/IsJobAvailable(rank)
-	var/datum/job/job = SSjobs.GetJob(rank)
+	var/datum/job/job = job_master.GetJob(rank)
 	if(!job)	return 0
 	if(!job.is_position_available()) return 0
 	if(jobban_isbanned(src,rank))	return 0
@@ -500,9 +503,10 @@
 		return 0
 
 	//Find our spawning point.
-	var/list/join_props = SSjobs.LateSpawn(client, rank)
+	var/list/join_props = job_master.LateSpawn(client, rank)
 	var/turf/T = join_props["turf"]
 	var/join_message = join_props["msg"]
+	var/announce_channel = join_props["channel"] || "Common"
 
 	if(!T || !join_message)
 		return 0
@@ -510,13 +514,13 @@
 	spawning = 1
 	close_spawn_windows()
 
-	SSjobs.AssignRole(src, rank, 1)
+	job_master.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(T)		// Creates the human and transfers vars and mind
 	//Announces Cyborgs early, because that is the only way it works
 	if(character.mind.assigned_role == "Cyborg")
-		AnnounceCyborg(character, rank, join_message)
-	character = SSjobs.EquipRank(character, rank, 1)	// Equips the human
+		AnnounceCyborg(character, rank, join_message, announce_channel, character.z)
+	character = job_master.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
@@ -565,7 +569,7 @@
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
+		GLOB.global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
 
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
@@ -585,7 +589,7 @@
 
 	dat += "Choose from the following open/valid positions:<br>"
 	dat += "<a href='byond://?src=\ref[src];hidden_jobs=1'>[show_hidden_jobs ? "Hide":"Show"] Hidden Jobs.</a><br>"
-	for(var/datum/job/job in SSjobs.occupations)
+	for(var/datum/job/job in job_master.occupations)
 		if(job && IsJobAvailable(job.title))
 			// Checks for jobs with minimum age requirements
 			if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age))
@@ -661,6 +665,15 @@
 		// Set defer to 1 if you add more crap here so it only recalculates struc_enzymes once. - N3X
 		new_character.dna.SetSEState(GLASSESBLOCK,1,0)
 		new_character.disabilities |= NEARSIGHTED
+	if(client.prefs.mirror == TRUE)
+		if((client.prefs.organ_data[O_BRAIN] == "mechanical") || (client.prefs.organ_data[O_BRAIN] == "digital") || (client.prefs.organ_data[O_BRAIN] == "assisted"))
+			var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)
+			F.handle_implant(new_character)
+			F.post_implant(new_character)
+		else
+			var/obj/item/implant/mirror/E = new /obj/item/implant/mirror(new_character)
+			E.handle_implant(new_character)
+			E.post_implant(new_character)
 
 	for(var/lang in client.prefs.alternate_languages)
 		var/datum/language/chosen_language = GLOB.all_languages[lang]

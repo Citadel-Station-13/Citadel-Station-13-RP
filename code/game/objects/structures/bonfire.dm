@@ -89,9 +89,9 @@
 	var/F = 0
 	for(var/A in contents)
 		if(istype(A, /obj/item/stack/material/wood))
-			F += 0.5
+			F += 2.0
 		if(istype(A, /obj/item/stack/material/log))
-			F += 1.0
+			F += 4.0
 	return F
 
 /obj/structure/bonfire/permanent/get_fuel_amount()
@@ -108,7 +108,7 @@
 	dismantle(user)
 
 /obj/structure/bonfire/proc/add_fuel(atom/movable/new_fuel, mob/user)
-	if(get_fuel_amount() >= 10)
+	if(get_fuel_amount() >= 20)
 		to_chat(user, "<span class='warning'>\The [src] already has enough fuel!</span>")
 		return FALSE
 	if(istype(new_fuel, /obj/item/stack/material/wood) || istype(new_fuel, /obj/item/stack/material/log) )
@@ -133,13 +133,13 @@
 		return FALSE
 
 	if(istype(consumed_fuel, /obj/item/stack/material/log))
-		next_fuel_consumption = world.time + 2 MINUTES
+		next_fuel_consumption = world.time + 4 MINUTES
 		qdel(consumed_fuel)
 		update_icon()
 		return TRUE
 
 	else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
-		next_fuel_consumption = world.time + 1 MINUTE
+		next_fuel_consumption = world.time + 2 MINUTE
 		qdel(consumed_fuel)
 		update_icon()
 		return TRUE

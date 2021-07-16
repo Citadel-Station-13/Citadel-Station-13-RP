@@ -7,6 +7,7 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	no_pin_required = 1
 	projectile_type = /obj/item/projectile/temp
+	one_handed_penalty = 15
 
 	firemodes = list(
 		list(mode_name="endothermic beam", projectile_type = /obj/item/projectile/temp, charge_cost = 240),

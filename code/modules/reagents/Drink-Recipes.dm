@@ -731,6 +731,14 @@
 	required_reagents = list("orangejuice" = 2, "cola" = 1)
 	result_amount = 3
 
+
+/datum/chemical_reaction/drinks/orangeale
+	name = "Orange Ale"
+	id = "orangeale"
+	result = "orangeale"
+	required_reagents = list("orangejuice" = 1, "gingerale" = 1)
+	result_amount = 2
+
 /datum/chemical_reaction/drinks/milkshake
 	name = "Milkshake"
 	id = "milkshake"
@@ -742,8 +750,8 @@
 	name = "Peanutbutter Milkshake"
 	id = "peanutmilkshake"
 	result = "peanutmilkshake"
-	required_reagents = list("cream" = 1, "ice" = 1, "peanutbutter" = 2, "milk" = 1)
-	result_amount = 5
+	required_reagents = list("milkshake" = 2, "peanutbutter" = 1)
+	result_amount = 3
 
 /datum/chemical_reaction/drinks/rewriter
 	name = "Rewriter"
@@ -1421,3 +1429,17 @@
 	result = "monstertamer"
 	required_reagents = list("whiskey" = 1, "protein" = 1)
 	result_amount = 2
+
+/datum/chemical_reaction/drinks/phobos
+	name = "Phobos"
+	id = "phobos"
+	result = "phobos"
+	required_reagents = list("hooch" = 1, "erebusmoonrise" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/greenstuff
+	name = "Green Stuff"
+	id = "greenstuff"
+	result = "greenstuff"
+	required_reagents = list("manlydorf" = 3, "absinthe" = 2)
+	result_amount = 5

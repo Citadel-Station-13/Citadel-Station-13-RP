@@ -21,19 +21,10 @@
 	icon_state = pick(event_icon_states)
 	GLOB.overmap_event_handler.update_hazards(loc)
 
-/obj/effect/overmap/event/Move()
-	var/turf/old_loc = loc
+/obj/effect/overmap/event/Moved(atom/old_loc, direction, forced = FALSE)
 	. = ..()
-	if(.)
-		GLOB.overmap_event_handler.update_hazards(old_loc)
-		GLOB.overmap_event_handler.update_hazards(loc)
-
-/obj/effect/overmap/event/forceMove(atom/destination)
-	var/old_loc = loc
-	. = ..()
-	if(.)
-		GLOB.overmap_event_handler.update_hazards(old_loc)
-		GLOB.overmap_event_handler.update_hazards(loc)
+	GLOB.overmap_event_handler.update_hazards(old_loc)
+	GLOB.overmap_event_handler.update_hazards(loc)
 
 /obj/effect/overmap/event/Destroy()	// Takes a look at this one as well, make sure everything is A-OK
 	var/turf/T = loc
@@ -118,6 +109,15 @@
 	events = list(/datum/event/cult/overmap)
 	opacity = 0
 	event_icon_states = list("cultist","cultist2")
+	color = "#DD4444"
+	difficulty = EVENT_LEVEL_MAJOR
+	weaknesses = OVERMAP_WEAKNESS_FIRE
+
+/obj/effect/overmap/event/pirate
+	name = "unflagged cruiser"
+	events = list(/datum/event/pirate/overmap)
+	opacity = 0
+	event_icon_states = list("pirate")
 	color = "#DD4444"
 	difficulty = EVENT_LEVEL_MAJOR
 	weaknesses = OVERMAP_WEAKNESS_FIRE

@@ -1176,8 +1176,9 @@ I said no!
 	fruit = list("cabbage" = 1)
 	reagents = list("rice" = 20)
 	items = list(
+		/obj/item/reagent_containers/food/snacks/carpmeat,
 		/obj/item/reagent_containers/food/snacks/carpmeat/fish,
-		/obj/item/reagent_containers/food/snacks/carpmeat/fish
+		/obj/item/reagent_containers/food/snacks/carpmeat/sif
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi
 
@@ -1340,3 +1341,111 @@ I said no!
 		/obj/item/stack/rods
 	)
 	result = /obj/item/trash/rkibble
+
+//Goblin Food Goblin Food
+/datum/recipe/cavenuggets
+	fruit = list("mushroom" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meatball,
+		/obj/item/reagent_containers/food/snacks/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/spreads/butter
+	)
+	result = /obj/item/reagent_containers/food/snacks/cavenuggets
+
+/datum/recipe/diggerstew
+	fruit = list("carrot" = 1, "mushroom" = 1)
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/diggerstew
+
+/datum/recipe/diggerstew_pot
+	fruit = list("carrot" = 1, "potato" = 1, "mushroom" = 1)
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm,
+		/obj/item/reagent_containers/food/snacks/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/diggerstew_pot
+
+/datum/recipe/full_goss
+	fruit = list("carrot" = 1, "mushroom" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/friedegg,
+		/obj/item/reagent_containers/food/snacks/meat/grubmeat
+	)
+	result = /obj/item/reagent_containers/food/snacks/full_goss
+
+/datum/recipe/greenham
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/greenham
+
+/datum/recipe/greenhamandeggs
+	reagents = list("spacespice" = 2, "water" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/meat/grubmeat,
+		/obj/item/reagent_containers/food/snacks/worm
+	)
+	result = /obj/item/reagent_containers/food/snacks/greenham
+
+/datum/recipe/voxjerky
+	reagents = list("sodiumchloride" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meat/vox
+	)
+	result = /obj/item/reagent_containers/food/snacks/voxjerky
+
+/datum/recipe/roach_burger
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/holder/roach
+	)
+	result = /obj/item/reagent_containers/food/snacks/roach_burger
+
+/datum/recipe/roach_burger/armored
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/holder/panzer
+	)
+	result = /obj/item/reagent_containers/food/snacks/roach_burger/armored
+
+/datum/recipe/roach_burger/pale
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/holder/jager
+	)
+	result = /obj/item/reagent_containers/food/snacks/roach_burger/pale
+
+/datum/recipe/roach_burger/purple
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/holder/seuche
+	)
+	result = /obj/item/reagent_containers/food/snacks/roach_burger/purple
+
+/datum/recipe/roach_burger/big
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/holder/roach,
+		/obj/item/holder/roach,
+		/obj/item/holder/jager,
+		/obj/item/holder/seuche
+	)
+	result = /obj/item/reagent_containers/food/snacks/roach_burger/big
+
+/datum/recipe/roach_burger/reich
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/holder/fuhrer
+	)
+	result = /obj/item/reagent_containers/food/snacks/roach_burger/reich

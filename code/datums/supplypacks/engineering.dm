@@ -359,3 +359,17 @@
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "Tesla Generator crate"
 	access = access_ce
+
+/datum/supply_pack/eng/point_defense_cannon_circuit
+	name = "Point Defense Turret Circuit"
+	contains = list(/obj/item/circuitboard/pointdefense = 2)
+	cost = 20
+	containertype = /obj/structure/closet/crate/heph
+	containername = "point defense turret circuit crate"
+
+/datum/supply_pack/eng/point_defense_control_circuit
+	name = "Point Defense Controller Circuit"
+	contains = list(/obj/item/circuitboard/pointdefense_control = 1)
+	cost = 30
+	containertype = /obj/structure/closet/crate/heph
+	containername = "point defense mainframe circuit crate"

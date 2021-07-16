@@ -1273,7 +1273,7 @@ End Citadel Change */
 	name = "Appleade"
 	id = "appleade"
 	description = "Applejuice, improved."
-	taste_description = "apples"
+	taste_description = "sparkling apples"
 	color = "#FFD1B3"
 	adj_temp = -5
 
@@ -1315,6 +1315,18 @@ End Citadel Change */
 
 	glass_name = "Brown Star"
 	glass_desc = "It's not what it sounds like..."
+	
+/datum/reagent/drink/soda/orangeale
+	name = "Orange Ale"
+	id = "orangeale"
+	description = "A combination of orange juice and ginger ale that suprisingly works well. "
+	taste_description = "sparkling orange juice in overdrive"
+	color = "#e88e06"
+	adj_temp = -2
+
+	glass_name = "Orange Ale"
+	glass_desc = "an overwhelmingly fizzy combination of orange juice and ginger ale."
+	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/drink/milkshake
 	name = "Milkshake"
@@ -1449,7 +1461,7 @@ End Citadel Change */
 	water_based = FALSE
 
 	glass_name = "grenadine syrup"
-	glass_desc = "Sweet and tangy, a bar syrup used to add color or flavor to drinks."
+	glass_desc = "Sweet and tangy, a bar syrup used to add color and flavor to drinks."
 
 /datum/reagent/drink/soda/space_cola
 	name = "Space Cola"
@@ -1573,7 +1585,7 @@ End Citadel Change */
 	name = "Shirley Temple"
 	id =  "shirley_temple"
 	description = "A sweet concotion hated even by its namesake."
-	taste_description = "sweet ginger ale"
+	taste_description = "sweet tonic cherries"
 	color = "#EF304F"
 	adj_temp = -8
 
@@ -1986,7 +1998,7 @@ End Citadel Change */
 	strength = 50
 
 	glass_name = "ale"
-	glass_desc = "A freezing pint of delicious ale"
+	glass_desc = "A freezing pint of delicious ale."
 
 /datum/reagent/ethanol/beer
 	name = "Beer"
@@ -3829,6 +3841,26 @@ End Citadel Change */
 
 	glass_name = "The Best Boy"
 	glass_desc = "An eternal tribute to the best crewmember to ever work on Space Station 13. Keep away from washing machines."
+
+/datum/reagent/ethanol/phobos
+	name = "Phobos"
+	id = "phobos"
+	description = "A drink invented by Tyrmalin Moonshiners to cope with the harsh Martian climate."
+	taste_description = "grain alcohol"
+	strength = 70
+
+	glass_name = "Phobos"
+	glass_desc = "A drink invented by Tyrmalin Moonshiners to cope with the harsh Martian climate."
+
+/datum/reagent/ethanol/greenstuff
+	name = "Green Stuff"
+	id = "greenstuff"
+	description = "Tyrmalin grog aggressively blended with unfiltered absinthe."
+	taste_description = "black licorice and thick malt"
+	strength = 70
+
+	glass_name = "Green Stuff"
+	glass_desc = "Tyrmalin grog aggressively blended with unfiltered absinthe."
 
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////

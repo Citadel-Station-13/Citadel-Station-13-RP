@@ -167,7 +167,7 @@
 //Body Scan Console
 /obj/machinery/body_scanconsole
 	var/obj/machinery/bodyscanner/scanner
-	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif) //VOREStation Add - Backup Implant, NIF
+	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif, /obj/item/implant/mirror)
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
@@ -179,6 +179,7 @@
 	circuit = /obj/item/circuitboard/scanner_console
 	var/printing = null
 	var/printing_text = null
+	var/mirror = null
 
 /obj/machinery/body_scanconsole/Initialize(mapload, newdir)
 	. = ..()
@@ -282,6 +283,7 @@
 
 	if(scanner)
 		data["occupied"] = scanner.occupant ? 1 : 0
+		mirror = null
 
 		var/occupantData[0]
 		if(scanner.occupant && ishuman(scanner.occupant))
@@ -351,6 +353,8 @@
 					implantSubData["name"] = I.name
 					if(is_type_in_list(I, known_implants))
 						implantSubData["known"] = 1
+					for(var/obj/item/implant/mirror/P in E.implants)
+						mirror = P
 
 					implantData.Add(list(implantSubData))
 
@@ -434,12 +438,23 @@
 			printing = null
 			printing_text = null
 
+	if (href_list["backup"])
+		if(mirror != null)
+			var/obj/item/implant/mirror/E = mirror
+			E.post_implant(scanner.occupant)
+			visible_message("<span class='notice'>Manual backup complete.</span>")
+		else
+			visible_message("<span class='notice'>No mirror detected!</span>")
+		return
+
+
+
 /obj/machinery/body_scanconsole/proc/generate_printing_text()
 	var/dat = ""
 
 	if(scanner)
 		var/mob/living/carbon/human/occupant = scanner.occupant
-		dat = "<font color='blue'><b>Occupant Statistics:</b></font><br>" //Blah obvious
+		dat = "<font color=#4F49AF><b>Occupant Statistics:</b></font><br>" //Blah obvious
 		if(istype(occupant)) //is there REALLY someone in there?
 			var/t1
 			switch(occupant.stat) // obvious, see what their status is
@@ -563,7 +578,7 @@
 
 				if(unknown_body)
 					imp += "Unknown body present:"
-				if(!AN && !open && !infected & !imp)
+				if(!AN && !open && !infected && !imp)
 					AN = "None:"
 				if(!(e.status & ORGAN_DESTROYED))
 					dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured][o_dead]</td>"

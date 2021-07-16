@@ -100,6 +100,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/job_engsec_med = 0
 	var/job_engsec_low = 0
 
+	var/job_talon_high = 0
+	var/job_talon_med = 0
+	var/job_talon_low = 0
+
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = 1
 
@@ -125,6 +129,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/gen_record = ""
 	var/exploit_record = ""
 	var/disabilities = 0
+	var/mirror = TRUE
 
 	var/economic_status = "Average"
 

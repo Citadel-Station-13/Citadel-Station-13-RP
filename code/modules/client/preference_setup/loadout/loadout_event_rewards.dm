@@ -17,3 +17,11 @@
 	display_name = "Game Boy"
 	path = /obj/item/instrument/gameboy
 	ckeywhitelist = list("jaybird1")
+
+/datum/gear/event_reward/foxmimko
+	sort_category = "Event Rewards"
+	cost = 0
+	display_name = "Miko Garb"
+	path = /obj/item/clothing/under/event_reward/foxmiko
+	slot = slot_w_uniform
+	ckeywhitelist = list("knouli")

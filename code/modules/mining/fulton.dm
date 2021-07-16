@@ -127,9 +127,14 @@ var/global/list/total_extraction_beacons = list()
 				update_icon(A)
 			sleep(30)
 			var/list/flooring_near_beacon = list()
-			for(var/turf/simulated/floor/floor in orange(1, beacon))
-				flooring_near_beacon += floor
-			holder_obj.forceMove(pick(flooring_near_beacon))
+			for(var/turf/T in range(1, beacon))
+				if(T.density)
+					continue
+				flooring_near_beacon += T
+			if(!length(flooring_near_beacon))
+				holder_obj.forceMove(get_turf(beacon))
+			else
+				holder_obj.forceMove(pick(flooring_near_beacon))
 			animate(holder_obj, pixel_z = 10, time = 50)
 			sleep(50)
 			animate(holder_obj, pixel_z = 15, time = 10)

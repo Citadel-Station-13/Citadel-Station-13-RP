@@ -353,6 +353,30 @@
 	icon_state = "tesh_neckscarf"
 	species_restricted = list(SPECIES_TESHARI)
 
+//Gaiter scarves
+/obj/item/clothing/accessory/gaiter
+	name = "red neck gaiter"
+	desc = "A slightly worn neck gaiter, it's loose enough to be worn comfortably like a scarf. Commonly used by outdoorsmen and mercenaries, both to keep warm and keep debris away from the face."
+	icon_state = "gaiter_red"
+	slot = ACCESSORY_SLOT_DECOR
+
+/obj/item/clothing/accessory/gaiter/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]_up"
+		to_chat(user, "You pull the gaiter up over your nose.")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You tug the gaiter down around your neck.")
+	update_clothing_icon()	//so our mob-overlays update
+
+/obj/item/clothing/accessory/gaiter/tan
+	name = "tan neck gaiter"
+	icon_state = "gaiter_tan"
+
+/obj/item/clothing/accessory/gaiter/gray
+	name = "gray neck gaiter"
+	icon_state = "gaiter_gray"
+
 //bracelets
 
 /obj/item/clothing/accessory/bracelet

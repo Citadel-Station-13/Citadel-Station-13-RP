@@ -7,6 +7,7 @@ import { Button, Flex, NoticeBox } from '../../components';
  *
  * - siliconUser: boolean
  * - locked: boolean
+ * - normallyLocked: boolean
  *
  * And expects the following ui_act action to be implemented:
  *
@@ -20,24 +21,30 @@ export const InterfaceLockNoticeBox = (props, context) => {
   const {
     siliconUser = data.siliconUser,
     locked = data.locked,
+    normallyLocked = data.normallyLocked,
     onLockStatusChange = () => act('lock'),
     accessText = 'an ID card',
+    deny = false,
+    denialMessage = 'Error.',
   } = props;
+  if (deny) {
+    return denialMessage;
+  }
   // For silicon users
   if (siliconUser) {
     return (
-      <NoticeBox color="grey">
+      <NoticeBox color={siliconUser && 'grey'}>
         <Flex align="center">
           <Flex.Item>
             Interface lock status:
           </Flex.Item>
-          <Flex.Item grow={1} />
+          <Flex.Item grow="1" />
           <Flex.Item>
             <Button
-              m={0}
-              color={locked ? 'red' : 'green'}
-              icon={locked ? 'lock' : 'unlock'}
-              content={locked ? 'Locked' : 'Unlocked'}
+              m="0"
+              color={normallyLocked ? 'red' : 'green'}
+              icon={normallyLocked ? 'lock' : 'unlock'}
+              content={normallyLocked ? 'Locked' : 'Unlocked'}
               onClick={() => {
                 if (onLockStatusChange) {
                   onLockStatusChange(!locked);

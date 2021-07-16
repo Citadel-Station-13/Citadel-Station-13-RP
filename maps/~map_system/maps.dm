@@ -68,6 +68,9 @@ var/list/all_maps = list()
 	var/list/belter_transit_z = list()
 	var/list/belter_belt_z = list()
 
+	var/list/mining_station_z = list()
+	var/list/mining_outpost_z = list()
+
 	var/station_name  = "BAD Station"
 	var/station_short = "Baddy"
 	var/dock_name	  = "THE PirateBay"
@@ -120,6 +123,8 @@ var/list/all_maps = list()
 	var/list/unit_test_exempt_from_apc = list()
 	var/list/unit_test_z_levels	// To test more than Z1, set your z-levels to test here.
 
+	var/list/planet_datums_to_make = list() // Types of `/datum/planet`s that will be instantiated by SSPlanets.
+
 /datum/map/New()
 	..()
 	if(zlevel_datum_type)
@@ -165,13 +170,13 @@ var/list/all_maps = list()
 			return list(srcz)
 
 		// Just the sector we're in
-		if(om_range == -1)
+		if(!long_range || (om_range < 0))
 			return O.map_z.Copy()
 
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
 		var/turf/T = get_turf(O)
-		for(var/obj/effect/overmap/visitable/V in range(long_range ? om_range : -1, T))
+		for(var/obj/effect/overmap/visitable/V in range(om_range, T))
 			connections += V.map_z	// Adding list to list adds contents
 		return connections
 
@@ -236,8 +241,11 @@ var/list/all_maps = list()
 	var/custom_skybox = null  // Can override skybox type here for this z
 
 // Default constructor applies itself to the parent map datum
-/datum/map_z_level/New(var/datum/map/map)
-	if(!z) return
+/datum/map_z_level/New(var/datum/map/map, _z)
+	if(_z)
+		src.z = _z
+	if(!z)
+		return
 	map.zlevels["[z]"] = src
 	if(flags & MAP_LEVEL_STATION) map.station_levels += z
 	if(flags & MAP_LEVEL_ADMIN) map.admin_levels += z
@@ -249,7 +257,8 @@ var/list/all_maps = list()
 		if(!map.empty_levels) map.empty_levels = list()
 		map.empty_levels += z
 	if(flags & MAP_LEVEL_CONSOLES)
-		if (!map.map_levels) map.map_levels = list()
+		if (!map.map_levels)
+			map.map_levels = list()
 		map.map_levels += z
 	if(base_turf)
 		map.base_turf_by_z["[z]"] = base_turf

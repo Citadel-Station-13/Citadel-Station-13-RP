@@ -509,41 +509,41 @@
 	if(ishuman(C.loc)) //In a /mob/living/carbon/human
 		var/mob/living/carbon/human/H = C.loc
 		if(H.shoes == C) //Being worn
-			to_chat(src,"<font color='blue'> You start to climb around the larger creature's feet and ankles!</font>")
+			to_chat(src,"<font color=#4F49AF> You start to climb around the larger creature's feet and ankles!</font>")
 			to_chat(H,"<font color='red'>Something is trying to climb out of your [C]!</font>")
 			var/original_loc = H.loc
 			for(var/escape_time = 100,escape_time > 0,escape_time--)
 				if(H.loc != original_loc)
 					to_chat(src,"<font color='red'>You're pinned back underfoot!</font>")
-					to_chat(H,"<font color='blue'>You pin the escapee back underfoot!</font>")
+					to_chat(H,"<font color=#4F49AF>You pin the escapee back underfoot!</font>")
 					return
 				if(src.loc != C)
 					return
 				sleep(1)
 
-			to_chat(src,"<font color='blue'>You manage to escape \the [C]!</font>")
+			to_chat(src,"<font color=#4F49AF>You manage to escape \the [C]!</font>")
 			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
 			forceMove(H.loc)
 
 		else //Being held by a human
-			to_chat(src,"<font color='blue'>You start to climb out of \the [C]!</font>")
+			to_chat(src,"<font color=#4F49AF>You start to climb out of \the [C]!</font>")
 			to_chat(H,"<font color='red'>Something is trying to climb out of your [C]!</font>")
 			for(var/escape_time = 60,escape_time > 0,escape_time--)
 				if(H.shoes == C)
 					to_chat(src,"<font color='red'>You're pinned underfoot!</font>")
-					to_chat(H,"<font color='blue'>You pin the escapee underfoot!</font>")
+					to_chat(H,"<font color=#4F49AF>You pin the escapee underfoot!</font>")
 					return
 				if(src.loc != C)
 					return
 				sleep(1)
-			to_chat(src,"<font color='blue'>You manage to escape \the [C]!</font>")
+			to_chat(src,"<font color=#4F49AF>You manage to escape \the [C]!</font>")
 			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
 			forceMove(H.loc)
 
-	to_chat(src,"<font color='blue'>You start to climb out of \the [C]!</font>")
+	to_chat(src,"<font color=#4F49AF>You start to climb out of \the [C]!</font>")
 	sleep(50)
 	if(loc == C)
-		to_chat(src,"<font color='blue'>You climb out of \the [C]!</font>")
+		to_chat(src,"<font color=#4F49AF>You climb out of \the [C]!</font>")
 		forceMove(C.loc)
 	return
 
@@ -591,7 +591,7 @@
 		to_chat(src, "<span class='warning'>You are not allowed to eat this.</span>")
 		return
 
-	if(is_type_in_list(I,edible_trash) | adminbus_trash)
+	if(is_type_in_list(I,edible_trash) || adminbus_trash)
 		if(I.hidden_uplink)
 			to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
 			message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")

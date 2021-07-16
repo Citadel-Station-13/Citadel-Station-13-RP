@@ -48,8 +48,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	user.visible_message("<font color='blue'>[user] has cut [target]'s [affected.encased] open with \the [tool].</font>", \
-	"<font color='blue'>You have cut [target]'s [affected.encased] open with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] has cut [target]'s [affected.encased] open with \the [tool].</font>", \
+	"<font color=#4F49AF>You have cut [target]'s [affected.encased] open with \the [tool].</font>")
 	affected.open = 2.5
 
 /datum/surgery_step/open_encased/saw/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -98,8 +98,8 @@
 	if (!hasorgans(target))
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	var/msg = "<font color='blue'>[user] forces open [target]'s [affected.encased] with \the [tool].</font>"
-	var/self_msg = "<font color='blue'>You force open [target]'s [affected.encased] with \the [tool].</font>"
+	var/msg = "<font color=#4F49AF>[user] forces open [target]'s [affected.encased] with \the [tool].</font>"
+	var/self_msg = "<font color=#4F49AF>You force open [target]'s [affected.encased] with \the [tool].</font>"
 	user.visible_message(msg, self_msg)
 
 	affected.open = 3
@@ -152,8 +152,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	var/msg = "<font color='blue'>[user] bends [target]'s [affected.encased] back into place with \the [tool].</font>"
-	var/self_msg = "<font color='blue'>You bend [target]'s [affected.encased] back into place with \the [tool].</font>"
+	var/msg = "<font color=#4F49AF>[user] bends [target]'s [affected.encased] back into place with \the [tool].</font>"
+	var/self_msg = "<font color=#4F49AF>You bend [target]'s [affected.encased] back into place with \the [tool].</font>"
 	user.visible_message(msg, self_msg)
 
 	affected.open = 2.5
@@ -210,8 +210,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	var/msg = "<font color='blue'>[user] applied \the [tool] to [target]'s [affected.encased].</font>"
-	var/self_msg = "<font color='blue'>You applied \the [tool] to [target]'s [affected.encased].</font>"
+	var/msg = "<font color=#4F49AF>[user] applied \the [tool] to [target]'s [affected.encased].</font>"
+	var/self_msg = "<font color=#4F49AF>You applied \the [tool] to [target]'s [affected.encased].</font>"
 	user.visible_message(msg, self_msg)
 
 	affected.open = 2
@@ -250,8 +250,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	user.visible_message("<font color='blue'>[user] has cut [target]'s [affected.encased] wide open with \the [tool].</font>", \
-	"<font color='blue'>You have cut [target]'s [affected.encased] wide open with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] has cut [target]'s [affected.encased] wide open with \the [tool].</font>", \
+	"<font color=#4F49AF>You have cut [target]'s [affected.encased] wide open with \the [tool].</font>")
 	affected.open = 3
 
 /datum/surgery_step/open_encased/advancedsaw_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -300,8 +300,8 @@
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	var/msg = "<font color='blue'>[user] sealed \the [target]'s [affected.encased] with \the [tool].</font>"
-	var/self_msg = "<font color='blue'>You sealed \the [target]'s [affected.encased] with \the [tool].</font>"
+	var/msg = "<font color=#4F49AF>[user] sealed \the [target]'s [affected.encased] with \the [tool].</font>"
+	var/self_msg = "<font color=#4F49AF>You sealed \the [target]'s [affected.encased] with \the [tool].</font>"
 	user.visible_message(msg, self_msg)
 
 	affected.open = 2

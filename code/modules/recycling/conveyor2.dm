@@ -118,7 +118,7 @@
 			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
 				step(A,movedir)
 				++items_moved
-		if(items_moved >= 10)
+		if(items_moved >= 50)
 			break
 /*
 		if((A.loc == loc) && A.has_gravity())

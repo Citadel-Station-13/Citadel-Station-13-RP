@@ -47,12 +47,16 @@
 	var/icon_add = 'icons/mob/human_face.dmi'
 	//Enhanced colours and hair for all
 	var/color_blend_mode = ICON_MULTIPLY
-	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN) //This lets all races use the default hairstyles.
+	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW) //This lets all races use the default hairstyles.
 	var/flags
 
 	eighties
 		name = "80's"
 		icon_state = "hair_80s"
+
+	eighties_alt
+		name = "80's (Alternative)"
+		icon_state = "hair_80s_alt"
 
 	afro
 		name = "Afro"
@@ -179,14 +183,17 @@
 	bun
 		name = "Bun"
 		icon_state = "hair_bun"
+		flags = HAIR_TIEABLE
 
 	bun2
 		name = "Bun 2"
 		icon_state = "hair_bun2"
+		flags = HAIR_TIEABLE
 
 	bun3
 		name = "Bun 3"
 		icon_state = "hair_bun3"
+		flags = HAIR_TIEABLE
 
 	bun
 		name = "Bun Casual"
@@ -450,6 +457,7 @@
 	modern
 		name = "Modern"
 		icon_state = "hair_modern"
+		flags = HAIR_TIEABLE
 
 	mohawk
 		name = "Mohawk"
@@ -965,13 +973,6 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "hair_twincurl"
-
-	inkling
-		name = "colorable mature inkling hair"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_state = "inkling-colorable"
-		color_blend_mode = ICON_MULTIPLY
-		do_colouration = 1
 
 	myopia
 		name = "Myopia"
@@ -1805,7 +1806,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_short"
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 	shadekin_hair_poofy
@@ -1813,7 +1814,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_poofy"
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 	shadekin_hair_long
@@ -1821,7 +1822,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_long"
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 	shadekin_hair_rivyr
@@ -1830,7 +1831,7 @@
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "shadekin_rivyr"
 		ckeys_allowed = list("verysoft")
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		gender = NEUTER
 
 /datum/sprite_accessory/facial_hair
@@ -2806,7 +2807,7 @@
 		icon_state = "shadekin-snoot"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_HEAD)
-		species_allowed = list(SPECIES_SHADEKIN)
+		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 
 	taj_nose_alt
 		name = "Nose Color, alt. (Taj)"

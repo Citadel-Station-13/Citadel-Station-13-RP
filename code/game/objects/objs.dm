@@ -61,7 +61,7 @@
 
 	// In the far future no checks are made in an overriding Topic() beyond if(..()) return
 	// Instead any such checks are made in CanUseTopic()
-	if(CanUseTopic(usr, state, href_list) == STATUS_INTERACTIVE)
+	if(CanUseTopic(usr, state, href_list) == UI_INTERACTIVE)
 		CouldUseTopic(usr)
 		return 0
 
@@ -72,7 +72,7 @@
 	if(user.CanUseObjTopic(src))
 		return ..()
 	to_chat(user, "<span class='danger'>[icon2html(thing = src, target = user)] Access Denied!</span>")
-	return STATUS_CLOSE
+	return UI_CLOSE
 
 /mob/living/silicon/CanUseObjTopic(var/obj/O)
 	var/id = src.GetIdCard()
@@ -190,9 +190,6 @@
 	return
 
 /obj/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
-	return
-
-/obj/proc/get_cell()
 	return
 
 // Used to mark a turf as containing objects that are dangerous to step onto.

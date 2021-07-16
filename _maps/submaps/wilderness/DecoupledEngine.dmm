@@ -51,7 +51,7 @@
 /turf/template_noop,
 /area/submap/DecoupledEngine)
 "an" = (
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/DecoupledEngine)
 "ao" = (
 /obj/structure/lattice,
@@ -135,7 +135,7 @@
 	 icon_state = "propulsion_r";
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/DecoupledEngine)
 "aD" = (
 /obj/structure/lattice,
@@ -223,7 +223,7 @@
 	icon_state = "propulsion_r";
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/DecoupledEngine)
 "aP" = (
 /obj/effect/floor_decal/rust,
@@ -300,7 +300,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/DecoupledEngine)
 "aZ" = (
 /obj/item/stack/material/steel,

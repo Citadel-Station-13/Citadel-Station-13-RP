@@ -102,7 +102,7 @@
 
 	if(istype(I, /obj/item/storage/bag/trash))
 		var/obj/item/storage/bag/trash/T = I
-		to_chat(user, "<font color='blue'>You empty the bag.</font>")
+		to_chat(user, "<font color=#4F49AF>You empty the bag.</font>")
 		for(var/obj/item/O in T.contents)
 			T.remove_from_storage(O,src)
 		T.update_icon()
@@ -1172,7 +1172,7 @@
 			if(O.currTag)// Tag set
 				sort_tag = O.currTag
 				playsound(src.loc, 'sound/machines/twobeep.ogg', 100, 1)
-				to_chat(user, "<font color='blue'>Changed tag to '[sort_tag]'.</font>")
+				to_chat(user, "<font color=#4F49AF>Changed tag to '[sort_tag]'.</font>")
 				updatename()
 				updatedesc()
 
@@ -1240,7 +1240,7 @@
 			if(O.currTag)// Tag set
 				sortType = O.currTag
 				playsound(src.loc, 'sound/machines/twobeep.ogg', 100, 1)
-				to_chat(user, "<font color='blue'>Changed filter to '[sortType]'.</font>")
+				to_chat(user, "<font color=#4F49AF>Changed filter to '[sortType]'.</font>")
 				updatename()
 				updatedesc()
 

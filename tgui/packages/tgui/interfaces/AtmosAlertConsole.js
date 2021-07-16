@@ -4,8 +4,8 @@ import { Window } from '../layouts';
 
 export const AtmosAlertConsole = (props, context) => {
   const { act, data } = useBackend(context);
-  const priorityAlerts = data.priority || [];
-  const minorAlerts = data.minor || [];
+  const priorityAlerts = data.priority_alarms || [];
+  const minorAlerts = data.minor_alarms || [];
   return (
     <Window
       width={350}
@@ -20,12 +20,12 @@ export const AtmosAlertConsole = (props, context) => {
               </li>
             )}
             {priorityAlerts.map(alert => (
-              <li key={alert}>
+              <li key={alert.name}>
                 <Button
                   icon="times"
-                  content={alert}
+                  content={alert.name}
                   color="bad"
-                  onClick={() => act('clear', { zone: alert })} />
+                  onClick={() => act('clear', { ref: alert.ref })} />
               </li>
             ))}
             {minorAlerts.length === 0 && (
@@ -34,12 +34,12 @@ export const AtmosAlertConsole = (props, context) => {
               </li>
             )}
             {minorAlerts.map(alert => (
-              <li key={alert}>
+              <li key={alert.name}>
                 <Button
                   icon="times"
-                  content={alert}
+                  content={alert.name}
                   color="average"
-                  onClick={() => act('clear', { zone: alert })} />
+                  onClick={() => act('clear', { ref: alert.ref })} />
               </li>
             ))}
           </ul>

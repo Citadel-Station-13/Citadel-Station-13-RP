@@ -121,7 +121,7 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
-	"Standard", "Engineering", "Surgeon",  "Crisis",
+	"Standard", "Engineering", "Medical",
 	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
 	"Research"
 )
@@ -149,9 +149,6 @@ var/static/list/scarySounds = list(
 
 // Bomb cap!
 var/max_explosion_range = 14
-
-// Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
-var/global/obj/item/radio/intercom/omni/global_announcer = new /obj/item/radio/intercom/omni(null)
 
 var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Exploration", "Civilian") //VOREStation Edit
 

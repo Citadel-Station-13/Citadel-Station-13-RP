@@ -16,7 +16,7 @@
 	if(revinfo)
 		commit = revinfo.commit
 		originmastercommit = revinfo.origin_commit
-		date = rustg_git_commit_date(commit)
+		date = revinfo.timestamp || rustg_git_commit_date(commit)
 
 	// goes to DD log and config_error.txt
 	log_world(get_log_message())
@@ -29,7 +29,8 @@
 
 	for(var/line in testmerge)
 		var/datum/tgs_revision_information/test_merge/tm = line
-		msg += "Test merge active of PR #[tm.number] commit [tm.pull_request_commit]"
+		msg += "Test merge active of PR #[tm.number] commit [tm.head_commit]"
+		// SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.head_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
 
 	if(commit && commit != originmastercommit)
 		msg += "HEAD: [commit]"
@@ -44,7 +45,7 @@
 	. = header ? "The following pull requests are currently test merged:<br>" : ""
 	for(var/line in testmerge)
 		var/datum/tgs_revision_information/test_merge/tm = line
-		var/cm = tm.pull_request_commit
+		var/cm = tm.head_commit
 		var/details = ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author) + " at commit " + html_encode(copytext_char(cm, 1, 11))
 		if(details && findtext(details, "\[s\]") && (!usr || !usr.client.holder))
 			continue
@@ -78,7 +79,9 @@
 		msg += "No commit information"
 	if(world.TgsAvailable())
 		var/datum/tgs_version/version = world.TgsVersion()
-		msg += "Server tools version: [version.raw_parameter]"
+		msg += "TGS version: [version.raw_parameter]"
+		var/datum/tgs_version/api_version = world.TgsApiVersion()
+		msg += "DMAPI version: [api_version.raw_parameter]"
 
 /*
 	// Game mode odds
@@ -123,5 +126,5 @@
 			if(probabilities[ctag] > 0)
 				var/percentage = round(probabilities[ctag] / sum * 100, 0.1)
 				msg += "[ctag] [percentage]%"
-*/
 	to_chat(src, msg.Join("<br>"))
+*/

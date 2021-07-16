@@ -269,16 +269,30 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Job groups
-#define ROLE_COMMAND			"command"
-#define ROLE_SECURITY			"security"
-#define ROLE_ENGINEERING		"engineering"
-#define ROLE_MEDICAL			"medical"
-#define ROLE_RESEARCH			"research"
-#define ROLE_CARGO				"cargo"
-#define ROLE_CIVILIAN			"civilian"
-#define ROLE_SYNTHETIC			"synthetic"
-#define ROLE_UNKNOWN			"unknown"
-#define ROLE_EVERYONE			"everyone"
+#define DEPARTMENT_COMMAND			"command"
+#define DEPARTMENT_SECURITY			"security"
+#define DEPARTMENT_ENGINEERING		"engineering"
+#define DEPARTMENT_MEDICAL			"medical"
+#define DEPARTMENT_RESEARCH			"research"
+#define DEPARTMENT_CARGO				"cargo"
+#define DEPARTMENT_CIVILIAN			"civilian"
+#define DEPARTMENT_SYNTHETIC			"synthetic"
+#define DEPARTMENT_UNKNOWN			"unknown"
+#define DEPARTMENT_EVERYONE			"everyone"
+#define DEPARTMENT_PLANET			"exploration"
+#define DEPARTMENT_OFFDUTY			"offduty"
+#define DEPARTMENT_TALON			"talon"
+
+// vorstation off-duty time
+#define PTO_SECURITY		"Security"
+#define PTO_MEDICAL			"Medical"
+#define PTO_ENGINEERING 	"Engineering"
+#define PTO_SCIENCE			"Science"
+#define PTO_EXPLORATION 	"Exploration"
+#define PTO_CARGO			"Cargo"
+#define PTO_CIVILIAN		"Civilian"
+#define PTO_CYBORG			"Cyborg"
+#define PTO_COMMAND			"Command"
 
 // Canonical spellings of TSCs, so typos never have to happen again due to human error.
 #define TSC_NT		"NanoTrasen"
@@ -435,3 +449,17 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //Holy Weapon defines from Main. Lists null rod weapons and classifies them as HOLY.
 #define HOLY_WEAPONS /obj/item/nullrod
+
+// Used by radios to indicate that they have sent a message via something other than subspace
+#define RADIO_CONNECTION_FAIL 0
+#define RADIO_CONNECTION_NON_SUBSPACE 1
+
+#define JOB_CARBON			0x1
+#define JOB_SILICON_ROBOT	0x2
+#define JOB_SILICON_AI		0x4
+#define JOB_SILICON			0x6 // 2|4, probably don't set jobs to this, but good for checking
+
+#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
+#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+#define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+#define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"

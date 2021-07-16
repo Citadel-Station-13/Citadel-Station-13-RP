@@ -13,6 +13,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m762garand)
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/garand_ping.ogg'
+	one_handed_penalty = 15
 
 /obj/item/gun/projectile/garand/update_icon()
 	if(ammo_magazine)
