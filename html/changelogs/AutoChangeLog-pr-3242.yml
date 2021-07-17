@@ -1,0 +1,6 @@
+author: "nik707"
+delete-after: True
+changes: 
+  - bugfix: "synthetics now spawn with mirrors as intended
+tweak: Mirrors can now properly be removed through surgery without bricking the mobs respawning
+tweak: it is now impossible to install a mirror into a body with no attached client. Use the resleeving console."
