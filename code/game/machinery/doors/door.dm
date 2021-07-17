@@ -155,7 +155,9 @@
 		return
 	src.add_fingerprint(user)
 	if(density)
-		if(allowed(user))
+		if(istype(user, /mob/living/simple_mob) && !(user.ckey))
+			do_animate("smdeny")
+		else if(allowed(user))
 			open()
 		else
 			do_animate("deny")
@@ -408,6 +410,9 @@
 			if(density && !(stat & (NOPOWER|BROKEN)))
 				flick("door_deny", src)
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
+		if("smdeny")
+			if(density && !(stat & (NOPOWER|BROKEN)))
+				flick("door_deny", src)
 	return
 
 
