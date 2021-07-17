@@ -69,7 +69,7 @@
 	},
 /obj/random/humanoidremains,
 /obj/random/medical/lite,
-/turf/simulated/floor/outdoors/water/deep{
+/turf/simulated/floor/water/deep{
 	outdoors = 0
 	},
 /area/template_noop)

@@ -715,6 +715,7 @@
 // Research
 /area/rnd/xenobiology/xenoflora/lab_atmos
 	name = "\improper Xenoflora Atmospherics Lab"
+	ambience = AMBIENCE_ATMOS
 /area/rnd/breakroom
 	name = "\improper Research Break Room"
 	icon_state = "research"
@@ -790,6 +791,7 @@
 /area/rnd/outpost
 	name = "\improper Research Outpost Hallway"
 	icon_state = "research"
+	ambience = AMBIENCE_OUTPOST
 
 /area/rnd/outpost/breakroom
 	name = "\improper Research Outpost Breakroom"
@@ -806,26 +808,31 @@
 /area/rnd/outpost/chamber
 	name = "\improper Research Outpost Burn Chamber"
 	icon_state = "engine"
+	ambience = AMBIENCE_ATMOS
 
 /area/rnd/outpost/atmos
 	name = "Research Outpost Atmospherics"
 	icon_state = "atmos"
+	ambience = AMBIENCE_ATMOS
 
 /area/rnd/outpost/storage
 	name = "\improper Research Outpost Gas Storage"
 	icon_state = "toxstorage"
+	ambience = AMBIENCE_ATMOS
 
 /area/rnd/outpost/mixing
 	name = "\improper Research Outpost Gas Mixing"
 	icon_state = "toxmix"
+	ambience = AMBIENCE_ATMOS
 
 /area/rnd/outpost/heating
 	name = "\improper Research Outpost Gas Heating"
 	icon_state = "toxmix"
+	ambience = AMBIENCE_ATMOS
 
-/area/rnd/outpost/testing
+/area/rnd/outpost/testing_lab
 	name = "\improper Research Outpost Testing"
-
+	ambience = AMBIENCE_ATMOS
 
 /area/maintenance/substation/outpost
 	name = "Research Outpost Substation"
@@ -833,9 +840,11 @@
 /area/rnd/outpost/anomaly_lab
 	name = "\improper Research Outpost Anomaly Lab"
 	icon_state = "research"
+
 /area/rnd/outpost/anomaly_lab/analysis
 	name = "\improper Anomaly Lab Analysis Chamber"
 	icon_state = "research"
+
 /area/rnd/outpost/anomaly_lab/testing
 	name = "\improper Anomaly Lab Testing Chamber"
 
@@ -1544,6 +1553,12 @@ area/shuttle/mining_outpost/shuttle
 
 /area/unknown/dorm4
 	name = "Unknown Dorm 4"
+
+/area/unknown/dorm5
+	name = "Unknown Dorm 5"
+
+/area/unknown/dorm6
+	name = "Unknown Dorm 6"
 
 // ERT/Deathsquad Shuttle
 /area/shuttle/specialops/centcom

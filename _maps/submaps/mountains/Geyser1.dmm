@@ -30,7 +30,7 @@
 /obj/effect/map_effect/interval/screen_shaker{
 	interval_upper_bound = 600
 	},
-/turf/simulated/floor/outdoors/water/deep{
+/turf/simulated/floor/water/deep{
 	outdoors = 0
 	},
 /area/template_noop)

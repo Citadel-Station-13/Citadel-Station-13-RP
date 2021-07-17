@@ -370,14 +370,14 @@
 
 		var/mob/M = locate(href_list["jobban2"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "<span class='adminlog'>This can only be used on instances of type /mob</span>")
 			return
 
 		if(!M.ckey)	//sanity
-			to_chat(usr, "This mob has no ckey")
+			to_chat(usr, "<span class='adminlog'>This mob has no ckey</span>")
 			return
-		if(!SSjobs)
-			to_chat(usr, "Job Master has not been setup!")
+		if(!job_master)
+			to_chat(usr, "<span class='adminlog'>Job Master has not been setup!</span>")
 			return
 
 		var/dat = ""
@@ -394,10 +394,10 @@
 //Regular jobs
 	//Command (Blue)
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr align='center' bgcolor='ccccff'><th colspan='[length(command_positions)]'><a href='?src=\ref[src];jobban3=commanddept;jobban4=\ref[M]'>Command Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in command_positions)
+		jobs += "<tr align='center' bgcolor='ccccff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))]'><a href='?src=\ref[src];jobban3=commanddept;jobban4=\ref[M]'>Command Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 			if(!jobPos)	continue
-			var/datum/job/job = SSjobs.GetJob(jobPos)
+			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -415,10 +415,10 @@
 	//Security (Red)
 		counter = 0
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='ffddf0'><th colspan='[length(security_positions)]'><a href='?src=\ref[src];jobban3=securitydept;jobban4=\ref[M]'>Security Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in security_positions)
+		jobs += "<tr bgcolor='ffddf0'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))]'><a href='?src=\ref[src];jobban3=securitydept;jobban4=\ref[M]'>Security Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
 			if(!jobPos)	continue
-			var/datum/job/job = SSjobs.GetJob(jobPos)
+			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -436,10 +436,10 @@
 	//Engineering (Yellow)
 		counter = 0
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(engineering_positions)]'><a href='?src=\ref[src];jobban3=engineeringdept;jobban4=\ref[M]'>Engineering Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in engineering_positions)
+		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))]'><a href='?src=\ref[src];jobban3=engineeringdept;jobban4=\ref[M]'>Engineering Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
 			if(!jobPos)	continue
-			var/datum/job/job = SSjobs.GetJob(jobPos)
+			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -457,10 +457,10 @@
 	//Cargo (Yellow)
 		counter = 0
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(cargo_positions)]'><a href='?src=\ref[src];jobban3=cargodept;jobban4=\ref[M]'>Cargo Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in cargo_positions)
+		jobs += "<tr bgcolor='fff5cc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))]'><a href='?src=\ref[src];jobban3=cargodept;jobban4=\ref[M]'>Cargo Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
 			if(!jobPos)	continue
-			var/datum/job/job = SSjobs.GetJob(jobPos)
+			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -478,10 +478,10 @@
 	//Medical (White)
 		counter = 0
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='ffeef0'><th colspan='[length(medical_positions)]'><a href='?src=\ref[src];jobban3=medicaldept;jobban4=\ref[M]'>Medical Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in medical_positions)
+		jobs += "<tr bgcolor='ffeef0'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))]'><a href='?src=\ref[src];jobban3=medicaldept;jobban4=\ref[M]'>Medical Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
 			if(!jobPos)	continue
-			var/datum/job/job = SSjobs.GetJob(jobPos)
+			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -499,10 +499,10 @@
 	//Science (Purple)
 		counter = 0
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='e79fff'><th colspan='[length(science_positions)]'><a href='?src=\ref[src];jobban3=sciencedept;jobban4=\ref[M]'>Science Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in science_positions)
+		jobs += "<tr bgcolor='e79fff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))]'><a href='?src=\ref[src];jobban3=sciencedept;jobban4=\ref[M]'>Science Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
 			if(!jobPos)	continue
-			var/datum/job/job = SSjobs.GetJob(jobPos)
+			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -520,10 +520,10 @@
 	//Exploration (Purple)
 		counter = 0
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='e79fff'><th colspan='[length(planet_positions)]'><a href='?src=\ref[src];jobban3=explorationdept;jobban4=\ref[M]'>Exploration Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in planet_positions)
+		jobs += "<tr bgcolor='e79fff'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))]'><a href='?src=\ref[src];jobban3=sciencedept;jobban4=\ref[M]'>Science Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))
 			if(!jobPos)	continue
-			var/datum/job/job = SSjobs.GetJob(jobPos)
+			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -541,10 +541,10 @@
 	//Civilian (Grey)
 		counter = 0
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='dddddd'><th colspan='[length(civilian_positions)]'><a href='?src=\ref[src];jobban3=civiliandept;jobban4=\ref[M]'>Civilian Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in civilian_positions)
+		jobs += "<tr bgcolor='dddddd'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))]'><a href='?src=\ref[src];jobban3=civiliandept;jobban4=\ref[M]'>Civilian Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
 			if(!jobPos)	continue
-			var/datum/job/job = SSjobs.GetJob(jobPos)
+			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -568,10 +568,10 @@
 	//Non-Human (Green)
 		counter = 0
 		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='ccffcc'><th colspan='[length(nonhuman_positions)+1]'><a href='?src=\ref[src];jobban3=nonhumandept;jobban4=\ref[M]'>Non-human Positions</a></th></tr><tr align='center'>"
-		for(var/jobPos in nonhuman_positions)
+		jobs += "<tr bgcolor='ccffcc'><th colspan='[length(SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))+1]'><a href='?src=\ref[src];jobban3=nonhumandept;jobban4=\ref[M]'>Non-human Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
 			if(!jobPos)	continue
-			var/datum/job/job = SSjobs.GetJob(jobPos)
+			var/datum/job/job = job_master.GetJob(jobPos)
 			if(!job) continue
 
 			if(jobban_isbanned(M, job.title))
@@ -614,15 +614,15 @@
 
 		jobs += "</tr></table>"
 
-		//Other races  (BLUE, because I have no idea what other color to make this)
-		jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-		jobs += "<tr bgcolor='ccccff'><th colspan='1'>Other Races</th></tr><tr align='center'>"
-
-		if(jobban_isbanned(M, "Dionaea", "Custom loadout"))
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Dionaea;jobban4=\ref[M]'><font color=red>Dionaea</font></a></td>"
-		else
-			jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=Dionaea;jobban4=\ref[M]'>Dionaea</a></td>"
-		jobs += "</tr></table>"
+	//Other races (Blue) ... And also graffiti.
+		var/list/misc_roles = list("Dionaea", "Graffiti", "Custom loadout")
+		jobs += "<tr bgcolor='ccccff'><th colspan='[LAZYLEN(misc_roles)]'>Other Roles</th></tr><tr align='center'>"
+		for(var/entry in misc_roles)
+			if(jobban_isbanned(M, entry))
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[entry];jobban4=\ref[M]'><font color=red>[entry]</font></a></td>"
+			else
+				jobs += "<td width='20%'><a href='?src=\ref[src];jobban3=[entry];jobban4=\ref[M]'>[entry]</a></td>"
+				jobs += "</tr></table>"
 		body = "<body>[jobs]</body>"
 		dat = "<tt>[header][body]</tt>"
 		usr << browse(dat, "window=jobban2;size=800x490")
@@ -631,16 +631,16 @@
 	//JOBBAN'S INNARDS
 	else if(href_list["jobban3"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_ADMIN,0))
-			to_chat(usr, "<span class='warning'>You do not have the appropriate permissions to add job bans!</span>")
+			to_chat(usr, "<span class='adminlog warning'>You do not have the appropriate permissions to add job bans!</span>")
 			return
 
 		if(check_rights(R_MOD,0) && !check_rights(R_ADMIN,0) && !config_legacy.mods_can_job_tempban) // If mod and tempban disabled
-			to_chat(usr, "<span class='warning'>Mod jobbanning is disabled!</span>")
+			to_chat(usr, "<span class='adminlog warning'>Mod jobbanning is disabled!</span>")
 			return
 
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "<span class='adminlog'>This can only be used on instances of type /mob</span>")
 			return
 
 		if(M != usr)																//we can jobban ourselves
@@ -648,68 +648,68 @@
 				alert("You cannot perform this action. You must be of a higher administrative rank!")
 				return
 
-		if(!SSjobs)
-			to_chat(usr, "Job Master has not been setup!")
+		if(!job_master)
+			to_chat(usr, "<span class='adminlog'>Job Master has not been setup!</span>")
 			return
 
 		//get jobs for department if specified, otherwise just returnt he one job in a list.
 		var/list/joblist = list()
 		switch(href_list["jobban3"])
 			if("commanddept")
-				for(var/jobPos in command_positions)
+				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 					if(!jobPos)	continue
-					var/datum/job/temp = SSjobs.GetJob(jobPos)
+					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("securitydept")
-				for(var/jobPos in security_positions)
+				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
 					if(!jobPos)	continue
-					var/datum/job/temp = SSjobs.GetJob(jobPos)
+					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("engineeringdept")
-				for(var/jobPos in engineering_positions)
+				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
 					if(!jobPos)	continue
-					var/datum/job/temp = SSjobs.GetJob(jobPos)
+					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("cargodept")
-				for(var/jobPos in cargo_positions)
+				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
 					if(!jobPos)	continue
-					var/datum/job/temp = SSjobs.GetJob(jobPos)
+					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("medicaldept")
-				for(var/jobPos in medical_positions)
+				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
 					if(!jobPos)	continue
-					var/datum/job/temp = SSjobs.GetJob(jobPos)
+					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("sciencedept")
-				for(var/jobPos in science_positions)
+				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
 					if(!jobPos)	continue
-					var/datum/job/temp = SSjobs.GetJob(jobPos)
+					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			//VOREStation Edit Start
 			if("explorationdept")
-				for(var/jobPos in planet_positions)
+				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_PLANET))
 					if(!jobPos)	continue
-					var/datum/job/temp = SSjobs.GetJob(jobPos)
+					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			//VOREStation Edit End
 			if("civiliandept")
-				for(var/jobPos in civilian_positions)
+				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
 					if(!jobPos)	continue
-					var/datum/job/temp = SSjobs.GetJob(jobPos)
+					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			if("nonhumandept")
 				joblist += "pAI"
-				for(var/jobPos in nonhuman_positions)
+				for(var/jobPos in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC))
 					if(!jobPos)	continue
-					var/datum/job/temp = SSjobs.GetJob(jobPos)
+					var/datum/job/temp = job_master.GetJob(jobPos)
 					if(!temp) continue
 					joblist += temp.title
 			else
@@ -726,16 +726,16 @@
 			switch(alert("Temporary Ban?",,"Yes","No", "Cancel"))
 				if("Yes")
 					if(!check_rights(R_MOD,0) && !check_rights(R_BAN, 0))
-						to_chat(usr, "<span class='warning'> You Cannot issue temporary job-bans!</span>")
+						to_chat(usr, "<span class='adminlog warning'> You cannot issue temporary job-bans!</span>")
 						return
 					if(config_legacy.ban_legacy_system)
-						to_chat(usr, "<font color='red'>Your server is using the legacy banning system, which does not support temporary job bans. Consider upgrading. Aborting ban.</font>")
+						to_chat(usr, "<span class='adminlog warning'>Your server is using the legacy banning system, which does not support temporary job bans. Consider upgrading. Aborting ban.</span>")
 						return
 					var/mins = input(usr,"How long (in minutes)?","Ban time",1440) as num|null
 					if(!mins)
 						return
 					if(check_rights(R_MOD, 0) && !check_rights(R_BAN, 0) && mins > config_legacy.mod_job_tempban_max)
-						to_chat(usr, "<span class='warning'> Moderators can only job tempban up to [config_legacy.mod_job_tempban_max] minutes!</span>")
+						to_chat(usr, "<span class='adminlog warning'> Moderators can only job tempban up to [config_legacy.mod_job_tempban_max] minutes!</span>")
 						return
 					var/reason = sanitize(input(usr,"Reason?","Please State Reason","") as text|null)
 					if(!reason)
@@ -754,10 +754,10 @@
 						else
 							msg += ", [job]"
 					notes_add(M.ckey, "Banned  from [msg] - [reason]", usr)
-					message_admins("<font color=#4F49AF>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes</font>", 1)
-					to_chat(M, "<font color='red'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></font>")
-					to_chat(M, "<font color='red'><B>The reason is: [reason]</B></font>")
-					to_chat(M, "<font color='red'>This jobban will be lifted in [mins] minutes.</font>")
+					message_admins("<font color='blue'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes</font>", 1)
+					to_chat(M, "<span class='system'><font color='red'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></font></span>")
+					to_chat(M, "<span class='system'><font color='red'><B>The reason is: [reason]</B></font></span>")
+					to_chat(M, "<span class='system'><font color='red'>This jobban will be lifted in [mins] minutes.</font></span>")
 					href_list["jobban2"] = 1 // lets it fall through and refresh
 					return 1
 				if("No")
@@ -775,10 +775,10 @@
 							if(!msg)	msg = job
 							else		msg += ", [job]"
 						notes_add(M.ckey, "Banned  from [msg] - [reason]", usr)
-						message_admins("<font color=#4F49AF>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]</font>", 1)
-						to_chat(M, "<font color='red'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></font>")
-						to_chat(M, "<font color='red'><B>The reason is: [reason]</B></font>")
-						to_chat(M, "<font color='red'>Jobban can be lifted only upon request.</font>")
+						message_admins("<font color='blue'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]</font>", 1)
+						to_chat(M, "<span class='system'><font color='red'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></font></span>")
+						to_chat(M, "<span class='system'><font color='red'><B>The reason is: [reason]</B></font></span>")
+						to_chat(M, "<span class='system'><font color='red'>Jobban can be lifted only upon request.</font></span>")
 						href_list["jobban2"] = 1 // lets it fall through and refresh
 						return 1
 				if("Cancel")
@@ -788,7 +788,7 @@
 		//all jobs in joblist are banned already OR we didn't give a reason (implying they shouldn't be banned)
 		if(joblist.len) //at least 1 banned job exists in joblist so we have stuff to unban.
 			if(!config_legacy.ban_legacy_system)
-				to_chat(usr, "Unfortunately, database based unbanning cannot be done through this panel")
+				to_chat(usr, "<span class='adminlog'>Unfortunately, database based unbanning cannot be done through this panel</span>")
 				DB_ban_panel(M.ckey)
 				return
 			var/msg
@@ -808,8 +808,8 @@
 					else
 						continue
 			if(msg)
-				message_admins("<font color=#4F49AF>[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]</font>", 1)
-				to_chat(M, "<font color='red'><BIG><B>You have been un-jobbanned by [usr.client.ckey] from [msg].</B></BIG></font>")
+				message_admins("<font color='blue'>[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]</font>", 1)
+				to_chat(M, "<span class='system danger'><BIG>You have been un-jobbanned by [usr.client.ckey] from [msg].</BIG></span>")
 				href_list["jobban2"] = 1 // lets it fall through and refresh
 			return 1
 		return 0 //we didn't do anything!

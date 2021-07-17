@@ -789,11 +789,6 @@
 	desc = "A design more popular on Earth these days."
 	icon_state = "swim_earth"
 
-/obj/item/clothing/under/swimsuit/highclass
-	name = "high class swimsuit"
-	desc = "An elegant swimsuit with a white bikini top and black bikini bottom. Thin black silk drapes down the back and goes to the upper thighs, and authentic gold rings hold the top together at the bust and back."
-	icon_state = "swim_highclass"
-
 /obj/item/clothing/under/swimsuit/stripper/stripper_pink
 	name = "pink swimsuit"
 	desc = "A rather skimpy pink swimsuit."

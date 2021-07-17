@@ -15,7 +15,7 @@
 	ghostize()
 	QDEL_NULL(plane_holder)
 	..()
-	return QDEL_HINT_HARDDEL_NOW
+	return QDEL_HINT_HARDDEL
 
 /mob/proc/remove_screen_obj_references()
 	hands = null
@@ -965,6 +965,11 @@ mob/proc/yank_out_object()
 
 /mob/proc/updateicon()
 	return
+
+// Please always use this proc, never just set the var directly.
+/mob/proc/set_stat(var/new_stat)
+	. = (stat != new_stat)
+	stat = new_stat
 
 /mob/verb/face_direction()
 

@@ -11,7 +11,7 @@
 
 /datum/tgui_module/ship/Destroy()
 	if(LAZYLEN(viewers))
-		for(var/weakref/W in viewers)
+		for(var/datum/weakref/W in viewers)
 			var/M = W.resolve()
 			if(M)
 				unlook(M)
@@ -25,7 +25,7 @@
 		return
 	unlook(user)
 
-/datum/tgui_module/ship/tgui_close(mob/user)
+/datum/tgui_module/ship/ui_close(mob/user)
 	. = ..()
 	user.unset_machine()
 	unlook(user)
@@ -55,17 +55,17 @@
 		user.set_machine(src)
 		user.reset_view(linked)
 	user.set_viewsize(world.view + extra_view)
-	GLOB.moved_event.register(user, src, /datum/tgui_module/ship/proc/unlook)
-	LAZYDISTINCTADD(viewers, weakref(user))
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
+	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module/ship/proc/unlook(var/mob/user)
 	user.reset_view()
 	user.set_viewsize() // reset to default
-	GLOB.moved_event.unregister(user, src, /datum/tgui_module/ship/proc/unlook)
-	LAZYREMOVE(viewers, weakref(user))
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+	LAZYREMOVE(viewers, WEAKREF(user))
 
 /datum/tgui_module/ship/proc/viewing_overmap(mob/user)
-	return (weakref(user) in viewers)
+	return (WEAKREF(user) in viewers)
 
 /datum/tgui_module/ship/check_eye(var/mob/user)
 	if(!get_dist(user, ui_host()) > 1 || user.blinded || !linked)
@@ -152,13 +152,12 @@
 	var/obj/machinery/shipsensors/sensors
 
 /datum/tgui_module/ship/fullmonty/ui_state(mob/user)
-	return GLOB.tgui_admin_state
+	return GLOB.admin_state
 
 /datum/tgui_module/ship/fullmonty/New(host, obj/effect/overmap/visitable/ship/new_linked)
 	. = ..()
 	if(!istype(new_linked))
 		CRASH("Warning, [new_linked] is not an overmap ship! Something went horribly wrong for [usr]!")
-		return
 	linked = new_linked
 	name = initial(name) + " ([linked.name])"
 	// HELM
@@ -290,7 +289,7 @@
 				continue
 			if(!O.scannable)
 				continue
-			var/bearing = round(90 - ATAN2(O.x - linked.x, O.y - linked.y),5)
+			var/bearing = round(90 - arctan(O.x - linked.x, O.y - linked.y),5)
 			if(bearing < 0)
 				bearing += 360
 			contacts.Add(list(list("name"=O.name, "ref"="\ref[O]", "bearing"=bearing)))
@@ -322,8 +321,8 @@
 				if("new")
 					var/newx = input("Input new entry x coordinate", "Coordinate input", linked.x) as num
 					var/newy = input("Input new entry y coordinate", "Coordinate input", linked.y) as num
-					R.fields["x"] = CLAMP(newx, 1, world.maxx)
-					R.fields["y"] = CLAMP(newy, 1, world.maxy)
+					R.fields["x"] = clamp(newx, 1, world.maxx)
+					R.fields["y"] = clamp(newy, 1, world.maxy)
 			known_sectors[sec_name] = R
 			. = TRUE
 
@@ -338,12 +337,12 @@
 			if(params["setx"])
 				var/newx = input("Input new destiniation x coordinate", "Coordinate input", dx) as num|null
 				if(newx)
-					dx = CLAMP(newx, 1, world.maxx)
+					dx = clamp(newx, 1, world.maxx)
 
 			if(params["sety"])
 				var/newy = input("Input new destiniation y coordinate", "Coordinate input", dy) as num|null
 				if(newy)
-					dy = CLAMP(newy, 1, world.maxy)
+					dy = clamp(newy, 1, world.maxy)
 			. = TRUE
 
 		if("setds")
@@ -359,7 +358,7 @@
 		if("speedlimit")
 			var/newlimit = input("Input new speed limit for autopilot (0 to brake)", "Autopilot speed limit", speedlimit*1000) as num|null
 			if(newlimit)
-				speedlimit = CLAMP(newlimit/1000, 0, 100)
+				speedlimit = clamp(newlimit/1000, 0, 100)
 			. = TRUE
 
 		if("accellimit")
@@ -384,7 +383,6 @@
 			else
 				autopilot = !autopilot
 			. = TRUE
-
 		if("apilot_lock")
 			autopilot_disabled = !autopilot_disabled
 			autopilot = FALSE
@@ -440,7 +438,7 @@
 		if("range")
 			var/nrange = input("Set new sensors range", "Sensor range", sensors.range) as num|null
 			if(nrange)
-				sensors.set_range(CLAMP(nrange, 1, world.view))
+				sensors.set_range(clamp(nrange, 1, world.view))
 			. = TRUE
 		if("toggle_sensor")
 			sensors.toggle()

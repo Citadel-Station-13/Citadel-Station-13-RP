@@ -182,7 +182,7 @@
 /turf/simulated/floor/plating,
 /area/submap/farm1)
 "L" = (
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/farm1)
 "M" = (
 /obj/structure/loot_pile/maint/technical,

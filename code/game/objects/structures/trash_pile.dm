@@ -164,7 +164,7 @@
 					prob(3);/obj/item/pda,
 					prob(3);/obj/item/radio/headset,
 					prob(3);/obj/item/camera_assembly,
-					prob(3);/obj/item/caution/cone,
+					prob(3);/obj/item/clothing/head/cone,
 					prob(3);/obj/item/cell/high,
 					prob(3);/obj/item/spacecash/c10,
 					prob(3);/obj/item/spacecash/c20,

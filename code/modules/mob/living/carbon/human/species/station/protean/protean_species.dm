@@ -1,5 +1,6 @@
 #define DAM_SCALE_FACTOR 0.01
 #define METAL_PER_TICK 100
+
 /datum/species/protean
 	name =             SPECIES_PROTEAN
 	name_plural =      "Proteans"
@@ -345,13 +346,19 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
 
 	material_name = MAT_STEEL
+	material_use = 10	// don't use as much as blobform since it heals less
+
+/datum/modifier/protean/steel/check_if_valid()
+	if(!holder || (holder.health >= holder.maxHealth))
+		expire()
+		return
+	return ..()
 
 /datum/modifier/protean/steel/tick()
-
 	..()
-	holder.adjustBruteLoss(-3.3 ,include_robo = TRUE) //This is for non-blob regen and equals out to ~2 hp/s
-	holder.adjustFireLoss(-1.6 ,include_robo = TRUE) //Same with burns
-	holder.adjustToxLoss(-12) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
+	holder.adjustBruteLoss(-4, include_robo = TRUE) //This is for non-blob regen and equals out to ~2 hp/s
+	holder.adjustFireLoss(-3.5 * 1.3, include_robo = TRUE) //Same with burns
+	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
 
 	// I'm a bad coder, so you'll have to manually disable material augments to make the steel ticking stop. Otherwise, it'll turn off automatically when steel runs out
@@ -366,6 +373,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		else if(O.status & ORGAN_DEAD)
 			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely
 	*/ //Commented out, so the only way to regen organ damage is blobform.
+
 // PAN Card
 /obj/item/clothing/accessory/permit/nanotech
 	name = "\improper P.A.N. card"

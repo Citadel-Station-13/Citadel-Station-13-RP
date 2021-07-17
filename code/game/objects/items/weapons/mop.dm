@@ -72,7 +72,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	//Lets do a fancy animation of the mop sweeping over the tiles. Code copied from attack animation
 	var/turf/start = turfs[2]
 	var/turf/end = turfs[3]
-	var/obj/effect/effect/mopimage = new /obj/effect/effect(start)
+	var/obj/effect/mopimage = new /obj/effect/effect(start)
 	mopimage.appearance = appearance
 	mopimage.alpha = 200
 	// Who can see the attack?

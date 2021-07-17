@@ -12,7 +12,7 @@
 /turf/simulated/floor/water,
 /area/submap/Boathouse)
 "ae" = (
-/turf/simulated/floor/outdoors/water/deep,
+/turf/simulated/floor/water/deep,
 /area/submap/Boathouse)
 "af" = (
 /obj/structure/flora/tree/sif,

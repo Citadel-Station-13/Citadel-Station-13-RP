@@ -205,7 +205,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/debug_controller,
 	/client/proc/debug_antagonist_template,
 	/client/proc/cmd_debug_mob_lists,
-	/client/proc/cmd_debug_using_map,
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/cmd_debug_tog_aliens,
@@ -326,7 +325,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/startSinglo,
 	/client/proc/simple_DPS,
 	/client/proc/cmd_debug_mob_lists,
-	/client/proc/cmd_debug_using_map,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/cmd_admin_clear_mobs,
 	/client/proc/cmd_debug_tog_aliens,
@@ -1019,7 +1017,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Admin"
 	if(holder)
 		var/list/jobs = list()
-		for (var/datum/job/J in SSjobs.occupations)
+		for (var/datum/job/J in SSjob.occupations)
 			if (J.current_positions >= J.total_positions && J.total_positions != -1)
 				jobs += J.title
 		if (!jobs.len)
@@ -1027,7 +1025,7 @@ var/list/admin_verbs_event_manager = list(
 			return
 		var/job = input("Please select job slot to free", "Free job slot")  as null|anything in jobs
 		if (job)
-			SSjobs.FreeRole(job)
+			job_master.FreeRole(job)
 			message_admins("A job slot for [job] has been opened by [key_name_admin(usr)]")
 			return
 

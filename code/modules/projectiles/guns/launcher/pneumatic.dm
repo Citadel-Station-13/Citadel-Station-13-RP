@@ -8,6 +8,7 @@
 	fire_sound_text = "a loud whoosh of moving air"
 	fire_delay = 50
 	fire_sound = 'sound/weapons/grenade_launcher.ogg' // Formerly tablehit1.ogg but I like this better -Ace
+	one_handed_penalty = 10
 
 	var/fire_pressure                                   // Used in fire checks/pressure checks.
 	var/max_w_class = ITEMSIZE_NORMAL                   // Hopper intake size.

@@ -502,3 +502,191 @@
 	//no special effects, but the explosion is pretty big (same as a supermatter shard).
 	explosion(src.loc, 3, 6, 12, 16, 1)
 	qdel(src)
+
+//VORE RTG engines
+// Radioisotope Thermoelectric Generator (RTG)
+// Simple power generator that would replace "magic SMES" on various derelicts.
+/obj/machinery/power/rtg
+	name = "radioisotope thermoelectric generator"
+	desc = "A simple nuclear power generator, used in small outposts to reliably provide power for decades."
+	icon = 'icons/obj/power_vr.dmi'
+	icon_state = "rtg"
+	density = TRUE
+	use_power = USE_POWER_OFF
+	circuit = /obj/item/circuitboard/machine/rtg
+
+	// You can buckle someone to RTG, then open its panel. Fun stuff.
+	can_buckle = TRUE
+	buckle_lying = FALSE
+
+	var/power_gen = 1000 // Enough to power a single APC. 4000 output with T4 capacitor.
+	var/irradiate = TRUE // RTGs irradiate surroundings, but only when panel is open.
+
+/obj/machinery/power/rtg/Initialize()
+	. = ..()
+	if(ispath(circuit))
+		circuit = new circuit(src)
+	default_apply_parts()
+	connect_to_network()
+
+/obj/machinery/power/rtg/process()
+	..()
+	add_avail(power_gen)
+	if(panel_open && irradiate)
+		SSradiation.radiate(src, 60)
+
+/obj/machinery/power/rtg/examine(mob/user)
+	. = ..()
+	if(Adjacent(user, src) || isobserver(user))
+		. += "<span class='notice'>The status display reads: Power generation now at <b>[power_gen*0.001]</b>kW.</span>"
+
+/obj/machinery/power/rtg/attackby(obj/item/I, mob/user, params)
+	if(default_deconstruction_screwdriver(user, I))
+		return
+	else if(default_deconstruction_crowbar(user, I))
+		return
+	return ..()
+
+/obj/machinery/power/rtg/update_icon()
+	if(panel_open)
+		icon_state = "[initial(icon_state)]-open"
+	else
+		icon_state = initial(icon_state)
+
+/obj/machinery/power/rtg/advanced
+	desc = "An advanced RTG capable of moderating isotope decay, increasing power output but reducing lifetime. It uses plasma-fueled radiation collectors to increase output even further."
+	power_gen = 1250 // 2500 on T1, 10000 on T4.
+	circuit = /obj/item/circuitboard/machine/rtg/advanced
+
+/obj/machinery/power/rtg/fake_gen
+	name = "area power generator"
+	desc = "Some power generation equipment that might be powering the current area."
+	icon_state = "rtg_gen"
+	power_gen = 6000
+	circuit = /obj/item/circuitboard/machine/rtg
+	can_buckle = FALSE
+
+/obj/machinery/power/rtg/fake_gen/RefreshParts()
+	return
+/obj/machinery/power/rtg/fake_gen/attackby(obj/item/I, mob/user, params)
+	return
+/obj/machinery/power/rtg/fake_gen/update_icon()
+	return
+
+
+// Void Core, power source for Abductor ships and bases.
+// Provides a lot of power, but tends to explode when mistreated.
+/obj/machinery/power/rtg/abductor
+	name = "Void Core"
+	icon_state = "core-nocell"
+	desc = "An alien power source that produces energy seemingly out of nowhere."
+	circuit = /obj/item/circuitboard/machine/abductor/core
+	power_gen = 10000
+	irradiate = FALSE // Green energy!
+	can_buckle = FALSE
+	pixel_y = 7
+	var/going_kaboom = FALSE // Is it about to explode?
+	var/obj/item/cell/device/weapon/recharge/alien
+
+	var/icon_base = "core"
+	var/state_change = TRUE
+
+/obj/machinery/power/rtg/abductor/RefreshParts()
+	..()
+	if(!alien)
+		power_gen = 0
+
+/obj/machinery/power/rtg/abductor/proc/asplod()
+	if(going_kaboom)
+		return
+	going_kaboom = TRUE
+	visible_message("<span class='danger'>\The [src] lets out an shower of sparks as it starts to lose stability!</span>",\
+		"<span class='italics'>You hear a loud electrical crack!</span>")
+	playsound(src, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
+	tesla_zap(src, 5, power_gen * 0.05)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, get_turf(src), 2, 3, 4, 8), 100) // Not a normal explosion.
+
+/obj/machinery/power/rtg/abductor/bullet_act(obj/item/projectile/Proj)
+	. = ..()
+	if(!going_kaboom && istype(Proj) && !Proj.nodamage && ((Proj.damage_type == BURN) || (Proj.damage_type == BRUTE)))
+		log_and_message_admins("[ADMIN_LOOKUPFLW(Proj.firer)] triggered an Abductor Core explosion at [x],[y],[z] via projectile.")
+		asplod()
+
+/obj/machinery/power/rtg/abductor/attack_hand(var/mob/living/user)
+	if(!istype(user) || (. = ..()))
+		return
+
+	if(alien)
+		alien.forceMove(get_turf(src))
+		user.put_in_active_hand(alien)
+		alien = null
+		state_change = TRUE
+		RefreshParts()
+		update_icon()
+		playsound(src, 'sound/effects/metal_close.ogg', 50, 1)
+		return TRUE
+
+/obj/machinery/power/rtg/abductor/attackby(obj/item/I, mob/user, params)
+	state_change = TRUE //Can't tell if parent did something
+	if(istype(I, /obj/item/cell/device/weapon/recharge/alien) && !alien)
+		user.remove_from_mob(I)
+		I.forceMove(src)
+		alien = I
+		RefreshParts()
+		update_icon()
+		playsound(src, 'sound/effects/metal_close.ogg', 50, 1)
+		return
+	return ..()
+
+/obj/machinery/power/rtg/abductor/update_icon()
+	if(!state_change)
+		return //Stupid cells constantly update our icon so trying to be efficient
+
+	if(alien)
+		if(panel_open)
+			icon_state = "[icon_base]-open"
+		else
+			icon_state = "[icon_base]"
+	else
+		icon_state = "[icon_base]-nocell"
+
+	state_change = FALSE
+
+/obj/machinery/power/rtg/abductor/blob_act(obj/structure/blob/B)
+	asplod()
+
+/obj/machinery/power/rtg/abductor/ex_act()
+	if(going_kaboom)
+		qdel(src)
+	else
+		asplod()
+
+/obj/machinery/power/rtg/abductor/fire_act(exposed_temperature, exposed_volume)
+	asplod()
+
+/obj/machinery/power/rtg/abductor/tesla_act()
+	..() //extend the zap
+	asplod()
+
+// Comes with an installed cell
+/obj/machinery/power/rtg/abductor/built
+	icon_state = "core"
+
+/obj/machinery/power/rtg/abductor/built/Initialize()
+	. = ..()
+	alien = new(src)
+	RefreshParts()
+
+// Bloo version
+/obj/machinery/power/rtg/abductor/hybrid
+	icon_state = "coreb-nocell"
+	icon_base = "coreb"
+	circuit = /obj/item/circuitboard/machine/abductor/core/hybrid
+
+/obj/machinery/power/rtg/abductor/hybrid/built
+	icon_state = "coreb"
+
+/obj/machinery/power/rtg/abductor/hybrid/built/Initialize()
+	. = ..()
+	alien = new /obj/item/cell/device/weapon/recharge/alien(src)
+	RefreshParts()

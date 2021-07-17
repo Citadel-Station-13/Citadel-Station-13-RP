@@ -54,6 +54,7 @@
 
 /obj/item/radio/intercom/omni
 	name = "global announcer"
+
 /obj/item/radio/intercom/omni/Initialize(mapload)
 	channels = radiochannels.Copy()
 	return ..()
