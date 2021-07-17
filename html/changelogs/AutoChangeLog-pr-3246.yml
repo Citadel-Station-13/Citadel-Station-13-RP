@@ -1,0 +1,6 @@
+author: "nik707"
+delete-after: True
+changes: 
+  - rscadd: "Added a new SMES subtype for the rust
+tweak: Moved engine smes to their related submaps"
+  - balance: "rebalanced the engine SMES to standard levels"

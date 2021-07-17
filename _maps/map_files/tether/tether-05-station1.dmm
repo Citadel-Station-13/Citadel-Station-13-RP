@@ -180,13 +180,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "aas" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Engine - Core";
-	charge = 2e+006;
-	input_attempt = 1;
-	input_level = 100000;
-	output_level = 200000
-	},
 /obj/structure/cable/cyan{
 	d2 = 2;
 	icon_state = "0-2"
@@ -9568,8 +9561,7 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/comfy/beige{
-	dir = 4;
-	icon_state = "comfychair_preview"
+	dir = 4
 	},
 /obj/effect/landmark/start{
 	name = "Station Engineer"
@@ -9592,8 +9584,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/bed/chair/comfy/beige{
-	dir = 8;
-	icon_state = "comfychair_preview"
+	dir = 8
 	},
 /obj/effect/landmark/start{
 	name = "Atmospheric Technician"
@@ -10319,8 +10310,7 @@
 /area/engineering/foyer)
 "atI" = (
 /obj/structure/bed/chair/comfy/beige{
-	dir = 4;
-	icon_state = "comfychair_preview"
+	dir = 4
 	},
 /obj/effect/landmark/start{
 	name = "Station Engineer"
@@ -10329,8 +10319,7 @@
 /area/engineering/break_room)
 "atJ" = (
 /obj/structure/bed/chair/comfy/beige{
-	dir = 8;
-	icon_state = "comfychair_preview"
+	dir = 8
 	},
 /obj/effect/landmark/start{
 	name = "Atmospheric Technician"
@@ -11463,8 +11452,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/bed/chair/comfy/beige{
-	dir = 1;
-	icon_state = "comfychair_preview"
+	dir = 1
 	},
 /obj/effect/landmark/start{
 	name = "Station Engineer"
@@ -11483,8 +11471,7 @@
 /area/tether/station/visitorhallway)
 "avI" = (
 /obj/structure/bed/chair/comfy/beige{
-	dir = 1;
-	icon_state = "comfychair_preview"
+	dir = 1
 	},
 /obj/effect/landmark/start{
 	name = "Station Engineer"
@@ -15638,8 +15625,7 @@
 /area/bridge/meeting_room)
 "aDz" = (
 /obj/structure/bed/chair/comfy/blue{
-	dir = 4;
-	icon_state = "comfychair_preview"
+	dir = 4
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/meeting_room)
@@ -15676,8 +15662,7 @@
 /area/tether/station/dock_one)
 "aDI" = (
 /obj/structure/bed/chair/comfy/blue{
-	dir = 8;
-	icon_state = "comfychair_preview"
+	dir = 8
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/meeting_room)

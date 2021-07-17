@@ -1,0 +1,4 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - balance: "cyborg chargers charge synths/FBPs 2x fast (cyborgs unchanged)"

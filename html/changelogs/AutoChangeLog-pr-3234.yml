@@ -1,0 +1,4 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - balance: "R&D console is no longer hard access locked other than for the lock toggle itself and syncing."

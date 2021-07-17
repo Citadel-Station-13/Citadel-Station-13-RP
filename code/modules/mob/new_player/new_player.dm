@@ -666,7 +666,7 @@
 		new_character.dna.SetSEState(GLASSESBLOCK,1,0)
 		new_character.disabilities |= NEARSIGHTED
 	if(client.prefs.mirror == TRUE)
-		if((client.prefs.organ_data[O_BRAIN] == "mechanical") || (client.prefs.organ_data[O_BRAIN] == "digital") || (client.prefs.organ_data[O_BRAIN] == "assisted"))
+		if((client.prefs.organ_data[O_BRAIN] != null))
 			var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)
 			F.handle_implant(new_character)
 			F.post_implant(new_character)
