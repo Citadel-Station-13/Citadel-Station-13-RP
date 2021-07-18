@@ -1,0 +1,5 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - bugfix: "Singularity shouldn't break containment anymore"
+  - rscadd: "BoHs now detonate on being thrown into a singularity."
