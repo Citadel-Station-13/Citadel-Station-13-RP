@@ -1,4 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - balance: "diagonal moves now take sqrt(2) instead of x2 time to do"
