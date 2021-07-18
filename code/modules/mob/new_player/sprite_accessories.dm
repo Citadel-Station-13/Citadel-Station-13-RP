@@ -29,7 +29,7 @@
 	var/gender = NEUTER
 
 	// Restrict some styles to specific species
-	var/list/species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN)
+	var/list/species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_VATGROWN)
 
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1
@@ -137,7 +137,7 @@
 	bob
 		name = "Bob"
 		icon_state = "hair_bobcut"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_VATGROWN,SPECIES_UNATHI)
 		flags = HAIR_TIEABLE
 
 	bobcutalt
@@ -148,7 +148,7 @@
 	bobcurl
 		name = "Bobcurl"
 		icon_state = "hair_bobcurl"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_VATGROWN,SPECIES_UNATHI)
 		flags = HAIR_TIEABLE
 
 	bowl
@@ -215,7 +215,7 @@
 		name = "Buzzcut"
 		icon_state = "hair_buzzcut"
 		flags = HAIR_VERY_SHORT
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_VATGROWN,SPECIES_UNATHI)
 
 	crono
 		name = "Chrono"
@@ -462,7 +462,7 @@
 	mohawk
 		name = "Mohawk"
 		icon_state = "hair_d"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_VATGROWN,SPECIES_UNATHI)
 
 	regulationmohawk
 		name = "Mohawk Regulation"
@@ -720,7 +720,7 @@
 	spiky
 		name = "Spiky"
 		icon_state = "hair_spikey"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_VATGROWN,SPECIES_UNATHI)
 
 	thinning
 		name = "Thinning"
@@ -1146,7 +1146,7 @@
 	elvis
 		name = "Elvis Sideburns"
 		icon_state = "facial_elvis"
-		//Fuck it, everyone is Elvis. species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		//Fuck it, everyone is Elvis. species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_VATGROWN,SPECIES_UNATHI)
 
 	abe
 		name = "Abraham Lincoln Beard"
@@ -2905,12 +2905,12 @@
 	human
 		name = "Default human skin"
 		icon_state = "default"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_HUMAN_VATBORN)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_VATGROWN)
 
 	human_tatt01
 		name = "Tatt01 human skin"
 		icon_state = "tatt1"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_HUMAN_VATBORN)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_VATGROWN)
 
 	tajaran
 		name = "Default tajaran skin"

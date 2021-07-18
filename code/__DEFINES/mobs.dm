@@ -225,6 +225,11 @@
 #define O_AREJECT  "immune hub"
 #define O_VENTC    "morphoplastic node"
 #define O_VRLINK   "virtual node"
+//Protean organs
+#define O_ORCH		"orchestrator"
+#define O_FACT		"refactory"
+//Alraune organs
+#define A_FRUIT	"fruit gland"
 #define O_ALL list(O_STANDARD, O_MOUTH, O_CELL, O_PLASMA, O_HIVE, O_NUTRIENT, O_STRATA, O_RESPONSE, O_GBLADDER, O_POLYP, O_ANCHOR, O_REGBRUTE, O_REGBURN, O_REGOXY, O_REGTOX, O_ACID, O_EGG, O_RESIN, O_AREJECT, O_VENTC, O_VRLINK)
 
 // External organs, aka limbs
@@ -276,7 +281,12 @@
 
 // 'Regular' species.
 #define SPECIES_HUMAN			"Human"
-#define SPECIES_HUMAN_VATBORN	"Vatborn"
+//Pull of bay subspecies
+#define SPECIES_VATGROWN    	"Vat-Grown Human"
+#define SPECIES_SPACER      	"Space-Adapted Human"
+#define SPECIES_TRITONIAN   	"Tritonian"
+#define SPECIES_GRAVWORLDER 	"Grav-Adapted Human"
+//
 #define SPECIES_UNATHI			"Unathi"
 #define SPECIES_SKRELL			"Skrell"
 #define SPECIES_TESHARI			"Teshari"
@@ -285,13 +295,34 @@
 #define SPECIES_DIONA			"Diona"
 #define SPECIES_VOX				"Vox"
 #define SPECIES_ZADDAT			"Zaddat"
-
+//species defines
+#define SPECIES_AKULA			"Akula"
+#define SPECIES_ALRAUNE			"Alraune"
+#define SPECIES_NEVREAN			"Nevrean"
+#define SPECIES_PROTEAN			"Protean"
+#define SPECIES_RAPALA			"Rapala"
+#define SPECIES_SERGAL			"Sergal"
+#define SPECIES_SHADEKIN_CREW   "Black-Eyed Shadekin"
+#define SPECIES_VASILISSAN		"Vasilissan"
+#define SPECIES_VULPKANIN		"Vulpkanin"
+#define SPECIES_XENOCHIMERA		"Xenochimera"
+#define SPECIES_XENOHYBRID		"Xenomorph Hybrid"
+#define SPECIES_ZORREN_FLAT		"Flatland Zorren"
+#define SPECIES_ZORREN_HIGH		"Highlander Zorren"
+#define SPECIES_CUSTOM			"Custom Species"
+#define SPECIES_PLASMAMAN		"Phoronoid"
+//event species
+#define SPECIES_WEREBEAST			"Werebeast"
+#define SPECIES_SHADEKIN			"Shadekin"
 // Monkey and alien monkeys.
 #define SPECIES_MONKEY			"Monkey"
 #define SPECIES_MONKEY_TAJ		"Farwa"
 #define SPECIES_MONKEY_SKRELL	"Neaera"
 #define SPECIES_MONKEY_UNATHI	"Stok"
-
+#define SPECIES_MONKEY_AKULA		"Sobaka"
+#define SPECIES_MONKEY_NEVREAN		"Sparra"
+#define SPECIES_MONKEY_SERGAL		"Saru"
+#define SPECIES_MONKEY_VULPKANIN	"Wolpin"
 // Virtual Reality IDs.
 #define SPECIES_VR				"Virtual Reality Avatar"
 #define SPECIES_VR_HUMAN		"Virtual Reality Human"
@@ -425,34 +456,6 @@
 #define EXAMINE_SKIPLEGS			0x0080
 #define EXAMINE_SKIPFEET			0x0100
 
-//Protean organs
-#define O_ORCH		"orchestrator"
-#define O_FACT		"refactory"
 
-//Alraune organs
-#define A_FRUIT	"fruit gland"
 
-//species defines
-#define SPECIES_AKULA			"Akula"
-#define SPECIES_ALRAUNE			"Alraune"
-#define SPECIES_NEVREAN			"Nevrean"
-#define SPECIES_PROTEAN			"Protean"
-#define SPECIES_RAPALA			"Rapala"
-#define SPECIES_SERGAL			"Sergal"
-#define SPECIES_SHADEKIN_CREW   "Black-Eyed Shadekin"
-#define SPECIES_VASILISSAN		"Vasilissan"
-#define SPECIES_VULPKANIN		"Vulpkanin"
-#define SPECIES_XENOCHIMERA		"Xenochimera"
-#define SPECIES_XENOHYBRID		"Xenomorph Hybrid"
-#define SPECIES_ZORREN_FLAT		"Flatland Zorren"
-#define SPECIES_ZORREN_HIGH		"Highlander Zorren"
-#define SPECIES_CUSTOM			"Custom Species"
-#define SPECIES_PLASMAMAN		"Phoronoid"
-//monkey species
-#define SPECIES_MONKEY_AKULA		"Sobaka"
-#define SPECIES_MONKEY_NEVREAN		"Sparra"
-#define SPECIES_MONKEY_SERGAL		"Saru"
-#define SPECIES_MONKEY_VULPKANIN	"Wolpin"
-//event species
-#define SPECIES_WEREBEAST			"Werebeast"
-#define SPECIES_SHADEKIN			"Shadekin"
+
