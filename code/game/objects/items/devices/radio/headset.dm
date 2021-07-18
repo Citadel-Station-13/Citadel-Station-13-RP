@@ -141,7 +141,6 @@
 	name = "engineering bowman headset"
 	desc = "When the engineers wish to chat like girls."
 	icon_state = "eng_headset_alt"
-	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/headset_eng
 
 /obj/item/radio/headset/headset_rob
@@ -160,7 +159,6 @@
 	name = "medical bowman headset"
 	desc = "A headset for the trained staff of the medbay."
 	icon_state = "med_headset_alt"
-	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/headset_med
 
 /obj/item/radio/headset/headset_sci
@@ -311,7 +309,6 @@
 	name = "supply bowman headset"
 	desc = "A bowman headset used by the QM and his slaves."
 	icon_state = "cargo_headset_alt"
-	ear_protection = 1
 	ks2type = /obj/item/encryptionkey/headset_cargo
 
 /obj/item/radio/headset/headset_service
@@ -545,7 +542,6 @@
 	name = "pilot's bowman headset"
 	desc = "A bowman headset used by pilots, has access to supply and explorer channels."
 	icon_state = "pilot_headset_alt"
-	ear_protection = 1
 
 /obj/item/radio/headset/explorer
 	name = "explorer's headset"
@@ -558,7 +554,6 @@
 	name = "explorer's bowman headset"
 	desc = "Bowman headset used by explorers for exploring. Access to the explorer channel."
 	icon_state = "exp_headset_alt"
-	ear_protection = 1
 
 /obj/item/radio/headset/sar
 	name = "sar radio headset"
@@ -571,7 +566,6 @@
 	name = "sar radio bowman headset"
 	desc = "A bowman headset for search and rescue."
 	icon_state = "sar_headset_alt"
-	ear_protection = 1
 
 /obj/item/radio/headset/pathfinder
 	name = "pathfinder's headset"
