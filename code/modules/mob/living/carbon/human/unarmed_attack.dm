@@ -81,7 +81,7 @@ var/global/list/sparring_attack_cache = list()
 			if("l_leg", "l_foot", "r_leg", "r_foot")
 				if(!target.lying)
 					target.visible_message("<span class='warning'>[target] gives way slightly.</span>")
-					target.apply_effect(attack_damage*3, AGONY, armour)
+					target.apply_effect(attack_damage*3, PAIN, armour)
 	else if(attack_damage >= 5 && !(target == user) && (stun_chance + attack_damage * 5 >= 100) && armour < 2) // Chance to get the usual throwdown as well (25% standard chance)
 		if(!target.lying)
 			target.visible_message("<span class='danger'>[target] [pick("slumps", "falls", "drops")] down to the ground!</span>")
@@ -273,7 +273,7 @@ var/global/list/sparring_attack_cache = list()
 	attack_noun = list("tap","light strike")
 	attack_verb = list("tapped", "lightly struck")
 	damage = 3
-	damage_type = AGONY
+	damage_type = PAIN
 	shredding = 0
 	damage = 0
 	sharp = 0

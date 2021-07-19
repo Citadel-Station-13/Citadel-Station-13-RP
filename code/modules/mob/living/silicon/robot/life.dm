@@ -153,7 +153,7 @@
 /mob/living/silicon/robot/handle_regular_hud_updates()
 	var/fullbright = FALSE
 	var/seemeson = FALSE
-	if (src.stat == 2 || (XRAY in mutations) || (src.sight_mode & BORGXRAY))
+	if (src.stat == 2 || (DNA_XRAY in mutations) || (src.sight_mode & BORGXRAY))
 		src.sight |= SEE_TURFS
 		src.sight |= SEE_MOBS
 		src.sight |= SEE_OBJS

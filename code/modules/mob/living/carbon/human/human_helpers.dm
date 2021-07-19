@@ -101,7 +101,7 @@
 /mob/living/carbon/human/isSynthetic()
 	if(synthetic) return synthetic //Your synthetic-ness is not going away
 	var/obj/item/organ/external/T = organs_by_name[BP_TORSO]
-	if(T && T.robotic >= ORGAN_ROBOT)
+	if(T && T.robotic >= ORGAN_ROBOTIC)
 		src.verbs += /mob/living/carbon/human/proc/self_diagnostics
 		src.verbs += /mob/living/carbon/human/proc/setmonitor_state
 		var/datum/robolimb/R = all_robolimbs[T.model]
@@ -118,13 +118,13 @@
 
 	//Look at their head
 	if(!head || !(head && (head.flags_inv & HIDEFACE)))
-		if(H && H.robotic == ORGAN_ROBOT) //Exactly robotic, not higher as lifelike is higher
+		if(H && H.robotic == ORGAN_ROBOTIC) //Exactly robotic, not higher as lifelike is higher
 			return 1
 
 	//Look at their torso
 	if(!wear_suit || (wear_suit && !(wear_suit.flags_inv & HIDEJUMPSUIT)))
 		if(!w_uniform || (w_uniform && !(w_uniform.body_parts_covered & UPPER_TORSO)))
-			if(T && T.robotic == ORGAN_ROBOT)
+			if(T && T.robotic == ORGAN_ROBOTIC)
 				return 1
 
 	return 0

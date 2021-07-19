@@ -67,7 +67,7 @@ emp_act
 				msg_admin_attack("[key_name(src)] was disarmed by a stun effect")
 
 				drop_from_inventory(c_hand)
-				if (affected.robotic >= ORGAN_ROBOT)
+				if (affected.robotic >= ORGAN_ROBOTIC)
 					emote("me", 1, "drops what they were holding, their [affected.name] malfunctioning!")
 				else
 					var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
@@ -284,7 +284,7 @@ emp_act
 		forcesay(hit_appends)	//forcesay checks stat already
 
 	if(prob(25 + (effective_force * 2)))
-		if(!((I.damtype == BRUTE) || (I.damtype == HALLOSS)))
+		if(!((I.damtype == BRUTE) || (I.damtype == PAIN)))
 			return
 
 		if(!(I.flags & NOBLOODY))
@@ -347,7 +347,7 @@ emp_act
 
 /mob/living/carbon/human/emag_act(var/remaining_charges, mob/user, var/emag_source)
 	var/obj/item/organ/external/affecting = get_organ(user.zone_sel.selecting)
-	if(!affecting || !(affecting.robotic >= ORGAN_ROBOT))
+	if(!affecting || !(affecting.robotic >= ORGAN_ROBOTIC))
 		to_chat(user, "<span class='warning'>That limb isn't robotic.</span>")
 		return -1
 	if(affecting.sabotaged)

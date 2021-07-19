@@ -336,7 +336,7 @@
 	new /obj/item/farmbot_arm_assembly(loc, src)
 
 /obj/structure/reagent_dispensers/watertank/attackby(var/obj/item/organ/external/S, mob/user as mob)
-	if ((!istype(S, /obj/item/organ/external/arm)) || S.robotic != ORGAN_ROBOT)
+	if ((!istype(S, /obj/item/organ/external/arm)) || S.robotic != ORGAN_ROBOTIC)
 		..()
 		return
 

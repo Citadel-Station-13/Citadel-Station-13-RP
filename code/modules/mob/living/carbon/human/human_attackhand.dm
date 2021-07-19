@@ -253,10 +253,10 @@
 					real_damage += G.punch_force
 					hit_dam_type = G.punch_damtype
 					if(H.pulling_punches && !attack.sharp && !attack.edge)	//SO IT IS DECREED: PULLING PUNCHES WILL PREVENT THE ACTUAL DAMAGE FROM RINGS AND KNUCKLES, BUT NOT THE ADDED PAIN, BUT YOU CAN'T "PULL" A KNIFE
-						hit_dam_type = AGONY
+						hit_dam_type = PAIN
 			real_damage *= damage_multiplier
 			rand_damage *= damage_multiplier
-			if(HULK in H.mutations)
+			if(DNA_HULK in H.mutations)
 				real_damage *= 2 // Hulks do twice the damage
 				rand_damage *= 2
 			real_damage = max(1, real_damage)
@@ -407,7 +407,7 @@
 */
 /mob/living/carbon/human/proc/apply_pressure(mob/living/user, var/target_zone)
 	var/obj/item/organ/external/organ = get_organ(target_zone)
-	if(!organ || !(organ.status & ORGAN_BLEEDING) || (organ.robotic >= ORGAN_ROBOT))
+	if(!organ || !(organ.status & ORGAN_BLEEDING) || (organ.robotic >= ORGAN_ROBOTIC))
 		return FALSE
 
 	if(organ.applied_pressure)

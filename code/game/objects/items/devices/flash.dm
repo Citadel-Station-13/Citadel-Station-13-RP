@@ -86,7 +86,7 @@
 	return null
 
 /obj/item/flash/proc/clown_check(var/mob/user)
-	if(user && (CLUMSY in user.mutations) && prob(50))
+	if(user && (DNA_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>\The [src] slips out of your hand.</span>")
 		user.drop_item()
 		return 0

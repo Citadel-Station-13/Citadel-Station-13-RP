@@ -218,7 +218,7 @@
 	damage = 1 // stop trying to murderbone with a fake gun dumbass!!!
 	embed_chance = 0 // nope
 	nodamage = 1
-	damage_type = HALLOSS
+	damage_type = PAIN
 	muzzle_type = /obj/effect/projectile/muzzle/bullet
 
 /obj/item/projectile/bola
@@ -226,7 +226,7 @@
 	icon_state = "bola"
 	damage = 5
 	embed_chance = 0 //Nada.
-	damage_type = HALLOSS
+	damage_type = PAIN
 	muzzle_type = null
 
 	combustion = FALSE

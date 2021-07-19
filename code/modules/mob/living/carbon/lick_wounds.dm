@@ -30,7 +30,7 @@
 				to_chat(src, "<span class='warning'>You can't lick your way through [H.wear_suit]!</span>")
 				return
 
-		if(affecting.robotic == ORGAN_ROBOT)
+		if(affecting.robotic == ORGAN_ROBOTIC)
 			to_chat(src, "<span class='warning'>You don't think your spit will help a robotic limb.</span>")
 			return
 
@@ -49,7 +49,7 @@
 		if(affecting.brute_dam > 20 || affecting.burn_dam > 20)
 			to_chat(src, "<span class='warning'>The wounds on [M]'s [affecting.name] are too severe to treat with just licking.</span>")
 			return
-           
+
 		else
 			visible_message("<span class='notice'>\The [src] starts licking the wounds on [M]'s [affecting.name] clean.</span>", \
 					             "<span class='notice'>You start licking the wounds on [M]'s [affecting.name] clean.</span>" )
@@ -65,10 +65,10 @@
 
 				if(affecting.is_bandaged() && affecting.is_salved()) // We do a second check after the delay, in case it was bandaged after the first check.
 					to_chat(src, "<span class='warning'>The wounds on [M]'s [affecting.name] have already been treated.</span>")
-					return 
+					return
 
 				else
-					visible_message("<span class='notice'>\The [src] [pick("slathers \a [W.desc] on [M]'s [affecting.name] with their spit.", 
+					visible_message("<span class='notice'>\The [src] [pick("slathers \a [W.desc] on [M]'s [affecting.name] with their spit.",
 																			   "drags their tongue across \a [W.desc] on [M]'s [affecting.name].",
 																			   "drips saliva onto \a [W.desc] on [M]'s [affecting.name].",
 																			   "uses their tongue to disinfect \a [W.desc] on [M]'s [affecting.name].",

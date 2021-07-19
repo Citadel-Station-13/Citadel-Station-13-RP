@@ -15,6 +15,21 @@
 
 	var/upgrade_to	// The type path this stack can be upgraded to.
 
+/obj/item/stack/medical/proc/check_limb_state(var/mob/user, var/obj/item/organ/external/limb)
+	. = FALSE
+	if(BP_IS_CRYSTAL(limb))
+		to_chat(user, SPAN_WARNING("You cannot use \the [src] to treat a crystalline limb."))
+	else if(BP_IS_ROBOTIC(limb))
+		to_chat(user, SPAN_WARNING("You cannot use \the [src] to treat a robotic limb."))
+	else if(BP_IS_LIFELIKE(limb))
+		to_chat(user, "<span class='warning'>You apply the [src], but it seems to have no effect...</span>")
+		. = TRUE
+	else if(BP_IS_NANOFORM(limb))
+		to_chat(user, "<span class='warning'>You apply the [src], but it seems to have no effect...</span>")
+		. = TRUE
+	else
+		. = TRUE
+
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if (!istype(M))
 		to_chat(user, "<span class='warning'>\The [src] cannot be applied to [M]!</span>")
@@ -30,7 +45,7 @@
 		var/obj/item/organ/external/affecting = H.get_organ(user.zone_sel.selecting)
 
 		if(!affecting)
-			to_chat(user, "<span class='warning'>No body part there to work on!</span>")
+			to_chat(user, SPAN_WARNING("\The [M] is missing that body part!"))
 			return 1
 
 		if(affecting.organ_tag == BP_HEAD)
@@ -42,13 +57,7 @@
 				to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
 				return 1
 
-		if(affecting.robotic == ORGAN_ROBOT)
-			to_chat(user, "<span class='warning'>This isn't useful at all on a robotic limb.</span>")
-			return 1
-
-		if(affecting.robotic >= ORGAN_LIFELIKE)
-			to_chat(user, "<span class='warning'>You apply the [src], but it seems to have no effect...</span>")
-			use(1)
+		if(!check_limb_state(user, affecting))
 			return 1
 
 		H.UpdateDamageIcon()

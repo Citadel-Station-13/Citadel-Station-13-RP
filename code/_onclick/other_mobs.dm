@@ -90,7 +90,7 @@
 	else if(istype(G) && G.Touch(A,0)) // for magic gloves
 		return
 
-	else if(TK in mutations)
+	else if(DNA_TK in mutations)
 		A.attack_tk(src)
 
 	else if(spitting) //Only used by xenos right now, can be expanded.

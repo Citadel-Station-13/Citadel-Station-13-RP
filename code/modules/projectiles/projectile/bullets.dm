@@ -383,7 +383,7 @@
 
 /obj/item/projectile/bullet/pistol/cap // Just the primer, such as a cap gun.
 	name = "cap"
-	damage_type = HALLOSS
+	damage_type = PAIN
 	fire_sound = 'sound/effects/snap.ogg'
 	damage = 0
 	nodamage = 1
@@ -398,7 +398,7 @@
 
 /obj/item/projectile/bullet/blank
 	name = "blank"
-	damage_type = HALLOSS
+	damage_type = PAIN
 	fire_sound = 'sound/weapons/weaponsounds_rifleshot.ogg' // Blanks still make loud noises.
 	damage = 0
 	nodamage = 1

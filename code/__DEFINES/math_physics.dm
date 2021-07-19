@@ -8,6 +8,8 @@
 #define TCMB 2.7     // -270.3 degrees celcius
 #define TN60C 213.15 //    -60 degrees celcius
 
+#define CELSIUS + T0C
+
 // Radiation constants.
 #define STEFAN_BOLTZMANN_CONSTANT    5.6704e-8 // W/(m^2*K^4).
 #define COSMIC_RADIATION_TEMPERATURE 3.15      // K.

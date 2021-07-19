@@ -98,7 +98,7 @@
 	add_fingerprint(user)
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
-	if (HULK in user.mutations)
+	if (DNA_HULK in user.mutations)
 		if (rotting || !prob(material.hardness))
 			success_smash(user)
 		else

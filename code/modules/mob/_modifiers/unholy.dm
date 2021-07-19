@@ -91,7 +91,7 @@
 	spawn()
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
-			H.apply_effect(20, AGONY)
+			H.apply_effect(20, PAIN)
 			if(prob(10))
 				to_chat(H, "<span class='warning'>Just make it stop!</span>")
 
@@ -142,7 +142,7 @@
 
 				H.restore_blood()
 				if(!iscultist(H))
-					H.apply_effect(2, AGONY)
+					H.apply_effect(2, PAIN)
 				if(prob(10))
 					to_chat(H, "<span class='danger'>It feels as though your body is being torn apart!</span>")
 			L.updatehealth()

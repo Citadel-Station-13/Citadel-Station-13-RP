@@ -20,7 +20,7 @@
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
 /obj/item/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
-	if ((CLUMSY in user.mutations) && prob(50))
+	if ((DNA_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
 		user.Weaken(3 * force)
 		if(ishuman(user))
@@ -88,7 +88,7 @@
 
 /obj/item/melee/telebaton/attack(mob/target as mob, mob/living/user as mob)
 	if(on)
-		if ((CLUMSY in user.mutations) && prob(50))
+		if ((DNA_CLUMSY in user.mutations) && prob(50))
 			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
 			user.Weaken(3 * force)
 			if(ishuman(user))
@@ -101,7 +101,7 @@
 		var/old_attack_verb = attack_verb
 		var/old_force = force
 		if(user.a_intent != INTENT_HARM)
-			damtype = HALLOSS
+			damtype = PAIN
 			attack_verb = list("suppressed")
 			force = on_pain_force
 		. = ..()

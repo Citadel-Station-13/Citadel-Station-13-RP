@@ -94,7 +94,7 @@
 	icon_state = "omnilaser"
 	nodamage = 1
 	agony = 5
-	damage_type = HALLOSS
+	damage_type = PAIN
 	light_color = "#00CC33"
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni

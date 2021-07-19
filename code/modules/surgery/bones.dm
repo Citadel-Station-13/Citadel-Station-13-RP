@@ -24,7 +24,7 @@
 	if (!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	return affected && (affected.robotic < ORGAN_ROBOT) && affected.open >= 2 && affected.stage == 0
+	return affected && (affected.robotic < ORGAN_ROBOTIC) && affected.open >= 2 && affected.stage == 0
 
 /datum/surgery_step/glue_bone/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -63,7 +63,7 @@
 	if (!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	return affected && affected.organ_tag != BP_HEAD && !(affected.robotic >= ORGAN_ROBOT) && affected.open >= 2 && affected.stage == 1
+	return affected && affected.organ_tag != BP_HEAD && !(affected.robotic >= ORGAN_ROBOTIC) && affected.open >= 2 && affected.stage == 1
 
 /datum/surgery_step/set_bone/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -107,7 +107,7 @@
 	if (!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	return affected && affected.organ_tag == BP_HEAD && (affected.robotic < ORGAN_ROBOT) && affected.open >= 2 && affected.stage == 1
+	return affected && affected.organ_tag == BP_HEAD && (affected.robotic < ORGAN_ROBOTIC) && affected.open >= 2 && affected.stage == 1
 
 /datum/surgery_step/mend_skull/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<font color=#4F49AF>[user] is beginning to piece together [target]'s skull with \the [tool].</font>"  , \
@@ -149,7 +149,7 @@
 	if (!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	return affected && affected.open >= 2 && !(affected.robotic >= ORGAN_ROBOT) && affected.stage == 2
+	return affected && affected.open >= 2 && !(affected.robotic >= ORGAN_ROBOTIC) && affected.stage == 2
 
 /datum/surgery_step/finish_bone/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -188,7 +188,7 @@
 	if (!hasorgans(target))
 		return 0
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	return affected && (affected.robotic < ORGAN_ROBOT) && affected.open >= 2 && affected.stage == 0
+	return affected && (affected.robotic < ORGAN_ROBOTIC) && affected.open >= 2 && affected.stage == 0
 
 /datum/surgery_step/clamp_bone/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)

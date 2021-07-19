@@ -9,7 +9,7 @@
 	var/total_burn  = 0
 	var/total_brute = 0
 	for(var/obj/item/organ/external/O in organs)	//hardcoded to streamline things a bit
-		if((O.robotic >= ORGAN_ROBOT) && !O.vital)
+		if((O.robotic >= ORGAN_ROBOTIC) && !O.vital)
 			continue //*non-vital* robot limbs don't count towards shock and crit
 		total_brute += O.brute_dam
 		total_burn  += O.burn_dam
@@ -67,7 +67,7 @@
 /mob/living/carbon/human/getBruteLoss()
 	var/amount = 0
 	for(var/obj/item/organ/external/O in organs)
-		if(O.robotic >= ORGAN_ROBOT && !O.vital)
+		if(O.robotic >= ORGAN_ROBOTIC && !O.vital)
 			continue //*non-vital*robot limbs don't count towards death, or show up when scanned
 		amount += O.brute_dam
 	return amount
@@ -75,7 +75,7 @@
 /mob/living/carbon/human/getShockBruteLoss()
 	var/amount = 0
 	for(var/obj/item/organ/external/O in organs)
-		if(O.robotic >= ORGAN_ROBOT)
+		if(O.robotic >= ORGAN_ROBOTIC)
 			continue //robot limbs don't count towards shock and crit
 		amount += O.brute_dam
 	return amount
@@ -89,7 +89,7 @@
 /mob/living/carbon/human/getFireLoss()
 	var/amount = 0
 	for(var/obj/item/organ/external/O in organs)
-		if(O.robotic >= ORGAN_ROBOT && !O.vital)
+		if(O.robotic >= ORGAN_ROBOTIC && !O.vital)
 			continue //*non-vital*robot limbs don't count towards death, or show up when scanned
 		amount += O.burn_dam
 	return amount
@@ -97,7 +97,7 @@
 /mob/living/carbon/human/getShockFireLoss()
 	var/amount = 0
 	for(var/obj/item/organ/external/O in organs)
-		if(O.robotic >= ORGAN_ROBOT)
+		if(O.robotic >= ORGAN_ROBOTIC)
 			continue //robot limbs don't count towards shock and crit
 		amount += O.burn_dam
 	return amount
@@ -162,7 +162,7 @@
 				if(!isnull(M.incoming_healing_percent))
 					amount *= M.incoming_healing_percent
 			//if you don't want to heal robot organs, they you will have to check that yourself before using this proc.
-			O.heal_damage(-amount, 0, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOT))
+			O.heal_damage(-amount, 0, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOTIC))
 
 	BITSET(hud_updateflag, HEALTH_HUD)
 
@@ -184,20 +184,20 @@
 				if(!isnull(M.incoming_healing_percent))
 					amount *= M.incoming_healing_percent
 			//if you don't want to heal robot organs, they you will have to check that yourself before using this proc.
-			O.heal_damage(0, -amount, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOT))
+			O.heal_damage(0, -amount, internal=0, robo_repair=(O.robotic >= ORGAN_ROBOTIC))
 
 	BITSET(hud_updateflag, HEALTH_HUD)
 
 /mob/living/carbon/human/Stun(amount)
-	if(HULK in mutations)	return
+	if(DNA_HULK in mutations)	return
 	..()
 
 /mob/living/carbon/human/Weaken(amount)
-	if(HULK in mutations)	return
+	if(DNA_HULK in mutations)	return
 	..()
 
 /mob/living/carbon/human/Paralyse(amount)
-	if(HULK in mutations)	return
+	if(DNA_HULK in mutations)	return
 	// Notify our AI if they can now control the suit.
 	if(wearing_rig && !stat && paralysis < amount) //We are passing out right this second.
 		wearing_rig.notify_ai("<span class='danger'>Warning: user consciousness failure. Mobility control passed to integrated intelligence system.</span>")
@@ -445,7 +445,7 @@ This function restores all organs.
 
 	//Handle other types of damage
 	if((damagetype != BRUTE) && (damagetype != BURN))
-		if(damagetype == HALLOSS)
+		if(damagetype == PAIN)
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
 				if(organ && organ.organ_can_feel_pain() && !isbelly(loc) && !istype(loc, /obj/item/dogborg/sleeper)) //VOREStation Add
 					emote("scream")

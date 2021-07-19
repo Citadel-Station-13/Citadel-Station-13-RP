@@ -49,11 +49,11 @@
 				if (!(LASER in user.mutations))
 					user.mutations.Add(LASER)
 					to_chat(user, "<span class='notice'>You feel pressure building behind your eyes.</span>")
-				if (!(COLD_RESISTANCE in user.mutations))
-					user.mutations.Add(COLD_RESISTANCE)
+				if (!(DNA_COLD_RESISTANCE in user.mutations))
+					user.mutations.Add(DNA_COLD_RESISTANCE)
 					to_chat(user, "<span class='notice'>Your body feels warm.</span>")
-				if (!(XRAY in user.mutations))
-					user.mutations.Add(XRAY)
+				if (!(DNA_XRAY in user.mutations))
+					user.mutations.Add(DNA_XRAY)
 					user.sight |= (SEE_MOBS|SEE_OBJS|SEE_TURFS)
 					user.see_in_dark = 8
 					user.see_invisible = SEE_INVISIBLE_LEVEL_TWO

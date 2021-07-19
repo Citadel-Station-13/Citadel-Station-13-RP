@@ -37,10 +37,10 @@
 	if(!P)
 		to_chat(user, "<span class='warning'>There's nothing to attach [E] to!</span>")
 		return 0
-	else if((P.robotic >= ORGAN_ROBOT) && (E.robotic < ORGAN_ROBOT))
+	else if((P.robotic >= ORGAN_ROBOTIC) && (E.robotic < ORGAN_ROBOTIC))
 		to_chat(user, "<span class='warning'>Attaching [E] to [P] wouldn't work well.</span>")
 		return 0
-	else if(istype(E, /obj/item/organ/external/head) && E.robotic >= ORGAN_ROBOT && P.robotic < ORGAN_ROBOT)
+	else if(istype(E, /obj/item/organ/external/head) && E.robotic >= ORGAN_ROBOTIC && P.robotic < ORGAN_ROBOTIC)
 		to_chat(user, "<span class='warning'>Attaching [E] to [P] might break [E].</span>")
 		return 0
 	else

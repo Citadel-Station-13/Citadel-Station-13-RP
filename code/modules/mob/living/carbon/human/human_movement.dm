@@ -77,7 +77,7 @@
 
 	if(aiming && aiming.aiming_at) tally += 5 // Iron sights make you slower, it's a well-known fact.
 
-	if(FAT in src.mutations)
+	if(DNA_FAT in src.mutations)
 		tally += 1.5
 
 	if (bodytemperature < species.cold_level_1)

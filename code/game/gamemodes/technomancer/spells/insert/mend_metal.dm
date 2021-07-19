@@ -26,7 +26,7 @@
 			for(var/i = 0, i<5,i++)
 				if(H)
 					for(var/obj/item/organ/external/O in H.organs)
-						if(O.robotic < ORGAN_ROBOT) // Robot parts only.
+						if(O.robotic < ORGAN_ROBOTIC) // Robot parts only.
 							continue
 						O.heal_damage(heal_power / 5, 0, internal = 1, robo_repair = 1)
 					sleep(1 SECOND)

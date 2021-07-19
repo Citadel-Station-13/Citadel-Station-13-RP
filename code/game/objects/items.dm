@@ -577,7 +577,7 @@ var/list/global/slot_flags_enumeration = list(
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
-	//if((CLUMSY in user.mutations) && prob(50))
+	//if((DNA_CLUMSY in user.mutations) && prob(50))
 	//	M = user
 		/*
 		to_chat(M, "<span class='warning'>You stab yourself in the eye.</span>")
@@ -604,7 +604,7 @@ var/list/global/slot_flags_enumeration = list(
 		eyes.damage += rand(3,4)
 		if(eyes.damage >= eyes.min_bruised_damage)
 			if(M.stat != 2)
-				if(!(eyes.robotic >= ORGAN_ROBOT)) //robot eyes bleeding might be a bit silly
+				if(!(eyes.robotic >= ORGAN_ROBOTIC)) //robot eyes bleeding might be a bit silly
 					to_chat(M, "<span class='danger'>Your eyes start to bleed profusely!</span>")
 			if(prob(50))
 				if(M.stat != 2)

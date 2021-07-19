@@ -1013,7 +1013,7 @@
 			user.visible_message("<span class='danger'>\The [user] hits \the [src]. Nothing happens.</span>","<span class='danger'>You hit \the [src] with no visible effect.</span>")
 			src.log_append_to_last("Armor saved.")
 		return
-	else if ((HULK in user.mutations) && !prob(temp_deflect_chance))
+	else if ((DNA_HULK in user.mutations) && !prob(temp_deflect_chance))
 		src.take_damage(15)	//The take_damage() proc handles armor values
 		if(prob(25))	//Hulks punch hard but lets not give them consistent internal damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
@@ -1130,7 +1130,7 @@
 		src.log_append_to_last("Armor saved.")
 		return
 
-	if(Proj.damage_type == HALLOSS)
+	if(Proj.damage_type == PAIN)
 		use_power(Proj.agony * 5)
 
 	if(!(Proj.nodamage))

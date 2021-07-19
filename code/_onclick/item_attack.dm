@@ -109,7 +109,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		if(!isnull(M.outgoing_melee_damage_percent))
 			power *= M.outgoing_melee_damage_percent
 
-	if(HULK in user.mutations)
+	if(DNA_HULK in user.mutations)
 		power *= 2
 
 	power *= attack_modifier

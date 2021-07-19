@@ -12,7 +12,7 @@
 		return 0
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	return affected && !(affected.robotic >= ORGAN_ROBOT) && affected.encased && affected.open >= 2
+	return affected && !(affected.robotic >= ORGAN_ROBOTIC) && affected.encased && affected.open >= 2
 
 ///////////////////////////////////////////////////////////////
 // Rib Sawing Surgery

@@ -34,7 +34,7 @@
 							H.sdisabilities &= ~BLIND
 
 					for(var/obj/item/organ/external/O in H.organs) // Fix limbs
-						if(!O.robotic < ORGAN_ROBOT) // No robot parts for this.
+						if(!O.robotic < ORGAN_ROBOTIC) // No robot parts for this.
 							continue
 						O.heal_damage(0, heal_power / 5, internal = 1, robo_repair = 0)
 

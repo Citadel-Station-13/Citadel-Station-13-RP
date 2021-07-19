@@ -36,7 +36,7 @@
 		var/mob/living/carbon/human/H = holder
 		for(var/obj/item/organ/external/E in H.organs)
 			var/obj/item/organ/external/O = E
-			if(O.robotic >= ORGAN_ROBOT)
+			if(O.robotic >= ORGAN_ROBOTIC)
 				O.heal_damage(4 * spell_power, 4 * spell_power, 0, 1)
 	else
 		if(holder.isSynthetic())

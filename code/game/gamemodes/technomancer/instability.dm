@@ -189,7 +189,7 @@
 						return
 					if(2)
 						if(can_feel_pain())
-							apply_effect(instability * 0.3, AGONY)
+							apply_effect(instability * 0.3, PAIN)
 							to_chat(src, "<span class='danger'>You feel a sharp pain!</span>")
 					if(3)
 						apply_effect(instability * 0.3, EYE_BLUR)
@@ -217,7 +217,7 @@
 						return
 					if(2)
 						if(can_feel_pain())
-							apply_effect(instability * 0.7, AGONY)
+							apply_effect(instability * 0.7, PAIN)
 							to_chat(src, "<span class='danger'>You feel an extremly angonizing pain from all over your body!</span>")
 					if(3)
 						apply_effect(instability * 0.5, EYE_BLUR)
@@ -244,7 +244,7 @@
 						Paralyse(instability * 0.1)
 					if(2)
 						if(can_feel_pain())
-							apply_effect(instability, AGONY)
+							apply_effect(instability, PAIN)
 							to_chat(src, "<span class='danger'>You feel an extremly angonizing pain from all over your body!</span>")
 					if(3)
 						apply_effect(instability, EYE_BLUR)

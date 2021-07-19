@@ -4,7 +4,7 @@
     nodamage = 1
     taser_effect = 1
     agony = 100 //One shot stuns for the time being until adjustments are fully made.
-    damage_type = HALLOSS
+    damage_type = PAIN
     light_color = "#00CECE"
 
     muzzle_type = /obj/effect/projectile/muzzle/laser_omni
@@ -19,7 +19,7 @@
 	icon_state = "xray"
 	nodamage = 1
 	agony = 5
-	damage_type = HALLOSS
+	damage_type = PAIN
 	light_color = "#00CC33"
 
 	muzzle_type = /obj/effect/projectile/muzzle/xray

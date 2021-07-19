@@ -246,11 +246,11 @@
 		return
 
 	if(getFireLoss())
-		if((COLD_RESISTANCE in mutations) || (prob(1)))
+		if((DNA_COLD_RESISTANCE in mutations) || (prob(1)))
 			heal_organ_damage(0,1)
 
 	// DNA2 - Gene processing.
-	// The HULK stuff that was here is now in the hulk gene.
+	// The DNA_HULK stuff that was here is now in the hulk gene.
 	if(!isSynthetic())
 		for(var/datum/dna/gene/gene in dna_genes)
 			if(!gene.block)
@@ -552,7 +552,7 @@
 
 
 	// Hot air hurts :(
-	if((breath.temperature < species.breath_cold_level_1 || breath.temperature > species.breath_heat_level_1) && !(COLD_RESISTANCE in mutations))
+	if((breath.temperature < species.breath_cold_level_1 || breath.temperature > species.breath_heat_level_1) && !(DNA_COLD_RESISTANCE in mutations))
 
 		if(breath.temperature <= species.breath_cold_level_1)
 			if(prob(20))
@@ -762,7 +762,7 @@
 	else if(adjusted_pressure >= species.hazard_low_pressure)
 		pressure_alert = -1
 	else
-		if( !(COLD_RESISTANCE in mutations))
+		if( !(DNA_COLD_RESISTANCE in mutations))
 			if(!isSynthetic() || !nif || !nif.flag_check(NIF_O_PRESSURESEAL,NIF_FLAGS_OTHER)) //VOREStation Edit - NIF pressure seals
 				take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
 			if(getOxyLoss() < 55) 		// 12 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
@@ -865,7 +865,7 @@
 	return get_thermal_protection(thermal_protection_flags)
 
 /mob/living/carbon/human/get_cold_protection(temperature)
-	if(COLD_RESISTANCE in mutations)
+	if(DNA_COLD_RESISTANCE in mutations)
 		return 1 //Fully protected from the cold.
 
 	temperature = max(temperature, 2.7) //There is an occasional bug where the temperature is miscalculated in ares with a small amount of gas on them, so this is necessary to ensure that that bug does not affect this calculation. Space's temperature is 2.7K and most suits that are intended to protect against any cold, protect down to 2.0K.
@@ -1397,7 +1397,7 @@
 		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
 
-		if(XRAY in mutations)
+		if(DNA_XRAY in mutations)
 			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
 			see_in_dark = 8
 			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
@@ -1431,7 +1431,7 @@
 		if(glasses && !glasses_processed)
 			glasses_processed = 1
 			process_glasses(glasses)
-		if(XRAY in mutations)
+		if(DNA_XRAY in mutations)
 			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
 			see_in_dark = 8
 			if(!druggy)		see_invisible = SEE_INVISIBLE_LEVEL_TWO
@@ -1711,7 +1711,7 @@
 
 	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
 
-	if(!H || (H.robotic >= ORGAN_ROBOT))
+	if(!H || (H.robotic >= ORGAN_ROBOTIC))
 		return
 
 	if(pulse >= PULSE_2FAST || shock_stage >= 10 || (istype(get_turf(src), /turf/space) && is_preference_enabled(/datum/client_preference/play_ambiance)))

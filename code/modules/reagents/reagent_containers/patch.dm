@@ -29,14 +29,14 @@
 			if(!affecting)
 				to_chat(user, "<span class='warning'>The limb is missing!</span>")
 				return
-			if(affecting.robotic >= ORGAN_ROBOT)
+			if(affecting.robotic >= ORGAN_ROBOTIC)
 				to_chat(user, "<span class='notice'>\The [src] won't work on a robotic limb!</span>")
 				return
 
 			if(!H.can_inject(user, FALSE, L.zone_sel.selecting, pierce_material))
 				to_chat(user, "<span class='notice'>\The [src] can't be applied through such a thick material!</span>")
 				return
-			
+
 			if(affecting.open)// you cant place Bandaids on open surgeries, why chemical patches.
 				to_chat(user, "<span class='notice'>The [affecting.name] is cut open, you'll need more than a bandage!</span>")
 				return
@@ -64,7 +64,7 @@
 			to_chat(user, "<span class='warning'>The limb is missing!</span>")
 			return
 
-		if(affecting.robotic >= ORGAN_ROBOT)
+		if(affecting.robotic >= ORGAN_ROBOTIC)
 			to_chat(user, "<span class='notice'>\The [src] won't work on a robotic limb!</span>")
 			return
 

@@ -208,9 +208,9 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	var/husk_color_mod = rgb(96,88,80)
 	var/hulk_color_mod = rgb(48,224,40)
 
-	var/husk = (HUSK in src.mutations)
-	var/fat = (FAT in src.mutations)
-	var/hulk = (HULK in src.mutations)
+	var/husk = (DNA_HUSK in src.mutations)
+	var/fat = (DNA_FAT in src.mutations)
+	var/hulk = (DNA_HULK in src.mutations)
 	var/skeleton = (SKELETON in src.mutations)
 
 	robolimb_count = 0 //TODO, here, really tho?
@@ -264,10 +264,10 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			for(var/M in part.markings)
 				icon_key += "[M][part.markings[M]["color"]]"
 
-			if(part.robotic >= ORGAN_ROBOT)
+			if(part.robotic >= ORGAN_ROBOTIC)
 				icon_key += "2[part.model ? "-[part.model]": ""]"
 				robolimb_count++
-				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN)) //VOREStation Edit - Not for nanoform parts
+				if((part.robotic == ORGAN_ROBOTIC || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN)) //VOREStation Edit - Not for nanoform parts
 					robobody_count ++
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"
@@ -513,7 +513,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	//TODO: THIS PROC???
 	var/fat
-	if(FAT in mutations)
+	if(DNA_FAT in mutations)
 		fat = "fat"
 
 	var/image/standing	= image(icon = 'icons/effects/genetics.dmi', layer = BODY_LAYER+MUTATIONS_LAYER)

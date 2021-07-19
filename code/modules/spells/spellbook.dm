@@ -224,8 +224,8 @@
 						if("scrying")
 							feedback_add_details("wizard_spell_learned","SO") //please do not change the abbreviation to keep data processing consistent. Add a unique id to any new spells
 							new /obj/item/scrying(get_turf(H))
-							if (!(XRAY in H.mutations))
-								H.mutations.Add(XRAY)
+							if (!(DNA_XRAY in H.mutations))
+								H.mutations.Add(DNA_XRAY)
 								H.sight |= (SEE_MOBS|SEE_OBJS|SEE_TURFS)
 								H.see_in_dark = 8
 								H.see_invisible = SEE_INVISIBLE_LEVEL_TWO

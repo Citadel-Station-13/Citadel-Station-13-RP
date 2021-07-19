@@ -7,7 +7,7 @@
     description = "A gel meant to be applied to the skin."
     taste_description = "Sourness"
     taste_mult = 2
-    
+
     metabolism = REM / 2//The skin is not directly connected to any filter organs so reagents are removed much slower
 
     overdose = REAGENTS_OVERDOSE //Usually we want topicals to overdose just as other chems do.
@@ -30,10 +30,10 @@
         else//or half the reagent passes through into blood(rest is filtered off) and alittle bit affects the inner skin
             affect_blood(M, alien, removed/2)
             affect_touch(M, alien, removed/10)
-    
+
 /datum/reagent/topical/affect_touch(mob/living/carbon/M, alien, removed)
     M.add_chemical_effect(CE_PAINKILLER, 1)//just so there is something here...
-    
+
 /datum/reagent/topical/bicarilaze
     name = "Bicarilaze"
     id = "bicarilaze"
@@ -112,10 +112,10 @@
         if(world.time > (data + (60*10)))
             data = world.time
             to_chat(M, "<span class='warning'>You feel like all your nerves are itching.</span>")
-    
+
 /datum/reagent/topical/neurolaze/affect_blood(mob/living/carbon/M, alien, removed)
     if(alien != IS_DIONA)
-        M.apply_damage(5 * removed, HALLOSS)//holodeck boxing glove damage
+        M.apply_damage(5 * removed, PAIN)//holodeck boxing glove damage
         M.make_jittery(200)
 
 /datum/reagent/topical/neurolaze/affect_ingest(mob/living/carbon/M, alien, removed)
@@ -151,7 +151,7 @@
 /datum/reagent/topical/cleansalaze/affect_touch(mob/living/carbon/M, alien, removed)
     if(alien != IS_DIONA)
         M.radiation = max(M.radiation - 15 * removed, 0)//Half as potent as hyroaline
-    
+
 /datum/reagent/topical/lotion//Because chemistry should have some recreational uses
     name = "Lotion"
     id = "lotion"

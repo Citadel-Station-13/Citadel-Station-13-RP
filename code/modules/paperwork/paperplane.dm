@@ -64,7 +64,7 @@
 		update_icon()
 
 	else if(is_hot(P))
-		if(user.disabilities & CLUMSY && prob(10))
+		if(user.disabilities & DNA_CLUMSY && prob(10))
 			user.visible_message("<span class='warning'>[user] accidentally ignites themselves!</span>", \
 				"<span class='userdanger'>You miss the [src] and accidentally light yourself on fire!</span>")
 			user.unEquip(P)

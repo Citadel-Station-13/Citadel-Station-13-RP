@@ -64,7 +64,7 @@
 		return
 
 	if(user.a_intent == INTENT_HARM && ismob(target))
-		if((CLUMSY in user.mutations) && prob(50))
+		if((DNA_CLUMSY in user.mutations) && prob(50))
 			target = user
 		syringestab(target, user)
 		return
@@ -88,7 +88,7 @@
 					if(!T.dna)
 						to_chat(user, "<span class='warning'>You are unable to locate any blood. (To be specific, your target seems to be missing their DNA datum).</span>")
 						return
-					if(NOCLONE in T.mutations) //target done been et, no more blood in him
+					if(DNA_NOCLONE in T.mutations) //target done been et, no more blood in him
 						to_chat(user, "<span class='warning'>You are unable to locate any blood.</span>")
 						return
 
@@ -169,7 +169,7 @@
 				if(!affected)
 					to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
 					return
-				else if(affected.robotic >= ORGAN_ROBOT)
+				else if(affected.robotic >= ORGAN_ROBOTIC)
 					to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
 					return
 

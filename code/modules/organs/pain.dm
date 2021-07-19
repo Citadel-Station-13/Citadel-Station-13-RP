@@ -62,7 +62,7 @@ mob/living/carbon/human/proc/handle_pain()
 
 	// Damage to internal organs hurts a lot.
 	for(var/obj/item/organ/I in internal_organs)
-		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOT)
+		if((I.status & ORGAN_DEAD) || I.robotic >= ORGAN_ROBOTIC)
 			continue
 		if(I.damage > 2)
 			if(prob(25) && painmsg)

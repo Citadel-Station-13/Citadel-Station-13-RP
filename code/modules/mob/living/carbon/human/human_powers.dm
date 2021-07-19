@@ -332,7 +332,7 @@
 		nutrition -= 200
 
 		for(var/obj/item/organ/I in internal_organs)
-			if(I.robotic >= ORGAN_ROBOT) // No free robofix.
+			if(I.robotic >= ORGAN_ROBOTIC) // No free robofix.
 				continue
 			if(I.damage > 0)
 				I.damage = max(I.damage - 30, 0) //Repair functionally half of a dead internal organ.
@@ -345,7 +345,7 @@
 
 			if(E && E.disfigured)
 				E.disfigured = 0
-			if(E && (E.is_stump() || (E.status & (ORGAN_DESTROYED|ORGAN_DEAD|ORGAN_MUTATED))))
+			if(E && (E.is_stump() || (E.status & (ORGAN_DEAD|ORGAN_MUTATED))))
 				E.removed()
 				qdel(E)
 				E = null
@@ -357,7 +357,7 @@
 				to_chat(src, "<span class='notice'>You feel a slithering sensation as your [O.name] reform.</span>")
 
 				var/agony_to_apply = round(0.66 * O.max_damage) // 66% of the limb's health is converted into pain.
-				src.apply_damage(agony_to_apply, HALLOSS)
+				src.apply_damage(agony_to_apply, PAIN)
 
 		for(var/organtype in species.has_organ) // Replace completely missing internal organs. -After- external ones, so they all should exist.
 			if(!src.internal_organs_by_name[organtype])

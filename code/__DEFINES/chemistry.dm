@@ -30,29 +30,53 @@
 #define IS_CHIMERA 12
 #define IS_SHADEKIN 13
 #define IS_ALRAUNE 14
+#define IS_NABBER  15
+#define IS_MANTID  16
 
-#define CE_STABLE "stable" // Inaprovaline
-#define CE_ANTIBIOTIC "antibiotic" // Antibiotics
-#define CE_BLOODRESTORE "bloodrestore" // Iron/nutriment
-#define CE_PAINKILLER "painkiller"
-#define CE_ALCOHOL "alcohol" // Liver filtering
-#define CE_ALCOHOL_TOXIC "alcotoxic" // Liver damage
-#define CE_SPEEDBOOST "gofast" // Hyperzine
-#define CE_SLOWDOWN "goslow" // Slowdown
-#define CE_ANTACID "nopuke" // Don't puke.
+#define CE_STABLE        "stable"       // Inaprovaline
+#define CE_ANTIBIOTIC    "antibiotic"   // Spaceacilin
+#define CE_BLOODRESTORE  "bloodrestore" // Iron/nutriment
+#define CE_PAINKILLER    "painkiller"
+#define CE_ALCOHOL       "alcohol"      // Liver filtering
+#define CE_ALCOHOL_TOXIC "alcotoxic"    // Liver damage
+#define CE_SPEEDBOOST    "gofast"       // Hyperzine
+#define CE_SLOWDOWN      "goslow"       // Slowdown
+#define CE_PULSE         "xcardic"      // increases or decreases heart rate
+#define CE_NOPULSE       "heartstop"    // stops heartbeat
+#define CE_ANTITOX       "antitox"      // Dylovene
+#define CE_OXYGENATED    "oxygen"       // Dexalin.
+#define CE_BRAIN_REGEN   "brainfix"     // Alkysine.
+#define CE_ANTIVIRAL     "antiviral"    // Anti-virus effect.
+#define CE_TOXIN         "toxins"       // Generic toxins, stops autoheal.
+#define CE_BREATHLOSS    "breathloss"   // Breathing depression, makes you need more air
+#define CE_MIND    		 "mindbending"  // Stabilizes or wrecks mind. Used for hallucinations
+#define CE_CRYO 	     "cryogenic"    // Prevents damage from being frozen
+#define CE_BLOCKAGE	     "blockage"     // Gets in the way of blood circulation, higher the worse
+#define CE_SQUEAKY		 "squeaky"      // Helium voice. Squeak squeak.
+#define CE_THIRDEYE      "thirdeye"     // Gives xray vision.
+#define CE_SEDATE        "sedate"       // Applies sedation effects, i.e. paralysis, inability to use items, etc.
+#define CE_ENERGETIC     "energetic"    // Speeds up stamina recovery.
+#define	CE_VOICELOSS     "whispers"     // Lowers the subject's voice to a whisper
+#define CE_STIMULANT     "stimulants"   // Makes it harder to disarm someone
 
-#define REAGENTS_PER_SHEET 20
+// Chemistry lists.
+//Todo, implement into baymed properly.
+var/list/tachycardics  = list("coffee", "inaprovaline", "hyperzine", "nitroglycerin", "thirteenloko", "nicotine") // Increase heart rate.
+var/list/bradycardics  = list("neurotoxin", "cryoxadone", "clonexadone", "space_drugs", "stoxin")                 // Decrease heart rate.
+var/list/heartstopper  = list("potassium_chlorophoride", "zombie_powder") // This stops the heart.
+var/list/cheartstopper = list("potassium_chloride")                       // This stops the heart when overdose is met. -- c = conditional
 
+//Old Cit, no equilvalent on bay found.
+//#define CE_ANTACID 			"nopuke" 		// Don't puke.
+
+//#define REAGENTS_PER_SHEET 20
+
+/*
 // Attached to CE_ANTIBIOTIC
 #define ANTIBIO_NORM	1
 #define ANTIBIO_OD		2
 #define ANTIBIO_SUPER	3
 
-// Chemistry lists.
-var/list/tachycardics  = list("coffee", "inaprovaline", "hyperzine", "nitroglycerin", "thirteenloko", "nicotine") // Increase heart rate.
-var/list/bradycardics  = list("neurotoxin", "cryoxadone", "clonexadone", "space_drugs", "stoxin")                 // Decrease heart rate.
-var/list/heartstopper  = list("potassium_chlorophoride", "zombie_powder") // This stops the heart.
-var/list/cheartstopper = list("potassium_chloride")                       // This stops the heart when overdose is met. -- c = conditional
 
 #define MAX_PILL_SPRITE 24 //max icon state of the pill sprites
 #define MAX_BOTTLE_SPRITE 4 //max icon state of the pill sprites
@@ -61,3 +85,9 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define MAX_UNITS_PER_PATCH 60 // Max amount of units in a patch
 #define MAX_UNITS_PER_BOTTLE 60 // Max amount of units in a bottle (it's volume)
 #define MAX_CUSTOM_NAME_LEN 64 // Max length of a custom pill/condiment/whatever
+*/
+#define IGNORE_MOB_SIZE 0x1
+#define AFFECTS_DEAD    0x2
+
+#define HANDLE_REACTIONS(_reagents)  SSchemistry.active_holders[_reagents] = TRUE
+#define UNQUEUE_REACTIONS(_reagents) SSchemistry.active_holders -= _reagents

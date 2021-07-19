@@ -30,7 +30,7 @@
 				to_chat(src, "<span class='warning'>You can't lick your way through [H.wear_suit]!</span>")
 				return
 
-		if(affecting.robotic == ORGAN_ROBOT)
+		if(affecting.robotic == ORGAN_ROBOTIC)
 			to_chat(src, "<span class='warning'>You don't think your spit will help a robotic limb.</span>")
 			return
 

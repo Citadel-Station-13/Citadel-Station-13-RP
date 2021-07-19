@@ -24,7 +24,7 @@
 
 	organ_tag = O_AUG_EYES
 
-	robotic = ORGAN_ROBOT
+	robotic = ORGAN_ROBOTIC
 
 	parent_organ = BP_HEAD
 

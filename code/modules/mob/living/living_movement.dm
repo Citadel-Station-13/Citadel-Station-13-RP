@@ -170,8 +170,8 @@
 		// Handle grabbing, stomping, and such of micros!
 		if(handle_micro_bump_other(tmob)) return
 		// VOREStation Edit - End
-		if(istype(tmob, /mob/living/carbon/human) && (FAT in tmob.mutations))
-			if(prob(40) && !(FAT in src.mutations))
+		if(istype(tmob, /mob/living/carbon/human) && (DNA_FAT in tmob.mutations))
+			if(prob(40) && !(DNA_FAT in src.mutations))
 				to_chat(src, "<span class='danger'>You fail to push [tmob]'s fat ass out of the way.</span>")
 				now_pushing = 0
 				return

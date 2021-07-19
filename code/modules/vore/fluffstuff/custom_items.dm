@@ -286,7 +286,7 @@
 	force = 10
 	throwforce = 3
 	w_class = ITEMSIZE_NORMAL
-	damtype = HALLOSS
+	damtype = PAIN
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
 
 //General use
@@ -1957,7 +1957,7 @@
 
 /obj/item/melee/fluffstuff/attack_self(mob/living/user as mob)
 	if (active)
-		if ((CLUMSY in user.mutations) && prob(50))
+		if ((DNA_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts \himself with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
 			user.take_organ_damage(5,5)
@@ -1998,7 +1998,7 @@
 	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', slot_back_str = 'icons/vore/custom_items_vr.dmi', slot_wear_suit_str = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
 	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
-	damtype = HALLOSS
+	damtype = PAIN
 
 /obj/item/melee/fluffstuff/wolfgirlsword/dropped(var/mob/user)
 	..()

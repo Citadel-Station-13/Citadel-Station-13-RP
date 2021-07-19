@@ -13,7 +13,7 @@ var/global/list/limb_icon_cache = list()
 	s_tone = null
 	s_col = null
 	h_col = null
-	if(robotic >= ORGAN_ROBOT)
+	if(robotic >= ORGAN_ROBOTIC)
 		var/datum/robolimb/franchise = all_robolimbs[model]
 		if(!(franchise && franchise.skin_tone) && !(franchise && franchise.skin_color))
 			if(human.synth_color)
@@ -31,7 +31,7 @@ var/global/list/limb_icon_cache = list()
 	s_tone = null
 	s_col = null
 	h_col = null
-	if(robotic >= ORGAN_ROBOT)
+	if(robotic >= ORGAN_ROBOTIC)
 		var/datum/robolimb/franchise = all_robolimbs[model]
 		if(!(franchise && franchise.skin_tone) && !(franchise && franchise.skin_color))
 			return
@@ -148,7 +148,7 @@ var/global/list/limb_icon_cache = list()
 
 			if(skeletal)
 				mob_icon = new /icon('icons/mob/human_races/r_skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
-			else if (robotic >= ORGAN_ROBOT)
+			else if (robotic >= ORGAN_ROBOTIC)
 				mob_icon = new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][gender ? "_[gender]" : ""]")
 				apply_colouration(mob_icon)
 			else
@@ -263,7 +263,7 @@ var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F
 		if(!icon_cache_key || !limb_icon_cache[cache_key])
 			limb_icon_cache[cache_key] = icon(get_icon(), null, SOUTH)
 		var/image/temp = image(limb_icon_cache[cache_key])
-		if((robotic < ORGAN_ROBOT) && species)
+		if((robotic < ORGAN_ROBOTIC) && species)
 			// Calculate the required colour matrix.
 			var/r = 0.30 * species.health_hud_intensity
 			var/g = 0.59 * species.health_hud_intensity
@@ -285,6 +285,6 @@ var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F
 	if(!isnull(min_dam_state) && dam_state < min_dam_state)
 		dam_state = min_dam_state
 	// Apply colour and return product.
-	var/list/hud_colours = (robotic < ORGAN_ROBOT) ? flesh_hud_colours : robot_hud_colours
+	var/list/hud_colours = (robotic < ORGAN_ROBOTIC) ? flesh_hud_colours : robot_hud_colours
 	hud_damage_image.color = hud_colours[max(1,min(CEILING(dam_state*hud_colours.len, 1),hud_colours.len))]
 	return hud_damage_image

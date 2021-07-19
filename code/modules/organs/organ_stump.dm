@@ -14,7 +14,7 @@
 	..(mapload, internal)
 	if(istype(limb))
 		max_damage = limb.max_damage
-		if((limb.robotic >= ORGAN_ROBOT) && (!parent || (parent.robotic >= ORGAN_ROBOT)))
+		if((limb.robotic >= ORGAN_ROBOTIC) && (!parent || (parent.robotic >= ORGAN_ROBOTIC)))
 			robotize() //if both limb and the parent are robotic, the stump is robotic too
 
 /obj/item/organ/external/stump/is_stump()

@@ -284,7 +284,7 @@
 		if(H.health + H.getOxyLoss() + H.getToxLoss() <= config_legacy.health_threshold_dead)
 			return "buzzes, \"Resuscitation failed - Severe damage detected. Begin manual repair before further attempts futile.\""
 
-	else if(H.health + H.getOxyLoss() <= config_legacy.health_threshold_dead || (HUSK in H.mutations) || !H.can_defib)
+	else if(H.health + H.getOxyLoss() <= config_legacy.health_threshold_dead || (DNA_HUSK in H.mutations) || !H.can_defib)
 		return "buzzes, \"Resuscitation failed - Severe tissue damage makes recovery of patient impossible via defibrillator. Further attempts futile.\""
 
 	var/bad_vital_organ = check_vital_organs(H)

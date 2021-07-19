@@ -497,7 +497,7 @@ End Citadel Change */
 	if(dose < 5 && (dose == metabolism || prob(5)))
 		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(dose >= 5)
-		M.apply_effect(2, AGONY, 0)
+		M.apply_effect(2, PAIN, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
@@ -610,31 +610,31 @@ End Citadel Change */
 		if(!head_covered)
 			if(prob(33))
 				to_chat(M, "<span class='warning'>The exposed flesh on your head burns!</span>")
-			M.apply_effect(5 * effective_strength, AGONY, 0)
+			M.apply_effect(5 * effective_strength, PAIN, 0)
 		if(!chest_covered)
 			if(prob(33))
 				to_chat(M, "<span class='warning'>The exposed flesh on your chest burns!</span>")
-			M.apply_effect(5 * effective_strength, AGONY, 0)
+			M.apply_effect(5 * effective_strength, PAIN, 0)
 		if(!groin_covered && prob(75))
 			if(prob(33))
 				to_chat(M, "<span class='warning'>The exposed flesh on your groin burns!</span>")
-			M.apply_effect(3 * effective_strength, AGONY, 0)
+			M.apply_effect(3 * effective_strength, PAIN, 0)
 		if(!arms_covered && prob(45))
 			if(prob(33))
 				to_chat(M, "<span class='warning'>The exposed flesh on your arms burns!</span>")
-			M.apply_effect(3 * effective_strength, AGONY, 0)
+			M.apply_effect(3 * effective_strength, PAIN, 0)
 		if(!legs_covered && prob(45))
 			if(prob(33))
 				to_chat(M, "<span class='warning'>The exposed flesh on your legs burns!</span>")
-			M.apply_effect(3 * effective_strength, AGONY, 0)
+			M.apply_effect(3 * effective_strength, PAIN, 0)
 		if(!hands_covered && prob(20))
 			if(prob(33))
 				to_chat(M, "<span class='warning'>The exposed flesh on your hands burns!</span>")
-			M.apply_effect(effective_strength / 2, AGONY, 0)
+			M.apply_effect(effective_strength / 2, PAIN, 0)
 		if(!feet_covered && prob(20))
 			if(prob(33))
 				to_chat(M, "<span class='warning'>The exposed flesh on your feet burns!</span>")
-			M.apply_effect(effective_strength / 2, AGONY, 0)
+			M.apply_effect(effective_strength / 2, PAIN, 0)
 
 /datum/reagent/condensedcapsaicin/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(ishuman(M))
@@ -644,7 +644,7 @@ End Citadel Change */
 	if(dose == metabolism)
 		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
 	else
-		M.apply_effect(4, AGONY, 0)
+		M.apply_effect(4, PAIN, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
@@ -1315,7 +1315,7 @@ End Citadel Change */
 
 	glass_name = "Brown Star"
 	glass_desc = "It's not what it sounds like..."
-	
+
 /datum/reagent/drink/soda/orangeale
 	name = "Orange Ale"
 	id = "orangeale"

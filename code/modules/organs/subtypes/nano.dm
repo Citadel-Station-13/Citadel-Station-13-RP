@@ -78,7 +78,7 @@
 
 // // // Internal Organs
 /obj/item/organ/internal/nano
-	robotic = ORGAN_ROBOT
+	robotic = ORGAN_ROBOTIC
 
 /obj/item/organ/internal/nano/orchestrator
 	name = "orchestrator module"

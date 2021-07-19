@@ -42,7 +42,7 @@
 	return
 
 /obj/machinery/optable/attack_hand(mob/user as mob)
-	if(HULK in usr.mutations)
+	if(DNA_HULK in usr.mutations)
 		visible_message("<span class='danger'>\The [usr] destroys \the [src]!</span>")
 		density = 0
 		qdel(src)

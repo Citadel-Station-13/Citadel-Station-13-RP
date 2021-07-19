@@ -259,10 +259,10 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 				//Walking on INTENT_DISARM
 				else
-					//Perform some HALLOSS damage to the smaller.
+					//Perform some PAIN damage to the smaller.
 					var/size_damage_multiplier = (src.size_multiplier - tmob.size_multiplier)
 					var/damage = (rand(15,30)* size_damage_multiplier) //Since stunned is broken, let's do this. Rand 15-30 multiplied by 1 min or 1.75 max. 15 holo to 52.5 holo, depending on RNG and size differnece.
-					tmob.apply_damage(damage, HALLOSS)
+					tmob.apply_damage(damage, PAIN)
 					tmob.resting = 1
 
 					//Log it for admins (as opposed to run which logs no damage)

@@ -23,7 +23,7 @@
 		if(BRUTE)
 			adjustBruteLoss(damage * blocked)
 		if(BURN)
-			if(COLD_RESISTANCE in mutations)
+			if(DNA_COLD_RESISTANCE in mutations)
 				damage = 0
 			adjustFireLoss(damage * blocked)
 		if(SEARING)
@@ -35,7 +35,7 @@
 			adjustOxyLoss(damage * blocked)
 		if(CLONE)
 			adjustCloneLoss(damage * blocked)
-		if(HALLOSS)
+		if(PAIN)
 			adjustHalLoss(damage * blocked)
 		if(ELECTROCUTE)
 			electrocute_act(damage, used_weapon, 1.0, def_zone)
@@ -57,7 +57,7 @@
 	if(tox)		apply_damage(tox, TOX, def_zone, blocked)
 	if(oxy)		apply_damage(oxy, OXY, def_zone, blocked)
 	if(clone)	apply_damage(clone, CLONE, def_zone, blocked)
-	if(halloss) apply_damage(halloss, HALLOSS, def_zone, blocked)
+	if(halloss) apply_damage(halloss, PAIN, def_zone, blocked)
 	return 1
 
 
@@ -76,7 +76,7 @@
 			Weaken(effect * blocked)
 		if(PARALYZE)
 			Paralyse(effect * blocked)
-		if(AGONY)
+		if(PAIN)
 			halloss += max((effect * blocked), 0) // Useful for objects that cause "subdual" damage. PAIN!
 		if(IRRADIATE)
 		/*
@@ -107,7 +107,7 @@
 	if(stutter)		apply_effect(stutter, STUTTER, blocked)
 	if(eyeblur)		apply_effect(eyeblur, EYE_BLUR, blocked)
 	if(drowsy)		apply_effect(drowsy, DROWSY, blocked)
-	if(agony)		apply_effect(agony, AGONY, blocked)
+	if(agony)		apply_effect(agony, PAIN, blocked)
 	if(flammable)	adjust_fire_stacks(flammable)
 	if(ignite)		IgniteMob()
 	return 1

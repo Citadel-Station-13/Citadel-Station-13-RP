@@ -171,7 +171,7 @@
 		E = H.get_organ(user.zone_sel.selecting)
 		if(!E || E.species.flags & NO_PAIN)
 			nopain = 2
-		else if(E.robotic >= ORGAN_ROBOT)
+		else if(E.robotic >= ORGAN_ROBOTIC)
 			nopain = 1
 
 	user.visible_message("<span class='danger'>\The [user] shoves \the [victim][E ? "'s [E.name]" : ""] into \the [src]!</span>")
@@ -180,7 +180,7 @@
 
 			if(E.children && E.children.len)
 				for(var/obj/item/organ/external/child in E.children)
-					if(nopain && nopain < 2 && !(child.robotic >= ORGAN_ROBOT))
+					if(nopain && nopain < 2 && !(child.robotic >= ORGAN_ROBOTIC))
 						nopain = 0
 					child.take_damage(0, damage)
 					damage -= (damage*0.5)//IF someone's arm is plunged in, the hand should take most of it

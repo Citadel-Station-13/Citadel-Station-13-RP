@@ -20,7 +20,7 @@
 	do_scan(M, user)
 
 /obj/item/robotanalyzer/proc/do_scan(mob/living/M as mob, mob/living/user as mob)
-	if((CLUMSY in user.mutations) && prob(50))
+	if((DNA_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<font color='red'>You try to analyze the floor's vitals!</font>")
 		for(var/mob/O in viewers(M, null))
 			O.show_message(text("<font color='red'>[user] has analyzed the floor's vitals!</font>"), 1)
@@ -78,7 +78,7 @@
 			var/organ_found
 			if(H.internal_organs.len)
 				for(var/obj/item/organ/external/E in H.organs)
-					if(!(E.robotic >= ORGAN_ROBOT))
+					if(!(E.robotic >= ORGAN_ROBOTIC))
 						continue
 					organ_found = 1
 					to_chat(user, "[E.name]: <font color='red'>[E.brute_dam]</font> <font color='#FFA500'>[E.burn_dam]</font>")
@@ -89,7 +89,7 @@
 			organ_found = null
 			if(H.internal_organs.len)
 				for(var/obj/item/organ/O in H.internal_organs)
-					if(!(O.robotic >= ORGAN_ROBOT))
+					if(!(O.robotic >= ORGAN_ROBOTIC))
 						continue
 					organ_found = 1
 					to_chat(user, "[O.name]: <font color='red'>[O.damage]</font>")

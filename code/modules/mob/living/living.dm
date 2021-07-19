@@ -118,7 +118,7 @@ default behaviour is:
 		//to_chat(world, "DEBUG: burn_skin(), mutations=[mutations]")
 		if(mShock in src.mutations) //shockproof
 			return 0
-		if (COLD_RESISTANCE in src.mutations) //fireproof
+		if (DNA_COLD_RESISTANCE in src.mutations) //fireproof
 			return 0
 		var/mob/living/carbon/human/H = src	//make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
 		var/divided_damage = (burn_amount)/(H.organs.len)
@@ -853,13 +853,13 @@ default behaviour is:
 			else
 				to_chat(src, "<span class='warning'>You feel nauseous...</span>")
 
-				if(ishuman(src))
+				/*if(ishuman(src))
 					var/mob/living/carbon/human/Hu = src
 					if(CE_ANTACID in Hu.chem_effects)
 						if(prob(min(90, Hu.chem_effects[CE_ANTACID] * 15)))
 							spawn(rand(30 SECONDS, 2 MINUTES))
 								lastpuke = FALSE
-							return
+							return*/
 
 				spawn()
 					if(!skip_wait)

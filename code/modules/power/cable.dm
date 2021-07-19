@@ -556,7 +556,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		var/mob/living/carbon/human/H = A
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
-		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
+		if(!S || S.robotic < ORGAN_ROBOTIC || S.open == 3)
 			return ..()
 
 		var/use_amt = min(src.amount, CEILING(S.burn_dam/5, 1), 5)

@@ -120,7 +120,7 @@
 
 	//I did have special snowflake code, but this is easier.
 	revive()
-	mutations.Remove(HUSK)
+	mutations.Remove(DNA_HUSK)
 	nutrition = old_nutrition
 	setBrainLoss(braindamage)
 
@@ -475,7 +475,7 @@
 				C.nutrition = (C.nutrition + T.nutrition)
 				T.nutrition = 0 //Completely drained of everything.
 				var/damage_to_be_applied = T.species.total_health //Get their max health.
-				T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
+				T.apply_damage(damage_to_be_applied, PAIN) //Knock em out.
 				C.absorbing_prey = 0
 				to_chat(C, "<span class='notice'>You have completely drained [T], causing them to pass out.</span>")
 				to_chat(T, "<span class='danger'>You feel weak, as if you have no control over your body whatsoever as [C] finishes draining you.!</span>")
@@ -545,7 +545,7 @@
 					nutrition = (nutrition + T.nutrition)
 					T.nutrition = 0 //Completely drained of everything.
 					var/damage_to_be_applied = T.species.total_health //Get their max health.
-					T.apply_damage(damage_to_be_applied, HALLOSS) //Knock em out.
+					T.apply_damage(damage_to_be_applied, PAIN) //Knock em out.
 					absorbing_prey = 0 //Clean this up before we return
 					return
 				to_chat(src, "<span class='notice'>You begin to drain [T] completely...</span>")

@@ -41,7 +41,7 @@
 	* mob/UnarmedAttack(atom,adjacent) - used here only when adjacent, with no item in hand; in the case of humans, checks gloves
 	* atom/attackby(item,user) - used only when adjacent
 	* item/afterattack(atom,user,adjacent,params) - used both ranged and adjacent
-	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
+	* mob/RangedAttack(atom,params) - used only ranged, only used for DNA_TK and laser eyes but could be changed
 */
 /mob/proc/ClickOn(var/atom/A, var/params)
 	if(world.time < next_click) // Hard check, before anything else, to avoid crashing
@@ -215,7 +215,7 @@
 	if(!mutations.len) return
 	if((LASER in mutations) && a_intent == INTENT_HARM)
 		LaserEyes(A) // moved into a proc below
-	else if(TK in mutations)
+	else if(DNA_TK in mutations)
 		if(get_dist(src, A) > tk_maxrange)
 			return
 		A.attack_tk(src)

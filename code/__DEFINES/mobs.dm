@@ -246,6 +246,17 @@
 #define BP_GROIN  "groin"
 #define BP_ALL list(BP_GROIN, BP_TORSO, BP_HEAD, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG)
 
+// Prosthetic helpers.
+#define BP_IS_ROBOTIC(org)  ((org) && ((org).status & ORGAN_ROBOTIC))
+#define BP_IS_LIFELIKE(org) ((org) && ((org).status & ORGAN_LIFELIKE))
+#define BP_IS_NANOFORM(org) ((org) && ((org).status & ORGAN_NANOFORM))
+#define BP_IS_ASSISTED(org) ((org) && ((org).status & ORGAN_ASSISTED))
+#define BP_IS_BRITTLE(org)  ((org) && ((org).status & ORGAN_BRITTLE))
+#define BP_IS_CRYSTAL(org)  ((org) && ((org).status & ORGAN_CRYSTAL))
+
+// Limb flag helpers
+#define BP_IS_DEFORMED(org) ((org) && ((org).limb_flags & ORGAN_FLAG_DEFORMED))
+
 #define SYNTH_BLOOD_COLOUR "#030303"
 #define SYNTH_FLESH_COLOUR "#575757"
 

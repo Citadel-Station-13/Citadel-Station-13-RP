@@ -102,7 +102,7 @@ var/list/organ_cache = list()
 			blood_DNA[dna.unique_enzymes] = dna.b_type
 
 /obj/item/organ/proc/die()
-	if(robotic < ORGAN_ROBOT)
+	if(robotic < ORGAN_ROBOTIC)
 		status |= ORGAN_DEAD
 	damage = max_damage
 	STOP_PROCESSING(SSobj, src)
@@ -134,7 +134,7 @@ var/list/organ_cache = list()
 	handle_organ_proc_special()
 
 	//Process infections
-	if(robotic >= ORGAN_ROBOT || (owner && owner.species && (owner.species.flags & IS_PLANT || (owner.species.flags & NO_INFECT))))
+	if(robotic >= ORGAN_ROBOTIC || (owner && owner.species && (owner.species.flags & IS_PLANT || (owner.species.flags & NO_INFECT))))
 		germ_level = 0
 		return
 
@@ -166,7 +166,7 @@ var/list/organ_cache = list()
 //A little wonky: internal organs stop calling this (they return early in process) when dead, but external ones cause further damage when dead
 /obj/item/organ/proc/handle_germ_effects()
 	//** Handle the effects of infections
-	if(robotic >= ORGAN_ROBOT) //Just in case!
+	if(robotic >= ORGAN_ROBOTIC) //Just in case!
 		germ_level = 0
 		return 0
 
@@ -297,7 +297,7 @@ var/list/organ_cache = list()
 
 //Note: external organs have their own version of this proc
 /obj/item/organ/take_damage(amount, var/silent=0)
-	if(src.robotic >= ORGAN_ROBOT)
+	if(src.robotic >= ORGAN_ROBOTIC)
 		src.damage = between(0, src.damage + (amount * 0.8), max_damage)
 	else
 		src.damage = between(0, src.damage + amount, max_damage)
@@ -312,7 +312,7 @@ var/list/organ_cache = list()
 	damage = max(damage, min_bruised_damage)
 
 /obj/item/organ/proc/robotize() //Being used to make robutt hearts, etc
-	robotic = ORGAN_ROBOT
+	robotic = ORGAN_ROBOTIC
 	src.status &= ~ORGAN_BROKEN
 	src.status &= ~ORGAN_BLEEDING
 	src.status &= ~ORGAN_CUT_AWAY
@@ -396,7 +396,7 @@ var/list/organ_cache = list()
 
 /obj/item/organ/proc/bitten(mob/user)
 
-	if(robotic >= ORGAN_ROBOT)
+	if(robotic >= ORGAN_ROBOTIC)
 		return
 
 	to_chat(user, "<span class='notice'>You take an experimental bite out of \the [src].</span>")
@@ -422,7 +422,7 @@ var/list/organ_cache = list()
 /obj/item/organ/attack_self(mob/user as mob)
 
 	// Convert it to an edible form, yum yum.
-	if(!(robotic >= ORGAN_ROBOT) && user.a_intent == INTENT_HELP && user.zone_sel.selecting == O_MOUTH)
+	if(!(robotic >= ORGAN_ROBOTIC) && user.a_intent == INTENT_HELP && user.zone_sel.selecting == O_MOUTH)
 		bitten(user)
 		return
 
@@ -475,7 +475,7 @@ var/list/organ_cache = list()
 				if(O.robotic <= ORGAN_ASSISTED && robotic <= ORGAN_LIFELIKE)	// Parent is organic or assisted, we are at most synthetic.
 					return TRUE
 
-				if(O.robotic >= ORGAN_ROBOT && robotic >= ORGAN_ASSISTED)		// Parent is synthetic, and we are biosynthetic at least.
+				if(O.robotic >= ORGAN_ROBOTIC && robotic >= ORGAN_ASSISTED)		// Parent is synthetic, and we are biosynthetic at least.
 					return TRUE
 
 			if(!target_parent_classes || !target_parent_classes.len)	// Default checks, if we're not looking for a Specific type.
@@ -483,7 +483,7 @@ var/list/organ_cache = list()
 				if(O.robotic == robotic)	// Same thing, we're fine.
 					return TRUE
 
-				if(O.robotic < ORGAN_ROBOT && robotic < ORGAN_ROBOT)
+				if(O.robotic < ORGAN_ROBOTIC && robotic < ORGAN_ROBOTIC)
 					return TRUE
 
 				if(O.robotic > ORGAN_ASSISTED && robotic > ORGAN_ASSISTED)

@@ -492,7 +492,7 @@ var/global/list/light_type_cache = list()
 					continue
 				M.show_message("[user.name] smashed the light!", 3, "You hear a tinkle of breaking glass", 2)
 			if(on && !(W.flags & NOCONDUCT))
-				//if(!user.mutations & COLD_RESISTANCE)
+				//if(!user.mutations & DNA_COLD_RESISTANCE)
 				if (prob(12))
 					electrocute_mob(user, get_area(src), src, 0.3)
 			broken()
@@ -515,7 +515,7 @@ var/global/list/light_type_cache = list()
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
-			//if(!user.mutations & COLD_RESISTANCE)
+			//if(!user.mutations & DNA_COLD_RESISTANCE)
 			if (prob(75))
 				electrocute_mob(user, get_area(src), src, rand(0.7,1.0))
 
@@ -611,9 +611,9 @@ var/global/list/light_type_cache = list()
 		else
 			prot = 1
 
-		if(prot > 0 || (COLD_RESISTANCE in user.mutations))
+		if(prot > 0 || (DNA_COLD_RESISTANCE in user.mutations))
 			to_chat(user, "You remove the light [get_fitting_name()]")
-		else if(TK in user.mutations)
+		else if(DNA_TK in user.mutations)
 			to_chat(user, "You telekinetically remove the light [get_fitting_name()].")
 		else
 			to_chat(user, "You try to remove the light [get_fitting_name()], but it's too hot and you don't want to burn your hand.")

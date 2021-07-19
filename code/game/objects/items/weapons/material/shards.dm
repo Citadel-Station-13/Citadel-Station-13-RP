@@ -136,7 +136,7 @@
 				var/picked = pick(check)
 				var/obj/item/organ/external/affecting = H.get_organ(picked)
 				if(affecting)
-					if(affecting.robotic >= ORGAN_ROBOT)
+					if(affecting.robotic >= ORGAN_ROBOTIC)
 						return
 					if(affecting.take_damage(force, 0))
 						H.UpdateDamageIcon()

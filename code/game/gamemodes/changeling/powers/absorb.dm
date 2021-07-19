@@ -28,7 +28,7 @@
 		to_chat(src, "<span class='warning'>We do not know how to parse this creature's DNA!</span>")
 		return
 
-	if(HUSK in T.mutations) //Lings can always absorb other lings, unless someone beat them to it first.
+	if(DNA_HUSK in T.mutations) //Lings can always absorb other lings, unless someone beat them to it first.
 		if(!T.mind.changeling || T.mind.changeling && T.mind.changeling.geneticpoints < 0)
 			to_chat(src, "<span class='warning'>This creature's DNA is ruined beyond useability!</span>")
 			return

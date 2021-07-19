@@ -44,7 +44,7 @@ HALOGEN COUNTER	- Radcount on mobs
 
 /obj/item/healthanalyzer/proc/scan_mob(mob/living/M, mob/living/user)
 	var/dat = ""
-	if ((CLUMSY in user.mutations) && prob(50))
+	if ((DNA_CLUMSY in user.mutations) && prob(50))
 		user.visible_message("<span class='warning'>\The [user] has analyzed the floor's vitals!</span>", "<span class='warning'>You try to analyze the floor's vitals!</span>")
 		dat += "Analyzing Results for the floor:<br>"
 		dat += "Overall Status: Healthy<br>"
@@ -98,7 +98,7 @@ HALOGEN COUNTER	- Radcount on mobs
 		dat += 	"<span class='notice'>Localized Damage, Brute/Burn:</span><br>"
 		if(length(damaged)>0)
 			for(var/obj/item/organ/external/org in damaged)
-				if(org.robotic >= ORGAN_ROBOT)
+				if(org.robotic >= ORGAN_ROBOTIC)
 					continue
 				else
 					dat += "<span class='notice'>     [capitalize(org.name)]: [(org.brute_dam > 0) ? "<span class='warning'>[org.brute_dam]</span>" : 0]"

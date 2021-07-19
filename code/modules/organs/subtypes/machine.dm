@@ -93,7 +93,7 @@
 /obj/item/organ/internal/mmi_holder/posibrain
 	name = "positronic brain interface"
 	brain_type = /obj/item/mmi/digital/posibrain
-	robotic = ORGAN_ROBOT
+	robotic = ORGAN_ROBOTIC
 
 /obj/item/organ/internal/mmi_holder/posibrain/update_from_mmi()
 	..()
@@ -105,7 +105,7 @@
 /obj/item/organ/internal/mmi_holder/robot
 	name = "digital brain interface"
 	brain_type = /obj/item/mmi/digital/robot
-	robotic = ORGAN_ROBOT
+	robotic = ORGAN_ROBOTIC
 
 /obj/item/organ/internal/mmi_holder/robot/update_from_mmi()
 	..()

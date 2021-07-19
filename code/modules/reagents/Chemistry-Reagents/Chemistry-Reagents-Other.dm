@@ -294,19 +294,33 @@
 
 /datum/reagent/adrenaline
 	name = "Adrenaline"
-	id = "adrenaline"
 	description = "Adrenaline is a hormone used as a drug to treat cardiac arrest and other cardiac dysrhythmias resulting in diminished or absent cardiac output."
-	taste_description = "bitterness"
+	taste_description = "rush"
 	reagent_state = REAGENT_LIQUID
-	color = "#C8A5DC"
-	mrate_static = TRUE
+	color = "#c8a5dc"
+	scannable = 1
+	overdose = 20
+	metabolism = 0.1
+	value = 2
 
-/datum/reagent/adrenaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/adrenaline/affect_blood(var/mob/living/carbon/human/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	M.SetParalysis(0)
-	M.SetWeakened(0)
-	M.adjustToxLoss(rand(3))
+
+	if(M.chem_doses[type] < 0.2)	//not that effective after initial rush
+		M.add_chemical_effect(CE_PAINKILLER, min(30*volume, 80))
+		M.add_chemical_effect(CE_PULSE, 1)
+	else if(M.chem_doses[type] < 1)
+		M.add_chemical_effect(CE_PAINKILLER, min(10*volume, 20))
+	M.add_chemical_effect(CE_PULSE, 2)
+	M.add_chemical_effect(CE_STIMULANT, 2)
+	if(M.chem_doses[type] > 10)
+		M.make_jittery(5)
+	if(volume >= 5 && M.is_asystole())
+		remove_self(5)
+		if(M.resuscitate())
+			var/obj/item/organ/internal/heart = M.internal_organs_by_name[BP_HEART]
+			heart.take_internal_damage(heart.max_damage * 0.075)
 
 /datum/reagent/water/holywater
 	name = "Holy Water"

@@ -213,7 +213,7 @@
 	nodamage = 1
 	taser_effect = 1
 	agony = 40
-	damage_type = HALLOSS
+	damage_type = PAIN
 	light_color = "#FFFFFF"
 
 	combustion = FALSE
@@ -240,7 +240,7 @@
 	nodamage = 1
 	taser_effect = 1
 	agony = 30
-	damage_type = HALLOSS
+	damage_type = PAIN
 	light_color = "#FFFFFF"
 
 	combustion = FALSE

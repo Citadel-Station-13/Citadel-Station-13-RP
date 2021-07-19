@@ -108,7 +108,7 @@
 
 /obj/effect/alien/resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (HULK in usr.mutations)
+	if (DNA_HULK in usr.mutations)
 		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
 		for(var/mob/O in oviewers(src))
 			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)

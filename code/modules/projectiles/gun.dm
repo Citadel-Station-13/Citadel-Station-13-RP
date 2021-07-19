@@ -201,10 +201,10 @@
 						sleep(1)
 						qdel(src)
 					return 0
-	if(HULK in M.mutations)
+	if(DNA_HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
-	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
+	if((DNA_CLUMSY in M.mutations) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
 		if(P)
 			if(process_projectile(P, user, user, pick("l_foot", "r_foot")))
@@ -670,13 +670,13 @@
 			return
 
 		in_chamber.on_hit(M)
-		if(in_chamber.damage_type != HALLOSS && !in_chamber.nodamage)
+		if(in_chamber.damage_type != PAIN && !in_chamber.nodamage)
 			log_and_message_admins("[key_name(user)] commited suicide using \a [src]")
 			user.apply_damage(in_chamber.damage*2.5, in_chamber.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [in_chamber]", sharp=1)
 			user.death()
-		else if(in_chamber.damage_type == HALLOSS)
+		else if(in_chamber.damage_type == PAIN)
 			to_chat(user, "<span class = 'notice'>Ow...</span>")
-			user.apply_effect(110,AGONY,0)
+			user.apply_effect(110,PAIN,0)
 		qdel(in_chamber)
 		mouthshoot = 0
 		return

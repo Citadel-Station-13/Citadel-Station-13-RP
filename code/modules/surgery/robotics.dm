@@ -18,7 +18,7 @@
 		return 0
 	if (affected.status & ORGAN_DESTROYED)
 		return 0
-	if (!(affected.robotic == ORGAN_ROBOT || affected.robotic == ORGAN_LIFELIKE)) //VOREStation Edit - No good on ORGAN_NANOFORM
+	if (!(affected.robotic == ORGAN_ROBOTIC || affected.robotic == ORGAN_LIFELIKE)) //VOREStation Edit - No good on ORGAN_NANOFORM
 		return 0
 	return 1
 
@@ -247,7 +247,7 @@
 	if(!affected) return
 	var/is_organ_damaged = 0
 	for(var/obj/item/organ/I in affected.internal_organs)
-		if(I.damage > 0 && (I.robotic >= ORGAN_ROBOT))
+		if(I.damage > 0 && (I.robotic >= ORGAN_ROBOTIC))
 			is_organ_damaged = 1
 			break
 	return affected.open == 3 && is_organ_damaged
@@ -259,7 +259,7 @@
 
 	for(var/obj/item/organ/I in affected.internal_organs)
 		if(I && I.damage > 0)
-			if(I.robotic >= ORGAN_ROBOT)
+			if(I.robotic >= ORGAN_ROBOTIC)
 				user.visible_message("[user] starts mending the damage to [target]'s [I.name]'s mechanisms.", \
 				"You start mending the damage to [target]'s [I.name]'s mechanisms." )
 
@@ -273,7 +273,7 @@
 
 	for(var/obj/item/organ/I in affected.internal_organs)
 		if(I && I.damage > 0)
-			if(I.robotic >= ORGAN_ROBOT)
+			if(I.robotic >= ORGAN_ROBOTIC)
 				user.visible_message("<span class='notice'>[user] repairs [target]'s [I.name] with [tool].</span>", \
 				"<span class='notice'>You repair [target]'s [I.name] with [tool].</span>" )
 				I.damage = 0
@@ -310,7 +310,7 @@
 
 /datum/surgery_step/robotics/detatch_organ_robotic/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	if(!(affected && (affected.robotic >= ORGAN_ROBOT)))
+	if(!(affected && (affected.robotic >= ORGAN_ROBOTIC)))
 		return 0
 	if(affected.open < 3)
 		return 0
@@ -363,7 +363,7 @@
 
 /datum/surgery_step/robotics/attach_organ_robotic/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	if(!(affected && (affected.robotic >= ORGAN_ROBOT)))
+	if(!(affected && (affected.robotic >= ORGAN_ROBOTIC)))
 		return 0
 	if(affected.open < 3)
 		return 0
@@ -373,7 +373,7 @@
 	var/list/removable_organs = list()
 	for(var/organ in target.internal_organs_by_name)
 		var/obj/item/organ/I = target.internal_organs_by_name[organ]
-		if(I && (I.status & ORGAN_CUT_AWAY) && (I.robotic >= ORGAN_ROBOT) && I.parent_organ == target_zone)
+		if(I && (I.status & ORGAN_CUT_AWAY) && (I.robotic >= ORGAN_ROBOTIC) && I.parent_organ == target_zone)
 			removable_organs |= organ
 
 	var/organ_to_replace = input(user, "Which organ do you want to reattach?") as null|anything in removable_organs
@@ -430,7 +430,7 @@
 		return SURGERY_FAILURE
 	*/
 
-	if(!(affected.robotic >= ORGAN_ROBOT))
+	if(!(affected.robotic >= ORGAN_ROBOTIC))
 		to_chat(user, "<span class='danger'>You cannot install a computer brain into a meat skull.</span>")
 		return SURGERY_FAILURE
 
@@ -514,7 +514,7 @@
 		to_chat(user, "<span class='danger'>That nymph is not viable.</span>")
 		return SURGERY_FAILURE
 
-	if(!(affected.robotic >= ORGAN_ROBOT))
+	if(!(affected.robotic >= ORGAN_ROBOTIC))
 		to_chat(user, "<span class='danger'>You cannot install a nymph into a meat puppet.</span>")
 		return SURGERY_FAILURE
 

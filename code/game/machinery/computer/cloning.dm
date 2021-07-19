@@ -310,7 +310,7 @@
 	if (subject.suiciding)
 		scantemp = "Error: Subject's brain is not responding to scanning stimuli."
 		return
-	if (NOCLONE in subject.mutations)
+	if (DNA_NOCLONE in subject.mutations)
 		scantemp = "Error: Mental interface failure."
 		return
 	if (subject.species && subject.species.flags & NO_SCAN && !brain_skip)

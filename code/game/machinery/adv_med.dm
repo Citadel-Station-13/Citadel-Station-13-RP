@@ -362,11 +362,9 @@
 				organData["implants_len"] = implantData.len
 
 				var/organStatus[0]
-				if(E.status & ORGAN_DESTROYED)
-					organStatus["destroyed"] = 1
 				if(E.status & ORGAN_BROKEN)
 					organStatus["broken"] = E.broken_description
-				if(E.robotic >= ORGAN_ROBOT)
+				if(E.robotic >= ORGAN_ROBOTIC)
 					organStatus["robotic"] = 1
 				if(E.splinted)
 					organStatus["splinted"] = 1
@@ -394,7 +392,7 @@
 				organData["name"] = I.name
 				if(I.status & ORGAN_ASSISTED)
 					organData["desc"] = "Assisted"
-				else if(I.robotic >= ORGAN_ROBOT)
+				else if(I.robotic >= ORGAN_ROBOTIC)
 					organData["desc"] = "Mechanical"
 				else
 					organData["desc"] = null
@@ -547,7 +545,7 @@
 					bled = "Bleeding:"
 				if(e.status & ORGAN_BROKEN)
 					AN = "[e.broken_description]:"
-				if(e.robotic >= ORGAN_ROBOT)
+				if(e.robotic >= ORGAN_ROBOTIC)
 					robot = "Prosthetic:"
 				if(e.status & ORGAN_DEAD)
 					o_dead = "Necrotic:"
@@ -580,17 +578,14 @@
 					imp += "Unknown body present:"
 				if(!AN && !open && !infected && !imp)
 					AN = "None:"
-				if(!(e.status & ORGAN_DESTROYED))
-					dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured][o_dead]</td>"
-				else
-					dat += "<td>[e.name]</td><td>-</td><td>-</td><td>Not Found</td>"
+				dat += "<td>[e.name]</td><td>-</td><td>-</td><td>Not Found</td>"
 				dat += "</tr>"
 			for(var/obj/item/organ/i in occupant.internal_organs)
 				var/mech = ""
 				var/i_dead = ""
 				if(i.status & ORGAN_ASSISTED)
 					mech = "Assisted:"
-				if(i.robotic >= ORGAN_ROBOT)
+				if(i.robotic >= ORGAN_ROBOTIC)
 					mech = "Mechanical:"
 				if(i.status & ORGAN_DEAD)
 					i_dead = "Necrotic:"

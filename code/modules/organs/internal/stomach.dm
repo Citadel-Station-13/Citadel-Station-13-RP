@@ -40,7 +40,7 @@
 	if (. >= 1)
 		if(prob(1))
 			owner.custom_pain("There's a twisting pain in your abdomen!",1)
-			owner.apply_effect(2, AGONY, 0)
+			owner.apply_effect(2, PAIN, 0)
 	if (. >= 2)
 		if(prob(1) && owner.getToxLoss() < owner.getMaxHealth()*0.2)
 			owner.adjustToxLoss(3)

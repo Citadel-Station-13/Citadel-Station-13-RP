@@ -69,7 +69,7 @@
 	effective_force = O.force
 
 	//Animals can't be stunned(?)
-	if(O.damtype == HALLOSS)
+	if(O.damtype == PAIN)
 		effective_force = 0
 	if(supernatural && istype(O,/obj/item/nullrod))
 		effective_force *= 2

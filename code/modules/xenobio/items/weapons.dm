@@ -25,7 +25,7 @@
 			var/mob/living/carbon/human/H = L
 			if(H.species && H.species.name == SPECIES_PROMETHEAN)
 				var/agony_to_apply = 60 - agonyforce
-				H.apply_damage(agony_to_apply, HALLOSS)
+				H.apply_damage(agony_to_apply, PAIN)
 
 	..()
 

@@ -44,7 +44,7 @@
 				agony = 20
 			if(INTENT_GRAB)
 				check_armour = "melee"
-				damage_type = HALLOSS
+				damage_type = PAIN
 			if(INTENT_DISARM)
 				check_armour = "melee"
 				if(prob(30))	// A chance for a successful hit to either knock someone down, or cause minor disorientation.
@@ -54,7 +54,7 @@
 					eyeblur = 3
 			if(INTENT_HELP)
 				silenced = 1
-				damage_type = HALLOSS
+				damage_type = PAIN
 
 	..() // Does the regular launching stuff.
 

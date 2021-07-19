@@ -320,7 +320,7 @@
 //Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name()
 	var/obj/item/organ/external/head = get_organ(BP_HEAD)
-	if(!head || head.disfigured || head.is_stump() || !real_name || (HUSK in mutations) )	//disfigured. use id-name if possible
+	if(!head || head.disfigured || head.is_stump() || !real_name || (DNA_HUSK in mutations) )	//disfigured. use id-name if possible
 		return "Unknown"
 	return real_name
 
@@ -1087,7 +1087,7 @@
 		to_chat(src, "<span class='danger'>The edges of [O] in your [organ.name] are not doing you any favors.</span>")
 		Weaken(2) // having a very jagged stick jammed into your bits is Bad for your health
 	organ.take_damage(rand(1,3), 0, 0)
-	if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
+	if(!(organ.robotic >= ORGAN_ROBOTIC) && (should_have_organ(O_HEART))) //There is no blood in protheses.
 		organ.status |= ORGAN_BLEEDING
 
 /mob/living/carbon/human/verb/check_pulse()
@@ -1320,7 +1320,7 @@
 	if(!affecting)
 		. = 0
 		fail_msg = "They are missing that limb."
-	else if (affecting.robotic == ORGAN_ROBOT)
+	else if (affecting.robotic == ORGAN_ROBOTIC)
 		. = 0
 		fail_msg = "That limb is robotic."
 	else if (affecting.robotic >= ORGAN_LIFELIKE)
@@ -1536,7 +1536,7 @@
 	else if(organ_check in list(O_LIVER, O_KIDNEYS))
 		affecting = organs_by_name[BP_GROIN]
 
-	if(affecting && (affecting.robotic >= ORGAN_ROBOT))
+	if(affecting && (affecting.robotic >= ORGAN_ROBOTIC))
 		return 0
 	return (species && species.has_organ[organ_check])
 

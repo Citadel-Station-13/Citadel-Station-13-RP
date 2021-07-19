@@ -3,16 +3,16 @@
 #define   UNIDNASIZE 13
 
 // Generic mutations:
-#define TK              1
-#define COLD_RESISTANCE 2
-#define XRAY            3
-#define HULK            4
-#define CLUMSY          5
-#define FAT             6
-#define HUSK            7
-#define NOCLONE         8
-#define LASER           9  // Harm intent - click anywhere to shoot lasers from eyes.
-#define HEAL            10 // Healing people with hands.
+#define DNA_TK              1
+#define DNA_COLD_RESISTANCE 2
+#define DNA_XRAY            3
+#define DNA_HULK            4
+#define DNA_CLUMSY          5
+#define DNA_FAT             6
+#define DNA_HUSK            7
+#define DNA_NOCLONE         8
+#define DNA_LASER           9  // Harm intent - click anywhere to shoot lasers from eyes.
+#define DNA_HEAL            10 // Healing people with hands.
 
 #define SKELETON      29
 #define PLANT         30

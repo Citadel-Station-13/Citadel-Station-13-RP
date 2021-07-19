@@ -477,7 +477,7 @@
 	if(prob(50))
 		M.adjustToxLoss(0.5 * removed)
 	if(prob(50))
-		M.apply_effect(4, AGONY, 0)
+		M.apply_effect(4, PAIN, 0)
 		if(prob(20))
 			to_chat(M,"<span class='danger'>You feel like your insides are burning!</span>")
 		else if(prob(20))
@@ -498,7 +498,7 @@
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_SLIME)
-		M.apply_effect(5, AGONY, 0)
+		M.apply_effect(5, PAIN, 0)
 		M.adjustToxLoss(3 * removed)
 		if(prob(10))
 			to_chat(M, "<span class='warning'>Your cellular mass hardens for a moment.</span>")
@@ -952,10 +952,32 @@
 /datum/reagent/nicotine
 	name = "Nicotine"
 	id = "nicotine"
-	description = "A highly addictive stimulant extracted from the tobacco plant."
-	taste_description = "bitterness"
+	description = "A sickly yellow liquid sourced from tobacco leaves. Stimulates and relaxes the mind and body."
+	taste_description = "peppery bitterness"
 	reagent_state = REAGENT_LIQUID
-	color = "#181818"
+	color = "#efebaa"
+	metabolism = REM * 0.002
+	overdose = 6
+	scannable = 1
+	data = 0
+	value = 2
+
+/datum/reagent/nicotine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_DIONA)
+		return
+	if(prob(volume*20))
+		M.add_chemical_effect(CE_PULSE, 1)
+	if(volume <= 0.02 && M.chem_doses[type] >= 0.05 && world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY * 0.3)
+		data = world.time
+		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
+	else
+		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY * 0.3)
+			data = world.time
+			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
+
+/datum/reagent/nicotine/overdose(var/mob/living/carbon/M, var/alien)
+	..()
+	M.add_chemical_effect(CE_PULSE, 2)
 
 /datum/reagent/talum_quem
 	name = "Talum-quem"

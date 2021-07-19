@@ -365,12 +365,9 @@
 		if(temp)
 			if((temp.organ_tag in hidden) && hidden[temp.organ_tag])
 				continue //Organ is hidden, don't talk about it
-			if(temp.status & ORGAN_DESTROYED)
-				wound_flavor_text["[temp.name]"] = "<span class='warning'><b>[T.He] [T.is] missing [T.his] [temp.name].</b></span>"
-				continue
 			var/built = ""
 
-			if(!looks_synth && temp.robotic == ORGAN_ROBOT)
+			if(!looks_synth && temp.robotic == ORGAN_ROBOTIC)
 				if(!(temp.brute_dam + temp.burn_dam))
 					built = "[T.He] [T.has] a [temp.name]."
 				else
@@ -399,6 +396,8 @@
 				applying_pressure = "<span class='info'>[T.He] is applying pressure to [T.his] [temp.name].</span>"
 			if(length(built))
 				wound_flavor_text["[temp.name]"] = built
+		else
+			wound_flavor_text["[temp.name]"] = "<span class='warning'><b>[T.He] [T.is] missing [T.his] [temp.name].</b></span>"
 
 	for(var/limb in wound_flavor_text)
 		. += wound_flavor_text[limb]

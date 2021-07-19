@@ -39,13 +39,13 @@ var/const/tk_maxrange = 15
 
 /obj/item/attack_tk(mob/user)
 	if(user.stat || !isturf(loc)) return
-	if((TK in user.mutations) && !user.get_active_hand()) // both should already be true to get here
+	if((DNA_TK in user.mutations) && !user.get_active_hand()) // both should already be true to get here
 		var/obj/item/tk_grab/O = new(src)
 		user.put_in_active_hand(O)
 		O.host = user
 		O.focus_object(src)
 	else
-		warning("Strange attack_tk(): TK([TK in user.mutations]) empty hand([!user.get_active_hand()])")
+		warning("Strange attack_tk(): DNA_TK([DNA_TK in user.mutations]) empty hand([!user.get_active_hand()])")
 	return
 
 
@@ -53,12 +53,12 @@ var/const/tk_maxrange = 15
 	return // needs more thinking about
 
 /*
-	TK Grab Item (the workhorse of old TK)
+	DNA_TK Grab Item (the workhorse of old DNA_TK)
 
-	* If you have not grabbed something, do a normal tk attack
+	* If you have not grabbed something, do a normal DNA_TK attack
 	* If you have something, throw it at the target.  If it is already adjacent, do a normal attackby()
 	* If you click what you are holding, or attack_self(), do an attack_self_tk() on it.
-	* Deletes itself if it is ever not in your hand, or if you should have no access to TK.
+	* Deletes itself if it is ever not in your hand, or if you should have no access to DNA_TK.
 */
 /obj/item/tk_grab
 	name = "Telekinetic Grab"
@@ -76,12 +76,12 @@ var/const/tk_maxrange = 15
 
 /obj/item/tk_grab/dropped(mob/user as mob)
 	. = ..()
-	if(focus && user && loc != user && loc != user.loc) // drop_item() gets called when you tk-attack a table/closet with an item
+	if(focus && user && loc != user && loc != user.loc) // drop_item() gets called when you DNA_TK-attack a table/closet with an item
 		if(focus.Adjacent(loc))
 			focus.forceMove(loc)
 	qdel(src)
 
-//stops TK grabs being equipped anywhere but into hands
+//stops DNA_TK grabs being equipped anywhere but into hands
 /obj/item/tk_grab/equipped(var/mob/user, var/slot)
 	..()
 	if( (slot == slot_l_hand) || (slot== slot_r_hand) )	return
@@ -98,7 +98,7 @@ var/const/tk_maxrange = 15
 	if(!host || host != user)
 		qdel(src)
 		return
-	if(!(TK in host.mutations))
+	if(!(DNA_TK in host.mutations))
 		qdel(src)
 		return
 	if(isobj(target) && !isturf(target.loc))
