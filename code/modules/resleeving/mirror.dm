@@ -31,8 +31,9 @@
 
 /obj/item/implant/mirror/post_implant(var/mob/living/carbon/human/H)
 	spawn(20)
-	if((H.client.prefs.organ_data[O_BRAIN] == "mechanical") || (H.client.prefs.organ_data[O_BRAIN] == "digital") || (H.client.prefs.organ_data[O_BRAIN] == "assisted"))
+	if((H.client.prefs.organ_data[O_BRAIN] != null))
 		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
+		H.mirror = src
 		return
 	else
 		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
@@ -67,11 +68,13 @@
 
 /obj/item/implant/mirror/positronic/post_implant(var/mob/living/carbon/human/H)
 	spawn(20)
-	if((H.client.prefs.organ_data[O_BRAIN] == "mechanical") || (H.client.prefs.organ_data[O_BRAIN] == "digital") || (H.client.prefs.organ_data[O_BRAIN] == "assisted"))
+	if((H.client.prefs.organ_data[O_BRAIN] != null))
 		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
 		icon_state = "mirror_implant"
+		H.mirror = src
 	else
 		to_chat(usr, "<span class='warning'>WARNING: WRONG MIRROR TYPE DETECTED, PLEASE RECTIFY IMMEDIATELY TO AVOID REAL DEATH.</span>")
+		H.mirror = src
 		return
 
 /obj/item/mirrorscanner
@@ -122,6 +125,9 @@
 
 	else if (target_zone == BP_TORSO && imp != null)
 		if (imp)
+			if(!M.client)
+				to_chat(usr, "Manual mirror transplant into mindless body not supported, please use the resleeving console.")
+				return
 			if(M.mirror)
 				to_chat(usr, "This person already has a mirror!")
 				return
