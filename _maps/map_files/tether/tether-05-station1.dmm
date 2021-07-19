@@ -5235,6 +5235,9 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "ajP" = (
@@ -5484,6 +5487,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/pathfinder_office)
@@ -19602,6 +19608,7 @@
 	pixel_y = -29
 	},
 /obj/machinery/mineral/equipment_vendor/survey,
+/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
 "bGo" = (
@@ -21575,6 +21582,24 @@
 /area/security/hallway{
 	name = "\improper Security Customs"
 	})
+"eWJ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/exploration/hallway)
 "eYw" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -21657,6 +21682,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
@@ -22004,6 +22032,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "fLQ" = (
@@ -22304,6 +22335,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
+"gkQ" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/exploration/staircase)
 "gml" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 6
@@ -22624,6 +22661,31 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
+"hon" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/exploration/hallway)
 "hqw" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -23202,6 +23264,10 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/meeting_room)
+"iUL" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/tether/exploration/hallway)
 "iVA" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
@@ -24417,6 +24483,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/security/hallway{
 	name = "\improper Security Customs"
@@ -24525,6 +24592,15 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7,
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/tether/exploration/hallway)
+"ncA" = (
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
@@ -24673,6 +24749,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
+"nED" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/tether/exploration/staircase)
 "nGi" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -24765,6 +24847,9 @@
 /obj/structure/bed/chair/office/dark,
 /obj/effect/landmark/start{
 	name = "Field Medic"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
@@ -42074,8 +42159,8 @@ ajA
 ajP
 ifk
 aaf
-ybm
-ybm
+ncA
+iUL
 ubB
 ubB
 alk
@@ -42354,7 +42439,7 @@ aat
 aac
 aec
 udA
-ajx
+nED
 ajX
 aCo
 alC
@@ -42366,7 +42451,7 @@ alq
 ksO
 yiZ
 yiZ
-yiZ
+hon
 yiZ
 uUH
 byj
@@ -42638,13 +42723,13 @@ aac
 aac
 aec
 udA
-ajx
+gkQ
 kzB
 xHU
 hBN
 hPe
 hPe
-hPe
+eWJ
 ajb
 ajc
 aiz

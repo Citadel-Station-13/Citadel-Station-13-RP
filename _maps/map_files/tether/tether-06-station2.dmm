@@ -17908,24 +17908,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
-"aVG" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 10
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/station/port)
 "aVH" = (
 /obj/structure/table/steel,
 /obj/item/radio{
@@ -18605,16 +18587,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway)
-"aXf" = (
-/obj/effect/floor_decal/corner/lightgrey{
-	dir = 5
-	},
-/obj/effect/floor_decal/corner/lightgrey{
-	dir = 10
-	},
-/obj/structure/flora/pottedplant/orientaltree,
-/turf/simulated/floor/tiled,
-/area/hallway/station/port)
 "aXg" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -19889,6 +19861,17 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
+"bxa" = (
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 5
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "bKu" = (
 /obj/structure/disposaloutlet{
 	dir = 8
@@ -19898,6 +19881,29 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
+"bOC" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
+"cdk" = (
+/obj/structure/flora/pottedplant/orientaltree,
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "cme" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -19955,6 +19961,24 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
+"fHg" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "ghE" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/handrail{
@@ -19970,6 +19994,19 @@
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
+"hyt" = (
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 10
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "hBd" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "shuttle_outbound"
@@ -20019,6 +20056,19 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
+"jMR" = (
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 10
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "kah" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/industrial/danger/corner,
@@ -20099,6 +20149,16 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
+"mVX" = (
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey{
+	dir = 10
+	},
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
 "nWa" = (
 /obj/machinery/light{
 	dir = 1
@@ -20189,6 +20249,29 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
+"qMH" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/station/port)
+"qRd" = (
+/obj/structure/table/fancyblack,
+/obj/item/deck/tarot,
+/turf/simulated/floor/carpet/bcarpet,
+/area/chapel/main)
 "sWv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -29261,8 +29344,8 @@ aKI
 aKI
 aKI
 aTr
-aac
-aac
+aTr
+aTr
 awb
 aBp
 aBp
@@ -29396,14 +29479,14 @@ arW
 aoG
 afM
 aXF
-aTr
-aTr
-aXf
+cdk
+bxa
 aSm
+hyt
+mVX
 aSm
-aXf
-aTr
-aTr
+bxa
+cdk
 aTr
 awb
 aUE
@@ -29541,7 +29624,7 @@ aTX
 aIA
 aIA
 aIA
-aIA
+fHg
 aIA
 aIA
 aIA
@@ -29683,7 +29766,7 @@ aDO
 aZq
 aZq
 aZq
-aZq
+bOC
 aZq
 aZq
 aZq
@@ -29822,14 +29905,14 @@ arW
 aQt
 auz
 aNI
-aVG
+aNQ
+aNQ
+aNQ
+qMH
 aNQ
 aNQ
 aNQ
 aNQ
-aNQ
-aNQ
-aVG
 aWd
 aOJ
 aIq
@@ -29841,7 +29924,7 @@ aAh
 aYT
 aAh
 aYT
-aAm
+qRd
 aBc
 aBu
 aBF
@@ -29964,14 +30047,14 @@ arW
 aOQ
 aTp
 aXF
-aTr
-aTr
-aXf
+cdk
+bxa
 aSm
+jMR
+mVX
 aSm
-aXf
-aTr
-aTr
+bxa
+cdk
 aTr
 awb
 aUE
@@ -30114,7 +30197,7 @@ aTr
 aTr
 aTr
 aTr
-aMP
+aTr
 awb
 aIq
 axv
