@@ -5259,7 +5259,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/floor,
 /area/tether/exploration/hallway)
 "ajV" = (
 /obj/structure/table/rack/shelf,
@@ -5465,7 +5465,9 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 9
 	},
-/obj/structure/closet/secure_closet/pathfinder,
+/obj/structure/closet/secure_closet/pathfinder{
+	req_access = list(67)
+	},
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -22
@@ -17882,23 +17884,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
-"aUf" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/tether/exploration/hallway)
 "aUk" = (
 /obj/machinery/door/window/westleft{
 	dir = 4;
@@ -21449,6 +21434,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/station/dock_two)
+"eAN" = (
+/obj/effect/floor_decal/corner/red{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/red{
+	dir = 6
+	},
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/tiled,
+/area/security/hallway{
+	name = "\improper Security Customs"
+	})
 "eGb" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -21560,12 +21557,6 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 1
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/red/bordercorner2{
-	dir = 4
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -22230,6 +22221,10 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 5
 	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallway{
 	name = "\improper Security Customs"
@@ -22404,13 +22399,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
+"gym" = (
+/turf/simulated/floor/plating,
+/area/mine/explored/upper_level)
 "gAd" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1;
 	name = "Exploration";
 	req_one_access = list(19,43,67)
 	},
-/turf/simulated/floor,
+/obj/machinery/door/firedoor/multi_tile{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "gAL" = (
 /obj/structure/bed/chair/comfy/beige,
@@ -25215,8 +25216,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/science{
 	name = "Pathfinder";
-	req_access = 62;
-	req_one_access = newlist()
+	req_one_access = list(67)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -25532,6 +25532,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
+"pQp" = (
+/obj/effect/floor_decal/corner/red{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/red{
+	dir = 9
+	},
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/tiled,
+/area/security/hallway{
+	name = "\improper Security Customs"
+	})
 "pQq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 5
@@ -25613,10 +25625,6 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
-	},
-/obj/machinery/firealarm{
-	layer = 3.3;
-	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
 /area/security/hallway{
@@ -27637,6 +27645,9 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/techfloor,
 /area/shuttle/securiship/general)
+"uRQ" = (
+/turf/simulated/wall,
+/area/mine/explored/upper_level)
 "uTq" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
@@ -28862,6 +28873,14 @@
 /turf/simulated/floor,
 /area/engineering/shaft)
 "xQi" = (
+/obj/machinery/door/firedoor/multi_tile{
+	dir = 1
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 1;
+	name = "Equipment Prep";
+	req_one_access = list(19,43,67)
+	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "xQP" = (
@@ -32955,8 +32974,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 mlJ
+eAN
 eWC
 bmX
 jLl
@@ -33097,8 +33116,8 @@ ahV
 ahW
 aaa
 aaa
-aaa
 mlJ
+pQp
 qcy
 nmf
 jLl
@@ -33239,7 +33258,7 @@ aaa
 ahW
 aaa
 aaa
-aaa
+mlJ
 mlJ
 woM
 iZq
@@ -42176,7 +42195,7 @@ aaf
 aaf
 aaf
 aaf
-aUf
+yib
 gAd
 aaf
 aaf
@@ -43314,7 +43333,7 @@ bDi
 rKc
 asP
 aaf
-aat
+gym
 aCu
 aEG
 aEJ
@@ -43456,7 +43475,7 @@ bDi
 rXI
 fwn
 aaf
-aat
+gym
 aCy
 aEH
 aEK
@@ -43598,7 +43617,7 @@ bDi
 qTt
 cfk
 aaf
-aat
+gym
 aCu
 aEI
 aEL
@@ -43740,7 +43759,7 @@ bDi
 aaf
 aaf
 aaf
-aat
+uRQ
 amK
 amK
 amK
@@ -43882,7 +43901,7 @@ aac
 aac
 aac
 aac
-aat
+aac
 aac
 aac
 aac
