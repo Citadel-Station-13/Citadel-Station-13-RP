@@ -73,7 +73,6 @@
 						prisoners that have been processed and brigged, and are responsible for their well being. The Warden is also in charge of distributing \
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."
-
 //////////////////////////////////
 //			Detective
 //////////////////////////////////

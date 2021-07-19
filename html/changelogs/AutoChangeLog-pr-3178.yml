@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - rscadd: "Off-Duty Command"
+  - code_imp: "Allow_jobhup is no longer double negated"
