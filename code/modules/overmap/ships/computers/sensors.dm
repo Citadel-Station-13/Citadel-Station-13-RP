@@ -92,7 +92,10 @@
 		if("scan")
 			var/obj/effect/overmap/O = locate(params["scan"])
 			if(istype(O) && !QDELETED(O) && (O in view(7,linked)))
-				new/obj/item/paper/(get_turf(src), O.get_scan_data(usr), "paper (Sensor Scan - [O])")
+				var/obj/item/paper/P = new /obj/item/paper/(get_turf(src))
+				P.name = "paper (Sensor Scan - [O])"
+				P.info = O.get_scan_data(usr)
+				P.Initialize() // has to be called because the scanner desc uses a combination of html and markdown for some reason
 				playsound(src, "sound/machines/printer.ogg", 30, 1)
 			. = TRUE
 
