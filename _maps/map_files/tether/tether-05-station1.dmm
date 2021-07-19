@@ -17313,6 +17313,14 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
+"aOG" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor,
+/area/maintenance/station/eng_lower)
 "aOL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -20901,6 +20909,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
+"deh" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor,
+/area/maintenance/station/eng_lower)
 "dfF" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -21971,6 +21992,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
+"fHU" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor,
+/area/maintenance/station/eng_lower)
 "fID" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -25409,6 +25438,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
+"prZ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor,
+/area/maintenance/station/eng_lower)
 "psh" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/yellow/border,
@@ -26860,6 +26897,15 @@
 /area/security/hallway{
 	name = "\improper Security Customs"
 	})
+"sEX" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/maintenance/station/eng_lower)
 "sFB" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -38050,7 +38096,7 @@ abC
 adL
 aeh
 aeG
-aeG
+deh
 aeG
 agf
 ahf
@@ -38192,7 +38238,7 @@ abC
 abC
 abC
 abC
-svf
+sEX
 abC
 abC
 abC
@@ -38334,7 +38380,7 @@ aac
 aac
 aat
 abC
-ack
+adG
 ack
 abC
 aac
@@ -38476,7 +38522,7 @@ aac
 aac
 aat
 abC
-ack
+adG
 ack
 abC
 aac
@@ -38618,7 +38664,7 @@ aac
 aac
 aat
 abC
-ack
+adG
 ack
 abC
 abC
@@ -38760,7 +38806,7 @@ aac
 aac
 aat
 abC
-ack
+adG
 ack
 abC
 abC
@@ -38902,7 +38948,7 @@ aac
 aac
 aat
 abC
-ack
+adG
 ack
 ack
 abC
@@ -39044,7 +39090,7 @@ aac
 aac
 abC
 abC
-ack
+adG
 ack
 ack
 ack
@@ -39186,7 +39232,7 @@ aac
 abC
 abC
 ack
-ack
+adG
 ack
 ack
 ack
@@ -39327,8 +39373,8 @@ plz
 aat
 abC
 ack
-ack
-ack
+aOG
+fHU
 ack
 abC
 abC
@@ -39469,7 +39515,7 @@ aik
 abC
 abC
 ack
-ack
+adG
 abC
 abC
 abC
@@ -39611,7 +39657,7 @@ aeg
 abC
 abC
 ack
-ack
+adG
 abC
 aac
 aac
@@ -39753,7 +39799,7 @@ aef
 abP
 abC
 ack
-ack
+adG
 abC
 aac
 aac
@@ -39895,7 +39941,7 @@ ack
 ack
 abC
 ack
-ack
+adG
 abC
 abC
 aat
@@ -40037,7 +40083,7 @@ ack
 ack
 svf
 ack
-ack
+adG
 ack
 abC
 aac
@@ -40179,8 +40225,8 @@ ack
 ack
 abC
 ack
-ack
-ack
+adL
+prZ
 abC
 aac
 uIC
@@ -40322,7 +40368,7 @@ aeL
 abC
 ack
 ack
-ack
+adG
 abC
 aac
 uIC
@@ -40464,7 +40510,7 @@ abC
 abC
 abC
 ack
-ack
+adG
 abC
 aac
 uIC
@@ -40606,7 +40652,7 @@ abC
 aac
 abC
 ack
-ack
+adG
 abC
 aac
 uIC
@@ -40748,7 +40794,7 @@ aac
 aac
 abC
 ack
-ack
+adG
 abC
 aac
 aat
@@ -40890,7 +40936,7 @@ aac
 aac
 abC
 ack
-ack
+adG
 abC
 abC
 abC
@@ -41032,7 +41078,7 @@ aac
 aac
 abC
 ack
-ack
+adG
 ack
 ack
 ack
@@ -41174,13 +41220,13 @@ aac
 aac
 abC
 ack
-ack
-ack
-ack
-ack
-ack
-ack
-ack
+adL
+aeG
+aeG
+aeG
+aeG
+aeG
+prZ
 abC
 abC
 abC
@@ -41322,8 +41368,8 @@ abC
 abC
 abC
 ack
-ack
-ack
+adL
+prZ
 ack
 abC
 aac
@@ -41465,8 +41511,8 @@ aac
 abC
 ack
 ack
-ack
-ack
+adL
+prZ
 abC
 aac
 aac

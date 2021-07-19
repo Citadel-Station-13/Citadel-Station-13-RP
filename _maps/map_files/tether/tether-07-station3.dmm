@@ -64,9 +64,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/landmark{
-	name = "morphspawn"
-	},
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "aak" = (
@@ -247,10 +244,6 @@
 /area/security/hallway)
 "aaB" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/structure/cable/green,
 /turf/simulated/floor,
 /area/maintenance/substation/security)
@@ -770,10 +763,6 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -955,12 +944,6 @@
 /turf/simulated/floor,
 /area/storage/emergency_storage/emergency3)
 "acd" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
@@ -1286,7 +1269,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/security/brig)
 "acT" = (
 /obj/structure/lattice,
@@ -1303,7 +1286,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/security/brig)
 "acW" = (
 /obj/machinery/door/firedoor/glass,
@@ -1443,9 +1426,6 @@
 /area/security/security_bathroom)
 "ads" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
 /turf/simulated/floor/carpet,
 /area/security/breakroom)
 "adt" = (
@@ -1690,11 +1670,6 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -1722,14 +1697,6 @@
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
-/obj/effect/landmark{
-	name = "morphspawn"
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
@@ -2091,11 +2058,6 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
@@ -2400,7 +2362,7 @@
 /area/security/hallway)
 "agb" = (
 /obj/structure/railing,
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/security/brig)
 "agg" = (
 /turf/simulated/floor/airless,
@@ -2481,10 +2443,6 @@
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
-	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
 	},
 /turf/simulated/floor/tiled,
 /area/security/eva)
@@ -2589,10 +2547,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
 	pixel_x = -3;
@@ -2654,12 +2608,6 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
-	},
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -3027,7 +2975,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
 "ajk" = (
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/security/brig)
 "ajl" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3129,7 +3077,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/security/brig)
 "ajz" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3164,13 +3112,6 @@
 /area/security/hallwayaux)
 "ajB" = (
 /obj/machinery/hologram/holopad,
-/turf/simulated/floor/carpet,
-/area/security/breakroom)
-"ajC" = (
-/obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
-	name = "Detective"
-	},
 /turf/simulated/floor/carpet,
 /area/security/breakroom)
 "ajI" = (
@@ -3253,9 +3194,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
 /turf/simulated/floor/carpet,
 /area/security/breakroom)
 "ajX" = (
@@ -3281,11 +3219,6 @@
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
-	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_upper)
@@ -3676,10 +3609,10 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/security/hallway)
 "alC" = (
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/security/hallway)
 "alD" = (
 /obj/machinery/door/firedoor/glass,
@@ -4070,9 +4003,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/landmark/start{
-	name = "Detective"
-	},
 /turf/simulated/floor/carpet,
 /area/security/breakroom)
 "amW" = (
@@ -4289,9 +4219,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
 	},
 /turf/simulated/floor/carpet,
 /area/security/breakroom)
@@ -4828,11 +4755,6 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 5
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
@@ -4882,9 +4804,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
 	},
 /turf/simulated/floor/carpet,
 /area/security/breakroom)
@@ -5183,11 +5102,6 @@
 	},
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 8
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -6241,11 +6155,6 @@
 /obj/item/extinguisher,
 /obj/item/clothing/head/hardhat/red,
 /obj/item/clothing/glasses/meson,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -6664,11 +6573,6 @@
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
 	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -7342,11 +7246,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 10
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -8617,6 +8516,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central1{
 	dir = 8
 	},
+/obj/item/barrier_tape_segment/engineering,
+/obj/structure/barricade,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 8
 	},
@@ -8633,6 +8534,8 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central1{
 	dir = 4
 	},
+/obj/item/barrier_tape_segment/engineering,
+/obj/structure/barricade,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 4
 	},
@@ -8884,11 +8787,6 @@
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
 /obj/item/stack/material/phoron,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
@@ -9647,10 +9545,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "aGv" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
@@ -9713,11 +9607,6 @@
 /area/crew_quarters/medbreak)
 "aGU" = (
 /obj/structure/medical_stand,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
@@ -10079,11 +9968,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "aHJ" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
@@ -10994,14 +10878,14 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "aKg" = (
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/medical/medbay_primary_storage)
 "aKh" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "aKi" = (
 /obj/machinery/light,
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/medical/medbay_primary_storage)
 "aKj" = (
 /obj/machinery/vending/cola{
@@ -11270,11 +11154,6 @@
 "aKY" = (
 /obj/structure/flora/skeleton{
 	name = "\proper Wilhelm"
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
 	},
 /obj/structure/cable/green{
 	d2 = 2;
@@ -11821,11 +11700,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12163,7 +12037,7 @@
 /obj/machinery/camera/network/security{
 	dir = 10
 	},
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/security/hallway)
 "aPt" = (
 /obj/structure/bed/chair{
@@ -12231,7 +12105,7 @@
 /obj/machinery/camera/network/security{
 	dir = 10
 	},
-/turf/simulated/open,
+/turf/simulated/floor,
 /area/security/brig)
 "aQp" = (
 /obj/effect/landmark{
@@ -12439,11 +12313,6 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /turf/simulated/floor,
 /area/maintenance/station/ai)
 "aRA" = (
@@ -12641,15 +12510,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/maintenance/cargo)
-"aSC" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
-/turf/simulated/floor/carpet,
-/area/security/breakroom)
 "aSE" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12840,11 +12700,6 @@
 /obj/structure/cable/green{
 	d2 = 2;
 	icon_state = "0-2"
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
 	},
 /turf/simulated/floor/wood,
 /area/security/breakroom)
@@ -14096,11 +13951,6 @@
 "rEP" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
 	},
 /obj/structure/cable/green{
 	d2 = 2;
@@ -23045,7 +22895,7 @@ ajo
 ads
 ajN
 ajX
-aSC
+ada
 aeJ
 akG
 aYT
@@ -23184,7 +23034,7 @@ abu
 aiR
 aYT
 ajp
-ajC
+ads
 anY
 acO
 ada
