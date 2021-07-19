@@ -1688,9 +1688,6 @@
 	dir = 8
 	},
 /obj/structure/table/bench/steel,
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "aew" = (
@@ -1821,9 +1818,6 @@
 /obj/structure/table/bench/steel,
 /obj/structure/window/reinforced{
 	dir = 4
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
@@ -3974,18 +3968,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/maintenance/station/sec_upper)
-"amS" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 6
-	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 6
-	},
-/obj/effect/landmark{
-	name = "lightsout"
-	},
-/turf/simulated/floor/tiled,
-/area/security/hallwayaux)
 "amT" = (
 /obj/random/toolbox,
 /obj/item/clothing/gloves/fyellow,
@@ -6602,9 +6584,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
@@ -8393,9 +8372,6 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "aCq" = (
@@ -8986,9 +8962,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "aES" = (
@@ -9247,9 +9220,6 @@
 /area/medical/chemistry)
 "aFJ" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "aFK" = (
@@ -10592,29 +10562,14 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "aJo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/medbay_primary_storage)
-"aJp" = (
-/obj/effect/landmark/start{
-	name = "Chemist"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "aJq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "aJr" = (
@@ -10894,17 +10849,6 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
-"aKk" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/sleeper)
 "aKl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -10948,12 +10892,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/sleeper)
-"aKp" = (
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
@@ -11375,12 +11313,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"aLT" = (
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
-/turf/simulated/floor/tiled/white,
-/area/medical/medbay_primary_storage)
 "aMd" = (
 /obj/machinery/door/airlock/medical{
 	name = "Rest Room"
@@ -11664,16 +11596,6 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
-"aMG" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/paleblue/diagonal,
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/medbreak)
 "aMH" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
@@ -11779,16 +11701,6 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/medbreak)
-"aMU" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/paleblue/diagonal,
-/obj/effect/landmark/start{
-	name = "Paramedic"
-	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "aMV" = (
@@ -12067,9 +11979,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "morphspawn"
-	},
 /turf/simulated/floor/tiled,
 /area/maintenance/station/cargo)
 "aQj" = (
@@ -12107,12 +12016,6 @@
 	},
 /turf/simulated/floor,
 /area/security/brig)
-"aQp" = (
-/obj/effect/landmark{
-	name = "morphspawn"
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/medical_restroom)
 "aQq" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -12152,9 +12055,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "aQE" = (
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -12521,9 +12421,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_lockerroom)
 "aSH" = (
@@ -12611,9 +12508,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "aTh" = (
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
 /obj/structure/bed/chair{
 	dir = 8
 	},
@@ -12704,9 +12598,6 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "aUt" = (
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -12783,9 +12674,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -12805,9 +12693,6 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medical_restroom)
 "aVA" = (
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
@@ -13318,9 +13203,6 @@
 "gSZ" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
-	},
-/obj/effect/landmark/start{
-	name = "Security Officer"
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_processing)
@@ -20531,7 +20413,7 @@ aKE
 aKE
 aKE
 aMP
-aQp
+aNl
 aKE
 aab
 aab
@@ -20906,7 +20788,7 @@ acr
 acR
 ajx
 acR
-amS
+aiT
 aeD
 akN
 akE
@@ -21233,14 +21115,14 @@ ayJ
 aHj
 aHV
 aID
-aJp
+aKh
 aFm
 aJr
 aKZ
 aLE
 aMi
 aLd
-aMU
+aUt
 aUt
 aLd
 aLd
@@ -21517,7 +21399,7 @@ aGV
 aJt
 aHV
 aIF
-aLT
+aKh
 aKe
 aLp
 aLd
@@ -21666,7 +21548,7 @@ aLc
 aLd
 aMl
 aLd
-aMG
+aTh
 aTh
 aLd
 aLd
@@ -22512,9 +22394,9 @@ aHr
 aLh
 aIM
 aJw
-aKk
+aND
 aKI
-aKk
+aND
 aLH
 aMr
 aLh
@@ -23364,9 +23246,9 @@ aHv
 aIf
 aLh
 aJC
-aKp
 aLh
-aKp
+aLh
+aLh
 aLK
 aMX
 aLh
