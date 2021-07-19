@@ -39293,13 +39293,8 @@
 	req_access = list(58)
 	},
 /obj/item/clothing/mask/breath,
-<<<<<<< HEAD:_maps/map_files/tether/tether-03-surface3.dmm
-/obj/item/clothing/suit/space/void/security/fluff/hos,
-/obj/item/clothing/head/helmet/space/void/security/fluff/hos,
-=======
 /obj/item/clothing/suit/space/void/security,
 /obj/item/clothing/head/helmet/space/void/security,
->>>>>>> 19264229fd5f881c8cc6db36370d119b1162b4f8:maps/tether/tether-03-surface3.dmm
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/hos)
 "lSv" = (
