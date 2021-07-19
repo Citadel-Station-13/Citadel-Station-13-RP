@@ -7,7 +7,8 @@
 	// if(!name && id)
 	//	name = id
 
-	mappath = prefix + suffix
+	if(isnull(mappath))
+		mappath = prefix + suffix
 	..(path = mappath)
 
 /datum/map_template/shuttle/overmap

@@ -373,10 +373,14 @@ HALOGEN COUNTER	- Radcount on mobs
 
 /obj/item/analyzer/afterattack(var/obj/O, var/mob/user, var/proximity)
 	if(proximity)
+		if(istype(O, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
+			return
 		analyze_gases(O, user)
 	return
 
 /obj/item/analyzer/longrange/afterattack(var/obj/O, var/mob/user, var/proximity)
+	if(istype(O, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
+		return
 	analyze_gases(O, user)
 	return
 

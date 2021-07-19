@@ -4,7 +4,7 @@
 /datum/map_template/shuttle/overmap/tether/ert_ship
 	name = "OM Ship - ERT Ship (New Z)"
 	desc = "NT Emergency Response Ship."
-	suffix = "ert.dmm"
+	mappath = "_maps/templates/admin/ert.dmm"
 
 	// The ship's area(s)
 /area/ship/ert

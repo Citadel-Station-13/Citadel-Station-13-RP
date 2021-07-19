@@ -10,8 +10,8 @@
 	icon_dead = "puddle"
 
 	faction = "neutral"
-	maxHealth = 200
-	health = 200
+	maxHealth = 250
+	health = 250
 	say_list_type = /datum/say_list/protean_blob
 
 	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
@@ -36,7 +36,12 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
-	maxbodytemp = 900
+	maxbodytemp = INFINITY
+	heat_resist = 1
+	cold_resist = 1
+	shock_resist = 0.9
+	poison_resist = 1
+
 	movement_cooldown = 0
 
 	var/mob/living/carbon/human/humanform
@@ -94,7 +99,7 @@
 /mob/living/simple_mob/protean_blob/updatehealth()
 	if(humanform)
 		//Set the max
-		maxHealth = humanform.getMaxHealth() * 1.6 //As the base humanoid health was increased, the number was changed to make the maxhealth stay at 200
+		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - humanform.getOxyLoss() - humanform.getToxLoss() - humanform.getCloneLoss() - humanform.getActualFireLoss() - humanform.getActualBruteLoss()
 
@@ -177,11 +182,10 @@
 /mob/living/simple_mob/protean_blob/Life()
 	. = ..()
 	if(. && istype(refactory) && humanform)
-		if(!healing && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 100)
+		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 100 && refactory.processingbuffs)
 			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
-		else if(healing && health == maxHealth)
-			healing.expire()
-			healing = null
+		else if(humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health >= maxHealth)
+			humanform.remove_a_modifier_of_type(/datum/modifier/protean/steelBlob)
 
 /mob/living/simple_mob/protean_blob/lay_down()
 	..()
@@ -268,6 +272,14 @@
 		get_scooped(H, TRUE)
 	else
 		return ..()
+
+/mob/living/simple_mob/protean_blob/emp_act(severity)
+	if(severity == 4)
+		return
+	to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
+	to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
+	to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>")
+	return humanform.emp_act(severity + 1)
 
 /mob/living/simple_mob/protean_blob/MouseEntered(location,control,params)
 	if(resting)
@@ -526,6 +538,10 @@
 			icon_living = "puddle0"
 			update_icon()
 
+/mob/living/simple_mob/protean_blob/Login()
+	..()
+	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+
 /datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp/ventcrawling
 	name = "Protean Blob Effect - Steel"
 	desc = "You're affected by the presence of steel."
@@ -538,11 +554,11 @@
 /datum/modifier/protean/steelBlob/tick()
 
 	..()
-	holder.adjustBruteLoss(-20 ,include_robo = TRUE) //This is for the blob-regen. As there's now non-blob regen, I've increased it to have a reason to blob other than ventcrawling
-	holder.adjustFireLoss(-7.7 ,include_robo = TRUE) // Both brute and burn are ~10/s for blob regen
-	holder.adjustToxLoss(-36) // Still keeping these in, for the just-in-case scenario
-	holder.radiation = max(holder.radiation - 90, 0)
-
+	// 5 hp/s regen per tick
+	holder.adjustBruteLoss(-5 * 2 / 0.5 ,include_robo = TRUE)
+	holder.adjustFireLoss(-5 * 2 / 1.3 ,include_robo = TRUE)
+	holder.adjustToxLoss(-10)
+	holder.radiation = max(holder.radiation - 50, 0)
 
 	var/mob/living/carbon/human/H = holder
 	for(var/organ in H.internal_organs)

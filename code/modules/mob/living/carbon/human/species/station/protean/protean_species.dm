@@ -36,7 +36,10 @@
 	min_age =		18
 	max_age =		200
 
-	total_health =	125  // Makes them Unathi level tough. Nothing too much, also mildly justified as proteans can't ever go into crit, as they blob instead
+	total_health =	250 // blob-crit at 100 damage regardless, but give a higher buffer
+	/// damage ratio to force into blobform at. we want them to blob at 100, so 100 / (crit health + maxHealth) as crithealth has 100 as a buffer too.
+	var/force_blob_ratio = 100 / (100 + 250)
+
 
 	brute_mod =		0.5 // 50% brute reduction
 	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
@@ -213,7 +216,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		H.gib()
 
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.85 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
+	if((H.getActualBruteLoss() + H.getActualFireLoss()) > ((100 + H.maxHealth) * force_blob_ratio) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
@@ -275,12 +278,12 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/modifier/protean/on_applied()
 	. = ..()
 	if(holder.temporary_form)
-		to_chat(holder.temporary_form,on_created_text)
+		to_chat(holder.temporary_form, on_created_text)
 
 /datum/modifier/protean/on_expire()
 	. = ..()
 	if(holder.temporary_form)
-		to_chat(holder.temporary_form,on_expired_text)
+		to_chat(holder.temporary_form, on_expired_text)
 
 /datum/modifier/protean/check_if_valid()
 	//No origin set
@@ -349,33 +352,26 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
 
 	material_name = MAT_STEEL
-	material_use = 10	// don't use as much as blobform since it heals less
+	material_use = METAL_PER_TICK / 5		// 5 times weaker
 
 /datum/modifier/protean/steel/check_if_valid()
-	if(!protean_requires_healing(holder))
+	if(!protean_requires_healing(holder) || istype(holder.temporary_form, /mob/living/simple_mob/protean_blob))
 		expire()
 		return
 	return ..()
 
 /datum/modifier/protean/steel/tick()
 	..()
-	holder.adjustBruteLoss(-4 / 0.5, include_robo = TRUE) //This is for non-blob regen and equals out to ~2 hp/s
-	holder.adjustFireLoss(-3.5 / 1.3, include_robo = TRUE) //Same with burns
+	// 1 hp/s regen
+	holder.adjustBruteLoss(-1 * 2 / 0.5, include_robo = TRUE)
+	holder.adjustFireLoss(-1 * 2 / 1.3, include_robo = TRUE)
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
 
-	// I'm a bad coder, so you'll have to manually disable material augments to make the steel ticking stop. Otherwise, it'll turn off automatically when steel runs out
-
-	/* var/mob/living/carbon/human/H = holder
-	for(var/organ in H.internal_organs)
-		var/obj/item/organ/O = organ
-		// Fix internal damage
-		if(O.damage > 0)
-			O.damage = max(0,O.damage-0.1)
-		// If not damaged, but dead, fix it
-		else if(O.status & ORGAN_DEAD)
-			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely
-	*/ //Commented out, so the only way to regen organ damage is blobform.
+/proc/protean_requires_healing(mob/living/carbon/human/H)
+	if(!istype(H))
+		return FALSE
+	return H.getActualBruteLoss() || H.getActualFireLoss() || H.getToxLoss()
 
 // PAN Card
 /obj/item/clothing/accessory/permit/nanotech
