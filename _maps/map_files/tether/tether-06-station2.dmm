@@ -12879,12 +12879,12 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/catwalk,
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/maintenance/station/ai)
 "aKL" = (
@@ -16942,7 +16942,6 @@
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)
 "aTH" = (
-/obj/structure/catwalk,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -32073,7 +32072,7 @@ aIK
 aDL
 aPP
 aXH
-aUI
+aWW
 aFY
 aPP
 aFY
@@ -32639,7 +32638,7 @@ ani
 aul
 aFz
 aDL
-aUI
+aRW
 aMz
 aTo
 aMj
