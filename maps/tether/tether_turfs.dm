@@ -19,6 +19,10 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/reinforced)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
 
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/techfloor/grid)
+
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/maglev)
+
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 /turf/simulated/floor/outdoors/dirt/virgo3b
 	icon = 'icons/turf/flooring/asteroid.dmi'
