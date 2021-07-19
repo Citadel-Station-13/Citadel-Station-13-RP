@@ -35702,7 +35702,7 @@
 /area/tether/surfacebase/shuttle_pad)
 "bQG" = (
 /obj/structure/window/reinforced/polarized{
-	id = booth_one
+	id = "booth_one"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -36032,11 +36032,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "cGC" = (
-/obj/structure/window/reinforced/polarized{
-	id = booth_one
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/grille,
+/obj/structure/window/reinforced/polarized{
+	id = "booth_one"
+	},
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
 	id = "booth_one"
@@ -37094,11 +37094,11 @@
 /turf/simulated/wall,
 /area/tether/surfacebase/medical/storage)
 "fMo" = (
-/obj/structure/window/reinforced/polarized{
-	id = booth_one
-	},
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 1
+	},
+/obj/structure/window/reinforced/polarized{
+	id = "booth_one"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -37836,7 +37836,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/polarized{
-	id = booth_one
+	id = "booth_one"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
