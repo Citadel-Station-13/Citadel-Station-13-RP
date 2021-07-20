@@ -362,9 +362,17 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 /datum/modifier/protean/steel/tick()
 	..()
-	// 1 hp/s regen
-	holder.adjustBruteLoss(-1 * 2 / 0.5, include_robo = TRUE)
-	holder.adjustFireLoss(-1 * 2 / 1.3, include_robo = TRUE)
+	var/dt = 2	// put it on param sometime but for now assume 2
+	var/mob/living/carbon/human/H = holder
+	var/obj/item/organ/external/E = H.get_organ(BP_TORS)
+	var/heal = 1 * dt
+	var/brute_heal_left = min(heal, heal - E.brute_dam)
+	var/burn_heal_left = min(heal, heal - E.burn_dam)
+
+	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
+
+	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
+	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
 

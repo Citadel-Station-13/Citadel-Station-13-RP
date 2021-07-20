@@ -553,11 +553,18 @@
 	material_name = MAT_STEEL
 
 /datum/modifier/protean/steelBlob/tick()
-
 	..()
-	// 5 hp/s regen per tick
-	holder.adjustBruteLoss(-5 * 2 / 0.5 ,include_robo = TRUE)
-	holder.adjustFireLoss(-5 * 2 / 1.3 ,include_robo = TRUE)
+	var/dt = 2	// put it on param sometime but for now assume 2
+	var/mob/living/carbon/human/H = holder
+	var/obj/item/organ/external/E = H.get_organ(BP_TORS)
+	var/heal = 5 * dt
+	var/brute_heal_left = min(heal, heal - E.brute_dam)
+	var/burn_heal_left = min(heal, heal - E.burn_dam)
+
+	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
+
+	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
+	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-10)
 	holder.radiation = max(holder.radiation - 50, 0)
 
