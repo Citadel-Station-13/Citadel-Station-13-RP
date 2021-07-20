@@ -183,7 +183,7 @@ var/list/wrapped_species_by_ref = list()
 
 	last_special = world.time + 50
 
-	var/new_skin = input("Please select a new body color.", "Shapeshifter Colour") as color
+	var/new_skin = input("Please select a new body color.", "Shapeshifter Colour", null, "#[num2hex(r_skin)][num2hex(g_skin)][num2hex(b_skin)]") as color|null
 	if(!new_skin)
 		return
 	shapeshifter_set_colour(new_skin)
@@ -221,15 +221,15 @@ var/list/wrapped_species_by_ref = list()
 
 	last_special = world.time + 50
 
-	var/new_hair = input("Please select a new hair color.", "Hair Colour") as color
+	var/new_hair = input("Please select a new hair color.", "Hair Colour", null, "#[num2hex(r_hair)][num2hex(g_hair)][num2hex(b_hair)]") as color|null
 	if(!new_hair)
 		return
 	shapeshifter_set_hair_color(new_hair)
-	var/new_grad = input("Please select a new hair gradient color.", "Hair Gradient Colour") as color
+	var/new_grad = input("Please select a new hair gradient color.", "Hair Gradient Colour", null, "#[num2hex(r_grad)][num2hex(g_grad)][num2hex(b_grad)]") as color|null
 	if(!new_grad)
 		return
 	shapeshifter_set_grad_color(new_grad)
-	var/new_fhair = input("Please select a new facial hair color.", "Facial Hair Color") as color
+	var/new_fhair = input("Please select a new facial hair color.", "Facial Hair Color", null, "#[num2hex(r_facial)][num2hex(g_facial)][num2hex(b_facial)]") as color|null
 	if(!new_fhair)
 		return
 	shapeshifter_set_facial_color(new_fhair)
