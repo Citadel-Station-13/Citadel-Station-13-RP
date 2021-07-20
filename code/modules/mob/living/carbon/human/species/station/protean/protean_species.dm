@@ -36,13 +36,12 @@
 	min_age =		18
 	max_age =		200
 
-	total_health =	250 // blob-crit at 100 damage regardless, but give a higher buffer
-	/// damage ratio to force into blobform at. we want them to blob at 100, so 100 / (crit health + maxHealth) as crithealth has 100 as a buffer too.
-	var/force_blob_ratio = 100 / (100 + 250)
+	total_health =	100
+	/// damage to blob
+	var/damage_to_blob = 100
 
-
-	brute_mod =		0.5 // 50% brute reduction
-	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
+	brute_mod =		1
+	burn_mod =		1
 	oxy_mod =		0
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
 	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
@@ -215,8 +214,12 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		to_chat(H)
 		H.gib()
 
+/datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	return E.brute_dam + E.burn_dam
+
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > ((100 + H.maxHealth) * force_blob_ratio) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
+	if((getActualDamage(H) > damage_to_blob) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 

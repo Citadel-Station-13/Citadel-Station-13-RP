@@ -2,9 +2,10 @@
 /obj/item/organ/external/chest/unbreakable/nano
 	robotic = ORGAN_NANOFORM
 	encased = FALSE
-	max_damage = 100 // I'm making all limb healths the same as standard (100 for torso, 80 for limbs)
+	max_damage = 1000
 	min_broken_damage = 1000
-	vital = TRUE // <-- This is different from the rest
+	vital = TRUE
+	emp_mod = 5
 
 /obj/item/organ/external/groin/unbreakable/nano
 	robotic = ORGAN_NANOFORM

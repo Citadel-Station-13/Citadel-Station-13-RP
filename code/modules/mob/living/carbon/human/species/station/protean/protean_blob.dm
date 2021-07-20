@@ -100,8 +100,9 @@
 	if(humanform)
 		//Set the max
 		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
+		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
-		health = maxHealth - humanform.getOxyLoss() - humanform.getToxLoss() - humanform.getCloneLoss() - humanform.getActualFireLoss() - humanform.getActualBruteLoss()
+		health = maxHealth - E.brute_dam - E.burn_dam
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -140,7 +141,7 @@
 
 /mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
 	if(humanform)
-		humanform.adjustBruteLoss(amount)
+		humanform.adjustBruteLossByPart(amount, BP_TORSO)
 	else
 		..()
 
@@ -149,7 +150,7 @@
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
 	if(humanform)
-		humanform.adjustFireLoss(amount)
+		humanform.adjustFireLossByPart(amount, BP_TORSO)
 	else
 		..()
 
