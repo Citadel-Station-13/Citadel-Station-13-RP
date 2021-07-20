@@ -5,7 +5,7 @@
 	max_damage = 1000
 	min_broken_damage = 1000
 	vital = TRUE
-	emp_mod = 5
+	emp_mod = 6
 
 /obj/item/organ/external/groin/unbreakable/nano
 	robotic = ORGAN_NANOFORM

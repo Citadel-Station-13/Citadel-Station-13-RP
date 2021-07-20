@@ -556,7 +556,7 @@
 	..()
 	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder
-	var/obj/item/organ/external/E = H.get_organ(BP_TORS)
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
 	var/heal = 5 * dt
 	var/brute_heal_left = min(heal, heal - E.brute_dam)
 	var/burn_heal_left = min(heal, heal - E.burn_dam)
