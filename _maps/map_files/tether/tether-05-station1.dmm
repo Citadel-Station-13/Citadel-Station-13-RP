@@ -555,6 +555,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "abb" = (
@@ -18182,6 +18185,9 @@
 	name = "east bump";
 	pixel_x = 28
 	},
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallway{
 	name = "\improper Security Customs"
@@ -20673,6 +20679,9 @@
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/camera/network/tether{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/security/hallway{
 	name = "\improper Security Customs"
@@ -23756,6 +23765,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
+"ksv" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/red/border,
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/security/hallway{
+	name = "\improper Security Customs"
+	})
 "ksO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -33185,7 +33204,7 @@ aaa
 mlJ
 pQp
 qcy
-nmf
+ksv
 jLl
 iVQ
 xzK

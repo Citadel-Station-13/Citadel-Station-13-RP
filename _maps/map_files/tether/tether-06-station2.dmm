@@ -13045,6 +13045,9 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
 	},
+/obj/machinery/camera/network/tether{
+	dir = 8
+	},
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
 "aLc" = (
@@ -16394,6 +16397,9 @@
 /obj/item/pen/blue{
 	pixel_x = 2;
 	pixel_y = 1
+	},
+/obj/machinery/camera/network/tether{
+	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/office)
@@ -19964,6 +19970,10 @@
 "cZR" = (
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
+"ddt" = (
+/obj/machinery/camera/network/tether,
+/turf/simulated/mineral/floor/vacuum,
+/area/mine/explored/upper_level)
 "dfl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -20989,6 +20999,12 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/ai)
+"vFT" = (
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/burial)
 "vGz" = (
 /obj/machinery/disposal/deliveryChute{
 	dir = 8
@@ -20998,6 +21014,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
+"vKX" = (
+/obj/structure/flora/pottedplant/fern,
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "vRE" = (
 /obj/machinery/light/small,
 /obj/random/trash_pile,
@@ -21156,6 +21179,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
+"xIj" = (
+/obj/machinery/camera/network/tether{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "xIt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -26388,7 +26417,7 @@ apG
 asv
 avM
 apd
-aaP
+ddt
 aaP
 aaP
 aaP
@@ -29383,7 +29412,7 @@ nMM
 met
 aAu
 aGh
-aGh
+vFT
 aJb
 aUy
 aJb
@@ -29958,7 +29987,7 @@ aCO
 aCO
 aCO
 aCO
-aaP
+ddt
 aaP
 aaa
 aaa
@@ -30085,13 +30114,13 @@ aTr
 awb
 jnd
 wQj
-xgG
+vKX
 aIV
 aIq
 vrq
 axb
 aIq
-aIq
+xIj
 aIq
 aBa
 aBp
