@@ -36,7 +36,7 @@
 	min_age =		18
 	max_age =		200
 
-	total_health =	100
+	total_health =	200
 	/// damage to blob
 	var/damage_to_blob = 100
 
