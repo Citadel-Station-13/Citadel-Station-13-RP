@@ -254,8 +254,9 @@
 
 	//Blob form
 	if(temporary_form)
-
-		if(health < maxHealth*0.35) //Reforming HP threshold.
+		var/datum/species/protean/P = species
+		ASSERT(istype(P))
+		if(P.getActualDamage(src) > P.damage_to_blob) //Reforming HP threshold.
 			to_chat(temporary_form,"<span class='warning'>You need to regenerate more nanites first!</span>")
 		else if(temporary_form.stat)
 			to_chat(temporary_form,"<span class='warning'>You can only do this while not stunned.</span>")

@@ -145,6 +145,11 @@
 		return
 	forced_move(direction, user, FALSE)
 
+/obj/item/rig/protean/check_suit_access(mob/living/carbon/human/user)
+	if(user == myprotean)
+		return TRUE
+	return ..()
+
 /obj/item/clothing/head/helmet/space/rig/protean
 	name = "mass"
 	desc = "A helmet-shaped clump of nanomachines."

@@ -366,8 +366,8 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	var/mob/living/carbon/human/H = holder
 	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
 	var/heal = 1 * dt
-	var/brute_heal_left = min(heal, heal - E.brute_dam)
-	var/burn_heal_left = min(heal, heal - E.burn_dam)
+	var/brute_heal_left = max(0, heal - E.brute_dam)
+	var/burn_heal_left = max(0, heal - E.burn_dam)
 
 	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
 
