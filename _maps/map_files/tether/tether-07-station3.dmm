@@ -6541,9 +6541,6 @@
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /turf/simulated/floor,
 /area/storage/emergency_storage/emergency3)
-"awe" = (
-/turf/space/cracked_asteroid,
-/area/mine/explored/upper_level)
 "awf" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/catwalk,
@@ -18693,7 +18690,7 @@ avt
 avt
 avt
 avt
-awe
+avt
 avt
 avt
 aab
@@ -18965,7 +18962,7 @@ yeP
 yeP
 auI
 avt
-awe
+avt
 avt
 avt
 avt
@@ -28625,9 +28622,9 @@ avt
 avt
 avt
 avt
-avt
-avt
-avt
+aab
+aab
+aab
 avt
 avt
 avt
