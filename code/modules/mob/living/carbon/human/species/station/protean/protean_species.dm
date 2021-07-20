@@ -206,7 +206,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	return rgb(80,80,80,230)
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
-	var/deathmsg = "<span class='warning'>You died as a Protean. Please sit out of the round for at least 30 minutes before respawning, to represent the time it would take to ship a new-you to the station.</span>"
+	var/deathmsg = "<span class='userdanger'>You have died as a Protean. You may be revived by nanite chambers (once available), but otherwise, you may roleplay as your disembodied posibrain or respawn on another character.</span>"
 	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
 		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
 		to_chat(B, deathmsg)
