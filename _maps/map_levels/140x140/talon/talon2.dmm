@@ -668,8 +668,6 @@
 /obj/random/multiple/treasure,
 /obj/random/multiple/treasure,
 /obj/random/multiple/treasure,
-/obj/item/stolenpackageplus,
-/obj/item/stolenpackageplus,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bC" = (
@@ -708,6 +706,16 @@
 /obj/machinery/camera/network/talon{
 	dir = 9
 	},
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
+/obj/item/stolenpackageplus,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "bF" = (
@@ -1356,8 +1364,8 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/empty,
 /obj/item/cell/device/weapon/empty,
-/obj/random/energy/sec,
-/obj/random/energy/sec,
+/obj/random/energy,
+/obj/random/energy,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "ev" = (
