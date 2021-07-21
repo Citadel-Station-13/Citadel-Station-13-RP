@@ -4250,7 +4250,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
-/turf/space,
 /area/chapel/chapel_morgue)
 "aoG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9328,6 +9327,7 @@
 /area/maintenance/station/cargo)
 "aBp" = (
 /obj/structure/table/wooden_reinforced,
+/obj/structure/flora/pottedplant/smallcactus,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "aBq" = (

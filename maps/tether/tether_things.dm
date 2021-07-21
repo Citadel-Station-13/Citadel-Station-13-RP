@@ -1,10 +1,10 @@
 //Special map objects
 /obj/effect/landmark/map_data/virgo3b
-    height = 7
+    height = 6
 
 /obj/turbolift_map_holder/tether
 	name = "Tether Climber"
-	depth = 7
+	depth = 6
 	lift_size_x = 3
 	lift_size_y = 3
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
