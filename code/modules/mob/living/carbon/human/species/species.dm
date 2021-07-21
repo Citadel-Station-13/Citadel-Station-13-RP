@@ -511,3 +511,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	unarmed_types += /datum/unarmed_attack/bite/sharp/numbing
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
+
+/datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
+	return FALSE
