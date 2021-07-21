@@ -16,8 +16,7 @@
 		/area/turbolift/t_surface/level3,
 		/area/turbolift/tether/transit,
 		/area/turbolift/t_station/level1,
-		/area/turbolift/t_station/level2,
-		/area/turbolift/t_station/level3
+		/area/turbolift/t_station/level2
 		)
 
 /datum/turbolift

@@ -35868,6 +35868,10 @@
 /obj/item/storage/secure/briefcase,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officea)
+"cdt" = (
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/wood,
+/area/crew_quarters/bar)
 "cdv" = (
 /obj/structure/cable/orange{
 	d1 = 4;
@@ -60136,7 +60140,7 @@ aph
 aIm
 arJ
 arJ
-asX
+cdt
 asX
 asX
 asX

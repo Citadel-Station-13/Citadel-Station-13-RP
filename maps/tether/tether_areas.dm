@@ -67,12 +67,6 @@
 	lift_floor_name = "Chapel, Cargo, EVA, Gateway"
 	lift_announce_str = "Arriving at Station Level 2."
 
-/area/turbolift/t_station/level3
-	name = "asteroid (level 3)"
-	lift_floor_label = "Asteroid 3"
-	lift_floor_name = "CAUTION - Demolition Zone - CAUTION"
-	lift_announce_str = "Arriving at Station Level 3."
-
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
