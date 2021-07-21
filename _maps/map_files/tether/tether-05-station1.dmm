@@ -9205,9 +9205,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "arV" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -17304,9 +17302,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "aOU" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -18152,9 +18148,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "aYA" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -18312,9 +18306,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "bbE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -19033,9 +19025,7 @@
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/red/bordercorner2,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "bne" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -19090,9 +19080,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "bnI" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/disposalpipe/segment{
@@ -20647,9 +20635,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "cCH" = (
 /obj/machinery/sleep_console{
 	dir = 4
@@ -20841,9 +20827,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "dbZ" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -20938,9 +20922,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "djL" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -21152,9 +21134,7 @@
 	},
 /obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "dHD" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -21359,9 +21339,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "elH" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -21438,9 +21416,7 @@
 /obj/effect/floor_decal/corner/red/border,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "ewg" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -21476,9 +21452,7 @@
 	},
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "eGb" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -21603,9 +21577,7 @@
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "eWJ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -21852,9 +21824,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "fsU" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -22031,9 +22001,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "fLx" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 1
@@ -22267,9 +22235,7 @@
 	pixel_y = 26
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "gak" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -22279,9 +22245,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "gaW" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -22421,9 +22385,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "gtM" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -22661,9 +22623,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "hlf" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -22864,9 +22824,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "hKn" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
@@ -22926,9 +22884,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "hRZ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
@@ -23071,9 +23027,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "ijz" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -23191,9 +23145,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "iqF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/wall/rshull,
@@ -23312,9 +23264,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "iOq" = (
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -23365,9 +23315,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "iZq" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -23378,9 +23326,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "iZX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
@@ -23458,9 +23404,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "jtH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -23605,9 +23549,7 @@
 /area/shuttle/medivac/general)
 "jLl" = (
 /turf/simulated/wall,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "jMQ" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -23769,9 +23711,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "ksO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -23952,9 +23892,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "kRp" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -24341,9 +24279,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "mgG" = (
 /obj/structure/cable/green{
 	d1 = 16;
@@ -24395,9 +24331,7 @@
 /area/tether/exploration/crew)
 "mlJ" = (
 /turf/simulated/wall/r_wall,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "mnt" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
@@ -24565,9 +24499,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "mTv" = (
 /obj/machinery/light_switch{
 	dir = 6;
@@ -24674,9 +24606,7 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "niu" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -24706,9 +24636,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "nnZ" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -24786,9 +24714,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "nyw" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait,
 /obj/structure/cable/cyan{
@@ -24838,9 +24764,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "nIn" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -24868,9 +24792,7 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "nOq" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -24954,9 +24876,7 @@
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "nYF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 10
@@ -25543,9 +25463,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "pyX" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 25
@@ -25620,9 +25538,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "pIY" = (
 /obj/structure/table/woodentable,
 /obj/item/folder/blue,
@@ -25651,9 +25567,7 @@
 	},
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "pQq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 5
@@ -25698,9 +25612,7 @@
 "pVz" = (
 /obj/structure/sign/warning/secure_area,
 /turf/simulated/wall/r_wall,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "pWC" = (
 /obj/machinery/computer/ship/sensors{
 	dir = 8
@@ -25740,9 +25652,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "qdJ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -25844,9 +25754,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "qpN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -26013,9 +25921,7 @@
 	dir = 8
 	},
 /turf/simulated/floor,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "qER" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -26124,9 +26030,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "qXV" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -26666,9 +26570,7 @@
 "rPy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "rXf" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -26688,9 +26590,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "rXI" = (
 /obj/structure/cable/green{
 	d2 = 2;
@@ -26973,9 +26873,7 @@
 	req_one_access = list(38,63)
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "sEX" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/cable{
@@ -27580,9 +27478,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "urN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -27653,9 +27549,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "uDz" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -27716,9 +27610,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "uIC" = (
 /turf/simulated/wall/r_wall,
 /area/ai_upload)
@@ -28154,9 +28046,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "vGo" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -28404,9 +28294,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "wpi" = (
 /obj/structure/cable/cyan{
 	d1 = 1;
@@ -28436,9 +28324,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "wtU" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -28826,9 +28712,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "xvM" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -28852,9 +28736,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "xDA" = (
 /obj/machinery/light{
 	dir = 8
@@ -29168,9 +29050,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "yfW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -29187,9 +29067,7 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "ygS" = (
 /obj/structure/cable/green{
 	d2 = 8;
@@ -29221,9 +29099,7 @@
 	req_access = list(38,63)
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "yib" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -29313,9 +29189,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/security/hallway{
-	name = "\improper Security Customs"
-	})
+/area/security/customs)
 "yje" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
