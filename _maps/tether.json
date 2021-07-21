@@ -8,7 +8,6 @@
         "tether-04-transit.dmm",
         "tether-05-station1.dmm",
         "tether-06-station2.dmm",
-        "tether-07-station3.dmm",
         "tether-08-mining.dmm",
         "tether-09-solars.dmm"
    ],
@@ -57,14 +56,6 @@
       },
       {
         "Up":1,
-        "Down":-1,
-        "Station":true,
-        "Linkage":null,
-        "Gravity":true,
-        "Baseturf":"/turf/space",
-		"FacilityWeaponLock":true
-      },
-      {
         "Down":-1,
         "Station":true,
         "Linkage":null,
