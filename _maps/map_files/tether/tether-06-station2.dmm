@@ -3616,22 +3616,19 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "ano" = (
-/obj/structure/railing{
-	dir = 8
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
 	},
-/obj/structure/closet,
-/obj/random/maintenance/clean,
-/obj/random/maintenance/engineering,
-/obj/random/maintenance/medical,
-/obj/random/junk,
-/obj/random/medical/lite,
-/obj/random/tool,
-/obj/random/maintenance/security,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "anq" = (
 /obj/machinery/light/small,
 /obj/structure/reagent_dispensers/watertank,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "ant" = (
@@ -3784,7 +3781,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "anI" = (
@@ -4084,7 +4080,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "aok" = (
-/obj/structure/railing,
 /obj/structure/table/rack{
 	dir = 8;
 	layer = 2.9
@@ -4339,11 +4334,15 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
 "aoO" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
+/obj/structure/railing,
+/obj/structure/closet,
+/obj/random/maintenance/clean,
+/obj/random/maintenance/engineering,
+/obj/random/maintenance/medical,
+/obj/random/junk,
+/obj/random/medical/lite,
+/obj/random/tool,
+/obj/random/maintenance/security,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "aoP" = (
@@ -12826,13 +12825,8 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "aKA" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
+/obj/structure/railing,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_upper)
 "aKB" = (
@@ -20823,6 +20817,18 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"rrE" = (
+/obj/structure/lattice,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/disposalpipe/down{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/maintenance/station/eng_upper)
+"rDX" = (
+/obj/effect/overmap/visitable/sector/virgo3b,
+/turf/space,
+/area/space)
 "rYs" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -20850,6 +20856,10 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
+"sEN" = (
+/obj/effect/landmark/map_data/virgo3b,
+/turf/space,
+/area/space)
 "sWv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -21362,7 +21372,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+sEN
 "}
 (2,1,1) = {"
 aaa
@@ -21503,7 +21513,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+rDX
 aaa
 "}
 (3,1,1) = {"
@@ -27653,17 +27663,17 @@ aat
 aUO
 aYM
 akk
+aLd
+aLg
+aac
+aaP
+aaP
+aaP
+aaP
+aaP
+aac
+aac
 acy
-agC
-aac
-aaP
-aaP
-aaP
-aaP
-aaP
-aac
-aaP
-aaP
 aac
 aac
 afX
@@ -27805,7 +27815,7 @@ aaP
 aac
 aac
 aac
-aaP
+agC
 aac
 aac
 afX
@@ -28233,10 +28243,10 @@ aaP
 aaP
 aaP
 aaP
-aaP
-aaP
-aaP
-aaP
+aac
+aac
+aac
+aac
 aaP
 ahQ
 aiu
@@ -28375,9 +28385,9 @@ aaP
 aaP
 aaP
 aaP
-aaP
-aaP
-aaP
+aac
+aac
+aac
 aaP
 aaP
 ahQ
@@ -28515,10 +28525,10 @@ aVb
 aaP
 aaP
 aaP
-aaP
-aaP
-aaP
-aaP
+aac
+aac
+aac
+aac
 aaP
 aaP
 aaP
@@ -28656,10 +28666,10 @@ aVb
 aaP
 aaP
 aaP
-aaP
-aaP
-aaP
-aaP
+aac
+aac
+aac
+aac
 aaP
 aaP
 aaP
@@ -28799,8 +28809,8 @@ aaP
 aaP
 aac
 aac
-aaP
-aaP
+aac
+aac
 aaP
 aaP
 aaP
@@ -28941,7 +28951,7 @@ aaP
 aaP
 aac
 aac
-aaP
+aac
 aaP
 aaP
 aaP
@@ -29079,11 +29089,11 @@ aac
 aac
 aac
 aaP
-aLd
+aaP
 aaP
 aac
 aac
-aaP
+aac
 aaP
 aaP
 aaP
@@ -29221,7 +29231,7 @@ aac
 aac
 aac
 aaP
-aLg
+aaP
 aaP
 aac
 aac
@@ -29670,7 +29680,7 @@ aov
 aoy
 aok
 aoO
-amp
+rrE
 ahr
 aqv
 ark

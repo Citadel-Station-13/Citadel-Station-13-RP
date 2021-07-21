@@ -2009,10 +2009,6 @@
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/hallway/station/upper)
-"aQT" = (
-/obj/effect/landmark/map_data/virgo3b,
-/turf/space,
-/area/space)
 "aRn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2055,10 +2051,6 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
-"aXR" = (
-/obj/effect/overmap/visitable/sector/virgo3b,
-/turf/space,
-/area/space)
 "aXT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -2982,7 +2974,7 @@ aaa
 aaa
 aaa
 aaa
-aQT
+aaa
 "}
 (2,1,1) = {"
 aaa
@@ -3123,7 +3115,7 @@ aaa
 aaa
 aaa
 aaa
-aXR
+aaa
 aaa
 "}
 (3,1,1) = {"

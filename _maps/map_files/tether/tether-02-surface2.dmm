@@ -11576,11 +11576,6 @@
 /area/tether/surfacebase/security/middlehall)
 "asE" = (
 /obj/item/book/manual/security_space_law,
-/obj/item/gun/projectile/shotgun/pump/combat{
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag;
-	desc = "Built for close quarters combat, the Hesphaistos Industries KS-40 is widely regarded as a weapon of choice for repelling boarders. This one has 'Property of the Warden' inscribed on the stock.";
-	name = "warden's shotgun"
-	},
 /obj/structure/closet/secure_closet/warden,
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor{
