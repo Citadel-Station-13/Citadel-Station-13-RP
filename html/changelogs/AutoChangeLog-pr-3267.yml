@@ -1,4 +1,0 @@
-author: "Linzolle"
-delete-after: True
-changes: 
-  - bugfix: "sensor console no longer prints out blank paper"
