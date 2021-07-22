@@ -249,3 +249,15 @@
 							/obj/item/stock_parts/capacitor = 1,
 							/obj/item/stock_parts/spring = 1,
 							/obj/item/stack/cable_coil = 5)
+
+/obj/item/circuitboard/operating_table
+	name = T_BOARD("operating table")
+	build_path = /obj/machinery/optable
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
+	req_components = list(
+							/obj/item/stock_parts/manipulator = 2,
+							/obj/item/stock_parts/scanning_module = 2,
+							/obj/item/stock_parts/console_screen = 1,
+							/obj/item/healthanalyzer = 1,
+							/obj/item/stack/material/glass/reinforced = 2)
