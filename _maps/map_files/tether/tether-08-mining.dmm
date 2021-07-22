@@ -914,6 +914,7 @@
 /obj/structure/closet/hydrant{
 	pixel_y = -32
 	},
+/obj/structure/flora/pottedplant/bamboo,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "bX" = (
