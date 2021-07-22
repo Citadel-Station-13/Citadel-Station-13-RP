@@ -3,6 +3,7 @@
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
+	circuit = /obj/item/circuitboard/operating_table
 	density = 1
 	anchored = 1.0
 	use_power = USE_POWER_IDLE
@@ -16,6 +17,17 @@
 
 /obj/machinery/optable/Initialize(mapload)
 	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/console_screen(src)
+	component_parts += new /obj/item/healthanalyzer(src)
+	component_parts += new /obj/item/stack/material/glass/reinforced (src, 2)
+
+	RefreshParts()
+
 	for(var/direction in list(NORTH,EAST,SOUTH,WEST))
 		computer = locate(/obj/machinery/computer/operating, get_step(src, direction))
 		if(computer)
