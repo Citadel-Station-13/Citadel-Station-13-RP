@@ -175,7 +175,7 @@
 
 /obj/item/material/knife/tacknife/survival
 	name = "streamlined survival knife"
-	desc = "A hunting grade survival knife. The bulky storage handle and has been replaced with a sleek grip and the ability to easily upgrade the blade."
+	desc = "A hunting grade survival knife. The bulky storage handle has been replaced with a sleek grip and the ability to easily upgrade the blade."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
