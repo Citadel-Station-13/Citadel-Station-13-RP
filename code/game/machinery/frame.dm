@@ -186,11 +186,6 @@
 	x_offset = 24
 	y_offset = 24
 
-/datum/frame/frame_types/operating_table
-	name = "Operating Table"
-	frame_class = FRAME_CLASS_MACHINE
-	frame_size = 5
-
 //////////////////////////////
 // Frame Object (Structure)
 //////////////////////////////
