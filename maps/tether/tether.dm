@@ -8,6 +8,8 @@
 	#include "tether_shuttles.dm"
 	#include "tether_telecomms.dm"
 	#include "tether_jobs.dm"
+	#include "tether_virgo3b.dm"
+	#include "tether_virgo4.dm"
 
 	#include "../../_maps/map_files/tether/tether-01-surface1.dmm"
 	#include "../../_maps/map_files/tether/tether-02-surface2.dmm"
