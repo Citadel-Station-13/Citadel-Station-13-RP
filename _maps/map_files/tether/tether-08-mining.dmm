@@ -1376,10 +1376,6 @@
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
-"cP" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-/area/outpost/mining_main/drill_equipment)
 "cQ" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
@@ -5603,8 +5599,6 @@ ch
 cH
 ch
 ch
-cH
-cP
 Px
 Gs
 QZ
@@ -5615,6 +5609,8 @@ aF
 ab
 cm
 cm
+cm
+zI
 "}
 (26,1,1) = {"
 zI
@@ -5746,8 +5742,6 @@ ch
 ch
 Pv
 FI
-cP
-Px
 wy
 tt
 vx
@@ -5757,6 +5751,8 @@ aF
 ab
 cm
 cm
+cm
+zI
 "}
 (27,1,1) = {"
 zI
