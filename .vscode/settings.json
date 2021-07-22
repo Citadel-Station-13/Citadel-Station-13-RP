@@ -26,9 +26,5 @@
 	},
 	"[scss]": {
 		"editor.rulers": [80]
-	},
-	"tgstationTestExplorer.project.DMEName": "vorestation.dme",
-	"tgstationTestExplorer.project.preCompile": [
-
-	]
+	}
 }
