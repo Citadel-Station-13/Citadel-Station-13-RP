@@ -899,24 +899,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
-"bW" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
-	dir = 8
-	},
-/obj/machinery/camera/network/mining{
-	dir = 1
-	},
-/obj/structure/closet/hydrant{
-	pixel_y = -32
-	},
-/obj/structure/flora/pottedplant/bamboo,
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/break_room)
 "bX" = (
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/borderfloor{
@@ -1624,6 +1606,23 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/break_room)
+"tt" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 1
+	},
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/meter,
+/turf/simulated/floor/tiled/dark,
+/area/outpost/mining_main/airlock)
 "ty" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -1690,6 +1689,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/airlock)
+"wy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/bluegrid,
+/area/outpost/mining_main/airlock)
 "zI" = (
 /turf/unsimulated/mineral/virgo3b,
 /area/mine/explored)
@@ -1745,6 +1751,24 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/maintenance)
+"Dr" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
+/obj/machinery/camera/network/mining{
+	dir = 1
+	},
+/obj/structure/closet/hydrant{
+	pixel_y = -32
+	},
+/obj/structure/flora/pottedplant/bamboo,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/break_room)
 "DX" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -1788,10 +1812,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
-"Fb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/bluegrid,
-/area/outpost/mining_main/airlock)
 "Fn" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -2011,19 +2031,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
-"Zn" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 1
-	},
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
-/turf/simulated/floor/tiled/dark,
-/area/outpost/mining_main/airlock)
 "ZC" = (
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
@@ -4602,7 +4609,7 @@ da
 db
 dc
 dd
-bW
+Dr
 hK
 Ma
 hK
@@ -5595,6 +5602,8 @@ cr
 ch
 cH
 ch
+ch
+cH
 cP
 Px
 Gs
@@ -5606,8 +5615,6 @@ aF
 ab
 cm
 cm
-cm
-zI
 "}
 (26,1,1) = {"
 zI
@@ -5739,8 +5746,10 @@ ch
 ch
 Pv
 FI
-Fb
-Zn
+cP
+Px
+wy
+tt
 vx
 Px
 ab
@@ -5748,8 +5757,6 @@ aF
 ab
 cm
 cm
-cm
-zI
 "}
 (27,1,1) = {"
 zI
