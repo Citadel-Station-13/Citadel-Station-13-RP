@@ -1763,6 +1763,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/station/sec_lower)
@@ -1772,7 +1777,8 @@
 	name = "north bump";
 	pixel_y = 24
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
+	d2 = 2;
 	icon_state = "0-2"
 	},
 /turf/simulated/floor,
@@ -2024,6 +2030,11 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/sec_lower)
 "ajR" = (
@@ -15400,6 +15411,11 @@
 	icon_state = "1-4"
 	},
 /obj/structure/catwalk,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/sec_lower)
 "aQs" = (
