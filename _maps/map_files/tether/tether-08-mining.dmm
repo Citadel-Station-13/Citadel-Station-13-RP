@@ -1789,6 +1789,9 @@
 /area/outpost/mining_main/dorms)
 "Fb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/bluegrid,
 /area/outpost/mining_main/airlock)
 "Fn" = (
@@ -2021,6 +2024,10 @@
 	},
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/meter,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/mining_main/airlock)
 "ZC" = (
@@ -5594,6 +5601,8 @@ cr
 ch
 cH
 ch
+ch
+cH
 cP
 Px
 Gs
@@ -5738,6 +5747,8 @@ ch
 ch
 Pv
 FI
+cP
+Px
 Fb
 Zn
 vx
