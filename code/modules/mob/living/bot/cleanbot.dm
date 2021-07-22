@@ -226,14 +226,15 @@
 	else if(istype(W, /obj/item/stack/material/steel))
 		var/obj/item/stack/material/steel/M = W
 		if(M.amount >= 5)
-			if(user.drop_item(M))
-				M.use(5)
-				var/turf/T = get_turf(loc)
-				var/mob/living/bot/cleanbot/roomba/A = new /mob/living/bot/cleanbot/roomba(T)
-				A.name = created_name
-				to_chat(user, "<span class='notice'>You add the metal sheets onto and around the bucket and sensor assembly. Beep boop!</span>")
-				user.drop_from_inventory(src)
-				qdel(src)
+			M.use(5)
+			var/turf/T = get_turf(loc)
+			var/mob/living/bot/cleanbot/roomba/A = new /mob/living/bot/cleanbot/roomba(T)
+			A.name = created_name
+			to_chat(user, "<span class='notice'>You add the metal sheets onto and around the bucket and sensor assembly. Beep boop!</span>")
+			user.drop_from_inventory(src)
+			qdel(src)
+		else
+			to_chat(user, "<span class='warning'>You need five sheets of metal to encase the sensor.</span>")
 
 	else if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
@@ -255,25 +256,28 @@
 
 /mob/living/bot/cleanbot/roomba/attackby(var/obj/item/W, mob/user)
 	if(istype(W, /obj/item/material/kitchen/utensil/fork) && !armed && user.a_intent != INTENT_HARM)
-		if(user.drop_item(W))
-			qdel(W)
-			to_chat(user, "<span class='notice'>You attach \the [W] to \the [src]. It looks increasingly concerned about its current situation.</span>")
-			armed++
-	else if(istype(W, /obj/item/flame/lighter) && armed == 1 && user.a_intent != INTENT_HARM)
-		if(user.drop_item(W))
-			qdel(W)
-			to_chat(user, "<span class='notice'>You attach \the [W] to \the [src]. It appears to roll its sensor in disappointment before carrying on with its work.</span>")
-			armed++
-			icon_state = "roombot_battle[on]"
+		qdel(W)
+		to_chat(user, "<span class='notice'>You attach \the [W] to \the [src]. It looks increasingly concerned about its current situation.</span>")
+		armed++
+		icon_state = "roombot_battle[on]"
+		update_icon_state(src)
+
+	else if(istype(W, /obj/item/flame/lighter) && !armed && user.a_intent != INTENT_HARM)
+		qdel(W)
+		to_chat(user, "<span class='notice'>You attach \the [W] to \the [src]. It appears to roll its sensor in disappointment before carrying on with its work.</span>")
+		armed++
+		icon_state = "roombot_battle[on]"
+		update_icon_state(src)
 
 	else if (istype(W, /obj/item/clothing/head/headband/maid))
+		qdel(W)
 		var/mob/living/bot/cleanbot/roomba/meido/M = new(get_turf(src))
+		qdel(src)
 
 		if(name != initial(name))
 			M.name = name
 		else
 			name = "maidbot"
-
 	else
 		. = ..()
 
@@ -322,11 +326,11 @@
 		to_chat(user, "<span class='notice'>\The [src] is already wearing one of those!</span>")
 		return
 	else if(W.type == /obj/item/material/knife && !armed && user.a_intent != INTENT_HARM)
-		if(user.drop_item(W))
-			qdel(W)
-			to_chat(user, "<span class='notice'>\the [src] extends a tiny arm from a hidden compartment and grasps \the [W]. Its light blinks excitedly for a moment before returning to normal.</span>")
-			armed++
-			icon_state = "maidbot_battle[on]"
+		qdel(W)
+		to_chat(user, "<span class='notice'>\the [src] extends a tiny arm from a hidden compartment and grasps \the [W]. Its light blinks excitedly for a moment before returning to normal.</span>")
+		armed++
+		icon_state = "maidbot_battle[on]"
+		update_icon_state(src)
 	else
 		. = ..()
 
