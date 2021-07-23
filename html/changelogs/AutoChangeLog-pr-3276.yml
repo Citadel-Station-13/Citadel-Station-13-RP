@@ -1,6 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "Teshari no longer go into pancake death (aka they can glide and survive in normal conditions)"
-  - rscadd: "Teshari now generate a first and last name by default, which makes sense for a insanely social species"
-  - imageadd: "Teshari Medal Sprites"
