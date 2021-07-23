@@ -248,7 +248,6 @@
 	icon_state = "16-0"
 	},
 /obj/structure/cable,
-/obj/effect/ceiling,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "y" = (
@@ -272,7 +271,6 @@
 /obj/structure/disposalpipe/up{
 	dir = 8
 	},
-/obj/effect/ceiling,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "B" = (
@@ -280,7 +278,6 @@
 /area/maintenance/tether_midpoint)
 "C" = (
 /obj/structure/disposalpipe/up,
-/obj/effect/ceiling,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "D" = (
