@@ -46,26 +46,32 @@
 /area/turbolift/t_surface/level2
 	name = "surface (level 2)"
 	lift_floor_label = "Surface 2"
-	lift_floor_name = "Atmos, Maintenance"
+	lift_floor_name = "Atmos, Chapel, Maintenance"
 	lift_announce_str = "Arriving at Base Level 2."
 
 /area/turbolift/t_surface/level3
 	name = "surface (level 3)"
 	lift_floor_label = "Surface 3"
-	lift_floor_name = "Bar, Bridge, Pool, Science"
+	lift_floor_name = "Bridge, Science, Bar, Pool"
 	lift_announce_str = "Arriving at Base Level 3."
 
 /area/turbolift/t_station/level1
 	name = "asteroid (level 1)"
 	lift_floor_label = "Asteroid 1"
-	lift_floor_name = "AI Core, Eng, Exploration, Secondary Bridge"
+	lift_floor_name = "Eng, Secondary Bridge, Park, Cryo, Visitor Offices"
 	lift_announce_str = "Arriving at Station Level 1."
 
 /area/turbolift/t_station/level2
 	name = "asteroid (level 2)"
 	lift_floor_label = "Asteroid 2"
-	lift_floor_name = "Chapel, Cargo, EVA, Gateway"
+	lift_floor_name = "Exploration, AI Core, EVA Gear"
 	lift_announce_str = "Arriving at Station Level 2."
+
+/area/turbolift/t_station/level3
+	name = "asteroid (level 3)"
+	lift_floor_label = "Asteroid 3"
+	lift_floor_name = "Medical, Security, Cargo"
+	lift_announce_str = "Arriving at Station Level 3."
 
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
@@ -155,6 +161,18 @@
 	icon_state = "outside2"
 /area/tether/surfacebase/outside/outside3
 	icon_state = "outside3"
+
+/area/tether/surfacebase/old_tram
+	name = "\improper Construction Tram LL-26"
+
+/area/tether/surfacebase/tunnel
+	name = "Orange Line Tram Tunnel"
+
+/area/tether/surfacebase/old_shelter
+	name = "Abandoned Mining Shelter"
+
+/area/tether/surfacebase/cave
+	name = "Shallow Cave"
 
 /area/tether/surfacebase/outside/empty
 	name = "Outside - Empty Area"
@@ -1216,9 +1234,7 @@
 /area/security/recstorage
 	name = "\improper Brig Recreation Storage"
 	icon_state = "brig"
-/area/security/customs
-	name = "\improper Security Customs Checkpoint"
-	icon_state = "security"
+
 /area/engineering/atmos/backup
 	name = "\improper Backup Atmospherics"
 /area/engineering/engine_balcony
