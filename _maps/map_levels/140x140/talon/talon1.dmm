@@ -298,6 +298,7 @@
 "aE" = (
 /obj/machinery/camera/network/talon,
 /obj/structure/table/rack/steel,
+/obj/item/inducer/syndicate,
 /obj/item/gps,
 /obj/item/gps,
 /obj/item/gps,
@@ -368,10 +369,8 @@
 /area/talon/maintenance/deckone_port)
 "aN" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/space/void/refurb/talon,
-/obj/item/clothing/suit/space/void/refurb/talon,
-/obj/item/clothing/head/helmet/space/void/refurb/talon,
-/obj/item/clothing/head/helmet/space/void/refurb/talon,
+/obj/item/clothing/suit/space/void/mining,
+/obj/item/clothing/head/helmet/space/void/mining,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "aO" = (
@@ -421,12 +420,12 @@
 /area/talon/maintenance/deckone_port)
 "aW" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
 /obj/machinery/alarm/talon{
 	dir = 1;
 	pixel_y = -25
 	},
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
 /turf/simulated/floor/tiled/eris/dark/danger,
@@ -759,7 +758,7 @@
 	},
 /obj/structure/table/rack/steel,
 /obj/item/spaceflare,
-/obj/item/storage/box/flare,
+/obj/item/storage/box/flashshells/large,
 /obj/item/gun/projectile/shotgun/flare,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
@@ -1295,8 +1294,16 @@
 /area/talon/maintenance/deckone_port)
 "cI" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/storage/box/shotgunshells,
-/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/cell/device/weapon{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/item/cell/device/weapon,
+/obj/item/gun/energy/gun/burst,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "cJ" = (
@@ -1395,6 +1402,14 @@
 /area/talon/deckone/port_eng)
 "cQ" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/frontier/locked/holdout{
+	desc = "A minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization.";
+	pin = /obj/item/firing_pin
+	},
+/obj/item/gun/energy/frontier/locked/holdout{
+	desc = "A minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization.";
+	pin = /obj/item/firing_pin
+	},
 /obj/item/gun/energy/frontier,
 /obj/item/gun/energy/frontier,
 /obj/item/gun/energy/frontier,
@@ -2550,7 +2565,11 @@
 /area/talon/deckone/central_hallway)
 "oc" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/inducer/syndicate,
+/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/holster/armpit,
+/obj/item/clothing/accessory/holster/armpit,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "oh" = (
@@ -2961,9 +2980,16 @@
 /area/talon/maintenance/deckone_starboard)
 "sS" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/item/cell/device/weapon{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 5;
+	pixel_y = 1
+	},
 /obj/item/cell/device/weapon,
-/obj/item/cell/device/weapon,
-/obj/item/gun/energy/netgun,
+/obj/item/gun/energy/gun,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "sY" = (
@@ -4232,6 +4258,16 @@
 "Hp" = (
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_eng_store)
+"Hq" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/space/void/refurb/talon,
+/obj/item/clothing/suit/space/void/refurb/talon,
+/obj/item/clothing/suit/space/void/refurb/talon,
+/obj/item/clothing/head/helmet/space/void/refurb/talon,
+/obj/item/clothing/head/helmet/space/void/refurb/talon,
+/obj/item/clothing/head/helmet/space/void/refurb/talon,
+/turf/simulated/floor/tiled/eris/dark/danger,
+/area/talon/deckone/secure_storage)
 "Hy" = (
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/brig)
@@ -5203,6 +5239,16 @@
 	pixel_x = 5;
 	pixel_y = 24
 	},
+/obj/structure/table/standard,
+/obj/item/cell/device/weapon{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/item/cell/device/weapon,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
 "SF" = (
@@ -5368,8 +5414,16 @@
 /area/talon/maintenance/deckone_port)
 "TX" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/frontier/locked/holdout,
-/obj/item/gun/energy/frontier/locked/holdout,
+/obj/item/cell/device/weapon{
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/item/cell/device/weapon{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/item/cell/device/weapon,
+/obj/item/gun/energy/netgun,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "Uq" = (
@@ -14973,7 +15027,7 @@ ab
 ac
 wj
 kN
-aN
+Hq
 kN
 LO
 aR
