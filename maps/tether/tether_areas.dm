@@ -1231,6 +1231,7 @@
 	icon_state = "brig"
 /area/security/customs
 	name = "\improper Security Customs Checkpoint"
+	icon_state = "security"
 
 /area/engineering/atmos/backup
 	name = "\improper Backup Atmospherics"
