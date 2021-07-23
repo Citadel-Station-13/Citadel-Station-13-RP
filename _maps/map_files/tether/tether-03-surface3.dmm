@@ -9328,7 +9328,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "api" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -13074,7 +13074,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "awu" = (
 /obj/machinery/reagentgrinder,
 /obj/structure/table/glass,
@@ -13438,8 +13438,15 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "awT" = (
-/obj/structure/catwalk,
-/turf/simulated/open/virgo3b,
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/structure/bed/chair/comfy/beige,
+/obj/effect/landmark/start{
+	name = "Bartender"
+	},
+/turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
 "awU" = (
 /obj/structure/cable/green{
@@ -13697,7 +13704,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "axq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -13752,7 +13759,7 @@
 "axu" = (
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "axv" = (
 /mob/living/simple_mob/animal/passive/cow,
 /obj/machinery/alarm{
@@ -13791,7 +13798,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "axz" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -14139,7 +14146,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "axZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -19514,7 +19521,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "aHw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -20313,7 +20320,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "aIT" = (
 /obj/machinery/alarm{
 	pixel_y = 25
@@ -21093,7 +21100,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "aKt" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass{
@@ -23694,7 +23701,7 @@
 "aQf" = (
 /obj/machinery/smartfridge/drinks,
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "aQg" = (
 /obj/machinery/vending/cola{
 	dir = 4
@@ -29423,18 +29430,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/door/airlock/freezer{
-	name = "Service";
-	req_access = list(28)
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/white,
+/turf/simulated/wall,
 /area/crew_quarters/kitchen)
 "baG" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -30450,12 +30446,8 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "bcw" = (
-/obj/machinery/light,
-/obj/structure/bed/chair/comfy{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bcx" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -30967,7 +30959,7 @@
 /obj/item/reagent_containers/glass/rag,
 /obj/item/reagent_containers/food/drinks/shaker,
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "bdo" = (
 /obj/effect/decal/cleanable/tomato_smudge,
 /turf/simulated/floor/lino,
@@ -31041,7 +31033,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "bdu" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/bar_alc/full{
@@ -31054,7 +31046,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "bdw" = (
 /obj/machinery/hologram/holopad,
 /obj/structure/disposalpipe/segment{
@@ -31177,7 +31169,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "bdP" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -31391,16 +31383,18 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/barbackmaintenance)
 "beq" = (
-/obj/machinery/door/airlock/freezer{
-	name = "Kitchen Cold Room";
-	req_access = list(28)
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25;
+	target_temperature = 270
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/fans/tiny,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
-/area/crew_quarters/freezer)
+/obj/structure/table/woodentable,
+/obj/machinery/reagentgrinder,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "ber" = (
 /obj/machinery/newscaster{
 	pixel_y = 30
@@ -31420,16 +31414,12 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "bes" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 9
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/obj/machinery/disposal,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bet" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -31474,14 +31464,18 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "bex" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
+/obj/machinery/alarm{
+	pixel_y = 22
 	},
-/obj/machinery/computer/guestpass{
-	pixel_y = 23
+/obj/structure/table/woodentable,
+/obj/item/storage/box/beanbags,
+/obj/item/gun/projectile/shotgun/doublebarrel,
+/obj/item/paper{
+	info = "This permit signifies that the Bartender is permitted to posess this firearm in the bar, and ONLY the bar. Failure to adhere to this permit will result in confiscation of the weapon and possibly arrest.";
+	name = "Shotgun permit"
 	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bey" = (
 /obj/machinery/firealarm{
 	layer = 3.3;
@@ -31544,13 +31538,30 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "beD" = (
-/obj/machinery/camera/network/civilian,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
+/obj/structure/table/woodentable,
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 28
 	},
-/obj/machinery/vending/cola,
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/item/packageWrap,
+/obj/item/destTagger{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/tool/screwdriver,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "beE" = (
 /obj/structure/table/glass,
 /obj/structure/window/reinforced{
@@ -31735,17 +31746,15 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
 "beZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
+	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 2
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bfb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -31828,14 +31837,16 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/southhall)
 "bfk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
+/obj/machinery/light_switch{
+	pixel_x = -10;
+	pixel_y = 26
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/obj/structure/reagent_dispensers/beerkeg,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bfl" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/disposalpipe/segment{
@@ -31857,19 +31868,15 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/structure/closet/secure_closet/bar,
+/obj/machinery/camera/network/civilian{
+	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 1
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bfn" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/structure/table/standard,
@@ -31900,16 +31907,18 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/machinery/door/airlock{
+	id_tag = "barbackdoor";
+	name = "Service";
+	req_access = list(25)
+	},
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
-	},
 /turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/area/tether/surfacebase/bar_backroom)
 "bft" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -32117,30 +32126,31 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bfV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
+/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+	dir = 10
 	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bfW" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -32199,9 +32209,15 @@
 /obj/machinery/requests_console{
 	pixel_x = -30
 	},
-/obj/machinery/vending/cigarette,
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/obj/structure/table/woodentable,
+/obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/food/drinks/metaglass,
+/obj/item/reagent_containers/food/drinks/metaglass,
+/obj/item/reagent_containers/food/drinks/metaglass,
+/obj/item/reagent_containers/food/drinks/metaglass,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bgf" = (
 /obj/structure/noticeboard{
 	pixel_y = 29
@@ -32223,14 +32239,15 @@
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
 "bgh" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 5
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bgi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -32240,11 +32257,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bgj" = (
 /obj/structure/sign/securearea{
 	desc = "Under the painting a plaque reads: 'While the meat grinder may not have spared you, fear not. Not one part of you has gone to waste... You were delicious.'";
@@ -32435,14 +32449,14 @@
 	dir = 4;
 	pixel_x = -30
 	},
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -25;
-	target_temperature = 270
+/obj/structure/closet/gmcloset{
+	name = "formal wardrobe"
 	},
-/obj/structure/closet/crate,
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/obj/item/glass_jar,
+/obj/item/retail_scanner/civilian,
+/obj/item/retail_scanner/civilian,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bgB" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -32496,24 +32510,32 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/bar)
 "bgI" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
 	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/structure/closet/crate,
-/turf/simulated/floor/tiled,
-/area/tether/surfacebase/servicebackroom)
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "bgJ" = (
-/obj/machinery/door/airlock{
-	id_tag = "barbackdoor";
-	name = "Service";
-	req_access = list(25)
+/obj/machinery/button/remote/airlock{
+	id = "barbackdoor";
+	name = "Back Door Locks";
+	pixel_x = 29;
+	pixel_y = -30;
+	specialfunctions = 4
 	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
 "bgK" = (
 /obj/structure/cable/green{
@@ -32547,13 +32569,11 @@
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/stage)
 "bgM" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
+/obj/machinery/light,
+/obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/wood,
 /area/tether/surfacebase/bar_backroom)
 "bgN" = (
 /obj/machinery/door/airlock/silver{
@@ -32564,7 +32584,7 @@
 /area/tether/surfacebase/entertainment)
 "bgO" = (
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "bgP" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -32594,7 +32614,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/lino,
-/area/tether/surfacebase/bar_backroom)
+/area/crew_quarters/bar)
 "bgR" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -39600,6 +39620,18 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
+"niO" = (
+/obj/structure/table/woodentable,
+/obj/item/clothing/head/that{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/flame/lighter/zippo,
+/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba,
+/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba,
+/obj/item/reagent_containers/food/drinks/flask/vacuumflask,
+/turf/simulated/floor/wood,
+/area/tether/surfacebase/bar_backroom)
 "nlf" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -59870,7 +59902,7 @@ aru
 bge
 bfm
 bgA
-aJt
+beq
 aJt
 awt
 bgO
@@ -60012,14 +60044,14 @@ aoJ
 bex
 bfU
 bgI
-aJt
+beZ
 aJt
 axo
 bgO
 bgO
 aph
 bgO
-aJt
+arJ
 arJ
 aTE
 asX
@@ -60296,14 +60328,14 @@ aoJ
 bfk
 bgi
 bcw
-aJt
+bgM
 aJt
 bdu
 axY
 bdn
 aKs
 axu
-aJt
+arJ
 arJ
 beg
 bfR
@@ -60434,18 +60466,18 @@ aoJ
 aGO
 aTg
 aTZ
-beq
+aoJ
 bes
-bcB
-aLF
+bgi
+awT
+niO
 aJt
-aJt
-bgM
-bgM
-bgM
-bgM
-bgM
-bgM
+bfM
+bfM
+bfM
+bfM
+bfM
+bfM
 aVw
 bfB
 bgE
@@ -60577,17 +60609,17 @@ aHi
 aTl
 aUa
 aoJ
-beZ
+aJt
 bfq
-aFM
 aJt
 aJt
-awT
-awT
-awT
-awT
-awT
-awT
+aJt
+adG
+adG
+adG
+adG
+adG
+adG
 bbU
 bfF
 bgH
