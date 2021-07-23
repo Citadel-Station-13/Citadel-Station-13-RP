@@ -34,6 +34,9 @@
 /obj/machinery/camera/network/outside{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "aaj" = (
@@ -56,6 +59,9 @@
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
@@ -965,14 +971,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/public_garden_maintenence)
 "abH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 6
-	},
-/obj/machinery/alarm{
-	pixel_y = 22
-	},
 /obj/machinery/meter,
 /obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -1601,6 +1604,9 @@
 	dir = 10
 	},
 /obj/machinery/floodlight,
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining_eva)
 "acR" = (
@@ -6911,8 +6917,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "alE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/storage/surface_eva)
@@ -8598,6 +8604,9 @@
 "aor" = (
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/storage/surface_eva/external)
@@ -17610,6 +17619,9 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "aCL" = (
@@ -17721,6 +17733,9 @@
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
@@ -21448,10 +21463,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "aJw" = (
@@ -31279,6 +31294,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
+"bex" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "biK" = (
 /obj/structure/barricade/cutout/mime,
 /turf/simulated/floor/carpet/bcarpet,
@@ -31747,6 +31768,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
+"cRX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining_eva)
 "cUh" = (
 /obj/item/storage/belt/utility{
 	desc = "It's full of holes and tears.";
@@ -31868,6 +31895,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
+"dne" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "doa" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -31981,6 +32014,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lowerhall)
+"dKX" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "dMu" = (
 /obj/machinery/light{
 	dir = 4
@@ -32331,6 +32370,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
+"eWg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "eWR" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/clean,
@@ -32510,6 +32555,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lowerhall)
+"fNQ" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/lowernortheva/external)
 "fOy" = (
 /obj/machinery/shower{
 	pixel_y = 16
@@ -32852,6 +32904,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
+"gUQ" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "gVe" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -33018,6 +33076,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker/laundry_arrival)
+"hwc" = (
+/obj/machinery/door/airlock/maintenance/common{
+	req_one_access = newlist()
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining_eva)
 "hzx" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -33345,6 +33410,18 @@
 "igw" = (
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
+"ilL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/storage/surface_eva)
 "ilZ" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -33973,6 +34050,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
+"kzg" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/lowernortheva/external)
 "kAm" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -34094,6 +34175,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
+"kMo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining_eva)
 "kMG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -34209,6 +34296,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
+"lfm" = (
+/obj/structure/sign/atmos_air{
+	name = "Mech Refill Point";
+	pixel_y = 32
+	},
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "lhM" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
@@ -34688,6 +34782,10 @@
 /obj/random/drinkbottle,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
+"mzw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining_eva)
 "mAR" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -34779,6 +34877,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
+"mIZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "mOz" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -35239,6 +35343,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lowerhall)
+"nSN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "nTC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -35288,6 +35398,16 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"oeJ" = (
+/obj/structure/sign/atmos_air{
+	name = "Mech Refill Point";
+	pixel_y = 32
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/lowernortheva/external)
 "ofS" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -35391,6 +35511,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/vacant_site)
+"onX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining_eva)
 "oox" = (
 /obj/item/radio/intercom{
 	pixel_y = -24
@@ -35780,6 +35910,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
+"pWg" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "pZb" = (
 /obj/structure/closet/wardrobe/orange,
 /turf/simulated/floor/tiled/dark,
@@ -35871,6 +36007,13 @@
 /obj/item/bedsheet,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/brig)
+"qla" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "qmc" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -35979,6 +36122,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/weaponsrange)
+"qKf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "qKn" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central1{
 	dir = 8
@@ -36182,6 +36333,11 @@
 /obj/item/bedsheet/mimedouble,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
+"rtz" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "ruj" = (
 /obj/machinery/door/airlock/silver{
 	name = "Mime's Office";
@@ -36232,6 +36388,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
+"ryc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/maintenance/asmaint2)
 "rzF" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/rust,
@@ -36357,6 +36521,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
+"rSp" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/lowernortheva/external)
 "rSG" = (
 /obj/machinery/light/small,
 /obj/structure/cable/green{
@@ -36596,6 +36766,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
+"sHL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "sHO" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 1
@@ -37166,6 +37340,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/public_garden_maintenence)
+"uFp" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "uFs" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -37299,6 +37479,15 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
+"vkh" = (
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining_eva)
 "vkL" = (
 /obj/machinery/power/apc{
 	pixel_y = -25
@@ -37479,6 +37668,10 @@
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
+"vZQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "waR" = (
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
@@ -41250,11 +41443,11 @@ adK
 aah
 aah
 aah
-aah
-aah
-aah
-aad
-aad
+adK
+adK
+adK
+adK
+lfm
 aad
 aad
 aad
@@ -41392,11 +41585,11 @@ adK
 aah
 aah
 aah
-aah
-aah
-aah
-aah
-aoq
+adK
+aeo
+rtz
+uFp
+dKX
 aoq
 aoq
 aoq
@@ -41534,11 +41727,11 @@ adK
 ajS
 aah
 aah
-aah
-aah
-aah
-aah
-aoq
+adK
+mIZ
+eWg
+qla
+gUQ
 aoq
 aoq
 aoq
@@ -41676,10 +41869,10 @@ ffD
 ajS
 aah
 aah
-aah
-aah
-aah
-aah
+adK
+bex
+rtz
+dne
 aor
 aoV
 aoV
@@ -41818,8 +42011,8 @@ bZC
 ajS
 aah
 aah
-aah
-aah
+adK
+bex
 aiy
 aiy
 aiy
@@ -41960,8 +42153,8 @@ bZC
 ajS
 aah
 aah
-aah
-aah
+adK
+bex
 aiy
 aoe
 aos
@@ -42102,8 +42295,8 @@ bZC
 ajS
 aah
 aah
-aah
-aah
+adK
+bex
 aiy
 aof
 aot
@@ -42244,8 +42437,8 @@ bZC
 ajS
 aah
 aah
-aah
-aah
+adK
+bex
 aiy
 aiy
 aiy
@@ -42387,7 +42580,7 @@ ajS
 aah
 agU
 agU
-agU
+ilL
 agU
 agU
 aou
@@ -44418,9 +44611,9 @@ aKL
 auW
 auW
 aKL
-aah
-aah
-aad
+adK
+adK
+lfm
 aad
 aad
 aad
@@ -44560,9 +44753,9 @@ aKL
 aKL
 aKL
 aKL
-aah
-aah
-aad
+rtz
+uFp
+dKX
 aad
 aad
 aad
@@ -44697,14 +44890,14 @@ adn
 alY
 adn
 aCW
-aKa
-aah
-aah
-aah
-aah
-aah
-aah
-aah
+ryc
+vZQ
+vZQ
+vZQ
+vZQ
+nSN
+qla
+gUQ
 aad
 aad
 aad
@@ -44844,10 +45037,10 @@ adn
 adn
 adn
 adn
-aah
-aah
-aah
-aah
+rtz
+dne
+pWg
+aad
 aad
 aad
 aad
@@ -44988,8 +45181,8 @@ amO
 adn
 adn
 adn
-aah
-aah
+ano
+aad
 aad
 aad
 aad
@@ -45132,7 +45325,7 @@ alY
 adn
 aah
 aah
-aah
+aad
 aad
 aad
 aad
@@ -48182,10 +48375,10 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
+adK
+adK
+adK
+adK
 abT
 abT
 abT
@@ -48324,18 +48517,18 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
 adK
-aah
-aah
-aah
-aah
-aah
-aah
-aah
+aeo
+mIZ
+sHL
+onX
+mzw
+mzw
+mzw
+mzw
+kMo
+cGJ
+cGJ
 abT
 vCb
 acS
@@ -48467,18 +48660,18 @@ aad
 aad
 adK
 adK
-aad
-aad
-aad
+rtz
+qKf
+rtz
 aaq
 aaq
 aaq
 aaq
-aah
-aah
-aah
-aah
-abT
+vkh
+cRX
+mzw
+mzw
+hwc
 abH
 acX
 acX
@@ -48609,8 +48802,8 @@ aae
 aae
 akK
 akK
-aae
-aaf
+kzg
+fNQ
 aai
 aaq
 aaz
@@ -48750,9 +48943,9 @@ aae
 aae
 aae
 aae
-aae
-aae
-aaf
+akK
+oeJ
+rSp
 aak
 aaq
 aaA

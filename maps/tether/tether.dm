@@ -15,7 +15,6 @@
 	#include "../../_maps/map_files/tether/tether-04-transit.dmm"
 	#include "../../_maps/map_files/tether/tether-05-station1.dmm"
 	#include "../../_maps/map_files/tether/tether-06-station2.dmm"
-	#include "../../_maps/map_files/tether/tether-07-station3.dmm"
 	#include "../../_maps/map_files/tether/tether-08-mining.dmm"
 	#include "../../_maps/map_files/tether/tether-09-solars.dmm"
 
