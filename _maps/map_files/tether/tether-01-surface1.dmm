@@ -35143,7 +35143,7 @@
 	desc = "Is this imported?";
 	name = "obscure table"
 	},
-/obj/random/drinkbottle,
+/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
 "mzX" = (
