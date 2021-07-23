@@ -597,6 +597,8 @@
 /area/tether/surfacebase/security/briefingroom
 	name = "\improper Security Briefing Room"
 	lightswitch = 0
+/area/security/customs
+	name = "\improper Security Customs Checkpoint"
 /area/tether/surfacebase/security/iaa
 	name = "\improper Internal Affairs"
 /area/tether/surfacebase/security/iaa/officea
