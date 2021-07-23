@@ -61,8 +61,8 @@
 
 /obj/vehicle/skateboard/Move(var/turf/destination, var/mob/living/H)
 	if(istype(destination,/turf/space) || istype (destination,/turf/simulated/floor/water) || istype(destination,/turf/simulated/floor/outdoors))
-		return 1
 		rough_terrain = TRUE
+		return 1
 	else
 		rough_terrain = FALSE
 	return ..()
@@ -260,8 +260,8 @@
 
 /obj/vehicle/skateboard/hoverboard/Move(var/turf/destination, var/mob/living/H)
 	if(istype(destination,/turf/space) || istype (destination,/turf/simulated/floor/water) || istype(destination,/turf/simulated/floor/outdoors))
-		return 0
 		rough_terrain = FALSE
+		return 0
 	else
 		rough_terrain = FALSE
 	return ..()

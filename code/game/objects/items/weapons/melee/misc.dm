@@ -114,7 +114,8 @@
 	throwforce = 7
 	var/board_item_type = /obj/vehicle/skateboard
 
-/obj/item/melee/skateboard/dropped(mob/user)
+/obj/item/melee/skateboard/dropped(mob/user as mob)
+	..()
 	var/turf/T = get_turf(src)
 	new /obj/vehicle/skateboard(T)
 	user.drop_item(src)
