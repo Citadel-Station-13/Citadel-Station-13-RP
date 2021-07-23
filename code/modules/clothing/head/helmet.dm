@@ -297,3 +297,15 @@
 		flash_protection = FLASH_PROTECTION_NONE
 		blessed = FALSE
 		to_chat(user, "<font color=#4F49AF>The hat does not respond to you.</font>")
+
+/obj/item/clothing/head/helmet/bike_helmet
+	name = "riding helmet"
+	desc = "Safety gear designed to protect the head from impacts. It's a bit dorky."
+	icon_state = "sport"
+	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+
+	color = "#ffffff"
+
+/obj/item/clothing/head/helmet/bike_helmet/random/Initialize(mapload)
+	. = ..()
+	color = rgb(rand(1,255),rand(1,255),rand(1,255))

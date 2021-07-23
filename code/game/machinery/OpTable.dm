@@ -25,7 +25,6 @@
 	component_parts += new /obj/item/stock_parts/console_screen(src)
 	component_parts += new /obj/item/healthanalyzer(src)
 	component_parts += new /obj/item/stack/material/glass/reinforced (src, 2)
-
 	RefreshParts()
 
 	for(var/direction in list(NORTH,EAST,SOUTH,WEST))
