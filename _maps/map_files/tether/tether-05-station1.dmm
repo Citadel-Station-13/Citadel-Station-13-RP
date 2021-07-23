@@ -20713,7 +20713,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/head/helmet/space/void/exploration/pathfinder,
 /turf/simulated/floor/tiled,
-/area/space)
+/area/tether/exploration/pathfinder_office)
 "cMd" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -24032,7 +24032,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/space)
+/area/tether/exploration/pathfinder_office)
 "lnN" = (
 /obj/effect/floor_decal/sign/dock/two,
 /obj/structure/cable/green{
@@ -24856,7 +24856,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/space)
+/area/tether/exploration/pathfinder_office)
 "nWg" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -25606,9 +25606,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
-"pUo" = (
-/turf/simulated/wall/r_wall,
-/area/space)
 "pVz" = (
 /obj/structure/sign/warning/secure_area,
 /turf/simulated/wall/r_wall,
@@ -25667,7 +25664,7 @@
 	req_access = list(67)
 	},
 /turf/simulated/floor/tiled,
-/area/space)
+/area/tether/exploration/pathfinder_office)
 "qdM" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -43616,7 +43613,7 @@ ahz
 aaf
 aac
 aac
-pUo
+oZS
 nUB
 lnx
 cIr
