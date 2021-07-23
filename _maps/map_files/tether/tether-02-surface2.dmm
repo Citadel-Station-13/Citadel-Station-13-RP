@@ -394,15 +394,8 @@
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/centralhall)
 "aaI" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
 	},
 /obj/machinery/light{
 	dir = 8
@@ -441,36 +434,19 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/medical/morgue)
 "aaL" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "aaM" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -486,9 +462,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -501,11 +474,6 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "aaO" = (
@@ -515,19 +483,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
@@ -556,20 +516,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
 	},
@@ -594,7 +540,8 @@
 	pixel_y = 24
 	},
 /obj/structure/cable/green{
-	icon_state = "0-8"
+	d2 = 2;
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
@@ -1191,7 +1138,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "abJ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -2007,10 +1954,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralstairwell)
 "ada" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -2824,6 +2767,10 @@
 "aes" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "aet" = (
@@ -3474,18 +3421,14 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/patient_b)
 "afo" = (
-/obj/structure/bed/chair/wheelchair{
-	dir = 8
-	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 8
+	},
+/obj/machinery/computer/transhuman/designer{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/examroom)
@@ -3505,6 +3448,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
+"afs" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/tether/surfacebase/medical/examroom)
 "aft" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -3901,9 +3850,6 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/medical/patient_c)
 "afY" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = -24
@@ -3913,6 +3859,9 @@
 	},
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 8
+	},
+/obj/structure/bed/chair/wheelchair{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/examroom)
@@ -3965,10 +3914,6 @@
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "agd" = (
@@ -4424,18 +4369,19 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralstairwell)
 "agT" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
@@ -4513,6 +4459,17 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "ahb" = (
@@ -4520,6 +4477,14 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "ahc" = (
@@ -4843,6 +4808,14 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "ahE" = (
@@ -4892,24 +4865,36 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "ahH" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 4;
-	name = "CMO Office";
-	sortType = "CMO Office"
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/surface_two_hall)
+/obj/effect/floor_decal/corner/pink/border{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
+/turf/simulated/floor/tiled/white,
+/area/tether/surfacebase/medical/examroom)
 "ahI" = (
-/obj/structure/disposalpipe/sortjunction{
-	dir = 4;
-	name = "Medical Breakroom";
-	sortType = "Medical Breakroom"
+/obj/structure/cable/green{
+	dir = 1;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/surface_two_hall)
+/turf/simulated/floor/tiled/white,
+/area/tether/surfacebase/medical/centralhall)
 "ahJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4934,9 +4919,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
@@ -4957,18 +4942,25 @@
 "ahO" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/green/border,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/sortjunction/flipped{
+	dir = 4;
+	name = "CMO Office";
+	sortType = "CMO Office"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "ahP" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/green/border,
-/obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j2"
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/green/border{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/sortjunction/flipped{
+	name = "Trash";
+	sortType = "Trash"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
@@ -4979,14 +4971,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /obj/structure/cable/green{
-	icon_state = "1-4"
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
@@ -5263,13 +5256,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "aiq" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techfloor,
+/obj/machinery/light/small{
+	dir = 4;
+	icon_state = "bulb1"
+	},
+/turf/simulated/floor,
 /area/maintenance/substation/medsec)
 "air" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -5412,6 +5408,9 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "aiz" = (
@@ -8120,7 +8119,7 @@
 /area/tether/surfacebase/security/armory)
 "amD" = (
 /turf/simulated/wall/r_wall,
-/area/maintenance/lower/north)
+/area/maintenance/substation/medsec)
 "amE" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Surfsec Substation Bypass"
@@ -8151,14 +8150,20 @@
 /turf/simulated/floor,
 /area/maintenance/substation/medsec)
 "amH" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Security Substation";
-	secured_wires = 1
-	},
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/structure/closet/toolcloset,
+/obj/random/tool,
+/obj/random/tool,
+/obj/random/tool,
+/obj/random/tool,
+/obj/random/tool,
+/obj/random/tool,
+/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil/random,
 /turf/simulated/floor,
 /area/maintenance/substation/medsec)
 "amI" = (
@@ -8857,9 +8862,15 @@
 /turf/simulated/floor,
 /area/maintenance/lower/north)
 "anW" = (
-/obj/effect/floor_decal/rust,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/maintenance/lower/rnd)
 "anX" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -9360,7 +9371,11 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/techfloor,
+/obj/structure/closet/crate/trashcart,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/turf/simulated/floor,
 /area/maintenance/substation/medsec)
 "aoJ" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
@@ -9527,6 +9542,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
+"aoZ" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/chapel/main)
 "apa" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment,
@@ -9592,7 +9610,9 @@
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/disposalpipe/up,
+/obj/structure/disposalpipe/up{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "apg" = (
@@ -9606,21 +9626,18 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/railing{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "api" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/rnd)
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/east_stairs_two)
 "apj" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
@@ -9632,19 +9649,26 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "apl" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "apm" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	dir = 4
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "apn" = (
@@ -10096,12 +10120,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
 "apU" = (
-/obj/structure/disposalpipe/segment{
+/obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/border_only,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/rnd)
+/turf/simulated/floor/tiled/techmaint,
+/area/tether/surfacebase/east_stairs_two)
 "apV" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -10155,15 +10180,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "aqb" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /turf/simulated/floor,
 /area/maintenance/substation/medsec)
 "aqc" = (
@@ -10213,24 +10229,19 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/bathroom)
 "aqg" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/rnd)
+/turf/simulated/mineral,
+/area/tether/surfacebase/reading_room)
 "aqh" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/mob/living/simple_mob/animal/passive/snake/noodle,
 /turf/simulated/floor/grass,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aqi" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aqj" = (
 /obj/structure/symbol/da{
 	pixel_x = 32
@@ -11287,14 +11298,14 @@
 /area/maintenance/substation/medsec)
 "ase" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/medsec)
@@ -11387,12 +11398,12 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/lower/south)
 "asn" = (
 /obj/item/clothing/under/batter,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/lower/south)
 "aso" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
@@ -11487,7 +11498,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/lower/south)
 "asy" = (
 /obj/structure/table/rack/holorack,
 /obj/random/maintenance/clean,
@@ -11702,10 +11713,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
 "asN" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/engineering{
-	name = "Security Substation";
-	secured_wires = 1
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/medsec)
@@ -11715,7 +11729,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/lower/south)
 "asP" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -11768,7 +11782,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/tether/surfacebase/outside/outside2)
+/area/maintenance/lower/south)
 "asV" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -13012,16 +13026,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
-"auX" = (
-/obj/structure/catwalk,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
 "auY" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -13826,9 +13830,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
-"aww" = (
-/turf/simulated/mineral,
-/area/maintenance/lower/public_garden_maintenence/upper)
 "awx" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -14499,16 +14500,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
-"axH" = (
-/turf/simulated/mineral,
-/area/maintenance/lower/mining)
 "axI" = (
 /obj/structure/closet/crate,
 /obj/random/cash,
 /obj/random/contraband,
 /obj/random/drinkbottle,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/maintenance/lower/bar)
 "axJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -14677,18 +14675,13 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
-"ayh" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/surface_two_hall)
 "ayi" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
@@ -14706,10 +14699,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
@@ -14946,9 +14935,10 @@
 "ayM" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/green/border,
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/sortjunction/flipped{
+	dir = 4;
+	name = "Medical Breakroom";
+	sortType = "Medical Breakroom"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
@@ -14961,7 +14951,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "ayO" = (
@@ -15400,21 +15393,14 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 8
 	},
-/obj/structure/disposalpipe/sortjunction/flipped{
-	name = "Trash";
-	sortType = "Trash"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "azR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
 	},
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
@@ -15642,7 +15628,6 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 5
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "aAu" = (
@@ -15799,8 +15784,7 @@
 /area/teleporter)
 "aAQ" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
@@ -16100,6 +16084,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
+"aBz" = (
+/turf/simulated/wall,
+/area/chapel/chapel_morgue)
 "aBB" = (
 /obj/machinery/light{
 	dir = 8
@@ -16360,7 +16347,7 @@
 	},
 /obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aCa" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -16371,7 +16358,7 @@
 	},
 /obj/structure/railing,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aCb" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -16380,14 +16367,14 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aCc" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/camera/network/tether,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aCd" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -16400,7 +16387,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aCe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16843,20 +16830,20 @@
 "aCU" = (
 /obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aCV" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8;
 	icon_state = "techfloororange_edges"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aCW" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aCX" = (
 /obj/structure/sign/nanotrasen,
 /turf/simulated/wall,
@@ -16886,7 +16873,7 @@
 	icon_state = "techfloororange_edges"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aDb" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/common,
@@ -17235,14 +17222,14 @@
 "aDL" = (
 /obj/effect/floor_decal/techfloor/corner,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aDM" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aDN" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -17250,11 +17237,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
-"aDO" = (
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"aDP" = (
+/turf/simulated/wall,
+/area/chapel/main)
+"aDQ" = (
+/obj/machinery/recharge_station,
+/turf/simulated/floor/tiled/techfloor,
+/area/chapel/main)
 "aDR" = (
 /obj/machinery/light_switch{
 	dir = 4;
@@ -17263,7 +17253,7 @@
 	pixel_y = 20
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/chapel_morgue)
 "aDV" = (
 /obj/machinery/camera/network/civilian{
 	dir = 4
@@ -17433,7 +17423,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aEn" = (
 /obj/structure/cable/green{
 	d1 = 32;
@@ -17446,7 +17436,7 @@
 	dir = 1
 	},
 /turf/simulated/open,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aEo" = (
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 8
@@ -17472,7 +17462,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aEp" = (
 /obj/structure/cable/green{
 	d1 = 16;
@@ -17498,7 +17488,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aEq" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -17507,7 +17497,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aEr" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -17518,7 +17508,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aEs" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -17555,8 +17545,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
 "aEw" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor,
-/area/maintenance/lower/bar)
+/area/chapel/chapel_morgue)
 "aEx" = (
 /obj/structure/railing{
 	dir = 1
@@ -17823,7 +17816,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aEX" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/machinery/light/small{
@@ -17901,10 +17894,8 @@
 /area/maintenance/lower/rnd)
 "aFj" = (
 /obj/structure/lattice,
-/obj/structure/disposalpipe/down{
-	dir = 4
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/structure/disposalpipe/down,
 /turf/simulated/open,
 /area/maintenance/lower/rnd)
 "aFk" = (
@@ -17919,13 +17910,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/rnd)
-"aFm" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "aFn" = (
@@ -18115,14 +18099,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
-"aFF" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aFH" = (
 /obj/machinery/portable_atmospherics/powered/pump/filled,
 /obj/effect/floor_decal/techfloor{
@@ -18150,16 +18127,16 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
-"aFK" = (
+/area/chapel/chapel_morgue)
+"aFM" = (
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/chapel_morgue)
 "aFN" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/chapel_morgue)
 "aFO" = (
 /obj/machinery/light{
 	dir = 8
@@ -18428,6 +18405,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/bar)
+"aGo" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor,
+/area/chapel/main)
 "aGp" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -18447,17 +18430,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aGr" = (
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aGs" = (
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/asmaint2)
 "aGt" = (
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/chapel_morgue)
 "aGu" = (
 /obj/structure/railing{
 	dir = 1
@@ -18522,19 +18505,19 @@
 "aGG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aGH" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aGI" = (
 /obj/structure/bed/chair/comfy/black,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aGJ" = (
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aGK" = (
 /obj/machinery/firealarm{
@@ -18582,13 +18565,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/asmaint2)
-"aGP" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/grass,
-/area/maintenance/lower/bar)
 "aGQ" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18597,16 +18573,16 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"aGR" = (
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "aGS" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/carpet,
-/area/maintenance/lower/bar)
-"aGT" = (
-/turf/simulated/floor/carpet,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aGU" = (
 /obj/machinery/light_switch{
 	name = "light switch ";
@@ -18622,13 +18598,17 @@
 	range = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"aGW" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "aGX" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aGY" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/effect/floor_decal/industrial/warning{
@@ -18645,9 +18625,6 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aHa" = (
-/obj/structure/bed/chair/comfy/blue{
-	dir = 4
-	},
 /obj/effect/landmark/start{
 	name = "Command Secretary"
 	},
@@ -18655,27 +18632,30 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/carpet/sblucarpet,
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHb" = (
 /obj/item/book/manual/security_space_law,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/table/fancyblack,
-/turf/simulated/floor/carpet/sblucarpet,
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHc" = (
 /obj/item/folder/red,
 /obj/structure/disposalpipe/segment,
-/obj/structure/table/fancyblack,
-/turf/simulated/floor/carpet/sblucarpet,
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHd" = (
-/obj/structure/bed/chair/comfy/blue{
+/obj/structure/bed/chair/comfy/black{
 	dir = 8
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHe" = (
 /obj/machinery/power/apc{
@@ -18708,21 +18688,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
+"aHh" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/chapel/main)
 "aHi" = (
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
-/turf/simulated/floor/grass,
-/area/maintenance/lower/bar)
+/turf/simulated/floor/plating,
+/area/chapel/main)
 "aHj" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/structure/table,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
-"aHl" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/carpet,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aHm" = (
 /turf/simulated/mineral,
 /area/maintenance/asmaint2)
@@ -18765,13 +18746,13 @@
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aHr" = (
-/obj/structure/bed/chair/comfy/blue{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHs" = (
 /obj/item/paper_bin{
@@ -18782,23 +18763,23 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/table/fancyblack,
-/turf/simulated/floor/carpet/sblucarpet,
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHt" = (
 /obj/item/folder/blue,
 /obj/structure/disposalpipe/segment,
-/obj/structure/table/fancyblack,
-/turf/simulated/floor/carpet/sblucarpet,
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHu" = (
-/obj/structure/bed/chair/comfy/blue{
-	dir = 8
-	},
 /obj/effect/landmark/start{
 	name = "Command Secretary"
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHv" = (
 /obj/item/radio/intercom{
@@ -18853,17 +18834,20 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"aHA" = (
+/turf/simulated/floor,
+/area/chapel/chapel_morgue)
 "aHB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aHC" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aHD" = (
 /obj/machinery/camera/network/outside{
 	dir = 5
@@ -18924,20 +18908,20 @@
 /area/tether/surfacebase/surface_two_hall)
 "aHL" = (
 /obj/machinery/hologram/holopad,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHM" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHN" = (
+/obj/structure/disposalpipe/segment,
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/sblucarpet,
+/turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHO" = (
 /obj/effect/floor_decal/borderfloor{
@@ -18968,6 +18952,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
+"aHQ" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/chapel/chapel_morgue)
 "aHS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -18976,7 +18964,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aHT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -18985,7 +18973,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aHU" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -18994,15 +18982,36 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"aHV" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/chapel/chapel_morgue)
+"aHW" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/chapel/main)
+"aHX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/plating,
+/area/chapel/main)
 "aIa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aIb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aId" = (
 /obj/structure/closet,
 /obj/random/maintenance/security,
@@ -19186,7 +19195,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aIz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -19195,7 +19204,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aIA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -19204,7 +19213,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aIB" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -19213,7 +19222,7 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aIC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -19222,29 +19231,24 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aID" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
+/obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aIE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aIF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aIG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -19252,23 +19256,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/carpet,
-/area/maintenance/lower/bar)
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "aIH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/turf/simulated/floor/carpet,
+/area/chapel/main)
 "aII" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aIJ" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
@@ -19374,21 +19372,31 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
+"aIY" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/structure/table,
+/turf/simulated/floor/carpet,
+/area/chapel/main)
 "aIZ" = (
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
-"aJb" = (
+/area/chapel/main)
+"aJa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"aJc" = (
+/obj/structure/table,
+/turf/simulated/floor/plating,
+/area/chapel/main)
 "aJd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aJe" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/maintenance/lower/atmos)
@@ -19538,11 +19546,20 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
+"aJv" = (
+/turf/simulated/wall,
+/area/chapel/office)
+"aJw" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor,
+/area/chapel/office)
 "aJx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aJy" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -19554,7 +19571,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aJz" = (
 /obj/structure/railing{
 	dir = 4
@@ -19735,27 +19752,27 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/lino,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aJS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aJU" = (
 /turf/simulated/floor/lino,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aJV" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aJW" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aJX" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -20089,30 +20106,38 @@
 	dir = 6
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aKD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/lino,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aKE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /turf/simulated/floor/lino,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aKG" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"aKH" = (
+/obj/structure/table/bench,
+/turf/simulated/floor/plating,
+/area/chapel/main)
+"aKI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/chapel/main)
 "aKJ" = (
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aKK" = (
 /obj/structure/table/steel,
 /obj/item/nif/bad,
@@ -20386,18 +20411,27 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aLm" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/lino,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aLn" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/lino,
-/area/maintenance/lower/bar)
+/area/chapel/office)
+"aLo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "aLp" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -20410,6 +20444,24 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tcomsat)
+"aLq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/chapel/main)
+"aLr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor/plating,
+/area/chapel/main)
 "aLs" = (
 /obj/structure/table/rack,
 /obj/item/flashlight,
@@ -20701,13 +20753,22 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "aMa" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
 /turf/simulated/floor,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"aMb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/chapel/main)
+"aMc" = (
+/turf/simulated/floor/outdoors/rocks/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "aMd" = (
 /turf/simulated/floor/outdoors/dirt/virgo3b,
 /area/tether/surfacebase/outside/outside2)
@@ -20989,14 +21050,17 @@
 "aMJ" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/area/chapel/office)
 "aMK" = (
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -24
 	},
 /turf/simulated/floor/lino,
-/area/maintenance/lower/bar)
+/area/chapel/office)
+"aMM" = (
+/turf/simulated/floor/plating,
+/area/chapel/office)
 "aMN" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -23100,9 +23164,6 @@
 /obj/random/tool,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"aQy" = (
-/turf/simulated/wall,
-/area/rnd/workshop)
 "aQz" = (
 /obj/structure/railing{
 	dir = 8
@@ -24972,18 +25033,6 @@
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
-"aUa" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/tether/surfacebase/east_stairs_two)
 "aUb" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -24994,10 +25043,7 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/east_stairs_two)
 "aUc" = (
@@ -25268,7 +25314,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/east_stairs_two)
 "aUL" = (
@@ -25544,7 +25589,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/techmaint,
@@ -26225,7 +26269,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/east_stairs_two)
 "aWo" = (
@@ -26692,6 +26735,7 @@
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 5
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/east_stairs_two)
 "aXi" = (
@@ -26845,12 +26889,10 @@
 /turf/simulated/open,
 /area/engineering/atmos)
 "aXK" = (
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
+/obj/structure/catwalk,
 /turf/simulated/open,
 /area/engineering/atmos)
 "aXL" = (
@@ -26889,10 +26931,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/east_stairs_two)
 "aXN" = (
@@ -26903,7 +26941,8 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	dir = 1;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/east_stairs_two)
@@ -28221,10 +28260,10 @@
 /turf/simulated/open,
 /area/engineering/atmos)
 "bbB" = (
-/obj/structure/railing,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/catwalk,
 /turf/simulated/open,
 /area/engineering/atmos)
 "bbE" = (
@@ -29379,7 +29418,10 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "beO" = (
 /obj/machinery/mecha_part_fabricator/pros{
-	name = "Legitimate Prosthetics Fabricator";
+	component_coeff = 1;
+	desc = "A machine used for construction of legit prosthetics. You weren't sure if cardboard was considered an engineering material before now.";
+	dir = 4;
+	name = "Legitmate Prosthetics Fabricator";
 	req_access = list();
 	res_max_amount = 150000
 	},
@@ -33028,8 +33070,12 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/floor,
 /area/maintenance/substation/medsec)
+"boD" = (
+/obj/structure/table/bench,
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "boF" = (
 /obj/structure/table/glass,
 /obj/machinery/computer/med_data/laptop{
@@ -33048,7 +33094,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/recoveryward)
 "boG" = (
-/obj/structure/undies_wardrobe,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
@@ -33376,6 +33421,16 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
+"bpR" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "bpV" = (
 /obj/structure/window/reinforced/polarized/full{
 	id = "ward_tint"
@@ -33412,12 +33467,30 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
+"brF" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"buW" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
 "bCs" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether/surfacebase/fish_farm)
+"bNt" = (
+/obj/structure/sign/mining/survival,
+/obj/effect/floor_decal/rust,
+/turf/simulated/shuttle/wall/voidcraft,
+/area/tether/surfacebase/old_shelter)
 "bOW" = (
 /obj/structure/railing{
 	dir = 1
@@ -33425,6 +33498,31 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/fish_farm)
+"bSn" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/obj/item/reagent_containers/glass/bucket/wood,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"bSE" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
+"ccf" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
+"chh" = (
+/obj/structure/sign/warning/bomb_range{
+	name = "\improper MINING AREA - WATCH FOR BLASTING"
+	},
+/turf/unsimulated/wall/planetary/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "ckv" = (
 /obj/structure/railing{
 	dir = 4
@@ -33435,29 +33533,38 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/lower/bar)
-"cqe" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+"cFL" = (
+/obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "cJE" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
+"cQJ" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "djo" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/grass,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "djt" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/structure/flora/pottedplant,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
+"dpF" = (
+/turf/simulated/mineral/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "dAB" = (
 /obj/structure/cable/orange{
 	d1 = 4;
@@ -33466,6 +33573,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
+"dNl" = (
+/turf/simulated/mineral,
+/area/tether/surfacebase/east_stairs_two)
 "dSO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -33473,11 +33583,22 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
+"dXv" = (
+/turf/simulated/floor/plating,
+/area/chapel/main)
 "ebp" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
+"edh" = (
+/obj/item/material/minihoe,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"ehI" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "ekH" = (
 /obj/structure/cable/orange{
 	d1 = 1;
@@ -33494,6 +33615,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
+"elS" = (
+/turf/simulated/floor/tiled/techfloor/grid/virgo3b,
+/area/tether/surfacebase/old_tram)
 "etU" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	req_one_access = list(746)
@@ -33507,6 +33631,16 @@
 "eKn" = (
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
+"eNv" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "eOL" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -33520,11 +33654,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
-"eXl" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor,
-/area/maintenance/lower/bar)
 "flk" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/techfloor{
@@ -33539,12 +33668,33 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
+"fvp" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
 "fxr" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
+"fyr" = (
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
+"fBe" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "fIS" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/structure/table/glass,
@@ -33556,6 +33706,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/fish_farm)
+"gdk" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
 "glx" = (
 /obj/structure/cable/orange{
 	d1 = 16;
@@ -33591,17 +33747,93 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/fish_farm)
-"jmM" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor,
-/area/maintenance/lower/bar)
+"gLR" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"gUK" = (
+/turf/unsimulated/mineral/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"hnm" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"hRU" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
+"idu" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"ikR" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"iyz" = (
+/obj/item/reagent_containers/glass/bottle/left4zed,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"iFX" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
+"iMt" = (
+/obj/structure/catwalk,
+/obj/structure/stairs/spawner/south,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"iNK" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
+"iQT" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/voidcraft/survival_pod,
+/obj/effect/floor_decal/rust,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/tether/surfacebase/old_shelter)
 "jCz" = (
 /turf/simulated/wall{
 	can_open = 1
 	},
 /area/tether/surfacebase/public_garden_two)
+"jLj" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
 "jNC" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -33620,6 +33852,25 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
+"jZK" = (
+/obj/structure/stairs/spawner/south,
+/obj/structure/catwalk,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"kjM" = (
+/obj/random/junk,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"kDE" = (
+/obj/structure/sign/mining/survival{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall/voidcraft,
+/area/tether/surfacebase/old_shelter)
+"kOp" = (
+/obj/structure/sign/warning/lethal_turrets,
+/turf/simulated/wall/r_wall,
+/area/tcommsat/chamber)
 "kPb" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -33648,19 +33899,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
-"laD" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/tiled/techfloor,
-/area/tether/surfacebase/outside/outside2)
-"lfX" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable{
-	icon_state = "1-2"
+"kZw" = (
+/obj/structure/railing{
+	dir = 8
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/bar)
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"laD" = (
+/turf/simulated/mineral,
+/area/maintenance/lower/south)
 "llG" = (
 /obj/machinery/space_heater,
 /obj/structure/window/reinforced{
@@ -33679,7 +33926,19 @@
 "lOO" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/grass,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"lTc" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"lWO" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/floodlight,
+/turf/simulated/floor/tiled/techfloor/grid/virgo3b,
+/area/tether/surfacebase/old_tram)
 "mnt" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -33700,6 +33959,17 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
+"mpW" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/grid/virgo3b,
+/area/tether/surfacebase/old_tram)
+"mrH" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
 "mCl" = (
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
@@ -33738,6 +34008,18 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
+"nlA" = (
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"nwI" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"nzq" = (
+/obj/random/junk,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "nFT" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -33752,6 +34034,10 @@
 /obj/item/deck/cah,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
+"nSc" = (
+/obj/machinery/floodlight,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "olc" = (
 /obj/item/grenade/chem_grenade/cleaner{
 	pixel_x = -10
@@ -33759,10 +34045,21 @@
 /obj/item/grenade/anti_photon,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
-"oyo" = (
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+"oMx" = (
+/obj/machinery/sleeper/survival_pod,
+/obj/effect/floor_decal/rust,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/tether/surfacebase/old_shelter)
+"oPK" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"oZh" = (
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "pah" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock{
@@ -33770,11 +34067,24 @@
 	req_access = list(27)
 	},
 /turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+/area/chapel/main)
+"pcN" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/shuttle/wall/voidcraft,
+/area/tether/surfacebase/old_shelter)
+"pdh" = (
+/obj/item/reagent_containers/spray/plantbgone,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "pqb" = (
 /obj/structure/sink/puddle,
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether/surfacebase/fish_farm)
+"pKw" = (
+/obj/structure/railing,
+/obj/structure/lattice,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "pLH" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 10
@@ -33784,15 +34094,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
-"qjS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/maintenance/lower/bar)
+"pTt" = (
+/obj/item/reagent_containers/glass/bottle/eznutrient,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"pWo" = (
+/obj/item/analyzer/plant_analyzer,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "qpA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -33818,6 +34127,66 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/bar)
+"qLQ" = (
+/obj/item/reagent_containers/glass/bottle/diethylamine,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"rfi" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"rhH" = (
+/obj/machinery/smartfridge/survival_pod,
+/obj/item/fbp_backup_cell,
+/obj/item/fbp_backup_cell,
+/obj/item/storage/mre/random,
+/obj/effect/floor_decal/rust,
+/obj/random/junk,
+/obj/random/junk,
+/obj/random/junk,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/tether/surfacebase/old_shelter)
+"rqH" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"rrr" = (
+/obj/structure/railing,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"rsG" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"rzz" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"rEz" = (
+/obj/structure/ladder{
+	pixel_y = 6
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/tiled/techfloor/grid/virgo3b,
+/area/tether/surfacebase/old_tram)
 "rJc" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/effect/landmark/start{
@@ -33851,6 +34220,20 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/lower/bar)
+"snt" = (
+/obj/structure/sign/warning/caution{
+	desc = "No unarmed personnel beyond this point.";
+	name = "\improper DANGER - WILDERNESS"
+	},
+/turf/unsimulated/wall/planetary/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"sue" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "swg" = (
 /obj/structure/railing,
 /obj/structure/catwalk,
@@ -33859,6 +34242,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/fish_farm)
+"sKe" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "sLx" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 4
@@ -33871,6 +34261,24 @@
 	},
 /turf/simulated/floor/water/indoors,
 /area/tether/surfacebase/fish_farm)
+"sSc" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Security Substation";
+	secured_wires = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/substation/medsec)
+"sVf" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/chapel/office)
+"sXo" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/tether/surfacebase/old_shelter)
 "sZp" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -33908,9 +34316,21 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
+"tNw" = (
+/obj/structure/tubes,
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/machinery/button/remote/airlock/survival_pod{
+	dir = 10;
+	pixel_y = -24
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/tether/surfacebase/old_shelter)
 "tPB" = (
 /turf/simulated/floor/grass,
-/area/maintenance/lower/bar)
+/area/chapel/main)
 "uay" = (
 /obj/item/clothing/shoes/syndigaloshes{
 	desc = "A pair of Nanotrasen Saf-T-Stride brown, nonslip, shoes.";
@@ -33918,6 +34338,25 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
+"ueA" = (
+/turf/simulated/shuttle/wall/voidcraft,
+/area/tether/surfacebase/old_shelter)
+"uiV" = (
+/obj/structure/loot_pile/surface/bones,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/gloves/fyellow,
+/obj/item/clothing/under/color/grey,
+/obj/item/clothing/shoes/black,
+/obj/item/clothing/head/hardhat/red,
+/obj/item/tank/emergency/oxygen,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"ujr" = (
+/obj/structure/fans,
+/obj/effect/floor_decal/rust,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/tether/surfacebase/old_shelter)
 "unM" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -33925,6 +34364,14 @@
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
+"uzX" = (
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
+"uAB" = (
+/obj/structure/frame/computer,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/tether/surfacebase/old_shelter)
 "uFL" = (
 /obj/structure/railing{
 	dir = 1
@@ -33935,6 +34382,11 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/fish_farm)
+"uGs" = (
+/obj/structure/stairs/spawner/north,
+/obj/structure/catwalk,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "uHy" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -33959,6 +34411,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
+"uOJ" = (
+/obj/structure/bed/pod,
+/obj/random/junk,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/tether/surfacebase/old_shelter)
+"uYv" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "viY" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -33972,6 +34435,22 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
+"vGp" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"vIP" = (
+/obj/machinery/portable_atmospherics/hydroponics/soil,
+/turf/simulated/mineral/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"vOC" = (
+/obj/structure/railing,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "vTb" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -33986,6 +34465,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
+"vXH" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
+"whG" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/old_tram)
 "wqU" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -33996,6 +34487,29 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
+"wuA" = (
+/obj/structure/table/survival_pod,
+/obj/effect/floor_decal/rust,
+/obj/random/junk,
+/turf/simulated/shuttle/floor/voidcraft,
+/area/tether/surfacebase/old_shelter)
+"wuG" = (
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"wJy" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"wYX" = (
+/obj/structure/sign/mining/survival{
+	dir = 4
+	},
+/turf/simulated/shuttle/wall/voidcraft,
+/area/tether/surfacebase/old_shelter)
 "xbt" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/structure/sign/poster{
@@ -34009,6 +34523,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
+"xma" = (
+/obj/structure/sign/mining,
+/obj/effect/floor_decal/rust,
+/turf/simulated/shuttle/wall/voidcraft,
+/area/tether/surfacebase/old_shelter)
+"xmA" = (
+/obj/structure/sign/warning/high_voltage{
+	name = "\improper SOLAR FARM"
+	},
+/turf/unsimulated/wall/planetary/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "xpO" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -34019,16 +34544,34 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
-"xRu" = (
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor,
-/area/maintenance/lower/bar)
+"xwZ" = (
+/obj/structure/sign/mining/survival{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall/voidcraft,
+/area/tether/surfacebase/old_shelter)
+"xCK" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/simulated/open/virgo3b,
+/area/tether/surfacebase/outside/outside2)
+"xQs" = (
+/obj/structure/simple_door/iron,
+/turf/simulated/floor/virgo3b,
+/area/tether/surfacebase/outside/outside2)
 "xSO" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
+"yiF" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/chapel/office)
 "ylZ" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -34037,579 +34580,605 @@
 /area/maintenance/lower/north)
 
 (1,1,1) = {"
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+aaa
+aaa
+aaa
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+aaa
+aaa
+aaa
+aaa
+aaa
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+aaa
+aaa
+aaa
+aaa
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
 "}
 (2,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+gUK
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+abn
+wuG
+ehI
+ehI
+ehI
+ehI
+ehI
+aeG
+ehI
+ehI
+aeG
+aeG
+ehI
+ehI
+ehI
+ehI
+aeG
+aeG
+ehI
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (3,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+gUK
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+abn
+abn
+wuG
+ehI
+aab
+ehI
+ehI
+ehI
+ehI
+ehI
+ehI
+ehI
+ehI
+ehI
+aeG
+ehI
+ehI
+ehI
+ehI
+ehI
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (4,1,1) = {"
+gUK
+ueA
+ueA
+kDE
+ueA
+pcN
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+aab
+aab
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+aab
+aab
+aab
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+aab
+aab
+aab
+abn
+abn
+abn
+abn
+abn
+abn
+wuG
+wJy
+arj
 aaa
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+cFL
+xmA
+cFL
+cFL
+cFL
+wJy
+wJy
+cFL
+cFL
+cFL
+wJy
+cFL
+cFL
+xmA
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (5,1,1) = {"
-aaa
+gUK
+pcN
+ujr
+oMx
+wuA
+bNt
+abn
+abn
+nzq
+abn
+abn
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
 aab
 aab
 aab
 aab
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -34619,6 +35188,12 @@ aab
 aab
 aab
 aab
+abn
+abn
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -34628,6 +35203,12 @@ aab
 aab
 aab
 aab
+abn
+abn
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -34658,96 +35239,78 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (6,1,1) = {"
-aaa
+gUK
+xwZ
+rhH
+sXo
+sXo
+iQT
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -34819,77 +35382,74 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (7,1,1) = {"
-aaa
+gUK
+pcN
+uAB
+uOJ
+tNw
+xma
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -34966,72 +35526,68 @@ aab
 aab
 aab
 aab
+abn
+abn
+abn
+abn
+abn
+abn
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (8,1,1) = {"
-aaa
+gUK
+ueA
+pcN
+wYX
+ueA
+pcN
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -35121,59 +35677,57 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (9,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+dpF
+dpF
+dpF
+abn
+nzq
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -35266,56 +35820,54 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (10,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -35412,52 +35964,50 @@ aab
 aab
 aab
 aab
+abn
+abn
+abn
+abn
+abn
 aab
 aab
 aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (11,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+dpF
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -35569,37 +36119,36 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (12,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -35720,28 +36269,27 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (13,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -35865,25 +36413,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (14,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -36009,23 +36557,23 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (15,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -36153,21 +36701,21 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (16,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -36296,20 +36844,19 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (17,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -36439,19 +36986,19 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (18,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -36580,20 +37127,20 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (19,1,1) = {"
-aaa
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -36721,25 +37268,21 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (20,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -36867,21 +37410,21 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (21,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -37008,22 +37551,22 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (22,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -37150,22 +37693,22 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (23,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -37292,22 +37835,22 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (24,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -37435,21 +37978,21 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (25,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -37577,21 +38120,21 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (26,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -37719,17 +38262,21 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (27,1,1) = {"
-aaa
+gUK
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -37745,10 +38292,6 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
 adt
 adt
 adt
@@ -37818,12 +38361,6 @@ adt
 adt
 adt
 adt
-aab
-aab
-aab
-aab
-aab
-aab
 aab
 aab
 aab
@@ -37868,10 +38405,20 @@ aab
 aab
 aab
 aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (28,1,1) = {"
-aaa
+gUK
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -37887,10 +38434,6 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
 adt
 adt
 adt
@@ -37960,11 +38503,6 @@ adt
 adt
 adt
 adt
-aab
-aab
-aab
-aab
-aab
 aab
 aab
 aab
@@ -38010,10 +38548,19 @@ aab
 aab
 aab
 aab
-aaa
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (29,1,1) = {"
-aaa
+gUK
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -38029,10 +38576,6 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
 adt
 adt
 adt
@@ -38103,11 +38646,6 @@ adt
 adt
 adt
 adt
-aab
-aab
-aab
-aab
-aab
 aab
 aab
 aab
@@ -38152,10 +38690,18 @@ aab
 aab
 aab
 aab
-aaa
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (30,1,1) = {"
-aaa
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -38172,9 +38718,6 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
 adt
 adt
 adt
@@ -38245,11 +38788,6 @@ adt
 adt
 adt
 adt
-aab
-aab
-aab
-aab
-aab
 aab
 aab
 aab
@@ -38294,13 +38832,18 @@ aab
 aab
 aab
 aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (31,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -38431,18 +38974,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+gUK
 "}
 (32,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -38574,17 +39117,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+gUK
 "}
 (33,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -38717,16 +39260,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+abn
+abn
+abn
 aaa
 "}
 (34,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -38859,16 +39402,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+abn
+abn
+abn
 aaa
 "}
 (35,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -39001,16 +39544,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+abn
+abn
+abn
 aaa
 "}
 (36,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -39098,11 +39641,11 @@ adt
 adt
 adt
 aab
-aab
-aab
-aab
-aab
-aab
+arj
+arj
+arj
+arj
+arj
 aab
 aab
 aab
@@ -39144,15 +39687,15 @@ aab
 aab
 aab
 aab
-aab
-aab
+abn
+abn
 aaa
 "}
 (37,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -39238,17 +39781,17 @@ adt
 adt
 adt
 adt
-adt
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
+aac
+pKw
+uGs
+ark
+ark
+ark
+jZK
+fBe
+lTc
+acp
+acp
 bdS
 bel
 beH
@@ -39286,15 +39829,15 @@ aab
 aab
 aab
 aab
-aab
-aab
+abn
+abn
 aaa
 "}
 (38,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -39382,14 +39925,14 @@ adt
 adt
 adt
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
+kZw
+brF
+ark
+ark
+ark
+ark
+ark
+cQJ
 aab
 bdS
 bem
@@ -39427,16 +39970,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+abn
+abn
+abn
 aaa
 "}
 (39,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -39525,13 +40068,13 @@ adt
 aab
 aab
 aab
-aab
-aab
+vOC
+ark
 ael
 ael
 ael
-aab
-aab
+ark
+hnm
 aab
 bdS
 ben
@@ -39569,15 +40112,15 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+gUK
 "}
 (40,1,1) = {"
-aaa
-aab
-aab
+gUK
+abn
+abn
 aab
 aab
 aab
@@ -39662,19 +40205,19 @@ aHE
 adt
 adt
 adt
-adt
-aab
-aab
-aab
-aab
-aab
-aab
+aac
+acp
+acp
+acp
+acp
+pKw
+ark
 ael
 ael
 ael
-aab
-aab
-aab
+ark
+ark
+ark
 bdS
 beo
 beJ
@@ -39710,16 +40253,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+gUK
 "}
 (41,1,1) = {"
-aaa
-aab
-aab
+gUK
+abn
+abn
 aab
 aab
 aab
@@ -39809,13 +40352,13 @@ aab
 aab
 aab
 aab
-aab
-aab
+vOC
+ark
 ael
 ael
 ael
-aab
-aab
+ark
+rzz
 aab
 bdS
 bep
@@ -39852,16 +40395,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (42,1,1) = {"
-aaa
-aab
-aab
+gUK
+abn
+abn
 aab
 aab
 aab
@@ -39950,14 +40493,14 @@ adt
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
+arj
+sKe
+ark
+ark
+ark
+ark
+ark
+cQJ
 aab
 bdS
 beq
@@ -39994,17 +40537,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (43,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -40088,19 +40631,19 @@ aHE
 adt
 adt
 adt
-adt
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
+aac
+acp
+acp
+pKw
+uGs
+ark
+ark
+ark
+iMt
+eNv
+xCK
+acp
+acp
 bdS
 ber
 beK
@@ -40136,17 +40679,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (44,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -40234,11 +40777,11 @@ adt
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
+kZw
+kZw
+kZw
+kZw
+kZw
 aab
 aab
 aab
@@ -40278,17 +40821,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (45,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -40419,18 +40962,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (46,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -40561,18 +41104,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (47,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -40703,18 +41246,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (48,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -40846,17 +41389,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (49,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -40892,7 +41435,7 @@ atL
 aiQ
 aqF
 aqF
-ajV
+azs
 awY
 axR
 ayw
@@ -40988,17 +41531,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (50,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -41034,7 +41577,7 @@ atM
 auo
 avk
 aqF
-aww
+awY
 awY
 awY
 awY
@@ -41067,9 +41610,9 @@ aIP
 aOf
 aKb
 aKb
-aQy
-aQy
-aQy
+aHE
+aHE
+aHE
 aSu
 aQv
 aHE
@@ -41130,17 +41673,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (51,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -41176,7 +41719,7 @@ atN
 aqF
 aqF
 aqF
-aww
+awY
 awY
 awY
 awY
@@ -41273,16 +41816,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+dpF
+dpF
+gUK
 "}
 (52,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -41415,15 +41958,15 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (53,1,1) = {"
-aaa
-aab
-aab
+gUK
+dpF
+abn
 aab
 aab
 aab
@@ -41557,16 +42100,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (54,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -41699,16 +42242,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (55,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -41841,17 +42384,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (56,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -41983,17 +42526,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (57,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -42125,17 +42668,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (58,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -42267,17 +42810,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (59,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -42409,17 +42952,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (60,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -42551,17 +43094,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+gUK
 "}
 (61,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -42694,16 +43237,16 @@ aab
 aab
 aab
 aab
-aab
-aab
+rfi
+rqH
 aaa
 "}
 (62,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -42836,16 +43379,16 @@ aab
 aab
 aab
 aab
-aab
-aab
+oPK
+ehI
 aaa
 "}
 (63,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -42978,15 +43521,15 @@ aab
 aab
 aab
 aab
-aab
-aab
+uYv
+ehI
 aaa
 "}
 (64,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -43119,16 +43662,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+uYv
+ehI
+ehI
 aaa
 "}
 (65,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -43261,16 +43804,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+snt
+ehI
+ehI
 aaa
 "}
 (66,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+abn
+abn
+abn
 aab
 aab
 aab
@@ -43403,15 +43946,15 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+uYv
+aeG
+ehI
 aaa
 "}
 (67,1,1) = {"
 aaa
-aab
-aab
+ikR
+ikR
 aab
 aab
 aab
@@ -43545,15 +44088,15 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+idu
+ehI
+ehI
 aaa
 "}
 (68,1,1) = {"
 aaa
-aab
-aab
+aeG
+ehI
 aab
 aab
 aab
@@ -43687,15 +44230,15 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+oPK
+ehI
+aeG
 aaa
 "}
 (69,1,1) = {"
 aaa
-aab
-aab
+ehI
+ehI
 aab
 aab
 aab
@@ -43829,17 +44372,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+uYv
+aeG
+ehI
 aaa
 "}
 (70,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+aeG
+rsG
+aaa
 aab
 aab
 aab
@@ -43971,17 +44514,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+uYv
+ehI
+ehI
 aaa
 "}
 (71,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+ehI
+ehI
+rrr
 aab
 aab
 aab
@@ -44113,17 +44656,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+uYv
+ehI
+aeG
 aaa
 "}
 (72,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+aeG
+aeG
+ehI
+nlA
 aab
 aab
 aab
@@ -44172,8 +44715,8 @@ aCz
 ayW
 apb
 ape
-aFl
 aEc
+aFl
 aGz
 aGy
 aGy
@@ -44255,17 +44798,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+uYv
+ehI
+ehI
 aaa
 "}
 (73,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+ehI
+ehI
+rrr
 aab
 aab
 aab
@@ -44314,8 +44857,8 @@ aCA
 ayW
 aEc
 aFh
-aFm
-aEc
+aIm
+aFl
 aGA
 aGw
 aGw
@@ -44397,17 +44940,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+idu
+aeG
+ehI
 aaa
 "}
 (74,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+ehI
+aeG
+chh
 aab
 aab
 aab
@@ -44455,10 +44998,10 @@ aBO
 aCB
 ayW
 aGz
-aFh
-api
+anW
+apj
 apm
-aqg
+apj
 apj
 aqj
 apj
@@ -44539,17 +45082,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+uYv
+ehI
+ehI
 aaa
 "}
 (75,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+aeG
+ehI
+ehI
+cQJ
 aab
 aab
 aab
@@ -44598,9 +45141,9 @@ aCC
 ayW
 aEc
 apf
-apj
-apU
-aLH
+aEc
+aFl
+aEc
 aGw
 aGw
 avD
@@ -44681,17 +45224,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
+snt
+ehI
+aeG
 aaa
 "}
 (76,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+aeG
+ehI
+ehI
+cQJ
 aab
 aab
 aab
@@ -44824,16 +45367,16 @@ aab
 aab
 aab
 aab
-aab
-aab
+abn
+abn
 aaa
 "}
 (77,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+ehI
+aeG
+cQJ
 aab
 aab
 aab
@@ -44965,17 +45508,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+gUK
 "}
 (78,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+ehI
+aeG
+cQJ
 aab
 aab
 aab
@@ -45107,17 +45650,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (79,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+aeG
+ehI
+ehI
+cQJ
 aab
 aab
 aab
@@ -45249,17 +45792,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (80,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+aeG
+ehI
+ehI
+cQJ
 aab
 aab
 aab
@@ -45390,18 +45933,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+gUK
 "}
 (81,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+ehI
+aeG
+cQJ
 aab
 aab
 aab
@@ -45532,18 +46075,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (82,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+aeG
+aeG
+cQJ
 aab
 aab
 aab
@@ -45575,9 +46118,9 @@ boR
 tpu
 bpG
 afr
-laD
-aac
-adt
+tpu
+ajE
+awD
 avD
 axp
 ayd
@@ -45674,18 +46217,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (83,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+ehI
+ehI
+cQJ
 aab
 aab
 aab
@@ -45717,9 +46260,9 @@ boQ
 bpe
 bpH
 afr
-laD
-aac
-adt
+tpu
+ajE
+awD
 avD
 axq
 ayd
@@ -45816,18 +46359,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (84,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+ehI
+ehI
+aeG
+cQJ
 aab
 aab
 aab
@@ -45852,14 +46395,14 @@ ajP
 alN
 akM
 amH
-alD
+aqb
 asN
 alD
 anC
 anC
 boS
 nFT
-aac
+ajE
 avD
 avD
 avD
@@ -45958,18 +46501,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (85,1,1) = {"
 aaa
-aab
-aab
-aab
-aab
+aeG
+ehI
+ehI
+chh
 aab
 aab
 aab
@@ -45996,7 +46539,7 @@ akM
 aoI
 aiq
 boC
-boC
+sSc
 boI
 boI
 kRb
@@ -46074,6 +46617,10 @@ bgz
 bhk
 aLY
 adt
+bSn
+pdh
+vIP
+vIP
 adt
 adt
 adt
@@ -46082,10 +46629,6 @@ adt
 adt
 adt
 adt
-adt
-adt
-adt
-adt
 aab
 aab
 aab
@@ -46100,17 +46643,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+gUK
 "}
 (86,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+abn
+abn
+abn
 aab
 aab
 aab
@@ -46188,17 +46731,17 @@ awe
 aSd
 aWg
 aXb
-aXB
-aXB
-aXB
-aXB
-aXB
-aXB
-aXB
-aXB
-aXB
-aXB
-bbA
+aXC
+aXC
+aXC
+aXC
+aXC
+aXC
+aXC
+aXC
+aXC
+aXC
+bbL
 bbJ
 bbJ
 aVP
@@ -46216,18 +46759,18 @@ bgA
 bhl
 bfw
 adt
+vIP
+pTt
+oZh
+oZh
+edh
+nSc
 adt
 adt
 adt
 adt
 adt
 adt
-adt
-adt
-adt
-adt
-adt
-adt
 aab
 aab
 aab
@@ -46243,16 +46786,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (87,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -46331,43 +46874,43 @@ aSd
 aWh
 aXc
 aXK
-aXB
-aXB
-aXB
-aXB
-aXB
-aXB
-aXB
-aXB
-aXB
+bbJ
+bbJ
+bbJ
+bbJ
+bbJ
+bbJ
+bbJ
+bbJ
+bbJ
 bbB
 bbJ
 bbJ
 aVP
-adt
-adt
+laD
+laD
 aLY
 bdr
 aLX
 aLY
-adt
-adt
+laD
+laD
 bfw
 bfU
 bgB
 bhm
 bfw
 adt
+vIP
+qLQ
+oZh
+iyz
+oZh
+oZh
+oZh
 adt
 adt
 adt
-adt
-adt
-adt
-adt
-adt
-adt
-adt
 aab
 aab
 aab
@@ -46385,16 +46928,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (88,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -46486,14 +47029,14 @@ aVP
 aVP
 aVP
 aVP
-adt
-adt
+laD
+laD
 aLY
 bdr
 aLX
 aLY
-adt
-adt
+laD
+laD
 bfw
 bfV
 aKX
@@ -46501,15 +47044,15 @@ bhn
 bfw
 adt
 adt
+pWo
+vIP
+vIP
+adt
+adt
+oZh
 adt
 adt
 adt
-adt
-adt
-adt
-adt
-adt
-adt
 aab
 aab
 aab
@@ -46527,17 +47070,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (89,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -46570,8 +47113,8 @@ ajE
 amS
 amU
 ajE
-aac
-aac
+ajE
+ajE
 avD
 mnt
 aye
@@ -46628,14 +47171,14 @@ aFX
 bbM
 bcg
 aLY
-adt
-adt
+laD
+laD
 aLY
 bds
 aLX
 aLY
-adt
-adt
+laD
+laD
 bfw
 bfW
 bgD
@@ -46648,10 +47191,10 @@ adt
 adt
 adt
 adt
+oZh
 adt
 adt
 adt
-adt
 aab
 aab
 aab
@@ -46669,17 +47212,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (90,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -46712,8 +47255,8 @@ tpu
 kPb
 tpu
 awH
-aac
-adt
+ajE
+awD
 avD
 axw
 ayd
@@ -46770,8 +47313,8 @@ bbM
 aZr
 aZr
 aLY
-adt
-adt
+laD
+laD
 aLY
 bdt
 aLX
@@ -46790,11 +47333,11 @@ biv
 biv
 biv
 adt
+oZh
+oZh
 adt
 adt
 adt
-adt
-adt
 aab
 aab
 aab
@@ -46811,17 +47354,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (91,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -46887,9 +47430,9 @@ aME
 aNl
 awd
 avD
-adt
-adt
-adt
+dNl
+dNl
+dNl
 aRy
 aTZ
 atB
@@ -46912,8 +47455,8 @@ aZr
 aGx
 aHF
 aLY
-adt
-adt
+laD
+laD
 aLY
 bdu
 bdP
@@ -46933,9 +47476,9 @@ bkc
 biv
 adt
 adt
+oZh
 adt
 adt
-adt
 aab
 aab
 aab
@@ -46953,17 +47496,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (92,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -47000,8 +47543,8 @@ anD
 anO
 avD
 axy
-ayf
-ayM
+ayd
+ayI
 aze
 azL
 aAn
@@ -47029,9 +47572,9 @@ aMF
 avD
 avD
 avD
-adt
-adt
-adt
+dNl
+dNl
+dNl
 aRy
 aRy
 aRy
@@ -47054,8 +47597,8 @@ aZr
 aLY
 aLY
 aLY
-adt
-adt
+laD
+laD
 aLY
 bdv
 aLX
@@ -47075,9 +47618,9 @@ bkd
 biv
 adt
 adt
+oZh
 adt
 adt
-adt
 aab
 aab
 aab
@@ -47095,17 +47638,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (93,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
+abn
 aab
 aab
 aab
@@ -47124,7 +47667,7 @@ aeo
 afc
 abz
 aaR
-aam
+ahI
 aiy
 ajF
 aky
@@ -47142,8 +47685,8 @@ anD
 anD
 avD
 axz
-ahH
-ahO
+ayd
+ayI
 aze
 azM
 aAo
@@ -47171,14 +47714,14 @@ aMt
 avD
 aNS
 aNo
-adt
-adt
-adt
-adt
-adt
-adt
-adt
-adt
+dNl
+dNl
+dNl
+dNl
+dNl
+dNl
+dNl
+dNl
 aNo
 aWm
 aWm
@@ -47196,8 +47739,8 @@ aZr
 aGB
 bci
 aLY
-adt
-adt
+laD
+laD
 aLY
 bdw
 aLX
@@ -47217,11 +47760,11 @@ bke
 biv
 adt
 adt
+oZh
+oZh
 adt
 adt
 adt
-adt
-adt
 aab
 aab
 aab
@@ -47237,16 +47780,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+gUK
 "}
 (94,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -47284,8 +47827,8 @@ anL
 anD
 avD
 axA
-ahI
-ahP
+ayd
+ayI
 aze
 azN
 aAp
@@ -47338,8 +47881,8 @@ aZr
 aZr
 aZr
 aLY
-adt
-adt
+laD
+laD
 aLY
 bdx
 aLX
@@ -47360,10 +47903,10 @@ biv
 adt
 adt
 adt
+oZh
+oZh
 adt
 adt
-adt
-adt
 aab
 aab
 aab
@@ -47378,17 +47921,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+gUK
 "}
 (95,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -47426,7 +47969,7 @@ avF
 anP
 avD
 axB
-ayh
+ayd
 ayI
 aze
 azO
@@ -47461,7 +48004,7 @@ aQX
 aRz
 aSl
 aTa
-aUa
+aUK
 aUK
 aVt
 aWn
@@ -47480,8 +48023,8 @@ bbM
 aGC
 aZr
 aLY
-adt
-adt
+laD
+laD
 aLY
 bdy
 aLY
@@ -47503,9 +48046,9 @@ bgT
 bgT
 bgT
 bgT
+oZh
 adt
 adt
-adt
 aab
 aab
 aab
@@ -47520,17 +48063,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (96,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+abn
+abn
+abn
 aab
 aab
 aab
@@ -47569,7 +48112,7 @@ anS
 avD
 axC
 ayi
-ayI
+ahO
 aze
 azP
 aAr
@@ -47604,9 +48147,9 @@ aRA
 aSm
 aTb
 aUb
-aNV
-aNn
-aNV
+api
+apU
+api
 aXh
 aXN
 aYy
@@ -47627,8 +48170,8 @@ aLY
 aLY
 bdy
 aLY
-adt
-adt
+laD
+laD
 bfc
 bfz
 bgc
@@ -47645,10 +48188,10 @@ bkN
 biy
 biD
 bgT
+oZh
 adt
 adt
 adt
-adt
 aab
 aab
 aab
@@ -47661,17 +48204,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (97,1,1) = {"
-aaa
-aab
-aab
+gUK
+abn
+abn
 aab
 aab
 aab
@@ -47769,8 +48312,8 @@ bcK
 bda
 bdz
 aLY
-adt
-adt
+laD
+laD
 bfc
 bfA
 bgc
@@ -47786,9 +48329,9 @@ bkz
 biH
 bkY
 blB
-bgT
+kOp
+oZh
 adt
-adt
 aab
 aab
 aab
@@ -47803,17 +48346,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (98,1,1) = {"
-aaa
-aab
-aab
+gUK
+abn
+abn
 aab
 aab
 aab
@@ -47857,7 +48400,7 @@ ayN
 azf
 azQ
 aAs
-aAs
+ahP
 aBu
 aBY
 aBY
@@ -47879,12 +48422,12 @@ aLk
 aLR
 aMt
 avD
-adt
-adt
-adt
-adt
-adt
-adt
+laD
+laD
+laD
+laD
+laD
+laD
 aLY
 aTd
 aUc
@@ -47911,8 +48454,8 @@ aIl
 bdb
 bdA
 aLY
-adt
-adt
+laD
+laD
 bfc
 aJY
 bgd
@@ -47929,8 +48472,8 @@ biH
 bkZ
 biy
 bgT
+oZh
 adt
-adt
 aab
 aab
 aab
@@ -47945,17 +48488,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (99,1,1) = {"
-aaa
-aab
-aab
+gUK
+dpF
+abn
 aab
 aab
 aab
@@ -47997,9 +48540,9 @@ axF
 ayc
 ayd
 azg
-ayh
 ayd
 ayd
+aAQ
 ayd
 ayd
 ayd
@@ -48023,10 +48566,10 @@ aMG
 avD
 asm
 asx
-adt
-adt
-adt
-adt
+laD
+laD
+laD
+laD
 aLY
 aTe
 aUc
@@ -48053,7 +48596,7 @@ bcM
 bdb
 aIo
 aLY
-adt
+laD
 beF
 beF
 beF
@@ -48071,8 +48614,8 @@ biH
 bla
 blC
 bgT
+oZh
 adt
-adt
 aab
 aab
 aab
@@ -48087,18 +48630,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (100,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -48166,9 +48709,9 @@ avD
 asn
 asO
 asU
-adt
-adt
-adt
+laD
+laD
+laD
 aLY
 aTf
 aUc
@@ -48179,7 +48722,7 @@ aXj
 aXR
 aYB
 aUc
-adt
+laD
 aLY
 bak
 aLX
@@ -48195,7 +48738,7 @@ bcM
 bdb
 aIo
 aLY
-adt
+laD
 beF
 bfd
 bfC
@@ -48213,10 +48756,10 @@ bjc
 blb
 biy
 bgT
+oZh
 adt
 adt
 adt
-adt
 aab
 aab
 aab
@@ -48229,18 +48772,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (101,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -48291,26 +48834,26 @@ avD
 avD
 aEU
 aFz
-ard
-jmM
-jmM
-ard
-aID
-aFK
-aGt
-ard
-ard
-jmM
-ard
-eXl
-ard
+aDP
+aGo
+aGo
+aDP
+aIG
+dXv
+aGR
+aJv
+aJv
+aJw
+aJv
+yiF
+aJv
+aJv
 aLY
 aLY
 aLY
 aLY
 aLY
-aLY
-adt
+laD
 aLY
 aTg
 aUc
@@ -48321,23 +48864,23 @@ aXk
 aXS
 aYC
 aUc
-adt
+laD
 aLY
 bal
 aLX
 aEh
 aLY
-adt
-adt
-adt
-adt
+laD
+laD
+laD
+laD
 aLY
 aLX
 bcM
 bdb
 aIq
 aLY
-adt
+laD
 beF
 bfe
 bfD
@@ -48355,10 +48898,10 @@ biH
 biH
 biy
 bgT
+oZh
+oZh
 adt
 adt
-adt
-adt
 aab
 aab
 aab
@@ -48371,18 +48914,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (102,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -48415,11 +48958,11 @@ bpd
 bpD
 bpJ
 akq
-auX
-asV
-atY
-anW
-axH
+auY
+avJ
+ard
+aoc
+aym
 aym
 aym
 avD
@@ -48433,20 +48976,20 @@ aCU
 aEm
 ard
 aFA
-ard
-aGP
+aDP
+dXv
 aqi
-ard
+aDP
 aHS
-aFK
-aFK
-jmM
-aFK
+dXv
+dXv
+aJw
+aMM
 aKC
 aLl
-aFK
+aMM
 aMJ
-aLY
+aJv
 aNY
 aOL
 aPw
@@ -48463,23 +49006,23 @@ aUc
 aUc
 aUc
 aUc
-adt
+laD
 aLY
 bam
 aLX
 baK
 aLY
-adt
-adt
-adt
-adt
+laD
+laD
+laD
+laD
 aLY
 aLX
 bcN
 bdd
 bdD
 aLY
-adt
+laD
 beF
 bff
 bfE
@@ -48497,9 +49040,9 @@ biy
 blc
 blD
 bgT
+oZh
+ael
 adt
-adt
-adt
 aab
 aab
 aab
@@ -48513,18 +49056,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (103,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -48557,10 +49100,10 @@ aiK
 aiK
 aiK
 aiK
-auX
-asV
-atY
-anW
+auY
+avJ
+ard
+aoc
 axI
 aym
 aym
@@ -48570,25 +49113,25 @@ ard
 aAS
 ard
 aCa
-ato
-ato
+aoZ
+aoZ
 aEn
 ard
 aFA
-jmM
+aGo
 lOO
-tPB
-jmM
+dXv
+aGo
 aHT
 aIy
 aIZ
-ard
+aJv
 aJR
 aKD
 aLm
-aFK
+aMM
 aMK
-aLY
+aJv
 aNZ
 mWq
 mWq
@@ -48602,10 +49145,10 @@ aUQ
 aVy
 aWt
 aUc
-adt
-adt
-adt
-adt
+laD
+laD
+laD
+laD
 aLY
 ban
 aLX
@@ -48613,7 +49156,7 @@ baK
 aLY
 aLY
 aLY
-adt
+laD
 aLY
 aLY
 aLY
@@ -48621,7 +49164,7 @@ aLY
 aZr
 bdy
 aLY
-adt
+laD
 beF
 bfg
 bfF
@@ -48639,9 +49182,9 @@ biH
 biH
 biy
 bgT
+oZh
 adt
 adt
-adt
 aab
 aab
 aab
@@ -48655,18 +49198,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (104,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+dpF
+abn
 aab
 aab
 aab
@@ -48699,11 +49242,11 @@ akV
 alM
 alU
 aiK
-auX
-asV
-atY
-anW
-anW
+auY
+avJ
+ard
+aoc
+aoc
 aoc
 aym
 aym
@@ -48712,25 +49255,25 @@ ard
 aAT
 ard
 aCb
-aGt
-aGt
+aGR
+aGR
 aEo
 aEV
 aFB
-ard
+aDP
 djo
 aHi
-ard
+aDP
 aHU
 aIz
-aJS
+aJa
 aJx
 aJS
 aKE
 aLn
 aJU
 aJU
-aLY
+aJv
 wqU
 qpA
 dSO
@@ -48763,7 +49306,7 @@ baY
 aZr
 bdy
 aLY
-adt
+laD
 beF
 bfh
 bfG
@@ -48781,8 +49324,8 @@ bjc
 bld
 biy
 bgT
+oZh
 adt
-adt
 aab
 aab
 aab
@@ -48798,17 +49341,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+gUK
 "}
 (105,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -48854,25 +49397,25 @@ ard
 aAU
 ard
 aCc
-aGt
-aGt
+aGR
+aGR
 aEp
 ard
 aFC
-jmM
-tPB
+aGo
+dXv
 tPB
 pah
-aGt
+aGR
 aIA
-aFK
-ard
-aFK
-aFK
-aFK
-aFK
-aFK
-aLY
+dXv
+aJv
+aMM
+aMM
+aMM
+aMM
+aMM
+aJv
 aRC
 aON
 tuO
@@ -48905,7 +49448,7 @@ aLY
 aZr
 bdy
 aLY
-adt
+laD
 beF
 bfi
 bfH
@@ -48923,8 +49466,8 @@ biH
 ble
 blE
 bgT
+oZh
 adt
-adt
 aab
 aab
 aab
@@ -48940,17 +49483,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+gUK
 "}
 (106,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+dpF
+abn
+abn
 aab
 aab
 aab
@@ -49001,20 +49544,20 @@ aDL
 aEq
 ard
 aFC
-ard
+aDP
 aqh
-lOO
-ard
-aGt
+dXv
+aDP
+aGR
 aIA
-aFK
-xRu
+dXv
+sVf
 aJU
 aJU
 aJU
-aFK
-aFK
-aLY
+aMM
+aMM
+aJv
 voE
 aON
 aPy
@@ -49047,7 +49590,7 @@ aSo
 bde
 bdE
 aLY
-adt
+laD
 beF
 beF
 beF
@@ -49065,8 +49608,8 @@ biH
 blf
 biy
 bgT
+oZh
 adt
-adt
 aab
 aab
 aab
@@ -49082,16 +49625,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+gUK
 "}
 (107,1,1) = {"
-aaa
-aab
-aab
+gUK
+abn
+abn
 aab
 aab
 aab
@@ -49143,20 +49686,20 @@ aDM
 ard
 ard
 aFD
-ard
-jmM
-jmM
-ard
-aFK
-qjS
-aGt
-ard
-eXl
-jmM
-ard
-ard
-ard
-aLY
+aDP
+aGo
+aGo
+aDP
+dXv
+aLo
+aGR
+aJv
+yiF
+aJw
+aJv
+aJv
+aJv
+aJv
 aLY
 aOO
 aLY
@@ -49189,11 +49732,11 @@ aLY
 bdf
 aLY
 aLY
-adt
-adt
-adt
-adt
-adt
+bdQ
+bdQ
+bdQ
+bdQ
+bdQ
 bgT
 bhC
 big
@@ -49206,9 +49749,9 @@ bkD
 biH
 blg
 blB
-bgT
-adt
-adt
+kOp
+oZh
+abn
 aab
 aab
 aab
@@ -49224,16 +49767,16 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+gUK
 "}
 (108,1,1) = {"
-aaa
-aab
-aab
+gUK
+abn
+abn
 aab
 aab
 aab
@@ -49289,9 +49832,9 @@ aGq
 aGQ
 aGQ
 aHz
-lfX
+aHW
 aIB
-lfX
+aHW
 aJy
 aGQ
 aGQ
@@ -49326,7 +49869,7 @@ baO
 bax
 bax
 bax
-adt
+bdQ
 bax
 bdg
 baO
@@ -49349,8 +49892,8 @@ biy
 biy
 biD
 bgT
-adt
-adt
+oZh
+abn
 aab
 aab
 aab
@@ -49365,17 +49908,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (109,1,1) = {"
 aaa
-aab
-aab
+abn
+abn
 aab
 aab
 aab
@@ -49422,22 +49965,22 @@ avL
 avL
 aoX
 apa
-oyo
-oyo
-aDO
-aDO
-aFF
-aGt
-aFK
-aGt
-aFK
-aGt
+aGW
+aGW
+aHh
+aHh
+aHX
+aGR
+dXv
+aGR
+dXv
+aGR
 aIC
-aJb
+aKI
 aIb
 aJV
 aKG
-ard
+aDP
 aLX
 aLX
 aLX
@@ -49478,8 +50021,8 @@ beg
 beg
 bdQ
 bdQ
-adt
-adt
+bdQ
+bdQ
 bgT
 bgT
 bgT
@@ -49507,17 +50050,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (110,1,1) = {"
 aaa
-aab
-aab
+abn
+abn
 aab
 aab
 aab
@@ -49569,17 +50112,17 @@ aCV
 ard
 ard
 ard
-ard
-aFK
-aFK
-aGt
-aGt
+aDP
+dXv
+dXv
+aGR
 aID
-aGt
-aGt
-aGt
-aGt
-ard
+aIG
+boD
+aGR
+aID
+aGR
+aDP
 aLY
 aLY
 aLY
@@ -49620,12 +50163,12 @@ beg
 beg
 beg
 bdQ
-adt
-adt
-adt
-adt
-adt
-adt
+bdQ
+bdQ
+aqg
+aqg
+aqg
+aqg
 bgU
 mDn
 ekH
@@ -49649,17 +50192,17 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (111,1,1) = {"
 aaa
-aab
-aab
+abn
+abn
 aab
 aab
 aab
@@ -49706,28 +50249,28 @@ aAv
 avL
 qDE
 ard
-ato
-axP
+aoZ
+aDQ
 ard
 aEX
 aFH
-ard
+aDP
 aGS
-aGT
-aGT
-aGt
+aIH
+aIH
 aID
-aFK
-aFK
-aGt
-aFK
-aGt
+aIG
+aKH
+dXv
+aID
+dXv
+aGR
 aLZ
-ard
-adt
-adt
-adt
-adt
+aDP
+laD
+laD
+laD
+laD
 aLY
 aRd
 aRd
@@ -49791,18 +50334,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (112,1,1) = {"
 aaa
-aab
-aab
-aab
+abn
+abn
+abn
 aab
 aab
 aab
@@ -49819,7 +50362,7 @@ aab
 ado
 aav
 aeD
-afp
+afs
 afp
 afp
 aaP
@@ -49853,20 +50396,20 @@ aCX
 ard
 aEY
 mUP
-ard
-aFK
+aDP
+dXv
 aHj
 aJd
 aIa
 aIF
-aFK
-aFK
-aGt
-aGt
-ard
+dXv
+dXv
+aGR
+aGR
+aDP
 aMa
-ard
-adt
+aDP
+laD
 aLY
 aLY
 aLY
@@ -49918,6 +50461,7 @@ bli
 blG
 blG
 bmb
+abn
 aab
 aab
 aab
@@ -49932,19 +50476,18 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (113,1,1) = {"
-aaa
-aab
-aab
-aab
+gUK
+abn
+abn
+abn
 aab
 aab
 aab
@@ -49995,20 +50538,20 @@ aEt
 aEu
 aEZ
 llG
-ard
+aDP
 aGU
-aFK
-aFK
-aGT
-aIG
-aGT
-aFK
-aGT
-aGt
-aGt
-aGt
-ard
-adt
+aJc
+dXv
+aIH
+aLq
+aIH
+dXv
+aIH
+aGR
+aGR
+aGR
+aDP
+laD
 aLY
 aOP
 aPz
@@ -50060,6 +50603,7 @@ blj
 blH
 blS
 bmb
+abn
 aab
 aab
 aab
@@ -50073,21 +50617,20 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+gUK
 "}
 (114,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+adt
+abn
+abn
+abn
 aab
 aab
 aab
@@ -50103,7 +50646,7 @@ aab
 ado
 aak
 aaA
-aaA
+ahH
 aaD
 ahK
 ait
@@ -50137,20 +50680,20 @@ aGn
 aEs
 aFa
 aFI
-ard
-aGT
-aHl
-aHB
-aJb
+aDP
 aIH
-aGt
-aFK
-aGt
-aGt
-ard
-ard
-ard
-adt
+aIY
+aHB
+aKI
+aLr
+aGR
+dXv
+aGR
+aGR
+aDP
+aDP
+aDP
+laD
 aLY
 aOP
 aPC
@@ -50202,6 +50745,7 @@ blk
 blG
 blT
 bmb
+abn
 aab
 aab
 aab
@@ -50214,22 +50758,21 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+gUK
 "}
 (115,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+abn
+abn
 aab
 aab
 aab
@@ -50279,17 +50822,17 @@ ard
 ard
 ard
 ard
-ard
+aDP
 aGS
-aGT
-aGT
-aFK
-cqe
-aGt
-aGt
-aGt
-aGt
-ard
+aIH
+aIH
+aKH
+aMb
+aID
+aGR
+boD
+aGR
+aDP
 adt
 adt
 adt
@@ -50318,14 +50861,14 @@ adt
 adt
 adt
 adt
-adt
-adt
-adt
 abn
 abn
 abn
-adt
-adt
+abn
+abn
+abn
+abn
+abn
 abn
 aab
 abn
@@ -50344,6 +50887,7 @@ blh
 blI
 blh
 blh
+abn
 aab
 aab
 aab
@@ -50355,24 +50899,23 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (116,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+adt
+abn
+abn
 aab
 aab
 aab
@@ -50414,24 +50957,24 @@ azo
 azY
 ard
 ato
-ard
-aFK
+aBz
+aFM
 aGt
 aDR
-aFK
-aFK
+aFM
+aFM
 aFJ
-ard
-aGt
-aGt
-aGt
-aFK
+aBz
+aGR
+aGR
+aGR
+aKH
 aIE
-aGt
-aGt
-aFK
-aFK
-ard
+aID
+aGR
+aKH
+dXv
+aDP
 aMd
 aMd
 adt
@@ -50447,20 +50990,20 @@ adt
 adt
 adt
 adt
+abn
+abn
+abn
+abn
+adt
+adt
+adt
+adt
 adt
 abn
 abn
 abn
 adt
-adt
-adt
-adt
-adt
-adt
-adt
-adt
-adt
-adt
+abn
 aab
 aab
 aab
@@ -50485,6 +51028,8 @@ bgU
 abn
 abn
 abn
+abn
+abn
 aab
 aab
 aab
@@ -50495,26 +51040,24 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (117,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+aeG
+ehI
 aab
 aab
 aab
@@ -50556,27 +51099,27 @@ azp
 azY
 ard
 aAZ
-aFK
-aFK
-aFK
+aFM
+aFM
+aFM
 aGt
-aFK
-aFK
-aFK
+aFM
+aFM
+aFM
 aGt
-aFK
-aGt
-aFK
-aFK
+dXv
+aGR
+dXv
+dXv
 aII
 aJd
 aIa
 aJW
-aGt
-ard
+aGR
+aDP
 aMd
 aMd
-aMd
+aMc
 aLY
 aOP
 aPC
@@ -50588,7 +51131,7 @@ aLY
 adt
 adt
 adt
-adt
+abn
 abn
 abn
 abn
@@ -50600,9 +51143,9 @@ abn
 abn
 abn
 aab
-adt
-adt
-adt
+abn
+abn
+abn
 aab
 aab
 aab
@@ -50639,24 +51182,24 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (118,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
 aab
 aab
 aab
@@ -50698,24 +51241,24 @@ ard
 ard
 ard
 ato
-ard
-aFK
+aBz
+aFM
 aGt
 aGt
-aEw
+aHA
 aGt
-aFK
-ard
-aGt
-aGt
+aFM
+aBz
+aGR
+aGR
 aHC
-aGt
-aGt
-aGt
+aGR
+aGR
+aGR
 aHC
-aGt
+aGR
 aKJ
-ard
+aDP
 abn
 abn
 abn
@@ -50730,11 +51273,11 @@ aLY
 adt
 adt
 adt
-adt
-adt
-abn
-abn
-abn
+aeG
+aeG
+aab
+aab
+aab
 aab
 aab
 abn
@@ -50781,25 +51324,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+abn
+abn
+abn
+abn
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (119,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
+sue
 aab
 aab
 aab
@@ -50833,31 +51376,31 @@ avg
 avP
 awv
 ard
+ark
 aab
 aab
-abn
-abn
-abn
+aeG
+aeG
 ard
 aBa
-ard
-aFK
-aFK
-aFK
-xRu
-aFK
-aFK
-ard
+aBz
+aFM
+aFM
+aFM
+aHQ
+aFM
+aFM
+aBz
 aGX
 aGX
-ard
+aDP
 aGX
 aGX
 aGX
-ard
+aDP
 aGX
 aGX
-ard
+aDP
 abn
 abn
 abn
@@ -50872,10 +51415,8 @@ abn
 abn
 abn
 abn
-abn
-abn
-abn
-abn
+aeG
+aeG
 aab
 aab
 aab
@@ -50897,11 +51438,8 @@ aab
 aab
 aab
 aab
-abn
-abn
-abn
-abn
-abn
+aab
+aab
 abn
 abn
 abn
@@ -50909,6 +51447,11 @@ abn
 abn
 abn
 abn
+abn
+abn
+abn
+abn
+abn
 aab
 aab
 aab
@@ -50923,25 +51466,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+oPK
+arl
+aeG
+aac
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (120,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+aeG
+ehI
+nlA
 aab
 aab
 aab
@@ -50975,21 +51518,21 @@ atq
 atq
 ard
 ard
-aab
-aab
-aab
-abn
-abn
-abn
-abn
-ard
-aFK
-aFK
+ark
+ark
+ark
+aeG
+aeG
+aeG
+aeG
+aBz
+aFM
+aFM
 aGt
-jmM
-aFK
-aFK
-ard
+aEw
+aFM
+aFM
+aBz
 abn
 abn
 aHD
@@ -51014,38 +51557,38 @@ abn
 abn
 abn
 abn
+aeG
+aeG
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
 abn
 abn
 abn
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-abn
-abn
-abn
 abn
 aab
 aab
@@ -51065,25 +51608,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+oPK
+ehI
+arl
+aac
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (121,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
+nlA
 aab
 aab
 aab
@@ -51117,21 +51660,21 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-abn
-abn
-ard
-aFK
-aFK
+kZw
+kZw
+kZw
+kZw
+kZw
+brF
+aeG
+aBz
+aFM
+aFM
 aGt
-eXl
-aFK
+aHV
+aFM
 aFN
-ard
+aBz
 abn
 abn
 abn
@@ -51156,8 +51699,8 @@ abn
 abn
 abn
 abn
-abn
-abn
+aeG
+aeG
 aab
 aab
 aab
@@ -51207,25 +51750,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+uYv
+nwI
+ehI
+aac
+dpF
+dpF
+dpF
+uiV
+dpF
+gUK
 "}
 (122,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
+rrr
 aab
 aab
 aab
@@ -51264,16 +51807,16 @@ aab
 aab
 aab
 aab
-aab
-abn
-ard
-ard
-ard
-ard
-ard
-ard
-ard
-ard
+vOC
+aeG
+aBz
+aBz
+aBz
+aBz
+aBz
+aBz
+aBz
+aBz
 abn
 abn
 abn
@@ -51288,7 +51831,6 @@ abn
 abn
 aac
 aac
-abn
 abn
 abn
 abn
@@ -51300,6 +51842,28 @@ abn
 abn
 abn
 aeG
+aeG
+aab
+aab
+aab
+aab
+hRU
+bSE
+bSE
+bSE
+bSE
+bSE
+bSE
+buW
+buW
+buW
+bSE
+buW
+bSE
+bSE
+bSE
+bSE
+iFX
 aab
 aab
 aab
@@ -51328,70 +51892,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+uYv
+nwI
+nwI
+aac
+dpF
+dpF
+oZh
+oZh
+dpF
+gUK
 "}
 (123,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-abn
-abn
-abn
-abn
-abn
-abn
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+aeG
+ehI
+rrr
 aab
 aab
 aab
@@ -51410,6 +51929,30 @@ aab
 abn
 abn
 abn
+abn
+abn
+abn
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+vOC
+aeG
+aeG
+aeG
 adt
 adt
 adt
@@ -51430,7 +51973,6 @@ abn
 abn
 aac
 aac
-abn
 abn
 abn
 abn
@@ -51442,6 +51984,28 @@ abn
 abn
 aeG
 aeG
+aeG
+aab
+aab
+aab
+aab
+jLj
+mpW
+elS
+elS
+elS
+mpW
+mpW
+mpW
+elS
+elS
+elS
+mpW
+mpW
+mpW
+mpW
+mpW
+whG
 aab
 aab
 aab
@@ -51470,40 +52034,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+oPK
+ehI
+arl
+aac
+dpF
+kjM
+oZh
+oZh
+dpF
+gUK
 "}
 (124,1,1) = {"
-aaa
+gUK
+adt
+adt
+aac
+ehI
+ehI
+nlA
 aab
 aab
 aab
@@ -51543,13 +52092,7 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
+kZw
 abn
 abn
 abn
@@ -51588,6 +52131,23 @@ aab
 aab
 aab
 aab
+ccf
+mpW
+mpW
+elS
+elS
+mpW
+mpW
+mpW
+elS
+elS
+elS
+elS
+mpW
+mpW
+mpW
+lWO
+uzX
 aab
 aab
 aab
@@ -51616,42 +52176,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+oPK
+ehI
+aeG
+aac
+dpF
+oZh
+oZh
+dpF
+dpF
+gUK
 "}
 (125,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+aeG
+ehI
+rrr
 aab
 aab
 aab
@@ -51722,10 +52265,31 @@ abn
 abn
 abn
 abn
-abn
 aeG
 aeG
 aeG
+aeG
+aab
+aab
+aab
+aab
+ccf
+mpW
+elS
+elS
+elS
+mpW
+mpW
+elS
+mpW
+mpW
+elS
+elS
+elS
+mpW
+mpW
+mpW
+uzX
 aab
 aab
 aab
@@ -51754,46 +52318,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+uYv
+ehI
+nwI
+aac
+oZh
+oZh
+oZh
+dpF
+dpF
+gUK
 "}
 (126,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+aeG
+ehI
+rrr
 aab
 aab
 aab
@@ -51864,10 +52407,31 @@ abn
 abn
 abn
 abn
-abn
 aeG
 aeG
 aeG
+aeG
+aab
+aab
+aab
+aab
+jLj
+mpW
+elS
+elS
+mpW
+elS
+mpW
+mpW
+mpW
+mpW
+elS
+mpW
+elS
+elS
+fyr
+gdk
+vXH
 aab
 aab
 aab
@@ -51896,46 +52460,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+uYv
+nwI
+nwI
+aac
+kjM
+oZh
+dpF
+dpF
+dpF
+gUK
 "}
 (127,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
+nlA
 aab
 aab
 aab
@@ -52005,11 +52548,30 @@ abn
 aeG
 abn
 abn
-abn
 aeG
 aeG
 aeG
 aeG
+aeG
+aab
+aab
+aab
+aab
+jLj
+mpW
+elS
+elS
+mpW
+mpW
+elS
+elS
+elS
+mpW
+elS
+elS
+elS
+elS
+whG
 aab
 aab
 aab
@@ -52040,44 +52602,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+oPK
+ehI
+aeG
+aac
+oZh
+oZh
+kjM
+dpF
+dpF
+gUK
 "}
 (128,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
+rrr
 aab
 aab
 aab
@@ -52156,6 +52699,21 @@ aab
 aab
 aab
 aab
+jLj
+mpW
+elS
+elS
+mpW
+elS
+elS
+rEz
+elS
+elS
+mpW
+elS
+elS
+mpW
+whG
 aab
 aab
 aab
@@ -52186,40 +52744,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+oPK
+nwI
+nwI
+aac
+arl
+oZh
+aac
+dpF
+dpF
+gUK
 "}
 (129,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+aeG
+rrr
 aab
 aab
 aab
@@ -52298,6 +52841,21 @@ aab
 aab
 aab
 aab
+jLj
+mpW
+mpW
+elS
+elS
+mpW
+elS
+elS
+elS
+elS
+elS
+mpW
+mpW
+mpW
+whG
 aab
 aab
 aab
@@ -52328,40 +52886,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+uYv
+nwI
+ehI
+aac
+arl
+arl
+aac
+dpF
+dpF
+gUK
 "}
 (130,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
+rrr
 aab
 aab
 aab
@@ -52440,6 +52983,21 @@ aab
 aab
 aab
 aab
+iNK
+gdk
+gdk
+gdk
+mrH
+mrH
+mrH
+mrH
+mrH
+mrH
+mrH
+mrH
+fvp
+mrH
+vXH
 aab
 aab
 aab
@@ -52470,40 +53028,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+uYv
+nwI
+aeG
+aac
+arl
+arl
+aac
+dpF
+dpF
+gUK
 "}
 (131,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
+nlA
 aab
 aab
 aab
@@ -52627,25 +53170,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+uYv
+ehI
+nwI
+aac
+arl
+arl
+aac
+dpF
+dpF
+gUK
 "}
 (132,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
+rrr
 aab
 aab
 aab
@@ -52769,25 +53312,25 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+uYv
+nwI
+nwI
+aac
+arl
+arl
+aac
+dpF
+dpF
+gUK
 "}
 (133,1,1) = {"
-aaa
-aab
-aab
-aab
-aab
-aab
-aab
+gUK
+adt
+adt
+aac
+ehI
+ehI
+vGp
 aab
 aab
 aab
@@ -52911,19 +53454,24 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+gLR
+ehI
+arl
+xQs
+arl
+arl
+aac
+dpF
+dpF
+gUK
 "}
 (134,1,1) = {"
-aaa
+gUK
+adt
+adt
+aac
+ehI
+ehI
 aab
 aab
 aab
@@ -53049,23 +53597,23 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+nwI
+aeG
+aac
+aac
+aac
+aac
+dpF
+dpF
+gUK
 "}
 (135,1,1) = {"
-aaa
+gUK
+adt
+adt
+aac
+ehI
+aeG
 aab
 aab
 aab
@@ -53191,23 +53739,23 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+ehI
+arl
+aac
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (136,1,1) = {"
-aaa
+gUK
+adt
+adt
+adt
+abn
+abn
 aab
 aab
 aab
@@ -53331,25 +53879,27 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+bpR
+rsG
+ehI
+aeG
+aac
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (137,1,1) = {"
-aaa
+gUK
+adt
+adt
+adt
+adt
+abn
+abn
+abn
 aab
 aab
 aab
@@ -53471,27 +54021,28 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (138,1,1) = {"
-aaa
+gUK
+adt
+adt
+adt
+adt
+adt
+abn
+abn
+abn
 aab
 aab
 aab
@@ -53611,29 +54162,30 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (139,1,1) = {"
-aaa
+gUK
+adt
+adt
+adt
+adt
+adt
+adt
+abn
+abn
+abn
 aab
 aab
 aab
@@ -53752,29 +54304,28 @@ aab
 aab
 aab
 aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aab
-aaa
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+dpF
+gUK
 "}
 (140,1,1) = {"
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
 aaa
 aaa
 aaa
@@ -53894,25 +54445,17 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
+gUK
 "}
