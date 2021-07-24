@@ -36024,7 +36024,7 @@
 /area/tether/surfacebase/public_garden_three)
 "cxH" = (
 /obj/effect/mist,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "cAG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -36395,7 +36395,7 @@
 	dir = 4
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "dhK" = (
 /obj/machinery/door/airlock{
@@ -36988,7 +36988,7 @@
 	dir = 8
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/deep/pool,
 /area/triumph/surfacebase/sauna)
 "feu" = (
 /obj/machinery/alarm{
@@ -37665,7 +37665,7 @@
 	dir = 10
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "hCr" = (
 /obj/effect/floor_decal/borderfloor{
@@ -39276,7 +39276,7 @@
 	dir = 6
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "mdB" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -39932,7 +39932,7 @@
 "nWp" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/mist,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "nXZ" = (
 /obj/structure/disposalpipe/segment{
@@ -40377,7 +40377,7 @@
 /obj/effect/floor_decal/spline/plain,
 /obj/structure/railing,
 /obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/deep/pool,
 /area/triumph/surfacebase/sauna)
 "pnq" = (
 /obj/effect/floor_decal/borderfloor{
@@ -40758,10 +40758,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
-"qkx" = (
-/obj/structure/table/bench/wooden,
-/turf/simulated/floor/wood,
-/area/triumph/surfacebase/sauna)
 "qnv" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -41731,7 +41727,7 @@
 /area/tether/surfacebase/surface_three_hall)
 "tdZ" = (
 /obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/deep/pool,
 /area/triumph/surfacebase/sauna)
 "tfD" = (
 /obj/machinery/chemical_dispenser/full,
@@ -41968,7 +41964,7 @@
 	dir = 8
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "tEV" = (
 /obj/effect/floor_decal/borderfloor{
@@ -43129,7 +43125,7 @@
 	dir = 4
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
+/turf/simulated/floor/water/deep/pool,
 /area/triumph/surfacebase/sauna)
 "wIw" = (
 /obj/structure/disposalpipe/segment,
@@ -53248,8 +53244,8 @@ aWT
 awT
 tdZ
 pll
-qkx
-mNe
+aaH
+iUU
 mNe
 beq
 awT
@@ -53390,8 +53386,8 @@ aWT
 awT
 tdZ
 pll
-qkx
-mNe
+aaH
+iUU
 mNe
 fZy
 awT

@@ -31634,9 +31634,6 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_site/east)
 "cPs" = (
-/obj/machinery/computer/looking_glass{
-	lg_id = "one"
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
@@ -31649,6 +31646,7 @@
 	name = "east bump";
 	pixel_x = 28
 	},
+/obj/structure/frame/computer,
 /turf/simulated/floor/tiled/techmaint,
 /area/looking_glass/lg_1)
 "cPX" = (
@@ -32387,11 +32385,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "fcT" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/looking_glass{
 	dir = 8
 	},
 /area/looking_glass/lg_1)
 "ffD" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/looking_glass{
 	dir = 10
 	},
@@ -33005,6 +33005,8 @@
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
 "gZN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
 /turf/simulated/floor/looking_glass{
 	dir = 9
 	},
@@ -33164,6 +33166,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/brig)
 "hAe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/junk,
 /turf/simulated/floor/looking_glass{
 	dir = 5
 	},
@@ -33224,8 +33228,11 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/lowerhall)
 "hFG" = (
-/obj/effect/landmark/looking_glass,
-/turf/simulated/floor/looking_glass/center,
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/looking_glass{
+	dir = 1
+	},
 /area/looking_glass/lg_1)
 "hGe" = (
 /obj/item/toy/syndicateballoon,
@@ -33523,6 +33530,11 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/xenoflora)
+"ipq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/looking_glass,
+/area/looking_glass/lg_1)
 "iqO" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -33540,6 +33552,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "iue" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/looking_glass{
 	dir = 1
 	},
@@ -33636,6 +33649,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/visitor_laundry)
+"iOh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/looking_glass/center,
+/area/looking_glass/lg_1)
 "iPZ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -33817,6 +33834,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/hideyhole)
+"jxQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/looking_glass,
+/area/looking_glass/lg_1)
 "jzW" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -35797,6 +35818,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
+"nJH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/junk,
+/turf/simulated/floor/looking_glass{
+	dir = 8
+	},
+/area/looking_glass/lg_1)
 "nKs" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -36224,6 +36252,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "oRz" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/looking_glass{
 	dir = 4
 	},
@@ -36487,6 +36516,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
+"qdr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/floor/looking_glass{
+	dir = 4
+	},
+/area/looking_glass/lg_1)
 "qdt" = (
 /obj/structure/railing{
 	dir = 4
@@ -36634,6 +36670,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/old_tram)
+"qqL" = (
+/obj/random/trash,
+/turf/simulated/floor/looking_glass/center,
+/area/looking_glass/lg_1)
 "qsl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -36679,6 +36719,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/virgo3b,
 /area/tether/surfacebase/outside/outside1)
+"qxI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/junk,
+/turf/simulated/floor/looking_glass/center,
+/area/looking_glass/lg_1)
 "qBf" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -37344,11 +37389,6 @@
 	dir = 6
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
@@ -37498,6 +37538,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "sIO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/random/junk,
 /turf/simulated/floor/looking_glass{
 	dir = 6
 	},
@@ -42826,13 +42868,13 @@ akL
 akL
 akL
 ajO
-adK
-adK
-adK
-adK
-adK
-adK
-adK
+ajS
+ajS
+ajS
+ajS
+ajS
+ajS
+ajS
 ajS
 aah
 aah
@@ -42973,7 +43015,7 @@ fcT
 fcT
 fcT
 fcT
-fcT
+nJH
 ffD
 ajS
 aah
@@ -43111,12 +43153,12 @@ akL
 akL
 ajO
 iue
+qxI
+iOh
 cAR
 cAR
-cAR
-cAR
-cAR
-bZC
+iOh
+ipq
 ajS
 aah
 aah
@@ -43253,8 +43295,8 @@ akL
 akL
 ajO
 iue
-cAR
-cAR
+iOh
+qqL
 cAR
 cAR
 cAR
@@ -43395,9 +43437,9 @@ akL
 akL
 ajO
 iue
+iOh
 cAR
 cAR
-hFG
 cAR
 cAR
 bZC
@@ -43539,10 +43581,10 @@ ajO
 iue
 cAR
 cAR
+qqL
 cAR
 cAR
-cAR
-bZC
+jxQ
 ajS
 aah
 aah
@@ -43678,13 +43720,13 @@ akL
 akL
 akL
 ajO
-iue
-cAR
+hFG
+iOh
 lNp
 lNp
 lNp
-cAR
-bZC
+iOh
+jxQ
 ajS
 rBp
 agU
@@ -43825,7 +43867,7 @@ oRz
 cPs
 xOH
 tRJ
-oRz
+qdr
 sIO
 ajS
 rBp
