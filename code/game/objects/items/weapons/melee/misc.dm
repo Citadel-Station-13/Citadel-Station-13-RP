@@ -127,14 +127,35 @@
 	icon_state = "skateboard2"
 	board_item_type = /obj/vehicle/skateboard/pro
 
+/obj/item/melee/skateboard/pro/dropped(mob/user as mob)
+	..()
+	var/turf/T = get_turf(src)
+	new /obj/vehicle/skateboard/pro(T)
+	user.drop_item(src)
+	qdel(src)
+
 /obj/item/melee/skateboard/hoverboard
 	name = "hoverboard"
 	desc = "A blast from the past, so retro!"
 	icon_state = "hoverboard_red"
 	board_item_type = /obj/vehicle/skateboard/hoverboard
 
+/obj/item/melee/skateboard/hoverboard/dropped(mob/user as mob)
+	..()
+	var/turf/T = get_turf(src)
+	new /obj/vehicle/skateboard/hoverboard(T)
+	user.drop_item(src)
+	qdel(src)
+
 /obj/item/melee/skateboard/hoverboard/admin
 	name = "Board of Directors"
 	desc = "The engineering complexity of a spaceship concentrated inside of a board. Just as expensive, too."
 	icon_state = "hoverboard_nt"
 	board_item_type = /obj/vehicle/skateboard/hoverboard/admin
+
+/obj/item/melee/skateboard/hoverboard/admin/dropped(mob/user as mob)
+	..()
+	var/turf/T = get_turf(src)
+	new /obj/vehicle/skateboard/hoverboard/admin(T)
+	user.drop_item(src)
+	qdel(src)
