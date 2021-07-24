@@ -1,0 +1,6 @@
+author: "Linzolle"
+delete-after: True
+changes: 
+  - bugfix: "day/night cycle and weather effects now work again
+tweak: virgo 3b's day/night cycle now takes 6 hours instead of 3 hours
+tweak: open turfs are now affected by lighting"
