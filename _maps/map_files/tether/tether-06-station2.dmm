@@ -966,6 +966,13 @@
 /obj/machinery/camera/network/exploration{
 	dir = 1
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8;
+	icon_state = "bordercolor"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "agj" = (
@@ -10998,22 +11005,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/quartermaster/belterdock)
-"aGR" = (
-/obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
-	name = "exploration turret";
-	uid = "exploration"
-	},
-/obj/structure/railing/grey{
-	dir = 4
-	},
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/excursion/general)
 "aGS" = (
 /obj/machinery/autolathe,
 /obj/effect/floor_decal/borderfloor{
@@ -11579,20 +11570,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
-"aIb" = (
-/obj/effect/floor_decal/industrial/warning/full,
-/obj/machinery/porta_turret/stationary{
-	gl_uid = "exploration";
-	installation = /obj/item/gun/energy/phasegun;
-	name = "exploration turret";
-	uid = "exploration"
-	},
-/obj/structure/railing/grey{
-	dir = 8
-	},
-/obj/structure/railing/grey,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/excursion/general)
 "aIc" = (
 /turf/simulated/wall/durasteel,
 /area/ai)
@@ -16081,6 +16058,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8;
+	icon_state = "bordercolor"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "aRV" = (
@@ -17066,6 +17050,9 @@
 	dir = 4
 	},
 /obj/machinery/light,
+/obj/machinery/holoposter{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "aTR" = (
@@ -19836,11 +19823,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "cFO" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/effect/floor_decal/industrial/outline,
-/turf/simulated/floor/tiled/monofloor{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
 	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "cHG" = (
 /obj/structure/disposalpipe/segment{
@@ -20092,6 +20083,34 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
+"ekX" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/stasis_cage,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monofloor{
+	dir = 4
+	},
+/area/tether/exploration)
+"emT" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate{
+	name = "materials crate"
+	},
+/obj/item/stack/material/steel{
+	amount = 30
+	},
+/obj/item/stack/material/glass{
+	amount = 30
+	},
+/obj/item/stack/material/plastic{
+	amount = 15
+	},
+/turf/simulated/floor/tiled/monofloor{
+	dir = 4
+	},
+/area/tether/exploration)
 "epr" = (
 /obj/effect/floor_decal/corner/lightgrey{
 	dir = 5
@@ -20202,12 +20221,16 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "fNR" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8;
+	icon_state = "bordercolor"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
@@ -20247,6 +20270,16 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/general)
+"gpL" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8;
+	icon_state = "bordercolor"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/tether/exploration)
 "gDt" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -20564,11 +20597,19 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/exploration/pilot_office)
 "kkI" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/reagent_dispensers/fueltank,
-/turf/simulated/floor/tiled/monofloor{
+/obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/door/window/westleft{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "kkP" = (
 /obj/machinery/light/spot{
@@ -20588,6 +20629,13 @@
 /obj/machinery/suit_cycler/pilot,
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration/pilot_office)
+"kpY" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/tiled/monofloor{
+	dir = 4
+	},
+/area/tether/exploration)
 "kuR" = (
 /obj/structure/cable/cyan{
 	d1 = 2;
@@ -20792,10 +20840,6 @@
 	name = "exploration turret";
 	uid = "exploration"
 	},
-/obj/structure/railing/grey,
-/obj/structure/railing/grey{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "mwj" = (
@@ -20855,11 +20899,17 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/cargo)
 "nmu" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/portable_atmospherics/canister/phoron,
-/turf/simulated/floor/tiled/monofloor{
-	dir = 4
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
 	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/door/window/northright,
+/turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "noc" = (
 /obj/structure/window/reinforced{
@@ -20943,12 +20993,6 @@
 	req_one_access = list(19,43,62,67);
 	uid = "exploration"
 	},
-/obj/structure/railing/grey{
-	dir = 1
-	},
-/obj/structure/railing/grey{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "odb" = (
@@ -20972,20 +21016,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
 "oNw" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monofloor{
+	dir = 4
+	},
 /area/tether/exploration)
 "oNW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -21075,17 +21112,29 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "pfV" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 4
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/closet/crate/secure/phoron{
+	name = "fuel crate";
+	req_one_access = list(67)
 	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+/obj/item/tank/phoron{
+	pixel_x = 6;
+	pixel_y = -6
+	},
+/obj/item/tank/phoron{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/tank/phoron,
+/obj/item/stack/material/tritium{
+	amount = 15
 	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/monofloor{
+	dir = 4
+	},
 /area/tether/exploration)
 "pkL" = (
 /obj/machinery/alarm{
@@ -21173,6 +21222,23 @@
 /mob/living/simple_mob/animal/passive/snake/noodle,
 /turf/simulated/floor/outdoors/grass/heavy,
 /area/tether/exploration/pilot_office)
+"qbr" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/floor_decal/industrial/outline,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monofloor{
+	dir = 4
+	},
+/area/tether/exploration)
+"qfQ" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/tiled/monofloor{
+	dir = 4
+	},
+/area/tether/exploration)
 "qiI" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -21396,27 +21462,13 @@
 	pixel_y = 20
 	})
 "rMK" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate/secure/phoron{
-	name = "fuel crate";
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/hatch{
+	name = "Bridge Compartment";
 	req_one_access = list(67)
 	},
-/obj/item/tank/phoron{
-	pixel_x = 6;
-	pixel_y = -6
-	},
-/obj/item/tank/phoron{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/obj/item/tank/phoron,
-/obj/item/stack/material/tritium{
-	amount = 15
-	},
-/turf/simulated/floor/tiled/monofloor{
-	dir = 4
-	},
-/area/tether/exploration)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/excursion/cockpit)
 "rYs" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -21506,6 +21558,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
@@ -22007,22 +22063,15 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "xtQ" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/closet/crate{
-	name = "materials crate"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
 	},
-/obj/item/stack/material/steel{
-	amount = 30
+/obj/effect/floor_decal/corner/purple/bordercorner{
+	dir = 8
 	},
-/obj/item/stack/material/glass{
-	amount = 30
-	},
-/obj/item/stack/material/plastic{
-	amount = 15
-	},
-/turf/simulated/floor/tiled/monofloor{
-	dir = 4
-	},
+/turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "xuy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -22051,11 +22100,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "xIt" = (
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -22
-	},
-/obj/structure/table/steel,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "xMy" = (
@@ -33664,8 +33708,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+aac
+aac
 aac
 aac
 aac
@@ -33805,17 +33849,17 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 aac
 aac
 aac
 aac
+aac
+aac
+aac
 aYc
 aYc
 aYc
-aYc
-aYc
+aac
 asN
 asN
 asN
@@ -33944,8 +33988,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+aac
+aac
+aac
+aac
+aac
+aac
+aac
 aac
 aac
 aac
@@ -33954,14 +34003,9 @@ aac
 aac
 aac
 asN
-nmu
-cFO
-rMK
-kkI
-xtQ
-asN
-xOG
-xOG
+qfQ
+emT
+kpY
 xOG
 xOG
 qtp
@@ -34096,16 +34140,16 @@ asN
 asN
 asN
 asN
-oNw
-pfV
-pfV
-pfV
-oNw
 asN
+asN
+asN
+asN
+asN
+qbr
 oNw
 pfV
-pfV
-oNw
+ekX
+ekX
 qtp
 eBw
 pQh
@@ -34232,7 +34276,7 @@ aMs
 aFN
 jKu
 aZC
-aMs
+cFO
 aMs
 aMs
 aMs
@@ -34242,11 +34286,11 @@ aFN
 aMs
 aMs
 aMs
-aMs
+xtQ
 fNR
 aRU
-aAN
-aAN
+gpL
+gpL
 agi
 qtp
 cUf
@@ -34374,7 +34418,7 @@ aNC
 aHX
 aJu
 aNC
-aNC
+kkI
 aNC
 aNC
 aNC
@@ -34527,7 +34571,7 @@ cZR
 cZR
 cZR
 cZR
-aIb
+mnz
 aDK
 aWs
 aAN
@@ -35799,7 +35843,7 @@ aVM
 wPf
 kaC
 xIt
-wDN
+rMK
 aYG
 maf
 aTj
@@ -36357,7 +36401,7 @@ asN
 asO
 aFm
 aDK
-aGR
+mnz
 asd
 asd
 aTf
@@ -36646,7 +36690,7 @@ atG
 aJT
 aLY
 atG
-atG
+nmu
 atG
 atG
 atG
@@ -36788,7 +36832,7 @@ aMs
 peQ
 bgE
 bcC
-aMs
+cFO
 aMs
 aMs
 aMs
