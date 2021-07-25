@@ -221,7 +221,7 @@ var/list/wrapped_species_by_ref = list()
 
 	last_special = world.time + 50
 
-	var/new_hair = input(usr, "Please select a new hair color.", "Hair Colour", rgb(r_hair, g_hair b_hair)) as color|null
+	var/new_hair = input(usr, "Please select a new hair color.", "Hair Colour", rgb(r_hair, g_hair, b_hair)) as color|null
 	if(!new_hair)
 		return
 	shapeshifter_set_hair_color(new_hair)
