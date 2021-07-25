@@ -217,10 +217,11 @@
 		usr.update_action_buttons()
 
 /obj/item/clothing/glasses/omnihud/exp
-	name = "\improper AR-V glasses"
-	desc = "The VM-62-V AR glasses are a design from Vey Med. \
+	name = "\improper AR-V goggles"
+	desc = "The VM-62-V AR goggles are a design from Vey Med. \
 	These have been upgraded with an integrated zoom function and rudimentary health scanner."
 	mode = "exp"
+	icon_state = "pf_goggles"
 	prescription = 1
 	action_button_name = "Toggle Zoom"
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
