@@ -1,5 +1,5 @@
 /obj/machinery/optable
-	name = "Operating Table"
+	name = "the operating table"
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "table2-idle"
@@ -101,8 +101,10 @@
 		C.client.eye = src
 	C.resting = 1
 	C.loc = src.loc
-	for(var/obj/O in src)
+	// now that we hold parts, this must be commented out to prevent dumping our parts onto our loc. not sure what this was intended to do when it was written.
+	/*for(var/obj/O in src)
 		O.loc = src.loc
+	*/
 	add_fingerprint(user)
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
