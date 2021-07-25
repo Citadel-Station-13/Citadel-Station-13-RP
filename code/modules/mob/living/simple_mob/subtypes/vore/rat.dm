@@ -60,7 +60,7 @@
 
 /mob/living/simple_mob/vore/aggressive/rat/maurice
 	name = "Maurice"
-	desc = "The station's resident vermin supreme, he makes the rules for all maintnence rodents.\
+	desc = "The station's resident vermin supreme, he makes the rules for all maintnence rodents. \
 	He appears to have grown quite chubby off gifts of trash and cheese from the crew."
 
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
