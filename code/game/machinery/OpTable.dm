@@ -25,13 +25,17 @@
 	component_parts += new /obj/item/stock_parts/console_screen(src)
 	component_parts += new /obj/item/healthanalyzer(src)
 	component_parts += new /obj/item/stack/material/glass/reinforced (src, 2)
+
 	RefreshParts()
 
+/obj/machinery/optable/Initialize()
+	. = ..()
 	for(var/direction in list(NORTH,EAST,SOUTH,WEST))
 		computer = locate(/obj/machinery/computer/operating, get_step(src, direction))
 		if(computer)
 			computer.table = src
 			break
+
 //	spawn(100) //Wont the MC just call this process() before and at the 10 second mark anyway?
 //		process()
 
