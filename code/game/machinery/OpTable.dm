@@ -21,14 +21,14 @@
 	component_parts += new /obj/item/stock_parts/manipulator(src)
 	component_parts += new /obj/item/stock_parts/manipulator(src)
 	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
 	component_parts += new /obj/item/stock_parts/console_screen(src)
 	component_parts += new /obj/item/healthanalyzer(src)
 	component_parts += new /obj/item/stack/material/glass/reinforced (src, 2)
 
 	RefreshParts()
 
-/obj/machinery/optable/Initialize()
+/obj/machinery/optable/Initialize(mapload)
 	. = ..()
 	for(var/direction in list(NORTH,EAST,SOUTH,WEST))
 		computer = locate(/obj/machinery/computer/operating, get_step(src, direction))
@@ -69,7 +69,7 @@
 		return TRUE
 
 /obj/machinery/optable/MouseDrop_T(obj/O as obj, mob/user as mob)
-
+	. = ..()
 	if((!(istype(O, /obj/item)) || user.get_active_hand() != O))
 		return
 	user.drop_item()
@@ -131,7 +131,7 @@
 
 	take_victim(usr,usr)
 
-/obj/machinery/optable/attackby(obj/item/W as obj, mob/living/carbon/user as mob)
+/obj/machinery/optable/attackby(obj/item/W as obj, var/obj/item/I, mob/living/carbon/user as mob)
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(iscarbon(G.affecting) && check_table(G.affecting))
@@ -148,3 +148,18 @@
 		to_chat(usr, "<span class='notice'>Unbuckle \the [patient] first!</span>")
 		return 0
 	return 1
+
+/obj/machinery/sleeper/RefreshParts()
+	var/cap_rating = 0
+
+	idle_power_usage = initial(idle_power_usage)
+	active_power_usage = initial(active_power_usage)
+
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/capacitor))
+			cap_rating += P.rating
+
+	cap_rating = max(1, round(cap_rating / 2))
+
+	idle_power_usage /= cap_rating
+	active_power_usage /= cap_rating

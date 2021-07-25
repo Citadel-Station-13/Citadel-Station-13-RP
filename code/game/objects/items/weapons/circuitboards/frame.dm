@@ -253,11 +253,12 @@
 /obj/item/circuitboard/operating_table
 	name = T_BOARD("operating table")
 	build_path = /obj/machinery/optable
-	board_type = new /datum/frame/frame_types/machine
+	board_type = new /datum/frame/frame_types/operating_table
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	req_components = list(
 							/obj/item/stock_parts/manipulator = 2,
-							/obj/item/stock_parts/scanning_module = 2,
+							/obj/item/stock_parts/scanning_module = 1,
+							/obj/item/stock_parts/capacitor = 1,
 							/obj/item/stock_parts/console_screen = 1,
 							/obj/item/healthanalyzer = 1,
 							/obj/item/stack/material/glass/reinforced = 2)
