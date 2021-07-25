@@ -189,6 +189,7 @@
 	prescription = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
 
+
 /obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user)
 	if(!active)
 		toggleprojector()
@@ -214,6 +215,18 @@
 			usr.update_inv_glasses()
 			to_chat(usr, "You activate the retinal projector on the [src].")
 		usr.update_action_buttons()
+
+/obj/item/clothing/glasses/omnihud/exp
+	name = "\improper AR-V glasses"
+	desc = "The VM-62-V AR glasses are a design from Vey Med. \
+	These have been upgraded with an integrated zoom function and rudimentary health scanner."
+	mode = "exp"
+	prescription = 1
+	action_button_name = "Toggle Zoom"
+	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
+
+/obj/item/clothing/glasses/omnihud/exp/ui_action_click()
+	zoom(wornslot = slot_glasses)
 
 /obj/item/clothing/glasses/omnihud/all
 	name = "\improper AR-B glasses"
