@@ -1636,3 +1636,6 @@
 	alt_farmanimals -= src
 
 	. = ..()
+
+/mob/living/carbon/human/get_mob_riding_slots()
+	return list(back, head, wear_suit)
