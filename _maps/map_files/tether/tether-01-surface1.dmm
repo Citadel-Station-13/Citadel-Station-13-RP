@@ -12657,7 +12657,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "avB" = (
-/obj/machinery/door/window/eastleft{
+/obj/machinery/door/window/brigdoor/eastleft{
 	name = "Tram Station Holding Cell"
 	},
 /turf/simulated/floor/tiled,

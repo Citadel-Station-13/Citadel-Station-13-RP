@@ -9203,7 +9203,8 @@
 /area/tether/surfacebase/surface_three_hall)
 "apa" = (
 /obj/structure/closet/secure_closet/hydroponics{
-	req_access = list(77)
+	req_access = list();
+	req_one_access = list(30, 35, 47, 77)
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -10493,7 +10494,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "ars" = (
-/obj/machinery/vending/hydronutrients,
+/obj/machinery/vending/hydronutrients{
+	req_one_access = list(30, 35, 47, 77)
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
@@ -11197,7 +11200,8 @@
 /area/tether/surfacebase/surface_three_hall)
 "asF" = (
 /obj/structure/closet/secure_closet/hydroponics{
-	req_access = list(77)
+	req_access = list();
+	req_one_access = list(30, 35, 47, 77)
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -16883,7 +16887,9 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "aCW" = (
-/obj/machinery/vending/hydronutrients,
+/obj/machinery/vending/hydronutrients{
+	req_one_access = list(30, 35, 47, 77)
+	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
