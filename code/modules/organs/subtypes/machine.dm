@@ -21,6 +21,13 @@
 	// ..() // VOREStation Edit - Don't take damage
 	owner.nutrition = max(0, owner.nutrition - rand(10/severity, 50/severity))
 
+/obj/item/organ/internal/cell/machine/handle_organ_proc_special()
+	..()
+	if(owner && owner.stat != DEAD)
+		owner.bodytemperature += round(owner.robobody_count * 0.5, 0.1)
+
+	return
+
 // Used for an MMI or posibrain being installed into a human.
 /obj/item/organ/internal/mmi_holder
 	name = "brain interface"
@@ -30,6 +37,7 @@
 	var/brain_type = /obj/item/mmi
 	var/obj/item/mmi/stored_mmi
 	robotic = ORGAN_ASSISTED
+	butcherable = FALSE
 
 /obj/item/organ/internal/mmi_holder/Destroy()
 	if(stored_mmi && (stored_mmi.loc == src))
@@ -44,6 +52,11 @@
 		return
 	stored_mmi = new brain_type(src)
 	addtimer(CALLBACK(src, .proc/update_from_mmi), 0)
+
+/obj/item/organ/internal/mmi_holder/proc/get_control_efficiency()
+	. = max(0, 1 - round(damage / max_damage, 0.1))
+
+	return .
 
 /obj/item/organ/internal/mmi_holder/proc/update_from_mmi()
 

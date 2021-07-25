@@ -68,8 +68,11 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
 
 /obj/item/organ/internal/brain/proc/clear_brainmob_hud()
-	if(brainmob && brainmob.client)
-		brainmob.client.screen.len = null //clear the hud
+	if(brainmob)
+		butcherable = FALSE
+
+		if(brainmob.client)
+			brainmob.client.screen.len = null	// Clear the hud
 
 /obj/item/organ/internal/brain/Destroy()
 	QDEL_NULL(brainmob)
@@ -81,8 +84,10 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		brainmob = new(src)
 		brainmob.name = H.real_name
 		brainmob.real_name = H.real_name
-		brainmob.dna = H.dna.Clone()
-		brainmob.timeofhostdeath = H.timeofdeath
+		if(istype(H))
+			brainmob.dna = H.dna.Clone()
+			brainmob.timeofhostdeath = H.timeofdeath
+			brainmob.ooc_notes = H.ooc_notes //VOREStation Edit
 
 		// Copy modifiers.
 		for(var/datum/modifier/M in H.modifiers)
@@ -109,7 +114,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	if(name == initial(name))
 		name = "\the [owner.real_name]'s [initial(name)]"
 
-	var/mob/living/simple_mob/animal/borer/borer = owner.has_brain_worms()
+	var/mob/living/simple_mob/animal/borer/borer = owner?.has_brain_worms()
 
 	if(borer)
 		borer.detatch() //Should remove borer if the brain is removed - RR
@@ -192,11 +197,11 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 	var/datum/mind/clonemind = brainmob.mind
 
-	if(!istype(clonemind, /datum/mind))	//not a mind
+	if(!istype(clonemind, /datum/mind))	// Not a mind
 		return 0
-	if(clonemind.current && clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
+	if(clonemind.current && clonemind.current.stat != DEAD)	// Mind is associated with a non-dead body
 		return 0
-	if(clonemind.active)	//somebody is using that mind
+	if(clonemind.active)	// Somebody is using that mind
 		if(ckey(clonemind.key) != R.ckey)
 			return 0
 	else
@@ -207,7 +212,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 				else
 					return 0
 
-	for(var/modifier_type in R.genetic_modifiers)	//Can't be revived. Probably won't happen...?
+	for(var/modifier_type in R.genetic_modifiers)	// Can't be revived. Probably won't happen...?
 		if(istype(modifier_type, /datum/modifier/no_clone))
 			return 0
 
@@ -221,16 +226,16 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 	H.UpdateAppearance()
 	H.sync_organ_dna()
-	if(!R.dna.real_name)	//to prevent null names
+	if(!R.dna.real_name)	// To prevent null names
 		R.dna.real_name = "promethean ([rand(0,999)])"
 	H.real_name = R.dna.real_name
 
-	H.nutrition = 260 //Enough to try to regenerate ONCE.
+	H.nutrition = 260	// Enough to try to regenerate ONCE.
 	H.adjustBruteLoss(40)
 	H.adjustFireLoss(40)
 	H.Paralyse(4)
 	H.updatehealth()
-	for(var/obj/item/organ/external/E in H.organs) //They've still gotta congeal, but it's faster than the clone sickness they'd normally get.
+	for(var/obj/item/organ/external/E in H.organs)	// They've still gotta congeal, but it's faster than the clone sickness they'd normally get.
 		if(E && E.organ_tag == BP_L_ARM || E.organ_tag == BP_R_ARM || E.organ_tag == BP_L_LEG || E.organ_tag == BP_R_LEG)
 			E.removed()
 			qdel(E)

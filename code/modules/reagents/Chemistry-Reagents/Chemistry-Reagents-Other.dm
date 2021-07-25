@@ -514,6 +514,23 @@
 	taste_mult = 1.1
 	reagent_state = REAGENT_LIQUID
 	color = "#C8A5DC"
+	affects_robots = TRUE
+
+/datum/reagent/coolant/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(M.isSynthetic() && ishuman(M))
+		var/mob/living/carbon/human/H = M
+
+		var/datum/reagent/blood/coolant = H.get_blood(H.vessel)
+
+		if(coolant)
+			H.vessel.add_reagent("blood", removed, coolant.data)
+
+		else
+			H.vessel.add_reagent("blood", removed)
+			H.fixblood()
+
+	else
+		..()
 
 /datum/reagent/ultraglue
 	name = "Ultra Glue"

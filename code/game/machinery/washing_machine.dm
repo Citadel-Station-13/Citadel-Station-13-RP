@@ -60,9 +60,14 @@
 
 	//Tanning!
 	for(var/obj/item/stack/material/hairlesshide/HH in washing)
-		var/obj/item/stack/material/wetleather/WL = new(src)
-		WL.amount = HH.amount
-		qdel(HH)
+		var/obj/item/stack/WL = new HH.wet_type(src)
+		if(istype(WL))
+			WL.amount = HH.amount
+		washing -= HH
+		HH.forceMove(get_turf(src))
+		HH.use(HH.amount)
+
+		washing += WL
 
 	if(locate(/mob,washing))
 		state = 7
@@ -118,7 +123,7 @@
 		to_chat(user, "<span class='warning'>You can't fit \the [W] inside.</span>")
 		return
 
-	else if(istype(W, /obj/item/clothing) || istype(W, /obj/item/bedsheet))
+	else if(istype(W, /obj/item/clothing) || istype(W, /obj/item/bedsheet) || istype(W, /obj/item/stack/material/hairlesshide))
 		if(washing.len < 5)
 			if(state in list(1, 3))
 				user.drop_item()

@@ -32,8 +32,8 @@
 	var/tail_animation										// If set, the icon to obtain tail animation states from.
 	var/tail_hair
 
-	var/icon_scale_x = 1										// Makes the icon wider/thinner.
-	var/icon_scale_y = 1										// Makes the icon taller/shorter.
+	var/icon_scale_x = 1									// Makes the icon wider/thinner.
+	var/icon_scale_y = 1									// Makes the icon taller/shorter.
 
 	var/race_key = 0										// Used for mob icon cache string.
 	var/icon/icon_template									// Used for mob icon generation for non-32x32 species.
@@ -41,6 +41,7 @@
 	var/show_ssd = "fast asleep"
 	var/virus_immune
 	var/short_sighted										// Permanent weldervision.
+	var/blood_name = "blood"								// Name for the species' blood.
 	var/blood_volume = 560									// Initial blood volume.
 	var/bloodloss_rate = 1									// Multiplier for how fast a species bleeds out. Higher = Faster
 	var/hunger_factor = 0.05								// Multiplier for hunger.
@@ -104,9 +105,9 @@
 
 	// Environment tolerance/life processes vars.
 	var/reagent_tag											//Used for metabolizing reagents.
-	var/breath_type = /datum/gas/oxygen								// Non-oxygen gas breathed, if any.
-	var/poison_type = /datum/gas/phoron								// Poisonous air.
-	var/exhale_type = /datum/gas/carbon_dioxide						// Exhaled gas type.
+	var/breath_type = /datum/gas/oxygen						// Non-oxygen gas breathed, if any.
+	var/poison_type = /datum/gas/phoron						// Poisonous air.
+	var/exhale_type = /datum/gas/carbon_dioxide				// Exhaled gas type.
 
 	var/body_temperature = 310.15							// Species will try to stabilize at this temperature. (also affects temperature processing)
 
@@ -161,7 +162,7 @@
 	var/health_hud_intensity = 1							// This modifies how intensely the health hud is colored.
 
 	// Body/form vars.
-	var/list/inherent_verbs = list()									// Species-specific verbs.
+	var/list/inherent_verbs = list()						// Species-specific verbs.
 	var/has_fine_manipulation = 1							// Can use small items.
 	var/siemens_coefficient = 1								// The lower, the thicker the skin and better the insulation.
 	var/darksight = 2										// Native darksight distance.
@@ -187,8 +188,8 @@
 	var/rarity_value = 1									// Relative rarity/collector value for this species.
 	var/economic_modifier = 2								// How much money this species makes
 
-	// Determines the organs that the species spawns with and
-	var/list/has_organ = list(								// which required-organ checks are conducted.
+	// Determines the organs that the species spawns with and which required-organ checks are conducted.
+	var/list/has_organ = list(
 		O_HEART =		/obj/item/organ/internal/heart,
 		O_LUNGS =		/obj/item/organ/internal/lungs,
 		O_VOICE = 		/obj/item/organ/internal/voicebox,
@@ -201,7 +202,7 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
 	var/vision_organ										// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
-	var/dispersed_eyes            // If set, the species will be affected by flashbangs regardless if they have eyes or not, as they see in large areas.
+	var/dispersed_eyes										// If set, the species will be affected by flashbangs regardless if they have eyes or not, as they see in large areas.
 
 	var/list/has_limbs = list(
 		BP_TORSO =	list("path" = /obj/item/organ/external/chest),
@@ -221,27 +222,27 @@
 	var/ambiguous_genders = FALSE // If true, people examining a member of this species whom are not also the same species will see them as gender neutral.	Because aliens.
 
 	// Bump vars
-	var/bump_flag = HUMAN			// What are we considered to be when bumped?
-	var/push_flags = ~HEAVY			// What can we push?
-	var/swap_flags = ~HEAVY			// What can we swap place with?
+	var/bump_flag = HUMAN									// What are we considered to be when bumped?
+	var/push_flags = ~HEAVY									// What can we push?
+	var/swap_flags = ~HEAVY									// What can we swap place with?
 
 	var/pass_flags = 0
 
 	var/list/descriptors = list()
 
-	//This is used in character setup preview generation (prefences_setup.dm) and human mob
+	// This is used in character setup preview generation (prefences_setup.dm) and human mob
 	//rendering (update_icons.dm)
 	var/color_mult = 0
 
-	//This is for overriding tail rendering with a specific icon in icobase, for static
-	//tails only, since tails would wag when dead if you used this
+	// This is for overriding tail rendering with a specific icon in icobase, for static
+	// tails only, since tails would wag when dead if you used this
 	var/icobase_tail = 0
 
 	var/wing_hair
 	var/wing
 	var/wing_animation
 	var/icobase_wing
-	var/wikilink = null //link to wiki page for species
+	var/wikilink = null	// Link to wiki page for species
 
 /datum/species/New()
 	if(hud_type)
@@ -258,7 +259,7 @@
 			descriptor_datums[descriptor.name] = descriptor
 		descriptors = descriptor_datums
 
-	//If the species has eyes, they are the default vision organ
+	// If the species has eyes, they are the default vision organ
 	if(!vision_organ && has_organ[O_EYES])
 		vision_organ = O_EYES
 
@@ -282,29 +283,29 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 ))
 
 /datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)
-	var/boxtype = /obj/item/storage/box/survival //Default survival box
+	var/boxtype = /obj/item/storage/box/survival	// Default survival box
 
 	var/synth = H.isSynthetic()
 
-	//Empty box for synths
+	// Empty box for synths
 	if(synth)
 		boxtype = /obj/item/storage/box/survival/synth
 
-	//Special box with extra equipment
+	// Special box with extra equipment
 	else if(comprehensive)
 		boxtype = /obj/item/storage/box/survival/comp
 
-	//Create the box
+	// Create the box
 	var/obj/item/storage/box/box = new boxtype(H)
 
-	//If not synth, they get an air tank (if they breathe)
+	// If not synth, they get an air tank (if they breathe)
 	if(!synth && breath_type)
-		//Create a tank (if such a thing exists for this species)
+		// Create a tank (if such a thing exists for this species)
 		var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
 		var/tankpath
 		if(extendedtank)
 			tankpath = text2path("[given_path]" + "/engi")
-			if(!tankpath) //Is it just that there's no /engi?
+			if(!tankpath)	// Is it just that there's no /engi?
 				tankpath = text2path("[given_path]" + "/double")
 
 		if(!tankpath)
@@ -315,7 +316,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		else
 			stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
 
-	//If they are synth, they get a smol battery
+	// If they are synth, they get a smol battery
 	else if(synth)
 		new /obj/item/fbp_backup_cell(box)
 
@@ -326,7 +327,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	else
 		H.equip_to_slot_or_del(box, slot_in_backpack)
 
-/datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
+/datum/species/proc/create_organs(var/mob/living/carbon/human/H)	// Handles creation of mob organs.
 
 	H.mob_size = mob_size
 	for(var/obj/item/organ/organ in H.contents)
@@ -348,6 +349,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		var/limb_path = organ_data["path"]
 		var/obj/item/organ/O = new limb_path(H)
 		organ_data["descriptor"] = O.name
+		if(O.parent_organ)
+			organ_data = has_limbs[O.parent_organ]
+			organ_data["has_children"] = organ_data["has_children"]+1
 
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
@@ -393,7 +397,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		H.visible_message( \
 			"<span class='notice'>[H] shakes [target]'s hand.</span>", \
 			"<span class='notice'>You shake [target]'s hand.</span>", )
-	//Ports nose booping
+	// Ports nose booping
 	else if(H.zone_sel.selecting == "mouth")
 		H.visible_message( \
 			"<span class='notice'>[H] boops [target]'s nose.</span>", \
@@ -413,14 +417,14 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			H.verbs |= verb_path
 	return
 
-/datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
+/datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H)	// Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
 	H.mob_bump_flag = bump_flag
 	H.mob_swap_flags = swap_flags
 	H.mob_push_flags = push_flags
 	H.pass_flags = pass_flags
 
-/datum/species/proc/handle_death(var/mob/living/carbon/human/H, gibbed = FALSE) //Handles any species-specific death events (such as dionaea nymph spawns).
+/datum/species/proc/handle_death(var/mob/living/carbon/human/H, gibbed = FALSE)	// Handles any species-specific death events (such as dionaea nymph spawns).
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
@@ -506,7 +510,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
 
-/datum/species/proc/give_numbing_bite() //Holy SHIT this is hacky, but it works. Updating a mob's attacks mid game is insane.
+/datum/species/proc/give_numbing_bite()	// Holy SHIT this is hacky, but it works. Updating a mob's attacks mid game is insane.
 	unarmed_attacks = list()
 	unarmed_types += /datum/unarmed_attack/bite/sharp/numbing
 	for(var/u_type in unarmed_types)

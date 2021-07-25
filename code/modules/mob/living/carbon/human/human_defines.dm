@@ -80,7 +80,7 @@
 
 	var/age = 30		//Player's age (pure fluff)
 	var/b_type = "A+"	//Player's bloodtype
-	var/datum/robolimb/synthetic		//If they are a synthetic (aka synthetic torso)
+	var/datum/robolimb/synthetic		//If they are a synthetic (aka synthetic torso). Also holds the datum for the type of robolimb.
 
 	var/list/all_underwear = list()
 	var/list/all_underwear_metadata = list()
@@ -121,7 +121,6 @@
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 
 	var/last_dam = -1	//Used for determining if we need to process all organs or just some or even none.
-	var/list/bad_external_organs = list()// organs we check until they are good.
 
 	var/xylophone = 0 //For the spoooooooky xylophone cooldown
 
@@ -146,12 +145,13 @@
 
 	can_be_antagged = TRUE
 
-// Used by mobs in virtual reality to point back to the "real" mob the client belongs to.
+	// Used by mobs in virtual reality to point back to the "real" mob the client belongs to.
 	var/mob/living/carbon/human/vr_holder = null
 	// Used by "real" mobs after they leave a VR session
 	var/mob/living/carbon/human/vr_link = null
 
 	var/obj/machinery/machine_visual //machine that is currently applying visual effects to this mob. Only used for camera monitors currently.
+	butchery_loot = list(/obj/item/stack/material/animalhide/human = 1)
 
 /mob/living/carbon/human/proc/shadekin_get_energy()
 	var/datum/species/shadekin/SK = species

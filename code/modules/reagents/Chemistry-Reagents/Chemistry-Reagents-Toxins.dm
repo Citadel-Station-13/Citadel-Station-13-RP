@@ -1059,6 +1059,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	metabolism = REM * 4 // Nanomachines. Fast.
+	affects_robots = TRUE
 
 /datum/reagent/shredding_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustBruteLoss(4 * removed)
@@ -1072,6 +1073,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	reagent_state = REAGENT_SOLID
 	color = "#555555"
 	metabolism = REM * 4
+	affects_robots = TRUE
 
 /datum/reagent/irradiated_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	SSradiation.radiate(get_turf(M), 20)	// Irradiate people around you.
@@ -1086,6 +1088,7 @@ datum/reagent/talum_quem/affect_blood(var/mob/living/carbon/M, var/alien, var/re
 	color = "#555555"
 	metabolism = REM * 4
 	filtered_organs = list(O_SPLEEN)
+	affects_robots = TRUE
 
 /datum/reagent/neurophage_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.adjustBrainLoss(2 * removed)	// Their job is to give you a bad time.

@@ -887,6 +887,8 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/log
 	sheet_singular_name = null
 	sheet_plural_name = "pile"
+	pass_stack_colors = TRUE
+	// supply_conversion_value = 1
 
 /datum/material/wood/log/sif
 	name = MAT_SIFLOG
@@ -972,6 +974,7 @@ var/list/name_to_material
 	flags = MATERIAL_PADDING
 	conductive = 0
 	pass_stack_colors = TRUE
+	// supply_conversion_value = 2
 
 /datum/material/emptysandbag
 	name = "empty sandbag"
@@ -1076,16 +1079,32 @@ var/list/name_to_material
 		return 1
 	return 0
 
+/datum/material/chitin
+	name = MAT_CHITIN
+	icon_colour = "#8d6653"
+	stack_type = /obj/item/stack/material/chitin
+	stack_origin_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4)
+	icon_base = "solid"
+	icon_reinf = "reinf_mesh"
+	integrity = 60
+	ignition_point = T0C+400
+	melting_point = T0C+500
+	protectiveness = 25
+	conductive = 0
+	// supply_conversion_value = 4
+
 //TODO PLACEHOLDERS:
 /datum/material/leather
-	name = "leather"
+	name = MAT_LEATHER
 	icon_colour = "#5C4831"
-	stack_origin_tech = list(TECH_MATERIAL = 2)
+	stack_type = /obj/item/stack/material/leather
+	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	flags = MATERIAL_PADDING
 	ignition_point = T0C+300
 	melting_point = T0C+300
 	protectiveness = 3 // 13%
 	conductive = 0
+	// supply_conversion_value = 3
 
 /datum/material/carpet
 	name = "carpet"

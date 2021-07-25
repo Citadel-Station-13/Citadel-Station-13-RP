@@ -56,10 +56,10 @@
 					visible_message("<span class='notice'>\The [user] applies the [MED] on [src].</span>")
 		else
 			var/datum/gender/T = gender_datums[src.get_visible_gender()]
-			to_chat(user, "<span class='notice'>\The [src] is dead, medical items won't bring [T.him] back to life.</span>") // the gender lookup is somewhat overkill, but it functions identically to the obsolete gender macros and future-proofs this code
-	if(meat_type && (stat == DEAD))	//if the animal has a meat, and if it is dead.
-		if(istype(O, /obj/item/material/knife))
-			harvest(user)
+			to_chat(user, "<span class='notice'>\The [src] is dead, medical items won't bring [T.him] back to life.</span>") // The gender lookup is somewhat overkill, but it functions identically to the obsolete gender macros and future-proofs this code
+	if(can_butcher(user, O))	// If the animal can be butchered, do so and return. It's likely to be gibbed.
+		harvest(user, O)
+		return
 
 	return ..()
 
@@ -68,7 +68,7 @@
 /mob/living/simple_mob/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
 	effective_force = O.force
 
-	//Animals can't be stunned(?)
+	// Animals can't be stunned(?)
 	if(O.damtype == HALLOSS)
 		effective_force = 0
 	if(supernatural && istype(O,/obj/item/nullrod))
@@ -158,7 +158,7 @@
 	switch(severity)
 		if(1)
 		//	adjustFireLoss(rand(15, 25))
-			adjustFireLoss(min(60, getMaxHealth()*0.5)) // Weak mobs will always take two direct EMP hits to kill. Stronger ones might take more.
+			adjustFireLoss(min(60, getMaxHealth()*0.5))	// Weak mobs will always take two direct EMP hits to kill. Stronger ones might take more.
 		if(2)
 			adjustFireLoss(min(30, getMaxHealth()*0.25))
 		//	adjustFireLoss(rand(10, 18))
@@ -228,7 +228,7 @@
 		if(health <= 0)
 			visible_message(span("critical", "\The [src] melts into slurry!"))
 			gib()
-			return // No point deafening something that wont exist.
+			return	// No point deafening something that wont exist.
 
 // Injections.
 /mob/living/simple_mob/can_inject(mob/user, error_msg, target_zone, ignore_thickness)

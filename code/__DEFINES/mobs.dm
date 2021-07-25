@@ -193,16 +193,24 @@
 // Augments
 #define O_AUG_EYES "occular augment"
 
-#define O_AUG_L_FOREARM "left forearm augment"
-#define O_AUG_R_FOREARM "right forearm augment"
-#define O_AUG_L_UPPERARM "left upperarm augment"
-#define O_AUG_R_UPPERARM "right upperarm augment"
-#define O_AUG_L_HAND "left hand augment"
-#define O_AUG_R_HAND "right hand augment"
+#define O_AUG_L_FOREARM   "left forearm augment"
+#define O_AUG_R_FOREARM   "right forearm augment"
+#define O_AUG_L_UPPERARM  "left upperarm augment"
+#define O_AUG_R_UPPERARM  "right upperarm augment"
+#define O_AUG_L_HAND      "left hand augment"
+#define O_AUG_R_HAND      "right hand augment"
 
-#define O_AUG_RIBS "rib augment"
-#define O_AUG_SPINE "spinal augment"
+#define O_AUG_RIBS   "rib augment"
+#define O_AUG_SPINE  "spinal augment"
 #define O_AUG_PELVIC "pelvic augment"
+
+// FBP components.
+
+#define O_PUMP     "hydraulic hub"
+#define O_CYCLER   "reagent cycler"
+#define O_HEATSINK "thermal regulator"
+#define O_DIAGNOSTIC "diagnostic controller"
+
 
 // Non-Standard organs
 #define O_MOUTH    "mouth"

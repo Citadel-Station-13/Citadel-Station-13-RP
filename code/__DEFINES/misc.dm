@@ -200,6 +200,9 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAT_SUPERMATTER		"supermatter"
 #define MAT_METALHYDROGEN	"mhydrogen"
 #define MAT_OSMIUM			"osmium"
+#define MAT_GRAPHITE		"graphite"
+#define MAT_LEATHER			"leather"
+#define MAT_CHITIN			"chitin"
 
 #define SHARD_SHARD			"shard"
 #define SHARD_SHRAPNEL		"shrapnel"

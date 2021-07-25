@@ -150,6 +150,9 @@
 		var/obj/item/reagent_containers/food/snacks/S = O
 		if (S.dried_type)
 			return 1
+	if(istype(O, /obj/item/stack/material/wetleather))
+		return 1
+
 	return 0
 
 /obj/machinery/smartfridge/drying_rack/process(delta_time)
@@ -192,6 +195,17 @@
 				new D(get_turf(src))
 				qdel(S)
 			return
+
+		for(var/obj/item/stack/material/wetleather/WL in I.instances)
+			if(!WL.wetness)
+				if(WL.amount == 1)
+					WL.forceMove(get_turf(src))
+				I.instances -= WL
+				WL.dry()
+				break
+
+			WL.wetness = max(0, WL.wetness - rand(1, 3))
+
 	return
 
 /obj/machinery/smartfridge/process(delta_time)

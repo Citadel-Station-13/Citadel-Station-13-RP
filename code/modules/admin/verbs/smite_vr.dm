@@ -255,7 +255,7 @@ This smite is also slated for transfer to the non Vore section shortly. Will coi
 	var/obj/screen/loader = new(target)
 	loader.name = "Autosaving..."
 	loader.desc = "A disc icon that represents your game autosaving. Please wait."
-	loader.icon = 'icons/obj/discs_vr.dmi'
+	loader.icon = 'icons/obj/disks.dmi'
 	loader.icon_state = "quicksave"
 	loader.screen_loc = "NORTH-1, EAST-1"
 	target.client.screen += loader

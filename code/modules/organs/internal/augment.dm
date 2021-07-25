@@ -11,18 +11,21 @@
 
 	organ_verbs = list(/mob/living/carbon/human/proc/augment_menu)	// Verbs added by the organ when present in the body.
 	target_parent_classes = list()	// Is the parent supposed to be organic, robotic, assisted?
-	forgiving_class = FALSE	// Will the organ give its verbs when it isn't a perfect match? I.E., assisted in organic, synthetic in organic.
+	forgiving_class = FALSE			// Will the organ give its verbs when it isn't a perfect match? I.E., assisted in organic, synthetic in organic.
+
+	butcherable = FALSE
+
 
 	var/obj/item/integrated_object	// Objects held by the organ, used for re-usable, deployable things.
-	var/integrated_object_type	// Object type the organ will spawn.
+	var/integrated_object_type		// Object type the organ will spawn.
 	var/target_slot = null
 
 	var/silent_deploy = FALSE
 
 	var/image/my_radial_icon = null
-	var/radial_icon = null	// DMI for the augment's radial icon.
-	var/radial_name = null	// The augment's name in the Radial Menu.
-	var/radial_state = null	// Icon state for the augment's radial icon.
+	var/radial_icon = null			// DMI for the augment's radial icon.
+	var/radial_name = null			// The augment's name in the Radial Menu.
+	var/radial_state = null			// Icon state for the augment's radial icon.
 
 	var/aug_cooldown = 30 SECONDS
 	var/last_activate = null
@@ -79,7 +82,7 @@
 // Attaches to the end of dropped items' code.
 
 /obj/item
-	var/destroy_on_drop = FALSE	// Used by augments to determine if the item should destroy itself when dropped, or return to its master.
+	var/destroy_on_drop = FALSE				// Used by augments to determine if the item should destroy itself when dropped, or return to its master.
 	var/obj/item/organ/my_augment = null	// Used to reference the object's host organ.
 
 /obj/item/dropped(mob/user)
@@ -165,7 +168,7 @@
 			qdel(equipping)
 			return 0
 
-	if(cling_to_organ) // Does the object automatically return to the organ?
+	if(cling_to_organ)	// Does the object automatically return to the organ?
 		equipping.my_augment = cling_to_organ
 
 	if(make_sound)

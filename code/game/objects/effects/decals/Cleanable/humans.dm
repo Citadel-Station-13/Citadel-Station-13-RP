@@ -60,7 +60,11 @@ var/global/list/image/splatter_cache=list()
 	if(basecolor == "rainbow")
 		basecolor = "#[get_random_colour(1)]"
 	add_atom_colour(basecolor, FIXED_COLOUR_PRIORITY)
-	if(synthblood)
+
+	if(basecolor == SYNTH_BLOOD_COLOUR)
+		name = "oil"
+		desc = "It's quite oily."
+	else if(synthblood)
 		name = "synthetic blood"
 		desc = "It's quite greasy."
 	else
