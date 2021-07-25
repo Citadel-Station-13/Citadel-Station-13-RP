@@ -25,7 +25,6 @@
 	density = 0
 	plane = OPENSPACE_PLANE_START
 	pathweight = 100000		// Seriously, don't try and path over this one numbnuts
-	dynamic_lighting = 0	// Someday lets do proper lighting z-transfer.  Until then we are leaving this off so it looks nicer.
 	can_build_into_floor = TRUE
 
 	var/turf/below
