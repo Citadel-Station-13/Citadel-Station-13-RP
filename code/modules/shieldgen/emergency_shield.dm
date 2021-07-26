@@ -144,7 +144,8 @@
 		/turf/simulated/floor/tiled/techfloor/grid/virgo3b,
 		/turf/simulated/floor/virgo3b,
 		/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-		/turf/simulated/open/virgo3b
+		/turf/simulated/open/virgo3b,
+		/turf/simulated/mineral/floor/virgo3b
 	)		//For Future additions to exterior tiles, add them on this list.
 
 /obj/machinery/shieldgen/Destroy()
