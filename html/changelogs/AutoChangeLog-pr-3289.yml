@@ -1,0 +1,10 @@
+author: "zydras"
+delete-after: True
+changes: 
+  - rscadd: "Added waiting seats, storage space and food vendors to the exploration hangar"
+  - rscadd: "Added a micro-medical bay to the Exploration shuttle"
+  - rscadd: "Moved Noodle from its old religious home to the Pilot's Office
+tweak: Entirely remodelled the Exploration shuttle to improve the layout
+tweak: Moved the Pilot's Office around and expanded it to improve its look"
+  - balance: "Added one additional engine to the Exploration shuttle"
+  - balance: "Added a storage section to the hangar to hold surplus canisters and crates"
