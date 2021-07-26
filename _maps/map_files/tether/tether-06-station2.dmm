@@ -21702,9 +21702,7 @@
 /area/space)
 "rKH" = (
 /turf/simulated/wall/r_wall,
-/area/tether/exploration/pilot_office{
-	pixel_y = 20
-	})
+/area/tether/exploration/pilot_office)
 "rMK" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/hatch{
