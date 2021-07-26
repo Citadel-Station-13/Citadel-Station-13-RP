@@ -62,6 +62,8 @@
 	supervisors = "the spirit of laughter"
 	selection_color = "#515151"
 	economic_modifier = 1
+	access = list(access_entertainment)
+	minimal_access = list(access_entertainment)
 	job_description = "A Clown is there to entertain the crew and keep high morale using various harmless pranks and ridiculous jokes!"
 	whitelist_only = 1
 	latejoin_only = 0
@@ -92,6 +94,8 @@
 	supervisors = "the spirit of performance"
 	selection_color = "#515151"
 	economic_modifier = 1
+	access = list(access_entertainment)
+	minimal_access = list(access_entertainment)
 	job_description = "A Mime is there to entertain the crew and keep high morale using unbelievable performances and acting skills!"
 	alt_titles = list("Poseur" = /datum/alt_title/poseur)
 	whitelist_only = 1
