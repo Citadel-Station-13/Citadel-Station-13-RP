@@ -1,0 +1,5 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "Smell System from upstream"
+  - bugfix: "Some of the formatting of the VORE Panel has been adjusted for consistency"
