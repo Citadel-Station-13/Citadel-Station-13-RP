@@ -1,0 +1,5 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Added the Roomba cleanbot variant and the Maid Roomba cleanbot variant."
+  - imageadd: "Added the icons for the relevant bots from /vg/station."

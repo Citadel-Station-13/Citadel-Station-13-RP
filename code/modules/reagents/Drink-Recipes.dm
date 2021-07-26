@@ -185,14 +185,14 @@
 	name = "Gin and Tonic"
 	id = "gintonic"
 	result = "gintonic"
-	required_reagents = list("gin" = 2, "tonic" = 1)
+	required_reagents = list("gin" = 1, "tonic" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/cuba_libre
 	name = "Cuba Libre"
 	id = "cubalibre"
 	result = "cubalibre"
-	required_reagents = list("rum" = 2, "cola" = 1)
+	required_reagents = list("rum" = 1, "cola" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/negroni
@@ -227,21 +227,21 @@
 	name = "Whiskey Cola"
 	id = "whiskeycola"
 	result = "whiskeycola"
-	required_reagents = list("whiskey" = 2, "cola" = 1)
+	required_reagents = list("whiskey" = 1, "cola" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/screwdriver
 	name = "Screwdriver"
 	id = "screwdrivercocktail"
 	result = "screwdrivercocktail"
-	required_reagents = list("vodka" = 2, "orangejuice" = 1)
+	required_reagents = list("vodka" = 1, "orangejuice" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/bloody_mary
 	name = "Bloody Mary"
 	id = "bloodymary"
 	result = "bloodymary"
-	required_reagents = list("vodka" = 2, "tomatojuice" = 3, "limejuice" = 1)
+	required_reagents = list("vodka" = 1, "tomatojuice" = 4, "limejuice" = 1)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/gargle_blaster
@@ -262,7 +262,7 @@
 	name = "Tequilla Sunrise"
 	id = "tequillasunrise"
 	result = "tequillasunrise"
-	required_reagents = list("tequilla" = 2, "orangejuice" = 1)
+	required_reagents = list("tequilla" = 1, "orangejuice" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/phoron_special
@@ -332,7 +332,7 @@
 	name = "Margarita"
 	id = "margarita"
 	result = "margarita"
-	required_reagents = list("tequilla" = 2, "limejuice" = 1)
+	required_reagents = list("tequilla" = 1, "limejuice" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/longislandicedtea
@@ -360,7 +360,7 @@
 	name = "Whiskey Soda"
 	id = "whiskeysoda"
 	result = "whiskeysoda"
-	required_reagents = list("whiskey" = 2, "sodawater" = 1)
+	required_reagents = list("whiskey" = 1, "sodawater" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/black_russian
@@ -388,7 +388,7 @@
 	name = "Vodka and Tonic"
 	id = "vodkatonic"
 	result = "vodkatonic"
-	required_reagents = list("vodka" = 2, "tonic" = 1)
+	required_reagents = list("vodka" = 1, "tonic" = 2)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/gin_fizz
@@ -402,7 +402,7 @@
 	name = "Bahama mama"
 	id = "bahama_mama"
 	result = "bahama_mama"
-	required_reagents = list("rum" = 2, "orangejuice" = 2, "limejuice" = 1, "ice" = 1)
+	required_reagents = list("rum" = 1, "orangejuice" = 2, "limejuice" = 2, "ice" = 1)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/singulo
@@ -714,7 +714,7 @@
 	name = "Fire Punch"
 	id = "firepunch"
 	result = "firepunch"
-	required_reagents = list("sugar" = 1, "rum" = 2)
+	required_reagents = list("sugar" = 2, "rum" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/kiraspecial
@@ -848,8 +848,8 @@
 	name = "Ginza Mary"
 	id = "ginzamary"
 	result = "ginzamary"
-	required_reagents = list("sake" = 2, "vodka" = 2, "tomatojuice" = 1)
-	result_amount = 5
+	required_reagents = list("sake" = 2, "vodka" = 2, "tomatojuice" = 2)
+	result_amount = 6
 
 /datum/chemical_reaction/drinks/tokyorose
 	name = "Tokyo Rose"
@@ -977,7 +977,7 @@
 	id = "vesper"
 	result = "vesper"
 	required_reagents = list("gin" = 3, "vodka" = 1, "wine" = 1)
-	result_amount = 4
+	result_amount = 5
 
 /datum/chemical_reaction/drinks/rotgut
 	name = "Rotgut Fever Dream"
@@ -1074,7 +1074,7 @@
 	name = "Clover Club"
 	id = "cloverclub"
 	result = "cloverclub"
-	required_reagents = list("berryjuice" = 1, "lemonjuice" = 1, "gin" = 3)
+	required_reagents = list("berryjuice" = 2, "lemonjuice" = 2, "gin" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/oldfashioned
@@ -1116,14 +1116,14 @@
 	name = "Mojito"
 	id = "mojito"
 	result = "mojito"
-	required_reagents = list("rum" = 3, "limejuice" = 1, "mint" = 1)
+	required_reagents = list("rum" = 1, "limejuice" = 2, "mint" = 2)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/virginmojito
 	name = "Mojito"
 	id = "virginmojito"
 	result = "virginmojito"
-	required_reagents = list("sodawater" = 3, "limejuice" = 1, "mint" = 1, "sugar" = 1)
+	required_reagents = list("sodawater" = 1, "limejuice" = 2, "mint" = 1, "sugar" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/piscosour
@@ -1181,7 +1181,7 @@
 	name = "Angels Wrath"
 	id = "angelswrath"
 	result = "angelswrath"
-	required_reagents = list("rum" = 3, "spacemountainwind" = 1, "holywine" = 1, "dr_gibb" = 1)
+	required_reagents = list("rum" = 1, "spacemountainwind" = 2, "holywine" = 1, "dr_gibb" = 2)
 	result_amount = 6
 
 /datum/chemical_reaction/drinks/ichor_mead
@@ -1307,7 +1307,7 @@
 	name = "Fire Punch"
 	id = "firepunch"
 	result = "firepunch"
-	required_reagents = list("sugar" = 1, "rum" = 2)
+	required_reagents = list("sugar" = 2, "rum" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/newsheriff
@@ -1336,7 +1336,7 @@
 	name = "Dead Man's Hand"
 	id = "dmhand"
 	result = "dmhand"
-	required_reagents = list("sassafras" = 1, "whiskey" = 2, "rum" = 2)
+	required_reagents = list("sassafras" = 3, "whiskey" = 1, "rum" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/snakeoil
@@ -1350,7 +1350,7 @@
 	name = "High Noon"
 	id = "highnoon"
 	result = "highnoon"
-	required_reagents = list("sassafras" = 1, "gold" = 2, "whiskey" = 2)
+	required_reagents = list("sassafras" = 2, "gold" = 2, "whiskey" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/bloodmeridian
@@ -1364,14 +1364,14 @@
 	name = "The Outlaw"
 	id = "theoutlaw"
 	result = "theoutlaw"
-	required_reagents = list("vodka" = 3, "gold" = 1, "bitters" = 1)
-	result_amount = 5
+	required_reagents = list("vodka" = 1, "gold" = 1, "bitters" = 1)
+	result_amount = 3
 
 /datum/chemical_reaction/drinks/thelawman
 	name = "The Lawman"
 	id = "thelawman"
 	result = "thelawman"
-	required_reagents = list("whiskey" = 3, "coffee" = 1, "mint" = 1)
+	required_reagents = list("whiskey" = 1, "coffee" = 2, "mint" = 2)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/hangmansnoose
@@ -1392,7 +1392,7 @@
 	name = "Last Cactus"
 	id = "lastcactus"
 	result = "lastcactus"
-	required_reagents = list("vodka" = 2, "mint" = 1, "sugar" = 1, "ice" = 1)
+	required_reagents = list("vodka" = 1, "mint" = 2, "sugar" = 1, "ice" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/rootbeerfloat
