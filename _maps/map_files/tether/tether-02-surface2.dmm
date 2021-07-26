@@ -1133,8 +1133,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -14552,10 +14550,10 @@
 /area/maintenance/lower/bar)
 "axQ" = (
 /obj/machinery/floodlight,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "axR" = (
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "axS" = (
 /obj/machinery/power/apc{
@@ -15462,7 +15460,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "aAb" = (
 /obj/machinery/light{
@@ -16441,7 +16439,7 @@
 /area/tether/surfacebase/fish_farm)
 "aCr" = (
 /obj/machinery/light/flamp/noshade,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "aCs" = (
 /obj/machinery/light{
@@ -16917,7 +16915,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "aDn" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -17578,7 +17576,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "aEC" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -18140,7 +18138,7 @@
 /area/tether/surfacebase/fish_farm)
 "aFP" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "aFQ" = (
 /obj/structure/cable{
@@ -18434,11 +18432,11 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "aGv" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "aGw" = (
 /turf/simulated/wall,
@@ -33463,7 +33461,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "bNt" = (
 /obj/structure/sign/mining/survival,
@@ -33653,7 +33651,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "frf" = (
 /obj/item/paper{
@@ -34085,7 +34083,7 @@
 /area/tether/surfacebase/outside/outside2)
 "pqb" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/beach/sand/desert,
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
 "pKw" = (
 /obj/structure/railing,
