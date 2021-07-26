@@ -886,7 +886,10 @@
 		/obj/structure/flora/ausbushes/sparsegrass,
 		/obj/structure/flora/ausbushes/fullgrass
 		)
-
+/turf/simulated/floor/outdoors/grass/heavy/interior
+    name = "heavy grass"
+    desc = "A dense sheet of harvested turf used in interior decoration."
+    outdoors = FALSE
 //=========Eris Plating==========\\
 // This is the light grey tiles with random geometric shapes extruded
 /decl/flooring/eris_plating
