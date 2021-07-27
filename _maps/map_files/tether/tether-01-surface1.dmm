@@ -31647,14 +31647,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
-	},
 /obj/structure/frame/computer,
 /turf/simulated/floor/tiled/techmaint,
-/area/looking_glass/lg_1)
+/area/tether/surfacebase/public_garden_one)
 "cPX" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -34781,7 +34776,7 @@
 /area/medical/virology)
 "lNp" = (
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/looking_glass/lg_1)
+/area/tether/surfacebase/public_garden_one)
 "lNt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -36199,7 +36194,7 @@
 "oRz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/looking_glass/lg_1)
+/area/tether/surfacebase/public_garden_one)
 "oSL" = (
 /turf/simulated/floor/tiled/techfloor/grid/virgo3b,
 /area/tether/surfacebase/outside/outside1)
@@ -36463,7 +36458,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/looking_glass/lg_1)
+/area/tether/surfacebase/public_garden_one)
 "qdt" = (
 /obj/structure/railing{
 	dir = 4
@@ -36614,7 +36609,7 @@
 "qqL" = (
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/looking_glass/lg_1)
+/area/tether/surfacebase/public_garden_one)
 "qsl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -37477,7 +37472,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/random/junk,
 /turf/simulated/floor/tiled/techfloor/grid,
-/area/looking_glass/lg_1)
+/area/tether/surfacebase/public_garden_one)
 "sJj" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -37872,7 +37867,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/looking_glass/lg_1)
+/area/tether/surfacebase/public_garden_one)
 "tRX" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
@@ -39175,7 +39170,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/looking_glass/lg_1)
+/area/tether/surfacebase/public_garden_one)
 "xQi" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/barricade/cutout/clown,
