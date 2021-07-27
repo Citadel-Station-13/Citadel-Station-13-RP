@@ -1,4 +1,0 @@
-author: "CharlesWedge"
-delete-after: True
-changes: 
-  - bugfix: "lever actions now accept proper \".357\" and \".44\" rather then nonexistent \"357\" and \"44\""
