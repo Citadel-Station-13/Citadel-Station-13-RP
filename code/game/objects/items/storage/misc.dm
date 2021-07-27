@@ -71,7 +71,7 @@
 //Snowflake Survival Knife Code
 /obj/item/storage/box/survival_knife
 	name = "survival knife"
-	desc = "A hunting grade survival knife. The handle is hollow and may be unscrewed to store small survival items. Inset circuitry running along the spine implies a technical utility."
+	desc = "A hunting grade survival knife. The handle is hollow and may be unscrewed to store small survival items."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
