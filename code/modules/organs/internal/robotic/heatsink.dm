@@ -37,7 +37,8 @@
 		var/obj/mecha/M = owner.loc
 		return M.return_temperature()
 	else if(istype(owner.loc, /obj/machinery/atmospherics/unary/cryo_cell))
-		return owner.loc:air_contents.temperature
+		var/obj/machinery/atmospherics/unary/cryo_cell/C = owner.loc
+		return C.air_contents.temperature
 
 	var/turf/T = get_turf(src)
 
