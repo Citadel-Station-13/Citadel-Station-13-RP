@@ -20012,16 +20012,6 @@
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/cargo)
-"klo" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
-	frequency = 1380;
-	id_tag = "large_escape_pod_1";
-	pixel_x = -28;
-	pixel_y = -28
-	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/shuttle/floor,
-/area/shuttle/large_escape_pod1)
 "knV" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	dir = 1
@@ -34012,7 +34002,7 @@ jpv
 aYI
 dza
 aZO
-klo
+aLZ
 aYC
 aaP
 aaP
