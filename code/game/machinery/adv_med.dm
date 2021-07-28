@@ -389,7 +389,7 @@
 			occupantData["extOrgan"] = extOrganData
 
 			var/intOrganData[0]
-			for(var/obj/item/organ/I in H.internal_organs)
+			for(var/obj/item/organ/internal/I in H.internal_organs)
 				var/organData[0]
 				organData["name"] = I.name
 				if(I.status & ORGAN_ASSISTED)

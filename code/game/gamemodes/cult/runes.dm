@@ -279,7 +279,7 @@ var/list/sacrificed = list()
 				user.heal_organ_damage(5, 0)
 				if(ishuman(user))
 					var/mob/living/carbon/human/H = user
-					for(var/obj/item/organ/I in H.internal_organs)
+					for(var/obj/item/organ/internal/I in H.internal_organs)
 						if(I.damage > 0)
 							I.damage = max(I.damage - 5, 0)		//Heals 5 damage per organ per use
 						if(I.damage <= 5 && I.organ_tag == O_EYES)
