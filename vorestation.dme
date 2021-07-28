@@ -3433,6 +3433,7 @@
 #include "code\modules\vehicles\quad.dm"
 #include "code\modules\vehicles\rover_vr.dm"
 #include "code\modules\vehicles\Securitrain_vr.dm"
+#include "code\modules\vehicles\skateboard.dm"
 #include "code\modules\vehicles\train.dm"
 #include "code\modules\vehicles\vehicle.dm"
 #include "code\modules\ventcrawl\ventcrawl.dm"

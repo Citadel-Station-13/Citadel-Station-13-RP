@@ -18,6 +18,16 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor)
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/reinforced)
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
+/turf/simulated/floor/tiled/steel_dirty/virgo3b
+	outdoors = TRUE
+
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/techfloor/grid)
+/turf/simulated/floor/tiled/techfloor/grid/virgo3b
+	outdoors = TRUE
+
+VIRGO3B_TURF_CREATE(/turf/simulated/floor/maglev)
+/turf/simulated/floor/maglev/virgo3b
+	outdoors = TRUE
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 /turf/simulated/floor/outdoors/dirt/virgo3b
