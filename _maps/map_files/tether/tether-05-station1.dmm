@@ -24189,10 +24189,13 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
 "mgG" = (
-/obj/structure/cable/green{
-	icon_state = "32-2"
-	},
 /obj/effect/floor_decal/rust,
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "mhM" = (
@@ -24401,12 +24404,6 @@
 /obj/item/radio,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
-"mLF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/tether/exploration/crew)
 "mNe" = (
 /obj/structure/cable/cyan{
 	d2 = 2;
@@ -24928,11 +24925,14 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "nZR" = (
-/obj/machinery/power/smes,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
 /obj/structure/cable,
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Substation - Exploration";
+	output_attempt = 0
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/exploration)
 "obA" = (
@@ -26771,14 +26771,7 @@
 	pixel_x = 4;
 	pixel_y = -28
 	},
-/obj/item/stack/marker_beacon/thirty{
-	pixel_x = -5;
-	pixel_y = 4
-	},
-/obj/item/stack/marker_beacon/thirty{
-	pixel_x = 5;
-	pixel_y = 4
-	},
+/obj/item/stack/marker_beacon/thirty,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
 "spr" = (
@@ -42690,7 +42683,7 @@ alC
 ybm
 cfU
 xXL
-mLF
+ajb
 alq
 ksO
 yiZ
