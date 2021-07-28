@@ -1,7 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "Xenobotanist Job"
-  - rscadd: "Lots of other Job Names"
-  - rscdel: "Xenobotanist alt_title for Xenobio"
-  - bugfix: "Moreso readding values we SHOULD'VE had but were missed in someone's port or something"
