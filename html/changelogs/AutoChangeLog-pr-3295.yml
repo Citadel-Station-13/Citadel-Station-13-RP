@@ -1,0 +1,5 @@
+author: "faaaay"
+delete-after: True
+changes: 
+  - rscadd: "AR-V goggles, eyewear given to the Pathfinder (and available for survey points) with a built-in health scanner and zoom function."
+  - code_imp: "Added the wornslot var to zoom(), allowing for worn items to have zoom functionality."
