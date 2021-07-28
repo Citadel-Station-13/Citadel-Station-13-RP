@@ -64,8 +64,11 @@
 	minimal_access = list(access_eva, access_maint_tunnels, access_external_airlocks, access_pilot, access_explorer, access_research, access_gateway, access_pathfinder)
 	outfit_type = /decl/hierarchy/outfit/job/pathfinder
 	job_description = "The Pathfinder's job is to lead and manage expeditions, and is the primary authority on all off-station expeditions."
-	alt_titles = list("Expedition Lead" = /datum/alt_title/expedition_lead, "Exploration Manager" = /datum/alt_title/exploration_manager,
-	"Lead Pioneer" = /datum/alt_title/pathfinder/pioneer)
+	alt_titles = list(
+		"Expedition Lead" = /datum/alt_title/expedition_lead,
+		"Exploration Manager" = /datum/alt_title/exploration_manager,
+		"Lead Pioneer" = /datum/alt_title/pathfinder/pioneer
+		)
 
 /datum/alt_title/expedition_lead
 	title = "Expedition Lead"
@@ -95,7 +98,10 @@
 	minimal_access = list(access_pilot, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/pilot
 	job_description = "A Pilot flies the various shuttles in the Virgo-Erigone System."
-	alt_titles = list("Co-Pilot" = /datum/alt_title/co_pilot, "Navigator" = /datum/alt_title/navigator)
+	alt_titles = list(
+		"Co-Pilot" = /datum/alt_title/co_pilot,
+		"Navigator" = /datum/alt_title/navigator
+		)
 
 /datum/alt_title/co_pilot
 	title = "Co-Pilot"
@@ -122,9 +128,13 @@
 	minimal_access = list(access_explorer, access_external_airlocks, access_research, access_pilot, access_gateway)
 	outfit_type = /decl/hierarchy/outfit/job/explorer2
 	job_description = "An Explorer searches for interesting things, and returns them to the station."
-	alt_titles = list("Surveyor" = /datum/alt_title/surveyor, "Offsite Scout" = /datum/alt_title/offsite_scout,
-	"Field Scout" = /datum/alt_title/explorer/field_scout, "Pioneer" = /datum/alt_title/explorer/pioneer,
-	"Jr. Explorer" = /datum/alt_title/explorer/junior)
+	alt_titles = list(
+		"Surveyor" = /datum/alt_title/surveyor,
+		"Offsite Scout" = /datum/alt_title/offsite_scout,
+		"Field Scout" = /datum/alt_title/explorer/field_scout,
+		"Pioneer" = /datum/alt_title/explorer/pioneer,
+		"Jr. Explorer" = /datum/alt_title/explorer/junior
+		)
 
 /datum/alt_title/surveyor
 	title = "Surveyor"
@@ -159,7 +169,10 @@
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_pilot)
 	outfit_type = /decl/hierarchy/outfit/job/medical/sar
 	job_description = "A Field medic works as the field doctor of expedition teams."
-	alt_titles = list("Expedition Medic" = /datum/alt_title/expedition_medic, "Search and Rescue" = /datum/alt_title/field_medic/sar)
+	alt_titles = list(
+		"Expedition Medic" = /datum/alt_title/expedition_medic,
+		"Search and Rescue" = /datum/alt_title/field_medic/sar
+		)
 
 /datum/alt_title/expedition_medic
 	title = "Expedition Medic"
