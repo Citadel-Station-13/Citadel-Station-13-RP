@@ -314,8 +314,8 @@
 /obj/item/clothing/suit/storage/hooded/teshari
 	name = "Hooded Teshari Cloak"
 	desc = "A soft teshari cloak with an added hood."
-	icon_override = 'icons/mob/species/teshari/teshari_hood_vr.dmi'
-	icon = 'icons/mob/species/teshari/teshari_hood_vr.dmi'
+	icon_override = 'icons/mob/species/teshari/teshari_hood.dmi'
+	icon = 'icons/mob/species/teshari/teshari_hood.dmi'
 	icon_state = "tesh_hcloak_bo"
 	item_state_slots = list(slot_r_hand_str = "tesh_hcloak_bo", slot_l_hand_str = "tesh_hcloak_bo")
 	species_restricted = list(SPECIES_TESHARI)
@@ -332,8 +332,8 @@
 /obj/item/clothing/head/tesh_hood
 	name = "Cloak Hood"
 	desc = "A hood attached to a teshari cloak."
-	icon_override = 'icons/mob/species/teshari/teshari_hood_vr.dmi'
-	icon = 'icons/mob/species/teshari/teshari_hood_vr.dmi'
+	icon_override = 'icons/mob/species/teshari/teshari_hood.dmi'
+	icon = 'icons/mob/species/teshari/teshari_hood.dmi'
 	icon_state = "tesh_hood_bo"
 	item_state_slots = list(slot_r_hand_str = "tesh_hood_bo", slot_l_hand_str = "tesh_hood_bo")
 	flags_inv = BLOCKHAIR

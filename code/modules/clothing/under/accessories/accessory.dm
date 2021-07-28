@@ -529,15 +529,16 @@
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	icon = 'icons/obj/clothing/collars_vr.dmi'
 	icon_override = 'icons/mob/ties.dmi'
-	var/icon_previous_override //yw addition
+	var/icon_previous_override
 	var/writtenon = 0
 
-//ywedit start. forces different sprite sheet on equip
+
 /obj/item/clothing/accessory/collar/Initialize(mapload)
 	. = ..()
 	icon_previous_override = icon_override
 
-/obj/item/clothing/accessory/collar/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+// Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+/obj/item/clothing/accessory/collar/equipped()
 	..()
 	setUniqueSpeciesSprite()
 
