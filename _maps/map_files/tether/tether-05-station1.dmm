@@ -21076,7 +21076,8 @@
 /area/engineering/hallway)
 "elo" = (
 /obj/machinery/door/airlock{
-	name = "Exploration Showers"
+	name = "Exploration Showers";
+	req_one_access = list(19,43,67)
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -23549,7 +23550,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/science{
 	name = "Pathfinder";
-	req_one_access = list(67)
+	req_one_access = list(44)
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -25630,7 +25631,8 @@
 /area/tether/exploration/equipment)
 "pHS" = (
 /obj/machinery/door/window/eastleft{
-	pixel_x = 3
+	pixel_x = 3;
+	req_one_access = list(19,43)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -28919,6 +28921,11 @@
 	pixel_y = 4
 	},
 /obj/item/pen,
+/obj/machinery/computer/security/telescreen/entertainment{
+	desc = "Looks like it's set to GNN, I wonder what else is on?";
+	icon_state = "frame";
+	pixel_y = -32
+	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "xzj" = (
