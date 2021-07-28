@@ -14238,12 +14238,10 @@
 /turf/simulated/floor/tiled/neutral,
 /area/shuttle/excursion/general)
 "aQy" = (
-/obj/structure/disposaloutlet{
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
+/obj/structure/lattice,
 /turf/space,
 /area/space)
 "aQz" = (
@@ -19493,6 +19491,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"hkc" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet{
+	dir = 4
+	},
+/turf/space,
+/area/space)
 "hly" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 4
@@ -41649,8 +41656,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+aeM
+aeM
 aQy
 atg
 aWK
@@ -41792,8 +41799,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+aeM
+aQy
 atg
 atg
 atg
@@ -41935,7 +41942,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+aQy
 aaa
 aaa
 aaa
@@ -42077,7 +42084,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+hkc
 aaa
 aaa
 aaa
