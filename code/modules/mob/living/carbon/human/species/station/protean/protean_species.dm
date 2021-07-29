@@ -248,8 +248,6 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 	return ..()
 
-/proc/protean_requires_healing(mob/living/carbon/human/H)
-	return H.getActualBruteLoss() || H.getActualFireLoss() || H.getToxLoss()
 
 /datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
 	return ..() //Hmm, what could be done here?
