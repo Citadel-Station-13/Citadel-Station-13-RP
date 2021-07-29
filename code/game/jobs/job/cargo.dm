@@ -50,6 +50,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
 	job_description = "A Cargo Technician fills and delivers cargo orders. They are encouraged to return delivered crates to the Cargo Shuttle, \
 						because Central Command gives a partial refund."
+	alt_titles = list("Logistics Specialist" = /datum/alt_title/logi_spec)
+
+// Cargo Technician Alt Titles
+/datum/alt_title/logi_spec
+	title = "Logistics Specialist"
 
 //////////////////////////////////
 //			Shaft Miner

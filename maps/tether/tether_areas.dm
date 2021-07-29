@@ -156,6 +156,18 @@
 /area/tether/surfacebase/outside/outside3
 	icon_state = "outside3"
 
+/area/tether/surfacebase/old_tram
+	name = "\improper Construction Tram LL-26"
+
+/area/tether/surfacebase/tunnel
+	name = "Orange Line Tram Tunnel"
+
+/area/tether/surfacebase/old_shelter
+	name = "Abandoned Mining Shelter"
+
+/area/tether/surfacebase/cave
+	name = "Shallow Cave"
+
 /area/tether/surfacebase/outside/empty
 	name = "Outside - Empty Area"
 
@@ -579,6 +591,7 @@
 /area/tether/surfacebase/security/briefingroom
 	name = "\improper Security Briefing Room"
 	lightswitch = 0
+
 /area/tether/surfacebase/security/iaa
 	name = "\improper Internal Affairs"
 /area/tether/surfacebase/security/iaa/officea
@@ -1219,6 +1232,7 @@
 /area/security/customs
 	name = "\improper Security Customs Checkpoint"
 	icon_state = "security"
+
 /area/engineering/atmos/backup
 	name = "\improper Backup Atmospherics"
 /area/engineering/engine_balcony

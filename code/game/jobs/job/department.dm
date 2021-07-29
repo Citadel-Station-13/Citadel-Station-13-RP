@@ -78,3 +78,10 @@
 	color = "#A52A2A"
 	sorting_order = 20 // Above Command.
 	centcom_only = TRUE
+
+/datum/department/misc
+	name = "Off-Duty"
+	short_name = "Offduty"
+	color = "#666666"
+	sorting_order = -5
+	assignable = FALSE
