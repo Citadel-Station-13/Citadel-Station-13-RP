@@ -36,13 +36,12 @@
 	min_age =		18
 	max_age =		200
 
-	total_health =	250 // blob-crit at 100 damage regardless, but give a higher buffer
-	/// damage ratio to force into blobform at. we want them to blob at 100, so 100 / (crit health + maxHealth) as crithealth has 100 as a buffer too.
-	var/force_blob_ratio = 100 / (100 + 250)
+	total_health =	200
+	/// damage to blob
+	var/damage_to_blob = 100
 
-
-	brute_mod =		0.5 // 50% brute reduction
-	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
+	brute_mod =		1
+	burn_mod =		1
 	oxy_mod =		0
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
 	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
@@ -207,7 +206,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	return rgb(80,80,80,230)
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
-	var/deathmsg = "<span class='warning'>You died as a Protean. Please sit out of the round for at least 30 minutes before respawning, to represent the time it would take to ship a new-you to the station.</span>"
+	var/deathmsg = "<span class='userdanger'>You have died as a Protean. You may be revived by nanite chambers (once available), but otherwise, you may roleplay as your disembodied posibrain or respawn on another character.</span>"
 	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
 		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
 		to_chat(B, deathmsg)
@@ -215,8 +214,12 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		to_chat(H)
 		H.gib()
 
+/datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	return E.brute_dam + E.burn_dam
+
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > ((100 + H.maxHealth) * force_blob_ratio) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
+	if((getActualDamage(H) > damage_to_blob) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
@@ -362,9 +365,17 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 /datum/modifier/protean/steel/tick()
 	..()
-	// 1 hp/s regen
-	holder.adjustBruteLoss(-1 * 2 / 0.5, include_robo = TRUE)
-	holder.adjustFireLoss(-1 * 2 / 1.3, include_robo = TRUE)
+	var/dt = 2	// put it on param sometime but for now assume 2
+	var/mob/living/carbon/human/H = holder
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	var/heal = 1 * dt
+	var/brute_heal_left = max(0, heal - E.brute_dam)
+	var/burn_heal_left = max(0, heal - E.burn_dam)
+
+	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
+
+	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
+	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
 

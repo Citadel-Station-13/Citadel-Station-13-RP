@@ -69,7 +69,7 @@
 	item_state = "leveraction"
 	icon_state = "leveraction"
 	max_shells = 10
-	caliber = "357"
+	caliber = ".357"
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a357
 	action_sound = 'sound/weapons/riflebolt.ogg'
@@ -92,7 +92,7 @@
 			item_state = "mareleg"
 			icon_state = "mareleg"
 			w_class = ITEMSIZE_NORMAL
-			caliber = "357"
+			caliber = ".357"
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a357
 			recoil = 1 // Less Ouch
@@ -113,7 +113,7 @@
 	item_state = "levercarabine" // That isn't how carbine is spelled ya knob! :U
 	icon_state = "levercarabine"
 	max_shells = 10
-	caliber = "44"
+	caliber = ".44"
 	load_method = SINGLE_CASING
 	ammo_type = /obj/item/ammo_casing/a44
 	animated_pump = 1
@@ -136,7 +136,7 @@
 			item_state = "mareleg"
 			icon_state = "mareleg"
 			w_class = ITEMSIZE_NORMAL
-			caliber = "44"
+			caliber = ".44"
 			load_method = SINGLE_CASING
 			ammo_type = /obj/item/ammo_casing/a44
 			recoil = 1 // Less Ouch

@@ -100,8 +100,9 @@
 	if(humanform)
 		//Set the max
 		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
+		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
-		health = maxHealth - humanform.getOxyLoss() - humanform.getToxLoss() - humanform.getCloneLoss() - humanform.getActualFireLoss() - humanform.getActualBruteLoss()
+		health = maxHealth - E.brute_dam - E.burn_dam
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -140,7 +141,7 @@
 
 /mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
 	if(humanform)
-		humanform.adjustBruteLoss(amount)
+		humanform.adjustBruteLossByPart(amount, BP_TORSO)
 	else
 		..()
 
@@ -149,7 +150,7 @@
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
 	if(humanform)
-		humanform.adjustFireLoss(amount)
+		humanform.adjustFireLossByPart(amount, BP_TORSO)
 	else
 		..()
 
@@ -274,12 +275,10 @@
 		return ..()
 
 /mob/living/simple_mob/protean_blob/emp_act(severity)
-	if(severity == 4)
-		return
 	to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
 	to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
 	to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>")
-	return humanform.emp_act(severity + 1)
+	return humanform.emp_act(severity)
 
 /mob/living/simple_mob/protean_blob/MouseEntered(location,control,params)
 	if(resting)
@@ -455,8 +454,6 @@
 	else
 		to_chat(src, "You are not in RIG form.")
 
-
-
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
@@ -552,15 +549,21 @@
 	material_name = MAT_STEEL
 
 /datum/modifier/protean/steelBlob/tick()
-
 	..()
-	// 5 hp/s regen per tick
-	holder.adjustBruteLoss(-5 * 2 / 0.5 ,include_robo = TRUE)
-	holder.adjustFireLoss(-5 * 2 / 1.3 ,include_robo = TRUE)
+	var/dt = 2	// put it on param sometime but for now assume 2
+	var/mob/living/carbon/human/H = holder
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	var/heal = 5 * dt
+	var/brute_heal_left = max(0, heal - E.brute_dam)
+	var/burn_heal_left = max(0, heal - E.burn_dam)
+
+	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
+
+	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
+	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-10)
 	holder.radiation = max(holder.radiation - 50, 0)
 
-	var/mob/living/carbon/human/H = holder
 	for(var/organ in H.internal_organs)
 		var/obj/item/organ/O = organ
 		// Fix internal damage

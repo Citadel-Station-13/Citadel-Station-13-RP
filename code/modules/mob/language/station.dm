@@ -189,7 +189,7 @@
 		)
 
 /datum/language/teshari/get_random_name(gender)
-	return ..(gender, 1, 4, 1.5)
+	return ..(gender, 2, 4, 1.5)
 
 
 /datum/language/zaddat
