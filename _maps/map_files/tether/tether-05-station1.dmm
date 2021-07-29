@@ -17718,7 +17718,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "aXR" = (
 /obj/structure/window/basic{
@@ -25632,7 +25632,7 @@
 "pHS" = (
 /obj/machinery/door/window/eastleft{
 	pixel_x = 3;
-	req_one_access = list(19,43)
+	req_one_access = list(19,43,67)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
