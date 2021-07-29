@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
 
 	// Should we automatically fit the viewport?
-	var/auto_fit_viewport = FALSE
+	var/auto_fit_viewport = TRUE
 	// Should we be in the widescreen mode set by the config?
 	var/widescreenpref = FALSE	// Doesn't exist... Yet.
 
