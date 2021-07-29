@@ -248,3 +248,10 @@
 	desc = "A fine black bandana with nanotech lining and a skull emblem. Can be worn on the head or face."
 	icon_state = "bandskull"
 	item_state_slots = list(slot_r_hand_str = "bandskull", slot_l_hand_str = "bandskull")
+
+//Dancer Scarf
+/obj/item/clothing/mask/dancer
+	name = "belly dancer veil"
+	desc = "A heavy, ornate veil meant to mask the identity of the user, in spite of its subtle opacity."
+	icon_state = "dancer_veil"
+	flags_inv = HIDEFACE

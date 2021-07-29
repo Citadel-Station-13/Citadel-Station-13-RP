@@ -238,3 +238,9 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "green holiday shoes"
 	desc = "The tips of these fur lined boots curl slightly, lending them a whimsical flair."
 	icon_state = "christmasbootsg"
+
+//Dancer Shoes
+/obj/item/clothing/shoes/dancer
+	name = "belly dancer footwraps"
+	desc = "Soft silk wraps meant to provide some protection without hampering agility."
+	icon_state = "dancer_wraps"
