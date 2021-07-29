@@ -562,28 +562,28 @@
 /obj/item/clothing/accessory/collar/dropped()
 	. = ..()
 	icon_override = icon_previous_override
-//ywedit end
+
 
 /obj/item/clothing/accessory/collar/silver
 	name = "Silver tag collar"
 	desc = "A collar for your little pets... or the big ones."
 	icon_state = "collar_blk"
-	item_state = "collar_blk_overlay"
-	overlay_state = "collar_blk_overlay"
+	item_state = "collar_blk"
+	overlay_state = "collar_blk"
 
 /obj/item/clothing/accessory/collar/gold
 	name = "Golden tag collar"
 	desc = "A collar for your little pets... or the big ones."
 	icon_state = "collar_gld"
-	item_state = "collar_gld_overlay"
-	overlay_state = "collar_gld_overlay"
+	item_state = "collar_gld"
+	overlay_state = "collar_gld"
 
 /obj/item/clothing/accessory/collar/bell
 	name = "Bell collar"
 	desc = "A collar with a tiny bell hanging from it, purrfect furr kitties."
 	icon_state = "collar_bell"
-	item_state = "collar_bell_overlay"
-	overlay_state = "collar_bell_overlay"
+	item_state = "collar_bell"
+	overlay_state = "collar_bell"
 	var/jingled = 0
 
 /obj/item/clothing/accessory/collar/bell/verb/jinglebell()
@@ -606,8 +606,8 @@
 	name = "Shock collar"
 	desc = "A collar used to ease hungry predators."
 	icon_state = "collar_shk0"
-	item_state = "collar_shk_overlay"
-	overlay_state = "collar_shk_overlay"
+	item_state = "collar_shk"
+	overlay_state = "collar_shk"
 	var/on = FALSE // 0 for off, 1 for on, starts off to encourage people to set non-default frequencies and codes.
 	var/frequency = 1449
 	var/code = 2
@@ -721,45 +721,45 @@
 	name = "Spiked collar"
 	desc = "A collar with spikes that look as sharp as your teeth."
 	icon_state = "collar_spik"
-	item_state = "collar_spik_overlay"
-	overlay_state = "collar_spik_overlay"
+	item_state = "collar_spik"
+	overlay_state = "collar_spik"
 
 /obj/item/clothing/accessory/collar/pink
 	name = "Pink collar"
 	desc = "This collar will make your pets look FA-BU-LOUS."
 	icon_state = "collar_pnk"
-	item_state = "collar_pnk_overlay"
-	overlay_state = "collar_pnk_overlay"
+	item_state = "collar_pnk"
+	overlay_state = "collar_pnk"
 
 /obj/item/clothing/accessory/collar/holo
 	name = "Holo-collar"
 	desc = "An expensive holo-collar for the modern day pet."
 	icon_state = "collar_holo"
-	item_state = "collar_holo_overlay"
-	overlay_state = "collar_holo_overlay"
+	item_state = "collar_holo"
+	overlay_state = "collar_holo"
 	matter = list(DEFAULT_WALL_MATERIAL = 50)
 
 /obj/item/clothing/accessory/collar/silvercolor
 	name = "Dyeable Silver tag collar"
 	desc = "A collar for your little pets... or the big ones."
 	icon_state = "collar_blk_colorized"
-	item_state = "collar_blk_colorized_overlay"
-	overlay_state = "collar_blk_colorized_overlay"
+	item_state = "collar_blk_colorized"
+	overlay_state = "collar_blk_colorized"
 
 /obj/item/clothing/accessory/collar/cowbell
 	name = "Cowbell collar"
 	desc = "A collar for your little pets... or the big ones."
-	icon_state = "collar_cowbell"
-	item_state = "collar_cowbell_overlay"
-	overlay_state = "collar_cowbell_overlay"
+	icon_state = "collar_bell"
+	item_state = "collar_bell"
+	overlay_state = "collar_bell"
 
 //TFF 17/6/19 - public loadout addition: Indigestible Holocollar
 /obj/item/clothing/accessory/collar/holo/indigestible
 	name = "Holo-collar"
 	desc = "A special variety of the holo-collar that seems to be made of a very durable fabric that fits around the neck."
 	icon_state = "collar_holo"
-	item_state = "collar_holo_overlay"
-	overlay_state = "collar_holo_overlay"
+	item_state = "collar_holo"
+	overlay_state = "collar_holo"
 //Make indigestible
 /obj/item/clothing/accessory/collar/holo/indigestible/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
@@ -830,18 +830,8 @@
 			name = initial(name) + " ([str])"
 			desc = initial(desc) + " Something has been [erasemethod] on the tag, and it now has \"[str]\" [writemethod] on it."
 
-//Machete Holsters
-/obj/item/clothing/accessory/holster/machete
-	name = "machete sheath"
-	desc = "A handsome synthetic leather sheath with matching belt."
-	icon_state = "holster_machete"
-	concealed_holster = 0
-	can_hold = list(/obj/item/material/knife/machete)
-	//sound_in = 'sound/effects/holster/sheathin.ogg'
-	//sound_out = 'sound/effects/holster/sheathout.ogg'
+// Medal(s)	//Commented out Virgo Donar item
 
-//Medals
-
-/obj/item/clothing/accessory/medal/silver/unity
-	name = "medal of unity"
-	desc = "A silver medal awarded to a group which has demonstrated exceptional teamwork to achieve a notable feat."
+// /obj/item/clothing/accessory/medal/silver/unity
+// 	name = "medal of unity"
+// 	desc = "A silver medal awarded to a group which has demonstrated exceptional teamwork to achieve a notable feat."
