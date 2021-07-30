@@ -156,6 +156,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
 	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
 
+	// Should we automatically fit the viewport?
+	var/auto_fit_viewport = TRUE
+	// Should we be in the widescreen mode set by the config?
+	var/widescreenpref = FALSE	// Doesn't exist... Yet.
+
 /datum/preferences/New(client/C)
 	player_setup = new(src)
 	set_biological_gender(pick(MALE, FEMALE))
