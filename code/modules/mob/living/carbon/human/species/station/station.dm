@@ -953,9 +953,9 @@
 	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 
 	blurb = "Neomorphs are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
-	Neomorphs are civilised and capable of communicating with other species without knowing their language. \
-	Due to the large selection of genetic samples, aquired by xenomorphs over their years crusading the stars, Neomorphs are \
-	capable to reproduce with almost every known species. This reproduction is not as invasive as the facehuggers of their relatives, \
+	Neomorphs are civilised and capable of communicating with other species, without knowing their language. \
+	Over the years crusading the stars xenomorphs gathered genetic material of almost all known species(and probably some unknown as well), \
+	allowing Neomorphs to reproduce with most other species. This reproduction is not as invasive as the facehuggers of their relatives, \
 	but can still be dangerous to the host. Their chitinous exoskeleton allows them to endure low pressure and freezing cold \
 	quite well, but leaves them vurnerable to fire and heat."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)
