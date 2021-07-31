@@ -11,7 +11,7 @@
 	var/pressure = environment.return_pressure()
 	if(pressure > LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
 		. = FALSE
-	if(environment.temperature < (T20C - 40))
+	if(environment.temperature < (T20C - 30))
 		. = TRUE
 
 /obj/item/gun/energy/kinetic_accelerator

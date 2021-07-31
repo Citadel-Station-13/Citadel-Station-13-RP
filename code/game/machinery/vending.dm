@@ -1135,6 +1135,7 @@
 					/obj/item/toy/plushie/corgi = 1,
 					/obj/item/toy/plushie/octopus = 1,
 					/obj/item/toy/plushie/face_hugger = 1,
+					/obj/item/toy/plushie/voxie = 1,
 					/obj/item/toy/plushie/carp = 1,
 					/obj/item/toy/plushie/deer = 1,
 					/obj/item/toy/plushie/tabby_cat = 1,
@@ -1144,7 +1145,8 @@
 					/obj/item/toy/plushie/bear_panda = 2,
 					/obj/item/toy/plushie/bear_soda = 2,
 					/obj/item/toy/plushie/bear_bloody = 2,
-					/obj/item/toy/plushie/bear_space = 1)
+					/obj/item/toy/plushie/bear_space = 1,
+					/obj/item/storage/daki = 10)
 	premium = list(/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
 					/obj/item/storage/trinketbox = 2)
 	prices = list(/obj/item/storage/fancy/heartbox = 15,
@@ -1170,6 +1172,7 @@
 					/obj/item/toy/plushie/corgi = 50,
 					/obj/item/toy/plushie/octopus = 50,
 					/obj/item/toy/plushie/face_hugger = 50,
+					/obj/item/toy/plushie/voxie = 50,
 					/obj/item/toy/plushie/carp = 50,
 					/obj/item/toy/plushie/deer = 50,
 					/obj/item/toy/plushie/tabby_cat = 50,
@@ -1179,7 +1182,8 @@
 					/obj/item/toy/plushie/bear_panda = 20,
 					/obj/item/toy/plushie/bear_soda = 35,
 					/obj/item/toy/plushie/bear_bloody = 35,
-					/obj/item/toy/plushie/bear_space = 50)
+					/obj/item/toy/plushie/bear_space = 50,
+					/obj/item/storage/daki = 100)
 
 /obj/machinery/vending/fishing
 	name = "Loot Trawler"

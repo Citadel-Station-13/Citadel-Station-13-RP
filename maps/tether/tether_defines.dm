@@ -4,24 +4,23 @@
 #define Z_LEVEL_SURFACE_HIGH				4
 #define Z_LEVEL_TRANSIT						5
 #define Z_LEVEL_SPACE_LOW					6
-#define Z_LEVEL_SPACE_MID					7
-#define Z_LEVEL_SPACE_HIGH					8
-#define Z_LEVEL_SURFACE_MINE				9
-#define Z_LEVEL_SOLARS						10
-#define Z_LEVEL_MISC						11
-#define Z_LEVEL_UNDERDARK					12
-#define Z_LEVEL_PLAINS						13
-#define Z_LEVEL_OFFMAP1						14
-#define Z_LEVEL_OFFMAP2						15
-#define Z_LEVEL_ROGUEMINE_1					16
-#define Z_LEVEL_ROGUEMINE_2					17
-#define Z_LEVEL_BEACH						18
-#define Z_LEVEL_BEACH_CAVE					19
-#define Z_LEVEL_AEROSTAT					20
-#define Z_LEVEL_AEROSTAT_SURFACE			21
-#define Z_LEVEL_DEBRISFIELD					22
-#define Z_LEVEL_FUELDEPOT					23
-#define Z_LEVEL_GATEWAY						24
+#define Z_LEVEL_SPACE_HIGH					7
+#define Z_LEVEL_SURFACE_MINE				8
+#define Z_LEVEL_SOLARS						9
+#define Z_LEVEL_MISC						10
+#define Z_LEVEL_UNDERDARK					11
+#define Z_LEVEL_PLAINS						12
+#define Z_LEVEL_OFFMAP1						13
+#define Z_LEVEL_OFFMAP2						14
+#define Z_LEVEL_ROGUEMINE_1					15
+#define Z_LEVEL_ROGUEMINE_2					16
+#define Z_LEVEL_BEACH						17
+#define Z_LEVEL_BEACH_CAVE					18
+#define Z_LEVEL_AEROSTAT					19
+#define Z_LEVEL_AEROSTAT_SURFACE			20
+#define Z_LEVEL_DEBRISFIELD					21
+#define Z_LEVEL_FUELDEPOT					22
+#define Z_LEVEL_GATEWAY						23
 
 //Camera networks
 #define NETWORK_TETHER "Tether"
@@ -65,7 +64,6 @@
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_SPACE_LOW,
-		Z_LEVEL_SPACE_MID,
 		Z_LEVEL_SPACE_HIGH))
 
 	station_name  = "NSB Adephagia"
@@ -176,7 +174,6 @@
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_TRANSIT,
 		Z_LEVEL_SPACE_LOW,
-		Z_LEVEL_SPACE_MID,
 		Z_LEVEL_SPACE_HIGH,
 		Z_LEVEL_SURFACE_MINE,
 		Z_LEVEL_SOLARS,
@@ -240,7 +237,7 @@
 		"tether_dockarm_d2l", //End of right arm,
 		"tether_space_SE", //station1, bottom right of space,
 		"tether_space_NE", //station1, top right of space,
-		"tether_space_SW", //station3, bottom left of space,
+		"tether_space_SW", //station2, bottom left of space,
 		"tether_excursion_hangar", //Excursion shuttle hangar,
 		"tether_medivac_dock", //Medical shuttle dock,
 		"tourbus_dock" //Surface large hangar
@@ -368,7 +365,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	announce_atc(AM,going = TRUE)
 
 /obj/effect/overmap/visitable/sector/virgo3b/get_space_zlevels()
-	return list(Z_LEVEL_SPACE_LOW, Z_LEVEL_SPACE_MID, Z_LEVEL_SPACE_HIGH)
+	return list(Z_LEVEL_SPACE_LOW, Z_LEVEL_SPACE_HIGH)
 
 /obj/effect/overmap/visitable/sector/virgo3b/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
 	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] ATC control area."
@@ -428,25 +425,17 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	z = Z_LEVEL_SPACE_LOW
 	name = "Asteroid 1"
 	base_turf = /turf/space
-	transit_chance = 33
+	transit_chance = 50
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
-/datum/map_z_level/tether/station/space_mid
-	z = Z_LEVEL_SPACE_MID
-	name = "Asteroid 2"
-	base_turf = /turf/simulated/open
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
-
 /datum/map_z_level/tether/station/space_high
 	z = Z_LEVEL_SPACE_HIGH
-	name = "Asteroid 3"
+	name = "Asteroid 2"
 	base_turf = /turf/simulated/open
-	transit_chance = 33
+	transit_chance = 50
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
+	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
 /datum/map_z_level/tether/mine
 	z = Z_LEVEL_SURFACE_MINE
