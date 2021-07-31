@@ -1465,7 +1465,6 @@
 	required_reagents = list("wine" = 1, "vermouth" = 1, "sodawater" =1)
 	result_amount = 3
 
-
 /datum/chemical_reaction/drinks/scsatw
 	name = "Slow Comfortable Screw Against the Wall"
 	id = "scsatw"
