@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - bugfix: "Neomorphs get the resistances and weaknesses lore suggests"
+  - refactor: "Xenomorph Hybrids are now correctly named Neomorphs"
