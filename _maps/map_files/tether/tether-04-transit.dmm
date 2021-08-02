@@ -66,8 +66,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -75,8 +74,7 @@
 /area/maintenance/tether_midpoint)
 "i" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/zpipe/down,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
@@ -103,21 +101,18 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5;
-	icon_state = "intact-scrubbers"
+	dir = 5
 	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "k" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/structure/flora/pottedplant/unusual,
 /turf/simulated/floor/wood,
@@ -134,9 +129,7 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /obj/machinery/disposal,
@@ -158,8 +151,7 @@
 /area/tether/midpoint)
 "p" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/structure/flora/pottedplant/unusual,
 /obj/structure/cable,
@@ -188,8 +180,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/scrubbers{
-	dir = 4;
-	icon_state = "map-scrubbers"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/supply{
 	dir = 4
@@ -205,8 +196,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/structure/lattice,
 /obj/structure/disposalpipe/down,
@@ -258,7 +248,6 @@
 	icon_state = "16-0"
 	},
 /obj/structure/cable,
-/obj/effect/ceiling,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "y" = (
@@ -282,7 +271,6 @@
 /obj/structure/disposalpipe/up{
 	dir = 8
 	},
-/obj/effect/ceiling,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "B" = (
@@ -290,7 +278,6 @@
 /area/maintenance/tether_midpoint)
 "C" = (
 /obj/structure/disposalpipe/up,
-/obj/effect/ceiling,
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
 "D" = (
@@ -298,8 +285,7 @@
 	dir = 1
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
@@ -354,8 +340,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
@@ -386,8 +371,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -420,15 +404,13 @@
 	dir = 5
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
 "T" = (
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/smallcactus{
-	pixel_x = 0;
 	pixel_y = 8
 	},
 /turf/simulated/floor/wood,
@@ -442,12 +424,10 @@
 "V" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5;
-	icon_state = "intact-scrubbers"
+	dir = 5
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
@@ -484,8 +464,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -2981,20 +2960,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -3123,20 +3102,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -3265,20 +3244,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -3407,20 +3386,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -3549,20 +3528,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -3691,20 +3670,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -3833,20 +3812,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -3975,20 +3954,20 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -4117,19 +4096,19 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -4259,19 +4238,19 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -4401,19 +4380,19 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -4543,19 +4522,19 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -4686,18 +4665,18 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -4835,11 +4814,11 @@ u
 u
 u
 u
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 a
 a
 a
@@ -4977,11 +4956,11 @@ u
 u
 u
 u
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 a
 a
 a
@@ -5120,10 +5099,10 @@ u
 u
 u
 u
-a
-a
-a
-a
+u
+u
+u
+u
 a
 a
 a
@@ -5262,10 +5241,10 @@ u
 u
 u
 u
-a
-a
-a
-a
+u
+u
+u
+u
 a
 a
 a
@@ -8042,10 +8021,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+u
+u
+u
+u
 u
 u
 u
@@ -8184,10 +8163,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+u
+u
+u
+u
 u
 u
 u
@@ -8326,11 +8305,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 u
 u
 u
@@ -8468,11 +8447,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 u
 u
 u
@@ -8610,9 +8589,9 @@ a
 a
 a
 a
-a
-a
-a
+u
+u
+u
 u
 u
 u
@@ -8752,8 +8731,8 @@ a
 a
 a
 a
-a
-a
+u
+u
 u
 u
 u
@@ -8894,8 +8873,8 @@ a
 a
 a
 a
-a
-a
+u
+u
 u
 u
 u
@@ -9036,8 +9015,8 @@ a
 a
 a
 a
-a
-a
+u
+u
 u
 u
 u
@@ -9178,8 +9157,8 @@ a
 a
 a
 a
-a
-a
+u
+u
 u
 u
 u
@@ -9320,8 +9299,8 @@ a
 a
 a
 a
-a
-a
+u
+u
 u
 u
 u
@@ -9462,9 +9441,9 @@ a
 a
 a
 a
-a
-a
-a
+u
+u
+u
 u
 u
 u
@@ -9604,11 +9583,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 u
 u
 u
@@ -9746,12 +9725,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
 u
 u
 u
@@ -9888,12 +9867,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
 u
 u
 u
@@ -10030,12 +10009,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
 u
 u
 u
@@ -10172,11 +10151,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 u
 u
 u
@@ -10314,11 +10293,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 u
 u
 u
@@ -10456,11 +10435,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 u
 u
 u
@@ -10598,11 +10577,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 u
 u
 u
@@ -10740,11 +10719,11 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
 u
 u
 u
@@ -10886,8 +10865,8 @@ a
 a
 a
 a
-a
-a
+u
+u
 u
 u
 u
@@ -11027,9 +11006,9 @@ a
 a
 a
 a
-a
-a
-a
+u
+u
+u
 u
 u
 u
@@ -11169,9 +11148,9 @@ a
 a
 a
 a
-a
-a
-a
+u
+u
+u
 u
 u
 u
@@ -11311,9 +11290,9 @@ a
 a
 a
 a
-a
-a
-a
+u
+u
+u
 u
 u
 u
@@ -11453,9 +11432,9 @@ a
 a
 a
 a
-a
-a
-a
+u
+u
+u
 u
 u
 u
@@ -11595,10 +11574,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+u
+u
+u
+u
 u
 u
 u
@@ -11738,9 +11717,9 @@ a
 a
 a
 a
-a
-a
-a
+u
+u
+u
 u
 u
 u
@@ -11882,7 +11861,7 @@ a
 a
 a
 a
-a
+u
 u
 u
 u
@@ -14449,7 +14428,7 @@ a
 a
 a
 a
-a
+u
 u
 u
 u
@@ -14591,7 +14570,7 @@ a
 a
 a
 a
-a
+u
 u
 u
 u
@@ -14733,7 +14712,7 @@ a
 a
 a
 a
-a
+u
 u
 u
 u
@@ -14875,7 +14854,6 @@ a
 a
 a
 a
-a
 u
 u
 u
@@ -14914,15 +14892,16 @@ u
 u
 u
 u
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 u
 u
 u
@@ -15017,8 +14996,6 @@ a
 a
 a
 a
-a
-a
 u
 u
 u
@@ -15056,18 +15033,20 @@ u
 u
 u
 u
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 u
 u
 u
@@ -15160,11 +15139,41 @@ a
 a
 a
 a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
 a
-a
 u
 u
 u
@@ -15180,36 +15189,6 @@ u
 u
 u
 u
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
-u
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
 a
 a
 a
@@ -15303,12 +15282,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -15337,21 +15316,21 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -15446,9 +15425,9 @@ a
 a
 a
 a
-a
-a
-a
+u
+u
+u
 a
 a
 a
@@ -15479,21 +15458,21 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -15621,21 +15600,21 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -15763,21 +15742,21 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -15905,21 +15884,21 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -16054,14 +16033,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -16196,14 +16175,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -16338,14 +16317,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -16480,14 +16459,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -16622,14 +16601,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -16764,14 +16743,14 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -16907,12 +16886,12 @@ a
 a
 a
 a
-a
-a
-a
-a
-a
-a
+u
+u
+u
+u
+u
+u
 a
 a
 a
@@ -17050,10 +17029,10 @@ a
 a
 a
 a
-a
-a
-a
-a
+u
+u
+u
+u
 a
 a
 a

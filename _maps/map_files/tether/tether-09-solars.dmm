@@ -7993,7 +7993,7 @@
 /area/mine/explored)
 "tj" = (
 /obj/item/bone/skull/unathi,
-/turf/simulated/mineral/floor/virgo3b,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "wj" = (
 /obj/structure/fence{
@@ -8019,11 +8019,11 @@
 /area/mine/explored)
 "AM" = (
 /obj/item/bone,
-/turf/simulated/mineral/floor/virgo3b,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "Dm" = (
 /obj/effect/decal/remains/ribcage,
-/turf/simulated/mineral/floor/virgo3b,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "DY" = (
 /obj/effect/map_effect/portal/master/side_b{
@@ -8031,27 +8031,21 @@
 	name = "from_solars_to_underdark";
 	portal_id = "solar-udstep"
 	},
-/turf/simulated/mineral/floor/virgo3b,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "Hf" = (
 /obj/effect/decal/remains/robot,
-/turf/simulated/mineral/floor/virgo3b,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "HI" = (
 /obj/structure/fence,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
-"JP" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/mineral/floor/virgo3b,
-/area/mine/explored)
 "Lj" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt/virgo3b,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "NQ" = (
 /obj/structure/fence/corner{
@@ -8074,7 +8068,7 @@
 /area/mine/explored)
 "QM" = (
 /obj/effect/decal/remains/deer,
-/turf/simulated/mineral/floor/virgo3b,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "Su" = (
 /turf/simulated/mineral/ignore_cavegen/virgo3b,
@@ -8096,7 +8090,7 @@
 /turf/simulated/wall/r_wall,
 /area/mine/explored)
 "UW" = (
-/turf/simulated/mineral/floor/virgo3b,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "Wq" = (
 /obj/structure/cable/heavyduty{
@@ -8109,7 +8103,7 @@
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
 	},
-/turf/simulated/mineral/floor/virgo3b,
+/turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored)
 
 (1,1,1) = {"
@@ -26436,7 +26430,7 @@ Su
 Su
 Su
 TF
-JP
+Lj
 UW
 UW
 Su

@@ -142,7 +142,7 @@
 		return
 
 	//Not enough resources (AND spends the resources, should be the last check)
-	if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,refactory.max_storage))
+	if(!(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < min(10000, refactory.max_storage)))
 		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 		return
 
@@ -154,6 +154,10 @@
 	var/mob/living/simple_mob/protean_blob/blob = nano_intoblob()
 	if(do_after(blob, delay_length, null, 0))
 		if(stat != DEAD && refactory)
+			//Not enough resources (AND spends the resources, should be the last check)
+			if(!refactory.use_stored_material(DEFAULT_WALL_MATERIAL,refactory.max_storage))
+				to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
+				return
 			var/list/holder = refactory.materials
 			species.create_organs(src)
 			var/obj/item/organ/external/torso = organs_by_name[BP_TORSO]
@@ -254,8 +258,9 @@
 
 	//Blob form
 	if(temporary_form)
-
-		if(health < maxHealth*0.35) //Reforming HP threshold.
+		var/datum/species/protean/P = species
+		ASSERT(istype(P))
+		if(P.getActualDamage(src) > P.damage_to_blob) //Reforming HP threshold.
 			to_chat(temporary_form,"<span class='warning'>You need to regenerate more nanites first!</span>")
 		else if(temporary_form.stat)
 			to_chat(temporary_form,"<span class='warning'>You can only do this while not stunned.</span>")
