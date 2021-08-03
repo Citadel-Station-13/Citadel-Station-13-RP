@@ -1,9 +1,0 @@
-author: "zydras"
-delete-after: True
-changes: 
-  - rscadd: "added trees and foliage to the department to help make the exploration look unique"
-  - rscadd: "added a cyborg recharger to the department's crew lounge"
-  - rscadd: "added a few piece of fluff/lore papers in the pathfinder office"
-  - rscadd: "added a water cooler instead of a coffee dispenser to the crew lounge. Go ask the barista for one, you coffee addict."
-  - rscdel: "removed the chem analyzer from the crew lounge"
-  - bugfix: "fixed the wirings of the department being connected to an external line, despite the department SMES"
