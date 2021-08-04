@@ -12369,15 +12369,13 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway)
 "ayp" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	docking_controller = "dock_d1a2";
-	landmark_tag = "tether_dockarm_d1a2";
-	name = "Tether Dock D1A2"
+/obj/machinery/door/airlock/glass,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
 	},
-/turf/space,
-/area/space)
+/turf/simulated/floor/tiled/steel_grid,
+/area/tether/station/dock_one)
 "ayq" = (
 /obj/machinery/computer/card{
 	dir = 1
@@ -14319,15 +14317,8 @@
 /turf/simulated/floor,
 /area/maintenance/station/spacecommandmaint)
 "aBQ" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 10
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "dock_d1l_pump"
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "aBR" = (
@@ -14694,22 +14685,17 @@
 /turf/simulated/wall,
 /area/tether/station/dock_one)
 "aCH" = (
-/obj/structure/closet/emcloset,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/machinery/door/airlock/glass,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet{
-	dir = 8;
-	pixel_x = 30
-	},
-/obj/machinery/camera/network/tether{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_one)
+/turf/simulated/floor/tiled/steel_grid,
+/area/tether/station/dock_two)
 "aCI" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/station/dock_one)
 "aCJ" = (
@@ -14733,16 +14719,16 @@
 "aCN" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/station/dock_two)
 "aCO" = (
-/obj/structure/closet/emcloset,
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/door/firedoor/glass/hidden/steel,
 /obj/machinery/camera/network/tether{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
-/area/tether/station/dock_two)
+/area/tether/station/dock_one)
 "aCP" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -15130,9 +15116,12 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/meeting_room)
 "aDJ" = (
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
-/area/tether/station/dock_two)
+/area/tether/station/dock_one)
 "aDL" = (
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
@@ -15340,32 +15329,37 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/laundry)
 "aEk" = (
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "aEo" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	docking_controller = "dock_d1a1";
+	landmark_tag = "tether_dockarm_d1a1";
+	name = "Tether Dock D1A1"
 	},
+/turf/space,
+/area/space)
+"aEp" = (
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	command = "cycle_exterior";
 	frequency = 1380;
-	master_tag = "dock_d1a3";
-	name = "interior access button";
-	pixel_x = 28;
-	pixel_y = 26;
+	master_tag = "dock_d1a1";
+	name = "exterior access button";
+	pixel_x = -5;
+	pixel_y = -26;
 	req_one_access = list(13)
 	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_one)
-"aEp" = (
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "aEq" = (
 /obj/effect/floor_decal/borderfloor{
@@ -15799,13 +15793,25 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aFT" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/machinery/light/small,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "dock_d1a1";
+	pixel_y = 28
 	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "dock_d1a1_sensor";
+	pixel_y = -25
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4;
+	frequency = 1380;
+	id_tag = "dock_d1a1_pump"
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "aFU" = (
 /obj/structure/grille,
@@ -15830,20 +15836,23 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "aFY" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/tether/station/dock_two)
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_one)
 "aFZ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/tether/station/dock_two)
+/area/tether/station/dock_one)
 "aGs" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
@@ -15903,7 +15912,9 @@
 "aGZ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/station/dock_one)
@@ -15913,7 +15924,7 @@
 /obj/structure/window/reinforced,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/tether/station/dock_two)
+/area/tether/station/dock_one)
 "aHe" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/yellow/border,
@@ -15960,14 +15971,19 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_eva)
 "aIb" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	landmark_tag = "antag_space_docks";
-	name = "Tether Docking Arm"
+/obj/structure/closet/emcloset,
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
 	},
-/turf/space,
-/area/space)
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = 30
+	},
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_one)
 "aIf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -16059,13 +16075,10 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "aIA" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "aIC" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -16148,23 +16161,14 @@
 "aJo" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/tether/station/dock_one)
+/area/tether/station/dock_two)
 "aJr" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	docking_controller = "dock_d1l";
-	landmark_tag = "tether_dockarm_d1l";
-	name = "Tether Dock D1L"
-	},
-/turf/space,
-/area/space)
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_one)
 "aJs" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/storage)
@@ -17959,6 +17963,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/station/dock_one)
 "bbs" = (
@@ -19053,15 +19060,17 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "bwb" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	docking_controller = "dock_d1a3";
-	landmark_tag = "tether_dockarm_d1a3";
-	name = "Tether Dock D1A3"
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 1
 	},
-/turf/space,
-/area/space)
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/tether/station/dock_two)
 "bwo" = (
 /obj/machinery/blackbox_recorder,
 /turf/simulated/floor/tiled/techfloor,
@@ -19191,41 +19200,26 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "bGo" = (
+/obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK"
-	},
 /obj/structure/window/reinforced{
-	dir = 1
+	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/tether/station/dock_one)
-"bGy" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK"
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/tether/station/dock_two)
+"bGy" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "dock_d1l_pump"
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_one)
 "bHf" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -19239,116 +19233,100 @@
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/engines)
 "bHt" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "dock_d1a2";
-	name = "exterior access button";
-	pixel_x = -5;
-	pixel_y = -26;
-	req_one_access = list(13)
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
 	},
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "dock_d1l_pump"
+	},
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "dock_d1l_sensor";
+	pixel_x = 30;
+	pixel_y = 8
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bHu" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_one)
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_two)
 "bHw" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "dock_d1a2_pump"
-	},
-/obj/machinery/light/small,
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "dock_d1a2_sensor";
-	pixel_y = -25
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "dock_d1a2";
-	pixel_y = 28
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_one)
+/obj/effect/floor_decal/industrial/warning/corner,
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_two)
 "bHG" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "dock_d2a2";
-	name = "exterior access button";
-	pixel_x = -5;
-	pixel_y = -26;
-	req_one_access = list(13)
-	},
-/obj/effect/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_two)
-"bHN" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_two)
-"bHO" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "dock_d2a2_pump"
-	},
-/obj/machinery/light/small,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "dock_d2a2";
-	pixel_y = 28
-	},
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "dock_d2a2_sensor";
-	pixel_y = -25
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_two)
-"bJl" = (
+/obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 8
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK"
 	},
 /turf/simulated/floor/plating,
-/area/tether/station/dock_one)
-"bJm" = (
+/area/tether/station/dock_two)
+"bHN" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK"
+	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
+/area/tether/station/dock_one)
+"bHO" = (
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1380;
+	master_tag = "dock_d1l";
+	name = "exterior access button";
+	pixel_x = 28;
+	pixel_y = -6;
+	req_access = list(13)
+	},
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_one)
+"bJl" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/station/dock_one)
+"bJm" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bKo" = (
 /obj/machinery/light{
 	dir = 4
-	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
@@ -19408,10 +19386,49 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bPp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "dock_d1a3";
+	name = "interior access button";
+	pixel_x = 28;
+	pixel_y = 26;
+	req_one_access = list(13)
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_two)
+"bPq" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "dock_d1a3_pump"
+	},
+/obj/machinery/light/small,
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "dock_d1a3_sensor";
+	pixel_y = -25
+	},
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "dock_d1a3";
+	pixel_y = 28
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_two)
+"bPr" = (
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;
-	master_tag = "dock_d1a1";
+	master_tag = "dock_d1a3";
 	name = "exterior access button";
 	pixel_x = -5;
 	pixel_y = -26;
@@ -19420,36 +19437,7 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_one)
-"bPq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_one)
-"bPr" = (
-/obj/machinery/light/small,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "dock_d1a1";
-	pixel_y = 28
-	},
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "dock_d1a1_sensor";
-	pixel_y = -25
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "dock_d1a1_pump"
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_one)
+/area/tether/station/dock_two)
 "bPt" = (
 /obj/machinery/access_button{
 	command = "cycle_exterior";
@@ -19496,7 +19484,15 @@
 "bPD" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK"
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -19520,182 +19516,150 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bPS" = (
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1380;
-	master_tag = "dock_d2l";
-	name = "interior access button";
-	pixel_x = 26;
-	pixel_y = -26;
-	req_one_access = list(13)
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	docking_controller = "dock_d1a3";
+	landmark_tag = "tether_dockarm_d1a3";
+	name = "Tether Dock D1A3"
 	},
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_two)
+/turf/space,
+/area/space)
 "bPX" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "bQa" = (
 /turf/simulated/floor,
 /area/tether/station/stairs_one)
 "bQc" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQd" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_two)
-"bQk" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "dock_d2l";
-	pixel_x = -28
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_two)
-"bQl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/obj/machinery/light/small{
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 5
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plating,
+/area/tether/station/dock_two)
+"bQk" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	docking_controller = "dock_d1l";
+	landmark_tag = "tether_dockarm_d1l";
+	name = "Tether Dock D1L"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/space,
+/area/space)
+"bQl" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "dock_d1l";
+	name = "interior access button";
+	pixel_x = -28;
+	pixel_y = -26;
+	req_access = list(13)
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
+	},
+/turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQm" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 6
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "dock_d1l_pump"
-	},
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "dock_d1l_sensor";
-	pixel_x = 30;
-	pixel_y = 8
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQt" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "dock_d2l_pump"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "dock_d2l_sensor";
-	pixel_x = -30;
-	pixel_y = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 10
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQu" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "dock_d2l_pump"
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 6
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_two)
-"bQv" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK"
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/tether/station/dock_one)
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_two)
+"bQv" = (
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_two)
 "bQx" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "dock_d1l";
-	name = "exterior access button";
-	pixel_x = 28;
-	pixel_y = -6;
-	req_access = list(13)
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
 	},
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "dock_d1l";
+	pixel_x = 28
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQz" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
 "bQC" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "dock_d2l";
-	name = "exterior access button";
-	pixel_x = -28;
-	pixel_y = -6;
-	req_one_access = list(13)
-	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/item/radio/beacon,
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQD" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/machinery/computer/shuttle_control/tether_backup{
+	dir = 8
 	},
-/obj/machinery/door/firedoor/glass,
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK"
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bQF" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/structure/closet/emcloset,
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = 30
+	},
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "bTx" = (
@@ -19738,9 +19702,9 @@
 /turf/simulated/floor/plating,
 /area/tether/station/dock_two)
 "bXm" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled,
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/int_door,
+/turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_two)
 "bXn" = (
 /obj/machinery/door/firedoor/glass,
@@ -19825,15 +19789,12 @@
 /turf/simulated/floor,
 /area/vacant/vacant_restaurant_lower)
 "bYr" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	docking_controller = "dock_d2l";
-	landmark_tag = "tether_dockarm_d2l";
-	name = "Tether Dock D2L"
+/obj/effect/floor_decal/sign/dock/one,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
 	},
-/turf/space,
-/area/space)
+/turf/simulated/floor/tiled,
+/area/tether/station/dock_two)
 "bYt" = (
 /obj/structure/window/reinforced,
 /obj/structure/bed/chair{
@@ -20341,8 +20302,10 @@
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_gen)
 "cEA" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/floor_decal/sign/dock/one,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "cHm" = (
@@ -20673,23 +20636,11 @@
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_lobby)
 "dlV" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK"
-	},
-/turf/simulated/floor/plating,
-/area/tether/station/dock_one)
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_two)
 "dnP" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -21658,23 +21609,17 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/ai_upload_foyer)
 "fAr" = (
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1380;
-	master_tag = "dock_d1a1";
-	name = "interior access button";
-	pixel_x = -28;
-	pixel_y = 26;
-	req_one_access = list(13)
-	},
 /obj/effect/floor_decal/industrial/warning{
+	dir = 9
+	},
+/obj/machinery/light/small{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+	dir = 6
 	},
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_one)
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_two)
 "fAA" = (
 /obj/structure/cable/cyan{
 	d2 = 2;
@@ -22098,9 +22043,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "gDY" = (
@@ -22181,21 +22124,18 @@
 /area/tether/exploration/staircase)
 "gOd" = (
 /obj/effect/floor_decal/industrial/warning{
-	dir = 8
+	dir = 5
 	},
-/obj/machinery/access_button{
-	command = "cycle_interior";
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	dir = 8;
 	frequency = 1380;
-	master_tag = "dock_d2a2";
-	name = "interior access button";
-	pixel_x = -28;
-	pixel_y = 26;
-	req_one_access = list(13)
+	id_tag = "dock_d1l";
+	pixel_x = 28
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_two)
 "gOv" = (
 /obj/machinery/turretid/stun{
@@ -22824,19 +22764,9 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "ipk" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 5
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "dock_d1l";
-	pixel_x = 28
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "ipv" = (
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
@@ -23156,10 +23086,17 @@
 /turf/simulated/floor/tiled/eris/white,
 /area/shuttle/medivac/general)
 "jln" = (
-/obj/effect/floor_decal/sign/dock/one,
-/obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_one)
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "dock_d1l_pump"
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_two)
 "jmi" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -23467,6 +23404,10 @@
 /area/tether/exploration/staircase)
 "jXa" = (
 /obj/effect/floor_decal/sign/dock/two,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
@@ -23573,7 +23514,6 @@
 /turf/simulated/floor/outdoors/grass/forest,
 /area/crew_quarters/heads/chief)
 "knR" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
 /obj/machinery/camera/network/tether{
 	dir = 4
 	},
@@ -23662,12 +23602,24 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "kCH" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/plating,
-/area/tether/station/dock_one)
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "dock_d1l_pump"
+	},
+/obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "dock_d1l_sensor";
+	pixel_x = 30;
+	pixel_y = 8
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_two)
 "kER" = (
 /turf/simulated/floor/wood,
 /area/maintenance/station/eng_lower)
@@ -23728,26 +23680,21 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "kLN" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "dock_d1a3_pump"
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK"
 	},
-/obj/machinery/light/small,
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "dock_d1a3_sensor";
-	pixel_y = -25
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "dock_d1a3";
-	pixel_y = 28
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_one)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/station/dock_two)
 "kMF" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -23835,19 +23782,20 @@
 /turf/simulated/floor/tiled/eris/white,
 /area/shuttle/medivac/general)
 "kZv" = (
-/obj/effect/floor_decal/industrial/warning,
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
-	master_tag = "dock_d1l";
+	master_tag = "dock_d1a1";
 	name = "interior access button";
 	pixel_x = -28;
-	pixel_y = -26;
-	req_access = list(13)
+	pixel_y = 26;
+	req_one_access = list(13)
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -26
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
@@ -24032,17 +23980,10 @@
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_gen)
 "lGA" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/tether/station/dock_one)
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_two)
 "lGX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24418,14 +24359,19 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
 "mNU" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1380;
+	master_tag = "dock_d1l";
+	name = "exterior access button";
+	pixel_x = 28;
+	pixel_y = -6;
+	req_access = list(13)
 	},
-/turf/simulated/floor/plating,
-/area/tether/station/dock_one)
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/simulated/floor/tiled/dark,
+/area/tether/station/dock_two)
 "mPj" = (
 /obj/machinery/access_button{
 	command = "cycle_interior";
@@ -24844,13 +24790,13 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/pathfinder_office)
 "nSf" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
 "nTL" = (
@@ -24951,15 +24897,15 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "odO" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	docking_controller = "dock_d1a1";
-	landmark_tag = "tether_dockarm_d1a1";
-	name = "Tether Dock D1A1"
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/turf/space,
-/area/space)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/tether/station/dock_two)
 "odW" = (
 /obj/machinery/light{
 	dir = 1
@@ -25116,6 +25062,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/station/dock_two)
 "ozk" = (
@@ -25162,15 +25111,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_one)
-"oIV" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_one)
 "oKp" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -25688,16 +25628,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
-"pQN" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/space;
-	base_turf = /turf/space;
-	docking_controller = "dock_d2a2";
-	landmark_tag = "tether_dockarm_d2a2";
-	name = "Tether Dock D2A2"
-	},
-/turf/space,
-/area/space)
 "pSI" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 4;
@@ -26293,15 +26223,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
-"rsp" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_one)
 "rtQ" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -26692,12 +26613,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_gen)
-"scB" = (
-/obj/machinery/computer/shuttle_control/tether_backup{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/tether/station/dock_one)
 "shA" = (
 /obj/machinery/message_server,
 /obj/machinery/camera/network/command,
@@ -26918,16 +26833,21 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "sFB" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 9
+/obj/effect/floor_decal/industrial/warning,
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1380;
+	master_tag = "dock_d1l";
+	name = "interior access button";
+	pixel_x = -28;
+	pixel_y = -26;
+	req_access = list(13)
 	},
-/obj/machinery/light/small{
-	dir = 8
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -26
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "sFI" = (
 /obj/structure/disposalpipe/segment,
@@ -27226,12 +27146,6 @@
 /obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
-"tqW" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_one)
 "tsG" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -27367,20 +27281,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
-"tKI" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "dock_d1a3";
-	name = "exterior access button";
-	pixel_x = -5;
-	pixel_y = -26;
-	req_one_access = list(13)
-	},
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/tiled/dark,
-/area/tether/station/dock_one)
 "tMq" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 10
@@ -27972,16 +27872,6 @@
 "vaf" = (
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
-"vbm" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/turf/simulated/floor/plating,
-/area/tether/station/dock_one)
 "vdb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -28398,12 +28288,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_two)
-"wlD" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/tether/station/dock_one)
 "wmr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -28976,9 +28860,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_one)
 "xEm" = (
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 8
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -34064,7 +33945,6 @@ aaa
 aaa
 aaa
 aaa
-ayp
 aaa
 aaa
 aaa
@@ -34072,9 +33952,10 @@ aaa
 aaa
 aaa
 aaa
-odO
 aaa
 aaa
+aaa
+aEo
 aaa
 aaa
 aaa
@@ -34347,19 +34228,19 @@ aaa
 aaa
 aaa
 aaa
-bGo
-bHt
-bJl
 aaa
 aaa
 aaa
 aaa
 aaa
-bGo
-bPp
+aaa
+aaa
+aaa
+aaa
+aaa
 bPD
-aaa
-aaa
+aEp
+aFZ
 aaa
 aaa
 aaa
@@ -34489,19 +34370,19 @@ aaa
 aaa
 aaa
 aaa
-aFT
-bHw
-aGZ
+aaa
+aaa
+aaa
 aaa
 aaa
 aab
 aaa
 aaa
-aFT
-bPr
+aaa
+aaa
 aGZ
-aaa
-aaa
+aFT
+aHc
 aaa
 aaa
 aaa
@@ -34631,24 +34512,24 @@ bzn
 bzn
 bzn
 aCF
-aFU
-bHu
-aFU
+aDH
+aDH
+aDH
 aCF
 bzn
 bzn
 bzn
 aCF
+aCF
+bzn
 aFU
-bPq
+aFY
 aFU
 aCF
 aCF
 bzn
 bzn
-bQv
-aaa
-aaa
+bHN
 aaa
 aaa
 aaa
@@ -34781,18 +34662,18 @@ aDG
 aDG
 rIz
 nYL
+aCO
+aDG
 gVQ
-fAr
-rsp
 kZv
 bPX
 sFB
 aBQ
 bQz
-aaa
+bGy
 aJr
 aaa
-aaa
+bQk
 aaa
 aaa
 aaa
@@ -34918,21 +34799,21 @@ xgd
 tlm
 wAB
 fMv
-oIV
+fMv
 fMv
 fMv
 jtH
 mzB
+aDJ
 aDE
-jln
 aDE
 cEA
-tqW
+aDE
 ipk
 bQm
 bQx
-aaa
-aaa
+bHt
+bHO
 aaa
 aaa
 aaa
@@ -35051,7 +34932,7 @@ aeF
 bZZ
 rCQ
 xqo
-aCI
+ayp
 aDU
 aDG
 aDG
@@ -35066,15 +34947,15 @@ aDG
 kJJ
 aDG
 aEk
-aEo
-aEp
-aCH
+aDG
+aDG
+aDG
+aDG
+aIb
 aFU
 aDH
 aDH
-aJo
-aaa
-aaa
+bJl
 aaa
 aaa
 aaa
@@ -35206,14 +35087,14 @@ aCF
 aDH
 aDH
 aFU
-scB
-wlD
-bHu
-wlD
 aCF
 aCF
-aaa
-aaa
+aDH
+aDH
+aDH
+aDH
+aCF
+aCF
 aaa
 aaa
 aaa
@@ -35347,11 +35228,11 @@ aaa
 aaa
 aaa
 aaa
-lGA
-mNU
-wlD
-kLN
-kCH
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -35491,9 +35372,9 @@ aaa
 aaa
 aaa
 aaa
-dlV
-tKI
-vbm
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -35776,7 +35657,7 @@ aaa
 aaa
 aaa
 aaa
-bwb
+aaa
 aaa
 aaa
 aaa
@@ -36775,7 +36656,7 @@ aaa
 aaa
 aaa
 aaa
-aIb
+aaa
 aaa
 aaa
 aaa
@@ -36904,7 +36785,7 @@ aaa
 aaa
 aaa
 aaa
-pQN
+aaa
 aaa
 aaa
 aaa
@@ -36925,7 +36806,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+aab
 aaa
 aaa
 aaa
@@ -37187,9 +37068,9 @@ aaa
 aaa
 aaa
 aaa
-bGy
-bHG
-bJm
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -37329,9 +37210,9 @@ aaa
 aaa
 aaa
 aaa
-aFY
-bHO
-aHc
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -37341,7 +37222,7 @@ ezX
 bPz
 bXn
 aaa
-aaa
+aab
 aaa
 aaa
 aaa
@@ -37471,30 +37352,30 @@ bzq
 bzq
 bzq
 aCK
-aFZ
-bHN
-aFZ
+bzq
+bzq
+col
 aCK
 bzq
 bzq
 col
-aIA
+aCK
 bXl
 bPx
 bXl
 aCK
+bzq
+bzq
+bzq
 aCK
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bzq
+bzq
+col
+aCK
+aCK
+bzq
+bzq
+kLN
 aaa
 aaa
 aaa
@@ -37614,8 +37495,8 @@ aDL
 aDL
 aDL
 xEm
-gOd
-oYk
+aDL
+aDL
 xDA
 aDL
 aDL
@@ -37624,20 +37505,20 @@ aDL
 boV
 lzl
 oYk
-aCO
-aFZ
-bzq
-bzq
+xDA
+aDL
+aDL
+aIA
 bJm
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aDL
+aDL
+aDL
+bQl
+bXm
+fAr
+jln
+lGA
+bQk
 aaa
 aaa
 aaa
@@ -37765,20 +37646,20 @@ fyk
 fyk
 nSf
 jXa
-aDJ
-bXm
-bQc
-bQk
+fyk
+cuX
+fyk
+fyk
 bQt
 bQC
-aaa
+bHu
 bYr
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bHu
+bQv
+dlV
+gOd
+kCH
+mNU
 aaa
 aaa
 aaa
@@ -37891,7 +37772,7 @@ aAm
 aBi
 aBi
 aDu
-aCN
+aCH
 bPO
 aDL
 jbc
@@ -37907,20 +37788,20 @@ fil
 jbc
 kRp
 aDL
-bPO
-bPS
-bQd
-bQl
+aDL
+aCA
+aDL
+aDL
 bQu
+aDL
+bHw
+bPp
+bQc
 bQF
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aJo
+aJi
+aJi
+odO
 aaa
 aaa
 aaa
@@ -38051,15 +37932,15 @@ aCK
 aCK
 aCK
 aCK
-aCK
 aJi
 aJi
+aJo
 bQD
-aaa
-aaa
-aaa
-aaa
-aaa
+bXl
+bPx
+bXl
+aCK
+aCK
 aaa
 aaa
 aaa
@@ -38195,11 +38076,11 @@ aAY
 ahW
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bwb
+bGo
+bXl
+bPq
+bXn
 aaa
 aaa
 aaa
@@ -38339,9 +38220,9 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+bHG
+bPr
+bQd
 aaa
 aaa
 aaa
@@ -38624,7 +38505,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bPS
 aaa
 aaa
 aaa
