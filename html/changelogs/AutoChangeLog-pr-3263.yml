@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - code_imp: "improved AI clickcode"
+  - bugfix: "AIs can now interact with tgui machinery"
