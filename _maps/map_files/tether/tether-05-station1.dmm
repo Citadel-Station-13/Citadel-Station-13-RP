@@ -28726,6 +28726,16 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
+"xra" = (
+/obj/effect/shuttle_landmark{
+	base_area = /area/space;
+	base_turf = /turf/space;
+	docking_controller = "dock_d2l";
+	landmark_tag = "tether_dockarm_d2l";
+	name = "Tether Dock D2L"
+	},
+/turf/space,
+/area/space)
 "xrN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -37519,7 +37529,7 @@ fAr
 jln
 lGA
 aaa
-bQk
+xra
 aaa
 aaa
 aaa
