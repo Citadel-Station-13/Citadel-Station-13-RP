@@ -64,7 +64,7 @@
 
 /datum/map_template/submap/level_specific/class_h/boneyardH
 	name = "Desert Graveyard"
-	suffix = "farmsH.dmm"
+	suffix = "BoneyardH.dmm"
 	cost = 10
 	fixed_orientation = TRUE
 
@@ -100,7 +100,23 @@
 	suffix = "springcaveH.dmm"
 	cost = 5
 
+
 /datum/map_template/submap/level_specific/class_h/AuxiliaryResearchFacility
 	name = "Research Facility"
 	suffix = "AuxiliaryResearchFacility.dmm"
+	cost = 20
+
+/datum/map_template/submap/level_specific/class_h/saloon
+	name = "Desert Saloon"
+	suffix = "desertsaloon.dmm"
+	cost = 15
+
+/datum/map_template/submap/level_specific/class_h/ranch
+	name = "Desert Ranch"
+	suffix = "ranchH.dmm"
+	cost = 10
+
+/datum/map_template/submap/level_specific/class_h/vault
+	name = "Desert Vault"
+	suffix = "BunkerH.dmm"
 	cost = 20
