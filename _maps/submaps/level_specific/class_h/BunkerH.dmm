@@ -20,7 +20,7 @@
 /area/tether_away/beach/desert/poi/vault)
 "aM" = (
 /obj/machinery/door/blast/regular{
-	id = "desert_bunker
+	id = "desert_bunker"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled,
