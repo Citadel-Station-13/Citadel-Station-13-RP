@@ -1,5 +1,0 @@
-author: "MalricB"
-delete-after: True
-changes: 
-  - rscadd: "lion tail in sprites_accessories_vr.dm"
-  - imageadd: "added liontail, liontail_markings, liontail_w, liontail_markings_w to  icons/mob/human_races/sprite_accessories/tails.dmi and  code/modules/vore/appearance/sprite_accessories_vr.dm"

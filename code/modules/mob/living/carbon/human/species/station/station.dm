@@ -941,28 +941,32 @@
 
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
-	name_plural = "Xenomorphs"
+	name_plural = "Neomorphs"
 	icobase = 'icons/mob/human_races/r_xenomorph.dmi'
 	deform = 'icons/mob/human_races/r_def_xenomorph.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	darksight = 4 //Better hunters in the dark.
-	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 	num_alternate_languages = 2
 
 	min_age = 18
-	max_age = 80
+	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 
-	blurb = "Xenomorphs hybrids are a mixture of xenomorph DNA and some other humanoid species. \
-	Xenomorph hyrids mostly have had had their natural aggression removed due to the gene modification process \
-	although there are some exceptions, such as when they are harmed. Most xenomorph hybrids are female, due to their natural xenomorph genes, \
-	but there are multiple exceptions. All xenomorph hybrids have had their ability to lay eggs containing facehuggers \
-	removed if they had the ability to, although hybrids that previously contained this ability is extremely rare."
+	blurb = "Neomorphs are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
+	Neomorphs are civilised and capable of communicating with other species, without knowing their language. \
+	Over the years crusading the stars xenomorphs gathered genetic material of almost all known species(and probably some unknown as well), \
+	allowing Neomorphs to reproduce with most other species. This reproduction is not as invasive as the facehuggers of their relatives, \
+	but can still be dangerous to the host. Their chitinous exoskeleton allows them to endure low pressure and freezing cold \
+	quite well, but leaves them vurnerable to fire and heat."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)
-	// No wiki page for xenohybrids at present
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
 
 	//primitive_form = "" //None for these guys
+	language = "Xenomorph"
+	name_language = "Xenomorph"
+	species_language = "Xenomorph"
+	secondary_langs = list("Xenomorph")
+	num_alternate_languages = 3
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -980,6 +984,28 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
+
+	total_health = 110	//Exoskeleton makes you tougher than baseline
+	brute_mod = 0.95 // Chitin is somewhat hard to crack
+	burn_mod = 1.10	// Natural enemy of xenomorphs is fire
+	blood_volume = 560	//Baseline
+	darksight = 4 //Better hunters in the dark.
+	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
+
+	warning_low_pressure = 30//lower than baseline, still not vacuum prove
+	hazard_low_pressure = 5
+
+	warning_high_pressure = 325//Both baseline
+	hazard_high_pressure = 550
+
+	cold_level_1 = 160	//Take colder temperatures better.
+	cold_level_2 = 120
+	cold_level_3 = 90 //Original idea was 60, but O2 gets liquid at that point so we keep the standard air gasious.
+
+	heat_level_1 = 350	//dont like the heat
+	heat_level_2 = 400
+	heat_level_3 = 700
+
 
 /datum/species/harpy
 	name = SPECIES_RAPALA
