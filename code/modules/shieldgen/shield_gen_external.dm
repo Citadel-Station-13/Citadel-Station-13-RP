@@ -4,6 +4,8 @@
 /obj/machinery/shield_gen/external
 	name = "hull shield generator"
 	var/global/list/blockedturfs =  list(
+		/turf/space,
+		/turf/simulated/mineral/vaccum,
 		/turf/simulated/floor/outdoors/grass/sif/virgo3b,
 		/turf/simulated/mineral/virgo3b, //Mountains around tether versus mountain at tether.
 		/turf/simulated/floor/maglev/virgo3b,
