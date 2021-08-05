@@ -19571,7 +19571,7 @@
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
-	master_tag = "dock_d1l";
+	master_tag = "dock_d2l";
 	name = "interior access button";
 	pixel_x = -28;
 	pixel_y = -26;
@@ -23611,7 +23611,7 @@
 	id_tag = "dock_d1l_pump"
 	},
 /obj/machinery/airlock_sensor{
-	frequency = 0831;
+	frequency = 1380;
 	id_tag = "dock_d2l_sensor";
 	pixel_x = 30;
 	pixel_y = 8
@@ -26837,7 +26837,7 @@
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 1380;
-	master_tag = "dock_d1l";
+	master_tag = "dock_d2l";
 	name = "interior access button";
 	pixel_x = -28;
 	pixel_y = -26;
