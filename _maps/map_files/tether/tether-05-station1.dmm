@@ -22129,7 +22129,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "dock_d1l";
+	id_tag = "dock_d2l";
 	pixel_x = 28
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -23611,8 +23611,8 @@
 	id_tag = "dock_d1l_pump"
 	},
 /obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "dock_d1l_sensor";
+	frequency = 0831;
+	id_tag = "dock_d2l_sensor";
 	pixel_x = 30;
 	pixel_y = 8
 	},
