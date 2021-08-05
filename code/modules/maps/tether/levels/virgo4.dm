@@ -267,3 +267,4 @@
 /area/tether_away/beach/desert/poi/vault
 	name = "Desert Bunker"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+	
