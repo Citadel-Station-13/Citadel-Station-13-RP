@@ -1,0 +1,4 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - rscadd: "xenobio qol: alt click processor to auto intake, unwrenchable, etc."

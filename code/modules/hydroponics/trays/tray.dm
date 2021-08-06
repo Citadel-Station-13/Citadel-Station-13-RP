@@ -221,7 +221,6 @@
 	. = ..()
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
-	return FALSE
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/check_health()
 	if(seed && !dead && health <= 0)
