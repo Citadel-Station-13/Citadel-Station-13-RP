@@ -154,7 +154,7 @@
 		SPECIES_VULPKANIN		= 'icons/mob/species/vulpkanin/suit_vr.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/mob/species/vulpkanin/suit_vr.dmi',
 		SPECIES_FENNEC			= 'icons/mob/species/vulpkanin/suit_vr.dmi',
-		SPECIES_TESHARI			= 'icons/mob/species/teshari/suit_vr.dmi'
+		SPECIES_TESHARI			= 'icons/mob/species/teshari/suit.dmi'
 		)
 	sprite_sheets_obj = list(
 		SPECIES_TAJ			= 'icons/obj/clothing/suits_vr.dmi',
@@ -233,7 +233,7 @@
 		SPECIES_VULPKANIN		= 'icons/mob/species/vulpkanin/helmet_vr.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/mob/species/vulpkanin/helmet_vr.dmi',
 		SPECIES_FENNEC			= 'icons/mob/species/vulpkanin/helmet_vr.dmi',
-		SPECIES_TESHARI			= 'icons/mob/species/teshari/helmet_vr.dmi'
+		SPECIES_TESHARI			= 'icons/mob/species/teshari/helmet.dmi'
 		)
 	sprite_sheets_obj = list(
 		SPECIES_TAJ 			= 'icons/obj/clothing/hats_vr.dmi',
