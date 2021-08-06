@@ -90,7 +90,7 @@
 				usr.put_in_l_hand(src)
 		src.add_fingerprint(usr)
 
-/obj/item/weapon/storage/AltClick(mob/user)
+/obj/item/storage/AltClick(mob/user)
 	if(user in is_seeing)
 		src.close(user)
 	// I would think there should be some incap check here or something
