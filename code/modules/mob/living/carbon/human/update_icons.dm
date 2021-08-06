@@ -1081,7 +1081,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(!depth || lying)
 		return
 
-	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
+	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
 
 	apply_layer(MOB_WATER_LAYER)
 
