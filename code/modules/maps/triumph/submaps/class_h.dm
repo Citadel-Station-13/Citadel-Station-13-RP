@@ -100,7 +100,6 @@
 	suffix = "springcaveH.dmm"
 	cost = 5
 
-
 /datum/map_template/submap/level_specific/class_h/AuxiliaryResearchFacility
 	name = "Research Facility"
 	suffix = "AuxiliaryResearchFacility.dmm"
