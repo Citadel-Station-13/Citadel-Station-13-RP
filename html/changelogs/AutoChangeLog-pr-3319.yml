@@ -1,0 +1,8 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "New Virgo 4 Desert Z-Level, 3 New POIs
+tweak: Former Desert World POIs are reworked for use with dynamic lighting.
+V-4 Beach/Cave: Have been slightly edited to connect to the new desert location. Also V-4 Beach Solars are now actual solars rather then assemblies, they are also now fenced.
+tweak: External Plating and external Tiles are now considered Outdoors for purposes of planet lighting."
+  - code_imp: "All the code related to making a new linked Z level loaded"
