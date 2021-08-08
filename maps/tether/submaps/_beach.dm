@@ -11,7 +11,7 @@
 	color = "#ffd300" //Sandy
 	in_space = 0
 	initial_generic_waypoints = list("beach_e", "beach_c", "beach_nw")
-	extra_z_levels = list(Z_LEVEL_BEACH_CAVE)
+	extra_z_levels = list(Z_LEVEL_BEACH_CAVE, Z_LEVEL_DESERT)
 
 //This is a special subtype of the thing that generates ores on a map
 //It will generate more rich ores because of the lower numbers than the normal one
@@ -65,6 +65,8 @@
 	new /datum/random_map/noise/ore/beachmine(null, 1, 1, Z_LEVEL_BEACH_CAVE, 64, 64)*/
 
 	return INITIALIZE_HINT_QDEL
+
+/obj/away_mission_init/beachcave
 
 // Two mob spawners that are placed on the map that spawn some mobs!
 // They keep track of their mob, and when it's dead, spawn another (only if nobody is looking)
@@ -222,3 +224,12 @@
 /area/tether_away/cave/unexplored/deep
 	name = "\improper Away Mission - Virgo 4 Cave Deep (UE)"
 	icon_state = "unexplored_deep"
+
+
+/area/tether_away/beach/desert/explored
+	name = "\improper Away Mission - Virgo 4 Desert (E)"
+	icon_state = "explored"
+
+/area/tether_away/beach/desert/unexplored
+	name = "\improper Away Mission - Virgo 4 Desert (UE)"
+	icon_state = "unexplored"
