@@ -1,0 +1,9 @@
+author: "Saisni"
+delete-after: True
+changes: 
+  - rscadd: "Added new drinks with recipes and metaglass sets"
+  - rscdel: "Removed duplicate recipe"
+  - imageadd: "added some icons for drinks"
+  - spellcheck: "fixed a few typos in drink names and recipes
+![SomeDrinks](https://user-images.githubusercontent.com/71731828/127749862-16fe8798-14e2-469e-af08-8b3c4bc7bf18.png)
+[Bartending Fix.txt](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/files/6911717/Bartending.Fix.txt)"
