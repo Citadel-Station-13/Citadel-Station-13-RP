@@ -82,11 +82,11 @@
 
 /obj/item/reagent_containers/spray/verb/empty()
 
-	set name = "Empty Spray Bottle"
+	set name = "Empty Tank"
 	set category = "Object"
 	set src in usr
 
-	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
+	if (alert(usr, "Are you sure you want to empty that?", "Empty Tank:", "Yes", "No") != "Yes")
 		return
 	if(isturf(usr.loc))
 		to_chat(usr, "<span class='notice'>You empty \the [src] onto the floor.</span>")
@@ -205,25 +205,36 @@
 /obj/item/reagent_containers/spray/squirt
 	name = "HydroBlaster 4000"
 	desc = "A popular toy produced by Donk Co, the HydroBlaster 4000 is the latest in a long line of recreational pressurized water delivery systems."
-	icon = 'icons/obj/gun/launcher.dmi'
+	icon = 'icons/obj/toy.dmi'
 	icon_state = "squirtgun"
 	item_state = "squirtgun"
 	w_class = ITEMSIZE_NORMAL
 	volume = 100
+	var/pumped = TRUE
 
 /obj/item/reagent_containers/spray/squirt/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("water", 100)
 
-/obj/item/reagent_containers/spray/squirt_nt
+/obj/item/reagent_containers/spray/squirt/examine(mob/user)
+	. = ..()
+	. += "The tank is [pumped ? "depressurized" : "pressurized"]."
+
+/obj/item/reagent_containers/spray/squirt/attack_self(var/mob/user)
+	pumped = !pumped
+	to_chat(usr, "<span class = 'notice'>You pump the handle [pumped ? "to depressurize" : "to pressurize"] the tank.</span>")
+
+/obj/item/reagent_containers/spray/squirt/Spray_at(atom/A as mob|obj)
+	if(pumped)
+		to_chat(usr, "<span class = 'warning'>The tank has no pressure!</span>")
+		return
+	. = ..()
+
+/obj/item/reagent_containers/spray/squirt/nt
 	name = "HydroBlaster 4001"
 	desc = "A popular toy produced by Donk Co, the HydroBlaster 4001 is modeled in NanoTrasen corporate colors. This is largely considered a sarcastic gesture."
-	icon = 'icons/obj/gun/launcher.dmi'
+	icon = 'icons/obj/toy.dmi'
 	icon_state = "squirtgun_nt"
 	item_state = "squirtgun_nt"
 	w_class = ITEMSIZE_NORMAL
 	volume = 101
-
-/obj/item/reagent_containers/spray/squirt_nt/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("water", 101)
