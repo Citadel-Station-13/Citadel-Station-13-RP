@@ -7,7 +7,7 @@ var/datum/planet/virgo4/planet_virgo4 = null
 	name = "Virgo-4"
 	desc = "Zorren homeworld. Mostly dry and desolate, but ocean and fresh water are present, with scattered vegitation." //rewrite me
 	current_time = new /datum/time/virgo4()
-	expected_z_levels = list(Z_LEVEL_BEACH)
+	expected_z_levels = list(Z_LEVEL_BEACH, Z LEVEL_DESERT)
 	planetary_wall_type = /turf/unsimulated/wall/planetary/normal/virgo4
 
 /datum/planet/virgo4/New()
