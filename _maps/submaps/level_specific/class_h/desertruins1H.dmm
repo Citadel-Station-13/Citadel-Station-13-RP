@@ -1,47 +1,44 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/unexplored)
 "c" = (
 /turf/simulated/wall/sandstone/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "l" = (
 /obj/structure/loot_pile/surface/bones,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "n" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "s" = (
 /obj/item/bone,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "G" = (
 /obj/structure/loot_pile/surface/bones,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "W" = (
 /obj/item/bone,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "X" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
 "}
 (2,1,1) = {"
-a
+X
 X
 n
 X
@@ -50,10 +47,10 @@ X
 X
 X
 X
-a
+X
 "}
 (3,1,1) = {"
-a
+X
 n
 c
 n
@@ -62,10 +59,10 @@ n
 n
 c
 X
-a
+X
 "}
 (4,1,1) = {"
-a
+X
 X
 X
 n
@@ -74,10 +71,10 @@ G
 X
 X
 X
-a
+X
 "}
 (5,1,1) = {"
-a
+X
 X
 X
 X
@@ -86,22 +83,22 @@ n
 X
 X
 X
-a
+X
 "}
 (6,1,1) = {"
-a
 X
 X
 X
-n
-n
 X
 n
+n
 X
-a
+n
+X
+X
 "}
 (7,1,1) = {"
-a
+X
 X
 c
 n
@@ -110,10 +107,10 @@ n
 X
 c
 X
-a
+X
 "}
 (8,1,1) = {"
-a
+X
 X
 X
 X
@@ -122,10 +119,10 @@ n
 n
 X
 X
-a
+X
 "}
 (9,1,1) = {"
-a
+X
 X
 X
 l
@@ -134,10 +131,10 @@ n
 X
 X
 X
-a
+X
 "}
 (10,1,1) = {"
-a
+X
 X
 X
 n
@@ -146,10 +143,10 @@ n
 n
 X
 X
-a
+X
 "}
 (11,1,1) = {"
-a
+X
 X
 c
 n
@@ -158,10 +155,10 @@ n
 n
 c
 X
-a
+X
 "}
 (12,1,1) = {"
-a
+X
 X
 X
 X
@@ -170,10 +167,10 @@ n
 W
 X
 X
-a
+X
 "}
 (13,1,1) = {"
-a
+X
 X
 s
 n
@@ -182,10 +179,10 @@ n
 n
 X
 X
-a
+X
 "}
 (14,1,1) = {"
-a
+X
 X
 X
 c
@@ -194,17 +191,17 @@ c
 c
 X
 X
-a
+X
 "}
 (15,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
 "}

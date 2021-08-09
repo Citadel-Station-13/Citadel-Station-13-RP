@@ -1,0 +1,4 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - bugfix: "positively actually makes the shield generators behave less stupidly."
