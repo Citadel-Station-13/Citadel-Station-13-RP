@@ -63,16 +63,19 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "aal" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "aam" = (
 /obj/machinery/light,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "aan" = (
@@ -8878,6 +8881,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "aoV" = (
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/storage/surface_eva/external)
 "aoW" = (
@@ -11692,7 +11696,8 @@
 /area/tether/surfacebase/tram)
 "auf" = (
 /obj/structure/stairs/spawner/east,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "aug" = (
 /obj/structure/cable/green{
@@ -12046,7 +12051,8 @@
 /area/maintenance/lower/solars)
 "auI" = (
 /obj/structure/stairs/spawner/west,
-/turf/simulated/floor/outdoors/grass/sif/virgo3b,
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "auJ" = (
 /obj/machinery/door/airlock{
@@ -31098,7 +31104,7 @@
 	},
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
 "biK" = (
 /obj/structure/barricade/cutout/mime,
@@ -32143,7 +32149,7 @@
 /area/tether/surfacebase/security/brig/bathroom)
 "emx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
 "emK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -32595,7 +32601,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 6
 	},
-/turf/simulated/floor/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
 "gcH" = (
 /obj/random/junk,
@@ -33111,6 +33117,13 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/surfacebase/lowernortheva)
+"hqF" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "hsB" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/maglev/virgo3b,
@@ -33405,7 +33418,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
 "hYh" = (
 /obj/machinery/door/firedoor/glass,
@@ -34371,7 +34384,7 @@
 "kIc" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
 "kKl" = (
 /obj/effect/floor_decal/borderfloor{
@@ -35751,6 +35764,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
+"nGW" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "nID" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -36320,7 +36340,7 @@
 /area/crew_quarters/visitor_laundry)
 "puz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
 "pyD" = (
 /obj/machinery/door/airlock/maintenance/common{
@@ -36861,6 +36881,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
+"qTV" = (
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/outside/outside1)
 "qVi" = (
 /obj/structure/railing{
 	dir = 1
@@ -36962,7 +36985,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/simulated/floor/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
 "rju" = (
 /obj/machinery/light/small/emergency{
@@ -37330,6 +37353,14 @@
 /obj/effect/floor_decal/corner/lightorange,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
+"seO" = (
+/obj/structure/sign/atmos_air{
+	name = "Mech Refill Point";
+	pixel_y = 32
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "ski" = (
 /turf/simulated/mineral,
 /area/crew_quarters/locker)
@@ -38058,7 +38089,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/virgo3b,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/outside/outside1)
 "uzs" = (
 /obj/machinery/light{
@@ -38473,6 +38504,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
+"vDo" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/lowernortheva/external)
 "vEc" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/carpet/gaycarpet,
@@ -38543,6 +38578,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "vRL" = (
@@ -38599,6 +38635,10 @@
 /obj/machinery/computer/arcade/orion_trail,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
+"vXv" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside1)
 "waR" = (
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/weaponsrange)
@@ -38695,6 +38735,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "wvR" = (
@@ -42533,11 +42574,11 @@ adK
 adK
 adK
 adK
-ntU
-aad
-aad
-aad
-aad
+seO
+vXv
+vXv
+vXv
+vXv
 aah
 aah
 aah
@@ -42672,9 +42713,9 @@ aah
 aah
 aah
 adK
-aeo
+qTV
 kIc
-nKs
+nGW
 kBe
 aoq
 aoq
@@ -42958,7 +42999,7 @@ aah
 adK
 rje
 kIc
-dvt
+hqF
 aor
 aoV
 aoV
@@ -43456,9 +43497,9 @@ aad
 aad
 aad
 baq
-aad
-aad
-aad
+vXv
+vXv
+vXv
 baq
 aad
 aad
@@ -43598,9 +43639,9 @@ aad
 aad
 aad
 bar
-aad
-aad
-aad
+aoq
+aoq
+aoq
 bar
 aad
 aad
@@ -44716,7 +44757,7 @@ aad
 aad
 aad
 sFC
-aad
+vXv
 xjn
 aad
 aad
@@ -44988,7 +45029,7 @@ aLo
 bbo
 aKL
 aNv
-aoq
+vXv
 aad
 aHL
 aad
@@ -45130,7 +45171,7 @@ aLp
 aMa
 aMJ
 aNw
-aoq
+vXv
 aad
 aad
 aHL
@@ -45272,7 +45313,7 @@ aLq
 aMb
 aMK
 aNw
-aoq
+vXv
 aHL
 aad
 aad
@@ -45284,7 +45325,7 @@ aad
 aad
 aad
 sFC
-aad
+vXv
 xjn
 aad
 aad
@@ -45414,7 +45455,7 @@ aLr
 bcU
 aKL
 aNx
-aoq
+vXv
 aad
 aad
 aHL
@@ -46438,9 +46479,9 @@ aad
 aad
 aad
 bar
-aad
-aad
-aad
+aoq
+aoq
+aoq
 bar
 aad
 aad
@@ -46580,9 +46621,9 @@ aad
 aad
 aad
 baq
-aad
-aad
-aad
+vXv
+vXv
+vXv
 baq
 aad
 aad
@@ -49604,7 +49645,7 @@ aad
 aad
 aad
 adK
-aeo
+qTV
 fXR
 puz
 wNg
@@ -50316,7 +50357,7 @@ aae
 aae
 aae
 aaf
-aaf
+vDo
 aat
 aaC
 aaP

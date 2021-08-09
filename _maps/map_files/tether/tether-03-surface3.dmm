@@ -40795,6 +40795,10 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/crew_quarters/recreation_area)
+"qta" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/tether/surfacebase/outside/outside3)
 "qtt" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -55056,8 +55060,8 @@ aac
 aac
 aac
 bhX
-aaq
-aaq
+qta
+qta
 biy
 aac
 aac

@@ -5260,8 +5260,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/medsec)
@@ -29395,7 +29394,6 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "beO" = (
 /obj/machinery/mecha_part_fabricator/pros{
-	component_coeff = 1;
 	desc = "A machine used for construction of legit prosthetics. You weren't sure if cardboard was considered an engineering material before now.";
 	dir = 4;
 	name = "Legitmate Prosthetics Fabricator";
@@ -32633,6 +32631,7 @@
 	id = "xenocont1";
 	name = "Slimes Containment Blast Door"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "blK" = (
@@ -32747,6 +32746,7 @@
 	id = "xenocont2";
 	name = "Slimes Containment Blast Door"
 	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "blR" = (
