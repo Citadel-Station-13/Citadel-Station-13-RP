@@ -405,6 +405,12 @@ var/const/access_pilot = 67
 	desc = "Entertainment Backstage"
 	region = ACCESS_REGION_GENERAL
 
+/var/const/access_xenobotany = 77
+/datum/access/xenobotany
+	id = access_xenobotany
+	desc = "Xenobotany Garden"
+	region = ACCESS_REGION_RESEARCH
+
 /var/const/access_mime = 138
 /datum/access/mime
 	id = access_mime

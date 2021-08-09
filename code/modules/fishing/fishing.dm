@@ -161,6 +161,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 	else ..()
 
 /turf/simulated/floor/water/indoors
+	outdoors = FALSE
 	min_fishing_time = 33
 	max_fishing_time = 99
 
@@ -173,6 +174,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		fishing_loot = GLOB.indoor_fishing_chance_list
 
 /turf/simulated/floor/water/deep/indoors
+	outdoors = FALSE
 	min_fishing_time = 33
 	max_fishing_time = 70
 

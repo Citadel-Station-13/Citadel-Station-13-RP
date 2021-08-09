@@ -203,3 +203,68 @@
 /area/tether_away/cave/unexplored/deep
 	name = "\improper Away Mission - Virgo 4 Cave Deep (UE)"
 	icon_state = "unexplored_deep"
+
+// Desert World Reborn Areas..
+
+/area/tether_away/beach/desert/poi
+	name = "\improper Away Mission - Virgo 4 Desert"
+	icon_state = "away"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+	requires_power = 1
+
+/area/tether_away/beach/desert/explored
+	name = "\improper Away Mission - Virgo 4 Desert (E)"
+	icon_state = "explored"
+
+/area/tether_away/beach/desert/unexplored
+	name = "\improper Away Mission - Virgo 4 Desert (UE)"
+	icon_state = "unexplored"
+
+/area/tether_away/beach/desert/poi/WW_Town
+	name = "Ghost Town"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/landing_pad
+	name = "Prefab Homestead"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/solar_farm
+	name = "Prefab Solar Farm"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/dirt_farm
+	name = "Abandoned Farmstead"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/graveyard
+	name = "Desert Graveyard"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/goldmine
+	name = "Desert Goldmine"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/ranch
+	name = "Abandoned Ranch"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/saloon
+	name = "Saloon"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/temple
+	name = "Old Temple"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/tomb
+	name = "Old Tomb"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/AuxiliaryResearchFacility
+	name = "Research Facility"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+
+/area/tether_away/beach/desert/poi/vault
+	name = "Desert Bunker"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+	

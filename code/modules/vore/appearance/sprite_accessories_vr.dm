@@ -2093,3 +2093,13 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 	ani_state = "tentacles_wag"
+
+/datum/sprite_accessory/tail/liontail
+	name = "Lion Tail (vwag)"
+	desc = ""
+	icon_state = "liontail"
+	ani_state = "liontail_w"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "liontail_markings"
+	extra_overlay_w = "liontail_markings_w"

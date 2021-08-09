@@ -81,7 +81,7 @@
 		"Orderly" = /datum/alt_title/orderly
 		)
 
-//Medical Doctor Alt Titles
+// Medical Doctor Alt Titles
 /datum/alt_title/surgeon
 	title = "Surgeon"
 	title_blurb = "A Surgeon specializes in providing surgical aid to injured patients, up to and including amputation and limb reattachement. They are expected \
@@ -144,12 +144,19 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/chemist
 	job_description = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
 						They are likely to know the use and dangers of many lab-produced chemicals."
-	alt_titles = list("Pharmacist" = /datum/alt_title/pharmacist)
+	alt_titles = list(
+		"Pharmacist" = /datum/alt_title/pharmacist,
+		"Pharmacologist" = /datum/alt_title/pharmacologist
+		)
 
 // Chemist Alt Titles
 /datum/alt_title/pharmacist
 	title = "Pharmacist"
 	title_blurb = "A Pharmacist focuses on the chemical needs of the Medical Department, and often offers to fill crew prescriptions at their discretion."
+
+/datum/alt_title/pharmacologist
+	title = "Pharmacologist"
+	title_blurb = "A Pharmacologist focuses on the chemical needs of the Medical Department, primarily specializing in producing more advanced forms of medicine."
 
 /* I'm commenting out Geneticist so you can't actually see it in the job menu, given that you can't play as one - Jon.
 //////////////////////////////////
@@ -199,11 +206,10 @@
 					ails the mentally unwell, frequently under Security supervision. They understand the effects of various psychoactive drugs."
 	alt_titles = list(
 		"Psychologist" = /datum/alt_title/psychologist,
-		"Therapist" = /datum/alt_title/psychiatrist/therapist,
+		"Psychoanalyst" = /datum/alt_title/psychologist/psychoanalyst,
+		"Counselor" = /datum/alt_title/counselor,
+		"Therapist" = /datum/alt_title/therapist
 		)
-
-/datum/alt_title/psychiatrist/therapist
-	title = "Therapist"
 
 //Psychiatrist Alt Titles
 /datum/alt_title/psychologist
@@ -211,6 +217,17 @@
 	title_blurb =  "A Psychologist provides mental health services to crew members in need, focusing more on therapy than medication. They may also be \
 					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
 	title_outfit = /decl/hierarchy/outfit/job/medical/psychiatrist/psychologist
+
+/datum/alt_title/psychologist/psychoanalyst
+	title = "Psychoanalyst"
+	title_blurb =  "A Psychoanalyst provides mental health services to crew members in need, focusing more on therapy than medication. They may also be \
+					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
+
+/datum/alt_title/counselor
+	title = "Counselor"
+
+/datum/alt_title/therapist
+	title = "Therapist"
 
 //////////////////////////////////
 //			Paramedic
@@ -233,11 +250,20 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/paramedic
 	job_description = "A Paramedic is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their own. \
 						They may also be called upon to keep patients stable when Medical is busy or understaffed."
-	alt_titles = list("Emergency Medical Technician" = /datum/alt_title/emt)
+	alt_titles = list(
+		"Emergency Medical Technician" = /datum/alt_title/emt,
+		"Medical Responder" = /datum/alt_title/medical_responder
+		)
 
 // Paramedic Alt Titles
 /datum/alt_title/emt
 	title = "Emergency Medical Technician"
 	title_blurb = "An Emergency Medical Technician is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
+					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
+	title_outfit = /decl/hierarchy/outfit/job/medical/paramedic/emt
+
+/datum/alt_title/medical_responder
+	title = "Medical Responder"
+	title_blurb = "A Medical Responder is primarily concerned with the recovery of patients who are unable to make it to the Medical Department on their \
 					own. They are capable of keeping a patient stabilized until they reach the hands of someone with more training."
 	title_outfit = /decl/hierarchy/outfit/job/medical/paramedic/emt

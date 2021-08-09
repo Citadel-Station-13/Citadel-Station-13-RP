@@ -16,6 +16,7 @@
 	minimal_player_age = 7
 	account_allowed = 0
 	economic_modifier = 0
+	pto_type = PTO_CIVILIAN
 	has_headset = FALSE
 	assignable = FALSE
 	mob_type = JOB_SILICON_AI
@@ -24,7 +25,6 @@
 						The AI is required to follow its Laws, and Lawbound Synthetics that are linked to it are expected to follow \
 						the AI's commands, and their own Laws."
 	disallow_jobhop = TRUE
-	pto_type = PTO_CIVILIAN
 
 // AI procs
 /datum/job/ai/equip(var/mob/living/carbon/human/H)
@@ -49,21 +49,24 @@
 	departments = list(DEPARTMENT_SYNTHETIC)
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 4
-	spawn_positions = 3
+	total_positions = 4			// Along with one able to spawn later in the round.
+	spawn_positions = 3			// Let's have 3 able to spawn in roundstart
 	supervisors = "your laws and the AI"	//Nodrak
 	selection_color = "#254C25"
-	minimal_player_age = 1
+	minimal_player_age = 3		// 1 day is a little too little time
 	account_allowed = 0
 	economic_modifier = 0
+	pto_type = PTO_CYBORG
 	has_headset = FALSE
 	assignable = FALSE
 	mob_type = JOB_SILICON_ROBOT
 	outfit_type = /decl/hierarchy/outfit/job/silicon/cyborg
 	job_description = "A Cyborg is a mobile station synthetic, piloted by a cybernetically preserved brain. It is considered a person, but is still required \
 						to follow its Laws."
-	alt_titles = list("Robot" = /datum/alt_title/robot, "Drone" = /datum/alt_title/drone)
-	pto_type = PTO_CYBORG
+	alt_titles = list(
+		"Robot" = /datum/alt_title/robot,
+		"Drone" = /datum/alt_title/drone
+		)
 
 // Cyborg Alt Titles
 /datum/alt_title/robot

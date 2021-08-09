@@ -45,6 +45,9 @@
 	if(prob(5))
 		icon_state = "desert[rand(0,4)]"
 
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors
+	outdoors = FALSE
+
 /turf/simulated/floor/outdoors/beach/sand/lowdesert
 	name = "\improper low desert"
 	icon = 'icons/turf/desert.dmi'

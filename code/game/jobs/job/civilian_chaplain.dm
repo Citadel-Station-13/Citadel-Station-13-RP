@@ -1,4 +1,4 @@
-//Due to how large this one is it gets its own file
+// Due to how large this one is it gets its own file
 /datum/job/chaplain
 	title = "Chaplain"
 	flag = CHAPLAIN
@@ -15,8 +15,11 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/chaplain
 	job_description = "The Chaplain ministers to the spiritual needs of the crew."
-	alt_titles = list("Counselor" = /datum/alt_title/counselor, "Religious Affairs Advisor" = /datum/alt_title/chaplain/advisor,
-	"Paracausal Scholar" = /datum/alt_title/chaplain/scholar, "Exorcist" = /datum/alt_title/chaplain/scholar)
+	alt_titles = list(
+		"Counselor" = /datum/alt_title/counselor,
+		"Religious Affairs Advisor" = /datum/alt_title/chaplain/advisor,
+		"Paracausal Scholar" = /datum/alt_title/chaplain/scholar
+		)
 
 // Chaplain Alt Titles
 /datum/alt_title/counselor
@@ -28,9 +31,6 @@
 
 /datum/alt_title/chaplain/scholar
 	title = "Paracausal Scholar"
-
-/datum/alt_title/chaplain/exorcist
-	title = "Exorcist"
 
 /datum/job/chaplain/equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
 	. = ..()
@@ -111,5 +111,3 @@
 	GLOB.bible_name = B.name
 	GLOB.deity = B.deity_name
 	feedback_set_details("religion_deity","[new_deity]")
-
-
