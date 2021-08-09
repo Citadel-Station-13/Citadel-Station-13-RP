@@ -27,6 +27,8 @@
 	var/aug_cooldown = 30 SECONDS
 	var/last_activate = null
 
+	var/known = 0
+
 /obj/item/organ/internal/augment/Initialize(mapload)
 	. = ..()
 

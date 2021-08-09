@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(medicalScanDisplays)
+
 /obj/machinery/body_scan_display
 	name = "Body Scan Display"
 	desc = "A wall-mounted display linked to a body scanner."
@@ -12,12 +14,21 @@
 	uncreated_component_parts = null
 	stat_immune = 0
 	w_class = ITEM_SIZE_HUGE
-	
+
 	machine_name = "body scanner display"
 	machine_desc = "Receives body scans from a linked body scanner and allows them to be viewed remotely."
-	
+
 	var/list/bodyscans = list()
 	var/selected = 0
+
+/obj/machinery/body_scan_display/Initialize(mapload, newdir)
+	. = ..()
+	GLOB.medicalScanDisplays += src
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/body_scan_display/Destroy()
+	GLOB.medicalScanDisplays -= src
+	return ..()
 
 /obj/machinery/body_scan_display/proc/add_new_scan(var/list/scan)
 	bodyscans += list(scan.Copy())

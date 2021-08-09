@@ -61,3 +61,11 @@
 		if (prob(50))
 			take_damage(1,silent=prob(15))
 
+/obj/item/organ/internal/proc/get_scarring_level()
+	. = (initial(max_damage) - max_damage)/initial(max_damage)
+
+/obj/item/organ/internal/get_scan_results()
+	. = ..()
+	var/scar_level = get_scarring_level()
+	if(scar_level > 0.01)
+		. += "[get_wound_severity(get_scarring_level())] scarring"

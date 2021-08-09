@@ -376,3 +376,24 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 	B.fluorescent  = 0
 	B.invisibility = 0
 	return B
+
+/mob/living/carbon/human/proc/get_blood_oxygenation()
+	var/blood_volume = get_blood_circulation()
+	if(blood_carries_oxygen())
+		if(is_asystole()) // Heart is missing or isn't beating and we're not breathing (hardcrit)
+			return min(blood_volume, BLOOD_VOLUME_SURVIVE)
+
+		if(!need_breathe())
+			return blood_volume
+	else
+		blood_volume = 100
+
+	var/blood_volume_mod = max(0, 1 - getOxyLoss()/(species.total_health/2))
+	var/oxygenated_mult = 0
+	if(chem_effects[CE_OXYGENATED] == 1) // Dexalin.
+		oxygenated_mult = 0.5
+	else if(chem_effects[CE_OXYGENATED] >= 2) // Dexplus.
+		oxygenated_mult = 0.8
+	blood_volume_mod = blood_volume_mod + oxygenated_mult - (blood_volume_mod * oxygenated_mult)
+	blood_volume = blood_volume * blood_volume_mod
+	return min(blood_volume, 100)

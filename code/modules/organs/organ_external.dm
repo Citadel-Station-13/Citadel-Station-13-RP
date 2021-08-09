@@ -20,10 +20,18 @@
 
 	// Damage vars.
 	var/brute_mod = 1                  // Multiplier for incoming brute damage.
-	var/burn_mod = 1                   // As above for burn.
 	var/brute_dam = 0                  // Actual current brute damage.
+	var/brute_ratio = 0                // Ratio of current brute damage to max damage.
+	var/burn_mod = 1                   // Multiplier for incoming burn damage.
 	var/burn_dam = 0                   // Actual current burn damage.
+	var/burn_ratio = 0                 // Ratio of current burn damage to max damage.
 	var/last_dam = -1                  // used in healing/processing calculations.
+//New for baymed
+	var/pain = 0                       // How much the limb hurts.
+	var/pain_disability_threshold      // Point at which a limb becomes unusable due to pain.
+
+	var/limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_BREAK
+//old
 	var/spread_dam = 0
 	var/thick_skin = 0                 // If a needle has a chance to fail to penetrate.
 	/// EMP damage multiplier
@@ -157,6 +165,12 @@
 				continue
 			. += "<span class='danger'>There is \a [I] sticking out of it.</span>"
 	return
+
+/obj/item/organ/external/get_scan_results()
+	. = ..()
+	var/obj/item/organ/internal/lungs/L = locate() in src
+	if( L && L.is_bruised())
+		. += "Lung ruptured"
 
 /obj/item/organ/external/attackby(obj/item/W as obj, mob/living/user as mob)
 	switch(stage)

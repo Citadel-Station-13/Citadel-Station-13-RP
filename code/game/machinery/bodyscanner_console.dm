@@ -47,7 +47,7 @@
 	connected = null
 
 /obj/machinery/body_scanconsole/proc/FindDisplays()
-	for(var/obj/machinery/body_scan_display/D in SSmachines.machinery)
+	for(var/obj/machinery/body_scan_display/D in GLOB.medicalScanDisplays)
 		if (AreConnectedZLevels(D.z, z))
 			connected_displays += D
 	return !!connected_displays.len
@@ -82,9 +82,9 @@
 		data["html_scan_health"] = "&nbsp;"
 		data["html_scan_body"] = "&nbsp;"
 	else
-		data["html_scan_header"] = display_medical_data_header(data["scan"], user.get_skill_value(SKILL_MEDICAL))
-		data["html_scan_health"] = display_medical_data_health(data["scan"], user.get_skill_value(SKILL_MEDICAL))
-		data["html_scan_body"] = display_medical_data_body(data["scan"], user.get_skill_value(SKILL_MEDICAL))
+		data["html_scan_header"] = display_medical_data_header(data["scan"])
+		data["html_scan_health"] = display_medical_data_health(data["scan"])
+		data["html_scan_body"] = display_medical_data_body(data["scan"])
 
 	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
