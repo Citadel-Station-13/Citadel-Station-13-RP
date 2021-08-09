@@ -407,6 +407,12 @@
 					M.remove_from_mob(brain,owner)
 					brain.forceMove(src)
 					items_preserved += brain
+			if(istype(W,/obj/item/organ/external/chest))
+				var/obj/item/organ/external/chest/C = W
+				for (var/obj/item/I in C.implants)
+					if(istype(I,/obj/item/implant/mirror))
+						I.forceMove(src)
+						items_preserved += I // these are undigestable anyway so just add them regardless
 			for(var/slot in slots)
 				var/obj/item/I = M.get_equipped_item(slot = slot)
 				if(I)
