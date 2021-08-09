@@ -201,3 +201,29 @@
 /obj/item/reagent_containers/spray/plantbgone/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("plantbgone", 100)
+
+/obj/item/reagent_containers/spray/squirt
+	name = "HydroBlaster 4000"
+	desc = "A popular toy produced by Donk Co, the HydroBlaster 4000 is the latest in a long line of recreational pressurized water delivery systems."
+	icon = 'icons/obj/gun/launcher.dmi'
+	icon_state = "squirtgun"
+	item_state = "squirtgun"
+	w_class = ITEMSIZE_NORMAL
+	volume = 100
+
+/obj/item/reagent_containers/spray/squirt/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("water", 100)
+
+/obj/item/reagent_containers/spray/squirt_nt
+	name = "HydroBlaster 4001"
+	desc = "A popular toy produced by Donk Co, the HydroBlaster 4001 is modeled in NanoTrasen corporate colors. This is largely considered a sarcastic gesture."
+	icon = 'icons/obj/gun/launcher.dmi'
+	icon_state = "squirtgun_nt"
+	item_state = "squirtgun_nt"
+	w_class = ITEMSIZE_NORMAL
+	volume = 101
+
+/obj/item/reagent_containers/spray/squirt_nt/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("water", 101)
