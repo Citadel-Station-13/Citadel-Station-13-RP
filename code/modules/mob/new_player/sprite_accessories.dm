@@ -2012,6 +2012,22 @@
 		icon_state = "tat_tiger"
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN)
 
+	tanlines
+		name = "Tan Lines (One Piece)"
+		icon_state = "tan_op"
+		icon = "icons/mob/human_races/markings.dmi"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_bikini
+		name = "Tan Lines (Bikini)"
+		icon_state = "tan_bikini"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_b_strap
+		name = "Tan Lines (Bikini, Strapless)"
+		icon_state = "tan_bikini_strap"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
 	taj_paw_socks
 		name = "Socks Coloration (Taj)"
 		icon_state = "taj_pawsocks"

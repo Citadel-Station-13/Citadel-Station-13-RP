@@ -120,6 +120,21 @@
 	name = "Away Mission - Desert Cave"
 	base_turf = /turf/simulated/floor/outdoors/rocks/caves
 
+/datum/map_template/tether_lateload/away_desert
+	name = "Desert Planet - Z3 Desert"
+	desc = "The inland desert of V-4."
+	mappath = "_maps/map_levels/140x140/virgo4_desert.dmm"
+	associated_map_datum = /datum/map_template/submap/level_specific/class_h
+
+/datum/map_template/tether_lateload/away_desert/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(z), 150, /area/tether_away/beach/desert/unexplored, /datum/map_template/submap/level_specific/class_h)
+
+/datum/map_z_level/tether_lateload/away_desert
+	name = "Away Mission - Desert"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
+
+
 /obj/effect/step_trigger/zlevel_fall/beach
 	var/static/target_z
 
