@@ -1,5 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "Alt-Click support for Storage"
-  - rscadd: "Alt-Click and Ctrl-Click to some vehicles"
