@@ -242,6 +242,10 @@
 	return
 */
 
+/*
+	Shift middle click
+	Used for pointing.
+*/
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	pointed(A)
 	return
