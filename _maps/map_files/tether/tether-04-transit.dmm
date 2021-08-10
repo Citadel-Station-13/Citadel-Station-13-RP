@@ -26,7 +26,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "dv" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/tether_midpoint)
@@ -36,13 +36,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
-"eO" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "eP" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -55,7 +49,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "fC" = (
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/small{
@@ -105,9 +99,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/tether_midpoint)
-"kg" = (
-/turf/simulated/wall/r_wall,
-/area/tether/transit)
 "kV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -148,7 +139,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "pq" = (
 /obj/structure/table/woodentable,
 /obj/structure/flora/pottedplant/smallcactus{
@@ -159,10 +150,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
-"pA" = (
-/obj/structure/table/bench/padded,
-/turf/simulated/floor/wood,
-/area/tether/transit)
 "pZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -189,7 +176,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "rQ" = (
 /obj/structure/table/woodentable,
 /obj/machinery/camera/network/civilian,
@@ -219,9 +206,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
 /area/maintenance/tether_midpoint)
-"tj" = (
-/turf/simulated/floor/wood,
-/area/tether/transit)
 "tl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass/hidden{
@@ -301,7 +285,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "wI" = (
 /turf/simulated/floor/wood,
 /area/tether/midpoint)
@@ -313,16 +297,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/midpoint)
-"wY" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/tether/transit)
 "xw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled/dark,
@@ -361,7 +335,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/tether/transit)
+/area/tether/midpoint)
 "zL" = (
 /obj/machinery/vending/coffee{
 	dir = 1
@@ -419,13 +393,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/tether/transit)
-"CC" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "CG" = (
 /obj/machinery/light{
 	dir = 8
@@ -499,25 +467,25 @@
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/glass/rag,
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "JX" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
 /obj/machinery/disposal,
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "Ka" = (
 /obj/structure/table/bench/padded,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "LD" = (
 /obj/machinery/light,
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "LS" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -575,11 +543,11 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "QG" = (
 /obj/structure/table/gamblingtable,
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "Rl" = (
 /obj/machinery/alarm{
 	pixel_y = 26
@@ -634,7 +602,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/tether/transit)
+/area/tether/midpoint)
 "Tm" = (
 /turf/simulated/sky/virgo3b,
 /area/tether/transit)
@@ -644,7 +612,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "Tu" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -656,14 +624,14 @@
 "UL" = (
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "VP" = (
 /obj/structure/table/bench/padded,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "VX" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/tether/elevator)
@@ -673,7 +641,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/tether/transit)
+/area/tether/midpoint)
 "Xs" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -681,16 +649,6 @@
 "Xu" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /turf/simulated/sky/virgo3b,
-/area/tether/transit)
-"XR" = (
-/obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
-/area/tether/transit)
-"XU" = (
-/obj/structure/bed/chair/comfy/black{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
 /area/tether/transit)
 "Ys" = (
 /turf/simulated/shuttle/wall/voidcraft/green{
@@ -11565,18 +11523,18 @@ Xu
 Xu
 Xu
 Xu
-wY
-CC
-eO
-pA
+vT
+MA
+BQ
+Bb
 VP
-pA
-pA
+Bb
+Bb
 Ka
-pA
-tj
-CC
-wY
+Bb
+wI
+MA
+vT
 Xu
 Xu
 Xu
@@ -11707,18 +11665,18 @@ Xu
 Xu
 Xu
 Xu
-wY
-XR
-eO
+vT
+Xs
+BQ
 QG
 vW
 Jw
 QG
 en
 QG
-tj
-XR
-wY
+wI
+Xs
+vT
 Xu
 Xu
 Xu
@@ -11849,18 +11807,18 @@ Xu
 Xu
 Xu
 Xu
-wY
-XU
+vT
+eP
 PM
 dp
 Tn
-tj
-tj
-tj
+wI
+wI
+wI
 fe
-tj
-XU
-wY
+wI
+eP
+vT
 Xu
 Xu
 Xu
@@ -11994,12 +11952,12 @@ Xu
 SI
 zC
 zC
-kg
+ar
 rl
-tj
-tj
+wI
+wI
 LD
-kg
+ar
 zC
 zC
 Cm
@@ -12136,12 +12094,12 @@ Xu
 Xu
 Xu
 Xu
-wY
+vT
 JX
 Xi
 nu
 UL
-wY
+vT
 Xu
 Xu
 Xu
