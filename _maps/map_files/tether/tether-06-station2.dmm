@@ -3401,6 +3401,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
+"anc" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/mineral/floor/vacuum,
+/area/mine/explored/upper_level)
 "anh" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 4
@@ -5307,9 +5311,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
 "arh" = (
@@ -6524,15 +6526,6 @@
 "atL" = (
 /turf/simulated/shuttle/wall/hard_corner,
 /area/shuttle/mining_outpost/shuttle)
-"atM" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/blast/regular{
-	dir = 6;
-	id = "chapelgun";
-	name = "Chapel Launcher Door"
-	},
-/turf/simulated/floor,
-/area/tether/station/burial)
 "atN" = (
 /obj/structure/table/bench/standard,
 /turf/simulated/floor/tiled,
@@ -11992,11 +11985,11 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/quartermaster/belterdock)
 "aLb" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
-	dir = 1
-	},
 /obj/machinery/camera/network/tether{
 	dir = 8
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
@@ -12542,12 +12535,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/quartermaster/delivery)
-"aMA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/turf/simulated/floor/wood,
-/area/tether/station/burial)
 "aMB" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14942,8 +14929,8 @@
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/tether/station/burial)
 "aSm" = (
@@ -18283,6 +18270,10 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/station/ai)
+"bHv" = (
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor/airless,
+/area/space)
 "bLD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -20105,6 +20096,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
+"kHh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/tether/station/burial)
 "kIj" = (
 /obj/machinery/alarm{
 	dir = 1;
@@ -21543,6 +21540,16 @@
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/exploration)
+"rAf" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/blast/regular{
+	dir = 6;
+	id = "chapelgun";
+	name = "Chapel Launcher Door"
+	},
+/obj/machinery/shield_diffuser,
+/turf/simulated/floor,
+/area/tether/station/burial)
 "rAY" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -22178,6 +22185,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
+"ueD" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor,
+/area/tether/station/burial)
 "ugX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -30174,11 +30190,11 @@ aaP
 aaP
 aaP
 aaP
-aaa
-aaa
-aaa
-aaa
-aaa
+aKd
+aWb
+aWb
+aWb
+aHM
 aaa
 aaa
 aaa
@@ -30316,11 +30332,11 @@ aaP
 aaP
 aaP
 aaP
-aKd
-aWb
-aWb
-aWb
-aHM
+ueD
+aSD
+aFO
+aVO
+aKu
 aaa
 aaa
 aaa
@@ -30459,9 +30475,9 @@ aWb
 aWb
 aWb
 aIF
-aSD
-aFO
-aVO
+kHh
+aMl
+aGP
 aKu
 aaa
 aaa
@@ -30602,8 +30618,8 @@ aQX
 aQX
 aSl
 arg
-aMl
-aGP
+aDS
+aHA
 aKu
 aaa
 aaa
@@ -30743,11 +30759,11 @@ aJE
 pkL
 nSo
 aLb
-aMA
-aDS
-aHA
-aKu
-aaa
+aTI
+ayU
+aJb
+aCO
+aCO
 aaa
 aaa
 aaa
@@ -30886,10 +30902,10 @@ aJb
 aJb
 aJb
 aBC
-ayU
-aJb
-aCO
-aCO
+aTI
+aru
+aCD
+rAf
 aaa
 aaa
 aaa
@@ -31028,10 +31044,10 @@ aGh
 aAV
 aJb
 ylp
-aTI
-aru
-aCD
-atM
+aHf
+aCO
+aCO
+aCO
 aaa
 aaa
 aaa
@@ -31169,10 +31185,10 @@ aAu
 aGh
 aAW
 aJb
-aTI
-aHf
-aCO
-aCO
+aUy
+aJb
+aJb
+aJb
 aCO
 aaP
 aab
@@ -31311,10 +31327,10 @@ aAu
 aGh
 vFT
 aJb
-aUy
-aJb
-aJb
-aJb
+aGh
+aCk
+aCk
+aBR
 aCO
 aaP
 aab
@@ -31378,7 +31394,7 @@ aaa
 aaa
 aaa
 aaa
-aab
+bHv
 aUe
 aIO
 aIO
@@ -31454,9 +31470,9 @@ aAI
 aAY
 aJb
 aGh
-aCk
-aCk
-aBR
+aGh
+aGh
+ozR
 aCO
 aaP
 aaP
@@ -37279,7 +37295,7 @@ aaP
 aaP
 aaP
 aaP
-aaP
+anc
 aaa
 aaa
 aaa
@@ -37421,7 +37437,7 @@ aaP
 aaP
 aaP
 aaP
-aaP
+anc
 aaa
 aaa
 aaa
@@ -37563,7 +37579,7 @@ aaP
 aaP
 aaP
 aaP
-aaP
+anc
 aaa
 aaa
 aaa

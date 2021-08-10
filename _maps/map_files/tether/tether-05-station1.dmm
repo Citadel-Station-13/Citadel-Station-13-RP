@@ -2463,8 +2463,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d2 = 2;
@@ -4822,8 +4821,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/machinery/camera/network/tether{
 	dir = 4
@@ -5048,8 +5046,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/machinery/camera/network/tether{
 	dir = 4
@@ -5458,8 +5455,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/structure/bed/chair/office/light,
 /turf/simulated/floor/tiled,
@@ -5569,8 +5565,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/bordercorner{
-	dir = 1;
-	icon_state = "bordercolorcorner"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
@@ -7334,12 +7329,10 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
@@ -10627,6 +10620,7 @@
 /area/storage/tools)
 "avf" = (
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "avg" = (
@@ -13842,6 +13836,7 @@
 	req_one_access = list(11,24)
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
 /area/space)
 "aAR" = (
@@ -19177,8 +19172,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/bordercorner{
-	dir = 1;
-	icon_state = "bordercolorcorner"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
@@ -19715,8 +19709,7 @@
 /area/tether/station/dock_two)
 "bXF" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8;
-	icon_state = "spline_fancy"
+	dir = 8
 	},
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -25
@@ -19909,8 +19902,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/machinery/suit_cycler/medical,
 /turf/simulated/floor/tiled,
@@ -19962,8 +19954,7 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 6;
-	icon_state = "bordercolor"
+	dir = 6
 	},
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -20144,8 +20135,7 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 6;
-	icon_state = "bordercolor"
+	dir = 6
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -20401,8 +20391,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -20432,8 +20421,7 @@
 /area/shuttle/securiship/engines)
 "cXK" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 6;
-	icon_state = "spline_fancy"
+	dir = 6
 	},
 /obj/structure/table/woodentable,
 /obj/machinery/microwave{
@@ -20591,8 +20579,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/structure/closet/secure_closet/explorer,
 /obj/machinery/light{
@@ -20889,8 +20876,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/structure/table/rack/shelf,
 /obj/item/storage/backpack/parachute{
@@ -20971,8 +20957,7 @@
 /area/bridge/meeting_room)
 "edu" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4;
-	icon_state = "spline_fancy"
+	dir = 4
 	},
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -20992,8 +20977,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
@@ -21094,8 +21078,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/equipment)
@@ -21197,7 +21180,6 @@
 /obj/machinery/requests_console{
 	department = "Exploration";
 	name = "Exploration Requests Console";
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -21365,8 +21347,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/machinery/suit_cycler/exploration,
 /turf/simulated/floor/tiled,
@@ -21529,8 +21510,7 @@
 /area/hallway/secondary/escape/medical_escape_pod_hallway)
 "fuP" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/pathfinder_office)
@@ -21687,8 +21667,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/structure/table/rack/shelf,
 /obj/item/suit_cooling_unit,
@@ -21757,8 +21736,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/table/bench/standard,
 /obj/effect/landmark/start{
@@ -22052,8 +22030,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -22093,13 +22070,11 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/structure/table/rack/shelf,
 /obj/machinery/holoposter{
-	pixel_x = 30;
-	pixel_y = 0
+	pixel_x = 30
 	},
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/mask/gas/half,
@@ -22253,8 +22228,7 @@
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1;
-	icon_state = "spline_fancy"
+	dir = 1
 	},
 /obj/machinery/button/windowtint{
 	id = "pathfinder_office";
@@ -22295,8 +22269,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -22322,8 +22295,7 @@
 /area/tether/exploration/staircase)
 "hon" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 10;
-	icon_state = "spline_fancy"
+	dir = 10
 	},
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
@@ -22346,8 +22318,7 @@
 /area/shuttle/securiship/general)
 "hui" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1;
-	icon_state = "spline_fancy"
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
@@ -22654,8 +22625,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
@@ -22811,8 +22781,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/structure/table/standard,
 /obj/machinery/firealarm{
@@ -22856,8 +22825,7 @@
 /area/tether/exploration/equipment)
 "iCR" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -22940,8 +22908,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/machinery/holoposter{
 	dir = 8;
@@ -23070,8 +23037,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/machinery/holoposter{
 	dir = 8;
@@ -23157,8 +23123,7 @@
 /area/engineering/hallway)
 "juI" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 5;
-	icon_state = "spline_fancy"
+	dir = 5
 	},
 /obj/machinery/camera/network/tether,
 /obj/structure/bed/chair/comfy/black{
@@ -23273,8 +23238,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/bordercorner{
-	dir = 1;
-	icon_state = "bordercolorcorner"
+	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -23478,8 +23442,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/structure/table/standard,
 /obj/machinery/light{
@@ -23625,8 +23588,7 @@
 /area/maintenance/station/eng_lower)
 "kFf" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1;
-	icon_state = "spline_fancy"
+	dir = 1
 	},
 /obj/structure/table/woodentable,
 /obj/item/storage/box/donut{
@@ -23643,8 +23605,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/machinery/photocopier,
 /obj/machinery/status_display{
@@ -23716,8 +23677,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/structure/closet/secure_closet/explorer,
 /turf/simulated/floor/tiled,
@@ -23847,8 +23807,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/machinery/holoposter{
 	pixel_y = 30
@@ -24036,8 +23995,7 @@
 /area/hallway/station/atrium)
 "lOd" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 5;
-	icon_state = "spline_fancy"
+	dir = 5
 	},
 /obj/machinery/firealarm{
 	dir = 4;
@@ -24121,8 +24079,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -24157,8 +24114,7 @@
 /area/tether/exploration/equipment)
 "mlD" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 6;
-	icon_state = "spline_fancy"
+	dir = 6
 	},
 /obj/structure/flora/pottedplant/unusual,
 /turf/simulated/floor/wood,
@@ -24309,8 +24265,7 @@
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /obj/structure/window/reinforced/polarized/full{
 	id = "pathfinder_office"
@@ -24322,8 +24277,7 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 6;
-	icon_state = "bordercolor"
+	dir = 6
 	},
 /obj/structure/table/rack/shelf,
 /obj/item/radio{
@@ -24485,8 +24439,7 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 6;
-	icon_state = "bordercolor"
+	dir = 6
 	},
 /obj/structure/table/rack/shelf,
 /obj/item/suit_cooling_unit,
@@ -24523,8 +24476,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -24630,8 +24582,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8;
-	icon_state = "spline_fancy"
+	dir = 8
 	},
 /obj/effect/landmark/start{
 	name = "Explorer"
@@ -24679,8 +24630,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -24719,8 +24669,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -24784,8 +24733,7 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/structure/closet/secure_closet/pathfinder,
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/pathfinder_office)
@@ -24801,8 +24749,7 @@
 /area/tether/station/dock_two)
 "nTL" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4;
-	icon_state = "spline_fancy"
+	dir = 4
 	},
 /obj/machinery/camera/network/tether{
 	dir = 9
@@ -24846,8 +24793,7 @@
 /area/maintenance/station/eng_lower)
 "nXW" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -25072,8 +25018,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/machinery/holoposter{
 	pixel_y = 30
@@ -25136,8 +25081,7 @@
 /area/shuttle/securiship/general)
 "oMv" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4;
-	icon_state = "spline_fancy"
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
@@ -25212,8 +25156,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/table/standard,
 /obj/item/universal_translator,
@@ -25325,8 +25268,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
@@ -25612,8 +25554,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 4;
@@ -25699,8 +25640,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
@@ -25893,8 +25833,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled,
@@ -25965,8 +25904,7 @@
 	pixel_x = 10
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9;
-	icon_state = "spline_fancy"
+	dir = 9
 	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/pathfinder_office)
@@ -26175,8 +26113,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/machinery/vending/nifsoft_shop,
 /turf/simulated/floor/tiled,
@@ -26375,8 +26312,7 @@
 /area/engineering/hallway)
 "rFp" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8;
-	icon_state = "spline_fancy"
+	dir = 8
 	},
 /obj/machinery/light{
 	dir = 8
@@ -26508,8 +26444,7 @@
 	req_one_access = list(19,43,67)
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -26623,8 +26558,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/machinery/holoposter{
 	dir = 4;
@@ -26637,8 +26571,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/machinery/firealarm{
 	pixel_y = 25
@@ -26874,8 +26807,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/machinery/alarm{
 	dir = 8;
@@ -27072,8 +27004,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/machinery/newscaster{
 	pixel_y = 32
@@ -27173,8 +27104,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/cable/green{
 	dir = 1;
@@ -27323,8 +27253,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/machinery/light{
 	dir = 4
@@ -27405,8 +27334,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/machinery/camera/network/tether{
 	dir = 4
@@ -27495,8 +27423,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1;
-	icon_state = "spline_fancy"
+	dir = 1
 	},
 /obj/effect/landmark/start{
 	name = "Explorer"
@@ -27712,8 +27639,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/machinery/power/apc{
 	dir = 4;
@@ -27745,8 +27671,7 @@
 "uUH" = (
 /obj/structure/table/woodentable,
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1;
-	icon_state = "spline_fancy"
+	dir = 1
 	},
 /obj/item/binoculars,
 /obj/item/radio/intercom{
@@ -27830,8 +27755,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/machinery/light{
 	dir = 8
@@ -27933,8 +27857,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
@@ -28250,8 +28173,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 1;
-	icon_state = "bordercolor"
+	dir = 1
 	},
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -28290,8 +28212,7 @@
 /area/tether/station/dock_two)
 "wmr" = (
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -28369,8 +28290,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 4;
-	icon_state = "bordercolor"
+	dir = 4
 	},
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -28696,8 +28616,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -28924,8 +28843,7 @@
 /area/shuttle/medivac/cockpit)
 "xHz" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 10;
-	icon_state = "spline_fancy"
+	dir = 10
 	},
 /obj/machinery/photocopier{
 	pixel_x = 6
@@ -28977,8 +28895,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-s"
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/crew)
@@ -28987,8 +28904,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/purple/bordercorner{
-	dir = 1;
-	icon_state = "bordercolorcorner"
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -29088,8 +29004,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
-	dir = 8;
-	icon_state = "bordercolor"
+	dir = 8
 	},
 /obj/structure/closet/secure_closet/sar,
 /obj/machinery/light{
@@ -29251,8 +29166,7 @@
 /area/engineering/foyer)
 "yiZ" = (
 /obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9;
-	icon_state = "spline_fancy"
+	dir = 9
 	},
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
