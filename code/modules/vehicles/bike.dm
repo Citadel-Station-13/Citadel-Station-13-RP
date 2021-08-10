@@ -54,6 +54,12 @@
 			return
 	..()
 
+/obj/vehicle/bike/CtrlClick(var/mob/user)
+	if(Adjacent(user) && anchored)
+		toggle()
+	else
+		return ..()
+
 /obj/vehicle/bike/verb/toggle()
 	set name = "Toggle Engine"
 	set category = "Vehicle"
@@ -71,7 +77,13 @@
 		turn_off()
 		src.visible_message("\The [src] putters before turning off.", "You hear something putter slowly.")
 
-/obj/vehicle/bike/verb/kickstand()
+/obj/vehicle/bike/AltClick(var/mob/user)
+	if(Adjacent(user))
+		kickstand(user)
+	else
+		return ..()
+
+/obj/vehicle/bike/verb/kickstand(var/mob/user as mob)
 	set name = "Toggle Kickstand"
 	set category = "Vehicle"
 	set src in view(0)

@@ -1098,13 +1098,6 @@
 	required_reagents = list("rum" = 3, "limejuice" = 2, "sugar" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drinks/mintjulep
-	name = "Mint Julep"
-	id = "mintjulep"
-	result = "mintjulep"
-	required_reagents = list("whiskey" = 2, "water" = 1, "mint" = 1)
-	result_amount = 4
-
 /datum/chemical_reaction/drinks/paloma
 	name = "Paloma"
 	id = "paloma"
@@ -1443,3 +1436,95 @@
 	result = "greenstuff"
 	required_reagents = list("manlydorf" = 3, "absinthe" = 2)
 	result_amount = 5
+
+/datum/chemical_reaction/drinks/galacticpanic
+	name = "Galactic Panic Attack"
+	id = "galacticpanic"
+	result = "galacticpanic"
+	required_reagents = list("gargleblaster" = 1, "singulo" = 1, "phoronspecial" =1, "neurotoxin" = 1, "atomicbomb" = 1, "hippiesdelight" = 1)
+	result_amount = 6
+
+/datum/chemical_reaction/drinks/lotus
+	name = "Lotus"
+	id = "lotus"
+	result = "lotus"
+	required_reagents = list("sbagliato" = 1, "sugarrush" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/sugarrush
+	name = "Sweet Rush"
+	id = "sugarrush"
+	result = "sugarrush"
+	required_reagents = list("sugar" = 1, "sodawater" = 1, "vodka" =1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/sbagliato
+	name = "Negroni Sbagliato"
+	id = "sbagliato"
+	result = "sbagliato"
+	required_reagents = list("wine" = 1, "vermouth" = 1, "sodawater" =1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/scsatw
+	name = "Slow Comfortable Screw Against the Wall"
+	id = "scsatw"
+	result = "scsatw"
+	required_reagents = list("screwdrivercocktail" = 3, "rum" =1, "whiskey" =1, "gin" =1)
+	result_amount = 6
+
+/datum/chemical_reaction/drinks/honeyshot
+	name = "Honey Shot"
+	id = "honeyshot"
+	result = "honeyshot"
+	required_reagents = list("honey" = 1, "vodka" = 1, "grenadine" =1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/shroomjuice
+	name = "Dumb Shroom Juice"
+	id = "shroomjuice"
+	result = "shroomjuice"
+	required_reagents = list("psilocybin" = 1, "applejuice" = 1, "limejuice" =1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/italiancrisis
+	name = "Italian Crisis"
+	id = "italiancrisis"
+	result = "italiancrisis"
+	required_reagents = list("bulldog" = 1, "sbagliato" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/unsweettea
+	name = "Unsweetened Tea"
+	id = "unsweettea"
+	result = "unsweettea"
+	required_reagents = list("sweettea" = 3, "phoron" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/sweettea
+	name = "Sweetened Tea"
+	id = "sweettea"
+	result = "sweettea"
+	required_reagents = list("icetea" = 2, "sugar" = 1,)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/originalsin
+	name = "Original Sin"
+	id = "originalsin"
+	result = "originalsin"
+	required_reagents = list("holywine" = 1)
+	catalysts = list("applejuice" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/drinks/bulldog
+	name = "Space Bulldog"
+	id = "bulldog"
+	result = "bulldog"
+	required_reagents = list("whiterussian" = 4, "cola" =1)
+	result_amount = 4
+
+/datum/chemical_reaction/drinks/lovemaker
+	name = "The Love Maker"
+	id = "lovemaker"
+	result = "lovemaker"
+	required_reagents = list("honey" = 1, "sexonthebeach" = 5)
+	result_amount = 6
