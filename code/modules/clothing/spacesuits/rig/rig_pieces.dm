@@ -70,7 +70,7 @@
 	heat_protection =	 UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection =	 UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv =			 HIDEJUMPSUIT|HIDETAIL
-	item_flags =		 THICKMATERIAL | AIRTIGHT
+	item_flags =		 THICKMATERIAL | ALLOWINTERNALS
 	slowdown = 0
 	//will reach 10 breach damage after 25 laser carbine blasts, 3 revolver hits, or ~1 PTR hit. Completely immune to smg or sts hits.
 	breach_threshold = 38
@@ -153,7 +153,7 @@
 	body_parts_covered = HEAD|FACE|EYES
 	heat_protection =    HEAD|FACE|EYES
 	cold_protection =    HEAD|FACE|EYES
-	flags =              THICKMATERIAL|AIRTIGHT|PHORONGUARD
+	flags =              THICKMATERIAL|ALLOWINTERNALS|PHORONGUARD
 
 /obj/item/clothing/suit/lightrig
 	name = "suit"

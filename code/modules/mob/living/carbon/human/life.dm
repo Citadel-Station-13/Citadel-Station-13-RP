@@ -358,7 +358,7 @@
 			if(!rig.offline && (rig.air_supply && internal == rig.air_supply))
 				rig_supply = rig.air_supply
 
-		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.item_flags & AIRTIGHT)) || (head && (head.item_flags & AIRTIGHT))))
+		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.item_flags & ALLOWINTERNALS)) || (head && (head.item_flags & ALLOWINTERNALS))))
 			internal = null
 
 		if(internal)
