@@ -61,4 +61,5 @@
 		/obj/item/gps/science/rd,
 		/obj/item/bluespace_harpoon, //VOREStation Add
 		/obj/item/clothing/suit/storage/toggle/labcoat/rd,
-		/obj/item/clothing/under/rank/research_director/turtleneck)
+		/obj/item/clothing/under/rank/research_director/turtleneck,
+		/obj/item/storage/box/firingpins)
