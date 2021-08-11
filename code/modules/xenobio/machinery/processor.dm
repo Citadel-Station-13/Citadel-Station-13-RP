@@ -83,7 +83,7 @@
 	visible_message("<span class='notice'>\the [user] places [AM] inside \the [src].</span>")
 
 /obj/machinery/processor/proc/auto_insert(atom/movable/AM)
-	if(!can_insert(AM))
+	if(!can_insert(AM) || !isturf(AM.loc))
 		return
 	to_be_processed.Add(AM)
 	AM.forceMove(src)
@@ -135,6 +135,8 @@
 		sleep(1 SECOND)
 
 /obj/machinery/processor/proc/can_insert(var/atom/movable/AM)
+	if(AM.loc == src)
+		return FALSE
 	if(istype(AM, /mob/living/simple_mob/slime))
 		var/mob/living/simple_mob/slime/S = AM
 		if(S.stat != DEAD)
