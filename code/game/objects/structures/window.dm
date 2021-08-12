@@ -486,7 +486,7 @@
 	icon_state = "window"
 	basestate = "window"
 	glasstype = /obj/item/stack/material/glass
-	maximal_heat = T0C + 100
+	maximal_heat = T0C + 500 // Bumping it up a bit, so that a small fire doesn't instantly melt it. Also, makes sense as glass starts softening at around ~700 C
 	damage_per_fire_tick = 2.0
 	maxhealth = 12.0
 	force_threshold = 3
@@ -538,7 +538,7 @@
 	basestate = "rwindow"
 	maxhealth = 40.0
 	reinf = 1
-	maximal_heat = T0C + 750
+	maximal_heat = T0C + 1000 // Bumping this as well, as most fires quickly get over 800 C
 	damage_per_fire_tick = 2.0
 	glasstype = /obj/item/stack/material/glass/reinforced
 	force_threshold = 6
