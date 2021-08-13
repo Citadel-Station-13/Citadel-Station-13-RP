@@ -11,7 +11,7 @@
 #define FLUID_PASS_DENSITY	-3
 
 /// Checks if fluids can pass this thing
-#define CANFLUIDPASS(A, O)	(A.CanFluidPass == FLUID_PASS_ATMOS? (CANATMOSPASS(A, O)) : (A.CanFluidPass == FLUID_PASS_DENSITY? A.density : (A.CanFluidPass == FLUID_PASS_PROC? A.CanFluidPass(O) : A.CanFluidPass)))
+#define CANFLUIDPASS(A, O)	(A.CanFluidPass == FLUID_PASS_ATMOS? (CANATMOSPASS(A, O)) : (A.CanFluidPass == FLUID_PASS_DENSITY? !A.density : (A.CanFluidPass == FLUID_PASS_PROC? A.CanFluidPass(O) : A.CanFluidPass)))
 
 // Values for /turf/var/fluid_status
 /// All fluids entering this turf are destroyed.

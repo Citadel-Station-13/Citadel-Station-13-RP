@@ -34,3 +34,37 @@
 			if(FLUID_PROCESSING_SUBSYSTEM)
 				AM.fluid_act(reagents, TRUE)
 				SSfluids.
+
+/turf/RemoveFluid(units)
+
+/turf/RemoveFluidRatio(ratio)
+
+/turf/AddFluid(reagent, amount)
+
+/turf/GetFluids()
+
+/turf/MergeFluids(datum/reagents/reagents)
+
+/**
+ * Ensures our fluid system is set up
+ */
+/turf/proc/MakeFluid()
+
+/**
+ * Tears down our fluids, deleting it all
+ */
+/turf/proc/RemoveFluid()
+
+/**
+ * Garbage collects our fluids, removing it if we don't have enough
+ */
+/turf/proc/FluidGarbageCollect()
+	if(!reagents)
+		return
+	if(reagents.total_volume < FLUID_GC_POINT)
+		RemoveFluid()
+
+/**
+ * Fluid processing: Equalizes with fluid turfs around ourselves.
+ */
+/turf/proc/FluidShare()
