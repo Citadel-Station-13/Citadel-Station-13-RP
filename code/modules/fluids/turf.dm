@@ -50,14 +50,21 @@
 /turf/MergeFluids(datum/reagents/reagents)
 
 /**
+ * Sets our fluid_status to a new value
+ */
+/turf/proc/SetFluidStatus(status)
+	fluid_status = status
+	ReconsiderFluids()
+
+/**
  * Ensures our fluid system is set up
  */
-/turf/proc/MakeFluid()
+/turf/proc/MakeFluidSystem()
 
 /**
  * Tears down our fluids, deleting it all
  */
-/turf/proc/RemoveFluid()
+/turf/proc/RemoveFluidSystem()
 
 /**
  * Garbage collects our fluids, removing it if we don't have enough
@@ -77,3 +84,20 @@
  * Reconsiders if we need to become an active fluid turf.
  */
 /turf/proc/ReconsiderFluids()
+
+/**
+ * Sets our innate depth
+ */
+/turf/proc/SetInnateFluidDepth(newdepth)
+	var/diff = newdepth - fluid_depth_innate
+	fluid_depth += diff
+	ReconsiderFluids()
+
+/**
+ * Completely recalculates our fluid depth
+ * Useful for when someone fucks up royally
+ */
+/turf/proc/ResetFluidDepth()
+	fluid_depth = fluid_depth_innate
+	for(var/atom/movable/AM in contents)
+		fluid_depth += AM.fluid_depth

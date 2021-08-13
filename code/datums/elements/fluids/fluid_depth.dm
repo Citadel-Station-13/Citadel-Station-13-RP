@@ -16,6 +16,7 @@
 		return . | ELEMENT_INCOMPATIBLE
 	src.depth = depth
 	var/atom/movable/AM = target
+	AM.fluid_depth = depth
 	if(isturf(AM.loc))
 		AddDepthToTurf(AM.loc)
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/on_move)
@@ -41,3 +42,16 @@
 		RemoveDepthFromTurf(oldLoc)
 	if(isturf(AM.loc))
 		AddDepthToTurf(AM.loc)
+
+/atom/movable
+	/// Stores our current fluid depth. Used so /turf/procResetFluidDepth works. Never, ever use this directly, use the element.
+	var/fluid_depth
+
+/**
+ * This you can use and are encouraged to!
+ */
+/atom/movable/proc/SetFluidDepth(newdepth)
+	if(fluid_depth)
+		RemoveElement(src, fluid_depth)
+	if(newdepth)
+		AddElement(newdepth)
