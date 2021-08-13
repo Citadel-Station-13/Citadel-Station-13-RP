@@ -27,3 +27,6 @@
 #define ARCHIVE_GASMIX(gas) gas.temperature_archived=gas.temperature;gas.gas_archive=gas.gases.Copy()
 #define ARCHIVE_GASMIX_GASES(gas) gas.gas_archive=gas.gases.Copy()
 #define ARCHIVE_GASMIX_TEMPERATURE(gas) gas.temperature_archived=gas.temperature
+
+/// *sighs* pending refactor.
+#define CANATMOSPASS(A, O)		A.CanZASPass(O)
