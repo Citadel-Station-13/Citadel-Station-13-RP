@@ -7,6 +7,10 @@
 	var/fluid_active = FALSE
 	/// Current fluid graphic
 	var/obj/effect/overlay/fluid/fluid_graphic
+	/// Innate fluid depth
+	var/fluid_depth_innate = 0
+	/// Current fluid depth - this **MUST** be the same as fluid_depth_innate to save memory, and is enforced by an unit test!
+	var/fluid_depth = 0
 
 	CanFluidPass = FLUID_PASS_PROC
 
@@ -68,3 +72,8 @@
  * Fluid processing: Equalizes with fluid turfs around ourselves.
  */
 /turf/proc/FluidShare()
+
+/**
+ * Reconsiders if we need to become an active fluid turf.
+ */
+/turf/proc/ReconsiderFluids()

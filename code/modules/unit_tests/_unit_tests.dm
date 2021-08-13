@@ -41,6 +41,7 @@
 #include "component_tests.dm"
 // #include "confusion.dm"
 // #include "emoting.dm"
+#include "fluid_depth_matches.dm"
 // #include "heretic_knowledge.dm"
 // #include "holidays.dm"
 #include "initialize_sanity.dm"
