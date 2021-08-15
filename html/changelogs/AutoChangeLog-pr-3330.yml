@@ -1,0 +1,4 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - code_imp: "Touched up the Bitflags and Bitmasks to bring them more in line with main for future ports"
