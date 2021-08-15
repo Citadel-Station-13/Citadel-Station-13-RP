@@ -224,6 +224,7 @@
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	flags_inv = HIDEFACE
+	action_button_name = "Adjust Veil"
 	var/hanging = 0
 
 /obj/item/clothing/mask/donator/dancer/proc/adjust_mask(mob/user)
@@ -263,6 +264,7 @@
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
 	rolled_sleeves = -1
 	rolled_down = -1
+	action_button_name = "Reconfigure Suit"
 
 /obj/item/clothing/under/donator/dancer/verb/switchsprite()
     set name = "Reconfigure Suit"
