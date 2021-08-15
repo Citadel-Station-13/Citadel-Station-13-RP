@@ -41491,6 +41491,8 @@
 /area/hallway/lower/third_south)
 "sDs" = (
 /obj/structure/table/standard,
+/obj/item/mirrortool,
+/obj/item/mirrorscanner,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/resleeving)
 "sDG" = (
