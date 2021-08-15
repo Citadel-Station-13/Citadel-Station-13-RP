@@ -196,9 +196,3 @@
 
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")
-
-//Dancer Arms
-/obj/item/clothing/gloves/dancer
-	name = "belly dancer sleeves"
-	desc = "Lightweight silk sleeves designed to flow during acrobatic displays."
-	icon_state = "dancer_sleeves"

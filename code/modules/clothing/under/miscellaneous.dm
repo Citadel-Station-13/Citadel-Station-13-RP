@@ -1519,9 +1519,3 @@
 	name = "blue tracksuit"
 	desc = "A dark blue tracksuit. It calls to mind images of excercise, particularly squats."
 	icon_state = "tracksuit_blue"
-
-//Dancer Suit
-/obj/item/clothing/under/dancer
-	name = "belly dancer costume"
-	desc = "An custom made ornate silk outfit, designed to be provocative without revealing too much of the wearer's body."
-	icon_state = "dancer_costume"

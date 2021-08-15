@@ -611,8 +611,3 @@
 	name = "traveller's hat"
 	desc = "A wide brimmed hat made of sturdy material. Its floppy, poitned top is similar to those worn by Old Earth bards or sorcerors."
 	icon_state = "traveller"
-
-/obj/item/clothing/head/dancer
-	name = "belly dancer headscarf"
-	desc = "A lightweight silk headscarf meant to accentuate and flow freely."
-	icon_state = "dancer_scarf"

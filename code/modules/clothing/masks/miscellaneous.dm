@@ -248,35 +248,3 @@
 	desc = "A fine black bandana with nanotech lining and a skull emblem. Can be worn on the head or face."
 	icon_state = "bandskull"
 	item_state_slots = list(slot_r_hand_str = "bandskull", slot_l_hand_str = "bandskull")
-
-//Dancer Scarf
-/obj/item/clothing/mask/dancer
-	name = "belly dancer veil"
-	desc = "A heavy, ornate veil meant to mask the identity of the user, in spite of its subtle opacity."
-	icon_state = "dancer_veil"
-	flags_inv = HIDEFACE
-	var/hanging = 0
-
-/obj/item/clothing/mask/dancer/proc/adjust_mask(mob/user)
-	if(!user.incapacitated() && !user.restrained() && !user.stat)
-		hanging = !hanging
-		if (hanging)
-			body_parts_covered = body_parts_covered & ~FACE
-			icon_state = "dancer_veil_down"
-			to_chat(user, "You drape the veil to one side.")
-		else
-			body_parts_covered = initial(body_parts_covered)
-			item_flags = initial(item_flags)
-			icon_state = initial(icon_state)
-			to_chat(user, "You pull the veil over to cover your face.")
-		update_clothing_icon()
-
-/obj/item/clothing/mask/dancer/attack_self(mob/user)
-	adjust_mask(user)
-
-/obj/item/clothing/mask/dancer/verb/toggle()
-		set category = "Object"
-		set name = "Adjust veil"
-		set src in usr
-
-		adjust_mask(usr)
