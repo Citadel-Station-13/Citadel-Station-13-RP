@@ -1982,6 +1982,7 @@
 #include "code\modules\fluids\graphics.dm"
 #include "code\modules\fluids\groups.dm"
 #include "code\modules\fluids\movable.dm"
+#include "code\modules\fluids\reagents.dm"
 #include "code\modules\fluids\turf.dm"
 #include "code\modules\food\food.dm"
 #include "code\modules\food\recipe_dump.dm"

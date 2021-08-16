@@ -68,6 +68,7 @@ SUBSYSTEM_DEF(fluids)
 
 		while(currentrun.len)
 			var/obj/effect/fluid_source/F = currentrun[currentrun.len--]
+			F.flood(current_cycle)
 
 		resumed = 0
 		stage = FLUID_STAGE_TURFS
@@ -79,6 +80,7 @@ SUBSYSTEM_DEF(fluids)
 		while(currentrun.len)
 			var/turf/T = currentrun[currentrun.len--]
 			T.FluidShare(current_cycle)
+
 		resumed = 0
 		stage = FLUID_STAGE_GROUPS
 
