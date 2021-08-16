@@ -52,12 +52,12 @@
 	if(!fluid_active)
 		return
 	. = new /datum/reagents(FLUID_MAX_VOLUME)
-	reagents.trans_to(., reangets.total_volume * ratio)
+	reagents.trans_to(., reagents.total_volume * ratio)
 	FluidGarbageCollect()
 
 /turf/AddFluid(reagent, amount)
 	MakeFluidSystem()
-	reagents.add_reagents(reagent, amount)
+	reagents.add_reagent(reagent, amount)
 	FluidGarbageCollect()
 
 /turf/GetFluids()
@@ -115,6 +115,7 @@
  * Reconsiders if we need to become an active fluid turf.
  */
 /turf/proc/ReconsiderFluids()
+
 
 /**
  * Updates our fluid graphic

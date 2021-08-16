@@ -35,6 +35,9 @@ SUBSYSTEM_DEF(fluids)
 	/// act step cost
 	var/cost_act = 0
 
+	/// current fire cycle
+	var/current_cycle = 0
+
 	/// delay before breaking down groups
 	var/group_breakdown_delay = 5 SECONDS
 
@@ -48,6 +51,7 @@ SUBSYSTEM_DEF(fluids)
 /datum/controller/subsystem/fluids/fire(resumed)
 	if(!resumed)
 		stage = FLUID_STAGE_FLOOD
+		++current_cycle
 
 	if(stage == FLUID_STAGE_FLOOD)
 		if(!resumed)
@@ -65,7 +69,7 @@ SUBSYSTEM_DEF(fluids)
 
 		while(currentrun.len)
 			var/turf/T = currentrun[currentrun.len--]
-
+			T.FluidShare(current_cycle)
 		resumed = 0
 		stage = FLUID_STAGE_GROUPS
 
@@ -119,6 +123,22 @@ SUBSYSTEM_DEF(fluids)
  * Gets a fluid graphic based on a fluid
  */
 /datum/controller/subsystem/fluids/proc/GetGraphic(datum/reagents/reagents)
+
+/**
+ * Adds a turf to active
+ */
+/datum/controller/subsystem/fluids/proc/ActivateTurf(turf/T)
+	active_turfs[T] = TRUE
+	if(stage == FLUID_STAGE_TURFS)
+		currentrun |= T
+
+/**
+ * Removes a turf from active
+ */
+/datum/controller/subsystem/fluids/proc/DeactivateTurf(turf/T)
+	active_turfs -= T
+	if(stage == FLUID_STAGE_TURFS)
+		currentrun -= T
 
 /**
  * Starts act processing an atom
