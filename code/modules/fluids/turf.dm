@@ -110,6 +110,10 @@
  * Fluid processing: Equalizes with fluid turfs around ourselves.
  */
 /turf/proc/FluidShare()
+	// WARNING WARNING WARNING
+	// The below code does not give a SHIT about race conditions
+	// Unlike atmos where we actually Care(tm) about things being accurate, WE ONLY CARE ABOUT PERFORMANCE HERE
+	// Unfortunately for the atmos nerds you simply can't autism fluids.
 
 /**
  * Reconsiders if we need to become an active fluid turf.
@@ -163,3 +167,20 @@
 	fluid_depth = fluid_depth_innate
 	for(var/atom/movable/AM in contents)
 		fluid_depth += AM.fluid_depth
+
+/**
+ * Who's ready for a trainwreck?
+ * We are!
+ */
+/turf/CanFluidPass(turf/other)
+	var/dir = get_dir(src, other)
+	var/opp = REVERSE_DIR(dir)
+	if(fluid_status == FLUID_STATUS_BLOCK || other.fluid_status == FLUID_STATUS_BLOCK)
+		return FALSE
+	if(other == src)
+		return TRUE
+	for(var/obj/O in contents + other.contents)
+		var/turf/other = (O.loc == src ? T : src)
+		if(!CANFLUIDPASS(O, other))
+			return FALSE
+	return TRUE

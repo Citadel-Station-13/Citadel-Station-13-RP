@@ -4,6 +4,15 @@
 #define FLUID_STAGE_ACT			4
 #define FLUID_STAGE_DONE		5
 
+/**
+ * Yeah so we're going to dump all the documentation on fluids here because while most of the logic is on turfs there's no like, _fluids.dm file
+ *
+ * Things to keep in mind:
+ * - We don't care about atmos-tier accuracy + deterministic behavior. We care about speed
+ * - Race conditions will happen. This isn't a system to do super-reliable builds, only "roughly predictable behavior"
+ * - We literally do not care. To emphasize again, we do not care about the race conditions, we only care about spread speed. We don't archive anything
+ * - Multiz "isn't supported". Fluids will flow down but flooding won't flood UP the deck yet. To do that we'd need more complicated calculations.
+ */
 SUBSYSTEM_DEF(fluids)
 	wait = 2
 	priority = FIRE_PRIORITY_FLUIDS
