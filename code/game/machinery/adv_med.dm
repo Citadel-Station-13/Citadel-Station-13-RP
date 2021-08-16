@@ -119,7 +119,7 @@
 
 	if(usr.incapacitated())
 		return
-	go_out()
+	go_out(idle_power_usage)
 	add_fingerprint(usr)
 
 /obj/machinery/bodyscanner/proc/go_out()

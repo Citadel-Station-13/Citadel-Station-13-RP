@@ -357,3 +357,23 @@
 	if(does_not_breathe)
 		return FALSE
 	return ..()
+
+//Baymed
+/mob/living/carbon/proc/SetStasis(var/factor, var/source = "misc")
+	if((species && (species.flags & NO_SCAN)) || isSynthetic())
+		return
+	stasis_sources[source] = factor
+
+/mob/living/carbon/InStasis()
+	if(!stasis_value)
+		return FALSE
+	return life_tick % stasis_value
+
+// call only once per run of life
+/mob/living/carbon/proc/UpdateStasis()
+	stasis_value = 0
+	if((species && (species.flags & NO_SCAN)) || isSynthetic())
+		return
+	for(var/source in stasis_sources)
+		stasis_value += stasis_sources[source]
+	stasis_sources.Cut()

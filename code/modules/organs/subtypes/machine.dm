@@ -5,6 +5,16 @@
 	organ_tag = O_CELL
 	parent_organ = BP_TORSO
 	vital = 1
+	//Baymed addition
+	var/open
+	var/obj/item/cell/cell = /obj/item/cell/hyper
+	//at 0.8 completely depleted after 60ish minutes of constant walking or 130 minutes of standing still
+	var/servo_cost = 0.8
+
+/obj/item/organ/internal/cell/proc/percent()
+	if(!cell)
+		return 0
+	return get_charge()/cell.maxcharge * 100
 
 /obj/item/organ/internal/cell/Initialize(mapload)
 	. = ..()

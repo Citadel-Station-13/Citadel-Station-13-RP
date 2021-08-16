@@ -373,7 +373,7 @@
 	dat = jointext(dat)
 	return dat
 
-/proc/display_medical_data(var/list/scan, skill_level = SKILL_DEFAULT, var/TT = FALSE)
+/proc/display_medical_data(var/list/scan, var/TT = FALSE)
 	//In case of problems, abort.
 	if(!scan["name"])
 		return "<center><span class='bad'><strong>SCAN READOUT ERROR.</strong></span></center>"
@@ -388,9 +388,9 @@
 	//while keeping the variable size lower for the scanner template.
 	//decoupling the two would lead to inconsistent output between the template
 	//and other sources if changes are ever made.
-	dat += display_medical_data_header(scan, skill_level)
-	dat += display_medical_data_health(scan, skill_level)
-	dat += display_medical_data_body(scan, skill_level)
+	dat += display_medical_data_header(scan)
+	dat += display_medical_data_health(scan)
+	dat += display_medical_data_body(scan)
 
 	if(TT)
 		dat += "</tt>"

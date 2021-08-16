@@ -468,7 +468,7 @@
 #define EXAMINE_SKIPFEET			0x0100
 
 
-
+/*
 //species defines
 #define SPECIES_AKULA			"Akula"
 #define SPECIES_ALRAUNE			"Alraune"
@@ -492,4 +492,4 @@
 #define SPECIES_MONKEY_VULPKANIN	"Wolpin"
 //event species
 #define SPECIES_WEREBEAST			"Werebeast"
-#define SPECIES_SHADEKIN			"Shadekin"
+#define SPECIES_SHADEKIN			"Shadekin"*/

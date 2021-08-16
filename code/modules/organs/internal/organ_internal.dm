@@ -69,3 +69,6 @@
 	var/scar_level = get_scarring_level()
 	if(scar_level > 0.01)
 		. += "[get_wound_severity(get_scarring_level())] scarring"
+//baymed addition
+/obj/item/organ/internal/is_usable()
+	return ..() && !is_broken()

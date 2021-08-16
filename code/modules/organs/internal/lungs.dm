@@ -5,6 +5,32 @@
 	gender = PLURAL
 	organ_tag = O_LUNGS
 	parent_organ = BP_TORSO
+	//Baymed addition
+	w_class = ITEM_SIZE_NORMAL
+	min_bruised_damage = 25
+	min_broken_damage = 45
+	max_damage = 70
+	relative_size = 60
+
+	var/active_breathing = 1
+	var/has_gills = FALSE
+	var/breath_type
+	var/exhale_type
+	var/list/poison_types
+
+	var/min_breath_pressure
+	var/last_int_pressure
+	var/last_ext_pressure
+	var/max_pressure_diff = 60
+
+	var/oxygen_deprivation = 0
+	var/safe_exhaled_max = 6
+	var/safe_toxins_max = 0.2
+	var/SA_para_min = 1
+	var/SA_sleep_min = 5
+	var/breathing = 0
+	var/last_successful_breath
+	var/breath_fail_ratio // How badly they failed a breath. Higher is worse.
 
 /obj/item/organ/internal/lungs/process(delta_time)
 	..()

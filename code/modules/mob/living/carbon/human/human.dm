@@ -1640,13 +1640,104 @@
 /mob/living/carbon/human/get_mob_riding_slots()
 	return list(back, head, wear_suit)
 
+//Bay Procs
+/mob/living/carbon/human/need_breathe()
+	if(!(mNobreath in mutations) && species.breathing_organ && should_have_organ(species.breathing_organ))
+		return 1
+	else
+		return 0
+
+/mob/living/carbon/human/get_ingested_reagents()
+	if(should_have_organ(O_STOMACH))
+		var/obj/item/organ/internal/stomach/stomach = internal_organs_by_name[O_STOMACH]
+		if(stomach)
+			return stomach.ingested
+	return touching // Kind of a shitty hack, but makes more sense to me than digesting them.
+
+/mob/living/carbon/human/proc/metabolize_ingested_reagents()
+	if(should_have_organ(O_STOMACH))
+		var/obj/item/organ/internal/stomach/stomach = internal_organs_by_name[O_STOMACH]
+		if(stomach)
+			stomach.metabolize()
+
+/mob/living/carbon/human/get_fullness()
+	if(!should_have_organ(O_STOMACH))
+		return ..()
+	var/obj/item/organ/internal/stomach/stomach = internal_organs_by_name[O_STOMACH]
+	if(stomach)
+		var/food_volume = 0
+		for(var/datum/reagent/nutriment/A in stomach.ingested.reagent_list)
+			food_volume += A.volume
+		return nutrition + food_volume * 15
+	return 0 //Always hungry, but you can't actually eat. :(
+
+/mob/living/carbon/human/proc/pulse()
+	if (stat == DEAD)
+		return PULSE_NONE
+	var/obj/item/organ/internal/heart/H = internal_organs_by_name[O_HEART]
+	return H ? H.pulse : PULSE_NONE
+
+//Percentage of maximum blood volume.
+/mob/living/carbon/human/proc/get_blood_volume()
+	return round((vessel.get_reagent_amount(/datum/reagent/blood)/species.blood_volume)*100)
+
 //Get fluffy numbers
 /mob/living/carbon/human/proc/get_blood_pressure()
 	if(status_flags & FAKEDEATH)
-		return "[Floor(120+rand(-5,5))*0.25]/[Floor(80+rand(-5,5)*0.25)]"
+		return "[FLOOR(120+rand(-5,5),1)*0.25]/[FLOOR(80+rand(-5,5)*0.25, 1)]"
 	var/blood_result = get_blood_circulation()
-	return "[Floor((120+rand(-5,5))*(blood_result/100))]/[Floor((80+rand(-5,5))*(blood_result/100))]"
+	return "[FLOOR((120+rand(-5,5))*(blood_result/100),1)]/[FLOOR((80+rand(-5,5))*(blood_result/100),1)]"
+
+//Percentage of maximum blood volume, affected by the condition of circulation organs
+/mob/living/carbon/human/proc/get_blood_circulation()
+	var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
+	var/blood_volume = get_blood_volume()
+	if(!heart)
+		return 0.25 * blood_volume
+
+	var/recent_pump = LAZYACCESS(heart.external_pump, 1) > world.time - (20 SECONDS)
+	var/pulse_mod = 1
+	if((status_flags & FAKEDEATH) || BP_IS_ROBOTIC(heart))
+		pulse_mod = 1
+	else
+		switch(heart.pulse)
+			if(PULSE_NONE)
+				if(recent_pump)
+					pulse_mod = LAZYACCESS(heart.external_pump, 2)
+				else
+					pulse_mod *= 0.25
+			if(PULSE_SLOW)
+				pulse_mod *= 0.9
+			if(PULSE_FAST)
+				pulse_mod *= 1.1
+			if(PULSE_2FAST, PULSE_THREADY)
+				pulse_mod *= 1.25
+	blood_volume *= pulse_mod
+
+	var/min_efficiency = recent_pump ? 0.5 : 0.3
+	blood_volume *= max(min_efficiency, (1-(heart.damage / heart.max_damage)))
+
+	if(!heart.open && chem_effects[CE_BLOCKAGE])
+		blood_volume *= max(0, 1-chem_effects[CE_BLOCKAGE])
+
+	return min(blood_volume, 100)
+
 
 //Point at which you dun breathe no more. Separate from asystole crit, which is heart-related.
 /mob/living/carbon/human/nervous_system_failure()
 	return getBrainLoss() >= maxHealth * 0.75
+
+/mob/living/proc/is_asystole()
+	return FALSE
+
+/mob/living/carbon/human/is_asystole()
+	if(isSynthetic())
+		var/obj/item/organ/internal/cell/C = internal_organs_by_name[O_CELL]
+		if(istype(C))
+			if(!C.is_usable() || !C.percent())
+				return TRUE
+	else if(should_have_organ(O_HEART))
+		var/obj/item/organ/internal/heart/heart = internal_organs_by_name[O_HEART]
+		if(!istype(heart) || !heart.is_working())
+			return TRUE
+	return FALSE

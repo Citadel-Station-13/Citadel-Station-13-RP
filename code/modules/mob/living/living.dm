@@ -1211,3 +1211,98 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
+
+/mob/living/proc/get_digestion_product()
+	return null
+//Baymed addition
+
+/mob/living/proc/handle_impaired_vision()
+	//Eyes
+	if(sdisabilities & BLINDED || stat)	//blindness from disability or unconsciousness doesn't get better on its own
+		eye_blind = max(eye_blind, 1)
+	else if(eye_blind)			//blindness, heals slowly over time
+		eye_blind = max(eye_blind-1,0)
+	else if(eye_blurry)			//blurry eyes heal slowly
+		eye_blurry = max(eye_blurry-1, 0)
+
+/mob/living/proc/handle_impaired_hearing()
+	//Ears
+	if(sdisabilities & DEAFENED)	//disabled-deaf, doesn't get better on its own
+		setEarDamage(null, max(ear_deaf, 1))
+	else if(ear_damage < 25)
+		adjustEarDamage(-0.05, -1)	// having ear damage impairs the recovery of ear_deaf
+	else if(ear_damage < 100)
+		adjustEarDamage(-0.05, 0)	// deafness recovers slowly over time, unless ear_damage is over 100. TODO meds that heal ear_damage
+
+
+//this handles hud updates. Calls update_vision() and handle_hud_icons()
+/mob/living/proc/handle_regular_hud_updates()
+	if(!client)	return 0
+
+	handle_hud_icons()
+	handle_vision()
+
+	return 1
+
+/mob/living/proc/handle_vision()
+	update_sight()
+
+	if(stat == DEAD)
+		return
+
+	if(eye_blind)
+		overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+	else
+		clear_fullscreen("blind")
+		set_fullscreen(disabilities & NEARSIGHTED, "impaired", /obj/screen/fullscreen/impaired, 1)
+		set_fullscreen(eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
+		set_fullscreen(druggy, "high", /obj/screen/fullscreen/high)
+
+	set_fullscreen(stat == UNCONSCIOUS, "blackout", /obj/screen/fullscreen/blackout)
+
+	if(machine)
+		var/viewflags = machine.check_eye(src)
+		if(viewflags < 0)
+			reset_view(null, 0)
+		else if(viewflags)
+			set_sight(viewflags)
+	else if(eyeobj)
+		if(eyeobj.owner != src)
+			reset_view(null)
+	else if(!client.adminobs)
+		reset_view(null)
+
+/mob/living/proc/update_sight()
+	set_sight(0)
+	set_see_in_dark(0)
+	if(stat == DEAD || eyeobj)
+		update_dead_sight()
+	else
+		update_living_sight()
+
+	var/list/vision = get_accumulated_vision_handlers()
+	set_sight(sight | vision[1])
+	set_see_invisible(max(vision[2], see_invisible))
+
+/mob/living/proc/update_living_sight()
+	var/set_sight_flags = sight & ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+	if(stat & UNCONSCIOUS)
+		set_sight_flags |= BLIND
+	else
+		set_sight_flags &= ~BLIND
+
+	set_sight(set_sight_flags)
+	set_see_in_dark(initial(see_in_dark))
+	set_see_invisible(initial(see_invisible))
+
+/mob/living/proc/update_dead_sight()
+	set_sight(sight|SEE_TURFS|SEE_MOBS|SEE_OBJS)
+	set_see_in_dark(8)
+	set_see_invisible(SEE_INVISIBLE_LEVEL_TWO)
+
+/mob/living/proc/handle_hud_icons()
+	handle_hud_icons_health()
+	handle_hud_glasses()
+
+/mob/living/proc/handle_hud_icons_health()
+	return

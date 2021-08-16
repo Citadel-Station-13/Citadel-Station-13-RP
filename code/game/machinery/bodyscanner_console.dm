@@ -1,3 +1,7 @@
+//for UI handling maybe?
+#define TOPIC_NOACTION 0
+#define TOPIC_HANDLED 1
+#define TOPIC_REFRESH 2
 /obj/machinery/body_scanconsole
 	var/obj/machinery/bodyscanner/connected
 	var/stored_scan_subject
@@ -50,6 +54,7 @@
 	for(var/obj/machinery/body_scan_display/D in GLOB.medicalScanDisplays)
 		if (AreConnectedZLevels(D.z, z))
 			connected_displays += D
+			RegisterSignal(D, COMSIG_PARENT_QDELETING, .proc/remove_display)
 	return !!connected_displays.len
 
 /obj/machinery/body_scanconsole/attack_hand(mob/user)
@@ -64,7 +69,7 @@
 
 /obj/machinery/body_scanconsole/CanUseTopic(mob/user)
 	if(!connected)
-		return STATUS_CLOSE
+		return UI_CLOSE
 	return ..()
 
 /obj/machinery/body_scanconsole/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
@@ -86,7 +91,7 @@
 		data["html_scan_health"] = display_medical_data_health(data["scan"])
 		data["html_scan_body"] = display_medical_data_body(data["scan"])
 
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "body_scanner.tmpl", "Body Scanner", 600, 800)
 		ui.set_initial_data(data)
@@ -104,9 +109,9 @@
 		data["eraseEnabled"] = TRUE
 		data["pushEnabled"] = TRUE
 		data["scan"] = connected.occupant.get_raw_medical_data(TRUE)
-		data["html_scan_header"] = display_medical_data_header(data["scan"], user.get_skill_value(SKILL_MEDICAL))
-		data["html_scan_health"] = display_medical_data_health(data["scan"], user.get_skill_value(SKILL_MEDICAL))
-		data["html_scan_body"] = display_medical_data_body(data["scan"], user.get_skill_value(SKILL_MEDICAL))
+		data["html_scan_header"] = display_medical_data_header(data["scan"])
+		data["html_scan_health"] = display_medical_data_health(data["scan"])
+		data["html_scan_body"] = display_medical_data_body(data["scan"])
 
 		stored_scan_subject = connected.occupant
 		user.visible_message(
@@ -147,17 +152,14 @@
 		data["pushEnabled"] = FALSE
 		return TOPIC_REFRESH
 
-/obj/machinery/body_scanconsole/state_transition(var/decl/machine_construction/default/new_state)
-	. = ..()
-	if(istype(new_state))
-		updateUsrDialog()
-
-/obj/machinery/body_scanconsole/proc/remove_display(var/obj/machinery/body_scan_display/display)
-	connected_displays -= display
-	GLOB.destroyed_event.unregister(display, src, .proc/remove_display)
 
 /obj/machinery/body_scanconsole/Destroy()
 	. = ..()
 	for(var/D in connected_displays)
 		remove_display(D)
 	unlink_scanner(connected)
+
+/obj/machinery/body_scanconsole/proc/remove_display(var/obj/machinery/body_scan_display/display)
+	connected_displays -= display
+	UnregisterSignal(display, COMSIG_PARENT_QDELETING, .proc/remove_display)
+

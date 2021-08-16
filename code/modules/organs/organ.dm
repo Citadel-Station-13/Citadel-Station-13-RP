@@ -494,3 +494,7 @@ var/list/organ_cache = list()
 					return TRUE
 
 	return FALSE
+
+//Baymed addition
+/obj/item/organ/proc/is_usable()
+	return !(status & (ORGAN_CUT_AWAY|ORGAN_MUTATED|ORGAN_DEAD))

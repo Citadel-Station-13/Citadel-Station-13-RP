@@ -31,6 +31,9 @@
 	var/list/ico[0]      //Icons and
 	var/list/offset_x[0] //offsets stored for later
 	var/list/offset_y[0] //usage by the photocopier
+
+	var/list/metadata
+
 	var/rigged = 0
 	var/spam_flag = 0
 
@@ -643,3 +646,28 @@
 /obj/item/paper/particle_info
 	name = "Particle Control Panel - A Troubleshooter's Guide"
 	info = "If the Particle Control panel is not responding to inputs, simply toggle power to equipment and/or flip the breaker on your local Area Power Controller (APC). Turn the power off, and then back on again. This will resolve the issue."
+
+//Added for baymed
+/obj/item/paper/proc/show_info(var/mob/user)
+	return info
+
+/obj/item/paper/proc/set_content(text,title)
+	if(title)
+		SetName(title)
+	info = html_encode(text)
+	info = parsepencode(text)
+	update_icon()
+	update_space(info)
+	updateinfolinks()
+/obj/item/paper/bodyscan
+	color = "#eeeeee"
+	var/scan_file_type = /datum/computer_file/data/bodyscan
+
+/obj/item/paper/bodyscan/examine(mob/user)
+	set_content(display_medical_data(metadata, TRUE))
+	. = ..()
+
+/obj/item/paper/bodyscan/show_info(var/mob/user)
+	set_content(display_medical_data(metadata, TRUE))
+	. = ..()
+

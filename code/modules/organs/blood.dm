@@ -377,6 +377,9 @@ proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
 	B.invisibility = 0
 	return B
 
+/mob/living/carbon/human/proc/blood_carries_oxygen()
+	return species.blood_oxy
+
 /mob/living/carbon/human/proc/get_blood_oxygenation()
 	var/blood_volume = get_blood_circulation()
 	if(blood_carries_oxygen())

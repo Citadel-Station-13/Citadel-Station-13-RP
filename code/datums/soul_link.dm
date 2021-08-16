@@ -5,6 +5,8 @@
 	var/list/owned_soul_links	// Soul links we are the owner of.
 	var/list/shared_soul_links	// Soul links we are a/the sharer of.
 
+
+
 /mob/living/Destroy()
 	for(var/s in owned_soul_links)
 		var/datum/soul_link/S = s
@@ -154,3 +156,4 @@
 // Lose your claim to the throne!
 /datum/soul_link/multi_sharer/replacement_pool/sharer_died(gibbed, mob/living/sharer)
 	remove_soul_sharer(sharer)
+

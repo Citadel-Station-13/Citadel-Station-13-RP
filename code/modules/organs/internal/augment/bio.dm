@@ -1,5 +1,4 @@
 // The base organic-targeting augment.
-
 /obj/item/organ/internal/augment/bioaugment
 	name = "bioaugmenting implant"
 
@@ -7,7 +6,7 @@
 	dead_icon = "augment_hybrid_dead"
 
 	robotic = ORGAN_ASSISTED
-	target_parent_classes = list(ORGAN_FLESH)
+	target_parent_classes = list(/*ORGAN_FLESH*/)
 
 /* Jensen Shades. Your vision can be augmented.
  * This, technically, no longer needs its unique organ verb, however I have chosen to leave it for posterity
@@ -84,7 +83,7 @@
 
 	parent_organ = BP_GROIN
 
-	target_parent_classes = list(ORGAN_FLESH, ORGAN_ASSISTED)
+	target_parent_classes = list(/*ORGAN_FLESH, */ORGAN_ASSISTED)
 
 	aug_cooldown = 2 MINUTES
 

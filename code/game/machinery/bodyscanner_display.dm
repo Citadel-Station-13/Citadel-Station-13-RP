@@ -10,14 +10,14 @@ GLOBAL_LIST_EMPTY(medicalScanDisplays)
 	density = FALSE
 	idle_power_usage = 75
 	active_power_usage = 300
-	construct_state = /decl/machine_construction/default/panel_closed
+	/*construct_state = /decl/machine_construction/default/panel_closed
 	uncreated_component_parts = null
-	stat_immune = 0
-	w_class = ITEM_SIZE_HUGE
-
+	stat_immune = 0*/
+	w_class = ITEMSIZE_HUGE
+/*
 	machine_name = "body scanner display"
 	machine_desc = "Receives body scans from a linked body scanner and allows them to be viewed remotely."
-
+*/
 	var/list/bodyscans = list()
 	var/selected = 0
 
@@ -33,17 +33,17 @@ GLOBAL_LIST_EMPTY(medicalScanDisplays)
 /obj/machinery/body_scan_display/proc/add_new_scan(var/list/scan)
 	bodyscans += list(scan.Copy())
 	updateUsrDialog()
-
+LAZYLEN()
 /obj/machinery/body_scan_display/OnTopic(mob/user as mob, href_list)
 	if(href_list["view"])
-		var/selection = text2num(href_list["view"])
-		if(is_valid_index(selection, bodyscans))
+		var/selection = round(text2num(href_list["view"]))
+		if(selection > 0 && selection < length(bodyscans))
 			selected = selection
 			return TOPIC_REFRESH
 		return TOPIC_HANDLED
 	if(href_list["delete"])
-		var/selection = text2num(href_list["delete"])
-		if(!is_valid_index(selection, bodyscans))
+		var/selection = round(text2num(href_list["view"]))
+		if(selection > 0 && selection < length(bodyscans))
 			return TOPIC_HANDLED
 		if(selected == selection)
 			selected = 0
@@ -62,14 +62,14 @@ GLOBAL_LIST_EMPTY(medicalScanDisplays)
 	data["selected"] = selected
 
 	if(selected > 0)
-		data["scan_header"] = display_medical_data_header(bodyscans[selected], user.get_skill_value(SKILL_MEDICAL))
-		data["scan_health"] = display_medical_data_health(bodyscans[selected], user.get_skill_value(SKILL_MEDICAL))
-		data["scan_body"] = display_medical_data_body(bodyscans[selected], user.get_skill_value(SKILL_MEDICAL))
+		data["scan_header"] = display_medical_data_header(bodyscans[selected])
+		data["scan_health"] = display_medical_data_health(bodyscans[selected])
+		data["scan_body"] = display_medical_data_body(bodyscans[selected])
 	else
 		data["scan_header"] = "&nbsp;"
 		data["scan_health"] = "&nbsp;"
 		data["scan_body"] = "&nbsp;"
-	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "body_scan_display.tmpl", "Body Scan Display Console", 600, 800)
 		ui.set_initial_data(data)

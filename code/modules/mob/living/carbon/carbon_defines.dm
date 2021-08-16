@@ -17,6 +17,7 @@
 	//Active emote/pose
 	var/pose = null
 	var/list/chem_effects = list()
+	var/list/chem_doses = list()//Baymed addition
 	var/datum/reagents/metabolism/bloodstream/bloodstr = null
 	var/datum/reagents/metabolism/ingested/ingested = null
 	var/datum/reagents/metabolism/touch/touching = null
@@ -29,3 +30,7 @@
 	//the second is the message in question.
 	var/last_taste_time = 0
 	var/last_taste_text = ""
+
+	//Baymed
+	var/list/stasis_sources = list()
+	var/stasis_value

@@ -28,6 +28,9 @@
 	var/flesh_color = "#FFC896"								// Pink.
 	var/base_color											// Used by changelings. Should also be used for icon previews.
 
+	//baymed addition
+	var/blood_oxy = 1
+
 	var/tail												// Name of tail state in species effects icon file.
 	var/tail_animation										// If set, the icon to obtain tail animation states from.
 	var/tail_hair
@@ -202,6 +205,8 @@
 		)
 	var/vision_organ										// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
 	var/dispersed_eyes            // If set, the species will be affected by flashbangs regardless if they have eyes or not, as they see in large areas.
+	//Baymed addition
+	var/breathing_organ           // If set, this organ is required for breathing. Defaults to "lungs" if the species has them.
 
 	var/list/has_limbs = list(
 		BP_TORSO =	list("path" = /obj/item/organ/external/chest),

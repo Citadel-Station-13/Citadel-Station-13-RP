@@ -10,13 +10,14 @@
 	anchored = TRUE
 	idle_power_usage = 60
 	active_power_usage = 10000	//10 kW. It's a big all-body scanner.
+	/*
 	construct_state = /decl/machine_construction/default/panel_closed
 	uncreated_component_parts = null
 	stat_immune = 0
-	
+
 	machine_name = "body scanner"
 	machine_desc = "A full-body scanning suite that provides a complete health assessment of a patient placed inside. Requires an adjacent console to operate."
-
+	*/
 /obj/machinery/bodyscanner/examine(mob/user)
 	. = ..()
 	if (occupant && user.Adjacent(src))
@@ -26,11 +27,11 @@
 	..()
 	go_out()
 	user.visible_message(
-		SPAN_NOTICE("\The [user] climbs out of \the [initial(name)]."), 
+		SPAN_NOTICE("\The [user] climbs out of \the [initial(name)]."),
 		SPAN_NOTICE("You climb out of \the [initial(name)].")
 	)
 
-/obj/machinery/bodyscanner/verb/eject()
+/obj/machinery/bodyscanner/verb/eject_bay()
 	set src in oview(1)
 	set category = "Object"
 	set name = "Eject Body Scanner"
@@ -43,10 +44,11 @@
 		SPAN_ITALIC("You hear a pressurized hiss, then a sound like glass creaking.")
 	)
 	go_out()
+	update_use_power()
 	add_fingerprint(usr)
 
 /obj/machinery/bodyscanner/AltClick(mob/user)
-	if(CanPhysicallyInteract(user))
+	if(CanInteract(user, null))
 		eject()
 	else
 		..()
@@ -60,7 +62,7 @@
 		return
 	usr.visible_message(
 		SPAN_NOTICE("\The [usr] climbs into \the [src]."),
-		SPAN_NOTICE("You climb into \the [src]."), 
+		SPAN_NOTICE("You climb into \the [src]."),
 		SPAN_ITALIC("You hear footsteps on metal, cloth rustling, and then a pressurized hiss.")
 	)
 	move_target_inside(usr,usr)
@@ -71,26 +73,24 @@
 /obj/machinery/bodyscanner/proc/drop_contents()
 	for(var/obj/O in (contents - component_parts))
 		O.dropInto(loc)
-
+/*
 /obj/machinery/bodyscanner/proc/go_out()
-	if ((!( occupant ) || locked))
+	if ((!(occupant) || src.locked))
 		return
-	drop_contents()
 	if (occupant.client)
 		occupant.client.eye = occupant.client.mob
 		occupant.client.perspective = MOB_PERSPECTIVE
-	occupant.dropInto(loc)
+	occupant.loc = src.loc
 	occupant = null
-	update_use_power(POWER_USE_IDLE)
-	update_icon()
-	SetName(initial(name))
-
+	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	return*/
+/*
 /obj/machinery/bodyscanner/state_transition(var/decl/machine_construction/default/new_state)
 	. = ..()
 	if(istype(new_state))
-		updateUsrDialog()
+		updateUsrDialog()*/
 
-/obj/machinery/bodyscanner/attackby(obj/item/grab/normal/G, mob/user)
+/obj/machinery/bodyscanner/attackby(obj/item/grab/G, mob/user)
 	if(istype(G))
 		var/mob/M = G.affecting
 		if(!user_can_move_target_inside(M, user))
@@ -122,10 +122,10 @@
 	target.forceMove(src)
 	occupant = target
 
-	update_use_power(POWER_USE_ACTIVE)
+	update_use_power(active_power_usage)
 	update_icon()
 	drop_contents()
-	SetName("[name] ([occupant])")
+	//SetName("[name] ([occupant])")
 
 	add_fingerprint(user)
 
