@@ -24,6 +24,7 @@
 	desc = "\..."
 	density = 0
 	plane = OPENSPACE_PLANE_START
+	fluid_status = FLUID_STATUS_NORMAL
 	pathweight = 100000		// Seriously, don't try and path over this one numbnuts
 	can_build_into_floor = TRUE
 

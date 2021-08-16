@@ -5,6 +5,7 @@
 	plane = SPACE_PLANE
 
 	light_power = 0.25
+	fluid_status = FLUID_STATUS_NULL
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 	initial_gas_mix = GAS_STRING_VACUUM

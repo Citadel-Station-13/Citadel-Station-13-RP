@@ -1983,6 +1983,7 @@
 #include "code\modules\fluids\graphics.dm"
 #include "code\modules\fluids\groups.dm"
 #include "code\modules\fluids\movable.dm"
+#include "code\modules\fluids\multiz.dm"
 #include "code\modules\fluids\reagents.dm"
 #include "code\modules\fluids\source.dm"
 #include "code\modules\fluids\turf.dm"
