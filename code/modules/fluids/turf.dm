@@ -31,16 +31,6 @@
 /turf/proc/HasFluid()
 	return fluid_active
 
-/turf/Entered(atom/movable/AM)
-	. = ..()
-	if(fluid_active)
-		switch(AM.fluid_processing)
-			if(FLUID_PROCESSING_ENTER)
-				AM.fluid_act(reagents, TRUE)
-			if(FLUID_PROCESSING_SUBSYSTEM)
-				AM.fluid_act(reagents, TRUE)
-				SSfluids.StartActProcessing(src, TRUE)
-
 /turf/RemoveFluid(units)
 	if(!fluid_active)
 		return
