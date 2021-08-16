@@ -992,20 +992,27 @@
 	darksight = 4 //Better hunters in the dark.
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
+	slowdown = -0.2//Speedboost Tesh have -0.5
+
 	warning_low_pressure = 30//lower than baseline, still not vacuum prove
-	hazard_low_pressure = 5
+	hazard_low_pressure = -1
 
 	warning_high_pressure = 325//Both baseline
 	hazard_high_pressure = 550
 
-	cold_level_1 = 160	//Take colder temperatures better.
-	cold_level_2 = 120
-	cold_level_3 = 90 //Original idea was 60, but O2 gets liquid at that point so we keep the standard air gasious.
+	breath_type = null	//they don't breathe
+	poison_type = null
+
+	cold_level_1 = 90	//Space if fucking cold, so we need low temperature tolerance
+	cold_level_2 = -1
+	cold_level_3 = -1
 
 	heat_level_1 = 350	//dont like the heat
 	heat_level_2 = 400
 	heat_level_3 = 700
 
+/datum/species/xenohybrid/can_breathe_water()
+	return TRUE	//they dont quite breathe
 
 /datum/species/harpy
 	name = SPECIES_RAPALA
