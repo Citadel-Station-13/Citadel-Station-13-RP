@@ -43,7 +43,7 @@
 
 	armor_stats += "\n"
 
-	if(flags & AIRTIGHT)
+	if(flags & ALLOWINTERNALS)
 		armor_stats += "It is airtight. \n"
 
 	if(min_pressure_protection == 0)

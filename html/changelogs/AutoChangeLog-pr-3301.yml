@@ -1,6 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - rscadd: "Fit-Viewport"
-  - rscadd: "Other View stuff for future projects"
-  - code_imp: "Changed some code... Obviously."

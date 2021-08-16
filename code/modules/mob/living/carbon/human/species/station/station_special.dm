@@ -421,6 +421,8 @@
 		"carbon dioxide" = /datum/gas/carbon_dioxide
 	)
 	var/choice = input(H, "How should we adapt our respiration?") as null|anything in gas_choices
+	if(!choice)
+		return
 	var/resp_biomorph = gas_choices[choice]
 	to_chat(H,"You begin modifying your internal structure!")
 	if(do_after(H,15 SECONDS))
@@ -446,6 +448,8 @@
 	set category = "Abilities"
 
 	var/biothermic_adapt = input(H, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
+	if(!biothermic_adapt)
+		return
 	to_chat(H,"You begin modifying your internal structure!")
 	if(do_after(H,15 SECONDS))
 		switch(biothermic_adapt)
@@ -463,6 +467,8 @@
 	set category = "Abilities"
 
 	var/atmos_biomorph = input(H, "How should we adapt our rigidity?") as null|anything in list("flexible", "compact", "elastic")
+	if(!atmos_biomorph)
+		return
 	to_chat(H,"You begin modifying your internal structure!")
 	if(do_after(H,15 SECONDS))
 		switch(atmos_biomorph)
@@ -484,6 +490,8 @@
 	set category = "Abilities"
 
 	var/vocal_biomorph = input(H, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
+	if(!vocal_biomorph)
+		return
 	to_chat(H, "You begin modifying your internal structure!")
 	if(do_after(H,15 SECONDS))
 		switch(vocal_biomorph)
