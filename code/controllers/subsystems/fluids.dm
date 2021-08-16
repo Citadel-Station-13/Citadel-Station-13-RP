@@ -93,6 +93,9 @@ SUBSYSTEM_DEF(fluids)
 			--currentrun.len
 			if(act_deferred[A])
 				continue
+			if(QDELETED(A))
+				act_processing -= A
+				continue
 			var/turf/T = A.loc
 			if(!istype(T) || !T.fluid_active)
 				act_processing -= A

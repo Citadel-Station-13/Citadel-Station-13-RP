@@ -23,6 +23,7 @@
 	var/turf/T = GetBelow(src)
 	if(!T)
 		return
+	T.MergeFluids(RemoveFluidRatio(0.5))
 
 /**
  * Returns if we have fluid

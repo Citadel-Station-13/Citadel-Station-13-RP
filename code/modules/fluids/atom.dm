@@ -53,11 +53,11 @@
  * Adds x units of y reagent to ourselves
  */
 /atom/proc/AddFluid(reagent, amount)
-	return isturf(loc)? loc.AddFluid(reagent, amount)
+	return isturf(loc)? loc.AddFluid(reagent, amount) : null
 
 /**
  * Merges a reagent holder into our fluids.
  * Empties it out.
  */
 /atom/proc/MergeFluids(datum/reagents/reagents)
-	return isturf(loc)? loc.MergeFluids(reagents)
+	return isturf(loc)? loc.MergeFluids(reagents) : null
