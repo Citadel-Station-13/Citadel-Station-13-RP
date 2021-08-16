@@ -47,7 +47,7 @@
 	var/list/by_id = list()
 	for(var/datum/reagent/R as anything in reagent_list)
 		by_id[R.id] = R.volume
-	for(var/datum/reagent/R as anything in other)
+	for(var/datum/reagent/R as anything in other.reagent_list)
 		if(round(abs((by_id[R.id] * ratio) - R.volume), lenience))
 			return TRUE
 	return FALSE

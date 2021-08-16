@@ -25,13 +25,13 @@ SUBSYSTEM_DEF(fluids)
 	/// all active fluid turfs
 	var/static/list/turf/active_turfs = list()
 	/// all objects being processed for fluid_act
-	var/static/list/atom/act_processing = list()
+	var/static/list/atom/movable/act_processing = list()
 	/// all excited groups
 	var/static/list/datum/fluid_group/groups = list()
 	/// Cached graphics objects for fluids
 	var/static/list/obj/effect/overlay/fluid/graphics = list()
 	/// defer act to the next process
-	var/static/list/atom/act_deferred = list()
+	var/static/list/atom/movable/act_deferred = list()
 	/// currentrun var
 	var/static/list/currentrun = list()
 
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(fluids)
 			act_deferred.len = 0
 
 		while(currentrun.len)
-			var/atom/A = currentrun[currentrun.len]
+			var/atom/movable/A = currentrun[currentrun.len]
 			--currentrun.len
 			if(act_deferred[A])
 				continue
@@ -139,9 +139,11 @@ SUBSYSTEM_DEF(fluids)
  * Adds a turf to active
  */
 /datum/controller/subsystem/fluids/proc/ActivateTurf(turf/T)
+	if(active_turfs[T])
+		return
 	active_turfs[T] = TRUE
 	if(stage == FLUID_STAGE_TURFS)
-		currentrun |= T
+		currentrun[T] = TRUE
 
 /**
  * Removes a turf from active
