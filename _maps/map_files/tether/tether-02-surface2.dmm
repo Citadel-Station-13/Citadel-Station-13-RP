@@ -3168,10 +3168,12 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/cmo_disk_holder,
-/obj/item/storage/secure/briefcase/ml3m_pack_cmo,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/item/storage/secure/briefcase/ml3m_pack_cmo,
+/obj/item/clothing/accessory/poncho/roles/cloak/cmo,
+/obj/item/healthanalyzer/improved,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/cmo)
 "afd" = (
@@ -33574,6 +33576,29 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
+"dUR" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/machinery/door/blast/shutters{
+	closed_layer = 10;
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "medbayquar";
+	layer = 1;
+	name = "Medbay Emergency Lockdown Shutters";
+	opacity = 0;
+	open_layer = 1
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "surfresleeving"
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/item/healthanalyzer/improved,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/medical/resleeving)
 "ebp" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/vending/snack,
@@ -46257,7 +46282,7 @@ aab
 aab
 aab
 aab
-abN
+dUR
 acd
 act
 acJ
