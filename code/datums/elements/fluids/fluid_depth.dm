@@ -24,7 +24,7 @@
 /datum/element/fluid_depth/Detach(datum/source, force)
 	. = ..()
 	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
-	var/atom/mvoable/AM = source
+	var/atom/movable/AM = source
 	if(isturf(AM.loc))
 		RemoveDepthToTurf(AM.loc)
 

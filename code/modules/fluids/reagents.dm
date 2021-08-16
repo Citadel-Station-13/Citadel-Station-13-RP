@@ -15,7 +15,7 @@
 		returned.reagent_list += R
 		R.volume = old.volume
 		R.holder = returned
-	returned.total_volume = reagents.total_volume * ratio
+	returned.total_volume = total_volume * ratio
 	if(!defer)
 		FastUpdateVolume()
 	return returned
@@ -24,7 +24,7 @@
  * Quickly removes an amount of reagents and returns the removed reagents
  */
 /datum/reagents/proc/FastRemove(units, defer)
-	return FastRemoveRatio(units / reagents.total_volume, defer)
+	return FastRemoveRatio(units / total_volume, defer)
 
 /**
  * Quickly updates the total_volume variable

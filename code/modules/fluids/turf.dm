@@ -134,7 +134,7 @@
 		if(T.fluid_depth > (fluid_depth + volume))
 			continue
 		// same composition as us and same relative volume
-		if(QUANIZE(abs((T.reagents.total_volume + T.fluid_depth) - (reagents.total_volume + fluid_depth))) <= FLUID_QDEL_POINT && !T.reagents.FastCompareComposition(src.reagents))
+		if(QUANTIZE(abs((T.reagents.total_volume + T.fluid_depth) - (reagents.total_volume + fluid_depth))) <= FLUID_QDEL_POINT && !T.reagents.FastCompareComposition(src.reagents))
 			continue
 		SSfluids.ActivateTurf(src)
 		return
