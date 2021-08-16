@@ -19,6 +19,8 @@
 	return ..()
 
 /datum/fluid_group/proc/breakdown()
+	var/total_height = 0
+	var/
 	#warn take into account height
 	#warn noreact this holy shit
 	#warn use fast procs instead of normal transfer, or just flat out directly edit values
