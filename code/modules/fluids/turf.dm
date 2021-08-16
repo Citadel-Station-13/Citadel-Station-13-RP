@@ -38,7 +38,7 @@
 				AM.fluid_act(reagents, TRUE)
 			if(FLUID_PROCESSING_SUBSYSTEM)
 				AM.fluid_act(reagents, TRUE)
-				SSfluids.
+				SSfluids.StartActProcessing(src, TRUE)
 
 /turf/RemoveFluid(units)
 	if(!fluid_active)

@@ -9,22 +9,19 @@
 	/// last world.time a major movement happened
 	var/last_motion = 0
 
+/datum/fluid_group/New()
+	last_motion = world.time
+	SSfluids.groups |= src
+
 /datum/fluid_group/Destroy()
 	breakdown()
+	SSfluids.groups -= src
 	return ..()
 
 /datum/fluid_group/proc/breakdown()
-	var/datum/reagents/R = new(INFINITY)
+	#warn take into account height
 	#warn noreact this holy shit
-	for(var/turf/T as anything in turfs)
-		if(T.fluid_group != src)
-			CRASH("Wrong fluid group found")
-		T.reagents.trans_to(R, T.reagents.total_volume)
-	var/volume_per_turf = R.total_volume / turfs.len
-	for(var/turf/T as anything in turfs)
-		R.trans_to(T.reagents, volume_per_turf)
-		T.fluid_group = null
-	turfs.len = 0
+	#warn use fast procs instead of normal transfer, or just flat out directly edit values
 
 /datum/fluid_group/proc/disturb()
 	last_motion = world.time
