@@ -11,6 +11,8 @@
 	var/fluid_depth_innate = 0
 	/// Current fluid depth - this **MUST** be the same as fluid_depth_innate to save memory, and is enforced by an unit test!
 	var/fluid_depth = 0
+	/// The fluid excited group we're part of, if any
+	var/datum/fluid_group/fluid_group
 
 	CanFluidPass = FLUID_PASS_PROC
 
@@ -21,7 +23,6 @@
 	var/turf/T = GetBelow(src)
 	if(!T)
 		return
-	//
 
 /**
  * Returns if we have fluid
@@ -40,14 +41,31 @@
 				SSfluids.
 
 /turf/RemoveFluid(units)
+	if(!fluid_active)
+		return
+	. = new /datum/reagents(FLUID_MAX_VOLUME)
+	reagents.trans_to(., units)
+	FluidGarbageCollect()
 
 /turf/RemoveFluidRatio(ratio)
+	if(!fluid_active)
+		return
+	. = new /datum/reagents(FLUID_MAX_VOLUME)
+	reagents.trans_to(., reangets.total_volume * ratio)
+	FluidGarbageCollect()
 
 /turf/AddFluid(reagent, amount)
+	MakeFluidSystem()
+	reagents.add_reagents(reagent, amount)
+	FluidGarbageCollect()
 
 /turf/GetFluids()
+	return reagents
 
 /turf/MergeFluids(datum/reagents/reagents)
+	MakeFluidSystem()
+	reagents.trans_to(src.reagents, reagents.maximum_volume)
+	FluidGarbageCollect()
 
 /**
  * Sets our fluid_status to a new value
@@ -60,11 +78,23 @@
  * Ensures our fluid system is set up
  */
 /turf/proc/MakeFluidSystem()
+	if(fluid_active)
+		return
+	fluid_active = TRUE
+	create_reagents(FLUID_MAX_VOLUME)
+	UpdateFluidGraphic()
 
 /**
  * Tears down our fluids, deleting it all
  */
 /turf/proc/RemoveFluidSystem()
+	if(!fluid_active)
+		return
+	if(fluid_group)
+		fluid_group.remove(src)
+	fluid_active = FALSE
+	qdel(reagents)
+	vis_contents -= fluid_graphic
 
 /**
  * Garbage collects our fluids, removing it if we don't have enough
@@ -72,8 +102,8 @@
 /turf/proc/FluidGarbageCollect()
 	if(!reagents)
 		return
-	if(reagents.total_volume < FLUID_GC_POINT)
-		RemoveFluid()
+	if(reagents.total_volume < FLUID_QDEL_POINT)
+		RemoveFluidSystem()
 
 /**
  * Fluid processing: Equalizes with fluid turfs around ourselves.
@@ -84,6 +114,18 @@
  * Reconsiders if we need to become an active fluid turf.
  */
 /turf/proc/ReconsiderFluids()
+
+/**
+ * Updates our fluid graphic
+ */
+/turf/proc/UpdateFluidGraphic()
+	if(!fluid_active)
+		return
+	if(fluid_graphic)
+		vis_contents -= fluid_graphic
+	fluid_graphic = SSfluids.GetGraphic(reagents)
+	if(fluid_graphic)
+		vis_contents += fluid_graphic
 
 /**
  * Sets our innate depth

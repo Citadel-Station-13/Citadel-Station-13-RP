@@ -30,3 +30,17 @@
 #define FLUID_PROCESSING_ENTER			2
 /// Tracks that an atom has been initially fluid_acted and should not fluid_act again on the next tick - USED WITH FLUID_PROCESSING_SUBSYSTEM! Do not manually assign.
 #define FLUID_PROCESSING_STARTED		3
+
+// Fluid points
+/// Depth a fluid deletes themselves
+#define FLUID_QDEL_POINT			1
+/// Depth a fluid can transfer to another turf at
+#define FLUID_MINIMUM_TRANSFER		10
+/// Depth a fluid starts spreading at
+#define FLUID_PUDDLE				25
+/// Depth a fluid uses the shallow water icon
+#define FLUID_SHALLOW				200
+/// Depth a fluid is deep and now goes over mob heads
+#define FLUID_DEEP					800
+/// Maximum fluid volume
+#define FLUID_MAX_VOLUME			3200
