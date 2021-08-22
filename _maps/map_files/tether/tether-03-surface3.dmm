@@ -6040,8 +6040,8 @@
 /area/maintenance/lower/medsec_maintenance)
 "aiZ" = (
 /obj/machinery/door/window/brigdoor/southright{
-	req_access = list(30, 35, 47, 77);
-	req_one_access = null
+	req_access = null;
+	req_one_access = list(30, 35, 47, 77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -31207,6 +31207,13 @@
 	},
 /obj/machinery/button/windowtint{
 	id = "booth_one";
+	pixel_x = -6;
+	pixel_y = 22
+	},
+/obj/machinery/button/windowtint{
+	id = "booth_one_ex";
+	name = "external tint";
+	pixel_x = 6;
 	pixel_y = 22
 	},
 /turf/simulated/floor/carpet/sblucarpet,
@@ -35568,7 +35575,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/polarized/full{
-	id = "booth_two"
+	id = "booth_two_ex"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -39961,7 +39968,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/polarized/full{
-	id = "booth_one"
+	id = "booth_one_ex"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -41429,7 +41436,7 @@
 	id = "booth_one"
 	},
 /obj/structure/window/reinforced/polarized/full{
-	id = "booth_one"
+	id = "booth_one_ex"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -42131,7 +42138,7 @@
 	id = "booth_two"
 	},
 /obj/structure/window/reinforced/polarized/full{
-	id = "booth_two"
+	id = "booth_two_ex"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
@@ -43537,6 +43544,13 @@
 /obj/machinery/light,
 /obj/machinery/button/windowtint{
 	id = "booth_two";
+	pixel_x = -6;
+	pixel_y = -22
+	},
+/obj/machinery/button/windowtint{
+	id = "booth_two_ex";
+	name = "external tint";
+	pixel_x = 6;
 	pixel_y = -22
 	},
 /turf/simulated/floor/carpet/purcarpet,
