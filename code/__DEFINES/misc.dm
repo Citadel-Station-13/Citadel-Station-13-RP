@@ -29,11 +29,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define NOT_IMPLEMENTED	"NOT_IMPLEMENTED"
 
-// Turf-only flags.
-#define NOJAUNT			1	// This is used in literally one place, turf.dm, to block ethereal jaunt.
-
-#define TRANSITIONEDGE	1	// Distance from edge to move to another z-level.
-
 // Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
 #define INVISIBILITY_LIGHTING		20
 #define INVISIBILITY_LEVEL_ONE		35
