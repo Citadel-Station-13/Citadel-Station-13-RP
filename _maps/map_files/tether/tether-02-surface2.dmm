@@ -29187,13 +29187,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
-"bem" = (
-/obj/structure/sink/kitchen{
-	name = "sink";
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/white,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "ben" = (
 /obj/machinery/processor,
 /obj/machinery/firealarm{
@@ -29222,6 +29215,10 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "beq" = (
 /obj/structure/reagent_dispensers/watertank,
+/obj/structure/sink/kitchen{
+	name = "sink";
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "ber" = (
@@ -29564,15 +29561,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
-"bfk" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/structure/disposaloutlet{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "bfl" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced{
@@ -29640,15 +29628,6 @@
 	opacity = 0
 	},
 /obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
-"bfq" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/structure/disposaloutlet{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -29986,15 +29965,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "bgk" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/structure/disposaloutlet{
-	dir = 8
-	},
 /obj/machinery/camera/network/research/xenobio{
 	dir = 9;
 	network = list("Xenobiology")
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -30097,15 +30073,12 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "bgs" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/structure/disposaloutlet{
-	dir = 4
-	},
 /obj/machinery/camera/network/research/xenobio{
 	dir = 4;
 	network = list("Xenobiology")
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
@@ -33004,9 +32977,6 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "bmr" = (
 /obj/machinery/recharger/wallcharger{
-	pixel_y = -38
-	},
-/obj/machinery/recharger/wallcharger{
 	pixel_y = -28
 	},
 /obj/structure/disposalpipe/segment{
@@ -33016,9 +32986,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "bms" = (
-/obj/machinery/recharger/wallcharger{
-	pixel_y = -38
-	},
 /obj/machinery/recharger/wallcharger{
 	pixel_y = -28
 	},
@@ -33648,6 +33615,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/reading_room)
+"eRV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/outpost/xenobiology/outpost_slimepens)
 "flk" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/techfloor{
@@ -33753,6 +33726,16 @@
 "gUK" = (
 /turf/unsimulated/mineral/virgo3b,
 /area/tether/surfacebase/outside/outside2)
+"gWv" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet,
+/turf/simulated/floor/reinforced,
+/area/rnd/outpost/xenobiology/outpost_slimepens)
 "hmJ" = (
 /obj/random/junk,
 /turf/simulated/floor/tiled/dark,
@@ -33766,6 +33749,13 @@
 	},
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside2)
+"hwr" = (
+/obj/machinery/recharger/wallcharger{
+	step_y = -9
+	},
+/obj/machinery/recharger/wallcharger,
+/turf/simulated/wall/r_wall,
+/area/rnd/outpost/xenobiology/outpost_slimepens)
 "hRU" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -33859,6 +33849,16 @@
 /obj/structure/catwalk,
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside2)
+"kde" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/disposaloutlet,
+/turf/simulated/floor/reinforced,
+/area/rnd/outpost/xenobiology/outpost_slimepens)
 "kjM" = (
 /obj/random/junk,
 /turf/simulated/mineral/floor/virgo3b,
@@ -34194,6 +34194,12 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/tiled/techfloor/grid/virgo3b,
 /area/tether/surfacebase/old_tram)
+"rHv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/outpost/xenobiology/outpost_slimepens)
 "rJc" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/effect/landmark/start{
@@ -39250,15 +39256,15 @@ bkt
 beG
 bfj
 bfJ
-bkt
+kde
 beG
 bfj
 bim
-bkt
+kde
 beG
 bfj
 bjU
-bkt
+kde
 beG
 bfj
 blm
@@ -39392,15 +39398,15 @@ bej
 bek
 bek
 bfJ
-bek
+eRV
 bgW
 bek
 bim
-bek
+eRV
 bjk
 bek
 bjU
-bek
+eRV
 bek
 bek
 blm
@@ -39534,15 +39540,15 @@ bek
 bek
 bek
 bfJ
-bek
+eRV
 bek
 bek
 bim
-bek
+eRV
 bek
 bek
 bjU
-bek
+eRV
 bek
 bek
 blm
@@ -39674,7 +39680,7 @@ aab
 bdS
 bek
 bek
-bfk
+bek
 bfJ
 bgk
 bek
@@ -39955,8 +39961,8 @@ ark
 ark
 cQJ
 aab
-bdS
-bem
+hwr
+beI
 beI
 bfm
 bfK
@@ -40810,7 +40816,7 @@ aab
 bdS
 bek
 bek
-bfq
+bek
 bfO
 bgs
 bek
@@ -40954,15 +40960,15 @@ bek
 bek
 bek
 bfO
-bek
+rHv
 bek
 bek
 biq
-bek
+rHv
 bek
 bek
 bjZ
-bek
+rHv
 bek
 bek
 bls
@@ -41096,15 +41102,15 @@ bej
 bek
 bek
 bfO
-bek
+rHv
 bgW
 bek
 biq
-bek
+rHv
 bjk
 bek
 bjY
-bek
+rHv
 bek
 bek
 bls
@@ -41238,15 +41244,15 @@ bes
 beL
 bfr
 bfO
-bes
+gWv
 beL
 bfr
 biq
-bes
+gWv
 beL
 bfr
 bjY
-bes
+gWv
 beL
 bfr
 bls
