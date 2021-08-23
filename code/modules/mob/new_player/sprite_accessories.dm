@@ -2924,66 +2924,6 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_ARM,BP_R_ARM,BP_GROIN,BP_TORSO)
 
-/*
-	jackal_backpattern
-		name = "Jackal Backpattern"
-		icon_state = "jackal_backpattern"
-		color_blend_mode = ICON_MULTIPLY
-		body_parts = list(BP_TORSO)
-
-	jackal_backpattern_r_arm
-		name = "Jackal Backpattern right arm"
-		icon_state = "jackal_backpattern-r_arm"
-		color_blend_mode = ICON_MULTIPLY
-		body_parts = list(BP_R_ARM)
-
-	jackal_backpattern_l_arm
-		name = "Jackal Backpattern left arm"
-		icon_state = "jackal_backpattern-l_arm"
-		color_blend_mode = ICON_MULTIPLY
-		body_parts = list(BP_L_ARM)
-
-	jackal_backpattern_torso
-		name = "Jackal Backpattern torso"
-		icon_state = "jackal_backpattern-torso"
-		color_blend_mode = ICON_MULTIPLY
-		body_parts = list(BP_TORSO)
-
-
-	jackal_bareback
-		name = "Jackal Bareback"
-		icon_state = "jackal_bareback"
-		color_blend_mode = ICON_MULTIPLY
-		body_parts = list(BP_TORSO)
-
-	jackal_bareback_r_arm
-		name = "Jackal Bareback right arm"
-		icon_state = "jackal_bareback-r_arm"
-		color_blend_mode = ICON_MULTIPLY
-		body_parts = list(BP_R_ARM)
-
-	jackal_bareback_l_arm
-		name = "Jackal Bareback left arm"
-		icon_state = "jackal_bareback-l_arm"
-		color_blend_mode = ICON_MULTIPLY
-		body_parts = list(BP_L_ARM)
-
-	jackal_bareback_torso
-		name = "Jackal Bareback torso"
-		icon_state = "jackal_bareback-torso"
-		color_blend_mode = ICON_MULTIPLY
-		body_parts = list(BP_TORSO)
-
-	jackal_bareback_groin
-		name = "Jackal Bareback groin"
-		icon_state = "jackal_bareback-groin"
-		color_blend_mode = ICON_MULTIPLY
-		body_parts = list(BP_GROIN)
-*/
-
-
-
-
 //skin styles - WIP
 //going to have to re-integrate this with surgery
 //let the icon_state hold an icon preview for now
