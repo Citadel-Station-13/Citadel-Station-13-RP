@@ -5262,8 +5262,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb1"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/medsec)
@@ -29394,7 +29393,6 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "beO" = (
 /obj/machinery/mecha_part_fabricator/pros{
-	component_coeff = 1;
 	desc = "A machine used for construction of legit prosthetics. You weren't sure if cardboard was considered an engineering material before now.";
 	dir = 4;
 	name = "Legitmate Prosthetics Fabricator";
@@ -33763,13 +33761,6 @@
 	},
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside2)
-"hwr" = (
-/obj/machinery/recharger/wallcharger{
-	step_y = -9
-	},
-/obj/machinery/recharger/wallcharger,
-/turf/simulated/wall/r_wall,
-/area/rnd/outpost/xenobiology/outpost_slimepens)
 "hRU" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/railing{
@@ -33838,6 +33829,15 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/tether/surfacebase/old_shelter)
+"jdv" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 26
+	},
+/obj/machinery/recharger/wallcharger{
+	pixel_y = 34
+	},
+/turf/simulated/floor/tiled/white,
+/area/rnd/outpost/xenobiology/outpost_slimepens)
 "jmQ" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/tiled/dark,
@@ -39988,8 +39988,8 @@ ark
 ark
 cQJ
 aab
-hwr
-beI
+bdS
+jdv
 beI
 bfm
 bfK
