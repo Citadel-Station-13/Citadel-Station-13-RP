@@ -33736,6 +33736,20 @@
 /obj/structure/disposaloutlet,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"gXp" = (
+/obj/machinery/firealarm{
+	dir = 4;
+	layer = 3.3;
+	pixel_x = 26
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/outpost/xenobiology/outpost_slimepens)
 "hmJ" = (
 /obj/random/junk,
 /turf/simulated/floor/tiled/dark,
@@ -33773,6 +33787,19 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside2)
+"iec" = (
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/outpost/xenobiology/outpost_slimepens)
 "ikR" = (
 /obj/structure/railing{
 	dir = 4
@@ -39254,7 +39281,7 @@ aab
 bdS
 bkt
 beG
-bfj
+iec
 bfJ
 kde
 beG
@@ -39396,7 +39423,7 @@ aab
 bdS
 bej
 bek
-bek
+rHv
 bfJ
 eRV
 bgW
@@ -39538,7 +39565,7 @@ aab
 bdS
 bek
 bek
-bek
+rHv
 bfJ
 eRV
 bek
@@ -39680,7 +39707,7 @@ aab
 bdS
 bek
 bek
-bek
+rHv
 bfJ
 bgk
 bek
@@ -40816,7 +40843,7 @@ aab
 bdS
 bek
 bek
-bek
+rHv
 bfO
 bgs
 bek
@@ -40958,7 +40985,7 @@ aab
 bdS
 bek
 bek
-bek
+rHv
 bfO
 rHv
 bek
@@ -41100,7 +41127,7 @@ aab
 bdS
 bej
 bek
-bek
+rHv
 bfO
 rHv
 bgW
@@ -41242,7 +41269,7 @@ aab
 bdS
 bes
 beL
-bfr
+gXp
 bfO
 gWv
 beL
