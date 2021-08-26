@@ -23407,7 +23407,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/science{
-	name = "Pathfinder";
+	name = "Contraband and Security holdings";
 	req_one_access = list(44)
 	},
 /turf/simulated/floor/tiled,
@@ -24745,10 +24745,10 @@
 /area/ai_upload)
 "ohx" = (
 /obj/machinery/door/airlock/glass_security{
-	name = "Holdings and Transit";
+	name = "Exploration Security Station";
 	req_one_access = list(38,63)
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
 "ohW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{

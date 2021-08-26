@@ -17050,7 +17050,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor,
+/turf/simulated/floor/tiled,
 /area/quartermaster/qm)
 "aWW" = (
 /obj/structure/disposalpipe/segment{
