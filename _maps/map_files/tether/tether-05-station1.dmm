@@ -21834,7 +21834,10 @@
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
 "gfU" = (
-/obj/structure/closet/crate/secure/weapon,
+/obj/structure/closet/crate/secure/weapon{
+	name = "Security Lockup";
+	req_one_access = list(38,63)
+	},
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
 "gfZ" = (
@@ -23102,7 +23105,10 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "jEc" = (
-/obj/structure/closet/crate/secure/weapon,
+/obj/structure/closet/crate/secure/weapon{
+	name = "Security Lockup";
+	req_one_access = list(38,63)
+	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
@@ -24371,7 +24377,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "ngB" = (
-/obj/structure/closet/secure_closet/guncabinet,
+/obj/structure/closet/secure_closet/guncabinet{
+	name = "Explo Lockup";
+	req_one_access = list(38,63,44)
+	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -28691,9 +28700,12 @@
 /turf/simulated/floor/tiled/eris/steel/cyancorner,
 /area/shuttle/medivac/cockpit)
 "xHz" = (
-/obj/structure/closet/crate/secure/weapon,
 /obj/machinery/camera/network/tether{
 	dir = 4
+	},
+/obj/structure/closet/crate/secure/weapon{
+	name = "Security Lockup";
+	req_one_access = list(38,63)
 	},
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
