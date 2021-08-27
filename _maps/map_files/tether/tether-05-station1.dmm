@@ -5517,24 +5517,17 @@
 /turf/simulated/floor/tiled,
 /area/bridge/secondary)
 "alo" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/floor_decal/spline/fancy{
+	dir = 8
+	},
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/effect/floor_decal/spline/fancy{
 	dir = 10
-	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 10
-	},
-/obj/structure/table/standard,
-/obj/item/paper_bin{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/obj/item/pen{
-	pixel_y = 4
 	},
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/hallway)
 "alp" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -5652,10 +5645,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/backup)
 "alA" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/vending/cigarette,
-/turf/simulated/floor/tiled,
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 6
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/hallway)
 "alB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -5981,16 +5975,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "amg" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/camera/network/tether{
-	dir = 1
-	},
-/obj/structure/table/standard,
-/obj/machinery/recharger{
-	pixel_y = 3
-	},
-/turf/simulated/floor/tiled,
+/obj/structure/flora/tree/jungle_small,
+/obj/effect/floor_decal/spline/fancy,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/hallway)
 "amh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9267,11 +9254,17 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "asQ" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 8
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
 	},
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10
+	},
+/obj/item/barrier_tape_segment/engineering,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "asR" = (
 /obj/effect/floor_decal/borderfloor/corner,
@@ -19329,14 +19322,8 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
 "bLM" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
-/obj/structure/flora/ausbushes/sparsegrass{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "bMV" = (
 /obj/structure/cable/green{
@@ -21487,6 +21474,13 @@
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
+/obj/item/paper_bin{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/pen{
+	pixel_y = 4
+	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "fwq" = (
@@ -22539,18 +22533,24 @@
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/cockpit)
 "iaz" = (
-/obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/camera/network/tether{
+	dir = 1
+	},
+/obj/item/barrier_tape_segment/engineering,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "iaH" = (
 /obj/structure/flora/tree/jungle_small,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/staircase)
 "ibn" = (
-/obj/effect/floor_decal/spline/fancy{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/obj/effect/floor_decal/corner/purple/border,
+/turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "icX" = (
 /obj/structure/cable{
@@ -24052,7 +24052,14 @@
 /area/security/customs)
 "mnp" = (
 /obj/effect/floor_decal/spline/fancy{
-	dir = 9
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/sparsegrass{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/effect/floor_decal/spline/fancy{
+	dir = 5
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/hallway)
@@ -25697,6 +25704,9 @@
 	dir = 1
 	},
 /obj/structure/table/standard,
+/obj/machinery/recharger{
+	pixel_y = 3
+	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "qxn" = (
@@ -25785,6 +25795,16 @@
 	},
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
@@ -26827,8 +26847,13 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "taA" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/heavy/interior,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/item/barrier_tape_segment/engineering,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "tbt" = (
 /obj/structure/cable/cyan{
@@ -26944,8 +26969,10 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "tqP" = (
-/obj/structure/bed/chair/office/light,
-/turf/simulated/floor/tiled,
+/obj/effect/floor_decal/spline/fancy{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/hallway)
 "tsG" = (
 /obj/effect/floor_decal/techfloor{
@@ -27897,14 +27924,10 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "vHW" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
+/obj/effect/floor_decal/spline/fancy{
+	dir = 9
 	},
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 8
-	},
-/obj/structure/bed/chair/office/light,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/hallway)
 "vKK" = (
 /obj/machinery/sleeper{
@@ -42366,7 +42389,7 @@ urr
 yaS
 wem
 bzS
-cBh
+ibn
 tqP
 amg
 aaf
@@ -42508,8 +42531,8 @@ urr
 yaS
 qwW
 bzS
-cBh
-cBh
+ibn
+mnp
 alA
 aaf
 asL
@@ -42651,7 +42674,7 @@ yaS
 nGi
 jNj
 oXB
-mnp
+vlD
 asQ
 aaf
 aSo
@@ -42793,7 +42816,7 @@ mGD
 aoV
 bzS
 cBh
-ibn
+cBh
 iaz
 aaf
 awa
