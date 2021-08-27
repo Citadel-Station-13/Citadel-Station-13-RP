@@ -5872,9 +5872,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
 "asA" = (
-/obj/machinery/door/airlock/maintenance/common,
-/turf/space,
-/area/maintenance/station/cargo)
+/turf/simulated/wall/r_wall,
+/area/mine/explored/upper_level)
 "asB" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -21497,7 +21496,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/bed/chair/comfy/beige,
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "rgp" = (
@@ -39425,7 +39426,7 @@ aIt
 aBN
 uam
 aHC
-asA
+aOn
 aHC
 aac
 aac
@@ -40092,7 +40093,7 @@ aNj
 aNj
 aNj
 aNj
-aVb
+asA
 aTV
 aZc
 aZt
@@ -40531,7 +40532,7 @@ aYJ
 aYJ
 aYJ
 vtH
-aYv
+vtH
 aHl
 qbA
 aHl
