@@ -4291,7 +4291,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "api" = (
 /obj/structure/cable{
@@ -4816,7 +4816,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "aql" = (
 /obj/structure/table/reinforced,
@@ -5457,7 +5457,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "arE" = (
 /obj/structure/cable/green{
@@ -5804,7 +5804,7 @@
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Cargo Substation Bypass"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "asr" = (
 /obj/machinery/door/firedoor/border_only,
@@ -7692,11 +7692,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "ayu" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/maintenance/station/cargo)
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock)
 "ayv" = (
 /turf/simulated/wall/r_wall,
 /area/quartermaster/belterdock/refinery)
@@ -9605,7 +9603,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "aGJ" = (
 /obj/machinery/power/apc{
@@ -9707,7 +9705,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "aGV" = (
 /obj/structure/disposalpipe/segment,
@@ -10283,11 +10281,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
@@ -10932,7 +10928,7 @@
 	},
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/clean,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "aJV" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -10970,7 +10966,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "aKb" = (
 /obj/structure/disposalpipe/segment,
@@ -11050,7 +11046,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 1
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "aKm" = (
 /obj/structure/table/standard,
@@ -11504,7 +11500,7 @@
 /area/tether/exploration)
 "aLu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "aLv" = (
 /obj/structure/cable/green{
@@ -11554,7 +11550,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "aLA" = (
 /obj/structure/catwalk,
@@ -11597,18 +11593,18 @@
 /turf/simulated/floor,
 /area/maintenance/station/sec_lower)
 "aLE" = (
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "aLF" = (
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "aLG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "aLH" = (
 /obj/structure/disposalpipe/segment,
@@ -11985,24 +11981,27 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/simulated/floor/airless,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "aMS" = (
 /obj/machinery/atmospherics/binary/passive_gate/on{
 	dir = 4
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "aMT" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "aMU" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "aMV" = (
 /obj/structure/table/woodentable,
@@ -12073,7 +12072,7 @@
 	name = "Belter Shuttle Access";
 	req_one_access = list(48,65,66)
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "aNd" = (
 /obj/structure/table/standard,
@@ -12166,6 +12165,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "aNr" = (
@@ -12468,7 +12468,7 @@
 /obj/random/maintenance/cargo,
 /obj/random/maintenance/clean,
 /obj/random/tech_supply,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "aOi" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -12588,7 +12588,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "aOC" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -13819,8 +13819,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "aRy" = (
@@ -14867,6 +14871,7 @@
 	req_access = list(31);
 	req_one_access = list()
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "aUc" = (
@@ -15461,7 +15466,7 @@
 	dir = 4
 	},
 /obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "aVC" = (
 /obj/effect/floor_decal/techfloor{
@@ -15827,7 +15832,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "aWA" = (
 /obj/machinery/door/airlock{
@@ -16408,7 +16413,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/cargo)
 "aXZ" = (
 /obj/effect/floor_decal/spline/fancy{
@@ -17218,6 +17223,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor,
 /area/maintenance/station/cargo)
+"bqA" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/station/cargo)
 "bsY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -17674,7 +17685,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "dvk" = (
 /obj/structure/disposalpipe/trunk,
@@ -18242,7 +18253,7 @@
 /area/quartermaster/delivery)
 "eYB" = (
 /obj/structure/bed/chair/comfy/beige,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "fcH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -18900,6 +18911,12 @@
 	},
 /turf/simulated/wall/rshull,
 /area/shuttle/excursion/general)
+"hJC" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock)
 "hJP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/outdoors/grass/forest,
@@ -19087,7 +19104,7 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "imJ" = (
 /obj/structure/closet/firecloset/full/double,
@@ -19356,6 +19373,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
+"jxZ" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock/gear)
 "jzB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
@@ -19978,6 +20004,18 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/tether/exploration/pilot_office)
+"mDY" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock/gear)
 "mGD" = (
 /obj/machinery/conveyor{
 	dir = 10;
@@ -20091,6 +20129,12 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor,
+/area/maintenance/station/cargo)
+"ndH" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "neJ" = (
 /obj/structure/cable/green{
@@ -20206,7 +20250,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "nxa" = (
 /obj/effect/floor_decal/borderfloor{
@@ -20231,7 +20275,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "nAM" = (
 /obj/structure/disposalpipe/sortjunction/flipped{
@@ -20268,7 +20312,7 @@
 /area/hallway/station/starboard)
 "nDO" = (
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "nEg" = (
 /obj/structure/cable/green{
@@ -21080,7 +21124,7 @@
 "pTS" = (
 /obj/structure/table/woodentable,
 /obj/item/flame/candle/white,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "qbe" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -21090,7 +21134,7 @@
 	dir = 1
 	},
 /obj/random/trash_pile,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "qbr" = (
 /obj/effect/floor_decal/industrial/outline/red,
@@ -21110,7 +21154,7 @@
 	req_access = list(50);
 	req_one_access = list(48)
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/quartermaster/office)
 "qfQ" = (
 /obj/machinery/portable_atmospherics/canister/air,
@@ -21129,7 +21173,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "qgU" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -21641,6 +21685,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/delivery)
+"rKN" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/foyer)
 "rLt" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -21648,7 +21698,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "rMK" = (
 /obj/machinery/door/firedoor/glass,
@@ -21762,6 +21812,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
+"shy" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock/gear)
 "siv" = (
 /obj/machinery/vending/loadout/uniform,
 /turf/simulated/floor/tiled,
@@ -21818,14 +21877,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "sAY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	frequency = 1379;
+	id_tag = "belter_access_pump"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/light/small{
+	dir = 8
 	},
-/turf/simulated/floor,
-/area/maintenance/station/cargo)
+/turf/simulated/floor/plating,
+/area/quartermaster/belterdock)
 "sEu" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -22636,7 +22697,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "uYn" = (
 /obj/effect/landmark/start{
@@ -22758,7 +22819,7 @@
 	dir = 1
 	},
 /obj/random/trash_pile,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "vBK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -22841,7 +22902,7 @@
 	pixel_y = 22
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/maintenance/station/cargo)
 "vHT" = (
 /obj/structure/window/reinforced{
@@ -37610,7 +37671,7 @@ mdh
 aMP
 aMP
 aMP
-aMP
+aQf
 uUq
 jwA
 aQf
@@ -37743,7 +37804,7 @@ uam
 usx
 aqG
 usx
-aTU
+rKN
 aJd
 aDw
 deM
@@ -37752,7 +37813,7 @@ aHC
 aHC
 aUG
 aHC
-asB
+ndH
 aqk
 aJe
 aJe
@@ -38037,7 +38098,7 @@ aMP
 aMP
 aHC
 aJU
-ayu
+nRW
 aJe
 aWz
 aKl
@@ -39133,7 +39194,7 @@ aMT
 aNl
 aOT
 aQk
-aRv
+jxZ
 aRv
 aTV
 aVh
@@ -39417,7 +39478,7 @@ aMU
 aNl
 aPe
 aQy
-aRv
+shy
 aSS
 aTV
 aVo
@@ -39693,10 +39754,10 @@ awa
 ayF
 aEA
 aGz
-aIa
+sAY
 aJV
 aKF
-aLH
+mDY
 aLH
 aNn
 aPi
@@ -40402,9 +40463,9 @@ aeM
 atk
 azi
 aFx
-ayM
+ayu
 aIl
-ayM
+hJC
 aLa
 aLa
 aNd
@@ -40572,7 +40633,7 @@ aYJ
 aYJ
 aYJ
 aHC
-aMP
+aQf
 rLt
 vAv
 aHC
@@ -40715,7 +40776,7 @@ aYJ
 aYJ
 aHC
 ikI
-sAY
+jNP
 nDO
 aOn
 nRW
@@ -40856,7 +40917,7 @@ aYJ
 aYJ
 pEJ
 aHC
-aMP
+aQf
 qgB
 qbe
 aHC
@@ -41140,9 +41201,9 @@ aYJ
 aYJ
 aYJ
 aHC
-aMP
-sAY
-aMP
+aQf
+jNP
+aQf
 aHC
 xtp
 aac
@@ -41284,7 +41345,7 @@ eML
 aHC
 vGY
 nwo
-aJM
+bqA
 aHC
 xtp
 aac
