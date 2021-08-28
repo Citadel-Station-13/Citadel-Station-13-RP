@@ -5871,9 +5871,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/port)
-"asA" = (
-/turf/simulated/wall/r_wall,
-/area/mine/explored/upper_level)
 "asB" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -12993,7 +12990,7 @@
 	icon_state = "propulsion_l"
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
+/area/shuttle/mining_outpost/shuttle)
 "aPw" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
@@ -13083,7 +13080,7 @@
 "aPG" = (
 /obj/machinery/door/unpowered/shuttle,
 /turf/simulated/shuttle/floor/yellow/airless,
-/area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
+/area/shuttle/mining_outpost/shuttle)
 "aPH" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -13702,9 +13699,6 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled,
-/area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
-"aRd" = (
-/turf/simulated/shuttle/wall,
 /area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
 "aRe" = (
 /obj/structure/railing,
@@ -15751,12 +15745,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
-"aWu" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/shuttle/mining_outpost/shuttle)
 "aWv" = (
 /obj/effect/landmark/start{
 	name = "Cargo Technician"
@@ -16634,9 +16622,6 @@
 /obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/floor,
 /area/shuttle/large_escape_pod1)
-"aYJ" = (
-/turf/simulated/floor/airless,
-/area/quartermaster/storage)
 "aYL" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/vehicle/train/trolley{
@@ -17157,7 +17142,7 @@
 	name = "security camera"
 	},
 /turf/simulated/floor/tiled,
-/area/shuttle/mining_outpost/shuttle)
+/area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
 "bjw" = (
 /mob/living/simple_mob/animal/sif/fluffy/silky,
 /obj/item/toy/plushie/squid/pink,
@@ -18613,7 +18598,7 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
-/area/shuttle/mining_outpost/shuttle)
+/area/quartermaster/belterdock/surface_mining_outpost_shuttle_hangar)
 "gCI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate,
@@ -21051,7 +21036,7 @@
 	name = "Tether Cargo Bay"
 	},
 /turf/simulated/floor/airless,
-/area/quartermaster/storage)
+/area/space)
 "pGy" = (
 /obj/machinery/mineral/equipment_vendor/survey,
 /obj/effect/floor_decal/borderfloorblack,
@@ -21526,9 +21511,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/burial)
-"rhj" = (
-/turf/simulated/floor/tiled,
-/area/shuttle/mining_outpost/shuttle)
 "rii" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -40093,7 +40075,7 @@ aNj
 aNj
 aNj
 aNj
-asA
+aTV
 aTV
 aZc
 aZt
@@ -40375,7 +40357,7 @@ aRN
 aRN
 aRN
 mIc
-aWu
+sut
 aNj
 wYR
 vFZ
@@ -40512,27 +40494,27 @@ aLa
 aLa
 aNj
 aNv
-aRd
+aUB
 aRZ
 aRZ
 aRZ
 aUB
-aWu
+sut
 aNj
-vtH
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-vtH
-vtH
+aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aaa
+aaa
 aHl
 qbA
 aHl
@@ -40654,27 +40636,27 @@ azu
 aNj
 aNj
 aXb
-aRd
+aUB
 aRa
 aSs
 pTS
 aUB
 gCj
 aNj
-vtH
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-vtH
+aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aaa
 aHC
 rLt
 vAv
@@ -40796,27 +40778,27 @@ aLi
 aNj
 aQj
 aNv
-aRd
+aUB
 aXh
 aSs
 aSs
 aUB
-aWu
+sut
 aNj
-vtH
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-vtH
+aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aaa
 aHC
 jNP
 nDO
@@ -40943,22 +40925,22 @@ aSs
 aSs
 vGY
 aUB
-aWu
+sut
 aNj
-vtH
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
+aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
 pEJ
-vtH
+aaa
 aHC
 qgB
 qbe
@@ -41080,27 +41062,27 @@ aLl
 aNj
 aQY
 aNE
-aRd
+aUB
 aXn
 aSs
 vGY
 aUB
 bjl
 aNj
-vtH
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-vtH
+aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aaa
 aHC
 drb
 aHC
@@ -41222,27 +41204,27 @@ aMI
 aNj
 aRc
 aNG
-aRd
+aUB
 aXo
 aSs
 vGY
 aUB
-aWu
+sut
 aNj
-vtH
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-vtH
+aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aaa
 aHC
 xee
 rex
@@ -41364,27 +41346,27 @@ aNd
 aNj
 aSc
 aNU
-aRd
+aUB
 aTi
 aSz
 aTi
 aUB
-aWu
+sut
 aNj
-vtH
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-aYJ
-vtH
-vtH
+aaa
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aab
+aaa
+aaa
 aHC
 nwo
 bqA
@@ -41506,26 +41488,26 @@ aNd
 aNj
 aSe
 aNU
-aRd
+aUB
 aTt
 aSA
 aTt
 aUB
 gCj
 aNj
-vtH
-eML
-eML
-eML
-eML
-eML
-eML
-eML
-eML
-eML
-eML
-eML
-eML
+aeM
+aeM
+aeM
+aeM
+aeM
+aeM
+aeM
+aeM
+aeM
+aeM
+aeM
+aeM
+aeM
 aHC
 aQf
 aQf
@@ -41649,13 +41631,13 @@ aNj
 aSt
 aOi
 aQe
-aRd
+aUB
 eYB
 aUB
-rhj
+aQe
 sut
 aNj
-aaa
+aeM
 aeM
 aeM
 aeM
@@ -41797,7 +41779,7 @@ aRi
 aRi
 egS
 aNj
-aaa
+aeM
 aeM
 aeM
 aaa
@@ -41939,7 +41921,7 @@ aRn
 aRn
 aNj
 aNj
-aaa
+aeM
 aeM
 aaa
 aaa
@@ -42080,8 +42062,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+aeM
+aeM
 aaa
 aaa
 aaa
