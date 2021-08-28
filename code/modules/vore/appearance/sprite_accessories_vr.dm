@@ -2103,3 +2103,11 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "liontail_markings"
 	extra_overlay_w = "liontail_markings_w"
+
+/datum/sprite_accessory/tail/jackal_bicolor
+	name = "jackal, dual-colorable"
+	desc = ""
+	icon_state = "jackal_bicolor"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "jackal_bicolor_extra"
