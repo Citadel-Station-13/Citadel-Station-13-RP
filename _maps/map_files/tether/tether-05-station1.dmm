@@ -9260,10 +9260,6 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 10
 	},
-/obj/item/barrier_tape_segment/engineering,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "asR" = (
@@ -14555,12 +14551,17 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "aCu" = (
-/obj/machinery/door/airlock/glass{
-	name = "Holodeck Control"
+/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
-/area/maintenance/station/abandonedholodeck)
+/area/tether/exploration/hallway)
 "aCv" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
 /obj/machinery/camera/network/tether{
@@ -14598,10 +14599,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "aCy" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille/broken,
 /turf/simulated/floor/plating,
-/area/maintenance/station/abandonedholodeck)
+/area/tether/exploration/hallway)
 "aCz" = (
 /obj/structure/bed/chair,
 /obj/machinery/camera/network/tether,
@@ -19323,6 +19322,12 @@
 /area/tether/station/dock_one)
 "bLM" = (
 /obj/machinery/vending/cigarette,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "bMV" = (
@@ -21959,8 +21964,16 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
 "gym" = (
-/turf/simulated/floor/plating,
-/area/maintenance/station/abandonedholodeck)
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/tether/exploration/hallway)
 "gAd" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -22440,6 +22453,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/customs)
+"hQZ" = (
+/turf/simulated/wall,
+/area/tether/exploration/hallway)
 "hRZ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 5
@@ -22536,10 +22552,6 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
 /obj/machinery/camera/network/tether{
-	dir = 1
-	},
-/obj/item/barrier_tape_segment/engineering,
-/obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -22877,6 +22889,10 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/meeting_room)
+"iPt" = (
+/obj/structure/stairs/spawner/east,
+/turf/simulated/floor/plating,
+/area/tether/exploration/hallway)
 "iUL" = (
 /turf/simulated/floor/wood/broken,
 /area/maintenance/station/eng_lower)
@@ -25083,6 +25099,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/effect/floor_decal/corner/purple/bordercorner{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "oXD" = (
@@ -26849,9 +26868,11 @@
 "taA" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/item/barrier_tape_segment/engineering,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
@@ -43101,7 +43122,7 @@ siz
 vGo
 fOY
 aaf
-aaf
+aCu
 aaf
 asI
 asI
@@ -43244,7 +43265,7 @@ rKc
 asP
 aaf
 gym
-aCu
+aaf
 aEG
 aEJ
 auO
@@ -43385,8 +43406,8 @@ vgQ
 rXI
 fwn
 aaf
-gym
 aCy
+aaf
 aEH
 aEK
 aus
@@ -43527,8 +43548,8 @@ tRr
 sPs
 cfk
 aaf
-gym
-aCu
+iPt
+aaf
 aEI
 aEL
 aus
@@ -43669,8 +43690,8 @@ aaf
 aaf
 aaf
 aaf
-amK
-amK
+hQZ
+hQZ
 amK
 amK
 amK
