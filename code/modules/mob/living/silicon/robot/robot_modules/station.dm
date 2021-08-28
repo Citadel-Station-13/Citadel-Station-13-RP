@@ -4,8 +4,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	"Clerical" 		= /obj/item/robot_module/robot/clerical/general,
 	"Research" 		= /obj/item/robot_module/robot/research,
 	"Miner" 		= /obj/item/robot_module/robot/miner,
-	"Crisis" 		= /obj/item/robot_module/robot/medical/crisis,
-	"Surgeon" 		= /obj/item/robot_module/robot/medical/surgeon,
+	"Medical" 		= /obj/item/robot_module/robot/medical/surgeon,
 	"Security" 		= /obj/item/robot_module/robot/security/general,
 	"Combat" 		= /obj/item/robot_module/robot/security/combat,
 	"Engineering"	= /obj/item/robot_module/robot/engineering/general,
@@ -45,8 +44,9 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/list/original_languages = list()
 	var/list/added_networks = list()
 
-/obj/item/robot_module/New(var/mob/living/silicon/robot/R)
-	..()
+/obj/item/robot_module/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
 	R.module = src
 
 	add_camera_networks(R)
@@ -161,8 +161,8 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		R.status_flags |= CANPUSH
 
 // Cyborgs (non-drones), default loadout. This will be given to every module.
-/obj/item/robot_module/robot/New()
-	..()
+/obj/item/robot_module/robot/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/flash/robot(src)
 	src.modules += new /obj/item/tool/crowbar/cyborg(src)
 	src.modules += new /obj/item/extinguisher(src)

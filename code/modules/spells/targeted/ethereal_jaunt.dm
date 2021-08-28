@@ -78,9 +78,9 @@
 	anchored = 1
 	var/turf/last_valid_turf
 
-/obj/effect/dummy/spell_jaunt/New(var/location)
-	..()
-	last_valid_turf = get_turf(location)
+/obj/effect/dummy/spell_jaunt/Initialize(mapload)
+	. = ..()
+	last_valid_turf = get_turf(src)
 
 /obj/effect/dummy/spell_jaunt/Destroy()
 	// Eject contents if deleted somehow
@@ -91,7 +91,7 @@
 /obj/effect/dummy/spell_jaunt/relaymove(var/mob/user, direction)
 	if (!src.canmove || reappearing) return
 	var/turf/newLoc = get_step(src,direction)
-	if(!(newLoc.flags & NOJAUNT))
+	if(!(newLoc.flags & NO_JAUNT))
 		loc = newLoc
 		var/turf/T = get_turf(loc)
 		if(!T.contains_dense_objects())

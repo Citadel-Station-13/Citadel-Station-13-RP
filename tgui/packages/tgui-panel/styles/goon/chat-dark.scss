@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
- em {
+em {
   font-style: normal;
   font-weight: bold;
 }
@@ -255,7 +255,7 @@ a.popt {
 /* ADD HERE FOR ITALIC */
 
 
-.italic, .italics{
+.italic, .italics {
   font-style: italic;
 }
 
@@ -377,10 +377,7 @@ em {
   font-weight: bold;
 }
 
-.say {
-}
-
-.emote {
+.say, .emote, .infoplain {
 }
 
 .deadsay {
@@ -408,7 +405,7 @@ em {
 }
 
 .comradio {
-  color: #193A7A;
+  color: #fcdf03;
 }
 
 .secradio {
@@ -423,16 +420,12 @@ em {
   color: #f37746;
 }
 
-.supradio {
-  color: #5F4519;
+.suppradio {
+  color: #b88646;
 }
 
 .servradio {
   color: #6ca729;
-}
-
-.expradio {
-  color: #555555;
 }
 
 .syndradio {
@@ -499,6 +492,11 @@ em {
   font-weight: bold;
 }
 
+.minorannounce {
+  font-weight: bold;
+  font-size: 185%;
+}
+
 .greenannounce {
   color: #059223;
   font-weight: bold;
@@ -518,11 +516,21 @@ em {
 
 .tinynotice {
   color: #6685f5;
+  font-size: 85%;
+}
+
+.tinynoticeital {
+  color: #6685f5;
   font-style: italic;
   font-size: 85%;
 }
 
 .smallnotice {
+  color: #6685f5;
+  font-size: 90%;
+}
+
+.smallnoticeital {
   color: #6685f5;
   font-style: italic;
   font-size: 90%;
@@ -573,6 +581,7 @@ em {
   color: #059223;
 }
 
+/* hornichems */
 .userlove {
   color: #ff42a6;
   font-style: italic;
@@ -697,7 +706,7 @@ em {
 }
 
 .deconversion_message {
-  color: #5000A0;
+  color: #a947ff;
   font-size: 185%;
   font-style: italic;
 }
@@ -880,107 +889,14 @@ em {
   font-family: "Courier New", cursive, sans-serif;
 }
 
-
-
-
-//langs
-.alien {
-  color: #543354;
+.tape_recorder {
+  color: #FF0000;
+  font-family: "Courier New", cursive, sans-serif;
 }
-
-
-.tajaran {
-  color: #803B56;
-}
-
-
-.tajaran_signlang {
-  color: #941C1C;
-}
-
-.akhani {
-  color: #AC398C;
-}
-
-.skrell {
-  color: #00B0B3;
-}
-
-.skrellfar {
-  color: #70FCFF;
-}
-
-.soghun {
-  color: #228B22;
-}
-
-.solcom {
-  color: #22228B;
-}
-
-.changeling {
-  color: #800080;
-}
-
-.sergal {
-  color: #0077FF;
-}
-
-.birdsongc {
-  color: #CC9900;
-}
-
-.vulpkanin {
-  color: #B97A57;
-}
-
-.enochian {
-  color: #848A33;
-  letter-spacing:-1pt;
-  word-spacing:4pt;
-  font-family: "Lucida Sans Unicode","Lucida Grande", sans-serif;
-}
-
-.daemon {
-  color: #5E339E;
-	letter-spacing:-1pt;
-	word-spacing:0pt;
-	font-family: "Courier New", Courier, monospace;
-}
-
-.bug {
-	color: #9e9e39;
-}
-
-.vox {
-  color: #AA00AA;
-}
-
-.zaddat {
-  color: #941C1C;
-}
-
-.rough {
-  font-family: "Trebuchet MS", cursive, sans-serif;
-}
-
-.say_quote {
-  font-family: Georgia, Verdana, sans-serif;
-}
-
-.terminus {
-  font-family: "Times New Roman", Times, serif, sans-serif
-}
-
-.interface {
-  color: #330033;
-}
-
-
 
 .command_headset {
   font-weight: bold;
-  font-size: 160%;
+  font-size: 125%;
 }
 
 .small {
@@ -1016,7 +932,7 @@ em {
 
 .clown {
   color: #ff70c1;
-  font-size: 160%;
+  font-size: 125%;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-weight: bold;
 }
@@ -1032,6 +948,7 @@ em {
   font-style: italic;
 }
 
+/*jacq */
 .spooky {
   color: #FF9100;
 }
@@ -1181,10 +1098,100 @@ em {
   font-weight: bold;
 }
 
+/* LANGAUGES */
+.alien {
+  color: #543354;
+}
 
+
+.tajaran {
+  color: #803B56;
+}
+
+
+.tajaran_signlang {
+  color: #941C1C;
+}
+
+.akhani {
+  color: #AC398C;
+}
+
+.skrell {
+  color: #00B0B3;
+}
+
+.skrellfar {
+  color: #70FCFF;
+}
+
+.soghun {
+  color: #228B22;
+}
+
+.solcom {
+  color: #22228B;
+}
+
+.changeling {
+  color: #800080;
+}
+
+.sergal {
+  color: #0077FF;
+}
+
+.birdsongc {
+  color: #CC9900;
+}
+
+.vulpkanin {
+  color: #B97A57;
+}
+
+.enochian {
+  color: #848A33;
+  letter-spacing:-1pt;
+  word-spacing:4pt;
+  font-family: "Lucida Sans Unicode","Lucida Grande", sans-serif;
+}
+
+.daemon {
+  color: #5E339E;
+	letter-spacing:-1pt;
+	word-spacing:0pt;
+	font-family: "Courier New", Courier, monospace;
+}
+
+.bug {
+	color: #9e9e39;
+}
+
+.vox {
+  color: #AA00AA;
+}
+
+.zaddat {
+  color: #941C1C;
+}
+
+.rough {
+  font-family: "Trebuchet MS", cursive, sans-serif;
+}
+
+.say_quote {
+  font-family: Georgia, Verdana, sans-serif;
+}
+
+.terminus {
+  font-family: "Times New Roman", Times, serif, sans-serif
+}
+
+.interface {
+  color: #330033;
+}
 
 /* HELPER CLASSES */
-
 
 .text-normal {
   font-weight: normal;

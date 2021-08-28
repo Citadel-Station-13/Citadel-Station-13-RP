@@ -1,6 +1,6 @@
 /datum/gm_action/pda_spam
 	name = "PDA spam"
-	departments = list(ROLE_EVERYONE)
+	departments = list(DEPARTMENT_EVERYONE)
 	reusable = TRUE
 	var/last_spam_time = 0
 	var/obj/machinery/message_server/useMS
@@ -61,7 +61,7 @@
 						"You have (1) new message!",\
 						"You have (2) new profile views!")
 					if(3)
-						sender = pick("Galactic Payments Association","Better Business Bureau","[GLOB.using_map.starsys_name] E-Payments","NAnoTransen Finance Deparmtent","Luxury Replicas")
+						sender = pick("Galactic Payments Association","Better Business Bureau","[GLOB.using_map.starsys_name] E-Payments","NAnoTrasen Finance Deparmtent","Luxury Replicas")
 						message = pick("Luxury watches for Blowout sale prices!",\
 						"Watches, Jewelry & Accessories, Bags & Wallets !",\
 						"Deposit 100$ and get 300$ totally free!",\
@@ -103,7 +103,7 @@
 
 				/*	//VOREStation Removal: no need to spam the AI tenfold
 				if (prob(50)) //Give the AI an increased chance to intercept the message
-					for(var/mob/living/silicon/ai/ai in mob_list)
+					for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 						// Allows other AIs to intercept the message but the AI won't intercept their own message.
 						if(ai.aiPDA != P && ai.aiPDA != src)
 							ai.show_message("<i>Intercepted message from <b>[sender]</b></i> (Unknown / spam?) <i>to <b>[P:owner]</b>: [message]</i>")
@@ -129,4 +129,4 @@
 					to_chat(L, "[icon2html(thing = P, target = L)] <b>Message from [sender] (Unknown / spam?), </b>\"[message]\" (Unable to Reply)")
 
 /datum/gm_action/pda_spam/get_weight()
-	return 25 * metric.count_people_in_department(ROLE_EVERYONE)
+	return 25 * metric.count_people_in_department(DEPARTMENT_EVERYONE)

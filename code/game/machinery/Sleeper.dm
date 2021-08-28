@@ -11,8 +11,12 @@
 	interact_offline = 1
 	circuit = /obj/item/circuitboard/sleeper_console
 
-/obj/machinery/sleep_console/New()
-	..()
+/obj/machinery/sleep_console/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/sleep_console/LateInitialize()
+	. = ..()
 	findsleeper()
 
 /obj/machinery/sleep_console/Destroy()
@@ -21,16 +25,15 @@
 	return ..()
 
 /obj/machinery/sleep_console/proc/findsleeper()
-	spawn(5)
-		var/obj/machinery/sleeper/sleepernew = null
-		for(dir in list(NORTH, EAST, SOUTH, WEST)) // Loop through every direction
-			sleepernew = locate(/obj/machinery/sleeper, get_step(src, dir)) // Try to find a scanner in that direction
-			if(sleepernew)
-				// VOREStation Edit Start
-				sleeper = sleepernew
-				sleepernew.console = src
-				break
-				// VOREStation Edit End
+	var/obj/machinery/sleeper/sleepernew = null
+	for(dir in list(NORTH, EAST, SOUTH, WEST)) // Loop through every direction
+		sleepernew = locate(/obj/machinery/sleeper, get_step(src, dir)) // Try to find a scanner in that direction
+		if(sleepernew)
+			// VOREStation Edit Start
+			sleeper = sleepernew
+			sleepernew.console = src
+			break
+			// VOREStation Edit End
 
 
 /obj/machinery/sleep_console/attack_ai(var/mob/user)
@@ -153,7 +156,7 @@
 				S.inject_chemical(usr, href_list["chemical"], text2num(href_list["amount"]))
 	if(href_list["change_stasis"])
 		var/new_stasis = input("Levels deeper than 50% stasis level will render the patient unconscious.","Stasis Level") as null|anything in S.stasis_choices
-		if(new_stasis && CanUseTopic(usr, default_state) == STATUS_INTERACTIVE)
+		if(new_stasis && CanUseTopic(usr, default_state) == UI_INTERACTIVE)
 			S.stasis_level = S.stasis_choices[new_stasis]
 
 	return 1
@@ -180,8 +183,8 @@
 	idle_power_usage = 15
 	active_power_usage = 200 //builtin health analyzer, dialysis machine, injectors.
 
-/obj/machinery/sleeper/New()
-	..()
+/obj/machinery/sleeper/Initialize(mapload)
+	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
 	component_parts = list()
 	component_parts += new /obj/item/stock_parts/manipulator(src)
@@ -245,7 +248,7 @@
 			available_chemicals += new_chemicals
 		return
 
-/obj/machinery/sleeper/Initialize()
+/obj/machinery/sleeper/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -435,6 +438,6 @@
 	icon_state = "sleeper"
 	stasis_level = 100 //Just one setting
 
-/obj/machinery/sleeper/survival_pod/Initialize()
-	..()
+/obj/machinery/sleeper/survival_pod/Initialize(mapload)
+	. = ..()
 	RefreshParts(1)

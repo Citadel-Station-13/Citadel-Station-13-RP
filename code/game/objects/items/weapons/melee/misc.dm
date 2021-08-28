@@ -44,8 +44,8 @@
 	w_class = ITEMSIZE_NORMAL
 	var/open = FALSE
 
-/obj/item/melee/umbrella/New()
-	..()
+/obj/item/melee/umbrella/Initialize(mapload)
+	. = ..()
 	update_icon()
 
 /obj/item/melee/umbrella/attack_self()
@@ -103,3 +103,59 @@
 	new_voice.real_name = "cursed sword"
 	voice_mobs.Add(new_voice)
 	listening_objects |= src
+
+/obj/item/melee/skateboard
+	name = "improvised skateboard"
+	desc = "A skateboard. It can be placed on its wheels and ridden, or used as a radical weapon."
+	icon_state = "skateboard"
+	icon = 'icons/obj/weapons.dmi'
+	slot_flags = SLOT_BELT
+	force = 10
+	throwforce = 7
+	var/board_item_type = /obj/vehicle/skateboard
+
+/obj/item/melee/skateboard/dropped(mob/user as mob)
+	..()
+	var/turf/T = get_turf(src)
+	new /obj/vehicle/skateboard(T)
+	user.drop_item(src)
+	qdel(src)
+
+/obj/item/melee/skateboard/pro
+	name = "skateboard"
+	desc = "A RaDSTORMz brand professional skateboard. Looks a lot more stable than the average board."
+	icon_state = "skateboard2"
+	board_item_type = /obj/vehicle/skateboard/pro
+
+/obj/item/melee/skateboard/pro/dropped(mob/user as mob)
+	..()
+	var/turf/T = get_turf(src)
+	new /obj/vehicle/skateboard/pro(T)
+	user.drop_item(src)
+	qdel(src)
+
+/obj/item/melee/skateboard/hoverboard
+	name = "hoverboard"
+	desc = "A blast from the past, so retro!"
+	icon_state = "hoverboard_red"
+	board_item_type = /obj/vehicle/skateboard/hoverboard
+
+/obj/item/melee/skateboard/hoverboard/dropped(mob/user as mob)
+	..()
+	var/turf/T = get_turf(src)
+	new /obj/vehicle/skateboard/hoverboard(T)
+	user.drop_item(src)
+	qdel(src)
+
+/obj/item/melee/skateboard/hoverboard/admin
+	name = "Board of Directors"
+	desc = "The engineering complexity of a spaceship concentrated inside of a board. Just as expensive, too."
+	icon_state = "hoverboard_nt"
+	board_item_type = /obj/vehicle/skateboard/hoverboard/admin
+
+/obj/item/melee/skateboard/hoverboard/admin/dropped(mob/user as mob)
+	..()
+	var/turf/T = get_turf(src)
+	new /obj/vehicle/skateboard/hoverboard/admin(T)
+	user.drop_item(src)
+	qdel(src)

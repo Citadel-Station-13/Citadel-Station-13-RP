@@ -45,6 +45,9 @@ What is the naming convention for planes or layers?
 #define SKYBOX_PLANE			-79	// Skybox parallax
 #define DUST_PLANE				-78 // For dust overlay on space turfs. Should be above skybox for parallax effect.
 
+#define PLANE_LOOKINGGLASS		-77 // For the Looking Glass holodecks
+#define PLANE_LOOKINGGLASS_IMG	-76 // For the Looking Glass holodecks
+
 // OPENSPACE_PLANE reserves all planes between OPENSPACE_PLANE_START and OPENSPACE_PLANE_END inclusive
 #define OPENSPACE_PLANE 		-75 // /turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)
 #define OPENSPACE_PLANE_START	-73
@@ -60,6 +63,8 @@ What is the naming convention for planes or layers?
 	#define ABOVE_UTILITY		2.5 // Above stuff like pipes and wires
 #define TURF_PLANE				-45 // Turfs themselves, most flooring
 	#define WATER_FLOOR_LAYER	2.0 // The 'bottom' of water tiles.
+	#define BUILTIN_DECAL_LAYER 2.01 // For floors that automatically add decal overlays
+	#define MAPPER_DECAL_LAYER	2.02 // For intentionally placed floor decal overlays
 	#define UNDERWATER_LAYER	2.5 // Anything on this layer will render under the water layer.
 	#define WATER_LAYER			3.0 // Layer for water overlays.
 	#define ABOVE_TURF_LAYER	3.1	// Snow and wallmounted/floormounted equipment
@@ -87,6 +92,10 @@ What is the naming convention for planes or layers?
 	#define BELOW_MOB_LAYER			3.9 // Should be converted to plane swaps
 	#define ABOVE_MOB_LAYER			4.1	// Should be converted to plane swaps
 
+
+// Invisible things plane
+#define CLOAKED_PLANE			-15
+
 // Top plane (in the sense that it's the highest in 'the world' and not a UI element)
 #define ABOVE_PLANE				-10
 
@@ -112,6 +121,7 @@ What is the naming convention for planes or layers?
 #define PLANE_ADMIN1			3 //Purely for shenanigans (below lighting)
 #define PLANE_PLANETLIGHTING	4 //Lighting on planets
 #define PLANE_LIGHTING			5 //Where the lighting (and darkness) lives
+#define LIGHTING_LAYER 15
 #define PLANE_LIGHTING_ABOVE	6 //For glowy eyes etc. that shouldn't be affected by darkness
 
 #define PLANE_GHOSTS			10 //Spooooooooky ghooooooosts
@@ -137,7 +147,7 @@ What is the naming convention for planes or layers?
 #define PLANE_FULLSCREEN		90 //Blindness, mesons, druggy, etc
 	#define OBFUSCATION_LAYER	5 //Where images covering the view for eyes are put
 	#define FULLSCREEN_LAYER	18
-	#define DAMAGE_LAYER		18.1
+	#define DAMAGE_SCREEN_LAYER		18.1
 	#define BLIND_LAYER			18.2
 	#define CRIT_LAYER			18.3
 
@@ -165,3 +175,13 @@ What is the naming convention for planes or layers?
 
 // Check if a mob can "logically" see an atom plane
 #define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible))
+
+//VR FILE MERGE
+
+// "Character HUDs", aka HUDs, but not the game's UI. Things like medhuds.
+#define PLANE_CH_HEALTH_VR			26 //Hidden healthbar when at full health
+#define PLANE_CH_STATUS_R			27 //Right-side status icon
+#define PLANE_CH_BACKUP				28 //Backup implant
+#define PLANE_CH_VANTAG				29 //Vore Antag hud
+
+#define PLANE_AUGMENTED				40 //Augmented-reality plane

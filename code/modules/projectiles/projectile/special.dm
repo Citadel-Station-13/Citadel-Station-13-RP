@@ -164,7 +164,7 @@
 	else if(istype(target, /mob/living/carbon/))
 	//	for (var/mob/V in viewers(src))
 	//		V.show_message("The radiation beam dissipates harmlessly through [M]", 3)
-		M.show_message("<font color='blue'>The radiation beam dissipates harmlessly through your body.</font>")
+		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
 	else
 		return 1
 
@@ -197,7 +197,7 @@
 		if((H.species.flags & IS_PLANT) && (M.nutrition < 500))
 			M.nutrition += 30
 	else if (istype(target, /mob/living/carbon/))
-		M.show_message("<font color='blue'>The radiation beam dissipates harmlessly through your body.</font>")
+		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
 	else
 		return 1
 
@@ -287,7 +287,7 @@
 			var/armor_special = 0
 
 			if(target_armor >= 60)
-				var/turf/T = get_step(H, pick(alldirs - src.dir))
+				var/turf/T = get_step(H, pick(GLOB.alldirs - src.dir))
 				H.throw_at(T, 1, 1, src)
 				H.apply_damage(20, BURN, def_zone)
 				if(target_limb)
@@ -345,6 +345,6 @@
 	icon_state = "banana"
 	range = 200
 
-/obj/item/projectile/bullet/honker/Initialize()
+/obj/item/projectile/bullet/honker/Initialize(mapload)
 	. = ..()
 	SpinAnimation()

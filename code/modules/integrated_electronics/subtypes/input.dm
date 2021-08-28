@@ -354,7 +354,7 @@
 	var/code = 30
 	var/datum/radio_frequency/radio_connection
 
-/obj/item/integrated_circuit/input/signaler/Initialize()
+/obj/item/integrated_circuit/input/signaler/Initialize(mapload)
 	. = ..()
 	set_frequency(frequency)
 	// Set the pins so when someone sees them, they won't show as null
@@ -442,8 +442,8 @@
 	power_draw_per_use = 50
 	var/datum/exonet_protocol/exonet = null
 
-/obj/item/integrated_circuit/input/EPv2/New()
-	..()
+/obj/item/integrated_circuit/input/EPv2/Initialize(mapload)
+	. = ..()
 	exonet = new(src)
 	exonet.make_address("EPv2_circuit-\ref[src]")
 	desc += "<br>This circuit's EPv2 address is: [exonet.address]"
@@ -516,9 +516,10 @@
 	activators = list("on message received" = IC_PINTYPE_PULSE_OUT, "on translation" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 15
+	flags = HEAR
 
-/obj/item/integrated_circuit/input/microphone/New()
-	..()
+/obj/item/integrated_circuit/input/microphone/Initialize(mapload)
+	. = ..()
 	listening_objects |= src
 
 /obj/item/integrated_circuit/input/microphone/Destroy()
@@ -568,8 +569,8 @@
 		LANGUAGE_TERMINUS
 		)
 
-/obj/item/integrated_circuit/input/microphone/sign/Initialize()
-	..()
+/obj/item/integrated_circuit/input/microphone/sign/Initialize(mapload)
+	. = ..()
 	for(var/lang in readable_langs)
 		var/datum/language/newlang = GLOB.all_languages[lang]
 		my_langs |= newlang

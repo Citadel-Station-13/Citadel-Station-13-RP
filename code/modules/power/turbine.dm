@@ -85,7 +85,7 @@
 #define COMPFRICTION 5e5
 #define COMPSTARTERLOAD 2800
 
-/obj/machinery/compressor/Initialize()
+/obj/machinery/compressor/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	gas_contained = new()
@@ -192,7 +192,7 @@
 #define TURBGENQ 100000
 #define TURBGENG 0.8
 
-/obj/machinery/power/turbine/Initialize()
+/obj/machinery/power/turbine/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 	// The outlet is pointed at the direction of the turbine component
@@ -316,7 +316,7 @@
 // Turbine Computer
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/obj/machinery/computer/turbine_computer/Initialize()
+/obj/machinery/computer/turbine_computer/Initialize(mapload)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 

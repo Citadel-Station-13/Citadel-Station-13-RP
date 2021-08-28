@@ -18,10 +18,10 @@
 	path = /obj/item/clothing/under/gladiator
 	ckeywhitelist = list("aroche")
 
-/datum/gear/donator/keyholesweater
-	display_name = "Keyhole Sweater"
+/datum/gear/donator/stool
+	display_name = "Faiza's Stool"
 	slot = slot_wear_suit
-	path = /obj/item/clothing/under/donator/crystalnole
+	path = /obj/item/melee/stool/faiza
 	ckeywhitelist = list("crystal9156")
 
 /datum/gear/donator/chayse
@@ -216,3 +216,43 @@
 	display_name = "starlight singer leggings"
 	path = /obj/item/clothing/shoes/donator/mikuleggings
 	ckeywhitelist = list("grandvegeta")
+
+/datum/gear/donator/iaccmask
+	display_name = "orchid's mask"
+	path = /obj/item/clothing/mask/gas/orchid
+	ckeywhitelist = list("iamcrystalclear")
+
+/datum/gear/donator/vicase
+	display_name = "VI's secure briefcase"
+	path = /obj/item/storage/secure/briefcase/vicase
+	ckeywhitelist = list("capesh")
+
+/datum/gear/donator/aura
+	display_name = "KNIGHT-brand Melodic headset"
+	path = /obj/item/clothing/ears/earmuffs/headphones/aura
+	ckeywhitelist = list("theknightofaura")
+
+/datum/gear/donator/dancer_scarf
+	display_name = "belly dancer headscarf"
+	path = /obj/item/clothing/head/donator/dancer
+	ckeywhitelist = list("jembo")
+
+/datum/gear/donator/dancer_veil
+	display_name = "belly dancer veil"
+	path = /obj/item/clothing/mask/donator/dancer
+	ckeywhitelist = list("jembo")
+
+/datum/gear/donator/dancer_gloves
+	display_name = "belly dancer sleeves"
+	path = /obj/item/clothing/gloves/donator/dancer
+	ckeywhitelist = list("jembo")
+
+/datum/gear/donator/dancer_costume
+	display_name = "belly dancer costume"
+	path = /obj/item/clothing/under/donator/dancer
+	ckeywhitelist = list("jembo")
+
+/datum/gear/donator/dancer_wraps
+	display_name = "belly dancer footwraps"
+	path = /obj/item/clothing/shoes/donator/dancer
+	ckeywhitelist = list("jembo")

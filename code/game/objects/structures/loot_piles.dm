@@ -30,15 +30,17 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 	var/chance_nothing = 0			// Unlucky people might need to loot multiple spots to find things.
 
-	var/chance_uncommon = 10		// Probability of pulling from the uncommon_loot list.
-	var/chance_rare = 1				// Ditto, but for rare_loot list.
+	var/chance_uncommon = 20		// Probability of pulling from the uncommon_loot list.
+	var/chance_rare = 10				// Ditto, but for rare_loot list.
+	var/chance_veryrare = 1
 	var/loot_depletion = FALSE		// If true, loot piles can be 'depleted' after a certain number of searches by different players, where no more loot can be obtained.
 	var/loot_left = 0				// When this reaches zero, and loot_depleted is true, you can't obtain anymore loot.
 	var/delete_on_depletion = FALSE	// If true, and if the loot gets depleted as above, the pile is deleted.
 
 	var/list/common_loot = list()	// Common is generally less-than-useful junk and filler, at least for maint loot piles.
 	var/list/uncommon_loot = list()	// Uncommon is actually maybe some useful items, usually the reason someone bothers looking inside.
-	var/list/rare_loot = list()		// Rare is really powerful, or at least unique items.
+	var/list/rare_loot = list()		// Rare is powerful, or somewhat unique items.
+	var/list/very_rare_loot = list()// Very Rare really powerful, or at least unique items.
 
 /obj/structure/loot_pile/attack_hand(mob/user)
 	//Human mob
@@ -77,9 +79,13 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 			var/obj/item/loot = null
 			var/span = "notice" // Blue
 
-			if(prob(chance_rare) && rare_loot.len) // You won THE GRAND PRIZE!
-				loot = produce_rare_item()
+			if(prob(chance_veryrare) && very_rare_loot.len) // You won THE GRAND PRIZE!
+				loot = produce_very_rare_item()
 				span = "cult" // Purple and bold.
+
+			else if(prob(chance_rare) && rare_loot.len) // Silver tier isn't bad!
+				loot = produce_rare_item()
+				span = "warning" // Red
 
 			else if(prob(chance_uncommon) && uncommon_loot.len) // Otherwise you might still get something good.
 				loot = produce_uncommon_item()
@@ -105,17 +111,21 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 /obj/structure/loot_pile/proc/produce_common_item()
 	var/path = pick(common_loot)
-	return new path(src)
+	return new path(drop_location())
 
 /obj/structure/loot_pile/proc/produce_uncommon_item()
 	var/path = pick(uncommon_loot)
-	return new path(src)
+	return new path(drop_location())
 
 /obj/structure/loot_pile/proc/produce_rare_item()
 	var/path = pick(rare_loot)
-	return new path(src)
+	return new path(drop_location())
 
-/obj/structure/loot_pile/Initialize()
+/obj/structure/loot_pile/proc/produce_very_rare_item()
+	var/path = pick(very_rare_loot)
+	return new path(drop_location())
+
+/obj/structure/loot_pile/Initialize(mapload)
 	if(icon_states_to_use && icon_states_to_use.len)
 		icon_state = pick(icon_states_to_use)
 	. = ..()
@@ -189,7 +199,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/spacecash/c20,
 		/obj/item/camera_assembly,
 		/obj/item/caution,
-		/obj/item/caution/cone,
+		/obj/item/clothing/head/cone,
 		/obj/item/card/emag_broken,
 		/obj/item/camera,
 		/obj/item/pda,
@@ -205,7 +215,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/beartrap,
 		/obj/item/clothing/suit/storage/vest/press,
 		/obj/item/material/knife/tacknife,
-		/obj/item/material/butterfly/switchblade
+		/obj/item/material/butterfly/switchblade,
+		/obj/item/skub
 	)
 
 	rare_loot = list(
@@ -251,14 +262,30 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/contraband/poster,
 		/obj/item/newspaper,
 		/obj/item/paper/crumpled,
-		/obj/item/paper/crumpled/bloody
+		/obj/item/paper/crumpled/bloody,
+		/obj/item/reagent_containers/hypospray/glukoz/used
 	)
 
 	uncommon_loot = list(
-		/obj/item/reagent_containers/syringe/steroid,
-		/obj/item/storage/pill_bottle/zoom,
-		/obj/item/storage/pill_bottle/happy,
-		/obj/item/storage/pill_bottle/tramadol
+		/obj/item/reagent_containers/hypospray/glukoz,
+		/obj/item/reagent_containers/hypospray/glukoz/downer,
+		/obj/item/reagent_containers/hypospray/glukoz/hangup,
+		/obj/item/reagent_containers/hypospray/glukoz/numplus,
+		/obj/item/reagent_containers/hypospray/glukoz/viraplus,
+		/obj/item/reagent_containers/hypospray/glukoz/certaphil,
+		/obj/item/skub
+	)
+
+	rare_loot = list(
+		/obj/item/reagent_containers/hypospray/glukoz/hypnogamma,
+		/obj/item/reagent_containers/hypospray/glukoz/fuckit,
+		/obj/item/reagent_containers/hypospray/glukoz/multibuzz,
+		/obj/item/reagent_containers/hypospray/glukoz/oxyduo,
+		/obj/item/reagent_containers/hypospray/glukoz/pyrholidon,
+	)
+
+	very_rare_loot = list(
+		/obj/item/reagent_containers/hypospray/glukoz/medcon
 	)
 
 // Contains loads of different types of boxes, which may have items inside!
@@ -298,10 +325,11 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/storage/box/smokes,
 		/obj/item/storage/box/metalfoam,
 		/obj/item/storage/box/handcuffs,
-		/obj/item/storage/box/seccarts
+		/obj/item/storage/box/seccarts,
+		/obj/item/skub
 	)
 
-	rare_loot = list(
+	very_rare_loot = list(
 		/obj/item/storage/box/flashbangs,
 		/obj/item/storage/box/empslite,
 		/obj/item/storage/box/flashshells,
@@ -413,10 +441,11 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/rig_module/vision/medhud,
 		/obj/item/rig_module/vision/meson,
 		/obj/item/rig_module/vision/sechud,
-		/obj/item/rig_module/sprinter
+		/obj/item/rig_module/sprinter,
+		/obj/item/skub
 	)
 
-	rare_loot = list(
+	very_rare_loot = list(
 		/obj/item/cell/hyper,
 		/obj/item/aiModule/freeform,
 		/obj/item/aiModule/asimov,
@@ -683,7 +712,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		)
 
 	uncommon_loot = list(
-		/obj/item/mecha_parts/mecha_equipment/tool/safety_clamp,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/riggedlaser,
 		/obj/item/mecha_parts/mecha_equipment/repair_droid,
 		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay

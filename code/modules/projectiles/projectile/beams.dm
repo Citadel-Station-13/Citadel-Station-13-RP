@@ -1,7 +1,7 @@
 /obj/item/projectile/beam
 	name = "laser"
 	icon_state = "laser"
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 40
 	damage_type = BURN
@@ -30,24 +30,28 @@
 /obj/item/projectile/beam/weaklaser
 	name = "weak laser"
 	icon_state = "laser"
+	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 	damage = 15
 
 /obj/item/projectile/beam/smalllaser
 	damage = 25
+	fire_sound = 'sound/weapons/weaponsounds_laserweak.ogg'
 
 /obj/item/projectile/beam/burstlaser
 	damage = 30
+	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
 	armor_penetration = 10
 
 
 /obj/item/projectile/beam/midlaser
 	damage = 40
+	fire_sound = 'sound/weapons/weaponsounds_lasermid.ogg'
 	armor_penetration = 10
 
 /obj/item/projectile/beam/heavylaser
 	name = "heavy laser"
 	icon_state = "heavylaser"
-	fire_sound = 'sound/weapons/lasercannonfire.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	damage = 60
 	armor_penetration = 30
 	light_range = 3
@@ -102,7 +106,7 @@
 /obj/item/projectile/beam/cyan
 	name = "cyan beam"
 	icon_state = "cyan"
-	fire_sound = 'sound/weapons/eluger.ogg'
+	fire_sound = 'sound/weapons/weaponsounds_alienlaser.ogg'
 	damage = 40
 	light_color = "#00C6FF"
 
@@ -228,6 +232,33 @@
 	icon_state = "stun"
 	agony = 30
 
+//Disabler Beams - It didn't feel right just to recolor Stun beams. We have uses for them still.
+/obj/item/projectile/beam/disabler
+	name = "disabler beam"
+	icon_state = "lightning"
+	fire_sound = 'sound/weapons/Taser.ogg'
+	nodamage = 1
+	taser_effect = 1
+	agony = 30
+	damage_type = HALLOSS
+	light_color = "#FFFFFF"
+
+	combustion = FALSE
+
+	muzzle_type = /obj/effect/projectile/muzzle/lightning
+	tracer_type = /obj/effect/projectile/tracer/lightning
+	impact_type = /obj/effect/projectile/impact/lightning
+
+/obj/item/projectile/beam/disabler/weak
+	name = "weak disabler beam"
+	icon_state = "lightning"
+	agony = 25
+
+/obj/item/projectile/beam/disabler/strong
+	name = "strong disabler beam"
+	icon_state = "lightning"
+	agony = 40
+
 /obj/item/projectile/beam/stun/disabler
 	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
 	tracer_type = /obj/effect/projectile/tracer/laser_omni
@@ -269,3 +300,17 @@
 	muzzle_type = /obj/effect/projectile/muzzle/emitter
 	tracer_type = /obj/effect/projectile/tracer/emitter
 	impact_type = /obj/effect/projectile/impact/emitter
+
+/obj/item/projectile/beam/pointdefense
+	name = "point defense salvo"
+	icon_state = "laser"
+	damage = 15
+	damage_type = ELECTROCUTE //You should be safe inside a voidsuit
+	sharp = FALSE //"Wide" spectrum beam
+	light_color = "#A9980A"
+
+	excavation_amount = 200 // Good at shooting rocks
+
+	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	tracer_type = /obj/effect/projectile/tracer/laser_omni
+	impact_type = /obj/effect/projectile/impact/laser_omni

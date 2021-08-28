@@ -17,10 +17,10 @@
 	var/fire_resist = 1
 	var/expandType = /obj/effect/blob
 
-/obj/effect/blob/New(loc)
+/obj/effect/blob/Initialize(mapload)
+	. = ..()
 	health = maxHealth
 	update_icon()
-	return ..(loc)
 
 /obj/effect/blob/CanAllowThrough(atom/movable/mover, turf/target)
 	return FALSE
@@ -128,9 +128,9 @@
 
 	switch(Proj.damage_type)
 		if(BRUTE)
-			take_damage(Proj.damage / brute_resist)
+			take_damage(Proj.get_final_damage(src))
 		if(BURN)
-			take_damage(Proj.damage / fire_resist)
+			take_damage(Proj.get_final_damage(src))
 	return 0
 
 /obj/effect/blob/attackby(var/obj/item/W, var/mob/user)
@@ -164,9 +164,9 @@
 /obj/effect/blob/core/update_icon()
 	return
 
-/obj/effect/blob/core/New(loc)
+/obj/effect/blob/core/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	return ..(loc)
 
 /obj/effect/blob/core/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -188,8 +188,8 @@
 	brute_resist = 1
 	fire_resist = 2
 
-/obj/effect/blob/shield/New()
-	..()
+/obj/effect/blob/shield/Initialize(mapload)
+	. = ..()
 	update_nearby_tiles()
 
 /obj/effect/blob/shield/Destroy()

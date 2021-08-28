@@ -28,10 +28,10 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/advscan = 0
 	var/showadvscan = 1
 
-/obj/item/healthanalyzer/New()
+/obj/item/healthanalyzer/Initialize(mapload)
+	. = ..()
 	if(advscan >= 1)
 		verbs += /obj/item/healthanalyzer/proc/toggle_adv
-	..()
 
 /obj/item/healthanalyzer/do_surgery(mob/living/M, mob/living/user)
 	if(user.a_intent != INTENT_HELP) //in case it is ever used as a surgery tool
@@ -340,6 +340,19 @@ HALOGEN COUNTER	- Radcount on mobs
 	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
 
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
+/obj/item/analyzer/longrange
+	name = "long-range analyzer"
+	desc = "A hand-held environmental scanner which reports current gas levels. This one uses bluespace technology."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "atmos"
+	item_state = "analyzer"
+	w_class = ITEMSIZE_SMALL
+	slot_flags = SLOT_BELT
+	throwforce = 5
+	throw_speed = 4
+	throw_range = 20
+	matter = list(DEFAULT_WALL_MATERIAL = 30,"glass" = 20)
+	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 
 /obj/item/analyzer/atmosanalyze(var/mob/user)
 	var/air = user.return_air()
@@ -360,9 +373,16 @@ HALOGEN COUNTER	- Radcount on mobs
 
 /obj/item/analyzer/afterattack(var/obj/O, var/mob/user, var/proximity)
 	if(proximity)
+		if(istype(O, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
+			return
 		analyze_gases(O, user)
 	return
 
+/obj/item/analyzer/longrange/afterattack(var/obj/O, var/mob/user, var/proximity)
+	if(istype(O, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
+		return
+	analyze_gases(O, user)
+	return
 
 /obj/item/mass_spectrometer
 	name = "mass spectrometer"
@@ -382,8 +402,8 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/details = 0
 	var/recent_fail = 0
 
-/obj/item/mass_spectrometer/New()
-	..()
+/obj/item/mass_spectrometer/Initialize(mapload)
+	. = ..()
 	var/datum/reagents/R = new/datum/reagents(5)
 	reagents = R
 	R.my_atom = src

@@ -120,8 +120,8 @@
 	var/volume = 60
 	var/list/fuel = list("phoron" = 50000, "slimejelly" = 25000, "fuel" = 15000, "carbon" = 10000, "ethanol"= 10000, "nutriment" =8000, "blood" = 5000)
 
-/obj/item/integrated_circuit/passive/power/chemical_cell/New()
-	..()
+/obj/item/integrated_circuit/passive/power/chemical_cell/Initialize(mapload)
+	. = ..()
 	create_reagents(volume)
 
 /obj/item/integrated_circuit/passive/power/chemical_cell/interact(mob/user)
@@ -160,7 +160,7 @@
 	var/area/A = get_area(src)
 	if(A)
 		if(A.powered(EQUIP) && assembly.give_power(power_amount))
-			A.use_power(power_amount, EQUIP)
+			A.use_power_oneoff(power_amount, EQUIP)
 			// give_power() handles CELLRATE on its own.
 
 // Interacts with the powernet.
@@ -189,7 +189,7 @@
 	var/obj/machinery/power/circuit_io/IO = null // Dummy power machine to move energy in/out without a bunch of code duplication.
 	var/throughput = 10000 // Give/take up to 10kW.
 
-/obj/item/integrated_circuit/passive/power/powernet/Initialize()
+/obj/item/integrated_circuit/passive/power/powernet/Initialize(mapload)
 	IO = new(src)
 	return ..()
 

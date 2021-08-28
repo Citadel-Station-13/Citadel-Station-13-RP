@@ -2,7 +2,6 @@
 /datum/gear/gloves
 	display_name = "Gloves - Black"
 	path = /obj/item/clothing/gloves/black
-	cost = 2
 	slot = slot_gloves
 	sort_category = "Gloves and Handwear"
 
@@ -55,7 +54,7 @@
 	path = /obj/item/clothing/gloves/white
 
 /datum/gear/gloves/evening
-	display_name = "evening Gloves"
+	display_name = "Evening Gloves"
 	path = /obj/item/clothing/gloves/evening
 
 /datum/gear/gloves/evening/New()

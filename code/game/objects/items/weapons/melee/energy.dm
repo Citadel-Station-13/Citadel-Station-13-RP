@@ -41,6 +41,7 @@
 	playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
 	update_icon()
 	set_light(lrange, lpower, lcolor)
+	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
 
 /obj/item/melee/energy/proc/deactivate(mob/living/user)
 	if(!active)
@@ -146,11 +147,12 @@
 /obj/item/melee/energy/update_icon()
 	. = ..()
 	var/mutable_appearance/blade_overlay = mutable_appearance(icon, "[icon_state]_blade")
-	if(colorable)
-		blade_overlay.color = lcolor
-	if(rainbow || !colorable)
+	blade_overlay.color = lcolor
+	color = lcolor
+	if(rainbow)
 		blade_overlay = mutable_appearance(icon, "[icon_state]_blade_rainbow")
 		blade_overlay.color = "FFFFFF"
+		color = "FFFFFF"
 	cut_overlays()		//So that it doesn't keep stacking overlays non-stop on top of each other
 	if(active)
 		add_overlay(blade_overlay)
@@ -171,11 +173,11 @@
 	if(alert("Are you sure you want to recolor your blade?", "Confirm Recolor", "Yes", "No") == "Yes")
 		var/energy_color_input = input(usr,"","Choose Energy Color",lcolor) as color|null
 		if(energy_color_input)
-			lcolor = sanitize_hexcolor(energy_color_input)
+			lcolor = "#[sanitize_hexcolor(energy_color_input)]"
+			color = lcolor
+			deactivate()
 		update_icon()
 	. = ..()
-	if(colorable)
-		. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 
 /*
@@ -227,8 +229,8 @@
 	use_cell = TRUE
 	hitcost = 120
 
-/obj/item/melee/energy/axe/charge/loaded/New()
-	..()
+/obj/item/melee/energy/axe/charge/loaded/Initialize(mapload)
+	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 
 /*
@@ -429,8 +431,8 @@
 	use_cell = TRUE
 	hitcost = 75
 
-/obj/item/melee/energy/sword/charge/loaded/New()
-	..()
+/obj/item/melee/energy/sword/charge/loaded/Initialize(mapload)
+	. = ..()
 	bcell = new/obj/item/cell/device/weapon(src)
 
 /obj/item/melee/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
@@ -501,8 +503,8 @@
 	projectile_parry_chance = 60
 	lcolor = "#00FF00"
 
-/obj/item/melee/energy/blade/New()
-
+/obj/item/melee/energy/blade/Initialize(mapload)
+	. = ..()
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -512,14 +514,15 @@
 
 /obj/item/melee/energy/blade/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/melee/energy/blade/attack_self(mob/user as mob)
 	user.drop_from_inventory(src)
-	spawn(1) if(src) qdel(src)
+	qdel(src)
 
 /obj/item/melee/energy/blade/dropped()
-	spawn(1) if(src) qdel(src)
+	. = ..()
+	qdel(src)
 
 /obj/item/melee/energy/blade/process(delta_time)
 	if(!creator || loc != creator || !creator.item_is_in_hands(src))
@@ -724,14 +727,25 @@
 		for(var/obj/effect/plantsegment/P in range(mover,0))
 			qdel(P)
 
-/obj/item/melee/energy/hfmachete/attackby(obj/item/weapon/W, mob/living/user)
+/obj/item/melee/energy/hfmachete/attackby(obj/item/W, mob/living/user)
 	..()
 	if(istype(W, /obj/item/melee/energy/hfmachete))
 		to_chat(user, "<span class='notice'>You combine the two [W] together, making a single scissor-bladed weapon! You feel fucking invincible!</span>")
 		qdel(W)
 		W = null
 		qdel(src)
-		var/B = new /obj/item/weapon/bloodlust(user.loc)
+		var/B = new /obj/item/bloodlust(user.loc)
 		user.put_in_hands(B)
 		// blust one day lads.
 */
+
+/obj/item/melee/energy/sword/imperial
+	name = "energy gladius"
+	desc = "A broad, short energy blade.  You'll be glad to have this in a fight."
+	icon_state = "sword0"
+	icon = 'icons/obj/weapons_vr.dmi'
+	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi')
+
+/obj/item/melee/energy/sword/imperial/activate(mob/living/user)
+	..()
+	icon_state = "sword1"

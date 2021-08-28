@@ -442,7 +442,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/dress/black_corset
-	name = "black corset"
+	name = "black corset and skirt"
 	desc = "A black corset and skirt for those fancy nights out."
 	icon_state = "black_corset"
 
@@ -869,13 +869,13 @@
 
 /obj/item/clothing/under/confederacy
 	name = "\improper Confederacy uniform"
-	desc = "A military uniform belonging to the Confederacy of Man, an independent human government."
+	desc = "A military uniform belonging to the Confederacy of Man, an independent human government." //Name pending review
 	icon_state = "confed"
 	worn_state = "confed"
 
 /obj/item/clothing/under/saare
-	name = "\improper SAARE uniform"
-	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation."
+	name = "SAARE uniform"
+	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation." //Name pending review
 	icon_state = "saare"
 	worn_state = "saare"
 
@@ -934,8 +934,6 @@
 	desc = "Show your love for the fasion of today viewed through the lens of yesterday! All come in black, but this one has red stripes."
 	icon_state = "future_fashion_red"
 
-//Uniforms end above here.
-
 /obj/item/clothing/under/medigown
 	name = "medical gown"
 	desc = "A flimsy examination gown, the back ties never close."
@@ -993,7 +991,7 @@
 	rolled_down = 0
 	rolled_sleeves = 0
 
-/obj/item/clothing/under/color/ranger/Initialize()
+/obj/item/clothing/under/color/ranger/Initialize(mapload)
 	. = ..()
 	if(icon_state == "ranger_uniform") //allows for custom items
 		name = "[unicolor] ranger uniform"
@@ -1053,7 +1051,7 @@
 /obj/item/clothing/under/btcbartender
 	name = "BTC Bartender"
 	desc = "For the classy bartender who converts their paychecks into Spesscoin."
-	icon_state = "btc_bartender_s"
+	icon_state = "btc_bartender"
 
 /obj/item/clothing/under/paramedunilight
 	name = "\improper Paramedic Uniform"
@@ -1070,7 +1068,7 @@
 /obj/item/clothing/under/dutchuniform
 	name = "\improper Western suit"
 	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
-	icon_state = "dutchuniform"
+	icon_state = "DutchUniform"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/victorianblred
@@ -1262,11 +1260,11 @@
 
 /obj/item/clothing/under/darkholme
 	name = "leather harness costume"
-	desc = "Perferred by bikers, musicial ensembles, and people who need a strong grip."
+	desc = "The outfit of a dungeon master, and we're not talking about tabletop."
 	icon_state = "darkholme"
 
 /obj/item/clothing/under/geisha
-	name = "geisha costume"
+	name = "geisha outfit"
 	desc = "These silk robes are commonly associated with Old World courtesans and radiate a delicate femininity."
 	icon_state = "geisha"
 
@@ -1345,6 +1343,44 @@
 	desc = "Popular amongst samurai, these items of clothing are not frequently in vogue. However, their easily recognizable silhouette keeps them from falling into total obscurity."
 	icon_state = "kamishimo"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+//Keek's Kimonos
+/obj/item/clothing/under/kimono/red
+	name = "red kimono"
+	desc = "The traditional dress of old Earth Japan, the kimono remains ubiquitous across the galaxy due to its comfort, simplicity, and versatility."
+	icon_state = "kimono_red"
+
+/obj/item/clothing/under/kimono/orange
+	name = "orange kimono"
+	icon_state = "kimono_orange"
+
+/obj/item/clothing/under/kimono/yellow
+	name = "yellow kimono"
+	icon_state = "kimono_yellow"
+
+/obj/item/clothing/under/kimono/green
+	name = "green kimono"
+	icon_state = "kimono_green"
+
+/obj/item/clothing/under/kimono/blue
+	name = "blue kimono"
+	icon_state = "kimono_blue"
+
+/obj/item/clothing/under/kimono/purple
+	name = "purple kimono"
+	icon_state = "kimono_purple"
+
+/obj/item/clothing/under/kimono/violet
+	name = "violet kimono"
+	icon_state = "kimono_violet"
+
+/obj/item/clothing/under/kimono/pink
+	name = "pink kimono"
+	icon_state = "kimono_pink"
+
+/obj/item/clothing/under/kimono/earth
+	name = "earth kimono"
+	icon_state = "kimono_earth"
 
 //Chinese Traditional
 /obj/item/clothing/under/qipao
@@ -1463,3 +1499,23 @@
 	name = "rainbow clown suit"
 	desc = "<i><font face='comic sans ms'>Honk!</i></font>"
 	icon_state = "rainbowclown"
+
+/obj/item/clothing/under/hawaiian
+	name = "pink hawaiian suit"
+	desc = "A suit consisting of bright white pants and a pink hawaiian shirt. Makes it feel like it's casual friday."
+	icon_state = "hawaiianpink"
+
+/obj/item/clothing/under/blueshift
+	name = "light blue suit"
+	desc = "A casual suit consisting of a light blue dress shirt, navy pants, and a black tie. Makes you think of a security officer in over his head."
+	icon_state = "blueshift"
+
+/obj/item/clothing/under/office_worker
+	name = "officer worker suit"
+	desc = "A suit consisting of a white dress shirt, white pants, black belt, and red-and-black tie."
+	icon_state = "hlsuit"
+
+/obj/item/clothing/under/tracksuit_blue
+	name = "blue tracksuit"
+	desc = "A dark blue tracksuit. It calls to mind images of excercise, particularly squats."
+	icon_state = "tracksuit_blue"

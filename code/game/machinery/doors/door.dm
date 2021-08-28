@@ -15,9 +15,9 @@
 	var/closed_layer = DOOR_CLOSED_LAYER
 
 	var/visible = 1
-	var/p_open = 0
-	var/operating = 0
-	var/autoclose = 0
+	var/p_open = 0//[bool]is the door open?
+	var/operating = 0//[bool]Is the door opening or closing?
+	var/autoclose = 0//[bool]should the door close automaticly
 	var/glass = 0
 	var/normalspeed = 1
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
@@ -49,7 +49,7 @@
 			visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
 	user.do_attack_animation(src)
 
-/obj/machinery/door/New()
+/obj/machinery/door/Initialize(mapload, newdir)
 	. = ..()
 	if(density)
 		layer = closed_layer
@@ -72,10 +72,9 @@
 	update_icon()
 
 	update_nearby_tiles(need_rebuild=1)
-	return
 
 /obj/machinery/door/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_tiles()
 	. = ..()
 
@@ -156,7 +155,9 @@
 		return
 	src.add_fingerprint(user)
 	if(density)
-		if(allowed(user))
+		if(istype(user, /mob/living/simple_mob) && !(user.ckey))
+			do_animate("smdeny")
+		else if(allowed(user))
 			open()
 		else
 			do_animate("deny")
@@ -409,6 +410,9 @@
 			if(density && !(stat & (NOPOWER|BROKEN)))
 				flick("door_deny", src)
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
+		if("smdeny")
+			if(density && !(stat & (NOPOWER|BROKEN)))
+				flick("door_deny", src)
 	return
 
 
@@ -462,6 +466,12 @@
 		qdel(fire)
 
 	return 1
+
+/obj/machinery/door/proc/toggle_open(var/forced)
+	if(density)
+		open(forced)
+	else
+		close(forced)
 
 /obj/machinery/door/proc/requiresID()
 	return 1

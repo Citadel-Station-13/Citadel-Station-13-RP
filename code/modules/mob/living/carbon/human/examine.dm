@@ -1,12 +1,11 @@
 /mob/living/carbon/human/examine(mob/user)
-	. = ..()
+	..()
 	. = list()
 	var/skip_gear = 0
 	var/skip_body = 0
 
 	if(alpha <= EFFECTIVE_INVIS)
-		src.loc.examine(user)
-		return
+		return loc.examine(user)
 
 	var/looks_synth = looksSynthetic()
 
@@ -272,6 +271,9 @@
 		else*/
 		. += "[T.He] [T.is] wearing [icon2html(thing = wear_id, target = user)] \a [wear_id]."
 
+	if(istype(src, /mob/living/carbon/human/dummy))
+		. += "[T.He] [T.is] strangely life like. You feel uneasy staring at [T.him] for too long."
+
 	//Jitters
 	if(is_jittery)
 		if(jitteriness >= 300)
@@ -293,8 +295,8 @@
 
 	if(attempt_vr(src,"examine_weight",args))
 		. += attempt_vr(src,"examine_weight",args) //VOREStation Code
-	if(attempt_vr(src,"examine_nutrition",args))
-		. += attempt_vr(src,"examine_nutrition",args) //VOREStation Code
+//	if(attempt_vr(src,"examine_nutrition",args))
+//		. += attempt_vr(src,"examine_nutrition",args) //VOREStation Code
 	if(attempt_vr(src,"examine_bellies",args))
 		. += attempt_vr(src,"examine_bellies",args) //VOREStation Code
 	if(attempt_vr(src,"examine_pickup_size",args))
@@ -323,12 +325,14 @@
 					to_chat(user, "<span class='deadsay'>[T.He] [T.has] a pulse!</span>")
 
 	if(fire_stacks)
-		. += "[T.He] [T.is] covered in some liquid."
+		. += "[T.He] [T.is] soaking wet."
 	if(on_fire)
 		. += "<span class='warning'>[T.He] [T.is] on fire!.</span>"
 
 	var/ssd_msg = species.get_ssd(src)
 	if(ssd_msg && (!should_have_organ("brain") || has_brain()) && stat != DEAD)
+		if(istype(src, /mob/living/carbon/human/dummy)) // mannequins arent asleep
+			return
 		if(!key)
 			. += "<span class='deadsay'>[T.He] [T.is] [ssd_msg]. It doesn't look like [T.he] [T.is] waking up anytime soon.</span>"
 		else if(!client)
@@ -364,36 +368,37 @@
 			if(temp.status & ORGAN_DESTROYED)
 				wound_flavor_text["[temp.name]"] = "<span class='warning'><b>[T.He] [T.is] missing [T.his] [temp.name].</b></span>"
 				continue
+			var/built = ""
 
 			if(!looks_synth && temp.robotic == ORGAN_ROBOT)
 				if(!(temp.brute_dam + temp.burn_dam))
-					wound_flavor_text["[temp.name]"] = "[T.He] [T.has] a [temp.name]."
+					built = "[T.He] [T.has] a [temp.name]."
 				else
-					wound_flavor_text["[temp.name]"] = "<span class='warning'>[T.He] [T.has] a [temp.name] with [temp.get_wounds_desc()]!</span>"
+					built = "<span class='warning'>[T.He] [T.has] a [temp.name] with [temp.get_wounds_desc()]!</span>"
 				continue
 			else if(temp.wounds.len > 0 || temp.open)
 				if(temp.is_stump() && temp.parent_organ && organs_by_name[temp.parent_organ])
 					var/obj/item/organ/external/parent = organs_by_name[temp.parent_organ]
-					wound_flavor_text["[temp.name]"] = "<span class='warning'>[T.He] has [temp.get_wounds_desc()] on [T.his] [parent.name].</span>"
+					built = "<span class='warning'>[T.He] has [temp.get_wounds_desc()] on [T.his] [parent.name].</span>"
 				else
-					wound_flavor_text["[temp.name]"] = "<span class='warning'>[T.He] has [temp.get_wounds_desc()] on [T.his] [temp.name].</span>"
-			else
-				wound_flavor_text["[temp.name]"] = ""
+					built = "<span class='warning'>[T.He] has [temp.get_wounds_desc()] on [T.his] [temp.name].</span>"
 			if(temp.dislocated == 2)
-				wound_flavor_text["[temp.name]"] += "<span class='warning'>[T.His] [temp.joint] is dislocated!</span>"
+				built += "<span class='warning'>[T.His] [temp.joint] is dislocated!</span>"
 			if(temp.brute_dam > temp.min_broken_damage || (temp.status & (ORGAN_BROKEN | ORGAN_MUTATED)))
-				wound_flavor_text["[temp.name]"] += "<span class='warning'>[T.His] [temp.name] is dented and swollen!</span>"
+				built += "<span class='warning'>[T.His] [temp.name] is dented and swollen!</span>"
 
 			if(temp.germ_level > INFECTION_LEVEL_TWO && !(temp.status & ORGAN_DEAD))
-				wound_flavor_text["[temp.name]"] += "<span class='warning'>[T.His] [temp.name] looks very infected!</span>"
+				built += "<span class='warning'>[T.His] [temp.name] looks very infected!</span>"
 			else if(temp.status & ORGAN_DEAD)
-				wound_flavor_text["[temp.name]"] += "<span class='warning'>[T.His] [temp.name] looks rotten!</span>"
+				built += "<span class='warning'>[T.His] [temp.name] looks rotten!</span>"
 
 			if(temp.status & ORGAN_BLEEDING)
-				is_bleeding["[temp.name]"] += "<span class='danger'>[T.His] [temp.name] is bleeding!</span>"
+				is_bleeding["[temp.name]"] = "<span class='danger'>[T.His] [temp.name] is bleeding!</span>"
 
 			if(temp.applied_pressure == src)
 				applying_pressure = "<span class='info'>[T.He] is applying pressure to [T.his] [temp.name].</span>"
+			if(length(built))
+				wound_flavor_text["[temp.name]"] = built
 
 	for(var/limb in wound_flavor_text)
 		. += wound_flavor_text[limb]
@@ -551,7 +556,7 @@
 		else
 			message += "<span class='warning'>[t_He] [t_is] so morbidly obese, you wonder how [t_he] can even stand, let alone waddle around the station. [t_He] can't get any fatter without being immobilized.</span>"
 	return message //Credit to Aronai for helping me actually get this working!
-
+/*
 /mob/living/carbon/human/proc/examine_nutrition()
 	if(!show_pudge()) //Some clothing or equipment can hide this.
 		return null
@@ -605,6 +610,7 @@
 		if(4075 to INFINITY) // Four or more people.
 			message = "<span class='warning'>[t_He] [t_is] so absolutely stuffed that you aren't sure how it's possible to move. [t_He] can't seem to swell any bigger. The surface of [t_his] belly looks sorely strained!</span>"
 	return message
+*/
 
 //For OmniHUD records access for appropriate models
 /proc/hasHUD_vr(mob/living/carbon/human/H, hudtype)
@@ -632,7 +638,7 @@
 /mob/living/carbon/human/proc/examine_pickup_size(mob/living/H)
 	var/message
 	if(istype(H) && (H.get_effective_size() - src.get_effective_size()) >= 0.50)
-		message = "<font color='blue'>They are small enough that you could easily pick them up!</font>"
+		message = "<font color=#4F49AF>They are small enough that you could easily pick them up!</font>"
 		return message
 	return FALSE
 

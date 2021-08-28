@@ -268,10 +268,10 @@ var/list/slot_equipment_priority = list( \
 
 
 //This differs from remove_from_mob() in that it checks if the item can be unequipped first.
-/mob/proc/unEquip(obj/item/I, force = 0) //Force overrides NODROP for things like wizarditis and admin undress.
+/mob/proc/unEquip(obj/item/I, force = 0, target) //Force overrides NODROP for things like wizarditis and admin undress.
 	if(!(force || canUnEquip(I)))
 		return
-	drop_from_inventory(I)
+	drop_from_inventory(I, target)
 	return 1
 
 
@@ -316,8 +316,8 @@ var/list/slot_equipment_priority = list( \
 //	if(hasvar(src,"w_radio")) if(src:w_radio) items += src:w_radio  commenting this out since headsets go on your ears now PLEASE DON'T BE MAD KEELIN
 	if(hasvar(src,"w_uniform")) if(src:w_uniform) items += src:w_uniform
 
-	//if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand
-	//if(hasvar(src,"r_hand")) if(src:r_hand) items += src:r_hand
+	if(hasvar(src,"l_hand")) if(src:l_hand) items += src:l_hand
+	if(hasvar(src,"r_hand")) if(src:r_hand) items += src:r_hand
 
 	return items
 

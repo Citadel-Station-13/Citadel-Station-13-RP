@@ -16,8 +16,8 @@ Barricades
 	var/maxhealth = 100
 	var/datum/material/material
 
-/obj/structure/barricade/New(var/newloc, var/material_name)
-	..(newloc)
+/obj/structure/barricade/Initialize(mapload, material_name)
+	. = ..()
 	if(!material_name)
 		material_name = "wood"
 	material = get_material_by_name("[material_name]")
@@ -125,9 +125,11 @@ Barricades
 	var/locked = 0.0
 //	req_access = list(access_maint_tunnels)
 
-/obj/machinery/deployable/barrier/New()
-	..()
+/obj/machinery/deployable/barrier/Initialize(mapload, newdir)
+	. = ..()
+	update_icon()
 
+/obj/machinery/deployable/barrier/update_icon_state()
 	icon_state = "barrier[locked]"
 
 /obj/machinery/deployable/barrier/attackby(obj/item/W as obj, mob/user as mob)

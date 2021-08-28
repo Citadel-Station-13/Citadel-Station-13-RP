@@ -64,8 +64,8 @@
 	throwforce = round(force*thrown_force_divisor)
 	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throwforce [throwforce] when made from default material [material.name]")
 
-/obj/item/material/twohanded/New()
-	..()
+/obj/item/material/twohanded/Initialize(newloc, material_key)
+	. = ..()
 	update_icon()
 
 //Allow a small chance of parrying melee attacks when wielded - maybe generalize this to other weapons someday
@@ -153,8 +153,8 @@
 	desc = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
 	description_info = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
 
-/obj/item/material/twohanded/fireaxe/foam/New(var/newloc)
-	..(newloc,"foam")
+/obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
+	return ..(mapload,"foam")
 
 /obj/item/material/twohanded/fireaxe/foam/afterattack()
 	return

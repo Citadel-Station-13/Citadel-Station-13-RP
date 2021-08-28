@@ -15,15 +15,20 @@
 	var/maxhealth = 70
 	var/check = 0
 
-/obj/structure/railing/New(loc, constructed = 0)
-	..()
+/obj/structure/railing/grey
+	name = "grey railing"
+	desc = "A standard steel railing. Prevents stupid people from falling to their doom."
+	icon_state = "grey_railing0"
+
+/obj/structure/railing/Initialize(mapload, constructed = FALSE)
+	. = ..()
 	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
 		anchored = 0
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
 
-/obj/structure/railing/Initialize()
+/obj/structure/railing/Initialize(mapload)
 	. = ..()
 	if(src.anchored)
 		update_icon(0)

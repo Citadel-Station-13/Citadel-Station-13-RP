@@ -190,11 +190,10 @@ obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	var/list/secondary_loaded = list()
 	var/list/tertiary_loaded = list()
 
-
-/obj/item/gun/projectile/revolver/lemat/New()
+/obj/item/gun/projectile/revolver/lemat/Initialize(mapload)
 	for(var/i in 1 to secondary_max_shells)
 		secondary_loaded += new secondary_ammo_type(src)
-	..()
+	return ..()
 
 /obj/item/gun/projectile/revolver/lemat/verb/swap_firingmode()
 	set name = "Swap Firing Mode"

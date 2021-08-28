@@ -55,7 +55,7 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-//	one_handed_penalty = 15
+	one_handed_penalty = 15
 
 /obj/item/gun/projectile/automatic/c20r/update_icon()
 	..()
@@ -82,7 +82,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
 
-//	one_handed_penalty = 30
+	one_handed_penalty = 30
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -142,7 +142,7 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-//	one_handed_penalty = 60
+	one_handed_penalty = 60
 
 	burst_delay = 4
 	firemodes = list(
@@ -154,8 +154,8 @@
 	var/use_launcher = 0
 	var/obj/item/gun/launcher/grenade/underslung/launcher
 
-/obj/item/gun/projectile/automatic/z8/New()
-	..()
+/obj/item/gun/projectile/automatic/z8/Initialize(mapload)
+	. = ..()
 	launcher = new(src)
 
 /obj/item/gun/projectile/automatic/z8/attackby(obj/item/I, mob/user)
@@ -211,7 +211,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
 
-//	one_handed_penalty = 90
+	one_handed_penalty = 90
 
 	var/cover_open = 0
 
@@ -290,7 +290,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
 	projectile_type = /obj/item/projectile/bullet/shotgun
 
-//	one_handed_penalty = 60
+	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -308,7 +308,7 @@
 
 /obj/item/gun/projectile/automatic/mini_uzi
 	name = "\improper Uzi"
-	desc = "The iconic Uzi is a lightweight, compact, fast firing machine pistol. Cybersun Industries famously still produces these designs, which have changed little since the 20th century. Uses .45 rounds."
+	desc = "The iconic Uzi is a lightweight, compact, fast firing machine pistol. Cybersun Industries were the last major manufacturer of these designs, which have changed little since the 20th century. Uses .45 rounds."
 	icon_state = "mini-uzi"
 	w_class = ITEMSIZE_NORMAL
 	load_method = MAGAZINE
@@ -328,6 +328,19 @@
 		icon_state = "mini-uzi"
 	else
 		icon_state = "mini-uzi-empty"
+
+/obj/item/gun/projectile/automatic/mini_uzi/custom
+	name = "\improper custom Uzi"
+	desc = "The icon Uzi si a lightweight, compact, fast firing machine pistol. These traits make it a popular holdout option for Pathfinders assigned to hazardous expeditions. Uses .45 rounds."
+	icon_state = "mini-uzi-custom"
+	pin = /obj/item/firing_pin/explorer
+
+/obj/item/gun/projectile/automatic/mini_uzi/custom/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "mini-uzi-custom"
+	else
+		icon_state = "mini-uzi-custom-empty"
 
 /obj/item/gun/projectile/automatic/p90
 	name = "personal defense weapon"
@@ -399,7 +412,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 
-//	one_handed_penalty = 45
+	one_handed_penalty = 45
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -484,7 +497,7 @@ obj/item/gun/projectile/automatic/automat/holy
 	allowed_magazines = list(/obj/item/ammo_magazine/holyshot_mag, /obj/item/ammo_magazine/holyshot_mag/stake)
 	projectile_type = /obj/item/projectile/bullet/shotgun
 
-//	one_handed_penalty = 60
+	one_handed_penalty = 40
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),

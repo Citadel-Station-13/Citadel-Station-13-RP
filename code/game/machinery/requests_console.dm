@@ -68,8 +68,8 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(icon_state == "req_comp_off")
 			icon_state = "req_comp[newmessagepriority]"
 
-/obj/machinery/requests_console/New()
-	..()
+/obj/machinery/requests_console/Initialize(mapload, newdir)
+	. = ..()
 
 	announcement.title = "[department] announcement"
 	announcement.newscast = 1
@@ -252,7 +252,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(inoperable(MAINT)) return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/stamp/T = O
-			msgStamped = text("<font color='blue'><b>Stamped with the [T.name]</b></font>")
+			msgStamped = text("<font color=#4F49AF><b>Stamped with the [T.name]</b></font>")
 			updateUsrDialog()
 	return
 
@@ -266,3 +266,99 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	announcement.announcer = ""
 	if(mainmenu)
 		screen = RCS_MAINMENU
+
+
+//VR FILE MERGE
+
+// Request Console Presets!  Make mapping 400% easier!
+// By using these presets we can rename the departments easily.
+
+//Request Console Department Types
+// #define RC_ASSIST 1		//Request Assistance
+// #define RC_SUPPLY 2		//Request Supplies
+// #define RC_INFO   4		//Relay Info
+
+/obj/machinery/requests_console/preset
+	name = ""
+	department = ""
+	departmentType = ""
+	announcementConsole = 0
+
+// Departments
+/obj/machinery/requests_console/preset/cargo
+	name = "Cargo RC"
+	department = "Cargo Bay"
+	departmentType = RC_SUPPLY
+
+/obj/machinery/requests_console/preset/security
+	name = "Security RC"
+	department = "Security"
+	departmentType = RC_ASSIST
+
+/obj/machinery/requests_console/preset/engineering
+	name = "Engineering RC"
+	department = "Engineering"
+	departmentType = RC_ASSIST|RC_SUPPLY
+
+/obj/machinery/requests_console/preset/atmos
+	name = "Atmospherics RC"
+	department = "Atmospherics"
+	departmentType = RC_ASSIST|RC_SUPPLY
+
+/obj/machinery/requests_console/preset/medical
+	name = "Medical RC"
+	department = "Medical Department"
+	departmentType = RC_ASSIST|RC_SUPPLY
+
+/obj/machinery/requests_console/preset/research
+	name = "Research RC"
+	department = "Research Department"
+	departmentType = RC_ASSIST|RC_SUPPLY
+
+/obj/machinery/requests_console/preset/janitor
+	name = "Janitor RC"
+	department = "Janitorial"
+	departmentType = RC_ASSIST
+
+/obj/machinery/requests_console/preset/bridge
+	name = "Bridge RC"
+	department = "Bridge"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+// Heads
+
+/obj/machinery/requests_console/preset/ce
+	name = "Chief Engineer RC"
+	department = "Chief Engineer's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/cmo
+	name = "Chief Medical Officer RC"
+	department = "Chief Medical Officer's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/hos
+	name = "Head of Security RC"
+	department = "Head of Security's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/rd
+	name = "Research Director RC"
+	department = "Research Director's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/captain
+	name = "Captain RC"
+	department = "Captain's Desk"
+	departmentType = RC_ASSIST|RC_INFO
+	announcementConsole = 1
+
+/obj/machinery/requests_console/preset/ai
+	name = "AI RC"
+	department = "AI"
+	departmentType = RC_ASSIST|RC_INFO

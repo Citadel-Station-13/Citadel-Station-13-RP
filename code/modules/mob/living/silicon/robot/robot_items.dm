@@ -12,8 +12,8 @@
 
 	var/obj/item/loaded_item	//What is currently inside the analyzer.
 
-/obj/item/portable_destructive_analyzer/New()
-	..()
+/obj/item/portable_destructive_analyzer/Initialize(mapload)
+	. = ..()
 	files = new /datum/research/techonly(src) //Setup the research data holder.
 
 /obj/item/portable_destructive_analyzer/attack_self(user as mob)
@@ -130,8 +130,8 @@
 	var/dummy_card = null
 	var/dummy_card_type = /obj/item/card/id/science/roboticist/dummy_cyborg
 
-/obj/item/card/robot/Initialize()
-	..()
+/obj/item/card/robot/Initialize(mapload)
+	. = ..()
 	dummy_card = new dummy_card_type(src)
 
 /obj/item/card/robot/Destroy()
@@ -148,8 +148,8 @@
 /obj/item/card/id/science/roboticist/dummy_cyborg
 	access = list(access_robotics)
 
-/obj/item/card/id/syndicate/dummy_cyborg/Initialize()
-	..()
+/obj/item/card/id/syndicate/dummy_cyborg/Initialize(mapload)
+	. = ..()
 	access |= access_robotics
 
 //A harvest item for serviceborgs.
@@ -214,7 +214,7 @@
 				overlays += image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer)
 				addedSomething = 1
 		if ( addedSomething )
-			user.visible_message("<font color='blue'>[user] load some items onto their service tray.</font>")
+			user.visible_message("<font color=#4F49AF>[user] load some items onto their service tray.</font>")
 
 		return
 
@@ -254,9 +254,9 @@
 							sleep(rand(2,4))
 		if ( droppedSomething )
 			if ( foundtable )
-				user.visible_message("<font color='blue'>[user] unloads their service tray.</font>")
+				user.visible_message("<font color=#4F49AF>[user] unloads their service tray.</font>")
 			else
-				user.visible_message("<font color='blue'>[user] drops all the items on their tray.</font>")
+				user.visible_message("<font color=#4F49AF>[user] drops all the items on their tray.</font>")
 
 	return ..()
 
@@ -336,7 +336,7 @@
 	deploy_paper(get_turf(src))
 
 /obj/item/form_printer/proc/deploy_paper(var/turf/T)
-	T.visible_message("<font color='blue'>\The [src.loc] dispenses a sheet of crisp white paper.</font>")
+	T.visible_message("<font color=#4F49AF>\The [src.loc] dispenses a sheet of crisp white paper.</font>")
 	new /obj/item/paper(T)
 
 
@@ -354,13 +354,13 @@
 	var/overload_time = 0			//Stores the time of overload
 	var/last_flash = 0				//Stores the time of last flash
 
-/obj/item/borg/combat/shield/New()
+/obj/item/borg/combat/shield/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	..()
 
 /obj/item/borg/combat/shield/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/item/borg/combat/shield/attack_self(var/mob/living/user)
 	set_shield_level()

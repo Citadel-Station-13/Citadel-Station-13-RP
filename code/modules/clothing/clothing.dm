@@ -39,8 +39,8 @@
 	..()
 	gunshot_residue = null
 
-/obj/item/clothing/New()
-	..()
+/obj/item/clothing/Initialize(mapload)
+	. = ..()
 	if(starting_accessories)
 		for(var/T in starting_accessories)
 			var/obj/item/clothing/accessory/tie = new T(src)
@@ -234,6 +234,7 @@
 	icon = 'icons/obj/clothing/gloves.dmi'
 	siemens_coefficient = 0.9
 	blood_sprite_state = "bloodyhands"
+	material_weight_factor = 0
 	var/wired = 0
 	var/obj/item/cell/cell = 0
 	var/fingerprint_chance = 0	//How likely the glove is to let fingerprints through
@@ -320,29 +321,30 @@
 	return 1
 
 /obj/item/clothing/gloves/dropped()
-	..()
+	. = ..()
 
 	if(!wearer)
 		return
 
-	var/mob/living/carbon/human/H = wearer
-	if(ring && istype(H))
-		if(!H.equip_to_slot_if_possible(ring, slot_gloves))
-			ring.forceMove(get_turf(src))
-		src.ring = null
+	if(ishuman(wearer))
+		restore_over_objects(wearer)
 	punch_force = initial(punch_force)
 	wearer = null
+
+/obj/item/clothing/gloves/proc/restore_over_objects(mob/living/carbon/human/wearer)
+	if(ring)
+		if(!wearer.equip_to_slot_if_possible(ring, slot_gloves))
+			ring.forceMove(get_turf(src))
+		ring = null
 
 /obj/item/clothing/gloves
 	var/datum/unarmed_attack/special_attack = null //do the gloves have a special unarmed attack?
 	var/special_attack_type = null
 
-/obj/item/clothing/gloves/New()
-	..()
+/obj/item/clothing/gloves/Initialize(mapload)
+	. = ..()
 	if(special_attack_type && ispath(special_attack_type))
 		special_attack = new special_attack_type
-
-
 
 /////////////////////////////////////////////////////////////////////
 //Rings
@@ -561,7 +563,8 @@
 	var/list/inside_emotes = list()
 	var/recent_squish = 0
 
-/obj/item/clothing/shoes/New()
+/obj/item/clothing/shoes/Initialize(mapload)
+	. = ..()
 	inside_emotes = list(
 		"<font color='red'>You feel weightless for a moment as \the [name] moves upwards.</font>",
 		"<font color='red'>\The [name] are a ride you've got no choice but to participate in as the wearer moves.</font>",
@@ -816,8 +819,9 @@
 		return
 	..()
 
-/obj/item/clothing/under/New(var/mob/living/carbon/human/H) //need human arg for sensorprefs..
-	..()
+/obj/item/clothing/under/Initialize(mapload)
+	. = ..()
+	var/mob/living/carbon/human/H = loc
 	if(worn_state)
 		if(!item_state_slots)
 			item_state_slots = list()
@@ -954,7 +958,7 @@
 	set_sensors(usr)
 
 /obj/item/clothing/under/verb/rollsuit()
-	set name = "Roll Down Jumpsuit"
+	set name = "Roll Jumpsuit"
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
@@ -977,13 +981,13 @@
 		else
 			item_state_slots[slot_w_uniform_str] = "[worn_state]_d"
 
-		to_chat(usr, "<span class='notice'>You roll down your [src].</span>")
+		to_chat(usr, "<span class='notice'>You roll your [src].</span>")
 	else
 		body_parts_covered = initial(body_parts_covered)
 		if(icon_override == rolled_down_icon)
 			icon_override = initial(icon_override)
 		item_state_slots[slot_w_uniform_str] = "[worn_state]"
-		to_chat(usr, "<span class='notice'>You roll up your [src].</span>")
+		to_chat(usr, "<span class='notice'>You unroll your [src].</span>")
 	update_clothing_icon()
 
 /obj/item/clothing/under/verb/rollsleeves()
@@ -1019,6 +1023,6 @@
 	update_clothing_icon()
 
 
-/obj/item/clothing/under/rank/New()
+/obj/item/clothing/under/rank/Initialize(mapload)
+	. = ..()
 	sensor_mode = pick(0,1,2,3)
-	..()

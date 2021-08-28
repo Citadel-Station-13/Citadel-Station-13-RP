@@ -17,6 +17,8 @@
 	var/singular_name
 	var/amount = 1
 	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	/// bandaid until new inventorycode
+	var/mid_delete = FALSE
 	var/stacktype //determines whether different stack types can merge
 	var/build_type = null //used when directly applied to a turf
 	var/uses_charge = 0
@@ -45,10 +47,9 @@
 	update_icon()
 
 /obj/item/stack/Destroy()
-	if(uses_charge)
-		return 1
 	if (src && usr && usr.machine == src)
 		usr << browse(null, "window=stack")
+	mid_delete = TRUE
 	return ..()
 
 /obj/item/stack/update_icon()
@@ -220,6 +221,8 @@
 /obj/item/stack/proc/can_merge(obj/item/stack/other)
 	if(!istype(other))
 		return FALSE
+	if(mid_delete || other.mid_delete)	// bandaid until new inventory code
+		return FALSE
 	return other.stacktype == stacktype
 
 /obj/item/stack/proc/use(var/used)
@@ -229,7 +232,7 @@
 		amount -= used
 		if (amount <= 0)
 			if(usr)
-				usr.remove_from_mob(src)
+				usr.remove_from_mob(src, null)
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
 		return 1

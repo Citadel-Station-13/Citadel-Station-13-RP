@@ -172,7 +172,7 @@
 				if(direct & WH.wind_dir)
 					. = max(. - (WH.wind_speed / 3), -1) // Wind speedup is capped to prevent supersonic speeds from a storm.
 				// Against it.
-				else if(direct & reverse_dir[WH.wind_dir])
+				else if(direct & GLOB.reverse_dir[WH.wind_dir])
 					. += (WH.wind_speed / 3)
 
 #undef HUMAN_LOWEST_SLOWDOWN
@@ -225,6 +225,8 @@
 
 // Handle footstep sounds
 /mob/living/carbon/human/handle_footstep(var/turf/T)
+	if(is_incorporeal())
+		return
 	if(!config_legacy.footstep_volume || !T.footstep_sounds || !T.footstep_sounds.len)
 		return
 	// Future Upgrades - Multi species support

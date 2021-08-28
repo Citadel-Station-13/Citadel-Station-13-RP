@@ -11,7 +11,7 @@
 	foldable = /obj/item/stack/material/cardboard
 	starts_with = list(/obj/item/reagent_containers/food/snacks/donut/normal = 6)
 
-/obj/item/storage/box/donut/Initialize()
+/obj/item/storage/box/donut/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -38,7 +38,7 @@
 	)
 	starts_with = list(/obj/item/reagent_containers/food/snacks/worm = 6)
 
-/obj/item/storage/box/wormcan/Initialize()
+/obj/item/storage/box/wormcan/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -71,7 +71,7 @@
 //Snowflake Survival Knife Code
 /obj/item/storage/box/survival_knife
 	name = "survival knife"
-	desc = "A hunting grade survival knife. The handle is hollow and may be unscrewed to store small survival items. Inset circuitry running along the spine implies a technical utility."
+	desc = "A hunting grade survival knife. The handle is hollow and may be unscrewed to store small survival items."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"

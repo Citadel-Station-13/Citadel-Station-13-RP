@@ -56,7 +56,7 @@ var/list/global/tank_gauge_cache = list()
 	src.proxyassembly = proxy
 
 
-/obj/item/tank/Initialize()
+/obj/item/tank/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -253,11 +253,11 @@ var/list/global/tank_gauge_cache = list()
 				mask_check = 1
 
 		if(mask_check)
-			if(location.wear_mask && (location.wear_mask.item_flags & AIRTIGHT))
+			if(location.wear_mask && (location.wear_mask.item_flags & ALLOWINTERNALS))
 				data["maskConnected"] = 1
 			else if(istype(location, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = location
-				if(H.head && (H.head.item_flags & AIRTIGHT))
+				if(H.head && (H.head.item_flags & ALLOWINTERNALS))
 					data["maskConnected"] = 1
 
 	// update the ui if it exists, returns null if no ui is passed/found
@@ -306,11 +306,11 @@ var/list/global/tank_gauge_cache = list()
 				location.internals.icon_state = "internal0"
 		else
 			var/can_open_valve
-			if(location.wear_mask && (location.wear_mask.item_flags & AIRTIGHT))
+			if(location.wear_mask && (location.wear_mask.item_flags & ALLOWINTERNALS))
 				can_open_valve = 1
 			else if(istype(location,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = location
-				if(H.head && (H.head.item_flags & AIRTIGHT))
+				if(H.head && (H.head.item_flags & ALLOWINTERNALS))
 					can_open_valve = 1
 
 			if(can_open_valve)
@@ -573,29 +573,29 @@ var/list/global/tank_gauge_cache = list()
 	src.overlays += "bomb_assembly"
 
 
-/obj/item/tank/phoron/onetankbomb/New()
-	..()
+/obj/item/tank/phoron/onetankbomb/Initialize(mapload)
+	. = ..()
 	src.onetankbomb()
 
-/obj/item/tank/oxygen/onetankbomb/New()
-	..()
+/obj/item/tank/oxygen/onetankbomb/Initialize(mapload)
+	. = ..()
 	src.onetankbomb()
 
 
-/obj/item/tank/phoron/onetankbomb/full/New()
-	..()
+/obj/item/tank/phoron/onetankbomb/full/Initialize(mapload)
+	. = ..()
 	src.onetankbomb(2)
 
-/obj/item/tank/oxygen/onetankbomb/full/New()
-	..()
+/obj/item/tank/oxygen/onetankbomb/full/Initialize(mapload)
+	. = ..()
 	src.onetankbomb(2)
 
-/obj/item/tank/phoron/onetankbomb/small/New()
-	..()
+/obj/item/tank/phoron/onetankbomb/small/Initialize(mapload)
+	. = ..()
 	src.onetankbomb(0)
 
-/obj/item/tank/oxygen/onetankbomb/small/New()
-	..()
+/obj/item/tank/oxygen/onetankbomb/small/Initialize(mapload)
+	. = ..()
 	src.onetankbomb(0)
 
 /////////////////////////////////

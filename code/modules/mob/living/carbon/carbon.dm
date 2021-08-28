@@ -1,4 +1,4 @@
-/mob/living/carbon/Initialize()
+/mob/living/carbon/Initialize(mapload)
 	. = ..()
 	//setup reagent holders
 	bloodstr = new/datum/reagents/metabolism/bloodstream(500, src)
@@ -103,8 +103,8 @@
 			var/mob/living/carbon/human/H = src
 			var/datum/gender/T = gender_datums[H.get_visible_gender()]
 			src.visible_message( \
-				"<font color='blue'>[src] examines [T.himself].</font>", \
-				"<font color='blue'>You check yourself for injuries.</font>" \
+				"<font color=#4F49AF>[src] examines [T.himself].</font>", \
+				"<font color=#4F49AF>You check yourself for injuries.</font>" \
 				)
 
 			for(var/obj/item/organ/external/org in H.organs)

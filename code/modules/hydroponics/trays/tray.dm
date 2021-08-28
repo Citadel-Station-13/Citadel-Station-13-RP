@@ -156,16 +156,16 @@
 		if(weedlevel > 0)
 			nymph.reagents.add_reagent("glucose", weedlevel)
 			weedlevel = 0
-			nymph.visible_message("<font color='blue'><b>[nymph]</b> begins rooting through [src], ripping out weeds and eating them noisily.</font>","<font color='blue'>You begin rooting through [src], ripping out weeds and eating them noisily.</font>")
+			nymph.visible_message("<font color=#4F49AF><b>[nymph]</b> begins rooting through [src], ripping out weeds and eating them noisily.</font>","<font color=#4F49AF>You begin rooting through [src], ripping out weeds and eating them noisily.</font>")
 		else if(nymph.nutrition > 100 && nutrilevel < 10)
 			nymph.nutrition -= ((10-nutrilevel)*5)
 			nutrilevel = 10
-			nymph.visible_message("<font color='blue'><b>[nymph]</b> secretes a trickle of green liquid, refilling [src].</font>","<font color='blue'>You secrete a trickle of green liquid, refilling [src].</font>")
+			nymph.visible_message("<font color=#4F49AF><b>[nymph]</b> secretes a trickle of green liquid, refilling [src].</font>","<font color=#4F49AF>You secrete a trickle of green liquid, refilling [src].</font>")
 		else
-			nymph.visible_message("<font color='blue'><b>[nymph]</b> rolls around in [src] for a bit.</font>","<font color='blue'>You roll around in [src] for a bit.</font>")
+			nymph.visible_message("<font color=#4F49AF><b>[nymph]</b> rolls around in [src] for a bit.</font>","<font color=#4F49AF>You roll around in [src] for a bit.</font>")
 		return
 
-/obj/machinery/portable_atmospherics/hydroponics/Initialize()
+/obj/machinery/portable_atmospherics/hydroponics/Initialize(mapload)
 	. = ..()
 	temp_chem_holder = new()
 	temp_chem_holder.create_reagents(10)
@@ -221,7 +221,6 @@
 	. = ..()
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
-	return FALSE
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/check_health()
 	if(seed && !dead && health <= 0)

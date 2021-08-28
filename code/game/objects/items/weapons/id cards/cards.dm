@@ -27,7 +27,7 @@
 	var/list/files = list(  )
 	pickup_sound = 'sound/items/pickup/card.ogg'
 
-/obj/item/card/New()
+/obj/item/card/Initialize(mapload)
 	. = ..()
 	reset_icon()
 

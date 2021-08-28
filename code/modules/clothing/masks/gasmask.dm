@@ -2,7 +2,7 @@
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air."
 	icon_state = "gas_alt"
-	item_flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT | ALLOW_SURVIVALFOOD
+	item_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
 	body_parts_covered = FACE|EYES
 	w_class = ITEMSIZE_NORMAL
@@ -28,10 +28,10 @@
 	return gas_filtered
 
 // Our clear gas masks don't hide faces, but changing the var on mask/gas would require un-chaging it on all children. This is nicer.
-/obj/item/clothing/mask/gas/New()
+/obj/item/clothing/mask/gas/Initialize(mapload)
+	. = ..()
 	if(type == /obj/item/clothing/mask/gas)
 		flags_inv &= ~HIDEFACE
-	..()
 
 /obj/item/clothing/mask/gas/clear
 	name = "gas mask"
@@ -58,7 +58,7 @@
 			gas_transfer_coefficient = 1
 			gas_filter_strength = 0
 			body_parts_covered = body_parts_covered & ~FACE
-			item_flags = item_flags & ~BLOCK_GAS_SMOKE_EFFECT & ~AIRTIGHT
+			item_flags = item_flags & ~BLOCK_GAS_SMOKE_EFFECT & ~ALLOWINTERNALS
 			flags_inv = 0
 			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 			icon_state = "halfgas_up"
@@ -104,7 +104,7 @@
 	name = "\improper alien mask"
 	desc = "Clearly not designed for a human face."
 	flags = PHORONGUARD
-	item_flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT
+	item_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
 	species_restricted = list(SPECIES_VOX)
 	filtered_gases = list(/datum/gas/oxygen, /datum/gas/nitrous_oxide)
 	var/mask_open = FALSE	// Controls if the Vox can eat through this mask
@@ -324,3 +324,36 @@
 	name = "skeleton mask"
 	desc = "A crude plastic skull mask that is somehow still airtight."
 	icon_state = "death"
+
+//DONATOR ITEM
+
+
+/obj/item/clothing/mask/gas/orchid
+	name = "Orchid's Mask"
+	desc = "A porcelain mask with black eyes and no mouth."
+	icon_state = "iacc_w"
+	flags_inv = HIDEEARS|HIDEFACE
+	item_state_slots = list(slot_r_hand_str = "iacc", slot_l_hand_str = "iacc")
+	var/design = 1
+
+/obj/item/clothing/mask/gas/orchid/proc/change_mask()
+
+	switch(design)
+		if(0)
+			icon_state = "iacc_w"
+			design = 1
+		if(1)
+			icon_state = "iacc_r"
+			design = 2
+		if(2)
+			icon_state = "iacc_b"
+			design = 0
+	update_clothing_icon()
+
+/obj/item/clothing/mask/gas/orchid/verb/toggle_design()
+
+	set name = "Change Design"
+	set category = "Object"
+	set src in usr
+
+	change_mask(usr)

@@ -30,24 +30,12 @@
 	display_name = "Camera"
 	path = /obj/item/camera
 
-/datum/gear/utility/codex
-	display_name = "The Traveler's Guide to Vir"
-	path = /obj/item/book/codex
-	cost = 0
-
 /datum/gear/utility/news
 	display_name = "Daedalus Pocket Newscaster"
 	path = /obj/item/book/codex/lore/news
 	cost = 0
 
-/* //VORESTATION REMOVAL
-/datum/gear/utility/corp_regs
-	display_name = "corporate regulations and legal code"
-	path = /obj/item/book/codex/corp_regs
-	cost = 0
-*/
-
-/datum/gear/utility/robutt
+/datum/gear/utility/fbp_guide
 	display_name = "A Buyer's Guide To Artificial Bodies"
 	path = /obj/item/book/codex/lore/robutt
 	cost = 0
@@ -118,12 +106,6 @@
 /datum/gear/utility/implant
 	slot = "implant"
 	exploitable = 0
-
-/datum/gear/utility/implant/backup
-	display_name= "Implant - Mind Backup"
-	slot = "implant"
-	cost = 2
-	path = /obj/item/implant/backup
 
 /datum/gear/utility/implant/tracking
 	display_name = "Implant - Tracking"
@@ -232,30 +214,6 @@ modular computers
 	..()
 	gear_tweaks += new /datum/gear_tweak/laptop()
 
-/datum/gear/utility/saddlebag
-	display_name = "Saddle Bag - Horse"
-	path = /obj/item/storage/backpack/saddlebag
-	slot = slot_back
-	cost = 2
-
-/datum/gear/utility/saddlebag_common
-	display_name = "Saddle Bag - Common"
-	path = /obj/item/storage/backpack/saddlebag_common
-	slot = slot_back
-	cost = 2
-
-/datum/gear/utility/saddlebag_common/robust
-	display_name = "Saddle Bag - Robust"
-	path = /obj/item/storage/backpack/saddlebag_common/robust
-	slot = slot_back
-	cost = 2
-
-/datum/gear/utility/saddlebag_common/vest
-	display_name = "Taur Duty Vest - Backpack"
-	path = /obj/item/storage/backpack/saddlebag_common/vest
-	slot = slot_back
-	cost = 1
-
 /datum/gear/utility/dufflebag
 	display_name = "Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag
@@ -266,26 +224,40 @@ modular computers
 	display_name = "Dufflebag - Black"
 	path = /obj/item/storage/backpack/dufflebag/fluff
 
-/datum/gear/utility/dufflebag/med
-	display_name = "Dufflebag - Medical"
-	path = /obj/item/storage/backpack/dufflebag/med
-	allowed_roles = list("Medical Doctor","Chief Medical Officer","Chemist","Paramedic","Geneticist","Psychiatrist","Field Medic")
+/datum/gear/utility/welding_helmet
+	display_name = "Welding Helmet"
+	path = /obj/item/clothing/head/welding
+	cost = 2
 
-/datum/gear/utility/dufflebag/med/emt
-	display_name = "Dufflebag - Medical EMT"
-	path = /obj/item/storage/backpack/dufflebag/emt
+/datum/gear/utility/welding_helmet/demon
+	display_name = "Welding Helmet - Demon"
+	path = /obj/item/clothing/head/welding/demon
 
-/datum/gear/utility/dufflebag/sec
-	display_name = "Dufflebag - Security"
-	path = /obj/item/storage/backpack/dufflebag/sec
-	allowed_roles = list("Head of Security","Warden","Detective","Security Officer")
+/datum/gear/utility/welding_helmet/knight
+	display_name = "Welding Helmet - Knight"
+	path = /obj/item/clothing/head/welding/knight
 
-/datum/gear/utility/dufflebag/eng
-	display_name = "Dufflebag - Engineering"
-	path = /obj/item/storage/backpack/dufflebag/eng
-	allowed_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer")
+/datum/gear/utility/welding_helmet/fancy
+	display_name = "Welding Helmet - Fancy"
+	path = /obj/item/clothing/head/welding/fancy
 
-/datum/gear/utility/dufflebag/sci
-	display_name = "Dufflebag - Science"
-	path = /obj/item/storage/backpack/dufflebag/sci
-	allowed_roles = list("Research Director","Scientist","Roboticist","Xenobiologist","Explorer","Pathfinder")
+/datum/gear/utility/welding_helmet/engie
+	display_name = "Welding Helmet - Engie"
+	path = /obj/item/clothing/head/welding/engie
+
+/datum/gear/utility/webbing
+	display_name = "Webbing - Simple"
+	path = /obj/item/clothing/accessory/storage/webbing
+	cost = 2
+
+/datum/gear/utility/webbing/brown
+	display_name = "Webbing - Brown"
+	path = /obj/item/clothing/accessory/storage/brown_vest
+
+/datum/gear/utility/webbing/black
+	display_name = "Webbing - Black"
+	path = /obj/item/clothing/accessory/storage/black_vest
+
+/datum/gear/utility/webbing/white
+	display_name = "Webbing - White" //it's a nice day for a / white webbing
+	path = /obj/item/clothing/accessory/storage/white_vest

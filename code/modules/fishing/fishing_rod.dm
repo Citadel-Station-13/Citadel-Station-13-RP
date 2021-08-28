@@ -47,8 +47,8 @@
 	else
 		..()
 
-/obj/item/material/fishing_rod/Initialize()
-	..()
+/obj/item/material/fishing_rod/Initialize(mapload)
+	. = ..()
 	update_icon()
 
 /obj/item/material/fishing_rod/attackby(obj/item/I as obj, mob/user as mob)

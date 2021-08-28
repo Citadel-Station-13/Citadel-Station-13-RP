@@ -1,6 +1,5 @@
-/mob/living/New()
-	..()
-
+/mob/living/Initialize(mapload)
+	. = ..()
 	//Prime this list if we need it.
 	if(has_huds)
 		add_overlay(backplane,TRUE) //Strap this on here, to block HUDs from appearing in rightclick menus: http://www.byond.com/forum/?post=2336679
@@ -19,6 +18,13 @@
 	selected_image = image(icon = 'icons/mob/screen1.dmi', loc = src, icon_state = "centermarker")
 
 /mob/living/Destroy()
+	if(LAZYLEN(status_effects))
+		for(var/s in status_effects)
+			var/datum/status_effect/S = s
+			if(S.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
+				qdel(S)
+			else
+				S.be_replaced()
 	dsoverlay.loc = null //I'll take my coat with me
 	dsoverlay = null
 	if(nest) //Ew.
@@ -88,9 +94,9 @@ default behaviour is:
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
 		src.death()
-		to_chat(src, "<font color='blue'>You have given up life and succumbed to death.</font>")
+		to_chat(src, "<font color=#4F49AF>You have given up life and succumbed to death.</font>")
 	else
-		to_chat(src, "<font color='blue'>You are not injured enough to succumb to death!</font>")
+		to_chat(src, "<font color=#4F49AF>You are not injured enough to succumb to death!</font>")
 
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
@@ -623,9 +629,9 @@ default behaviour is:
 		if (C.legcuffed && !initial(C.legcuffed))
 			C.drop_from_inventory(C.legcuffed)
 		C.legcuffed = initial(C.legcuffed)
-	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
-	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
-	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
+	BITSET(hud_updateflag, HEALTH_HUD)
+	BITSET(hud_updateflag, STATUS_HUD)
+	BITSET(hud_updateflag, LIFE_HUD)
 	ExtinguishMob()
 	fire_stacks = 0
 	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
@@ -675,9 +681,9 @@ default behaviour is:
 	// make the icons look correct
 	regenerate_icons()
 
-	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
-	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
-	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
+	BITSET(hud_updateflag, HEALTH_HUD)
+	BITSET(hud_updateflag, STATUS_HUD)
+	BITSET(hud_updateflag, LIFE_HUD)
 
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()
@@ -733,11 +739,11 @@ default behaviour is:
 	//Breaking out of a locker?
 	if( src.loc && (istype(src.loc, /obj/structure/closet)) )
 		var/obj/structure/closet/C = loc
-		spawn() C.mob_breakout(src)
+		C.mob_breakout(src)
 		return TRUE
 
 	if(istype(loc,/obj/item/clothing))
-		spawn() escape_clothes(loc)
+		escape_clothes(loc)
 
 	if(attempt_vr(src,"vore_process_resist",args)) return TRUE //VOREStation Code
 
@@ -928,8 +934,12 @@ default behaviour is:
 
 	if(lying)
 		density = 0
-		if(l_hand) unEquip(l_hand)
-		if(r_hand) unEquip(r_hand)
+		if(l_hand)
+			unEquip(l_hand)
+		if(r_hand)
+			unEquip(r_hand)
+		for(var/obj/item/holder/H in get_mob_riding_slots())
+			unEquip(H)
 		update_water() // Submerges the mob.
 	else
 		density = initial(density)
@@ -956,6 +966,10 @@ default behaviour is:
 		//VOREStation Add End
 
 	return canmove
+
+// Mob holders in these slots will be spilled if the mob goes prone.
+/mob/living/proc/get_mob_riding_slots()
+	return list(back)
 
 // Adds overlays for specific modifiers.
 // You'll have to add your own implementation for non-humans currently, just override this proc.
@@ -1197,11 +1211,3 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
-
-//Adds the anti-magic check back in.
-/mob/living/proc/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
-//	. = ..()
-//	if(.)
-//		return
-	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
-		return src

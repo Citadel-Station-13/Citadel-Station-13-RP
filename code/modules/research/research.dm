@@ -229,7 +229,8 @@ research holder datum.
 	matter = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
 	var/datum/tech/stored
 
-/obj/item/disk/tech_disk/New()
+/obj/item/disk/tech_disk/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(-5.0, 5)
 	pixel_y = rand(-5.0, 5)
 
@@ -243,6 +244,7 @@ research holder datum.
 	matter = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
 	var/datum/design/blueprint
 
-/obj/item/disk/design_disk/New()
+/obj/item/disk/design_disk/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(-5.0, 5)
 	pixel_y = rand(-5.0, 5)

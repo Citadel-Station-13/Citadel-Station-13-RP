@@ -17,8 +17,8 @@ var/global/list/rad_collectors = list()
 	var/locked = 0
 	var/drainratio = 1
 
-/obj/machinery/power/rad_collector/New()
-	..()
+/obj/machinery/power/rad_collector/Initialize(mapload)
+	. = ..()
 	rad_collectors += src
 
 /obj/machinery/power/rad_collector/Destroy()
@@ -77,7 +77,7 @@ var/global/list/rad_collectors = list()
 			return 1
 	else if(W.is_wrench())
 		if(P)
-			to_chat(user, "<font color='blue'>Remove the phoron tank first.</font>")
+			to_chat(user, "<font color=#4F49AF>Remove the phoron tank first.</font>")
 			return 1
 		playsound(src, W.usesound, 75, 1)
 		src.anchored = !src.anchored
@@ -129,7 +129,7 @@ var/global/list/rad_collectors = list()
 /obj/machinery/power/rad_collector/proc/receive_pulse(var/pulse_strength)
 	if(P && active)
 		var/power_produced = 0
-		power_produced = P.air_contents.gas[/datum/gas/phoron]*pulse_strength*20
+		power_produced = (min(P.air_contents.gas[/datum/gas/phoron], 1000)) * pulse_strength * 20
 		add_avail(power_produced)
 		last_power_new = power_produced
 		return

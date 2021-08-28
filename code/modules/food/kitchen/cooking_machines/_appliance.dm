@@ -15,8 +15,8 @@
 
 	use_power = 0
 	idle_power_usage = 5			// Power used when turned on, but not processing anything
-	active_power_usage = 1000		// Power used when turned on and actively cooking something
-	var/initial_active_power_usage = 1000
+	active_power_usage = 5000		// Power used when turned on and actively cooking something
+	var/initial_active_power_usage = 5000
 
 	var/cooking_power  = 1
 	var/initial_cooking_power = 1
@@ -42,7 +42,7 @@
 
 	var/combine_first = 0//If 1, this appliance will do combinaiton cooking before checking recipes
 
-/obj/machinery/appliance/New()
+/obj/machinery/appliance/Initialize(mapload, newdir)
 	. = ..()
 	component_parts = list()
 	component_parts += /obj/item/circuitboard/cooking

@@ -19,7 +19,7 @@
 	density = 1
 	opacity = 1
 
-/obj/structure/bookcase/Initialize()
+/obj/structure/bookcase/Initialize(mapload)
 	. = ..()
 	for(var/obj/item/I in loc)
 		if(istype(I, /obj/item/book))

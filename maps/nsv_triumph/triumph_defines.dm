@@ -1,27 +1,28 @@
 // Normal map defs
-#define Z_LEVEL_DECK_ONE				1
-#define Z_LEVEL_DECK_TWO				2
-#define Z_LEVEL_DECK_THREE				3
-#define Z_LEVEL_DECK_FOUR				4
-#define Z_LEVEL_CENTCOM					5
-#define Z_LEVEL_MISC					6
-#define Z_LEVEL_SHIPS					7
+// Z1 is dynamic transit.
+#define Z_LEVEL_DECK_ONE				2
+#define Z_LEVEL_DECK_TWO				3
+#define Z_LEVEL_DECK_THREE				4
+#define Z_LEVEL_DECK_FOUR				5
+#define Z_LEVEL_CENTCOM					6
+#define Z_LEVEL_MISC					7
+#define Z_LEVEL_SHIPS					8
 
-#define Z_LEVEL_DEBRISFIELD				8
-#define Z_LEVEL_PIRATEBASE				9
-#define Z_LEVEL_MININGPLANET			10
-#define Z_LEVEL_UNKNOWN_PLANET			11
-#define Z_LEVEL_DESERT_PLANET			12
-#define Z_LEVEL_GAIA_PLANET				13
-#define Z_LEVEL_FROZEN_PLANET			14
+#define Z_LEVEL_DEBRISFIELD				9
+#define Z_LEVEL_PIRATEBASE				10
+#define Z_LEVEL_MININGPLANET			11
+#define Z_LEVEL_UNKNOWN_PLANET			12
+#define Z_LEVEL_DESERT_PLANET			13
+#define Z_LEVEL_GAIA_PLANET				14
+#define Z_LEVEL_FROZEN_PLANET			15
 
-#define Z_LEVEL_ROGUEMINE_1				15
-#define Z_LEVEL_ROGUEMINE_2				16
-#define Z_LEVEL_ROGUEMINE_3				17
-#define Z_LEVEL_ROGUEMINE_4				18
+#define Z_LEVEL_ROGUEMINE_1				16
+#define Z_LEVEL_ROGUEMINE_2				17
+#define Z_LEVEL_ROGUEMINE_3				18
+#define Z_LEVEL_ROGUEMINE_4				19
 
-#define Z_LEVEL_TRADEPORT				19
-#define Z_LEVEL_LAVALAND				20
+#define Z_LEVEL_TRADEPORT				20
+#define Z_LEVEL_LAVALAND				21
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
 #define NETWORK_TCOMMS "Telecommunications"
@@ -43,7 +44,7 @@
 	zlevel_datum_type = /datum/map_z_level/triumph
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8")
+	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\triumph\triumph_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
@@ -183,21 +184,6 @@
 /datum/skybox_settings/triumph/New()
 	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
 	return icon_state
-
-// Short range computers see only the main levels, others can see the surrounding surface levels.
-/datum/map/triumph/get_map_levels(var/srcz, var/long_range = TRUE)
-	if (long_range && (srcz in map_levels))
-		return map_levels
-	else if (srcz == Z_LEVEL_SHIPS || srcz == Z_LEVEL_MISC)
-		return list() //no longer return signals in key transit levels, this means some runtimes from CWCs but
-	else if (srcz >= Z_LEVEL_DECK_ONE && srcz <= Z_LEVEL_DECK_FOUR)
-		return list(
-		Z_LEVEL_DECK_ONE,
-		Z_LEVEL_DECK_TWO,
-		Z_LEVEL_DECK_THREE,
-		Z_LEVEL_DECK_FOUR)
-	else
-		return list(srcz)	// May prevent runtimes, but more importantly gives gps units a shortwave-esque function
 
 // For making the 4-in-1 holomap, we calculate some offsets
 #define TRIUMPH_MAP_SIZE 140 // Width and height of compiled in triumph z levels.

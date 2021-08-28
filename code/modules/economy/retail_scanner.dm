@@ -24,12 +24,12 @@
 
 
 // Claim machine ID
-/obj/item/retail_scanner/New()
+/obj/item/retail_scanner/Initialize(mapload)
+	. = ..()
 	machine_id = "[station_name()] RETAIL #[num_financial_terminals++]"
 	if(locate(/obj/structure/table) in loc)
 		pixel_y = 3
 	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
-
 
 // Always face the user when put on a table
 /obj/item/retail_scanner/afterattack(atom/movable/AM, mob/user, proximity)
@@ -42,20 +42,18 @@
 
 // Reset dir when picked back up
 /obj/item/retail_scanner/pickup(mob/user)
-	src.dir = SOUTH
-	src.pixel_y = 0
-
+	. = ..()
+	setDir(SOUTH)
+	pixel_y = 0
 
 /obj/item/retail_scanner/attack_self(mob/user as mob)
 	user.set_machine(src)
 	interact(user)
 
-
 /obj/item/retail_scanner/AltClick(var/mob/user)
 	if(Adjacent(user))
 		user.set_machine(src)
 		interact(user)
-
 
 /obj/item/retail_scanner/interact(mob/user as mob)
 	var/dat = "<h2>Retail Scanner<hr></h2>"

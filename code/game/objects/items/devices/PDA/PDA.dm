@@ -381,44 +381,44 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		return
 
-/obj/item/pda/multicaster/command/New()
-	..()
+/obj/item/pda/multicaster/command/Initialize(mapload)
+	. = ..()
 	owner = "Command Department"
 	name = "Command Department (Relay)"
 	cartridges_to_send_to = command_cartridges
 
-/obj/item/pda/multicaster/security/New()
-	..()
+/obj/item/pda/multicaster/security/Initialize(mapload)
+	. = ..()
 	owner = "Security Department"
 	name = "Security Department (Relay)"
 	cartridges_to_send_to = security_cartridges
 
-/obj/item/pda/multicaster/engineering/New()
-	..()
+/obj/item/pda/multicaster/engineering/Initialize(mapload)
+	. = ..()
 	owner = "Engineering Department"
 	name = "Engineering Department (Relay)"
 	cartridges_to_send_to = engineering_cartridges
 
-/obj/item/pda/multicaster/medical/New()
-	..()
+/obj/item/pda/multicaster/medical/Initialize(mapload)
+	. = ..()
 	owner = "Medical Department"
 	name = "Medical Department (Relay)"
 	cartridges_to_send_to = medical_cartridges
 
-/obj/item/pda/multicaster/research/New()
-	..()
+/obj/item/pda/multicaster/research/Initialize(mapload)
+	. = ..()
 	owner = "Research Department"
 	name = "Research Department (Relay)"
 	cartridges_to_send_to = research_cartridges
 
-/obj/item/pda/multicaster/cargo/New()
-	..()
+/obj/item/pda/multicaster/cargo/Initialize(mapload)
+	. = ..()
 	owner = "Cargo Department"
 	name = "Cargo Department (Relay)"
 	cartridges_to_send_to = cargo_cartridges
 
-/obj/item/pda/multicaster/civilian/New()
-	..()
+/obj/item/pda/multicaster/civilian/Initialize(mapload)
+	. = ..()
 	owner = "Civilian Services Department"
 	name = "Civilian Services Department (Relay)"
 	cartridges_to_send_to = civilian_cartridges
@@ -645,7 +645,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 		data["feed"] = feed
 
-	data["manifest"] = PDA_Manifest
+	data["manifest"] = GLOB.PDA_Manifest
 
 	nanoUI = data
 	// update the ui if it exists, returns null if no ui is passed/found
@@ -1138,7 +1138,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			var/who = src.owner
 			if(prob(50))
 				who = P.owner
-			for(var/mob/living/silicon/ai/ai in mob_list)
+			for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
 				// Allows other AIs to intercept the message but the AI won't intercept their own message.
 				if(ai.aiPDA != P && ai.aiPDA != src)
 					ai.show_message("<i>Intercepted message from <b>[who]</b>: [t]</i>")
@@ -1483,8 +1483,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	QDEL_NULL(src.pai)
 	return ..()
 
-/obj/item/pda/clown/Crossed(AM as mob|obj) //Clown PDA is slippery.
+/obj/item/pda/clown/Crossed(atom/movable/AM as mob|obj) //Clown PDA is slippery.
 	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 
@@ -1581,3 +1583,22 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(isnull(results))
 		results = list(list("entry" = "pressure", "units" = "kPa", "val" = "0", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80))
 	return results
+
+//VR FILE MERGE
+/obj/item/pda/centcom
+	default_cartridge = /obj/item/cartridge/captain
+	icon_state = "pda-h"
+	detonate = 0
+//	hidden = 1
+
+/obj/item/pda/pathfinder
+	default_cartridge = /obj/item/cartridge/signal/science
+	icon_state = "pda-lawyer-old"
+
+/obj/item/pda/explorer
+	default_cartridge = /obj/item/cartridge/signal/science
+	icon_state = "pda-det"
+
+/obj/item/pda/sar
+	default_cartridge = /obj/item/cartridge/medical
+	icon_state = "pda-h"

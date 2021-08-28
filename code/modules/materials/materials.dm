@@ -221,13 +221,13 @@ var/list/name_to_material
 
 // General wall debris product placement.
 // Not particularly necessary aside from snowflakey cult girders.
-/datum/material/proc/place_dismantled_product(var/turf/target)
-	place_sheet(target)
+/datum/material/proc/place_dismantled_product(turf/target, amount)
+	place_sheet(target, amount)
 
 // Debris product. Used ALL THE TIME.
-/datum/material/proc/place_sheet(var/turf/target)
+/datum/material/proc/place_sheet(turf/target, amount)
 	if(stack_type)
-		return new stack_type(target)
+		return new stack_type(target, ispath(stack_type, /obj/item/stack)? amount : null)
 
 // As above.
 /datum/material/proc/place_shard(var/turf/target)
@@ -500,7 +500,7 @@ var/list/name_to_material
 	conductivity = 1 // Glass shards don't conduct.
 	door_icon_base = "stone"
 	destruction_desc = "shatters"
-	window_options = list("One Direction" = 1, "Full Window" = 4, "Windoor" = 2)
+	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
 	created_window = /obj/structure/window/basic
 	created_fulltile_window = /obj/structure/window/basic/full
 	rod_product = /obj/item/stack/material/glass/reinforced
@@ -526,7 +526,7 @@ var/list/name_to_material
 		return 1
 
 	// Get data for building windows here.
-	var/list/possible_directions = cardinal.Copy()
+	var/list/possible_directions = GLOB.cardinal.Copy()
 	var/window_count = 0
 	for (var/obj/structure/window/check_window in user.loc)
 		window_count++
@@ -593,7 +593,7 @@ var/list/name_to_material
 	weight = 30
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	composite_material = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 2, "glass" = SHEET_MATERIAL_AMOUNT)
-	window_options = list("One Direction" = 1, "Full Window" = 4, "Windoor" = 2)
+	window_options = list("One Direction" = 1, "Full Window" = 2, "Windoor" = 2)
 	created_window = /obj/structure/window/reinforced
 	created_fulltile_window = /obj/structure/window/reinforced/full
 	wire_product = null
@@ -607,7 +607,7 @@ var/list/name_to_material
 	integrity = 100
 	icon_colour = "#FC2BC5"
 	stack_origin_tech = list(TECH_MATERIAL = 4)
-	window_options = list("One Direction" = 1, "Full Window" = 4)
+	window_options = list("One Direction" = 1, "Full Window" = 2)
 	created_window = /obj/structure/window/phoronbasic
 	created_fulltile_window = /obj/structure/window/phoronbasic/full
 	wire_product = null
@@ -619,7 +619,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/glass/phoronrglass
 	stack_origin_tech = list(TECH_MATERIAL = 5)
 	composite_material = list() //todo
-	window_options = list("One Direction" = 1, "Full Window" = 4)
+	window_options = list("One Direction" = 1, "Full Window" = 2)
 	created_window = /obj/structure/window/phoronreinforced
 	created_fulltile_window = /obj/structure/window/phoronreinforced/full
 	hardness = 40
@@ -1238,5 +1238,5 @@ var/list/name_to_material
 	icon_state = "sandbags"
 	no_variants = FALSE
 
-	default_type = "sandbags"
+	default_type = "sandbag"
 	perunit = 1

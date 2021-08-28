@@ -26,12 +26,13 @@
 	var/species = SPECIES_HUMAN
 	delete_me = TRUE
 
-/obj/effect/landmark/corpse/Initialize()
-	..()
+/obj/effect/landmark/corpse/Initialize(mapload)
+	. = ..()
 	createCorpse()
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/corpse/proc/createCorpse() //Creates a mob and checks for gear in each slot before attempting to equip it.
+	set waitfor = FALSE
 	var/mob/living/carbon/human/M = new /mob/living/carbon/human (src.loc)
 	M.set_species(species)
 	M.real_name = src.name
@@ -232,3 +233,9 @@
 	corpseid = 1
 	corpseidjob = "Commander"
 	corpseidaccess = "Captain"
+
+/obj/effect/landmark/corpse/vintage/pilot
+	name = "Unknown Pilot"
+	corpsesuit = /obj/item/clothing/suit/space/void/refurb/pilot
+	corpsehelmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot
+	corpseidjob = "Pilot"

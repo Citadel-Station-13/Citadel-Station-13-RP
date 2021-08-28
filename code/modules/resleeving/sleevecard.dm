@@ -29,9 +29,9 @@
 	if(istype(rig))
 		rig.forced_move(direction, user)
 
-/obj/item/sleevecard/New()
-	..()
-	overlays += "pai-off"
+/obj/item/sleevecard/Initialize(mapload)
+	. = ..()
+	add_overlay("pai-off")
 	radio = new(src)
 
 /obj/item/sleevecard/Destroy()
@@ -51,7 +51,7 @@
 
 //This is a 'hard' proc, it does no permission checking, do that on the computer
 /obj/item/sleevecard/proc/sleeveInto(var/datum/transhuman/mind_record/MR)
-	infomorph = new(src,MR.mindname)
+	infomorph = new(src, src, MR.mindname)
 
 	for(var/datum/language/L in MR.languages)
 		infomorph.add_language(L.name)

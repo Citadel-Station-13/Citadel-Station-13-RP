@@ -40,7 +40,7 @@
 	drop_sound = 'sound/items/drop/weldingtool.ogg'
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
 
-/obj/item/weldingtool/Initialize()
+/obj/item/weldingtool/Initialize(mapload)
 	. = ..()
 //	var/random_fuel = min(rand(10,20),max_fuel)
 	var/datum/reagents/R = new/datum/reagents(max_fuel)
@@ -470,7 +470,7 @@
 	always_process = TRUE
 	var/obj/item/weldpack/mounted_pack = null
 
-/obj/item/weldingtool/tubefed/Initialize()
+/obj/item/weldingtool/tubefed/Initialize(mapload)
 	. = ..()
 	if(istype(loc, /obj/item/weldpack))
 		var/obj/item/weldpack/holder = loc
@@ -536,7 +536,7 @@
 /obj/item/weldingtool/electric/unloaded
 	cell_type = null
 
-/obj/item/weldingtool/electric/Initialize()
+/obj/item/weldingtool/electric/Initialize(mapload)
 	. = ..()
 	if(cell_type == null)
 		update_icon()
@@ -646,5 +646,27 @@
 
 /obj/item/weldingtool/electric/mounted/cyborg
 	toolspeed = 0.5
+
+/obj/item/weldingtool/electric/mounted/exosuit
+	var/obj/item/mecha_parts/mecha_equipment/equip_mount = null
+	flame_intensity = 1
+	eye_safety_modifier = 2
+	always_process = TRUE
+
+/obj/item/weldingtool/electric/mounted/exosuit/Initialize()
+	. = ..()
+
+	if(istype(loc, /obj/item/mecha_parts/mecha_equipment))
+		equip_mount = loc
+
+/obj/item/weldingtool/electric/mounted/exosuit/process()
+	..()
+
+	if(equip_mount && equip_mount.chassis)
+		var/obj/mecha/M = equip_mount.chassis
+		if(M.selected == equip_mount && get_fuel())
+			setWelding(TRUE, M.occupant)
+		else
+			setWelding(FALSE, M.occupant)
 
 #undef WELDER_FUEL_BURN_INTERVAL

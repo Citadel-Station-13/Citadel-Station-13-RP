@@ -18,13 +18,14 @@ GLOBAL_LIST(topic_status_cache)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
-	enable_debugger()
+	// enable_debugger()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
 	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
+	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 
 
@@ -64,23 +65,15 @@ GLOBAL_LIST(topic_status_cache)
 
 	. = ..()
 
-#if UNIT_TEST
-	log_unit_test("Unit Tests Enabled.  This will destroy the world when testing is complete.")
-	log_unit_test("If you did not intend to enable this please check code/__defines/unit_testing.dm")
-#endif
-
 	// Set up roundstart seed list.
-	plant_controller = new()
+	plant_controller = new
+
+	// *sighs*
+	job_master = new
+	job_master.SetupOccupations()
 
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
-
-	// Loads all the pre-made submap templates.
-	load_map_templates()
-
-	if(config_legacy.generate_map)
-		if(GLOB.using_map.perform_map_generation())
-			GLOB.using_map.refresh_mining_turfs()
 
 	// Create frame types.
 	populate_frame_types()
@@ -96,21 +89,30 @@ GLOBAL_LIST(topic_status_cache)
 
 	Master.Initialize(10, FALSE)
 
-#if UNIT_TEST
-	spawn(1)
-		initialize_unit_tests()
-#endif
+	#ifdef UNIT_TESTS
+	HandleTestRun()
+	#endif
 
-	spawn(3000)		//so we aren't adding to the round-start lag
-		if(config_legacy.ToRban)
-			ToRban_autoupdate()
-
-	return
+	if(config_legacy.ToRban)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/ToRban_autoupdate), 5 MINUTES)
 
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
 	GLOB.tgs_initialized = TRUE
+
+/world/proc/HandleTestRun()
+	//trigger things to run the whole process
+	Master.sleep_offline_after_initializations = FALSE
+	SSticker.start_immediately = TRUE
+	CONFIG_SET(number/round_end_countdown, 0)
+	var/datum/callback/cb
+#ifdef UNIT_TESTS
+	cb = CALLBACK(GLOBAL_PROC, /proc/RunUnitTests)
+#else
+	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
+#endif
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/_addtimer, cb, 10 SECONDS))
 
 /world/proc/SetupLogs()
 	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
@@ -199,6 +201,27 @@ GLOBAL_LIST(topic_status_cache)
 	handler = new handler()
 	return handler.TryRun(input)
 
+/world/proc/FinishTestRun()
+	set waitfor = FALSE
+	var/list/fail_reasons
+	if(GLOB)
+		if(GLOB.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
+#ifdef UNIT_TESTS
+		if(GLOB.failed_any_test)
+			LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
+		if(!GLOB.log_directory)
+			LAZYADD(fail_reasons, "Missing GLOB.log_directory!")
+	else
+		fail_reasons = list("Missing GLOB!")
+	if(!fail_reasons)
+		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
+	else
+		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
+	sleep(0)	//yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src)	//shut it down
+
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
 		if (usr)
@@ -215,11 +238,10 @@ GLOBAL_LIST(topic_status_cache)
 
 	TgsReboot()
 
-/*
-	if(TEST_RUN_PARAMETER in params)
-		FinishTestRun()
-		return
-*/
+	#ifdef UNIT_TESTS
+	FinishTestRun()
+	return
+	#endif
 
 /*
 	if(TgsAvailable())
@@ -327,7 +349,7 @@ GLOBAL_LIST(topic_status_cache)
 	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
 	s += "</a>"
 	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
-	s += "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
+	s += CONFIG_GET(string/tagline)
 
 	s += ")"
 

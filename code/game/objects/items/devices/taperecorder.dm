@@ -436,7 +436,7 @@
 		return
 	..()
 
-
 //Random colour tapes
-/obj/item/cassette_tape/random/New()
+/obj/item/cassette_tape/random/Initialize(mapload)
+	. = ..()
 	icon_state = "tape_[pick("white", "blue", "red", "yellow", "purple")]"

@@ -19,7 +19,8 @@
 	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
 	var/obj/item/radio/headset/mmi_radio/radio = null//Let's give it a radio.
 
-/obj/item/mmi/New()
+/obj/item/mmi/Initialize(mapload)
+	. = ..()
 	radio = new(src)//Spawns a radio inside the MMI.
 
 /obj/item/mmi/verb/toggle_radio()
@@ -178,7 +179,8 @@
 	mecha = null//This does not appear to be used outside of reference in mecha.dm.
 	var/ghost_query_type = null
 
-/obj/item/mmi/digital/New()
+/obj/item/mmi/digital/Initialize(mapload)
+	. = ..()
 	src.brainmob = new(src)
 //	src.brainmob.add_language("Robot Talk")//No binary without a binary communication device
 	src.brainmob.add_language(LANGUAGE_GALCOM)
@@ -237,7 +239,7 @@
 /obj/item/mmi/digital/attack_self(mob/user as mob)
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
-		to_chat(user, "<font color='blue'>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")
+		to_chat(user, "<font color=#4F49AF>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")
 		request_player()
 
 /obj/item/mmi/digital/proc/request_player()
@@ -261,7 +263,7 @@
 
 	var/turf/T = get_turf_or_move(src.loc)
 	for (var/mob/M in viewers(T))
-		M.show_message("<font color='blue'>\The [src] buzzes quietly, and the golden lights fade away. Perhaps you could try again?</font>")
+		M.show_message("<font color=#4F49AF>\The [src] buzzes quietly, and the golden lights fade away. Perhaps you could try again?</font>")
 
 /obj/item/mmi/digital/proc/transfer_personality(var/mob/candidate)
 	announce_ghost_joinleave(candidate, 0, "They are occupying a synthetic brain now.")
@@ -279,7 +281,7 @@
 
 	var/turf/T = get_turf_or_move(src.loc)
 	for (var/mob/M in viewers(T))
-		M.show_message("<font color='blue'>\The [src] chimes quietly.</font>")
+		M.show_message("<font color=#4F49AF>\The [src] chimes quietly.</font>")
 
 /obj/item/mmi/digital/robot
 	name = "robotic intelligence circuit"
@@ -291,8 +293,8 @@
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/drone_brain
 
-/obj/item/mmi/digital/robot/New()
-	..()
+/obj/item/mmi/digital/robot/Initialize(mapload)
+	. = ..()
 	src.brainmob.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
 	src.brainmob.real_name = src.brainmob.name
 
@@ -334,8 +336,8 @@
 	..()
 	icon_state = "posibrain"
 
-/obj/item/mmi/digital/posibrain/New()
-	..()
+/obj/item/mmi/digital/posibrain/Initialize(mapload)
+	. = ..()
 	src.brainmob.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
 	src.brainmob.real_name = src.brainmob.name
 

@@ -60,6 +60,10 @@
 	name = "Medical Pod"
 	frame_class = FRAME_CLASS_MACHINE
 
+/datum/frame/frame_types/operating_table
+	name = "Operating Table"
+	frame_class = FRAME_CLASS_MACHINE
+
 /datum/frame/frame_types/dna_analyzer
 	name = "DNA Analyzer"
 	frame_class = FRAME_CLASS_MACHINE
@@ -240,8 +244,8 @@
 		var/obj/ct = A
 		req_component_names[A] = initial(ct.name)
 
-/obj/structure/frame/New(var/loc, var/dir, var/building = 0, var/datum/frame/frame_types/type, mob/user as mob)
-	..()
+/obj/structure/frame/Initialize(mapload, dir, building = FALSE, datum/frame/frame_types/type, mob/user)
+	. = ..()
 	if(building)
 		frame_type = type
 		state = FRAME_PLACED

@@ -1,11 +1,12 @@
 # You can use the "$include" directive to split your configs however you want
 
-#$include game_options.txt
+$include game_options.txt
 #$include dbconfig.txt
 #$include comms.txt
 #$include antag_rep.txt
 $include resources.txt
 # Cit-specific imports
+$include logging.txt
 $include entries/urls.txt
 $include entries/fail2topic.txt
 $include entries/lobby.txt
@@ -41,4 +42,7 @@ CLIENT_ERROR_VERSION 511
 CLIENT_ERROR_MESSAGE Your version of byond is not supported. Please upgrade.
 ## The minimum build needed for joining the server, if using 512, a good minimum build would be 1421 as that disables the Middle Mouse Button exploit.
 CLIENT_ERROR_BUILD 1421
+
+## TAGLINE - Hub tagline
+TAGLINE <br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>
 

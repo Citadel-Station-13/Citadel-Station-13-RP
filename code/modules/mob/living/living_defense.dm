@@ -12,7 +12,7 @@
 	A number between 0 and 100, with higher numbers resulting in less damage taken.
 */
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
-	if(Debug2)
+	if(GLOB.Debug2)
 		log_world("## DEBUG: getarmor() was called.")
 
 	if(armour_pen >= 100)
@@ -22,7 +22,7 @@
 	if(armor)
 		var/armor_variance_range = round(armor * 0.25) //Armor's effectiveness has a +25%/-25% variance.
 		var/armor_variance = rand(-armor_variance_range, armor_variance_range) //Get a random number between -25% and +25% of the armor's base value
-		if(Debug2)
+		if(GLOB.Debug2)
 			log_world("## DEBUG: The range of armor variance is [armor_variance_range].  The variance picked by RNG is [armor_variance].")
 
 		armor = min(armor + armor_variance, 100)	//Now we calcuate damage using the new armor percentage.
@@ -38,7 +38,7 @@
 				to_chat(src, "<span class='danger'>[soften_text]</span>")
 			else
 				to_chat(src, "<span class='danger'>Your armor softens the blow!</span>")
-		if(Debug2)
+		if(GLOB.Debug2)
 			log_world("## DEBUG: Armor when [src] was attacked was [armor].")
 	return armor
 
@@ -117,6 +117,7 @@
 	var/absorb = run_armor_check(def_zone, P.check_armour, P.armor_penetration)
 	var/proj_sharp = is_sharp(P)
 	var/proj_edge = has_edge(P)
+	var/final_damage = P.get_final_damage(src)
 
 	if ((proj_sharp || proj_edge) && (soaked >= round(P.damage*0.8)))
 		proj_sharp = 0
@@ -131,12 +132,12 @@
 		stun_effect_act(0, P.agony, def_zone, P)
 		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
 		if(!P.nodamage)
-			apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+			apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 		qdel(P)
 		return
 
 	if(!P.nodamage)
-		apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+		apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 	P.on_hit(src, absorb, soaked, def_zone)
 
 	if(absorb == 100)
@@ -263,7 +264,7 @@
 			miss_chance = max(15*(distance-2), 0)
 
 		if (prob(miss_chance))
-			visible_message("<font color='blue'>\The [O] misses [src] narrowly!</font>")
+			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
 			return
 
 		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
@@ -464,26 +465,19 @@
 
 //Acid
 /mob/living/acid_act(var/mob/living/H)
-	if(H.mind.isholy)
-		return
-	else
-		make_dizzy(1)
-		adjustHalLoss(1)
-		if(!confused) confused = 1
-		confused = max(confused, 1)
-		inflict_heat_damage(5) // This is instantly applied to unprotected mobs.
-		inflict_poison_damage(5)
-		adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
-		adjustToxLoss(5)
+	make_dizzy(1)
+	adjustHalLoss(1)
+	inflict_heat_damage(5) // This is instantly applied to unprotected mobs.
+	inflict_poison_damage(5)
+	adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
+	adjustToxLoss(5)
+	confused = max(confused, 1)
 
 //Blood
 //Acid
 /mob/living/blood_act(var/mob/living/H)
-	if(H.mind.isholy)
-		return
-	else
-		inflict_poison_damage(5)
-		adjustToxLoss(5)
+	inflict_poison_damage(5)
+	adjustToxLoss(5)
 
 
 /mob/living/proc/reagent_permeability()

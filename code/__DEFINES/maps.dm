@@ -48,6 +48,7 @@ require only minor tweaks.
 #define ZTRAIT_CENTCOM "CentCom"
 #define ZTRAIT_STATION "Station"
 #define ZTRAIT_MINING "Mining"
+#define ZTRAIT_FACILITY_SAFETY "FacilityWeaponLock"
 /*
 #define ZTRAIT_REEBE "Reebe"
 */
@@ -129,7 +130,8 @@ require only minor tweaks.
 */
 
 //Reserved/Transit turf type
-#define RESERVED_TURF_TYPE /turf/open/space/basic			//What the turf is when not being used
+#define RESERVED_TURF_TYPE /turf/space
+// #define RESERVED_TURF_TYPE /turf/open/space/basic			//What the turf is when not being used
 
 /*
 //Ruin Generation

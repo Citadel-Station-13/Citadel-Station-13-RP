@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	debug = TRUE
 
 
-/obj/item/cataloguer/Initialize()
+/obj/item/cataloguer/Initialize(mapload)
 	GLOB.all_cataloguers += src
 	return ..()
 
@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 		// Now to our friends, if any.
 		if(contributers.len)
 			for(var/mob/M in contributers)
-				var/list/things = M.GetAllContents(3) // Depth of two should reach into bags but just in case lets make it three.
+				var/list/things = M.GetAllContents() // Depth of two should reach into bags but just in case lets make it three.
 				var/obj/item/cataloguer/other_cataloguer = locate() in things // If someone has two or more scanners this only adds points to one.
 				if(other_cataloguer)
 					to_chat(M, span("notice", "Gained [points_gained] points from \the [user]'s scan of \the [target]."))

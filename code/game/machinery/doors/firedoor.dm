@@ -50,20 +50,18 @@
 		"cold"
 	)
 
-/obj/machinery/door/firedoor/New()
+/obj/machinery/door/firedoor/Initialize(mapload, newdir)
 	. = ..()
 	for(var/obj/machinery/door/firedoor/F in loc)
 		if(F != src)
-			spawn(1)
-				qdel(src)
-			return .
+			return INITIALIZE_HINT_QDEL
 	var/area/A = get_area(src)
 	ASSERT(istype(A))
 
 	LAZYADD(A.all_doors, src)
 	areas_added = list(A)
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		A = get_area(get_step(src,direction))
 		if(istype(A) && !(A in areas_added))
 			LAZYADD(A.all_doors, src)
@@ -72,13 +70,14 @@
 /obj/machinery/door/firedoor/Destroy()
 	for(var/area/A in areas_added)
 		LAZYREMOVE(A.all_doors, src)
-	. = ..()
+	return ..()
 
 /obj/machinery/door/firedoor/get_material()
 	return get_material_by_name(DEFAULT_WALL_MATERIAL)
 
 /obj/machinery/door/firedoor/examine(mob/user)
-	if(!. || !density)
+	. = ..()
+	if(!density)
 		return
 
 	if(pdiff >= FIREDOOR_MAX_PRESSURE_DIFF)
@@ -448,7 +447,7 @@
 			overlays += "palert"
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
-				var/cdir = cardinal[d]
+				var/cdir = GLOB.cardinal[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
 					if(dir_alerts[d] & (1<<(i-1)))
 						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
@@ -510,3 +509,23 @@
 	icon = 'icons/obj/doors/DoorHazardGlass.dmi'
 	icon_state = "door_open"
 	glass = 1
+
+
+/obj/machinery/door/firedoor/glass/hidden
+	name = "\improper Emergency Shutter System"
+	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."
+	icon = 'icons/obj/doors/DoorHazardHidden.dmi'
+	plane = TURF_PLANE
+
+/obj/machinery/door/firedoor/glass/hidden/open()
+	. = ..()
+	plane = TURF_PLANE
+
+/obj/machinery/door/firedoor/glass/hidden/close()
+	. = ..()
+	plane = OBJ_PLANE
+
+/obj/machinery/door/firedoor/glass/hidden/steel
+	name = "\improper Emergency Shutter System"
+	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."
+	icon = 'icons/obj/doors/DoorHazardHidden_steel.dmi'

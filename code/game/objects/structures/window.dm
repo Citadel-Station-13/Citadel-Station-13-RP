@@ -24,7 +24,7 @@
 	var/silicate = 0 // number of units of silicate
 	var/fulltile = FALSE // Set to true on full-tile variants.
 
-/obj/structure/window/New()
+/obj/structure/window/Initialize(mapload)
 	/// COMPATIBILITY PATCH - Replace this crap with a better solution (maybe copy /tg/'s ASAP!!)
 	check_fullwindow()
 	return ..()
@@ -300,9 +300,7 @@
 		else
 			playsound(src, W.usesound, 75, 1)
 			visible_message("<span class='notice'>[user] dismantles \the [src].</span>")
-			var/obj/item/stack/material/mats = new glasstype(loc)
-			if(is_fulltile())
-				mats.amount = 4
+			new glasstype(loc, is_fulltile()? 2 : 1)
 			qdel(src)
 	else if(istype(W, /obj/item/stack/cable_coil) && reinf && state == 0 && !istype(src, /obj/structure/window/reinforced/polarized))
 		var/obj/item/stack/cable_coil/C = W
@@ -391,9 +389,8 @@
 	update_nearby_tiles(need_rebuild=1)
 	return
 
-/obj/structure/window/New(Loc, start_dir=null, constructed=0)
-	..()
-
+/obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
+	. = ..(mapload)
 	if (start_dir)
 		setDir(start_dir)
 

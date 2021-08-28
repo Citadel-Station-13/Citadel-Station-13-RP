@@ -178,5 +178,5 @@
 	projectile_type = /obj/item/projectile/bullet/magnetic/bore/powerful
 	power_cost = 1000
 	max_mat_storage = 20000
-	manipulator = null 
+	manipulator = null
 	capacitor = null

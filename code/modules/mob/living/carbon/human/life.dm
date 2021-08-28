@@ -24,8 +24,6 @@
 
 #define RADIATION_SPEED_COEFFICIENT 0.1
 
-var/last_message = 0
-
 /mob/living/carbon/human
 	var/oxygen_alert = 0
 	var/phoron_alert = 0
@@ -35,6 +33,8 @@ var/last_message = 0
 	var/temperature_alert = 0
 	var/in_stasis = 0
 	var/heartbeat = 0
+	var/last_synthcooling_message = 0 		// to whoever is looking at git blame in the future, i'm not the author, and this is shitcode, but what came before i changed it
+	// made me vomit
 
 /mob/living/carbon/human/Life()
 
@@ -358,7 +358,7 @@ var/last_message = 0
 			if(!rig.offline && (rig.air_supply && internal == rig.air_supply))
 				rig_supply = rig.air_supply
 
-		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.item_flags & AIRTIGHT)) || (head && (head.item_flags & AIRTIGHT))))
+		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.item_flags & ALLOWINTERNALS)) || (head && (head.item_flags & ALLOWINTERNALS))))
 			internal = null
 
 		if(internal)
@@ -612,26 +612,46 @@ var/last_message = 0
 		return
 	//Stuff like the xenomorph's plasma regen happens here.
 	species.handle_environment_special(src)
+
+	if(is_incorporeal())
+		return
+
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
-		species.heat_level_1 = 400
-		species.heat_level_2 = 420 // haha nice
-		species.heat_level_3 = 1000
-		species.cold_level_1 = 275
-		species.cold_level_2 = 250
-		species.cold_level_3 = 200
-		species.cold_discomfort_level = 290
-		species.heat_discomfort_level = 380
-		species.heat_discomfort_strings = list(
-			"You feel heat within your wiring.",
-			"You feel uncomfortably warm.",
-			"Your internal sensors chime at the increase in temperature."
-			)
-		species.cold_discomfort_strings = list(
-			"A small heating element begins warming your system.",
-			"Your focus is briefly stolen by the chill of the air.",
-			"You feel uncomfortably cold.",
-			"You feel a chill within your wiring."
-			)
+		var/mob/living/carbon/human/H = src
+		if(H.species.name == "Protean")
+			return // dont modify protean heat levels
+
+		else
+			species.heat_level_1 = 400
+			species.heat_level_2 = 420 // haha nice
+			species.heat_level_3 = 1000
+			species.cold_level_1 = 275
+			species.cold_level_2 = 250
+			species.cold_level_3 = 200
+			species.cold_discomfort_level = 290
+			species.heat_discomfort_level = 380
+			species.heat_discomfort_strings = list(
+				"You feel heat within your wiring.",
+				"You feel uncomfortably warm.",
+				"Your internal sensors chime at the increase in temperature."
+				)
+			species.cold_discomfort_strings = list(
+				"A small heating element begins warming your system.",
+				"Your focus is briefly stolen by the chill of the air.",
+				"You feel uncomfortably cold.",
+				"You feel a chill within your wiring."
+				)
+			if(bodytemperature > species.heat_discomfort_level)
+				if(world.time >= last_synthcooling_message || last_synthcooling_message == 0)
+					if(src.nutrition <= 50) // do they have enough energy for this?
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Power critical. Unable to deploy cooling systems.</font>")
+						return
+					else
+						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
+						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
+						src.nutrition -= 50
+					last_synthcooling_message = world.time + 60 SECONDS
 	//Moved pressure calculations here for use in skip-processing check.
 	var/pressure = environment.return_pressure()
 	var/adjusted_pressure = calculate_affecting_pressure(pressure)
@@ -901,7 +921,7 @@ var/last_message = 0
 			for(var/obj/item/I in src)
 				if(I.contaminated)
 					if(check_belly(I)) continue //VOREStation Edit
-					if(src.species && src.species.get_bodytype() != "Vox" && src.species.get_bodytype() != "Shadekin")	//VOREStation Edit: shadekin
+					if(src.species && src.species.get_bodytype() != "Vox" && src.species.get_bodytype() != "Shadekin" && src.species.get_bodytype() != "Black-Eyed Shadekin")	//VOREStation Edit: shadekin; CitadelRP: Black-Eyed Shadekin don't get afflicted from contaminated clothing
 						// This is hacky, I'm so sorry.
 						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
@@ -962,7 +982,7 @@ var/last_message = 0
 	return //TODO: DEFERRED
 
 //DO NOT CALL handle_statuses() from this proc, it's called from living/Life() as long as this returns a true value.
-/mob/living/carbon/human/handle_regular_status_updates()
+/mob/living/carbon/human/handle_regular_UI_updates()
 	if(!handle_some_updates())
 		return 0
 
@@ -1120,8 +1140,8 @@ var/last_message = 0
 
 	return 1
 
-/mob/living/carbon/human/proc/set_stat(var/new_stat)
-	stat = new_stat
+/mob/living/carbon/human/set_stat(var/new_stat)
+	. = ..()
 	if(stat)
 		update_skin(1)
 
@@ -1279,51 +1299,38 @@ var/last_message = 0
 					if(260 to 280)			bodytemp.icon_state = "temp-3"
 					else					bodytemp.icon_state = "temp-4"
 			else
-		if(bodytemperature >= 361)
-			if(isSynthetic())
-				if(world.time >= last_message || last_message == 0)
-					if(src.nutrition <= 50) // do they have enough energy for this?
-						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
-						to_chat(src, "<font color='red' face='fixedsys'>Warning: Power critical. Unable to deploy cooling systems.</font>")
-						return
+				//TODO: precalculate all of this stuff when the species datum is created
+				var/base_temperature = species.body_temperature
+				if(base_temperature == null) //some species don't have a set metabolic temperature
+					base_temperature = (species.heat_level_1 + species.cold_level_1)/2
+
+				var/temp_step
+				if (bodytemperature >= base_temperature)
+					temp_step = (species.heat_level_1 - base_temperature)/4
+
+					if (bodytemperature >= species.heat_level_1)
+						bodytemp.icon_state = "temp4"
+					else if (bodytemperature >= base_temperature + temp_step*3)
+						bodytemp.icon_state = "temp3"
+					else if (bodytemperature >= base_temperature + temp_step*2)
+						bodytemp.icon_state = "temp2"
+					else if (bodytemperature >= base_temperature + temp_step*1)
+						bodytemp.icon_state = "temp1"
 					else
-						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
-						add_modifier(/datum/modifier/synthcooling, 15 SECONDS) // enable cooling systems at cost of energy
-						src.nutrition -= 50
-					last_message = world.time + 60 SECONDS
-			//TODO: precalculate all of this stuff when the species datum is created
-			var/base_temperature = species.body_temperature
-			if(base_temperature == null) //some species don't have a set metabolic temperature
-				base_temperature = (species.heat_level_1 + species.cold_level_1)/2
+						bodytemp.icon_state = "temp0"
+				else if (bodytemperature < base_temperature)
+					temp_step = (base_temperature - species.cold_level_1)/4
 
-			var/temp_step
-			if (bodytemperature >= base_temperature)
-				temp_step = (species.heat_level_1 - base_temperature)/4
-
-				if (bodytemperature >= species.heat_level_1)
-					bodytemp.icon_state = "temp4"
-				else if (bodytemperature >= base_temperature + temp_step*3)
-					bodytemp.icon_state = "temp3"
-				else if (bodytemperature >= base_temperature + temp_step*2)
-					bodytemp.icon_state = "temp2"
-				else if (bodytemperature >= base_temperature + temp_step*1)
-					bodytemp.icon_state = "temp1"
-				else
-					bodytemp.icon_state = "temp0"
-
-			else if (bodytemperature < base_temperature)
-				temp_step = (base_temperature - species.cold_level_1)/4
-
-				if (bodytemperature <= species.cold_level_1)
-					bodytemp.icon_state = "temp-4"
-				else if (bodytemperature <= base_temperature - temp_step*3)
-					bodytemp.icon_state = "temp-3"
-				else if (bodytemperature <= base_temperature - temp_step*2)
-					bodytemp.icon_state = "temp-2"
-				else if (bodytemperature <= base_temperature - temp_step*1)
-					bodytemp.icon_state = "temp-1"
-				else
-					bodytemp.icon_state = "temp0"
+					if (bodytemperature <= species.cold_level_1)
+						bodytemp.icon_state = "temp-4"
+					else if (bodytemperature <= base_temperature - temp_step*3)
+						bodytemp.icon_state = "temp-3"
+					else if (bodytemperature <= base_temperature - temp_step*2)
+						bodytemp.icon_state = "temp-2"
+					else if (bodytemperature <= base_temperature - temp_step*1)
+						bodytemp.icon_state = "temp-1"
+					else
+						bodytemp.icon_state = "temp0"
 		if(blinded)
 			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
 
@@ -1725,7 +1732,7 @@ var/last_message = 0
 	This proc below is only called when those HUD elements need to change as determined by the mobs hud_updateflag.
 */
 /mob/living/carbon/human/proc/handle_hud_list()
-	if (CHECK_BITFIELD(hud_updateflag, HEALTH_HUD))
+	if (BITTEST(hud_updateflag, HEALTH_HUD))
 		var/image/holder = grab_hud(HEALTH_HUD)
 		if(stat == DEAD)
 			holder.icon_state = "-100" 	// X_X
@@ -1733,7 +1740,7 @@ var/last_message = 0
 			holder.icon_state = RoundHealth((health-config_legacy.health_threshold_crit)/(getMaxHealth()-config_legacy.health_threshold_crit)*100)
 		apply_hud(HEALTH_HUD, holder)
 
-	if (CHECK_BITFIELD(hud_updateflag, LIFE_HUD))
+	if (BITTEST(hud_updateflag, LIFE_HUD))
 		var/image/holder = grab_hud(LIFE_HUD)
 		if(isSynthetic())
 			holder.icon_state = "hudrobo"
@@ -1743,7 +1750,7 @@ var/last_message = 0
 			holder.icon_state = "hudhealthy"
 		apply_hud(LIFE_HUD, holder)
 
-	if (CHECK_BITFIELD(hud_updateflag, STATUS_HUD))
+	if (BITTEST(hud_updateflag, STATUS_HUD))
 		var/foundVirus = 0
 		for (var/ID in virus2)
 			if (ID in virusDB)
@@ -1776,7 +1783,7 @@ var/last_message = 0
 		apply_hud(STATUS_HUD, holder)
 		apply_hud(STATUS_HUD_OOC, holder2)
 
-	if (CHECK_BITFIELD(hud_updateflag, ID_HUD))
+	if (BITTEST(hud_updateflag, ID_HUD))
 		var/image/holder = grab_hud(ID_HUD)
 		if(wear_id)
 			var/obj/item/card/id/I = wear_id.GetID()
@@ -1789,7 +1796,7 @@ var/last_message = 0
 
 		apply_hud(ID_HUD, holder)
 
-	if (CHECK_BITFIELD(hud_updateflag, WANTED_HUD))
+	if (BITTEST(hud_updateflag, WANTED_HUD))
 		var/image/holder = grab_hud(WANTED_HUD)
 		holder.icon_state = "hudblank"
 		var/perpname = name
@@ -1816,9 +1823,9 @@ var/last_message = 0
 
 		apply_hud(WANTED_HUD, holder)
 
-	if (  CHECK_BITFIELD(hud_updateflag, IMPLOYAL_HUD) \
-	   || CHECK_BITFIELD(hud_updateflag,  IMPCHEM_HUD) \
-	   || CHECK_BITFIELD(hud_updateflag, IMPTRACK_HUD))
+	if (  BITTEST(hud_updateflag, IMPLOYAL_HUD) \
+	   || BITTEST(hud_updateflag,  IMPCHEM_HUD) \
+	   || BITTEST(hud_updateflag, IMPTRACK_HUD))
 
 		var/image/holder1 = grab_hud(IMPTRACK_HUD)
 		var/image/holder2 = grab_hud(IMPLOYAL_HUD)
@@ -1842,7 +1849,7 @@ var/last_message = 0
 		apply_hud(IMPLOYAL_HUD, holder2)
 		apply_hud(IMPCHEM_HUD, holder3)
 
-	if (CHECK_BITFIELD(hud_updateflag, SPECIALROLE_HUD))
+	if (BITTEST(hud_updateflag, SPECIALROLE_HUD))
 		var/image/holder = grab_hud(SPECIALROLE_HUD)
 		holder.icon_state = "hudblank"
 		if(mind && mind.special_role)
@@ -1884,21 +1891,21 @@ var/last_message = 0
 /mob/living/carbon/human/proc/handle_hud_list_vr()
 
 	//Right-side status hud updates with left side one.
-	if (CHECK_BITFIELD(hud_updateflag, STATUS_HUD))
+	if (BITTEST(hud_updateflag, STATUS_HUD))
 		var/image/other_status = hud_list[STATUS_HUD]
 		var/image/status_r = grab_hud(STATUS_R_HUD)
 		status_r.icon_state = other_status.icon_state
 		apply_hud(STATUS_R_HUD, status_r)
 
 	//Our custom health bar HUD
-	if (CHECK_BITFIELD(hud_updateflag, HEALTH_HUD))
+	if (BITTEST(hud_updateflag, HEALTH_HUD))
 		var/image/other_health = hud_list[HEALTH_HUD]
 		var/image/health_us = grab_hud(HEALTH_VR_HUD)
 		health_us.icon_state = other_health.icon_state
 		apply_hud(HEALTH_VR_HUD, health_us)
 
 	//Backup implant hud status
-	if (CHECK_BITFIELD(hud_updateflag, BACKUP_HUD))
+	if (BITTEST(hud_updateflag, BACKUP_HUD))
 		var/image/holder = grab_hud(BACKUP_HUD)
 
 		holder.icon_state = "hudblank"
@@ -1917,7 +1924,7 @@ var/last_message = 0
 		apply_hud(BACKUP_HUD, holder)
 
 	//VOREStation Antag Hud
-	if (CHECK_BITFIELD(hud_updateflag, VANTAG_HUD))
+	if (BITTEST(hud_updateflag, VANTAG_HUD))
 		var/image/vantag = grab_hud(VANTAG_HUD)
 		if(vantag_pref)
 			vantag.icon_state = vantag_pref

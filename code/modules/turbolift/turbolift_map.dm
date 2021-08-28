@@ -14,15 +14,7 @@
 
 	var/list/areas_to_use = list()
 
-/obj/turbolift_map_holder/Destroy()
-	turbolifts -= src
-	return ..()
-
-/obj/turbolift_map_holder/New()
-	turbolifts += src
-	..()
-
-/obj/turbolift_map_holder/Initialize()
+/obj/turbolift_map_holder/Initialize(mapload)
 	. = ..()
 	// Create our system controller.
 	var/datum/turbolift/lift = new()
@@ -196,8 +188,8 @@
         // Place lights
 		var/turf/placing1 = locate(light_x1, light_y1, cz)
 		var/turf/placing2 = locate(light_x2, light_y2, cz)
-		var/obj/machinery/light/light1 = new(placing1, light)
-		var/obj/machinery/light/light2 = new(placing2, light)
+		var/obj/machinery/light/light1 = new(placing1)
+		var/obj/machinery/light/light2 = new(placing2)
 		if(udir == NORTH || udir == SOUTH)
 			light1.setDir(WEST)
 			light2.setDir(EAST)
@@ -212,10 +204,11 @@
 			return
 
 		var/area_path = areas_to_use[az]
+		var/area/areaInstance = new area_path(null)
+		areaInstance.addSorted()
 		for(var/thing in floor_turfs)
-			new area_path(thing)
-		var/area/A = locate(area_path)
-		cfloor.set_area_ref("\ref[A]")
+			areaInstance.contents.Add(thing)
+		cfloor.set_area_ref("[REF(areaInstance)]")
 		az++
 
 	// Place lift panel.
@@ -225,5 +218,4 @@
 	lift.current_floor = lift.floors[1]
 
 	lift.open_doors()
-
-	qdel(src) // We're done.
+	return INITIALIZE_HINT_QDEL

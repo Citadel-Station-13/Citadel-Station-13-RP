@@ -27,8 +27,8 @@
 	var/aug_cooldown = 30 SECONDS
 	var/last_activate = null
 
-/obj/item/organ/internal/augment/Initialize()
-	..()
+/obj/item/organ/internal/augment/Initialize(mapload)
+	. = ..()
 
 	setup_radial_icon()
 

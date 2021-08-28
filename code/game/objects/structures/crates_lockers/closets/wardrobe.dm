@@ -24,7 +24,7 @@
 		/obj/item/clothing/accessory/armband = 3,
 		/obj/item/clothing/accessory/holster/waist = 3)
 
-/obj/structure/closet/wardrobe/red/Initialize()
+/obj/structure/closet/wardrobe/red/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/security
 	else
@@ -247,7 +247,7 @@
 		/obj/item/storage/backpack/toxins,
 		/obj/item/storage/backpack/satchel/tox)
 
-/obj/structure/closet/wardrobe/science_white/Initialize()
+/obj/structure/closet/wardrobe/science_white/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/sci
 	else
@@ -269,12 +269,13 @@
 		/obj/item/clothing/under/rank/roboticist = 2,
 		/obj/item/clothing/under/rank/roboticist/skirt_pleated = 2,
 		/obj/item/clothing/suit/storage/toggle/labcoat/robotics = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/science/robotics = 2,
 		/obj/item/clothing/shoes/black = 2,
 		/obj/item/clothing/gloves/black = 2,
 		/obj/item/storage/backpack/toxins,
 		/obj/item/storage/backpack/satchel/tox)
 
-/obj/structure/closet/wardrobe/robotics_black/Initialize()
+/obj/structure/closet/wardrobe/robotics_black/Initialize(mapload)
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/sci
 	else
@@ -294,6 +295,7 @@
 		/obj/item/clothing/under/rank/chemist/skirt_pleated = 2,
 		/obj/item/clothing/shoes/white = 2,
 		/obj/item/clothing/suit/storage/toggle/labcoat/chemist = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/janitor = 2,
 		/obj/item/storage/backpack/chemistry = 2,
 		/obj/item/storage/backpack/satchel/chem = 2,
 		/obj/item/storage/bag/chemistry = 2,)
@@ -309,6 +311,7 @@
 		/obj/item/clothing/under/rank/geneticist/skirt = 2,
 		/obj/item/clothing/under/rank/geneticist/skirt_pleated = 2,
 		/obj/item/clothing/shoes/white = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/genetics = 2,
 		/obj/item/clothing/suit/storage/toggle/labcoat/genetics = 2,
 		/obj/item/storage/backpack/genetics = 2,
 		/obj/item/storage/backpack/satchel/gen = 2)
@@ -324,6 +327,7 @@
 		/obj/item/clothing/under/rank/virologist/skirt = 2,
 		/obj/item/clothing/under/rank/virologist/skirt_pleated = 2,
 		/obj/item/clothing/shoes/white = 2,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/viro = 2,
 		/obj/item/clothing/suit/storage/toggle/labcoat/virologist = 2,
 		/obj/item/clothing/mask/surgical = 2,
 		/obj/item/storage/backpack/virology = 2,
@@ -441,7 +445,7 @@
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/under/pants/camo)
 
-/obj/structure/closet/wardrobe/tactical/Initialize()
+/obj/structure/closet/wardrobe/tactical/Initialize(mapload)
 	if(prob(25))
 		starts_with += /obj/item/storage/belt/security/tactical/bandolier
 	else

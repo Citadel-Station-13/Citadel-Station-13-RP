@@ -83,7 +83,7 @@ var/list/infomorph_emotions = list(
 	var/datum/data/record/securityActive1		// Could probably just combine all these into one
 	var/datum/data/record/securityActive2
 
-/mob/living/silicon/infomorph/New(var/obj/item/sleevecard/SC, var/name = "Unknown")
+/mob/living/silicon/infomorph/Initialize(mapload, obj/item/sleevecard/SC, name = "Unknown")
 	ASSERT(SC)
 	name = "[initial(name)] ([name])"
 	src.forceMove(SC)
@@ -114,10 +114,7 @@ var/list/infomorph_emotions = list(
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
 
-	..()
-
-/mob/living/silicon/infomorph/Login()
-	..()
+	return ..()
 
 /////////// STAT PANEL
 /mob/living/silicon/infomorph/Stat()
@@ -464,7 +461,7 @@ var/global/list/default_infomorph_software = list()
 
 /mob/living/silicon/infomorph/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, key_state = self_state)
 	if(user != src)
-		if(ui) ui.set_status(STATUS_CLOSE, 0)
+		if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	if(ui_key != "main")
@@ -472,7 +469,7 @@ var/global/list/default_infomorph_software = list()
 		if(S && !S.toggle)
 			S.on_nano_ui_interact(src, ui, force_open)
 		else
-			if(ui) ui.set_status(STATUS_CLOSE, 0)
+			if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	var/data[0]

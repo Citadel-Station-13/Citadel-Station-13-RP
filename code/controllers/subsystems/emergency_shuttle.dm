@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 /datum/controller/subsystem/emergencyshuttle
 	var/datum/shuttle/autodock/ferry/emergency/shuttle	// Set in shuttle_emergency.dm TODO - is it really?
-	var/list/escape_pod
+	var/list/escape_pods
 
 	var/launch_time			//the time at which the shuttle will be launched
 	var/auto_recall = 0		//if set, the shuttle will be auto-recalled
@@ -20,9 +20,9 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/datum/announcement/priority/emergency_shuttle_called = new(0, new_sound = sound('sound/AI/shuttlecalled.ogg'))
 	var/datum/announcement/priority/emergency_shuttle_recalled = new(0, new_sound = sound('sound/AI/shuttlerecalled.ogg'))
 
-/datum/controller/subsystem/emergencyshuttle/New()
-	escape_pod = list()
-	..()
+/datum/controller/subsystem/emergencyshuttle/PreInit()
+	escape_pods = list()
+
 /datum/controller/subsystem/emergencyshuttle/fire()
 	if (wait_for_launch)
 		if (evac && auto_recall && world.time >= auto_recall_time)
@@ -32,10 +32,10 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 			if (!shuttle.location)	//leaving from the station
 				//launch the pods!
-				for (var/EP in escape_pod)
+				for (var/EP in escape_pods)
 					var/datum/shuttle/autodock/ferry/escape_pod/pod
-					if(istype(escape_pod[EP], /datum/shuttle/autodock/ferry/escape_pod))
-						pod = escape_pod[EP]
+					if(istype(escape_pods[EP], /datum/shuttle/autodock/ferry/escape_pod))
+						pod = escape_pods[EP]
 					else
 						continue
 					if (!pod.arming_controller || pod.arming_controller.armed)
@@ -59,10 +59,10 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 		//arm the escape pods
 		if (evac)
-			for (var/EP in escape_pod)
+			for (var/EP in escape_pods)
 				var/datum/shuttle/autodock/ferry/escape_pod/pod
-				if(istype(escape_pod[EP], /datum/shuttle/autodock/ferry/escape_pod))
-					pod = escape_pod[EP]
+				if(istype(escape_pods[EP], /datum/shuttle/autodock/ferry/escape_pod))
+					pod = escape_pods[EP]
 				else
 					continue
 				if (pod.arming_controller)
@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 
 	evac = 1
 	emergency_shuttle_called.Announce(replacetext(GLOB.using_map.emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(istype(A, /area/hallway))
 			A.readyalert()
 
@@ -123,7 +123,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	if (evac)
 		emergency_shuttle_recalled.Announce(GLOB.using_map.emergency_shuttle_recall_message)
 
-		for(var/area/A in all_areas)
+		for(var/area/A in GLOB.sortedAreas)
 			if(istype(A, /area/hallway))
 				A.readyreset()
 		evac = 0
@@ -246,8 +246,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 
-/obj/effect/bgstar/New()
-	..()
+/obj/effect/bgstar/Initialize(mapload)
+	. = ..()
 	pixel_x += rand(-2,30)
 	pixel_y += rand(-2,30)
 	var/starnum = pick("1", "1", "1", "2", "3", "4")

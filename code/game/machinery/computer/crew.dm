@@ -11,11 +11,12 @@
 	var/datum/tgui_module/crew_monitor/crew_monitor
 
 /obj/machinery/computer/crew/Initialize(mapload)
+	. = ..()
 	crew_monitor = new(src)
-	return ..()
 
 /obj/machinery/computer/crew/Destroy()
-	QDEL_NULL(crew_monitor)
+	qdel(crew_monitor)
+	crew_monitor = null
 	return ..()
 
 /obj/machinery/computer/crew/attack_ai(mob/user)

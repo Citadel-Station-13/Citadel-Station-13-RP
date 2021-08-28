@@ -16,7 +16,7 @@
 		"Jelly" = /obj/item/reagent_containers/food/snacks/variable/jelly
 	)
 
-/obj/machinery/appliance/mixer/candy/Initialize()
+/obj/machinery/appliance/mixer/candy/Initialize(mapload)
 	. = ..()
 
 	candymaker_loop = new(list(src), FALSE)

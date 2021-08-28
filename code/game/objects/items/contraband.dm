@@ -24,7 +24,7 @@
 		list("impedrezene" = 15)						= 2,
 		list("zombiepowder" = 10)						= 1)
 
-/obj/item/reagent_containers/glass/beaker/vial/random/Initialize()
+/obj/item/reagent_containers/glass/beaker/vial/random/Initialize(mapload)
 	. = ..()
 	if(is_open_container())
 		flags ^= OPENCONTAINER
@@ -89,11 +89,11 @@
 						/obj/item/mecha_parts/part/phazon_right_arm,
 						/obj/item/mecha_parts/part/phazon_right_leg,
 						/obj/item/mecha_parts/part/phazon_torso,
-						/obj/item/bodysnatcher,
+						// /obj/item/bodysnatcher,
 						/obj/item/bluespace_harpoon,
 						/obj/item/clothing/accessory/permit/gun,
 						/obj/item/perfect_tele,
-						/obj/item/sleevemate,
+						// /obj/item/sleevemate,
 						/obj/item/disk/nifsoft/compliance,
 						/obj/item/seeds/ambrosiadeusseed,
 						/obj/item/seeds/ambrosiavulgarisseed,
@@ -175,7 +175,7 @@
 						/obj/item/mecha_parts/part/phazon_right_arm,
 						/obj/item/mecha_parts/part/phazon_right_leg,
 						/obj/item/mecha_parts/part/phazon_torso,
-						/obj/item/bodysnatcher,
+						// /obj/item/bodysnatcher,
 						/obj/item/bluespace_harpoon,
 						/obj/item/clothing/accessory/permit/gun,
 						/obj/item/perfect_tele,
@@ -209,3 +209,12 @@
 		new loot(usr.drop_location())
 		to_chat(user, "You unwrap the package.")
 		qdel(src)
+
+//Ported from Main.
+
+/obj/item/skub
+	name = "skub"
+	desc = "A standard jar of skub."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "skub"
+	attack_verb = list("skubbed")

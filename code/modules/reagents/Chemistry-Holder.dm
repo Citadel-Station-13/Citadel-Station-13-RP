@@ -77,6 +77,7 @@
 	return
 
 /datum/reagents/proc/handle_reactions()
+	set waitfor = FALSE		// shitcode. reagents shouldn't ever sleep but hey :^)
 	if(QDELETED(my_atom))
 		return FALSE
 	if(my_atom.flags & NOREACT)
@@ -139,6 +140,13 @@
 	else
 		stack_trace("[my_atom] attempted to add a reagent called '[id]' which doesn't exist. ([usr])")
 	return 0
+
+/datum/reagents/proc/isolate_reagent(reagent)
+	for(var/A in reagent_list)
+		var/datum/reagent/R = A
+		if(R.id != reagent)
+			del_reagent(R.id)
+			update_total()
 
 /datum/reagents/proc/remove_reagent(var/id, var/amount, var/safety = 0)
 	if(!isnum(amount))
@@ -399,8 +407,9 @@
 
 /* Atom reagent creation - use it all the time */
 
-/atom/proc/create_reagents(var/max_vol)
-	reagents = new/datum/reagents(max_vol, src)
+/atom/proc/create_reagents(max_vol)
+	reagents = new /datum/reagents(max_vol, src)
+	return reagents
 
 //Spreads the contents of this reagent holder all over the vicinity of the target turf.
 /datum/reagents/proc/splash_area(var/turf/epicentre, var/range = 3, var/portion = 1.0, var/multiplier = 1, var/copy = 0)

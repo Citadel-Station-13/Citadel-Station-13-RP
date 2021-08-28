@@ -22,14 +22,14 @@
 	var/locked = 0
 	var/scan_id = 1
 	var/is_secure = 0
-	var/wrenchable = 0
+	var/wrenchable = TRUE
 	var/datum/wires/smartfridge/wires = null
 
 /obj/machinery/smartfridge/secure
 	is_secure = 1
 
-/obj/machinery/smartfridge/New()
-	..()
+/obj/machinery/smartfridge/Initialize(mapload)
+	. = ..()
 	if(is_secure)
 		wires = new/datum/wires/smartfridge/secure(src)
 	else
@@ -71,7 +71,6 @@
 	if(istype(O, /obj/item/slimepotion))
 		return TRUE
 	return FALSE
-
 
 /obj/machinery/smartfridge/secure/medbay
 	name = "\improper Refrigerated Medicine Storage"

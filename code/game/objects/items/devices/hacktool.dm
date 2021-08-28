@@ -7,8 +7,8 @@
 	var/list/supported_types
 	var/datum/topic_state/default/must_hack/hack_state
 
-/obj/item/multitool/hacktool/New()
-	..()
+/obj/item/multitool/hacktool/Initialize(mapload)
+	. = ..()
 	known_targets = list()
 	max_known_targets = 5 + rand(1,3)
 	supported_types = list(/obj/machinery/door/airlock)
@@ -96,5 +96,5 @@
 
 /datum/topic_state/default/must_hack/can_use_topic(var/src_object, var/mob/user)
 	if(!hacktool || !hacktool.in_hack_mode || !(src_object in hacktool.known_targets))
-		return STATUS_CLOSE
+		return UI_CLOSE
 	return ..()

@@ -1,4 +1,4 @@
-#define DEFAULT_HUNGER_FACTOR 0.05 // Factor of how fast mob nutrition decreases
+#define DEFAULT_HUNGER_FACTOR 0.03 // Factor of how fast mob nutrition decreases
 
 #define REM 0.2 // Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
 
@@ -27,6 +27,9 @@
 #define IS_TESHARI 7
 #define IS_SLIME   8
 #define IS_ZADDAT  9
+#define IS_CHIMERA 12
+#define IS_SHADEKIN 13
+#define IS_ALRAUNE 14
 
 #define CE_STABLE "stable" // Inaprovaline
 #define CE_ANTIBIOTIC "antibiotic" // Antibiotics
@@ -50,3 +53,11 @@ var/list/tachycardics  = list("coffee", "inaprovaline", "hyperzine", "nitroglyce
 var/list/bradycardics  = list("neurotoxin", "cryoxadone", "clonexadone", "space_drugs", "stoxin")                 // Decrease heart rate.
 var/list/heartstopper  = list("potassium_chlorophoride", "zombie_powder") // This stops the heart.
 var/list/cheartstopper = list("potassium_chloride")                       // This stops the heart when overdose is met. -- c = conditional
+
+#define MAX_PILL_SPRITE 24 //max icon state of the pill sprites
+#define MAX_BOTTLE_SPRITE 4 //max icon state of the pill sprites
+#define MAX_MULTI_AMOUNT 20 // Max number of pills/patches that can be made at once
+#define MAX_UNITS_PER_PILL 60 // Max amount of units in a pill
+#define MAX_UNITS_PER_PATCH 60 // Max amount of units in a patch
+#define MAX_UNITS_PER_BOTTLE 60 // Max amount of units in a bottle (it's volume)
+#define MAX_CUSTOM_NAME_LEN 64 // Max length of a custom pill/condiment/whatever

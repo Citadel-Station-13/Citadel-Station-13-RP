@@ -6,10 +6,9 @@
 	var/obj/item/assembly/shock_kit/part = null
 	var/last_time = 1.0
 
-/obj/structure/bed/chair/e_chair/New()
-	..()
-	overlays += image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir)
-	return
+/obj/structure/bed/chair/e_chair/Initialize(mapload)
+	. = ..()
+	add_overlay(image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir))
 
 /obj/structure/bed/chair/e_chair/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
@@ -38,10 +37,9 @@
 	return
 
 /obj/structure/bed/chair/e_chair/rotate_clockwise()
-	..()
-	overlays.Cut()
-	overlays += image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir)	//there's probably a better way of handling this, but eh. -Pete
-	return
+	. = ..()
+	cut_overlays()
+	add_overlay(image('icons/obj/objects.dmi', src, "echair_over", MOB_LAYER + 1, dir))	//there's probably a better way of handling this, but eh. -Pete
 
 /obj/structure/bed/chair/e_chair/proc/shock()
 	if(!on)
@@ -56,7 +54,7 @@
 		return
 	if(!A.powered(EQUIP))
 		return
-	A.use_power(EQUIP, 5000)
+	A.use_power_oneoff(EQUIP, 5000)
 	var/light = A.power_light
 	A.updateicon()
 

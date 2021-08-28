@@ -22,8 +22,8 @@
 	pickup_sound = 'sound/items/pickup/paper.ogg'
 
 
-/obj/item/deck/cards/New()
-	..()
+/obj/item/deck/cards/Initialize(mapload)
+	. = ..()
 	var/datum/playingcard/P
 	for(var/suit in list("spades","clubs","diamonds","hearts"))
 
@@ -452,11 +452,13 @@
 		overlays += I
 		i++
 
-/obj/item/hand/dropped(mob/user as mob)
+/obj/item/hand/dropped(mob/user)
+	. = ..()
 	if(locate(/obj/structure/table, loc))
-		src.update_icon(user.dir)
+		update_icon(user.dir)
 	else
 		update_icon()
 
-/obj/item/hand/pickup(mob/user as mob)
-	src.update_icon()
+/obj/item/hand/pickup(mob/user)
+	. = ..()
+	update_icon()

@@ -13,6 +13,7 @@
 	show_examine = FALSE
 //	var/mob/living/carbon/human/owner = null
 	var/mob/living/owner = null
+	var/del_for_null_core = TRUE
 	var/obj/item/technomancer_core/core = null
 	var/cast_methods = null			// Controls how the spell is casted.
 	var/aspect = null				// Used for combining spells.
@@ -111,13 +112,13 @@
 // Proc: New()
 // Parameters: 0
 // Description: Sets owner to equal its loc, links to the owner's core, then applies overlays if needed.
-/obj/item/spell/New()
-	..()
+/obj/item/spell/Initialize(mapload)
+	. = ..()
 	if(isliving(loc))
 		owner = loc
 	if(owner)
 		core = owner.get_technomancer_core()
-		if(!core)
+		if(!core && del_for_null_core)
 			to_chat(owner, "<span class='warning'>You need a Core to do that.</span>")
 			qdel(src)
 			return
@@ -284,9 +285,8 @@
 // Parameters: 0
 // Description: Deletes the spell object immediately.
 /obj/item/spell/dropped()
-	spawn(1)
-		if(src)
-			qdel(src)
+	. = ..()
+	qdel(src)
 
 // Proc: throw_impact()
 // Parameters: 1 (hit_atom - the atom that got hit by the spell as it was thrown)

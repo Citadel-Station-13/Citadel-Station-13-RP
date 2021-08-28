@@ -21,6 +21,7 @@
 #define CRITICAL_TEMPERATURE 5000	//K
 #define CHARGING_FACTOR 0.05
 #define DAMAGE_RATE_LIMIT 3			//damage rate cap at power = 300, scales linearly with power
+#define DAMAGE_HARD_LIMIT 50		// max damage per tick, 1000 div 50 = 20 * 2 = 80 seconds
 
 
 // Base variants are applied to everyone on the same Z level
@@ -97,13 +98,10 @@
 
 	var/datum/looping_sound/supermatter/soundloop
 
-/obj/machinery/power/supermatter/New()
-	..()
+/obj/machinery/power/supermatter/Initialize(mapload)
+	. = ..()
 	uid = gl_uid++
-
-/obj/machinery/power/supermatter/Initialize()
 	soundloop = new(list(src), TRUE)
-	return ..()
 
 /obj/machinery/power/supermatter/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -165,6 +163,8 @@
 			if(istype(mob, /mob/living/carbon/human))
 				//Hilariously enough, running into a closet should make you get hit the hardest.
 				var/mob/living/carbon/human/H = mob
+				if(H.isSynthetic())
+					continue
 				H.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)) ) )
 	spawn(pull_time)
 		explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
@@ -204,11 +204,11 @@
 	else
 		alert_msg = null
 	if(alert_msg)
-		global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering")
+		GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering")
 		log_game("SUPERMATTER([x],[y],[z]) Emergency engineering announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
-			global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
+			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
 			for(var/mob/M in player_list) // VOREStation Edit - Rykka adds SM Delam alarm
 				if(!istype(M,/mob/new_player) && !isdeaf(M)) // VOREStation Edit - Rykka adds SM Delam alarm
 					SEND_SOUND(M, message_sound) // VOREStation Edit - Rykka adds SM Delam alarm
@@ -216,12 +216,12 @@
 			public_alert = 1
 			log_game("SUPERMATTER([x],[y],[z]) Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
 		else if((damage > emergency_point) && public_alert)
-			global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
+			GLOB.global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
 			for(var/mob/M in player_list)
 				if(!istype(M,/mob/new_player) && !isdeaf(M))
 					SEND_SOUND(M, sound('sound/ambience/engine_alert2.ogg'))
 		else if(safe_warned && public_alert)
-			global_announcer.autosay(alert_msg, "Supermatter Monitor")
+			GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor")
 			public_alert = 0
 
 
@@ -291,7 +291,7 @@
 
 	//ensure that damage doesn't increase too quickly due to super high temperatures resulting from no coolant, for example. We dont want the SM exploding before anyone can react.
 	//We want the cap to scale linearly with power (and explosion_point). Let's aim for a cap of 5 at power = 300 (based on testing, equals roughly 5% per SM alert announcement).
-	var/damage_inc_limit = (power/300)*(explosion_point/1000)*DAMAGE_RATE_LIMIT
+	var/damage_inc_limit = min((power/300)*(explosion_point/1000)*DAMAGE_RATE_LIMIT, DAMAGE_HARD_LIMIT)
 
 	if(!istype(L, /turf/space))
 		env = L.return_air()
@@ -346,6 +346,8 @@
 		env.merge(removed)
 
 	for(var/mob/living/carbon/human/l in view(src, min(7, round(sqrt(power/6))))) // If they can see it without mesons on.  Bad on them.
+		if(l.isSynthetic() || (PLANE_MESONS in l.planes_visible))
+			continue
 		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // VOREStation Edit - Only mesons can protect you!
 			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
 
@@ -379,11 +381,11 @@
 	if(Adjacent(user))
 		return attack_hand(user)
 	else
-		nano_ui_interact(user)
+		ui_interact(user)
 	return
 
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/power/supermatter/attack_hand(mob/user as mob)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
@@ -393,6 +395,33 @@
 
 	Consume(user)
 
+
+/obj/machinery/power/supermatter/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AiSupermatter", name)
+		ui.open()
+
+// This is purely informational UI that may be accessed by AIs or robots
+/obj/machinery/power/supermatter/ui_data(mob/user)
+	var/list/data = list()
+
+	data["integrity_percentage"] = round(get_integrity())
+	var/datum/gas_mixture/env = null
+	if(!istype(src.loc, /turf/space))
+		env = src.loc.return_air()
+
+	if(!env)
+		data["ambient_temp"] = 0
+		data["ambient_pressure"] = 0
+	else
+		data["ambient_temp"] = round(env.temperature)
+		data["ambient_pressure"] = round(env.return_pressure())
+	data["detonating"] = grav_pulling
+
+	return data
+
+/*
 // This is purely informational UI that may be accessed by AIs or robots
 /obj/machinery/power/supermatter/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	var/data[0]
@@ -416,7 +445,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
-
+*/
 
 /obj/machinery/power/supermatter/attackby(obj/item/W as obj, mob/living/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
@@ -499,10 +528,10 @@
 	icon = 'icons/obj/engine.dmi'
 	icon_state = "darkmatter_broken"
 
-/obj/item/broken_sm/New()
+/obj/item/broken_sm/Initialize(mapload)
+	. = ..()
 	message_admins("Broken SM shard created at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 	START_PROCESSING(SSobj, src)
-	return ..()
 
 /obj/item/broken_sm/process(delta_time)
 	SSradiation.radiate(src, 50)

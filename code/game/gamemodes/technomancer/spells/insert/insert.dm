@@ -11,8 +11,8 @@
 	var/obj/item/inserted_spell/inserting = null
 	var/allow_stacking = 0
 
-/obj/item/spell/insert/New()
-	..()
+/obj/item/spell/insert/Initialize(mapload)
+	. = ..()
 	set_light(spell_light_range, spell_light_intensity, l_color = light_color)
 
 /obj/item/inserted_spell
@@ -20,13 +20,12 @@
 	var/mob/living/host = null
 	var/spell_power_at_creation = 1.0 // This is here because the spell object that made this object probably won't exist.
 
-/obj/item/inserted_spell/New(var/newloc, var/user, var/obj/item/spell/insert/inserter)
-	..(newloc)
-	host = newloc
+/obj/item/inserted_spell/Initialize(mapload, mob/user, obj/item/spell/insert/inserter)
+	. = ..()
+	host = loc
 	origin = user
 	if(light_color)
-		spawn(1)
-			set_light(inserter.spell_light_range, inserter.spell_light_intensity, inserter.spell_color)
+		set_light(inserter.spell_light_range, inserter.spell_light_intensity, inserter.spell_color)
 	on_insert()
 
 /obj/item/inserted_spell/proc/on_insert()

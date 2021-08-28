@@ -103,12 +103,12 @@
 
 	var/obj/item/laptop/portable = null
 
-/obj/machinery/computer3/laptop/New(var/L, var/built = 0)
+/obj/machinery/computer3/laptop/Initialize(mapload, built = FALSE)
 	if(!built && !battery)
 		battery = new /obj/item/cell(src)
 		battery.maxcharge = 500
 		battery.charge = 500
-	..(L,built)
+	return ..()
 
 /obj/machinery/computer3/laptop/verb/close_computer()
 	set name = "Close Laptop"

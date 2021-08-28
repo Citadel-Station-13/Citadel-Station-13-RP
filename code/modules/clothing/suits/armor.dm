@@ -39,12 +39,6 @@
 	icon_state = "armorsec"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 
-/obj/item/clothing/suit/armor/vest/capcarapace
-	name = "captain's carapace"
-	desc = "A fireproof, armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
-	icon_state = "capcarapace"
-	armor = list(melee = 50, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
-
 /obj/item/clothing/suit/armor/riot
 	name = "riot vest"
 	desc = "A vest with heavy padding to protect against melee attacks."
@@ -210,10 +204,10 @@
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
 	active = !( active )
 	if (active)
-		to_chat(user, "<font color='blue'>The reactive armor is now active.</font>")
+		to_chat(user, "<font color=#4F49AF>The reactive armor is now active.</font>")
 		icon_state = "reactive"
 	else
-		to_chat(user, "<font color='blue'>The reactive armor is now inactive.</font>")
+		to_chat(user, "<font color=#4F49AF>The reactive armor is now inactive.</font>")
 		icon_state = "reactiveoff"
 		add_fingerprint(user)
 	return
@@ -464,6 +458,12 @@
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	slowdown = 0
 
+/obj/item/clothing/suit/storage/vest/capcarapace
+	name = "captain's carapace"
+	desc = "A fireproof, armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
+	icon_state = "capcarapace"
+	armor = list(melee = 50, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
+
 //All of the armor below is mostly unused
 
 /obj/item/clothing/suit/armor/centcomm
@@ -643,11 +643,11 @@
 	if(user.mind.isholy && !anti_magic && !blessed)
 		anti_magic = TRUE
 		blessed = TRUE
-		to_chat(user, "<font color='blue'>You enable the armor's protective sigils.</font>")
+		to_chat(user, "<font color=#4F49AF>You enable the armor's protective sigils.</font>")
 	else
 		anti_magic = FALSE
 		blessed = FALSE
-		to_chat(user, "<font color='blue'>You disable the armor's protective sigils.</font>")
+		to_chat(user, "<font color=#4F49AF>You disable the armor's protective sigils.</font>")
 
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")

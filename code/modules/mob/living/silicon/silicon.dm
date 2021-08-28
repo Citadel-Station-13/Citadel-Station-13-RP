@@ -28,9 +28,9 @@
 
 	var/hudmode = null
 
-/mob/living/silicon/New()
+/mob/living/silicon/Initialize(mapload)
 	silicon_mob_list |= src
-	..()
+	. = ..()
 	add_language(LANGUAGE_GALCOM)
 	set_default_language(GLOB.all_languages[LANGUAGE_GALCOM])
 	init_id()
@@ -106,9 +106,9 @@
 	if(!Proj.nodamage)
 		switch(Proj.damage_type)
 			if(BRUTE)
-				adjustBruteLoss(Proj.damage)
+				adjustBruteLoss(Proj.get_final_damage(src))
 			if(BURN)
-				adjustFireLoss(Proj.damage)
+				adjustFireLoss(Proj.get_final_damage(src))
 
 	Proj.on_hit(src,2)
 	updatehealth()
@@ -393,7 +393,7 @@
 	//Handle job slot/tater cleanup.
 	var/job = mind.assigned_role
 
-	SSjobs.FreeRole(job)
+	job_master.FreeRole(job)
 
 	if(mind.objectives.len)
 		qdel(mind.objectives)

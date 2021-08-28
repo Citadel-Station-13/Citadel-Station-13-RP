@@ -20,8 +20,7 @@
 	var/adult_name
 	var/instance_num
 
-/mob/living/carbon/alien/New()
-
+/mob/living/carbon/alien/Initialize(mapload)
 	time_of_birth = world.time
 
 	verbs += /mob/living/proc/ventcrawl
@@ -37,7 +36,7 @@
 
 	gender = NEUTER
 
-	..()
+	return ..()
 
 /mob/living/carbon/alien/u_equip(obj/item/W as obj)
 	return

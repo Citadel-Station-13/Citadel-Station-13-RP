@@ -46,14 +46,22 @@
 		)
 	/// Names of static holdings that the organization's ships visit regularly.
 	var/list/destination_names = list()
+
 	/// Are we exempt from routine inspections? to avoid incidents where SysDef appears to go rogue -- defaults to TRUE now
 	var/lawful = TRUE
+
 	/// Are we explicitly lawless, hostile, or otherwise bad? allows for a finer alignment system, since my last checks weren't working properly
 	var/hostile = FALSE
+
 	/// Are we the space cops?
 	var/sysdef = FALSE
+
+	/// Is this part of the fleet/station makeup?
+	var/fleet = FALSE
+
 	/// Pad the destination lists with some extra random ones?
 	var/autogenerate_destination_names = TRUE
+
 
 /datum/lore/organization/New()
 	if(autogenerate_destination_names) // Lets pad out the destination names.
@@ -125,12 +133,12 @@
 	name = "NanoTrasen Incorporated"
 	short_name = "NanoTrasen "
 	acronym = "NT"
-	desc = "NanoTrasen is one of the foremost research and development companies in SolGov space. \
+	desc = "NanoTrasen is one of the foremost research and development companies in The Orion Confederation space. \
 	Originally focused on consumer products, their swift move into the field of Phoron has lead to \
 	them being the foremost experts on the substance and its uses. In the modern day, NanoTrasen prides \
 	itself on being an early adopter to as many new technologies as possible, often offering the newest \
 	products to their employees. In an effort to combat complaints about being 'guinea pigs', Nanotrasen \
-	also offers one of the most comprehensive medical plans in SolGov space, up to and including cloning \
+	also offers one of the most comprehensive medical plans in The Orion Confederation space, up to and including cloning \
 	and therapy.\
 	<br><br>\
 	NT's most well known products are its phoron based creations, especially those used in Cryotherapy. \
@@ -138,25 +146,32 @@
 	for newly tested posibrains to remain with the company."
 	work = "research giant"
 	headquarters = "The Frontier"
+	fleet = TRUE
 
-	ship_prefixes = list("NTV" = "a general operations", "NEV" = "an exploration", "NGV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
+	ship_prefixes = list("NTV" = "a general operations", "NEV" = "an exploration", "NSV" = "a research", "NGV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
 	/// Scientist naming scheme
 	ship_names = list(
 		"Bardeen", "Einstein", "Feynman", "Sagan", "Tyson",	"Galilei",
 		"Jans",	"Fhriede", "Franklin", "Tesla", "Curie", "Darwin",
 		"Newton", "Pasteur", "Bell", "Mendel", "Kepler", "Edison",
 		"Cavendish", "Nye", "Hawking", "Aristotle", "Von Braun", "Kaku",
-		"Oppenheimer", "Renwick", "Hubble", "Alcubierre", "Robineau", "Glass")
+		"Oppenheimer", "Renwick", "Hubble", "Alcubierre", "Robineau", "Glass",
+		"Curiosity", "Voyager", "Perseverance", "Once More With Feeling",
+		"Pretty Boy", "Whiskey Ring", "Uranus", "Chappaquiddick", "Dead Ringer",
+		"Watershed", "Zeus", "Defiant","Firefly", "Screaming Gale", "Gee Golly",
+		"Star Drifter", "Albatross", "Hawk", "Falcon", "Mule", "Caravel", "Galleon",
+		"Atlas", "Conestoga", "Endurance", "Donkey", "Grand Duke", "Prince", "Princess")
 	/// Note that the current station being used will be pruned from this list upon being instantiated
 	destination_names = list(
 		"NT HQ", "NSS Exodus in Nyx", "NCS Northern Star in Vir",
 		"NLS Southern Cross in Vir", "NAS Vir Central Command",
 		"a dockyard orbiting Sif", "an asteroid orbiting Kara",
-		"an asteroid orbiting Rota", "Vir Interstellar Spaceport")
+		"an asteroid orbiting Rota", "Vir Interstellar Spaceport",
+		"NSB Adephagia","Ishtar Sector")
 
 /datum/lore/organization/tsc/nanotrasen/New()
 	..()
-	spawn(1) // BYOND shenanigans means using_map is not initialized yet.  Wait a tick.
+	spawn(1) // BYOND shenanigans means GLOB.using_map is not initialized yet.  Wait a tick.
 		// Get rid of the current map from the list, so ships flying in don't say they're coming to the current map.
 		var/string_to_test = "[GLOB.using_map.station_name] in [GLOB.using_map.starsys_name]"
 		if(string_to_test in destination_names)
@@ -169,7 +184,7 @@
 	desc = "Hephaestus Industries is the largest supplier of arms, ammunition, and small millitary vehicles in Sol space. \
 	Hephaestus products have a reputation for reliability, and the corporation itself has a noted tendency to stay removed \
 	from corporate politics. They enforce their neutrality with the help of a fairly large asset-protection contingent which \
-	prevents any contracting polities from using their own materiel against them. SolGov itself is one of Hephaestus' largest \
+	prevents any contracting polities from using their own materiel against them. The Orion Confederation itself is one of Hephaestus' largest \
 	bulk contractors owing to the above factors."
 	work = "arms manufacturer"
 	headquarters = "Luna, Sol"
@@ -192,7 +207,7 @@
 		"Minerva", "Victoria", "Anat", "Astarte", "Perun", "Cao Lo")
 	destination_names = list(
 		"our headquarters on Luna",
-		"a SolGov dockyard on Luna",
+		"a The Orion Confederation dockyard on Luna",
 		"a Fleet outpost in the Almach Rim",
 		"a Fleet outpost on the Moghes border"
 		)
@@ -347,7 +362,7 @@
 	desc = "Xion, quietly, controls most of the market for industrial equipment. Their portfolio includes mining exosuits, \
 	factory equipment, rugged positronic chassis, and other pieces of equipment vital to the function of the economy. Xion \
 	keeps its control of the market by leasing, not selling, their equipment, and through infamous and bloody patent protection \
-	lawsuits. Xion are noted to be a favorite contractor for SolGov engineers, owing to their low cost and rugged design."
+	lawsuits. Xion are noted to be a favorite contractor for The Orion Confederation engineers, owing to their low cost and rugged design."
 	history = ""
 	work = "industrial equipment manufacturer"
 	headquarters = ""
@@ -1481,14 +1496,14 @@
 
 // Governments
 
-/datum/lore/organization/gov/solgov
+/datum/lore/organization/gov/theorionconfederation
 	name = "Orion Confederation"
 	short_name = "OriCon "
 	acronym = "TOC"
 	desc = ""
-	/*//Todo //"SolGov is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states.
+	/*//Todo //"The Orion Confederation is a decentralized confederation of human governmental entities based on Luna, Sol, which defines top-level law for their member states.
 	Member states receive various benefits such as defensive pacts, trade agreements, social support and funding, and being able to participate
-	in the Colonial Assembly.  The majority, but not all human territories are members of SolGov.  As such, SolGov is a major power and
+	in the Colonial Assembly.  The majority, but not all human territories are members of The Orion Confederation.  As such, The Orion Confederation is a major power and
 	defacto represents humanity on the galactic stage. Military flight operations fall under the banner of the USDF."*/
 	history = "" // Todo
 	work = "governing polity of humanity's Confederation"
@@ -1710,7 +1725,7 @@
 	name = "United Sol Defense Force"
 	short_name = "" //Doesn't cause whitespace any more, with a little sneaky low-effort workaround
 	acronym = "USDF"
-	desc = "The USDF is the dedicated military force of SolGov, originally formed by the United Nations. It is the dominant superpower of the Orion Spur, and is able to project its influence well into parts of the Perseus and Sagittarius arms of the galaxy. However, regions beyond that are too far for the USDF to be a major player."
+	desc = "The USDF is the dedicated military force of The Orion Confederation, originally formed by the United Nations. It is the dominant superpower of the Orion Spur, and is able to project its influence well into parts of the Perseus and Sagittarius arms of the galaxy. However, regions beyond that are too far for the USDF to be a major player."
 	history = ""
 	work = "peacekeeping and piracy suppression"
 	headquarters = "Paris, Earth"
@@ -1788,7 +1803,7 @@
 			)
 	destination_names = list(
 			"USDF HQ",
-			"a USDF staging facility on the edge of SolGov territory",
+			"a USDF staging facility on the edge of The Orion Confederation territory",
 			"a USDF resupply depot",
 			"a USDF shipyard in Sol",
 			"a classified location"
@@ -1938,7 +1953,7 @@
 	name = "Blackstar Legion"
 	short_name = "Blackstar "
 	acronym = "BSL"
-	desc = "Shrouded in mystery and controversy, Blackstar Legion is said to have its roots in pre-FTL Sol private military contractors. Their reputation means that most upstanding corporations and governments are hesitant to call upon them, whilst their prices put them out of the reach of most private individuals. As a result, they're mostly seen as the hired thugs of frontier governments that don't (or won't) answer to SolGov."
+	desc = "Shrouded in mystery and controversy, Blackstar Legion is said to have its roots in pre-FTL Sol private military contractors. Their reputation means that most upstanding corporations and governments are hesitant to call upon them, whilst their prices put them out of the reach of most private individuals. As a result, they're mostly seen as the hired thugs of frontier governments that don't (or won't) answer to The Orion Confederation."
 	history = ""
 	work = "mercenary contractors"
 	headquarters = ""

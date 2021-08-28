@@ -219,6 +219,7 @@
 	var/on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
 	var/on_store_visible_message_1 = "hums and hisses as it moves" //We need two variables because byond doesn't let us have variables inside strings at compile-time.
 	var/on_store_visible_message_2 = "into storage."
+	var/announce_channel = "Common"
 	var/allow_occupant_types = list(/mob/living/carbon/human)
 	var/disallow_occupant_types = list()
 
@@ -293,9 +294,9 @@
 
 	time_till_despawn = 60 //1 second, because gateway.
 
-/obj/machinery/cryopod/New()
+/obj/machinery/cryopod/Initialize(mapload)
+	. = ..()
 	announce = new /obj/item/radio/intercom(src)
-	..()
 
 /obj/machinery/cryopod/Destroy()
 	if(occupant)
@@ -303,7 +304,7 @@
 		occupant.resting = 1
 	return ..()
 
-/obj/machinery/cryopod/Initialize()
+/obj/machinery/cryopod/Initialize(mapload)
 	. = ..()
 
 	find_control_computer()
@@ -378,11 +379,11 @@
 
 // This function can not be undone; do not call this unless you are sure
 // Also make sure there is a valid control computer
-/obj/machinery/cryopod/proc/despawn_occupant(var/mob/to_despawn)
+/obj/machinery/cryopod/proc/despawn_occupant(var/mob/to_despawn, silent = FALSE)
 	//Recursively despawn mobs
 	for(var/mob/M in to_despawn)
 		despawn_occupant(M)
-
+	SStranscore.m_backup(to_despawn)
 	// VOREStation
 	hook_vr("despawn", list(to_despawn, src))
 	if(isliving(to_despawn))
@@ -404,7 +405,7 @@
 				var/datum/nifsoft/soulcatcher/SC = H.nif.imp_check(NIF_SOULCATCHER)
 				if(SC)
 					for(var/bm in SC.brainmobs)
-						despawn_occupant(bm)
+						despawn_occupant(bm, TRUE)
 	// VOREStation
 
 	//Drop all items into the pod.
@@ -474,7 +475,7 @@
 	//Handle job slot/tater cleanup.
 	var/job = to_despawn.mind.assigned_role
 
-	SSjobs.FreeRole(job)
+	job_master.FreeRole(job)
 
 	if(to_despawn.mind.objectives.len)
 		qdel(to_despawn.mind.objectives)
@@ -487,8 +488,8 @@
 
 	// Delete them from datacore.
 
-	if(PDA_Manifest.len)
-		PDA_Manifest.Cut()
+	if(GLOB.PDA_Manifest.len)
+		GLOB.PDA_Manifest.Cut()
 	for(var/datum/data/record/R in data_core.medical)
 		if((R.fields["name"] == to_despawn.real_name))
 			qdel(R)
@@ -504,14 +505,15 @@
 	//TODO: Check objectives/mode, update new targets if this mob is the target, spawn new antags?
 
 
-	//Make an announcement and log the person entering storage.
-	control_computer.frozen_crew += "[to_despawn.real_name], [to_despawn.mind.role_alt_title] - [stationtime2text()]"
+	if(!silent)
+		//Make an announcement and log the person entering storage.
+		control_computer.frozen_crew += "[to_despawn.real_name], [to_despawn.mind.role_alt_title] - [stationtime2text()]"
+		announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]", announce_channel, GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
+		//visible_message("<span class='notice'>\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage.</span>", 3)
+		visible_message("<span class='notice'>\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2].</span>", 3)
 	control_computer._admin_logs += "[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) at [stationtime2text()]"
 	log_and_message_admins("[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) entered cryostorage.")
 
-	announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]")
-	//visible_message("<span class='notice'>\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage.</span>", 3)
-	visible_message("<span class='notice'>\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2].</span>", 3)
 
 	//VOREStation Edit begin: Dont delete mobs-in-mobs
 	if(to_despawn.client && to_despawn.stat<2)
@@ -714,3 +716,66 @@
 
 		//Despawning occurs when process() is called with an occupant without a client.
 		add_fingerprint(M)
+
+
+//VR FILE MERGE
+//Overrides!
+
+/obj/machinery/cryopod
+	// The corresponding spawn point type that user despawning here will return at next round.
+	// Note: We use a type instead of name so that its validity is checked at compile time.
+	var/spawnpoint_type = /datum/spawnpoint/cryo
+
+/obj/machinery/cryopod/robot
+	spawnpoint_type = /datum/spawnpoint/cyborg
+
+/obj/machinery/cryopod/robot/door/gateway
+	name = "public teleporter"
+	desc = "The short-range teleporter you might've came in from. You could leave easily using this."
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "tele0"
+	base_icon_state = "tele0"
+	occupied_icon_state = "tele1"
+	on_store_message = "has departed via short-range teleport."
+	on_enter_occupant_message = "The teleporter activates, and you step into the swirling portal."
+	spawnpoint_type = /datum/spawnpoint/gateway
+
+/obj/machinery/computer/cryopod/gateway
+	name = "teleport oversight console"
+	desc = "An interface between visitors and the teleport oversight systems tasked with keeping track of all visitors who enter or exit from the teleporters."
+/* VOREStation Edit
+/obj/machinery/cryopod/robot/door/dorms
+	desc = "A small elevator that goes down to the residential district."
+	on_enter_occupant_message = "The elevator door closes slowly, ready to bring you down to the residential district."
+	spawnpoint_type = /datum/spawnpoint/elevator
+
+/obj/machinery/computer/cryopod/dorms
+	name = "residential oversight console"
+	desc = "An interface between visitors and the residential oversight systems tasked with keeping track of all visitors in the residential district."
+*/
+
+/obj/machinery/cryopod/proc/log_special_item(var/atom/movable/item,var/mob/to_despawn)
+	ASSERT(item && to_despawn)
+
+	var/loaded_from_key
+	var/char_name = to_despawn.name
+	var/item_name = item.name
+
+	// Best effort key aquisition
+	if(ishuman(to_despawn))
+		var/mob/living/carbon/human/H = to_despawn
+		if(H.original_player)
+			loaded_from_key = H.original_player
+
+	if(!loaded_from_key && to_despawn.mind && to_despawn.mind.loaded_from_ckey)
+		loaded_from_key = to_despawn.mind.loaded_from_ckey
+
+	else
+		loaded_from_key = "INVALID"
+
+	// Log to harrass them later
+	log_game("CRYO [loaded_from_key]/([to_despawn.name]) cryo'd with [item_name] ([item.type])")
+	qdel(item)
+
+	if(control_computer && control_computer.allow_items)
+		control_computer.frozen_items += "[item_name] ([char_name])"

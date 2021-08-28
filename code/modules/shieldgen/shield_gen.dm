@@ -12,7 +12,7 @@
 	var/locked = 0
 	var/average_field_strength = 0
 	var/strengthen_rate = 0.2
-	var/max_strengthen_rate = 0.5	//the maximum rate that the generator can increase the average field strength
+	var/max_strengthen_rate = 0.9	//the maximum rate that the generator can increase the average field strength
 	var/dissipation_rate = 0.030	//the percentage of the shield strength that needs to be replaced each second
 	var/min_dissipation = 0.01		//will dissipate by at least this rate in renwicks per field tile (otherwise field would never dissipate completely as dissipation is a percentage)
 	var/powered = 0
@@ -30,7 +30,7 @@
 	desc = "A machine that generates a field of energy optimized for blocking meteorites when activated.  This version comes with a more efficent shield matrix."
 	energy_conversion_rate = 0.0012
 
-/obj/machinery/shield_gen/Initialize()
+/obj/machinery/shield_gen/Initialize(mapload)
 	if(anchored)
 		for(var/obj/machinery/shield_capacitor/cap in range(1, src))
 			if(!cap.anchored)
@@ -70,7 +70,7 @@
 	else if(W.is_wrench())
 		src.anchored = !src.anchored
 		playsound(src, W.usesound, 75, 1)
-		src.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
+		src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
 
 		if(active)
 			toggle()

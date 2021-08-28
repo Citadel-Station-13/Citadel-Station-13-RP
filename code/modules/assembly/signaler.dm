@@ -17,12 +17,13 @@
 	var/datum/radio_frequency/radio_connection
 	var/deadman = FALSE
 
-/obj/item/assembly/signaler/New()
-	..()
-	spawn(40)
-		set_frequency(frequency)
-	return
+/obj/item/assembly/signaler/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/item/assembly/signaler/LateInitialize()
+	. = ..()
+	set_frequency(frequency)
 
 /obj/item/assembly/signaler/activate()
 	if(cooldown > 0)	return FALSE

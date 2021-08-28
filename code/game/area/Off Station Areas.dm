@@ -7,6 +7,7 @@
 
 //Triumph specific Areas
 
+
 /area/triumph/surfacebase
 	icon = 'icons/turf/areas.dmi'
 /area/triumph/surfacebase/outside
@@ -154,11 +155,11 @@
 /area/shuttle/triumph/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/triumph
+	base_turf = /turf/simulated/floor/outdoors/dirt
 /area/shuttle/triumph/crash2
 	name = "\improper Crash Site 2"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/triumph
+	base_turf = /turf/simulated/floor/outdoors/dirt
 
 // Frozen planet world areas
 /area/frozen_planet
@@ -350,8 +351,11 @@
 /area/piratebase/facility
 	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+	requires_power = FALSE
 
-
+////////////////////////////////////
+//// END TRIUMPH SPECIFIC AREAS ////
+////////////////////////////////////
 
 // Mining Underdark
 
@@ -865,3 +869,115 @@
 
 /area/awaymission/zoo/pirateship
 	icon_state = "bluenew"
+
+//Jungle Areas
+/area/jungle/temple_one
+	icon_state = "red"
+/area/jungle/temple_two
+	icon_state = "yellow"
+/area/jungle/temple_three
+	icon_state = "green"
+/area/jungle/temple_four
+	icon_state = "blue"
+/area/jungle/temple_five
+	icon_state = "purple"
+/area/jungle/temple_six
+	icon_state = "away"
+/area/jungle/crash_ship_one
+	icon_state = "red"
+/area/jungle/crash_ship_two
+	icon_state = "yellow"
+/area/jungle/crash_ship_three
+	icon_state = "green"
+/area/jungle/crash_ship_four
+	icon_state = "blue"
+/area/jungle/crash_ship_source
+	icon_state = "purple"
+/area/jungle/crash_ship_clean
+	icon_state = "away"
+
+//Challenge
+/area/awaymission/challenge/start
+	icon_state = "red"
+/area/awaymission/challenge/laser_retro
+	icon_state = "yellow"
+/area/awaymission/challenge/main
+	icon_state = "green"
+/area/awaymission/challenge/end
+	icon_state = "blue"
+
+//Labyrinth
+/area/awaymission/labyrinth/temple/north_west
+	icon_state = "red"
+/area/awaymission/labyrinth/temple/north
+	icon_state = "yellow"
+/area/awaymission/labyrinth/temple/north_east
+	icon_state = "green"
+/area/awaymission/labyrinth/temple/center
+	icon_state = "blue"
+/area/awaymission/labyrinth/temple/east
+	icon_state = "red"
+/area/awaymission/labyrinth/temple/west
+	icon_state = "yellow"
+/area/awaymission/labyrinth/temple/south_east
+	icon_state = "green"
+/area/awaymission/labyrinth/temple/south
+	icon_state = "blue"
+/area/awaymission/labyrinth/temple/south_west
+	icon_state = "red"
+/area/awaymission/labyrinth/arrival
+	icon_state = "yellow"
+/area/awaymission/labyrinth/temple/entry
+	icon_state = "green"
+/area/awaymission/labyrinth/boss
+	icon_state = "blue"
+/area/awaymission/labyrinth/cave
+	icon_state = "red"
+//Station Collison
+/area/awaymission/northblock
+	icon_state = "red"
+/area/awaymission/syndishuttle
+	icon_state = "yellow"
+/area/awaymission/research
+	icon_state = "green"
+/area/awaymission/midblock
+	icon_state = "blue"
+/area/awaymission/arrivalblock
+	icon_state = "purple"
+/area/awaymission/southblock
+	icon_state = "red"
+/area/awaymission/gateroom
+	icon_state = "yellow"
+//ZResearch
+/area/awaymission/labs/cave
+	icon_state = "red"
+/area/awaymission/labs/researchdivision
+	icon_state = "yellow"
+/area/awaymission/labs/gateway
+	icon_state = "green"
+/area/awaymission/labs/militarydivision
+	icon_state = "blue"
+/area/awaymission/labs/solars
+	icon_state = "purple"
+/area/awaymission/labs/command
+	icon_state = "red"
+/area/awaymission/labs/cargo
+	icon_state = "yellow"
+/area/awaymission/labs/civilian
+	icon_state = "green"
+/area/awaymission/labs/security
+	icon_state = "blue"
+/area/awaymission/labs/medical
+	icon_state = "purple"
+//Academy
+/area/awaymission/academy
+	icon_state = "red"
+/area/awaymission/academy/headmaster
+	icon_state = "yellow"
+/area/awaymission/academy/classrooms
+	icon_state = "green"
+/area/awaymission/academy/academyaft
+	icon_state = "blue"
+/area/awaymission/academy/academygate
+	icon_state = "purple"
+

@@ -38,7 +38,7 @@
 		charges--//... drain a charge
 		recharge_newshot()
 
-/obj/item/gun/magic/Initialize()
+/obj/item/gun/magic/Initialize(mapload)
 	. = ..()
 	charges = max_charges
 	chambered = new ammo_type(src)
@@ -60,6 +60,9 @@
 	if(charges == 1)
 		recharge_newshot()
 	return 1
+
+/obj/item/gun/magic/consume_next_projectile()
+	return chambered?.BB
 
 /obj/item/gun/magic/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	to_chat(user, "<span class='warning'>The [name] whizzles quietly.</span>")

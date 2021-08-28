@@ -80,8 +80,8 @@ Slime definitions, Life and New live here.
 						"woodpulp" = list("heal" = 0.1, "nutr" = 0.7),
 						"docilitytoxin" = list("nutr" = 0.3)	)
 
-/mob/living/simple_mob/xeno/slime/New()
-	..()
+/mob/living/simple_mob/xeno/slime/Initialize(mapload)
+	. = ..()
 	for(var/datum/language/L in (typesof(/datum/language) - /datum/language))
 		languages += L
 	speak += "[station_name()]?"
@@ -90,4 +90,3 @@ Slime definitions, Life and New live here.
 	resistances[BRUTE] = 0.2
 	resistances[TOX] = 1.5
 	GenerateChild()
-	return 1

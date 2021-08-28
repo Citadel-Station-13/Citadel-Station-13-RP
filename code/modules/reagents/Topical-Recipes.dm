@@ -1,13 +1,13 @@
-//Recipes for the topical Gels, mostly they are simple mixtures Destiller recipes may follow
+//Recipes for the topical gels, mostly they are simple mixtures, distiller recipes may follow
 /datum/chemical_reaction/topical
     name = "Topical Gel"
     id = "topical"
     result = "topical"
     required_reagents = list("sterilizine" = 5, "foaming_agent" = 5)
     catalysts = list("tungsten" = 5)
-    result_amount = 2//Shitty amounts because you should use the destiller
+    result_amount = 2//Shitty amounts because you should use the distiller
 
-/datum/chemical_reaction/distilling/topical//DESTILLER RECIPE!!!
+/datum/chemical_reaction/distilling/topical //distiller recipe.
 	name = "Distilling topical"
 	id = "distill_topical"
 	result = "topical"
@@ -71,7 +71,7 @@
     name = "Cleansalaze"
     id = "cleansalaze"
     result = "cleansalaze"
-    required_reagents = list("topical" = 1, "hyronaline" = 2)
+    required_reagents = list("topical" = 1, "hyronalin" = 2)
     catalysts = list()
     result_amount = 2
 

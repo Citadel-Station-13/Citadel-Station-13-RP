@@ -95,8 +95,8 @@
 /obj/machinery/alarm/alarms_hidden
 	alarms_hidden = TRUE
 
-/obj/machinery/alarm/server/New()
-	..()
+/obj/machinery/alarm/server/Initialize(mapload)
+	. = ..()
 	req_access = list(access_rd, access_atmospherics, access_engine_equip)
 	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
@@ -115,8 +115,8 @@
 		elect_master(exclude_self = TRUE)
 	return ..()
 
-/obj/machinery/alarm/New()
-	..()
+/obj/machinery/alarm/Initialize(mapload)
+	. = ..()
 	first_run()
 
 /obj/machinery/alarm/proc/first_run()
@@ -137,7 +137,7 @@
 	TLV["temperature"] =	list(T0C - 26, T0C, T0C + 40, T0C + 66) // K
 
 
-/obj/machinery/alarm/Initialize()
+/obj/machinery/alarm/Initialize(mapload)
 	. = ..()
 	set_frequency(frequency)
 	if(!master_is_operating())
@@ -606,15 +606,15 @@
 /obj/machinery/alarm/CanUseTopic(var/mob/user, var/datum/topic_state/state, var/href_list = list())
 	if(aidisabled && isAI(user))
 		to_chat(user, "<span class='warning'>AI control for \the [src] interface has been disabled.</span>")
-		return STATUS_CLOSE
+		return UI_CLOSE
 
-	. = shorted ? STATUS_DISABLED : STATUS_INTERACTIVE
+	. = shorted ? UI_DISABLED : UI_INTERACTIVE
 
-	if(. == STATUS_INTERACTIVE)
+	if(. == UI_INTERACTIVE)
 		var/extra_href = state.href_list(usr)
 		// Prevent remote users from altering RCON settings unless they already have access
 		if(href_list["rcon"] && extra_href["remote_connection"] && !extra_href["remote_access"])
-			. = STATUS_UPDATE
+			. = UI_UPDATE
 
 	return min(..(), .)
 
@@ -1009,7 +1009,7 @@ FIRE ALARM
 		seclevel = newlevel
 		update_icon()
 
-/obj/machinery/firealarm/Initialize()
+/obj/machinery/firealarm/Initialize(mapload)
 	. = ..()
 	if(z in GLOB.using_map.contact_levels)
 		set_security_level(security_level? get_security_level() : "green")

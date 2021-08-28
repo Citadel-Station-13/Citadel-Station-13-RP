@@ -25,11 +25,11 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/mineral/mint/LateInitialize()
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 		if(input)
 			break
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 		if(output)
 			break
@@ -124,7 +124,7 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 	if(processing==1)
-		to_chat(usr, "<font color='blue'>The machine is processing.</font>")
+		to_chat(usr, "<font color=#4F49AF>The machine is processing.</font>")
 		return
 	if(href_list["choose"])
 		chosen = href_list["choose"]

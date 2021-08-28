@@ -1,6 +1,6 @@
 #define SAVE_RESET -1
 
-var/list/preferences_datums = list()
+GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences
 	//doohickeys for savefiles
@@ -26,6 +26,8 @@ var/list/preferences_datums = list()
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#010000"			//Whatever this is set to acts as 'reset' color and is thus unusable as an actual custom color
 	var/be_special = 0					//Special role selection
+	/// Event role prefs flag
+	var/be_event_role = NONE
 	var/UI_style = "Midnight"
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
@@ -98,6 +100,10 @@ var/list/preferences_datums = list()
 	var/job_engsec_med = 0
 	var/job_engsec_low = 0
 
+	var/job_talon_high = 0
+	var/job_talon_med = 0
+	var/job_talon_low = 0
+
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = 1
 
@@ -123,6 +129,7 @@ var/list/preferences_datums = list()
 	var/gen_record = ""
 	var/exploit_record = ""
 	var/disabilities = 0
+	var/mirror = TRUE
 
 	var/economic_status = "Average"
 
@@ -148,6 +155,11 @@ var/list/preferences_datums = list()
 
 	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
 	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
+
+	// Should we automatically fit the viewport?
+	var/auto_fit_viewport = TRUE
+	// Should we be in the widescreen mode set by the config?
+	var/widescreenpref = FALSE	// Doesn't exist... Yet.
 
 /datum/preferences/New(client/C)
 	player_setup = new(src)
@@ -224,7 +236,8 @@ var/list/preferences_datums = list()
 			return "God"
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	if(!user || !user.client)	return
+	if(!user || !user.client)
+		return
 
 	if(!get_mob_by_key(client_ckey))
 		to_chat(user, "<span class='danger'>No mob exists for the given client!</span>")

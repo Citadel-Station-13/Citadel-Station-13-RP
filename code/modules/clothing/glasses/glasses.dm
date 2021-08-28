@@ -73,12 +73,12 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
-	item_flags = AIRTIGHT //cit change
+	item_flags = ALLOWINTERNALS //cit change
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
-/obj/item/clothing/glasses/meson/New()
-	..()
+/obj/item/clothing/glasses/meson/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.meson
 
 /obj/item/clothing/glasses/meson/prescription
@@ -120,12 +120,12 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	item_flags = AIRTIGHT
+	item_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 	clothing_flags = SCAN_REAGENTS
 
-/obj/item/clothing/glasses/science/New()
-	..()
+/obj/item/clothing/glasses/science/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.science
 
 /obj/item/clothing/glasses/goggles
@@ -133,7 +133,7 @@ BLIND     // can't see anything
 	desc = "Just some plain old goggles."
 	icon_state = "plaingoggles"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
-	item_flags = AIRTIGHT
+	item_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 
 /obj/item/clothing/glasses/night
@@ -145,7 +145,7 @@ BLIND     // can't see anything
 	darkness_view = 7
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	item_flags = AIRTIGHT //  Cit change
+	item_flags = ALLOWINTERNALS //  Cit change
 	body_parts_covered = EYES // Cit change
 	off_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
@@ -156,8 +156,8 @@ BLIND     // can't see anything
 	species_restricted = list("Vox")
 	flags = PHORONGUARD
 
-/obj/item/clothing/glasses/night/New()
-	..()
+/obj/item/clothing/glasses/night/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.nvg
 
 /obj/item/clothing/glasses/eyepatch
@@ -223,12 +223,12 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
-	item_flags = AIRTIGHT //cit change
+	item_flags = ALLOWINTERNALS //cit change
 	body_parts_covered = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
-/obj/item/clothing/glasses/material/New()
-	..()
+/obj/item/clothing/glasses/material/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.material
 
 /obj/item/clothing/glasses/material/prescription
@@ -246,13 +246,13 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	off_state = "denight"
 	vision_flags = SEE_OBJS | SEE_TURFS
-	item_flags = AIRTIGHT //  Cit change
+	item_flags = ALLOWINTERNALS //  Cit change
 	body_parts_covered = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
-/obj/item/clothing/glasses/graviton/New()
-	..()
+/obj/item/clothing/glasses/graviton/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.material
 
 /obj/item/clothing/glasses/regular
@@ -366,7 +366,7 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "welding-g", slot_l_hand_str = "welding-g")
 	action_button_name = "Flip Welding Goggles"
 	matter = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 1000)
-	item_flags = AIRTIGHT
+	item_flags = ALLOWINTERNALS
 	var/up = 0
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
@@ -452,7 +452,7 @@ BLIND     // can't see anything
 	name = "tactical HUD"
 	desc = "Flash-resistant goggles with inbuilt combat and security information."
 	icon_state = "swatgoggles"
-	item_flags = AIRTIGHT
+	item_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator
@@ -510,7 +510,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_MOBS
-	enables_planes = list(VIS_FULLBRIGHT)
+	enables_planes = list(VIS_FULLBRIGHT, VIS_CLOAKED)
 	flash_protection = FLASH_PROTECTION_REDUCED
 
 	emp_act(severity)
@@ -527,8 +527,8 @@ BLIND     // can't see anything
 						M.disabilities &= ~NEARSIGHTED
 		..()
 
-/obj/item/clothing/glasses/thermal/New()
-	..()
+/obj/item/clothing/glasses/thermal/Initialize(mapload)
+	. = ..()
 	overlay = GLOB.global_hud.thermal
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
@@ -576,7 +576,7 @@ BLIND     // can't see anything
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	action_button_name = "Adjust Orange Goggles"
 	var/up = 0
-	item_flags = AIRTIGHT
+	item_flags = ALLOWINTERNALS
 	body_parts_covered = EYES
 	species_restricted = list(SPECIES_TESHARI)
 

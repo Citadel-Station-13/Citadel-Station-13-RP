@@ -13,7 +13,8 @@
 	drop_sound = 'sound/items/drop/ring.ogg'
 	pickup_sound = 'sound/items/pickup/ring.ogg'
 
-/obj/item/coin/New()
+/obj/item/coin/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
 
@@ -68,7 +69,7 @@
 		CC.update_icon()
 		overlays = list()
 		string_attached = null
-		to_chat(user, "<font color='blue'>You detach the string from the coin.</font>")
+		to_chat(user, "<font color=#4F49AF>You detach the string from the coin.</font>")
 	else ..()
 
 /obj/item/coin/attack_self(mob/user as mob)

@@ -63,8 +63,8 @@
 
 	var/rank //pyro, operative, ammo, stealth. more to come. Do not leave blank.
 
-/mob/living/simple_mob/animal/space/mouse_army/New()
-	..()
+/mob/living/simple_mob/animal/space/mouse_army/Initialize(mapload)
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
@@ -91,7 +91,7 @@
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] Squeek!</font>")
+			M.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] Squeek!</font>")
 			playsound(src, 'sound/effects/mouse_squeak.ogg', 35, 1)
 	..()
 
@@ -280,72 +280,72 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
 
-	var/cloaked = FALSE
-	var/cloaked_alpha = 45			// Lower = Harder to see.
-	var/cloaked_bonus_damage = 20	// This is added on top of the normal melee damage.
-	var/cloaked_weaken_amount = 3	// How long to stun for.
-	var/cloak_cooldown = 10 SECONDS	// Amount of time needed to re-cloak after losing it.
-	var/last_uncloak = 0			// world.time
+	var/stealthed = FALSE
+	var/stealthed_alpha = 45			// Lower = Harder to see.
+	var/stealthed_bonus_damage = 20	// This is added on top of the normal melee damage.
+	var/stealthed_weaken_amount = 3	// How long to stun for.
+	var/stealth_cooldown = 10 SECONDS	// Amount of time needed to re-stealth after losing it.
+	var/last_unstealth = 0			// world.time
 
 
-/mob/living/simple_mob/animal/space/mouse_army/stealth/proc/cloak()
-	if(cloaked)
+/mob/living/simple_mob/animal/space/mouse_army/stealth/proc/stealth()
+	if(stealthed)
 		return
-	animate(src, alpha = cloaked_alpha, time = 1 SECOND)
-	cloaked = TRUE
+	animate(src, alpha = stealthed_alpha, time = 1 SECOND)
+	stealthed = TRUE
 
 
-/mob/living/simple_mob/animal/space/mouse_army/stealth/proc/uncloak()
-	last_uncloak = world.time // This is assigned even if it isn't cloaked already, to 'reset' the timer if the spider is continously getting attacked.
-	if(!cloaked)
+/mob/living/simple_mob/animal/space/mouse_army/stealth/proc/unstealth()
+	last_unstealth = world.time // This is assigned even if it isn't stealthed already, to 'reset' the timer if the spider is continously getting attacked.
+	if(!stealthed)
 		return
 	animate(src, alpha = initial(alpha), time = 1 SECOND)
-	cloaked = FALSE
+	stealthed = FALSE
 
 
-// Check if cloaking if possible.
-/mob/living/simple_mob/animal/space/mouse_army/stealth/proc/can_cloak()
+// Check if stealthing if possible.
+/mob/living/simple_mob/animal/space/mouse_army/stealth/proc/can_stealth()
 	if(stat)
 		return FALSE
-	if(last_uncloak + cloak_cooldown > world.time)
+	if(last_unstealth + stealth_cooldown > world.time)
 		return FALSE
 
 	return TRUE
 
 
-// Called by things that break cloaks, like Technomancer wards.
+// Called by things that break stealths, like Technomancer wards.
 /mob/living/simple_mob/animal/space/mouse_army/stealth/break_cloak()
-	uncloak()
+	unstealth()
 
 
 /mob/living/simple_mob/animal/space/mouse_army/stealth/is_cloaked()
-	return cloaked
+	return stealthed
 
 
 // Cloaks the spider automatically, if possible.
 /mob/living/simple_mob/animal/space/mouse_army/stealth/handle_special()
-	if(!cloaked && can_cloak())
-		cloak()
+	if(!stealthed && can_stealth())
+		stealth()
 
 
-// Applies bonus base damage if cloaked.
+// Applies bonus base damage if stealthed.
 /mob/living/simple_mob/animal/space/mouse_army/stealth/apply_bonus_melee_damage(atom/A, damage_amount)
-	if(cloaked)
-		return damage_amount + cloaked_bonus_damage
+	if(stealthed)
+		return damage_amount + stealthed_bonus_damage
 	return ..()
 
-// Applies stun, then uncloaks.
+// Applies stun, then unstealths.
 /mob/living/simple_mob/animal/space/mouse_army/stealth/apply_melee_effects(atom/A)
-	if(cloaked)
+	if(stealthed)
 		if(isliving(A))
 			var/mob/living/L = A
-			L.Weaken(cloaked_weaken_amount)
+			L.Weaken(stealthed_weaken_amount)
 			to_chat(L, span("danger", "\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
-	uncloak()
+	unstealth()
 	..() // For the poison.
 
-// Force uncloaking if attacked.
+// Force unstealthing if attacked.
 /mob/living/simple_mob/animal/space/mouse_army/stealth/bullet_act(obj/item/projectile/P)
 	. = ..()
 	break_cloak()

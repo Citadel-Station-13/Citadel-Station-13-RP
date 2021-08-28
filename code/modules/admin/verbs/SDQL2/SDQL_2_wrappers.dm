@@ -184,6 +184,9 @@
 /proc/_list_swap(list/L, Index1, Index2)
 	L.Swap(Index1, Index2)
 
+/proc/_list_get(list/L, index)
+	return L[index]
+
 /proc/_walk(ref, dir, lag)
 	walk(ref, dir, lag)
 
@@ -216,10 +219,34 @@
 
 /proc/_has_trait(datum/thing,trait)
 	return HAS_TRAIT(thing,trait)
+/proc/_instantiate_at(thing, location)
+	new thing(location)
+
+/// Locating turfs
+/proc/_turf_in_offset(s = usr, x = 0, y = 0, z = 0)
+	var/turf/T = get_turf(s)
+	return locate(clamp(T.x + x, 1, world.maxx), clamp(T.y + y, 1, world.maxy), clamp(T.z + z, 1, world.maxz))
 
 /proc/_add_trait(datum/thing,trait,source)
 	ADD_TRAIT(thing,trait,source)
+/proc/_random_turf_in_range(s = usr, r = 7)
+	return _turf_in_offset(s, rand(-r, r), rand(-r, r))
 
 /proc/_remove_trait(datum/thing,trait,source)
 	REMOVE_TRAIT(thing,trait,source)
+/proc/_random_turf_in_view(s = usr, r = 7)
+	var/list/v = view(s, r)
+	. = list()
+	for(var/turf/T in v)
+		. += T
+	return pick(.)
 
+/proc/__nan()
+	var/list/L = json_decode("{\"value\":NaN}")
+	return L["value"]
+
+/**
+ * Wrapper to return a copy of contents, as SDQL2 can't tell an internal list from a normal list.
+ */
+/atom/proc/_contents()
+	return contents.Copy()

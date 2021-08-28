@@ -310,7 +310,7 @@
 	var/obj/structure/ore_box/B = locate() in orange(1)
 	if(B)
 		for(var/obj/item/ore/O in contents)
-			O.loc = B
+			B.take(O)
 		to_chat(usr, "<span class='notice'>You unload the drill's storage cache into the ore box.</span>")
 	else
 		to_chat(usr, "<span class='notice'>You must move an ore box up to the drill before you can unload it.</span>")
@@ -323,9 +323,8 @@
 	circuit = /obj/item/circuitboard/miningdrillbrace
 	var/obj/machinery/mining/drill/connected
 
-/obj/machinery/mining/brace/New()
-	..()
-
+/obj/machinery/mining/brace/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
 
 /obj/machinery/mining/brace/attackby(obj/item/W as obj, mob/user as mob)

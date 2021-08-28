@@ -8,10 +8,8 @@
 	var/plantname
 	var/potency = 1
 
-/obj/item/grown/New(newloc,planttype)
-
-	..()
-
+/obj/item/grown/Initialize(mapload, planttype)
+	. = ..()
 	var/datum/reagents/R = new/datum/reagents(50)
 	reagents = R
 	R.my_atom = src

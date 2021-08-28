@@ -76,27 +76,24 @@
 		if(3.0)
 			return
 
-
-
-/obj/structure/transit_tube_pod/New(loc)
-	..(loc)
+/obj/structure/transit_tube_pod/Initialize(mapload)
+	. = ..()
 
 	air_contents.adjust_multi(/datum/gas/oxygen, MOLES_O2STANDARD * 2, /datum/gas/nitrogen, MOLES_N2STANDARD)
 	air_contents.temperature = T20C
 
 	// Give auto tubes time to align before trying to start moving
-	spawn(5)
-		follow_tube()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/structure/transit_tube_pod/LateInitialize()
+	. = ..()
+	follow_tube()
 
-
-/obj/structure/transit_tube/New(loc)
-	..(loc)
+/obj/structure/transit_tube/Initialize(mapload)
+	. = ..()
 
 	if(tube_dirs == null)
 		init_dirs()
-
-
 
 /obj/structure/transit_tube/Bumped(mob/AM as mob|obj)
 	var/obj/structure/transit_tube/T = locate() in AM.loc
@@ -106,12 +103,6 @@
 	else
 		AM.loc = src.loc
 		to_chat(AM, "<span class='info'>You slip under the tube.</span>")
-
-
-/obj/structure/transit_tube/station/New(loc)
-	..(loc)
-
-
 
 /obj/structure/transit_tube/station/Bumped(mob/AM as mob|obj)
 	if(!pod_moving && icon_state == "open" && istype(AM, /mob))

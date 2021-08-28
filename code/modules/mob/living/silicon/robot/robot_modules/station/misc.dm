@@ -17,12 +17,14 @@
 					"Misato" = "tall2standard",
 					"L3P1-D0T" = "Glitterfly-Standard",
 					"Convict" = "servitor",
-					"Miss M" = "miss-standard"
+					"Miss M" = "miss-standard",
+					"Coffin" = "coffin-Standard"
+
 					)
 
 
-/obj/item/robot_module/robot/standard/New()
-	..()
+/obj/item/robot_module/robot/standard/Initialize(mapload)
+	. = ..()
 	src.modules += new /obj/item/melee/baton/loaded(src)
 	src.modules += new /obj/item/tool/wrench/cyborg(src)
 	src.modules += new /obj/item/healthanalyzer(src)

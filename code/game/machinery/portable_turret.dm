@@ -300,7 +300,7 @@
 
 		return 1
 
-/obj/machinery/porta_turret/Initialize()
+/obj/machinery/porta_turret/Initialize(mapload)
 	//Sets up a spark system
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
@@ -458,14 +458,14 @@
 /obj/machinery/porta_turret/CanUseTopic(var/mob/user)
 	if(HasController())
 		to_chat(user, "<span class='notice'>Turrets can only be controlled using the assigned turret controller.</span>")
-		return STATUS_CLOSE
+		return UI_CLOSE
 
 	if(isLocked(user))
-		return STATUS_CLOSE
+		return UI_CLOSE
 
 	if(!anchored)
 		to_chat(user, "<span class='notice'>\The [src] has to be secured first!</span>")
-		return STATUS_CLOSE
+		return UI_CLOSE
 
 	return ..()
 

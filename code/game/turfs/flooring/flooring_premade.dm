@@ -71,7 +71,7 @@
 /turf/simulated/floor/wood/broken
 	icon_state = "wood_broken0" // This gets changed when spawned.
 
-/turf/simulated/floor/wood/broken/Initialize()
+/turf/simulated/floor/wood/broken/Initialize(mapload)
 	break_tile()
 	return ..()
 
@@ -84,7 +84,7 @@
 /turf/simulated/floor/wood/sif/broken
 	icon_state = "sifwood_broken0" // This gets changed when spawned.
 
-/turf/simulated/floor/wood/sif/broken/Initialize()
+/turf/simulated/floor/wood/sif/broken/Initialize(mapload)
 	break_tile()
 	return ..()
 
@@ -363,8 +363,12 @@
 */
 /turf/simulated/floor/airless/ceiling
 /turf/simulated/floor/plating
-/turf/simulated/floor/plating/external // To be overrided by the map files.
+
+/turf/simulated/floor/plating/external
+	outdoors = TRUE
+
 /turf/simulated/floor/tiled/external
+	outdoors = TRUE
 
 //**** Here lives snow ****
 /turf/simulated/floor/snow

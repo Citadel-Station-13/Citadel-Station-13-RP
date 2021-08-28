@@ -119,7 +119,7 @@
 	"Catching Prey \[[setting_flags & NIF_SC_CATCHING_OTHERS ? "Enabled" : "Disabled"]\]" = NIF_SC_CATCHING_OTHERS,
 	"Ext. Hearing \[[setting_flags & NIF_SC_ALLOW_EARS ? "Enabled" : "Disabled"]\]" = NIF_SC_ALLOW_EARS,
 	"Ext. Vision \[[setting_flags & NIF_SC_ALLOW_EYES ? "Enabled" : "Disabled"]\]" = NIF_SC_ALLOW_EYES,
-	"Mind Backups \[[setting_flags & NIF_SC_BACKUPS ? "Enabled" : "Disabled"]\]" = NIF_SC_BACKUPS,
+//	"Mind Backups \[[setting_flags & NIF_SC_BACKUPS ? "Enabled" : "Disabled"]\]" = NIF_SC_BACKUPS,
 	"AR Projecting \[[setting_flags & NIF_SC_PROJECTING ? "Enabled" : "Disabled"]\]" = NIF_SC_PROJECTING,
 	"Design Inside",
 	"Erase Contents")
@@ -161,12 +161,12 @@
 	var/notify_message
 	//Special treatment
 	switch(flag)
-		if(NIF_SC_BACKUPS)
+/*		if(NIF_SC_BACKUPS)
 			if(setting_flags & NIF_SC_BACKUPS)
 				notify_message = "Mind backup system enabled."
 			else
 				notify_message = "Mind backup system disabled."
-
+*/
 		if(NIF_SC_CATCHING_ME)
 			if(setting_flags & NIF_SC_CATCHING_ME)
 				nif.set_flag(NIF_O_SCMYSELF,NIF_FLAGS_OTHER)
@@ -401,6 +401,9 @@
 		eyeobj.pixel_y--
 		eyeobj.is_shifted = TRUE
 
+/mob/living/carbon/brain/caught_soul/allow_examine(atom/A)
+	return TRUE
+
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
 	if(silent)
 		return FALSE
@@ -430,6 +433,9 @@
 
 	to_chat(src,"<span class='warning'>There's no way out! You're stuck in VR.</span>")
 
+/mob/living/carbon/brain/caught_soul/set_typing_indicator(state)
+	return eyeobj?.set_typing_indicator(state)
+
 ///////////////////
 //A projected AR soul thing
 /mob/observer/eye/ar_soul
@@ -438,9 +444,9 @@
 	icon_state = "beacon"
 	var/mob/living/carbon/human/parent_human
 
-/mob/observer/eye/ar_soul/New(var/mob/brainmob, var/mob/living/carbon/human/human)
+/mob/observer/eye/ar_soul/Initialize(mapload, mob/brainmob, mob/living/carbon/human/human)
 	ASSERT(brainmob && brainmob.client)
-	..()
+	. = ..()
 
 	owner = brainmob				//Set eyeobj's owner
 	parent_human = human			//E-z reference to human
@@ -454,14 +460,25 @@
 
 	//Time to play dressup
 	if(brainmob.client.prefs)
-		var/mob/living/carbon/human/dummy/dummy = new ()
+		var/mob/living/carbon/human/dummy/dummy = new
 		brainmob.client.prefs.dress_preview_mob(dummy)
-		sleep(1 SECOND) //Strange bug in preview code? Without this, certain things won't show up. Yay race conditions?
 		dummy.regenerate_icons()
+		var/image/alpha_mask = new
+		alpha_mask.icon = 'icons/effects/effects.dmi'
+		alpha_mask.icon_state = "scanline"
+		alpha_mask.layer = FLY_LAYER
+		alpha_mask.blend_mode = BLEND_SUBTRACT
+		alpha_mask.color = list(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-2,1,1,1,1)
+		dummy.add_overlay(alpha_mask)
+		COMPILE_OVERLAYS(dummy)
+		dummy.alpha = 192
 
-		var/icon/new_icon = getHologramIcon(getCompoundIcon(dummy))
+		// remove hudlist
+		dummy.overlays -= dummy.hud_list
+		// appearance clone immediately
+		appearance = dummy.appearance
+		plane = PLANE_AUGMENTED
 		qdel(dummy)
-		icon = new_icon
 
 /mob/observer/eye/ar_soul/Destroy()
 	if(parent_human) //It's POSSIBLE they've been deleted before the NIF somehow
@@ -579,7 +596,7 @@
 	if(!client || !client.prefs)
 		return //Um...
 
-	eyeobj = new/mob/observer/eye/ar_soul(src,nif.human)
+	eyeobj = new/mob/observer/eye/ar_soul(src, src, nif.human)
 	soulcatcher.notify_into("[src] now AR projecting.")
 
 /mob/living/carbon/brain/caught_soul/verb/jump_to_owner()

@@ -73,8 +73,8 @@
 	Master = null
 	..()
 
-/obj/machinery/portable_atmospherics/powered/reagent_distillery/Initialize()
-	..()
+/obj/machinery/portable_atmospherics/powered/reagent_distillery/Initialize(mapload)
+	. = ..()
 
 	Reservoir = new (src)
 	Reservoir.Master = src
@@ -224,7 +224,7 @@
 		return
 	if(chan == -1)
 		chan = power_channel
-	A.use_power(amount, chan)
+	A.use_power_oneoff(amount, chan)
 
 /obj/machinery/portable_atmospherics/powered/reagent_distillery/process(delta_time)
 	..()

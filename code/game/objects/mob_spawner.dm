@@ -25,8 +25,8 @@
 
 	var/list/spawned_mobs = list()
 
-/obj/structure/mob_spawner/New()
-	..()
+/obj/structure/mob_spawner/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
 	last_spawn = world.time + rand(0,spawn_delay)
 
@@ -230,7 +230,7 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	var/mob/living/simple_mob/my_mob
 	var/depleted = FALSE
 
-/obj/mob_spawner/Initialize()
+/obj/mob_spawner/Initialize(mapload)
 	. = ..()
 
 	if(!LAZYLEN(mobs_to_pick_from))

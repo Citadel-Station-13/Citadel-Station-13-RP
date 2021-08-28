@@ -24,7 +24,7 @@
 											/obj/item/tool/crowbar/switchy = null,
 											/obj/item/multitool/switchy = null)
 	var/list/obj/item/stored_modules = list()
-	var/obj/item/deployed//what's currently in use
+	var/obj/item/deployed //what's currently in use
 	var/switchingtype = "basic"//type for update_icon
 
 	var/static/radial_driver = image(icon = 'icons/obj/tools.dmi', icon_state = "screwdriver") //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -56,8 +56,8 @@
 		return
 	..()
 
-/obj/item/switchtool/New()
-	..()
+/obj/item/switchtool/Initialize(mapload)
+	. = ..()
 	for(var/module in start_modules)//making the modules
 		stored_modules |= new module(src)
 
@@ -335,9 +335,9 @@
 						/obj/item/melee/energy/sword/holoswitch = null,
 						/obj/item/shield/holoswitch = null)
 
-/obj/item/switchtool/holo/New()
-	..()
-	color = light_color
+/obj/item/switchtool/holo/Initialize(mapload)
+	. = ..()
+	add_atom_colour(light_color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/switchtool/holo/deploy(var/obj/item/module) //We lightin' it up in here
 	..()
@@ -349,7 +349,6 @@
 /obj/item/switchtool/holo/undeploy()
 	..()
 	set_light(0)
-
 
 /obj/item/switchtool/holo/CE
 	name = "Chief Engineer's holotool"

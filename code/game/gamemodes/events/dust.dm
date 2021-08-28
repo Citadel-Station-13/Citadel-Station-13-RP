@@ -24,7 +24,7 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 			numbers = rand(15,25)
 			dust_type = /obj/effect/space_dust/super
 
-	var/startside = pick(cardinal)
+	var/startside = pick(GLOB.cardinal)
 	for(var/i = 0 to numbers)
 		var/startx = 0
 		var/starty = 0
@@ -90,6 +90,9 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 
 /obj/effect/space_dust/Bump(atom/A)
 	. = ..()
+	hit(A)
+
+/obj/effect/space_dust/proc/hit(atom/A)
 	if(prob(50))
 		for(var/mob/M in range(10, src))
 			if(!M.stat && !istype(M, /mob/living/silicon/ai))
@@ -109,7 +112,7 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 			return
 
 /obj/effect/space_dust/Bumped(atom/A)
-	Bump(A)
+	hit(A)
 	return
 
 /obj/effect/space_dust/ex_act(severity)

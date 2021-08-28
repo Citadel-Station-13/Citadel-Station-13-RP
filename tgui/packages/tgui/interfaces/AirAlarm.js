@@ -3,14 +3,14 @@ import { decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, LabeledList, NumberInput, Section } from '../components';
-import { getGasLabel } from '../constants';
+import { getGasLabel, getGasColor } from '../constants';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 import { Vent, Scrubber } from './common/AtmosControls';
 
 export const AirAlarm = (props, context) => {
   const { act, data } = useBackend(context);
-  const locked = data.locked && !data.siliconUser;
+  const locked = data.locked && !data.siliconUser && !data.remoteUser;
   return (
     <Window
       width={440}
@@ -19,6 +19,7 @@ export const AirAlarm = (props, context) => {
       <Window.Content scrollable>
         <InterfaceLockNoticeBox />
         <AirAlarmStatus />
+        <AirAlarmUnlockedControl />
         {!locked && (
           <AirAlarmControl />
         )}
@@ -56,7 +57,7 @@ const AirAlarmStatus = (props, context) => {
               return (
                 <LabeledList.Item
                   key={entry.name}
-                  label={entry.name}
+                  label={getGasLabel(entry.name)}
                   color={status.color}>
                   {toFixed(entry.value, 2)}{entry.unit}
                 </LabeledList.Item>
@@ -89,6 +90,40 @@ const AirAlarmStatus = (props, context) => {
             Safety measures offline. Device may exhibit abnormal behavior.
           </LabeledList.Item>
         )}
+      </LabeledList>
+    </Section>
+  );
+};
+
+const AirAlarmUnlockedControl = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    target_temperature,
+    rcon,
+  } = data;
+  return (
+    <Section
+      title="Comfort Settings">
+      <LabeledList>
+        <LabeledList.Item label="Remote Control">
+          <Button
+            selected={rcon === 1}
+            content="Off"
+            onClick={() => act('rcon', { 'rcon': 1 })} />
+          <Button
+            selected={rcon === 2}
+            content="Auto"
+            onClick={() => act('rcon', { 'rcon': 2 })} />
+          <Button
+            selected={rcon === 3}
+            content="On"
+            onClick={() => act('rcon', { 'rcon': 3 })} />
+        </LabeledList.Item>
+        <LabeledList.Item label="Thermostat">
+          <Button
+            content={target_temperature}
+            onClick={() => act('temperature')} />
+        </LabeledList.Item>
       </LabeledList>
     </Section>
   );
@@ -267,7 +302,11 @@ const AirAlarmControlThresholds = (props, context) => {
       <tbody>
         {thresholds.map(threshold => (
           <tr key={threshold.name}>
-            <td className="LabeledList__label">{threshold.name}</td>
+            <td className="LabeledList__label">
+              <span className={"color-" + getGasColor(threshold.name)}>
+                {getGasLabel(threshold.name)}
+              </span>
+            </td>
             {threshold.settings.map(setting => (
               <td key={setting.val}>
                 <Button

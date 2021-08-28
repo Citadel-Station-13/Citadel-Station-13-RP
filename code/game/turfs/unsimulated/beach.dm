@@ -15,7 +15,7 @@
 	name = "Water"
 	icon_state = "water"
 
-/turf/unsimulated/beach/water/Initialize()
+/turf/unsimulated/beach/water/Initialize(mapload)
 	. = ..()
 	add_overlay(/obj/effect/turf_overlay/beach_water, TRUE)
 
@@ -25,17 +25,12 @@
 	layer = ABOVE_MOB_LAYER
 
 /turf/simulated/floor/outdoors/beach
-	name = "Beach"
+	name = "beach"
 	icon = 'icons/misc/beach.dmi'
-	footstep_sounds = list("human" = list(
-		'sound/effects/footstep/carpet1.ogg',
-		'sound/effects/footstep/carpet2.ogg',
-		'sound/effects/footstep/carpet3.ogg',
-		'sound/effects/footstep/carpet4.ogg',
-		'sound/effects/footstep/carpet5.ogg'))
+	initial_flooring = /decl/flooring/outdoors/beach
 
 /turf/simulated/floor/outdoors/beach/sand
-	name = "Sand"
+	name = "sand"
 	icon_state = "sand"
 
 /turf/simulated/floor/outdoors/beach/sand/desert
@@ -43,18 +38,22 @@
 	desc = "It seems to go on and on.."
 	icon = 'icons/turf/desert.dmi'
 	icon_state = "desert"
+	initial_flooring = /decl/flooring/outdoors/beach/sand/desert
 
-/turf/simulated/floor/outdoors/beach/sand/desert/Initialize()
+/turf/simulated/floor/outdoors/beach/sand/desert/Initialize(mapload)
 	. = ..()
 	if(prob(5))
 		icon_state = "desert[rand(0,4)]"
+
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors
+	outdoors = FALSE
 
 /turf/simulated/floor/outdoors/beach/sand/lowdesert
 	name = "\improper low desert"
 	icon = 'icons/turf/desert.dmi'
 	icon_state = "lowdesert"
 
-/turf/simulated/floor/outdoors/beach/outdoors/sand/lowdesert/Initialize()
+/turf/simulated/floor/outdoors/beach/outdoors/sand/lowdesert/Initialize(mapload)
 	. = ..()
 	if(prob(5))
 		icon_state = "lowdesert[rand(0,4)]"
@@ -79,12 +78,12 @@
 /turf/simulated/floor/outdoors/beach/water
 	name = "Water"
 	icon_state = "water"
-	initial_flooring = /decl/flooring/outdoors/water
+	initial_flooring = /decl/flooring/water
 
 /turf/simulated/floor/outdoors/beach/water/ocean
 	icon_state = "seadeep"
 
-/turf/simulated/floor/outdoors/beach/water/Initialize()
+/turf/simulated/floor/outdoors/beach/water/Initialize(mapload)
 	. = ..()
 	add_overlay(/obj/effect/turf_overlay/beach_ocean, TRUE)
 

@@ -22,9 +22,9 @@
 	var/base_icon = "bed"
 	var/applies_material_colour = 1
 
-/obj/structure/bed/New(var/newloc, var/new_material, var/new_padding_material)
-	..(newloc)
-	color = null
+/obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
+	. = ..(mapload)
+	remove_atom_colour(FIXED_COLOUR_PRIORITY)
 	if(!new_material)
 		new_material = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name(new_material)
@@ -113,9 +113,9 @@
 			to_chat(user, "You cannot pad \the [src] with that.")
 			return
 		C.use(1)
-		if(!istype(src.loc, /turf))
+		if(!istype(loc, /turf))
 			user.drop_from_inventory(src)
-			src.loc = get_turf(src)
+			forceMove(get_turf(src))
 		to_chat(user, "You add padding to \the [src].")
 		add_padding(padding_type)
 		return
@@ -125,7 +125,7 @@
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
 		to_chat(user, "You remove the padding from \the [src].")
-		playsound(src.loc, W.usesound, 100, 1)
+		playsound(src, W.usesound, 100, 1)
 		remove_padding()
 
 	else if(istype(W, /obj/item/grab))
@@ -136,7 +136,7 @@
 			return
 		user.visible_message("<span class='notice'>[user] attempts to buckle [affecting] into \the [src]!</span>")
 		if(do_after(user, 20, G.affecting))
-			affecting.loc = loc
+			affecting.forceMove(loc)
 			spawn(0)
 				if(buckle_mob(affecting))
 					affecting.visible_message(\
@@ -168,19 +168,19 @@
 	icon_state = "psychbed"
 	base_icon = "psychbed"
 
-/obj/structure/bed/psych/New(var/newloc)
-	..(newloc,"wood","leather")
+/obj/structure/bed/psych/Initialize(mapload)
+	. = ..(mapload, "wood", "leather")
 
-/obj/structure/bed/padded/New(var/newloc)
-	..(newloc,"plastic","cotton")
+/obj/structure/bed/padded/Initialize(mapload)
+	. = ..(mapload, "plastic", "cotton")
 
 /obj/structure/bed/double
 	name = "double bed"
 	icon_state = "doublebed"
 	base_icon = "doublebed"
 
-/obj/structure/bed/double/padded/New(var/newloc)
-	..(newloc,"wood","cotton")
+/obj/structure/bed/double/padded/Initialize(mapload)
+	. = ..(mapload, "wood", "cotton")
 
 /obj/structure/bed/double/post_buckle_mob(mob/living/M as mob)
 	if(M.buckled == src)
@@ -257,7 +257,7 @@
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
 			to_chat(user, "<span class='notice'>You collect the roller bed.</span>")
-			src.loc = RH
+			forceMove(RH)
 			RH.held = src
 			return
 
@@ -278,8 +278,8 @@
 	icon_state = "rollerbed"
 	var/obj/item/roller/held
 
-/obj/item/roller_holder/New()
-	..()
+/obj/item/roller_holder/Initialize(mapload)
+	. = ..()
 	held = new /obj/item/roller(src)
 
 /obj/item/roller_holder/attack_self(mob/user as mob)
@@ -302,7 +302,7 @@
 			var/mob/living/L = A
 
 			if(L.buckled == src)
-				L.loc = src.loc
+				L.forceMove(loc)
 
 /obj/structure/bed/roller/post_buckle_mob(mob/living/M as mob)
 	if(M.buckled == src)

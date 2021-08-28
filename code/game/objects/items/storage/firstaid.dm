@@ -19,7 +19,7 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
-/obj/item/storage/firstaid/Initialize()
+/obj/item/storage/firstaid/Initialize(mapload)
 	. = ..()
 //	if(icon_variety) // VOREStation edit
 //		icon_state = pick(icon_variety)
@@ -188,7 +188,7 @@
 	var/base_icon = "pill_canister" // Citadel Change - Used in recoloring
 	var/bottle_color = "orange" // Citadel Change - Used in recoloring
 
-/obj/item/storage/pill_bottle/Initialize()
+/obj/item/storage/pill_bottle/Initialize(mapload)
 	. = ..()
 	base_name = name
 	base_desc = desc

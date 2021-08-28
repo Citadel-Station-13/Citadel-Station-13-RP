@@ -36,8 +36,9 @@
 	w_class = ITEMSIZE_HUGE
 
 
-/obj/item/grab/New(mob/user, mob/victim)
-	..()
+/obj/item/grab/Initialize(mapload, mob/victim)
+	. = ..()
+	var/mob/user = loc
 	loc = user
 	assailant = user
 	affecting = victim
@@ -339,9 +340,8 @@
 		devour(affecting, assailant)
 
 /obj/item/grab/dropped()
-	loc = null
-	if(!QDELETED(src))
-		qdel(src)
+	. = ..()
+	qdel(src)
 
 /obj/item/grab/proc/reset_kill_state()
 	if(state == GRAB_KILL)

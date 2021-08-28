@@ -6,11 +6,11 @@
 	var/electronic_warfare = 1
 	var/mob/registered_user = null
 
-/obj/item/card/id/syndicate/Initialize()
+/obj/item/card/id/syndicate/Initialize(mapload)
 	. = ..()
 	access = syndicate_access.Copy()
 
-/obj/item/card/id/syndicate/station_access/Initialize()
+/obj/item/card/id/syndicate/station_access/Initialize(mapload)
 	. = ..() // Same as the normal Syndicate id, only already has all station access
 	access |= get_all_station_access()
 
@@ -81,7 +81,7 @@
 
 /obj/item/card/id/syndicate/CanUseTopic(mob/user)
 	if(user != registered_user)
-		return STATUS_CLOSE
+		return UI_CLOSE
 	return ..()
 
 /obj/item/card/id/syndicate/Topic(href, href_list, var/datum/topic_state/state)

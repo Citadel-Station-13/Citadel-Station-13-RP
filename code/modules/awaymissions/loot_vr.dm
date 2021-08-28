@@ -289,7 +289,7 @@
 			else if(prob(50))
 				if(live_cargo) // Something else very much alive and angry.
 					var/spawn_type = pick(/mob/living/simple_mob/animal/space/alien, /mob/living/simple_mob/animal/space/alien/drone, /mob/living/simple_mob/animal/space/alien/sentinel)
-					new spawn_type(C) 
+					new spawn_type(C)
 				else // Just a costume.
 					new /obj/item/clothing/head/xenos(C)
 					new /obj/item/clothing/suit/xenos(C)
@@ -394,3 +394,8 @@
 /obj/structure/symbol/sa
 	desc = "It looks like a right triangle with a dot to the side. It reminds you of a wooden strut between a wall and ceiling."
 	icon_state = "sa"
+
+/obj/structure/symbol/maint
+	name = "maintenance panel"
+	desc = "This sign suggests that the wall it's attached to can be opened somehow."
+	icon_state = "maintenance_panel"

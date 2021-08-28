@@ -114,8 +114,8 @@
 	emote_see = list("vibrates","looks around", "stares", "extends a proboscis")
 	emote_hear = list("chitters", "clicks", "gurgles")
 
-/mob/living/simple_mob/animal/sif/leech/Initialize()
-	..()
+/mob/living/simple_mob/animal/sif/leech/Initialize(mapload)
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide

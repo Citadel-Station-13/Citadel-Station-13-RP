@@ -31,7 +31,7 @@
 
 /obj/item/implant/backup/post_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
-		ENABLE_BITFIELD(H.hud_updateflag, BACKUP_HUD)
+		BITSET(H.hud_updateflag, BACKUP_HUD)
 		SStranscore.implants |= src
 
 		return 1
@@ -52,8 +52,8 @@
 	var/list/obj/item/implant/backup/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
 
-/obj/item/backup_implanter/New()
-	..()
+/obj/item/backup_implanter/Initialize(mapload)
+	. = ..()
 	for(var/i = 1 to max_implants)
 		var/obj/item/implant/backup/imp = new(src)
 		imps |= imp
@@ -120,10 +120,9 @@
 	desc = "A case containing a backup implant."
 	icon_state = "implantcase-b"
 
-/obj/item/implantcase/backup/New()
+/obj/item/implantcase/backup/Initialize(mapload)
 	src.imp = new /obj/item/implant/backup(src)
-	..()
-	return
+	return ..()
 
 //The box of backup implants
 /obj/item/storage/box/backup_kit
@@ -132,11 +131,11 @@
 	icon_state = "implant"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
 
-/obj/item/storage/box/backup_kit/New()
-	..()
+/obj/item/storage/box/backup_kit/PopulateContents()
 	for(var/i = 1 to 7)
 		new /obj/item/implantcase/backup(src)
 	new /obj/item/implanter(src)
+
 /* CITADEL CHANGE - Removes this useless shit
 //Purely for fluff
 /obj/item/implant/backup/full

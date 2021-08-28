@@ -19,10 +19,10 @@
 	var/obj/machinery/teleport/hub/hub
 
 	// Search surrounding turfs for the station, and then search the station's surrounding turfs for the hub.
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		station = locate(/obj/machinery/teleport/station, get_step(src, direction))
 		if(station)
-			for(direction in cardinal)
+			for(direction in GLOB.cardinal)
 				hub = locate(/obj/machinery/teleport/hub, get_step(station, direction))
 				if(hub)
 					break
@@ -42,7 +42,7 @@
 
 		var/obj/L = null
 
-		for(var/obj/effect/landmark/sloc in landmarks_list)
+		for(var/obj/effect/landmark/sloc in GLOB.landmarks_list)
 			if(sloc.name != C.data) continue
 			if(locate(/mob/living) in sloc.loc) continue
 			L = sloc
@@ -405,15 +405,6 @@
 			com.icon_state = "tele0"
 	else
 		icon_state = "controller"
-
-
-/obj/effect/laser/Bump()
-	range--
-	return
-
-/obj/effect/laser/Move()
-	range--
-	return
 
 /atom/proc/laserhit(L as obj)
 	return 1

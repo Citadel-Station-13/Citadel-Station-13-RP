@@ -14,7 +14,7 @@
 	//Simple variable to prevent me from doing attack_hand in both this and the child computer
 	var/zone = "This computer is working on a wireless range, the range is currently limited to "
 
-/obj/machinery/computer/area_atmos/Initialize()
+/obj/machinery/computer/area_atmos/Initialize(mapload)
 	. = ..()
 	scanscrubbers()
 
@@ -151,6 +151,35 @@
 
 /obj/machinery/computer/area_atmos/area/validscrubber(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
 	if(get_area(scrubber) == get_area(src))
+		return 1
+
+	return 0
+
+// The one that only works in the same map area
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/var/scrub_id = "generic"
+
+/obj/machinery/computer/area_atmos/tag
+	name = "Heavy Scrubber Control"
+	zone = "This computer is operating industrial scrubbers nearby."
+	var/scrub_id = "generic"
+	var/last_scan = 0
+
+/obj/machinery/computer/area_atmos/tag/scanscrubbers()
+	if(last_scan && world.time - last_scan < 20 SECONDS)
+		return 0
+	else
+		last_scan = world.time
+
+	connectedscrubbers.Cut()
+
+	for(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in world)
+		if(scrubber.scrub_id == src.scrub_id)
+			connectedscrubbers += scrubber
+
+	src.updateUsrDialog()
+
+/obj/machinery/computer/area_atmos/tag/validscrubber(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
+	if(scrubber.scrub_id == src.scrub_id)
 		return 1
 
 	return 0

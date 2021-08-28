@@ -1,4 +1,4 @@
-#define EMITTER_DAMAGE_POWER_TRANSFER 450 //used to transfer power to containment field generators
+#define EMITTER_DAMAGE_POWER_TRANSFER 500 //used to transfer power to containment field generators
 
 /obj/machinery/power/emitter
 	name = "emitter"
@@ -41,7 +41,7 @@
 	src.setDir(turn(src.dir, 270))
 	return 1
 
-/obj/machinery/power/emitter/Initialize()
+/obj/machinery/power/emitter/Initialize(mapload)
 	. = ..()
 	if(state == 2 && anchored)
 		connect_to_network()

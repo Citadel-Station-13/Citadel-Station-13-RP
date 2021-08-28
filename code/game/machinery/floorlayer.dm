@@ -8,13 +8,12 @@
 	var/obj/item/stack/tile/T
 	var/list/mode = list("dismantle"=0,"laying"=0,"collect"=0)
 
-/obj/machinery/floorlayer/New()
-	T = new/obj/item/stack/tile/floor(src)
-	..()
+/obj/machinery/floorlayer/Initialize(mapload, newdir)
+	. = ..()
+	T = new /obj/item/stack/tile/floor(src)
 
-/obj/machinery/floorlayer/Move(new_turf,M_Dir)
-	..()
-
+/obj/machinery/floorlayer/Moved(atom/oldloc)
+	. = ..()
 	if(on)
 		if(mode["dismantle"])
 			dismantleFloor(old_turf)
@@ -25,8 +24,7 @@
 		if(mode["collect"])
 			CollectTiles(old_turf)
 
-
-	old_turf = new_turf
+	old_turf = isturf(loc)? loc : null
 
 /obj/machinery/floorlayer/attack_hand(mob/user as mob)
 	on=!on

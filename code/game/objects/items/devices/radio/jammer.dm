@@ -28,7 +28,7 @@ var/global/list/active_radio_jammers = list()
 
 	origin_tech = list(TECH_ILLEGAL = 7, TECH_BLUESPACE = 5) //Such technology! Subspace jamming!
 
-/obj/item/radio_jammer/Initialize()
+/obj/item/radio_jammer/Initialize(mapload)
 	. = ..()
 	power_source = new(src)
 	update_icon() // So it starts with the full overlay.
@@ -115,3 +115,7 @@ var/global/list/active_radio_jammers = list()
 		overlays += I
 		last_overlay_percent = overlay_percent
 
+//Unlimited use, unlimited range jammer for admins. Turn it on, drop it somewhere, it works.
+/obj/item/radio_jammer/admin
+	jam_range = 255
+	tick_cost = 0

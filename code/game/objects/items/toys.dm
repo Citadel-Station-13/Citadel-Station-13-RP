@@ -37,10 +37,9 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
 
-/obj/item/toy/balloon/New()
-	var/datum/reagents/R = new/datum/reagents(10)
-	reagents = R
-	R.my_atom = src
+/obj/item/toy/balloon/Initialize(mapload)
+	. = ..()
+	create_reagents(10)
 
 /obj/item/toy/balloon/attack(mob/living/carbon/human/M as mob, mob/user as mob)
 	return
@@ -321,8 +320,10 @@
 		playsound(src, 'sound/effects/snap.ogg', 50, 1)
 		qdel(src)
 
-/obj/item/toy/snappop/Crossed(H as mob|obj)
+/obj/item/toy/snappop/Crossed(atom/movable/H as mob|obj)
 	. = ..()
+	if(H.is_incorporeal())
+		return
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		if(M.m_intent == "run")
@@ -348,10 +349,9 @@
 	var/empty = 0
 	slot_flags = SLOT_HOLSTER
 
-/obj/item/toy/waterflower/New()
-	var/datum/reagents/R = new/datum/reagents(10)
-	reagents = R
-	R.my_atom = src
+/obj/item/toy/waterflower/Initialize(mapload)
+	. = ..()
+	var/datum/reagents/R = create_reagents(10)
 	R.add_reagent("water", 10)
 
 /obj/item/toy/waterflower/attack(mob/living/carbon/human/M as mob, mob/user as mob)
@@ -512,8 +512,8 @@
 	var/cooldown = 0
 	var/toysay = "What the fuck did you do?"
 
-/obj/item/toy/figure/New()
-	..()
+/obj/item/toy/figure/Initialize(mapload)
+	. = ..()
 	desc = "A \"Space Life\" brand [name]"
 
 /obj/item/toy/figure/attack_self(mob/user as mob)
@@ -990,6 +990,11 @@
 	name = "facehugger plushie"
 	icon_state = "huggable"
 	pokephrase = "Hug!"
+
+/obj/item/toy/plushie/voxie
+	name = "vox plushie"
+	icon_state = "voxie"
+	pokephrase = "Skree!"
 
 //foxes are basically the best
 /obj/item/toy/plushie/red_fox
@@ -1498,3 +1503,49 @@
 	w_class = ITEMSIZE_TINY
 	force = 1
 	throwforce = 1
+
+//Dakimakuras, ported from Main.
+
+/obj/item/storage/daki
+	name = "dakimakura"
+	desc = "A large pillow depicting a girl in a compromising position. Featuring as many dimensions as you."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "daki_base"
+	slot_flags = SLOT_BACK
+	var/cooldowntime = 20
+	var/static/list/dakimakura_options = list("Callie","Casca","Chaika","Elisabeth","Foxy Grandpa","Haruko","Holo","Ian","Jolyne","Kurisu","Marie","Mugi","Nar'Sie","Patchouli","Plutia","Rei","Reisen","Naga","Squid","Squigly","Tomoko","Toriel","Umaru","Yaranaika","Yoko") //Kurisu is the ideal girl." - Me, Logos.
+	w_class = ITEMSIZE_NORMAL
+	slot_flags = SLOT_BACK
+	max_w_class = ITEMSIZE_SMALL
+	max_storage_space = INVENTORY_BOX_SPACE
+
+/obj/item/storage/daki/attack_self(mob/living/user)
+	var/body_choice
+	var/custom_name
+
+	if(icon_state == "daki_base")
+		body_choice = input("Pick a body.") in dakimakura_options
+		icon_state = "daki_[body_choice]"
+		custom_name = stripped_input(user, "What's her name?")
+		if(length(custom_name) > MAX_NAME_LEN)
+			to_chat(user,"<span class='danger'>Name is too long!</span>")
+			return FALSE
+		if(custom_name)
+			name = custom_name
+			desc = "A large pillow depicting [custom_name] in a compromising position. Featuring as many dimensions as you."
+	else
+		if(world.time - last_message <= 1 SECOND)
+			return
+		if(user.a_intent == INTENT_HELP)
+			user.visible_message("<span class='notice'>[user] hugs the [name].</span>")
+			playsound(src, "rustle", 50, 1, -5)
+		else if(user.a_intent == INTENT_DISARM)
+			user.visible_message("<span class='notice'>[user] kisses the [name].</span>")
+			playsound(src, "rustle", 50, 1, -5)
+		else if(user.a_intent == INTENT_GRAB)
+			user.visible_message("<span class='warning'>[user] holds the [name]!</span>")
+			playsound(src, 'sound/items/bikehorn.ogg', 50, 1)
+		else if(user.a_intent == INTENT_HARM)
+			user.visible_message("<span class='danger'>[user] punches the [name]!</span>")
+			playsound(src, 'sound/effects/shieldbash.ogg', 50, 1)
+		last_message = world.time

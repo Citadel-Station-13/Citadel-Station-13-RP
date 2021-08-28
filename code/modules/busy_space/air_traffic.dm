@@ -6,9 +6,9 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 /datum/lore/atc_controller
 	//Shorter delays means more traffic, which gives the impression of a busier system, but also means a lot more radio noise
 	/// How long between ATC traffic
-	var/delay_min = 25 MINUTES
-	/// Adjusted to give approx 2 per hour, will work out to 10-14 over a full shift
-	var/delay_max = 35 MINUTES
+	var/delay_min = 18 MINUTES
+	/// Adjusted to give approx 3 per hour, will work out to 9-15 over a full shift
+	var/delay_max = 25 MINUTES
 
 	/// How long to wait before sending the first message of the shift.
 	var/initial_delay = 2 MINUTES
@@ -36,9 +36,10 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	secchannel = "[rand(850,899)].[rand(1,9)]"
 	sdfchannel = "[rand(900,999)].[rand(1,9)]"
 
-	spawn(450 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
+	// 450 was the original time. Reducing to 300 due to lower init times on the server. If this is a problem, revert back to 450 as we had no ATC issues with that time.
+	spawn(300 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
 		/// HEY! if we have listiners for ssticker go use that instead of this snowflake.
-		msg("New shift beginning, resuming standard operations. This shift's Fleet Frequencies are as follows: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
+		msg("Crew transfer complete for all vessels. As a reminder, this shift's fleet frequencies are as follows for this shift: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
 		next_message = world.time + initial_delay
 		START_PROCESSING(SSobj, src)
 
@@ -49,7 +50,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 
 /datum/lore/atc_controller/proc/msg(message, sender)
 	ASSERT(message)
-	global_announcer.autosay("[message]", sender ? sender : "[GLOB.using_map.dock_name] Control")
+	GLOB.global_announcer.autosay("[message]", sender ? sender : "[GLOB.using_map.dock_name] Control")
 
 /datum/lore/atc_controller/proc/reroute_traffic(yes = TRUE)
 	if(yes)
@@ -73,47 +74,73 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 /// Next level optimzation for this: datumize the convo (see main holopads/holodisk!)
 /datum/lore/atc_controller/proc/random_convo()
 	/// Resolve to the instances
-	var/datum/lore/organization/source = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
-	/// repurposed for new fun stuff
+	// OKAY what's happening here is a lot less agony inducing than it might seem. All that's happening here is a weighted RNG choice between the listed options in a variable.
+	// The first, [1], is for NanoTrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
+	// ALL the companies and items this list pulls from can be found in the organizations.dm file in this same folder (busy_space).
+	var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[1]=90,pick(GLOB.loremaster.organizations)=20))]
+
+		/// repurposed for new fun stuff
 	var/datum/lore/organization/secondary = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
 
 	//Let's get some mission parameters, pick our first ship
 	/// get the name
 	var/source_name = source.name
+
 	/// Use the short name
 	var/source_owner = source.short_name
+
 	/// Pick a random prefix
 	var/source_prefix = pick(source.ship_prefixes)
+
 	/// The value of the prefix is the mission type that prefix does
 	var/source_mission = source.ship_prefixes[source_prefix]
+
 	/// Pick a random ship name
 	var/source_shipname = pick(source.ship_names)
+
 	/// Destination is where?
 	var/source_destname = pick(source.destination_names)
+
 	/// do we fully observe system law (or are we otherwise favored by the system owners, i.e. NT)?
 	var/source_law_abiding = source.lawful
+
 	/// or are we part of a pirate group
 	var/source_law_breaker = source.hostile
+
 	/// are we actually system law/SDF? unlocks the SDF-specific events
 	var/source_system_defense = source.sysdef
 
+	/// Are we part of the fleet?
+	var/source_fleet = source.fleet
+
+	/////////////
+
 	//pick our second ship
 	var/secondary_owner = secondary.short_name
+
 	/// Pick a random prefix
 	var/secondary_prefix = pick(secondary.ship_prefixes)
+
 	/// Pick a random ship name
 	var/secondary_shipname = pick(secondary.ship_names)
+
 	/// Law abiding?
 	var/secondary_law_abiding = secondary.lawful
+
 	/// Part of the syndicats?
 	var/secondary_law_breaker = secondary.hostile
+
 	/// mostly here as a secondary check to ensure SDF don't interrogate other SDF
 	var/secondary_system_defense = secondary.sysdef
+
+	/// Is this ship part of the fleet too?
+	// Not set up yet. Leaving commented out until then.
+	//var/secdonary_fleet = secondary.fleet
 
 	var/combined_first_name = "[source_owner][source_prefix] |[source_shipname]|"
 	var/combined_second_name = "[secondary_owner][secondary_prefix] |[secondary_shipname]|"
 
-	var/alt_atc_names = list("[GLOB.using_map.dock_name] Traffic Control","[GLOB.using_map.dock_name] TraCon","[GLOB.using_map.dock_name] System Control","[GLOB.using_map.dock_name] Star Control","[GLOB.using_map.dock_name] SysCon","[GLOB.using_map.dock_name] Tower","[GLOB.using_map.dock_name] Control","[GLOB.using_map.dock_name] STC","[GLOB.using_map.dock_name] StarCon")
+	var/alt_atc_names = list("[GLOB.using_map.dock_name] Flight Control","[GLOB.using_map.dock_name] FliCon","[GLOB.using_map.dock_name] System Control","[GLOB.using_map.dock_name] Star Control","[GLOB.using_map.dock_name] SysCon","[GLOB.using_map.dock_name] Control","[GLOB.using_map.dock_name] STC","[GLOB.using_map.dock_name] StarCon")
 	/// pull from a list of owner-specific flight ops, to allow an extra dash of flavor
 	var/mission_noun = pick(source.flight_types)
 	/// if our source has the complex_tasks flag, regenerate with a two-stage assignment
@@ -127,7 +154,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		"aerospace priority" = list("affirmative, aerospace priority is yours", "negative, another vessel has priority right now"),
 		"system traffic info" = list("sending you current traffic info", "request queued, please hold"),
 		"refueling information" = list("sending refueling information now", "depots currently experiencing fuel shortages, advise you move on"),
-		"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
+		"a current system time sync" = list("sending time sync ping to you now"),
 		"current system starcharts" = list("transmitting current starcharts", "your request is queued, overloaded right now")
 	)
 
@@ -136,44 +163,57 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	if(force_chatter_type)
 		chatter_type = force_chatter_type
 	//I have to offload this from the chatter_type switch below and do it here. Byond should throw a shitfit because this isn't how you use pick.
+	else if(source_law_abiding && source_fleet)
+		chatter_type = pickweight(list("fleettraffic" = 90, "emerg" = 10, "dockingrequestgeneric" = 10,"dockingrequestsupply" = 10,
+		"dockingrequestrepair" = 10,"undockingrequest" = 5, "normal"))
+
 	else if(source_law_abiding && !source_system_defense)
 		chatter_type = pickweight(list("emerg" = 5, "policescan" = 25, "traveladvisory" = 25,
 		"pathwarning" = 30, "dockingrequestgeneric" = 30, "dockingrequestdenied" = 30,
 		"dockingrequestdelayed" = 30, "dockingrequestsupply" = 30, "dockingrequestrepair" = 30,
 		"dockingrequestmedical" = 30, "dockingrequestsecurity" = 30, "undockingrequest" = 30,
 		"undockingdenied" = 30, "undockingdelayed" = 30, "normal"))
-	//the following filters *always* fire their 'unique' event when they're tripped, simply because the conditions behind them are quite rare to begin with
+
+	//The following filters *always* fire their 'unique' event when they're tripped, simply because the conditions behind them are quite rare to begin with
 	//just straight up funnel smugglers into always being caught, otherwise we get them asking for traffic info and stuff
 	else if(source_name == "Smugglers" && !secondary_system_defense)
 		chatter_type = "policeflee"
+
 	//ditto, if an SDF ship catches them
 	else if(source_name == "Smugglers" && secondary_system_defense)
 		chatter_type = "policeshipflee"
+
 	else if(source_law_abiding && secondary_law_breaker) //on the offchance that we manage to roll a goodguy and a badguy, run a new distress event - it's like emerg but better
 		chatter_type = "distress"
+
 	else if(source_law_breaker && secondary_system_defense) //if we roll this combo instead, time for the SDF to do their fucking job
 		chatter_type = "policeshipcombat"
+
 	else if(source_law_breaker && !secondary_system_defense) //but if we roll THIS combo, time to alert the SDF to get off their asses
 		chatter_type = "hostiledetected"
+
 	//SDF-specific events that need to filter based on the second party (basically just the following SDF-unique list with the soft-result ship scan thrown in)
 	else if(source_system_defense && secondary_law_abiding && !secondary_system_defense) //let's see if we can narrow this down, I didn't see many ship-to-ship scans
-		chatter_type = pickweight(list("policeshipscan" = 75, "sdfpatrolupdate", "sdfendingpatrol" = 75,
+		chatter_type = pickweight(list("policeshipscan" = 45, "sdfpatrolupdate", "sdfendingpatrol" = 75,
 		"dockingrequestgeneric" = 30, "dockingrequestdelayed" = 30, "dockingrequestsupply" = 30,
 		"dockingrequestrepair" = 30, "dockingrequestmedical" = 30, "dockingrequestsecurity" = 30,
 		"undockingrequest" = 20, "sdfbeginpatrol" = 75, "normal"))
+
 	//SDF-specific events that don't require the secondary at all, in the event that we manage to roll SDF + hostile/smuggler or something
 	else if(source_system_defense)
 		chatter_type = pickweight(list("sdfpatrolupdate", "sdfendingpatrol" = 60, "dockingrequestgeneric" = 30,
 		"dockingrequestdelayed" = 30, "dockingrequestsupply" = 30, "dockingrequestrepair" = 30,
 		"dockingrequestmedical" = 30, "dockingrequestsecurity" = 30, "undockingrequest" = 20,
 		"sdfbeginpatrol" = 80, "normal"))
+
 	//if we somehow don't match any of the other existing filters once we've run through all of them
 	else
-		chatter_type = pickweight(list("emerg" = 5, "policescan" = 25, "traveladvisory" = 25,
+		chatter_type = pickweight(list("emerg" = 10, "policescan" = 25, "traveladvisory" = 25,
 		"pathwarning" = 30, "dockingrequestgeneric" = 30, "dockingrequestdelayed" = 30,
 		"dockingrequestdenied" = 30, "dockingrequestsupply" = 30, "dockingrequestrepair" = 30,
 		"dockingrequestmedical" = 30, "dockingrequestsecurity" = 30, "undockingrequest" = 30,
 		"undockingdenied" = 30, "undockingdelayed" = 30,"normal"))
+
 	//I probably should do some kind of pass here to work through all the possible combinations of major factors and see if the filtering list needs reordering or modifying, but I really can't be arsed
 
 	//Chance for them to say yes vs no
@@ -181,7 +221,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/request = pick(requests)
 	var/callname = pick(alt_atc_names)
 	var/response = requests[request][yes ? 1 : 2] //1 is yes, 2 is no
-	var/number = rand(1,42)
+	var/number = rand(1,15)
 	var/zone = pick("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta",
 		"Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi",
 		"Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega")
@@ -190,6 +230,10 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/landing_move = "landing request"
 	var/landing_short = "land"
 	switch(GLOB.using_map.dock_type)
+		if("station")		//standard station pattern
+			landing_zone = "docking bay [number]"
+			landing_move = "docking request"
+			landing_short = "dock"
 		if("surface")		//formal installations with proper facilities
 			landing_zone = "landing pad [number]"
 			landing_move = "landing request"
@@ -198,21 +242,61 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 			landing_zone = "LZ [zone]"
 			landing_move = "landing request"
 			landing_short = "land"
-		if("station")		//standard station pattern
-			landing_zone = "docking bay [number]"
-			landing_move = "docking request"
-			landing_short = "dock"
 
 	// what you're about to witness is what feels like an extremely kludgy rework of the system, but it's more 'flexible' and allows events that aren't just ship-stc-ship
 	// something more elegant could probably be done, but it won't be done by somebody as half-competent as me
 	switch(chatter_type)
+		// Fleet specific chatter (This should be adjusted if new maps wildy detract from the similar set-up here. Station maps can still work for this if a nearby "Primary" facility is designated)
+		if("fleettraffic")
+			if(prob(90)) // Good & Neutral Fleet reports
+				var/report = pick("All systems are clear and we're maintaining near sector patrol with the [GLOB.using_map.station_name]",
+					"Mining patrol and operations are commencing now. We'll have a haul to return within the next [pick("10","15","20","25","30","40","45","50")] minutes",
+					"Minor pirate activity was detected nearby. We're leading a small patrol of [pick("2","3","4")] frigates over to clear it out",
+					"PARA operators on-board are helping with the local populace on a nearby planet and we'll be stuck here for rest of our crews' shift",
+					"Our scout craft have returned with word of potential Vox shoals. Stand by for further updates",
+					"Medical teams are currently deployed on a nearby planet providing aid after a recent [pick("natural disaster","ship crashed into the outpost","hostile attick")]",
+					"We're currently analyzing a local wormhole. Please keep a safe distance from the vessel until further notice",
+					"We have confirmed visuals of [rand(3,15)] Diona clinging onto the [GLOB.using_map.dock_name] hull. We'll have reports of first contact with them in a moment",
+					"Scanners show the nearby sub-sector of space has increased hostile activity. We advise to route patrols closer to our research vessels, and flagship until we clear it",
+					"The scout team is reporting much lower than usual hostile activity in the sub-sector",
+					"Our vessel is undergoining early transfer procedures for the crew and should be at the [GLOB.using_map.dock_name] in roughly [pick("5","10","15")] minutes",
+					"Mining teams report that they found a resource rich asteroid belt. They're requesting additional fleet support in case of a pirate attack",
+					"All pending issues are resolved on the vessel and we're resuming normal fleet patterns now")
+				msg("This is the [combined_first_name] reporting in to the [GLOB.using_map.dock_name] with fleet updates. [report].","[source_prefix] [source_shipname]")
+				sleep(6 SECONDS)
+				// To try and give a more organic response on Traffic Control
+				if(prob(50))
+					msg("This is [GLOB.using_map.dock_name]. Report received [source_prefix] [source_shipname]. Continue operations as normal.")
+				else
+					msg("[source_prefix] [source_shipname], thank you for your report. Please proceed operations as normal. [GLOB.using_map.dock_name], out.")
+			else // For when the fleet has to report something unfortuante has happend
+				var/bad_report = pick("Recent cultist activity on the nearby planet we scouted has deemed the area unsafe for exploration and mining operations",
+					"The medical wing on our ship is over-capacity after the recent rescue operation of the crashed [pick("cruise ship", "trading vessel", "ship")] into a nearby [pick("station","outpost","colony","asteroid")]. We might need additional aid [pick("at this rate","soon","later")]",
+					"A recent hostile boarding action has left our ship severely damaged and we're heading back to dock. We have multiple injured aboard",
+					"The ships food supplies are running low after our hydroponics bay was destroyed due to [pick("uncontrolled plant growth","atmospheric failure","unruly crew")], and we're needing additional supplies",
+					"A recent artifact we recovered on our ship has knocked out our [pick("life support","engines","gyros","AI")]",
+					"We ran into an asteroid belt that wasn't picked up on our scanners and our engines are currently knocked out",
+					"The ship is overrun with excessive vermin and its affecting crew productivity",
+					"A recent fight with pirates has left [pick("one","two")] of our decks de-pressurized. We're attempting to reach the [GLOB.using_map.dock_name] for fleet repairs",
+					"Our medical department is overwhelmed due to [pick("a viral outbreak","a meteor storm","a clown's joke gone wrong")], and we are in need of supplies and personnel",
+					"Our gateway system is malfunctioning and we're dealing with a swarm of [pick("hostile aliens","hostiles in red cloaks","hostiles")]. Possible backup needed")
+				msg("Attention [GLOB.using_map.dock_name], this is the [combined_first_name] with an urgent report for the fleet. [bad_report].","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				if(prob(50))
+					msg("Thank you for the update [source_prefix] [source_shipname]. We'll relay this to the needed Captains. [GLOB.using_map.dock_name], out.")
+				else
+					msg("Understood [source_prefix] [source_shipname]. Keep us updated on any changes or developments.")
+					sleep(5 SECONDS)
+					msg("Will do [GLOB.using_map.dock_name]. [source_shipname], over and out.","[source_prefix] [source_shipname]")
+		// End of Fleet specific chatter
 		//mayday call
 		if("emerg")
 			var/problem = pick("We have hull breaches on multiple decks",
 				"We have unknown hostile life forms on board", "Our primary drive is failing",
 				"We have asteroids impacting the hull", "We're experiencing a total loss of engine power",
 				"We have hostile ships closing fast", "There's smoke in the cockpit",
-				"We have unidentified boarders", "Our life support has failed")
+				"We have unidentified boarders", "Our life support has failed",
+				"We have hostiles in blood red clothes")
 			msg("<b>Mayday, mayday, mayday!</b> This is [combined_first_name] declaring an emergency! [problem]!","[source_prefix] [source_shipname]")
 			sleep(5 SECONDS)
 			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control, copy. Switch to emergency responder channel [ertchannel].")
@@ -299,7 +383,20 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 			msg("Understood [GLOB.using_map.starsys_name] Defense Control, switching now.","[source_prefix] [source_shipname]")
 		//Control event: travel advisory
 		if("traveladvisory")
-			var/flightwarning = pick("Solar flare activity is spiking and expected to cause issues along main flight lanes [rand(1,33)], [rand(34,67)], and [rand(68,100)]","Pirate activity is on the rise, stay close to System Defense vessels","We're seeing a rise in illegal salvage operations, please report any unusual activity to the nearest SDF vessel via channel [sdfchannel]","Vox Marauder activity is higher than usual, report any unusual activity to the nearest System Defense vessel","A quarantined [pick("fleet","convoy")] is passing through the system along route [rand(1,100)], please observe minimum safe distance","A prison [pick("fleet","convoy")] is passing through the system along route [rand(1,100)], please observe minimum safe distance","Traffic volume is higher than normal, expect processing delays","Anomalous bluespace activity detected along route [rand(1,100)], exercise caution","Smugglers have been particularly active lately, expect increased security scans","Depots are currently experiencing a fuel shortage, expect delays and higher rates","Asteroid mining has displaced debris dangerously close to main flight lanes on route [rand(1,100)], watch for potential impactors","[pick("Pirate","Vox Marauder")] and System Defense forces are currently engaged in skirmishes throughout the system, please steer clear of any active combat zones","A [pick("fuel tanker","cargo liner","passenger liner","freighter","transport ship")] has collided with a [pick("fuel tanker","cargo liner","passenger liner","freighter","transport ship")] near route [rand(1,100)], watch for debris and do not impede emergency service vessels","A [pick("fuel tanker","cargo liner","passenger liner","freighter","transport ship")] on route [rand(1,100)] has experienced total engine failure. Emergency response teams are en route, please observe minimum safe distances and do not impede emergency service vessels","Transit routes have been recalculated to adjust for planetary drift. Please synch your astronav computers as soon as possible to avoid delays and difficulties","[pick("Bounty hunters","System Defense officers","Mercenaries")] are currently searching for a wanted fugitive, report any sightings of suspicious activity to System Defense via channel [sdfchannel]","Mercenary contractors are currently conducting aggressive [pick("piracy","marauder")] suppression operations",10;"It's space carp breeding season. [pick("Stars","Gods","God","Goddess")] have mercy on you all, because the carp won't")
+			var/flightwarning = pick("Solar flare activity is spiking and expected to cause issues along main flight lanes [rand(1,33)], [rand(34,67)], and [rand(68,100)]",
+			"Pirate activity is on the rise, stay close to System Defense vessels","We're seeing a rise in illegal salvage operations, please report any unusual activity to the nearest SDF vessel via channel [sdfchannel]",
+			"Vox Marauder activity is higher than usual, report any unusual activity to the nearest System Defense vessel",
+			"A quarantined [pick("fleet","convoy")] is passing through the system along route [rand(1,100)], please observe minimum safe distance",
+			"A prison [pick("fleet","convoy")] is passing through the system along route [rand(1,100)], please observe minimum safe distance",
+			"Traffic volume is higher than normal, expect processing delays","Anomalous bluespace activity detected along route [rand(1,100)], exercise caution",
+			"Smugglers have been particularly active lately, expect increased security scans","Depots are currently experiencing a fuel shortage, expect delays and higher rates",
+			"Asteroid mining has displaced debris dangerously close to main flight lanes on route [rand(1,100)], watch for potential impactors",
+			"[pick("Pirate","Vox Marauder")] and System Defense forces are currently engaged in skirmishes throughout the system, please steer clear of any active combat zones",
+			"A [pick("fuel tanker","cargo liner","passenger liner","freighter","transport ship")] has collided with a [pick("fuel tanker","cargo liner","passenger liner","freighter","transport ship")] near route [rand(1,100)], watch for debris and do not impede emergency service vessels",
+			"A [pick("fuel tanker","cargo liner","passenger liner","freighter","transport ship")] on route [rand(1,100)] has experienced total engine failure. Emergency response teams are en route, please observe minimum safe distances and do not impede emergency service vessels",
+			"Transit routes have been recalculated to adjust for planetary drift. Please synch your astronav computers as soon as possible to avoid delays and difficulties",
+			"[pick("Bounty hunters","System Defense officers","Mercenaries")] are currently searching for a wanted fugitive, report any sightings of suspicious activity to System Defense via channel [sdfchannel]",
+			"Mercenary contractors are currently conducting aggressive [pick("piracy","marauder")] suppression operations",10;"It's space carp breeding season. [pick("Stars","Gods","God","Goddess")] have mercy on you all, because the carp won't")
 			msg("This is [GLOB.using_map.dock_name] Control to all vessels in the [GLOB.using_map.starsys_name] system. Priority travel advisory follows.")
 			sleep(5 SECONDS)
 			msg("[flightwarning]. Control out.")

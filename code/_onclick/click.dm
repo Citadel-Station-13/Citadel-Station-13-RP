@@ -17,10 +17,16 @@
 */
 
 /atom/Click(var/location, var/control, var/params) // This is their reaction to being clicked on (standard proc)
+	if(!(flags & INITIALIZED))
+		to_chat(usr, "<span class='warning'>[type] initialization failure. Click dropped. Contact a coder or admin.</span>")
+		return
 	if(src)
 		usr.ClickOn(src, params)
 
 /atom/DblClick(var/location, var/control, var/params)
+	if(!(flags & INITIALIZED))
+		to_chat(usr, "<span class='warning'>[type] initialization failure. Click dropped. Contact a coder or admin.</span>")
+		return
 	if(src)
 		usr.DblClickOn(src, params)
 
@@ -185,6 +191,9 @@
 
 /mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
 
+	if(is_incorporeal())
+		return 0
+
 	if(!SSticker)
 		to_chat(src, "You cannot attack people before the game has started.")
 		return 0
@@ -233,6 +242,10 @@
 	return
 */
 
+/*
+	Shift middle click
+	Used for pointing.
+*/
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	pointed(A)
 	return
@@ -245,10 +258,10 @@
 /mob/proc/ShiftClickOn(var/atom/A)
 	A.ShiftClick(src)
 	return
+
 /atom/proc/ShiftClick(var/mob/user)
-	if(user.client && user.client.eye == user)
+	if(user.client && user.allow_examine(src))
 		user.examinate(src)
-	return
 
 /*
 	Ctrl click

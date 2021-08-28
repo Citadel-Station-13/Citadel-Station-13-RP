@@ -169,12 +169,11 @@ GLOBAL_LIST_EMPTY(solars_list)
 	return
 
 
-/obj/machinery/power/solar/fake/New(var/turf/loc, var/obj/item/solar_assembly/S)
-	..(loc, S, 0)
+/obj/machinery/power/solar/fake/Initialize(mapload, obj/item/solar_assembly/S)
+	. = ..(mapload, S, FALSE)
 
 /obj/machinery/power/solar/fake/process(delta_time)
-	. = PROCESS_KILL
-	return
+	return PROCESS_KILL
 
 //trace towards SSsun.sun to see if we're in shadow
 /obj/machinery/power/solar/proc/occlusion()
@@ -310,7 +309,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 /obj/machinery/power/solar_control/config_start
 	auto_start = SOLAR_AUTO_START_CONFIG
 
-/obj/machinery/power/solar_control/Initialize()
+/obj/machinery/power/solar_control/Initialize(mapload)
 	. = ..()
 	connect_to_network()
 	set_panels(cdir)
@@ -437,7 +436,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		playsound(src, I.usesound, 50, 1)
 		if(do_after(user, 20))
 			if (src.stat & BROKEN)
-				to_chat(user, "<font color='blue'>The broken glass falls out.</font>")
+				to_chat(user, "<font color=#4F49AF>The broken glass falls out.</font>")
 				var/obj/structure/frame/A = new /obj/structure/frame/computer( src.loc )
 				new /obj/item/material/shard( src.loc )
 				var/obj/item/circuitboard/solar_control/M = new /obj/item/circuitboard/solar_control( A )
@@ -449,7 +448,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 				A.anchored = 1
 				qdel(src)
 			else
-				to_chat(user, "<font color='blue'>You disconnect the monitor.</font>")
+				to_chat(user, "<font color=#4F49AF>You disconnect the monitor.</font>")
 				var/obj/structure/frame/A = new /obj/structure/frame/computer( src.loc )
 				var/obj/item/circuitboard/solar_control/M = new /obj/item/circuitboard/solar_control( A )
 				for (var/obj/C in src)

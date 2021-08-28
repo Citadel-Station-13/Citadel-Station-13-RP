@@ -65,8 +65,8 @@
 				return 1
 	return 0
 
-/obj/item/reagent_containers/food/drinks/glass2/Initialize()
-	..()
+/obj/item/reagent_containers/food/drinks/glass2/Initialize(mapload)
+	. = ..()
 	icon_state = base_icon
 
 /obj/item/reagent_containers/food/drinks/glass2/on_reagent_change()

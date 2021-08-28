@@ -89,9 +89,9 @@
 
 	var/current_pda_messaging = null
 
-/mob/living/silicon/pai/New(var/obj/item/paicard)
-	src.loc = paicard
-	card = paicard
+/mob/living/silicon/pai/Initialize(mapload)
+	. = ..()
+	card = loc
 	sradio = new(src)
 	communicator = new(src)
 	if(card)
@@ -236,7 +236,7 @@
 				cameralist[C.network] = C.network
 
 	src.network = input(usr, "Which network would you like to view?") as null|anything in cameralist
-	to_chat(src, "<font color='blue'>Switched to [src.network] camera network.</font>")
+	to_chat(src, "<font color=#4F49AF>Switched to [src.network] camera network.</font>")
 //End of code by Mord_Sith
 */
 

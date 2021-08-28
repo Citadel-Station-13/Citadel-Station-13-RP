@@ -56,7 +56,7 @@
 	/mob/living/simple_mob/vore/hostile/morph,
 	/obj/effect))
 
-/mob/living/simple_mob/vore/hostile/morph/Initialize()
+/mob/living/simple_mob/vore/hostile/morph/Initialize(mapload)
 	verbs += /mob/living/proc/ventcrawl
 	return ..()
 
