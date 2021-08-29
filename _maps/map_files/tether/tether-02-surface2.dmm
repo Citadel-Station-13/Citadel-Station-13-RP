@@ -2594,7 +2594,7 @@
 "baP" = (/obj/machinery/door/firedoor/glass,/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/maintenance/asmaint2)
 "baQ" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/floor_decal/rust,/obj/structure/cable/green{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/tiled/steel_dirty,/area/maintenance/asmaint2)
 "baS" = (/obj/machinery/atmospherics/unary/vent_pump/on,/obj/structure/closet/firecloset,/obj/item/handcuffs,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/tiled/steel_dirty,/area/maintenance/asmaint2)
-"baT" = (/obj/structure/closet/emcloset,/turf/simulated/floor/tiled/steel_dirty,/area/maintenance/asmaint2)
+"baT" = (/obj/structure/closet/emcloset,/obj/effect/floor_decal/rust,/turf/simulated/floor/tiled/steel_dirty,/area/maintenance/asmaint2)
 "baU" = (/turf/simulated/floor/plating,/area/maintenance/lower/atmos)
 "baW" = (/obj/structure/catwalk,/turf/simulated/floor/plating,/area/maintenance/lower/atmos)
 "baX" = (/obj/structure/railing{dir = 8},/turf/simulated/floor/plating,/area/maintenance/lower/atmos)
