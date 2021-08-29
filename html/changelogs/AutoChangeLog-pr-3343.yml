@@ -1,0 +1,5 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Second Tint Control buttons to bar booths.
+tweak: Adjusted access on Xenobot containment."
