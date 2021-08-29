@@ -449,7 +449,8 @@
 	hoodtype = /obj/item/clothing/head/hood/ronin
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
 
 // Eldritch suit
 /obj/item/clothing/suit/storage/hooded/eldritch
