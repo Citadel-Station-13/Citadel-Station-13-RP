@@ -1922,7 +1922,7 @@
 					/obj/item/storage/box/fluff/swimsuit/medical = 5,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 5,
 					/obj/item/storage/box/fluff/swimsuit/captain = 5,
-					/obj/item/storage/box/fluff/swimsuit/highclass = 5,
+					/obj/item/storage/box/fluff/swimsuit/highclass = 4,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
