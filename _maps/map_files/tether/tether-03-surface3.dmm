@@ -3920,6 +3920,7 @@
 "afL" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/disposalpipe/segment,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/rnd/research_storage)
 "afM" = (
@@ -35696,6 +35697,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
+"bSS" = (
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/medsec_maintenance)
 "bTC" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/skills{
@@ -55837,7 +55842,7 @@ aky
 aas
 abR
 adZ
-abR
+bSS
 aaE
 bmp
 bod

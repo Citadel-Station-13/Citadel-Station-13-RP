@@ -4320,7 +4320,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
 "ahr" = (
@@ -16355,8 +16355,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "aBd" = (
-/obj/random/trash_pile,
 /obj/structure/railing,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "aBe" = (
@@ -20414,7 +20414,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/research)
 "aId" = (
@@ -32608,6 +32608,13 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
+"gdN" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/lower/mining_eva)
 "geO" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -35497,7 +35504,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/vacant_site)
 "nlO" = (
@@ -37584,7 +37591,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
 "thi" = (
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/outside/outside1)
 "tiJ" = (
@@ -37602,6 +37609,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/brig)
+"tnA" = (
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/atmos)
 "tnF" = (
 /obj/structure/railing{
 	dir = 1
@@ -49771,7 +49782,7 @@ eQz
 eQz
 abT
 tCV
-akt
+gdN
 ahX
 anS
 aeK
@@ -51251,7 +51262,7 @@ aIh
 aUa
 aDR
 aTZ
-aTZ
+tnA
 aVn
 aWd
 aWd
