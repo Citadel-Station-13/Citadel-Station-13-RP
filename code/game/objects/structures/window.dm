@@ -503,7 +503,7 @@
 	icon_state = "phoronwindow"
 	shardtype = /obj/item/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronglass
-	maximal_heat = T0C + 2000
+	maximal_heat = INFINITY // This is high-grade atmospherics glass. Let's not have it burn, mmmkay?
 	damage_per_fire_tick = 1.0
 	maxhealth = 40.0
 	force_threshold = 5
@@ -521,7 +521,7 @@
 	shardtype = /obj/item/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronrglass
 	reinf = 1
-	maximal_heat = T0C + 4000
+	maximal_heat = INFINITY // Same here. The reinforcement is just structural anyways
 	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
 	maxhealth = 80.0
 	force_threshold = 10
