@@ -36238,7 +36238,7 @@
 	name = "Mech Bay"
 	},
 /obj/machinery/button/remote/blast_door{
-	id = "mechbay-inner";
+	id = "mechbay";
 	name = "Mech Bay";
 	pixel_x = 27;
 	pixel_y = -5;
@@ -37650,6 +37650,15 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /obj/structure/bed/chair/office/dark{
 	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "mechbay";
+	name = "Mech Bay Shutters";
+	pixel_x = 21;
+	pixel_y = -25;
+	req_access = list(29,47);
+	req_one_access = list(47)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
