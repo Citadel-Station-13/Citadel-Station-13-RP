@@ -730,6 +730,20 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+/datum/sprite_accessory/wing/mantis_arms //Same rationale as spider legs.
+	name = "mantis arms"
+	desc = ""
+	icon_state = "mantis-arms"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/mantis_arms_saturated
+	name = "mantis arms (saturated)"
+	desc = ""
+	icon_state = "mantis-arms_saturated"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/wing/moth
 	name = "moth wings"
 	desc = ""
