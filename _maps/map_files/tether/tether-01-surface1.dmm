@@ -1873,13 +1873,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/xenoflora)
 "ads" = (
-/obj/structure/table/rack,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/suit/storage/hooded/wintercoat,
-/obj/item/tank/emergency/oxygen/engi,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/structure/table/rack,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/mask/gas/clear,
+/obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/lowernorthhall)
 "adt" = (
@@ -8629,8 +8629,8 @@
 	dir = 9
 	},
 /obj/machinery/door/window/southleft,
-/obj/item/clothing/mask/gas,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/mask/gas/clear,
 /obj/item/tank/emergency/oxygen/engi,
 /obj/structure/sign/nosmoking_2{
 	pixel_y = 30
@@ -8649,8 +8649,8 @@
 	dir = 5
 	},
 /obj/machinery/door/window/southright,
-/obj/item/clothing/mask/gas,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/mask/gas/clear,
 /obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/floor/tiled/dark,
 /area/storage/surface_eva)
@@ -9729,8 +9729,8 @@
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/door/window/northleft,
-/obj/item/clothing/mask/gas,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/mask/gas/clear,
 /obj/item/tank/emergency/oxygen/engi,
 /obj/structure/sign/fire{
 	pixel_y = -32
@@ -9747,8 +9747,8 @@
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/door/window/northright,
-/obj/item/clothing/mask/gas,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/mask/gas/clear,
 /obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/floor/tiled/dark,
 /area/storage/surface_eva)
@@ -31848,8 +31848,8 @@
 /area/tether/surfacebase/outside/outside1)
 "dxY" = (
 /obj/structure/table/rack,
-/obj/item/clothing/mask/gas,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/mask/gas/clear,
 /obj/item/tank/emergency/oxygen/engi,
 /turf/simulated/floor/tiled/techfloor,
 /area/tether/surfacebase/lowernorthhall)

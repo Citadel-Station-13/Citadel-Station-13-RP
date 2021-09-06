@@ -42217,6 +42217,7 @@
 	},
 /obj/structure/cable/green,
 /obj/structure/table/standard,
+/obj/item/wheelchair,
 /obj/item/storage/box/bodybags{
 	pixel_x = -1;
 	pixel_y = -2
