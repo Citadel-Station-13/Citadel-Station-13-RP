@@ -37432,20 +37432,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/brig/storage)
-"sya" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -30
-	},
-/obj/structure/cable/orange{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/visitor_dining)
 "syb" = (
 /obj/structure/sign/signnew/biohazard,
 /turf/simulated/wall/r_wall,
@@ -54280,7 +54266,7 @@ aHI
 aDX
 aEJ
 aFx
-sya
+bqz
 aGx
 aHl
 bqz
