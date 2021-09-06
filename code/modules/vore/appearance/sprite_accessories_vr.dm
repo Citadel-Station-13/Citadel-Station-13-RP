@@ -1399,14 +1399,6 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	ani_state = "ketraitail_w"
 	//ckeys_allowed = list("ketrai") //They requested it to be enabled for everyone.
 
-/datum/sprite_accessory/tail/tamamo_kitsune
-	name = "Tamamo Kitsune Tails" //Tamamo-no-Tiro, let it be known!
-	desc = ""
-	icon_state = "tamamo-kitsunetails"
-	extra_overlay = "tamamo-kitsunetails-tips"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
 /datum/sprite_accessory/tail/foxtail
 	name = "Fox"
 	desc = ""	//leaving this just in case i break something if i just don't include a blank description because this codebase is akin to a house of cards
@@ -1417,12 +1409,28 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	ani_state = "foxtail_but_good_w"
 	extra_overlay_w = "foxtail_but_good-tips_w"
 
+/datum/sprite_accessory/tail/tamamo_kitsune
+	name = "Tamamo Kitsune Tails" //Tamamo-no-Tiro, let it be known!
+	desc = ""
+	icon_state = "tamamo-kitsunetails"
+	extra_overlay = "tamamo-kitsunetails-tips"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/tail/triple_kitsune
 	name = "Triple Kitsune Tails"
 	desc = ""
 	icon_state = "triple-kitsunetails"
 	extra_overlay = "triple-kitsunetails-tips"
-	do_colouration = 1
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/takahiro_kitsune
+	name = "Takahiro Kitsune Tails" //takahiro had five tails i just wanted to follow the 'T' naming convention vs. tamamo and triple
+	desc = ""
+	icon_state = "takahiro-kitsunetails"
+	extra_overlay = "takahiro-kitsunetails-tips"
+	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/redpanda
