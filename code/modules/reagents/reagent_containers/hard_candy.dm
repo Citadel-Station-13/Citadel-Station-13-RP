@@ -7,8 +7,8 @@
 	slot_flags = SLOT_MASK | SLOT_EARS
 	throw_speed = 0.5
 	attack_verb = list("bapped", "stuck")
-	var/nutriment_amt = 1
-	var/nutriment_desc = list("candy" = 5)
+	var/nutriment_amt = 0
+	var/nutriment_desc = list()
 	var/bitesize = 5
 	var/bitecount = 0
 	var/trash = null
@@ -19,12 +19,10 @@
 	var/mutable_appearance/head
 	var/headcolor = rgb(0, 0, 0)
 	sprite_sheets = list('icons/mob/mask.dmi')
-	volume = 15
+	volume = 20
 
 /obj/item/reagent_containers/hard_candy/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("sugar", 4)
-	reagents.add_reagent("nutriment", 1)
 
 /obj/item/reagent_containers/hard_candy/proc/On_Consume(var/mob/M)
 	if(!usr)

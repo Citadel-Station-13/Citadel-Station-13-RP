@@ -234,10 +234,10 @@
 					if(!num)
 						return
 					arguments["num"] = num
-					var/amount_per_patch = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_LOLLI)
-					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_patch]u)"
-					var/patches_text = num == 1 ? "new patch" : "[num] new patches"
-					ui_modal_input(src, id, "Please name your [patches_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
+					var/amount_per_lolli = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_LOLLI)
+					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_lolli]u)"
+					var/lolli_text = num == 1 ? "new lollipop" : "[num] new lollipops"
+					ui_modal_input(src, id, "Please name your [lolli_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
 				if("create_lollipop_multiple")
 					if(condi || !reagents.total_volume)
 						return
