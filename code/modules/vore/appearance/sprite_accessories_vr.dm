@@ -1623,6 +1623,12 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_fem_alt"
 
+/datum/sprite_accessory/tail/beaver
+	name = "beaver tail, colorable"
+	desc = ""
+	icon_state = "beaver"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 //For all species tails. Includes haircolored tails.
 /datum/sprite_accessory/tail/special
