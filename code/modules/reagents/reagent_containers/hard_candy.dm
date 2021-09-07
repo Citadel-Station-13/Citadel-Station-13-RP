@@ -194,15 +194,27 @@
 	change_head_color(rgb(rand(0, 255), rand(0, 255), rand(0, 255)))
 
 //Pre-Made Medicated lollipops.
-/obj/item/reagent_containers/hard_candy/lollipop/tramadol
-	name = "Tram-pop"
-	desc = "Your reward for behaving so well in the medbay. Can be eaten or put in the mask slot."
+/obj/item/reagent_containers/hard_candy/lollipop/bicard
+	name = "Bicari-pop"
+	desc = "A candy perfect for those stingy ouchies. Can be eaten or put in the mask slot."
 	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
 
-/obj/item/reagent_containers/hard_candy/lollipop/Initialize()
+/obj/item/reagent_containers/hard_candy/lollipop/bicard/Initialize()
 	. = ..()
-	reagents.add_reagent("tramadol", 4)
+	reagents.add_reagent("bicaridine", 5)
 	reagents.add_reagent("sugar", 1)
+	change_head_color(rgb((210), (55), (45)))
+
+/obj/item/reagent_containers/hard_candy/lollipop/citalopram
+	name = "Happy-pop"
+	desc = "A candy perfect for those frowny feelings. Can be eaten or put in the mask slot."
+	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
+
+/obj/item/reagent_containers/hard_candy/lollipop/citalopram/Initialize()
+	. = ..()
+	reagents.add_reagent("citalopram", 5)
+	reagents.add_reagent("sugar", 1)
+	change_head_color(rgb((250), (115), (235)))
 
 /obj/item/reagent_containers/hard_candy/lollipop/combat
 	name = "Commed-pop"
@@ -211,9 +223,75 @@
 /obj/item/reagent_containers/hard_candy/lollipop/combat/Initialize()
 	. = ..()
 	reagents.add_reagent("bicaridine", 5)
-	reagents.add_reagent("kelotaine", 5)
+	reagents.add_reagent("kelotane", 5)
 	reagents.add_reagent("sugar", 1)
+	change_head_color(rgb((200), (0), (255)))
 
+/obj/item/reagent_containers/hard_candy/lollipop/dexalin
+	name = "Dexa-pop"
+	desc = "A candy perfect for those raspy gaspies. Can be eaten or put in the mask slot."
+	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
+
+/obj/item/reagent_containers/hard_candy/lollipop/dexalin/Initialize()
+	. = ..()
+	reagents.add_reagent("dexalin", 5)
+	reagents.add_reagent("sugar", 1)
+	change_head_color(rgb((10), (150), (220)))
+
+/obj/item/reagent_containers/hard_candy/lollipop/dylovene
+	name = "Dylo-pop"
+	desc = "A candy perfect for keeping your blood sweet. Can be eaten or put in the mask slot."
+	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
+
+/obj/item/reagent_containers/hard_candy/lollipop/dylovene/Initialize()
+	. = ..()
+	reagents.add_reagent("dylovene", 5)
+	reagents.add_reagent("sugar", 1)
+	change_head_color(rgb((35), (160), (80)))
+
+/obj/item/reagent_containers/hard_candy/lollipop/ethylredoxrazine
+	name = "Ethylredox-a-pop"
+	desc = "A candy perfect for the functional alcoholic. Can be eaten or put in the mask slot."
+	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
+
+/obj/item/reagent_containers/hard_candy/lollipop/ethylredoxrazine/Initialize()
+	. = ..()
+	reagents.add_reagent("ethylredoxrazine", 5)
+	reagents.add_reagent("sugar", 1)
+	change_head_color(rgb((140), (110), (90)))
+
+/obj/item/reagent_containers/hard_candy/lollipop/hyronalin
+	name = "Hyrona-pop"
+	desc = "A candy perfect for keeping your cells from melting. Can be eaten or put in the mask slot."
+	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
+
+/obj/item/reagent_containers/hard_candy/lollipop/hyronalin/Initialize()
+	. = ..()
+	reagents.add_reagent("hyronalin", 5)
+	reagents.add_reagent("sugar", 1)
+	change_head_color(rgb((70), (120), (25)))
+
+/obj/item/reagent_containers/hard_candy/lollipop/kelotane
+	name = "Kelo-pop"
+	desc = "A candy perfect for those sizzly wizzlies. Can be eaten or put in the mask slot."
+	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
+
+/obj/item/reagent_containers/hard_candy/lollipop/kelotane/Initialize()
+	. = ..()
+	reagents.add_reagent("kelotane", 5)
+	reagents.add_reagent("sugar", 1)
+	change_head_color(rgb((250), (180), (40)))
+
+/obj/item/reagent_containers/hard_candy/lollipop/tramadol
+	name = "Tram-pop"
+	desc = "Your reward for behaving so well in the medbay. Can be eaten or put in the mask slot."
+	nutriment_desc = list("cough syrup" = 1, "artificial sweetness" = 1)
+
+/obj/item/reagent_containers/hard_candy/lollipop/tramadol/Initialize()
+	. = ..()
+	reagents.add_reagent("tramadol", 4)
+	reagents.add_reagent("sugar", 1)
+	change_head_color(rgb((210), (50), (195)))
 /obj/item/reagent_containers/hard_candy/lollipop/tricord
 	name = "Tricord-pop"
 	desc = "A lolipop laced with tricordazine, a slow healing reagent. Can be eaten or put in the mask slot."
