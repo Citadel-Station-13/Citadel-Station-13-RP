@@ -86,6 +86,16 @@
 	icon_state = "pasties_alt"
 	has_color = TRUE
 
+/datum/category_item/underwear/top/pasties_bandaid
+	name = "Pasties (Band-Aid)"
+	icon_state = "pasties_bandaid"
+	has_color = TRUE
+
+/datum/category_item/underwear/top/pasties_bandaid_alt
+	name = "Pasties (Band-Aid alt, Vertical)"
+	icon_state = "pasties_bandaid_alt"
+	has_color = TRUE
+
 /datum/category_item/underwear/top/babydoll_lingerie
 	name = "Babydoll Lingerie"
 	icon_state = "babydoll_lingerie"
