@@ -33990,6 +33990,9 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 5
 	},
+/obj/item/pen,
+/obj/item/pen,
+/obj/item/pen,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "bkw" = (
@@ -34174,18 +34177,13 @@
 /area/rnd/robotics)
 "bkV" = (
 /obj/structure/table/standard,
-/obj/machinery/computer/med_data/laptop{
-	dir = 1
-	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
+/obj/item/storage/box/glasses,
+/obj/item/duct_tape_roll,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "bkW" = (
-/obj/structure/table/standard,
-/obj/item/pen,
-/obj/item/pen,
-/obj/item/pen,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -34197,6 +34195,10 @@
 	},
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 6
+	},
+/obj/structure/table/standard,
+/obj/machinery/chemical_dispenser/bar_soft/full{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
@@ -37851,9 +37853,9 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/table/standard,
-/obj/machinery/chemical_dispenser/bar_soft/full{
-	dir = 4
+/obj/structure/closet/crate/secure/large/reinforced{
+	name = "Exosuit Equipment Storage";
+	req_one_access = list(29,47)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
@@ -39890,8 +39892,9 @@
 	dir = 8
 	},
 /obj/structure/table/standard,
-/obj/item/storage/box/glasses,
-/obj/item/duct_tape_roll,
+/obj/machinery/computer/med_data/laptop{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "nQA" = (
@@ -41593,6 +41596,19 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/tether/surfacebase/shuttle_pad)
+"sIb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/item/storage/box/glasses,
+/turf/simulated/floor/tiled/steel_grid,
+/area/rnd/robotics)
 "sJv" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -53106,7 +53122,7 @@ aHD
 aNf
 aXm
 aAV
-aMa
+sIb
 bkU
 bld
 aac
