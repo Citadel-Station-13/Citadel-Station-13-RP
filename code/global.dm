@@ -215,3 +215,7 @@ var/global/list/acceptable_fruit_types= list(
 											"watermelon",
 											"wheat",
 											"whitebeet")
+
+var/global/list/acceptable_nectar_types= list(
+											"nectar (honey)",
+											"nectar (jelly)")

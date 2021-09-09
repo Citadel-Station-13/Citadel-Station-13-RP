@@ -2499,6 +2499,7 @@
 #include "code\modules\mob\living\carbon\human\species\outsider\replicant.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\shadow.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\skeleton.dm"
+#include "code\modules\mob\living\carbon\human\species\outsider\vetala.dm"
 #include "code\modules\mob\living\carbon\human\species\outsider\vox.dm"
 #include "code\modules\mob\living\carbon\human\species\shadekin\_defines.dm"
 #include "code\modules\mob\living\carbon\human\species\shadekin\shadekin.dm"

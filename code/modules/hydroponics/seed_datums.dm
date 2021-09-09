@@ -1502,3 +1502,49 @@
 	set_trait(TRAIT_PRODUCT_ICON,"mushroom6")
 	set_trait(TRAIT_PLANT_ICON,"tree")
 	set_trait(TRAIT_PRODUCT_COLOUR,"#DADA00")
+
+// Nectars
+
+/datum/seed/nectar_honey
+	name = "nectar (honey)"
+	seed_name = "nectar dust (honey)"
+	display_name = "nectar (honey)"
+	kitchen_tag = "nectar (honey)"
+	mutants = null
+	chems = list("honey" = list(1,10), "sugar" = list(1,5))
+
+/datum/seed/nectar_honey/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,1)
+	set_trait(TRAIT_MATURATION,3)
+	set_trait(TRAIT_PRODUCTION,5)
+	set_trait(TRAIT_YIELD,4)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_PRODUCT_ICON,"nectar-brick")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#A98637")
+	set_trait(TRAIT_PLANT_COLOUR,"#378F2E")
+	set_trait(TRAIT_PLANT_ICON,"alien2")
+	set_trait(TRAIT_IDEAL_LIGHT, 6)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.15)
+
+/datum/seed/nectar_jelly
+	name = "nectar (jelly)"
+	seed_name = "nectar dust (jelly)"
+	display_name = "nectar (jelly)"
+	kitchen_tag = "nectar (jelly)"
+	mutants = null
+	chems = list("cherryjelly" = list(1,10), "sugar" = list(1,5))
+
+/datum/seed/nectar_jelly/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,1)
+	set_trait(TRAIT_MATURATION,3)
+	set_trait(TRAIT_PRODUCTION,5)
+	set_trait(TRAIT_YIELD,4)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_PRODUCT_ICON,"nectar-brick")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#A24A27")
+	set_trait(TRAIT_PLANT_COLOUR,"#378F2E")
+	set_trait(TRAIT_PLANT_ICON,"alien2")
+	set_trait(TRAIT_IDEAL_LIGHT, 6)
+	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.15)

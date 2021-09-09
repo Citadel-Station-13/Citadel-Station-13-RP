@@ -432,6 +432,9 @@
 //Alraune organs
 #define A_FRUIT	"fruit gland"
 
+//Apidean organs
+#define H_STOMACH "honey stomach"
+
 //species defines
 #define SPECIES_AKULA			"Akula"
 #define SPECIES_ALRAUNE			"Alraune"
@@ -448,6 +451,7 @@
 #define SPECIES_ZORREN_HIGH		"Highlander Zorren"
 #define SPECIES_CUSTOM			"Custom Species"
 #define SPECIES_PLASMAMAN		"Phoronoid"
+#define SPECIES_APIDAEN			"Apidaen"
 //monkey species
 #define SPECIES_MONKEY_AKULA		"Sobaka"
 #define SPECIES_MONKEY_NEVREAN		"Sparra"
