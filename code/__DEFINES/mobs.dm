@@ -453,7 +453,9 @@
 #define SPECIES_PLASMAMAN		"Phoronoid"
 #define SPECIES_APIDAEN			"Apidaen"
 #define SPECIES_VETALA_RUDDY	"Ruddy Vetalan"
-#define SPECIES_VETALA_PALE	"Pale Vetalan"
+#define SPECIES_VETALA_PALE		"Pale Vetalan"
+#define SPECIES_AURIL			"Auril"
+#define SPECIES_DREMACHIR		"Dremachir"
 //monkey species
 #define SPECIES_MONKEY_AKULA		"Sobaka"
 #define SPECIES_MONKEY_NEVREAN		"Sparra"

@@ -1,4 +1,3 @@
-//WIP Vamp
 /datum/species/vetala_ruddy
 	name = SPECIES_VETALA_RUDDY
 	name_plural = "Vetalan"
@@ -83,6 +82,7 @@
 	often lethargic nature, or perhaps due to it, Pale Vetalan do not feed directly off of blood, but instead \
 	siphon warmth and life energy from other living creatures to survive. Pale Vetalan are typically cold, \
 	in more ways than one, but are generally able to integrate into civlized society."
+
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vetala_pale)
 
 //	taste_sensitivity = TASTE_DULL
@@ -135,4 +135,5 @@
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/tie_hair,
-		/mob/living/carbon/human/proc/lick_wounds)
+		/mob/living/carbon/human/proc/lick_wounds,
+		/mob/living/proc/eye_glow_toggle)

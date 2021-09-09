@@ -58,6 +58,7 @@
 	var/glow_range = 2
 	var/glow_intensity = null
 	var/glow_color = "#FFFFFF"			// The color they're glowing!
+	var/eye_glow_toggle = 0
 
 	var/see_invisible_default = SEE_INVISIBLE_LIVING
 

@@ -104,6 +104,9 @@
 	desc = "Your eyes show up above darkness. SPOOKY! And kinda edgey too."
 	cost = 0
 	var_changes = list("has_glowing_eyes" = 1)
+/datum/trait/glowing_eyes/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	H.verbs |= /mob/living/proc/eye_glow_toggle
 
 /datum/trait/glowing_body
 	name = "Glowing Body"
