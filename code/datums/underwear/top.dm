@@ -117,6 +117,6 @@
 	has_color = TRUE
 
 /datum/category_item/underwear/top/bandages
-	name = "bandages"
+	name = "Bandage Wrapping"
 	icon_state = "bandages"
 	has_color = TRUE
