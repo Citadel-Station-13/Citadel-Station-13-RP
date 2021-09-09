@@ -1890,9 +1890,6 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "acS" = (
-/obj/machinery/vending/wallmed1{
-	pixel_x = -30
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 8
 	},
@@ -1902,12 +1899,10 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2{
 	dir = 8
 	},
-/obj/structure/filingcabinet/chestdrawer{
-	name = "Scan Records"
-	},
 /obj/effect/floor_decal/corner/paleblue/bordercorner2{
 	dir = 8
 	},
+/obj/machinery/vending/blood,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "acT" = (
@@ -3440,6 +3435,7 @@
 	icon_state = "0-2"
 	},
 /obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
@@ -5275,6 +5271,9 @@
 /obj/random/medical{
 	pixel_x = -4;
 	pixel_y = 5
+	},
+/obj/machinery/vending/wallmed1{
+	pixel_x = -30
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
@@ -18326,6 +18325,9 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/paleblue/bordercorner2,
+/obj/structure/filingcabinet/chestdrawer{
+	name = "Scan Records"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/triage)
 "aFD" = (
@@ -25973,6 +25975,7 @@
 	pixel_x = 11
 	},
 /obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/surgery2)
 "aUH" = (
@@ -26406,9 +26409,15 @@
 	},
 /area/tether/surfacebase/medical/lobby)
 "aVv" = (
-/obj/structure/closet/secure_closet/medical2,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
+	},
+/obj/structure/closet/crate/bin{
+	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
+	icon_closed = "biohazard";
+	icon_opened = "biohazardopen";
+	icon_state = "biohazard";
+	name = "biohazard bin"
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/surgery2)
@@ -34455,7 +34464,13 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/medical2,
+/obj/structure/closet/crate/bin{
+	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
+	icon_closed = "biohazard";
+	icon_opened = "biohazardopen";
+	icon_state = "biohazard";
+	name = "biohazard bin"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/surgery1)
 "blH" = (
