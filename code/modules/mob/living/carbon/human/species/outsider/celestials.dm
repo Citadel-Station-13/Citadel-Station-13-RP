@@ -6,14 +6,8 @@
 	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 
-	blurb = "The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
-	At some point during their former life, each Vetalan was exposed to an aggressive and highly adaptable \
-	pathogen. Although the source of the pathogen remains unclear, its ability to jump across species and its \
-	methodical transmissibility vectors suggest an artificial origin. Vetalans are divided into two primary \
-	categories, although how this is determined is unknown. Ruddy Vetalans experience acute haemophilia and \
-	experience difficulty naturally replenishing their blood supply. The pathogen enables the processing of blood \
-	from external sources as the sole means of nutrition. Ruddy Vetalan are generally fast and aggressive, though \
-	they remain coherent and are generally capable of coexisting in modern society."
+	blurb = "Auril lore is still a work in progress. They are not actual supernatural creatures. They are aliens. \
+	They are not obsessed human genemodders. They're just a race of aliens that look like angels. It's a big galaxy."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/auril)
 
 	spawn_flags = SPECIES_CAN_JOIN
@@ -52,14 +46,8 @@
 	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
-	blurb = "The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
-	At some point during their former life, each Vetalan was exposed to an aggressive and highly adaptable \
-	pathogen. Although the source of the pathogen remains unclear, its ability to jump across species and its \
-	methodical transmissibility vectors suggest an artificial origin. Vetalans are divided into two primary \
-	categories, although how this is determined is unknown. Ruddy Vetalans experience acute haemophilia and \
-	experience difficulty naturally replenishing their blood supply. The pathogen enables the processing of blood \
-	from external sources as the sole means of nutrition. Ruddy Vetalan are generally fast and aggressive, though \
-	they remain coherent and are generally capable of coexisting in modern society."
+	blurb = "Dremachir lore is still a work in progress. They are not actual supernatural creatures. They are aliens. \
+	They are not obsessed human genemodders. They're just a race of aliens that look like demonss. It's a big galaxy."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dremachir)
 
 	spawn_flags = SPECIES_CAN_JOIN
