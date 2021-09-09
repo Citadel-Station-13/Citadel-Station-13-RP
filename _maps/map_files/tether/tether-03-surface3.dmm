@@ -13485,7 +13485,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "awZ" = (
-/obj/machinery/hologram/holopad,
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
