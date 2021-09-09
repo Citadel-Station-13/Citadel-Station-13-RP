@@ -10872,14 +10872,13 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
-	dir = 8;
-	pixel_x = 30
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 28
 	},
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
@@ -12785,7 +12784,17 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 10
 	},
-/obj/structure/filingcabinet/chestdrawer,
+/obj/structure/table/standard,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/clothing/glasses/welding,
+/obj/item/storage/belt/utility,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "avT" = (
@@ -12805,6 +12814,17 @@
 /obj/item/stock_parts/console_screen,
 /obj/item/stock_parts/console_screen,
 /obj/item/stock_parts/console_screen,
+/obj/item/stock_parts/micro_laser,
+/obj/item/stock_parts/micro_laser,
+/obj/item/stock_parts/scanning_module{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/stock_parts/capacitor,
+/obj/item/stock_parts/scanning_module,
+/obj/item/stock_parts/capacitor,
+/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/manipulator,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "avV" = (
@@ -12822,6 +12842,13 @@
 	dir = 4
 	},
 /obj/structure/table/standard,
+/obj/item/pen,
+/obj/item/clothing/glasses/omnihud/rnd,
+/obj/item/hand_labeler,
+/obj/item/clothing/gloves/sterile/latex,
+/obj/item/reagent_containers/dropper{
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "avX" = (
@@ -13499,13 +13526,9 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
@@ -13633,9 +13656,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
@@ -13780,14 +13803,20 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "axA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
@@ -13972,18 +14001,13 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
 /obj/structure/table/standard,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = -2;
-	pixel_y = -1
-	},
-/obj/item/clothing/glasses/welding,
-/obj/item/storage/belt/utility,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/item/packageWrap,
+/obj/item/destTagger{
+	pixel_x = 4;
+	pixel_y = 3
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
@@ -14179,19 +14203,16 @@
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 6
 	},
-/obj/structure/table/standard,
-/obj/item/hand_labeler,
-/obj/item/pen,
-/obj/item/packageWrap,
-/obj/item/packageWrap,
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
+/obj/machinery/conveyor_switch/oneway{
+	id = "science1"
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
 	},
-/obj/structure/cable/green,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "ayk" = (
@@ -14299,24 +14320,14 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "ayt" = (
-/obj/effect/floor_decal/corner/mauve{
-	dir = 10
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "science1"
 	},
-/obj/effect/floor_decal/corner/mauve{
-	dir = 5
+/obj/machinery/door/window/brigdoor/westleft{
+	req_access = null;
+	req_one_access = list(47)
 	},
-/obj/structure/table/standard,
-/obj/item/disk/design_disk,
-/obj/item/disk/design_disk{
-	pixel_x = 3;
-	pixel_y = -1
-	},
-/obj/item/disk/design_disk{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/disk/design_disk,
-/obj/item/disk/tech_disk,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "ayu" = (
@@ -14619,17 +14630,18 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/researchdivision)
 "ayV" = (
-/obj/effect/floor_decal/corner/mauve{
-	dir = 10
+/obj/machinery/disposal/deliveryChute{
+	dir = 1
 	},
-/obj/effect/floor_decal/corner/mauve{
-	dir = 5
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/obj/structure/table/standard,
-/obj/item/clothing/glasses/omnihud/rnd,
-/obj/item/clothing/gloves/sterile/latex,
-/obj/item/reagent_containers/dropper{
-	pixel_y = -4
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "science1"
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
@@ -36615,17 +36627,24 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/stock_parts/micro_laser,
-/obj/item/stock_parts/micro_laser,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/scanning_module{
-	pixel_x = 2;
-	pixel_y = 3
+/obj/item/disk/design_disk{
+	pixel_x = 3;
+	pixel_y = -1
 	},
-/obj/item/stock_parts/capacitor,
-/obj/item/stock_parts/scanning_module,
-/obj/item/stock_parts/capacitor,
+/obj/item/disk/design_disk{
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/obj/item/disk/design_disk{
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/obj/item/disk/design_disk{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/disk/tech_disk,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "dVE" = (
