@@ -1433,14 +1433,6 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/tail/takahiro_kitsune
-	name = "Takahiro Kitsune Tails" //takahiro had five tails i just wanted to follow the 'T' naming convention vs. tamamo and triple
-	desc = ""
-	icon_state = "takahiro-kitsunetails"
-	extra_overlay = "takahiro-kitsunetails-tips"
-	do_colouration = TRUE
-	color_blend_mode = ICON_MULTIPLY
-
 /datum/sprite_accessory/tail/redpanda
 	name = "red panda"
 	desc = ""
