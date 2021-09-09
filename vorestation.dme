@@ -3218,6 +3218,7 @@
 #include "code\modules\reagents\reagent_containers\glass_vr.dm"
 #include "code\modules\reagents\reagent_containers\hypospray.dm"
 #include "code\modules\reagents\reagent_containers\hypospray_vr.dm"
+#include "code\modules\reagents\reagent_containers\organic.dm"
 #include "code\modules\reagents\reagent_containers\patch.dm"
 #include "code\modules\reagents\reagent_containers\pill.dm"
 #include "code\modules\reagents\reagent_containers\pill_vr.dm"

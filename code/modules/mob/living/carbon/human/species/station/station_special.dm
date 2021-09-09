@@ -642,8 +642,8 @@
 /datum/species/apidaen
 	name = SPECIES_APIDAEN
 	name_plural = "Apidaen"
-	//icobase = 'icons/mob/human_races/r_apidaen.dmi'
-	//deform = 'icons/mob/human_races/r_def_apidaen.dmi'
+	icobase = 'icons/mob/human_races/r_def_apidaen.dmi'
+	deform = 'icons/mob/human_races/r_def_apidaen.dmi'
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	darksight = 6		//Not quite as good as spiders. Meant to represent compound eyes and/or better hearing.
 	slowdown = -0.10	//Speed boost similar to spiders, slightly nerfed due to two less legs.
@@ -658,6 +658,7 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/nectar_select,
+		/mob/living/carbon/human/proc/nectar_pick,
 		/mob/living/proc/flying_toggle,
 		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair
@@ -671,18 +672,15 @@
 	Although their exact phyisololgy changes based on caste or other unknown selective qualities, Apidaens generally possess compound eyes, \
 	between four to six limbs, and wings. Apidaens are able to produce a substance molecularly identical to honey in what is considered to be \
 	a dramatic example of parallel evolution - or perhaps genetic tampering. Apidaens inhabit multiple planets in a chain of connected star systems, \
-	preferring to live in hive-like structures both subterranean and above ground. Apidaens possess some form of hive intelligence, although they still \
-	exhibit individual identities and habits. The remnant hive connection is believed to be vestigial, but aids Apidaen navigators in charting courses \
+	preferring to live in hive-like structures - both subterranean and above ground. Apidaens possess some form of hive intelligence, although they still \
+	exhibit individual identities and habits. This remnant hive connection is believed to be vestigial, but aids Apidaen navigators in charting courses \
 	for their biomechanical Hive ships."
 
 	wikilink = null
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/apidaen)
 
-	hazard_low_pressure = 20 //Prevents them from dying normally in space. Special code handled below.
-	cold_level_1 = -1    // All cold debuffs are handled below in handle_environment_special
-	cold_level_2 = -1
-	cold_level_3 = -1
+	hazard_low_pressure = 20
 
 	//primitive_form = "Monkey" //I dunno. Replace this in the future.
 
@@ -704,8 +702,8 @@
 		O_BRAIN =    /obj/item/organ/internal/brain,
 		O_EYES =     /obj/item/organ/internal/eyes,
 		O_STOMACH =	 /obj/item/organ/internal/stomach,
-		O_INTESTINE =/obj/item/organ/internal/intestine
-		H_STOMACH =    /obj/item/organ/internal/honey_stomach
+		O_INTESTINE =/obj/item/organ/internal/intestine,
+		H_STOMACH =  /obj/item/organ/internal/honey_stomach
 		)
 
 //Did you know it's actually called a honey stomach? I didn't!
@@ -716,18 +714,18 @@
 	desc = "A squishy enzymatic processor that turns airborne pollen into nectar."
 	organ_tag = H_STOMACH
 	var/generated_reagents = list("honey" = 5)
-	var/usable_volume = 250
+	var/usable_volume = 100
 	var/transfer_amount = 50
-	var/empty_message = list("Your have no nectar inside.", "You have a distinct lack of nectar..")
-	var/full_message = list("Your honey stomach is full!", "You have nectar that is ready to be regurgitated!")
+	var/empty_message = list("You have no nectar inside.", "You have a distinct lack of nectar.")
+	var/full_message = list("Your honey stomach is full!", "You have waxcomb that is ready to be regurgitated!")
 	var/emote_descriptor = list("nectar fresh from the Apidae!", "nectar from the Apidae!")
 	var/verb_descriptor = list("scoops", "coaxes", "collects")
 	var/self_verb_descriptor = list("scoop", "coax", "collect")
 	var/short_emote_descriptor = list("coaxes", "scoops")
 	var/self_emote_descriptor = list("scoop", "coax", "heave")
-	var/nectar_type = "nectarhoney"
+	var/nectar_type = "nectar (honey)"
 	var/mob/organ_owner = null
-	var/gen_cost = 0.5
+	var/gen_cost = 50
 
 /obj/item/organ/internal/honey_stomach/Initialize(mapload)
 	. = ..()
@@ -756,8 +754,8 @@
 
 
 /mob/living/carbon/human/proc/nectar_select() //So if someone doesn't want to vomit jelly, they don't have to.
-	set name = "Select Nectar"
-	set desc = "Select what nectar you wish to process."
+	set name = "Produce Honey"
+	set desc = "Begin producing honey."
 	set category = "Abilities"
 	var/obj/item/organ/internal/honey_stomach/honey_stomach
 	for(var/F in contents)
@@ -778,9 +776,9 @@
 		to_chat(src, "<span class='notice'>You lack the organ required to produce nectar.</span>")
 		return
 
-/mob/living/carbon/human/proc/nectar_pick()
-	set name = "Pick Nectar"
-	set desc = "Coax nectar from [src]."
+/mob/living/carbon/human/proc/nectar_pick(mob/user)
+	set name = "Collect Waxcomb"
+	set desc = "Coax waxcomb from [src]."
 	set category = "Object"
 	set src in view(1)
 
@@ -801,8 +799,10 @@
 			to_chat(src, "<span class='notice'>[pick(honey_stomach.empty_message)]</span>")
 			return
 
-		var/datum/seed/S = plant_controller.seeds["[honey_stomach.nectar_type]"]
-		S.harvest(usr,0,0,1)
+		var/nectar_item_type = /obj/item/reagent_containers/organic/waxcomb
+
+		new nectar_item_type(get_turf(user))
+		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
 		var/index = rand(0,2)
 
@@ -814,7 +814,7 @@
 							"<span class='notice'>You [self_verb_desc] [emote]</span>")
 		else
 			visible_message("<span class='notice'>[src] [pick(honey_stomach.short_emote_descriptor)] nectar.</span>",
-								"<span class='notice'>You [pick(honey_stomach.self_emote_descriptor)] jelly.</span>")
+								"<span class='notice'>You [pick(honey_stomach.self_emote_descriptor)] up a bundle of waxcomb.</span>")
 
 		honey_stomach.reagents.remove_any(honey_stomach.transfer_amount)
 
