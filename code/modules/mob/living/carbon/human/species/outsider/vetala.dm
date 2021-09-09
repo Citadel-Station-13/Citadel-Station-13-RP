@@ -73,7 +73,7 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
 	rarity_value = 4
 
-	"The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
+	blurb =	"The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
 	At some point during their former life, each Vetalan was exposed to an aggressive and highly adaptable \
 	pathogen. Although the source of the pathogen remains unclear, its ability to jump across species and its \
 	methodical transmissibility vectors suggest an artificial origin. Vetalans are divided into two primary \
