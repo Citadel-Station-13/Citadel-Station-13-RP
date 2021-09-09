@@ -105,3 +105,8 @@
 	name = "Dyed Fishnet with gloves"
 	icon_state = "c_fishnet_gloves"
 	has_color = TRUE
+
+/datum/category_item/underwear/top/bandages
+	name = "bandages"
+	icon_state = "bandages"
+	has_color = TRUE
