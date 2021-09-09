@@ -14204,6 +14204,7 @@
 	dir = 6
 	},
 /obj/machinery/conveyor_switch/oneway{
+	convdir = -1;
 	id = "science1"
 	},
 /obj/structure/disposalpipe/segment{
