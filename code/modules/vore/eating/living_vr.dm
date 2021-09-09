@@ -615,7 +615,7 @@
 	set category = "Abilities"
 	set desc = "Toggle your glowing eyes on/off!"
 
-	has_glowing_eyes = !has_glowing_eyes
+	eye_glow_toggle = !eye_glow_toggle
 
 	to_chat(src,"<span class='notice'>You <b>[eye_glow_toggle ? "en" : "dis"]</b>able your eye's glow.</span>")
 
