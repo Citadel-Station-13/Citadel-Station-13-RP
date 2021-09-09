@@ -515,6 +515,16 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	desc = ""
 	value = CATALOGUER_REWARD_EASY
 
+/datum/category_item/catalogue/fauna/vetala_ruddy
+	name = "Sapients - Ruddy Vetalan"
+	desc = ""
+	value = CATALOGUER_REWARD_MEDIUM
+
+/datum/category_item/catalogue/fauna/vetala_pale
+	name = "Sapients - Pale Vetalan"
+	desc = ""
+	value = CATALOGUER_REWARD_MEDIUM
+
 /datum/category_item/catalogue/technology/resleeving
 	name = "Resleeving"
 	desc = ""

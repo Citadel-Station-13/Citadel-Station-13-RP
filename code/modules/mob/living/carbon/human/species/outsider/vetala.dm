@@ -1,114 +1,138 @@
 //WIP Vamp
-/datum/species/vox
-	name = SPECIES_VOX
-	name_plural = "Vox"
-	default_language = LANGUAGE_VOX
+/datum/species/vetala_ruddy
+	name = SPECIES_VETALA_RUDDY
+	name_plural = "Vetalan"
+	default_language = LANGUAGE_GALCOM
 	language = LANGUAGE_GALCOM
-	species_language = LANGUAGE_VOX
-	num_alternate_languages = 1
-	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
+	num_alternate_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
 	rarity_value = 4
-	blurb = "The Vox are the broken remnants of a once-proud race, now reduced to little more than \
-	scavenging vermin who prey on isolated stations, ships or planets to keep their own ancient arkships \
-	alive. They are four to five feet tall, reptillian, beaked, tailed and quilled; human crews often \
-	refer to them as 'shitbirds' for their violent and offensive nature, as well as their horrible \
-	smell.<br/><br/>Most humans will never meet a Vox raider, instead learning of this insular species through \
-	dealing with their traders and merchants; those that do rarely enjoy the experience."
-	catalogue_data = list(/datum/category_item/catalogue/fauna/vox)
 
-//	taste_sensitivity = TASTE_DULL
+	blurb = "The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
+	At some point during their former life, each Vetalan was exposed to an aggressive and highly adaptable \
+	pathogen. Although the source of the pathogen remains unclear, its ability to jump across species and its \
+	methodical transmissibility vectors suggest an artificial origin. Vetalans are divided into two primary \
+	categories, although how this is determined is unknown. Ruddy Vetalans experience acute haemophilia and \
+	experience difficulty naturally replenishing their blood supply. The pathogen enables the processing of blood \
+	from external sources as the sole means of nutrition. Ruddy Vetalan are generally fast and aggressive, though \
+	they remain coherent and are generally capable of coexisting in modern society."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/vetala_ruddy)
 
 	slowdown = -0.5
 
-	speech_sounds = list('sound/voice/shriek1.ogg')
-	speech_chance = 20
-
-	scream_verb = "shrieks"
-	male_scream_sound = 'sound/voice/shriek1.ogg'
-	female_scream_sound = 'sound/voice/shriek1.ogg'
-	male_cough_sounds = list('sound/voice/shriekcough.ogg')
-	female_cough_sounds = list('sound/voice/shriekcough.ogg')
-	male_sneeze_sound = 'sound/voice/shrieksneeze.ogg'
-	female_sneeze_sound = 'sound/voice/shrieksneeze.ogg'
-
-	warning_low_pressure = 50
-	hazard_low_pressure = 0
+	scream_verb = "wails"
 
 	cold_level_1 = 80
 	cold_level_2 = 50
 	cold_level_3 = 0
 
-	gluttonous = 0
-
-	breath_type = /datum/gas/phoron
-	poison_type = /datum/gas/oxygen
-	siemens_coefficient = 0.2
-
-	flags = NO_SCAN
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
-	blood_color = "#9066BD"
+	blood_color = "#DB3939"
 	flesh_color = "#a3a593"
-	base_color = "#2e3302"
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
-
-	reagent_tag = IS_VOX
-
-	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/vox),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
-		)
-
-
-	has_organ = list(
-		O_HEART =    /obj/item/organ/internal/heart/vox,
-		O_LUNGS =    /obj/item/organ/internal/lungs/vox,
-		O_VOICE =	 /obj/item/organ/internal/voicebox,
-		O_LIVER =    /obj/item/organ/internal/liver/vox,
-		O_KIDNEYS =  /obj/item/organ/internal/kidneys/vox,
-		O_BRAIN =    /obj/item/organ/internal/brain/vox,
-		O_EYES =     /obj/item/organ/internal/eyes,
-		)
-
-	genders = list(NEUTER)
-
-	descriptors = list(
-		/datum/mob_descriptor/vox_markings = 0
-		)
+	base_color = "#C5C0B8"
 
 	min_age = 18
-	wikilink="https://wiki.vore-station.net/Vox"
+
+	//Nocturnal and photosensitive.
+	darksight = 7
+	flash_mod = 3.0
+	flash_burn = 5
+	has_glowing_eyes = 1
+
+	//Physical resistances and weaknesses.
+	total_health = 75
+	item_slowdown_mod = 1.5
+	brute_mod = 0.75
+	toxins_mod = 0.75
+	burn_mod = 1.5
+
+	//Appetite
+	metabolic_rate = 1.2
+	hunger_factor = 0.2
+	metabolism = 0.06
+
+	//Thin blood and a higher core temperature.
+	minimum_breath_pressure = 20
+	oxy_mod = 1.25
+	bloodloss_rate = 2
+	heat_discomfort_level = T0C+19
+
 	inherent_verbs = list(
-		/mob/living/proc/shred_limb,
-		/mob/living/proc/eat_trash,
-		/mob/living/carbon/human/proc/tie_hair
-		)
+		/mob/living/carbon/human/proc/sonar_ping,
+		/mob/living/carbon/human/proc/bloodsuck,
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/lick_wounds)
 
-/datum/species/vox/get_random_name(var/gender)
-	var/datum/language/species_language = GLOB.all_languages[default_language]
-	return species_language.get_random_name(gender)
+/datum/species/vetala_pale
+	name = SPECIES_VETALA_PALE
+	name_plural = "Vetalan"
+	default_language = LANGUAGE_GALCOM
+	language = LANGUAGE_GALCOM
+	num_alternate_languages = 3
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
+	rarity_value = 4
 
-/datum/species/vox/equip_survival_gear(var/mob/living/carbon/human/H, var/extendedtank = 0,var/comprehensive = 0)
-	. = ..()
+	"The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
+	At some point during their former life, each Vetalan was exposed to an aggressive and highly adaptable \
+	pathogen. Although the source of the pathogen remains unclear, its ability to jump across species and its \
+	methodical transmissibility vectors suggest an artificial origin. Vetalans are divided into two primary \
+	categories, although how this is determined is unknown. Pale Vetalans are sturdy, yet sluggish creatures. \
+	Their blood has nearly congealed and grown thick, decreasing their core temperature. In spite of their \
+	often lethargic nature, or perhaps due to it, Pale Vetalan do not feed directly off of blood, but instead \
+	siphon warmth and life energy from other living creatures to survive. Pale Vetalan are typically cold, \
+	in more ways than one, but are generally able to integrate into civlized society."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/vetala_pale)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), slot_wear_mask)
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_back)
-		H.internal = H.back
-	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), slot_r_hand)
-		H.internal = H.r_hand
-	H.internal = locate(/obj/item/tank) in H.contents
-	if(istype(H.internal,/obj/item/tank) && H.internals)
-		H.internals.icon_state = "internal1"
+//	taste_sensitivity = TASTE_DULL
+
+	slowdown = 0.5
+
+	scream_verb = "wails"
+
+	cold_level_1 = 80
+	cold_level_2 = 50
+	cold_level_3 = 0
+
+	spawn_flags = SPECIES_CAN_JOIN
+	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
+
+	blood_color = "#6A0808"
+	flesh_color = "#a3a593"
+	base_color = "#C5C0B8"
+
+	min_age = 18
+
+	//Nocturnal and photosensitive.
+	darksight = 7
+	flash_mod = 3.0
+	flash_burn = 5
+	has_glowing_eyes = 1
+
+	//Physical resistances and weaknesses.
+	total_health = 110
+	item_slowdown_mod = 0.5
+	brute_mod = 0.75
+	toxins_mod = 0.75
+	burn_mod = 1.5
+	radiation_mod = 1.5
+
+	//Appetite
+	metabolic_rate = 0.8
+	hunger_factor = 0.04
+	metabolism = 0.0012
+
+	//Thick blood and a lower core temperature.
+	minimum_breath_pressure = 20
+	oxy_mod = 1.25
+	bloodloss_rate = 0.75
+	cold_discomfort_level = T0C+21
+
+	inherent_verbs = list(
+		/mob/living/carbon/human/proc/sonar_ping,
+		/mob/living/carbon/human/proc/succubus_drain,
+		/mob/living/carbon/human/proc/succubus_drain_finalize,
+		/mob/living/carbon/human/proc/succubus_drain_lethal,
+		/mob/living/carbon/human/proc/tie_hair,
+		/mob/living/carbon/human/proc/lick_wounds)
