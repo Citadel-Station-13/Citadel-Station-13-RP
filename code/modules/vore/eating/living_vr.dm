@@ -610,15 +610,6 @@
 	if(new_color)
 		glow_color = new_color
 
-/mob/living/proc/eye_glow_toggle()
-	set name = "Eye Glow (Toggle)"
-	set category = "Abilities"
-	set desc = "Toggle your glowing eyes on/off!"
-
-	eye_glow_toggle = !eye_glow_toggle
-
-	to_chat(src,"<span class='notice'>You <b>[eye_glow_toggle ? "en" : "dis"]</b>able your eye's glow.</span>")
-
 /mob/living/proc/eat_trash()
 	set name = "Eat Trash"
 	set category = "Abilities"

@@ -137,5 +137,4 @@
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/tie_hair,
-		/mob/living/carbon/human/proc/lick_wounds,
-		/mob/living/proc/eye_glow_toggle)
+		/mob/living/carbon/human/proc/lick_wounds)

@@ -35,8 +35,7 @@
 		/mob/living/proc/flying_toggle,
 		/mob/living/proc/start_wings_hovering,
 		/mob/living/proc/glow_toggle,
-		/mob/living/proc/glow_color,
-		/mob/living/proc/eye_glow_toggle)
+		/mob/living/proc/glow_color)
 
 /datum/species/dremachir
 	name = SPECIES_DREMACHIR
@@ -74,5 +73,4 @@
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
-		/mob/living/carbon/human/proc/succubus_drain_lethal,
-		/mob/living/proc/eye_glow_toggle)
+		/mob/living/carbon/human/proc/succubus_drain_lethal)
