@@ -11,7 +11,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/auril)
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
+	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR
 
 	blood_color = "#856A16"
 	flesh_color = "#DED2AD"
@@ -51,7 +51,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dremachir)
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
+	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR
 
 	blood_color = "#27173D"
 	flesh_color = "#6A091B"

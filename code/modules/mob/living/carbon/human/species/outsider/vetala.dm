@@ -26,13 +26,14 @@
 	cold_level_3 = 0
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
+	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR
 
 	blood_color = "#DB3939"
 	flesh_color = "#a3a593"
 	base_color = "#C5C0B8"
 
 	min_age = 18
+	max_age = 200
 
 	//Nocturnal and photosensitive.
 	darksight = 7
@@ -96,13 +97,14 @@
 	cold_level_3 = 0
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
+	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR
 
 	blood_color = "#6A0808"
 	flesh_color = "#a3a593"
 	base_color = "#C5C0B8"
 
 	min_age = 18
+	max_age = 200
 
 	//Nocturnal and photosensitive.
 	darksight = 7

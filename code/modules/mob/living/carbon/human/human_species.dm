@@ -73,6 +73,21 @@
 /mob/living/carbon/human/alraune/Initialize(mapload)
 	return ..(mapload, "Alraune")
 
+/mob/living/carbon/human/apidaen/Initialize(mapload)
+	return ..(mapload, "Apidaen")
+
+/mob/living/carbon/human/vetala_ruddy/Initialize(mapload)
+	return ..(mapload, "Vetala (Ruddy)")
+
+/mob/living/carbon/human/vetala_pale/Initialize(mapload)
+	return ..(mapload, "Vetala (Pale)")
+
+/mob/living/carbon/human/auril/Initialize(mapload)
+	return ..(mapload, "Auril")
+
+/mob/living/carbon/human/dremachir/Initialize(mapload)
+	return ..(mapload, "Dremachir")
+
 /mob/living/carbon/human/shadekin/Initialize(mapload)
 	return ..(mapload, SPECIES_SHADEKIN)
 
