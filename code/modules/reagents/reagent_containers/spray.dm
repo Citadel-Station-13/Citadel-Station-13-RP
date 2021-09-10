@@ -202,6 +202,18 @@
 	. = ..()
 	reagents.add_reagent("plantbgone", 100)
 
+/obj/item/reagent_containers/spray/pestbgone
+	name = "Pest-B-Gone"
+	desc = "Rated for pests up to 1:3 scale!"
+	icon = 'icons/obj/hydroponics_machines.dmi'
+	icon_state = "pestbgone"
+	item_state = "pestbgone"
+	volume = 100
+
+/obj/item/reagent_containers/spray/pestbgone/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("pestbgone", 100)
+
 /obj/item/reagent_containers/spray/squirt
 	name = "HydroBlaster 4000"
 	desc = "A popular toy produced by Donk Co, the HydroBlaster 4000 is the latest in a long line of recreational pressurized water delivery systems."

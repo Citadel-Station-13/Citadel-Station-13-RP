@@ -656,6 +656,8 @@
 	tail = "tail" //Bee tail. I've desaturated it for the sprite sheet.
 	icobase_tail = 1
 
+	reagent_tag = IS_APIDAEN
+
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/nectar_select,
 		/mob/living/carbon/human/proc/nectar_pick,
