@@ -30,6 +30,7 @@
 #define IS_CHIMERA 12
 #define IS_SHADEKIN 13
 #define IS_ALRAUNE 14
+#define IS_APIDAEN 15
 
 #define CE_STABLE "stable" // Inaprovaline
 #define CE_ANTIBIOTIC "antibiotic" // Antibiotics

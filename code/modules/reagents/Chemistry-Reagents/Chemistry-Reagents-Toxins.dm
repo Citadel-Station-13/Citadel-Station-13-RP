@@ -404,7 +404,7 @@
 /datum/reagent/toxin/pestbgone/touch_obj(var/mob/living/simple_mob/animal/A, var/removed)
 	if(istype(A, /mob/living/simple_mob/animal/roach))
 		A.adjustToxLoss(10 * removed)
-	else if(istype(O, /mob/living/simple_mob/animal/giant_spider))
+	else if(istype(A, /mob/living/simple_mob/animal/giant_spider))
 		A.adjustToxLoss(5 * removed)
 
 /datum/reagent/toxin/pestbgone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
