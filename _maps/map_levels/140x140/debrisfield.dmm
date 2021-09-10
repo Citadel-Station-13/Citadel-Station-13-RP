@@ -73,8 +73,7 @@
 	pixel_x = 32
 	},
 /obj/structure/bed/chair/sofa/corner{
-	dir = 8;
-	icon_state = "sofacorner"
+	dir = 8
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/space/debrisfield/explored)
@@ -83,8 +82,7 @@
 	pixel_y = -32
 	},
 /obj/structure/bed/chair/sofa/right{
-	dir = 1;
-	icon_state = "sofaend_right"
+	dir = 1
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/space/debrisfield/explored)
@@ -15577,8 +15575,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -15719,8 +15717,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -15861,8 +15859,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -16003,8 +16001,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -16145,8 +16143,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -16287,8 +16285,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -16429,8 +16427,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -16571,8 +16569,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -16713,8 +16711,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -16855,8 +16853,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -16997,8 +16995,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -17139,8 +17137,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -17281,8 +17279,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -17423,8 +17421,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -17565,8 +17563,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -17707,8 +17705,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -17837,7 +17835,6 @@ W
 W
 W
 W
-c
 W
 W
 W
@@ -17849,8 +17846,9 @@ W
 W
 W
 W
-a
-a
+W
+W
+W
 a
 a
 a
@@ -17991,8 +17989,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -18133,8 +18131,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -18275,8 +18273,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -18417,8 +18415,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -18556,11 +18554,11 @@ W
 W
 W
 W
+c
 W
 W
 W
-a
-a
+W
 a
 a
 a
@@ -18701,8 +18699,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -18843,8 +18841,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -18985,8 +18983,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -19127,8 +19125,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -19269,8 +19267,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -19411,8 +19409,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
@@ -19553,8 +19551,8 @@ W
 W
 W
 W
-a
-a
+W
+W
 a
 a
 a
