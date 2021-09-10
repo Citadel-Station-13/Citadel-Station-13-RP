@@ -43,6 +43,7 @@
 			/obj/item/lightreplacer,
 			/obj/item/reagent_containers/spray/cleaner,
 			/obj/item/reagent_containers/glass/rag,
+			/obj/item/reagent_containers/spray/pestbgone,
 			/obj/item/grenade/chem_grenade/cleaner = 3,
 			/obj/structure/mopbucket
 			)
