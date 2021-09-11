@@ -11,11 +11,16 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/auril)
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR
+	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+
+	color_mult = 1
+	icobase = 'icons/mob/human_races/r_human_vr.dmi'
+	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	base_color = "#EECEB3"
 
 	blood_color = "#856A16"
-	flesh_color = "#DED2AD"
-	base_color = "#C5C0B8"
+	base_color = "#DED2AD"
 
 	min_age = 18
 
@@ -50,11 +55,16 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dremachir)
 
 	spawn_flags = SPECIES_CAN_JOIN
-	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR
+	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+
+	color_mult = 1
+	icobase = 'icons/mob/human_races/r_human_vr.dmi'
+	deform = 'icons/mob/human_races/r_def_human_vr.dmi'
+	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	base_color = "#EECEB3"
 
 	blood_color = "#27173D"
-	flesh_color = "#6A091B"
-	base_color = "#2C030A"
+	base_color = "#580412"
 
 	min_age = 18
 
