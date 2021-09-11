@@ -781,7 +781,7 @@
 /mob/living/carbon/human/proc/nectar_pick(mob/user)
 	set name = "Collect Waxcomb"
 	set desc = "Coax waxcomb from [src]."
-	set category = "Object"
+	set category = "Abilities"
 	set src in view(1)
 
 	//do_reagent_implant(usr)
