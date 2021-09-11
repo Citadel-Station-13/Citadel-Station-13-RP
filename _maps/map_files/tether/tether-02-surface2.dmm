@@ -20739,7 +20739,7 @@
 /area/maintenance/lower/south)
 "aMa" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 4
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/maintenance/lower/south)
