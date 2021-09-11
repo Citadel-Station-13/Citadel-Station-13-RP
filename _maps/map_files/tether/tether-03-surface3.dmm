@@ -9837,7 +9837,19 @@
 /obj/effect/floor_decal/corner/blue/diagonal{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
 /area/tether/surfacebase/surface_three_hall)
 "aqe" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
@@ -10879,6 +10891,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
+/obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "asc" = (
@@ -13529,6 +13542,9 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "axb" = (
@@ -14213,6 +14229,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "ayk" = (
@@ -14328,6 +14347,7 @@
 	req_access = null;
 	req_one_access = list(47)
 	},
+/obj/structure/plasticflaps,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "ayu" = (
@@ -25358,9 +25378,6 @@
 "aTy" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hop_office"
-	},
 /obj/structure/window/reinforced/polarized{
 	dir = 4;
 	id = "hop_office"
@@ -25368,14 +25385,14 @@
 /obj/structure/cable/green{
 	dir = 1
 	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "hop_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "aTz" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hop_office"
-	},
 /obj/structure/window/reinforced/polarized{
 	dir = 4;
 	id = "hop_office"
@@ -25383,6 +25400,9 @@
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	dir = 1
+	},
+/obj/structure/window/reinforced/polarized/full{
+	id = "hop_office"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
@@ -28780,7 +28800,14 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 8
 	},
-/obj/structure/window/basic,
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "hop_line";
+	name = "HoP Line Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "aZG" = (
@@ -28904,9 +28931,6 @@
 /area/hydroponics)
 "aZR" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/window/basic{
-	dir = 4
-	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "aZS" = (
@@ -29222,21 +29246,29 @@
 /obj/machinery/button/windowtint{
 	id = "hop_office";
 	layer = 3.3;
-	pixel_x = 3;
-	pixel_y = -29
+	pixel_x = 22;
+	pixel_y = -25
 	},
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for shutters.";
 	id = "hop_office_desk";
 	layer = 3.3;
 	name = "Desk Privacy Shutter";
-	pixel_x = 10;
+	pixel_x = 6;
 	pixel_y = -29
 	},
 /obj/structure/cable/green{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for shutters.";
+	id = "hop_line";
+	layer = 3.3;
+	name = "Line Shutters";
+	pixel_x = -6;
+	pixel_y = -29
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
@@ -29706,8 +29738,13 @@
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
 	},
-/obj/structure/window/basic{
-	dir = 1
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "hop_line";
+	name = "HoP Line Shutters";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
@@ -37869,10 +37906,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/closet/crate/secure/large/reinforced{
-	name = "Exosuit Equipment Storage";
-	req_one_access = list(29,47)
-	},
+/obj/structure/closet/secure_closet/guncabinet/robotics,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "ikh" = (
@@ -42545,6 +42579,22 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/topairlock)
+"uHZ" = (
+/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/floor_decal/corner/blue/diagonal{
+	dir = 4
+	},
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/surface_three_hall)
 "uIY" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -43330,6 +43380,23 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
+"wRl" = (
+/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/floor_decal/corner/blue/diagonal{
+	dir = 4
+	},
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/window/basic,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/tether/surfacebase/surface_three_hall)
 "wRO" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
@@ -57641,10 +57708,10 @@ aAn
 ayx
 aZF
 aqd
-aqd
-aqd
-aqd
-aqd
+uHZ
+uHZ
+uHZ
+wRl
 bbj
 ayx
 alo
