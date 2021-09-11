@@ -1534,6 +1534,11 @@
 "dd" = (
 /obj/structure/table/standard,
 /obj/machinery/reagentgrinder,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "de" = (
@@ -5742,6 +5747,12 @@
 	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
+"WZ" = (
+/obj/effect/landmark/start{
+	name = "Talon Captain"
+	},
+/turf/simulated/floor/tiled/eris/white/golden,
+/area/talon/deckone/bridge)
 "Xa" = (
 /obj/item/modular_computer/console/preset/talon{
 	dir = 4
@@ -15870,7 +15881,7 @@ aa
 aa
 ai
 IM
-LH
+WZ
 LH
 nT
 on
