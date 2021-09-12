@@ -919,6 +919,8 @@
 			var/total_phoronloss = 0
 			GET_VSC_PROP(atmos_vsc, /atmos/phoron/contamination_loss, loss_per_part)
 			for(var/obj/item/I in src)
+				if(flags & CONTAMINATION_IMMUNE)
+					break
 				if(I.contaminated)
 					if(check_belly(I)) continue //VOREStation Edit
 					if(src.species && src.species.get_bodytype() != "Vox" && src.species.get_bodytype() != "Shadekin" && src.species.get_bodytype() != "Black-Eyed Shadekin")	//VOREStation Edit: shadekin; CitadelRP: Black-Eyed Shadekin don't get afflicted from contaminated clothing
