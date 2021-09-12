@@ -969,7 +969,7 @@
 	num_alternate_languages = 3
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	blood_color = "#12ff12"
 	flesh_color = "#201730"
@@ -1000,8 +1000,9 @@
 	warning_high_pressure = 325//Both baseline
 	hazard_high_pressure = 550
 
-	breath_type = null	//they don't breathe
-	poison_type = null
+	//Doesnt work, defaults are set at checks
+	//breath_type = null	//they don't breathe
+	//poison_type = null
 
 	cold_level_1 = 90	//Space if fucking cold, so we need low temperature tolerance
 	cold_level_2 = -1
@@ -1010,6 +1011,19 @@
 	heat_level_1 = 350	//dont like the heat
 	heat_level_2 = 400
 	heat_level_3 = 700
+
+	//Organ-List to remove need to breath(?)
+	has_organ = list(
+		O_HEART =		/obj/item/organ/internal/heart,
+		O_VOICE = 		/obj/item/organ/internal/voicebox,
+		O_LIVER =		/obj/item/organ/internal/liver,
+		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
+		O_BRAIN =		/obj/item/organ/internal/brain,
+		//O_EYES =		/obj/item/organ/internal/eyes,
+		O_STOMACH =		/obj/item/organ/internal/stomach,
+		O_INTESTINE =	/obj/item/organ/internal/intestine
+		)
+	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
 /datum/species/xenohybrid/can_breathe_water()
 	return TRUE	//they dont quite breathe
