@@ -409,7 +409,7 @@
 
 //Verbs Follow
 
-/mob/living/carbon/human/proc/resp_biomorph(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
+/mob/living/carbon/human/proc/resp_biomorph(mob/user)
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
 	set category = "Abilities"
@@ -420,12 +420,12 @@
 		"nitrogen" = /datum/gas/nitrogen,
 		"carbon dioxide" = /datum/gas/carbon_dioxide
 	)
-	var/choice = input(H, "How should we adapt our respiration?") as null|anything in gas_choices
+	var/choice = input(user, "How should we adapt our respiration?") as null|anything in gas_choices
 	if(!choice)
 		return
 	var/resp_biomorph = gas_choices[choice]
-	to_chat(H,"You begin modifying your internal structure!")
-	if(do_after(H,15 SECONDS))
+	to_chat(user,"You begin modifying your internal structure!")
+	if(do_after(user,15 SECONDS))
 		switch(resp_biomorph)
 			if(/datum/gas/oxygen)
 				species.breath_type = /datum/gas/oxygen
@@ -442,16 +442,16 @@
 				species.breath_type = /datum/gas/carbon_dioxide
 				species.exhale_type = /datum/gas/oxygen
 
-/mob/living/carbon/human/proc/biothermic_adapt(var/mob/living/carbon/human/H, var/mob/living/carbon/human/C)
+/mob/living/carbon/human/proc/biothermic_adapt(mob/user)
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
 	set category = "Abilities"
 
-	var/biothermic_adapt = input(H, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
+	var/biothermic_adapt = input(user, "How should we modify our core temperature?") as null|anything in list("warm-blooded", "cold-blooded", "hot-blooded")
 	if(!biothermic_adapt)
 		return
-	to_chat(H,"You begin modifying your internal structure!")
-	if(do_after(H,15 SECONDS))
+	to_chat(user,"You begin modifying your internal structure!")
+	if(do_after(user,15 SECONDS))
 		switch(biothermic_adapt)
 			if("warm-blooded")
 				species.cold_discomfort_level = 285
@@ -461,16 +461,16 @@
 			if("hot-blooded")
 				species.heat_discomfort_level = T0C+19
 
-/mob/living/carbon/human/proc/atmos_biomorph(var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/atmos_biomorph(mob/user)
 	set name = "Atmospheric Biomorph"
 	set desc = "Changes our sensitivity to atmospheric pressure."
 	set category = "Abilities"
 
-	var/atmos_biomorph = input(H, "How should we adapt our rigidity?") as null|anything in list("flexible", "compact", "elastic")
+	var/atmos_biomorph = input(user, "How should we adapt our rigidity?") as null|anything in list("flexible", "compact", "elastic")
 	if(!atmos_biomorph)
 		return
-	to_chat(H,"You begin modifying your internal structure!")
-	if(do_after(H,15 SECONDS))
+	to_chat(user,"You begin modifying your internal structure!")
+	if(do_after(user,15 SECONDS))
 		switch(atmos_biomorph)
 			if("flexible")
 				species.warning_low_pressure = WARNING_LOW_PRESSURE
@@ -484,16 +484,16 @@
 				species.warning_high_pressure = WARNING_HIGH_PRESSURE + 50
 				species.hazard_high_pressure = HAZARD_HIGH_PRESSURE + 100
 
-/mob/living/carbon/human/proc/vocal_biomorph(var/mob/living/carbon/human/H)
+/mob/living/carbon/human/proc/vocal_biomorph(mob/user)
 	set name = "Vocalization Biomorph"
 	set desc = "Changes our speech pattern."
 	set category = "Abilities"
 
-	var/vocal_biomorph = input(H, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
+	var/vocal_biomorph = input(user, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
 	if(!vocal_biomorph)
 		return
-	to_chat(H, "You begin modifying your internal structure!")
-	if(do_after(H,15 SECONDS))
+	to_chat(user, "You begin modifying your internal structure!")
+	if(do_after(user,15 SECONDS))
 		switch(vocal_biomorph)
 			if("common")
 				return

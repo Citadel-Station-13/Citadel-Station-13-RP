@@ -8804,7 +8804,7 @@
 /area/tether/surfacebase/medical/breakroom)
 "anO" = (
 /obj/effect/floor_decal/rust,
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "anP" = (
@@ -11177,7 +11177,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 1
 	},
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/asmaint2)
 "arR" = (
@@ -12022,7 +12022,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 4
 	},
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
 "ats" = (
@@ -13767,7 +13767,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/lower/bar)
 "awq" = (
@@ -16861,7 +16861,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/south)
 "aDa" = (
@@ -19114,10 +19114,10 @@
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 4
 	},
-/obj/random/trash_pile,
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/south)
 "aIr" = (
@@ -20739,7 +20739,7 @@
 /area/maintenance/lower/south)
 "aMa" = (
 /obj/structure/window/reinforced/tinted{
-	dir = 4
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/maintenance/lower/south)
@@ -28472,7 +28472,7 @@
 	dir = 5
 	},
 /obj/structure/railing,
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/atmos)
 "bcy" = (
@@ -29076,7 +29076,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "bdW" = (
@@ -33362,7 +33362,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/north)
 "bpR" = (
@@ -33430,6 +33430,10 @@
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert/indoors,
 /area/tether/surfacebase/fish_farm)
+"bGc" = (
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/rnd)
 "bNt" = (
 /obj/structure/sign/mining/survival,
 /obj/effect/floor_decal/rust,
@@ -33839,7 +33843,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "jmQ" = (
-/obj/random/trash_pile,
+/obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/lower/south)
 "jCz" = (
@@ -44771,7 +44775,7 @@ apb
 ape
 aEc
 aFl
-aGz
+bGc
 aGy
 aGy
 aGy
