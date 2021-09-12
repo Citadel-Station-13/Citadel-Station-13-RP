@@ -59,5 +59,6 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define MAX_MULTI_AMOUNT 20 // Max number of pills/patches that can be made at once
 #define MAX_UNITS_PER_PILL 60 // Max amount of units in a pill
 #define MAX_UNITS_PER_PATCH 60 // Max amount of units in a patch
+#define MAX_UNITS_PER_LOLLI 20 // Max amount of units in a lollipop.
 #define MAX_UNITS_PER_BOTTLE 60 // Max amount of units in a bottle (it's volume)
 #define MAX_CUSTOM_NAME_LEN 64 // Max length of a custom pill/condiment/whatever

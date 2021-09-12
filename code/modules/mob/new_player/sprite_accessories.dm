@@ -2912,6 +2912,18 @@
 		color_blend_mode = ICON_ADD
 
 
+	jackal_backpattern
+		name = "Jackal Backpattern"
+		icon_state = "jackal_backpattern"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_ARM,BP_R_ARM,BP_TORSO)
+
+	jackal_bareback
+		name = "Jackal Bareback"
+		icon_state = "jackal_bareback"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_ARM,BP_R_ARM,BP_GROIN,BP_TORSO)
+
 //skin styles - WIP
 //going to have to re-integrate this with surgery
 //let the icon_state hold an icon preview for now

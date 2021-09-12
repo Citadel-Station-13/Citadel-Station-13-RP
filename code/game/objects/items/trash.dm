@@ -103,6 +103,11 @@
 	name = "Garm n' Bozia's Cream Corn"
 	icon_state = "creamcorn"
 
+/obj/item/trash/lollipop_stick
+	name = "used lollipop stick"
+	icon = 'icons/obj/food.dmi'
+	icon_state = "lollipop_stick"
+
 /obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
 	return
 

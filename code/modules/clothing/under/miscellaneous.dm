@@ -814,6 +814,11 @@
 	desc = "A revealing stripper's costume patterned after the Captain's uniform."
 	icon_state = "lewdcap"
 
+/obj/item/clothing/under/swimsuit/highclass
+	name = "high class swimsuit"
+	desc = "An elegant swimsuit with a white bikini top and black bikini bottom. Thin black silk drapes down the back and goes to the upper thighs, and authentic gold rings hold the top together at the bust and back."
+	icon_state = "swim_highclass"
+
 /*
  * pyjamas
  */
