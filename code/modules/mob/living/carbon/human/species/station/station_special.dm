@@ -716,7 +716,7 @@
 	desc = "A squishy enzymatic processor that turns airborne pollen into nectar."
 	organ_tag = H_STOMACH
 	var/generated_reagents = list("honey" = 5)
-	var/usable_volume = 100
+	var/usable_volume = 50
 	var/transfer_amount = 50
 	var/empty_message = list("You have no nectar inside.", "You have a distinct lack of nectar.")
 	var/full_message = list("Your honey stomach is full!", "You have waxcomb that is ready to be regurgitated!")
@@ -778,11 +778,12 @@
 		to_chat(src, "<span class='notice'>You lack the organ required to produce nectar.</span>")
 		return
 
-/mob/living/carbon/human/proc/nectar_pick(mob/user)
+/mob/living/carbon/human/proc/nectar_pick()
 	set name = "Collect Waxcomb"
 	set desc = "Coax waxcomb from [src]."
 	set category = "Abilities"
 	set src in view(1)
+	var/mob/user = usr
 
 	//do_reagent_implant(usr)
 	if(!isliving(usr) || !usr.canClick())
