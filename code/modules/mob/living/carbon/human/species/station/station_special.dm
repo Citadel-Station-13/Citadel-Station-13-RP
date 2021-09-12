@@ -727,7 +727,7 @@
 	var/self_emote_descriptor = list("scoop", "coax", "heave")
 	var/nectar_type = "nectar (honey)"
 	var/mob/organ_owner = null
-	var/gen_cost = 50
+	var/gen_cost = 5
 
 /obj/item/organ/internal/honey_stomach/Initialize(mapload)
 	. = ..()
