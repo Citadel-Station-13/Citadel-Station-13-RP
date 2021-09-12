@@ -792,9 +792,9 @@
 		return
 
 	var/obj/item/organ/internal/honey_stomach/honey_stomach
-	for(var/I in contents)
-		if(istype(I, /obj/item/organ/internal/honey_stomach))
-			honey_stomach = I
+	for(var/H in contents)
+		if(istype(H, /obj/item/organ/internal/honey_stomach))
+			honey_stomach = H
 			break
 	if (honey_stomach) //Do they have the stomach?
 		if(honey_stomach.reagents.total_volume < honey_stomach.transfer_amount)
@@ -809,15 +809,10 @@
 		var/index = rand(0,2)
 
 		if (usr != src)
-			var/emote = honey_stomach.emote_descriptor[index]
-			var/verb_desc = honey_stomach.verb_descriptor[index]
-			var/self_verb_desc = honey_stomach.self_verb_descriptor[index]
-			usr.visible_message("<span class='notice'>[usr] [verb_desc] [emote]</span>",
-							"<span class='notice'>You [self_verb_desc] [emote]</span>")
+			return
 		else
 			visible_message("<span class='notice'>[src] [pick(honey_stomach.short_emote_descriptor)] nectar.</span>",
 								"<span class='notice'>You [pick(honey_stomach.self_emote_descriptor)] up a bundle of waxcomb.</span>")
-
-		honey_stomach.reagents.remove_any(honey_stomach.transfer_amount)
+			honey_stomach.reagents.remove_any(honey_stomach.transfer_amount)
 
 //End of repurposed honey stomach code.
