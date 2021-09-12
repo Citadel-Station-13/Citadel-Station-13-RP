@@ -105,6 +105,23 @@
 	listening_objects |= src
 
 /obj/item/melee/skateboard
+	name = "skaetbord"
+	desc = "You shouldn't be seeing this. Contact an Admin."
+	icon_state = "skateboard"
+	icon = 'icons/obj/weapons.dmi'
+	slot_flags = SLOT_BELT
+	force = 10
+	throwforce = 7
+	var/board_item_type = null
+
+/obj/item/melee/skateboard/dropped(mob/user as mob)
+	..()
+	var/turf/T = get_turf(src)
+	new /obj/vehicle/skateboard(T)
+	user.drop_item(src)
+	qdel(src)
+
+/obj/item/melee/skateboard/improv
 	name = "improvised skateboard"
 	desc = "A skateboard. It can be placed on its wheels and ridden, or used as a radical weapon."
 	icon_state = "skateboard"
@@ -112,12 +129,12 @@
 	slot_flags = SLOT_BELT
 	force = 10
 	throwforce = 7
-	var/board_item_type = /obj/vehicle/skateboard
+	var/board_item_type = /obj/vehicle/skateboard/improv
 
-/obj/item/melee/skateboard/dropped(mob/user as mob)
+/obj/item/melee/skateboard/improv/dropped(mob/user as mob)
 	..()
 	var/turf/T = get_turf(src)
-	new /obj/vehicle/skateboard(T)
+	new /obj/vehicle/skateboard/improv(T)
 	user.drop_item(src)
 	qdel(src)
 
@@ -157,5 +174,19 @@
 	..()
 	var/turf/T = get_turf(src)
 	new /obj/vehicle/skateboard/hoverboard/admin(T)
+	user.drop_item(src)
+	qdel(src)
+
+/obj/item/melee/skateboard/scooter
+	name = "scooter"
+	desc = "A fun way to get around."
+	icon = 'icons/obj/vehicles.dmi'
+	icon_state = "scooter_frame"
+	board_item_type = /obj/vehicle/skateboard/scooter
+
+/obj/item/melee/skateboard/scooter/dropped(mob/user as mob)
+	..()
+	var/turf/T = get_turf(src)
+	new /obj/vehicle/skateboard/scooter(T)
 	user.drop_item(src)
 	qdel(src)
