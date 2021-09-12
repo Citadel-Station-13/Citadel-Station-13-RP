@@ -109,6 +109,7 @@
 	desc = "You shouldn't be seeing this. Contact an Admin."
 	icon_state = "skateboard"
 	icon = 'icons/obj/weapons.dmi'
+	w_class = ITEMSIZE_HUGE
 	slot_flags = SLOT_BELT
 	force = 10
 	throwforce = 7
@@ -116,8 +117,9 @@
 
 /obj/item/melee/skateboard/dropped(mob/user as mob)
 	..()
+	..()
 	var/turf/T = get_turf(src)
-	new /obj/vehicle/skateboard(T)
+	new board_item_type(T)
 	user.drop_item(src)
 	qdel(src)
 
@@ -131,25 +133,11 @@
 	throwforce = 7
 	board_item_type = /obj/vehicle/skateboard/improv
 
-/obj/item/melee/skateboard/improv/dropped(mob/user as mob)
-	..()
-	var/turf/T = get_turf(src)
-	new /obj/vehicle/skateboard/improv(T)
-	user.drop_item(src)
-	qdel(src)
-
 /obj/item/melee/skateboard/pro
 	name = "skateboard"
 	desc = "A RaDSTORMz brand professional skateboard. Looks a lot more stable than the average board."
 	icon_state = "skateboard2"
 	board_item_type = /obj/vehicle/skateboard/pro
-
-/obj/item/melee/skateboard/pro/dropped(mob/user as mob)
-	..()
-	var/turf/T = get_turf(src)
-	new /obj/vehicle/skateboard/pro(T)
-	user.drop_item(src)
-	qdel(src)
 
 /obj/item/melee/skateboard/hoverboard
 	name = "hoverboard"
@@ -157,25 +145,11 @@
 	icon_state = "hoverboard_red"
 	board_item_type = /obj/vehicle/skateboard/hoverboard
 
-/obj/item/melee/skateboard/hoverboard/dropped(mob/user as mob)
-	..()
-	var/turf/T = get_turf(src)
-	new /obj/vehicle/skateboard/hoverboard(T)
-	user.drop_item(src)
-	qdel(src)
-
 /obj/item/melee/skateboard/hoverboard/admin
 	name = "Board of Directors"
 	desc = "The engineering complexity of a spaceship concentrated inside of a board. Just as expensive, too."
 	icon_state = "hoverboard_nt"
 	board_item_type = /obj/vehicle/skateboard/hoverboard/admin
-
-/obj/item/melee/skateboard/hoverboard/admin/dropped(mob/user as mob)
-	..()
-	var/turf/T = get_turf(src)
-	new /obj/vehicle/skateboard/hoverboard/admin(T)
-	user.drop_item(src)
-	qdel(src)
 
 /obj/item/melee/skateboard/scooter
 	name = "scooter"
@@ -183,10 +157,3 @@
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "scooter_frame"
 	board_item_type = /obj/vehicle/skateboard/scooter
-
-/obj/item/melee/skateboard/scooter/dropped(mob/user as mob)
-	..()
-	var/turf/T = get_turf(src)
-	new /obj/vehicle/skateboard/scooter(T)
-	user.drop_item(src)
-	qdel(src)

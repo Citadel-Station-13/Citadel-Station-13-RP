@@ -202,7 +202,7 @@
 /obj/vehicle/skateboard/improv
 	name = "improvised skateboard"
 	desc = "A crude assembly which can only barely be called a skateboard. It's still rideable, but probably unsafe. Looks like you'll need to add a few rods to make handlebars."
-	board_item_type = /obj/item/melee/skateboard/hoverboard
+	board_item_type = /obj/item/melee/skateboard/improv
 	icon_state = "skateboard"
 	board_icon = "skateboard"
 
