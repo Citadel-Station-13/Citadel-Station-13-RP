@@ -806,8 +806,6 @@
 		new nectar_item_type(get_turf(user))
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
-		var/index = rand(0,2)
-
 		if (usr != src)
 			return
 		else
