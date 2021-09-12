@@ -129,7 +129,7 @@
 	slot_flags = SLOT_BELT
 	force = 10
 	throwforce = 7
-	var/board_item_type = /obj/vehicle/skateboard/improv
+	board_item_type = /obj/vehicle/skateboard/improv
 
 /obj/item/melee/skateboard/improv/dropped(mob/user as mob)
 	..()
