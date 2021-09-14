@@ -290,7 +290,7 @@
 	toggle_preference(pref_path)
 	SScharacter_setup.queue_preferences_save(prefs)
 
-	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/instrument_toggle)) ? "hear" : "not hear"] instruments being played.")
+	to_chat(src, "You will [(is_preference_enabled(/datum/client_preference/instrument_toggle)) ? "now hear" : "no longer hear"] instruments being played.")
 
 	feedback_add_details("admin_verb","THInstm") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

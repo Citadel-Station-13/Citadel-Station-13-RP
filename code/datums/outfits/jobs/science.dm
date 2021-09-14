@@ -1,7 +1,6 @@
 /decl/hierarchy/outfit/job/science
 	hierarchy_type = /decl/hierarchy/outfit/job/science
 	l_ear = /obj/item/radio/headset/headset_sci
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/white
 	pda_type = /obj/item/pda/science
 	backpack = /obj/item/storage/backpack/toxins
@@ -16,6 +15,7 @@
 	l_hand = /obj/item/clipboard
 	id_type = /obj/item/card/id/science/head
 	pda_type = /obj/item/pda/heads/rd
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/rd
 
 /decl/hierarchy/outfit/job/science/scientist
 	name = OUTFIT_JOB_NAME("Scientist")

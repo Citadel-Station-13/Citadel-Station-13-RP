@@ -135,7 +135,7 @@ SUBSYSTEM_DEF(gamemaster)
 	for(var/datum/gm_action/action in available_actions)
 		if(!action.enabled)
 			continue
-		if(ROLE_EVERYONE in action.departments)
+		if(DEPARTMENT_EVERYONE in action.departments)
 			best_actions.Add(action)
 			log_debug("[action.name] is being considered because it involves everyone.")
 

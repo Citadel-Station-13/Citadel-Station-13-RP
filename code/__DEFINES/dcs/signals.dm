@@ -100,6 +100,11 @@
 /////////////////
 */
 
+/// Called from orbit component: (atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
+#define COMSIG_ATOM_ORBIT_BEGIN "atom_orbit_begin"
+/// Called from orbit component: (atom/movable/orbiter, refreshing)
+#define COMSIG_ATOM_ORBIT_END "atom_orbit_end"
+
 #define COMSIG_ENTER_AREA "enter_area" 						//from base of area/Entered(): (/area)
 #define COMSIG_EXIT_AREA "exit_area" 							//from base of area/Exited(): (/area)
 

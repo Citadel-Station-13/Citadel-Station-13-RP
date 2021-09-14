@@ -74,6 +74,11 @@
 	icon_state = "maebari"
 	has_color = TRUE
 
+/datum/category_item/underwear/bottom/maebari_bandaid
+	name = "Maebari (Band-Aid)"
+	icon_state = "maebari_bandaid"
+	has_color = TRUE
+
 /datum/category_item/underwear/bottom/chastbelt
 	name = "Chastity Belt"
 	icon_state = "chastbelt"

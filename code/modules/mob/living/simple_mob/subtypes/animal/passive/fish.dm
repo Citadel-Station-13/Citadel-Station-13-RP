@@ -28,7 +28,7 @@
 		/turf/simulated/floor/outdoors/beach/coastline,
 		/turf/simulated/floor/holofloor/beach/water,
 		/turf/simulated/floor/holofloor/beach/coastline,
-		/turf/simulated/floor/outdoors/water
+		/turf/simulated/floor/water
 	)
 
 // Makes the AI unable to willingly go on land.

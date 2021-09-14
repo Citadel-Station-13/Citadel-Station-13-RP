@@ -601,7 +601,6 @@
 
 	var/range = hearing_distance || world.view
 	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
-
 	var/list/hearing_mobs = hear["mobs"]
 	var/list/hearing_objs = hear["objs"]
 

@@ -45,7 +45,7 @@
 	var/turf/T = get_turf(src)
 	..() //Move it move it, so we can test it test it.
 	if(T != get_turf(src) && !istype(destination, T.type))	//Did we move at all, and are we changing turf types?
-		if(istype(destination, /turf/simulated/floor/outdoors/water))
+		if(istype(destination, /turf/simulated/floor/water))
 			speed_mod = outdoors_speed_mod * 4 //It kind of floats due to its tires, but it is slow.
 		else if(istype(destination, /turf/simulated/floor/outdoors/rocks))
 			speed_mod = initial(speed_mod) //Rocks are good, rocks are solid.

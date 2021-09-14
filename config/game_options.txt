@@ -7,5 +7,7 @@
 ENGINE_SUBMAP EngineSubmap_SM 40
 ## R-UST Fusion
 ENGINE_SUBMAP EngineSubmap_RUST 40
-## Fission ""engine""
-ENGINE_SUBMAP EngineSubmap_Fission 20
+## Tesla
+ENGINE_SUBMAP EngineSubmap_Tesla 20
+## Singulo
+ENGINE_SUBMAP EngineSubmap_Singulo 20

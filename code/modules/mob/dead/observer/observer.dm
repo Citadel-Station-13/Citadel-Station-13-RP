@@ -351,7 +351,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	orbitsize -= (orbitsize/world.icon_size)*(world.icon_size*0.25)
 
 	orbit(target, orbitsize)
-	pixel_x = (orbitsize) //Bandaid until someone fixes the orbit datum. Or I do.
 
 /mob/observer/dead/orbit()
 	setDir(2) //reset dir so the right directional sprites show up

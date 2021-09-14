@@ -15,7 +15,7 @@
 	var/frequency = 1379
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/mech_sensor/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/machinery/mech_sensor/CanPass(atom/movable/mover, turf/target)
 	. = ..()
 	if(!enabled())
 		return TRUE
@@ -45,11 +45,11 @@
 	if(istype(O, /obj/mecha))
 		var/obj/mecha/R = O
 		if(R && R.occupant)
-			to_chat(R.occupant, block_message)
+			to_chat(R.occupant,block_message)
 	else if(istype(O, /obj/vehicle/train/engine))
 		var/obj/vehicle/train/engine/E = O
 		if(E && E.load && E.is_train_head())
-			to_chat(E.load, block_message)
+			to_chat(E.load,block_message)
 
 	feedback_timer = 1
 	spawn(50) //Without this timer the feedback becomes horribly spamy
@@ -70,7 +70,7 @@
 	else
 		icon_state = "airlock_sensor_off"
 
-/obj/machinery/mech_sensor/Initialize(mapload)
+/obj/machinery/mech_sensor/Initialize()
 	. = ..()
 	set_frequency(frequency)
 

@@ -29,6 +29,7 @@ var/list/grass_types = list(
 /turf/simulated/floor/outdoors/grass/sif
 	name = "growth"
 	icon_state = "grass_sif"
+	initial_flooring = /decl/flooring/outdoors/grass/sif
 	edge_blending_priority = 4
 	grass_chance = 5
 	var/tree_chance = 2

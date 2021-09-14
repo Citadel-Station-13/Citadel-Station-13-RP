@@ -18,7 +18,7 @@
 	projectile_type = /obj/item/projectile/bullet/rifle/a145
 	accuracy = -45
 	scoped_accuracy = 95
-//	one_handed_penalty = 90
+	one_handed_penalty = 90
 	var/bolt_open = 0
 
 /obj/item/gun/projectile/heavysniper/update_icon()
@@ -83,7 +83,7 @@
 	accuracy = -45 //shooting at the hip
 	scoped_accuracy = 95
 //	requires_two_hands = 1
-//	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
+	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 	fire_sound = 'sound/weapons/Gunshot_SVD.ogg' // Has a very unique sound.
 	magazine_type = /obj/item/ammo_magazine/m762svd
 	allowed_magazines = list(/obj/item/ammo_magazine/m762svd)

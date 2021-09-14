@@ -13,18 +13,6 @@
 	var/path
 	S["nif_path"]		>> path
 	S["nif_id"]			>> pref.nif_id
-	if(ispath(path, /obj/item/device/nif))		//migration until we get proper savefile migrations ugh never ever use typepaths ever again...
-		// overwrite
-		var/obj/item/device/nif/N = path
-		pref.nif_id = initial(N.id)
-		S["nif_path"]	<< null		//erase
-		S["nif_id"]		<< pref.nif_id
-	else if(ispath(path, /obj/item/nif))		//migration until we get proper savefile migrations ugh never ever use typepaths ever again...
-		// overwrite
-		var/obj/item/nif/N = path
-		pref.nif_id = initial(N.id)
-		S["nif_path"]	<< null		//erase
-		S["nif_id"]		<< pref.nif_id
 	S["nif_durability"]	>> pref.nif_durability
 	S["nif_savedata"]	>> pref.nif_savedata
 
@@ -65,15 +53,3 @@
 */
 /datum/category_item/player_setup_item/vore/nif/content(var/mob/user)
 	. += "<b>NIF:</b> [pref.nif_id ? "Present" : "None"]"
-
-/obj/item/device/nif
-	var/id = NIF_ID_BASIC
-
-/obj/item/device/nif/authentic
-	id = NIF_ID_VEYMED
-
-/obj/item/device/nif/bioadap
-	id = NIF_ID_BIOADAPTIVE
-
-/obj/item/device/nif/bad
-	id = NIF_ID_BOOTLEG

@@ -44,7 +44,7 @@
 	crew_announcement.newscast = TRUE
 
 /datum/tgui_module/communications/ui_interact(mob/user, datum/tgui/ui)
-	if(using_map && !(get_z(user) in using_map.contact_levels))
+	if(GLOB.using_map && !(get_z(user) in GLOB.using_map.contact_levels))
 		to_chat(user, "<span class='danger'>Unable to establish a connection: You're too far away from the station!</span>")
 		return FALSE
 	. = ..()
@@ -95,7 +95,7 @@
 	data["authenticated"] = is_authenticated(user, 0)
 	data["authmax"] = data["authenticated"] == COMM_AUTHENTICATION_MAX ? TRUE : FALSE
 	data["atcsquelch"] = ATC.squelched
-	data["boss_short"] = using_map.boss_short
+	data["boss_short"] = GLOB.using_map.boss_short
 
 	data["stat_display"] =  list(
 		"type"   = display_type,
@@ -200,7 +200,7 @@
 /datum/tgui_module/communications/ui_act(action, params)
 	if(..())
 		return TRUE
-	if(using_map && !(get_z(usr) in using_map.contact_levels))
+	if(GLOB.using_map && !(get_z(usr) in GLOB.using_map.contact_levels))
 		to_chat(usr, "<span class='danger'>Unable to establish a connection: You're too far away from the station!</span>")
 		return FALSE
 
@@ -337,7 +337,7 @@
 				if(centcomm_message_cooldown > world.time)
 					to_chat(usr, "<span class='warning'>Arrays recycling. Please stand by.</span>")
 					return
-				var/input = sanitize(input("Please choose a message to transmit to [using_map.boss_short] via quantum entanglement. \
+				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement. \
 				Please be aware that this process is very expensive, and abuse will lead to... termination.  \
 				Transmission does not guarantee a response. \
 				There is a 30 second delay before you may send another message, be clear, full and concise.", "Central Command Quantum Messaging") as null|message)
@@ -348,7 +348,7 @@
 					return
 				CentCom_announce(input, usr)
 				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
-				log_game("[key_name(usr)] has made an IA [using_map.boss_short] announcement: [input]")
+				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = world.time + 300 // 30 seconds
 			setMenuState(usr, COMM_SCREEN_MAIN)
 
@@ -391,7 +391,7 @@
 		return
 
 	if(deathsquad.deployed)
-		to_chat(user, "[using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+		to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 		return
 
 	if(emergency_shuttle.deny_shuttle)
@@ -403,7 +403,7 @@
 		return
 
 	if(emergency_shuttle.going_to_centcom())
-		to_chat(user, "The emergency shuttle may not be called while returning to [using_map.boss_short].")
+		to_chat(user, "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short].")
 		return
 
 	if(emergency_shuttle.online())
@@ -426,7 +426,7 @@
 		return
 
 	if(emergency_shuttle.going_to_centcom())
-		to_chat(user, "The shuttle may not be called while returning to [using_map.boss_short].")
+		to_chat(user, "The shuttle may not be called while returning to [GLOB.using_map.boss_short].")
 		return
 
 	if(emergency_shuttle.online())
@@ -436,11 +436,11 @@
 	// if force is 0, some things may stop the shuttle call
 	if(!force)
 		if(emergency_shuttle.deny_shuttle)
-			to_chat(user, "[using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
+			to_chat(user, "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
 			return
 
 		if(deathsquad.deployed == 1)
-			to_chat(user, "[using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
+			to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
 			return
 
 		if(world.time < 54000) // 30 minute grace period to let the game get going

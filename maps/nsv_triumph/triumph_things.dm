@@ -135,7 +135,7 @@
 	// Otherwise just operate normally
 	return ..()
 
-/obj/machinery/cryopod/robot/door/tram/go_in(mob/living/M, mob/living/user)
+/obj/machinery/cryopod/robot/door/shuttle/go_in(mob/living/M, mob/living/user)
 	if(M != user)
 		return ..()
 	var/choice = alert(user, "Do you want to depart via the shuttle? Your character will leave the round.","Departure","No","Yes")

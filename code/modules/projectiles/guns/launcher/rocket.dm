@@ -10,6 +10,7 @@
 	slot_flags = 0
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 5)
 	fire_sound = 'sound/weapons/rpg.ogg'
+	one_handed_penalty = 30
 
 	release_force = 15
 	throw_distance = 30
@@ -18,7 +19,8 @@
 
 /obj/item/gun/launcher/rocket/examine(mob/user)
 	. = ..()
-	. += "<font color=#4F49AF>[rockets.len] / [max_rockets] rockets.</font>"
+	if(get_dist(user, src) <= 2)
+		. += "<font color='blue'>[rockets.len] / [max_rockets] rockets.</font>"
 
 /obj/item/gun/launcher/rocket/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/ammo_casing/rocket))
@@ -26,18 +28,16 @@
 			user.drop_item()
 			I.loc = src
 			rockets += I
-			to_chat(user, "<font color=#4F49AF>You put the rocket in [src].</font>")
-			to_chat(user, "<font color=#4F49AF>[rockets.len] / [max_rockets] rockets.</font>")
+			to_chat(user, "<font color='blue'>You put the rocket in [src].</font>")
+			to_chat(user, "<font color='blue'>[rockets.len] / [max_rockets] rockets.</font>")
 		else
 			to_chat(usr, "<font color='red'>[src] cannot hold more rockets.</font>")
 
 /obj/item/gun/launcher/rocket/consume_next_projectile()
 	if(rockets.len)
 		var/obj/item/ammo_casing/rocket/I = rockets[1]
-		var/obj/item/missile/M = new (src)
-		M.primed = 1
 		rockets -= I
-		return M
+		return
 	return null
 
 /obj/item/gun/launcher/rocket/handle_post_fire(mob/user, atom/target)

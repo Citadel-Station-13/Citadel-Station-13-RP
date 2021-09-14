@@ -54,6 +54,10 @@
 		name = "80's"
 		icon_state = "hair_80s"
 
+	eighties_alt
+		name = "80's (Alternative)"
+		icon_state = "hair_80s_alt"
+
 	afro
 		name = "Afro"
 		icon_state = "hair_afro"
@@ -179,14 +183,17 @@
 	bun
 		name = "Bun"
 		icon_state = "hair_bun"
+		flags = HAIR_TIEABLE
 
 	bun2
 		name = "Bun 2"
 		icon_state = "hair_bun2"
+		flags = HAIR_TIEABLE
 
 	bun3
 		name = "Bun 3"
 		icon_state = "hair_bun3"
+		flags = HAIR_TIEABLE
 
 	bun
 		name = "Bun Casual"
@@ -450,6 +457,7 @@
 	modern
 		name = "Modern"
 		icon_state = "hair_modern"
+		flags = HAIR_TIEABLE
 
 	mohawk
 		name = "Mohawk"
@@ -965,13 +973,6 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "hair_twincurl"
-
-	inkling
-		name = "colorable mature inkling hair"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_state = "inkling-colorable"
-		color_blend_mode = ICON_MULTIPLY
-		do_colouration = 1
 
 	myopia
 		name = "Myopia"
@@ -2011,6 +2012,22 @@
 		icon_state = "tat_tiger"
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN)
 
+	tanlines
+		name = "Tan Lines (One Piece)"
+		icon_state = "tan_op"
+		icon = "icons/mob/human_races/markings.dmi"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_bikini
+		name = "Tan Lines (Bikini)"
+		icon_state = "tan_bikini"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_b_strap
+		name = "Tan Lines (Bikini, Strapless)"
+		icon_state = "tan_bikini_strap"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
 	taj_paw_socks
 		name = "Socks Coloration (Taj)"
 		icon_state = "taj_pawsocks"
@@ -2894,6 +2911,18 @@
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
 		color_blend_mode = ICON_ADD
 
+
+	jackal_backpattern
+		name = "Jackal Backpattern"
+		icon_state = "jackal_backpattern"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_ARM,BP_R_ARM,BP_TORSO)
+
+	jackal_bareback
+		name = "Jackal Bareback"
+		icon_state = "jackal_bareback"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_ARM,BP_R_ARM,BP_GROIN,BP_TORSO)
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery

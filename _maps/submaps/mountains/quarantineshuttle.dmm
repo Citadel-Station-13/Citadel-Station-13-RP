@@ -6,7 +6,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/qShuttle)
 "ac" = (
-/obj/item/caution/cone,
+/obj/item/clothing/head/cone,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/qShuttle)
 "ad" = (
@@ -22,15 +22,14 @@
 /area/submap/cave/qShuttle)
 "ag" = (
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating,
 /area/submap/cave/qShuttle)
 "ah" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_l";
-	dir = 8
+	dir = 8;
+	icon_state = "propulsion_l"
 	},
 /turf/simulated/shuttle/plating,
 /area/submap/cave/qShuttle)

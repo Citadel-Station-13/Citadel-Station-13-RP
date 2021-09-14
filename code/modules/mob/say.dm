@@ -137,9 +137,9 @@
 
 /proc/say_test(var/text)
 	var/ending = copytext_char(text, length_char(text))
-	if (ending == "?")
+	if(ending == "?")
 		return "1"
-	else if (ending == "!")
+	else if(ending == "!")
 		return "2"
 	return "0"
 

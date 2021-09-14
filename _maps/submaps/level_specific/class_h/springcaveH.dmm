@@ -1,47 +1,47 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/unexplored)
+/area/tether_away/beach/desert/explored)
 "d" = (
 /turf/simulated/mineral/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "i" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/water/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/water/classh,
+/area/tether_away/beach/desert/explored)
 "o" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 1
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "v" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 4
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "B" = (
-/turf/simulated/floor/outdoors/water/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/water/classh,
+/area/tether_away/beach/desert/explored)
 "C" = (
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "S" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 9
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "V" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 9
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "Y" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 1
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 
 (1,1,1) = {"
 a

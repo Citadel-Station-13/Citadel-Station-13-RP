@@ -2,13 +2,13 @@
 	var/datum/computer/file/embedded_program/docking/simple/escape_pod_berth/arming_controller
 	category = /datum/shuttle/autodock/ferry/escape_pod
 
-/datum/shuttle/autodock/ferry/escape_pod/New(_name)
+/datum/shuttle/autodock/ferry/escape_pod/New()
+	move_time = move_time + rand(-30, 60)
+	if(name in SSemergencyshuttle.escape_pods)
+		CRASH("An escape pod with the name '[name]' has already been defined.")
+	SSemergencyshuttle.escape_pods[name] = src
+
 	..()
-	if(_name)
-		src.name = _name
-	if(src.name in SSshuttle.shuttles)
-		CRASH("A shuttle with the name '[name]' is already defined.")
-	SSshuttle.shuttles[src.name] = src
 
 	// Find the arming controller (berth) - If not configured directly, try to read it from current location landmark
 	var/arming_controller_tag = arming_controller
@@ -47,71 +47,55 @@
 	program = /datum/computer/file/embedded_program/docking/simple
 	var/datum/shuttle/autodock/ferry/escape_pod/pod
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
-	var/datum/computer/file/embedded_program/docking/simple/docking_program = program	// Cast to proper type
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_data(mob/user)
+	var/datum/computer/file/embedded_program/docking/simple/docking_program = program // Cast to proper type
 
-	data = list(
+	. = list(
 		"docking_status" = docking_program.get_docking_status(),
 		"override_enabled" = docking_program.override_enabled,
-		"door_state" = 	docking_program.memory["door_status"]["state"],
-		"door_lock" = 	docking_program.memory["door_status"]["lock"],
-		"can_force" = pod.can_force() || (SSemergencyshuttle.departed && pod.can_launch()),	// Allow players to manually launch ahead of time if the shuttle leaves
-		"is_armed" = pod.arming_controller.armed,
+		"exterior_status" =	docking_program.memory["door_status"],
+		"can_force" = pod.can_force() || (SSemergencyshuttle.departed && pod.can_launch()),	//allow players to manually launch ahead of time if the shuttle leaves
+		"armed" = pod.arming_controller.armed,
+		"internalTemplateName" = "EscapePodConsole",
 	)
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_act(action, params)
+	if(..())
+		return TRUE
 
-	if (!ui)
-		ui = new(user, src, ui_key, "escape_pod_console.tmpl", name, 470, 290)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
+	switch(action)
+		if("manual_arm")
+			pod.arming_controller.arm()
+			. = TRUE
+		if("force_launch")
+			if(pod.can_force())
+				pod.force_launch(src)
+			else if(SSemergencyshuttle.departed && pod.can_launch())	//allow players to manually launch ahead of time if the shuttle leaves
+				pod.launch(src)
+			. = TRUE
 
-/* THIS IS BROKEN
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/Topic(href, href_list)
-	if((. = ..()))
-		return
 
-	if("manual_arm")
-		pod.arming_controller.arm()
-		return TOPIC_REFRESH
-	if("force_launch")
-		if (pod.can_force())
-			pod.force_launch(src)
-		else if (SSemergencyshuttle.departed && pod.can_launch())	// Allow players to manually launch ahead of time if the shuttle leaves
-			pod.launch(src)
-		return TOPIC_REFRESH
-	return 0
-*/
-
-// This controller is for the escape pod berth (station side)
+//This controller is for the escape pod berth (station side)
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth
 	name = "escape pod berth controller"
 	program = /datum/computer/file/embedded_program/docking/simple/escape_pod_berth
+	valid_actions = list("toggle_override", "force_door")
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
-	var/datum/computer/file/embedded_program/docking/simple/docking_program = program	// Cast to proper type
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/ui_data(mob/user)
+	var/datum/computer/file/embedded_program/docking/simple/docking_program = program // Cast to proper type
 
 	var/armed = null
-	if (istype(docking_program, /datum/computer/file/embedded_program/docking/simple/escape_pod_berth))
+	if(istype(docking_program, /datum/computer/file/embedded_program/docking/simple/escape_pod_berth))
 		var/datum/computer/file/embedded_program/docking/simple/escape_pod_berth/P = docking_program
 		armed = P.armed
 
-	data = list(
+	. = list(
 		"docking_status" = docking_program.get_docking_status(),
 		"override_enabled" = docking_program.override_enabled,
+		"exterior_status" =	docking_program.memory["door_status"],
 		"armed" = armed,
+		"internalTemplateName" = "EscapePodBerthConsole",
 	)
-
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "escape_pod_berth_console.tmpl", name, 470, 290)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
 
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod_berth/emag_act(var/remaining_charges, var/mob/user)
 	if (!emagged)
