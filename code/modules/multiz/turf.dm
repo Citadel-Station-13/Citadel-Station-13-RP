@@ -13,6 +13,12 @@
 /turf/space/CanZPass(atom, direction)
 	return 1
 
+/turf/proc/multiz_turf_del(turf/T, dir)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
+
+/turf/proc/multiz_turf_new(turf/T, dir)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
+
 //
 // Open Space - "empty" turf that lets stuff fall thru it to the layer below
 //
