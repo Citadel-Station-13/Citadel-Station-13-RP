@@ -10,19 +10,29 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/open)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor)
 
 /turf/simulated/floor/lythios43c_indoors
-	LYTHIOS43C_SET_ATMOS
-	allow_gas_overlays = FALSE
+	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/reinforced)
+
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
+/turf/simulated/floor/tiled/steel_dirty/lythios43c
+	outdoors = TRUE
+
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
+/turf/simulated/floor/outdoors/dirt/lythios43c
+	icon = 'icons/turf/flooring/asteroid.dmi'
+	icon_state = "asteroid"
+
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
+
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
-LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
 /turf/simulated/floor/outdoors/snow
 	turf_layers = list(
 		/turf/simulated/floor/outdoors/ice/lythios43c
 		)
+
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
+
 
 /turf/simulated/mineral/icerock
 	initial_gas_mix = GAS_STRING_STP

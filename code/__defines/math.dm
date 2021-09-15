@@ -4,6 +4,8 @@
 
 #define NUM_E 2.71828183
 
+#define SQRT_2 1.414214
+
 #define M_PI						(3.14159265)
 #define INFINITY				(1.#INF)	//closer then enough
 
@@ -217,5 +219,3 @@
 #define NORM(x, y) (sqrt(SQUAREDNORM(x,y)))
 #define ISPOWEROFTWO(x) ((x & (x - 1)) == 0)
 #define ROUNDUPTOPOWEROFTWO(x) (2 ** -round(-log(2,x)))
-
-#define DEFAULT(a, b) (a? a : b)
