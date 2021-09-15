@@ -44,6 +44,7 @@
 
 	if(direction == UP && has_gravity() && !can_overcome_gravity())
 		var/obj/structure/lattice/lattice = locate() in destination.contents
+		var/obj/structure/ventcover/ventcover = locate() in destination.contents
 		if(lattice)
 			var/pull_up_time = max(5 SECONDS + (movement_delay() * 10), 1)
 			to_chat(src, "<span class='notice'>You grab \the [lattice] and start pulling yourself upward...</span>")
@@ -53,7 +54,20 @@
 			else
 				to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
 				return 0
-		else if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
+		if(ventcover && ventcover?.open)
+			var/pull_up_time = max(5 SECONDS + (src.movement_delay() * 10), 1)
+			to_chat(src, "<span class='notice'>You grab \the [ventcover] and start pulling yourself upward...</span>")
+			do_after(src, pull_up_time)
+			to_chat(src, "<span class='notice'>You pull yourself up.</span>")
+			destination.audible_message("<span class='notice'>You hear something climbing up \the vent.</span>")
+			return
+		if(ventcover && !ventcover?.open)
+			to_chat(src, "<span class='warning'>The vent is closed, you cannot climb up.</span>")
+			return 0
+		else
+			to_chat(src, "<span class='warning'>You gave up on pulling yourself up.</span>")
+			return 0
+		if(ismob(src)) //VOREStation Edit Start. Are they a mob, and are they currently flying??
 			var/mob/H = src
 			if(H.flying)
 				if(H.incapacitated(INCAPACITATION_ALL))
@@ -297,6 +311,21 @@
 
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
+	return falling_atom.fall_impact(src)
+
+/obj/structure/ventcover/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
+	if(target.z >= z)
+		return TRUE // We don't block sideways or upward movement.
+	else if(istype(mover) && mover.checkpass(PASSGRILLE))
+		return TRUE // Anything small enough to pass a grille will pass through a vent
+	if(!isturf(mover.loc))
+		return FALSE // Only let loose floor items fall. No more snatching things off people's hands.
+	else
+		return FALSE // TODO - Technically should be density = 1 and flags |= ON_BORDER
+
+/obj/structure/ventcover/CheckFall(var/atom/movable/falling_atom)
+	if(istype(falling_atom) && falling_atom.checkpass(PASSGRILLE))
+		return FALSE
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
