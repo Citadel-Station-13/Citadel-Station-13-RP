@@ -442,7 +442,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/dress/black_corset
-	name = "black corset"
+	name = "black corset and skirt"
 	desc = "A black corset and skirt for those fancy nights out."
 	icon_state = "black_corset"
 
@@ -814,6 +814,11 @@
 	desc = "A revealing stripper's costume patterned after the Captain's uniform."
 	icon_state = "lewdcap"
 
+/obj/item/clothing/under/swimsuit/highclass
+	name = "high class swimsuit"
+	desc = "An elegant swimsuit with a white bikini top and black bikini bottom. Thin black silk drapes down the back and goes to the upper thighs, and authentic gold rings hold the top together at the bust and back."
+	icon_state = "swim_highclass"
+
 /*
  * pyjamas
  */
@@ -1068,7 +1073,7 @@
 /obj/item/clothing/under/dutchuniform
 	name = "\improper Western suit"
 	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
-	icon_state = "dutchuniform"
+	icon_state = "DutchUniform"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/victorianblred
@@ -1343,6 +1348,44 @@
 	desc = "Popular amongst samurai, these items of clothing are not frequently in vogue. However, their easily recognizable silhouette keeps them from falling into total obscurity."
 	icon_state = "kamishimo"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+//Keek's Kimonos
+/obj/item/clothing/under/kimono/red
+	name = "red kimono"
+	desc = "The traditional dress of old Earth Japan, the kimono remains ubiquitous across the galaxy due to its comfort, simplicity, and versatility."
+	icon_state = "kimono_red"
+
+/obj/item/clothing/under/kimono/orange
+	name = "orange kimono"
+	icon_state = "kimono_orange"
+
+/obj/item/clothing/under/kimono/yellow
+	name = "yellow kimono"
+	icon_state = "kimono_yellow"
+
+/obj/item/clothing/under/kimono/green
+	name = "green kimono"
+	icon_state = "kimono_green"
+
+/obj/item/clothing/under/kimono/blue
+	name = "blue kimono"
+	icon_state = "kimono_blue"
+
+/obj/item/clothing/under/kimono/purple
+	name = "purple kimono"
+	icon_state = "kimono_purple"
+
+/obj/item/clothing/under/kimono/violet
+	name = "violet kimono"
+	icon_state = "kimono_violet"
+
+/obj/item/clothing/under/kimono/pink
+	name = "pink kimono"
+	icon_state = "kimono_pink"
+
+/obj/item/clothing/under/kimono/earth
+	name = "earth kimono"
+	icon_state = "kimono_earth"
 
 //Chinese Traditional
 /obj/item/clothing/under/qipao

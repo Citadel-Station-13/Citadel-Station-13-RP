@@ -135,7 +135,7 @@
 	// Otherwise just operate normally
 	return ..()
 
-/obj/machinery/cryopod/robot/door/tram/go_in(mob/living/M, mob/living/user)
+/obj/machinery/cryopod/robot/door/shuttle/go_in(mob/living/M, mob/living/user)
 	if(M != user)
 		return ..()
 	var/choice = alert(user, "Do you want to depart via the shuttle? Your character will leave the round.","Departure","No","Yes")
@@ -211,7 +211,7 @@ var/global/list/latejoin_shuttle   = list()
 	default_program = "Empty Court"
 
 	supported_programs = list(
-	"Basketball" 		= new/datum/holodeck_program(/area/houseboat/holodeck/basketball, list('sound/music/THUNDERDOME.ogg')),
+	"Basketball" 		= new/datum/holodeck_program(/area/houseboat/holodeck/basketball),
 	"Thunderdome"		= new/datum/holodeck_program(/area/houseboat/holodeck/thunderdome, list('sound/music/THUNDERDOME.ogg')),
 	"Beach" 			= new/datum/holodeck_program(/area/houseboat/holodeck/beach),
 	"Desert" 			= new/datum/holodeck_program(/area/houseboat/holodeck/desert,

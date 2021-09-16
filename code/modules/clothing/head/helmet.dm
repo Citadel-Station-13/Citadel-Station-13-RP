@@ -262,18 +262,18 @@
 		blessed = FALSE
 		flash_protection = FLASH_PROTECTION_NONE
 		src.icon_state = "[icon_state]_up"
-		to_chat(user, "<font color='blue'>The helmet's protective sigil fades as you raise the OM visor.</font>")
+		to_chat(user, "<font color=#4F49AF>The helmet's protective sigil fades as you raise the OM visor.</font>")
 	else
 		blessed = TRUE
 		flash_protection = FLASH_PROTECTION_MAJOR
 		src.icon_state = initial(icon_state)
-		to_chat(user, "<font color='blue'>The helmet's protective sigil glows as you lower the OM visor.</font>")
+		to_chat(user, "<font color=#4F49AF>The helmet's protective sigil glows as you lower the OM visor.</font>")
 	update_clothing_icon()	//so our mob-overlays update
 
 	if(!user.mind.isholy)
 		flash_protection = FLASH_PROTECTION_NONE
 		blessed = FALSE
-		to_chat(user, "<font color='blue'>The OM visor doesn't respond to you.</font>")
+		to_chat(user, "<font color=#4F49AF>The OM visor doesn't respond to you.</font>")
 
 /obj/item/clothing/head/helmet/para/inquisitor
 	name = "PMD Inquistor's Hat"
@@ -287,13 +287,25 @@
 	if(user.mind.isholy && blessed)
 		blessed = FALSE
 		flash_protection = FLASH_PROTECTION_NONE
-		to_chat(user, "<font color='blue'>The hat's protective sigils fade as you dispel them.</font>")
+		to_chat(user, "<font color=#4F49AF>The hat's protective sigils fade as you dispel them.</font>")
 	else
 		blessed = TRUE
 		flash_protection = FLASH_PROTECTION_MAJOR
-		to_chat(user, "<font color='blue'>The hat's protective sigil glows as you visualize the activation word.</font>")
+		to_chat(user, "<font color=#4F49AF>The hat's protective sigil glows as you visualize the activation word.</font>")
 
 	if(!user.mind.isholy)
 		flash_protection = FLASH_PROTECTION_NONE
 		blessed = FALSE
-		to_chat(user, "<font color='blue'>The hat does not respond to you.</font>")
+		to_chat(user, "<font color=#4F49AF>The hat does not respond to you.</font>")
+
+/obj/item/clothing/head/helmet/bike_helmet
+	name = "riding helmet"
+	desc = "Safety gear designed to protect the head from impacts. It's a bit dorky."
+	icon_state = "sport"
+	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+
+	color = "#ffffff"
+
+/obj/item/clothing/head/helmet/bike_helmet/random/Initialize(mapload)
+	. = ..()
+	color = rgb(rand(1,255),rand(1,255),rand(1,255))

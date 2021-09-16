@@ -158,7 +158,7 @@
 	var/msg_prey_stepunder		= "You run between %prey's legs." //Same, inverse
 	hide_body_parts	= list(BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT) //Exclude pelvis just in case.
 	clip_mask_icon = 'icons/mob/vore/taurs_vr.dmi'
-	clip_mask_state = "taur_clip_mask_def" //Used to clip off the lower part of suits & uniforms.
+	clip_mask_state = "taur_clip_mask_def" //Used to clip off the lower part of suits & uniforms
 
 /datum/sprite_accessory/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.
 	name = "Long Lizard Tail (Roiz Lizden)"
@@ -175,7 +175,7 @@
 	clip_mask_icon = null
 	clip_mask_state = null
 	apply_restrictions = TRUE
-	species_allowed = list(SPECIES_SHADEKIN)
+	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 
 /datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_2c
 	name = "Shadekin Tail dual-color (Shadekin)"
@@ -449,6 +449,8 @@
 	icon_state = "drake_s"
 	extra_overlay = "drake_markings"
 	suit_sprites = 'icons/mob/taursuits_drake_vr.dmi'
+	can_loaf = TRUE
+	loaf_offset = 6
 
 /datum/sprite_accessory/tail/taur/otie
 	name = "Otie (Taur)"
@@ -480,6 +482,26 @@
 
 	msg_owner_harm_walk = "You methodically place your leg down upon %prey's body, slowly applying pressure, crushing them against the floor!"
 	msg_prey_harm_walk = "%owner methodically places their leg upon your body, slowly applying pressure, crushing you against the floor!"
+
+	msg_owner_grab_success = "You pin %prey down on the ground with your front leg before using your other leg to pick them up, trapping them between two of your front legs!"
+	msg_prey_grab_success = "%owner pins you down on the ground with their front leg before using their other leg to pick you up, trapping you between two of their front legs!"
+
+	msg_owner_grab_fail = "You step down onto %prey, squishing them and forcing them down to the ground!"
+	msg_prey_grab_fail = "%owner steps down and squishes you with their leg, forcing you down to the ground!"
+
+/datum/sprite_accessory/tail/taur/mantis
+	name = "Mantis (Taur)"
+	icon_state = "mantis_s"
+	clip_mask_state = "taur_clip_mask_mantis"
+
+	msg_owner_disarm_run = "You quickly push %prey to the ground with your leg!"
+	msg_prey_disarm_run = "%owner pushes you down to the ground with their leg!"
+
+	msg_owner_disarm_walk = "You firmly push your leg down on %prey, painfully but harmlessly pinning them to the ground!"
+	msg_prey_disarm_walk = "%owner firmly pushes their leg down on you, quite painfully but harmlessly pinning you to the ground!"
+
+	msg_owner_harm_walk = "You methodically place your leg down upon %prey's body, slowly applying pressure, crushing them against the floor below!"
+	msg_prey_harm_walk = "%owner methodically places their leg upon your body, slowly applying pressure, crushing you against the floor below!"
 
 	msg_owner_grab_success = "You pin %prey down on the ground with your front leg before using your other leg to pick them up, trapping them between two of your front legs!"
 	msg_prey_grab_success = "%owner pins you down on the ground with their front leg before using their other leg to pick you up, trapping you between two of their front legs!"

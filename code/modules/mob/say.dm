@@ -63,7 +63,7 @@
 
 	message = emoji_parse(say_emphasis(message))
 
-	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"[message]\"</span>", src)
+	say_dead_direct("[pick("complains","moans","whines","laments","blubbers")], <span class='message'>\"<span class='linkify'>[message]</span>\"</span>", src)
 
 /mob/proc/say_understands(var/mob/other,var/datum/language/speaking = null)
 
@@ -126,11 +126,11 @@
 
 	return get_turf(src)
 
-/mob/proc/say_test(var/text)
+/proc/say_test(var/text)
 	var/ending = copytext_char(text, length_char(text))
-	if (ending == "?")
+	if(ending == "?")
 		return "1"
-	else if (ending == "!")
+	else if(ending == "!")
 		return "2"
 	return "0"
 
@@ -164,7 +164,7 @@
 			var/alert_result = alert(src, "You dont know the langauge you are about to speak, instead you will speak Babel. Do you want to?", "Unknown Language Alert","No","Yes")
 			if(alert_result == "Yes")
 				return GLOB.all_languages[LANGUAGE_GIBBERISH]
-			else 
+			else
 				if(isliving(src))
 					var/mob/living/caller = src
 					return GLOB.all_languages[caller.default_language]

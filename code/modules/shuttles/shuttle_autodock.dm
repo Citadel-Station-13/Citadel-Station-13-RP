@@ -34,7 +34,7 @@
 	if(active_docking_controller)
 		set_docking_codes(active_docking_controller.docking_codes)
 	else if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/visitable/location = map_sectors["[current_location?.z]"]
+		var/obj/effect/overmap/visitable/location = get_overmap_sector(get_z(current_location))
 		if(location && location.docking_codes)
 			set_docking_codes(location.docking_codes)
 	dock()
@@ -115,7 +115,6 @@
 	Doing so will ensure that multiple jumps cannot be initiated in parallel.
 */
 /datum/shuttle/autodock/process(delta_time)
-	update_helmets()
 	switch(process_state)
 		if (WAIT_LAUNCH)
 			if(check_undocked())
@@ -224,33 +223,3 @@
 
 /obj/effect/shuttle_landmark/transit
 	flags = SLANDMARK_FLAG_ZERO_G|SLANDMARK_FLAG_AUTOSET
-
-/datum/shuttle/autodock/short_jump()
-	. = ..()
-	update_helmets()
-
-/datum/shuttle/autodock/long_jump()
-	. = ..()
-	update_helmets()
-
-/datum/shuttle/autodock/on_shuttle_departure()
-	. = ..()
-	update_helmets()
-
-/datum/shuttle/autodock/web_shuttle/on_shuttle_arrival()
-	. = ..()
-	update_helmets()
-
-/datum/shuttle/autodock/proc/update_helmets()
-	for(var/helm in helmets)
-		var/obj/item/clothing/head/pilot/H = helm
-		if(QDELETED(H))
-			helmets -= H
-			continue
-		if(!H.shuttle_comp || !(get_area(H) in shuttle_area))
-			H.shuttle_comp = null
-			H.audible_message("<span class='warning'>\The [H] pings as it loses it's connection with the ship.</span>")
-			H.update_hud("discon")
-			helmets -= H
-		else
-			H.update_hud(moving_status)

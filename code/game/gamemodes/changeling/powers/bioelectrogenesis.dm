@@ -86,7 +86,7 @@
 							break
 						if(siemens)
 							var/T = get_turf(src)
-							new /obj/effect/effect/sparks(T)
+							new /obj/effect/sparks(T)
 							held_item.update_icon()
 						i--
 						sleep(1 SECOND)
@@ -120,12 +120,11 @@
 		"<span class='warning'>We store a charge of electricity in our hand.</span>",
 		"<span class='italics'>You hear crackling electricity!</span>")
 		var/T = get_turf(src)
-		new /obj/effect/effect/sparks(T)
+		new /obj/effect/sparks(T)
 
 /obj/item/electric_hand/dropped(mob/user)
-	spawn(1)
-		if(src)
-			qdel(src)
+	. = ..()
+	qdel(src)
 
 /obj/item/electric_hand/afterattack(var/atom/target, var/mob/living/carbon/human/user, proximity)
 	if(!target)
@@ -199,7 +198,7 @@
 	//						break
 						if(siemens)
 							var/Turf = get_turf(src)
-							new /obj/effect/effect/sparks(Turf)
+							new /obj/effect/sparks(Turf)
 							T.update_icon()
 						i--
 						sleep(1 SECOND)

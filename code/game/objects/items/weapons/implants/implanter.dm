@@ -61,8 +61,8 @@
 
 						if(ishuman(M))
 							var/mob/living/carbon/human/H = M
-							ENABLE_BITFIELD(H.hud_updateflag, IMPLOYAL_HUD)
-							ENABLE_BITFIELD(H.hud_updateflag, BACKUP_HUD) //VOREStation Add - Backup HUD updates
+							BITSET(H.hud_updateflag, IMPLOYAL_HUD)
+							BITSET(H.hud_updateflag, BACKUP_HUD) //VOREStation Add - Backup HUD updates
 
 					src.imp = null
 					update()
@@ -142,3 +142,13 @@
 			S.remove_from_storage(A)
 		A.loc.contents.Remove(A)
 		update()
+
+//Vorestation universal translator implant.
+
+/obj/item/implanter/vrlanguage
+	name = "implanter-language"
+
+/obj/item/implanter/vrlanguage/Initialize(mapload)
+	. = ..()
+	imp = new /obj/item/implant/vrlanguage( src )
+	update()

@@ -28,7 +28,8 @@
 	//operation_req_access = list(access_hos)
 	damage_absorption = list("brute"=1,"fire"=1,"bullet"=1,"laser"=1,"energy"=1,"bomb"=1)
 	var/am = "d3c2fbcadca903a41161ccc9df9cf948"
-
+	damage_minimum = 0				//Incoming damage lower than this won't actually deal damage. Scrapes shouldn't be a real thing.
+	minimum_penetration = 0		//Incoming damage won't be fully applied if you don't have at least 20. Almost all AP clears this.
 
 /obj/mecha/micro/melee_action(target as obj|mob|turf)
 	if(internal_damage&MECHA_INT_CONTROL_LOST)
@@ -87,8 +88,9 @@
 			src.occupant_message("You push [target] out of the way.")
 			src.visible_message("[src] pushes [target] out of the way.")
 
-		melee_can_hit = FALSE
-		addtimer(VARSET_CALLBACK(src, melee_can_hit, TRUE), melee_cooldown)
+		melee_can_hit = 0
+		if(do_after(melee_cooldown))
+			melee_can_hit = 1
 		return
 
 	else
@@ -101,8 +103,9 @@
 						target:attackby(src,src.occupant)
 					else
 						playsound(src, 'sound/weapons/smash.ogg', 50, 1)
-					melee_can_hit = FALSE
-					addtimer(VARSET_CALLBACK(src, melee_can_hit, TRUE), melee_cooldown)
+					melee_can_hit = 0
+					if(do_after(melee_cooldown))
+						melee_can_hit = 1
 					break
 	return
 

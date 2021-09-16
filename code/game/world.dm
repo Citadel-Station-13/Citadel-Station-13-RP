@@ -66,7 +66,11 @@ GLOBAL_LIST(topic_status_cache)
 	. = ..()
 
 	// Set up roundstart seed list.
-	plant_controller = new()
+	plant_controller = new
+
+	// *sighs*
+	job_master = new
+	job_master.SetupOccupations()
 
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
@@ -345,7 +349,7 @@ GLOBAL_LIST(topic_status_cache)
 	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
 	s += "</a>"
 	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
-	s += "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>" //CITADEL CHANGE - adds an educational fact to the hub entry!
+	s += CONFIG_GET(string/tagline)
 
 	s += ")"
 

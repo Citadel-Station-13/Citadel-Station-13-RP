@@ -121,7 +121,7 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
-	"Standard", "Engineering", "Surgeon",  "Crisis",
+	"Standard", "Engineering", "Medical",
 	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
 	"Research"
 )
@@ -150,9 +150,6 @@ var/static/list/scarySounds = list(
 // Bomb cap!
 var/max_explosion_range = 14
 
-// Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
-var/global/obj/item/radio/intercom/omni/global_announcer = new /obj/item/radio/intercom/omni(null)
-
 var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Exploration", "Civilian") //VOREStation Edit
 
 //Icons for in-game HUD glasses. Why don't we just share these a little bit?
@@ -162,3 +159,59 @@ var/static/icon/ingame_hud_med = icon('icons/mob/hud_med.dmi')
 //Keyed list for caching icons so you don't need to make them for records, IDs, etc all separately.
 //Could be useful for AI impersonation or something at some point?
 var/static/list/cached_character_icons = list()
+
+//VR FILE MERGE BELOW
+
+/hook/startup/proc/modules_vr()
+	robot_module_types += "Medihound"
+	robot_module_types += "K9"
+	robot_module_types += "Janihound"
+	robot_module_types += "Sci-Hound"
+	robot_module_types += "Pupdozer"
+	return 1
+
+var/list/shell_module_types = list(
+	"Standard", "Service", "Clerical"
+)
+
+var/list/eventdestinations = list() // List of scatter landmarks for VOREStation event portals
+
+var/global/list/acceptable_fruit_types= list(
+											"ambrosia",
+											"apple",
+											"banana",
+											"berries",
+											"cabbage",
+											"carrot",
+											"celery",
+											"cherry",
+											"chili",
+											"cocoa",
+											"corn",
+											"durian",
+											"eggplant",
+											"grapes",
+											"greengrapes",
+											"harebells",
+											"lavender",
+											"lemon",
+											"lettuce",
+											"lime",
+											"onion",
+											"orange",
+											"peanut",
+											"poppies",
+											"potato",
+											"pumpkin",
+											"rice",
+											"rose",
+											"rhubarb",
+											"soybean",
+											"spineapple",
+											"sugarcane",
+											"sunflowers",
+											"tomato",
+											"vanilla",
+											"watermelon",
+											"wheat",
+											"whitebeet")

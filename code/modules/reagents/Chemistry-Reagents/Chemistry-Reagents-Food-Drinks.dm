@@ -699,7 +699,7 @@ End Citadel Change */
 	taste_description = "banana"
 	color = "#C3AF00"
 
-	glass_name = "banana juice"
+	glass_name = "Banana Juice"
 	glass_desc = "The raw essence of a banana. HONK!"
 
 /datum/reagent/drink/juice/berry
@@ -709,7 +709,7 @@ End Citadel Change */
 	taste_description = "berries"
 	color = "#990066"
 
-	glass_name = "berry juice"
+	glass_name = "Berry Juice"
 	glass_desc = "Berry juice. Or maybe it's jam. Who cares?"
 
 /datum/reagent/drink/juice/pineapple
@@ -719,7 +719,7 @@ End Citadel Change */
 	taste_description = "pineapple"
 	color = "#C3AF00"
 
-	glass_name = "pineapple juice"
+	glass_name = "Pineapple Juice"
 	glass_desc = "Pineapple juice. Or maybe it's spineapple. Who cares?"
 
 /datum/reagent/drink/juice/carrot
@@ -729,7 +729,7 @@ End Citadel Change */
 	taste_description = "carrots"
 	color = "#FF8C00" // rgb: 255, 140, 0
 
-	glass_name = "carrot juice"
+	glass_name = "Carrot Juice"
 	glass_desc = "It is just like a carrot but without crunching."
 
 /datum/reagent/drink/juice/carrot/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -743,7 +743,7 @@ End Citadel Change */
 	taste_description = "grapes"
 	color = "#863333"
 
-	glass_name = "grape juice"
+	glass_name = "Grape Juice"
 	glass_desc = "It's grrrrrape!"
 
 /datum/reagent/drink/juice/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -775,7 +775,7 @@ End Citadel Change */
 	taste_mult = 1.1
 	color = "#AFAF00"
 
-	glass_name = "lemon juice"
+	glass_name = "Lemon Juice"
 	glass_desc = "Sour..."
 
 /datum/reagent/drink/juice/apple
@@ -786,7 +786,7 @@ End Citadel Change */
 	taste_mult = 1.1
 	color = "#E2A55F"
 
-	glass_name = "apple juice"
+	glass_name = "Apple Juice"
 	glass_desc = "An earth favorite."
 
 /datum/reagent/drink/juice/lime
@@ -797,7 +797,7 @@ End Citadel Change */
 	taste_mult = 1.8
 	color = "#365E30"
 
-	glass_name = "lime juice"
+	glass_name = "Lime Juice"
 	glass_desc = "A glass of sweet-sour lime juice"
 
 /datum/reagent/drink/juice/lime/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -830,7 +830,7 @@ End Citadel Change */
 	color = "#863353"
 	strength = 5
 
-	glass_name = "poison berry juice"
+	glass_name = "Poison Berry Juice"
 	glass_desc = "A glass of deadly juice."
 
 /datum/reagent/drink/juice/potato
@@ -841,7 +841,7 @@ End Citadel Change */
 	nutrition = 2
 	color = "#302000"
 
-	glass_name = "potato juice"
+	glass_name = "Potato Juice"
 	glass_desc = "Juice from a potato. Bleh."
 
 /datum/reagent/drink/juice/tomato
@@ -851,7 +851,7 @@ End Citadel Change */
 	taste_description = "tomatoes"
 	color = "#731008"
 
-	glass_name = "tomato juice"
+	glass_name = "Tomato Juice"
 	glass_desc = "Are you sure this is tomato juice?"
 
 /datum/reagent/drink/juice/tomato/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -867,7 +867,7 @@ End Citadel Change */
 	taste_description = "sweet watermelon"
 	color = "#B83333"
 
-	glass_name = "watermelon juice"
+	glass_name = "Watermelon Juice"
 	glass_desc = "Delicious juice made from watermelon."
 
 // Everything else
@@ -879,11 +879,11 @@ End Citadel Change */
 	taste_description = "milk"
 	color = "#DFDFDF"
 
-	glass_name = "milk"
+	glass_name = "Milk"
 	glass_desc = "White and nutritious goodness!"
 
 	cup_icon_state = "cup_cream"
-	cup_name = "cup of milk"
+	cup_name = "Cup of Milk"
 	cup_desc = "White and nutritious goodness!"
 
 /datum/reagent/drink/milk/chocolate
@@ -894,10 +894,10 @@ End Citadel Change */
 	color = "#74533b"
 
 	cup_icon_state = "cup_brown"
-	cup_name = "cup of chocolate milk"
+	cup_name = "Cup of Chocolate Milk"
 	cup_desc = "Deliciously fattening!"
 
-	glass_name = "chocolate milk"
+	glass_name = "Chocolate Milk"
 	glass_desc = "Deliciously fattening!"
 
 /datum/reagent/drink/milk/chocolate/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -923,11 +923,11 @@ End Citadel Change */
 	taste_description = "thick milk"
 	color = "#DFD7AF"
 
-	glass_name = "cream"
+	glass_name = "Cream"
 	glass_desc = "Ewwww..."
 
 	cup_icon_state = "cup_cream"
-	cup_name = "cup of cream"
+	cup_name = "Cup of Cream"
 	cup_desc = "Ewwww..."
 
 /datum/reagent/drink/milk/soymilk
@@ -937,11 +937,11 @@ End Citadel Change */
 	taste_description = "soy milk"
 	color = "#DFDFC7"
 
-	glass_name = "soy milk"
+	glass_name = "Soy Milk"
 	glass_desc = "White and nutritious soy goodness!"
 
 	cup_icon_state = "cup_cream"
-	cup_name = "cup of milk"
+	cup_name = "Cup of Milk"
 	cup_desc = "White and nutritious goodness!"
 
 /datum/reagent/drink/tea
@@ -955,11 +955,11 @@ End Citadel Change */
 	adj_sleepy = -3
 	adj_temp = 20
 
-	glass_name = "tea"
+	glass_name = "Tea"
 	glass_desc = "Tasty black tea, it has antioxidants, it's good for you!"
 
 	cup_icon_state = "cup_tea"
-	cup_name = "cup of tea"
+	cup_name = "Cup of Tea"
 	cup_desc = "Tasty black tea, it has antioxidants, it's good for you!"
 
 /datum/reagent/drink/tea/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -976,12 +976,12 @@ End Citadel Change */
 	color = "#AC7F24" // rgb: 16, 64, 56
 	adj_temp = -5
 
-	glass_name = "iced tea"
+	glass_name = "Iced Tea"
 	glass_desc = "No relation to a certain rap artist/ actor."
 	glass_special = list(DRINK_ICE)
 
 	cup_icon_state = "cup_tea"
-	cup_name = "cup of iced tea"
+	cup_name = "Cup of Iced Tea"
 	cup_desc = "No relation to a certain rap artist/ actor."
 
 /datum/reagent/drink/tea/icetea/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -1009,10 +1009,10 @@ End Citadel Change */
 	color = "#A8442C"
 	taste_description = "black tea with tones of mint"
 
-	glass_name = "mint tea"
+	glass_name = "Mint Tea"
 	glass_desc = "A tasty mixture of mint and tea. It's apparently good for you!"
 
-	cup_name = "cup of mint tea"
+	cup_name = "Cup of Mint Tea"
 	cup_desc = "A tasty mixture of mint and tea. It's apparently good for you!"
 
 /datum/reagent/drink/tea/lemontea
@@ -1022,10 +1022,10 @@ End Citadel Change */
 	color = "#FC6A00"
 	taste_description = "black tea with tones of lemon"
 
-	glass_name = "lemon tea"
+	glass_name = "Lemon Tea"
 	glass_desc = "A tasty mixture of lemon and tea. It's apparently good for you!"
 
-	cup_name = "cup of lemon tea"
+	cup_name = "Cup of Lemon Tea"
 	cup_desc = "A tasty mixture of lemon and tea. It's apparently good for you!"
 
 /datum/reagent/drink/tea/limetea
@@ -1035,10 +1035,10 @@ End Citadel Change */
 	color = "#DE4300"
 	taste_description = "black tea with tones of lime"
 
-	glass_name = "lime tea"
+	glass_name = "Lime Tea"
 	glass_desc = "A tasty mixture of lime and tea. It's apparently good for you!"
 
-	cup_name = "cup of lime tea"
+	cup_name = "Cup of Lime Tea"
 	cup_desc = "A tasty mixture of lime and tea. It's apparently good for you!"
 
 /datum/reagent/drink/tea/orangetea
@@ -1048,10 +1048,10 @@ End Citadel Change */
 	color = "#FB4F06"
 	taste_description = "black tea with tones of orange"
 
-	glass_name = "orange tea"
+	glass_name = "Orange Tea"
 	glass_desc = "A tasty mixture of orange and tea. It's apparently good for you!"
 
-	cup_name = "cup of orange tea"
+	cup_name = "Cup of Orange Tea"
 	cup_desc = "A tasty mixture of orange and tea. It's apparently good for you!"
 
 /datum/reagent/drink/tea/berrytea
@@ -1061,10 +1061,10 @@ End Citadel Change */
 	color = "#A60735"
 	taste_description = "black tea with tones of berries"
 
-	glass_name = "berry tea"
+	glass_name = "Berry Tea"
 	glass_desc = "A tasty mixture of berries and tea. It's apparently good for you!"
 
-	cup_name = "cup of berry tea"
+	cup_name = "Cup of Berry Tea"
 	cup_desc = "A tasty mixture of berries and tea. It's apparently good for you!"
 
 /datum/reagent/drink/coffee
@@ -1081,10 +1081,10 @@ End Citadel Change */
 	overdose = 45
 
 	cup_icon_state = "cup_coffee"
-	cup_name = "cup of coffee"
+	cup_name = "Cup of Coffee"
 	cup_desc = "Don't drop it, or you'll send scalding liquid and ceramic shards everywhere."
 
-	glass_name = "coffee"
+	glass_name = "Coffee"
 	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
 
 
@@ -1120,7 +1120,7 @@ End Citadel Change */
 	color = "#102838"
 	adj_temp = -5
 
-	glass_name = "iced coffee"
+	glass_name = "Iced Coffee"
 	glass_desc = "A drink to perk you up and refresh you!"
 	glass_special = list(DRINK_ICE)
 
@@ -1151,11 +1151,11 @@ End Citadel Change */
 	adj_temp = 5
 
 	glass_desc = "A nice and refreshing beverage while you are reading."
-	glass_name = "soy latte"
+	glass_name = "Soy Latte"
 	glass_desc = "A nice and refrshing beverage while you are reading."
 
 	cup_icon_state = "cup_latte"
-	cup_name = "cup of soy latte"
+	cup_name = "Cup of Soy Latte"
 	cup_desc = "A nice and refreshing beverage while you are reading."
 
 /datum/reagent/drink/coffee/soy_latte/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -1170,11 +1170,11 @@ End Citadel Change */
 	color = "#C65905"
 	adj_temp = 5
 
-	glass_name = "cafe latte"
+	glass_name = "Cafe Latte"
 	glass_desc = "A nice, strong and refreshing beverage while you are reading."
 
 	cup_icon_state = "cup_latte"
-	cup_name = "cup of cafe latte"
+	cup_name = "Cup of Cafe Latte"
 	cup_desc = "A nice and refreshing beverage while you are reading."
 
 /datum/reagent/drink/coffee/cafe_latte/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -1191,11 +1191,11 @@ End Citadel Change */
 	nutrition = 2
 	adj_temp = 5
 
-	glass_name = "hot chocolate"
+	glass_name = "Hot Chocolate"
 	glass_desc = "Made with love! And cocoa beans."
 
 	cup_icon_state = "cup_coco"
-	cup_name = "cup of hot chocolate"
+	cup_name = "Cup of Hot Chocolate"
 	cup_desc = "Made with love! And cocoa beans."
 
 /datum/reagent/drink/hot_coco/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -1214,7 +1214,7 @@ End Citadel Change */
 	adj_drowsy = -3
 	adj_temp = -5
 
-	glass_name = "soda water"
+	glass_name = "Soda Water"
 	glass_desc = "Soda water. Why not make a scotch and soda?"
 	glass_special = list(DRINK_FIZZ)
 
@@ -1226,7 +1226,7 @@ End Citadel Change */
 	color = "#421C52"
 	adj_drowsy = -3
 
-	glass_name = "grape soda"
+	glass_name = "Grape Soda"
 	glass_desc = "Looks like a delicious drink!"
 	glass_special = list(DRINK_FIZZ)
 
@@ -1242,7 +1242,7 @@ End Citadel Change */
 	adj_sleepy = -2
 	adj_temp = -5
 
-	glass_name = "tonic water"
+	glass_name = "Tonic Water"
 	glass_desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."
 
 /datum/reagent/drink/soda/lemonade
@@ -1253,7 +1253,7 @@ End Citadel Change */
 	color = "#FFFF00"
 	adj_temp = -5
 
-	glass_name = "lemonade"
+	glass_name = "Lemonade"
 	glass_desc = "Oh the nostalgia..."
 	glass_special = list(DRINK_FIZZ)
 
@@ -1265,7 +1265,7 @@ End Citadel Change */
 	color = "#FFB3BB"
 	adj_temp = -5
 
-	glass_name = "melonade"
+	glass_name = "Melonade"
 	glass_desc = "Oh the.. nostalgia?"
 	glass_special = list(DRINK_FIZZ)
 
@@ -1273,11 +1273,11 @@ End Citadel Change */
 	name = "Appleade"
 	id = "appleade"
 	description = "Applejuice, improved."
-	taste_description = "apples"
+	taste_description = "sparkling apples"
 	color = "#FFD1B3"
 	adj_temp = -5
 
-	glass_name = "appleade"
+	glass_name = "Appleade"
 	glass_desc = "Applejuice, improved."
 	glass_special = list(DRINK_FIZZ)
 
@@ -1289,7 +1289,7 @@ End Citadel Change */
 	color = "#FFFF00"
 	adj_temp = -5
 
-	glass_name = "pineappleade"
+	glass_name = "Pineappleade"
 	glass_desc = "Spineapple, juiced up."
 	glass_special = list(DRINK_FIZZ)
 
@@ -1316,6 +1316,29 @@ End Citadel Change */
 	glass_name = "Brown Star"
 	glass_desc = "It's not what it sounds like..."
 
+/datum/reagent/drink/soda/mintapplesparkle
+	name = "Mint Apple Sparkle"
+	id = "mintapplesparkle"
+	description = "Delicious appleade with a touch of mint."
+	taste_description = "minty apples"
+	color = "#FDDA98"
+
+	glass_name = "Mint Apple Sparkle"
+	glass_desc = "Delicious appleade with a touch of mint."
+	glass_special = list(DRINK_FIZZ)
+
+/datum/reagent/drink/soda/orangeale
+	name = "Orange Ale"
+	id = "orangeale"
+	description = "A combination of orange juice and ginger ale that suprisingly works well. "
+	taste_description = "sparkling orange juice in overdrive"
+	color = "#e88e06"
+	adj_temp = -2
+
+	glass_name = "Orange Ale"
+	glass_desc = "an overwhelmingly fizzy combination of orange juice and ginger ale."
+	glass_special = list(DRINK_FIZZ)
+
 /datum/reagent/drink/milkshake
 	name = "Milkshake"
 	id = "milkshake"
@@ -1324,7 +1347,7 @@ End Citadel Change */
 	color = "#AEE5E4"
 	adj_temp = -9
 
-	glass_name = "milkshake"
+	glass_name = "Milkshake"
 	glass_desc = "Glorious brainfreezing mixture."
 
 /datum/reagent/milkshake/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -1448,8 +1471,8 @@ End Citadel Change */
 	color = "#FF004F"
 	water_based = FALSE
 
-	glass_name = "grenadine syrup"
-	glass_desc = "Sweet and tangy, a bar syrup used to add color or flavor to drinks."
+	glass_name = "Grenadine Syrup"
+	glass_desc = "Sweet and tangy, a bar syrup used to add color and flavor to drinks."
 
 /datum/reagent/drink/soda/space_cola
 	name = "Space Cola"
@@ -1553,7 +1576,7 @@ End Citadel Change */
 	color = "#878F00"
 	adj_temp = -8
 
-	glass_name = "lemon lime soda"
+	glass_name = "Lemon Lime Soda"
 	glass_desc = "A tangy substance made of 0.5% natural citrus!"
 	glass_special = list(DRINK_FIZZ)
 
@@ -1565,7 +1588,7 @@ End Citadel Change */
 	color = "#edcf8f"
 	adj_temp = -8
 
-	glass_name = "ginger ale"
+	glass_name = "Ginger Ale"
 	glass_desc = "The original, refreshing not-actually-ale."
 	glass_special = list(DRINK_FIZZ)
 
@@ -1573,11 +1596,11 @@ End Citadel Change */
 	name = "Shirley Temple"
 	id =  "shirley_temple"
 	description = "A sweet concotion hated even by its namesake."
-	taste_description = "sweet ginger ale"
+	taste_description = "sweet tonic cherries"
 	color = "#EF304F"
 	adj_temp = -8
 
-	glass_name = "shirley temple"
+	glass_name = "Shirley Temple"
 	glass_desc = "A sweet concotion hated even by its namesake."
 	glass_special = list(DRINK_FIZZ)
 
@@ -1589,7 +1612,7 @@ End Citadel Change */
 	color = "#4F1811"
 	adj_temp = -8
 
-	glass_name = "roy rogers"
+	glass_name = "Roy Rogers"
 	glass_desc = "I'm a cowboy, on a steel horse I ride"
 	glass_special = list(DRINK_FIZZ)
 
@@ -1601,7 +1624,7 @@ End Citadel Change */
 	color = "#D7D0B3"
 	adj_temp = -8
 
-	glass_name = "collins mix"
+	glass_name = "Collins Mix"
 	glass_desc = "Best hope it isn't a hoax."
 	glass_special = list(DRINK_FIZZ)
 
@@ -1613,7 +1636,7 @@ End Citadel Change */
 	color = "#AF5517"
 	adj_temp = -8
 
-	glass_name = "arnold palmer"
+	glass_name = "Arnold Palmer"
 	glass_desc = "Tastes just like the old man."
 	glass_special = list(DRINK_FIZZ)
 
@@ -1696,7 +1719,7 @@ End Citadel Change */
 	color = "#619494"
 	adj_temp = -5
 
-	glass_name = "ice"
+	glass_name = "Ice"
 	glass_desc = "Generally, you're supposed to put something else in there too..."
 	glass_icon = DRINK_ICON_NOISY
 
@@ -1724,7 +1747,7 @@ End Citadel Change */
 	description = "Absolutely nothing."
 	taste_description = "nothing"
 
-	glass_name = "nothing"
+	glass_name = "Nothing"
 	glass_desc = "Absolutely nothing."
 
 /datum/reagent/drink/dreamcream
@@ -1865,7 +1888,7 @@ End Citadel Change */
 	taste_description = "mint and lime"
 	color = "#FFF7B3"
 
-	glass_name = "mojito"
+	glass_name = "Mojito"
 	glass_desc = "Mint, bubbly water, and citrus, made for sailing."
 	glass_special = list(DRINK_FIZZ)
 
@@ -1876,7 +1899,7 @@ End Citadel Change */
 	taste_description = "a sexy, sandy sunset"
 	color = "#FF0033"
 
-	glass_name = "sex on the beach"
+	glass_name = "Sex on the Beach"
 	glass_desc = "A secret combination of orange juice and pomegranate."
 
 /datum/reagent/drink/driverspunch
@@ -1886,7 +1909,7 @@ End Citadel Change */
 	taste_description = "sharp, sour apples"
 	color = "#D2BA6E"
 
-	glass_name = "driver`s punch"
+	glass_name = "Driver`s Punch"
 	glass_desc = "A fruity punch!"
 	glass_special = list(DRINK_FIZZ)
 
@@ -1897,7 +1920,7 @@ End Citadel Change */
 	taste_description = "sweet chivalry"
 	color = "#D26EB8"
 
-	glass_name = "berry cordial"
+	glass_name = "Berry Cordial"
 	glass_desc = "How <font face='comic sans ms'>berry cordial</font> of you."
 	glass_icon = DRINK_ICON_NOISY
 
@@ -1908,7 +1931,7 @@ End Citadel Change */
 	taste_description = "tropical"
 	color = "#69375C"
 
-	glass_name = "tropical fizz"
+	glass_name = "Tropical Fizz"
 	glass_desc = "One sip and you're in the bahamas."
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
@@ -1920,7 +1943,7 @@ End Citadel Change */
 	taste_description = "slightly tropical"
 	color = "#69375C"
 
-	glass_name = "tropical fizz"
+	glass_name = "Tropical Fizz"
 	glass_desc = "One sip and you're in the bahamas... maybe."
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
@@ -1974,7 +1997,7 @@ End Citadel Change */
 	color = "#33EE00"
 	strength = 12
 
-	glass_name = "absinthe"
+	glass_name = "Absinthe"
 	glass_desc = "Wormwood, anise, oh my."
 
 /datum/reagent/ethanol/ale
@@ -1985,8 +2008,8 @@ End Citadel Change */
 	color = "#4C3100"
 	strength = 50
 
-	glass_name = "ale"
-	glass_desc = "A freezing pint of delicious ale"
+	glass_name = "Ale"
+	glass_desc = "A freezing pint of delicious ale."
 
 /datum/reagent/ethanol/beer
 	name = "Beer"
@@ -1997,7 +2020,7 @@ End Citadel Change */
 	strength = 50
 	nutriment_factor = 1
 
-	glass_name = "beer"
+	glass_name = "Beer"
 	glass_desc = "A freezing pint of beer"
 
 /datum/reagent/ethanol/beer/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -2015,7 +2038,7 @@ End Citadel Change */
 	color = "#0000CD"
 	strength = 15
 
-	glass_name = "blue curacao"
+	glass_name = "Blue Curacao"
 	glass_desc = "Exotically blue, fruity drink, distilled from oranges."
 
 /datum/reagent/ethanol/cognac
@@ -2027,7 +2050,7 @@ End Citadel Change */
 	color = "#AB3C05"
 	strength = 15
 
-	glass_name = "cognac"
+	glass_name = "Cognac"
 	glass_desc = "Damn, you feel like some kind of French aristocrat just by holding this."
 
 /datum/reagent/ethanol/deadrum
@@ -2039,7 +2062,7 @@ End Citadel Change */
 	color = "#ECB633"
 	strength = 50
 
-	glass_name = "rum"
+	glass_name = "Rum"
 	glass_desc = "Now you want to Pray for a pirate suit, don't you?"
 
 /datum/reagent/ethanol/deadrum/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -2056,7 +2079,7 @@ End Citadel Change */
 	color = "#ECB633"
 	strength = 7
 
-	glass_name = "fire punch"
+	glass_name = "Fire Punch"
 	glass_desc = "Yo ho ho and a jar of honey."
 
 /datum/reagent/ethanol/gin
@@ -2067,7 +2090,7 @@ End Citadel Change */
 	color = "#0064C6"
 	strength = 50
 
-	glass_name = "gin"
+	glass_name = "Gin"
 	glass_desc = "A crystal clear glass of Griffeater gin."
 
 //Base type for alchoholic drinks containing coffee
@@ -2111,7 +2134,7 @@ End Citadel Change */
 	color = "#4C3100"
 	strength = 15
 
-	glass_name = "RR coffee liquor"
+	glass_name = "RR Coffee Liquor"
 	glass_desc = "A widely known, Mexican coffee-flavored liqueur. In production since 1936!"
 //	glass_desc = "DAMN, THIS THING LOOKS ROBUST" //If this isn't what our players should talk like, it isn't what our game should say to them.
 
@@ -2123,7 +2146,7 @@ End Citadel Change */
 	color = "#138808" // rgb: 19, 136, 8
 	strength = 50
 
-	glass_name = "melon liquor"
+	glass_name = "Melon Liquor"
 	glass_desc = "A relatively sweet and fruity 46 proof liquor."
 
 /datum/reagent/ethanol/melonspritzer
@@ -2134,7 +2157,7 @@ End Citadel Change */
 	color = "#934D5D"
 	strength = 10
 
-	glass_name = "melon spritzer"
+	glass_name = "Melon Spritzer"
 	glass_desc = "Melons: Citrus style."
 	glass_special = list(DRINK_FIZZ)
 
@@ -2147,7 +2170,7 @@ End Citadel Change */
 	color = "#ECB633"
 	strength = 15
 
-	glass_name = "rum"
+	glass_name = "Rum"
 	glass_desc = "Makes you want to buy a ship and just go pillaging."
 
 /datum/reagent/ethanol/sake
@@ -2158,7 +2181,7 @@ End Citadel Change */
 	color = "#DDDDDD"
 	strength = 25
 
-	glass_name = "sake"
+	glass_name = "Sake"
 	glass_desc = "A glass of sake."
 
 /datum/reagent/ethanol/sexonthebeach
@@ -2169,7 +2192,7 @@ End Citadel Change */
 	color = "#FF0033"
 	strength = 15
 
-	glass_name = "sex on the beach"
+	glass_name = "Sex on the Beach"
 	glass_desc = "A concoction of vodka and a secret combination of orange juice and pomegranate."
 
 /datum/reagent/ethanol/tequila
@@ -2213,7 +2236,7 @@ End Citadel Change */
 	color = "#91FF91" // rgb: 145, 255, 145
 	strength = 15
 
-	glass_name = "vermouth"
+	glass_name = "Vermouth"
 	glass_desc = "You wonder why you're even drinking this straight."
 
 /datum/reagent/ethanol/vodka
@@ -2224,7 +2247,7 @@ End Citadel Change */
 	color = "#0064C8" // rgb: 0, 100, 200
 	strength = 15
 
-	glass_name = "vodka"
+	glass_name = "Vodka"
 	glass_desc = "The glass contain wodka. Xynta."
 
 /datum/reagent/ethanol/vodka/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -2239,19 +2262,30 @@ End Citadel Change */
 	color = "#4C3100"
 	strength = 25
 
-	glass_name = "whiskey"
+	glass_name = "Whiskey"
 	glass_desc = "The silky, smokey whiskey goodness inside the glass makes the drink look very classy."
 
 /datum/reagent/ethanol/wine
-	name = "Wine"
+	name = "Red Wine"
 	id = "wine"
-	description = "An premium alchoholic beverage made from distilled grape juice."
+	description = "A premium alchoholic beverage made from distilled grape juice. This one's red!"
 	taste_description = "bitter sweetness"
 	color = "#7E4043" // rgb: 126, 64, 67
 	strength = 15
 
-	glass_name = "wine"
+	glass_name = "Wine"
 	glass_desc = "A very classy looking drink."
+
+/datum/reagent/ethanol/whitewine
+	name = "White Wine"
+	id = "whitewine"
+	description = "A premium alchoholic beverage made from distilled grape juice. This one's white!"
+	taste_description = "bitter sweetness"
+	color = "#FCF1D2"
+	strength = 13
+
+	glass_name = "White Wine"
+	glass_desc = "A very classy looking drink. Now in white!"
 
 /datum/reagent/ethanol/peppermintschnapps
 	name = "Peppermint Schnapps"
@@ -2261,7 +2295,7 @@ End Citadel Change */
 	strength = 90
 
 /datum/reagent/ethanol/peachschnapps
-	name = "Peppermint Schnapps"
+	name = "Peach Schnapps"
 	id = "schnapps_pea"
 	description = "A flavoured grain liqueur with a fresh, peachy taste."
 	taste_description = "peachy"
@@ -2281,7 +2315,7 @@ End Citadel Change */
 	taste_description = "fizzy bitter sweetness"
 	color = "#D1B166"
 
-	glass_name = "champagne"
+	glass_name = "Champagne"
 	glass_desc = "An even classier looking drink."
 
 
@@ -2293,7 +2327,7 @@ End Citadel Change */
 	color = "#CE9C00" // rgb: 206, 156, 0
 	strength = 10
 
-	glass_name = "cider"
+	glass_name = "Cider"
 	glass_desc = "The second most Irish drink."
 	glass_special = list(DRINK_FIZZ)
 
@@ -2455,7 +2489,7 @@ End Citadel Change */
 	strength = 50
 	nutriment_factor = 2
 
-	glass_name = "bilk"
+	glass_name = "Bilk"
 	glass_desc = "A brew of milk and beer. For those alcoholics who fear osteoporosis."
 
 /datum/reagent/ethanol/black_russian
@@ -2579,7 +2613,7 @@ End Citadel Change */
 	color = "#FFFFAE"
 	strength = 30
 
-	glass_name = "gin fizz"
+	glass_name = "Gin Fizz"
 	glass_desc = "Refreshingly lemony, deliciously dry."
 
 /datum/reagent/ethanol/nebula_riptide
@@ -2603,7 +2637,7 @@ End Citadel Change */
 	strength = 100
 
 
-	glass_name = "grog"
+	glass_name = "Grog"
 	glass_desc = "A fine and cepa drink for Space."
 
 /datum/reagent/ethanol/erikasurprise
@@ -2639,7 +2673,7 @@ End Citadel Change */
 	color = "#0064C8"
 	strength = 50
 
-	glass_name = "gin and tonic"
+	glass_name = "Gin and Tonic"
 	glass_desc = "A mild but still great cocktail. Drink up, like a true Englishman."
 
 /datum/reagent/ethanol/goldschlager
@@ -2689,7 +2723,7 @@ End Citadel Change */
 	adj_temp = -20
 	targ_temp = 280
 
-	glass_name = "iced beer"
+	glass_name = "Iced Beer"
 	glass_desc = "A beer so frosty, the air around it freezes."
 	glass_special = list(DRINK_ICE)
 
@@ -2779,7 +2813,7 @@ End Citadel Change */
 	color = "#8CFF8C"
 	strength = 15
 
-	glass_name = "margarita"
+	glass_name = "Margarita"
 	glass_desc = "On the rocks with salt on the rim. Arriba~!"
 
 /datum/reagent/ethanol/mead
@@ -2792,7 +2826,7 @@ End Citadel Change */
 	strength = 30
 	nutriment_factor = 1
 
-	glass_name = "mead"
+	glass_name = "Mead"
 	glass_desc = "A Viking's beverage, though a cheap one."
 
 /datum/reagent/ethanol/moonshine
@@ -2804,7 +2838,7 @@ End Citadel Change */
 	color = "#0064C8"
 	strength = 12
 
-	glass_name = "moonshine"
+	glass_name = "Moonshine"
 	glass_desc = "You've really hit rock bottom now... your liver packed its bags and left last night."
 
 /datum/reagent/ethanol/neurotoxin
@@ -2869,7 +2903,7 @@ End Citadel Change */
 	color = "#C73C00"
 	strength = 30
 
-	glass_name = "red mead"
+	glass_name = "Red Mead"
 	glass_desc = "A true Viking's beverage, though its color is strange."
 
 /datum/reagent/ethanol/sbiten
@@ -2998,7 +3032,7 @@ End Citadel Change */
 	color = "#0064C8"
 	strength = 12
 
-	glass_name = "vodka martini"
+	glass_name = "Vodka Martini"
 	glass_desc ="A bastardization of the classic martini. Still great."
 
 
@@ -3010,7 +3044,7 @@ End Citadel Change */
 	color = "#0064C8" // rgb: 0, 100, 200
 	strength = 15
 
-	glass_name = "vodka and tonic"
+	glass_name = "Vodka and Tonic"
 	glass_desc = "For when a gin and tonic isn't Russian enough."
 
 
@@ -3034,7 +3068,7 @@ End Citadel Change */
 	color = "#3E1B00"
 	strength = 25
 
-	glass_name = "whiskey cola"
+	glass_name = "Whiskey Cola"
 	glass_desc = "An innocent-looking mixture of cola and Whiskey. Delicious."
 
 
@@ -3046,7 +3080,7 @@ End Citadel Change */
 	color = "#EAB300"
 	strength = 15
 
-	glass_name = "whiskey soda"
+	glass_name = "Whiskey Soda"
 	glass_desc = "Ultimate refreshment."
 
 /datum/reagent/ethanol/specialwhiskey // I have no idea what this is and where it comes from
@@ -3068,7 +3102,7 @@ End Citadel Change */
 	color = "#242424"
 	strength = 5
 
-	glass_name = "unathi liquor"
+	glass_name = "Redeemer's Brew"
 	glass_desc = "This barely qualifies as a drink, and may cause euphoria and numbness. Imbiber beware!"
 
 /datum/reagent/ethanol/unathiliquor/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -3641,7 +3675,11 @@ End Citadel Change */
 	id = "planterspunch"
 	description = "A refreshing drink for the aspiring botanist."
 	taste_description = "happy plants"
+	color = "#F07800"
 	strength = 85
+
+	glass_name = "Planters Punch"
+	glass_desc = "A refreshing drink for the aspiring botanist."
 
 /datum/reagent/ethanol/olympusmons
 	name = "Olympus Mons"
@@ -3829,6 +3867,26 @@ End Citadel Change */
 
 	glass_name = "The Best Boy"
 	glass_desc = "An eternal tribute to the best crewmember to ever work on Space Station 13. Keep away from washing machines."
+
+/datum/reagent/ethanol/phobos
+	name = "Phobos"
+	id = "phobos"
+	description = "A drink invented by Tyrmalin Moonshiners to cope with the harsh Martian climate."
+	taste_description = "grain alcohol"
+	strength = 70
+
+	glass_name = "Phobos"
+	glass_desc = "A drink invented by Tyrmalin Moonshiners to cope with the harsh Martian climate."
+
+/datum/reagent/ethanol/greenstuff
+	name = "Green Stuff"
+	id = "greenstuff"
+	description = "Tyrmalin grog aggressively blended with unfiltered absinthe."
+	taste_description = "black licorice and thick malt"
+	strength = 70
+
+	glass_name = "Green Stuff"
+	glass_desc = "Tyrmalin grog aggressively blended with unfiltered absinthe."
 
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
@@ -4130,3 +4188,179 @@ End Citadel Change */
 	if(M.species.gets_food_nutrition)
 		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
 			M.nutrition += (alt_nutriment_factor * removed)
+
+/datum/reagent/ethanol/galacticpanic
+	name = "Galactic Panic Attack"
+	id = "galacticpanic"
+	description = "The absolute worst thing you could ever put in your body."
+	taste_description = "an entire galaxy collasping in on itself."
+	strength = 10
+	druggy = 50
+	halluci = 30
+	var/adj_dizzy = 10
+	color = "#d3785d"
+
+	glass_name = "Galactic Panic Attack"
+	glass_desc = "Looking into this is like staring at the stars."
+
+/datum/reagent/ethanol/galacticpanic/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	M.Stun(2)
+
+/datum/reagent/ethanol/galacticpanic/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+
+	if(dose * strength >= strength) // Early warning
+		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
+	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
+		M.slurring = max(M.slurring, 30)
+
+/datum/reagent/ethanol/sugarrush
+	name = "Sweet Rush"
+	id = "sugarrush"
+	description = "A favorite drink amongst poor bartenders living in Neo Detroit."
+	taste_description = "sweet bubblegum vodka."
+	strength = 30
+	color = "#d3785d"
+
+	glass_name = "Sweet Rush"
+	glass_desc = "This looks like it might rot your teeth out."
+
+/datum/reagent/ethanol/lotus
+	name = "Lotus"
+	id = "lotus"
+	description = "The result of making one mistake after another and trying to cover it up with sugar."
+	taste_description = "rich, sweet fruit and even more sugar."
+	strength = 25
+	color = "#d3785d"
+
+	glass_name = "Lotus"
+	glass_desc = "A promotional drink for a movie that only ever played in Neo Detroit theatres."
+
+/datum/reagent/ethanol/sbagliato
+	name = "Negroni Sbagliato"
+	id = "sbagliato"
+	description = "A drink invented because a bartender was too drunk."
+	taste_description = "sweet bubbly wine and vermouth."
+	strength = 30
+	color = "#d3785d"
+
+	glass_name = "Negroni Sbagliato"
+	glass_desc = "Bubbles constantly pop up to the surface with a quiet fizz."
+
+/datum/reagent/ethanol/fusionnaire
+	name = "Fusionnaire"
+	id = "fusionnaire"
+	description = "The one true ellusive, some even consider it never existed!"
+	taste_description = "strong currents of fresh zesty winds"
+	color = "#E6E2AA"
+	strength = 65
+
+	glass_name = "Fusionnaire"
+	glass_desc = "The one true ellusive, lighter than air, harder than the mountains!"
+
+/datum/reagent/ethanol/originalsin
+	name = "Original Sin"
+	id = "originalsin"
+	description = "Angel Ichor, entirely transformed by one drop of apple juice"
+	taste_description = "the apple Eve gave to Adam"
+	color = "#99CC35"
+	strength = 17
+
+	glass_name = "Original Sin"
+	glass_desc = "A drink so fine, you may just risk eternal damnation!"
+
+/datum/reagent/ethanol/bulldog
+	name = "Space Bulldog"
+	id = "bulldog"
+	description = "An inventive kahlua recipe."
+	taste_description = "fizzy, creamy, soda and coffee hell."
+	strength = 30
+	color = "#d3785d"
+
+	glass_name = "Space Bulldog"
+	glass_desc = "It looks like someone poured cola in a cup of coffee."
+
+/datum/reagent/ethanol/italiancrisis
+	name = "Italian Crisis"
+	id = "italiancrisis"
+	description = "This drink was concocted by a madwoman, causing the Italian Crisis of 2123."
+	taste_description = "cola, fruit, fizz, coffee, and cream swirled together in an old boot."
+	strength = 20
+	color = "#d3785d"
+
+	glass_name = "Italian Crisis"
+	glass_desc = "This drink looks like it was a mistake."
+
+/datum/reagent/ethanol/shroomjuice
+	name = "Dumb Shroom Juice"
+	id = "shroomjuice"
+	description = "The mushroom farmer didn't sort through their stock very well."
+	taste_description = "sweet and sour citrus with a savory kick."
+	strength = 100
+	druggy = 30
+	halluci = 30
+	var/adj_dizzy = 30
+	color = "#d3785d"
+
+	glass_name = "Dumb Shroom Juice"
+	glass_desc = "Touch fuzzy, get dizzy."
+
+/datum/reagent/ethanol/honeyshot
+	name = "Honey Shot"
+	id = "honeyshot"
+	description = "The perfect drink for bees."
+	taste_description = "sweet tart grenadine flavored with honey."
+	strength = 40
+	var/adj_dizzy = 10
+	color = "#d3785d"
+
+	glass_name = "Honey shot"
+	glass_desc = "A glass of golden liquid."
+
+/datum/reagent/ethanol/scsatw
+	name = "Slow Comfortable Screw Against the Wall"
+	id = "scsatw"
+	description = "The screwdriver's bigger cousin."
+	taste_description = "smooth, savory booze and tangy orange juice."
+	strength = 30
+	color = "#d3785d"
+
+	glass_name = "Slow Comfortable Screw Against the Wall"
+	glass_desc = "The best accessory to daydrinking."
+
+/datum/reagent/drink/sweettea
+	name = "Sweet Tea"
+	id = "sweettea"
+	description = "Tea that is sweetened with some form of sweetener."
+	taste_description = "tea that is sweet."
+	color = "#d3785d"
+
+	glass_name = "Sweet Tea"
+	glass_desc = "A southern classic. Southern what? You know, southern."
+
+/datum/reagent/ethanol/unsweettea
+	name = "Unsweetened Tea"
+	id = "unsweettea"
+	description = "A sick experiment to take the sweetness out of tea after sugar has been added resulted in this."
+	taste_description = "bland, slightly bitter, discount black tea."
+	strength = 80
+	druggy = 10
+	color = "#d3785d"
+
+	glass_name = "Unsweetened Tea"
+	glass_desc = "A drink with all the calories of sweet tea, but with none of the satisfaction. Slightly psychoactive."
+
+/datum/reagent/ethanol/lovemaker
+	name = "The Love Maker"
+	id = "lovemaker"
+	description = "A drink said to help one find true love."
+	taste_description = "sweet fruit and honey."
+	strength = 30
+	var/adj_dizzy = 30
+	adj_temp = 10
+	targ_temp = 360
+	color = "#d3785d"
+
+	glass_name = "The Love Maker"
+	glass_desc = "A drink said to help one find the perfect fuck."

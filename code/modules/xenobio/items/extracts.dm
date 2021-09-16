@@ -77,7 +77,8 @@
 
 /datum/chemical_reaction/slime/grey_new_slime/on_reaction(var/datum/reagents/holder)
 	holder.my_atom.visible_message("<span class='warning'>Infused with phoron, the core begins to quiver and grow, and soon a new baby slime emerges from it!</span>")
-	new /mob/living/simple_mob/slime/xenobio(get_turf(holder.my_atom))
+	var/mob/living/simple_mob/slime/xenobio/S = new(get_turf(holder.my_atom))
+	S.Weaken(10)
 	..()
 
 /datum/chemical_reaction/slime/grey_monkey

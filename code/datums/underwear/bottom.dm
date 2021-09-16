@@ -74,6 +74,11 @@
 	icon_state = "maebari"
 	has_color = TRUE
 
+/datum/category_item/underwear/bottom/maebari_bandaid
+	name = "Maebari (Band-Aid)"
+	icon_state = "maebari_bandaid"
+	has_color = TRUE
+
 /datum/category_item/underwear/bottom/chastbelt
 	name = "Chastity Belt"
 	icon_state = "chastbelt"
@@ -91,4 +96,14 @@
 /datum/category_item/underwear/bottom/jockstrap
 	name = "Jockstrap"
 	icon_state = "jockstrap"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/leotard
+	name = "Colorable Leotard"
+	icon_state = "leotard_bra_color"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/leotard_turt
+	name = "Colorable Leotard - Turtleneck"
+	icon_state = "leotard_turt_color"
 	has_color = TRUE

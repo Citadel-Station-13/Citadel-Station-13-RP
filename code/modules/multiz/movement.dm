@@ -33,7 +33,7 @@
 	if(is_incorporeal())
 		forceMove(destination)
 		return 1
-		
+
 	if(!start.CanZPass(src, direction))
 		to_chat(src, "<span class='warning'>\The [start] is in the way.</span>")
 		return 0
@@ -42,8 +42,7 @@
 		to_chat(src, "<span class='warning'>\The [destination] blocks your way.</span>")
 		return 0
 
-	var/area/area = get_area(src)
-	if(direction == UP && area.has_gravity() && !can_overcome_gravity())
+	if(direction == UP && has_gravity() && !can_overcome_gravity())
 		var/obj/structure/lattice/lattice = locate() in destination.contents
 		if(lattice)
 			var/pull_up_time = max(5 SECONDS + (movement_delay() * 10), 1)
@@ -196,12 +195,12 @@
 		return
 
 	// No gravity in space, apparently.
-	var/area/area = get_area(src)
-	if(!area.has_gravity())
+	if(!has_gravity())
 		return
 
 	if(throwing)
 		return
+
 	if(ismob(src))
 		var/mob/H = src //VOREStation Edit Start. Flight on mobs.
 		if(H.flying) //Some other checks are done in the wings_toggle proc
@@ -294,20 +293,14 @@
 
 // Things that prevent objects standing on them from falling into turf below
 /obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.x == x && target.y == y && target.z == z - 1)
-		return FALSE
-	return TRUE
+	return FALSE
 
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(mover.checkpass(PASSGRILLE))
-		return TRUE
-	if(target.x == x && target.y == y && target.z == z - 1)
-		return FALSE
-	return TRUE
+	return mover.checkpass(PASSGRILLE)
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
@@ -477,7 +470,10 @@
 			adjustBruteLoss(rand(damage_min, damage_max))
 		Weaken(4)
 		updatehealth()
-		return
+
+/mob/living/carbon/human/fall_impact(atom/hit_atom, damage_min, damage_max, silent, planetary)
+	if(!species?.handle_falling(src, hit_atom, damage_min, damage_max, silent, planetary))
+		..()
 
 //Using /atom/movable instead of /obj/item because I'm not sure what all humans can pick up or wear
 /atom/movable

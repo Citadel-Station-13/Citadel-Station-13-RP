@@ -1,10 +1,10 @@
 /datum/gm_action/comms_blackout
 	name = "communications blackout"
-	departments = list(ROLE_ENGINEERING, ROLE_EVERYONE)
+	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_EVERYONE)
 	chaotic = 45
 
 /datum/gm_action/comms_blackout/get_weight()
-	return 20 + (metric.count_people_in_department(ROLE_ENGINEERING) * 20)
+	return 20 + (metric.count_people_in_department(DEPARTMENT_ENGINEERING) * 20)
 
 /datum/gm_action/comms_blackout/announce()
 	if(prob(80))

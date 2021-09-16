@@ -17,7 +17,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod4)
 "f" = (
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Epod4)
 "g" = (
 /obj/structure/flora/tree/dead,
@@ -44,10 +44,10 @@
 	pixel_x = -32
 	},
 /obj/structure/loot_pile/maint/junk,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Epod4)
 "l" = (
-/turf/simulated/floor/outdoors/water/deep,
+/turf/simulated/floor/water/deep,
 /area/submap/Epod4)
 "m" = (
 /obj/structure/bed/chair{
@@ -65,7 +65,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/under/mbill,
 /obj/item/clothing/head/soft/mbill,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Epod4)
 "n" = (
 /obj/structure/bed/chair{
@@ -82,7 +82,7 @@
 	name = "exotic seeds crate";
 	starts_with = list(/obj/item/seeds/random = 6, /obj/item/seeds/replicapod = 2, /obj/item/seeds/ambrosiavulgarisseed = 2, /obj/item/seeds/kudzuseed, /obj/item/seeds/libertymycelium, /obj/item/seeds/reishimycelium)
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Epod4)
 "o" = (
 /obj/structure/shuttle/engine/propulsion/burst,
@@ -92,7 +92,7 @@
 /obj/structure/door_assembly/door_assembly_ext{
 	anchored = 1
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Epod4)
 "q" = (
 /obj/structure/flora/grass/brown,

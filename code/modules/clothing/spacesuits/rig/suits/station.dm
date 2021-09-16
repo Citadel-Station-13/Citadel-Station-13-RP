@@ -166,6 +166,7 @@
 
 	helm_type = /obj/item/clothing/head/helmet/space/rig/ce
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/ce
+	boot_type = /obj/item/clothing/shoes/magboots/rig/ce
 
 	allowed = list(
 		/obj/item/flashlight,
@@ -184,6 +185,9 @@
 /obj/item/clothing/gloves/gauntlets/rig/ce
 	name = "insulated gauntlets"
 	siemens_coefficient = 0
+
+/obj/item/clothing/shoes/magboots/rig/ce
+	slowdown_on = 0
 
 /obj/item/rig/ce/equipped
 

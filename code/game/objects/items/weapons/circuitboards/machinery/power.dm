@@ -43,3 +43,43 @@
 		/obj/item/stock_parts/spring = 1,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stack/cable_coil = 10)
+
+/obj/item/circuitboard/machine/rtg
+	name = T_BOARD("radioisotope TEG")
+	build_path = /obj/machinery/power/rtg
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_DATA = 3, TECH_POWER = 3, TECH_PHORON = 3, TECH_ENGINEERING = 3)
+	req_components = list(
+		/obj/item/stack/cable_coil = 5,
+		/obj/item/stock_parts/capacitor = 1,
+		/obj/item/stack/material/uranium = 10) // We have no Pu-238, and this is the closest thing to it.
+
+/obj/item/circuitboard/machine/rtg/advanced
+	name = T_BOARD("advanced radioisotope TEG")
+	build_path = /obj/machinery/power/rtg/advanced
+	origin_tech = list(TECH_DATA = 5, TECH_POWER = 5, TECH_PHORON = 5, TECH_ENGINEERING = 5)
+	req_components = list(
+		/obj/item/stack/cable_coil = 5,
+		/obj/item/stock_parts/capacitor = 1,
+		/obj/item/stock_parts/micro_laser = 1,
+		/obj/item/stack/material/uranium = 10,
+		/obj/item/stack/material/phoron = 5)
+
+/obj/item/circuitboard/machine/abductor/core
+	name = T_BOARD("void generator")
+	build_path = /obj/machinery/power/rtg/abductor
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_DATA = 8, TECH_POWER = 8, TECH_PHORON = 8, TECH_ENGINEERING = 8)
+	req_components = list(
+		/obj/item/stack/cable_coil = 5,
+		/obj/item/stock_parts/capacitor/omni = 1)
+
+/obj/item/circuitboard/machine/abductor/core/hybrid
+	name = T_BOARD("void generator (hybrid)")
+	build_path = /obj/machinery/power/rtg/abductor/hybrid
+	board_type = new /datum/frame/frame_types/machine
+	origin_tech = list(TECH_DATA = 8, TECH_POWER = 8, TECH_PHORON = 8, TECH_ENGINEERING = 8)
+	req_components = list(
+		/obj/item/stack/cable_coil = 5,
+		/obj/item/stock_parts/capacitor/omni = 1,
+		/obj/item/stock_parts/micro_laser/omni = 1)

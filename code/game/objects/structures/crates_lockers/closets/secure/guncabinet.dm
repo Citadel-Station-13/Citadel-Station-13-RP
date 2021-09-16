@@ -85,3 +85,7 @@
 		/obj/item/gun/energy/phasegun = 2,
 		/obj/item/cell/device/weapon = 2,
 		/obj/item/clothing/accessory/permit/gun/planetside)
+
+/obj/structure/closet/secure_closet/guncabinet/robotics
+	name = "exosuit equipment cabinet"
+	req_one_access = list(access_robotics,access_research)

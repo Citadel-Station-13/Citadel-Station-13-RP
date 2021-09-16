@@ -100,6 +100,11 @@
 /////////////////
 */
 
+/// Called from orbit component: (atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
+#define COMSIG_ATOM_ORBIT_BEGIN "atom_orbit_begin"
+/// Called from orbit component: (atom/movable/orbiter, refreshing)
+#define COMSIG_ATOM_ORBIT_END "atom_orbit_end"
+
 #define COMSIG_ENTER_AREA "enter_area" 						//from base of area/Entered(): (/area)
 #define COMSIG_EXIT_AREA "exit_area" 							//from base of area/Exited(): (/area)
 
@@ -372,3 +377,9 @@ obj/item signals
 #define COMSIG_XENO_TURF_CLICK_CTRL "xeno_turf_click_alt"					//from turf AltClickOn(): (/mob)
 #define COMSIG_XENO_MONKEY_CLICK_CTRL "xeno_monkey_click_ctrl"				//from monkey CtrlClickOn(): (/mob)
 */
+
+// conflict checking elements
+/// (id) - returns flags - Registered on something by conflict checking elements.
+#define COMSIG_CONFLICT_ELEMENT_CHECK "conflict_element_check"
+	/// A conflict was found
+	#define ELEMENT_CONFLICT_FOUND	(1<<0)

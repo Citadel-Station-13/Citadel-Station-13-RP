@@ -4,8 +4,8 @@
 	var/mob/living/carbon/occupant
 	var/locked
 	name = "Body Scanner"
-	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "body_scanner_0"
+	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon_state = "scanner_open"
 	density = 1
 	anchored = 1
 	circuit = /obj/item/circuitboard/body_scanner
@@ -167,18 +167,19 @@
 //Body Scan Console
 /obj/machinery/body_scanconsole
 	var/obj/machinery/bodyscanner/scanner
-	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif) //VOREStation Add - Backup Implant, NIF
+	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif, /obj/item/implant/mirror)
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
-	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "body_scannerconsole"
+	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon_state = "scanner_terminal_off"
 	dir = 8
-	density = 0
+	density = 1
 	anchored = 1
 	circuit = /obj/item/circuitboard/scanner_console
 	var/printing = null
 	var/printing_text = null
+	var/mirror = null
 
 /obj/machinery/body_scanconsole/Initialize(mapload, newdir)
 	. = ..()
@@ -282,6 +283,7 @@
 
 	if(scanner)
 		data["occupied"] = scanner.occupant ? 1 : 0
+		mirror = null
 
 		var/occupantData[0]
 		if(scanner.occupant && ishuman(scanner.occupant))
@@ -351,6 +353,8 @@
 					implantSubData["name"] = I.name
 					if(is_type_in_list(I, known_implants))
 						implantSubData["known"] = 1
+					for(var/obj/item/implant/mirror/P in E.implants)
+						mirror = P
 
 					implantData.Add(list(implantSubData))
 
@@ -434,12 +438,23 @@
 			printing = null
 			printing_text = null
 
+	if (href_list["backup"])
+		if(mirror != null)
+			var/obj/item/implant/mirror/E = mirror
+			E.post_implant(scanner.occupant)
+			visible_message("<span class='notice'>Manual backup complete.</span>")
+		else
+			visible_message("<span class='notice'>No mirror detected!</span>")
+		return
+
+
+
 /obj/machinery/body_scanconsole/proc/generate_printing_text()
 	var/dat = ""
 
 	if(scanner)
 		var/mob/living/carbon/human/occupant = scanner.occupant
-		dat = "<font color='blue'><b>Occupant Statistics:</b></font><br>" //Blah obvious
+		dat = "<font color=#4F49AF><b>Occupant Statistics:</b></font><br>" //Blah obvious
 		if(istype(occupant)) //is there REALLY someone in there?
 			var/t1
 			switch(occupant.stat) // obvious, see what their status is
@@ -563,7 +578,7 @@
 
 				if(unknown_body)
 					imp += "Unknown body present:"
-				if(!AN && !open && !infected & !imp)
+				if(!AN && !open && !infected && !imp)
 					AN = "None:"
 				if(!(e.status & ORGAN_DESTROYED))
 					dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured][o_dead]</td>"
@@ -610,3 +625,76 @@
 		dat = "<font color='red'> Error: No Body Scanner connected.</font>"
 
 	printing_text = dat
+
+/obj/machinery/bodyscanner/proc/get_occupant_data_vr(list/incoming,mob/living/carbon/human/H)
+	var/humanprey = 0
+	var/livingprey = 0
+	var/objectprey = 0
+
+	for(var/belly in H.vore_organs)
+		var/obj/belly/B = belly
+		for(var/C in B)
+			if(ishuman(C))
+				humanprey++
+			else if(isliving(C))
+				livingprey++
+			else
+				objectprey++
+
+	incoming["livingPrey"] = livingprey
+	incoming["humanPrey"] = humanprey
+	incoming["objectPrey"] = objectprey
+	incoming["weight"] = H.weight
+
+	return incoming
+
+/obj/machinery/bodyscanner/update_icon()
+	if(stat & (NOPOWER|BROKEN))
+		icon_state = "scanner_off"
+		set_light(0)
+	else
+		var/h_ratio
+		if(occupant)
+			h_ratio = occupant.health / occupant.maxHealth
+			switch(h_ratio)
+				if(1.000)
+					icon_state = "scanner_green"
+					set_light(l_range = 1.5, l_power = 2, l_color = COLOR_LIME)
+				if(0.001 to 0.999)
+					icon_state = "scanner_yellow"
+					set_light(l_range = 1.5, l_power = 2, l_color = COLOR_YELLOW)
+				if(-0.999 to 0.000)
+					icon_state = "scanner_red"
+					set_light(l_range = 1.5, l_power = 2, l_color = COLOR_RED)
+				else
+					icon_state = "scanner_death"
+					set_light(l_range = 1.5, l_power = 2, l_color = COLOR_RED)
+		else
+			icon_state = "scanner_open"
+			set_light(0)
+		if(console)
+			console.update_icon(h_ratio)
+
+/obj/machinery/body_scanconsole/update_icon(var/h_ratio)
+	if(stat & (NOPOWER|BROKEN))
+		icon_state = "scanner_terminal_off"
+		set_light(0)
+	else
+		if(scanner)
+			if(h_ratio)
+				switch(h_ratio)
+					if(1.000)
+						icon_state = "scanner_terminal_green"
+						set_light(l_range = 1.5, l_power = 2, l_color = COLOR_LIME)
+					if(-0.999 to 0.000)
+						icon_state = "scanner_terminal_red"
+						set_light(l_range = 1.5, l_power = 2, l_color = COLOR_RED)
+					else
+						icon_state = "scanner_terminal_dead"
+						set_light(l_range = 1.5, l_power = 2, l_color = COLOR_RED)
+			else
+				icon_state = "scanner_terminal_blue"
+				set_light(l_range = 1.5, l_power = 2, l_color = COLOR_BLUE)
+		else
+			icon_state = "scanner_terminal_off"
+			set_light(0)

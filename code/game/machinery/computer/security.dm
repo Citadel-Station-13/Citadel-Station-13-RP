@@ -536,7 +536,7 @@ What a mess.*/
 					if ("Change Criminal Status")
 						if (active2)
 							for(var/mob/living/carbon/human/H in player_list)
-								ENABLE_BITFIELD(H.hud_updateflag, WANTED_HUD)
+								BITSET(H.hud_updateflag, WANTED_HUD)
 							switch(href_list["criminal2"])
 								if("none")
 									active2.fields["criminal"] = "None"
@@ -602,8 +602,8 @@ What a mess.*/
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Parolled", "Released")
 				if(5)
 					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
-					if(PDA_Manifest.len)
-						PDA_Manifest.Cut()
+					if(GLOB.PDA_Manifest.len)
+						GLOB.PDA_Manifest.Cut()
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
 			continue

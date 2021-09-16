@@ -4,6 +4,7 @@
 #define LOC_RESEARCH 4
 #define LOC_MINING 5
 #define LOC_HYDRO 6
+#define LOC_ENGINEERING 7
 
 /datum/event/hostile_migration
 	var/location
@@ -34,7 +35,7 @@
 
 
 /datum/event/hostile_migration/start()
-	location = rand(1,6)
+	location = rand(1,7)
 	switch(location)
 		if(LOC_KITCHEN)
 			spawn_area_type = /area/crew_quarters/kitchen
@@ -66,6 +67,11 @@
 			locstring = "hydroponics"
 			spawncount = rand(1 * severity, 3 * severity)
 			boss_spawn_count = rand(0,1)
+		if(LOC_ENGINEERING)
+			spawn_area_type = /area/engineering/hallway/lower
+			locstring = "engineering"
+			spawncount = rand(1 , 3 * severity)
+			boss_spawn_count = rand(1,2)
 	if(!locstring)
 		spawn_area_type = /area/hallway
 		locstring = "public hallways"
@@ -114,3 +120,21 @@
 #undef LOC_RESEARCH
 #undef LOC_MINING
 #undef LOC_HYDRO
+#undef LOC_ENGINEERING
+
+
+//These spawn lists are here for an eventual expansion. Having code issues with this at the moment.
+/*
+	var/roaches = list(
+						/mob/living/simple_mob/animal/roach,
+						/mob/living/simple_mob/animal/roach/panzer,
+						/mob/living/simple_mob/animal/roach/jaeger,
+						/mob/living/simple_mob/animal/roach/seuche,
+						/mob/living/simple_mob/animal/roach/atomar,
+						/mob/living/simple_mob/animal/roach/strahlend
+						)
+	var/bossroaches = list(
+							/mob/living/simple_mob/animal/roach/zeitraum,
+							/mob/living/simple_mob/animal/roach/fuhrer
+							)
+*/

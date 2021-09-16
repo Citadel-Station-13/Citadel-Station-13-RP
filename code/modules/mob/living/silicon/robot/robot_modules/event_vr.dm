@@ -20,6 +20,7 @@
 	// Med
 	src.modules += new /obj/item/healthanalyzer(src)
 	src.modules += new /obj/item/shockpaddles/robot/hound(src)
+	src.modules += new /obj/item/dogborg/mirrortool(src)
 
 	// Engi
 	src.modules += new /obj/item/weldingtool/electric/mounted(src)

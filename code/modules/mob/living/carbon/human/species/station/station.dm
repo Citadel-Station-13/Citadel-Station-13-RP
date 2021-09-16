@@ -506,18 +506,18 @@
 
 	has_organ = list(
 		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
-		O_STRATA =   /obj/item/organ/internal/diona/strata,
-		O_BRAIN = /obj/item/organ/internal/brain/cephalon,
+		O_STRATA   = /obj/item/organ/internal/diona/strata,
+		O_BRAIN    = /obj/item/organ/internal/brain/cephalon,
 		O_RESPONSE = /obj/item/organ/internal/diona/node,
 		O_GBLADDER = /obj/item/organ/internal/diona/bladder,
-		O_POLYP =    /obj/item/organ/internal/diona/polyp,
-		O_ANCHOR =   /obj/item/organ/internal/diona/ligament
+		O_POLYP    = /obj/item/organ/internal/diona/polyp,
+		O_ANCHOR   = /obj/item/organ/internal/diona/ligament
 		)
 
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/diona/chest),
 		BP_GROIN =  list("path" = /obj/item/organ/external/diona/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/no_eyes/diona),
+		BP_HEAD  =  list("path" = /obj/item/organ/external/head/no_eyes/diona),
 		BP_L_ARM =  list("path" = /obj/item/organ/external/diona/arm),
 		BP_R_ARM =  list("path" = /obj/item/organ/external/diona/arm/right),
 		BP_L_LEG =  list("path" = /obj/item/organ/external/diona/leg),
@@ -527,6 +527,8 @@
 		BP_L_FOOT = list("path" = /obj/item/organ/external/diona/foot),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/diona/foot/right)
 		)
+
+	dispersed_eyes = TRUE//Its a bunch of nymphes that means it has eyes everywhere
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/diona_split_nymph,
@@ -546,7 +548,7 @@
 
 	body_temperature = T0C + 15		//make the plant people have a bit lower body temperature, why not
 
-	flags = NO_SCAN | IS_PLANT | NO_PAIN | NO_SLIP | NO_MINOR_CUT
+	flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 	blood_color = "#004400"
@@ -939,28 +941,32 @@
 
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
-	name_plural = "Xenomorphs"
+	name_plural = "Neomorphs"
 	icobase = 'icons/mob/human_races/r_xenomorph.dmi'
 	deform = 'icons/mob/human_races/r_def_xenomorph.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	darksight = 4 //Better hunters in the dark.
-	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 	num_alternate_languages = 2
 
 	min_age = 18
-	max_age = 80
+	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 
-	blurb = "Xenomorphs hybrids are a mixture of xenomorph DNA and some other humanoid species. \
-	Xenomorph hyrids mostly have had had their natural aggression removed due to the gene modification process \
-	although there are some exceptions, such as when they are harmed. Most xenomorph hybrids are female, due to their natural xenomorph genes, \
-	but there are multiple exceptions. All xenomorph hybrids have had their ability to lay eggs containing facehuggers \
-	removed if they had the ability to, although hybrids that previously contained this ability is extremely rare."
+	blurb = "Neomorphs are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
+	Neomorphs are civilised and capable of communicating with other species, without knowing their language. \
+	Over the years crusading the stars xenomorphs gathered genetic material of almost all known species(and probably some unknown as well), \
+	allowing Neomorphs to reproduce with most other species. This reproduction is not as invasive as the facehuggers of their relatives, \
+	but can still be dangerous to the host. Their chitinous exoskeleton allows them to endure low pressure and freezing cold \
+	quite well, but leaves them vurnerable to fire and heat."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)
-	// No wiki page for xenohybrids at present
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
 
 	//primitive_form = "" //None for these guys
+	language = "Xenomorph"
+	name_language = "Xenomorph"
+	species_language = "Xenomorph"
+	secondary_langs = list("Xenomorph")
+	num_alternate_languages = 3
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -978,6 +984,28 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
+
+	total_health = 110	//Exoskeleton makes you tougher than baseline
+	brute_mod = 0.95 // Chitin is somewhat hard to crack
+	burn_mod = 1.10	// Natural enemy of xenomorphs is fire
+	blood_volume = 560	//Baseline
+	darksight = 4 //Better hunters in the dark.
+	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
+
+	warning_low_pressure = 30//lower than baseline, still not vacuum prove
+	hazard_low_pressure = 5
+
+	warning_high_pressure = 325//Both baseline
+	hazard_high_pressure = 550
+
+	cold_level_1 = 160	//Take colder temperatures better.
+	cold_level_2 = 120
+	cold_level_3 = 90 //Original idea was 60, but O2 gets liquid at that point so we keep the standard air gasious.
+
+	heat_level_1 = 350	//dont like the heat
+	heat_level_2 = 400
+	heat_level_3 = 700
+
 
 /datum/species/harpy
 	name = SPECIES_RAPALA
@@ -1020,4 +1048,110 @@
 		"You feel uncomfortably warm.",
 		"Your overheated skin itches."
 		)
+
+/datum/species/crew_shadekin
+	name = SPECIES_SHADEKIN_CREW
+	name_plural = "Black-Eyed Shadekin"
+	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
+	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
+	tail = "tail"
+	blurb = "Very little is known about these creatures. They appear to be largely mammalian in appearance. \
+	Seemingly very rare to encounter, there have been widespread myths of these creatures the galaxy over, \
+	but next to no verifiable evidence to their existence. However, they have recently been more verifiably \
+	documented in the Virgo system, following a mining bombardment of Virgo 3. The crew of NSB Adephagia have \
+	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something more fitting for black-eyes	//CIT ADDENDUM: since we're not really on the tether anymore we'll need a bullshit reason as to why we have shadekin on a ship
+	wikilink = "https://wiki.vore-station.net/Shadekin"
+
+	language = LANGUAGE_SHADEKIN
+	name_language = LANGUAGE_SHADEKIN
+	species_language = LANGUAGE_SHADEKIN
+	secondary_langs = list(LANGUAGE_SHADEKIN)
+	num_alternate_languages = 3
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
+	rarity_value = 5	//INTERDIMENSIONAL FLUFFERS
+
+	siemens_coefficient = 0	//completely shockproof (this is no longer the case on virgo, feel free to change if it needs rebalancing)
+	darksight = 10	//best darksight around
+
+	slowdown = 0.5	//as slow as unathi
+	item_slowdown_mod = 1.5	//they're not as fit as them, though, slowed down more by heavy gear
+
+	total_health = 75	//fragile
+	brute_mod = 1.25 // Frail
+	burn_mod = 1.25	// Furry
+	blood_volume = 500	//slightly less blood than human baseline
+	hunger_factor = 0.2	//gets hungrier faster than human baseline
+
+	warning_low_pressure = 50
+	hazard_low_pressure = -1
+
+	warning_high_pressure = 300
+	hazard_high_pressure = INFINITY
+
+	cold_level_1 = -1	//Immune to cold
+	cold_level_2 = -1
+	cold_level_3 = -1
+
+	heat_level_1 = 850	//Resistant to heat
+	heat_level_2 = 1000
+	heat_level_3 = 1150
+
+	flags =  NO_SCAN | NO_MINOR_CUT	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise); CitadelRP: Now able to walk over shards of glass like regular shadekins
+	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+
+	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
+
+	flesh_color = "#FFC896"
+	blood_color = "#A10808"
+	base_color = "#f0f0f0"
+	color_mult = 1
+
+	inherent_verbs = list(/mob/living/proc/shred_limb)
+
+	has_glowing_eyes = TRUE	//TODO: port the ability to give neutral traits to all species from vorestation
+
+	male_cough_sounds = null
+	female_cough_sounds = null
+	male_sneeze_sound = null
+	female_sneeze_sound = null
+
+	speech_bubble_appearance = "ghost"
+
+	genders = list(MALE, FEMALE, PLURAL, NEUTER, HERM)	//fuck it. shadekins with titties
+
+	breath_type = null	//they don't breathe
+	poison_type = null
+
+	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_SKIN_COLOR | HAS_UNDERWEAR
+
+	has_organ = list(
+		O_HEART =		/obj/item/organ/internal/heart,
+		O_VOICE = 		/obj/item/organ/internal/voicebox,
+		O_LIVER =		/obj/item/organ/internal/liver,
+		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
+		O_BRAIN =		/obj/item/organ/internal/brain,
+		O_EYES =		/obj/item/organ/internal/eyes,
+		O_STOMACH =		/obj/item/organ/internal/stomach,
+		O_INTESTINE =	/obj/item/organ/internal/intestine
+		)
+
+	has_limbs = list(
+		BP_TORSO =  list("path" = /obj/item/organ/external/chest/crewkin),
+		BP_GROIN =  list("path" = /obj/item/organ/external/groin/crewkin),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head/vr/crewkin),
+		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/crewkin),
+		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/crewkin),
+		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/crewkin),
+		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/crewkin),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/crewkin),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/crewkin),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/crewkin),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/crewkin)
+		)
+
+/datum/species/shadekin/get_bodytype()
+	return SPECIES_SHADEKIN
+
+/datum/species/shadekin/can_breathe_water()
+	return TRUE	//they dont quite breathe
 

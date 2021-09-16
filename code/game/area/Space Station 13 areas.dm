@@ -25,6 +25,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 0
+	has_gravity = FALSE
 	power_light = 0
 	has_gravity = 0
 	power_equip = 0
@@ -894,6 +895,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Engineering Pump Station"
 	icon_state = "maint_pumpstation"
 
+/area/submap/pa_room
+	name = "Particle Accelerator Room"
+
 /area/maintenance/solars
 	name = "\improper Solars Maintenance"
 
@@ -1344,6 +1348,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Dormitories"
 	icon_state = "Sleep"
 	flags = RAD_SHIELDED
+	icon_state = "crew_quarters"
 	ambience = AMBIENCE_GENERIC
 
 /area/crew_quarters/toilet
@@ -1353,95 +1358,95 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/sleep
 	name = "Dormitories"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_A1
 	name = "Apartment A1"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_A2
 	name = "\improper Apartment A2"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_A3
 	name = "\improper Apartment A3"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_A4
 	name = "\improper Apartment A4"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_A5
 	name = "\improper Apartment A5"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_A6
 	name = "\improper Apartment A6"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_A7
 	name = "\improper Apartment A7`"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_A8
 	name = "\improper Apartment A8"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_B1
 	name = "\improper Apartment B1"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_B2
 	name = "\improper Apartment B2"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Apartment_B3
 	name = "\improper Apartment B3"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_1
 	name = "\improper Dormitory Room 1"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_2
 	name = "\improper Dormitory Room 2"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_3
 	name = "\improper Dormitory Room 3"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_4
 	name = "\improper Dormitory Room 4"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_5
 	name = "\improper Dormitory Room 5"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_6
 	name = "\improper Dormitory Room 6"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_7
 	name = "\improper Dormitory Room 7"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_8
 	name = "\improper Dormitory Room 8"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_9
 	name = "\improper Dormitory Room 9"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_10
 	name = "\improper Dormitory Room 10"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_11
 	name = "\improper Dormitory Room 11"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/showers
 	name = "\improper Unisex Showers"
@@ -1449,19 +1454,19 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/sleep/maintDorm1
 	name = "\improper Construction Dorm 1"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/maintDorm2
 	name = "\improper Construction Dorm 2"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/maintDorm3
 	name = "\improper Construction Dorm 3"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/maintDorm4
 	name = "\improper Construction Dorm 4"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/Dorm_1/holo
 	name = "\improper Dorm 1 Holodeck"
@@ -1500,71 +1505,71 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/sleep/CMO_quarters
 	name = "\improper CMO Dorm"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/RD_quarters
 	name = "\improper RD Dorm"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/CE_quarters
 	name = "\improper CE Dorm"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/HOS_quarters
 	name = "\improper HOS Dorm"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/HOP_quarters
 	name = "\improper HOP Dorm"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_1
 	name = "\improper Visitor Room 1"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_2
 	name = "\improper Visitor Room 2"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_3
 	name = "\improper Visitor Room 3"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_4
 	name = "\improper Visitor Room 4"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_5
 	name = "\improper Visitor Room 5"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_6
 	name = "\improper Visitor Room 6"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_7
 	name = "\improper Visitor Room 7"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_8
 	name = "\improper Visitor Room 8"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_9
 	name = "\improper Visitor Room 9"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_10
 	name = "\improper Visitor Room 10"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_11
 	name = "\improper Visitor Room 11"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/vistor_room_12
 	name = "\improper Visitor Room 12"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/engi_wash
 	name = "\improper Engineering Washroom"
@@ -1573,20 +1578,20 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/sleep/bedrooms
 	name = "\improper Dormitory Bedroom One"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 	sound_env = SMALL_SOFTFLOOR
 
 /area/crew_quarters/sleep/cryo
 	name = "\improper Cryogenic Storage"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep/elevator
 	name = "\improper Main Elevator"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep_male
 	name = "\improper Male Dorm"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep_male/toilet_male
 	name = "\improper Male Toilets"
@@ -1595,7 +1600,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/sleep_female
 	name = "\improper Female Dorm"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/crew_quarters/sleep_female/toilet_female
 	name = "\improper Female Toilets"
@@ -1855,7 +1860,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "atmos"
 	sound_env = LARGE_ENCLOSED
 	ambience = AMBIENCE_ATMOS
-	)
 
 /area/engineering/atmos/backup
 	name = "\improper Backup Atmospherics"
@@ -2161,7 +2165,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Medbay Restroom"
 	icon_state = "medbay_restroom"
 	ambience = AMBIENCE_ATMOS
-	)
 
 /area/medical/patients_rooms
 	name = "\improper Patient's Rooms"
@@ -2737,15 +2740,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/rnd/outpost/crew_quarters/sleep/Dorm_1
 	name = "\improper Outpost - Dorms 1"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/rnd/outpost/crew_quarters/sleep/Dorm_2
 	name = "\improper Outpost - Dorms 2"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/rnd/outpost/crew_quarters/sleep/Dorm_3
 	name = "\improper Outpost - Dorms 3"
-	icon_state = "Sleep"
+	icon_state = "crew_quarters"
 
 /area/rnd/outpost/medical/first_aid_south_west
 	name = "\improper Outpost - First Aid South West"

@@ -321,18 +321,21 @@
 	return 1
 
 /obj/item/clothing/gloves/dropped()
-	..()
+	. = ..()
 
 	if(!wearer)
 		return
 
-	var/mob/living/carbon/human/H = wearer
-	if(ring && istype(H))
-		if(!H.equip_to_slot_if_possible(ring, slot_gloves))
-			ring.forceMove(get_turf(src))
-		src.ring = null
+	if(ishuman(wearer))
+		restore_over_objects(wearer)
 	punch_force = initial(punch_force)
 	wearer = null
+
+/obj/item/clothing/gloves/proc/restore_over_objects(mob/living/carbon/human/wearer)
+	if(ring)
+		if(!wearer.equip_to_slot_if_possible(ring, slot_gloves))
+			ring.forceMove(get_turf(src))
+		ring = null
 
 /obj/item/clothing/gloves
 	var/datum/unarmed_attack/special_attack = null //do the gloves have a special unarmed attack?
@@ -955,7 +958,7 @@
 	set_sensors(usr)
 
 /obj/item/clothing/under/verb/rollsuit()
-	set name = "Roll Down Jumpsuit"
+	set name = "Roll Jumpsuit"
 	set category = "Object"
 	set src in usr
 	if(!istype(usr, /mob/living)) return
@@ -978,13 +981,13 @@
 		else
 			item_state_slots[slot_w_uniform_str] = "[worn_state]_d"
 
-		to_chat(usr, "<span class='notice'>You roll down your [src].</span>")
+		to_chat(usr, "<span class='notice'>You roll your [src].</span>")
 	else
 		body_parts_covered = initial(body_parts_covered)
 		if(icon_override == rolled_down_icon)
 			icon_override = initial(icon_override)
 		item_state_slots[slot_w_uniform_str] = "[worn_state]"
-		to_chat(usr, "<span class='notice'>You roll up your [src].</span>")
+		to_chat(usr, "<span class='notice'>You unroll your [src].</span>")
 	update_clothing_icon()
 
 /obj/item/clothing/under/verb/rollsleeves()

@@ -122,25 +122,14 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
 /mob/living/carbon/human/update_transform()
-	/* VOREStation Edit START - TODO - Consider switching to icon_scale
-	// First, get the correct size.
-	var/desired_scale_x = icon_scale_x
-	var/desired_scale_y = icon_scale_y
+	if(tail_style?.can_loaf)
+		// return early after updating taur type
+		update_tail_showing()
+		return
 
-	desired_scale_x *= species.icon_scale_x
-	desired_scale_y *= species.icon_scale_y
-
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.icon_scale_x_percent))
-			desired_scale_x *= M.icon_scale_x_percent
-		if(!isnull(M.icon_scale_y_percent))
-			desired_scale_y *= M.icon_scale_y_percent
-	*/
 	var/desired_scale_x = size_multiplier
 	var/desired_scale_y = size_multiplier
-	//VOREStation Edit End
 
-	// Regular stuff again.
 	var/matrix/M = matrix()
 	var/anim_time = 3
 
@@ -149,7 +138,11 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		anim_time = 1 //Thud
 
 	if(lying && !species.prone_icon) //Only rotate them if we're not drawing a specific icon for being prone.
-		M.Turn(90)
+		var/randn = rand(1, 2)
+		if(randn <= 1) // randomly choose a rotation
+			M.Turn(-90)
+		else
+			M.Turn(90)
 		M.Scale(desired_scale_x, desired_scale_y)
 		M.Translate(1,-6)
 		layer = MOB_LAYER -0.01 // Fix for a byond bug where turf entry order no longer matters
@@ -1088,7 +1081,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(!depth || lying)
 		return
 
-	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
+	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
 
 	apply_layer(MOB_WATER_LAYER)
 

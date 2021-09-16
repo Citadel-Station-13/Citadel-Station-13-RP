@@ -300,3 +300,17 @@
 	muzzle_type = /obj/effect/projectile/muzzle/emitter
 	tracer_type = /obj/effect/projectile/tracer/emitter
 	impact_type = /obj/effect/projectile/impact/emitter
+
+/obj/item/projectile/beam/pointdefense
+	name = "point defense salvo"
+	icon_state = "laser"
+	damage = 15
+	damage_type = ELECTROCUTE //You should be safe inside a voidsuit
+	sharp = FALSE //"Wide" spectrum beam
+	light_color = "#A9980A"
+
+	excavation_amount = 200 // Good at shooting rocks
+
+	muzzle_type = /obj/effect/projectile/muzzle/laser_omni
+	tracer_type = /obj/effect/projectile/tracer/laser_omni
+	impact_type = /obj/effect/projectile/impact/laser_omni

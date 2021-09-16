@@ -8,6 +8,11 @@
 	var/ore_key
 	var/image/scanner_image
 
+// taemp check
+/obj/effect/mineral/New(loc, datum/ore/O)
+	. = ..()
+	ASSERT(O)
+
 /obj/effect/mineral/Initialize(mapload, datum/ore/M)
 	. = ..()
 	name = "[M.display_name] deposit"

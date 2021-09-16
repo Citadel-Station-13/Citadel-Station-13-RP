@@ -1,7 +1,8 @@
 /mob/living/carbon/human/emote(var/act,var/m_type=1,var/message = null)
 	var/param = null
 	var/datum/gender/T = gender_datums[get_visible_gender()]
-
+	if(istype(src, /mob/living/carbon/human/dummy))
+		return
 	if (findtext(act, "-", 1, null))
 		var/t1 = findtext(act, "-", 1, null)
 		param = copytext(act, t1 + 1, length(act) + 1)
@@ -225,7 +226,16 @@
 			m_type = 1
 
 		if ("chuckle")
-			emote("laugh")
+			if(miming)
+				message = "appears to chuckle."
+				m_type = 1
+			else
+				if (!muzzled)
+					message = "chuckles."
+					m_type = 2
+				else
+					message = "makes a noise."
+					m_type = 2
 
 		if ("twitch")
 			message = "twitches."
@@ -816,10 +826,10 @@
 			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \
 					raise, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, weh, whimper, wink, yawn. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
+					twitch_v, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
 		else
-			to_chat(src, "<font color='blue'>Unusable emote '[act]'. Say *help for a list.</font>")
+			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")
 			return
 
 	if (message)
@@ -949,6 +959,22 @@
 		if ("nme")
 			nme()
 			return TRUE
+		if ("mchitter")
+			message = "chitters."
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/mothchitter.ogg', 50, 1, -1)
+		if ("mlaugh")
+			message = "laughs."
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/mothlaugh.ogg', 50, 1, -1)
+		if ("mscream")
+			message = "screams!"
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/scream_moth.ogg', 50, 1, -1)
+		if ("msqueak")
+			message = "lets out a squeak."
+			m_type = 2
+			playsound(loc, 'sound/voice/moth/mothsqueak.ogg', 50, 1, -1)
 		if ("flip")
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			//Check if they are physically capable
@@ -964,7 +990,14 @@
 			message = "purrs softly."
 			m_type = 2
 			playsound(loc, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
-
+		if ("clak")
+			if(!spam_flag)
+				var/msg = list("<font color='grey' size='2'>CLAKS!</font>", "claks!")
+				message = "[pick(msg)]"
+				playsound(loc, 'modular_citadel/sound/spooky/boneclak.ogg', 50, 1, 1)
+				spam_flag = TRUE
+				addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+			m_type = 2
 	if (message)
 		custom_emote(m_type,message)
 		return 1
