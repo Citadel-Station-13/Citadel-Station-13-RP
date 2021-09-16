@@ -383,7 +383,9 @@
 	//Recursively despawn mobs
 	for(var/mob/M in to_despawn)
 		despawn_occupant(M)
-	SStranscore.m_backup(to_despawn)
+	if(to_despawn.mind && ishuman(to_despawn))
+		var/mob/living/carbon/human/H = to_despawn
+		SStranscore.m_backup(H.mind, H.nif, TRUE)
 	// VOREStation
 	hook_vr("despawn", list(to_despawn, src))
 	if(isliving(to_despawn))
