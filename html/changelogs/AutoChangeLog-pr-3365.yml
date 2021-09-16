@@ -1,0 +1,8 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Keycard scanners to HoP/Cap's room."
+  - rscadd: "Reporter gear to Librarian Alt."
+  - bugfix: "Skateboard faults/duping."
+  - bugfix: "Lizard tail coloration."
+  - bugfix: "Typo correction in flight suit and construction void."
