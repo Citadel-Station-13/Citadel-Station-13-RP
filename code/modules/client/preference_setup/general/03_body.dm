@@ -144,15 +144,53 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.b_synth			= pref.b_synth
 	character.synth_markings 	= pref.synth_markings
 
-	// Destroy/cyborgize organs and limbs.
+
 	character.synthetic = null
-	for(var/name in list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO))
+	var/datum/species/mob_species = GLOB.all_species[pref.species] //moving this up so we can access it here.
+	// Destroy/cyborgize organs and limbs.
+	for(var/name in list(BP_TORSO, BP_HEAD, BP_GROIN, BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND, BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT))
 		var/status = pref.organ_data[name]
 		var/obj/item/organ/external/O = character.organs_by_name[name]
-		if(O)
-			if(status == "amputated")
+
+		/*
+		outcomes:
+		no change if state == desired state
+		regenerate limb if robotic but current is normal
+		regenerate limb if normal but current is robotic
+		regenerate limb if robotic but brand is different
+		regenerate limb if robotic or normal but current is amputated
+		remove limb if amputated
+		*/
+
+		var/need_new = 0
+
+		if(status == "amputated")
+			if(O) //if present, remove. otherwise do nothing.
 				O.remove_rejuv()
-			else if(status == "cyborg")
+		else if(O)
+			if(status == "cyborg")
+				if(O.robotic)
+					if(O.model != pref.rlimb_data[name]) //if robotic but model does not match, remove and regen
+						O.remove_rejuv()
+						need_new = 1
+				else
+					if(pref.rlimb_data[name]) //robotize normally
+						O.robotize(pref.rlimb_data[name])
+					else
+						O.robotize()
+			else if(O.robotic) //if it shouldn't be robotic, remove and regen
+				O.remove_rejuv()
+				need_new = 1
+		else //if it isn't there, regen
+			need_new = 1
+
+		if(need_new && (name in mob_species.has_limbs)) //generate a new limb
+			var/list/organ_data = mob_species.has_limbs[name]
+			var/limb_path = organ_data["path"]
+			O = new limb_path(character)
+			organ_data["descriptor"] = O.name
+
+			if(status == "cyborg") //if it should be robotic, robotize normally
 				if(pref.rlimb_data[name])
 					O.robotize(pref.rlimb_data[name])
 				else
@@ -194,7 +232,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		last_descriptors = pref.body_descriptors.Copy()
 	pref.body_descriptors = list()
 
-	var/datum/species/mob_species = GLOB.all_species[pref.species]
 	if(LAZYLEN(mob_species.descriptors))
 		for(var/entry in mob_species.descriptors)
 			var/datum/mob_descriptor/descriptor = mob_species.descriptors[entry]
