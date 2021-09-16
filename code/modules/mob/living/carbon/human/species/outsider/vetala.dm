@@ -4,7 +4,7 @@
 	default_language = LANGUAGE_GALCOM
 	language = LANGUAGE_GALCOM
 	num_alternate_languages = 3
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws, /datum/unarmed_attack/bite)
 	rarity_value = 4
 
 	blurb = "The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
@@ -74,7 +74,7 @@
 	default_language = LANGUAGE_GALCOM
 	language = LANGUAGE_GALCOM
 	num_alternate_languages = 3
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws/strong, /datum/unarmed_attack/bite/strong)
+	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/claws, /datum/unarmed_attack/bite)
 	rarity_value = 4
 
 	blurb =	"The Vetalan are not a unified race, per se. Each Vetalan is genetically a member of another species. \
