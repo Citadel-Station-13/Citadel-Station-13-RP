@@ -136,18 +136,19 @@
 
 	melee_damage_lower = 2
 	melee_damage_upper = 3
-/*
+
 	var/age = 0
+	var/spawn_delay = 150
 	var/list/grow_as = list(/mob/living/simple_mob/animal/roach, /mob/living/simple_mob/animal/roach/seuche, /mob/living/simple_mob/animal/roach/jaeger)
 
-/mob/living/simple_mob/animal/roach/roachling/proc/mature
+/mob/living/simple_mob/animal/roach/roachling/proc/mature()
 	if(prob(25))
 		age = rand(world.time - spawn_delay, world.time)
 	if(age >= 100)
 		var/spawn_type = pick(grow_as)
-		var/mob/living/simple_mob/animal/roach/GS = new spawn_type(src.loc, src)
+		new spawn_type(src.loc, src)
 		qdel(src)
-*/
+
 
 //That's just great. That's what we wanna show kids. Santa rolling down the block - in a Panzer.
 /datum/category_item/catalogue/fauna/roach/panzer
