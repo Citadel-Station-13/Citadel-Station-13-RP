@@ -201,15 +201,17 @@
 	if(!T)
 		return
 	var/list/processing = list(T)
+	var/list/processed = list()
 	while(processing.len)
 		var/turf/check = processing[1]
 		processing.Cut(1, 2)
+		processed[check] = TRUE
 		if(get_dist(check, T) > maxrad)
 			continue
 		. += check
 		for(var/d in GLOB.cardinals)
 			var/turf/enemy = get_step(check, d)
-			if(!enemy || !check.CanZASPass(enemy) || !enemy.CanZASPass(check))
+			if(!enemy || !check.CanZASPass(enemy) || !enemy.CanZASPass(check) || processed[enemy])
 				continue
 			processing += enemy
 
