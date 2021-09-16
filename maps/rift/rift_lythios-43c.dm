@@ -195,6 +195,15 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 /datum/weather/lythios43c/snow/process_effects()
 	..()
+	for(var/mob/living/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // Are they indoors?
+
+			if(show_message)
+				to_chat(L, pick(effect_message))
+
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
 			for(var/dir_checked in GLOB.cardinal)
@@ -224,13 +233,106 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 /datum/weather/lythios43c/blizzard/process_effects()
 	..()
+	for(var/mob/living/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // Are they indoors?
+
+			if(show_message)
+				to_chat(L, pick(effect_message))
+
 	for(var/turf/simulated/floor/outdoors/snow/S in SSplanets.new_outdoor_turfs) //This didn't make any sense before SSplanets, either
 		if(S.z in holder.our_planet.expected_z_levels)
-			for(var/dir_checked in cardinal)
+			for(var/dir_checked in GLOB.cardinal)
 				var/turf/simulated/floor/T = get_step(S, dir_checked)
 				if(istype(T))
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
 						T.chill()
+
+/datum/weather/lythios43c/storm
+	name = "storm"
+	icon_state = "storm"
+	light_modifier = 0.3
+	flight_failure_modifier = 10
+	effect_message = list(
+		"<I>A gentle white noise of rain taps away a restless song.</I>",
+		"<I>Showering rain from above intesifies for a moment and briefly obscures your vision.</I>",
+		"<I>Gusting winds sweep past you and carry harsher rainfall before returning to its previous intensity.</I>"
+	)
+
+	var/next_lightning_strike = 0 // world.time when lightning will strike.
+	var/min_lightning_cooldown = 5 SECONDS
+	var/max_lightning_cooldown = 1 MINUTE
+	observed_message = "An intense storm pours down over the region."
+	transition_messages = list(
+		"You feel intense winds hit you as a few droplets of water spatter the ground.",
+		"Loud thunder is heard in the distance.",
+		"A bright flash heralds the approach of a storm."
+	)
+
+
+	transition_chances = list(
+		WEATHER_RAIN = 45,
+		WEATHER_STORM = 40,
+		WEATHER_HAIL = 10,
+		WEATHER_OVERCAST = 5
+		)
+
+/datum/weather/lythios43c/storm/process_effects()
+	..()
+	for(var/mob/living/L in living_mob_list)
+		if(L.z in holder.our_planet.expected_z_levels)
+			var/turf/T = get_turf(L)
+			if(!T.outdoors)
+				continue // Are they indoors?
+
+			// Lazy wind code
+			if(prob(10))
+				if(istype(L.get_active_hand(), /obj/item/melee/umbrella))
+					var/obj/item/melee/umbrella/U = L.get_active_hand()
+					if(U.open)
+						to_chat(L, "<span class='danger'>You struggle to keep hold of your umbrella!</span>")
+						L.Stun(20)	// This is not nearly as long as it seems
+						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)	// Closest sound I've got to "Umbrella in the wind"
+				else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
+					var/obj/item/melee/umbrella/U = L.get_inactive_hand()
+					if(U.open)
+						to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")
+						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
+						L.drop_from_inventory(U)
+						U.toggle_umbrella()
+						U.throw_at(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
+
+			// If they have an open umbrella, it'll guard from rain
+			if(istype(L.get_active_hand(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_active_hand()
+				if(U.open)
+					if(show_message)
+						to_chat(L, pick(effect_message))
+					continue
+			else if(istype(L.get_inactive_hand(), /obj/item/melee/umbrella))
+				var/obj/item/melee/umbrella/U = L.get_inactive_hand()
+				if(U.open)
+					if(show_message)
+						to_chat(L, pick(effect_message))
+					continue
+
+
+			L.water_act(2)
+			if(show_message)
+				to_chat(L, pick(effect_message))
+
+	handle_lightning()
+
+// This gets called to do lightning periodically.
+// There is a seperate function to do the actual lightning strike, so that badmins can play with it.
+/datum/weather/lythios43c/storm/proc/handle_lightning()
+	if(world.time < next_lightning_strike)
+		return // It's too soon to strike again.
+	next_lightning_strike = world.time + rand(min_lightning_cooldown, max_lightning_cooldown)
+	var/turf/T = pick(holder.our_planet.planet_floors) // This has the chance to 'strike' the sky, but that might be a good thing, to scare reckless pilots.
+	lightning_strike(T)
 
 /datum/weather/lythios43c/hail
 	name = "hail"
