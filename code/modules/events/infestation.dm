@@ -48,43 +48,43 @@
 		if(LOC_KITCHEN)
 			spawn_area_type = /area/crew_quarters/kitchen
 			locstring = "kitchen"
-			spawncount = rand(1 * severity, 3 * severity)
+			spawncount = rand(3,15)
 		if(LOC_ATMOS)
 			spawn_area_type = /area/engineering/atmos
 			locstring = "atmospherics"
-			spawncount = rand(1 * severity, 3 * severity)
+			spawncount = rand(3,15)
 		if(LOC_CHAPEL)
 			spawn_area_type = /area/chapel
 			locstring = "the chapel"
-			spawncount = rand(1 * severity, 3 * severity)
+			spawncount = rand(3,15)
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library
 			locstring = "library"
-			spawncount = rand(1, 3 * severity)
+			spawncount = rand(3,15)
 		if(LOC_HALLWAYS)
 			spawn_area_type = /area/hallway
 			locstring = "public hallways"
-			spawncount = rand(2 * severity, 5 * severity)
+			spawncount = rand(3,15)
 		if(LOC_RESEARCH)
 			spawn_area_type = /area/rnd
 			locstring = "research and development"
-			spawncount = rand(1 , 2 * severity)
+			spawncount = rand(3,15)
 		if(LOC_MINING)
 			spawn_area_type = /area/quartermaster
 			locstring = "cargo & mining"
-			spawncount = rand(1 , 3 * severity)
+			spawncount = rand(3,15)
 		if(LOC_HYDRO)
 			spawn_area_type = /area/hydroponics
 			locstring = "hydroponics"
-			spawncount = rand(1 * severity, 3 * severity)
+			spawncount = rand(3,15)
 		if(LOC_ENGINEERING)
 			spawn_area_type = /area/engineering/
 			locstring = "engineering"
-			spawncount = rand(1 , 3 * severity)
+			spawncount = rand(3,15)
 	if(!locstring)
 		spawn_area_type = /area/hallway
 		locstring = "public hallways"
-		spawncount = rand(2 * severity, 5 * severity)
+		spawncount = rand(3,15)
 
 	vermin = rand(1,4)
 	switch(vermin)

@@ -107,6 +107,8 @@
 	name = "Greta"
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
 
+	taser_kill = 0
+
 /mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
 	. = ..()
 	// Change my name back, don't want to be named Tom (666)
@@ -138,17 +140,20 @@
 	melee_damage_upper = 3
 
 	var/age = 0
-	var/spawn_delay = 150
+	var/spawn_delay = 20
 	var/list/grow_as = list(/mob/living/simple_mob/animal/roach, /mob/living/simple_mob/animal/roach/seuche, /mob/living/simple_mob/animal/roach/jaeger)
 
-/mob/living/simple_mob/animal/roach/roachling/proc/mature()
-	if(prob(25))
-		age = rand(world.time - spawn_delay, world.time)
-	if(age >= 100)
-		var/spawn_type = pick(grow_as)
-		new spawn_type(src.loc, src)
-		qdel(src)
+/*
+/mob/living/carbon/superior_animal/roach/roachling/Life()
+	.=..()
+	if(!stat)
+		amount_grown += rand(0,2) // Roachling growing up
 
+		if(amount_grown >= 100) // Old enough to turn into an adult
+			var/spawn_type = pick(grow_as)
+			new spawn_type(src.loc, src)
+			qdel(src)
+*/
 
 //That's just great. That's what we wanna show kids. Santa rolling down the block - in a Panzer.
 /datum/category_item/catalogue/fauna/roach/panzer
@@ -170,6 +175,8 @@
 
 	maxHealth = 30
 	health = 30
+
+	taser_kill = 0
 
 	movement_cooldown = 7
 
@@ -198,6 +205,8 @@
 
 	maxHealth = 15
 	health = 15
+
+	taser_kill = 0
 
 	melee_damage_lower = 7
 	melee_damage_upper = 10
@@ -232,6 +241,8 @@
 
 	maxHealth = 15
 	health = 15
+
+	taser_kill = 0
 
 	armor = list(
 				"bio" = 100
@@ -281,6 +292,8 @@
 	maxHealth = 10
 	health = 10
 
+	taser_kill = 0
+
 	melee_damage_lower = 2
 	melee_damage_upper = 3
 
@@ -319,6 +332,8 @@
 
 	maxHealth = 30
 	health = 30
+
+	taser_kill = 0
 
 	movement_cooldown = 8
 
@@ -359,6 +374,8 @@
 	maxHealth = 20
 	health = 20
 
+	taser_kill = 0
+
 	armor = list(
 				"melee" = 20,
 				"laser" = 20,
@@ -393,6 +410,8 @@
 
 	maxHealth = 20
 	health = 20
+
+	taser_kill = 0
 
 	melee_damage_lower = 5
 	melee_damage_upper = 10
@@ -501,6 +520,8 @@
 
 	maxHealth = 60
 	health = 60
+
+	taser_kill = 0
 
 	melee_damage_lower = 10
 	melee_damage_upper = 20
