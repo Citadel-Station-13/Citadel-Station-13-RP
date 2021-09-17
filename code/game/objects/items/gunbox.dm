@@ -1,6 +1,8 @@
 /obj/item/gunbox
 	name = "security sidearm box"
 	desc = "A secure box containing a security sidearm."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "gunbox"
 
 /obj/item/gunbox/attack_self(mob/living/user)
 	var/list/options = list()

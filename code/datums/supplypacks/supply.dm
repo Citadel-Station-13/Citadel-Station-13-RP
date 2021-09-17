@@ -115,12 +115,14 @@
 	containername = "Shaft miner equipment"
 	access = access_mining
 
+/* //MULE Bots can't traverse the Tether.
 /datum/supply_pack/supply/mule
 	name = "Mulebot Crate"
 	contains = list()
 	cost = 20
 	containertype = /obj/structure/largecrate/animal/mulebot
 	containername = "Mulebot Crate"
+*/
 
 /datum/supply_pack/supply/cargotrain
 	name = "Cargo Train Tug"
