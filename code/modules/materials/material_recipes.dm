@@ -268,7 +268,7 @@
 	recipes += new/datum/stack_recipe("baggy pants", /obj/item/clothing/under/pants/baggy/white, 8, time = 10 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("belt pouch", /obj/item/storage/belt/fannypack/white, 25, time = 1 MINUTE, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("crude bandage", /obj/item/stack/medical/crude_pack, 1, time = 2 SECONDS, pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("empty sandbag", /obj/item/stack/material/emptysandbag, 1, 5, 10, time = 2 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("empty sandbag", /obj/item/stack/emptysandbag, 2, 5, 10, time = 2 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("shrine seal", /obj/structure/shrine_seal, 2, time = 5 SECONDS)
 
 /datum/material/resin/generate_recipes()
@@ -331,9 +331,3 @@
 	recipes += new/datum/stack_recipe_list("statues", list( \
 		new/datum/stack_recipe("assistant statue", /obj/structure/statue/sandstone/assistant, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
-
-//Sandbags
-/datum/material/sandbags/generate_recipes()
-	..()
-	recipes = list()
-	recipes += new/datum/stack_recipe("sandbag barricade", /obj/structure/table/sandbags, 10, one_per_turf = 1, on_floor = 1)
