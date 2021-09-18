@@ -1141,6 +1141,11 @@
     desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
     icon_state = "miniskirt_fashion"
 
+/obj/item/clothing/under/bodysuit
+	name = "standard bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This basic version is a sleek onyx grey comes with the standard induction ports."
+	icon_state = "bodysuit"
+
 /obj/item/clothing/under/bodysuit/bodysuiteva
 	name = "\improper EVA bodysuit"
 	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This one has bright white plating for easy visibility and thick cuffs to lock into your thrust controls."

@@ -182,8 +182,13 @@
 				warmup_time = injtime*0.66 //66% of the time is warmup
 
 				if(istype(H))
+					if(H.w_uniform)
+						if(istype(H.w_uniform, /obj/item/clothing/under/bodysuit))
+							injtime = injtime * 1
 					if(H.wear_suit)
-						if(istype(H.wear_suit, /obj/item/clothing/suit/space))
+						if(istype(H.wear_suit, /obj/item/clothing/suit/space) || H.w_uniform)
+							injtime = injtime * 0.5
+						else if(istype(H.wear_suit, /obj/item/clothing/suit/space))
 							injtime = injtime * 2
 					if(!H.can_inject(user, 1))
 						return
