@@ -550,7 +550,7 @@
 
 	//primitive_form = "Monkey" //I dunno. Replace this in the future.
 
-	flags = NO_MINOR_CUT
+	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
