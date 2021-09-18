@@ -127,16 +127,16 @@ var/list/sandbag_icon_cache = list()
 	if(mapload)
 		return INITIALIZE_HINT_LATELOAD
 	else
-		update_connections(TRUE)
+		//update_connections(TRUE)
 		update_icon()
 
 /obj/structure/sandbag/LateInitialize()
 	. = ..()
-	update_connections(FALSE)
+	//update_connections(FALSE)
 	update_icon()
 
 /obj/structure/sandbag/Destroy()
-	update_connections(TRUE)
+	//update_connections(TRUE)
 	. = ..()
 
 /obj/structure/sandbag/examine(mob/user)
@@ -223,6 +223,9 @@ var/list/sandbag_icon_cache = list()
 	qdel(src)
 	return
 
+
+//All this table icon code is gibberish to me.
+/*
 /proc/get_sandbag_image(var/icon/sicon,var/siconstate,var/sdir)
 	var/icon_cache_key = "\ref[sicon]-[siconstate]-[sdir]"
 	var/image/I = sandbag_icon_cache[icon_cache_key]
@@ -233,28 +236,29 @@ var/list/sandbag_icon_cache = list()
 	return I
 
 /obj/structure/sandbag/update_icon()
-	icon_state = "blank"
-	overlays.Cut()
+	if(vestigial)
+		icon_state = "sandbags"
+		overlays.Cut()
 
-	for(var/i = 1 to 4)
-		var/image/I = get_sandbag_image(icon, "sandbags_[connections[i]]", 1<<(i-1))
-		overlays += I
+		for(var/i = 1 to 4)
+			var/image/I = get_sandbag_image(icon, "sandbags_[connections[i]]", 1<<(i-1))
+			overlays += I
 
-	overlays.Cut()
-	var/type = 0
-	var/sandbagdirs = 0
-	for(var/direction in list(turn(dir,90), turn(dir,-90)) )
-		var/obj/structure/sandbag/S = locate(/obj/structure/sandbag ,get_step(src,direction))
-		if (S && S.dir == src.dir)
-			type++
-			sandbagdirs |= direction
+		overlays.Cut()
+		var/type = 0
+		var/sandbagdirs = 0
+		for(var/direction in list(turn(dir,90), turn(dir,-90)) )
+			var/obj/structure/sandbag/S = locate(/obj/structure/sandbag ,get_step(src,direction))
+			if (S && S.dir == src.dir)
+				type++
+				sandbagdirs |= direction
 
-	type = "[type]"
-	if (type=="1")
-		if (sandbagdirs & turn(dir,90))
-			type += "-"
-		if (sandbagdirs & turn(dir,-90))
-			type += "+"
+		type = "[type]"
+		if (type=="1")
+			if (sandbagdirs & turn(dir,90))
+				type += "-"
+			if (sandbagdirs & turn(dir,-90))
+				type += "+"
 
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
 /obj/structure/sandbag/proc/update_connections(propagate=0)
@@ -309,3 +313,4 @@ var/list/sandbag_icon_cache = list()
 				S.update_icon()
 
 	connections = dirs_to_corner_states(connection_dirs)
+*/
