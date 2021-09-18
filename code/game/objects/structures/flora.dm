@@ -97,11 +97,22 @@
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "firstbush_1"
 
+/obj/structure/flora/ausbushes/attackby(obj/item/W as obj, mob/user as mob)
+	// Dismantle
+	if(istype(W, /obj/item/shovel))
+		playsound(src.loc, W.usesound, 50, 1)
+		if(do_after(user, 10, src))
+			user.visible_message("<span class='notice'>\The [user] digs up \the [src].</span>", "<span class='notice'>You dig up \the [src].</span>")
+			new /obj/item/stack/tile/grass(get_turf(usr), 1)
+			qdel(src)
+			return
+
 /obj/structure/flora/ausbushes/Initialize(mapload)
 	. = ..()
 	icon_state = "firstbush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/reedbush
+	name = "reeds"
 	icon_state = "reedbush_1"
 
 /obj/structure/flora/ausbushes/reedbush/Initialize(mapload)
@@ -109,6 +120,7 @@
 	icon_state = "reedbush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/leafybush
+	name = "leafy bush"
 	icon_state = "leafybush_1"
 
 /obj/structure/flora/ausbushes/leafybush/Initialize(mapload)
@@ -116,6 +128,7 @@
 	icon_state = "leafybush_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/palebush
+	name = "sparse bush"
 	icon_state = "palebush_1"
 
 /obj/structure/flora/ausbushes/palebush/Initialize(mapload)
@@ -123,6 +136,7 @@
 	icon_state = "palebush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/stalkybush
+	name = "stalks"
 	icon_state = "stalkybush_1"
 
 /obj/structure/flora/ausbushes/stalkybush/Initialize(mapload)
@@ -130,6 +144,7 @@
 	icon_state = "stalkybush_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/grassybush
+	name = "lush grass"
 	icon_state = "grassybush_1"
 
 /obj/structure/flora/ausbushes/grassybush/Initialize(mapload)
@@ -137,6 +152,7 @@
 	icon_state = "grassybush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/fernybush
+	name = "ferns"
 	icon_state = "fernybush_1"
 
 /obj/structure/flora/ausbushes/fernybush/Initialize(mapload)
@@ -144,6 +160,7 @@
 	icon_state = "fernybush_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/sunnybush
+	name = "sapling"
 	icon_state = "sunnybush_1"
 
 /obj/structure/flora/ausbushes/sunnybush/Initialize(mapload)
@@ -151,6 +168,7 @@
 	icon_state = "sunnybush_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/genericbush
+	name = "leafy sapling"
 	icon_state = "genericbush_1"
 
 /obj/structure/flora/ausbushes/genericbush/Initialize(mapload)
@@ -158,6 +176,7 @@
 	icon_state = "genericbush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/pointybush
+	name = "needled sapling"
 	icon_state = "pointybush_1"
 
 /obj/structure/flora/ausbushes/pointybush/Initialize(mapload)
@@ -165,6 +184,7 @@
 	icon_state = "pointybush_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/lavendergrass
+	name = "patchy flowers"
 	icon_state = "lavendergrass_1"
 
 /obj/structure/flora/ausbushes/lavendergrass/Initialize(mapload)
@@ -172,6 +192,7 @@
 	icon_state = "lavendergrass_[rand(1, 4)]"
 
 /obj/structure/flora/ausbushes/ywflowers
+	name = "yellow flowers"
 	icon_state = "ywflowers_1"
 
 /obj/structure/flora/ausbushes/ywflowers/Initialize(mapload)
@@ -179,6 +200,7 @@
 	icon_state = "ywflowers_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/brflowers
+	name = "colorful flowers"
 	icon_state = "brflowers_1"
 
 /obj/structure/flora/ausbushes/brflowers/Initialize(mapload)
@@ -186,6 +208,7 @@
 	icon_state = "brflowers_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/ppflowers
+	name = "purple flowers"
 	icon_state = "ppflowers_1"
 
 /obj/structure/flora/ausbushes/ppflowers/Initialize(mapload)
@@ -193,6 +216,7 @@
 	icon_state = "ppflowers_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/sparsegrass
+	name = "sparse grass"
 	icon_state = "sparsegrass_1"
 
 /obj/structure/flora/ausbushes/sparsegrass/Initialize(mapload)
@@ -200,6 +224,7 @@
 	icon_state = "sparsegrass_[rand(1, 3)]"
 
 /obj/structure/flora/ausbushes/fullgrass
+	name = "grass"
 	icon_state = "fullgrass_1"
 
 /obj/structure/flora/ausbushes/fullgrass/Initialize(mapload)
