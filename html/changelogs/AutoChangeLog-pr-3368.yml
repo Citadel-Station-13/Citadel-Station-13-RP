@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - balance: "Neomorphs are now immune to phoron contamination."
+  - bugfix: "Wearing gloves prevents you from taking toxin damage when picking up contaminated Items."
