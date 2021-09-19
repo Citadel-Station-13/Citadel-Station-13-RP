@@ -1,0 +1,6 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscdel: "Removes MULE Bots from orderable supply list.
+tweak: tweaked a few things"
+  - bugfix: "Fixes icon for the Security gun box."
