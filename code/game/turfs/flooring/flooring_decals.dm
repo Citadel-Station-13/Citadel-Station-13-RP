@@ -586,6 +586,11 @@ var/list/floor_decals = list()
 	name = "loading area"
 	icon_state = "loadingarea"
 
+/obj/effect/floor_decal/industrial/halfstair
+	name = "half stairs"
+	icon = 'icons/turf/structures.dmi' //These weren't used anywhere except for snowflake instances, lets change them into a decal.
+	icon_state = "ramptop"
+
 /obj/effect/floor_decal/plaque
 	name = "plaque"
 	icon_state = "plaque"

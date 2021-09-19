@@ -48,6 +48,19 @@ var/list/mining_overlay_cache = list()
 	rock_icon_state = "rock-light"
 	random_icon = 1
 
+/turf/simulated/mineral/icerock
+	icon_state = "icerock"
+	rock_side_icon_state = "icerock_side"
+	sand_icon_state = "ice"
+	rock_icon_state = "icerock"
+	random_icon = 1
+
+/turf/unsimulated/mineral/icerock
+	name = "impassable rock"
+	icon = 'icons/turf/walls.dmi'
+	icon_state = "icerock-dark"
+	density = 1
+
 /turf/simulated/mineral/ignore_mapgen
 	ignore_mapgen = 1
 
@@ -79,6 +92,15 @@ turf/simulated/mineral/floor/light_corner
 
 /turf/simulated/mineral/floor/ignore_mapgen
 	ignore_mapgen = 1
+
+/turf/simulated/mineral/floor/icerock
+	name = "ice"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_state = "ice"
+	density = 0
+	opacity = 0
+	blocks_air = 0
+	can_build_into_floor = TRUE
 
 /turf/simulated/mineral/proc/make_floor()
 	if(!density && !opacity)

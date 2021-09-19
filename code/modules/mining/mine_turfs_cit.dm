@@ -9,20 +9,18 @@
 	name = "icerock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "icerock"
-	oxygen = 0
-	nitrogen = 0
+	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
 	density = 1
 	blocks_air = 1
-	temperature = T0C
+	can_dirty = FALSE
 
 	can_dirty = FALSE
 
-	var/ore/mineral
-	var/ice_dug
+	var/datum/ore/mineral
+	var/sand_dug
 	var/mined_ore = 0
 	var/last_act = 0
-	var/emitter_blasts_taken = 0 // EMITTER MINING! Muhehe.
 	var/overlay_detail
 
 	var/datum/geosample/geologic_data
@@ -31,7 +29,7 @@
 	var/next_rock = 0
 	var/archaeo_overlay = ""
 	var/excav_overlay = ""
-	var/obj/item/weapon/last_find
+	var/obj/item/last_find
 	var/datum/artifact_find/artifact_find
 	var/ignore_mapgen
 
@@ -57,34 +55,43 @@
 		return
 	density = 0
 	opacity = 0
+	recalc_atom_opacity()
+	reconsider_lights()
 	blocks_air = 0
 	can_build_into_floor = TRUE
+	SSplanets.addTurf(src)
 	update_general()
+
+/turf/simulated/icerock/proc/make_floor_lavaland() // so when a turf is mined in lavaland, it places the correct one
+	src.ChangeTurf(get_base_turf_by_area(src))
 
 /turf/simulated/icerock/proc/make_wall()
 	if(density && opacity)
 		return
 	density = 1
 	opacity = 1
+	recalc_atom_opacity()
+	reconsider_lights()
 	blocks_air = 1
 	can_build_into_floor = FALSE
 	update_general()
 
 /turf/simulated/icerock/proc/update_general()
-	update_icon(1)
-	recalc_atom_opacity()
-	if(ticker && ticker.current_state == GAME_STATE_PLAYING)
+	if(!(flags & INITIALIZED))
+		update_icon(TRUE)
+		recalc_atom_opacity()
+	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
 		reconsider_lights()
 		if(air_master)
 			air_master.mark_for_update(src)
 
 /turf/simulated/icerock/Entered(atom/movable/M as mob|obj)
-	. = ..()
+	..()
 	if(istype(M,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = M
 		if(R.module)
-			for(var/obj/item/weapon/storage/bag/ore/O in list(R.module_state_1, R.module_state_2, R.module_state_3))
-				attackby(O, R)
+			for(var/obj/item/storage/bag/ore/O in list(R.module_state_1, R.module_state_2, R.module_state_3))
+				O.autoload(R)
 				return
 
 /turf/simulated/icerock/proc/get_cached_border(var/cache_id, var/direction, var/icon_file, var/icon_state, var/offset = 32)
@@ -106,17 +113,19 @@
 	//Cache hit
 	return mining_overlay_cache["[cache_id]_[direction]"]
 
-/turf/simulated/icerock/initialize()
+/turf/simulated/icerock/Initialize(mapload)
 	. = ..()
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
-	update_icon(1)
-	if(density && mineral)
-		. = INITIALIZE_HINT_LATELOAD
-
-/turf/simulated/icerock/LateInitialize()
-	if(density && mineral)
-		MineralSpread()
+	if(random_icon)
+		dir = pick(GLOB.alldirs)
+	if(mineral)
+		if(density)
+			MineralSpread(mapload)
+		else
+			UpdateMineral(!mapload)
+	else
+		update_icon(!mapload)
 
 /turf/simulated/icerock/update_icon(var/update_neighbors)
 
@@ -187,20 +196,29 @@
 	if(severity <= 2) // Now to expose the ore lying under the sand.
 		spawn(1) // Otherwise most of the ore is lost to the explosion, which makes this rather moot.
 			for(var/ore in resources)
-				var/amount_to_give = rand(Ceiling(resources[ore]/2), resources[ore])  // Should result in at least one piece of ore.
+				var/amount_to_give = rand(CEILING(resources[ore]/2, 1), resources[ore])  // Should result in at least one piece of ore.
 				for(var/i=1, i <= amount_to_give, i++)
 					var/oretype = GLOB.ore_types[ore]
 					new oretype(src)
 				resources[ore] = 0
 
 /turf/simulated/icerock/bullet_act(var/obj/item/projectile/Proj)
+	. = ..()
+	if(Proj.excavation_amount)
+		var/newDepth = excavation_level + Proj.excavation_amount // Used commonly below
+		if(newDepth >= 200) // first, if the turf is completely drilled then don't bother checking for finds and just drill it
+			GetDrilled(0)
 
-	// Emitter blasts
-	if(istype(Proj, /obj/item/projectile/beam/emitter) || istype(Proj, /obj/item/projectile/beam/heavylaser/fakeemitter))
-		emitter_blasts_taken++
-		if(emitter_blasts_taken > 2) // 3 blasts per tile
-			mined_ore = 1
-			GetDrilled()
+		//destroy any archaeological finds
+		if(finds && finds.len)
+			var/datum/find/F = finds[1]
+			if(newDepth > F.excavation_required) // Digging too deep with something as clumsy or random as a blaster will destroy artefacts
+				finds.Remove(finds[1])
+				if(prob(50))
+					artifact_debris()
+
+		excavation_level += Proj.excavation_amount
+		update_archeo_overlays(Proj.excavation_amount)
 
 /turf/simulated/icerock/Bumped(AM)
 
@@ -211,29 +229,19 @@
 
 	if(istype(AM,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
-		var/obj/item/weapon/pickaxe/P = H.get_inactive_hand()
+		var/obj/item/pickaxe/P = H.get_inactive_hand()
 		if(istype(P))
 			src.attackby(P, H)
 
 	else if(istype(AM,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = AM
-		if(istype(R.module_active,/obj/item/weapon/pickaxe))
+		if(istype(R.module_active,/obj/item/pickaxe))
 			attackby(R.module_active,R)
 
 	else if(istype(AM,/obj/mecha))
 		var/obj/mecha/M = AM
 		if(istype(M.selected,/obj/item/mecha_parts/mecha_equipment/tool/drill))
 			M.selected.action(src)
-
-/turf/simulated/icerock/proc/MineralSpread()
-	if(mineral && mineral.spread)
-		for(var/trydir in cardinal)
-			if(prob(mineral.spread_chance))
-				var/turf/simulated/icerock/target_turf = get_step(src, trydir)
-				if(istype(target_turf) && target_turf.density && !target_turf.mineral)
-					target_turf.mineral = mineral
-					target_turf.UpdateMineral()
-					target_turf.MineralSpread()
 
 
 /turf/simulated/icerock/proc/UpdateMineral()
@@ -476,10 +484,10 @@
 /turf/simulated/icerock/proc/GetDrilled(var/artifact_fail = 0)
 
 	if(!density)
-		if(!ice_dug)
-			ice_dug = 1
-			for(var/i=0;i<(rand(3)+2);i++)
-				new/obj/item/stack/material/snow(src)
+		if(!sand_dug)
+			sand_dug = 1
+			for(var/i=0;i<5;i++)
+				new/obj/item/ore/glass(src)
 			update_icon()
 		return
 
@@ -505,28 +513,33 @@
 				M.flash_eyes()
 				if(prob(50))
 					M.Stun(5)
-			radiation_repository.flat_radiate(src, 25, 100)
+			SSradiation.flat_radiate(src, 25, 100)
 			if(prob(25))
 				excavate_find(prob(5), finds[1])
 	else if(rand(1,500) == 1)
 		visible_message("<span class='notice'>An old dusty crate was buried within!</span>")
 		new /obj/structure/closet/crate/secure/loot(src)
 
-	make_floor()
+	var/the_z = get_z(src)
+	if(the_z == 20)
+		src.make_floor_lavaland()
+	else
+		make_floor()
 	update_icon(1)
 
 /turf/simulated/icerock/proc/excavate_find(var/is_clean = 0, var/datum/find/F)
 	//with skill and luck, players can cleanly extract finds
 	//otherwise, they come out inside a chunk of rock
-	var/obj/item/weapon/X
+	var/obj/item/X
 	if(is_clean)
-		X = new /obj/item/weapon/archaeological_find(src, new_item_type = F.find_type)
+		X = new /obj/item/archaeological_find(src, F.find_type)
 	else
-		X = new /obj/item/weapon/ore/strangerock(src, inside_item_type = F.find_type)
+		X = new /obj/item/strangerock(src, F.find_type)
 		geologic_data.UpdateNearbyArtifactInfo(src)
-		X:geologic_data = geologic_data
+		var/obj/item/strangerock/SR = X
+		SR.geologic_data = geologic_data
 
-	//some find types delete the /obj/item/weapon/archaeological_find and replace it with something else, this handles when that happens
+	//some find types delete the /obj/item/archaeological_find and replace it with something else, this handles when that happens
 	//yuck
 	var/display_name = "Something"
 	if(!X)
@@ -546,7 +559,7 @@
 
 /turf/simulated/icerock/proc/artifact_debris(var/severity = 0)
 	//cael's patented random limited drop componentized loot system!
-	//sky's patented not-fucking-retarded overhaul!
+	//sky's patented not-fucking-stupid overhaul!
 
 	//Give a random amount of loot from 1 to 3 or 5, varying on severity.
 	for(var/j in 1 to rand(1, 3 + max(min(severity, 1), 0) * 2))
@@ -561,25 +574,25 @@
 				new /obj/item/stack/material/plasteel(src, rand(5,25))
 			if(5)
 				for(var/i=1 to rand(1,3))
-					new /obj/item/weapon/material/shard(src)
+					new /obj/item/material/shard(src)
 			if(6)
 				for(var/i=1 to rand(1,3))
-					new /obj/item/weapon/material/shard/phoron(src)
+					new /obj/item/material/shard/phoron(src)
 			if(7)
 				new /obj/item/stack/material/uranium(src, rand(5,25))
 
 /turf/simulated/icerock/proc/make_ore(var/rare_ore)
-	if(mineral || ignore_mapgen) //VOREStation Edit - Makes sense, doesn't it?
+	if(mineral || ignore_mapgen || ignore_oregen) //VOREStation Edit - Makes sense, doesn't it?
 		return
 
 	var/mineral_name
 	if(rare_ore)
-		mineral_name = pickweight(list("uranium" = 10, "platinum" = 10, "hematite" = 20, "carbon" = 20, "diamond" = 2, "gold" = 10, "silver" = 10, "phoron" = 20))
+		mineral_name = pickweight(list("marble" = 5, "uranium" = 10, "platinum" = 10, "hematite" = 20, "carbon" = 20, "diamond" = 2, "gold" = 10, "silver" = 10, "phoron" = 20, "lead" = 5, "verdantium" = 1))
 
 	else
-		mineral_name = pickweight(list("uranium" = 5, "platinum" = 5, "hematite" = 35, "carbon" = 35, "diamond" = 1, "gold" = 5, "silver" = 5, "phoron" = 10))
+		mineral_name = pickweight(list("marble" = 3, "uranium" = 10, "platinum" = 10, "hematite" = 70, "carbon" = 70, "diamond" = 2, "gold" = 10, "silver" = 10, "phoron" = 20, "lead" = 2, "verdantium" = 1))
 
-	if(mineral_name && (mineral_name in ore_data))
-		mineral = ore_data[mineral_name]
-		UpdateMineral()
-	update_icon()
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
+		if(flags & INITIALIZED)
+			UpdateMineral()
