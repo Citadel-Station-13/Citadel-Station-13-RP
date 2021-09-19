@@ -165,7 +165,7 @@
 	var/nospampls = 0
 	cold_damage_per_tick = 0
 	//ATMOS
-	set_temperature = T0C - 10000
+	set_temperature = T0C - 263
 	heating_power = -100000
 	//light
 	mycolour = COLOR_BLUE
