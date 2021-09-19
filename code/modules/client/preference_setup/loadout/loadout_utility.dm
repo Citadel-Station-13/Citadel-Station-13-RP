@@ -117,19 +117,19 @@
 	display_name = "Implant - Neural Assistance Web"
 	description = "A complex web implanted into the subject, medically in order to compensate for neurological disease."
 	path = /obj/item/implant/neural
-	cost = 6
+	cost = 0
 
 /datum/gear/utility/implant/dud1
 	display_name = "Implant - Head"
 	description = "An implant with no obvious purpose."
 	path = /obj/item/implant/dud
-	cost = 1
+	cost = 0
 
 /datum/gear/utility/implant/dud2
 	display_name = "Implant - Torso"
 	description = "An implant with no obvious purpose."
 	path = /obj/item/implant/dud/torso
-	cost = 1
+	cost = 0
 
 /datum/gear/utility/implant/language
 	cost = 2
