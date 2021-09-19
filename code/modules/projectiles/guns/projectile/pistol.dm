@@ -324,6 +324,7 @@
 
 /obj/item/gun/projectile/p92x/sec
 	magazine_type = /obj/item/ammo_magazine/m9mm/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
 
 //Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
 /*
