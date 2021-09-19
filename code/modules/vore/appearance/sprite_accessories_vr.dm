@@ -2069,6 +2069,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "tail_smooth"
 	ani_state = "tail_smooth_w"
+	do_colouration = 1
 
 /datum/sprite_accessory/tail/wartacosushi_tail //brightened +20RGB from matching roboparts
 	name = "Ward-Takahashi Tail"

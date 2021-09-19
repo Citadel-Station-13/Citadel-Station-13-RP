@@ -136,16 +136,9 @@
 	var/check_delay = 60	//periodically recheck if we need to rebuild a shield
 	use_power = USE_POWER_OFF
 	idle_power_usage = 0
-	var/global/list/blockedturfs =  list( //These are turfs that are considered "Exterior" to the station. This area shoudl probably not use turfs that have many subtypes.
+	var/global/list/blockedturfs =  list(
 		/turf/space,
-		/turf/simulated/floor/outdoors/grass/sif/virgo3b,
-		/turf/simulated/mineral/virgo3b, //Mountains around tether versus mountain at tether.
-		/turf/simulated/floor/maglev/virgo3b,
-		/turf/simulated/floor/tiled/techfloor/grid/virgo3b,
-		/turf/simulated/floor/virgo3b,
-		/turf/simulated/floor/tiled/steel_dirty/virgo3b,
-		/turf/simulated/open/virgo3b,
-		/turf/simulated/mineral/floor/virgo3b
+		/turf/simulated/floor/outdoors,
 	)		//For Future additions to exterior tiles, add them on this list.
 
 /obj/machinery/shieldgen/Destroy()

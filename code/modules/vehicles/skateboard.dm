@@ -1,6 +1,6 @@
 /obj/vehicle/skateboard
-	name = "improvised skateboard"
-	desc = "A crude assembly which can only barely be called a skateboard. It's still rideable, but probably unsafe. Looks like you'll need to add a few rods to make handlebars."
+	name = "skaetbord"
+	desc = "You shouldn't be seeing this. Contact an Admin."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "skateboard"
 
@@ -19,7 +19,7 @@
 	var/grinding = FALSE
 	var/next_crash
 	var/board_icon = "skateboard"
-	var/board_item_type = /obj/item/melee/skateboard
+	var/board_item_type = null
 	var/rough_terrain = FALSE
 
 /obj/vehicle/skateboard/Initialize()
@@ -198,6 +198,13 @@
 */
 
 //Subsets
+
+/obj/vehicle/skateboard/improv
+	name = "improvised skateboard"
+	desc = "A crude assembly which can only barely be called a skateboard. It's still rideable, but probably unsafe. Looks like you'll need to add a few rods to make handlebars."
+	board_item_type = /obj/item/melee/skateboard/improv
+	icon_state = "skateboard"
+	board_icon = "skateboard"
 
 /obj/vehicle/skateboard/pro
 	name = "skateboard"
@@ -402,7 +409,7 @@
 				to_chat(user, "<span class='notice'>You complete the skateboard assembly.</span>")
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
-				new /obj/vehicle/skateboard(T)
+				new /obj/vehicle/skateboard/improv(T)
 				user.drop_from_inventory(src)
 				qdel(src)
 
@@ -480,6 +487,7 @@
 	name = "scooter"
 	desc = "A fun way to get around."
 	icon_state = "scooter"
+	board_item_type = /obj/item/melee/skateboard/scooter
 
 /obj/vehicle/skateboard/scooter/Initialize()
 	. = ..()

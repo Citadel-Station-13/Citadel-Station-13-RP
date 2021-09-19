@@ -23314,6 +23314,10 @@
 /obj/machinery/camera/network/command{
 	dir = 4
 	},
+/obj/machinery/keycard_auth{
+	pixel_x = -28;
+	pixel_y = 28
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "aPj" = (
@@ -29859,6 +29863,9 @@
 	dir = 1;
 	pixel_x = -8;
 	pixel_y = -26
+	},
+/obj/machinery/keycard_auth{
+	pixel_y = -36
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
@@ -40829,16 +40836,20 @@
 /turf/simulated/open,
 /area/tether/surfacebase/surface_three_hall)
 "qjk" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 8
+	},
 /obj/structure/closet/hydrant{
-	pixel_x = 32
+	pixel_y = -32
 	},
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full{
-	id = "saunatint"
-	},
-/turf/simulated/floor/plating,
-/area/triumph/surfacebase/sauna)
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/surface_three_hall)
 "qkf" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -53867,7 +53878,7 @@ adR
 aWn
 aWF
 aWT
-qjk
+tCZ
 pEq
 wHb
 wHb
@@ -54008,7 +54019,7 @@ aVL
 adR
 aWp
 ajM
-akv
+qjk
 awT
 tCZ
 keM
