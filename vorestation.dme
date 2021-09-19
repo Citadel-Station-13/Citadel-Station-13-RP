@@ -2036,7 +2036,6 @@
 #include "code\modules\gamemaster\actions\electrified_door.dm"
 #include "code\modules\gamemaster\actions\gravity.dm"
 #include "code\modules\gamemaster\actions\grid_check.dm"
-#include "code\modules\gamemaster\actions\infestation.dm"
 #include "code\modules\gamemaster\actions\ion_storm.dm"
 #include "code\modules\gamemaster\actions\manifest_malfunction.dm"
 #include "code\modules\gamemaster\actions\meteor_defense.dm"
