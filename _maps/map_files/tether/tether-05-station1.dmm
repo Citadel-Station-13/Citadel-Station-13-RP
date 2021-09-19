@@ -27699,7 +27699,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/exploration/showers)
 "uZR" = (
-/obj/machinery/gravity_generator,
+/obj/machinery/gravity_generator/main/station,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/gravity_gen)
 "vdb" = (
