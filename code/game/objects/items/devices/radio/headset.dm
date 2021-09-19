@@ -570,7 +570,7 @@
 	name = "pathfinder's bowman headset"
 	desc = "Headset used by Pathfinders for coordinating and executing expeditions."
 	icon_state = "exp_headset_path_alt"
-	ear_protection = 1
+	//ear_protection = 1 removed because fuck you
 
 //Headset SC _vr files
 /obj/item/radio/headset/volunteer

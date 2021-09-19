@@ -1,0 +1,4 @@
+author: "Solaris-Shade"
+delete-after: True
+changes: 
+  - bugfix: "fixed the direction the fire cabinet by the sauna opens towards."
