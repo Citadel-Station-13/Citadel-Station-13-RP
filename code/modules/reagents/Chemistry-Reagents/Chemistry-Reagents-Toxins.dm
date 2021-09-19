@@ -391,6 +391,30 @@
 /datum/reagent/toxin/plantbgone/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(50 * removed)
+
+/datum/reagent/toxin/pestbgone
+	name = "Pest-B-Gone"
+	id = "pestbgone"
+	description = "A harmful toxic mixture designed to kill insects and pests. Do not ingest!"
+	taste_mult = 1
+	reagent_state = REAGENT_LIQUID
+	color = "#8FB97C"
+	strength = 4
+
+/datum/reagent/toxin/pestbgone/touch_obj(var/mob/living/simple_mob/animal/A, var/removed)
+	if(istype(A, /mob/living/simple_mob/animal/roach))
+		A.adjustToxLoss(10 * removed)
+	else if(istype(A, /mob/living/simple_mob/animal/giant_spider))
+		A.adjustToxLoss(5 * removed)
+
+/datum/reagent/toxin/pestbgone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_APIDAEN)
+		M.adjustToxLoss(50 * removed)
+
+/datum/reagent/toxin/pestbgone/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_APIDAEN)
+		M.adjustToxLoss(50 * removed)
+
 /datum/reagent/toxin/sifslurry
 	name = "Sivian Sap"
 	id = "sifsap"
