@@ -2501,6 +2501,9 @@
 "rU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/item/stool/padded,
+/obj/effect/landmark/start{
+	name = "Talon Captain"
+	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/bar)
 "rW" = (

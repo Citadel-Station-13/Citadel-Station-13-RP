@@ -231,3 +231,28 @@
 	display_name = "KNIGHT-brand Melodic headset"
 	path = /obj/item/clothing/ears/earmuffs/headphones/aura
 	ckeywhitelist = list("theknightofaura")
+
+/datum/gear/donator/dancer_scarf
+	display_name = "belly dancer headscarf"
+	path = /obj/item/clothing/head/donator/dancer
+	ckeywhitelist = list("jembo")
+
+/datum/gear/donator/dancer_veil
+	display_name = "belly dancer veil"
+	path = /obj/item/clothing/mask/donator/dancer
+	ckeywhitelist = list("jembo")
+
+/datum/gear/donator/dancer_gloves
+	display_name = "belly dancer sleeves"
+	path = /obj/item/clothing/gloves/donator/dancer
+	ckeywhitelist = list("jembo")
+
+/datum/gear/donator/dancer_costume
+	display_name = "belly dancer costume"
+	path = /obj/item/clothing/under/donator/dancer
+	ckeywhitelist = list("jembo")
+
+/datum/gear/donator/dancer_wraps
+	display_name = "belly dancer footwraps"
+	path = /obj/item/clothing/shoes/donator/dancer
+	ckeywhitelist = list("jembo")

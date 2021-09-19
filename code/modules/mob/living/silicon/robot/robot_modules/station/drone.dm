@@ -17,6 +17,7 @@
 	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
 	src.modules += new /obj/item/multitool(src)
 	src.modules += new /obj/item/lightreplacer(src)
+	src.modules += new /obj/item/gun/energy/kinetic_accelerator/cyborg(src)
 	src.modules += new /obj/item/gripper(src)
 	src.modules += new /obj/item/mop(src)
 	src.modules += new /obj/item/gripper/no_use/loader(src)

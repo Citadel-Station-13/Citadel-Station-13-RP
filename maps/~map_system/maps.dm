@@ -157,6 +157,10 @@ var/list/all_maps = list()
 	if(empty_levels == null)
 		world.increment_max_z()
 		empty_levels = list(world.maxz)
+		if(islist(player_levels))
+			player_levels |= world.maxz
+		else
+			player_levels = list(world.maxz)
 	return pick(empty_levels)
 
 // Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)

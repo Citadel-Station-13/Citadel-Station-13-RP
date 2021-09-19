@@ -26,6 +26,7 @@
 	plane = OPENSPACE_PLANE_START
 	pathweight = 100000		// Seriously, don't try and path over this one numbnuts
 	can_build_into_floor = TRUE
+	allow_gas_overlays = FALSE
 
 	var/turf/below
 

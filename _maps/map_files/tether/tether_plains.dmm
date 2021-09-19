@@ -120,9 +120,21 @@
 "bF" = (
 /turf/simulated/mineral/virgo3b,
 /area/mine/unexplored)
+"eX" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/unexplored)
+"vZ" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/loot_pile/maint/trash,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/unexplored)
 "Al" = (
 /turf/simulated/mineral/virgo3b,
 /area/mine/explored)
+"At" = (
+/turf/simulated/floor/outdoors/dirt/virgo3b,
+/area/mine/unexplored)
 "BE" = (
 /mob/living/simple_mob/animal/space/goose/virgo3b,
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
@@ -134,6 +146,14 @@
 "ID" = (
 /turf/simulated/mineral/virgo3b,
 /area/tether/outpost/exploration_shed)
+"Pd" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/vending/glukoz{
+	name = "Suspicious Vendor";
+	use_power = 0
+	},
+/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/area/mine/unexplored)
 
 (1,1,1) = {"
 as
@@ -11205,8 +11225,8 @@ ad
 ad
 bF
 bF
-bF
-bF
+Pd
+eX
 bF
 ae
 ac
@@ -11347,8 +11367,8 @@ ad
 ad
 bF
 bF
-bF
-bF
+vZ
+eX
 bF
 ae
 ac
@@ -11489,8 +11509,8 @@ ad
 ad
 ad
 bF
-bF
-bF
+eX
+eX
 bF
 ae
 ac
@@ -11631,8 +11651,8 @@ ab
 ad
 ad
 bF
-bF
-bF
+At
+At
 bF
 ae
 ac
@@ -11773,7 +11793,7 @@ ab
 ad
 ad
 bF
-bF
+At
 bF
 bF
 ae
@@ -11914,8 +11934,8 @@ ab
 ab
 ad
 ad
-bF
-bF
+At
+At
 bF
 bF
 ae

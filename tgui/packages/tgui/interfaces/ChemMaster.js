@@ -363,6 +363,19 @@ const ChemMasterProductionChemical = (props, context) => {
           onClick={() => modalOpen(context, 'create_patch_multiple')}
         />
       </LabeledList.Item>
+      <LabeledList.Item label="Lollipops">
+        <Button
+          icon="square"
+          content="One (20u max)"
+          mr="0.5rem"
+          onClick={() => modalOpen(context, 'create_lollipop')}
+        />
+        <Button
+          icon="plus-square"
+          content="Multiple"
+          onClick={() => modalOpen(context, 'create_lollipop_multiple')}
+        />
+      </LabeledList.Item>
       <LabeledList.Item label="Bottle">
         <Button
           icon="wine-bottle"

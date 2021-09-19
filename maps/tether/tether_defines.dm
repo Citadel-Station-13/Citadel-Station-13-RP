@@ -16,11 +16,12 @@
 #define Z_LEVEL_ROGUEMINE_2					16
 #define Z_LEVEL_BEACH						17
 #define Z_LEVEL_BEACH_CAVE					18
-#define Z_LEVEL_AEROSTAT					19
-#define Z_LEVEL_AEROSTAT_SURFACE			20
-#define Z_LEVEL_DEBRISFIELD					21
-#define Z_LEVEL_FUELDEPOT					22
-#define Z_LEVEL_GATEWAY						23
+#define Z_LEVEL_DESERT						19
+#define Z_LEVEL_AEROSTAT					20
+#define Z_LEVEL_AEROSTAT_SURFACE			21
+#define Z_LEVEL_DEBRISFIELD					22
+#define Z_LEVEL_FUELDEPOT					23
+#define Z_LEVEL_GATEWAY						24
 
 //Camera networks
 #define NETWORK_TETHER "Tether"
@@ -32,12 +33,15 @@
 /datum/map/tether/New()
 	..()
 	var/choice = pickweight(list(
-		"title" = 10,
-		"tether" = 50,
-		"tether_night" = 50,
-		"tether2_night" = 50,
-		"tether2_dog" = 1,
-		"tether2_love" = 1
+		"title1" = 50,
+		"title2" = 10,
+		"title3" = 50,
+		"title4" = 50,
+		"title5" = 20,
+		"title6" = 20,
+		"title7" = 20,
+		"title8" = 1,
+		"title9" = 1
 	))
 	if(choice)
 		lobby_screens = list(choice)
@@ -155,7 +159,7 @@
 		list("Tether - Misc","Tether - Underdark","Tether - Plains"), //Stock Tether lateload maps
 		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2"),
 		list("Asteroid Belt 1","Asteroid Belt 2"),
-		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
+		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert"),
 		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),
 		list("Debris Field - Z1 Space"),
 		list("Fuel Depot - Z1 Space")

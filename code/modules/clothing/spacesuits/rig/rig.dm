@@ -85,7 +85,7 @@
 	var/offline_slowdown = 3                                  // If the suit is deployed and unpowered, it sets slowdown to this.
 	var/vision_restriction
 	var/offline_vision_restriction = 1                        // 0 - none, 1 - welder vision, 2 - blind. Maybe move this to helmets.
-	var/airtight = 1 //If set, will adjust AIRTIGHT flag and pressure protections on components. Otherwise it should leave them untouched.
+	var/airtight = 1 //If set, will adjust ALLOWINTERNALS flag and pressure protections on components. Otherwise it should leave them untouched.
 	var/rigsuit_max_pressure = 10 * ONE_ATMOSPHERE			  // Max pressure the rig protects against when sealed
 	var/rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
 
@@ -219,11 +219,11 @@
 	if(seal == 1)
 		piece.min_pressure_protection = rigsuit_min_pressure
 		piece.max_pressure_protection = rigsuit_max_pressure
-		piece.item_flags |= AIRTIGHT
+		piece.item_flags |= ALLOWINTERNALS
 	else
 		piece.min_pressure_protection = null
 		piece.max_pressure_protection = null
-		piece.item_flags &= ~AIRTIGHT
+		piece.item_flags &= ~ALLOWINTERNALS
 	return
 
 
