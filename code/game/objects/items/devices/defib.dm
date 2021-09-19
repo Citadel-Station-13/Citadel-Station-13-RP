@@ -282,10 +282,13 @@
 
 	if(H.isSynthetic())
 		if(H.health + H.getOxyLoss() + H.getToxLoss() <= config_legacy.health_threshold_dead)
-			return "buzzes, \"Resuscitation failed - Severe damage detected. Begin manual repair before further attempts futile.\""
+			return "buzzes, \"Resuscitation failed - Severe buildup of toxins and metabolic stress detected. Begin manual repair before attempting again.\""
 
-	else if(H.health + H.getOxyLoss() <= config_legacy.health_threshold_dead || (HUSK in H.mutations) || !H.can_defib)
-		return "buzzes, \"Resuscitation failed - Severe tissue damage makes recovery of patient impossible via defibrillator. Further attempts futile.\""
+	else if(HUSK in H.mutations)
+		return "buzzes, \"Resuscitation failed - Severe tissue damage makes recovery of patient impossible via defibrillator. Begin manual repair before attempting again.\""
+	
+	else if(!H.can_defib)
+		return "buzzes, \"Subject biological state incompatible with defibrillation.\""
 
 	var/bad_vital_organ = check_vital_organs(H)
 	if(bad_vital_organ)
@@ -312,9 +315,9 @@
 		if(vital)
 			O = H.internal_organs_by_name[organ_tag]
 			if(!O)
-				return "buzzes, \"Resuscitation failed - Patient is missing vital organ ([name]). Further attempts futile.\""
+				return "buzzes, \"Resuscitation failed - Patient is missing vital organ ([name]).\""
 			if(O.damage > O.max_damage)
-				return "buzzes, \"Resuscitation failed - Excessive damage to vital organ ([name]). Further attempts futile.\""
+				return "buzzes, \"Resuscitation failed - Excessive damage to vital organ ([name]).\""
 	return null
 
 /obj/item/shockpaddles/proc/check_blood_level(mob/living/carbon/human/H)
