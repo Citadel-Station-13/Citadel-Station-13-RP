@@ -358,7 +358,27 @@
 	name = "red neck gaiter"
 	desc = "A slightly worn neck gaiter, it's loose enough to be worn comfortably like a scarf. Commonly used by outdoorsmen and mercenaries, both to keep warm and keep debris away from the face."
 	icon_state = "gaiter_red"
-	slot = ACCESSORY_SLOT_DECOR
+	icon_override = 'icons/mob/ties.dmi'
+	slot = ACCESSORY_SLOT_DECOR | SLOT_MASK
+	action_button_name = "Adjust Gaiter"
+	var/icon_previous_override //yw addition
+
+//ywedit start. forces different sprite sheet on equip
+/obj/item/clothing/accessory/gaiter/Initialize(mapload)
+	. = ..()
+	icon_previous_override = icon_override
+
+/obj/item/clothing/accessory/gaiter/proc/setUniqueSpeciesSprite()
+	var/mob/living/carbon/human/H = loc
+	if(!istype(H))
+		if(istype(has_suit) && ishuman(has_suit.loc))
+			H = has_suit.loc
+
+/obj/item/clothing/accessory/gaiter/on_attached(var/obj/item/clothing/S, var/mob/user)
+	if(!istype(S))
+		return
+	has_suit = S
+	..(S, user)
 
 /obj/item/clothing/accessory/gaiter/attack_self(mob/user as mob)
 	if(src.icon_state == initial(icon_state))
