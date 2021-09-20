@@ -1,0 +1,5 @@
+author: "Solaris-Shade"
+delete-after: True
+changes: 
+  - rscadd: "Adds four hats to the armory."
+  - rscadd: "Adds two phase rifles to the armory."
