@@ -112,6 +112,13 @@
 	required_reagents = list("toxin" = 1, "water" = 4)
 	result_amount = 5
 
+/datum/chemical_reaction/pestbgone
+	name = "Pest-B-Gone"
+	id = "pestbgone"
+	result = "pestbgone"
+	required_reagents = list("toxin" = 1, "ammonium" = 4)
+	result_amount = 5
+
 /datum/chemical_reaction/foaming_agent
 	name = "Foaming Agent"
 	id = "foaming_agent"

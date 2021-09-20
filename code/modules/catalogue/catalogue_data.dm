@@ -510,6 +510,31 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	Sometimes species one would never see anywhere close to core worlds can be met here."
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/category_item/catalogue/fauna/apidaen
+	name = "Sapients - Apidaen"
+	desc = ""
+	value = CATALOGUER_REWARD_EASY
+
+/datum/category_item/catalogue/fauna/vetala_ruddy
+	name = "Sapients - Ruddy Vetalan"
+	desc = ""
+	value = CATALOGUER_REWARD_MEDIUM
+
+/datum/category_item/catalogue/fauna/vetala_pale
+	name = "Sapients - Pale Vetalan"
+	desc = ""
+	value = CATALOGUER_REWARD_MEDIUM
+
+/datum/category_item/catalogue/fauna/auril
+	name = "Sapients - Auril"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/category_item/catalogue/fauna/dremachir
+	name = "Sapients - Dremachir"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /datum/category_item/catalogue/technology/resleeving
 	name = "Resleeving"
 	desc = ""

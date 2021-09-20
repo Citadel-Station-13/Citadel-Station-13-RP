@@ -372,7 +372,7 @@
 	},
 /area/frozen_planet/facility)
 "mM" = (
-/obj/structure/table/sandbags,
+/obj/structure/sandbag,
 /turf/simulated/floor/outdoors/snow/frozen_world,
 /area/frozen_planet/outside)
 "oa" = (
