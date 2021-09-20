@@ -1,14 +1,14 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/tether/salamander
+/datum/map_template/shuttle/overmap/generic/salamander
 	name = "OM Ship - Salamander Corvette"
 	desc = "A medium multirole spacecraft."
 	suffix = "salamander.dmm"
 	annihilate = TRUE
 
 // Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/tether/salamander_wreck
+/datum/map_template/shuttle/overmap/generic/salamander_wreck
 	name = "OM Ship - Salamander Corvette Wreckage"
 	desc = "A medium multirole spacecraft, or at least what's left of it."
 	mappath = "_maps/submaps/level_specific/debrisfield_vr/salamander_wreck.dmm"

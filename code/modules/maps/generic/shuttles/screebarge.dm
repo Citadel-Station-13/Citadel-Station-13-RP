@@ -1,7 +1,7 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/tether/screebarge
+/datum/map_template/shuttle/overmap/generic/screebarge
 	name = "OM Ship - Battle Barge"
 	desc = "The BATTLE BARGE."
 	suffix = "screebarge.dmm"

@@ -1,7 +1,7 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/tether/tabiranth
+/datum/map_template/shuttle/overmap/generic/tabiranth
 	name = "OM Ship - Tabiranth"
 	desc = "A prototype deployable assault shuttle."
 	suffix = "shelter_6.dmm"
