@@ -115,7 +115,7 @@
 	name = "Daedalus - Hangar 2"
 	has_gravity = 0
 
-/datum/map_template/shuttle/overmap/tether/cruiser
+/datum/map_template/shuttle/overmap/generic/cruiser
 	name = "OM Ship - Daedalus (New Z)"
 	desc = "A large NT cruiser."
 	suffix = "cruiser.dmm"

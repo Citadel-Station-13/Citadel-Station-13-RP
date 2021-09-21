@@ -1,6 +1,6 @@
 
 // Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/tether/curabiturmedical
+/datum/map_template/shuttle/overmap/generic/curabiturmedical
 	name = "OM Ship - Curabitur Rescue Shuttle (new Z)"
 	desc = "A small corporate rescue shuttle."
 	suffix = "curashuttle.dmm"

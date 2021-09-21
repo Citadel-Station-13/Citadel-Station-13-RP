@@ -363,6 +363,9 @@
 	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style='color:green'>[text]</span>"
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style='color:green'>[text]</span>"
 
+/proc/error(msg)
+	log_world("## ERROR: [msg]")
+
 /// DEPRICATED. USE log_runtime(text) INSTEAD.
 /proc/log_error(text)
 	log_runtime(text)
