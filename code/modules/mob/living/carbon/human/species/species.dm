@@ -271,8 +271,8 @@
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
 
-/datum/species/proc/sanitize_name(var/name, var/robot = 0)
-	return sanitizeName(name, MAX_NAME_LEN, robot)
+/datum/species/proc/sanitize_name(var/name)
+	return sanitizeName(name, MAX_NAME_LEN)
 
 GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	/datum/gas/oxygen = /obj/item/tank/emergency/oxygen,
