@@ -1,0 +1,6 @@
+author: "TheKnightofAura"
+delete-after: True
+changes: 
+  - rscadd: "greebles"
+  - rscadd: "intercoms"
+  - rscadd: "camera."
