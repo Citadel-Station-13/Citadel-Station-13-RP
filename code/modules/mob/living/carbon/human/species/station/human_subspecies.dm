@@ -14,7 +14,7 @@
 	brute_mod =     0.85
 	slowdown =      1
 
-
+	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 /datum/species/human/spacer
 	name = "space-adapted Human"
@@ -30,6 +30,7 @@
 	brute_mod = 1.1
 	burn_mod =  1.1
 
+	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 /datum/species/human/vatgrown
 	name = SPECIES_HUMAN_VATBORN
@@ -54,7 +55,7 @@
 		O_INTESTINE =/obj/item/organ/internal/intestine
 		)
 
-	spawn_flags = SPECIES_IS_RESTRICTED
+	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 /*
 // These guys are going to need full resprites of all the suits/etc so I'm going to
