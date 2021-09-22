@@ -378,7 +378,7 @@
 	min_age = 18
 	max_age = 90
 
-	blurb = "The Zaddat are an Unathi client race only recently introduced to SolGov space. Having evolved on \
+	blurb = "The Zaddat are an Unathi client race only recently introduced to OriCon space. Having evolved on \
 	the high-pressure and post-apocalyptic world of Xohok, Zaddat require an environmental suit called a Shroud \
 	to survive in usual planetary and station atmospheres. Despite these restrictions, worsening conditions on \
 	Xohok and the blessing of the Moghes Hegemony have lead the Zaddat to enter human space in search of work \
