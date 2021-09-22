@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - bugfix: "Off-Duty command no longer spawns with a command headset."
