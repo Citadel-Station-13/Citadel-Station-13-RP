@@ -276,7 +276,7 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/head/traveller
-	display_name = "Traveller's Hat"
+	display_name = "Traveller Hat (Colorable)"
 	path = /obj/item/clothing/head/traveller
 
 /datum/gear/head/traveller/New()

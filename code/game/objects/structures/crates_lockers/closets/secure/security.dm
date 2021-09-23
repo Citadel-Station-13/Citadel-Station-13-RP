@@ -285,7 +285,7 @@
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/hailer,
-		/obj/item/flashlight/flare,
+		/obj/item/flashlight/glowstick,
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/clothing/under/rank/security/corp,
