@@ -1,4 +1,4 @@
-/datum/category_item/catalogue/fauna/bot/cleanbot
+/datum/category_item/catalogue/technology/bot/cleanbot
 	name = "Bot - Cleanbot"
 	desc = "Cleanbots are little more than stabilized mop buckets \
 	on wheels, programmed with basic pathfinding abilities and onboard \

@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/redpanda
+	name = "Red Panda"
+	desc = "Red Pandas are sometimes imported to the Frontier from \
+	exotic pet brokers in Orion space. Popular among collectors due \
+	to their coloration, patterning, and generally adorable appearance, \
+	the Red Panda is a popular pet and status symbol rolled into one."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/redpanda
 	name = "red panda"
 	desc = "It's a wah! Beware of doom pounce!"

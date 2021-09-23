@@ -1,3 +1,10 @@
+/datum/category_item/catalogue/fauna/hippo
+	name = "Hippo"
+	desc = "A hardy savannah creature native to Earth, the only use for the \
+	hippopotamus on the Frontier is entertainment. Often traded by rare animal \
+	enthusiasts, the hippo is heavy, hardy, and aggressive."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/hippo
 	name = "hippo"
 	desc = "Mostly know for the spectacular hit of the live action movie Hungry Hungry Hippos."

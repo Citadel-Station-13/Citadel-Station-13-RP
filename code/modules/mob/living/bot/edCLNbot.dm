@@ -1,4 +1,4 @@
-/datum/category_item/catalogue/fauna/bot/cleanbot/edCLN
+/datum/category_item/catalogue/technology/bot/cleanbot/edCLN
 	name = "Bot - ED CLN"
 	desc = "ED CLN units are the end result of a marketing campaign designed \
 	to change the ED series robot's public image. Although marginally successful, \

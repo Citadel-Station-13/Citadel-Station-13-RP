@@ -1,4 +1,4 @@
-/datum/category_item/catalogue/fauna/bot/medbot
+/datum/category_item/catalogue/technology/bot/medbot
 	name = "Bot - Medibot"
 	desc = "Medibots have become vital additions to hazardous workplaces \
 	across the galaxy. A common sight on the Frontier, Medibots utilize \

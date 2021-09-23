@@ -7,7 +7,7 @@
 #define MULE_PATH_DONE 11
 // IF YOU CHANGE THOSE, UPDATE THEM IN pda.tmpl TOO
 
-/datum/category_item/catalogue/fauna/bot/mulebot
+/datum/category_item/catalogue/technology/bot/mulebot
 	name = "Bot - Mulebot"
 	desc = "Mulebots are a favorite option for logistical services in \
 	Frontier space. Equipped with semi-sophisticated pathfinding systems, \

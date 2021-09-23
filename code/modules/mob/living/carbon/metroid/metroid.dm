@@ -1,3 +1,4 @@
+/*
 /datum/category_item/catalogue/fauna/slime
 	name = "Slime"
 	desc = "Often referred to as Slimes, this mysterious \
@@ -7,6 +8,7 @@
 	Speculation among Xenobiologists that Slimes share a common ancestor \
 	with Prometheans have not been fully confirmed."
 	value = CATALOGUER_REWARD_EASY
+*/
 
 /mob/living/carbon/slime
 	name = "baby slime"

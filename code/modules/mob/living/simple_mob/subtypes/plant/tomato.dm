@@ -1,5 +1,11 @@
+/datum/category_item/catalogue/fauna/tomato
+	name = "Killer Tomato"
+	desc = "The byproduct of GMO experimentation gone wrong, killer tomatoes \
+	are a dramatic example of why rapid genetic tampering is ill advised."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/hostile/tomato
-	name = "tomato"
+	name = "killer tomato"
 	desc = "It's a horrifyingly enormous beef tomato, and it's packing extra beef!"
 	tt_desc = "X Solanum abominable"
 	icon_state = "tomato"

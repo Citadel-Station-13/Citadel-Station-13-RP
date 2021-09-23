@@ -3,7 +3,7 @@
 #define FARMBOT_UPROOT 3
 #define FARMBOT_NUTRIMENT 4
 
-/datum/category_item/catalogue/fauna/bot/farmbot
+/datum/category_item/catalogue/technology/bot/farmbot
 	name = "Bot - Farmbot"
 	desc = "Farmbots are the fusion of mobile water tanks with sophisticated \
 	cultivation routines. Designed to ease the burden of maintaining Hydroponics \

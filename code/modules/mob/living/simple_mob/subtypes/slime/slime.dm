@@ -1,5 +1,13 @@
 // The top-level slime defines. Xenobio slimes and feral slimes will inherit from this.
 
+/datum/category_item/catalogue/fauna/slime
+	name = "Slime"
+	desc = "Often referred to as Slimes, this mysterious alien \
+	species represents a larger biological curiosity to NanoTrasen. \
+	Highly mutable, these carnivorous blobs of gelatinous tissue may \
+	be trained and farmed, but their temperament makes them a constant danger."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/slime
 	name = "slime"
 	desc = "It's a slime."

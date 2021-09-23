@@ -1,4 +1,4 @@
-/datum/category_item/catalogue/fauna/bot/ed209/slime
+/datum/category_item/catalogue/technology/bot/ed209/slime
 	name = "Bot - SL ED 209"
 	desc = "Due to the commercial failure of the ED model bots, \
 	the frames are easily procured by hobbyists or tinkerers for field \

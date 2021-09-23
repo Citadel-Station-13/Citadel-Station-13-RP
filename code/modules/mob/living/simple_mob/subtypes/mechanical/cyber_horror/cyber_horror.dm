@@ -1,4 +1,18 @@
  //Fodder
+
+/datum/category_item/catalogue/fauna/cyberhorror
+	name = "Cyber Horror"
+	desc = "First witnessed on Surt, the entities hence dubbed 'Cyber Horrors' have \
+	begun to appear at various sites across the Frontier. Based on recordings and logs \
+	found at the mining colony on Surt, these creatures were created via the introduction \
+	of an unidentified Nanite pathogen into organic hosts. The infestation of the host was \
+	treated by the workers on Surt as a form of religious ritual intended to bring the \
+	victim closer to the creators of the pathogen. After those who resisted the plague on \
+	Surt fell, the perpetrators of the incident are believed to have escaped to spread \
+	the affliction to other hosts."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/cyberhorror)
+
 /mob/living/simple_mob/mechanical/cyber_horror
 	name = "Cyber horror"
 	desc = "What was once a man, twisted and warped by machine."

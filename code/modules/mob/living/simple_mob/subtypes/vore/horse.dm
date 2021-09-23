@@ -1,3 +1,13 @@
+/datum/category_item/catalogue/fauna/horse
+	name = "Horse"
+	desc = "A long-time companion of Humanity, the horse served as the \
+	primary method of transportation for pre-industrial Humans for thousands \
+	of years. That bond has remained even as technology has rendered the \
+	creature obsolete. Kept for sentimentality and niche utility reasons, \
+	the horse is still viable on planets where industrialization is not yet \
+	possible."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/horse
 	name = "horse"
 	desc = "Don't look it in the mouth."

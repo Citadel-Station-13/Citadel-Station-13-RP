@@ -2,6 +2,15 @@
 //		Juggernaut
 ////////////////////////////
 
+/datum/category_item/catalogue/fauna/construct/juggernaut
+	name = "Constructs - Juggernaut"
+	desc = "An absolute behemoth, the Juggernaut is feared by \
+	many, and revered by some. Imposing, heavily armored, and powerful, \
+	the Juggernaut relies only on its massive hands to do damage - they \
+	are usually more than sufficient. The statue's thick armor makes it \
+	immensely resilient. Direct combat with a Juggernaut is not advised."
+	value = CATALOGUER_REWARD_HARD
+
 /mob/living/simple_mob/construct/juggernaut
 	name = "Juggernaut"
 	real_name = "Juggernaut"

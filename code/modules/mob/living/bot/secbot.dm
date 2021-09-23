@@ -2,7 +2,7 @@
 #define SECBOT_THREAT_ARREST 4		//threat level at which we decide to arrest someone
 #define SECBOT_THREAT_ATTACK 8		//threat level at which was assume immediate danger and attack right away
 
-/datum/category_item/catalogue/fauna/bot/secbot
+/datum/category_item/catalogue/technology/bot/secbot
 	name = "Bot - Securitron"
 	desc = "The Securitron is a proprietary support bot designed by NanoTrasen. \
 	Utilizing the standard Security department helmet, this wheeled automaton moves \
@@ -62,7 +62,7 @@
 				GLOB.global_announcer.autosay("[src] was interfered with in <b>[get_area(src)]</b>, activating defense routines.", "[src]", "Security")
 //VOREStation Add End
 
-/datum/category_item/catalogue/fauna/bot/secbot/beepsky
+/datum/category_item/catalogue/technology/bot/secbot/beepsky
 	name = "Bot - Officer Beepsky"
 	desc = "Officer Beepsky was designed to be the mascot for \
 	NanoTrasen's unveiling of the Securitron line. A favorite among \
@@ -81,7 +81,7 @@
 	health = 130
 
 
-/datum/category_item/catalogue/fauna/bot/secbot/slime
+/datum/category_item/catalogue/technology/bot/secbot/slime
 	name = "Bot - Slime Securitron"
 	desc = "A rare NanoTrasen variant of their Securitron designs, \
 	Slime Securitrons utilize the same technology and programming as \
@@ -102,7 +102,7 @@
 	used_weapon = /obj/item/melee/baton/slime
 	var/xeno_stun_strength = 5 // How hard to slimebatoned()'d naughty slimes. 5 works out to 2 discipline and 5 weaken.
 
-/datum/category_item/catalogue/fauna/bot/secbot/slime/slimesky
+/datum/category_item/catalogue/technology/bot/secbot/slime/slimesky
 	name = "Bot - Doctor Slimesky"
 	desc = "Although less popular than its inspiration - Officer Beepsky, \
 	Doctor Slimesky is still viewed with respect by Xenobiologists due to its \

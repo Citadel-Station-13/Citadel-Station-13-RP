@@ -2,6 +2,46 @@
 //		Merc Mobs Go Here
 ///////////////////////////////
 
+/datum/category_item/catalogue/fauna/mercenary
+	name = "Mercenaries"
+	desc = "Life on the Frontier is hard, and unregulated. Unlike life in \
+	more 'civlized' areas of the Galaxy, violence and piracy remain common \
+	this far out. The Megacorporations keep a tight grip on their holdings, \
+	but there are always small bands or aspiring companies looking to make a \
+	thaler. From simple pirates to legitimate PMCs, Frontier mercs come in \
+	all shapes and sizes."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/mercenary)
+
+// Obtained by scanning all X.
+/datum/category_item/catalogue/fauna/all_mercenaries
+	name = "Collection - Mercenaries"
+	desc = "You have scanned a large array of different types of mercenary, \
+	and therefore you have been granted a large sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_HARD
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/mercenary/human,
+		/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper,
+		/datum/category_item/catalogue/fauna/mercenary/human/grenadier,
+		/datum/category_item/catalogue/fauna/mercenary/human/space,
+		/datum/category_item/catalogue/fauna/mercenary/human/space/suppressor,
+		/datum/category_item/catalogue/fauna/mercenary/vox,
+		/datum/category_item/catalogue/fauna/mercenary/vox/boarder,
+		/datum/category_item/catalogue/fauna/mercenary/vox/technician,
+		/datum/category_item/catalogue/fauna/mercenary/vox/suppressor,
+		/datum/category_item/catalogue/fauna/mercenary/vox/captain
+		)
+
+/datum/category_item/catalogue/fauna/mercenary/human
+	name = "Mercenaries - Human"
+	desc = "Human Mercenary bands are extremely common on the Frontier. Many \
+	of the modern outfits operating on the fringe today are veterans of the \
+	Phoron Wars. After the dissolution of the Syndicate, these operatives were \
+	left without a place to call home. Those who have survived have leveraged \
+	their experience into a viable trade."
+	value = CATALOGUER_REWARD_EASY
+
 // Probably shouldn't use this directly, there are a bunch of sub-classes that are more complete.
 /mob/living/simple_mob/humanoid/merc
 	name = "mercenary"
@@ -173,6 +213,15 @@
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
 
+/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper
+	name = "Mercenaries - Solar Peacekeeper"
+	desc = "Activist groups in Civlized Space often raise moral concerns about \
+	conditions on the Frontier. The more organized groups will sometimes gather \
+	bands of mercenaries from the core worlds together under the belief that they \
+	can come out to the Frontier to enforce their way of life. Due to the Frontier \
+	Act, these 'humanitarian operations' are quickly demolished."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/humanoid/merc/ranged/smg/sol
 	icon_state = "bluforranged_smg"
 	icon_living = "blueforranged_smg"
@@ -236,6 +285,15 @@
 	needs_reload = TRUE
 	reload_max = 7		// Deagle Reload
 
+/datum/category_item/catalogue/fauna/mercenary/human/grenadier
+	name = "Mercenaries - Grenadier"
+	desc = "After the Phoron Wars, many deniable operatives on both sides of \
+	the conflict found that there was no place for them within their home companies \
+	any more. Left without options, these highly motivated and trained specialists \
+	often seek revenge, or attempt to carve out their own fiefdoms. Well equipped \
+	and well trained, these outcasts are not to be taken lightly."
+	value = CATALOGUER_REWARD_EASY
+
 // Grenadier, Basically a miniboss,
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier
 	name = "mercenary grenadier"
@@ -255,6 +313,15 @@
 ////////////////////////////////
 //		Space Mercs
 ////////////////////////////////
+
+/datum/category_item/catalogue/fauna/mercenary/human/space
+	name = "Mercenaries - Commando"
+	desc = "Commandos, much like their less equipped brethren, are experts in \
+	wet work. Honing their skills over years of training, the Commando's iconic \
+	equipment summons memories of the bad old days in any survivor who sees them. \
+	These mercs make a statement with their equipment - 'I was there. Come get me.' \
+	It is usually not an idle boast."
+	value = CATALOGUER_REWARD_EASY
 
 // Sword Space Merc
 /mob/living/simple_mob/humanoid/merc/melee/sword/space
@@ -395,6 +462,14 @@
 
 // suppressors are just assholes and are intended to be a piss poor experience for everyone on both sides
 
+/datum/category_item/catalogue/fauna/mercenary/human/space/suppressor
+	name = "Mercenaries - Suppressor"
+	desc = "Just because the Phoron Wars are over, it doesn't mean that covert \
+	actions and corporate espionage ended too. When you encounter mercs with \
+	the latest gear and the best training, you can bet your bottom Thaler that \
+	they've got a Corporate sponsor backing them up."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /datum/ai_holder/simple_mob/merc/ranged/suppressor
 	respect_alpha = FALSE // he really just shoots you
 	vision_range = 10 // plutonia experience
@@ -492,6 +567,15 @@
 ////////////////////////////////
 //Classifying these as Mercs, due to the general power level I want them at.
 
+/datum/category_item/catalogue/fauna/mercenary/vox
+	name = "Mercenaries - Vox"
+	desc = "For centuries the Vox have inflicted their way of life upon the \
+	Galaxy. Regarded with distrust due to their tendency to engage in piracy \
+	and violence, the Vox are equally feared for their robust physiology and \
+	curiously advanced xenotech. Due to ancient compacts, Vox pirates try to \
+	avoid bloodshed, but will react to violence in kind."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/humanoid/merc/voxpirate	//Don't use this one.
 	name = "vox mannequin"
 	desc = "You shouldn't be seeing this one."
@@ -548,6 +632,14 @@
 ////////////////////////////////
 //			Vox Melee
 ////////////////////////////////
+
+/datum/category_item/catalogue/fauna/mercenary/vox/boarder
+	name = "Mercenaries - Vox Boarder"
+	desc = "Vox are squat creatures, with powerful muscles and tough, scaly \
+	hides. Their dense bones and sharp talons make them a formidable threat in \
+	close quarters combat. Low level Vox weaponry generally emphasizes closing \
+	the distance to exploit these facts."
+	value = CATALOGUER_REWARD_MEDIUM
 
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder
 	name = "vox melee boarder"
@@ -613,6 +705,16 @@
 	needs_reload = TRUE
 	reload_max = 10
 
+/datum/category_item/catalogue/fauna/mercenary/vox/technician
+	name = "Mercenaries - Vox Technician"
+	desc = "The belief that Vox are unintelligent comes largely from a kind \
+	of anthrochauvanism. Due to their difficulty speaking GalCom and their tendency \
+	to resort to underhanded methods, the Galaxy sees Vox as brutal, unintelligent \
+	aliens. In reality, Vox are just as intelligent as everyone else, as the state \
+	of their technology shows. Vox Technicians maintain ancient vessels and tools \
+	with scraps and odd bits, often recieving no external recognition for their work."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/humanoid/merc/voxpirate/technician
 	name = "vox salvage technician"
 	desc = "A screeching Vox with an ion rifle. Usually sent on scrapping operations."
@@ -629,6 +731,18 @@
 
 	needs_reload = TRUE
 	reload_max = 25 //Suppressive tech weapon.
+
+/datum/category_item/catalogue/fauna/mercenary/vox/suppressor
+	name = "Mercenaries - Vox Suppressor"
+	desc = "Among Vox bands, Suppressors are an even more motley crew. \
+	Staying true to the name, Suppressors are veteran Vox pirates who have \
+	faced hundreds of engagements. Tough and well suited for violence, these \
+	Vox wear bright, mismatching colors into battle to draw attention. Serving \
+	as a beacon to draw eyes away from their companions, Suppressors wield the \
+	fearsome Sonic Cannon - a booming directed frequency device capable of \
+	wreaking havoc all its own. It doesn't sound half bad either, when it isn't \
+	pointed at you."
+	value = CATALOGUER_REWARD_MEDIUM
 
 /mob/living/simple_mob/humanoid/merc/voxpirate/suppressor
 	name = "vox suppressor"
@@ -649,6 +763,17 @@
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	needs_reload = TRUE
 	reload_max = 30 //Gotta lay down that fire, son.
+
+/datum/category_item/catalogue/fauna/mercenary/vox/captain
+	name = "Mercenaries - Vox Captain"
+	desc = "Accomplished Vox who bring in scrap reliably eventually become the \
+	'Quills' of their own expeditions. This Vox term is considered analagous to \
+	the word 'Captain'. As such, any Vox who has attained this rank has certainly \
+	earned the powerful equipment they carry into combat: Dark Matter cannons, \
+	advanced armor, proper Hunting Rifles - the list goes on. The Vox Captain \
+	is a formidable opponent, honed by years of hard living and harder fighting. \
+	If you are unable to negotiate, expect to face their entire crew head on."
+	value = CATALOGUER_REWARD_MEDIUM
 
 /mob/living/simple_mob/humanoid/merc/voxpirate/captain
 	name = "vox pirate captain"

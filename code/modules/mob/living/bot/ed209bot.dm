@@ -1,4 +1,4 @@
-/datum/category_item/catalogue/fauna/bot/ed209
+/datum/category_item/catalogue/technology/bot/ed209
 	name = "Bot - ED 209"
 	desc = "The ED series security robot remains controversial to this day. \
 	Originally fielded by corporations during the Flicker, ED series secbots \

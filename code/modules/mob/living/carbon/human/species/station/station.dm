@@ -5,8 +5,8 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
 	colonies across a wide swathe of space. They hold a wide range of forms and creeds.<br/><br/> \
-	While the central Sol government maintains control of its far-flung people, powerful corporate \
-	interests, rampant cyber and bio-augmentation and secretive factions make life on most human \
+	While the Orion Confederation government represents humanity at large, on the Frontier powerful corporate \
+	interests, rampant cyber and bio-augmentation initiatives, and secretive factions make life on most human \
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
 	num_alternate_languages = 3
@@ -941,7 +941,7 @@
 
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
-	name_plural = "Neomorphs"
+	name_plural = "Xenohybrids"
 	icobase = 'icons/mob/human_races/r_xenomorph.dmi'
 	deform = 'icons/mob/human_races/r_def_xenomorph.dmi'
 	tail = "tail"
@@ -952,10 +952,10 @@
 	min_age = 18
 	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 
-	blurb = "Neomorphs are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
-	Neomorphs are civilised and capable of communicating with other species, without knowing their language. \
+	blurb = "Xenohybrids are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
+	Xenohybrids are civilised and capable of communicating with other species, without knowing their language. \
 	Over the years crusading the stars xenomorphs gathered genetic material of almost all known species(and probably some unknown as well), \
-	allowing Neomorphs to reproduce with most other species. This reproduction is not as invasive as the facehuggers of their relatives, \
+	allowing Xenohybrids to reproduce with most other species. This reproduction is not as invasive as the facehuggers of their relatives, \
 	but can still be dangerous to the host. Their chitinous exoskeleton allows them to endure low pressure and freezing cold \
 	quite well, but leaves them vurnerable to fire and heat."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)

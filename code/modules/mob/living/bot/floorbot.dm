@@ -4,7 +4,7 @@
 // Therefore that functionality is disabled for now.  But it can be turned on by uncommenting this.
 // #define FLOORBOT_PATCHES_HOLES 1
 
-/datum/category_item/catalogue/fauna/bot/floorbot
+/datum/category_item/catalogue/technology/bot/floorbot
 	name = "Bot - Floorbot"
 	desc = "The standard Floorbot is an oft forgotten automaton \
 	utilized by Engineering teams to help rapidly patch catastrophic \

@@ -2,6 +2,12 @@
 //			Shade
 ////////////////////////////
 
+/datum/category_item/catalogue/fauna/construct/shade
+	name = "%#ERROR#%"
+	desc = "%ERROR% SCAN DATA REDACTED. RETURN SCANNER TO A \
+	CENTRAL ADMINISTRATOR FOR IMMEDIATE MAINTENANCE. %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/construct/shade
 	name = "Shade"
 	real_name = "Shade"

@@ -1,6 +1,6 @@
 /datum/category_item/catalogue/fauna/horror
 	name = "%#ERROR#%"
-	desc = "%ERROR% SCAN DATA REDACTED. RETURN SCANNER TO A\
+	desc = "%ERROR% SCAN DATA REDACTED. RETURN SCANNER TO A \
 	CENTRAL ADMINISTRATOR FOR IMMEDIATE MAINTENANCE. %ERROR%"
 	value = CATALOGUER_REWARD_TRIVIAL
 	unlocked_by_any = list(/datum/category_item/catalogue/fauna/horror)

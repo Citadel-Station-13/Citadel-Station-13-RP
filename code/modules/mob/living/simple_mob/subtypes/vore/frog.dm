@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/frog
+	name = "Giant Frog"
+	desc = "Another example of genetic engineering gone right - mostly - the Giant Frog \
+	is an upscaled amphibian originally imported from Earth. Although questions abound \
+	regarding why one might need to produce genetically altered giant frogs, most Scientists \
+	are simply happy the DNA wasn't added to fossilized dinosaur eggs."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/aggressive/frog
 	name = "giant frog"
 	desc = "You've heard of having a frog in your throat, now get ready for the reverse."

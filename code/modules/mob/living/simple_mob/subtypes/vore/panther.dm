@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/panther
+	name = "Panther"
+	desc = "Sometimes imported to the Frontier by exotic animal collectors, \
+	Panthers are big cats native to Earth. Driven to near extinction after \
+	the Final War, they have since seen a resurgence in population due to cloning \
+	and environmentalist initiatives."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/aggressive/panther
 	name = "panther"
 	desc = "Runtime's larger, less cuddly cousin."
