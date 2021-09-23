@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper
+	name = "Robot - Gravekeeper"
+	desc = "Gravekeepers are often politely ignored. Serving as guards and custodians \
+	of funeral grounds, Gravekeepers only care about tending to their assigned station. \
+	However, it is known that attempts to interfere with a Gravekeeper's duties, or to \
+	loot the burial sites they oversee, are often met with violence."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/silicon/robot/gravekeeper
 	lawupdate = 0
 	scrambledcodes = 1

@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/Steve
+	name = "@#$(EAK%@#"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/Steve
 	name = "???"
 	desc = "A formless blob of flesh with one, giant, everblinking eye. It has a large machine gun and a watercooler stuck stright into its skin."

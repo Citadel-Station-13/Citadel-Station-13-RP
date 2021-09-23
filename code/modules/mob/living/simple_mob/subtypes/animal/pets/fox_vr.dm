@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/fox
+	name = "Fox"
+	desc = "Vulpine creatures, commonly referred to as foxes, are a \
+	somewhat distant cousin of Canines. Due to their elegant features \
+	and coloration, the Fox symbolises beauty and agility. It is frequently \
+	adopted as a covert military icon - a trend that rose in popularity during \
+	the 20th and 21st Centuries on Pre-War Earth."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/fox
 	name = "fox"
 	desc = "It's a fox. I wonder what it says?"

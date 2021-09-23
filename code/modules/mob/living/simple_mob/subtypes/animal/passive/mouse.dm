@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/mouse
+	name = "Mouse"
+	desc = "An ancient Old Earth rodent, mice have served as both pest and pet \
+	to Humanity for millenia. Originally brought into space for scientific testing \
+	due to genetic similarities with Humans, mice have since bred their way back \
+	to pest status, and spread freely across the Frontier."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/mouse
 	name = "mouse"
 	real_name = "mouse"

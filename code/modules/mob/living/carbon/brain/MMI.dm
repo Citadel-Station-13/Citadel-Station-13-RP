@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/brain/assisted
+	name = "Heuristics - Assisted"
+	desc = "The Man Machine Interface, or MMI, is comparatively ancient \
+	technology. Originally designed to allow full interfacing between organic \
+	processors and ungoverned robotics, MMIs have been the center of vast sapient \
+	rights campaigns and ethical debates."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/mmi
@@ -304,6 +312,15 @@
 		brainmob.mind.assigned_role = "Robotic Intelligence"
 	to_chat(brainmob, "<span class='notify'>You feel slightly disoriented. That's normal when you're little more than a complex circuit.</span>")
 	return
+
+/datum/category_item/catalogue/fauna/brain/posibrain
+	name = "Heuristics - Positronic"
+	desc = "Positronic brains, unlike their organic counterparts, are the \
+	products of intelligent design, rather than evolution. Crafted by various \
+	sapient species using a variety of design philosophies and languages, all \
+	positronic brains are considered fully Sapient creatures, just like their \
+	organic counterparts."
+	value = CATALOGUER_REWARD_TRIVIAL
 
 /obj/item/mmi/digital/posibrain
 	name = "positronic brain"

@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/TinyTim
+	name = "%%OST$OSTLOSTLOS%@!"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/TinyTim
 	name = "???"
 	desc = "A tall figure wearing ripped clothes. Its eyes are placed on the bulb of skin that's folded over the front of its face."

@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/bot/medbot
+	name = "Bot - Medibot"
+	desc = "Medibots have become vital additions to hazardous workplaces \
+	across the galaxy. A common sight on the Frontier, Medibots utilize \
+	chemical synthesizers to deliver payloads of healing medications to injured \
+	parties. Although not capable of more complex treatments, the standard Medibot \
+	can stabilize a severely injured worker as easily as it can treat a minor scrape."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/medbot
 	name = "Medibot"
 	desc = "A little medical robot. He looks somewhat underwhelmed."

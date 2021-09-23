@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/livestock/goat
+	name = "Livestock - Goat"
+	desc = "Like the cow, the goat is frequently farmed for its milk and \
+	its meat. Goat hair has some textile applications, but primarily the \
+	goat is chosen to breed due to its ability to handle harsh climates and \
+	conditions. A hardy species, some breeds of goat are able to eat nearly \
+	anything, and function as a limited method of garbage disposal."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/goat
 	name = "goat"
 	desc = "Not known for their pleasant disposition."

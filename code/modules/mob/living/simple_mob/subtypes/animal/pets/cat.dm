@@ -1,3 +1,13 @@
+/datum/category_item/catalogue/fauna/cat
+	name = "Cat"
+	desc = "Felines are a popular domestic animal hailing from Earth. \
+	Sharing common ancestry with Earth's 'big cats', the housecats retain \
+	much of those primitive instincts. Although generally docile around \
+	their owners and larger creatures, cats are frequently employed for pest \
+	control on interstellar facilities. They are a popular subject for photography \
+	and film on the Exonet."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/cat
 	name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."

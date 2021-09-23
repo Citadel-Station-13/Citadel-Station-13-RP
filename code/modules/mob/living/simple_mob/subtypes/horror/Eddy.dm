@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/Eddy
+	name = "&@THE*&CHILDR#!!INE"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/Eddy
 	name = "???"
 	desc = "A dark green, sluglike creature, covered in glowing green ooze, and carrying what look to be eggs on its back."

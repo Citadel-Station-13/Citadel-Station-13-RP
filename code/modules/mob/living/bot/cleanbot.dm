@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/bot/cleanbot
+	name = "Bot - Cleanbot"
+	desc = "Cleanbots are little more than stabilized mop buckets \
+	on wheels, programmed with basic pathfinding abilities and onboard \
+	filth sensors. The cleanbot deploys its mop, utilizing a heavily concentrated\
+	Space Cleaner solution which will generally last it an entire shift."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/cleanbot
 	name = "Cleanbot"
 	desc = "A little cleaning robot, it looks so excited!"

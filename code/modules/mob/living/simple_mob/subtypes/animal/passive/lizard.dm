@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/lizard
+	name = "Lizard"
+	desc = "A reptile common on Earth, lizards come in a variety \
+	of shapes, sizes, and colorations. Popular as pets due to their \
+	easy maintenance, these creatures are able to breed quickly, and \
+	are now considered a relatively harmless pest across the Frontier."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/lizard
 	name = "lizard"
 	desc = "A cute, tiny lizard."

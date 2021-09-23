@@ -29,7 +29,14 @@
 	unlocked_by_all = list(
 		/datum/category_item/catalogue/fauna/roach/roach,
 		/datum/category_item/catalogue/fauna/roach/roachling,
-		//Reminder: add rest
+		/datum/category_item/catalogue/fauna/roach/panzer,
+		/datum/category_item/catalogue/fauna/roach/jaeger,
+		/datum/category_item/catalogue/fauna/roach/seuche,
+		/datum/category_item/catalogue/fauna/roach/atomar,
+		/datum/category_item/catalogue/fauna/roach/uberfallen,
+		/datum/category_item/catalogue/fauna/roach/strahlend,
+		/datum/category_item/catalogue/fauna/roach/zeitraum,
+		/datum/category_item/catalogue/fauna/roach/fuhrer
 		)
 
 /mob/living/simple_mob/animal/roach

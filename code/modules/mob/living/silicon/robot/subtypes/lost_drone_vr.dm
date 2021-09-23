@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/silicon/robot/stray
+	name = "Robot - Stray"
+	desc = "Cyborgs may be considered valuable assets on the Frontier, but their \
+	recovery is not always tenable. Vessels lost in space, due either to mishap or \
+	design, will sometimes harbor 'lost' cyborgs. These units are often sole survivors, \
+	serving as living records of their vessel's last minutes. Lost cyborgs are valuable \
+	for a multitude of reasons, and are often claimed as salvage and repurposed."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/silicon/robot/stray
 	lawupdate = 0
 	scrambledcodes = 1

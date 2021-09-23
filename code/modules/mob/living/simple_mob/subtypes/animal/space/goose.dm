@@ -1,3 +1,10 @@
+/datum/category_item/catalogue/fauna/goose
+	name = "Planetary Fauna - Geese"
+	desc = "Another Avian species, geese are sometimes utilized as a \
+	food source, but are generally too aggressive and temperamental to \
+	domesticate. Especially when compared to other, more viable options."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/space/goose
 	name = "goose"
 	desc = "It looks pretty angry!"
@@ -42,3 +49,6 @@
 	set category = "Abilities"
 
 	add_modifier(/datum/modifier/berserk, 30 SECONDS)
+
+/mob/living/simple_mob/animal/space/goose/virgo3b
+	faction = "virgo3b"

@@ -1,4 +1,11 @@
 //Look Sir, free crabs!
+/datum/category_item/catalogue/fauna/crab
+	name = "Crab"
+	desc = "A popular curstacean originating from Old Earth's oceans, the \
+	crab is enjoyed for its rich meat. The price of importing live crabs has ensured \
+	their scarcity, resulting in them being considered a Galactic delicacy."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/animal/passive/crab
 	name = "crab"
 	desc = "A hard-shelled crustacean. Seems quite content to lounge around all the time."

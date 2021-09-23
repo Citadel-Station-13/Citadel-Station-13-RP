@@ -2,6 +2,16 @@
 #define SECBOT_THREAT_ARREST 4		//threat level at which we decide to arrest someone
 #define SECBOT_THREAT_ATTACK 8		//threat level at which was assume immediate danger and attack right away
 
+/datum/category_item/catalogue/fauna/bot/secbot
+	name = "Bot - Securitron"
+	desc = "The Securitron is a proprietary support bot designed by NanoTrasen. \
+	Utilizing the standard Security department helmet, this wheeled automaton moves \
+	over floors at high speed to intercept flagged personnel. It is capable of pacifying \
+	suspects with its stun baton, and may assist in the arrest process by cuffing disabled \
+	targets. Frighteningly effective, these bots are both a boon and a plague thanks to \
+	significant vulnerabilities in their electronic warfare systems."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/secbot
 	name = "Securitron"
 	desc = "A little security robot.  He looks less than thrilled."
@@ -51,12 +61,33 @@
 				say("Do not interfere with active law enforcement routines!")
 				GLOB.global_announcer.autosay("[src] was interfered with in <b>[get_area(src)]</b>, activating defense routines.", "[src]", "Security")
 //VOREStation Add End
+
+/datum/category_item/catalogue/fauna/bot/secbot/beepsky
+	name = "Bot - Officer Beepsky"
+	desc = "Officer Beepsky was designed to be the mascot for \
+	NanoTrasen's unveiling of the Securitron line. A favorite among \
+	NanoTrasen workers due to its iconic profile and tendency to break out into \
+	wild bouts of profanity, the Beepsky pattern chassis is often replicated \
+	on individual NanoTrasen facilities as a form of morale booster. \
+	The model's increased durability ensures Officer Beepsky stands wheels and visors \
+	above its inferior peers."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/secbot/beepsky
 	name = "Officer Beepsky"
-	desc = "It's Officer Beep O'sky! Powered by a potato and a shot of whiskey."
+	desc = "It's Officer Beepsky! Powered by a potato and a shot of whiskey."
 	will_patrol = TRUE
 	maxHealth = 130
 	health = 130
+
+
+/datum/category_item/catalogue/fauna/bot/secbot/slime
+	name = "Bot - Slime Securitron"
+	desc = "A rare NanoTrasen variant of their Securitron designs, \
+	Slime Securitrons utilize the same technology and programming as \
+	the standard model, but with equipment and parameters designed to \
+	pacify Slimes. Prometheans often view these bots with suspicion."
+	value = CATALOGUER_REWARD_TRIVIAL
 
 /mob/living/bot/secbot/slime
 	name = "Slime Securitron"
@@ -71,9 +102,16 @@
 	used_weapon = /obj/item/melee/baton/slime
 	var/xeno_stun_strength = 5 // How hard to slimebatoned()'d naughty slimes. 5 works out to 2 discipline and 5 weaken.
 
+/datum/category_item/catalogue/fauna/bot/secbot/slime/slimesky
+	name = "Bot - Doctor Slimesky"
+	desc = "Although less popular than its inspiration - Officer Beepsky, \
+	Doctor Slimesky is still viewed with respect by Xenobiologists due to its \
+	equally robust up-armored frame."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/secbot/slime/slimesky
 	name = "Doctor Slimesky"
-	desc = "An old friend of Officer Beep O'sky.  He prescribes beatings to rowdy slimes so that real doctors don't need to treat the xenobiologists."
+	desc = "An old friend of Officer Beepsky.  He prescribes beatings to rowdy slimes so that real doctors don't need to treat the xenobiologists."
 	maxHealth = 130
 	health = 130
 

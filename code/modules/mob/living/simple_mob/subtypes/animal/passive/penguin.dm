@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/penguin
+	name = "Penguin"
+	desc = "An Earthling bird, similar to chickens or other avians, the \
+	penguin is easily recognizable due to its wobbling gait and its iconic \
+	coloration and pattern. Penguins are generally regarded with amusement, \
+	but the exotic nature of their habitat makes it difficult to keep these \
+	creatures as pets. This has limited their spread across the Frontier."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/penguin
 	name = "penguin"
 	desc = "An ungainly, waddling, cute, and VERY well-dressed bird."

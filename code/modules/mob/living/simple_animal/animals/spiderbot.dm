@@ -1,3 +1,10 @@
+/datum/category_item/catalogue/fauna/spiderbot
+	name = "Spiderbot"
+	desc = "A roaming curiosity, spiderbots are as harmless as \
+	they are visually frightening. Generally friendly, the intelligence \
+	piloting a spiderbot is usually still fully cognizant, and benign."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/spiderbot
 	name = "spider-bot"
 	desc = "A skittering robotic friend!"
