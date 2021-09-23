@@ -22,9 +22,9 @@
 			return
 
 	else if (!(I.slot_flags & SLOT_HOLSTER))
+	//VOREStation Edit End
 		to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
 		return
-	//VOREStation Edit End
 
 	if(istype(user))
 		user.stop_aiming(no_message=1)
