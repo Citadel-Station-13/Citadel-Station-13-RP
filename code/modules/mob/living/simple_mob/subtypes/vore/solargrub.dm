@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	value = CATALOGUER_REWARD_EASY
 
 #define SINK_POWER 1
-var/global/list/moth_amount = 0 // Chompstation Addition, Rykka waz here. *pawstamp*; CitRP: It's for the moth spawn thingy
+GLOBAL_VAR_INIT(moth_amount, 0) // Chompstation Addition, Rykka waz here. *pawstamp*; CitRP: It's for the moth spawn thingy
 
 /mob/living/simple_mob/vore/solargrub
 	name = "Juvenile solargrub"
