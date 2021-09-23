@@ -35,6 +35,20 @@
 	containertype = /obj/structure/closet/crate
 	containername = "Plastic sheets crate"
 
+/datum/supply_pack/materials/leather50
+	name = "50 leather sheets"
+	contains = list(/obj/fiftyspawner/leather)
+	cost = 10
+	containertype = /obj/structure/closet/crate
+	containername = "Leather sheets crate"
+
+/datum/supply_pack/materials/cloth50
+	name = "50 cloth sheets"
+	contains = list(/obj/fiftyspawner/cloth)
+	cost = 10
+	containertype = /obj/structure/closet/crate
+	containername = "Cloth sheets crate"
+
 /datum/supply_pack/materials/cardboard_sheets
 	contains = list(/obj/fiftyspawner/cardboard)
 	name = "50 cardboard sheets"
