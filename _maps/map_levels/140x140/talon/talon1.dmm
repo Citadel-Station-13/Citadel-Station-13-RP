@@ -1675,10 +1675,14 @@
 "ek" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 2;
-	pixel_y = 5
-	},
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "en" = (
@@ -1926,7 +1930,12 @@
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "hD" = (
-/obj/machinery/autolathe,
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Talon Doctor"
+	},
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "hP" = (
@@ -2382,6 +2391,9 @@
 	dir = 8;
 	pixel_x = 22
 	},
+/obj/machinery/power/thermoregulator{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "me" = (
@@ -2437,14 +2449,10 @@
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
 "mt" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Talon Engineer"
-	},
-/turf/simulated/floor/tiled/eris/dark/brown_perforated,
-/area/talon/deckone/port_eng)
+/obj/structure/table/standard,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/talon/deckone/workroom)
 "mB" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -2496,12 +2504,14 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "mS" = (
-/obj/structure/table/standard,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/turf/simulated/floor/tiled/eris/steel/gray_perforated,
-/area/talon/deckone/workroom)
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Talon Engineer"
+	},
+/turf/simulated/floor/tiled/eris/dark/brown_perforated,
+/area/talon/deckone/starboard_eng)
 "mT" = (
 /obj/structure/fuel_port{
 	dir = 4;
@@ -2699,14 +2709,9 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
 "pz" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Talon Doctor"
-	},
-/turf/simulated/floor/tiled/eris/steel/gray_perforated,
-/area/talon/deckone/workroom)
+/obj/structure/closet/crate/critter,
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
 "pC" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -2743,7 +2748,6 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/machinery/power/thermoregulator,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "pX" = (
@@ -2760,9 +2764,6 @@
 	dir = 1;
 	name = "north bump";
 	pixel_y = 28
-	},
-/obj/machinery/suit_cycler/mining{
-	req_access = list(301)
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
@@ -3178,13 +3179,6 @@
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
-"uN" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 1;
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/eris/steel/gray_perforated,
-/area/talon/deckone/workroom)
 "uW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3374,17 +3368,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
-"xE" = (
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/adv,
-/turf/simulated/floor/tiled/eris/white/bluecorner,
-/area/talon/deckone/medical)
 "xH" = (
 /obj/machinery/chem_master,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
@@ -3562,6 +3545,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/suit_cycler/vintage/tpilot,
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
 "zE" = (
@@ -3681,6 +3665,7 @@
 	dir = 1;
 	pixel_y = -25
 	},
+/obj/machinery/autolathe,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "AU" = (
@@ -4144,7 +4129,10 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
 "Gr" = (
-/obj/machinery/fitness/punching_bag,
+/obj/structure/table/standard,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "Gt" = (
@@ -4936,11 +4924,6 @@
 /obj/item/pen,
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
-"Nu" = (
-/obj/structure/table/standard,
-/obj/fiftyspawner/glass,
-/turf/simulated/floor/tiled/eris/steel/gray_perforated,
-/area/talon/deckone/workroom)
 "Ny" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5096,7 +5079,10 @@
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/port_eng_store)
 "Qc" = (
-/obj/structure/fitness/weightlifter,
+/obj/structure/extinguisher_cabinet{
+	dir = 1;
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
 "Qe" = (
@@ -5472,6 +5458,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/closet/crate/freezer,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "UI" = (
@@ -14648,7 +14635,7 @@ iA
 cP
 iX
 vV
-mt
+lM
 ir
 YI
 Fw
@@ -15219,7 +15206,7 @@ dL
 wk
 cr
 qG
-Bj
+pz
 bS
 ki
 aa
@@ -17046,7 +17033,7 @@ Xd
 be
 bh
 dO
-uN
+SI
 SI
 rF
 Ns
@@ -17188,8 +17175,8 @@ WM
 dO
 dO
 dO
-mS
-Nu
+SI
+SI
 wh
 ZW
 fJ
@@ -17204,7 +17191,7 @@ iF
 cS
 Zj
 jE
-yf
+mS
 jb
 WA
 qR
@@ -17330,9 +17317,9 @@ Ej
 qB
 bf
 dO
-hD
-pz
 SI
+SI
+hD
 AQ
 fJ
 qA
@@ -17474,7 +17461,7 @@ ct
 dO
 Gt
 SI
-SI
+mt
 Gr
 fJ
 qA
@@ -17609,7 +17596,7 @@ co
 Nm
 dO
 hv
-xE
+Gb
 Rn
 UG
 UQ

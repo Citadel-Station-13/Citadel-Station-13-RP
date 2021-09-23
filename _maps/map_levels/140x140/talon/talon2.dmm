@@ -9,9 +9,6 @@
 /turf/simulated/wall,
 /area/talon/decktwo/bridge_upper)
 "ad" = (
-/obj/effect/landmark/start{
-	name = "Talon Engineer"
-	},
 /obj/machinery/alarm/talon{
 	dir = 8;
 	pixel_x = 22
@@ -33,9 +30,6 @@
 /turf/simulated/open,
 /area/talon/decktwo/bridge_upper)
 "ah" = (
-/obj/effect/landmark/start{
-	name = "Talon Doctor"
-	},
 /obj/machinery/alarm/talon{
 	dir = 8;
 	pixel_x = 22
@@ -64,13 +58,15 @@
 /turf/simulated/open,
 /area/talon/decktwo/bridge_upper)
 "al" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
+/obj/machinery/vending/wallmed1{
+	emagged = 1;
+	pixel_y = 32;
+	shut_up = 0
 	},
-/obj/machinery/portable_atmospherics/powered/scrubber,
-/obj/machinery/alarm/talon{
-	dir = 8;
-	pixel_x = 22
+/obj/item/bedsheet,
+/obj/structure/bed/padded,
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_x = 27
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/lifeboat)
@@ -159,6 +155,9 @@
 "az" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/hopdouble,
+/obj/effect/landmark/start{
+	name = "Talon Captain"
+	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/talon/decktwo/cap_room)
 "aA" = (
@@ -423,11 +422,11 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "be" = (
-/obj/structure/table/steel,
-/obj/structure/closet/hydrant{
-	pixel_x = -32;
-	starts_with = list(/obj/item/clothing/suit/fire/firefighter = 2, /obj/item/clothing/mask/gas = 2, /obj/item/flashlight = 2, /obj/item/tank/oxygen/red = 2, /obj/item/extinguisher = 2, /obj/item/clothing/head/hardhat/red = 2)
+/obj/machinery/camera/network/talon{
+	dir = 4
 	},
+/obj/item/paper/talon_lifeboat,
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/lifeboat)
 "bf" = (
@@ -546,17 +545,19 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "bp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 1
+	},
 /obj/structure/cable/green{
-	dir = 1;
-	icon_state = "1-2"
+	icon_state = "2-8"
 	},
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_one_access = list(301)
-	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "bq" = (
 /obj/structure/table/standard,
@@ -565,12 +566,10 @@
 "br" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_one_access = list(301)
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/talon/maintenance/decktwo_aft)
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/simple,
+/turf/simulated/floor/tiled/techfloor,
+/area/talon/decktwo/lifeboat)
 "bs" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -1072,6 +1071,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/simulated/open,
 /area/talon/decktwo/central_hallway)
 "cB" = (
@@ -1087,6 +1089,9 @@
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
 	},
 /turf/simulated/open,
 /area/talon/decktwo/central_hallway)
@@ -1187,6 +1192,9 @@
 	dir = 4;
 	pixel_x = 26
 	},
+/obj/effect/landmark/start{
+	name = "Talon Engineer"
+	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "dE" = (
@@ -1202,6 +1210,9 @@
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
+	},
+/obj/effect/landmark/start{
+	name = "Talon Pilot"
 	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
@@ -1241,9 +1252,6 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/effect/landmark/start{
-	name = "Talon Pilot"
-	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "dU" = (
@@ -1275,34 +1283,37 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/light/small{
-	dir = 8
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -24
 	},
-/obj/machinery/suit_cycler/vintage/tengi,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/eng_room)
 "ea" = (
 /turf/simulated/floor/wood,
 /area/talon/decktwo/eng_room)
 "eb" = (
-/obj/machinery/door/airlock/command{
-	id_tag = "talon_engdoor";
-	name = "Talon Secure Airlock";
-	req_one_access = list(301)
+/obj/machinery/light{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/talon/decktwo/eng_room)
+/obj/structure/table/marble,
+/obj/machinery/microwave,
+/turf/simulated/floor/tiled/eris/cafe,
+/area/talon/decktwo/bar)
 "ed" = (
 /obj/structure/cable/green,
-/obj/machinery/shield_gen,
+/obj/machinery/shield_gen/external/advanced{
+	anchored = 1
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/tech)
 "ef" = (
+/obj/machinery/telecomms/allinone/talon{
+	id = "talon_aio";
+	network = "Talon"
+	},
 /obj/machinery/camera/network/talon{
 	dir = 9
-	},
-/obj/machinery/pointdefense_control{
-	id_tag = "talon_pd"
 	},
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
@@ -1328,6 +1339,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/pilot_room)
+"em" = (
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 5
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/eris/under,
+/area/talon/maintenance/decktwo_aft)
 "en" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -1349,10 +1370,6 @@
 "ep" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
-	},
-/obj/machinery/light_switch{
-	dir = 8;
-	pixel_x = 24
 	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/eng_room)
@@ -1404,17 +1421,19 @@
 	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
-/turf/simulated/floor/tiled/techfloor,
-/area/talon/decktwo/lifeboat)
-"eQ" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
-	dir = 10
+/obj/machinery/door/airlock/command{
+	name = "Bridge";
+	req_one_access = list(301)
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating/eris/under,
-/area/talon/maintenance/decktwo_aft)
+/turf/simulated/floor/tiled/steel_grid,
+/area/talon/decktwo/tech)
+"eQ" = (
+/obj/structure/railing,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/talon/decktwo/central_hallway)
 "eT" = (
 /turf/simulated/wall,
 /area/talon/decktwo/med_room)
@@ -1433,6 +1452,9 @@
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 26
+	},
+/obj/effect/landmark/start{
+	name = "Talon Doctor"
 	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/med_room)
@@ -1454,6 +1476,9 @@
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
+	},
+/obj/effect/landmark/start{
+	name = "Talon Guard"
 	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
@@ -1495,21 +1520,19 @@
 /area/talon/decktwo/med_room)
 "fp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	icon_state = "1-8"
+	dir = 1;
+	icon_state = "1-2"
 	},
+/obj/effect/overmap/visitable/ship/landable/talon_lifeboat,
+/obj/effect/shuttle_landmark/shuttle_initializer/talon_lifeboat,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/lifeboat)
 "fr" = (
 /obj/machinery/alarm/talon{
 	dir = 4;
 	pixel_x = -22
-	},
-/obj/effect/landmark/start{
-	name = "Talon Guard"
 	},
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/sec_room)
@@ -1562,9 +1585,12 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/med_room)
 "fD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/lifeboat)
@@ -1620,15 +1646,9 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/decktwo_port)
 "fQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "talonlifeboat_docker";
-	pixel_x = -28;
-	pixel_y = -28;
-	req_one_access = list(301)
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/lifeboat)
@@ -1660,7 +1680,9 @@
 /area/talon/decktwo/sec_room)
 "fX" = (
 /obj/structure/table/marble,
-/obj/machinery/microwave,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/bar)
 "gn" = (
@@ -1694,30 +1716,37 @@
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "gD" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/sign/securearea{
+	pixel_y = 30
+	},
+/turf/simulated/floor/plating/eris/under,
+/area/talon/maintenance/decktwo_aft)
+"gJ" = (
+/obj/machinery/suit_cycler/vintage/tengi,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/talon/decktwo/eng_room)
+"gK" = (
+/obj/machinery/door/airlock/command{
+	id_tag = "talon_engdoor";
+	name = "Talon Secure Airlock";
+	req_one_access = list(301)
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/talon/decktwo/eng_room)
+"gL" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/open,
-/area/talon/maintenance/decktwo_aft)
-"gJ" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/talon/maintenance/decktwo_aft)
-"gK" = (
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/talon/maintenance/decktwo_aft)
-"gL" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/lattice,
 /turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "gS" = (
@@ -1892,11 +1921,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/decktwo/eng_room)
 "iq" = (
-/obj/machinery/telecomms/allinone/talon{
-	id = "talon_aio";
-	network = "Talon"
-	},
-/turf/simulated/floor/bluegrid,
+/obj/structure/railing,
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "iv" = (
 /obj/machinery/power/tracker,
@@ -1957,7 +1984,9 @@
 /turf/space,
 /area/talon/maintenance/decktwo_solars)
 "iM" = (
-/obj/machinery/ntnet_relay,
+/obj/machinery/pointdefense_control{
+	id_tag = "talon_pd"
+	},
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "iV" = (
@@ -2000,7 +2029,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/railing,
 /obj/structure/table/standard,
 /obj/item/bluespace_radio/commerce,
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
@@ -2105,16 +2133,19 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "lI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
 	},
-/obj/machinery/light/small,
-/obj/structure/railing{
-	dir = 4
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/light_switch{
 	dir = 1;
-	pixel_y = -24
+	pixel_x = 2;
+	pixel_y = -28
+	},
+/obj/structure/sign/directions/evac{
+	pixel_y = -38
 	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
@@ -2317,6 +2348,13 @@
 	},
 /turf/simulated/wall,
 /area/talon/decktwo/bar)
+"oK" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/talon/maintenance/decktwo_aft)
 "oX" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -2334,19 +2372,15 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "pb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/obj/structure/railing{
+/obj/machinery/shield_capacitor/advanced{
+	anchored = 1;
 	dir = 1
 	},
 /obj/structure/cable/green{
-	icon_state = "2-8"
+	d2 = 8;
+	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/tech)
 "pi" = (
 /turf/simulated/floor/hull/airless,
@@ -2357,6 +2391,13 @@
 	req_one_access = list(301)
 	},
 /turf/simulated/floor/plating/eris/under,
+/area/talon/maintenance/decktwo_aft)
+"pw" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/simulated/open,
 /area/talon/maintenance/decktwo_aft)
 "pK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2389,14 +2430,13 @@
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/central_hallway)
 "qb" = (
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/command{
+	name = "Bridge";
+	req_one_access = list(301)
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
-	dir = 5
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating/eris/under,
+/turf/simulated/floor/tiled/steel_grid,
 /area/talon/maintenance/decktwo_aft)
 "qi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2494,8 +2534,8 @@
 	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/effect/overmap/visitable/ship/landable/talon_lifeboat,
-/obj/effect/shuttle_landmark/shuttle_initializer/talon_lifeboat,
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/lifeboat)
 "rU" = (
@@ -2614,6 +2654,12 @@
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
+"te" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/talon/maintenance/decktwo_aft)
 "tJ" = (
 /turf/simulated/wall/rshull,
 /area/talon/decktwo/vault)
@@ -2653,22 +2699,9 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/decktwo_aft)
 "us" = (
-/obj/machinery/power/apc/talon/hyper{
-	dir = 8;
-	pixel_x = -24
+/obj/machinery/computer/shuttle_control/explore/talon_lifeboat{
+	dir = 4
 	},
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/obj/structure/closet/crate/plastic,
-/obj/item/flashlight,
-/obj/item/storage/briefcase/inflatable,
-/obj/item/flashlight/glowstick,
-/obj/item/flashlight/glowstick,
-/obj/item/flashlight/glowstick,
-/obj/item/storage/box/metalfoam,
-/obj/item/survivalcapsule/luxury,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/lifeboat)
 "uz" = (
@@ -2855,11 +2888,19 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "xi" = (
-/obj/machinery/computer/shuttle_control/explore/talon_lifeboat{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/light/small,
+/obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/talon/decktwo/lifeboat)
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/eris/dark/violetcorener,
+/area/talon/decktwo/tech)
 "xn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 5
@@ -2906,6 +2947,10 @@
 	},
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
+"yj" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/talon/maintenance/decktwo_aft)
 "ym" = (
 /obj/machinery/light_switch{
 	dir = 1;
@@ -3162,17 +3207,9 @@
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
 "Ci" = (
-/obj/machinery/atmospherics/pipe/simple/visible/supply{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/obj/structure/sign/directions/evac{
-	dir = 1;
-	pixel_x = 1;
-	pixel_y = 32
-	},
-/turf/simulated/floor/plating/eris/under,
-/area/talon/maintenance/decktwo_aft)
+/obj/machinery/ntnet_relay,
+/turf/simulated/floor/bluegrid,
+/area/talon/decktwo/tech)
 "Cl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -3227,19 +3264,18 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "CN" = (
-/obj/structure/bed/padded,
-/obj/item/bedsheet,
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_x = 27
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
 	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/powered/pump/filled,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/lifeboat)
 "CW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
-	},
-/obj/structure/railing{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
@@ -3533,8 +3569,14 @@
 "Ib" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/simple,
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "talonlifeboat_docker";
+	pixel_x = -28;
+	pixel_y = -28;
+	req_one_access = list(301)
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/lifeboat)
 "Ic" = (
@@ -3626,21 +3668,30 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
 "Jh" = (
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/obj/structure/sign/securearea{
-	pixel_y = 30
-	},
-/turf/simulated/floor/plating/eris/under,
-/area/talon/maintenance/decktwo_aft)
-"Jo" = (
-/obj/machinery/camera/network/talon{
-	dir = 4
-	},
-/obj/item/paper/talon_lifeboat,
 /obj/structure/table/steel,
+/obj/structure/closet/hydrant{
+	pixel_x = -32;
+	starts_with = list(/obj/item/clothing/suit/fire/firefighter = 2, /obj/item/clothing/mask/gas = 2, /obj/item/flashlight = 2, /obj/item/tank/oxygen/red = 2, /obj/item/extinguisher = 2, /obj/item/clothing/head/hardhat/red = 2)
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/talon/decktwo/lifeboat)
+"Jo" = (
+/obj/machinery/power/apc/talon/hyper{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/structure/closet/crate/plastic,
+/obj/item/flashlight,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/flashlight/glowstick,
+/obj/item/flashlight/glowstick,
+/obj/item/flashlight/glowstick,
+/obj/item/storage/box/metalfoam,
+/obj/item/survivalcapsule/luxury,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/lifeboat)
 "Ju" = (
@@ -3715,19 +3766,17 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/bar)
 "Ld" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/railing{
+	dir = 4
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
-	},
-/obj/machinery/light_switch{
-	dir = 1;
-	pixel_x = 2;
-	pixel_y = -28
-	},
-/obj/structure/sign/directions/evac{
-	pixel_y = -38
 	},
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/talon/decktwo/tech)
@@ -3736,13 +3785,8 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "Lh" = (
-/obj/machinery/vending/wallmed1{
-	emagged = 1;
-	pixel_y = 32;
-	shut_up = 0
-	},
-/obj/item/bedsheet,
 /obj/structure/bed/padded,
+/obj/item/bedsheet,
 /obj/structure/closet/walllocker/autolok_wall{
 	pixel_x = 27
 	},
@@ -3799,6 +3843,18 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
+"Mz" = (
+/obj/machinery/atmospherics/pipe/simple/visible/supply{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/structure/sign/directions/evac{
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/turf/simulated/floor/plating/eris/under,
+/area/talon/maintenance/decktwo_aft)
 "MA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -3870,13 +3926,14 @@
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/decktwo/bar)
 "Np" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/light/small{
-	dir = 4
+/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/machinery/alarm/talon{
+	dir = 8;
+	pixel_x = 22
 	},
-/obj/machinery/portable_atmospherics/powered/pump/filled,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/talon/decktwo/lifeboat)
 "Nr" = (
@@ -4089,6 +4146,13 @@
 /obj/machinery/door/firedoor/glass/talon,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
+"Qo" = (
+/obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
+	dir = 10
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/eris/under,
+/area/talon/maintenance/decktwo_aft)
 "Qt" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass/talon,
@@ -4215,11 +4279,9 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "SU" = (
-/obj/effect/landmark/start{
-	name = "Talon Captain"
-	},
-/turf/simulated/floor/carpet/sblucarpet,
-/area/talon/decktwo/cap_room)
+/obj/structure/window/reinforced,
+/turf/simulated/open,
+/area/talon/maintenance/decktwo_aft)
 "Tg" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -13754,7 +13816,7 @@ aa
 ap
 aC
 az
-SU
+cO
 hm
 kh
 nu
@@ -13923,9 +13985,9 @@ fN
 aD
 eT
 gn
+SU
 gn
-gn
-gn
+te
 gT
 IB
 yW
@@ -14054,7 +14116,7 @@ qi
 dr
 dA
 ad
-ea
+gJ
 ep
 bf
 dr
@@ -14065,9 +14127,9 @@ fO
 bw
 eT
 gn
+SU
 gn
-gn
-gn
+te
 gT
 WG
 gB
@@ -14190,23 +14252,23 @@ bM
 er
 bv
 cm
-cz
+eQ
 Fc
 cR
 dr
 dr
 dr
-eb
+dr
+gK
 dr
 dr
-dr
 eT
 eT
 eT
 eT
 eT
 eT
-go
+hu
 go
 go
 go
@@ -14339,6 +14401,7 @@ ds
 aZ
 bA
 Db
+Db
 iV
 ds
 eN
@@ -14349,7 +14412,6 @@ eN
 eN
 hu
 Ul
-yW
 yW
 yW
 yW
@@ -14482,18 +14544,18 @@ HM
 iA
 RH
 Ld
+lI
 ds
 eN
-xi
 us
 Jo
 be
+Jh
 eN
 hu
-Ci
+Mz
 gB
-gJ
-gu
+oK
 gV
 mm
 gC
@@ -14633,9 +14695,9 @@ fQ
 Ib
 br
 qb
+em
 gC
-gK
-gn
+yj
 gT
 mm
 gC
@@ -14765,19 +14827,19 @@ ds
 Cg
 CW
 sy
-lI
+sy
+xi
 ds
 eN
-Lh
 al
 Np
 CN
+Lh
 eN
 hu
-Jh
 gD
 gL
-go
+pw
 hX
 mm
 gC
@@ -14908,6 +14970,7 @@ jK
 iq
 ef
 iM
+Ci
 ds
 eN
 eN
@@ -14916,8 +14979,7 @@ eN
 eN
 eN
 hu
-eQ
-HK
+Qo
 HK
 HK
 HK
@@ -15042,7 +15104,7 @@ vB
 bW
 aw
 cm
-cz
+eQ
 NT
 qi
 du
@@ -15058,7 +15120,7 @@ eZ
 eZ
 eZ
 eZ
-gu
+hu
 gu
 gu
 gu
@@ -15201,9 +15263,9 @@ fS
 by
 eZ
 gn
+SU
 gn
-gn
-gn
+te
 gT
 iw
 ho
@@ -15343,9 +15405,9 @@ fT
 aE
 eZ
 gn
+SU
 gn
-gn
-gn
+te
 gT
 bT
 WD
@@ -15457,7 +15519,7 @@ aa
 aa
 ax
 aA
-ZF
+UY
 UY
 UY
 vW
@@ -15599,7 +15661,7 @@ aa
 aa
 ax
 aw
-aw
+eb
 fX
 jR
 KR
