@@ -2,6 +2,13 @@
 
 //TODO: Make these simple_mobs
 //Commented out as reference for future reproduction methods, or addition later if needed. - Mech
+
+//TODO (Cap):
+/*
+- Rand movement for huggers.
+- Fix implantation/impregnation.
+*/
+
 var/const/MIN_IMPREGNATION_TIME = 100 //time it takes to impregnate someone
 var/const/MAX_IMPREGNATION_TIME = 150
 
