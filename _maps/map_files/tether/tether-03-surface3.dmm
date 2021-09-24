@@ -26927,7 +26927,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "aWs" = (
-/obj/machinery/suit_cycler,
+/obj/machinery/suit_cycler{
+	req_access = list(58)
+	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/hos)
 "aWt" = (
