@@ -838,16 +838,6 @@
 			name = initial(name) + " ([str])"
 			desc = initial(desc) + " Something has been [erasemethod] on the tag, and it now has \"[str]\" [writemethod] on it."
 
-//Machete Holsters
-/obj/item/clothing/accessory/holster/machete
-	name = "machete sheath"
-	desc = "A handsome synthetic leather sheath with matching belt."
-	icon_state = "holster_machete"
-	concealed_holster = 0
-	can_hold = list(/obj/item/material/knife/machete)
-	//sound_in = 'sound/effects/holster/sheathin.ogg'
-	//sound_out = 'sound/effects/holster/sheathout.ogg'
-
 //Medals
 
 /obj/item/clothing/accessory/medal/silver/unity
