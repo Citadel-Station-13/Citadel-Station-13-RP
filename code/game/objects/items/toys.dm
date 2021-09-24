@@ -937,9 +937,25 @@
 	pokephrase = "Rya!"
 
 /obj/item/toy/plushie/mouse
-	name = "mouse plush"
+	name = "mouse plush (brown)"
 	desc = "A plushie of a delightful mouse! What was once considered a vile rodent is now your very best friend."
 	icon_state = "mouseplushie"	//TFF 12/11/19 - updated icon to show a sprite that doesn't replicate a dead mouse. Heck you for that! >:C
+	item_state = "mouseplushie_brown"
+	slot_flags = SLOT_HEAD
+	pokephrase = "Squeak!"
+
+/obj/item/toy/plushie/mouse/grey
+	name = "mouse plush (grey)"
+	desc = "A plushie of a delightful mouse! What was once considered a vile rodent is now your very best friend. Now in fuzzy grey!"
+	icon_state = "mouseplushie_grey"	//TFF 12/11/19 - updated icon to show a sprite that doesn't replicate a dead mouse. Heck you for that! >:C
+	item_state = "mouseplushie_grey"
+	pokephrase = "Squeak!"
+
+/obj/item/toy/plushie/mouse/white
+	name = "mouse plush (white)"
+	desc = "A plushie of a delightful mouse! What was once considered a vile rodent is now your very best friend. Now in labcoat white!"
+	icon_state = "mouseplushie_white"	//TFF 12/11/19 - updated icon to show a sprite that doesn't replicate a dead mouse. Heck you for that! >:C
+	item_state = "mouseplushie_white"
 	pokephrase = "Squeak!"
 
 /obj/item/toy/plushie/kitten
