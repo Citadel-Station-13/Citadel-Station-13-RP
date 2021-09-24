@@ -5052,11 +5052,11 @@
 /area/centcom/security)
 "kH" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/JSDF,
+/obj/item/gun/projectile/shotgun/pump/JSDF,
+/obj/item/gun/projectile/shotgun/pump/JSDF,
+/obj/item/gun/projectile/shotgun/pump/JSDF,
+/obj/item/gun/projectile/shotgun/pump/JSDF,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	dir = 5;
