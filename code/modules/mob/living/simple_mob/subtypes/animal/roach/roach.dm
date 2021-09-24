@@ -139,21 +139,33 @@
 	melee_damage_lower = 2
 	melee_damage_upper = 3
 
-	var/age = 0
+	var/amount_grown = -1
 	var/spawn_delay = 20
 	var/list/grow_as = list(/mob/living/simple_mob/animal/roach, /mob/living/simple_mob/animal/roach/seuche, /mob/living/simple_mob/animal/roach/jaeger)
 
-/*
-/mob/living/carbon/superior_animal/roach/roachling/Life()
-	.=..()
-	if(!stat)
-		amount_grown += rand(0,2) // Roachling growing up
+/mob/living/simple_mob/animal/roach/roachling/Initialize(mapload, atom/parent)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+	//50% chance to grow up
+	if(prob(50))
+		amount_grown = 1
+	get_light_and_color(parent)
 
-		if(amount_grown >= 100) // Old enough to turn into an adult
-			var/spawn_type = pick(grow_as)
-			new spawn_type(src.loc, src)
-			qdel(src)
-*/
+/mob/living/simple_mob/animal/roach/roachling/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	walk(src, 0) // Because we might have called walk_to, we must stop the walk loop or BYOND keeps an internal reference to us forever.
+	return ..()
+
+/mob/living/simple_mob/animal/roach/roachling/process(delta_time)
+	if(amount_grown >= 0)
+		amount_grown += rand(0,2)
+	if(amount_grown >= 100)
+		mature()
+
+/mob/living/simple_mob/animal/roach/roachling/proc/mature()
+	var/spawn_type = pick(grow_as)
+	new spawn_type(src.loc, src)
+	qdel(src)
 
 //That's just great. That's what we wanna show kids. Santa rolling down the block - in a Panzer.
 /datum/category_item/catalogue/fauna/roach/panzer

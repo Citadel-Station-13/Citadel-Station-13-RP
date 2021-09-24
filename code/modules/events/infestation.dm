@@ -95,7 +95,7 @@
 			spawn_types = list(/mob/living/simple_mob/animal/passive/lizard)
 			vermstring = "lizards"
 		if(VERM_SPIDERS)
-			spawn_types = list(/obj/effect/spider/spiderling)
+			spawn_types = list(/obj/effect/spider/spiderling/no_crawl)
 			vermstring = "spiders"
 		if(VERM_ROACHES)
 			spawn_types = list(/mob/living/simple_mob/animal/roach/roachling)
