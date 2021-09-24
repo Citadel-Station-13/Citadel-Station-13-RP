@@ -11,6 +11,7 @@
 	desc = "A hard-shelled crustacean. Seems quite content to lounge around all the time."
 	tt_desc = "E Cancer bellianus"
 	faction = "crabs"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/crab)
 
 	icon_state = "crab"
 	icon_living = "crab"

@@ -48,6 +48,7 @@
 	item_state = "roach"
 	icon_living = "roach"
 	icon_dead = "roach_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/roach)
 
 	maxHealth = 15
 	health = 15
@@ -137,6 +138,7 @@
 	item_state = "roachling"
 	icon_living = "roachling"
 	icon_dead = "roachling_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/roachling)
 
 	maxHealth = 5
 	health = 5
@@ -191,6 +193,7 @@
 	item_state = "panzer"
 	icon_living = "panzer"
 	icon_dead = "panzer_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/panzer)
 
 	maxHealth = 30
 	health = 30
@@ -221,6 +224,7 @@
 	item_state = "jaeger"
 	icon_living = "jaeger"
 	icon_dead = "jaeger_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/jaeger)
 
 	maxHealth = 15
 	health = 15
@@ -257,6 +261,7 @@
 	item_state = "seuche"
 	icon_living = "seuche"
 	icon_dead = "seuche_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/seuche)
 
 	maxHealth = 15
 	health = 15
@@ -307,6 +312,7 @@
 	item_state = "atomar"
 	icon_living = "atomar"
 	icon_dead = "atomar_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/atomar)
 
 	maxHealth = 10
 	health = 10
@@ -348,6 +354,7 @@
 	icon_living = "uberfallen"
 	icon_dead = "uberfallen_dead"
 	faction = "synthtide"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/uberfallen)
 
 	maxHealth = 30
 	health = 30
@@ -389,6 +396,7 @@
 	item_state = "strahlend"
 	icon_living = "strahlend"
 	icon_dead = "strahlend_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/strahlend)
 
 	maxHealth = 20
 	health = 20
@@ -426,6 +434,7 @@
 	item_state = "zeitraum"
 	icon_living = "zeitraun"
 	icon_dead = "zeitraum_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/zeitraum)
 
 	maxHealth = 20
 	health = 20
@@ -536,6 +545,7 @@
 	item_state = "fuhrer"
 	icon_living = "fuhrer"
 	icon_dead = "fuhrer_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/fuhrer)
 
 	maxHealth = 60
 	health = 60

@@ -14,6 +14,7 @@
 	tt_desc = "E Felis silvestris catus"
 	icon_state = "cat2"
 	item_state = "cat2"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cat)
 
 	movement_cooldown = 0.5 SECONDS
 

@@ -318,7 +318,7 @@
 	name = "\improper Orion Central commander helmet"
 	desc = "A helmet with 'Orion Confederation Government' printed on the back in gold lettering."
 
-/obj/item/clothing/head/helmet/combat/USDF
+/obj/item/clothing/head/helmet/combat/JSDF
 	name = "marine helmet"
 	desc = "If you wanna to keep your brain inside yo' head, you'd best put this on!"
 	icon_state = "unsc_helm"

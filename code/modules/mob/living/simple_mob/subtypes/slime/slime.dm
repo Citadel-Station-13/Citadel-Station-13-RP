@@ -22,6 +22,7 @@
 	glow_range = 3
 	glow_intensity = 2
 	gender = NEUTER
+	catalogue_data = list(/datum/category_item/catalogue/fauna/slime)
 
 	faction = "slime" // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150

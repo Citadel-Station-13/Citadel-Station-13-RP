@@ -10,6 +10,7 @@
 	name = "lizard"
 	desc = "A cute, tiny lizard."
 	tt_desc = "E Anolis cuvieri"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/lizard)
 
 	icon_state = "lizard"
 	icon_living = "lizard"

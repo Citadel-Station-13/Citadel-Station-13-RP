@@ -15,6 +15,7 @@
 /mob/living/simple_mob/blob/spore
 	name = "blob spore"
 	desc = "A floating, fragile spore."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/blob/spore)
 
 	icon_state = "blobpod"
 	icon_living = "blobpod"

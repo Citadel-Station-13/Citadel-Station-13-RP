@@ -55,6 +55,7 @@
 	desc = "A fanatical zealot armed with a darkly colored sword."
 	icon_state = "cultist"
 	icon_living = "cultist"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/human)
 
 	status_flags = 0
 
@@ -219,6 +220,7 @@
 	icon_living = "culttesh"
 	maxHealth = 75
 	health = 75
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/tesh)
 
 	faction = "cult"
 
@@ -269,6 +271,7 @@
 	icon_living = "cultliz"
 	maxHealth = 200
 	health = 200
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/lizard)
 
 	faction = "cult"
 
@@ -319,6 +322,7 @@
 	icon_living = "caster"
 	maxHealth = 150
 	health = 150
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/caster)
 
 	faction = "cult"
 
@@ -369,6 +373,7 @@
 	icon_living = "initiate"
 	maxHealth = 150
 	health = 150
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/initiate)
 
 	faction = "cult"
 
@@ -416,6 +421,7 @@
 	icon_living = "castertesh"
 	maxHealth = 75
 	health = 75
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/castertesh)
 
 	faction = "cult"
 
@@ -467,6 +473,7 @@
 	icon_state = "cult_elite"
 	icon_living = "cult_elite"
 	faction = "cult"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/elite)
 
 	status_flags = 0
 
@@ -539,6 +546,7 @@
 	icon_living = "magus"
 	maxHealth = 300 //Boss Mobs should be tanky.
 	health = 300
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/magus)
 
 	faction = "cult"
 
@@ -593,6 +601,7 @@
 	icon_living = "hunterb"
 	maxHealth = 300 //Boss Mobs should be tanky.
 	health = 300
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cultist/hunter)
 
 	faction = "cult"
 

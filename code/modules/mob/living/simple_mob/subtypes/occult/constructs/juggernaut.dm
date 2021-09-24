@@ -28,6 +28,7 @@
 	attacktext = list("smashed their armoured gauntlet into")
 	friendly = list("pats")
 	mob_size = MOB_HUGE
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/juggernaut)
 
 
 	movement_cooldown = 6 //Not super fast, but it might catch up to someone in armor who got punched once or twice.

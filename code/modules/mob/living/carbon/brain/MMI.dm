@@ -16,6 +16,7 @@
 	w_class = ITEMSIZE_NORMAL
 	can_speak = 1
 	origin_tech = list(TECH_BIO = 3)
+	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/assisted)
 
 	req_access = list(access_robotics)
 
@@ -331,6 +332,7 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/posi_brain
+	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/posibrain)
 
 /obj/item/mmi/digital/posibrain/request_player()
 	icon_state = "posibrain-searching"

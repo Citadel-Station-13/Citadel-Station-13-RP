@@ -11,6 +11,7 @@
 	icon_state = "otherthing"
 	icon_living = "otherthing"
 	icon_dead = "otherthing-dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/creature)
 
 	mob_class = MOB_CLASS_ABERRATION
 

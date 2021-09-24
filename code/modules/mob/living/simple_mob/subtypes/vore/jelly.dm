@@ -9,6 +9,7 @@
 /mob/living/simple_mob/animal/space/jelly
 	name = "jelly blob"
 	desc = "Some sort of undulating blob of slime!"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/jelly)
 
 	icon_dead = "jelly_dead"
 	icon_living = "jelly"

@@ -12,6 +12,7 @@
 	name = "horse"
 	desc = "Don't look it in the mouth."
 	tt_desc = "Equus ferus caballus"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horse)
 
 	icon_state = "horse"
 	icon_living = "horse"

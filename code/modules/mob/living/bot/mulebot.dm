@@ -25,6 +25,7 @@
 	health = 150
 	maxHealth = 150
 	mob_bump_flag = HEAVY
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/mulebot)
 
 	min_target_dist = 0
 	max_target_dist = 250

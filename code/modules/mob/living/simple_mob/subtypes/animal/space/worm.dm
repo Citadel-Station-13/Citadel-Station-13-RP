@@ -73,6 +73,7 @@
 	name = "space worm"
 	icon_state = "spacewormhead"
 	icon_living = "spacewormhead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/space_worm)
 
 	anchored = FALSE	// You can pull the head to pull the body.
 

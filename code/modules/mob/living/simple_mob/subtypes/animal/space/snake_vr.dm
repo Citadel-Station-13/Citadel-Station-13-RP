@@ -12,6 +12,7 @@
 /mob/living/simple_mob/animal/passive/snake
 	name = "snake"
 	desc = "A big thick snake."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/snake)
 
 	icon_state = "snake"
 	icon_living = "snake"

@@ -14,6 +14,7 @@
 	icon_state = "penguin_old"
 	icon_living = "penguin_old"
 	icon_dead = "penguin_old_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/penguin)
 
 	maxHealth = 20
 	health = 20

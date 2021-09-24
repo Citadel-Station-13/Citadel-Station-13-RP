@@ -23,6 +23,7 @@
 	icon_state = "piratemelee"
 	icon_living = "piratemelee"
 	icon_dead = "piratemelee_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/pirate)
 
 	faction = "pirate"
 

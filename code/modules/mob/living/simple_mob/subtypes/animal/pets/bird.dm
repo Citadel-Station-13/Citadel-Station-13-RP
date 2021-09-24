@@ -13,6 +13,7 @@
 	name = "bird"
 	desc = "A domesticated bird. Tweet tweet!"
 	player_msg = "You are able to fly."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/bird)
 
 	icon = 'icons/mob/birds.dmi'
 	icon_state = "parrot"

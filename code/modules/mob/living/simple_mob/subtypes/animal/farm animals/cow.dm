@@ -15,6 +15,7 @@
 	icon_living = "cow"
 	icon_dead = "cow_dead"
 	icon_gib = "cow_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/cow)
 
 	health = 50
 	maxHealth = 50

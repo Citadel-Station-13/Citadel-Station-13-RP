@@ -15,6 +15,7 @@
 	icon_state = "shade"
 	icon_living = "shade"
 	icon_dead = "shade_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/shade)
 
 	response_help  = "puts their hand through"
 	response_disarm = "flails at"

@@ -10,6 +10,7 @@
 	icon_state = "faithless"
 	icon_living = "faithless"
 	icon_dead = "faithless_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror)
 
 	faction = "faithless"
 

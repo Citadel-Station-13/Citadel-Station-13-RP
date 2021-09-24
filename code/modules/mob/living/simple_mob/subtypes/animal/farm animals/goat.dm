@@ -14,6 +14,7 @@
 	icon_state = "goat"
 	icon_living = "goat"
 	icon_dead = "goat_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/goat)
 
 	faction = "goat"
 

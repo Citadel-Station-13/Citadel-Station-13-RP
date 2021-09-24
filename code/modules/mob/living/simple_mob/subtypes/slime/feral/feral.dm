@@ -10,6 +10,7 @@
 	name = "feral slime"
 	desc = "The result of slimes escaping containment from some xenobiology lab."
 	description_info = "Note that processing this large slime will give six cores."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/slime/feral)
 
 	cores = 6 // Xenobio will love getting their hands on these.
 

@@ -34,6 +34,8 @@
 							/spell/targeted/ambush_mode
 							)
 
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/wraith)
+
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 	var/jaunt_warning = 0.5 SECONDS	// How long the jaunt telegraphing is.

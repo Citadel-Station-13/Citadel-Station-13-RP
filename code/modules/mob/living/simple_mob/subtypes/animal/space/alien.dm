@@ -43,6 +43,7 @@
 	icon_dead = "alien_l"
 	icon_gib = "syndicate_gib"
 	icon_rest = "alienh_sleep"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/hunter)
 
 	faction = "xeno"
 
@@ -85,6 +86,7 @@
 	health = 100
 	melee_damage_lower = 15
 	melee_damage_upper = 15
+	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/drone)
 
 /datum/category_item/catalogue/fauna/feral_alien/sentinel
 	name = "Feral Xenomorph - Sentinel"
@@ -108,6 +110,7 @@
 	melee_damage_upper = 15
 	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
+	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel)
 
 /datum/category_item/catalogue/fauna/feral_alien/sentinel/praetorian
 	name = "Feral Xenomorph - Praetorian"
@@ -130,6 +133,7 @@
 	icon_rest = "prat_sleep"
 	maxHealth = 400
 	health = 400
+	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel/praetorian)
 
 	pixel_x = -16
 	old_x = -16
@@ -162,6 +166,7 @@
 	melee_damage_upper = 15
 	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
+	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen)
 
 
 	movement_cooldown = 8
@@ -187,6 +192,7 @@
 	maxHealth = 1000
 	health = 1000
 	meat_amount = 5
+	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress)
 
 	pixel_x = -16
 	old_x = -16
@@ -216,6 +222,7 @@
 	meat_amount = 10
 	melee_damage_lower = 15
 	melee_damage_upper = 25
+	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother)
 
 	pixel_x = -32
 	old_x = -32

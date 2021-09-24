@@ -13,6 +13,7 @@
 	icon_state = "edCLN0"
 	req_one_access = list(access_robotics, access_janitor)
 	botcard_access = list(access_janitor, access_maint_tunnels)
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot/edCLN)
 
 	locked = 0 // Start unlocked so roboticist can set them to patrol.
 	wait_if_pulled = 0 // One big boi.

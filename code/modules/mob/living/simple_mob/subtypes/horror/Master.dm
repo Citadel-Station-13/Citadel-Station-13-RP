@@ -16,6 +16,7 @@
 	icon = 'icons/mob/horror_show/master.dmi'
 	icon_gib = "generic_gib"
 	anchored = 1
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Master)
 
 	attack_sound = 'sound/h_sounds/shitty_tim.ogg'
 

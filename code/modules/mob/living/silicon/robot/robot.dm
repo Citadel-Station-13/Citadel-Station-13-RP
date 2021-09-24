@@ -42,6 +42,7 @@
 	icon_state = "robot"
 	maxHealth = 200
 	health = 200
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/cyborg)
 
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY

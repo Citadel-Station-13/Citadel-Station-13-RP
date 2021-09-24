@@ -22,6 +22,7 @@
 	item_state = "brainslug"
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/borer)
 
 	response_help  = "pokes"
 	response_disarm = "prods"

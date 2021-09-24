@@ -20,6 +20,7 @@
 	icon_state = "cyber_horror"
 	icon_dead = "cyber_horror_dead"
 	icon_gib = "cyber_horror_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cyberhorror)
 
 	faction = "synthtide"
 

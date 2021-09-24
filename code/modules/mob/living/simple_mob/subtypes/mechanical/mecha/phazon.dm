@@ -18,6 +18,7 @@
 	icon_state = "phazon"
 	movement_cooldown = 5
 	wreckage = /obj/structure/loot_pile/mecha/phazon
+	catalogue_data = list(/datum/category_item/catalogue/technology/phazon)
 
 	maxHealth = 200
 	deflect_chance = 30

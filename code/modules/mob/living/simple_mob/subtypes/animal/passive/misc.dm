@@ -16,6 +16,7 @@
 	icon_living = "yithian"
 	icon_dead = "yithian_dead"
 	icon = 'icons/jungle.dmi'
+	catalogue_data = list(/datum/category_item/catalogue/fauna/yithian)
 
 	// Same stats as lizards.
 	health = 5
@@ -41,6 +42,7 @@
 	icon_living = "tindalos"
 	icon_dead = "tindalos_dead"
 	icon = 'icons/jungle.dmi'
+	catalogue_data = list(/datum/category_item/catalogue/fauna/tindalos)
 
 	// Same stats as lizards.
 	health = 5

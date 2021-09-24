@@ -14,6 +14,7 @@
 	icon_state = "mainboard"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_DATA = 4)
+	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/robotic)
 
 /obj/item/mmi/digital/robot/Initialize(mapload)
 	. = ..()

@@ -565,4 +565,7 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	name = "X - Y"
 	desc = ""
 	value = CATALOGUER_REWARD_TRIVIAL
+
+Mob var:
+catalogue_data = list()
 */

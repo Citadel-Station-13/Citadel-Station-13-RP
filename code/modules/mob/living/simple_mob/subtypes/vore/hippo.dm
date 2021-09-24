@@ -9,6 +9,7 @@
 	name = "hippo"
 	desc = "Mostly know for the spectacular hit of the live action movie Hungry Hungry Hippos."
 	tt_desc = "Hippopotamus amphibius"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/hippo)
 
 	icon_state = "hippo"
 	icon_living = "hippo"

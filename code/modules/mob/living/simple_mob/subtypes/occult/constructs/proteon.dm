@@ -28,5 +28,6 @@
 	attacktext = list("rammed")
 	attack_sound = 'sound/weapons/rapidslice.ogg'
 	movement_cooldown = 0
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/proteon)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive

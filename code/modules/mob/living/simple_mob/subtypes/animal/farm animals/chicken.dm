@@ -39,6 +39,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	icon_state = "chicken"
 	icon_living = "chicken"
 	icon_dead = "chicken_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/chicken)
 
 	health = 10
 	maxHealth = 10

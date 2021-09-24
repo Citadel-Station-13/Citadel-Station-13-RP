@@ -15,6 +15,7 @@
 	item_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse)
 
 	maxHealth = 5
 	health = 5

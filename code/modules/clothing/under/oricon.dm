@@ -346,23 +346,23 @@
 
 /obj/item/clothing/under/oricon/utility/fleet
 	name = "fleet coveralls"
-	desc = "The utility uniform of the USDF Fleet, made from an insulated material."
+	desc = "The utility uniform of the JSDF Fleet, made from an insulated material."
 
 /obj/item/clothing/under/oricon/utility/marine
 	name = "marine fatigues"
-	desc = "The utility uniform of the USDF Marine Corps, made from durable material."
+	desc = "The utility uniform of the JSDF Marine Corps, made from durable material."
 
 /obj/item/clothing/under/oricon/utility/marine/green
 	name = "green fatigues"
-	desc = "A green version of the USDF marine utility uniform, made from durable material."
+	desc = "A green version of the JSDF marine utility uniform, made from durable material."
 
 /obj/item/clothing/under/oricon/utility/marine/tan
 	name = "tan fatigues"
-	desc = "A tan version of the USDF marine utility uniform, made from durable material."
+	desc = "A tan version of the JSDF marine utility uniform, made from durable material."
 
 /obj/item/clothing/under/oricon/utility/marine/olive
 	name = "olive fatigues"
-	desc = "An olive version of the USDF marine utility uniform, made from durable material."
+	desc = "An olive version of the JSDF marine utility uniform, made from durable material."
 	icon = 'icons/obj/clothing/uniforms_vr.dmi'
 	icon_override = 'icons/mob/uniform_vr.dmi'
 	icon_state = "bdu_olive"
@@ -370,7 +370,7 @@
 
 /obj/item/clothing/under/oricon/utility/marine/desert
 	name = "desert fatigues"
-	desc = "A desert version of the USDF marine utility uniform, made from durable material."
+	desc = "A desert version of the JSDF marine utility uniform, made from durable material."
 	icon = 'icons/obj/clothing/uniforms_vr.dmi'
 	icon_override = 'icons/mob/uniform_vr.dmi'
 	icon_state = "bdu_olive"
@@ -380,16 +380,16 @@
 
 /obj/item/clothing/under/oricon/service/fleet
 	name = "fleet service uniform"
-	desc = "The service uniform of the USDF Fleet, made from immaculate white fabric."
+	desc = "The service uniform of the JSDF Fleet, made from immaculate white fabric."
 
 /obj/item/clothing/under/oricon/service/marine
 	name = "marine service uniform"
-	desc = "The service uniform of the USDF Marine Corps. Slimming."
+	desc = "The service uniform of the JSDF Marine Corps. Slimming."
 	worn_state = "greenservice"
 
 /obj/item/clothing/under/oricon/service/marine/command
 	name = "marine command service uniform"
-	desc = "The service uniform of the USDF Marine Corps. Slimming and stylish."
+	desc = "The service uniform of the JSDF Marine Corps. Slimming and stylish."
 
 /obj/item/clothing/under/oricon/mildress/expeditionary
 	name = "explorer's dress uniform"
@@ -401,8 +401,8 @@
 
 /obj/item/clothing/under/oricon/mildress/marine
 	name = "marine dress uniform"
-	desc = "The dress uniform of the USDF Marine Corps, class given form."
+	desc = "The dress uniform of the JSDF Marine Corps, class given form."
 
 /obj/item/clothing/under/oricon/mildress/marine/command
 	name = "marine command dress uniform"
-	desc = "The dress uniform of the USDF Marine Corps, even classier in gold."
+	desc = "The dress uniform of the JSDF Marine Corps, even classier in gold."

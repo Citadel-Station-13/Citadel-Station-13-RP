@@ -711,7 +711,7 @@
 
 /obj/item/clothing/suit/storage/vest/oricon/heavy
 	name = "\improper Orion Confederation Government heavy armored vest"
-	desc = "A synthetic armor vest with SECURITY printed in distinctive blue lettering on the chest. This one has added webbing and ballistic plates." // USDF does peacekeeping, not these guys.
+	desc = "A synthetic armor vest with SECURITY printed in distinctive blue lettering on the chest. This one has added webbing and ballistic plates." // JSDF does peacekeeping, not these guys.
 
 /obj/item/clothing/suit/storage/vest/oricon/security
 	name = "master at arms heavy armored vest"
@@ -721,9 +721,9 @@
 	name = "command heavy armored vest"
 	desc = "A synthetic armor vest with Orion Confederation Government printed in detailed gold lettering on the chest. This one has added webbing and ballistic plates."
 
-/obj/item/clothing/suit/armor/combat/USDF
+/obj/item/clothing/suit/armor/combat/JSDF
 	name = "marine body armor"
-	desc = "When I joined the Corps, we didn't have any fancy-schmanzy armor. We had sticks! Two sticks, and a rock for the whole platoon�and we had to <i>share</i> the rock!"
+	desc = "When I joined the Corps, we didn't have any fancy-schmanzy armor. We had sticks! Two sticks, and a rock for the whole platoon - and we had to <i>share</i> the rock!"
 	icon_state = "unsc_armor"
 	icon = 'icons/obj/clothing/suits_vr.dmi'
 	icon_override = 'icons/mob/suit_vr.dmi'

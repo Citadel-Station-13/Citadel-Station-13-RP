@@ -157,6 +157,7 @@
 	desc = "Where did it get that? Oh no..."
 	tt_desc = "E Mus sinister"
 	rank = "operative"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/operative)
 
 	shock_resist = 1
 	armor = list(
@@ -182,6 +183,7 @@
 	desc = "What kind of madman would strap this to a mouse?"
 	tt_desc = "E Mus phlogiston"
 	rank = "pyro"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/pyro)
 
 	maxHealth = 30
 	health = 30
@@ -253,6 +255,7 @@
 	desc = "Aww! It's carrying a bunch of tiny bullets!"
 	tt_desc = "E Mus tela"
 	rank = "ammo"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/ammo)
 
 	maxHealth = 30
 	health = 30
@@ -321,6 +324,7 @@
 	desc = "I bet you thought the normal ones were scary!"
 	tt_desc = "E Mus insidiis"
 	rank = "stealth"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/stealth)
 
 	//Mob melee settings
 	melee_damage_lower = 15

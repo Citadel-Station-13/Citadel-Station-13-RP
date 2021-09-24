@@ -17,6 +17,7 @@
 	icon_living = "bear"
 	icon_dead = "bear_dead"
 	icon_gib = "bear_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/space_bear)
 
 	faction = "russian"
 

@@ -21,7 +21,7 @@
 
 /obj/item/clothing/head/soft/orion/fleet
 	name = "fleet cap"
-	desc = "It's a navy blue ballcap with a OCG Fleet crest."
+	desc = "It's a navy blue ballcap with a CNA Fleet crest."
 	icon_state = "fleetsoft"
 	item_state_slots = list(
 		slot_l_hand_str = "darkbluesoft",
@@ -248,7 +248,7 @@
 
 /obj/item/clothing/head/soft/orion/fleet
 	name = "fleet cap"
-	desc = "It's a navy blue ballcap with a USDF Fleet crest."
+	desc = "It's a navy blue ballcap with a JSDF Fleet crest."
 
 /obj/item/clothing/head/utility
 	name = "utility cover"
@@ -256,23 +256,23 @@
 
 /obj/item/clothing/head/utility/fleet
 	name = "fleet utility cover"
-	desc = "A navy blue utility cover bearing the crest of a USDF Fleet."
+	desc = "A navy blue utility cover bearing the crest of a JSDF Fleet."
 
 /obj/item/clothing/head/utility/marine
 	name = "marine utility cover"
-	desc = "A grey utility cover bearing the crest of the USDF Marine Corps."
+	desc = "A grey utility cover bearing the crest of the JSDF Marine Corps."
 
 /obj/item/clothing/head/utility/marine/tan
 	name = "tan utility cover"
-	desc = "A tan utility cover bearing the crest of the USDF Marine Corps."
+	desc = "A tan utility cover bearing the crest of the JSDF Marine Corps."
 
 /obj/item/clothing/head/utility/marine/green
 	name = "green utility cover"
-	desc = "A green utility cover bearing the crest of the USDF Marine Corps."
+	desc = "A green utility cover bearing the crest of the JSDF Marine Corps."
 
 /obj/item/clothing/head/utility/marine/green/officer // "And YOU told me you were gonna wear something nice!"
 	name = "\improper officer's cap"
-	desc = "A green utility cover bearing the crest of the USDF Marine Corps. This one has an officer's emblem."
+	desc = "A green utility cover bearing the crest of the JSDF Marine Corps. This one has an officer's emblem."
 	icon_state = "UNSCsoft"
 	icon = 'icons/obj/clothing/hats_vr.dmi'
 	icon_override = 'icons/mob/head_vr.dmi'
@@ -285,23 +285,23 @@
 
 /obj/item/clothing/head/service/marine
 	name = "marine wheel cover"
-	desc = "A green service uniform cover with an USDF Marine Corps crest."
+	desc = "A green service uniform cover with a JSDF Marine Corps crest."
 
 /obj/item/clothing/head/service/marine/command
 	name = "marine officer's wheel cover"
-	desc = "A green service uniform cover with an USDF Marine Corps crest and gold stripe."
+	desc = "A green service uniform cover with a JSDF Marine Corps crest and gold stripe."
 
 /obj/item/clothing/head/service/marine/garrison
 	name = "marine garrison cap"
-	desc = "A green garrison cap belonging to the USDF Marine Corps."
+	desc = "A green garrison cap belonging to the JSDF Marine Corps."
 
 /obj/item/clothing/head/service/marine/garrison/command
 	name = "marine officer's garrison cap"
-	desc = "A green garrison cap belonging to the USDF Marine Corps. This one has a gold pin."
+	desc = "A green garrison cap belonging to the JSDF Marine Corps. This one has a gold pin."
 
 /obj/item/clothing/head/service/marine/campaign
 	name = "campaign cover"
-	desc = "A green campaign cover with an USDF Marine Corps crest. Only found on the heads of Drill Instructors."
+	desc = "A green campaign cover with a JSDF Marine Corps crest. Only found on the heads of Drill Instructors."
 	icon_state = "greendrill"
 
 //Dress
@@ -316,23 +316,23 @@
 
 /obj/item/clothing/head/dress/fleet
 	name = "fleet dress wheel cover"
-	desc = "A white dress uniform cover. This one has an USDF Fleet crest."
+	desc = "A white dress uniform cover. This one has a JSDF Fleet crest."
 
 /obj/item/clothing/head/dress/fleet/command
 	name = "fleet command dress wheel cover"
-	desc = "A white dress uniform cover. This one has a gold stripe and an USDF Fleet crest."
+	desc = "A white dress uniform cover. This one has a gold stripe and a JSDF Fleet crest."
 
 /obj/item/clothing/head/dress/marine
 	name = "marine dress wheel cover"
-	desc = "A white dress uniform cover with an USDF Marine Corps crest."
+	desc = "A white dress uniform cover with a JSDF Marine Corps crest."
 
 /obj/item/clothing/head/dress/marine/command
 	name = "marine officer's dress wheel cover"
-	desc = "A white dress uniform cover with an USDF Marine Corps crest and gold stripe."
+	desc = "A white dress uniform cover with a JSDF Marine Corps crest and gold stripe."
 
 /obj/item/clothing/head/dress/marine/command/admiral
 	name = "admiral's dress wheel cover"
-	desc = "A white dress uniform cover with an USDF Navy crest and gold stripe."
+	desc = "A white dress uniform cover with a JSDF Navy crest and gold stripe."
 
 //Berets
 
@@ -386,24 +386,24 @@
 
 /obj/item/clothing/head/beret/orion/fleet
 	name = "fleet beret"
-	desc = "A navy blue beret belonging to the USDF Fleet. For personnel that are more inclined towards style than safety."
+	desc = "A navy blue beret belonging to the JSDF Fleet. For personnel that are more inclined towards style than safety."
 
 /obj/item/clothing/head/beret/orion/fleet/security
 	name = "fleet security beret"
-	desc = "An USDF Fleet beret with a security crest. For personnel that are more inclined towards style than safety."
+	desc = "A JSDF Fleet beret with a security crest. For personnel that are more inclined towards style than safety."
 
 /obj/item/clothing/head/beret/orion/fleet/medical
 	name = "fleet medical beret"
-	desc = "An USDF Fleet beret with a medical crest. For personnel that are more inclined towards style than safety."
+	desc = "A JSDF Fleet beret with a medical crest. For personnel that are more inclined towards style than safety."
 
 /obj/item/clothing/head/beret/orion/fleet/engineering
 	name = "fleet engineering beret"
-	desc = "An USDF Fleet with an engineering crest. For personnel that are more inclined towards style than safety."
+	desc = "A JSDF Fleet with an engineering crest. For personnel that are more inclined towards style than safety."
 
 /obj/item/clothing/head/beret/orion/fleet/supply
 	name = "fleet supply beret"
-	desc = "An USDF Fleet beret with a supply crest. For personnel that are more inclined towards style than safety."
+	desc = "A JSDF Fleet beret with a supply crest. For personnel that are more inclined towards style than safety."
 
 /obj/item/clothing/head/beret/orion/fleet/command
 	name = "fleet command beret"
-	desc = "An USDF Fleet beret with a command crest. For personnel that are more inclined towards style than safety."
+	desc = "A JSDF Fleet beret with a command crest. For personnel that are more inclined towards style than safety."

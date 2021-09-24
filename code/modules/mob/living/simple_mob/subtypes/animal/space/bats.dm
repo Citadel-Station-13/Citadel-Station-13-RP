@@ -15,6 +15,7 @@
 	icon_living = "bat"
 	icon_dead = "bat_dead"
 	icon_gib = "bat_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/bats)
 
 	faction = "scarybat"
 

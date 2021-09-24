@@ -16,6 +16,7 @@
 	density = 1
 	health = 200
 	maxHealth = 200
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/ed209)
 
 	is_ranged = 1
 	preparing_arrest_sounds = new()

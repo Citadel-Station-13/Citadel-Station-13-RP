@@ -10,6 +10,7 @@
 	name = "red panda"
 	desc = "It's a wah! Beware of doom pounce!"
 	tt_desc = "Ailurus fulgens"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/redpanda)
 
 	icon_state = "wah"
 	icon_living = "wah"

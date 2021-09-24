@@ -12,6 +12,7 @@
 	icon_state = "cleanbot0"
 	req_one_access = list(access_robotics, access_janitor)
 	botcard_access = list(access_janitor)
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot)
 
 	locked = 0 // Start unlocked so roboticist can set them to patrol.
 	wait_if_pulled = 1

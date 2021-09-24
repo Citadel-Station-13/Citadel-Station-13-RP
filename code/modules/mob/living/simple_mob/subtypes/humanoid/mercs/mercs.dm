@@ -52,6 +52,7 @@
 	icon_living = "syndicate"
 	icon_dead = "syndicate_dead"
 	icon_gib = "syndicate_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human)
 
 	faction = "syndicate"
 	movement_cooldown = 2
@@ -225,6 +226,7 @@
 /mob/living/simple_mob/humanoid/merc/ranged/smg/sol
 	icon_state = "bluforranged_smg"
 	icon_living = "blueforranged_smg"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/peacekeeper)
 
 	corpse = /obj/effect/landmark/mobcorpse/solarpeacekeeper
 	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
@@ -302,6 +304,7 @@
 	icon_living = "syndicateranged_shotgun"
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun		// Buckshot
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/grenadier)
 
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump = 100)
 
@@ -329,6 +332,7 @@
 	desc = "A tough looking individual, armred with an energy sword and shield."
 	icon_state = "syndicatespace-melee"
 	icon_living = "syndicatespace-melee"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space)
 
 	movement_cooldown = 0
 
@@ -489,6 +493,7 @@
 	special_attack_charges = 5
 	loot_list = list() // oh, you killed him?
 	corpse = null // well, sorry, buddy, he doesn't drop shit
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/human/space/suppressor)
 // 	var/deathnade_path = /obj/item/grenade/flashbang/stingbang
 
 /* far too fun for the codebase at the moment
@@ -575,6 +580,7 @@
 	curiously advanced xenotech. Due to ancient compacts, Vox pirates try to \
 	avoid bloodshed, but will react to violence in kind."
 	value = CATALOGUER_REWARD_MEDIUM
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/mercenary/vox)
 
 /mob/living/simple_mob/humanoid/merc/voxpirate	//Don't use this one.
 	name = "vox mannequin"
@@ -647,6 +653,7 @@
 	icon_state = "voxboarder_m"
 	icon_living = "voxboarder_m"
 	icon_dead = "voxboarder_m_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/boarder)
 
 	melee_damage_lower = 30		//Energy sword damage
 	melee_damage_upper = 30
@@ -691,6 +698,7 @@
 	icon_state = "voxboarder_r"
 	icon_living = "voxboarder_r"
 	icon_dead = "voxboarder_r_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/boarder)
 
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
 	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
@@ -721,6 +729,7 @@
 	icon_state = "voxboarder_t"
 	icon_living = "voxboarder_t"
 	icon_dead = "voxboarder_t_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/technician)
 
 	projectiletype = /obj/item/projectile/ion
 	projectilesound = 'sound/weapons/Laser.ogg'
@@ -750,6 +759,7 @@
 	icon_state = "voxsuppressor"
 	icon_living = "voxsuppressor"
 	icon_dead = "voxsuppresor_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/suppressor)
 
 	armor = list(melee = 30, bullet = 50, laser = 60, energy = 30, bomb = 35, bio = 100, rad = 100)	// Boosted armor to represent Tank role.
 
@@ -781,6 +791,7 @@
 	icon_state = "voxcaptain"
 	icon_living = "voxcaptain"
 	icon_dead = "voxcaptain_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mercenary/vox/captain)
 
 	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 100)	// Vox RIG armor values.
 

@@ -28,6 +28,7 @@
 	attacktext = list("violently stabbed")
 	friendly = list("caresses")
 	movement_cooldown = 0
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/harvester)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 

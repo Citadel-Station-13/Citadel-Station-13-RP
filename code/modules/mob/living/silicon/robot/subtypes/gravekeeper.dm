@@ -16,6 +16,7 @@
 	idcard_type = /obj/item/card/id
 	icon_selected = FALSE
 	can_be_antagged = FALSE
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper)
 
 /mob/living/silicon/robot/gravekeeper/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)

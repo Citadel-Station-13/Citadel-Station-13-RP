@@ -12,6 +12,7 @@
 /mob/living/simple_mob/vore/aggressive/giant_snake
 	name = "giant snake"
 	desc = "Snakes. Why did it have to be snakes?"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/giant_snake)
 
 	icon_dead = "snake-dead"
 	icon_living = "snake"

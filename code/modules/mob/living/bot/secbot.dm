@@ -22,6 +22,7 @@
 	botcard_access = list(access_security, access_sec_doors, access_forensics_lockers, access_maint_tunnels)
 	patrol_speed = 2
 	target_speed = 3
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot)
 
 	density = 1
 
@@ -79,7 +80,7 @@
 	will_patrol = TRUE
 	maxHealth = 130
 	health = 130
-
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot/beepsky)
 
 /datum/category_item/catalogue/technology/bot/secbot/slime
 	name = "Bot - Slime Securitron"
@@ -94,6 +95,7 @@
 	desc = "A little security robot, with a slime baton subsituted for the regular one."
 	default_icon_state = "slimesecbot"
 	stun_strength = 10 // Slimebatons aren't meant for humans.
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot/slime)
 
 	xeno_harm_strength = 9 // Weaker than regular slimesky but they can stun.
 	baton_glow = "#33CCFF"
@@ -114,6 +116,7 @@
 	desc = "An old friend of Officer Beepsky.  He prescribes beatings to rowdy slimes so that real doctors don't need to treat the xenobiologists."
 	maxHealth = 130
 	health = 130
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot/slime/slimesky)
 
 /mob/living/bot/secbot/update_icons()
 	if(on && busy)

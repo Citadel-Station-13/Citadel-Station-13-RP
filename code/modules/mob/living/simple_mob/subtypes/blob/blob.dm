@@ -34,6 +34,7 @@
 	icon = 'icons/mob/blob.dmi'
 	pass_flags = PASSBLOB | PASSTABLE
 	faction = "blob"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/blob)
 
 	heat_damage_per_tick = 0
 	cold_damage_per_tick = 0

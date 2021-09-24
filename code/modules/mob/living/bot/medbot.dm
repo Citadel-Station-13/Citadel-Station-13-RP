@@ -13,6 +13,7 @@
 	icon_state = "medibot0"
 	req_one_access = list(access_robotics, access_medical)
 	botcard_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medbot)
 
 	var/skin = null //Set to "tox", "ointment" or "o2" for the other two firstaid kits.
 

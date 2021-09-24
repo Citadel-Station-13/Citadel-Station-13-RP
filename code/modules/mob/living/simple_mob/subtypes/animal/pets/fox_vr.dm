@@ -11,6 +11,7 @@
 	name = "fox"
 	desc = "It's a fox. I wonder what it says?"
 	tt_desc = "Vulpes vulpes"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/fox)
 
 	icon_state = "fox2"
 	icon_living = "fox2"

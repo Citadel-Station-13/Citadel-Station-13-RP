@@ -9,6 +9,7 @@
 /mob/living/simple_mob/vore/bee
 	name = "space bumble bee"
 	desc = "Buzz buzz."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/bee)
 
 	icon_state = "bee"
 	icon_living = "bee"

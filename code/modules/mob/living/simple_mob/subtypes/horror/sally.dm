@@ -15,6 +15,7 @@
 	faction = "horror"
 	icon = 'icons/mob/horror_show/widehorror.dmi'
 	icon_gib = "generic_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Sally)
 
 	attack_sound = 'sound/h_sounds/sampler.ogg'
 

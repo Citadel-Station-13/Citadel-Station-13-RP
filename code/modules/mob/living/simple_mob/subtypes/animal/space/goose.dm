@@ -12,6 +12,7 @@
 	icon_state = "goose"
 	icon_living = "goose"
 	icon_dead = "goose_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/goose)
 
 	faction = "geese"
 

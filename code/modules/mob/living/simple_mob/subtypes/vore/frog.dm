@@ -10,6 +10,7 @@
 	name = "giant frog"
 	desc = "You've heard of having a frog in your throat, now get ready for the reverse."
 	tt_desc = "Anura gigantus"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/frog)
 
 	icon_dead = "frog-dead"
 	icon_living = "frog"

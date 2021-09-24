@@ -16,6 +16,7 @@
 	icon_living = "clown"
 	icon_dead = "clown_dead"
 	icon_gib = "clown_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/clown)
 
 	faction = "clown"
 

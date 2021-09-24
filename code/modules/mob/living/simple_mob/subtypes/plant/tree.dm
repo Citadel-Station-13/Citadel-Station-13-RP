@@ -14,6 +14,7 @@
 	icon_living = "pine_1"
 	icon_dead = "pine_1"
 	icon_gib = "pine_1"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/tree)
 
 	mob_class = MOB_CLASS_PLANT
 

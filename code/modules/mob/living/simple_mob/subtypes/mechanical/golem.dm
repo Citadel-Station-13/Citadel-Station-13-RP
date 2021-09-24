@@ -18,6 +18,7 @@
 	icon_state = "golem"
 	health = 300
 	maxHealth = 300
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/technomancer_golem)
 
 	faction = "golem"
 

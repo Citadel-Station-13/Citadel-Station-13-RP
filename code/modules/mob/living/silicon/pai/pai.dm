@@ -16,6 +16,8 @@
 	pass_flags = 1
 	mob_size = MOB_SMALL
 
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/pai)
+
 	holder_type = /obj/item/holder/pai
 
 	can_pull_size = ITEMSIZE_SMALL

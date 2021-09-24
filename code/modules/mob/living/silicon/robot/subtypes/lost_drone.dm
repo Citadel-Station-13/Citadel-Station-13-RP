@@ -16,6 +16,7 @@
 	braintype = "Drone"
 	idcard_type = /obj/item/card/id
 	icon_selected = FALSE
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/lost)
 
 /mob/living/silicon/robot/lost/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)

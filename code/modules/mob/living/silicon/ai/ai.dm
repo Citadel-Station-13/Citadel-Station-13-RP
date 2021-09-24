@@ -99,6 +99,8 @@ var/list/ai_verbs_default = list(
 
 	can_be_antagged = TRUE
 
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
+
 /mob/living/silicon/ai/proc/add_ai_verbs()
 	src.verbs |= ai_verbs_default
 	src.verbs |= silicon_subsystems

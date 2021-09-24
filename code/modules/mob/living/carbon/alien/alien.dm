@@ -37,6 +37,7 @@
 	health = 100
 	maxHealth = 100
 	mob_size = 4
+	catalogue_data = list(/datum/category_item/catalogue/fauna/alien/drone)
 
 	var/adult_form
 	var/dead_icon

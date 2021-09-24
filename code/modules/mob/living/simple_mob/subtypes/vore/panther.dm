@@ -10,6 +10,7 @@
 	name = "panther"
 	desc = "Runtime's larger, less cuddly cousin."
 	tt_desc = "Panthera pardus"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/panther)
 
 	icon_state = "panther"
 	icon_living = "panther"

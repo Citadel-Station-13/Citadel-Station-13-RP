@@ -37,6 +37,8 @@
 							/spell/targeted/construct_advanced/mend_acolyte
 							)
 
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/artificer)
+
 	ai_holder_type = /datum/ai_holder/mimic
 
 ////////////////////////////

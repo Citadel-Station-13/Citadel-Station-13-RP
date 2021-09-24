@@ -11,6 +11,7 @@
 	icon_state = "tomato"
 	icon_living = "tomato"
 	icon_dead = "tomato_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/tomato)
 
 	mob_class = MOB_CLASS_PLANT
 

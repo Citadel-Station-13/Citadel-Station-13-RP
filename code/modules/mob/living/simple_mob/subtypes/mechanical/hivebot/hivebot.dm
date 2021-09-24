@@ -16,6 +16,7 @@
 	icon = 'icons/mob/hivebot.dmi'
 	icon_state = "basic"
 	icon_living = "basic"
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/hivebot)
 
 	faction = "hivebot"
 

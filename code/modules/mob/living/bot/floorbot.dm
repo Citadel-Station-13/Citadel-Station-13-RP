@@ -19,6 +19,7 @@
 	req_one_access = list(access_robotics, access_construction)
 	wait_if_pulled = 1
 	min_target_dist = 0
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/floorbot)
 
 	var/amount = 10 // 1 for tile, 2 for lattice
 	var/maxAmount = 60
