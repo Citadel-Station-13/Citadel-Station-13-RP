@@ -1,7 +1,7 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 //TODO: Make these simple_mobs
-/*	//Commented out as reference for future reproduction methods, or addition later if needed. - Mech
+//Commented out as reference for future reproduction methods, or addition later if needed. - Mech
 var/const/MIN_IMPREGNATION_TIME = 100 //time it takes to impregnate someone
 var/const/MAX_IMPREGNATION_TIME = 150
 
@@ -74,6 +74,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	Attach(M)
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)
+	..()
 	HasProximity(target)
 	return
 
@@ -136,7 +137,7 @@ var/const/MAX_ACTIVE_TIME = 400
 			if(!W.canremove)	return
 			target.drop_from_inventory(W)
 
-			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!"</b></span>)
+			target.visible_message("<span class='danger'><b> [src] tears [W] off of [target]'s face!</b></span>")
 
 		target.equip_to_slot(src, slot_wear_mask)
 		target.contents += src // Monkey sanity check - Snapshot
@@ -156,7 +157,7 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	if(!sterile)
 		new /obj/item/alien_embryo(target)
-		target.status_flags |= XENO_HOST
+		target.status_flags |= TRAIT_XENO_HOST
 
 		target.visible_message("<span class='danger'><b> [src] falls limp after violating [target]'s face!</b></span>")
 
@@ -219,4 +220,3 @@ var/const/MAX_ACTIVE_TIME = 400
 		if(H.head && (H.head.body_parts_covered & FACE) && !(H.head.item_flags & FLEXIBLEMATERIAL))
 			return 0
 	return 1
-*/
