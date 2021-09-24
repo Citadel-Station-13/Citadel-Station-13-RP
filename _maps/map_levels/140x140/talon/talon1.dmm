@@ -2501,6 +2501,10 @@
 	pixel_y = -28;
 	req_access = list(160)
 	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "mT" = (
