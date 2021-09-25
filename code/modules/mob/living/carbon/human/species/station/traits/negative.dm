@@ -121,11 +121,22 @@
 	var_changes = list("siemens_coefficient" = 2.0) //This makes you extremely weak to tasers.
 
 /datum/trait/hollow
-	name = "Hollow Bones/Aluminum Alloy"
-	desc = "Your bones and robot limbs are much easier to break."
+	name = "Weak Bones/Aluminum Alloy"
+	desc = "Your bones and robot limbs are easier to break."
 	cost = -2 //I feel like this should be higher, but let's see where it goes
 
 /datum/trait/hollow/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..(S,H)
+	for(var/obj/item/organ/external/O in H.organs)
+		O.min_broken_damage *= 0.75
+		O.min_bruised_damage *= 0.75
+
+/datum/trait/hollow_plus
+	name = "Hollow Bones/Brittle Alloy"
+	desc = "Your bones and robot limbs are significantly easier to break."
+	cost = -4 //I feel like this should be higher, but let's see where it goes
+
+/datum/trait/hollow_plus/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	for(var/obj/item/organ/external/O in H.organs)
 		O.min_broken_damage *= 0.5
