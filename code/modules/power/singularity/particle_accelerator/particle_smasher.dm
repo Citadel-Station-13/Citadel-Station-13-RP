@@ -34,7 +34,9 @@
 	for(var/datum/particle_smasher_recipe/D in recipes)
 		qdel(D)
 	recipes.Cut()
-	..()
+	for(var/atom/movable/AM in contents)
+		AM.forceMove(drop_location())
+	return ..()
 
 /obj/machinery/particle_smasher/examine(mob/user)
 	. = ..()
