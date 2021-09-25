@@ -3263,6 +3263,7 @@
 #include "code\modules\research\server.dm"
 #include "code\modules\research\teleport_vr.dm"
 #include "code\modules\research\designs\ai_holders.dm"
+#include "code\modules\research\designs\augments.dm"
 #include "code\modules\research\designs\bag_of_holding.dm"
 #include "code\modules\research\designs\beakers.dm"
 #include "code\modules\research\designs\bio_devices.dm"
