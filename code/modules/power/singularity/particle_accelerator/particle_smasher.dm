@@ -45,13 +45,15 @@
 /obj/machinery/particle_smasher/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.type == /obj/item/analyzer)
 		to_chat(user, "<span class='notice'>\The [src] reads an energy level of [energy].</span>")
-	else if(istype(W, /obj/item/stack/material))
+	else if(istype(W, /obj/item/stack/material) && !target)
 		var/obj/item/stack/material/M = W
 		if(M.uses_charge)
 			to_chat(user, "<span class='notice'>You cannot fill \the [src] with a synthesizer!</span>")
 			return
-		target = M.split(1)
-		target.forceMove(src)
+		user.drop_from_inventory(M, src)
+		M.forceMove(src)
+		target = M
+		user.visible_message("[user] slots \the [target] into [src].")
 		update_icon()
 	else if(istype(W, beaker_type))
 		if(reagent_container)
@@ -214,25 +216,31 @@
 /obj/machinery/particle_smasher/proc/DoCraft(var/datum/particle_smasher_recipe/recipe)
 	if(!successful_craft || !recipe)
 		return
-
-	qdel(target)
-	target = null
+	
+	target.use(1)
 
 	if(reagent_container)
-		reagent_container.reagents.clear_reagents()
+		for(var/i in recipe.reagents)
+			reagent_container.reagents.remove_reagent(i, recipe.reagents[i])
 
 	if(recipe.items && recipe.items.len)
-		for(var/obj/item/I in storage)
-			for(var/item_type in recipe.items)
-				if(istype(I, item_type))
-					storage -= I
-					qdel(I)
-					break
+		for(var/type in recipe.items)
+			var/obj/item/thing = locate(type) in src
+			if(thing)
+				qdel(thing)
 
 	var/result = recipe.result
-	var/obj/item/stack/material/M = new result(src)
-	target = M
+	var/obj/item/stack/material/M = new result(drop_location())
 	update_icon()
+
+/obj/machinery/particle_smasher/Exited(atom/movable/AM)
+	if(AM == target)
+		target = null
+	if(AM == reagent_container)
+		reagent_container = null
+	if(islist(storage) && (AM in storage))
+		storage -= AM
+	return ..()
 
 /obj/machinery/particle_smasher/verb/eject_contents()
 	set src in view(1)
@@ -245,14 +253,10 @@
 	DumpContents()
 
 /obj/machinery/particle_smasher/proc/DumpContents()
-	target = null
-	reagent_container = null
 	successful_craft = FALSE
-	var/turf/T = get_turf(src)
+	var/atom/A = drop_location()
 	for(var/obj/item/I in contents)
-		if(I in storage)
-			storage -= I
-		I.forceMove(T)
+		I.forceMove(A)
 	update_icon()
 
 /*
