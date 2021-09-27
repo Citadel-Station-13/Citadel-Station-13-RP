@@ -3187,7 +3187,7 @@
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
 "uN" = (
-/obj/structure/closet/crate/critter,
+/obj/structure/stasis_cage,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "uW" = (
