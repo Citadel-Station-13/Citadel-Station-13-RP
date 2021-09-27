@@ -29,18 +29,36 @@
 	lack both light and atmosphere. As such, they're quite resistant to asphyxiation as well as \
 	toxins, but they suffer from weakened bone structure and a marked vulnerability to bright lights."
 
-	oxy_mod =   0.8
-	toxins_mod =   0.9
-	flash_mod = 1.2
-	brute_mod = 1.1
-	burn_mod =  1.1
+	blood_volume = 640 // 8/7 of baseline
 
+	toxins_mod =   1.4
+
+	oxy_mod =   0.6
+
+	flash_mod = 1.2
+
+	item_slowdown_mod = 1.1 //Minor slowdown
+
+	has_limbs = list(
+		BP_TORSO =	list("path" = /obj/item/organ/external/chest/spacer),
+		BP_GROIN =	list("path" = /obj/item/organ/external/groin/spacer),
+		BP_HEAD =	 list("path" = /obj/item/organ/external/head/spacer),
+		BP_L_ARM =	list("path" = /obj/item/organ/external/arm/spacer),
+		BP_R_ARM =	list("path" = /obj/item/organ/external/arm/right/spacer),
+		BP_L_LEG =	list("path" = /obj/item/organ/external/leg/spacer),
+		BP_R_LEG =	list("path" = /obj/item/organ/external/leg/right/spacer),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/spacer),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/spacer),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/spacer),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/spacer)
+		)
 
 	color_mult = 1
 	icobase = 'icons/mob/human_races/subspecies/r_spacer.dmi'
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	base_color = "#EECEB3"
+
 
 /datum/species/human/vatgrown
 	name = SPECIES_HUMAN_VATBORN
