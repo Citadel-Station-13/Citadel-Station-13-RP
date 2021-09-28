@@ -1,6 +1,15 @@
+/datum/category_item/catalogue/fauna/jelly
+	name = "Jelly Blob"
+	desc = "These curious creatures are native to the caustic surface of Virgo 2. \
+	Although docile, their undulating bodies can sometimes get in the way of attacks \
+	meant for more dangerous fauna. When struck, jelly blobs react violently, although \
+	their soft exterior does not lend itself well to combat."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/space/jelly
 	name = "jelly blob"
 	desc = "Some sort of undulating blob of slime!"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/jelly)
 
 	icon_dead = "jelly_dead"
 	icon_living = "jelly"

@@ -3,6 +3,13 @@
 #define FARMBOT_UPROOT 3
 #define FARMBOT_NUTRIMENT 4
 
+/datum/category_item/catalogue/technology/bot/farmbot
+	name = "Bot - Farmbot"
+	desc = "Farmbots are the fusion of mobile water tanks with sophisticated \
+	cultivation routines. Designed to ease the burden of maintaining Hydroponics \
+	gardens - often a vital face of life in space - these bots are always in demand."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/farmbot
 	name = "Farmbot"
 	desc = "The botanist's best friend."
@@ -11,6 +18,7 @@
 	health = 50
 	maxHealth = 50
 	req_one_access = list(access_robotics, access_hydroponics, access_xenobiology)	//TFF 11/7/19 - adds Xenobio access on behalf of Nalarac
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/farmbot)
 
 	var/action = "" // Used to update icon
 	var/waters_trays = 1

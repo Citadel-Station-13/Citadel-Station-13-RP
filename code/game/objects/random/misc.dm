@@ -775,7 +775,7 @@
 					prob(6);/obj/item/gun/projectile/automatic/z8,\
 					prob(6);/obj/item/gun/energy/captain,\
 					prob(6);/obj/item/material/knife/tacknife,\
-					prob(5);/obj/item/gun/projectile/shotgun/pump/USDF,\
+					prob(5);/obj/item/gun/projectile/shotgun/pump/JSDF,\
 					prob(5);/obj/item/gun/projectile/giskard/olivaw,\
 					prob(5);/obj/item/gun/projectile/revolver/consul,\
 					prob(5);/obj/item/gun/projectile/revolver/mateba,\
