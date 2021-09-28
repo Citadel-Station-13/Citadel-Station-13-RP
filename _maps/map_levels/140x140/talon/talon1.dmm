@@ -92,9 +92,10 @@
 /obj/structure/table/standard,
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
@@ -145,9 +146,6 @@
 /turf/space,
 /area/talon/maintenance/deckone_port)
 "aq" = (
-/obj/machinery/camera/network/talon{
-	dir = 9
-	},
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -189,9 +187,10 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_eng)
@@ -281,7 +280,6 @@
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/deckone_port)
 "aD" = (
-/obj/machinery/camera/network/talon,
 /obj/item/storage/briefcase/inflatable{
 	pixel_x = 3;
 	pixel_y = 6
@@ -296,7 +294,6 @@
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "aE" = (
-/obj/machinery/camera/network/talon,
 /obj/structure/table/rack/steel,
 /obj/item/inducer/syndicate,
 /obj/item/gps,
@@ -420,14 +417,15 @@
 /area/talon/maintenance/deckone_port)
 "aW" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/machinery/alarm/talon{
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/machinery/alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -25
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/tank/jetpack/carbondioxide,
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
 "aX" = (
@@ -511,9 +509,11 @@
 /obj/item/robotanalyzer{
 	pixel_y = -8
 	},
-/obj/machinery/alarm/talon{
+/obj/item/surgical/bioregen,
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
@@ -696,18 +696,12 @@
 /obj/structure/sign/warning/moving_parts{
 	pixel_x = 30
 	},
-/obj/machinery/camera/network/talon{
-	dir = 8
-	},
 /turf/simulated/floor/plating/eris/under/airless,
 /area/talon/maintenance/deckone_port)
 "bB" = (
 /obj/structure/catwalk,
 /obj/structure/sign/warning/moving_parts{
 	pixel_x = -30
-	},
-/obj/machinery/camera/network/talon{
-	dir = 4
 	},
 /turf/simulated/floor/plating/eris/under/airless,
 /area/talon/maintenance/deckone_starboard)
@@ -745,21 +739,23 @@
 /obj/item/storage/toolbox/electrical,
 /obj/item/stack/marker_beacon/thirty,
 /obj/item/pipe_dispenser,
-/obj/machinery/alarm/talon{
-	pixel_y = 28
-	},
 /obj/item/inducer/syndicate,
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/port_eng_store)
 "bG" = (
-/obj/machinery/alarm/talon{
-	dir = 1;
-	pixel_y = -25
-	},
 /obj/structure/table/rack/steel,
 /obj/item/spaceflare,
 /obj/item/storage/box/flashshells/large,
 /obj/item/gun/projectile/shotgun/flare,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "bH" = (
@@ -833,15 +829,13 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/mopbucket,
 /obj/item/mop,
 /obj/item/reagent_containers/glass/bucket,
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/port_eng_store)
 "bO" = (
@@ -1174,9 +1168,10 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_port)
@@ -1195,31 +1190,29 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 4;
-	pixel_x = -22
+	pixel_x = -23;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "cy" = (
-/obj/machinery/power/apc/talon{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/camera/network/talon{
-	dir = 10
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 4;
+	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "cz" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm/talon{
-	pixel_y = 22
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_port)
@@ -1238,8 +1231,9 @@
 /area/talon/deckone/bridge_hallway)
 "cB" = (
 /obj/structure/catwalk,
-/obj/machinery/alarm/talon{
-	pixel_y = 22
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
@@ -1260,9 +1254,6 @@
 "cF" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/camera/network/talon{
-	dir = 10
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/central_hallway)
 "cG" = (
@@ -1286,9 +1277,10 @@
 	dir = 10
 	},
 /obj/structure/catwalk,
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 8;
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_port)
@@ -1311,9 +1303,10 @@
 	dir = 6
 	},
 /obj/structure/catwalk,
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 4;
-	pixel_x = -22
+	pixel_x = -23;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
@@ -1389,14 +1382,13 @@
 /obj/machinery/atmospherics/pipe/cap/hidden{
 	dir = 4
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/cable/green{
 	d2 = 8;
 	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_eng)
@@ -1435,10 +1427,9 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/talon{
+/obj/machinery/power/apc/alarms_hidden{
 	dir = 1;
-	name = "north bump";
-	pixel_y = 28
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_eng)
@@ -1466,13 +1457,13 @@
 /area/talon/deckone/port_eng)
 "cV" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/talon{
-	name = "south bump";
-	pixel_y = -24
-	},
 /obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = -24
+	},
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/starboard_solar)
@@ -1675,10 +1666,14 @@
 "ek" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 2;
-	pixel_y = 5
-	},
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/adv,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "en" = (
@@ -1926,7 +1921,12 @@
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "hD" = (
-/obj/machinery/autolathe,
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Talon Doctor"
+	},
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "hP" = (
@@ -2115,11 +2115,6 @@
 /area/talon/deckone/starboard_eng)
 "jB" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/talon{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -2129,6 +2124,10 @@
 	pixel_y = -25
 	},
 /obj/machinery/recharger,
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "jD" = (
@@ -2373,21 +2372,12 @@
 /area/talon/deckone/port_eng)
 "mb" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/talon{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
-/obj/machinery/alarm/talon{
-	dir = 8;
-	pixel_x = 22
+/obj/machinery/power/thermoregulator{
+	anchored = 1
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "me" = (
-/obj/machinery/camera/network/talon{
-	dir = 9
-	},
 /obj/structure/table/standard,
 /obj/item/storage/box/flare,
 /turf/simulated/floor/tiled/eris/white/gray_platform,
@@ -2425,26 +2415,23 @@
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
 "ml" = (
-/obj/machinery/alarm/talon{
-	dir = 1;
-	pixel_y = -25
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /obj/structure/table/standard,
 /obj/machinery/photocopier/faxmachine/talon,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
 "mt" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Talon Engineer"
-	},
-/turf/simulated/floor/tiled/eris/dark/brown_perforated,
-/area/talon/deckone/port_eng)
+/obj/structure/table/standard,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
+/area/talon/deckone/workroom)
 "mB" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -2479,29 +2466,47 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/catwalk,
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
+	pixel_y = 24
+	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "mO" = (
-/obj/machinery/alarm/talon{
-	dir = 4;
-	pixel_x = -22
-	},
 /obj/structure/catwalk,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -23;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "mS" = (
-/obj/structure/table/standard,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/obj/fiftyspawner/steel,
-/turf/simulated/floor/tiled/eris/steel/gray_perforated,
-/area/talon/deckone/workroom)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
+	},
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
 "mT" = (
 /obj/structure/fuel_port{
 	dir = 4;
@@ -2557,14 +2562,27 @@
 "nW" = (
 /obj/machinery/atmospherics/binary/pump/fuel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/camera/network/talon{
-	dir = 9
-	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_eng)
 "ob" = (
-/obj/machinery/camera/network/talon{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
@@ -2661,9 +2679,6 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 8
 	},
-/obj/machinery/camera/network/talon{
-	dir = 9
-	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
 "pr" = (
@@ -2680,9 +2695,6 @@
 "ps" = (
 /obj/machinery/atmospherics/binary/pump/fuel,
 /obj/effect/floor_decal/industrial/outline/red,
-/obj/machinery/camera/network/talon{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_eng)
 "pw" = (
@@ -2699,14 +2711,14 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
 "pz" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
 	},
 /obj/effect/landmark/start{
-	name = "Talon Doctor"
+	name = "Talon Engineer"
 	},
-/turf/simulated/floor/tiled/eris/steel/gray_perforated,
-/area/talon/deckone/workroom)
+/turf/simulated/floor/tiled/eris/dark/brown_perforated,
+/area/talon/deckone/starboard_eng)
 "pC" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -2724,12 +2736,12 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/talon{
-	name = "south bump";
-	pixel_y = -24
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
@@ -2743,7 +2755,6 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/machinery/power/thermoregulator,
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "pX" = (
@@ -2756,13 +2767,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
+/obj/machinery/power/apc/alarms_hidden{
 	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
-/obj/machinery/suit_cycler/mining{
-	req_access = list(301)
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
@@ -2813,9 +2820,10 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "qB" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 4;
-	pixel_x = -22
+	pixel_x = -23;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
@@ -3179,12 +3187,9 @@
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
 "uN" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 1;
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/eris/steel/gray_perforated,
-/area/talon/deckone/workroom)
+/obj/structure/stasis_cage,
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
 "uW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3374,17 +3379,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
-"xE" = (
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/firstaid/toxin,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/o2,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/adv,
-/obj/item/storage/firstaid/adv,
-/turf/simulated/floor/tiled/eris/white/bluecorner,
-/area/talon/deckone/medical)
 "xH" = (
 /obj/machinery/chem_master,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
@@ -3534,9 +3528,10 @@
 /turf/simulated/floor/tiled/eris/dark/gray_perforated,
 /area/shuttle/talonboat)
 "zq" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -25
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/talon/deckone/central_hallway)
@@ -3551,10 +3546,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
+/obj/machinery/power/apc/alarms_hidden{
 	dir = 1;
-	name = "north bump";
-	pixel_y = 28
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
@@ -3562,6 +3556,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/suit_cycler/vintage/tpilot,
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
 "zE" = (
@@ -3616,11 +3611,12 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "At" = (
-/obj/machinery/alarm/talon{
-	dir = 8;
-	pixel_x = 22
-	},
 /obj/structure/catwalk,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_port)
 "Ay" = (
@@ -3681,6 +3677,7 @@
 	dir = 1;
 	pixel_y = -25
 	},
+/obj/machinery/autolathe,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "AU" = (
@@ -3765,7 +3762,6 @@
 	name = "Talon Port SMES Connection";
 	name_tag = "TLN-PRT-SMES"
 	},
-/obj/machinery/camera/network/talon,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 26
@@ -4144,7 +4140,10 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
 "Gr" = (
-/obj/machinery/fitness/punching_bag,
+/obj/structure/table/standard,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "Gt" = (
@@ -4380,12 +4379,13 @@
 /turf/simulated/floor/plating/eris/under,
 /area/talon/deckone/bridge)
 "IO" = (
-/obj/machinery/alarm/talon{
-	dir = 4;
-	pixel_x = -22
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -23;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_eng)
@@ -4450,12 +4450,11 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/catwalk,
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 1;
+	pixel_y = 24
+	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_port)
 "JE" = (
@@ -4511,7 +4510,6 @@
 	name = "Talon Starboard SMES Connection";
 	name_tag = "TLN-SBD-SMES"
 	},
-/obj/machinery/camera/network/talon,
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
@@ -4554,13 +4552,12 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "Kk" = (
-/obj/machinery/power/apc/talon{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/green,
 /obj/machinery/light/small,
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/simulated/floor/tiled/eris/white/gray_platform,
 /area/shuttle/talonboat)
 "Km" = (
@@ -4716,9 +4713,8 @@
 /area/talon/deckone/bridge)
 "LK" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/talon{
+/obj/machinery/power/apc/alarms_hidden{
 	dir = 4;
-	name = "east bump";
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/eris/steel,
@@ -4793,10 +4789,6 @@
 	},
 /turf/simulated/floor/greengrid/airless,
 /area/talon/maintenance/deckone_port)
-"Mv" = (
-/obj/machinery/camera/network/talon,
-/turf/simulated/floor/tiled/eris/steel,
-/area/talon/deckone/central_hallway)
 "Mz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -4927,19 +4919,14 @@
 /area/shuttle/talonboat)
 "Ns" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/talon{
-	name = "south bump";
-	pixel_y = -24
-	},
 /obj/structure/table/standard,
 /obj/item/paper_bin,
 /obj/item/pen,
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
+	},
 /turf/simulated/floor/tiled/eris/steel/cargo,
-/area/talon/deckone/workroom)
-"Nu" = (
-/obj/structure/table/standard,
-/obj/fiftyspawner/glass,
-/turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/workroom)
 "Ny" = (
 /obj/structure/cable/green{
@@ -4991,11 +4978,12 @@
 /area/talon/deckone/bridge)
 "Ow" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/machinery/alarm/talon{
-	dir = 8;
-	pixel_x = 22
-	},
 /obj/structure/catwalk,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 8;
+	pixel_x = 22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_port)
 "OJ" = (
@@ -5096,7 +5084,10 @@
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/port_eng_store)
 "Qc" = (
-/obj/structure/fitness/weightlifter,
+/obj/structure/extinguisher_cabinet{
+	dir = 1;
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
 "Qe" = (
@@ -5156,14 +5147,15 @@
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "Rr" = (
-/obj/machinery/alarm/talon{
-	dir = 1;
-	pixel_y = -25
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/starboard_solar)
@@ -5216,11 +5208,9 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/talon{
-	alarms_hidden = 1;
+/obj/machinery/power/apc/alarms_hidden{
 	dir = 1;
-	name = "north bump";
-	pixel_y = 28
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_platform,
 /area/talon/deckone/starboard_eng_store)
@@ -5295,13 +5285,13 @@
 /area/talon/deckone/starboard_solar)
 "SS" = (
 /obj/structure/cable/green,
-/obj/machinery/power/apc/talon{
-	name = "south bump";
-	pixel_y = -24
-	},
 /obj/machinery/light_switch{
 	dir = 8;
 	pixel_x = 24
+	},
+/obj/machinery/power/apc/alarms_hidden{
+	pixel_y = -28;
+	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/port_solar)
@@ -5403,11 +5393,12 @@
 /area/talon/deckone/central_hallway)
 "TO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/machinery/alarm/talon{
-	dir = 4;
-	pixel_x = -22
-	},
 /obj/structure/catwalk,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 4;
+	pixel_x = -23;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/plating/eris/under,
 /area/talon/maintenance/deckone_starboard)
 "TP" = (
@@ -5432,9 +5423,10 @@
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "Uq" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 4;
-	pixel_x = -22
+	pixel_x = -23;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
@@ -5472,6 +5464,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/closet/crate/freezer,
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "UI" = (
@@ -5922,12 +5915,13 @@
 /turf/simulated/floor/tiled/eris/steel/techfloor_grid,
 /area/shuttle/talonboat)
 "YT" = (
-/obj/machinery/alarm/talon{
-	dir = 1;
-	pixel_y = -25
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
@@ -5980,21 +5974,23 @@
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "Zz" = (
-/obj/machinery/alarm/talon{
-	dir = 1;
-	pixel_y = -25
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -22;
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/port_solar)
 "ZA" = (
-/obj/machinery/alarm/talon{
+/obj/machinery/alarm/alarms_hidden{
 	dir = 1;
-	pixel_y = -22
+	pixel_y = -22;
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/starboard_eng_store)
@@ -14648,7 +14644,7 @@ iA
 cP
 iX
 vV
-mt
+lM
 ir
 YI
 Fw
@@ -15219,7 +15215,7 @@ dL
 wk
 cr
 qG
-Bj
+uN
 bS
 ki
 aa
@@ -15489,7 +15485,7 @@ dH
 dH
 dH
 dH
-Mv
+Bj
 Bj
 Bj
 Bj
@@ -15777,7 +15773,7 @@ Bj
 zs
 Bj
 CY
-MG
+mS
 dL
 nc
 Nn
@@ -16061,7 +16057,7 @@ Bj
 gi
 Bj
 Yf
-MG
+ob
 dL
 nc
 Nn
@@ -16632,7 +16628,7 @@ AU
 IW
 Zq
 Lf
-ob
+Bj
 Bj
 iN
 dL
@@ -17046,7 +17042,7 @@ Xd
 be
 bh
 dO
-uN
+SI
 SI
 rF
 Ns
@@ -17188,8 +17184,8 @@ WM
 dO
 dO
 dO
-mS
-Nu
+SI
+SI
 wh
 ZW
 fJ
@@ -17204,7 +17200,7 @@ iF
 cS
 Zj
 jE
-yf
+pz
 jb
 WA
 qR
@@ -17330,9 +17326,9 @@ Ej
 qB
 bf
 dO
-hD
-pz
 SI
+SI
+hD
 AQ
 fJ
 qA
@@ -17474,7 +17470,7 @@ ct
 dO
 Gt
 SI
-SI
+mt
 Gr
 fJ
 qA
@@ -17609,7 +17605,7 @@ co
 Nm
 dO
 hv
-xE
+Gb
 Rn
 UG
 UQ

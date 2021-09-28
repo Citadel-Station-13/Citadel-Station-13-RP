@@ -1,0 +1,5 @@
+author: "yourdoom9898"
+delete-after: True
+changes: 
+  - rscadd: "Tallow, a new oil subtype"
+  - balance: "Changed fryer oil to tallow from corn oil"
