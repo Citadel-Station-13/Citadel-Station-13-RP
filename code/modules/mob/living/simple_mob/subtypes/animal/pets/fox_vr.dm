@@ -43,7 +43,7 @@
 	var/mob/flee_target
 
 /datum/say_list/fox
-	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Awoo","Tchoff")
+	speak = list("RELEASE ME FROM THIS HELL! OH SWEET MOTHER OF FUCK MAKE IT END!") //Foxes say the damnest things. . .
 	emote_hear = list("howls","barks","geckers",)
 	emote_see = list("shakes its head", "shivers", "geckers")
 	say_maybe_target = list("Yip?","Yap?")
