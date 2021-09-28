@@ -22,6 +22,9 @@
 	name = "Facility Director's jumpsuit"
 	icon_state = "captain"
 	rolled_sleeves = 0
+/obj/item/clothing/under/rank/captain/talon
+	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Talon Captain\"."
+	name = "talon captain's jumpsuit"
 
 /obj/item/clothing/under/rank/captain/skirt_pleated
 	name = "captain's pleated skirt"

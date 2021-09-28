@@ -257,7 +257,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	// closet_appearance = /decl/// closet_appearance/secure_closet/talon/captain
 
 	starts_with = list(
-		/obj/item/storage/backpack/dufflebag/captain,
+		/obj/item/storage/backpack/dufflebag/captain/talon,
 		/obj/item/clothing/suit/storage/vest,
 		/obj/item/melee/telebaton,
 		/obj/item/flash,
@@ -290,7 +290,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/storage/belt/security,
 		/obj/item/radio,
 		/obj/item/radio/headset/talon,
-		/obj/item/clothing/accessory/oricon/department/security,
+		/obj/item/clothing/accessory/solgov/department/security,
 		/obj/item/clothing/head/helmet/space/void/refurb/marine/talon,
 		/obj/item/clothing/suit/space/void/refurb/marine/talon,
 		/obj/item/clothing/shoes/magboots,
@@ -360,7 +360,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 		/obj/item/radio,
 		/obj/item/clothing/under/utility/blue,
-		/obj/item/clothing/accessory/oricon/specialty/pilot,
+		/obj/item/clothing/accessory/solgov/specialty/pilot,
 		/obj/item/clothing/shoes/boots/jackboots,
 		/obj/item/clothing/shoes/boots/jackboots/toeless,
 		/obj/item/radio/headset/talon,

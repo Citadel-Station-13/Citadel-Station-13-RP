@@ -110,6 +110,9 @@
 	desc = "It's a special backpack made exclusively for officers."
 	icon_state = "captainpack"
 
+/obj/item/storage/backpack/captain/talon
+	name = "talon captain's backpack"
+
 /obj/item/storage/backpack/industrial
 	name = "industrial backpack"
 	desc = "It's a tough backpack for the daily grind of station life."
@@ -171,6 +174,9 @@
 	name = "Facility Director's dufflebag"
 	desc = "A large dufflebag for holding extra captainly goods."
 	icon_state = "duffle_captain"
+
+/obj/item/storage/backpack/dufflebag/captain/talon
+	name = "talon captain's dufflebag"
 
 /obj/item/storage/backpack/dufflebag/med
 	name = "medical dufflebag"
@@ -267,6 +273,9 @@
 	desc = "An exclusive satchel for officers."
 	icon_state = "satchel-cap"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")
+
+/obj/item/storage/backpack/satchel/cap/talon
+	name = "talon captain's satchel"
 
 //ERT backpacks.
 /obj/item/storage/backpack/ert
