@@ -681,26 +681,26 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return TRUE
 	. = ..()
 
-/client/proc/change_view(new_size)
-	if (isnull(new_size))
-		CRASH("change_view called without argument.")
+// /client/proc/change_view(new_size)
+// 	if (isnull(new_size))
+// 		CRASH("change_view called without argument.")
 
-	/*
-	if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
-		new_size = CONFIG_GET(string/default_view_square)
-	*/
+// 	/*
+// 	if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
+// 		new_size = CONFIG_GET(string/default_view_square)
+// 	*/
 
-	view = new_size
+// 	view = new_size
 
-	/*
-	apply_clickcatcher()
-	mob.reload_fullscreen()
-	if (isliving(mob))
-		var/mob/living/M = mob
-		M.update_damage_hud()
-	if (prefs.auto_fit_viewport)
-		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
-	*/
+// 	/*
+// 	apply_clickcatcher()
+// 	mob.reload_fullscreen()
+// 	if (isliving(mob))
+// 		var/mob/living/M = mob
+// 		M.update_damage_hud()
+// 	if (prefs.auto_fit_viewport)
+// 		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
+// 	*/
 
 /mob/proc/MayRespawn()
 	return 0

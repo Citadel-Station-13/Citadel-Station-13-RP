@@ -36,6 +36,7 @@
 	var/mouseControlObject = null
 	var/middragtime = 0
 	var/atom/middragatom
+	var/datum/view_data/view_size
 
 /client/MouseDown(object, location, control, params)
 	/*
