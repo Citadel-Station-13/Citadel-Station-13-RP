@@ -179,6 +179,11 @@
 	if(ability_master)
 		ability_master.toggle_open(1)
 		client.screen -= ability_master
+	if(client) //Widescreen enabling
+		if(client.view_size)
+			client.view_size.resetToDefault() // Resets the client.view in case it was changed.
+		else
+			client.change_view("21x15")
 
 /mob/Initialize(mapload)
 	. = ..()

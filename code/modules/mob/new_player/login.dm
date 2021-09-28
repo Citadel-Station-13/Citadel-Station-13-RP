@@ -41,11 +41,6 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	my_client = client
 	sight |= SEE_TURFS
 	player_list |= src
-	if(client)
-		if(client.view_size)
-			client.view_size.resetToDefault() // Resets the client.view in case it was changed.
-		else
-			client.change_view("21x15")
 	new_player_panel()
 	spawn(40)
 		if(client)
