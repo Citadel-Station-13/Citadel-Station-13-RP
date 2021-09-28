@@ -548,7 +548,7 @@
 
 	body_temperature = T0C + 15		//make the plant people have a bit lower body temperature, why not
 
-	flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD
+	flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 	blood_color = "#004400"
@@ -968,8 +968,9 @@
 	secondary_langs = list("Xenomorph")
 	num_alternate_languages = 3
 
+	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	blood_color = "#12ff12"
 	flesh_color = "#201730"
@@ -992,20 +993,41 @@
 	darksight = 4 //Better hunters in the dark.
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
+	slowdown = -0.2//Speedboost Tesh have -0.5
+
 	warning_low_pressure = 30//lower than baseline, still not vacuum prove
-	hazard_low_pressure = 5
+	hazard_low_pressure = -1
 
 	warning_high_pressure = 325//Both baseline
 	hazard_high_pressure = 550
 
-	cold_level_1 = 160	//Take colder temperatures better.
-	cold_level_2 = 120
-	cold_level_3 = 90 //Original idea was 60, but O2 gets liquid at that point so we keep the standard air gasious.
+	//Doesnt work, defaults are set at checks
+	//breath_type = null	//they don't breathe
+	//poison_type = null
+
+	cold_level_1 = 90	//Space if fucking cold, so we need low temperature tolerance
+	cold_level_2 = -1
+	cold_level_3 = -1
 
 	heat_level_1 = 350	//dont like the heat
 	heat_level_2 = 400
 	heat_level_3 = 700
 
+	//Organ-List to remove need to breath(?)
+	has_organ = list(
+		O_HEART =		/obj/item/organ/internal/heart,
+		O_VOICE = 		/obj/item/organ/internal/voicebox,
+		O_LIVER =		/obj/item/organ/internal/liver,
+		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
+		O_BRAIN =		/obj/item/organ/internal/brain,
+		//O_EYES =		/obj/item/organ/internal/eyes,
+		O_STOMACH =		/obj/item/organ/internal/stomach,
+		O_INTESTINE =	/obj/item/organ/internal/intestine
+		)
+	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
+
+/datum/species/xenohybrid/can_breathe_water()
+	return TRUE	//they dont quite breathe
 
 /datum/species/harpy
 	name = SPECIES_RAPALA
@@ -1096,7 +1118,7 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise); CitadelRP: Now able to walk over shards of glass like regular shadekins
+	flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise); CitadelRP: Now able to walk over shards of glass like regular shadekins
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions

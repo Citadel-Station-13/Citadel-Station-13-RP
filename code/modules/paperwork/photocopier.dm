@@ -317,6 +317,8 @@
 			if(SPECIES_SERGAL)
 				temp_img = icon('icons/obj/butts.dmi', "sergal")
 			*/
+			if(SPECIES_APIDAEN)
+				temp_img = icon('icons/obj/butts.dmi', "human") // placeholder until I make bug butts.
 			else // Sanity/Safety check - does their species not show up or not work, or did something fail, but they're DEFINITELY a /human/ subtype? Print the 'default' ass.
 				temp_img = icon('icons/obj/butts.dmi', "human")
 	else if(istype(sitter,/mob/living/silicon/robot/drone)) // Are we a drone?

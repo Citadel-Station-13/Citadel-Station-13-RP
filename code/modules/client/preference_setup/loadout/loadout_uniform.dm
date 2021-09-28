@@ -529,6 +529,10 @@ datum/gear/uniform/fashionminiskirt
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+datum/gear/uniform/bodysuit
+	display_name = "Standard Bodysuit"
+	path = /obj/item/clothing/under/bodysuit
+
 datum/gear/uniform/bodysuiteva
 	display_name = "EVA Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuiteva

@@ -33,12 +33,15 @@
 /datum/map/tether/New()
 	..()
 	var/choice = pickweight(list(
-		"title" = 10,
-		"tether" = 50,
-		"tether_night" = 50,
-		"tether2_night" = 50,
-		"tether2_dog" = 1,
-		"tether2_love" = 1
+		"title1" = 50,
+		"title2" = 10,
+		"title3" = 50,
+		"title4" = 50,
+		"title5" = 20,
+		"title6" = 20,
+		"title7" = 20,
+		"title8" = 1,
+		"title9" = 1
 	))
 	if(choice)
 		lobby_screens = list(choice)
@@ -250,6 +253,14 @@
 		Z_LEVEL_PLAINS,
 		Z_LEVEL_UNDERDARK
 	)
+
+	levels_for_distress = list(
+		Z_LEVEL_OFFMAP1,
+		Z_LEVEL_BEACH,
+		Z_LEVEL_AEROSTAT,
+		Z_LEVEL_DEBRISFIELD,
+		Z_LEVEL_FUELDEPOT
+		)
 
 //Port of Triumph Overmap Visitable Effects
 /obj/effect/overmap/visitable/sector/debrisfield

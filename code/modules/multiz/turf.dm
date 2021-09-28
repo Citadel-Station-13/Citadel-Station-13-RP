@@ -13,6 +13,12 @@
 /turf/space/CanZPass(atom, direction)
 	return 1
 
+/turf/proc/multiz_turf_del(turf/T, dir)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
+
+/turf/proc/multiz_turf_new(turf/T, dir)
+	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_NEW, T, dir)
+
 //
 // Open Space - "empty" turf that lets stuff fall thru it to the layer below
 //
@@ -26,6 +32,7 @@
 	plane = OPENSPACE_PLANE_START
 	pathweight = 100000		// Seriously, don't try and path over this one numbnuts
 	can_build_into_floor = TRUE
+	allow_gas_overlays = FALSE
 
 	var/turf/below
 

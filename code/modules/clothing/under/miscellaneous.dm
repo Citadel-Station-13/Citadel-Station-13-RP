@@ -814,6 +814,11 @@
 	desc = "A revealing stripper's costume patterned after the Captain's uniform."
 	icon_state = "lewdcap"
 
+/obj/item/clothing/under/swimsuit/highclass
+	name = "high class swimsuit"
+	desc = "An elegant swimsuit with a white bikini top and black bikini bottom. Thin black silk drapes down the back and goes to the upper thighs, and authentic gold rings hold the top together at the bust and back."
+	icon_state = "swim_highclass"
+
 /*
  * pyjamas
  */
@@ -1135,6 +1140,11 @@
     name = "fashionable miniskirt"
     desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
     icon_state = "miniskirt_fashion"
+
+/obj/item/clothing/under/bodysuit
+	name = "standard bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This basic version is a sleek onyx grey comes with the standard induction ports."
+	icon_state = "bodysuit"
 
 /obj/item/clothing/under/bodysuit/bodysuiteva
 	name = "\improper EVA bodysuit"

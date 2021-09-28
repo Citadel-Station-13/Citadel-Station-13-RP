@@ -344,6 +344,11 @@
 	display_name = "Security Turtleneck - Alternative"
 	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/security
 
+/datum/gear/restricted/security/uniform/turtleneck/hos
+	display_name = "Head of Security Turtleneck"
+	path = /obj/item/clothing/under/rank/head_of_security/turtleneck
+	allowed_roles = list("Head of Security")
+
 /datum/gear/restricted/security/uniform/bodysuit
 	display_name = "Security Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuitsec
@@ -361,11 +366,15 @@
 	display_name = "Security Uniform - Fatigues" //You marine larper.
 	path = /obj/item/clothing/under/solgov/utility/marine/security
 
+/datum/gear/restricted/security/uniform/dispatch
+	display_name = "Security Uniform - Dispatch"
+	path = /obj/item/clothing/under/rank/dispatch
 
 //Back
 /datum/gear/restricted/security/back/dufflebag
 	display_name = "Security - Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/sec
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
 	cost = 2
 
 //Suit
@@ -462,6 +471,7 @@
 /datum/gear/restricted/medical/back/dufflebag
 	display_name = "Medical Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/med
+	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Talon Doctor")
 	cost = 2
 
 /datum/gear/restricted/medical/back/dufflebag/emt
@@ -618,6 +628,7 @@
 /datum/gear/restricted/engineering/back/dufflebag
 	display_name = "Engineering Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/eng
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Talon Engineer")
 	cost = 2
 
 //Uniform
@@ -1169,10 +1180,15 @@
 
 
 //*This clusterfuck of access combinations
+//*Now with Talon roles!
 /datum/gear/restricted/misc/accessory/holster
-	display_name = "(Command/Security/Exploration) Holster - Selection"
+	display_name = "(Command/Security/Exploration/Talon) Holster - Selection"
 	path = /obj/item/clothing/accessory/holster
-	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary", "Security Officer", "Warden", "Head of Security", "Detective", "Field Medic", "Explorer", "Pathfinder", "Pilot")
+	allowed_roles = list(
+	"Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary",
+	"Security Officer", "Warden", "Head of Security", "Detective",
+	"Field Medic", "Explorer", "Pathfinder", "Pilot",
+	"Talon Captain", "Talon Doctor", "Talon Medic", "Talon Engineer", "Talon Pilot", "Talon Guard")
 
 /datum/gear/restricted/misc/accessory/holster/New()
 	..()

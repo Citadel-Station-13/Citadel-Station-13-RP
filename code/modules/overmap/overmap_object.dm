@@ -14,6 +14,7 @@
 	var/skybox_pixel_x		//Shift from lower left corner of skybox
 	var/skybox_pixel_y		//Shift from lower left corner of skybox
 	var/image/cached_skybox_image	//Cachey
+	var/image/real_appearance
 
 //Overlay of how this object should look on other skyboxes
 /obj/effect/overmap/proc/get_skybox_representation()

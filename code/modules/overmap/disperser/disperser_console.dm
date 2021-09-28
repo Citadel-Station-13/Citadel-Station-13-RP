@@ -55,9 +55,9 @@
 		middle = M
 		back = B
 		if(is_valid_setup())
-			GLOB.destroyed_event.register(F, src, .proc/release_links)
-			GLOB.destroyed_event.register(M, src, .proc/release_links)
-			GLOB.destroyed_event.register(B, src, .proc/release_links)
+			RegisterSignal(F, COMSIG_TURF_MULTIZ_DEL)
+			RegisterSignal(M, COMSIG_TURF_MULTIZ_DEL)
+			RegisterSignal(B, COMSIG_TURF_MULTIZ_DEL)
 			return TRUE
 	return FALSE
 
@@ -69,9 +69,9 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 	return FALSE
 
 /obj/machinery/computer/ship/disperser/proc/release_links()
-	GLOB.destroyed_event.unregister(front, src, .proc/release_links)
-	GLOB.destroyed_event.unregister(middle, src, .proc/release_links)
-	GLOB.destroyed_event.unregister(back, src, .proc/release_links)
+	UnregisterSignal(front, COMSIG_TURF_MULTIZ_DEL)
+	UnregisterSignal(middle, COMSIG_TURF_MULTIZ_DEL)
+	UnregisterSignal(back, COMSIG_TURF_MULTIZ_DEL)
 	front = null
 	middle = null
 	back = null

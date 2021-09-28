@@ -1,6 +1,6 @@
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
-	desc = "Used to seperate and package chemicals in to patches, pills, or bottles. Warranty void if used to create Space Drugs."
+	desc = "Used to seperate and package chemicals in to lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
 	density = 1
 	anchored = 1
 	icon = 'icons/obj/chemical.dmi'
@@ -14,10 +14,13 @@
 	var/condi = 0
 	var/useramount = 15 // Last used amount
 	var/pillamount = 10
+	var/lolliamount = 5
 	var/list/bottle_styles
 	var/bottlesprite = 1
 	var/pillsprite = 1
+	var/lollisprite = 1
 	var/max_pill_count = 20
+	var/max_lolli_count = 10
 	var/printing = FALSE
 	flags = OPENCONTAINER
 	clicksound = "button"
@@ -119,6 +122,7 @@
 
 	data["pillsprite"] = pillsprite
 	data["bottlesprite"] = bottlesprite
+	data["lollisprite"] = lollisprite
 	data["mode"] = mode
 	data["printing"] = printing
 
@@ -223,6 +227,21 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_modal_input(src, id, "Please enter the amount of patches to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
+				if("create_lollipop")
+					if(condi || !reagents.total_volume)
+						return
+					var/num = round(text2num(arguments["num"] || 1))
+					if(!num)
+						return
+					arguments["num"] = num
+					var/amount_per_lolli = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_LOLLI)
+					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_lolli]u)"
+					var/lolli_text = num == 1 ? "new lollipop" : "[num] new lollipops"
+					ui_modal_input(src, id, "Please name your [lolli_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
+				if("create_lollipop_multiple")
+					if(condi || !reagents.total_volume)
+						return
+					ui_modal_input(src, id, "Please enter the amount of lollipops to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, lolliamount, 5)
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
 						return
@@ -346,6 +365,31 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_act("modal_open", list("id" = "create_patch", "arguments" = list("num" = answer)), ui, state)
+				if("create_lollipop")
+					if(condi || !reagents.total_volume)
+						return
+					var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
+					if(!count)
+						return
+
+					if(!length(answer))
+						answer = reagents.get_master_reagent_name()
+					var/amount_per_lolli = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_LOLLI)
+					// var/is_medical_patch = chemical_safety_check(reagents)
+					while(count--)
+						if(reagents.total_volume <= 0)
+							to_chat(usr, "<span class='notice'>Not enough reagents to create these candies!</span>")
+							return
+
+						var/obj/item/reagent_containers/hard_candy/lollipop/L = new(loc)
+						L.name = "[answer] lollipop"
+						L.pixel_x = rand(-7, 7) // random position
+						L.pixel_y = rand(-7, 7)
+						reagents.trans_to_obj(L, amount_per_lolli)
+				if("create_lollipop_multiple")
+					if(condi || !reagents.total_volume)
+						return
+					ui_act("modal_open", list("id" = "create_lollipop", "arguments" = list("num" = answer)), ui, state)
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
 						return

@@ -19,7 +19,7 @@
 	. = ..()
 	if(prob(50))
 		var/turf/T = get_turf(src)
-		if(!isspace(T) && !istype(T, /turf/simulated/floor/carpet))
+		if(!istype(T, /turf/space) && !istype(T, /turf/simulated/floor/carpet))
 			playsound(T, pick(move_sounds), 50, 1)
 
 /obj/structure/ship_munition/disperser_charge/fire
