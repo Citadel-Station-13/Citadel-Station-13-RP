@@ -115,6 +115,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	// will probably not be able to do this for head and torso ;)
 	var/list/organ_data = list()
 	var/list/rlimb_data = list()
+	var/regen_limbs = 0 //set to 1 when altering limb states. fix for prosthetic > normal changes not working on preview.
 	var/list/player_alt_titles = new()		// the default name of a job like "Medical Doctor"
 
 	var/list/body_markings = list() // "name" = "#rgbcolor"
