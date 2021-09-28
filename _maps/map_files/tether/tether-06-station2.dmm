@@ -8164,7 +8164,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/status_display{
+/obj/machinery/status_display/supply_display{
 	pixel_y = 30
 	},
 /obj/machinery/light{
