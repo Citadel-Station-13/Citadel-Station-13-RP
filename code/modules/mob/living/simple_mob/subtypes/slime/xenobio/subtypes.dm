@@ -209,7 +209,7 @@
 		if(get_dist(check, T) > maxrad)
 			continue
 		. += check
-		for(var/d in GLOB.cardinals)
+		for(var/d in GLOB.cardinal)
 			var/turf/enemy = get_step(check, d)
 			if(!enemy || !check.CanZASPass(enemy) || !enemy.CanZASPass(check) || processed[enemy])
 				continue
