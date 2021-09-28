@@ -137,15 +137,15 @@
 /datum/gear/accessory/brown_drop_pouches
 	display_name = "Drop Pouches - Brown"
 	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
-
+	cost = 2
 /datum/gear/accessory/black_drop_pouches
 	display_name = "Drop Pouches - Black"
 	path = /obj/item/clothing/accessory/storage/black_drop_pouches
-
+	cost = 2
 /datum/gear/accessory/white_drop_pouches
 	display_name = "Drop Pouches - White"
 	path = /obj/item/clothing/accessory/storage/white_drop_pouches
-
+	cost = 2
 /datum/gear/accessory/fannypack
 	display_name = "Fannypack - Selection"
 	cost = 2
@@ -321,15 +321,15 @@
 	path = /obj/item/storage/box/vmcrystal
 	description = "A small necklace device that will notify an offsite cloning facility should you expire after activating it."
 
-/datum/gear/accessory/metal_necklace
+/datum/gear/accessory/tronket
 	display_name = "Metal Necklace"
 	description = "A shiny steel chain with a vague metallic object dangling off it."
-	path = /obj/item/clothing/accessory/metal_necklace
+	path = /obj/item/clothing/accessory/tronket
 
 /datum/gear/accessory/pilotpin
 	display_name = "Pilot - Qualification Pin"
-	description = "An iron pin denoting the qualification to fly OCG voidcraft."
-	path = /obj/item/clothing/accessory/oricon/specialty/pilot
+	description = "An iron pin denoting the qualification to fly SCG voidcraft."
+	path = /obj/item/clothing/accessory/solgov/specialty/pilot
 
 /datum/gear/accessory/flops
 	display_name = "Drop Straps"
