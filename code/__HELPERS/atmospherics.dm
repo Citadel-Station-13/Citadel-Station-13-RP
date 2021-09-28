@@ -43,6 +43,11 @@
 /turf/atmosanalyze(var/mob/user)
 	return atmosanalyzer_scan(src, src.air, user)
 
+/turf/simulated/atmosanalyze(mob/user)
+	if(zone)
+		return atmosanalyzer_scan(src, zone.air, user)
+	return ..()
+
 /atom/proc/atmosanalyze(var/mob/user)
 	return
 

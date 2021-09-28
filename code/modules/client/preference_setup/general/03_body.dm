@@ -43,6 +43,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["synth_blue"]			>> pref.b_synth
 	S["synth_markings"]		>> pref.synth_markings
 	pref.preview_icon = null
+	pref.regen_limbs = 1
 	S["bgstate"]			>> pref.bgstate
 	S["body_descriptors"]	>> pref.body_descriptors
 
@@ -726,6 +727,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/new_state = input(user, "What state do you wish the limb to be in?") as null|anything in choice_options
 		if(!new_state || !CanUseTopic(user)) return TOPIC_NOACTION
 
+		pref.regen_limbs = 1
+
 		switch(new_state)
 			if("Normal")
 				pref.organ_data[limb] = null
@@ -840,6 +843,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/new_state = input(user, "What state do you wish the organ to be in?") as null|anything in organ_choices
 		if(!new_state) return
 
+		pref.regen_limbs = 1
+
 		switch(new_state)
 			if("Normal")
 				pref.organ_data[organ] = null
@@ -907,6 +912,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		pref.rlimb_data[organ] = null
 	while(null in pref.rlimb_data)
 		pref.rlimb_data -= null
+
+	pref.regen_limbs = 1
 
 	// Sanitize the name so that there aren't any numbers sticking around.
 	pref.real_name          = sanitize_name(pref.real_name, pref.species)

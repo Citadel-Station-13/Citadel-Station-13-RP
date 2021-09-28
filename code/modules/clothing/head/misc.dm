@@ -7,7 +7,7 @@
 
 /obj/item/clothing/head/centhat/customs
 	name = "Customs Hat"
-	desc = "A formal hat for SolGov Customs Officers."
+	desc = "A formal hat for OriCon Customs Officers."
 	icon_state = "customshat"
 
 /obj/item/clothing/head/pin

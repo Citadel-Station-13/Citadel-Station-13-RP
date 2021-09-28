@@ -26927,7 +26927,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "aWs" = (
-/obj/machinery/suit_cycler,
+/obj/machinery/suit_cycler{
+	req_access = list(58)
+	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/hos)
 "aWt" = (
@@ -39238,8 +39240,8 @@
 	req_access = list(58)
 	},
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/void/security,
-/obj/item/clothing/head/helmet/space/void/security,
+/obj/item/clothing/suit/space/void/headofsecurity,
+/obj/item/clothing/head/helmet/space/void/headofsecurity,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/security/hos)
 "lOl" = (

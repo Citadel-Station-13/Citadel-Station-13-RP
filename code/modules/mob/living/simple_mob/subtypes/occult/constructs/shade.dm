@@ -2,6 +2,12 @@
 //			Shade
 ////////////////////////////
 
+/datum/category_item/catalogue/fauna/construct/shade
+	name = "%#ERROR#%"
+	desc = "%ERROR% SCAN DATA REDACTED. RETURN SCANNER TO A \
+	CENTRAL ADMINISTRATOR FOR IMMEDIATE MAINTENANCE. %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/construct/shade
 	name = "Shade"
 	real_name = "Shade"
@@ -9,6 +15,7 @@
 	icon_state = "shade"
 	icon_living = "shade"
 	icon_dead = "shade_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/shade)
 
 	response_help  = "puts their hand through"
 	response_disarm = "flails at"

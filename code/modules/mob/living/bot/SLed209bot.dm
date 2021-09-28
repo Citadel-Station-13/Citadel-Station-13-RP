@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/technology/bot/ed209/slime
+	name = "Bot - SL ED 209"
+	desc = "Due to the commercial failure of the ED model bots, \
+	the frames are easily procured by hobbyists or tinkerers for field \
+	testing. To some surprise, the ED model is generally viable as a \
+	Xenobiology containment tool."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/secbot/ed209/slime
 	name = "SL-ED-209 Security Robot"
 	desc = "A security robot.  He looks less than thrilled."
@@ -6,6 +14,7 @@
 	density = 1
 	health = 200
 	maxHealth = 200
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/ed209/slime)
 
 	is_ranged = 1
 	preparing_arrest_sounds = new()

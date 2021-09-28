@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/Master
+	name = "&^DOCTO***ELIX!!%%"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/Master
 	name = "Dr. Helix"
 	desc = "A massive pile of grotesque flesh and bulging tumor like growths. Every inch of its skin is undulating in every direction possible, bringing a literal definition to 'Skin Crawling.' Stuck in the middle of this monstrosity is a large AI core with a bloodied, emaciated man sewn into its circuitry."
@@ -10,6 +16,7 @@
 	icon = 'icons/mob/horror_show/master.dmi'
 	icon_gib = "generic_gib"
 	anchored = 1
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Master)
 
 	attack_sound = 'sound/h_sounds/shitty_tim.ogg'
 

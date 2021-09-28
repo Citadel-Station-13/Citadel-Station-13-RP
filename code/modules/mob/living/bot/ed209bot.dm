@@ -1,3 +1,13 @@
+/datum/category_item/catalogue/technology/bot/ed209
+	name = "Bot - ED 209"
+	desc = "The ED series security robot remains controversial to this day. \
+	Originally fielded by corporations during the Flicker, ED series secbots \
+	are bipedal, reverse-jointed pacification tools known for their lax engagement \
+	protocols. Banned within the borders of most Galactic powers, they continue to see \
+	limited use by Frontier Megacorps, although their fratricide rates leave much \
+	to be desired in the face of more reliable Beepsky models."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/secbot/ed209
 	name = "ED-209 Security Robot"
 	desc = "A security robot.  He looks less than thrilled."
@@ -6,6 +16,7 @@
 	density = 1
 	health = 200
 	maxHealth = 200
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/ed209)
 
 	is_ranged = 1
 	preparing_arrest_sounds = new()

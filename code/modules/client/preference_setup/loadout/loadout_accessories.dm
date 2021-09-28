@@ -328,8 +328,8 @@
 
 /datum/gear/accessory/pilotpin
 	display_name = "Pilot - Qualification Pin"
-	description = "An iron pin denoting the qualification to fly SCG voidcraft."
-	path = /obj/item/clothing/accessory/solgov/specialty/pilot
+	description = "An iron pin denoting the qualification to fly OCG voidcraft."
+	path = /obj/item/clothing/accessory/oricon/specialty/pilot
 
 /datum/gear/accessory/flops
 	display_name = "Drop Straps"

@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/bats
+	name = "Space Bats"
+	desc = "The byproduct of Human terraforming and genetics \
+	experimentation focusing on creating fauna more adapted to \
+	space travel, Space Bats are vampiric abominations that try \
+	to suck the life out of any warm creature they can find."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/space/bats
 	name = "space bat swarm"
 	desc = "A swarm of cute little blood sucking bats that looks pretty upset."
@@ -7,6 +15,7 @@
 	icon_living = "bat"
 	icon_dead = "bat_dead"
 	icon_gib = "bat_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/bats)
 
 	faction = "scarybat"
 

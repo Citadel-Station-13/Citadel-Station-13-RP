@@ -31,7 +31,6 @@
 	id_tag = "ert_shuttle_bay";
 	name = "shuttle bay controller";
 	pixel_x = 25;
-	pixel_y = 0;
 	tag_door = "ert_shuttle_bay_door"
 	},
 /turf/unsimulated/floor{
@@ -40,7 +39,6 @@
 /area/centcom/specops)
 "ah" = (
 /obj/effect/floor_decal/industrial/danger/corner{
-	icon_state = "dangercorner";
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
@@ -159,7 +157,6 @@
 /area/shuttle/specops/centcom)
 "at" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 2;
 	frequency = 1380;
 	id_tag = "ert1_vent"
 	},
@@ -184,11 +181,9 @@
 /area/shuttle/specops/centcom)
 "au" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 2;
 	frequency = 1380;
 	id_tag = "ert1_vent"
 	},
@@ -201,15 +196,14 @@
 /area/shuttle/specops/centcom)
 "av" = (
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless,
 /area/shuttle/specops/centcom)
 "aw" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_r";
-	dir = 4
+	dir = 4;
+	icon_state = "propulsion_r"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -310,7 +304,6 @@
 /area/shuttle/specops/centcom)
 "aK" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	icon_state = "intact";
 	dir = 6
 	},
 /obj/machinery/meter,
@@ -330,7 +323,6 @@
 /area/shuttle/specops/centcom)
 "aM" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	icon_state = "intact";
 	dir = 9
 	},
 /turf/simulated/shuttle/floor/black,
@@ -409,8 +401,7 @@
 /area/shuttle/specops/centcom)
 "aR" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
@@ -546,9 +537,7 @@
 /area/shuttle/specops/centcom)
 "bc" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/space_heater,
@@ -570,8 +559,8 @@
 /area/shuttle/specops/centcom)
 "bg" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_l";
-	dir = 4
+	dir = 4;
+	icon_state = "propulsion_l"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -618,7 +607,6 @@
 /area/shuttle/specops/centcom)
 "bl" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black,
@@ -671,8 +659,7 @@
 /area/shuttle/specops/centcom)
 "bs" = (
 /obj/structure/closet/medical_wall{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /obj/item/storage/firstaid/clotting,
 /obj/item/storage/firstaid/bonemed,
@@ -690,7 +677,6 @@
 /area/shuttle/specops/centcom)
 "bt" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
 	req_access = list(103)
 	},
 /turf/simulated/shuttle/floor/black,
@@ -718,14 +704,14 @@
 "bw" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/rack/steel,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
@@ -842,7 +828,6 @@
 /area/shuttle/specops/centcom)
 "bG" = (
 /obj/machinery/atm{
-	pixel_x = 0;
 	pixel_y = 26
 	},
 /turf/simulated/shuttle/floor/black,
@@ -857,8 +842,7 @@
 /obj/machinery/vending/nifsoft_shop{
 	categories = 111;
 	emagged = 1;
-	name = "Hacked NIFSoft Shop";
-	prices = list()
+	name = "Hacked NIFSoft Shop"
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
@@ -869,9 +853,7 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/specops/centcom)
 "bK" = (
-/obj/machinery/sleep_console{
-	dir = 8
-	},
+/obj/machinery/sleep_console,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bL" = (
@@ -904,7 +886,6 @@
 /area/shuttle/specops/centcom)
 "bP" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -914,7 +895,6 @@
 /area/shuttle/specops/centcom)
 "bQ" = (
 /obj/structure/mirror{
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/shuttle/floor/white,
@@ -980,8 +960,7 @@
 	dir = 4
 	},
 /obj/item/perfect_tele_beacon{
-	tele_name = "ERT";
-	
+	tele_name = "ERT"
 	},
 /obj/machinery/newscaster{
 	pixel_x = 32
@@ -1155,7 +1134,6 @@
 /area/shuttle/specops/centcom)
 "co" = (
 /obj/machinery/computer/shuttle_control/multi/specops{
-	icon_state = "computer";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1263,7 +1241,6 @@
 /obj/structure/medical_stand,
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
 	pixel_x = 12;
 	pixel_y = 8
 	},
@@ -1354,8 +1331,7 @@
 /area/shuttle/specops/centcom)
 "cI" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/surgery,
@@ -1487,7 +1463,6 @@
 /area/shuttle/specops/centcom)
 "cW" = (
 /obj/machinery/atmospherics/pipe/tank/air{
-	dir = 2;
 	start_pressure = 740.5
 	},
 /obj/effect/floor_decal/industrial/outline,
@@ -1746,9 +1721,7 @@
 "dA" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/machinery/shield_gen/external,
 /turf/simulated/shuttle/floor/black,
@@ -2030,8 +2003,7 @@
 /area/shuttle/specops/centcom)
 "eb" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1381;
@@ -2088,7 +2060,6 @@
 /area/centcom/specops)
 "eg" = (
 /obj/effect/floor_decal/industrial/danger/corner{
-	icon_state = "dangercorner";
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,

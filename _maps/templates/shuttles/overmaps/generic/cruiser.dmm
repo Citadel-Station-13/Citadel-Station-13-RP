@@ -56,8 +56,7 @@
 	id_tag = "ws_dock_8_pump"
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -72,16 +71,14 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "ws_dock_8_sensor";
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/breakroom)
 "aj" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/breakroom)
@@ -105,14 +102,12 @@
 	id_tag = "ws_dock_1_pump"
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "ws_dock_1_sensor";
-	pixel_x = -25;
-	pixel_y = 0
+	pixel_x = -25
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -142,7 +137,6 @@
 /area/mothership/breakroom)
 "ap" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -177,7 +171,6 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	destroy_hits = 1000;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
 	name = "Shuttle Blast Doors";
@@ -209,7 +202,6 @@
 /area/mothership/breakroom)
 "ay" = (
 /obj/structure/bed/chair/wood{
-	icon_state = "wooden_chair";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -223,7 +215,6 @@
 /area/mothership/breakroom)
 "aA" = (
 /obj/structure/bed/chair/wood{
-	icon_state = "wooden_chair";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -246,7 +237,6 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	destroy_hits = 1000;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-lounge";
 	name = "Shuttle Blast Doors";
@@ -264,8 +254,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /turf/simulated/floor/carpet/blue,
 /area/mothership/breakroom)
@@ -276,7 +265,6 @@
 /area/mothership/breakroom)
 "aF" = (
 /obj/structure/bed/chair/wood{
-	icon_state = "wooden_chair";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -299,7 +287,6 @@
 /area/mothership/breakroom)
 "aI" = (
 /obj/structure/bed/chair/wood{
-	icon_state = "wooden_chair";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -311,7 +298,6 @@
 /area/mothership/breakroom)
 "aJ" = (
 /obj/structure/bed/chair/wood{
-	icon_state = "wooden_chair";
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -367,13 +353,11 @@
 /obj/random/mre,
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
 	},
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -407,7 +391,6 @@
 "aT" = (
 /obj/machinery/vending/boozeomat{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/carpet/blue,
@@ -415,7 +398,6 @@
 "aU" = (
 /obj/machinery/vending/food/arojoan{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = -32
 	},
 /turf/simulated/floor/carpet/blue,
@@ -517,7 +499,6 @@
 	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable/cyan{
@@ -529,7 +510,6 @@
 "bn" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -564,8 +544,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
@@ -577,8 +556,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
@@ -596,15 +574,13 @@
 /area/mothership/hydroponics)
 "bu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
@@ -633,8 +609,7 @@
 	pixel_x = 3
 	},
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
-	pixel_x = -3;
-	pixel_y = 0
+	pixel_x = -3
 	},
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -653,7 +628,6 @@
 /obj/item/material/knife/butch,
 /obj/item/material/kitchen/rollingpin,
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -680,7 +654,6 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	destroy_hits = 1000;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-hydroponics";
 	name = "Shuttle Blast Doors";
@@ -814,7 +787,6 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	destroy_hits = 1000;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-kitchen";
 	name = "Shuttle Blast Doors";
@@ -938,7 +910,6 @@
 /obj/machinery/light,
 /obj/machinery/alarm{
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /obj/machinery/button/remote/blast_door{
@@ -952,8 +923,7 @@
 "cf" = (
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -23;
-	pixel_y = 0
+	pixel_x = -23
 	},
 /obj/structure/closet/crate/bin,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -978,7 +948,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	icon_state = "intact-scrubbers";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -987,7 +956,6 @@
 /obj/machinery/light,
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -1002,7 +970,6 @@
 "ck" = (
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -1154,7 +1121,6 @@
 /obj/item/radio/off,
 /obj/item/radio/off,
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -1190,7 +1156,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "ws_dock_7_sensor";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -1362,7 +1327,6 @@
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "ws_dock_2_sensor";
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1396,7 +1360,6 @@
 /obj/item/clothing/mask/breath,
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/structure/table/rack/shelf/steel,
@@ -1450,7 +1413,6 @@
 "dd" = (
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -1482,7 +1444,6 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -1629,7 +1590,6 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -1652,9 +1612,7 @@
 "dt" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 2;
-	pixel_y = 0
+	pixel_x = 2
 	},
 /obj/machinery/door/window/survival_pod,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1668,7 +1626,6 @@
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /obj/machinery/light/small,
@@ -1680,7 +1637,6 @@
 	},
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -1693,8 +1649,7 @@
 /area/mothership/bathroom1)
 "dw" = (
 /obj/machinery/status_display{
-	pixel_x = -32;
-	pixel_y = 0
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
@@ -1745,15 +1700,13 @@
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "dE" = (
 /obj/machinery/status_display{
-	pixel_x = 32;
-	pixel_y = 0
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
@@ -1763,7 +1716,6 @@
 	},
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -1779,7 +1731,6 @@
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /obj/machinery/light/small,
@@ -1791,9 +1742,7 @@
 	},
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = 2;
-	pixel_y = 0
+	pixel_x = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -1828,8 +1777,7 @@
 /area/mothership/dorm1)
 "dN" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -1936,7 +1884,6 @@
 /area/mothership/teleporter)
 "ed" = (
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -1944,7 +1891,6 @@
 	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1974,7 +1920,6 @@
 /area/mothership/teleporter)
 "eg" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -1989,7 +1934,6 @@
 /area/mothership/teleporter)
 "eh" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2019,8 +1963,7 @@
 "el" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
@@ -2029,13 +1972,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
 "en" = (
-/obj/item/clothing/head/helmet/solgov,
-/obj/item/clothing/head/helmet/solgov,
-/obj/item/clothing/head/helmet/solgov,
-/obj/item/clothing/head/helmet/solgov,
+/obj/item/clothing/head/helmet/oricon,
+/obj/item/clothing/head/helmet/oricon,
+/obj/item/clothing/head/helmet/oricon,
+/obj/item/clothing/head/helmet/oricon,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
@@ -2112,7 +2054,6 @@
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -2123,13 +2064,11 @@
 /area/mothership/dorm1)
 "et" = (
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -2182,9 +2121,7 @@
 /area/mothership/hallway)
 "ew" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2217,8 +2154,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/shield_gen{
-	field_radius = 49;
-
+	field_radius = 49
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
@@ -2263,7 +2199,6 @@
 "eD" = (
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -2289,7 +2224,6 @@
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -2326,8 +2260,7 @@
 /obj/item/cell/device/weapon,
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -23;
-	pixel_y = 0
+	pixel_x = -23
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -2382,9 +2315,7 @@
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
-	frequency = 1439;
 	pixel_x = 22;
-	pixel_y = 0;
 	report_danger_level = 0
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2410,21 +2341,18 @@
 "eQ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/item/perfect_tele_beacon{
-	tele_name = "Daedalus";
-
+	tele_name = "Daedalus"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eR" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 8
 	},
 /obj/machinery/alarm{
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -2511,8 +2439,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2600,8 +2527,7 @@
 /obj/item/holowarrant,
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
@@ -2645,7 +2571,6 @@
 /area/mothership/chemistry)
 "fv" = (
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 1
 	},
 /obj/structure/closet/radiation,
@@ -2667,21 +2592,18 @@
 	},
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "fy" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/structure/cable{
 	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/port_gen/pacman/super{
 	sheets = 100
@@ -2694,7 +2616,6 @@
 	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable/cyan{
@@ -2702,7 +2623,6 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 1
 	},
 /obj/structure/closet/radiation,
@@ -2722,7 +2642,6 @@
 	},
 /obj/machinery/alarm{
 	dir = 4;
-	icon_state = "alarm0";
 	pixel_x = -22
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2798,7 +2717,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
 	pixel_x = 12;
 	pixel_y = 8
 	},
@@ -2806,8 +2724,7 @@
 /area/mothership/surgery)
 "fM" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/table/steel_reinforced,
@@ -2866,12 +2783,11 @@
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /obj/machinery/power/terminal,
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2891,7 +2807,6 @@
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -2955,8 +2870,7 @@
 	},
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -23;
-	pixel_y = 0
+	pixel_x = -23
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
@@ -2992,7 +2906,6 @@
 /obj/item/storage/box/gloves,
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/white,
@@ -3024,8 +2937,7 @@
 /obj/item/storage/box/pillbottles,
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -23;
-	pixel_y = 0
+	pixel_x = -23
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -3070,8 +2982,7 @@
 /area/mothership/vault)
 "gj" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /obj/structure/cable,
 /obj/machinery/power/port_gen/pacman/super{
@@ -3083,7 +2994,6 @@
 "gk" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/structure/cable,
@@ -3111,7 +3021,6 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	destroy_hits = 1000;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-sec-equip";
 	name = "Shuttle Blast Doors";
@@ -3161,8 +3070,7 @@
 /area/mothership/chemistry)
 "gw" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
@@ -3248,7 +3156,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -3260,7 +3167,6 @@
 	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/cable/cyan{
@@ -3268,7 +3174,6 @@
 	icon_state = "0-8"
 	},
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -3361,7 +3266,6 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	destroy_hits = 1000;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-med-treatment";
 	name = "Shuttle Blast Doors";
@@ -3444,8 +3348,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
@@ -3472,8 +3375,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
@@ -3554,7 +3456,6 @@
 	},
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -3611,7 +3512,6 @@
 /obj/item/retail_scanner/security,
 /obj/item/retail_scanner/security,
 /obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3638,8 +3538,7 @@
 	pixel_y = -28
 	},
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
@@ -3756,7 +3655,6 @@
 /area/mothership/dorm3)
 "hJ" = (
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -3764,7 +3662,6 @@
 	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3841,7 +3738,6 @@
 	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3974,8 +3870,7 @@
 "id" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
 /area/mothership/treatment)
@@ -4036,8 +3931,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/sechallway)
@@ -4093,7 +3987,6 @@
 "iu" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
 	pixel_x = 12;
 	pixel_y = 8
 	},
@@ -4189,9 +4082,7 @@
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
-	frequency = 1439;
 	pixel_x = 22;
-	pixel_y = 0;
 	report_danger_level = 0
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -4241,15 +4132,12 @@
 	},
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/corner/lightorange{
-	icon_state = "corner_white";
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloor/shifted{
-	icon_state = "borderfloor_shifted";
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange/border/shifted{
-	icon_state = "bordercolor_shifted";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4258,19 +4146,15 @@
 /obj/structure/bed/padded,
 /obj/item/bedsheet,
 /obj/effect/floor_decal/corner/lightorange{
-	icon_state = "corner_white";
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloor/shifted{
-	icon_state = "borderfloor_shifted";
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange/border/shifted{
-	icon_state = "bordercolor_shifted";
 	dir = 1
 	},
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4280,15 +4164,12 @@
 	id = "Cell M1"
 	},
 /obj/effect/floor_decal/corner/lightorange{
-	icon_state = "corner_white";
 	dir = 5
 	},
 /obj/effect/floor_decal/borderfloor/shifted{
-	icon_state = "borderfloor_shifted";
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange/border/shifted{
-	icon_state = "bordercolor_shifted";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4309,14 +4190,12 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-sec-cell1";
 	name = "Security Blast Doors";
 	opacity = 0
 	},
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -4479,7 +4358,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-sec-cell1";
 	name = "Security Blast Doors";
@@ -4498,9 +4376,7 @@
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
-	frequency = 1439;
 	pixel_x = 22;
-	pixel_y = 0;
 	report_danger_level = 0
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4561,8 +4437,7 @@
 /area/mothership/resleeving)
 "jt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4596,8 +4471,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4;
-	icon_state = "map"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4644,8 +4518,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -4679,9 +4552,7 @@
 	pixel_x = -32
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/sechallway)
@@ -4780,15 +4651,12 @@
 	},
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/borderfloor/shifted{
-	icon_state = "borderfloor_shifted";
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange{
-	icon_state = "corner_white";
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/lightorange/border/shifted{
-	icon_state = "bordercolor_shifted";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4797,19 +4665,15 @@
 /obj/structure/bed/padded,
 /obj/item/bedsheet,
 /obj/effect/floor_decal/borderfloor/shifted{
-	icon_state = "borderfloor_shifted";
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange{
-	icon_state = "corner_white";
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/lightorange/border/shifted{
-	icon_state = "bordercolor_shifted";
 	dir = 1
 	},
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4819,15 +4683,12 @@
 	id = "Cell M2"
 	},
 /obj/effect/floor_decal/borderfloor/shifted{
-	icon_state = "borderfloor_shifted";
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightorange{
-	icon_state = "corner_white";
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/lightorange/border/shifted{
-	icon_state = "bordercolor_shifted";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4848,14 +4709,12 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-sec-cell2";
 	name = "Security Blast Doors";
 	opacity = 0
 	},
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -4886,7 +4745,6 @@
 /area/mothership/warden)
 "jT" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -4958,10 +4816,7 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/storage/box/masks{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 3;
 	pixel_y = 4
@@ -5032,7 +4887,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-sec-cell2";
 	name = "Security Blast Doors";
@@ -5061,7 +4915,6 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	destroy_hits = 1000;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-sec-warden";
 	name = "Shuttle Blast Doors";
@@ -5157,8 +5010,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -5231,8 +5083,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8;
-	icon_state = "map"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
@@ -5344,7 +5195,6 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	destroy_hits = 1000;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-med-equip";
 	name = "Shuttle Blast Doors";
@@ -5380,8 +5230,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
@@ -5425,13 +5274,11 @@
 /area/mothership/dorm5)
 "kW" = (
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -5508,7 +5355,6 @@
 	},
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -5747,8 +5593,7 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
@@ -5782,14 +5627,14 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "lD" = (
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
@@ -5847,8 +5692,7 @@
 /obj/machinery/vending/nifsoft_shop{
 	categories = 111;
 	emagged = 1;
-	name = "Hacked NIFSoft Shop";
-	prices = list()
+	name = "Hacked NIFSoft Shop"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -5982,7 +5826,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ship-armory";
 	name = "Blast Doors Controls";
-	pixel_x = 0;
 	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -6024,8 +5867,7 @@
 /obj/item/tool/screwdriver,
 /obj/item/tool/wrench,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -6274,8 +6116,7 @@
 "mz" = (
 /obj/structure/reagent_dispensers/acid{
 	density = 0;
-	pixel_x = -30;
-	pixel_y = 0
+	pixel_x = -30
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
@@ -6304,8 +6145,7 @@
 /area/mothership/rnd)
 "mE" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/bridge)
@@ -6965,8 +6805,7 @@
 /obj/item/rig_module/device/orescanner,
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -7003,7 +6842,6 @@
 /obj/structure/closet/wardrobe/robotics_black,
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -7100,7 +6938,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7111,7 +6948,6 @@
 "oa" = (
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -7137,7 +6973,6 @@
 /area/mothership/armory)
 "oc" = (
 /obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 0;
 	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -7198,7 +7033,6 @@
 "oi" = (
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /obj/structure/bed/chair/bay/shuttle{
@@ -7219,7 +7053,6 @@
 "ok" = (
 /obj/machinery/turretid/lethal{
 	ailock = 1;
-	check_synth = 0;
 	check_weapons = 1;
 	control_area = /area/mothership/bridge;
 	name = "defense turret controls";
@@ -7244,7 +7077,6 @@
 /area/mothership/robotics)
 "op" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -7256,14 +7088,12 @@
 "oq" = (
 /obj/machinery/mech_recharger,
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/floor/bluegrid,
 /area/mothership/robotics)
 "or" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/floor/bluegrid,
@@ -7276,7 +7106,6 @@
 "ot" = (
 /obj/structure/ghost_pod/manual/lost_drone/dogborg,
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7290,14 +7119,12 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ship-mechbay-inner";
 	name = "Mech Bay Controls";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/robotics)
 "ov" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7305,8 +7132,7 @@
 "ox" = (
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -23;
-	pixel_y = 0
+	pixel_x = -23
 	},
 /obj/structure/closet/crate/bin,
 /turf/simulated/floor/tiled/techfloor,
@@ -7338,7 +7164,6 @@
 /obj/machinery/door/blast/regular{
 	density = 0;
 	destroy_hits = 1000;
-	dir = 1;
 	icon_state = "pdoor0";
 	id = "ship-holodeck";
 	name = "Shuttle Blast Doors";
@@ -7352,8 +7177,7 @@
 /area/mothership/holodeck)
 "oB" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/robotics)
@@ -7369,7 +7193,6 @@
 /area/mothership/robotics)
 "oF" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7400,8 +7223,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8;
-	icon_state = "map"
+	dir = 8
 	},
 /obj/machinery/porta_turret/industrial/teleport_defense{
 	auto_repair = 1;
@@ -7430,8 +7252,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4;
-	icon_state = "map"
+	dir = 4
 	},
 /obj/machinery/porta_turret/industrial/teleport_defense{
 	auto_repair = 1;
@@ -7489,7 +7310,6 @@
 /obj/machinery/mech_recharger,
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/bluegrid,
@@ -7509,17 +7329,14 @@
 "oR" = (
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28
 	},
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7544,7 +7361,6 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7595,7 +7411,6 @@
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7639,7 +7454,6 @@
 "pc" = (
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -7649,8 +7463,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7663,7 +7476,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -24
 	},
 /obj/structure/closet/secure_closet/personal,
@@ -7705,13 +7517,11 @@
 	id_tag = "ws_dock_6_pump"
 	},
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 1
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "ws_dock_6_sensor";
-	pixel_x = 0;
 	pixel_y = 25
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -7728,8 +7538,7 @@
 /area/mothership/telecomms1)
 "pt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -7745,14 +7554,12 @@
 /area/mothership/telecomms1)
 "pu" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /obj/machinery/access_button{
 	command = "cycle_interior";
@@ -7781,11 +7588,9 @@
 	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/cyan{
-	d1 = 0;
 	d2 = 4;
 	icon_state = "0-4"
 	},
@@ -7867,15 +7672,13 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	pixel_y = 0
+	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4;
-	icon_state = "map"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
@@ -7966,7 +7769,6 @@
 	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /obj/structure/cable/cyan{
@@ -7977,8 +7779,7 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms2)
@@ -7998,7 +7799,6 @@
 /area/mothership/telecomms2)
 "pR" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -8040,13 +7840,11 @@
 	id_tag = "ws_dock_3_pump"
 	},
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 1
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "ws_dock_3_sensor";
-	pixel_x = 0;
 	pixel_y = 25
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -8083,17 +7881,13 @@
 "pW" = (
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -23;
-	pixel_y = 0
+	pixel_x = -23
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms1)
@@ -8108,8 +7902,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms1)
@@ -8229,8 +8022,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms2)
@@ -8245,18 +8037,14 @@
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
-	frequency = 1439;
 	pixel_x = 22;
-	pixel_y = 0;
 	report_danger_level = 0
 	},
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms2)
@@ -8273,7 +8061,6 @@
 /area/mothership/telecomms1)
 "qw" = (
 /obj/effect/floor_decal/techfloor/orange{
-	icon_state = "techfloororange_edges";
 	dir = 10
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -8299,9 +8086,7 @@
 "qD" = (
 /obj/structure/undies_wardrobe,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/cryotube)
@@ -8332,8 +8117,7 @@
 "qH" = (
 /obj/machinery/vending/loadout/gadget,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/cryotube)
@@ -8401,7 +8185,6 @@
 	},
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
-	dir = 2;
 	name = "south bump";
 	pixel_y = -28;
 	req_access = list(67)
@@ -8423,7 +8206,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8451,12 +8233,10 @@
 	},
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -23;
-	pixel_y = 0
+	pixel_x = -23
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/steel_grid,
@@ -8472,7 +8252,6 @@
 	alarms_hidden = 1;
 	dir = 1;
 	name = "north bump";
-	pixel_x = 0;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -8491,7 +8270,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
-	icon_state = "corner_techfloor_grid";
 	dir = 6
 	},
 /obj/machinery/mech_recharger{
@@ -8515,7 +8293,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
-	icon_state = "corner_techfloor_grid";
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8568,8 +8345,7 @@
 /area/mothership/engineering)
 "rq" = (
 /obj/machinery/computer/station_alert/all{
-	dir = 8;
-	icon_state = "computer"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
@@ -8578,7 +8354,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
-	icon_state = "corner_techfloor_grid";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
@@ -8606,7 +8381,6 @@
 /area/mothership/engineering)
 "rx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
-	icon_state = "intact-supply";
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/powered/pump/filled,
@@ -8614,7 +8388,6 @@
 /area/mothership/engineering)
 "ry" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
-	icon_state = "intact-supply";
 	dir = 4
 	},
 /obj/machinery/space_heater,
@@ -8622,7 +8395,6 @@
 /area/mothership/engineering)
 "rz" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
-	icon_state = "intact-supply";
 	dir = 4
 	},
 /obj/machinery/pipedispenser/disposal/orderable,
@@ -8630,7 +8402,6 @@
 /area/mothership/engineering)
 "rA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
-	icon_state = "intact-supply";
 	dir = 4
 	},
 /obj/machinery/pipedispenser/orderable,
@@ -8638,7 +8409,6 @@
 /area/mothership/engineering)
 "rB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
-	icon_state = "intact-supply";
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -8646,7 +8416,6 @@
 /area/mothership/engineering)
 "rC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
-	icon_state = "intact-supply";
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/engineering_personal,
@@ -8654,7 +8423,6 @@
 /area/mothership/engineering)
 "rD" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/supply{
-	icon_state = "map-supply";
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/engineering_personal,
@@ -8696,7 +8464,6 @@
 /area/mothership/engineering)
 "rL" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	icon_state = "intact";
 	dir = 8
 	},
 /obj/machinery/atmospherics/binary/pump/high_power/on{
@@ -8764,7 +8531,6 @@
 /area/mothership/engineering)
 "rU" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	icon_state = "map";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -8781,8 +8547,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
@@ -8802,14 +8567,12 @@
 /obj/item/rcd_ammo,
 /obj/item/rig/ce/equipped,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rZ" = (
 /obj/effect/floor_decal/techfloor/orange{
-	icon_state = "techfloororange_edges";
 	dir = 10
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -8823,8 +8586,7 @@
 /area/mothership/telecomms2)
 "sb" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
@@ -8889,7 +8651,6 @@
 /area/mothership/engineering)
 "sj" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
-	icon_state = "map";
 	dir = 4
 	},
 /obj/machinery/meter,
@@ -8898,16 +8659,14 @@
 "sk" = (
 /obj/machinery/atmospherics/unary/freezer{
 	dir = 1;
-	icon_state = "freezer";
-	use_power = 0
+	icon_state = "freezer"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "sl" = (
 /obj/machinery/atmospherics/unary/heater{
 	dir = 1;
-	icon_state = "heater";
-	use_power = 0
+	icon_state = "heater"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
@@ -9097,8 +8856,7 @@
 /obj/item/clothing/head/hardhat/red,
 /obj/item/storage/toolbox/emergency,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4;
-	icon_state = "map"
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
@@ -9122,7 +8880,6 @@
 /area/mothership/engineering)
 "sB" = (
 /obj/machinery/atmospherics/binary/pump/on{
-	dir = 2;
 	target_pressure = 200
 	},
 /obj/machinery/light,
@@ -9173,14 +8930,12 @@
 	id_tag = "ws_dock_5_pump"
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "ws_dock_5_sensor";
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -9208,14 +8963,12 @@
 	id_tag = "ws_dock_4_pump"
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
 	id_tag = "ws_dock_4_sensor";
-	pixel_x = -25;
-	pixel_y = 0
+	pixel_x = -25
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -9288,7 +9041,6 @@
 /area/space)
 "tb" = (
 /obj/effect/floor_decal/techfloor/orange{
-	icon_state = "techfloororange_edges";
 	dir = 5
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -9335,8 +9087,7 @@
 /area/mothership/telecomms2)
 "tZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
@@ -9391,7 +9142,6 @@
 /area/mothership/telecomms1)
 "wm" = (
 /obj/effect/floor_decal/techfloor/orange{
-	icon_state = "techfloororange_edges";
 	dir = 6
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -9451,7 +9201,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -9471,9 +9220,7 @@
 	alarm_id = "anomaly_testing";
 	breach_detection = 0;
 	dir = 8;
-	frequency = 1439;
 	pixel_x = 22;
-	pixel_y = 0;
 	report_danger_level = 0
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9523,7 +9270,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/alarm{
 	dir = 4;
-	icon_state = "alarm0";
 	pixel_x = -22
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9595,7 +9341,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ship-dronehangar2";
 	name = "Drone Hangar Controls";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_one_access = list(101)
 	},
@@ -9617,7 +9362,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
-	icon_state = "corner_techfloor_grid";
 	dir = 6
 	},
 /obj/machinery/mech_recharger{
@@ -9628,7 +9372,6 @@
 /area/mothership/telecomms1)
 "Ch" = (
 /obj/effect/floor_decal/techfloor/orange{
-	icon_state = "techfloororange_edges";
 	dir = 6
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -9680,7 +9423,6 @@
 /area/mothership/breakroom)
 "DG" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -9690,7 +9432,6 @@
 /area/mothership/hallway)
 "DX" = (
 /obj/effect/floor_decal/techfloor/orange{
-	icon_state = "techfloororange_edges";
 	dir = 5
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -9720,7 +9461,6 @@
 /area/mothership/hallway)
 "Ex" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless{
@@ -9738,8 +9478,7 @@
 /area/mothership/telecomms2)
 "EG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
@@ -9777,7 +9516,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
-	icon_state = "corner_techfloor_grid";
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9808,8 +9546,7 @@
 /area/mothership/eva)
 "Ge" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms1)
@@ -9825,7 +9562,6 @@
 	req_one_access = list(101)
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -9835,7 +9571,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/corner_techfloor_grid{
-	icon_state = "corner_techfloor_grid";
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
@@ -9848,7 +9583,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /obj/structure/cable/cyan{
@@ -9888,7 +9622,6 @@
 	alarm_id = "pen_nine";
 	breach_detection = 0;
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -9921,8 +9654,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
@@ -9931,7 +9663,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ship-dronehangar1";
 	name = "Drone Hangar Controls";
-	pixel_x = 0;
 	pixel_y = -28;
 	req_one_access = list(101)
 	},
@@ -9952,7 +9683,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/alarm{
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -9971,7 +9701,6 @@
 /area/mothership/hallway)
 "Ox" = (
 /obj/effect/floor_decal/techfloor/orange{
-	icon_state = "techfloororange_edges";
 	dir = 9
 	},
 /obj/effect/floor_decal/corner_techfloor_grid,
@@ -10003,7 +9732,6 @@
 	req_one_access = list(101)
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -10052,7 +9780,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -10093,8 +9820,7 @@
 /area/mothership/telecomms1)
 "RP" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/machinery/firealarm{
 	dir = 8;
@@ -10141,15 +9867,13 @@
 	},
 /obj/machinery/alarm{
 	dir = 4;
-	icon_state = "alarm0";
 	pixel_x = -22
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "Sz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms2)
@@ -10171,8 +9895,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8;
-	icon_state = "map"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
@@ -10254,7 +9977,6 @@
 /area/mothership/processing)
 "TK" = (
 /obj/effect/floor_decal/techfloor/orange{
-	icon_state = "techfloororange_edges";
 	dir = 9
 	},
 /obj/effect/floor_decal/corner_techfloor_grid,
@@ -10262,8 +9984,7 @@
 /area/mothership/telecomms2)
 "Ux" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /obj/machinery/keycard_auth{
 	pixel_x = -28
@@ -10399,7 +10120,6 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -10443,8 +10163,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
