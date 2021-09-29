@@ -1,11 +1,19 @@
+/datum/category_item/catalogue/fauna/honkpet
+	name = "Clown Pet"
+	desc = "The Silence into Laughter program mass produces these excessively \
+	hardy animals for each member to raise and take care of. They often switch \
+	personalities when smacked."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/honkpet
 	name = "Hinkle"
-	desc = "The Silence into Laughter program mass produces these excessively hardy animals for each member to raise and take care of. They often switch personalities when smacked."
+	desc = ""
 	tt_desc = "Coulrian Honkus"
 	icon = 'icons/mob/animal_vr.dmi'
 	icon_state = "c_pet"
 	icon_living = "c_pet"
 	icon_dead = "c_pet_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/honkpet)
 
 	maxHealth = 1500
 	health = 1500

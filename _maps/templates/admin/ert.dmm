@@ -516,9 +516,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
 "es" = (
-/obj/structure/closet/crate{
-	dir = 2
-	},
+/obj/structure/closet/crate,
 /obj/item/ammo_magazine/m9mml/ap,
 /obj/item/ammo_magazine/m9mml/ap,
 /obj/item/ammo_magazine/m9mml/ap,
@@ -3084,18 +3082,18 @@
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/armoury_st)
 "xi" = (
@@ -4351,9 +4349,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_st)
 "FT" = (
-/obj/structure/closet/crate{
-	dir = 2
-	},
+/obj/structure/closet/crate,
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/armoury_st)
@@ -4895,8 +4891,7 @@
 /area/ship/ert/hallways)
 "Jx" = (
 /obj/item/perfect_tele_beacon{
-	tele_name = "NRB Robineau";
-	
+	tele_name = "NRB Robineau"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/ert_ship_boat)
@@ -5382,8 +5377,7 @@
 /area/ship/ert/armoury_st)
 "Mv" = (
 /obj/item/perfect_tele_beacon{
-	tele_name = "NRV Von Braun Teleporter Room";
-	
+	tele_name = "NRV Von Braun Teleporter Room"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/teleporter)

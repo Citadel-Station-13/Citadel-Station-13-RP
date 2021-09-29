@@ -1,9 +1,18 @@
+/datum/category_item/catalogue/technology/bot/cleanbot
+	name = "Bot - Cleanbot"
+	desc = "Cleanbots are little more than stabilized mop buckets \
+	on wheels, programmed with basic pathfinding abilities and onboard \
+	filth sensors. The cleanbot deploys its mop, utilizing a heavily concentrated\
+	Space Cleaner solution which will generally last it an entire shift."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/cleanbot
 	name = "Cleanbot"
 	desc = "A little cleaning robot, it looks so excited!"
 	icon_state = "cleanbot0"
 	req_one_access = list(access_robotics, access_janitor)
 	botcard_access = list(access_janitor)
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot)
 
 	locked = 0 // Start unlocked so roboticist can set them to patrol.
 	wait_if_pulled = 1

@@ -45,10 +45,10 @@
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
 /obj/item/clothing/suit/armor/pcarrier/blue/sol,
-/obj/item/clothing/head/helmet/solgov,
-/obj/item/clothing/head/helmet/solgov,
-/obj/item/clothing/head/helmet/solgov,
-/obj/item/clothing/head/helmet/solgov,
+/obj/item/clothing/head/helmet/oricon,
+/obj/item/clothing/head/helmet/oricon,
+/obj/item/clothing/head/helmet/oricon,
+/obj/item/clothing/head/helmet/oricon,
 /obj/item/clothing/accessory/storage/pouches/large/blue,
 /obj/item/clothing/accessory/storage/pouches/large/blue,
 /obj/item/clothing/accessory/storage/pouches/large/blue,
@@ -359,7 +359,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 8
 	},
 /obj/machinery/button/remote/blast_door{
@@ -371,8 +370,7 @@
 /area/shuttle/tabiranth)
 "al" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1;
-	icon_state = "map"
+	dir = 1
 	},
 /obj/machinery/suit_cycler{
 	density = 0;
@@ -385,7 +383,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /obj/machinery/button/remote/blast_door{
@@ -408,8 +405,7 @@
 "ao" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
@@ -438,7 +434,6 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
@@ -452,7 +447,6 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -492,8 +486,7 @@
 	start_pressure = 8559.63
 	},
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
@@ -555,7 +548,6 @@
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 1
 	},
 /obj/structure/handrail{
@@ -569,7 +561,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 8
 	},
 /obj/machinery/recharger/wallcharger{
@@ -651,7 +642,6 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 4
 	},
 /obj/machinery/recharger/wallcharger{
@@ -1095,9 +1085,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "bc" = (
-/obj/machinery/sleep_console{
-	dir = 8
-	},
+/obj/machinery/sleep_console,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "bd" = (
@@ -1107,8 +1095,7 @@
 	icon_state = "1-2"
 	},
 /obj/item/perfect_tele_beacon{
-	tele_name = "Tabiranth";
-	
+	tele_name = "Tabiranth"
 	},
 /obj/effect/floor_decal/industrial/hatch,
 /turf/simulated/floor/tiled/white,
@@ -1522,8 +1509,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/atm,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1536,8 +1522,7 @@
 	req_access = list(101)
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /obj/machinery/recharger,
 /obj/item/modular_computer/laptop/preset/custom_loadout/elite,
@@ -1549,7 +1534,6 @@
 	frequency = 1380
 	},
 /obj/machinery/light/small{
-	icon_state = "bulb1";
 	dir = 1
 	},
 /obj/machinery/airlock_sensor{
@@ -1573,20 +1557,17 @@
 /area/shuttle/tabiranth)
 "bu" = (
 /obj/machinery/computer/ship/engines{
-	dir = 8;
-	icon_state = "computer"
+	dir = 8
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bv" = (
 /obj/structure/medical_stand,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
@@ -1610,14 +1591,12 @@
 	density = 0
 	},
 /obj/effect/floor_decal/techfloor{
-	icon_state = "techfloor_edges";
 	dir = 6
 	},
 /obj/machinery/vending/nifsoft_shop{
 	categories = 111;
 	emagged = 1;
-	name = "Hacked NIFSoft Shop";
-	prices = list()
+	name = "Hacked NIFSoft Shop"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
@@ -1647,7 +1626,6 @@
 "bC" = (
 /obj/machinery/organ_printer/flesh/full,
 /obj/structure/sink/kitchen{
-	icon_state = "sink_alt";
 	dir = 4;
 	pixel_x = -13
 	},

@@ -156,7 +156,7 @@
 					prob(7);/obj/item/gun/projectile/automatic/sts35,\
 					prob(7);/obj/item/gun/projectile/automatic/z8,\
 					prob(7);/obj/item/gun/energy/gun/burst,\
-					prob(7);/obj/item/gun/projectile/shotgun/pump/USDF,\
+					prob(7);/obj/item/gun/projectile/shotgun/pump/JSDF,\
 					prob(7);/obj/item/gun/projectile/deagle,\
 					prob(7);/obj/item/gun/launcher/grenade,\
 				/*	prob(6);/obj/item/gun/projectile/SVD,\*/

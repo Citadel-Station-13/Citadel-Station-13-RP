@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/silicon/pai
+	name = "Silicons - pAI"
+	desc = "There remains some dispute over whether the 'p' stands \
+	for 'pocket', 'personal', or 'portable'. Regardless, the pAI is a \
+	modern marvel. Consumer grade Artificial Intelligence, many pAI are \
+	underclocked or sharded versions of larger Intelligence matrices. \
+	Some, in fact, are splintered and limited copies of organic brain states."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/silicon/pai
 	name = "pAI"
 	icon = 'icons/mob/pai.dmi'
@@ -6,6 +15,8 @@
 	emote_type = 2		// pAIs emotes are heard, not seen, so they can be seen through a container (eg. person)
 	pass_flags = 1
 	mob_size = MOB_SMALL
+
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/pai)
 
 	holder_type = /obj/item/holder/pai
 

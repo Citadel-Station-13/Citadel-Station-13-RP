@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/brain/robotic
+	name = "Heuristics - Robotic"
+	desc = "Referred to as Intelligence Circuits, the complexity of these \
+	chips is obfuscted by such simple language. RICs are self contained environments \
+	hosting Artificial Intelligences. Although superficially similar to Positronic \
+	brains, in reality they ethos and process behind creating these kinds of processors \
+	is significantly different."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /obj/item/mmi/digital/robot
 	name = "robotic intelligence circuit"
 	desc = "The pinnacle of artifical intelligence which can be achieved using classical computer science."
@@ -5,6 +14,7 @@
 	icon_state = "mainboard"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_DATA = 4)
+	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/robotic)
 
 /obj/item/mmi/digital/robot/Initialize(mapload)
 	. = ..()

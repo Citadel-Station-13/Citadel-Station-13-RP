@@ -342,7 +342,7 @@
 
 /datum/gear/restricted/security/uniform/turtleneck/alt
 	display_name = "Security Turtleneck - Alternative"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/security
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/security
 
 /datum/gear/restricted/security/uniform/turtleneck/hos
 	display_name = "Head of Security Turtleneck"
@@ -360,11 +360,11 @@
 
 /datum/gear/restricted/security/uniform/coveralls
 	display_name = "Security Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/security
+	path = /obj/item/clothing/under/oricon/utility/fleet/security
 
 /datum/gear/restricted/security/uniform/fatigues
 	display_name = "Security Uniform - Fatigues" //You marine larper.
-	path = /obj/item/clothing/under/solgov/utility/marine/security
+	path = /obj/item/clothing/under/oricon/utility/marine/security
 
 /datum/gear/restricted/security/uniform/dispatch
 	display_name = "Security Uniform - Dispatch"
@@ -504,15 +504,15 @@
 
 /datum/gear/restricted/medical/uniform/turtleneck/alt
 	display_name = "Medical Turtleneck - Alternative"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/medical
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/medical
 
 /datum/gear/restricted/medical/uniform/coveralls
 	display_name = "Medical Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/medical
+	path = /obj/item/clothing/under/oricon/utility/fleet/medical
 
 /datum/gear/restricted/medical/uniform/fatigues
 	display_name = "Medical Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/medical
+	path = /obj/item/clothing/under/oricon/utility/marine/medical
 
 /datum/gear/restricted/medical/uniform/paramedic
 	display_name = "Medical Uniform - Paramedic Light"
@@ -656,15 +656,15 @@
 
 /datum/gear/restricted/engineering/uniform/turtleneck/alt
 	display_name = "Engineering Turtleneck - Alt"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/engineering
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/engineering
 
 /datum/gear/restricted/engineering/uniform/coveralls
 	display_name = "Engineering Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/engineering
+	path = /obj/item/clothing/under/oricon/utility/fleet/engineering
 
 /datum/gear/restricted/engineering/uniform/fatigues
 	display_name = "Engineering Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/engineering
+	path = /obj/item/clothing/under/oricon/utility/marine/engineering
 
 //Suit
 /datum/gear/restricted/engineering/suit/wintercoat
@@ -766,15 +766,15 @@
 
 /datum/gear/restricted/supply/uniform/turtleneck
 	display_name = "Cargo Turtleneck"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/supply
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/supply
 
 /datum/gear/restricted/supply/uniform/coveralls
 	display_name = "Cargo Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/supply
+	path = /obj/item/clothing/under/oricon/utility/fleet/supply
 
 /datum/gear/restricted/supply/uniform/fatigues
 	display_name = "Cargo Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/supply
+	path = /obj/item/clothing/under/oricon/utility/marine/supply
 
 //Suit
 /datum/gear/restricted/supply/suit/snowsuit
@@ -861,15 +861,15 @@
 
 /datum/gear/restricted/science/uniform/turtleneck/alt
 	display_name = "Science Turtleneck - Alt"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/research
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/research
 
 /datum/gear/restricted/science/uniform/coveralls
 	display_name = "Science Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/exploration
+	path = /obj/item/clothing/under/oricon/utility/fleet/exploration
 
 /datum/gear/restricted/science/uniform/fatigues
 	display_name = "Science Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/exploration
+	path = /obj/item/clothing/under/oricon/utility/marine/exploration
 
 
 //Suit
@@ -952,7 +952,7 @@
 //Uniform
 /datum/gear/restricted/command/uniform/coveralls
 	display_name = "Command Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/command
+	path = /obj/item/clothing/under/oricon/utility/fleet/command
 
 /datum/gear/restricted/command/uniform/hop_dress
 	display_name = "Head of Personnel Uniform - Dress"
@@ -971,7 +971,7 @@
 
 /datum/gear/restricted/command/uniform/turtleneck
 	display_name = "Command Uniform - Turtleneck"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/officer/crew
+	path = /obj/item/clothing/under/oricon/utility/sysguard/officer/crew
 
 /datum/gear/restricted/command/uniform/bridge_officer
 	display_name = "Bridge Officer Uniform"
@@ -985,7 +985,7 @@
 
 /datum/gear/restricted/command/uniform/fatigues
 	display_name = "Command Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/command
+	path = /obj/item/clothing/under/oricon/utility/marine/command
 
 /datum/gear/restricted/command/uniform/bodysuit
 	display_name = "Command Bodysuit"
