@@ -127,7 +127,7 @@
 						/obj/item/storage/fancy/cigar/havana,
 						/obj/item/storage/fancy/cigar/cohiba,
 						/obj/item/storage/fancy/cigar/taj,
-						/obj/item/storage/fancy/cigar/taj/premium
+						/obj/item/storage/fancy/cigar/taj/premium,
 						/obj/item/xenos_claw,
 						/obj/random/contraband,
 						/obj/random/contraband,
