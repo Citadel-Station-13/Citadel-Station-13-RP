@@ -1,4 +1,0 @@
-author: "rpilcrow"
-delete-after: True
-changes: 
-  - bugfix: "Fixed 'sticky limb' bug in the character creation preview. Prosthetic/Amputated limb states won't end up stuck."
