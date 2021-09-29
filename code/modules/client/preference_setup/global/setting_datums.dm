@@ -363,3 +363,8 @@ datum/client_preference/debug/age_verified
 	enabled_description = "Show"
 	disabled_description = "Hide"
 
+/datum/client_preference/widescreen
+	description = "Use Widescreen"
+	key = "USE_WIDESCREEN"
+	enabled_description = "Show"
+	disabled_description = "Hide"

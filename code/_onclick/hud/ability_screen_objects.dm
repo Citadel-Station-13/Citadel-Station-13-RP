@@ -179,7 +179,7 @@
 	if(ability_master)
 		ability_master.toggle_open(1)
 		client.screen -= ability_master
-	if(client) //Widescreen enabling
+	if(client && client.is_preference_enabled(/datum/client_preference/widescreen)) // Let's give us widescreen again and again, should we want it.
 		if(client.view_size)
 			client.view_size.resetToDefault() // Resets the client.view in case it was changed.
 		else

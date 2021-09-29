@@ -800,3 +800,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	window_flash(src)
 	src << browse(message,"window=dropmessage;size=480x360;can_close=1")
 	qdel(src)
+
+/client/verb/set_widescreen()
+	set name = "Change to Widescreen"
+	set category = "OOC"
+	set desc = "Makes your view 21x15"
+	var/new_size = "21x15"
+	change_view(new_size)
+
+/client/verb/set_boxratio()
+	set name = "Change to 1 by 1 ratio"
+	set category = "OOC"
+	set desc = "Makes your view 15x15 (old)"
+	var/new_size = "15x15"
+	change_view(new_size)
