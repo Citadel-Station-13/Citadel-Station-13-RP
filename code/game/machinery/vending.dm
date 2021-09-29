@@ -770,12 +770,12 @@
 	products = list(/obj/item/reagent_containers/food/snacks/candy = 6,/obj/item/reagent_containers/food/drinks/dry_ramen = 6,/obj/item/reagent_containers/food/snacks/chips =6,
 					/obj/item/reagent_containers/food/snacks/sosjerky = 6,/obj/item/reagent_containers/food/snacks/no_raisin = 6,/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6, /obj/item/reagent_containers/food/snacks/tastybread = 6, /obj/item/reagent_containers/food/snacks/skrellsnacks = 3,
-					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6)
+					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6,/obj/item/reagent_containers/food/snacks/unajerky = 6,)
 	prices = list(/obj/item/reagent_containers/food/snacks/candy = 1,/obj/item/reagent_containers/food/drinks/dry_ramen = 5,/obj/item/reagent_containers/food/snacks/chips = 1,
 					/obj/item/reagent_containers/food/snacks/sosjerky = 2,/obj/item/reagent_containers/food/snacks/no_raisin = 1,/obj/item/reagent_containers/food/snacks/spacetwinkie = 1,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 1, /obj/item/reagent_containers/food/snacks/tastybread = 2, /obj/item/reagent_containers/food/snacks/skrellsnacks = 4,
-					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6)
+					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6)
 
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
@@ -930,7 +930,8 @@
 	req_access = list(access_security)
 	products = list(/obj/item/handcuffs = 8,/obj/item/grenade/flashbang = 4,/obj/item/flash = 5,
 					/obj/item/reagent_containers/food/snacks/donut/normal = 12,/obj/item/storage/box/evidence = 6,
-					/obj/item/gun/projectile/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6)
+					/obj/item/gun/projectile/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6, /obj/item/clothing/mask/gas/half = 6,
+					/obj/item/hailer = 6, /obj/item/flashlight/glowstick = 6)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/box/donut = 2)
 	req_log_access = access_armory
 	has_logs = 1
@@ -958,9 +959,9 @@
 					/obj/item/seeds/cornseed = 3, /obj/item/seeds/eggplantseed = 3, /obj/item/seeds/potatoseed = 3, /obj/item/seeds/replicapod = 3,/obj/item/seeds/soyaseed = 3,
 					/obj/item/seeds/sunflowerseed = 3,/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/towermycelium = 3,/obj/item/seeds/wheatseed = 3,/obj/item/seeds/appleseed = 3,
 					/obj/item/seeds/poppyseed = 3,/obj/item/seeds/sugarcaneseed = 3,/obj/item/seeds/ambrosiavulgarisseed = 3,/obj/item/seeds/peanutseed = 3,/obj/item/seeds/whitebeetseed = 3,/obj/item/seeds/watermelonseed = 3,/obj/item/seeds/lavenderseed = 3,/obj/item/seeds/limeseed = 3,
-					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2, , /obj/item/seeds/eroot = 2,
+					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2, ,
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3)
-	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2, /obj/item/seeds/eroot = 2,
+	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
 					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2)
 	premium = list(/obj/item/toy/waterflower = 1)
 
@@ -1793,6 +1794,7 @@
 					/obj/item/clothing/under/dress/maid = 5,
 					/obj/item/clothing/under/dress/maid/sexy = 5,
 					/obj/item/clothing/under/dress/maid/janitor = 5,
+					/obj/item/clothing/head/headband/maid = 5,
 					/obj/item/clothing/under/kamishimo = 5,
 					/obj/item/clothing/under/kimono = 5,
 					/obj/item/clothing/under/kimono_black = 5,
@@ -1922,6 +1924,7 @@
 					/obj/item/storage/box/fluff/swimsuit/medical = 5,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 5,
 					/obj/item/storage/box/fluff/swimsuit/captain = 5,
+					/obj/item/storage/box/fluff/swimsuit/highclass = 5,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
@@ -1992,6 +1995,7 @@
 					/obj/item/clothing/under/dress/maid = 25,
 					/obj/item/clothing/under/dress/maid/sexy = 25,
 					/obj/item/clothing/under/dress/maid/janitor = 25,
+					/obj/item/clothing/head/headband/maid = 5,
 					/obj/item/clothing/under/kamishimo = 25,
 					/obj/item/clothing/under/kimono = 25,
 					/obj/item/clothing/under/kimono_black = 25,
@@ -2121,6 +2125,7 @@
 					/obj/item/storage/box/fluff/swimsuit/medical = 25,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 25,
 					/obj/item/storage/box/fluff/swimsuit/captain = 25,
+					/obj/item/storage/box/fluff/swimsuit/highclass = 25,
 					/obj/item/clothing/under/utility = 25,
 					/obj/item/clothing/under/utility/grey = 25,
 					/obj/item/clothing/under/utility/blue = 25,
