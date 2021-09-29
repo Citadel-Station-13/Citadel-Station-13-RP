@@ -254,6 +254,14 @@
 		Z_LEVEL_UNDERDARK
 	)
 
+	levels_for_distress = list(
+		Z_LEVEL_OFFMAP1,
+		Z_LEVEL_BEACH,
+		Z_LEVEL_AEROSTAT,
+		Z_LEVEL_DEBRISFIELD,
+		Z_LEVEL_FUELDEPOT
+		)
+
 //Port of Triumph Overmap Visitable Effects
 /obj/effect/overmap/visitable/sector/debrisfield
 	name = "Debris Field"

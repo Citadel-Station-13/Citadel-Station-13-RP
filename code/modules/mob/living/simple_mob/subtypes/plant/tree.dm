@@ -1,3 +1,10 @@
+/datum/category_item/catalogue/fauna/tree
+	name = "Space Tree"
+	desc = "Presumed to be a distant cousin of Mimics, these hostile 'trees' are, \
+	in actuality, a predatory alien creature. Originating from a heavily forested tundra, \
+	this species has adapted to appear almost indistinguishable from trees in its environment."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/space/tree
 	name = "pine tree"
 	desc = "A pissed off tree-like alien. It seems annoyed with the festivities..."
@@ -7,6 +14,7 @@
 	icon_living = "pine_1"
 	icon_dead = "pine_1"
 	icon_gib = "pine_1"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/tree)
 
 	mob_class = MOB_CLASS_PLANT
 

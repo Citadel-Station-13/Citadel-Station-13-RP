@@ -106,13 +106,13 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 		if(6)	//Jun
 			switch(DD)
 				if(6)
-					Holiday["Sapient Rights Day"] = "This holiday celebrates the passing of the Declaration of Sapient Rights by SolGov, which guarantees the \
+					Holiday["Sapient Rights Day"] = "This holiday celebrates the passing of the Declaration of Sapient Rights by OriCon, which guarantees the \
 					same protections humans are granted to all sapient, living species."
 				if(14)
 					Holiday["Blood Donor Day"] = "This holiday was created to raise awareness of the need for safe blood and blood products, \
 					and to thank blood donors for their voluntary, life-saving gifts of blood."
 				if(20)
-					Holiday["Civil Servant's Day"] = "Civil Servant's Day is a holiday observed in SCG member states that honors civil servants everywhere,\
+					Holiday["Civil Servant's Day"] = "Civil Servant's Day is a holiday observed in OCG member states that honors civil servants everywhere,\
 +					(especially those who are members of the armed forces and the emergency services), or have been or have been civil servants in the past."
 
 		if(7)	//Jul
@@ -182,7 +182,7 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 				if(10)
 					Holiday["Human-Rights Day"] = "An old holiday created by an intergovernmental organization known back than as the United Nations, \
 					human rights were not recognized globally at the time, and the holiday was made in honor of the Universal Declaration of Human Rights.  \
-					These days, SolGov ensures that past efforts were not in vein, and continues to honor this holiday across the galaxy."
+					These days, OriCon ensures that past efforts were not in vain, and continues to honor this holiday across the galaxy."
 				if(22)
 					Holiday["Vertalliq-qixim"] = "A Skrellian holiday that celebrates the Skrell's first landing on one of \
 					their moons.  It's often celebrated with grand festivals."

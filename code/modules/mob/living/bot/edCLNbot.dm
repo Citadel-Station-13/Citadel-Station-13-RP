@@ -1,9 +1,19 @@
+/datum/category_item/catalogue/technology/bot/cleanbot/edCLN
+	name = "Bot - ED CLN"
+	desc = "ED CLN units are the end result of a marketing campaign designed \
+	to change the ED series robot's public image. Although marginally successful, \
+	design flaws in the ED chassis - including its difficulty traversing stairwells, \
+	its size, and the complexity of its mechanisms made it an inferior choice in \
+	comparison to the more compact cleanbot."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/cleanbot/edCLN
 	name = "ED-CLN Cleaning Robot"
 	desc = "A large cleaning robot. It looks rather efficient."
 	icon_state = "edCLN0"
 	req_one_access = list(access_robotics, access_janitor)
 	botcard_access = list(access_janitor, access_maint_tunnels)
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot/edCLN)
 
 	locked = 0 // Start unlocked so roboticist can set them to patrol.
 	wait_if_pulled = 0 // One big boi.

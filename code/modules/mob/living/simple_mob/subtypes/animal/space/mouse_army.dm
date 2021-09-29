@@ -1,3 +1,29 @@
+/datum/category_item/catalogue/fauna/mouse_army
+	name = "R.A.T.S."
+	desc = "First observed in limited engagements during the Phoron Wars, \
+	Rodents of Abnormal Technical Sophistication are the product of Donk Co \
+	research initiatives. Originally designed to serve as covert reconnaissance \
+	and surveilance drones, the project quickly ballooned into a mobile force of \
+	armored, mechanized rodents. The project failed spectacularly due to budgetary \
+	and efficacy reasons. Recently, however, R.A.T.S. assets have been utilized by \
+	an unidentified entity for as-yet-unknown purposes."
+	value = CATALOGUER_REWARD_EASY
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/mouse_army)
+
+// Obtained by scanning all R.A.T.S.
+/datum/category_item/catalogue/fauna/all_mouse_army
+	name = "Collection - R.A.T.S."
+	desc = "You have scanned a large array of different types of R.A.T.S., \
+	and therefore you have been granted a large sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_HARD
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/mouse_army/operative,
+		/datum/category_item/catalogue/fauna/mouse_army/pyro,
+		/datum/category_item/catalogue/fauna/mouse_army/ammo,
+		/datum/category_item/catalogue/fauna/mouse_army/stealth
+		)
+
 /mob/living/simple_mob/animal/space/mouse_army
 	name = "mouse"
 	real_name = "mouse"
@@ -116,11 +142,22 @@
 
 //Base ported from vgstation. Operative Mice.
 //Icon artists: DeityLink and plosky1
+
+/datum/category_item/catalogue/fauna/mouse_army/operative
+	name = "R.A.T.S. - Operative"
+	desc = "The baseline unit of a R.A.T.S. team, the Operative was designed \
+	to move covertly through tunnel systems. Except for the implanted nano-RIG \
+	grafted to their spines, these mice are meant to appear normal when not activated. \
+	When active, the miniaturized hardsuit deploys around the mouse and engages its \
+	onboard control programming, which fully takes over the rodent's body."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/animal/space/mouse_army/operative
 	name = "operative mouse"
 	desc = "Where did it get that? Oh no..."
 	tt_desc = "E Mus sinister"
 	rank = "operative"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/operative)
 
 	shock_resist = 1
 	armor = list(
@@ -133,11 +170,20 @@
 				"rad" = 100)	//Mercenary Voidsuit Resistances, slightly downscaled, due to size.
 
 //Pyro Mouse
+
+/datum/category_item/catalogue/fauna/mouse_army/pyro
+	name = "R.A.T.S. - Pyro"
+	desc = "Designed to serve as miniature sabotage units, Pyro\
+	mice are saddled with a purpose-built fuel tank and projector \
+	system. Managed by the onboard control program, the unit's size \
+	makes it prone to catastrophic rupturing in the field."
+	value = CATALOGUER_REWARD_MEDIUM
 /mob/living/simple_mob/animal/space/mouse_army/pyro
 	name = "pyro mouse"
 	desc = "What kind of madman would strap this to a mouse?"
 	tt_desc = "E Mus phlogiston"
 	rank = "pyro"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/pyro)
 
 	maxHealth = 30
 	health = 30
@@ -194,11 +240,22 @@
 	return
 
 //Ammo Mouse
+
+/datum/category_item/catalogue/fauna/mouse_army/ammo
+	name = "R.A.T.S. - Ammo Bearer"
+	desc = "Ammo Bearing operative mice have sometimes been \
+	observed in the field, serving as logistical support to the \
+	exotic tanks sometimes fielded by R.A.T.S. forces. Due to the \
+	size of their armaments, these mice are vulnerable to violently \
+	exploding if their supplies cook off."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/animal/space/mouse_army/ammo
 	name = "ammo mouse"
 	desc = "Aww! It's carrying a bunch of tiny bullets!"
 	tt_desc = "E Mus tela"
 	rank = "ammo"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/ammo)
 
 	maxHealth = 30
 	health = 30
@@ -251,11 +308,23 @@
 			qdel(src)
 	return ..()
 
+
+/datum/category_item/catalogue/fauna/mouse_army/stealth
+	name = "R.A.T.S. - Stealth"
+	desc = "Stealth operatives carry shockingly expensive integrated \
+	gear. Cloaking a rodent is less energy intensive at full scale, \
+	but to make the technology miniaturized and portable like this reveals \
+	how inflated the project's budget was. Even with such advanced technology, \
+	simple movements or attacks were too much for this miniaturized cloak \
+	to bear, providing its one major vulnerability."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/animal/space/mouse_army/stealth
 	name = "stealth mouse"
 	desc = "I bet you thought the normal ones were scary!"
 	tt_desc = "E Mus insidiis"
 	rank = "stealth"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/stealth)
 
 	//Mob melee settings
 	melee_damage_lower = 15

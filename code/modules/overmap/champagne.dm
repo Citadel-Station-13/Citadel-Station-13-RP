@@ -13,7 +13,7 @@
 	attack_verb = list("attacked", "bonked", "hit")
 	var/min_name_len = 4		// Refuse if shuttle tag is shorter than this.
 	var/max_name_len = 32		// Refuse if shuttle tag is longer than this.
-	var/max_area_turfs = 256	// Refuse if area has more than this many turfs.
+	var/max_area_turfs = 140	// Refuse if area has more than this many turfs.
 
 /obj/item/champagne/afterattack(var/atom/A, mob/user as mob, proximity)
 	if(!proximity)

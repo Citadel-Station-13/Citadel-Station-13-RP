@@ -337,7 +337,7 @@ obj/item/clothing/suit/kamishimo
 
 /obj/item/clothing/suit/customs
 	name = "customs jacket"
-	desc = "A standard SolGov Customs formal jacket."
+	desc = "A standard OriCon Customs formal jacket."
 	icon_state = "customs_jacket"
 	item_state_slots = list(slot_r_hand_str = "suit_blue", slot_l_hand_str = "suit_blue")
 	flags_inv = HIDEHOLSTER

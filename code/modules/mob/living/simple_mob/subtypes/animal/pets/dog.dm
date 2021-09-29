@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/dog
+	name = "Dog"
+	desc = "Canines have been a consistent companion of Humanity for \
+	tens of thousands of years. Descended from Wolves, a larger pack \
+	animal, the modern canine was selectively bred down into its modern \
+	role. Trained to assist with hunting, rescue, or security, dogs have \
+	gone on to be regarded as true friends by many Humans."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/dog
 	name = "dog"
 	real_name = "dog"
@@ -6,6 +15,7 @@
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/dog)
 
 	health = 20
 	maxHealth = 20

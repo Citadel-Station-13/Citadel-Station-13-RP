@@ -11,7 +11,7 @@
 /datum/map_template/admin_use/salamander_trader
 	name = "Special Area - Salamander Trader"
 	desc = "Modest trader ship."
-	mappath = "_maps/templates/shuttles/overmaps/tether/salamander.dmm"
+	mappath = "_maps/templates/shuttles/overmaps/generic/salamander.dmm"
 
 /datum/map_template/admin_use/mercenary
 	name = "Special Area - Merc Ship"

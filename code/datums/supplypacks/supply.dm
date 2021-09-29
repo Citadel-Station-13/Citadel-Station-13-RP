@@ -43,6 +43,7 @@
 			/obj/item/lightreplacer,
 			/obj/item/reagent_containers/spray/cleaner,
 			/obj/item/reagent_containers/glass/rag,
+			/obj/item/reagent_containers/spray/pestbgone,
 			/obj/item/grenade/chem_grenade/cleaner = 3,
 			/obj/structure/mopbucket
 			)
@@ -115,12 +116,14 @@
 	containername = "Shaft miner equipment"
 	access = access_mining
 
+/* //MULE Bots can't traverse the Tether.
 /datum/supply_pack/supply/mule
 	name = "Mulebot Crate"
 	contains = list()
 	cost = 20
 	containertype = /obj/structure/largecrate/animal/mulebot
 	containername = "Mulebot Crate"
+*/
 
 /datum/supply_pack/supply/cargotrain
 	name = "Cargo Train Tug"
