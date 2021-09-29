@@ -4087,6 +4087,11 @@ End Citadel Change */
 	name = "Corn Oil"
 	id = "cornoil"
 	description = "An oil derived from various types of corn."
+	
+/datum/reagent/nutriment/triglyceride/oil/tallow
+	name = "Tallow"
+	id = "tallow"
+	description = "An liquidized form of animal fat, useful for adding that extra heart stopping potential to any of your deep fried food products."
 
 //Protein! Get your mind out of the gutter.
 /datum/reagent/nutriment/protein // Bad for Skrell!
