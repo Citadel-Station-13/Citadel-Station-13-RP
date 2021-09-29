@@ -37,7 +37,7 @@
 ////////////////////////////////////////////////////////////
 // For general use
 /obj/item/gun/projectile/automatic/battlerifle
-	name = "\improper USDF service rifle"
+	name = "\improper JSDF service rifle"
 	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I have brought this motivational device! Uses 9.5x40mm rounds."
 	icon_state = "battlerifle"
 	icon_override = 'icons/obj/gun/ballistic.dmi'
@@ -56,8 +56,8 @@
 	one_handed_penalty = 60 // The weapon itself is heavy
 
 // For general use
-/obj/item/gun/projectile/shotgun/pump/USDF
-	name = "\improper USDF tactical shotgun"
+/obj/item/gun/projectile/shotgun/pump/JSDF
+	name = "\improper JSDF tactical shotgun"
 	desc = "All you greenhorns who wanted to see Xenomorphs up close... this is your lucky day. Uses 12g rounds."
 	icon_state = "haloshotgun"
 	icon_override = 'icons/obj/gun/ballistic.dmi'
