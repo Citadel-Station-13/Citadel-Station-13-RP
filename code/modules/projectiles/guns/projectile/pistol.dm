@@ -68,6 +68,11 @@
 		to_chat(M, "Your gun is now sprited as [choice]. Say hello to your new friend.")
 		return 1
 
+/obj/item/gun/projectile/colt/taj
+	name = "Adhomai Pistol"
+	desc = "The Adar'Mazy pistol, produced by the Hadii-Wrack group. This pistol is the primary sidearm for low ranking officers and officals in the People's Republic of Adhomai."
+	icon_state = "colt-taj"
+
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
 /obj/item/gun/projectile/colt/detective/attack_hand(var/mob/living/user)
 	if(!unique_reskin && loc == user)
@@ -153,6 +158,11 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .44 rounds."
 	icon_state = "deaglecamo"
 	item_state = "deagleg"
+
+/obj/item/gun/projectile/deagle/taj
+	name = "Adhomai Hand Cannon"
+	desc = "The Nal'dor heavy pistol, a powerful Hadii-Wrack group handcannon that has gained an infamous reputation through its use by Commissars of the People's Republic of Adhomai."
+	icon_state = "deagle-taj"
 
 /obj/item/gun/projectile/gyropistol // Does this even appear anywhere outside of admin abuse?
 	name = "gyrojet pistol"
@@ -324,16 +334,15 @@
 
 /obj/item/gun/projectile/p92x/sec
 	magazine_type = /obj/item/ammo_magazine/m9mm/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
 
 //Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
 /*
-/obj/item/gun/projectile/p92x/large/licensed
+/obj/item/gun/projectile/p92x/large/preban
 	icon_state = "p92x-brown"
-	magazine_type = /obj/item/ammo_magazine/m9mm/large/licensed // Spawns with big magazines that are legal.
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban // Spawns with big magazines that are legal.
 
-/obj/item/gun/projectile/p92x/large/licensed/hp
-	magazine_type = /obj/item/ammo_magazine/m9mm/large/licensed/hp // Spawns with legal hollow-point mag
+/obj/item/gun/projectile/p92x/large/preban/hp
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban/hp // Spawns with legal hollow-point mag
 */
 
 /obj/item/gun/projectile/p92x/brown
