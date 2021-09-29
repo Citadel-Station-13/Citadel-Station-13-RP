@@ -84,7 +84,7 @@
 		)
 
 	color_mult = 1
-	icobase = 'icons/mob/human_races/subspecies/r_human_vr.dmi'
+	icobase = 'icons/mob/human_races/r_human_vr.dmi'
 	//icobase = 'icons/mob/human_races/subspecies/r_vatgrown.dmi'
 	//Icon base needs Greyscaleing
 	spawn_flags = SPECIES_CAN_JOIN
