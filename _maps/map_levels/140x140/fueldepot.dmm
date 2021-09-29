@@ -71,8 +71,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
 	dir = 10
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/obj/effect/floor_decal/plaque{
+	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
+	name = "Payment Information"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "ah" = (
 /obj/machinery/atmospherics/portables_connector/fuel{
@@ -455,8 +458,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 6
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/obj/effect/floor_decal/plaque{
+	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
+	name = "Payment Information"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "bh" = (
 /obj/machinery/atmospherics/binary/pump/aux{
@@ -960,8 +966,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 9
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/obj/effect/floor_decal/plaque{
+	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
+	name = "Payment Information"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "ch" = (
 /obj/structure/railing{
@@ -1159,8 +1168,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
 	dir = 5
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor/airless,
+/obj/effect/floor_decal/plaque{
+	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
+	name = "Payment Information"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cE" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/aux{
@@ -1228,6 +1240,10 @@
 /obj/effect/catwalk_plated/dark,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
+"dX" = (
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled/techmaint/airless,
+/area/tether_away/fueldepot)
 "es" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -1258,14 +1274,6 @@
 /obj/item/tool/wrench,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
-"kJ" = (
-/obj/machinery/vending/sovietsoda,
-/turf/simulated/floor/tiled/techmaint/airless,
-/area/tether_away/fueldepot)
-"nR" = (
-/obj/machinery/vending/cigarette,
-/turf/simulated/floor/tiled/techmaint/airless,
-/area/tether_away/fueldepot)
 "om" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 8
@@ -1287,13 +1295,12 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/fuel,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
-"so" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/cash_register/trader{
-	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
-	dir = 4;
-	name = "Fuel Depot Register"
-	},
+"ym" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/techmaint/airless,
+/area/tether_away/fueldepot)
+"yR" = (
+/obj/machinery/vending/sovietsoda,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "BA" = (
@@ -1324,15 +1331,6 @@
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
-/area/tether_away/fueldepot)
-"EV" = (
-/obj/structure/table/steel_reinforced,
-/obj/machinery/cash_register/trader{
-	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
-	dir = 1;
-	name = "Fuel Depot Register"
-	},
-/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "FK" = (
 /obj/structure/table/rack/shelf/steel,
@@ -1372,20 +1370,34 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
-"QB" = (
-/obj/machinery/vending/snack,
-/turf/simulated/floor/tiled/techmaint/airless,
-/area/tether_away/fueldepot)
-"TA" = (
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/tiled/techmaint/airless,
-/area/tether_away/fueldepot)
 "Vy" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/airless,
+/area/tether_away/fueldepot)
+"Xl" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/cash_register/trader{
+	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
+	dir = 1;
+	name = "Fuel Depot Register"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
+/area/tether_away/fueldepot)
+"XW" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/tiled/techmaint/airless,
+/area/tether_away/fueldepot)
+"Yd" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/cash_register/trader{
+	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
+	dir = 4;
+	name = "Fuel Depot Register"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "Ys" = (
 /obj/structure/table/steel_reinforced,
@@ -11136,7 +11148,7 @@ au
 cz
 cB
 cD
-so
+Yd
 aa
 aa
 aa
@@ -11968,12 +11980,12 @@ PR
 aG
 ck
 aF
-kJ
+yR
 aG
 bz
 IR
 aG
-TA
+dX
 aF
 PR
 aG
@@ -12252,12 +12264,12 @@ aD
 aM
 cl
 aF
-QB
+XW
 bs
 bz
 bN
 bs
-nR
+ym
 aF
 cj
 cv
@@ -13818,7 +13830,7 @@ aa
 az
 bI
 bZ
-EV
+Xl
 aC
 aa
 aa
