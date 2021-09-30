@@ -7,12 +7,21 @@
 	bright, alien sun. This comes at the cost of mobility, flexibility, and increased \
 	oxygen requirements to support their robust metabolism."
 
-
-	flash_mod =     0.9
-	oxy_mod =       1.1
+	toxins_mod = 	0.8
 	radiation_mod = 0.5
-	brute_mod =     0.85
-	slowdown =      1
+
+	brute_mod =     0.90
+	burn_mod = 		0.90
+
+	slowdown =      0.2 //Minor general slowdown
+	item_slowdown_mod = 0.75 //Reduced Item slowdown
+
+	oxy_mod =       1.1
+	minimum_breath_pressure = 18
+
+	total_health = 130//No bone break threshhold, because I dont wanna create new limbs right now
+
+	flags = NO_MINOR_CUT
 
 	spawn_flags = SPECIES_CAN_JOIN
 	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
