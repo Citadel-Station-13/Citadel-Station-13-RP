@@ -282,8 +282,8 @@
 //New Vests
 /obj/item/clothing/suit/storage/vest
 	name = "armor vest"
-	desc = "A simple kevlar plate carrier."
-	icon_state = "kvest"
+	desc = "A standard kevlar vest with webbing attached."
+	icon_state = "webvest"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
@@ -299,19 +299,19 @@
 
 /obj/item/clothing/suit/storage/vest/officer
 	name = "officer armor vest"
-	desc = "A simple kevlar plate carrier. This one has a security holobadge clipped to the chest."
-	icon_state = "officervest_nobadge"
+	desc = "A standard kevlar vest with webbing attached. This one has a security holobadge clipped to the chest."
+	icon_state = "officerwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
-	icon_badge = "officervest_badge"
-	icon_nobadge = "officervest_nobadge"
+	icon_badge = "officerwebvest_badge"
+	icon_nobadge = "officerwebvest_nobadge"
 
 /obj/item/clothing/suit/storage/vest/warden
 	name = "warden armor vest"
-	desc = "A simple kevlar plate carrier. This one has a silver badge clipped to the chest."
-	icon_state = "wardenvest_nobadge"
+	desc = "A standard kevlar vest with webbing attached. This one has a silver badge clipped to the chest."
+	icon_state = "wardenwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
-	icon_badge = "wardenvest_badge"
-	icon_nobadge = "wardenvest_nobadge"
+	icon_badge = "wardenwebvest_badge"
+	icon_nobadge = "wardenwebvest_nobadge"
 
 /obj/item/clothing/suit/storage/vest/wardencoat
 	name = "Warden's jacket"
@@ -328,11 +328,11 @@
 
 /obj/item/clothing/suit/storage/vest/hos
 	name = "head of security armor vest"
-	desc = "A simple kevlar plate carrier. This one has a gold badge clipped to the chest."
-	icon_state = "hosvest_nobadge"
+	desc = "A standard kevlar vest with webbing attached. This one has a gold badge clipped to the chest."
+	icon_state = "hoswebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
-	icon_badge = "hosvest_badge"
-	icon_nobadge = "hosvest_nobadge"
+	icon_badge = "hoswebvest_badge"
+	icon_nobadge = "hoswebvest_nobadge"
 
 /obj/item/clothing/suit/storage/vest/hoscoat
 	name = "armored coat"
@@ -350,7 +350,7 @@
 
 /obj/item/clothing/suit/storage/vest/pcrc
 	name = "PCRC armor vest"
-	desc = "A simple kevlar plate carrier belonging to Proxima Centauri Risk Control. This one has a PCRC crest clipped to the chest."
+	desc = "A simple kevlar vest belonging to Proxima Centauri Risk Control. This one has a PCRC crest clipped to the chest."
 	icon_state = "pcrcvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	icon_badge = "pcrcvest_badge"
@@ -396,7 +396,7 @@
 
 /obj/item/clothing/suit/storage/vest/detective
 	name = "detective armor vest"
-	desc = "A simple kevlar plate carrier in a vintage brown, it has a badge clipped to the chest that reads, 'Private investigator'."
+	desc = "A standard kevlar vest in a vintage brown, it has a badge clipped to the chest that reads, 'Private investigator'."
 	icon_state = "detectivevest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	icon_badge = "detectivevest_badge"
@@ -405,13 +405,13 @@
 /obj/item/clothing/suit/storage/vest/press
 	name = "press vest"
 	icon_state = "pvest"
-	desc = "A simple kevlar plate carrier. This one has the word 'Press' embroidered on patches on the back and front."
+	desc = "A simple kevlar vest. This one has the word 'Press' embroidered on patches on the back and front."
 	item_state_slots = list(slot_r_hand_str = "armor", slot_l_hand_str = "armor")
 	allowed = list(/obj/item/flashlight,/obj/item/tape_recorder,/obj/item/pen,/obj/item/camera_film,/obj/item/camera,/obj/item/clothing/head/helmet)
 
 /obj/item/clothing/suit/storage/vest/heavy
 	name = "heavy armor vest"
-	desc = "A heavy kevlar plate carrier with webbing attached."
+	desc = "A heavy kevlar vest with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
@@ -419,7 +419,7 @@
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
 	name = "officer heavy armor vest"
-	desc = "A heavy kevlar plate carrier with webbing attached. This one has a security holobadge clipped to the chest."
+	desc = "A heavy kevlar vest with webbing attached. This one has a security holobadge clipped to the chest."
 	icon_state = "officerwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	icon_badge = "officerwebvest_badge"
@@ -427,7 +427,7 @@
 
 /obj/item/clothing/suit/storage/vest/heavy/warden
 	name = "warden heavy armor vest"
-	desc = "A heavy kevlar plate carrier with webbing attached. This one has a silver badge clipped to the chest."
+	desc = "A heavy kevlar vest with webbing attached. This one has a silver badge clipped to the chest."
 	icon_state = "wardenwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	icon_badge = "wardenwebvest_badge"
@@ -435,7 +435,7 @@
 
 /obj/item/clothing/suit/storage/vest/heavy/hos
 	name = "head of security heavy armor vest"
-	desc = "A heavy kevlar plate carrier with webbing attached. This one has a gold badge clipped to the chest."
+	desc = "A heavy kevlar vest with webbing attached. This one has a gold badge clipped to the chest."
 	icon_state = "hoswebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	icon_badge = "hoswebvest_badge"
@@ -443,7 +443,7 @@
 
 /obj/item/clothing/suit/storage/vest/heavy/pcrc
 	name = "PCRC heavy armor vest"
-	desc = "A heavy kevlar plate carrier belonging to Proxima Centauri Risk Control with webbing attached. This one has a PCRC crest clipped to the chest."
+	desc = "A heavy kevlar vest belonging to Proxima Centauri Risk Control with webbing attached. This one has a PCRC crest clipped to the chest."
 	icon_state = "pcrcwebvest_nobadge"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	icon_badge = "pcrcwebvest_badge"
@@ -452,7 +452,7 @@
 //Provides the protection of a merc voidsuit, but only covers the chest/groin, and also takes up a suit slot. In exchange it has no slowdown and provides storage.
 /obj/item/clothing/suit/storage/vest/heavy/merc
 	name = "heavy armor vest"
-	desc = "A high-quality heavy kevlar plate carrier in a fetching tan. The vest is surprisingly flexible, and possibly made of an advanced material."
+	desc = "A high-quality heavy kevlar vest in a fetching tan. The vest is surprisingly flexible, and possibly made of an advanced material."
 	icon_state = "mercwebvest"
 	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
