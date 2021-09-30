@@ -19,7 +19,21 @@
 	oxy_mod =       1.1
 	minimum_breath_pressure = 18
 
-	total_health = 130//No bone break threshhold, because I dont wanna create new limbs right now
+	total_health = 130
+
+	has_limbs = list(
+		BP_TORSO =	list("path" = /obj/item/organ/external/chest/gravworlder),
+		BP_GROIN =	list("path" = /obj/item/organ/external/groin/gravworlder),
+		BP_HEAD  =	list("path" = /obj/item/organ/external/head/gravworlder),
+		BP_L_ARM =	list("path" = /obj/item/organ/external/arm/gravworlder),
+		BP_R_ARM =	list("path" = /obj/item/organ/external/arm/right/gravworlder),
+		BP_L_LEG =	list("path" = /obj/item/organ/external/leg/gravworlder),
+		BP_R_LEG =	list("path" = /obj/item/organ/external/leg/right/gravworlder),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/gravworlder),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/gravworlder),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/gravworlder),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/gravworlder)
+		)
 
 	flags = NO_MINOR_CUT
 

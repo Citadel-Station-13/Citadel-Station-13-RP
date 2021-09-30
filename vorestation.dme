@@ -2953,6 +2953,7 @@
 #include "code\modules\organs\subtypes\standard.dm"
 #include "code\modules\organs\subtypes\standard_vr.dm"
 #include "code\modules\organs\subtypes\subspecies_spacer.dm"
+#include "code\modules\organs\subtypes\subspecies_graver.dm"
 #include "code\modules\organs\subtypes\teshari.dm"
 #include "code\modules\organs\subtypes\unathi.dm"
 #include "code\modules\organs\subtypes\unbreakable.dm"
