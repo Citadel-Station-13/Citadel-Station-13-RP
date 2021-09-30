@@ -78,9 +78,11 @@
 	of bodies is a very real and rather ethically grey industry. Vat-grown or Vatborn humans tend to be \
 	paler than baseline, with no appendix and fewer inherited genetic disabilities, but a more aggressive metabolism."
 
+	oxy_mod = 		1.05
+	toxins_mod =   	1.05
 
-	toxins_mod =   1.1
-	metabolic_rate = 1.15
+	total_health = 115
+
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,
 		O_LUNGS =    /obj/item/organ/internal/lungs,
