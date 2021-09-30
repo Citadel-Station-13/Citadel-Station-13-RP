@@ -35,6 +35,8 @@
 
 	oxy_mod =   0.6
 
+	minimum_breath_pressure = 12
+
 	flash_mod = 1.2
 
 	item_slowdown_mod = 1.1 //Minor slowdown
