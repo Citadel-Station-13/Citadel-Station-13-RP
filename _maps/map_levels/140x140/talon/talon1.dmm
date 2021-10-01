@@ -1605,7 +1605,7 @@
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass/talon,
 /turf/simulated/floor/plating,
-/area/talon/deckone/central_hallway)
+/area/talon/maintenance/deckone_port)
 "ow" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -4423,6 +4423,20 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/eris/white/gray_platform,
 /area/shuttle/talonboat)
+"LX" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
 "LY" = (
 /obj/machinery/oxygen_pump{
 	pixel_y = 30
@@ -5144,7 +5158,7 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
 	dir = 4;
-	id_tag = "talon_port_wing_pump:
+	id_tag = "talon_port_wing_pump"
 	},
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
@@ -13787,7 +13801,7 @@ SP
 SP
 SP
 SP
-Gb
+oH
 oq
 XD
 QG
@@ -15483,7 +15497,7 @@ Bf
 rb
 rb
 uD
-rb
+LX
 WX
 ip
 Fm
@@ -15625,7 +15639,7 @@ Fm
 Fm
 Fm
 Fm
-Fm
+Kn
 RZ
 SW
 Fm
