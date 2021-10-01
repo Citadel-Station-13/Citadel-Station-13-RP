@@ -189,11 +189,31 @@
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/proc/ignite()
 	visible_message(span("critical", "\The [src] erupts in an inferno!"))
-	for(var/turf/simulated/target_turf in view(2, src))
+	for(var/turf/simulated/target_turf in get_ignition_turfs(25, 2))
 		target_turf.assume_gas(/datum/gas/phoron, 30, 1500+T0C)
 		spawn(0)
 			target_turf.hotspot_expose(1500+T0C, 400)
 	qdel(src)
+
+/mob/living/simple_mob/slime/xenobio/dark_purple/proc/get_ignition_turfs(amt = 25, maxrad = 2)
+	. = list()
+	var/turf/T = get_turf(src)
+	if(!T)
+		return
+	var/list/processing = list(T)
+	var/list/processed = list()
+	while(processing.len)
+		var/turf/check = processing[1]
+		processing.Cut(1, 2)
+		processed[check] = TRUE
+		if(get_dist(check, T) > maxrad)
+			continue
+		. += check
+		for(var/d in GLOB.cardinal)
+			var/turf/enemy = get_step(check, d)
+			if(!enemy || !check.CanZASPass(enemy) || !enemy.CanZASPass(check) || processed[enemy])
+				continue
+			processing += enemy
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/ex_act(severity)
 	log_and_message_admins("[src] ignited due to a chain reaction with an explosion.")
