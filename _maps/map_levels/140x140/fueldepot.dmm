@@ -18,7 +18,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ac" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -31,11 +31,12 @@
 	icon_state = "1-8"
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ad" = (
 /obj/machinery/atmospherics/portables_connector/aux{
-	dir = 4
+	dir = 4;
+	name = "Oxygen Port"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -53,7 +54,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "af" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/aux,
@@ -61,7 +62,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ag" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -70,12 +71,16 @@
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
 	dir = 10
 	},
-/obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/obj/effect/floor_decal/plaque{
+	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
+	name = "Payment Information"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "ah" = (
 /obj/machinery/atmospherics/portables_connector/fuel{
-	dir = 4
+	dir = 4;
+	name = "Phoron Port"
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -90,18 +95,20 @@
 	dir = 9
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aj" = (
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ak" = (
 /obj/machinery/atmospherics/binary/pump/fuel{
-	dir = 1
+	dir = 1;
+	name = "phoron pump"
 	},
 /obj/machinery/atmospherics/binary/pump/aux{
-	dir = 1
+	dir = 1;
+	name = "oxygen pump"
 	},
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -116,7 +123,7 @@
 	dir = 6
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "am" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -126,7 +133,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "an" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -136,7 +143,7 @@
 	dir = 9
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ao" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
@@ -146,22 +153,12 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ap" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
-/area/tether_away/fueldepot)
-"aq" = (
-/obj/machinery/power/solar,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 9
-	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ar" = (
 /obj/structure/cable{
@@ -172,30 +169,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/turf/simulated/shuttle/plating/airless,
-/area/tether_away/fueldepot)
-"as" = (
-/obj/machinery/power/solar,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 5
-	},
-/turf/simulated/shuttle/plating/airless,
-/area/tether_away/fueldepot)
-"at" = (
-/obj/machinery/power/solar,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "au" = (
 /obj/structure/railing{
@@ -256,17 +230,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/plating/airless,
-/area/tether_away/fueldepot)
-"aE" = (
-/obj/machinery/power/solar,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
-	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aF" = (
 /turf/simulated/wall/rshull,
@@ -285,10 +249,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 10
-	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aJ" = (
 /obj/structure/cable{
@@ -302,7 +263,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aK" = (
 /obj/structure/cable{
@@ -323,23 +284,19 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aN" = (
 /obj/machinery/power/solar,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 6
-	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aO" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aP" = (
 /obj/structure/cable{
@@ -350,10 +307,6 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "aQ" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	pixel_x = -28
-	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -364,7 +317,11 @@
 	dir = 6
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aR" = (
 /obj/structure/cable/green{
@@ -375,7 +332,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -389,16 +346,14 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aT" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = -28;
-	pixel_y = 30
+/obj/structure/table/steel_reinforced,
+/obj/machinery/cash_register/trader{
+	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
+	dir = 8;
+	name = "Fuel Depot Register"
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
@@ -411,7 +366,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aV" = (
 /obj/structure/cable/green{
@@ -421,12 +376,16 @@
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "aW" = (
 /obj/machinery/power/solar_control,
 /obj/structure/cable{
 	icon_state = "0-4"
+	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
@@ -456,7 +415,7 @@
 	dir = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ba" = (
 /obj/structure/cable/green{
@@ -467,14 +426,14 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bc" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "be" = (
 /obj/structure/cable/green{
@@ -483,14 +442,14 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bf" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bg" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -499,15 +458,20 @@
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 6
 	},
-/obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/obj/effect/floor_decal/plaque{
+	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
+	name = "Payment Information"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "bh" = (
 /obj/machinery/atmospherics/binary/pump/aux{
-	dir = 8
+	dir = 8;
+	name = "oxygen pump"
 	},
 /obj/machinery/atmospherics/binary/pump/fuel{
-	dir = 8
+	dir = 8;
+	name = "phoron pump"
 	},
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -520,7 +484,7 @@
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bj" = (
 /obj/machinery/light/small{
@@ -559,7 +523,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bn" = (
 /obj/effect/floor_decal/borderfloorwhite/full{
@@ -576,7 +540,7 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bp" = (
 /obj/effect/floor_decal/borderfloorwhite/full{
@@ -597,14 +561,14 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "br" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 6
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bs" = (
 /obj/machinery/light/small{
@@ -613,12 +577,16 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "bt" = (
-/obj/machinery/atmospherics/portables_connector/fuel,
+/obj/machinery/atmospherics/portables_connector/fuel{
+	name = "Phoron Port"
+	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "bu" = (
-/obj/machinery/atmospherics/portables_connector/aux,
+/obj/machinery/atmospherics/portables_connector/aux{
+	name = "Oxygen Port"
+	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
@@ -637,7 +605,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bw" = (
 /obj/structure/cable/green{
@@ -649,7 +617,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bx" = (
 /obj/structure/cable/green{
@@ -657,7 +625,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "by" = (
 /obj/structure/cable/green{
@@ -671,7 +639,7 @@
 	dir = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bz" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -682,7 +650,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bA" = (
 /obj/structure/cable{
@@ -698,7 +666,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bB" = (
 /obj/structure/cable/green{
@@ -715,14 +683,14 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bD" = (
 /obj/structure/cable/green{
@@ -732,7 +700,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bE" = (
 /obj/structure/cable/green{
@@ -743,7 +711,7 @@
 	dir = 6
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bF" = (
 /obj/structure/cable/green{
@@ -754,7 +722,7 @@
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bG" = (
 /obj/structure/cable/green{
@@ -765,7 +733,7 @@
 	dir = 5
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bH" = (
 /obj/structure/cable/green{
@@ -777,7 +745,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bI" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/fuel{
@@ -794,7 +762,7 @@
 	icon_state = "2-8"
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -805,7 +773,7 @@
 	icon_state = "1-8"
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -815,28 +783,28 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bL" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 5
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bO" = (
 /obj/structure/cable{
@@ -848,7 +816,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bP" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -866,7 +834,7 @@
 	dir = 5
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bQ" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/aux{
@@ -879,7 +847,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bR" = (
 /obj/effect/shuttle_landmark/premade/fueldepot/north,
@@ -912,7 +880,7 @@
 	dir = 1
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bX" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
@@ -920,7 +888,7 @@
 	dir = 10
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bY" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
@@ -928,7 +896,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -941,18 +909,20 @@
 	icon_state = "1-4"
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ca" = (
 /obj/machinery/atmospherics/portables_connector/aux{
-	dir = 1
+	dir = 1;
+	name = "Oxygen Port"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cb" = (
 /obj/machinery/atmospherics/portables_connector/fuel{
-	dir = 1
+	dir = 1;
+	name = "Phoron Port"
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -960,12 +930,12 @@
 "cc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ce" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -975,14 +945,16 @@
 	dir = 5
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cf" = (
 /obj/machinery/atmospherics/binary/pump/aux{
-	dir = 4
+	dir = 4;
+	name = "oxygen pump"
 	},
 /obj/machinery/atmospherics/binary/pump/fuel{
-	dir = 4
+	dir = 4;
+	name = "phoron pump"
 	},
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -994,8 +966,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 9
 	},
-/obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/obj/effect/floor_decal/plaque{
+	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
+	name = "Payment Information"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "ch" = (
 /obj/structure/railing{
@@ -1007,12 +982,13 @@
 /turf/space,
 /area/space)
 "ci" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
+/obj/structure/table/steel_reinforced,
+/obj/machinery/cash_register/trader{
+	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
+	name = "Fuel Depot Register"
 	},
-/turf/space,
-/area/space)
+/turf/simulated/floor/tiled/techmaint/airless,
+/area/tether_away/fueldepot)
 "cj" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -1041,7 +1017,7 @@
 "cm" = (
 /obj/machinery/light/small,
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cn" = (
 /obj/effect/floor_decal/borderfloorwhite/full{
@@ -1058,7 +1034,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cp" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -1069,7 +1045,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cq" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -1079,14 +1055,14 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cr" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
 	dir = 9
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cs" = (
 /obj/structure/cable{
@@ -1097,10 +1073,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ct" = (
 /obj/structure/cable{
@@ -1121,10 +1094,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cw" = (
 /obj/structure/cable{
@@ -1138,7 +1108,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cx" = (
 /obj/machinery/light/small,
@@ -1151,8 +1121,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cz" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -1162,7 +1131,7 @@
 	dir = 6
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -1172,17 +1141,22 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cB" = (
-/obj/machinery/atmospherics/binary/pump/fuel,
-/obj/machinery/atmospherics/binary/pump/aux,
+/obj/machinery/atmospherics/binary/pump/fuel{
+	name = "phoron pump"
+	},
+/obj/machinery/atmospherics/binary/pump/aux{
+	name = "oxygen pump"
+	},
 /obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cC" = (
 /obj/machinery/atmospherics/portables_connector/fuel{
-	dir = 8
+	dir = 8;
+	name = "Phoron Port"
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1194,8 +1168,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
 	dir = 5
 	},
-/obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/obj/effect/floor_decal/plaque{
+	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
+	name = "Payment Information"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cE" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/aux{
@@ -1205,7 +1182,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cF" = (
 /obj/structure/cable/green{
@@ -1220,11 +1197,12 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cG" = (
 /obj/machinery/atmospherics/portables_connector/aux{
-	dir = 8
+	dir = 8;
+	name = "Oxygen Port"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -1242,7 +1220,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cI" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/fuel{
@@ -1260,7 +1238,11 @@
 	dir = 10
 	},
 /obj/effect/catwalk_plated/dark,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
+/area/tether_away/fueldepot)
+"dX" = (
+/obj/machinery/vending/coffee,
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "es" = (
 /obj/structure/cable{
@@ -1271,7 +1253,7 @@
 	dir = 9
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "fl" = (
 /obj/structure/table/steel_reinforced,
@@ -1283,14 +1265,14 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ja" = (
 /obj/structure/catwalk,
 /obj/structure/table/rack/steel,
 /obj/item/tool/crowbar/red,
 /obj/item/tool/wrench,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "om" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -1300,7 +1282,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "rE" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/aux{
@@ -1311,7 +1293,15 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/fuel,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
+/area/tether_away/fueldepot)
+"ym" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/techmaint/airless,
+/area/tether_away/fueldepot)
+"yR" = (
+/obj/machinery/vending/sovietsoda,
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "BA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
@@ -1324,7 +1314,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "DC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
@@ -1340,7 +1330,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "FK" = (
 /obj/structure/table/rack/shelf/steel,
@@ -1355,7 +1345,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "Nq" = (
 /obj/structure/table/rack/shelf/steel,
@@ -1369,7 +1359,11 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "PR" = (
-/turf/simulated/shuttle/plating/airless,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/space,
 /area/space)
 "Qg" = (
 /obj/structure/table/rack/steel,
@@ -1381,7 +1375,29 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/simulated/shuttle/plating/airless,
+/turf/simulated/floor/airless,
+/area/tether_away/fueldepot)
+"Xl" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/cash_register/trader{
+	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
+	dir = 1;
+	name = "Fuel Depot Register"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
+/area/tether_away/fueldepot)
+"XW" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/tiled/techmaint/airless,
+/area/tether_away/fueldepot)
+"Yd" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/cash_register/trader{
+	desc = "Swipe your ID card to make purchases electronically. There is a note at the bottom. Press Custom Order. Enter reason and cost. Pay with your card. 250 Thaler a tank of Phoron, 50 a tank of Oxygen.";
+	dir = 4;
+	name = "Fuel Depot Register"
+	},
+/turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "Ys" = (
 /obj/structure/table/steel_reinforced,
@@ -8840,7 +8856,7 @@ aa
 aa
 aa
 aa
-aa
+ay
 ci
 bv
 bJ
@@ -10111,11 +10127,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+aw
+aw
+aw
+aw
+aw
 aa
 aa
 aa
@@ -10126,11 +10142,11 @@ aC
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+aw
+aw
+aw
+aw
+aw
 aa
 aa
 aa
@@ -10252,13 +10268,13 @@ aa
 aa
 aa
 aa
-aa
-aq
-at
-at
-at
+ay
 aI
-aa
+aI
+aI
+aI
+aI
+ck
 aF
 aF
 aF
@@ -10267,13 +10283,13 @@ bN
 aF
 aF
 aF
-aa
-aq
-at
-at
-at
+ay
 aI
-aa
+aI
+aI
+aI
+aI
+aC
 aa
 aa
 aa
@@ -10394,7 +10410,7 @@ aa
 aa
 aa
 aa
-aa
+ay
 ar
 aD
 aD
@@ -10403,19 +10419,19 @@ aJ
 aO
 aF
 aW
-aT
+bj
 bz
 bN
 bj
 Qg
 aF
-aa
+PR
 cs
 cw
 cw
 cw
 cy
-aa
+aC
 aa
 aa
 aa
@@ -10536,11 +10552,11 @@ aa
 aa
 aa
 aa
-aa
-as
-aE
-aE
-aE
+ay
+aN
+aN
+aN
+aN
 aK
 aP
 aP
@@ -10553,11 +10569,11 @@ aP
 aP
 aP
 ct
-aE
-aE
-aE
 aN
-aa
+aN
+aN
+aN
+aC
 aa
 aa
 aa
@@ -10679,12 +10695,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+av
+av
+av
+cj
 aG
-aa
+cl
 aF
 aY
 bl
@@ -10693,12 +10709,12 @@ bN
 aG
 OG
 aF
-aa
+cj
 aG
-aa
-aa
-aa
-aa
+cl
+av
+av
+av
 aa
 aa
 aa
@@ -10822,7 +10838,7 @@ aa
 aa
 aa
 aa
-PR
+aa
 aF
 aF
 aG
@@ -10990,7 +11006,7 @@ aa
 aw
 aw
 aw
-aa
+aw
 aa
 aa
 aa
@@ -11132,7 +11148,7 @@ au
 cz
 cB
 cD
-ax
+Yd
 aa
 aa
 aa
@@ -11523,7 +11539,7 @@ aa
 aa
 aa
 aa
-az
+aT
 ag
 ak
 an
@@ -11665,7 +11681,7 @@ aa
 aa
 aa
 aa
-aa
+av
 av
 av
 av
@@ -11957,26 +11973,26 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+aw
+aw
+aw
+PR
 aG
-aa
+ck
 aF
-aG
+yR
 aG
 bz
 IR
 aG
-aG
+dX
 aF
-aa
+PR
 aG
-aa
-aa
-aa
-aa
+ck
+aw
+aw
+aw
 aa
 aa
 aa
@@ -12098,11 +12114,11 @@ aa
 aa
 aa
 aa
-aa
-aq
-at
-at
-at
+ay
+aI
+aI
+aI
+aI
 aL
 aP
 aP
@@ -12115,11 +12131,11 @@ aP
 aP
 aP
 cu
-at
-at
-at
 aI
-aa
+aI
+aI
+aI
+aC
 aa
 aa
 aa
@@ -12240,28 +12256,28 @@ aa
 aa
 aa
 aa
-aa
+ay
 ar
 aD
 aD
 aD
 aM
-aa
+cl
 aF
-aG
+XW
 bs
 bz
 bN
 bs
-fl
+ym
 aF
-aa
+cj
 cv
 cw
 cw
 cw
 cy
-aa
+aC
 aa
 aa
 aa
@@ -12382,13 +12398,13 @@ aa
 aa
 aa
 aa
-aa
-as
-aE
-aE
-aE
+ay
 aN
-aa
+aN
+aN
+aN
+aN
+aC
 aF
 aF
 aF
@@ -12397,13 +12413,13 @@ bN
 aF
 aF
 aF
-aa
-as
-aE
-aE
-aE
+ay
 aN
-aa
+aN
+aN
+aN
+aN
+aC
 aa
 aa
 aa
@@ -12525,11 +12541,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+av
+av
+av
+av
+av
 aa
 aa
 aa
@@ -12540,11 +12556,11 @@ aC
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+av
+av
+av
+av
+av
 aa
 aa
 aa
@@ -13814,8 +13830,8 @@ aa
 az
 bI
 bZ
-cl
-aa
+Xl
+aC
 aa
 aa
 aa
