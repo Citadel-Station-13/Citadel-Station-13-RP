@@ -368,3 +368,4 @@ datum/client_preference/debug/age_verified
 	key = "USE_WIDESCREEN"
 	enabled_description = "Show"
 	disabled_description = "Hide"
+	enabled_by_default = FALSE //defaults off by request
