@@ -253,3 +253,4 @@
 	human_name = FALSE
 	fake_name = "White King"
 	construct_name = "dog"
+	
