@@ -3099,6 +3099,10 @@
 "wy" = (
 /turf/unsimulated/wall,
 /area/centcom/control)
+"wM" = (
+/obj/structure/barricade/cutout/chess/pawn/black,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "wN" = (
 /obj/item/perfect_tele_beacon{
 	tele_name = "Transfer"
@@ -3546,6 +3550,14 @@
 /obj/effect/overlay/palmtree_r,
 /turf/unsimulated/beach/sand,
 /area/beach)
+"BJ" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/structure/barricade/cutout/chess/pawn/black,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "BK" = (
 /turf/space,
 /turf/space/internal_edge/bottomleft,
@@ -14250,7 +14262,7 @@ ap
 as
 pf
 KI
-ZN
+BJ
 Wf
 XT
 Wf
@@ -14392,7 +14404,7 @@ iO
 as
 pf
 ZN
-ZH
+wM
 XT
 Wf
 XT
@@ -14534,7 +14546,7 @@ iO
 as
 pf
 yN
-ZN
+BJ
 Wf
 of
 Wf
@@ -14676,7 +14688,7 @@ iO
 as
 pf
 jM
-ZH
+wM
 XT
 Wf
 XT
@@ -14818,7 +14830,7 @@ iO
 as
 pf
 lw
-ZN
+BJ
 Wf
 XT
 Wf
@@ -14960,7 +14972,7 @@ iO
 as
 pf
 Hz
-ZH
+wM
 XT
 Wf
 XT
@@ -15102,7 +15114,7 @@ iO
 as
 pf
 ZH
-ZN
+BJ
 Wf
 XT
 Wf
@@ -15244,7 +15256,7 @@ iO
 as
 pf
 Mq
-ZH
+wM
 XT
 Wf
 XT
