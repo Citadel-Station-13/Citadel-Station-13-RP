@@ -7,7 +7,7 @@
 
 /obj/item/clothing/head/centhat/customs
 	name = "Customs Hat"
-	desc = "A formal hat for SolGov Customs Officers."
+	desc = "A formal hat for OriCon Customs Officers."
 	icon_state = "customshat"
 
 /obj/item/clothing/head/pin
@@ -611,4 +611,4 @@
 	name = "traveller's hat"
 	desc = "A wide brimmed hat made of sturdy material. Its floppy, pointed top is similar to those worn by Old Earth bards or sorcerors."
 	icon_state = "traveller"
-	addblends = "traveller_a"
+	//addblends = "traveller_a"

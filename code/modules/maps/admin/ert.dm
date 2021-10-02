@@ -1,7 +1,7 @@
 
 
 // Map template for spawning the shuttle
-/datum/map_template/shuttle/overmap/tether/ert_ship
+/datum/map_template/shuttle/overmap/generic/ert_ship
 	name = "OM Ship - ERT Ship (New Z)"
 	desc = "NT Emergency Response Ship."
 	mappath = "_maps/templates/admin/ert.dmm"

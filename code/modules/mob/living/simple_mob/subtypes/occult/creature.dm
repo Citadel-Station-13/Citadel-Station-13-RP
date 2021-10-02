@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/creature
+	name = "%#ERROR#%"
+	desc = "%ERROR% SCAN DATA REDACTED. RETURN SCANNER TO A \
+	CENTRAL ADMINISTRATOR FOR IMMEDIATE MAINTENANCE. %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/creature
 	name = "creature"
 	desc = "A sanity-destroying otherthing."
@@ -5,6 +11,7 @@
 	icon_state = "otherthing"
 	icon_living = "otherthing"
 	icon_dead = "otherthing-dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/creature)
 
 	mob_class = MOB_CLASS_ABERRATION
 

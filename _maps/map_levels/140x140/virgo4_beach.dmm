@@ -578,8 +578,20 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/tether_away/beach/resort/kitchen)
 "hN" = (
-/turf/simulated/floor/holofloor/beach/sand,
-/area/tether_away/beach/jungle)
+/obj/structure/gravemarker{
+	desc = "An epitaph reads, In loving memory of Jazzmine lee. A friend to all who knew her smile.";
+	grave_name = "Jazzmine Lee";
+	name = "memorial grave"
+	},
+/obj/machinery/portable_atmospherics/hydroponics/soil{
+	name = "grave soil"
+	},
+/obj/item/toy/plushie/orange_fox{
+	desc = "An old, worn out fox plushie. It smells of the ocean. You feel it holds emotional significance. Holding it gives you a vague sense of wanderlust, and appreciation for life. It always seems to find the way home.";
+	name = "old orange fox plushie"
+	},
+/turf/simulated/floor/outdoors/beach/sand,
+/area/tether_away/beach/resort)
 "hQ" = (
 /obj/structure/flora/sif/subterranean,
 /turf/simulated/floor/outdoors/grass{
@@ -17322,7 +17334,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+hN
 Nv
 Nv
 Nv
@@ -19331,7 +19343,7 @@ aa
 aa
 aa
 aa
-hN
+aa
 aa
 tr
 aj

@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/clown
+	name = "Clown"
+	desc = "The Clown is truly a galactic phenomenon. Those who travel to \
+	Clown Planet to train in the comedic arts sometimes undergo a curious \
+	revelation. Becoming fully devoted to the Honkmother, these fantatical \
+	jesters roam the Frontier on missions of mayhem and hilarity. Just because \
+	they're smiling, it doesn't mean they aren't deadly. Watch where you step."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/humanoid/clown
 	clown
 	name = "clown"
@@ -7,6 +16,7 @@
 	icon_living = "clown"
 	icon_dead = "clown_dead"
 	icon_gib = "clown_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/clown)
 
 	faction = "clown"
 

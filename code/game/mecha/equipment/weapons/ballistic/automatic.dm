@@ -1,6 +1,6 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
 	name = "\improper Ultra AC 2"
-	desc = "A superior version of the standard Solgov Autocannon MK2 design."
+	desc = "A superior version of the standard Hephaestus Autocannon MK2 design."
 	icon_state = "mecha_uac2"
 	equip_cooldown = 10
 	projectile = /obj/item/projectile/bullet/pistol/medium

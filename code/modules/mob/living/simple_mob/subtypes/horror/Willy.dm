@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/Willy
+	name = "@!*UNGR**#$&"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/Willy
 	name = "???"
 	desc = "It looks like a giant mascot costume made of flesh and fabric. The two bulging eyes aren't comforting to look at either. At least it smells like a burger and fries."
@@ -9,6 +15,7 @@
 	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Willy)
 
 	attack_sound = 'sound/h_sounds/negative.ogg'
 
