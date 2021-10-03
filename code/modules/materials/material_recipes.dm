@@ -333,3 +333,10 @@
 	recipes += new/datum/stack_recipe_list("statues", list( \
 		new/datum/stack_recipe("assistant statue", /obj/structure/statue/sandstone/assistant, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
+
+/datum/material/bananium/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("bananium statue", /obj/structure/statue/bananium, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("clown statue", /obj/structure/statue/bananium/clown, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))
