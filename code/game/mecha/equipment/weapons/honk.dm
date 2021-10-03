@@ -35,3 +35,25 @@
 	log_message("Used a sound emission device.")
 	do_after_cooldown()
 	return
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/banana
+	name = "\improper Banana Peel launcher"
+	desc = "A pneumatic launcher designed for maximum hilarity; fires banana peels."
+	icon_state = "mecha_bananamtr"
+	projectile = /obj/item/bananapeel
+	fire_sound = 'sound/effects/splat.ogg'
+	projectiles = 10
+	missile_speed = 1.5
+	projectile_energy_cost = 600
+	equip_cooldown = 60
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/mousetrap
+	name = "\improper Mouse Trap launcher"
+	desc = "A pneumatic launcher designed for maximum hilarity; fires mouse traps."
+	icon_state = "mecha_mousetrapmtr"
+	projectile = /obj/item/assembly/mousetrap/armed
+	fire_sound = 'sound/effects/snap.ogg'
+	projectiles = 20
+	missile_speed = 1.5
+	projectile_energy_cost = 300
+	equip_cooldown = 60

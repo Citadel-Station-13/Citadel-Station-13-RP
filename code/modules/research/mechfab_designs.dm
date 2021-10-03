@@ -302,6 +302,65 @@
 	time = 600
 	materials = list(MAT_SUPERMATTER = 2000, MAT_PLASTEEL = 60000, MAT_URANIUM = 3250, MAT_DURASTEEL = 2000, MAT_MORPHIUM = 3000, MAT_GOLD = 5000, MAT_VERDANTIUM = 5000, MAT_DIAMOND = 10000, MAT_LEAD = 15000)
 
+/datum/design/item/mechfab/honker
+	category = "H.O.N.K."
+
+/datum/design/item/mechfab/honker/chassis
+	name = "H.O.N.K. Chassis"
+	id = "honker_chassis"
+	build_path = /obj/item/mecha_parts/chassis/honker
+	time = 10
+	materials = list(DEFAULT_WALL_MATERIAL = 18750)
+
+/datum/design/item/mechfab/honker/torso
+	name = "H.O.N.K. Torso"
+	id = "honker_torso"
+	build_path = /obj/item/mecha_parts/part/honker_torso
+	time = 30
+	materials = list(DEFAULT_WALL_MATERIAL = 37500, "glass" = 15000, "plastic" = 10000)
+
+/datum/design/item/mechfab/honker/head
+	name = "H.O.N.K. Head"
+	id = "honker_head"
+	build_path = /obj/item/mecha_parts/part/honker_head
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 7500, "plastic" = 5000)
+
+/datum/design/item/mechfab/honker/left_arm
+	name = "H.O.N.K. Left Arm"
+	id = "honker_left_arm"
+	build_path = /obj/item/mecha_parts/part/honker_left_arm
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 22500, "plastic" = 12000)
+
+/datum/design/item/mechfab/honker/right_arm
+	name = "H.O.N.K. Right Arm"
+	id = "honker_right_arm"
+	build_path = /obj/item/mecha_parts/part/honker_right_arm
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 22500, "plastic" = 12000)
+
+/datum/design/item/mechfab/honker/left_leg
+	name = "H.O.N.K. Left Leg"
+	id = "honker_left_leg"
+	build_path = /obj/item/mecha_parts/part/honker_left_leg
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 26250, "plastic" = 15000)
+
+/datum/design/item/mechfab/honker/right_leg
+	name = "H.O.N.K. Right Leg"
+	id = "honker_right_leg"
+	build_path = /obj/item/mecha_parts/part/honker_right_leg
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 26250, "plastic" = 15000)
+
+/datum/design/item/mechfab/honker/armour
+	name = "H.O.N.K. Armour Plates"
+	id = "honker_armour"
+	build_path = /obj/item/mecha_parts/part/honker_armour
+	time = 60
+	materials = list(DEFAULT_WALL_MATERIAL = 37500, "diamond" = 7500, "plastic" = 5000)
+
 /datum/design/item/mecha
 	build_type = MECHFAB
 	category = "Exosuit Equipment"
@@ -475,6 +534,13 @@
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/ion/rigged
 	materials = list(DEFAULT_WALL_MATERIAL = 13000, "uranium" = 1000, "silver" = 1000, "osmium" = 3000, "plastic" = 2000)
 
+/datum/design/item/mecha/weapon/sound_cannon
+	name = "H.O.N.K. Sound Cannon"
+	id = "mech_soundcannon"
+	req_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4, TECH_ILLEGAL = 3)
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/honker
+	materials = list(DEFAULT_WALL_MATERIAL = 13000, "silver" = 1000, "osmium" = 3000, "plastic" = 2000)
+
 /datum/design/item/mecha/weapon/grenade_launcher
 	name = "SGL-6 Grenade Launcher"
 	id = "mech_grenade_launcher"
@@ -510,6 +576,20 @@
 	req_tech = list(TECH_COMBAT = 4, TECH_ENGINEERING = 2, TECH_MATERIAL = 3, TECH_ILLEGAL = 2)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/frag/mini
 	materials = list(DEFAULT_WALL_MATERIAL = 10000, "gold" = 2500, "uranium" = 3000, "osmium" = 3000, "plastic" = 3000)
+
+/datum/design/item/mecha/weapon/banana_launcher
+	name = "WSS-2 Banana Peel Launcher"
+	id = "mech_banana_launcher"
+	req_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/banana
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "gold" = 2000, "osmium" = 1000, "plastic" = 5000)
+
+/datum/design/item/mecha/weapon/mousetrap_launcher
+	name = "WSS-5 Mouse Trap Launcher"
+	id = "mech_mousetrap_launcher"
+	req_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/mousetrap
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "gold" = 2000, "osmium" = 1000, "plastic" = 5000)
 
 /datum/design/item/mecha/weapon/flamer
 	name = "CR-3 Mark 8 Flamethrower"
