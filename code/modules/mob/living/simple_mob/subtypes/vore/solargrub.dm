@@ -60,6 +60,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	var/obj/structure/cable/attached        // the attached cable
 	var/shock_chance = 10 // Beware
 	var/powerdraw = 100000 // previous value 150000 // CHOMPStation Addition, Rykka waz here. *pawstamp*; CitRP: It's for the solarmoth spawn thingy
+	var/moth_amount = 0 
 
 /mob/living/simple_mob/vore/solargrub/Initialize(mapload)
 	GLOB.solargrubs += src
