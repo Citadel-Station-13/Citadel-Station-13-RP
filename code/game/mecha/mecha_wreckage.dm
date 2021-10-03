@@ -161,6 +161,25 @@
 				parts -= part
 		return
 
+/obj/effect/decal/mecha_wreckage/ripley/geiger
+	name = "Lightweight APLU wreckage"
+	icon_state = "ripley-broken-old"
+
+	New()
+		..()
+		var/list/parts = list(/obj/item/mecha_parts/part/geiger_torso,
+									/obj/item/mecha_parts/part/ripley_left_arm,
+									/obj/item/mecha_parts/part/ripley_right_arm,
+									/obj/item/mecha_parts/part/ripley_left_leg,
+									/obj/item/mecha_parts/part/ripley_right_leg)
+		for(var/i=0;i<2;i++)
+			if(!!length(parts) && prob(40))
+				var/part = pick(parts)
+				welder_salvage += part
+				parts -= part
+		return
+
+
 /obj/effect/decal/mecha_wreckage/ripley/deathripley
 	name = "Death-Ripley wreckage"
 	icon_state = "deathripley-broken"

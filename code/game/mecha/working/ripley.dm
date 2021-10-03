@@ -95,7 +95,7 @@
 	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)//Deletes the beacon so it can't be found easily
 		qdel (B)
 
-/obj/mecha/working/ripley/antique
+/obj/mecha/working/ripley/geiger
 	name = "APLU \"Geiger\""
 	desc = "You can't beat the classics."
 	icon_state = "ripley-old"

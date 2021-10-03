@@ -197,6 +197,20 @@
 	icon_state = "ripley_r_leg"
 */
 
+////////// Firefighter
+
+/obj/item/mecha_parts/chassis/geiger
+	name = "Lightweight APLU Chassis"
+
+	New()
+		..()
+		construct = new /datum/construction/mecha/geiger_chassis(src)
+
+/obj/item/mecha_parts/part/geiger_torso
+	name="Lightweight APLU Torso"
+	icon_state = "ripley_harness"
+
+
 ////////// Phazon
 
 /obj/item/mecha_parts/chassis/phazon

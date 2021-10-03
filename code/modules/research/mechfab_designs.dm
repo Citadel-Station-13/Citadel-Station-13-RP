@@ -18,12 +18,24 @@
 	id = "firefighter_chassis"
 	build_path = /obj/item/mecha_parts/chassis/firefighter
 
+/datum/design/item/mechfab/ripley/chassis/geiger
+	name = "Geiger Chassis"
+	id = "geiger_chassis"
+	build_path = /obj/item/mecha_parts/chassis/geiger
+
 /datum/design/item/mechfab/ripley/torso
 	name = "Ripley Torso"
 	id = "ripley_torso"
 	build_path = /obj/item/mecha_parts/part/ripley_torso
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 30000, "glass" = 11250)
+
+/datum/design/item/mechfab/ripley/torso/geiger
+	name = "Geiger Torso"
+	id = "geiger_torso"
+	build_path = /obj/item/mecha_parts/part/geiger_torso
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 25000, "glass" = 10000)
 
 /datum/design/item/mechfab/ripley/left_arm
 	name = "Ripley Left Arm"
