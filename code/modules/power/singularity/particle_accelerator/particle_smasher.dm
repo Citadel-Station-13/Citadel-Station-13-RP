@@ -11,7 +11,6 @@
 	density = 1
 	use_power = USE_POWER_OFF
 
-	var/successful_craft = FALSE	// Are we waiting to be emptied?
 	var/image/material_layer	// Holds the image used for the filled overlay.
 	var/image/material_glow		// Holds the image used for the glow overlay.
 	var/image/reagent_layer		// Holds the image used for showing a contained beaker.
@@ -110,9 +109,9 @@
 		if(target)
 			material_layer.color = target.material.icon_colour
 			add_overlay(material_layer)
-			if(successful_craft)
-				material_glow.color = target.material.icon_colour
-				add_overlay(material_glow)
+//			if(successful_craft)
+//				material_glow.color = target.material.icon_colour
+//				add_overlay(material_glow)
 		if(reagent_container)
 			add_overlay(reagent_layer)
 	else
@@ -176,14 +175,6 @@
 		update_icon()
 		return
 
-	if(successful_craft)
-		visible_message("<span class='warning'>\The [src] fizzles.</span>")
-		if(prob(33))	// Why are you blasting it after it's already done!
-			SSradiation.radiate(src, 10 + round(src.energy / 60, 1))
-			energy = max(0, energy - 30)
-		update_icon()
-		return
-
 	var/list/possible_recipes = list()
 	var/max_prob = 0
 	for(var/datum/particle_smasher_recipe/R in recipes)	// Only things for the smasher. Don't get things like the chef's cake recipes.
@@ -208,13 +199,12 @@
 		for(var/datum/particle_smasher_recipe/R in possible_recipes)
 			cumulative += R.probability
 			if(local_prob < cumulative)
-				successful_craft = TRUE
 				DoCraft(R)
 				break
 	update_icon()
 
 /obj/machinery/particle_smasher/proc/DoCraft(var/datum/particle_smasher_recipe/recipe)
-	if(!successful_craft || !recipe)
+	if(!recipe)
 		return
 	
 	target.use(1)
@@ -253,7 +243,6 @@
 	DumpContents()
 
 /obj/machinery/particle_smasher/proc/DumpContents()
-	successful_craft = FALSE
 	var/atom/A = drop_location()
 	for(var/obj/item/I in contents)
 		I.forceMove(A)
