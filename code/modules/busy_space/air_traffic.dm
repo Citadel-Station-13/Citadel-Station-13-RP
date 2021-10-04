@@ -1,26 +1,26 @@
-/// Also, massive additions/refactors by Killian, because the original incarnation was full of holes
-/// Cleaned up to be less shit, again.
+// Also, massive additions/refactors by Killian, because the original incarnation was full of holes
+// Cleaned up to be less shit, again.
 
 GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 
 /datum/lore/atc_controller
 	//Shorter delays means more traffic, which gives the impression of a busier system, but also means a lot more radio noise
-	/// How long between ATC traffic
+	// How long between ATC traffic
 	var/delay_min = 18 MINUTES
-	/// Adjusted to give approx 3 per hour, will work out to 9-15 over a full shift
+	// Adjusted to give approx 3 per hour, will work out to 9-15 over a full shift
 	var/delay_max = 25 MINUTES
 
-	/// How long to wait before sending the first message of the shift.
+	// How long to wait before sending the first message of the shift.
 	var/initial_delay = 2 MINUTES
-	/// When the next message should happen in world.time - Making it default to min value
+	// When the next message should happen in world.time - Making it default to min value
 	var/next_message
 
-	/// Force a specific type of messages
+	// Force a specific type of messages
 	var/force_chatter_type
-	/// If ATC is squelched currently
+	// If ATC is squelched currently
 	var/squelched = FALSE
 
-	/// A block of frequencies so we can have them be static instead of being random for each call
+	// A block of frequencies so we can have them be static instead of being random for each call
 	var/ertchannel
 	var/medchannel
 	var/engchannel
@@ -38,8 +38,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 
 	// 450 was the original time. Reducing to 300 due to lower init times on the server. If this is a problem, revert back to 450 as we had no ATC issues with that time.
 	spawn(300 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
-		/// HEY! if we have listiners for ssticker go use that instead of this snowflake.
-		msg("Crew transfer complete for all vessels. As a reminder, this shift's fleet frequencies are as follows for this shift: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
+		// HEY! if we have listiners for ssticker go use that instead of this snowflake.
+		msg("Crew transfer complete. This shift's frequencies are as follows: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
 		next_message = world.time + initial_delay
 		START_PROCESSING(SSobj, src)
 
@@ -71,79 +71,83 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		return
 	msg("[GLOB.using_map.shuttle_name] departing [GLOB.using_map.dock_name] for [GLOB.using_map.station_name] on routine transfer route. Estimated time to arrival: ten minutes.","[GLOB.using_map.shuttle_name]")
 
-/// Next level optimzation for this: datumize the convo (see main holopads/holodisk!)
+// Next level optimzation for this: datumize the convo (see main holopads/holodisk!)
 /datum/lore/atc_controller/proc/random_convo()
-	/// Resolve to the instances
+	// Resolve to the instances
 	// OKAY what's happening here is a lot less agony inducing than it might seem. All that's happening here is a weighted RNG choice between the listed options in a variable.
 	// The first, [1], is for NanoTrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
 	// ALL the companies and items this list pulls from can be found in the organizations.dm file in this same folder (busy_space).
-	var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[1]=90,pick(GLOB.loremaster.organizations)=20))]
+	
+	// I've reverted the weighting for now, but left the old line in for reference (perhaps it would be better to assign weights in the organizations.dm) - Killian
+	
+	var/datum/lore/organization/source = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
+	// var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[11]=0,pick(GLOB.loremaster.organizations)=100))]
 
-		/// repurposed for new fun stuff
+	// repurposed for new fun stuff
 	var/datum/lore/organization/secondary = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
 
 	//Let's get some mission parameters, pick our first ship
-	/// get the name
+	// get the name
 	var/source_name = source.name
 
-	/// Use the short name
+	// Use the short name
 	var/source_owner = source.short_name
 
-	/// Pick a random prefix
+	// Pick a random prefix
 	var/source_prefix = pick(source.ship_prefixes)
 
-	/// The value of the prefix is the mission type that prefix does
+	// The value of the prefix is the mission type that prefix does
 	var/source_mission = source.ship_prefixes[source_prefix]
 
-	/// Pick a random ship name
+	// Pick a random ship name
 	var/source_shipname = pick(source.ship_names)
 
-	/// Destination is where?
+	// Destination is where?
 	var/source_destname = pick(source.destination_names)
 
-	/// do we fully observe system law (or are we otherwise favored by the system owners, i.e. NT)?
+	// do we fully observe system law (or are we otherwise favored by the system owners, i.e. NT)?
 	var/source_law_abiding = source.lawful
 
-	/// or are we part of a pirate group
+	// or are we part of a pirate group
 	var/source_law_breaker = source.hostile
 
-	/// are we actually system law/SDF? unlocks the SDF-specific events
+	// are we actually system law/SDF? unlocks the SDF-specific events
 	var/source_system_defense = source.sysdef
 
-	/// Are we part of the fleet?
-	var/source_fleet = source.fleet
+	// Are we part of the fleet?
+	// var/source_fleet = source.fleet
 
 	/////////////
 
 	//pick our second ship
 	var/secondary_owner = secondary.short_name
 
-	/// Pick a random prefix
+	// Pick a random prefix
 	var/secondary_prefix = pick(secondary.ship_prefixes)
 
-	/// Pick a random ship name
+	// Pick a random ship name
 	var/secondary_shipname = pick(secondary.ship_names)
 
-	/// Law abiding?
+	// Law abiding?
 	var/secondary_law_abiding = secondary.lawful
 
-	/// Part of the syndicats?
+	// Part of the syndicats?
 	var/secondary_law_breaker = secondary.hostile
 
-	/// mostly here as a secondary check to ensure SDF don't interrogate other SDF
+	// mostly here as a secondary check to ensure SDF don't interrogate other SDF
 	var/secondary_system_defense = secondary.sysdef
 
-	/// Is this ship part of the fleet too?
+	// Is this ship part of the fleet too?
 	// Not set up yet. Leaving commented out until then.
-	//var/secdonary_fleet = secondary.fleet
+	//var/secondary_fleet = secondary.fleet
 
 	var/combined_first_name = "[source_owner][source_prefix] |[source_shipname]|"
 	var/combined_second_name = "[secondary_owner][secondary_prefix] |[secondary_shipname]|"
 
-	var/alt_atc_names = list("[GLOB.using_map.dock_name] Flight Control","[GLOB.using_map.dock_name] FliCon","[GLOB.using_map.dock_name] System Control","[GLOB.using_map.dock_name] Star Control","[GLOB.using_map.dock_name] SysCon","[GLOB.using_map.dock_name] Control","[GLOB.using_map.dock_name] STC","[GLOB.using_map.dock_name] StarCon")
-	/// pull from a list of owner-specific flight ops, to allow an extra dash of flavor
+	var/alt_atc_names = list("[GLOB.using_map.dock_name] Traffic Control","[GLOB.using_map.dock_name] TraCon","[GLOB.using_map.dock_name] System Control","[GLOB.using_map.dock_name] Star Control","[GLOB.using_map.dock_name] SysCon","[GLOB.using_map.dock_name] Control","[GLOB.using_map.dock_name] STC","[GLOB.using_map.dock_name] StarCon")
+	// pull from a list of owner-specific flight ops, to allow an extra dash of flavor
 	var/mission_noun = pick(source.flight_types)
-	/// if our source has the complex_tasks flag, regenerate with a two-stage assignment
+	// if our source has the complex_tasks flag, regenerate with a two-stage assignment
 	if(source.complex_tasks)
 		mission_noun = "[pick(source.task_types)] [pick(source.flight_types)]"
 
@@ -151,7 +155,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/list/requests = list(
 		"special flight rules" = list("authorizing special flight rules", "denying special flight rules, not allowed for your traffic class"),
 		"current solar weather info" = list("sending you the relevant information via tightbeam", "your request has been queued, stand by"),
-		"aerospace priority" = list("affirmative, aerospace priority is yours", "negative, another vessel has priority right now"),
+		"aerospace priority in our sector" = list("affirmative, sector aerospace priority is yours", "negative, another vessel in your sector has priority right now"),
 		"system traffic info" = list("sending you current traffic info", "request queued, please hold"),
 		"refueling information" = list("sending refueling information now", "depots currently experiencing fuel shortages, advise you move on"),
 		"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
@@ -163,10 +167,11 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	if(force_chatter_type)
 		chatter_type = force_chatter_type
 	//I have to offload this from the chatter_type switch below and do it here. Byond should throw a shitfit because this isn't how you use pick.
+	/*
 	else if(source_law_abiding && source_fleet)
 		chatter_type = pickweight(list("fleettraffic" = 90, "emerg" = 10, "dockingrequestgeneric" = 10,"dockingrequestsupply" = 10,
 		"dockingrequestrepair" = 10,"undockingrequest" = 5, "normal"))
-
+	*/
 	else if(source_law_abiding && !source_system_defense)
 		chatter_type = pickweight(list("emerg" = 5, "policescan" = 25, "traveladvisory" = 25,
 		"pathwarning" = 30, "dockingrequestgeneric" = 30, "dockingrequestdenied" = 30,
@@ -221,7 +226,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/request = pick(requests)
 	var/callname = pick(alt_atc_names)
 	var/response = requests[request][yes ? 1 : 2] //1 is yes, 2 is no
-	var/number = rand(1,15)
+	var/number = rand(1,42)
 	var/zone = pick("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta",
 		"Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi",
 		"Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega")
