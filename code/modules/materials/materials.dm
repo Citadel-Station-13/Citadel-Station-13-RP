@@ -1180,7 +1180,7 @@ var/list/name_to_material
 
 //Vaudium products
 /datum/material/bananium
-	name = DEFAULT_WALL_MATERIAL
+	name = "bananium"
 	stack_type = /obj/item/stack/material/bananium
 	integrity = 150
 	conductivity = 0 // Weird rubber metal.
