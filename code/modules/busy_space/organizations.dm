@@ -65,25 +65,6 @@
 	// Pad the destination lists with some extra random ones?
 	var/autogenerate_destination_names = TRUE
 
-
-/datum/lore/defunct_organization
-	// Organization's name
-	var/name = ""
-	// Organization's shortname (NanoTrasen for "NanoTrasen Incorporated")
-	var/short_name = ""
-	// Organization's acronym, e.g. 'NT' for NanoTrasen'.
-	var/acronym = ""
-	// One or two paragraph description of the organization, but only current stuff.  Currently unused.
-	var/desc = ""
-	// Historical discription of the organization's origins  Currently unused.
-	var/history = ""
-	// Short description of their work, eg "an arms manufacturer"
-	var/work = ""
-	// Location of the organization's HQ.  Currently unused.
-	var/headquarters = ""
-	// A motto/jingle/whatever, if they have one.  Currently unused.
-	var/motto = ""
-
 /datum/lore/organization/New()
 	if(autogenerate_destination_names) // Lets pad out the destination names.
 		var/i = rand(7, 12) //was 6-10, now 7-12, slight increase for flavor, especially 'starved' lists
