@@ -368,7 +368,9 @@
 				prob(1);/obj/item/storage/fancy/cigar,
 				prob(1);/obj/item/clothing/mask/smokable/cigarette/cigar,
 				prob(1);/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba,
-				prob(1);/obj/item/clothing/mask/smokable/cigarette/cigar/havana)
+				prob(1);/obj/item/clothing/mask/smokable/cigarette/cigar/havana,
+				prob(1);/obj/item/clothing/mask/smokable/cigarette/cigar/taj,
+				prob(1);/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium)
 
 /obj/random/coin
 	name = "random coin"
@@ -554,7 +556,9 @@
 	/obj/item/reagent_containers/food/drinks/bottle/small/beer,
 	/obj/item/reagent_containers/food/drinks/bottle/small/ale,
 	/obj/item/reagent_containers/food/drinks/bottle/sake,
-	/obj/item/reagent_containers/food/drinks/bottle/champagne)
+	/obj/item/reagent_containers/food/drinks/bottle/champagne,
+	/obj/item/reagent_containers/food/drinks/bottle/victory_gin,
+	/obj/item/reagent_containers/food/drinks/bottle/messa_mead)
 
 /obj/random/janusmodule
 	name = "random janus circuit"
@@ -743,8 +747,10 @@
 					prob(10);/obj/item/gun/projectile/revolver/detective,\
 					prob(10);/obj/item/gun/projectile/revolver/judge,\
 					prob(10);/obj/item/gun/projectile/colt,\
+					prob(2);/obj/item/gun/projectile/colt/taj,\
 					prob(10);/obj/item/gun/projectile/shotgun/pump,\
 					prob(10);/obj/item/gun/projectile/shotgun/pump/rifle,\
+					prob(2);/obj/item/gun/projectile/shotgun/pump/rifle/taj,\
 					prob(10);/obj/item/melee/baton,\
 					prob(10);/obj/item/melee/telebaton,\
 					prob(10);/obj/item/melee/classic_baton,\
@@ -781,11 +787,14 @@
 					prob(5);/obj/item/gun/projectile/revolver/mateba,\
 					prob(5);/obj/item/gun/projectile/revolver,\
 					prob(4);/obj/item/gun/projectile/deagle,\
+					prob(4);/obj/item/gun/projectile/deagle/taj,\
 					prob(4);/obj/item/material/knife/tacknife/combatknife,\
 					prob(4);/obj/item/melee/energy/sword,\
 					prob(4);/obj/item/gun/projectile/automatic/mini_uzi,\
+					prob(2);/obj/item/gun/projectile/automatic/mini_uzi/taj,\
 					prob(4);/obj/item/gun/projectile/contender,\
 					prob(4);/obj/item/gun/projectile/contender/tacticool,\
+					prob(4);/obj/item/gun/projectile/contender/taj,\
 					prob(3);/obj/item/gun/projectile/SVD,\
 					prob(3);/obj/item/gun/energy/lasercannon,\
 					prob(3);/obj/item/gun/projectile/shotgun/pump/rifle/lever,\
