@@ -125,7 +125,8 @@
 /obj/item/clothing/head/hood/winter/durathread
 	icon_state = "winterhood_durathread"
 
-/obj/item/clothing/head/hood/winter/ronin
+//Ronin Coat Hood
+/obj/item/clothing/head/hood/ronin
 	name = "ronin heating coils"
 	desc = "Glowing coils designed to ward off cold temperatures."
 	flags_inv = NONE

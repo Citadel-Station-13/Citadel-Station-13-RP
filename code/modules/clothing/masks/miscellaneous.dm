@@ -188,7 +188,7 @@
 	desc = "Antique facial armor hailing from old Earth. Designed to protect against sword blows and potentially arrows. This version has been carefully retrofitted to provide air."
 	icon_state = "menpo"
 	item_state_slots = list(slot_r_hand_str = "bandblack", slot_l_hand_str = "bandblack")
-	item_flags = AIRTIGHT|FLEXIBLEMATERIAL
+	item_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_parts_covered = FACE
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.10

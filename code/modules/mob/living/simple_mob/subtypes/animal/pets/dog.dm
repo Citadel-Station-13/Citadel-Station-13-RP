@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/dog
+	name = "Dog"
+	desc = "Canines have been a consistent companion of Humanity for \
+	tens of thousands of years. Descended from Wolves, a larger pack \
+	animal, the modern canine was selectively bred down into its modern \
+	role. Trained to assist with hunting, rescue, or security, dogs have \
+	gone on to be regarded as true friends by many Humans."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/dog
 	name = "dog"
 	real_name = "dog"
@@ -6,6 +15,7 @@
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/dog)
 
 	health = 20
 	maxHealth = 20
@@ -32,7 +42,7 @@
 		if(!stat)
 			for(var/mob/M in viewers(user, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message("<font color='blue'>[user] baps [name] on the nose with the rolled up [O]</font>")
+					M.show_message("<font color=#4F49AF>[user] baps [name] on the nose with the rolled up [O]</font>")
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
 					setDir(i)

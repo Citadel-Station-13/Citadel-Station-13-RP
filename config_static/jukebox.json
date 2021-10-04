@@ -331,6 +331,16 @@
 "genre": "Alternative"
 },
 {
+"url": "https://files.catbox.moe/x0vdu7.mp3",
+"title": "The Fire Is Gone (Piano, Saxo, Trumpet)",
+"duration": 1700,
+"artist": "Heaven Pierce Her",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
 "url": "https://files.catbox.moe/umynh4.m4a",
 "title": "The Prince's Dream",
 "duration": 1670,
@@ -414,6 +424,16 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/cr0psf.mp3",
+"title": "A Thousand Greetings",
+"duration": 3500,
+"artist": "Heaven Pierce Her",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
 },
 {
 "url": "https://files.catbox.moe/1rgsqr.m4a",
@@ -1170,6 +1190,16 @@
 "genre": "Disco, Funk, Soul, and R&B"
 },
 {
+"url": "https://files.catbox.moe/cszp7c.mp3",
+"title": "Tainted Love / Where Did Our Love Go",
+"duration": 5400,
+"artist": "Soft Cell",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Disco, Funk, Soul, and R&B"
+},
+{
 "url": "https://files.catbox.moe/ylu0wp.m4a",
 "title": "Footsteps in the Dark, Pts. 1 & 2",
 "duration": 3060,
@@ -1215,6 +1245,16 @@
 "title": "A Lost Sound",
 "duration": 3630,
 "artist": "Electronic Visions",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/wfpw55.mp3",
+"title": "Astrix on Mushrooms",
+"duration": 6050,
+"artist": "Infected Mushroom",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -1840,6 +1880,16 @@
 "genre": "Electronic"
 },
 {
+"url": "https://files.catbox.moe/x2dl4w.mp3",
+"title": "Rollin' & Scratchin'",
+"duration": 4500,
+"artist": "Daft Punk",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
 "url": "https://files.catbox.moe/i5q08z.m4a",
 "title": "Run, Sally, Run!",
 "duration": 2870,
@@ -1960,9 +2010,9 @@
 "genre": "Electronic"
 },
 {
-"url": "https://s.put.re/uDpZrL1L.mp3",
+"url": "https://files.catbox.moe/60mr3h.mp3",
 "title": "Tin Tin on the Moon (Remix)",
-"duration": 2320,
+"duration": 2400,
 "artist": "Jeroen Tel (Remixed by Cuboos)",
 "secret": false,
 "lobby": true,
@@ -1995,6 +2045,16 @@
 "title": "Vapor Memories",
 "duration": 2280,
 "artist": "Icarus & Primo",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/jugwn3.mp3",
+"title": "Versti",
+"duration": 2240,
+"artist": "Littlepetey",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -2608,6 +2668,27 @@
 "genre": "Hip-Hop and Rap"
 },
 {
+"url": "https://files.catbox.moe/9vtmkz.mp3",
+"title": "Takyon (Death Yon)",
+"duration": 1800,
+"artist": "Death Grips",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
+"url": "https://files.catbox.moe/jggdx9.mp3",
+"title": "[ERR!·][E#R#$] - OH SHIT I'M FEELING IT",
+"duration": 2250,
+"artist": "Death Grips (A /k/ production)",
+"secret": false,
+"emag": true,
+"lobby": false,
+"jukebox": true,
+"genre": "Hip-Hop and Rap"
+},
+{
 "url": "https://files.catbox.moe/jjoob7.mp3",
 "title": "The Message",
 "duration": 3790,
@@ -3072,10 +3153,30 @@
 "genre": "Metal"
 },
 {
+"url": "https://files.catbox.moe/py3zrg.mp3",
+"title": "A Shattered Illusion",
+"duration": 1900,
+"artist": "Heaven Pierce Her",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
 "url": "https://files.catbox.moe/86ylwc.mp3",
 "title": "Bark at the Moon",
 "duration": 2560,
 "artist": "Ozzy Osbourne",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/6ria1t.mp3",
+"title": "Charging the Void",
+"duration": 5520,
+"artist": "Vektor",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -3206,6 +3307,16 @@
 "title": "Girls, Girls, Girls",
 "duration": 2700,
 "artist": "Motley Crue",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/z1dm4k.mp3",
+"title": "Glory",
+"duration": 1350,
+"artist": "Heaven Pierce Her",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -3482,6 +3593,16 @@
 "genre": "Metal"
 },
 {
+"url": "https://files.catbox.moe/2eohao.mp3",
+"title": "Recharging the Void",
+"duration": 8200,
+"artist": "Vektor",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
 "url": "https://files.catbox.moe/sj1o0z.m4a",
 "title": "Restless Gypsy",
 "duration": 2990,
@@ -3626,6 +3747,16 @@
 "title": "Turn Up the Radio",
 "duration": 2780,
 "artist": "Autograph",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
+"url": "https://files.catbox.moe/u2g3zo.mp3",
+"title": "Tyranny Of Steel",
+"duration": 2700,
+"artist": "Iron Savior",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -4166,16 +4297,6 @@
 "title": "Life's What You Make It",
 "duration": 0,
 "artist": "Talk Talk",
-"secret": false,
-"lobby": false,
-"jukebox": true,
-"genre": "Pop"
-},
-{
-"url": "https://files.catbox.moe/zifzgk.m4a",
-"title": "Little Girls",
-"duration": 2230,
-"artist": "Oingo Boingo",
 "secret": false,
 "lobby": false,
 "jukebox": true,

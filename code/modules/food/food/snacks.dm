@@ -78,25 +78,25 @@
 
 			 // Vorestation edits in this section.
 			user.setClickCooldown(user.get_attack_speed(src)) //puts a limit on how fast people can eat/drink things
-			if (fullness <= 50)
+			if (fullness <= 100)
 				to_chat(M, "<span class='danger'>You hungrily chew out a piece of [src] and gobble it!</span>")
-			if (fullness > 50 && fullness <= 150)
+			if (fullness > 100 && fullness <= 300)
 				to_chat(M, "<span class='notice'>You hungrily begin to eat [src].</span>")
-			if (fullness > 150 && fullness <= 350)
+			if (fullness > 300 && fullness <= 700)
 				to_chat(M, "<span class='notice'>You take a bite of [src].</span>")
-			if (fullness > 350 && fullness <= 550)
+			if (fullness > 700 && fullness <= 1100)
 				to_chat(M, "<span class='notice'>You unwillingly chew a bit of [src].</span>")
-			if (fullness > 550 && fullness <= 650)
+			if (fullness > 1100 && fullness <= 1300)
 				to_chat(M, "<span class='notice'>You swallow some more of the [src], causing your belly to swell out a little.</span>")
-			if (fullness > 650 && fullness <= 1000)
+			if (fullness > 1300 && fullness <= 1500)
 				to_chat(M, "<span class='notice'>You stuff yourself with the [src]. Your stomach feels very heavy.</span>")
-			if (fullness > 1000 && fullness <= 3000)
+			if (fullness > 1500 && fullness <= 1700)
 				to_chat(M, "<span class='notice'>You gluttonously swallow down the hunk of [src]. You're so gorged, it's hard to stand.</span>")
-			if (fullness > 3000 && fullness <= 5500)
+			if (fullness > 1700 && fullness <= 1900)
 				to_chat(M, "<span class='danger'>You force the piece of [src] down your throat. You can feel your stomach getting firm as it reaches its limits.</span>")
-			if (fullness > 5500 && fullness <= 6000)
+			if (fullness > 1900 && fullness <= 2100)
 				to_chat(M, "<span class='danger'>You barely glug down the bite of [src], causing undigested food to force into your intestines. You can't take much more of this!</span>")
-			if (fullness > 6000) // There has to be a limit eventually.
+			if (fullness > 2100) // There has to be a limit eventually.
 				to_chat(M, "<span class='danger'>Your stomach blorts and aches, prompting you to stop. You literally cannot force any more of [src] to go down your throat.</span>")
 				return 0
 			/*if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
@@ -155,11 +155,11 @@
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
-		. += "<font color='blue'>\The [src] was bitten by someone!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten by someone!</font>"
 	else if (bitecount<=3)
-		. += "<font color='blue'>\The [src] was bitten [bitecount] times!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten [bitecount] times!</font>"
 	else
-		. += "<font color='blue'>\The [src] was bitten multiple times!</font>"
+		. += "<font color=#4F49AF>\The [src] was bitten multiple times!</font>"
 
 /obj/item/reagent_containers/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -179,7 +179,7 @@
 
 			user.visible_message( \
 				"[user] scoops up some [src] with \the [U]!", \
-				"<font color='blue'>You scoop up some [src] with \the [U]!</font>" \
+				"<font color=#4F49AF>You scoop up some [src] with \the [U]!</font>" \
 			)
 
 			src.bitecount++
@@ -595,10 +595,10 @@
 		var/clr = C.colourName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, "<font color='blue'>The egg refuses to take on this color!</font>")
+			to_chat(usr, "<font color=#4F49AF>The egg refuses to take on this color!</font>")
 			return
 
-		to_chat(usr, "<font color='blue'>You color \the [src] [clr]</font>")
+		to_chat(usr, "<font color=#4F49AF>You color \the [src] [clr]</font>")
 		icon_state = "egg-[clr]"
 	else
 		. = ..()
@@ -6116,3 +6116,75 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 6)
 	bitesize = 6
+
+/obj/item/reagent_containers/food/snacks/roach_burger
+	name = "roach burger"
+	desc = "Often used to help curb food shortages on overpopulated worlds, stations, or trains, some people just inexplicably like these."
+	icon_state = "brown_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
+
+/obj/item/reagent_containers/food/snacks/roach_burger/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/roach_burger/armored
+	name = "crunchy roach burger"
+	desc = "As if it wasn't hard enough to eat already."
+	icon_state = "armor_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
+
+/obj/item/reagent_containers/food/snacks/roach_burger/armored/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/roach_burger/pale
+	name = "pale roach burger"
+	desc = "It's almost as green as your face will be."
+	icon_state = "green_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
+
+/obj/item/reagent_containers/food/snacks/roach_burger/pale/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/roach_burger/purple
+	name = "purple roach burger"
+	desc = "It's almost pretty enough to forget."
+	icon_state = "purple_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
+
+/obj/item/reagent_containers/food/snacks/roach_burger/purple/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/roach_burger/big
+	name = "tall roach burger"
+	desc = "You're either disturbed, or a Tyrmalin. Either way, I hope you sharpened your teeth."
+	icon_state = "big_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
+
+/obj/item/reagent_containers/food/snacks/roach_burger/big/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/roach_burger/reich
+	name = "royal roach burger"
+	desc = "I want to be the hunter, and not the food."
+	icon_state = "reich_boi"
+	nutriment_amt = 7
+	nutriment_desc = list("bun" = 2, "bugflesh" = 2, "protein" = 1)
+
+/obj/item/reagent_containers/food/snacks/roach_burger/reich/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 3

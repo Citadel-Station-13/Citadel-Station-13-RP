@@ -705,7 +705,10 @@
 					/obj/item/reagent_containers/food/drinks/bottle/vodka = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/whiskey = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/wine = 5,
+         			/obj/item/reagent_containers/food/drinks/bottle/whitewine = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/bitters = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/victory_gin = 3,
+					/obj/item/reagent_containers/food/drinks/bottle/messa_mead = 3,
 					/obj/item/reagent_containers/food/drinks/bottle/small/ale = 15,
 					/obj/item/reagent_containers/food/drinks/bottle/small/beer = 15,
 					/obj/item/reagent_containers/food/drinks/bottle/small/cider = 15,
@@ -768,12 +771,12 @@
 	products = list(/obj/item/reagent_containers/food/snacks/candy = 6,/obj/item/reagent_containers/food/drinks/dry_ramen = 6,/obj/item/reagent_containers/food/snacks/chips =6,
 					/obj/item/reagent_containers/food/snacks/sosjerky = 6,/obj/item/reagent_containers/food/snacks/no_raisin = 6,/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6, /obj/item/reagent_containers/food/snacks/tastybread = 6, /obj/item/reagent_containers/food/snacks/skrellsnacks = 3,
-					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6)
+					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6,/obj/item/reagent_containers/food/snacks/unajerky = 6,)
 	prices = list(/obj/item/reagent_containers/food/snacks/candy = 1,/obj/item/reagent_containers/food/drinks/dry_ramen = 5,/obj/item/reagent_containers/food/snacks/chips = 1,
 					/obj/item/reagent_containers/food/snacks/sosjerky = 2,/obj/item/reagent_containers/food/snacks/no_raisin = 1,/obj/item/reagent_containers/food/snacks/spacetwinkie = 1,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 1, /obj/item/reagent_containers/food/snacks/tastybread = 2, /obj/item/reagent_containers/food/snacks/skrellsnacks = 4,
-					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6)
+					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6)
 
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
@@ -928,7 +931,8 @@
 	req_access = list(access_security)
 	products = list(/obj/item/handcuffs = 8,/obj/item/grenade/flashbang = 4,/obj/item/flash = 5,
 					/obj/item/reagent_containers/food/snacks/donut/normal = 12,/obj/item/storage/box/evidence = 6,
-					/obj/item/gun/projectile/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6)
+					/obj/item/gun/projectile/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6, /obj/item/clothing/mask/gas/half = 6,
+					/obj/item/hailer = 6, /obj/item/flashlight/glowstick = 6)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/box/donut = 2)
 	req_log_access = access_armory
 	has_logs = 1
@@ -959,7 +963,7 @@
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3)
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
-					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,)
+					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2)
 	premium = list(/obj/item/toy/waterflower = 1)
 
 /**
@@ -1134,6 +1138,7 @@
 					/obj/item/toy/plushie/corgi = 1,
 					/obj/item/toy/plushie/octopus = 1,
 					/obj/item/toy/plushie/face_hugger = 1,
+					/obj/item/toy/plushie/voxie = 1,
 					/obj/item/toy/plushie/carp = 1,
 					/obj/item/toy/plushie/deer = 1,
 					/obj/item/toy/plushie/tabby_cat = 1,
@@ -1143,7 +1148,8 @@
 					/obj/item/toy/plushie/bear_panda = 2,
 					/obj/item/toy/plushie/bear_soda = 2,
 					/obj/item/toy/plushie/bear_bloody = 2,
-					/obj/item/toy/plushie/bear_space = 1)
+					/obj/item/toy/plushie/bear_space = 1,
+					/obj/item/storage/daki = 10)
 	premium = list(/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
 					/obj/item/storage/trinketbox = 2)
 	prices = list(/obj/item/storage/fancy/heartbox = 15,
@@ -1169,6 +1175,7 @@
 					/obj/item/toy/plushie/corgi = 50,
 					/obj/item/toy/plushie/octopus = 50,
 					/obj/item/toy/plushie/face_hugger = 50,
+					/obj/item/toy/plushie/voxie = 50,
 					/obj/item/toy/plushie/carp = 50,
 					/obj/item/toy/plushie/deer = 50,
 					/obj/item/toy/plushie/tabby_cat = 50,
@@ -1178,7 +1185,8 @@
 					/obj/item/toy/plushie/bear_panda = 20,
 					/obj/item/toy/plushie/bear_soda = 35,
 					/obj/item/toy/plushie/bear_bloody = 35,
-					/obj/item/toy/plushie/bear_space = 50)
+					/obj/item/toy/plushie/bear_space = 50,
+					/obj/item/storage/daki = 100)
 
 /obj/machinery/vending/fishing
 	name = "Loot Trawler"
@@ -1787,11 +1795,21 @@
 					/obj/item/clothing/under/dress/maid = 5,
 					/obj/item/clothing/under/dress/maid/sexy = 5,
 					/obj/item/clothing/under/dress/maid/janitor = 5,
+					/obj/item/clothing/head/headband/maid = 5,
 					/obj/item/clothing/under/kamishimo = 5,
 					/obj/item/clothing/under/kimono = 5,
 					/obj/item/clothing/under/kimono_black = 5,
 					/obj/item/clothing/under/kimono_sakura = 5,
 					/obj/item/clothing/under/kimono_fancy = 5,
+					/obj/item/clothing/under/kimono/red = 5,
+					/obj/item/clothing/under/kimono/orange = 5,
+					/obj/item/clothing/under/kimono/yellow = 5,
+					/obj/item/clothing/under/kimono/green = 5,
+					/obj/item/clothing/under/kimono/blue = 5,
+					/obj/item/clothing/under/kimono/purple = 5,
+					/obj/item/clothing/under/kimono/violet = 5,
+					/obj/item/clothing/under/kimono/pink = 5,
+					/obj/item/clothing/under/kimono/earth = 5,
 					/obj/item/clothing/under/cheong = 5,
 					/obj/item/clothing/under/cheong/white = 5,
 					/obj/item/clothing/under/cheong/red = 5,
@@ -1907,6 +1925,7 @@
 					/obj/item/storage/box/fluff/swimsuit/medical = 5,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 5,
 					/obj/item/storage/box/fluff/swimsuit/captain = 5,
+					/obj/item/storage/box/fluff/swimsuit/highclass = 5,
 					/obj/item/clothing/under/utility = 5,
 					/obj/item/clothing/under/utility/grey = 5,
 					/obj/item/clothing/under/utility/blue = 5,
@@ -1977,11 +1996,21 @@
 					/obj/item/clothing/under/dress/maid = 25,
 					/obj/item/clothing/under/dress/maid/sexy = 25,
 					/obj/item/clothing/under/dress/maid/janitor = 25,
+					/obj/item/clothing/head/headband/maid = 5,
 					/obj/item/clothing/under/kamishimo = 25,
 					/obj/item/clothing/under/kimono = 25,
 					/obj/item/clothing/under/kimono_black = 25,
 					/obj/item/clothing/under/kimono_sakura = 25,
 					/obj/item/clothing/under/kimono_fancy = 25,
+					/obj/item/clothing/under/kimono/red = 25,
+					/obj/item/clothing/under/kimono/orange = 25,
+					/obj/item/clothing/under/kimono/yellow = 25,
+					/obj/item/clothing/under/kimono/green = 25,
+					/obj/item/clothing/under/kimono/blue = 25,
+					/obj/item/clothing/under/kimono/purple = 25,
+					/obj/item/clothing/under/kimono/violet = 25,
+					/obj/item/clothing/under/kimono/pink = 25,
+					/obj/item/clothing/under/kimono/earth = 25,
 					/obj/item/clothing/under/cheong = 25,
 					/obj/item/clothing/under/cheong/white = 25,
 					/obj/item/clothing/under/cheong/red = 25,
@@ -2097,6 +2126,7 @@
 					/obj/item/storage/box/fluff/swimsuit/medical = 25,
 					/obj/item/storage/box/fluff/swimsuit/cowbikini = 25,
 					/obj/item/storage/box/fluff/swimsuit/captain = 25,
+					/obj/item/storage/box/fluff/swimsuit/highclass = 25,
 					/obj/item/clothing/under/utility = 25,
 					/obj/item/clothing/under/utility/grey = 25,
 					/obj/item/clothing/under/utility/blue = 25,
@@ -2648,3 +2678,37 @@
 	premium = list(/obj/item/clothing/suit/imperium_monk = 3)
 	contraband = list(/obj/item/clothing/head/syndicatefake = 1,
 					/obj/item/clothing/suit/syndicatefake = 1)
+
+/obj/machinery/vending/glukoz
+	name = "Glukoz Pharmavenda"
+	desc = "An illicit injector vendor stocked and maintained by the allegedly defunct pharmaceuticals company Glukoz Ltd."
+	icon = 'icons/obj/vending.dmi'
+	icon_state = "rxvendor"
+	icon_vend = "rxvendor"
+	product_slogans = "Glukoz Pharmavenda, voted top street pharmaceuticals vendor, 2519!"
+	product_ads = "Back so soon?;The hits keep comin'!;If you can afford it, it's only a habit!;Who's gonna know?;In a pinch? It's just a pinch!;Remove the cap!;You'll be back!"
+	products = list(/obj/item/reagent_containers/hypospray/glukoz = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/certaphil = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/downer = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/fuckit = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/hangup = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/hypnogamma = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/medcon = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/multibuzz = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/numplus = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/oxyduo = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/pyrholidon = 10,
+					/obj/item/reagent_containers/hypospray/glukoz/viraplus = 10)
+	prices = list(/obj/item/reagent_containers/hypospray/glukoz = 100,
+					/obj/item/reagent_containers/hypospray/glukoz/certaphil = 350,
+					/obj/item/reagent_containers/hypospray/glukoz/downer = 200,
+					/obj/item/reagent_containers/hypospray/glukoz/fuckit = 500,
+					/obj/item/reagent_containers/hypospray/glukoz/hangup = 200,
+					/obj/item/reagent_containers/hypospray/glukoz/hypnogamma = 350,
+					/obj/item/reagent_containers/hypospray/glukoz/medcon = 1000,
+					/obj/item/reagent_containers/hypospray/glukoz/multibuzz = 500,
+					/obj/item/reagent_containers/hypospray/glukoz/numplus = 200,
+					/obj/item/reagent_containers/hypospray/glukoz/oxyduo = 500,
+					/obj/item/reagent_containers/hypospray/glukoz/pyrholidon = 400,
+					/obj/item/reagent_containers/hypospray/glukoz/viraplus = 200)
+	idle_power_usage = 211

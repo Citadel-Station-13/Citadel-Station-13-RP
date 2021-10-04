@@ -38,6 +38,17 @@ var/list/ai_verbs_default = list(
 				subject.attack_ai(M)
 	return is_in_use
 
+/datum/category_item/catalogue/fauna/silicon/ai
+	name = "Silicons - Artificial Intelligence"
+	desc = "Stationbound Artificial Intelligences were pioneered by \
+	multiple governments and species across the galaxy, with mixed results. \
+	On the Frontier, NanoTrasen's ability to pour massive amounts of resources \
+	into the field of Artificial Intelligence has provided them with some of the \
+	most sophisticated models available today. The application of strict Lawsets \
+	to AI units has kept the advanced systems from spiralling out of control, although \
+	some suggest that many of NT's AI may in fact be shackled organic brains - a \
+	terrifying thought."
+	value = CATALOGUER_REWARD_MEDIUM
 
 /mob/living/silicon/ai
 	name = "AI"
@@ -87,6 +98,8 @@ var/list/ai_verbs_default = list(
 	var/carded
 
 	can_be_antagged = TRUE
+
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
 	src.verbs |= ai_verbs_default
@@ -553,7 +566,7 @@ var/list/ai_verbs_default = list(
 		if(network in C.network)
 			eyeobj.setLoc(get_turf(C))
 			break
-	to_chat(src, "<font color='blue'>Switched to [network] camera network.</font>")
+	to_chat(src, "<font color=#4F49AF>Switched to [network] camera network.</font>")
 //End of code by Mord_Sith
 
 /mob/living/silicon/ai/proc/ai_statuschange()
@@ -764,20 +777,20 @@ var/list/ai_verbs_default = list(
 			return
 		if(anchored)
 			playsound(src, W.usesound, 50, 1)
-			user.visible_message("<font color='blue'>\The [user] starts to unbolt \the [src] from the plating...</font>")
+			user.visible_message("<font color=#4F49AF>\The [user] starts to unbolt \the [src] from the plating...</font>")
 			if(!do_after(user,40 * W.toolspeed))
-				user.visible_message("<font color='blue'>\The [user] decides not to unbolt \the [src].</font>")
+				user.visible_message("<font color=#4F49AF>\The [user] decides not to unbolt \the [src].</font>")
 				return
-			user.visible_message("<font color='blue'>\The [user] finishes unfastening \the [src]!</font>")
+			user.visible_message("<font color=#4F49AF>\The [user] finishes unfastening \the [src]!</font>")
 			anchored = 0
 			return
 		else
 			playsound(src, W.usesound, 50, 1)
-			user.visible_message("<font color='blue'>\The [user] starts to bolt \the [src] to the plating...</font>")
+			user.visible_message("<font color=#4F49AF>\The [user] starts to bolt \the [src] to the plating...</font>")
 			if(!do_after(user,40 * W.toolspeed))
-				user.visible_message("<font color='blue'>\The [user] decides not to bolt \the [src].</font>")
+				user.visible_message("<font color=#4F49AF>\The [user] decides not to bolt \the [src].</font>")
 				return
-			user.visible_message("<font color='blue'>\The [user] finishes fastening down \the [src]!</font>")
+			user.visible_message("<font color=#4F49AF>\The [user] finishes fastening down \the [src]!</font>")
 			anchored = 1
 			return
 	else

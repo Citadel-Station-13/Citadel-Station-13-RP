@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/brain/assisted
+	name = "Heuristics - Assisted"
+	desc = "The Man Machine Interface, or MMI, is comparatively ancient \
+	technology. Originally designed to allow full interfacing between organic \
+	processors and ungoverned robotics, MMIs have been the center of vast sapient \
+	rights campaigns and ethical debates."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/mmi
@@ -8,6 +16,7 @@
 	w_class = ITEMSIZE_NORMAL
 	can_speak = 1
 	origin_tech = list(TECH_BIO = 3)
+	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/assisted)
 
 	req_access = list(access_robotics)
 
@@ -239,7 +248,7 @@
 /obj/item/mmi/digital/attack_self(mob/user as mob)
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
-		to_chat(user, "<font color='blue'>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")
+		to_chat(user, "<font color=#4F49AF>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")
 		request_player()
 
 /obj/item/mmi/digital/proc/request_player()
@@ -263,7 +272,7 @@
 
 	var/turf/T = get_turf_or_move(src.loc)
 	for (var/mob/M in viewers(T))
-		M.show_message("<font color='blue'>\The [src] buzzes quietly, and the golden lights fade away. Perhaps you could try again?</font>")
+		M.show_message("<font color=#4F49AF>\The [src] buzzes quietly, and the golden lights fade away. Perhaps you could try again?</font>")
 
 /obj/item/mmi/digital/proc/transfer_personality(var/mob/candidate)
 	announce_ghost_joinleave(candidate, 0, "They are occupying a synthetic brain now.")
@@ -281,7 +290,7 @@
 
 	var/turf/T = get_turf_or_move(src.loc)
 	for (var/mob/M in viewers(T))
-		M.show_message("<font color='blue'>\The [src] chimes quietly.</font>")
+		M.show_message("<font color=#4F49AF>\The [src] chimes quietly.</font>")
 
 /obj/item/mmi/digital/robot
 	name = "robotic intelligence circuit"
@@ -305,6 +314,15 @@
 	to_chat(brainmob, "<span class='notify'>You feel slightly disoriented. That's normal when you're little more than a complex circuit.</span>")
 	return
 
+/datum/category_item/catalogue/fauna/brain/posibrain
+	name = "Heuristics - Positronic"
+	desc = "Positronic brains, unlike their organic counterparts, are the \
+	products of intelligent design, rather than evolution. Crafted by various \
+	sapient species using a variety of design philosophies and languages, all \
+	positronic brains are considered fully Sapient creatures, just like their \
+	organic counterparts."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /obj/item/mmi/digital/posibrain
 	name = "positronic brain"
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves."
@@ -314,6 +332,7 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/posi_brain
+	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/posibrain)
 
 /obj/item/mmi/digital/posibrain/request_player()
 	icon_state = "posibrain-searching"

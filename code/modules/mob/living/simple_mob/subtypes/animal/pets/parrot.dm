@@ -1,9 +1,20 @@
 // Parrots can talk, and may repeat things it hears.
+
+/datum/category_item/catalogue/fauna/parrot
+	name = "Parrot"
+	desc = "An Earthling tropical bird, parrots have been companions on \
+	nautical vessels for many years. Parrots are considered intelligent, \
+	due largely to the curvature of their beaks allowing them to form human \
+	words. Capable of learning and repeating spoken phrases, parrots are often \
+	sought after for morale purposes."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/bird/parrot
 	name = "parrot"
 	description_info = "You can give it a headset by clicking on it with a headset. \
 	To remove it, click the bird while on grab intent."
 	has_langs = list("Galactic Common", "Bird")
+	catalogue_data = list(/datum/category_item/catalogue/fauna/parrot)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/passive/parrot
 

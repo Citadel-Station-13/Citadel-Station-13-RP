@@ -271,8 +271,8 @@
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
 
-/datum/species/proc/sanitize_name(var/name, var/robot = 0)
-	return sanitizeName(name, MAX_NAME_LEN, robot)
+/datum/species/proc/sanitize_name(var/name)
+	return sanitizeName(name, MAX_NAME_LEN)
 
 GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	/datum/gas/oxygen = /obj/item/tank/emergency/oxygen,
@@ -420,7 +420,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	H.mob_push_flags = push_flags
 	H.pass_flags = pass_flags
 
-/datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events (such as dionaea nymph spawns).
+/datum/species/proc/handle_death(var/mob/living/carbon/human/H, gibbed = FALSE) //Handles any species-specific death events (such as dionaea nymph spawns).
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
@@ -511,3 +511,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	unarmed_types += /datum/unarmed_attack/bite/sharp/numbing
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
+
+/datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
+	return FALSE

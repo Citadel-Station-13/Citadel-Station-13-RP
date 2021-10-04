@@ -924,7 +924,7 @@ obj/item/newspaper/Topic(href, href_list)
 obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/pen))
 		if(scribble_page == curr_page)
-			to_chat(user, "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")
+			to_chat(user, "<font color=#4F49AF>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")
 		else
 			var/s = sanitize(input(user, "Write something", "Newspaper", ""))
 			s = sanitize(s)

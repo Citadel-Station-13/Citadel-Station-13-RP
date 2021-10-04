@@ -33,7 +33,7 @@
 	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
-	user.visible_message("<span class='notice'>[user] [holster_verb] [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")
+	user.visible_message("<span class='notice'>[user] [holster_verb]s \the [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")
 	name = "occupied [initial(name)]"
 	playsound(user, "[sound_in]", 75, 0)
 
@@ -126,7 +126,7 @@
 
 /obj/item/clothing/accessory/holster/armpit
 	name = "armpit holster"
-	desc = "A worn-out handgun holster. Perfect for concealed carry"
+	desc = "A worn-out handgun holster. Perfect for concealed carry."
 	icon_state = "holster"
 
 /obj/item/clothing/accessory/holster/waist

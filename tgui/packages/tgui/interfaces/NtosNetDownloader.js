@@ -1,3 +1,4 @@
+import { round } from 'common/math';
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
 import { NtosWindow } from '../layouts';
@@ -43,20 +44,11 @@ export const NtosNetDownloader = (props, context) => {
           </LabeledList>
         </Section>
         <Section>
-          {downloadable_programs
-            .filter(program => program.access)
-            .map(program => (
-              <Program
-                key={program.filename}
-                program={program} />
-            ))}
-          {downloadable_programs
-            .filter(program => !program.access)
-            .map(program => (
-              <Program
-                key={program.filename}
-                program={program} />
-            ))}
+          {downloadable_programs.map(program => (
+            <Program
+              key={program.filename}
+              program={program} />
+          ))}
         </Section>
         {!!hackedavailable && (
           <Section title="UNKNOWN Software Repository">
@@ -86,6 +78,8 @@ const Program = (props, context) => {
     downloading,
     downloadname,
     downloadsize,
+    downloadspeed,
+    downloads_queue,
   } = data;
   const disk_free = disk_size - disk_used;
   return (
@@ -103,15 +97,24 @@ const Program = (props, context) => {
               color="green"
               minValue={0}
               maxValue={downloadsize}
-              value={downloadcompletion} />
+              value={downloadcompletion}>
+              {round((downloadcompletion / downloadsize) * 100, 1)}% ({downloadspeed}GQ/s)
+            </ProgressBar>
+          ) || downloads_queue.indexOf(program.filename) !== -1 && (
+            <Button
+              icon="ban"
+              color="bad"
+              onClick={() => act("PRG_removequeued", {
+                filename: program.filename,
+              })}>
+              Queued...
+            </Button>
           ) || (
             <Button
               fluid
               icon="download"
               content="Download"
-              disabled={
-                downloading || program.size > disk_free || !program.access
-              }
+              disabled={program.size > disk_free}
               onClick={() => act('PRG_downloadfile', {
                 filename: program.filename,
               })} />
@@ -122,12 +125,6 @@ const Program = (props, context) => {
         <Box mt={1} italic fontSize="12px" position="relative">
           <Icon mx={1} color="red" name="times" />
           Incompatible!
-        </Box>
-      )}
-      {!(program.access) && (
-        <Box mt={1} italic fontSize="12px" position="relative">
-          <Icon mx={1} color="red" name="times" />
-          Invalid credentials loaded!
         </Box>
       )}
       {program.size > disk_free && (

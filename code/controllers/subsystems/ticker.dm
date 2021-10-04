@@ -195,10 +195,10 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, "<span class='danger'>Serious error in mode setup!</span> Reverting to pregame lobby.") //Uses setup instead of set up due to computational context.
 		return 0
 
-	SSjobs.ResetOccupations()
+	job_master.ResetOccupations()
 	src.mode.create_antagonists()
 	src.mode.pre_setup()
-	SSjobs.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
+	job_master.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
 	if(!src.mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players readied, [config_legacy.player_requirements[mode.config_tag]] players needed. Reverting to pregame lobby.")
@@ -206,7 +206,7 @@ SUBSYSTEM_DEF(ticker)
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		mode.fail_setup()
 		mode = null
-		SSjobs.ResetOccupations()
+		job_master.ResetOccupations()
 		return 0
 
 	if(hide_mode)
@@ -245,7 +245,7 @@ SUBSYSTEM_DEF(ticker)
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)
-		to_chat(world, "<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+		to_chat(world, "<font color=#4F49AF><B>Enjoy the game!</B></FONT>")
 		SEND_SOUND(world, sound('sound/AI/welcome.ogg')) // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
@@ -418,7 +418,7 @@ SUBSYSTEM_DEF(ticker)
 			if(player.mind.assigned_role == "Facility Director")
 				captainless=0
 			if(!player_is_antag(player.mind, only_offstation_roles = 1))
-				SSjobs.EquipRank(player, player.mind.assigned_role, 0)
+				job_master.EquipRank(player, player.mind.assigned_role, 0)
 				UpdateFactionList(player)
 				//equip_custom_items(player)	//VOREStation Removal
 				//player.apply_traits() //VOREStation Removal
@@ -496,7 +496,7 @@ SUBSYSTEM_DEF(ticker)
 				var/turf/playerTurf = get_turf(Player)
 				if(SSemergencyshuttle.departed && SSemergencyshuttle.evac)
 					if(isNotAdminLevel(playerTurf.z))
-						to_chat(Player, "<font color='blue'><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></font>")
+						to_chat(Player, "<font color=#4F49AF><b>You survived the round, but remained on [station_name()] as [Player.real_name].</b></font>")
 					else
 						to_chat(Player, "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font>")
 				else if(isAdminLevel(playerTurf.z))
@@ -504,7 +504,7 @@ SUBSYSTEM_DEF(ticker)
 				else if(issilicon(Player))
 					to_chat(Player, "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>")
 				else
-					to_chat(Player, "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>")
+					to_chat(Player, "<font color=#4F49AF><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>")
 			else
 				if(istype(Player,/mob/observer/dead))
 					var/mob/observer/dead/O = Player

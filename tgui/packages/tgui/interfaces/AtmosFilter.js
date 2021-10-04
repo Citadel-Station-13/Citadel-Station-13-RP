@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, NumberInput, Section } from '../components';
+import { Button, LabeledList, NumberInput, Section, AnimatedNumber, Box } from '../components';
 import { getGasLabel } from '../constants';
 import { Window } from '../layouts';
 
@@ -9,7 +9,8 @@ export const AtmosFilter = (props, context) => {
   return (
     <Window
       width={390}
-      height={221}>
+      height={187}
+      resizable>
       <Window.Content>
         <Section>
           <LabeledList>
@@ -21,13 +22,18 @@ export const AtmosFilter = (props, context) => {
                 onClick={() => act('power')} />
             </LabeledList.Item>
             <LabeledList.Item label="Transfer Rate">
+              <Box inline mr={1}>
+                <AnimatedNumber
+                  value={data.last_flow_rate}
+                  format={val => val + " L/s"} />
+              </Box>
               <NumberInput
                 animated
                 value={parseFloat(data.rate)}
                 width="63px"
                 unit="L/s"
                 minValue={0}
-                maxValue={data.max_rate}
+                maxValue={200}
                 onDrag={(e, value) => act('rate', {
                   rate: value,
                 })} />
@@ -43,11 +49,11 @@ export const AtmosFilter = (props, context) => {
             <LabeledList.Item label="Filter">
               {filterTypes.map(filter => (
                 <Button
-                  key={filter.id}
+                  key={filter.name}
                   selected={filter.selected}
-                  content={getGasLabel(filter.id, filter.name)}
+                  content={filter.name}
                   onClick={() => act('filter', {
-                    mode: filter.id,
+                    filterset: filter.f_type,
                   })} />
               ))}
             </LabeledList.Item>

@@ -40,7 +40,7 @@
 /obj/item/anodevice/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I, /obj/item/anobattery))
 		if(!inserted_battery)
-			to_chat(user, "<font color='blue'>You insert the battery.</font>")
+			to_chat(user, "<font color=#4F49AF>You insert the battery.</font>")
 			user.drop_item()
 			I.loc = src
 			inserted_battery = I
@@ -131,13 +131,13 @@
 
 			//work out if we need to shutdown
 			if(inserted_battery.stored_charge <= 0)
-				loc.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] buzzes.</font>", "<font color='blue'>[icon2html(thing = src, target = world)] You hear something buzz.</font>")
+				loc.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] buzzes.</font>", "<font color=#4F49AF>[icon2html(thing = src, target = world)] You hear something buzz.</font>")
 				shutdown_emission()
 			else if(world.time > time_end)
-				loc.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] chimes.</font>", "<font color='blue'>[icon2html(thing = src, target = world)] You hear something chime.</font>")
+				loc.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] chimes.</font>", "<font color=#4F49AF>[icon2html(thing = src, target = world)] You hear something chime.</font>")
 				shutdown_emission()
 		else
-			visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] buzzes.</font>", "<font color='blue'>[icon2html(thing = src, target = world)] You hear something buzz.</font>")
+			visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] buzzes.</font>", "<font color=#4F49AF>[icon2html(thing = src, target = world)] You hear something buzz.</font>")
 			shutdown_emission()
 		last_process = world.time
 
@@ -164,7 +164,7 @@
 	if(href_list["startup"])
 		if(inserted_battery && inserted_battery.battery_effect && (inserted_battery.stored_charge > 0) )
 			activated = 1
-			visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] whirrs.</font>", "[icon2html(thing = src, target = world)]<font color='blue'>You hear something whirr.</font>")
+			visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] whirrs.</font>", "[icon2html(thing = src, target = world)]<font color=#4F49AF>You hear something whirr.</font>")
 			if(!inserted_battery.battery_effect.activated)
 				inserted_battery.battery_effect.ToggleActivate(1)
 			time_end = world.time + duration
@@ -201,9 +201,9 @@
 	if(activated && inserted_battery.battery_effect.effect == EFFECT_TOUCH && !isnull(inserted_battery))
 		inserted_battery.battery_effect.DoEffectTouch(M)
 		inserted_battery.use_power(energy_consumed_on_touch)
-		user.visible_message("<font color='blue'>[user] taps [M] with [src], and it shudders on contact.</font>")
+		user.visible_message("<font color=#4F49AF>[user] taps [M] with [src], and it shudders on contact.</font>")
 	else
-		user.visible_message("<font color='blue'>[user] taps [M] with [src], but nothing happens.</font>")
+		user.visible_message("<font color=#4F49AF>[user] taps [M] with [src], but nothing happens.</font>")
 
 	//admin logging
 	user.lastattacked = M

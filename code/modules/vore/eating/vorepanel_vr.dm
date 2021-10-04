@@ -45,10 +45,9 @@
 	var/loop = null;  // Magic self-reference to stop the handler from being GC'd before user takes action.
 
 /datum/vore_look/Destroy()
-	. = ..()
-	loop = null
 	selected = null
-	return QDEL_HINT_HARDDEL // TODO - Until I can better analyze how this weird thing works, lets be safe
+	QDEL_NULL(popup)
+	. = ..()
 
 /datum/vore_look/Topic(href,href_list[])
 	if (vp_interact(href, href_list))
@@ -352,14 +351,13 @@
 			dat += "<a style='background:#990000;' href='?src=\ref[src];toggle_dropnom_pred=1'>Toggle Pred Spontaneous Vore (Currently: OFF)</a>"
 
 	dat += "<br><a href='?src=\ref[src];setflavor=1'>Set Your Taste</a>"
-	dat += "<a href='?src=\ref[src];togglenoisy=1'>Toggle Hunger Noises</a>"
-
-	dat += "<HR>"
+	dat += "<br><a href='?src=\ref[src];setsmell=1'>Set Your Smell</a>"
+	dat += "<br><a href='?src=\ref[src];togglenoisy=1'>Toggle Hunger Noises</a>"
 
 	//Under the last HR, save and stuff.
-	dat += "<a href='?src=\ref[src];saveprefs=1'>Save Prefs</a>"
-	dat += "<a href='?src=\ref[src];refresh=1'>Refresh</a>"
-	dat += "<a href='?src=\ref[src];applyprefs=1'>Reload Slot Prefs</a>"
+	dat += "<HR><a href='?src=\ref[src];saveprefs=1'>Save Prefs</a>"
+	dat += "<br><a href='?src=\ref[src];refresh=1'>Refresh</a>"
+	dat += "<br><a href='?src=\ref[src];applyprefs=1'>Reload Slot Prefs</a>"
 
 	//Returns the dat html to the vore_look
 	return dat
@@ -889,6 +887,17 @@
 			alert("Entered flavor/taste text too long. [FLAVOR_MAX] character limit.","Error!")
 			return FALSE
 		user.vore_taste = new_flavor
+
+	if(href_list["setsmell"])
+		var/new_smell = html_encode(input(usr,"What your character smells like (40ch limit). This text will be printed to the pred after 'X smells of...' so just put something like 'strawberries and cream':","Character Smell",user.vore_smell) as text|null)
+		if(!new_smell)
+			return FALSE
+
+		new_smell = readd_quotes(new_smell)
+		if(length(new_smell) > FLAVOR_MAX)
+			alert("Entered perfume/smell text too long. [FLAVOR_MAX] character limit.","Error!")
+			return FALSE
+		user.vore_smell = new_smell
 
 	if(href_list["toggle_dropnom_pred"])
 		var/choice = alert(user, "This toggle is for spontaneous, environment related vore as a predator, including drop-noms, teleporters, etc. You are currently [user.can_be_drop_pred ? " able to eat prey that you encounter by environmental actions." : "avoiding eating prey encountered in the environment."]", "", "Be Pred", "Cancel", "Don't be Pred")

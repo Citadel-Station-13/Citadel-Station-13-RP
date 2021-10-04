@@ -55,7 +55,7 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-//	one_handed_penalty = 15
+	one_handed_penalty = 15
 
 /obj/item/gun/projectile/automatic/c20r/update_icon()
 	..()
@@ -82,7 +82,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
 
-//	one_handed_penalty = 30
+	one_handed_penalty = 30
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -142,7 +142,7 @@
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
-//	one_handed_penalty = 60
+	one_handed_penalty = 60
 
 	burst_delay = 4
 	firemodes = list(
@@ -211,7 +211,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m545saw, /obj/item/ammo_magazine/m545)
 	projectile_type = /obj/item/projectile/bullet/rifle/a545
 
-//	one_handed_penalty = 90
+	one_handed_penalty = 90
 
 	var/cover_open = 0
 
@@ -290,7 +290,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m12gdrum)
 	projectile_type = /obj/item/projectile/bullet/shotgun
 
-//	one_handed_penalty = 60
+	one_handed_penalty = 30 //The AA12 can be fired one-handed fairly easily.
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -333,6 +333,7 @@
 	name = "\improper custom Uzi"
 	desc = "The icon Uzi si a lightweight, compact, fast firing machine pistol. These traits make it a popular holdout option for Pathfinders assigned to hazardous expeditions. Uses .45 rounds."
 	icon_state = "mini-uzi-custom"
+	pin = /obj/item/firing_pin/explorer
 
 /obj/item/gun/projectile/automatic/mini_uzi/custom/update_icon()
 	..()
@@ -340,6 +341,21 @@
 		icon_state = "mini-uzi-custom"
 	else
 		icon_state = "mini-uzi-custom-empty"
+
+/obj/item/gun/projectile/automatic/mini_uzi/taj
+	name = "\improper Adhomai Uzi"
+	desc = "The Hotak's Arms machine pistol has developed a fierce reputation for its use by guerillas of the Democratic People's Republic of Adhomai. Its top loading magazine allows one to go completely prone in the deep snow banks of Adhomai while maintaining good weapon stability."
+	icon_state = "mini-uzi-taj"
+	item_state = "mini-uzi-taj"
+
+/obj/item/gun/projectile/automatic/mini_uzi/taj/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "mini-uzi-taj"
+		item_state = "mini-uzi-taj"
+	else
+		icon_state = "mini-uzi-taj-empty"
+		item_state = "mini-uzi-taj-empty"
 
 /obj/item/gun/projectile/automatic/p90
 	name = "personal defense weapon"
@@ -411,7 +427,7 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m762, /obj/item/ammo_magazine/m762m)
 	projectile_type = /obj/item/projectile/bullet/rifle/a762
 
-//	one_handed_penalty = 45
+	one_handed_penalty = 45
 
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
@@ -481,6 +497,14 @@ obj/item/gun/projectile/automatic/automat/holy
 	ammo_type = /obj/item/ammo_casing/a762/silver
 	holy = TRUE
 
+obj/item/gun/projectile/automatic/automat/taj
+	name = "Adhomai automat"
+	desc = "The Hadii-Wrack Avtomat, is an aging internal magazine automatic rifle of the People's Republic of Adhomai's Grand People's Army whose long and storied service life is coming to an end as it is phased out in favor of more modern automatics."
+	icon_state = "automat-taj"
+	item_state = "automat-taj"
+	wielded_item_state = "automat-taj-wielded"
+	fire_anim = ""
+
 /obj/item/gun/projectile/automatic/holyshot
 	name = "Holy automatic shotgun"
 	desc = "Based off of an ancient design, this hand crafted weapon has been gilded with the gold of melted icons and inscribed with sacred runes and hexagrammic wards. Works best with blessed 12g rounds."
@@ -496,7 +520,7 @@ obj/item/gun/projectile/automatic/automat/holy
 	allowed_magazines = list(/obj/item/ammo_magazine/holyshot_mag, /obj/item/ammo_magazine/holyshot_mag/stake)
 	projectile_type = /obj/item/projectile/bullet/shotgun
 
-//	one_handed_penalty = 60
+	one_handed_penalty = 40
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),

@@ -94,9 +94,9 @@ default behaviour is:
 	set hidden = 1
 	if ((src.health < 0 && src.health > (5-src.getMaxHealth()))) // Health below Zero but above 5-away-from-death, as before, but variable
 		src.death()
-		to_chat(src, "<font color='blue'>You have given up life and succumbed to death.</font>")
+		to_chat(src, "<font color=#4F49AF>You have given up life and succumbed to death.</font>")
 	else
-		to_chat(src, "<font color='blue'>You are not injured enough to succumb to death!</font>")
+		to_chat(src, "<font color=#4F49AF>You are not injured enough to succumb to death!</font>")
 
 /mob/living/proc/updatehealth()
 	if(status_flags & GODMODE)
@@ -629,9 +629,9 @@ default behaviour is:
 		if (C.legcuffed && !initial(C.legcuffed))
 			C.drop_from_inventory(C.legcuffed)
 		C.legcuffed = initial(C.legcuffed)
-	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
-	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
-	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
+	BITSET(hud_updateflag, HEALTH_HUD)
+	BITSET(hud_updateflag, STATUS_HUD)
+	BITSET(hud_updateflag, LIFE_HUD)
 	ExtinguishMob()
 	fire_stacks = 0
 	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
@@ -681,9 +681,9 @@ default behaviour is:
 	// make the icons look correct
 	regenerate_icons()
 
-	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
-	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
-	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
+	BITSET(hud_updateflag, HEALTH_HUD)
+	BITSET(hud_updateflag, STATUS_HUD)
+	BITSET(hud_updateflag, LIFE_HUD)
 
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()
@@ -934,8 +934,12 @@ default behaviour is:
 
 	if(lying)
 		density = 0
-		if(l_hand) unEquip(l_hand)
-		if(r_hand) unEquip(r_hand)
+		if(l_hand)
+			unEquip(l_hand)
+		if(r_hand)
+			unEquip(r_hand)
+		for(var/obj/item/holder/H in get_mob_riding_slots())
+			unEquip(H)
 		update_water() // Submerges the mob.
 	else
 		density = initial(density)
@@ -962,6 +966,10 @@ default behaviour is:
 		//VOREStation Add End
 
 	return canmove
+
+// Mob holders in these slots will be spilled if the mob goes prone.
+/mob/living/proc/get_mob_riding_slots()
+	return list(back)
 
 // Adds overlays for specific modifiers.
 // You'll have to add your own implementation for non-humans currently, just override this proc.

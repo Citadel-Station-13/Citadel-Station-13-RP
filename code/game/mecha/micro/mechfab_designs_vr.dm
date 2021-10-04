@@ -1,5 +1,5 @@
 /datum/design/item/mechfab/gopher
-	category = "Gopher"
+	category = list("Gopher")
 	time = 5
 
 /datum/design/item/mechfab/gopher/chassis
@@ -55,7 +55,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 2500)
 
 /datum/design/item/mechfab/polecat
-	category = "Polecat"
+	category = list("Polecat")
 	time = 10
 
 /datum/design/item/mechfab/polecat/chassis
@@ -117,7 +117,7 @@
 	name = "\improper PC-20 \"Lance\" light laser cannon"
 	id = "micro_laser_heavy"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 1000, "diamond" = 2000)
+	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 2000, "diamond" = 1000)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/microheavy
 
 /datum/design/item/mecha/weapon/grenade_launcher/micro
@@ -134,7 +134,7 @@
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/microshotgun
 
 /datum/design/item/mechfab/weasel
-	category = "Weasel"
+	category = list("Weasel")
 	time = 5
 
 /datum/design/item/mechfab/weasel/chassis
@@ -191,5 +191,5 @@
 	desc = "A portable medical system used to treat external injuries from afar."
 	id = "mech_medigun"
 	req_tech = list(TECH_MATERIAL = 5, TECH_COMBAT = 5, TECH_BIO = 6)
-	materials = list(DEFAULT_WALL_MATERIAL = 8000, "gold" = 2000, "silver" = 1750, "diamond" = 1500, "phoron" = 4000)
+	materials = list(DEFAULT_WALL_MATERIAL = 9000, "gold" = 3000, "silver" = 2750, "diamond" = 1500)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/medigun

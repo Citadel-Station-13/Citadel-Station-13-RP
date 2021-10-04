@@ -1,9 +1,19 @@
 // Base bird type.
 
+/datum/category_item/catalogue/fauna/bird
+	name = "Bird"
+	desc = "Avians species, hailing originally from Earth, are one of the oldest \
+	classes of Vertebrate. Generally capable of winged flight, there are thousands \
+	of species of birds with a wide variety of songs, diets, colorations, and traits. \
+	This strong visual diversity and the wide array of purposes birds may serve has \
+	driven the cultivation and collection of birds as pets by Humanity for millenia."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/bird
 	name = "bird"
 	desc = "A domesticated bird. Tweet tweet!"
 	player_msg = "You are able to fly."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/bird)
 
 	icon = 'icons/mob/birds.dmi'
 	icon_state = "parrot"

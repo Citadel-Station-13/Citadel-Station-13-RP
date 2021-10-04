@@ -50,7 +50,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 
 /datum/lore/atc_controller/proc/msg(message, sender)
 	ASSERT(message)
-	global_announcer.autosay("[message]", sender ? sender : "[GLOB.using_map.dock_name] Control")
+	GLOB.global_announcer.autosay("[message]", sender ? sender : "[GLOB.using_map.dock_name] Control")
 
 /datum/lore/atc_controller/proc/reroute_traffic(yes = TRUE)
 	if(yes)
@@ -154,7 +154,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		"aerospace priority" = list("affirmative, aerospace priority is yours", "negative, another vessel has priority right now"),
 		"system traffic info" = list("sending you current traffic info", "request queued, please hold"),
 		"refueling information" = list("sending refueling information now", "depots currently experiencing fuel shortages, advise you move on"),
-		"a current system time sync" = list("sending time sync ping to you now"),
+		"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
 		"current system starcharts" = list("transmitting current starcharts", "your request is queued, overloaded right now")
 	)
 
@@ -283,7 +283,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 				msg("Attention [GLOB.using_map.dock_name], this is the [combined_first_name] with an urgent report for the fleet. [bad_report].","[source_prefix] [source_shipname]")
 				sleep(5 SECONDS)
 				if(prob(50))
-					msg("Thank you for the update [source_prefix] [source_shipname]. We'll relay this to the needed Captain's. [GLOB.using_map.dock_name], out.")
+					msg("Thank you for the update [source_prefix] [source_shipname]. We'll relay this to the needed Captains. [GLOB.using_map.dock_name], out.")
 				else
 					msg("Understood [source_prefix] [source_shipname]. Keep us updated on any changes or developments.")
 					sleep(5 SECONDS)

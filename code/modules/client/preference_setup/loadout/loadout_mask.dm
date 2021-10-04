@@ -22,6 +22,26 @@
 	path = /obj/item/clothing/mask/surgical
 	cost = 2
 
+/datum/gear/mask/half
+	display_name = "Half Gas Mask"
+	path = /obj/item/clothing/mask/gas/half
+	cost = 2
 /datum/gear/mask/skull
 	display_name = "Bandana - Skull"
 	path = /obj/item/clothing/mask/bandana/skull
+
+/datum/gear/mask/balaclava
+	display_name = "Balaclava"
+	path = /obj/item/clothing/mask/balaclava
+
+/datum/gear/mask/muzzle
+	display_name = "Muzzle"
+	path = /obj/item/clothing/mask/muzzle
+
+/datum/gear/mask/fakemoustache
+	display_name = "Fake Moustache"
+	path = /obj/item/clothing/mask/fakemoustache
+
+/datum/gear/mask/samurai
+	display_name = "Samurai Mask"
+	path = /obj/item/clothing/mask/samurai

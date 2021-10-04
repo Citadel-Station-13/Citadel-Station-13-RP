@@ -56,6 +56,10 @@
 				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
 				return
 			else
+				if(flags & PHORONGUARD)
+					hood.flags |= PHORONGUARD
+				else
+					hood.flags &= ~PHORONGUARD
 				H.equip_to_slot_if_possible(hood,slot_head,0,0,1)
 				if(armor)
 					hood.armor = armor.Copy()
@@ -122,6 +126,7 @@
 	icon_state = "coatwinter"
 	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags = PHORONGUARD
 	flags_inv = HIDEHOLSTER
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -413,7 +418,7 @@
 	desc = "An armoured suit for exploring harsh environments."
 	icon_state = "explorer"
 	item_state = "explorer"
-	flags = THICKMATERIAL
+	flags = THICKMATERIAL | PHORONGUARD
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -441,10 +446,11 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	hoodtype = /obj/item/clothing/head/hood/winter/ronin
+	hoodtype = /obj/item/clothing/head/hood/ronin
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
 
 // Eldritch suit
 /obj/item/clothing/suit/storage/hooded/eldritch

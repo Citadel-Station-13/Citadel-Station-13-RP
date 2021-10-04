@@ -1,6 +1,6 @@
 #define SHIP_MOVE_RESOLUTION 0.00001
 #define MOVING(speed) abs(speed) >= min_speed
-#define SANITIZE_SPEED(speed) ((speed > 0)? 1 : -1) * clamp(abs(speed), 0, max_speed)
+#define SANITIZE_SPEED(speed) SIGN(speed) * clamp(abs(speed), 0, max_speed)
 #define CHANGE_SPEED_BY(speed_var, v_diff) \
 	v_diff = SANITIZE_SPEED(v_diff);\
 	if(!MOVING(speed_var + v_diff)) \
@@ -260,6 +260,12 @@
 
 /obj/effect/overmap/visitable/ship/proc/get_landed_info()
 	return "This ship cannot land."
+
+/obj/effect/overmap/visitable/ship/get_distress_info()
+	var/turf/T = get_turf(src) // Usually we're on the turf, but sometimes we might be landed or something.
+	var/x_to_use = T?.x || "UNK"
+	var/y_to_use = T?.y || "UNK"
+	return "\[X:[x_to_use], Y:[y_to_use], VEL:[get_speed() * 1000], HDG:[get_heading_degrees()]\]"
 
 #undef MOVING
 #undef SANITIZE_SPEED

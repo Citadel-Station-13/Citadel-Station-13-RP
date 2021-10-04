@@ -26,6 +26,7 @@
 	icon_living = "vagrant"
 	icon_dead = "vagrant"
 	icon_gib = "vagrant"
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/infectionbot)
 
 	maxHealth = 65
 	health = 40

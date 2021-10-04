@@ -18,4 +18,6 @@
 
 #define ATMOSPHERE_ID_TRIUMPH			/datum/atmosphere/planet/virgo3b
 
+//LAVALAND
+#define LAVALAND_EQUIPMENT_EFFECT_PRESSURE 50 //what pressure you have to be under to increase the effect of equipment meant for lavaland
 #define ATMOSPHERE_ID_LAVALAND			/datum/atmosphere/planet/lavaland

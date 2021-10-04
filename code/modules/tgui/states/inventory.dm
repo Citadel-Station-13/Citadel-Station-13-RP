@@ -25,7 +25,7 @@ GLOBAL_DATUM_INIT(ui_glasses_state, /datum/ui_state/glasses_state, new)
 		if(H.glasses == src_object)
 			return user.shared_ui_interaction()
 
-	return STATUS_CLOSE
+	return UI_CLOSE
 
 GLOBAL_DATUM_INIT(ui_nif_state, /datum/ui_state/nif_state, new)
 
@@ -35,7 +35,7 @@ GLOBAL_DATUM_INIT(ui_nif_state, /datum/ui_state/nif_state, new)
 		if(H.nif && H.nif.stat == NIF_WORKING && src_object == H.nif)
 			return user.shared_ui_interaction()
 
-	return STATUS_CLOSE
+	return UI_CLOSE
 
 GLOBAL_DATUM_INIT(ui_commlink_state, /datum/ui_state/commlink_state, new)
 
@@ -45,4 +45,4 @@ GLOBAL_DATUM_INIT(ui_commlink_state, /datum/ui_state/commlink_state, new)
 		if(H.nif && H.nif.stat == NIF_WORKING && H.nif.comm == src_object)
 			return user.shared_ui_interaction()
 
-	return STATUS_CLOSE
+	return UI_CLOSE

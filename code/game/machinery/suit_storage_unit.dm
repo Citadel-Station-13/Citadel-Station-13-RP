@@ -91,7 +91,7 @@
 		dat+= "<HEAD><TITLE>Suit storage unit: Maintenance panel</TITLE></HEAD>"
 		dat+= "<Font color ='black'><B>Maintenance panel controls</B></font><HR>"
 		dat+= "<font color ='grey'>The panel is ridden with controls, button and meters, labeled in strange signs and symbols that <BR>you cannot understand. Probably the manufactoring world's language.<BR> Among other things, a few controls catch your eye.</font><BR><BR>"
-		dat+= text("<font color ='black'>A small dial with a small lambda symbol on it. It's pointing towards a gauge that reads []</font>.<BR> <font color='blue'><A href='?src=\ref[];toggleUV=1'> Turn towards []</A></font><BR>",(issuperUV ? "15nm" : "185nm"),src,(issuperUV ? "185nm" : "15nm"))
+		dat+= text("<font color ='black'>A small dial with a small lambda symbol on it. It's pointing towards a gauge that reads []</font>.<BR> <font color=#4F49AF><A href='?src=\ref[];toggleUV=1'> Turn towards []</A></font><BR>",(issuperUV ? "15nm" : "185nm"),src,(issuperUV ? "185nm" : "15nm"))
 		dat+= text("<font color ='black'>A thick old-style button, with 2 grimy LED lights next to it. The [] LED is on.</font><BR><font color ='blue'><A href='?src=\ref[];togglesafeties=1'>Press button</a></font>",(safetieson? "<font color='green'><B>GREEN</B></font>" : "<font color='red'><B>RED</B></font>"),src)
 		dat+= text("<HR><BR><A href='?src=\ref[];mach_close=suit_storage_unit'>Close panel</A>", user)
 		//user << browse(dat, "window=ssu_m_panel;size=400x500")
@@ -106,7 +106,7 @@
 	else
 		if(!isbroken)
 			dat+= "<HEAD><TITLE>Suit storage unit</TITLE></HEAD>"
-			dat+= "<font color='blue'><font size = 4><B>U-Stor-It Suit Storage Unit, model DS1900</B></FONT><BR>"
+			dat+= "<font color=#4F49AF><font size = 4><B>U-Stor-It Suit Storage Unit, model DS1900</B></FONT><BR>"
 			dat+= "<B>Welcome to the Unit control panel.</B></FONT><HR>"
 			dat+= text("<font color='black'>Helmet storage compartment: <B>[]</B></font><BR>",(HELMET ? HELMET.name : "</font><font color ='grey'>No helmet detected."))
 			if(HELMET && isopen)
@@ -398,9 +398,9 @@
 
 	if(OCCUPANT.client)
 		if(user != OCCUPANT)
-			to_chat(OCCUPANT, "<font color='blue'>The machine kicks you out!</font>")
+			to_chat(OCCUPANT, "<font color=#4F49AF>The machine kicks you out!</font>")
 		if(user.loc != src.loc)
-			to_chat(OCCUPANT, "<font color='blue'>You leave the not-so-cozy confines of the SSU.</font>")
+			to_chat(OCCUPANT, "<font color=#4F49AF>You leave the not-so-cozy confines of the SSU.</font>")
 
 		OCCUPANT.client.eye = OCCUPANT.client.mob
 		OCCUPANT.client.perspective = MOB_PERSPECTIVE
@@ -470,7 +470,7 @@
 	if(I.is_screwdriver())
 		panelopen = !panelopen
 		playsound(src, I.usesound, 100, 1)
-		to_chat(user, "<font color='blue'>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
+		to_chat(user, "<font color=#4F49AF>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
 		updateUsrDialog()
 		return
 	if(istype(I, /obj/item/grab))
@@ -510,7 +510,7 @@
 			return
 		var/obj/item/clothing/suit/space/S = I
 		if(SUIT)
-			to_chat(user, "<font color='blue'>The unit already contains a suit.</font>")
+			to_chat(user, "<font color=#4F49AF>The unit already contains a suit.</font>")
 			return
 		to_chat(user, "You load the [S.name] into the storage compartment.")
 		user.drop_item()
@@ -524,7 +524,7 @@
 			return
 		var/obj/item/clothing/head/helmet/H = I
 		if(HELMET)
-			to_chat(user, "<font color='blue'>The unit already contains a helmet.</font>")
+			to_chat(user, "<font color=#4F49AF>The unit already contains a helmet.</font>")
 			return
 		to_chat(user, "You load the [H.name] into the storage compartment.")
 		user.drop_item()
@@ -538,7 +538,7 @@
 			return
 		var/obj/item/clothing/mask/M = I
 		if(MASK)
-			to_chat(user, "<font color='blue'>The unit already contains a mask.</font>")
+			to_chat(user, "<font color=#4F49AF>The unit already contains a mask.</font>")
 			return
 		to_chat(user, "You load the [M.name] into the storage compartment.")
 		user.drop_item()
@@ -584,7 +584,7 @@
 	//Departments that the cycler can paint suits to look like.
 	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director","Head of Security", "No Change")
 	//Species that the suits can be configured to fit.
-	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX)
+	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
 
 	var/target_department
 	var/target_species
@@ -665,6 +665,36 @@
 	req_access = list(access_hos)
 	departments = list("Head of Security", "No Change")
 	species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
+
+/obj/machinery/suit_cycler/vintage
+	name = "Vintage Crew suit cycler"
+	model_text = "Vintage"
+	departments = list("Vintage Crew","No Change")
+	req_access = null
+
+/obj/machinery/suit_cycler/vintage/pilot
+	name = "Vintage Pilot suit cycler"
+	model_text = "Vintage Pilot"
+	departments = list("Vintage Pilot (Bubble Helm)","Vintage Pilot (Closed Helm)","No Change")
+
+/obj/machinery/suit_cycler/vintage/medsci
+	name = "Vintage MedSci suit cycler"
+	model_text = "Vintage MedSci"
+	departments = list("Vintage Medical (Bubble Helm)","Vintage Medical (Closed Helm)","Vintage Research (Bubble Helm)","Vintage Research (Closed Helm)","No Change")
+
+/obj/machinery/suit_cycler/vintage/rugged
+	name = "Vintage Ruggedized suit cycler"
+	model_text = "Vintage Ruggedized"
+	departments = list("Vintage Engineering","Vintage Marine","Vintage Officer","Vintage Mercenary","No Change")
+
+/obj/machinery/suit_cycler/vintage/omni
+	name = "Vintage Master suit cycler"
+	model_text = "Vintage Master"
+	departments = list("Vintage Crew","Vintage Engineering","Vintage Pilot (Bubble Helm)","Vintage Pilot (Closed Helm)","Vintage Medical (Bubble Helm)","Vintage Medical (Closed Helm)","Vintage Research (Bubble Helm)","Vintage Research (Closed Helm)","Vintage Marine","Vintage Officer","Vintage Mercenary","No Change")
+
+/obj/machinery/suit_cycler/vintage/Initialize()
+	species -= SPECIES_TESHARI
+	return ..()
 
 /obj/machinery/suit_cycler/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -776,7 +806,7 @@
 	//Clear the access reqs, disable the safeties, and open up all paintjobs.
 	to_chat(user, "<span class='danger'>You run the sequencer across the interface, corrupting the operating protocols.</span>")
 	departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Crowd Control","Emergency Medical Response","^%###^%$", "Charring", "No Change")
-	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX)
+	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
 
 	emagged = 1
 	safeties = 0
@@ -1083,7 +1113,49 @@
 		if("Head of Security")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/headofsecurity
 			parent_suit = /obj/item/clothing/suit/space/void/headofsecurity
-
+		//BEGIN: Space for additional downstream variants
+		//VOREStation Addition Start
+		if("Manager")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/captain
+			parent_suit = /obj/item/clothing/suit/space/void/captain
+		if("Prototype")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/headofsecurity
+			parent_suit = /obj/item/clothing/suit/space/void/headofsecurity
+		if("Talon Crew")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/talon
+		if("Talon Engineering")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/engineering/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/engineering/talon
+		if("Talon Medical (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/medical/alt/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/medical/talon
+		if("Talon Medical (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/medical/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/medical/talon
+		if("Talon Marine")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/marine/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/marine/talon
+		if("Talon Officer")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/officer/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/officer/talon
+		if("Talon Pilot (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/pilot/talon
+		if("Talon Pilot (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot/alt/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/pilot/talon
+		if("Talon Research (Bubble Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/research/alt/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/research/talon
+		if("Talon Research (Closed Helm)")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/research/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/research/talon
+		if("Talon Mercenary")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/mercenary/talon
+			parent_suit = /obj/item/clothing/suit/space/void/refurb/mercenary/talon
+		//VOREStation Addition End
+		//END: downstream variant space
 	if(target_species)
 		//Only run these checks if they have a sprite sheet defined, otherwise they use human's anyways, and there is almost definitely a sprite.
 		if((helmet!=null&&(target_species in helmet.sprite_sheets_obj))||(suit!=null&&(target_species in suit.sprite_sheets_obj)))
@@ -1137,3 +1209,40 @@
 			suit.helmet.light_overlay = initial(parent_helmet.light_overlay)
 			suit.helmet.item_state_slots = AH.item_state_slots
 			qdel(AH)
+
+//TALON
+/obj/machinery/suit_cycler/vintage/tcrew
+	name = "Talon crew suit cycler"
+	model_text = "Talon crew"
+	req_access = list(access_talon)
+	departments = list("Talon Crew","No Change")
+
+/obj/machinery/suit_cycler/vintage/tpilot
+	name = "Talon pilot suit cycler"
+	model_text = "Talon pilot"
+	req_access = list(access_talon)
+	departments = list("Talon Pilot (Bubble Helm)","Talon Pilot (Closed Helm)","No Change")
+
+/obj/machinery/suit_cycler/vintage/tengi
+	name = "Talon engineer suit cycler"
+	model_text = "Talon engineer"
+	req_access = list(access_talon)
+	departments = list("Talon Engineering","No Change")
+
+/obj/machinery/suit_cycler/vintage/tguard
+	name = "Talon guard suit cycler"
+	model_text = "Talon guard"
+	req_access = list(access_talon)
+	departments = list("Talon Marine","Talon Mercenary","No Change")
+
+/obj/machinery/suit_cycler/vintage/tmedic
+	name = "Talon doctor suit cycler"
+	model_text = "Talon doctor"
+	req_access = list(access_talon)
+	departments = list("Talon Medical (Bubble Helm)","Talon Medical (Closed Helm)","No Change")
+
+/obj/machinery/suit_cycler/vintage/tcaptain
+	name = "Talon captain suit cycler"
+	model_text = "Talon captain"
+	req_access = list(access_talon)
+	departments = list("Talon Officer","No Change")

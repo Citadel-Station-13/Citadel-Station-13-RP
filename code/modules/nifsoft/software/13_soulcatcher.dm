@@ -132,7 +132,7 @@
 				printed after an intro ending with: \"Around you, you see...\" to the prey. If you already \
 				have prey, this will be printed to them after \"Your surroundings change to...\". Limit 2048 char.", \
 				"VR Environment", html_decode(inside_flavor)) as message
-				new_flavor = sanitize(new_flavor, MAX_MESSAGE_LEN*2)
+				new_flavor = sanitize(new_flavor, 32768, extra = FALSE)
 				inside_flavor = new_flavor
 				nif.notify("Updating VR environment...")
 				for(var/brain in brainmobs)
@@ -401,6 +401,9 @@
 		eyeobj.pixel_y--
 		eyeobj.is_shifted = TRUE
 
+/mob/living/carbon/brain/caught_soul/allow_examine(atom/A)
+	return TRUE
+
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
 	if(silent)
 		return FALSE
@@ -474,6 +477,7 @@
 		dummy.overlays -= dummy.hud_list
 		// appearance clone immediately
 		appearance = dummy.appearance
+		plane = PLANE_AUGMENTED
 		qdel(dummy)
 
 /mob/observer/eye/ar_soul/Destroy()
@@ -576,6 +580,13 @@
 
 ///////////////////
 //Verbs for soulbrains
+/mob/living/carbon/brain/caught_soul/verb/examine_surroundings()
+	set name = "Examine Surroundings"
+	set desc = "Examine the interior of the soulcatcher you're in."
+	set category = "Soulcatcher"
+
+	to_chat(src, "Around you, you see...<br>[soulcatcher?.inside_flavor]")
+
 /mob/living/carbon/brain/caught_soul/verb/ar_project()
 	set name = "AR Project"
 	set desc = "Project your form into Augmented Reality for those around your predator with the appearance of your loaded character."

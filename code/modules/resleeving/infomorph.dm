@@ -461,7 +461,7 @@ var/global/list/default_infomorph_software = list()
 
 /mob/living/silicon/infomorph/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, key_state = self_state)
 	if(user != src)
-		if(ui) ui.set_status(STATUS_CLOSE, 0)
+		if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	if(ui_key != "main")
@@ -469,7 +469,7 @@ var/global/list/default_infomorph_software = list()
 		if(S && !S.toggle)
 			S.on_nano_ui_interact(src, ui, force_open)
 		else
-			if(ui) ui.set_status(STATUS_CLOSE, 0)
+			if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	var/data[0]

@@ -23,3 +23,7 @@
 
 /mob/living/simple_mob/mechanical/speech_bubble_appearance()
 	return faction != "neutral" ? "synthetic_evil" : "machine"
+
+// Fix for Virgo 2's Surface
+/mob/living/simple_mob/mechanical
+	maxbodytemp = 700

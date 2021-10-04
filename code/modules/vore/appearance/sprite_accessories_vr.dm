@@ -39,7 +39,7 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 	apply_restrictions = TRUE
-	species_allowed = list(SPECIES_SHADEKIN)
+	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 
 // Ears avaliable to anyone
 
@@ -382,7 +382,7 @@
 	icon_state = "elfs"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
-	
+
 /datum/sprite_accessory/ears/floppyelf
 	name = "floppy elven ears"
 	desc = ""
@@ -578,6 +578,16 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "moth_antenna_fluff_whitefly"
 
+//Mushroom Heads - Ha.
+/datum/sprite_accessory/ears/fungal_muscaria
+    name = "fungal muscaria cap"
+    desc = ""
+    icon_state = "fungal_muscaria"
+
+/datum/sprite_accessory/ears/fungal_polypore
+    name = "fungal polyporous cap"
+    desc = ""
+    icon_state = "fungal_polypore"
 
 // Special snowflake ears go below here.
 
@@ -671,6 +681,14 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+//Ears
+/datum/sprite_accessory/ears/inkling
+	name = "colorable mature inkling tentacles"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_state = "inkling-colorable"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /*
 ////////////////////////////
 /  =--------------------=  /
@@ -709,6 +727,20 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "spider legs"
 	desc = ""
 	icon_state = "spider-legs"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/mantis_arms //Same rationale as spider legs.
+	name = "mantis arms"
+	desc = ""
+	icon_state = "mantis-arms"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/wing/mantis_arms_saturated
+	name = "mantis arms (saturated)"
+	desc = ""
+	icon_state = "mantis-arms_saturated"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
@@ -1367,14 +1399,6 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	ani_state = "ketraitail_w"
 	//ckeys_allowed = list("ketrai") //They requested it to be enabled for everyone.
 
-/datum/sprite_accessory/tail/tamamo_kitsune
-	name = "Tamamo Kitsune Tails" //Tamamo-no-Tiro, let it be known!
-	desc = ""
-	icon_state = "tamamo-kitsunetails"
-	extra_overlay = "tamamo-kitsunetails-tips"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
 /datum/sprite_accessory/tail/foxtail
 	name = "Fox"
 	desc = ""	//leaving this just in case i break something if i just don't include a blank description because this codebase is akin to a house of cards
@@ -1385,12 +1409,28 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	ani_state = "foxtail_but_good_w"
 	extra_overlay_w = "foxtail_but_good-tips_w"
 
+/datum/sprite_accessory/tail/tamamo_kitsune
+	name = "Tamamo Kitsune Tails" //Tamamo-no-Tiro, let it be known!
+	desc = ""
+	icon_state = "tamamo-kitsunetails"
+	extra_overlay = "tamamo-kitsunetails-tips"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/tail/triple_kitsune
 	name = "Triple Kitsune Tails"
 	desc = ""
 	icon_state = "triple-kitsunetails"
 	extra_overlay = "triple-kitsunetails-tips"
-	do_colouration = 1
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY
+
+/datum/sprite_accessory/tail/takahiro_kitsune
+	name = "Takahiro Kitsune Tails" //takahiro had five tails i just wanted to follow the 'T' naming convention vs. tamamo and triple
+	desc = ""
+	icon_state = "takahiro-kitsunetails"
+	extra_overlay = "takahiro-kitsunetails-tips"
+	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/redpanda
@@ -1591,6 +1631,12 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "teshpattern_fem_alt"
 
+/datum/sprite_accessory/tail/beaver
+	name = "beaver tail, colorable"
+	desc = ""
+	icon_state = "beaver"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 //For all species tails. Includes haircolored tails.
 /datum/sprite_accessory/tail/special
@@ -2023,6 +2069,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	desc = ""
 	icon_state = "tail_smooth"
 	ani_state = "tail_smooth_w"
+	do_colouration = 1
 
 /datum/sprite_accessory/tail/wartacosushi_tail //brightened +20RGB from matching roboparts
 	name = "Ward-Takahashi Tail"
@@ -2075,3 +2122,21 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 	ani_state = "tentacles_wag"
+
+/datum/sprite_accessory/tail/liontail
+	name = "Lion Tail (vwag)"
+	desc = ""
+	icon_state = "liontail"
+	ani_state = "liontail_w"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "liontail_markings"
+	extra_overlay_w = "liontail_markings_w"
+
+/datum/sprite_accessory/tail/jackal_bicolor
+	name = "jackal, dual-colorable"
+	desc = ""
+	icon_state = "jackal_bicolor"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+	extra_overlay = "jackal_bicolor_extra"

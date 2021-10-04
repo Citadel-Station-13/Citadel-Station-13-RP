@@ -100,6 +100,11 @@
 /////////////////
 */
 
+/// Called from orbit component: (atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
+#define COMSIG_ATOM_ORBIT_BEGIN "atom_orbit_begin"
+/// Called from orbit component: (atom/movable/orbiter, refreshing)
+#define COMSIG_ATOM_ORBIT_END "atom_orbit_end"
+
 #define COMSIG_ENTER_AREA "enter_area" 						//from base of area/Entered(): (/area)
 #define COMSIG_EXIT_AREA "exit_area" 							//from base of area/Exited(): (/area)
 
@@ -122,8 +127,10 @@
 // /turf signals
 #define COMSIG_TURF_CHANGE "turf_change"						//from base of turf/ChangeTurf(): (path, list/new_baseturfs, flags, list/transferring_comps)
 #define COMSIG_TURF_HAS_GRAVITY "turf_has_gravity"				//from base of atom/has_gravity(): (atom/asker, list/forced_gravities)
-#define COMSIG_TURF_MULTIZ_NEW "turf_multiz_new"				//from base of turf/New(): (turf/source, direction)
 */
+#define COMSIG_TURF_MULTIZ_DEL "turf_multiz_del"
+///from base of turf/multiz_turf_new: (turf/source, direction)
+#define COMSIG_TURF_MULTIZ_NEW "turf_multiz_new"
 
 // /atom/movable signals
 #define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"					//from base of atom/movable/Moved(): (/atom)
@@ -372,3 +379,9 @@ obj/item signals
 #define COMSIG_XENO_TURF_CLICK_CTRL "xeno_turf_click_alt"					//from turf AltClickOn(): (/mob)
 #define COMSIG_XENO_MONKEY_CLICK_CTRL "xeno_monkey_click_ctrl"				//from monkey CtrlClickOn(): (/mob)
 */
+
+// conflict checking elements
+/// (id) - returns flags - Registered on something by conflict checking elements.
+#define COMSIG_CONFLICT_ELEMENT_CHECK "conflict_element_check"
+	/// A conflict was found
+	#define ELEMENT_CONFLICT_FOUND	(1<<0)

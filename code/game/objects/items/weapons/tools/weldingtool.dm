@@ -647,4 +647,26 @@
 /obj/item/weldingtool/electric/mounted/cyborg
 	toolspeed = 0.5
 
+/obj/item/weldingtool/electric/mounted/exosuit
+	var/obj/item/mecha_parts/mecha_equipment/equip_mount = null
+	flame_intensity = 1
+	eye_safety_modifier = 2
+	always_process = TRUE
+
+/obj/item/weldingtool/electric/mounted/exosuit/Initialize()
+	. = ..()
+
+	if(istype(loc, /obj/item/mecha_parts/mecha_equipment))
+		equip_mount = loc
+
+/obj/item/weldingtool/electric/mounted/exosuit/process()
+	..()
+
+	if(equip_mount && equip_mount.chassis)
+		var/obj/mecha/M = equip_mount.chassis
+		if(M.selected == equip_mount && get_fuel())
+			setWelding(TRUE, M.occupant)
+		else
+			setWelding(FALSE, M.occupant)
+
 #undef WELDER_FUEL_BURN_INTERVAL

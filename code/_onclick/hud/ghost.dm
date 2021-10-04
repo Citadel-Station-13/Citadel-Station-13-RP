@@ -12,7 +12,7 @@
 	closeToolTip(usr)
 
 /obj/screen/ghost/returntomenu
-	name = "Return to menu"
+	name = "Respawn"
 	desc = "Return to the title screen menu."
 	icon_state = "returntomenu"
 

@@ -190,7 +190,7 @@
 		icon_state = "computer"
 		set_light(0)
 
-	if(!stat & (BROKEN|NOPOWER))
+	if(!(stat & (BROKEN|NOPOWER)))
 		icon = initial(icon)
 		icon_state = initial(icon_state)
 		set_light(light_range_on, light_power_on)

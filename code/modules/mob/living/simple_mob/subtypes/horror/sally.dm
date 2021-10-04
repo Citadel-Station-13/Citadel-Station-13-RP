@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/Sally
+	name = "*@!!EARS*OF#@$$$JOY"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/Sally
 	name = "???"
 	desc = "A mass of tentacles hold up a large head, graced with one of the grandest smiles in the galaxy. It's a shame about the constant oil leaking from its eyes."
@@ -9,6 +15,7 @@
 	faction = "horror"
 	icon = 'icons/mob/horror_show/widehorror.dmi'
 	icon_gib = "generic_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Sally)
 
 	attack_sound = 'sound/h_sounds/sampler.ogg'
 
