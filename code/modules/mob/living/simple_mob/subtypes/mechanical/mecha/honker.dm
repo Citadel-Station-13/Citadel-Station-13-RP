@@ -46,13 +46,13 @@
 
 	desc = "As the unending battle over Vaudium wages to this day, it should come as no surprise that both \
 	Clowns and Mimes continue to iterate on their unique forms of military technology. The C.L.U.W.N.E. is the \
-	big brother of the H.O.N.K. mech. Utilizing similar design philosophy and based off of the same chassis, the \
-	C.L.U.W.N.E. chassis is more armored and durable, addressing several vulnerabilities found in the original H.O.N.K. \
-	design. Thoroughly robust, these mecha are frequently deployed on the front lines of the conflict, and may rarely be \
+	successor to the H.O.N.K. mech. Utilizing similar design philosophy and based off of the same chassis, the \
+	C.L.U.W.N.E. is significantly more armored and durable, addressing several vulnerabilities in the original H.O.N.K. \
+	design. Demonstrably effective, these mecha are frequently deployed on the front lines of the conflict, and may rarely be \
 	dispatched off-planet to support Clown Commando teams. Due to the immense amount of Vaudium required to fabricate a \
-	single C.L.U.W.N.E. mech, their mass production is untenable. Even if it were, Clown Planet guards the mech's schematics \
-	jealously. It is currently assumed that the mechs' designation stands for 'Combative Laughter Unit With New Equipment', though \
-	this guess is widely disputed."
+	single C.L.U.W.N.E. mech, their mass production remains untenable. Even if it were, Clown Planet guards the mech's schematics \
+	jealously. It is currently assumed that the mecha's designation stands for 'Combative Laughter Unit With New Equipment', though \
+	this theory is widely disputed."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/honker/cluwne
@@ -60,7 +60,7 @@
 	desc = "The C.L.U.W.N.E. mecha is an up-armored cousin of the H.O.N.K. mech. Still in service on the borders of the Clown Planet, this unit is not typically found elsewhere."
 	catalogue_data = list(/datum/category_item/catalogue/technology/cluwne)
 	icon_state = "cluwne"
-	wreckage = /obj/structure/loot_pile/mecha/hokner/cluwne
+	wreckage = /obj/structure/loot_pile/mecha/honker/cluwne
 
 	maxHealth = 400
 	deflect_chance = 25

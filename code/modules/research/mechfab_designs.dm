@@ -359,7 +359,7 @@
 	id = "honker_armour"
 	build_path = /obj/item/mecha_parts/part/honker_armour
 	time = 60
-	materials = list(DEFAULT_WALL_MATERIAL = 37500, "diamond" = 7500, "plastic" = 5000)
+	materials = list(DEFAULT_WALL_MATERIAL = 37500, "diamond" = 7500, "plastic" = 5000, "bananium" = 20000)
 
 /datum/design/item/mecha
 	build_type = MECHFAB
@@ -539,7 +539,7 @@
 	id = "mech_soundcannon"
 	req_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 4, TECH_ILLEGAL = 3)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/honker
-	materials = list(DEFAULT_WALL_MATERIAL = 13000, "silver" = 1000, "osmium" = 3000, "plastic" = 2000)
+	materials = list(DEFAULT_WALL_MATERIAL = 13000, "silver" = 1000, "osmium" = 3000, "plastic" = 2000, "bananium" = 4000)
 
 /datum/design/item/mecha/weapon/grenade_launcher
 	name = "SGL-6 Grenade Launcher"
@@ -582,14 +582,14 @@
 	id = "mech_banana_launcher"
 	req_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/banana
-	materials = list(DEFAULT_WALL_MATERIAL = 7000, "gold" = 2000, "osmium" = 1000, "plastic" = 5000)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "gold" = 2000, "osmium" = 1000, "plastic" = 5000, "bananium" = 4000)
 
 /datum/design/item/mecha/weapon/mousetrap_launcher
 	name = "WSS-5 Mouse Trap Launcher"
 	id = "mech_mousetrap_launcher"
 	req_tech = list(TECH_COMBAT = 3, TECH_ILLEGAL = 3)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/mousetrap
-	materials = list(DEFAULT_WALL_MATERIAL = 7000, "gold" = 2000, "osmium" = 1000, "plastic" = 5000)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "gold" = 2000, "osmium" = 1000, "plastic" = 5000, "bananium" = 4000)
 
 /datum/design/item/mecha/weapon/flamer
 	name = "CR-3 Mark 8 Flamethrower"
