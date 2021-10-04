@@ -8,18 +8,19 @@
 	oxygen requirements to support their robust metabolism."
 
 	toxins_mod = 	0.8
-	radiation_mod = 0.5
+	radiation_mod = 0.95
 
 	brute_mod =     0.90
 	burn_mod = 		0.90
 
 	slowdown =      0.2 //Minor general slowdown
-	item_slowdown_mod = 0.75 //Reduced Item slowdown
+	item_slowdown_mod = 0.95 //Reduced Item slowdown
 
 	oxy_mod =       1.1
 	minimum_breath_pressure = 18
 
 	total_health = 130
+	hunger_factor = 0.075//50% more hungry
 
 	has_limbs = list(
 		BP_TORSO =	list("path" = /obj/item/organ/external/chest/gravworlder),
@@ -55,6 +56,7 @@
 	blood_volume = 640 // 8/7 of baseline
 
 	toxins_mod =   1.4
+	radiation_mod = 0.6
 
 	oxy_mod =   0.6
 
@@ -62,7 +64,8 @@
 
 	flash_mod = 1.2
 
-	item_slowdown_mod = 1.1 //Minor slowdown
+	slowdown = -0.1//Minor speedboost
+	item_slowdown_mod = 1.05 //Minor slowdown
 
 	has_limbs = list(
 		BP_TORSO =	list("path" = /obj/item/organ/external/chest/spacer),
@@ -96,6 +99,7 @@
 	toxins_mod =   	1.05
 
 	total_health = 115
+	hunger_factor = 0.35//less hungry
 
 	has_organ = list(
 		O_HEART =    /obj/item/organ/internal/heart,
