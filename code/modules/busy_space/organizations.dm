@@ -1,25 +1,25 @@
 //Datums for different companies that can be used by busy_space
 /datum/lore/organization
-	// Organization's name
+	/// Organization's name
 	var/name = ""
-	// Organization's shortname (NanoTrasen for "NanoTrasen Incorporated")
+	/// Organization's shortname (NanoTrasen for "NanoTrasen Incorporated")
 	var/short_name = ""
-	// Organization's acronym, e.g. 'NT' for NanoTrasen'.
+	/// Organization's acronym, e.g. 'NT' for NanoTrasen'.
 	var/acronym = ""
-	// One or two paragraph description of the organization, but only current stuff.  Appears in the lore codex book.
+	/// One or two paragraph description of the organization, but only current stuff.  Currently unused.
 	var/desc = ""
-	// Historical description of the organization's origins  Currently unused.
+	/// Historical discription of the organization's origins  Currently unused.
 	var/history = ""
-	// Short description of their work, eg "an arms manufacturer"
+	/// Short description of their work, eg "an arms manufacturer"
 	var/work = ""
-	// Location of the organization's HQ.  Currently unused.
+	/// Location of the organization's HQ.  Currently unused.
 	var/headquarters = ""
-	// A motto/jingle/whatever, if they have one.  Currently unused.
+	/// A motto/jingle/whatever, if they have one.  Currently unused.
 	var/motto = ""
 
-	// Some might have more than one! Like NanoTrasen. Value is the mission they perform, e.g. ("ABC" = "mission desc")
-	var/list/ship_prefixes = list("ABORT" = "a compilation error") //this should no longer come up, but I'm leaving it as a fallback - if you see this, report it!
-	// Enables complex task generation
+	/// Some might have more than one! Like NanoTrasen. Value is the mission they perform, e.g. ("ABC" = "mission desc")
+	var/list/ship_prefixes = list()
+	/// Enables complex task generation
 	var/complex_tasks = FALSE
 
 	//how does it work? simple: if you have complex tasks enabled, it goes; PREFIX + TASK_TYPE + FLIGHT_TYPE
@@ -30,11 +30,11 @@
 		"logistics", "patrol", "training",
 		"peacekeeping",	"escort", "search and rescue"
 		)
-	// Operations and flights - we can override this if we want to remove the military-sounding ones or add our own
+	/// Operations and flights - we can override this if we want to remove the military-sounding ones or add our own
 	var/list/flight_types = list(
 		"flight", "mission", "route", "assignment"
 		)
-	// Names of spaceships.  This is a mostly generic list that all the other organizations inherit from if they don't have anything better.
+	/// Names of spaceships.  This is a mostly generic list that all the other organizations inherit from if they don't have anything better.
 	var/list/ship_names = list(
 		"Scout", "Beacon", "Signal", "Freedom",	"Liberty", "Enterprise",
 		"Glory", "Axiom", "Eternal", "Harmony", "Light", "Discovery",
@@ -44,51 +44,30 @@
 		"Avenger", "Defiant", "Dauntless", "Interceptor", "Providence",
 		"Thunderchild", "Defender", "Ranger", "River", "Jubilee"
 		)
-	// Names of static holdings that the organization's ships visit regularly.
+	/// Names of static holdings that the organization's ships visit regularly.
 	var/list/destination_names = list()
 
-	// How often should we appear?
-	var/commonality = 100 //this is the default value for each entry when using pick()
-
-	// Are we exempt from routine inspections? to avoid incidents where SysDef appears to go rogue -- defaults to TRUE now
+	/// Are we exempt from routine inspections? to avoid incidents where SysDef appears to go rogue -- defaults to TRUE now
 	var/lawful = TRUE
 
-	// Are we explicitly lawless, hostile, or otherwise bad? allows for a finer alignment system, since my last checks weren't working properly
+	/// Are we explicitly lawless, hostile, or otherwise bad? allows for a finer alignment system, since my last checks weren't working properly
 	var/hostile = FALSE
 
-	// Are we the space cops?
+	/// Are we the space cops?
 	var/sysdef = FALSE
 
-	// Is this part of the fleet/station makeup?
-	// var/fleet = FALSE
+	/// Is this part of the fleet/station makeup?
+	var/fleet = FALSE
 
-	// Pad the destination lists with some extra random ones?
+	/// Pad the destination lists with some extra random ones?
 	var/autogenerate_destination_names = TRUE
 
-
-/datum/lore/defunct_organization
-	// Organization's name
-	var/name = ""
-	// Organization's shortname (NanoTrasen for "NanoTrasen Incorporated")
-	var/short_name = ""
-	// Organization's acronym, e.g. 'NT' for NanoTrasen'.
-	var/acronym = ""
-	// One or two paragraph description of the organization, but only current stuff.  Currently unused.
-	var/desc = ""
-	// Historical discription of the organization's origins  Currently unused.
-	var/history = ""
-	// Short description of their work, eg "an arms manufacturer"
-	var/work = ""
-	// Location of the organization's HQ.  Currently unused.
-	var/headquarters = ""
-	// A motto/jingle/whatever, if they have one.  Currently unused.
-	var/motto = ""
 
 /datum/lore/organization/New()
 	if(autogenerate_destination_names) // Lets pad out the destination names.
 		var/i = rand(7, 12) //was 6-10, now 7-12, slight increase for flavor, especially 'starved' lists
 
-		// known planets and exoplanets, plus fictional ones
+		/// known planets and exoplanets, plus fictional ones
 		var/list/planets = list(
 			"Earth", "Luna", "Mars", "Titan", "Europa", "Sif", "Kara", "Rota",
 			"Root", "Toledo, New Ohio", "Meralar", "Adhomai", "Arion", "Arkas",
@@ -96,7 +75,7 @@
 			"Amateru", "Dagon", "Meztli", "Hypatia", "Dulcinea", "Rocinante",
 			"Sancho", "Thestias", "Saffar", "Samh", "Majriti", "Draugr")
 
-		// existing systems, pruned for duplicates, includes systems that contain suspected or confirmed exoplanets
+		/// existing systems, pruned for duplicates, includes systems that contain suspected or confirmed exoplanets
 		var/list/systems = list(
 			"Sol", "Alpha Centauri", "Sirius", "Vega", "Tau Ceti", "Zhu Que",
 			"Oasis", "Vir", "Gavel", "Ganesha", "Saint Columbia", "Altair",
@@ -118,7 +97,7 @@
 			"an exploration", "a trade", "a research", "a survey", "a military",
 			"a mercenary", "a corporate", "a civilian", "an independent")
 
-		// unique or special locations
+		/// unique or special locations
 		var/list/unique = list("the Jovian subcluster")
 
 		var/list/orbitals = list(
@@ -167,19 +146,22 @@
 	for newly tested posibrains to remain with the company."
 	work = "research giant"
 	headquarters = "Creon, Thebes"
-	// fleet = TRUE
-
-	commonality = 200 //this is NT-owned space, after all!
+	fleet = TRUE
 
 	ship_prefixes = list("NTV" = "a general operations", "NEV" = "an exploration", "NSV" = "a research", "NGV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
-	// Scientist naming scheme
+	/// Scientist naming scheme
 	ship_names = list(
 		"Bardeen", "Einstein", "Feynman", "Sagan", "Tyson",	"Galilei",
 		"Jans",	"Fhriede", "Franklin", "Tesla", "Curie", "Darwin",
 		"Newton", "Pasteur", "Bell", "Mendel", "Kepler", "Edison",
 		"Cavendish", "Nye", "Hawking", "Aristotle", "Von Braun", "Kaku",
-		"Oppenheimer", "Renwick", "Hubble", "Alcubierre", "Robineau", "Glass")
-	// Note that the current station being used will be pruned from this list upon being instantiated
+		"Oppenheimer", "Renwick", "Hubble", "Alcubierre", "Robineau", "Glass",
+		"Curiosity", "Voyager", "Perseverance", "Once More With Feeling",
+		"Pretty Boy", "Whiskey Ring", "Uranus", "Chappaquiddick", "Dead Ringer",
+		"Watershed", "Zeus", "Defiant","Firefly", "Screaming Gale", "Gee Golly",
+		"Star Drifter", "Albatross", "Hawk", "Falcon", "Mule", "Caravel", "Galleon",
+		"Atlas", "Conestoga", "Endurance", "Donkey", "Grand Duke", "Prince", "Princess")
+	/// Note that the current station being used will be pruned from this list upon being instantiated
 	destination_names = list(
 		"NT HQ", "NSS Exodus in Nyx", "NCS Northern Star in Vir",
 		"NLS Southern Cross in Vir", "NAS Vir Central Command",
@@ -437,7 +419,7 @@
 
 /datum/lore/organization/tsc/ftu
 	name = "Free Trade Union"
-	short_name = "Trade Union "
+	short_name = "Trade Union"
 	acronym = "FTU"
 	desc = "The Free Trade Union is different from other tran-stellars in that they are not just a company, but also a large conglomerate \
 	of various traders and merchants from all over the galaxy. They control a sizable fleet of vessels of various classes, which maintain autonomy \
@@ -468,10 +450,7 @@
 		"Jamsetji Tata", "Masaru Ibuka",)
 	destination_names = list("a Free Trade Union office", "FTU HQ")
 
-/*
-// Until someone (maybe me, maybe not me) can figure out how to handle this better, defunct corps have to be commented out entirely. it's not enough to disable their prefixes/names/destinations - this will just cause a runtime when the event is rolled because the default prefix list was empty.
-// Also not sure there's much point keeping them in codex anyway if they dissolved over 100 years ago. Most people won't even remember them!
-/datum/lore/defunct_organization/tsc/mbt
+/datum/lore/organization/tsc/mbt
 	name = "Major Bill's Transportation"
 	short_name = "Major Bill's "
 	acronym = "MBT"
@@ -486,6 +465,7 @@
 	headquarters = "Defunct"
 	motto = "With Major Bill's, you won't pay major bills!"
 
+	/* Retained for lore purposes.
 	ship_prefixes = list("TTV" = "a general operations", "TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit", "TTV" = "a secure data courier")
 	//ship names: big rivers
 	ship_names = list (
@@ -2203,7 +2183,7 @@
 			"unidentified sensor reading",
 			"PMD Pitcairn",
 			"a PMD containment facility",
-			"a PMD research center",
+			"a PMDresearch center",
 			"active distress signal",
 			"an active incident site"
 			)

@@ -4,7 +4,7 @@
 	<br><br>\
 	The many star systems inhabitied by humanity and friends can seem bewildering to the uninitiated. \
 	This guide seeks to provide valuable information to anyone new in the system. This edition is tailored for visitors to the Virgo-Erigone system, \
-	however it also contains useful general information about human space, such as locations you may hear about, the current (as of 2565) political climate, various aliens you \
+	however it also contains useful general information about human space, such as locations you may hear about, the current (as of 2562) political climate, various aliens you \
 	may meet in your travels, the big Trans-Stellars, and more."
 	children = list(
 		/datum/lore/codex/category/important_locations,
