@@ -1179,7 +1179,7 @@ var/list/name_to_material
 	conductive = 0
 
 //Vaudium products
-/datum/material/steel
+/datum/material/bananium
 	name = DEFAULT_WALL_MATERIAL
 	stack_type = /obj/item/stack/material/bananium
 	integrity = 150
