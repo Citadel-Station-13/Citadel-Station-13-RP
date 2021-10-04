@@ -22,6 +22,7 @@
 	result = "hot_coco"
 	required_reagents = list("water" = 5, "coco" = 1)
 	result_amount = 5
+
 /datum/chemical_reaction/drinks/grapejuice
 	name = "Grape Juice"
 	id = "grapejuice"
@@ -1528,3 +1529,31 @@
 	result = "lovemaker"
 	required_reagents = list("honey" = 1, "sexonthebeach" = 5)
 	result_amount = 6
+
+/datum/chemical_reaction/drink/messa_mead
+	name = "Messa's Mead"
+	id = "messa_mead"
+	result = "messa_mead"
+	required_reagents = list("ethanol" = 1, "eroot" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drink/winter_offensive
+	name = "Winter Offensive"
+	id = "winter_offensive"
+	result = "winter_offensive"
+	required_reagents = list("ice" = 1, "victory_gin" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drink/internationale
+	name = "Internationale"
+	id = "internationale"
+	result = "internationale"
+	required_reagents = list("victory_gin" = 1, "vodka" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drink/peacetreaty
+	name = "Peace Treaty"
+	id = "peacetreaty"
+	result = "peacetreaty"
+	required_reagents = list("victory_gin" = 1, "messa_mead" = 1, "lemonjuice" = 1)
+	result_amount = 3

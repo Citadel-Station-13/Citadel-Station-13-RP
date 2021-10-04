@@ -75,4 +75,19 @@
 	caliber = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/a762/silver
 
+/obj/item/gun/projectile/contender/taj
+	name = "Adhomai pocket rifle"
+	desc = "A hand cannon produced by Akhan and Khan. Its simple design dates back to the civil war where hand cannons like it were rushed into service to counter the massive arms shortage the Kingdom of Adhomai faced at the start of the war. Since then A&K have refined the design into a mainstay backup weapon of solider and civilian alike."
+	icon_state = "pockrifle_d"
+	icon_retracted = "pockrifle_d-empty"
+
+/obj/item/gun/projectile/contender/taj/a44
+	caliber = ".44"
+	ammo_type = /obj/item/ammo_casing/a44
+
+/obj/item/gun/projectile/contender/taj/a762
+	caliber = "7.62mm"
+	ammo_type = /obj/item/ammo_casing/a762
+
+
 
