@@ -39,7 +39,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	// 450 was the original time. Reducing to 300 due to lower init times on the server. If this is a problem, revert back to 450 as we had no ATC issues with that time.
 	spawn(300 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
 		/// HEY! if we have listiners for ssticker go use that instead of this snowflake.
-		msg("Crew transfer complete for all vessels. As a reminder, this shift's fleet frequencies are as follows for this shift: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
+		msg("Crew transfer complete. This shift's frequencies are as follows: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
 		next_message = world.time + initial_delay
 		START_PROCESSING(SSobj, src)
 
@@ -77,7 +77,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	// OKAY what's happening here is a lot less agony inducing than it might seem. All that's happening here is a weighted RNG choice between the listed options in a variable.
 	// The first, [1], is for NanoTrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
 	// ALL the companies and items this list pulls from can be found in the organizations.dm file in this same folder (busy_space).
-	var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[1]=90,pick(GLOB.loremaster.organizations)=20))]
+	// Default weight for an item is 100
+	var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[1]=60,pick(GLOB.loremaster.organizations)=20))]
 
 		/// repurposed for new fun stuff
 	var/datum/lore/organization/secondary = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
@@ -110,8 +111,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	/// are we actually system law/SDF? unlocks the SDF-specific events
 	var/source_system_defense = source.sysdef
 
-	/// Are we part of the fleet?
-	var/source_fleet = source.fleet
+	/// Are we part of the fleet? Not needed whilst fleet events are disabled
+	// var/source_fleet = source.fleet
 
 	/////////////
 
@@ -147,7 +148,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	if(source.complex_tasks)
 		mission_noun = "[pick(source.task_types)] [pick(source.flight_types)]"
 
-	//First response is 'yes', second is 'no'
+	//First response is 'yes', second is 'no', we need both or this falls over
 	var/list/requests = list(
 		"special flight rules" = list("authorizing special flight rules", "denying special flight rules, not allowed for your traffic class"),
 		"current solar weather info" = list("sending you the relevant information via tightbeam", "your request has been queued, stand by"),
@@ -162,10 +163,12 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/chatter_type = "normal"
 	if(force_chatter_type)
 		chatter_type = force_chatter_type
-	//I have to offload this from the chatter_type switch below and do it here. Byond should throw a shitfit because this isn't how you use pick.
+	//I have to offload this from the chatter_type switch below and do it here.
+	/*
 	else if(source_law_abiding && source_fleet)
 		chatter_type = pickweight(list("fleettraffic" = 90, "emerg" = 10, "dockingrequestgeneric" = 10,"dockingrequestsupply" = 10,
 		"dockingrequestrepair" = 10,"undockingrequest" = 5, "normal"))
+	*/
 
 	else if(source_law_abiding && !source_system_defense)
 		chatter_type = pickweight(list("emerg" = 5, "policescan" = 25, "traveladvisory" = 25,
@@ -221,7 +224,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/request = pick(requests)
 	var/callname = pick(alt_atc_names)
 	var/response = requests[request][yes ? 1 : 2] //1 is yes, 2 is no
-	var/number = rand(1,15)
+	var/number = rand(1,42)
 	var/zone = pick("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta",
 		"Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi",
 		"Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega")

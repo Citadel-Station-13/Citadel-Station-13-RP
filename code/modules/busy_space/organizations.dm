@@ -419,7 +419,7 @@
 
 /datum/lore/organization/tsc/ftu
 	name = "Free Trade Union"
-	short_name = "Trade Union"
+	short_name = "Trade Union "
 	acronym = "FTU"
 	desc = "The Free Trade Union is different from other tran-stellars in that they are not just a company, but also a large conglomerate \
 	of various traders and merchants from all over the galaxy. They control a sizable fleet of vessels of various classes, which maintain autonomy \
@@ -450,6 +450,8 @@
 		"Jamsetji Tata", "Masaru Ibuka",)
 	destination_names = list("a Free Trade Union office", "FTU HQ")
 
+/*
+//has to be disabled entirely or else the system will runtime any time MBT comes up
 /datum/lore/organization/tsc/mbt
 	name = "Major Bill's Transportation"
 	short_name = "Major Bill's "
@@ -465,7 +467,7 @@
 	headquarters = "Defunct"
 	motto = "With Major Bill's, you won't pay major bills!"
 
-	/* Retained for lore purposes.
+	// Retained for lore purposes.
 	ship_prefixes = list("TTV" = "a general operations", "TTV" = "a transport", "TTV" = "a luxury transit", "TTV" = "a priority transit", "TTV" = "a secure data courier")
 	//ship names: big rivers
 	ship_names = list (
@@ -2183,7 +2185,7 @@
 			"unidentified sensor reading",
 			"PMD Pitcairn",
 			"a PMD containment facility",
-			"a PMDresearch center",
+			"a PMD research center",
 			"active distress signal",
 			"an active incident site"
 			)
