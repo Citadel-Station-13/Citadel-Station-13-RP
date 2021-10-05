@@ -2070,6 +2070,24 @@
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
+"xJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/mob/living/simple_mob/animal/space/jelly{
+	desc = "Everyone loves Mr. Wiggleblob! Don't you just want to cuddle it and potentially be devoured? I know I do!";
+	name = "Mr. Wiggleblob"
+	},
+/turf/simulated/floor/wood,
+/area/talon/decktwo/cap_room)
 "xL" = (
 /obj/machinery/shield_capacitor/advanced{
 	anchored = 1;
@@ -14454,7 +14472,7 @@ XJ
 kf
 FF
 UW
-UW
+xJ
 og
 Al
 rQ
