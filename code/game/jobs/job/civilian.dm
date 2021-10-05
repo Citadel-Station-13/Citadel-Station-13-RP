@@ -186,6 +186,11 @@
 		"Philosopher" = /datum/alt_title/philosopher
 	)
 
+/datum/alt_title/librarian/reporter
+	title = "Reporter"
+	title_blurb = "Although NanoTrasen's official Press outlet is managed by Central Command, they often hire freelance journalists for local coverage."
+	title_outfit = /decl/hierarchy/outfit/job/librarian/reporter
+
 // Librarian Alt Titles
 /datum/alt_title/journalist
 	title = "Journalist"
@@ -276,9 +281,17 @@
 
 	outfit_type = /decl/hierarchy/outfit/job/assistant
 	job_description = "An entertainer does just that, entertains! Put on plays, play music, sing songs, tell stories, or read your favorite fanfic."
-	alt_titles = list("Performer" = /datum/alt_title/performer, "Musician" = /datum/alt_title/musician, "Stagehand" = /datum/alt_title/stagehand,
-						"Actor" = /datum/alt_title/actor, "Dancer" = /datum/alt_title/dancer, "Singer" = /datum/alt_title/singer,
-						"Magician" = /datum/alt_title/magician, "Comedian" = /datum/alt_title/comedian, "Tragedian" = /datum/alt_title/tragedian)
+	alt_titles = list(
+		"Performer" = /datum/alt_title/performer,
+		"Musician" = /datum/alt_title/musician,
+		"Stagehand" = /datum/alt_title/stagehand,
+		"Actor" = /datum/alt_title/actor,
+		"Dancer" = /datum/alt_title/dancer,
+		"Singer" = /datum/alt_title/singer,
+		"Magician" = /datum/alt_title/magician,
+		"Comedian" = /datum/alt_title/comedian,
+		"Tragedian" = /datum/alt_title/tragedian
+		)
 
 // Entertainer Alt Titles
 /datum/alt_title/actor

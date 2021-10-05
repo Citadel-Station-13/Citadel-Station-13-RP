@@ -21,6 +21,16 @@ var/list/floor_decals = list()
 	add_to_turf_decals()
 	qdel(src)
 
+/obj/effect/floor_decal/proc/make_decal_image()
+	var/image/I = image(icon = icon, icon_state = icon_state, dir = dir)
+	I.layer = MAPPER_DECAL_LAYER
+	I.color = color
+	I.alpha = alpha
+	return I
+
+/obj/effect/floor_decal/proc/get_cache_key(var/turf/T)
+	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]"
+
 // This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.
 /obj/effect/floor_decal/proc/add_to_turf_decals()
 	if(supplied_dir)

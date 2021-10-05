@@ -319,14 +319,24 @@
 	reagents.add_reagent("cognac", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/wine
-	name = "Doublebeard Bearded Special Wine"
-	desc = "Cheap cooking wine pretending to be drinkable."
+	name = "Crab Cove Merlot"
+	desc = "Cheap red cooking wine pretending to be drinkable."
 	icon_state = "winebottle"
 	center_of_mass = list("x"=16, "y"=4)
 
 /obj/item/reagent_containers/food/drinks/bottle/wine/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("wine", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/whitewine
+	name = "Crab Cove Sauvignon Blanc"
+	desc = "White wine that's oddly better than the company's red variant."
+	icon_state = "whitewinebottle"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/whitewine/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("whitewine", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/bitters
 	name = "Rattison's Bitters"
@@ -368,6 +378,27 @@
 /obj/item/reagent_containers/food/drinks/bottle/bluecuracao/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("bluecuracao", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin
+	name = "Victory Gin"
+	desc = "An oily Tajara liquor similar to gin. Bottled at one of the countless distilleries on Adhomai."
+	icon_state = "victorygin"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("victory_gin", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/messa_mead
+	name = "Messa's Mead"
+	desc = "A sweet liquor from Adhomai. Orginally considered a drink of the Tajaran nobility improved technology has made this honey and root based liqour available all across Adhomai and the even the stars beyond."
+	icon_state = "messamead"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/messa_mead/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("messa_mead", 100)
+
 
 /obj/item/reagent_containers/food/drinks/bottle/grenadine
 	name = "Briar Rose Grenadine Syrup"

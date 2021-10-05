@@ -321,15 +321,15 @@
 	path = /obj/item/storage/box/vmcrystal
 	description = "A small necklace device that will notify an offsite cloning facility should you expire after activating it."
 
-/datum/gear/accessory/tronket
+/datum/gear/accessory/metal_necklace
 	display_name = "Metal Necklace"
 	description = "A shiny steel chain with a vague metallic object dangling off it."
-	path = /obj/item/clothing/accessory/tronket
+	path = /obj/item/clothing/accessory/metal_necklace
 
 /datum/gear/accessory/pilotpin
 	display_name = "Pilot - Qualification Pin"
-	description = "An iron pin denoting the qualification to fly SCG voidcraft."
-	path = /obj/item/clothing/accessory/solgov/specialty/pilot
+	description = "An iron pin denoting the qualification to fly OCG voidcraft."
+	path = /obj/item/clothing/accessory/oricon/specialty/pilot
 
 /datum/gear/accessory/flops
 	display_name = "Drop Straps"

@@ -268,6 +268,13 @@
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, MAT_GLASS = 750, MAT_PLASTIC = 500)
 
+/datum/design/item/prosfab/pros/internal/backup_battery
+	name = "Synthetic Back-Up Battery"
+	id = "synth_backup_battery"
+	build_path = /obj/item/fbp_backup_cell
+	time = 10
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 1500)
+
 //////////////////// Cyborg Parts ////////////////////
 /datum/design/item/prosfab/cyborg
 	category = list("Cyborg Parts")

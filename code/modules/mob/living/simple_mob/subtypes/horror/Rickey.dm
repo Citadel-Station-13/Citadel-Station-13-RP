@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/Rickey
+	name = "!)*AKE@#US*!PRETT"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/Rickey
 	name = "???"
 	desc = "What a handsome Man, his mother must think."
@@ -9,6 +15,7 @@
 	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Rickey)
 
 	attack_sound = 'sound/h_sounds/wor.ogg'
 

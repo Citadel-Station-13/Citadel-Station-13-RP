@@ -1,3 +1,15 @@
+/*
+/datum/category_item/catalogue/fauna/slime
+	name = "Slime"
+	desc = "Often referred to as Slimes, this mysterious \
+	species represents a larger biological curiosity for NanoTrasen. \
+	Highly mutable, these carnivorous blobs of gelatinous tissue may \
+	be trained and farmed, but their temperament makes them a constant danger.\
+	Speculation among Xenobiologists that Slimes share a common ancestor \
+	with Prometheans have not been fully confirmed."
+	value = CATALOGUER_REWARD_EASY
+*/
+
 /mob/living/carbon/slime
 	name = "baby slime"
 	icon = 'icons/mob/slimes.dmi'

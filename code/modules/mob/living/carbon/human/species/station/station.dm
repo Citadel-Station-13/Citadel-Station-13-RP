@@ -5,8 +5,8 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
 	colonies across a wide swathe of space. They hold a wide range of forms and creeds.<br/><br/> \
-	While the central Sol government maintains control of its far-flung people, powerful corporate \
-	interests, rampant cyber and bio-augmentation and secretive factions make life on most human \
+	While the Orion Confederation government represents humanity at large, on the Frontier powerful corporate \
+	interests, rampant cyber and bio-augmentation initiatives, and secretive factions make life on most human \
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
 	num_alternate_languages = 3
@@ -378,7 +378,7 @@
 	min_age = 18
 	max_age = 90
 
-	blurb = "The Zaddat are an Unathi client race only recently introduced to SolGov space. Having evolved on \
+	blurb = "The Zaddat are an Unathi client race only recently introduced to OriCon space. Having evolved on \
 	the high-pressure and post-apocalyptic world of Xohok, Zaddat require an environmental suit called a Shroud \
 	to survive in usual planetary and station atmospheres. Despite these restrictions, worsening conditions on \
 	Xohok and the blessing of the Moghes Hegemony have lead the Zaddat to enter human space in search of work \
@@ -548,7 +548,7 @@
 
 	body_temperature = T0C + 15		//make the plant people have a bit lower body temperature, why not
 
-	flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD
+	flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 	blood_color = "#004400"
@@ -941,31 +941,36 @@
 
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
-	name_plural = "Xenomorphs"
+	name_plural = "Xenohybrids"
 	icobase = 'icons/mob/human_races/r_xenomorph.dmi'
 	deform = 'icons/mob/human_races/r_def_xenomorph.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	darksight = 4 //Better hunters in the dark.
-	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 	num_alternate_languages = 2
 
 	min_age = 18
-	max_age = 80
+	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 
-	blurb = "Xenomorphs hybrids are a mixture of xenomorph DNA and some other humanoid species. \
-	Xenomorph hyrids mostly have had had their natural aggression removed due to the gene modification process \
-	although there are some exceptions, such as when they are harmed. Most xenomorph hybrids are female, due to their natural xenomorph genes, \
-	but there are multiple exceptions. All xenomorph hybrids have had their ability to lay eggs containing facehuggers \
-	removed if they had the ability to, although hybrids that previously contained this ability is extremely rare."
+	blurb = "Xenohybrids are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
+	Xenohybrids are civilised and capable of communicating with other species, without knowing their language. \
+	Over the years crusading the stars xenomorphs gathered genetic material of almost all known species(and probably some unknown as well), \
+	allowing Xenohybrids to reproduce with most other species. This reproduction is not as invasive as the facehuggers of their relatives, \
+	but can still be dangerous to the host. Their chitinous exoskeleton allows them to endure low pressure and freezing cold \
+	quite well, but leaves them vurnerable to fire and heat."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)
-	// No wiki page for xenohybrids at present
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
 
 	//primitive_form = "" //None for these guys
+	language = "Xenomorph"
+	name_language = "Xenomorph"
+	species_language = "Xenomorph"
+	secondary_langs = list("Xenomorph")
+	num_alternate_languages = 3
 
+	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	blood_color = "#12ff12"
 	flesh_color = "#201730"
@@ -980,6 +985,49 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
+
+	total_health = 110	//Exoskeleton makes you tougher than baseline
+	brute_mod = 0.95 // Chitin is somewhat hard to crack
+	burn_mod = 1.10	// Natural enemy of xenomorphs is fire
+	blood_volume = 560	//Baseline
+	darksight = 4 //Better hunters in the dark.
+	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
+
+	slowdown = -0.2//Speedboost Tesh have -0.5
+
+	warning_low_pressure = 30//lower than baseline, still not vacuum prove
+	hazard_low_pressure = -1
+
+	warning_high_pressure = 325//Both baseline
+	hazard_high_pressure = 550
+
+	//Doesnt work, defaults are set at checks
+	//breath_type = null	//they don't breathe
+	//poison_type = null
+
+	cold_level_1 = 90	//Space if fucking cold, so we need low temperature tolerance
+	cold_level_2 = -1
+	cold_level_3 = -1
+
+	heat_level_1 = 350	//dont like the heat
+	heat_level_2 = 400
+	heat_level_3 = 700
+
+	//Organ-List to remove need to breath(?)
+	has_organ = list(
+		O_HEART =		/obj/item/organ/internal/heart,
+		O_VOICE = 		/obj/item/organ/internal/voicebox,
+		O_LIVER =		/obj/item/organ/internal/liver,
+		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
+		O_BRAIN =		/obj/item/organ/internal/brain,
+		//O_EYES =		/obj/item/organ/internal/eyes,
+		O_STOMACH =		/obj/item/organ/internal/stomach,
+		O_INTESTINE =	/obj/item/organ/internal/intestine
+		)
+	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
+
+/datum/species/xenohybrid/can_breathe_water()
+	return TRUE	//they dont quite breathe
 
 /datum/species/harpy
 	name = SPECIES_RAPALA
@@ -1070,7 +1118,7 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise); CitadelRP: Now able to walk over shards of glass like regular shadekins
+	flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise); CitadelRP: Now able to walk over shards of glass like regular shadekins
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions

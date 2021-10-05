@@ -178,8 +178,8 @@
 		var/datum/projectile_data/proj_data = simple_projectile_trajectory(telepad.x, telepad.y, trueRotation, trueDistance)
 		last_tele_data = proj_data
 
-		var/trueX = proj_data.dest_x
-		var/trueY = proj_data.dest_y
+		var/trueX = round(proj_data.dest_x, 1)
+		var/trueY = round(proj_data.dest_y, 1)
 		if(trueX < 1 || trueX > world.maxx || trueY < 1 || trueY > world.maxy)
 			telefail()
 			temp_msg = "ERROR! Target coordinate is outside known time and space!"

@@ -1347,7 +1347,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters
 	name = "Dormitories"
 	icon_state = "crew_quarters"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	ambience = AMBIENCE_GENERIC
 
 /area/crew_quarters/toilet
@@ -1846,6 +1846,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Holodeck - Space"
 	has_gravity = 0
 	sound_env = SPACE
+
+/area/holodeck/source_desert
+	name = "\improper Holodeck - Desert"
+	sound_env = PLAIN
+
+/area/holodeck/source_chess
+	name = "\improper Holodeck - Chess Board"
+	sound_env = PLAIN
+
 
 //Engineering
 

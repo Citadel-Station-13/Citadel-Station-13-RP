@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/Smiley
+	name = "*!UT#ON#A#HAPPY#FAC)#@$"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/Smiley
 	name = "???"
 	desc = "A giant hand, with a large, smiling head on top."
@@ -9,6 +15,7 @@
 	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/Smiley)
 
 	attack_sound = 'sound/h_sounds/holla.ogg'
 

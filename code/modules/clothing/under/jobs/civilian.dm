@@ -258,7 +258,7 @@
 
 /obj/item/clothing/under/rank/pilot2
 	name = "\improper NanoTrasen flight suit"
-	desc = "A dark blue NanoTrasen flight suit. Warm and practical, seveal patches are scattered across it."
+	desc = "A dark blue NanoTrasen flight suit. Warm and practical, several patches are scattered across it."
 	icon_state = "pilot2"
 	worn_state = "pilot2"
 	rolled_down = 0

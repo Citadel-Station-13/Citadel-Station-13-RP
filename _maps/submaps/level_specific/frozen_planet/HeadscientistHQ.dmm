@@ -196,7 +196,7 @@
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "kr" = (
-/obj/structure/table/sandbags,
+/obj/structure/sandbag,
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "kD" = (

@@ -154,7 +154,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		"aerospace priority" = list("affirmative, aerospace priority is yours", "negative, another vessel has priority right now"),
 		"system traffic info" = list("sending you current traffic info", "request queued, please hold"),
 		"refueling information" = list("sending refueling information now", "depots currently experiencing fuel shortages, advise you move on"),
-		"a current system time sync" = list("sending time sync ping to you now"),
+		"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
 		"current system starcharts" = list("transmitting current starcharts", "your request is queued, overloaded right now")
 	)
 

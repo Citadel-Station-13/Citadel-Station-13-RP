@@ -1,16 +1,17 @@
 // Species flags.
-#define NO_MINOR_CUT      (1 << 0) // Can step on broken glass with no ill-effects. Either thick skin (diona), cut resistant (slimes) or incorporeal (shadows)
-#define IS_PLANT          (1 << 1) // Is a treeperson.
-#define NO_SCAN           (1 << 2) // Cannot be scanned in a DNA machine/genome-stolen.
-#define NO_PAIN           (1 << 3) // Cannot suffer halloss/recieves deceptive health indicator.
-#define NO_SLIP           (1 << 4) // Cannot fall over.
-#define NO_POISON         (1 << 5) // Cannot not suffer toxloss.
-#define NO_EMBED		  (1 << 6) // Can step on broken glass with no ill-effects and cannot have shrapnel embedded in it.
-#define NO_HALLUCINATION  (1 << 7) // Don't hallucinate, ever
-#define NO_BLOOD		  (1 << 8) // Never bleed, never show blood amount
-#define UNDEAD			  (1 << 9) // Various things that living things don't do, mostly for skeletons
-#define NO_INFECT		  (1 << 10) // Don't allow infections in limbs or organs, similar to IS_PLANT, without other strings.
-#define NO_DEFIB          (1 << 11) // Cannot be defibbed
+#define NO_MINOR_CUT      		(1 << 0) // Can step on broken glass with no ill-effects. Either thick skin (diona), cut resistant (slimes) or incorporeal (shadows)
+#define IS_PLANT          		(1 << 1) // Is a treeperson.
+#define NO_SCAN           		(1 << 2) // Cannot be scanned in a DNA machine/genome-stolen.
+#define NO_PAIN           		(1 << 3) // Cannot suffer halloss/recieves deceptive health indicator.
+#define NO_SLIP           		(1 << 4) // Cannot fall over.
+#define NO_POISON         		(1 << 5) // Cannot not suffer toxloss.
+#define NO_EMBED		  		(1 << 6) // Can step on broken glass with no ill-effects and cannot have shrapnel embedded in it.
+#define NO_HALLUCINATION  		(1 << 7) // Don't hallucinate, ever
+#define NO_BLOOD		  		(1 << 8) // Never bleed, never show blood amount
+#define UNDEAD			  		(1 << 9) // Various things that living things don't do, mostly for skeletons
+#define NO_INFECT		  		(1 << 10) // Don't allow infections in limbs or organs, similar to IS_PLANT, without other strings.
+#define NO_DEFIB          		(1 << 11) // Cannot be defibbed
+#define CONTAMINATION_IMMUNE 	(1 << 12) //(Phoron) Contamination doesnt affect them.
 // unused: 0x8000 - higher than this will overflow
 
 // Species spawn flags

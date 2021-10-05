@@ -271,8 +271,8 @@
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
 
-/datum/species/proc/sanitize_name(var/name, var/robot = 0)
-	return sanitizeName(name, MAX_NAME_LEN, robot)
+/datum/species/proc/sanitize_name(var/name)
+	return sanitizeName(name, MAX_NAME_LEN)
 
 GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	/datum/gas/oxygen = /obj/item/tank/emergency/oxygen,
@@ -511,3 +511,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	unarmed_types += /datum/unarmed_attack/bite/sharp/numbing
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
+
+/datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
+	return FALSE

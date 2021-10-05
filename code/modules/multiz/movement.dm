@@ -16,6 +16,10 @@
 	if(eyeobj)
 		return eyeobj.zMove(direction)
 
+	if(istype(loc,/obj/mecha))
+		var/obj/mecha/mech = loc
+		return mech.relaymove(src,direction)
+
 	if(!can_ztravel())
 		to_chat(src, "<span class='warning'>You lack means of travel in that direction.</span>")
 		return
@@ -470,7 +474,10 @@
 			adjustBruteLoss(rand(damage_min, damage_max))
 		Weaken(4)
 		updatehealth()
-		return
+
+/mob/living/carbon/human/fall_impact(atom/hit_atom, damage_min, damage_max, silent, planetary)
+	if(!species?.handle_falling(src, hit_atom, damage_min, damage_max, silent, planetary))
+		..()
 
 //Using /atom/movable instead of /obj/item because I'm not sure what all humans can pick up or wear
 /atom/movable

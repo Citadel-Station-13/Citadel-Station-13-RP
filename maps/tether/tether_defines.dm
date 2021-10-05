@@ -4,19 +4,19 @@
 #define Z_LEVEL_SURFACE_HIGH				4
 #define Z_LEVEL_TRANSIT						5
 #define Z_LEVEL_SPACE_LOW					6
-#define Z_LEVEL_SPACE_MID					7
-#define Z_LEVEL_SPACE_HIGH					8
-#define Z_LEVEL_SURFACE_MINE				9
-#define Z_LEVEL_SOLARS						10
-#define Z_LEVEL_MISC						11
-#define Z_LEVEL_UNDERDARK					12
-#define Z_LEVEL_PLAINS						13
-#define Z_LEVEL_OFFMAP1						14
-#define Z_LEVEL_OFFMAP2						15
-#define Z_LEVEL_ROGUEMINE_1					16
-#define Z_LEVEL_ROGUEMINE_2					17
-#define Z_LEVEL_BEACH						18
-#define Z_LEVEL_BEACH_CAVE					19
+#define Z_LEVEL_SPACE_HIGH					7
+#define Z_LEVEL_SURFACE_MINE				8
+#define Z_LEVEL_SOLARS						9
+#define Z_LEVEL_MISC						10
+#define Z_LEVEL_UNDERDARK					11
+#define Z_LEVEL_PLAINS						12
+#define Z_LEVEL_OFFMAP1						13
+#define Z_LEVEL_OFFMAP2						14
+#define Z_LEVEL_ROGUEMINE_1					15
+#define Z_LEVEL_ROGUEMINE_2					16
+#define Z_LEVEL_BEACH						17
+#define Z_LEVEL_BEACH_CAVE					18
+#define Z_LEVEL_DESERT						19
 #define Z_LEVEL_AEROSTAT					20
 #define Z_LEVEL_AEROSTAT_SURFACE			21
 #define Z_LEVEL_DEBRISFIELD					22
@@ -33,12 +33,15 @@
 /datum/map/tether/New()
 	..()
 	var/choice = pickweight(list(
-		"title" = 10,
-		"tether" = 50,
-		"tether_night" = 50,
-		"tether2_night" = 50,
-		"tether2_dog" = 1,
-		"tether2_love" = 1
+		"title1" = 50,
+		"title2" = 10,
+		"title3" = 50,
+		"title4" = 50,
+		"title5" = 20,
+		"title6" = 20,
+		"title7" = 20,
+		"title8" = 1,
+		"title9" = 1
 	))
 	if(choice)
 		lobby_screens = list(choice)
@@ -65,7 +68,6 @@
 		Z_LEVEL_SURFACE_MID,
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_SPACE_LOW,
-		Z_LEVEL_SPACE_MID,
 		Z_LEVEL_SPACE_HIGH))
 
 	station_name  = "NSB Adephagia"
@@ -157,7 +159,7 @@
 		list("Tether - Misc","Tether - Underdark","Tether - Plains"), //Stock Tether lateload maps
 		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2"),
 		list("Asteroid Belt 1","Asteroid Belt 2"),
-		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
+		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert"),
 		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),
 		list("Debris Field - Z1 Space"),
 		list("Fuel Depot - Z1 Space")
@@ -176,7 +178,6 @@
 		Z_LEVEL_SURFACE_HIGH,
 		Z_LEVEL_TRANSIT,
 		Z_LEVEL_SPACE_LOW,
-		Z_LEVEL_SPACE_MID,
 		Z_LEVEL_SPACE_HIGH,
 		Z_LEVEL_SURFACE_MINE,
 		Z_LEVEL_SOLARS,
@@ -240,7 +241,7 @@
 		"tether_dockarm_d2l", //End of right arm,
 		"tether_space_SE", //station1, bottom right of space,
 		"tether_space_NE", //station1, top right of space,
-		"tether_space_SW", //station3, bottom left of space,
+		"tether_space_SW", //station2, bottom left of space,
 		"tether_excursion_hangar", //Excursion shuttle hangar,
 		"tether_medivac_dock", //Medical shuttle dock,
 		"tourbus_dock" //Surface large hangar
@@ -252,6 +253,14 @@
 		Z_LEVEL_PLAINS,
 		Z_LEVEL_UNDERDARK
 	)
+
+	levels_for_distress = list(
+		Z_LEVEL_OFFMAP1,
+		Z_LEVEL_BEACH,
+		Z_LEVEL_AEROSTAT,
+		Z_LEVEL_DEBRISFIELD,
+		Z_LEVEL_FUELDEPOT
+		)
 
 //Port of Triumph Overmap Visitable Effects
 /obj/effect/overmap/visitable/sector/debrisfield
@@ -368,7 +377,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	announce_atc(AM,going = TRUE)
 
 /obj/effect/overmap/visitable/sector/virgo3b/get_space_zlevels()
-	return list(Z_LEVEL_SPACE_LOW, Z_LEVEL_SPACE_MID, Z_LEVEL_SPACE_HIGH)
+	return list(Z_LEVEL_SPACE_LOW, Z_LEVEL_SPACE_HIGH)
 
 /obj/effect/overmap/visitable/sector/virgo3b/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
 	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] ATC control area."
@@ -428,25 +437,17 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	z = Z_LEVEL_SPACE_LOW
 	name = "Asteroid 1"
 	base_turf = /turf/space
-	transit_chance = 33
+	transit_chance = 50
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
-/datum/map_z_level/tether/station/space_mid
-	z = Z_LEVEL_SPACE_MID
-	name = "Asteroid 2"
-	base_turf = /turf/simulated/open
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
-
 /datum/map_z_level/tether/station/space_high
 	z = Z_LEVEL_SPACE_HIGH
-	name = "Asteroid 3"
+	name = "Asteroid 2"
 	base_turf = /turf/simulated/open
-	transit_chance = 33
+	transit_chance = 50
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
+	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
 /datum/map_z_level/tether/mine
 	z = Z_LEVEL_SURFACE_MINE

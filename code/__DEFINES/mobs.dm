@@ -432,6 +432,9 @@
 //Alraune organs
 #define A_FRUIT	"fruit gland"
 
+//Apidean organs
+#define H_STOMACH "honey stomach"
+
 //species defines
 #define SPECIES_AKULA			"Akula"
 #define SPECIES_ALRAUNE			"Alraune"
@@ -443,11 +446,16 @@
 #define SPECIES_VASILISSAN		"Vasilissan"
 #define SPECIES_VULPKANIN		"Vulpkanin"
 #define SPECIES_XENOCHIMERA		"Xenochimera"
-#define SPECIES_XENOHYBRID		"Xenomorph Hybrid"
+#define SPECIES_XENOHYBRID		"Neomorph"
 #define SPECIES_ZORREN_FLAT		"Flatland Zorren"
 #define SPECIES_ZORREN_HIGH		"Highlander Zorren"
 #define SPECIES_CUSTOM			"Custom Species"
 #define SPECIES_PLASMAMAN		"Phoronoid"
+#define SPECIES_APIDAEN			"Apidaen"
+#define SPECIES_VETALA_RUDDY	"Ruddy Vetalan"
+#define SPECIES_VETALA_PALE		"Pale Vetalan"
+#define SPECIES_AURIL			"Auril"
+#define SPECIES_DREMACHIR		"Dremachir"
 //monkey species
 #define SPECIES_MONKEY_AKULA		"Sobaka"
 #define SPECIES_MONKEY_NEVREAN		"Sparra"

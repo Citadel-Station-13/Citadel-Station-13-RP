@@ -44,6 +44,15 @@
 	ion_trail.set_up(src)
 	ion_trail.stop()
 
+/obj/mecha/combat/fighter/add_cell(var/obj/item/cell/C=null)
+	if(C)
+		C.forceMove(src)
+		cell = C
+		return
+	cell = new(src)
+	cell.charge = 30000
+	cell.maxcharge = 30000
+
 /obj/mecha/combat/fighter/moved_inside(var/mob/living/carbon/human/H)
 	. = ..()
 	consider_gravity()

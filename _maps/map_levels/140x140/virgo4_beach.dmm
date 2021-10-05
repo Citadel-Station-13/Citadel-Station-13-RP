@@ -321,6 +321,10 @@
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/outdoors/grass,
 /area/tether_away/beach/jungle)
+"bR" = (
+/obj/effect/map_effect/portal/line/side_a,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/jungle)
 "bT" = (
 /obj/structure/cable/cyan{
 	d1 = 2;
@@ -331,6 +335,17 @@
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
+"cb" = (
+/obj/structure/fence/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
+"ce" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/jungle)
 "cf" = (
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/janibar)
@@ -452,6 +467,10 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
 /area/tether_away/beach/resort/lockermed)
+"eX" = (
+/obj/effect/map_effect/portal/line/side_a,
+/turf/simulated/floor/outdoors/beach/sand/desert,
+/area/tether_away/beach/jungle)
 "fl" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/random/meat,
@@ -471,6 +490,14 @@
 /obj/random/meat,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/tether_away/beach/resort/kitchen)
+"fw" = (
+/obj/structure/fence/corner{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
 "fJ" = (
 /obj/item/bedsheet/ian,
 /obj/machinery/button/remote/airlock{
@@ -551,8 +578,20 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/tether_away/beach/resort/kitchen)
 "hN" = (
-/turf/simulated/floor/holofloor/beach/sand,
-/area/tether_away/beach/jungle)
+/obj/structure/gravemarker{
+	desc = "An epitaph reads, In loving memory of Jazzmine lee. A friend to all who knew her smile.";
+	grave_name = "Jazzmine Lee";
+	name = "memorial grave"
+	},
+/obj/machinery/portable_atmospherics/hydroponics/soil{
+	name = "grave soil"
+	},
+/obj/item/toy/plushie/orange_fox{
+	desc = "An old, worn out fox plushie. It smells of the ocean. You feel it holds emotional significance. Holding it gives you a vague sense of wanderlust, and appreciation for life. It always seems to find the way home.";
+	name = "old orange fox plushie"
+	},
+/turf/simulated/floor/outdoors/beach/sand,
+/area/tether_away/beach/resort)
 "hQ" = (
 /obj/structure/flora/sif/subterranean,
 /turf/simulated/floor/outdoors/grass{
@@ -859,6 +898,22 @@
 "nD" = (
 /turf/simulated/mineral/ignore_mapgen,
 /area/tether_away/beach/water)
+"nM" = (
+/obj/structure/fence{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
+"nP" = (
+/obj/structure/fence{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
 "of" = (
 /obj/structure/table/woodentable,
 /obj/random/drinkbottle,
@@ -895,6 +950,14 @@
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
+"oY" = (
+/obj/structure/fence/corner{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
 "pd" = (
 /obj/structure/table/rack,
 /obj/item/material/fishing_rod/modern/cheap,
@@ -911,6 +974,13 @@
 "pw" = (
 /turf/simulated/floor/water,
 /area/tether_away/beach/cavebase)
+"px" = (
+/obj/effect/map_effect/portal/master/side_a{
+	name = "V4_Desert_Entrance";
+	portal_id = "V4_desert_step"
+	},
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/jungle)
 "py" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -1112,10 +1182,23 @@
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
+"tz" = (
+/turf/simulated/floor{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
 "tG" = (
 /obj/machinery/appliance/cooker/fryer,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/tether_away/beach/resort/kitchen)
+"tQ" = (
+/obj/structure/fence/corner{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
 "uh" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
@@ -1170,6 +1253,19 @@
 	name = "dirt"
 	},
 /area/tether_away/beach/cavebase)
+"vl" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
 "vU" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp/green,
@@ -1423,7 +1519,7 @@
 	icon_state = "0-2";
 	pixel_y = 0
 	},
-/obj/item/solar_assembly,
+/obj/machinery/power/solar,
 /turf/simulated/floor{
 	outdoors = 1
 	},
@@ -1835,6 +1931,13 @@
 /obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/janibar)
+"QR" = (
+/obj/structure/cable,
+/obj/machinery/power/solar,
+/turf/simulated/floor{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
 "QY" = (
 /obj/structure/mirror{
 	pixel_x = -27
@@ -1914,6 +2017,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm3)
+"RN" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/asteroid_steel{
+	outdoors = 1
+	},
+/area/tether_away/beach/resort)
 "RQ" = (
 /turf/simulated/floor/water/beach{
 	dir = 8;
@@ -2014,13 +2125,6 @@
 "Um" = (
 /turf/simulated/wall/sandstone,
 /area/tether_away/beach/powershed)
-"Uo" = (
-/obj/structure/cable,
-/obj/item/solar_assembly,
-/turf/simulated/floor{
-	outdoors = 1
-	},
-/area/tether_away/beach/resort)
 "UN" = (
 /turf/simulated/wall/sandstone,
 /area/tether_away/beach/resort/janibar)
@@ -6814,7 +6918,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 bp
 aa
@@ -6926,7 +7030,7 @@ bq
 bq
 bq
 ae
-aa
+ce
 aa
 aa
 aa
@@ -7071,7 +7175,7 @@ ae
 aa
 aa
 aa
-aa
+ce
 aa
 ab
 aa
@@ -7096,7 +7200,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -7208,7 +7312,7 @@ bq
 bq
 bq
 ae
-ae
+ce
 aa
 aa
 aa
@@ -7238,7 +7342,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -7350,7 +7454,7 @@ bq
 bq
 bq
 ae
-ae
+ce
 aa
 aa
 aa
@@ -7379,7 +7483,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -7500,6 +7604,7 @@ aa
 aa
 aa
 aa
+ce
 aa
 aa
 aa
@@ -7515,10 +7620,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+bp
+bp
+bp
 aa
 aa
 aa
@@ -7637,6 +7741,8 @@ ae
 ae
 aa
 aa
+ce
+ce
 aa
 aa
 aa
@@ -7654,9 +7760,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -7780,7 +7884,7 @@ ae
 aa
 aa
 aa
-aa
+ce
 aa
 aa
 bh
@@ -7797,8 +7901,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -7919,7 +8023,7 @@ ae
 ae
 ae
 ai
-ae
+aa
 aa
 aa
 aa
@@ -7928,6 +8032,7 @@ aa
 ab
 aa
 aa
+ce
 aa
 aa
 aa
@@ -7937,9 +8042,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -8057,11 +8161,13 @@ bi
 (42,1,1) = {"
 bq
 bq
-bq
+ce
 ae
 ae
-ae
-ae
+aa
+ce
+ce
+ce
 aa
 aa
 aa
@@ -8076,10 +8182,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -8197,17 +8301,17 @@ am
 bi
 "}
 (43,1,1) = {"
-bq
-bq
-bq
-ae
-ae
-ae
+px
+ce
+ce
+ce
 aa
-aa
-aa
-aa
-aa
+ce
+ce
+ce
+ce
+ce
+ce
 aa
 aa
 aa
@@ -8339,12 +8443,18 @@ am
 bi
 "}
 (44,1,1) = {"
-bq
-bq
-bq
-ae
-ae
-ae
+bR
+ce
+ce
+ce
+ce
+aa
+ce
+ce
+ce
+ce
+ce
+ce
 aa
 aa
 aa
@@ -8355,13 +8465,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -8481,18 +8585,18 @@ am
 bi
 "}
 (45,1,1) = {"
-bq
-bq
-bq
-ae
-ae
-ae
+bR
+ce
+ce
+ce
+bp
+bp
+ce
+ce
 aa
 aa
 aa
-aa
-aa
-aa
+ce
 aa
 aa
 aa
@@ -8623,27 +8727,27 @@ am
 bi
 "}
 (46,1,1) = {"
-bq
-bq
-bq
-ae
-ae
+bR
+bp
+bp
+ce
+ce
+bp
+bp
+aa
+ce
+ce
+aa
+aa
+aa
+aa
+ce
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -8765,26 +8869,26 @@ am
 bi
 "}
 (47,1,1) = {"
-bq
-bq
-bq
-ae
-ae
+bR
+ce
+bp
+bp
+ce
+ce
+aa
+aa
+aa
+ce
 aa
 aa
 aa
 aa
 aa
+ce
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -8907,16 +9011,16 @@ am
 bi
 "}
 (48,1,1) = {"
-bq
-bq
-bq
-bq
-ae
+eX
+ce
+ce
+ce
+ce
+ce
+ce
+bp
 aa
-aa
-aa
-aa
-aa
+bp
 aa
 aa
 ab
@@ -9049,12 +9153,13 @@ am
 bi
 "}
 (49,1,1) = {"
-bq
-bq
-bq
-bq
-ae
-ae
+bR
+ce
+ce
+ce
+ce
+ce
+ce
 aa
 aa
 aa
@@ -9065,8 +9170,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -9192,22 +9296,22 @@ bi
 "}
 (50,1,1) = {"
 bq
-bq
-bq
-bq
 ae
 ae
-ae
+ce
+ce
+ce
+ce
+aa
+aa
+aa
+bp
+bp
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -9335,20 +9439,20 @@ bi
 (51,1,1) = {"
 bq
 bq
-bq
-bq
 ae
 ae
-ae
+ce
+ce
 aa
 aa
 aa
 aa
 aa
+bp
+bp
+bp
 aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -9478,11 +9582,11 @@ bi
 bq
 bq
 bq
-bq
 ae
-ae
-ae
+ce
+ce
 aa
+ce
 aa
 aa
 aa
@@ -9622,7 +9726,7 @@ bq
 bq
 ae
 ae
-ae
+ce
 aa
 aa
 aa
@@ -9631,8 +9735,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -9771,10 +9875,10 @@ aa
 aa
 aa
 aa
+ce
 aa
 aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -9905,8 +10009,12 @@ bq
 bq
 bq
 ae
+ce
 ae
-ae
+aa
+aa
+aa
+ce
 aa
 aa
 aa
@@ -9915,11 +10023,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+bp
 aa
 aa
 aa
@@ -10047,10 +10151,10 @@ bq
 bq
 bq
 bq
-ae
+ce
 ae
 aa
-aa
+ce
 aa
 aa
 aa
@@ -10062,7 +10166,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -10205,7 +10309,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -10348,7 +10452,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -10625,7 +10729,7 @@ aa
 aa
 aa
 aa
-aa
+ce
 aa
 aa
 aa
@@ -10764,10 +10868,10 @@ ae
 ae
 aa
 aa
+ce
+ce
 aa
-aa
-aa
-aa
+ce
 aa
 aa
 aa
@@ -10775,8 +10879,8 @@ ac
 aa
 aa
 aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -10907,7 +11011,7 @@ ae
 aa
 aa
 aa
-aa
+ce
 aa
 aa
 aa
@@ -11061,7 +11165,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -11203,8 +11307,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+bp
+bp
 aa
 aa
 ac
@@ -11347,7 +11451,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -11490,7 +11594,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -11633,7 +11737,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -11775,7 +11879,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -12060,7 +12164,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -12202,8 +12306,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -12345,8 +12449,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -12631,7 +12735,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -13058,7 +13162,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -13200,7 +13304,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -13341,7 +13445,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -13485,7 +13589,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -13912,7 +14016,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -14198,7 +14302,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -14340,7 +14444,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -14483,7 +14587,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -14625,8 +14729,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+bp
+bp
 aa
 aa
 aa
@@ -14769,7 +14873,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
@@ -14911,14 +15015,14 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 aa
 aa
 aa
 lI
 lI
-lI
+Nv
 lI
 lI
 lI
@@ -15055,7 +15159,7 @@ aa
 aa
 aa
 aa
-aa
+bp
 aa
 lI
 lI
@@ -15626,15 +15730,15 @@ aa
 lI
 lI
 lI
-lI
-lI
-lI
-Nv
-Fm
-Nv
-Nv
-lI
-lI
+fw
+nM
+nM
+nM
+vl
+nM
+nM
+nM
+tQ
 lI
 lI
 lI
@@ -15768,15 +15872,15 @@ aa
 lI
 lI
 lI
-lI
-Nv
+nP
+tz
 Nt
 RX
 ts
 RX
 jc
-Nv
-lI
+tz
+RN
 lI
 lI
 lI
@@ -15910,15 +16014,15 @@ aa
 lI
 lI
 lI
-Nv
+nP
 DA
 pF
-Uo
-Nv
+QR
+tz
 DA
 pF
-Uo
-Nv
+QR
+RN
 lI
 lI
 lI
@@ -16052,15 +16156,15 @@ lI
 lI
 lI
 pP
-Nv
+nP
 DA
 pF
-Uo
-Nv
+QR
+tz
 DA
 pF
-Uo
-Nv
+QR
+RN
 lI
 lI
 lI
@@ -16194,15 +16298,15 @@ lI
 lI
 lI
 lI
-Nv
+nP
 DA
 pF
-Uo
-Nv
+QR
+tz
 DA
 pF
-Uo
-Nv
+QR
+RN
 lI
 lI
 lI
@@ -16336,15 +16440,15 @@ lI
 lI
 lI
 lI
-Nv
+nP
 nm
 mS
 XZ
 XZ
 XZ
 Mp
-Uo
-Nv
+QR
+RN
 lI
 lI
 lI
@@ -16478,15 +16582,15 @@ lI
 lI
 lI
 lI
-Nv
+nP
 DA
 ZA
-Uo
-Nv
+QR
+tz
 DA
 ZA
-Uo
-Nv
+QR
+RN
 lI
 lI
 lI
@@ -16620,15 +16724,15 @@ lI
 lI
 lI
 lI
-Nv
+nP
 DA
 ZA
-Uo
-Nv
+QR
+tz
 DA
 ZA
-Uo
-Nv
+QR
+RN
 lI
 lI
 lI
@@ -16762,15 +16866,15 @@ lI
 lI
 lI
 lI
-Nv
+nP
 DA
 ME
-Uo
-Nv
+QR
+tz
 DA
 ME
-Uo
-Nv
+QR
+RN
 lI
 lI
 lI
@@ -16904,15 +17008,15 @@ aa
 lI
 lI
 lI
-lI
-Nv
-Nv
-Nv
-Nv
-Nv
-Nv
-Nv
-lI
+cb
+nM
+nM
+nM
+nM
+nM
+nM
+nM
+oY
 lI
 lI
 lI
@@ -17230,7 +17334,7 @@ Nv
 Nv
 Nv
 Nv
-Nv
+hN
 Nv
 Nv
 Nv
@@ -19239,7 +19343,7 @@ aa
 aa
 aa
 aa
-hN
+aa
 aa
 tr
 aj

@@ -162,11 +162,11 @@
 	cost = 50
 
 /datum/supply_pack/hospitality/cookingoil
-	name = "Cooking oil tank crate"
-	contains = list(/obj/structure/reagent_dispensers/cookingoil)
+	name = "Tallow tank crate"
+	contains = list(/obj/structure/reagent_dispensers/tallow)
 	cost = 10
 	containertype = /obj/structure/largecrate
-	containername = "cooking oil tank crate"
+	containername = "Tallow tank crate"
 
 /datum/supply_pack/hospitality/vampcarepackage
 	name = "Vampire Care package"

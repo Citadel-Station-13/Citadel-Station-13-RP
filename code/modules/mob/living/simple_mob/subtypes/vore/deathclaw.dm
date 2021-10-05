@@ -8,6 +8,7 @@
 /mob/living/simple_mob/vore/aggressive/deathclaw
 	name = "deathclaw"
 	desc = "Big! Big! The size of three men! Claws as long as my forearm! Ripped apart! Ripped apart!"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/deathclaw)
 
 	icon_dead = "deathclaw-dead"
 	icon_living = "deathclaw"
