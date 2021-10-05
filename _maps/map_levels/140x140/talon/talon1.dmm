@@ -1144,7 +1144,8 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/eris/dark/brown_perforated,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/engine)
 "jU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1940,7 +1941,8 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/eris/dark/brown_perforated,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/engine)
 "qo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
@@ -1976,9 +1978,6 @@
 "qw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
-	},
-/obj/effect/landmark/start{
-	name = "Talon Engineer"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -3335,6 +3334,19 @@
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/talon/deckone/central_hallway)
+"AI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_x = -27
+	},
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
 "AJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4013,6 +4025,19 @@
 	},
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/starboard_engine)
+"Fu" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_x = 27
+	},
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/deckone/central_hallway)
 "Fy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4219,6 +4244,9 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_x = 27
+	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "Gv" = (
@@ -4415,9 +4443,6 @@
 "HZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
-	},
-/obj/effect/landmark/start{
-	name = "Talon Engineer"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -4653,8 +4678,14 @@
 /turf/simulated/floor/tiled/eris/white/bluecorner,
 /area/talon/deckone/medical)
 "JL" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/eris/dark/danger,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/closet/walllocker/autolok_wall{
+	pixel_x = -27
+	},
+/turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "JU" = (
 /obj/structure/sign/securearea{
@@ -4732,7 +4763,8 @@
 /area/talon/deckone/workroom)
 "Kq" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
-/turf/simulated/floor/tiled/eris/dark/brown_perforated,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/talon/deckone/engine)
 "Kr" = (
 /obj/structure/disposalpipe/segment{
@@ -15427,7 +15459,7 @@ za
 gg
 kJ
 Yr
-PG
+JL
 Cr
 BG
 yD
@@ -15742,7 +15774,7 @@ NV
 NV
 Ya
 yZ
-XA
+AI
 XA
 bB
 Ul
@@ -15882,7 +15914,7 @@ SI
 SI
 SI
 NV
-JL
+NV
 Qx
 Ya
 Ya
@@ -16878,7 +16910,7 @@ NV
 NV
 Ya
 LO
-Ts
+Fu
 Ts
 Kn
 qv
