@@ -65,6 +65,12 @@
 /area/talon/deckone/engine
 	name = "\improper Deck One - Engine Bay"
 	icon_state = "yellow-e"
+/area/talon/deckone/port_engine
+	name = "\improper Deck One - Port Engine Bay"
+	icon_state = "yellow-e"
+/area/talon/deckone/starboard_engine
+	name = "\improper Deck One - Starboard Engine Bay"
+	icon_state = "yellow-e"
 /area/talon/deckone/armory
 	name = "\improper Deck One - Armory"
 	icon_state = "red"
