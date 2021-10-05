@@ -68,6 +68,11 @@
 		to_chat(M, "Your gun is now sprited as [choice]. Say hello to your new friend.")
 		return 1
 
+/obj/item/gun/projectile/colt/taj
+	name = "Adhomai Pistol"
+	desc = "The Adar'Mazy pistol, produced by the Hadii-Wrack group. This pistol is the primary sidearm for low ranking officers and officals in the People's Republic of Adhomai."
+	icon_state = "colt-taj"
+
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
 /obj/item/gun/projectile/colt/detective/attack_hand(var/mob/living/user)
 	if(!unique_reskin && loc == user)
@@ -153,6 +158,11 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .44 rounds."
 	icon_state = "deaglecamo"
 	item_state = "deagleg"
+
+/obj/item/gun/projectile/deagle/taj
+	name = "Adhomai Hand Cannon"
+	desc = "The Nal'dor heavy pistol, a powerful Hadii-Wrack group handcannon that has gained an infamous reputation through its use by Commissars of the People's Republic of Adhomai."
+	icon_state = "deagle-taj"
 
 /obj/item/gun/projectile/gyropistol // Does this even appear anywhere outside of admin abuse?
 	name = "gyrojet pistol"
