@@ -180,7 +180,10 @@
 //Chess Variants
 
 /obj/structure/barricade/cutout/chess
-	density = 1
+	density = 0
+	
+/obj/structure/barricade/cutout/chess/proc/untopple()
+	density = 0
 
 /obj/structure/barricade/cutout/chess/pawn/white
 	icon_state = "cutout_greytide"
