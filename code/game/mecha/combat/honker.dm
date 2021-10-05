@@ -37,6 +37,7 @@
 /obj/mecha/combat/honker/cluwne
 	name = "C.L.U.W.N.E."
 	desc = "The C.L.U.W.N.E. mecha is an up-armored cousin of the H.O.N.K. mech. Still in service on the borders of the Clown Planet, this unit is not typically commercially available."
+	icon = 'icons/mecha/mecha_vr.dmi'
 	icon_state = "cluwne"
 	initial_icon = "cluwne"
 	health = 400
