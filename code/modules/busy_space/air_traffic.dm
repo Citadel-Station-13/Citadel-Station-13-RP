@@ -159,8 +159,8 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		"dockingrequestrepair" = 10,"undockingrequest" = 5, "normal"))
 	*/
 
-	//RIP MBT
-	else if(source_org_type == "retired")
+	//RIP MBT. this might make travel advisories a little more common, but probably not significantly so given the odds involved
+	else if(source_org_type == "retired" || secondary_org_type == "retired")
 		chatter_type = "traveladvisory"
 		
 	//this is ugly but when I tried to use (not-smuggler-or-not-pirate)-and-pirate it tripped a pirate-v-pirate skirmish, still not sure why even after doublechecking all the orgtypes and the logic itself. might as well stick it up here so it takes priority over other combos.
