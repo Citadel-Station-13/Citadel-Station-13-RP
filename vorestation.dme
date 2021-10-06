@@ -2504,6 +2504,7 @@
 #include "code\modules\mob\living\carbon\human\species\shadekin\shadekin_hud.dm"
 #include "code\modules\mob\living\carbon\human\species\station\alraune.dm"
 #include "code\modules\mob\living\carbon\human\species\station\custom_species.dm"
+#include "code\modules\mob\living\carbon\human\species\station\diona.dm"
 #include "code\modules\mob\living\carbon\human\species\station\golem.dm"
 #include "code\modules\mob\living\carbon\human\species\station\human_subspecies.dm"
 #include "code\modules\mob\living\carbon\human\species\station\monkey.dm"
