@@ -1,6 +1,3 @@
-/mob/living/silicon/say(var/message, var/sanitize = 1, var/whispering = 0)
-	return ..((sanitize ? sanitize(message) : message), whispering = whispering)
-
 /mob/living/silicon/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
 	log_say(message, src)
 

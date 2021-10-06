@@ -182,6 +182,7 @@
 		"platinum" = 40,
 		"lead" = 40,
 		"mhydrogen" = 40,
+		"vaudium" = 50,
 		"verdantium" = 60)
 
 /obj/machinery/mineral/processing_unit/Initialize(mapload)
