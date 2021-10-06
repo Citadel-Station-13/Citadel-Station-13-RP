@@ -65,6 +65,7 @@
 								"Odysseus",
 								"Gygax",
 								"Durand",
+								"H.O.N.K.",
 								"Janus",
 								"Vehicle",
 								"Rigsuit",
