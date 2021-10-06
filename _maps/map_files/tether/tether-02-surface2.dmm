@@ -6184,14 +6184,14 @@
 /obj/item/clothing/accessory/storage/pouches,
 /obj/item/clothing/accessory/armor/legguards/riot,
 /obj/item/clothing/accessory/armor/armguards/riot,
-/obj/item/clothing/accessory/armor/armorplate/stab,
+/obj/item/clothing/accessory/armor/armorplate/riot,
 /obj/item/clothing/head/helmet/riot,
 /obj/item/shield/riot,
 /obj/item/clothing/suit/armor/pcarrier/medium/security,
 /obj/item/clothing/accessory/storage/pouches,
 /obj/item/clothing/accessory/armor/legguards/riot,
 /obj/item/clothing/accessory/armor/armguards/riot,
-/obj/item/clothing/accessory/armor/armorplate/stab,
+/obj/item/clothing/accessory/armor/armorplate/riot,
 /obj/item/clothing/head/helmet/riot,
 /obj/item/shield/riot,
 /obj/effect/floor_decal/borderfloorblack,
@@ -11410,12 +11410,10 @@
 "arP" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/projectile/shotgun/pump{
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag;
 	pixel_x = 2;
 	pixel_y = -6
 	},
 /obj/item/gun/projectile/shotgun/pump{
-	ammo_type = /obj/item/ammo_casing/a12g/beanbag;
 	pixel_x = 1;
 	pixel_y = 4
 	},
