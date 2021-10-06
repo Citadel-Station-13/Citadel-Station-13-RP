@@ -19,14 +19,14 @@ SUBSYSTEM_DEF(mobs)
 	var/slept_mobs = 0
 
 /datum/controller/subsystem/mobs/stat_entry()
-	..("P: [global.mob_list.len] | S: [slept_mobs]")
+	..("P: [global.GLOB.mob_list.len] | S: [slept_mobs]")
 
 /datum/controller/subsystem/mobs/fire(resumed = 0)
 	var/list/busy_z_levels = src.busy_z_levels
 
 	if (!resumed)
 		slept_mobs = 0
-		src.currentrun = mob_list.Copy()
+		src.currentrun = GLOB.mob_list.Copy()
 		busy_z_levels.Cut()
 		for(var/played_mob in player_list)
 			if(!played_mob || isobserver(played_mob))
@@ -42,17 +42,14 @@ SUBSYSTEM_DEF(mobs)
 		currentrun.len--
 
 		if(QDELETED(M))
-			mob_list -= M
+			GLOB.mob_list -= M
 		else
 			// Right now mob.Life() is unstable enough I think we need to use a try catch.
 			// Obviously we should try and get rid of this for performance reasons when we can.
-			try
-				if(M.low_priority && !(M.z in busy_z_levels))
-					slept_mobs++
-					continue
-				M.Life(times_fired)
-			catch(var/exception/e)
-				log_runtime(e, M, "Caught by [name] subsystem")
+			if(M.low_priority && !(M.z in busy_z_levels))
+				slept_mobs++
+				continue
+			M.Life(times_fired)
 
 		if (MC_TICK_CHECK)
 			return

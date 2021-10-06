@@ -16,13 +16,13 @@ var/global/list/narsie_list = list()
 	consume_range = 3 //How many tiles out do we eat
 
 
-/obj/singularity/narsie/New()
-	..()
+/obj/singularity/narsie/Initialize(mapload)
+	. = ..()
 	narsie_list.Add(src)
 
 /obj/singularity/narsie/Destroy()
 	narsie_list.Remove(src)
-	..()
+	return ..()
 
 /obj/singularity/narsie/large
 	name = "Nar-Sie"
@@ -40,11 +40,11 @@ var/global/list/narsie_list = list()
 	var/announce=1
 	var/cause_hell = 1
 
-/obj/singularity/narsie/large/New()
-	..()
+/obj/singularity/narsie/large/Initialize(mapload)
+	. = ..()
 	if(announce)
-		world << "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>"
-		world << sound('sound/effects/wind/wind_5_1.ogg')
+		to_chat(world, "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
+		SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
 	narsie_spawn_animation()
 
@@ -54,11 +54,11 @@ var/global/list/narsie_list = list()
 		narsie_cometh = 1
 
 		spawn(10 SECONDS)
-			if(emergency_shuttle)
-				emergency_shuttle.call_evac()
-				emergency_shuttle.launch_time = 0	// Cannot recall
+			if(SSemergencyshuttle)
+				SSemergencyshuttle.call_evac()
+				SSemergencyshuttle.launch_time = 0	// Cannot recall
 
-/obj/singularity/narsie/process()
+/obj/singularity/narsie/process(delta_time)
 	eat()
 
 	if (!target || prob(5))
@@ -79,7 +79,7 @@ var/global/list/narsie_list = list()
 			if(M.status_flags & GODMODE)
 				continue
 			if(!iscultist(M))
-				M << "<span class='danger'> You feel your sanity crumble away in an instant as you gaze upon [src.name]...</span>"
+				to_chat(M, "<span class='danger'> You feel your sanity crumble away in an instant as you gaze upon [src.name]...</span>")
 				M.apply_effect(3, STUN)
 
 
@@ -101,7 +101,7 @@ var/global/list/narsie_list = list()
 	if(!move_self)
 		return 0
 
-	var/movement_dir = pick(alldirs - last_failed_movement)
+	var/movement_dir = pick(GLOB.alldirs - last_failed_movement)
 
 	if(force_move)
 		movement_dir = force_move
@@ -119,7 +119,7 @@ var/global/list/narsie_list = list()
 	if(!move_self)
 		return 0
 
-	var/movement_dir = pick(alldirs - last_failed_movement)
+	var/movement_dir = pick(GLOB.alldirs - last_failed_movement)
 
 	if(force_move)
 		movement_dir = force_move
@@ -313,13 +313,13 @@ var/global/list/narsie_list = list()
 /obj/singularity/narsie/proc/acquire(const/mob/food)
 	var/capname = uppertext(name)
 
-	target << "<span class='notice'><b>[capname] HAS LOST INTEREST IN YOU.</b></span>"
+	to_chat(target, "<span class='notice'><b>[capname] HAS LOST INTEREST IN YOU.</b></span>")
 	target = food
 
 	if (ishuman(target))
-		target << "<span class='danger'>[capname] HUNGERS FOR YOUR SOUL.</span>"
+		to_chat(target, "<span class='danger'>[capname] HUNGERS FOR YOUR SOUL.</span>")
 	else
-		target << "<span class='danger'>[capname] HAS CHOSEN YOU TO LEAD HIM TO HIS NEXT MEAL.</span>"
+		to_chat(target, "<span class='danger'>[capname] HAS CHOSEN YOU TO LEAD HIM TO HIS NEXT MEAL.</span>")
 
 /obj/singularity/narsie/on_capture()
 	chained = 1
@@ -335,7 +335,7 @@ var/global/list/narsie_list = list()
 	chained = 1
 	move_self = 0
 	icon_state ="narsie-chains"
-	for(var/mob/M in mob_list)//removing the client image of nar-sie while it is chained
+	for(var/mob/M in GLOB.mob_list)//removing the client image of nar-sie while it is chained
 		if(M.client)
 			M.see_narsie(src)
 

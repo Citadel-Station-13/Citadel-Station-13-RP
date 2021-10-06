@@ -17,17 +17,15 @@
 	var/fire_resist = 1
 	var/expandType = /obj/effect/blob
 
-/obj/effect/blob/New(loc)
+/obj/effect/blob/Initialize(mapload)
+	. = ..()
 	health = maxHealth
 	update_icon()
-	return ..(loc)
 
-/obj/effect/blob/CanPass(var/atom/movable/mover, vra/turf/target, var/height = 0, var/air_group = 0)
-	if(air_group || height == 0)
-		return 1
-	return 0
+/obj/effect/blob/CanAllowThrough(atom/movable/mover, turf/target)
+	return FALSE
 
-/obj/effect/blob/ex_act(var/severity)
+/obj/effect/blob/ex_act(severity)
 	switch(severity)
 		if(1)
 			take_damage(rand(100, 120) / brute_resist)
@@ -42,7 +40,7 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/proc/take_damage(var/damage)
+/obj/effect/blob/take_damage(var/damage)	// VOREStation Edit
 	health -= damage
 	if(health < 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -130,12 +128,12 @@
 
 	switch(Proj.damage_type)
 		if(BRUTE)
-			take_damage(Proj.damage / brute_resist)
+			take_damage(Proj.get_final_damage(src))
 		if(BURN)
-			take_damage(Proj.damage / fire_resist)
+			take_damage(Proj.get_final_damage(src))
 	return 0
 
-/obj/effect/blob/attackby(var/obj/item/weapon/W, var/mob/user)
+/obj/effect/blob/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
 	visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -143,7 +141,7 @@
 	switch(W.damtype)
 		if("fire")
 			damage = (W.force / fire_resist)
-			if(istype(W, /obj/item/weapon/weldingtool))
+			if(istype(W, /obj/item/weldingtool))
 				playsound(src, W.usesound, 100, 1)
 		if("brute")
 			damage = (W.force / brute_resist)
@@ -166,15 +164,15 @@
 /obj/effect/blob/core/update_icon()
 	return
 
-/obj/effect/blob/core/New(loc)
-	processing_objects.Add(src)
-	return ..(loc)
+/obj/effect/blob/core/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/blob/core/Destroy()
-	processing_objects.Remove(src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/blob/core/process()
+/obj/effect/blob/core/process(delta_time)
 	pulse(20, list(NORTH, EAST))
 	pulse(20, list(NORTH, WEST))
 	pulse(20, list(SOUTH, EAST))
@@ -190,8 +188,8 @@
 	brute_resist = 1
 	fire_resist = 2
 
-/obj/effect/blob/shield/New()
-	..()
+/obj/effect/blob/shield/Initialize(mapload)
+	. = ..()
 	update_nearby_tiles()
 
 /obj/effect/blob/shield/Destroy()
@@ -207,5 +205,6 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/shield/CanPass(var/atom/movable/mover, var/turf/target, var/height = 0, var/air_group = 0)
+/obj/effect/blob/shield/CanAllowThrough(var/atom/movable/mover, var/turf/target)
+	. = ..()
 	return !density

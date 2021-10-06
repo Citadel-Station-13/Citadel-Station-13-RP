@@ -7,7 +7,7 @@
 	..()
 	refresh_sensors()
 
-/datum/nano_module/power_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/power_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
 	var/list/data = list()
 	var/list/sensors = list()
 	// Focus: If it remains null if no sensor is selected and UI will display sensor list, otherwise it will display sensor reading.
@@ -26,9 +26,9 @@
 	data["all_sensors"] = sensors
 	if(focus)
 		data["focus"] = focus.return_reading_data()
-	data["map_levels"] = using_map.get_map_levels(T.z)
+	data["map_levels"] = GLOB.using_map.get_map_levels(T.z)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "power_monitor.tmpl", "Power Monitoring Console", 800, 500, state = state)
 		// adding a template with the key "mapContent" enables the map ui functionality
@@ -45,7 +45,7 @@
 	var/turf/T = get_turf(nano_host())
 	var/list/levels = list()
 	if(T)
-		levels += using_map.get_map_levels(T.z, FALSE)
+		levels += GLOB.using_map.get_map_levels(T.z, FALSE)
 	for(var/obj/machinery/power/sensor/S in machines)
 		if(T && (S.loc.z == T.z) || (S.loc.z in levels) || (S.long_range)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
 			if(S.name_tag == "#UNKN#") // Default name. Shouldn't happen!

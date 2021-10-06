@@ -13,7 +13,7 @@
 /obj/item/alien_embryo/New()
 	if(istype(loc, /mob/living))
 		affected_mob = loc
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 		spawn(0)
 			AddInfectionImages(affected_mob)
 	else
@@ -26,11 +26,11 @@
 			RemoveInfectionImages(affected_mob)
 	..()
 
-/obj/item/alien_embryo/process()
+/obj/item/alien_embryo/process(delta_time)
 	if(!affected_mob)	return
 	if(loc != affected_mob)
 		affected_mob.status_flags &= ~(XENO_HOST)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		spawn(0)
 			RemoveInfectionImages(affected_mob)
 			affected_mob = null
@@ -48,25 +48,25 @@
 			if(prob(1))
 				affected_mob.emote("cough")
 			if(prob(1))
-				affected_mob << "<span class='danger'>Your throat feels sore.</span>"
+				to_chat(affected_mob, "<span class='danger'>Your throat feels sore.</span>")
 			if(prob(1))
-				affected_mob << "<span class='danger'>Mucous runs down the back of your throat.</span>"
+				to_chat(affected_mob, "<span class='danger'>Mucous runs down the back of your throat.</span>")
 		if(4)
 			if(prob(1))
 				affected_mob.emote("sneeze")
 			if(prob(1))
 				affected_mob.emote("cough")
 			if(prob(2))
-				affected_mob << "<span class='danger'> Your muscles ache.</span>"
+				to_chat(affected_mob, "<span class='danger'> Your muscles ache.</span>")
 				if(prob(20))
 					affected_mob.take_organ_damage(1)
 			if(prob(2))
-				affected_mob << "<span class='danger'>Your stomach hurts.</span>"
+				to_chat(affected_mob, "<span class='danger'>Your stomach hurts.</span>")
 				if(prob(20))
 					affected_mob.adjustToxLoss(1)
 					affected_mob.updatehealth()
 		if(5)
-			affected_mob << "<span class='danger'>You feel something tearing its way out of your stomach...</span>"
+			to_chat(affected_mob, "<span class='danger'>You feel something tearing its way out of your stomach...</span>")
 			affected_mob.adjustToxLoss(10)
 			affected_mob.updatehealth()
 			if(prob(50))
@@ -96,7 +96,7 @@
 	spawn(6)
 		var/mob/living/carbon/alien/larva/new_xeno = new(affected_mob.loc)
 		new_xeno.key = picked
-		new_xeno << sound('sound/voice/hiss5.ogg',0,0,0,100)	//To get the player's attention
+		SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100))	//To get the player's attention
 		if(gib_on_success)
 			affected_mob.gib()
 		qdel(src)
@@ -116,7 +116,7 @@ Des: Removes all infection images from aliens and places an infection image on a
 			for(var/image/I in alien.client.images)
 				if(dd_hasprefix_case(I.icon_state, "infected"))
 					qdel(I)
-			for(var/mob/living/L in mob_list)
+			for(var/mob/living/L in GLOB.mob_list)
 				if(iscorgi(L) || iscarbon(L))
 					if(L.status_flags & XENO_HOST)
 						var/I = image('icons/mob/alien.dmi', loc = L, icon_state = "infected[stage]")

@@ -37,10 +37,8 @@
 					F[cleaned] << 1
 			F["last_update"] << world.realtime
 			log_misc("ToR data updated!")
-			if(usr)	usr << "ToRban updated."
-			return 1
+			if(usr)	to_chat(usr, "ToRban updated.")
 		log_misc("ToR data update aborted: no data.")
-		return 0
 
 /client/proc/ToRban(task in list("update","toggle","show","remove","remove all","find"))
 	set name = "ToRban"
@@ -51,11 +49,11 @@
 			ToRban_update()
 		if("toggle")
 			if(config)
-				if(config.ToRban)
-					config.ToRban = 0
+				if(config_legacy.ToRban)
+					config_legacy.ToRban = 0
 					message_admins("<font color='red'>ToR banning disabled.</font>")
 				else
-					config.ToRban = 1
+					config_legacy.ToRban = 1
 					message_admins("<font colot='green'>ToR banning enabled.</font>")
 		if("show")
 			var/savefile/F = new(TORFILE)
@@ -72,16 +70,16 @@
 			var/choice = input(src,"Please select an IP address to remove from the ToR banlist:","Remove ToR ban",null) as null|anything in F.dir
 			if(choice)
 				F.dir.Remove(choice)
-				src << "<b>Address removed</b>"
+				to_chat(src, "<b>Address removed</b>")
 		if("remove all")
-			src << "<b>[TORFILE] was [fdel(TORFILE)?"":"not "]removed.</b>"
+			to_chat(src, "<b>[TORFILE] was [fdel(TORFILE)?"":"not "]removed.</b>")
 		if("find")
 			var/input = input(src,"Please input an IP address to search for:","Find ToR ban",null) as null|text
 			if(input)
 				if(ToRban_isbanned(input))
-					src << "<font color='green'><b>Address is a known ToR address</b></font>"
+					to_chat(src, "<font color='green'><b>Address is a known ToR address</b></font>")
 				else
-					src << "<font color='red'><b>Address is not a known ToR address</b></font>"
+					to_chat(src, "<font color='red'><b>Address is not a known ToR address</b></font>")
 	return
 
 #undef TORFILE

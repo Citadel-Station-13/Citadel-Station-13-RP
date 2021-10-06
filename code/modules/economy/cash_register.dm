@@ -25,24 +25,24 @@
 
 
 // Claim machine ID
-/obj/machinery/cash_register/New()
-	machine_id = "[station_name()] RETAIL #[num_financial_terminals++]"
+/obj/machinery/cash_register/Initialize(mapload, newdir)
+	. = ..()
+	machine_id = "RETAIL UNIT #[num_financial_terminals++]"
 	cash_stored = rand(10, 70)*10
 	transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
-
-/obj/machinery/cash_register/examine(mob/user as mob)
-	..(user)
+/obj/machinery/cash_register/examine(mob/user)
+	. = ..()
 	if(cash_open)
 		if(cash_stored)
-			user << "It holds [cash_stored] Thaler\s of money."
+			. += "It holds [cash_stored] thaler\s of money."
 		else
-			user << "It's completely empty."
+			. += "It's completely empty."
 
 
 /obj/machinery/cash_register/attack_hand(mob/user as mob)
 	// Don't be accessible from the wrong side of the machine
-	if(get_dir(src, user) & reverse_dir[src.dir]) return
+	if(get_dir(src, user) & GLOB.reverse_dir[src.dir]) return
 
 	if(cash_open)
 		if(cash_stored)
@@ -101,7 +101,7 @@
 				if(allowed(usr))
 					locked = !locked
 				else
-					usr << "\icon[src]<span class='warning'>Insufficient access.</span>"
+					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>Insufficient access.</span>")
 			if("toggle_cash_lock")
 				cash_locked = !cash_locked
 			if("link_account")
@@ -111,9 +111,9 @@
 				if(linked_account)
 					if(linked_account.suspended)
 						linked_account = null
-						src.visible_message("\icon[src]<span class='warning'>Account has been suspended.</span>")
+						src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Account has been suspended.</span>")
 				else
-					usr << "\icon[src]<span class='warning'>Account not found.</span>"
+					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>Account not found.</span>")
 			if("custom_order")
 				var/t_purpose = sanitize(input("Enter purpose", "New purpose") as text)
 				if (!t_purpose || !Adjacent(usr)) return
@@ -124,11 +124,11 @@
 				transaction_amount += t_amount
 				price_list += t_amount
 				playsound(src, 'sound/machines/twobeep.ogg', 25)
-				src.visible_message("\icon[src][transaction_purpose]: [t_amount] Thaler\s.")
+				src.visible_message("[icon2html(thing = src, target = world)][transaction_purpose]: [t_amount] Thaler\s.")
 			if("set_amount")
 				var/item_name = locate(href_list["item"])
 				var/n_amount = round(input("Enter amount", "New amount") as num)
-				n_amount = Clamp(n_amount, 0, 20)
+				n_amount = clamp(n_amount, 0, 20)
 				if (!item_list[item_name] || !Adjacent(usr)) return
 				transaction_amount += (n_amount - item_list[item_name]) * price_list[item_name]
 				if(!n_amount)
@@ -161,23 +161,23 @@
 					price_list.Cut()
 			if("reset_log")
 				transaction_logs.Cut()
-				usr << "\icon[src]<span class='notice'>Transaction log reset.</span>"
+				to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='notice'>Transaction log reset.</span>")
 	updateDialog()
 
 
 
-/obj/machinery/cash_register/attackby(obj/O as obj, user as mob)
+/obj/machinery/cash_register/attackby(obj/item/O as obj, user as mob)
 	// Check for a method of paying (ID, PDA, e-wallet, cash, ect.)
-	var/obj/item/weapon/card/id/I = O.GetID()
+	var/obj/item/card/id/I = O.GetID()
 	if(I)
 		scan_card(I, O)
-	else if (istype(O, /obj/item/weapon/spacecash/ewallet))
-		var/obj/item/weapon/spacecash/ewallet/E = O
+	else if (istype(O, /obj/item/spacecash/ewallet))
+		var/obj/item/spacecash/ewallet/E = O
 		scan_wallet(E)
-	else if (istype(O, /obj/item/weapon/spacecash))
-		var/obj/item/weapon/spacecash/SC = O
+	else if (istype(O, /obj/item/spacecash))
+		var/obj/item/spacecash/SC = O
 		if(cash_open)
-			user << "You neatly sort the cash into the box."
+			to_chat(user, "You neatly sort the cash into the box.")
 			cash_stored += SC.worth
 			overlays |= "register_cash"
 			if(ishuman(user))
@@ -186,10 +186,10 @@
 			qdel(SC)
 		else
 			scan_cash(SC)
-	else if(istype(O, /obj/item/weapon/card/emag))
+	else if(istype(O, /obj/item/card/emag))
 		return ..()
-	else if(istype(O, /obj/item/weapon/wrench))
-		var/obj/item/weapon/wrench/W = O
+	else if(O.is_wrench())
+		var/obj/item/tool/wrench/W = O
 		toggle_anchors(W, user)
 	// Not paying: Look up price and add it to transaction_amount
 	else
@@ -206,25 +206,25 @@
 		return 1
 	else
 		confirm_item = I
-		src.visible_message("\icon[src]<b>Total price:</b> [transaction_amount] Thaler\s. Swipe again to confirm.")
+		src.visible_message("[icon2html(thing = src, target = world)]<b>Total price:</b> [transaction_amount] Thaler\s. Swipe again to confirm.")
 		playsound(src, 'sound/machines/twobeep.ogg', 25)
 		return 0
 
 
-/obj/machinery/cash_register/proc/scan_card(obj/item/weapon/card/id/I, obj/item/ID_container)
+/obj/machinery/cash_register/proc/scan_card(obj/item/card/id/I, obj/item/ID_container)
 	if (!transaction_amount)
 		return
 
 	if (cash_open)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
-		usr << "\icon[src]<span class='warning'>The cash box is open.</span>"
+		to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>The cash box is open.</span>")
 		return
 
 	if((item_list.len > 1 || item_list[item_list[1]] > 1) && !confirm(I))
 		return
 
 	if (!linked_account)
-		usr.visible_message("\icon[src]<span class='warning'>Unable to connect to linked account.</span>")
+		usr.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Unable to connect to linked account.</span>")
 		return
 
 	// Access account for transaction
@@ -237,13 +237,13 @@
 		D = attempt_account_access(I.associated_account_number, attempt_pin, 2)
 
 		if(!D)
-			src.visible_message("\icon[src]<span class='warning'>Unable to access account. Check security settings and try again.</span>")
+			src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Unable to access account. Check security settings and try again.</span>")
 		else
 			if(D.suspended)
-				src.visible_message("\icon[src]<span class='warning'>Your account has been suspended.</span>")
+				src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Your account has been suspended.</span>")
 			else
 				if(transaction_amount > D.money)
-					src.visible_message("\icon[src]<span class='warning'>Not enough funds.</span>")
+					src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Not enough funds.</span>")
 				else
 					// Transfer the money
 					D.money -= transaction_amount
@@ -276,13 +276,13 @@
 					transaction_complete()
 
 
-/obj/machinery/cash_register/proc/scan_wallet(obj/item/weapon/spacecash/ewallet/E)
+/obj/machinery/cash_register/proc/scan_wallet(obj/item/spacecash/ewallet/E)
 	if (!transaction_amount)
 		return
 
 	if (cash_open)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
-		usr << "\icon[src]<span class='warning'>The cash box is open.</span>"
+		to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>The cash box is open.</span>")
 		return
 
 	if((item_list.len > 1 || item_list[item_list[1]] > 1) && !confirm(E))
@@ -291,7 +291,7 @@
 	// Access account for transaction
 	if(check_account())
 		if(transaction_amount > E.worth)
-			src.visible_message("\icon[src]<span class='warning'>Not enough funds.</span>")
+			src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Not enough funds.</span>")
 		else
 			// Transfer the money
 			E.worth -= transaction_amount
@@ -314,20 +314,20 @@
 			transaction_complete()
 
 
-/obj/machinery/cash_register/proc/scan_cash(obj/item/weapon/spacecash/SC)
+/obj/machinery/cash_register/proc/scan_cash(obj/item/spacecash/SC)
 	if (!transaction_amount)
 		return
 
 	if (cash_open)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
-		usr << "\icon[src]<span class='warning'>The cash box is open.</span>"
+		to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>The cash box is open.</span>")
 		return
 
 	if((item_list.len > 1 || item_list[item_list[1]] > 1) && !confirm(SC))
 		return
 
 	if(transaction_amount > SC.worth)
-		src.visible_message("\icon[src]<span class='warning'>Not enough money.</span>")
+		src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Not enough money.</span>")
 	else
 		// Insert cash into magical slot
 		SC.worth -= transaction_amount
@@ -349,20 +349,20 @@
 /obj/machinery/cash_register/proc/scan_item_price(obj/O)
 	if(!istype(O))	return
 	if(item_list.len > 10)
-		src.visible_message("\icon[src]<span class='warning'>Only up to ten different items allowed per purchase.</span>")
+		src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Only up to ten different items allowed per purchase.</span>")
 		return
 	if (cash_open)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 25)
-		usr << "\icon[src]<span class='warning'>The cash box is open.</span>"
+		to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>The cash box is open.</span>")
 		return
 
 	// First check if item has a valid price
 	var/price = O.get_item_cost()
 	if(isnull(price))
-		src.visible_message("\icon[src]<span class='warning'>Unable to find item in database.</span>")
+		src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Unable to find item in database.</span>")
 		return
 	// Call out item cost
-	src.visible_message("\icon[src]\A [O]: [price ? "[price] Thaler\s" : "free of charge"].")
+	src.visible_message("[icon2html(thing = src, target = world)]\A [O]: [price ? "[price] Thaler\s" : "free of charge"].")
 	// Note the transaction purpose for later use
 	if(transaction_purpose)
 		transaction_purpose += "<br>"
@@ -430,11 +430,11 @@
 
 /obj/machinery/cash_register/proc/check_account()
 	if (!linked_account)
-		usr.visible_message("\icon[src]<span class='warning'>Unable to connect to linked account.</span>")
+		usr.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Unable to connect to linked account.</span>")
 		return 0
 
 	if(linked_account.suspended)
-		src.visible_message("\icon[src]<span class='warning'>Connected account has been suspended.</span>")
+		src.visible_message("[icon2html(thing = src, target = world)]<span class='warning'>Connected account has been suspended.</span>")
 		return 0
 	return 1
 
@@ -442,7 +442,7 @@
 /obj/machinery/cash_register/proc/transaction_complete()
 	/// Visible confirmation
 	playsound(src, 'sound/machines/chime.ogg', 25)
-	src.visible_message("\icon[src]<span class='notice'>Transaction complete.</span>")
+	src.visible_message("[icon2html(thing = src, target = world)]<span class='notice'>Transaction complete.</span>")
 	flick("register_approve", src)
 	reset_memory()
 	updateDialog()
@@ -476,10 +476,10 @@
 		if(cash_stored)
 			overlays += "register_cash"
 	else
-		usr << "<span class='warning'>The cash box is locked.</span>"
+		to_chat(usr, "<span class='warning'>The cash box is locked.</span>")
 
 
-/obj/machinery/cash_register/proc/toggle_anchors(obj/item/weapon/wrench/W, mob/user)
+/obj/machinery/cash_register/proc/toggle_anchors(obj/item/tool/wrench/W, mob/user)
 	if(manipulating) return
 	manipulating = 1
 	if(!anchored)
@@ -537,3 +537,9 @@
 
 /obj/machinery/cash_register/civilian
 	account_to_connect = "Civilian"
+
+/obj/machinery/cash_register/trader
+	name = "Nebula Gas Cash Register"
+	account_to_connect = "Civilian"
+	machine_id = "Nebula Gas RETAIL UNIT"
+	req_access = list(160)

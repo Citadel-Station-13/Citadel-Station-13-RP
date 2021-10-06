@@ -37,7 +37,7 @@
 
 /obj/effect/overlay/bluespacify
 	name = "Bluespace"
-	icon = 'icons/turf/space.dmi'
+	icon = 'icons/turf/space_vr.dmi' //VOREStation Edit
 	icon_state = "bluespacify"
 	plane = ABOVE_PLANE
 
@@ -51,8 +51,8 @@
 	layer = ABOVE_MOB_LAYER
 	mouse_opacity = 0
 
-/obj/effect/overlay/wallrot/New()
-	..()
+/obj/effect/overlay/wallrot/Initialize(mapload)
+	. = ..()
 	pixel_x += rand(-10, 10)
 	pixel_y += rand(-10, 10)
 
@@ -64,10 +64,10 @@
 
 // Todo: Add a version that gradually reaccumulates over time by means of alpha transparency. -Spades
 /obj/effect/overlay/snow/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/weapon/shovel))
+	if (istype(W, /obj/item/shovel))
 		user.visible_message("<span class='notice'>[user] begins to shovel away \the [src].</span>")
 		if(do_after(user, 40))
-			user << "<span class='notice'>You have finished shoveling!</span>"
+			to_chat(user, "<span class='notice'>You have finished shoveling!</span>")
 			qdel(src)
 		return
 
@@ -94,3 +94,27 @@
 	icon_state = "snowwall"
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
+
+/obj/effect/overlay/holographic
+	mouse_opacity = FALSE
+	anchored = TRUE
+	plane = ABOVE_PLANE
+
+// Similar to the tesla ball but doesn't actually do anything and is purely visual.
+/obj/effect/overlay/energy_ball
+	name = "energy ball"
+	desc = "An energy ball."
+	icon = 'icons/obj/tesla_engine/energy_ball.dmi'
+	icon_state = "energy_ball"
+	plane = PLANE_LIGHTING_ABOVE
+	pixel_x = -32
+	pixel_y = -32
+
+/obj/effect/overlay/vis
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
+	vis_flags = VIS_INHERIT_DIR
+	///When detected to be unused it gets set to world.time, after a while it gets removed
+	var/unused = 0
+	///overlays which go unused for this amount of time get cleaned up
+	var/cache_expiration = 2 MINUTES

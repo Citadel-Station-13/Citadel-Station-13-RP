@@ -57,14 +57,11 @@ var/const/CAMERA_WIRE_NOTHING2 = 32
 			var/new_range = (C.view_range == initial(C.view_range) ? C.short_range : initial(C.view_range))
 			C.setViewRange(new_range)
 
-		if(CAMERA_WIRE_POWER)
-			C.kick_viewers() // Kicks anyone watching the camera
-
 		if(CAMERA_WIRE_LIGHT)
 			C.light_disabled = !C.light_disabled
 
 		if(CAMERA_WIRE_ALARM)
-			C.visible_message("\icon[C] *beep*", "\icon[C] *beep*")
+			C.visible_message("[icon2html(thing = C, target = world)] *beep*", "[icon2html(thing = C, target = world)] *beep*")
 	return
 
 /datum/wires/camera/proc/CanDeconstruct()

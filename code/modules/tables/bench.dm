@@ -13,5 +13,5 @@
 	else
 		name = "bench frame"
 
-/obj/structure/table/bench/CanPass(atom/movable/mover)
+/obj/structure/table/bench/CanAllowThrough(atom/movable/mover)
 	return 1

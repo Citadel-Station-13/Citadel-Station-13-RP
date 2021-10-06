@@ -2,26 +2,14 @@
 	The global hud:
 	Uses the same visual objects for all players.
 */
-var/datum/global_hud/global_hud = new()
-var/list/global_huds = list(
-		global_hud.druggy,
-		global_hud.blurry,
-		global_hud.whitense,
-		global_hud.vimpaired,
-		global_hud.darkMask,
-		global_hud.centermarker,
-		global_hud.nvg,
-		global_hud.thermal,
-		global_hud.meson,
-		global_hud.science,
-		global_hud.material,
-		global_hud.holomap	// VOREStation Edit - Holomap
-		)
 
-/datum/hud/var/obj/screen/grab_intent
-/datum/hud/var/obj/screen/hurt_intent
-/datum/hud/var/obj/screen/disarm_intent
-/datum/hud/var/obj/screen/help_intent
+GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
+
+/datum/hud
+	var/obj/screen/grab_intent
+	var/obj/screen/hurt_intent
+	var/obj/screen/disarm_intent
+	var/obj/screen/help_intent
 
 /datum/global_hud
 	var/obj/screen/druggy
@@ -36,7 +24,7 @@ var/list/global_huds = list(
 	var/obj/screen/meson
 	var/obj/screen/science
 	var/obj/screen/material
-	var/obj/screen/holomap // VOREStation Edit - Holomap
+	var/obj/screen/holomap
 
 /datum/global_hud/proc/setup_overlay(var/icon_state)
 	var/obj/screen/screen = new /obj/screen()
@@ -92,19 +80,17 @@ var/list/global_huds = list(
 	science = setup_overlay("science_hud")
 	material = setup_overlay("material_hud")
 
-	// VOREStation Edit Begin - Holomap
 	// The holomap screen object is actually totally invisible.
 	// Station maps work by setting it as an images location before sending to client, not
 	// actually changing the icon or icon state of the screen object itself!
 	// Why do they work this way? I don't know really, that is how /vg designed them, but since they DO
-	// work this way, we can take advantage of their immutability by making them part of 
+	// work this way, we can take advantage of their immutability by making them part of
 	// the global_hud (something we have and /vg doesn't) instead of an instance per mob.
 	holomap = new /obj/screen()
 	holomap.name = "holomap"
 	holomap.icon = null
 	holomap.screen_loc = ui_holomap
 	holomap.mouse_opacity = 0
-	// VOREStation Edit End
 
 	var/obj/screen/O
 	var/i
@@ -185,13 +171,21 @@ var/list/global_huds = list(
 
 	var/list/adding
 	var/list/other
+	var/list/miniobjs
 	var/list/obj/screen/hotkeybuttons
 
 	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
 	var/list/slot_info
 
-datum/hud/New(mob/owner)
+	// pending hardsync
+	var/icon/ui_style
+	var/ui_color
+	var/ui_alpha
+
+	var/list/minihuds = list()
+
+/datum/hud/New(mob/owner)
 	mymob = owner
 	instantiate()
 	..()
@@ -216,6 +210,7 @@ datum/hud/New(mob/owner)
 	hotkeybuttons = null
 //	item_action_list = null // ?
 	mymob = null
+	minihuds = null
 
 /datum/hud/proc/hidden_inventory_update()
 	if(!mymob) return
@@ -306,9 +301,9 @@ datum/hud/New(mob/owner)
 /datum/hud/proc/instantiate()
 	if(!ismob(mymob)) return 0
 	if(!mymob.client) return 0
-	var/ui_style = ui_style2icon(mymob.client.prefs.UI_style)
-	var/ui_color = mymob.client.prefs.UI_style_color
-	var/ui_alpha = mymob.client.prefs.UI_style_alpha
+	ui_style = ui_style2icon(mymob.client.prefs.UI_style)
+	ui_color = mymob.client.prefs.UI_style_color
+	ui_alpha = mymob.client.prefs.UI_style_alpha
 
 	if(ishuman(mymob))
 		human_hud(ui_style, ui_color, ui_alpha, mymob) // Pass the player the UI style chosen in preferences
@@ -318,8 +313,6 @@ datum/hud/New(mob/owner)
 		mymob.instantiate_hud(src)
 	else if(isalien(mymob))
 		larva_hud()
-	else if(isslime(mymob))
-		slime_hud()
 	else if(isAI(mymob))
 		ai_hud()
 	else if(isobserver(mymob))
@@ -330,17 +323,37 @@ datum/hud/New(mob/owner)
 /mob/proc/instantiate_hud(var/datum/hud/HUD)
 	return
 
+/datum/hud/proc/apply_minihud(var/datum/mini_hud/MH)
+	if(MH in minihuds)
+		return
+	minihuds += MH
+	if(mymob.client)
+		mymob.client.screen -= miniobjs
+	miniobjs += MH.get_screen_objs()
+	if(mymob.client)
+		mymob.client.screen += miniobjs
+
+/datum/hud/proc/remove_minihud(var/datum/mini_hud/MH)
+	if(!(MH in minihuds))
+		return
+	minihuds -= MH
+	if(mymob.client)
+		mymob.client.screen -= miniobjs
+	miniobjs -= MH.get_screen_objs()
+	if(mymob.client)
+		mymob.client.screen += miniobjs
+
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12(var/full = 0 as null)
 	set name = "F12"
 	set hidden = 1
 
 	if(!hud_used)
-		usr << "<span class='warning'>This mob type does not use a HUD.</span>"
+		to_chat(usr, "<span class='warning'>This mob type does not use a HUD.</span>")
 		return
 
 	if(!ishuman(src))
-		usr << "<span class='warning'>Inventory hiding is currently only supported for human mobs, sorry.</span>"
+		to_chat(usr, "<span class='warning'>Inventory hiding is currently only supported for human mobs, sorry.</span>")
 		return
 
 	if(!client) return

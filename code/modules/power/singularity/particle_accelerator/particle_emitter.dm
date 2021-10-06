@@ -33,6 +33,8 @@
 		var/obj/effect/accelerated_particle/A = null
 		var/turf/T = get_step(src,dir)
 		switch(strength)
+			if(-1)
+				A = new/obj/effect/accelerated_particle/reverse(T, dir)
 			if(0)
 				A = new/obj/effect/accelerated_particle/weak(T, dir)
 			if(1)
@@ -42,6 +44,6 @@
 			if(3)
 				A = new/obj/effect/accelerated_particle/powerful(T, dir)
 		if(A)
-			A.set_dir(src.dir)
+			A.setDir(src.dir)
 			return 1
 	return 0

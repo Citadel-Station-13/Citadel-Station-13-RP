@@ -7,7 +7,7 @@
 	var/hide_SMES_details = 0
 	var/hide_breakers = 0
 
-/datum/nano_module/rcon/ui_interact(mob/user, ui_key = "rcon", datum/nanoui/ui=null, force_open=1, var/datum/topic_state/state = default_state)
+/datum/nano_module/rcon/nano_ui_interact(mob/user, ui_key = "rcon", datum/nanoui/ui=null, force_open=1, var/datum/topic_state/state = default_state)
 	FindDevices() // Update our devices list
 	var/data[0]
 
@@ -38,7 +38,7 @@
 	data["hide_smes_details"] = hide_SMES_details
 	data["hide_breakers"] = hide_breakers
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "rcon.tmpl", "RCON Console", 600, 400, state = state)
 		ui.set_initial_data(data)
@@ -78,7 +78,7 @@
 				toggle = breaker
 		if(toggle)
 			if(toggle.update_locked)
-				usr << "The breaker box was recently toggled. Please wait before toggling it again."
+				to_chat(usr, "The breaker box was recently toggled. Please wait before toggling it again.")
 			else
 				toggle.auto_toggle()
 	if(href_list["hide_smes"])
@@ -105,11 +105,20 @@
 // Description: Refreshes local list of known devices.
 /datum/nano_module/rcon/proc/FindDevices()
 	known_SMESs = new /list()
+
+	var/z = get_z(nano_host())
+	var/list/map_levels = using_map.get_map_levels(z)
+
 	for(var/obj/machinery/power/smes/buildable/SMES in machines)
+		if(!(SMES.z in map_levels))
+			continue
 		if(SMES.RCon_tag && (SMES.RCon_tag != "NO_TAG") && SMES.RCon)
 			known_SMESs.Add(SMES)
 
 	known_breakers = new /list()
 	for(var/obj/machinery/power/breakerbox/breaker in machines)
+		if(!(breaker.z in map_levels))
+			continue
 		if(breaker.RCon_tag != "NO_TAG")
 			known_breakers.Add(breaker)
+

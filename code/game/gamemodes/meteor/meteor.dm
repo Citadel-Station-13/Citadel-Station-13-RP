@@ -14,7 +14,7 @@
 	defer_powernet_rebuild = 2//Might help with the lag
 	..()
 
-/datum/game_mode/meteor/process()
+/datum/game_mode/meteor/process(delta_time)
 	if(world.time >= next_wave)
 		next_wave = world.time + meteor_wave_delay
 		spawn() spawn_meteors(6, meteors_normal)
@@ -36,9 +36,9 @@
 			survivors++
 
 	if(survivors)
-		world << "<span class='notice'><B>The following survived the meteor storm</B></span>:[text]"
+		to_chat(world, "<span class='notice'><B>The following survived the meteor storm</B></span>:[text]")
 	else
-		world << "<span class='notice'><B>Nobody survived the meteor storm!</B></span>"
+		to_chat(world, "<span class='notice'><B>Nobody survived the meteor storm!</B></span>")
 
 	feedback_set_details("round_end_result","end - evacuation")
 	feedback_set("round_end_result",survivors)

@@ -7,11 +7,12 @@
 
 	for(var/obj/machinery/power/smes/S in machines)
 		var/area/current_area = get_area(S)
-		if(current_area.type in skipped_areas || !(S.z in using_map.station_levels))
+		if(current_area.type in skipped_areas || !(S.z in GLOB.using_map.station_levels))
 			continue
 		S.last_charge			= S.charge
 		S.last_output_attempt	= S.output_attempt
 		S.last_input_attempt 	= S.input_attempt
+		S.powerout_holders_used = TRUE
 		S.charge = 0
 		S.inputting(0)
 		S.outputting(0)
@@ -20,7 +21,7 @@
 
 
 	for(var/obj/machinery/power/apc/C in machines)
-		if(!C.is_critical && C.cell && (C.z in using_map.station_levels))
+		if(!C.is_critical && C.cell && (C.z in GLOB.using_map.station_levels))
 			C.cell.charge = 0
 
 /proc/power_restore(var/announce = 1)
@@ -29,17 +30,19 @@
 	if(announce)
 		command_announcement.Announce("Power has been restored to [station_name()]. We apologize for the inconvenience.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')
 	for(var/obj/machinery/power/apc/C in machines)
-		if(C.cell && (C.z in using_map.station_levels))
+		if(C.cell && (C.z in GLOB.using_map.station_levels))
 			C.cell.charge = C.cell.maxcharge
 	for(var/obj/machinery/power/smes/S in machines)
 		var/area/current_area = get_area(S)
 		if(current_area.type in skipped_areas || isNotStationLevel(S.z))
 			continue
-		S.charge = S.last_charge
-		S.output_attempt = S.last_output_attempt
-		S.input_attempt = S.last_input_attempt
-		S.update_icon()
-		S.power_change()
+		if(S.powerout_holders_used)
+			S.charge = S.last_charge
+			S.output_attempt = S.last_output_attempt
+			S.input_attempt = S.last_input_attempt
+			S.powerout_holders_used = FALSE
+			S.update_icon()
+			S.power_change()
 
 /proc/power_restore_quick(var/announce = 1)
 

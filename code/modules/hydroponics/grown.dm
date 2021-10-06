@@ -1,19 +1,21 @@
 //Grown foods.
-/obj/item/weapon/reagent_containers/food/snacks/grown
+/obj/item/reagent_containers/food/snacks/grown
 
 	name = "fruit"
 	icon = 'icons/obj/hydroponics_products.dmi'
 	icon_state = "blank"
 	desc = "Nutritious! Probably."
+	flags = NOCONDUCT
 	slot_flags = SLOT_HOLSTER
+	drop_sound = 'sound/items/drop/herb.ogg'
+	pickup_sound = 'sound/items/pickup/herb.ogg'
 
 	var/plantname
 	var/datum/seed/seed
 	var/potency = -1
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/New(newloc,planttype)
-
-	..()
+/obj/item/reagent_containers/food/snacks/grown/Initialize(mapload, planttype)
+	. = ..()
 	if(!dried_type)
 		dried_type = type
 	src.pixel_x = rand(-5.0, 5)
@@ -24,13 +26,6 @@
 		plantname = planttype
 
 	if(!plantname)
-		return
-
-	if(!plant_controller)
-		sleep(250) // ugly hack, should mean roundstart plants are fine.
-	if(!plant_controller)
-		world << "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>"
-		qdel(src)
 		return
 
 	seed = plant_controller.seeds[plantname]
@@ -62,15 +57,17 @@
 	update_desc()
 	if(reagents.total_volume > 0)
 		bitesize = 1+round(reagents.total_volume / 2, 1)
+	if(seed.get_trait(TRAIT_STINGS))
+		force = 1
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/proc/update_desc()
+/obj/item/reagent_containers/food/snacks/grown/proc/update_desc()
 
 	if(!seed)
 		return
 	if(!plant_controller)
 		sleep(250) // ugly hack, should mean roundstart plants are fine.
 	if(!plant_controller)
-		world << "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>"
+		to_chat(world, "<span class='danger'>Plant controller does not exist and [src] requires it. Aborting.</span>")
 		qdel(src)
 		return
 
@@ -130,7 +127,7 @@
 		plant_controller.product_descs["[seed.uid]"] = desc
 	desc += ". Delicious! Probably."
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/update_icon()
+/obj/item/reagent_containers/food/snacks/grown/update_icon()
 	if(!seed || !plant_controller || !plant_controller.plant_icon_cache)
 		return
 	overlays.Cut()
@@ -150,7 +147,10 @@
 		plant_controller.plant_icon_cache[icon_key] = plant_icon
 	overlays |= plant_icon
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
+/obj/item/reagent_containers/food/snacks/grown/Crossed(var/mob/living/M)
+	. = ..()
+	if(M.is_incorporeal())
+		return
 	if(seed && seed.get_trait(TRAIT_JUICY) == 2)
 		if(istype(M))
 
@@ -161,30 +161,32 @@
 				var/mob/living/carbon/human/H = M
 				if(H.shoes && H.shoes.item_flags & NOSLIP)
 					return
-
+				if(H.flags & NO_SLIP)//Species that dont slip naturally
+					return
 			M.stop_pulling()
-			M << "<span class='notice'>You slipped on the [name]!</span>"
+			to_chat(M, "<span class='notice'>You slipped on the [name]!</span>")
 			playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
 			M.Stun(8)
 			M.Weaken(5)
 			seed.thrown_at(src,M)
 			sleep(-1)
-			if(src) qdel(src)
+			if(src)
+				qdel(src)
 			return
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
+/obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
 	if(seed) seed.thrown_at(src,hit_atom)
 	..()
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/attackby(var/obj/item/weapon/W, var/mob/living/user)
+/obj/item/reagent_containers/food/snacks/grown/attackby(var/obj/item/W, var/mob/living/user)
 
 	if(seed)
 		if(seed.get_trait(TRAIT_PRODUCES_POWER) && istype(W, /obj/item/stack/cable_coil))
 			var/obj/item/stack/cable_coil/C = W
 			if(C.use(5))
 				//TODO: generalize this.
-				user << "<span class='notice'>You add some cable to the [src.name] and slide it inside the battery casing.</span>"
-				var/obj/item/weapon/cell/potato/pocell = new /obj/item/weapon/cell/potato(get_turf(user))
+				to_chat(user, "<span class='notice'>You add some cable to the [src.name] and slide it inside the battery casing.</span>")
+				var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(get_turf(user))
 				if(src.loc == user && istype(user,/mob/living/carbon/human))
 					user.put_in_hands(pocell)
 				pocell.maxcharge = src.potency * 10
@@ -212,36 +214,42 @@
 							if(G.amount>=G.max_amount)
 								continue
 							G.attackby(NG, user)
-						user << "You add the newly-formed wood to the stack. It now contains [NG.amount] planks."
+						to_chat(user, "You add the newly-formed wood to the stack. It now contains [NG.amount] planks.")
 					qdel(src)
 					return
 				else if(!isnull(seed.chems["potato"]))
-					user << "You slice \the [src] into sticks."
-					new /obj/item/weapon/reagent_containers/food/snacks/rawsticks(get_turf(src))
+					to_chat(user, "You slice \the [src] into sticks.")
+					new /obj/item/reagent_containers/food/snacks/rawsticks(get_turf(src))
 					qdel(src)
 					return
 				else if(!isnull(seed.chems["carrotjuice"]))
-					user << "You slice \the [src] into sticks."
-					new /obj/item/weapon/reagent_containers/food/snacks/carrotfries(get_turf(src))
+					to_chat(user, "You slice \the [src] into sticks.")
+					new /obj/item/reagent_containers/food/snacks/carrotfries(get_turf(src))
 					qdel(src)
 					return
 				else if(!isnull(seed.chems["soymilk"]))
-					user << "You roughly chop up \the [src]."
-					new /obj/item/weapon/reagent_containers/food/snacks/soydope(get_turf(src))
+					to_chat(user, "You roughly chop up \the [src].")
+					new /obj/item/reagent_containers/food/snacks/soydope(get_turf(src))
+					qdel(src)
+					return
+				else if(!isnull(seed.chems["pineapplejuice"]))
+					to_chat(user, "You slice \the [src] into slices.")
+					for(var/i in 1 to 4)
+						new /obj/item/reagent_containers/food/snacks/pineapple_ring(get_turf(src))
 					qdel(src)
 					return
 				else if(seed.get_trait(TRAIT_FLESH_COLOUR))
-					user << "You slice up \the [src]."
+					to_chat(user, "You slice up \the [src].")
 					var/slices = rand(3,5)
 					var/reagents_to_transfer = round(reagents.total_volume/slices)
-					for(var/i=i;i<=slices;i++)
-						var/obj/item/weapon/reagent_containers/food/snacks/fruit_slice/F = new(get_turf(src),seed)
+					for(var/i in 1 to slices)
+						var/obj/item/reagent_containers/food/snacks/fruit_slice/F = new(get_turf(src),seed)
 						if(reagents_to_transfer) reagents.trans_to_obj(F,reagents_to_transfer)
 					qdel(src)
 					return
 	..()
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+/obj/item/reagent_containers/food/snacks/grown/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
 	. = ..()
 
 	if(seed && seed.get_trait(TRAIT_STINGS))
@@ -254,11 +262,11 @@
 			return
 		if(prob(35))
 			if(user)
-				user << "<span class='danger'>\The [src] has fallen to bits.</span>"
+				to_chat(user, "<span class='danger'>\The [src] has fallen to bits.</span>")
 				user.drop_from_inventory(src)
 			qdel(src)
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/attack_self(mob/user as mob)
+/obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user as mob)
 
 	if(!seed)
 		return
@@ -266,32 +274,26 @@
 	if(istype(user.loc,/turf/space))
 		return
 
-	if(user.a_intent == I_HURT)
-		user.visible_message("<span class='danger'>\The [user] squashes \the [src]!</span>")
+	if(user.a_intent == INTENT_HARM)
+		user.visible_message("<span class='danger'>[user] squashes [src]!</span>")
 		seed.thrown_at(src,user)
 		sleep(-1)
 		if(src) qdel(src)
 		return
 
 	if(seed.kitchen_tag == "grass")
-		user.show_message("<span class='notice'>You make a grass tile out of \the [src]!</span>", 1)
+		user.show_message("<span class='notice'>You make a grass tile out of [src]!</span>", 1)
 		var/flesh_colour = seed.get_trait(TRAIT_FLESH_COLOUR)
-		if(!flesh_colour) flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
-		for(var/i=0,i<2,i++)
-			var/obj/item/stack/tile/grass/G = new (user.loc)
-			if(flesh_colour) G.color = flesh_colour
-			for (var/obj/item/stack/tile/grass/NG in user.loc)
-				if(G==NG)
-					continue
-				if(NG.amount>=NG.max_amount)
-					continue
-				NG.attackby(G, user)
-			user << "You add the newly-formed grass to the stack. It now contains [G.amount] tiles."
+		if(!flesh_colour)
+			flesh_colour = seed.get_trait(TRAIT_PRODUCT_COLOUR)
+		var/obj/item/stack/tile/grass/G = new(user.loc, 2)		//2 grass tiles
+		if(flesh_colour)
+			G.color = flesh_colour
 		qdel(src)
 		return
 
 	if(seed.get_trait(TRAIT_SPREAD) > 0)
-		user << "<span class='notice'>You plant the [src.name].</span>"
+		to_chat(user, "<span class='notice'>You plant the [src.name].</span>")
 		new /obj/machinery/portable_atmospherics/hydroponics/soil/invisible(get_turf(user),src.seed)
 		qdel(src)
 		return
@@ -302,18 +304,18 @@
 			if("shand")
 				var/obj/item/stack/medical/bruise_pack/tajaran/poultice = new /obj/item/stack/medical/bruise_pack/tajaran(user.loc)
 				poultice.heal_brute = potency
-				user << "<span class='notice'>You mash the leaves into a poultice.</span>"
+				to_chat(user, "<span class='notice'>You mash the leaves into a poultice.</span>")
 				qdel(src)
 				return
 			if("mtear")
 				var/obj/item/stack/medical/ointment/tajaran/poultice = new /obj/item/stack/medical/ointment/tajaran(user.loc)
 				poultice.heal_burn = potency
-				user << "<span class='notice'>You mash the petals into a poultice.</span>"
+				to_chat(user, "<span class='notice'>You mash the petals into a poultice.</span>")
 				qdel(src)
 				return
 	*/
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/pickup(mob/user)
+/obj/item/reagent_containers/food/snacks/grown/pickup(mob/user)
 	..()
 	if(!seed)
 		return
@@ -330,13 +332,13 @@
 
 // Predefined types for placing on the map.
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/libertycap
+/obj/item/reagent_containers/food/snacks/grown/mushroom/libertycap
 	plantname = "libertycap"
 
-/obj/item/weapon/reagent_containers/food/snacks/grown/ambrosiavulgaris
+/obj/item/reagent_containers/food/snacks/grown/ambrosiavulgaris
 	plantname = "ambrosia"
 
-/obj/item/weapon/reagent_containers/food/snacks/fruit_slice
+/obj/item/reagent_containers/food/snacks/fruit_slice
 	name = "fruit slice"
 	desc = "A slice of some tasty fruit."
 	icon = 'icons/obj/hydroponics_misc.dmi'
@@ -344,8 +346,8 @@
 
 var/list/fruit_icon_cache = list()
 
-/obj/item/weapon/reagent_containers/food/snacks/fruit_slice/New(var/newloc, var/datum/seed/S)
-	..(newloc)
+/obj/item/reagent_containers/food/snacks/fruit_slice/Initialize(mapload, datum/seed/S)
+	. = ..()
 	// Need to go through and make a general image caching controller. Todo.
 	if(!istype(S))
 		qdel(src)

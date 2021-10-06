@@ -6,14 +6,14 @@
 	level = 1		// underfloor
 	layer = UNDER_JUNK_LAYER
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 0
-	var/obj/item/device/radio/beacon/Beacon
+	var/obj/item/radio/beacon/Beacon
 
-/obj/machinery/bluespace_beacon/New()
-	..()
+/obj/machinery/bluespace_beacon/Initialize(mapload, newdir)
+	. = ..()
 	var/turf/T = src.loc
-	Beacon = new /obj/item/device/radio/beacon
+	Beacon = new /obj/item/radio/beacon
 	Beacon.invisibility = INVISIBILITY_MAXIMUM
 	Beacon.loc = T
 
@@ -38,10 +38,10 @@
 	else
 		icon_state = "[state]"
 
-/obj/machinery/bluespace_beacon/process()
+/obj/machinery/bluespace_beacon/process(delta_time)
 	if(!Beacon)
 		var/turf/T = src.loc
-		Beacon = new /obj/item/device/radio/beacon
+		Beacon = new /obj/item/radio/beacon
 		Beacon.invisibility = INVISIBILITY_MAXIMUM
 		Beacon.loc = T
 	if(Beacon)

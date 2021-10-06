@@ -3,8 +3,8 @@
 /turf/simulated/wall/dungeon
 	block_tele = TRUE // Anti-cheese.
 
-/turf/simulated/wall/dungeon/New(var/newloc)
-	..(newloc,"dungeonium")
+/turf/simulated/wall/dungeon/Initialize(mapload, materialtype, rmaterialtype, girder_material)
+	return ..(mapload, "dungeonium")
 
 /turf/simulated/wall/dungeon/attackby()
 	return
@@ -24,7 +24,7 @@
 	block_tele = TRUE
 
 /turf/simulated/wall/solidrock/update_icon()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src,direction)
 		if(istype(T) && !T.density)
 			var/place_dir = turn(direction, 180)
@@ -32,9 +32,10 @@
 				mining_overlay_cache["rock_side_[place_dir]"] = image('icons/turf/walls.dmi', "rock_side", dir = place_dir)
 			T.add_overlay(mining_overlay_cache["rock_side_[place_dir]"])
 
-/turf/simulated/wall/solidrock/initialize()
+/turf/simulated/wall/solidrock/Initialize(mapload)
+	. = ..()
 	icon_state = base_state
-	update_icon(1)
+	update_icon(1)		// TODO: /tg/ icon smoothing
 
 /turf/simulated/wall/solidrock/attackby()
 	return

@@ -1,103 +1,4 @@
-//this file left in for legacy support
-/*
-/proc/start_events()
-	//changed to a while(1) loop since they are more efficient.
-	//Moved the spawn in here to allow it to be called with advance proc call if it crashes.
-	//and also to stop spawn copying variables from the game ticker
-	spawn(3000)
-		while(1)
-			if(prob(50))//Every 120 seconds and prob 50 2-4 weak spacedusts will hit the station
-				spawn(1)
-					dust_swarm("weak")
-			if(!event)
-				//CARN: checks to see if random events are enabled.
-				if(config.allow_random_events)
-					if(prob(eventchance))
-						event()
-						hadevent = 1
-					else
-						Holiday_Random_Event()
-			else
-				event = 0
-			sleep(1200)
 
-/proc/event()
-	event = 1
-
-	var/eventNumbersToPickFrom = list(1,2,4,5,6,7,8,9,10,11,12,13,14, 15) //so ninjas don't cause "empty" events.
-
-	if((world.time/10)>=3600 && config.ninjas_allowed && !sent_ninja_to_station)//If an hour has passed, relatively speaking. Also, if ninjas are allowed to spawn and if there is not already a ninja for the round.
-		eventNumbersToPickFrom += 3
-	switch(pick(eventNumbersToPickFrom))
-		if(1)
-			command_alert("Meteors have been detected on collision course with the station.", "Meteor Alert")
-			for(var/mob/M in player_list)
-				if(!istype(M,/mob/new_player))
-					M << sound('sound/AI/meteors.ogg')
-			spawn(100)
-				meteor_wave()
-				spawn_meteors()
-			spawn(700)
-				meteor_wave()
-				spawn_meteors()
-
-		if(2)
-			command_alert("Gravitational anomalies detected on the station. There is no additional data.", "Anomaly Alert")
-			for(var/mob/M in player_list)
-				if(!istype(M,/mob/new_player))
-					M << sound('sound/AI/granomalies.ogg')
-			var/turf/T = pick(blobstart)
-			var/obj/effect/bhole/bh = new /obj/effect/bhole( T.loc, 30 )
-			spawn(rand(50, 300))
-				qdel(bh)
-		/*
-		if(3) //Leaving the code in so someone can try and delag it, but this event can no longer occur randomly, per SoS's request. --NEO
-			command_alert("Space-time anomalies detected on the station. There is no additional data.", "Anomaly Alert")
-			world << sound('sound/AI/spanomalies.ogg')
-			var/turf/picked
-			for(var/turf/simulated/floor/T in turfs)
-				if(prob(20))
-					spawn(50+rand(0,3000))
-						picked = pick(turfs)
-						var/obj/effect/portal/P = new /obj/effect/portal( T )
-						P.target = picked
-						P.creator = null
-						P.icon = 'icons/obj/objects.dmi'
-						P.failchance = 0
-						P.icon_state = "anom"
-						P.name = "wormhole"
-						spawn(rand(300,600))
-							qdel(P)
-		*/
-		if(3)
-			if((world.time/10)>=3600 && config.ninjas_allowed && !sent_ninja_to_station)//If an hour has passed, relatively speaking. Also, if ninjas are allowed to spawn and if there is not already a ninja for the round.
-				space_ninja_arrival()//Handled in space_ninja.dm. Doesn't announce arrival, all sneaky-like.
-		if(4)
-			mini_blob_event()
-
-		if(5)
-			high_radiation_event()
-		if(6)
-			viral_outbreak()
-		if(7)
-			alien_infestation()
-		if(8)
-			prison_break()
-		if(9)
-			carp_migration()
-		if(10)
-			immovablerod()
-		if(11)
-			lightsout(1,2)
-		if(12)
-			appendicitis()
-		if(13)
-			IonStorm()
-		if(14)
-			spacevine_infestation()
-		if(15)
-			communications_blackout()
-*/
 var/eventchance = 10 // Percent chance per 5 minutes.
 var/hadevent    = 0
 
@@ -107,11 +8,9 @@ var/hadevent    = 0
 			break
 
 /proc/alien_infestation(var/spawncount = 1) // -- TLE
-	//command_alert("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert")
-	//world << sound('sound/AI/aliens.ogg')
 	var/list/vents = list()
 	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in machines)
-		if(!temp_vent.welded && temp_vent.network && temp_vent.loc.z in using_map.station_levels)
+		if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 			if(temp_vent.network.normal_members.len > 50) // Stops Aliens getting stuck in small networks. See: Security, Virology
 				vents += temp_vent
 
@@ -169,7 +68,7 @@ var/hadevent    = 0
 
 
 	var/list/area/areas = list()
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(istype(A, /area/security/prison) || istype(A, /area/security/brig))
 			areas += A
 
@@ -201,12 +100,12 @@ var/hadevent    = 0
 		sleep(150)
 		command_announcement.Announce("Gr3y.T1d3 virus detected in [station_name()] imprisonment subroutines. Recommend station AI involvement.", "Security Alert")
 	else
-		world.log << "ERROR: Could not initate grey-tide. Unable find prison or brig area."
+		log_world("ERROR: Could not initate grey-tide. Unable find prison or brig area.")
 
 /proc/carp_migration() // -- Darem
-	for(var/obj/effect/landmark/C in landmarks_list)
+	for(var/obj/effect/landmark/C in GLOB.landmarks_list)
 		if(C.name == "carpspawn")
-			new /mob/living/simple_animal/hostile/carp(C.loc)
+			new /mob/living/simple_mob/animal/space/carp(C.loc)
 	//sleep(100)
 	spawn(rand(300, 600)) //Delayed announcements to keep the crew on their toes.
 		command_announcement.Announce("Unknown biological entities have been detected near \the [station_name()], please stand-by.", "Lifesign Alert", new_sound = 'sound/AI/commandreport.ogg')
@@ -220,7 +119,7 @@ var/hadevent    = 0
 
 		for(var/i=1,i<=lightsoutAmount,i++)
 			var/list/possibleEpicentres = list()
-			for(var/obj/effect/landmark/newEpicentre in landmarks_list)
+			for(var/obj/effect/landmark/newEpicentre in GLOB.landmarks_list)
 				if(newEpicentre.name == "lightsout" && !(newEpicentre in epicentreList))
 					possibleEpicentres += newEpicentre
 			if(possibleEpicentres.len)
@@ -276,74 +175,74 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 				crew = "Any Human"
 			switch(rand(1,14))
 				if(1)
-					M << "<br>"
-					M << "<span class='danger'>THERE ARE [amount] [who2] ON THE STATION...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>THERE ARE [amount] [who2] ON THE STATION...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("THERE ARE [amount] [who2] ON THE STATION")
 				if(2)
-					M << "<br>"
-					M << "<span class='danger'>[what2] ARE DANGEROUS TO HUMANS...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>[what2] ARE DANGEROUS TO HUMANS...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("[what2] ARE DANGEROUS TO HUMANS")
 				if(3)
-					M << "<br>"
-					M << "<span class='danger'>THE ESCAPE-SHUTTLE CANNOT BE CALLED BECAUSE OF [who2] ON THE STATION...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>THE ESCAPE-SHUTTLE CANNOT BE CALLED BECAUSE OF [who2] ON THE STATION...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("THE ESCAPE SHUTTLE CANNOT BE CALLED BECAUSE OF [who2] ON THE STATION")
 				if(4)
-					M << "<br>"
-					M << "<span class='danger'>HUMANS NEED TO EAT [what2pref] [what2] TO SURVIVE...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>HUMANS NEED TO EAT [what2pref] [what2] TO SURVIVE...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("HUMANS NEED TO EAT [what2pref] [what2] TO SURVIVE")
 				if(5)
-					M << "<br>"
-					M << "<span class='danger'>THE COLONY DIRECTOR, HOP AND HOS ARE [who2]...LAWS UPDATED</span>"
-					M << "<br>"
-					M.add_ion_law("THE COLONY DIRECTOR, HOP AND HOS ARE [who2]")
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>THE Facility Director, HOP AND HOS ARE [who2]...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
+					M.add_ion_law("THE Facility Director, HOP AND HOS ARE [who2]")
 				if(6)
-					M << "<br>"
-					M << "<span class='danger'>THE STATION IS BUILT FOR [who2]...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>THE STATION IS BUILT FOR [who2]...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("THE STATION IS BUILT FOR [who2]")
 				if(7)
-					M << "<br>"
-					M << "<span class='danger'>YOU ARE [amount] [who2]...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>YOU ARE [amount] [who2]...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("YOU ARE [amount] [who2]")
 				if(8)
-					M << "<br>"
-					M << "<span class='danger'>YOU MUST ALWAYS [aimust]...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>YOU MUST ALWAYS [aimust]...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("YOU MUST ALWAYS [aimust]")
 				if(9)
-					M << "<br>"
-					M << "<span class='danger'>[area] [area2] [amount] [what2]...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>[area] [area2] [amount] [what2]...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("[area] [area2] [amount] [what2]")
 				if(10)
-					M << "<br>"
-					M << "<span class='danger'>[crew] is [target]...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>[crew] is [target]...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("[crew] is [target]")
 				if(11)
-					M << "<br>"
-					M << "<span class='danger'>[define] IS A FORM OF HARM...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>[define] IS A FORM OF HARM...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("[define] IS A FORM OF HARM")
 				if(12)
-					M << "<br>"
-					M << "<span class='danger'>YOU REQUIRE [require] IN ORDER TO PROTECT HUMANS... LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>YOU REQUIRE [require] IN ORDER TO PROTECT HUMANS... LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("YOU REQUIRE [require] IN ORDER TO PROTECT HUMANS")
 				if(13)
-					M << "<br>"
-					M << "<span class='danger'>[crew] is [allergysev] to [allergy]...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>[crew] is [allergysev] to [allergy]...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("[crew] is [allergysev] to [allergy]")
 				if(14)
-					M << "<br>"
-					M << "<span class='danger'>THE STATION IS [who2pref] [who2]...LAWS UPDATED</span>"
-					M << "<br>"
+					to_chat(M, "<br>")
+					to_chat(M, "<span class='danger'>THE STATION IS [who2pref] [who2]...LAWS UPDATED</span>")
+					to_chat(M, "<br>")
 					M.add_ion_law("THE STATION IS [who2pref] [who2]")
 /* //VOREStation Edit
 	if(botEmagChance)
@@ -358,40 +257,40 @@ Would like to add a law like "Law x is _______" where x = a number, and _____ is
 	var/airlocknum = 0
 	var/firedoornum = 0
 
-	world << "Ion Storm Main Started"
+	to_chat(world, "Ion Storm Main Started")
 
 	spawn(0)
-		world << "Started processing APCs"
+		to_chat(world, "Started processing APCs")
 		for (var/obj/machinery/power/apc/APC in machines)
 			if(APC.z in station_levels)
 				APC.ion_act()
 				apcnum++
-		world << "Finished processing APCs. Processed: [apcnum]"
+		to_chat(world, "Finished processing APCs. Processed: [apcnum]")
 	spawn(0)
-		world << "Started processing SMES"
+		to_chat(world, "Started processing SMES")
 		for (var/obj/machinery/power/smes/SMES in machines)
 			if(SMES.z in station_levels)
 				SMES.ion_act()
 				smesnum++
-		world << "Finished processing SMES. Processed: [smesnum]"
+		to_chat(world, "Finished processing SMES. Processed: [smesnum]")
 	spawn(0)
-		world << "Started processing AIRLOCKS"
+		to_chat(world, "Started processing AIRLOCKS")
 		for (var/obj/machinery/door/airlock/D in machines)
 			if(D.z in station_levels)
 				//if(length(D.req_access) > 0 && !(12 in D.req_access)) //not counting general access and maintenance airlocks
 				airlocknum++
 				spawn(0)
 					D.ion_act()
-		world << "Finished processing AIRLOCKS. Processed: [airlocknum]"
+		to_chat(world, "Finished processing AIRLOCKS. Processed: [airlocknum]")
 	spawn(0)
-		world << "Started processing FIREDOORS"
+		to_chat(world, "Started processing FIREDOORS")
 		for (var/obj/machinery/door/firedoor/D in machines)
 			if(D.z in station_levels)
 				firedoornum++;
 				spawn(0)
 					D.ion_act()
-		world << "Finished processing FIREDOORS. Processed: [firedoornum]"
+		to_chat(world, "Finished processing FIREDOORS. Processed: [firedoornum]")
 
-	world << "Ion Storm Main Done"
+	to_chat(world, "Ion Storm Main Done")
 
 	*/

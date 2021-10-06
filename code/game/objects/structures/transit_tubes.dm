@@ -56,7 +56,7 @@
 
 
 // When destroyed by explosions, properly handle contents.
-obj/structure/ex_act(severity)
+/obj/structure/transit_tube_pod/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/AM in contents)
@@ -76,50 +76,41 @@ obj/structure/ex_act(severity)
 		if(3.0)
 			return
 
+/obj/structure/transit_tube_pod/Initialize(mapload)
+	. = ..()
 
-
-/obj/structure/transit_tube_pod/New(loc)
-	..(loc)
-
-	air_contents.adjust_multi("oxygen", MOLES_O2STANDARD * 2, "nitrogen", MOLES_N2STANDARD)
+	air_contents.adjust_multi(/datum/gas/oxygen, MOLES_O2STANDARD * 2, /datum/gas/nitrogen, MOLES_N2STANDARD)
 	air_contents.temperature = T20C
 
 	// Give auto tubes time to align before trying to start moving
-	spawn(5)
-		follow_tube()
+	return INITIALIZE_HINT_LATELOAD
 
+/obj/structure/transit_tube_pod/LateInitialize()
+	. = ..()
+	follow_tube()
 
-
-/obj/structure/transit_tube/New(loc)
-	..(loc)
+/obj/structure/transit_tube/Initialize(mapload)
+	. = ..()
 
 	if(tube_dirs == null)
 		init_dirs()
 
-
-
 /obj/structure/transit_tube/Bumped(mob/AM as mob|obj)
 	var/obj/structure/transit_tube/T = locate() in AM.loc
 	if(T)
-		AM << "<span class='warning'>The tube's support pylons block your way.</span>"
+		to_chat(AM, "<span class='warning'>The tube's support pylons block your way.</span>")
 		return ..()
 	else
 		AM.loc = src.loc
-		AM << "<span class='info'>You slip under the tube.</span>"
-
-
-/obj/structure/transit_tube/station/New(loc)
-	..(loc)
-
-
+		to_chat(AM, "<span class='info'>You slip under the tube.</span>")
 
 /obj/structure/transit_tube/station/Bumped(mob/AM as mob|obj)
 	if(!pod_moving && icon_state == "open" && istype(AM, /mob))
 		for(var/obj/structure/transit_tube_pod/pod in loc)
 			if(pod.contents.len)
-				AM << "<span class='notice'>The pod is already occupied.</span>"
+				to_chat(AM, "<span class='notice'>The pod is already occupied.</span>")
 				return
-			else if(!pod.moving && pod.dir in directions())
+			else if(!pod.moving && (pod.dir in directions()))
 				AM.loc = pod
 				return
 
@@ -127,7 +118,7 @@ obj/structure/ex_act(severity)
 /obj/structure/transit_tube/station/attack_hand(mob/user as mob)
 	if(!pod_moving)
 		for(var/obj/structure/transit_tube_pod/pod in loc)
-			if(!pod.moving && pod.dir in directions())
+			if(!pod.moving && (pod.dir in directions()))
 				if(icon_state == "closed")
 					open_animation()
 
@@ -156,7 +147,7 @@ obj/structure/ex_act(severity)
 
 /obj/structure/transit_tube/station/proc/launch_pod()
 	for(var/obj/structure/transit_tube_pod/pod in loc)
-		if(!pod.moving && pod.dir in directions())
+		if(!pod.moving && (pod.dir in directions()))
 			spawn(5)
 				pod_moving = 1
 				close_animation()
@@ -170,7 +161,7 @@ obj/structure/ex_act(severity)
 						nexttube = tube
 						break
 				if(!nexttube)
-					pod.set_dir(turn(pod.dir, 180))
+					pod.setDir(turn(pod.dir, 180))
 
 				if(icon_state == "closed" && pod)
 					pod.follow_tube()
@@ -320,13 +311,13 @@ obj/structure/ex_act(severity)
 					break
 
 			if(current_tube == null)
-				set_dir(next_dir)
+				setDir(next_dir)
 				Move(get_step(loc, dir)) // Allow collisions when leaving the tubes.
 				break
 
 			last_delay = current_tube.enter_delay(src, next_dir)
 			sleep(last_delay)
-			set_dir(next_dir)
+			setDir(next_dir)
 			loc = next_loc // When moving from one tube to another, skip collision and such.
 			density = current_tube.density
 
@@ -400,14 +391,14 @@ obj/structure/ex_act(severity)
 								station.open_animation()
 
 						else if(direction in station.directions())
-							set_dir(direction)
+							setDir(direction)
 							station.launch_pod()
 					return
 
 			for(var/obj/structure/transit_tube/tube in loc)
 				if(dir in tube.directions())
 					if(tube.has_exit(direction))
-						set_dir(direction)
+						setDir(direction)
 						return
 
 

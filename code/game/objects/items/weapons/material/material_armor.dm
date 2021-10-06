@@ -27,21 +27,23 @@ Protectiveness | Armor %
 
 // Putting these at /clothing/ level saves a lot of code duplication in armor/helmets/gauntlets/etc
 /obj/item/clothing
-	var/material/material = null // Why isn't this a datum?
+	var/datum/material/material = null // Why isn't this a datum?
 	var/applies_material_color = TRUE
 	var/unbreakable = FALSE
 	var/default_material = null // Set this to something else if you want material attributes on init.
 	var/material_armor_modifer = 1 // Adjust if you want seperate types of armor made from the same material to have different protectiveness (e.g. makeshift vs real armor)
+	/// multiplier for mat slowdown from weight
+	var/material_weight_factor
 
-/obj/item/clothing/New(var/newloc, var/material_key)
-	..(newloc)
+/obj/item/clothing/Initialize(mapload, material_key)
+	. = ..()
 	if(!material_key)
 		material_key = default_material
 	if(material_key) // May still be null if a material was not specified as a default.
 		set_material(material_key)
 
 /obj/item/clothing/Destroy()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/clothing/get_material()
@@ -58,7 +60,7 @@ Protectiveness | Armor %
 		if(applies_material_color)
 			color = material.icon_colour
 		if(material.products_need_process())
-			processing_objects |= src
+			START_PROCESSING(SSobj, src)
 		update_armor()
 
 // This is called when someone wearing the object gets hit in some form (melee, bullet_act(), etc).
@@ -94,7 +96,7 @@ Protectiveness | Armor %
 		var/mob/living/M = loc
 		M.drop_from_inventory(src)
 		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
-			var/obj/item/weapon/material/shard/S = material.place_shard(T)
+			var/obj/item/material/shard/S = material.place_shard(T)
 			M.embed(S)
 
 	playsound(src, "shatter", 70, 1)
@@ -104,6 +106,31 @@ Protectiveness | Armor %
 /obj/item/clothing/suit/armor/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(!material) // No point checking for reflection.
 		return ..()
+
+	if(material.negation && prob(material.negation)) // Strange and Alien materials, or just really strong materials.
+		user.visible_message("<span class='danger'>\The [src] completely absorbs [attack_text]!</span>")
+		return TRUE
+
+	if(material.spatial_instability && prob(material.spatial_instability))
+		user.visible_message("<span class='danger'>\The [src] flashes [user] clear of [attack_text]!</span>")
+		var/list/turfs = new/list()
+		for(var/turf/T in orange(round(material.spatial_instability / 10) + 1, user))
+			if(istype(T,/turf/space)) continue
+			if(T.density) continue
+			if(T.x>world.maxx-6 || T.x<6)	continue
+			if(T.y>world.maxy-6 || T.y<6)	continue
+			turfs += T
+		if(!turfs.len) turfs += pick(/turf in orange(6))
+		var/turf/picked = pick(turfs)
+		if(!isturf(picked)) return
+
+		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
+		spark_system.set_up(5, 0, user.loc)
+		spark_system.start()
+		playsound(user.loc, 'sound/effects/teleport.ogg', 50, 1)
+
+		user.loc = picked
+		return PROJECTILE_FORCE_MISS
 
 	if(material.reflectivity)
 		if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
@@ -165,7 +192,7 @@ Protectiveness | Armor %
 
 		if(!isnull(material.conductivity))
 			siemens_coefficient = between(0, material.conductivity / 10, 10)
-		slowdown = between(0, round(material.weight / 10, 0.1), 6)
+		slowdown = clamp(0, round(material.weight / 10, 0.1) * material_weight_factor, 6)
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
@@ -183,7 +210,7 @@ Protectiveness | Armor %
 	default_material = "glass"
 
 // Used to craft sheet armor, and possibly other things in the Future(tm).
-/obj/item/weapon/material/armor_plating
+/obj/item/material/armor_plating
 	name = "armor plating"
 	desc = "A sheet designed to protect something."
 	icon = 'icons/obj/items.dmi'
@@ -193,7 +220,7 @@ Protectiveness | Armor %
 	thrown_force_divisor = 0.2
 	var/wired = FALSE
 
-/obj/item/weapon/material/armor_plating/attackby(var/obj/O, mob/user)
+/obj/item/material/armor_plating/attackby(var/obj/O, mob/user)
 	if(istype(O, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/S = O
 		if(wired)
@@ -207,8 +234,8 @@ Protectiveness | Armor %
 		else
 			to_chat(user, "<span class='notice'>You need more wire for that.</span>")
 			return
-	if(istype(O, /obj/item/weapon/material/armor_plating))
-		var/obj/item/weapon/material/armor_plating/second_plate = O
+	if(istype(O, /obj/item/material/armor_plating))
+		var/obj/item/material/armor_plating/second_plate = O
 		if(!wired && !second_plate.wired)
 			to_chat(user, "<span class='warning'>You need something to hold the two pieces of plating together.</span>")
 			return
@@ -227,7 +254,7 @@ Protectiveness | Armor %
 
 // Used to craft the makeshift helmet
 /obj/item/clothing/head/helmet/bucket
-	name = "bucket"
+	name = "improvised armor (bucket)"
 	desc = "It's a bucket with a large hole cut into it.  You could wear it on your head and look really stupid."
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
 	icon_state = "bucket"

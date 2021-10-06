@@ -3,7 +3,7 @@
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage.dmi'	//VOREStation edit
 	icon_state = "crate"
 	icon_opened = "crateopen"
 	icon_closed = "crate"
@@ -11,6 +11,13 @@
 	var/points_per_crate = 5
 //	mouse_drag_pointer = MOUSE_ACTIVE_POINTER	//???
 	var/rigged = 0
+
+/obj/structure/closet/crate/CanPass(atom/movable/AM, turf/T)
+	. = ..()
+	if(. || !istype(AM, /obj/item))
+		return
+	var/obj/item/I = AM
+	return I.throwing
 
 /obj/structure/closet/crate/can_open()
 	return 1
@@ -24,11 +31,11 @@
 	if(!src.can_open())
 		return 0
 
-	if(rigged && locate(/obj/item/device/radio/electropack) in src)
+	if(rigged && locate(/obj/item/radio/electropack) in src)
 		if(isliving(usr))
 			var/mob/living/L = usr
 			if(L.electrocute_act(17, src))
-				var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(5, 1, src)
 				s.start()
 				if(usr.stunned)
@@ -68,7 +75,7 @@
 	src.opened = 0
 	return 1
 
-/obj/structure/closet/crate/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/closet/crate/attackby(obj/item/W as obj, mob/user as mob)
 	if(opened)
 		if(isrobot(user))
 			return
@@ -77,29 +84,33 @@
 		user.drop_item()
 		if(W)
 			W.forceMove(src.loc)
-	else if(istype(W, /obj/item/weapon/packageWrap))
+	else if(istype(W, /obj/item/packageWrap))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W
 		if(rigged)
-			user << "<span class='notice'>[src] is already rigged!</span>"
+			to_chat(user, "<span class='notice'>[src] is already rigged!</span>")
 			return
 		if (C.use(1))
-			user  << "<span class='notice'>You rig [src].</span>"
+			to_chat(user, "<span class='notice'>You rig [src].</span>")
 			rigged = 1
 			return
-	else if(istype(W, /obj/item/device/radio/electropack))
+	else if(istype(W, /obj/item/radio/electropack))
 		if(rigged)
-			user  << "<span class='notice'>You attach [W] to [src].</span>"
+			to_chat(user, "<span class='notice'>You attach [W] to [src].</span>")
 			user.drop_item()
 			W.forceMove(src)
 			return
-	else if(istype(W, /obj/item/weapon/wirecutters))
+	else if(W.is_wirecutter())
 		if(rigged)
-			user  << "<span class='notice'>You cut away the wiring.</span>"
+			to_chat(user, "<span class='notice'>You cut away the wiring.</span>")
 			playsound(src.loc, W.usesound, 100, 1)
 			rigged = 0
 			return
+	else if(istype(W, /obj/item/extraction_pack))
+		src.close()
+		return
+
 	else return attack_hand(user)
 
 /obj/structure/closet/crate/ex_act(severity)
@@ -134,9 +145,10 @@
 	var/emag = "securecrateemag"
 	var/broken = 0
 	var/locked = 1
+	var/tamper_proof = 0
 
-/obj/structure/closet/crate/secure/New()
-	..()
+/obj/structure/closet/crate/secure/Initialize(mapload)
+	. = ..()
 	if(locked)
 		overlays.Cut()
 		overlays += redlight
@@ -149,15 +161,15 @@
 
 /obj/structure/closet/crate/secure/proc/togglelock(mob/user as mob)
 	if(src.opened)
-		user << "<span class='notice'>Close the crate first.</span>"
+		to_chat(user, "<span class='notice'>Close the crate first.</span>")
 		return
 	if(src.broken)
-		user << "<span class='warning'>The crate appears to be broken.</span>"
+		to_chat(user, "<span class='warning'>The crate appears to be broken.</span>")
 		return
 	if(src.allowed(user))
 		set_locked(!locked, user)
 	else
-		user << "<span class='notice'>Access Denied</span>"
+		to_chat(user, "<span class='notice'>Access Denied</span>")
 
 /obj/structure/closet/crate/secure/proc/set_locked(var/newlocked, mob/user = null)
 	if(locked == newlocked) return
@@ -181,7 +193,7 @@
 		src.add_fingerprint(usr)
 		src.togglelock(usr)
 	else
-		usr << "<span class='warning'>This mob type can't use this verb.</span>"
+		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
 /obj/structure/closet/crate/secure/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)
@@ -190,10 +202,10 @@
 	else
 		src.toggle(user)
 
-/obj/structure/closet/crate/secure/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(is_type_in_list(W, list(/obj/item/weapon/packageWrap, /obj/item/stack/cable_coil, /obj/item/device/radio/electropack, /obj/item/weapon/wirecutters)))
+/obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
+	if(is_type_in_list(W, list(/obj/item/packageWrap, /obj/item/stack/cable_coil, /obj/item/radio/electropack, /obj/item/tool/wirecutters)))
 		return ..()
-	if(istype(W, /obj/item/weapon/melee/energy/blade))
+	if(istype(W, /obj/item/melee/energy/blade))
 		emag_act(INFINITY, user)
 	if(!opened)
 		src.togglelock(user)
@@ -209,7 +221,7 @@
 		playsound(src.loc, "sparks", 60, 1)
 		src.locked = 0
 		src.broken = 1
-		user << "<span class='notice'>You unlock \the [src].</span>"
+		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
 		return 1
 
 /obj/structure/closet/crate/secure/emp_act(severity)
@@ -234,6 +246,39 @@
 			src.req_access = list()
 			src.req_access += pick(get_all_station_access())
 	..()
+
+/obj/structure/closet/crate/secure/bullet_act(var/obj/item/projectile/Proj)
+	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
+		return
+
+	if(locked && tamper_proof && health <= Proj.damage)
+		if(tamper_proof == 2) // Mainly used for events to prevent any chance of opening the box improperly.
+			visible_message("<font color='red'><b>The anti-tamper mechanism of [src] triggers an explosion!</b></font>")
+			var/turf/T = get_turf(src.loc)
+			explosion(T, 0, 0, 0, 1) // Non-damaging, but it'll alert security.
+			qdel(src)
+			return
+		var/open_chance = rand(1,5)
+		switch(open_chance)
+			if(1)
+				visible_message("<font color='red'><b>The anti-tamper mechanism of [src] causes an explosion!</b></font>")
+				var/turf/T = get_turf(src.loc)
+				explosion(T, 0, 0, 0, 1) // Non-damaging, but it'll alert security.
+				qdel(src)
+			if(2 to 4)
+				visible_message("<font color='red'><b>The anti-tamper mechanism of [src] causes a small fire!</b></font>")
+				for(var/atom/movable/A as mob|obj in src) // For every item in the box, we spawn a pile of ash.
+					new /obj/effect/decal/cleanable/ash(src.loc)
+				new /obj/fire(src.loc)
+				qdel(src)
+			if(5)
+				visible_message("<font color='green'><b>The anti-tamper mechanism of [src] fails!</b></font>")
+		return
+
+	..()
+
+	return
+
 
 /obj/structure/closet/crate/plastic
 	name = "plastic crate"
@@ -288,17 +333,20 @@
 	icon_closed = "engi_crate"
 
 	starts_with = list(
-		/obj/item/weapon/rcd_ammo = 3,
-		/obj/item/weapon/rcd)
+		/obj/item/rcd_ammo = 3,
+		/obj/item/rcd)
 
 /obj/structure/closet/crate/solar
 	name = "solar pack crate"
+	icon_state = "engi_crate"		//VOREStation Edit
+	icon_opened = "engi_crateopen"	//VOREStation Edit
+	icon_closed = "engi_crate"		//VOREStation Edit
 
 	starts_with = list(
 		/obj/item/solar_assembly = 21,
-		/obj/item/weapon/circuitboard/solar_control,
-		/obj/item/weapon/tracker_electronics,
-		/obj/item/weapon/paper/solar)
+		/obj/item/circuitboard/solar_control,
+		/obj/item/tracker_electronics,
+		/obj/item/paper/solar)
 
 /obj/structure/closet/crate/freezer
 	name = "freezer"
@@ -343,16 +391,19 @@
 	desc = "A crate of emergency rations."
 
 	starts_with = list(
-		/obj/item/weapon/reagent_containers/food/snacks/liquidfood = 4)
+		/obj/random/mre = 6)
 
+/obj/structure/closet/crate/freezer/centauri
+	name = "centauri co freezer"
+	desc = "A box of various sodas."
 
 /obj/structure/closet/crate/bin
 	name = "large bin"
 	desc = "A large bin."
+	icon = 'icons/obj/storage.dmi'	//VOREStation edit
 	icon_state = "largebin"
 	icon_opened = "largebinopen"
 	icon_closed = "largebin"
-
 
 /obj/structure/closet/crate/radiation
 	name = "radioactive gear crate"
@@ -417,6 +468,7 @@
 /obj/structure/closet/crate/secure/bin
 	name = "secure bin"
 	desc = "A secure bin."
+	icon = 'icons/obj/storage.dmi'	//VOREStation edit
 	icon_state = "largebins"
 	icon_opened = "largebinsopen"
 	icon_closed = "largebins"
@@ -429,7 +481,7 @@
 /obj/structure/closet/crate/large
 	name = "large crate"
 	desc = "A hefty metal crate."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage.dmi'	//VOREStation Edit
 	icon_state = "largemetal"
 	icon_opened = "largemetalopen"
 	icon_closed = "largemetal"
@@ -457,10 +509,10 @@
 /obj/structure/closet/crate/secure/large
 	name = "large crate"
 	desc = "A hefty metal crate with an electronic locking system."
-	icon = 'icons/obj/storage.dmi'
-	icon_state = "largemetal"
-	icon_opened = "largemetalopen"
-	icon_closed = "largemetal"
+	icon = 'icons/obj/storage.dmi'		//VOREStation Edit
+	icon_state = "largemetalsecure"			//VOREStation Edit
+	icon_opened = "largemetalsecureopen"	//VOREStation Edit
+	icon_closed = "largemetalsecure"		//VOREStation Edit
 	redlight = "largemetalr"
 	greenlight = "largemetalg"
 
@@ -518,5 +570,160 @@
 
 /obj/structure/closet/crate/hydroponics/prespawned
 	starts_with = list(
-		/obj/item/weapon/reagent_containers/spray/plantbgone = 2,
-		/obj/item/weapon/material/minihoe)
+		/obj/item/reagent_containers/spray/plantbgone = 2,
+		/obj/item/material/minihoe)
+
+/obj/structure/closet/crate/hydroponics/exotic
+	name = "exotic seeds crate"
+	desc = "All you need to destroy that pesky planet."
+
+	starts_with = list(
+		/obj/item/seeds/random = 6,
+		/obj/item/seeds/replicapod = 2,
+		/obj/item/seeds/ambrosiavulgarisseed = 2,
+		/obj/item/seeds/kudzuseed,
+		/obj/item/seeds/libertymycelium,
+		/obj/item/seeds/reishimycelium)
+
+/obj/structure/closet/crate/medical/blood
+	icon_state = "blood"
+	icon_opened = "bloodopen"
+	icon_closed = "blood"
+
+//TSCs
+//Add in icons instead of this declare thing? Sort out what's causing this.
+
+/obj/structure/closet/crate/aether
+	desc = "A crate painted in the colours of Aether Atmospherics and Recycling."
+
+/obj/structure/closet/crate/centauri
+	desc = "A crate decorated with the logo of Centauri Provisions."
+
+/obj/structure/closet/crate/einstein
+	desc = "A crate labelled with an Einstein Engines sticker."
+
+/obj/structure/closet/crate/focalpoint
+	desc = "A crate marked with the decal of Focal Point Energistics."
+
+/obj/structure/closet/crate/gilthari
+	desc = "A crate embossed with the logo of Gilthari Exports."
+
+/obj/structure/closet/crate/grayson
+	desc = "A bare metal crate spraypainted with Grayson Manufactories decals."
+
+/obj/structure/closet/crate/heph
+	desc = "A sturdy crate marked with the logo of Hephaestus Industries."
+
+/obj/structure/closet/crate/morpheus
+	desc = "A crate crudely imprinted with 'MORPHEUS CYBERKINETICS'."
+
+/obj/structure/closet/crate/nanotrasen
+	desc = "A crate emblazoned with the standard NanoTrasen livery."
+
+/obj/structure/closet/crate/nanothreads
+	desc = "A crate emblazoned with the NanoThreads Garments livery, a subsidary of the NanoTrasen Corporation."
+
+/obj/structure/closet/crate/nanomed
+	desc = "A crate emblazoned with the NanoMed Medical livery, a subsidary of the NanoTrasen Corporation."
+
+/obj/structure/closet/crate/oculum
+	desc = "A crate minimally decorated with the logo of media giant Oculum Broadcast."
+
+/obj/structure/closet/crate/veymed
+	desc = "A sterile crate extensively detailed in Veymed colours."
+
+/obj/structure/closet/crate/ward
+	desc = "A crate decaled with the logo of Ward-Takahashi."
+
+/obj/structure/closet/crate/xion
+	desc = "A crate painted in Xion Manufacturing Group orange."
+
+/obj/structure/closet/crate/zenghu
+	desc = "A sterile crate marked with the logo of Zeng-Hu Pharmaceuticals."
+
+// Brands/subsidiaries
+
+/obj/structure/closet/crate/allico
+	desc = "A crate painted in the distinctive cheerful colours of AlliCo. Ltd."
+
+/obj/structure/closet/crate/carp
+	desc = "A crate painted with the garish livery of Consolidated Agricultural Resources Plc."
+
+/obj/structure/closet/crate/hedberg
+	name = "weapons crate"
+	desc = "A weapons crate stamped with the logo of Hedberg-Hammarstrom and the lock conspicuously absent."
+
+/obj/structure/closet/crate/galaksi
+	desc = "A crate printed with the markings of Ward-Takahashi's Galaksi Appliance branding."
+
+/obj/structure/closet/crate/thinktronic
+	desc = "A crate printed with the markings of Thinktronic Systems."
+
+/obj/structure/closet/crate/ummarcar
+	desc = "A flimsy crate marked labelled 'UmMarcar Office Supply'."
+
+/obj/structure/closet/crate/unathi
+	name = "import crate"
+	desc = "A crate painted with the markings of Moghes Imported Sissalik Jerky."
+
+/obj/structure/closet/crate/secure/aether
+	desc = "A secure crate painted in the colours of Aether Atmospherics and Recycling."
+
+/obj/structure/closet/crate/secure/bishop
+	desc = "A secure crate finely decorated with the emblem of Bishop Cybernetics."
+
+/obj/structure/closet/crate/secure/cybersolutions
+	desc = "An unadorned secure metal crate labelled 'Cyber Solutions'."
+
+/obj/structure/closet/crate/secure/einstein
+	desc = "A secure crate labelled with an Einstein Engines sticker."
+
+/obj/structure/closet/crate/secure/focalpoint
+	desc = "A secure crate marked with the decal of Focal Point Energistics."
+
+/obj/structure/closet/crate/secure/gilthari
+	desc = "A secure crate embossed with the logo of Gilthari Exports."
+
+/obj/structure/closet/crate/secure/grayson
+	desc = "A secure bare metal crate spraypainted with Grayson Manufactories decals."
+
+/obj/structure/closet/crate/secure/hedberg
+	name = "weapons crate"
+	desc = "A secure weapons crate stamped with the logo of Hedberg-Hammarstrom."
+
+/obj/structure/closet/crate/secure/heph
+	name = "weapons crate"
+	desc = "A secure weapons crate marked with the logo of Hephaestus Industries."
+
+/obj/structure/closet/crate/secure/lawson
+	name = "weapons crate"
+	desc = "A secure weapons crate marked with the logo of Lawson Arms."
+
+/obj/structure/closet/crate/secure/morpheus
+	desc = "A secure crate crudely imprinted with 'MORPHEUS CYBERKINETICS'."
+
+/obj/structure/closet/crate/secure/nanotrasen
+	desc = "A secure crate emblazoned with the standard NanoTrasen livery."
+
+/obj/structure/closet/crate/secure/nanomed
+	desc = "A secure crate emblazoned with the NanoMed Medical livery, a subsidary of the NanoTrasen Corporation."
+
+/obj/structure/closet/crate/secure/scg
+	name = "weapons crate"
+	desc = "A secure crate in the official colours of the Solar Confederate Government."
+
+/obj/structure/closet/crate/secure/saare
+	name = "weapons crate"
+	desc = "A secure weapons crate plainly stamped with the logo of Stealth Assault Enterprises."
+
+/obj/structure/closet/crate/secure/veymed
+	desc = "A secure sterile crate extensively detailed in Veymed colours."
+
+/obj/structure/closet/crate/secure/ward
+	desc = "A secure crate decaled with the logo of Ward-Takahashi."
+
+/obj/structure/closet/crate/secure/xion
+	desc = "A secure crate painted in Xion Manufacturing Group orange."
+
+/obj/structure/closet/crate/secure/zenghu
+	desc = "A secure sterile crate marked with the logo of Zeng-Hu Pharmaceuticals."

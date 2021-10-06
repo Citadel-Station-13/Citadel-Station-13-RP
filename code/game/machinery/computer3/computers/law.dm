@@ -4,7 +4,7 @@
 	name = "AI Upload"
 	desc = "Used to upload laws to the AI."
 	icon_state = "frame-rnd"
-	circuit = /obj/item/weapon/circuitboard/aiupload
+	circuit = /obj/item/circuitboard/aiupload
 	var/mob/living/silicon/ai/current = null
 	var/opened = 0
 
@@ -24,11 +24,11 @@
 	return
 
 
-/obj/machinery/computer3/aiupload/attackby(obj/item/weapon/aiModule/module as obj, mob/user as mob)
+/obj/machinery/computer3/aiupload/attackby(obj/item/aiModule/module as obj, mob/user as mob)
 	if (user.z > 6)
 		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 		return
-	if(istype(module, /obj/item/weapon/aiModule))
+	if(istype(module, /obj/item/aiModule))
 		module.install(src, user)
 	else
 		return ..()
@@ -56,12 +56,12 @@
 	name = "Cyborg Upload"
 	desc = "Used to upload laws to Cyborgs."
 	icon_state = "frame-rnd"
-	circuit = /obj/item/weapon/circuitboard/borgupload
+	circuit = /obj/item/circuitboard/borgupload
 	var/mob/living/silicon/robot/current = null
 
 
-/obj/machinery/computer3/borgupload/attackby(obj/item/weapon/aiModule/module as obj, mob/user as mob)
-	if(istype(module, /obj/item/weapon/aiModule))
+/obj/machinery/computer3/borgupload/attackby(obj/item/aiModule/module as obj, mob/user as mob)
+	if(istype(module, /obj/item/aiModule))
 		module.install(src, user)
 	else
 		return ..()

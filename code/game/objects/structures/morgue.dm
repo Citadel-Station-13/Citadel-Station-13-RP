@@ -48,7 +48,7 @@
 				else
 					src.icon_state = "morgue3"
 					if(broadcast)
-						global_announcer.autosay("[src] was able to establish a mental interface with occupant.", "[src]", "Medical")
+						GLOB.global_announcer.autosay("[src] was able to establish a mental interface with occupant.", "[src]", "Medical")
 		else
 			src.icon_state = "morgue1"
 	return
@@ -112,14 +112,14 @@
 		for(var/atom/movable/A as mob|obj in src)
 			A.forceMove(src.connected.loc)
 		src.connected.icon_state = "morguet"
-		src.connected.set_dir(src.dir)
+		src.connected.setDir(src.dir)
 	else
 		qdel(src.connected)
 		src.connected = null
 
 
 /obj/structure/morgue/attackby(P as obj, mob/user as mob)
-	if (istype(P, /obj/item/weapon/pen))
+	if (istype(P, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
 		if (user.get_active_hand() != P)
 			return
@@ -219,7 +219,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 
 /obj/structure/morgue/crematorium/attack_hand(mob/user as mob)
 	if (cremating)
-		usr << "<span class='warning'>It's locked.</span>"
+		to_chat(usr, "<span class='warning'>It's locked.</span>")
 		return
 	if ((src.connected) && (src.locked == 0))
 		for(var/atom/movable/A as mob|obj in src.connected.loc)
@@ -247,7 +247,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 	update()
 
 /obj/structure/morgue/crematorium/attackby(P as obj, mob/user as mob)
-	if (istype(P, /obj/item/weapon/pen))
+	if (istype(P, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
 		if (user.get_active_hand() != P)
 			return
@@ -289,7 +289,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 			return
 
 	else
-		if(!isemptylist(src.search_contents_for(/obj/item/weapon/disk/nuclear)))
+		if(!!length(src.search_contents_for(/obj/item/disk/nuclear)))
 			to_chat(user,"You get the feeling that you shouldn't cremate one of the items in the cremator.")
 			return
 
@@ -344,9 +344,71 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 	if(..())
 		return
 	if(src.allowed(user))
-		for (var/obj/structure/morgue/crematorium/C in all_crematoriums)
+		for (var/obj/structure/morgue/crematorium/C in GLOB.all_crematoriums)
 			if (C.id == id)
 				if (!C.cremating)
 					C.cremate(user)
 	else
 		to_chat(user,"<span class='warning'>Access denied.</span>")
+
+
+//VR FILE MERGE
+/obj/structure/morgue/crematorium/vr
+	var/list/allowed_items = list(/obj/item/organ,
+			/obj/item/implant,
+			/obj/item/material/shard/shrapnel,
+			/mob/living)
+
+
+/obj/structure/morgue/crematorium/vr/cremate(atom/A, mob/user as mob)
+	if(cremating)
+		return //don't let you cremate something twice or w/e
+
+	if(contents.len <= 0)
+		for (var/mob/M in viewers(src))
+			M.show_message("<span class='warning'>You hear a hollow crackle.</span>", 1)
+			return
+	else
+		if(!!length(src.search_contents_for(/obj/item/disk/nuclear)))
+			to_chat(usr, "You get the feeling that you shouldn't cremate one of the items in the cremator.")
+			return
+
+		for(var/I in contents)
+			if(!(I in allowed_items))
+				to_chat(user, "<span class='notice'>\The [src] cannot cremate while there are items inside!</span>")
+				return
+			if(istype(I, /mob/living))
+				var/mob/living/cremated = I
+				for(var/Z in cremated.contents)
+					if(!(Z in allowed_items))
+						to_chat(user, "<span class='notice'>\The [src] cannot cremate while there are items inside!</span>")
+						return
+
+		for (var/mob/M in viewers(src))
+			M.show_message("<span class='warning'>You hear a roar as the crematorium activates.</span>", 1)
+
+		cremating = 1
+		locked = 1
+
+		for(var/mob/living/M in contents)
+			if (M.stat!=2)
+				if (!iscarbon(M))
+					M.emote("scream")
+				else
+					var/mob/living/carbon/C = M
+					if (C.can_feel_pain())
+						C.emote("scream")
+
+			M.death(1)
+			M.ghostize()
+			qdel(M)
+
+		for(var/obj/O in contents) //obj instead of obj/item so that bodybags and ashes get destroyed. We dont want tons and tons of ash piling up
+			qdel(O)
+
+		new /obj/effect/decal/cleanable/ash(src)
+		sleep(30)
+		cremating = 0
+		locked = 0
+		playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
+	return

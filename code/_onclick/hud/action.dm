@@ -31,7 +31,7 @@
 	if(owner)
 		Remove(owner)
 	target = null
-	qdel_null(button)
+	QDEL_NULL(button)
 	return ..()
 
 /datum/action/proc/Grant(mob/living/T)
@@ -48,7 +48,7 @@
 	if(button)
 		if(T.client)
 			T.client.screen -= button
-		qdel_null(button)
+		QDEL_NULL(button)
 	T.actions.Remove(src)
 	T.update_action_buttons()
 	owner = null
@@ -80,9 +80,6 @@
 	return
 
 /datum/action/proc/Deactivate()
-	return
-
-/datum/action/proc/Process()
 	return
 
 /datum/action/proc/CheckRemoval(mob/living/user) // 1 if action is no longer valid for this mob and should be removed
@@ -223,3 +220,7 @@
 #undef AB_WEST_OFFSET
 #undef AB_NORTH_OFFSET
 #undef AB_MAX_COLUMNS
+
+
+/datum/action/innate/
+	action_type = AB_INNATE

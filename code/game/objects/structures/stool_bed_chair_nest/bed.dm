@@ -17,14 +17,14 @@
 	can_buckle = 1
 	buckle_dir = SOUTH
 	buckle_lying = 1
-	var/material/material
-	var/material/padding_material
+	var/datum/material/material
+	var/datum/material/padding_material
 	var/base_icon = "bed"
 	var/applies_material_colour = 1
 
-/obj/structure/bed/New(var/newloc, var/new_material, var/new_padding_material)
-	..(newloc)
-	color = null
+/obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
+	. = ..(mapload)
+	remove_atom_colour(FIXED_COLOUR_PRIORITY)
 	if(!new_material)
 		new_material = DEFAULT_WALL_MATERIAL
 	material = get_material_by_name(new_material)
@@ -69,11 +69,10 @@
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
 
-/obj/structure/bed/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+/obj/structure/bed/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return 1
-	else
-		return ..()
+		return TRUE
+	return ..()
 
 /obj/structure/bed/ex_act(severity)
 	switch(severity)
@@ -89,8 +88,8 @@
 				qdel(src)
 				return
 
-/obj/structure/bed/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/wrench))
+/obj/structure/bed/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_wrench())
 		playsound(src, W.usesound, 50, 1)
 		dismantle()
 		qdel(src)
@@ -114,30 +113,30 @@
 			to_chat(user, "You cannot pad \the [src] with that.")
 			return
 		C.use(1)
-		if(!istype(src.loc, /turf))
+		if(!istype(loc, /turf))
 			user.drop_from_inventory(src)
-			src.loc = get_turf(src)
+			forceMove(get_turf(src))
 		to_chat(user, "You add padding to \the [src].")
 		add_padding(padding_type)
 		return
 
-	else if (istype(W, /obj/item/weapon/wirecutters))
+	else if(W.is_wirecutter())
 		if(!padding_material)
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
 		to_chat(user, "You remove the padding from \the [src].")
-		playsound(src.loc, W.usesound, 100, 1)
+		playsound(src, W.usesound, 100, 1)
 		remove_padding()
 
-	else if(istype(W, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = W
+	else if(istype(W, /obj/item/grab))
+		var/obj/item/grab/G = W
 		var/mob/living/affecting = G.affecting
 		if(has_buckled_mobs()) //Handles trying to buckle someone else to a chair when someone else is on it
 			to_chat(user, "<span class='notice'>\The [src] already has someone buckled to it.</span>")
 			return
 		user.visible_message("<span class='notice'>[user] attempts to buckle [affecting] into \the [src]!</span>")
 		if(do_after(user, 20, G.affecting))
-			affecting.loc = loc
+			affecting.forceMove(loc)
 			spawn(0)
 				if(buckle_mob(affecting))
 					affecting.visible_message(\
@@ -169,19 +168,19 @@
 	icon_state = "psychbed"
 	base_icon = "psychbed"
 
-/obj/structure/bed/psych/New(var/newloc)
-	..(newloc,"wood","leather")
+/obj/structure/bed/psych/Initialize(mapload)
+	. = ..(mapload, "wood", "leather")
 
-/obj/structure/bed/padded/New(var/newloc)
-	..(newloc,"plastic","cotton")
+/obj/structure/bed/padded/Initialize(mapload)
+	. = ..(mapload, "plastic", "cotton")
 
 /obj/structure/bed/double
 	name = "double bed"
 	icon_state = "doublebed"
 	base_icon = "doublebed"
 
-/obj/structure/bed/double/padded/New(var/newloc)
-	..(newloc,"wood","cotton")
+/obj/structure/bed/double/padded/Initialize(mapload)
+	. = ..(mapload, "wood", "cotton")
 
 /obj/structure/bed/double/post_buckle_mob(mob/living/M as mob)
 	if(M.buckled == src)
@@ -210,11 +209,18 @@
 	bedtype = /obj/structure/bed/roller/adv
 	rollertype = /obj/item/roller/adv
 
+/obj/structure/bed/roller/doLocationTransitForceMove(atom/destination)
+	var/list/old_buckled = buckled_mobs?.Copy()
+	. = ..()
+	if(old_buckled)
+		for(var/mob/M in old_buckled)
+			buckle_mob(M, forced = TRUE)
+
 /obj/structure/bed/roller/update_icon()
 	return
 
-/obj/structure/bed/roller/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/wrench) || istype(W,/obj/item/stack) || istype(W, /obj/item/weapon/wirecutters))
+/obj/structure/bed/roller/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_wrench() || istype(W,/obj/item/stack) || W.is_wirecutter())
 		return
 	else if(istype(W,/obj/item/roller_holder))
 		if(has_buckled_mobs())
@@ -237,19 +243,21 @@
 	w_class = ITEMSIZE_LARGE
 	var/rollertype = /obj/item/roller
 	var/bedtype = /obj/structure/bed/roller
+	drop_sound = 'sound/items/drop/axe.ogg'
+	pickup_sound = 'sound/items/pickup/axe.ogg'
 
 /obj/item/roller/attack_self(mob/user)
 	var/obj/structure/bed/roller/R = new bedtype(user.loc)
 	R.add_fingerprint(user)
 	qdel(src)
 
-/obj/item/roller/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/roller/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(istype(W,/obj/item/roller_holder))
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
 			to_chat(user, "<span class='notice'>You collect the roller bed.</span>")
-			src.loc = RH
+			forceMove(RH)
 			RH.held = src
 			return
 
@@ -270,8 +278,8 @@
 	icon_state = "rollerbed"
 	var/obj/item/roller/held
 
-/obj/item/roller_holder/New()
-	..()
+/obj/item/roller_holder/Initialize(mapload)
+	. = ..()
 	held = new /obj/item/roller(src)
 
 /obj/item/roller_holder/attack_self(mob/user as mob)
@@ -294,7 +302,7 @@
 			var/mob/living/L = A
 
 			if(L.buckled == src)
-				L.loc = src.loc
+				L.forceMove(loc)
 
 /obj/structure/bed/roller/post_buckle_mob(mob/living/M as mob)
 	if(M.buckled == src)
@@ -321,14 +329,31 @@
 			qdel(src)
 		return
 
+/datum/category_item/catalogue/anomalous/precursor_a/alien_bed
+	name = "Precursor Alpha Object - Resting Contraption"
+	desc = "This appears to be a relatively long and flat object, with the top side being made of \
+	an soft material, giving it very similar characteristics to an ordinary bed. If this object was \
+	designed to act as a bed, this carries several implications for whatever species had built it, such as;\
+	<br><br>\
+	Being capable of experiencing comfort, or at least being able to suffer from some form of fatigue.<br>\
+	Developing while under the influence of gravitational forces, to be able to 'lie' on the object.<br>\
+	Being within a range of sizes in order for the object to function as a bed. Too small, and the species \
+	would be unable to reach the top of the object. Too large, and they would have little room to contact \
+	the top side of the object.<br>\
+	<br><br>\
+	As a note, the size of this object appears to be within the bounds for an average human to be able to \
+	rest comfortably on top of it."
+	value = CATALOGUER_REWARD_EASY
+
 /obj/structure/bed/alien
 	name = "resting contraption"
 	desc = "Whatever species designed this must've enjoyed relaxation as well. Looks vaguely comfy."
+	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_bed)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "bed"
 
 /obj/structure/bed/alien/update_icon()
 	return // Doesn't care about material or anything else.
 
-/obj/structure/bed/alien/attackby(obj/item/weapon/W, mob/user)
+/obj/structure/bed/alien/attackby(obj/item/W, mob/user)
 	return // No deconning.

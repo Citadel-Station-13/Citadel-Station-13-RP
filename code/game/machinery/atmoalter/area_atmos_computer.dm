@@ -4,7 +4,7 @@
 	icon_keyboard = "atmos_key"
 	icon_screen = "area_atmos"
 	light_color = "#e6ffff"
-	circuit = /obj/item/weapon/circuitboard/area_atmos
+	circuit = /obj/item/circuitboard/area_atmos
 
 	var/list/connectedscrubbers = list()
 	var/status = ""
@@ -14,11 +14,7 @@
 	//Simple variable to prevent me from doing attack_hand in both this and the child computer
 	var/zone = "This computer is working on a wireless range, the range is currently limited to "
 
-/obj/machinery/computer/area_atmos/New()
-	..()
-	desc += "[range] meters."
-
-/obj/machinery/computer/area_atmos/initialize()
+/obj/machinery/computer/area_atmos/Initialize(mapload)
 	. = ..()
 	scanscrubbers()
 
@@ -72,7 +68,6 @@
 			<font color="red">[status]</font><br>
 			<a href="?src=\ref[src];scan=1">Scan</a>
 			<table border="1" width="90%">"}
-
 	for(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in connectedscrubbers)
 		dat += {"
 				<tr>
@@ -102,9 +97,9 @@
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 
+
 	if(href_list["scan"])
 		scanscrubbers()
-
 	else if(href_list["toggle"])
 		var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber = locate(href_list["scrub"])
 
@@ -118,6 +113,11 @@
 		scrubber.on = text2num(href_list["toggle"])
 		scrubber.update_icon()
 
+/obj/machinery/computer/area_atmos/proc/validscrubber(obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber as obj)
+	if(!isobj(scrubber) || get_dist(scrubber.loc, src.loc) > src.range || scrubber.loc.z != src.loc.z)
+		return FALSE
+	return TRUE
+
 /obj/machinery/computer/area_atmos/proc/scanscrubbers()
 	connectedscrubbers.Cut()
 
@@ -129,13 +129,7 @@
 	if(!found)
 		status = "ERROR: No scrubber found!"
 
-	src.updateUsrDialog()
-
-/obj/machinery/computer/area_atmos/proc/validscrubber(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
-	if((get_dist(src,scrubber) <= range) && src.z == scrubber.z)
-		return 1
-
-	return 0
+	updateUsrDialog()
 
 // The one that only works in the same map area
 /obj/machinery/computer/area_atmos/area
@@ -157,6 +151,35 @@
 
 /obj/machinery/computer/area_atmos/area/validscrubber(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
 	if(get_area(scrubber) == get_area(src))
+		return 1
+
+	return 0
+
+// The one that only works in the same map area
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/var/scrub_id = "generic"
+
+/obj/machinery/computer/area_atmos/tag
+	name = "Heavy Scrubber Control"
+	zone = "This computer is operating industrial scrubbers nearby."
+	var/scrub_id = "generic"
+	var/last_scan = 0
+
+/obj/machinery/computer/area_atmos/tag/scanscrubbers()
+	if(last_scan && world.time - last_scan < 20 SECONDS)
+		return 0
+	else
+		last_scan = world.time
+
+	connectedscrubbers.Cut()
+
+	for(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in world)
+		if(scrubber.scrub_id == src.scrub_id)
+			connectedscrubbers += scrubber
+
+	src.updateUsrDialog()
+
+/obj/machinery/computer/area_atmos/tag/validscrubber(var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber)
+	if(scrubber.scrub_id == src.scrub_id)
 		return 1
 
 	return 0

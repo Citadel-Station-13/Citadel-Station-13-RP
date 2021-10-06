@@ -1,9 +1,9 @@
-/obj/machinery/portable_atmospherics/hydroponics/process()
+/obj/machinery/portable_atmospherics/hydroponics/process(delta_time)
 	if(frozen == 1)
 		return
 
 	// Handle nearby smoke if any.
-	for(var/obj/effect/effect/smoke/chem/smoke in view(1, src))
+	for(var/obj/effect/smoke/chem/smoke in view(1, src))
 		if(smoke.reagents.total_volume)
 			smoke.reagents.trans_to_obj(src, 5, copy = 1)
 

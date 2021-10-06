@@ -67,12 +67,10 @@
 	// the comms computer, solar trackers, etc, that should function when all else is off.
 	// Laptops will require batteries and have no mains power.
 
-	var/obj/item/weapon/cell/battery	= null // uninterruptible power supply aka battery
+	var/obj/item/cell/battery	= null // uninterruptible power supply aka battery
 
-/obj/machinery/computer3/New(var/L, var/built = 0)
-	..()
-	spawn(2)
-		power_change()
+/obj/machinery/computer3/Initialize(mapload, built = FALSE)
+	. = ..()
 
 	if(show_keyboard)
 		var/kb_state = "kb[rand(1,15)]"
@@ -114,6 +112,11 @@
 				hdd.addfile(new typekey,1)
 
 	update_icon()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer3/LateInitialize()
+	. = ..()
+	power_change()
 
 /obj/machinery/computer3/verb/ResetComputer()
 	set name = "Reset Computer"
@@ -192,7 +195,7 @@
 			toybox.init(src)
 			continue
 
-		if(ispath(typekey,/obj/item/weapon/cell))
+		if(ispath(typekey,/obj/item/cell))
 			if(battery)
 				continue
 			battery = new typekey(src)
@@ -285,7 +288,7 @@
 	else
 		stat &= ~NOPOWER
 
-/obj/machinery/computer3/process()
+/obj/machinery/computer3/process(delta_time)
 	auto_use_power()
 	power_change()
 	update_icon()
@@ -309,8 +312,8 @@
 	if(os)
 		os.error = BUSTED_ASS_COMPUTER
 
-/obj/machinery/computer3/attackby(I as obj, mob/user as mob)
-	if(istype(I, /obj/item/weapon/screwdriver) && allow_disassemble)
+/obj/machinery/computer3/attackby(obj/item/I as obj, mob/user as mob)
+	if(I.is_screwdriver() && allow_disassemble)
 		disassemble(user)
 		return
 
@@ -443,7 +446,7 @@
 //Returns percentage of battery charge remaining. Returns -1 if no battery is installed.
 /obj/machinery/computer3/proc/check_battery_status()
 	if (battery)
-		var/obj/item/weapon/cell/B = battery
+		var/obj/item/cell/B = battery
 		return round(B.charge / (B.maxcharge / 100))
 	else
 		return -1

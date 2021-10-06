@@ -1,17 +1,6 @@
 ///////////////////////////////////////////////////////////////
 //SS13 Optimized Map loader
 //////////////////////////////////////////////////////////////
-
-/*
-//global datum that will preload variables on atoms instanciation
-GLOBAL_VAR_INIT(use_preloader, FALSE)
-GLOBAL_DATUM_INIT(_preloader, /dmm_suite/preloader, new)
-*/
-
-//global datum that will preload variables on atoms instanciation
-var/global/dmm_suite/preloader/_preloader = new()
-var/global/use_preloader = FALSE
-
 /dmm_suite
 		// /"([a-zA-Z]+)" = \(((?:.|\n)*?)\)\n(?!\t)|\((\d+),(\d+),(\d+)\) = \{"([a-zA-Z\n]*)"\}/g
 	var/static/regex/dmmRegex = new/regex({""(\[a-zA-Z]+)" = \\(((?:.|\n)*?)\\)\n(?!\t)|\\((\\d+),(\\d+),(\\d+)\\) = \\{"(\[a-zA-Z\n]*)"\\}"}, "g")
@@ -35,7 +24,13 @@ var/global/use_preloader = FALSE
  * 2) Read the map line by line, parsing the result (using parse_grid)
  *
  */
-/dmm_suite/load_map(dmm_file as file, x_offset as num, y_offset as num, z_offset as num, cropMap as num, measureOnly as num, no_changeturf as num)
+/dmm_suite/load_map(dmm_file as file, x_offset as num, y_offset as num, z_offset as num, cropMap as num, measureOnly as num, no_changeturf as num, orientation as num)
+
+	dmmRegex = new/regex({""(\[a-zA-Z]+)" = \\(((?:.|\n)*?)\\)\n(?!\t)|\\((\\d+),(\\d+),(\\d+)\\) = \\{"(\[a-zA-Z\n]*)"\\}"}, "g")
+	trimQuotesRegex = new/regex({"^\[\\s\n]+"?|"?\[\\s\n]+$|^"|"$"}, "g")
+	trimRegex = new/regex("^\[\\s\n]+|\[\\s\n]+$", "g")
+	modelCache = list()
+
 	//How I wish for RAII
 	if(!measureOnly)
 		Master.StartLoadingMap()
@@ -43,7 +38,7 @@ var/global/use_preloader = FALSE
 	#ifdef TESTING
 	turfsSkipped = 0
 	#endif
-	. = load_map_impl(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf)
+	. = load_map_impl(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf, orientation)
 	#ifdef TESTING
 	if(turfsSkipped)
 		testing("Skipped loading [turfsSkipped] default turfs")
@@ -51,7 +46,8 @@ var/global/use_preloader = FALSE
 	if(!measureOnly)
 		Master.StopLoadingMap()
 
-/dmm_suite/proc/load_map_impl(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf)
+/dmm_suite/proc/load_map_impl(dmm_file, x_offset, y_offset, z_offset, cropMap, measureOnly, no_changeturf, orientation)
+	var/list/areaCache = list()
 	var/tfile = dmm_file//the map file we're creating
 	if(isfile(tfile))
 		tfile = file2text(tfile)
@@ -62,6 +58,10 @@ var/global/use_preloader = FALSE
 		y_offset = 1
 	if(!z_offset)
 		z_offset = world.maxz + 1
+
+	// If it's not a single dir, default to north (Default orientation)
+	if(!(orientation in GLOB.cardinal))
+		orientation = SOUTH
 
 	var/list/bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 	var/list/grid_models = list()
@@ -95,12 +95,18 @@ var/global/use_preloader = FALSE
 			var/ycrd = text2num(dmmRegex.group[4]) + y_offset - 1
 			var/zcrd = text2num(dmmRegex.group[5]) + z_offset - 1
 
+			if(orientation & (EAST | WEST)) //VOREStation edit we just have to pray the upstream spacebrains take into consideration before their refator is done.
+				xcrd = ycrd // temp variable
+				ycrd = xcrdStart
+				xcrdStart = xcrd
+
 			var/zexpansion = zcrd > world.maxz
 			if(zexpansion && !measureOnly)
 				if(cropMap)
 					continue
 				else
-					world.maxz = zcrd //create a new z_level if needed
+					while(world.maxz < zcrd)
+						world.increment_max_z()
 				if(!no_changeturf)
 					WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems")
 
@@ -132,14 +138,71 @@ var/global/use_preloader = FALSE
 				bounds[MAP_MAXY] = max(bounds[MAP_MAXY], min(ycrd, world.maxy))
 
 			var/maxx = xcrdStart
+
+			// Assemble the grid of keys
+			var/list/key_list = list()
+			for(var/line in gridLines)
+				var/list/line_keys = list()
+				xcrd = 1
+				for(var/tpos = 1 to length(line) - key_len + 1 step key_len)
+					if(xcrd > world.maxx)
+						if(cropMap)
+							break
+						else
+							world.maxx = xcrd
+
+					if(xcrd >= 1)
+						var/model_key = copytext(line, tpos, tpos + key_len)
+						line_keys[++line_keys.len] = model_key
+						CHECK_TICK
+					maxx = max(maxx, xcrd++)
+				key_list[++key_list.len] = line_keys
+
+			// Rotate the list according to orientation
+			if(orientation != SOUTH)
+				var/list/firstlist = key_list[1]
+				var/num_cols = firstlist.len
+				var/num_rows = key_list.len
+				var/list/new_key_list = list()
+				// If it's rotated 180 degrees, the dimensions are the same
+				if(orientation == NORTH)
+					new_key_list.len = num_rows
+					for(var/i = 1 to new_key_list.len)
+						var/list/L = list()
+						L.len = num_cols
+						new_key_list[i] = L
+				// Else, the dimensions are swapped
+				else
+					new_key_list.len = num_cols
+					for(var/i = 1 to new_key_list.len)
+						var/list/L = list()
+						L.len = num_rows
+						new_key_list[i] = L
+				num_rows++ // Buffering against the base index of 1
+				num_cols++
+				// Populate the new list
+				for(var/i = 1 to new_key_list.len)
+					var/list/L = new_key_list[i]
+					for(var/j = 1 to L.len)
+						switch(orientation)
+							if(NORTH)
+								L[j] = key_list[num_rows - i][num_cols - j]
+							if(EAST)
+								L[j] = key_list[num_rows - j][i]
+							if(WEST)
+								L[j] = key_list[j][num_cols - i]
+
+				key_list = new_key_list
+
 			if(measureOnly)
-				for(var/line in gridLines)
-					maxx = max(maxx, xcrdStart + length(line) / key_len - 1)
+				for(var/list/line in key_list)
+					maxx = max(maxx, line.len)
 			else
-				for(var/line in gridLines)
+				for(var/i = 1 to key_list.len)
 					if(ycrd <= world.maxy && ycrd >= 1)
 						xcrd = xcrdStart
-						for(var/tpos = 1 to length(line) - key_len + 1 step key_len)
+						var/list/firstcolumn = key_list[1]
+						for(var/j = 1 to firstcolumn.len)
 							if(xcrd > world.maxx)
 								if(cropMap)
 									break
@@ -147,12 +210,11 @@ var/global/use_preloader = FALSE
 									world.maxx = xcrd
 
 							if(xcrd >= 1)
-								var/model_key = copytext(line, tpos, tpos + key_len)
 								var/no_afterchange = no_changeturf || zexpansion
-								if(!no_afterchange || (model_key != space_key))
-									if(!grid_models[model_key])
-										throw EXCEPTION("Undefined model key in DMM.")
-									parse_grid(grid_models[model_key], model_key, xcrd, ycrd, zcrd, no_changeturf || zexpansion)
+								if(!no_afterchange || (key_list[i][j] != space_key))
+									if(!grid_models[key_list[i][j]])
+										throw EXCEPTION("Undefined model key in DMM: [dmm_file], [key_list[i][j]]")
+									parse_grid(grid_models[key_list[i][j]], key_list[i][j], xcrd, ycrd, zcrd, no_afterchange, orientation, areaCache)
 								#ifdef TESTING
 								else
 									++turfsSkipped
@@ -194,7 +256,7 @@ var/global/use_preloader = FALSE
  * 4) Instanciates the atom with its variables
  *
  */
-/dmm_suite/proc/parse_grid(model as text, model_key as text, xcrd as num,ycrd as num,zcrd as num, no_changeturf as num)
+/dmm_suite/proc/parse_grid(model as text, model_key as text, xcrd as num,ycrd as num,zcrd as num, no_changeturf as num, orientation as num, list/areaCache)
 	/*Method parse_grid()
 	- Accepts a text string containing a comma separated list of type paths of the
 		same construction as those contained in a .dmm file, and instantiates them.
@@ -248,6 +310,12 @@ var/global/use_preloader = FALSE
 						if(istext(value))
 							fields[I] = apply_text_macros(value)
 
+			/*// Rotate dir if orientation isn't south (default)
+			if(fields["dir"])
+				fields["dir"] = turn(fields["dir"], dir2angle(orientation) + 180)
+			else
+				fields["dir"] = turn(SOUTH, dir2angle(orientation) + 180)*/
+
 			//then fill the members_attributes list with the corresponding variables
 			members_attributes.len++
 			members_attributes[index++] = fields
@@ -282,20 +350,23 @@ var/global/use_preloader = FALSE
 	//first instance the /area and remove it from the members list
 	index = members.len
 	if(members[index] != /area/template_noop)
-		var/atom/instance
-		_preloader.setup(members_attributes[index])//preloader for assigning  set variables on atom creation
+		if(!ispath(members[index], /area))
+			// you see, some people are bad memes and break things by doing this
+			// this is a far more descriptive error than the "bad loc" you'd get otherwise.
+			CRASH("The last entry in a .dmm's key was not an /area. This will lead to serious errors if allowed to continue. Crashing read proc.")
 		var/atype = members[index]
-		for(var/area/A in all_areas)
-			if(A.type == atype)
-				instance = A
-				break
-		if(!instance)
-			instance = new atype(null)
+		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
+		var/atom/instance = areaCache[atype]
+		if (!instance)
+			instance = GLOB.areas_by_type[atype]
+			if (!instance)
+				instance = new atype(null)
+			areaCache[atype] = instance
 		if(crds)
 			instance.contents.Add(crds)
 
-		if(use_preloader && instance)
-			_preloader.load(instance)
+		if(GLOB.use_preloader && instance)
+			world.preloader_load(instance)
 
 	//then instance the /turf and, if multiple tiles are presents, simulates the DMM underlays piling effect
 
@@ -331,7 +402,7 @@ var/global/use_preloader = FALSE
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
 /dmm_suite/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf)
-	_preloader.setup(attributes, path)
+	world.preloader_setup(attributes, path)
 
 	if(crds)
 		if(!no_changeturf && ispath(path, /turf))
@@ -339,8 +410,8 @@ var/global/use_preloader = FALSE
 		else
 			. = create_atom(path, crds)//first preloader pass
 
-	if(use_preloader && .)//second preloader pass, for those atoms that don't ..() in New()
-		_preloader.load(.)
+	if(GLOB.use_preloader && .)//second preloader pass, for those atoms that don't ..() in New()
+		world.preloader_load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize
 	if(TICK_CHECK)
@@ -447,28 +518,6 @@ var/global/use_preloader = FALSE
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 
-//////////////////
-//Preloader datum
-//////////////////
-
-/dmm_suite/preloader
-	parent_type = /datum
-	var/list/attributes
-	var/target_path
-
-/dmm_suite/preloader/proc/setup(list/the_attributes, path)
-	if(the_attributes.len)
-		use_preloader = TRUE
-		attributes = the_attributes
-		target_path = path
-
-/dmm_suite/preloader/proc/load(atom/what)
-	for(var/attribute in attributes)
-		var/value = attributes[attribute]
-		if(islist(value))
-			value = deepCopyList(value)
-		what.vars[attribute] = value
-	use_preloader = FALSE
 
 /area/template_noop
 	name = "Area Passthrough"

@@ -27,16 +27,16 @@
 
 /datum/language/corticalborer/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
 
-	var/mob/living/simple_animal/borer/B
+	var/mob/living/simple_mob/animal/borer/B
 
 	if(istype(speaker,/mob/living/carbon))
 		var/mob/living/carbon/M = speaker
 		B = M.has_brain_worms()
-	else if(istype(speaker,/mob/living/simple_animal/borer))
+	else if(istype(speaker,/mob/living/simple_mob/animal/borer))
 		B = speaker
 
 	if(B)
-		speaker_mask = B.truename
+		speaker_mask = B.true_name
 	..(speaker,message,speaker_mask)
 
 /datum/language/vox
@@ -93,6 +93,7 @@
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
 	key = "u"
+	machine_understands = 0
 	flags = RESTRICTED
 	syllables = list("sss","sSs","SSS")
 
@@ -103,6 +104,7 @@
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
 	colour = "alien"
+	machine_understands = 0
 	key = "a"
 	flags = RESTRICTED | HIVEMIND
 
@@ -115,6 +117,29 @@
 		return 1
 
 	return 0
+
+/datum/language/swarmbot
+	name = LANGUAGE_SWARMBOT
+	desc = "A confusing mechanical language spoken by some form of ancient machine."
+	speech_verb = "clatters"
+	ask_verb = "chatters"
+	exclaim_verb = "shrieks"
+	colour = "changeling"
+	key = "_"
+	machine_understands = 0
+	flags = NO_STUTTER | RESTRICTED
+	syllables = list("^", "v", "-", ".", "~")
+	space_chance = 60
+
+/datum/language/squirrel
+	name = LANGUAGE_ECUREUILIAN
+	desc = "The native tongue of the inhabitants of Gaia. Squirrelkin and other beastkins of Gaia can use their ears and tails in addition to speech to communitcate."
+	speech_verb = "squeaks"
+	whisper_verb = "whispers"
+	exclaim_verb = "chitters"
+	key = "9"
+	syllables = list("sque","sqah","boo","beh","nweh","boopa","nah","wah","een","sweh")
+
 
 //for your antag purposes.
 /datum/language/minbus

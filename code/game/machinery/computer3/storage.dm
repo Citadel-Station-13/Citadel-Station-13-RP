@@ -21,8 +21,8 @@
 
 	var/list/spawnfiles = list()// For mappers, special drives, and data disks
 
-/obj/item/part/computer/storage/New()
-	..()
+/obj/item/part/computer/storage/Initialize(mapload)
+	. = ..()
 	if(islist(spawnfiles))
 		if(removeable && spawnfiles.len)
 			var/obj/item/part/computer/storage/removable/R = src
@@ -95,8 +95,8 @@
 	max_volume = 3000
 	removeable = 1
 
-	attackby_types = list(/obj/item/weapon/disk/file, /obj/item/weapon/pen)
-	var/obj/item/weapon/disk/file/inserted = null
+	attackby_types = list(/obj/item/disk/file, /obj/item/pen)
+	var/obj/item/disk/file/inserted = null
 
 /obj/item/part/computer/storage/removable/proc/eject_disk(var/forced = 0)
 	if(!forced)
@@ -114,12 +114,12 @@
 
 
 /obj/item/part/computer/storage/removable/attackby(obj/O as obj, mob/user as mob)
-	if(inserted && istype(O,/obj/item/weapon/pen))
+	if(inserted && istype(O,/obj/item/pen))
 		to_chat(usr, "You use [O] to carefully pry [inserted] out of [src].")
 		eject_disk(forced = 1)
 		return
 
-	if(istype(O,/obj/item/weapon/disk/file))
+	if(istype(O,/obj/item/disk/file))
 		if(inserted)
 			to_chat(usr, "There's already a disk in [src]!")
 			return
@@ -156,7 +156,7 @@
 	Removable hard drive presents...
 	removeable disk!
 */
-/obj/item/weapon/disk/file
+/obj/item/disk/file
 	//parent_type = /obj/item/part/computer/storage // todon't: do this
 	name = "Data Disk"
 	desc = "A device that can be inserted and removed into computers easily as a form of portable data storage. This one stores 1 Megabyte"
@@ -167,8 +167,8 @@
 	var/max_volume = 1028
 
 
-/obj/item/weapon/disk/file/New()
-	..()
+/obj/item/disk/file/Initialize(mapload)
+	. = ..()
 	icon_state = "datadisk[rand(0,6)]"
 	src.pixel_x = rand(-5, 5)
 	src.pixel_y = rand(-5, 5)

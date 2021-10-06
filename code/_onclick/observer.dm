@@ -1,16 +1,4 @@
-/client/var/inquisitive_ghost = 1
-/mob/observer/dead/verb/toggle_inquisition() // warning: unexpected inquisition
-	set name = "Toggle Inquisitiveness"
-	set desc = "Sets whether your ghost examines everything on click by default"
-	set category = "Ghost"
-	if(!client) return
-	client.inquisitive_ghost = !client.inquisitive_ghost
-	if(client.inquisitive_ghost)
-		src << "<span class='notice'>You will now examine everything you click on.</span>"
-	else
-		src << "<span class='notice'>You will no longer examine things you click on.</span>"
-
-/mob/observer/dead/DblClickOn(var/atom/A, var/params)
+/mob/observer/dead/DblClickOn(atom/A, params)
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
 		return
@@ -20,28 +8,52 @@
 			return
 
 	// Things you might plausibly want to follow
-	if(istype(A,/atom/movable))
+	if(ismovable(A))
 		ManualFollow(A)
+
 	// Otherwise jump
-	else
-		following = null
+	else if(A.loc)
 		forceMove(get_turf(A))
+//		update_parallax_contents()
+
+/client/var/inquisitive_ghost = 1
+/mob/observer/dead/verb/toggle_inquisition() // warning: unexpected inquisition
+	set name = "Toggle Inquisitiveness"
+	set desc = "Sets whether your ghost examines everything on click by default"
+	set category = "Ghost"
+	if(!client) return
+	client.inquisitive_ghost = !client.inquisitive_ghost
+	if(client.inquisitive_ghost)
+		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")
+	else
+		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
 
 /mob/observer/dead/ClickOn(var/atom/A, var/params)
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
 		return
+	var/list/modifiers = params2list(params)
+	if(modifiers["shift"] && modifiers["middle"])
+		ShiftMiddleClickOn(A)
+		return
 	if(!canClick()) return
 	setClickCooldown(4)
-	// You are responsible for checking config.ghost_interaction when you override this function
+	// You are responsible for checking config_legacy.ghost_interaction when you override this function
 	// Not all of them require checking, see below
 	A.attack_ghost(src)
 
 // Oh by the way this didn't work with old click code which is why clicking shit didn't spam you
 /atom/proc/attack_ghost(mob/observer/dead/user as mob)
+	if(IsAdminGhost(user))		// admin AI interact
+		AdminAIInteract(user)
+		return
 	if(user.client && user.client.inquisitive_ghost)
 		user.examinate(src)
 	return
+
+// defaults to just attack_ai
+/atom/proc/AdminAIInteract(mob/user)
+	return attack_ai(user)
 
 // ---------------------------------------
 // And here are some good things for free:
@@ -61,13 +73,13 @@
 	if(awaygate)
 		user.loc = awaygate.loc
 	else
-		user << "[src] has no destination."
+		to_chat(user, "[src] has no destination.")
 
 /obj/machinery/gateway/centeraway/attack_ghost(mob/user as mob)
 	if(stationgate)
 		user.loc = stationgate.loc
 	else
-		user << "[src] has no destination."
+		to_chat(user, "[src] has no destination.")
 
 // -------------------------------------------
 // This was supposed to be used by adminghosts
@@ -81,3 +93,26 @@
 	attack_hand(user)
 
 */
+
+//VR FILE MERGE
+/obj/item/paicard/attack_ghost(mob/user as mob)
+	if(src.pai != null) //Have a person in them already?
+		user.examinate(src)
+		return
+	var/choice = input(user, "You sure you want to inhabit this PAI?") in list("Yes", "No")
+	var/pai_name = input(user, "Choose your character's name", "Character Name") as text
+	var/actual_pai_name = sanitize_name(pai_name)
+	var/pai_key
+	if (isnull(pai_name))
+		return
+	if(choice == "Yes")
+		pai_key = user.key
+	else
+		return
+	var/turf/location = get_turf(src)
+	var/obj/item/paicard/card = new(location)
+	var/mob/living/silicon/pai/pai = new(card)
+	qdel(src)
+	pai.key = pai_key
+	card.setPersonality(pai)
+	pai.SetName(actual_pai_name)

@@ -16,28 +16,29 @@
 /mob/zshadow/can_fall()
 	return FALSE
 
-/mob/zshadow/New(var/mob/L)
-	if(!istype(L))
-		qdel(src)
-		return
-	owner = L
-	sync_icon(L)
+/mob/zshadow/Initialize(mapload, mob/attach)
+	. = ..()
+	if(!isliving(loc))
+		return INITIALIZE_HINT_QDEL
+	owner = attach
+	sync_icon(attach)
 
 /mob/zshadow/Destroy()
+	owner?.shadow = null
 	owner = null
 	..() //But we don't return because the hint is wrong
 	return QDEL_HINT_QUEUE
 
 /mob/Destroy()
-	qdel_null(shadow)
+	QDEL_NULL(shadow)
 	. = ..()
 
-/mob/zshadow/examine(mob/user, distance, infix, suffix)
+/mob/zshadow/examine(mob/user)
 	if(!owner)
 	 	// The only time we should have a null owner is if we are in nullspace. Help figure out why we were examined.
-		crash_with("[src] ([type]) @ [log_info_line()] was examined by [user] @ [global.log_info_line(user)]")
+		stack_trace("[src] ([type]) @ [log_info_line()] was examined by [user] @ [global.log_info_line(user)]")
 		return
-	return owner.examine(user, distance, infix, suffix)
+	return owner.examine(user)
 
 // Relay some stuff they hear
 /mob/zshadow/hear_say(var/message, var/verb = "says", var/datum/language/language = null, var/alt_name = "", var/italics = 0, var/mob/speaker = null, var/sound/speech_sound, var/sound_vol)
@@ -60,7 +61,7 @@
 	if(shadow)
 		shadow.sync_icon(src)
 
-/mob/living/Move()
+/mob/living/Moved()
 	. = ..()
 	check_shadow()
 
@@ -68,21 +69,13 @@
 	. = ..()
 	check_shadow()
 
-/mob/living/on_mob_jump()
-	// We're about to be admin-jumped.
-	// Unfortuantely loc isn't set until after this proc is called. So we must spawn() so check_shadow executes with the new loc.
-	. = ..()
-	if(shadow)
-		spawn(0)
-			check_shadow()
-
 /mob/living/proc/check_shadow()
 	var/mob/M = src
 	if(isturf(M.loc))
 		var/turf/simulated/open/OS = GetAbove(src)
 		while(OS && istype(OS))
 			if(!M.shadow)
-				M.shadow = new /mob/zshadow(M)
+				M.shadow = new /mob/zshadow(M, M)
 			M.shadow.forceMove(OS)
 			M = M.shadow
 			OS = GetAbove(M)
@@ -107,10 +100,10 @@
 	if(shadow)
 		shadow.sync_icon(src)
 
-/mob/set_dir(new_dir)
+/mob/setDir(new_dir)
 	. = ..()
 	if(shadow)
-		shadow.set_dir(new_dir)
+		shadow.setDir(new_dir)
 
 // Transfer messages about what we are doing to upstairs
 /mob/visible_message(var/message, var/self_message, var/blind_message)

@@ -32,9 +32,9 @@
 						"Reagents" = R.reagents,
 						"Fruit" = R.fruit,
 						"Ingredients" = R.items,
+						"Appliance" = R.appliance,
 						"Image" = result_icon
 						)
-
 		qdel(res)
 		qdel(R)
 
@@ -68,18 +68,32 @@
 	//Reagents can be resolved to nicer names as well
 	for(var/Rp in food_recipes)
 		for(var/rid in food_recipes[Rp]["Reagents"])
-			var/datum/reagent/Rd = chemical_reagents_list[rid]
+			var/datum/reagent/Rd = SSchemistry.chemical_reagents[rid]
 			var/R_name = Rd.name
 			var/amt = food_recipes[Rp]["Reagents"][rid]
 			food_recipes[Rp]["Reagents"] -= rid
 			food_recipes[Rp]["Reagents"][R_name] = amt
 	for(var/Rp in drink_recipes)
 		for(var/rid in drink_recipes[Rp]["Reagents"])
-			var/datum/reagent/Rd = chemical_reagents_list[rid]
+			var/datum/reagent/Rd = SSchemistry.chemical_reagents[rid]
 			var/R_name = Rd.name
 			var/amt = drink_recipes[Rp]["Reagents"][rid]
 			drink_recipes[Rp]["Reagents"] -= rid
 			drink_recipes[Rp]["Reagents"][R_name] = amt
+
+	//We can also change the appliance to its proper name.
+	for(var/Rp in food_recipes)
+		switch(food_recipes[Rp]["Appliance"])
+			if(1)
+				food_recipes[Rp]["Appliance"] = "Microwave"
+			if(2)
+				food_recipes[Rp]["Appliance"] = "Fryer"
+			if(4)
+				food_recipes[Rp]["Appliance"] = "Oven"
+			if(8)
+				food_recipes[Rp]["Appliance"] = "Candy Maker"
+			if(16)
+				food_recipes[Rp]["Appliance"] = "Cereal Maker"
 
 	//////////////////////// SORTING
 	var/list/foods_to_paths = list()
@@ -90,8 +104,8 @@
 	for(var/Rp in drink_recipes)
 		drinks_to_paths["[drink_recipes[Rp]["Result"]] [Rp]"] = Rp
 
-	foods_to_paths = sortAssoc(foods_to_paths)
-	drinks_to_paths = sortAssoc(drinks_to_paths)
+	foods_to_paths = sortTim(foods_to_paths, /proc/cmp_text_asc, TRUE)
+	drinks_to_paths = sortTim(drinks_to_paths, /proc/cmp_text_asc, TRUE)
 
 	var/list/foods_newly_sorted = list()
 	var/list/drinks_newly_sorted = list()
@@ -119,7 +133,7 @@
 
 	html += "<html><body><h3>Food Recipes (as of [time2text(world.realtime,"MMM DD, YYYY")])</h3><br>"
 	html += "<table class='recipes'>"
-	html += "<tr><th>Icon</th><th>Name</th><th>Ingredients</th></tr>"
+	html += "<tr><th>Icon</th><th>Name</th><th>Appliance</th><th>Ingredients</th></tr>"
 	for(var/Rp in food_recipes)
 		//Open this row
 		html += "<tr>"
@@ -135,6 +149,9 @@
 
 		//Name
 		html += "<td><b>[food_recipes[Rp]["Result"]]</b></td>"
+
+		//Appliance
+		html += "<td><b>[food_recipes[Rp]["Appliance"]]</b></td>"
 
 		//Ingredients
 		html += "<td><ul>"
@@ -214,4 +231,4 @@
 	html += "</table></body></html>"
 	src << browse(html, "window=recipes;file=recipes_drinks.html;display=0")
 
-	src << "<span class='notice'>In your byond cache, recipe-xxx.png files and recipes_drinks.html and recipes_food.html now exist. Place recipe-xxx.png files in a subfolder named 'imgrecipes' wherever you put them. The file will take a food.css or drinks.css file if in the same path.</span>"
+	to_chat(src, "<span class='notice'>In your byond cache, recipe-xxx.png files and recipes_drinks.html and recipes_food.html now exist. Place recipe-xxx.png files in a subfolder named 'imgrecipes' wherever you put them. The file will take a food.css or drinks.css file if in the same path.</span>")

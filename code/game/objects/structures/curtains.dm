@@ -10,7 +10,7 @@
 /obj/structure/curtain/open
 	icon_state = "open"
 	plane = OBJ_PLANE
-	layer = OBJ_LAYER
+	layer = 3.3 //3.3 so its above windows, not the same as them. anything below 3.3 puts the curtain beneath the window sprite in current build
 	opacity = 0
 
 /obj/structure/curtain/bullet_act(obj/item/projectile/P, def_zone)
@@ -34,14 +34,14 @@
 	else
 		icon_state = "open"
 		plane = OBJ_PLANE
-		layer = OBJ_LAYER
+		layer = 3.3
 
 /obj/structure/curtain/attackby(obj/item/P, mob/user)
-	if(istype(P, /obj/item/weapon/wirecutters))
+	if(P.is_wirecutter())
 		playsound(src, P.usesound, 50, 1)
-		user << "<span class='notice'>You start to cut the shower curtains.</span>"
+		to_chat(user, "<span class='notice'>You start to cut the shower curtains.</span>")
 		if(do_after(user, 10))
-			user << "<span class='notice'>You cut the shower curtains.</span>"
+			to_chat(user, "<span class='notice'>You cut the shower curtains.</span>")
 			var/obj/item/stack/material/plastic/A = new /obj/item/stack/material/plastic( src.loc )
 			A.amount = 3
 			qdel(src)

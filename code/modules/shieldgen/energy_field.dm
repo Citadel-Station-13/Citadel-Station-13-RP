@@ -18,13 +18,14 @@
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	density = 0
+	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/obj/machinery/shield_gen/my_gen = null
 	var/strength = 0 // in Renwicks
 	var/ticks_recovering = 10
 	var/max_strength = 10
 
-/obj/effect/energy_field/New(var/newloc, var/new_gen)
-	..(newloc)
+/obj/effect/energy_field/Initialize(mapload, new_gen)
+	. = ..()
 	my_gen = new_gen
 	update_nearby_tiles()
 
@@ -34,7 +35,7 @@
 	my_gen = null
 	var/turf/current_loc = get_turf(src)
 	. = ..()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(current_loc, direction)
 		if(T)
 			for(var/obj/effect/energy_field/F in T)
@@ -52,6 +53,15 @@
 		user.do_attack_animation(src)
 		user.setClickCooldown(user.get_attack_speed(W))
 	..()
+
+/obj/effect/energy_field/attack_generic(mob/user, damage)
+	if(damage)
+		adjust_strength(-damage / 20)
+		user.do_attack_animation(src)
+		user.setClickCooldown(user.get_attack_speed())
+
+/obj/effect/energy_field/take_damage(var/damage)
+	adjust_strength(-damage / 20)
 
 /obj/effect/energy_field/attack_hand(var/mob/living/user)
 	impact_effect(3) // Harmless, but still produces the 'impact' effect.
@@ -97,19 +107,10 @@
 		update_icon()
 		update_nearby_tiles()
 
-/obj/effect/energy_field/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
-	//Purpose: Determines if the object (or airflow) can pass this atom.
-	//Called by: Movement, airflow.
-	//Inputs: The moving atom (optional), target turf, "height" and air group
-	//Outputs: Boolean if can pass.
-
-	//return (!density || !height || air_group)
-	return !density
-
 /obj/effect/energy_field/update_icon(var/update_neightbors = 0)
 	overlays.Cut()
 	var/list/adjacent_shields_dir = list()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		if(T) // Incase we somehow stepped off the map.
 			for(var/obj/effect/energy_field/F in T)
@@ -139,7 +140,7 @@
 	i--
 	if(i)
 		spawn(2)
-			for(var/direction in cardinal)
+			for(var/direction in GLOB.cardinal)
 				var/turf/T = get_step(src, direction)
 				if(T) // Incase we somehow stepped off the map.
 					for(var/obj/effect/energy_field/F in T)

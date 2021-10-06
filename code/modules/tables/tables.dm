@@ -20,16 +20,20 @@ var/list/table_icon_cache = list()
 	var/can_plate = 1
 
 	var/manipulating = 0
-	var/material/material = null
-	var/material/reinforced = null
+	var/datum/material/material = null
+	var/datum/material/reinforced = null
 
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
 	// Convert if/when you can easily get stacks of these.
 	var/carpeted = 0
+	var/carpeted_type = /obj/item/stack/tile/carpet
 
 	var/list/connections = list("nw0", "ne0", "sw0", "se0")
 
-	var/item_place = 1 //allows items to be placed on the table, but not on benches.
+	/// Can people place items on us by clicking on us?
+	var/item_place = TRUE
+	/// Do people pixel-place items or center place?
+	var/item_pixel_place = TRUE
 
 /obj/structure/table/proc/update_material()
 	var/old_maxhealth = maxhealth
@@ -43,7 +47,7 @@ var/list/table_icon_cache = list()
 
 	health += maxhealth - old_maxhealth
 
-/obj/structure/table/proc/take_damage(amount)
+/obj/structure/table/take_damage(amount)
 	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
 	if(material && material.is_brittle())
 		if(reinforced)
@@ -59,7 +63,7 @@ var/list/table_icon_cache = list()
 /obj/structure/table/blob_act()
 	take_damage(100)
 
-/obj/structure/table/initialize()
+/obj/structure/table/Initialize(mapload)
 	. = ..()
 
 	// One table per turf.
@@ -73,7 +77,18 @@ var/list/table_icon_cache = list()
 	// reset color/alpha, since they're set for nice map previews
 	color = "#ffffff"
 	alpha = 255
-	update_connections(ticker && ticker.current_state == GAME_STATE_PLAYING)
+	if(mapload)		// screw off
+		return INITIALIZE_HINT_LATELOAD
+	else
+		update_connections(TRUE)
+		update_icon()
+		update_desc()
+		update_material()
+
+
+/obj/structure/table/LateInitialize()		// CURSE YOU DUMB AS ROCKS MATERIAL SYSTEM
+	. = ..()
+	update_connections(FALSE)
 	update_icon()
 	update_desc()
 	update_material()
@@ -81,9 +96,7 @@ var/list/table_icon_cache = list()
 /obj/structure/table/Destroy()
 	material = null
 	reinforced = null
-	update_connections(1) // Update tables around us to ignore us (material=null forces no connections)
-	for(var/obj/structure/table/T in oview(src, 1))
-		T.update_icon()
+	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
 	. = ..()
 
 /obj/structure/table/examine(mob/user)
@@ -91,15 +104,15 @@ var/list/table_icon_cache = list()
 	if(health < maxhealth)
 		switch(health / maxhealth)
 			if(0.0 to 0.5)
-				user << "<span class='warning'>It looks severely damaged!</span>"
+				. += "<span class='warning'>It looks severely damaged!</span>"
 			if(0.25 to 0.5)
-				user << "<span class='warning'>It looks damaged!</span>"
+				. += "<span class='warning'>It looks damaged!</span>"
 			if(0.5 to 1.0)
-				user << "<span class='notice'>It has a few scrapes and dents.</span>"
+				. += "<span class='notice'>It has a few scrapes and dents.</span>"
 
-/obj/structure/table/attackby(obj/item/weapon/W, mob/user)
+/obj/structure/table/attackby(obj/item/W, mob/user)
 
-	if(reinforced && istype(W, /obj/item/weapon/screwdriver))
+	if(reinforced && W.is_screwdriver())
 		remove_reinforced(W, user)
 		if(!reinforced)
 			update_desc()
@@ -107,10 +120,10 @@ var/list/table_icon_cache = list()
 			update_material()
 		return 1
 
-	if(carpeted && istype(W, /obj/item/weapon/crowbar))
+	if(carpeted && W.is_crowbar())
 		user.visible_message("<span class='notice'>\The [user] removes the carpet from \the [src].</span>",
 		                              "<span class='notice'>You remove the carpet from \the [src].</span>")
-		new /obj/item/stack/tile/carpet(loc)
+		new carpeted_type(loc)
 		carpeted = 0
 		update_icon()
 		return 1
@@ -121,12 +134,13 @@ var/list/table_icon_cache = list()
 			user.visible_message("<span class='notice'>\The [user] adds \the [C] to \the [src].</span>",
 			                              "<span class='notice'>You add \the [C] to \the [src].</span>")
 			carpeted = 1
+			carpeted_type = W.type
 			update_icon()
 			return 1
 		else
-			user << "<span class='warning'>You don't have enough carpet!</span>"
+			to_chat(user, "<span class='warning'>You don't have enough carpet!</span>")
 
-	if(!reinforced && !carpeted && material && istype(W, /obj/item/weapon/wrench))
+	if(!reinforced && !carpeted && material && W.is_wrench())
 		remove_material(W, user)
 		if(!material)
 			update_connections(1)
@@ -137,14 +151,14 @@ var/list/table_icon_cache = list()
 			update_material()
 		return 1
 
-	if(!carpeted && !reinforced && !material && istype(W, /obj/item/weapon/wrench))
+	if(!carpeted && !reinforced && !material && W.is_wrench())
 		dismantle(W, user)
 		return 1
 
-	if(health < maxhealth && istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/F = W
+	if(health < maxhealth && istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/F = W
 		if(F.welding)
-			user << "<span class='notice'>You begin reparing damage to \the [src].</span>"
+			to_chat(user, "<span class='notice'>You begin reparing damage to \the [src].</span>")
 			playsound(src, F.usesound, 50, 1)
 			if(!do_after(user, 20 * F.toolspeed) || !F.remove_fuel(1, user))
 				return
@@ -199,19 +213,19 @@ var/list/table_icon_cache = list()
 
 /obj/structure/table/proc/reinforce_table(obj/item/stack/material/S, mob/user)
 	if(reinforced)
-		user << "<span class='warning'>\The [src] is already reinforced!</span>"
+		to_chat(user, "<span class='warning'>\The [src] is already reinforced!</span>")
 		return
 
 	if(!can_reinforce)
-		user << "<span class='warning'>\The [src] cannot be reinforced!</span>"
+		to_chat(user, "<span class='warning'>\The [src] cannot be reinforced!</span>")
 		return
 
 	if(!material)
-		user << "<span class='warning'>Plate \the [src] before reinforcing it!</span>"
+		to_chat(user, "<span class='warning'>Plate \the [src] before reinforcing it!</span>")
 		return
 
 	if(flipped)
-		user << "<span class='warning'>Put \the [src] back in place before reinforcing it!</span>"
+		to_chat(user, "<span class='warning'>Put \the [src] back in place before reinforcing it!</span>")
 		return
 
 	reinforced = common_material_add(S, user, "reinforc")
@@ -234,14 +248,14 @@ var/list/table_icon_cache = list()
 
 // Returns the material to set the table to.
 /obj/structure/table/proc/common_material_add(obj/item/stack/material/S, mob/user, verb) // Verb is actually verb without 'e' or 'ing', which is added. Works for 'plate'/'plating' and 'reinforce'/'reinforcing'.
-	var/material/M = S.get_material()
+	var/datum/material/M = S.get_material()
 	if(!istype(M))
-		user << "<span class='warning'>You cannot [verb]e \the [src] with \the [S].</span>"
+		to_chat(user, "<span class='warning'>You cannot [verb]e \the [src] with \the [S].</span>")
 		return null
 
 	if(manipulating) return M
 	manipulating = 1
-	user << "<span class='notice'>You begin [verb]ing \the [src] with [M.display_name].</span>"
+	to_chat(user, "<span class='notice'>You begin [verb]ing \the [src] with [M.display_name].</span>")
 	if(!do_after(user, 20) || !S.use(1))
 		manipulating = 0
 		return null
@@ -250,9 +264,9 @@ var/list/table_icon_cache = list()
 	return M
 
 // Returns the material to set the table to.
-/obj/structure/table/proc/common_material_remove(mob/user, material/M, delay, what, type_holding, sound)
+/obj/structure/table/proc/common_material_remove(mob/user, datum/material/M, delay, what, type_holding, sound)
 	if(!M.stack_type)
-		user << "<span class='warning'>You are unable to remove the [what] from this [src]!</span>"
+		to_chat(user, "<span class='warning'>You are unable to remove the [what] from this [src]!</span>")
 		return M
 
 	if(manipulating) return M
@@ -270,28 +284,28 @@ var/list/table_icon_cache = list()
 	manipulating = 0
 	return null
 
-/obj/structure/table/proc/remove_reinforced(obj/item/weapon/screwdriver/S, mob/user)
+/obj/structure/table/proc/remove_reinforced(obj/item/S, mob/user)
 	reinforced = common_material_remove(user, reinforced, 40 * S.toolspeed, "reinforcements", "screws", S.usesound)
 
-/obj/structure/table/proc/remove_material(obj/item/weapon/wrench/W, mob/user)
+/obj/structure/table/proc/remove_material(obj/item/W, mob/user)
 	material = common_material_remove(user, material, 20 * W.toolspeed, "plating", "bolts", W.usesound)
 
-/obj/structure/table/proc/dismantle(obj/item/weapon/wrench/W, mob/user)
-	if(manipulating) return
-	manipulating = 1
+/obj/structure/table/proc/dismantle(obj/item/W, mob/user)
+	if(manipulating)
+		return
+	manipulating = TRUE
 	user.visible_message("<span class='notice'>\The [user] begins dismantling \the [src].</span>",
 	                              "<span class='notice'>You begin dismantling \the [src].</span>")
 	playsound(src, W.usesound, 50, 1)
 	if(!do_after(user, 20 * W.toolspeed))
-		manipulating = 0
+		manipulating = FALSE
 		return
 	user.visible_message("<span class='notice'>\The [user] dismantles \the [src].</span>",
 	                              "<span class='notice'>You dismantle \the [src].</span>")
 	new /obj/item/stack/material/steel(src.loc)
 	qdel(src)
-	return
 
-// Returns a list of /obj/item/weapon/material/shard objects that were created as a result of this table's breakage.
+// Returns a list of /obj/item/material/shard objects that were created as a result of this table's breakage.
 // Used for !fun! things such as embedding shards in the faces of tableslammed people.
 
 // The repeated
@@ -301,7 +315,7 @@ var/list/table_icon_cache = list()
 
 /obj/structure/table/proc/break_to_parts(full_return = 0)
 	var/list/shards = list()
-	var/obj/item/weapon/material/shard/S = null
+	var/obj/item/material/shard/S = null
 	if(reinforced)
 		if(reinforced.stack_type && (full_return || prob(20)))
 			reinforced.place_sheet(loc)
@@ -315,11 +329,11 @@ var/list/table_icon_cache = list()
 			S = material.place_shard(loc)
 			if(S) shards += S
 	if(carpeted && (full_return || prob(50))) // Higher chance to get the carpet back intact, since there's no non-intact option
-		new /obj/item/stack/tile/carpet(src.loc)
+		new carpeted_type(src.loc)
 	if(full_return || prob(20))
 		new /obj/item/stack/material/steel(src.loc)
 	else
-		var/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
+		var/datum/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
 		S = M.place_shard(loc)
 		if(S) shards += S
 	qdel(src)
@@ -404,10 +418,10 @@ var/list/table_icon_cache = list()
 /obj/structure/table/proc/update_connections(propagate=0)
 	if(!material)
 		connections = list("0", "0", "0", "0")
-
 		if(propagate)
-			for(var/obj/structure/table/T in oview(src, 1))
+			for(var/obj/structure/table/T in orange(src, 1))
 				T.update_connections()
+				T.update_icon()
 		return
 
 	var/list/blocked_dirs = list()
@@ -420,7 +434,7 @@ var/list/table_icon_cache = list()
 	for(var/D in list(NORTH, SOUTH, EAST, WEST) - blocked_dirs)
 		var/turf/T = get_step(src, D)
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir == reverse_dir[D])
+			if(W.is_fulltile() || W.dir == GLOB.reverse_dir[D])
 				blocked_dirs |= D
 				break
 			else
@@ -431,7 +445,7 @@ var/list/table_icon_cache = list()
 		var/turf/T = get_step(src, D)
 
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir & reverse_dir[D])
+			if(W.is_fulltile() || W.dir & GLOB.reverse_dir[D])
 				blocked_dirs |= D
 				break
 
@@ -445,7 +459,8 @@ var/list/table_icon_cache = list()
 
 	for(var/obj/structure/table/T in orange(src, 1))
 		var/T_dir = get_dir(src, T)
-		if(T_dir in blocked_dirs) continue
+		if(T_dir in blocked_dirs)
+			continue
 		if(material && T.material && material.name == T.material.name && flipped == T.flipped)
 			connection_dirs |= T_dir
 		if(propagate)
@@ -468,7 +483,8 @@ var/list/table_icon_cache = list()
 */
 
 /proc/dirs_to_corner_states(list/dirs)
-	if(!istype(dirs)) return
+	if(!istype(dirs))
+		return
 
 	var/list/ret = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST)
 

@@ -6,6 +6,7 @@
 	var/priority = FIRE_PRIORITY_DEFAULT	//When mutiple subsystems need to run in the same tick, higher priority subsystems will run first and be given a higher share of the tick before MC_TICK_CHECK triggers a sleep
 
 	var/flags = 0			//see MC.dm in __DEFINES Most flags must be set on world start to take full effect. (You can also restart the mc to force them to process again)
+	var/subsystem_initialized = FALSE	//set to TRUE after it has been initialized, will obviously never be set if the subsystem doesn't initialize
 	var/runlevels = RUNLEVELS_DEFAULT	//points of the game at which the SS can fire
 
 	//set to 0 to prevent fire() calls, mostly for admin use or subsystems that may be resumed later
@@ -151,13 +152,20 @@
 		if(SS_SLEEPING)
 			state = SS_PAUSING
 
+/// Called after the config has been loaded or reloaded.
+/datum/controller/subsystem/proc/OnConfigLoad()
+
+/datum/controller/subsystem/proc/subsystem_log(msg)
+	return log_subsystem(name, msg)
 
 //used to initialize the subsystem AFTER the map has loaded
 /datum/controller/subsystem/Initialize(start_timeofday)
+	subsystem_initialized = TRUE
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
 	to_chat(world, "<span class='boldannounce'>[msg]</span>")
 	log_world(msg)
+	log_subsystem("INIT", msg)
 	return time
 
 //hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.
@@ -200,3 +208,13 @@
 //usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash)
 //should attempt to salvage what it can from the old instance of subsystem
 /datum/controller/subsystem/Recover()
+
+/datum/controller/subsystem/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if (NAMEOF(src, can_fire))
+			//this is so the subsystem doesn't rapid fire to make up missed ticks causing more lag
+			if (var_value)
+				next_fire = world.time + wait
+		if (NAMEOF(src, queued_priority)) //editing this breaks things.
+			return FALSE
+	. = ..()

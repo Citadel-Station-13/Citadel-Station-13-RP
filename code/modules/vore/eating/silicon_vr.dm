@@ -25,7 +25,7 @@
 	bellied = prey
 	prey.forceMove(src)
 	visible_message("[src] entirely engulfs [prey] in hardlight holograms!")
-	usr << "<span class='notice'>You completely engulf [prey] in hardlight holograms!</span>" //Can't be part of the above, because the above is from the hologram.
+	to_chat(usr, "<span class='notice'>You completely engulf [prey] in hardlight holograms!</span>") //Can't be part of the above, because the above is from the hologram.
 
 	desc = "[initial(desc)] It seems to have hardlight mode enabled and someone inside."
 	pass_flags = 0
@@ -52,7 +52,7 @@
 
 	// Wrong state
 	if (!eyeobj || !holo)
-		usr << "<span class='warning'>You can only use this when holo-projecting!</span>"
+		to_chat(usr, "<span class='warning'>You can only use this when holo-projecting!</span>")
 		return
 
 	//Holopads have this 'masters' list where the keys are AI names and the values are the hologram effects
@@ -74,37 +74,24 @@
 		return //Probably cancelled
 
 	if(!istype(prey))
-		usr << "<span class='warning'>Invalid mob choice!</span>"
+		to_chat(usr, "<span class='warning'>Invalid mob choice!</span>")
 		return
 
 	hologram.visible_message("[hologram] starts engulfing [prey] in hardlight holograms!")
-	src << "<span class='notice'>You begin engulfing [prey] in hardlight holograms.</span>" //Can't be part of the above, because the above is from the hologram.
+	to_chat(src, "<span class='notice'>You begin engulfing [prey] in hardlight holograms.</span>") //Can't be part of the above, because the above is from the hologram.
 	if(do_after(user=eyeobj,delay=50,target=prey,needhand=0) && holo && hologram && !hologram.bellied) //Didn't move and still projecting and effect exists and no other bellied people
 		hologram.get_prey(prey)
 
-/*	Can't, lets them examine things in camera blackout areas
-//I basically have to do this, you know?
-/mob/living/silicon/ai/examinate(atom/A as mob|obj|turf in view(eyeobj))
-	set name = "Examine"
-	set category = "IC"
-
-	A.examine(src)
-*/
-
 /mob/living/AIShiftClick(var/mob/user) //Shift-click as AI overridden on mobs to examine.
 	if(user.client)
-		src.examine(user)
-	return
+		var/list/result = examine(user)
+		to_chat(user, result.Join("\n"))
 
 //This can go here with all the references.
 /obj/effect/overlay/aiholo/examine(mob/user)
-	. = ..(user)
-
-	var/msg = "\n"
+	. = ..()
 
 	//If you need an ooc_notes copy paste, this is NOT the one to use.
 	var/ooc_notes = master.ooc_notes
 	if(ooc_notes)
-		msg += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[master];ooc_notes=1'>\[View\]</a>\n"
-
-	user << msg
+		. += "<span class = 'deptradio'>OOC Notes:</span> <a href='?src=\ref[master];ooc_notes=1'>\[View\]</a>\n"

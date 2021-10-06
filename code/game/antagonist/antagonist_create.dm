@@ -32,7 +32,7 @@
 
 /datum/antagonist/proc/create_id(var/assignment, var/mob/living/carbon/human/player, var/equip = 1)
 
-	var/obj/item/weapon/card/id/W = new id_type(player)
+	var/obj/item/card/id/W = new id_type(player)
 	if(!W) return
 	W.access |= default_access
 	W.assignment = "[assignment]"
@@ -41,15 +41,15 @@
 	return W
 
 /datum/antagonist/proc/create_radio(var/freq, var/mob/living/carbon/human/player)
-	var/obj/item/device/radio/R
+	var/obj/item/radio/R
 
 	switch(freq)
 		if(SYND_FREQ)
-			R = new/obj/item/device/radio/headset/syndicate(player)
+			R = new/obj/item/radio/headset/syndicate(player)
 		if(RAID_FREQ)
-			R = new/obj/item/device/radio/headset/raider(player)
+			R = new/obj/item/radio/headset/raider(player)
 		else
-			R = new/obj/item/device/radio/headset(player)
+			R = new/obj/item/radio/headset(player)
 			R.set_frequency(freq)
 
 	player.equip_to_slot_or_del(R, slot_l_ear)
@@ -75,7 +75,7 @@
 
 		if(paper_spawn_loc)
 			// Create and pass on the bomb code paper.
-			var/obj/item/weapon/paper/P = new(paper_spawn_loc)
+			var/obj/item/paper/P = new(paper_spawn_loc)
 			P.info = "The nuclear authorization code is: <b>[code]</b>"
 			P.name = "nuclear bomb code"
 			if(leader && leader.current)
@@ -86,7 +86,7 @@
 			code_owner = leader
 		if(code_owner)
 			code_owner.store_memory("<B>Nuclear Bomb Code</B>: [code]", 0, 0)
-			code_owner.current << "The nuclear authorization code is: <B>[code]</B>"
+			to_chat(code_owner.current, "The nuclear authorization code is: <B>[code]</B>")
 	else
 		message_admins("<span class='danger'>Could not spawn nuclear bomb. Contact a developer.</span>")
 		return
@@ -95,20 +95,24 @@
 	return code
 
 /datum/antagonist/proc/greet(var/datum/mind/player)
+	// Makes it harder to miss if you're alt-tabbed or not paying attention.
+	if(antag_sound)
+		SEND_SOUND(player.current, sound(antag_sound))
+	window_flash(player.current.client)
 
 	// Basic intro text.
-	player.current << "<span class='danger'><font size=3>You are a [role_text]!</font></span>"
+	to_chat(player.current, "<span class='danger'><font size=3>You are a [role_text]!</font></span>")
 	if(leader_welcome_text && player == leader)
-		player.current << "<span class='notice'>[leader_welcome_text]</span>"
+		to_chat(player.current, "<span class='notice'>[leader_welcome_text]</span>")
 	else
-		player.current << "<span class='notice'>[welcome_text]</span>"
-	if (config.objectives_disabled)
-		player.current << "<span class='notice'>[antag_text]</span>"
+		to_chat(player.current, "<span class='notice'>[welcome_text]</span>")
+	if (config_legacy.objectives_disabled)
+		to_chat(player.current, "<span class='notice'>[antag_text]</span>")
 
 	if((flags & ANTAG_HAS_NUKE) && !spawned_nuke)
 		create_nuke()
 
-	if (!config.objectives_disabled)
+	if (!config_legacy.objectives_disabled)
 		show_objectives(player)
 	return 1
 

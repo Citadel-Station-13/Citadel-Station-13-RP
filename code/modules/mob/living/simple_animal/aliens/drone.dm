@@ -1,6 +1,14 @@
+/datum/category_item/catalogue/fauna/malf_drone
+	name = "Malfunctioning Combat Drone"
+	desc = "Many drones like this are fielded by Corporate naval fleets. \
+	Armed with heavy lasers, powerful combat shielding, armored frames, and \
+	self destruct cores, stumbling across one of these in the field is an almost \
+	guaranteed death sentence. When a combat drone malfunctions, it becomes twice \
+	as deadly, as it will attack anything it sees - even former allies."
+	value = CATALOGUER_REWARD_MEDIUM
 
 //malfunctioning combat drones
-/mob/living/simple_animal/hostile/malf_drone
+/mob/living/simple_mob/hostile/malf_drone
 	name = "combat drone"
 	desc = "An automated combat drone armed with state of the art weaponry and shielding."
 	icon_state = "drone3"
@@ -19,7 +27,7 @@
 	response_disarm = "gently pushes aside"
 	response_harm = "hits"
 
-	a_intent = I_HURT
+	a_intent = INTENT_HARM
 	ranged = 1
 	rapid = 1
 	projectiletype = /obj/item/projectile/beam/drone
@@ -44,15 +52,15 @@
 	emote_see = list("beeps menacingly","whirrs threateningly","scans its immediate vicinity")
 
 
-	var/datum/effect/effect/system/ion_trail_follow/ion_trail
+	var/datum/effect_system/ion_trail_follow/ion_trail
 	var/turf/patrol_target
 	var/explode_chance = 1
 	var/disabled = 0
 	var/exploding = 0
 	var/has_loot = 1
 
-/mob/living/simple_animal/hostile/malf_drone/New()
-	..()
+/mob/living/simple_mob/hostile/malf_drone/Initialize(mapload)
+	. = ..()
 	if(prob(5))
 		projectiletype = /obj/item/projectile/beam/pulse/drone
 		projectilesound = 'sound/weapons/pulse2.ogg'
@@ -60,14 +68,14 @@
 	ion_trail.set_up(src)
 	ion_trail.start()
 
-/mob/living/simple_animal/hostile/malf_drone/Process_Spacemove(var/check_drift = 0)
+/mob/living/simple_mob/hostile/malf_drone/Process_Spacemove(var/check_drift = 0)
 	return 1
 
-/mob/living/simple_animal/hostile/malf_drone/isSynthetic()
+/mob/living/simple_mob/hostile/malf_drone/isSynthetic()
 	return TRUE
 
 //self repair systems have a chance to bring the drone back to life
-/mob/living/simple_animal/hostile/malf_drone/Life()
+/mob/living/simple_mob/hostile/malf_drone/Life()
 
 	//emps and lots of damage can temporarily shut us down
 	if(disabled > 0)
@@ -84,25 +92,25 @@
 
 	//repair a bit of damage
 	if(prob(1))
-		src.visible_message("<font color='red'>\icon[src] [src] shudders and shakes as some of it's damaged systems come back online.</font>")
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] shudders and shakes as some of it's damaged systems come back online.</font>")
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 		health += rand(25,100)
 
 	//spark for no reason
 	if(prob(5))
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 
 	//sometimes our targetting sensors malfunction, and we attack anyone nearby
 	if(prob(disabled ? 0 : 1))
 		if(hostile)
-			src.visible_message("<font color='blue'>\icon[src] [src] retracts several targetting vanes, and dulls it's running lights.</font>")
+			src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] retracts several targetting vanes, and dulls it's running lights.</font>")
 			hostile = 0
 		else
-			src.visible_message("<font color='red'>\icon[src] [src] suddenly lights up, and additional targetting vanes slide into place.</font>")
+			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] suddenly lights up, and additional targetting vanes slide into place.</font>")
 			hostile = 1
 
 	if(health / getMaxHealth() > 0.9)
@@ -123,18 +131,18 @@
 		exploding = 0
 		if(!disabled)
 			if(prob(50))
-				src.visible_message("<font color='blue'>\icon[src] [src] suddenly shuts down!</font>")
+				src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] suddenly shuts down!</font>")
 			else
-				src.visible_message("<font color='blue'>\icon[src] [src] suddenly lies still and quiet.</font>")
+				src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] suddenly lies still and quiet.</font>")
 			disabled = rand(150, 600)
 			walk(src,0)
 
 	if(exploding && prob(20))
 		if(prob(50))
-			src.visible_message("<font color='red'>\icon[src] [src] begins to spark and shake violenty!</font>")
+			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] begins to spark and shake violenty!</font>")
 		else
-			src.visible_message("<font color='red'>\icon[src] [src] sparks and shakes like it's about to explode!</font>")
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] sparks and shakes like it's about to explode!</font>")
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 
@@ -150,36 +158,36 @@
 	..()
 
 //ion rifle!
-/mob/living/simple_animal/hostile/malf_drone/emp_act(severity)
+/mob/living/simple_mob/hostile/malf_drone/emp_act(severity)
 	health -= rand(3,15) * (severity + 1)
 	disabled = rand(150, 600)
 	hostile = 0
 	walk(src,0)
 	..()
 
-/mob/living/simple_animal/hostile/malf_drone/death()
+/mob/living/simple_mob/hostile/malf_drone/death()
 	..(null,"suddenly breaks apart.")
 	qdel(src)
 
-/mob/living/simple_animal/hostile/malf_drone/Destroy()
+/mob/living/simple_mob/hostile/malf_drone/Destroy()
 	//More advanced than the default S_A loot system, for visual effect and random tech levels.
 	if(has_loot)
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
 		var/obj/O
 
 		//shards
-		O = new /obj/item/weapon/material/shard(src.loc)
+		O = new /obj/item/material/shard(src.loc)
 		step_to(O, get_turf(pick(view(7, src))))
 		if(prob(75))
-			O = new /obj/item/weapon/material/shard(src.loc)
+			O = new /obj/item/material/shard(src.loc)
 			step_to(O, get_turf(pick(view(7, src))))
 		if(prob(50))
-			O = new /obj/item/weapon/material/shard(src.loc)
+			O = new /obj/item/material/shard(src.loc)
 			step_to(O, get_turf(pick(view(7, src))))
 		if(prob(25))
-			O = new /obj/item/weapon/material/shard(src.loc)
+			O = new /obj/item/material/shard(src.loc)
 			step_to(O, get_turf(pick(view(7, src))))
 
 		//rods
@@ -209,7 +217,7 @@
 			step_to(O, get_turf(pick(view(7, src))))
 
 		//also drop dummy circuit boards deconstructable for research (loot)
-		var/obj/item/weapon/circuitboard/C
+		var/obj/item/circuitboard/C
 
 		//spawn 1-4 boards of a random type
 		var/spawnees = 0
@@ -280,7 +288,7 @@
 
 // A slightly easier drone, for POIs.
 // Difference is that it should not be faster than you.
-/mob/living/simple_animal/hostile/malf_drone/lesser
+/mob/living/simple_mob/hostile/malf_drone/lesser
 	desc = "An automated combat drone with an aged apperance."
 	returns_home = TRUE
 	move_to_delay = 6

@@ -1,4 +1,4 @@
-/mob/living/simple_animal/mouse
+/mob/living/simple_mob/mouse
 	name = "mouse"
 	real_name = "mouse"
 	desc = "It's a small rodent."
@@ -16,10 +16,10 @@
 	see_in_dark = 6
 	universal_understand = 1
 
-	mob_size = MOB_MINISCULE
+	mob_size = MOB_SMALL
 	pass_flags = PASSTABLE
-	can_pull_size = ITEMSIZE_TINY
-	can_pull_mobs = MOB_PULL_NONE
+//	can_pull_size = ITEMSIZE_TINY
+//	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
 	density = 0
 
@@ -38,18 +38,18 @@
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
 
-	holder_type = /obj/item/weapon/holder/mouse
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
+	holder_type = /obj/item/holder/mouse
+	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/body_color //brown, gray and white, leave blank for random
 
-/mob/living/simple_animal/mouse/Life()
+/mob/living/simple_mob/mouse/Life()
 	. = ..()
 	if(!. || ai_inactive) return
 
 	if(prob(speak_chance))
 		for(var/mob/M in view())
-			M << 'sound/effects/mouse_squeak.ogg'
+			SEND_SOUND(M, sound('sound/effects/mouse_squeak.ogg'))
 
 	if(!resting && prob(0.5))
 		lay_down()
@@ -63,8 +63,8 @@
 		else if(prob(1))
 			audible_emote("snuffles.")
 
-/mob/living/simple_animal/mouse/New()
-	..()
+/mob/living/simple_mob/mouse/Initialize(mapload)
+	. = ..()
 
 	verbs += /mob/living/proc/ventcrawl
 	verbs += /mob/living/proc/hide
@@ -82,7 +82,7 @@
 	icon_rest = "mouse_[body_color]_sleep"
 	desc = "A small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
 
-/mob/living/simple_animal/mouse/proc/splat()
+/mob/living/simple_mob/mouse/proc/splat()
 	src.health = 0
 	src.stat = DEAD
 	src.icon_dead = "mouse_[body_color]_splat"
@@ -92,15 +92,15 @@
 		client.time_died_as_mouse = world.time
 
 
-/mob/living/simple_animal/mouse/Crossed(AM as mob|obj)
+/mob/living/simple_mob/mouse/Crossed(AM as mob|obj)
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color='blue'>\icon[src] Squeek!</font>")
-			M << 'sound/effects/mouse_squeak.ogg'
+			M.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] Squeek!</font>")
+			SEND_SOUND(M, sound('sound/effects/mouse_squeak.ogg'))
 	..()
 
-/mob/living/simple_animal/mouse/death()
+/mob/living/simple_mob/mouse/death()
 	layer = MOB_LAYER
 	playsound(src, 'sound/effects/mouse_squeak_loud.ogg', 35, 1)
 	if(client)
@@ -111,27 +111,27 @@
  * Mouse types
  */
 
-/mob/living/simple_animal/mouse/white
+/mob/living/simple_mob/mouse/white
 	body_color = "white"
 	icon_state = "mouse_white"
 
-/mob/living/simple_animal/mouse/gray
+/mob/living/simple_mob/mouse/gray
 	body_color = "gray"
 	icon_state = "mouse_gray"
 
-/mob/living/simple_animal/mouse/brown
+/mob/living/simple_mob/mouse/brown
 	body_color = "brown"
 	icon_state = "mouse_brown"
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
-/mob/living/simple_animal/mouse/brown/Tom
+/mob/living/simple_mob/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
 
-/mob/living/simple_animal/mouse/brown/Tom/New()
-	..()
+/mob/living/simple_mob/mouse/brown/Tom/init_outfit_decls()
+	. = ..()
 	// Change my name back, don't want to be named Tom (666)
 	name = initial(name)
 
-/mob/living/simple_animal/mouse/cannot_use_vents()
+/mob/living/simple_mob/mouse/cannot_use_vents()
 	return

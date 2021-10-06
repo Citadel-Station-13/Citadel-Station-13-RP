@@ -8,7 +8,7 @@
 	var/list/Lines = list()
 
 	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
-		for(var/client/C in clients)
+		for(var/client/C in GLOB.clients)
 			var/entry = "\t[C.key]"
 			if(C.holder && C.holder.fakekey)
 				entry += " <i>(as [C.holder.fakekey])</i>"
@@ -52,19 +52,19 @@
 
 			Lines += entry
 	else
-		for(var/client/C in clients)
+		for(var/client/C in GLOB.clients)
 			var/entry = "\t"
 			if(C.holder && C.holder.fakekey)
 				entry += "[C.holder.fakekey]"
 			else
 				entry += "[C.key]"
-			var/mob/observer/dead/O = C.mob
-			if(isobserver(O))
-				entry += " - <font color='gray'>Observing</font>"
-			else if(istype(O,/mob/new_player))
-				entry += " - <font color='blue'>In Lobby</font>"
-			else
-				entry += " - <font color='green'>Playing</font>"
+			if(C.is_preference_enabled(/datum/client_preference/show_in_advanced_who))
+				if(isobserver(C.mob))
+					entry += " - <font color='gray'>Observing</font>"
+				else if(istype(C.mob, /mob/new_player))
+					entry += " - <font color=#4F49AF>In Lobby</font>"
+				else
+					entry += " - <font color='#5fe312'>Playing</font>"
 			Lines += entry
 
 	for(var/line in sortList(Lines))

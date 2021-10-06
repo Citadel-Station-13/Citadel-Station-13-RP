@@ -1,15 +1,16 @@
 /obj/item/clothing/suit/storage
-	var/obj/item/weapon/storage/internal/pockets
+	var/obj/item/storage/internal/pockets
+	var/slots = 2
 
-/obj/item/clothing/suit/storage/New()
-	..()
-	pockets = new/obj/item/weapon/storage/internal(src)
-	pockets.max_w_class = ITEMSIZE_SMALL		//fit only pocket sized items
+/obj/item/clothing/suit/storage/Initialize(mapload)
+	. = ..()
+	pockets = new/obj/item/storage/internal(src, slots, ITEMSIZE_SMALL)	// Fit only pocket sized items
+	pockets.max_w_class = ITEMSIZE_SMALL				// Fit only pocket sized items
 	pockets.max_storage_space = ITEMSIZE_COST_SMALL * 2
 
 /obj/item/clothing/suit/storage/Destroy()
-	qdel_null(pockets)
-	return ..()
+	QDEL_NULL(pockets)
+	. = ..()
 
 /obj/item/clothing/suit/storage/attack_hand(mob/user as mob)
 	if (pockets.handle_attack_hand(user))
@@ -21,7 +22,8 @@
 
 /obj/item/clothing/suit/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	pockets.attackby(W, user)
+	if(!(W in accessories))		// Make sure that an accessory wasn't successfully attached to suit.
+		pockets.attackby(W, user)
 
 /obj/item/clothing/suit/storage/emp_act(severity)
 	pockets.emp_act(severity)
@@ -42,14 +44,14 @@
 			open = 0
 			icon_state = initial(icon_state)
 			flags_inv = HIDETIE|HIDEHOLSTER
-			usr << "You button up the coat."
+			to_chat(usr, "You button up the coat.")
 		else if(open == 0)
 			open = 1
 			icon_state = "[icon_state]_open"
 			flags_inv = HIDEHOLSTER
-			usr << "You unbutton the coat."
+			to_chat(usr, "You unbutton the coat.")
 		else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
-			usr << "You attempt to button-up the velcro on your [src], before promptly realising how silly you are."
+			to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
 			return
 		update_clothing_icon()	//so our overlays update
 
@@ -68,22 +70,22 @@
 			open = 0
 			icon_state = initial(icon_state)
 			flags_inv = HIDETIE|HIDEHOLSTER
-			usr << "You button up the coat."
+			to_chat(usr, "You button up the coat.")
 		else if(open == 0)
 			open = 1
 			icon_state = "[icon_state]_open"
 			flags_inv = HIDEHOLSTER
-			usr << "You unbutton the coat."
+			to_chat(usr, "You unbutton the coat.")
 		else //in case some goofy admin switches icon states around without switching the icon_open or icon_closed
-			usr << "You attempt to button-up the velcro on your [src], before promptly realising how silly you are."
+			to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how silly you are.")
 			return
 		update_clothing_icon()	//so our overlays update
 
 
 //New Vest 4 pocket storage and badge toggles, until suit accessories are a thing.
-/obj/item/clothing/suit/storage/vest/heavy/New()
-	..()
-	pockets = new/obj/item/weapon/storage/internal(src)
+/obj/item/clothing/suit/storage/vest/heavy/Initialize(mapload)
+	. = ..()
+	pockets = new/obj/item/storage/internal(src)
 	pockets.max_w_class = ITEMSIZE_SMALL
 	pockets.max_storage_space = ITEMSIZE_COST_SMALL * 4
 
@@ -99,12 +101,12 @@
 
 		if(icon_state == icon_badge)
 			icon_state = icon_nobadge
-			usr << "You conceal \the [src]'s badge."
+			to_chat(usr, "You conceal \the [src]'s badge.")
 		else if(icon_state == icon_nobadge)
 			icon_state = icon_badge
-			usr << "You reveal \the [src]'s badge."
+			to_chat(usr, "You reveal \the [src]'s badge.")
 		else
-			usr << "\The [src] does not have a badge."
+			to_chat(usr, "\The [src] does not have a badge.")
 			return
 		update_clothing_icon()
 

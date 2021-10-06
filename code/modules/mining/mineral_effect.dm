@@ -8,8 +8,13 @@
 	var/ore_key
 	var/image/scanner_image
 
-/obj/effect/mineral/New(var/newloc, var/ore/M)
-	..(newloc)
+// taemp check
+/obj/effect/mineral/New(loc, datum/ore/O)
+	. = ..()
+	ASSERT(O)
+
+/obj/effect/mineral/Initialize(mapload, datum/ore/M)
+	. = ..()
 	name = "[M.display_name] deposit"
 	ore_key = M.name
 	icon_state = "rock_[ore_key]"
@@ -18,9 +23,9 @@
 
 /obj/effect/mineral/proc/get_scan_overlay()
 	if(!scanner_image)
-		var/ore/O = ore_data[ore_key]
+		var/datum/ore/O = GLOB.ore_data[ore_key]
 		if(O)
 			scanner_image = image(icon, loc = get_turf(src), icon_state = (O.scan_icon ? O.scan_icon : icon_state))
 		else
-			world << "No ore data for [src]!"
+			to_chat(world, "No ore data for [src]!")
 	return scanner_image

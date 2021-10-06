@@ -9,10 +9,10 @@
 	power_channel = ENVIRON
 	var/frequency = 0
 	var/id
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 15
 
-/obj/machinery/meter/initialize()
+/obj/machinery/meter/Initialize(mapload)
 	. = ..()
 	if (!target)
 		target = select_target()
@@ -31,7 +31,7 @@
 		P = locate(/obj/machinery/atmospherics/pipe) in loc
 	return P
 
-/obj/machinery/meter/process()
+/obj/machinery/meter/process(delta_time)
 	if(!target)
 		icon_state = "meterX"
 		return 0
@@ -77,37 +77,26 @@
 		radio_connection.post_signal(src, signal)
 
 /obj/machinery/meter/examine(mob/user)
-	var/t = "A gas flow meter. "
-
+	. = ..()
 	if(get_dist(user, src) > 3 && !(istype(user, /mob/living/silicon/ai) || istype(user, /mob/observer/dead)))
-		t += "<span class='warning'>You are too far away to read it.</span>"
+		. += "<span class='warning'>You are too far away to read it.</span>"
 
 	else if(stat & (NOPOWER|BROKEN))
-		t += "<span class='warning'>The display is off.</span>"
+		. += "<span class='warning'>The display is off.</span>"
 
 	else if(src.target)
 		var/datum/gas_mixture/environment = target.return_air()
 		if(environment)
-			t += "The pressure gauge reads [round(environment.return_pressure(), 0.01)] kPa; [round(environment.temperature,0.01)]K ([round(environment.temperature-T0C,0.01)]&deg;C)"
+			. += "The pressure gauge reads [round(environment.return_pressure(), 0.01)] kPa; [round(environment.temperature,0.01)]K ([round(environment.temperature-T0C,0.01)]&deg;C)"
 		else
-			t += "The sensor error light is blinking."
+			. += "The sensor error light is blinking."
 	else
-		t += "The connect error light is blinking."
+		. += "The connect error light is blinking."
 
-	user << t
 
-/obj/machinery/meter/Click()
-
-	if(istype(usr, /mob/living/carbon/human) || istype(usr, /mob/living/silicon/ai)) // ghosts can call ..() for examine
-		var/mob/living/L = usr
-		if(!L.get_active_hand() || !L.Adjacent(src))
-			usr.examinate(src)
-			return 1
-
-	return ..()
 
 /obj/machinery/meter/attackby(var/obj/item/W, var/mob/user)
-	if(iswrench(W))
+	if(W.is_wrench())
 		playsound(src, W.usesound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 		if(do_after(user, 40 * W.toolspeed))
@@ -119,7 +108,7 @@
 			qdel(src)
 			return
 
-	if(ismultitool(W))
+	if(istype(W, /obj/item/multitool))
 		for(var/obj/machinery/atmospherics/pipe/P in loc)
 			pipes_on_turf |= P
 		if(!pipes_on_turf.len)
@@ -137,5 +126,5 @@
 /obj/machinery/meter/turf/select_target()
 	return loc
 
-/obj/machinery/meter/turf/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
+/obj/machinery/meter/turf/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	return

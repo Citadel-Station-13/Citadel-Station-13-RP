@@ -1,4 +1,11 @@
 /mob/living/carbon/human/gib()
+	//Drop the NIF, they're expensive, why not recover them? Also important for prometheans.
+	if(nif)
+		var/obj/item/nif/deadnif = nif //Unimplant removes the reference on the mob
+		deadnif.unimplant(src)
+		deadnif.forceMove(drop_location())
+		deadnif.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/deadnif.w_class))
+		deadnif.wear(10) //Presumably it's gone through some shit if they got gibbed?
 
 	if(vr_holder)
 		exit_vr()
@@ -13,7 +20,12 @@
 	for(var/obj/item/organ/I in internal_organs)
 		I.removed()
 		if(istype(loc,/turf))
-			I.throw_at(get_edge_target_turf(src,pick(alldirs)),rand(1,3),30)
+			I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
+
+	//mirror should drop on gib
+	if(mirror)
+		mirror.forceMove(drop_location())
+		mirror.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/mirror.w_class))
 
 	for(var/obj/item/organ/external/E in src.organs)
 		E.droplimb(0,DROPLIMB_EDGE,1)
@@ -22,33 +34,43 @@
 
 	for(var/obj/item/I in src)
 		drop_from_inventory(I)
-		I.throw_at(get_edge_target_turf(src,pick(alldirs)), rand(1,3), round(30/I.w_class))
+		I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/I.w_class))
 
 	..(species.gibbed_anim) // uses the default mob.dmi file for these, so we only need to specify the first argument
 	gibs(loc, dna, null, species.get_flesh_colour(src), species.get_blood_colour(src))
 
 /mob/living/carbon/human/dust()
+
+	//mirror should drop on dust
+	if(mirror)
+		mirror.forceMove(drop_location())
+
 	if(species)
 		..(species.dusted_anim, species.remains_type)
 	else
 		..()
 
 /mob/living/carbon/human/ash()
+
+	//mirror should drop on ash
+	if(mirror)
+		mirror.forceMove(drop_location())
+
 	if(species)
 		..(species.dusted_anim)
 	else
 		..()
 
 /mob/living/carbon/human/death(gibbed)
-
-	if(stat == DEAD) return
+	if(stat == DEAD)
+		return
 
 	BITSET(hud_updateflag, HEALTH_HUD)
 	BITSET(hud_updateflag, STATUS_HUD)
 	BITSET(hud_updateflag, LIFE_HUD)
 
 	//Handle species-specific deaths.
-	species.handle_death(src)
+	species.handle_death(src, gibbed)
 	animate_tail_stop()
 	stop_flying() //VOREStation Edit.
 
@@ -61,11 +83,11 @@
 
 	//Handle brain slugs.
 	var/obj/item/organ/external/Hd = get_organ(BP_HEAD)
-	var/mob/living/simple_animal/borer/B
+	var/mob/living/simple_mob/animal/borer/B
 
 	if(Hd)
 		for(var/I in Hd.implants)
-			if(istype(I,/mob/living/simple_animal/borer))
+			if(istype(I,/mob/living/simple_mob/animal/borer))
 				B = I
 	if(B)
 		if(!B.ckey && ckey && B.controlling)
@@ -84,9 +106,9 @@
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 80, 1, 1)
 
-	if(ticker && ticker.mode)
+	if(SSticker && SSticker.mode)
 		sql_report_death(src)
-		ticker.mode.check_win()
+		SSticker.mode.check_win()
 
 	if(wearing_rig)
 		wearing_rig.notify_ai("<span class='danger'>Warning: user death event. Mobility control passed to integrated intelligence system.</span>")

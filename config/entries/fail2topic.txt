@@ -1,0 +1,18 @@
+### FAIL2TOPIC:
+### Automated IP bans for world/Topic() spammers
+## Enabled
+FAIL2TOPIC_ENABLED
+## Minimum wait time in deciseconds between valid requests 
+FAIL2TOPIC_RATE_LIMIT 10
+## Number of requests after breaching rate limit that triggers a ban
+FAIL2TOPIC_MAX_FAILS 5
+## Firewall rule name used on physical server
+FAIL2TOPIC_RULE_NAME _dd_fail2topic
+
+## HARD topic limit, even without fail2topic
+TOPIC_MAX_SIZE 1048576
+
+### FAIL2TOPIC WHITELISTING
+## Just list IPs like so:
+# TOPIC_RATE_LIMIT_WHITELIST 351.531.632.145 obviously not valid but you get the point
+TOPIC_RATE_LIMIT_WHITELIST 127.0.0.1

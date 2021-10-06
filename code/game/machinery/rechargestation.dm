@@ -1,3 +1,5 @@
+#define SYNTHETIC_NUTRITION_CHARGE_RATE 15			// amount of cell charge to use per 1 nutrition, given that synthetics are full at 450 nutrition
+
 /obj/machinery/recharge_station
 	name = "cyborg recharging station"
 	desc = "A heavy duty rapid charging system, designed to quickly recharge cyborg power reserves."
@@ -5,11 +7,11 @@
 	icon_state = "borgcharger0"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/recharge_station
-	use_power = 1
-	idle_power_usage = 50
+	circuit = /obj/item/circuitboard/recharge_station
+	use_power = USE_POWER_IDLE
+	idle_power_usage = 10
 	var/mob/occupant = null
-	var/obj/item/weapon/cell/cell = null
+	var/obj/item/cell/cell = null
 	var/icon_update_tick = 0	// Used to rebuild the overlay only once every 10 ticks
 	var/charging = 0
 
@@ -22,14 +24,14 @@
 	var/weld_power_use = 2300	// power used per point of brute damage repaired. 2.3 kW ~ about the same power usage of a handheld arc welder
 	var/wire_power_use = 500	// power used per point of burn damage repaired.
 
-/obj/machinery/recharge_station/New()
-	..()
+/obj/machinery/recharge_station/Initialize(mapload, newdir)
+	. = ..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)
-	component_parts += new /obj/item/weapon/cell/high(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
+	component_parts += new /obj/item/stock_parts/capacitor(src)
+	component_parts += new /obj/item/cell/super(src)
 	component_parts += new /obj/item/stack/cable_coil(src, 5)
 	RefreshParts()
 
@@ -38,7 +40,7 @@
 /obj/machinery/recharge_station/proc/has_cell_power()
 	return cell && cell.percent() > 0
 
-/obj/machinery/recharge_station/process()
+/obj/machinery/recharge_station/process(delta_time)
 	if(stat & (BROKEN))
 		return
 	if(!cell) // Shouldn't be possible, but sanity check
@@ -62,6 +64,8 @@
 
 		recharge_amount = cell.give(recharge_amount)
 		use_power(recharge_amount / CELLRATE)
+	else
+		cell.use(active_power_usage * CELLRATE)
 
 	if(icon_update_tick >= 10)
 		icon_update_tick = 0
@@ -70,19 +74,6 @@
 
 	if(occupant || recharge_amount)
 		update_icon()
-
-//since the recharge station can still be on even with NOPOWER. Instead it draws from the internal cell.
-/obj/machinery/recharge_station/auto_use_power()
-	if(!(stat & NOPOWER))
-		return ..()
-
-	if(!has_cell_power())
-		return 0
-	if(use_power == 1)
-		cell.use(idle_power_usage * CELLRATE)
-	else if(use_power >= 2)
-		cell.use(active_power_usage * CELLRATE)
-	return 1
 
 //Processes the occupant, drawing from the internal power cell if needed.
 /obj/machinery/recharge_station/proc/process_occupant()
@@ -104,29 +95,42 @@
 	else if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 
-		// In case they somehow end up with positive values for otherwise unobtainable damage...
-		if(H.getToxLoss() > 0)
-			H.adjustToxLoss(-(rand(1,3)))
-		if(H.getOxyLoss() > 0)
-			H.adjustOxyLoss(-(rand(1,3)))
-		if(H.getCloneLoss() > 0)
-			H.adjustCloneLoss(-(rand(1,3)))
-		if(H.getBrainLoss() > 0)
-			H.adjustBrainLoss(-(rand(1,3)))
+		if(H.isSynthetic())
+			// In case they somehow end up with positive values for otherwise unobtainable damage...
+			if(H.getToxLoss() > 0)
+				H.adjustToxLoss(-(rand(1,3)))
+			if(H.getOxyLoss() > 0)
+				H.adjustOxyLoss(-(rand(1,3)))
+			if(H.getCloneLoss() > 0)
+				H.adjustCloneLoss(-(rand(1,3)))
+			if(H.getBrainLoss() > 0)
+				H.adjustBrainLoss(-(rand(1,3)))
 
-		// Also recharge their internal battery.
-		if(H.isSynthetic() && H.nutrition < 450)
-			H.nutrition = min(H.nutrition+10, 450)
-			cell.use(7000/450*10)
+			// Also recharge their internal battery.
+			if(H.isSynthetic() && H.nutrition < 450)
+				var/needed = clamp(450 - H.nutrition, 0, 20)
+				var/drained = cell.use(needed * SYNTHETIC_NUTRITION_CHARGE_RATE)
+				H.nutrition += drained / SYNTHETIC_NUTRITION_CHARGE_RATE
 
-		// And clear up radiation
-		if(H.radiation > 0)
-			H.radiation = max(H.radiation - rand(5, 15), 0)
-
+			// And clear up radiation
+			if(H.radiation > 0)
+				H.radiation = max(H.radiation - rand(5, 15), 0)
+		if(H.wearing_rig) // stepping into a borg charger to charge your rig and fix your shit
+			var/obj/item/rig/wornrig = H.get_rig()
+			if(wornrig) // just to make sure
+				for(var/obj/item/rig_module/storedmod in wornrig)
+					if(weld_rate && storedmod.damage != 0 && cell.checked_use(weld_power_use * weld_rate * CELLRATE))
+						to_chat(H, "<span class='notice'>\The [storedmod] is repaired!</span>")
+						storedmod.damage = 0
+				var/obj/item/cell/rigcell = wornrig.get_cell()
+				if(rigcell)
+					var/diff = min(rigcell.maxcharge - rigcell.charge, charging_power * CELLRATE) // Capped by charging_power / tick
+					var/charge_used = cell.use(diff)
+					rigcell.give(charge_used)
 
 /obj/machinery/recharge_station/examine(mob/user)
-	..(user)
-	user << "The charge meter reads: [round(chargepercentage())]%"
+	. = ..()
+	. += "<span class = 'notice'>The charge meter reads: [round(chargepercentage())]%</span>"
 
 /obj/machinery/recharge_station/proc/chargepercentage()
 	if(!cell)
@@ -155,8 +159,8 @@
 			return
 		if(default_part_replacement(user, O))
 			return
-		if (istype(O, /obj/item/weapon/grab) && get_dist(src,user)<2)
-			var/obj/item/weapon/grab/G = O
+		if (istype(O, /obj/item/grab) && get_dist(src,user)<2)
+			var/obj/item/grab/G = O
 			if(istype(G.affecting,/mob/living))
 				var/mob/living/M = G.affecting
 				qdel(O)
@@ -175,12 +179,12 @@
 	var/man_rating = 0
 	var/cap_rating = 0
 
-	for(var/obj/item/weapon/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/weapon/stock_parts/capacitor))
+	for(var/obj/item/stock_parts/P in component_parts)
+		if(istype(P, /obj/item/stock_parts/capacitor))
 			cap_rating += P.rating
-		if(istype(P, /obj/item/weapon/stock_parts/manipulator))
+		if(istype(P, /obj/item/stock_parts/manipulator))
 			man_rating += P.rating
-	cell = locate(/obj/item/weapon/cell) in component_parts
+	cell = locate(/obj/item/cell) in component_parts
 
 	charging_power = 40000 + 40000 * cap_rating
 	restore_power_active = 10000 + 15000 * cap_rating
@@ -254,7 +258,7 @@
 
 	else if(istype(L,  /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
-		if(H.isSynthetic())
+		if(H.isSynthetic() || H.wearing_rig)
 			add_fingerprint(H)
 			H.reset_view(src)
 			H.forceMove(src)
@@ -292,7 +296,7 @@
 
 	if(usr.incapacitated() || !isliving(usr))
 		return
-	
+
 	go_in(usr)
 
 /obj/machinery/recharge_station/ghost_pod_recharger

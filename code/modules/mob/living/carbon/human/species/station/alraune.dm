@@ -2,24 +2,27 @@
 	name = SPECIES_ALRAUNE
 	name_plural = "Alraunes"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	num_alternate_languages = 2
+	num_alternate_languages = 3 //cit lore change
+	language = LANGUAGE_VERNAL
+	species_language = LANGUAGE_VERNAL
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
 	total_health = 100 //standard
 	brute_mod = 1 //nothing special
 	burn_mod = 1.5 //plants don't like fire
+	radiation_mod = 0.7 //cit change: plants seem to be pretty resilient. shouldn't come up much.
 	metabolic_rate = 0.75 // slow metabolism
 	item_slowdown_mod = 0.25 //while they start slow, they don't get much slower
 	bloodloss_rate = 0.1 //While they do bleed, they bleed out VERY slowly
 	min_age = 18
-	max_age = 250
+	max_age = 500 //cit lore change
 	health_hud_intensity = 1.5
 	base_species = SPECIES_ALRAUNE
 	selects_bodytype = TRUE
 
 	body_temperature = T20C
-	breath_type = "carbon_dioxide"
-	poison_type = "phoron"
-	exhale_type = "oxygen"
+	breath_type = /datum/gas/carbon_dioxide
+	poison_type = /datum/gas/phoron
+	exhale_type = /datum/gas/oxygen
 
 	// Heat and cold resistances are 20 degrees broader on the level 1 range, level 2 is default, level 3 is much weaker, halfway between L2 and normal L3.
 	// Essentially, they can tolerate a broader range of comfortable temperatures, but suffer more at extremes.
@@ -41,7 +44,7 @@
 	breath_heat_level_2 = 450
 	breath_heat_level_3 = 800 //lower incineration threshold though
 
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED // whitelist only while WIP
+	spawn_flags = SPECIES_CAN_JOIN
 	flags = NO_SCAN | IS_PLANT | NO_MINOR_CUT
 	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
@@ -50,7 +53,10 @@
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/bloodsuck,
-		/mob/living/carbon/human/proc/alraune_fruit_select) //Give them the voremodes related to wrapping people in vines and sapping their fluids
+		/mob/living/carbon/human/proc/regenerate,
+		/mob/living/carbon/human/proc/alraune_fruit_select,
+		/mob/living/carbon/human/proc/tie_hair
+		) //Give them the voremodes related to wrapping people in vines and sapping their fluids
 
 	color_mult = 1
 	icobase = 'icons/mob/human_races/r_human_vr.dmi'
@@ -59,27 +65,27 @@
 	blood_color = "#edf4d0" //sap!
 	base_color = "#1a5600"
 
-	blurb = "Alraunes are a rare sight in space. Their bodies are reminiscent of that of plants, and yet they share many\
-	traits with other humanoid beings.\
+	reagent_tag = IS_ALRAUNE
+
+	blurb = "Alraunes are an uncommon sight in space. Their bodies are reminiscent of that of plants, and yet they share many\
+	traits with other humanoid beings, occasionally mimicking their forms to lure in prey.\
 	\
-	Most Alraunes are not interested in traversing space, their heavy preference for natural environments and general\
-	disinterest in things outside it keeps them as a species at a rather primal stage.\
+	Most Alraune are rather opportunistic in nature, being primarily self-serving; however, this does not mean they are selfish or unable to empathise with others.\
 	\
-	However, after their discovery by the angels of Sanctum, many alraunes succumbed to their curiosity, and took the offer\
-	to learn of the world and venture out, whether it's to Sanctum, or elsewhere in the galaxy."
+	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset."
 
 	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+		BP_TORSO =  list("path" = /obj/item/organ/external/chest/unbreakable/plant),
+		BP_GROIN =  list("path" = /obj/item/organ/external/groin/unbreakable/plant),
+		BP_HEAD =   list("path" = /obj/item/organ/external/head/unbreakable/plant),
+		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/unbreakable/plant),
+		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right/unbreakable/plant),
+		BP_L_LEG =  list("path" = /obj/item/organ/external/leg/unbreakable/plant),
+		BP_R_LEG =  list("path" = /obj/item/organ/external/leg/right/unbreakable/plant),
+		BP_L_HAND = list("path" = /obj/item/organ/external/hand/unbreakable/plant),
+		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right/unbreakable/plant),
+		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/plant),
+		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/plant) //cit change - unbreakable, can survive decapitation, but damage spreads to nearby neighbors when at max dmg.
 		)
 
 	// limited organs, 'cause they're simple
@@ -111,7 +117,7 @@
 	var/fullysealed = FALSE //if they're wearing a fully sealed suit, their internals take priority.
 	var/environmentalair = FALSE //if no sealed suit, internals take priority in low pressure environements
 
-	if(H.wear_suit && (H.wear_suit.item_flags & STOPPRESSUREDAMAGE) && H.head && (H.head.item_flags & STOPPRESSUREDAMAGE))
+	if(H.wear_suit && (H.wear_suit.min_pressure_protection = 0) && H.head && (H.head.min_pressure_protection = 0))
 		fullysealed = TRUE
 	else // find out if local gas mixture is enough to override use of internals
 		var/datum/gas_mixture/environment = H.loc.return_air()
@@ -140,7 +146,7 @@
 
 	if(!breath || (breath.total_moles == 0))
 		H.failed_last_breath = 1
-		if(H.health > config.health_threshold_crit)
+		if(H.health > config_legacy.health_threshold_crit)
 			H.adjustOxyLoss(ALRAUNE_MAX_OXYLOSS)
 		else
 			H.adjustOxyLoss(ALRAUNE_CRIT_MAX_OXYLOSS)
@@ -207,7 +213,7 @@
 
 	var/co2buff = 0
 	if(inhaling)
-		co2buff = (Clamp(inhale_pp, 0, minimum_breath_pressure))/minimum_breath_pressure //returns a value between 0 and 1.
+		co2buff = (clamp(inhale_pp, 0, minimum_breath_pressure))/minimum_breath_pressure //returns a value between 0 and 1.
 
 	var/light_amount = fullysealed ? H.getlightlevel() : H.getlightlevel()/5 // if they're covered, they're not going to get much light on them.
 
@@ -222,15 +228,15 @@
 	if(toxins_pp > safe_toxins_max)
 		var/ratio = (poison/safe_toxins_max) * 10
 		if(H.reagents)
-			H.reagents.add_reagent("toxin", Clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
+			H.reagents.add_reagent("toxin", clamp(ratio, MIN_TOXIN_DAMAGE, MAX_TOXIN_DAMAGE))
 			breath.adjust_gas(poison_type, -poison/6, update = 0) //update after
 		H.phoron_alert = max(H.phoron_alert, 1)
 	else
 		H.phoron_alert = 0
 
 	// If there's some other shit in the air lets deal with it here.
-	if(breath.gas["sleeping_agent"])
-		var/SA_pp = (breath.gas["sleeping_agent"] / breath.total_moles) * breath_pressure
+	if(breath.gas[/datum/gas/nitrous_oxide])
+		var/SA_pp = (breath.gas[/datum/gas/nitrous_oxide] / breath.total_moles) * breath_pressure
 
 		// Enough to make us paralysed for a bit
 		if(SA_pp > SA_para_min)
@@ -246,7 +252,7 @@
 		else if(SA_pp > 0.15)
 			if(prob(20))
 				spawn(0) H.emote(pick("giggle", "laugh"))
-		breath.adjust_gas("sleeping_agent", -breath.gas["sleeping_agent"]/6, update = 0) //update after
+		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
 
 	// Were we able to breathe?
 	if (failed_inhale || failed_exhale)
@@ -302,7 +308,7 @@
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
 		if (temp_adj < BODYTEMP_COOLING_MAX) temp_adj = BODYTEMP_COOLING_MAX
-		//world << "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]"
+		//to_chat(world, "Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]")
 		H.bodytemperature += temp_adj
 
 	else if(breath.temperature >= heat_discomfort_level)
@@ -359,12 +365,11 @@
 	var/mob/organ_owner = null
 	var/gen_cost = 0.5
 
-/obj/item/organ/internal/fruitgland/New()
-	..()
+/obj/item/organ/internal/fruitgland/Initialize(mapload)
+	. = ..()
 	create_reagents(usable_volume)
 
-
-/obj/item/organ/internal/fruitgland/process()
+/obj/item/organ/internal/fruitgland/process(delta_time)
 	if(!owner) return
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 	var/before_gen
@@ -387,9 +392,9 @@
 
 
 /mob/living/carbon/human/proc/alraune_fruit_select() //So if someone doesn't want fruit/vegetables, they don't have to select one.
-	set name = "Select fruit"
+	set name = "Select Fruit"
 	set desc = "Select what fruit/vegetable you wish to grow."
-	set category = "Object"
+	set category = "Abilities"
 	var/obj/item/organ/internal/fruitgland/fruit_gland
 	for(var/F in contents)
 		if(istype(F, /obj/item/organ/internal/fruitgland))
@@ -458,7 +463,7 @@
 	if(ispath(to_copy))
 		to_copy = "[initial(to_copy.name)]"
 	if(istext(to_copy))
-		to_copy = all_species[to_copy]
+		to_copy = GLOB.all_species[to_copy]
 
 	var/datum/species/alraune/new_copy = new()
 
@@ -494,5 +499,5 @@
 	return base_species
 
 /datum/species/alraune/get_race_key()
-	var/datum/species/real = all_species[base_species]
+	var/datum/species/real = GLOB.all_species[base_species]
 	return real.race_key

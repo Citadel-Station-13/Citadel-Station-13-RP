@@ -2,7 +2,7 @@
 
 //Start of a breath chain, calls breathe()
 /mob/living/carbon/handle_breathing()
-	if(air_master.current_cycle%4==2 || failed_last_breath || (health < config.health_threshold_crit)) 	//First, resolve location and get a breath
+	if(air_master.current_cycle%4==2 || failed_last_breath || (health < config_legacy.health_threshold_crit)) 	//First, resolve location and get a breath
 		breathe()
 
 /mob/living/carbon/proc/breathe()
@@ -12,7 +12,7 @@
 	var/datum/gas_mixture/breath = null
 
 	//First, check if we can breathe at all
-	if(health < config.health_threshold_crit && !(CE_STABLE in chem_effects)) //crit aka circulatory shock
+	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects)) //crit aka circulatory shock
 		AdjustLosebreath(1)
 
 	if(losebreath>0) //Suffocating so do not take a breath
@@ -44,7 +44,7 @@
 	if(internal)
 		if (!contents.Find(internal))
 			internal = null
-		if (!(wear_mask && (wear_mask.item_flags & AIRTIGHT)))
+		if (!(wear_mask && (wear_mask.item_flags & ALLOWINTERNALS)))
 			internal = null
 		if(internal)
 			if (internals)
@@ -80,7 +80,7 @@
 	if(wear_mask && (wear_mask.item_flags & BLOCK_GAS_SMOKE_EFFECT))
 		return
 
-	for(var/obj/effect/effect/smoke/chem/smoke in view(1, src))
+	for(var/obj/effect/smoke/chem/smoke in view(1, src))
 		if(smoke.reagents.total_volume)
 			smoke.reagents.trans_to_mob(src, 10, CHEM_INGEST, copy = 1)
 			//maybe check air pressure here or something to see if breathing in smoke is even possible.

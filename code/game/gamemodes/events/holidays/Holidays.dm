@@ -1,4 +1,4 @@
-//Uncommenting ALLOW_HOLIDAYS in config.txt will enable Holidays
+//Uncommenting ALLOW_HOLIDAYS in config_legacy.txt will enable Holidays
 var/global/list/Holiday = list() //Holidays are lists now, so we can have more than one holiday at the same time (hey, you never know).
 
 //Just thinking ahead! Here's the foundations to a more robust Holiday event system.
@@ -106,13 +106,13 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 		if(6)	//Jun
 			switch(DD)
 				if(6)
-					Holiday["Sapient Rights Day"] = "This holiday celebrates the passing of the Declaration of Sapient Rights by SolGov, which guarantees the \
+					Holiday["Sapient Rights Day"] = "This holiday celebrates the passing of the Declaration of Sapient Rights by OriCon, which guarantees the \
 					same protections humans are granted to all sapient, living species."
 				if(14)
 					Holiday["Blood Donor Day"] = "This holiday was created to raise awareness of the need for safe blood and blood products, \
 					and to thank blood donors for their voluntary, life-saving gifts of blood."
 				if(20)
-					Holiday["Civil Servant's Day"] = "Civil Servant's Day is a holiday observed in SCG member states that honors civil servants everywhere,\
+					Holiday["Civil Servant's Day"] = "Civil Servant's Day is a holiday observed in OCG member states that honors civil servants everywhere,\
 +					(especially those who are members of the armed forces and the emergency services), or have been or have been civil servants in the past."
 
 		if(7)	//Jul
@@ -127,7 +127,7 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 		if(8)	//Aug
 			switch(DD)
 //				if(10)
-//					Holiday["S'randarr's Day"] = "A Tajaran holiday that occurs on the longest day of the year in summer, \
+//					Holiday["S'randarr's Day"] = "A Tajaran holiday that occurs on the longest day of the year in summer,
 //					on Ahdomai. It is named after the Tajaran deity of Light, and huge celebrations are common."
 //VOREStation Add - Of course we need this.
 				if(8)
@@ -168,9 +168,9 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 					community, focusing on the positive power and the common thread of kindness which binds humanity and \
 					friends together."
 //				if(28) //Space thanksgiving.
-//					Holiday["Appreciation Day"] = "Originally an old holiday from Earth, Appreciation Day follows many of the \
-					traditions that its predecessor did, such as having a large feast (turkey often included), gathering with family, and being thankful \
-					for what one has in life."
+//					Holiday["Appreciation Day"] = "Originally an old holiday from Earth, Appreciation Day follows many of the
+//					traditions that its predecessor did, such as having a large feast (turkey often included), gathering with family, and being thankful
+//					for what one has in life."
 			if(28 > DD > 20)
 				if(time2text(world.timeofday, "Day") == "Thursday")
 					Holiday["Thanksgiving"] = "Originally an old holiday from Earth, Thanksgiving follows many of the \
@@ -182,7 +182,7 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 				if(10)
 					Holiday["Human-Rights Day"] = "An old holiday created by an intergovernmental organization known back than as the United Nations, \
 					human rights were not recognized globally at the time, and the holiday was made in honor of the Universal Declaration of Human Rights.  \
-					These days, SolGov ensures that past efforts were not in vein, and continues to honor this holiday across the galaxy."
+					These days, OriCon ensures that past efforts were not in vain, and continues to honor this holiday across the galaxy."
 				if(22)
 					Holiday["Vertalliq-qixim"] = "A Skrellian holiday that celebrates the Skrell's first landing on one of \
 					their moons.  It's often celebrated with grand festivals."
@@ -237,11 +237,11 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 			holidays.Add(p)
 			holiday_blurbs.Add("[Holiday[p]]")
 		var/holidays_string = english_list(holidays, nothing_text = "nothing", and_text = " and ", comma_text = ", ", final_comma_text = "" )
-		world << "<font color='blue'>and...</font>"
-		world << "<h4>Happy [holidays_string] Everybody!</h4>"
+		to_chat(world, "<font color=#4F49AF>and...</font>")
+		to_chat(world, "<h4>Happy [holidays_string] Everybody!</h4>")
 		if(holiday_blurbs.len != 0)
 			for(var/blurb in holiday_blurbs)
-				world << "<div align='center'><font color='blue'>[blurb]</font></div>"
+				to_chat(world, "<div align='center'><font color=#4F49AF>[blurb]</font></div>")
 		switch(Holiday)			//special holidays
 			if("Easter")
 				//do easter stuff
@@ -252,7 +252,7 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 
 //Nested in the random events loop. Will be triggered every 2 minutes
 /proc/Holiday_Random_Event()
-	if(isemptylist(Holiday))
+	if(!length(Holiday))
 		return 0
 	switch(Holiday)			//special holidays
 		if("Easter")		//I'll make this into some helper procs at some point
@@ -263,12 +263,12 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 			var/turf/simulated/floor/F = Floorlist[rand(1,Floorlist.len)]
 			Floorlist = null
 			var/obj/structure/closet/C = locate(/obj/structure/closet) in F
-			var/obj/item/weapon/reagent_containers/food/snacks/chocolateegg/wrapped/Egg
+			var/obj/item/reagent_containers/food/snacks/chocolateegg/wrapped/Egg
 			if( C )			Egg = new(C)
 			else			Egg = new(F)
 */
 /*			var/list/obj/containers = list()
-			for(var/obj/item/weapon/storage/S in world)
+			for(var/obj/item/storage/S in world)
 				if(isNotStationLevel(S.z))	continue
 				containers += S
 

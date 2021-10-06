@@ -5,13 +5,13 @@
 	icon_state = "control"
 	anchored = 1
 	density = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 100
 	active_power_usage = 1000
 
 	var/list/obj/machinery/am_shielding/linked_shielding
 	var/list/obj/machinery/am_shielding/linked_cores
-	var/obj/item/weapon/am_containment/fueljar
+	var/obj/item/am_containment/fueljar
 	var/update_shield_icons = 0
 	var/stability = 100
 	var/exploding = 0
@@ -29,19 +29,17 @@
 	var/stored_power = 0//Power to deploy per tick
 
 
-/obj/machinery/power/am_control_unit/New()
-	..()
+/obj/machinery/power/am_control_unit/Initialize(mapload, newdir)
+	. = ..()
 	linked_shielding = list()
 	linked_cores = list()
-
 
 /obj/machinery/power/am_control_unit/Destroy()//Perhaps damage and run stability checks rather than just qdel on the others
 	for(var/obj/machinery/am_shielding/AMS in linked_shielding)
 		qdel(AMS)
-	..()
+	return ..()
 
-
-/obj/machinery/power/am_control_unit/process()
+/obj/machinery/power/am_control_unit/process(delta_time)
 	if(exploding)
 		explosion(get_turf(src),8,12,18,12)
 		if(src) qdel(src)
@@ -140,7 +138,7 @@
 
 /obj/machinery/power/am_control_unit/attackby(obj/item/W, mob/user)
 	if(!istype(W) || !user) return
-	if(istype(W, /obj/item/weapon/wrench))
+	if(W.is_wrench())
 		if(!anchored)
 			playsound(src, W.usesound, 75, 1)
 			user.visible_message("[user.name] secures the [src.name] to the floor.", \
@@ -156,12 +154,12 @@
 			src.anchored = 0
 			disconnect_from_network()
 		else
-			user << "<font color='red'>Once bolted and linked to a shielding unit it the [src.name] is unable to be moved!</font>"
+			to_chat(user, "<font color='red'>Once bolted and linked to a shielding unit it the [src.name] is unable to be moved!</font>")
 		return
 
-	if(istype(W, /obj/item/weapon/am_containment))
+	if(istype(W, /obj/item/am_containment))
 		if(fueljar)
-			user << "<font color='red'>There is already a [fueljar] inside!</font>"
+			to_chat(user, "<font color='red'>There is already a [fueljar] inside!</font>")
 			return
 		fueljar = W
 		user.remove_from_mob(W)
@@ -211,10 +209,10 @@
 /obj/machinery/power/am_control_unit/proc/toggle_power()
 	active = !active
 	if(active)
-		use_power = 2
+		update_use_power(USE_POWER_ACTIVE)
 		visible_message("The [src.name] starts up.")
 	else
-		use_power = 1
+		update_use_power(USE_POWER_IDLE)
 		visible_message("The [src.name] shuts down.")
 	update_icon()
 	return

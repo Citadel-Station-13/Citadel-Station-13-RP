@@ -48,7 +48,7 @@
 
 /obj/item/blueprints/attack_self(mob/M as mob)
 	if (!istype(M,/mob/living/carbon/human))
-		M << "This stack of blue paper means nothing to you." //monkeys cannot into projecting
+		to_chat(M, "This stack of blue paper means nothing to you.") //monkeys cannot into projecting
 		return
 	interact()
 	return
@@ -62,19 +62,19 @@
 	switch(href_list["action"])
 		if ("create_area")
 			if (!(get_area_type() & can_create_areas_in))
-				usr << "<span class='danger'>You can't make a new area here.</span>"
+				to_chat(usr, "<span class='danger'>You can't make a new area here.</span>")
 				interact()
 				return
 			create_area()
 		if ("edit_area")
 			if (!(get_area_type() & can_rename_areas_in))
-				usr << "<span class='danger'>You can't rename this area.</span>"
+				to_chat(usr, "<span class='danger'>You can't rename this area.</span>")
 				interact()
 				return
 			edit_area()
 		if ("expand_area")
 			if (!(get_area_type() & can_expand_areas_in))
-				usr << "<span class='danger'>You can't expand this area.</span>"
+				to_chat(usr, "<span class='danger'>You can't expand this area.</span>")
 				interact()
 				return
 			expand_area()
@@ -83,7 +83,7 @@
 	var/area/A = get_area()
 	var/text = {"<HTML><head><title>[src]</title></head><BODY>
 <h2>[station_name()] blueprints</h2>
-<small>Property of [using_map.company_name]. For heads of staff only. Store in high-secure storage.</small><hr>
+<small>Property of [GLOB.using_map.company_name]. For heads of staff only. Store in high-secure storage.</small><hr>
 "}
 	var/curAreaType = get_area_type()
 	switch (curAreaType)
@@ -132,20 +132,20 @@
 	if(!istype(res,/list))
 		switch(res)
 			if(ROOM_ERR_SPACE)
-				usr << "<span class='warning'>The new area must be completely airtight!</span>"
+				to_chat(usr, "<span class='warning'>The new area must be completely airtight!</span>")
 				return
 			if(ROOM_ERR_TOOLARGE)
-				usr << "<span class='warning'>The new area too large!</span>"
+				to_chat(usr, "<span class='warning'>The new area too large!</span>")
 				return
 			else
-				usr << "<span class='warning'>Error! Please notify administration!</span>"
+				to_chat(usr, "<span class='warning'>Error! Please notify administration!</span>")
 				return
 	var/list/turf/turfs = res
 	var/str = sanitizeSafe(input("New area name:","Blueprint Editing", ""), MAX_NAME_LEN)
 	if(!str || !length(str)) //cancel
 		return
 	if(length(str) > 50)
-		usr << "<span class='warning'>Name too long.</span>"
+		to_chat(usr, "<span class='warning'>Name too long.</span>")
 		return
 	var/area/A = new
 	A.name = str
@@ -154,6 +154,7 @@
 	A.power_environ = 0
 	A.always_unpowered = 0
 	move_turfs_to_area(turfs, A)
+	A.addSorted()
 
 	A.always_unpowered = 0
 
@@ -170,13 +171,13 @@
 	if(!istype(res,/list))
 		switch(res)
 			if(ROOM_ERR_SPACE)
-				usr << "<span class='warning'>The new area must be completely airtight!</span>"
+				to_chat(usr, "<span class='warning'>The new area must be completely airtight!</span>")
 				return
 			if(ROOM_ERR_TOOLARGE)
-				usr << "<span class='warning'>The new area too large!</span>"
+				to_chat(usr, "<span class='warning'>The new area too large!</span>")
 				return
 			else
-				usr << "<span class='warning'>Error! Please notify administration!</span>"
+				to_chat(usr, "<span class='warning'>Error! Please notify administration!</span>")
 				return
 	var/list/turf/turfs = res
 
@@ -184,11 +185,11 @@
 	for(var/turf/T in A.contents)
 		turfs -= T // Don't add turfs already in A to A
 	if(turfs.len == 0)
-		usr << "<span class='warning'>\The [A] already covers the entire room.</span>"
+		to_chat(usr, "<span class='warning'>\The [A] already covers the entire room.</span>")
 		return
 
 	move_turfs_to_area(turfs, A)
-	usr << "<span class='notice'>Expanded \the [A] by [turfs.len] turfs</span>"
+	to_chat(usr, "<span class='notice'>Expanded \the [A] by [turfs.len] turfs</span>")
 	spawn(5)
 		interact()
 	return
@@ -206,11 +207,11 @@
 	if(!str || !length(str) || str==prevname) //cancel
 		return
 	if(length(str) > 50)
-		usr << "<span class='warning'>Text too long.</span>"
+		to_chat(usr, "<span class='warning'>Text too long.</span>")
 		return
 	set_area_machinery_title(A,str,prevname)
 	A.name = str
-	usr << "<span class='notice'>You set the area '[prevname]' title to '[str]'.</span>"
+	to_chat(usr, "<span class='notice'>You set the area '[prevname]' title to '[str]'.</span>")
 	interact()
 	return
 
@@ -252,7 +253,7 @@
 			return ROOM_ERR_TOOLARGE
 		var/turf/T = pending[1] //why byond havent list::pop()?
 		pending -= T
-		for (var/dir in cardinal)
+		for (var/dir in GLOB.cardinal)
 			var/turf/NT = get_step(T,dir)
 			if (!isturf(NT) || (NT in found) || (NT in pending))
 				continue
@@ -286,15 +287,15 @@
 	// Remove any existing
 	seeAreaColors_remove()
 
-	usr << "<span class='notice'>\The [src] shows nearby areas in different colors.</span>"
+	to_chat(usr, "<span class='notice'>\The [src] shows nearby areas in different colors.</span>")
 	var/i = 0
 	for(var/area/A in range(usr))
 		if(get_area_type(A) == AREA_SPACE)
 			continue // Don't overlay all of space!
 		var/icon/areaColor = new('icons/misc/debug_rebuild.dmi', "[++i]")
-		usr << "- [A] as [i]"
+		to_chat(usr, "- [A] as [i]")
 		for(var/turf/T in A.contents)
-			usr << image(areaColor, T, "blueprints", TURF_LAYER)
+			SEND_IMAGE(usr, image(areaColor, T, "blueprints", TURF_LAYER))
 			areaColor_turfs += T
 
 /obj/item/blueprints/verb/seeRoomColors()
@@ -308,21 +309,21 @@
 	if(!istype(res, /list))
 		switch(res)
 			if(ROOM_ERR_SPACE)
-				usr << "<span class='warning'>The new area must be completely airtight!</span>"
+				to_chat(usr, "<span class='warning'>The new area must be completely airtight!</span>")
 				return
 			if(ROOM_ERR_TOOLARGE)
-				usr << "<span class='warning'>The new area too large!</span>"
+				to_chat(usr, "<span class='warning'>The new area too large!</span>")
 				return
 			else
-				usr << "<span class='danger'>Error! Please notify administration!</span>"
+				to_chat(usr, "<span class='danger'>Error! Please notify administration!</span>")
 				return
 	// Okay we got a room, lets color it
 	seeAreaColors_remove()
 	var/icon/green = new('icons/misc/debug_group.dmi', "green")
 	for(var/turf/T in res)
-		usr << image(green, T, "blueprints", TURF_LAYER)
+		SEND_IMAGE(usr, image(green, T, "blueprints", TURF_LAYER))
 		areaColor_turfs += T
-	usr << "<span class='notice'>The space covered by the new area is highlighted in green.</span>"
+	to_chat(usr, "<span class='notice'>The space covered by the new area is highlighted in green.</span>")
 
 /obj/item/blueprints/verb/seeAreaColors_remove()
 	set src in usr

@@ -164,14 +164,13 @@
 			return "hulk_[fat]_s"
 		else
 			return "hulk_[g]_s"
-		return 0
 
 	OnMobLife(var/mob/living/carbon/human/M)
 		if(!istype(M)) return
 		if(M.health <= 25)
 			M.mutations.Remove(HULK)
 			M.update_mutations()		//update our mutation overlays
-			M << "<span class='warning'>You suddenly feel very weak.</span>"
+			to_chat(M, "<span class='warning'>You suddenly feel very weak.</span>")
 			M.Weaken(3)
 			M.emote("collapse")
 

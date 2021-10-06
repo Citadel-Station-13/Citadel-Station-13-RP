@@ -1,14 +1,13 @@
-//#define TESTING
-#if DM_VERSION < 506
-#warn This compiler is out of date. You may experience issues with projectile animations.
-#endif
+
+//duck you byond
+var/global/image/stringbro = new() // Temporarily super-global because of BYOND init order dumbness.
+var/global/image/iconbro = new() // Temporarily super-global because of BYOND init order dumbness.
+var/global/image/appearance_bro = new() // Temporarily super-global because of BYOND init order dumbness.
 
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
-var/global/list/all_areas                = list()
 var/global/list/machines                 = list()	// ALL Machines, wether processing or not.
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
-var/global/list/processing_objects       = list()
 var/global/list/processing_power_items   = list()	// TODO - Move into SSmachines
 var/global/list/active_diseases          = list()
 var/global/list/hud_icon_reference       = list()
@@ -22,11 +21,6 @@ var/global/list/global_map = null
 
 // Noises made when hit while typing.
 var/list/hit_appends	= list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
-var/log_path			= "data/logs/" //See world.dm for the full calculated path
-var/diary				= null
-var/error_log			= null
-var/debug_log			= null
-var/href_logfile		= null
 // var/station_name		= "Northern Star"
 // var/const/station_orig	= "Northern Star" //station_name can't be const due to event prefix/suffix
 // var/const/station_short	= "Northern Star"
@@ -37,10 +31,8 @@ var/href_logfile		= null
 // var/const/company_short	= "NT"
 // var/const/star_name		= "Vir"
 // var/const/starsys_name	= "Vir"
-var/const/game_version	= "VOREStation"
-var/changelog_hash		= ""
+var/const/game_version	= "Citadel Station RP"
 var/game_year			= (text2num(time2text(world.realtime, "YYYY")) + 544)
-var/round_progressing = 1
 
 var/master_mode       = "extended" // "extended"
 var/secret_force_mode = "secret"   // if this is anything but "secret", the secret rotation will forceably choose this mode.
@@ -79,19 +71,7 @@ var/list/prisonwarped       = list() // List of players already warped.
 var/list/blobstart          = list()
 var/list/ninjastart         = list()
 
-var/list/cardinal    = list(NORTH, SOUTH, EAST, WEST)
-var/list/cardinalz   = list(NORTH, SOUTH, EAST, WEST, UP, DOWN)
-var/list/cornerdirs  = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
-var/list/cornerdirsz = list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST, NORTH|UP, EAST|UP, WEST|UP, SOUTH|UP, NORTH|DOWN, EAST|DOWN, WEST|DOWN, SOUTH|DOWN)
-var/list/alldirs     = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
-var/list/reverse_dir = list( // reverse_dir[dir] = reverse of dir
-	 2,  1,  3,  8, 10,  9, 11,  4,  6,  5,  7, 12, 14, 13, 15, 32, 34, 33, 35, 40, 42,
-	41, 43, 36, 38, 37, 39, 44, 46, 45, 47, 16, 18, 17, 19, 24, 26, 25, 27, 20, 22, 21,
-	23, 28, 30, 29, 31, 48, 50, 49, 51, 56, 58, 57, 59, 52, 54, 53, 55, 60, 62, 61, 63
-)
-
-var/datum/configuration/config      = null
-var/datum/sun/sun                   = null
+var/datum/configuration_legacy/config_legacy      = null
 
 var/list/combatlog = list()
 var/list/IClog     = list()
@@ -100,7 +80,6 @@ var/list/adminlog  = list()
 
 var/list/powernets = list()	// TODO - Move into SSmachines
 
-var/Debug2 = 0
 var/datum/debug/debugobj
 
 var/datum/moduletypes/mods = new()
@@ -109,28 +88,12 @@ var/gravity_is_on = 1
 
 var/join_motd = null
 
-var/datum/nanomanager/nanomanager		= new() // NanoManager, the manager for Nano UIs.
-var/datum/event_manager/event_manager	= new() // Event Manager, the manager for events.
-var/datum/game_master/game_master = new() // Game Master, an AI for choosing events.
 var/datum/metric/metric = new() // Metric datum, used to keep track of the round.
 
 var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
 
-// MySQL configuration
-var/sqladdress = "localhost"
-var/sqlport    = "3306"
-var/sqldb      = "tgstation"
-var/sqllogin   = "root"
-var/sqlpass    = ""
-
-// Feedback gathering sql connection
-var/sqlfdbkdb    = "test"
-var/sqlfdbklogin = "root"
-var/sqlfdbkpass  = ""
-var/sqllogging   = 0 // Should we log deaths, population stats, etc.?
-
 // Forum MySQL configuration. (for use with forum account/key authentication)
-// These are all default values that will load should the forumdbconfig.txt file fail to read for whatever reason.
+// These are all default values that will load should the forumdbconfig_legacy.txt file fail to read for whatever reason.
 var/forumsqladdress = "localhost"
 var/forumsqlport    = "3306"
 var/forumsqldb      = "tgstation"
@@ -158,7 +121,7 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
-	"Standard", "Engineering", "Surgeon",  "Crisis",
+	"Standard", "Engineering", "Medical",
 	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
 	"Research"
 )
@@ -187,10 +150,7 @@ var/static/list/scarySounds = list(
 // Bomb cap!
 var/max_explosion_range = 14
 
-// Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
-var/global/obj/item/device/radio/intercom/omni/global_announcer = new /obj/item/device/radio/intercom/omni(null)
-
-var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Civilian")
+var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Exploration", "Civilian") //VOREStation Edit
 
 //Icons for in-game HUD glasses. Why don't we just share these a little bit?
 var/static/icon/ingame_hud = icon('icons/mob/hud.dmi')
@@ -199,3 +159,62 @@ var/static/icon/ingame_hud_med = icon('icons/mob/hud_med.dmi')
 //Keyed list for caching icons so you don't need to make them for records, IDs, etc all separately.
 //Could be useful for AI impersonation or something at some point?
 var/static/list/cached_character_icons = list()
+
+//VR FILE MERGE BELOW
+
+/hook/startup/proc/modules_vr()
+	robot_module_types += "Medihound"
+	robot_module_types += "K9"
+	robot_module_types += "Janihound"
+	robot_module_types += "Sci-Hound"
+	robot_module_types += "Pupdozer"
+	return 1
+
+var/list/shell_module_types = list(
+	"Standard", "Service", "Clerical"
+)
+
+var/list/eventdestinations = list() // List of scatter landmarks for VOREStation event portals
+
+var/global/list/acceptable_fruit_types= list(
+											"ambrosia",
+											"apple",
+											"banana",
+											"berries",
+											"cabbage",
+											"carrot",
+											"celery",
+											"cherry",
+											"chili",
+											"cocoa",
+											"corn",
+											"durian",
+											"eggplant",
+											"grapes",
+											"greengrapes",
+											"harebells",
+											"lavender",
+											"lemon",
+											"lettuce",
+											"lime",
+											"onion",
+											"orange",
+											"peanut",
+											"poppies",
+											"potato",
+											"pumpkin",
+											"rice",
+											"rose",
+											"rhubarb",
+											"soybean",
+											"spineapple",
+											"sugarcane",
+											"sunflowers",
+											"tomato",
+											"vanilla",
+											"watermelon",
+											"wheat",
+											"whitebeet")
+
+var/global/list/acceptable_nectar_types= list(
+											"waxcomb (honey)")

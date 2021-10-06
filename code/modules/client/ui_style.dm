@@ -42,14 +42,15 @@ var/global/list/all_tooltip_styles = list(
 
 	if(!ishuman(usr))
 		if(!isrobot(usr))
-			usr << "<span class='warning'>You must be a human or a robot to use this verb.</span>"
+			to_chat(usr, "<span class='warning'>You must be a human or a robot to use this verb.</span>")
 			return
 
 	var/UI_style_new = input(usr, "Select a style. White is recommended for customization") as null|anything in all_ui_styles
 	if(!UI_style_new) return
 
 	var/UI_style_alpha_new = input(usr, "Select a new alpha (transparency) parameter for your UI, between 50 and 255") as null|num
-	if(!UI_style_alpha_new | !(UI_style_alpha_new <= 255 && UI_style_alpha_new >= 50)) return
+	if(!UI_style_alpha_new || !(UI_style_alpha_new <= 255 && UI_style_alpha_new >= 50))
+		return
 
 	var/UI_style_color_new = input(usr, "Choose your UI color. Dark colors are not recommended!") as color|null
 	if(!UI_style_color_new) return
@@ -67,7 +68,7 @@ var/global/list/all_tooltip_styles = list(
 		ic = all_ui_styles_robot[UI_style_new]
 
 	for(var/obj/screen/I in icons)
-		if(I.name in list(I_HELP, I_HURT, I_DISARM, I_GRAB)) continue
+		if(I.name in list(INTENT_HELP, INTENT_HARM, INTENT_DISARM, INTENT_GRAB)) continue
 		I.icon = ic
 		I.color = UI_style_color_new
 		I.alpha = UI_style_alpha_new
@@ -77,5 +78,5 @@ var/global/list/all_tooltip_styles = list(
 		prefs.UI_style = UI_style_new
 		prefs.UI_style_alpha = UI_style_alpha_new
 		prefs.UI_style_color = UI_style_color_new
-		prefs.save_preferences()
-		usr << "UI was saved"
+		SScharacter_setup.queue_preferences_save(prefs)
+		to_chat(usr, "UI was saved")

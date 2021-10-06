@@ -5,15 +5,10 @@ SUBSYSTEM_DEF(overlays)
 	priority = FIRE_PRIORITY_OVERLAYS
 	init_order = INIT_ORDER_OVERLAY
 
-	var/initialized = FALSE
 	var/list/queue						// Queue of atoms needing overlay compiling (TODO-VERIFY!)
 	var/list/stats
 	var/list/overlay_icon_state_caches	// Cache thing
 	var/list/overlay_icon_cache			// Cache thing
-
-var/global/image/stringbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/iconbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/appearance_bro = new() // Temporarily super-global because of BYOND init order dumbness.
 
 /datum/controller/subsystem/overlays/PreInit()
 	overlay_icon_state_caches = list()
@@ -22,16 +17,15 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 	stats = list()
 
 /datum/controller/subsystem/overlays/Initialize()
-	initialized = TRUE
+	subsystem_initialized = TRUE
 	fire(mc_check = FALSE)
 	..()
 
 /datum/controller/subsystem/overlays/stat_entry()
 	..("Ov:[length(queue)]")
 
-
 /datum/controller/subsystem/overlays/Shutdown()
-	text2file(render_stats(stats), "[log_path]-overlay.log")
+	text2file(render_stats(stats), "[GLOB.log_directory]/overlay.log")
 
 /datum/controller/subsystem/overlays/Recover()
 	overlay_icon_state_caches = SSoverlays.overlay_icon_state_caches
@@ -168,7 +162,7 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
  * Adds specific overlay(s) to the atom.
  * It is designed so any of the types allowed to be added to /atom/overlays can be added here too. More details below.
  *
- * @param overlays The overlay(s) to add.  These may be 
+ * @param overlays The overlay(s) to add.  These may be
  *	- A string: In which case it is treated as an icon_state of the atom's icon.
  *	- An icon: It is treated as an icon.
  *	- An atom: Its own overlays are compiled and then it's appearance is added. (Meaning its current apperance is frozen).
@@ -205,7 +199,7 @@ var/global/image/appearance_bro = new() // Temporarily super-global because of B
 /**
  * Copy the overlays from another atom, either replacing all of ours or appending to our existing overlays.
  * Note: This copies only the normal overlays, not the "priority" overlays.
- * 
+ *
  * @param other The atom to copy overlays from.
  * @param cut_old If true, all of our overlays will be *replaced* by the other's. If other is null, that means cutting all ours.
  */

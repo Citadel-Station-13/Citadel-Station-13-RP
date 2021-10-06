@@ -1,0 +1,188 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/explored)
+"e" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 9
+	},
+/area/tether_away/beach/desert/explored)
+"g" = (
+/turf/simulated/floor/water/shoreline/classh,
+/area/tether_away/beach/desert/explored)
+"h" = (
+/obj/random/outcrop,
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/tether_away/beach/desert/explored)
+"i" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 10
+	},
+/area/tether_away/beach/desert/explored)
+"j" = (
+/turf/simulated/floor/water/classh,
+/area/tether_away/beach/desert/explored)
+"q" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 1
+	},
+/area/tether_away/beach/desert/explored)
+"s" = (
+/turf/simulated/floor/water/shoreline/corner/classh{
+	dir = 8
+	},
+/area/tether_away/beach/desert/explored)
+"u" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 5
+	},
+/area/tether_away/beach/desert/explored)
+"A" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 8
+	},
+/area/tether_away/beach/desert/explored)
+"B" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 6
+	},
+/area/tether_away/beach/desert/explored)
+"C" = (
+/turf/simulated/floor/water/shoreline/corner/classh{
+	dir = 1
+	},
+/area/tether_away/beach/desert/explored)
+"I" = (
+/turf/simulated/floor/water/shoreline/corner/classh,
+/area/tether_away/beach/desert/explored)
+"N" = (
+/turf/simulated/floor/water/shoreline/corner/classh{
+	dir = 4
+	},
+/area/tether_away/beach/desert/explored)
+"V" = (
+/turf/simulated/floor/water/shoreline/classh{
+	dir = 4
+	},
+/area/tether_away/beach/desert/explored)
+
+(1,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+"}
+(2,1,1) = {"
+b
+h
+b
+I
+A
+A
+A
+s
+h
+b
+"}
+(3,1,1) = {"
+b
+b
+I
+B
+j
+j
+j
+u
+s
+b
+"}
+(4,1,1) = {"
+b
+I
+B
+j
+j
+j
+j
+j
+q
+b
+"}
+(5,1,1) = {"
+b
+g
+j
+j
+j
+j
+j
+e
+N
+b
+"}
+(6,1,1) = {"
+b
+g
+j
+j
+j
+j
+e
+N
+h
+b
+"}
+(7,1,1) = {"
+b
+C
+i
+j
+j
+j
+q
+b
+b
+b
+"}
+(8,1,1) = {"
+b
+b
+C
+i
+j
+e
+N
+b
+b
+b
+"}
+(9,1,1) = {"
+b
+h
+b
+C
+V
+N
+h
+b
+b
+b
+"}
+(10,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+"}

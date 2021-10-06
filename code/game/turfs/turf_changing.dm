@@ -22,36 +22,43 @@
 		below.update_icon() // To add or remove the 'ceiling-less' overlay.
 
 //Creates a new turf
-/turf/proc/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0)
+/turf/proc/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0, var/preserve_outdoors = FALSE)
 	if (!N)
 		return
 
-	/* VOREStation Edit Start - Say Nope To This.  Tether's Z info is setup fine, trust it.
-	// This makes sure that turfs are not changed to space when one side is part of a zone
 	if(N == /turf/space)
 		var/turf/below = GetBelow(src)
-		if(istype(below) && (air_master.has_valid_zone(below) || air_master.has_valid_zone(src)))
+		if(istype(below) && (air_master.has_valid_zone(below) || air_master.has_valid_zone(src)) && (!istype(below, /turf/unsimulated/wall) && !istype(below, /turf/simulated/sky)))	// VOREStation Edit: Weird open space
 			N = /turf/simulated/open
-	*/ // VOREStation Edit End
 
-	var/obj/fire/old_fire = fire
 	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
 	var/old_affecting_lights = affecting_lights
-	var/old_lighting_overlay = lighting_overlay
-	var/old_corners = corners
+	var/old_lighting_object = lighting_object
+	var/old_lc_topright = lc_topright
+	var/old_lc_topleft = lc_topleft
+	var/old_lc_bottomright = lc_bottomright
+	var/old_lc_bottomleft = lc_bottomleft
+
+	var/obj/fire/old_fire = fire
 	var/old_outdoors = outdoors
+	var/old_dangerous_objects = dangerous_objects
 
-	//world << "Replacing [src.type] with [N]"
+	//to_chat(world, "Replacing [src.type] with [N]")
 
-	if(connections) connections.erase_all()
+	if(connections)
+		connections.erase_all()
 
-	if(istype(src,/turf/simulated))
+	if(istype(src, /turf/simulated))
 		//Yeah, we're just going to rebuild the whole thing.
 		//Despite this being called a bunch during explosions,
 		//the zone will only really do heavy lifting once.
 		var/turf/simulated/S = src
-		if(S.zone) S.zone.rebuild()
+		if(S.zone)
+			S.zone.rebuild()
+
+	changing_turf = TRUE
+	qdel(src)	//Just get the side effects and call Destroy
 
 	if(ispath(N, /turf/simulated/floor))
 		var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
@@ -96,17 +103,27 @@
 		W.post_change()
 		. =  W
 
-	recalc_atom_opacity()
+	dangerous_objects = old_dangerous_objects
 
-	if(lighting_overlays_initialised)
-		lighting_overlay = old_lighting_overlay
+	if(SSlighting.subsystem_initialized)
+		recalc_atom_opacity()
+		lighting_object = old_lighting_object
 		affecting_lights = old_affecting_lights
-		corners = old_corners
-		if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting))
+		lc_topright = old_lc_topright
+		lc_topleft = old_lc_topleft
+		lc_bottomright = old_lc_bottomright
+		lc_bottomleft = old_lc_bottomleft
+		if (old_opacity != opacity || dynamic_lighting != old_dynamic_lighting)
 			reconsider_lights()
-		if(dynamic_lighting != old_dynamic_lighting)
-			if(dynamic_lighting)
+
+		if (dynamic_lighting != old_dynamic_lighting)
+			if (IS_DYNAMIC_LIGHTING(src))
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
-	outdoors = old_outdoors
+
+		for(var/turf/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
+			S.update_starlight()
+
+	if(preserve_outdoors)
+		outdoors = old_outdoors

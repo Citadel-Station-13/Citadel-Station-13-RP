@@ -6,8 +6,8 @@
 		for(var/atom/A in landing)
 			if(!A.CanPass(src, src.loc, 1, 0))
 				return FALSE
-		Move(landing)
-		return 1
+		locationTransitForceMove(landing)
+		return TRUE
 
 	for(var/obj/O in loc)
 		if(!O.CanFallThru(src, landing))
@@ -20,6 +20,7 @@
 
 	// Then call parent to have us actually fall
 	return ..()
+
 /mob/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 /* //Leaving this here to show my previous iterations which failed.
@@ -35,7 +36,7 @@
 			else if(prey.can_be_drop_pred && pred.can_be_drop_prey) //Is person being fallen onto pred & person falling prey
 				pred.feed_grabbed_to_self_falling_nom(prey,pred) //oh, how the tables have turned.
 */
-/mob/zshadow/fall_impact(var/atom/hit_atom) //You actually "fall" onto their shadow, first.
+/mob/zshadow/fall_impact(var/atom/hit_atom, var/damage_min = 0, var/damage_max = 10, var/silent = FALSE, var/planetary = FALSE) //You actually "fall" onto their shadow, first.
 	/*
 	var/floor_below = src.loc.below //holy fuck
 	for(var/mob/M in floor_below.contents)

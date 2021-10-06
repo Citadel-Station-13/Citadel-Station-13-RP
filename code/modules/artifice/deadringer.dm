@@ -1,4 +1,4 @@
-/obj/item/weapon/deadringer
+/obj/item/deadringer
 	name = "silver pocket watch"
 	desc = "A fancy silver-plated digital pocket watch. Looks expensive."
 	icon = 'icons/obj/deadringer.dmi'
@@ -13,45 +13,42 @@
 	var/mob/living/carbon/human/corpse = null
 	var/mob/living/carbon/human/watchowner = null
 
+/obj/item/deadringer/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/deadringer/New()
-	..()
-	processing_objects |= src
+/obj/item/deadringer/Destroy() //just in case some smartass tries to stay invisible by destroying the watch
+	reveal()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
-/obj/item/weapon/deadringer/Destroy() //just in case some smartass tries to stay invisible by destroying the watch
-	uncloak()
-	processing_objects -= src
-	..()
-
-
-/obj/item/weapon/deadringer/dropped()
+/obj/item/deadringer/dropped()
+	. = ..()
 	if(timer > 20)
-		uncloak()
+		reveal()
 		watchowner = null
-	return
 
-/obj/item/weapon/deadringer/attack_self(var/mob/living/user as mob)
+/obj/item/deadringer/attack_self(var/mob/living/user as mob)
 	var/mob/living/H = src.loc
 	if (!istype(H, /mob/living/carbon/human))
-		to_chat(H,"<font color='blue'>You have no clue what to do with this thing.</font>")
+		to_chat(H,"<font color=#4F49AF>You have no clue what to do with this thing.</font>")
 		return
 	if(!activated)
 		if(timer == 0)
-			to_chat(H, "<font color='blue'>You press a small button on [src]'s side. It starts to hum quietly.</font>")
+			to_chat(H, "<font color=#4F49AF>You press a small button on [src]'s side. It starts to hum quietly.</font>")
 			bruteloss_prev = H.getBruteLoss()
 			fireloss_prev = H.getFireLoss()
 			activated = 1
 			return
 		else
-			to_chat(H,"<font color='blue'>You press a small button on [src]'s side. It buzzes a little.</font>")
+			to_chat(H,"<font color=#4F49AF>You press a small button on [src]'s side. It buzzes a little.</font>")
 			return
 	if(activated)
-		to_chat(H,"<font color='blue'>You press a small button on [src]'s side. It stops humming.</font>")
+		to_chat(H,"<font color=#4F49AF>You press a small button on [src]'s side. It stops humming.</font>")
 		activated = 0
 		return
 
-
-/obj/item/weapon/deadringer/process()
+/obj/item/deadringer/process(delta_time)
 	if(activated)
 		if (ismob(src.loc))
 			var/mob/living/carbon/human/H = src.loc
@@ -60,43 +57,41 @@
 				deathprevent()
 				activated = 0
 				if(watchowner.isSynthetic())
-					to_chat(watchowner, "<font color='blue'>You fade into nothingness! [src]'s screen blinks, being unable to copy your synthetic body!</font>")
+					to_chat(watchowner, "<font color=#4F49AF>You fade into nothingness! [src]'s screen blinks, being unable to copy your synthetic body!</font>")
 				else
-					to_chat(watchowner, "<font color='blue'>You fade into nothingness, leaving behind a fake body!</font>")
+					to_chat(watchowner, "<font color=#4F49AF>You fade into nothingness, leaving behind a fake body!</font>")
 				icon_state = "deadringer_cd"
 				timer = 50
 				return
 	if(timer > 0)
 		timer--
 	if(timer == 20)
-		uncloak()
+		reveal()
 		if(corpse)
-			new /obj/effect/effect/smoke/chem(corpse.loc)
+			new /obj/effect/smoke/chem(corpse.loc)
 			qdel(corpse)
 	if(timer == 0)
 		icon_state = "deadringer"
 	return
 
+/obj/item/deadringer/proc/deathprevent()
+	for(var/mob/living/simple_mob/D in oviewers(7, src))
+		if(!D.has_AI())
+			continue
+		D.ai_holder.lose_target()
 
-/obj/item/weapon/deadringer/proc/deathprevent()
-	for(var/mob/living/simple_animal/D in oviewers(7, src))
-		D.LoseTarget()
 	watchowner.emote("deathgasp")
-	watchowner.invisibility = 85
-	watchowner.alpha = 127
+	watchowner.alpha = 15
 	makeacorpse(watchowner)
-	for(var/mob/living/simple_animal/D in oviewers(7, src))
-		D.LoseTarget()
 	return
 
-/obj/item/weapon/deadringer/proc/uncloak()
+/obj/item/deadringer/proc/reveal()
 	if(watchowner)
-		watchowner.invisibility = 0
 		watchowner.alpha = 255
 		playsound(get_turf(src), 'sound/effects/uncloak.ogg', 35, 1, -1)
 	return
 
-/obj/item/weapon/deadringer/proc/makeacorpse(var/mob/living/carbon/human/H)
+/obj/item/deadringer/proc/makeacorpse(var/mob/living/carbon/human/H)
 	if(H.isSynthetic())
 		return
 	corpse = new /mob/living/carbon/human(H.loc)
@@ -151,13 +146,13 @@
 		temp.disguise(c_type.type)
 		temp.canremove = 0
 	if(H.get_equipped_item(slot_belt))
-		corpse.equip_to_slot_or_del(new /obj/item/weapon/storage/belt/chameleon/changeling(corpse), slot_belt)
+		corpse.equip_to_slot_or_del(new /obj/item/storage/belt/chameleon/changeling(corpse), slot_belt)
 		temp = corpse.get_equipped_item(slot_belt)
 		var/obj/item/clothing/c_type = H.get_equipped_item(slot_belt)
 		temp.disguise(c_type.type)
 		temp.canremove = 0
 	if(H.get_equipped_item(slot_back))
-		corpse.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/chameleon/changeling(corpse), slot_back)
+		corpse.equip_to_slot_or_del(new /obj/item/storage/backpack/chameleon/changeling(corpse), slot_back)
 		temp = corpse.get_equipped_item(slot_back)
 		var/obj/item/clothing/c_type = H.get_equipped_item(slot_back)
 		temp.disguise(c_type.type)
@@ -180,5 +175,3 @@
 		var/obj/item/organ/internal/G = I
 		G.Destroy()
 	return
-
-

@@ -6,12 +6,12 @@
 	anchored = 1.0
 	icon_keyboard = "med_key"
 	icon_screen = "crew"
-	circuit = /obj/item/weapon/circuitboard/operating
+	circuit = /obj/item/circuitboard/operating
 	var/mob/living/carbon/human/victim = null
 	var/obj/machinery/optable/table = null
 
-/obj/machinery/computer/operating/New()
-	..()
+/obj/machinery/computer/operating/Initialize(mapload)
+	. = ..()
 	for(var/direction in list(NORTH,EAST,SOUTH,WEST))
 		table = locate(/obj/machinery/optable, get_step(src, direction))
 		if (table)
@@ -22,21 +22,21 @@
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
 
 /obj/machinery/computer/operating/attack_hand(mob/user)
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the operating computer.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/computer/operating/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/operating/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -55,7 +55,7 @@
 	data["table"] = table
 	data["victim"] = victim_ui
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "operating.tmpl", src.name, 380, 400)
 		ui.set_initial_data(data)
@@ -69,4 +69,4 @@
 		usr.set_machine(src)
 
 	src.add_fingerprint(usr)
-	nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)

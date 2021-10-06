@@ -35,32 +35,34 @@
 	name = "flesh mass"
 	icon_state = "lingspacesuit"
 	desc = "A huge, bulky mass of pressure and temperature-resistant organic tissue, evolved to facilitate space travel."
-	flags = STOPPRESSUREDAMAGE			 //Not THICKMATERIAL because it's organic tissue, so if somebody tries to inject something into it,
-										//it still ends up in your blood. (also balance but muh fluff)
-	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank/emergency/oxygen, /obj/item/weapon/tank/oxygen)
+	flags = 0	//Not THICKMATERIAL because it's organic tissue, so if somebody tries to inject something into it,
+				//it still ends up in your blood. (also balance but muh fluff)
+	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/tank/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) //No armor at all.
 	canremove = 0
 
-/obj/item/clothing/suit/space/changeling/New()
-	..()
+/obj/item/clothing/suit/space/changeling/Initialize(mapload)
+	. = ..()
 	if(ismob(loc))
 		loc.visible_message("<span class='warning'>[loc.name]\'s flesh rapidly inflates, forming a bloated mass around their body!</span>",
 		"<span class='warning'>We inflate our flesh, creating a spaceproof suit!</span>",
 		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 
 /obj/item/clothing/suit/space/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/clothing/head/helmet/space/changeling
 	name = "flesh mass"
 	icon_state = "lingspacehelmet"
 	desc = "A covering of pressure and temperature-resistant organic tissue with a glass-like chitin front."
-	flags = BLOCKHAIR | STOPPRESSUREDAMAGE //Again, no THICKMATERIAL.
+	flags = BLOCKHAIR //Again, no THICKMATERIAL.
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	body_parts_covered = HEAD|FACE|EYES
 	canremove = 0
 
 /obj/item/clothing/head/helmet/space/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/clothing/shoes/magboots/changeling
@@ -81,13 +83,13 @@
 		magpulse = 0
 		set_slowdown()
 		force = 3
-		user << "We release our grip on the floor."
+		to_chat(user, "We release our grip on the floor.")
 	else
 		item_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
 		force = 5
-		user << "We cling to the terrain below us."
+		to_chat(user, "We cling to the terrain below us.")
 
 /obj/item/clothing/shoes/magboots/changeling/dropped()
 	..()
@@ -105,8 +107,8 @@
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	slowdown = 3
 
-/obj/item/clothing/suit/space/changeling/armored/New()
-	..()
+/obj/item/clothing/suit/space/changeling/armored/Initialize(mapload)
+	. = ..()
 	if(ismob(loc))
 		loc.visible_message("<span class='warning'>[loc.name]\'s flesh turns black, quickly transforming into a hard, chitinous mass!</span>",
 		"<span class='warning'>We harden our flesh, creating a suit of armor!</span>",

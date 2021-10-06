@@ -14,6 +14,7 @@
 	energy_drain = 50
 	projectile = /obj/item/projectile/beam
 	fire_sound = 'sound/weapons/Laser.ogg'
+	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/mecha/micro/sec)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/microheavy
@@ -26,6 +27,7 @@
 	energy_drain = 120
 	projectile = /obj/item/projectile/beam/heavylaser
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
+	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/mecha/micro/sec)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/microtaser
@@ -38,6 +40,7 @@
 	equip_cooldown = 10
 	projectile = /obj/item/projectile/beam/stun
 	fire_sound = 'sound/weapons/Taser.ogg'
+	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/mecha/micro/sec)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/microshotgun
@@ -49,12 +52,13 @@
 	equip_cooldown = 15
 	var/mode = 0 //0 - buckshot, 1 - beanbag, 2 - slug.
 	projectile = /obj/item/projectile/bullet/pellet/shotgun
-	fire_sound = 'sound/weapons/shotgun.ogg'
+	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
 	fire_volume = 80
 	projectiles = 6
 	projectiles_per_shot = 1
 	deviation = 0.7
 	projectile_energy_cost = 100
+	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/mecha/micro/sec)
 
 	Topic(href,href_list)
@@ -78,7 +82,7 @@
 		return "[..()] \[<a href='?src=\ref[src];mode=0'>BS</a>|<a href='?src=\ref[src];mode=1'>BB</a>|<a href='?src=\ref[src];mode=2'>S</a>\]"
 
 
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang/microflashbang
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/microflashbang
 	w_class = ITEMSIZE_LARGE
 	desc = "A mounted grenade launcher for smaller mechs."
 	name = "\improper FP-20 mounted grenade launcher"
@@ -89,6 +93,7 @@
 	projectile_energy_cost = 800
 	equip_cooldown = 30
 	det_time = 15
+	equip_type = EQUIP_MICRO_WEAPON
 	required_type = list(/obj/mecha/micro/sec)
 
 
@@ -105,6 +110,7 @@
 	equip_cooldown = 30
 	energy_drain = 10
 	force = 15
+	equip_type = EQUIP_MICRO_UTILITY
 	required_type = list(/obj/mecha/micro/utility)
 
 	action(atom/target)
@@ -134,13 +140,13 @@
 					log_message("Drilled through [target]")
 					var/obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop/ore_box = (locate(/obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop) in chassis.equipment)
 					if(ore_box)
-						for(var/obj/item/weapon/ore/ore in range(chassis,1))
+						for(var/obj/item/ore/ore in range(chassis,1))
 							if(get_dir(chassis,ore)&chassis.dir)
 								if (ore_box.contents.len >= ore_box.orecapacity)
 									occupant_message("<span class='warning'>The ore compartment is full.</span>")
 									return 1
 								else
-									ore.Move(ore_box)
+									ore.forceMove(ore_box)
 				else if(target.loc == C)
 					log_message("Drilled through [target]")
 					target.ex_act(2)
@@ -155,6 +161,7 @@
 	icon_state = "microscoop"
 	equip_cooldown = 5
 	energy_drain = 0
+	equip_type = EQUIP_MICRO_UTILITY
 	required_type = list(/obj/mecha/micro/utility)
 	var/orecapacity = 500
 
@@ -168,7 +175,7 @@
 		//var/C = target.loc	//why are these backwards? we may never know -Pete
 		if(do_after_cooldown(target))
 			if(T == chassis.loc && src == chassis.selected)
-				for(var/obj/item/weapon/ore/ore in range(chassis,1))
+				for(var/obj/item/ore/ore in range(chassis,1))
 					if(get_dir(chassis,ore)&chassis.dir)
 						if (contents.len >= orecapacity)
 							occupant_message("<span class='warning'>The ore compartment is full.</span>")
@@ -183,7 +190,7 @@
 			if(contents.len < 1)
 				occupant_message("The ore compartment is empty.")
 				return
-			for (var/obj/item/weapon/ore/O in contents)
+			for (var/obj/item/ore/O in contents)
 				contents -= O
 				O.loc = chassis.loc
 			occupant_message("Ore compartment emptied.")
@@ -213,7 +220,7 @@
 		to_chat(usr, "<span class='warning'>The ore box is empty</span>")
 		return
 
-	for (var/obj/item/weapon/ore/O in contents)
+	for (var/obj/item/ore/O in contents)
 		contents -= O
 		O.loc = src.loc
 	to_chat(usr, "<span class='info'>You empty the ore box</span>")

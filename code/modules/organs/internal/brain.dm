@@ -17,6 +17,21 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	attack_verb = list("attacked", "slapped", "whacked")
 	var/clone_source = FALSE
 	var/mob/living/carbon/brain/brainmob = null
+	var/can_assist = TRUE
+
+/obj/item/organ/internal/brain/proc/can_assist()
+	return can_assist
+
+/obj/item/organ/internal/brain/proc/implant_assist(var/targ_icon_state = null)
+	name = "[owner.real_name]'s assisted [initial(name)]"
+	if(targ_icon_state)
+		icon_state = targ_icon_state
+		if(dead_icon)
+			dead_icon = "[targ_icon_state]_dead"
+	else
+		icon_state = "[initial(icon_state)]_assisted"
+	if(dead_icon)
+		dead_icon = "[initial(dead_icon)]_assisted"
 
 /obj/item/organ/internal/brain/robotize()
 	replace_self_with(/obj/item/organ/internal/mmi_holder/posibrain)
@@ -47,16 +62,18 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		tmp_owner.internal_organs_by_name[organ_tag] = new replace_path(tmp_owner, 1)
 		tmp_owner = null
 
-/obj/item/organ/internal/brain/New()
-	..()
-	health = config.default_brain_health
-	spawn(5)
-		if(brainmob && brainmob.client)
-			brainmob.client.screen.len = null //clear the hud
+/obj/item/organ/internal/brain/Initialize(mapload, ...)
+	. = ..()
+	health = config_legacy.default_brain_health
+	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
+
+/obj/item/organ/internal/brain/proc/clear_brainmob_hud()
+	if(brainmob && brainmob.client)
+		brainmob.client.screen.len = null //clear the hud
 
 /obj/item/organ/internal/brain/Destroy()
-	qdel_null(brainmob)
-	. = ..()
+	QDEL_NULL(brainmob)
+	return ..()
 
 /obj/item/organ/internal/brain/proc/transfer_identity(var/mob/living/carbon/H)
 
@@ -77,22 +94,22 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 	brainmob.languages = H.languages
 
-	brainmob << "<span class='notice'>You feel slightly disoriented. That's normal when you're just \a [initial(src.name)].</span>"
+	to_chat(brainmob, "<span class='notice'>You feel slightly disoriented. That's normal when you're just \a [initial(src.name)].</span>")
 	callHook("debrain", list(brainmob))
 
 /obj/item/organ/internal/brain/examine(mob/user) // -- TLE
-	..(user)
+	. = ..()
 	if(brainmob && brainmob.client)//if thar be a brain inside... the brain.
-		user << "You can feel the small spark of life still left in this one."
+		. += "You can feel the small spark of life still left in this one."
 	else
-		user << "This one seems particularly lifeless. Perhaps it will regain some of its luster later.."
+		. += "This one seems particularly lifeless. Perhaps it will regain some of its luster later..."
 
 /obj/item/organ/internal/brain/removed(var/mob/living/user)
 
 	if(name == initial(name))
 		name = "\the [owner.real_name]'s [initial(name)]"
 
-	var/mob/living/simple_animal/borer/borer = owner.has_brain_worms()
+	var/mob/living/simple_mob/animal/borer/borer = owner.has_brain_worms()
 
 	if(borer)
 		borer.detatch() //Should remove borer if the brain is removed - RR
@@ -115,7 +132,12 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 			target.key = brainmob.key
 	..()
 
-/obj/item/organ/internal/pariah_brain
+/obj/item/organ/internal/brain/proc/get_control_efficiency()
+	. = max(0, 1 - (round(damage / max_damage * 10) / 10))
+
+	return .
+
+/obj/item/organ/internal/brain/pariah_brain
 	name = "brain remnants"
 	desc = "Did someone tread on this? It looks useless for cloning or cyborgification."
 	organ_tag = "brain"
@@ -123,18 +145,21 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "chitin"
 	vital = 1
+	can_assist = FALSE
 
 /obj/item/organ/internal/brain/xeno
 	name = "thinkpan"
 	desc = "It looks kind of like an enormous wad of purple bubblegum."
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "chitin"
+	can_assist = FALSE
 
 /obj/item/organ/internal/brain/slime
+	icon = 'icons/obj/surgery_vr.dmi' // Vorestation edit
 	name = "slime core"
 	desc = "A complex, organic knot of jelly and crystalline particles."
-	icon = 'icons/mob/slimes.dmi'
-	icon_state = "green slime extract"
+	icon_state = "core"
+	decays = FALSE
 	parent_organ = BP_TORSO
 	clone_source = TRUE
 	flags = OPENCONTAINER
@@ -142,9 +167,15 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /obj/item/organ/internal/brain/slime/is_open_container()
 	return 1
 
-/obj/item/organ/internal/brain/slime/New()
-	..()
+/obj/item/organ/internal/brain/slime/Initialize(mapload)
+	. = ..()
 	create_reagents(50)
+	addtimer(CALLBACK(src, .proc/sync_color), 10 SECONDS)
+
+/obj/item/organ/internal/brain/slime/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		color = rgb(min(H.r_skin + 40, 255), min(H.g_skin + 40, 255), min(H.b_skin + 40, 255))
 
 /obj/item/organ/internal/brain/slime/proc/reviveBody()
 	var/datum/dna2/record/R = new /datum/dna2/record()
@@ -239,15 +270,17 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	desc = "A tightly furled roll of paper, covered with indecipherable runes."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "scroll"
+	can_assist = FALSE
 
 /obj/item/organ/internal/brain/grey
 	desc = "A piece of juicy meat found in a person's head. This one is strange."
 	icon_state = "brain_grey"
 
-/obj/item/organ/internal/brain/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/brain/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/brain/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		color = H.species.blood_color

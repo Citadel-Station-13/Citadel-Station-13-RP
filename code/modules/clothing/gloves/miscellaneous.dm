@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/captain
 	desc = "Regal blue gloves, with a nice gold trim. Swanky."
-	name = "colony director's gloves"
+	name = "Facility Director's gloves"
 	icon_state = "captain"
 	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
 
@@ -47,6 +47,13 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 
+/obj/item/clothing/gloves/combat/advanced //punchy combat glubbs
+	name = "advanced combat gloves"
+	desc = "These advanced tactical gloves are fire and impact resistant, with the addition of weighted knuckles and durable synthetics."
+	force = 5
+	punch_force = 5
+	armor = list(melee = 30, bullet = 10, laser = 10, energy = 15, bomb = 20, bio = 0, rad = 0)
+
 /obj/item/clothing/gloves/sterile
 	name = "sterile gloves"
 	desc = "Sterile gloves."
@@ -56,6 +63,8 @@
 	permeability_coefficient = 0.01
 	germ_level = 0
 	fingerprint_chance = 25
+	drop_sound = 'sound/items/drop/rubber.ogg'
+	pickup_sound = 'sound/items/pickup/rubber.ogg'
 //	var/balloonPath = /obj/item/latexballon
 
 //TODO: Make inflating gloves a thing
@@ -81,6 +90,8 @@
 	item_state_slots = list(slot_r_hand_str = "lightbrown", slot_l_hand_str = "lightbrown")
 	permeability_coefficient = 0.05
 	siemens_coefficient = 0.75 //thick work gloves
+	drop_sound = 'sound/items/drop/leather.ogg'
+	pickup_sound = 'sound/items/pickup/leather.ogg'
 
 /obj/item/clothing/gloves/duty
 	desc = "These brown duty gloves are made from a durable synthetic."
@@ -105,11 +116,12 @@
 	name = "insulated gauntlets"
 	icon_state = "gloves-vox"
 	item_state = "gloves-vox"
-	item_flags = PHORONGUARD
+	flags = PHORONGUARD
 	siemens_coefficient = 0
-	phoronproof = 1
 	permeability_coefficient = 0.05
 	species_restricted = list("Vox")
+	drop_sound = 'sound/items/drop/metalboots.ogg'
+	pickup_sound = 'sound/items/pickup/toolbox.ogg'
 
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
@@ -120,6 +132,7 @@
 	name = "knuckle dusters"
 	desc = "A pair of brass knuckles. Generally used to enhance the user's punches."
 	icon_state = "knuckledusters"
+	matter = list(DEFAULT_WALL_MATERIAL = 500)
 	attack_verb = list("punched", "beaten", "struck")
 	flags = THICKMATERIAL	// Stops rings from increasing hit strength
 	siemens_coefficient = 1
@@ -127,3 +140,59 @@
 	overgloves = 1
 	force = 5
 	punch_force = 5
+	drop_sound = 'sound/items/drop/metalboots.ogg'
+	pickup_sound = 'sound/items/pickup/toolbox.ogg'
+
+/obj/item/clothing/gloves/ranger
+	var/glovecolor = "white"
+	name = "ranger gloves"
+	desc = "The gloves of the Rangers are the least memorable part. They're not even insulated in the show, so children \
+	don't try and take apart a toaster with inadequate protection. They only serve to complete the fancy outfit."
+	icon = 'icons/obj/clothing/ranger.dmi'
+	icon_state = "ranger_gloves"
+
+/obj/item/clothing/gloves/ranger/Initialize(mapload)
+	. = ..()
+	if(icon_state == "ranger_gloves")
+		name = "[glovecolor] ranger gloves"
+		icon_state = "[glovecolor]_ranger_gloves"
+
+/obj/item/clothing/gloves/ranger/black
+	glovecolor = "black"
+
+/obj/item/clothing/gloves/ranger/pink
+	glovecolor = "pink"
+
+/obj/item/clothing/gloves/ranger/green
+	glovecolor = "green"
+
+/obj/item/clothing/gloves/ranger/cyan
+	glovecolor = "cyan"
+
+/obj/item/clothing/gloves/ranger/orange
+	glovecolor = "orange"
+
+/obj/item/clothing/gloves/ranger/yellow
+	glovecolor = "yellow"
+
+/obj/item/clothing/gloves/swat/para //Combined effect of SWAT gloves and insulated gloves
+	desc = "PARA gloves"
+	name = "PMD issued gloves, stamped with protective seals and spells."
+	icon_state = "para_ert_gloves"
+	item_state = "para_ert_gloves"
+	action_button_name = "Enable Glove Sigils"
+
+	var/blessed = FALSE
+
+/obj/item/clothing/gloves/swat/para/attack_self(mob/user as mob)
+	if(user.mind.isholy && !blessed)
+		blessed = TRUE
+		siemens_coefficient = 0
+		to_chat(user, "<font color=#4F49AF>You repeat the incantations etched into the gloves.</font>")
+	else
+		blessed = FALSE
+		siemens_coefficient = 0.5
+		to_chat(user, "<font color=#4F49AF>You dispel the incantations eteched into the gloves for now.</font>")
+
+	if(!user.mind.isholy)
+		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")

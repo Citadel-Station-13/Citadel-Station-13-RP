@@ -258,7 +258,7 @@
 	joint = "jaw"
 	amputation_point = "neck"
 	gendered_icon = 1
-	cannot_gib = 1
+	cannot_gib = TRUE
 	encased = "skull"
 	base_miss_chance = 40
 	var/can_intake_reagents = 1
@@ -267,6 +267,11 @@
 	throwforce = 7
 
 	var/eye_icon_location = 'icons/mob/human_face.dmi'
+
+/obj/item/organ/external/head/Initialize(mapload)
+	if(config_legacy.allow_headgibs)
+		cannot_gib = FALSE
+	return ..()
 
 /obj/item/organ/external/head/robotize(var/company, var/skip_prosthetics, var/keep_organs)
 	return ..(company, skip_prosthetics, 1)
@@ -284,8 +289,8 @@
 	get_icon()
 	..()
 
-/obj/item/organ/external/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list())
-	..(brute, burn, sharp, edge, used_weapon, forbidden_limbs)
+/obj/item/organ/external/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), permutation = 0)
+	. = ..()
 	if (!disfigured)
 		if (brute_dam > 40)
 			if (prob(50))
@@ -316,7 +321,7 @@
 /obj/item/organ/external/head/skrell
 	eye_icon = "skrell_eyes_s"
 
-/obj/item/organ/external/head/seromi
+/obj/item/organ/external/head/teshari
 	eye_icon = "eyes_seromi"
 
 /obj/item/organ/external/head/no_eyes

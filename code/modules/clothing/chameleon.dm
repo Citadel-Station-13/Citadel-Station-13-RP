@@ -2,38 +2,59 @@
 //**Cham Jumpsuit**
 //*****************
 
-/obj/item/proc/disguise(var/newtype)
+/obj/item/proc/disguise(var/newtype, var/mob/user)
 	//this is necessary, unfortunately, as initial() does not play well with list vars
 	var/obj/item/copy = new newtype(null) //so that it is GCed once we exit
-
 	desc = copy.desc
 	name = copy.name
+	icon = copy.icon
+	icon_override = copy.icon_override
 	icon_state = copy.icon_state
+	color = copy.color
 	item_state = copy.item_state
 	body_parts_covered = copy.body_parts_covered
 	flags_inv = copy.flags_inv
+	gender = copy.gender
 
-	item_icons = copy.item_icons.Copy()
-	if(copy.item_state_slots) //Runtime prevention for backpacks
+	if(copy.item_icons)
+		item_icons = copy.item_icons.Copy()
+	if(copy.item_state_slots)
 		item_state_slots = copy.item_state_slots.Copy()
-	sprite_sheets = copy.sprite_sheets.Copy()
+	if(copy.sprite_sheets)
+		sprite_sheets = copy.sprite_sheets.Copy()
+
+	OnDisguise(copy, user)
+	qdel(copy)
+
+	return copy
+
+// Subtypes shall override this, not /disguise()
+/obj/item/proc/OnDisguise(var/obj/item/copy, var/mob/user)
+	return
 	//copying sprite_sheets_obj should be unnecessary as chameleon items are not refittable.
 
-	return copy //for inheritance
 
-/proc/generate_chameleon_choices(var/basetype, var/blacklist=list())
-	. = list()
-
-	var/i = 1 //in case there is a collision with both name AND icon_state
-	for(var/typepath in typesof(basetype) - blacklist)
-		var/obj/O = typepath
-		if(initial(O.icon) && initial(O.icon_state))
-			var/name = initial(O.name)
-			if(name in .)
-				name += " ([initial(O.icon_state)])"
-			if(name in .)
-				name += " \[[i++]\]"
-			.[name] = typepath
+/proc/generate_chameleon_choices(var/basetype, var/blacklist = list())
+  . = list()
+  var/i = 0 // in case there's a collision with both name/icon_state
+  var/list/icon_state_cache = list()
+  for(var/path in typesof(basetype) - blacklist)
+    i = 0
+    var/obj/item/clothing/C = path
+    var/icon = initial(C.icon)
+    var/icon_state = initial(C.icon_state)
+    if(!icon || !icon_state)
+      continue
+    if(!icon_state_cache[icon])
+      icon_state_cache[icon] = icon_states(icon)
+    if(!(icon_state in icon_state_cache[icon]))      // state doesn't exist, do not let user pick
+      continue
+    var/name = initial(C.name)
+    if(name in .)
+      name += " ([icon_state])"
+    if(name in .)    // STILL?
+      name += " \[[++i]\]"
+    .[name] = path
 
 /obj/item/clothing/under/chameleon
 //starts off as black
@@ -44,10 +65,10 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/global/list/clothing_choices
 
-/obj/item/clothing/under/chameleon/New()
-	..()
+/obj/item/clothing/under/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
-		var/blocked = list(src.type, /obj/item/clothing/under/gimmick)//Prevent infinite loops and bad jumpsuits.
+		var/blocked = list(src.type, /obj/item/clothing/under/gimmick,)
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/under, blocked)
 
 /obj/item/clothing/under/chameleon/emp_act(severity)
@@ -81,8 +102,8 @@
 	body_parts_covered = 0
 	var/global/list/clothing_choices
 
-/obj/item/clothing/head/chameleon/New()
-	..()
+/obj/item/clothing/head/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
 		var/blocked = list(src.type, /obj/item/clothing/head/justice,)//Prevent infinite loops and bad hats.
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/head, blocked)
@@ -116,10 +137,13 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/global/list/clothing_choices
 
-/obj/item/clothing/suit/chameleon/New()
-	..()
+/obj/item/clothing/suit/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
-		var/blocked = list(src.type, /obj/item/clothing/suit/cyborg_suit, /obj/item/clothing/suit/justice, /obj/item/clothing/suit/greatcoat)
+		var/blocked = list(src.type, /obj/item/clothing/suit/cyborg_suit,
+		/obj/item/clothing/suit/justice,
+		/obj/item/clothing/suit/greatcoat
+		)
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/suit, blocked)
 
 /obj/item/clothing/suit/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
@@ -150,10 +174,10 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/global/list/clothing_choices
 
-/obj/item/clothing/shoes/chameleon/New()
-	..()
+/obj/item/clothing/shoes/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
-		var/blocked = list(src.type, /obj/item/clothing/shoes/syndigaloshes, /obj/item/clothing/shoes/cyborg)//prevent infinite loops and bad shoes.
+		var/blocked = list(src.type, /obj/item/clothing/shoes/syndigaloshes, /obj/item/clothing/shoes/cyborg, /obj/item/clothing/shoes/leg_guard/combat/imperial)//prevent infinite loops and bad shoes.
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/shoes, blocked)
 
 /obj/item/clothing/shoes/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
@@ -177,20 +201,20 @@
 //**********************
 //**Chameleon Backpack**
 //**********************
-/obj/item/weapon/storage/backpack/chameleon
+/obj/item/storage/backpack/chameleon
 	name = "backpack"
 	icon_state = "backpack"
 	desc = "A backpack outfitted with cloaking tech. It seems to have a small dial inside, kept away from the storage."
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/global/list/clothing_choices
 
-/obj/item/weapon/storage/backpack/chameleon/New()
-	..()
+/obj/item/storage/backpack/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
-		var/blocked = list(src.type, /obj/item/weapon/storage/backpack/satchel/withwallet)
-		clothing_choices = generate_chameleon_choices(/obj/item/weapon/storage/backpack, blocked)
+		var/blocked = list(src.type, /obj/item/storage/backpack/satchel/withwallet)
+		clothing_choices = generate_chameleon_choices(/obj/item/storage/backpack, blocked)
 
-/obj/item/weapon/storage/backpack/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/storage/backpack/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "backpack"
 	desc = "You wear this on your back and put items into it."
 	icon_state = "backpack"
@@ -199,7 +223,7 @@
 		var/mob/M = src.loc
 		M.update_inv_back()
 
-/obj/item/weapon/storage/backpack/chameleon/verb/change(picked in clothing_choices)
+/obj/item/storage/backpack/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Backpack Appearance"
 	set category = "Chameleon Items"
 	set src in usr
@@ -225,8 +249,8 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/global/list/clothing_choices
 
-/obj/item/clothing/gloves/chameleon/New()
-	..()
+/obj/item/clothing/gloves/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/gloves, list(src.type))
 
@@ -259,8 +283,8 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/global/list/clothing_choices
 
-/obj/item/clothing/mask/chameleon/New()
-	..()
+/obj/item/clothing/mask/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/mask, list(src.type))
 
@@ -294,8 +318,8 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/list/global/clothing_choices
 
-/obj/item/clothing/glasses/chameleon/New()
-	..()
+/obj/item/clothing/glasses/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/glasses, list(src.type))
 
@@ -321,7 +345,7 @@
 //**Chameleon Belt**
 //******************
 
-/obj/item/weapon/storage/belt/chameleon
+/obj/item/storage/belt/chameleon
 	name = "belt"
 	desc = "Can hold various things.  It also has a small dial inside one of the pouches."
 	icon = 'icons/obj/clothing/belts.dmi'
@@ -329,12 +353,12 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/global/list/clothing_choices
 
-/obj/item/weapon/storage/belt/chameleon/New()
-	..()
+/obj/item/storage/belt/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
-		clothing_choices = generate_chameleon_choices(/obj/item/weapon/storage/belt, list(src.type))
+		clothing_choices = generate_chameleon_choices(/obj/item/storage/belt, list(src.type))
 
-/obj/item/weapon/storage/belt/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
+/obj/item/storage/belt/chameleon/emp_act(severity) //Because we don't have psych for all slots right now but still want a downside to EMP.  In this case your cover's blown.
 	name = "belt"
 	desc = "Can hold various things."
 	icon_state = "utilitybelt"
@@ -343,7 +367,7 @@
 		var/mob/M = src.loc
 		M.update_inv_belt()
 
-/obj/item/weapon/storage/belt/chameleon/verb/change(picked in clothing_choices)
+/obj/item/storage/belt/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Belt Appearance"
 	set category = "Chameleon Items"
 	set src in usr
@@ -369,8 +393,8 @@
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/global/list/clothing_choices
 
-/obj/item/clothing/accessory/chameleon/New()
-	..()
+/obj/item/clothing/accessory/chameleon/Initialize(mapload)
+	. = ..()
 	if(!clothing_choices)
 		var/blocked = list(src.type, /obj/item/clothing/accessory/storage)
 		clothing_choices = generate_chameleon_choices(/obj/item/clothing/accessory, blocked)
@@ -396,15 +420,16 @@
 //*****************
 //**Chameleon Gun**
 //*****************
-/obj/item/weapon/gun/energy/chameleon
+/obj/item/gun/energy/chameleon
 	name = "desert eagle"
 	desc = "A hologram projector in the shape of a gun. There is a dial on the side to change the gun's disguise."
+	icon = 'icons/obj/gun/holographic.dmi'
 	icon_state = "deagle"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
 	matter = list()
 
-	fire_sound = 'sound/weapons/Gunshot.ogg'
+	fire_sound = 'sound/weapons/Gunshot1.ogg'
 	projectile_type = /obj/item/projectile/chameleon
 	charge_meter = 0
 	charge_cost = 48 //uses next to no power, since it's just holograms
@@ -413,17 +438,16 @@
 	var/obj/item/projectile/copy_projectile
 	var/global/list/gun_choices
 
-/obj/item/weapon/gun/energy/chameleon/New()
-	..()
+/obj/item/gun/energy/chameleon/Initialize(mapload)
+	. = ..()
 
 	if(!gun_choices)
 		gun_choices = list()
-		for(var/gun_type in typesof(/obj/item/weapon/gun/) - src.type)
-			var/obj/item/weapon/gun/G = gun_type
+		for(var/gun_type in typesof(/obj/item/gun/) - src.type)
+			var/obj/item/gun/G = gun_type
 			src.gun_choices[initial(G.name)] = gun_type
-	return
 
-/obj/item/weapon/gun/energy/chameleon/consume_next_projectile()
+/obj/item/gun/energy/chameleon/consume_next_projectile()
 	var/obj/item/projectile/P = ..()
 	if(P && ispath(copy_projectile))
 		P.name = initial(copy_projectile.name)
@@ -432,13 +456,13 @@
 		P.pass_flags = initial(copy_projectile.pass_flags)
 		P.fire_sound = initial(copy_projectile.fire_sound)
 		P.hitscan = initial(copy_projectile.hitscan)
-		P.step_delay = initial(copy_projectile.step_delay)
+		P.speed = initial(copy_projectile.speed)
 		P.muzzle_type = initial(copy_projectile.muzzle_type)
 		P.tracer_type = initial(copy_projectile.tracer_type)
 		P.impact_type = initial(copy_projectile.impact_type)
 	return P
 
-/obj/item/weapon/gun/energy/chameleon/emp_act(severity)
+/obj/item/gun/energy/chameleon/emp_act(severity)
 	name = "desert eagle"
 	desc = "It's a desert eagle."
 	icon_state = "deagle"
@@ -448,8 +472,8 @@
 		M.update_inv_r_hand()
 		M.update_inv_l_hand()
 
-/obj/item/weapon/gun/energy/chameleon/disguise(var/newtype)
-	var/obj/item/weapon/gun/copy = ..()
+/obj/item/gun/energy/chameleon/disguise(var/newtype)
+	var/obj/item/gun/copy = ..()
 
 	flags_inv = copy.flags_inv
 	if(copy.fire_sound)
@@ -458,7 +482,7 @@
 		fire_sound = null
 	fire_sound_text = copy.fire_sound_text
 
-	var/obj/item/weapon/gun/G = copy
+	var/obj/item/gun/G = copy
 	if(istype(G))
 		copy_projectile = G.projectile_type
 		//charge_meter = E.charge_meter //does not work very well with icon_state changes, ATM
@@ -466,7 +490,7 @@
 		copy_projectile = null
 		//charge_meter = 0
 
-/obj/item/weapon/gun/energy/chameleon/verb/change(picked in gun_choices)
+/obj/item/gun/energy/chameleon/verb/change(picked in gun_choices)
 	set name = "Change Gun Appearance"
 	set category = "Chameleon Items"
 	set src in usr

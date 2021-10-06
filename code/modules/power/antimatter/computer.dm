@@ -15,16 +15,18 @@
 	var/obj/machinery/power/am_engine/injector/connected_I = null
 	var/state = STATE_DEFAULT
 
-/obj/machinery/computer/am_engine/New()
-	..()
-	spawn( 24 )
-		for(var/obj/machinery/power/am_engine/engine/E in world)
-			if(E.engine_id == src.engine_id)
-				src.connected_E = E
-		for(var/obj/machinery/power/am_engine/injector/I in world)
-			if(I.engine_id == src.engine_id)
-				src.connected_I = I
-	return
+/obj/machinery/computer/am_engine/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/am_engine/LateInitialize()
+	. = ..()
+	for(var/obj/machinery/power/am_engine/engine/E in world)
+		if(E.engine_id == src.engine_id)
+			src.connected_E = E
+	for(var/obj/machinery/power/am_engine/injector/I in world)
+		if(I.engine_id == src.engine_id)
+			src.connected_I = I
 
 /obj/machinery/computer/am_engine/Topic(href, href_list)
 	if(..())
@@ -45,7 +47,7 @@
 			src.state = STATE_DEFAULT
 		if("login")
 			var/mob/M = usr
-			var/obj/item/weapon/card/id/I = M.get_active_hand()
+			var/obj/item/card/id/I = M.get_active_hand()
 			if (I && istype(I))
 				if(src.check_access(I))
 					authenticated = 1

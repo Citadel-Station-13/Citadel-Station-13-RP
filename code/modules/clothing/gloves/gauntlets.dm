@@ -18,6 +18,10 @@
 	var/mob/living/carbon/human/H = user
 	if(H.gloves)
 		gloves = H.gloves
+		if(!istype(gloves))
+			to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
+			gloves = null
+			return 0
 		if(gloves.overgloves)
 			to_chat(user, "You are unable to wear \the [src] as \the [H.gloves] are in the way.")
 			gloves = null
@@ -35,12 +39,16 @@
 	wearer = H
 	return 1
 
-/obj/item/clothing/gloves/gauntlets/dropped()
-	var/mob/living/carbon/human/H = wearer
-	if(gloves)
-		if(!H.equip_to_slot_if_possible(gloves, slot_gloves))
-			gloves.forceMove(get_turf(src))
-		if(ring)
+/obj/item/clothing/gloves/gauntlets/restore_over_objects(mob/living/carbon/human/wearer)
+	if(ring)
+		if(gloves && !gloves.ring)
 			gloves.ring = ring
-		src.gloves = null
-	wearer = null
+			ring.forceMove(gloves)
+		else
+			ring.forceMove(get_turf(src))
+		ring = null
+	. = ..()
+	if(gloves)
+		if(!wearer.equip_to_slot_if_possible(gloves, slot_gloves))
+			gloves.forceMove(get_turf(src))
+		gloves = null

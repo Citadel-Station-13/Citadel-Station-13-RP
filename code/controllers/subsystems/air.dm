@@ -15,6 +15,9 @@ SUBSYSTEM_DEF(air)
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
 
+	/// Associative id = datum list of generated /datum/atmosphere's.
+	var/list/generated_atmospheres
+
 	var/cost_turfs = 0
 	var/cost_edges = 0
 	var/cost_firezones = 0
@@ -38,7 +41,7 @@ SUBSYSTEM_DEF(air)
 
 	current_cycle = 0
 	var/simulated_turf_count = 0
-	for(var/turf/simulated/S in turfs)
+	for(var/turf/simulated/S in world)
 		simulated_turf_count++
 		S.update_air_properties()
 		CHECK_TICK
@@ -60,7 +63,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 			edge_log += "Active Edge [E] ([E.type])"
 			for(var/turf/T in E.connecting_turfs)
 				edge_log += "+--- Connecting Turf [T] ([T.type]) @ [T.x], [T.y], [T.z] ([T.loc])"
-		log_debug("Active Edges on ZAS Startup\n" + edge_log.Join("\n"))
+		subsystem_log("Active Edges on ZAS Startup\n" + edge_log.Join("\n"))
 		startup_active_edge_log = edge_log.Copy()
 
 	..()
@@ -68,10 +71,13 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 /datum/controller/subsystem/air/fire(resumed = 0)
 	var/timer
 	if(!resumed)
-		ASSERT(LAZYLEN(currentrun) == 0)  // Santity checks to make sure we don't somehow have items left over from last cycle
-		ASSERT(current_step == null) // Or somehow didn't finish all the steps from last cycle
-		current_cycle++ // Begin a new air_master cycle!
-		current_step = SSAIR_TURFS // Start with Step 1 of course
+		if(LAZYLEN(currentrun) != 0)
+			stack_trace("Currentrun not empty when it should be. [english_list(currentrun)]")
+		currentrun = list()
+		if(current_step != null)
+			stack_trace("current_step was [current_step] instead of null")
+		current_step = SSAIR_TURFS
+		current_cycle++
 
 	INTERNAL_PROCESS_STEP(SSAIR_TURFS, TRUE, process_tiles_to_update, cost_turfs, SSAIR_EDGES)
 	INTERNAL_PROCESS_STEP(SSAIR_EDGES, FALSE, process_active_edges, cost_edges, SSAIR_FIREZONES)
@@ -80,9 +86,11 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	INTERNAL_PROCESS_STEP(SSAIR_ZONES, FALSE, process_zones_to_update, cost_zones, SSAIR_DONE)
 
 	// Okay, we're done! Woo! Got thru a whole air_master cycle!
-	ASSERT(LAZYLEN(currentrun) == 0) // Sanity checks to make sure there are really none left
-	ASSERT(current_step == SSAIR_DONE) // And that we didn't somehow skip past the last step
+	if(LAZYLEN(currentrun) != 0)
+		stack_trace("Currentrun not empty when it should be. [english_list(currentrun)]")
 	currentrun = null
+	if(current_step != SSAIR_DONE)
+		stack_trace("current_step was [current_step] instead of [SSAIR_DONE]")
 	current_step = null
 
 /datum/controller/subsystem/air/proc/process_tiles_to_update(resumed = 0)
@@ -97,7 +105,8 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		//have valid zones when the self-zone-blocked turfs update.
 		//This ensures that doorways don't form their own single-turf zones, since doorways are self-zone-blocked and
 		//can merge with an adjacent zone, whereas zones that are formed on adjacent turfs cannot merge with the doorway.
-		ASSERT(src.selfblock_deferred == null) // Sanity check to make sure it was not remaining from last cycle somehow.
+		if(src.selfblock_deferred != null) // Sanity check to make sure it was not remaining from last cycle somehow.
+			stack_trace("WARNING: SELFBLOCK_DEFFERED WAS NOT NULL. Something went wrong.")
 		src.selfblock_deferred = list()
 
 	//cache for sanic speed (lists are references anyways)
@@ -124,7 +133,9 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		if(MC_TICK_CHECK)
 			return
 
-	ASSERT(LAZYLEN(currentrun) == 0)
+	if(LAZYLEN(currentrun) != 0)
+		stack_trace("WARNING: Currentrun was not empty when it should be.")
+	currentrun = list()
 
 	// Run thru the deferred list and processing them
 	while(selfblock_deferred.len)
@@ -138,8 +149,9 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		#endif
 		if(MC_TICK_CHECK)
 			return
-
-	ASSERT(LAZYLEN(selfblock_deferred) == 0)
+	
+	if(LAZYLEN(selfblock_deferred) != 0)
+		stack_trace("WARNING: selfblock_deffered was not empty (length [LAZYLEN(selfblock_deferred)])")
 	src.selfblock_deferred = null
 
 /datum/controller/subsystem/air/proc/process_active_edges(resumed = 0)
@@ -173,11 +185,12 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		src.currentrun = active_hotspots.Copy()
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/obj/fire/fire = currentrun[currentrun.len]
 		currentrun.len--
 		if(fire) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
-			fire.process()
+			fire.process(dt)
 		if(MC_TICK_CHECK)
 			return
 
@@ -269,6 +282,32 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 //
 // The procs from the ZAS Air Controller are in ZAS/Controller.dm
 //
+
+/**
+  * Initializes all subtypes of /datum/atmosphere and indexes them by key.
+  */
+/datum/controller/subsystem/air/proc/generate_atmospheres()
+	generated_atmospheres = list()
+	for(var/T in subtypesof(/datum/atmosphere))
+		var/datum/atmosphere/A = T
+		if(initial(A.abstract_type) == T)
+			continue
+		A = new T
+		generated_atmospheres[A.id] = A
+
+/**
+  * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
+  */
+/datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string, turf/T)
+	if(!generated_atmospheres)
+		generate_atmospheres()
+	if(gas_string == ATMOSPHERE_ID_USE_ZTRAIT)
+		gas_string = SSmapping.level_trait(T.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACUUM
+	gas_string = "[gas_string]"
+	if(!generated_atmospheres[gas_string])
+		return gas_string
+	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
+	return mix.gas_string
 
 #undef SSAIR_TURFS
 #undef SSAIR_EDGES

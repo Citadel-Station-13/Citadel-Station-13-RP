@@ -24,7 +24,7 @@
 		sleep(10)
 	while(src.timeleft)
 
-	for(var/mob/living/silicon/robot/R in mob_list)
+	for(var/mob/living/silicon/robot/R in GLOB.mob_list)
 		if(!R.scrambledcodes)
 			R.self_destruct()
 	return
@@ -42,7 +42,7 @@
 			dat += "<A href='?src=\ref[src];screen=1'>1. Cyborg Status</A><BR>"
 			dat += "<A href='?src=\ref[src];screen=2'>2. Emergency Full Destruct</A><BR>"
 		if(screen == 1)
-			for(var/mob/living/silicon/robot/R in mob_list)
+			for(var/mob/living/silicon/robot/R in GLOB.mob_list)
 				if(istype(usr, /mob/living/silicon/ai))
 					if (R.connected_ai != usr)
 						continue
@@ -110,9 +110,9 @@
 		<A href='?src=\ref[src];temp=1'>Cancel</A>"}
 
 	if("do_killall" in href_list)
-		var/obj/item/weapon/card/id/I = usr.get_active_hand()
-		if(istype(I, /obj/item/device/pda))
-			var/obj/item/device/pda/pda = I
+		var/obj/item/card/id/I = usr.get_active_hand()
+		if(istype(I, /obj/item/pda))
+			var/obj/item/pda/pda = I
 			I = pda.id
 		if(istype(I))
 			if(src.check_access(I))

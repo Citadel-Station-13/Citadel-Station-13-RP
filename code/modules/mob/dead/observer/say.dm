@@ -1,4 +1,4 @@
-/mob/observer/dead/say(var/message)
+/mob/observer/dead/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	message = sanitize(message)
 
 	if (!message)
@@ -10,7 +10,7 @@
 		if(message)
 			client.handle_spam_prevention(MUTE_DEADCHAT)
 			if(src.client.prefs.muted & MUTE_DEADCHAT)
-				src << "<font color='red'>You cannot talk in deadchat (muted).</font>"
+				to_chat(src, "<font color='red'>You cannot talk in deadchat (muted).</font>")
 				return
 
 	. = src.say_dead(message)
@@ -31,7 +31,7 @@
 		if(message)
 			client.handle_spam_prevention(MUTE_DEADCHAT)
 			if(src.client.prefs.muted & MUTE_DEADCHAT)
-				src << "<font color='red'>You cannot emote in deadchat (muted).</font>"
+				to_chat(src, "<font color='red'>You cannot emote in deadchat (muted).</font>")
 				return
 
 	. = src.emote_dead(message)

@@ -1,7 +1,4 @@
 /mob/living/Life()
-	set invisibility = 0
-	set background = BACKGROUND_ENABLED
-
 	..()
 
 	if (transforming)
@@ -9,6 +6,10 @@
 	handle_modifiers() //VOREStation Edit - Needs to be done even if in nullspace.
 	if(!loc)
 		return
+
+	if(machine && !CanMouseDrop(machine, src))
+		machine = null
+
 	var/datum/gas_mixture/environment = loc.return_air()
 
 	//handle_modifiers() // Do this early since it might affect other things later. //VOREStation Edit
@@ -49,10 +50,10 @@
 
 	update_pulling()
 
-	for(var/obj/item/weapon/grab/G in src)
-		G.process()
+	for(var/obj/item/grab/G in src)
+		G.process(2)
 
-	if(handle_regular_status_updates()) // Status & health update, are we dead or alive etc.
+	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
 		handle_disabilities() // eye, ear, brain damages
 		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
 
@@ -61,6 +62,8 @@
 	update_canmove()
 
 	handle_regular_hud_updates()
+
+	handle_vision()
 
 /mob/living/proc/handle_breathing()
 	return
@@ -89,7 +92,7 @@
 			stop_pulling()
 
 //This updates the health and status of the mob (conscious, unconscious, dead)
-/mob/living/proc/handle_regular_status_updates()
+/mob/living/proc/handle_regular_UI_updates()
 	updatehealth()
 	if(stat != DEAD)
 		if(paralysis)
@@ -108,6 +111,7 @@
 	handle_silent()
 	handle_drugged()
 	handle_slurring()
+	handle_confused()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
@@ -116,7 +120,7 @@
 
 /mob/living/proc/handle_weakened()
 	if(weakened)
-		weakened = max(weakened-1,0)
+		AdjustWeakened(-1)
 	return weakened
 
 /mob/living/proc/handle_stuttering()
@@ -143,6 +147,11 @@
 	if(paralysis)
 		AdjustParalysis(-1)
 	return paralysis
+
+/mob/living/proc/handle_confused()
+	if(confused)
+		AdjustConfused(-1)
+	return confused
 
 /mob/living/proc/handle_disabilities()
 	//Eyes
@@ -172,9 +181,6 @@
 	handle_hud_icons()
 
 	return 1
-
-/mob/living/proc/handle_vision()
-	return
 
 /mob/living/proc/update_sight()
 	if(!seedarkness)
@@ -225,7 +231,7 @@
 	//Snowflake treatment of potential locations
 	else if(istype(loc,/obj/mecha)) //I imagine there's like displays and junk in there. Use the lights!
 		brightness = 1
-	else if(istype(loc,/obj/item/weapon/holder)) //Poor carried teshari and whatnot should adjust appropriately
+	else if(istype(loc,/obj/item/holder)) //Poor carried teshari and whatnot should adjust appropriately
 		var/turf/T = get_turf(src)
 		brightness = T.get_lumcount()
 
@@ -234,5 +240,5 @@
 	var/distance = abs(current-adjust_to)		//Used for how long to animate for
 	if(distance < 0.01) return					//We're already all set
 
-	//world << "[src] in B:[round(brightness,0.1)] C:[round(current,0.1)] A2:[round(adjust_to,0.1)] D:[round(distance,0.01)] T:[round(distance*10 SECONDS,0.1)]"
+	//to_chat(world, "[src] in B:[round(brightness,0.1)] C:[round(current,0.1)] A2:[round(adjust_to,0.1)] D:[round(distance,0.01)] T:[round(distance*10 SECONDS,0.1)]")
 	animate(dsoverlay, alpha = (adjust_to*255), time = (distance*10 SECONDS))

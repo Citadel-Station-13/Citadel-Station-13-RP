@@ -1,5 +1,5 @@
 //TODO: Convert this over for languages.
-/mob/living/carbon/brain/say(var/message)
+/mob/living/carbon/brain/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	if (silent)
 		return
 
@@ -8,10 +8,10 @@
 	if(!(container && container.can_speak))
 		return //Certain objects can speak, like MMIs. Most others cannot. -Q
 	else
-		var/datum/language/speaking = parse_language(message)
+		speaking = parse_language(message)
 		if(speaking)
 			message = copytext(message, 2+length(speaking.key))
-		var/verb = "says"
+		verb = "says"
 		var/ending = copytext(message, length(message))
 		if (speaking)
 			verb = speaking.get_spoken_verb(ending)
@@ -36,11 +36,11 @@
 /mob/living/carbon/brain/handle_message_mode(message_mode, message, verb, speaking, used_radios, alt_name)
 	..()
 	if(message_mode)
-		var/obj/item/device/mmi/R = container
+		var/obj/item/mmi/R = container
 		if (R.radio && R.radio.radio_enabled)
 			if(message_mode == "general")
 				message_mode = null
 			return R.radio.talk_into(src,message,message_mode,verb,speaking)
 		else
-			src << "<span class='danger'>Your radio is disabled.</span>"
+			to_chat(src, "<span class='danger'>Your radio is disabled.</span>")
 			return 0

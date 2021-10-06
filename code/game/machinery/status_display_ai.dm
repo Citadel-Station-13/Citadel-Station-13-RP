@@ -62,7 +62,7 @@ var/list/ai_status_emotions = list(
 	name = "AI display"
 	anchored = 1
 	density = 0
-	circuit =  /obj/item/weapon/circuitboard/ai_status_display
+	circuit =  /obj/item/circuitboard/ai_status_display
 
 	var/mode = 0	// 0 = Blank
 					// 1 = AI emoticon
@@ -84,7 +84,7 @@ var/list/ai_status_emotions = list(
 	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions
 	emotion = emote
 
-/obj/machinery/ai_status_display/process()
+/obj/machinery/ai_status_display/process(delta_time)
 	return
 
 /obj/machinery/ai_status_display/proc/update()

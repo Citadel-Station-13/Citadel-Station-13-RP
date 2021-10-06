@@ -1,6 +1,6 @@
-/obj/item/weapon/gun/energy/gun/fluff/gunsword
+/obj/item/gun/energy/gun/fluff/gunsword
 	name = "Sword Buster"
-	desc = "A gun custom built using the science behind a Golden Empire pistol."
+	desc = "The Sword Buster gun is custom built using the science behind a Golden Empire pistol. The cell can be removed in close range and used as energy shortsword."
 
 	icon = 'icons/vore/custom_guns_vr.dmi'
 	icon_state = "gbuster100"
@@ -16,7 +16,7 @@
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
 	charge_meter = 1
 
-	cell_type = /obj/item/weapon/cell/device/weapon/gunsword
+	cell_type = /obj/item/cell/device/weapon/gunsword
 
 	modifystate = "gbuster"
 
@@ -28,7 +28,7 @@
 
 
 // -----------------gunsword battery--------------------------
-/obj/item/weapon/cell/device/weapon/gunsword
+/obj/item/cell/device/weapon/gunsword
 	name = "Buster Cell"
 	desc = "The Buster Cell. It doubles as a sword when activated outside the gun housing."
 	icon = 'icons/vore/custom_guns_vr.dmi'
@@ -58,7 +58,7 @@
 	var/lcolor = "#800080"
 
 
-/obj/item/weapon/cell/device/weapon/gunsword/proc/activate(mob/living/user)
+/obj/item/cell/device/weapon/gunsword/proc/activate(mob/living/user)
 	if(active)
 		return
 	icon_state = "gsaber"
@@ -76,7 +76,7 @@
 
 
 
-/obj/item/weapon/cell/device/weapon/gunsword/proc/deactivate(mob/living/user)
+/obj/item/cell/device/weapon/gunsword/proc/deactivate(mob/living/user)
 	if(!active)
 		return
 	playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
@@ -93,7 +93,7 @@
 	attack_verb = list()
 
 
-/obj/item/weapon/cell/device/weapon/gunsword/attack_self(mob/living/user as mob)
+/obj/item/cell/device/weapon/gunsword/attack_self(mob/living/user as mob)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	if (active)
 		if ((CLUMSY in user.mutations) && prob(50))
@@ -116,12 +116,12 @@
 	add_fingerprint(user)
 	return
 
-/obj/item/weapon/cell/device/weapon/gunsword/suicide_act(mob/user)
+/obj/item/cell/device/weapon/gunsword/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	if(active)
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.he] [TU.is] trying to commit seppuku.</span>",\
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
 		return (BRUTELOSS|FIRELOSS)
 
-/obj/item/weapon/cell/device/weapon/gunsword/update_icon()
+/obj/item/cell/device/weapon/gunsword/update_icon()
 	overlays.Cut()

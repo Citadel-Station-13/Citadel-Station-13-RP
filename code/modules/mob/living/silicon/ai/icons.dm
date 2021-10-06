@@ -28,14 +28,14 @@ var/list/datum/ai_icon/ai_icons
 	name = "Red"
 	alive_icon = "ai-red"
 	alive_light = "#F04848"
-	dead_icon = "ai-red_dead"
+	dead_icon = "ai-red-crash"
 	dead_light = "#F04848"
 
 /datum/ai_icon/green
 	name = "Green"
 	alive_icon = "ai-wierd"
 	alive_light = "#00FF99"
-	dead_icon = "ai-weird_dead"
+	dead_icon = "ai-weird-crash"
 
 /datum/ai_icon/blue
 	name = "Blue"
@@ -50,7 +50,7 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon/angel
 	name = "Angel"
 	alive_icon = "ai-angel"
-	dead_icon = "ai-angel_dead"
+	dead_icon = "ai-angel-crash"
 
 /datum/ai_icon/bliss
 	name = "Bliss"
@@ -65,7 +65,7 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon/database
 	name = "Database"
 	alive_icon = "ai-database"
-	dead_icon = "ai-database_dead"
+	dead_icon = "ai-database-crash"
 
 /datum/ai_icon/dorf
 	name = "Dorf"
@@ -96,7 +96,7 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon/heartline
 	name = "Heartline"
 	alive_icon = "ai-heartline"
-	dead_icon = "ai-heartline_dead"
+	dead_icon = "ai-heartline-crash"
 
 /datum/ai_icon/helios
 	name = "Helios"
@@ -117,7 +117,7 @@ var/list/datum/ai_icon/ai_icons
 	name = "Lonestar"
 	alive_icon = "ai-lonestar"
 	alive_light = "#58751C"
-	dead_icon = "ai-lonestar_dead"
+	dead_icon = "ai-lonestar-crash"
 
 /datum/ai_icon/matrix
 	name = "Matrix"
@@ -128,7 +128,7 @@ var/list/datum/ai_icon/ai_icons
 	name = "Monochrome"
 	alive_icon = "ai-mono"
 	alive_light = "#585858"
-	dead_icon = "ai-mono_dead"
+	dead_icon = "ai-mono-crash"
 
 /datum/ai_icon/nanotrasen
 	name = "NanoTrasen"
@@ -137,8 +137,9 @@ var/list/datum/ai_icon/ai_icons
 
 /datum/ai_icon/rainbow
 	name = "Rainbow"
-	alive_icon = "ai-clown"
+	alive_icon = "ai-rainbow"
 	alive_light = "#E50213"
+	dead_icon = "ai-rainbow_dead"
 
 /datum/ai_icon/smiley
 	name = "Smiley"
@@ -149,14 +150,14 @@ var/list/datum/ai_icon/ai_icons
 	name = "Soviet"
 	alive_icon = "ai-soviet"
 	alive_light = "#FF4307"
-	dead_icon = "ai-soviet_dead"
+	dead_icon = "ai-soviet-crash"
 	dead_light = "#FF4307"
 
 /datum/ai_icon/Static
 	name = "Static"
 	alive_icon = "ai-static"
 	alive_light = "#4784C1"
-	alive_icon = "ai-static_dead"
+	alive_icon = "ai-static-crash"
 
 /datum/ai_icon/text
 	name = "Text"
@@ -177,17 +178,23 @@ var/list/datum/ai_icon/ai_icons
 	alive_icon = "ai-triumvirate-malf"
 	alive_light = "#020B2B"
 
-//Eros Research Platform Ports
+/datum/ai_icon/bored
+	name = "Bored"
+	alive_icon = "ai-bored"
+	dead_icon = "ai-eager-crash"
 
+//Eros Research Platform Ports
 /datum/ai_icon/clown2
 	name = "Honk"
 	alive_icon = "ai-clown2"
 	dead_icon = "ai-clown2-crash"
 
+/*
 /datum/ai_icon/boxfort
 	name = "Boxfort"
 	alive_icon = "ai-boxfort"
 	dead_icon = "ai-boxfort_dead"
+*/
 
 /datum/ai_icon/ravensdale
 	name = "Integration"
@@ -197,7 +204,7 @@ var/list/datum/ai_icon/ai_icons
 /datum/ai_icon/gentoo
 	name = "Gentoo"
 	alive_icon = "ai-gentoo"
-	dead_icon = "ai-gentoo_dead"
+	dead_icon = "ai-gentoo-crash"
 
 /datum/ai_icon/serithi
 	name = "Mechanicus"
@@ -217,18 +224,18 @@ var/list/datum/ai_icon/ai_icons
 	name = "Wasp"
 	alive_icon = "ai-wasp"
 
-/datum/ai_icon/house
-	name = "Doctor"
-	alive_icon = "ai-house"
+/datum/ai_icon/sheltered
+	name = "Sheltered"
+	alive_icon = "ai-sheltered"
 
 /datum/ai_icon/fabulous
 	name = "Fabulous"
 	alive_icon = "ai-fabulous"
 
-/datum/ai_icon/yesman
-	name = "Yes Man"
-	alive_icon = "ai-yes-man"
-	dead_icon = "ai-alien-crash"
+/datum/ai_icon/eager
+	name = "Eager"
+	alive_icon = "ai-eager"
+	dead_icon = "ai-eager-crash"
 
 /datum/ai_icon/royal
 	name = "Royal"
@@ -238,14 +245,50 @@ var/list/datum/ai_icon/ai_icons
 	name = "Pirate"
 	alive_icon = "ai-pirate"
 
-/datum/ai_icon/gygas
+/datum/ai_icon/bloodylove
 	name = "Love"
-	alive_icon = "ai-gygas"
+	alive_icon = "ai-bloodylove"
 
-/datum/ai_icon/xerxes
-	name = "Xerxes"
-	alive_icon = "ai-xerxes"
+/datum/ai_icon/ahasuerus
+	name = "Ahasuerus"
+	alive_icon = "ai-ahasuerus"
 
 /datum/ai_icon/godfrey
 	name = "Godfrey"
 	alive_icon = "ai-godfrey"
+//End of Eros Research Platform Ports
+
+//Drof's Ports
+/datum/ai_icon/gondola
+	name = "Gondola"
+	alive_icon = "ai-gondola"
+
+/datum/ai_icon/jackfrost //Hee Ho!
+	name = "Jack Frost"
+	alive_icon = "ai-jackfrost"
+
+/datum/ai_icon/mothman
+	name = "Mothman"
+	alive_icon = "ai-mothman"
+
+/datum/ai_icon/thinking
+	name = "Ponderous"
+	alive_icon = "ai-:thinking:"
+	dead_icon = "ai-:thinking:_dead"
+
+/datum/ai_icon/fourleaves
+	name = "Four Leaves"
+	alive_icon = "ai-4chan"
+
+/datum/ai_icon/terminal
+	name = "Terminal"
+	alive_icon = "ai-terminal"
+
+/datum/ai_icon/cheerful
+	name ="Cheerful"
+	alive_icon = "ai-cheerful"
+
+/datum/ai_icon/stern
+	name = "Stern"
+	alive_icon = "ai-stern"
+//End of Drof's Ports

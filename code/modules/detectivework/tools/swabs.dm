@@ -1,15 +1,17 @@
-/obj/item/weapon/forensics/swab
+/obj/item/forensics/swab
 	name = "swab kit"
 	desc = "A sterilized cotton swab and vial used to take forensic samples."
 	icon_state = "swab"
 	var/gsr = 0
 	var/list/dna
 	var/used
+	drop_sound = 'sound/items/drop/glass.ogg'
+	pickup_sound = 'sound/items/pickup/glass.ogg'
 
-/obj/item/weapon/forensics/swab/proc/is_used()
+/obj/item/forensics/swab/proc/is_used()
 	return used
 
-/obj/item/weapon/forensics/swab/attack(var/mob/living/M, var/mob/user)
+/obj/item/forensics/swab/attack(var/mob/living/M, var/mob/user)
 
 	if(!ishuman(M))
 		return ..()
@@ -20,24 +22,25 @@
 	var/mob/living/carbon/human/H = M
 	var/sample_type
 
-	if(H.wear_mask)
-		user << "<span class='warning'>\The [H] is wearing a mask.</span>"
-		return
-
-	if(!H.dna || !H.dna.unique_enzymes)
-		user << "<span class='warning'>They don't seem to have DNA!</span>"
-		return
-
 	if(user != H && H.a_intent != "help" && !H.lying)
 		user.visible_message("<span class='danger'>\The [user] tries to take a swab sample from \the [H], but they move away.</span>")
 		return
 
 	if(user.zone_sel.selecting == O_MOUTH)
 		if(!H.organs_by_name[BP_HEAD])
-			user << "<span class='warning'>They don't have a head.</span>"
+			to_chat(user, "<span class='warning'>They don't have a head.</span>")
 			return
+
+		if(H.wear_mask)
+			to_chat(user, "<span class='warning'>Something is blocking \the [H]'s mouth.</span>")
+			return
+
+		if(!H.dna || !H.dna.unique_enzymes)
+			to_chat(user, "<span class='warning'>They don't seem to have DNA!</span>")
+			return
+
 		if(!H.check_has_mouth())
-			user << "<span class='warning'>They don't have a mouth.</span>"
+			to_chat(user, "<span class='warning'>They don't have a mouth.</span>")
 			return
 		user.visible_message("[user] swabs \the [H]'s mouth for a saliva sample.")
 		dna = list(H.dna.unique_enzymes)
@@ -53,10 +56,10 @@
 			if(istype(O) && !O.is_stump())
 				has_hand = 1
 		if(!has_hand)
-			user << "<span class='warning'>They don't have any hands.</span>"
+			to_chat(user, "<span class='warning'>They don't have any hands.</span>")
 			return
 		user.visible_message("[user] swabs [H]'s palm for a sample.")
-		sample_type = "GSR"
+		sample_type = "residue"
 		gsr = H.gunshot_residue
 	else
 		return
@@ -66,13 +69,13 @@
 		return
 	return 1
 
-/obj/item/weapon/forensics/swab/afterattack(var/atom/A, var/mob/user, var/proximity)
+/obj/item/forensics/swab/afterattack(var/atom/A, var/mob/user, var/proximity)
 
 	if(!proximity || istype(A, /obj/machinery/dnaforensics))
 		return
 
 	if(is_used())
-		user << "<span class='warning'>This swab has already been used.</span>"
+		to_chat(user, "<span class='warning'>This swab has already been used.</span>")
 		return
 
 	add_fingerprint(user)
@@ -85,7 +88,7 @@
 
 	var/choice
 	if(!choices.len)
-		user << "<span class='warning'>There is no evidence on \the [A].</span>"
+		to_chat(user, "<span class='warning'>There is no evidence on \the [A].</span>")
 		return
 	else if(choices.len == 1)
 		choice = choices[1]
@@ -104,7 +107,7 @@
 	else if(choice == "Gunshot Residue")
 		var/obj/item/clothing/B = A
 		if(!istype(B) || !B.gunshot_residue)
-			user << "<span class='warning'>There is no residue on \the [A].</span>"
+			to_chat(user, "<span class='warning'>There is no residue on \the [A].</span>")
 			return
 		gsr = B.gunshot_residue
 		sample_type = "residue"
@@ -113,7 +116,7 @@
 		user.visible_message("\The [user] swabs \the [A] for a sample.", "You swab \the [A] for a sample.")
 		set_used(sample_type, A)
 
-/obj/item/weapon/forensics/swab/proc/set_used(var/sample_str, var/atom/source)
+/obj/item/forensics/swab/proc/set_used(var/sample_str, var/atom/source)
 	name = "[initial(name)] ([sample_str] - [source])"
 	desc = "[initial(desc)] The label on the vial reads 'Sample of [sample_str] from [source].'."
 	icon_state = "swab_used"

@@ -7,7 +7,7 @@
 	icon = 'icons/obj/power_vr.dmi' // VOREStation Edit
 	icon_state = "light1"
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	power_channel = LIGHT
 	var/on = 1
@@ -15,19 +15,22 @@
 	var/otherarea = null
 	var/image/overlay
 
-/obj/machinery/light_switch/New()
-	..()
-	spawn(5)
-		area = get_area(src)
+/obj/machinery/light_switch/Initialize(mapload, newdir)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
-		if(otherarea)
-			area = locate(text2path("/area/[otherarea]"))
+/obj/machinery/light_switch/LateInitialize()
+	. = ..()
+	area = get_area(src)
 
-		if(!name)
-			name = "light switch ([area.name])"
+	if(otherarea)
+		area = locate(text2path("/area/[otherarea]"))
 
-		on = area.lightswitch
-		updateicon()
+	if(!name)
+		name = "light switch ([area.name])"
+
+	on = area.lightswitch
+	updateicon()
 
 /obj/machinery/light_switch/proc/updateicon()
 	if(!overlay)
@@ -45,8 +48,7 @@
 		set_light(2, 0.1, on ? "#82FF4C" : "#F86060")
 
 /obj/machinery/light_switch/examine(mob/user)
-	if(..(user, 1))
-		user << "A light switch. It is [on? "on" : "off"]."
+	. += "<span class = 'notice'>A light switch. It is [on? "on" : "off"].</span>"
 
 /obj/machinery/light_switch/attack_hand(mob/user)
 

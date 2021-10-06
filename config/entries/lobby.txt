@@ -1,0 +1,8 @@
+## How many seconds to stay in lobby after init before game starts
+LOBBY_COUNTDOWN 120
+
+## How many seconds to wait before rebooting post round
+ROUND_END_COUNTDOWN 180
+
+## How many seconds to wait before roundstart until starting the gamemode vote
+LOBBY_GAMEMODE_VOTE_DELAY 60

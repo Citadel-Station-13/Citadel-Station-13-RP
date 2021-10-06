@@ -75,6 +75,16 @@
 #define ui_ai_pda_log "SOUTH:6,WEST+11:16"
 #define ui_ai_take_picture "SOUTH:6,WEST+12:16"
 #define ui_ai_view_images "SOUTH:6,WEST+13:16"
+#define ui_ai_multicam "SOUTH+1:6,WEST+11:16"
+#define ui_ai_add_multicam "SOUTH+1:6,WEST+12:16"
+#define ui_ai_updown "SOUTH+1:6,WEST+13:16"
+
+//Upper-middle right (alerts)
+#define ui_alert1 "EAST-1:28,CENTER+5:27"
+#define ui_alert2 "EAST-1:28,CENTER+4:25"
+#define ui_alert3 "EAST-1:28,CENTER+3:23"
+#define ui_alert4 "EAST-1:28,CENTER+2:21"
+#define ui_alert5 "EAST-1:28,CENTER+1:19"
 
 //Gun buttons
 #define ui_gun1 "EAST-2:26,SOUTH+2:7"
@@ -142,3 +152,36 @@
 
 #define ui_spell_master "EAST-2:16,NORTH-1:26"
 #define ui_genetic_master "EAST-1:16,NORTH-3:16"
+
+#define ui_shadekin_dark_display "EAST-1:28,CENTER-3:15"
+#define ui_shadekin_energy_display "EAST-1:28,CENTER-4:15"
+#define ui_xenochimera_danger_display "EAST-1:28,CENTER-3:15"
+
+// Ghost ones
+#define ui_ghost_returntomenu "SOUTH:6,CENTER-3:24"
+#define ui_ghost_jumptomob "SOUTH:6,CENTER-2:24"
+#define ui_ghost_orbit "SOUTH:6,CENTER-1:24"
+#define ui_ghost_reenter_corpse "SOUTH:6,CENTER:24"
+#define ui_ghost_teleport "SOUTH:6,CENTER+1:24"
+#define ui_ghost_pai "SOUTH: 6,CENTER+2:24"
+#define ui_ghost_updown "SOUTH: 6,CENTER+3:24"
+
+// Rig panel
+#define ui_rig_deco1 "WEST:-7, SOUTH+5"
+#define ui_rig_deco2 "WEST:-7, SOUTH+6"
+#define ui_rig_pwr "WEST+1:-7, SOUTH+6"
+#define ui_rig_health "WEST+1:-7, SOUTH+6"
+#define ui_rig_air "WEST+1:-7, SOUTH+5"
+#define ui_rig_airtoggle "WEST+1:-7, SOUTH+5"
+#define ui_rig_deco1_f "WEST+2:-7, SOUTH+5"
+#define ui_rig_deco2_f "WEST+2:-7, SOUTH+6"
+
+// Mech panel
+#define ui_mech_deco1 "WEST:-7, SOUTH+8"
+#define ui_mech_deco2 "WEST:-7, SOUTH+9"
+#define ui_mech_pwr "WEST+1:-7, SOUTH+9"
+#define ui_mech_health "WEST+1:-7, SOUTH+9"
+#define ui_mech_air "WEST+1:-7, SOUTH+8"
+#define ui_mech_airtoggle "WEST+1:-7, SOUTH+8"
+#define ui_mech_deco1_f "WEST+2:-7, SOUTH+8"
+#define ui_mech_deco2_f "WEST+2:-7, SOUTH+9"

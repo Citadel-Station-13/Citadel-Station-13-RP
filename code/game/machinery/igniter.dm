@@ -6,7 +6,7 @@
 	var/id = null
 	var/on = 1.0
 	anchored = 1.0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
 
@@ -23,15 +23,15 @@
 	icon_state = text("igniter[]", on)
 	return
 
-/obj/machinery/igniter/process()	//ugh why is this even in process()?
+/obj/machinery/igniter/process(delta_time)	//ugh why is this even in process()?
 	if(on && !(stat & NOPOWER))
 		var/turf/location = src.loc
 		if(isturf(location))
 			location.hotspot_expose(1000,500,1)
 	return 1
 
-/obj/machinery/igniter/New()
-	..()
+/obj/machinery/igniter/Initialize(mapload)
+	. = ..()
 	icon_state = "igniter[on]"
 
 /obj/machinery/igniter/power_change()
@@ -53,12 +53,9 @@
 	var/last_spark = 0
 	var/base_state = "migniter"
 	anchored = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
-
-/obj/machinery/sparker/New()
-	..()
 
 /obj/machinery/sparker/power_change()
 	..()
@@ -70,8 +67,8 @@
 		icon_state = "[base_state]-p"
 //		sd_SetLuminosity(0)
 
-/obj/machinery/sparker/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/screwdriver))
+/obj/machinery/sparker/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_screwdriver())
 		add_fingerprint(user)
 		disable = !disable
 		playsound(src, W.usesound, 50, 1)
@@ -99,7 +96,7 @@
 		return
 
 	flick("[base_state]-spark", src)
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(2, 1, src)
 	s.start()
 	last_spark = world.time

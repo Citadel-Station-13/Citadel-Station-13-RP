@@ -1,10 +1,8 @@
-/obj/item/device/binoculars
-
+/obj/item/binoculars
 	name = "binoculars"
 	desc = "A pair of binoculars."
+	icon = 'icons/obj/device.dmi'
 	icon_state = "binoculars"
-
-	flags = CONDUCT
 	force = 5.0
 	w_class = ITEMSIZE_SMALL
 	throwforce = 5.0
@@ -14,5 +12,5 @@
 	//matter = list("metal" = 50,"glass" = 50)
 
 
-/obj/item/device/binoculars/attack_self(mob/user)
+/obj/item/binoculars/attack_self(mob/user)
 	zoom()

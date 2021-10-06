@@ -7,6 +7,15 @@
 #define MULE_PATH_DONE 11
 // IF YOU CHANGE THOSE, UPDATE THEM IN pda.tmpl TOO
 
+/datum/category_item/catalogue/technology/bot/mulebot
+	name = "Bot - Mulebot"
+	desc = "Mulebots are a favorite option for logistical services in \
+	Frontier space. Equipped with semi-sophisticated pathfinding systems, \
+	Mulebots can work out their own routes between destination tags. Some \
+	technicians can alter these routines to allow for human riders or faster \
+	motion, although this does often risk overriding vital safety protocols."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/mulebot
 	name = "Mulebot"
 	desc = "A Multiple Utility Load Effector bot."
@@ -16,6 +25,7 @@
 	health = 150
 	maxHealth = 150
 	mob_bump_flag = HEAVY
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/mulebot)
 
 	min_target_dist = 0
 	max_target_dist = 250
@@ -36,9 +46,8 @@
 
 	var/global/amount = 0
 
-/mob/living/bot/mulebot/New()
-	..()
-
+/mob/living/bot/mulebot/Initialize(mapload)
+	. = ..()
 	var/turf/T = get_turf(loc)
 	var/obj/machinery/navbeacon/N = locate() in T
 	if(N)
@@ -60,10 +69,7 @@
 
 	load(C)
 
-/mob/living/bot/mulebot/attack_hand(var/mob/user)
-	interact(user)
-
-/mob/living/bot/mulebot/proc/interact(var/mob/user)
+/mob/living/bot/mulebot/ui_interact(mob/user)
 	var/dat
 	dat += "<TT><B>Multiple Utility Load Effector Mk. III</B></TT><BR><BR>"
 	dat += "ID: [suffix]<BR>"
@@ -151,7 +157,7 @@
 		if("safety")
 			safety = !safety
 
-	interact(usr)
+	ui_interact(usr)
 
 /mob/living/bot/mulebot/attackby(var/obj/item/O, var/mob/user)
 	..()
@@ -181,7 +187,7 @@
 
 /mob/living/bot/mulebot/emag_act(var/remaining_charges, var/user)
 	locked = !locked
-	user << "<span class='notice'>You [locked ? "lock" : "unlock"] the mulebot's controls!</span>"
+	to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the mulebot's controls!</span>")
 	flick("mulebot-emagged", src)
 	playsound(loc, 'sound/effects/sparks1.ogg', 100, 0)
 	return 1
@@ -255,7 +261,6 @@
 		H.apply_damage(0.5 * damage, BRUTE, BP_R_ARM)
 
 		blood_splatter(src, H, 1)
-	..()
 
 /mob/living/bot/mulebot/relaymove(var/mob/user, var/direction)
 	if(load == user)
@@ -267,12 +272,12 @@
 	visible_message("<span class='danger'>[src] blows apart!</span>")
 
 	var/turf/Tsec = get_turf(src)
-	new /obj/item/device/assembly/prox_sensor(Tsec)
+	new /obj/item/assembly/prox_sensor(Tsec)
 	new /obj/item/stack/rods(Tsec)
 	new /obj/item/stack/rods(Tsec)
 	new /obj/item/stack/cable_coil/cut(Tsec)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 

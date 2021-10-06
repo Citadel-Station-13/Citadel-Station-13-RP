@@ -1,15 +1,10 @@
-/obj/structure/window/reinforced/polarized/full
-	dir = SOUTHWEST
-	icon_state = "fwindow"
-	maxhealth = 80
-
 //Special map objects
 /obj/effect/landmark/map_data/virgo3b
-    height = 7
+    height = 6
 
 /obj/turbolift_map_holder/tether
 	name = "Tether Climber"
-	depth = 7
+	depth = 6
 	lift_size_x = 3
 	lift_size_y = 3
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
@@ -21,45 +16,44 @@
 		/area/turbolift/t_surface/level3,
 		/area/turbolift/tether/transit,
 		/area/turbolift/t_station/level1,
-		/area/turbolift/t_station/level2,
-		/area/turbolift/t_station/level3
+		/area/turbolift/t_station/level2
 		)
 
 /datum/turbolift
 	music = list('sound/music/elevator.ogg')  // Woo elevator music!
 
 /obj/machinery/atmospherics/unary/vent_pump/positive
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_out"
 	external_pressure_bound = ONE_ATMOSPHERE * 1.1
 
 
-/obj/effect/step_trigger/teleporter/to_mining/New()
-	..()
+/obj/effect/step_trigger/teleporter/to_mining/Initialize(mapload)
+	. = ..()
 	teleport_x = src.x
 	teleport_y = 2
 	teleport_z = Z_LEVEL_SURFACE_MINE
 
-/obj/effect/step_trigger/teleporter/from_mining/New()
-	..()
+/obj/effect/step_trigger/teleporter/from_mining/Initialize(mapload)
+	. = ..()
 	teleport_x = src.x
 	teleport_y = world.maxy - 1
 	teleport_z = Z_LEVEL_SURFACE_LOW
 
-/obj/effect/step_trigger/teleporter/to_solars/New()
-	..()
+/obj/effect/step_trigger/teleporter/to_solars/Initialize(mapload)
+	. = ..()
 	teleport_x = world.maxx - 1
 	teleport_y = src.y
 	teleport_z = Z_LEVEL_SOLARS
 
-/obj/effect/step_trigger/teleporter/from_solars/New()
-	..()
+/obj/effect/step_trigger/teleporter/from_solars/Initialize(mapload)
+	. = ..()
 	teleport_x = 2
 	teleport_y = src.y
 	teleport_z = Z_LEVEL_SURFACE_LOW
 
-/obj/effect/step_trigger/teleporter/wild/New()
-	..()
+/obj/effect/step_trigger/teleporter/wild/Initialize(mapload)
+	. = ..()
 
 	//If starting on east/west edges.
 	if (src.x == 1)
@@ -77,34 +71,45 @@
 		teleport_y = src.y
 
 /obj/effect/step_trigger/teleporter/to_underdark
-	icon = 'icons/obj/stairs.dmi'
-	icon_state = "stairs"
+	icon = 'icons/obj/structures/stairs_64x64.dmi'
+	icon_state = ""
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/to_underdark/initialize()
+/obj/effect/step_trigger/teleporter/to_underdark/Initialize()
 	. = ..()
 	teleport_x = x
 	teleport_y = y
-	for(var/z_num in using_map.zlevels)
-		var/datum/map_z_level/Z = using_map.zlevels[z_num]
+	for(var/z_num in GLOB.using_map.zlevels)
+		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
 		if(Z.name == "Underdark")
 			teleport_z = Z.z
 
 /obj/effect/step_trigger/teleporter/from_underdark
-	icon = 'icons/obj/stairs.dmi'
-	icon_state = "stairs"
+	icon = 'icons/obj/structures/stairs_64x64.dmi'
+	icon_state = ""
 	invisibility = 0
-/obj/effect/step_trigger/teleporter/from_underdark/initialize()
+/obj/effect/step_trigger/teleporter/from_underdark/Initialize()
 	. = ..()
 	teleport_x = x
 	teleport_y = y
-	for(var/z_num in using_map.zlevels)
-		var/datum/map_z_level/Z = using_map.zlevels[z_num]
+	for(var/z_num in GLOB.using_map.zlevels)
+		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 
-/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/initialize()
-	planet = planet_virgo3b
+/obj/effect/step_trigger/teleporter/to_plains/Initialize(mapload)
 	. = ..()
+	teleport_x = src.x
+	teleport_y = world.maxy - 1
+	teleport_z = Z_LEVEL_PLAINS
+
+/obj/effect/step_trigger/teleporter/from_plains/Initialize(mapload)
+	. = ..()
+	teleport_x = src.x
+	teleport_y = 2
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/find_planet()
+	planet = planet_virgo3b
 
 /obj/effect/step_trigger/lost_in_space
 	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
@@ -121,12 +126,15 @@
 /obj/effect/step_trigger/lost_in_space/bluespace/Trigger(A)
 	if(world.time - last_sound > 5 SECONDS)
 		last_sound = world.time
-		playsound(get_turf(src), 'sound/effects/supermatter.ogg', 75, 1)
+		playsound(src, 'sound/effects/supermatter.ogg', 75, 1)
 	if(ismob(A) && prob(5))//lucky day
-		var/destturf = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),pick(using_map.station_levels))
+		var/destturf = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),pick(GLOB.using_map.station_levels))
 		new /datum/teleport/instant(A, destturf, 0, 1, null, null, null, 'sound/effects/phasein.ogg')
 	else
 		return ..()
+
+/obj/effect/step_trigger/lost_in_space/tram
+	deathmessage = "You fly down the tunnel of the tram at high speed for a few moments before impact kills you with sheer concussive force."
 
 
 // Invisible object that blocks z transfer to/from its turf and the turf above.
@@ -140,6 +148,7 @@
 	return TRUE
 
 /obj/effect/ceiling/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	. = ..()
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf
 	return TRUE
@@ -157,7 +166,7 @@
 
 	var/area/shock_area = /area/tether/surfacebase/tram
 
-/turf/simulated/floor/maglev/initialize()
+/turf/simulated/floor/maglev/Initialize()
 	. = ..()
 	shock_area = locate(shock_area)
 
@@ -171,7 +180,7 @@
 /turf/simulated/floor/maglev/proc/track_zap(var/mob/living/user)
 	if (!istype(user)) return
 	if (electrocute_mob(user, shock_area, src))
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new
 		s.set_up(5, 1, src)
 		s.start()
 
@@ -197,7 +206,7 @@
 /obj/machinery/smartfridge/chemistry/chemvator/down
 	name = "\improper Smart Chemavator - Lower"
 
-/obj/machinery/smartfridge/chemistry/chemvator/down/initialize()
+/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize()
 	. = ..()
 	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator,get_zstep(src,UP))
 	if(istype(above))
@@ -210,8 +219,9 @@
 // Tram departure cryo doors that turn into ordinary airlock doors at round end
 /obj/machinery/cryopod/robot/door/tram
 	name = "\improper Tram Station"
-	icon = 'icons/obj/doors/Doorext.dmi'
+	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
+	can_atmos_pass = ATMOS_PASS_NO
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
 	desc = "The tram station you might've came in from.  You could leave the base easily using this."
@@ -224,27 +234,25 @@
 	spawnpoint_type = /datum/spawnpoint/tram
 
 /obj/machinery/cryopod/robot/door/tram/process()
-	if(emergency_shuttle.online() || emergency_shuttle.returned())
+	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
 		// Transform into a door!  But first despawn anyone inside
 		time_till_despawn = 0
 		..()
 		var/turf/T = get_turf(src)
-		var/obj/machinery/door/airlock/external/door = new(T)
+		var/obj/machinery/door/airlock/glass_external/door = new(T)
 		door.req_access = null
 		door.req_one_access = null
 		qdel(src)
 	// Otherwise just operate normally
 	return ..()
 
-/obj/machinery/cryopod/robot/door/tram/Bumped(var/atom/movable/AM)
-	if(!ishuman(AM))
-		return
-
-	var/mob/living/carbon/human/user = AM
-
-	var/choice = alert("Do you want to depart via the tram? Your character will leave the round.","Departure","Yes","No")
+/obj/machinery/cryopod/robot/door/tram/go_in(mob/living/M, mob/living/user)
+	if(M != user)
+		return ..()
+	var/choice = alert(user, "Do you want to depart via the shuttle? Your character will leave the round.","Departure","No","Yes")
 	if(user && Adjacent(user) && choice == "Yes")
-		user.ghostize()
+		var/mob/observer/dead/newghost = user.ghostize()
+		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
 // Tram arrival point landmarks and datum
@@ -307,49 +315,9 @@ var/global/list/latejoin_tram   = list()
 	name = "dorm seven holodeck control"
 	projection_area = /area/crew_quarters/sleep/Dorm_7/holo
 
-// Small Ship Holodeck
-/obj/machinery/computer/HolodeckControl/houseboat
-	projection_area = /area/houseboat/holodeck_area
-	powerdown_program = "Turn Off"
-	default_program = "Empty Court"
-
-	supported_programs = list(
-	"Basketball" 		= new/datum/holodeck_program(/area/houseboat/holodeck/basketball, list('sound/music/THUNDERDOME.ogg')),
-	"Thunderdome"		= new/datum/holodeck_program(/area/houseboat/holodeck/thunderdome, list('sound/music/THUNDERDOME.ogg')),
-	"Beach" 			= new/datum/holodeck_program(/area/houseboat/holodeck/beach),
-	"Desert" 			= new/datum/holodeck_program(/area/houseboat/holodeck/desert,
-													list(
-														'sound/effects/wind/wind_2_1.ogg',
-											 			'sound/effects/wind/wind_2_2.ogg',
-											 			'sound/effects/wind/wind_3_1.ogg',
-											 			'sound/effects/wind/wind_4_1.ogg',
-											 			'sound/effects/wind/wind_4_2.ogg',
-											 			'sound/effects/wind/wind_5_1.ogg'
-												 		)
-		 											),
-	"Snowfield" 		= new/datum/holodeck_program(/area/houseboat/holodeck/snow,
-													list(
-														'sound/effects/wind/wind_2_1.ogg',
-											 			'sound/effects/wind/wind_2_2.ogg',
-											 			'sound/effects/wind/wind_3_1.ogg',
-											 			'sound/effects/wind/wind_4_1.ogg',
-											 			'sound/effects/wind/wind_4_2.ogg',
-											 			'sound/effects/wind/wind_5_1.ogg'
-												 		)
-		 											),
-	"Space" 			= new/datum/holodeck_program(/area/houseboat/holodeck/space,
-													list(
-														'sound/ambience/ambispace.ogg',
-														'sound/music/main.ogg',
-														'sound/music/space.ogg',
-														'sound/music/traitor.ogg',
-														)
-													),
-	"Picnic Area" 		= new/datum/holodeck_program(/area/houseboat/holodeck/picnic, list('sound/music/title2.ogg')),
-	"Gaming" 			= new/datum/holodeck_program(/area/houseboat/holodeck/gaming, list('sound/music/traitor.ogg')),
-	"Bunking"			= new/datum/holodeck_program(/area/houseboat/holodeck/bunking, list()),
-	"Turn Off" 			= new/datum/holodeck_program(/area/houseboat/holodeck/off, list())
-	)
+/obj/machinery/computer/HolodeckControl/holodorm/warship
+	name = "warship holodeck control"
+	projection_area = /area/mothership/holodeck/holo
 
 // Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
 /obj/machinery/power/supermatter/touch_map_edge()
@@ -360,20 +328,22 @@ var/global/list/latejoin_tram   = list()
 	name = "Airlock NanoMed"
 	desc = "Wall-mounted Medical Equipment dispenser. This limited-use version dispenses antitoxins with mild painkillers for surface EVAs."
 	icon_state = "wallmed"
-	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/weapon/reagent_containers/pill/airlock = 10,/obj/item/device/healthanalyzer = 1)
-	contraband = list(/obj/item/weapon/reagent_containers/pill/tox = 2)
+	products = list(/obj/item/reagent_containers/pill/airlock = 20)
+	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
 	req_log_access = access_cmo
 	has_logs = 1
 
-/obj/item/weapon/reagent_containers/pill/airlock
+/obj/machinery/vending/wallmed1/public
+	products = list(/obj/item/stack/medical/bruise_pack = 8,/obj/item/stack/medical/ointment = 8,/obj/item/reagent_containers/hypospray/autoinjector = 16,/obj/item/healthanalyzer = 4)
+
+/obj/item/reagent_containers/pill/airlock
 	name = "\'Airlock\' Pill"
 	desc = "Neutralizes toxins and provides a mild analgesic effect."
 	icon_state = "pill2"
 
-/obj/item/weapon/reagent_containers/pill/airlock/New()
-	..()
+/obj/item/reagent_containers/pill/airlock/Initialize(mapload)
+	. = ..()
 	reagents.add_reagent("anti_toxin", 15)
 	reagents.add_reagent("paracetamol", 5)
 
@@ -390,65 +360,56 @@ var/global/list/latejoin_tram   = list()
 
 /obj/structure/closet/secure_closet/guncabinet/excursion
 	name = "expedition weaponry cabinet"
-	req_one_access = list(access_explorer,access_brig)
+	req_one_access = list(access_explorer,access_armory)
 
-/obj/structure/closet/secure_closet/guncabinet/excursion/New()
-	..()
-	for(var/i = 1 to 4)
-		new /obj/item/weapon/gun/energy/frontier/locked(src)
-	for(var/i = 1 to 4)
-		new /obj/item/weapon/gun/energy/frontier/locked/holdout(src)
-
-// Underdark mob spawners
-/obj/tether_away_spawner/underdark_normal
-	name = "Underdark Normal Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/jelly = 3,
-		/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
-		/mob/living/simple_animal/hostile/giant_spider/phorogenic = 1,
-		/mob/living/simple_animal/hostile/giant_spider/lurker = 1,
-	)
-
-/obj/tether_away_spawner/underdark_hard
-	name = "Underdark Hard Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 50
-	guard = 20
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/corrupthound = 1,
-		/mob/living/simple_animal/hostile/rat = 1,
-		/mob/living/simple_animal/hostile/mimic = 1
-	)
-
-/obj/tether_away_spawner/underdark_boss
-	name = "Underdark Boss Spawner"
-	faction = "underdark"
-	atmos_comp = TRUE
-	prob_spawn = 100
-	prob_fall = 100
-	guard = 70
-	mobs_to_pick_from = list(
-		/mob/living/simple_animal/hostile/dragon = 1
-	)
+/obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
+	for(var/i in 1 to 4)
+		new /obj/item/gun/energy/frontier/locked(src)
+	for(var/i in 1 to 4)
+		new /obj/item/gun/energy/frontier/locked/holdout
 
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
 
+//Tether-unique network cameras
+/obj/machinery/camera/network/tether
+	network = list(NETWORK_TETHER)
+
+/obj/machinery/camera/network/tcomms
+	network = list(NETWORK_TCOMMS)
+
+/obj/machinery/camera/network/outside
+	network = list(NETWORK_OUTSIDE)
+
+/obj/machinery/camera/network/exploration
+	network = list(NETWORK_EXPLORATION)
+
+/obj/machinery/camera/network/research/xenobio
+	network = list(NETWORK_RESEARCH, NETWORK_XENOBIO)
+
+//Camera monitors
+/obj/machinery/computer/security/xenobio
+	name = "xenobiology camera monitor"
+	desc = "Used to access the xenobiology cell cameras."
+	icon_keyboard = "mining_key"
+	icon_screen = "mining"
+	network = list(NETWORK_XENOBIO)
+	circuit = /obj/item/circuitboard/security/xenobio
+	light_color = "#F9BBFC"
+
+/obj/item/circuitboard/security/xenobio
+	name = T_BOARD("xenobiology camera monitor")
+	build_path = /obj/machinery/computer/security/xenobio
+	network = list(NETWORK_XENOBIO)
+	req_access = list()
 //
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window
 //
-/obj/item/device/radio/intercom
+/obj/item/radio/intercom
 	layer = ABOVE_WINDOW_LAYER
-/obj/item/weapon/storage/secure/safe
+/obj/item/storage/secure/safe
 	layer = ABOVE_WINDOW_LAYER
 /obj/machinery/airlock_sensor
 	layer = ABOVE_WINDOW_LAYER
@@ -498,3 +459,21 @@ var/global/list/latejoin_tram   = list()
 	layer = ABOVE_WINDOW_LAYER
 /obj/structure/noticeboard
 	layer = ABOVE_WINDOW_LAYER
+
+//Labyrinth Away Missions
+/obj/structure/HonkMother
+	name = "The Honk Mother"
+	desc = "A monolithic effigy of the legendary Honk Mother, adorned with dazzling rainbow bananium."
+	icon = 'icons/effects/160x160.dmi'
+	pixel_x = -64
+
+/obj/structure/HonkMother/Apex
+	icon_state = "HonkMotherApex"
+
+/obj/structure/HonkMother/Base
+	icon_state = "HonkMotherBase"
+
+/obj/effect/decal/mecha_wreckage/honker/cluwne
+	name = "cluwne mech wreckage"
+	icon_state = "cluwne-broken"
+	desc = "Not so funny anymore."

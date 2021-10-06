@@ -2,32 +2,86 @@
 	icon = 'icons/turf/space.dmi'
 	name = "\proper space"
 	icon_state = "0"
-	dynamic_lighting = 0
+	plane = SPACE_PLANE
 
-	temperature = T20C
+	light_power = 0.25
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+
+	initial_gas_mix = GAS_STRING_VACUUM
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
+	temperature = 2.7
+	can_build_into_floor = TRUE
 	var/keep_sprite = FALSE
-//	heat_capacity = 700000 No.
+	var/edge = 0		// If we're an edge
+	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
 
-/turf/space/initialize()
-	. = ..()
-	if(!keep_sprite)
-		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
-	update_starlight()
+/turf/space/Initialize(mapload)
+	// Sprite stuff only beyond here
+	if(keep_sprite)
+		return ..()
 
-/turf/space/is_space()
+	// We might be an edge
+	if(y == world.maxy || forced_dirs & NORTH)
+		edge |= NORTH
+	else if(y == 1 || forced_dirs & SOUTH)
+		edge |= SOUTH
+
+	if(x == 1 || forced_dirs & WEST)
+		edge |= WEST
+	else if(x == world.maxx || forced_dirs & EAST)
+		edge |= EAST
+
+	if(edge)	// Magic edges
+		appearance = SSskybox.mapedge_cache["[edge]"]
+	else		// Dust
+		appearance = SSskybox.dust_cache["[((x + y) ^ ~(x * y) + z) % 25]"]
+
+	return ..()
+
+/turf/space/proc/toggle_transit(var/direction)
+	if(edge)	// Not a great way to do this yet. Maybe we'll come up with one. We could pre-make sprites... or tile the overlay over it?
+		return
+
+	if(!direction)	// Stopping our transit
+		appearance = SSskybox.dust_cache["[((x + y) ^ ~(x * y) + z) % 25]"]
+	else if(direction & (NORTH|SOUTH))	// Starting transit vertically
+		var/x_shift = SSskybox.phase_shift_by_x[src.x % (SSskybox.phase_shift_by_x.len - 1) + 1]
+		var/transit_state = ((direction & SOUTH ? world.maxy - src.y : src.y) + x_shift)%15
+		appearance = SSskybox.speedspace_cache["NS_[transit_state]"]
+	else if(direction & (EAST|WEST))	// Starting transit horizontally
+		var/y_shift = SSskybox.phase_shift_by_y[src.y % (SSskybox.phase_shift_by_y.len - 1) + 1]
+		var/transit_state = ((direction & WEST ? world.maxx - src.x : src.x) + y_shift)%15
+		appearance = SSskybox.speedspace_cache["EW_[transit_state]"]
+
+	for(var/atom/movable/AM in src)
+		if (!AM.simulated)
+			continue
+		if(!AM.anchored)
+			AM.throw_at(get_step(src,reverse_direction(direction)), 5, 1)
+		else if (istype(AM, /obj/effect/decal))
+			qdel(AM)	// No more space blood coming with the shuttle
+
+/turf/space/is_space()	// Hmmm this Space is made of Space.
 	return 1
 
-// override for space turfs, since they should never hide anything
+// Override for space turfs, since they should never hide anything
 /turf/space/levelupdate()
 	for(var/obj/O in src)
 		O.hide(0)
 
+/turf/space/is_solid_structure()
+	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
+
 /turf/space/proc/update_starlight()
-	if(!config.starlight)
-		return
-	if(locate(/turf/simulated) in orange(src,1))
-		set_light(config.starlight)
+	var/power = CONFIG_GET(number/starlight)
+	if(power)
+		for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
+			if(isspaceturf(t))
+				//let's NOT update this that much pls
+				continue
+			set_light(power)
+			return
+		set_light(0)
 	else
 		set_light(0)
 
@@ -65,7 +119,7 @@
 		// Patch holes in the ceiling
 		if(T)
 			if(istype(T, /turf/simulated/open) || istype(T, /turf/space))
-			 	// Must be build adjacent to an existing floor/wall, no floating floors
+				// Must be build adjacent to an existing floor/wall, no floating floors
 				var/turf/simulated/A = locate(/turf/simulated/floor) in T.CardinalTurfs()
 				if(!A)
 					A = locate(/turf/simulated/wall) in T.CardinalTurfs()
@@ -73,7 +127,7 @@
 					to_chat(user, "<span class='warning'>There's nothing to attach the ceiling to!</span>")
 					return
 
-				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
+				if(R.use(1))	// Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ReplaceWithLattice()
 					T.ChangeTurf(/turf/simulated/floor)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
@@ -85,24 +139,15 @@
 		// If that's changed, then you'll want to swipe the rest of the roofing code from code/game/turfs/simulated/floor_attackby.dm
 	return
 
+/turf/space/Entered(var/atom/movable/A)
+	. = ..()
 
-// Ported from unstable r355
+	if(edge)
+		addtimer(CALLBACK(src, .proc/on_atom_edge_touch, A), 0)
 
-/turf/space/Entered(atom/movable/A as mob|obj)
-	if(movement_disabled)
-		to_chat(usr, "<span class='warning'>Movement is admin-disabled.</span>") //This is to identify lag problems
-		return
-	..()
-	if ((!(A) || src != A.loc))	return
-
-	inertial_drift(A)
-
-	if(ticker && ticker.mode)
-
-		// Okay, so let's make it so that people can travel z levels but not nuke disks!
-		// if(ticker.mode.name == "mercenary")	return
-		if (A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE + 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE + 1))
-			A.touch_map_edge()
+/turf/space/proc/on_atom_edge_touch(atom/movable/AM)
+	if(!QDELETED(AM) && (AM.loc == src))
+		AM.touch_map_edge()
 
 /turf/space/proc/Sandbox_Spacemove(atom/movable/A as mob|obj)
 	var/cur_x
@@ -126,9 +171,9 @@
 		target_z = y_arr[cur_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Target Z = [target_z]"
-		world << "Next X = [next_x]"
+		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_chat(world, "Target Z = [target_z]")
+		to_chat(world, "Next X = [next_x]")
 		//debug
 */
 		if(target_z)
@@ -151,9 +196,9 @@
 		target_z = y_arr[cur_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Target Z = [target_z]"
-		world << "Next X = [next_x]"
+		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_chat(world, "Target Z = [target_z]")
+		to_chat(world, "Next X = [next_x]")
 		//debug
 */
 		if(target_z)
@@ -175,9 +220,9 @@
 		target_z = y_arr[next_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Next Y = [next_y]"
-		world << "Target Z = [target_z]"
+		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_chat(world, "Next Y = [next_y]")
+		to_chat(world, "Target Z = [target_z]")
 		//debug
 */
 		if(target_z)
@@ -200,9 +245,9 @@
 		target_z = y_arr[next_y]
 /*
 		//debug
-		world << "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]"
-		world << "Next Y = [next_y]"
-		world << "Target Z = [target_z]"
+		to_chat(world, "Src.z = [src.z] in global map X = [cur_x], Y = [cur_y]")
+		to_chat(world, "Next Y = [next_y]")
+		to_chat(world, "Target Z = [target_z]")
 		//debug
 */
 		if(target_z)
@@ -213,5 +258,5 @@
 					A.loc.Entered(A)
 	return
 
-/turf/space/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0)
-	return ..(N, tell_universe, 1)
+/turf/space/ChangeTurf(var/turf/N, var/tell_universe, var/force_lighting_update, var/preserve_outdoors)
+	return ..(N, tell_universe, 1, preserve_outdoors)

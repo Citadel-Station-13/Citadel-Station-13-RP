@@ -1,10 +1,10 @@
-/mob/living/carbon/alien/say(var/message)
-	var/verb = "says"
+/mob/living/carbon/alien/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
+	verb = "says"
 	var/message_range = world.view
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			src << "<font color='red'>You cannot speak in IC (Muted).</font>"
+			to_chat(src, "<font color='red'>You cannot speak in IC (Muted).</font>")
 			return
 
 	message = sanitize(message)
@@ -15,7 +15,7 @@
 	if(copytext(message,1,2) == "*")
 		return emote(copytext(message,2))
 
-	var/datum/language/speaking = parse_language(message)
+	speaking = parse_language(message)
 
 	message = trim(message)
 

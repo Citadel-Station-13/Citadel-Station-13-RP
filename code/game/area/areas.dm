@@ -11,7 +11,6 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	plane = PLANE_LIGHTING_ABOVE //In case we color them
-	luminosity = 0
 	mouse_opacity = 0
 	var/lightswitch = 1
 
@@ -21,13 +20,22 @@
 	var/requires_power = 1
 	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
 
-	var/power_equip = 1
-	var/power_light = 1
-	var/power_environ = 1
+	// Power channel status - Is it currently energized?
+	var/power_equip = TRUE
+	var/power_light = TRUE
+	var/power_environ = TRUE
+
+	// Oneoff power usage - Used once and cleared each power cycle
+	var/oneoff_equip = 0
+	var/oneoff_light = 0
+	var/oneoff_environ = 0
+
+	// Continuous "static" power usage - Do not update these directly!
+	var/static_equip = 0
+	var/static_light = 0
+	var/static_environ = 0
+
 	var/music = null
-	var/used_equip = 0
-	var/used_light = 0
-	var/used_environ = 0
 
 	var/has_gravity = 1
 	var/obj/machinery/power/apc/apc = null
@@ -35,43 +43,149 @@
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/firedoors_closed = 0
-	var/list/ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
+	var/list/ambience = list()
 	var/list/forced_ambience = null
 	var/sound_env = STANDARD_STATION
 	var/turf/base_turf //The base turf type of the area, which can be used to override the z-level's base turf
 	var/global/global_uid = 0
 	var/uid
 
+	/// If false, loading multiple maps with this area type will create multiple instances.
+	var/unique = TRUE
+
+	/// Color on minimaps, if it's null (which is default) it makes one at random.
+	var/minimap_color
+
+/**
+ * Called when an area loads
+ *
+ *  Adds the item to the GLOB.areas_by_type list based on area type
+ */
 /area/New()
-	icon_state = ""
+	// This interacts with the map loader, so it needs to be set immediately
+	// rather than waiting for atoms to initialize.
+	if (unique)
+		GLOB.areas_by_type[type] = src
+
 	uid = ++global_uid
-	all_areas += src
 
-	if(!requires_power)
-		power_light = 0
-		power_equip = 0
-		power_environ = 0
+	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
+		// generate one using the icon_state
+		if(icon_state && icon_state != "unknown")
+			var/icon/I = new(icon, icon_state, dir)
+			I.Scale(1,1)
+			minimap_color = I.GetPixel(1,1)
+		else // no icon state? use random.
+			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70))	// This interacts with the map loader, so it needs to be set immediately
+	return ..()
 
-	if(dynamic_lighting)
+/area/Initialize(mapload)
+	icon_state = ""
+
+	if(requires_power)
 		luminosity = 0
 	else
-		luminosity = 1
+		power_light = TRUE
+		power_equip = TRUE
+		power_environ = TRUE
 
-	..()
+		if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
+			dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+			luminosity = 0
+		else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
+			dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	if(dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
+		dynamic_lighting = CONFIG_GET(number/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
 
-/area/initialize()
 	. = ..()
+
+	reg_in_areas_in_z()
+
+	blend_mode = BLEND_MULTIPLY // Putting this in the constructor so that it stops the icons being screwed up in the map editor.
+
+	if(!IS_DYNAMIC_LIGHTING(src))
+		add_overlay(/obj/effect/fullbright)
+
 	return INITIALIZE_HINT_LATELOAD // Areas tradiationally are initialized AFTER other atoms.
 
 /area/LateInitialize()
-	if(!requires_power || !apc)
-		power_light = 0
-		power_equip = 0
-		power_environ = 0
+	power_change()		// all machines set to current power level, also updates lighting icon
 	return INITIALIZE_HINT_LATELOAD
 
-/area/LateInitialize()
-	power_change()		// all machines set to current power level, also updates lighting icon
+/**
+ * Register this area as belonging to a z level
+ *
+ * Ensures the item is added to the SSmapping.areas_in_z list for this z
+ */
+/area/proc/reg_in_areas_in_z()
+	if(!length(contents))
+		return
+	var/list/areas_in_z = SSmapping.areas_in_z
+	// update_areasize()
+	if(!z)
+		WARNING("No z found for [src]")
+		return
+	if(!areas_in_z["[z]"])
+		areas_in_z["[z]"] = list()
+	areas_in_z["[z]"] += src
+
+/**
+ * Destroy an area and clean it up
+ *
+ * Removes the area from GLOB.areas_by_type and also stops it processing on SSobj
+ *
+ * This is despite the fact that no code appears to put it on SSobj, but
+ * who am I to argue with old coders
+ */
+/area/Destroy()
+	if(GLOB.areas_by_type[type] == src)
+		GLOB.areas_by_type[type] = null
+/*
+	if(base_area)
+		LAZYREMOVE(base_area, src)
+		base_area = null
+	if(sub_areas)
+		for(var/i in sub_areas)
+			var/area/A = i
+			A.base_area = null
+			sub_areas -= A
+			if(A.requires_power)
+				A.power_light = FALSE
+				A.power_equip = FALSE
+				A.power_environ = FALSE
+			INVOKE_ASYNC(A, .proc/power_change)
+*/
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+// Changes the area of T to A. Do not do this manually.
+// Area is expected to be a non-null instance.
+/proc/ChangeArea(var/turf/T, var/area/A)
+	if(!istype(A))
+		CRASH("Area change attempt failed: invalid area supplied.")
+	var/area/old_area = get_area(T)
+	if(old_area == A)
+		return
+	// NOTE: BayStation calles area.Exited/Entered for the TURF T.  So far we don't do that.s
+	// NOTE: There probably won't be any atoms in these turfs, but just in case we should call these procs.
+	A.contents.Add(T)
+	if(old_area)
+		// Handle dynamic lighting update if
+		if(T.dynamic_lighting && old_area.dynamic_lighting != A.dynamic_lighting)
+			if(A.dynamic_lighting)
+				T.lighting_build_overlay()
+			else
+				T.lighting_clear_overlay()
+		for(var/atom/movable/AM in T)
+			old_area.Exited(AM, A)
+	for(var/atom/movable/AM in T)
+		A.Entered(AM, old_area)
+	for(var/obj/machinery/M in T)
+		M.power_change()
+
+// compatibility wrapper, remove posthaste by making sure nothing checks area has_gravity.
+/area/has_gravity()
+	return has_gravity
 
 /area/proc/get_contents()
 	return contents
@@ -84,13 +198,13 @@
 
 /area/proc/atmosalert(danger_level, var/alarm_source)
 	if (danger_level == 0)
-		atmosphere_alarm.clearAlarm(src, alarm_source)
+		SSalarms.atmosphere_alarm.clearAlarm(src, alarm_source)
 	else
 		var/obj/machinery/alarm/atmosalarm = alarm_source //maybe other things can trigger these, who knows
 		if(istype(atmosalarm))
-			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
+			SSalarms.atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level, hidden = atmosalarm.alarms_hidden)
 		else
-			atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
+			SSalarms.atmosphere_alarm.triggerAlarm(src, alarm_source, severity = danger_level)
 
 	//Check all the alarms before lowering atmosalm. Raising is perfectly fine.
 	for (var/obj/machinery/alarm/AA in src)
@@ -218,6 +332,7 @@
 #define ENVIRON 3
 */
 
+
 /area/proc/powered(var/chan)		// return true if the area has power to given channel
 
 	if(!requires_power)
@@ -241,83 +356,127 @@
 	if (fire || eject || party)
 		updateicon()
 
-/area/proc/usage(var/chan)
+/area/proc/usage(var/chan, var/include_static = TRUE)
 	var/used = 0
 	switch(chan)
 		if(LIGHT)
-			used += used_light
+			used += oneoff_light + (include_static * static_light)
 		if(EQUIP)
-			used += used_equip
+			used += oneoff_equip + (include_static * static_equip)
 		if(ENVIRON)
-			used += used_environ
+			used += oneoff_environ + (include_static * static_environ)
 		if(TOTAL)
-			used += used_light + used_equip + used_environ
+			used += oneoff_light + (include_static * static_light)
+			used += oneoff_equip + (include_static * static_equip)
+			used += oneoff_environ + (include_static * static_environ)
 	return used
 
+// Helper for APCs; will generally be called every tick.
 /area/proc/clear_usage()
-	used_equip = 0
-	used_light = 0
-	used_environ = 0
+	oneoff_equip = 0
+	oneoff_light = 0
+	oneoff_environ = 0
 
-/area/proc/use_power(var/amount, var/chan)
+// Use this for a one-time power draw from the area, typically for non-machines.
+/area/proc/use_power_oneoff(var/amount, var/chan)
 	switch(chan)
 		if(EQUIP)
-			used_equip += amount
+			oneoff_equip += amount
 		if(LIGHT)
-			used_light += amount
+			oneoff_light += amount
 		if(ENVIRON)
-			used_environ += amount
+			oneoff_environ += amount
+	return amount
+
+// This is used by machines to properly update the area of power changes.
+/area/proc/power_use_change(old_amount, new_amount, chan)
+	use_power_static(new_amount - old_amount, chan) // Simultaneously subtract old_amount and add new_amount.
+
+// Not a proc you want to use directly unless you know what you are doing; see use_power_oneoff above instead.
+/area/proc/use_power_static(var/amount, var/chan)
+	switch(chan)
+		if(EQUIP)
+			static_equip += amount
+		if(LIGHT)
+			static_light += amount
+		if(ENVIRON)
+			static_environ += amount
+
+// This recomputes the continued power usage; can be used for testing or error recovery, but is not called every tick.
+/area/proc/retally_power()
+	static_equip = 0
+	static_light = 0
+	static_environ = 0
+	for(var/obj/machinery/M in src)
+		switch(M.power_channel)
+			if(EQUIP)
+				static_equip += M.get_power_usage()
+			if(LIGHT)
+				static_light += M.get_power_usage()
+			if(ENVIRON)
+				static_environ += M.get_power_usage()
 
 
-var/list/mob/living/forced_ambiance_list = new
+//////////////////////////////////////////////////////////////////
 
-/area/Entered(A)
-	if(!istype(A,/mob/living))	return
+/area/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("check_static_power", "Check Static Power")
 
-	var/mob/living/L = A
-	if(!L.ckey)	return
+/area/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list["check_static_power"])
+		if(!check_rights(R_DEBUG))
+			return
+		src.check_static_power(usr)
+		href_list["datumrefresh"] = "\ref[src]"
 
-	if(!L.lastarea)
-		L.lastarea = get_area(L.loc)
-	var/area/newarea = get_area(L.loc)
-	var/area/oldarea = L.lastarea
-	if((oldarea.has_gravity == 0) && (newarea.has_gravity == 1) && (L.m_intent == "run")) // Being ready when you change areas gives you a chance to avoid falling all together.
-		thunk(L)
-		L.update_floating( L.Check_Dense_Object() )
+// Debugging proc to report if static power is correct or not.
+/area/proc/check_static_power(var/user)
+	set name = "Check Static Power"
+	var/actual_static_equip = static_equip
+	var/actual_static_light = static_light
+	var/actual_static_environ = static_environ
+	retally_power()
+	if(user)
+		var/list/report = list("[src] ([type]) static power tally:")
+		report += "EQUIP:   Actual: [actual_static_equip] Correct: [static_equip] Difference: [actual_static_equip - static_equip]"
+		report += "LIGHT:   Actual: [actual_static_light] Correct: [static_light] Difference: [actual_static_light - static_light]"
+		report += "ENVIRON: Actual: [actual_static_environ] Correct: [static_environ] Difference: [actual_static_environ - static_environ]"
+		to_chat(user, report.Join("\n"))
+	return (actual_static_equip == static_equip && actual_static_light == static_light && actual_static_environ == static_environ)
 
-	L.lastarea = newarea
-	play_ambience(L)
+//////////////////////////////////////////////////////////////////
+
+GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 /area/proc/play_ambience(var/mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!(L && L.is_preference_enabled(/datum/client_preference/play_ambiance)))	return
+	if(!L?.is_preference_enabled(/datum/client_preference/play_ambiance))
+		return
 
 	// If we previously were in an area with force-played ambiance, stop it.
-	if(L in forced_ambiance_list)
-		L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)
-		forced_ambiance_list -= L
-
-	if(!L.client.ambience_playing)
-		L.client.ambience_playing = 1
-		L << sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 35, channel = CHANNEL_AMBIENCE)
+	if(L in GLOB.forced_ambiance_list)
+		L.stop_sound_channel(CHANNEL_AMBIENCE_FORCED)
+		GLOB.forced_ambiance_list -= L
 
 	if(forced_ambience)
 		if(forced_ambience.len)
-			forced_ambiance_list |= L
+			GLOB.forced_ambiance_list |= L
 			var/sound/chosen_ambiance = pick(forced_ambience)
 			if(!istype(chosen_ambiance))
 				chosen_ambiance = sound(chosen_ambiance, repeat = 1, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE_FORCED)
-			L << chosen_ambiance
+			SEND_SOUND(L, chosen_ambiance)
 		else
-			L << sound(null, channel = CHANNEL_AMBIENCE_FORCED)
+			L.stop_sound_channel(CHANNEL_AMBIENCE_FORCED)
 	else if(src.ambience.len && prob(35))
-		if((world.time >= L.client.played + 600))
+		if((world.time >= L.client.time_last_ambience_played + 1 MINUTE))
 			var/sound = pick(ambience)
-			L << sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE)
-			L.client.played = world.time
+			SEND_SOUND(L, sound(sound, repeat = 0, wait = 0, volume = 50, channel = CHANNEL_AMBIENCE))
+			L.client.time_last_ambience_played = world.time
 
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)
-	A.has_gravity = gravitystate
+	A?.has_gravity = gravitystate
 
 	for(var/mob/M in A)
 		if(has_gravity)
@@ -334,14 +493,15 @@ var/list/mob/living/forced_ambiance_list = new
 			return // Being buckled to something solid keeps you in place.
 		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.item_flags & NOSLIP))
 			return
-
+		if(H.flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
+			return
 		if(H.m_intent == "run")
 			H.AdjustStunned(6)
 			H.AdjustWeakened(6)
 		else
 			H.AdjustStunned(3)
 			H.AdjustWeakened(3)
-		mob << "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>"
+		to_chat(mob, "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>")
 		playsound(get_turf(src), "bodyfall", 50, 1)
 
 /area/proc/prison_break()
@@ -354,21 +514,9 @@ var/list/mob/living/forced_ambiance_list = new
 		for(var/obj/machinery/door/window/temp_windoor in src)
 			temp_windoor.open()
 
-/area/has_gravity()
-	return has_gravity
-
-/area/space/has_gravity()
-	return 0
-
-/proc/has_gravity(atom/AT, turf/T)
-	if(!T)
-		T = get_turf(AT)
-	var/area/A = get_area(T)
-	if(A && A.has_gravity())
-		return 1
-	return 0
-
 /area/proc/shuttle_arrived()
+	for(var/obj/machinery/power/apc/A in contents)
+		A.update_area()
 	return TRUE
 
 /area/proc/shuttle_departed()
@@ -384,32 +532,32 @@ var/list/mob/living/forced_ambiance_list = new
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
 var/list/teleportlocs = list()
 
-/hook/startup/proc/setupTeleportLocs()
-	for(var/area/AR in all_areas)
+/proc/setupTeleportLocs()
+	for(var/area/AR in GLOB.sortedAreas)
 		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station)) continue
 		if(teleportlocs.Find(AR.name)) continue
 		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in using_map.station_levels)
+		if (picked.z in GLOB.using_map.station_levels)
 			teleportlocs += AR.name
 			teleportlocs[AR.name] = AR
 
-	teleportlocs = sortAssoc(teleportlocs)
+	teleportlocs = sortTim(teleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1
 
 var/list/ghostteleportlocs = list()
 
 /hook/startup/proc/setupGhostTeleportLocs()
-	for(var/area/AR in all_areas)
+	for(var/area/AR in GLOB.sortedAreas)
 		if(ghostteleportlocs.Find(AR.name)) continue
 		if(istype(AR, /area/aisat) || istype(AR, /area/derelict) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom))
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in using_map.player_levels)
+		if (picked.z in GLOB.using_map.player_levels)
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
-	ghostteleportlocs = sortAssoc(ghostteleportlocs)
+	ghostteleportlocs = sortTim(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1

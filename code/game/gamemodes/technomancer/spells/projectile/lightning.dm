@@ -4,10 +4,10 @@
 	for a directed lightning strike to occur.  The lightning is very strong, however it requires a few seconds to prepare a \
 	strike.  Lightning functions cannot miss due to distance."
 	cost = 150
-	obj_path = /obj/item/weapon/spell/projectile/lightning
+	obj_path = /obj/item/spell/projectile/lightning
 	category = OFFENSIVE_SPELLS
 
-/obj/item/weapon/spell/projectile/lightning
+/obj/item/spell/projectile/lightning
 	name = "lightning strike"
 	icon_state = "lightning_strike"
 	desc = "Now you can feel like Zeus."
@@ -26,9 +26,9 @@
 	nodamage = 1
 	damage_type = HALLOSS
 
-	muzzle_type = /obj/effect/projectile/lightning/muzzle
-	tracer_type = /obj/effect/projectile/lightning/tracer
-	impact_type = /obj/effect/projectile/lightning/impact
+	muzzle_type = /obj/effect/projectile/muzzle/lightning
+	tracer_type = /obj/effect/projectile/tracer/lightning
+	impact_type = /obj/effect/projectile/impact/lightning
 
 	var/power = 60				//How hard it will hit for with electrocute_act().
 

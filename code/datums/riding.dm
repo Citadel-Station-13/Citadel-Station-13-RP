@@ -43,7 +43,7 @@
 			var/mob/living/buckled_mob = m
 			var/list/offsets = get_offsets(passindex)
 			var/rider_dir = get_rider_dir(passindex)
-			buckled_mob.set_dir(rider_dir)
+			buckled_mob.setDir(rider_dir)
 			dir_loop:
 				for(var/offsetdir in offsets)
 					if(offsetdir == ridden_dir)
@@ -130,7 +130,7 @@
 
 // I'm on a
 /datum/riding/boat
-	keytype = /obj/item/weapon/oar
+	keytype = /obj/item/oar
 	key_name = "an oar"
 	nonhuman_key_exemption = TRUE // Borgs can't hold oars.
 	only_one_driver = TRUE // Would be pretty crazy if five people try to move at the same time.

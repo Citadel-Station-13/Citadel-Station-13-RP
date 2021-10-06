@@ -12,8 +12,8 @@
 	A number between 0 and 100, with higher numbers resulting in less damage taken.
 */
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
-	if(Debug2)
-		world.log << "## DEBUG: getarmor() was called."
+	if(GLOB.Debug2)
+		log_world("## DEBUG: getarmor() was called.")
 
 	if(armour_pen >= 100)
 		return 0 //might as well just skip the processing
@@ -22,24 +22,24 @@
 	if(armor)
 		var/armor_variance_range = round(armor * 0.25) //Armor's effectiveness has a +25%/-25% variance.
 		var/armor_variance = rand(-armor_variance_range, armor_variance_range) //Get a random number between -25% and +25% of the armor's base value
-		if(Debug2)
-			world.log << "## DEBUG: The range of armor variance is [armor_variance_range].  The variance picked by RNG is [armor_variance]."
+		if(GLOB.Debug2)
+			log_world("## DEBUG: The range of armor variance is [armor_variance_range].  The variance picked by RNG is [armor_variance].")
 
 		armor = min(armor + armor_variance, 100)	//Now we calcuate damage using the new armor percentage.
 		armor = max(armor - armour_pen, 0)			//Armor pen makes armor less effective.
 		if(armor >= 100)
 			if(absorb_text)
-				src << "<span class='danger'>[absorb_text]</span>"
+				to_chat(src, "<span class='danger'>[absorb_text]</span>")
 			else
-				src << "<span class='danger'>Your armor absorbs the blow!</span>"
+				to_chat(src, "<span class='danger'>Your armor absorbs the blow!</span>")
 
 		else if(armor > 0)
 			if(soften_text)
-				src << "<span class='danger'>[soften_text]</span>"
+				to_chat(src, "<span class='danger'>[soften_text]</span>")
 			else
-				src << "<span class='danger'>Your armor softens the blow!</span>"
-		if(Debug2)
-			world.log << "## DEBUG: Armor when [src] was attacked was [armor]."
+				to_chat(src, "<span class='danger'>Your armor softens the blow!</span>")
+		if(GLOB.Debug2)
+			log_world("## DEBUG: Armor when [src] was attacked was [armor].")
 	return armor
 
 /*
@@ -92,21 +92,32 @@
 /mob/living/proc/getsoak(var/def_zone, var/type)
 	return 0
 
+// Clicking with an empty hand
+/mob/living/attack_hand(mob/living/L)
+	..()
+	if(istype(L) && L.a_intent != INTENT_HELP)
+		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
+			ai_holder.react_to_attack(L)
+
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
 
 	//Being hit while using a deadman switch
-	if(istype(get_active_hand(),/obj/item/device/assembly/signaler))
-		var/obj/item/device/assembly/signaler/signaler = get_active_hand()
+	if(istype(get_active_hand(),/obj/item/assembly/signaler))
+		var/obj/item/assembly/signaler/signaler = get_active_hand()
 		if(signaler.deadman && prob(80))
 			log_and_message_admins("has triggered a signaler deadman's switch")
 			src.visible_message("<font color='red'>[src] triggers their deadman's switch!</font>")
 			signaler.signal()
+
+	if(ai_holder && P.firer)
+		ai_holder.react_to_attack(P.firer)
 
 	//Armor
 	var/soaked = get_armor_soak(def_zone, P.check_armour, P.armor_penetration)
 	var/absorb = run_armor_check(def_zone, P.check_armour, P.armor_penetration)
 	var/proj_sharp = is_sharp(P)
 	var/proj_edge = has_edge(P)
+	var/final_damage = P.get_final_damage(src)
 
 	if ((proj_sharp || proj_edge) && (soaked >= round(P.damage*0.8)))
 		proj_sharp = 0
@@ -119,14 +130,14 @@
 	//Stun Beams
 	if(P.taser_effect)
 		stun_effect_act(0, P.agony, def_zone, P)
-		src <<"<font color='red'>You have been hit by [P]!</font>"
+		to_chat(src, "<font color='red'>You have been hit by [P]!</font>")
 		if(!P.nodamage)
-			apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+			apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 		qdel(P)
 		return
 
 	if(!P.nodamage)
-		apply_damage(P.damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
+		apply_damage(final_damage, P.damage_type, def_zone, absorb, soaked, 0, P, sharp=proj_sharp, edge=proj_edge)
 	P.on_hit(src, absorb, soaked, def_zone)
 
 	if(absorb == 100)
@@ -153,7 +164,7 @@
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
 
-/mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0)
+/mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
 	  return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
@@ -163,7 +174,7 @@
 	..()
 
 /mob/living/blob_act(var/obj/structure/blob/B)
-	if(stat == DEAD)
+	if(stat == DEAD || faction == "blob")
 		return
 
 	var/damage = rand(30, 40)
@@ -206,6 +217,9 @@
 /mob/living/proc/hit_with_weapon(obj/item/I, mob/living/user, var/effective_force, var/hit_zone)
 	visible_message("<span class='danger'>[src] has been [I.attack_verb.len? pick(I.attack_verb) : "attacked"] with [I.name] by [user]!</span>")
 
+	if(ai_holder)
+		ai_holder.react_to_attack(user)
+
 	var/soaked = get_armor_soak(hit_zone, "melee")
 	var/blocked = run_armor_check(hit_zone, "melee")
 
@@ -221,11 +235,6 @@
 /mob/living/proc/standard_weapon_hit_effects(obj/item/I, mob/living/user, var/effective_force, var/blocked, var/soaked, var/hit_zone)
 	if(!effective_force || blocked >= 100)
 		return 0
-
-	//Hulk modifier
-	if(HULK in user.mutations)
-		effective_force *= 2
-
 	//Apply weapon damage
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
@@ -255,7 +264,7 @@
 			miss_chance = max(15*(distance-2), 0)
 
 		if (prob(miss_chance))
-			visible_message("<font color='blue'>\The [O] misses [src] narrowly!</font>")
+			visible_message("<font color=#4F49AF>\The [O] misses [src] narrowly!</font>")
 			return
 
 		src.visible_message("<font color='red'>[src] has been hit by [O].</font>")
@@ -272,6 +281,8 @@
 			var/client/assailant = M.client
 			if(assailant)
 				add_attack_logs(M,src,"Hit by thrown [O.name]")
+			if(ai_holder)
+				ai_holder.react_to_attack(O.thrower)
 
 		// Begin BS12 momentum-transfer code.
 		var/mass = 1.5
@@ -292,7 +303,7 @@
 				if(soaked >= round(throw_damage*0.8))
 					return
 
-				//Handles embedding for non-humans and simple_animals.
+				//Handles embedding for non-humans and simple_mobs.
 				embed(O)
 
 				var/turf/T = near_wall(dir,2)
@@ -329,12 +340,13 @@
 // End BS12 momentum-transfer code.
 
 /mob/living/attack_generic(var/mob/user, var/damage, var/attack_message)
-
 	if(!damage)
 		return
 
 	adjustBruteLoss(damage)
-	add_attack_logs(user,src,"Generic attack (probably animal)", admin_notify = FALSE) //Usually due to simple_animal attacks
+	add_attack_logs(user,src,"Generic attack (probably animal)", admin_notify = FALSE) //Usually due to simple_mob attacks
+	if(ai_holder)
+		ai_holder.react_to_attack(user)
 	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
 	user.do_attack_animation(src)
 	spawn(1) updatehealth()
@@ -357,7 +369,7 @@
 	return
 
 /mob/living/proc/adjust_fire_stacks(add_fire_stacks) //Adjusting the amount of fire_stacks we have on person
-    fire_stacks = Clamp(fire_stacks + add_fire_stacks, FIRE_MIN_STACKS, FIRE_MAX_STACKS)
+    fire_stacks = clamp(fire_stacks + add_fire_stacks, FIRE_MIN_STACKS, FIRE_MAX_STACKS)
 
 /mob/living/proc/handle_fire()
 	if(fire_stacks < 0)
@@ -373,15 +385,20 @@
 		return 1
 
 	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
-	if(G.gas["oxygen"] < 1)
+	if(G.gas[/datum/gas/oxygen] < 1)
 		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
 		return 1
 
 	var/turf/location = get_turf(src)
 	location.hotspot_expose(fire_burn_temperature(), 50, 1)
 
-/mob/living/fire_act()
-	adjust_fire_stacks(2)
+//altered this to cap at the temperature of the fire causing it, using the same 1:1500 value as /mob/living/carbon/human/handle_fire() in human/life.dm
+/mob/living/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+	if(exposed_temperature)
+		if(fire_stacks < exposed_temperature/1500) // Subject to balance
+			adjust_fire_stacks(2)
+	else
+		adjust_fire_stacks(2)
 	IgniteMob()
 
 //Share fire evenly between the two mobs
@@ -412,6 +429,15 @@
 /mob/living/proc/get_heat_protection()
 	return 0
 
+/mob/living/proc/get_shock_protection()
+	return 0
+
+/mob/living/proc/get_water_protection()
+	return 1 // Water won't hurt most things.
+
+/mob/living/proc/get_poison_protection()
+	return 0
+
 //Finds the effective temperature that the mob is burning at.
 /mob/living/proc/fire_burn_temperature()
 	if (fire_stacks <= 0)
@@ -421,9 +447,41 @@
 	//lower limit of 700 K, same as matches and roughly the temperature of a cool flame.
 	return max(2.25*round(FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE*(fire_stacks/FIRE_MAX_FIRESUIT_STACKS)**2), 700)
 
+// Called when struck by lightning.
+/mob/living/proc/lightning_act()
+	// The actual damage/electrocution is handled by the tesla_zap() that accompanies this.
+	Paralyse(5)
+	stuttering += 20
+	make_jittery(150)
+	emp_act(1)
+	to_chat(src, span("critical", "You've been struck by lightning!"))
+
+// Called when touching a lava tile.
+// Does roughly 100 damage to unprotected mobs, and 20 to fully protected mobs.
+/mob/living/lava_act()
+	add_modifier(/datum/modifier/fire/intense, 3 SECONDS) // Around 40 total if left to burn and without fire protection per stack.
+	inflict_heat_damage(10) // Another 40, however this is instantly applied to unprotected mobs.
+	adjustFireLoss(10) // Lava cannot be 100% resisted with fire protection.
+
+//Acid
+/mob/living/acid_act(var/mob/living/H)
+	make_dizzy(1)
+	adjustHalLoss(1)
+	inflict_heat_damage(5) // This is instantly applied to unprotected mobs.
+	inflict_poison_damage(5)
+	adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
+	adjustToxLoss(5)
+	confused = max(confused, 1)
+
+//Blood
+//Acid
+/mob/living/blood_act(var/mob/living/H)
+	inflict_poison_damage(5)
+	adjustToxLoss(5)
+
+
 /mob/living/proc/reagent_permeability()
 	return 1
-	return round(FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE*(fire_stacks/FIRE_MAX_FIRESUIT_STACKS)**2)
 
 /mob/living/proc/handle_actions()
 	//Pretty bad, i'd use picked/dropped instead but the parent calls in these are nonexistent
@@ -502,3 +560,15 @@
 		if(!isnull(M.evasion))
 			result += M.evasion
 	return result
+
+/mob/living/proc/get_accuracy_penalty()
+	// Certain statuses make it harder to score a hit.
+	var/accuracy_penalty = 0
+	if(eye_blind)
+		accuracy_penalty += 75
+	if(eye_blurry)
+		accuracy_penalty += 30
+	if(confused)
+		accuracy_penalty += 45
+
+	return accuracy_penalty

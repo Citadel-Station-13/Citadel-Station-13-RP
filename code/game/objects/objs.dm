@@ -1,12 +1,17 @@
 /obj
 	layer = OBJ_LAYER
 	plane = OBJ_PLANE
+
+	var/obj_flags = CAN_BE_HIT
+	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
+
 	//Used to store information about the contents of the object.
 	var/list/matter
 	var/w_class // Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
 	animate_movement = 2
 	var/throwforce = 1
+	var/catchable = 1	// can it be caught on throws/flying?
 	var/sharp = 0		// whether this object cuts
 	var/edge = 0		// whether this object is more likely to dismember
 	var/pry = 0			//Used in attackby() to open doors
@@ -18,10 +23,37 @@
 	var/can_speak = 0 //For MMIs and admin trickery. If an object has a brainmob in its contents, set this to 1 to allow it to speak.
 
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
+	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
+
+/obj/Initialize(mapload)
+	if(register_as_dangerous_object)
+		register_dangerous_to_step()
+	. = ..()
+	if (set_obj_flags)
+		var/flagslist = splittext(set_obj_flags,";")
+		var/list/string_to_objflag = GLOB.bitfields["obj_flags"]
+		for (var/flag in flagslist)
+			if(flag[1] == "!")
+				flag = copytext(flag, length(flag[1]) + 1) // Get all but the initial !
+				obj_flags &= ~string_to_objflag[flag]
+			else
+				obj_flags |= string_to_objflag[flag]
 
 /obj/Destroy()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
+	if(register_as_dangerous_object)
+		unregister_dangerous_to_step()
 	return ..()
+
+/obj/Moved(atom/oldloc)
+	. = ..()
+	if(register_as_dangerous_object)
+		var/turf/old_turf = get_turf(oldloc)
+		var/turf/new_turf = get_turf(src)
+
+		if(old_turf != new_turf)
+			old_turf.unregister_dangerous_object(src)
+			new_turf.register_dangerous_object(src)
 
 /obj/Topic(href, href_list, var/datum/topic_state/state = default_state)
 	if(usr && ..())
@@ -29,18 +61,18 @@
 
 	// In the far future no checks are made in an overriding Topic() beyond if(..()) return
 	// Instead any such checks are made in CanUseTopic()
-	if(CanUseTopic(usr, state, href_list) == STATUS_INTERACTIVE)
+	if(CanUseTopic(usr, state, href_list) == UI_INTERACTIVE)
 		CouldUseTopic(usr)
 		return 0
 
 	CouldNotUseTopic(usr)
 	return 1
 
-/obj/CanUseTopic(var/mob/user, var/datum/topic_state/state)
+/obj/CanUseTopic(var/mob/user, var/datum/topic_state/state = default_state)
 	if(user.CanUseObjTopic(src))
 		return ..()
-	user << "<span class='danger'>\icon[src]Access Denied!</span>"
-	return STATUS_CLOSE
+	to_chat(user, "<span class='danger'>[icon2html(thing = src, target = user)] Access Denied!</span>")
+	return UI_CLOSE
 
 /mob/living/silicon/CanUseObjTopic(var/obj/O)
 	var/id = src.GetIdCard()
@@ -57,10 +89,6 @@
 	// Nada
 
 /obj/item/proc/is_used_on(obj/O, mob/user)
-
-/obj/proc/process()
-	processing_objects.Remove(src)
-	return 0
 
 /obj/assume_air(datum/gas_mixture/giver)
 	if(loc)
@@ -120,11 +148,8 @@
 			in_use = 0
 
 /obj/attack_ghost(mob/user)
-	ui_interact(user)
+	nano_ui_interact(user)
 	..()
-
-/obj/proc/interact(mob/user)
-	return
 
 /mob/proc/unset_machine()
 	src.machine = null
@@ -158,11 +183,41 @@
 		*/
 	return
 
+/obj/proc/hear_signlang(mob/M as mob, text, verb, datum/language/speaking) // Saycode gets worse every day.
+	return FALSE
+
 /obj/proc/see_emote(mob/M as mob, text, var/emote_type)
 	return
 
 /obj/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 	return
 
-/obj/proc/get_cell()
+// Used to mark a turf as containing objects that are dangerous to step onto.
+/obj/proc/register_dangerous_to_step()
+	var/turf/T = get_turf(src)
+	if(T)
+		T.register_dangerous_object(src)
+
+/obj/proc/unregister_dangerous_to_step()
+	var/turf/T = get_turf(src)
+	if(T)
+		T.unregister_dangerous_object(src)
+
+// Test for if stepping on a tile containing this obj is safe to do, used for things like landmines and cliffs.
+/obj/proc/is_safe_to_step(mob/living/L)
+	return TRUE
+
+/obj/examine(mob/user)
+	. = ..()
+	if(matter)
+		if(!matter.len)
+			return
+		var/materials_list
+		var/i = 1
+		while(i<matter.len)
+			materials_list += lowertext(matter[i])
+			materials_list += ", "
+			i++
+		materials_list += matter[i]
+		. += "<u>It is made out of [materials_list]</u>."
 	return

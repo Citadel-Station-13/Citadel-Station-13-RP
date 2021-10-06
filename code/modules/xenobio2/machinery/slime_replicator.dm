@@ -10,31 +10,30 @@
 	icon_state = "restruct_0"
 	density = 1
 	anchored = 1
-	circuit = /obj/item/weapon/circuitboard/slimereplicator
+	circuit = /obj/item/circuitboard/slimereplicator
 	var/obj/item/xenoproduct/slime/core/core = null
 	var/inuse
 	var/occupiedcolor = "#22FF22"
 	var/emptycolor = "#FF2222"
 	var/operatingcolor = "#FFFF22"
 
-/obj/machinery/slime/replicator/New()
-	..()
+/obj/machinery/slime/replicator/Initialize(mapload)
+	. = ..()
 	component_parts = list()
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/manipulator(src)
-	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/manipulator(src)
+	component_parts += new /obj/item/stock_parts/matter_bin(src)
+	component_parts += new /obj/item/stock_parts/micro_laser(src)
 	RefreshParts()
 	update_light_color()
 
-
 /obj/machinery/slime/replicator/attackby(var/obj/item/W, var/mob/user)
 	//Let's try to deconstruct first.
-	if(istype(W, /obj/item/weapon/screwdriver) && !inuse)
+	if(W.is_screwdriver() && !inuse)
 		default_deconstruction_screwdriver(user, W)
 		return
 
-	if(istype(W, /obj/item/weapon/crowbar))
+	if(W.is_crowbar())
 		default_deconstruction_crowbar(user, W)
 		return
 
@@ -44,10 +43,10 @@
 		return ..()
 
 	if(core)
-		user << "<span class='warning'>[src] is already filled!</span>"
+		to_chat(user, "<span class='warning'>[src] is already filled!</span>")
 		return
 	if(panel_open)
-		user << "<span class='warning'>Close the panel first!</span>"
+		to_chat(user, "<span class='warning'>Close the panel first!</span>")
 	core = G
 	user.drop_from_inventory(G)
 	G.forceMove(src)
@@ -63,7 +62,7 @@
 
 /obj/machinery/slime/replicator/proc/replicate_slime()
 	if(!src.core)
-		src.visible_message("\icon[src] [src] pings unhappily.")
+		src.visible_message("[icon2html(thing = src, target = world)] [src] pings unhappily.")
 	else if(inuse)
 		return
 
@@ -71,7 +70,7 @@
 	update_light_color()
 	icon_state = "restruct_1"
 	spawn(30)
-		var/mob/living/simple_animal/xeno/slime/S = new(src)
+		var/mob/living/simple_mob/xeno/slime/S = new(src)
 		S.traitdat = new()	//New instance, so that if the core is deleted, the slime retains a trait datum.
 		S.nameVar = core.nameVar
 		S.name = "[S.nameVar] baby slime"
@@ -136,14 +135,14 @@
 	return
 
 //Circuit board below,
-/obj/item/weapon/circuitboard/slimereplicator
+/obj/item/circuitboard/slimereplicator
 	name = T_BOARD("Slime replicator")
 	build_path = "/obj/machinery/slime/replicator"
 	board_type = "machine"
 	origin_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	req_components = list(
-							/obj/item/weapon/stock_parts/manipulator = 2,
-							/obj/item/weapon/stock_parts/matter_bin = 1,
-							/obj/item/weapon/stock_parts/micro_laser = 1
+							/obj/item/stock_parts/manipulator = 2,
+							/obj/item/stock_parts/matter_bin = 1,
+							/obj/item/stock_parts/micro_laser = 1
 							)
 

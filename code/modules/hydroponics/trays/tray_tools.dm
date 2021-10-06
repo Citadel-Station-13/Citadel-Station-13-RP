@@ -1,10 +1,17 @@
 //Analyzer, pestkillers, weedkillers, nutrients, hatchets, cutters.
 
-/obj/item/weapon/wirecutters/clippers
+/obj/item/tool/wirecutters/clippers
 	name = "plant clippers"
 	desc = "A tool used to take samples from plants."
 
-/obj/item/device/analyzer/plant_analyzer
+/obj/item/tool/wirecutters/clippers/trimmers
+    name = "hedgetrimmers"
+    desc = "An old pair of trimmers with a pretty dull blade. You would probably have a hard time cutting anything but plants with it."
+    icon_state = "hedget"
+    item_state = "hedget"
+    force = 7 //One point extra than standard wire cutters.
+
+/obj/item/analyzer/plant_analyzer
 	name = "plant analyzer"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "hydro"
@@ -12,7 +19,7 @@
 	var/form_title
 	var/last_data
 
-/obj/item/device/analyzer/plant_analyzer/proc/print_report_verb()
+/obj/item/analyzer/plant_analyzer/proc/print_report_verb()
 	set name = "Print Plant Report"
 	set category = "Object"
 	set src = usr
@@ -21,17 +28,17 @@
 		return
 	print_report(usr)
 
-/obj/item/device/analyzer/plant_analyzer/Topic(href, href_list)
+/obj/item/analyzer/plant_analyzer/Topic(href, href_list)
 	if(..())
 		return
 	if(href_list["print"])
 		print_report(usr)
 
-/obj/item/device/analyzer/plant_analyzer/proc/print_report(var/mob/living/user)
+/obj/item/analyzer/plant_analyzer/proc/print_report(var/mob/living/user)
 	if(!last_data)
-		user << "There is no scan data to print."
+		to_chat(user, "There is no scan data to print.")
 		return
-	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(src))
+	var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 	P.name = "paper - [form_title]"
 	P.info = "[last_data]"
 	if(istype(user,/mob/living/carbon/human))
@@ -39,26 +46,26 @@
 	user.visible_message("\The [src] spits out a piece of paper.")
 	return
 
-/obj/item/device/analyzer/plant_analyzer/attack_self(mob/user as mob)
+/obj/item/analyzer/plant_analyzer/attack_self(mob/user as mob)
 	print_report(user)
 	return 0
 
-/obj/item/device/analyzer/plant_analyzer/afterattack(obj/target, mob/user, flag)
+/obj/item/analyzer/plant_analyzer/afterattack(obj/target, mob/user, flag)
 	if(!flag) return
 
 	var/datum/seed/grown_seed
 	var/datum/reagents/grown_reagents
 	if(istype(target,/obj/structure/table))
 		return ..()
-	else if(istype(target,/obj/item/weapon/reagent_containers/food/snacks/grown))
+	else if(istype(target,/obj/item/reagent_containers/food/snacks/grown))
 
-		var/obj/item/weapon/reagent_containers/food/snacks/grown/G = target
+		var/obj/item/reagent_containers/food/snacks/grown/G = target
 		grown_seed = plant_controller.seeds[G.plantname]
 		grown_reagents = G.reagents
 
-	else if(istype(target,/obj/item/weapon/grown))
+	else if(istype(target,/obj/item/grown))
 
-		var/obj/item/weapon/grown/G = target
+		var/obj/item/grown/G = target
 		grown_seed = plant_controller.seeds[G.plantname]
 		grown_reagents = G.reagents
 
@@ -77,7 +84,7 @@
 		grown_reagents = H.reagents
 
 	if(!grown_seed)
-		user << "<span class='danger'>[src] can tell you nothing about \the [target].</span>"
+		to_chat(user, "<span class='danger'>[src] can tell you nothing about \the [target].</span>")
 		return
 
 	form_title = "[grown_seed.seed_name] (#[grown_seed.uid])"
@@ -212,7 +219,7 @@
 				amount = "large amounts of "
 			else if (grown_seed.exude_gasses[gas] < 5)
 				amount = "small amounts of "
-			dat += "<br>It will release [amount][gas_data.name[gas]] into the environment."
+			dat += "<br>It will release [amount][GLOB.meta_gas_names[gas]] into the environment."
 
 	if(grown_seed.consume_gasses && grown_seed.consume_gasses.len)
 		for(var/gas in grown_seed.consume_gasses)
@@ -221,7 +228,7 @@
 				amount = "large amounts of "
 			else if (grown_seed.consume_gasses[gas] < 5)
 				amount = "small amounts of "
-			dat += "<br>It will consume [amount][gas_data.name[gas]] from the environment."
+			dat += "<br>It will consume [amount][GLOB.meta_gas_names[gas]] from the environment."
 
 	if(dat)
 		last_data = dat

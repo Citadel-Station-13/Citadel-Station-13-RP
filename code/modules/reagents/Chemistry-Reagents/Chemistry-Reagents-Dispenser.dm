@@ -4,8 +4,17 @@
 	description = "A silvery white and ductile member of the boron group of chemical elements."
 	taste_description = "metal"
 	taste_mult = 1.1
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#A8A8A8"
+
+/datum/reagent/calcium
+	name = "Calcium"
+	id = "calcium"
+	description = "A chemical element, the building block of bones."
+	taste_description = "metallic chalk" // Apparently, calcium tastes like calcium.
+	taste_mult = 1.3
+	reagent_state = REAGENT_SOLID
+	color = "#e9e6e4"
 
 /datum/reagent/carbon
 	name = "Carbon"
@@ -13,7 +22,7 @@
 	description = "A chemical element, the building block of life."
 	taste_description = "sour chalk"
 	taste_mult = 1.5
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#1C1300"
 	ingest_met = REM * 5
 
@@ -41,7 +50,7 @@
 	id = "chlorine"
 	description = "A chemical element with a characteristic odour."
 	taste_description = "pool water"
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/chlorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -62,7 +71,7 @@
 	id = "ethanol"
 	description = "A well-known alcohol with a variety of applications."
 	taste_description = "pure alcohol"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#404030"
 
 	ingest_met = REM * 2
@@ -96,24 +105,29 @@
 		strength_mod = 0
 	if(alien == IS_SLIME)
 		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed)
-	
-	M.add_chemical_effect(CE_ALCOHOL, 1)
+	if(alien == IS_ALRAUNE)
+		if(prob(5))
+			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
+		strength_mod *=5 //cit change - alcohol ain't good for plants
 
-	if(dose * strength_mod >= strength) // Early warning
+	M.add_chemical_effect(CE_ALCOHOL, 1)
+	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
+
+	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(18) // It is decreased at the speed of 3 per tick
-	if(dose * strength_mod >= strength * 2) // Slurring
+	if(effective_dose >= strength * 2) // Slurring
 		M.slurring = max(M.slurring, 90)
-	if(dose * strength_mod >= strength * 3) // Confusion - walking in random directions
+	if(effective_dose >= strength * 3) // Confusion - walking in random directions
 		M.Confuse(60)
-	if(dose * strength_mod >= strength * 4) // Blurry vision
+	if(effective_dose >= strength * 4) // Blurry vision
 		M.eye_blurry = max(M.eye_blurry, 30)
-	if(dose * strength_mod >= strength * 5) // Drowsyness - periodically falling asleep
+	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
 		M.drowsyness = max(M.drowsyness, 60)
-	if(dose * strength_mod >= strength * 6) // Toxic dose
+	if(effective_dose >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*3)
-	if(dose * strength_mod >= strength * 7) // Pass out
-		M.paralysis = max(M.paralysis, 60)
-		M.sleeping  = max(M.sleeping, 90)
+	if(effective_dose >= strength * 7) // Pass out
+		M.Paralyse(60)
+		M.Sleeping(90)
 
 	if(druggy != 0)
 		M.druggy = max(M.druggy, druggy*3)
@@ -156,8 +170,8 @@
 	if(dose * strength_mod >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity)
 	if(dose * strength_mod >= strength * 7) // Pass out
-		M.paralysis = max(M.paralysis, 20)
-		M.sleeping  = max(M.sleeping, 30)
+		M.Paralyse(20)
+		M.Sleeping(30)
 
 	if(druggy != 0)
 		M.druggy = max(M.druggy, druggy)
@@ -171,20 +185,20 @@
 		M.hallucination = max(M.hallucination, halluci)
 
 /datum/reagent/ethanol/touch_obj(var/obj/O)
-	if(istype(O, /obj/item/weapon/paper))
-		var/obj/item/weapon/paper/paperaffected = O
+	if(istype(O, /obj/item/paper))
+		var/obj/item/paper/paperaffected = O
 		paperaffected.clearpaper()
-		usr << "The solution dissolves the ink on the paper."
+		to_chat(usr, "The solution dissolves the ink on the paper.")
 		return
-	if(istype(O, /obj/item/weapon/book))
+	if(istype(O, /obj/item/book))
 		if(volume < 5)
 			return
-		if(istype(O, /obj/item/weapon/book/tome))
-			usr << "<span class='notice'>The solution does nothing. Whatever this is, it isn't normal ink.</span>"
+		if(istype(O, /obj/item/book/tome))
+			to_chat(usr, "<span class='notice'>The solution does nothing. Whatever this is, it isn't normal ink.</span>")
 			return
-		var/obj/item/weapon/book/affectedbook = O
+		var/obj/item/book/affectedbook = O
 		affectedbook.dat = null
-		usr << "<span class='notice'>The solution dissolves the ink on the book.</span>"
+		to_chat(usr, "<span class='notice'>The solution dissolves the ink on the book.</span>")
 	return
 
 /datum/reagent/fluorine
@@ -192,7 +206,7 @@
 	id = "fluorine"
 	description = "A highly-reactive chemical element."
 	taste_description = "acid"
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/fluorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -206,7 +220,7 @@
 	id = "hydrogen"
 	description = "A colorless, odorless, nonmetallic, tasteless, highly combustible diatomic gas."
 	taste_mult = 0 //no taste
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/iron
@@ -214,7 +228,7 @@
 	id = "iron"
 	description = "Pure iron is a metal."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#353535"
 
 /datum/reagent/iron/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -226,13 +240,13 @@
 	id = "lithium"
 	description = "A chemical element, used as antidepressant."
 	taste_description = "metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#808080"
 
 /datum/reagent/lithium/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
 		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
-			step(M, pick(cardinal))
+			step(M, pick(GLOB.cardinal))
 		if(prob(5))
 			M.emote(pick("twitch", "drool", "moan"))
 
@@ -241,13 +255,13 @@
 	id = "mercury"
 	description = "A chemical element."
 	taste_mult = 0 //mercury apparently is tasteless. IDK
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#484848"
 
 /datum/reagent/mercury/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien != IS_DIONA)
 		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
-			step(M, pick(cardinal))
+			step(M, pick(GLOB.cardinal))
 		if(prob(5))
 			M.emote(pick("twitch", "drool", "moan"))
 		M.adjustBrainLoss(0.1)
@@ -257,7 +271,7 @@
 	id = "nitrogen"
 	description = "A colorless, odorless, tasteless gas."
 	taste_mult = 0 //no taste
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/oxygen
@@ -265,7 +279,7 @@
 	id = "oxygen"
 	description = "A colorless, odorless gas."
 	taste_mult = 0
-	reagent_state = GAS
+	reagent_state = REAGENT_GAS
 	color = "#808080"
 
 /datum/reagent/oxygen/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -277,15 +291,21 @@
 	id = "phosphorus"
 	description = "A chemical element, the backbone of biological energy carriers."
 	taste_description = "vinegar"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#832828"
+
+/datum/reagent/phosphorus/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_ALRAUNE)
+		if(prob(5))
+			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+		M.nutrition += removed * 2 //cit change - phosphorus is good for plants
 
 /datum/reagent/potassium
 	name = "Potassium"
 	id = "potassium"
 	description = "A soft, low-melting solid that can easily be cut with a knife. Reacts violently with water."
 	taste_description = "sweetness" //potassium is bitter in higher doses but sweet in lower ones.
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#A0A0A0"
 
 /datum/reagent/radium
@@ -293,7 +313,7 @@
 	id = "radium"
 	description = "Radium is an alkaline earth metal. It is extremely radioactive."
 	taste_mult = 0	//Apparently radium is tasteless
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#C7C7C7"
 
 /datum/reagent/radium/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -326,7 +346,7 @@
 	id = "sacid"
 	description = "A very corrosive mineral acid with the molecular formula H2SO4."
 	taste_description = "acid"
-	reagent_state = LIQUID
+	reagent_state = REAGENT_LIQUID
 	color = "#DB5008"
 	metabolism = REM * 2
 	touch_met = 50 // It's acid!
@@ -342,11 +362,11 @@
 		var/mob/living/carbon/human/H = M
 		if(H.head)
 			if(H.head.unacidable)
-				H << "<span class='danger'>Your [H.head] protects you from the acid.</span>"
+				to_chat(H, "<span class='danger'>Your [H.head] protects you from the acid.</span>")
 				remove_self(volume)
 				return
 			else if(removed > meltdose)
-				H << "<span class='danger'>Your [H.head] melts away!</span>"
+				to_chat(H, "<span class='danger'>Your [H.head] melts away!</span>")
 				qdel(H.head)
 				H.update_inv_head(1)
 				H.update_hair(1)
@@ -356,11 +376,11 @@
 
 		if(H.wear_mask)
 			if(H.wear_mask.unacidable)
-				H << "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>"
+				to_chat(H, "<span class='danger'>Your [H.wear_mask] protects you from the acid.</span>")
 				remove_self(volume)
 				return
 			else if(removed > meltdose)
-				H << "<span class='danger'>Your [H.wear_mask] melts away!</span>"
+				to_chat(H, "<span class='danger'>Your [H.wear_mask] melts away!</span>")
 				qdel(H.wear_mask)
 				H.update_inv_wear_mask(1)
 				H.update_hair(1)
@@ -370,10 +390,10 @@
 
 		if(H.glasses)
 			if(H.glasses.unacidable)
-				H << "<span class='danger'>Your [H.glasses] partially protect you from the acid!</span>"
+				to_chat(H, "<span class='danger'>Your [H.glasses] partially protect you from the acid!</span>")
 				removed /= 2
 			else if(removed > meltdose)
-				H << "<span class='danger'>Your [H.glasses] melt away!</span>"
+				to_chat(H, "<span class='danger'>Your [H.glasses] melt away!</span>")
 				qdel(H.glasses)
 				H.update_inv_glasses(1)
 				removed -= meltdose / 2
@@ -404,7 +424,7 @@
 		var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
 		I.desc = "Looks like this was \an [O] some time ago."
 		for(var/mob/M in viewers(5, O))
-			M << "<span class='warning'>\The [O] melts.</span>"
+			to_chat(M, "<span class='warning'>\The [O] melts.</span>")
 		qdel(O)
 		remove_self(meltdose) // 10 units of acid will not melt EVERYTHING on the tile
 
@@ -413,7 +433,7 @@
 	id = "silicon"
 	description = "A tetravalent metalloid, silicon is less reactive than its chemical analog carbon."
 	taste_mult = 0
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#A8A8A8"
 
 /datum/reagent/sodium
@@ -421,7 +441,7 @@
 	id = "sodium"
 	description = "A chemical element, readily reacts with water."
 	taste_description = "salty metal"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#808080"
 
 /datum/reagent/sugar
@@ -430,7 +450,7 @@
 	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
 	taste_description = "sugar"
 	taste_mult = 1.8
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#FFFFFF"
 
 	glass_name = "sugar"
@@ -455,15 +475,21 @@
 				M.Weaken(2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.sleeping = max(M.sleeping, 20)
+			M.Sleeping(20)
 			M.drowsyness = max(M.drowsyness, 60)
+
+	if(alien == IS_ALRAUNE) //cit change - too much sugar isn't good for plants
+		if(effective_dose < 2)
+			if(prob(5))
+				to_chat(M, "<span class='danger'>You feel an imbalance of energy.</span>")
+			M.make_jittery(4)
 
 /datum/reagent/sulfur
 	name = "Sulfur"
 	id = "sulfur"
 	description = "A chemical element with a pungent smell."
 	taste_description = "old eggs"
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#BF8C00"
 
 /datum/reagent/tungsten
@@ -472,5 +498,5 @@
 	description = "A chemical element, and a strong oxidising agent."
 	taste_description = "metal"
 	taste_mult = 0 //no taste
-	reagent_state = SOLID
+	reagent_state = REAGENT_SOLID
 	color = "#DCDCDC"

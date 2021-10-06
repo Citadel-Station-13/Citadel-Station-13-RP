@@ -1,10 +1,10 @@
 // Command to set the ckey of a mob without requiring VV permission
-/client/proc/SetCKey(var/mob/M in mob_list)
+/client/proc/SetCKey(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Set CKey"
 	set desc = "Mob to teleport"
 	if(!src.holder)
-		src << "Only administrators may use this command."
+		to_chat(src, "Only administrators may use this command.")
 		return
 
 	var/list/keys = list()

@@ -76,21 +76,28 @@
 			endgame_exits += loc
 			delete_me = 1
 			return
-
-	landmarks_list += src
+		if("lavaland_entry")
+			lavaland_entry += loc
+			delete_me = 1
+			return
+		if("lavaland_exit")
+			lavaland_exit += loc
+			delete_me = 1
+			return
+	GLOB.landmarks_list += src
 	return 1
 
 /obj/effect/landmark/proc/delete()
 	delete_me = 1
 
-/obj/effect/landmark/initialize()
+/obj/effect/landmark/Initialize()
 	. = ..()
 	if(delete_me)
 		return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/Destroy(var/force = FALSE)
 	if(delete_me || force)
-		landmarks_list -= src
+		GLOB.landmarks_list -= src
 		return ..()
 	return QDEL_HINT_LETMELIVE
 
@@ -131,7 +138,7 @@
 /obj/effect/landmark/costume/chicken/New()
 	new /obj/item/clothing/suit/chickensuit(src.loc)
 	new /obj/item/clothing/head/chicken(src.loc)
-	new /obj/item/weapon/reagent_containers/food/snacks/egg(src.loc)
+	new /obj/item/reagent_containers/food/snacks/egg(src.loc)
 	delete_me = 1
 
 /obj/effect/landmark/costume/gladiator/New()
@@ -190,7 +197,7 @@
 	var/CHOICE= pick( /obj/item/clothing/head/bowler, /obj/item/clothing/head/that)
 	new CHOICE(src.loc)
 	new /obj/item/clothing/shoes/black(src.loc)
-	new /obj/item/weapon/cane(src.loc)
+	new /obj/item/cane(src.loc)
 	new /obj/item/clothing/under/sl_suit(src.loc)
 	new /obj/item/clothing/mask/fakemoustache(src.loc)
 	delete_me = 1
@@ -243,13 +250,13 @@
 /obj/effect/landmark/costume/cutewitch/New()
 	new /obj/item/clothing/under/sundress(src.loc)
 	new /obj/item/clothing/head/witchwig(src.loc)
-	new /obj/item/weapon/staff/broom(src.loc)
+	new /obj/item/staff/broom(src.loc)
 	delete_me = 1
 
 /obj/effect/landmark/costume/fakewizard/New()
 	new /obj/item/clothing/suit/wizrobe/fake(src.loc)
 	new /obj/item/clothing/head/wizard/fake(src.loc)
-	new /obj/item/weapon/staff/(src.loc)
+	new /obj/item/staff/(src.loc)
 	delete_me = 1
 
 /obj/effect/landmark/costume/sexyclown/New()

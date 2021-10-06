@@ -6,9 +6,9 @@
 	parent_organ = BP_TORSO
 	vital = 1
 
-/obj/item/organ/internal/cell/New()
+/obj/item/organ/internal/cell/Initialize(mapload)
+	. = ..()
 	robotize()
-	..()
 
 /obj/item/organ/internal/cell/replaced()
 	..()
@@ -27,8 +27,8 @@
 	organ_tag = O_BRAIN
 	parent_organ = BP_HEAD
 	vital = 1
-	var/brain_type = /obj/item/device/mmi
-	var/obj/item/device/mmi/stored_mmi
+	var/brain_type = /obj/item/mmi
+	var/obj/item/mmi/stored_mmi
 	robotic = ORGAN_ASSISTED
 
 /obj/item/organ/internal/mmi_holder/Destroy()
@@ -37,14 +37,13 @@
 		stored_mmi = null
 	return ..()
 
-/obj/item/organ/internal/mmi_holder/New(var/mob/living/carbon/human/new_owner, var/internal)
-	..(new_owner, internal)
-	var/mob/living/carbon/human/dummy/mannequin/M = new_owner
+/obj/item/organ/internal/mmi_holder/Initialize(mapload, internal)
+	. = ..()
+	var/mob/living/carbon/human/dummy/mannequin/M = loc
 	if(istype(M))
 		return
 	stored_mmi = new brain_type(src)
-	sleep(-1)
-	update_from_mmi()
+	addtimer(CALLBACK(src, .proc/update_from_mmi), 0)
 
 /obj/item/organ/internal/mmi_holder/proc/update_from_mmi()
 
@@ -77,7 +76,7 @@
 
 	if(stored_mmi)
 		. = stored_mmi //VOREStation Code
-		stored_mmi.loc = get_turf(src)
+		stored_mmi.forceMove(drop_location())
 		if(owner.mind)
 			owner.mind.transfer_to(stored_mmi.brainmob)
 	..()
@@ -93,7 +92,7 @@
 
 /obj/item/organ/internal/mmi_holder/posibrain
 	name = "positronic brain interface"
-	brain_type = /obj/item/device/mmi/digital/posibrain
+	brain_type = /obj/item/mmi/digital/posibrain
 	robotic = ORGAN_ROBOT
 
 /obj/item/organ/internal/mmi_holder/posibrain/update_from_mmi()
@@ -105,7 +104,7 @@
 
 /obj/item/organ/internal/mmi_holder/robot
 	name = "digital brain interface"
-	brain_type = /obj/item/device/mmi/digital/robot
+	brain_type = /obj/item/mmi/digital/robot
 	robotic = ORGAN_ROBOT
 
 /obj/item/organ/internal/mmi_holder/robot/update_from_mmi()

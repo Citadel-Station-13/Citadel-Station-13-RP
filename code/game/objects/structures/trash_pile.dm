@@ -9,7 +9,7 @@
 	var/list/searchedby	= list()// Characters that have searched this trashpile, with values of searched time.
 	var/mob/living/hider		// A simple animal that might be hiding in the pile
 
-	var/obj/structure/mob_spawner/mouse_nest/mouse_nest = null
+	var/obj/structure/mob_spawner/pest_nest/pest_nest = null
 
 	var/chance_alpha	= 79	// Alpha list is junk items and normal random stuff.
 	var/chance_beta		= 20	// Beta list is actually maybe some useful illegal items. If it's not alpha or gamma, it's beta.
@@ -18,17 +18,18 @@
 	//These are types that can only spawn once, and then will be removed from this list.
 	//Alpha and beta lists are in their respective procs.
 	var/global/list/unique_gamma = list(
-		/obj/item/device/perfect_tele,
-		/obj/item/weapon/bluespace_harpoon,
-		/obj/item/weapon/gun/energy/netgun,
-		/obj/item/weapon/gun/projectile/pirate,
+		/obj/item/perfect_tele,
+		/obj/item/bluespace_harpoon,
+		/obj/item/clothing/glasses/thermal/syndi,
+		/obj/item/gun/energy/netgun,
+		/obj/item/gun/projectile/pirate,
 		/obj/item/clothing/accessory/permit/gun,
-		/obj/item/weapon/gun/projectile/dartgun
+		/obj/item/gun/projectile/dartgun
 		)
 
 	var/global/list/allocated_gamma = list()
 
-/obj/structure/trash_pile/initialize()
+/obj/structure/trash_pile/Initialize(mapload)
 	. = ..()
 	icon_state = pick(
 		"pile1",
@@ -42,11 +43,11 @@
 		"boxfort",
 		"trashbag",
 		"brokecomp")
-	mouse_nest = new(src)
+	pest_nest = new(src)
 
 /obj/structure/trash_pile/Destroy()
-	qdel(mouse_nest)
-	mouse_nest = null
+	qdel(pest_nest)
+	pest_nest = null
 	return ..()
 
 /obj/structure/trash_pile/attackby(obj/item/W as obj, mob/user as mob)
@@ -127,26 +128,26 @@
 /obj/structure/trash_pile/proc/produce_alpha_item()
 	var/path = pick(prob(5);/obj/item/clothing/gloves/rainbow,
 					prob(5);/obj/item/clothing/gloves/white,
-					prob(5);/obj/item/weapon/storage/backpack,
-					prob(5);/obj/item/weapon/storage/backpack/satchel/norm,
-					prob(5);/obj/item/weapon/storage/box,
+					prob(5);/obj/item/storage/backpack,
+					prob(5);/obj/item/storage/backpack/satchel/norm,
+					prob(5);/obj/item/storage/box,
 				//	prob(5);/obj/random/cigarettes,
-					prob(4);/obj/item/broken_device,
+					prob(4);/obj/item/broken_device/random,
 					prob(4);/obj/item/clothing/head/hardhat,
 					prob(4);/obj/item/clothing/mask/breath,
 					prob(4);/obj/item/clothing/shoes/black,
 					prob(4);/obj/item/clothing/shoes/black,
 					prob(4);/obj/item/clothing/shoes/laceup,
-					prob(4);/obj/item/clothing/shoes/leather,
+					prob(4);/obj/item/clothing/shoes/laceup/brown,
 					prob(4);/obj/item/clothing/suit/storage/hazardvest,
 					prob(4);/obj/item/clothing/under/color/grey,
-					prob(4);/obj/item/weapon/caution,
-					prob(4);/obj/item/weapon/cell,
-					prob(4);/obj/item/weapon/cell/device,
-					prob(4);/obj/item/weapon/reagent_containers/food/snacks/liquidfood,
-					prob(4);/obj/item/weapon/spacecash/c1,
-					prob(4);/obj/item/weapon/storage/backpack/satchel,
-					prob(4);/obj/item/weapon/storage/briefcase,
+					prob(4);/obj/item/caution,
+					prob(4);/obj/item/cell,
+					prob(4);/obj/item/cell/device,
+					prob(4);/obj/item/reagent_containers/food/snacks/liquidfood,
+					prob(4);/obj/item/spacecash/c1,
+					prob(4);/obj/item/storage/backpack/satchel,
+					prob(4);/obj/item/storage/briefcase,
 					prob(3);/obj/item/clothing/accessory/storage/webbing,
 					prob(3);/obj/item/clothing/glasses/meson,
 					prob(3);/obj/item/clothing/gloves/botanic_leather,
@@ -160,17 +161,17 @@
 					prob(3);/obj/item/clothing/suit/storage/toggle/hoodie/red,
 					prob(3);/obj/item/clothing/suit/storage/toggle/hoodie/yellow,
 					prob(3);/obj/item/clothing/suit/storage/toggle/leather_jacket,
-					prob(3);/obj/item/device/pda,
-					prob(3);/obj/item/device/radio/headset,
-					prob(3);/obj/item/weapon/camera_assembly,
-					prob(3);/obj/item/weapon/caution/cone,
-					prob(3);/obj/item/weapon/cell/high,
-					prob(3);/obj/item/weapon/spacecash/c10,
-					prob(3);/obj/item/weapon/spacecash/c20,
-					prob(3);/obj/item/weapon/storage/backpack/dufflebag,
-					prob(3);/obj/item/weapon/storage/box/donkpockets,
-					prob(3);/obj/item/weapon/storage/box/mousetraps,
-					prob(3);/obj/item/weapon/storage/wallet,
+					prob(3);/obj/item/pda,
+					prob(3);/obj/item/radio/headset,
+					prob(3);/obj/item/camera_assembly,
+					prob(3);/obj/item/clothing/head/cone,
+					prob(3);/obj/item/cell/high,
+					prob(3);/obj/item/spacecash/c10,
+					prob(3);/obj/item/spacecash/c20,
+					prob(3);/obj/item/storage/backpack/dufflebag,
+					prob(3);/obj/item/storage/box/donkpockets,
+					prob(3);/obj/item/storage/box/mousetraps,
+					prob(3);/obj/item/storage/wallet,
 					prob(2);/obj/item/clothing/glasses/meson/prescription,
 					prob(2);/obj/item/clothing/gloves/fyellow,
 					prob(2);/obj/item/clothing/gloves/sterile/latex,
@@ -179,16 +180,16 @@
 					prob(2);/obj/item/clothing/shoes/galoshes,
 					prob(2);/obj/item/clothing/under/pants/camo,
 					prob(2);/obj/item/clothing/under/syndicate/tacticool,
-					prob(2);/obj/item/device/camera,
-					prob(2);/obj/item/device/flashlight/flare,
-					prob(2);/obj/item/device/flashlight/glowstick,
-					prob(2);/obj/item/device/flashlight/glowstick/blue,
-					prob(2);/obj/item/weapon/card/emag_broken,
-					prob(2);/obj/item/weapon/cell/super,
-					prob(2);/obj/item/weapon/contraband/poster,
-					prob(2);/obj/item/weapon/reagent_containers/glass/rag,
-					prob(2);/obj/item/weapon/storage/box/sinpockets,
-					prob(2);/obj/item/weapon/storage/secure/briefcase,
+					prob(2);/obj/item/camera,
+					prob(2);/obj/item/flashlight/flare,
+					prob(2);/obj/item/flashlight/glowstick,
+					prob(2);/obj/item/flashlight/glowstick/blue,
+					prob(2);/obj/item/card/emag_broken,
+					prob(2);/obj/item/cell/super,
+					prob(2);/obj/item/contraband/poster,
+					prob(2);/obj/item/reagent_containers/glass/rag,
+					prob(2);/obj/item/storage/box/sinpockets,
+					prob(2);/obj/item/storage/secure/briefcase,
 					prob(2);/obj/item/clothing/under/fluff/latexmaid,
 					prob(1);/obj/item/clothing/glasses/sunglasses,
 					prob(1);/obj/item/clothing/glasses/welding,
@@ -201,49 +202,54 @@
 					prob(1);/obj/item/clothing/under/harness,
 					prob(1);/obj/item/clothing/under/tactical,
 					prob(1);/obj/item/clothing/suit/armor/material/makeshift,
-					prob(1);/obj/item/device/flashlight/glowstick/orange,
-					prob(1);/obj/item/device/flashlight/glowstick/red,
-					prob(1);/obj/item/device/flashlight/glowstick/yellow,
-					prob(1);/obj/item/device/flashlight/pen,
-					prob(1);/obj/item/device/paicard,
-					prob(1);/obj/item/weapon/card/emag,
+					prob(1);/obj/item/flashlight/glowstick/orange,
+					prob(1);/obj/item/flashlight/glowstick/red,
+					prob(1);/obj/item/flashlight/glowstick/yellow,
+					prob(1);/obj/item/flashlight/pen,
+					prob(1);/obj/item/paicard,
+					prob(1);/obj/item/card/emag,
 					prob(1);/obj/item/clothing/mask/gas/voice,
-					prob(1);/obj/item/weapon/spacecash/c100,
-					prob(1);/obj/item/weapon/spacecash/c50,
-					prob(1);/obj/item/weapon/storage/backpack/dufflebag/syndie,
-					prob(1);/obj/item/weapon/storage/box/cups)
+					prob(1);/obj/item/spacecash/c100,
+					prob(1);/obj/item/spacecash/c50,
+					prob(1);/obj/item/storage/backpack/dufflebag/syndie,
+					prob(1);/obj/item/storage/box/cups,
+					prob(1);/obj/item/pizzavoucher)
 
 	var/obj/item/I = new path()
 	return I
 
 /obj/structure/trash_pile/proc/produce_beta_item()
-	var/path = pick(prob(10);/obj/item/weapon/disk/nifsoft/compliance, //Citadel Override probability, 3.6%
-					prob(6);/obj/item/weapon/storage/pill_bottle/tramadol,
-					prob(4);/obj/item/weapon/storage/pill_bottle/happy,
-					prob(4);/obj/item/weapon/storage/pill_bottle/zoom,
-					prob(4);/obj/item/weapon/gun/energy/sizegun,
-					prob(3);/obj/item/weapon/material/butterfly,
-					prob(3);/obj/item/weapon/material/butterfly/switchblade,
+	var/path = pick(prob(6);/obj/item/storage/pill_bottle/tramadol,
+					prob(4);/obj/item/storage/pill_bottle/happy,
+					prob(4);/obj/item/storage/pill_bottle/zoom,
+					prob(4);/obj/item/gun/energy/sizegun,
+					prob(3);/obj/item/material/butterfly,
+					prob(3);/obj/item/material/butterfly/switchblade,
 					prob(3);/obj/item/clothing/gloves/knuckledusters,
-					prob(3);/obj/item/weapon/reagent_containers/syringe/drugs,
-					prob(2);/obj/item/weapon/handcuffs/fuzzy,
-				//	prob(2);/obj/item/weapon/legcuffs,
-					prob(2);/obj/item/weapon/storage/box/syndie_kit/spy,
-					prob(2);/obj/item/weapon/grenade/anti_photon,
-					prob(2);/obj/item/device/nif/bad, //Citadel Override probability, 0.7%
-					prob(2);/obj/item/device/bodysnatcher, //Citadel Override probability, 0.7%
+					prob(3);/obj/item/reagent_containers/syringe/drugs,
+					prob(2);/obj/item/storage/pill_bottle/citalopram, //happer pills
+					prob(2);/obj/item/storage/pill_bottle/iron,
+					prob(2);/obj/item/storage/pill_bottle/bicaridine,
+					prob(2);/obj/item/storage/pill_bottle/antitox,
+					prob(2);/obj/item/storage/pill_bottle/kelotane,
+					prob(2);/obj/item/handcuffs/fuzzy,
+					prob(2);/obj/item/storage/box/syndie_kit/spy,
+					prob(2);/obj/item/grenade/anti_photon,
+					prob(1);/obj/item/nif/bad,
 					prob(1);/obj/item/clothing/suit/storage/vest/heavy/merc,
-					prob(1);/obj/item/clothing/head/helmet/medieval/crusader, //Citadel Addition
-					prob(1);/obj/item/clothing/suit/armor/medieval/crusader/dark, //Citadel Addition
-				//	prob(1);/obj/item/device/nif/bad, // VORECode default probability, 0.2%
-					prob(1);/obj/item/device/radio_jammer,
-					prob(1);/obj/item/device/sleevemate,
-				//	prob(1);/obj/item/device/bodysnatcher, //VORECode default probability, 0.2%
-					prob(1);/obj/item/weapon/beartrap,
-					prob(1);/obj/item/weapon/cell/hyper/empty,
-				//	prob(1);/obj/item/weapon/disk/nifsoft/compliance, //VORECode default probability, 0.2%
-					prob(1);/obj/item/weapon/material/knife/tacknife,
-					prob(1);/obj/item/weapon/reagent_containers/syringe/steroid)
+					prob(1);/obj/item/clothing/head/helmet/medieval/crusader,
+					prob(1);/obj/item/clothing/suit/armor/medieval/crusader/dark,
+					prob(1);/obj/item/radio_jammer,
+					// prob(1);/obj/item/sleevemate,
+					// prob(1);/obj/item/bodysnatcher,
+					prob(1);/obj/item/beartrap,
+					prob(1);/obj/item/cell/hyper/empty,
+					prob(1);/obj/item/disk/nifsoft/compliance,
+					prob(1);/obj/item/material/knife/tacknife,
+					prob(1);/obj/item/clothing/accessory/storage/brown_vest,
+					prob(1);/obj/item/clothing/accessory/storage/black_vest,
+					prob(1);/obj/item/clothing/accessory/storage/white_vest,
+					prob(1);/obj/item/reagent_containers/syringe/steroid)
 
 	var/obj/item/I = new path()
 	return I
@@ -265,18 +271,18 @@
 	else
 		return produce_beta_item()
 
-/obj/structure/mob_spawner/mouse_nest
+/obj/structure/mob_spawner/pest_nest
 	name = "trash"
-	desc = "A small heap of trash, perfect for mice to nest in."
+	desc = "A small heap of trash, perfect for vermin to nest in."
 	icon = 'icons/obj/trash_piles.dmi'
 	icon_state = "randompile"
-	spawn_types = list(/mob/living/simple_animal/mouse)
+	spawn_types = list(/mob/living/simple_mob/animal/passive/mouse)
 	simultaneous_spawns = 1
 	destructible = 1
 	spawn_delay = 1 HOUR
 
-/obj/structure/mob_spawner/mouse_nest/New()
-	..()
+/obj/structure/mob_spawner/pest_nest/Initialize(mapload)
+	. = ..()
 	last_spawn = rand(world.time - spawn_delay, world.time)
 	icon_state = pick(
 		"pile1",
@@ -291,11 +297,11 @@
 		"trashbag",
 		"brokecomp")
 
-/obj/structure/mob_spawner/mouse_nest/do_spawn(var/mob_path)
+/obj/structure/mob_spawner/pest_nest/do_spawn(var/mob_path)
 	. = ..()
 	var/atom/A = get_holder_at_turf_level(src)
 	A.visible_message("[.] crawls out of \the [src].")
 
-/obj/structure/mob_spawner/mouse_nest/get_death_report(var/mob/living/L)
+/obj/structure/mob_spawner/pest_nest/get_death_report(var/mob/living/L)
 	..()
 	last_spawn = rand(world.time - spawn_delay, world.time)

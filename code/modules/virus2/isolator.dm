@@ -13,7 +13,7 @@
 	var/state = HOME
 	var/datum/disease2/disease/virus2 = null
 	var/datum/data/record/entry = null
-	var/obj/item/weapon/reagent_containers/syringe/sample = null
+	var/obj/item/reagent_containers/syringe/sample = null
 
 /obj/machinery/disease2/isolator/update_icon()
 	if (stat & (BROKEN|NOPOWER))
@@ -31,11 +31,11 @@
 	if(default_unfasten_wrench(user, O, 20))
 		return
 
-	else if(!istype(O,/obj/item/weapon/reagent_containers/syringe)) return
-	var/obj/item/weapon/reagent_containers/syringe/S = O
+	else if(!istype(O,/obj/item/reagent_containers/syringe)) return
+	var/obj/item/reagent_containers/syringe/S = O
 
 	if(sample)
-		user << "\The [src] is already loaded."
+		to_chat(user, "\The [src] is already loaded.")
 		return
 
 	sample = S
@@ -43,16 +43,16 @@
 	S.loc = src
 
 	user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
-	nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 	update_icon()
 
 	src.attack_hand(user)
 
 /obj/machinery/disease2/isolator/attack_hand(mob/user as mob)
 	if(stat & (NOPOWER|BROKEN)) return
-	ui_interact(user)
+	nano_ui_interact(user)
 
-/obj/machinery/disease2/isolator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/disease2/isolator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/data[0]
@@ -103,30 +103,30 @@
 					"name" = entry.fields["name"], \
 					"description" = replacetext(desc, "\n", ""))
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "pathogenic_isolator.tmpl", src.name, 400, 500)
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/machinery/disease2/isolator/process()
+/obj/machinery/disease2/isolator/process(delta_time)
 	if (isolating > 0)
 		isolating -= 1
 		if (isolating == 0)
 			if (virus2)
-				var/obj/item/weapon/virusdish/d = new /obj/item/weapon/virusdish(src.loc)
+				var/obj/item/virusdish/d = new /obj/item/virusdish(src.loc)
 				d.virus2 = virus2.getcopy()
 				virus2 = null
 				ping("\The [src] pings, \"Viral strain isolated.\"")
 
-			nanomanager.update_uis(src)
+			SSnanoui.update_uis(src)
 			update_icon()
 
 /obj/machinery/disease2/isolator/Topic(href, href_list)
 	if (..()) return 1
 
 	var/mob/user = usr
-	var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, "main")
+	var/datum/nanoui/ui = SSnanoui.get_open_ui(user, src, "main")
 
 	src.add_fingerprint(user)
 
@@ -171,7 +171,7 @@
 		return 1
 
 /obj/machinery/disease2/isolator/proc/print(var/mob/user)
-	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(loc)
+	var/obj/item/paper/P = new /obj/item/paper(loc)
 
 	switch (state)
 		if (HOME)

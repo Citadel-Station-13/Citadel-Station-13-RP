@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/appendix
 	name = "appendix"
@@ -17,7 +16,7 @@
 		return 1
 	return 0
 
-/obj/item/organ/internal/appendix/process()
+/obj/item/organ/internal/appendix/process(delta_time)
 	..()
 
 	if(!inflamed || !owner)
@@ -29,11 +28,11 @@
 
 	if(inflamed == 1)
 		if(prob(5))
-			owner << "<span class='warning'>You feel a stinging pain in your abdomen!</span>"
+			to_chat(owner, "<span class='warning'>You feel a stinging pain in your abdomen!</span>")
 			owner.emote("me", 1, "winces slightly.")
 	if(inflamed > 1)
 		if(prob(3))
-			owner << "<span class='warning'>You feel a stabbing pain in your abdomen!</span>"
+			to_chat(owner, "<span class='warning'>You feel a stabbing pain in your abdomen!</span>")
 			owner.emote("me", 1, "winces painfully.")
 			owner.adjustToxLoss(1)
 	if(inflamed > 2)
@@ -41,7 +40,7 @@
 			owner.vomit()
 	if(inflamed > 3)
 		if(prob(1))
-			owner << "<span class='danger'>Your abdomen is a world of pain!</span>"
+			to_chat(owner, "<span class='danger'>Your abdomen is a world of pain!</span>")
 			owner.Weaken(10)
 
 			var/obj/item/organ/external/groin = owner.get_organ(BP_GROIN)

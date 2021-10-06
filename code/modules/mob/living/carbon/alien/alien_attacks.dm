@@ -9,13 +9,13 @@
 
 	switch(M.a_intent)
 
-		if (I_HELP)
+		if (INTENT_HELP)
 			help_shake_act(M)
 
-		if (I_GRAB)
+		if (INTENT_GRAB)
 			if (M == src)
 				return
-			var/obj/item/weapon/grab/G = new /obj/item/weapon/grab( M, src )
+			var/obj/item/grab/G = new /obj/item/grab( M, src )
 
 			M.put_in_active_hand(G)
 

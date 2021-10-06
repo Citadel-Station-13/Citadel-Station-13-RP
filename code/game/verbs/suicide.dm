@@ -4,27 +4,27 @@
 	set hidden = 1
 
 	if (stat == DEAD)
-		src << "You're already dead!"
+		to_chat(src, "You're already dead!")
 		return
 
-	if (!ticker)
-		src << "You can't commit suicide before the game starts!"
+	if (!SSticker)
+		to_chat(src, "You can't commit suicide before the game starts!")
 		return
 
 	if(!player_is_antag(mind))
 		message_admins("[ckey] has tried to suicide, but they were not permitted due to not being antagonist as human.", 1)
-		src << "No. Adminhelp if there is a legitimate reason."
+		to_chat(src, "No. Adminhelp if there is a legitimate reason.")
 		return
 
 	if (suiciding)
-		src << "You're already committing suicide! Be patient!"
+		to_chat(src, "You're already committing suicide! Be patient!")
 		return
 
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
 
 	if(confirm == "Yes")
 		if(!canmove || restrained())	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
-			src << "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))"
+			to_chat(src, "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))")
 			return
 		suiciding = 15
 		does_not_breathe = 0			//Prevents ling-suicide zombies, or something
@@ -73,9 +73,9 @@
 				return
 
 		log_and_message_admins("[key_name(src)] commited suicide")
-		
+
 		var/datum/gender/T = gender_datums[get_visible_gender()]
-		
+
 		var/suicidemsg
 		suicidemsg = pick("<span class='danger'>[src] is attempting to bite [T.his] tongue off! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
 		                     "<span class='danger'>[src] is jamming [T.his] thumbs into [T.his] eye sockets! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
@@ -92,22 +92,22 @@
 	set hidden = 1
 
 	if (stat == 2)
-		src << "You're already dead!"
+		to_chat(src, "You're already dead!")
 		return
 
-	if (!ticker)
-		src << "You can't commit suicide before the game starts!"
+	if (!SSticker)
+		to_chat(src, "You can't commit suicide before the game starts!")
 		return
 
 	if (suiciding)
-		src << "You're already committing suicide! Be patient!"
+		to_chat(src, "You're already committing suicide! Be patient!")
 		return
 
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
 
 	if(confirm == "Yes")
 		suiciding = 1
-		viewers(loc) << "<span class='danger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>"
+		visible_message("<span class='danger'>[src]'s brain is growing dull and lifeless. It looks like it's lost the will to live.</span>")
 		spawn(50)
 			death(0)
 			suiciding = 0
@@ -116,18 +116,18 @@
 	set hidden = 1
 
 	if (stat == 2)
-		src << "You're already dead!"
+		to_chat(src, "You're already dead!")
 		return
 
 	if (suiciding)
-		src << "You're already committing suicide! Be patient!"
+		to_chat(src, "You're already committing suicide! Be patient!")
 		return
 
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
 
 	if(confirm == "Yes")
 		suiciding = 1
-		viewers(src) << "<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>"
+		visible_message("<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>")
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -136,18 +136,18 @@
 	set hidden = 1
 
 	if (stat == 2)
-		src << "You're already dead!"
+		to_chat(src, "You're already dead!")
 		return
 
 	if (suiciding)
-		src << "You're already committing suicide! Be patient!"
+		to_chat(src, "You're already committing suicide! Be patient!")
 		return
 
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
 
 	if(confirm == "Yes")
 		suiciding = 1
-		viewers(src) << "<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>"
+		visible_message("<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>")
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		updatehealth()
@@ -158,11 +158,11 @@
 	set name = "pAI Suicide"
 	var/answer = input("REALLY kill yourself? This action can't be undone.", "Suicide", "No") in list ("Yes", "No")
 	if(answer == "Yes")
-		var/obj/item/device/paicard/card = loc
+		var/obj/item/paicard/card = loc
 		card.removePersonality()
 		var/turf/T = get_turf_or_move(card.loc)
 		for (var/mob/M in viewers(T))
 			M.show_message("<span class='notice'>[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\"</span>", 3, "<span class='notice'>[src] bleeps electronically.</span>", 2)
 		death(0)
 	else
-		src << "Aborting suicide attempt."
+		to_chat(src, "Aborting suicide attempt.")

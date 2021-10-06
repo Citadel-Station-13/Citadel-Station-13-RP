@@ -3,8 +3,8 @@
 	set category = "Object"
 
 	if(istype(O,/obj/singularity))
-		if(config.forbid_singulo_possession)
-			usr << "It is forbidden to possess singularities."
+		if(config_legacy.forbid_singulo_possession)
+			to_chat(usr, "It is forbidden to possess singularities.")
 			return
 
 	var/turf/T = get_turf(O)
@@ -43,7 +43,7 @@
 	usr.control_object = null
 	feedback_add_details("admin_verb","RO") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/proc/givetestverbs(mob/M as mob in mob_list)
+/proc/givetestverbs(mob/M as mob in GLOB.mob_list)
 	set desc = "Give this guy possess/release verbs"
 	set category = "Debug"
 	set name = "Give Possessing Verbs"

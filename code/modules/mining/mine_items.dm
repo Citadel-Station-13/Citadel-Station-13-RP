@@ -1,6 +1,6 @@
 /******************************Lantern*******************************/
 
-/obj/item/device/flashlight/lantern
+/obj/item/flashlight/lantern
 	name = "lantern"
 	icon_state = "lantern"
 	desc = "A mining lantern."
@@ -9,11 +9,10 @@
 
 /*****************************Pickaxe********************************/
 
-/obj/item/weapon/pickaxe
+/obj/item/pickaxe
 	name = "mining drill"
 	desc = "The most basic of mining drills, for short excavations and small mineral extractions."
 	icon = 'icons/obj/items.dmi'
-	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	force = 15.0
 	throwforce = 4.0
@@ -22,6 +21,7 @@
 	w_class = ITEMSIZE_LARGE
 	matter = list(DEFAULT_WALL_MATERIAL = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
+	var/sand_dig = FALSE
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	attack_verb = list("hit", "pierced", "sliced", "attacked")
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
@@ -29,13 +29,9 @@
 	sharp = 1
 
 	var/excavation_amount = 200
+	var/destroy_artefacts = FALSE // some mining tools will destroy artefacts completely while avoiding side-effects.
 
-/obj/item/weapon/pickaxe/hammer
-	name = "sledgehammer"
-	//icon_state = "sledgehammer" Waiting on sprite
-	desc = "A mining hammer made of reinforced metal. You feel like smashing your boss in the face with this."
-
-/obj/item/weapon/pickaxe/silver
+/obj/item/pickaxe/silver
 	name = "silver pickaxe"
 	icon_state = "spickaxe"
 	item_state = "spickaxe"
@@ -43,7 +39,7 @@
 	origin_tech = list(TECH_MATERIAL = 3)
 	desc = "This makes no metallurgic sense."
 
-/obj/item/weapon/pickaxe/drill
+/obj/item/pickaxe/drill
 	name = "advanced mining drill" // Can dig sand as well!
 	icon_state = "handdrill"
 	item_state = "jackhammer"
@@ -51,8 +47,9 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_POWER = 3, TECH_ENGINEERING = 2)
 	desc = "Yours is the drill that will pierce through the rock walls."
 	drill_verb = "drilling"
+	sand_dig = TRUE
 
-/obj/item/weapon/pickaxe/jackhammer
+/obj/item/pickaxe/jackhammer
 	name = "sonic jackhammer"
 	icon_state = "jackhammer"
 	item_state = "jackhammer"
@@ -61,7 +58,7 @@
 	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards."
 	drill_verb = "hammering"
 
-/obj/item/weapon/pickaxe/gold
+/obj/item/pickaxe/gold
 	name = "golden pickaxe"
 	icon_state = "gpickaxe"
 	item_state = "gpickaxe"
@@ -70,7 +67,7 @@
 	desc = "This makes no metallurgic sense."
 	drill_verb = "picking"
 
-/obj/item/weapon/pickaxe/plasmacutter
+/obj/item/pickaxe/plasmacutter
 	name = "plasma cutter"
 	icon_state = "plasmacutter"
 	item_state = "gun"
@@ -84,7 +81,7 @@
 	sharp = 1
 	edge = 1
 
-/obj/item/weapon/pickaxe/diamond
+/obj/item/pickaxe/diamond
 	name = "diamond pickaxe"
 	icon_state = "dpickaxe"
 	item_state = "dpickaxe"
@@ -93,7 +90,7 @@
 	desc = "A pickaxe with a diamond pick head."
 	drill_verb = "picking"
 
-/obj/item/weapon/pickaxe/diamonddrill //When people ask about the badass leader of the mining tools, they are talking about ME!
+/obj/item/pickaxe/diamonddrill // When people ask about the badass leader of the mining tools, they are talking about ME!
 	name = "diamond mining drill"
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
@@ -101,23 +98,41 @@
 	origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 4, TECH_ENGINEERING = 5)
 	desc = "Yours is the drill that will pierce the heavens!"
 	drill_verb = "drilling"
+	sand_dig = TRUE
 
-/obj/item/weapon/pickaxe/borgdrill
+/obj/item/pickaxe/borgdrill
 	name = "enhanced sonic jackhammer"
 	icon_state = "jackhammer"
 	item_state = "jackhammer"
 	digspeed = 15
 	desc = "Cracks rocks with sonic blasts. This one seems like an improved design."
 	drill_verb = "hammering"
+	sand_dig = TRUE
+
+/obj/item/pickaxe/icepick //Cannot actually lobotomize people. Yet.
+	name = "icepick"
+	desc = "A simple icepick, for all your digging, climbing, and lobotomizing needs."
+	slot_flags = SLOT_BELT
+	force = 12
+	throwforce = 15 //Discount shuriken.
+	icon_state = "icepick"
+	item_state = "spickaxe" //im lazy fuck u
+	w_class = ITEMSIZE_SMALL
+	matter = list(DEFAULT_WALL_MATERIAL = 2750, "titanium" = 2000)
+	digspeed = 25 //More expensive than a diamond pick, a lot smaller but decently slower.
+	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
+	attack_verb = list("mined", "pierced", "stabbed", "attacked")
+	drill_verb = "picking"
+	sharp = 1
+
 
 /*****************************Shovel********************************/
 
-/obj/item/weapon/shovel
+/obj/item/shovel
 	name = "shovel"
 	desc = "A large tool for digging and moving dirt."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "shovel"
-	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	force = 8.0
 	throwforce = 4.0
@@ -128,8 +143,9 @@
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharp = 0
 	edge = 1
+	var/digspeed = 40
 
-/obj/item/weapon/shovel/spade
+/obj/item/shovel/spade
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."
 	icon_state = "spade"
@@ -162,8 +178,8 @@
 	var/upright = 0
 	var/base_state
 
-/obj/item/stack/flag/New()
-	..()
+/obj/item/stack/flag/Initialize(mapload, new_amount, merge)
+	. = ..()
 	base_state = icon_state
 
 /obj/item/stack/flag/blue
@@ -207,17 +223,17 @@
 
 	var/turf/T = get_turf(src)
 	if(!T || !istype(T,/turf/simulated/mineral))
-		user << "The flag won't stand up in this terrain."
+		to_chat(user, "The flag won't stand up in this terrain.")
 		return
 
 	if(F && F.upright)
-		user << "There is already a flag here."
+		to_chat(user, "There is already a flag here.")
 		return
 
 	var/obj/item/stack/flag/newflag = new src.type(T)
 	newflag.amount = 1
 	newflag.upright = 1
-	anchored = 1
+	newflag.anchored = 1
 	newflag.name = newflag.singular_name
 	newflag.icon_state = "[newflag.base_state]_open"
 	newflag.visible_message("<b>[user]</b> plants [newflag] firmly in the ground.")

@@ -3,7 +3,7 @@
 // TURFS
 
 /proc/updateVisibility(atom/A, var/opacity_check = 1)
-	if(ticker)
+	if(SSticker)
 		for(var/datum/visualnet/VN in visual_nets)
 			VN.updateVisibility(A, opacity_check)
 
@@ -17,19 +17,14 @@
 	updateVisibility(src)
 	return ..()
 
-/turf/simulated/New()
-	..()
-	updateVisibility(src)
-
-
 // STRUCTURES
 
 /obj/structure/Destroy()
 	updateVisibility(src)
 	return ..()
 
-/obj/structure/New()
-	..()
+/obj/structure/Initialize(mapload)
+	. = ..()
 	updateVisibility(src)
 
 // EFFECTS
@@ -38,8 +33,8 @@
 	updateVisibility(src)
 	return ..()
 
-/obj/effect/New()
-	..()
+/obj/effect/Initialize(mapload)
+	. = ..()
 	updateVisibility(src)
 
 // DOORS

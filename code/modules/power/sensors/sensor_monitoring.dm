@@ -13,15 +13,15 @@
 	//computer stuff
 	density = 1
 	anchored = 1.0
-	circuit = /obj/item/weapon/circuitboard/powermonitor
+	circuit = /obj/item/circuitboard/powermonitor
 	var/alerting = 0
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	active_power_usage = 300
 	var/datum/nano_module/power_monitor/power_monitor
 
 // Checks the sensors for alerts. If change (alerts cleared or detected) occurs, calls for icon update.
-/obj/machinery/computer/power_monitor/process()
+/obj/machinery/computer/power_monitor/process(delta_time)
 	var/alert = check_warnings()
 	if(alert != alerting)
 		alerting = !alerting
@@ -37,8 +37,8 @@
 	..()
 */
 // On creation automatically connects to active sensors. This is delayed to ensure sensors already exist.
-/obj/machinery/computer/power_monitor/New()
-	..()
+/obj/machinery/computer/power_monitor/Initialize(mapload)
+	. = ..()
 	power_monitor = new(src)
 
 // On user click opens the UI of this computer.
@@ -47,11 +47,11 @@
 
 	if(stat & (BROKEN|NOPOWER))
 		return
-	ui_interact(user)
+	nano_ui_interact(user)
 
 // Uses dark magic to operate the NanoUI of this computer.
-/obj/machinery/computer/power_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	power_monitor.ui_interact(user, ui_key, ui, force_open)
+/obj/machinery/computer/power_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	power_monitor.nano_ui_interact(user, ui_key, ui, force_open)
 
 
 // Verifies if any warnings were registered by connected sensors.

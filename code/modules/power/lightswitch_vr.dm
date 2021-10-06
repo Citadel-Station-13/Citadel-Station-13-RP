@@ -58,34 +58,33 @@
 	var/x_offset = 26
 	var/y_offset = 26
 
-/obj/structure/construction/initialize(var/mapload, var/ndir, var/building = FALSE)
+/obj/structure/construction/Initialize(var/mapload, var/ndir, var/building = FALSE)
 	. = ..()
 	if(ndir)
-		set_dir(ndir)
+		setDir(ndir)
 	if(x_offset)
 		pixel_x = (dir & 3) ? 0 : (dir == EAST ? -x_offset : x_offset)
 	if(y_offset)
 		pixel_y = (dir & 3) ? (dir == NORTH ? -y_offset : y_offset) : 0
 
 /obj/structure/construction/examine(mob/user)
-	if(!..(user, 2))
-		return
+	. = ..()
 	switch(stage)
 		if(FRAME_UNFASTENED)
-			to_chat(user, "It's an empty frame.")
+			. += "It's an empty frame."
 		if(FRAME_FASTENED)
-			to_chat(user, "It's fixed to the wall.")
+			. += "It's fixed to the wall."
 		if(FRAME_WIRED)
-			to_chat(user, "It's wired.")
+			. += "It's wired."
 
 /obj/structure/construction/update_icon()
 	icon_state = "[base_icon][stage]"
 
-/obj/structure/construction/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/construction/attackby(obj/item/W as obj, mob/user as mob)
 	add_fingerprint(user)
-	if(iswelder(W))
+	if(istype(W, /obj/item/weldingtool))
 		if(stage == FRAME_UNFASTENED)
-			var/obj/item/weapon/weldingtool/WT = W
+			var/obj/item/weldingtool/WT = W
 			if(!WT.remove_fuel(0, user))
 				to_chat(user, "<span class='warning'>\The [src] must be on to complete this task.</span>")
 				return
@@ -106,18 +105,18 @@
 			to_chat(user, "You have to remove the wires first.")
 		return
 
-	else if(iswirecutter(W))
+	else if(W.is_wirecutter())
 		if (stage == FRAME_WIRED)
 			stage = FRAME_FASTENED
 			user.update_examine_panel(src)
-			new /obj/item/stack/cable_coil(get_turf(src), 1, "red")
+			new /obj/item/stack/cable_coil(get_turf(src), 1, null, "red")
 			user.visible_message("\The [user] removes the wiring from \the [src].", \
 				"You remove the wiring from \the [src].", "You hear a snip.")
 			playsound(src.loc, W.usesound, 50, 1)
 			update_icon()
 		return
 
-	else if(iscoil(W))
+	else if(istype(W, /obj/item/stack/cable_coil))
 		if (stage == FRAME_FASTENED)
 			var/obj/item/stack/cable_coil/coil = W
 			if (coil.use(1))
@@ -129,7 +128,7 @@
 				update_icon()
 		return
 
-	else if(isscrewdriver(W))
+	else if(W.is_screwdriver())
 		if (stage == FRAME_UNFASTENED)
 			stage = FRAME_FASTENED
 			user.update_examine_panel(src)

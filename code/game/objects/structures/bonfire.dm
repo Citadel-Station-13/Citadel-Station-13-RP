@@ -9,12 +9,12 @@
 	var/burning = FALSE
 	var/next_fuel_consumption = 0 // world.time of when next item in fuel list gets eatten to sustain the fire.
 	var/grill = FALSE
-	var/material/material
+	var/datum/material/material
 	var/set_temperature = T0C + 30	//K
 	var/heating_power = 80000
 
-/obj/structure/bonfire/New(newloc, material_name)
-	..(newloc)
+/obj/structure/bonfire/Initialize(mapload, material_name)
+	. = ..()
 	if(!material_name)
 		material_name = MAT_WOOD
 	material = get_material_by_name("[material_name]")
@@ -24,15 +24,15 @@
 	color = material.icon_colour
 
 // Blue wood.
-/obj/structure/bonfire/sifwood/New(newloc, material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/structure/bonfire/sifwood/Initialize(mapload)
+	. = ..(mapload, MAT_SIFWOOD)
 
-/obj/structure/bonfire/permanent/New(newloc, material_name)
-	..()
+/obj/structure/bonfire/permanent/Initialize(mapload, material_name)
+	. = ..()
 	ignite()
 
-/obj/structure/bonfire/permanent/sifwood/New(newloc, material_name)
-	..(newloc, MAT_SIFWOOD)
+/obj/structure/bonfire/permanent/sifwood/Initialize(mapload)
+	. = ..(mapload, MAT_SIFWOOD)
 
 /obj/structure/bonfire/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/rods) && !can_buckle && !grill)
@@ -89,9 +89,9 @@
 	var/F = 0
 	for(var/A in contents)
 		if(istype(A, /obj/item/stack/material/wood))
-			F += 0.5
+			F += 2.0
 		if(istype(A, /obj/item/stack/material/log))
-			F += 1.0
+			F += 4.0
 	return F
 
 /obj/structure/bonfire/permanent/get_fuel_amount()
@@ -108,7 +108,7 @@
 	dismantle(user)
 
 /obj/structure/bonfire/proc/add_fuel(atom/movable/new_fuel, mob/user)
-	if(get_fuel_amount() >= 10)
+	if(get_fuel_amount() >= 20)
 		to_chat(user, "<span class='warning'>\The [src] already has enough fuel!</span>")
 		return FALSE
 	if(istype(new_fuel, /obj/item/stack/material/wood) || istype(new_fuel, /obj/item/stack/material/log) )
@@ -133,13 +133,13 @@
 		return FALSE
 
 	if(istype(consumed_fuel, /obj/item/stack/material/log))
-		next_fuel_consumption = world.time + 2 MINUTES
+		next_fuel_consumption = world.time + 4 MINUTES
 		qdel(consumed_fuel)
 		update_icon()
 		return TRUE
 
 	else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
-		next_fuel_consumption = world.time + 1 MINUTE
+		next_fuel_consumption = world.time + 2 MINUTE
 		qdel(consumed_fuel)
 		update_icon()
 		return TRUE
@@ -150,7 +150,7 @@
 
 /obj/structure/bonfire/proc/check_oxygen()
 	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas["oxygen"] < 1)
+	if(G.gas[/datum/gas/oxygen] < 1)
 		return FALSE
 	return TRUE
 
@@ -159,14 +159,14 @@
 	if(burning)
 		burning = FALSE
 		update_icon()
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		visible_message("<span class='notice'>\The [src] stops burning.</span>")
 
 /obj/structure/bonfire/proc/ignite()
 	if(!burning && get_fuel_amount())
 		burning = TRUE
 		update_icon()
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 		visible_message("<span class='warning'>\The [src] starts burning!</span>")
 
 /obj/structure/bonfire/proc/burn()
@@ -214,7 +214,7 @@
 		overlays += grille_image
 
 
-/obj/structure/bonfire/process()
+/obj/structure/bonfire/process(delta_time)
 	if(!check_oxygen())
 		extinguish()
 		return
@@ -334,7 +334,7 @@
 
 /obj/structure/fireplace/proc/check_oxygen()
 	var/datum/gas_mixture/G = loc.return_air()
-	if(G.gas["oxygen"] < 1)
+	if(G.gas[/datum/gas/oxygen] < 1)
 		return FALSE
 	return TRUE
 
@@ -342,14 +342,14 @@
 	if(burning)
 		burning = FALSE
 		update_icon()
-		processing_objects -= src
+		STOP_PROCESSING(SSobj, src)
 		visible_message("<span class='notice'>\The [src] stops burning.</span>")
 
 /obj/structure/fireplace/proc/ignite()
 	if(!burning && get_fuel_amount())
 		burning = TRUE
 		update_icon()
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 		visible_message("<span class='warning'>\The [src] starts burning!</span>")
 
 /obj/structure/fireplace/proc/burn()
@@ -382,7 +382,7 @@
 	else
 		set_light(0)
 
-/obj/structure/fireplace/process()
+/obj/structure/fireplace/process(delta_time)
 	if(!check_oxygen())
 		extinguish()
 		return

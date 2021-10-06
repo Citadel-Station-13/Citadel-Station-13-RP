@@ -2,14 +2,20 @@
 /atom/proc/attack_generic(mob/user as mob)
 	return 0
 
+/atom/proc/take_damage(var/damage)
+	return 0
+
 /*
 	Humans:
 	Adds an exception for gloves, to allow special glove types like the ninja ones.
 
 	Otherwise pretty standard.
 */
-/mob/living/carbon/human/UnarmedAttack(var/atom/A, var/proximity)
-
+/mob/living/carbon/human/UnarmedAttack(atom/A, proximity)
+	// if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
+	// 	if(src == A)
+	// 		check_self_for_injuries()
+	// 	return
 	if(!..())
 		return
 
@@ -22,17 +28,63 @@
 
 	A.attack_hand(src)
 
-/atom/proc/attack_hand(mob/user as mob)
-	return
+/// Return TRUE to cancel other attack hand effects that respect it.
+/atom/proc/attack_hand(mob/user)
+	. = _try_interact(user)
+
+//Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
+/atom/proc/_try_interact(mob/user)
+	// if(isAdminGhostAI(user))		//admin abuse
+	// 	return interact(user)
+	if(can_interact(user))
+		return interact(user)
+	return FALSE
+
+/atom/proc/can_interact(mob/user)
+	// if(!user.can_interact_with(src))
+	// 	return FALSE
+	// if((interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) && !user.IsAdvancedToolUser())
+	// 	to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+	// 	return FALSE
+	// if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED) && user.incapacitated((interaction_flags_atom & INTERACT_ATOM_IGNORE_RESTRAINED), !(interaction_flags_atom & INTERACT_ATOM_CHECK_GRAB)))
+	// 	return FALSE
+	return TRUE
+
+/atom/ui_status(mob/user)
+	. = ..()
+	if(!can_interact(user))
+		. = min(., UI_UPDATE)
+
+/atom/movable/can_interact(mob/user)
+	. = ..()
+	if(!.)
+		return
+	if(!anchored && (interaction_flags_atom & INTERACT_ATOM_REQUIRES_ANCHORED))
+		return FALSE
+
+/atom/proc/interact(mob/user)
+	if(interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_INTERACT)
+		add_hiddenprint(user)
+	else
+		add_fingerprint(user)
+	// if(interaction_flags_atom & INTERACT_ATOM_UI_INTERACT)
+	return (ui_interact(user) || nano_ui_interact(user))
+	// return FALSE
 
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A)
 	return
 
-/mob/living/carbon/human/RangedAttack(var/atom/A)
+/mob/living/carbon/human/RangedAttack(atom/A)
+	. = ..()
+	if(.)
+		return
+	if(isturf(A) && get_dist(A, src) <= 1)
+		move_pulled_towards(A)
+		return
 	if(!gloves && !mutations.len && !spitting)
 		return
 	var/obj/item/clothing/gloves/G = gloves
-	if((LASER in mutations) && a_intent == I_HURT)
+	if((LASER in mutations) && a_intent == INTENT_HARM)
 		LaserEyes(A) // moved into a proc below
 
 	else if(istype(G) && G.Touch(A,0)) // for magic gloves
@@ -48,19 +100,34 @@
 	return
 
 /*
+	Animals & All Unspecified
+*/
+// /mob/living/UnarmedAttack(atom/A)
+// 	A.attack_animal(src)
+
+// /atom/proc/attack_animal(mob/user)
+// 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ANIMAL, user)
+
+/*
 	Aliens
 */
 
 /mob/living/carbon/alien/RestrainedClickOn(var/atom/A)
 	return
 
-/mob/living/carbon/alien/UnarmedAttack(var/atom/A, var/proximity)
-
+/mob/living/carbon/alien/UnarmedAttack(atom/A)
 	if(!..())
-		return 0
+		return FALSE
 
 	setClickCooldown(get_attack_speed())
 	A.attack_generic(src,rand(5,6),"bitten")
+
+/*
+	pAI
+*/
+
+/mob/living/silicon/pai/UnarmedAttack(atom/A)//Stops runtimes due to attack_animal being the default
+	return
 
 /*
 	New Players:
@@ -68,58 +135,3 @@
 */
 /mob/new_player/ClickOn()
 	return
-
-/*
-	Animals
-*/
-/mob/living/simple_animal/UnarmedAttack(var/atom/A, var/proximity)
-	if(!(. = ..()))
-		return
-
-	setClickCooldown(get_attack_speed())
-
-	if(has_hands && istype(A,/obj) && a_intent != I_HURT)
-		var/obj/O = A
-		return O.attack_hand(src)
-
-	switch(a_intent)
-		if(I_HELP)
-			if(isliving(A))
-				custom_emote(1,"[pick(friendly)] [A]!")
-
-		if(I_HURT)
-			if(prob(spattack_prob))
-				if(spattack_min_range <= 1)
-					SpecialAtkTarget()
-
-
-			else if(melee_damage_upper == 0 && istype(A,/mob/living))
-				custom_emote(1,"[pick(friendly)] [A]!")
-
-
-			else
-				DoPunch(A)
-
-		if(I_GRAB)
-			if(has_hands)
-				A.attack_hand(src)
-
-		if(I_DISARM)
-			if(has_hands)
-				A.attack_hand(src)
-
-/mob/living/simple_animal/RangedAttack(var/atom/A)
-	setClickCooldown(get_attack_speed())
-	var/distance = get_dist(src, A)
-
-	if(prob(spattack_prob) && (distance >= spattack_min_range) && (distance <= spattack_max_range))
-		target_mob = A
-		SpecialAtkTarget()
-		target_mob = null
-		return
-
-	if(ranged && distance <= shoot_range)
-		target_mob = A
-		ShootTarget(A)
-		target_mob = null
-

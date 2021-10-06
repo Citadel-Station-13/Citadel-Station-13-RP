@@ -6,31 +6,36 @@
 	concealed_holster = 1
 	var/obj/item/holstered = null
 	var/list/can_hold //VOREStation Add
+	var/list/cant_hold // cit add
+	var/sound_in = 'sound/effects/holster/holsterin.ogg'
+	var/sound_out = 'sound/effects/holster/holsterout.ogg'
+	var/holster_verb = "holster"
 
 /obj/item/clothing/accessory/holster/proc/holster(var/obj/item/I, var/mob/living/user)
 	if(holstered && istype(user))
-		user << "<span class='warning'>There is already \a [holstered] holstered here!</span>"
+		to_chat(user, "<span class='warning'>There is already \a [holstered] holstered here!</span>")
 		return
-	//VOREStation Edit - Machete sheath support
+	//VOREStation Edit - Machete scabbard support
 	if (LAZYLEN(can_hold))
-		if(!is_type_in_list(I,can_hold))
+		if(!is_type_in_list(I, can_hold) && !is_type_in_list(I, cant_hold))
 			to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
 			return
 
 	else if (!(I.slot_flags & SLOT_HOLSTER))
 	//VOREStation Edit End
-		user << "<span class='warning'>[I] won't fit in [src]!</span>"
+		to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
 		return
 
 	if(istype(user))
 		user.stop_aiming(no_message=1)
 	holstered = I
 	user.drop_from_inventory(holstered)
-	holstered.loc = src
+	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
-	user.visible_message("<span class='notice'>[user] holsters \the [holstered].</span>", "<span class='notice'>You holster \the [holstered].</span>")
+	user.visible_message("<span class='notice'>[user] [holster_verb]s \the [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")
 	name = "occupied [initial(name)]"
+	playsound(user, "[sound_in]", 75, 0)
 
 /obj/item/clothing/accessory/holster/proc/clear_holster()
 	holstered = null
@@ -41,10 +46,10 @@
 		return
 
 	if(istype(user.get_active_hand(),/obj) && istype(user.get_inactive_hand(),/obj))
-		user << "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>"
+		to_chat(user, "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>")
 	else
-		if(user.a_intent == I_HURT)
-			usr.visible_message(
+		if(user.a_intent == INTENT_HARM)
+			user.visible_message(
 				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>", //VOREStation Edit
 				"<span class='warning'>You draw \the [holstered], ready to go!</span>" //VOREStation Edit
 				)
@@ -54,16 +59,15 @@
 				"<span class='notice'>You draw \the [holstered], pointing it at the ground.</span>"
 				)
 		user.put_in_hands(holstered)
+		playsound(user, "[sound_out]", 75, 0)
 		holstered.add_fingerprint(user)
 		w_class = initial(w_class)
 		clear_holster()
 
 /obj/item/clothing/accessory/holster/attack_hand(mob/user as mob)
-	if (has_suit && (slot & ACCESSORY_SLOT_UTILITY))	//if we are part of a suit
-		if (holstered)
+	if (has_suit && (slot & ACCESSORY_SLOT_UTILITY))
+		if(holstered)
 			unholster(user)
-		return
-
 	..(user)
 
 /obj/item/clothing/accessory/holster/attackby(obj/item/W as obj, mob/user as mob)
@@ -75,11 +79,11 @@
 	..()
 
 /obj/item/clothing/accessory/holster/examine(mob/user)
-	..(user)
+	. = ..()
 	if (holstered)
-		user << "A [holstered] is holstered here."
+		. += "A [holstered] is holstered here."
 	else
-		user << "It is empty."
+		. += "It is empty."
 
 /obj/item/clothing/accessory/holster/on_attached(obj/item/clothing/under/S, mob/user as mob)
 	..()
@@ -109,12 +113,12 @@
 			H = locate() in S.accessories
 
 	if (!H)
-		usr << "<span class='warning'>Something is very wrong.</span>"
+		to_chat(usr, "<span class='warning'>Something is very wrong.</span>")
 
 	if(!H.holstered)
 		var/obj/item/W = usr.get_active_hand()
 		if(!istype(W, /obj/item))
-			usr << "<span class='warning'>You need your gun equipped to holster it.</span>"
+			to_chat(usr, "<span class='warning'>You need your weapon equipped to holster it.</span>")
 			return
 		H.holster(W, usr)
 	else
@@ -122,7 +126,7 @@
 
 /obj/item/clothing/accessory/holster/armpit
 	name = "armpit holster"
-	desc = "A worn-out handgun holster. Perfect for concealed carry"
+	desc = "A worn-out handgun holster. Perfect for concealed carry."
 	icon_state = "holster"
 
 /obj/item/clothing/accessory/holster/waist
@@ -144,3 +148,53 @@
 	icon_state = "holster_leg"
 	overlay_state = "holster_leg"
 	concealed_holster = 0
+
+/obj/item/clothing/accessory/holster/machete
+	name = "machete scabbard"
+	desc = "A handsome synthetic leather scabbard with matching belt."
+	icon_state = "holster_machete"
+	concealed_holster = 0
+	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/energy/hfmachete)
+	cant_hold = list(/obj/item/material/knife/machete/armblade)
+	sound_in = 'sound/effects/holster/sheathin.ogg'
+	sound_out = 'sound/effects/holster/sheathout.ogg'
+	holster_verb = "sheathe"
+
+/obj/item/clothing/accessory/holster/machete/occupied
+	var/holstered_spawn = /obj/item/material/knife/machete
+
+/obj/item/clothing/accessory/holster/machete/occupied/Initialize(mapload)
+	holstered = new holstered_spawn
+	. = ..()
+
+/obj/item/clothing/accessory/holster/machete/occupied/deluxe
+	holstered_spawn = /obj/item/material/knife/machete/deluxe
+
+/obj/item/clothing/accessory/holster/machete/occupied/durasteel
+	holstered_spawn = /obj/item/material/knife/machete/deluxe/durasteel
+
+/obj/item/clothing/accessory/holster/waist/kinetic_accelerator
+	name = "KA holster"
+	desc = "A specialized holster, made specifically for kinetic accelerators."
+	can_hold = list(/obj/item/gun/energy/kinetic_accelerator)
+
+/obj/item/clothing/accessory/holster/holy
+	name = "holy weapon scabbard"
+	desc = "A consecrated morphic scabbard etched with arcane runes. The device of a golden eye has been worked into the buckle."
+	icon_state = "holster_machete"
+	slot = ACCESSORY_SLOT_WEAPON
+	concealed_holster = 0
+	can_hold = list(/obj/item/nullrod)
+	sound_in = 'sound/effects/holster/sheathin.ogg'
+	sound_out = 'sound/effects/holster/sheathout.ogg'
+	holster_verb = "sheathe"
+//List of Cans and Cant's for if we ever want to restrict weapons that can fit the scabbard.
+/*
+	can_hold = list(/obj/item/nullrod, /obj/item/nullrod/claymore, /obj/item/nullrod/scythe/vibro, /obj/item/nullrod/scythe/spellblade, /obj/item/nullrod/clown, /obj/item/nullrod/whip,
+					/obj/item/nullrod/tribal_knife
+				)
+	cant_hold = list(/obj/item/nullrod/godhand, /obj/item/nullrod/staff, /obj/item/nullrod/scythe, /obj/item/nullrod/hammmer, /obj/item/nullrod/chainsaw, /obj/item/nullrod/pride_hammer,
+					/obj/item/nullrod/fedora, /obj/item/nullrod/armblade, /obj/item/nullrod/carp, /obj/item/nullrod/claymore/bostaff, /obj/item/nullrod/pitchfork, /obj/item/nullrod/egyptian,
+					/obj/item/nullrod/rosary
+				)
+*/

@@ -16,8 +16,8 @@
 	image			= 'icons/ntos/cardcomp.png'
 	active_state	= "id"
 
-	var/obj/item/weapon/card/id/reader = null
-	var/obj/item/weapon/card/id/writer = null
+	var/obj/item/card/id/reader = null
+	var/obj/item/card/id/writer = null
 
 	var/mode = 0
 	var/auth = 0
@@ -35,8 +35,8 @@
 	var jobs_all = ""
 	jobs_all += "<table><tr><td></td><td><b>Command</b></td>"
 
-	jobs_all += "</tr><tr height='20'><td><b>Special</b></td>"//Colony Director in special because he is head of heads ~Intercross21
-	jobs_all += "<td weight='100'><a href='?src=\ref[src];;assign=Colony Director'>Colony Director</a></td>"
+	jobs_all += "</tr><tr height='20'><td><b>Special</b></td>"//Facility Director in special because he is head of heads ~Intercross21
+	jobs_all += "<td weight='100'><a href='?src=\ref[src];;assign=Facility Director'>Facility Director</a></td>"
 	jobs_all += "<td weight='100'><a href='?src=\ref[src];;assign=Custom'>Custom</a></td>"
 
 	counter = 0
@@ -260,7 +260,7 @@
 		auth = 0
 
 	if("insert" in href_list)
-		var/obj/item/weapon/card/card = usr.get_active_hand()
+		var/obj/item/card/card = usr.get_active_hand()
 		if(!istype(card)) return
 
 		var/which = href_list["insert"]
@@ -275,7 +275,7 @@
 
 		printing = 1
 		sleep(50)
-		var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( computer.loc )
+		var/obj/item/paper/P = new /obj/item/paper( computer.loc )
 		P.info = "<B>Crew Manifest:</B><BR>"
 		var/list/L = list()
 		for (var/datum/data/record/t in data_core.general)
@@ -333,7 +333,7 @@
 	return get_all_centcom_jobs() + "Custom"
 
 /datum/file/program/card_comp/centcom/accessblock()
-	var/accesses = "<h5>[using_map.boss_name]:</h5>"
+	var/accesses = "<h5>[GLOB.using_map.boss_name]:</h5>"
 	for(var/A in get_all_centcom_access())
 		if(A in writer.access)
 			accesses += topic_link(src,"access=[A]","<font color='red'>[replacetext(get_centcom_access_desc(A), " ", "&nbsp")]</font>") + " "

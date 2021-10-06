@@ -50,7 +50,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	var/starty = 0
 	var/endy = 0
 	var/endx = 0
-	var/startside = pick(cardinal)
+	var/startside = pick(GLOB.cardinal)
 
 	switch(startside)
 		if(NORTH)
@@ -76,14 +76,14 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 
 	//rod time!
 	var/obj/effect/immovablerod/immrod = new /obj/effect/immovablerod(locate(startx, starty, 1))
-//	world << "Rod in play, starting at [start.loc.x],[start.loc.y] and going to [end.loc.x],[end.loc.y]"
+//	to_chat(world, "Rod in play, starting at [start.loc.x],[start.loc.y] and going to [end.loc.x],[end.loc.y]")
 	var/end = locate(endx, endy, 1)
 	spawn(0)
 		walk_towards(immrod, end,1)
 	sleep(1)
 	while (immrod)
 		if (isNotStationLevel(immrod.z))
-			immrod.z = pick(using_map.station_levels)
+			immrod.z = pick(GLOB.using_map.station_levels)
 		if(immrod.loc == end)
 			qdel(immrod)
 		sleep(10)

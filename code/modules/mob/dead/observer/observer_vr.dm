@@ -3,7 +3,19 @@
 	set name = "Join Into Soulcatcher"
 	set desc = "Select a player with a working NIF + Soulcatcher NIFSoft to join into it."
 
-	var/picked = input("Pick a friend with NIF and Soulcatcher to join into. Harrass strangers, get banned. Not everyone has a NIF w/ Soulcatcher.","Select a player") as null|anything in player_list
+	var/list/filtered_list = player_list.Copy()
+	for(var/i in filtered_list)
+		var/mob/living/carbon/human/H = i
+		if(!istype(H))
+			filtered_list -= i
+			continue
+		if(!H.nif)
+			filtered_list -= i
+			continue
+		if(!H.nif.imp_check(NIF_SOULCATCHER))
+			filtered_list -= i
+			continue
+	var/picked = input("Pick a friend with NIF and Soulcatcher to join into. Harrass strangers, get banned. Not everyone has a NIF w/ Soulcatcher (you can't see them in this list if so).","Select a player") as null|anything in filtered_list
 
 	//Didn't pick anyone or picked a null
 	if(!picked)
@@ -30,7 +42,7 @@
 		return
 
 	//Fine fine, we can ask.
-	var/obj/item/device/nif/nif = H.nif
+	var/obj/item/nif/nif = H.nif
 	to_chat(src,"<span class='notice'>Request sent to [H].</span>")
 
 	var/req_time = world.time
@@ -56,3 +68,21 @@
 		mind.active = TRUE
 
 		SC.catch_mob(src) //This will result in us being deleted so...
+
+/mob/observer/dead/verb/backup_ping()
+	set category = "Ghost"
+	set name = "Notify Transcore"
+	set desc = "If your past-due backup notification was missed or ignored, you can use this to send a new one."
+
+	if(src.mind.name in SStranscore.backed_up)
+		var/datum/transhuman/mind_record/record = SStranscore.backed_up[src.mind.name]
+		if(!(record.dead_state == MR_DEAD))
+			to_chat(src, "<span class='warning'>Your backup is not past-due yet.</span>")
+		else if((world.time - record.last_notification) < 10 MINUTES)
+			to_chat(src, "<span class='warning'>Too little time has passed since your last notification.</span>")
+		else
+			SStranscore.notify(record.mindname, TRUE)
+			record.last_notification = world.time
+			to_chat(src, "<span class='notice'>New notification has been sent.</span>")
+	else
+		to_chat(src, "<span class='warning'>No mind record found!</span>")

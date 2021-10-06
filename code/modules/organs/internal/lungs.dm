@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/lungs
 	name = "lungs"
@@ -7,7 +6,7 @@
 	organ_tag = O_LUNGS
 	parent_organ = BP_TORSO
 
-/obj/item/organ/internal/lungs/process()
+/obj/item/organ/internal/lungs/process(delta_time)
 	..()
 
 	if(!owner)
@@ -20,6 +19,13 @@
 		if(prob(8))
 			spawn owner.emote("me", 1, "gasps for air!")
 			owner.AdjustLosebreath(15)
+
+	if(owner.internal_organs_by_name[O_BRAIN]) // As the brain starts having Trouble, the lungs start malfunctioning.
+		var/obj/item/organ/internal/brain/Brain = owner.internal_organs_by_name[O_BRAIN]
+		if(Brain.get_control_efficiency() <= 0.8)
+			if(prob(4 / max(0.1,Brain.get_control_efficiency())))
+				spawn owner.emote("me", 1, "gasps for air!")
+				owner.AdjustLosebreath(round(3 / max(0.1,Brain.get_control_efficiency())))
 
 /obj/item/organ/internal/lungs/proc/rupture()
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
@@ -43,10 +49,12 @@
 /obj/item/organ/internal/lungs/grey
 	icon_state = "lungs_grey"
 
-/obj/item/organ/internal/lungs/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/lungs/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/lungs/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.species.blood_color)
+			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)

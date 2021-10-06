@@ -59,14 +59,13 @@ var/list/possible_cable_coil_colours = list(
 	var/obj/machinery/power/breakerbox/breaker_box
 
 /obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
-
 	if(drain_check)
 		return 1
 
-	var/datum/powernet/PN = get_powernet()
-	if(!PN) return 0
+	if(!powernet)
+		return 0
 
-	return PN.draw_power(amount)
+	return powernet.draw_power(amount)
 
 /obj/structure/cable/yellow
 	color = COLOR_YELLOW
@@ -89,8 +88,8 @@ var/list/possible_cable_coil_colours = list(
 /obj/structure/cable/white
 	color = COLOR_WHITE
 
-/obj/structure/cable/New()
-	..()
+/obj/structure/cable/Initialize(mapload)
+	. = ..()
 
 	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 
@@ -101,7 +100,8 @@ var/list/possible_cable_coil_colours = list(
 	d2 = text2num( copytext( icon_state, dash+1 ) )
 
 	var/turf/T = src.loc			// hide if turf is not intact
-	if(level==1) hide(!T.is_plating())
+	if(level==1)
+		hide(!T.is_plating())
 	cable_list += src //add it to the global cable list
 
 
@@ -122,6 +122,37 @@ var/list/possible_cable_coil_colours = list(
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
 	return
 
+
+// Rotating cables requires d1 and d2 to be rotated
+/obj/structure/cable/setDir(new_dir)
+	SHOULD_CALL_PARENT(FALSE)
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
+	if(powernet)
+		cut_cable_from_powernet() // Remove this cable from the powernet so the connections update
+
+	// If d1 is 0, then it's a not, and doesn't rotate
+	if(d1)
+		// Using turn will maintain the cable's shape
+		// Taking the difference between current orientation and new one
+		d1 = turn(d1, dir2angle(new_dir) - dir2angle(dir))
+	d2 = turn(d2, dir2angle(new_dir) - dir2angle(dir))
+
+	// Maintain d1 < d2
+	if(d1 > d2)
+		var/temp = d1
+		d1 = d2
+		d2 = temp
+
+	//	..()	Cable sprite generation is dependent upon only d1 and d2.
+	// 			Actually changing dir will rotate the generated sprite to look wrong, but function correctly.
+	update_icon()
+	// Add this cable back to the powernet, if it's connected to any
+	if(d1)
+		mergeConnectedNetworks(d1)
+	else
+		mergeConnectedNetworksOnTurf()
+	mergeConnectedNetworks(d2)
+
 ///////////////////////////////////
 // General procedures
 ///////////////////////////////////
@@ -139,10 +170,6 @@ var/list/possible_cable_coil_colours = list(
 	icon_state = "[d1]-[d2]"
 	alpha = invisibility ? 127 : 255
 
-// returns the powernet this cable belongs to
-/obj/structure/cable/proc/get_powernet()			//TODO: remove this as it is obsolete
-	return powernet
-
 //Telekinesis has no effect on a cable
 /obj/structure/cable/attack_tk(mob/user)
 	return
@@ -159,7 +186,7 @@ var/list/possible_cable_coil_colours = list(
 	if(!T.is_plating())
 		return
 
-	if(istype(W, /obj/item/weapon/wirecutters))
+	if(W.is_wirecutter())
 		var/obj/item/stack/cable_coil/CC
 		if(d1 == UP || d2 == UP)
 			to_chat(user, "<span class='warning'>You must cut this cable from above.</span>")
@@ -173,9 +200,9 @@ var/list/possible_cable_coil_colours = list(
 			return
 
 		if(src.d1)	// 0-X cables are 1 unit, X-X cables are 2 units long
-			CC = new/obj/item/stack/cable_coil(T, 2, color)
+			CC = new/obj/item/stack/cable_coil(T, 2, null,color)
 		else
-			CC = new/obj/item/stack/cable_coil(T, 1, color)
+			CC = new/obj/item/stack/cable_coil(T, 1, null, color)
 
 		src.add_fingerprint(user)
 		src.transfer_fingerprints_to(CC)
@@ -203,7 +230,7 @@ var/list/possible_cable_coil_colours = list(
 			return
 		coil.cable_join(src, user)
 
-	else if(istype(W, /obj/item/device/multitool))
+	else if(istype(W, /obj/item/multitool))
 
 		if(powernet && (powernet.avail > 0))		// is it powered?
 			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
@@ -214,7 +241,7 @@ var/list/possible_cable_coil_colours = list(
 		shock(user, 5, 0.2)
 
 	else
-		if (W.flags & CONDUCT)
+		if(!(W.flags & NOCONDUCT))
 			shock(user, 50, 0.7)
 
 	src.add_fingerprint(user)
@@ -224,7 +251,7 @@ var/list/possible_cable_coil_colours = list(
 	if(!prob(prb))
 		return 0
 	if (electrocute_mob(user, powernet, src, siemens_coeff))
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
 		if(usr.stunned)
@@ -238,12 +265,12 @@ var/list/possible_cable_coil_colours = list(
 			qdel(src)
 		if(2.0)
 			if (prob(50))
-				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
+				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
 				qdel(src)
 
 		if(3.0)
 			if (prob(25))
-				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
+				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
 				qdel(src)
 	return
 
@@ -305,7 +332,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 // merge with the powernets of power objects in the given direction
 /obj/structure/cable/proc/mergeConnectedNetworks(var/direction)
 
-	var/fdir = direction ? reverse_dir[direction] : 0 //flip the direction, to match with the source position on its turf
+	var/fdir = direction ? GLOB.reverse_dir[direction] : 0 //flip the direction, to match with the source position on its turf
 
 	if(!(d1 == direction || d2 == direction)) //if the cable is not pointed in this direction, do nothing
 		return
@@ -385,7 +412,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	for(var/cable_dir in list(d1, d2))
 		if(cable_dir == 0)
 			continue
-		var/reverse = reverse_dir[cable_dir]
+		var/reverse = GLOB.reverse_dir[cable_dir]
 		T = get_zstep(src, cable_dir)
 		if(T)
 			for(var/obj/structure/cable/C in T)
@@ -487,11 +514,12 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	throw_speed = 2
 	throw_range = 5
 	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
-	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = /obj/item/stack/cable_coil
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/stack/cable_coil/cyborg
 	name = "cable coil synthesizer"
@@ -503,17 +531,16 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 /obj/item/stack/cable_coil/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-	if(locate(/obj/item/weapon/stool) in user.loc)
+	if(locate(/obj/item/stool) in user.loc)
 		user.visible_message("<span class='suicide'>[user] is making a noose with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	else
 		user.visible_message("<span class='suicide'>[user] is strangling [TU.himself] with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return(OXYLOSS)
 
-/obj/item/stack/cable_coil/New(loc, length = MAXCOIL, var/param_color = null)
-	..()
-	src.amount = length
+/obj/item/stack/cable_coil/Initialize(mapload, new_amount = MAXCOIL, merge, param_color)
+	. = ..()
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
-		color = param_color
+		add_atom_colour(param_color, FIXED_COLOUR_PRIORITY)
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
 	update_icon()
@@ -525,14 +552,14 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 //you can use wires to heal robotics
 /obj/item/stack/cable_coil/attack(var/atom/A, var/mob/living/user, var/def_zone)
-	if(ishuman(A) && user.a_intent == I_HELP)
+	if(ishuman(A) && user.a_intent == INTENT_HELP)
 		var/mob/living/carbon/human/H = A
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
 			return ..()
 
-		var/use_amt = min(src.amount, ceil(S.burn_dam/5), 5)
+		var/use_amt = min(src.amount, CEILING(S.burn_dam/5, 1), 5)
 		if(can_use(use_amt))
 			if(S.robo_repair(5*use_amt, BURN, "some damaged wiring", src, user))
 				src.use(use_amt)
@@ -571,20 +598,14 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		w_class = ITEMSIZE_SMALL
 
 /obj/item/stack/cable_coil/examine(mob/user)
-	var/msg = ""
+	. = ..()
 
 	if(get_amount() == 1)
-		msg += "A short piece of power cable."
+		. += "A short piece of power cable."
 	else if(get_amount() == 2)
-		msg += "A piece of power cable."
+		. += "A piece of power cable."
 	else
-		msg += "A coil of power cable."
-
-		if(get_dist(src, user) <= 1)
-			msg += " There are [get_amount()] lengths of cable in the coil."
-
-	to_chat(user, msg)
-
+		. += "A coil of power cable. There are [get_amount()] lengths of cable in the coil."
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"
@@ -596,13 +617,12 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		if(src.amount <= 14)
 			to_chat(usr, "<span class='warning'>You need at least 15 lengths to make restraints!</span>")
 			return
-		var/obj/item/weapon/handcuffs/cable/B = new /obj/item/weapon/handcuffs/cable(usr.loc)
+		var/obj/item/handcuffs/cable/B = new /obj/item/handcuffs/cable(usr.loc)
 		B.color = color
 		to_chat(usr, "<span class='notice'>You wind some cable together to make some restraints.</span>")
 		src.use(15)
 	else
 		to_chat(usr, "<span class='notice'>You cannot do that.</span>")
-	..()
 
 /obj/item/stack/cable_coil/cyborg/verb/set_colour()
 	set name = "Change Colour"
@@ -802,8 +822,8 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/stack/cable_coil/cut
 	item_state = "coil2"
 
-/obj/item/stack/cable_coil/cut/New(loc)
-	..()
+/obj/item/stack/cable_coil/cut/Initialize(mapload, new_amount, merge)
+	. = ..()
 	src.amount = rand(1,2)
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
@@ -882,45 +902,63 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	stacktype = /obj/item/stack/cable_coil
 	color = COLOR_BROWN
 
-/obj/item/stack/cable_coil/random/New()
+/obj/item/stack/cable_coil/random/Initialize(mapload, new_amount, merge)
+	. = ..()
 	stacktype = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_LIME, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN, COLOR_SILVER, COLOR_GRAY, COLOR_BLACK, COLOR_MAROON, COLOR_OLIVE, COLOR_LIME, COLOR_TEAL, COLOR_NAVY, COLOR_PURPLE, COLOR_BEIGE, COLOR_BROWN)
-	..()
 
-/obj/item/stack/cable_coil/random_belt/New()
+/obj/item/stack/cable_coil/random_belt/Initialize(mapload, new_amount, merge)
+	. = ..()
 	stacktype = /obj/item/stack/cable_coil
 	color = pick(COLOR_RED, COLOR_YELLOW, COLOR_ORANGE)
 	amount = 30
-	..()
 
 //Endless alien cable coil
 
+
+/datum/category_item/catalogue/anomalous/precursor_a/alien_wire
+	name = "Precursor Alpha Object - Recursive Spool"
+	desc = "Upon visual inspection, this merely appears to be a \
+	spool for silver-colored cable. If one were to use this for \
+	some time, however, it would become apparent that the cables \
+	inside the spool appear to coil around the spool endlessly, \
+	suggesting an infinite length of wire.\
+	<br><br>\
+	In reality, an infinite amount of something within a finite space \
+	would likely not be able to exist. Instead, the spool likely has \
+	some method of creating new wire as it is unspooled. How this is \
+	accomplished without an apparent source of material would require \
+	further study."
+	value = CATALOGUER_REWARD_EASY
+
 /obj/item/stack/cable_coil/alien
 	name = "alien spool"
+	desc = "A spool of cable. No matter how hard you try, you can never seem to get to the end."
+	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_wire)
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "coil"
 	amount = MAXCOIL
 	max_amount = MAXCOIL
 	color = COLOR_SILVER
-	desc = "A spool of cable. No matter how hard you try, you can never seem to get to the end."
 	throwforce = 10
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
 	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
-	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null
 	toolspeed = 0.25
 
-/obj/item/stack/cable_coil/alien/New(loc, length = MAXCOIL, var/param_color = null)		//There has to be a better way to do this.
+/obj/item/stack/cable_coil/alien/Initialize(mapload, new_amount, merge, param_color)
+	. = ..()
 	if(embed_chance == -1)		//From /obj/item, don't want to do what the normal cable_coil does
 		if(sharp)
 			embed_chance = force/w_class
 		else
 			embed_chance = force/(w_class*3)
 	update_icon()
+	verbs -= /obj/item/stack/cable_coil/verb/make_restraint
 
 /obj/item/stack/cable_coil/alien/update_icon()
 	icon_state = initial(icon_state)
@@ -937,13 +975,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/stack/cable_coil/alien/update_wclass()
 	return 0
 
-/obj/item/stack/cable_coil/alien/examine(mob/user)
-	var/msg = "A spool of cable."
 
-	if(get_dist(src, user) <= 1)
-		msg += " It doesn't seem to have a beginning, or an end."
-
-	to_chat(user, msg)
 
 /obj/item/stack/cable_coil/alien/attack_hand(mob/user as mob)
 	if (user.get_inactive_hand() == src)
@@ -952,7 +984,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 			var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
 			CC.amount = N
 			CC.update_icon()
-			to_chat(user,"<font color='blue'>You take [N] units of wire from the [src].</font>")
+			to_chat(user,"<font color=#4F49AF>You take [N] units of wire from the [src].</font>")
 			if (CC)
 				user.put_in_hands(CC)
 				src.add_fingerprint(user)

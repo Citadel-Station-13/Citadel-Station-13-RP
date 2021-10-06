@@ -7,12 +7,12 @@
 	var/id = ""
 	// Whether this software is a toggle or not
 	// Toggled software should override toggle() and is_active()
-	// Non-toggled software should override on_ui_interact() and Topic()
+	// Non-toggled software should override on_nano_ui_interact() and Topic()
 	var/toggle = 1
 	// Whether pAIs should automatically receive this module at no cost
 	var/default = 0
 
-	proc/on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	proc/on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		return
 
 	proc/toggle(mob/living/silicon/infomorph/user)
@@ -27,14 +27,14 @@
 	id = "manifest"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		data_core.get_manifest_list()
 
 		var/data[0]
 		// This is dumb, but NanoUI breaks if it has no data to send
-		data["manifest"] = PDA_Manifest
+		data["manifest"] = GLOB.PDA_Manifest
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_manifest.tmpl", "Crew Manifest", 450, 600)
@@ -48,7 +48,7 @@
 	id = "med_records"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		var/records[0]
@@ -66,7 +66,7 @@
 		data["medical"] = M ? M.fields : null
 		data["could_not_find"] = user.medical_cannotfind
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_medrecords.tmpl", "Medical Records", 450, 600)
@@ -102,7 +102,7 @@
 	id = "sec_records"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		var/records[0]
@@ -120,7 +120,7 @@
 		data["security"] = S ? S.fields : null
 		data["could_not_find"] = user.security_cannotfind
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_secrecords.tmpl", "Security Records", 450, 600)
@@ -160,7 +160,7 @@
 	id = "door_jack"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		data["cable"] = user.cable != null
@@ -170,7 +170,7 @@
 		data["progress_b"] = user.hackprogress % 10
 		data["aborted"] = user.hack_aborted
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_doorjack.tmpl", "Door Jack", 300, 150)
@@ -193,7 +193,7 @@
 		else if(href_list["cable"])
 			var/turf/T = get_turf(P)
 			P.hack_aborted = 0
-			P.cable = new /obj/item/weapon/pai_cable(T)
+			P.cable = new /obj/item/pai_cable(T)
 			if(ishuman(P.card.loc))
 				var/mob/living/carbon/human/H = P.card.loc
 				H.put_in_any_hand_if_possible(P.cable)
@@ -205,9 +205,9 @@
 	if(prob(20))
 		for(var/mob/living/silicon/ai/AI in player_list)
 			if(T.loc)
-				AI << "<font color = red><b>Network Alert: Brute-force encryption crack in progress in [T.loc].</b></font>"
+				to_chat(AI, "<font color = red><b>Network Alert: Brute-force encryption crack in progress in [T.loc].</b></font>")
 			else
-				AI << "<font color = red><b>Network Alert: Brute-force encryption crack in progress. Unable to pinpoint location.</b></font>"
+				to_chat(AI, "<font color = red><b>Network Alert: Brute-force encryption crack in progress. Unable to pinpoint location.</b></font>")
 
 	var/obj/machinery/door/D = cable.machine
 	if(!istype(D))
@@ -243,7 +243,7 @@
 	id = "atmos_sense"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		var/turf/T = get_turf_or_move(user.loc)
@@ -265,12 +265,12 @@
 			var/gases[0]
 			for(var/g in env.gas)
 				var/gas[0]
-				gas["name"] = gas_data.name[g]
+				gas["name"] = GLOB.meta_gas_names[g]
 				gas["percent"] = round((env.gas[g] / t_moles) * 100)
 				gases[++gases.len] = gas
 			data["gas"] = gases
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_atmosphere.tmpl", "Atmosphere Sensor", 350, 300)
@@ -308,13 +308,13 @@
 	id = "signaller"
 	toggle = 0
 
-	on_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
+	on_nano_ui_interact(mob/living/silicon/infomorph/user, datum/nanoui/ui=null, force_open=1)
 		var/data[0]
 
 		data["frequency"] = format_frequency(user.sradio.frequency)
 		data["code"] = user.sradio.code
 
-		ui = nanomanager.try_update_ui(user, user, id, ui, data, force_open)
+		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
 		if(!ui)
 			// Don't copy-paste this unless you're making a pAI software module!
 			ui = new(user, user, id, "pai_signaller.tmpl", "Signaller", 320, 150)
@@ -328,7 +328,7 @@
 		if(href_list["send"])
 			P.sradio.send_signal("ACTIVATE")
 			for(var/mob/O in hearers(1, P.loc))
-				O.show_message(text("\icon[] *beep* *beep*", P), 3, "*beep* *beep*", 2)
+				to_chat(O, "[icon2html(thing = src, target = O)] *beep beep*")
 			return 1
 
 		else if(href_list["freq"])

@@ -1,13 +1,13 @@
-/obj/item/device/text_to_speech
+/obj/item/text_to_speech
 	name = "TTS device"
 	desc = "A device that speaks an inputted message. Given to crew which can not speak properly or at all."
-	icon = 'icons/obj/electronic_assemblies.dmi'
+	icon = 'icons/obj/integrated_electronics/electronic_setups.dmi'
 	icon_state = "setup_small"
 	w_class = ITEMSIZE_SMALL
 	var/named
 
-/obj/item/device/text_to_speech/attack_self(mob/user as mob)
-	if(user.incapacitated(INCAPACITATION_ALL)) //Are you in a state to actual use the device?
+/obj/item/text_to_speech/attack_self(mob/user as mob)
+	if(user.incapacitated(INCAPACITATION_KNOCKDOWN) || user.incapacitated(INCAPACITATION_DISABLED)) // EDIT: We can use the device only if we are not in certain types of incapacitation. We don't want chairs stopping us from texting!!
 		to_chat(user, "You cannot activate the device in your state.")
 		return
 
@@ -24,5 +24,8 @@
 
 	var/message = sanitize(input(user,"Choose a message to relay to those around you.") as text|null)
 	if(message)
-		var/obj/item/device/text_to_speech/O = src
-		audible_message("\icon[O] \The [O.name] states, \"[message]\"")
+		var/obj/item/text_to_speech/O = src
+		audible_message("[icon2html(thing = O, target = world)] \The [O.name] states, \"[message]\"")
+
+/obj/item/text_to_speech/AltClick(mob/user) // QOL Change
+	attack_self(user)

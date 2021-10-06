@@ -29,7 +29,8 @@
 		var/turf/heat_turf = get_turf(src)
 		loc_temp = heat_turf.temperature
 	else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-		loc_temp = loc:air_contents.temperature
+		var/obj/machinery/atmospherics/unary/cryo_cell/C = loc
+		loc_temp = C.air_contents.temperature
 	else
 		loc_temp = environment.temperature
 
@@ -76,7 +77,7 @@
 
 	return //TODO: DEFERRED
 
-/mob/living/carbon/slime/handle_regular_status_updates()
+/mob/living/carbon/slime/handle_regular_UI_updates()
 
 	src.blinded = null
 
@@ -149,7 +150,7 @@
 		nutrition = 0
 		adjustToxLoss(rand(1,3))
 		if (client && prob(5))
-			src << "<span class='danger'>You are starving!</span>"
+			to_chat(src, "<span class='danger'>You are starving!</span>")
 
 	else if (nutrition >= get_grow_nutrition() && amount_grown < 10)
 		nutrition -= 20
@@ -255,13 +256,13 @@
 			if (holding_still)
 				holding_still = max(holding_still - 1 - hungry, 0)
 			else if(canmove && isturf(loc) && prob(50))
-				step(src, pick(cardinal))
+				step(src, pick(GLOB.cardinal))
 
 		else
 			if (holding_still)
 				holding_still = max(holding_still - 1, 0)
 			else if(canmove && isturf(loc) && prob(33))
-				step(src, pick(cardinal))
+				step(src, pick(GLOB.cardinal))
 
 /mob/living/carbon/slime/proc/handle_AI()  // the master AI process
 
@@ -291,7 +292,7 @@
 		if(Target.Adjacent(src))
 			if(istype(Target, /mob/living/silicon)) // Glomp the silicons
 				if(!Atkcool)
-					a_intent = I_HURT
+					a_intent = INTENT_HARM
 					UnarmedAttack(Target)
 					Atkcool = 1
 					spawn(45)
@@ -305,12 +306,12 @@
 					spawn(45)
 						Atkcool = 0
 
-					a_intent = I_DISARM
+					a_intent = INTENT_DISARM
 					UnarmedAttack(Target)
 
 			else
 				if(!Atkcool)
-					a_intent = I_GRAB
+					a_intent = INTENT_GRAB
 					UnarmedAttack(Target)
 
 		else if(Target in view(7, src))
@@ -328,9 +329,9 @@
 				frenemy = S
 		if (frenemy && prob(1))
 			if (frenemy.colour == colour)
-				a_intent = I_HELP
+				a_intent = INTENT_HELP
 			else
-				a_intent = I_HURT
+				a_intent = INTENT_HARM
 			UnarmedAttack(frenemy)
 
 	var/sleeptime = movement_delay()
@@ -342,10 +343,10 @@
 /mob/living/carbon/slime/proc/handle_speech_and_mood()
 	//Mood starts here
 	var/newmood = ""
-	a_intent = I_HELP
+	a_intent = INTENT_HELP
 	if (rabid || attacked)
 		newmood = "angry"
-		a_intent = I_HURT
+		a_intent = INTENT_HARM
 	else if (Target) newmood = "mischevous"
 
 	if (!newmood)

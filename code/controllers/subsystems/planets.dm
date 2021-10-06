@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(planets)
 	..()
 
 /datum/controller/subsystem/planets/proc/createPlanets()
-	var/list/planet_datums = subtypesof(/datum/planet)
+	var/list/planet_datums = GLOB.using_map.planet_datums_to_make
 	for(var/P in planet_datums)
 		var/datum/planet/NP = new P()
 		planets.Add(NP)
@@ -57,16 +57,18 @@ SUBSYSTEM_DEF(planets)
 		else
 			P.planet_walls -= T
 		T.vis_contents -= P.weather_holder.visuals
+		T.vis_contents -= P.weather_holder.special_visuals
 
 /datum/controller/subsystem/planets/proc/allocateTurfs(var/initial = FALSE)
 	var/list/currentlist = new_outdoor_turfs
 	while(currentlist.len)
 		var/turf/simulated/OT = currentlist[currentlist.len]
 		currentlist.len--
-		if(istype(OT) && z_to_planet.len >= OT.z && z_to_planet[OT.z])
+		if(istype(OT) && OT.outdoors && z_to_planet.len >= OT.z && z_to_planet[OT.z])
 			var/datum/planet/P = z_to_planet[OT.z]
 			P.planet_floors |= OT
 			OT.vis_contents |= P.weather_holder.visuals
+			OT.vis_contents |= P.weather_holder.special_visuals
 		if(!initial && MC_TICK_CHECK)
 			return
 
@@ -85,6 +87,7 @@ SUBSYSTEM_DEF(planets)
 		var/datum/planet/P = z_to_planet[T.z]
 		P.planet_floors -= T
 		T.vis_contents -= P.weather_holder.visuals
+		T.vis_contents -= P.weather_holder.special_visuals
 
 
 /datum/controller/subsystem/planets/fire(resumed = 0)
@@ -111,11 +114,12 @@ SUBSYSTEM_DEF(planets)
 			return
 
 	var/list/currentrun = src.currentrun
+	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
 	while(currentrun.len)
 		var/datum/planet/P = currentrun[currentrun.len]
 		currentrun.len--
 
-		P.process(last_fire)
+		P.process(dt, last_fire)
 
 		//Sun light needs changing
 		if(P.needs_work & PLANET_PROCESS_SUN)
@@ -150,11 +154,10 @@ SUBSYSTEM_DEF(planets)
 	var/lum_g = new_brightness * GetGreenPart(new_color) / 255
 	var/lum_b = new_brightness * GetBluePart (new_color) / 255
 	var/static/update_gen = -1 // Used to prevent double-processing corners. Otherwise would happen when looping over adjacent turfs.
-	for(var/I in P.planet_floors)
-		var/turf/simulated/T = I
+	for(var/turf/simulated/T as anything in P.planet_floors)
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()
-		for(var/C in T.get_corners())
+		for(var/C in list(T.lc_bottomleft, T.lc_bottomright, T.lc_topleft, T.lc_topright))
 			var/datum/lighting_corner/LC = C
 			if(LC.update_gen != update_gen && LC.active)
 				sunlit_corners += LC

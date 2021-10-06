@@ -1,13 +1,13 @@
-/mob/living/carbon/slime/say(var/message)
+/mob/living/carbon/slime/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 
 	message = sanitize(message)
 
-	var/verb = say_quote(message)
+	verb = say_quote(message)
 
 	if(copytext(message,1,2) == "*")
 		return emote(copytext(message,2))
 
-	return ..(message, null, verb)
+	return ..()
 
 /mob/living/carbon/slime/say_quote(var/text)
 	var/ending = copytext(text, length(text))

@@ -7,37 +7,51 @@
 	shuttle_tag = "Tether Backup"
 	req_one_access = list(access_heads,access_pilot)
 
-/obj/machinery/computer/shuttle_control/multi/tether_antag_ground
-	name = "land crawler control console"
-	shuttle_tag = "Land Crawler"
+/obj/machinery/computer/shuttle_control/multi/mercenary
+	name = "vessel control console"
+	shuttle_tag = "Mercenary"
+	req_one_access = list(access_syndicate)
 
-/obj/machinery/computer/shuttle_control/multi/tether_antag_space
-	name = "protoshuttle control console"
-	shuttle_tag = "Proto"
+/obj/machinery/computer/shuttle_control/multi/ninja
+	name = "vessel control console"
+	shuttle_tag = "Ninja"
+	//req_one_access = list()
 
-/obj/machinery/computer/shuttle_control/cruiser_shuttle
-	name = "cruiser shuttle control console"
-	shuttle_tag = "Cruiser Shuttle"
-	req_one_access = list(access_heads)
+/obj/machinery/computer/shuttle_control/multi/skipjack
+	name = "vessel control console"
+	shuttle_tag = "Skipjack"
+	//req_one_access = list()
 
+/obj/machinery/computer/shuttle_control/multi/specops
+	name = "vessel control console"
+	shuttle_tag = "NDV Phantom"
+	req_one_access = list(access_cent_specops)
+
+/obj/machinery/computer/shuttle_control/multi/trade
+	name = "vessel control console"
+	shuttle_tag = "Trade"
+	req_one_access = list(access_trader)
+
+/obj/machinery/computer/shuttle_control/surface_mining_outpost
+	name = "surface mining outpost shuttle control console"
+	shuttle_tag = "Mining Outpost"
+	req_one_access = list(access_mining)
 //
 // "Tram" Emergency Shuttler
 // Becuase the tram only has its own doors and no corresponding station doors, a docking controller is overkill.
 // Just open the gosh darn doors!  Also we avoid having a physical docking controller obj for gameplay reasons.
-/datum/shuttle/ferry/emergency
+/datum/shuttle/autodock/ferry/emergency
 	var/tag_door_station = "escape_shuttle_hatch_station"
 	var/tag_door_offsite = "escape_shuttle_hatch_offsite"
 	var/frequency = 1380 // Why this frequency? BECAUSE! Thats what someone decided once.
 	var/datum/radio_frequency/radio_connection
+	move_direction = NORTH
 
-/datum/shuttle/ferry/emergency/init_docking_controllers()
-	docking_controller_tag = null
-	dock_target_station = null
-	dock_target_offsite = null
+/datum/shuttle/autodock/ferry/emergency/New()
 	radio_connection = radio_controller.add_object(src, frequency, null)
 	..()
 
-/datum/shuttle/ferry/emergency/dock()
+/datum/shuttle/autodock/ferry/emergency/dock()
 	..()
 	// Open Doorsunes
 	var/datum/signal/signal = new
@@ -45,7 +59,7 @@
 	signal.data["command"] = "secure_open"
 	post_signal(signal)
 
-/datum/shuttle/ferry/emergency/undock()
+/datum/shuttle/autodock/ferry/emergency/undock()
 	..()
 	// Close Doorsunes
 	var/datum/signal/signal = new
@@ -53,7 +67,7 @@
 	signal.data["command"] = "secure_close"
 	post_signal(signal)
 
-/datum/shuttle/ferry/emergency/proc/post_signal(datum/signal/signal, var/filter = null)
+/datum/shuttle/autodock/ferry/emergency/proc/post_signal(datum/signal/signal, var/filter = null)
 	signal.transmission_method = TRANSMISSION_RADIO
 	if(radio_connection)
 		return radio_connection.post_signal(src, signal, filter)
@@ -63,6 +77,7 @@
 //
 // The backup tether shuttle uses experimental engines and can degrade and/or crash!
 //
+/* //Disabling the crash mechanics per request
 /datum/shuttle/ferry/tether_backup
 	crash_message = "Tether shuttle distress signal received. Shuttle location is approximately 200 meters from tether base."
 	category = /datum/shuttle/ferry/tether_backup // So shuttle_controller.dm doesn't try and instantiate this type as an acutal mapped in shuttle.
@@ -85,18 +100,18 @@
 
 	#define MOVE_PER(x) move_time*(x/100) SECONDS
 
-	computer.visible_message("\icon[computer] <span class='notice'>Beginning flight and telemetry monitoring.</span>")
+	computer.visible_message("[bicon(computer)] <span class='notice'>Beginning flight and telemetry monitoring.</span>")
 	sleep(MOVE_PER(5))
 
 	if(failures >= 1)
-		computer.visible_message("\icon[computer] <span class='warning'>Single engine failure, continuing flight.</span>")
+		computer.visible_message("[bicon(computer)] <span class='warning'>Single engine failure, continuing flight.</span>")
 		sleep(MOVE_PER(10))
 
 	if(failures >= 2)
-		computer.visible_message("\icon[computer] <span class='warning'>Second engine failure, unable to complete flight.</span>")
+		computer.visible_message("[bicon(computer)] <span class='warning'>Second engine failure, unable to complete flight.</span>")
 		playsound(computer,'sound/mecha/internaldmgalarm.ogg',100,0)
 		sleep(MOVE_PER(10))
-		computer.visible_message("\icon[computer] <span class='warning'>Commencing RTLS abort mode.</span>")
+		computer.visible_message("[bicon(computer)] <span class='warning'>Commencing RTLS abort mode.</span>")
 		sleep(MOVE_PER(20))
 		if(failures < 3)
 			move(area_transition,origin)
@@ -104,18 +119,18 @@
 			return 1
 
 	if(failures >= 3)
-		computer.visible_message("\icon[computer] <span class='danger'>Total engine failure, unable to complete abort mode.</span>")
+		computer.visible_message("[bicon(computer)] <span class='danger'>Total engine failure, unable to complete abort mode.</span>")
 		playsound(computer,'sound/mecha/internaldmgalarm.ogg',100,0)
 		sleep(MOVE_PER(5))
-		computer.visible_message("\icon[computer] <span class='danger'>Distress signal broadcast.</span>")
+		computer.visible_message("[bicon(computer)] <span class='danger'>Distress signal broadcast.</span>")
 		playsound(computer,'sound/mecha/internaldmgalarm.ogg',100,0)
 		sleep(MOVE_PER(5))
-		computer.visible_message("\icon[computer] <span class='danger'>Stall. Stall. Stall. Stall.</span>")
+		computer.visible_message("[bicon(computer)] <span class='danger'>Stall. Stall. Stall. Stall.</span>")
 		playsound(computer,'sound/mecha/internaldmgalarm.ogg',100,0)
 		sleep(MOVE_PER(5))
 		playsound(computer,'sound/mecha/internaldmgalarm.ogg',100,0)
 		sleep(MOVE_PER(5))
-		computer.visible_message("\icon[computer] <span class='danger'>Terrain! Pull up! Terrain! Pull up!</span>")
+		computer.visible_message("[bicon(computer)] <span class='danger'>Terrain! Pull up! Terrain! Pull up!</span>")
 		playsound(computer,'sound/mecha/internaldmgalarm.ogg',100,0)
 		playsound(computer,'sound/misc/bloblarm.ogg',100,0)
 		sleep(MOVE_PER(10))
@@ -139,7 +154,7 @@
 	else
 		wear += rand(5,20)
 
-/obj/structure/shuttle/engine/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/shuttle/engine/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if(repair_welder(user, W))
 		return
@@ -147,7 +162,7 @@
 
 //TODO require a multitool to diagnose and open engine panels or something
 
-/obj/structure/shuttle/engine/proc/repair_welder(var/mob/user, var/obj/item/weapon/weldingtool/WT)
+/obj/structure/shuttle/engine/proc/repair_welder(var/mob/user, var/obj/item/weldingtool/WT)
 	if(!istype(WT))
 		return 0
 	if(wear <= 20)
@@ -156,7 +171,7 @@
 	if(!WT.remove_fuel(0, user))
 		to_chat(user,"<span class='warning'>\The [WT] must be on to complete this task.</span>")
 		return 1
-	playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
+	playsound(src, 'sound/items/Welder.ogg', 50, 1)
 	user.visible_message("<span class='notice'>\The [user] begins \the [src] overhaul.</span>","<span class='notice'>You begin an overhaul of \the [src].</span>")
 	if(!do_after(user, wear SECONDS, src))
 		return 1
@@ -166,117 +181,105 @@
 	wear = 20
 	update_icon()
 	return 1
+*/
 
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////
 ////////////////////////////////////////
-/obj/machinery/computer/shuttle_control/web/excursion
-	name = "shuttle control console"
-	shuttle_tag = "Excursion Shuttle"
-	req_access = list()
-	req_one_access = list(access_heads,access_explorer,access_pilot)
-	var/wait_time = 45 MINUTES
-
-/obj/machinery/computer/shuttle_control/web/excursion/ui_interact()
-	if(world.time < wait_time)
-		to_chat(usr,"<span class='warning'>The console is locked while the shuttle refuels. It will be complete in [round((wait_time - world.time)/10/60)] minute\s.</span>")
-		return FALSE
-
-	. = ..()
-
-/datum/shuttle/web_shuttle/excursion
+// The 'shuttle' of the excursion shuttle
+/datum/shuttle/autodock/overmap/excursion
 	name = "Excursion Shuttle"
 	warmup_time = 0
-	current_area = /area/shuttle/excursion/tether
+	current_location = "tether_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
-	web_master_type = /datum/shuttle_web_master/excursion
-	var/abduct_chance = 0.5 //Prob
+	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
+	fuel_consumption = 3
+	move_direction = NORTH
 
-/datum/shuttle/web_shuttle/excursion/long_jump(var/area/departing, var/area/destination, var/area/interim, var/travel_time, var/direction)
-	if(prob(abduct_chance))
-		abduct_chance = 0
-		var/list/occupants = list()
-		for(var/mob/living/L in departing)
-			occupants += key_name(L)
-		log_and_message_admins("Shuttle abduction occuring with (only mobs on turfs): [english_list(occupants)]")
-		//Build the route to the alien ship
-		var/obj/shuttle_connector/alienship/ASC = new /obj/shuttle_connector/alienship(null)
-		ASC.setup_routes()
+// The 'ship' of the excursion shuttle
+/obj/effect/overmap/visitable/ship/landable/excursion
+	name = "Excursion Shuttle"
+	desc = "The traditional Excursion Shuttle. NT Approved!"
+	vessel_mass = 8000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Excursion Shuttle"
 
-		//Redirect us onto that route instead
-		var/datum/shuttle/web_shuttle/WS = shuttle_controller.shuttles[name]
-		var/datum/shuttle_destination/ASD = WS.web_master.get_destination_by_type(/datum/shuttle_destination/excursion/alienship)
-		WS.web_master.future_destination = ASD
-		. = ..(departing,ASD.my_area,interim,travel_time,direction)
-	else
-		. = ..()
+/obj/machinery/computer/shuttle_control/explore/excursion
+	name = "short jump console"
+	shuttle_tag = "Excursion Shuttle"
+	req_one_access = list(access_pilot)
 
-/datum/shuttle_web_master/excursion
-	destination_class = /datum/shuttle_destination/excursion
-	starting_destination = /datum/shuttle_destination/excursion/tether
+////////////////////////////////////////
+////////      Tour Bus     /////////////
+////////////////////////////////////////
+/datum/shuttle/autodock/overmap/tourbus
+	name = "Tour Bus"
+	warmup_time = 0
+	current_location = "tourbus_dock"
+	docking_controller_tag = "tourbus_docker"
+	shuttle_area = list(/area/shuttle/tourbus/cockpit, /area/shuttle/tourbus/general)
+	fuel_consumption = 1
+	move_direction = NORTH
 
-/datum/shuttle_destination/excursion/tether
-	name = "NSB Adephagia Excursion Hangar"
-	my_area = /area/shuttle/excursion/tether
+// The 'ship' of the excursion shuttle
+/obj/effect/overmap/visitable/ship/landable/tourbus
+	name = "Tour Bus"
+	desc = "A small 'space bus', if you will."
+	vessel_mass = 2000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Tour Bus"
 
-	dock_target = "expshuttle_dock"
-	radio_announce = 1
-	announcer = "Excursion Shuttle"
+/obj/machinery/computer/shuttle_control/explore/tourbus
+	name = "short jump console"
+	shuttle_tag = "Tour Bus"
+	req_one_access = list(access_pilot)
 
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/outside_tether = 0,
-	)
+////////////////////////////////////////
+////////      Medivac      /////////////
+////////////////////////////////////////
+/datum/shuttle/autodock/overmap/medivac
+	name = "Medivac Shuttle"
+	warmup_time = 0
+	current_location = "tether_medivac_dock"
+	docking_controller_tag = "medivac_docker"
+	shuttle_area = list(/area/shuttle/medivac/cockpit, /area/shuttle/medivac/general, /area/shuttle/medivac/engines)
+	fuel_consumption = 2
+	move_direction = EAST
 
-/datum/shuttle_destination/excursion/tether/get_arrival_message()
-	return "Attention, [master.my_shuttle.visible_name] has arrived at the Excursion Hangar."
+// The 'ship' of the excursion shuttle
+/obj/effect/overmap/visitable/ship/landable/medivac
+	name = "Medivac Shuttle"
+	desc = "A medical evacuation shuttle."
+	vessel_mass = 4000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Medivac Shuttle"
+	fore_dir = EAST
 
-/datum/shuttle_destination/excursion/tether/get_departure_message()
-	return "Attention, [master.my_shuttle.visible_name] has departed from the Excursion Hangar."
+/obj/machinery/computer/shuttle_control/explore/medivac
+	name = "short jump console"
+	shuttle_tag = "Medivac Shuttle"
 
+////////////////////////////////////////
+////////      Securiship   /////////////
+////////////////////////////////////////
+/datum/shuttle/autodock/overmap/securiship
+	name = "Securiship Shuttle"
+	warmup_time = 0
+	current_location = "tether_securiship_dock"
+	docking_controller_tag = "securiship_docker"
+	shuttle_area = list(/area/shuttle/securiship/cockpit, /area/shuttle/securiship/general, /area/shuttle/securiship/engines)
+	fuel_consumption = 2
+	move_direction = NORTH
 
-/datum/shuttle_destination/excursion/outside_tether
-	name = "Nearby NSB Adephagia"
-	my_area = /area/shuttle/excursion/tether_nearby
-	preferred_interim_area = /area/shuttle/excursion/space_moving
+// The 'ship' of the excursion shuttle
+/obj/effect/overmap/visitable/ship/landable/securiship
+	name = "Securiship Shuttle"
+	desc = "A security transport ship."
+	vessel_mass = 4000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Securiship Shuttle"
+	fore_dir = EAST
 
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/docked_tether = 0,
-		/datum/shuttle_destination/excursion/virgo3b_orbit = 30 SECONDS
-	)
-
-
-/datum/shuttle_destination/excursion/docked_tether
-	name = "NSB Adephagia Docking Arm"
-	my_area = /area/shuttle/excursion/tether_dockarm
-
-	dock_target = "d1a2_dock"
-	radio_announce = 1
-	announcer = "Excursion Shuttle"
-
-/datum/shuttle_destination/excursion/docked_tether/get_arrival_message()
-	return "Attention, [master.my_shuttle.visible_name] has arrived at Docking Arm One."
-
-/datum/shuttle_destination/excursion/docked_tether/get_departure_message()
-	return "Attention, [master.my_shuttle.visible_name] has departed from Docking Arm One."
-
-
-/datum/shuttle_destination/excursion/virgo3b_orbit
-	name = "Virgo 3B Orbit"
-	my_area = /area/shuttle/excursion/space
-	preferred_interim_area = /area/shuttle/excursion/space_moving
-
-	routes_to_make = list(
-		/datum/shuttle_destination/excursion/virgo3b_sky = 30 SECONDS,
-		/datum/shuttle_destination/excursion/bluespace = 30 SECONDS
-	)
-
-
-/datum/shuttle_destination/excursion/virgo3b_sky
-	name = "Skies of Virgo 3B"
-	my_area = /area/shuttle/excursion/virgo3b_sky
-
-////////// Distant Destinations
-/datum/shuttle_destination/excursion/bluespace
-	name = "Bluespace Jump"
-	my_area = /area/shuttle/excursion/bluespace
-	preferred_interim_area = /area/shuttle/excursion/space_moving
+/obj/machinery/computer/shuttle_control/explore/securiship
+	name = "short jump console"
+	shuttle_tag = "Securiship Shuttle"

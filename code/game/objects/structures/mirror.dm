@@ -10,13 +10,13 @@
 	var/list/ui_users = list()
 	var/glass = 1
 
-/obj/structure/mirror/New(var/loc, var/dir, var/building = 0, mob/user as mob)
+/obj/structure/mirror/Initialize(mapload, dir, building = FALSE, mob/user)
+	. = ..()
 	if(building)
 		glass = 0
 		icon_state = "mirror_frame"
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -28 : 28)
 		pixel_y = (dir & 3)? (dir == 1 ? -30 : 30) : 0
-	return
 
 /obj/structure/mirror/attack_hand(mob/user as mob)
 	if(!glass) return
@@ -28,13 +28,13 @@
 			AC = new(src, user)
 			AC.name = "SalonPro Nano-Mirror&trade;"
 			ui_users[user] = AC
-		AC.ui_interact(user)
+		AC.nano_ui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
 	if(!glass) return
 	if(shattered)	return
 	shattered = 1
-	icon_state = "mirror_broke"
+	icon_state = "[icon_state]_broke"
 	playsound(src, "shatter", 70, 1)
 	desc = "Oh no, seven years of bad luck!"
 
@@ -49,24 +49,24 @@
 	..()
 
 /obj/structure/mirror/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/weapon/wrench))
+	if(I.is_wrench())
 		if(!glass)
 			playsound(src.loc, I.usesound, 50, 1)
 			if(do_after(user, 20 * I.toolspeed))
-				user << "<span class='notice'>You unfasten the frame.</span>"
+				to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
 				new /obj/item/frame/mirror( src.loc )
 				qdel(src)
 		return
-	if(istype(I, /obj/item/weapon/crowbar))
+	if(I.is_wrench())
 		if(shattered && glass)
-			user << "<span class='notice'>The broken glass falls out.</span>"
+			to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
 			icon_state = "mirror_frame"
 			glass = !glass
-			new /obj/item/weapon/material/shard( src.loc )
+			new /obj/item/material/shard( src.loc )
 			return
 		if(!shattered && glass)
 			playsound(src.loc, I.usesound, 50, 1)
-			user << "<span class='notice'>You remove the glass.</span>"
+			to_chat(user, "<span class='notice'>You remove the glass.</span>")
 			glass = !glass
 			icon_state = "mirror_frame"
 			new /obj/item/stack/material/glass( src.loc, 2 )
@@ -76,15 +76,15 @@
 		if(!glass)
 			var/obj/item/stack/material/glass/G = I
 			if (G.get_amount() < 2)
-				user << "<span class='warning'>You need two sheets of glass to add them to the frame.</span>"
+				to_chat(user, "<span class='warning'>You need two sheets of glass to add them to the frame.</span>")
 				return
-			user << "<span class='notice'>You start to add the glass to the frame.</span>"
+			to_chat(user, "<span class='notice'>You start to add the glass to the frame.</span>")
 			if(do_after(user, 20))
 				if (G.use(2))
 					shattered = 0
 					glass = 1
 					icon_state = "mirror"
-					user << "<span class='notice'>You add the glass to the frame.</span>"
+					to_chat(user, "<span class='notice'>You add the glass to the frame.</span>")
 			return
 
 	if(shattered && glass)
@@ -134,10 +134,63 @@
 				spawn(1)
 					var/newname = sanitizeSafe(input(vox,"Enter a name, or leave blank for the default name.", "Name change","") as text, MAX_NAME_LEN)
 					if(!newname || newname == "")
-						var/datum/language/L = all_languages[vox.species.default_language]
+						var/datum/language/L = GLOB.all_languages[vox.species.default_language]
 						newname = L.get_random_name()
 					vox.real_name = newname
 					vox.name = vox.real_name
 					raiders.update_access(vox)
 				qdel(user)
 	..()
+
+
+//Long mirrors.
+/obj/structure/mirror/long
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_m"
+	density = 0
+	anchored = 1
+
+/obj/structure/mirror/long/left
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_l"
+	density = 0
+	anchored = 1
+
+/obj/structure/mirror/long/right
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_r"
+	density = 0
+	anchored = 1
+
+//Shattered versions.
+/obj/structure/mirror/long/broke
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_m_broke"
+	density = 0
+	anchored = 1
+	shattered = 1
+
+/obj/structure/mirror/long/left_broke
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_l_broke"
+	density = 0
+	anchored = 1
+	shattered = 1
+
+/obj/structure/mirror/long/right_broke
+	name = "mirror"
+	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "long_mir_r_broke"
+	density = 0
+	anchored = 1

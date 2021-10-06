@@ -11,27 +11,29 @@
 
 /datum/time/New(new_time)
 	if(new_time)
+		if(new_time >= seconds_in_day)
+			new_time = rollover(new_time)
 		seconds_stored = new_time
 	..()
 
 /datum/time/proc/add_seconds(amount)
 	var/answer = seconds_stored + amount * 10
 	if(answer >= seconds_in_day)
-		rollover(answer)
+		answer = rollover(answer)
 	return new type(answer)
 
 /datum/time/proc/add_minutes(amount)
 	var/real_amount = amount * seconds_in_minute
 	var/answer = real_amount + seconds_stored
 	if(answer >= seconds_in_day)
-		rollover(answer)
+		answer = rollover(answer)
 	return new type(answer)
 
 /datum/time/proc/add_hours(amount)
 	var/real_amount = amount * seconds_in_hour
 	var/answer = real_amount + seconds_stored
 	if(answer >= seconds_in_day)
-		rollover(answer)
+		answer = rollover(answer)
 	return new type(answer)
 
 /datum/time/proc/rollover(time)
@@ -54,15 +56,15 @@
 	var/seconds = remaining_hour % seconds_in_minute / 10
 
 
-	var/hour_text = num2text(Floor(hours))
+	var/hour_text = num2text(FLOOR(hours, 1))
 	if(length(hour_text) < 2)
 		hour_text = "0[hour_text]" // Add padding if needed, to look more like time2text().
 
-	var/minute_text = num2text(Floor(minutes))
+	var/minute_text = num2text(FLOOR(minutes, 1))
 	if(length(minute_text) < 2)
 		minute_text = "0[minute_text]"
 
-	var/second_text = num2text(Floor(seconds))
+	var/second_text = num2text(FLOOR(seconds, 1))
 	if(length(second_text) < 2)
 		second_text = "0[second_text]"
 

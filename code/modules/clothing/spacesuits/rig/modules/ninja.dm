@@ -37,7 +37,7 @@
 
 	var/mob/living/carbon/human/H = holder.wearer
 
-	to_chat(H, "<font color='blue'><b>You are now nearly invisible to normal detection.</b></font>")
+	to_chat(H, "<font color=#4F49AF><b>You are now nearly invisible to normal detection.</b></font>")
 	H.alpha = 5
 
 	anim(get_turf(H), H, 'icons/effects/effects.dmi', "electricity",null,20,null)
@@ -100,7 +100,7 @@
 	var/mob/living/carbon/human/H = holder.wearer
 
 	if(!istype(H.loc, /turf))
-		H << "<span class='warning'>You cannot teleport out of your current location.</span>"
+		to_chat(H, "<span class='warning'>You cannot teleport out of your current location.</span>")
 		return 0
 
 	var/turf/T
@@ -110,23 +110,23 @@
 		T = get_teleport_loc(get_turf(H), H, 6, 1, 1, 1)
 
 	if(!T)
-		H << "<span class='warning'>No valid teleport target found.</span>"
+		to_chat(H, "<span class='warning'>No valid teleport target found.</span>")
 		return 0
 
 	if(T.density)
-		H << "<span class='warning'>You cannot teleport into solid walls.</span>"
+		to_chat(H, "<span class='warning'>You cannot teleport into solid walls.</span>")
 		return 0
 
-	if(T.z in using_map.admin_levels)
-		H << "<span class='warning'>You cannot use your teleporter on this Z-level.</span>"
+	if(T.z in GLOB.using_map.admin_levels)
+		to_chat(H, "<span class='warning'>You cannot use your teleporter on this Z-level.</span>")
 		return 0
 
 	if(T.contains_dense_objects())
-		H << "<span class='warning'>You cannot teleport to a location with solid objects.</span>"
+		to_chat(H, "<span class='warning'>You cannot teleport to a location with solid objects.</span>")
 		return 0
 
 	if(T.z != H.z || get_dist(T, get_turf(H)) > world.view)
-		H << "<span class='warning'>You cannot teleport to such a distant object.</span>"
+		to_chat(H, "<span class='warning'>You cannot teleport to such a distant object.</span>")
 		return 0
 
 	if(!..()) return 0
@@ -135,7 +135,7 @@
 	H.forceMove(T)
 	phase_in(H,get_turf(H))
 
-	for(var/obj/item/weapon/grab/G in H.contents)
+	for(var/obj/item/grab/G in H.contents)
 		if(G.affecting)
 			phase_out(G.affecting,get_turf(G.affecting))
 			G.affecting.forceMove(locate(T.x+rand(-1,1),T.y+rand(-1,1),T.z))
@@ -154,14 +154,14 @@
 
 	engage_string = "Fabricate Net"
 
-	fabrication_type = /obj/item/weapon/energy_net
+	fabrication_type = /obj/item/energy_net
 	use_power_cost = 70
 
 /obj/item/rig_module/fabricator/energy_net/engage(atom/target)
 
 	if(holder && holder.wearer)
 		if(..(target) && target)
-			set_dir(get_dir(src,target))  // Face the target
+			setDir(get_dir(src,target))  // Face the target
 			holder.wearer.Beam(target,"n_beam",,10)
 		return 1
 	return 0
@@ -174,7 +174,7 @@
 	usable = 1
 	active = 1
 	permanent = 1
-	var/datum/effect/effect/system/smoke_spread/bad/smoke
+	var/datum/effect_system/smoke_spread/bad/smoke
 	var/smoke_strength = 8
 
 	engage_string = "Detonate"
@@ -182,9 +182,9 @@
 	interface_name = "dead man's switch"
 	interface_desc = "An integrated self-destruct module. When the wearer dies, they vanish in smoke. Do not press this button."
 
-/obj/item/rig_module/self_destruct/New()
-	..()
-	src.smoke = new /datum/effect/effect/system/smoke_spread/bad()
+/obj/item/rig_module/self_destruct/Initialize(mapload)
+	. = ..()
+	src.smoke = new /datum/effect_system/smoke_spread/bad()
 	src.smoke.attach(src)
 
 /obj/item/rig_module/self_destruct/Destroy()
@@ -192,15 +192,13 @@
 	smoke = null
 	return ..()
 
-
-
 /obj/item/rig_module/self_destruct/activate()
 	return
 
 /obj/item/rig_module/self_destruct/deactivate()
 	return
 
-/obj/item/rig_module/self_destruct/process()
+/obj/item/rig_module/self_destruct/process(delta_time)
 
 	// Not being worn, leave it alone.
 	if(!holder || !holder.wearer || !holder.wearer.wear_suit == holder)

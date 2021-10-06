@@ -3,7 +3,6 @@
 	desc = "Used for building frames."
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "frame_bitem"
-	flags = CONDUCT
 	var/build_machine_type
 	var/refund_amt = 5
 	var/refund_type = /obj/item/stack/material/steel
@@ -17,8 +16,8 @@
 	if(!frame_types_wall)
 		frame_types_wall = construction_frame_wall
 
-/obj/item/frame/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/wrench))
+/obj/item/frame/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_wrench())
 		new refund_type(get_turf(src.loc), refund_amt)
 		qdel(src)
 		return
@@ -41,14 +40,14 @@
 
 	var/ndir
 	ndir = user.dir
-	if(!(ndir in cardinal))
+	if(!(ndir in GLOB.cardinal))
 		return
 
 	var/obj/machinery/M = new build_machine_type(get_turf(src.loc), ndir, 1, frame_type)
 	M.fingerprints = fingerprints
 	M.fingerprintshidden = fingerprintshidden
 	M.fingerprintslast = fingerprintslast
-	if(istype(src.loc, /obj/item/weapon/gripper)) //Typical gripper shenanigans
+	if(istype(src.loc, /obj/item/gripper)) //Typical gripper shenanigans
 		user.drop_item()
 	qdel(src)
 
@@ -64,7 +63,7 @@
 	else
 		ndir = get_dir(on_wall, user)
 
-	if(!(ndir in cardinal))
+	if(!(ndir in GLOB.cardinal))
 		return
 
 	var/turf/loc = get_turf(user)
@@ -97,7 +96,7 @@
 	M.fingerprints = fingerprints
 	M.fingerprintshidden = fingerprintshidden
 	M.fingerprintslast = fingerprintslast
-	if(istype(src.loc, /obj/item/weapon/gripper)) //Typical gripper shenanigans
+	if(istype(src.loc, /obj/item/gripper)) //Typical gripper shenanigans
 		user.drop_item()
 	qdel(src)
 
@@ -146,4 +145,4 @@
 	icon = 'icons/obj/closet.dmi'
 	icon_state = "fireaxe0101"
 	refund_amt = 4
-	build_machine_type = /obj/structure/closet/fireaxecabinet
+	build_machine_type = /obj/structure/fireaxecabinet

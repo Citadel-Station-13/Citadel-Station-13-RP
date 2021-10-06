@@ -1,3 +1,15 @@
+/*
+/datum/category_item/catalogue/fauna/slime
+	name = "Slime"
+	desc = "Often referred to as Slimes, this mysterious \
+	species represents a larger biological curiosity for NanoTrasen. \
+	Highly mutable, these carnivorous blobs of gelatinous tissue may \
+	be trained and farmed, but their temperament makes them a constant danger.\
+	Speculation among Xenobiologists that Slimes share a common ancestor \
+	with Prometheans have not been fully confirmed."
+	value = CATALOGUER_REWARD_EASY
+*/
+
 /mob/living/carbon/slime
 	name = "baby slime"
 	icon = 'icons/mob/slimes.dmi'
@@ -61,8 +73,7 @@
 
 	var/core_removal_stage = 0 //For removing cores.
 
-/mob/living/carbon/slime/New(var/location, var/colour="grey")
-
+/mob/living/carbon/slime/Initialize(mapload, colour = "grey")
 	verbs += /mob/living/proc/ventcrawl
 
 	src.colour = colour
@@ -74,9 +85,10 @@
 	var/sanitizedcolour = replacetext(colour, " ", "")
 	coretype = text2path("/obj/item/slime_extract/[sanitizedcolour]")
 	regenerate_icons()
-	..(location)
+	return ..(mapload)
 
 /mob/living/carbon/slime/movement_delay()
+	. = ..()
 	if (bodytemperature >= 330.23) // 135 F
 		return -1	// slimes become supercharged at high temperatures
 
@@ -98,7 +110,7 @@
 	if(health <= 0) // if damaged, the slime moves twice as slow
 		tally *= 2
 
-	return tally + config.slime_delay
+	return . + tally + config_legacy.slime_delay
 
 /mob/living/carbon/slime/Bump(atom/movable/AM as mob|obj, yes)
 	if ((!(yes) || now_pushing))
@@ -160,7 +172,7 @@
 
 		stat(null,"Power Level: [powerlevel]")
 
-/mob/living/carbon/slime/adjustFireLoss(amount)
+/mob/living/carbon/slime/adjustFireLoss(var/amount,var/include_robo)
 	..(-abs(amount)) // Heals them
 	return
 
@@ -259,13 +271,13 @@
 
 	switch(M.a_intent)
 
-		if (I_HELP)
+		if (INTENT_HELP)
 			help_shake_act(M)
 
-		if (I_GRAB)
+		if (INTENT_GRAB)
 			if (M == src || anchored)
 				return
-			var/obj/item/weapon/grab/G = new /obj/item/weapon/grab(M, src)
+			var/obj/item/grab/G = new /obj/item/grab(M, src)
 
 			M.put_in_active_hand(G)
 
@@ -310,7 +322,7 @@
 	if(W.force > 0)
 		attacked += 10
 		if(prob(25))
-			user << "<span class='danger'>[W] passes right through [src]!</span>"
+			to_chat(user, "<span class='danger'>[W] passes right through [src]!</span>")
 			return
 		if(Discipline && prob(50)) // wow, buddy, why am I getting attacked??
 			Discipline = 0

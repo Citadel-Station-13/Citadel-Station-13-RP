@@ -1,10 +1,10 @@
-/obj/item/device/analyzer/xeno_analyzer
+/obj/item/analyzer/xeno_analyzer
 	name = "exotic biological analyzer"
 	desc = "A device to investigate the genetic data of a biological target."
 	var/form_title
 	var/last_data
 
-/obj/item/device/analyzer/xeno_analyzer/proc/print_report_verb()
+/obj/item/analyzer/xeno_analyzer/proc/print_report_verb()
 	set name = "Print Plant Report"
 	set category = "Object"
 	set src = usr
@@ -13,17 +13,17 @@
 		return
 	print_report(usr)
 
-/obj/item/device/analyzer/xeno_analyzer/Topic(href, href_list)
+/obj/item/analyzer/xeno_analyzer/Topic(href, href_list)
 	if(..())
 		return
 	if(href_list["print"])
 		print_report(usr)
 
-/obj/item/device/analyzer/xeno_analyzer/proc/print_report(var/mob/living/user)
+/obj/item/analyzer/xeno_analyzer/proc/print_report(var/mob/living/user)
 	if(!last_data)
-		user << "There is no scan data to print."
+		to_chat(user, "There is no scan data to print.")
 		return
-	var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(get_turf(src))
+	var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 	P.name = "paper - [form_title]"
 	P.info = "[last_data]"
 	if(istype(user,/mob/living/carbon/human))
@@ -31,11 +31,11 @@
 	user.visible_message("\The [src] spits out a piece of paper.")
 	return
 
-/obj/item/device/analyzer/xeno_analyzer/attack_self(mob/user as mob)
+/obj/item/analyzer/xeno_analyzer/attack_self(mob/user as mob)
 	print_report(user)
 	return 0
 
-/obj/item/device/analyzer/xeno_analyzer/afterattack(var/target, mob/user, flag)
+/obj/item/analyzer/xeno_analyzer/afterattack(var/target, mob/user, flag)
 	if(!flag) return
 
 	var/datum/xeno/traits/trait_info
@@ -45,15 +45,15 @@
 	var/growth_max
 	if(istype(target,/obj/structure/table))
 		return ..()
-	else if(istype(target,/mob/living/simple_animal/xeno))
+	else if(istype(target,/mob/living/simple_mob/xeno))
 
-		var/mob/living/simple_animal/xeno/X = target
-		if(istype(X, /mob/living/simple_animal/xeno/slime))
-			var/mob/living/simple_animal/xeno/slime/S = X
+		var/mob/living/simple_mob/xeno/X = target
+		if(istype(X, /mob/living/simple_mob/xeno/slime))
+			var/mob/living/simple_mob/xeno/slime/S = X
 			if(S.is_child)
 				growth_level = S.growthcounter
 				growth_max = S.growthpoint
-				
+
 		targetName = X.name
 		trait_info = X.traitdat
 
@@ -65,7 +65,7 @@
 		prod_reagents = P.reagents
 
 	if(!trait_info)
-		user << "<span class='danger'>[src] can tell you nothing about \the [target].</span>"
+		to_chat(user, "<span class='danger'>[src] can tell you nothing about \the [target].</span>")
 		return
 
 	form_title = "[targetName]"
@@ -109,7 +109,7 @@
 			dat += "It bears characteristics that indicate susceptibility to damage.<br>"
 		else
 			dat += "It bears no characters indicating resilience to damage.<br>"
-			
+
 	if(growth_max)
 		if(growth_level < 35)
 			dat += "It appears to be far to growing up.<br>"
@@ -137,7 +137,7 @@
 			dat += "It appears to be agile.<br>"
 		else if(trait_info.get_trait(TRAIT_XENO_SPEED) > 0)
 			dat += "It appears to be slower.<br>"
-			
+
 	if(trait_info.get_trait(TRAIT_XENO_CANSPEAK))
 		dat += "<br>The subject appears to be able to articulate."
 
@@ -149,18 +149,18 @@
 
 	if(trait_info.get_trait(TRAIT_XENO_CANLEARN))
 		dat += "<br>The subject appears to have process verbal information."
-		
+
 	if(trait_info.get_trait(TRAIT_XENO_LEARNCHANCE))
 		if(trait_info.get_trait(TRAIT_XENO_LEARNCHANCE) < 50)
 			dat += "The subject appears to comprehend verbal information infrequently.<br>"
 		else if(trait_info.get_trait(TRAIT_XENO_LEARNCHANCE) > 51)
 			dat += "The subject appears to comprehend verbal information frequently.<br>"
-			
+
 	if(trait_info.get_trait(TRAIT_XENO_STRENGTH) < 5)
 		dat += "It appears to have lower average physical capacity.<br>"
 	else if(trait_info.get_trait(TRAIT_XENO_STRENGTH) > 7)
 		dat += "It appears to have greater average physical capacity.<br>"
-		
+
 	if(trait_info.get_trait(TRAIT_XENO_STR_RANGE))
 		if(trait_info.get_trait(TRAIT_XENO_STR_RANGE) < 50)
 			dat += "The subject appears to have more consistent attacks.<br>"
@@ -172,11 +172,11 @@
 
 	if(trait_info.get_trait(TRAIT_XENO_HOSTILE))
 		dat += "<br>The subject appears to have hostile tendencies."
-		
+
 	if(trait_info.get_trait(TRAIT_XENO_CHROMATIC))
 		dat += "<br>The subject appears to have chromatic particles inside of it."
 
-	
+
 	if(dat)
 		last_data = dat
 		dat += "<br><br>\[<a href='?src=\ref[src];print=1'>print report</a>\]"

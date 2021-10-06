@@ -8,10 +8,6 @@
 	if(!effective_force || blocked >= 100)
 		return 0
 
-	//Hulk modifier
-	if(HULK in user.mutations)
-		effective_force *= 2
-
 	//If the armor soaks all of the damage, it just skips the rest of the checks
 	if(effective_force <= soaked)
 		return 0
@@ -44,8 +40,8 @@
 
 // Attacking someone with a weapon while they are neck-grabbed
 /mob/living/carbon/proc/check_neckgrab_attack(obj/item/W, mob/user, var/hit_zone)
-	if(user.a_intent == I_HURT)
-		for(var/obj/item/weapon/grab/G in src.grabbed_by)
+	if(user.a_intent == INTENT_HARM)
+		for(var/obj/item/grab/G in src.grabbed_by)
 			if(G.assailant == user)
 				if(G.state >= GRAB_AGGRESSIVE)
 					if(hit_zone == BP_TORSO && shank_attack(W, G, user))
@@ -57,7 +53,7 @@
 
 
 // Knifing
-/mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/weapon/grab/G, mob/user)
+/mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
 
 	if(!W.edge || !W.force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
@@ -73,7 +69,7 @@
 	var/damage_mod = 1
 	//presumably, if they are wearing a helmet that stops pressure effects, then it probably covers the throat as well
 	var/obj/item/clothing/head/helmet = get_equipped_item(slot_head)
-	if(istype(helmet) && (helmet.body_parts_covered & HEAD) && (helmet.flags & STOPPRESSUREDAMAGE))
+	if(istype(helmet) && (helmet.body_parts_covered & HEAD) && (helmet.min_pressure_protection != null)) // Both min- and max_pressure_protection must be set for it to function at all, so we can just check that one is set.
 		//we don't do an armor_check here because this is not an impact effect like a weapon swung with momentum, that either penetrates or glances off.
 		damage_mod = 1.0 - (helmet.armor["melee"]/100)
 
@@ -105,7 +101,7 @@
 
 	return 1
 
-/mob/living/carbon/proc/shank_attack(obj/item/W, obj/item/weapon/grab/G, mob/user, hit_zone)
+/mob/living/carbon/proc/shank_attack(obj/item/W, obj/item/grab/G, mob/user, hit_zone)
 
 	if(!W.sharp || !W.force || W.damtype != BRUTE)
 		return 0 //unsuitable weapon
@@ -122,7 +118,7 @@
 
 	return 1
 
-/mob/living/carbon/proc/shank_armor_helper(obj/item/W, obj/item/weapon/grab/G, mob/user)
+/mob/living/carbon/proc/shank_armor_helper(obj/item/W, obj/item/grab/G, mob/user)
 	var/damage = W.force
 	var/damage_mod = 1
 	if(W.edge)

@@ -62,7 +62,7 @@
 			"<span class='notice'>You hear squelching...</span>")
 	M.buckled = src
 	M.loc = src.loc
-	M.set_dir(src.dir)
+	M.setDir(src.dir)
 	M.update_canmove()
 	M.pixel_y = 6
 	M.old_y = 6
@@ -70,7 +70,7 @@
 	src.add_fingerprint(user)
 	return
 
-/obj/structure/bed/nest/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/structure/bed/nest/attackby(obj/item/W as obj, mob/user as mob)
 	var/aforce = W.force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)

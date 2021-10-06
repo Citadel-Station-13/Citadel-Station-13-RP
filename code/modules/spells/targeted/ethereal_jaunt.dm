@@ -64,7 +64,7 @@
 	flick("reappear",animation)
 
 /spell/targeted/ethereal_jaunt/proc/jaunt_steam(var/mobloc)
-	var/datum/effect/effect/system/steam_spread/steam = new /datum/effect/effect/system/steam_spread()
+	var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()
 	steam.set_up(10, 0, mobloc)
 	steam.start()
 
@@ -78,9 +78,9 @@
 	anchored = 1
 	var/turf/last_valid_turf
 
-/obj/effect/dummy/spell_jaunt/New(var/location)
-	..()
-	last_valid_turf = get_turf(location)
+/obj/effect/dummy/spell_jaunt/Initialize(mapload)
+	. = ..()
+	last_valid_turf = get_turf(src)
 
 /obj/effect/dummy/spell_jaunt/Destroy()
 	// Eject contents if deleted somehow
@@ -91,13 +91,13 @@
 /obj/effect/dummy/spell_jaunt/relaymove(var/mob/user, direction)
 	if (!src.canmove || reappearing) return
 	var/turf/newLoc = get_step(src,direction)
-	if(!(newLoc.flags & NOJAUNT))
+	if(!(newLoc.flags & NO_JAUNT))
 		loc = newLoc
 		var/turf/T = get_turf(loc)
 		if(!T.contains_dense_objects())
 			last_valid_turf = T
 	else
-		user << "<span class='warning'>Some strange aura is blocking the way!</span>"
+		to_chat(user, "<span class='warning'>Some strange aura is blocking the way!</span>")
 	src.canmove = 0
 	spawn(2) src.canmove = 1
 

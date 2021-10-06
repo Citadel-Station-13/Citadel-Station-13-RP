@@ -1,11 +1,11 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-/obj/item/device/assembly/infra
+/obj/item/assembly/infra
 	name = "infrared emitter"
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
 	icon_state = "infrared"
 	origin_tech = list(TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "waste" = 100)
+	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
 
 	wires = WIRE_PULSE
 
@@ -15,26 +15,26 @@
 	var/visible = 0
 	var/obj/effect/beam/i_beam/first = null
 
-/obj/item/device/assembly/infra/activate()
+/obj/item/assembly/infra/activate()
 		if(!..())	return 0//Cooldown check
 		on = !on
 		update_icon()
 		return 1
 
 
-/obj/item/device/assembly/infra/toggle_secure()
+/obj/item/assembly/infra/toggle_secure()
 	secured = !secured
 	if(secured)
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	else
 		on = 0
 		if(first)	qdel(first)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 	update_icon()
 	return secured
 
 
-/obj/item/device/assembly/infra/update_icon()
+/obj/item/assembly/infra/update_icon()
 	overlays.Cut()
 	attached_overlays = list()
 	if(on)
@@ -46,7 +46,7 @@
 	return
 
 
-/obj/item/device/assembly/infra/process()//Old code
+/obj/item/assembly/infra/process(delta_time)//Old code
 	if(!on)
 		if(first)
 			qdel(first)
@@ -56,7 +56,7 @@
 		var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam((holder ? holder.loc : loc) )
 		I.master = src
 		I.density = 1
-		I.set_dir(dir)
+		I.setDir(dir)
 		step(I, I.dir)
 		if(I)
 			I.density = 0
@@ -64,47 +64,47 @@
 			I.vis_spread(visible)
 			spawn(0)
 				if(I)
-					//world << "infra: setting limit"
+					//to_chat(world, "infra: setting limit")
 					I.limit = 8
-					//world << "infra: processing beam \ref[I]"
+					//to_chat(world, "infra: processing beam \ref[I]")
 					I.process()
 				return
 	return
 
 
-/obj/item/device/assembly/infra/attack_hand()
+/obj/item/assembly/infra/attack_hand()
 	qdel(first)
 	..()
 	return
 
 
-/obj/item/device/assembly/infra/Move()
+/obj/item/assembly/infra/Move()
 	var/t = dir
 	..()
-	set_dir(t)
+	setDir(t)
 	qdel(first)
 	return
 
 
-/obj/item/device/assembly/infra/holder_movement()
+/obj/item/assembly/infra/holder_movement()
 	if(!holder)	return 0
-//		set_dir(holder.dir)
+//		setDir(holder.dir)
 	qdel(first)
 	return 1
 
 
-/obj/item/device/assembly/infra/proc/trigger_beam()
+/obj/item/assembly/infra/proc/trigger_beam()
 	if((!secured)||(!on)||(cooldown > 0))	return 0
 	pulse(0)
 	if(!holder)
-		visible_message("\icon[src] *beep* *beep*")
+		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*")
 	cooldown = 2
 	spawn(10)
 		process_cooldown()
 	return
 
 
-/obj/item/device/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
+/obj/item/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
 	if(!secured)	return
 	user.set_machine(src)
 	var/dat = text("<TT><B>Infrared Laser</B>\n<B>Status</B>: []<BR>\n<B>Visibility</B>: []<BR>\n</TT>", (on ? text("<A href='?src=\ref[];state=0'>On</A>", src) : text("<A href='?src=\ref[];state=1'>Off</A>", src)), (src.visible ? text("<A href='?src=\ref[];visible=0'>Visible</A>", src) : text("<A href='?src=\ref[];visible=1'>Invisible</A>", src)))
@@ -115,7 +115,7 @@
 	return
 
 
-/obj/item/device/assembly/infra/Topic(href, href_list, state = deep_inventory_state)
+/obj/item/assembly/infra/Topic(href, href_list, state = deep_inventory_state)
 	if(..()) return 1
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 		usr << browse(null, "window=infra")
@@ -142,12 +142,12 @@
 	return
 
 
-/obj/item/device/assembly/infra/verb/rotate()//This could likely be better
-	set name = "Rotate Infrared Laser"
+/obj/item/assembly/infra/verb/rotate_clockwise()
+	set name = "Rotate Infrared Laser Clockwise"
 	set category = "Object"
 	set src in usr
 
-	set_dir(turn(dir, 90))
+	setDir(turn(dir, 90))
 	return
 
 
@@ -159,7 +159,7 @@
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "ibeam"
 	var/obj/effect/beam/i_beam/next = null
-	var/obj/item/device/assembly/infra/master = null
+	var/obj/item/assembly/infra/master = null
 	var/limit = null
 	var/visible = 0.0
 	var/left = null
@@ -173,16 +173,16 @@
 	return
 
 /obj/effect/beam/i_beam/proc/vis_spread(v)
-	//world << "i_beam \ref[src] : vis_spread"
+	//to_chat(world, "i_beam \ref[src] : vis_spread")
 	visible = v
 	spawn(0)
 		if(next)
-			//world << "i_beam \ref[src] : is next [next.type] \ref[next], calling spread"
+			//to_chat(world, "i_beam \ref[src] : is next [next.type] \ref[next], calling spread")
 			next.vis_spread(v)
 		return
 	return
 
-/obj/effect/beam/i_beam/process()
+/obj/effect/beam/i_beam/process(delta_time)
 
 	if((loc && loc.density) || !master)
 		qdel(src)
@@ -199,34 +199,34 @@
 		invisibility = 0
 
 
-	//world << "now [src.left] left"
+	//to_chat(world, "now [src.left] left")
 	var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam(loc)
 	I.master = master
 	I.density = 1
-	I.set_dir(dir)
-	//world << "created new beam \ref[I] at [I.x] [I.y] [I.z]"
+	I.setDir(dir)
+	//to_chat(world, "created new beam \ref[I] at [I.x] [I.y] [I.z]")
 	step(I, I.dir)
 
 	if(I)
-		//world << "step worked, now at [I.x] [I.y] [I.z]"
+		//to_chat(world, "step worked, now at [I.x] [I.y] [I.z]")
 		if(!(next))
-			//world << "no next"
+			//to_chat(world, "no next")
 			I.density = 0
-			//world << "spreading"
+			//to_chat(world, "spreading")
 			I.vis_spread(visible)
 			next = I
 			spawn(0)
-				//world << "limit = [limit] "
+				//to_chat(world, "limit = [limit] ")
 				if((I && limit > 0))
 					I.limit = limit - 1
-					//world << "calling next process"
+					//to_chat(world, "calling next process")
 					I.process()
 				return
 		else
-			//world << "is a next: \ref[next], deleting beam \ref[I]"
+			//to_chat(world, "is a next: \ref[next], deleting beam \ref[I]")
 			qdel(I)
 	else
-		//world << "step failed, deleting \ref[next]"
+		//to_chat(world, "step failed, deleting \ref[next]")
 		qdel(next)
 	spawn(10)
 		process()
@@ -241,17 +241,17 @@
 	hit()
 	return
 
-/obj/effect/beam/i_beam/Crossed(atom/movable/AM as mob|obj)
+/obj/effect/beam/i_beam/Crossed(atom/movable/AM)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
 	if(istype(AM, /obj/effect/beam))
 		return
-	spawn(0)
-		hit()
-		return
-	return
+	hit()
 
 /obj/effect/beam/i_beam/Destroy()
 	. = ..()
 	if(master.first == src)
 		master.first = null
 	if(next && !next.gc_destroyed)
-		qdel_null(next)
+		QDEL_NULL(next)

@@ -4,17 +4,17 @@
 	Each target assisted attack costs some energy and instability."
 	cost = 50
 	ability_icon_state = "tech_targetingmatrix"
-	obj_path = /obj/item/weapon/spell/targeting_matrix
+	obj_path = /obj/item/spell/targeting_matrix
 	category = UTILITY_SPELLS
 
-/obj/item/weapon/spell/targeting_matrix
+/obj/item/spell/targeting_matrix
 	name = "targeting matrix"
 	desc = "Aiming is too much effort for you."
 	icon_state = "targeting_matrix"
 	cast_methods = CAST_RANGED
 	aspect = ASPECT_FORCE //idk?
 
-/obj/item/weapon/spell/targeting_matrix/on_ranged_cast(atom/hit_atom, mob/user)
+/obj/item/spell/targeting_matrix/on_ranged_cast(atom/hit_atom, mob/user)
 	var/turf/T = get_turf(hit_atom)
 	if(T)
 		var/mob/living/chosen_target = targeting_assist(T,5)		//The person who's about to get attacked.
@@ -31,6 +31,6 @@
 			adjust_instability(2)
 
 			var/image/target_image = image(icon = 'icons/obj/spells.dmi', loc = get_turf(chosen_target), icon_state = "target")
-			user << target_image
+			SEND_IMAGE(user, target_image)
 			sleep(5)
 			qdel(target_image)

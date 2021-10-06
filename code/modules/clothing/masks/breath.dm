@@ -3,7 +3,7 @@
 	name = "breath mask"
 	icon_state = "breath"
 	item_state_slots = list(slot_r_hand_str = "breath", slot_l_hand_str = "breath")
-	item_flags = AIRTIGHT|FLEXIBLEMATERIAL
+	item_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
 	body_parts_covered = FACE
 	w_class = ITEMSIZE_SMALL
 	gas_transfer_coefficient = 0.10
@@ -13,20 +13,20 @@
 
 
 /obj/item/clothing/mask/breath/proc/adjust_mask(mob/user)
-	if(user.canmove && !user.stat)
-		src.hanging = !src.hanging
-		if (src.hanging)
+	if(!user.incapacitated() && !user.restrained() && !user.stat)
+		hanging = !hanging
+		if (hanging)
 			gas_transfer_coefficient = 1
 			body_parts_covered = body_parts_covered & ~FACE
-			item_flags = item_flags & ~AIRTIGHT
+			item_flags = item_flags & ~ALLOWINTERNALS
 			icon_state = "breathdown"
-			user << "Your mask is now hanging on your neck."
+			to_chat(user, "Your mask is now hanging on your neck.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			body_parts_covered = initial(body_parts_covered)
 			item_flags = initial(item_flags)
 			icon_state = initial(icon_state)
-			user << "You pull the mask up to cover your face."
+			to_chat(user, "You pull the mask up to cover your face.")
 		update_clothing_icon()
 
 /obj/item/clothing/mask/breath/attack_self(mob/user)

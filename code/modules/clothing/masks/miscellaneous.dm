@@ -15,17 +15,16 @@
 	item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
 	w_class = ITEMSIZE_TINY
 
-/obj/item/clothing/mask/muzzle/New()
-    ..()
-    say_messages = list("Mmfph!", "Mmmf mrrfff!", "Mmmf mnnf!")
-    say_verbs = list("mumbles", "says")
+/obj/item/clothing/mask/muzzle/Initialize(mapload)
+	. = ..()
+	say_messages = list("Mmfph!", "Mmmf mrrfff!", "Mmmf mnnf!")
+	say_verbs = list("mumbles", "says")
 
 // Clumsy folks can't take the mask off themselves.
 /obj/item/clothing/mask/muzzle/attack_hand(mob/living/user as mob)
 	if(user.wear_mask == src && !user.IsAdvancedToolUser())
 		return 0
 	..()
-
 /obj/item/clothing/mask/surgical
 	name = "sterile mask"
 	desc = "A sterile mask designed to help prevent the spread of diseases."
@@ -47,13 +46,13 @@
 			body_parts_covered = body_parts_covered & ~FACE
 			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 			icon_state = "steriledown"
-			usr << "You pull the mask below your chin."
+			to_chat(usr, "You pull the mask below your chin.")
 		else
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			body_parts_covered = initial(body_parts_covered)
 			icon_state = initial(icon_state)
 			armor = initial(armor)
-			usr << "You pull the mask up to cover your face."
+			to_chat(usr, "You pull the mask up to cover your face.")
 		update_clothing_icon()
 
 /obj/item/clothing/mask/surgical/verb/toggle()
@@ -116,65 +115,40 @@
 	gas_transfer_coefficient = 0.90
 	siemens_coefficient = 0
 
-/obj/item/clothing/mask/pig
-	name = "pig mask"
-	desc = "A rubber pig mask."
-	icon_state = "pig"
-	flags_inv = HIDEFACE|BLOCKHAIR
+//Nock Masks?
+/obj/item/clothing/mask/nock_scarab
+	name = "nock mask (blue, scarab)"
+	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
+	icon_state = "nock_scarab"
 	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
+	body_parts_covered = HEAD|FACE
 
-/obj/item/clothing/mask/shark
-	name = "shark mask"
-	desc = "A rubber shark mask."
-	icon_state = "shark"
-	flags_inv = HIDEFACE
+/obj/item/clothing/mask/nock_demon
+	name = "nock mask (purple, demon)"
+	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
+	icon_state = "nock_demon"
 	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
+	body_parts_covered = HEAD|FACE
 
-/obj/item/clothing/mask/dolphin
-	name = "dolphin mask"
-	desc = "A rubber dolphin mask."
-	icon_state = "dolphin"
-	flags_inv = HIDEFACE
+/obj/item/clothing/mask/nock_life
+	name = "nock mask (green, life)"
+	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
+	icon_state = "nock_life"
 	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
+	body_parts_covered = HEAD|FACE
 
-/obj/item/clothing/mask/goblin
-	name = "goblin mask"
-	desc = "A rubber goblin mask."
-	icon_state = "goblin"
-	flags_inv = HIDEFACE
+/obj/item/clothing/mask/nock_ornate
+	name = "nock mask (red, ornate)"
+	desc = "To Nock followers, masks symbolize rebirth and a new persona. Damaging the wearer's mask is generally considered an attack on their person itself."
+	icon_state = "nock_ornate"
 	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
+	body_parts_covered = HEAD|FACE
 
-/obj/item/clothing/mask/demon
-	name = "demon mask"
-	desc = "A rubber demon mask."
-	icon_state = "demon"
-	flags_inv = HIDEFACE
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/horsehead
-	name = "horse head mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a horse."
-	icon_state = "horsehead"
-	flags_inv = HIDEFACE|BLOCKHAIR
-	body_parts_covered = HEAD|FACE|EYES
-	w_class = ITEMSIZE_SMALL
-	siemens_coefficient = 0.9
-
-/obj/item/clothing/mask/horsehead/New()
-    ..()
-    // The horse mask doesn't cause voice changes by default, the wizard spell changes the flag as necessary
-    say_messages = list("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
-    say_verbs = list("whinnies", "neighs", "says")
+/obj/item/clothing/mask/horsehead/Initialize(mapload)
+	. = ..()
+	// The horse mask doesn't cause voice changes by default, the wizard spell changes the flag as necessary
+	say_messages = list("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
+	say_verbs = list("whinnies", "neighs", "says")
 
 /obj/item/clothing/mask/ai
 	name = "camera MIU"
@@ -185,7 +159,8 @@
 	body_parts_covered = 0
 	var/mob/observer/eye/aiEye/eye
 
-/obj/item/clothing/mask/ai/New()
+/obj/item/clothing/mask/ai/Initialize(mapload)
+	. = ..()
 	eye = new(src)
 
 /obj/item/clothing/mask/ai/equipped(var/mob/user, var/slot)
@@ -207,6 +182,19 @@
 		eye.owner.eyeobj = null
 		eye.owner = null
 
+//Samurai
+/obj/item/clothing/mask/samurai
+	name = "menpo"
+	desc = "Antique facial armor hailing from old Earth. Designed to protect against sword blows and potentially arrows. This version has been carefully retrofitted to provide air."
+	icon_state = "menpo"
+	item_state_slots = list(slot_r_hand_str = "bandblack", slot_l_hand_str = "bandblack")
+	item_flags = ALLOWINTERNALS|FLEXIBLEMATERIAL
+	body_parts_covered = FACE
+	w_class = ITEMSIZE_SMALL
+	gas_transfer_coefficient = 0.10
+	permeability_coefficient = 0.50
+
+//Bandanas
 /obj/item/clothing/mask/bandana
 	name = "black bandana"
 	desc = "A fine black bandana with nanotech lining. Can be worn on the head or face."

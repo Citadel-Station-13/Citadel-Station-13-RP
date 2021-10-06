@@ -8,10 +8,11 @@
 	var/max_field_radius = 150
 	var/list/field = list()
 	density = 1
+	req_one_access = list(access_engine,access_captain,access_security)
 	var/locked = 0
 	var/average_field_strength = 0
 	var/strengthen_rate = 0.2
-	var/max_strengthen_rate = 0.5	//the maximum rate that the generator can increase the average field strength
+	var/max_strengthen_rate = 0.9	//the maximum rate that the generator can increase the average field strength
 	var/dissipation_rate = 0.030	//the percentage of the shield strength that needs to be replaced each second
 	var/min_dissipation = 0.01		//will dissipate by at least this rate in renwicks per field tile (otherwise field would never dissipate completely as dissipation is a percentage)
 	var/powered = 0
@@ -22,14 +23,14 @@
 	var/time_since_fail = 100
 	var/energy_conversion_rate = 0.0006	//how many renwicks per watt?  Higher numbers equals more effiency.
 	var/z_range = 0 // How far 'up and or down' to extend the shield to, in z-levels.  Only works on MultiZ supported z-levels.
-	use_power = 0	//doesn't use APC power
+	use_power = USE_POWER_OFF	//doesn't use APC power
 
 /obj/machinery/shield_gen/advanced
 	name = "advanced bubble shield generator"
 	desc = "A machine that generates a field of energy optimized for blocking meteorites when activated.  This version comes with a more efficent shield matrix."
 	energy_conversion_rate = 0.0012
 
-/obj/machinery/shield_gen/initialize()
+/obj/machinery/shield_gen/Initialize(mapload)
 	if(anchored)
 		for(var/obj/machinery/shield_capacitor/cap in range(1, src))
 			if(!cap.anchored)
@@ -42,32 +43,34 @@
 	return ..()
 
 /obj/machinery/shield_gen/Destroy()
-	qdel_null_list(field)
+	QDEL_LIST_NULL(field)
 	return ..()
 
 /obj/machinery/shield_gen/emag_act(var/remaining_charges, var/mob/user)
 	if(prob(75))
 		src.locked = !src.locked
-		user << "Controls are now [src.locked ? "locked." : "unlocked."]"
+		to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
 		. = 1
 		updateDialog()
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()
 
 /obj/machinery/shield_gen/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/weapon/card/id))
-		var/obj/item/weapon/card/id/C = W
-		if(access_captain in C.access || access_security in C.access || access_engine in C.access)
+	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))
+		if(emagged)
+			to_chat(user, "<span class='warning'>The lock seems to be broken.</span>")
+			return
+		if(src.allowed(user))
 			src.locked = !src.locked
-			user << "Controls are now [src.locked ? "locked." : "unlocked."]"
+			to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
 			updateDialog()
 		else
-			user << "<font color='red'>Access denied.</font>"
-	else if(istype(W, /obj/item/weapon/wrench))
+			to_chat(user, "<span class='warning'>Access denied.</span>")
+	else if(W.is_wrench())
 		src.anchored = !src.anchored
 		playsound(src, W.usesound, 75, 1)
-		src.visible_message("<font color='blue'>\icon[src] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
+		src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
 
 		if(active)
 			toggle()
@@ -148,7 +151,7 @@
 	user << browse(t, "window=shield_generator;size=500x400")
 	user.set_machine(src)
 
-/obj/machinery/shield_gen/process()
+/obj/machinery/shield_gen/process(delta_time)
 	if (!anchored && active)
 		toggle()
 
@@ -213,7 +216,7 @@
 		return
 	else if( href_list["toggle"] )
 		if (!active && !anchored)
-			usr << "<font color='red'>The [src] needs to be firmly secured to the floor first.</font>"
+			to_chat(usr, "<font color='red'>The [src] needs to be firmly secured to the floor first.</font>")
 			return
 		toggle()
 	else if( href_list["change_radius"] )
@@ -248,7 +251,7 @@
 		covered_turfs = null
 
 		for(var/mob/M in view(5,src))
-			M << "\icon[src] You hear heavy droning start up."
+			to_chat(M, "[icon2html(thing = src, target = M)] You hear heavy droning start up.")
 		for(var/obj/effect/energy_field/E in field) // Update the icons here to ensure all the shields have been made already.
 			E.update_icon()
 	else
@@ -258,7 +261,7 @@
 			qdel(D)
 
 		for(var/mob/M in view(5,src))
-			M << "\icon[src] You hear heavy droning fade out."
+			to_chat(M, "[icon2html(thing = src, target = M)] You hear heavy droning fade out.")
 
 /obj/machinery/shield_gen/update_icon()
 	if(stat & BROKEN)

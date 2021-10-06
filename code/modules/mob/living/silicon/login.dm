@@ -1,3 +1,4 @@
 /mob/living/silicon/Login()
-	sleeping = 0
+	SetSleeping(0)
 	..()
+	plane_holder.set_vis(VIS_AUGMENTED, TRUE)

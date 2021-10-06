@@ -1,5 +1,5 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-var/list/admin_departments = list("[using_map.boss_name]", "Virgo-Prime Governmental Authority", "Supply") // Vorestation Edit
+var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Virgo-Prime Governmental Authority", "Supply") // Vorestation Edit
 var/list/alldepartments = list()
 
 var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
@@ -11,35 +11,37 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	insert_anim = "faxsend"
 	req_one_access = list(access_lawyer, access_heads, access_armory, access_qm)
 
-	use_power = 1
+	density = 0
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 30
 	active_power_usage = 200
-	circuit = /obj/item/weapon/circuitboard/fax
+	circuit = /obj/item/circuitboard/fax
 
-	var/obj/item/weapon/card/id/scan = null // identification
+	var/obj/item/card/id/scan = null // identification
 	var/authenticated = 0
 	var/sendcooldown = 0 // to avoid spamming fax messages
 	var/department = "Unknown" // our department
 	var/destination = null // the department we're sending to
 
-/obj/machinery/photocopier/faxmachine/New()
+/obj/machinery/photocopier/faxmachine/Initialize(mapload)
+	. = ..()
 	allfaxes += src
-	if(!destination) destination = "[using_map.boss_name]"
-	if( !(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
+	if(!destination)
+		destination = "[GLOB.using_map.boss_name]"
+	if(!(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
 		alldepartments |= department
-	..()
 
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
 	user.set_machine(src)
 
-	ui_interact(user)
+	nano_ui_interact(user)
 
 /**
  *  Display the NanoUI window for the fax machine.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/photocopier/faxmachine/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/photocopier/faxmachine/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -47,7 +49,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 		data["scanName"] = scan.name
 	else
 		data["scanName"] = null
-	data["bossName"] = using_map.boss_name
+	data["bossName"] = GLOB.using_map.boss_name
 	data["authenticated"] = authenticated
 	data["copyItem"] = copyitem
 	if(copyitem)
@@ -57,7 +59,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	data["cooldown"] = sendcooldown
 	data["destination"] = destination
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "fax.tmpl", src.name, 500, 500)
 		ui.set_initial_data(data)
@@ -78,6 +80,9 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	else if(href_list["remove"])
 		if(copyitem)
+			if(get_dist(usr, src) >= 2)
+				to_chat(usr, "\The [copyitem] is too far away for you to remove it.")
+				return
 			copyitem.loc = usr.loc
 			usr.put_in_hands(copyitem)
 			to_chat(usr, "<span class='notice'>You take \the [copyitem] out of \the [src].</span>")
@@ -95,7 +100,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 				scan = null
 		else
 			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/weapon/card/id) && usr.unEquip(I))
+			if (istype(I, /obj/item/card/id) && usr.unEquip(I))
 				I.loc = src
 				scan = I
 		authenticated = 0
@@ -113,7 +118,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	if(href_list["logout"])
 		authenticated = 0
 
-	nanomanager.update_uis(src)
+	SSnanoui.update_uis(src)
 
 /obj/machinery/photocopier/faxmachine/proc/sendfax(var/destination)
 	if(stat & (BROKEN|NOPOWER))
@@ -140,17 +145,17 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 		return 0	//You can't send faxes to "Unknown"
 
 	flick("faxreceive", src)
-	playsound(loc, "sound/effects/printer.ogg", 50, 1)
+	playsound(src, "sound/machines/printer.ogg", 50, 1)
 
 
 	// give the sprite some time to flick
 	sleep(20)
 
-	if (istype(incoming, /obj/item/weapon/paper))
+	if (istype(incoming, /obj/item/paper))
 		copy(incoming)
-	else if (istype(incoming, /obj/item/weapon/photo))
+	else if (istype(incoming, /obj/item/photo))
 		photocopy(incoming)
-	else if (istype(incoming, /obj/item/weapon/paper_bundle))
+	else if (istype(incoming, /obj/item/paper_bundle))
 		bundlecopy(incoming)
 	else
 		return 0
@@ -166,11 +171,11 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	//received copies should not use toner since it's being used by admins only.
 	var/obj/item/rcvdcopy
-	if (istype(copyitem, /obj/item/weapon/paper))
+	if (istype(copyitem, /obj/item/paper))
 		rcvdcopy = copy(copyitem, 0)
-	else if (istype(copyitem, /obj/item/weapon/photo))
+	else if (istype(copyitem, /obj/item/photo))
 		rcvdcopy = photocopy(copyitem, 0)
-	else if (istype(copyitem, /obj/item/weapon/paper_bundle))
+	else if (istype(copyitem, /obj/item/paper_bundle))
 		rcvdcopy = bundlecopy(copyitem, 0)
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
@@ -180,12 +185,12 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	adminfaxes += rcvdcopy
 
 	//message badmins that a fax has arrived
-	if (destination == using_map.boss_name)
-		message_admins(sender, "[uppertext(using_map.boss_short)] FAX", rcvdcopy, "CentComFaxReply", "#006100")
+	if (destination == GLOB.using_map.boss_name)
+		message_admins(sender, "[uppertext(GLOB.using_map.boss_short)] FAX", rcvdcopy, "CentComFaxReply", "#006100")
 	else if (destination == "Virgo-Prime Governmental Authority") // Vorestation Edit
 		message_admins(sender, "VIRGO GOVERNMENT FAX", rcvdcopy, "CentComFaxReply", "#1F66A0")
 	else if (destination == "Supply")
-		message_admins(sender, "[uppertext(using_map.boss_short)] SUPPLY FAX", rcvdcopy, "CentComFaxReply", "#5F4519")
+		message_admins(sender, "[uppertext(GLOB.using_map.boss_short)] SUPPLY FAX", rcvdcopy, "CentComFaxReply", "#5F4519")
 	else
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, "UNKNOWN")
 
@@ -202,8 +207,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	for(var/client/C in admins)
 		if(check_rights((R_ADMIN|R_MOD),0,C))
-			C << msg
-			C << 'sound/effects/printer.ogg'
+			to_chat(C, msg)
+			SEND_SOUND(C, sound('sound/machines/printer.ogg'))
 
 	// VoreStation Edit Start
 	var/faxid = export_fax(sent)

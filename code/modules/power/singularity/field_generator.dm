@@ -20,7 +20,7 @@ field_generator power level display
 	icon_state = "Field_Gen"
 	anchored = 0
 	density = 1
-	use_power = 0
+	use_power = USE_POWER_OFF
 	var/const/num_power_levels = 6	// Total number of power level icon has
 	var/Varedit_start = 0
 	var/Varpower = 0
@@ -33,35 +33,29 @@ field_generator power level display
 	var/clean_up = 0
 
 	//If keeping field generators powered is hard then increase the emitter active power usage.
-	var/gen_power_draw = 5500	//power needed per generator
-	var/field_power_draw = 2000	//power needed per field object
+	var/gen_power_draw = 4500	//power needed per generator
+	var/field_power_draw = 1750	//power needed per field object
 
-
-/obj/machinery/field_generator/update_icon()
-	overlays.Cut()
-	if(!active)
-		if(warming_up)
-			overlays += "+a[warming_up]"
+/obj/machinery/field_generator/update_overlays()
+	. = ..()
+	if(warming_up)
+		. += "+a[warming_up]"
 	if(fields.len)
-		overlays += "+on"
+		. += "+on"
 	// Power level indicator
 	// Scale % power to % num_power_levels and truncate value
 	var/level = round(num_power_levels * power / field_generator_max_power)
 	// Clamp between 0 and num_power_levels for out of range power values
 	level = between(0, level, num_power_levels)
 	if(level)
-		overlays += "+p[level]"
+		. += "+p[level]"
 
-	return
-
-
-/obj/machinery/field_generator/New()
-	..()
+/obj/machinery/field_generator/Initialize(mapload)
+	. = ..()
 	fields = list()
 	connected_gens = list()
-	return
 
-/obj/machinery/field_generator/process()
+/obj/machinery/field_generator/process(delta_time)
 	if(Varedit_start == 1)
 		if(active == 0)
 			active = 1
@@ -83,7 +77,7 @@ field_generator power level display
 	if(state == 2)
 		if(get_dist(src, user) <= 1)//Need to actually touch the thing to turn it on
 			if(src.active >= 1)
-				user << "You are unable to turn off the [src.name] once it is online."
+				to_chat(user, "You are unable to turn off the [src.name] once it is online.")
 				return 1
 			else
 				user.visible_message("[user.name] turns on the [src.name]", \
@@ -95,15 +89,15 @@ field_generator power level display
 
 				src.add_fingerprint(user)
 	else
-		user << "The [src] needs to be firmly secured to the floor first."
+		to_chat(user, "The [src] needs to be firmly secured to the floor first.")
 		return
 
 
 /obj/machinery/field_generator/attackby(obj/item/W, mob/user)
 	if(active)
-		user << "The [src] needs to be off."
+		to_chat(user, "The [src] needs to be off.")
 		return
-	else if(istype(W, /obj/item/weapon/wrench))
+	else if(W.is_wrench())
 		switch(state)
 			if(0)
 				state = 1
@@ -120,13 +114,13 @@ field_generator power level display
 					"You hear ratchet")
 				src.anchored = 0
 			if(2)
-				user << "<font color='red'>The [src.name] needs to be unwelded from the floor.</font>"
+				to_chat(user, "<font color='red'>The [src.name] needs to be unwelded from the floor.</font>")
 				return
-	else if(istype(W, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = W
+	else if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
 		switch(state)
 			if(0)
-				user << "<font color='red'>The [src.name] needs to be wrenched to the floor.</font>"
+				to_chat(user, "<font color='red'>The [src.name] needs to be wrenched to the floor.</font>")
 				return
 			if(1)
 				if (WT.remove_fuel(0,user))
@@ -137,7 +131,7 @@ field_generator power level display
 					if (do_after(user,20 * WT.toolspeed))
 						if(!src || !WT.isOn()) return
 						state = 2
-						user << "You weld the field generator to the floor."
+						to_chat(user, "You weld the field generator to the floor.")
 				else
 					return
 			if(2)
@@ -149,7 +143,7 @@ field_generator power level display
 					if (do_after(user,20 * WT.toolspeed))
 						if(!src || !WT.isOn()) return
 						state = 1
-						user << "You cut the [src] free from the floor."
+						to_chat(user, "You cut the [src] free from the floor.")
 				else
 					return
 	else
@@ -175,6 +169,7 @@ field_generator power level display
 
 /obj/machinery/field_generator/proc/turn_off()
 	active = 0
+	warming_up = 0
 	spawn(1)
 		src.cleanup()
 	update_icon()
@@ -201,13 +196,8 @@ field_generator power level display
 		src.power = field_generator_max_power
 
 	var/power_draw = gen_power_draw
-	for(var/obj/machinery/field_generator/FG in connected_gens)
-		if (!isnull(FG))
-			power_draw += gen_power_draw
 	for (var/obj/machinery/containment_field/F in fields)
-		if (!isnull(F))
-			power_draw += field_power_draw
-	power_draw /= 2	//because this will be mirrored for both generators
+		power_draw += field_power_draw / 2		// mirrored for the other generator
 	if(draw_power(round(power_draw)) >= power_draw)
 		return 1
 	else
@@ -290,7 +280,7 @@ field_generator power level display
 			fields += CF
 			G.fields += CF
 			CF.loc = T
-			CF.set_dir(field_dir)
+			CF.setDir(field_dir)
 	var/listcheck = 0
 	for(var/obj/machinery/field_generator/FG in connected_gens)
 		if (isnull(FG))

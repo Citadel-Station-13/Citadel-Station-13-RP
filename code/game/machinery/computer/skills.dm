@@ -8,8 +8,9 @@
 	icon_screen = "medlaptop"
 	light_color = "#00b000"
 	req_one_access = list(access_heads)
-	circuit = /obj/item/weapon/circuitboard/skills
-	var/obj/item/weapon/card/id/scan = null
+	circuit = /obj/item/circuitboard/skills
+	density = 0
+	var/obj/item/card/id/scan = null
 	var/authenticated = null
 	var/rank = null
 	var/screen = null
@@ -25,10 +26,10 @@
 	var/order = 1 // -1 = Descending - 1 = Ascending
 
 /obj/machinery/computer/skills/attackby(obj/item/O as obj, var/mob/user)
-	if(istype(O, /obj/item/weapon/card/id) && !scan && user.unEquip(O))
+	if(istype(O, /obj/item/card/id) && !scan && user.unEquip(O))
 		O.loc = src
 		scan = O
-		user << "You insert [O]."
+		to_chat(user, "You insert [O].")
 	else
 		..()
 
@@ -39,8 +40,8 @@
 /obj/machinery/computer/skills/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if (using_map && !(src.z in using_map.contact_levels))
-		user << "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!"
+	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
+		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 		return
 	var/dat
 
@@ -186,7 +187,7 @@ What a mess.*/
 					scan = null
 				else
 					var/obj/item/I = usr.get_active_hand()
-					if (istype(I, /obj/item/weapon/card/id) && usr.unEquip(I))
+					if (istype(I, /obj/item/card/id) && usr.unEquip(I))
 						I.loc = src
 						scan = I
 
@@ -207,7 +208,7 @@ What a mess.*/
 					var/mob/living/silicon/robot/R = usr
 					src.rank = R.braintype
 					src.screen = 1
-				else if (istype(scan, /obj/item/weapon/card/id))
+				else if (istype(scan, /obj/item/card/id))
 					active1 = null
 					if(check_access(scan))
 						authenticated = scan.registered_name
@@ -271,7 +272,7 @@ What a mess.*/
 				if (!( printing ))
 					printing = 1
 					sleep(50)
-					var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( loc )
+					var/obj/item/paper/P = new /obj/item/paper( loc )
 					P.info = "<CENTER><B>Employment Record</B></CENTER><BR>"
 					if ((istype(active1, /datum/data/record) && data_core.general.Find(active1)))
 						P.info += text("Name: [] ID: []<BR>\nSex: []<BR>\nAge: []<BR>\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>\nEmployment/Skills Summary:<BR>\n[]<BR>", active1.fields["name"], active1.fields["id"], active1.fields["sex"], active1.fields["age"], active1.fields["fingerprint"], active1.fields["p_stat"], active1.fields["m_stat"], decode(active1.fields["notes"]))
@@ -292,8 +293,8 @@ What a mess.*/
 				temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
 
 			if ("Purge All Records")
-				if(PDA_Manifest.len)
-					PDA_Manifest.Cut()
+				if(GLOB.PDA_Manifest.len)
+					GLOB.PDA_Manifest.Cut()
 				for(var/datum/data/record/R in data_core.security)
 					qdel(R)
 				temp = "All Employment records deleted."
@@ -305,8 +306,8 @@ What a mess.*/
 					temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
 //RECORD CREATE
 			if ("New Record (General)")
-				if(PDA_Manifest.len)
-					PDA_Manifest.Cut()
+				if(GLOB.PDA_Manifest.len)
+					GLOB.PDA_Manifest.Cut()
 				active1 = data_core.CreateGeneralRecord()
 
 //FIELD FUNCTIONS
@@ -344,7 +345,7 @@ What a mess.*/
 								return
 							active1.fields["age"] = t1
 					if("rank")
-						var/list/L = list( "Head of Personnel", "Colony Director", "AI" )
+						var/list/L = list( "Head of Personnel", "Facility Director", "AI" )
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
 						if ((istype(active1, /datum/data/record) && L.Find(rank)))
 							temp = "<h5>Rank:</h5>"
@@ -367,16 +368,16 @@ What a mess.*/
 				switch(href_list["choice"])
 					if ("Change Rank")
 						if (active1)
-							if(PDA_Manifest.len)
-								PDA_Manifest.Cut()
+							if(GLOB.PDA_Manifest.len)
+								GLOB.PDA_Manifest.Cut()
 							active1.fields["rank"] = href_list["rank"]
 							if(href_list["rank"] in joblist)
 								active1.fields["real_rank"] = href_list["real_rank"]
 
 					if ("Delete Record (ALL) Execute")
 						if (active1)
-							if(PDA_Manifest.len)
-								PDA_Manifest.Cut()
+							if(GLOB.PDA_Manifest.len)
+								GLOB.PDA_Manifest.Cut()
 							for(var/datum/data/record/R in data_core.medical)
 								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									qdel(R)
@@ -407,8 +408,8 @@ What a mess.*/
 					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Parolled", "Released")
 				if(5)
 					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
-					if(PDA_Manifest.len)
-						PDA_Manifest.Cut()
+					if(GLOB.PDA_Manifest.len)
+						GLOB.PDA_Manifest.Cut()
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
 			continue

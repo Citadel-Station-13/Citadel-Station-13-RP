@@ -1,9 +1,19 @@
+/datum/category_item/catalogue/technology/bot/medbot
+	name = "Bot - Medibot"
+	desc = "Medibots have become vital additions to hazardous workplaces \
+	across the galaxy. A common sight on the Frontier, Medibots utilize \
+	chemical synthesizers to deliver payloads of healing medications to injured \
+	parties. Although not capable of more complex treatments, the standard Medibot \
+	can stabilize a severely injured worker as easily as it can treat a minor scrape."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/medbot
 	name = "Medibot"
 	desc = "A little medical robot. He looks somewhat underwhelmed."
 	icon_state = "medibot0"
 	req_one_access = list(access_robotics, access_medical)
 	botcard_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medbot)
 
 	var/skin = null //Set to "tox", "ointment" or "o2" for the other two firstaid kits.
 
@@ -12,7 +22,7 @@
 	var/vocal = 1
 
 	//Healing vars
-	var/obj/item/weapon/reagent_containers/glass/reagent_glass = null //Can be set to draw from this for reagents.
+	var/obj/item/reagent_containers/glass/reagent_glass = null //Can be set to draw from this for reagents.
 	var/injection_amount = 15 //How much reagent do we inject at a time?
 	var/heal_threshold = 10 //Start healing when they have this much damage in a category
 	var/use_beaker = 0 //Use reagents in beaker instead of default treatment agents.
@@ -48,6 +58,32 @@
 
 /mob/living/bot/medbot/handleAdjacentTarget()
 	UnarmedAttack(target)
+
+/mob/living/bot/medbot/handlePanic()	// Speed modification based on alert level.
+	. = 0
+	switch(get_security_level())
+		if("green")
+			. = 0
+
+		if("yellow")
+			. = 0
+
+		if("violet")
+			. = 1
+
+		if("orange")
+			. = 0
+
+		if("blue")
+			. = 1
+
+		if("red")
+			. = 2
+
+		if("delta")
+			. = 2
+
+	return .
 
 /mob/living/bot/medbot/lookForTargets()
 	for(var/mob/living/carbon/human/H in view(7, src)) // Time to find a patient!
@@ -87,7 +123,7 @@
 	visible_message("<span class='warning'>[src] is trying to inject [H]!</span>")
 	if(declare_treatment)
 		var/area/location = get_area(src)
-		global_announcer.autosay("[src] is treating <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
+		GLOB.global_announcer.autosay("[src] is treating <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
 	busy = 1
 	update_icons()
 	if(do_mob(src, H, 30))
@@ -174,18 +210,18 @@
 	return
 
 /mob/living/bot/medbot/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, /obj/item/weapon/reagent_containers/glass))
+	if(istype(O, /obj/item/reagent_containers/glass))
 		if(locked)
-			user << "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>"
+			to_chat(user, "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>")
 			return
 		if(!isnull(reagent_glass))
-			user << "<span class='notice'>There is already a beaker loaded.</span>"
+			to_chat(user, "<span class='notice'>There is already a beaker loaded.</span>")
 			return
 
 		user.drop_item()
 		O.loc = src
 		reagent_glass = O
-		user << "<span class='notice'>You insert [O].</span>"
+		to_chat(user, "<span class='notice'>You insert [O].</span>")
 		return
 	else
 		..()
@@ -204,8 +240,8 @@
 	else if((href_list["adj_threshold"]) && (!locked || issilicon(usr)))
 		var/adjust_num = text2num(href_list["adj_threshold"])
 		heal_threshold += adjust_num
-		if(heal_threshold < 5)
-			heal_threshold = 5
+		if(heal_threshold <= 0)
+			heal_threshold = 0.1
 		if(heal_threshold > 75)
 			heal_threshold = 75
 
@@ -225,7 +261,7 @@
 			reagent_glass.loc = get_turf(src)
 			reagent_glass = null
 		else
-			usr << "<span class='notice'>You cannot eject the beaker because the panel is locked.</span>"
+			to_chat(usr, "<span class='notice'>You cannot eject the beaker because the panel is locked.</span>")
 
 	else if ((href_list["togglevoice"]) && (!locked || issilicon(usr)))
 		vocal = !vocal
@@ -240,7 +276,7 @@
 	. = ..()
 	if(!emagged)
 		if(user)
-			user << "<span class='warning'>You short out [src]'s reagent synthesis circuits.</span>"
+			to_chat(user, "<span class='warning'>You short out [src]'s reagent synthesis circuits.</span>")
 		visible_message("<span class='warning'>[src] buzzes oddly!</span>")
 		flick("medibot_spark", src)
 		target = null
@@ -256,9 +292,9 @@
 	visible_message("<span class='danger'>[src] blows apart!</span>")
 	var/turf/Tsec = get_turf(src)
 
-	new /obj/item/weapon/storage/firstaid(Tsec)
-	new /obj/item/device/assembly/prox_sensor(Tsec)
-	new /obj/item/device/healthanalyzer(Tsec)
+	new /obj/item/storage/firstaid(Tsec)
+	new /obj/item/assembly/prox_sensor(Tsec)
+	new /obj/item/healthanalyzer(Tsec)
 	if (prob(50))
 		new /obj/item/robot_parts/l_arm(Tsec)
 
@@ -269,7 +305,7 @@
 	if(emagged && prob(25))
 		playsound(loc, 'sound/voice/medbot/minsult.ogg', 50, 0)
 
-	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 	qdel(src)
@@ -277,6 +313,9 @@
 
 /mob/living/bot/medbot/confirmTarget(var/mob/living/carbon/human/H)
 	if(!..())
+		return 0
+
+	if(H.isSynthetic()) // Don't treat FBPs
 		return 0
 
 	if(H.stat == DEAD) // He's dead, Jim
@@ -309,53 +348,53 @@
 
 /* Construction */
 
-/obj/item/weapon/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user as mob)
+/obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user as mob)
 	if ((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))
 		..()
 		return
 
 	if(contents.len >= 1)
-		user << "<span class='notice'>You need to empty [src] out first.</span>"
+		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
 		return
 
-	var/obj/item/weapon/firstaid_arm_assembly/A = new /obj/item/weapon/firstaid_arm_assembly
-	if(istype(src, /obj/item/weapon/storage/firstaid/fire))
+	var/obj/item/firstaid_arm_assembly/A = new /obj/item/firstaid_arm_assembly
+	if(istype(src, /obj/item/storage/firstaid/fire))
 		A.skin = "ointment"
-	else if(istype(src, /obj/item/weapon/storage/firstaid/toxin))
+	else if(istype(src, /obj/item/storage/firstaid/toxin))
 		A.skin = "tox"
-	else if(istype(src, /obj/item/weapon/storage/firstaid/o2))
+	else if(istype(src, /obj/item/storage/firstaid/o2))
 		A.skin = "o2"
 
 	qdel(S)
 	user.put_in_hands(A)
-	user << "<span class='notice'>You add the robot arm to the first aid kit.</span>"
+	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
 	user.drop_from_inventory(src)
 	qdel(src)
 
-/obj/item/weapon/storage/firstaid/attackby(var/obj/item/organ/external/S, mob/user as mob)
+/obj/item/storage/firstaid/attackby(var/obj/item/organ/external/S, mob/user as mob)
 	if (!istype(S, /obj/item/organ/external/arm) || S.robotic != ORGAN_ROBOT)
 		..()
 		return
 
 	if(contents.len >= 1)
-		user << "<span class='notice'>You need to empty [src] out first.</span>"
+		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
 		return
 
-	var/obj/item/weapon/firstaid_arm_assembly/A = new /obj/item/weapon/firstaid_arm_assembly
-	if(istype(src, /obj/item/weapon/storage/firstaid/fire))
+	var/obj/item/firstaid_arm_assembly/A = new /obj/item/firstaid_arm_assembly
+	if(istype(src, /obj/item/storage/firstaid/fire))
 		A.skin = "ointment"
-	else if(istype(src, /obj/item/weapon/storage/firstaid/toxin))
+	else if(istype(src, /obj/item/storage/firstaid/toxin))
 		A.skin = "tox"
-	else if(istype(src, /obj/item/weapon/storage/firstaid/o2))
+	else if(istype(src, /obj/item/storage/firstaid/o2))
 		A.skin = "o2"
 
 	qdel(S)
 	user.put_in_hands(A)
-	user << "<span class='notice'>You add the robot arm to the first aid kit.</span>"
+	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
 	user.drop_from_inventory(src)
 	qdel(src)
 
-/obj/item/weapon/firstaid_arm_assembly
+/obj/item/firstaid_arm_assembly
 	name = "first aid/robot arm assembly"
 	desc = "A first aid kit with a robot arm permanently grafted to it."
 	icon = 'icons/obj/aibots.dmi'
@@ -365,15 +404,18 @@
 	var/skin = null //Same as medbot, set to tox or ointment for the respective kits.
 	w_class = ITEMSIZE_NORMAL
 
-/obj/item/weapon/firstaid_arm_assembly/New()
-	..()
-	spawn(5) // Terrible. TODO: fix
-		if(skin)
-			overlays += image('icons/obj/aibots.dmi', "kit_skin_[src.skin]")
+/obj/item/firstaid_arm_assembly/Initialize(mapload)
+	. = ..()
+	return INITIALIZE_HINT_QDEL
 
-/obj/item/weapon/firstaid_arm_assembly/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/firstaid_arm_assembly/LateInitialize()
+	. = ..()
+	if(skin)
+		overlays += image('icons/obj/aibots.dmi', "kit_skin_[src.skin]")
+
+/obj/item/firstaid_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if(istype(W, /obj/item/weapon/pen))
+	if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
 		if(!t)
 			return
@@ -383,11 +425,11 @@
 	else
 		switch(build_step)
 			if(0)
-				if(istype(W, /obj/item/device/healthanalyzer))
+				if(istype(W, /obj/item/healthanalyzer))
 					user.drop_item()
 					qdel(W)
 					build_step++
-					user << "<span class='notice'>You add the health sensor to [src].</span>"
+					to_chat(user, "<span class='notice'>You add the health sensor to [src].</span>")
 					name = "First aid/robot arm/health analyzer assembly"
 					overlays += image('icons/obj/aibots.dmi', "na_scanner")
 
@@ -395,7 +437,7 @@
 				if(isprox(W))
 					user.drop_item()
 					qdel(W)
-					user << "<span class='notice'>You complete the Medibot! Beep boop.</span>"
+					to_chat(user, "<span class='notice'>You complete the Medibot! Beep boop.</span>")
 					var/turf/T = get_turf(src)
 					var/mob/living/bot/medbot/S = new /mob/living/bot/medbot(T)
 					S.skin = skin

@@ -1,9 +1,9 @@
-/obj/item/device/assembly/timer
+/obj/item/assembly/timer
 	name = "timer"
 	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
 	icon_state = "timer"
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 50, "waste" = 10)
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 50)
 
 	wires = WIRE_PULSE
 
@@ -13,7 +13,7 @@
 	var/time = 10
 
 
-/obj/item/device/assembly/timer/activate()
+/obj/item/assembly/timer/activate()
 	if(!..())	return 0//Cooldown check
 
 	timing = !timing
@@ -22,29 +22,29 @@
 	return 0
 
 
-/obj/item/device/assembly/timer/toggle_secure()
+/obj/item/assembly/timer/toggle_secure()
 	secured = !secured
 	if(secured)
-		processing_objects.Add(src)
+		START_PROCESSING(SSprocessing, src)
 	else
 		timing = 0
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSprocessing, src)
 	update_icon()
 	return secured
 
 
-/obj/item/device/assembly/timer/proc/timer_end()
+/obj/item/assembly/timer/proc/timer_end()
 	if(!secured)	return 0
 	pulse(0)
 	if(!holder)
-		visible_message("\icon[src] *beep* *beep*", "*beep* *beep*")
+		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*", "*beep* *beep*")
 	cooldown = 2
 	spawn(10)
 		process_cooldown()
 	return
 
 
-/obj/item/device/assembly/timer/process()
+/obj/item/assembly/timer/process(delta_time)
 	if(timing && (time > 0))
 		time--
 	if(timing && time <= 0)
@@ -54,7 +54,7 @@
 	return
 
 
-/obj/item/device/assembly/timer/update_icon()
+/obj/item/assembly/timer/update_icon()
 	overlays.Cut()
 	attached_overlays = list()
 	if(timing)
@@ -65,7 +65,7 @@
 	return
 
 
-/obj/item/device/assembly/timer/interact(mob/user as mob)//TODO: Have this use the wires
+/obj/item/assembly/timer/interact(mob/user as mob)//TODO: Have this use the wires
 	if(!secured)
 		user.show_message("<font color='red'>The [name] is unsecured!</font>")
 		return 0
@@ -79,7 +79,7 @@
 	return
 
 
-/obj/item/device/assembly/timer/Topic(href, href_list, state = deep_inventory_state)
+/obj/item/assembly/timer/Topic(href, href_list, state = deep_inventory_state)
 	if(..()) return 1
 	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 		usr << browse(null, "window=timer")

@@ -31,6 +31,8 @@ other types of metals and chemistry for reagents).
 	var/time = 10					//How many ticks it requires to build
 	var/category = null 			//Primarily used for Mech Fabricators, but can be used for anything.
 	var/sort_string = "ZZZZZ"		//Sorting order
+	/// Optional string that interfaces can use as part of search filters. See- item/borg/upgrade/ai and the Exosuit Fabs.
+	var/search_metadata
 
 /datum/design/New()
 	..()
@@ -63,20 +65,15 @@ other types of metals and chemistry for reagents).
 /datum/design/item
 	build_type = PROTOLATHE
 
-/datum/design/item/design_disk
-	name = "Design Storage Disk"
-	desc = "Produce additional disks for storing device designs."
-	id = "design_disk"
-	req_tech = list(TECH_DATA = 1)
-	materials = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
-	build_path = /obj/item/weapon/disk/design_disk
-	sort_string = "GAAAA"
+//Make sure items don't get free power
+/datum/design/item/Fabricate()
+	var/obj/item/I = ..()
+	var/obj/item/cell/C = I.get_cell()
+	if(C)
+		C.charge = 0
+		I.update_icon()
+	if(istype(I, /obj/item/gun))
+		var/obj/item/gun/G = I
+		G.pin = null
 
-/datum/design/item/tech_disk
-	name = "Technology Data Storage Disk"
-	desc = "Produce additional disks for storing technology data."
-	id = "tech_disk"
-	req_tech = list(TECH_DATA = 1)
-	materials = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
-	build_path = /obj/item/weapon/disk/tech_disk
-	sort_string = "GAAAB"
+	return I

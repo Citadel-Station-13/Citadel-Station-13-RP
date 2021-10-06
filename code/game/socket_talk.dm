@@ -5,7 +5,7 @@
 		enabled = 0
 	New()
 		..()
-		src.enabled = config.socket_talk
+		src.enabled = config_legacy.socket_talk
 
 		if(enabled)
 			call("DLLSocket.so","establish_connection")("127.0.0.1","8019")

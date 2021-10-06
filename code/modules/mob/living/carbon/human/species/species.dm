@@ -8,6 +8,7 @@
 	var/name												// Species name.
 	var/name_plural											// Pluralized name (since "[name]s" is not always valid)
 	var/blurb = "A completely nondescript species."			// A brief lore summary for use in the chargen screen.
+	var/list/catalogue_data = null							// A list of /datum/category_item/catalogue datums, for the cataloguer, or null.
 
 	// Icon/appearance vars.
 	var/icobase = 'icons/mob/human_races/r_human.dmi'		// Normal icon set.
@@ -31,7 +32,8 @@
 	var/tail_animation										// If set, the icon to obtain tail animation states from.
 	var/tail_hair
 
-	var/icon_scale = 1										// Makes the icon larger/smaller.
+	var/icon_scale_x = 1										// Makes the icon wider/thinner.
+	var/icon_scale_y = 1										// Makes the icon taller/shorter.
 
 	var/race_key = 0										// Used for mob icon cache string.
 	var/icon/icon_template									// Used for mob icon generation for non-32x32 species.
@@ -46,7 +48,7 @@
 
 	var/taste_sensitivity = TASTE_NORMAL					// How sensitive the species is to minute tastes.
 
-	var/min_age = 17
+	var/min_age = 18
 	var/max_age = 70
 
 	// Language/culture vars.
@@ -61,12 +63,12 @@
 
 	// The languages the species can't speak without an assisted organ.
 	// This list is a guess at things that no one other than the parent species should be able to speak
-	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX) //VOREStation Edit
 
 	//Soundy emotey things.
 	var/scream_verb = "screams"
-	var/male_scream_sound		//= 'sound/goonstation/voice/male_scream.ogg' Removed due to licensing, replace!
-	var/female_scream_sound		//= 'sound/goonstation/voice/female_scream.ogg' Removed due to licensing, replace!
+	var/male_scream_sound		= list('modular_citadel/sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_m2.ogg')
+	var/female_scream_sound		= list('modular_citadel/sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_f3.ogg')
 	var/male_cough_sounds = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
 	var/female_cough_sounds = list('sound/effects/mob_effects/f_cougha.ogg','sound/effects/mob_effects/f_coughb.ogg')
 	var/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
@@ -85,12 +87,13 @@
 	var/toxins_mod =    1									// Toxloss modifier
 	var/radiation_mod = 1									// Radiation modifier
 	var/flash_mod =     1									// Stun from blindness modifier.
+	var/flash_burn =    0									// how much damage to take from being flashed if light hypersensitive
 	var/sound_mod =     1									// Stun from sounds, I.E. flashbangs.
 	var/chemOD_mod =	1									// Damage modifier for overdose
 	var/vision_flags = SEE_SELF								// Same flags as glasses.
 
 	// Death vars.
-	var/meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human
+	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
 	var/remains_type = /obj/effect/decal/remains/xeno
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
@@ -101,9 +104,9 @@
 
 	// Environment tolerance/life processes vars.
 	var/reagent_tag											//Used for metabolizing reagents.
-	var/breath_type = "oxygen"								// Non-oxygen gas breathed, if any.
-	var/poison_type = "phoron"								// Poisonous air.
-	var/exhale_type = "carbon_dioxide"						// Exhaled gas type.
+	var/breath_type = /datum/gas/oxygen								// Non-oxygen gas breathed, if any.
+	var/poison_type = /datum/gas/phoron								// Poisonous air.
+	var/exhale_type = /datum/gas/carbon_dioxide						// Exhaled gas type.
 
 	var/body_temperature = 310.15							// Species will try to stabilize at this temperature. (also affects temperature processing)
 
@@ -145,6 +148,7 @@
 	var/warning_high_pressure = WARNING_HIGH_PRESSURE		// High pressure warning.
 	var/warning_low_pressure = WARNING_LOW_PRESSURE			// Low pressure warning.
 	var/hazard_low_pressure = HAZARD_LOW_PRESSURE			// Dangerously low pressure.
+	var/safe_pressure = ONE_ATMOSPHERE
 	var/light_dam											// If set, mob will be damaged in light over this value and heal in light below its negative.
 	var/minimum_breath_pressure = 16						// Minimum required pressure for breath, in kPa
 
@@ -177,7 +181,7 @@
 	var/item_slowdown_mod = 1								// How affected by item slowdown the species is.
 	var/primitive_form										// Lesser form, if any (ie. monkey for humans)
 	var/greater_form										// Greater form, if any, ie. human for monkeys.
-	var/holder_type
+	var/holder_type = /obj/item/holder/micro				// This allows you to pick up crew
 	var/gluttonous											// Can eat some mobs. 1 for mice, 2 for monkeys, 3 for people.
 
 	var/rarity_value = 1									// Relative rarity/collector value for this species.
@@ -192,7 +196,9 @@
 		O_KIDNEYS =	/obj/item/organ/internal/kidneys,
 		O_BRAIN =		/obj/item/organ/internal/brain,
 		O_APPENDIX = /obj/item/organ/internal/appendix,
-		O_EYES =		 /obj/item/organ/internal/eyes
+		O_EYES =		 /obj/item/organ/internal/eyes,
+		O_STOMACH =		/obj/item/organ/internal/stomach,
+		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
 	var/vision_organ										// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
 	var/dispersed_eyes            // If set, the species will be affected by flashbangs regardless if they have eyes or not, as they see in large areas.
@@ -221,11 +227,36 @@
 
 	var/pass_flags = 0
 
+	var/list/descriptors = list()
+
+	//This is used in character setup preview generation (prefences_setup.dm) and human mob
+	//rendering (update_icons.dm)
+	var/color_mult = 0
+
+	//This is for overriding tail rendering with a specific icon in icobase, for static
+	//tails only, since tails would wag when dead if you used this
+	var/icobase_tail = 0
+
+	var/wing_hair
+	var/wing
+	var/wing_animation
+	var/icobase_wing
+	var/wikilink = null //link to wiki page for species
+
 /datum/species/New()
 	if(hud_type)
 		hud = new hud_type()
 	else
 		hud = new()
+
+	// Prep the descriptors for the species
+	if(LAZYLEN(descriptors))
+		var/list/descriptor_datums = list()
+		for(var/desctype in descriptors)
+			var/datum/mob_descriptor/descriptor = new desctype
+			descriptor.comparison_offset = descriptors[desctype]
+			descriptor_datums[descriptor.name] = descriptor
+		descriptors = descriptor_datums
 
 	//If the species has eyes, they are the default vision organ
 	if(!vision_organ && has_organ[O_EYES])
@@ -240,44 +271,53 @@
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
 
-/datum/species/proc/sanitize_name(var/name, var/robot = 0)
-	return sanitizeName(name, MAX_NAME_LEN, robot)
+/datum/species/proc/sanitize_name(var/name)
+	return sanitizeName(name, MAX_NAME_LEN)
+
+GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
+	/datum/gas/oxygen = /obj/item/tank/emergency/oxygen,
+	/datum/gas/nitrogen = /obj/item/tank/emergency/nitrogen,
+	/datum/gas/phoron = /obj/item/tank/emergency/phoron,
+	/datum/gas/carbon_dioxide = /obj/item/tank/emergency/carbon_dioxide
+))
 
 /datum/species/proc/equip_survival_gear(var/mob/living/carbon/human/H,var/extendedtank = 0,var/comprehensive = 0)
-	var/boxtype = /obj/item/weapon/storage/box/survival //Default survival box
+	var/boxtype = /obj/item/storage/box/survival //Default survival box
 
 	var/synth = H.isSynthetic()
 
 	//Empty box for synths
 	if(synth)
-		boxtype = /obj/item/weapon/storage/box/survival/synth
+		boxtype = /obj/item/storage/box/survival/synth
 
 	//Special box with extra equipment
 	else if(comprehensive)
-		boxtype = /obj/item/weapon/storage/box/survival/comp
+		boxtype = /obj/item/storage/box/survival/comp
 
 	//Create the box
-	var/obj/item/weapon/storage/box/box = new boxtype(H)
+	var/obj/item/storage/box/box = new boxtype(H)
 
 	//If not synth, they get an air tank (if they breathe)
 	if(!synth && breath_type)
 		//Create a tank (if such a thing exists for this species)
-		var/tanktext = "/obj/item/weapon/tank/emergency/" + "[breath_type]"
-		var/obj/item/weapon/tank/emergency/tankpath //Will force someone to come look here if they ever alter this path.
+		var/given_path = GLOB.species_oxygen_tank_by_gas[breath_type]
+		var/tankpath
 		if(extendedtank)
-			tankpath = text2path(tanktext + "/engi")
+			tankpath = text2path("[given_path]" + "/engi")
 			if(!tankpath) //Is it just that there's no /engi?
-				tankpath = text2path(tanktext + "/double")
+				tankpath = text2path("[given_path]" + "/double")
 
 		if(!tankpath)
-			tankpath = text2path(tanktext)
+			tankpath = given_path
 
 		if(tankpath)
 			new tankpath(box)
+		else
+			stack_trace("Could not find a tank path for breath type [breath_type], given path was [given_path].")
 
 	//If they are synth, they get a smol battery
 	else if(synth)
-		new /obj/item/device/fbp_backup_cell(box)
+		new /obj/item/fbp_backup_cell(box)
 
 	box.calibrate_size()
 
@@ -317,6 +357,14 @@
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
 
+	if(H.nif)
+		var/type = H.nif.type
+		var/durability = H.nif.durability
+		var/list/nifsofts = H.nif.nifsofts
+		var/list/nif_savedata = H.nif.save_data.Copy()
+
+		var/obj/item/nif/nif = new type(H,durability,nif_savedata)
+		nif.nifsofts = nifsofts
 
 /datum/species/proc/hug(var/mob/living/carbon/human/H, var/mob/living/target)
 
@@ -345,6 +393,11 @@
 		H.visible_message( \
 			"<span class='notice'>[H] shakes [target]'s hand.</span>", \
 			"<span class='notice'>You shake [target]'s hand.</span>", )
+	//Ports nose booping
+	else if(H.zone_sel.selecting == "mouth")
+		H.visible_message( \
+			"<span class='notice'>[H] boops [target]'s nose.</span>", \
+			"<span class='notice'>You boop [target] on the nose.</span>", )
 	else H.visible_message("<span class='notice'>[H] hugs [target] to make [t_him] feel better!</span>", \
 					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>") //End VOREStation Edit
 
@@ -367,7 +420,7 @@
 	H.mob_push_flags = push_flags
 	H.pass_flags = pass_flags
 
-/datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events (such as dionaea nymph spawns).
+/datum/species/proc/handle_death(var/mob/living/carbon/human/H, gibbed = FALSE) //Handles any species-specific death events (such as dionaea nymph spawns).
 	return
 
 // Only used for alien plasma weeds atm, but could be used for Dionaea later.
@@ -393,7 +446,7 @@
 // Called when using the shredding behavior.
 /datum/species/proc/can_shred(var/mob/living/carbon/human/H, var/ignore_intent)
 
-	if(!ignore_intent && H.a_intent != I_HURT)
+	if(!ignore_intent && H.a_intent != INTENT_HARM)
 		return 0
 
 	for(var/datum/unarmed_attack/attack in unarmed_attacks)
@@ -406,6 +459,10 @@
 
 // Called in life() when the mob has no client.
 /datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
+	if(H.stat == CONSCIOUS && H.ai_holder)
+		if(H.resting)
+			H.resting = FALSE
+			H.update_canmove()
 	return
 
 // Called when lying down on a water tile.
@@ -443,3 +500,17 @@
 // Allow species to display interesting information in the human stat panels
 /datum/species/proc/Stat(var/mob/living/carbon/human/H)
 	return
+
+/datum/species/proc/update_attack_types()
+	unarmed_attacks = list()
+	for(var/u_type in unarmed_types)
+		unarmed_attacks += new u_type()
+
+/datum/species/proc/give_numbing_bite() //Holy SHIT this is hacky, but it works. Updating a mob's attacks mid game is insane.
+	unarmed_attacks = list()
+	unarmed_types += /datum/unarmed_attack/bite/sharp/numbing
+	for(var/u_type in unarmed_types)
+		unarmed_attacks += new u_type()
+
+/datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
+	return FALSE

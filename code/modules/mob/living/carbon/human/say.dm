@@ -13,22 +13,22 @@
 			var/temp = winget(client, "input", "text")
 			if(findtextEx(temp, "Say \"", 1, 7) && length(temp) > 5)	//case sensitive means
 
-				temp = replacetext(temp, ";", "")	//general radio
+				temp = replacetext_char(temp, ";", "")	//general radio
 
-				if(findtext(trim_left(temp), ":", 6, 7))	//dept radio
-					temp = copytext(trim_left(temp), 8)
+				if(findtext_char(trim_left(temp), ":", 6, 7))	//dept radio
+					temp = copytext_char(trim_left(temp), 8)
 					virgin = 0
 
 				if(virgin)
-					temp = copytext(trim_left(temp), 6)	//normal speech
+					temp = copytext_char(trim_left(temp), 6)	//normal speech
 					virgin = 0
 
-				while(findtext(trim_left(temp), ":", 1, 2))	//dept radio again (necessary)
-					temp = copytext(trim_left(temp), 3)
+				while(findtext_char(trim_left(temp), ":", 1, 2))	//dept radio again (necessary)
+					temp = copytext_char(trim_left(temp), 3)
 
-				if(findtext(temp, "*", 1, 2))	//emotes
+				if(findtext_char(temp, "*", 1, 2))	//emotes
 					return
-				temp = copytext(trim_left(temp), 1, rand(5,8))
+				temp = copytext_char(trim_left(temp), 1, rand(5,8))
 
 				var/trimmed = trim_left(temp)
 				if(length(trimmed))
@@ -64,11 +64,11 @@
 			return 1
 		if (istype(other, /mob/living/carbon/brain))
 			return 1
-		if (istype(other, /mob/living/simple_animal/slime))
+		if (istype(other, /mob/living/simple_mob/slime))
 			return 1
 
 	//This is already covered by mob/say_understands()
-	//if (istype(other, /mob/living/simple_animal))
+	//if (istype(other, /mob/living/simple_mob))
 	//	if((other.universal_speak && !speaking) || src.universal_speak || src.universal_understand)
 	//		return 1
 	//	return 0
@@ -78,18 +78,21 @@
 /mob/living/carbon/human/GetVoice()
 
 	var/voice_sub
-	if(istype(back,/obj/item/weapon/rig))
-		var/obj/item/weapon/rig/rig = back
+	if(istype(back,/obj/item/rig))
+		var/obj/item/rig/rig = back
 		// todo: fix this shit
 		if(rig.speech && rig.speech.voice_holder && rig.speech.voice_holder.active && rig.speech.voice_holder.voice)
 			voice_sub = rig.speech.voice_holder.voice
-	else
+	if(!voice_sub)	// If the rig has a voice changer, then we use that. Otherwise, use this
 		for(var/obj/item/gear in list(wear_mask,wear_suit,head))
 			if(!gear)
 				continue
 			var/obj/item/voice_changer/changer = locate() in gear
-			if(changer && changer.active && changer.voice)
-				voice_sub = changer.voice
+			if(changer && changer.active)
+				if(changer.voice)
+					voice_sub = changer.voice
+				else
+					voice_sub = get_id_name()
 	if(voice_sub)
 		return voice_sub
 	if(mind && mind.changeling && mind.changeling.mimicing)
@@ -122,7 +125,7 @@
 
 /mob/living/carbon/human/say_quote(var/message, var/datum/language/speaking = null)
 	var/verb = "says"
-	var/ending = copytext(message, length(message))
+	var/ending = copytext_char(message, length(message))
 
 	if(speaking)
 		verb = speaking.get_spoken_verb(ending)
@@ -153,38 +156,38 @@
 	switch(message_mode)
 		if("intercom")
 			if(!src.restrained())
-				for(var/obj/item/device/radio/intercom/I in view(1))
+				for(var/obj/item/radio/intercom/I in view(1))
 					I.talk_into(src, message, null, verb, speaking)
 					I.add_fingerprint(src)
 					used_radios += I
 		if("headset")
-			if(l_ear && istype(l_ear,/obj/item/device/radio))
-				var/obj/item/device/radio/R = l_ear
+			if(l_ear && istype(l_ear,/obj/item/radio))
+				var/obj/item/radio/R = l_ear
 				R.talk_into(src,message,null,verb,speaking)
 				used_radios += l_ear
-			else if(r_ear && istype(r_ear,/obj/item/device/radio))
-				var/obj/item/device/radio/R = r_ear
+			else if(r_ear && istype(r_ear,/obj/item/radio))
+				var/obj/item/radio/R = r_ear
 				R.talk_into(src,message,null,verb,speaking)
 				used_radios += r_ear
 		if("right ear")
-			var/obj/item/device/radio/R
+			var/obj/item/radio/R
 			var/has_radio = 0
-			if(r_ear && istype(r_ear,/obj/item/device/radio))
+			if(r_ear && istype(r_ear,/obj/item/radio))
 				R = r_ear
 				has_radio = 1
-			if(r_hand && istype(r_hand, /obj/item/device/radio))
+			if(r_hand && istype(r_hand, /obj/item/radio))
 				R = r_hand
 				has_radio = 1
 			if(has_radio)
 				R.talk_into(src,message,null,verb,speaking)
 				used_radios += R
 		if("left ear")
-			var/obj/item/device/radio/R
+			var/obj/item/radio/R
 			var/has_radio = 0
-			if(l_ear && istype(l_ear,/obj/item/device/radio))
+			if(l_ear && istype(l_ear,/obj/item/radio))
 				R = l_ear
 				has_radio = 1
-			if(l_hand && istype(l_hand,/obj/item/device/radio))
+			if(l_hand && istype(l_hand,/obj/item/radio))
 				R = l_hand
 				has_radio = 1
 			if(has_radio)
@@ -192,10 +195,10 @@
 				used_radios += R
 		else
 			if(message_mode)
-				if(l_ear && istype(l_ear,/obj/item/device/radio))
+				if(l_ear && istype(l_ear,/obj/item/radio))
 					l_ear.talk_into(src,message, message_mode, verb, speaking)
 					used_radios += l_ear
-				else if(r_ear && istype(r_ear,/obj/item/device/radio))
+				else if(r_ear && istype(r_ear,/obj/item/radio))
 					r_ear.talk_into(src,message, message_mode, verb, speaking)
 					used_radios += r_ear
 

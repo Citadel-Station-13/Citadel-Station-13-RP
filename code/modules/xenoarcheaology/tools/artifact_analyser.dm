@@ -14,7 +14,7 @@
 	var/obj/scanned_object
 	var/report_num = 0
 
-/obj/machinery/artifact_analyser/initialize()
+/obj/machinery/artifact_analyser/Initialize(mapload)
 	. = ..()
 	reconnect_scanner()
 
@@ -54,7 +54,7 @@
 	user.set_machine(src)
 	onclose(user, "artanalyser")
 
-/obj/machinery/artifact_analyser/process()
+/obj/machinery/artifact_analyser/process(delta_time)
 	if(scan_in_progress && world.time > scan_completion_time)
 		scan_in_progress = 0
 		updateDialog()
@@ -70,12 +70,12 @@
 			results = get_scan_info(scanned_object)
 
 		src.visible_message("<b>[name]</b> states, \"Scanning complete.\"")
-		var/obj/item/weapon/paper/P = new(src.loc)
+		var/obj/item/paper/P = new(src.loc)
 		P.name = "[src] report #[++report_num]"
 		P.info = "<b>[src] analysis report #[report_num]</b><br>"
 		P.info += "<br>"
 		P.info += "\icon[scanned_object] [results]"
-		P.stamped = list(/obj/item/weapon/stamp)
+		P.stamped = list(/obj/item/stamp)
 		P.overlays = list("paper_stamped")
 
 		if(scanned_object && istype(scanned_object, /obj/machinery/artifact))

@@ -1,4 +1,3 @@
-#define PROCESS_ACCURACY 10
 
 /obj/item/organ/internal/heart
 	name = "heart"
@@ -7,6 +6,7 @@
 	parent_organ = BP_TORSO
 	dead_icon = "heart-off"
 
+	var/standard_pulse_level = PULSE_NORM	// We run on a normal clock. This is NOT CONNECTED to species heart-rate modifier.
 
 /obj/item/organ/internal/heart/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
@@ -21,14 +21,19 @@
 			owner.custom_pain("A stabbing pain rolls through your chest!",1)
 			owner.apply_damage(damage = 25, damagetype = HALLOSS, def_zone = parent_organ)
 
+/obj/item/organ/internal/heart/robotize()
+	..()
+	standard_pulse_level = PULSE_NONE
+
 /obj/item/organ/internal/heart/grey
 	icon_state = "heart_grey-on"
 	dead_icon = "heart_grey-off"
 
-/obj/item/organ/internal/heart/grey/colormatch/New()
-	..()
-	var/mob/living/carbon/human/H = null
-	spawn(15)
-		if(ishuman(owner))
-			H = owner
-			color = H.species.blood_color
+/obj/item/organ/internal/heart/grey/colormatch/Initialize(mapload)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/sync_color), 15)
+
+/obj/item/organ/internal/heart/grey/colormatch/proc/sync_color()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		color = H.species.blood_color

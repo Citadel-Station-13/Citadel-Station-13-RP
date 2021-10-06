@@ -7,7 +7,7 @@
 	var/desc = null						// Ditto.
 	var/icon_state = null				// See above.
 	var/mob/living/holder = null		// The mob that this datum is affecting.
-	var/weakref/origin = null			// A weak reference to whatever caused the modifier to appear.  THIS NEEDS TO BE A MOB/LIVING.  It's a weakref to not interfere with qdel().
+	var/datum/weakref/origin = null			// A weak reference to whatever caused the modifier to appear.  THIS NEEDS TO BE A MOB/LIVING.  It's a weakref to not interfere with qdel().
 	var/expire_at = null				// world.time when holder's Life() will remove the datum.  If null, it lasts forever or until it gets deleted by something else.
 	var/on_created_text = null			// Text to show to holder upon being created.
 	var/on_expired_text = null			// Text to show to holder when it expires.
@@ -42,16 +42,19 @@
 	var/accuracy						// Positive numbers makes hitting things with guns easier, negatives make it harder.
 	var/accuracy_dispersion				// Positive numbers make gun firing cover a wider tile range, and therefore more inaccurate.  Negatives help negate dispersion penalties.
 	var/metabolism_percent				// Adjusts the mob's metabolic rate, which affects reagent processing.  Won't affect mobs without reagent processing.
-	var/icon_scale_percent				// Makes the holder's icon get scaled up or down.
+	var/icon_scale_x_percent			// Makes the holder's icon get scaled wider or thinner.
+	var/icon_scale_y_percent			// Makes the holder's icon get scaled taller or shorter.
 	var/attack_speed_percent			// Makes the holder's 'attack speed' (click delay) shorter or longer.
 	var/pain_immunity					// Makes the holder not care about pain while this is on. Only really useful to human mobs.
+	var/pulse_modifier					// Modifier for pulse, will be rounded on application, then added to the normal 'pulse' multiplier which ranges between 0 and 5 normally. Only applied if they're living.
+	var/pulse_set_level					// Positive number. If this is non-null, it will hard-set the pulse level to this. Pulse ranges from 0 to 5 normally.
 
 /datum/modifier/New(var/new_holder, var/new_origin)
 	holder = new_holder
 	if(new_origin)
-		origin = weakref(new_origin)
+		origin = WEAKREF(new_origin)
 	else // We assume the holder caused the modifier if not told otherwise.
-		origin = weakref(holder)
+		origin = WEAKREF(holder)
 	..()
 
 // Checks if the modifier should be allowed to be applied to the mob before attaching it.
@@ -71,7 +74,7 @@
 	holder.modifiers.Remove(src)
 	if(mob_overlay_state) // We do this after removing ourselves from the list so that the overlay won't remain.
 		holder.update_modifier_visuals()
-	if(icon_scale_percent) // Correct the scaling.
+	if(icon_scale_x_percent || icon_scale_y_percent) // Correct the scaling.
 		holder.update_transform()
 	if(client_color)
 		holder.update_client_color()
@@ -138,7 +141,7 @@
 	mod.on_applied()
 	if(mod.mob_overlay_state)
 		update_modifier_visuals()
-	if(mod.icon_scale_percent)
+	if(mod.icon_scale_x_percent || mod.icon_scale_y_percent)
 		update_transform()
 	if(mod.client_color)
 		update_client_color()
@@ -148,6 +151,13 @@
 // Removes a specific instance of modifier
 /mob/living/proc/remove_specific_modifier(var/datum/modifier/M, var/silent = FALSE)
 	M.expire(silent)
+
+// Removes one modifier of a type
+/mob/living/proc/remove_a_modifier_of_type(var/modifier_type, var/silent = FALSE)
+	for(var/datum/modifier/M in modifiers)
+		if(ispath(M.type, modifier_type))
+			M.expire(silent)
+			break
 
 // Removes all modifiers of a type
 /mob/living/proc/remove_modifiers_of_type(var/modifier_type, var/silent = FALSE)
@@ -223,8 +233,11 @@
 		effects += "Your metabolism is [metabolism_percent > 1.0 ? "faster" : "slower"], \
 		causing reagents in your body to process, and hunger to occur [multipler_to_percentage(metabolism_percent, TRUE)] [metabolism_percent > 1.0 ? "faster" : "slower"]."
 
-	if(!isnull(icon_scale_percent))
-		effects += "Your appearance is [multipler_to_percentage(icon_scale_percent, TRUE)] [icon_scale_percent > 1 ? "larger" : "smaller"]."
+	if(!isnull(icon_scale_x_percent))
+		effects += "Your appearance is [multipler_to_percentage(icon_scale_x_percent, TRUE)] [icon_scale_x_percent > 1 ? "wider" : "thinner"]."
+
+	if(!isnull(icon_scale_y_percent))
+		effects += "Your appearance is [multipler_to_percentage(icon_scale_y_percent, TRUE)] [icon_scale_y_percent > 1 ? "taller" : "shorter"]."
 
 	if(!isnull(attack_speed_percent))
 		effects += "The delay between attacking is [multipler_to_percentage(attack_speed_percent, TRUE)] [disable_duration_percent > 1.0 ? "longer" : "shorter"]."

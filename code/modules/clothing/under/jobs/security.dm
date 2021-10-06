@@ -17,6 +17,10 @@
 	siemens_coefficient = 0.9
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/warden/skirt_pleated
+	name = "warden's pleated skirt"
+	icon_state = "rwarden_skirt"
+
 /obj/item/clothing/under/rank/security
 	name = "security officer's jumpsuit"
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
@@ -25,6 +29,17 @@
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/security/skirt_pleated
+	name = "security officer's pleated skirt"
+	icon_state = "sec_skirt"
+
+/obj/item/clothing/under/rank/security/turtleneck
+	name = "security turtleneck"
+	desc = "It's a stylish turtleneck made of a robust nanoweave. Nobody said the Law couldn't be fashionable."
+	icon_state = "turtle_sec"
+	rolled_down = -1
+	rolled_sleeves = -1
 
 /obj/item/clothing/under/rank/dispatch
 	name = "dispatcher's uniform"
@@ -84,12 +99,16 @@
 	item_state_slots[slot_w_uniform_str] = unrolled ? "[worn_state]_r" : initial(worn_state)
 	var/mob/living/carbon/human/H = loc
 	H.update_inv_w_uniform(1)
-	H << "<span class='notice'>You roll the sleeves of your shirt [unrolled ? "up" : "down"]</span>"
+	to_chat(H, "<span class='notice'>You roll the sleeves of your shirt [unrolled ? "up" : "down"]</span>")
 */
 /obj/item/clothing/under/det/grey
 	icon_state = "detective2"
 	desc = "A serious-looking tan dress shirt paired with freshly-pressed black slacks."
 	starting_accessories = list(/obj/item/clothing/accessory/tie/red_long)
+
+/obj/item/clothing/under/det/grey/skirt_pleated
+	name = "detective's grey pleated skirt"
+	icon_state = "greydet_skirt"
 
 /obj/item/clothing/under/det/black
 	icon_state = "detective3"
@@ -131,8 +150,23 @@
 	siemens_coefficient = 0.9
 	rolled_sleeves = 0
 
+/obj/item/clothing/under/rank/head_of_security/skirt_pleated
+	name = "head of security's pleated skirt"
+	icon_state = "rhos_skirt"
+
+/obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt
+	name = "dark head of security's pleated skirt"
+	icon_state = "hosalt_skirt"
+
 /obj/item/clothing/under/rank/head_of_security/corp
 	icon_state = "hos_corporate"
+	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
+	rolled_sleeves = 0
+
+/obj/item/clothing/under/rank/head_of_security/turtleneck
+	name = "head of security's turtleneck"
+	desc = "A stylish alternative to the normal head of security jumpsuit, complete with tactical pants."
+	icon_state = "hosturtle"
 	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
 	rolled_sleeves = 0
 

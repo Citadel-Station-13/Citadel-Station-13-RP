@@ -1,6 +1,7 @@
 /mob/var/lastattacker = null
 /mob/var/lastattacked = null
 /mob/var/attack_log = list( )
+/mob/var/dialogue_log = list( )
 
 proc/log_and_message_admins(var/message as text, var/mob/user = usr)
 	log_admin(user ? "[key_name(user)] [message]" : "EVENT [message]")
@@ -32,7 +33,7 @@ proc/admin_attacker_log_many_victims(var/mob/attacker, var/list/mob/victims, var
 	for(var/mob/victim in victims)
 		admin_attack_log(attacker, victim, attacker_message, victim_message, admin_message)
 
-proc/admin_inject_log(mob/attacker, mob/victim, obj/item/weapon, reagents, amount_transferred, violent=0)
+proc/admin_inject_log(mob/attacker, mob/victim, obj/item, reagents, amount_transferred, violent=0)
 	if(violent)
 		violent = "violently "
 	else

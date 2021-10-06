@@ -29,11 +29,11 @@
 	if(headphones_on)
 		icon_state = "[base_icon]_off"
 		headphones_on = 0
-		usr << "<span class='notice'>You turn the music off.</span>"
+		to_chat(usr, "<span class='notice'>You turn the music off.</span>")
 	else
 		icon_state = "[base_icon]_on"
 		headphones_on = 1
-		usr << "<span class='notice'>You turn the music on.</span>"
+		to_chat(usr, "<span class='notice'>You turn the music on.</span>")
 
 	update_clothing_icon()
 
@@ -53,12 +53,16 @@
 	desc = "A delicate golden chain worn by female skrell to decorate their head tails."
 	icon_state = "skrell_chain"
 	item_state_slots = list(slot_r_hand_str = "egg5", slot_l_hand_str = "egg5")
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/clothing/ears/skrell/chain/silver
 	name = "Silver headtail chains"
 	desc = "A delicate silver chain worn by female skrell to decorate their head tails."
 	icon_state = "skrell_chain_sil"
 	item_state_slots = list(slot_r_hand_str = "egg", slot_l_hand_str = "egg")
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/clothing/ears/skrell/chain/bluejewels
 	name = "Blue jeweled golden headtail chains"
@@ -181,3 +185,12 @@
 	name = "light blue headtail cloth"
 	icon_state = "skrell_cloth_lblue_male"
 	item_state_slots = list(slot_r_hand_str = "egg2", slot_l_hand_str = "egg2")
+
+//donator item
+/obj/item/clothing/ears/earmuffs/headphones/aura
+	name = "KNIGHT-brand Melodic headset"
+	desc = "Unce unce unce unce."
+	headphones_on = 0
+	icon_state = "auraphones_off"
+	item_state_slots = list(slot_r_hand_str = "headphones", slot_l_hand_str = "headphones")
+	slot_flags = SLOT_EARS

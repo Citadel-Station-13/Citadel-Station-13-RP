@@ -9,9 +9,14 @@
 	density = 0
 	var/health = 100
 	var/maxhealth = 100
+	var/obj/item/stack/tile/plated_tile = null
+	var/static/plating_color = list(
+		/obj/item/stack/tile/floor = "#858a8f",
+		/obj/item/stack/tile/floor/dark = "#4f4f4f",
+		/obj/item/stack/tile/floor/white = "#e8e8e8")
 	anchored = 1.0
 
-/obj/structure/catwalk/initialize()
+/obj/structure/catwalk/Initialize(mapload)
 	. = ..()
 	for(var/obj/structure/catwalk/O in range(1))
 		O.update_icon()
@@ -30,7 +35,7 @@
 
 /obj/structure/catwalk/update_icon()
 	var/connectdir = 0
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(locate(/obj/structure/catwalk, get_step(src, direction)))
 			connectdir |= direction
 
@@ -67,8 +72,8 @@
 	return
 
 /obj/structure/catwalk/attackby(obj/item/C as obj, mob/user as mob)
-	if (istype(C, /obj/item/weapon/weldingtool))
-		var/obj/item/weapon/weldingtool/WT = C
+	if(istype(C, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = C
 		if(WT.isOn())
 			if(WT.remove_fuel(0, user))
 				to_chat(user, "<span class='notice'>Slicing lattice joints ...</span>")
@@ -76,7 +81,7 @@
 				new /obj/item/stack/rods(src.loc)
 				new /obj/structure/lattice(src.loc)
 				qdel(src)
-	if(istype(C, /obj/item/weapon/screwdriver))
+	if(C.is_screwdriver())
 		if(health < maxhealth)
 			to_chat(user, "<span class='notice'>You begin repairing \the [src.name] with \the [C.name].</span>")
 			if(do_after(user, 20, src))
@@ -88,7 +93,7 @@
 
 /obj/structure/catwalk/Crossed()
 	. = ..()
-	if(isliving(usr))
+	if(isliving(usr) && !usr.is_incorporeal())
 		playsound(src, pick('sound/effects/footstep/catwalk1.ogg', 'sound/effects/footstep/catwalk2.ogg', 'sound/effects/footstep/catwalk3.ogg', 'sound/effects/footstep/catwalk4.ogg', 'sound/effects/footstep/catwalk5.ogg'), 25, 1)
 
 /obj/structure/catwalk/CheckExit(atom/movable/O, turf/target)
@@ -98,10 +103,64 @@
 		return 0
 	return 1
 
-/obj/structure/catwalk/proc/take_damage(amount)
+/obj/structure/catwalk/take_damage(amount)
 	health -= amount
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")
 		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
 		new /obj/item/stack/rods(get_turf(src))
 		Destroy()
+
+/obj/effect/catwalk_plated
+	name = "plated catwalk spawner"
+	icon = 'icons/turf/catwalks.dmi'
+	icon_state = "catwalk_plated"
+	density = 1
+	anchored = 1.0
+	var/activated = FALSE
+	plane = DECAL_PLANE
+	layer = ABOVE_UTILITY
+	var/tile = /obj/item/stack/tile/floor
+	var/platecolor = "#858a8f"
+
+/obj/effect/catwalk_plated/Initialize(mapload)
+	. = ..()
+	activate()
+
+/obj/effect/catwalk_plated/attack_hand()
+	attack_generic()
+
+/obj/effect/catwalk_plated/attack_ghost()
+	attack_generic()
+
+/obj/effect/catwalk_plated/attack_generic()
+	activate()
+
+/obj/effect/catwalk_plated/proc/activate()
+	if(activated) return
+
+	if(locate(/obj/structure/catwalk) in loc)
+		warning("Frame Spawner: A catwalk already exists at [loc.x]-[loc.y]-[loc.z]")
+	else
+		var/obj/structure/catwalk/C = new /obj/structure/catwalk(loc)
+		C.plated_tile = tile
+		C.plating_color = platecolor
+		C.name = "plated catwalk"
+		C.update_icon()
+	activated = 1
+	/* We don't have wallframes - yet
+	for(var/turf/T in orange(src, 1))
+		for(var/obj/effect/wallframe_spawn/other in T)
+			if(!other.activated) other.activate()
+	*/
+	qdel(src)
+
+/obj/effect/catwalk_plated/dark
+	icon_state = "catwalk_plateddark"
+	tile = /obj/item/stack/tile/floor/dark
+	platecolor = "#4f4f4f"
+
+/obj/effect/catwalk_plated/white
+	icon_state = "catwalk_platedwhite"
+	tile = /obj/item/stack/tile/floor/white
+	platecolor = "#e8e8e8"

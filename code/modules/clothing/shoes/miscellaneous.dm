@@ -9,6 +9,8 @@
 	siemens_coefficient = 0.8
 	species_restricted = null
 	step_volume_mod = 0.5
+	drop_sound = 'sound/items/drop/rubber.ogg'
+	pickup_sound = 'sound/items/pickup/rubber.ogg'
 
 /obj/item/clothing/shoes/mime
 	name = "mime shoes"
@@ -24,6 +26,9 @@
 	item_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
+	drop_sound = 'sound/items/drop/rubber.ogg'
+	pickup_sound = 'sound/items/pickup/rubber.ogg'
+
 
 /obj/item/clothing/shoes/dress
 	name = "dress shoes"
@@ -44,11 +49,17 @@
 
 	wizard_garb = 1
 
+obj/item/clothing/shoes/sandal/clogs
+	name = "plastic clogs"
+	desc = "A pair of plastic clog shoes."
+	icon_state = "clogs"
+
 /obj/item/clothing/shoes/sandal/marisa
 	desc = "A pair of magic, black shoes."
 	name = "magic shoes"
 	icon_state = "black"
 	body_parts_covered = FEET
+	origin_tech = list(TECH_BLUESPACE = 3, TECH_ARCANE = 5)
 
 /obj/item/clothing/shoes/clown_shoes
 	desc = "The prankster's standard-issue clowning shoes. Damn they're huge!"
@@ -76,6 +87,7 @@
 	item_state_slots = list(slot_r_hand_str = "cult", slot_l_hand_str = "cult")
 	force = 2
 	siemens_coefficient = 0.7
+	origin_tech = list(TECH_ARCANE = 2)
 
 	cold_protection = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE
@@ -95,9 +107,9 @@
 	name = "bunny slippers"
 	desc = "Fluffy!"
 	icon_state = "slippers"
-	force = 0
 	species_restricted = null
-	w_class = ITEMSIZE_SMALL
+	drop_sound = 'sound/items/drop/clothing.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
 /obj/item/clothing/shoes/slippers_worn
 	name = "worn bunny slippers"
@@ -108,9 +120,16 @@
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/clothing/shoes/laceup
-	name = "laceup shoes"
-	desc = "The height of fashion, and they're pre-polished!"
-	icon_state = "laceups"
+	name = "black oxford  shoes"
+	icon_state = "oxford_black"
+
+/obj/item/clothing/shoes/laceup/grey
+	name = "grey oxford shoes"
+	icon_state = "oxford_grey"
+
+/obj/item/clothing/shoes/laceup/brown
+	name = "brown oxford shoes"
+	icon_state = "oxford_brown"
 
 /obj/item/clothing/shoes/swimmingfins
 	desc = "Help you swim good."
@@ -155,3 +174,67 @@
 	force = 0
 	w_class = ITEMSIZE_SMALL
 	species_restricted = null
+	drop_sound = 'sound/items/drop/clothing.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
+
+/obj/item/clothing/shoes/boots/ranger
+	var/bootcolor = "white"
+	name = "ranger boots"
+	desc = "The Rangers special lightweight hybrid magboots-jetboots perfect for EVA. If only these functions were so easy to copy in reality.\
+	 These ones are just a well-made pair of boots in appropriate colours."
+	icon = 'icons/obj/clothing/ranger.dmi'
+	icon_state = "ranger_boots"
+
+/obj/item/clothing/shoes/boots/ranger/Initialize(mapload)
+	. = ..()
+	if(icon_state == "ranger_boots")
+		name = "[bootcolor] ranger boots"
+		icon_state = "[bootcolor]_ranger_boots"
+
+/obj/item/clothing/shoes/boots/ranger/black
+	bootcolor = "black"
+
+/obj/item/clothing/shoes/boots/ranger/pink
+	bootcolor = "pink"
+
+/obj/item/clothing/shoes/boots/ranger/green
+	bootcolor = "green"
+
+/obj/item/clothing/shoes/boots/ranger/cyan
+	bootcolor = "cyan"
+
+/obj/item/clothing/shoes/boots/ranger/orange
+	bootcolor = "orange"
+
+/obj/item/clothing/shoes/boots/ranger/yellow
+	bootcolor = "yellow"
+
+/obj/item/clothing/shoes/roman
+	name = "Roman Caligae"
+	desc = "Hardy leather sandles capable of holding up for many miles."
+	icon_state = "roman"
+
+/obj/item/clothing/shoes/boots/bsing
+	name = "blue performer's boots"
+	desc = "Dancing in these makes you feel lighter than air."
+	icon_state = "bsing"
+
+/obj/item/clothing/shoes/boots/ysing
+	name = "yellow performer's boots"
+	desc = "Dance down the path laid out by your predecessor."
+	icon_state = "ysing"
+
+/obj/item/clothing/shoes/santa
+	name = "santa boots"
+	desc = "If you smack these boots, a cloud of fine coal will sometimes puff out."
+	icon_state = "santaboots"
+
+/obj/item/clothing/shoes/holiday
+	name = "holiday shoes"
+	desc = "These red, fur lined boots keep you warm inside and out."
+	icon_state = "christmasbootsr"
+
+/obj/item/clothing/shoes/holiday/green
+	name = "green holiday shoes"
+	desc = "The tips of these fur lined boots curl slightly, lending them a whimsical flair."
+	icon_state = "christmasbootsg"

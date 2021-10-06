@@ -10,15 +10,16 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core
 	name = "\improper R-UST Mk. 8 Tokamak core"
 	desc = "An enormous solenoid for generating extremely high power electromagnetic fields. It includes a kinetic energy harvester."
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/obj/machines/power/fusion_core.dmi'
+	layer = ABOVE_MOB_LAYER
 	icon_state = "core0"
 	density = 1
-	use_power = 1
+	use_power = USE_POWER_IDLE
 	idle_power_usage = 50
 	active_power_usage = 500 //multiplied by field strength
 	anchored = 0
 
-	circuit = /obj/item/weapon/circuitboard/fusion_core
+	circuit = /obj/item/circuitboard/fusion_core
 
 	var/obj/effect/fusion_em_field/owned_field
 	var/field_strength = 1//0.01
@@ -27,12 +28,12 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/mapped
 	anchored = 1
 
-/obj/machinery/power/fusion_core/initialize()
+/obj/machinery/power/fusion_core/Initialize(mapload)
 	. = ..()
 	fusion_cores += src
 	default_apply_parts()
 
-/obj/machinery/power/fusion_core/mapped/initialize()
+/obj/machinery/power/fusion_core/mapped/Initialize(mapload)
 	. = ..()
 	connect_to_network()
 
@@ -44,7 +45,7 @@ var/list/fusion_cores = list()
 	fusion_cores -= src
 	return ..()
 
-/obj/machinery/power/fusion_core/process()
+/obj/machinery/power/fusion_core/process(delta_time)
 	if((stat & BROKEN) || !powernet || !owned_field)
 		Shutdown()
 	if(owned_field)
@@ -70,7 +71,7 @@ var/list/fusion_cores = list()
 	owned_field = new(loc, src)
 	owned_field.ChangeFieldStrength(field_strength)
 	icon_state = "core1"
-	use_power = 2
+	update_use_power(USE_POWER_ACTIVE)
 	. = 1
 
 /obj/machinery/power/fusion_core/proc/Shutdown(var/force_rupture)
@@ -82,7 +83,7 @@ var/list/fusion_cores = list()
 			owned_field.RadiateAll()
 		qdel(owned_field)
 		owned_field = null
-	use_power = 1
+	update_use_power(USE_POWER_IDLE)
 
 /obj/machinery/power/fusion_core/proc/AddParticles(var/name, var/quantity = 1)
 	if(owned_field)
@@ -94,7 +95,7 @@ var/list/fusion_cores = list()
 		. = owned_field.bullet_act(Proj)
 
 /obj/machinery/power/fusion_core/proc/set_strength(var/value)
-	value = Clamp(value, MIN_FIELD_STR, MAX_FIELD_STR)
+	value = clamp(value, MIN_FIELD_STR, MAX_FIELD_STR)
 	field_strength = value
 	active_power_usage = 5 * value
 	if(owned_field)
@@ -120,7 +121,7 @@ var/list/fusion_cores = list()
 	if(default_part_replacement(user, W))
 		return
 
-	if(ismultitool(W))
+	if(istype(W, /obj/item/multitool))
 		var/new_ident = input("Enter a new ident tag.", "Fusion Core", id_tag) as null|text
 		if(new_ident && user.Adjacent(src))
 			id_tag = new_ident

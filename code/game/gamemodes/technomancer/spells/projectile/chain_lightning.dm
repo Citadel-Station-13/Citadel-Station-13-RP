@@ -4,11 +4,11 @@
 	it does not bounce to you.  The lighting prefers to bounce to people with the least resistance to electricity.  It will \
 	strike up to four targets, including yourself if conditions allow it to occur.  Lightning functions cannot miss due to distance."
 	cost = 150
-	obj_path = /obj/item/weapon/spell/projectile/chain_lightning
+	obj_path = /obj/item/spell/projectile/chain_lightning
 	ability_icon_state = "tech_chain_lightning"
 	category = OFFENSIVE_SPELLS
 
-/obj/item/weapon/spell/projectile/chain_lightning
+/obj/item/spell/projectile/chain_lightning
 	name = "chain lightning"
 	icon_state = "chain_lightning"
 	desc = "Fun for the whole security team!  Just don't kill yourself in the process.."
@@ -26,9 +26,9 @@
 	nodamage = 1
 	damage_type = HALLOSS
 
-	muzzle_type = /obj/effect/projectile/lightning/muzzle
-	tracer_type = /obj/effect/projectile/lightning/tracer
-	impact_type = /obj/effect/projectile/lightning/impact
+	muzzle_type = /obj/effect/projectile/muzzle/lightning
+	tracer_type = /obj/effect/projectile/tracer/lightning
+	impact_type = /obj/effect/projectile/impact/lightning
 
 	var/bounces = 3				//How many times it 'chains'.  Note that the first hit is not counted as it counts /bounces/.
 	var/list/hit_mobs = list() 	//Mobs which were already hit.

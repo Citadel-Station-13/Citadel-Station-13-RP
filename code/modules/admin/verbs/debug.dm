@@ -3,12 +3,12 @@
 	set name = "Debug-Game"
 	if(!check_rights(R_DEBUG))	return
 
-	if(Debug2)
-		Debug2 = 0
+	if(GLOB.Debug2)
+		GLOB.Debug2 = 0
 		message_admins("[key_name(src)] toggled debugging off.")
 		log_admin("[key_name(src)] toggled debugging off.")
 	else
-		Debug2 = 1
+		GLOB.Debug2 = 1
 		message_admins("[key_name(src)] toggled debugging on.")
 		log_admin("[key_name(src)] toggled debugging on.")
 
@@ -38,16 +38,16 @@
 				weapon_damage *= M.outgoing_melee_damage_percent
 				modified_damage_percent *= M.outgoing_melee_damage_percent
 
-		if(istype(I, /obj/item/weapon/gun))
-			var/obj/item/weapon/gun/G = I
+		if(istype(I, /obj/item/gun))
+			var/obj/item/gun/G = I
 			var/obj/item/projectile/P
 
-			if(istype(I, /obj/item/weapon/gun/energy))
-				var/obj/item/weapon/gun/energy/energy_gun = G
+			if(istype(I, /obj/item/gun/energy))
+				var/obj/item/gun/energy/energy_gun = G
 				P = new energy_gun.projectile_type()
 
-			else if(istype(I, /obj/item/weapon/gun/projectile))
-				var/obj/item/weapon/gun/projectile/projectile_gun = G
+			else if(istype(I, /obj/item/gun/projectile))
+				var/obj/item/gun/projectile/projectile_gun = G
 				var/obj/item/ammo_casing/ammo = projectile_gun.chambered
 				P = ammo.BB
 
@@ -64,9 +64,9 @@
 		to_chat(user, "<span class='notice'>\The [I] does <b>[DPS]</b> damage per second.</span>")
 		if(DPS > 0)
 			to_chat(user, "<span class='notice'>At your maximum health ([user.getMaxHealth()]), it would take approximately;</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config.health_threshold_softcrit) / DPS] seconds to softcrit you. ([config.health_threshold_softcrit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config.health_threshold_crit) / DPS] seconds to hardcrit you. ([config.health_threshold_crit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config.health_threshold_dead) / DPS] seconds to kill you. ([config.health_threshold_dead] health)</span>")
+			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_softcrit) / DPS] seconds to softcrit you. ([config_legacy.health_threshold_softcrit] health)</span>")
+			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_crit) / DPS] seconds to hardcrit you. ([config_legacy.health_threshold_crit] health)</span>")
+			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_dead) / DPS] seconds to kill you. ([config_legacy.health_threshold_dead] health)</span>")
 
 	else
 		to_chat(user, "<span class='warning'>You need to be a living mob, with hands, and for an object to be in your active hand, to use this verb.</span>")
@@ -84,20 +84,20 @@
 
 	var/datum/gas_mixture/env = T.return_air()
 
-	var/t = "<font color='blue'>Coordinates: [T.x],[T.y],[T.z]\n</font>"
+	var/t = "<font color=#4F49AF>Coordinates: [T.x],[T.y],[T.z]\n</font>"
 	t += "<font color='red'>Temperature: [env.temperature]\n</font>"
 	t += "<font color='red'>Pressure: [env.return_pressure()]kPa\n</font>"
 	for(var/g in env.gas)
-		t += "<font color='blue'>[g]: [env.gas[g]] / [env.gas[g] * R_IDEAL_GAS_EQUATION * env.temperature / env.volume]kPa\n</font>"
+		t += "<font color=#4F49AF>[g]: [env.gas[g]] / [env.gas[g] * R_IDEAL_GAS_EQUATION * env.temperature / env.volume]kPa\n</font>"
 
 	usr.show_message(t, 1)
 	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_robotize(var/mob/M in mob_list)
+/client/proc/cmd_admin_robotize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(!ticker)
+	if(!SSticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon/human))
@@ -108,11 +108,11 @@
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_animalize(var/mob/M in mob_list)
+/client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
 
-	if(!ticker)
+	if(!SSticker)
 		alert("Wait until the game starts")
 		return
 
@@ -129,13 +129,13 @@
 		M.Animalize()
 
 
-/client/proc/makepAI(var/turf/T in mob_list)
+/client/proc/makepAI(var/turf/T in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make pAI"
 	set desc = "Specify a location to spawn a pAI device, then specify a key to play that pAI"
 
 	var/list/available = list()
-	for(var/mob/C in mob_list)
+	for(var/mob/C in GLOB.mob_list)
 		if(C.key)
 			available.Add(C)
 	var/mob/choice = input("Choose a player to play the pAI", "Spawn pAI") in available
@@ -145,7 +145,7 @@
 		var/confirm = input("[choice.key] isn't ghosting right now. Are you sure you want to yank them out of them out of their body and place them in this pAI?", "Spawn pAI Confirmation", "No") in list("Yes", "No")
 		if(confirm != "Yes")
 			return 0
-	var/obj/item/device/paicard/card = new(T)
+	var/obj/item/paicard/card = new(T)
 	var/mob/living/silicon/pai/pai = new(card)
 	pai.name = sanitizeSafe(input(choice, "Enter your pAI name:", "pAI Name", "Personal AI") as text)
 	pai.real_name = pai.name
@@ -156,11 +156,11 @@
 			paiController.pai_candidates.Remove(candidate)
 	feedback_add_details("admin_verb","MPAI") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_alienize(var/mob/M in mob_list)
+/client/proc/cmd_admin_alienize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Alien"
 
-	if(!ticker)
+	if(!SSticker)
 		alert("Wait until the game starts")
 		return
 	if(ishuman(M))
@@ -173,22 +173,53 @@
 	else
 		alert("Invalid mob")
 
-
 //TODO: merge the vievars version into this or something maybe mayhaps
-/client/proc/cmd_debug_del_all()
+/client/proc/cmd_debug_del_all(object as text)
 	set category = "Debug"
 	set name = "Del-All"
 
-	// to prevent REALLY stupid deletions
-	var/blocked = list(/obj, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/human, /mob/observer/dead, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
-	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in typesof(/obj) + typesof(/mob) - blocked
+	var/list/matches = get_fancy_list_of_atom_types()
+	if (!isnull(object) && object!="")
+		matches = filter_fancy_list(matches, object)
+
+	if(matches.len==0)
+		return
+	var/hsbitem = input(usr, "Choose an object to delete. Use clear-mobs instead on LIVE.", "Delete:") as null|anything in matches
 	if(hsbitem)
+		hsbitem = matches[hsbitem]
+		var/counter = 0
 		for(var/atom/O in world)
 			if(istype(O, hsbitem))
+				counter++
 				qdel(O)
-		log_admin("[key_name(src)] has deleted all instances of [hsbitem].")
-		message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem].", 0)
-	feedback_add_details("admin_verb","DELA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+			CHECK_TICK
+		log_admin("[key_name(src)] has deleted all ([counter]) instances of [hsbitem].")
+		message_admins("[key_name_admin(src)] has deleted all ([counter]) instances of [hsbitem].")
+		// SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_clear_mobs()
+	set category = "Admin"
+	set name = "Clear Mobs"
+
+	var/range = input(usr, "Choose a range in tiles FROM your location", "If uncertain, enter 25 or below.") as num
+	if(range >= 50) // ridiculously high
+		alert("Please enter a valid range below 50.")
+		return
+	var/list/victims = list()
+	for(var/mob/C in view(range, src)) // get all mobs in the range from us we specified
+		victims += C
+	var/hsbitem = input(usr, "Choose a mob type to clear.", "Delete ALL of this type:") as null|anything in typesof(victims, /mob)
+	var/friendlyname = type2top(hsbitem)
+	var/warning = alert(usr, "Are you ABSOLUTELY CERTAIN you wish to delete EVERY [friendlyname] in [range] tiles?", "Warning", "Yes", "Cancel") // safety
+	if (warning == "Yes")
+		if(hsbitem)
+			for(var/mob/O in view(range, src))
+				if(istype(O, hsbitem))
+					qdel(O)
+			log_admin("[key_name(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.")
+			message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] in a range of [range] tiles.", 0)
+	feedback_add_details("admin_verb","CLRM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
@@ -202,9 +233,9 @@
 	set category = "Server"
 	set name = "Toggle Aliens"
 
-	config.aliens_allowed = !config.aliens_allowed
-	log_admin("[key_name(src)] has turned aliens [config.aliens_allowed ? "on" : "off"].")
-	message_admins("[key_name_admin(src)] has turned aliens [config.aliens_allowed ? "on" : "off"].", 0)
+	config_legacy.aliens_allowed = !config_legacy.aliens_allowed
+	log_admin("[key_name(src)] has turned aliens [config_legacy.aliens_allowed ? "on" : "off"].")
+	message_admins("[key_name_admin(src)] has turned aliens [config_legacy.aliens_allowed ? "on" : "off"].", 0)
 	feedback_add_details("admin_verb","TAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_display_del_log()
@@ -267,28 +298,28 @@
 	else
 		. = lines.Join("\n")
 
-/client/proc/cmd_admin_grantfullaccess(var/mob/M in mob_list)
+/client/proc/cmd_admin_grantfullaccess(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Grant Full Access"
 
-	if (!ticker)
+	if (!SSticker)
 		alert("Wait until the game starts")
 		return
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if (H.wear_id)
-			var/obj/item/weapon/card/id/id = H.wear_id
-			if(istype(H.wear_id, /obj/item/device/pda))
-				var/obj/item/device/pda/pda = H.wear_id
+			var/obj/item/card/id/id = H.wear_id
+			if(istype(H.wear_id, /obj/item/pda))
+				var/obj/item/pda/pda = H.wear_id
 				id = pda.id
 			id.icon_state = "gold"
-			id.access = get_all_accesses()
+			id.access = get_all_accesses().Copy()
 		else
-			var/obj/item/weapon/card/id/id = new/obj/item/weapon/card/id(M);
+			var/obj/item/card/id/id = new/obj/item/card/id(M);
 			id.icon_state = "gold"
-			id.access = get_all_accesses()
+			id.access = get_all_accesses().Copy()
 			id.registered_name = H.real_name
-			id.assignment = "Colony Director"
+			id.assignment = "Facility Director"
 			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
 			H.equip_to_slot_or_del(id, slot_wear_id)
 			H.update_inv_wear_id()
@@ -296,9 +327,9 @@
 		alert("Invalid mob")
 	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(src)] has granted [M.key] full access.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] has granted [M.key] full access.</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] has granted [M.key] full access.</font>", 1)
 
-/client/proc/cmd_assume_direct_control(var/mob/M in mob_list)
+/client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Assume direct control"
 	set desc = "Direct intervention"
@@ -310,7 +341,7 @@
 		else
 			var/mob/observer/dead/ghost = new/mob/observer/dead(M,1)
 			ghost.ckey = M.ckey
-	message_admins("<font color='blue'>[key_name_admin(usr)] assumed direct control of [M].</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] assumed direct control of [M].</font>", 1)
 	log_admin("[key_name(usr)] assumed direct control of [M].")
 	var/mob/adminmob = src.mob
 	M.ckey = src.ckey
@@ -341,7 +372,7 @@
 	var/list/areas_with_intercom = list()
 	var/list/areas_with_camera = list()
 
-	for(var/area/A in all_areas)
+	for(var/area/A in GLOB.sortedAreas)
 		if(!(A.type in areas_all))
 			areas_all.Add(A.type)
 
@@ -370,7 +401,7 @@
 		if(A && !(A.type in areas_with_LS))
 			areas_with_LS.Add(A.type)
 
-	for(var/obj/item/device/radio/intercom/I in machines)
+	for(var/obj/item/radio/intercom/I in machines)
 		var/area/A = get_area(I)
 		if(A && !(A.type in areas_with_intercom))
 			areas_with_intercom.Add(A.type)
@@ -388,33 +419,33 @@
 	var/list/areas_without_intercom = areas_all - areas_with_intercom
 	var/list/areas_without_camera = areas_all - areas_with_camera
 
-	world << "<b>AREAS WITHOUT AN APC:</b>"
+	to_chat(world, "<b>AREAS WITHOUT AN APC:</b>")
 	for(var/areatype in areas_without_APC)
-		world << "* [areatype]"
+		to_chat(world, "* [areatype]")
 
-	world << "<b>AREAS WITHOUT AN AIR ALARM:</b>"
+	to_chat(world, "<b>AREAS WITHOUT AN AIR ALARM:</b>")
 	for(var/areatype in areas_without_air_alarm)
-		world << "* [areatype]"
+		to_chat(world, "* [areatype]")
 
-	world << "<b>AREAS WITHOUT A REQUEST CONSOLE:</b>"
+	to_chat(world, "<b>AREAS WITHOUT A REQUEST CONSOLE:</b>")
 	for(var/areatype in areas_without_RC)
-		world << "* [areatype]"
+		to_chat(world, "* [areatype]")
 
-	world << "<b>AREAS WITHOUT ANY LIGHTS:</b>"
+	to_chat(world, "<b>AREAS WITHOUT ANY LIGHTS:</b>")
 	for(var/areatype in areas_without_light)
-		world << "* [areatype]"
+		to_chat(world, "* [areatype]")
 
-	world << "<b>AREAS WITHOUT A LIGHT SWITCH:</b>"
+	to_chat(world, "<b>AREAS WITHOUT A LIGHT SWITCH:</b>")
 	for(var/areatype in areas_without_LS)
-		world << "* [areatype]"
+		to_chat(world, "* [areatype]")
 
-	world << "<b>AREAS WITHOUT ANY INTERCOMS:</b>"
+	to_chat(world, "<b>AREAS WITHOUT ANY INTERCOMS:</b>")
 	for(var/areatype in areas_without_intercom)
-		world << "* [areatype]"
+		to_chat(world, "* [areatype]")
 
-	world << "<b>AREAS WITHOUT ANY CAMERAS:</b>"
+	to_chat(world, "<b>AREAS WITHOUT ANY CAMERAS:</b>")
 	for(var/areatype in areas_without_camera)
-		world << "* [areatype]"
+		to_chat(world, "* [areatype]")
 
 /datum/admins/proc/cmd_admin_dress(input in getmobs())
 	set category = "Fun"
@@ -483,8 +514,8 @@
 	for(var/obj/machinery/power/rad_collector/Rad in machines)
 		if(Rad.anchored)
 			if(!Rad.P)
-				var/obj/item/weapon/tank/phoron/Phoron = new/obj/item/weapon/tank/phoron(Rad)
-				Phoron.air_contents.gas["phoron"] = 70
+				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
+				Phoron.air_contents.gas[/datum/gas/phoron] = 70
 				Rad.drainratio = 0
 				Rad.P = Phoron
 				Phoron.loc = Rad
@@ -521,9 +552,9 @@
 				Rad.anchored = 1
 				Rad.connect_to_network()
 
-				var/obj/item/weapon/tank/phoron/Phoron = new/obj/item/weapon/tank/phoron(Rad)
+				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 
-				Phoron.air_contents.gas["phoron"] = 29.1154	//This is a full tank if you filled it from a canister
+				Phoron.air_contents.gas[/datum/gas/phoron] = 29.1154	//This is a full tank if you filled it from a canister
 				Rad.P = Phoron
 
 				Phoron.loc = Rad
@@ -536,10 +567,10 @@
 				var/obj/machinery/atmospherics/binary/pump/Pump = M
 				if(Pump.name == "Engine Feed" && response == "Setup Completely")
 					found_the_pump = 1
-					Pump.air2.gas["nitrogen"] = 3750	//The contents of 2 canisters.
+					Pump.air2.gas[/datum/gas/nitrogen] = 3750	//The contents of 2 canisters.
 					Pump.air2.temperature = 50
 					Pump.air2.update_values()
-				Pump.use_power=1
+				Pump.update_use_power(USE_POWER_IDLE)
 				Pump.target_pressure = 4500
 				Pump.update_icon()
 
@@ -562,18 +593,16 @@
 				SMES.output_level = 75000
 
 	if(!found_the_pump && response == "Setup Completely")
-		src << "<font color='red'>Unable to locate air supply to fill up with coolant, adding some coolant around the supermatter</font>"
+		to_chat(src, "<font color='red'>Unable to locate air supply to fill up with coolant, adding some coolant around the supermatter</font>")
 		var/turf/simulated/T = SM.loc
-		T.zone.air.gas["nitrogen"] += 450
+		T.zone.air.gas[/datum/gas/nitrogen] += 450
 		T.zone.air.temperature = 50
 		T.zone.air.update_values()
 
 
 	log_admin("[key_name(usr)] setup the supermatter engine [response == "Setup except coolant" ? "without coolant" : ""]")
-	message_admins("<font color='blue'>[key_name_admin(usr)] setup the supermatter engine  [response == "Setup except coolant" ? "without coolant": ""]</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] setup the supermatter engine  [response == "Setup except coolant" ? "without coolant": ""]</font>", 1)
 	return
-
-
 
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"
@@ -582,30 +611,21 @@
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
 		if("Players")
-			usr << jointext(player_list,",")
+			to_chat(usr, jointext(player_list,","))
 		if("Admins")
-			usr << jointext(admins,",")
+			to_chat(usr, jointext(admins,","))
 		if("Mobs")
-			usr << jointext(mob_list,",")
+			to_chat(usr, jointext(GLOB.mob_list,","))
 		if("Living Mobs")
-			usr << jointext(living_mob_list,",")
+			to_chat(usr, jointext(living_mob_list,","))
 		if("Dead Mobs")
-			usr << jointext(dead_mob_list,",")
+			to_chat(usr, jointext(dead_mob_list,","))
 		if("Clients")
-			usr << jointext(clients,",")
-
-/client/proc/cmd_debug_using_map()
-	set category = "Debug"
-	set name = "Debug Map Datum"
-	set desc = "Debug the map metadata about the currently compiled in map."
-
-	if(!check_rights(R_DEBUG))
-		return
-	debug_variables(using_map)
+			to_chat(usr, jointext(GLOB.clients,","))
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!ticker)
+	if(!SSticker)
 		alert("Wait until the game starts")
 		return
 	if(istype(M, /mob/living/carbon))
@@ -627,7 +647,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	error_cache.showTo(usr)
+	GLOB.error_cache.show_to(usr)
 
 /datum/admins/proc/change_weather()
 	set category = "Debug"
@@ -641,6 +661,7 @@
 	var/datum/weather/new_weather = input(usr, "What weather do you want to change to?", "Change Weather") as null|anything in planet.weather_holder.allowed_weather_types
 	if(new_weather)
 		planet.weather_holder.change_weather(new_weather)
+		planet.weather_holder.rebuild_forecast()
 		var/log = "[key_name(src)] changed [planet.name]'s weather to [new_weather]."
 		message_admins(log)
 		log_admin(log)
@@ -671,3 +692,13 @@
 			var/log = "[key_name(src)] changed [planet.name]'s time to [planet.current_time.show_time("hh:mm")]."
 			message_admins(log)
 			log_admin(log)
+
+/client/proc/reload_configuration()
+	set category = "Debug"
+	set name = "Reload Configuration"
+	set desc = "Force config reload to world default"
+	if(!check_rights(R_DEBUG))
+		return
+	if(alert(usr, "Are you absolutely sure you want to reload the configuration from the default path on the disk, wiping any in-round modificatoins?", "Really reset?", "No", "Yes") == "Yes")
+		config.admin_reload()
+		load_configuration()		//for legacy

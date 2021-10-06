@@ -7,6 +7,7 @@
 	density = 1
 	anchored = 0
 
+// this is banned, use temporary-visual - kevinz000
 /obj/effect/temporary_effect
 	name = "self deleting effect"
 	desc = "How are you examining what which cannot be seen?"
@@ -14,11 +15,10 @@
 	invisibility = 0
 	var/time_to_die = 10 SECONDS // Afer which, it will delete itself.
 
-/obj/effect/temporary_effect/New()
-	..()
+/obj/effect/temporary_effect/Initialize(mapload)
+	. = ..()
 	if(time_to_die)
-		spawn(time_to_die)
-			qdel(src)
+		QDEL_IN(src, time_to_die)
 
 // Shown really briefly when attacking with axes.
 /obj/effect/temporary_effect/cleave_attack
@@ -34,7 +34,7 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/temporary_effect/cleave_attack/initialize() // Makes the slash fade smoothly. When completely transparent it should qdel itself.
+/obj/effect/temporary_effect/cleave_attack/Initialize(mapload) // Makes the slash fade smoothly. When completely transparent it should qdel itself.
 	. = ..()
 	animate(src, alpha = 0, time = time_to_die - 1)
 
@@ -44,6 +44,54 @@
 	icon_state = "shuttle_warning_still"
 	time_to_die = 4.9 SECONDS
 
-/obj/effect/temporary_effect/shuttle_landing/initialize()
+/obj/effect/temporary_effect/shuttle_landing/Initialize(mapload)
 	flick("shuttle_warning", src) // flick() forces the animation to always begin at the start.
 	. = ..()
+
+// The manifestation of Zeus's might. Or just a really unlucky day.
+// This is purely a visual effect, this isn't the part of the code that hurts things.
+/obj/effect/temporary_effect/lightning_strike
+	name = "lightning"
+	desc = "How <i>shocked</i> you must be, to see this text. You must have <i>lightning</i> reflexes. \
+	The humor in this description is just so <i>electrifying</i>."
+	icon = 'icons/effects/96x256.dmi'
+	icon_state = "lightning_strike"
+	plane = PLANE_LIGHTING_ABOVE
+	time_to_die = 1 SECOND
+	pixel_x = -32
+
+/obj/effect/temporary_effect/lightning_strike/Initialize(mapload)
+	icon_state += "[rand(1,2)]" // To have two variants of lightning sprites.
+	animate(src, alpha = 0, time = time_to_die - 1)
+	. = ..()
+
+
+//Makes a tile fully lit no matter what
+/obj/effect/fullbright
+	icon = 'icons/effects/alphacolors.dmi'
+	icon_state = "white"
+	plane = PLANE_LIGHTING
+	layer = LIGHTING_LAYER
+	blend_mode = BLEND_ADD
+
+/obj/effect/dummy/lighting_obj
+	name = "lighting fx obj"
+	desc = "Tell a coder if you're seeing this."
+	icon_state = "nothing"
+	light_color = "#FFFFFF"
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/dummy/lighting_obj/Initialize(mapload, _color, _range, _power, _duration)
+	. = ..()
+	set_light(_range ? _range : light_range, _power ? _power : light_power, _color ? _color : light_color)
+	if(_duration)
+		QDEL_IN(src, _duration)
+
+/obj/effect/dummy/lighting_obj/moblight
+	name = "mob lighting fx"
+
+/obj/effect/dummy/lighting_obj/moblight/Initialize(mapload, _color, _range, _power, _duration)
+	. = ..()
+	if(!ismob(loc))
+		return INITIALIZE_HINT_QDEL

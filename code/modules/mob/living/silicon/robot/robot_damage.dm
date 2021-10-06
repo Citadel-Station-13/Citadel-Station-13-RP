@@ -20,13 +20,13 @@
 		if(C.installed != 0) amount += C.electronics_damage
 	return amount
 
-/mob/living/silicon/robot/adjustBruteLoss(var/amount)
+/mob/living/silicon/robot/adjustBruteLoss(var/amount,var/include_robo)
 	if(amount > 0)
 		take_overall_damage(amount, 0)
 	else
 		heal_overall_damage(-amount, 0)
 
-/mob/living/silicon/robot/adjustFireLoss(var/amount)
+/mob/living/silicon/robot/adjustFireLoss(var/amount,var/include_robo)
 	if(amount > 0)
 		take_overall_damage(0, amount)
 	else
@@ -79,11 +79,11 @@
 			cell.charge -= cost
 			if(cell.charge <= 0)
 				cell.charge = 0
-				src << "<font color='red'>Your shield has overloaded!</font>"
+				to_chat(src, "<font color='red'>Your shield has overloaded!</font>")
 			else
 				brute -= absorb_brute
 				burn -= absorb_burn
-				src << "<font color='red'>Your shield absorbs some of the impact!</font>"
+				to_chat(src, "<font color='red'>Your shield absorbs some of the impact!</font>")
 
 	if(!emp)
 		var/datum/robot_component/armour/A = get_armour()
@@ -126,11 +126,11 @@
 			cell.charge -= cost
 			if(cell.charge <= 0)
 				cell.charge = 0
-				src << "<font color='red'>Your shield has overloaded!</font>"
+				to_chat(src, "<font color='red'>Your shield has overloaded!</font>")
 			else
 				brute -= absorb_brute
 				burn -= absorb_burn
-				src << "<font color='red'>Your shield absorbs some of the impact!</font>"
+				to_chat(src, "<font color='red'>Your shield absorbs some of the impact!</font>")
 
 	var/datum/robot_component/armour/A = get_armour()
 	if(A)

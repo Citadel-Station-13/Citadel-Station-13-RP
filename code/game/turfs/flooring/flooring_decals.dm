@@ -7,22 +7,34 @@ var/list/floor_decals = list()
 	name = "floor decal"
 	icon = 'icons/turf/flooring/decals_vr.dmi' // VOREStation Edit
 	plane = DECAL_PLANE
+	layer = MAPPER_DECAL_LAYER
 	var/supplied_dir
 
-/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour)
+/obj/effect/floor_decal/Initialize(mapload, newdir, newcolour)
 	supplied_dir = newdir
-	if(newcolour) color = newcolour
-	..(newloc)
+	if(newcolour)
+		color = newcolour
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
 
-/obj/effect/floor_decal/initialize()
+/obj/effect/floor_decal/LateInitialize()
 	add_to_turf_decals()
-	initialized = TRUE
-	return INITIALIZE_HINT_QDEL
+	qdel(src)
+
+/obj/effect/floor_decal/proc/make_decal_image()
+	var/image/I = image(icon = icon, icon_state = icon_state, dir = dir)
+	I.layer = MAPPER_DECAL_LAYER
+	I.color = color
+	I.alpha = alpha
+	return I
+
+/obj/effect/floor_decal/proc/get_cache_key(var/turf/T)
+	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]"
 
 // This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.
 /obj/effect/floor_decal/proc/add_to_turf_decals()
 	if(supplied_dir)
-		set_dir(supplied_dir) // TODO - Why can't this line be done in initialize/New()?
+		setDir(supplied_dir) // TODO - Why can't this line be done in initialize/New()?
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor) || istype(T, /turf/simulated/shuttle/floor))
 		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[T.layer]"
@@ -40,13 +52,12 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/reset
 	name = "reset marker"
 
-/obj/effect/floor_decal/reset/initialize()
+/obj/effect/floor_decal/reset/LateInitialize()
 	var/turf/T = get_turf(src)
 	if(T.decals && T.decals.len)
 		T.decals.Cut()
 		T.update_icon()
-	initialized = TRUE
-	return INITIALIZE_HINT_QDEL
+	qdel(src)
 
 /obj/effect/floor_decal/corner
 	icon_state = "corner_white"
@@ -469,8 +480,8 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/corner/grey/bordercorner
 	icon_state = "bordercolorcorner"
 
-/obj/effect/floor_decal/corner/grey/bordercorner
-	icon_state = "bordercolorcorner"
+/obj/effect/floor_decal/corner/grey/bordercorner2
+	icon_state = "bordercolorcorner2"
 
 /obj/effect/floor_decal/corner/grey/borderfull
 	icon_state = "bordercolorfull"
@@ -608,9 +619,9 @@ var/list/floor_decals = list()
 	name = "random asteroid rubble"
 	icon_state = "asteroid0"
 
-/obj/effect/floor_decal/asteroid/New()
+/obj/effect/floor_decal/asteroid/Initialize(mapload)
 	icon_state = "asteroid[rand(0,9)]"
-	..()
+	return ..()
 
 /obj/effect/floor_decal/chapel
 	name = "chapel"
@@ -1162,3 +1173,106 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/grass_edge/corner
 	name = "grass edge"
 	icon_state = "grass_edge_corner"
+
+//VR FILE MERGE
+
+/obj/effect/floor_decal/flesh
+	name = "flesh"
+	icon = 'icons/turf/stomach_vr.dmi'
+	icon_state = "flesh_floor_edges"
+
+/obj/effect/floor_decal/flesh/colour
+	name = "flesh"
+	icon = 'icons/turf/stomach_vr.dmi'
+	icon_state = "c_flesh_floor_edges"
+
+/obj/effect/floor_decal/industrial/outline/red
+	name = "red outline"
+	color = COLOR_RED
+/obj/effect/floor_decal/borderfloor/shifted
+	icon_state = "borderfloor_shifted"
+
+/obj/effect/floor_decal/borderfloorblack/shifted
+	icon_state = "borderfloor_shifted"
+
+/obj/effect/floor_decal/borderfloorwhite/shifted
+	icon_state = "borderfloor_shifted"
+
+/obj/effect/floor_decal/corner/beige/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/black/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/blue/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/brown/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/green/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/grey/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/lightgrey/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/lightorange
+	name = "orange corner"
+	color = "#ed983d"
+
+/obj/effect/floor_decal/corner/lightorange/diagonal
+	icon_state = "corner_white_diagonal"
+
+/obj/effect/floor_decal/corner/lightorange/full
+	icon_state = "corner_white_full"
+
+/obj/effect/floor_decal/corner/lightorange/three_quarters
+	icon_state = "corner_white_three_quarters"
+
+/obj/effect/floor_decal/corner/lightorange/border
+	icon_state = "bordercolor"
+
+/obj/effect/floor_decal/corner/lightorange/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/lightorange/bordercorner
+	icon_state = "bordercolorcorner"
+
+/obj/effect/floor_decal/corner/lightorange/bordercorner2
+	icon_state = "bordercolorcorner2"
+
+/obj/effect/floor_decal/corner/lightorange/borderfull
+	icon_state = "bordercolorfull"
+
+/obj/effect/floor_decal/corner/lightorange/bordercee
+	icon_state = "bordercolorcee"
+
+/obj/effect/floor_decal/corner/lime/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/mauve/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/orange/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/paleblue/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/pink/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/purple/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/red/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/white/border/shifted
+	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/corner/yellow/border/shifted
+	icon_state = "bordercolor_shifted"

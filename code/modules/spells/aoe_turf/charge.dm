@@ -27,9 +27,9 @@
 		for(var/spell/S in M.spell_list)
 			if(!istype(S, /spell/aoe_turf/charge))
 				S.charge_counter = S.charge_max
-		M <<"<span class='notice'>You feel raw magic flowing through you, it feels good!</span>"
+		to_chat(M, "<span class='notice'>You feel raw magic flowing through you, it feels good!</span>")
 	else
-		M <<"<span class='notice'>You feel very strange for a moment, but then it passes.</span>"
+		to_chat(M, "<span class='notice'>You feel very strange for a moment, but then it passes.</span>")
 	return M
 
 /spell/aoe_turf/charge/proc/cast_charge(var/atom/target)
@@ -38,14 +38,14 @@
 	if(istype(target, /mob/living))
 		charged_item = mob_charge(target)
 
-	if(istype(target, /obj/item/weapon/grab))
-		var/obj/item/weapon/grab/G = target
+	if(istype(target, /obj/item/grab))
+		var/obj/item/grab/G = target
 		if(G.affecting)
 			var/mob/M = G.affecting
 			charged_item = mob_charge(M)
 
-	if(istype(target, /obj/item/weapon/spellbook/oneuse))
-		var/obj/item/weapon/spellbook/oneuse/I = target
+	if(istype(target, /obj/item/spellbook/oneuse))
+		var/obj/item/spellbook/oneuse/I = target
 		if(prob(50))
 			I.visible_message("<span class='warning'>[I] catches fire!</span>")
 			qdel(I)
@@ -53,8 +53,8 @@
 			I.used = 0
 			charged_item = I
 
-	if(istype(target, /obj/item/weapon/cell/))
-		var/obj/item/weapon/cell/C = target
+	if(istype(target, /obj/item/cell/))
+		var/obj/item/cell/C = target
 		if(prob(80))
 			C.maxcharge -= 200
 			if(C.maxcharge <= 1) //Div by 0 protection

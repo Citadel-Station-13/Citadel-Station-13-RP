@@ -130,6 +130,12 @@
 	desc = "A piece of cloth wrapped around the waist."
 	icon_state = "loincloth"
 
+/obj/item/clothing/under/skirt/pleated
+	name = "pleated skirt"
+	desc = "A simple pleated skirt. It's like high school all over again."
+	icon_state = "pleated"
+	addblends = "pleated_a"
+
 /obj/item/clothing/under/skirt/outfit
 	name = "black skirt"
 	desc = "A black skirt, very fancy!"
@@ -149,10 +155,16 @@
 	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
 
 /obj/item/clothing/under/skirt/outfit/plaid_purple
-	name = "blue purple skirt"
+	name = "purple plaid skirt"
 	desc = "A preppy purple skirt with a white blouse."
 	icon_state = "plaid_purple"
 	item_state_slots = list(slot_r_hand_str = "purple", slot_l_hand_str = "purple")
+
+/obj/item/clothing/under/skirt/outfit/plaid_green
+	name = "green plaid skirt"
+	desc = "A preppy purple skirt with a white blouse."
+	icon_state = "plaid_green"
+	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
 
 /obj/item/clothing/under/rank/cargo/skirt
 	name = "quartermaster's jumpskirt"

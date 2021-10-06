@@ -1,5 +1,5 @@
-/turf/simulated/wall/diona/New(var/newloc)
-	..(newloc,"biomass")
+/turf/simulated/wall/diona/Initialize(mapload)
+	..(mapload, "biomass")
 
 /turf/simulated/wall/diona/attack_generic(var/mob/user, var/damage, var/attack_message)
 	if(istype(user, /mob/living/carbon/alien/diona))
@@ -51,8 +51,8 @@
 	desc = "A glowing bulb of some sort."
 	icon_state = "glowbulb"
 
-/obj/structure/diona/bulb/New(var/newloc)
-	..()
+/obj/structure/diona/bulb/Initialize(mapload)
+	. = ..()
 	set_light(3,3,"#557733")
 
 /datum/random_map/automata/diona

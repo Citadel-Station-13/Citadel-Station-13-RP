@@ -75,13 +75,11 @@ var/const/tk_maxrange = 15
 	var/mob/living/host = null
 
 /obj/item/tk_grab/dropped(mob/user as mob)
+	. = ..()
 	if(focus && user && loc != user && loc != user.loc) // drop_item() gets called when you tk-attack a table/closet with an item
 		if(focus.Adjacent(loc))
-			focus.loc = loc
-	loc = null
-	spawn(1)
-		qdel(src)
-	return
+			focus.forceMove(loc)
+	qdel(src)
 
 //stops TK grabs being equipped anywhere but into hands
 /obj/item/tk_grab/equipped(var/mob/user, var/slot)
@@ -110,7 +108,7 @@ var/const/tk_maxrange = 15
 	if(focus)
 		d = max(d, get_dist(user, focus)) // whichever is further
 	if(d > tk_maxrange)
-		user << "<span class='notice'>Your mind won't reach that far.</span>"
+		to_chat(user, "<span class='notice'>Your mind won't reach that far.</span>")
 		return
 
 	if(!focus)
@@ -154,7 +152,7 @@ var/const/tk_maxrange = 15
 	O.anchored = 1
 	O.density = 0
 	O.layer = FLY_LAYER
-	O.set_dir(pick(cardinal))
+	O.setDir(pick(GLOB.cardinal))
 	O.icon = 'icons/effects/effects.dmi'
 	O.icon_state = "nothing"
 	flick("empdisable",O)

@@ -11,7 +11,7 @@
 
 #ifdef DEBUG_MEDIAPLAYER
 #define MP_DEBUG(x) owner << x
-#warning Please comment out #define DEBUG_MEDIAPLAYER before committing.
+#warn Please comment out #define DEBUG_MEDIAPLAYER before committing.
 #else
 #define MP_DEBUG(x)
 #endif
@@ -27,11 +27,11 @@
 /hook/roundend/proc/stop_all_media()
 	log_debug("Stopping all playing media...")
 	// Stop all music.
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if(M && M.client)
 			M.stop_all_music()
 	//  SHITTY HACK TO AVOID RACE CONDITION WITH SERVER REBOOT.
-	sleep(10)  // TODO - Leshana - see if this is needed
+	sleep(10)  // TODO see if this is needed
 
 // Update when moving between areas.
 // TODO - While this direct override might technically be faster, probably better code to use observer or hooks ~Leshana
@@ -113,7 +113,7 @@
 	var/client/owner			// Client this is actually running in
 	var/forced=0				// If true, current url overrides area media sources
 	var/playerstyle				// Choice of which player plugin to use
-	var/const/WINDOW_ID = "rpane.mediapanel"	// Which elem in skin.dmf to use
+	var/const/WINDOW_ID = "infowindow.mediapanel"	// Which elem in skin.dmf to use
 
 /datum/media_manager/New(var/client/C)
 	ASSERT(istype(C))
@@ -149,7 +149,7 @@
 	if (url != targetURL || abs(targetStartTime - start_time) > 1 || abs(targetVolume - source_volume) > 0.1 /* 10% */)
 		url = targetURL
 		start_time = targetStartTime
-		source_volume = Clamp(targetVolume, 0, 1)
+		source_volume = clamp(targetVolume, 0, 1)
 		send_update()
 
 /datum/media_manager/proc/stop_music()

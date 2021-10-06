@@ -1,4 +1,4 @@
-/obj/item/device/measuring_tape
+/obj/item/measuring_tape
 	name = "measuring tape"
 	desc = "A coiled metallic tape used to check dimensions and lengths."
 	icon = 'icons/obj/xenoarchaeology.dmi'
@@ -7,7 +7,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 100)
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/weapon/storage/bag/fossils
+/obj/item/storage/bag/fossils
 	name = "Fossil Satchel"
 	desc = "Transports delicate fossils in suspension so they don't break during transit."
 	icon = 'icons/obj/mining.dmi'
@@ -17,26 +17,26 @@
 	storage_slots = 50
 	max_storage_space = ITEMSIZE_COST_NORMAL * 50
 	max_w_class = ITEMSIZE_NORMAL
-	can_hold = list(/obj/item/weapon/fossil)
+	can_hold = list(/obj/item/fossil)
 
-/obj/item/weapon/storage/box/samplebags
+/obj/item/storage/box/samplebags
 	name = "sample bag box"
 	desc = "A box claiming to contain sample bags."
 
-/obj/item/weapon/storage/box/samplebags/New()
-	..()
+/obj/item/storage/box/samplebags/PopulateContents()
+	. = ..()
 	for(var/i = 1 to 7)
-		var/obj/item/weapon/evidencebag/S = new(src)
+		var/obj/item/evidencebag/S = new(src)
 		S.name = "sample bag"
 		S.desc = "a bag for holding research samples."
 
-/obj/item/device/ano_scanner
+/obj/item/ano_scanner
 	name = "Alden-Saraspova counter"
 	desc = "Aids in triangulation of exotic particles."
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "flashgun"
 	item_state = "lampgreen"
-	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3)
+	origin_tech = list(TECH_BLUESPACE = 3, TECH_MAGNET = 3, TECH_ARCANE = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 10000,"glass" = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
@@ -44,10 +44,10 @@
 	var/last_scan_time = 0
 	var/scan_delay = 25
 
-/obj/item/device/ano_scanner/attack_self(var/mob/living/user)
+/obj/item/ano_scanner/attack_self(var/mob/living/user)
 	interact(user)
 
-/obj/item/device/ano_scanner/interact(var/mob/living/user)
+/obj/item/ano_scanner/interact(var/mob/living/user)
 	if(world.time - last_scan_time >= scan_delay)
 		last_scan_time = world.time
 
@@ -60,7 +60,7 @@
 		if(SSxenoarch) //Sanity check due to runtimes ~Z
 			for(var/A in SSxenoarch.artifact_spawning_turfs)
 				var/turf/simulated/mineral/T = A
-				if(T.density && T.artifact_find)
+				if(istype(T, /turf/simulated/mineral) && T.density && T.artifact_find)
 					if(T.z == cur_turf.z)
 						var/cur_dist = get_dist(cur_turf, T) * 2
 						if(nearestTargetDist < 0 || cur_dist < nearestTargetDist)
@@ -71,7 +71,7 @@
 
 			for(var/A in SSxenoarch.digsite_spawning_turfs)
 				var/turf/simulated/mineral/T = A
-				if(T.density && T.finds && T.finds.len)
+				if(istype(T, /turf/simulated/mineral) && T.density && T.finds && T.finds.len)
 					if(T.z == cur_turf.z)
 						var/cur_dist = get_dist(cur_turf, T) * 2
 						if(nearestSimpleTargetDist < 0 || cur_dist < nearestSimpleTargetDist)
@@ -88,7 +88,7 @@
 	else
 		to_chat(user, "Scanning array is recharging.")
 
-/obj/item/device/depth_scanner
+/obj/item/depth_scanner
 	name = "depth analysis scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
 	icon = 'icons/obj/xenoarchaeology.dmi'
@@ -110,7 +110,7 @@
 	var/dissonance_spread = 1
 	var/material = "unknown"
 
-/obj/item/device/depth_scanner/proc/scan_atom(var/mob/user, var/atom/A)
+/obj/item/depth_scanner/proc/scan_atom(var/mob/user, var/atom/A)
 	user.visible_message("<span class='notice'>\The [user] scans \the [A], the air around them humming gently.</span>")
 
 	if(istype(A, /turf/simulated/mineral))
@@ -133,7 +133,7 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>\icon[src] [src] pings.</span>")
+			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings.</span>")
 
 	else if(istype(A, /obj/structure/boulder))
 		var/obj/structure/boulder/B = A
@@ -151,12 +151,12 @@
 
 			positive_locations.Add(D)
 
-			to_chat(user, "<span class='notice'>\icon[src] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
+			to_chat(user, "<span class='notice'>[icon2html(thing = src, target = world)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
-/obj/item/device/depth_scanner/attack_self(var/mob/living/user)
+/obj/item/depth_scanner/attack_self(var/mob/living/user)
 	interact(user)
 
-/obj/item/device/depth_scanner/interact(var/mob/user as mob)
+/obj/item/depth_scanner/interact(var/mob/user as mob)
 	var/dat = "<b>Coordinates with positive matches</b><br>"
 
 	dat += "<A href='?src=\ref[src];clear=0'>== Clear all ==</a><br>"
@@ -190,7 +190,7 @@
 	user << browse(dat,"window=depth_scanner;size=300x500")
 	onclose(user, "depth_scanner")
 
-/obj/item/device/depth_scanner/Topic(href, href_list)
+/obj/item/depth_scanner/Topic(href, href_list)
 	..()
 	usr.set_machine(src)
 
@@ -215,7 +215,7 @@
 
 	updateSelfDialog()
 
-/obj/item/device/beacon_locator
+/obj/item/beacon_locator
 	name = "locater device"
 	desc = "Used to scan and locate signals on a particular frequency."
 	icon = 'icons/obj/device.dmi'
@@ -225,19 +225,19 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 1000,"glass" = 500)
 	var/frequency = PUB_FREQ
 	var/scan_ticks = 0
-	var/obj/item/device/radio/target_radio
+	var/obj/item/radio/target_radio
 
-/obj/item/device/beacon_locator/New()
-	..()
-	processing_objects.Add(src)
+/obj/item/beacon_locator/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
 
-/obj/item/device/beacon_locator/Destroy()
-	processing_objects.Remove(src)
-	..()
+/obj/item/beacon_locator/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
-/obj/item/device/beacon_locator/process()
+/obj/item/beacon_locator/process(delta_time)
 	if(target_radio)
-		set_dir(get_dir(src,target_radio))
+		setDir(get_dir(src,target_radio))
 		switch(get_dist(src,target_radio))
 			if(0 to 3)
 				icon_state = "pinondirect"
@@ -254,11 +254,11 @@
 			if(prob(scan_ticks * 10))
 				spawn(0)
 					set background = 1
-					if(processing_objects.Find(src))
+					if(datum_flags & DF_ISPROCESSING)
 						//scan radios in the world to try and find one
 						var/cur_dist = 999
-						for(var/obj/item/device/radio/beacon/R in all_beacons)
-							if(R.z == src.z && R.frequency == src.frequency)
+						for(var/obj/item/radio/beacon/R in GLOB.all_beacons)
+							if(R.z == z && R.frequency == frequency)
 								var/check_dist = get_dist(src,R)
 								if(check_dist < cur_dist)
 									cur_dist = check_dist
@@ -267,16 +267,16 @@
 						scan_ticks = 0
 						var/turf/T = get_turf(src)
 						if(target_radio)
-							T.visible_message("\icon[src] [src] [pick("chirps","chirrups","cheeps")] happily.")
+							T.visible_message("[icon2html(thing = src, target = world)] [src] [pick("chirps","chirrups","cheeps")] happily.")
 						else
-							T.visible_message("\icon[src] [src] [pick("chirps","chirrups","cheeps")] sadly.")
+							T.visible_message("[icon2html(thing = src, target = world)] [src] [pick("chirps","chirrups","cheeps")] sadly.")
 		else
 			icon_state = "pinoff"
 
-/obj/item/device/beacon_locator/attack_self(var/mob/user as mob)
-	return src.interact(user)
+/obj/item/beacon_locator/attack_self(var/mob/user as mob)
+	return interact(user)
 
-/obj/item/device/beacon_locator/interact(var/mob/user as mob)
+/obj/item/beacon_locator/interact(var/mob/user as mob)
 	var/dat = "<b>Radio frequency tracker</b><br>"
 	dat += {"
 				<A href='byond://?src=\ref[src];reset_tracking=1'>Reset tracker</A><BR>
@@ -292,7 +292,7 @@
 	user << browse(dat,"window=locater;size=300x150")
 	onclose(user, "locater")
 
-/obj/item/device/beacon_locator/Topic(href, href_list)
+/obj/item/beacon_locator/Topic(href, href_list)
 	..()
 	usr.set_machine(src)
 
@@ -311,38 +311,42 @@
 
 	updateSelfDialog()
 
-/obj/item/device/xenoarch_multi_tool
+/obj/item/xenoarch_multi_tool
 	name = "xenoarcheology multitool"
 	desc = "Has the features of the Alden-Saraspova counter, a measuring tape, and a depth analysis scanner all in one!"
 	icon_state = "ano_scanner2"
 	item_state = "lampgreen"
 	icon = 'icons/obj/xenoarchaeology.dmi'
-	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2)
+	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2, TECH_ARCANE = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 10000,"glass" = 5000)
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	var/mode = 1 //Start off scanning. 1 = scanning, 0 = measuring
-	var/obj/item/device/ano_scanner/anomaly_scanner = null
-	var/obj/item/device/depth_scanner/depth_scanner = null
+	var/obj/item/ano_scanner/anomaly_scanner = null
+	var/obj/item/depth_scanner/depth_scanner = null
 
-/obj/item/device/xenoarch_multi_tool/New()
-	anomaly_scanner = new/obj/item/device/ano_scanner(src)
-	depth_scanner = new/obj/item/device/depth_scanner(src)
+/obj/item/xenoarch_multi_tool/Initialize(mapload)
+	. = ..()
+	anomaly_scanner = new/obj/item/ano_scanner(src)
+	depth_scanner = new/obj/item/depth_scanner(src)
 
-/obj/item/device/xenoarch_multi_tool/attack_self(var/mob/living/user)
-	depth_scanner.interact(user)
+/obj/item/xenoarch_multi_tool/attack_self(var/mob/living/user)
+	depth_scanner.interact(usr)
 
-/obj/item/device/xenoarch_multi_tool/verb/swap_settings(var/mob/living/user)
+/obj/item/xenoarch_multi_tool/verb/swap_settings()
 	set name = "Swap Functionality"
 	set desc = "Swap between the scanning and measuring functionality.."
+	if(!(src in usr))
+		return
 	mode = !mode
 	if(mode)
-		to_chat(user, "The device will now scan for artifacts.")
+		to_chat(usr, "The device will now scan for artifacts.")
 	else
-		to_chat(user, "The device will now measure depth dug.")
+		to_chat(usr, "The device will now measure depth dug.")
 
-/obj/item/device/xenoarch_multi_tool/verb/scan_for_anomalies(var/mob/living/user)
+/obj/item/xenoarch_multi_tool/verb/scan_for_anomalies()
 	set name = "Scan for Anomalies"
 	set desc = "Scan for artifacts and anomalies within your vicinity."
-	anomaly_scanner.interact(user)
-
+	if(!(src in usr))
+		return
+	anomaly_scanner.interact(usr)

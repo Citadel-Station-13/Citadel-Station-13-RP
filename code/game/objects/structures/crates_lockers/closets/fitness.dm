@@ -19,7 +19,8 @@
 		/obj/item/clothing/under/swimsuit/white,
 		/obj/item/clothing/under/swimsuit/earth,
 		/obj/item/clothing/mask/snorkel = 2,
-		/obj/item/clothing/shoes/swimmingfins = 2)
+		/obj/item/clothing/shoes/swimmingfins = 2,
+		/obj/item/reagent_containers/spray/squirt = 2)
 
 /obj/structure/closet/boxinggloves
 	name = "boxing gloves"
@@ -48,7 +49,7 @@
 	icon_closed = "red"
 
 	starts_with = list(
-		/obj/item/weapon/gun/energy/lasertag/red = 5,
+		/obj/item/gun/energy/lasertag/red = 5,
 		/obj/item/clothing/suit/redtag = 5)
 
 
@@ -59,5 +60,5 @@
 	icon_closed = "blue"
 
 	starts_with = list(
-		/obj/item/weapon/gun/energy/lasertag/blue = 5,
+		/obj/item/gun/energy/lasertag/blue = 5,
 		/obj/item/clothing/suit/bluetag = 5)

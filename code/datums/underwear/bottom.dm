@@ -68,3 +68,42 @@
 	name = "Long John Bottoms"
 	icon_state = "ljonb"
 	has_color = TRUE
+
+/datum/category_item/underwear/bottom/maebari
+	name = "Maebari"
+	icon_state = "maebari"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/maebari_bandaid
+	name = "Maebari (Band-Aid)"
+	icon_state = "maebari_bandaid"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/chastbelt
+	name = "Chastity Belt"
+	icon_state = "chastbelt"
+
+/datum/category_item/underwear/bottom/chastcage
+	name = "Chastity Cage"
+	icon_state = "chastcage"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/cfishnet_bottom
+	name = "Dyed Fishnets"
+	icon_state = "c_fishnet_lower"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/jockstrap
+	name = "Jockstrap"
+	icon_state = "jockstrap"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/leotard
+	name = "Colorable Leotard"
+	icon_state = "leotard_bra_color"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/leotard_turt
+	name = "Colorable Leotard - Turtleneck"
+	icon_state = "leotard_turt_color"
+	has_color = TRUE

@@ -7,13 +7,13 @@
 
 //Captain
 /obj/item/clothing/head/caphat
-	name = "colony director's hat"
+	name = "Facility Director's hat"
 	icon_state = "captain"
 	desc = "It's good being the king."
 	body_parts_covered = 0
 
 /obj/item/clothing/head/caphat/cap
-	name = "colony director's cap"
+	name = "Facility Director's cap"
 	desc = "You fear to wear it for the negligence it brings."
 	icon_state = "capcap"
 
@@ -130,12 +130,13 @@
 	item_state_slots = list(slot_r_hand_str = "", slot_l_hand_str = "")
 	valid_accessory_slots = null
 	show_examine = FALSE
+	flags_inv = null
 
 /obj/item/clothing/head/det
 	name = "fedora"
 	desc = "A brown fedora - either the cornerstone of a detective's style or a poor attempt at looking cool, depending on the person wearing it."
 	icon_state = "detective"
-	allowed = list(/obj/item/weapon/reagent_containers/food/snacks/candy_corn, /obj/item/weapon/pen)
+	allowed = list(/obj/item/reagent_containers/food/snacks/candy_corn, /obj/item/pen)
 	armor = list(melee = 10, bullet = 10, laser = 15, energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 	valid_accessory_slots = null
@@ -151,8 +152,8 @@
 	desc = "A beret with the engineering insignia emblazoned on it. For engineers that are more inclined towards style than safety."
 	icon_state = "beret_orange"
 
-/obj/item/clothing/head/beret/purple
-	name = "purple beret"
+/obj/item/clothing/head/beret/science
+	name = "science beret"
 	desc = "A stylish, if purple, beret."
 	icon_state = "beret_purpleyellow"
 

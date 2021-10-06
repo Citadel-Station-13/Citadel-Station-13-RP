@@ -34,11 +34,6 @@
 	icon_state = "white"
 	permeability_coefficient = 0.01
 
-/obj/item/clothing/shoes/leather
-	name = "leather shoes"
-	desc = "A sturdy pair of leather shoes."
-	icon_state = "leather"
-
 /obj/item/clothing/shoes/rainbow
 	name = "rainbow shoes"
 	desc = "Very colourful shoes."
@@ -94,9 +89,9 @@
 /obj/item/clothing/shoes/orange
 	name = "orange shoes"
 	icon_state = "orange"
-	var/obj/item/weapon/handcuffs/chained = null
+	var/obj/item/handcuffs/chained = null
 
-/obj/item/clothing/shoes/orange/proc/attach_cuffs(var/obj/item/weapon/handcuffs/cuffs, mob/user as mob)
+/obj/item/clothing/shoes/orange/proc/attach_cuffs(var/obj/item/handcuffs/cuffs, mob/user as mob)
 	if (chained) return
 
 	user.drop_item()
@@ -121,7 +116,7 @@
 
 /obj/item/clothing/shoes/orange/attackby(H as obj, mob/user as mob)
 	..()
-	if (istype(H, /obj/item/weapon/handcuffs))
+	if (istype(H, /obj/item/handcuffs))
 		attach_cuffs(H, user)
 
 /obj/item/clothing/shoes/hitops

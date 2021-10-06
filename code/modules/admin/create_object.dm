@@ -15,7 +15,7 @@
 	var/quick_create_object_html = null
 	var/pathtext = null
 
-	pathtext = input("Select the path of the object you wish to create.", "Path", "/obj") as null|anything in list("/obj","/obj/structure","/obj/item","/obj/item/weapon","/obj/item/clothing","/obj/machinery","/obj/mecha","/obj/item/weapon/storage/box/fluff") //VOREStation Edit
+	pathtext = input("Select the path of the object you wish to create.", "Path", "/obj") as null|anything in list("/obj","/obj/structure","/obj/item","/obj/item","/obj/item","/obj/item/gun","/obj/item/reagent_containers","/obj/item/reagent_containers/food","/obj/item/clothing","/obj/machinery","/obj/mecha","/obj/item/mecha_parts/part","/obj/mecha_parts/mecha_equipement","/obj/item/storage/box/fluff") //VOREStation Edit - Added fluff boxes
 	if(!pathtext)
 		return
 	var path = text2path(pathtext)

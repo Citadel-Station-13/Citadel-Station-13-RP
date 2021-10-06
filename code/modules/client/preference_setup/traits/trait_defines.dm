@@ -72,25 +72,69 @@
 	Regardless, you find it quite difficult to land shots where you wanted them to go."
 	modifier_type = /datum/modifier/trait/inaccurate
 
-/datum/trait/modifier/physical/smaller
-	name = "Smaller"
-	modifier_type = /datum/modifier/trait/smaller
-	mutually_exclusive = list(/datum/trait/modifier/physical/small, /datum/trait/modifier/physical/large, /datum/trait/modifier/physical/larger)
+/datum/trait/modifier/physical/shorter
+	name = "Shorter"
+	modifier_type = /datum/modifier/trait/shorter
+	mutually_exclusive = list(/datum/trait/modifier/physical/short, /datum/trait/modifier/physical/tall, /datum/trait/modifier/physical/taller)
 
-/datum/trait/modifier/physical/small
-	name = "Small"
-	modifier_type = /datum/modifier/trait/small
-	mutually_exclusive = list(/datum/trait/modifier/physical/smaller, /datum/trait/modifier/physical/large, /datum/trait/modifier/physical/larger)
+/datum/trait/modifier/physical/short
+	name = "Short"
+	modifier_type = /datum/modifier/trait/short
+	mutually_exclusive = list(/datum/trait/modifier/physical/shorter, /datum/trait/modifier/physical/tall, /datum/trait/modifier/physical/taller)
 
-/datum/trait/modifier/physical/large
-	name = "Large"
-	modifier_type = /datum/modifier/trait/large
-	mutually_exclusive = list(/datum/trait/modifier/physical/smaller, /datum/trait/modifier/physical/small, /datum/trait/modifier/physical/larger)
+/datum/trait/modifier/physical/tall
+	name = "Tall"
+	modifier_type = /datum/modifier/trait/tall
+	mutually_exclusive = list(/datum/trait/modifier/physical/shorter, /datum/trait/modifier/physical/short, /datum/trait/modifier/physical/taller)
 
-/datum/trait/modifier/physical/larger
-	name = "Larger"
-	modifier_type = /datum/modifier/trait/larger
-	mutually_exclusive = list(/datum/trait/modifier/physical/smaller, /datum/trait/modifier/physical/small, /datum/trait/modifier/physical/large)
+/datum/trait/modifier/physical/taller
+	name = "Taller"
+	modifier_type = /datum/modifier/trait/taller
+	mutually_exclusive = list(/datum/trait/modifier/physical/shorter, /datum/trait/modifier/physical/short, /datum/trait/modifier/physical/tall)
+
+/datum/trait/modifier/physical/thin
+	name = "Thin"
+	modifier_type = /datum/modifier/trait/thin
+	mutually_exclusive = list(/datum/trait/modifier/physical/fat, /datum/trait/modifier/physical/obese, /datum/trait/modifier/physical/thinner)
+
+/datum/trait/modifier/physical/thinner
+	name = "Rail Thin"
+	modifier_type = /datum/modifier/trait/thinner
+	mutually_exclusive = list(/datum/trait/modifier/physical/fat, /datum/trait/modifier/physical/obese, /datum/trait/modifier/physical/thin)
+
+/datum/trait/modifier/physical/fat
+	name = "Broad-Shouldered"
+	modifier_type = /datum/modifier/trait/fat
+	mutually_exclusive = list(/datum/trait/modifier/physical/thin, /datum/trait/modifier/physical/obese, /datum/trait/modifier/physical/thinner)
+
+/datum/trait/modifier/physical/obese
+	name = "Heavily Built"
+	modifier_type = /datum/modifier/trait/obese
+	mutually_exclusive = list(/datum/trait/modifier/physical/fat, /datum/trait/modifier/physical/thinner, /datum/trait/modifier/physical/thin)
+
+/datum/trait/modifier/physical/colorblind_protanopia
+	name = "Protanopia"
+	desc = "You have a form of red-green colorblindness. You cannot see reds, and have trouble distinguishing them from yellows and greens."
+	modifier_type = /datum/modifier/trait/colorblind_protanopia
+	mutually_exclusive = list(/datum/trait/modifier/physical/colorblind_deuteranopia, /datum/trait/modifier/physical/colorblind_tritanopia, /datum/trait/modifier/physical/colorblind_monochrome)
+
+/datum/trait/modifier/physical/colorblind_deuteranopia
+	name = "Deuteranopia"
+	desc = "You have a form of red-green colorblindness. You cannot see greens, and have trouble distinguishing them from yellows and reds."
+	modifier_type = /datum/modifier/trait/colorblind_deuteranopia
+	mutually_exclusive = list(/datum/trait/modifier/physical/colorblind_protanopia, /datum/trait/modifier/physical/colorblind_tritanopia, /datum/trait/modifier/physical/colorblind_monochrome)
+
+/datum/trait/modifier/physical/colorblind_tritanopia
+	name = "Tritanopia"
+	desc = "You have a form of blue-yellow colorblindness. You have trouble distinguishing between blues, greens, and yellows, and see blues and violets as dim."
+	modifier_type = /datum/modifier/trait/colorblind_tritanopia
+	mutually_exclusive = list(/datum/trait/modifier/physical/colorblind_protanopia, /datum/trait/modifier/physical/colorblind_deuteranopia, /datum/trait/modifier/physical/colorblind_monochrome)
+
+/datum/trait/modifier/physical/colorblind_monochrome
+	name = "Monochromacy"
+	desc = "You are fully colorblind. Your condition is rare, but you can see no colors at all."
+	modifier_type = /datum/modifier/trait/colorblind_monochrome
+	mutually_exclusive = list(/datum/trait/modifier/physical/colorblind_protanopia, /datum/trait/modifier/physical/colorblind_deuteranopia, /datum/trait/modifier/physical/colorblind_tritanopia)
 
 // These two traits might be borderline, feel free to remove if they get abused.
 /datum/trait/modifier/physical/high_metabolism

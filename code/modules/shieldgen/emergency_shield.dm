@@ -7,6 +7,7 @@
 	opacity = 0
 	anchored = 1
 	unacidable = 1
+	can_atmos_pass = ATMOS_PASS_NO
 	var/const/max_health = 200
 	var/health = max_health //The shield can only take so much beating (prevents perma-prisons)
 	var/shield_generate_power = 7500	//how much power we use when regenerating
@@ -17,7 +18,7 @@
 	desc = "A weak forcefield which seems to be projected by the station's emergency atmosphere containment field"
 	health = max_health/2 // Half health, it's not suposed to resist much.
 
-/obj/machinery/shield/malfai/process()
+/obj/machinery/shield/malfai/process(delta_time)
 	health -= 0.5 // Slowly lose integrity over time
 	check_failure()
 
@@ -27,9 +28,9 @@
 		qdel(src)
 		return
 
-/obj/machinery/shield/New()
-	src.set_dir(pick(1,2,3,4))
-	..()
+/obj/machinery/shield/Initialize(mapload)
+	. = ..()
+	setDir(pick(1,2,3,4))
 	update_nearby_tiles(need_rebuild=1)
 
 /obj/machinery/shield/Destroy()
@@ -38,11 +39,7 @@
 	update_nearby_tiles()
 	..()
 
-/obj/machinery/shield/CanPass(atom/movable/mover, turf/target, height, air_group)
-	if(!height || air_group) return 0
-	else return ..()
-
-/obj/machinery/shield/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/shield/attackby(obj/item/W as obj, mob/user as mob)
 	if(!istype(W)) return
 
 	//Calculate damage
@@ -137,12 +134,12 @@
 	var/is_open = 0 //Whether or not the wires are exposed
 	var/locked = 0
 	var/check_delay = 60	//periodically recheck if we need to rebuild a shield
-	use_power = 0
+	use_power = USE_POWER_OFF
 	idle_power_usage = 0
 	var/global/list/blockedturfs =  list(
 		/turf/space,
 		/turf/simulated/floor/outdoors,
-	)
+	)		//For Future additions to exterior tiles, add them on this list.
 
 /obj/machinery/shieldgen/Destroy()
 	collapse_shields()
@@ -159,7 +156,7 @@
 	idle_power_usage = 0
 	for(var/obj/machinery/shield/shield_tile in deployed_shields)
 		idle_power_usage += shield_tile.shield_idle_power
-	update_use_power(1)
+	update_use_power(USE_POWER_IDLE)
 
 /obj/machinery/shieldgen/proc/shields_down()
 	if(!active) return 0 //If it's already off, how did this get called?
@@ -169,7 +166,7 @@
 
 	collapse_shields()
 
-	update_use_power(0)
+	update_use_power(USE_POWER_OFF)
 
 /obj/machinery/shieldgen/proc/create_shields()
 	for(var/turf/target_tile in range(2, src))
@@ -192,7 +189,7 @@
 		create_shields()
 	update_icon()
 
-/obj/machinery/shieldgen/process()
+/obj/machinery/shieldgen/process(delta_time)
 	if (!active || (stat & NOPOWER))
 		return
 
@@ -209,7 +206,7 @@
 
 			if (new_power_usage != idle_power_usage)
 				idle_power_usage = new_power_usage
-				use_power(0)
+				use_power(USE_POWER_OFF)
 
 			check_delay = 60
 		else
@@ -254,25 +251,25 @@
 
 /obj/machinery/shieldgen/attack_hand(mob/user as mob)
 	if(locked)
-		user << "The machine is locked, you are unable to use it."
+		to_chat(user, "The machine is locked, you are unable to use it.")
 		return
 	if(is_open)
-		user << "The panel must be closed before operating this machine."
+		to_chat(user, "The panel must be closed before operating this machine.")
 		return
 
 	if (src.active)
-		user.visible_message("<font color='blue'>\icon[src] [user] deactivated the shield generator.</font>", \
-			"<font color='blue'>\icon[src] You deactivate the shield generator.</font>", \
+		user.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [user] deactivated the shield generator.</font>", \
+			"<font color=#4F49AF>[icon2html(thing = src, target = user)] You deactivate the shield generator.</font>", \
 			"You hear heavy droning fade out.")
 		src.shields_down()
 	else
 		if(anchored)
-			user.visible_message("<font color='blue'>\icon[src] [user] activated the shield generator.</font>", \
-				"<font color='blue'>\icon[src] You activate the shield generator.</font>", \
+			user.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [user] activated the shield generator.</font>", \
+				"<font color=#4F49AF>[icon2html(thing = src, target = user)] You activate the shield generator.</font>", \
 				"You hear heavy droning.")
 			src.shields_up()
 		else
-			user << "The device must first be secured to the floor."
+			to_chat(user, "The device must first be secured to the floor.")
 	return
 
 /obj/machinery/shieldgen/emag_act(var/remaining_charges, var/mob/user)
@@ -281,51 +278,51 @@
 		update_icon()
 		return 1
 
-/obj/machinery/shieldgen/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/weapon/screwdriver))
+/obj/machinery/shieldgen/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_screwdriver())
 		playsound(src, W.usesound, 100, 1)
 		if(is_open)
-			user << "<font color='blue'>You close the panel.</font>"
+			to_chat(user, "<font color=#4F49AF>You close the panel.</font>")
 			is_open = 0
 		else
-			user << "<font color='blue'>You open the panel and expose the wiring.</font>"
+			to_chat(user, "<font color=#4F49AF>You open the panel and expose the wiring.</font>")
 			is_open = 1
 
 	else if(istype(W, /obj/item/stack/cable_coil) && malfunction && is_open)
 		var/obj/item/stack/cable_coil/coil = W
-		user << "<span class='notice'>You begin to replace the wires.</span>"
+		to_chat(user, "<span class='notice'>You begin to replace the wires.</span>")
 		//if(do_after(user, min(60, round( ((getMaxHealth()/health)*10)+(malfunction*10) ))) //Take longer to repair heavier damage
 		if(do_after(user, 30))
 			if (coil.use(1))
 				health = max_health
 				malfunction = 0
-				user << "<span class='notice'>You repair the [src]!</span>"
+				to_chat(user, "<span class='notice'>You repair the [src]!</span>")
 				update_icon()
 
-	else if(istype(W, /obj/item/weapon/wrench))
+	else if(W.is_wrench())
 		if(locked)
-			user << "The bolts are covered, unlocking this would retract the covers."
+			to_chat(user, "The bolts are covered, unlocking this would retract the covers.")
 			return
 		if(anchored)
 			playsound(src, W.usesound, 100, 1)
-			user << "<font color='blue'>You unsecure the [src] from the floor!</font>"
+			to_chat(user, "<font color=#4F49AF>You unsecure the [src] from the floor!</font>")
 			if(active)
-				user << "<font color='blue'>The [src] shuts off!</font>"
+				to_chat(user, "<font color=#4F49AF>The [src] shuts off!</font>")
 				src.shields_down()
 			anchored = 0
 		else
 			if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
 			playsound(src, W.usesound, 100, 1)
-			user << "<font color='blue'>You secure the [src] to the floor!</font>"
+			to_chat(user, "<font color=#4F49AF>You secure the [src] to the floor!</font>")
 			anchored = 1
 
 
-	else if(istype(W, /obj/item/weapon/card/id) || istype(W, /obj/item/device/pda))
+	else if(istype(W, /obj/item/card/id) || istype(W, /obj/item/pda))
 		if(src.allowed(user))
 			src.locked = !src.locked
-			user << "The controls are now [src.locked ? "locked." : "unlocked."]"
+			to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")
 		else
-			user << "<font color='red'>Access denied.</font>"
+			to_chat(user, "<font color='red'>Access denied.</font>")
 
 	else
 		..()

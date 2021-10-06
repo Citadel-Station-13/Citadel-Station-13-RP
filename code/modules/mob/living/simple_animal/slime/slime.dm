@@ -11,6 +11,8 @@
 	var/icon_state_override = null // Used for special slime appearances like the rainbow slime.
 	pass_flags = PASSTABLE
 
+	makes_dirt = FALSE	// Goop
+
 	speak_emote = list("chirps")
 
 	maxHealth = 150
@@ -96,7 +98,8 @@
 	/obj/item/clothing/head,
 	)
 
-/mob/living/simple_animal/slime/New(var/location, var/start_as_adult = FALSE)
+/mob/living/simple_animal/slime/Initialize(mapload, start_as_adult = FALSE)
+	. = ..()
 	verbs += /mob/living/proc/ventcrawl
 	if(start_as_adult)
 		make_adult()
@@ -105,7 +108,6 @@
 	update_icon()
 	number = rand(1, 1000)
 	update_name()
-	..(location)
 
 /mob/living/simple_animal/slime/Destroy()
 	if(hat)
@@ -212,22 +214,22 @@
 	attack_same = FALSE
 
 /mob/living/simple_animal/slime/examine(mob/user)
-	..()
+	. = ..()
 	if(hat)
-		to_chat(user, "It is wearing \a [hat].")
+		. += "It is wearing \a [hat]." //slime hat. slat? hlime?
 
 	if(stat == DEAD)
-		to_chat(user, "It appears to be dead.")
+		. += "It appears to be dead."
 	else if(incapacitated(INCAPACITATION_DISABLED))
-		to_chat(user, "It appears to be incapacitated.")
+		. += "It appears to be incapacitated."
 	else if(rabid)
-		to_chat(user, "It seems very, very angry and upset.")
+		. += "It seems very, very angry and upset."
 	else if(obedience >= 5)
-		to_chat(user, "It looks rather obedient.")
+		. += "It looks rather obedient."
 	else if(discipline)
-		to_chat(user, "It has been subjugated by force, at least for now.")
+		. += "It has been subjugated by force, at least for now."
 	else if(docile)
-		to_chat(user, "It appears to have been pacified.")
+		. += "It appears to have been pacified."
 
 /mob/living/simple_animal/slime/water_act(amount) // This is called if a slime enters a water tile.
 	adjustBruteLoss(40 * amount)
@@ -267,7 +269,7 @@
 	if(bodytemperature < 183.222)
 		. += (283.222 - bodytemperature) / 10 * 1.75
 
-	. += config.slime_delay
+	. += config_legacy.slime_delay
 
 /mob/living/simple_animal/slime/Process_Spacemove()
 	return 2
@@ -465,4 +467,3 @@
 
 	lines.Add(description_info)
 	return lines.Join("\n")
-

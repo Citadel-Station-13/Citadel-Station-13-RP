@@ -10,7 +10,7 @@
 
 /mob/living/simple_animal/shadekin //Spawning the prototype spawns a random one, see initialize()
 	name = "shadekin"
-	desc = "Some sort of fluffer. Big ears, long tail."
+	desc = "A strange, undocumented creature. It doesn't look like anything you've seen before."
 	icon = 'icons/mob/vore_shadekin.dmi'
 	icon_state = "map_example"
 	icon_living = "map_example"
@@ -23,7 +23,7 @@
 	move_to_delay = 2
 	speed = -1
 	see_in_dark = 10 //SHADEkin
-	has_hands = TRUE //Pawbs
+	has_hands = TRUE //paws
 	seedarkness = FALSE //SHAAAADEkin
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	has_langs = list(LANGUAGE_GALCOM,LANGUAGE_SHADEKIN)
@@ -57,7 +57,7 @@
 	response_disarm = "bops the"
 	response_harm = "hits the"
 	attacktext = list("mauled","slashed","clawed")
-	friendly = list("boops", "pawbs", "mars softly at", "sniffs on")
+	friendly = list("boops", "paws", "mars softly at", "sniffs on")
 	reactions = list("Mar?" = "Marrr!", "Mar!" = "Marrr???", "Mar." = "Marrr.")
 
 	vore_active = TRUE
@@ -94,7 +94,7 @@
 
 	var/list/shadekin_abilities
 
-/mob/living/simple_animal/shadekin/initialize()
+/mob/living/simple_animal/shadekin/Initialize(mapload)
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_animal/shadekin)
 
@@ -108,7 +108,6 @@
 		var/new_type = pickweight(sk_types)
 
 		new new_type(loc)
-		initialized = TRUE
 		return INITIALIZE_HINT_QDEL
 
 	if(icon_state == "map_example")
@@ -148,7 +147,7 @@
 	return ..()
 
 /mob/living/simple_animal/shadekin/Destroy()
-	qdel_null_list(shadekin_abilities)
+	QDEL_LIST_NULL(shadekin_abilities)
 	. = ..()
 
 /mob/living/simple_animal/shadekin/init_vore()
@@ -210,7 +209,7 @@
 	. = ..()
 	if(ability_flags & AB_PHASE_SHIFTED)
 		density = FALSE
-	
+
 	//Convert spare nutrition into energy at a certain ratio
 	if(. && nutrition > initial(nutrition) && energy < 100)
 		nutrition = max(0, nutrition-5)
@@ -218,7 +217,7 @@
 
 /mob/living/simple_animal/shadekin/update_icon()
 	. = ..()
-	
+
 	cut_overlay(tailimage)
 
 	tailimage.icon_state = icon_state
@@ -386,7 +385,7 @@
 
 				//Random walk
 				if(!moving_to)
-					moving_to = pick(cardinal)
+					moving_to = pick(GLOB.cardinal)
 					dir = moving_to
 
 				var/turf/T = get_step(src,moving_to)
@@ -443,7 +442,7 @@
 // When someone clicks us with an empty hand
 /mob/living/simple_animal/shadekin/attack_hand(mob/living/carbon/human/M as mob)
 	. = ..()
-	if(M.a_intent == I_HELP)
+	if(M.a_intent == INTENT_HELP)
 		shy_approach = FALSE //ACCLIMATED
 
 /datum/language/shadekin

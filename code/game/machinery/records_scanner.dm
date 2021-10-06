@@ -8,7 +8,8 @@ obj/machinery/scanner
 	anchored = 1
 	var/lastuser = null
 
-obj/machinery/scanner/New()
+obj/machinery/scanner/Initialize()
+	. = ..()
 	if(!outputdir)
 		switch(dir)
 			if(1)
@@ -22,7 +23,7 @@ obj/machinery/scanner/New()
 		if(!outputdir)
 			outputdir = 8
 
-/obj/machinery/scanner/process()
+/obj/machinery/scanner/process(delta_time)
 	if(stat & NOPOWER)
 		return
 	use_power(50)
@@ -72,7 +73,7 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 		text += "<span class='danger'>[A]</span><br>"
 	to_chat(user, "<span class='notice'>You feel a sting as the scanner extracts some of your blood.</span>")
 	var/turf/T = get_step(src,outputdir)
-	var/obj/item/weapon/paper/print = new(T)
+	var/obj/item/paper/print = new(T)
 	print.name = "[mname] Report"
 	print.info = text
 	print.stamped = 1

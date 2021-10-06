@@ -1,7 +1,7 @@
 var/global/list/empty_playable_ai_cores = list()
 
 /hook/roundstart/proc/spawn_empty_ai()
-	for(var/obj/effect/landmark/start/S in landmarks_list)
+	for(var/obj/effect/landmark/start/S in GLOB.landmarks_list)
 		if(S.name != "AI")
 			continue
 		if(locate(/mob/living) in S.loc)
@@ -15,8 +15,8 @@ var/global/list/empty_playable_ai_cores = list()
 	set category = "OOC"
 	set desc = "Enter intelligence storage. This is functionally equivalent to cryo or robotic storage, freeing up your job slot."
 
-	if(ticker && ticker.mode && ticker.mode.name == "AI malfunction")
-		usr << "<span class='danger'>You cannot use this verb in malfunction. If you need to leave, please adminhelp.</span>"
+	if(SSticker && SSticker.mode && SSticker.mode.name == "AI malfunction")
+		to_chat(usr, "<span class='danger'>You cannot use this verb in malfunction. If you need to leave, please adminhelp.</span>")
 		return
 
 	// Guard against misclicks, this isn't the sort of thing we want happening accidentally
@@ -26,7 +26,8 @@ var/global/list/empty_playable_ai_cores = list()
 
 	// We warned you.
 	empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
-	global_announcer.autosay("[src] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
+	GLOB.global_announcer.autosay("[src] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
 
 	//Handle job slot/tater cleanup.
+	set_respawn_timer()
 	clear_client()

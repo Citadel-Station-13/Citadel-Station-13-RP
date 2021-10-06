@@ -39,7 +39,7 @@ length to avoid portals or something i guess?? Not that they're counted right no
 
 PriorityQueue
 	var/list/queue
-	var/proc/comparison_function
+	var/comparison_function
 
 	New(compare)
 		queue = list()
@@ -120,10 +120,10 @@ PathNode
 		best_estimated_cost = estimated_cost
 		nodes_traversed = _nodes_traversed
 
-proc/PathWeightCompare(PathNode/a, PathNode/b)
+/proc/PathWeightCompare(PathNode/a, PathNode/b)
 	return a.estimated_cost - b.estimated_cost
 
-proc/AStar(var/start, var/end, var/proc/adjacent, var/proc/dist, var/max_nodes, var/max_node_depth = 30, var/min_target_dist = 0, var/min_node_dist, var/id, var/datum/exclude)
+/proc/AStar(var/start, var/end, var/adjacent, var/dist, var/max_nodes, var/max_node_depth = 30, var/min_target_dist = 0, var/min_node_dist, var/id, var/datum/exclude)
 	var/PriorityQueue/open = new /PriorityQueue(/proc/PathWeightCompare)
 	var/list/closed = list()
 	var/list/path

@@ -28,6 +28,8 @@
 	var/base_state
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
+	drop_sound = 'sound/items/drop/helm.ogg'
+	pickup_sound = 'sound/items/pickup/helm.ogg'
 
 /obj/item/clothing/head/welding/attack_self()
 	toggle()
@@ -111,9 +113,9 @@
 	var/onfire = 0
 	body_parts_covered = HEAD
 
-/obj/item/clothing/head/cakehat/process()
+/obj/item/clothing/head/cakehat/process(delta_time)
 	if(!onfire)
-		processing_objects.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 		return
 
 	var/turf/location = src.loc
@@ -131,7 +133,7 @@
 		force = 3
 		damtype = "fire"
 		icon_state = "cake1"
-		processing_objects.Add(src)
+		START_PROCESSING(SSobj, src)
 	else
 		force = null
 		damtype = "brute"
@@ -151,10 +153,10 @@
 /obj/item/clothing/head/ushanka/attack_self(mob/user as mob)
 	if(src.icon_state == "ushankadown")
 		src.icon_state = "ushankaup"
-		user << "You raise the ear flaps on the ushanka."
+		to_chat(user, "You raise the ear flaps on the ushanka.")
 	else
 		src.icon_state = "ushankadown"
-		user << "You lower the ear flaps on the ushanka."
+		to_chat(user, "You lower the ear flaps on the ushanka.")
 
 /*
  * Pumpkin head
@@ -168,6 +170,8 @@
 	brightness_on = 2
 	light_overlay = "helmet_light"
 	w_class = ITEMSIZE_NORMAL
+	drop_sound = 'sound/items/drop/herb.ogg'
+	pickup_sound = 'sound/items/pickup/herb.ogg'
 
 /*
  * Kitty ears
@@ -219,7 +223,7 @@
 /obj/item/clothing/head/psy_crown
 	name = "broken crown"
 	desc = "A crown-of-thorns with a missing gem."
-	var/tension_threshold = 150
+	var/tension_threshold = 125
 	var/cooldown = null // world.time of when this was last triggered.
 	var/cooldown_duration = 3 MINUTES // How long the cooldown should be.
 	var/flavor_equip = null // Message displayed to someone who puts this on their head. Drones don't get a message.
@@ -237,12 +241,12 @@
 /obj/item/clothing/head/psy_crown/equipped(var/mob/living/carbon/human/H)
 	..()
 	if(istype(H) && H.head == src && H.is_sentient())
-		processing_objects += src
+		START_PROCESSING(SSobj, src)
 		to_chat(H, flavor_equip)
 
 /obj/item/clothing/head/psy_crown/dropped(var/mob/living/carbon/human/H)
 	..()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	if(H.is_sentient())
 		if(loc == H) // Still inhand.
 			to_chat(H, flavor_unequip)
@@ -250,10 +254,10 @@
 			to_chat(H, flavor_drop)
 
 /obj/item/clothing/head/psy_crown/Destroy()
-	processing_objects -= src
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/clothing/head/psy_crown/process()
+/obj/item/clothing/head/psy_crown/process(delta_time)
 	if(isliving(loc))
 		var/mob/living/L = loc
 		if(world.time >= cooldown && L.is_sentient() && L.get_tension() >= tension_threshold)
@@ -269,7 +273,31 @@
 	flavor_unequip = "<span class='notice'>You feel calmer after removing the crown.</span>"
 	flavor_drop = "<span class='notice'>You feel much calmer after letting go of the crown.</span>"
 	flavor_activate = "<span class='danger'>An otherworldly feeling seems to enter your mind, and it ignites your mind in fury!</span>"
+	origin_tech = list(TECH_ARCANE = 4)
 
 /obj/item/clothing/head/psy_crown/wrath/activate_ability(var/mob/living/wearer)
 	..()
 	wearer.add_modifier(/datum/modifier/berserk, 30 SECONDS)
+
+/obj/item/clothing/head/psy_crown/gluttony
+	name = "green crown"
+	desc = "A crown-of-thorns set with a green gemstone that seems to glow unnaturally. It feels rather disturbing to touch."
+	description_info = "This has a chance to cause the wearer to become extremely durable, but hungry when in extreme danger."
+	icon_state = "gluttonycrown"
+	flavor_equip = "<span class='warning'>You feel a bit hungrier after putting on this crown.</span>"
+	flavor_unequip = "<span class='notice'>You feel sated after removing the crown.</span>"
+	flavor_drop = "<span class='notice'>You feel much more sated after letting go of the crown.</span>"
+	flavor_activate = "<span class='danger'>An otherworldly feeling seems to enter your mind, and it drives your mind into gluttony!</span>"
+
+/obj/item/clothing/head/psy_crown/gluttony/activate_ability(var/mob/living/wearer)
+	..()
+	wearer.add_modifier(/datum/modifier/gluttonyregeneration, 45 SECONDS)
+/obj/item/clothing/head/cone
+	name = "warning cone"
+	desc = "This cone is trying to warn you of something!"
+	description_info = "It looks like you can wear it in your head slot."
+	icon_state = "cone"
+	item_state = "cone"
+	body_parts_covered = HEAD
+	attack_verb = list("warned", "cautioned", "smashed")
+	armor = list("melee" = 5)

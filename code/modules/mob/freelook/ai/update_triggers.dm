@@ -39,17 +39,16 @@
 
 /obj/machinery/camera/deactivate(user as mob, var/choice = 1)
 	..(user, choice)
-	invalidateCameraCache()
 	if(src.can_use())
 		cameranet.addCamera(src)
 	else
 		src.set_light(0)
 		cameranet.removeCamera(src)
 
-/obj/machinery/camera/New()
-	..()
+/obj/machinery/camera/Initialize(mapload)
+	. = ..()
 	//Camera must be added to global list of all cameras no matter what...
-	if(cameranet.cameras_unsorted || !ticker)
+	if(cameranet.cameras_unsorted || !SSticker)
 		cameranet.cameras += src
 		cameranet.cameras_unsorted = 1
 	else
