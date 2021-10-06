@@ -843,3 +843,25 @@ END OF CITADEL CHANGES */
 
 	recharging = 0
 	update_icon()
+
+	//Keek is committing crimes here, please ignore
+/obj/item/gun/projectile/keko
+	name = "\improper \"keko\" holdout pistol"
+	desc = "The FS HG .380 \"keko\" can even fit into the pocket! Uses .380 rounds."
+	icon = 'icons/obj/gun2.dmi'
+	icon_state = "keekogun"
+	caliber = ".380"
+	magazine_type = /obj/item/ammo_magazine/m380
+	allowed_magazines = list(/obj/item/ammo_magazine/m380)
+	load_method = MAGAZINE
+	w_class = ITEMSIZE_SMALL
+	fire_sound = 'sound/weapons/gunshot_pathetic.ogg'
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3)
+
+
+/obj/item/gun/projectile/keko/update_icon()
+	..()
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		icon_state = "keekogun"
+	else
+		icon_state = "keekogun_empty"
