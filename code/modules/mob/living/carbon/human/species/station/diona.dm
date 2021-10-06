@@ -154,7 +154,7 @@
 
 		if(H.nutrition > 300)
 			H.nutrition = 300
-		if(light_amount >= 3) //if there's enough light, heal
+		if(light_amount >= 3 && H.nutrition >= 100) //if there's enough light, heal
 			H.adjustBruteLoss(-(round(light_amount/2)))
 			H.adjustFireLoss(-(round(light_amount/2)))
 			H.adjustToxLoss(-(light_amount))
