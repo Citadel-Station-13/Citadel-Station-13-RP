@@ -106,6 +106,7 @@
 /area/talon/maintenance/decktwo_port)
 "cg" = (
 /obj/machinery/ntnet_relay,
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "cm" = (
@@ -238,11 +239,12 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/eng_room)
 "eG" = (
-/obj/machinery/computer/guestpass{
-	pixel_x = -32
+/obj/machinery/oxygen_pump{
+	dir = 1;
+	pixel_y = -30
 	},
-/turf/simulated/floor/tiled/eris/steel,
-/area/talon/decktwo/central_hallway)
+/turf/simulated/floor/wood,
+/area/talon/decktwo/cap_room)
 "eM" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -255,7 +257,7 @@
 /obj/machinery/door/blast/regular/open{
 	id = "talon_windows"
 	},
-/turf/simulated/floor/plating/eris/under,
+/turf/simulated/floor/plating,
 /area/talon/decktwo/kitchen)
 "eO" = (
 /obj/structure/cable/heavyduty{
@@ -1126,6 +1128,10 @@
 /area/talon/decktwo/med_room)
 "mH" = (
 /obj/machinery/vending/nifsoft_shop,
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = 30
+	},
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/decktwo/central_hallway)
 "nc" = (
@@ -1172,6 +1178,7 @@
 	dir = 1
 	},
 /obj/structure/disposaloutlet,
+/obj/machinery/shield_diffuser,
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "nw" = (
@@ -1242,12 +1249,12 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "nY" = (
-/obj/machinery/oxygen_pump{
-	dir = 4;
-	pixel_x = 30
+/obj/machinery/computer/guestpass{
+	dir = 8;
+	pixel_x = 25
 	},
-/turf/simulated/floor/wood,
-/area/talon/decktwo/kitchen)
+/turf/simulated/floor/tiled/eris/steel,
+/area/talon/decktwo/central_hallway)
 "nZ" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-4"
@@ -1290,7 +1297,7 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "ok" = (
-/obj/structure/table/standard,
+/obj/structure/table/marble,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/kitchen)
 "ov" = (
@@ -1324,6 +1331,10 @@
 "oO" = (
 /obj/machinery/vending/wallmed1{
 	pixel_x = -30
+	},
+/obj/machinery/oxygen_pump{
+	dir = 1;
+	pixel_y = -30
 	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/kitchen)
@@ -1406,7 +1417,7 @@
 /area/talon/decktwo/central_hallway)
 "pz" = (
 /obj/machinery/reagentgrinder,
-/obj/structure/table/standard,
+/obj/structure/table/marble,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/kitchen)
 "pA" = (
@@ -1529,7 +1540,7 @@
 "rs" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating/eris/under,
+/turf/simulated/floor/plating,
 /area/talon/decktwo/bar)
 "rv" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -1612,6 +1623,11 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -24;
+	pixel_y = -10
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/kitchen)
 "rV" = (
@@ -1693,6 +1709,9 @@
 /area/talon/maintenance/decktwo_aft)
 "te" = (
 /obj/structure/bed/chair/bay/chair,
+/obj/machinery/oxygen_pump{
+	pixel_y = 30
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/bar)
 "tf" = (
@@ -2084,6 +2103,8 @@
 	},
 /mob/living/simple_mob/animal/space/jelly{
 	desc = "Everyone loves Mr. Wiggleblob! Don't you just want to cuddle it and potentially be devoured? I know I do!";
+	icon_scale_x = 1.1;
+	icon_scale_y = 1.1;
 	name = "Mr. Wiggleblob"
 	},
 /turf/simulated/floor/wood,
@@ -2097,6 +2118,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/tech)
 "xM" = (
@@ -2378,10 +2400,6 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 1
 	},
-/obj/machinery/light_switch{
-	dir = 4;
-	pixel_x = -24
-	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/bar)
 "AQ" = (
@@ -2426,20 +2444,9 @@
 /obj/machinery/pointdefense_control{
 	id_tag = "talon_pd"
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
-"Bq" = (
-/obj/machinery/light_switch{
-	dir = 8;
-	pixel_x = 28;
-	pixel_y = -6
-	},
-/obj/structure/extinguisher_cabinet{
-	dir = 8;
-	pixel_x = 30
-	},
-/turf/simulated/floor/tiled/eris/cafe,
-/area/talon/decktwo/kitchen)
 "Bs" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3204,6 +3211,7 @@
 	id = "talon_aio";
 	network = "Talon"
 	},
+/obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "Ju" = (
@@ -3235,7 +3243,6 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "JF" = (
-/obj/structure/table/standard,
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/item/reagent_containers/food/condiment/ketchup{
 	pixel_x = 7;
@@ -3257,6 +3264,7 @@
 /obj/item/reagent_containers/food/condiment/small/saltshaker{
 	pixel_x = -1
 	},
+/obj/structure/table/marble,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/kitchen)
 "JN" = (
@@ -3332,13 +3340,6 @@
 	},
 /turf/simulated/wall/rshull,
 /area/talon/maintenance/decktwo_aft)
-"Kl" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 8;
-	pixel_x = 30
-	},
-/turf/simulated/floor/tiled/eris/steel,
-/area/talon/decktwo/central_hallway)
 "Kn" = (
 /obj/machinery/chemical_dispenser/bar_alc/full{
 	dir = 8
@@ -3388,7 +3389,7 @@
 	},
 /obj/structure/grille,
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/plating/eris/under,
+/turf/simulated/floor/plating,
 /area/talon/decktwo/central_hallway)
 "Le" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3408,7 +3409,7 @@
 /obj/machinery/door/blast/regular/open{
 	id = "talon_windows"
 	},
-/turf/simulated/floor/plating/eris/under,
+/turf/simulated/floor/plating,
 /area/talon/decktwo/bar)
 "Lt" = (
 /obj/structure/cable/green{
@@ -3796,6 +3797,9 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 4
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/kitchen)
 "Ox" = (
@@ -3844,8 +3848,8 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/sec_room)
 "OZ" = (
-/obj/machinery/oxygen_pump{
-	pixel_y = 30
+/obj/structure/closet/secure_closet/personal/cabinet{
+	locked = 0
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/talon/decktwo/cap_room)
@@ -3915,7 +3919,6 @@
 "PS" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lamp,
-/obj/item/paper/dockingcodes,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "Qa" = (
@@ -4001,7 +4004,7 @@
 "RB" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating/eris/under,
+/turf/simulated/floor/plating,
 /area/talon/decktwo/kitchen)
 "RH" = (
 /obj/structure/table/steel,
@@ -4046,6 +4049,7 @@
 /obj/machinery/shield_gen/external/advanced{
 	anchored = 1
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/tech)
 "Sm" = (
@@ -4281,10 +4285,6 @@
 /area/talon/decktwo/cap_room)
 "Vd" = (
 /obj/machinery/media/jukebox,
-/obj/machinery/oxygen_pump{
-	dir = 8;
-	pixel_x = -30
-	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/bar)
 "Vi" = (
@@ -4312,7 +4312,7 @@
 /obj/machinery/door/blast/regular/open{
 	id = "talon_windows"
 	},
-/turf/simulated/floor/plating/eris/under,
+/turf/simulated/floor/plating,
 /area/talon/decktwo/cap_room)
 "Vp" = (
 /obj/machinery/disposal/deliveryChute{
@@ -4737,6 +4737,11 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = 24;
+	pixel_y = -10
+	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/bar)
 "ZI" = (
@@ -4753,9 +4758,6 @@
 /turf/simulated/floor/wood,
 /area/talon/decktwo/kitchen)
 "ZU" = (
-/obj/structure/closet/secure_closet/personal/cabinet{
-	locked = 0
-	},
 /obj/machinery/button/remote/airlock{
 	id = "talon_vault";
 	name = "Vault Access";
@@ -13907,7 +13909,7 @@ hZ
 hZ
 hZ
 hZ
-hQ
+PD
 kd
 YX
 DQ
@@ -14052,8 +14054,8 @@ hZ
 hQ
 KU
 xN
-Bq
-nY
+YX
+ZK
 FN
 la
 tN
@@ -14189,13 +14191,13 @@ On
 hZ
 Qa
 HR
-HR
+eG
 hZ
 hQ
 hQ
 yv
-hQ
-hQ
+RB
+RB
 hQ
 wE
 au
@@ -14334,7 +14336,7 @@ QN
 Eb
 hZ
 Bi
-eG
+Zd
 Zd
 Zd
 Zd
@@ -14619,8 +14621,8 @@ DF
 hZ
 mH
 Xr
+nY
 Zd
-Kl
 Zd
 lA
 sO
@@ -14761,9 +14763,9 @@ gl
 hZ
 kx
 kx
+kx
 rs
-kx
-kx
+rs
 kx
 kh
 Et
