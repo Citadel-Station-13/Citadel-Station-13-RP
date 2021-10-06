@@ -1088,3 +1088,12 @@ obj/item/clothing/suit/kamishimo
 	name = "Colonial Red Coat"
 	desc = "A thick cotton long coat, adorned with antique buttons. Dyed a brilliant red, it's hard not to be seen in this."
 	icon_state = "pineapple_trench"
+
+/obj/item/clothing/suit/samurai_replica
+	name = "replica karuta-gane"
+	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. This appears less sturdy than the authentic article."
+	icon_state = "samurai_colorable"
+	item_state_slots = list(slot_r_hand_str = "leather_coat", slot_l_hand_str = "leather_coat")
+	w_class = ITEMSIZE_LARGE
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	flags_inv = HIDETIE|HIDEHOLSTER
