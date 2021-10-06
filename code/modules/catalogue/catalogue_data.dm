@@ -348,11 +348,9 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	name = "TSC - Xion Manufacturing Group"
 	datum_to_copy = /datum/lore/organization/tsc/xion
 
-/*
 /datum/category_item/catalogue/information/organization/major_bills
 	name = "TSC - Major Bill's Transportation"
 	datum_to_copy = /datum/lore/organization/tsc/mbt
-*/
 
 /datum/category_item/catalogue/information/organization/theorionconfederation
 	name = "Government - The Orion Confederation"
