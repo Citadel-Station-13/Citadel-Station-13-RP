@@ -201,7 +201,6 @@
 	/// Pad the destination lists with some extra random ones?
 	var/autogenerate_destination_names = TRUE
 
-
 /datum/lore/organization/New()
 	if(autogenerate_destination_names) // Lets pad out the destination names.
 		var/i = rand(7, 12) //was 6-10, now 7-12, slight increase for flavor, especially 'starved' lists
