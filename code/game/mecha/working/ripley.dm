@@ -95,11 +95,16 @@
 	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)//Deletes the beacon so it can't be found easily
 		qdel (B)
 
-/obj/mecha/working/ripley/antique
+/obj/mecha/working/ripley/geiger
 	name = "APLU \"Geiger\""
 	desc = "You can't beat the classics."
 	icon_state = "ripley-old"
 	initial_icon = "ripley-old"
+	max_temperature = 5000
+	health = 150
+	maxhealth = 150
+	internal_damage_threshold = 50
+	step_energy_drain = 3
 
 	show_pilot = TRUE
 	pilot_lift = 5

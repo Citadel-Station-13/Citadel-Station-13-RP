@@ -505,6 +505,27 @@ CIRCUITS BELOW
 	build_path = /obj/item/circuitboard/mecha/durand/targeting
 	sort_string = "NAADC"
 
+/datum/design/circuit/mecha/honker_main
+	name = "'H.O.N.K.' central control"
+	id = "honker_main"
+	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/honker/main
+	sort_string = "NAAEA"
+
+/datum/design/circuit/mecha/honker_peri
+	name = "'H.O.N.K.' peripherals control"
+	id = "honker_peri"
+	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/honker/peripherals
+	sort_string = "NAAEB"
+
+/datum/design/circuit/mecha/honker_targ
+	name = "'H.O.N.K.' weapon control and targeting"
+	id = "honker_targ"
+	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/honker/targeting
+	sort_string = "NAAEC"
+
 /datum/design/circuit/tcom
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
 
