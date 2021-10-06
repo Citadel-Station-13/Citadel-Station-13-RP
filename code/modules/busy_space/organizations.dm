@@ -195,7 +195,7 @@
 	/// New org_type flag replaces lawful/hostile/sysdef, valid standard options are neutral (default), corporate, government, system defense, smuggler, pirate, military, retired
 	var/org_type = "neutral"
 	
-	/// Is this part of the fleet/station makeup?
+	/// Is this part of the fleet/station makeup? fleet system currently disabled
 	var/fleet = FALSE
 
 	/// Pad the destination lists with some extra random ones?
