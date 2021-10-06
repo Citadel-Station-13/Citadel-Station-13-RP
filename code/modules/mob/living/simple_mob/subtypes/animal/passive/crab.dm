@@ -28,11 +28,34 @@
 
 	say_list_type = /datum/say_list/crab
 
+//Randomization Code
+/mob/living/simple_mob/animal/passive/crab/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(20*mod)
+    health = round(20*mod)
+    melee_damage_lower = round(5*mod)
+    melee_damage_upper = round(5*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
+
 //COFFEE! SQUEEEEEEEEE!
 /mob/living/simple_mob/animal/passive/crab/Coffee
 	name = "Coffee"
 	real_name = "Coffee"
 	desc = "It's Coffee, the other pet!"
+
+//Unrandomized pet
+/mob/living/simple_mob/animal/passive/crab/Coffee/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = 20
+    health = 20
+    melee_damage_lower = 5
+    melee_damage_upper = 5
+    movement_cooldown = 5
+    update_icons()
 
 // Sif!
 
@@ -53,9 +76,9 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/sif_crab)
 
-/mob/living/simple_mob/animal/passive/crab/sif/Initialize(mapload)
+/*/mob/living/simple_mob/animal/passive/crab/sif/Initialize(mapload)
 	. = ..()
-	adjust_scale(rand(5,15) / 10)
+	adjust_scale(rand(5,15) / 10)*/
 
 // Meat!
 

@@ -49,8 +49,17 @@
 	friend_name = "Ascian"
 	digestable = 0
 	meat_amount = 0
-	maxHealth = 50
-	health = 50
+
+//Unrandom the Pet
+/mob/living/simple_mob/animal/passive/cat/tabiranth/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = 50
+    health = 50
+    melee_damage_lower = 5
+    melee_damage_upper = 5
+    movement_cooldown = 5
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/cat/tabiranth/handle_special()
 	. = ..()

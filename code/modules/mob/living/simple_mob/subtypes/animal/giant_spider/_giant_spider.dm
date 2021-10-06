@@ -70,10 +70,7 @@
 	has_eye_glow = TRUE
 
 	faction = "spiders"
-	maxHealth = 200
-	health = 200
 	pass_flags = PASSTABLE
-	movement_cooldown = 10
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	poison_resist = 0.5
 
@@ -83,8 +80,6 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "punches"
 
-	melee_damage_lower = 18
-	melee_damage_upper = 30
 	attack_sharp = 1
 	attack_edge = 1
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -103,6 +98,18 @@
 	var/poison_type = "spidertoxin"	// The reagent that gets injected when it attacks.
 	var/poison_chance = 10			// Chance for injection to occur.
 	var/poison_per_bite = 5			// Amount added per injection.
+
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(200*mod)
+    health = round(200*mod)
+    melee_damage_lower = round(18*mod)
+    melee_damage_upper = round(30*mod)
+    movement_cooldown = round(10*mod)
+    update_icons()
 
 /mob/living/simple_mob/animal/giant_spider/apply_melee_effects(var/atom/A)
 	if(isliving(A))

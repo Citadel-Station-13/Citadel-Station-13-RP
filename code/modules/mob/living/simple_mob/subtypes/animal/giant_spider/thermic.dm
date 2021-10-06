@@ -23,15 +23,21 @@
 	icon_living = "pit"
 	icon_dead = "pit_dead"
 
-	maxHealth = 175
-	health = 175
-
-	melee_damage_lower = 10
-	melee_damage_upper = 25
-
 	heat_resist = 0.75
 	cold_resist = -0.50
 
 	poison_chance = 30
 	poison_per_bite = 1
 	poison_type = "thermite_v"
+
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/thermic/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(175*mod)
+    health = round(175*mod)
+    melee_damage_lower = round(10*mod)
+    melee_damage_upper = round(25*mod)
+    movement_cooldown = round(10*mod)
+    update_icons()

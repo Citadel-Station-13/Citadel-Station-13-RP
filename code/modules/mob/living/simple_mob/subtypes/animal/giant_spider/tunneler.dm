@@ -32,12 +32,6 @@
 	icon_living = "tunneler"
 	icon_dead = "tunneler_dead"
 
-	maxHealth = 120
-	health = 120
-
-	melee_damage_lower = 10
-	melee_damage_upper = 10
-
 	poison_chance = 15
 	poison_per_bite = 3
 	poison_type = "serotrotium_v"
@@ -58,6 +52,18 @@
 
 	var/tunnel_warning = 0.5 SECONDS	// How long the dig telegraphing is.
 	var/tunnel_tile_speed = 2			// How long to wait between each tile. Higher numbers result in an easier to dodge tunnel attack.
+
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/tunneler/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(120*mod)
+    health = round(120*mod)
+    melee_damage_lower = round(10*mod)
+    melee_damage_upper = round(10*mod)
+    movement_cooldown = round(10*mod)
+    update_icons()
 
 /mob/living/simple_mob/animal/giant_spider/tunneler/frequent
 	special_attack_cooldown = 5 SECONDS

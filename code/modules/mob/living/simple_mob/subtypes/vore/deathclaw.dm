@@ -10,7 +10,7 @@
 	desc = "Big! Big! The size of three men! Claws as long as my forearm! Ripped apart! Ripped apart!"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/deathclaw)
 
-	icon_dead = "deathclaw-dead"
+	icon_dead = "deathclaw_dead"
 	icon_living = "deathclaw"
 	icon_state = "deathclaw"
 	icon = 'icons/mob/64x64.dmi'
@@ -18,12 +18,6 @@
 	attacktext = list("mauled")
 
 	faction = "deathclaw"
-
-	maxHealth = 200
-	health = 200
-
-	melee_damage_lower = 5
-	melee_damage_upper = 30
 
 	old_x = -16
 	old_y = 0
@@ -39,6 +33,18 @@
 	mount_offset_y = 30
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/deathclaw
+
+//Randomization Code
+/mob/living/simple_mob/vore/aggressive/deathclaw/Initialize()
+	. = ..()
+	var/mod = rand(50,150)/100
+	size_multiplier = mod
+	maxHealth = round(200*mod)
+	health = round(200*mod)
+	melee_damage_lower = round(5*mod)
+	melee_damage_upper = round(30*mod)
+	movement_cooldown = round(5*mod)
+	update_icons()
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/deathclaw

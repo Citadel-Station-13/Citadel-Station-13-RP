@@ -16,8 +16,6 @@
 	icon_living = "lizard"
 	icon_dead = "lizard_dead"
 
-	health = 5
-	maxHealth = 5
 	mob_size = MOB_MINISCULE
 
 	response_help  = "pets"
@@ -25,12 +23,22 @@
 	response_harm   = "stomps on"
 
 	attacktext = list("bitten")
-	melee_damage_lower = 1
-	melee_damage_upper = 2
 
 	speak_emote = list("hisses")
 
 	say_list_type = /datum/say_list/lizard
+
+//Randomization Code
+/mob/living/simple_mob/animal/passive/lizard/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(5*mod)
+    health = round(5*mod)
+    melee_damage_lower = round(1*mod)
+    melee_damage_upper = round(2*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/lizard/large
 	desc = "A cute, big lizard."
@@ -42,12 +50,35 @@
 
 	attack_sharp = TRUE
 
+//Randomization Code
+/mob/living/simple_mob/animal/passive/lizard/large/Initialize()
+	. = ..()
+	var/mod = rand(100,175)/100
+	size_multiplier = mod
+	maxHealth = round(20*mod)
+	health = round(20*mod)
+	melee_damage_lower = round(5*mod)
+	melee_damage_upper = round(15*mod)
+	movement_cooldown = round(5*mod)
+	update_icons()
+
 /mob/living/simple_mob/animal/passive/lizard/large/Initialize(mapload)
 	. = ..()
-	adjust_scale(rand(12, 20) / 10)
+	//adjust_scale(rand(12, 20) / 10)
 
 /mob/living/simple_mob/animal/passive/lizard/large/defensive
-	maxHealth = 30
-	health = 30
 
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+
+//Randomization Code
+/mob/living/simple_mob/animal/passive/lizard/large/defensive/Initialize()
+    . = ..()
+    var/mod = rand(100,175)/100
+    size_multiplier = mod
+    maxHealth = round(30*mod)
+    health = round(30*mod)
+    melee_damage_lower = round(5*mod)
+    melee_damage_upper = round(15*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
+

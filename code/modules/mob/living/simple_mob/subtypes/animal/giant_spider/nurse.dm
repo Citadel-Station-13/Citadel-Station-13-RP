@@ -30,13 +30,6 @@
 	icon_living = "nurse"
 	icon_dead = "nurse_dead"
 
-	maxHealth = 40
-	health = 40
-
-	movement_cooldown = 5	// A bit faster so that they can inject the eggs easier.
-
-	melee_damage_lower = 5	// Doesn't do a lot of damage, since the goal is to make more spiders with egg attacks.
-	melee_damage_upper = 10
 	poison_per_bite = 5
 	poison_type = "stoxin"
 
@@ -50,6 +43,18 @@
 	var/egg_inject_chance = 25 // One in four chance to get eggs.
 	var/egg_type = /obj/effect/spider/eggcluster/small
 	var/web_type = /obj/effect/spider/stickyweb/dark
+
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/nurse/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(40*mod)
+    health = round(40*mod)
+    melee_damage_lower = round(5*mod)
+    melee_damage_upper = round(10*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
 
 /datum/ai_holder/simple_mob/melee/nurse_spider
 	mauling = TRUE		// The nurse puts mobs into webs by attacking, so it needs to attack in crit

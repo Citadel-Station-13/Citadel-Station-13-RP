@@ -18,24 +18,31 @@
 
 	faction = "goat"
 
-	health = 40
-	maxHealth = 40
-
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
 
-	melee_damage_lower = 1
-	melee_damage_upper = 5
 	attacktext = list("kicked")
 
 	say_list_type = /datum/say_list/goat
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 
-	meat_amount = 4
 	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/datum/reagents/udder = null
+
+//Randomization Code
+/mob/living/simple_mob/animal/passive/chicken/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(40*mod)
+    health = round(40*mod)
+    melee_damage_lower = round(5*mod)
+    melee_damage_upper = round(5*mod)
+    movement_cooldown = round(5*mod)
+    meat_amount = round(4*mod)
+    update_icons()
 
 /mob/living/simple_mob/animal/goat/Initialize(mapload)
 	. = ..()

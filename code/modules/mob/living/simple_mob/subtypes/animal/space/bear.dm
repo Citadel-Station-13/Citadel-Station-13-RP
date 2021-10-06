@@ -21,13 +21,6 @@
 
 	faction = "russian"
 
-	maxHealth = 125
-	health = 125
-
-	movement_cooldown = 0.5 SECONDS
-
-	melee_damage_lower = 15
-	melee_damage_upper = 35
 	attack_armor_pen = 15
 	attack_sharp = TRUE
 	attack_edge = TRUE
@@ -37,6 +30,18 @@
 	meat_type = /obj/item/reagent_containers/food/snacks/bearmeat
 
 	say_list_type = /datum/say_list/bear
+
+//Randomization Code
+/mob/living/simple_mob/animal/space/bear/Initialize()
+	. = ..()
+	var/mod = rand(50,150)/100
+	size_multiplier = mod
+	maxHealth = round(125*mod)
+	health = round(125*mod)
+	melee_damage_lower = round(15*mod)
+	melee_damage_upper = round(30*mod)
+	movement_cooldown = round(5*mod)
+	update_icons()
 
 /datum/say_list/bear
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")

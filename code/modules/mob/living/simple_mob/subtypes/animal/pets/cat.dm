@@ -16,8 +16,6 @@
 	item_state = "cat2"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/cat)
 
-	movement_cooldown = 0.5 SECONDS
-
 	see_in_dark = 6 // Not sure if this actually works.
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
@@ -31,6 +29,18 @@
 	var/mob/living/friend = null // Our best pal, who we'll follow. Meow.
 	var/named = FALSE //have I been named yet?
 	var/friend_name = null //VOREStation Edit - Lock befriending to this character
+
+//Randomization Code
+/mob/living/simple_mob/animal/passive/cat/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(20*mod)
+    health = round(20*mod)
+    melee_damage_lower = round(5*mod)
+    melee_damage_upper = round(5*mod)
+    movement_cooldown = round(1*mod)
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/cat/Initialize(mapload)
 	icon_living = "[initial(icon_state)]"
@@ -115,6 +125,17 @@
 	named = TRUE
 	makes_dirt = 0 //Vorestation Edit
 
+//Unrandom the pet
+/mob/living/simple_mob/animal/passive/cat/runtime/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = 20
+    health = 20
+    melee_damage_lower = 5
+    melee_damage_upper = 5
+    movement_cooldown = 5
+    update_icons()
+
 /mob/living/simple_mob/animal/passive/cat/kitten
 	name = "kitten"
 	desc = "D'aaawwww!"
@@ -147,6 +168,17 @@
 	item_state = "cat3"
 	named = TRUE
 	holder_type = /obj/item/holder/cat/fluff/bones
+
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/cat/bones/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = 20
+    health = 20
+    melee_damage_lower = 5
+    melee_damage_upper = 5
+    movement_cooldown = 5
+    update_icons()
 
 // VOREStation Edit - Adds generic tactical kittens
 /obj/item/holder/cat/kitten

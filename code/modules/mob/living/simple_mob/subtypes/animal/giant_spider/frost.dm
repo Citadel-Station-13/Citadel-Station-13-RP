@@ -23,13 +23,22 @@
 	icon_living = "frost"
 	icon_dead = "frost_dead"
 
-	maxHealth = 175
-	health = 175
-
 	poison_per_bite = 5
 	poison_type = "cryotoxin"
 	heat_resist = -0.50
 	cold_resist = 0.75
+
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/frost/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(175*mod)
+    health = round(175*mod)
+    melee_damage_lower = round(18*mod)
+    melee_damage_upper = round(30*mod)
+    movement_cooldown = round(10*mod)
+    update_icons()
 
 // Sif variant with a somewhat different desc.
 /mob/living/simple_mob/animal/giant_spider/frost/sif

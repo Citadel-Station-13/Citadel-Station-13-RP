@@ -19,16 +19,18 @@
 	icon_living = "pepper"
 	icon_dead = "pepper_dead"
 
-	maxHealth = 210
-	health = 210
-
-	melee_damage_lower = 8
-	melee_damage_upper = 15
-
 	poison_chance = 20
 	poison_per_bite = 5
 	poison_type = "condensedcapsaicin_v"
 
-/mob/living/simple_mob/animal/giant_spider/pepper/Initialize(mapload)
-	adjust_scale(1.1)
-	return ..()
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(210*mod)
+    health = round(210*mod)
+    melee_damage_lower = round(8*mod)
+    melee_damage_upper = round(15*mod)
+    movement_cooldown = round(10*mod)
+    update_icons()

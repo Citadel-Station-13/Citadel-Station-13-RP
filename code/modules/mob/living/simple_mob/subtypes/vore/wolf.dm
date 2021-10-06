@@ -16,15 +16,23 @@
 	icon_state = "wolf"
 	icon = 'icons/mob/vore.dmi'
 
-	movement_cooldown = 5
-
 	harm_intent_damage = 5
-	melee_damage_lower = 5
-	melee_damage_upper = 12
 
 	minbodytemp = 200
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+
+//Randomization Code
+/mob/living/simple_mob/animal/wolf/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(20*mod)
+    health = round(20*mod)
+    melee_damage_lower = round(5*mod)
+    melee_damage_upper = round(12*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
 
 // Activate Noms!
 /mob/living/simple_mob/animal/wolf

@@ -22,6 +22,18 @@
 	// If set to a type, on initialize it will be instantiated into that type.
 	var/obj/item/radio/headset/my_headset = null
 
+//Randomization Code
+/mob/living/simple_mob/animal/passive/bird/parrot/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(20*mod)
+    health = round(20*mod)
+    melee_damage_lower = round(5*mod)
+    melee_damage_upper = round(5*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
+
 // Say list
 /datum/say_list/bird/polly
 	speak = list(
@@ -122,6 +134,17 @@
 	tt_desc = "E Ara macao"
 	my_headset = /obj/item/radio/headset/headset_eng
 	say_list_type = /datum/say_list/bird/polly
+
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/bird/parrot/polly/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = 20
+    health = 20
+    melee_damage_lower = 5
+    melee_damage_upper = 5
+    movement_cooldown = 5
+    update_icons()
 
 // Best Bird with best headset.
 /mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate

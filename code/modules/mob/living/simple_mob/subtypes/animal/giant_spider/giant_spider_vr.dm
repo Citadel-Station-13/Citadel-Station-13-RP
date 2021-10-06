@@ -12,21 +12,27 @@
 	icon_living = "webslinger"
 	icon_dead = "webslinger_dead"
 
-	maxHealth = 90
-	health = 90
-
 	base_attack_cooldown = 15
 	projectilesound = 'sound/weapons/taser2.ogg'
 	projectiletype = /obj/item/projectile/ion/pistol
-
-	melee_damage_lower = 8
-	melee_damage_upper = 15
 
 	poison_chance = 15
 	poison_per_bite = 2
 	poison_type = "psilocybin"
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/electric_spider
+
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/ion/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(90*mod)
+    health = round(90*mod)
+    melee_damage_lower = round(8*mod)
+    melee_damage_upper = round(15*mod)
+    movement_cooldown = round(10*mod)
+    update_icons()
 
 //Lost to AI refactor, returning champion of arachnophobe horror, Spider Queen
 /mob/living/simple_mob/animal/giant_spider/nurse/queen
@@ -38,14 +44,21 @@
 	icon_living = "spider_queen"
 	icon_dead = "spider_queen_dead"
 
-	maxHealth = 320
-	health = 320
-
-	melee_damage_lower = 20
-	melee_damage_upper = 30
 	attack_armor_pen = 25
 
 	pixel_x = -16
 	pixel_y = -16
 	old_x = -16
 	old_y = -16
+
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/nurse/queen/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(320*mod)
+    health = round(320*mod)
+    melee_damage_lower = round(20*mod)
+    melee_damage_upper = round(30*mod)
+    movement_cooldown = round(10*mod)
+    update_icons()

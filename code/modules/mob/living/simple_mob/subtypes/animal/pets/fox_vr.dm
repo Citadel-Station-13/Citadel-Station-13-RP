@@ -19,7 +19,6 @@
 	icon_rest = "fox2_rest"
 	icon = 'icons/mob/fox_vr.dmi'
 
-	movement_cooldown = 0.5
 	see_in_dark = 6
 	mob_size = MOB_SMALL //Foxes are not smaller than cats so bumping them up to small
 
@@ -41,6 +40,18 @@
 
 	var/turns_since_scan = 0
 	var/mob/flee_target
+
+//Randomization Code
+/mob/living/simple_mob/animal/passive/fox/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(20*mod)
+    health = round(20*mod)
+    melee_damage_lower = round(5*mod)
+    melee_damage_upper = round(5*mod)
+    movement_cooldown = round(1*mod)
+    update_icons()
 
 /datum/say_list/fox
 	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Awoo","Tchoff")
@@ -207,6 +218,17 @@
 	var/mob/living/friend = null // Our best pal, who we'll follow. awoo.
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
 	makes_dirt = FALSE	// No more dirt
+
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/fox/renault/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = 20
+    health = 20
+    melee_damage_lower = 5
+    melee_damage_upper = 5
+    movement_cooldown = 1
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/fox/renault/init_vore()
 	..()

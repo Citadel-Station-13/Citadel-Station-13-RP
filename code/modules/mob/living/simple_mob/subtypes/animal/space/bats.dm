@@ -19,9 +19,6 @@
 
 	faction = "scarybat"
 
-	maxHealth = 20
-	health = 20
-
 	attacktext = list("bites")
 	attack_sound = 'sound/weapons/bite.ogg'
 
@@ -31,8 +28,6 @@
 
 	harm_intent_damage = 10
 
-	melee_damage_lower = 5
-	melee_damage_upper = 5
 	attack_sharp = TRUE
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
@@ -44,6 +39,18 @@
 	say_list_type = /datum/say_list/mouse	// Close enough
 
 	var/scare_chance = 15
+
+//Randomization Code
+/mob/living/simple_mob/animal/space/bats/Initialize()
+	. = ..()
+	var/mod = rand(50,150)/100
+	size_multiplier = mod
+	maxHealth = round(20*mod)
+	health = round(20*mod)
+	melee_damage_lower = round(5*mod)
+	melee_damage_upper = round(5*mod)
+	movement_cooldown = round(5*mod)
+	update_icons()
 
 /mob/living/simple_mob/animal/space/bats/apply_melee_effects(var/atom/A)
 	if(isliving(A))

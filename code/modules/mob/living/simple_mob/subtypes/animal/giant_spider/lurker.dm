@@ -28,16 +28,9 @@
 	icon_living = "lurker"
 	icon_dead = "lurker_dead"
 
-	maxHealth = 100
-	health = 100
-
 	poison_per_bite = 5
 
-	movement_cooldown = 5
-
-	melee_damage_lower = 10
-	melee_damage_upper = 10
-	poison_chance = 30
+	poison_chance = 20
 	poison_type = "cryptobiolin"
 	poison_per_bite = 1
 
@@ -53,6 +46,18 @@
 	var/stealthed_weaken_amount = 3	// How long to stun for.
 	var/stealth_cooldown = 10 SECONDS	// Amount of time needed to re-stealth after losing it.
 	var/last_unstealth = 0			// world.time
+
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/lurker/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(100*mod)
+    health = round(100*mod)
+    melee_damage_lower = round(10*mod)
+    melee_damage_upper = round(10*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
 
 
 /mob/living/simple_mob/animal/giant_spider/lurker/proc/stealth()

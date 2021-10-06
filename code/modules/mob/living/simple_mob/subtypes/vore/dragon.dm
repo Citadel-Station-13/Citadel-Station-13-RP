@@ -8,11 +8,6 @@
 	icon = 'icons/mob/vore64x64.dmi'
 
 	faction = "dragon"
-	maxHealth = 500 // Boss
-	health = 500
-
-	melee_damage_lower = 5
-	melee_damage_upper = 30
 
 	//Space dragons aren't affected by atmos.
 	min_oxy = 0
@@ -34,6 +29,18 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 	say_list_type = /datum/say_list/dragonboss
+
+//Randomization Code
+/mob/living/simple_mob/vore/aggressive/dragon/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(500*mod)
+    health = round(500*mod)
+    melee_damage_lower = round(5*mod)
+    melee_damage_upper = round(30*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
 
 /mob/living/simple_mob/vore/aggressive/dragon/Process_Spacemove(var/check_drift = 0)
 	return 1	//No drifting in space for space dragons!

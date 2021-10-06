@@ -17,13 +17,7 @@
 
 	faction = "creature"
 
-	maxHealth = 40
-	health = 40
-
 	harm_intent_damage = 8
-
-	melee_damage_lower = 8
-	melee_damage_upper = 15
 	attack_armor_pen = 5	//It's a horror from beyond, I ain't gotta explain 5 AP
 	attack_sharp = 1
 	attack_edge = 1
@@ -35,14 +29,34 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
+//Randomization Code
+/mob/living/simple_mob/creature/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(40*mod)
+    health = round(40*mod)
+    melee_damage_lower = round(8*mod)
+    melee_damage_upper = round(15*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
+
 // Strong Variant
 /mob/living/simple_mob/creature/strong
-	maxHealth = 160
-	health = 160
 
 	harm_intent_damage = 5
-	melee_damage_lower = 13
-	melee_damage_upper = 25
+
+//Randomization Code
+/mob/living/simple_mob/creature/strong/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(160*mod)
+    health = round(160*mod)
+    melee_damage_lower = round(13*mod)
+    melee_damage_upper = round(25*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()
 
 // Cult Variant
 /mob/living/simple_mob/creature/cult
@@ -73,3 +87,15 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 13
 	melee_damage_upper = 25
+
+//Randomization Code
+/mob/living/simple_mob/creature/cult/strong/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(160*mod)
+    health = round(160*mod)
+    melee_damage_lower = round(13*mod)
+    melee_damage_upper = round(25*mod)
+    movement_cooldown = round(5*mod)
+    update_icons()

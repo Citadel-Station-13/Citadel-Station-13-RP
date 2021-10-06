@@ -33,17 +33,11 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	icon = 'icons/mob/vore32x64.dmi'
 
 	faction = "virgo3b"
-	maxHealth = 100
-	health = 100
-	movement_cooldown = 12
 
 	say_list_type = /datum/say_list/gaslamp
 	ai_holder_type = /datum/ai_holder/simple_mob/gaslamp
 
 	//speed = 2 not sure what this is, guessing animation, but it conflicts with new system.
-
-	melee_damage_lower = 15 // Because fuck anyone who hurts this sweet, innocent creature.
-	melee_damage_upper = 15
 	attacktext = list("thrashed")
 	friendly = "caressed"
 
@@ -62,6 +56,18 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	max_co2 = 0
 	min_n2 = 0
 	max_n2 = 0
+
+//Randomization.
+/mob/living/simple_mob/animal/passive/gaslamp/Initialize()
+	. = ..()
+	var/mod = rand(50,150)/100
+	size_multiplier = mod
+	maxHealth = round(100*mod)
+	health = round(100*mod)
+	melee_damage_lower = round(15*mod)
+	melee_damage_upper = round(15*mod)
+	movement_cooldown = round(12*mod)
+	update_icons()
 
 /datum/say_list/gaslamp
 	emote_see = list("looms", "sways gently")

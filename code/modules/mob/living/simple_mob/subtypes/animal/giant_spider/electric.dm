@@ -25,17 +25,11 @@
 	icon_living = "spark"
 	icon_dead = "spark_dead"
 
-	maxHealth = 210
-	health = 210
-
 	taser_kill = 0 //It -is- the taser.
 
 	base_attack_cooldown = 10
 	projectilesound = 'sound/weapons/taser2.ogg'
 	projectiletype = /obj/item/projectile/beam/stun/electric_spider
-
-	melee_damage_lower = 10
-	melee_damage_upper = 25
 
 	poison_chance = 15
 	poison_per_bite = 3
@@ -46,6 +40,18 @@
 	player_msg = "You can fire a taser-like ranged attack by clicking on an enemy or tile at a distance."
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/electric_spider
+
+//Randomization Code
+/mob/living/simple_mob/animal/giant_spider/electric/Initialize()
+    . = ..()
+    var/mod = rand(50,150)/100
+    size_multiplier = mod
+    maxHealth = round(210*mod)
+    health = round(210*mod)
+    melee_damage_lower = round(10*mod)
+    melee_damage_upper = round(25*mod)
+    movement_cooldown = round(10*mod)
+    update_icons()
 
 /obj/item/projectile/beam/stun/electric_spider
 	name = "stun beam"
