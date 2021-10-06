@@ -6,7 +6,6 @@
 
 	maxhealth = 15 //Weaker than normal barricade
 	anchored = 0
-	density = 0
 
 	var/fake_name = "unknown"
 	var/fake_desc = "You have to be closer to examine this creature."
@@ -37,6 +36,7 @@
 		return
 	toppled = TRUE
 	icon_state = "cutout_pushed_over"
+	density = 0	
 	name = initial(name)
 	desc = initial(desc)
 	visible_message("<span class='warning'>[src] topples over!</span>")
@@ -46,6 +46,7 @@
 		return
 	toppled = FALSE
 	icon_state = initial(icon_state)
+	density = 1
 	name = fake_name
 	desc = fake_desc
 	visible_message("<span class='warning'>[src] is uprighted to their proper position.</span>")
