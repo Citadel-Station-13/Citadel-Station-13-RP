@@ -51,6 +51,8 @@
 		MAT_VERDANTIUM = 0,
 		MAT_MORPHIUM = 0,
 		MAT_METALHYDROGEN = 0,
+		"bananium" = 0,
+		"silencium" = 0,
 		MAT_SUPERMATTER = 0)
 	var/res_max_amount = 200000
 

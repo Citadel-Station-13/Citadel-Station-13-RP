@@ -457,3 +457,21 @@
 	icon_state = "sheet-phoronrglass"
 	default_type = "reinforced borosilicate glass"
 	no_variants = FALSE
+
+/obj/item/stack/material/bananium
+	name = "bananium"
+	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
+	icon_state = "sheet-clown"
+	default_type = "bananium"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
+
+/obj/item/stack/material/silencium
+	name = "silencium"
+	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
+	icon_state = "sheet-mime"
+	default_type = "silencium"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
