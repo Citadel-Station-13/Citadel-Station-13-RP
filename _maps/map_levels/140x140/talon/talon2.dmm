@@ -80,6 +80,21 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_starboard)
+"bv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/mob/living/simple_mob/animal/space/jelly/wiggleblob,
+/turf/simulated/floor/wood,
+/area/talon/decktwo/cap_room)
 "bC" = (
 /obj/item/paper/talon_lifeboat,
 /obj/structure/table/steel,
@@ -2089,26 +2104,6 @@
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
-"xJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 1
-	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/mob/living/simple_mob/animal/space/jelly{
-	desc = "Everyone loves Mr. Wiggleblob! Don't you just want to cuddle it and potentially be devoured? I know I do!";
-	icon_scale_x = 1.1;
-	icon_scale_y = 1.1;
-	name = "Mr. Wiggleblob"
-	},
-/turf/simulated/floor/wood,
-/area/talon/decktwo/cap_room)
 "xL" = (
 /obj/machinery/shield_capacitor/advanced{
 	anchored = 1;
@@ -3918,7 +3913,6 @@
 /area/talon/decktwo/pilot_room)
 "PS" = (
 /obj/structure/table/woodentable,
-/obj/item/flashlight/lamp,
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "Qa" = (
@@ -4513,6 +4507,9 @@
 "Xr" = (
 /obj/machinery/atm{
 	pixel_x = 32
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/decktwo/central_hallway)
@@ -14336,7 +14333,7 @@ QN
 Eb
 hZ
 Bi
-Zd
+XX
 Zd
 Zd
 Zd
@@ -14474,7 +14471,7 @@ XJ
 kf
 FF
 UW
-xJ
+bv
 og
 Al
 rQ

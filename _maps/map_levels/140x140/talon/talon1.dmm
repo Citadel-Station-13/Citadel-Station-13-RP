@@ -1095,9 +1095,6 @@
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
-"ju" = (
-/turf/simulated/wall,
-/area/talon/deckone/engine)
 "jx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -16319,7 +16316,7 @@ hC
 oH
 Oq
 DR
-ju
+Oi
 Oi
 It
 Nl
