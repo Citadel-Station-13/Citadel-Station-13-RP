@@ -1568,7 +1568,7 @@
 		
 	//Chess Variants
 	
-/object/item/chess
+/obj/item/chess
 	name = "Chess Piece"
 	icon = 'icons/obj/cardboard_cutout.dmi'
 	icon_state = "cutout_basic"
@@ -1624,7 +1624,7 @@
 	desc = "A Novelty chess piece in the image of a heoric member of asset protection representing a white queen."
 	icon_state = "cutout_deathsquad"
 
-/obj/item/cutout/chess/bking
+/obj/item/chess/bking
 	name = "Black King"
 	desc = "A Novelty chess piece in the image of a strange and vile creature representing a black king."
 	icon_state = "cutout_gondola"
