@@ -19513,6 +19513,13 @@
 	dir = 8
 	},
 /area/hallway/station/port)
+"jpG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/media/jukebox,
+/turf/simulated/floor/tiled/steel_grid,
+/area/quartermaster/foyer)
 "jqe" = (
 /obj/machinery/conveyor{
 	id = "shuttle_inbound"
@@ -40348,7 +40355,7 @@ aWq
 aWq
 vdL
 aTU
-aXr
+jpG
 aGA
 rPb
 aTU
