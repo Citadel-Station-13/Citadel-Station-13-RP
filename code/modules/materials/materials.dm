@@ -1177,3 +1177,20 @@ var/list/name_to_material
 	weight = 1
 	protectiveness = 0 // 0%
 	conductive = 0
+
+//Vaudium products
+/datum/material/bananium
+	name = "bananium"
+	stack_type = /obj/item/stack/material/bananium
+	integrity = 150
+	conductivity = 0 // Weird rubber metal.
+	protectiveness = 10 // 33%
+	icon_colour = "#d6c100"
+
+/datum/material/stone/silencium
+	name = "silencium"
+	icon_colour = "#AAAAAA"
+	weight = 26
+	hardness = 30 //VOREStation Edit - Please.
+	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
+	stack_type = /obj/item/stack/material/silencium

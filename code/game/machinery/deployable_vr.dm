@@ -36,7 +36,7 @@
 		return
 	toppled = TRUE
 	icon_state = "cutout_pushed_over"
-	density = 0
+	density = 0	
 	name = initial(name)
 	desc = initial(desc)
 	visible_message("<span class='warning'>[src] topples over!</span>")
@@ -176,81 +176,3 @@
 /obj/random/cutout/item_to_spawn()
 	var/list/cutout_types = subtypesof(/obj/structure/barricade/cutout)
 	return pick(cutout_types)
-
-//Chess Variants
-
-/obj/structure/barricade/cutout/chess
-	density = 1
-
-/obj/structure/barricade/cutout/chess/pawn/white
-	icon_state = "cutout_greytide"
-	human_name = FALSE
-	fake_name = "White Pawn"
-	construct_name = "greytide"
-
-/obj/structure/barricade/cutout/chess/pawn/black
-	icon_state = "cutout_viva"
-	human_name = FALSE
-	fake_name = "Black Pawn"
-	construct_name = "advanced greytide"
-
-/obj/structure/barricade/cutout/chess/knight/black
-	icon_state = "cutout_traitor"
-	human_name = FALSE
-	fake_name = "Black Knight"
-	construct_name = "criminal employee"
-
-/obj/structure/barricade/cutout/chess/knight/white
-	icon_state = "cutout_clown"
-	human_name = FALSE
-	fake_name = "White Knight"
-	construct_name = "clown"
-
-/obj/structure/barricade/cutout/chess/rook/black
-	icon_state = "cutout_fluke"
-	human_name = FALSE
-	fake_name = "Black Rook"
-	construct_name = "nuclear operative"
-
-/obj/structure/barricade/cutout/chess/rook/white
-	icon_state = "cutout_ntsec"
-	human_name = FALSE
-	fake_name = "White Rook"
-	construct_name = "nt security"
-
-/obj/structure/barricade/cutout/chess/bishop/black
-	icon_state = "cutout_stabfluke"
-	human_name = FALSE
-	fake_name = "Black Bishop"
-	construct_name = "nuclear idiot"
-
-/obj/structure/barricade/cutout/chess/bishop/white
-	icon_state = "cutout_mime"
-	human_name = FALSE
-	fake_name = "White Bishop"
-	construct_name = "mime"
-
-/obj/structure/barricade/cutout/chess/queen/black
-	icon_state = "cutout_supfluke"
-	human_name = FALSE
-	fake_name = "Black Queen"
-	construct_name = "super soldier"
-
-/obj/structure/barricade/cutout/chess/queen/white
-	icon_state = "cutout_deathsquad"
-	human_name = FALSE
-	fake_name = "White Queen"
-	construct_name = "unknown"
-
-/obj/structure/barricade/cutout/chess/king/black
-	icon_state = "cutout_gondola"
-	human_name = FALSE
-	fake_name = "Black King"
-	construct_name = "creature"
-
-/obj/structure/barricade/cutout/chess/king/white
-	icon_state = "cutout_ian"
-	human_name = FALSE
-	fake_name = "White King"
-	construct_name = "dog"
-	
