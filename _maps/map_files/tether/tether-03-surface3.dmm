@@ -18733,7 +18733,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/sign/christmas/lights,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/third_south)
 "aGg" = (
@@ -30353,7 +30352,6 @@
 	layer = 3.3;
 	name = "Bar Shutters"
 	},
-/obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "bcq" = (
@@ -38646,11 +38644,21 @@
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/shuttle/tourbus/cockpit)
 "kef" = (
-/obj/structure/table/fancyblack,
-/obj/structure/spirit_board/prop{
-	pixel_y = 4
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
 	},
-/turf/simulated/floor/carpet/purcarpet,
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/structure/table/fancyblack,
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "bar";
+	layer = 3.3;
+	name = "Bar Shutters"
+	},
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "keg" = (
 /obj/effect/floor_decal/borderfloor{
@@ -38973,17 +38981,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_main)
 "kUf" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 5
+/obj/structure/table/fancyblack,
+/obj/structure/spirit_board/prop{
+	pixel_y = 4
 	},
-/obj/structure/signpost{
-	desc = "A dusty signpost with two landmarks charred into the wood. 'Hell - 66mi, Heaven - ' The number is scribbled out.";
-	name = "crossroads"
-	},
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/mud{
-	outdoors = 0
-	},
+/turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/bar)
 "kUh" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -42288,6 +42290,19 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officeb)
+"tMx" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/obj/structure/signpost{
+	desc = "A dusty signpost with two landmarks charred into the wood. 'Hell - 66mi, Heaven - ' The number is scribbled out.";
+	name = "crossroads"
+	},
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/outdoors/mud{
+	outdoors = 0
+	},
+/area/crew_quarters/bar)
 "tOz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -58772,7 +58787,7 @@ asX
 aIl
 baW
 aJv
-kef
+kUf
 jRO
 bcc
 bdM
@@ -60055,7 +60070,7 @@ yix
 olz
 aIf
 olz
-kUf
+tMx
 uRC
 ayM
 rjw
@@ -60189,7 +60204,7 @@ aru
 aru
 bfX
 aEW
-bgz
+kef
 bgz
 bcp
 atN
