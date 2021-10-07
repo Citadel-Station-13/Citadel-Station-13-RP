@@ -132,10 +132,21 @@
 			var/obj/item/clothing/suit/space/S = wear_suit
 			if(S.can_breach && S.damage)
 				pressure_adjustment_coefficient += S.damage * 0.1
-
+	//check for EVA capable uniforms
 	else
-		// Missing key protection
-		pressure_adjustment_coefficient = 1
+		if(w_uniform && w_uniform.max_pressure_protection != null && w_uniform.min_pressure_protection != null)
+			pressure_adjustment_coefficient = 0
+			// Pressure is too high
+			if(w_uniform.max_pressure_protection < pressure)
+				// Protection scales down from 100% at the boundary to 0% at 10% in excess of the boundary
+				pressure_adjustment_coefficient += round((pressure - w_uniform.max_pressure_protection) / (w_uniform.max_pressure_protection/10))
+
+			// Pressure is too low
+			if(w_uniform.min_pressure_protection > pressure)
+				pressure_adjustment_coefficient += round((w_uniform.min_pressure_protection - pressure) / (w_uniform.min_pressure_protection/10))
+		else
+			// Missing key protection
+			pressure_adjustment_coefficient = 1
 
 	// Check hat
 	if(head && head.max_pressure_protection != null && head.min_pressure_protection != null)
@@ -1557,11 +1568,8 @@
 
 /mob/living/carbon/human/handle_shock()
 	..()
-	if(status_flags & GODMODE)
-		return 0	//godmode
-	if(!can_feel_pain())
-		shock_stage = 0
-		return
+	if(status_flags & GODMODE)	return 0	//godmode
+	if(!can_feel_pain()) return
 
 	if(health < config_legacy.health_threshold_softcrit)// health 0 makes you immediately collapse
 		shock_stage = max(shock_stage, 61)
