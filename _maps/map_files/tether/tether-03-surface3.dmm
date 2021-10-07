@@ -39487,6 +39487,16 @@
 /area/tether/surfacebase/surface_three_hall)
 "mjJ" = (
 /obj/structure/bonfire/permanent,
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic,
+/obj/structure/window/phoronbasic{
+	dir = 1
+	},
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -41627,6 +41637,19 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_restroom)
+"sgf" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/obj/structure/signpost{
+	desc = "A dusty signpost with two landmarks charred into the wood. 'Hell - 66mi, Heaven - ' The number is scribbled out.";
+	name = "crossroads"
+	},
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/outdoors/mud{
+	outdoors = 0
+	},
+/area/crew_quarters/bar)
 "shx" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -42290,19 +42313,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/iaa/officeb)
-"tMx" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 5
-	},
-/obj/structure/signpost{
-	desc = "A dusty signpost with two landmarks charred into the wood. 'Hell - 66mi, Heaven - ' The number is scribbled out.";
-	name = "crossroads"
-	},
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/mud{
-	outdoors = 0
-	},
-/area/crew_quarters/bar)
 "tOz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -60070,7 +60080,7 @@ yix
 olz
 aIf
 olz
-tMx
+sgf
 uRC
 ayM
 rjw
