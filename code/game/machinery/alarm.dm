@@ -782,12 +782,11 @@
 //Altclick airalarms to toggle the controlls
 /obj/machinery/alarm/AltClick(mob/user)
 	if(user.Adjacent(src))
-		if(src.allowed(usr) && !isWireCut(APC_WIRE_IDSCAN))
+		if(allowed(usr) && !wires.IsIndexCut(AALARM_WIRE_IDSCAN))
 			locked = !locked
-			to_chat(user,"You [ locked ? "lock" : "unlock"] the APC interface.")
-			update_icon()
+			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
 		else
-			to_chat(user,"<span class='warning'>Access denied.</span>")
+			to_chat(user, "<span class='warning'>Access denied.</span>")
 
 /obj/machinery/alarm/power_change()
 	..()
