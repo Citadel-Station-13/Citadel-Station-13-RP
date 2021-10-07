@@ -45,3 +45,11 @@
 /datum/gear/mask/samurai
 	display_name = "Samurai Mask"
 	path = /obj/item/clothing/mask/samurai
+
+/datum/gear/mask/samurai_colorable
+	display_name = "Samurai Mask (Colorable)"
+	path = /obj/item/clothing/mask/samurai/colorable
+
+/datum/gear/mask/samurai_colorable/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice

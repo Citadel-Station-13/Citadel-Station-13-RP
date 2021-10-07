@@ -62,6 +62,15 @@
 /area/talon/deckone/starboard_eng_store
 	name = "\improper Deck One - Starboard Eng. Storage"
 	icon_state = "yellow-s"
+/area/talon/deckone/engine
+	name = "\improper Deck One - Engine Bay"
+	icon_state = "yellow-e"
+/area/talon/deckone/port_engine
+	name = "\improper Deck One - Port Engine Bay"
+	icon_state = "yellow-e"
+/area/talon/deckone/starboard_engine
+	name = "\improper Deck One - Starboard Engine Bay"
+	icon_state = "yellow-e"
 /area/talon/deckone/armory
 	name = "\improper Deck One - Armory"
 	icon_state = "red"
@@ -77,6 +86,9 @@
 /area/talon/deckone/starboard_solar
 	name = "\improper Deck One - Starboard Solar Control"
 	icon_state = "yellow-s"
+/area/talon/deckone/nose
+	name = "\improper Deck One - Nose Cone"
+	icon_state = "gray-c"
 
 /area/talon/decktwo/central_hallway
 	name = "\improper Deck Two - Central Hallway"
@@ -110,3 +122,6 @@
 /area/talon/decktwo/vault
 	name = "\improper Deck Two - Vault"
 	icon_state = "red"
+/area/talon/decktwo/kitchen
+	name = "\improper Deck Two - Kitchen"
+	icon_state = "blue"

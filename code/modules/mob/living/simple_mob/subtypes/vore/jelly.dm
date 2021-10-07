@@ -17,6 +17,11 @@
 	icon = 'icons/mob/vore.dmi'
 
 	faction = "virgo2"
+	maxHealth = 50
+	health = 50
+
+	melee_damage_lower = 2
+	melee_damage_upper = 7
 
 	response_help = "gently pets"
 	response_disarm = "tries to shove"
@@ -24,18 +29,6 @@
 
 	say_list_type = /datum/say_list/jelly
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/jelly
-
-//Put some randomization into the Mob.
-/mob/living/simple_mob/animal/space/jelly/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(50*mod)
-	health = round(50*mod)
-	melee_damage_lower = round(2*mod)
-	melee_damage_upper = round(7*mod)
-	movement_cooldown = round(5*mod)
-	update_icons()
 
 
 // Activate Noms!
@@ -57,11 +50,4 @@
 	name = "Mr. Wiggleblob."
 	desc = "Mr. Wiggleblob! The official mascot of the Talon. So huggable. So squishable. Just try not to get eaten!"
 
-	maxHealth = 50
-	health = 50
-
-	melee_damage_lower = 2
-	melee_damage_upper = 7
-
 	size_multiplier = 1.25
-	movement_cooldown = 5

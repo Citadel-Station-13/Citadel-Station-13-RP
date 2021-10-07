@@ -358,3 +358,11 @@
 /datum/gear/head/poppy_crown
 	display_name = "Flower Crown (Poppy)"
 	path = /obj/item/clothing/head/poppy_crown
+
+/datum/gear/head/samurai
+	display_name = "Replica Kabuto (Colorable)"
+	path = /obj/item/clothing/head/samurai_replica
+
+/datum/gear/head/samurai/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
