@@ -28,6 +28,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["hair_style_name"]	>> pref.h_style
 	S["facial_style_name"]	>> pref.f_style
 	S["grad_style_name"]	>> pref.grad_style
+	S["grad_wingstyle_name"]>> pref.grad_wingstyle
 	S["eyes_red"]			>> pref.r_eyes
 	S["eyes_green"]			>> pref.g_eyes
 	S["eyes_blue"]			>> pref.b_eyes
@@ -65,6 +66,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["hair_style_name"]	<< pref.h_style
 	S["facial_style_name"]	<< pref.f_style
 	S["grad_style_name"]	<< pref.grad_style
+	S["grad_wingstyle_name"]<< pref.grad_wingstyle
 	S["eyes_red"]			<< pref.r_eyes
 	S["eyes_green"]			<< pref.g_eyes
 	S["eyes_blue"]			<< pref.b_eyes
@@ -101,6 +103,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.h_style		= sanitize_inlist(pref.h_style, hair_styles_list, initial(pref.h_style))
 	pref.f_style		= sanitize_inlist(pref.f_style, facial_hair_styles_list, initial(pref.f_style))
 	pref.grad_style		= sanitize_inlist(pref.grad_style, GLOB.hair_gradients, initial(pref.grad_style))
+	pref.grad_wingstyle	= sanitize_inlist(pref.grad_wingstyle, GLOB.hair_gradients, initial(pref.grad_wingstyle))
 	pref.r_eyes			= sanitize_integer(pref.r_eyes, 0, 255, initial(pref.r_eyes))
 	pref.g_eyes			= sanitize_integer(pref.g_eyes, 0, 255, initial(pref.g_eyes))
 	pref.b_eyes			= sanitize_integer(pref.b_eyes, 0, 255, initial(pref.b_eyes))
@@ -128,6 +131,9 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.r_grad			= pref.r_grad
 	character.g_grad			= pref.g_grad
 	character.b_grad			= pref.b_grad
+	character.r_gradwing		= pref.r_gradwing
+	character.g_gradwing		= pref.g_gradwing
+	character.b_gradwing		= pref.b_gradwing
 	character.r_facial			= pref.r_facial
 	character.g_facial			= pref.g_facial
 	character.b_facial			= pref.b_facial
@@ -138,6 +144,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.h_style			= pref.h_style
 	character.f_style			= pref.f_style
 	character.grad_style		= pref.grad_style
+	character.grad_wingstyle	= pref.grad_wingstyle
 	character.b_type			= pref.b_type
 	character.synth_color 		= pref.synth_color
 	character.r_synth			= pref.r_synth

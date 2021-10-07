@@ -51,6 +51,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/r_grad = 0						//Gradient color
 	var/g_grad = 0						//Gradient color
 	var/b_grad = 0						//Gradient color
+	var/grad_wingstyle = "None"			//Gradient style
 	var/f_style = "Shaved"				//Face hair type
 	var/r_facial = 0					//Face hair color
 	var/g_facial = 0					//Face hair color
