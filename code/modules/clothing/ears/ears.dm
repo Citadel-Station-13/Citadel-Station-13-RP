@@ -37,6 +37,12 @@
 
 	update_clothing_icon()
 
+/obj/item/clothing/ears/earmuffs/headphones/AltClick()
+	if(!headphones_on)
+		togglemusic()
+	else
+		togglemusic()
+
 /*
 	Skrell tentacle wear
 */
