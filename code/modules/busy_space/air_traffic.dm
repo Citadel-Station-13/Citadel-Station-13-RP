@@ -39,7 +39,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	// 450 was the original time. Reducing to 300 due to lower init times on the server. If this is a problem, revert back to 450 as we had no ATC issues with that time.
 	spawn(300 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
 		/// HEY! if we have listiners for ssticker go use that instead of this snowflake.
-		msg("Crew transfer complete for all vessels. As a reminder, this shift's fleet frequencies are as follows for this shift: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
+		msg("Crew transfer complete. This shift's frequencies are as follows: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
 		next_message = world.time + initial_delay
 		START_PROCESSING(SSobj, src)
 
@@ -77,14 +77,16 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	// OKAY what's happening here is a lot less agony inducing than it might seem. All that's happening here is a weighted RNG choice between the listed options in a variable.
 	// The first, [1], is for NanoTrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
 	// ALL the companies and items this list pulls from can be found in the organizations.dm file in this same folder (busy_space).
-	var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[1]=90,pick(GLOB.loremaster.organizations)=20))]
+	// I'm restoring this to unweighted: with further local tests NT is still *outrageously* common, far more common than the weighting implies
+	// With a small list of ship names/identifiers, this can lead to situations like seemingly-identical ships landing multiple times without taking off again.
+	var/datum/lore/organization/source = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
 
-		/// repurposed for new fun stuff
+	/// repurposed for new fun stuff
 	var/datum/lore/organization/secondary = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
 
 	//Let's get some mission parameters, pick our first ship
-	/// get the name
-	var/source_name = source.name
+	/// get the name - don't need to for now! uncommented to avoid compile warnings.
+	//var/source_name = source.name
 
 	/// Use the short name
 	var/source_owner = source.short_name
@@ -101,17 +103,11 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	/// Destination is where?
 	var/source_destname = pick(source.destination_names)
 
-	/// do we fully observe system law (or are we otherwise favored by the system owners, i.e. NT)?
-	var/source_law_abiding = source.lawful
+	/// Which faction class do we belong to?
+	var/source_org_type = source.org_type
 
-	/// or are we part of a pirate group
-	var/source_law_breaker = source.hostile
-
-	/// are we actually system law/SDF? unlocks the SDF-specific events
-	var/source_system_defense = source.sysdef
-
-	/// Are we part of the fleet?
-	var/source_fleet = source.fleet
+	/// Are we part of the fleet? Not needed whilst fleet events are disabled
+	// var/source_fleet = source.fleet
 
 	/////////////
 
@@ -124,18 +120,12 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	/// Pick a random ship name
 	var/secondary_shipname = pick(secondary.ship_names)
 
-	/// Law abiding?
-	var/secondary_law_abiding = secondary.lawful
-
-	/// Part of the syndicats?
-	var/secondary_law_breaker = secondary.hostile
-
-	/// mostly here as a secondary check to ensure SDF don't interrogate other SDF
-	var/secondary_system_defense = secondary.sysdef
+	/// Which faction class do we belong to?
+	var/secondary_org_type = secondary.org_type
 
 	/// Is this ship part of the fleet too?
 	// Not set up yet. Leaving commented out until then.
-	//var/secdonary_fleet = secondary.fleet
+	//var/secondary_fleet = secondary.fleet
 
 	var/combined_first_name = "[source_owner][source_prefix] |[source_shipname]|"
 	var/combined_second_name = "[secondary_owner][secondary_prefix] |[secondary_shipname]|"
@@ -147,7 +137,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	if(source.complex_tasks)
 		mission_noun = "[pick(source.task_types)] [pick(source.flight_types)]"
 
-	//First response is 'yes', second is 'no'
+	//First response is 'yes', second is 'no', we need both or this falls over
 	var/list/requests = list(
 		"special flight rules" = list("authorizing special flight rules", "denying special flight rules, not allowed for your traffic class"),
 		"current solar weather info" = list("sending you the relevant information via tightbeam", "your request has been queued, stand by"),
@@ -162,12 +152,23 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/chatter_type = "normal"
 	if(force_chatter_type)
 		chatter_type = force_chatter_type
-	//I have to offload this from the chatter_type switch below and do it here. Byond should throw a shitfit because this isn't how you use pick.
+	//I have to offload this from the chatter_type switch below and do it here.
+	/*
 	else if(source_law_abiding && source_fleet)
 		chatter_type = pickweight(list("fleettraffic" = 90, "emerg" = 10, "dockingrequestgeneric" = 10,"dockingrequestsupply" = 10,
 		"dockingrequestrepair" = 10,"undockingrequest" = 5, "normal"))
+	*/
 
-	else if(source_law_abiding && !source_system_defense)
+	//RIP MBT. this might make travel advisories a little more common, but probably not significantly so given the odds involved
+	else if(source_org_type == "retired" || secondary_org_type == "retired")
+		chatter_type = "traveladvisory"
+		
+	//this is ugly but when I tried to use (not-smuggler-or-not-pirate)-and-pirate it tripped a pirate-v-pirate skirmish, still not sure why even after doublechecking all the orgtypes and the logic itself. might as well stick it up here so it takes priority over other combos.
+	else if((source_org_type == "government" || source_org_type == "neutral" || source_org_type == "military" || source_org_type == "corporate" || source_org_type == "system defense") && secondary_org_type == "pirate")
+		chatter_type = "distress"
+
+	//this can probably just be retired in favour of the final 'else' block below at this point? not sure.
+	else if((source_org_type == "government" || source_org_type == "neutral" || source_org_type == "military" || source_org_type == "corporate"))
 		chatter_type = pickweight(list("emerg" = 5, "policescan" = 25, "traveladvisory" = 25,
 		"pathwarning" = 30, "dockingrequestgeneric" = 30, "dockingrequestdenied" = 30,
 		"dockingrequestdelayed" = 30, "dockingrequestsupply" = 30, "dockingrequestrepair" = 30,
@@ -175,32 +176,29 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		"undockingdenied" = 30, "undockingdelayed" = 30, "normal"))
 
 	//The following filters *always* fire their 'unique' event when they're tripped, simply because the conditions behind them are quite rare to begin with
-	//just straight up funnel smugglers into always being caught, otherwise we get them asking for traffic info and stuff
-	else if(source_name == "Smugglers" && !secondary_system_defense)
+	//just straight up funnel smugglers into always being caught, otherwise we get them asking for traffic info and stuff. if their disguises work then nobody is any the wiser.
+	else if(source_org_type == "smugglers" && secondary_org_type != "system defense")
 		chatter_type = "policeflee"
 
 	//ditto, if an SDF ship catches them
-	else if(source_name == "Smugglers" && secondary_system_defense)
+	else if(source_org_type == "smugglers" && secondary_org_type == "system defense")
 		chatter_type = "policeshipflee"
 
-	else if(source_law_abiding && secondary_law_breaker) //on the offchance that we manage to roll a goodguy and a badguy, run a new distress event - it's like emerg but better
-		chatter_type = "distress"
-
-	else if(source_law_breaker && secondary_system_defense) //if we roll this combo instead, time for the SDF to do their fucking job
+	else if(source_org_type == "pirate" && secondary_org_type == "system defense") //if we roll this combo instead, time for the SDF to do their fucking job
 		chatter_type = "policeshipcombat"
 
-	else if(source_law_breaker && !secondary_system_defense) //but if we roll THIS combo, time to alert the SDF to get off their asses
+	else if(source_org_type == "pirate" && secondary_org_type != "system defense") //but if we roll THIS combo, time to alert the SDF to get off their asses
 		chatter_type = "hostiledetected"
 
 	//SDF-specific events that need to filter based on the second party (basically just the following SDF-unique list with the soft-result ship scan thrown in)
-	else if(source_system_defense && secondary_law_abiding && !secondary_system_defense) //let's see if we can narrow this down, I didn't see many ship-to-ship scans
+	else if(source_org_type == "system defense" && (secondary_org_type == "government" || secondary_org_type == "neutral" || secondary_org_type == "military" || secondary_org_type == "corporate")) //let's see if we can narrow this down, I didn't see many ship-to-ship scans
 		chatter_type = pickweight(list("policeshipscan" = 45, "sdfpatrolupdate", "sdfendingpatrol" = 75,
 		"dockingrequestgeneric" = 30, "dockingrequestdelayed" = 30, "dockingrequestsupply" = 30,
 		"dockingrequestrepair" = 30, "dockingrequestmedical" = 30, "dockingrequestsecurity" = 30,
 		"undockingrequest" = 20, "sdfbeginpatrol" = 75, "normal"))
 
 	//SDF-specific events that don't require the secondary at all, in the event that we manage to roll SDF + hostile/smuggler or something
-	else if(source_system_defense)
+	else if(source_org_type == "system defense")
 		chatter_type = pickweight(list("sdfpatrolupdate", "sdfendingpatrol" = 60, "dockingrequestgeneric" = 30,
 		"dockingrequestdelayed" = 30, "dockingrequestsupply" = 30, "dockingrequestrepair" = 30,
 		"dockingrequestmedical" = 30, "dockingrequestsecurity" = 30, "undockingrequest" = 20,
@@ -221,7 +219,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/request = pick(requests)
 	var/callname = pick(alt_atc_names)
 	var/response = requests[request][yes ? 1 : 2] //1 is yes, 2 is no
-	var/number = rand(1,15)
+	var/number = rand(1,42)
 	var/zone = pick("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta",
 		"Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi",
 		"Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega")
@@ -423,7 +421,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		if("dockingrequestdenied")
 			var/reason = pick("we don't have any landing pads large enough for your vessel","we don't have the necessary facilities for your vessel type or class")
 			var/disappointed = pick("That's unfortunate. [combined_first_name], out.","Damn shame. We'll just have to keep moving. [combined_first_name], out.","[combined_first_name], out.")
-			msg("[callname], this is [combined_first_name], [pick("stopping by","passing through")] on our way to [source_destname], requesting permission to [landing_move].","[source_prefix] [source_shipname]")
+			msg("[callname], this is [combined_first_name], [pick("stopping by","passing through")] on our way to [source_destname], requesting permission to [landing_short].","[source_prefix] [source_shipname]")
 			sleep(5 SECONDS)
 			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Request denied, [reason].")
 			sleep(5 SECONDS)
