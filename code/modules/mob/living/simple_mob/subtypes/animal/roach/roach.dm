@@ -88,6 +88,19 @@
 	holder_type = /obj/item/holder/roach
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
+//Randomization Code
+/mob/living/simple_mob/animal/roach/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 /mob/living/simple_mob/animal/roach/Initialize(mapload)
 	. = ..()
 
@@ -116,6 +129,18 @@
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
 
 	taser_kill = 0
+
+//Unrandom the pet...?
+/mob/living/simple_mob/animal/roach/Greta/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
 
 /mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
 	. = ..()

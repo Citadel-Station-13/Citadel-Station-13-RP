@@ -45,6 +45,19 @@
 
 	var/scare_chance = 15
 
+//Randomization Code
+/mob/living/simple_mob/animal/space/bats/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 /mob/living/simple_mob/animal/space/bats/apply_melee_effects(var/atom/A)
 	if(isliving(A))
 		var/mob/living/L = A

@@ -31,6 +31,19 @@
 		/turf/simulated/floor/water
 	)
 
+//Randomization Code
+/mob/living/simple_mob/animal/passive/fish/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 // Makes the AI unable to willingly go on land.
 /mob/living/simple_mob/animal/passive/fish/IMove(turf/newloc, safety = TRUE)
 	if(is_type_in_list(newloc, suitable_turf_types))

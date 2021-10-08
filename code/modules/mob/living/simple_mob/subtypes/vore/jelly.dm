@@ -19,23 +19,31 @@
 	faction = "virgo2"
 	maxHealth = 50
 	health = 50
-<<<<<<< HEAD
 
 	melee_damage_lower = 2
 	melee_damage_upper = 7
-=======
->>>>>>> parent of f4584a80d (The Great Randoming)
 
-	melee_damage_lower = 2
-	melee_damage_upper = 7
+	response_help = "gently pets"
+	response_disarm = "tries to shove"
+	response_harm = "mushes their hand into"
 
 	say_list_type = /datum/say_list/jelly
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/jelly
 
-<<<<<<< HEAD
+//Randomization Code
+/mob/living/simple_mob/animal/space/jelly/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
-=======
->>>>>>> parent of f4584a80d (The Great Randoming)
+
 // Activate Noms!
 /mob/living/simple_mob/animal/space/jelly
 	vore_active = 1
@@ -49,17 +57,21 @@
 
 /datum/ai_holder/simple_mob/retaliate/jelly
 	speak_chance = 2
-<<<<<<< HEAD
 
 // Talon's Pet, Wiggleblob!
 /mob/living/simple_mob/animal/space/jelly/wiggleblob
 	name = "Mr. Wiggleblob."
 	desc = "Mr. Wiggleblob! The official mascot of the Talon. So huggable. So squishable. Just try not to get eaten!"
+	makes_dirt = FALSE
 
-	size_multiplier = 1.25
-<<<<<<< HEAD
-=======
-	movement_cooldown = 5
->>>>>>> parent of 4a597abb2 (Trailing Newline)
-=======
->>>>>>> parent of f4584a80d (The Great Randoming)
+//Unrandom the pet
+/mob/living/simple_mob/animal/space/jelly/wiggleblob/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
