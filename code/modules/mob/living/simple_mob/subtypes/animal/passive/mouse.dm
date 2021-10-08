@@ -131,8 +131,8 @@
 	maxHealth = 20
 	health = 20
 
-	mod_min = 120
-	mod_max = 150
+	mod_min = 90
+	mod_max = 120
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
