@@ -37,6 +37,8 @@
 	icon_rest = "mouse_gray_sleep"
 	faction = "mouse_army"
 
+	maxHealth = 50
+	health = 50
 	universal_understand = 1
 
 	taser_kill = 0
@@ -57,6 +59,8 @@
 	maxbodytemp = 5000	//Above 50 Degrees Celcius
 
 	//Mob melee settings
+	melee_damage_lower = 5
+	melee_damage_upper = 15
 	list/attacktext = list("attacked", "chomped", "gnawed on")
 	list/friendly = list("baps", "nuzzles")
 	attack_armor_type = "melee"
@@ -84,18 +88,6 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 	var/rank //pyro, operative, ammo, stealth. more to come. Do not leave blank.
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/mouse_army/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(50*mod)
-    health = round(50*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(15*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/space/mouse_army/Initialize(mapload)
 	. = ..()
@@ -177,19 +169,6 @@
 				"bio" = 100,
 				"rad" = 100)	//Mercenary Voidsuit Resistances, slightly downscaled, due to size.
 
-//Randomization Code
-/mob/living/simple_mob/animal/space/mouse_army/operative/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(50*mod)
-    health = round(50*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(15*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
-
-
 //Pyro Mouse
 
 /datum/category_item/catalogue/fauna/mouse_army/pyro
@@ -206,7 +185,12 @@
 	rank = "pyro"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/pyro)
 
+	maxHealth = 30
+	health = 30
+
 	//Mob melee settings
+	melee_damage_lower = 5
+	melee_damage_upper = 10
 	attack_sharp = 0
 	attack_edge = 0
 
@@ -228,19 +212,6 @@
 
 	var/datum/effect_system/spark_spread/spark_system
 	var/ruptured = FALSE
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/mouse_army/pyro/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(30*mod)
-    health = round(30*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(10*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
-
 
 /mob/living/simple_mob/animal/space/mouse_army/pyro/death()
 	visible_message("<span class='critical'>\The [src]'s tank groans!</span>")
@@ -286,7 +257,12 @@
 	rank = "ammo"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/ammo)
 
+	maxHealth = 30
+	health = 30
+
 	//Mob melee settings
+	melee_damage_lower = 1
+	melee_damage_upper = 5
 	attack_sharp = 0
 	attack_edge = 0
 
@@ -311,19 +287,6 @@
 	var/explosion_delay_upper	= 3 SECONDS	// Upper bound.
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/mouse_army/ammo/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(30*mod)
-    health = round(30*mod)
-    melee_damage_lower = round(1*mod)
-    melee_damage_upper = round(5*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
-
 
 /mob/living/simple_mob/animal/space/mouse_army/ammo/death()
 	visible_message("<span class='critical'>\The [src]'s body begins to rupture!</span>")
@@ -364,6 +327,8 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse_army/stealth)
 
 	//Mob melee settings
+	melee_damage_lower = 15
+	melee_damage_upper = 20
 	attack_sharp = 1
 	attack_edge = 1
 
@@ -390,19 +355,6 @@
 	var/stealthed_weaken_amount = 3	// How long to stun for.
 	var/stealth_cooldown = 10 SECONDS	// Amount of time needed to re-stealth after losing it.
 	var/last_unstealth = 0			// world.time
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/mouse_army/stealth/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(50*mod)
-    health = round(50*mod)
-    melee_damage_lower = round(15*mod)
-    melee_damage_upper = round(20*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
-
 
 
 /mob/living/simple_mob/animal/space/mouse_army/stealth/proc/stealth()

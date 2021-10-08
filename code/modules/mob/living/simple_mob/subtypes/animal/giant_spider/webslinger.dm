@@ -22,25 +22,17 @@
 	icon_state = "webslinger"
 	icon_living = "webslinger"
 	icon_dead = "webslinger_dead"
+	maxHealth = 90
+	health = 90
 	projectilesound = 'sound/weapons/thudswoosh.ogg'
 	projectiletype = /obj/item/projectile/webball
 	base_attack_cooldown = 10
+	melee_damage_lower = 8
+	melee_damage_upper = 15
 	poison_per_bite = 2
 	poison_type = "psilocybin"
 	player_msg = "You can fire a ranged attack by clicking on an enemy or tile at a distance."
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged
-
-//Randomization Code
-/mob/living/simple_mob/animal/giant_spider/webslinger/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(90*mod)
-    health = round(90*mod)
-    melee_damage_lower = round(8*mod)
-    melee_damage_upper = round(15*mod)
-    movement_cooldown = round(10*mod)
-    update_icons()
 
 // Check if we should bola, or just shoot the pain ball
 /mob/living/simple_mob/animal/giant_spider/webslinger/should_special_attack(atom/A)

@@ -45,18 +45,6 @@
 			say(pick("Blub", "Glub", "Burble"))
 		adjustBruteLoss(unsuitable_atoms_damage)
 
-//Randomization Code
-/mob/living/simple_mob/animal/passive/fish/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(20*mod)
-    health = round(20*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(5*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
-
 // Subtypes.
 /mob/living/simple_mob/animal/passive/fish/bass
 	name = "bass"
@@ -102,6 +90,8 @@
 
 /mob/living/simple_mob/animal/passive/fish/koi/poisonous
 	desc = "A genetic marvel, combining the docility and aesthetics of the koi with some of the resiliency and cunning of the noble space carp."
+	health = 50
+	maxHealth = 50
 
 /mob/living/simple_mob/animal/passive/fish/koi/poisonous/Initialize(mapload)
 	. = ..()

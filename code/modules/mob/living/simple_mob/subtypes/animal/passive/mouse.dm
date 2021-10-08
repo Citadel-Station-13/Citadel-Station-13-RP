@@ -17,6 +17,9 @@
 	icon_dead = "mouse_gray_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse)
 
+	maxHealth = 5
+	health = 5
+
 	mob_size = MOB_MINISCULE
 	pass_flags = PASSTABLE
 	can_pull_size = ITEMSIZE_TINY
@@ -45,18 +48,6 @@
 
 	no_vore = 1 //Mice can't eat others due to the amount of bugs caused by it.
 	vore_taste = "cheese"
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/mouse/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(5*mod)
-    health = round(5*mod)
-    melee_damage_lower = round(1*mod)
-    melee_damage_upper = round(1*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/passive/mouse/Initialize(mapload)
 	. = ..()
@@ -124,39 +115,19 @@
 
 /mob/living/simple_mob/animal/passive/mouse/rat
 	name = "rat"
+	maxHealth = 20
+	health = 20
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
-//Randomization Code
-/mob/living/simple_mob/animal/passive/mouse/rat/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(20*mod)
-    health = round(20*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(5*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
-
-/*/mob/living/simple_mob/animal/passive/mouse/rat/Initialize(mapload)
+/mob/living/simple_mob/animal/passive/mouse/rat/Initialize(mapload)
 	. = ..()
-	adjust_scale(1.2)*/
+	adjust_scale(1.2)
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = 5
-    health = 5
-    melee_damage_lower = 1
-    melee_damage_upper = 1
-    movement_cooldown = 5
 
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize(mapload)
 	. = ..()

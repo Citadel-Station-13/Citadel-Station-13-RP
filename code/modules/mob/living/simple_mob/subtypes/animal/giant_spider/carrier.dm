@@ -20,8 +20,16 @@
 	icon_living = "carrier"
 	icon_dead = "carrier_dead"
 
+	maxHealth = 100
+	health = 100
+
+	melee_damage_lower = 8
+	melee_damage_upper = 25
+
 	poison_per_bite = 3
 	poison_type = "chloralhydrate"
+
+	movement_cooldown = 5
 
 	player_msg = "Upon dying, you will release a swarm of spiderlings or young hunter spiders.<br>\
 	If a spider emerges, you will be placed in control of it."
@@ -31,18 +39,6 @@
 	var/swarmling_type = /mob/living/simple_mob/animal/giant_spider/hunter
 	var/swarmling_faction = "spiders"
 	var/swarmling_prob = 10 // Odds that a spiderling will be a swarmling instead.
-
-//Randomization Code
-/mob/living/simple_mob/animal/giant_spider/carrier/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(100*mod)
-    health = round(100*mod)
-    melee_damage_lower = round(8*mod)
-    melee_damage_upper = round(25*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/giant_spider/carrier/Initialize(mapload)
 	spiderling_count = rand(5, 10)

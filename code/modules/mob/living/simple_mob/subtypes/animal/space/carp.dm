@@ -35,12 +35,17 @@
 	icon_gib = "carp_gib"
 
 	faction = "carp"
+	maxHealth = 25
+	health = 25
+	movement_cooldown = 0 // Carp go fast
 	hovering = TRUE
 
 	response_help = "pets the"
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
 
+	melee_damage_lower = 7 // About 14 DPS.
+	melee_damage_upper = 7
 	base_attack_cooldown = 10 // One attack a second.
 	attack_sharp = TRUE
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -52,18 +57,6 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 	var/knockdown_chance = 15
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/carp/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(25*mod)
-	health = round(25*mod)
-	melee_damage_lower = round(7*mod)
-	melee_damage_upper = round(7*mod)
-	movement_cooldown = round(1*mod)
-	update_icons()
 
 /mob/living/simple_mob/animal/space/carp/apply_melee_effects(var/atom/A)
 	if(isliving(A))
@@ -87,6 +80,9 @@
 	icon_living = "shark"
 	icon_dead = "shark_dead"
 
+	maxHealth = 50
+	health = 50
+	movement_cooldown = 5 // Slower than the younger carp.
 	mob_size = MOB_LARGE
 
 	pixel_x = -16
@@ -95,18 +91,6 @@
 	icon_expected_height = 32
 
 	meat_amount = 5
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/carp/large/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(50*mod)
-	health = round(50*mod)
-	melee_damage_lower = round(7*mod)
-	melee_damage_upper = round(7*mod)
-	movement_cooldown = round(5*mod)
-	update_icons()
 
 
 /mob/living/simple_mob/animal/space/carp/large/huge
@@ -117,6 +101,13 @@
 	icon_living = "megacarp"
 	icon_state = "megacarp"
 
+	maxHealth = 230
+	health = 230
+	movement_cooldown = 10
+
+	melee_damage_lower = 15 // About 20 DPS.
+	melee_damage_upper = 25
+
 	pixel_y = -16
 	default_pixel_y = -16
 	icon_expected_width = 64
@@ -124,17 +115,6 @@
 
 	meat_amount = 10
 
-//Randomization Code
-/mob/living/simple_mob/animal/space/carp/large/huge/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(230*mod)
-	health = round(230*mod)
-	melee_damage_lower = round(15*mod)
-	melee_damage_upper = round(25*mod)
-	movement_cooldown = round(10*mod)
-	update_icons()
 
 /mob/living/simple_mob/animal/space/carp/holographic
 	name = "holographic carp"
@@ -148,14 +128,6 @@
 	icon_gib = null
 	meat_amount = 0
 	meat_type = null
-//unrandomized
-	size_multiplier = 1
-	maxHealth = 25
-	health = 25
-	melee_damage_lower = 7
-	melee_damage_upper = 7
-	movement_cooldown = 1
-	update_icons()
 
 	mob_class = MOB_CLASS_PHOTONIC // Xeno-taser won't work on this as its not a 'real' carp.
 

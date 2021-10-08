@@ -16,7 +16,11 @@
 	icon_dead = "otie-dead"
 	icon_rest = "otie_rest"
 	faction = "otie"
+	maxHealth = 150
+	health = 150
 	minbodytemp = 200
+	melee_damage_lower = 2
+	melee_damage_upper = 7 //Don't break my bones bro
 	response_help = "pets the"
 	response_disarm = "bops the"
 	response_harm = "hits the"
@@ -41,19 +45,6 @@
 	var/mob/living/carbon/human/friend
 	var/tamed = 0
 	var/tame_chance = 50 //It's a fiddy-fiddy default you may get a buddy pal or you may get mauled and ate. Win-win!
-
-//Randomization Code
-/mob/living/simple_mob/otie/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(150*mod)
-    health = round(150*mod)
-    melee_damage_lower = round(2*mod)
-    melee_damage_upper = round(7*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
-
 
 // Activate Noms!
 

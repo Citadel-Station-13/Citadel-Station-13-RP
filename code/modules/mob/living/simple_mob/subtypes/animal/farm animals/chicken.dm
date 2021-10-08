@@ -41,6 +41,9 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	icon_dead = "chicken_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/chicken)
 
+	health = 10
+	maxHealth = 10
+
 	pass_flags = PASSTABLE
 	mob_size = MOB_SMALL
 
@@ -53,23 +56,11 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 
 	say_list_type = /datum/say_list/chicken
 
+	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken
 
 	var/eggsleft = 0
 	var/body_color
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/chicken/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(10*mod)
-    health = round(10*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(5*mod)
-    movement_cooldown = round(5*mod)
-    meat_amount = round(3*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/passive/chicken/Initialize(mapload)
 	. = ..()

@@ -19,18 +19,23 @@
 	faction = "virgo2"
 	maxHealth = 50
 	health = 50
+<<<<<<< HEAD
+
+	melee_damage_lower = 2
+	melee_damage_upper = 7
+=======
+>>>>>>> parent of f4584a80d (The Great Randoming)
 
 	melee_damage_lower = 2
 	melee_damage_upper = 7
 
-	response_help = "gently pets"
-	response_disarm = "tries to shove"
-	response_harm = "mushes their hand into"
-
 	say_list_type = /datum/say_list/jelly
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/jelly
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of f4584a80d (The Great Randoming)
 // Activate Noms!
 /mob/living/simple_mob/animal/space/jelly
 	vore_active = 1
@@ -44,6 +49,7 @@
 
 /datum/ai_holder/simple_mob/retaliate/jelly
 	speak_chance = 2
+<<<<<<< HEAD
 
 // Talon's Pet, Wiggleblob!
 /mob/living/simple_mob/animal/space/jelly/wiggleblob
@@ -55,3 +61,5 @@
 =======
 	movement_cooldown = 5
 >>>>>>> parent of 4a597abb2 (Trailing Newline)
+=======
+>>>>>>> parent of f4584a80d (The Great Randoming)

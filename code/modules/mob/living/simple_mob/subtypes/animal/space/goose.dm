@@ -15,29 +15,23 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/goose)
 
 	faction = "geese"
+
+	maxHealth = 30
+	health = 30
+
 	response_help = "pets the"
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
 
 	harm_intent_damage = 5
+	melee_damage_lower = 5 //they're meant to be annoying, not threatening.
+	melee_damage_upper = 5 //unless there's like a dozen of them, then you're screwed.
 	attacktext = list("pecked")
 	attack_sound = 'sound/weapons/bite.ogg'
 
 	has_langs = list("Bird")
 
 	meat_type = /obj/item/reagent_containers/food/snacks/meat
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/goose/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(30*mod)
-	health = round(30*mod)
-	melee_damage_lower = round(5*mod)
-	melee_damage_upper = round(5*mod)
-	movement_cooldown = round(5*mod)
-	update_icons()
 
 /datum/say_list/goose
 	speak = list("HONK!")

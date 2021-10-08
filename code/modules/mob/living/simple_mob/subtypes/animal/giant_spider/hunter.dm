@@ -23,7 +23,14 @@
 	icon_living = "hunter"
 	icon_dead = "hunter_dead"
 
+	maxHealth = 120
+	health = 120
+
 	poison_per_bite = 5
+	melee_damage_lower = 9
+	melee_damage_upper = 15
+
+	movement_cooldown = 0 // Hunters are FAST.
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/hunter_spider
 
@@ -40,18 +47,6 @@
 
 	var/leap_warmup = 1 SECOND // How long the leap telegraphing is.
 	var/leap_sound = 'sound/weapons/spiderlunge.ogg'
-
-//Randomization Code
-/mob/living/simple_mob/animal/giant_spider/hunter/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(120*mod)
-    health = round(120*mod)
-    melee_damage_lower = round(9*mod)
-    melee_damage_upper = round(15*mod)
-    movement_cooldown = round(1*mod)
-    update_icons()
 
 // Multiplies damage if the victim is stunned in some form, including a successful leap.
 /mob/living/simple_mob/animal/giant_spider/hunter/apply_bonus_melee_damage(atom/A, damage_amount)

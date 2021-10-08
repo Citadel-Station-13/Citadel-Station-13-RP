@@ -20,6 +20,11 @@
 	icon = 'icons/mob/vore64x64.dmi'
 
 	faction = "snake"
+	maxHealth = 200
+	health = 200
+
+	melee_damage_lower = 5
+	melee_damage_upper = 12
 
 	old_x = -16
 	old_y = -16
@@ -29,18 +34,6 @@
 	pixel_y = -16
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
-
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/giant_snake/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(200*mod)
-    health = round(200*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(12*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/giant_snake

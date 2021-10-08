@@ -17,6 +17,9 @@
 	icon_dead = "corgi_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dog)
 
+	health = 20
+	maxHealth = 20
+
 	response_help  = "pets"
 	response_disarm = "bops"
 	response_harm   = "kicks"
@@ -32,18 +35,6 @@
 
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/dog/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(20*mod)
-    health = round(20*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(5*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
 
 
 /mob/living/simple_mob/animal/passive/dog/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -134,17 +125,6 @@
 	name = "Bockscar"
 	real_name = "Bockscar"
 
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/corgi/puppy/Bockscar/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = 20
-    health = 20
-    melee_damage_lower = 5
-    melee_damage_upper = 5
-    movement_cooldown = 5
-    update_icons()
-
 //Sir Pogsley. (Sec Pet)
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley
 	name = "Sir Pogsley"
@@ -154,17 +134,6 @@
 	makes_dirt = FALSE
 	var/turns_since_scan = 0
 	var/obj/movement_target
-
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/corgi/SirPogsley/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = 20
-    health = 20
-    melee_damage_lower = 5
-    melee_damage_upper = 5
-    movement_cooldown = 5
-    update_icons()
 
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Life()
 	..()
@@ -223,17 +192,6 @@
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	makes_dirt = FALSE	//VOREStation edit: no more dirt
-
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/corgi/Ian/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = 20
-    health = 20
-    melee_damage_lower = 5
-    melee_damage_upper = 5
-    movement_cooldown = 5
-    update_icons()
 
 /mob/living/simple_mob/animal/passive/dog/corgi/Ian/Life()
 	..()
@@ -299,17 +257,6 @@
 	var/turns_since_scan = 0
 	var/puppies = 0
 
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = 20
-    health = 20
-    melee_damage_lower = 5
-    melee_damage_upper = 5
-    movement_cooldown = 5
-    update_icons()
-
 //Lisa already has a cute bow!
 /mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
@@ -362,14 +309,3 @@
 	real_name = "Spice"	//Intended to hold the name without altering it.
 	gender = FEMALE
 	desc = "It's a tamaskan, the name Spice can be found on its collar."
-
-//Unrandom the pet.
-/mob/living/simple_mob/animal/passive/dog/tamaskan/Spice/Initialize()
-    . = ..()
-    size_multiplier = 1
-    maxHealth = 20
-    health = 20
-    melee_damage_lower = 5
-    melee_damage_upper = 5
-    movement_cooldown = 5
-    update_icons()

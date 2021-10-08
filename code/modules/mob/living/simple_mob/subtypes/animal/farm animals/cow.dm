@@ -17,6 +17,8 @@
 	icon_gib = "cow_gib"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/cow)
 
+	health = 50
+	maxHealth = 50
 
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
@@ -25,22 +27,10 @@
 
 	say_list_type = /datum/say_list/cow
 
+	meat_amount = 6
 	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/datum/reagents/udder = null
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/cow/Initialize()
-    . = ..()
-    var/mod = rand(80,150)/100
-    size_multiplier = mod
-    maxHealth = round(50*mod)
-    health = round(50*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(5*mod)
-    movement_cooldown = round(5*mod)
-    meat_amount = round(6*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/passive/cow/Initialize(mapload)
 	. = ..()

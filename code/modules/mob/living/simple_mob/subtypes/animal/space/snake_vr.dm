@@ -19,26 +19,21 @@
 	icon_dead = "snake_dead"
 	icon = 'icons/mob/snake_vr.dmi'
 
+	maxHealth = 20
+	health = 20
+
+	movement_cooldown = 8 // SLOW-ASS MUTHAFUCKA, I hope.
+
 	response_help  = "pets"
 	response_disarm = "shoos"
 	response_harm   = "kicks"
 
+	melee_damage_lower = 2
+	melee_damage_upper = 3
 	attacktext = list("bitten")
 
 	say_list_type = /datum/say_list/snake
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/snake/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(20*mod)
-	health = round(20*mod)
-	melee_damage_lower = round(2*mod)
-	melee_damage_upper = round(3*mod)
-	movement_cooldown = round(8*mod)
-	update_icons()
 
 /datum/say_list/snake
 	emote_hear = list("hisses")
@@ -52,13 +47,6 @@
 
 	var/turns_since_scan = 0
 	var/obj/movement_target
-//unrandom for Noodle
-	size_multiplier = 1
-	maxHealth = 20
-	health = 20
-	melee_damage_lower = 2
-	melee_damage_upper = 3
-	movement_cooldown = 8
 
 /mob/living/simple_mob/animal/passive/snake/noodle/Life()
 	..()

@@ -13,7 +13,10 @@
 	response_help = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm = "hits"
+	movement_cooldown = 4
 	harm_intent_damage = 5
+	melee_damage_lower = 5
+	melee_damage_upper = 12
 	attacktext = list("bitten")
 	attack_sound = 'sound/weapons/bite.ogg'
 	minbodytemp = 200
@@ -32,18 +35,6 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
-
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/dino/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(20*mod)
-    health = round(20*mod)
-    melee_damage_lower = round(5*mod)
-    melee_damage_upper = round(12*mod)
-    movement_cooldown = round(4*mod)
-    update_icons()
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/dino

@@ -18,6 +18,11 @@
 	faction = "mouse"
 	icon = 'icons/mob/vore64x32.dmi'
 
+	maxHealth = 150
+	health = 150
+
+	melee_damage_lower = 2
+	melee_damage_upper = 7
 	grab_resist = 100
 
 	response_help = "pets the"
@@ -48,18 +53,6 @@
 	say_list_type = /datum/say_list/rat
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/rat
 
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/rat/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(150*mod)
-    health = round(150*mod)
-    melee_damage_lower = round(2*mod)
-    melee_damage_upper = round(7*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
-
 /mob/living/simple_mob/vore/aggressive/rat/tame		//not quite tame but does not attack on sight
 	name = "curious giant rat"
 	desc = "In what passes for a hierarchy among verminous rodents, this one is king. It seems to be more interested on scavenging."
@@ -72,17 +65,6 @@
 	He appears to have grown quite chubby off gifts of trash and cheese from the crew."
 
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
-
-//Unrandom the pet.
-/mob/living/simple_mob/vore/aggressive/rat/maurice/Initialize()
-    . = ..()
-    size_multiplier = 1.25
-    maxHealth = 150*1.25
-    health = 150*1.25
-    melee_damage_lower = 2*1.25
-    melee_damage_upper = 7*1.25
-    movement_cooldown = 5*1.25
-    update_icons()
 
 /*
 /mob/living/simple_mob/vore/aggressive/rat/tame/Life()
@@ -231,18 +213,6 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
-
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/rat/phoron/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(175*mod)
-    health = round(75*mod)
-    melee_damage_lower = round(8*mod)
-    melee_damage_upper = round(16*mod)
-    movement_cooldown = round(5*mod)
-    update_icons()
 
 /datum/say_list/rat
 	speak = list("Squeek!","SQUEEK!","Squeek?")

@@ -53,7 +53,12 @@
 	response_disarm = "shoves"
 	response_harm = "hits"
 
+	maxHealth = 100
+	health = 100
+
 	harm_intent_damage = 5
+	melee_damage_lower = 25
+	melee_damage_upper = 25
 	attack_sharp = TRUE
 	attack_edge = TRUE
 
@@ -61,18 +66,6 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/alien/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(100*mod)
-	health = round(100*mod)
-	melee_damage_lower = round(25*mod)
-	melee_damage_upper = round(25*mod)
-	movement_cooldown = round(5*mod)
-	update_icons()
 
 /datum/category_item/catalogue/fauna/feral_alien/drone
 	name = "Feral Xenomorph - Drone"
@@ -90,19 +83,10 @@
 	icon_living = "aliend_running"
 	icon_dead = "aliend_l"
 	icon_rest = "aliend_sleep"
+	health = 100
+	melee_damage_lower = 15
+	melee_damage_upper = 15
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/drone)
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/alien/drone/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(100*mod)
-	health = round(100*mod)
-	melee_damage_lower = round(15*mod)
-	melee_damage_upper = round(15*mod)
-	movement_cooldown = round(5*mod)
-	update_icons()
 
 /datum/category_item/catalogue/fauna/feral_alien/sentinel
 	name = "Feral Xenomorph - Sentinel"
@@ -121,21 +105,12 @@
 	icon_living = "aliens_running"
 	icon_dead = "aliens_l"
 	icon_rest = "aliens_sleep"
+	health = 220
+	melee_damage_lower = 15
+	melee_damage_upper = 15
 	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel)
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/alien/sentinel/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(220*mod)
-	health = round(220*mod)
-	melee_damage_lower = round(15*mod)
-	melee_damage_upper = round(15*mod)
-	movement_cooldown = round(5*mod)
-	update_icons()
 
 /datum/category_item/catalogue/fauna/feral_alien/sentinel/praetorian
 	name = "Feral Xenomorph - Praetorian"
@@ -156,6 +131,8 @@
 	icon_living = "prat_s"
 	icon_dead = "prat_dead"
 	icon_rest = "prat_sleep"
+	maxHealth = 400
+	health = 400
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/sentinel/praetorian)
 
 	pixel_x = -16
@@ -163,18 +140,6 @@
 	icon_expected_width = 64
 	icon_expected_height = 64
 	meat_amount = 5
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/alien/sentinel/praetorian/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(400*mod)
-	health = round(400*mod)
-	melee_damage_lower = round(25*mod)
-	melee_damage_upper = round(25*mod)
-	movement_cooldown = round(5*mod)
-	update_icons()
 
 /datum/category_item/catalogue/fauna/feral_alien/queen
 	name = "Feral Xenomorph - Queen"
@@ -195,21 +160,16 @@
 	icon_living = "alienq_running"
 	icon_dead = "alienq_l"
 	icon_rest = "alienq_sleep"
+	health = 750
+	maxHealth = 750
+	melee_damage_lower = 15
+	melee_damage_upper = 15
 	projectiletype = /obj/item/projectile/energy/neurotoxin/toxic
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen)
 
-//Randomization Code
-/mob/living/simple_mob/animal/space/alien/queen/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(750*mod)
-	health = round(750*mod)
-	melee_damage_lower = round(15*mod)
-	melee_damage_upper = round(15*mod)
-	movement_cooldown = round(8*mod)
-	update_icons()
+
+	movement_cooldown = 8
 
 /datum/category_item/catalogue/fauna/feral_alien/queen/empress
 	name = "Feral Xenomorph - Empress"
@@ -239,18 +199,6 @@
 	icon_expected_width = 64
 	icon_expected_height = 64
 
-//Randomization Code
-/mob/living/simple_mob/animal/space/alien/queen/empress/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(1000*mod)
-	health = round(1000*mod)
-	melee_damage_lower = round(25*mod)
-	melee_damage_upper = round(25*mod)
-	movement_cooldown = round(5*mod)
-	update_icons()
-
 /datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother
 	name = "Feral Xenomorph - Mother"
 	desc = "The true end stage of Xenomorph Queen development, \
@@ -269,25 +217,17 @@
 	icon_living = "empress_s"
 	icon_dead = "empress_dead"
 	icon_rest = "empress_rest"
+	maxHealth = 600
+	health = 600
 	meat_amount = 10
+	melee_damage_lower = 15
+	melee_damage_upper = 25
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother)
 
 	pixel_x = -32
 	old_x = -32
 	icon_expected_width = 96
 	icon_expected_height = 96
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/alien/queen/empress/mother/Initialize()
-	. = ..()
-	var/mod = rand(50,150)/100
-	size_multiplier = mod
-	maxHealth = round(600*mod)
-	health = round(600*mod)
-	melee_damage_lower = round(15*mod)
-	melee_damage_upper = round(25*mod)
-	movement_cooldown = round(5*mod)
-	update_icons()
 
 /mob/living/simple_mob/animal/space/alien/death()
 	..()

@@ -23,6 +23,12 @@
 
 	pass_flags = PASSTABLE
 
+	health = 30
+	maxHealth = 30
+	melee_damage_lower = 3
+	melee_damage_upper = 3
+
+	movement_cooldown = 0
 	hovering = TRUE // Birds can fly.
 	softfall = TRUE
 	parachuting = TRUE
@@ -36,18 +42,6 @@
 
 	say_list_type = /datum/say_list/bird
 	holder_type = /obj/item/holder/bird
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/bird/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod
-    maxHealth = round(30*mod)
-    health = round(30*mod)
-    melee_damage_lower = round(3*mod)
-    melee_damage_upper = round(3*mod)
-    movement_cooldown = round(1*mod)
-    update_icons()
 
 /datum/say_list/bird
 	speak = list("Chirp!","Caw!","Screech!","Squawk!")
@@ -73,18 +67,8 @@
 	icon_state = "commonblackbird"
 	icon_dead = "commonblackbird-dead"
 	tt_desc = "E Turdus merula"
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/bird/black_bird/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod/2
-    maxHealth = round((30*mod)/2)
-    health = round((30*mod)/2)
-    melee_damage_lower = round((3*mod)/2)
-    melee_damage_upper = round((3*mod)/2)
-    movement_cooldown = round((1*mod)/2)
-    update_icons()
+	icon_scale_x = 0.5
+	icon_scale_y = 0.5
 
 /mob/living/simple_mob/animal/passive/bird/azure_tit
 	name = "azure tit"
@@ -92,18 +76,8 @@
 	icon_state = "azuretit"
 	icon_dead = "azuretit-dead"
 	tt_desc = "E Cyanistes cyanus"
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/bird/azure_tit/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod/2
-    maxHealth = round((30*mod)/2)
-    health = round((30*mod)/2)
-    melee_damage_lower = round((3*mod)/2)
-    melee_damage_upper = round((3*mod)/2)
-    movement_cooldown = round((1*mod)/2)
-    update_icons()
+	icon_scale_x = 0.5
+	icon_scale_y = 0.5
 
 /mob/living/simple_mob/animal/passive/bird/european_robin
 	name = "european robin"
@@ -111,18 +85,8 @@
 	icon_state = "europeanrobin"
 	icon_dead = "europeanrobin-dead"
 	tt_desc = "E Erithacus rubecula"
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/bird/european_robin/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod/2
-    maxHealth = round((30*mod)/2)
-    health = round((30*mod)/2)
-    melee_damage_lower = round((3*mod)/2)
-    melee_damage_upper = round((3*mod)/2)
-    movement_cooldown = round((1*mod)/2)
-    update_icons()
+	icon_scale_x = 0.5
+	icon_scale_y = 0.5
 
 /mob/living/simple_mob/animal/passive/bird/goldcrest
 	name = "goldcrest"
@@ -131,18 +95,8 @@
 	icon_state = "goldcrest"
 	icon_dead = "goldcrest-dead"
 	tt_desc = "E Regulus regulus"
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/bird/goldcrest/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod/2
-    maxHealth = round((30*mod)/2)
-    health = round((30*mod)/2)
-    melee_damage_lower = round((3*mod)/2)
-    melee_damage_upper = round((3*mod)/2)
-    movement_cooldown = round((1*mod)/2)
-    update_icons()
+	icon_scale_x = 0.5
+	icon_scale_y = 0.5
 
 /mob/living/simple_mob/animal/passive/bird/ringneck_dove
 	name = "ringneck dove"
@@ -150,15 +104,5 @@
 	icon_state = "ringneckdove"
 	icon_dead = "ringneckdove-dead"
 	tt_desc = "E Streptopelia risoria" // This is actually disputed IRL but since we can't tell the future it'll stay the same for 500+ years.
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/bird/ringneck_dove/Initialize()
-    . = ..()
-    var/mod = rand(50,150)/100
-    size_multiplier = mod/2
-    maxHealth = round((30*mod)/2)
-    health = round((30*mod)/2)
-    melee_damage_lower = round((3*mod)/2)
-    melee_damage_upper = round((3*mod)/2)
-    movement_cooldown = round((1*mod)/2)
-    update_icons()
+	icon_scale_x = 0.5
+	icon_scale_y = 0.5
