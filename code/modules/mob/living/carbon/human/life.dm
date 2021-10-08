@@ -1557,8 +1557,11 @@
 
 /mob/living/carbon/human/handle_shock()
 	..()
-	if(status_flags & GODMODE)	return 0	//godmode
-	if(!can_feel_pain()) return
+	if(status_flags & GODMODE)
+		return 0	//godmode
+	if(!can_feel_pain())
+		shock_stage = 0
+		return
 
 	if(health < config_legacy.health_threshold_softcrit)// health 0 makes you immediately collapse
 		shock_stage = max(shock_stage, 61)
