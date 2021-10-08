@@ -51,3 +51,7 @@
 	desc = "Mr. Wiggleblob! The official mascot of the Talon. So huggable. So squishable. Just try not to get eaten!"
 
 	size_multiplier = 1.25
+<<<<<<< HEAD
+=======
+	movement_cooldown = 5
+>>>>>>> parent of 4a597abb2 (Trailing Newline)
