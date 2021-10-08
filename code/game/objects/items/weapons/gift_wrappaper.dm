@@ -180,7 +180,6 @@
 		/obj/item/clothing/mask/gas/raven,
 		/obj/item/clothing/mask/gas/jackal,
 		/obj/item/clothing/mask/gas/bumba,
-		/obj/item/clothing/mask/gas/joy,
 		/obj/item/clothing/mask/gas/scarecrow,
 		/obj/item/clothing/mask/gas/mummy,
 		/obj/item/clothing/mask/gas/skeleton,
