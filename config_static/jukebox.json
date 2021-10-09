@@ -185,6 +185,26 @@
 "genre": "Alternative"
 },
 {
+"url": "https://files.catbox.moe/tsba1x.mp3",
+"title": "Don't Follow The Light",
+"duration": 2070,
+"artist": "Michal Michalski",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/f3udj0.mp3",
+"title": "Edge",
+"duration": 3200,
+"artist": "Michal Michalski",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
 "url": "https://files.catbox.moe/v9rq1q.m4a",
 "title": "Elegia",
 "duration": 2950,
@@ -222,6 +242,16 @@
 "artist": "Mild High Club",
 "secret": false,
 "emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/ep308b.mp3",
+"title": "Lily of the Valley",
+"duration": 2500,
+"artist": "Michal Michalski",
+"secret": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
@@ -404,6 +434,16 @@
 "genre": "Alternative"
 },
 {
+"url": "https://files.catbox.moe/1abiw5.mp3",
+"title": "We're All Dead Inside (So Sit Back And Relax)",
+"duration": 2690,
+"artist": "Michal Michalski",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
 "url": "https://files.catbox.moe/4lp9u9.mp3",
 "title": "White Light",
 "duration": 1330,
@@ -424,6 +464,16 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/cr0psf.mp3",
+"title": "1812 Overture (With Cannons)",
+"duration": 9080,
+"artist": "tchaikovsky",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Classical and Orchestral"
 },
 {
 "url": "https://files.catbox.moe/cr0psf.mp3",
@@ -1660,6 +1710,16 @@
 "genre": "Electronic"
 },
 {
+"url": "https://files.catbox.moe/jlo9cj.mp3",
+"title": "Make It Wit Chu (Virgin Magnetic Material Remix)",
+"duration": 4100,
+"artist": "Queens Of The Stone Age",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
 "url": "https://files.catbox.moe/ubs098.m4a",
 "title": "Maniac",
 "duration": 2780,
@@ -1746,6 +1806,16 @@
 "artist": "Lily Arciniega",
 "secret": false,
 "lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/910pte.mp3",
+"title": "Panoramic Feelings",
+"duration": 1900,
+"artist": "ludoWic",
+"secret": false,
+"lobby": true,
 "jukebox": true,
 "genre": "Electronic"
 },
@@ -1994,6 +2064,16 @@
 "title": "The Blue Valley",
 "duration": 7250,
 "artist": "Karsten Koch",
+"secret": false,
+"lobby": true,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
+"url": "https://files.catbox.moe/5ewdlh.mp3",
+"title": "Third District",
+"duration": 2850,
+"artist": "ludoWic",
 "secret": false,
 "lobby": true,
 "jukebox": true,
@@ -3553,6 +3633,16 @@
 "genre": "Metal"
 },
 {
+"url": "https://files.catbox.moe/m7r8j0.mp3",
+"title": "Paranoid",
+"duration": 1750,
+"artist": "Black Sabbath",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Metal"
+},
+{
 "url": "https://files.catbox.moe/1ozes3.m4a",
 "title": "Peace Sells",
 "duration": 2440,
@@ -5050,6 +5140,16 @@
 "genre": "Rock"
 },
 {
+"url": "https://files.catbox.moe/yve8ya.mp3",
+"title": "Dead End Friends",
+"duration": 1950,
+"artist": "Them Crooked Vultures",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
 "url": "https://files.catbox.moe/50sksv.m4a",
 "title": "Do It Again",
 "duration": 3560,
@@ -5309,6 +5409,16 @@
 "genre": "Rock"
 },
 {
+"url": "https://files.catbox.moe/od1hca.mp3",
+"title": "Interlude With Ludes",
+"duration": 2240,
+"artist": "Them Crooked Vultures",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
 "url": "https://files.catbox.moe/gd49uk.m4a",
 "title": "I Want to Know What Love Is",
 "duration": 3040,
@@ -5524,6 +5634,16 @@
 "genre": "Rock"
 },
 {
+"url": "https://files.catbox.moe/brjqp0.mp3",
+"title": "No One Loves Me & Neither Do I",
+"duration": 3100,
+"artist": "Them Crooked Vultures",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
 "url": "https://files.catbox.moe/0h8zhq.m4a",
 "title": "Nothin' But A Good Time",
 "duration": 2270,
@@ -5648,6 +5768,16 @@
 "genre": "Rock"
 },
 {
+"url": "https://files.catbox.moe/8xshc2.mp3",
+"title": "Reptiles",
+"duration": 2550,
+"artist": "Them Crooked VUltures",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
 "url": "https://files.catbox.moe/hdlhuf.m4a",
 "title": "Revolution",
 "duration": 2030,
@@ -5714,6 +5844,17 @@
 "title": "Run Through The Jungle",
 "duration": 1860,
 "artist": "Creedence Clearwater Revival",
+"secret": false,
+"emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/sf5e1q.mp3",
+"title": "Scumbag Blues",
+"duration": 2570,
+"artist": "Them Crooked Vultures",
 "secret": false,
 "emag": false,
 "lobby": false,
@@ -5818,6 +5959,16 @@
 "title": "Starman",
 "duration": 2540,
 "artist": "David Bowie",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/8xrrpu.mp3",
+"title": "Spinning In Daffodils",
+"duration": 4470,
+"artist": "Them Crooked Vultures",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -5964,6 +6115,16 @@
 "artist": "Green Day",
 "secret": false,
 "emag": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/gby1vq.mp3",
+"title": "Warsaw Or The First Breath You Take After You Give Up",
+"duration": 4700,
+"artist": "Them Crooked Vultures",
+"secret": false,
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
