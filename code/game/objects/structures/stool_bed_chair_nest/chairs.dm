@@ -394,6 +394,9 @@
 	base_icon = "pewmiddle"
 	icon_state = "pewmiddle"
 
+/obj/structure/bed/chair/pew/Initialize(mapload, material_key)
+	return ..(mapload, "wood")
+
 /obj/structure/bed/chair/pew/left
 	icon_state = "pewend_left"
 	base_icon = "pewend_left"
