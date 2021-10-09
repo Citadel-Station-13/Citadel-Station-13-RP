@@ -30,6 +30,19 @@
 	say_list_type = /datum/say_list/jelly
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/jelly
 
+//Randomization Code
+/mob/living/simple_mob/animal/space/jelly/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 
 // Activate Noms!
 /mob/living/simple_mob/animal/space/jelly
@@ -49,5 +62,16 @@
 /mob/living/simple_mob/animal/space/jelly/wiggleblob
 	name = "Mr. Wiggleblob."
 	desc = "Mr. Wiggleblob! The official mascot of the Talon. So huggable. So squishable. Just try not to get eaten!"
+	makes_dirt = FALSE
 
-	size_multiplier = 1.25
+//Unrandom the pet
+/mob/living/simple_mob/animal/space/jelly/wiggleblob/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()

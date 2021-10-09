@@ -67,6 +67,19 @@
 
 	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
 
+//Randomization Code
+/mob/living/simple_mob/animal/space/alien/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 /datum/category_item/catalogue/fauna/feral_alien/drone
 	name = "Feral Xenomorph - Drone"
 	desc = "The adult form of the Xenomorph, the drone's iconic \
@@ -141,6 +154,9 @@
 	icon_expected_height = 64
 	meat_amount = 5
 
+	mod_min = 80
+	mod_max = 150
+
 /datum/category_item/catalogue/fauna/feral_alien/queen
 	name = "Feral Xenomorph - Queen"
 	desc = "When a Drone reaches a certain level of maturity, she may \
@@ -168,6 +184,8 @@
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen)
 
+	mod_min = 90
+	mod_max = 150
 
 	movement_cooldown = 8
 
@@ -228,6 +246,9 @@
 	old_x = -32
 	icon_expected_width = 96
 	icon_expected_height = 96
+
+	mod_min = 100
+	mod_max = 150
 
 /mob/living/simple_mob/animal/space/alien/death()
 	..()
