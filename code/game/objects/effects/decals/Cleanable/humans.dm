@@ -97,6 +97,8 @@ var/global/list/image/splatter_cache=list()
 				S.overlays += S.blood_overlay
 			S.blood_DNA |= blood_DNA.Copy()
 			perp.update_inv_shoes()
+		if((perp.m_intent == MOVE_INTENT_RUN) && prob(20))
+			perp.slip("the [src.name]",3)
 
 	else if (hasfeet)//Or feet
 		perp.feet_blood_color = basecolor
@@ -104,6 +106,8 @@ var/global/list/image/splatter_cache=list()
 		LAZYINITLIST(perp.feet_blood_DNA)
 		perp.feet_blood_DNA |= blood_DNA.Copy()
 		perp.update_bloodied()
+		if((perp.m_intent == MOVE_INTENT_RUN) && prob(20))
+			perp.slip("the [src.name]",3)
 	else if (perp.buckled && istype(perp.buckled, /obj/structure/bed/chair/wheelchair))
 		var/obj/structure/bed/chair/wheelchair/W = perp.buckled
 		W.bloodiness = 4
