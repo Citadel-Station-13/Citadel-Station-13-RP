@@ -1530,6 +1530,16 @@
 	desc = "A dark blue tracksuit. It calls to mind images of excercise, particularly squats."
 	icon_state = "tracksuit_blue"
 
+/obj/item/clothing/under/druidic_gown
+	name = "flowery tunic"
+	desc = "A simple linen tunic with a half-skirt of flowers covering one side."
+	icon_state = "druidic_gown"
+
+/obj/item/clothing/under/tribal_tunic
+	name = "simple tunic"
+	desc = "A simple linen tunic. Smells faintly of earth and flowers"
+	icon_state = "tribal_tunic"
+
 /obj/item/clothing/var/hides_bulges = FALSE // OwO wats this?
 
 /obj/item/clothing/under/permit
