@@ -51,6 +51,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/r_grad = 0						//Gradient color
 	var/g_grad = 0						//Gradient color
 	var/b_grad = 0						//Gradient color
+	var/grad_wingstyle = "None"			//Gradient style
 	var/f_style = "Shaved"				//Face hair type
 	var/r_facial = 0					//Face hair color
 	var/g_facial = 0					//Face hair color
@@ -100,6 +101,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/job_engsec_med = 0
 	var/job_engsec_low = 0
 
+	var/job_talon_high = 0
+	var/job_talon_med = 0
+	var/job_talon_low = 0
+
 	//Keeps track of preferrence for not getting any wanted jobs
 	var/alternate_option = 1
 
@@ -111,6 +116,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	// will probably not be able to do this for head and torso ;)
 	var/list/organ_data = list()
 	var/list/rlimb_data = list()
+	var/regen_limbs = 0 //set to 1 when altering limb states. fix for prosthetic > normal changes not working on preview.
 	var/list/player_alt_titles = new()		// the default name of a job like "Medical Doctor"
 
 	var/list/body_markings = list() // "name" = "#rgbcolor"
@@ -125,6 +131,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/gen_record = ""
 	var/exploit_record = ""
 	var/disabilities = 0
+	var/mirror = TRUE
 
 	var/economic_status = "Average"
 
@@ -150,6 +157,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
 	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
+
+	// Should we automatically fit the viewport?
+	var/auto_fit_viewport = TRUE
+	// Should we be in the widescreen mode set by the config?
+	var/widescreenpref = FALSE	// Doesn't exist... Yet.
 
 /datum/preferences/New(client/C)
 	player_setup = new(src)

@@ -356,6 +356,27 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 30
 	nicotine_amt = 10
 
+/obj/item/clothing/mask/smokable/cigarette/cigar/taj
+	name = "S'rendarr's Hand"
+	desc = "A Tajaran smokable herb similar to tobacco, produced at one of the countless plantations on Adhomai. It is known to have medicinal properties."
+	icon_state = "cigar3"
+
+/obj/item/clothing/mask/smokable/cigarette/cigar/taj/Initialize(mapload)
+	. = ..()
+	if(nicotine_amt)
+		reagents.add_reagent("bicaridine", nicotine_amt)
+
+/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium
+	name = "S'rendarr's Own"
+	desc = "A premium Tajaran cigar, licensed for export by Confederate Commonwealth of Adhomai representing the best product of all Tajaran nations."
+	icon_state = "cigar2"
+	nicotine_amt = 7
+
+/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium/Initialize(mapload)
+	. = ..()
+	if(nicotine_amt)
+		reagents.add_reagent("bicaridine", nicotine_amt)
+
 /obj/item/cigbutt
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
@@ -651,4 +672,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "\improper bullet lighter"
 	desc = "A lighter fashioned out of an old bullet casing."
 	icon_state = "bulletlighter"
+
+/obj/item/flame/lighter/zippo/taj
+	name = "\improper Adhomai lighter"
+	desc = "A brass mechanical lighter made on Adhomai. Its robust design made it a staple tool for Tajara on all sides of the civil war."
+	icon_state = "tajzippo"
 

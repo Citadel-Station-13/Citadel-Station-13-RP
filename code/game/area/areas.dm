@@ -20,13 +20,22 @@
 	var/requires_power = 1
 	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
 
-	var/power_equip = 1
-	var/power_light = 1
-	var/power_environ = 1
+	// Power channel status - Is it currently energized?
+	var/power_equip = TRUE
+	var/power_light = TRUE
+	var/power_environ = TRUE
+
+	// Oneoff power usage - Used once and cleared each power cycle
+	var/oneoff_equip = 0
+	var/oneoff_light = 0
+	var/oneoff_environ = 0
+
+	// Continuous "static" power usage - Do not update these directly!
+	var/static_equip = 0
+	var/static_light = 0
+	var/static_environ = 0
+
 	var/music = null
-	var/used_equip = 0
-	var/used_light = 0
-	var/used_environ = 0
 
 	var/has_gravity = 1
 	var/obj/machinery/power/apc/apc = null
@@ -323,6 +332,7 @@
 #define ENVIRON 3
 */
 
+
 /area/proc/powered(var/chan)		// return true if the area has power to given channel
 
 	if(!requires_power)
@@ -346,32 +356,97 @@
 	if (fire || eject || party)
 		updateicon()
 
-/area/proc/usage(var/chan)
+/area/proc/usage(var/chan, var/include_static = TRUE)
 	var/used = 0
 	switch(chan)
 		if(LIGHT)
-			used += used_light
+			used += oneoff_light + (include_static * static_light)
 		if(EQUIP)
-			used += used_equip
+			used += oneoff_equip + (include_static * static_equip)
 		if(ENVIRON)
-			used += used_environ
+			used += oneoff_environ + (include_static * static_environ)
 		if(TOTAL)
-			used += used_light + used_equip + used_environ
+			used += oneoff_light + (include_static * static_light)
+			used += oneoff_equip + (include_static * static_equip)
+			used += oneoff_environ + (include_static * static_environ)
 	return used
 
+// Helper for APCs; will generally be called every tick.
 /area/proc/clear_usage()
-	used_equip = 0
-	used_light = 0
-	used_environ = 0
+	oneoff_equip = 0
+	oneoff_light = 0
+	oneoff_environ = 0
 
-/area/proc/use_power(var/amount, var/chan)
+// Use this for a one-time power draw from the area, typically for non-machines.
+/area/proc/use_power_oneoff(var/amount, var/chan)
 	switch(chan)
 		if(EQUIP)
-			used_equip += amount
+			oneoff_equip += amount
 		if(LIGHT)
-			used_light += amount
+			oneoff_light += amount
 		if(ENVIRON)
-			used_environ += amount
+			oneoff_environ += amount
+	return amount
+
+// This is used by machines to properly update the area of power changes.
+/area/proc/power_use_change(old_amount, new_amount, chan)
+	use_power_static(new_amount - old_amount, chan) // Simultaneously subtract old_amount and add new_amount.
+
+// Not a proc you want to use directly unless you know what you are doing; see use_power_oneoff above instead.
+/area/proc/use_power_static(var/amount, var/chan)
+	switch(chan)
+		if(EQUIP)
+			static_equip += amount
+		if(LIGHT)
+			static_light += amount
+		if(ENVIRON)
+			static_environ += amount
+
+// This recomputes the continued power usage; can be used for testing or error recovery, but is not called every tick.
+/area/proc/retally_power()
+	static_equip = 0
+	static_light = 0
+	static_environ = 0
+	for(var/obj/machinery/M in src)
+		switch(M.power_channel)
+			if(EQUIP)
+				static_equip += M.get_power_usage()
+			if(LIGHT)
+				static_light += M.get_power_usage()
+			if(ENVIRON)
+				static_environ += M.get_power_usage()
+
+
+//////////////////////////////////////////////////////////////////
+
+/area/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("check_static_power", "Check Static Power")
+
+/area/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list["check_static_power"])
+		if(!check_rights(R_DEBUG))
+			return
+		src.check_static_power(usr)
+		href_list["datumrefresh"] = "\ref[src]"
+
+// Debugging proc to report if static power is correct or not.
+/area/proc/check_static_power(var/user)
+	set name = "Check Static Power"
+	var/actual_static_equip = static_equip
+	var/actual_static_light = static_light
+	var/actual_static_environ = static_environ
+	retally_power()
+	if(user)
+		var/list/report = list("[src] ([type]) static power tally:")
+		report += "EQUIP:   Actual: [actual_static_equip] Correct: [static_equip] Difference: [actual_static_equip - static_equip]"
+		report += "LIGHT:   Actual: [actual_static_light] Correct: [static_light] Difference: [actual_static_light - static_light]"
+		report += "ENVIRON: Actual: [actual_static_environ] Correct: [static_environ] Difference: [actual_static_environ - static_environ]"
+		to_chat(user, report.Join("\n"))
+	return (actual_static_equip == static_equip && actual_static_light == static_light && actual_static_environ == static_environ)
+
+//////////////////////////////////////////////////////////////////
 
 GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
@@ -418,7 +493,8 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			return // Being buckled to something solid keeps you in place.
 		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.item_flags & NOSLIP))
 			return
-
+		if(H.flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
+			return
 		if(H.m_intent == "run")
 			H.AdjustStunned(6)
 			H.AdjustWeakened(6)
@@ -439,8 +515,6 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			temp_windoor.open()
 
 /area/proc/shuttle_arrived()
-	for(var/obj/machinery/telecomms/relay/R in contents)
-		R.reset_z()
 	for(var/obj/machinery/power/apc/A in contents)
 		A.update_area()
 	return TRUE
@@ -458,7 +532,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
 var/list/teleportlocs = list()
 
-/hook/startup/proc/setupTeleportLocs()
+/proc/setupTeleportLocs()
 	for(var/area/AR in GLOB.sortedAreas)
 		if(istype(AR, /area/shuttle) || istype(AR, /area/syndicate_station) || istype(AR, /area/wizard_station)) continue
 		if(teleportlocs.Find(AR.name)) continue

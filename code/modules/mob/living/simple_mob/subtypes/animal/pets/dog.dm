@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/dog
+	name = "Dog"
+	desc = "Canines have been a consistent companion of Humanity for \
+	tens of thousands of years. Descended from Wolves, a larger pack \
+	animal, the modern canine was selectively bred down into its modern \
+	role. Trained to assist with hunting, rescue, or security, dogs have \
+	gone on to be regarded as true friends by many Humans."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/dog
 	name = "dog"
 	real_name = "dog"
@@ -6,6 +15,7 @@
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/dog)
 
 	health = 20
 	maxHealth = 20
@@ -26,13 +36,25 @@
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 
+//Randomization Code
+/mob/living/simple_mob/animal/passive/dog/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/dog/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/newspaper))
 		if(!stat)
 			for(var/mob/M in viewers(user, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message("<font color='blue'>[user] baps [name] on the nose with the rolled up [O]</font>")
+					M.show_message("<font color=#4F49AF>[user] baps [name] on the nose with the rolled up [O]</font>")
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
 					setDir(i)
@@ -115,6 +137,18 @@
 	name = "Bockscar"
 	real_name = "Bockscar"
 
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/dog/corgi/puppy/Bockscar/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
+
 //Sir Pogsley. (Sec Pet)
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley
 	name = "Sir Pogsley"
@@ -124,6 +158,18 @@
 	makes_dirt = FALSE
 	var/turns_since_scan = 0
 	var/obj/movement_target
+
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Life()
 	..()
@@ -182,6 +228,18 @@
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	makes_dirt = FALSE	//VOREStation edit: no more dirt
+
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/dog/corgi/Ian/Life()
 	..()
@@ -246,6 +304,17 @@
 	response_harm   = "kicks"
 	var/turns_since_scan = 0
 	var/puppies = 0
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
 
 //Lisa already has a cute bow!
 /mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Topic(href, href_list)
@@ -299,3 +368,15 @@
 	real_name = "Spice"	//Intended to hold the name without altering it.
 	gender = FEMALE
 	desc = "It's a tamaskan, the name Spice can be found on its collar."
+
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/dog/tamaskan/Spice/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()

@@ -1,7 +1,17 @@
+/datum/category_item/catalogue/fauna/fox
+	name = "Fox"
+	desc = "Vulpine creatures, commonly referred to as foxes, are a \
+	somewhat distant cousin of Canines. Due to their elegant features \
+	and coloration, the Fox symbolises beauty and agility. It is frequently \
+	adopted as a covert military icon - a trend that rose in popularity during \
+	the 20th and 21st Centuries on Pre-War Earth."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/fox
 	name = "fox"
 	desc = "It's a fox. I wonder what it says?"
 	tt_desc = "Vulpes vulpes"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/fox)
 
 	icon_state = "fox2"
 	icon_living = "fox2"
@@ -31,6 +41,19 @@
 
 	var/turns_since_scan = 0
 	var/mob/flee_target
+
+//Randomization Code
+/mob/living/simple_mob/animal/passive/fox/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 /datum/say_list/fox
 	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Awoo","Tchoff")
@@ -197,6 +220,18 @@
 	var/mob/living/friend = null // Our best pal, who we'll follow. awoo.
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
 	makes_dirt = FALSE	// No more dirt
+
+//Unrandom the pet
+/mob/living/simple_mob/animal/passive/fox/renault/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/fox/renault/init_vore()
 	..()

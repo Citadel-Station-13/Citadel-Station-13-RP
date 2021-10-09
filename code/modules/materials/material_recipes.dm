@@ -103,6 +103,7 @@
 		new/datum/stack_recipe("chest drawer", /obj/structure/filingcabinet/chestdrawer, 4, time = 20, one_per_turf = 1, on_floor = 1), \
 		))
 	recipes += new/datum/stack_recipe("desk bell", /obj/item/deskbell, 1, on_floor = 1, supplied_material = "[name]")
+	recipes += new/datum/stack_recipe("scooter frame", /obj/item/scooter_frame, 5, time = 20, one_per_turf = 1, on_floor = 1)
 
 /datum/material/plasteel/generate_recipes()
 	..()
@@ -112,6 +113,7 @@
 	recipes += new/datum/stack_recipe("dark floor tile", /obj/item/stack/tile/floor/dark, 1, 4, 20)
 	recipes += new/datum/stack_recipe("roller bed", /obj/item/roller, 5, time = 30, on_floor = 1)
 	recipes += new/datum/stack_recipe("whetstone", /obj/item/whetstone, 2, time = 10)
+	recipes += new/datum/stack_recipe("reinforced skateboard assembly", /obj/item/heavy_skateboard_frame, 10, time = 20, one_per_turf = 1)
 
 /datum/material/stone/generate_recipes()
 	..()
@@ -144,6 +146,7 @@
 	recipes += new/datum/stack_recipe("water-cooler", /obj/structure/reagent_dispensers/water_cooler, 4, time = 10, one_per_turf = 1, on_floor = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("lampshade", /obj/item/lampshade, 1, time = 1, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("plastic net", /obj/item/material/fishing_net, 25, time = 1 MINUTE, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("rubberized wheels", /obj/item/skate_wheels, 12, time = 24)
 
 /datum/material/wood/generate_recipes()
 	..()
@@ -165,6 +168,7 @@
 	recipes += new/datum/stack_recipe("coilgun stock", /obj/item/coilgun_assembly, 5, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("crude fishing rod", /obj/item/material/fishing_rod/built, 8, time = 10 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("drying rack", /obj/machinery/smartfridge/drying_rack, 10)
+	recipes += new/datum/stack_recipe("skateboard assembly", /obj/item/skateboard_frame, 10, time = 20, one_per_turf = 1)
 
 /datum/material/wood/log/generate_recipes()
 	recipes = list()
@@ -230,6 +234,27 @@
 	recipes = list()
 	recipes += new/datum/stack_recipe("woven net", /obj/item/material/fishing_net, 10, time = 30 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("bedsheet", /obj/item/bedsheet, 10, time = 30 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe_list("colored bedsheets", list( \
+		new/datum/stack_recipe("red bedsheet", /obj/item/bedsheet/red, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("orange bedsheet", /obj/item/bedsheet/orange, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("yellow bedsheet", /obj/item/bedsheet/yellow, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("green bedsheet", /obj/item/bedsheet/green, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("blue bedsheet", /obj/item/bedsheet/blue, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("purple bedsheet", /obj/item/bedsheet/purple, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("brown bedsheet", /obj/item/bedsheet/brown, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("rainbow bedsheet", /obj/item/bedsheet/rainbow, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		))
+	recipes += new/datum/stack_recipe("double bedsheet", /obj/item/bedsheet/double, 10, time = 30 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe_list("colored double bedsheets", list( \
+		new/datum/stack_recipe("red double bedsheet", /obj/item/bedsheet/reddouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("orange doudble bedsheet", /obj/item/bedsheet/orangedouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("yellow double bedsheet", /obj/item/bedsheet/yellowdouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("green double bedsheet", /obj/item/bedsheet/greendouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("blue double bedsheet", /obj/item/bedsheet/bluedouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("purple double bedsheet", /obj/item/bedsheet/purpledouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("brown double bedsheet", /obj/item/bedsheet/browndouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		new/datum/stack_recipe("rainbow double bedsheet", /obj/item/bedsheet/rainbowdouble, 10, time = 30 SECONDS, pass_stack_color = TRUE), \
+		))
 	recipes += new/datum/stack_recipe("uniform", /obj/item/clothing/under/color/white, 8, time = 15 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("foot wraps", /obj/item/clothing/shoes/footwraps, 2, time = 5 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("gloves", /obj/item/clothing/gloves/white, 2, time = 5 SECONDS, pass_stack_color = TRUE)
@@ -239,11 +264,14 @@
 	recipes += new/datum/stack_recipe("turban", /obj/item/clothing/head/turban, 3, time = 6 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("hijab", /obj/item/clothing/head/hijab, 3, time = 6 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("kippa", /obj/item/clothing/head/kippa, 3, time = 6 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("kippa", /obj/item/clothing/head/traveller, 3, time = 6 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("scarf", /obj/item/clothing/accessory/scarf/white, 4, time = 5 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("baggy pants", /obj/item/clothing/under/pants/baggy/white, 8, time = 10 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("belt pouch", /obj/item/storage/belt/fannypack/white, 25, time = 1 MINUTE, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("crude bandage", /obj/item/stack/medical/crude_pack, 1, time = 2 SECONDS, pass_stack_color = TRUE)
-	recipes += new/datum/stack_recipe("empty sandbag", /obj/item/stack/material/emptysandbag, 1, 5, 10, time = 2 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("empty sandbag", /obj/item/stack/emptysandbag, 2, 5, 10, time = 2 SECONDS, pass_stack_color = TRUE)
+	recipes += new/datum/stack_recipe("shrine seal", /obj/structure/shrine_seal, 2, time = 5 SECONDS)
+	recipes += new/datum/stack_recipe("cloth rag", /obj/item/reagent_containers/glass/rag, 1, time = 2 SECONDS)
 
 /datum/material/resin/generate_recipes()
 	recipes = list()
@@ -306,8 +334,9 @@
 		new/datum/stack_recipe("assistant statue", /obj/structure/statue/sandstone/assistant, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
 
-//Sandbags
-/datum/material/sandbags/generate_recipes()
+/datum/material/bananium/generate_recipes()
 	..()
-	recipes = list()
-	recipes += new/datum/stack_recipe("sandbag barricade", /obj/structure/table/sandbags, 10, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("bananium statue", /obj/structure/statue/bananium, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("clown statue", /obj/structure/statue/bananium/clown, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))

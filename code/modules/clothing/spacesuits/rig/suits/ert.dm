@@ -120,12 +120,12 @@
 		anti_magic = TRUE
 		blessed = TRUE
 		emp_proof = TRUE
-		to_chat(user, "<font color='blue'>You enable the RIG's protective sigils.</font>")
+		to_chat(user, "<font color=#4F49AF>You enable the RIG's protective sigils.</font>")
 	else
 		anti_magic = FALSE
 		blessed = FALSE
 		emp_proof = FALSE
-		to_chat(user, "<font color='blue'>You disable the RIG's protective sigils.</font>")
+		to_chat(user, "<font color=#4F49AF>You disable the RIG's protective sigils.</font>")
 
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You can't figure out what these symbols do.</font>")

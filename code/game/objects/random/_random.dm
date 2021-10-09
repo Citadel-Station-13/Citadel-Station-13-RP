@@ -10,6 +10,9 @@
 
 /obj/random/Initialize(mapload)
 	. = ..()
+	if(type == /obj/random)
+		stack_trace("Attempted to spawn base /obj/random.")
+		return INITIALIZE_HINT_QDEL
 	if(!prob(spawn_nothing_percentage))
 		spawn_item()
 	return INITIALIZE_HINT_QDEL

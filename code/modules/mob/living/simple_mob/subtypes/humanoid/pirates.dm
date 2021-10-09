@@ -2,6 +2,16 @@
 //	Yargh Yargh Fiddle De Di
 ///////////////////////////////
 
+/datum/category_item/catalogue/fauna/pirate
+	name = "Pirates"
+	desc = "Life on the Frontier is often harsh, and there are many \
+	natural hazards which must be navigated and accounted for. In the \
+	face of such constant adversity, some colonists will resort to crime \
+	and piracy to try and make their way. From misguided attempts at \
+	survival to malicious profiteering, Piracy is a constant concern \
+	on the Frontier, and is punished harshly by every Megacorporation."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 ///////////////////////////////
 //		Knife Priate
 ///////////////////////////////
@@ -13,6 +23,7 @@
 	icon_state = "piratemelee"
 	icon_living = "piratemelee"
 	icon_dead = "piratemelee_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/pirate)
 
 	faction = "pirate"
 
@@ -212,12 +223,12 @@
 	icon_living = "pirateranged"
 	icon_dead = "piratemelee_dead"
 
-	reload_time = 2 SECONDS // ZipGuns are finicky an hard to load
+	reload_time = 4 SECONDS // ZipGuns are finicky an hard to load
 	needs_reload = TRUE
 	reload_max = 1
 
-	projectiletype = /obj/item/projectile/bullet/pistol/strong
-	projectilesound = 'sound/weapons/Gunshot4.ogg'
+	projectiletype = /obj/item/projectile/bullet/shotgun
+	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 
 	loot_list = list(/obj/item/gun/projectile/pirate = 100, /obj/item/material/knife/tacknife = 100)
 
@@ -245,12 +256,12 @@
 	icon_living = "pirateranged-blunder"
 	icon_dead = "piratemelee_dead"
 
-	reload_time = 1.5 SECONDS // Shotgun Reload
+	reload_time = 3 SECONDS // Shotgun Reload
 	needs_reload = TRUE
 	reload_max = 2
 
-	projectiletype = /obj/item/projectile/bullet/pistol/strong
-	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
+	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 
 	loot_list = list(/obj/item/gun/projectile/shotgun/doublebarrel/sawn = 100, /obj/item/material/knife/tacknife = 100)
 
@@ -277,12 +288,12 @@
 	icon_living = "pirateranged-handcannon"
 	icon_dead = "piratemelee_dead"
 
-	reload_time = 4 SECONDS //Zip-Las takes a real long time to reload.
+	reload_time = 6 SECONDS //Zip-Las takes a real long time to reload.
 	needs_reload = TRUE
 	reload_max = 1
 
 	projectiletype = /obj/item/projectile/beam/heavylaser
-	projectilesound = 'sound/weapons/lasercannonfire.ogg'
+	projectilesound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/material/knife/tacknife = 100)
 
@@ -325,7 +336,7 @@
 ///////////////////////////////
 /mob/living/simple_mob/humanoid/pirate/mate/ranged
 	name = "Mate Pistolier"
-	desc = "A leading figure amongst the pirate hoards. This one is armed with a obsolete pistol"
+	desc = "A leading figure amongst the pirate hoards. This one is armed with a obsolete laser pistol."
 	icon_state = "mate-pistoler"
 	icon_living = "mate-pistoler"
 	icon_dead = "piratemelee_dead"
@@ -339,6 +350,8 @@
 	melee_damage_upper = 15
 
 	projectiletype = /obj/item/projectile/beam/midlaser
+	projectilesound = 'sound/weapons/weaponsounds_lasermid.ogg'
+
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	base_attack_cooldown = 10
 
@@ -366,7 +379,7 @@
 	icon_living = "mate-shotgun"
 	icon_dead = "piratemelee_dead"
 
-	reload_time = 2 SECONDS //Assume use of speedloaders
+	reload_time = 4 SECONDS //Assume use of speedloaders
 	needs_reload = TRUE
 	reload_max = 4
 
@@ -376,7 +389,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/item/projectile/bullet/pellet/shotgun
-	projectilesound = 'sound/weapons/Gunshot_shotgun.ogg'
+	projectilesound = 'sound/weapons/weaponsounds_shotgunshot.ogg'
 	base_attack_cooldown = 5
 
 	loot_list = list(/obj/item/gun/projectile/shotgun/doublebarrel/quad = 100, /obj/item/clothing/suit/pirate = 100)
@@ -402,7 +415,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 	projectiletype = /obj/item/projectile/bullet/rifle/a762
-	projectilesound = 'sound/weapons/Gunshot_generic_rifle.ogg'
+	projectilesound = 'sound/weapons/weaponsounds_heavyrifleshot.ogg'
 	base_attack_cooldown = 10
 
 	loot_list = list(/obj/item/gun/projectile/shotgun/pump/rifle = 100, /obj/item/clothing/suit/pirate = 100)
@@ -417,12 +430,12 @@
 	icon_living = "captain"
 	icon_dead = "pirateranged_dead"
 
-	reload_time = 5 SECONDS // I mean its a belt of pistols not exactly easy to reload. Especially with how much damage the barage does.
+	reload_time = 10 SECONDS // I mean its a belt of pistols not exactly easy to reload. Especially with how much damage the barage does.
 	needs_reload = TRUE
 	reload_max = 4  // More than capable to shredding explo's shield especially when backed up by a few mates.
 
 	projectiletype = /obj/item/projectile/beam/heavylaser
-	projectilesound = 'sound/weapons/lasercannonfire.ogg'
+	projectilesound = 'sound/weapons/weaponsounds_laserstrong.ogg'
 	base_attack_cooldown = 5
 
 	corpse = /obj/effect/landmark/mobcorpse/pirate/ranged

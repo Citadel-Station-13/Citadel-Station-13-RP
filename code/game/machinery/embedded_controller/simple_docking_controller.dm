@@ -1,51 +1,27 @@
-// A docking port that uses a single door
+//a docking port that uses a single door
 /obj/machinery/embedded_controller/radio/simple_docking_controller
 	name = "docking hatch controller"
 	program = /datum/computer/file/embedded_program/docking/simple
 	var/tag_door
+	valid_actions = list("force_door", "toggle_override")
 
-/obj/machinery/embedded_controller/radio/simple_docking_controller/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
-	var/datum/computer/file/embedded_program/docking/simple/docking_program = program	// Cast to proper type
+/obj/machinery/embedded_controller/radio/simple_docking_controller/ui_data(mob/user)
+	var/datum/computer/file/embedded_program/docking/simple/docking_program = program // Cast to proper type
 
-	data = list(
+	. = list(
 		"docking_status" = docking_program.get_docking_status(),
 		"override_enabled" = docking_program.override_enabled,
-		"door_state" = 	docking_program.memory["door_status"]["state"],
-		"door_lock" = 	docking_program.memory["door_status"]["lock"],
+		"exterior_status" =	docking_program.memory["door_status"],
+		"internalTemplateName" = "DockingConsoleSimple",
 	)
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "simple_docking_console.tmpl", name, 470, 290)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-
-/obj/machinery/embedded_controller/radio/simple_docking_controller/Topic(href, href_list)
-	if((. = ..()))
-		return
-
-	var/clean = 0
-	switch(href_list["command"])	// Anti-HTML-hacking checks
-		if("force_door")
-			clean = 1
-		if("toggle_override")
-			clean = 1
-
-	if(clean)
-		program.receive_user_command(href_list["command"])
-
-	return
-
-// A docking controller program for a simple door based docking port
+//A docking controller program for a simple door based docking port
 /datum/computer/file/embedded_program/docking/simple
 	var/tag_door
 
 /datum/computer/file/embedded_program/docking/simple/New(var/obj/machinery/embedded_controller/M)
 	..(M)
-	memory["door_status"] = list(state = "closed", lock = "locked")		// Assume closed and locked in case the doors dont report in
+	memory["door_status"] = list(state = "closed", lock = "locked")		//assume closed and locked in case the doors dont report in
 
 	if (istype(M, /obj/machinery/embedded_controller/radio/simple_docking_controller))
 		var/obj/machinery/embedded_controller/radio/simple_docking_controller/controller = M
@@ -53,7 +29,7 @@
 		tag_door = controller.tag_door? controller.tag_door : "[id_tag]_hatch"
 
 		spawn(10)
-			signal_door("update")		// Signals connected doors to update their status
+			signal_door("update")		//signals connected doors to update their status
 
 
 /datum/computer/file/embedded_program/docking/simple/receive_signal(datum/signal/signal, receive_method, receive_param)
@@ -108,23 +84,23 @@
 	else if(memory["door_status"]["lock"] == "unlocked")
 		signal_door("lock")
 
-// Tell the docking port to start getting ready for docking - e.g. pressurize
+//tell the docking port to start getting ready for docking - e.g. pressurize
 /datum/computer/file/embedded_program/docking/simple/prepare_for_docking()
-	return		// Don't need to do anything
+	return		//don't need to do anything
 
-// Are we ready for docking?
+//are we ready for docking?
 /datum/computer/file/embedded_program/docking/simple/ready_for_docking()
-	return 1	// Don't need to do anything
+	return 1	//don't need to do anything
 
-// We are docked, open the doors or whatever.
+//we are docked, open the doors or whatever.
 /datum/computer/file/embedded_program/docking/simple/finish_docking()
 	open_door()
 
-// Tell the docking port to start getting ready for undocking - e.g. close those doors.
+//tell the docking port to start getting ready for undocking - e.g. close those doors.
 /datum/computer/file/embedded_program/docking/simple/prepare_for_undocking()
 	close_door()
 
-// Are we ready for undocking?
+//are we ready for undocking?
 /datum/computer/file/embedded_program/docking/simple/ready_for_undocking()
 	return (memory["door_status"]["state"] == "closed" && memory["door_status"]["lock"] == "locked")
 

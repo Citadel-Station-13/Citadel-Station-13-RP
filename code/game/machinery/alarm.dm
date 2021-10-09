@@ -606,15 +606,15 @@
 /obj/machinery/alarm/CanUseTopic(var/mob/user, var/datum/topic_state/state, var/href_list = list())
 	if(aidisabled && isAI(user))
 		to_chat(user, "<span class='warning'>AI control for \the [src] interface has been disabled.</span>")
-		return STATUS_CLOSE
+		return UI_CLOSE
 
-	. = shorted ? STATUS_DISABLED : STATUS_INTERACTIVE
+	. = shorted ? UI_DISABLED : UI_INTERACTIVE
 
-	if(. == STATUS_INTERACTIVE)
+	if(. == UI_INTERACTIVE)
 		var/extra_href = state.href_list(usr)
 		// Prevent remote users from altering RCON settings unless they already have access
 		if(href_list["rcon"] && extra_href["remote_connection"] && !extra_href["remote_access"])
-			. = STATUS_UPDATE
+			. = UI_UPDATE
 
 	return min(..(), .)
 
@@ -778,6 +778,15 @@
 				to_chat(user, "<span class='warning'>Access denied.</span>")
 			return
 	return ..()
+
+//Altclick airalarms to toggle the controlls
+/obj/machinery/alarm/AltClick(mob/user)
+	if(user.Adjacent(src))
+		if(allowed(usr) && !wires.IsIndexCut(AALARM_WIRE_IDSCAN))
+			locked = !locked
+			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
+		else
+			to_chat(user, "<span class='warning'>Access denied.</span>")
 
 /obj/machinery/alarm/power_change()
 	..()

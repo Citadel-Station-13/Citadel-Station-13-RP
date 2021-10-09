@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/mouse
+	name = "Mouse"
+	desc = "An ancient Old Earth rodent, mice have served as both pest and pet \
+	to Humanity for millenia. Originally brought into space for scientific testing \
+	due to genetic similarities with Humans, mice have since bred their way back \
+	to pest status, and spread freely across the Frontier."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/mouse
 	name = "mouse"
 	real_name = "mouse"
@@ -7,6 +15,7 @@
 	item_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse)
 
 	maxHealth = 5
 	health = 5
@@ -40,6 +49,19 @@
 	no_vore = 1 //Mice can't eat others due to the amount of bugs caused by it.
 	vore_taste = "cheese"
 
+//Randomization Code
+/mob/living/simple_mob/animal/passive/mouse/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 /mob/living/simple_mob/animal/passive/mouse/Initialize(mapload)
 	. = ..()
 
@@ -65,7 +87,7 @@
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
-			M.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] Squeek!</font>")
+			M.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] Squeek!</font>")
 			playsound(src, 'sound/effects/mouse_squeak.ogg', 35, 1)
 	..()
 
@@ -109,16 +131,27 @@
 	maxHealth = 20
 	health = 20
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	mod_min = 90
+	mod_max = 120
 
-/mob/living/simple_mob/animal/passive/mouse/rat/Initialize(mapload)
-	. = ..()
-	adjust_scale(1.2)
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
+
+//Unrandomized pet.
+/mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize(mapload)
 	. = ..()

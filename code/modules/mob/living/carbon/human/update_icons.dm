@@ -1081,7 +1081,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(!depth || lying)
 		return
 
-	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_1", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
+	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
 
 	apply_layer(MOB_WATER_LAYER)
 
@@ -1116,6 +1116,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		apply_layer(SURGERY_LAYER)
 
 /mob/living/carbon/human/proc/get_wing_image() //redbull gives you wings
+	var/icon/grad_swing
 	if(QDESTROYING(src))
 		return
 
@@ -1129,7 +1130,13 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(wing_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
 		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : wing_style.icon_state)
 		if(wing_style.do_colouration)
+			if(grad_wingstyle)
+				grad_swing = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])
+				grad_swing.Blend(wing_s, ICON_AND)
+				grad_swing.Blend(rgb(r_gradwing, g_gradwing, b_gradwing), ICON_MULTIPLY)
 			wing_s.Blend(rgb(src.r_wing, src.g_wing, src.b_wing), wing_style.color_blend_mode)
+		if(grad_swing)
+			wing_s.Blend(grad_swing, ICON_OVERLAY)
 		if(wing_style.extra_overlay)
 			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay)
 			overlay.Blend(rgb(src.r_wing2, src.g_wing2, src.b_wing2), wing_style.color_blend_mode)

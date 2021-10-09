@@ -353,6 +353,32 @@
 	icon_state = "tesh_neckscarf"
 	species_restricted = list(SPECIES_TESHARI)
 
+//Gaiter scarves
+/obj/item/clothing/accessory/gaiter
+	name = "neck gaiter (red)"
+	desc = "A slightly worn neck gaiter, it's loose enough to be worn comfortably like a scarf. Commonly used by outdoorsmen and mercenaries, both to keep warm and keep debris away from the face."
+	icon_state = "gaiter_red"
+	slot_flags = SLOT_TIE | SLOT_MASK
+	slot = ACCESSORY_SLOT_DECOR
+	action_button_name = "Adjust Gaiter"
+
+/obj/item/clothing/accessory/gaiter/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]_up"
+		to_chat(user, "You pull the gaiter up over your nose.")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You tug the gaiter down around your neck.")
+	update_clothing_icon()	//so our mob-overlays update
+
+/obj/item/clothing/accessory/gaiter/tan
+	name = "neck gaiter (tan)"
+	icon_state = "gaiter_tan"
+
+/obj/item/clothing/accessory/gaiter/gray
+	name = "neck gaiter (gray)"
+	icon_state = "gaiter_gray"
+
 //bracelets
 
 /obj/item/clothing/accessory/bracelet
@@ -473,6 +499,13 @@
 		if(colour_input)
 			color = sanitize_hexcolor(colour_input)
 			coloured = TRUE
+
+/obj/item/clothing/accessory/metal_necklace
+	name = "metal necklace"
+	desc = "A shiny steel chain with a vague metallic object dangling off it."
+	icon_state = "metal_necklace"
+	slot_flags = SLOT_TIE | SLOT_MASK
+	slot = ACCESSORY_SLOT_DECOR
 
 //
 // Collars and such like that
@@ -804,16 +837,6 @@
 			to_chat(user,"<span class='notice'>You [erasing] the words on the tag with the [I], and write '[str]'.</span>")
 			name = initial(name) + " ([str])"
 			desc = initial(desc) + " Something has been [erasemethod] on the tag, and it now has \"[str]\" [writemethod] on it."
-
-//Machete Holsters
-/obj/item/clothing/accessory/holster/machete
-	name = "machete sheath"
-	desc = "A handsome synthetic leather sheath with matching belt."
-	icon_state = "holster_machete"
-	concealed_holster = 0
-	can_hold = list(/obj/item/material/knife/machete)
-	//sound_in = 'sound/effects/holster/sheathin.ogg'
-	//sound_out = 'sound/effects/holster/sheathout.ogg'
 
 //Medals
 

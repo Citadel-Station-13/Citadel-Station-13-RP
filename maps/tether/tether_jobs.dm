@@ -136,17 +136,17 @@
 /decl/hierarchy/outfit/job/talon_captain
 	name = OUTFIT_JOB_NAME("Talon Captain")
 
-	id_type = /obj/item/weapon/card/id/gold
+	id_type = /obj/item/card/id/gold
 	id_slot = slot_wear_id
 	pda_type = null
 
-	l_ear = /obj/item/device/radio/headset/talon
+	l_ear = /obj/item/radio/headset/talon
 	glasses = /obj/item/clothing/glasses/sunglasses
 	uniform = /obj/item/clothing/under/rank/captain
 	shoes = /obj/item/clothing/shoes/brown
-	backpack = /obj/item/weapon/storage/backpack/captain
-	satchel_one = /obj/item/weapon/storage/backpack/satchel/cap
-	messenger_bag = /obj/item/weapon/storage/backpack/messenger/com
+	backpack = /obj/item/storage/backpack/captain
+	satchel_one = /obj/item/storage/backpack/satchel/cap
+	messenger_bag = /obj/item/storage/backpack/messenger/com
 
 /decl/hierarchy/outfit/job/talon_pilot
 	name = OUTFIT_JOB_NAME("Talon Pilot")
@@ -155,64 +155,64 @@
 	pda_type = null
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
 
-	l_ear = /obj/item/device/radio/headset/talon
+	l_ear = /obj/item/radio/headset/talon
 	shoes = /obj/item/clothing/shoes/black
-	uniform = /obj/item/clothing/under/rank/pilot1
+	uniform = /obj/item/clothing/under/rank/pilot2
 	suit = /obj/item/clothing/suit/storage/toggle/bomber/pilot
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/fakesunglasses/aviator
-
+	uniform_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot1 = 1)
 /decl/hierarchy/outfit/job/talon_doctor
 	name = OUTFIT_JOB_NAME("Talon Doctor")
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	id_type = /obj/item/weapon/card/id/medical
+	id_type = /obj/item/card/id/medical
 	id_slot = slot_wear_id
 	pda_type = null
 
-	l_ear = /obj/item/device/radio/headset/talon
+	l_ear = /obj/item/radio/headset/talon
 	shoes = /obj/item/clothing/shoes/white
-	backpack = /obj/item/weapon/storage/backpack/medic
-	satchel_one = /obj/item/weapon/storage/backpack/satchel/med
-	messenger_bag = /obj/item/weapon/storage/backpack/messenger/med
+	backpack = /obj/item/storage/backpack/medic
+	satchel_one = /obj/item/storage/backpack/satchel/med
+	messenger_bag = /obj/item/storage/backpack/messenger/med
 	uniform = /obj/item/clothing/under/rank/medical
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat
-	l_hand = /obj/item/weapon/storage/firstaid/regular
-	r_pocket = /obj/item/device/flashlight/pen
+	l_hand = /obj/item/storage/firstaid/regular
+	r_pocket = /obj/item/flashlight/pen
 
 /decl/hierarchy/outfit/job/talon_security
 	name = OUTFIT_JOB_NAME("Talon Security")
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	id_type = /obj/item/weapon/card/id/security
+	id_type = /obj/item/card/id/security
 	id_slot = slot_wear_id
 	pda_type = null
-	backpack_contents = list(/obj/item/weapon/handcuffs = 1)
+	backpack_contents = list(/obj/item/handcuffs = 1)
 
-	l_ear = /obj/item/device/radio/headset/talon
+	l_ear = /obj/item/radio/headset/talon
 	gloves = /obj/item/clothing/gloves/black
 	shoes = /obj/item/clothing/shoes/boots/jackboots
-	backpack = /obj/item/weapon/storage/backpack/security
-	satchel_one = /obj/item/weapon/storage/backpack/satchel/sec
-	messenger_bag = /obj/item/weapon/storage/backpack/messenger/sec
+	backpack = /obj/item/storage/backpack/security
+	satchel_one = /obj/item/storage/backpack/satchel/sec
+	messenger_bag = /obj/item/storage/backpack/messenger/sec
 	uniform = /obj/item/clothing/under/rank/security
-	l_pocket = /obj/item/device/flash
+	l_pocket = /obj/item/flash
 
 /decl/hierarchy/outfit/job/talon_engineer
 	name = OUTFIT_JOB_NAME("Talon Engineer")
 	hierarchy_type = /decl/hierarchy/outfit/job
 
-	id_type = /obj/item/weapon/card/id/engineering
+	id_type = /obj/item/card/id/engineering
 	id_slot = slot_wear_id
 	pda_type = null
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
 
-	l_ear = /obj/item/device/radio/headset/talon
-	belt = /obj/item/weapon/storage/belt/utility/full
+	l_ear = /obj/item/radio/headset/talon
+	belt = /obj/item/storage/belt/utility/full
 	shoes = /obj/item/clothing/shoes/boots/workboots
-	r_pocket = /obj/item/device/t_scanner
-	backpack = /obj/item/weapon/storage/backpack/industrial
-	satchel_one = /obj/item/weapon/storage/backpack/satchel/eng
-	messenger_bag = /obj/item/weapon/storage/backpack/messenger/engi
+	r_pocket = /obj/item/t_scanner
+	backpack = /obj/item/storage/backpack/industrial
+	satchel_one = /obj/item/storage/backpack/satchel/eng
+	messenger_bag = /obj/item/storage/backpack/messenger/engi
 	uniform = /obj/item/clothing/under/rank/atmospheric_technician
-	belt = /obj/item/weapon/storage/belt/utility/atmostech
+	belt = /obj/item/storage/belt/utility/atmostech

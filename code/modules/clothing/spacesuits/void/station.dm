@@ -44,7 +44,7 @@
 	item_state_slots = list(slot_r_hand_str = "eng_helm_con", slot_l_hand_str = "eng_helm_con")
 
 /obj/item/clothing/suit/space/void/engineering/construction
-	name = "contstruction voidsuit"
+	name = "construction voidsuit"
 	icon_state = "rig-engineering_con"
 	item_state_slots = list(slot_r_hand_str = "eng_voidsuit_con", slot_l_hand_str = "eng_voidsuit_con")
 

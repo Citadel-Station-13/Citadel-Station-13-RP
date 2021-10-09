@@ -9,6 +9,7 @@
 	name = "giant rat"
 	desc = "In what passes for a hierarchy among verminous rodents, this one is king."
 	tt_desc = "Mus muscular"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/rat)
 
 	icon_state = "rous"
 	icon_living = "rous"
@@ -52,11 +53,32 @@
 	say_list_type = /datum/say_list/rat
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/rat
 
+//Randomization Code
+/mob/living/simple_mob/vore/aggressive/rat/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 /mob/living/simple_mob/vore/aggressive/rat/tame		//not quite tame but does not attack on sight
 	name = "curious giant rat"
 	desc = "In what passes for a hierarchy among verminous rodents, this one is king. It seems to be more interested on scavenging."
 	var/mob/living/carbon/human/food
 	var/hunger = 0
+
+/mob/living/simple_mob/vore/aggressive/rat/maurice
+	name = "Maurice"
+	desc = "The station's resident vermin supreme, he makes the rules for all maintnence rodents. \
+	He appears to have grown quite chubby off gifts of trash and cheese from the crew."
+
+	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+
 /*
 /mob/living/simple_mob/vore/aggressive/rat/tame/Life()
 	. = ..()

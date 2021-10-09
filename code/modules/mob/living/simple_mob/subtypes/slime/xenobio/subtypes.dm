@@ -189,11 +189,31 @@
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/proc/ignite()
 	visible_message(span("critical", "\The [src] erupts in an inferno!"))
-	for(var/turf/simulated/target_turf in view(2, src))
+	for(var/turf/simulated/target_turf in get_ignition_turfs(25, 2))
 		target_turf.assume_gas(/datum/gas/phoron, 30, 1500+T0C)
 		spawn(0)
 			target_turf.hotspot_expose(1500+T0C, 400)
 	qdel(src)
+
+/mob/living/simple_mob/slime/xenobio/dark_purple/proc/get_ignition_turfs(amt = 25, maxrad = 2)
+	. = list()
+	var/turf/T = get_turf(src)
+	if(!T)
+		return
+	var/list/processing = list(T)
+	var/list/processed = list()
+	while(processing.len)
+		var/turf/check = processing[1]
+		processing.Cut(1, 2)
+		processed[check] = TRUE
+		if(get_dist(check, T) > maxrad)
+			continue
+		. += check
+		for(var/d in GLOB.cardinal)
+			var/turf/enemy = get_step(check, d)
+			if(!enemy || !check.CanZASPass(enemy) || !enemy.CanZASPass(check) || processed[enemy])
+				continue
+			processing += enemy
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/ex_act(severity)
 	log_and_message_admins("[src] ignited due to a chain reaction with an explosion.")
@@ -208,16 +228,14 @@
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		ignite()
 	else
-		..()
+		return ..()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W) && W.force && W.damtype == BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
 	else
-		..()
-
-
+		return ..()
 
 /mob/living/simple_mob/slime/xenobio/dark_blue
 	desc = "This slime makes other entities near it feel much colder, and is more resilient to the cold.  It tends to kill other slimes rather quickly."
@@ -305,8 +323,7 @@
 		P.reflected = TRUE
 		return PROJECTILE_CONTINUE // complete projectile permutation
 	else
-		..()
-
+		return ..()
 
 // Tier 3
 
@@ -446,7 +463,7 @@
 
 /mob/living/simple_mob/slime/xenobio/amber/proc/feed_aura()
 	for(var/mob/living/L in view(2, src))
-		if(L == src) // Don't feed themselves, or it is impossible to stop infinite slimes without killing all of the ambers.
+		if(istype(L, type))
 			continue
 		if(istype(L, /mob/living/simple_mob/slime/xenobio))
 			var/mob/living/simple_mob/slime/xenobio/X = L
@@ -668,7 +685,7 @@
 		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		explode()
 	else
-		..()
+		return ..()
 
 /mob/living/simple_mob/slime/xenobio/oil/attackby(obj/item/W, mob/living/user)
 	if(istype(W) && W.force && W.damtype == BURN)

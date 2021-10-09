@@ -12,4 +12,4 @@ export const NtosCameraConsole = () => {
       </NtosWindow.Content>
     </NtosWindow>
   );
-}; 
+};

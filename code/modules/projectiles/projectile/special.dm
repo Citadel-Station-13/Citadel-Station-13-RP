@@ -164,7 +164,7 @@
 	else if(istype(target, /mob/living/carbon/))
 	//	for (var/mob/V in viewers(src))
 	//		V.show_message("The radiation beam dissipates harmlessly through [M]", 3)
-		M.show_message("<font color='blue'>The radiation beam dissipates harmlessly through your body.</font>")
+		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
 	else
 		return 1
 
@@ -197,7 +197,7 @@
 		if((H.species.flags & IS_PLANT) && (M.nutrition < 500))
 			M.nutrition += 30
 	else if (istype(target, /mob/living/carbon/))
-		M.show_message("<font color='blue'>The radiation beam dissipates harmlessly through your body.</font>")
+		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
 	else
 		return 1
 
@@ -348,3 +348,15 @@
 /obj/item/projectile/bullet/honker/Initialize(mapload)
 	. = ..()
 	SpinAnimation()
+
+/obj/item/projectile/bullet/honker/lethal
+	damage = 20
+	nodamage = FALSE
+	damage_type = BRUTE
+
+/obj/item/projectile/bullet/honker/lethal/Initialize(mapload)
+	. = ..()
+	SpinAnimation()
+
+/obj/item/projectile/bullet/honker/lethal/heavy
+	damage = 40

@@ -155,6 +155,10 @@
 	// contained in a cage
 	var/in_stasis = 0
 
+	//Randomization code base
+	var/mod_min = 70
+	var/mod_max = 130
+
 /mob/living/simple_mob/Initialize(mapload)
 	verbs -= /mob/verb/observe
 	health = maxHealth
@@ -232,7 +236,7 @@
 	// Turf related slowdown
 	var/turf/T = get_turf(src)
 	if(T && T.movement_cost && !hovering) // Flying mobs ignore turf-based slowdown. Aquatic mobs ignore water slowdown, and can gain bonus speed in it.
-		if(istype(T,/turf/simulated/floor/outdoors/water) && aquatic_movement)
+		if(istype(T,/turf/simulated/floor/water) && aquatic_movement)
 			tally -= aquatic_movement - 1
 		else
 			tally += T.movement_cost

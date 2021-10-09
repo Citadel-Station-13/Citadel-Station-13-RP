@@ -196,7 +196,7 @@
 /turf/simulated/floor/plating,
 /area/submap/farm1)
 "N" = (
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/farm1)
 "O" = (
 /obj/structure/loot_pile/maint/technical,

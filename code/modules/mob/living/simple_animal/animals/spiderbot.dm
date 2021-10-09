@@ -1,3 +1,10 @@
+/datum/category_item/catalogue/fauna/spiderbot
+	name = "Spiderbot"
+	desc = "A roaming curiosity, spiderbots are as harmless as \
+	they are visually frightening. Generally friendly, the intelligence \
+	piloting a spiderbot is usually still fully cognizant, and benign."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/spiderbot
 	name = "spider-bot"
 	desc = "A skittering robotic friend!"
@@ -7,6 +14,7 @@
 	icon_living = "spiderbot-chassis"
 	icon_dead = "spiderbot-smashed"
 	intelligence_level = SA_HUMANOID // Because its piloted by players.
+	catalogue_data = list(/datum/category_item/catalogue/fauna/spiderbot)
 
 	health = 10
 	maxHealth = 10

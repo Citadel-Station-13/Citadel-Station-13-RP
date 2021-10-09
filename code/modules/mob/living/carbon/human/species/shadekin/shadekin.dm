@@ -45,13 +45,17 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT
+	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+
+	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
 	flesh_color = "#FFC896"
 	blood_color = "#A10808"
 	base_color = "#f0f0f0"
 	color_mult = 1
+
+	inherent_verbs = list(/mob/living/proc/shred_limb)
 
 	has_glowing_eyes = TRUE
 
@@ -62,8 +66,7 @@
 
 	speech_bubble_appearance = "ghost"
 
-	genders = list(PLURAL, NEUTER)		//no sexual dymorphism
-	ambiguous_genders = TRUE	//but just in case
+	genders = list(MALE, FEMALE, PLURAL, NEUTER, HERM)	//fuck it. shadekins with titties
 
 	virus_immune = 1
 

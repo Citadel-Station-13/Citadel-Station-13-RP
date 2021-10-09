@@ -41,7 +41,7 @@ var/global/list/prevent_respawns = list()
 
 	//Job slot cleanup
 	var/job = src.mind.assigned_role
-	SSjobs.FreeRole(job)
+	job_master.FreeRole(job)
 
 	//Their objectives cleanup
 	if(src.mind.objectives.len)
@@ -49,8 +49,8 @@ var/global/list/prevent_respawns = list()
 		src.mind.special_role = null
 
 	//Cut the PDA manifest (ugh)
-	if(PDA_Manifest.len)
-		PDA_Manifest.Cut()
+	if(GLOB.PDA_Manifest.len)
+		GLOB.PDA_Manifest.Cut()
 	for(var/datum/data/record/R in data_core.medical)
 		if((R.fields["name"] == src.real_name))
 			qdel(R)

@@ -25,7 +25,7 @@
 /turf/template_noop,
 /area/submap/Lake1)
 "h" = (
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water,
 /area/submap/Lake1)
 "i" = (
 /turf/simulated/floor/outdoors/dirt,

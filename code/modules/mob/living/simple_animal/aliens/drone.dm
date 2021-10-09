@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/malf_drone
+	name = "Malfunctioning Combat Drone"
+	desc = "Many drones like this are fielded by Corporate naval fleets. \
+	Armed with heavy lasers, powerful combat shielding, armored frames, and \
+	self destruct cores, stumbling across one of these in the field is an almost \
+	guaranteed death sentence. When a combat drone malfunctions, it becomes twice \
+	as deadly, as it will attack anything it sees - even former allies."
+	value = CATALOGUER_REWARD_MEDIUM
 
 //malfunctioning combat drones
 /mob/living/simple_mob/hostile/malf_drone
@@ -99,7 +107,7 @@
 	//sometimes our targetting sensors malfunction, and we attack anyone nearby
 	if(prob(disabled ? 0 : 1))
 		if(hostile)
-			src.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] retracts several targetting vanes, and dulls it's running lights.</font>")
+			src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] retracts several targetting vanes, and dulls it's running lights.</font>")
 			hostile = 0
 		else
 			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] suddenly lights up, and additional targetting vanes slide into place.</font>")
@@ -123,9 +131,9 @@
 		exploding = 0
 		if(!disabled)
 			if(prob(50))
-				src.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] suddenly shuts down!</font>")
+				src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] suddenly shuts down!</font>")
 			else
-				src.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] suddenly lies still and quiet.</font>")
+				src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] suddenly lies still and quiet.</font>")
 			disabled = rand(150, 600)
 			walk(src,0)
 

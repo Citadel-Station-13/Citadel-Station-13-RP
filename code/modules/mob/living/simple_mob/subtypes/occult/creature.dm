@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/creature
+	name = "%#ERROR#%"
+	desc = "%ERROR% SCAN DATA REDACTED. RETURN SCANNER TO A \
+	CENTRAL ADMINISTRATOR FOR IMMEDIATE MAINTENANCE. %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/creature
 	name = "creature"
 	desc = "A sanity-destroying otherthing."
@@ -5,6 +11,7 @@
 	icon_state = "otherthing"
 	icon_living = "otherthing"
 	icon_dead = "otherthing-dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/creature)
 
 	mob_class = MOB_CLASS_ABERRATION
 
@@ -27,6 +34,19 @@
 	speak_emote = list("gibbers")
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
+
+//Randomization Code
+/mob/living/simple_mob/creature/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 // Strong Variant
 /mob/living/simple_mob/creature/strong

@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/poi_d/POIs/reactor)
 "c" = (
-/turf/simulated/floor/tiled/steel_dirty/triumph,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/poi_d/POIs/reactor)
 "d" = (
 /obj/effect/decal/remains/tajaran,
@@ -37,7 +37,7 @@
 /area/poi_d/POIs/reactor)
 "n" = (
 /obj/machinery/door/airlock/multi_tile/glass,
-/turf/simulated/floor/tiled/steel_dirty/triumph,
+/turf/simulated/floor/tiled/steel_dirty,
 /area/poi_d/POIs/reactor)
 "v" = (
 /obj/machinery/drone_fabricator/derelict,

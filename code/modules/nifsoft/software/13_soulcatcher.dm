@@ -119,7 +119,7 @@
 	"Catching Prey \[[setting_flags & NIF_SC_CATCHING_OTHERS ? "Enabled" : "Disabled"]\]" = NIF_SC_CATCHING_OTHERS,
 	"Ext. Hearing \[[setting_flags & NIF_SC_ALLOW_EARS ? "Enabled" : "Disabled"]\]" = NIF_SC_ALLOW_EARS,
 	"Ext. Vision \[[setting_flags & NIF_SC_ALLOW_EYES ? "Enabled" : "Disabled"]\]" = NIF_SC_ALLOW_EYES,
-	"Mind Backups \[[setting_flags & NIF_SC_BACKUPS ? "Enabled" : "Disabled"]\]" = NIF_SC_BACKUPS,
+//	"Mind Backups \[[setting_flags & NIF_SC_BACKUPS ? "Enabled" : "Disabled"]\]" = NIF_SC_BACKUPS,
 	"AR Projecting \[[setting_flags & NIF_SC_PROJECTING ? "Enabled" : "Disabled"]\]" = NIF_SC_PROJECTING,
 	"Design Inside",
 	"Erase Contents")
@@ -132,7 +132,7 @@
 				printed after an intro ending with: \"Around you, you see...\" to the prey. If you already \
 				have prey, this will be printed to them after \"Your surroundings change to...\". Limit 2048 char.", \
 				"VR Environment", html_decode(inside_flavor)) as message
-				new_flavor = sanitize(new_flavor, MAX_MESSAGE_LEN*2)
+				new_flavor = sanitize(new_flavor, 32768, extra = FALSE)
 				inside_flavor = new_flavor
 				nif.notify("Updating VR environment...")
 				for(var/brain in brainmobs)
@@ -161,12 +161,12 @@
 	var/notify_message
 	//Special treatment
 	switch(flag)
-		if(NIF_SC_BACKUPS)
+/*		if(NIF_SC_BACKUPS)
 			if(setting_flags & NIF_SC_BACKUPS)
 				notify_message = "Mind backup system enabled."
 			else
 				notify_message = "Mind backup system disabled."
-
+*/
 		if(NIF_SC_CATCHING_ME)
 			if(setting_flags & NIF_SC_CATCHING_ME)
 				nif.set_flag(NIF_O_SCMYSELF,NIF_FLAGS_OTHER)
@@ -401,6 +401,9 @@
 		eyeobj.pixel_y--
 		eyeobj.is_shifted = TRUE
 
+/mob/living/carbon/brain/caught_soul/allow_examine(atom/A)
+	return TRUE
+
 /mob/living/carbon/brain/caught_soul/emote(var/act,var/m_type=1,var/message = null)
 	if(silent)
 		return FALSE
@@ -470,8 +473,11 @@
 		COMPILE_OVERLAYS(dummy)
 		dummy.alpha = 192
 
+		// remove hudlist
+		dummy.overlays -= dummy.hud_list
 		// appearance clone immediately
 		appearance = dummy.appearance
+		plane = PLANE_AUGMENTED
 		qdel(dummy)
 
 /mob/observer/eye/ar_soul/Destroy()
@@ -574,6 +580,13 @@
 
 ///////////////////
 //Verbs for soulbrains
+/mob/living/carbon/brain/caught_soul/verb/examine_surroundings()
+	set name = "Examine Surroundings"
+	set desc = "Examine the interior of the soulcatcher you're in."
+	set category = "Soulcatcher"
+
+	to_chat(src, "Around you, you see...<br>[soulcatcher?.inside_flavor]")
+
 /mob/living/carbon/brain/caught_soul/verb/ar_project()
 	set name = "AR Project"
 	set desc = "Project your form into Augmented Reality for those around your predator with the appearance of your loaded character."

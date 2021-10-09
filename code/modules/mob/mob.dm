@@ -15,7 +15,7 @@
 	ghostize()
 	QDEL_NULL(plane_holder)
 	..()
-	return QDEL_HINT_HARDDEL_NOW
+	return QDEL_HINT_HARDDEL
 
 /mob/proc/remove_screen_obj_references()
 	hands = null
@@ -228,7 +228,7 @@
 	return
 
 //mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
-/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
+/mob/verb/examinate(atom/A as mob|obj|turf in view(get_turf(src))) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
 
@@ -353,9 +353,9 @@
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
 		if(length(msg) <= 40)
-			return "<font color='blue'>[msg]</font>"
+			return "<font color=#4F49AF>[msg]</font>"
 		else
-			return "<font color='blue'>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
+			return "<font color=#4F49AF>[copytext_preserve_html(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</font></a>"
 
 /*
 /mob/verb/help()
@@ -398,11 +398,19 @@
 	else
 		return 	// Don't set it, no need
 
-/mob/verb/abandon_mob()
+/// Alias for respawn
+/mob/verb/return_to_menu()
 	set name = "Return to Menu"
 	set category = "OOC"
+	set desc = "Return to the lobby."
+	return abandon_mob()
 
-	if(stat != DEAD || !SSticker)
+/mob/verb/abandon_mob()
+	set name = "Respawn"
+	set category = "OOC"
+	set desc = "Return to the lobby."
+
+	if(stat != DEAD)
 		to_chat(usr, "<span class='notice'><B>You must be dead to use this!</B></span>")
 		return
 
@@ -476,7 +484,7 @@
 	if(client.holder && (client.holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		to_chat(usr, "<font color='blue'>You must be observing to use this!</font>")
+		to_chat(usr, "<font color=#4F49AF>You must be observing to use this!</font>")
 		return
 
 	if(is_admin && stat == DEAD)
@@ -958,6 +966,11 @@ mob/proc/yank_out_object()
 /mob/proc/updateicon()
 	return
 
+// Please always use this proc, never just set the var directly.
+/mob/proc/set_stat(var/new_stat)
+	. = (stat != new_stat)
+	stat = new_stat
+
 /mob/verb/face_direction()
 
 	set name = "Face Direction"
@@ -1215,3 +1228,14 @@ mob/proc/yank_out_object()
 			return src
 	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
 		return src
+
+/mob/drop_location()
+	if(temporary_form)
+		return temporary_form.drop_location()
+	return ..()
+
+/**
+ * Returns whether or not we should be allowed to examine a target
+ */
+/mob/proc/allow_examine(atom/A)
+	return client && (client.eye == src)

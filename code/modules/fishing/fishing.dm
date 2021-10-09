@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(indoor_fishing_junk_list, list(
 
 GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UNCOMMON = 20, FISHING_COMMON = 35, FISHING_JUNK = 15, FISHING_NOTHING = 40))
 
-/turf/simulated/floor/outdoors/water
+/turf/simulated/floor/water
 	var/has_fish = TRUE //If the water has fish or not.
 	var/list/rare_fish_list	// Rare list.
 	var/list/uncommon_fish_list	// Uncommon list.
@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 	var/max_fishing_time = 90
 	var/being_fished = FALSE
 
-/turf/simulated/floor/outdoors/water/proc/handle_fish()	// Subtypes should over-ride this, and supply their own GLOB lists for maximum Mix and Match power.
+/turf/simulated/floor/water/proc/handle_fish()	// Subtypes should over-ride this, and supply their own GLOB lists for maximum Mix and Match power.
 	if(has_fish)
 		rare_fish_list = GLOB.generic_fishing_rare_list
 		uncommon_fish_list = GLOB.generic_fishing_uncommon_list
@@ -75,13 +75,13 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		junk_list = GLOB.generic_fishing_junk_list
 		fishing_loot = GLOB.generic_fishing_chance_list
 
-/turf/simulated/floor/outdoors/water/pool
+/turf/simulated/floor/water/pool
 	has_fish = FALSE
 
-/turf/simulated/floor/outdoors/water/deep/pool
+/turf/simulated/floor/water/deep/pool
 	has_fish = TRUE
 
-/turf/simulated/floor/outdoors/water/deep/pool/handle_fish()
+/turf/simulated/floor/water/deep/pool/handle_fish()
 	if(has_fish)
 		rare_fish_list = GLOB.generic_fishing_pool_list
 		uncommon_fish_list = GLOB.generic_fishing_pool_list
@@ -89,7 +89,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		junk_list = GLOB.generic_fishing_pool_list
 		fishing_loot = GLOB.generic_fishing_chance_list
 
-/turf/simulated/floor/outdoors/water/ex_act(severity)	// Explosive fishing.
+/turf/simulated/floor/water/ex_act(severity)	// Explosive fishing.
 	if(prob(5 * severity))
 		pick_fish()
 		if(fish_type)
@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 	has_fish = FALSE
 	..(severity)
 
-/turf/simulated/floor/outdoors/water/proc/pick_fish()
+/turf/simulated/floor/water/proc/pick_fish()
 	if(has_fish)
 		var/table = pickweight(fishing_loot)
 		if(table == FISHING_RARE && rare_fish_list.len)
@@ -116,7 +116,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 	else
 		fish_type = null
 
-/turf/simulated/floor/outdoors/water/attackby(obj/item/P as obj, mob/user as mob)
+/turf/simulated/floor/water/attackby(obj/item/P as obj, mob/user as mob)
 //If you use a fishing rod on an open body of water that var/has_fish enabled
 	if(istype(P, /obj/item/material/fishing_rod) && !being_fished)
 		var/obj/item/material/fishing_rod/R = P
@@ -160,11 +160,12 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		being_fished = FALSE
 	else ..()
 
-/turf/simulated/floor/outdoors/water/indoors
+/turf/simulated/floor/water/indoors
+	outdoors = FALSE
 	min_fishing_time = 33
 	max_fishing_time = 99
 
-/turf/simulated/floor/outdoors/water/indoors/handle_fish()
+/turf/simulated/floor/water/indoors/handle_fish()
 	if(has_fish)
 		rare_fish_list = GLOB.generic_fishing_rare_list
 		uncommon_fish_list = GLOB.generic_fishing_uncommon_list
@@ -172,11 +173,12 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		junk_list = GLOB.indoor_fishing_junk_list
 		fishing_loot = GLOB.indoor_fishing_chance_list
 
-/turf/simulated/floor/outdoors/water/deep/indoors
+/turf/simulated/floor/water/deep/indoors
+	outdoors = FALSE
 	min_fishing_time = 33
 	max_fishing_time = 70
 
-/turf/simulated/floor/outdoors/water/deep/indoors/handle_fish()
+/turf/simulated/floor/water/deep/indoors/handle_fish()
 	if(has_fish)
 		rare_fish_list = GLOB.generic_fishing_rare_list
 		uncommon_fish_list = GLOB.generic_fishing_uncommon_list

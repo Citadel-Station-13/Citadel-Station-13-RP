@@ -17,6 +17,7 @@
 	var/revive_ready = REVIVING_READY	// Only used for creatures that have the xenochimera regen ability, so far.
 	var/metabolism = 0.0015
 	var/vore_taste = null				// What the character tastes like
+	var/vore_smell = null				// What the character smells like
 	var/no_vore = FALSE					// If the character/mob can vore.
 	var/openpanel = FALSE				// Is the vore panel open?
 	var/noisy = FALSE					// Toggle audible hunger.
@@ -38,6 +39,7 @@
 /hook/living_new/proc/vore_setup(mob/living/M)
 	M.verbs += /mob/living/proc/escapeOOC
 	M.verbs += /mob/living/proc/lick
+	M.verbs += /mob/living/proc/smell
 	M.verbs += /mob/living/proc/switch_scaling
 	if(M.no_vore) //If the mob isn't supposed to have a stomach, let's not give it an insidepanel so it can make one for itself, or a stomach.
 		return TRUE
@@ -223,6 +225,7 @@
 	P.digest_leave_remains = src.digest_leave_remains
 	P.allowmobvore = src.allowmobvore
 	P.vore_taste = src.vore_taste
+	P.vore_smell = src.vore_smell
 	P.permit_healbelly = src.permit_healbelly
 	P.can_be_drop_prey = src.can_be_drop_prey
 	P.can_be_drop_pred = src.can_be_drop_pred
@@ -252,6 +255,7 @@
 	digest_leave_remains = P.digest_leave_remains
 	allowmobvore = P.allowmobvore
 	vore_taste = P.vore_taste
+	vore_smell = P.vore_smell
 	permit_healbelly = P.permit_healbelly
 	can_be_drop_prey = P.can_be_drop_prey
 	can_be_drop_pred = P.can_be_drop_pred
@@ -312,7 +316,7 @@
 //
 /mob/living/proc/lick(var/mob/living/tasted in living_mobs(1))
 	set name = "Lick"
-	set category = "Vore"
+	set category = "IC"
 	set desc = "Lick someone nearby!"
 	set popup_menu = FALSE // Stop licking by accident!
 
@@ -343,10 +347,43 @@
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		if(H.touching.reagent_list.len) //Just the first one otherwise I'll go insane.
+		if(H.touching.reagent_list.len) // Just the first one otherwise I'll go insane.
 			var/datum/reagent/R = H.touching.reagent_list[1]
 			taste_message += " You also get the flavor of [R.taste_description] from something on them"
 	return taste_message
+
+// This is just the above proc but switched about.
+/mob/living/proc/smell(mob/living/smelled in living_mobs(1))
+	set name = "Smell"
+	set category = "IC"
+	set desc = "Smell someone nearby!"
+	set popup_menu = FALSE
+
+	if(!istype(smelled))
+		return
+	if(!canClick() || incapacitated(INCAPACITATION_ALL))
+		return
+
+	setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	visible_message("<span class='warning'>[src] smells [smelled]!</span>","<span class='notice'>You smell [smelled]. They smell like [smelled.get_smell_message()].</span>","<b>Sniff!</b>")
+
+/mob/living/proc/get_smell_message(allow_generic = 1)
+	if(!vore_smell && !allow_generic)
+		return FALSE
+
+	var/smell_message = ""
+	if(vore_smell && (vore_smell != ""))
+		smell_message += "[vore_smell]"
+	else
+		if(ishuman(src))
+			var/mob/living/carbon/human/H = src
+			smell_message += "a normal [H.custom_species ? H.custom_species : H.species.name]"
+		else
+			smell_message += "a plain old normal [src]"
+
+	return smell_message
+
+
 //
 // OOC Escape code for pref-breaking or AFK preds
 //
@@ -509,41 +546,41 @@
 	if(ishuman(C.loc)) //In a /mob/living/carbon/human
 		var/mob/living/carbon/human/H = C.loc
 		if(H.shoes == C) //Being worn
-			to_chat(src,"<font color='blue'> You start to climb around the larger creature's feet and ankles!</font>")
+			to_chat(src,"<font color=#4F49AF> You start to climb around the larger creature's feet and ankles!</font>")
 			to_chat(H,"<font color='red'>Something is trying to climb out of your [C]!</font>")
 			var/original_loc = H.loc
 			for(var/escape_time = 100,escape_time > 0,escape_time--)
 				if(H.loc != original_loc)
 					to_chat(src,"<font color='red'>You're pinned back underfoot!</font>")
-					to_chat(H,"<font color='blue'>You pin the escapee back underfoot!</font>")
+					to_chat(H,"<font color=#4F49AF>You pin the escapee back underfoot!</font>")
 					return
 				if(src.loc != C)
 					return
 				sleep(1)
 
-			to_chat(src,"<font color='blue'>You manage to escape \the [C]!</font>")
+			to_chat(src,"<font color=#4F49AF>You manage to escape \the [C]!</font>")
 			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
 			forceMove(H.loc)
 
 		else //Being held by a human
-			to_chat(src,"<font color='blue'>You start to climb out of \the [C]!</font>")
+			to_chat(src,"<font color=#4F49AF>You start to climb out of \the [C]!</font>")
 			to_chat(H,"<font color='red'>Something is trying to climb out of your [C]!</font>")
 			for(var/escape_time = 60,escape_time > 0,escape_time--)
 				if(H.shoes == C)
 					to_chat(src,"<font color='red'>You're pinned underfoot!</font>")
-					to_chat(H,"<font color='blue'>You pin the escapee underfoot!</font>")
+					to_chat(H,"<font color=#4F49AF>You pin the escapee underfoot!</font>")
 					return
 				if(src.loc != C)
 					return
 				sleep(1)
-			to_chat(src,"<font color='blue'>You manage to escape \the [C]!</font>")
+			to_chat(src,"<font color=#4F49AF>You manage to escape \the [C]!</font>")
 			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
 			forceMove(H.loc)
 
-	to_chat(src,"<font color='blue'>You start to climb out of \the [C]!</font>")
+	to_chat(src,"<font color=#4F49AF>You start to climb out of \the [C]!</font>")
 	sleep(50)
 	if(loc == C)
-		to_chat(src,"<font color='blue'>You climb out of \the [C]!</font>")
+		to_chat(src,"<font color=#4F49AF>You climb out of \the [C]!</font>")
 		forceMove(C.loc)
 	return
 
@@ -591,7 +628,7 @@
 		to_chat(src, "<span class='warning'>You are not allowed to eat this.</span>")
 		return
 
-	if(is_type_in_list(I,edible_trash) | adminbus_trash)
+	if(is_type_in_list(I,edible_trash) || adminbus_trash)
 		if(I.hidden_uplink)
 			to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
 			message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")

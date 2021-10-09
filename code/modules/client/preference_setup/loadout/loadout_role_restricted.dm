@@ -342,7 +342,12 @@
 
 /datum/gear/restricted/security/uniform/turtleneck/alt
 	display_name = "Security Turtleneck - Alternative"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/security
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/security
+
+/datum/gear/restricted/security/uniform/turtleneck/hos
+	display_name = "Head of Security Turtleneck"
+	path = /obj/item/clothing/under/rank/head_of_security/turtleneck
+	allowed_roles = list("Head of Security")
 
 /datum/gear/restricted/security/uniform/bodysuit
 	display_name = "Security Bodysuit"
@@ -355,17 +360,21 @@
 
 /datum/gear/restricted/security/uniform/coveralls
 	display_name = "Security Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/security
+	path = /obj/item/clothing/under/oricon/utility/fleet/security
 
 /datum/gear/restricted/security/uniform/fatigues
 	display_name = "Security Uniform - Fatigues" //You marine larper.
-	path = /obj/item/clothing/under/solgov/utility/marine/security
+	path = /obj/item/clothing/under/oricon/utility/marine/security
 
+/datum/gear/restricted/security/uniform/dispatch
+	display_name = "Security Uniform - Dispatch"
+	path = /obj/item/clothing/under/rank/dispatch
 
 //Back
 /datum/gear/restricted/security/back/dufflebag
 	display_name = "Security - Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/sec
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Talon Guard")
 	cost = 2
 
 //Suit
@@ -462,6 +471,7 @@
 /datum/gear/restricted/medical/back/dufflebag
 	display_name = "Medical Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/med
+	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Talon Doctor")
 	cost = 2
 
 /datum/gear/restricted/medical/back/dufflebag/emt
@@ -494,15 +504,15 @@
 
 /datum/gear/restricted/medical/uniform/turtleneck/alt
 	display_name = "Medical Turtleneck - Alternative"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/medical
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/medical
 
 /datum/gear/restricted/medical/uniform/coveralls
 	display_name = "Medical Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/medical
+	path = /obj/item/clothing/under/oricon/utility/fleet/medical
 
 /datum/gear/restricted/medical/uniform/fatigues
 	display_name = "Medical Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/medical
+	path = /obj/item/clothing/under/oricon/utility/marine/medical
 
 /datum/gear/restricted/medical/uniform/paramedic
 	display_name = "Medical Uniform - Paramedic Light"
@@ -531,7 +541,24 @@
 
 /datum/gear/restricted/medical/suit/wintercoat/paramedic
 	display_name = "Medical Winter Coat, Paramedic"
-	path = /obj/item/clothing/suit/storage/hooded/wintercoat/para
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/para
+
+/datum/gear/restricted/medical/suit/wintercoat/chemist
+	display_name = "Medical Winter Coat, Chemist"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/chemistry
+
+/datum/gear/restricted/medical/suit/wintercoat/viro
+	display_name = "Medical Winter Coat, Virologist"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/viro
+
+/datum/gear/restricted/medical/suit/wintercoat/genetics
+	display_name = "Medical Winter Coat, Geneticist"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/genetics
+
+/datum/gear/restricted/medical/suit/wintercoat/cmo
+	display_name = "Medical Winter Coat, CMO"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/cmo
+	allowed_roles = list("Chief Medical Officer")
 
 /datum/gear/restricted/medical/suit/surgical_apron
 	display_name = "Medical Surgical Apron"
@@ -601,6 +628,7 @@
 /datum/gear/restricted/engineering/back/dufflebag
 	display_name = "Engineering Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag/eng
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Talon Engineer")
 	cost = 2
 
 //Uniform
@@ -628,15 +656,15 @@
 
 /datum/gear/restricted/engineering/uniform/turtleneck/alt
 	display_name = "Engineering Turtleneck - Alt"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/engineering
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/engineering
 
 /datum/gear/restricted/engineering/uniform/coveralls
 	display_name = "Engineering Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/engineering
+	path = /obj/item/clothing/under/oricon/utility/fleet/engineering
 
 /datum/gear/restricted/engineering/uniform/fatigues
 	display_name = "Engineering Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/engineering
+	path = /obj/item/clothing/under/oricon/utility/marine/engineering
 
 //Suit
 /datum/gear/restricted/engineering/suit/wintercoat
@@ -647,6 +675,11 @@
 	display_name = "Atmospherics Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos
 	allowed_roles = list("Chief Engineer", "Atmospheric Technician")
+
+/datum/gear/restricted/engineering/suit/wintercoat/ce
+	display_name = "Chief Engineer's Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/ce
+	allowed_roles = list("Chief Engineer")
 
 /datum/gear/restricted/engineering/suit/operations_coat
 	display_name = "Engineering Operations Jacket"
@@ -733,15 +766,15 @@
 
 /datum/gear/restricted/supply/uniform/turtleneck
 	display_name = "Cargo Turtleneck"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/supply
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/supply
 
 /datum/gear/restricted/supply/uniform/coveralls
 	display_name = "Cargo Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/supply
+	path = /obj/item/clothing/under/oricon/utility/fleet/supply
 
 /datum/gear/restricted/supply/uniform/fatigues
 	display_name = "Cargo Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/supply
+	path = /obj/item/clothing/under/oricon/utility/marine/supply
 
 //Suit
 /datum/gear/restricted/supply/suit/snowsuit
@@ -751,6 +784,11 @@
 /datum/gear/restricted/supply/suit/wintercoat
 	display_name = "Cargo Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/cargo
+
+/datum/gear/restricted/supply/suit/wintercoat/qm
+	display_name = "Quartermaster's Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/qm
+	allowed_roles = list("Quartermaster")
 
 /datum/gear/restricted/supply/suit/wintercoat/mining
 	display_name = "Mining Winter Coat"
@@ -823,21 +861,31 @@
 
 /datum/gear/restricted/science/uniform/turtleneck/alt
 	display_name = "Science Turtleneck - Alt"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew/research
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew/research
 
 /datum/gear/restricted/science/uniform/coveralls
 	display_name = "Science Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/exploration
+	path = /obj/item/clothing/under/oricon/utility/fleet/exploration
 
 /datum/gear/restricted/science/uniform/fatigues
 	display_name = "Science Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/exploration
+	path = /obj/item/clothing/under/oricon/utility/marine/exploration
 
 
 //Suit
 /datum/gear/restricted/science/suit/wintercoat
 	display_name = "Science Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science
+
+/datum/gear/restricted/science/suit/wintercoat/rd
+	display_name = "Research Director's Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science/rd
+	allowed_roles = list("Research Director")
+
+/datum/gear/restricted/science/suit/wintercoat/robotics
+	display_name = "Robotics Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/science/robotics
+
 
 /datum/gear/restricted/science/suit/snowsuit
 	display_name = "Science Snowsuit"
@@ -904,7 +952,7 @@
 //Uniform
 /datum/gear/restricted/command/uniform/coveralls
 	display_name = "Command Uniform - Coveralls"
-	path = /obj/item/clothing/under/solgov/utility/fleet/command
+	path = /obj/item/clothing/under/oricon/utility/fleet/command
 
 /datum/gear/restricted/command/uniform/hop_dress
 	display_name = "Head of Personnel Uniform - Dress"
@@ -923,7 +971,7 @@
 
 /datum/gear/restricted/command/uniform/turtleneck
 	display_name = "Command Uniform - Turtleneck"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/officer/crew
+	path = /obj/item/clothing/under/oricon/utility/sysguard/officer/crew
 
 /datum/gear/restricted/command/uniform/bridge_officer
 	display_name = "Bridge Officer Uniform"
@@ -937,7 +985,7 @@
 
 /datum/gear/restricted/command/uniform/fatigues
 	display_name = "Command Uniform - Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/command
+	path = /obj/item/clothing/under/oricon/utility/marine/command
 
 /datum/gear/restricted/command/uniform/bodysuit
 	display_name = "Command Bodysuit"
@@ -964,6 +1012,11 @@
 	display_name = "Facility Director - Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain
 	allowed_roles = list("Facility Director")
+
+/datum/gear/restricted/command/suit/wintercoat_hop
+	display_name = "Head of Personnel - Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/captain/hop
+	allowed_roles = list("Head of Personnel")
 
 /datum/gear/restricted/command/suit/cloak
 	display_name = "Facility Director - Cloak"
@@ -1087,6 +1140,11 @@
 	path = /obj/item/clothing/shoes/galoshes/citadel/black
 	allowed_roles = list("Janitor")
 
+/datum/gear/restricted/janitor/wintercoat
+	display_name = "Janitor's Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/janitor
+	allowed_roles = list("Janitor")
+
 /datum/gear/restricted/misc/shoes/janitor/alt
 	display_name = "Janitor Galoshes - Dark-Purple"
 	path = /obj/item/clothing/shoes/galoshes/citadel/starcon
@@ -1122,10 +1180,15 @@
 
 
 //*This clusterfuck of access combinations
+//*Now with Talon roles!
 /datum/gear/restricted/misc/accessory/holster
-	display_name = "(Command/Security/Exploration) Holster - Selection"
+	display_name = "(Command/Security/Exploration/Talon) Holster - Selection"
 	path = /obj/item/clothing/accessory/holster
-	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary", "Security Officer", "Warden", "Head of Security", "Detective", "Field Medic", "Explorer", "Pathfinder", "Pilot")
+	allowed_roles = list(
+	"Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary",
+	"Security Officer", "Warden", "Head of Security", "Detective",
+	"Field Medic", "Explorer", "Pathfinder", "Pilot",
+	"Talon Captain", "Talon Doctor", "Talon Medic", "Talon Engineer", "Talon Pilot", "Talon Guard")
 
 /datum/gear/restricted/misc/accessory/holster/New()
 	..()

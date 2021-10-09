@@ -394,7 +394,8 @@
 
 #define VIS_STATUS			27
 
-#define VIS_COUNT			27 //Must be highest number from above.
+#define VIS_CLOAKED			28
+#define VIS_COUNT			28 //Must be highest number from above.
 
 //Some mob icon layering defines
 #define BODY_LAYER		-100
@@ -431,6 +432,9 @@
 //Alraune organs
 #define A_FRUIT	"fruit gland"
 
+//Apidean organs
+#define H_STOMACH "honey stomach"
+
 //species defines
 #define SPECIES_AKULA			"Akula"
 #define SPECIES_ALRAUNE			"Alraune"
@@ -438,19 +442,25 @@
 #define SPECIES_PROTEAN			"Protean"
 #define SPECIES_RAPALA			"Rapala"
 #define SPECIES_SERGAL			"Sergal"
+#define SPECIES_SHADEKIN_CREW   "Black-Eyed Shadekin"
 #define SPECIES_VASILISSAN		"Vasilissan"
 #define SPECIES_VULPKANIN		"Vulpkanin"
 #define SPECIES_XENOCHIMERA		"Xenochimera"
-#define SPECIES_XENOHYBRID		"Xenomorph Hybrid"
+#define SPECIES_XENOHYBRID		"Neomorph"
 #define SPECIES_ZORREN_FLAT		"Flatland Zorren"
 #define SPECIES_ZORREN_HIGH		"Highlander Zorren"
 #define SPECIES_CUSTOM			"Custom Species"
 #define SPECIES_PLASMAMAN		"Phoronoid"
-
+#define SPECIES_APIDAEN			"Apidaen"
+#define SPECIES_VETALA_RUDDY	"Ruddy Vetalan"
+#define SPECIES_VETALA_PALE		"Pale Vetalan"
+#define SPECIES_AURIL			"Auril"
+#define SPECIES_DREMACHIR		"Dremachir"
+//monkey species
 #define SPECIES_MONKEY_AKULA		"Sobaka"
 #define SPECIES_MONKEY_NEVREAN		"Sparra"
 #define SPECIES_MONKEY_SERGAL		"Saru"
 #define SPECIES_MONKEY_VULPKANIN	"Wolpin"
-
+//event species
 #define SPECIES_WEREBEAST			"Werebeast"
 #define SPECIES_SHADEKIN			"Shadekin"

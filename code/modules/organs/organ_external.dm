@@ -26,6 +26,8 @@
 	var/last_dam = -1                  // used in healing/processing calculations.
 	var/spread_dam = 0
 	var/thick_skin = 0                 // If a needle has a chance to fail to penetrate.
+	/// EMP damage multiplier
+	var/emp_mod = 1
 
 	// Appearance vars.
 	var/nonsolid                       // Snowflake warning, reee. Used for slime limbs.
@@ -79,6 +81,9 @@
 	// HUD element variable, see organ_icon.dm get_damage_hud_image()
 	var/image/hud_damage_image
 
+	/// makes this dumb as fuck mechanic slightly less awful - records queued syringe infections instead of a spawn()
+	var/syringe_infection_queued
+
 /obj/item/organ/external/Destroy()
 
 	if(parent && parent.children)
@@ -111,19 +116,18 @@
 	if(!(robotic >= ORGAN_ROBOT))
 		return
 	var/burn_damage = 0
-	for(var/i = 1; i <= robotic; i++)
-		switch (severity)
-			if (1)
-				burn_damage += rand(5, 8)
-			if (2)
-				burn_damage += rand(4, 6)
-			if(3)
-				burn_damage += rand(2, 5)
-			if(4)
-				burn_damage += rand(1, 3)
+	switch(severity)
+		if (1)
+			burn_damage += rand(10, 16)
+		if (2)
+			burn_damage += rand(8, 12)
+		if(3)
+			burn_damage += rand(4, 8)
+		if(4)
+			burn_damage += rand(2, 6)
 
 	if(burn_damage)
-		take_damage(0, burn_damage)
+		take_damage(0, burn_damage * emp_mod)
 
 /obj/item/organ/external/attack_self(var/mob/living/user)
 	if(!contents.len)
@@ -1219,14 +1223,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 		for(var/obj/item/organ/external/O in children)
 			O.removed()
 			if(O)
-				O.loc = src
+				O.forceMove(src)
 				for(var/obj/item/I in O.contents)
-					I.loc = src
+					I.forceMove(src)
 
 	// Grab all the internal giblets too.
 	for(var/obj/item/organ/organ in internal_organs)
 		organ.removed()
-		organ.loc = src
+		organ.forceMove(src)
 
 	// Remove parent references
 	parent.children -= src
@@ -1378,3 +1382,15 @@ Note that amputating the affected organ does in fact remove the infection from t
 						covering_clothing |= bling
 
 	return covering_clothing
+
+/obj/item/organ/external/proc/queue_syringe_infection()
+	if(!syringe_infection_queued)
+		syringe_infection_queued = 100
+		addtimer(CALLBACK(src, .proc/do_syringe_infection), rand(5, 10) MINUTES)
+	else
+		syringe_infection_queued = clamp(syringe_infection_queued + 10, 0, 300)
+
+/obj/item/organ/external/proc/do_syringe_infection()
+	if(germ_level < syringe_infection_queued)
+		germ_level = syringe_infection_queued
+	syringe_infection_queued = null

@@ -30,6 +30,7 @@
 	"Basketball" 		= new/datum/holodeck_program(/area/holodeck/source_basketball),
 	"Thunderdome"		= new/datum/holodeck_program(/area/holodeck/source_thunderdomecourt, list('sound/music/THUNDERDOME.ogg')),
 	"Beach" 			= new/datum/holodeck_program(/area/holodeck/source_beach),
+	"Chess Board" 		= new/datum/holodeck_program(/area/holodeck/source_chess),
 	"Desert" 			= new/datum/holodeck_program(/area/holodeck/source_desert,
 													list(
 														'sound/effects/weather/wind/wind_2_1.ogg',
@@ -122,7 +123,7 @@
 /obj/machinery/computer/HolodeckControl/Topic(href, href_list)
 	if(..())
 		return 1
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
+	if(IsAdminGhost(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
 		usr.set_machine(src)
 
 		if(href_list["program"])

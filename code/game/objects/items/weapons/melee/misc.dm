@@ -103,3 +103,63 @@
 	new_voice.real_name = "cursed sword"
 	voice_mobs.Add(new_voice)
 	listening_objects |= src
+
+/obj/item/melee/skateboard
+	name = "skaetbord"
+	desc = "You shouldn't be seeing this. Contact an Admin."
+	icon_state = "skateboard"
+	icon = 'icons/obj/weapons.dmi'
+	w_class = ITEMSIZE_HUGE
+	slot_flags = SLOT_BELT
+	force = 10
+	throwforce = 7
+	var/board_item_type = null
+
+/obj/item/melee/skateboard/dropped(mob/user as mob)
+	..()
+	..()
+	var/turf/T = get_turf(src)
+	new board_item_type(T)
+	user.drop_item(src)
+	qdel(src)
+
+/obj/item/melee/skateboard/improv
+	name = "improvised skateboard"
+	desc = "A skateboard. It can be placed on its wheels and ridden, or used as a radical weapon."
+	icon_state = "skateboard"
+	icon = 'icons/obj/weapons.dmi'
+	slot_flags = SLOT_BELT
+	force = 10
+	throwforce = 7
+	board_item_type = /obj/vehicle/skateboard/improv
+
+/obj/item/melee/skateboard/beginner
+	name = "skateboard"
+	desc = "A XTREME SPORTZ brand skateboard for beginners. Ages 8 and up."
+	icon_state = "skateboard"
+	board_item_type = /obj/vehicle/skateboard/beginner
+
+/obj/item/melee/skateboard/pro
+	name = "skateboard"
+	desc = "A RaDSTORMz brand professional skateboard. Looks a lot more stable than the average board."
+	icon_state = "skateboard2"
+	board_item_type = /obj/vehicle/skateboard/pro
+
+/obj/item/melee/skateboard/hoverboard
+	name = "hoverboard"
+	desc = "A blast from the past, so retro!"
+	icon_state = "hoverboard_red"
+	board_item_type = /obj/vehicle/skateboard/hoverboard
+
+/obj/item/melee/skateboard/hoverboard/admin
+	name = "Board of Directors"
+	desc = "The engineering complexity of a spaceship concentrated inside of a board. Just as expensive, too."
+	icon_state = "hoverboard_nt"
+	board_item_type = /obj/vehicle/skateboard/hoverboard/admin
+
+/obj/item/melee/skateboard/scooter
+	name = "scooter"
+	desc = "A fun way to get around."
+	icon = 'icons/obj/vehicles.dmi'
+	icon_state = "scooter_frame"
+	board_item_type = /obj/vehicle/skateboard/scooter

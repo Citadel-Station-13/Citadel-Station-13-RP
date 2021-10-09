@@ -106,6 +106,9 @@
 				new ore(get_turf(src))
 		else
 			var/ore = text2path("/obj/item/stack/material/[materialType]")
+			if(!ispath(ore))
+				qdel(src)
+				CRASH("Invalid ore [ore].")
 			for(var/i = 1, i <= oreAmount, i++)
 				new ore(get_turf(src))
 	else
@@ -114,7 +117,10 @@
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))
 		else
-			var/ore = text2path("/obj/item/stack/sheet/material/[materialType]")
+			var/ore = text2path("/obj/item/stack/material/[materialType]")
+			if(!ispath(ore))
+				qdel(src)
+				CRASH("Invalid ore [ore].")
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))
 	qdel(src)

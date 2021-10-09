@@ -24,7 +24,7 @@
 			if(!check_rights(NONE))
 				return
 
-			var/mob/M = locate(href_list["rename"]) in GLOB.GLOB.mob_list
+			var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
 			if(!istype(M))
 				to_chat(usr, "This can only be used on instances of type /mob")
 				return
@@ -59,7 +59,7 @@
 			if(!check_rights(R_SPAWN))
 				return
 
-			var/mob/living/carbon/monkey/Mo = locate(href_list["makehuman"]) in GLOB.GLOB.mob_list
+			var/mob/living/carbon/monkey/Mo = locate(href_list["makehuman"]) in GLOB.mob_list
 			if(!istype(Mo))
 				to_chat(usr, "This can only be done to instances of type /mob/living/carbon/monkey")
 				return
@@ -75,7 +75,7 @@
 			if(!check_rights(NONE))
 				return
 
-			var/mob/living/L = locate(href_list["mobToDamage"]) in GLOB.GLOB.mob_list
+			var/mob/living/L = locate(href_list["mobToDamage"]) in GLOB.mob_list
 			if(!istype(L))
 				return
 
@@ -121,7 +121,7 @@
 				var/log_msg = "[key_name(usr)] dealt [amount] amount of [Text] damage to [key_name(L)]"
 				message_admins("[key_name(usr)] dealt [amount] amount of [Text] damage to [ADMIN_LOOKUPFLW(L)]")
 				log_admin(log_msg)
-				admin_ticket_log(L, "<font color='blue'>[log_msg]</font>")
+				admin_ticket_log(L, "<font color=#4F49AF>[log_msg]</font>")
 				vv_update_display(L, Text, "[newamt]")
 
 

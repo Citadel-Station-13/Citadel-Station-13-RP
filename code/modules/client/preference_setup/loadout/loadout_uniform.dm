@@ -378,17 +378,17 @@
 	display_name = "Jumpsuit - Circuitry"
 	path = /obj/item/clothing/under/circuitry
 
-/datum/gear/uniform/sifguard
+/datum/gear/uniform/sysguard
 	display_name = "Uniform - Crew"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew
 
 /datum/gear/uniform/marine/green
 	display_name = "Uniform - Green Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/green
+	path = /obj/item/clothing/under/oricon/utility/marine/green
 
 /datum/gear/uniform/marine/tan
 	display_name = "Uniform - Tan Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/tan
+	path = /obj/item/clothing/under/oricon/utility/marine/tan
 /datum/gear/uniform/sleekoverall
 	display_name = "Overalls - Sleek"
 	path = /obj/item/clothing/under/overalls/sleek
@@ -406,20 +406,32 @@
 	path = /obj/item/clothing/under/kamishimo
 
 /datum/gear/uniform/kimono
-	display_name = "Plain Kimono"
+	display_name = "Kimono - Plain"
 	path = /obj/item/clothing/under/kimono
 
 /datum/gear/uniform/kimono_black
-	display_name = "Black Kimono"
+	display_name = "Kimono - Black"
 	path = /obj/item/clothing/under/kimono_black
 
 /datum/gear/uniform/kimono_sakura
-	display_name = "Sakura Kimono"
+	display_name = "Kimono - Sakura"
 	path = /obj/item/clothing/under/kimono_sakura
 
 /datum/gear/uniform/kimono_fancy
-	display_name = "Festival Kimono"
+	display_name = "Kimono - Festival"
 	path = /obj/item/clothing/under/kimono_fancy
+
+/datum/gear/uniform/kimono_selection
+	display_name = "Kimono Selection"
+	description = "Colorful variants of the basic kimono. Stylish and comfy!"
+
+/datum/gear/uniform/kimono_selection/New()
+	..()
+	var/list/kimonos = list()
+	for(var/kimono in typesof(/obj/item/clothing/under/kimono))
+		var/obj/item/clothing/under/kimono/kimono_type = kimono
+		kimonos[initial(kimono_type.name)] = kimono_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(kimonos, /proc/cmp_text_asc))
 
 /datum/gear/uniform/wrappedcoat
 	display_name = "Modern Wrapped Coat"
@@ -517,6 +529,10 @@ datum/gear/uniform/fashionminiskirt
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+datum/gear/uniform/bodysuit
+	display_name = "Standard Bodysuit"
+	path = /obj/item/clothing/under/bodysuit
+
 datum/gear/uniform/bodysuiteva
 	display_name = "EVA Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuiteva
@@ -551,9 +567,9 @@ datum/gear/uniform/bodysuiteva
 	path = /obj/item/clothing/under/permit
 /*
 // Polaris overrides
-/datum/gear/uniform/solgov/pt/sifguard
+/datum/gear/uniform/solgov/pt/sysguard
 	display_name = "pt uniform, planetside sec"
-	path = /obj/item/clothing/under/solgov/pt/sifguard
+	path = /obj/item/clothing/under/solgov/pt/sysguard
 */
 
 
@@ -638,3 +654,11 @@ Swimsuits
 /datum/gear/uniform/tracksuit_blue
 	display_name = "Tracksuit - Blue"
 	path = /obj/item/clothing/under/tracksuit_blue
+
+/datum/gear/uniform/tribal_tunic
+	display_name = "Tunic - Simple"
+	path = /obj/item/clothing/under/tribal_tunic
+
+/datum/gear/uniform/druidic_gown
+	display_name = "Tunic - Flowered"
+	path = /obj/item/clothing/under/druidic_gown

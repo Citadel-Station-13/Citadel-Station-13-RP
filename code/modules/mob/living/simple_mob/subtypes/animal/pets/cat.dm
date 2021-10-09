@@ -1,9 +1,20 @@
+/datum/category_item/catalogue/fauna/cat
+	name = "Cat"
+	desc = "Felines are a popular domestic animal hailing from Earth. \
+	Sharing common ancestry with Earth's 'big cats', the housecats retain \
+	much of those primitive instincts. Although generally docile around \
+	their owners and larger creatures, cats are frequently employed for pest \
+	control on interstellar facilities. They are a popular subject for photography \
+	and film on the Exonet."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/cat
 	name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
 	tt_desc = "E Felis silvestris catus"
 	icon_state = "cat2"
 	item_state = "cat2"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cat)
 
 	movement_cooldown = 0.5 SECONDS
 
@@ -20,6 +31,19 @@
 	var/mob/living/friend = null // Our best pal, who we'll follow. Meow.
 	var/named = FALSE //have I been named yet?
 	var/friend_name = null //VOREStation Edit - Lock befriending to this character
+
+//Randomization Code
+/mob/living/simple_mob/animal/passive/cat/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 /mob/living/simple_mob/animal/passive/cat/Initialize(mapload)
 	icon_living = "[initial(icon_state)]"
@@ -104,6 +128,18 @@
 	named = TRUE
 	makes_dirt = 0 //Vorestation Edit
 
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/chicken/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
+
 /mob/living/simple_mob/animal/passive/cat/kitten
 	name = "kitten"
 	desc = "D'aaawwww!"
@@ -136,6 +172,18 @@
 	item_state = "cat3"
 	named = TRUE
 	holder_type = /obj/item/holder/cat/fluff/bones
+
+//Unrandom the pet.
+/mob/living/simple_mob/animal/passive/cat/bones/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
 
 // VOREStation Edit - Adds generic tactical kittens
 /obj/item/holder/cat/kitten

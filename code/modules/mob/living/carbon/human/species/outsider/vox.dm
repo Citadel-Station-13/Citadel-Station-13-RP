@@ -46,13 +46,14 @@
 	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 0.2
 
-	flags = NO_SCAN
+	flags = NO_SCAN | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
 	flesh_color = "#a3a593"
 	base_color = "#2e3302"
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
 
 	reagent_tag = IS_VOX
 

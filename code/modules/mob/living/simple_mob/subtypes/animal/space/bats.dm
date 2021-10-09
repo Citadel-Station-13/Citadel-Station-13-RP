@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/bats
+	name = "Space Bats"
+	desc = "The byproduct of Human terraforming and genetics \
+	experimentation focusing on creating fauna more adapted to \
+	space travel, Space Bats are vampiric abominations that try \
+	to suck the life out of any warm creature they can find."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/space/bats
 	name = "space bat swarm"
 	desc = "A swarm of cute little blood sucking bats that looks pretty upset."
@@ -7,6 +15,7 @@
 	icon_living = "bat"
 	icon_dead = "bat_dead"
 	icon_gib = "bat_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/bats)
 
 	faction = "scarybat"
 
@@ -35,6 +44,19 @@
 	say_list_type = /datum/say_list/mouse	// Close enough
 
 	var/scare_chance = 15
+
+//Randomization Code
+/mob/living/simple_mob/animal/space/bats/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 /mob/living/simple_mob/animal/space/bats/apply_melee_effects(var/atom/A)
 	if(isliving(A))

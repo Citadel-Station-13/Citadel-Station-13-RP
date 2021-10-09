@@ -501,8 +501,9 @@
 
 	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[O_BRAIN]
 	if(!brain) return //no brain
-
-	var/brain_damage = clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
+	
+	// silicons edit - 2 points of damage lenience until we have proper organ rotting
+	var/brain_damage = clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage - 2)
 	H.setBrainLoss(brain_damage)
 	make_announcement("beeps, \"Warning. Subject neurological structure has sustained damage.\"", "notice")
 	playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
