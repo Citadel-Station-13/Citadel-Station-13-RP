@@ -52,6 +52,18 @@
 	maxHealth = 50
 	health = 50
 
+//Unrandom the pet
+/mob/living/simple_mob/animal/passive/cat/tabiranth/Initialize()
+	. = ..()
+	size_multiplier = 1
+	maxHealth = maxHealth
+	health = health
+	melee_damage_lower = melee_damage_lower
+	melee_damage_upper = melee_damage_upper
+	movement_cooldown = movement_cooldown
+	meat_amount = meat_amount
+	update_icons()
+
 /mob/living/simple_mob/animal/passive/cat/tabiranth/handle_special()
 	. = ..()
 	if (has_AI() && friend)

@@ -155,6 +155,10 @@
 	// contained in a cage
 	var/in_stasis = 0
 
+	//Randomization code base
+	var/mod_min = 70
+	var/mod_max = 130
+
 /mob/living/simple_mob/Initialize(mapload)
 	verbs -= /mob/verb/observe
 	health = maxHealth

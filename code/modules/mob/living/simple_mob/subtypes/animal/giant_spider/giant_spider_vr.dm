@@ -49,3 +49,6 @@
 	pixel_y = -16
 	old_x = -16
 	old_y = -16
+
+	mod_min = 100
+	mod_max = 150

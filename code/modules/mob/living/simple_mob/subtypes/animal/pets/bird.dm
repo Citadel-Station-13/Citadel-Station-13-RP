@@ -55,6 +55,19 @@
 	item_icons = null
 	w_class = ITEMSIZE_SMALL
 
+//Randomization Code
+/mob/living/simple_mob/animal/passive/bird/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 /obj/item/holder/bird/sync(var/mob/living/simple_mob/SM)
 	..()
 	icon_state = SM.icon_rest // Looks better if the bird isn't flapping constantly in the UI.
@@ -67,8 +80,8 @@
 	icon_state = "commonblackbird"
 	icon_dead = "commonblackbird-dead"
 	tt_desc = "E Turdus merula"
-	icon_scale_x = 0.5
-	icon_scale_y = 0.5
+	mod_min = 50
+	mod_max = 75
 
 /mob/living/simple_mob/animal/passive/bird/azure_tit
 	name = "azure tit"
@@ -76,8 +89,8 @@
 	icon_state = "azuretit"
 	icon_dead = "azuretit-dead"
 	tt_desc = "E Cyanistes cyanus"
-	icon_scale_x = 0.5
-	icon_scale_y = 0.5
+	mod_min = 50
+	mod_max = 75
 
 /mob/living/simple_mob/animal/passive/bird/european_robin
 	name = "european robin"
@@ -85,8 +98,8 @@
 	icon_state = "europeanrobin"
 	icon_dead = "europeanrobin-dead"
 	tt_desc = "E Erithacus rubecula"
-	icon_scale_x = 0.5
-	icon_scale_y = 0.5
+	mod_min = 50
+	mod_max = 75
 
 /mob/living/simple_mob/animal/passive/bird/goldcrest
 	name = "goldcrest"
@@ -95,8 +108,8 @@
 	icon_state = "goldcrest"
 	icon_dead = "goldcrest-dead"
 	tt_desc = "E Regulus regulus"
-	icon_scale_x = 0.5
-	icon_scale_y = 0.5
+	mod_min = 50
+	mod_max = 75
 
 /mob/living/simple_mob/animal/passive/bird/ringneck_dove
 	name = "ringneck dove"
@@ -104,5 +117,5 @@
 	icon_state = "ringneckdove"
 	icon_dead = "ringneckdove-dead"
 	tt_desc = "E Streptopelia risoria" // This is actually disputed IRL but since we can't tell the future it'll stay the same for 500+ years.
-	icon_scale_x = 0.5
-	icon_scale_y = 0.5
+	mod_min = 50
+	mod_max = 75
