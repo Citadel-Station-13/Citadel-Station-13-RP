@@ -466,10 +466,10 @@
 "genre": "Alternative"
 },
 {
-"url": "https://files.catbox.moe/cr0psf.mp3",
+"url": "https://files.catbox.moe/l3cteu.mp3",
 "title": "1812 Overture (With Cannons)",
 "duration": 9080,
-"artist": "tchaikovsky",
+"artist": "Tchaikovsky",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -1812,10 +1812,10 @@
 {
 "url": "https://files.catbox.moe/910pte.mp3",
 "title": "Panoramic Feelings",
-"duration": 1900,
+"duration": 1910,
 "artist": "ludoWic",
 "secret": false,
-"lobby": true,
+"lobby": false,
 "jukebox": true,
 "genre": "Electronic"
 },
@@ -2075,7 +2075,7 @@
 "duration": 2850,
 "artist": "ludoWic",
 "secret": false,
-"lobby": true,
+"lobby": false,
 "jukebox": true,
 "genre": "Electronic"
 },
@@ -5771,7 +5771,7 @@
 "url": "https://files.catbox.moe/8xshc2.mp3",
 "title": "Reptiles",
 "duration": 2550,
-"artist": "Them Crooked VUltures",
+"artist": "Them Crooked Vultures",
 "secret": false,
 "lobby": false,
 "jukebox": true,
