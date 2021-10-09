@@ -180,3 +180,22 @@
 	speak = list("Chitter!","Chk chk!","Tchk?")
 	emote_hear = list("chitters","chirps","shuffles")
 	emote_see = list("rubs its antennae", "skitters", "clacks across the floor")
+
+//Clown Op Saylists
+/datum/say_list/clownop
+	speak = list("Why did the Teshari cross the road?",
+				"Knock knock.",
+				"Honk!",
+				"If he slips me again, I'm gonna prank him really good.",
+				"I need to add more shoes to my collection.")
+	emote_see = list("honks their nose", "giggles", "adjusts their suspenders", "looks around", "fusses with their wig")
+
+	say_understood = list("Copy-dopy!", "Ahuh!")
+	say_cannot = list("Not gonna!")
+	say_maybe_target = list("Who's there?")
+	say_got_target = list("Honk!")
+	say_threaten = list("We're closed!", "Do I amuse you?")
+	say_stand_down = list("Ha ha.")
+	say_escalate = list("Prepare to get pranked!", "You're about to be tripping!")
+	threaten_sound = 'sound/items/bikehorn.ogg'
+	stand_down_sound = 'sound/items/splat.ogg'
