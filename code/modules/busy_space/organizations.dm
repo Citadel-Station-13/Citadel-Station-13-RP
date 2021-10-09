@@ -2303,7 +2303,7 @@
 			)
 
 // Space Alien Rats.
-/datum/lore/organization/tsc/altevian_hegemony
+/datum/lore/organization/gov/altevian_hegemony
 	name = "The Altevian Hegemony" 
 	short_name = "Altevian Hegemony"
 	acronym = "AH"
@@ -2312,6 +2312,7 @@
 	work = "salvage and trade operators"
 	headquarters = "AH-CV Migrant"
 	motto = ""
+	org_type = "government"
 
 	ship_prefixes = list("AH-DV" = "a diplomatic", "AH-EV" = "an exploration", "AH-FV" = "a fueling", "AH-FV" = "a cargo", "AH-SV" = "a research", "AH-TV" = "a colony-transporter", "AH-RV" = "an emergency response", "AH-RV" = "a response", "AH-MV" = "a medical")
 	ship_names = list(
