@@ -8,10 +8,9 @@
 	value = CATALOGUER_REWARD_TRIVIAL
 
 /mob/living/simple_mob/humanoid/clown
-	clown
 	name = "clown"
-	desc = "A denizen of clown planet"
-	tt_desc = "E Homo sapiens corydon" //this is an actual clown, as opposed to someone dressed up as one
+	desc = "A denizen of clown planet."
+	tt_desc = "E Homo sapiens corydon" //this is an actual Clown, as opposed to someone dressed up as one
 	icon_state = "clown"
 	icon_living = "clown"
 	icon_dead = "clown_dead"
@@ -37,3 +36,21 @@
 /datum/say_list/clown
 	speak = list("HONK", "Honk!", "Welcome to clown planet!")
 	emote_see = list("honks")
+
+/mob/living/simple_mob/humanoid/clown/ranged
+	name = "clown"
+	desc = "A denizen of clown planet. I wonder if that's a real gun."
+
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+
+	projectiletype = /obj/item/projectile/bullet/honker/lethal
+	projectilesound = 'sound/items/bikehorn.ogg'
+	needs_reload = TRUE
+	reload_max = 30
+
+/mob/living/simple_mob/humanoid/clown/ranged/prankster
+	name = "clown"
+	desc = "A denizen of clown planet. I wonder if that's a real gun."
+
+	projectiletype = /obj/item/projectile/bullet/honker
+	needs_reload = FALSE

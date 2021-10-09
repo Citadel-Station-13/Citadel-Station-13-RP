@@ -376,6 +376,19 @@ const ChemMasterProductionChemical = (props, context) => {
           onClick={() => modalOpen(context, 'create_lollipop_multiple')}
         />
       </LabeledList.Item>
+      <LabeledList.Item label="Autoinjectors">
+        <Button
+          icon="square"
+          content="One (5u max)"
+          mr="0.5rem"
+          onClick={() => modalOpen(context, 'create_autoinjector')}
+        />
+        <Button
+          icon="plus-square"
+          content="Multiple"
+          onClick={() => modalOpen(context, 'create_autoinjector_multiple')}
+        />
+      </LabeledList.Item>
       <LabeledList.Item label="Bottle">
         <Button
           icon="wine-bottle"

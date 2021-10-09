@@ -33,6 +33,19 @@
 
 	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
+//Randomization Code
+/mob/living/simple_mob/animal/space/goose/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 /datum/say_list/goose
 	speak = list("HONK!")
 	emote_hear = list("honks loudly!")

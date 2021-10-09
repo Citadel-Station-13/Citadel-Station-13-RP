@@ -391,6 +391,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 			msg("[confirm] [GLOB.using_map.dock_name] Control, adjusting course.","[source_prefix] [source_shipname]")
 			sleep(5 SECONDS)
 			msg("Your compliance is appreciated, [combined_first_name]. [safetravels].")
+
 		//Ship event: docking request chained
 		if("docking_request_chain")
 			var/path
