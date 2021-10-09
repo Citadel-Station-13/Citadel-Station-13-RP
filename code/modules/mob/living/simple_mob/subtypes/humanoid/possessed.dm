@@ -51,6 +51,7 @@
 
 //Has a chance to play one of the listed sounds when it moves.
 /mob/living/simple_mob/humanoid/possessed/Moved()
+	. = ..()
 	if(prob(5))
 		playsound(src, pick('sound/h_sounds/headcrab.ogg', 'sound/h_sounds/holla.ogg', 'sound/h_sounds/lynx.ogg', 'sound/h_sounds/mumble.ogg', 'sound/h_sounds/yell.ogg'), 50, 1)
 
