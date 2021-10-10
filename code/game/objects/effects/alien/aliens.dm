@@ -172,6 +172,7 @@
 	var/health = 15
 	var/obj/effect/alien/weeds/node/linked_node = null
 	var/static/list/weedImageCache
+	color = "#36075F"
 
 /obj/effect/alien/weeds/Destroy()
 	var/turf/T = get_turf(src)
@@ -478,7 +479,7 @@ Alien plants should do something if theres a lot of poison
 			to_chat(user, "<span class='warning'>You clear the hatched egg.</span>")
 			qdel(src)
 			return
-/*		if(GROWING)
+		if(GROWING)
 			to_chat(user, "<span class='warning'>The child is not developed yet.</span>")
 			return
 		if(GROWN)
@@ -486,21 +487,21 @@ Alien plants should do something if theres a lot of poison
 			Burst(0)
 			return
 
-/obj/effect/alien/egg/proc/GetFacehugger() // Commented out for future edit.
+/obj/effect/alien/egg/proc/GetFacehugger()
 	return locate(/obj/item/clothing/mask/facehugger) in contents
 
 /obj/effect/alien/egg/proc/Grow()
 	icon_state = "egg"
-//	status = GROWN
+	status = GROWN
 	status = BURST
-//	new /obj/item/clothing/mask/facehugger(src)
+	new /obj/item/clothing/mask/facehugger(src)
 	return
-*/
+
 /obj/effect/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
 	if(status == GROWN || status == GROWING)
-//		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
+		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
 		icon_state = "egg_hatched"
-/*		flick("egg_opening", src)
+		flick("egg_opening", src)
 		status = BURSTING
 		spawn(15)
 			status = BURST
@@ -513,7 +514,7 @@ Alien plants should do something if theres a lot of poison
 					if(CanHug(M))
 						child.Attach(M)
 						break
-*/
+
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
@@ -535,6 +536,7 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/egg/attackby(var/obj/item/W, var/mob/user)
 	if(health <= 0)
+		Burst()
 		return
 	if(W.attack_verb.len)
 		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -550,7 +552,7 @@ Alien plants should do something if theres a lot of poison
 			playsound(src.loc, 'sound/items/Welder.ogg', 100, 1)
 
 	src.health -= damage
-	src.healthcheck()
+	healthcheck()
 
 
 /obj/effect/alien/egg/proc/healthcheck()
@@ -561,15 +563,14 @@ Alien plants should do something if theres a lot of poison
 	if(exposed_temperature > 500 + T0C)
 		health -= 5
 		healthcheck()
-/*
+
 /obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
 	if(status == GROWN)
 		if(!CanHug(AM))
 			return
 
 		var/mob/living/carbon/C = AM
-		if(C.stat == CONSCIOUS && C.status_flags & XENO_HOST)
+		if(C.stat == CONSCIOUS && C.status_flags & TRAIT_XENO_HOST)
 			return
 
 		Burst(0)
-*/

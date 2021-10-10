@@ -18,7 +18,7 @@ var/const/MAX_ACTIVE_TIME = 400
 /obj/item/clothing/mask/facehugger
 	name = "alien"
 	desc = "It has some sort of a tube at the end of its tail."
-	icon = 'icons/mob/alien.dmi'
+	//icon = 'icons/mob/alien.dmi'
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = 3 //note: can be picked up by aliens unlike most other items of w_class below 4
@@ -168,14 +168,11 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(!sterile)
 		new /obj/item/alien_embryo(target)
 		target.status_flags |= TRAIT_XENO_HOST
-
 		target.visible_message("<span class='danger'><b> [src] falls limp after violating [target]'s face!</b></span>")
-
 		Die()
-		icon_state = "[initial(icon_state)]_impregnated"
-
 	else
 		target.visible_message("<span class='danger'><b> [src] violates [target]'s face!</b></span>")
+		target.drop_from_inventory(src)
 	return
 
 /obj/item/clothing/mask/facehugger/proc/GoActive()
@@ -198,19 +195,13 @@ var/const/MAX_ACTIVE_TIME = 400
 
 	spawn(rand(min_time,max_time))
 		GoActive()
-	return
-
-/obj/item/clothing/mask/facehugger/proc/Die()
-	if(stat == DEAD)
 		return
 
 /*		RemoveActiveIndicators()	*/
 
-	icon_state = "[initial(icon_state)]_dead"
 	stat = DEAD
-
 	src.visible_message("<span class='danger'><b>[src] curls up into a ball!</b></span>")
-
+	DeathIcon()
 	return
 
 /proc/CanHug(var/mob/M)
@@ -230,6 +221,55 @@ var/const/MAX_ACTIVE_TIME = 400
 		if(H.head && (H.head.body_parts_covered & FACE) && !(H.head.item_flags & FLEXIBLEMATERIAL))
 			return 0
 	return 1
+
+
+
+//Copies Spiderling movement code to try and animate the Hugger. Also adds missing procs that might be important.
+
+/obj/item/clothing/mask/facehugger/Initialize(mapload, atom/parent)
+	. = ..()
+	pixel_x = rand(6,-6)
+	pixel_y = rand(6,-6)
+	START_PROCESSING(SSobj, src)
+
+/obj/item/clothing/mask/facehugger/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	walk(src, 0) // Because we might have called walk_to, we must stop the walk loop or BYOND keeps an internal reference to us forever.
+	return ..()
+
+/obj/item/clothing/mask/facehugger/Bump(atom/user)
+	if(istype(user, /obj/structure/table))
+		src.loc = user.loc
+	else
+		..()
+
+/obj/item/clothing/mask/facehugger/proc/Die()
+	visible_message("<span class='alert'>[src] dies!</span>")
+	STOP_PROCESSING(SSobj, src)
+	walk(src, 0)
+	DeathIcon()
+	return
+
+/obj/item/clothing/mask/facehugger/proc/DeathIcon()
+	if (src.icon_state == "[initial(icon_state)]_impregnate")
+		return
+	else
+		src.icon_state = "[initial(icon_state)]_dead"
+	update_icon()
+
+/obj/item/clothing/mask/facehugger/process(delta_time)
+	if(isturf(loc))
+		crawl()
+
+/obj/item/clothing/mask/facehugger/proc/crawl()
+	if(isturf(loc))
+		if(prob(25))
+			var/list/nearby = trange(5, src) - loc
+			if(nearby.len)
+				var/target_atom = pick(nearby)
+				walk_to(src, target_atom, 5)
+				if(prob(25))
+					src.visible_message("<span class='notice'>\The [src] skitters[pick(" away"," around","")].</span>")
 
 // Simple Mob Conversion. Leaving this commented out because I really don't want to actually have to convert this.
 /*
