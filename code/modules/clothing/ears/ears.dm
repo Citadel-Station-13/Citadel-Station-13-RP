@@ -37,12 +37,14 @@
 
 	update_clothing_icon()
 
-/obj/item/clothing/ears/earmuffs/headphones/AltClick()
-	if(!headphones_on)
+/obj/item/clothing/ears/earmuffs/headphones/AltClick(mob/user as mob)
+	if(!Adjacent(user))
+		return
+	else if(!headphones_on)
 		togglemusic()
 	else
 		togglemusic()
-
+		
 /*
 	Skrell tentacle wear
 */
