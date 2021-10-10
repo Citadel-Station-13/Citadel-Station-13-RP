@@ -105,6 +105,10 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	var/base_species = "Human"
 	var/list/species_traits = list()
 	var/blood_color = "#A10808"
+	var/custom_say
+	var/custom_ask
+	var/custom_whisper
+	var/custom_exclaim
 	// VOREStation
 
 	// New stuff
@@ -125,6 +129,10 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	new_dna.base_species=base_species //VOREStation Edit
 	new_dna.species_traits=species_traits.Copy() //VOREStation Edit
 	new_dna.blood_color=blood_color //VOREStation Edit
+	new_dna.custom_say=custom_say //VOREStaton Edit
+	new_dna.custom_ask=custom_ask //VOREStaton Edit
+	new_dna.custom_whisper=custom_whisper //VOREStaton Edit
+	new_dna.custom_exclaim=custom_exclaim //VOREStaton Edit
 	for(var/b=1;b<=DNA_SE_LENGTH;b++)
 		new_dna.SE[b]=SE[b]
 		if(b<=DNA_UI_LENGTH)
@@ -205,6 +213,11 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		//src.species_traits = CS.traits.Copy() //No traits
 		src.base_species = CS.base_species
 		src.blood_color = CS.blood_color
+		
+	src.custom_say = character.custom_say
+	src.custom_ask = character.custom_ask
+	src.custom_whisper = character.custom_whisper
+	src.custom_exclaim = character.custom_exclaim
 
 	// +1 to account for the none-of-the-above possibility
 	SetUIValueRange(DNA_UI_EAR_STYLE,	ear_style + 1,     ear_styles_list.len  + 1,  1)
