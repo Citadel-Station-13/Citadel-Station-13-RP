@@ -198,4 +198,4 @@
 	say_stand_down = list("Ha ha.")
 	say_escalate = list("Prepare to get pranked!", "You're about to be tripping!")
 	threaten_sound = 'sound/items/bikehorn.ogg'
-	stand_down_sound = 'sound/items/splat.ogg'
+	stand_down_sound = 'sound/effects/splat.ogg'

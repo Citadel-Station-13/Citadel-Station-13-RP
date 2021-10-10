@@ -358,5 +358,16 @@
 	. = ..()
 	SpinAnimation()
 
+/obj/item/projectile/bullet/honker/lethal/light
+	damage = 10
+
 /obj/item/projectile/bullet/honker/lethal/heavy
 	damage = 40
+
+//Bio-Organic
+/obj/item/projectile/bullet/organic
+	damage = 10
+	damage_type = BRUTE
+	check_armour = "bullet"
+	hitsound = 'sound/effects/splat.ogg'
+	icon_state = "organic"

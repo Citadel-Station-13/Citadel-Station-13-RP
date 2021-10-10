@@ -465,3 +465,9 @@
 	icon_state = "s-casing-spent"
 	BB = null
 	projectile_type = null
+
+/obj/item/ammo_casing/organic
+	name = "biomatter globule"
+	desc = "Globular biomatter rendered and ready for compression."
+	icon_state = "globule"
+	projectile_type = /obj/item/projectile/bullet/organic

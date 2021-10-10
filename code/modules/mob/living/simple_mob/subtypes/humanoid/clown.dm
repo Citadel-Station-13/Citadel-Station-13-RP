@@ -50,22 +50,14 @@
 	speak = list("HONK", "Honk!", "Welcome to clown planet!")
 	emote_see = list("honks")
 
-/mob/living/simple_mob/humanoid/clown/ranged
+/mob/living/simple_mob/humanoid/clown/prankster
 	name = "clown"
 	desc = "A denizen of clown planet. I wonder if that's a real gun."
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
-	projectiletype = /obj/item/projectile/bullet/honker/lethal
-	projectilesound = 'sound/items/bikehorn.ogg'
-	needs_reload = TRUE
-	reload_max = 30
-
-/mob/living/simple_mob/humanoid/clown/ranged/prankster
-	name = "clown"
-	desc = "A denizen of clown planet. I wonder if that's a real gun."
-
 	projectiletype = /obj/item/projectile/bullet/honker
+	projectilesound = 'sound/items/bikehorn.ogg'
 	needs_reload = FALSE
 
 ////////////////////////////////
@@ -109,14 +101,14 @@
 	attacktext = list("slashed", "stabbed")
 	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
 
-	corpse = /obj/effect/landmark/mobcorpse/clownop
-	loot_list = list(/obj/item/material/knife/bananaknife = 100)	// Might as well give it the knife
+	corpse = /obj/effect/landmark/mobcorpse/clown/clownop
+	loot_list = list(/obj/item/material/knife/clownop = 100)	// Might as well give it the knife
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/clownop
 
 	// Grenade special attack vars
-	var/grenade_type = /obj/item/grenade/lube_tactical
+	var/grenade_type = /obj/item/grenade/chem_grenade/lube_tactical
 	var/grenade_timer = 50
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
@@ -162,7 +154,7 @@
 //Melee
 
 /mob/living/simple_mob/humanoid/clown/commando/melee
-	loot_list = list(/obj/item/material/knife/bananaknife = 100)
+	loot_list = list(/obj/item/material/knife/clownop = 100)
 
 //Ranged
 
@@ -175,7 +167,10 @@
 	needs_reload = TRUE
 	reload_max = 12
 	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
-	loot_list = list(/obj/item/gun/projectile/colt = 100)
+	loot_list = list(/obj/item/gun/projectile/clown_pistol = 100,
+					/obj/item/ammo_magazine/mcompressedbio = 30,
+					/obj/item/ammo_magazine/mcompressedbio = 30
+					)
 
 //Voidsuit Variants
 
@@ -197,6 +192,12 @@
 
 	movement_cooldown = 0
 
+	harm_intent_damage = 5
+	melee_damage_lower = 30		//Tac Knife damage
+	melee_damage_upper = 30
+	attack_sharp = 1
+	attack_edge = 1
+	attacktext = list("slashed", "stabbed")
 	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit
 
 	min_oxy = 0
@@ -209,19 +210,27 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /obj/effect/landmark/mobcorpse/clownop/space
+	corpse = /obj/effect/landmark/mobcorpse/clown/clownop/space
+	loot_list = list(/obj/item/melee/clownstaff = 100)
 
 /mob/living/simple_mob/humanoid/clown/commando/melee/space/Process_Spacemove(var/check_drift = 0)
 	return
 
-// Ranged Space Merc
+/mob/living/simple_mob/humanoid/clown/commando/melee/space/alt
+	icon_state = "clownop_space_alt_melee"
+	icon_living = "clownop_space_alt_melee"
+	corpse = /obj/effect/landmark/mobcorpse/clown/clownop/space/alt
+
+// Ranged Space Clown
 /mob/living/simple_mob/humanoid/clown/commando/ranged/space
 	desc = "A heavily armored clown, armed with a dangerous looking gun."
 	icon_state = "clownop_space_ranged"
 	icon_living = "clownop_space_ranged"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/clown/commando/space)
 
 	movement_cooldown = 0
 
+	reload_max = 20
 	armor = list(melee = 60, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 100)	// Same armor as their voidsuit. This should already have been here when polaris patched these guys in.
 
 	min_oxy = 0
@@ -234,7 +243,11 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	corpse = /obj/effect/landmark/mobcorpse/clownop/space
+	corpse = /obj/effect/landmark/mobcorpse/clown/clownop/space
+	loot_list = list(/obj/item/gun/projectile/automatic/clown_rifle = 100,
+					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30,
+					/obj/item/ammo_magazine/mcompressedbio/large/banana = 30
+					)
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
@@ -243,3 +256,8 @@
 
 /mob/living/simple_mob/humanoid/clown/commando/ranged/space/Process_Spacemove(var/check_drift = 0)
 	return
+
+/mob/living/simple_mob/humanoid/clown/commando/ranged/space/alt
+	icon_state = "clownop_space_alt_ranged"
+	icon_living = "clownop_space_alt_ranged"
+	corpse = /obj/effect/landmark/mobcorpse/clown/clownop/space/alt
