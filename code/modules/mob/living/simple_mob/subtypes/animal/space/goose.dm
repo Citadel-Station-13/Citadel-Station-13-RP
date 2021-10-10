@@ -1,3 +1,10 @@
+/datum/category_item/catalogue/fauna/goose
+	name = "Planetary Fauna - Geese"
+	desc = "Another Avian species, geese are sometimes utilized as a \
+	food source, but are generally too aggressive and temperamental to \
+	domesticate. Especially when compared to other, more viable options."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/space/goose
 	name = "goose"
 	desc = "It looks pretty angry!"
@@ -5,6 +12,7 @@
 	icon_state = "goose"
 	icon_living = "goose"
 	icon_dead = "goose_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/goose)
 
 	faction = "geese"
 
@@ -25,6 +33,19 @@
 
 	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
+//Randomization Code
+/mob/living/simple_mob/animal/space/goose/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 /datum/say_list/goose
 	speak = list("HONK!")
 	emote_hear = list("honks loudly!")
@@ -42,3 +63,6 @@
 	set category = "Abilities"
 
 	add_modifier(/datum/modifier/berserk, 30 SECONDS)
+
+/mob/living/simple_mob/animal/space/goose/virgo3b
+	faction = "virgo3b"

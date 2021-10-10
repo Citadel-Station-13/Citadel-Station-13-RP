@@ -1,7 +1,16 @@
+/datum/category_item/catalogue/fauna/frog
+	name = "Giant Frog"
+	desc = "Another example of genetic engineering gone right - mostly - the Giant Frog \
+	is an upscaled amphibian originally imported from Earth. Although questions abound \
+	regarding why one might need to produce genetically altered giant frogs, most Scientists \
+	are simply happy the DNA wasn't added to fossilized dinosaur eggs."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/aggressive/frog
 	name = "giant frog"
 	desc = "You've heard of having a frog in your throat, now get ready for the reverse."
 	tt_desc = "Anura gigantus"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/frog)
 
 	icon_dead = "frog-dead"
 	icon_living = "frog"
@@ -15,6 +24,19 @@
 	melee_damage_upper = 12
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
+
+//Randomization Code
+/mob/living/simple_mob/vore/aggressive/frog/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 // Pepe is love, not hate.
 /mob/living/simple_mob/vore/aggressive/frog/Initialize(mapload)

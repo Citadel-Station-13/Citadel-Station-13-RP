@@ -870,6 +870,17 @@ End Citadel Change */
 	glass_name = "Watermelon Juice"
 	glass_desc = "Delicious juice made from watermelon."
 
+/datum/reagent/drink/juice/eroot
+	name = "Earthen-Root Juice"
+	id = "eroot"
+	description = "Juice extracted from earthen-root, a plant native to Adhomai."
+	color = "#4D8F53"
+	taste_description = "sweetness"
+
+	glass_icon_state = "bluelagoon"
+	glass_name = "glass of earthen-root juice"
+	glass_desc = "Juice extracted from earthen-root, a plant native to Adhomai."
+
 // Everything else
 
 /datum/reagent/drink/milk
@@ -2093,6 +2104,17 @@ End Citadel Change */
 	glass_name = "Gin"
 	glass_desc = "A crystal clear glass of Griffeater gin."
 
+/datum/reagent/ethanol/victory_gin
+	name = "Victory Gin"
+	id = "victory_gin"
+	description = "An oily grain alcohol brewed on Adhomai. Notably weaker than regular gin."
+	taste_description = "oily gin"
+	color = "#0064C6"
+	strength = 30
+
+	glass_name = "Victory Gin"
+	glass_desc = "An oily grain alcohol brewed on Adhomai. Notably weaker than regular gin."
+
 //Base type for alchoholic drinks containing coffee
 /datum/reagent/ethanol/coffee
 	overdose = 45
@@ -2828,6 +2850,19 @@ End Citadel Change */
 
 	glass_name = "Mead"
 	glass_desc = "A Viking's beverage, though a cheap one."
+
+/datum/reagent/ethanol/messa_mead
+	name = "Messa's Mead"
+	id = "messa_mead"
+	description = "A sweet tajaran liquor. Produced from the frementation of honey and earthen roots."
+	taste_description = "chilled honey"
+	reagent_state = REAGENT_LIQUID
+	color = "#FFBB00"
+	strength = 30
+	nutriment_factor = 1
+
+	glass_name = "Messa's Mead"
+	glass_desc = "A sweet tajaran liquor. Produced from the fermentation of honey and earthen roots native to Adhomai."
 
 /datum/reagent/ethanol/moonshine
 	name = "Moonshine"
@@ -4052,6 +4087,11 @@ End Citadel Change */
 	name = "Corn Oil"
 	id = "cornoil"
 	description = "An oil derived from various types of corn."
+	
+/datum/reagent/nutriment/triglyceride/oil/tallow
+	name = "Tallow"
+	id = "tallow"
+	description = "An liquidized form of animal fat, useful for adding that extra heart stopping potential to any of your deep fried food products."
 
 //Protein! Get your mind out of the gutter.
 /datum/reagent/nutriment/protein // Bad for Skrell!
@@ -4364,3 +4404,44 @@ End Citadel Change */
 
 	glass_name = "The Love Maker"
 	glass_desc = "A drink said to help one find the perfect fuck."
+
+/datum/reagent/ethanol/peacetreaty
+	name = "Peace Treaty"
+	id = "peacetreaty"
+	description = "A Tajaran cocktail named (somewhat in jest) of the peace treaty that ended the civil war on Adhomai."
+	color = "#DFDF93"
+	strength = 21
+	taste_description = "tart, oily honey"
+
+	glass_icon_state = "peacetreatyglass"
+	glass_name = "glass of Peace Treaty"
+	glass_desc = "A Tajaran cocktail named (somewhat in jest) of the peace treaty that ended the civil war on Adhomai."
+
+/datum/reagent/ethanol/winter_offensive
+	name = "Winter Offensive"
+	id = "winter_offensive"
+	description = "The Tajaran equivalent of Gin 'On the Rocks', named after the famous People Republic of Adhomai military campaign."
+	color = "#664300"
+	strength = 15
+	taste_description = "oily gin"
+	adj_temp = 10
+	targ_temp = 270
+
+	glass_icon_state = "winter_offensive"
+	glass_name = "glass of Winter Offensive"
+	glass_desc = "An alcoholic tajaran cocktail, named after the famous  People Republic of Adhomai military campaign."
+
+/datum/reagent/ethanol/internationale
+	name = "Internationale"
+	id = "internationale"
+	description = "A cocktail mixing Tajaran gin and Pan-Slavic Vodka. A symbol of unity between Human and Tajaran leftists."
+	color = "#D9CCAA"
+	strength = 28
+	taste_description = "earthy, oily unity"
+
+	glass_icon_state = "internationaleglass"
+	glass_name = "glass of Internationale"
+	glass_desc = "A cocktail mixing Tajaran gin and Pan-Slavic Vodka. A symbol of unity between Human and Tajaran leftists."
+
+	glass_center_of_mass = list("x"=16, "y"=9)
+

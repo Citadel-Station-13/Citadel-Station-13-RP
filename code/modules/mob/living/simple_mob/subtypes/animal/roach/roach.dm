@@ -29,7 +29,14 @@
 	unlocked_by_all = list(
 		/datum/category_item/catalogue/fauna/roach/roach,
 		/datum/category_item/catalogue/fauna/roach/roachling,
-		//Reminder: add rest
+		/datum/category_item/catalogue/fauna/roach/panzer,
+		/datum/category_item/catalogue/fauna/roach/jaeger,
+		/datum/category_item/catalogue/fauna/roach/seuche,
+		/datum/category_item/catalogue/fauna/roach/atomar,
+		/datum/category_item/catalogue/fauna/roach/uberfallen,
+		/datum/category_item/catalogue/fauna/roach/strahlend,
+		/datum/category_item/catalogue/fauna/roach/zeitraum,
+		/datum/category_item/catalogue/fauna/roach/fuhrer
 		)
 
 /mob/living/simple_mob/animal/roach
@@ -41,6 +48,7 @@
 	item_state = "roach"
 	icon_living = "roach"
 	icon_dead = "roach_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/roach)
 
 	maxHealth = 15
 	health = 15
@@ -80,6 +88,19 @@
 	holder_type = /obj/item/holder/roach
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
+//Randomization Code
+/mob/living/simple_mob/animal/roach/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
+
 /mob/living/simple_mob/animal/roach/Initialize(mapload)
 	. = ..()
 
@@ -109,6 +130,18 @@
 
 	taser_kill = 0
 
+//Unrandom the pet...?
+/mob/living/simple_mob/animal/roach/Greta/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
+
 /mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
 	. = ..()
 	// Change my name back, don't want to be named Tom (666)
@@ -130,6 +163,7 @@
 	item_state = "roachling"
 	icon_living = "roachling"
 	icon_dead = "roachling_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/roachling)
 
 	maxHealth = 5
 	health = 5
@@ -184,6 +218,7 @@
 	item_state = "panzer"
 	icon_living = "panzer"
 	icon_dead = "panzer_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/panzer)
 
 	maxHealth = 30
 	health = 30
@@ -214,6 +249,7 @@
 	item_state = "jaeger"
 	icon_living = "jaeger"
 	icon_dead = "jaeger_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/jaeger)
 
 	maxHealth = 15
 	health = 15
@@ -250,6 +286,7 @@
 	item_state = "seuche"
 	icon_living = "seuche"
 	icon_dead = "seuche_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/seuche)
 
 	maxHealth = 15
 	health = 15
@@ -300,6 +337,7 @@
 	item_state = "atomar"
 	icon_living = "atomar"
 	icon_dead = "atomar_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/atomar)
 
 	maxHealth = 10
 	health = 10
@@ -341,6 +379,7 @@
 	icon_living = "uberfallen"
 	icon_dead = "uberfallen_dead"
 	faction = "synthtide"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/uberfallen)
 
 	maxHealth = 30
 	health = 30
@@ -382,6 +421,7 @@
 	item_state = "strahlend"
 	icon_living = "strahlend"
 	icon_dead = "strahlend_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/strahlend)
 
 	maxHealth = 20
 	health = 20
@@ -419,6 +459,7 @@
 	item_state = "zeitraum"
 	icon_living = "zeitraun"
 	icon_dead = "zeitraum_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/zeitraum)
 
 	maxHealth = 20
 	health = 20
@@ -529,6 +570,7 @@
 	item_state = "fuhrer"
 	icon_living = "fuhrer"
 	icon_dead = "fuhrer_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/fuhrer)
 
 	maxHealth = 60
 	health = 60

@@ -7,7 +7,7 @@
 
 /obj/item/clothing/head/centhat/customs
 	name = "Customs Hat"
-	desc = "A formal hat for SolGov Customs Officers."
+	desc = "A formal hat for OriCon Customs Officers."
 	icon_state = "customshat"
 
 /obj/item/clothing/head/pin
@@ -612,3 +612,8 @@
 	desc = "A wide brimmed hat made of sturdy material. Its floppy, pointed top is similar to those worn by Old Earth bards or sorcerors."
 	icon_state = "traveller"
 	//addblends = "traveller_a"
+
+/obj/item/clothing/head/samurai_replica
+	name = "replica kabuto"
+	desc = "An authentic antique, this helmet from old Earth belongs to an ancient martial tradition. The advent of firearms made this style of protection obsolete. Unfortunately, this remains the case. This version appears less sturdy."
+	icon_state = "kabuto_colorable"

@@ -6180,38 +6180,31 @@
 /area/tether/surfacebase/security/armory)
 "aju" = (
 /obj/structure/table/rack/steel,
-/obj/item/clothing/suit/armor/pcarrier/medium/security,
-/obj/item/clothing/accessory/storage/pouches,
-/obj/item/clothing/accessory/armor/legguards/riot,
-/obj/item/clothing/accessory/armor/armguards/riot,
-/obj/item/clothing/accessory/armor/armorplate/stab,
-/obj/item/clothing/head/helmet/riot,
-/obj/item/shield/riot,
-/obj/item/clothing/suit/armor/pcarrier/medium/security,
-/obj/item/clothing/accessory/storage/pouches,
-/obj/item/clothing/accessory/armor/legguards/riot,
-/obj/item/clothing/accessory/armor/armguards/riot,
-/obj/item/clothing/accessory/armor/armorplate/stab,
-/obj/item/clothing/head/helmet/riot,
-/obj/item/shield/riot,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/clothing/accessory/storage/pouches,
+/obj/item/clothing/accessory/armor/legguards/riot,
+/obj/item/clothing/accessory/armor/armguards/riot,
+/obj/item/clothing/suit/armor/pcarrier/riot,
+/obj/item/clothing/head/helmet/riot,
+/obj/item/shield/riot,
+/obj/item/clothing/accessory/storage/pouches,
+/obj/item/clothing/accessory/armor/legguards/riot,
+/obj/item/clothing/accessory/armor/armguards/riot,
+/obj/item/clothing/suit/armor/pcarrier/riot,
+/obj/item/clothing/head/helmet/riot,
+/obj/item/shield/riot,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "ajv" = (
 /obj/structure/table/rack/steel,
-/obj/item/clothing/suit/armor/pcarrier/green,
-/obj/item/clothing/accessory/storage/pouches/green,
-/obj/item/clothing/accessory/armor/legguards/bulletproof{
-	icon_state = "legguards_green"
-	},
-/obj/item/clothing/accessory/armor/armguards/bulletproof{
-	icon_state = "armguards_green"
-	},
-/obj/item/clothing/accessory/armor/armorplate/bulletproof,
-/obj/item/clothing/head/helmet/bulletproof,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/clothing/accessory/storage/pouches/green,
+/obj/item/clothing/accessory/armor/legguards/bulletproof,
+/obj/item/clothing/accessory/armor/armguards/bulletproof,
+/obj/item/clothing/suit/armor/pcarrier/bulletproof,
+/obj/item/clothing/head/helmet/bulletproof,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "ajw" = (
@@ -6219,22 +6212,17 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/item/clothing/suit/armor/pcarrier/blue,
-/obj/item/clothing/accessory/storage/pouches/blue,
-/obj/item/clothing/accessory/armor/legguards/laserproof{
-	icon_state = "legguards_blue"
-	},
-/obj/item/clothing/accessory/armor/armguards/laserproof{
-	icon_state = "armguards_blue"
-	},
-/obj/item/clothing/accessory/armor/armorplate/laserproof,
-/obj/item/clothing/head/helmet/laserproof,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 6
 	},
+/obj/item/clothing/accessory/storage/pouches/blue,
+/obj/item/clothing/accessory/armor/legguards/laserproof,
+/obj/item/clothing/accessory/armor/armguards/laserproof,
+/obj/item/clothing/suit/armor/pcarrier/laserproof,
+/obj/item/clothing/head/helmet/laserproof,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "ajx" = (
@@ -11410,12 +11398,10 @@
 "arP" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/projectile/shotgun/pump{
-	ammo_type = /obj/item/ammo_casing/a12g/pellet;
 	pixel_x = 2;
 	pixel_y = -6
 	},
 /obj/item/gun/projectile/shotgun/pump{
-	ammo_type = /obj/item/ammo_casing/a12g/pellet;
 	pixel_x = 1;
 	pixel_y = 4
 	},
@@ -17231,6 +17217,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
+/obj/machinery/computer/timeclock/premade/north,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_two_hall)
 "aDr" = (

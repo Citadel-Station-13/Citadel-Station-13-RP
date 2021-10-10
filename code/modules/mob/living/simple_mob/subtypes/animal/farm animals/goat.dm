@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/livestock/goat
+	name = "Livestock - Goat"
+	desc = "Like the cow, the goat is frequently farmed for its milk and \
+	its meat. Goat hair has some textile applications, but primarily the \
+	goat is chosen to breed due to its ability to handle harsh climates and \
+	conditions. A hardy species, some breeds of goat are able to eat nearly \
+	anything, and function as a limited method of garbage disposal."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/goat
 	name = "goat"
 	desc = "Not known for their pleasant disposition."
@@ -5,6 +14,7 @@
 	icon_state = "goat"
 	icon_living = "goat"
 	icon_dead = "goat_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/goat)
 
 	faction = "goat"
 
@@ -26,6 +36,19 @@
 	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/datum/reagents/udder = null
+
+//Randomization Code
+/mob/living/simple_mob/animal/goat/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 /mob/living/simple_mob/animal/goat/Initialize(mapload)
 	. = ..()

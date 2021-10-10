@@ -194,13 +194,11 @@
 		..()
 
 //Ritual Chalk
-/obj/item/pen/crayon/chalk
-	name = "ritual chalk (white)"
-	desc = "Found to function similarly to blood, this blessed chalk is used by the PMD to contain phenomena."
+/obj/item/pen/crayon/chalk/white
 	icon_state = "chalkwhite"
 	colour = "#FFFFFF"
 	shadeColour = "#000000"
-	colourName = "yellow"
+	colourName = "white"
 
 /obj/item/pen/crayon/chalk/red
 	name = "ritual chalk (red)"

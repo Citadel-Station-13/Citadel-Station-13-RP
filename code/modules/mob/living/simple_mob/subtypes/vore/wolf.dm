@@ -9,6 +9,7 @@
 	name = "grey wolf"
 	desc = "My, what big jaws it has!"
 	tt_desc = "Canis lupus"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/wolf)
 
 	icon_dead = "wolf-dead"
 	icon_living = "wolf"
@@ -24,6 +25,19 @@
 	minbodytemp = 200
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+
+//Randomization Code
+/mob/living/simple_mob/animal/wolf/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 // Activate Noms!
 /mob/living/simple_mob/animal/wolf

@@ -1,15 +1,39 @@
 // Parrots can talk, and may repeat things it hears.
+
+/datum/category_item/catalogue/fauna/parrot
+	name = "Parrot"
+	desc = "An Earthling tropical bird, parrots have been companions on \
+	nautical vessels for many years. Parrots are considered intelligent, \
+	due largely to the curvature of their beaks allowing them to form human \
+	words. Capable of learning and repeating spoken phrases, parrots are often \
+	sought after for morale purposes."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/bird/parrot
 	name = "parrot"
 	description_info = "You can give it a headset by clicking on it with a headset. \
 	To remove it, click the bird while on grab intent."
 	has_langs = list("Galactic Common", "Bird")
+	catalogue_data = list(/datum/category_item/catalogue/fauna/parrot)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/passive/parrot
 
 	// A headset, so that talking parrots can yell at the crew over comms.
 	// If set to a type, on initialize it will be instantiated into that type.
 	var/obj/item/radio/headset/my_headset = null
+
+//Randomization Code
+/mob/living/simple_mob/animal/passive/bird/parrot/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 // Say list
 /datum/say_list/bird/polly
@@ -111,6 +135,18 @@
 	tt_desc = "E Ara macao"
 	my_headset = /obj/item/radio/headset/headset_eng
 	say_list_type = /datum/say_list/bird/polly
+
+//Unrandom the pet
+/mob/living/simple_mob/animal/passive/bird/parrot/polly/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
 
 // Best Bird with best headset.
 /mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate

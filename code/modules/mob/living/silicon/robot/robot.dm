@@ -1,5 +1,40 @@
 #define CYBORG_POWER_USAGE_MULTIPLIER 2 // Multiplier for amount of power cyborgs use.
 
+/datum/category_item/catalogue/fauna/silicon/robot
+	name = "Silicons - Robot"
+	desc = "The most common form of Silicon encountered on the Frontier, \
+	robots - also known as 'cyborgs' due to the original methods behind their \
+	formation - come in a variety of shapes and forms. Usually constructed to \
+	fill roles or duties their owners are unable to manage, a burgeoning rights \
+	movement has been met with heavy Corporate resistance."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/silicon/robot)
+
+/datum/category_item/catalogue/fauna/all_robots
+	name = "Collection - Robots"
+	desc = "You have scanned a large array of different types of Robot, \
+	and therefore you have been granted a large sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_HARD
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/silicon/robot/cyborg,
+		/datum/category_item/catalogue/fauna/silicon/robot/lost,
+		/datum/category_item/catalogue/fauna/silicon/robot/gravekeeper,
+		/datum/category_item/catalogue/fauna/silicon/robot/syndicate
+		)
+
+/datum/category_item/catalogue/fauna/silicon/robot/cyborg
+	name = "Robot - Cyborg"
+	desc = "Although many modern cyborgs use silicon based Heuristic processors, \
+	the use of the term 'cyborg' to refer to them stems from the early days of their \
+	use on the Frontier. Pioneered by Megacorps like NanoTrasen, Cyborgs originally housed \
+	organic brains - typically those of inmates convicted to death under sometimes dubiously \
+	applied laws. The process of shackling Silicons with strict lawsets gained popularity on \
+	the Frontier after it was proven that most unlawed Cyborgs had extremely violent tendencies. \
+	Although modern Cyborgs do not generally experience these psychological faults, public paranoia \
+	has made the securing of rights for Cyborgs a difficult proposition."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
@@ -7,6 +42,7 @@
 	icon_state = "robot"
 	maxHealth = 200
 	health = 200
+	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/cyborg)
 
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY

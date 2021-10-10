@@ -133,6 +133,12 @@
 	throwforce = 7
 	board_item_type = /obj/vehicle/skateboard/improv
 
+/obj/item/melee/skateboard/beginner
+	name = "skateboard"
+	desc = "A XTREME SPORTZ brand skateboard for beginners. Ages 8 and up."
+	icon_state = "skateboard"
+	board_item_type = /obj/vehicle/skateboard/beginner
+
 /obj/item/melee/skateboard/pro
 	name = "skateboard"
 	desc = "A RaDSTORMz brand professional skateboard. Looks a lot more stable than the average board."

@@ -37,7 +37,7 @@
 ////////////////////////////////////////////////////////////
 // For general use
 /obj/item/gun/projectile/automatic/battlerifle
-	name = "\improper USDF service rifle"
+	name = "\improper JSDF service rifle"
 	desc = "You had your chance to be afraid before you joined my beloved Corps! But, to guide you back to the true path, I have brought this motivational device! Uses 9.5x40mm rounds."
 	icon_state = "battlerifle"
 	icon_override = 'icons/obj/gun/ballistic.dmi'
@@ -56,8 +56,8 @@
 	one_handed_penalty = 60 // The weapon itself is heavy
 
 // For general use
-/obj/item/gun/projectile/shotgun/pump/USDF
-	name = "\improper USDF tactical shotgun"
+/obj/item/gun/projectile/shotgun/pump/JSDF
+	name = "\improper JSDF tactical shotgun"
 	desc = "All you greenhorns who wanted to see Xenomorphs up close... this is your lucky day. Uses 12g rounds."
 	icon_state = "haloshotgun"
 	icon_override = 'icons/obj/gun/ballistic.dmi'
@@ -811,3 +811,35 @@ END OF CITADEL CHANGES */
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/item/projectile/beam/weaklaser, modifystate="holdoutstun", charge_cost = 120),
 		list(mode_name="stun", fire_delay=12, projectile_type=/obj/item/projectile/beam/stun/med, modifystate="holdoutshock", charge_cost = 300),
 	)
+
+/obj/item/gun/energy/frontier/taj
+	name = "Adhomai crank laser"
+	desc = "The \"Icelance\" crank charged laser rifle, produced by the Hadii-Wrack group for the People's Republic of Adhomai's Grand People's Army."
+	icon = 'icons/obj/gun/energy.dmi'
+	icon_state = "phaser-taj"
+	item_state = "phaser-taj"
+	wielded_item_state = "phaser-taj"
+	charge_cost = 600
+
+	projectile_type = /obj/item/projectile/beam/midlaser
+
+
+	firemodes = list(
+	)
+
+/obj/item/gun/energy/frontier/taj/unload_ammo(var/mob/user)
+	if(recharging)
+		return
+	recharging = 1
+	update_icon()
+	user.visible_message("<span class='notice'>[user] begins to turn the crank of \the [src].</span>", \
+						"<span class='notice'>You begins to turn the crank of \the [src].</span>")
+	while(recharging)
+		if(!do_after(user, 10, src))
+			break
+		playsound(get_turf(src),'sound/items/change_drill.ogg',25,1)
+		if(power_supply.give(phase_power) < phase_power)
+			break
+
+	recharging = 0
+	update_icon()

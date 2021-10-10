@@ -378,17 +378,17 @@
 	display_name = "Jumpsuit - Circuitry"
 	path = /obj/item/clothing/under/circuitry
 
-/datum/gear/uniform/sifguard
+/datum/gear/uniform/sysguard
 	display_name = "Uniform - Crew"
-	path = /obj/item/clothing/under/solgov/utility/sifguard/crew
+	path = /obj/item/clothing/under/oricon/utility/sysguard/crew
 
 /datum/gear/uniform/marine/green
 	display_name = "Uniform - Green Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/green
+	path = /obj/item/clothing/under/oricon/utility/marine/green
 
 /datum/gear/uniform/marine/tan
 	display_name = "Uniform - Tan Fatigues"
-	path = /obj/item/clothing/under/solgov/utility/marine/tan
+	path = /obj/item/clothing/under/oricon/utility/marine/tan
 /datum/gear/uniform/sleekoverall
 	display_name = "Overalls - Sleek"
 	path = /obj/item/clothing/under/overalls/sleek
@@ -567,9 +567,9 @@ datum/gear/uniform/bodysuiteva
 	path = /obj/item/clothing/under/permit
 /*
 // Polaris overrides
-/datum/gear/uniform/solgov/pt/sifguard
+/datum/gear/uniform/solgov/pt/sysguard
 	display_name = "pt uniform, planetside sec"
-	path = /obj/item/clothing/under/solgov/pt/sifguard
+	path = /obj/item/clothing/under/solgov/pt/sysguard
 */
 
 
@@ -654,3 +654,11 @@ Swimsuits
 /datum/gear/uniform/tracksuit_blue
 	display_name = "Tracksuit - Blue"
 	path = /obj/item/clothing/under/tracksuit_blue
+
+/datum/gear/uniform/tribal_tunic
+	display_name = "Tunic - Simple"
+	path = /obj/item/clothing/under/tribal_tunic
+
+/datum/gear/uniform/druidic_gown
+	display_name = "Tunic - Flowered"
+	path = /obj/item/clothing/under/druidic_gown

@@ -287,17 +287,17 @@
 	display_name = "Slime hat"
 	path = /obj/item/clothing/head/collectable/slime
 
-/datum/gear/head/beret/sol
-	display_name = "Sol Beret Selection"
-	path = /obj/item/clothing/head/beret/sol
+/datum/gear/head/beret/orion
+	display_name = "Orion Beret Selection"
+	path = /obj/item/clothing/head/beret/orion
 
-/datum/gear/head/beret/sol/New()
+/datum/gear/head/beret/orion/New()
 	..()
-	var/list/sols = list()
-	for(var/sol_style in typesof(/obj/item/clothing/head/beret/sol))
-		var/obj/item/clothing/head/beret/sol/sol = sol_style
-		sols[initial(sol.name)] = sol
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(sols, /proc/cmp_text_asc))
+	var/list/orions = list()
+	for(var/orion_style in typesof(/obj/item/clothing/head/beret/orion))
+		var/obj/item/clothing/head/beret/orion/orion = orion_style
+		orions[initial(orion.name)] = orion
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(orions, /proc/cmp_text_asc))
 
 /datum/gear/head/surgery
 	display_name = "Surgical Cap Selection"
@@ -355,6 +355,21 @@
 	display_name = "Flower Crown (Lavender)"
 	path = /obj/item/clothing/head/lavender_crown
 
+/datum/gear/head/harebell_crown
+	display_name = "Flower Crown (Harebell)"
+	path = /obj/item/clothing/head/harebell_crown
+
 /datum/gear/head/poppy_crown
 	display_name = "Flower Crown (Poppy)"
 	path = /obj/item/clothing/head/poppy_crown
+
+/datum/gear/head/nettle_crown
+	display_name = "Flower Crown (Thorns)"
+	path = /obj/item/clothing/head/nettle_crown
+/datum/gear/head/samurai
+	display_name = "Replica Kabuto (Colorable)"
+	path = /obj/item/clothing/head/samurai_replica
+
+/datum/gear/head/samurai/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice

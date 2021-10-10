@@ -12,7 +12,13 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 
 /datum/category_item/catalogue/fauna/gaslamp		//TODO: VIRGO_LORE_WRITING_WIP
 	name = "Virgo 3b Fauna - Gaslamp"
-	desc = ""
+	desc = "Gaslamps are a phoron-based life form endemic to the world \
+	of Virgo-3B. They are a sort of fungal organism with physical similarities \
+	to Diona and Vox, although there is no actual link between these species. \
+	They derive energy for movement from a gentle combustion-like reaction in their \
+	bodies using atmospheric phoron, carefully filtered trace oxygen, and captured \
+	meat products. Over-exposure to oxygen causes their insides to burn too hot and \
+	eventually kills them."
 	value = CATALOGUER_REWARD_TRIVIAL
 
 /mob/living/simple_mob/animal/passive/gaslamp
@@ -56,6 +62,19 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	max_co2 = 0
 	min_n2 = 0
 	max_n2 = 0
+
+//Randomization Code
+/mob/living/simple_mob/animal/passive/gaslamp/Initialize()
+    . = ..()
+    var/mod = rand(mod_min,mod_max)/100
+    size_multiplier = mod
+    maxHealth = round(maxHealth*mod)
+    health = round(health*mod)
+    melee_damage_lower = round(melee_damage_lower*mod)
+    melee_damage_upper = round(melee_damage_upper*mod)
+    movement_cooldown = round(movement_cooldown*mod)
+    meat_amount = round(meat_amount*mod)
+    update_icons()
 
 /datum/say_list/gaslamp
 	emote_see = list("looms", "sways gently")

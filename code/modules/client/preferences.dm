@@ -51,6 +51,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/r_grad = 0						//Gradient color
 	var/g_grad = 0						//Gradient color
 	var/b_grad = 0						//Gradient color
+	var/grad_wingstyle = "None"			//Gradient style
 	var/f_style = "Shaved"				//Face hair type
 	var/r_facial = 0					//Face hair color
 	var/g_facial = 0					//Face hair color
@@ -115,6 +116,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	// will probably not be able to do this for head and torso ;)
 	var/list/organ_data = list()
 	var/list/rlimb_data = list()
+	var/regen_limbs = 0 //set to 1 when altering limb states. fix for prosthetic > normal changes not working on preview.
 	var/list/player_alt_titles = new()		// the default name of a job like "Medical Doctor"
 
 	var/list/body_markings = list() // "name" = "#rgbcolor"

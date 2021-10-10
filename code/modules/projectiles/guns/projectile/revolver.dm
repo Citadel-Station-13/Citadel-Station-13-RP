@@ -44,6 +44,21 @@
 	icon_state = "mateba"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 
+/obj/item/gun/projectile/revolver/mateba/taj
+	name = "Adhomai revolver"
+	desc = "The Akhan and Khan Royal Service Revolver. Sophisticated but dated, this weapon is a metaphor for the New Kingdom of Adhomai itself."
+	icon_state = "mateba-taj"
+
+/obj/item/gun/projectile/revolver/mateba/taj/knife
+	name = "Adhomai knife revolver"
+	desc = "An ornate knife revolver from an Adhomai gunsmith. Popular among Tajaran nobility just before the civil war and even to this day, many of these revolvers found their way into the market when they were taken as trophies by Grand People's Army soldiers and DPRA guerillas."
+	icon_state = "knifegun"
+	caliber = ".38"
+	ammo_type = /obj/item/ammo_casing/a38
+	force = 15
+	sharp = 1
+	edge = 1
+
 /obj/item/gun/projectile/revolver/detective
 	name = "revolver"
 	desc = "A cheap Martian knock-off of a Smith & Wesson Model 10. Uses .38-Special rounds."
