@@ -34,8 +34,3 @@
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	visible_message(span("danger", "[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), span("danger", "You slit your stomach open with \the [src.name]!"), span("danger", "You hear the sound of flesh tearing open.")) // gory, but it gets the point across
 	return(BRUTELOSS)
-
-/obj/item/material/sword/clown
-	name = "clown sword"
-	desc = "This gimmicky looking curved sword is actually honed steel simply painted to look like a giant banana."
-	icon_state = "clownsword"

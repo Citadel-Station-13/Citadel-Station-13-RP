@@ -355,3 +355,7 @@
 /datum/material/durasteel/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("durasteel floor tile", /obj/item/stack/tile/durasteel, 1, 4, 20)
+
+/datum/material/brass/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe("brass floor tile", /obj/item/stack/tile/brass, 1, 4, 20)
