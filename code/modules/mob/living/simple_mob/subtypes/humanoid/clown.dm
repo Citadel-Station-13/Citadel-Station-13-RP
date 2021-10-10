@@ -114,6 +114,25 @@
 	special_attack_min_range = 2
 	special_attack_max_range = 7
 
+//Clown Op Saylists
+/datum/say_list/clownop
+	speak = list("Why did the Teshari cross the road?",
+				"Knock knock.",
+				"Honk!",
+				"If he slips me again, I'm gonna prank him really good.",
+				"I need to add more shoes to my collection.")
+	emote_see = list("honks their nose", "giggles", "adjusts their suspenders", "looks around", "fusses with their wig")
+
+	say_understood = list("Copy-dopy!", "Ahuh!")
+	say_cannot = list("Not gonna!")
+	say_maybe_target = list("Who's there?")
+	say_got_target = list("Honk!")
+	say_threaten = list("We're closed!", "Do I amuse you?")
+	say_stand_down = list("Ha ha.")
+	say_escalate = list("Prepare to get pranked!", "You're about to be tripping!")
+	threaten_sound = 'sound/items/bikehorn.ogg'
+	stand_down_sound = 'sound/effects/splat.ogg'
+
 ////////////////////////////////
 //		Grenade Attack
 ////////////////////////////////
