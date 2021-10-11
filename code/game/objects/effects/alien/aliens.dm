@@ -459,15 +459,12 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
+	START_PROCESSING(SSobj, src)
 
-/*
-	if(config_legacy.aliens_allowed)
-		..()
-		spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
-			Grow()
-	else
-		qdel(src)
-*/
+/obj/effect/alien/egg/process(delta_time)
+	spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
+		Grow()
+
 /obj/effect/alien/egg/attack_hand(user as mob)
 
 	var/mob/living/carbon/M = user
@@ -491,16 +488,15 @@ Alien plants should do something if theres a lot of poison
 	return locate(/obj/item/clothing/mask/facehugger) in contents
 
 /obj/effect/alien/egg/proc/Grow()
-	icon_state = "egg"
+	icon_state = "egg_grown"
 	status = GROWN
-	status = BURST
 	new /obj/item/clothing/mask/facehugger(src)
 	return
 
 /obj/effect/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
 	if(status == GROWN || status == GROWING)
 		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
-		icon_state = "egg_hatched"
+		icon_state = "egg_grown"
 		flick("egg_opening", src)
 		status = BURSTING
 		spawn(15)
@@ -523,6 +519,7 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/egg/attack_generic(var/mob/user, var/damage, var/attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	playsound(src.loc, 'sound/effects/attackblob.ogg', 100, 1)
 	user.do_attack_animation(src)
 	health -= damage
 	healthcheck()

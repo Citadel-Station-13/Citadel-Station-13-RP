@@ -169,10 +169,10 @@ var/const/MAX_ACTIVE_TIME = 400
 		new /obj/item/alien_embryo(target)
 		target.status_flags |= TRAIT_XENO_HOST
 		target.visible_message("<span class='danger'><b> [src] falls limp after violating [target]'s face!</b></span>")
+		icon_state = "[initial(icon_state)]_impregnate"
 		Die()
 	else
 		target.visible_message("<span class='danger'><b> [src] violates [target]'s face!</b></span>")
-		target.drop_from_inventory(src)
 	return
 
 /obj/item/clothing/mask/facehugger/proc/GoActive()
@@ -188,8 +188,6 @@ var/const/MAX_ACTIVE_TIME = 400
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
 
-/*		RemoveActiveIndicators()	*/
-
 	stat = UNCONSCIOUS
 	icon_state = "[initial(icon_state)]_inactive"
 
@@ -197,11 +195,9 @@ var/const/MAX_ACTIVE_TIME = 400
 		GoActive()
 		return
 
-/*		RemoveActiveIndicators()	*/
-
 	stat = DEAD
 	src.visible_message("<span class='danger'><b>[src] curls up into a ball!</b></span>")
-	DeathIcon()
+	Die()
 	return
 
 /proc/CanHug(var/mob/M)
