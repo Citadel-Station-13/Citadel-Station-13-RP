@@ -172,7 +172,7 @@
 	var/health = 15
 	var/obj/effect/alien/weeds/node/linked_node = null
 	var/static/list/weedImageCache
-	color = "#36075F"
+	color = "#332342"
 
 /obj/effect/alien/weeds/Destroy()
 	var/turf/T = get_turf(src)
