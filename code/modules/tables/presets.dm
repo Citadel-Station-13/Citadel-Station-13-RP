@@ -133,6 +133,23 @@
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return
 
+/obj/structure/table/bananium
+	icon_state = "plain_preview"
+	color = "#d6c100"
+
+/obj/structure/table/bananium/Initialize(mapload)
+	material = get_material_by_name("bananium")
+	return ..()
+
+/obj/structure/table/bananium_reinforced
+	icon_state = "reinf_preview"
+	color = "#d6c100"
+
+/obj/structure/table/bananium_reinforced/Initialize(mapload)
+	material = get_material_by_name("bananium")
+	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	return ..()
+
 //BENCH PRESETS
 /obj/structure/table/bench/standard
 	icon_state = "plain_preview"

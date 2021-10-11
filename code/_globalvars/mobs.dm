@@ -8,3 +8,5 @@ GLOBAL_LIST_EMPTY(players_by_zlevel)
 GLOBAL_LIST_EMPTY(round_text_log)
 
 GLOBAL_LIST_EMPTY(mob_list)
+
+GLOBAL_VAR_INIT(moth_amount, 0)						//Solar moth addition;

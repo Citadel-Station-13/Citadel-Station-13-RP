@@ -22,6 +22,7 @@
 	faction = "snake"
 	maxHealth = 200
 	health = 200
+	randomized = TRUE
 
 	melee_damage_lower = 5
 	melee_damage_upper = 12

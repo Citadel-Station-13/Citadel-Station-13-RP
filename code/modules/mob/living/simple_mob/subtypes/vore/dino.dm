@@ -7,6 +7,10 @@
 	icon_state = "dino"
 	icon = 'icons/mob/vore.dmi'
 
+	maxHealth = 20
+	health = 20
+	randomized = TRUE
+
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
 	// By default, this is what most vore mobs are capable of.

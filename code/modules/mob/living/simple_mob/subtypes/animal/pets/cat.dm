@@ -18,6 +18,8 @@
 
 	movement_cooldown = 0.5 SECONDS
 
+	randomized = TRUE
+
 	see_in_dark = 6 // Not sure if this actually works.
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
@@ -114,6 +116,7 @@
 	item_state = "cat"
 	named = TRUE
 	makes_dirt = 0 //Vorestation Edit
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/cat/kitten
 	name = "kitten"
@@ -147,6 +150,7 @@
 	item_state = "cat3"
 	named = TRUE
 	holder_type = /obj/item/holder/cat/fluff/bones
+	randomized = FALSE
 
 // VOREStation Edit - Adds generic tactical kittens
 /obj/item/holder/cat/kitten

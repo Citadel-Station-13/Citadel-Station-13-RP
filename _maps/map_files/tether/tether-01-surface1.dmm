@@ -10679,6 +10679,7 @@
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/computer/timeclock/premade/west,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "ask" = (
@@ -15560,6 +15561,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
+/obj/machinery/computer/timeclock/premade/south,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "azP" = (
@@ -36435,6 +36437,15 @@
 "pNR" = (
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/tunnel)
+"pQk" = (
+/obj/structure/cable/orange{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/media/jukebox,
+/turf/simulated/floor/wood,
+/area/crew_quarters/visitor_dining)
 "pUI" = (
 /obj/structure/railing{
 	dir = 1
@@ -38674,6 +38685,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
+"wjD" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/machinery/computer/timeclock/premade/north,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/lowernorthhall)
 "wnS" = (
 /obj/machinery/computer{
 	dir = 1
@@ -50954,7 +50979,7 @@ aAI
 aAI
 aAI
 aef
-aeS
+wjD
 afO
 aBC
 aCr
@@ -54699,7 +54724,7 @@ aHI
 aIt
 aJn
 aJV
-kxU
+pQk
 aLj
 aLU
 aMF

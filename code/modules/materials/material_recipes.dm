@@ -114,6 +114,7 @@
 	recipes += new/datum/stack_recipe("roller bed", /obj/item/roller, 5, time = 30, on_floor = 1)
 	recipes += new/datum/stack_recipe("whetstone", /obj/item/whetstone, 2, time = 10)
 	recipes += new/datum/stack_recipe("reinforced skateboard assembly", /obj/item/heavy_skateboard_frame, 10, time = 20, one_per_turf = 1)
+	recipes += new/datum/stack_recipe("plasteel floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20)
 
 /datum/material/stone/generate_recipes()
 	..()
@@ -271,7 +272,7 @@
 	recipes += new/datum/stack_recipe("crude bandage", /obj/item/stack/medical/crude_pack, 1, time = 2 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("empty sandbag", /obj/item/stack/emptysandbag, 2, 5, 10, time = 2 SECONDS, pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("shrine seal", /obj/structure/shrine_seal, 2, time = 5 SECONDS)
-	recipes += new/datum/stack_recipe("shrine seal", /obj/item/reagent_containers/glass/rag, 1, time = 2 SECONDS)
+	recipes += new/datum/stack_recipe("cloth rag", /obj/item/reagent_containers/glass/rag, 1, time = 2 SECONDS)
 
 /datum/material/resin/generate_recipes()
 	recipes = list()
@@ -294,6 +295,7 @@
 		new/datum/stack_recipe("secborg statue", /obj/structure/statue/silver/secborg, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("medborg statue", /obj/structure/statue/silver/medborg, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
+	recipes += new/datum/stack_recipe("silver floor tile", /obj/item/stack/tile/silver, 1, 4, 20)
 
 /datum/material/gold/generate_recipes()
 	..()
@@ -305,6 +307,7 @@
 		new/datum/stack_recipe("chief engineer statue", /obj/structure/statue/gold/ce, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("research director statue", /obj/structure/statue/gold/rd, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
+	recipes += new/datum/stack_recipe("gold floor tile", /obj/item/stack/tile/gold, 1, 4, 20)
 
 /datum/material/phoron/generate_recipes()
 	..()
@@ -312,6 +315,7 @@
 		new/datum/stack_recipe("scientist statue", /obj/structure/statue/phoron/scientist, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("xenomorph statue", /obj/structure/statue/phoron/xeno, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
+	recipes += new/datum/stack_recipe("phoron floor tile", /obj/item/stack/tile/phoron, 1, 4, 20)
 
 /datum/material/uranium/generate_recipes()
 	..()
@@ -319,6 +323,7 @@
 		new/datum/stack_recipe("nuke statue", /obj/structure/statue/uranium/nuke, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("engineer statue", /obj/structure/statue/uranium/eng, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
+	recipes += new/datum/stack_recipe("uranium floor tile", /obj/item/stack/tile/uranium, 1, 4, 20)
 
 /datum/material/diamond/generate_recipes()
 	..()
@@ -327,9 +332,30 @@
 		new/datum/stack_recipe("ai hologram statue", /obj/structure/statue/diamond/ai1, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("ai core statue", /obj/structure/statue/diamond/ai2, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
+	recipes += new/datum/stack_recipe("diamond floor tile", /obj/item/stack/tile/diamond, 1, 4, 20)
 
 /datum/material/sandstone/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe_list("statues", list( \
 		new/datum/stack_recipe("assistant statue", /obj/structure/statue/sandstone/assistant, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		))
+
+/datum/material/bananium/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe_list("statues", list( \
+		new/datum/stack_recipe("bananium statue", /obj/structure/statue/bananium, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("clown statue", /obj/structure/statue/bananium/clown, 20, time = 5, one_per_turf = 1, on_floor = 1), \
+		))
+	recipes += new/datum/stack_recipe("bananium floor tile", /obj/item/stack/tile/bananium, 1, 4, 20)
+
+/datum/material/silencium/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe("silencium floor tile", /obj/item/stack/tile/silencium, 1, 4, 20)
+
+/datum/material/durasteel/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe("durasteel floor tile", /obj/item/stack/tile/durasteel, 1, 4, 20)
+
+/datum/material/brass/generate_recipes()
+	..()
+	recipes += new/datum/stack_recipe("brass floor tile", /obj/item/stack/tile/brass, 1, 4, 20)

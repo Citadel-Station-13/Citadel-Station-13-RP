@@ -2,3 +2,4 @@
 	name = "Tweeter"
 	desc = "A beautiful little blue and white bird, if only excessively loud for no reason sometimes."
 	makes_dirt = FALSE
+	randomized = FALSE

@@ -221,50 +221,53 @@
 	icon_state = "unexplored"
 
 /area/tether_away/beach/desert/poi/WW_Town
-	name = "Ghost Town"
+	name = "V4 - Ghost Town"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/landing_pad
-	name = "Prefab Homestead"
+	name = "V4 - Prefab Homestead"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/solar_farm
-	name = "Prefab Solar Farm"
+	name = "V4 - Prefab Solar Farm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/dirt_farm
-	name = "Abandoned Farmstead"
+	name = "V4 - Abandoned Farmstead"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/graveyard
-	name = "Desert Graveyard"
+	name = "V4 - Desert Graveyard"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/goldmine
-	name = "Desert Goldmine"
+	name = "V4 - Desert Goldmine"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/ranch
-	name = "Abandoned Ranch"
+	name = "V4 - Abandoned Ranch"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/saloon
-	name = "Saloon"
+	name = "V4 - Saloon"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/temple
-	name = "Old Temple"
+	name = "V4 - Old Temple"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/tomb
-	name = "Old Tomb"
+	name = "V4 - Old Tomb"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/AuxiliaryResearchFacility
-	name = "Research Facility"
+	name = "V4 - Research Facility"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/tether_away/beach/desert/poi/vault
-	name = "Desert Bunker"
+	name = "V4 - Desert Bunker"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
-	
+
+/area/tether_away/beach/desert/poi/covert_post
+	name = "V4 - Clown Listening Post"
+	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh

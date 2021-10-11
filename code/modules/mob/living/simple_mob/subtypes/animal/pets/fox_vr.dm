@@ -22,6 +22,7 @@
 	movement_cooldown = 0.5
 	see_in_dark = 6
 	mob_size = MOB_SMALL //Foxes are not smaller than cats so bumping them up to small
+	randomized = TRUE
 
 	faction = "fox"
 
@@ -207,6 +208,7 @@
 	var/mob/living/friend = null // Our best pal, who we'll follow. awoo.
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
 	makes_dirt = FALSE	// No more dirt
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/fox/renault/init_vore()
 	..()

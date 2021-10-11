@@ -104,3 +104,8 @@
 	name = "Alien Derelict"
 	suffix = "derelict.dmm"
 	cost = 35
+
+/datum/map_template/submap/level_specific/debrisfield/clownship
+	name = "Drifting Covert Shuttle"
+	suffix = "clownship.dmm"
+	cost = 20

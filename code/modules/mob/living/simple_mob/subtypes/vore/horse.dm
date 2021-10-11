@@ -22,6 +22,9 @@
 	faction = "horse"
 	maxHealth = 60
 	health = 60
+	randomized = TRUE
+	mod_min = 100
+	mod_max = 130
 
 	movement_cooldown = 4 //horses are fast mkay.
 	see_in_dark = 6
