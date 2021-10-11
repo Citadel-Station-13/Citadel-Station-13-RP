@@ -173,14 +173,16 @@
 //Melee
 
 /mob/living/simple_mob/humanoid/clown/commando/melee
+	icon_state = "clownop_melee"
+	icon_living = "clownop_melee"
 	loot_list = list(/obj/item/material/knife/clownop = 100)
 
 //Ranged
 
 /mob/living/simple_mob/humanoid/clown/commando/ranged // Basic pistol mob.
 	desc = "A brightly adorned clown armed with a weird pistol."
-	icon_state = "clownopranged"
-	icon_living = "clownopranged"
+	icon_state = "clownop_ranged"
+	icon_living = "clownop_ranged"
 	projectiletype = /obj/item/projectile/bullet/honker/lethal
 	projectilesound = 'sound/items/bikehorn.ogg'
 	needs_reload = TRUE
