@@ -185,7 +185,17 @@
 "genre": "Alternative"
 },
 {
-"url": "https://files.catbox.moe/tsba1x.mp3",
+"url": "https://files.catbox.moe/9dq117.mp3",
+"title": "Come and See",
+"duration": 1040,
+"artist": "ludoWic",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Alternative"
+},
+{
+"url": "https://files.catbox.moe/yrcr75.mp3",
 "title": "Don't Follow The Light",
 "duration": 2070,
 "artist": "Michal Michalski",
@@ -247,7 +257,7 @@
 "genre": "Alternative"
 },
 {
-"url": "https://files.catbox.moe/ep308b.mp3",
+"url": "https://files.catbox.moe/k6nry5.mp3",
 "title": "Lily of the Valley",
 "duration": 2500,
 "artist": "Michal Michalski",
@@ -434,7 +444,7 @@
 "genre": "Alternative"
 },
 {
-"url": "https://files.catbox.moe/1abiw5.mp3",
+"url": "https://files.catbox.moe/78xrbx.mp3",
 "title": "We're All Dead Inside (So Sit Back And Relax)",
 "duration": 2690,
 "artist": "Michal Michalski",
@@ -1559,6 +1569,16 @@
 "genre": "Electronic"
 },
 {
+"url": "https://files.catbox.moe/pe8lvu.mp3",
+"title": "Full Confession",
+"duration": 2450,
+"artist": "ludoWic",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Electronic"
+},
+{
 "url": "https://files.catbox.moe/hwfg7e.m4a",
 "title": "Hairspray Hurricane",
 "duration": 3310,
@@ -1710,7 +1730,7 @@
 "genre": "Electronic"
 },
 {
-"url": "https://files.catbox.moe/jlo9cj.mp3",
+"url": "https://files.catbox.moe/4a847n.mp3",
 "title": "Make It Wit Chu (Virgin Magnetic Material Remix)",
 "duration": 4100,
 "artist": "Queens Of The Stone Age",
@@ -1810,7 +1830,7 @@
 "genre": "Electronic"
 },
 {
-"url": "https://files.catbox.moe/910pte.mp3",
+"url": "https://files.catbox.moe/pv2gp6.mp3",
 "title": "Panoramic Feelings",
 "duration": 1910,
 "artist": "ludoWic",
@@ -2070,7 +2090,7 @@
 "genre": "Electronic"
 },
 {
-"url": "https://files.catbox.moe/5ewdlh.mp3",
+"url": "https://files.catbox.moe/nbq5z5.mp3",
 "title": "Third District",
 "duration": 2850,
 "artist": "ludoWic",
