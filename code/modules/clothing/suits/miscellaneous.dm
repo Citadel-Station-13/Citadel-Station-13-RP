@@ -319,6 +319,15 @@ obj/item/clothing/suit/kamishimo
 	item_state_slots = list(slot_r_hand_str = "leather_jacket", slot_l_hand_str = "leather_jacket")
 	flags_inv = HIDEHOLSTER
 
+/obj/item/clothing/suit/overcoat
+	name = "leather overcoat"
+	desc = "A fashionable leather overcoat."
+	icon_state = "leathercoat"
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_inv = HIDEHOLSTER
+
 /obj/item/clothing/suit/browncoat
 	name = "brown leather coat"
 	desc = "A long, brown leather coat."

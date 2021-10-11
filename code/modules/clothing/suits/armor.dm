@@ -341,6 +341,14 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	flags_inv = HIDETIE|HIDEHOLSTER
 
+/obj/item/clothing/suit/storage/vest/hos_overcoat
+	name = "security overcoat"
+	desc = "A fashionable leather overcoat lined with a lightweight, yet tough armor."
+	icon_state = "leathercoat-sec"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags_inv = HIDETIE|HIDEHOLSTER
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+
 //Jensen cosplay gear
 /obj/item/clothing/suit/storage/vest/hoscoat/jensen
 	name = "armored trenchcoat"
