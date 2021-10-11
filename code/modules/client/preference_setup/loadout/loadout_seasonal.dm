@@ -82,6 +82,10 @@
 	display_name = "Costume Head - Maid"
 	path = /obj/item/clothing/head/headband/maid
 
+/datum/gear/seasonal/costumes/head/ankh
+	display_name = "Costume Head - Ankh"
+	path = /obj/item/clothing/head/ankh
+
 // Mask
 /datum/gear/seasonal/costumes/mask
 	display_name = "Costume Mask - Fake Moustache"
