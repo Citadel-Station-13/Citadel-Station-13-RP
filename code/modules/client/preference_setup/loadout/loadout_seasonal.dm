@@ -214,6 +214,10 @@
 	display_name = "Costume Uniform - Schoolgirl (Orange)"
 	path = /obj/item/clothing/under/schoolgirl/orange
 
+/datum/gear/seasonal/costumes/under/schoolgirl/pink
+	display_name = "Costume Uniform - Schoolgirl (Pink)"
+	path = /obj/item/clothing/under/schoolgirl/pink
+
 /datum/gear/seasonal/costumes/under/scratch
 	display_name = "Costume Uniform - Cueball Man"
 	path = /obj/item/clothing/under/scratch
