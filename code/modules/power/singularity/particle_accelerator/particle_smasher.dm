@@ -208,7 +208,7 @@
 /obj/machinery/particle_smasher/proc/DoCraft(var/datum/particle_smasher_recipe/recipe)
 	if(!recipe)
 		return
-	
+
 	target.use(1)
 
 	if(reagent_container)

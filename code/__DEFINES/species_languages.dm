@@ -58,7 +58,6 @@
 #define LANGUAGE_ALAI "Alai"
 #define LANGUAGE_ZADDAT "Vedahq"
 #define LANGUAGE_GIBBERISH "Babel"
-#define LANGUAGE_SQUEAKISH "Squeakish"
 #define LANGUAGE_VERNAL "Vernal"
 
 //Languages from _vr file
@@ -76,6 +75,8 @@
 #define LANGUAGE_NEAERA "Neaera"
 #define LANGUAGE_STOK "Stok"
 #define LANGUAGE_FARWA "Farwa"
+
+#define LANGUAGE_SQUEAKISH "Squeakish"
 
 #define LANGUAGE_SHADEKIN "Shadekin Empathy"
 
