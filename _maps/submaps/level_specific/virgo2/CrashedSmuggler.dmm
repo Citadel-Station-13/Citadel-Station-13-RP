@@ -27,10 +27,8 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "cI" = (
-/obj/effect/alien/egg{
-	icon_state = "egg_opened"
-	},
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/alien/egg,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "dH" = (
@@ -49,12 +47,29 @@
 /mob/living/simple_mob/animal/space/alien/drone,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
-"fK" = (
-/obj/effect/alien/egg{
-	icon_state = "egg_opened"
+"fa" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Blast Door";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Cargo Bay Hatch"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
+"fK" = (
+/obj/structure/simple_door/resin,
+/obj/effect/alien/weeds,
+/obj/item/clothing/mask/facehugger,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
 "ge" = (
 /obj/machinery/power/smes/buildable/point_of_interest{
 	lastcharge = 0
@@ -97,19 +112,10 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "jf" = (
-/obj/machinery/door/airlock/hatch{
-	icon_state = "door_open";
-	locked = 1;
-	name = "Cargo Bay Hatch"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	name = "Jammed Blast Door";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/techfloor/virgo2,
-/area/submap/virgo2/CrashedSmuggler/ship)
+/obj/effect/alien/weeds,
+/obj/item/clothing/mask/facehugger,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
 "jq" = (
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
@@ -181,22 +187,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "xC" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/hatch{
-	icon_state = "door_open";
-	locked = 1;
-	name = "Cargo Bay Hatch"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	name = "Jammed Blast Door";
-	opacity = 0
-	},
+/obj/effect/decal/remains/xeno,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "ym" = (
@@ -359,16 +350,14 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "Kl" = (
-/obj/machinery/door/airlock/hatch{
-	icon_state = "door_open";
-	locked = 1;
-	name = "Commons Hatch"
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
 	name = "Jammed Blast Door";
 	opacity = 0
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Commons Hatch"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
@@ -384,9 +373,8 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Lc" = (
 /obj/effect/alien/weeds,
-/obj/effect/alien/egg{
-	icon_state = "egg_opened"
-	},
+/obj/effect/alien/egg,
+/obj/item/clothing/mask/facehugger,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "MM" = (
@@ -423,13 +411,11 @@
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Px" = (
-/obj/effect/alien/egg{
-	icon_state = "egg_opened"
-	},
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/effect/alien/egg,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "PP" = (
@@ -464,6 +450,18 @@
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
+"Qz" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "Jammed Blast Door";
+	opacity = 0
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Cargo Bay Hatch"
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
 "RJ" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/egg,
@@ -475,9 +473,7 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "VT" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/alien/egg{
-	icon_state = "egg_opened"
-	},
+/obj/item/clothing/mask/facehugger,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "Xq" = (
@@ -493,14 +489,10 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Yj" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/clothing/mask/facehugger,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Zr" = (
-/obj/machinery/door/airlock/hatch{
-	icon_state = "door_open";
-	locked = 1;
-	name = "Bridge Hatch"
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -508,7 +500,9 @@
 	opacity = 0
 	},
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/decal/remains/xeno,
+/obj/machinery/door/airlock/hatch{
+	name = "Bridge Hatch"
+	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "ZN" = (
@@ -581,8 +575,8 @@ gX
 CE
 CE
 gX
-jf
-xC
+jq
+jq
 gX
 CE
 CE
@@ -607,8 +601,8 @@ gX
 np
 CK
 gX
-iN
-wQ
+Qz
+fa
 gX
 HE
 Ps
@@ -694,7 +688,7 @@ gX
 zl
 Gh
 No
-Gf
+VT
 zl
 zl
 Dj
@@ -710,10 +704,10 @@ zl
 zl
 gX
 UW
-fK
+UW
 iN
 iN
-fK
+UW
 cI
 gX
 zl
@@ -761,7 +755,7 @@ Gh
 RJ
 zl
 gX
-fK
+UW
 UW
 iN
 iN
@@ -798,7 +792,7 @@ zl
 Gf
 Gh
 EY
-Gf
+VT
 zl
 zl
 Dj
@@ -818,7 +812,7 @@ Px
 iN
 iN
 ie
-fK
+UW
 gX
 zl
 ZN
@@ -873,7 +867,7 @@ iN
 ei
 gX
 zl
-gv
+fK
 zl
 zl
 zl
@@ -944,7 +938,7 @@ Gh
 zl
 zl
 gX
-iN
+xC
 yA
 PY
 iN
@@ -992,7 +986,7 @@ jq
 zl
 zl
 EY
-gv
+fK
 zl
 zl
 gX
@@ -1096,8 +1090,8 @@ zl
 IB
 Gh
 gv
-Gh
-VT
+jf
+mP
 EY
 ZN
 Gh
@@ -1178,7 +1172,7 @@ jq
 zl
 zl
 zl
-Gf
+VT
 zl
 zl
 zl

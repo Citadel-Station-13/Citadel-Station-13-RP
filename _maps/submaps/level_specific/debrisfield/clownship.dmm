@@ -577,6 +577,9 @@
 	},
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/bunk)
+"zR" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
 "Aq" = (
 /turf/space,
 /area/space/debrisfield/explored)
@@ -725,6 +728,9 @@
 /obj/machinery/computer/ship/engines,
 /turf/simulated/shuttle/floor/red/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"Hx" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
 "HK" = (
 /obj/machinery/mech_recharger,
 /obj/effect/decal/mecha_wreckage/honker/cluwne,
@@ -1180,7 +1186,7 @@ mi
 mi
 mi
 mi
-mi
+zR
 Yp
 Yp
 uc
@@ -1540,7 +1546,7 @@ nI
 nI
 nI
 nI
-nI
+Hx
 Nd
 Nd
 Hj
