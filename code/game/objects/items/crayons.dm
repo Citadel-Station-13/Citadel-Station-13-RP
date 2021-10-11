@@ -201,21 +201,18 @@
 	colourName = "white"
 
 /obj/item/pen/crayon/chalk/red
-	name = "ritual chalk (red)"
 	icon_state = "chalkred"
 	colour = "#DA0000"
 	shadeColour = "#810C0C"
 	colourName = "red"
 
 /obj/item/pen/crayon/chalk/black
-	name = "ritual chalk (black)"
 	icon_state = "chalkblack"
 	colour = "#2D2D2D"
 	shadeColour = "#000000"
 	colourName = "black"
 
 /obj/item/pen/crayon/chalk/blue
-	name = "ritual chalk (blue)"
 	icon_state = "chalkblue"
 	colour = "#00B7EF"
 	shadeColour = "#0082A8"
