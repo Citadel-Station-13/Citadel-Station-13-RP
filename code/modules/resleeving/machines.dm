@@ -581,7 +581,7 @@
 	//cit change start
 		to_chat(occupant, "<span class='notice'>You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory. </span>")
 	else
-		to_chat(occupant, "<span class='warning'>You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. You can't shake the final thoughts and feelings of your past life, and they linger at the forefront of your memory.  </span>")
+		to_chat(occupant, "<span class='warning'>You feel a small pain in your back as you're given a new mirror implant. Oh, and a new body. Your brain will struggle for some time to relearn its neurological pathways, and you may feel disorientation, moments of confusion, and random pain or spasms. You also feel a constant disconnect, and your body feels foreign. Your memories up to your last backup, whether that be before the shift, or manually aboard, have been lost. </span>")
 	//cit change end
 	occupant.confused = max(occupant.confused, confuse_amount)
 	occupant.eye_blurry = max(occupant.eye_blurry, blur_amount)
