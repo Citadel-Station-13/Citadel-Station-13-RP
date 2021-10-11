@@ -15,9 +15,10 @@
 	maxHealth = 200
 	taser_kill = 0
 
-	var/gibs
-	var/idle = 4
-	var/rig_type = /obj/item/rig/eva
+	var/idle = 4 //how long between the breathing sounds, in seconds.
+	var/rig1 = /obj/item/rig/eva/old //First rig chance, likely just trapped.
+	var/rig2 = /obj/item/rig/eva/old/spring //Second rig chance, likely springtrapped. Have first as same for just one type.
+	var/silenced = 0 //Wither or not the sounds and speaking will play.
 
 	//It's a RIG. It's spaceproof.
 	min_oxy = 0
@@ -46,7 +47,7 @@
 
 	//Simple mob merc so it stops, says something, then charges.
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
-	say_list_type = /datum/say_list/possessed
+	say_list_type = /datum/say_list/possessed //Set to Null on silenced.
 
 //	corpse = /obj/effect/landmark/mobcorpse/possessed
 // Will eventually leave a full corpse with an activated RIG on it. But not yet.
@@ -78,12 +79,12 @@
 //Has a chance to play one of the listed sounds when it moves.
 /mob/living/simple_mob/humanoid/possessed/Moved()
 	. = ..()
-	if(prob(5))
+	if(prob(5) && silenced == 0)
 		playsound(src, pick('sound/h_sounds/headcrab.ogg', 'sound/h_sounds/holla.ogg', 'sound/h_sounds/lynx.ogg', 'sound/h_sounds/mumble.ogg', 'sound/h_sounds/yell.ogg'), 50, 1)
 
 //Plays the sound every ~4 seconds.
 /mob/living/simple_mob/humanoid/possessed/Life()
-	if(idle <= 0)
+	if(idle <= 0 && silenced == 0)
 		playsound(src, 'sound/h_sounds/breathing.ogg', 60, 1)
 		idle = 4
 	idle--
@@ -102,7 +103,10 @@
 	"\The Tightening, the suit re-attempts to remain it's current form, before it collapses under the stress, supporting mechanisms closing in on themselves like a noose with nothing left to catch on.",
 	"\The The suit makes a noise akin to clockwork binding, and shutters, before something imperceptible gives with an abysmal noise and the suit returns to it's default form.")))
 	gib()
-	new rig_type(droploc)
+	if(rand(1,2) == 1)
+		new rig1(droploc)
+	else
+		new rig2(droploc)
 	new /obj/effect/decal/remains/human(droploc)
 	new /obj/item/grenade/chem_grenade/miasma(droploc)
 	/*Broken smoke spawn code. Above line is a bandaid.
@@ -119,17 +123,43 @@
 /mob/living/simple_mob/humanoid/possessed/Login()
 	to_chat(src,"<b>Why are you in this [src]? Why can't you say more than a few phrases? Why. What. Kill. Kill. Kill. Kill. KILL! KILL! KILL!</b> [player_msg]")
 
+/obj/item/rig/eva/old
+	name = "old EVA suit control module"
+	desc = "A light hardsuit for repairs and maintenance to the outside of habitats and vessels. It appears to be pretty old and worn down."
+	isTrapped = 1
+
+/obj/item/rig/eva/old/spring
+	springtrapped = 1
+
 //Now let's make some more!
 /mob/living/simple_mob/humanoid/possessed/industrial
 	name = "old industrial RIG suit"
 	desc = "A heavy, powerful hardsuit used by construction crews and mining corporations. Seems to be worn down and damaged. But it seems to still be moving. Is someone in it?"
 	icon_state = "industrial-rig"
-	rig_type = /obj/item/rig/industrial
+	rig1 = /obj/item/rig/industrial/old
+	rig2 = /obj/item/rig/industrial/old/spring
 	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
+
+/obj/item/rig/industrial/old
+	name = "old Industrial hardsuit"
+	desc = "A heavy, powerful hardsuit used by construction crews and mining corporations. It appears to be pretty old and worn down."
+	isTrapped = 1
+
+/obj/item/rig/industrial/old/spring
+	springtrapped = 1
 
 /mob/living/simple_mob/humanoid/possessed/merc
 	name = "old crimson hardsuit"
 	desc = "A blood-red hardsuit featuring some fairly illegal technology. Seems to be worn down and damaged. But it seems to still be moving. Is someone in it?"
 	icon_state = "merc-rig"
-	rig_type = /obj/item/rig/merc
+	rig1 = /obj/item/rig/merc/old
+	rig2 = /obj/item/rig/merc/old/spring
 	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
+
+/obj/item/rig/merc/old
+	name = "old crimson hardsuit control module"
+	desc = "A blood-red hardsuit featuring some fairly illegal technology. It appears to be pretty old and worn down."
+	isTrapped = 1
+
+/obj/item/rig/merc/old/spring
+	springtrapped = 1

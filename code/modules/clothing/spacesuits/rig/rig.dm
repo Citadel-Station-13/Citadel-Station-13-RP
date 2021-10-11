@@ -97,6 +97,12 @@
 	var/datum/effect_system/spark_spread/spark_system
 	var/datum/mini_hud/rig/minihud
 
+	//Traps, too.
+	var/isTrapped = 0 //Will it lock you in?
+	var/trapSprung = 0 //Don't define this one. It's if it's procced.
+	var/springtrapped = 0 //Will it cause severe bodily harm?
+	var/trapDelay = 5 //in seconds
+
 /obj/item/rig/get_cell()
 	return cell
 
@@ -237,12 +243,31 @@
 			update_airtight(piece, 0) // Unseal
 	update_icon(1)
 
+/obj/item/rig/proc/trap(var/mob/living/carbon/human/M)
+	if(suit_is_deployed())
+		playsound(src.loc, 'sound/weapons/empty.ogg', 40, 1)
+		to_chat(M, "<span class='warning'>The [src] makes a distinct clicking noise.")
+		trapSprung = 1
+
+/obj/item/rig/proc/springtrap(var/mob/living/carbon/human/M)
+	if(suit_is_deployed())
+		M.adjustBruteLossByPart(50, BP_TORSO)
+		for(var/harm = 7; harm > 0; harm--)
+			M.adjustBruteLoss(10)
+		playsound(src.loc, 'sound/weapons/gunshot_generic_rifle.ogg', 40, 1)
+		to_chat(M, "<span class ='warning'>The [src] clamps down hard, support rods and wires shooting forth, piercing you all over!")
+		trapSprung = 1
+
 /obj/item/rig/proc/toggle_seals(var/mob/living/carbon/human/M,var/instant)
 
 	if(sealing) return
 
 	if(!check_power_cost(M))
 		return 0
+
+	if(trapSprung == 1)
+		to_chat(M, "<span class='warning'>The [src] doesn't respond to your inputs.")
+		return
 
 	deploy(M,instant)
 
@@ -347,6 +372,12 @@
 	// Success!
 	canremove = seal_target
 	if(M.hud_used)
+		if(isTrapped == 1 && springtrapped == 1) //TODO: Fix the timer. Make it work.
+			//addtimer(CALLBACK(M, .proc/springtrap), trapDelay)
+			springtrap(M)
+		if(isTrapped == 1 && springtrapped == 0)
+			//addtimer(CALLBACK(M, .proc/trap), trapDelay)
+			trap(M)
 		if(canremove)
 			QDEL_NULL(minihud)
 		else
@@ -767,6 +798,10 @@
 		return
 
 	if(usr == wearer && (usr.stat||usr.paralysis||usr.stunned)) // If the usr isn't wearing the suit it's probably an AI.
+		return
+
+	if(trapSprung == 1)
+		to_chat(H, "<span class='warning'>The [src] doesn't respond to your inputs.")
 		return
 
 	var/obj/item/check_slot
