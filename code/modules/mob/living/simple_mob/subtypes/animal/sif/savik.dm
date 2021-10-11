@@ -30,6 +30,7 @@
 
 	maxHealth = 125
 	health = 125
+	randomized = TRUE
 
 	movement_cooldown = 0.5 SECONDS
 

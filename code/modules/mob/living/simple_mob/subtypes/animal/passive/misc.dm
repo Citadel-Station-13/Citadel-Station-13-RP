@@ -22,6 +22,7 @@
 	health = 5
 	maxHealth = 5
 	mob_size = MOB_MINISCULE
+	randomized = TRUE
 
 /datum/category_item/catalogue/fauna/tindalos
 	name = "Mystery - Tindalos"
