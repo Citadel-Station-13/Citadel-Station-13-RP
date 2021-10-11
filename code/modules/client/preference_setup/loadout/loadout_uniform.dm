@@ -656,9 +656,9 @@ Swimsuits
 	path = /obj/item/clothing/under/tracksuit_blue
 
 /datum/gear/uniform/tribal_tunic
-	display_name = "Tunic - Simple"
+	name = "Tunic - Simple"
 	path = /obj/item/clothing/under/tribal_tunic
 
 /datum/gear/uniform/druidic_gown
-	display_name = "Tunic - Flowered"
+	name = "Tunic - Flowered"
 	path = /obj/item/clothing/under/druidic_gown
