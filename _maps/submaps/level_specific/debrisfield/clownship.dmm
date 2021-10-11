@@ -300,14 +300,8 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle)
 "ow" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
-	dir = 10
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/shuttle/floor/yellow/airless,
-/area/submap/debrisfiled_vr/clownshuttle/atmos)
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/cargo)
 "oA" = (
 /turf/simulated/shuttle/wall,
 /area/submap/debrisfiled_vr/clownshuttle/bunk)
@@ -362,14 +356,8 @@
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle)
 "qr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
-	dir = 6
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/yellow/airless,
-/area/submap/debrisfiled_vr/clownshuttle/engine)
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/bunk)
 "qD" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -577,6 +565,9 @@
 	},
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/bunk)
+"zR" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
 "Aq" = (
 /turf/space,
 /area/space/debrisfield/explored)
@@ -624,6 +615,9 @@
 /area/submap/debrisfiled_vr/clownshuttle/cockpit)
 "DC" = (
 /obj/machinery/mech_recharger,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/bluegrid,
 /area/submap/debrisfiled_vr/clownshuttle/engine)
 "Ej" = (
@@ -725,6 +719,9 @@
 /obj/machinery/computer/ship/engines,
 /turf/simulated/shuttle/floor/red/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"Hx" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle/engine)
 "HK" = (
 /obj/machinery/mech_recharger,
 /obj/effect/decal/mecha_wreckage/honker/cluwne,
@@ -840,6 +837,17 @@
 	},
 /turf/simulated/shuttle/wall,
 /area/submap/debrisfiled_vr/clownshuttle/engine)
+"Oy" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/floor_decal/industrial/outline,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/yellow/airless,
+/area/submap/debrisfiled_vr/clownshuttle/atmos)
 "OO" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
@@ -1169,7 +1177,7 @@ bw
 it
 Yj
 pt
-bw
+ow
 bw
 bw
 bw
@@ -1180,7 +1188,7 @@ mi
 mi
 mi
 mi
-mi
+zR
 Yp
 Yp
 uc
@@ -1204,7 +1212,7 @@ mi
 aP
 xC
 Cm
-Cm
+Oy
 jF
 ID
 km
@@ -1230,7 +1238,7 @@ Zp
 Zp
 Zp
 Bo
-ow
+jF
 IJ
 tQ
 Aq
@@ -1494,7 +1502,7 @@ sQ
 wP
 wP
 wP
-qr
+wn
 Tq
 ZC
 Aq
@@ -1529,7 +1537,7 @@ oA
 MI
 aT
 xi
-oA
+qr
 oA
 oA
 oA
@@ -1540,7 +1548,7 @@ nI
 nI
 nI
 nI
-nI
+Hx
 Nd
 Nd
 Hj

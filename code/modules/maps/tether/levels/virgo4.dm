@@ -271,7 +271,3 @@
 /area/tether_away/beach/desert/poi/covert_post
 	name = "V4 - Clown Listening Post"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
-/datum/map_template/submap/level_specific/class_h/covert_post
-	name = "Clown Listening Post"
-	suffix = "covert_post.dmm"
-	cost = 15
