@@ -18,6 +18,7 @@
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	density = 0
+	var/powered = 0
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/obj/machinery/shield_gen/my_gen = null
 	var/strength = 0 // in Renwicks
@@ -75,7 +76,7 @@
 	var/penetrated = TRUE
 	adjust_strength(-max((meteor.wall_power * meteor.hits) / 800, 0)) // One renwick (strength var) equals one r-wall for the purposes of meteor-stopping.
 	sleep(1)
-	if(density) // Check if we're still up.
+	if(powered) // Check if we're still up.
 		penetrated = FALSE
 		explosion(meteor.loc, 0, 0, 0, 0, 0, 0, 0) // For the sound effect.
 
@@ -83,7 +84,7 @@
 	return penetrated // If the shield's still around, the meteor was successfully stopped, otherwise keep going and plow into the station.
 
 /obj/effect/energy_field/proc/adjust_strength(amount, impact = 1)
-	var/old_density = density
+	var/old_powered = powered
 	strength = between(0, strength + amount, max_strength)
 
 	//maptext = "[round(strength, 0.1)]/[max_strength]"
@@ -95,15 +96,15 @@
 
 		ticks_recovering = min(ticks_recovering + 2, 10)
 		if(strength < 1) // We broke
-			density = 0
+			powered = 0
 			ticks_recovering = 10
 			strength = 0
 
 	else if(amount > 0) // Healing damage.
 		if(strength >= 1)
-			density = 1
+			powered = 1
 
-	if(density != old_density)
+	if(powered != old_powered)
 		update_icon()
 		update_nearby_tiles()
 
@@ -119,7 +120,7 @@
 				adjacent_shields_dir |= direction
 				break
 	// Icon_state and Glow
-	if(density)
+	if(powered)
 		icon_state = "shield"
 		set_light(3, 3, "#66FFFF")
 	else
