@@ -50,7 +50,7 @@
 "genre": "Arcade"
 },
 {
-"url": "https://files.catbox.moe/xus5a7.ogg",
+"url": "https://files.catbox.moe/a6qqsf.mp3",
 "title": "[ERR!ERR!012#%] E1M1 - At Doom's Gate",
 "duration": 1010,
 "artist": "Robert Prince",
@@ -6126,6 +6126,16 @@
 "title": "Trondur I Gotu",
 "duration": 2420,
 "artist": "Týr",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Sol Common Precursors"
+},
+{
+"url": "https://files.catbox.moe/t9sjep.mp3",
+"title": "Camel by Camel (Instrumental)",
+"duration": 3600,
+"artist": "Sandy Marton",
 "secret": false,
 "lobby": false,
 "jukebox": true,
