@@ -19,6 +19,7 @@
 	faction = "virgo2"
 	maxHealth = 50
 	health = 50
+	randomized = TRUE
 
 	melee_damage_lower = 2
 	melee_damage_upper = 7
@@ -29,7 +30,6 @@
 
 	say_list_type = /datum/say_list/jelly
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/jelly
-
 
 // Activate Noms!
 /mob/living/simple_mob/animal/space/jelly
@@ -49,5 +49,6 @@
 /mob/living/simple_mob/animal/space/jelly/wiggleblob
 	name = "Mr. Wiggleblob."
 	desc = "Mr. Wiggleblob! The official mascot of the Talon. So huggable. So squishable. Just try not to get eaten!"
-
-	size_multiplier = 1.25
+	makes_dirt = FALSE
+	randomized = FALSE
+	size_multiplier = 1.1

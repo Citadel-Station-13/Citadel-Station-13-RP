@@ -20,6 +20,7 @@
 
 	maxHealth = 150
 	health = 150
+	randomized = TRUE
 
 	melee_damage_lower = 2
 	melee_damage_upper = 7
@@ -63,6 +64,8 @@
 	name = "Maurice"
 	desc = "The station's resident vermin supreme, he makes the rules for all maintnence rodents. \
 	He appears to have grown quite chubby off gifts of trash and cheese from the crew."
+
+	randomized = FALSE
 
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 

@@ -162,6 +162,7 @@
 		/obj/item/clothing/under/rank/head_of_security/corp,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt,
+		/obj/item/clothing/under/oricon/mildress/marine/command/fake,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
 		/obj/item/clothing/suit/dress/marine/command/hos,

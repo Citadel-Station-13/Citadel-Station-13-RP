@@ -13,6 +13,18 @@
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+/datum/gear/eyes/glasses/tinted
+	display_name = "Tinted Glasses Selection"
+	path = /obj/item/clothing/glasses/tinted
+
+/datum/gear/eyes/glasses/tinted/New()
+	..()
+	var/list/tints = list()
+	for(var/tinted in (typesof(/obj/item/clothing/glasses/tinted/color) - typesof(/obj/item/clothing/glasses/tinted/color/purple)))
+		var/obj/item/clothing/glasses/tinted_type = tinted
+		tints[initial(tinted_type.name)] = tinted_type
+	gear_tweaks += new/datum/gear_tweak/path(sortTim(tints, /proc/cmp_text_asc))
+
 /datum/gear/eyes/glasses
 	display_name = "Glasses - Prescription"
 	path = /obj/item/clothing/glasses/regular

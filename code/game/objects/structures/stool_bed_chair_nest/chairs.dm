@@ -124,6 +124,9 @@
 /obj/structure/bed/chair/comfy/lime/Initialize(mapload, newmaterial)
 	return ..(mapload, "steel", "lime")
 
+/obj/structure/bed/chair/comfy/orange/Initialize(mapload, newmaterial)
+	return ..(mapload, "steel", "orange")
+
 /obj/structure/bed/chair/office
 	anchored = 0
 	buckle_movable = 1
@@ -383,3 +386,21 @@
 
 /obj/structure/bed/chair/sofa/orange/corner
 	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/pew
+	name = "pew"
+	desc = "It's a wooden bench. You sit on it. Possibly with someone else."
+	icon = 'icons/obj/sofas.dmi'
+	base_icon = "pewmiddle"
+	icon_state = "pewmiddle"
+
+/obj/structure/bed/chair/pew/Initialize(mapload, material_key)
+	return ..(mapload, "wood")
+
+/obj/structure/bed/chair/pew/left
+	icon_state = "pewend_left"
+	base_icon = "pewend_left"
+
+/obj/structure/bed/chair/pew/right
+	icon_state = "pewend_right"
+	base_icon = "pewend_right"

@@ -36,7 +36,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
 
 /mob/living/simple_mob/mechanical/mecha/combat/honker/manned
-	pilot_type = /mob/living/simple_mob/humanoid/clown/ranged // Carries a banana gun.
+	pilot_type = /mob/living/simple_mob/humanoid/clown/commando/ranged // Carries a banana gun.
 
 
 // A stronger variant.

@@ -39,6 +39,7 @@
 
 	maxHealth = 50
 	health = 50
+	randomized = TRUE
 	universal_understand = 1
 
 	taser_kill = 0

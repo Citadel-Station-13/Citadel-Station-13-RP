@@ -37,6 +37,7 @@
 	faction = "carp"
 	maxHealth = 25
 	health = 25
+	randomized = TRUE
 	movement_cooldown = 0 // Carp go fast
 	hovering = TRUE
 
@@ -91,6 +92,9 @@
 	icon_expected_height = 32
 
 	meat_amount = 5
+
+	mod_min = 90
+	mod_max = 140
 
 
 /mob/living/simple_mob/animal/space/carp/large/huge

@@ -82,3 +82,9 @@
 
 /area/submap/virgo2/Rocky4
 	name = "POI - Rocky4"
+
+/area/submap/virgo2/CrashedSmuggler
+	name = "POI - Crashed Smuggler"
+
+/area/submap/virgo2/CrashedSmuggler/ship
+	name = "POI - Crashed Smuggler (Ship)"

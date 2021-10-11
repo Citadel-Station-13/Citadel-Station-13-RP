@@ -626,6 +626,33 @@
 /obj/item/clothing/suit/armor/pcarrier/merc
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/merc, /obj/item/clothing/accessory/armor/armguards/merc, /obj/item/clothing/accessory/armor/legguards/merc, /obj/item/clothing/accessory/storage/pouches/large)
 
+//Brig Spec Variants
+/obj/item/clothing/suit/armor/pcarrier/bulletproof
+	name = "ballistic plate carrier"
+	desc = "A lightweight ballistic vest. Equipped with a ballistic armor plate by default, this armor consists of a kevlar weave augmented by a non-Newtonian gel layer."
+	icon_state = "ballistic"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/bulletproof, /obj/item/clothing/accessory/armor/tag/sec)
+
+/obj/item/clothing/suit/armor/pcarrier/laserproof
+	name = "ablative plate carrier"
+	desc = "A lightweight deflector vest. Equipped with an ablative armor plate by default, this armor consists of a polished Cartesian Glance Plating and an inset network of heat sink channels."
+	icon_state = "ablative"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/laserproof, /obj/item/clothing/accessory/armor/tag/sec)
+
+/obj/item/clothing/suit/armor/pcarrier/riot
+	name = "riot suppression plate carrier"
+	desc = "A lightweight padded vest. Equipped with a padded armor plate by default, this armor consists of a stab resistant kevlar weave and hardened fleximat padding."
+	icon_state = "riot"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/riot, /obj/item/clothing/accessory/armor/tag/sec)
+
+//Clown Op Carrier
+/obj/item/clothing/suit/armor/pcarrier/clownop
+	name = "clown commando plate carrier"
+	desc = "A lightweight red and white plate carrier vest. It can be equipped with armor plates, but provides no protection of its own. Honk."
+	icon_state = "clowncarrier"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium)
+
+
 //PARA Armor
 /obj/item/clothing/suit/armor/vest/para
 	name = "PARA light armor"
