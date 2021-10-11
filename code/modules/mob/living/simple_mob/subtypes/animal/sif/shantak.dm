@@ -33,6 +33,7 @@
 	icon = 'icons/jungle.dmi'
 
 	maxHealth = 75
+	randomized = TRUE
 	armor_soak = list(
 				"melee" = 5,
 				"bullet" = 0,
@@ -67,8 +68,8 @@
 	name = "big shantak"
 	desc = "A piglike creature with a bright iridiscent mane that sparkles as though lit by an inner light. \
 	This one seems bigger than the others, and has a commanding presence."
-	icon_scale_x = 1.5
-	icon_scale_y = 1.5
+	mod_min = 100
+	mod_max = 150
 	maxHealth = 125
 	player_msg = "You have the ability to <b>command other shantaks to follow you</b>."
 

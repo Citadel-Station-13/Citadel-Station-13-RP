@@ -688,6 +688,18 @@
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 
+//Altclick APCs to toggle the controlls
+/obj/machinery/power/apc/AltClick(mob/user)
+	if(user.Adjacent(src))
+		if(src.allowed(usr) && !isWireCut(APC_WIRE_IDSCAN))
+			locked = !locked
+			to_chat(user,"You [ locked ? "lock" : "unlock"] the APC interface.")
+			update_icon()
+		else
+			to_chat(user,"<span class='warning'>Access denied.</span>")
+
+
+
 /obj/machinery/power/apc/emag_act(var/remaining_charges, var/mob/user)
 	if (!(emagged || hacker))		// trying to unlock with an emag card
 		if(opened)

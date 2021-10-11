@@ -119,3 +119,8 @@
 	name = "Desert Vault"
 	suffix = "BunkerH.dmm"
 	cost = 20
+
+/datum/map_template/submap/level_specific/class_h/covert_post
+	name = "Clown Listening Post"
+	suffix = "covert_post.dmm"
+	cost = 15

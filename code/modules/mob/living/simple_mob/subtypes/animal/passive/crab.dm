@@ -18,6 +18,7 @@
 	icon_dead = "crab_dead"
 
 	mob_size = MOB_SMALL
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
@@ -33,6 +34,7 @@
 	name = "Coffee"
 	real_name = "Coffee"
 	desc = "It's Coffee, the other pet!"
+	randomized = FALSE
 
 // Sif!
 
@@ -51,11 +53,11 @@
 	icon = 'icons/mob/fish.dmi'
 	tt_desc = "S Ocypode glacian"
 
-	catalogue_data = list(/datum/category_item/catalogue/fauna/sif_crab)
+	//Translating to new system.
+	mod_min = 50
+	mod_max = 150
 
-/mob/living/simple_mob/animal/passive/crab/sif/Initialize(mapload)
-	. = ..()
-	adjust_scale(rand(5,15) / 10)
+	catalogue_data = list(/datum/category_item/catalogue/fauna/sif_crab)
 
 // Meat!
 

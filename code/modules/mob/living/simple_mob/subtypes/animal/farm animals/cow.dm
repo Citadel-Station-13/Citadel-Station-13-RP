@@ -20,6 +20,10 @@
 	health = 50
 	maxHealth = 50
 
+	mod_min = 80
+	mod_max = 150
+	randomized = TRUE
+
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"

@@ -133,6 +133,12 @@
 	throwforce = 7
 	board_item_type = /obj/vehicle/skateboard/improv
 
+/obj/item/melee/skateboard/beginner
+	name = "skateboard"
+	desc = "A XTREME SPORTZ brand skateboard for beginners. Ages 8 and up."
+	icon_state = "skateboard"
+	board_item_type = /obj/vehicle/skateboard/beginner
+
 /obj/item/melee/skateboard/pro
 	name = "skateboard"
 	desc = "A RaDSTORMz brand professional skateboard. Looks a lot more stable than the average board."
@@ -157,3 +163,17 @@
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "scooter_frame"
 	board_item_type = /obj/vehicle/skateboard/scooter
+
+//Clown Halberd
+/obj/item/melee/clownstaff
+	name = "clown halberd"
+	desc = "This deadly halberd is wielded by Columbina's melee specialists. The curved blade at the end has been painted to look like a banana, disguising its deadly edge."
+	icon_state = "clownstaff"
+	slot_flags = SLOT_BELT | SLOT_BACK
+	force = 30
+	throwforce = 10
+	w_class = ITEMSIZE_NORMAL
+	sharp = 1
+	edge = 1
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	hitsound = 'sound/items/bikehorn.ogg'

@@ -27,6 +27,7 @@
 
 	maxHealth = 50
 	health = 50
+	randomized = TRUE
 	has_hands = TRUE
 	humanoid_hands = TRUE
 

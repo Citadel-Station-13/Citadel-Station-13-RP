@@ -19,6 +19,7 @@
 
 	maxHealth = 5
 	health = 5
+	randomized = TRUE
 
 	mob_size = MOB_MINISCULE
 	pass_flags = PASSTABLE
@@ -118,16 +119,16 @@
 	maxHealth = 20
 	health = 20
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	mod_min = 90
+	mod_max = 120
 
-/mob/living/simple_mob/animal/passive/mouse/rat/Initialize(mapload)
-	. = ..()
-	adjust_scale(1.2)
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize(mapload)
 	. = ..()

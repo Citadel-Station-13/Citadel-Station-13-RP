@@ -37,6 +37,35 @@ Thus, the two variables affect pump operation are set in New():
 	var/id = null
 	var/datum/radio_frequency/radio_connection
 
+//Quick functions.
+/obj/machinery/atmospherics/binary/pump/CtrlClick(mob/user)
+	if (Adjacent(user))
+		add_hiddenprint(user)
+		if(powered())
+			to_chat(user, "You toggle the power to the pump [use_power ? "Off" : "On"].")
+			update_use_power(!use_power)
+			update_icon()
+		else
+			to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+
+/obj/machinery/atmospherics/binary/pump/CtrlShiftClick(mob/user)
+	if(Adjacent(user))
+		add_hiddenprint(user)
+		if (powered())
+			to_chat(user, "You set the pressure of the pump to default.")
+			target_pressure = ONE_ATMOSPHERE
+		else
+			to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+
+/obj/machinery/atmospherics/binary/pump/AltClick(mob/user)
+	if(Adjacent(user))
+		add_hiddenprint(user)
+		if (powered())
+			to_chat(user, "You set the pressure of the pump to max.")
+			target_pressure = max_pressure_setting
+		else
+			to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
+
 /obj/machinery/atmospherics/binary/pump/Initialize(mapload)
 	. = ..()
 	air1.volume = ATMOS_DEFAULT_VOLUME_PUMP

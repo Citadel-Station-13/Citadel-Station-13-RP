@@ -72,6 +72,7 @@
 	faction = "spiders"
 	maxHealth = 200
 	health = 200
+	randomized = TRUE
 	pass_flags = PASSTABLE
 	movement_cooldown = 10
 	movement_sound = 'sound/effects/spider_loop.ogg'

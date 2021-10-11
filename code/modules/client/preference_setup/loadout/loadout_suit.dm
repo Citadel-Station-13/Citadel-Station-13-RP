@@ -385,3 +385,11 @@ datum/gear/suit/duster
 /datum/gear/suit/highwayman_jacket
 	display_name = "Black Jacket w/ Fur Lining"
 	path = /obj/item/clothing/suit/highwayman_jacket
+
+/datum/gear/suit/samurai
+	display_name = "Replica Karuta-Gane (Colorable)"
+	path = /obj/item/clothing/suit/samurai_replica
+
+/datum/gear/suit/samurai/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
