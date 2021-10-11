@@ -645,6 +645,13 @@
 	icon_state = "riot"
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/riot, /obj/item/clothing/accessory/armor/tag/sec)
 
+//Clown Op Carrier
+/obj/item/clothing/suit/armor/pcarrier/clownop
+	name = "clown commando plate carrier"
+	desc = "A lightweight red and white plate carrier vest. It can be equipped with armor plates, but provides no protection of its own. Honk."
+	icon_state = "clowncarrier"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium)
+
 
 //PARA Armor
 /obj/item/clothing/suit/armor/vest/para

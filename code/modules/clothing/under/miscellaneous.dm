@@ -260,6 +260,13 @@
 	item_state_slots = list(slot_r_hand_str = "orange", slot_l_hand_str = "orange")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
+/obj/item/clothing/under/schoolgirl/pink
+	name = "frilly pink skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a pink collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
+	icon_state = "schoolgirlpink"
+	item_state_slots = list(slot_r_hand_str = "pink", slot_l_hand_str = "pink")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
 /obj/item/clothing/under/overalls
 	name = "laborer's overalls"
 	desc = "A set of durable overalls for getting the job done."
