@@ -496,7 +496,7 @@ Alien plants should do something if theres a lot of poison
 /obj/effect/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
 	if(status == GROWN || status == GROWING)
 		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
-		icon_state = "egg"
+		icon_state = "egg_opened"
 		flick("egg_opening", src)
 		status = BURSTING
 		spawn(15)
