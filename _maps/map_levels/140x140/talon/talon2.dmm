@@ -1194,7 +1194,7 @@
 	},
 /obj/structure/catwalk,
 /obj/machinery/conveyor_switch/oneway{
-	id = talontrash
+	id = "talontrash"
 	},
 /turf/simulated/floor/plating,
 /area/talon/maintenance/decktwo_aft)
