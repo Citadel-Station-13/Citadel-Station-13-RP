@@ -271,4 +271,5 @@
 
 /obj/effect/decal/mecha_wreckage/honker/cluwne
 	name = "C.L.W.U.N.E. wreckage"
+	icon = 'icons/mecha/mecha_vr.dmi'
 	icon_state = "cluwne-broken"

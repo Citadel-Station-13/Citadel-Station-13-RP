@@ -226,6 +226,12 @@
 /obj/item/bananapeel,
 /turf/simulated/floor/tiled/white,
 /area/tether_away/beach/desert/poi/covert_post)
+"V" = (
+/mob/living/simple_mob/animal/passive/honkpet{
+	name = "Hunkle"
+	},
+/turf/simulated/floor/tiled/white,
+/area/tether_away/beach/desert/poi/covert_post)
 "W" = (
 /obj/machinery/door/airlock/gold{
 	name = "Shrine"
@@ -430,7 +436,7 @@ I
 r
 y
 C
-C
+V
 y
 y
 J
