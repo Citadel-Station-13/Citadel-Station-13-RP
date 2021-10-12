@@ -113,8 +113,8 @@
 	body_parts_covered = HEAD
 	cold_protection = HEAD
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/syndicate/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/syndicate/on_mob/right_hand.dmi'
+		slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_masks.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/syndicate/contractor_helmet
