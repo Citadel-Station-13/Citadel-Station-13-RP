@@ -106,12 +106,16 @@
 	path = /obj/item/clothing/mask/fake_sneaksuit
 
 /obj/item/clothing/mask/fake_sneaksuit
-	STD_DEF("plastic mask")
+	STD_DEF_NON_HIDING("plastic mask")
 	icon_state = "infiltrator_mask"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
 	body_parts_covered = HEAD
 	cold_protection = HEAD
+	item_icons = list(
+		slot_l_hand_str = 'icons/antagonists/syndicate/on_mob/left_hand.dmi',
+		slot_r_hand_str = 'icons/antagonists/syndicate/on_mob/right_hand.dmi'
+	)
 
 /datum/gear/seasonal/masquarade/syndicate/contractor_helmet
 	display_name = "Contractor Helmet"
@@ -214,6 +218,8 @@
 	STD_DEF("plastic blade")
 	icon_state = "arm_blade"
 	icon = 'icons/antagonists/changeling/items/weapons.dmi'
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	item_icons = list(
 		slot_l_hand_str = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
 		slot_r_hand_str = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
