@@ -6,12 +6,15 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	set desc = "Shows a listing of all active characters, along with their associated OOC notes, flavor text, and more."
 
 	// This is primarily to stop malicious users from trying to lag the server by spamming this verb
+	if(mob.check_move_cooldown())
+		to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
+		return
 	usr.setClickCooldown(10)
 
 	if(!GLOB.character_directory)
 		GLOB.character_directory = new
 	GLOB.character_directory.ui_interact(mob)
-	
+
 
 
 
@@ -28,7 +31,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 
 /datum/character_directory/ui_data(mob/user, datum/tgui/ui, datum/tgui_state/state)
 	var/list/data = ..()
-	
+
 	data["personalVisibility"] = user?.client?.prefs?.show_in_directory
 	data["personalTag"] = user?.client?.prefs?.directory_tag || "Unset"
 	data["personalErpTag"] = user?.client?.prefs?.directory_erptag || "Unset"
@@ -43,7 +46,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		// Allow opt-out.
 		if(!C?.prefs?.show_in_directory)
 			continue
-		
+
 		// These are the three vars we're trying to find
 		// The approach differs based on the mob the client is controlling
 		var/name = null
@@ -81,7 +84,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		// But if we can't find the name, they must be using a non-compatible mob type currently.
 		if(!name)
 			continue
-		
+
 		directory_mobs.Add(list(list(
 			"name" = name,
 			"ooc_notes" = ooc_notes,
@@ -104,7 +107,10 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	switch(action)
 		if("refresh")
 			// This is primarily to stop malicious users from trying to lag the server by spamming this verb
-			usr.setClickCooldown(10)
+			if(usr.check_move_cooldown())
+				to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
+				return
+			usr.applyMoveCooldown(10)
 			update_static_data(usr, ui)
 			return TRUE
 		if("setTag")
