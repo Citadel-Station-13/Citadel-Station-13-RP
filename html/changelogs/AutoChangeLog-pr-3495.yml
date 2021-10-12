@@ -1,6 +1,0 @@
-author: "Saisni"
-delete-after: True
-changes: 
-  - rscadd: "Added sprites for two new tails and markings"
-  - spellcheck: "Removed \"(Shadekin)\" notes on tails since they already stated they are for shadekin"
-  - code_imp: "Added code for shadekin tails in the Tail menu in Character setup"

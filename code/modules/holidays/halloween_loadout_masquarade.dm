@@ -218,8 +218,11 @@
 	STD_DEF("plastic blade")
 	icon_state = "arm_blade"
 	icon = 'icons/antagonists/changeling/items/weapons.dmi'
+<<<<<<< HEAD
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
+=======
+>>>>>>> citrp/master
 	item_icons = list(
 		slot_l_hand_str = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
 		slot_r_hand_str = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
