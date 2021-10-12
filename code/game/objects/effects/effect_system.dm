@@ -6,7 +6,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 */
 
 
-/obj/effect
+/obj/effect/effect
 	name = "effect"
 	icon = 'icons/effects/effects.dmi'
 	mouse_opacity = 0
@@ -91,6 +91,7 @@ steam.start() -- spawns the effect
 
 /obj/effect/sparks
 	name = "sparks"
+	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
 	var/amount = 6.0
 	anchored = 1.0

@@ -4,6 +4,7 @@
 
 /obj/effect/foam
 	name = "foam"
+	icon = 'icons/effects/effects.dmi'
 	icon_state = "foam"
 	opacity = 0
 	anchored = 1
