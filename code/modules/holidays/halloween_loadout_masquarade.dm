@@ -394,7 +394,7 @@
 	path = /obj/item/toy/blood_halbard
 
 /obj/item/toy/blood_halbard
-	STD_DEF("glass shield")
+	STD_DEF("plastic halbard")
 	icon = 'icons/antagonists/cult/items/weapons.dmi'
 	icon_state = "bloodspear0"
 	item_icons = list(
