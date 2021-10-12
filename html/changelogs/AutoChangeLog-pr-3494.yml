@@ -1,4 +1,0 @@
-author: "KillianKirilenko"
-delete-after: True
-changes: 
-  - rscadd: "Added the ability to set custom say/whisper/shout/ask 'verbs' on a persistent, per-character basis."
