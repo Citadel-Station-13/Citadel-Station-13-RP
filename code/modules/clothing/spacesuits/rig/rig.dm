@@ -236,6 +236,9 @@
 /obj/item/rig/proc/reset()
 	offline = 2
 	canremove = 1
+	//Reset the trap and upgrade it. Won't affect standard rigs.
+	trapSprung = 0
+	springtrapped = 1
 	for(var/obj/item/piece in list(helmet,boots,gloves,chest))
 		if(!piece) continue
 		piece.icon_state = "[suit_state]"
@@ -244,7 +247,7 @@
 	update_icon(1)
 
 /obj/item/rig/proc/trap(var/mob/living/carbon/human/M)
-	if(suit_is_deployed())
+	if(suit_is_deployed())//Check if it's deployed. Interrupts taking it off.
 		playsound(src.loc, 'sound/weapons/empty.ogg', 40, 1)
 		to_chat(M, "<span class='warning'>The [src] makes a distinct clicking noise.")
 		trapSprung = 1
