@@ -12,7 +12,8 @@
 	var/list/allowed_types = list(
 			/obj/item/clothing,
 			/obj/item/storage/backpack,
-			/obj/item/storage/belt
+			/obj/item/storage/belt,
+			/obj/item/toy
 			)
 
 /obj/machinery/gear_painter/Initialize(mapload)
