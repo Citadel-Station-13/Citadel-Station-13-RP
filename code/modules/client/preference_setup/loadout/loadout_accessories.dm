@@ -137,14 +137,17 @@
 /datum/gear/accessory/brown_drop_pouches
 	name = "Drop Pouches - Brown"
 	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
+	cost = 2
 
 /datum/gear/accessory/black_drop_pouches
 	name = "Drop Pouches - Black"
 	path = /obj/item/clothing/accessory/storage/black_drop_pouches
+	cost = 2
 
 /datum/gear/accessory/white_drop_pouches
 	name = "Drop Pouches - White"
 	path = /obj/item/clothing/accessory/storage/white_drop_pouches
+	cost = 2
 
 /datum/gear/accessory/fannypack
 	name = "Fannypack - Selection"
