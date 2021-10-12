@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -249,7 +249,7 @@
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/central_hallway)
 "ct" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -399,7 +399,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_port)
 "dx" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -2201,7 +2201,7 @@
 	name = "Talon Starboard SMES Connection";
 	name_tag = "TLN-SBD-SMES"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -3051,7 +3051,7 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/starboard_solar)
 "yR" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -3469,7 +3469,7 @@
 	name = "Talon Port SMES Connection";
 	name_tag = "TLN-PRT-SMES"
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -3651,7 +3651,7 @@
 /turf/simulated/wall,
 /area/talon/deckone/bridge_hallway)
 "CR" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	layer = 3.3;
 	pixel_x = 4;
 	pixel_y = 26
@@ -4341,7 +4341,7 @@
 /area/talon/deckone/armory)
 "Hp" = (
 /obj/structure/closet/crate/solar,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	layer = 3.3;
 	pixel_y = 26
 	},
@@ -4690,7 +4690,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -25
 	},
@@ -4842,7 +4842,7 @@
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_starboard)
 "Ls" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -5820,7 +5820,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_engine)
 "Up" = (
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -24
 	},

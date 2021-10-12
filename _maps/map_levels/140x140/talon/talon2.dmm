@@ -724,7 +724,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -24
 	},
@@ -1127,7 +1127,7 @@
 "mw" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -1408,7 +1408,7 @@
 "pp" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
@@ -3001,7 +3001,7 @@
 "Gy" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 8;
 	pixel_x = -24
 	},
@@ -3184,7 +3184,7 @@
 "Ja" = (
 /obj/item/bedsheet,
 /obj/structure/bed/padded,
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/alarms_hidden{
 	dir = 4;
 	pixel_x = 26
 	},
