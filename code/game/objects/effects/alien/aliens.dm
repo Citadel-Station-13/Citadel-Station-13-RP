@@ -172,7 +172,7 @@
 	var/health = 15
 	var/obj/effect/alien/weeds/node/linked_node = null
 	var/static/list/weedImageCache
-	color = "#36075F"
+	color = "#332342"
 
 /obj/effect/alien/weeds/Destroy()
 	var/turf/T = get_turf(src)
@@ -449,7 +449,7 @@ Alien plants should do something if theres a lot of poison
 	desc = "It looks like a weird egg"
 	name = "egg"
 //	icon_state = "egg_growing" // So the egg looks 'grown', even though it's not.
-	icon_state = "egg"
+	icon_state = "egg_growing"
 	density = 0
 	anchored = 1
 
@@ -488,7 +488,7 @@ Alien plants should do something if theres a lot of poison
 	return locate(/obj/item/clothing/mask/facehugger) in contents
 
 /obj/effect/alien/egg/proc/Grow()
-	icon_state = "egg_grown"
+	icon_state = "egg"
 	status = GROWN
 	new /obj/item/clothing/mask/facehugger(src)
 	return
@@ -496,7 +496,7 @@ Alien plants should do something if theres a lot of poison
 /obj/effect/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
 	if(status == GROWN || status == GROWING)
 		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
-		icon_state = "egg_grown"
+		icon_state = "egg"
 		flick("egg_opening", src)
 		status = BURSTING
 		spawn(15)
