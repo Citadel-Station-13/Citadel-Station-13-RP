@@ -254,8 +254,8 @@
 
 /obj/item/rig/proc/springtrap(var/mob/living/carbon/human/M)
 	if(suit_is_deployed())
-		M.adjustBruteLossByPart(50, BP_TORSO)
-		for(var/harm = 7; harm > 0; harm--)
+		M.adjustBruteLossByPart(70, BP_TORSO)
+		for(var/harm = 8; harm > 0; harm--)
 			M.adjustBruteLoss(10)
 		playsound(src.loc, 'sound/weapons/gunshot_generic_rifle.ogg', 40, 1)
 		to_chat(M, "<span class ='warning'>The [src] clamps down hard, support rods and wires shooting forth, piercing you all over!")
