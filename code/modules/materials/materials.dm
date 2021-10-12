@@ -1194,3 +1194,9 @@ var/list/name_to_material
 	hardness = 30 //VOREStation Edit - Please.
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/silencium
+
+/datum/material/brass
+	name = "brass"
+	icon_colour = "#CAC955"
+	integrity = 150
+	stack_type = /obj/item/stack/material/brass

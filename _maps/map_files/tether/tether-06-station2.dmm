@@ -23419,6 +23419,7 @@
 /turf/space,
 /area/quartermaster/storage)
 "vvg" = (
+/obj/item/radio/beacon,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "vyh" = (
