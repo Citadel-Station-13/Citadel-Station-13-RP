@@ -409,3 +409,9 @@
 	if(!active && shield_health < shield_regen_amount)
 		my_tool.log_message("Shield overloaded.")
 		my_mecha.use_power(my_tool.energy_drain * 4)
+
+/obj/item/shield_projector/line/exosuit/reticent //Special Mime Exosuit design.
+	name = "faint linear shield projector"
+	offset_from_center = 1 //Snug against the exosuit.
+	max_shield_health = 200
+	color = "#CFCFCF"
