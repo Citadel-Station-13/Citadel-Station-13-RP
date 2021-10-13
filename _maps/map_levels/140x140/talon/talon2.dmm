@@ -3916,7 +3916,10 @@
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = 32
 	},
-/obj/structure/dogbed,
+/obj/structure/dogbed{
+	desc = "It doesn't have to be slime-time all the time, and that's okay.";
+	name = "Blob Bed"
+	},
 /turf/simulated/floor/wood,
 /area/talon/decktwo/cap_room)
 "Qh" = (
