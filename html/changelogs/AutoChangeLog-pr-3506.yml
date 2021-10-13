@@ -1,4 +1,0 @@
-author: "Knouli"
-delete-after: True
-changes: 
-  - bugfix: "Unknown sectors now have visible icon"
