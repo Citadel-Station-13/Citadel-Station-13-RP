@@ -101,7 +101,8 @@
 	var/isTrapped = 0 //Will it lock you in?
 	var/trapSprung = 0 //Don't define this one. It's if it's procced.
 	var/springtrapped = 0 //Will it cause severe bodily harm?
-	var/trapDelay = 5 //in seconds
+	var/trapDelay = 300 //in deciseconds
+	var/warn = 1 //If the suit will warn you if it can't deploy a part. Will always end back at 1.
 
 /obj/item/rig/get_cell()
 	return cell
@@ -247,19 +248,41 @@
 	update_icon(1)
 
 /obj/item/rig/proc/trap(var/mob/living/carbon/human/M)
-	if(suit_is_deployed())//Check if it's deployed. Interrupts taking it off.
-		playsound(src.loc, 'sound/weapons/empty.ogg', 40, 1)
-		to_chat(M, "<span class='warning'>The [src] makes a distinct clicking noise.")
-		trapSprung = 1
+	warn = 0
+	sleep(trapDelay)
+	if(!suit_is_deployed())//Check if it's deployed. Interrupts taking it off.
+		toggle_piece("helmet", M, ONLY_DEPLOY)
+		toggle_piece("gauntlets", M, ONLY_DEPLOY)
+		toggle_piece("chest", M, ONLY_DEPLOY)
+		toggle_piece("boots", M, ONLY_DEPLOY)
+		if(suit_is_deployed())
+			playsound(src.loc, 'sound/weapons/empty.ogg', 40, 1)
+			to_chat(M, "<span class='warning'>[src] makes a distinct clicking noise.")
+			trapSprung = 1
+		else(trap(M))
+			warn = 1
+	else(trap(M))
+		warn = 1
 
 /obj/item/rig/proc/springtrap(var/mob/living/carbon/human/M)
-	if(suit_is_deployed())
-		M.adjustBruteLossByPart(70, BP_TORSO)
-		for(var/harm = 8; harm > 0; harm--)
-			M.adjustBruteLoss(10)
-		playsound(src.loc, 'sound/weapons/gunshot_generic_rifle.ogg', 40, 1)
-		to_chat(M, "<span class ='warning'>The [src] clamps down hard, support rods and wires shooting forth, piercing you all over!")
-		trapSprung = 1
+	warn = 0
+	sleep(trapDelay)
+	if(!suit_is_deployed())
+		toggle_piece("helmet", M, ONLY_DEPLOY)
+		toggle_piece("gauntlets", M, ONLY_DEPLOY)
+		toggle_piece("chest", M, ONLY_DEPLOY)
+		toggle_piece("boots", M, ONLY_DEPLOY)
+		if(suit_is_deployed())
+			M.adjustBruteLossByPart(70, BP_TORSO)
+			for(var/harm = 8; harm > 0; harm--)
+				M.adjustBruteLoss(10)
+			playsound(src.loc, 'sound/weapons/gunshot_generic_rifle.ogg', 40, 1)
+			to_chat(M, "<span class ='userdanger'>[src] clamps down hard, support rods and wires shooting forth, piercing you all over!")
+			trapSprung = 1
+		else(springtrap(M))
+			warn = 1
+	else(springtrap(M))
+		warn = 1
 
 /obj/item/rig/proc/toggle_seals(var/mob/living/carbon/human/M,var/instant)
 
@@ -375,12 +398,6 @@
 	// Success!
 	canremove = seal_target
 	if(M.hud_used)
-		if(isTrapped == 1 && springtrapped == 1) //TODO: Fix the timer. Make it work.
-			//addtimer(CALLBACK(M, .proc/springtrap), trapDelay)
-			springtrap(M)
-		if(isTrapped == 1 && springtrapped == 0)
-			//addtimer(CALLBACK(M, .proc/trap), trapDelay)
-			trap(M)
 		if(canremove)
 			QDEL_NULL(minihud)
 		else
@@ -392,6 +409,11 @@
 	spawn(40)
 		M.client.screen -= booting_R
 		qdel(booting_R)
+
+	if(isTrapped == 1 && springtrapped == 1)
+		springtrap(M)
+	if(isTrapped == 1 && springtrapped == 0)
+		trap(M)
 
 	if(canremove)
 		for(var/obj/item/rig_module/module in installed_modules)
@@ -855,7 +877,7 @@
 			use_obj.forceMove(H)
 			if(!H.equip_to_slot_if_possible(use_obj, equip_to, 0, 1))
 				use_obj.forceMove(src)
-				if(check_slot)
+				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")
 					return
 			else
