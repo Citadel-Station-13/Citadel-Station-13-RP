@@ -113,6 +113,7 @@
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
 	special_attack_max_range = 7
+	special_attack_charges = 3
 
 //Clown Op Saylists
 /datum/say_list/clownop
@@ -272,8 +273,6 @@
 
 	base_attack_cooldown = 5 // Two attacks a second or so.
 	reload_max = 20
-
-	loot_list = list(/obj/item/gun/projectile/automatic/c20r = 100)
 
 /mob/living/simple_mob/humanoid/clown/commando/ranged/space/Process_Spacemove(var/check_drift = 0)
 	return
