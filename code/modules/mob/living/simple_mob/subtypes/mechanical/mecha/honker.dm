@@ -59,6 +59,7 @@
 	name = "C.L.U.W.N.E."
 	desc = "The C.L.U.W.N.E. mecha is an up-armored cousin of the H.O.N.K. mech. Still in service on the borders of the Clown Planet, this unit is not typically found elsewhere."
 	catalogue_data = list(/datum/category_item/catalogue/technology/cluwne)
+	icon = 'icons/mecha/mecha_vr.dmi'
 	icon_state = "cluwne"
 	wreckage = /obj/structure/loot_pile/mecha/honker/cluwne
 

@@ -19,6 +19,9 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/reticent)
 	icon_state = "reticent"
 	movement_cooldown = 0.5
+	movement_sound = 'sound/effects/suitstep1.ogg'
+	turn_sound = 'sound/effects/suitstep2.ogg'
+	melee_attack_delay = 2
 	wreckage = /obj/structure/loot_pile/mecha/reticent
 	var/obj/item/shield_projector/shields = null
 
@@ -36,14 +39,19 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 /mob/living/simple_mob/mechanical/mecha/combat/reticent/Initialize(mapload)
-	shields = new /obj/item/shield_projector/line/automatic/reticent(src)
+	shields = new /obj/item/shield_projector/rectangle/automatic/reticent(src)
 	return ..()
 
-/obj/item/shield_projector/line/automatic/reticent
+/obj/item/shield_projector/rectangle/automatic/reticent
 	shield_health = 200
 	max_shield_health = 200
-	offset_from_center = 1
+	shield_regen_delay = 10 SECONDS
+	shield_regen_amount = 10
+	size_x = 1
+	size_y = 1
 	color = "#CFCFCF"
+	high_color = "#CFCFCF"
+	low_color = "#FFC2C2"
 
 //No Manned variant yet.
 /*
@@ -72,6 +80,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/technology/reticence)
 	icon_state = "reticence"
 	movement_cooldown = 1
+	melee_attack_delay = 0
 	wreckage = /obj/structure/loot_pile/mecha/reticent/reticence
 
 	maxHealth = 350
@@ -99,3 +108,5 @@
 	size_x = 1
 	size_y = 1
 	color = "#CFCFCF"
+	high_color = "#CFCFCF"
+	low_color = "#FFC2C2"

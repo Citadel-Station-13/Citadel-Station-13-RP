@@ -115,7 +115,6 @@
 	icon_state = "shield_mime"
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/reticent/add_equip_overlay(obj/mecha/M as obj)
-	..()
 	if(!drone_overlay)
 		drone_overlay = new(src.icon, icon_state = "shield_droid_mime")
 	M.overlays += drone_overlay
@@ -127,6 +126,8 @@
 	offset_from_center = 1 //Snug against the exosuit.
 	max_shield_health = 250
 	color = "#CFCFCF"
+	high_color = "#CFCFCF"
+	low_color = "#FFC2C2"
 
 //Reticence Rectangular Projector
 /obj/item/mecha_parts/mecha_equipment/omni_shield/reticence
@@ -139,3 +140,5 @@
 	shield_health = 300
 	max_shield_health = 300
 	color = "#CFCFCF"
+	high_color = "#CFCFCF"
+	low_color = "#FFC2C2"

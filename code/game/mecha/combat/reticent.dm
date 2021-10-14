@@ -37,7 +37,7 @@
 	stomp_sound = 'sound/effects/suitstep1.ogg'
 	swivel_sound = 'sound/effects/suitstep2.ogg'
 
-/obj/mecha/combat/honker/reticence
+/obj/mecha/combat/reticent/reticence
 	name = "Reticence"
 	desc = "The current flagship mecha of Le Rien. The Reticence trades some speed for durability, but remains formidable. It is not commercially available."
 	icon_state = "reticence"
