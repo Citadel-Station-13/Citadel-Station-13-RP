@@ -120,6 +120,13 @@
 	icon_state = "render"
 	applies_material_colour = 0
 
+/obj/item/material/knife/clownop
+	name = "clown knife"
+	desc = "This curved blade is painted to look like a banana, disguising its deadly edge."
+	icon_state = "clownrender"
+	item_state = "clown_dagger"
+	applies_material_colour = 0
+
 /obj/item/material/knife/butch
 	name = "butcher's cleaver"
 	icon_state = "butch"

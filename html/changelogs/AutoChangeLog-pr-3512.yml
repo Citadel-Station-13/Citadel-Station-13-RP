@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - rscadd: "Adds the ability to climb on portable atmos devices like canisters, or portable scrubber."

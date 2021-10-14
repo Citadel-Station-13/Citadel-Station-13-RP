@@ -20,6 +20,10 @@
 	name = "stack of teal carpet"
 	type_to_spawn = /obj/item/stack/tile/carpet/teal
 
+/obj/fiftyspawner/arcadecarpet
+	name = "stack of arcade carpet"
+	type_to_spawn = /obj/item/stack/tile/carpet/arcadecarpet
+
 /obj/fiftyspawner/floor
 	name = "stack of floor tiles"
 	type_to_spawn = /obj/item/stack/tile/floor
@@ -59,3 +63,43 @@
 /obj/fiftyspawner/bmarble
 	name = "stack of dark marble tiles"
 	type_to_spawn = /obj/item/stack/tile/bmarble
+
+/obj/fiftyspawner/floor_bananium
+	name = "stack of bananium tiles"
+	type_to_spawn = /obj/item/stack/tile/bananium
+
+/obj/fiftyspawner/floor_silencium
+	name = "stack of silencium tiles"
+	type_to_spawn = /obj/item/stack/tile/silencium
+
+/obj/fiftyspawner/floor_plasteel
+	name = "stack of plasteel tiles"
+	type_to_spawn = /obj/item/stack/tile/plasteel
+
+/obj/fiftyspawner/floor_durasteel
+	name = "stack of durasteel tiles"
+	type_to_spawn = /obj/item/stack/tile/durasteel
+
+/obj/fiftyspawner/floor_silver
+	name = "stack of silver tiles"
+	type_to_spawn = /obj/item/stack/tile/silver
+
+/obj/fiftyspawner/floor_gold
+	name = "stack of gold tiles"
+	type_to_spawn = /obj/item/stack/tile/gold
+
+/obj/fiftyspawner/floor_phoron
+	name = "stack of phoron tiles"
+	type_to_spawn = /obj/item/stack/tile/phoron
+
+/obj/fiftyspawner/floor_uranium
+	name = "stack of uranium tiles"
+	type_to_spawn = /obj/item/stack/tile/uranium
+
+/obj/fiftyspawner/floor_diamond
+	name = "stack of diamond tiles"
+	type_to_spawn = /obj/item/stack/tile/diamond
+
+/obj/fiftyspawner/floor_brass
+	name = "stack of brass tiles"
+	type_to_spawn = /obj/item/stack/tile/brass

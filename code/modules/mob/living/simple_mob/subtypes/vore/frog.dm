@@ -17,6 +17,8 @@
 	icon_state = "frog"
 	icon = 'icons/mob/vore.dmi'
 
+	randomized = TRUE
+
 	movement_cooldown = 4 //fast as fucc boie.
 
 	harm_intent_damage = 5
@@ -25,25 +27,14 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/frog/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
-
 // Pepe is love, not hate.
 /mob/living/simple_mob/vore/aggressive/frog/Initialize(mapload)
 	. = ..()
 	if(rand(1,1000000) == 1)
 		name = "rare Pepe"
 		desc = "You found a rare Pepe. Screenshot for good luck."
+		mod_min = 100
+		mod_max = 150
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/frog

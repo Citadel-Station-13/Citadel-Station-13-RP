@@ -1,0 +1,5 @@
+author: "Knouli"
+delete-after: True
+changes: 
+  - rscadd: "adds copy of captain's jumpsuit, backpack, satchel, and duffel for talon captain"
+  - rscadd: "puts these copies in job outfit and talon captain's locker"

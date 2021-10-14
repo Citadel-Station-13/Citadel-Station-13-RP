@@ -19,6 +19,7 @@
 	maxHealth = 20
 	health = 20
 	minbodytemp = 175 // Same as Sif mobs.
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "pushes aside"

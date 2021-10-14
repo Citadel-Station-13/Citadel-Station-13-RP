@@ -475,3 +475,12 @@
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/brass
+	name = "brass"
+	desc = "This stable alloy is often used in complex mechanisms due to its versatility, softness, and solid head conduction."
+	icon_state = "sheet-brass"
+	default_type = "brass"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'

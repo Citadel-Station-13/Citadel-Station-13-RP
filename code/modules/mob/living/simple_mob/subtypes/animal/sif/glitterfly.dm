@@ -37,6 +37,7 @@
 
 	maxHealth = 10
 	health = 10
+	randomized = TRUE
 
 	movement_cooldown = -1
 	hovering = TRUE

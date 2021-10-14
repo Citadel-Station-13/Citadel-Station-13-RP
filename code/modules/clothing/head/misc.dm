@@ -617,3 +617,9 @@
 	name = "replica kabuto"
 	desc = "An authentic antique, this helmet from old Earth belongs to an ancient martial tradition. The advent of firearms made this style of protection obsolete. Unfortunately, this remains the case. This version appears less sturdy."
 	icon_state = "kabuto_colorable"
+
+/obj/item/clothing/head/ankh
+	name = "aegyptian circlet"
+	desc = "Perfect for when you want to deliver a stern look from on high."
+	icon_state = "ankh"
+	body_parts_covered = 0

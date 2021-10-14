@@ -1,0 +1,4 @@
+author: "KillianKirilenko"
+delete-after: True
+changes: 
+  - rscadd: "You can now close open doors and firedoors by clicking on their floor tile."

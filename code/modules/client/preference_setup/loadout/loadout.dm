@@ -6,7 +6,10 @@ var/list/gear_datums = list()
 	var/list/gear = list()
 
 /datum/gear
-	var/display_name			  // Name/index. Must be unique.
+	/// name used for save/load don't change this or everyone loses it
+	var/name
+	/// what we display our name as. feel free to change this. defaults to name.
+	var/display_name
 	var/description				  // Description of this gear. If left blank will default to the description of the pathed item.
 	var/path					  // Path to item.
 	var/cost = 1				  // Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
@@ -16,17 +19,20 @@ var/list/gear_datums = list()
 	var/sort_category = "General"
 	var/list/gear_tweaks = list() // List of datums which will alter the item after it has been spawned.
 	var/exploitable = 0			  // Does it go on the exploitable information list?
-	var/type_category = null
+	var/abstract_type = null
 	var/static/datum/gear_tweak/color/gear_tweak_free_color_choice = new
 	var/list/ckeywhitelist
 	var/list/character_name
+	/// Seasonal whitelist - only create if holiday is active. NOTE: This IGNORES ALLOW_HOLIDAYS config! This is because character setup isn't subsystem-init-synced so we must init all of this dumb shit before config loads.
+	var/list/holiday_whitelist
 
 /datum/gear/New()
-	..()
 	if(!description)
 		var/obj/O = path
 		description = initial(O.desc)
 	gear_tweaks = list(gear_tweak_free_name, gear_tweak_free_desc, GLOB.gear_tweak_free_matrix_recolor)
+	if(isnull(display_name))
+		display_name = name
 
 /datum/gear_data
 	var/path
@@ -59,26 +65,35 @@ var/list/gear_datums = list()
 	// Create a list of gear datums to sort
 	for(var/geartype in typesof(/datum/gear)-/datum/gear)
 		var/datum/gear/G = geartype
-		if(initial(G.type_category) == geartype)
+		if(initial(G.abstract_type) == geartype)
 			continue
-		var/use_name = initial(G.display_name)
-		var/use_category = initial(G.sort_category)
+		G = new geartype
 
-		if(!use_name)
-			log_world("Loadout - Missing display name: [G]")
+		if(!G.name)
+			stack_trace("Missing name on [G.type].")
 			continue
-		if(isnull(initial(G.cost)))
-			log_world("Loadout - Missing cost: [G]")
+		if(!isnum(G.cost))
+			stack_trace("Missing cost on [G.type]")
 			continue
-		if(!initial(G.path))
-			log_world("Loadout - Missing path definition: [G]")
+		if(!G.path)
+			stack_trace("Missing path on [G.type].")
 			continue
-
-		if(!loadout_categories[use_category])
-			loadout_categories[use_category] = new /datum/loadout_category(use_category)
-		var/datum/loadout_category/LC = loadout_categories[use_category]
-		gear_datums[use_name] = new geartype
-		LC.gear[use_name] = gear_datums[use_name]
+		if(!G.sort_category)
+			stack_trace("Missing sort category on [G.type].")
+			continue
+		if(length(G.holiday_whitelist))
+			var/found = FALSE
+			for(var/name in G.holiday_whitelist)
+				if(name in SSevents.holidays)
+					found = TRUE
+					break
+			if(!found)
+				continue
+		if(!loadout_categories[G.sort_category])
+			loadout_categories[G.sort_category] = new /datum/loadout_category(G.sort_category)
+		var/datum/loadout_category/LC = loadout_categories[G.sort_category]
+		gear_datums[G.name] = G
+		LC.gear[G.name] = gear_datums[G.name]
 
 	loadout_categories = sortTim(loadout_categories, /proc/cmp_text_asc)
 	for(var/loadout_category in loadout_categories)
@@ -142,7 +157,7 @@ var/list/gear_datums = list()
 			pref.gear -= gear_name
 		else
 			var/datum/gear/G = gear_datums[gear_name]
-			if(total_cost + G.cost > MAX_GEAR_COST)
+			if(total_cost + G.cost > max_gear_points())
 				pref.gear -= gear_name
 				to_chat(preference_mob, "<span class='warning'>You cannot afford to take \the [gear_name]</span>")
 			else
@@ -159,11 +174,11 @@ var/list/gear_datums = list()
 				total_cost += G.cost
 
 	var/fcolor =  "#3366CC"
-	if(total_cost < MAX_GEAR_COST)
+	if(total_cost < max_gear_points())
 		fcolor = "#E67300"
 
 	. += "<table align = 'center' width = 100%>"
-	. += "<tr><td colspan=3><center><a href='?src=\ref[src];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=\ref[src];next_slot=1'>\>\></a><b><font color = '[fcolor]'>[total_cost]/[MAX_GEAR_COST]</font> loadout points spent.</b> \[<a href='?src=\ref[src];clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
+	. += "<tr><td colspan=3><center><a href='?src=\ref[src];prev_slot=1'>\<\<</a><b><font color = '[fcolor]'>\[[pref.gear_slot]\]</font> </b><a href='?src=\ref[src];next_slot=1'>\>\></a><b><font color = '[fcolor]'>[total_cost]/[max_gear_points()]</font> loadout points spent.</b> \[<a href='?src=\ref[src];clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
 
 	. += "<tr><td colspan=3><center><b>"
 	var/firstcat = 1
@@ -203,23 +218,23 @@ var/list/gear_datums = list()
 			if(G.character_name && !(preference_mob.client.prefs.real_name in G.character_name))
 				continue
 		//VOREStation Edit End
-		var/ticked = (G.display_name in pref.gear)
-		. += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.display_name)]'>[G.display_name]</a></td>"
+		var/ticked = (G.name in pref.gear)
+		. += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.name)]'>[G.display_name]</a></td>"
 		. += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"
 		. += "<td><font size=2><i>[G.description]</i></font></td></tr>"
 		if(ticked)
 			. += "<tr><td colspan=3>"
 			for(var/datum/gear_tweak/tweak in G.gear_tweaks)
-				. += " <a href='?src=\ref[src];gear=[G.display_name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
+				. += " <a href='?src=\ref[src];gear=[G.name];tweak=\ref[tweak]'>[tweak.get_contents(get_tweak_metadata(G, tweak))]</a>"
 			. += "</td></tr>"
 	. += "</table>"
 	. = jointext(., null)
 
 /datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/datum/gear/G)
-	. = pref.gear[G.display_name]
+	. = pref.gear[G.name]
 	if(!.)
 		. = list()
-		pref.gear[G.display_name] = .
+		pref.gear[G.name] = .
 
 /datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/datum/gear/G, var/datum/gear_tweak/tweak)
 	var/list/metadata = get_gear_metadata(G)
@@ -235,15 +250,15 @@ var/list/gear_datums = list()
 /datum/category_item/player_setup_item/loadout/OnTopic(href, href_list, user)
 	if(href_list["toggle_gear"])
 		var/datum/gear/TG = gear_datums[href_list["toggle_gear"]]
-		if(TG?.display_name in pref.gear)
-			pref.gear -= TG.display_name
+		if(TG?.name in pref.gear)
+			pref.gear -= TG.name
 		else
 			var/total_cost = 0
 			for(var/gear_name in pref.gear)
 				var/datum/gear/G = gear_datums[gear_name]
 				if(istype(G)) total_cost += G.cost
-			if((total_cost+TG.cost) <= MAX_GEAR_COST)
-				pref.gear += TG.display_name
+			if((total_cost+TG.cost) <= max_gear_points())
+				pref.gear += TG.name
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	if(href_list["gear"] && href_list["tweak"])
 		var/datum/gear/gear = gear_datums[href_list["gear"]]
@@ -285,3 +300,10 @@ var/list/gear_datums = list()
 		pref.gear.Cut()
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	return ..()
+
+/proc/max_gear_points()
+	. = MAX_GEAR_COST
+	for(var/name in SSevents.holidays)
+		var/datum/holiday/H = SSevents.holidays[name]
+		if(H.loadout_spam)
+			return MAX_GEAR_COST_HOLIDAY_SPAM
