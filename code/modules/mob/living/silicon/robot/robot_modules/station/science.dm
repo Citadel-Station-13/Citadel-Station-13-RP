@@ -12,7 +12,8 @@
 					"Handy" = "handy-science",
 					"Insekt" = "insekt-Sci",
 					"L3P1-D0T" = "Glitterfly-Research",
-					"Coffsearch" = "coffin-Research"
+					"Coffsearch" = "coffin-Research",
+					"X-88" = "xeightyeight-science"
 
 					)
 
