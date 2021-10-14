@@ -501,6 +501,7 @@ Alien plants should do something if theres a lot of poison
 		status = BURSTING
 		spawn(15)
 			status = BURST
+			icon_state = "egg_opened"
 			child.loc = get_turf(src)
 
 			if(kill && istype(child))
@@ -510,6 +511,7 @@ Alien plants should do something if theres a lot of poison
 					if(CanHug(M))
 						child.Attach(M)
 						break
+		return 1
 
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
@@ -532,7 +534,7 @@ Alien plants should do something if theres a lot of poison
 
 
 /obj/effect/alien/egg/attackby(var/obj/item/W, var/mob/user)
-	if(health <= 0)
+	if((health <= 0) && (BURST == 0))
 		Burst()
 		return
 	if(W.attack_verb.len)
@@ -553,7 +555,7 @@ Alien plants should do something if theres a lot of poison
 
 
 /obj/effect/alien/egg/proc/healthcheck()
-	if(health <= 0)
+	if((health <= 0) && (BURST == 0))
 		Burst()
 
 /obj/effect/alien/egg/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
