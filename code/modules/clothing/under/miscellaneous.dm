@@ -1657,3 +1657,8 @@
 	desc = "A lightweight black turtleneck with padded gray slacks. It seems comfortable, but practical."
 	icon_state = "laconic"
 	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
+
+/obj/item/clothing/under/bountyskin
+	name = "bounty hunter skinsuit"
+	desc = "A skintight bodysuit meant to be worn under powered armor. Popularized by a famous bounty hunter."
+	icon_state = "bountyskin"

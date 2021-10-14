@@ -666,3 +666,7 @@ Swimsuits
 /datum/gear/uniform/laconic
 	name = "Laconic Field Suit"
 	path = /obj/item/clothing/under/laconic
+
+/datum/gear/uniform/bountyskin
+	name = "Bounty Hunter's Skinsuit"
+	path = /obj/item/clothing/under/bountyskin

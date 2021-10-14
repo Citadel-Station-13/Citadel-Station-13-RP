@@ -214,3 +214,7 @@
 /datum/gear/shoes/laconic
 	name = "Laconic Field Boots"
 	path = /obj/item/clothing/shoes/boots/laconic
+
+/datum/gear/shoes/bountyskin
+	name = "Bounty Hunter's Heels"
+	path = /obj/item/clothing/shoes/bountyskin
