@@ -1653,7 +1653,7 @@
 	armor = list(melee = 5, bullet = 10, laser = 10, energy = 5, bomb = 5, bio = 0, rad = 0)
 
 /obj/item/clothing/under/laconic
-	name = "laconic suit"
+	name = "laconic field suit"
 	desc = "A lightweight black turtleneck with padded gray slacks. It seems comfortable, but practical."
 	icon_state = "laconic"
 	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")

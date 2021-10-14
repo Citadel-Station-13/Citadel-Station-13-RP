@@ -662,3 +662,7 @@ Swimsuits
 /datum/gear/uniform/druidic_gown
 	name = "Tunic - Flowered"
 	path = /obj/item/clothing/under/druidic_gown
+
+/datum/gear/uniform/laconic
+	name = "Laconic Field Suit"
+	path = /obj/item/clothing/under/laconic

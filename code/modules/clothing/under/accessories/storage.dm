@@ -119,7 +119,7 @@
 	new /obj/item/material/knife/machete/hatchet/unathiknife(hold)
 
 /obj/item/clothing/accessory/storage/laconic
-	name = "laconic pouch system"
+	name = "laconic field pouch system"
 	desc = "This lightweight webbing system supports a hardened leather case designed to sit comfortably on the wearer's hip."
 	icon_state = "laconic"
 	slot = ACCESSORY_SLOT_UTILITY

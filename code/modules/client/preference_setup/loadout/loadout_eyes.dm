@@ -148,3 +148,7 @@
 /datum/gear/eyes/science_proper
 	name = "Science Goggles (No Overlay)"
 	path = /obj/item/clothing/glasses/fluff/science_proper
+
+/datum/gear/eyes/laconic
+	name = "Laconic Goggles"
+	path = /obj/item/clothing/glasses/welding/laconic

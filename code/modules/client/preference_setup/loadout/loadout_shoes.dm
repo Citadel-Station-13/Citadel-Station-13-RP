@@ -210,3 +210,7 @@
 /datum/gear/shoes/footwraps/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/shoes/laconic
+	name = "Laconic Field Boots"
+	path = /obj/item/clothing/shoes/boots/laconic

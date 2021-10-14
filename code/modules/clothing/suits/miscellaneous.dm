@@ -1108,7 +1108,7 @@ obj/item/clothing/suit/kamishimo
 	flags_inv = HIDETIE|HIDEHOLSTER
 
 /obj/item/clothing/suit/laconic
-	name = "laconic coat"
+	name = "laconic field coat"
 	desc = "A hardy coat designed to protect its wearer as much in the lab as on an expedition."
 	icon_state = "laconic"
 	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
