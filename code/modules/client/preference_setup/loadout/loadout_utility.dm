@@ -248,16 +248,18 @@ modular computers
 /datum/gear/utility/webbing
 	name = "Webbing - Simple"
 	path = /obj/item/clothing/accessory/storage/webbing
-	cost = 2
 
 /datum/gear/utility/webbing/brown
 	name = "Webbing - Brown"
 	path = /obj/item/clothing/accessory/storage/brown_vest
+	cost = 2
 
 /datum/gear/utility/webbing/black
 	name = "Webbing - Black"
 	path = /obj/item/clothing/accessory/storage/black_vest
+	cost = 2
 
 /datum/gear/utility/webbing/white
 	name = "Webbing - White" //it's a nice day for a / white webbing
 	path = /obj/item/clothing/accessory/storage/white_vest
+	cost = 2
