@@ -1,0 +1,13 @@
+author: "Knouli"
+delete-after: True
+changes: 
+  - bugfix: "Garbage disposals can be access and now has a functional conveyor"
+  - bugfix: "Portable Air-Pump distribution system now functions as expected"
+  - rscadd: "Mr. Wiggleblob has a bed - all rejoice
+tweak: Dinnerware vendor access rights
+tweak: APCs, Air Alarms, and Firedoors replaced with Talon equivalents
+tweak: Security aft maintenance airlock replaced with glass airlock"
+  - rscadd: "Autolok suit storage closet in cryogenics"
+  - rscadd: "Four parachutes in EVA
+tweak: Firedoors for tech room and lifeboat
+tweak: Firealarms replaced with hidden_alarms equivalent"
