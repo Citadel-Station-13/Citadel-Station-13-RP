@@ -31545,7 +31545,9 @@
 	name = "Construction Tram Airlock";
 	req_access = newlist()
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "csb" = (
 /obj/structure/railing{
