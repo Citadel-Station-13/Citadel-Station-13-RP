@@ -563,7 +563,7 @@ Alien plants should do something if theres a lot of poison
 		health -= 5
 		healthcheck()
 
-/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
+/*/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
 	if(status == GROWN)
 		if(!CanHug(AM))
 			return
@@ -572,4 +572,11 @@ Alien plants should do something if theres a lot of poison
 		if(C.stat == CONSCIOUS && C.status_flags & TRAIT_XENO_HOST)
 			return
 
-		Burst(0)
+		Burst(0)*/
+
+/obj/effect/alien/egg/process()
+	if(GROWN)
+		var/turf/mainloc = get_turf(src)
+		for(var/mob/living/A in range(5,mainloc))
+			if (CanHug(A))
+				Burst(0)
