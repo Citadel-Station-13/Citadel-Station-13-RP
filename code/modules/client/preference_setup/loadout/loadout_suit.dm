@@ -397,3 +397,7 @@ datum/gear/suit/duster
 /datum/gear/suit/samurai/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/suit/laconic
+	name = "Laconic Field Coat"
+	path = /obj/item/clothing/suit/laconic

@@ -355,3 +355,8 @@
 		var/obj/item/clothing/accessory/gaiter_type = gaiter
 		gaiters[initial(gaiter_type.name)] = gaiter_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(gaiters, /proc/cmp_text_asc))
+
+/datum/gear/accessory/laconic
+	name = "Laconic Field Pouch System"
+	path = /obj/item/clothing/accessory/storage/laconic
+	cost = 1
