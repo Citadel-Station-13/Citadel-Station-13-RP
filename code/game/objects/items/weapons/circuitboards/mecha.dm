@@ -89,6 +89,20 @@
 		name = T_BOARD_MECHA("H.O.N.K central control")
 		icon_state = "mainboard"
 
+/obj/item/circuitboard/mecha/reticent
+		origin_tech = list(TECH_DATA = 4)
+
+/obj/item/circuitboard/mecha/reticent/peripherals
+		name = T_BOARD_MECHA("Reticent peripherals control")
+		icon_state = "mcontroller"
+
+/obj/item/circuitboard/mecha/reticent/targeting
+		name = T_BOARD_MECHA("Reticent weapon control and targeting")
+		icon_state = "mcontroller"
+
+/obj/item/circuitboard/mecha/reticent/main
+		name = T_BOARD_MECHA("Reticent central control")
+		icon_state = "mainboard"
 
 /obj/item/circuitboard/mecha/odysseus
 		origin_tech = list(TECH_DATA = 3)
