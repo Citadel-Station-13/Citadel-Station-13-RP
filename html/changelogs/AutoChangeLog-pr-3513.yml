@@ -1,4 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - config: "Adds the ability for VSC to launch the dreamdaemon to test local changes"
