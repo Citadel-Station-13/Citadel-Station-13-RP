@@ -25,7 +25,6 @@
 		S.hide_from(usr)
 		for(var/obj/item/ore/O in S.contents)
 			S.remove_from_storage(O, src) //This will move the item to this item's contents
-			take(O)
 
 /obj/structure/ore_box/examine(mob/user)
 	. = ..()
