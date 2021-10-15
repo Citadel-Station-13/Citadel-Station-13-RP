@@ -259,9 +259,11 @@
 			playsound(src.loc, 'sound/weapons/empty.ogg', 40, 1)
 			to_chat(M, "<span class='warning'>[src] makes a distinct clicking noise.")
 			trapSprung = 1
-		else(trap(M))
+		else
+			trap(M)
 			warn = 1
-	else(trap(M))
+	else
+		trap(M)
 		warn = 1
 
 /obj/item/rig/proc/springtrap(var/mob/living/carbon/human/M)
@@ -279,9 +281,11 @@
 			playsound(src.loc, 'sound/weapons/gunshot_generic_rifle.ogg', 40, 1)
 			to_chat(M, "<span class ='userdanger'>[src] clamps down hard, support rods and wires shooting forth, piercing you all over!")
 			trapSprung = 1
-		else(springtrap(M))
+		else
+			springtrap(M)
 			warn = 1
-	else(springtrap(M))
+	else
+		springtrap(M)
 		warn = 1
 
 /obj/item/rig/proc/toggle_seals(var/mob/living/carbon/human/M,var/instant)
