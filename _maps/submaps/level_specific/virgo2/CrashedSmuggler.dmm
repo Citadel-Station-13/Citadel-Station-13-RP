@@ -24,17 +24,26 @@
 /obj/structure/cable/cyan{
 	dir = 4
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "cI" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/alien/egg,
+/obj/effect/floor_decal/rust,
+/obj/item/stack/material/steel,
+/obj/item/stack/material/steel,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "dH" = (
 /obj/machinery/computer/ship/helm{
 	dir = 8
 	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"ef" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/backpack/parachute,
+/obj/item/storage/backpack/parachute,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "ei" = (
@@ -64,10 +73,18 @@
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
+"fJ" = (
+/obj/effect/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/digestion_remains/skull/teshari,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
 "fK" = (
-/obj/structure/simple_door/resin,
 /obj/effect/alien/weeds,
 /obj/item/clothing/mask/facehugger,
+/obj/structure/simple_door/resin{
+	dir = 4
+	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "ge" = (
@@ -86,7 +103,7 @@
 /area/submap/virgo2/CrashedSmuggler)
 "gR" = (
 /obj/effect/alien/weeds,
-/mob/living/simple_mob/animal/space/alien/queen/empress,
+/obj/structure/bed/nest,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "gX" = (
@@ -102,9 +119,33 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "ie" = (
-/obj/effect/alien/egg,
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/obj/item/stack/material/resin,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"in" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"iC" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/porta_turret/alien/destroyed{
+	desc = "A high-tech turret frame, presumably used to non-lethally disable dangerous fauna.";
+	dir = 4;
+	name = "destroyed specimen suppression turret"
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
@@ -117,6 +158,13 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "jq" = (
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"kv" = (
+/obj/structure/simple_door/resin{
+	dir = 4
+	},
+/obj/effect/alien/weeds,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "mP" = (
@@ -133,11 +181,15 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/submap/virgo2/CrashedSmuggler/ship)
+"nI" = (
+/turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
 "ok" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "oB" = (
@@ -159,11 +211,28 @@
 /mob/living/simple_mob/animal/space/alien/sentinel/praetorian,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
+"tf" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
 "uX" = (
 /obj/structure/bed,
 /obj/effect/decal/cleanable/blood,
 /obj/item/bedsheet/brown,
 /obj/item/digestion_remains/ribcage,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"vp" = (
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"vw" = (
+/obj/machinery/porta_turret/alien/destroyed{
+	desc = "A high-tech turret frame, presumably used to non-lethally disable dangerous fauna.";
+	dir = 8;
+	name = "destroyed specimen suppression turret"
+	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "we" = (
@@ -172,14 +241,31 @@
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
+"wz" = (
+/obj/effect/alien/weeds,
+/obj/structure/simple_door/resin{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
 "wQ" = (
 /obj/structure/cable/green{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
+"xc" = (
+/obj/effect/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/clothing/shoes/bhop,
+/obj/item/material/knife/tacknife/dataknife,
+/obj/item/clothing/under/utility,
+/obj/item/digestion_remains/skull,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
 "xk" = (
 /obj/machinery/computer/shuttle_control/explore/excursion{
 	dir = 8
@@ -188,8 +274,14 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "xC" = (
 /obj/effect/decal/remains/xeno,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
+"xR" = (
+/obj/effect/alien/weeds/node,
+/mob/living/simple_mob/animal/space/alien/queen/empress,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
 "ym" = (
 /obj/machinery/door/blast/regular{
 	name = "Crash Shutter"
@@ -204,6 +296,12 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "zl" = (
 /turf/simulated/mineral/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"zr" = (
+/obj/effect/alien/weeds,
+/obj/structure/bed/nest,
+/obj/random/humanoidremains,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "zB" = (
 /obj/structure/table/steel_reinforced,
@@ -224,11 +322,20 @@
 	dir = 4;
 	pixel_x = 29
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"Ck" = (
+/obj/structure/window/reinforced,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Cr" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
 /obj/machinery/light/small,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "CE" = (
@@ -262,9 +369,16 @@
 "EY" = (
 /turf/simulated/wall/resin,
 /area/submap/virgo2/CrashedSmuggler)
+"Fg" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
 "Fu" = (
-/obj/structure/table,
 /obj/machinery/light,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "FF" = (
@@ -314,6 +428,13 @@
 /obj/effect/alien/weeds,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
+"GY" = (
+/obj/machinery/door/window/southright,
+/obj/effect/floor_decal/industrial/warning/dust/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
 "Hx" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -349,6 +470,10 @@
 /mob/living/simple_mob/animal/space/alien/sentinel,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
+"IO" = (
+/obj/machinery/door/window/northright,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
 "Kl" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -359,6 +484,7 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Commons Hatch"
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "KS" = (
@@ -398,6 +524,12 @@
 /mob/living/simple_mob/animal/space/alien/sentinel,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
+"OE" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
 "OR" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/submap/virgo2/CrashedSmuggler/ship)
@@ -415,7 +547,8 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/alien/egg,
+/obj/item/material/shard,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "PP" = (
@@ -462,13 +595,37 @@
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
+"QU" = (
+/obj/structure/window/reinforced,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
+"QV" = (
+/obj/item/material/shard,
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
 "RJ" = (
 /obj/effect/alien/weeds,
 /obj/effect/alien/egg,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
+"Sr" = (
+/obj/effect/alien/weeds,
+/obj/structure/bed/nest,
+/obj/item/storage/belt/security/tactical,
+/turf/simulated/mineral/floor/ignore_mapgen/virgo2,
+/area/submap/virgo2/CrashedSmuggler)
+"SH" = (
+/obj/machinery/door/window/southleft,
+/obj/effect/floor_decal/industrial/warning/dust/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/virgo2,
+/area/submap/virgo2/CrashedSmuggler/ship)
 "UW" = (
-/obj/effect/alien/egg,
+/obj/structure/stasis_cage{
+	desc = "A high-tech animal cage. Something large tore this open from the inside.";
+	name = "shattered stasis cage"
+	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "VT" = (
@@ -489,7 +646,7 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Yj" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/clothing/mask/facehugger,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Zr" = (
@@ -574,10 +731,10 @@ jq
 gX
 CE
 CE
-gX
+OR
 jq
 jq
-gX
+OR
 CE
 CE
 gX
@@ -608,8 +765,8 @@ HE
 Ps
 gX
 zl
-Gf
-ZN
+eO
+RJ
 zl
 zl
 zl
@@ -627,7 +784,7 @@ gX
 FV
 Cr
 gX
-iN
+nI
 wQ
 gX
 Qa
@@ -635,7 +792,7 @@ ge
 gX
 zl
 Gh
-RJ
+Sr
 zl
 zl
 jq
@@ -660,7 +817,7 @@ Xq
 cc
 gX
 zl
-gv
+wz
 EY
 zl
 zl
@@ -703,17 +860,17 @@ RJ
 zl
 zl
 gX
-UW
-UW
+iC
+QU
 iN
 iN
-UW
+Fg
 cI
 gX
 zl
 zl
 EY
-gv
+wz
 EY
 zl
 zl
@@ -723,17 +880,17 @@ Dj
 Dj
 jq
 zl
-mP
-Gh
-gR
 zl
+Gh
+Gh
+xR
 zl
 gX
+in
+GY
 iN
-iN
-iN
-iN
-iN
+nI
+IO
 iN
 gX
 zl
@@ -756,17 +913,17 @@ RJ
 zl
 gX
 UW
-UW
+Ck
 iN
 iN
-UW
-UW
+QV
+nI
 gX
 zl
 EY
 Gh
 EY
-gv
+wz
 zl
 zl
 Dj
@@ -781,11 +938,11 @@ Gh
 RJ
 zl
 gX
-iN
-iN
-iN
+OE
+SH
+nI
 Yj
-iN
+vp
 iN
 gX
 zl
@@ -803,16 +960,16 @@ jq
 zl
 zl
 zl
-gv
+wz
 EY
 zl
 gX
-UW
+vw
 Px
 iN
 iN
 ie
-UW
+ef
 gX
 zl
 ZN
@@ -852,16 +1009,16 @@ Dj
 (14,1,1) = {"
 Dj
 jq
-jq
 zl
 zl
-zl
+gR
+Gh
 Gh
 zl
 gX
 MW
 iN
-iN
+tf
 iN
 iN
 ei
@@ -879,16 +1036,16 @@ Dj
 Dj
 jq
 jq
-jq
 zl
-zl
+xc
+Gh
 Gh
 zl
 gX
 zB
 iN
 iN
-iN
+nI
 iN
 uX
 gX
@@ -905,9 +1062,9 @@ Dj
 Dj
 jq
 jq
-jq
 zl
-zl
+gR
+Gf
 Gh
 zl
 gX
@@ -931,9 +1088,9 @@ Dj
 Dj
 jq
 jq
-jq
 zl
-zl
+fJ
+Gh
 Gh
 zl
 zl
@@ -941,7 +1098,7 @@ gX
 xC
 yA
 PY
-iN
+nI
 gX
 zl
 zl
@@ -956,10 +1113,10 @@ Dj
 (18,1,1) = {"
 Dj
 jq
-jq
 zl
 zl
-zl
+zr
+Gh
 Gh
 zl
 zl
@@ -997,9 +1154,9 @@ Fu
 gX
 zl
 zl
-gv
+Gh
 EY
-gv
+Gh
 zl
 zl
 jq
@@ -1069,7 +1226,7 @@ EY
 EY
 Gh
 EY
-gv
+kv
 EY
 EY
 No
@@ -1146,7 +1303,7 @@ zl
 zl
 zl
 zl
-gv
+wz
 EY
 Gh
 EY

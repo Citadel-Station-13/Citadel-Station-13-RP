@@ -110,6 +110,9 @@
 	desc = "It's a special backpack made exclusively for officers."
 	icon_state = "captainpack"
 
+/obj/item/storage/backpack/captain/talon
+	name = "talon captain's backpack"
+	desc = "It's a special backpack made exclusively for the Talon's captain."
 /obj/item/storage/backpack/industrial
 	name = "industrial backpack"
 	desc = "It's a tough backpack for the daily grind of station life."
@@ -171,6 +174,10 @@
 	name = "Facility Director's dufflebag"
 	desc = "A large dufflebag for holding extra captainly goods."
 	icon_state = "duffle_captain"
+
+/obj/item/storage/backpack/dufflebag/captain/talon
+	name = "talon captain's dufflebag"
+	desc = "A large dufflebag for holding extra loot."
 
 /obj/item/storage/backpack/dufflebag/med
 	name = "medical dufflebag"
@@ -268,6 +275,10 @@
 	icon_state = "satchel-cap"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")
 
+/obj/item/storage/backpack/satchel/cap/talon
+	name = "Talon captain's satchel"
+	desc = "An exclusive satchel for the Talon's captain."
+
 //ERT backpacks.
 /obj/item/storage/backpack/ert
 	name = "emergency response team backpack"
@@ -337,6 +348,10 @@
 	desc = "A special backpack worn over one shoulder.  This one is made specifically for officers."
 	icon_state = "courierbagcom"
 	item_state_slots = list(slot_r_hand_str = "captainpack", slot_l_hand_str = "captainpack")
+
+/obj/item/storage/backpack/messenger/com/talon
+	name = "captain's messenger bag"
+	desc = "A special backpack worn over one shoulder.  This one bears the insignia of the ITV Talon's captain."
 
 /obj/item/storage/backpack/messenger/engi
 	name = "engineering messenger bag"

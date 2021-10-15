@@ -201,6 +201,7 @@
 		/obj/item/storage/box/flashbangs,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
+		/obj/item/gun/energy/taser,
 		/obj/item/gun/energy/gun/multiphase,
 		/obj/item/melee/telebaton,
 		/obj/item/clothing/head/beret/sec/corporate/hos,

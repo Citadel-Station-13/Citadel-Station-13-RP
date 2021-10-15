@@ -1,0 +1,5 @@
+author: "Saisni"
+delete-after: True
+changes: 
+  - bugfix: "Fixed Lunarmoths not chilling the room"
+  - code_imp: "Added code for Lunarmoths to chill the room."
