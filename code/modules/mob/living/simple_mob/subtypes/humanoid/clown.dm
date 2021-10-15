@@ -102,7 +102,7 @@
 	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 100, rad = 100)	// Same armor values as the vest they drop, plus simple mob immunities
 
 	corpse = /obj/effect/landmark/mobcorpse/clown/clownop
-	loot_list = list(/obj/item/material/knife/clownop = 100)	// Might as well give it the knife
+	loot_list = list(/obj/item/melee/clownop = 100)	// Might as well give it the knife
 
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/clownop
@@ -176,7 +176,7 @@
 /mob/living/simple_mob/humanoid/clown/commando/melee
 	icon_state = "clownop_melee"
 	icon_living = "clownop_melee"
-	loot_list = list(/obj/item/material/knife/clownop = 100)
+	loot_list = list(/obj/item/melee/clownop = 100)
 
 //Ranged
 

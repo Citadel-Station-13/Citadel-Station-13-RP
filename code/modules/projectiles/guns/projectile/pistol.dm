@@ -377,5 +377,13 @@
 	load_method = MAGAZINE
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
-	magazine_type = /obj/item/ammo_magazine/mcompressedbio
-	projectile_type = /obj/item/projectile/bullet/honker/lethal
+	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
+	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
+	projectile_type = /obj/item/projectile/bullet/organic
+
+/obj/item/gun/projectile/clown_pistol/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"
