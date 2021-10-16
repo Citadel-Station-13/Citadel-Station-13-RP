@@ -1,7 +1,0 @@
-author: "UrsaMajora"
-delete-after: True
-changes: 
-  - rscadd: "The Possessed mob"
-  - rscadd: "sound effect: Breathing"
-  - imageadd: "The Possessed icons, which are just RIGs mashed into one icon."
-  - rscadd: "The things the Possessed can say, over in say_list."
