@@ -93,6 +93,7 @@
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
 	src.modules += new /obj/item/multitool(src)
 	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)
+	src.modules += new /obj/item/reagent_containers/syringe(src)
 	src.modules += new /obj/item/storage/part_replacer(src)
 	src.modules += new /obj/item/card/robot(src)
 	src.modules += new /obj/item/shockpaddles/robot/jumper(src)
