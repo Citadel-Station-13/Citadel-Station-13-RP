@@ -299,4 +299,5 @@
 		sprites += "Alina"
 		sprites["Alina"] = "alina-eng"
 
-	..()
+
+
