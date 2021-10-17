@@ -341,6 +341,14 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	flags_inv = HIDETIE|HIDEHOLSTER
 
+/obj/item/clothing/suit/storage/vest/hos_overcoat
+	name = "security overcoat"
+	desc = "A fashionable leather overcoat lined with a lightweight, yet tough armor."
+	icon_state = "leathercoat-sec"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	flags_inv = HIDETIE|HIDEHOLSTER
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+
 //Jensen cosplay gear
 /obj/item/clothing/suit/storage/vest/hoscoat/jensen
 	name = "armored trenchcoat"
@@ -644,6 +652,13 @@
 	desc = "A lightweight padded vest. Equipped with a padded armor plate by default, this armor consists of a stab resistant kevlar weave and hardened fleximat padding."
 	icon_state = "riot"
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/riot, /obj/item/clothing/accessory/armor/tag/sec)
+
+//Clown Op Carrier
+/obj/item/clothing/suit/armor/pcarrier/clownop
+	name = "clown commando plate carrier"
+	desc = "A lightweight red and white plate carrier vest. It can be equipped with armor plates, but provides no protection of its own. Honk."
+	icon_state = "clowncarrier"
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium)
 
 
 //PARA Armor

@@ -294,6 +294,12 @@
 	icon_state = "blackdress_com"
 	worn_state = "blackdress_com"
 
+/obj/item/clothing/under/oricon/mildress/marine/command/fake
+	name = "command dress uniform"
+	desc = "A dress uniform for command, even classier in gold."
+	icon_state = "blackdress_com"
+	worn_state = "blackdress_com"
+
 
 //Misc
 

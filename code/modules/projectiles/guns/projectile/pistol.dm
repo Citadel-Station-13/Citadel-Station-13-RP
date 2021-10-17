@@ -367,3 +367,23 @@
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
 	holy = TRUE
+
+/obj/item/gun/projectile/clown_pistol
+	name = "clown pistol"
+	desc = "This curious weapon feeds from a compressed biomatter cartridge, and seems to fabricate its ammunition from that supply."
+	icon_state = "clownpistol"
+	item_state = "revolver"
+	caliber = "organic"
+	load_method = MAGAZINE
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
+	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
+	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
+	projectile_type = /obj/item/projectile/bullet/organic
+
+/obj/item/gun/projectile/clown_pistol/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"

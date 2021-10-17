@@ -168,6 +168,7 @@
 //	set_temperature = T0C - 263
 //	heating_power = -100000
 	//light
+
 //	mycolour = COLOR_BLUE
 
 // /mob/living/simple_mob/vore/solarmoth/lunarmoth/Life()
@@ -213,5 +214,6 @@
 //
 //	spawn(100)
 //		nospampls = 0
+
 
 
