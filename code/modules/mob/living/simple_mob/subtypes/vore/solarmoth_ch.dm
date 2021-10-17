@@ -159,59 +159,59 @@
 	vore_pounce_chance = 0 //moths only eat incapacitated targets. It's too lazy burning you to a crisp to try to pounce you
 	vore_default_mode = DM_DIGEST
 
-/mob/living/simple_mob/vore/solarmoth/lunarmoth
-	name = "Lunarmoth"
-	desc = "A peculiar adult variation of a solargrub. Don't stare for too long and start running."
-	var/nospampls = 0
-	cold_damage_per_tick = 0
+// /mob/living/simple_mob/vore/solarmoth/lunarmoth
+//	name = "Lunarmoth"
+//	desc = "A peculiar adult variation of a solargrub. Don't stare for too long and start running."
+//	var/nospampls = 0
+//	cold_damage_per_tick = 0
 	//ATMOS
-	set_temperature = T0C - 263
-	heating_power = -100000
+//	set_temperature = T0C - 263
+//	heating_power = -100000
 	//light
-	mycolour = COLOR_BLUE
+//	mycolour = COLOR_BLUE
 
-/mob/living/simple_mob/vore/solarmoth/lunarmoth/Life()
-	. = ..()
-	if(icon_state != icon_dead)
-		var/datum/gas_mixture/env = loc.return_air()
-		var/transfer_moles = 0.35 * env.total_moles
-		var/datum/gas_mixture/removed = env.remove(transfer_moles)
-		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
-		if(heat_transfer > 0 && env.temperature > T0C - 275)
-			heat_transfer = min(heat_transfer , heating_power)
-			removed.add_thermal_energy(heat_transfer)
+// /mob/living/simple_mob/vore/solarmoth/lunarmoth/Life()
+//	. = ..()
+//	if(icon_state != icon_dead)
+//		var/datum/gas_mixture/env = loc.return_air()
+//		var/transfer_moles = 0.35 * env.total_moles
+//		var/datum/gas_mixture/removed = env.remove(transfer_moles)
+//		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
+//		if(heat_transfer > 0 && env.temperature > T0C - 275)
+//			heat_transfer = min(heat_transfer , heating_power)
+//			removed.add_thermal_energy(heat_transfer)
+//
+//		else if(heat_transfer < 0 && env.temperature > set_temperature)
+//			heating_power = original_temp*100
+//			heat_transfer = min(heat_transfer , heating_power)
+//			removed.add_thermal_energy(heat_transfer)
+//
+//		else
+//			return
+//
+//		env.merge(removed)
+//
+//	if(!nospampls)
+//		chilltheglass() //shatter and broken calls for glass and lights. Also some special thing.
 
-		else if(heat_transfer < 0 && env.temperature > set_temperature)
-			heating_power = original_temp*100
-			heat_transfer = min(heat_transfer , heating_power)
-			removed.add_thermal_energy(heat_transfer)
-
-		else
-			return
-
-		env.merge(removed)
-
-	if(!nospampls)
-		chilltheglass() //shatter and broken calls for glass and lights. Also some special thing.
-
-/mob/living/simple_mob/vore/solarmoth/lunarmoth/proc/chilltheglass() //Why does a coldfusion moth do this? science -shark
-	nospampls = 1
-	if(prob(25))
-		for(var/obj/machinery/light/light in range(5, src))
-			if(prob(50))
-				light.broken()
-	if(prob(10))
-		for(var/obj/structure/window/window in range(5, src))
-			if(prob(50))
-				window.shatter()
-	if(prob(20))
-		for(var/obj/machinery/door/firedoor/door in range(14, src)) //double viewrange
-			if(prob(5))
-				visible_message("<span class='danger'>Emergency Shutter malfunction!</span>")
-				door.blocked = 0
-				door.open(1)
-
-	spawn(100)
-		nospampls = 0
+///mob/living/simple_mob/vore/solarmoth/lunarmoth/proc/chilltheglass() //Why does a coldfusion moth do this? science -shark
+//	nospampls = 1
+//	if(prob(25))
+//		for(var/obj/machinery/light/light in range(5, src))
+//			if(prob(50))
+//				light.broken()
+//	if(prob(10))
+//		for(var/obj/structure/window/window in range(5, src))
+//			if(prob(50))
+//				window.shatter()
+//	if(prob(20))
+//		for(var/obj/machinery/door/firedoor/door in range(14, src)) //double viewrange
+//			if(prob(5))
+//				visible_message("<span class='danger'>Emergency Shutter malfunction!</span>")
+//				door.blocked = 0
+//				door.open(1)
+//
+//	spawn(100)
+//		nospampls = 0
 
 

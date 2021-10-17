@@ -31,8 +31,8 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	// CHOMPEDIT Start, Rykka waz here. *pawstamp*; CitRP: Make moth spawning thingy's, read coms;
 	var/charge = null // CHOMPEDIT The amount of power we sucked off, in K as in THOUSANDS.
 	var/can_evolve = 1 // CHOMPEDIT VAR to decide whether this subspecies is allowed to become a queen
-	var/list/adult_forms = list(/mob/living/simple_mob/vore/solarmoth = 70, /mob/living/simple_mob/vore/solarmoth/lunarmoth=30) // CHOMPEDIT VAR that decides what mob the queen form is; CitRP: Makes spawn of lunarmoths possible.
-	//var/adult_forms = "/mob/living/simple_mob/vore/solarmoth" // CHOMPEDIT VAR that decides what mob the queen form is. ex /mob/living/simple_mob/subtypes/vore/solarmoth; CitRP: Without lunarmoth, quoted out for fun;
+	var/list/adult_forms = /mob/living/simple_mob/subtypes/vore/solarmoth //list(/mob/living/simple_mob/vore/solarmoth = 70, /mob/living/simple_mob/vore/solarmoth/lunarmoth=30) // CHOMPEDIT VAR that decides what mob the queen form is; CitRP: Makes spawn of lunarmoths possible.
+	//var/adult_forms = "/mob/living/simple_mob/vore/solarmoth" // CHOMPEDIT VAR that decides what mob the queen form is. ex /mob/living/simple_mob/subtypes/vore/solarmoth; CitRP: Without lunarmoth, quoted out for fun; Quoted in cos unrobust crew :<
 	// CHOMPEDIT End, Rykka waz here. *pawstamp*
 
 	faction = "grubs"
@@ -110,7 +110,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 			PN = null
 
 		// CHOMPEDIT Start, Rykka waz here. *pawstamp*
-		if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift. 
+		if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift.
 			anchored = 0
 			PN = attached.powernet
 			release_vore_contents()
