@@ -224,3 +224,8 @@
 
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")
+
+/obj/item/clothing/shoes/boots/laconic
+	name = "laconic field boots"
+	desc = "These flexible boots cover the wearer's calves. An additional protective kneepad is integrated, perhaps to assist in collecting specimens in the field."
+	icon_state = "laconic"

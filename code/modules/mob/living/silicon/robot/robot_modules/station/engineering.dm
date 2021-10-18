@@ -23,7 +23,8 @@
 					"L3P1-D0T" = "Glitterfly-Engineering",
 					"Miss M" = "miss-engineer",
 					"Coffstruction" = "coffin-Construction",
-					"Coffgineer" = "coffin-Engineering"
+					"Coffgineer" = "coffin-Engineering",
+					"X-88" = "xeightyeight-engineering"
 
 					)
 
@@ -298,4 +299,5 @@
 		sprites += "Alina"
 		sprites["Alina"] = "alina-eng"
 
-	..()
+
+

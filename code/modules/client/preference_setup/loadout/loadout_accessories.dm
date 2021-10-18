@@ -137,14 +137,17 @@
 /datum/gear/accessory/brown_drop_pouches
 	name = "Drop Pouches - Brown"
 	path = /obj/item/clothing/accessory/storage/brown_drop_pouches
+	cost = 2
 
 /datum/gear/accessory/black_drop_pouches
 	name = "Drop Pouches - Black"
 	path = /obj/item/clothing/accessory/storage/black_drop_pouches
+	cost = 2
 
 /datum/gear/accessory/white_drop_pouches
 	name = "Drop Pouches - White"
 	path = /obj/item/clothing/accessory/storage/white_drop_pouches
+	cost = 2
 
 /datum/gear/accessory/fannypack
 	name = "Fannypack - Selection"
@@ -352,3 +355,8 @@
 		var/obj/item/clothing/accessory/gaiter_type = gaiter
 		gaiters[initial(gaiter_type.name)] = gaiter_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(gaiters, /proc/cmp_text_asc))
+
+/datum/gear/accessory/laconic
+	name = "Laconic Field Pouch System"
+	path = /obj/item/clothing/accessory/storage/laconic
+	cost = 1

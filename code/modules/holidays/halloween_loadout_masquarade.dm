@@ -86,7 +86,8 @@
 	icon_state = "infiltrator_helmet"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
-	body_parts_covered = HEAD
+	body_parts_covered = HEAD|EYES
+	item_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/syndicate/sneaksuit_shoes
@@ -106,12 +107,17 @@
 	path = /obj/item/clothing/mask/fake_sneaksuit
 
 /obj/item/clothing/mask/fake_sneaksuit
-	STD_DEF("plastic mask")
+	STD_DEF_NON_HIDING("plastic mask")
 	icon_state = "infiltrator_mask"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
-	body_parts_covered = HEAD
+	body_parts_covered = HEAD|EYES
+	item_flags = ALLOWINTERNALS
 	cold_protection = HEAD
+	item_icons = list(
+		slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_masks.dmi'
+	)
 
 /datum/gear/seasonal/masquarade/syndicate/contractor_helmet
 	display_name = "Contractor Helmet"
@@ -122,7 +128,8 @@
 	icon_state = "syndicate-contract-helm"
 	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
-	body_parts_covered = HEAD
+	body_parts_covered = HEAD|EYES
+	item_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/syndicate/contractor_suit
@@ -167,7 +174,8 @@
 	icon_state = "lingarmorhelmet"
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
-	body_parts_covered = HEAD
+	body_parts_covered = HEAD|EYES
+	item_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/changeling/chitin_suit
@@ -191,7 +199,8 @@
 	icon_state = "lingspacehelmet"
 	icon = 'icons/antagonists/changeling/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/changeling/on_mob/clothing.dmi'
-	body_parts_covered = HEAD
+	body_parts_covered = HEAD|EYES
+	item_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/changeling/flesh_suit
@@ -261,7 +270,8 @@
 	icon = 'icons/antagonists/clockcult/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/clockcult/on_mob/clothing.dmi'
 	icon_state = "clockwork_helmet"
-	body_parts_covered = HEAD
+	body_parts_covered = HEAD|EYES
+	item_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/clockcult/suit
@@ -384,7 +394,7 @@
 	path = /obj/item/toy/blood_halbard
 
 /obj/item/toy/blood_halbard
-	STD_DEF("glass shield")
+	STD_DEF("plastic halbard")
 	icon = 'icons/antagonists/cult/items/weapons.dmi'
 	icon_state = "bloodspear0"
 	item_icons = list(
@@ -423,7 +433,8 @@
 	icon = 'icons/antagonists/cult/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/cult/on_mob/clothing.dmi'
 	icon_state = "cult_helmet"
-	body_parts_covered = HEAD
+	body_parts_covered = HEAD|EYES
+	item_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /datum/gear/seasonal/masquarade/cult/robes_new
@@ -518,7 +529,8 @@
 	icon = 'icons/antagonists/heretic/items/clothing.dmi'
 	default_worn_icon = 'icons/antagonists/heretic/on_mob/clothing.dmi'
 	icon_state = "void_cloak_hood"
-	body_parts_covered = HEAD
+	body_parts_covered = HEAD|EYES
+	item_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 
 /*
@@ -565,6 +577,8 @@
 	STD_DEF("plastic blade")
 	icon = 'icons/antagonists/heretic/items/weapons.dmi'
 	icon_state = "eldritch_blade"
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
 	item_icons = list(
 		slot_l_hand_str = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
 		slot_r_hand_str = 'icons/antagonists/heretic/on_mob/right_hand_64.dmi'

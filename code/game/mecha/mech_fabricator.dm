@@ -66,6 +66,7 @@
 								"Gygax",
 								"Durand",
 								"H.O.N.K.",
+								"Reticent",
 								"Janus",
 								"Vehicle",
 								"Rigsuit",

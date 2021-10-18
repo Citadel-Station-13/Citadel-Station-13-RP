@@ -1184,6 +1184,7 @@
 /datum/gear/restricted/misc/accessory/holster
 	name = "(Command/Security/Exploration/Talon) Holster - Selection"
 	path = /obj/item/clothing/accessory/holster
+	cost = 3
 	allowed_roles = list(
 	"Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary",
 	"Security Officer", "Warden", "Head of Security", "Detective",
