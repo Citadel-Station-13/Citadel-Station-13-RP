@@ -136,3 +136,7 @@
 /datum/gear/gloves/siren
 	name = "Gloves - Siren"
 	path = /obj/item/clothing/gloves/fluff/siren
+
+/datum/gear/gloves/bountyskin
+	name = "Bounty Hunter's Gloves"
+	path = /obj/item/clothing/gloves/bountyskin
