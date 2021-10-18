@@ -291,20 +291,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(!client)
 		return
 
-	var/obj/screen/BG= LAZYACCESS(char_render_holders, "BG")
+	var/obj/screen/setup_preview/bg/BG= LAZYACCESS(char_render_holders, "BG")
 	if(!BG)
 		BG = new
 		BG.plane = TURF_PLANE
 		BG.icon = 'icons/effects/setup_backgrounds_vr.dmi'
+		BG.pref = src
 		LAZYSET(char_render_holders, "BG", BG)
 		client.screen |= BG
 	BG.icon_state = bgstate
 	BG.screen_loc = preview_screen_locs["BG"]
 
 	for(var/D in GLOB.cardinal)
-		var/obj/screen/O = LAZYACCESS(char_render_holders, "[D]")
+		var/obj/screen/setup_preview/O = LAZYACCESS(char_render_holders, "[D]")
 		if(!O)
 			O = new
+			O.pref = src
 			LAZYSET(char_render_holders, "[D]", O)
 			client.screen |= O
 		O.appearance = MA
