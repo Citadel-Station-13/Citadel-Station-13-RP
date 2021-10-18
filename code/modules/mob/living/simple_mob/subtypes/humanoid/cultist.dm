@@ -569,16 +569,38 @@
 	projectiletype = /obj/item/projectile/beam/inversion
 	base_attack_cooldown = 5
 	projectilesound = 'sound/weapons/spiderlunge.ogg'
-	var/obj/item/shield_projector/cult = null
+	var/obj/item/shield_projector/shields = null
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/humanoid/cultist/magus/death()
 	new /obj/effect/decal/cleanable/blood/gibs (src.loc)
+	QDEL_NULL(shields)
 	..(null,"let's out a dark laugh as it collapses into a puddle of blood.")
 	ghostize()
 	qdel(src)
 
+/mob/living/simple_mob/humanoid/cultist/magus/Initialize(mapload)
+	shields = new /obj/item/shield_projector/rectangle/automatic/magus(src)
+	return ..()
+
+/mob/living/simple_mob/humanoid/cultist/magus/Moved()
+	shields.update_shield_positions()
+	return ..()
+/obj/item/shield_projector/rectangle/automatic/magus
+	name = "cult shield stone"
+	desc = "A stone wielded by only the most powerful of cult leaders. It projects a shield around the user."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "implant_melted"
+	shield_health = 200
+	max_shield_health = 200
+	shield_regen_delay = 10 SECONDS
+	shield_regen_amount = 10
+	size_x = 1
+	size_y = 1
+	color = "#f50202"
+	high_color = "#ff0404"
+	low_color = "#690000"
 ////////////////////////////
 //		Blood Hunter
 ////////////////////////////
