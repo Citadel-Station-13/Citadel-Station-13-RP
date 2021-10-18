@@ -14183,7 +14183,9 @@
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud{
+	outdoors = 0
+	},
 /area/crew_quarters/bar)
 "aye" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -31229,7 +31231,9 @@
 /area/crew_quarters/freezer)
 "bdV" = (
 /obj/structure/flora/pumpkin/pumpkin_patch/presents,
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt{
+	outdoors = 0
+	},
 /area/crew_quarters/bar)
 "bdZ" = (
 /obj/machinery/door/firedoor,
@@ -32631,7 +32635,9 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud{
+	outdoors = 0
+	},
 /area/crew_quarters/bar)
 "bgX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -36003,7 +36009,9 @@
 /turf/simulated/floor/tiled/eris/dark/golden,
 /area/shuttle/tourbus/general)
 "coq" = (
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt{
+	outdoors = 0
+	},
 /area/crew_quarters/bar)
 "cpd" = (
 /obj/effect/floor_decal/borderfloor{
@@ -39463,7 +39471,9 @@
 /obj/structure/window/phoronbasic{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt{
+	outdoors = 0
+	},
 /area/crew_quarters/bar)
 "mjT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -40099,7 +40109,9 @@
 /obj/structure/window/phoronbasic{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/dirt,
+/turf/simulated/floor/outdoors/dirt{
+	outdoors = 0
+	},
 /area/crew_quarters/bar)
 "nZC" = (
 /obj/machinery/door/firedoor,
@@ -40493,7 +40505,9 @@
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud{
+	outdoors = 0
+	},
 /area/crew_quarters/bar)
 "pcs" = (
 /obj/structure/table/standard,
@@ -42934,7 +42948,9 @@
 	desc = "A dusty signpost with two landmarks charred into the wood. 'Hell - 66mi, Heaven - ' The number is scribbled out.";
 	name = "crossroads"
 	},
-/turf/simulated/floor/outdoors/mud,
+/turf/simulated/floor/outdoors/mud{
+	outdoors = 0
+	},
 /area/crew_quarters/bar)
 "vqv" = (
 /obj/structure/grille,
