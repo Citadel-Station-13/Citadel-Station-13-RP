@@ -1,0 +1,5 @@
+author: "KillianKirilenko"
+delete-after: True
+changes: 
+  - bugfix: "adjusted bar layout to properly isolate the booths from each other"
+  - bugfix: "stopped it from raining inside the maint/eng tram"
