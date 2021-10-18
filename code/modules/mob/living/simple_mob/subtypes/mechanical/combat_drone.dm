@@ -73,6 +73,10 @@
 	QDEL_NULL(shields)
 	return ..()
 
+/mob/living/simple_mob/mechanical/combat_drone/Moved()
+	shields.update_shield_positions()
+	return ..()
+
 /mob/living/simple_mob/mechanical/combat_drone/death()
 	..(null,"suddenly breaks apart.")
 	qdel(src)
