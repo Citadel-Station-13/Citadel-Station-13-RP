@@ -42,14 +42,6 @@
 	shields = new /obj/item/shield_projector/rectangle/automatic/reticent(src)
 	return ..()
 
-/mob/living/simple_mob/mechanical/mecha/combat/reticent/Destroy()
-	QDEL_NULL(shields)
-	return ..()
-
-/mob/living/simple_mob/mechanical/mecha/combat/reticent/Moved()
-	shields.update_shield_positions()
-	return ..()
-
 /obj/item/shield_projector/rectangle/automatic/reticent
 	shield_health = 200
 	max_shield_health = 200

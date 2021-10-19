@@ -575,7 +575,6 @@
 
 /mob/living/simple_mob/humanoid/cultist/magus/death()
 	new /obj/effect/decal/cleanable/blood/gibs (src.loc)
-	QDEL_NULL(shields)
 	..(null,"let's out a dark laugh as it collapses into a puddle of blood.")
 	ghostize()
 	qdel(src)
@@ -584,9 +583,6 @@
 	shields = new /obj/item/shield_projector/rectangle/automatic/magus(src)
 	return ..()
 
-/mob/living/simple_mob/humanoid/cultist/magus/Moved()
-	shields.update_shield_positions()
-	return ..()
 /obj/item/shield_projector/rectangle/automatic/magus
 	name = "cult shield stone"
 	desc = "A stone wielded by only the most powerful of cult leaders. It projects a shield around the user."
