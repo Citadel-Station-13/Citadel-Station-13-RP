@@ -1,29 +1,28 @@
-/proc/stars(n, pr)
-	if (pr == null)
-		pr = 25
-	if (pr < 0)
-		return null
-	else
-		if (pr >= 100)
-			return n
-	var/te = n
-	var/t = ""
-	n = length(n)
-	var/p = null
-	p = 1
-	var/intag = 0
-	while(p <= n)
-		var/char = copytext(te, p, p + 1)
-		if (char == "<") //let's try to not break tags
-			intag = !intag
-		if (intag || char == " " || prob(pr))
-			t = text("[][]", t, char)
+/**
+  * Convert random parts of a passed in message to stars
+  *
+  * * phrase - the string to convert
+  * * probability - probability any character gets changed
+  * * max - max characters
+  *
+  * This proc is dangerously laggy, avoid it or die
+  */
+/proc/stars(phrase, probability = 25, max = 4096)
+	if(probability <= 0)
+		return phrase
+	if(length_char(phrase) > max)
+		phrase = copytext_char(phrase, 1, max)
+	phrase = html_decode(phrase)
+	var/leng = length(phrase)
+	. = ""
+	var/char = ""
+	for(var/i = 1, i <= leng, i += length(char))
+		char = phrase[i]
+		if(char == " " || !prob(probability))
+			. += char
 		else
-			t = text("[]*", t)
-		if (char == ">")
-			intag = !intag
-		p++
-	return t
+			. += "*"
+	return sanitize(.)
 
 proc/slur(phrase)
 	phrase = html_decode(phrase)
