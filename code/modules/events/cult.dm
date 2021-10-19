@@ -108,6 +108,9 @@
 	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
 		kill()
 		return
+	if(istype(victim, /obj/effect/overmap/visitable/ship/talon)) //override - cancel if it's the Talon since they can't spawn on it yet.
+		kill()
+		return
 	return ..()
 
 #undef LOC_LIBRARY
