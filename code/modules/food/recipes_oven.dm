@@ -255,7 +255,7 @@
 	appliance = OVEN
 	reagents = list("sugar" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/doughslice
+		/obj/item/reagent_containers/food/snacks/doughslice,
 		/obj/item/paper
 	)
 	result = /obj/item/reagent_containers/food/snacks/fortunecookie
