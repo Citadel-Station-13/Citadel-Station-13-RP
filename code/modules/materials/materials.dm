@@ -894,6 +894,11 @@ var/list/name_to_material
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/log/sif
 
+/datum/material/wood/log/hard
+	name = MAT_HARDLOG
+	icon_colour = "#6f432a"
+	stack_type = /obj/item/stack/material/log/hard
+
 /datum/material/wood/holographic
 	name = "holowood"
 	display_name = "wood"
@@ -902,9 +907,19 @@ var/list/name_to_material
 
 /datum/material/wood/sif
 	name = MAT_SIFWOOD
-//	stack_type = /obj/item/stack/material/wood/sif
+	stack_type = /obj/item/stack/material/wood/sif
 	icon_colour = "#0099cc" // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.
+
+/datum/material/wood/hardwood
+	name = MAT_HARDWOOD
+	stack_type = /obj/item/stack/material/wood/hard
+	icon_colour = "#42291a"
+	icon_base = "stone"
+	icon_reinf = "reinf_stone"
+	integrity = 65	//a bit stronger than regular wood
+	hardness = 20	
+	weight = 20	//likewise, heavier
 
 /datum/material/cardboard
 	name = "cardboard"
