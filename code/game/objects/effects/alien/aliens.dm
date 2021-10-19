@@ -442,8 +442,8 @@ Alien plants should do something if theres a lot of poison
 	GROWING = 2
 	GROWN = 3
 
-	MIN_GROWTH_TIME = 180 //time it takes to grow a hugger
-	MAX_GROWTH_TIME = 300
+	MIN_GROWTH_TIME = 1800 //time it takes to grow a hugger
+	MAX_GROWTH_TIME = 3000
 
 /obj/effect/alien/egg
 	desc = "It looks like a weird egg"
