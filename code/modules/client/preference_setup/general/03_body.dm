@@ -43,6 +43,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["synth_green"]		>> pref.g_synth
 	S["synth_blue"]			>> pref.b_synth
 	S["synth_markings"]		>> pref.synth_markings
+	pref.regen_limbs = 1
 	S["bgstate"]			>> pref.bgstate
 	S["body_descriptors"]	>> pref.body_descriptors
 
