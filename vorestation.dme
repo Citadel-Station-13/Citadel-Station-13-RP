@@ -159,6 +159,7 @@
 #include "code\__HELPERS\sorts\InsertSort.dm"
 #include "code\__HELPERS\sorts\MergeSort.dm"
 #include "code\__HELPERS\sorts\TimSort.dm"
+#include "code\__HELPERS\text\scramble.dm"
 #include "code\__HELPERS\type2type\color.dm"
 #include "code\_globals\regexes.dm"
 #include "code\_globalvars\bitfields.dm"
