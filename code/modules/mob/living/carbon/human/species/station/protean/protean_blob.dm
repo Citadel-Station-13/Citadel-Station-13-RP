@@ -23,7 +23,7 @@
 
 	harm_intent_damage = 2
 	melee_damage_lower = 10
-	melee_damage_upper = 15 // Mild increase to blob damage
+	melee_damage_upper = 10
 	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
 
 	aquatic_movement = 1
