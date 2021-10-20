@@ -42,7 +42,7 @@
 	shock_resist = 0.9
 	poison_resist = 1
 
-	movement_cooldown = 2
+	movement_cooldown = 0.5
 	melee_attack_delay = 8
 
 	var/mob/living/carbon/human/humanform
@@ -104,7 +104,7 @@
 		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
-		movement_cooldown = 2 + max(0, (maxHealth - health) - 100) / 35
+		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 35
 		melee_attack_delay = 8 + max(0, (maxHealth - health) - 100) / 15
 
 		//Alive, becoming dead
