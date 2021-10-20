@@ -1,17 +1,19 @@
 //This is an experimental turf type that functions as a step-trigger for traps. I'm starting this project without any idea what I'm actually doing here.
+#define TRAP_CONTROL_RANGE 30
 
 /turf/simulated/floor/trap
 	name = "suspicious flooring"
 	icon = 'icons/turf/flooring/trap.dmi'
 	icon_state = "steel_dirty"
-	var/frequency = 7420
+	var/frequency = RADIO_TRAP_FREQ
 	var/code = 24
 	var/datum/radio_frequency/radio_connection
-	var/tripped = 0
-
+	var/tripped = FALSE
+	var/command = "trip"
+	var/master_tag
 
 /turf/simulated/floor/trap/Entered(atom/A)
-	if(isliving(A) && tripped == 0)
+	if(isliving(A) && !tripped)
 		var/mob/living/L = A
 		if(L.hovering) // Flying things shouldn't trigger pressure plates.
 			return ..()
@@ -20,27 +22,51 @@
 		return
 
 /turf/simulated/floor/trap/proc/trigger()
-	tripped = 1
+	tripped = TRUE
+	signal()
 	visible_message("<span class='danger'>You hear a click nearby!</span>")
 	update_icon()
 	playsound(src, 'sound/machines/click.ogg', 50, 1)
 	return
 
 /turf/simulated/floor/trap/update_icon()
-	if(tripped == 0)
+	if(!tripped)
 		icon_state = "[initial(icon_state)]"
-	else if (tripped == 1)
+	else if (tripped)
 		icon_state = "[initial(icon_state)]_tripped"
 
 /turf/simulated/floor/trap/attack_hand()
-	if(tripped == 1)
+	if(tripped)
 		to_chat(usr, "<span class='notice'>You reset the triggered mechanism.</span>")
 		tripped = 0
 		update_icon()
-	else if(tripped == 0)
+	else if(!tripped)
 		to_chat(usr, "<span class='danger'>You trigger the hidden mechanism!</span>")
-		tripped = 1
-		update_icon()
+		trigger()
+
+/turf/simulated/floor/trap/proc/signal()
+	if(radio_connection)
+		var/datum/signal/signal = new
+		signal.transmission_method = TRANSMISSION_RADIO //radio signal
+		signal.data["tag"] = master_tag
+		signal.data["command"] = command
+
+		radio_connection.post_signal(src, signal, range = TRAP_CONTROL_RANGE, radio_filter = RADIO_TRAP)
+
+/turf/simulated/floor/trap/proc/set_frequency(new_frequency)
+	radio_controller.remove_object(src, frequency)
+	frequency = new_frequency
+	radio_connection = radio_controller.add_object(src, frequency, RADIO_TRAP)
+
+
+/turf/simulated/floor/trap/Initialize()
+	. = ..()
+	set_frequency(frequency)
+
+/turf/simulated/floor/trap/Destroy()
+	if(radio_controller)
+		radio_controller.remove_object(src, frequency)
+	return ..()
 
 /turf/simulated/floor/trap/delayed
 	name = "suspicious flooring"
@@ -48,7 +74,7 @@
 
 /turf/simulated/floor/trap/delayed/trigger()
 	spawn(src.delay)
-		tripped = 1
+		tripped = TRUE
 		visible_message("<span class='danger'>You hear a click nearby!</span>")
 		update_icon()
 		playsound(src, 'sound/machines/click.ogg', 50, 1)
@@ -157,6 +183,8 @@
 
 /turf/simulated/floor/trap/delayed/sifwood
 	icon_state = "sifwood"
+
+#undef TRAP_CONTROL_RANGE
 
 /*
 /turf/simulated/floor/trap/attack_by()
