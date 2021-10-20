@@ -2,16 +2,20 @@
   * Convert random parts of a passed in message to stars
   *
   * * phrase - the string to convert
-  * * probability - probability any character gets changed
+  * * probability - probability any character doesn't gets changed
   * * max - max characters
   *
   * This proc is dangerously laggy, avoid it or die
+  * On another note this is main's but probability is reversed because RP code is stupid.
   */
 /proc/stars(phrase, probability = 25, max = 4096)
-	if(probability <= 0)
+	if(probability >= 100)
 		return phrase
+	if(probability <= 0)
+		return "************************"
 	if(length_char(phrase) > max)
 		phrase = copytext_char(phrase, 1, max)
+	probability = 100 - probability
 	phrase = html_decode(phrase)
 	var/leng = length(phrase)
 	. = ""
