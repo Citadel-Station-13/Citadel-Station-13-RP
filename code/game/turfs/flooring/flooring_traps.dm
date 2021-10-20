@@ -4,7 +4,9 @@
 	name = "suspicious flooring"
 	icon = 'icons/turf/flooring/trap.dmi'
 	icon_state = "steel_dirty"
-	var/frequency = 0
+	var/frequency = 7420
+	var/code = 24
+	var/datum/radio_frequency/radio_connection
 	var/tripped = 0
 
 
@@ -13,15 +15,15 @@
 		var/mob/living/L = A
 		if(L.hovering) // Flying things shouldn't trigger pressure plates.
 			return ..()
-		playsound(src, 'sound/machines/click.ogg', 50, 1)
 		trigger()
 	else
 		return
 
-/turf/simulated/floor/trap/proc/trigger(atom/A)
+/turf/simulated/floor/trap/proc/trigger()
 	tripped = 1
-	to_chat(usr, "<span class='danger'>The floor shifts below you!</span>")
+	visible_message("<span class='danger'>You hear a click nearby!</span>")
 	update_icon()
+	playsound(src, 'sound/machines/click.ogg', 50, 1)
 	return
 
 /turf/simulated/floor/trap/update_icon()
@@ -39,6 +41,122 @@
 		to_chat(usr, "<span class='danger'>You trigger the hidden mechanism!</span>")
 		tripped = 1
 		update_icon()
+
+/turf/simulated/floor/trap/delayed
+	name = "suspicious flooring"
+	var/delay = 5
+
+/turf/simulated/floor/trap/delayed/trigger()
+	spawn(src.delay)
+		tripped = 1
+		visible_message("<span class='danger'>You hear a click nearby!</span>")
+		update_icon()
+		playsound(src, 'sound/machines/click.ogg', 50, 1)
+		return
+
+//Types
+/turf/simulated/floor/trap/plating
+	icon_state = "plating"
+
+/turf/simulated/floor/trap/steel
+	icon_state = "steel"
+
+/turf/simulated/floor/trap/dark
+	icon_state = "dark"
+
+/turf/simulated/floor/trap/white
+	icon_state = "white"
+
+/turf/simulated/floor/trap/freezer
+	icon_state = "freezer"
+
+/turf/simulated/floor/trap/steel_grid
+	icon_state = "steel_grid"
+
+/turf/simulated/floor/trap/techmaint
+	icon_state = "techmaint"
+
+/turf/simulated/floor/trap/asteroidfloor
+	icon_state = "asteroidfloor"
+
+/turf/simulated/floor/trap/cult
+	icon_state = "cult"
+
+/turf/simulated/floor/trap/lightmarble
+	icon_state = "lightmarble"
+
+/turf/simulated/floor/trap/darkmarble
+	icon_state = "darkmarble"
+
+/turf/simulated/floor/trap/silver
+	icon_state = "silver"
+
+/turf/simulated/floor/trap/gold
+	icon_state = "gold"
+
+/turf/simulated/floor/trap/uranium
+	icon_state = "uranium"
+
+/turf/simulated/floor/trap/diamond
+	icon_state = "diamond"
+
+/turf/simulated/floor/trap/wood
+	icon_state = "wood"
+
+/turf/simulated/floor/trap/sifwood
+	icon_state = "sifwood"
+
+//Delayed
+/turf/simulated/floor/trap/delayed/plating
+	icon_state = "plating"
+
+/turf/simulated/floor/trap/delayed/steel
+	icon_state = "steel"
+
+/turf/simulated/floor/trap/delayed/dark
+	icon_state = "dark"
+
+/turf/simulated/floor/trap/delayed/white
+	icon_state = "white"
+
+/turf/simulated/floor/trap/delayed/freezer
+	icon_state = "freezer"
+
+/turf/simulated/floor/trap/delayed/steel_grid
+	icon_state = "steel_grid"
+
+/turf/simulated/floor/trap/delayed/techmaint
+	icon_state = "techmaint"
+
+/turf/simulated/floor/trap/delayed/asteroidfloor
+	icon_state = "asteroidfloor"
+
+/turf/simulated/floor/trap/delayed/cult
+	icon_state = "cult"
+
+/turf/simulated/floor/trap/delayed/lightmarble
+	icon_state = "lightmarble"
+
+/turf/simulated/floor/trap/delayed/darkmarble
+	icon_state = "darkmarble"
+
+/turf/simulated/floor/trap/delayed/silver
+	icon_state = "silver"
+
+/turf/simulated/floor/trap/delayed/gold
+	icon_state = "gold"
+
+/turf/simulated/floor/trap/delayed/uranium
+	icon_state = "uranium"
+
+/turf/simulated/floor/trap/delayed/diamond
+	icon_state = "diamond"
+
+/turf/simulated/floor/trap/delayed/wood
+	icon_state = "wood"
+
+/turf/simulated/floor/trap/delayed/sifwood
+	icon_state = "sifwood"
 
 /*
 /turf/simulated/floor/trap/attack_by()
