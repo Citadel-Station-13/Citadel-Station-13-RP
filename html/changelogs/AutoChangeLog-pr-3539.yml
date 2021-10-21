@@ -1,0 +1,4 @@
+author: "KillianKirilenko"
+delete-after: True
+changes: 
+  - bugfix: "moved refurb/event suits file to a more logical location, and renamed the talon voidsuits file for consistency"
