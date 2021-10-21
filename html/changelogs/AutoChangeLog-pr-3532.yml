@@ -1,0 +1,4 @@
+author: "UrsaMajora"
+delete-after: True
+changes: 
+  - code_imp: "Causes hostiles to spawn on the Talon when the Talon enters the areas."
