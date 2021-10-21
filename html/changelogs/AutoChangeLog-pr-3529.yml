@@ -1,4 +1,0 @@
-author: "UrsaMajora"
-delete-after: True
-changes: 
-  - code_imp: "Forced the update position of the shield on the mob's movement."
