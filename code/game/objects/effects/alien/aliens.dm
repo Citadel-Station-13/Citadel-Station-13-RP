@@ -454,16 +454,15 @@ Alien plants should do something if theres a lot of poison
 	anchored = 1
 
 	var/health = 100
-	var/status = BURST //can be GROWING, GROWN or BURST; all mutually exclusive
+	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
 	flags = PROXMOVE
 
 /obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-
-/obj/effect/alien/egg/process(delta_time)
 	spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
-		Grow()
+		if((status == GROWING) && (BURST == 0))
+			Grow()
 
 /obj/effect/alien/egg/attack_hand(user as mob)
 
@@ -577,6 +576,6 @@ Alien plants should do something if theres a lot of poison
 /obj/effect/alien/egg/process()
 	if(GROWN)
 		var/turf/mainloc = get_turf(src)
-		for(var/mob/living/A in range(5,mainloc))
+		for(var/mob/living/A in range(3,mainloc))
 			if (CanHug(A))
 				Burst(0)
