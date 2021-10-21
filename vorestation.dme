@@ -863,6 +863,7 @@
 #include "code\game\machinery\embedded_controller\embedded_program_base.dm"
 #include "code\game\machinery\embedded_controller\mapping_helpers.dm"
 #include "code\game\machinery\embedded_controller\simple_docking_controller.dm"
+#include "code\game\machinery\embedded_controller\trap_controller.dm"
 #include "code\game\machinery\pipe\construction.dm"
 #include "code\game\machinery\pipe\pipe_dispenser.dm"
 #include "code\game\machinery\pipe\pipe_recipes.dm"
