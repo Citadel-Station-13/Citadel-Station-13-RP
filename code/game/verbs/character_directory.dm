@@ -6,7 +6,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	set desc = "Shows a listing of all active characters, along with their associated OOC notes, flavor text, and more."
 
 	// This is primarily to stop malicious users from trying to lag the server by spamming this verb
-	if(mob.check_move_cooldown())
+	if(world.time < usr.next_move)
 		to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
 		return
 	usr.setClickCooldown(10)
@@ -14,9 +14,6 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	if(!GLOB.character_directory)
 		GLOB.character_directory = new
 	GLOB.character_directory.ui_interact(mob)
-
-
-
 
 // This is a global singleton. Keep in mind that all operations should occur on usr, not src.
 /datum/character_directory
@@ -107,7 +104,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	switch(action)
 		if("refresh")
 			// This is primarily to stop malicious users from trying to lag the server by spamming this verb
-			if(usr.check_move_cooldown())
+			if(world.time < usr.next_move)
 				to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
 				return
 			usr.applyMoveCooldown(10)
