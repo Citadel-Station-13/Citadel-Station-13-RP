@@ -1649,3 +1649,4 @@
 	id = "grapesmoothie"
 	required_reagents = list("grapejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
 	result_amount = 5
+	

@@ -4613,3 +4613,4 @@ End Citadel Change */
 
 	glass_name = "Grape Smoothie"
 	glass_desc = "Icy grape juice mixed with milk and cream."
+	
