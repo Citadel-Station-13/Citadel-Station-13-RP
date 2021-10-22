@@ -4612,5 +4612,4 @@ End Citadel Change */
 	color = "#e9a0ff"
 
 	glass_name = "Grape Smoothie"
-	glass_desc = "Icy grape juice mixed with milk and cream."
-	
+	glass_desc = "Icy grape juice mixed with milk and cream." // fuck linters
