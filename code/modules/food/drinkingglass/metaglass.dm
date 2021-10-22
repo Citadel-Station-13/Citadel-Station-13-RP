@@ -961,5 +961,4 @@ Drinks Data
 	glass_icon_state = "applesmoothie"
 
 /datum/reagent/drink/grapesmoothie
-	glass_icon_state = "grapesmoothie"
-	
+	glass_icon_state = "grapesmoothie" // ignore this comment
