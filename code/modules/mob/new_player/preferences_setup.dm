@@ -256,6 +256,7 @@
 		current_species.create_organs(mannequin)
 		regen_limbs = 0
 	dress_preview_mob(mannequin)
+	mannequin.update_transform()
 	COMPILE_OVERLAYS(mannequin)
 
 	update_character_previews(new /mutable_appearance(mannequin))
