@@ -401,9 +401,9 @@
 				/obj/item/vampiric,
 				/obj/structure/closet/crate/science
 			),
-			prob(1);list(
-				/obj/item/archaeological_find
-			),
+			//prob(1);list(
+			//	/obj/item/archaeological_find
+			//),
 			prob(1);list(
 				/obj/item/melee/energy/sword,
 				/obj/item/melee/energy/sword,

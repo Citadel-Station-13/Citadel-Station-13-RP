@@ -826,7 +826,7 @@ var/list/name_to_material
 
 /datum/material/resin
 	name = "resin"
-	icon_colour = "#35343a"
+	icon_colour = "#261438"
 	icon_base = "resin"
 	dooropen_noise = 'sound/effects/attackblob.ogg'
 	door_icon_base = "resin"

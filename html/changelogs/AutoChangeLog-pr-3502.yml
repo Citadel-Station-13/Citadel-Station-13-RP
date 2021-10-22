@@ -1,4 +1,0 @@
-author: "UrsaMajora"
-delete-after: True
-changes: 
-  - code_imp: "Makes the shields depend on the variable powered, not density, so it doesn't swap density about."
