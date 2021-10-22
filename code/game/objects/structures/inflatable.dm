@@ -143,6 +143,12 @@
 		spawn(1) puncture()
 	return 1
 
+/obj/structure/inflatable/CtrlClick(mob/user)
+	inflate(user,src.loc)
+
+/obj/structure/inflatable/CtrlClick(mob/user)
+	deflate()
+
 /obj/item/inflatable/door/
 	name = "inflatable door"
 	desc = "A folded membrane which rapidly expands into a simple door on activation."
