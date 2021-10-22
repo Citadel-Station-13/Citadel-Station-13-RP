@@ -135,8 +135,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "br" = (
@@ -2008,12 +2008,13 @@
 	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass/talon,
 /obj/structure/sign/warning/airlock{
 	pixel_x = -31
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "qR" = (
@@ -2867,7 +2868,6 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "xH" = (
-/obj/structure/catwalk,
 /obj/structure/cable/green{
 	dir = 1;
 	icon_state = "1-2"
@@ -2875,9 +2875,6 @@
 /obj/machinery/alarm/talon{
 	dir = 8;
 	pixel_x = 22
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 10
 	},
 /obj/machinery/access_button{
 	command = "cycle_interior";
@@ -2888,6 +2885,10 @@
 	pixel_y = 26;
 	req_one_access = list(301)
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "xL" = (
@@ -4320,8 +4321,7 @@
 /obj/item/pen,
 /obj/machinery/alarm/talon{
 	dir = 8;
-	pixel_x = 22;
-	req_one_access = list(301)
+	pixel_x = 22
 	},
 /turf/simulated/floor/tiled/eris/steel,
 /area/talon/deckone/brig)
@@ -5078,10 +5078,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+/obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "NS" = (
@@ -5218,10 +5218,10 @@
 /turf/simulated/floor/tiled/eris/steel/cargo,
 /area/talon/deckone/workroom)
 "OY" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+/obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "Pc" = (
@@ -5651,11 +5651,11 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/deckone_starboard_aft_wing)
 "Ta" = (
-/obj/structure/catwalk,
-/obj/machinery/portable_atmospherics/canister/air/airlock,
-/obj/machinery/atmospherics/portables_connector/aux{
+/obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/effect/floor_decal/industrial/outline,
 /turf/simulated/floor/plating,
 /area/talon/maintenance/deckone_port)
 "Tc" = (
