@@ -374,6 +374,20 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	apply_layer(BLOOD_LAYER)
 
+/mob/living/carbon/human/proc/BloodyMouth()
+
+	var/image/both = image(icon = 'icons/effects/effects.dmi', icon_state = "nothing", layer = BODY_LAYER+BLOOD_LAYER)
+
+	//"lol", said the scorpion, "lmao"
+	var/image/bloodsies	= image(icon = species.get_blood_mask(src), icon_state = "redwings", layer = BODY_LAYER+BLOOD_LAYER)
+	bloodsies.color = src.species.blood_color
+	both.add_overlay(bloodsies)
+
+	overlays_standing[BLOOD_LAYER] = both
+
+	apply_layer(BLOOD_LAYER)
+
+
 //UNDERWEAR OVERLAY
 /mob/living/carbon/human/proc/update_underwear()
 	if(QDESTROYING(src))
