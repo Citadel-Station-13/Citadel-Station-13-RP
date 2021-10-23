@@ -40937,9 +40937,6 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
-/obj/structure/bed/chair/bay/shuttle{
-	dir = 1
-	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
