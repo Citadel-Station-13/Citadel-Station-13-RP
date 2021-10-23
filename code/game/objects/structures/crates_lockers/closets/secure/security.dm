@@ -165,6 +165,7 @@
 		/obj/item/clothing/under/oricon/mildress/marine/command/fake,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
+		/obj/item/clothing/suit/storage/vest/hos_overcoat,
 		/obj/item/clothing/suit/dress/marine/command/hos,
 		/obj/item/clothing/head/helmet/dermal,
 		/obj/item/radio/headset/heads/hos,
@@ -173,7 +174,9 @@
 		/obj/item/storage/belt/security,
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/hos,
+		/obj/item/clothing/shoes/boots/winter/security,
+		/obj/item/clothing/under/rank/head_of_security/turtleneck,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/under/bodysuit/bodysuitseccom)
 
@@ -200,15 +203,11 @@
 		/obj/item/storage/box/flashbangs,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
+		/obj/item/gun/projectile/sec/wood,
 		/obj/item/gun/energy/gun/multiphase,
 		/obj/item/melee/telebaton,
-		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
-		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/gps/security/hos,
-		/obj/item/flashlight/maglight,
-		/obj/item/clothing/under/rank/head_of_security/turtleneck)
-
+		/obj/item/flashlight/maglight)
 
 /obj/structure/closet/secure_closet/warden
 	name = "warden's locker"
