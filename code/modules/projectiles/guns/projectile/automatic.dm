@@ -548,9 +548,9 @@ obj/item/gun/projectile/automatic/automat/taj
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
 	slot_flags = SLOT_BACK
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/mcompressedbio
+	magazine_type = /obj/item/ammo_magazine/mcompressedbio/large/banana
 	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/large/banana)
-	projectile_type = /obj/item/projectile/bullet/honker/lethal
+	projectile_type = /obj/item/projectile/bullet/organic
 
 	one_handed_penalty = 30
 
@@ -560,10 +560,9 @@ obj/item/gun/projectile/automatic/automat/taj
 //		list(mode_name="short bursts", 	burst=5, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30,-30,-45), dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2)),
 		)
 
-/obj/item/gun/projectile/automatic/clown_rifle/update_icon(var/ignore_inhands)
+/obj/item/gun/projectile/automatic/clown_rifle/update_icon()
 	..()
-	if(istype(ammo_magazine,/obj/item/ammo_magazine/mcompressedbio/large))
-		return
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
 	else
-		icon_state = (ammo_magazine)? "clownrifle" : "clownrifle-empty"
-	if(!ignore_inhands) update_held_icon()
+		icon_state = "[initial(icon_state)]-empty"

@@ -16,7 +16,7 @@
 
 	for(var/obj/structure/lattice/LAT in src.loc)
 		if(LAT != src)
-			stack_trace("Found multiple lattices at '[log_info_line(loc)]'")
+			//stack_trace("Found multiple lattices at '[log_info_line(loc)]'")
 			return INITIALIZE_HINT_QDEL
 	icon = 'icons/obj/smoothlattice.dmi'
 	icon_state = "latticeblank"

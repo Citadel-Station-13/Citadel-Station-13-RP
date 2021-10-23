@@ -35,7 +35,7 @@
 			affected_mob = null
 		return
 
-	if(stage < 5 && prob(3))
+	if(stage < 5 && prob(2))
 		stage++
 		spawn(0)
 			RefreshInfectionImage(affected_mob)

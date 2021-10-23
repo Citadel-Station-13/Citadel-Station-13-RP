@@ -142,11 +142,11 @@
 
 	l_ear = /obj/item/radio/headset/talon
 	glasses = /obj/item/clothing/glasses/sunglasses
-	uniform = /obj/item/clothing/under/rank/captain
+	uniform = /obj/item/clothing/under/rank/captain/talon
 	shoes = /obj/item/clothing/shoes/brown
-	backpack = /obj/item/storage/backpack/captain
-	satchel_one = /obj/item/storage/backpack/satchel/cap
-	messenger_bag = /obj/item/storage/backpack/messenger/com
+	backpack = /obj/item/storage/backpack/captain/talon
+	satchel_one = /obj/item/storage/backpack/satchel/cap/talon
+	messenger_bag = /obj/item/storage/backpack/messenger/com/talon
 
 /decl/hierarchy/outfit/job/talon_pilot
 	name = OUTFIT_JOB_NAME("Talon Pilot")

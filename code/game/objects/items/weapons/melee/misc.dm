@@ -177,3 +177,10 @@
 	edge = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitsound = 'sound/items/bikehorn.ogg'
+
+//Clown Dagger
+/obj/item/melee/clownop
+	name = "clown knife"
+	desc = "This curved blade is painted to look like a banana, disguising its deadly edge."
+	icon_state = "clownrender"
+	item_state = "clown_dagger"
