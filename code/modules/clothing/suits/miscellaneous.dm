@@ -1114,3 +1114,16 @@ obj/item/clothing/suit/kamishimo
 	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
 	body_parts_covered = UPPER_TORSO|ARMS
 	valid_accessory_slots = ACCESSORY_SLOT_UTILITY
+
+/obj/item/clothing/suit/imperial_replica
+	name = "replica imperial soldier armor"
+	desc = "Made out of an especially light metal, it lets you conquer in style. This appears less sturdy than the authentic article."
+	icon_state = "ge_armor"
+	icon = 'icons/obj/clothing/suits_vr.dmi'
+	icon_override = 'icons/mob/suit_vr.dmi'
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/suit/imperial/officer_replica
+	name = "replica imperial officer armor"
+	desc = "Not all heroes wear capes, but it'd be cooler if they did. This appears less sturdy than the authentic article."
+	icon_state = "ge_armorcent"
