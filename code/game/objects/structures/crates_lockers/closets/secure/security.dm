@@ -595,3 +595,4 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	if(prob(75))
 		new /obj/item/storage/backpack/dufflebag/sec(src)
 	return ..()
+	

@@ -1203,3 +1203,4 @@
 		var/obj/item/clothing/accessory/holster_type = holster
 		holsters[initial(holster_type.name)] = holster_type
 	gear_tweaks += new/datum/gear_tweak/path(sortTim(holsters, /proc/cmp_text_asc))
+	
