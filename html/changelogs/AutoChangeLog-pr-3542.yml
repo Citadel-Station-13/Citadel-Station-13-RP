@@ -1,6 +1,0 @@
-author: "yeayea130"
-delete-after: True
-changes: 
-  - rscadd: "Added electric RCD to engineering hound module"
-  - rscadd: "Added plasma cutter mining tool to engineering hound module"
-  - rscdel: "Removed pickaxe module from Engineering hound."
