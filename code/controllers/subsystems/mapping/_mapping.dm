@@ -28,13 +28,9 @@ SUBSYSTEM_DEF(mapping)
 	/// Cached map name for statpanel
 	var/static/stat_map_name = "Loading..."
 
-	/// Lookup list for random generated IDs.
-	var/static/list/random_generated_ids_by_original = list()
-	/// next id for separating obfuscated ids.
-	var/static/obfuscation_next_id = 1
+	// Obfuscation Module
 	/// "secret" key
-	var/static/obfuscation_secret
-
+	var/obfuscation_secret
 
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
@@ -45,10 +41,6 @@ SUBSYSTEM_DEF(mapping)
 		config = load_map_config(error_if_missing = FALSE)
 #endif
 	stat_map_name = config.map_name
-
-/datum/controller/subsystem/mapping/PreInit()
-	if(!obfuscation_secret)
-		obfuscation_secret = md5(GUID())		//HAH! Guess this!
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	HACK_LoadMapConfig()
