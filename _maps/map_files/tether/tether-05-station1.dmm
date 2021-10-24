@@ -18647,20 +18647,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
-"bkl" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "bkp" = (
 /obj/machinery/vending/assist{
 	dir = 4
@@ -19679,7 +19665,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/computer/operating,
+/obj/machinery/vitals_monitor,
 /turf/simulated/floor/tiled/eris/dark/violetcorener,
 /area/shuttle/medivac/general)
 "bVn" = (
@@ -20138,17 +20124,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_lobby)
-"cuy" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 5
-	},
-/obj/structure/bed/chair/shuttle{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "cuX" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
@@ -20269,21 +20244,6 @@
 "cBh" = (
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
-"cBG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloorwhite/corner{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/paleblue/bordercorner{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "cBM" = (
 /obj/machinery/computer/aifixer,
 /obj/machinery/camera/network/command,
@@ -21207,10 +21167,6 @@
 	},
 /turf/space,
 /area/space)
-"eIZ" = (
-/obj/item/radio/intercom/department/medbay,
-/turf/simulated/wall/rshull,
-/area/shuttle/medivac/general)
 "eKE" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4;
@@ -22218,15 +22174,6 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/cockpit)
-"gSF" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "gSN" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -22297,6 +22244,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/dock_one)
+"gXg" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
 "hcl" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Screening Area";
@@ -22312,6 +22268,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/customs)
+"hfr" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 5
+	},
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
 "hjC" = (
 /obj/structure/railing{
 	dir = 4
@@ -22710,6 +22677,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
+"ihg" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
 "iip" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -23057,6 +23033,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/customs)
+"iWJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
 "iZq" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -23151,6 +23131,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
+"jkm" = (
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "jln" = (
@@ -23974,11 +23957,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
-"lvB" = (
-/obj/effect/floor_decal/borderfloorwhite/corner,
-/obj/effect/floor_decal/corner/paleblue/bordercorner,
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "lzl" = (
 /obj/machinery/access_button{
 	command = "cycle_interior";
@@ -24858,6 +24836,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
+"nRz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
 "nSf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -25182,6 +25175,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/stairs_one)
+"oJJ" = (
+/obj/item/radio/intercom/department/medbay,
+/turf/simulated/wall/rshull,
+/area/shuttle/medivac/general)
 "oKp" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -26322,10 +26319,6 @@
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
-"rxa" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/universal,
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "rxf" = (
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 9
@@ -26372,15 +26365,6 @@
 	icon_state = "techmaint"
 	},
 /area/maintenance/station/eng_lower)
-"rym" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "rys" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -26728,6 +26712,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_gen)
+"sdA" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/structure/handrail{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
 "shA" = (
 /obj/machinery/message_server,
 /obj/machinery/camera/network/command,
@@ -26814,21 +26813,6 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/effect/map_helper/airlock/atmos/pump_out_external,
 /turf/simulated/floor/airless,
-/area/shuttle/medivac/general)
-"sqo" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
-/obj/structure/handrail{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "sqw" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -26938,6 +26922,20 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
+"sBM" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
 "sCN" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -28215,9 +28213,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
-"vrI" = (
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "vyI" = (
 /mob/living/simple_mob/animal/passive/bird/parrot/polly,
 /turf/simulated/floor/outdoors/grass/forest,
@@ -28413,6 +28408,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
+"vRZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
 "vVX" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/aux{
@@ -28421,10 +28420,6 @@
 /obj/effect/map_helper/airlock/atmos/pump_out_external,
 /turf/simulated/floor/airless,
 /area/shuttle/securiship/general)
-"vXH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "vYM" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -28804,6 +28799,15 @@
 	},
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/cockpit)
+"wXq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/shuttle/medivac/general)
 "wZd" = (
 /obj/machinery/autolathe,
 /turf/simulated/floor/tiled,
@@ -29031,15 +29035,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
-"xxt" = (
-/obj/effect/floor_decal/borderfloorwhite/corner{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/paleblue/bordercorner{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/white,
-/area/shuttle/medivac/general)
 "xzj" = (
 /obj/machinery/light{
 	dir = 4
@@ -29184,6 +29179,11 @@
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/eris/techmaint_panels,
+/area/shuttle/medivac/general)
+"xMb" = (
+/obj/effect/floor_decal/borderfloorwhite/corner,
+/obj/effect/floor_decal/corner/paleblue/bordercorner,
+/turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "xMk" = (
 /obj/structure/cable/green{
@@ -44702,7 +44702,7 @@ kXR
 pzR
 wLj
 vnU
-eIZ
+oJJ
 aaa
 aaa
 aaa
@@ -44841,7 +44841,7 @@ qUd
 teS
 xJU
 uGO
-bkl
+sBM
 bTx
 uum
 dRg
@@ -44983,7 +44983,7 @@ dRg
 dRg
 dRg
 jjv
-sqo
+sdA
 qFZ
 dRg
 dRg
@@ -45124,7 +45124,7 @@ aaa
 dRg
 jKs
 dAr
-cBG
+nRz
 vni
 oZD
 lAJ
@@ -45265,11 +45265,11 @@ aaa
 aaa
 ewg
 rIy
-vrI
+jkm
 sYu
 rlb
-vXH
-cuy
+iWJ
+hfr
 eGb
 aaa
 aaa
@@ -45407,10 +45407,10 @@ aaa
 aaa
 ewg
 vMB
-vrI
+jkm
 fxw
 nOq
-rxa
+vRZ
 vgJ
 eGb
 aaa
@@ -45549,10 +45549,10 @@ aaa
 aaa
 jzW
 vKK
-xxt
-rym
-gSF
-lvB
+gXg
+wXq
+ihg
+xMb
 dMj
 jzW
 aaa
