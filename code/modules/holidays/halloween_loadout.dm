@@ -84,6 +84,58 @@
 	name = "Costume Head - Ankh"
 	path = /obj/item/clothing/head/ankh
 
+/datum/gear/seasonal/halloween/costumes/head/roman
+	name = "Costume Head - Roman Galea"
+	path = /obj/item/clothing/head/roman_replica
+
+/datum/gear/seasonal/halloween/costumes/head/romancent
+	name = "Costume Head - Roman Crested Galea"
+	path = /obj/item/clothing/head/romancent_replica
+
+/datum/gear/seasonal/halloween/costumes/head/imperial
+	name = "Costume Head - Imperial Soldier Helmet"
+	path = /obj/item/clothing/head/imperial_replica
+
+/datum/gear/seasonal/halloween/costumes/head/imperialofficer
+	name = "Costume Head - Imperial Officer Helmet"
+	path = /obj/item/clothing/head/imperial_officer_replica
+
+/datum/gear/seasonal/halloween/costumes/head/knight
+	name = "Costume Head - Knight"
+	path = /obj/item/clothing/head/medievalfake
+
+/datum/gear/seasonal/halloween/costumes/head/knight/blue
+	name = "Costume Head - Knight (Blue)"
+	path = /obj/item/clothing/head/medievalfake/blue
+
+/datum/gear/seasonal/halloween/costumes/head/knight/green
+	name = "Costume Head - Knight (Green)"
+	path = /obj/item/clothing/head/medievalfake/green
+
+/datum/gear/seasonal/halloween/costumes/head/knight/orange
+	name = "Costume Head - Knight (Orange)"
+	path = /obj/item/clothing/head/medievalfake/orange
+
+/datum/gear/seasonal/halloween/costumes/head/knight/red
+	name = "Costume Head - Knight (Red)"
+	path = /obj/item/clothing/head/medievalfake/red
+
+/datum/gear/seasonal/halloween/costumes/head/knight/crusader
+	name = "Costume Head - Knight Crusader"
+	path = /obj/item/clothing/head/medievalfake/crusader
+
+/datum/gear/seasonal/halloween/costumes/head/knight/crusader/horned
+	name = "Costume Head - Knight Crusader (Horned)"
+	path = /obj/item/clothing/head/medievalfake/crusader/horned
+
+/datum/gear/seasonal/halloween/costumes/head/knight/crusader/templar
+	name = "Costume Head - Knight Crusader (Templar)"
+	path = /obj/item/clothing/head/medievalfake/crusader/templar
+
+/datum/gear/seasonal/halloween/costumes/head/knight/crusader/winged
+	name = "Costume Head - Knight Crusader (Winged)"
+	path = /obj/item/clothing/head/medievalfake/crusader/winged
+
 // Mask
 /datum/gear/seasonal/halloween/costumes/mask
 	name = "Costume Mask - Fake Moustache"
@@ -189,6 +241,58 @@
 /datum/gear/seasonal/halloween/costumes/suit/bunny
 	name = "Costume Suit - Bunny"
 	path = /obj/item/clothing/suit/bunny
+
+/datum/gear/seasonal/halloween/costumes/suit/imperial
+	name = "Costume Suit - Replica Imperial Soldier Armor"
+	path = /obj/item/clothing/suit/imperial_replica
+
+/datum/gear/seasonal/halloween/costumes/suit/imperial_officer
+	name = "Costume Suit - Replica Imperial Officer Armor"
+	path = /obj/item/clothing/suit/imperial/officer_replica
+
+/datum/gear/seasonal/halloween/costumes/suit/knight
+	name = "Costume Suit - Knight's Plate Armor"
+	path = /obj/item/clothing/suit/medievalfake
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/blue
+	name = "Costume Suit - Knight's Plate Armor (Blue)"
+	path = /obj/item/clothing/suit/medievalfake/blue
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/green
+	name = "Costume Suit - Knight's Plate Armor (Green)"
+	path = /obj/item/clothing/suit/medievalfake/green
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/orange
+	name = "Costume Suit - Knight's Plate Armor (Orange)"
+	path = /obj/item/clothing/suit/medievalfake/orange
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/red
+	name = "Costume Suit - Knight's Plate Armor (Red)"
+	path = /obj/item/clothing/suit/medievalfake/red
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/crusader
+	name = "Costume Suit - Knight's Crusader Armor"
+	path = /obj/item/clothing/suit/medievalfake/crusader
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/crusader/dark
+	name = "Costume Suit - Knight's Crusader Armor (Dark)"
+	path = /obj/item/clothing/suit/medievalfake/crusader/dark
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/crusader/cross
+	name = "Costume Suit - Knight's Crusader Armor (Cross)"
+	path = /obj/item/clothing/suit/medievalfake/crusader/cross
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/crusader/hospitaller
+	name = "Costume Suit - Knight's Crusader Armor (Hospitaller)"
+	path = /obj/item/clothing/suit/medievalfake/crusader/cross/hospitaller
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/crusader/templar
+	name = "Costume Suit - Knight's Crusader Armor (Templar)"
+	path = /obj/item/clothing/suit/medievalfake/crusader/cross/templar
+
+/datum/gear/seasonal/halloween/costumes/suit/knight/crusader/teutonic
+	name = "Costume Suit - Knight's Crusader Armor (Teutonic)"
+	path = /obj/item/clothing/suit/medievalfake/crusader/cross/teutonic
 
 // Uniform
 /datum/gear/seasonal/halloween/costumes/under
@@ -308,6 +412,14 @@
 	name = "Costume Uniform - Maid (Janitor)"
 	path = /obj/item/clothing/under/dress/maid/janitor
 
+/datum/gear/seasonal/halloween/costumes/under/roman
+	name = "Costume Uniform - Roman Lorica"
+	path = /obj/item/clothing/under/roman
+
+/datum/gear/seasonal/halloween/costumes/under/imperial
+	name = "Costume Uniform - Imperial Soldier"
+	path = /obj/item/clothing/under/imperial
+
 // Shoes
 /datum/gear/seasonal/halloween/costumes/shoes
 	name = "Costume Shoes - Cueball Man"
@@ -322,6 +434,10 @@
 	name = "Costume Shoes - Yellow Singer"
 	path = /obj/item/clothing/shoes/boots/ysing
 
+/datum/gear/seasonal/halloween/costumes/shoes/roman
+	name = "Costume Shoes - Roman Caligae"
+	path = /obj/item/clothing/shoes/roman
+
 // Accessories
 /datum/gear/seasonal/halloween/costumes/accessory
 	name = "Costume Accessories - Cueball Man"
@@ -335,3 +451,23 @@
 /datum/gear/seasonal/halloween/costumes/accessory/staff
 	name = "Costume Accessories - Wizard Staff"
 	path = /obj/item/staff
+
+/datum/gear/seasonal/halloween/costumes/accessory/roman_shield
+	name = "Costume Accessories - Replica Scutum"
+	path = /obj/item/shield/fluff/roman
+
+/datum/gear/seasonal/halloween/costumes/accessory/crusader
+	name = "Costume Accessories - Crusader Tabard"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade
+
+/datum/gear/seasonal/halloween/costumes/accessory/crusader/templar
+	name = "Costume Accessories - Crusader Tabard (Templar)"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/templar
+
+/datum/gear/seasonal/halloween/costumes/accessory/crusader/hospitaller
+	name = "Costume Accessories - Crusader Tabard (Hospitaller)"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/hospitaller
+
+/datum/gear/seasonal/halloween/costumes/accessory/crusader/teutonic
+	name = "Costume Accessories - Crusader Tabard (Teutonic)"
+	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom/crusade/teutonic

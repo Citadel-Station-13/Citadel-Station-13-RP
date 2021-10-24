@@ -1,4 +1,0 @@
-author: "UrsaMajora"
-delete-after: True
-changes: 
-  - bugfix: "CI integration check shouldn't fail randomly."

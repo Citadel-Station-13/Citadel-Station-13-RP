@@ -127,8 +127,13 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		update_tail_showing()
 		return
 
-	var/desired_scale_x = size_multiplier
-	var/desired_scale_y = size_multiplier
+	var/desired_scale_x = size_multiplier * icon_scale_x
+	var/desired_scale_y = size_multiplier * icon_scale_y
+	desired_scale_x *= species.icon_scale_x
+	desired_scale_y *= species.icon_scale_y
+	appearance_flags |= PIXEL_SCALE
+	if(fuzzy)
+		appearance_flags &= ~PIXEL_SCALE
 
 	var/matrix/M = matrix()
 	var/anim_time = 3
@@ -143,7 +148,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			M.Turn(-90)
 		else
 			M.Turn(90)
-		M.Scale(desired_scale_x, desired_scale_y)
+		M.Scale(desired_scale_y, desired_scale_x)
 		M.Translate(1,-6)
 		layer = MOB_LAYER -0.01 // Fix for a byond bug where turf entry order no longer matters
 	else

@@ -81,6 +81,7 @@
 								"Cybernetics",
 								"Implants",
 								"Control Interfaces",
+								"Components",
 								"Other",
 								"Misc",
 								)
