@@ -101,7 +101,6 @@ var/const/RADIO_LOW_FREQ	= 1200
 var/const/PUBLIC_LOW_FREQ	= 1441
 var/const/PUBLIC_HIGH_FREQ	= 1489
 var/const/RADIO_HIGH_FREQ	= 1600
-var/const/RADIO_TRAP_FREQ	= 7420
 
 var/const/BOT_FREQ	= 1447
 var/const/COMM_FREQ = 1353
@@ -212,7 +211,6 @@ var/const/RADIO_AIRLOCK = "radio_airlock"
 var/const/RADIO_SECBOT = "radio_secbot"
 var/const/RADIO_MULEBOT = "radio_mulebot"
 var/const/RADIO_MAGNETS = "radio_magnet"
-var/const/RADIO_TRAP = "radio_trap"
 
 var/global/datum/controller/radio/radio_controller
 
