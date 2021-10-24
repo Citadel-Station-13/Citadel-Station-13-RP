@@ -43,7 +43,7 @@
 	poison_resist = 1
 
 	movement_cooldown = 0.5
-	melee_attack_delay = 8
+	base_attack_cooldown = 10
 
 	var/mob/living/carbon/human/humanform
 	var/obj/item/organ/internal/nano/refactory/refactory
@@ -105,7 +105,7 @@
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
 		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 35
-		melee_attack_delay = 8 + max(0, (maxHealth - health) - 100) / 15
+		base_attack_cooldown = 10 + max(0, (maxHealth - health) - 100) / 15
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -247,25 +247,8 @@
 				return
 		visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
 		I.forceMove(vore_selected)
-		
-	else if(melee_attack_delay)
-		melee_pre_animation(A)
-		handle_attack_delay(A, melee_attack_delay) // This will sleep this proc for a bit, which is why waitfor is false.
-
-	setClickCooldown(get_attack_speed())
-
-	. = do_attack(A)
-
-	if(melee_attack_delay)
-		melee_post_animation(A)
-		
 	else
 		return ..()
-
-/mob/living/simple_mob/protean_blob/melee_pre_animation(atom/A)
-	do_windup_animation(A, melee_attack_delay)
-
-/mob/living/simple_mob/protean_blob/melee_post_animation(atom/A)
 
 /mob/living/simple_mob/protean_blob/attackby(var/obj/item/O, var/mob/user)
 	if(refactory && istype(O,/obj/item/stack/material))
