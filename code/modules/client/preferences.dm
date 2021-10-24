@@ -156,6 +156,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/lastnews // Hash of last seen lobby news content.
 
 	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
+	var/directory_tag = "Unset" //Sorting tag to use in character directory
+	var/directory_erptag = "Unset"	//ditto, but for non-vore scenes
+	var/directory_ad = ""		//Advertisement stuff to show in character directory.
 	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
 
 	// Should we automatically fit the viewport?
