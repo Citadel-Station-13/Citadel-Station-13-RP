@@ -879,6 +879,103 @@
 	category = "Misc"
 
 /*
+* Printable Internal Components
+*/
+
+/datum/design/item/mecha_component
+	name = "Mecha Actuator"
+	id = "mactuator"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
+	build_type = MECHFAB
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500)
+	build_path = /obj/item/mecha_parts/component/actuator
+	category = "Components"
+
+/datum/design/item/mecha_component/actuator_high
+	name = "Mecha Actuator - High Speed"
+	id = "mactuatorhigh"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 4000, "gold" = 10000)
+	build_path = /obj/item/mecha_parts/component/actuator/hispeed
+
+/datum/design/item/mecha_component/armor
+	name = "Mecha Plating"
+	id = "marmor"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 2000)
+	build_path = /obj/item/mecha_parts/component/armor
+
+/datum/design/item/mecha_component/armor/blast
+	name = "Mecha Plating - Blast Resistant"
+	id = "marmorblast"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 500, "plasteel" = 2000)
+	build_path = /obj/item/mecha_parts/component/armor/mining
+
+/datum/design/item/mecha_component/armor/lightweight
+	name = "Mecha Plating - Lightweight"
+	id = "marmorlight"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "plastic" = 5000, "gold" = 2000)
+	build_path = /obj/item/mecha_parts/component/armor/lightweight
+
+/datum/design/item/mecha_component/armor/reinforced
+	name = "Mecha Plating - Reinforced"
+	id = "marmorreinf"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6, TECH_COMBAT = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 15000, "plasteel" = 5000, "uranium" = 5000)
+	build_path = /obj/item/mecha_parts/component/armor/reinforced
+
+/datum/design/item/mecha_component/electrical
+	name = "Mecha Electrical Harness"
+	id = "melectrical"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_POWER = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2000, "plastic" = 1000)
+	build_path = /obj/item/mecha_parts/component/electrical
+
+/datum/design/item/mecha_component/electrical/high_current
+	name = "Mecha Electrical Harness - High Current"
+	id = "melectricalhigh"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_POWER = 5, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 4000, "plastic" = 5000, "gold" = 5000)
+	build_path = /obj/item/mecha_parts/component/electrical
+
+/datum/design/item/mecha_component/hull
+	name = "Mecha Hull"
+	id = "mhull"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 500)
+	build_path = /obj/item/mecha_parts/component/hull
+
+/datum/design/item/mecha_component/hull/durable
+	name = "Mecha Hull - Durable"
+	id = "mhulldura"
+	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 500, "plasteel" = 10000)
+	build_path = /obj/item/mecha_parts/component/hull/durable
+
+/datum/design/item/mecha_component/hull/lightweight
+	name = "Mecha Hull - Lightweight"
+	id = "mhulllight"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 500, "plastic" = 3000)
+	build_path = /obj/item/mecha_parts/component/hull/lightweight
+
+/datum/design/item/mecha_component/gas
+	name = "Mecha Life-Support"
+	id = "mgas"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2, TECH_BIO = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 3000)
+	build_path = /obj/item/mecha_parts/component/gas
+
+/datum/design/item/mecha_component/gas/reinforced
+	name = "Mecha Life-Support - Reinforced"
+	id = "mgasreinf"
+	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_BIO = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 3000, "silver" = 4000)
+	build_path = /obj/item/mecha_parts/component/gas/reinforced
+
+/*
  * Non-Mech Vehicles
  */
 

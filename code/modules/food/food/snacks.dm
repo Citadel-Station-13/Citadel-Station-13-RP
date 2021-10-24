@@ -1245,13 +1245,25 @@
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/monkeykabob
+	name = "Monkey-kabob"
+	icon_state = "kabob"
+	desc = "Delicious monkey meat, on a stick."
+	trash = /obj/item/stack/rods
+	filling_color = "#A85340"
+
+/obj/item/reagent_containers/food/snacks/monkeykabob/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/meatkabob
 	name = "Meat-kabob"
 	icon_state = "kabob"
 	desc = "Delicious meat, on a stick."
 	trash = /obj/item/stack/rods
 	filling_color = "#A85340"
 
-/obj/item/reagent_containers/food/snacks/monkeykabob/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/meatkabob/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 8)
 	bitesize = 2

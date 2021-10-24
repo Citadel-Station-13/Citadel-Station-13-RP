@@ -270,8 +270,8 @@
 /area/submap/cave/cultmine)
 "bb" = (
 /obj/machinery/porta_turret/alien/destroyed{
-	icon_state = "destroyed_target_prism";
-	dir = 6
+	dir = 6;
+	icon_state = "destroyed_target_prism"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
@@ -288,8 +288,8 @@
 "be" = (
 /obj/effect/decal/remains/ribcage,
 /obj/machinery/porta_turret/alien/destroyed{
-	icon_state = "destroyed_target_prism";
-	dir = 10
+	dir = 10;
+	icon_state = "destroyed_target_prism"
 	},
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -393,7 +393,6 @@
 /area/submap/cave/cultmine)
 "bA" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	autoclose = 1;
 	dir = 2;
 	id_tag = null;
 	name = "Cafe";
@@ -522,8 +521,7 @@
 /area/submap/cave/cultmine)
 "bX" = (
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
@@ -701,17 +699,12 @@
 /obj/structure/cult/forge,
 /turf/simulated/floor/cult,
 /area/submap/cave/cultmine)
-"cJ" = (
-/obj/item/archaeological_find,
-/turf/simulated/floor/cult,
-/area/submap/cave/cultmine)
 "cK" = (
 /obj/structure/cult/tome,
 /turf/simulated/floor/cult,
 /area/submap/cave/cultmine)
 "cL" = (
 /obj/structure/bed/chair/wood/wings{
-	icon_state = "wooden_chair_wings";
 	dir = 8
 	},
 /obj/effect/decal/remains/mummy1,
@@ -719,7 +712,6 @@
 /area/submap/cave/cultmine)
 "cM" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	autoclose = 1;
 	dir = 2;
 	id_tag = null;
 	name = "Medbay";
@@ -756,9 +748,7 @@
 	},
 /obj/structure/sink{
 	dir = 8;
-	icon_state = "sink";
-	pixel_x = -12;
-	pixel_y = 0
+	pixel_x = -12
 	},
 /obj/machinery/light/small,
 /obj/random/toy,
@@ -771,9 +761,7 @@
 	},
 /obj/structure/sink{
 	dir = 8;
-	icon_state = "sink";
-	pixel_x = -12;
-	pixel_y = 0
+	pixel_x = -12
 	},
 /obj/random/soap,
 /obj/machinery/light/small,
@@ -1678,7 +1666,7 @@ cu
 cu
 cu
 cD
-cJ
+cx
 cx
 cL
 cu
@@ -1714,7 +1702,7 @@ cA
 cx
 di
 cx
-cJ
+cx
 cu
 ct
 "}
@@ -1815,7 +1803,7 @@ cu
 cu
 cE
 cx
-cJ
+cx
 cu
 ct
 ct

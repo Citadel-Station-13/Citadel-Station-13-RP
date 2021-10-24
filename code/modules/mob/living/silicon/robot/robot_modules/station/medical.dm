@@ -113,6 +113,9 @@
 	src.modules += new /obj/item/dogborg/jaws/small(src) //In case a patient is being attacked by carp.
 	src.modules += new /obj/item/dogborg/boop_module(src) //Boop the crew.
 	src.modules += new /obj/item/healthanalyzer(src) // See who's hurt specificially.
+	src.modules += new /obj/item/autopsy_scanner(src)
+	src.modules += new /obj/item/roller_holder(src) // Sometimes you just can't buckle someone to yourself because of taurcode. this is for those times.
+	src.modules += new /obj/item/reagent_scanner/adv(src)
 	src.modules += new /obj/item/reagent_containers/syringe(src) //In case the chemist is nice!
 	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)//For holding the chemicals when the chemist is nice
 	// src.modules += new /obj/item/sleevemate(src) //Lets them scan people.

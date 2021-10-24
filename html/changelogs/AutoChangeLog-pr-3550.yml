@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - rscadd: "Adds CtrlClick inflate/deflate for inflatables"

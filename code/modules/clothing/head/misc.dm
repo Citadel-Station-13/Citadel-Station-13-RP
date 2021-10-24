@@ -623,3 +623,27 @@
 	desc = "Perfect for when you want to deliver a stern look from on high."
 	icon_state = "ankh"
 	body_parts_covered = 0
+
+/obj/item/clothing/head/roman_replica
+	name = "Roman Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman"
+
+/obj/item/clothing/head/romancent_replica
+	name = "Roman Crested Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman_c"
+
+/obj/item/clothing/head/imperial_replica
+	name = "imperial soldier helmet"
+	desc = "Reproduction headgear fashioned after the standard helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helm"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+
+/obj/item/clothing/head/imperial_officer_replica
+	name = "imperial officer helmet"
+	desc = "Reproduction headgear fashioned after the officer's helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helmcent"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'

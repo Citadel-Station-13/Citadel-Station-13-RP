@@ -81,8 +81,10 @@
 								"Cybernetics",
 								"Implants",
 								"Control Interfaces",
+								"Components",
 								"Other",
 								"Misc",
+								"Augments"
 								)
 
 /obj/machinery/mecha_part_fabricator/Initialize()
