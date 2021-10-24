@@ -127,8 +127,13 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		update_tail_showing()
 		return
 
-	var/desired_scale_x = size_multiplier
-	var/desired_scale_y = size_multiplier
+	var/desired_scale_x = size_multiplier * icon_scale_x
+	var/desired_scale_y = size_multiplier * icon_scale_y
+	desired_scale_x *= species.icon_scale_x
+	desired_scale_y *= species.icon_scale_y
+	appearance_flags |= PIXEL_SCALE
+	if(fuzzy)
+		appearance_flags &= ~PIXEL_SCALE
 
 	var/matrix/M = matrix()
 	var/anim_time = 3
@@ -143,7 +148,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			M.Turn(-90)
 		else
 			M.Turn(90)
-		M.Scale(desired_scale_x, desired_scale_y)
+		M.Scale(desired_scale_y, desired_scale_x)
 		M.Translate(1,-6)
 		layer = MOB_LAYER -0.01 // Fix for a byond bug where turf entry order no longer matters
 	else
@@ -1116,6 +1121,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		apply_layer(SURGERY_LAYER)
 
 /mob/living/carbon/human/proc/get_wing_image() //redbull gives you wings
+	var/icon/grad_swing
 	if(QDESTROYING(src))
 		return
 
@@ -1129,7 +1135,13 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if(wing_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
 		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : wing_style.icon_state)
 		if(wing_style.do_colouration)
+			if(grad_wingstyle)
+				grad_swing = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])
+				grad_swing.Blend(wing_s, ICON_AND)
+				grad_swing.Blend(rgb(r_gradwing, g_gradwing, b_gradwing), ICON_MULTIPLY)
 			wing_s.Blend(rgb(src.r_wing, src.g_wing, src.b_wing), wing_style.color_blend_mode)
+		if(grad_swing)
+			wing_s.Blend(grad_swing, ICON_OVERLAY)
 		if(wing_style.extra_overlay)
 			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay)
 			overlay.Blend(rgb(src.r_wing2, src.g_wing2, src.b_wing2), wing_style.color_blend_mode)

@@ -128,18 +128,17 @@ var/global/list/latejoin_talon = list()
 	freq_listening = list(PUB_FREQ, TALON_FREQ)
 
 /obj/item/paper/talon_shields
-	name = "to whatever asshole"
-	info = {"to whatever <b>asshole</b> keeps resetting the shield generator,<br>\
-please stop fucking around before you get us all killed. thanks.<br>\
+	name = "To whatever asshole"
+	info = {"To whatever <b>asshole</b> keeps resetting the shield generator,<br>\
+Please stop fucking around before you get us all killed. thanks.<br>\
 <br>\
-to whoever has to fix this,<br>\
-humanoid lifeforms <b>off</b> so we can get outside unless someone is trying to kill us,<br>\
-atmospheric thing <b>off</b> unless all the air is leaving,<br>\
-hull shield <b>on</b> because it saves a lot of power,<br>\
-the last one <b>on</b> so it covers deck one,<br>\
-radius of 26 is pretty good,<br>\
-adjust input cap so it doesn't fuck the rest of the ship<br>\
-good luck<br>\
+To whoever has to fix this,<br>\
+Radius to <b>60</b> to cover the entire ship.<br>\
+Z-level <b>1</b> so that it can cover both levels.<br>\
+Charge rate <b>0.9</b> so that it can charge decently fast.<br>\
+Max strength between <b>2-10</b> depending on what to expect, from dust to meteors.</br>\
+<b>Max out</b> the Capacitor. Don't question it. Just do it.</br>\
+Good luck<br>\
 <br>\
 <i>Harry Townes</i>"}
 
@@ -186,6 +185,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /obj/machinery/power/apc/talon
 	req_access = list()
 	req_one_access = list(access_talon)
+	alarms_hidden = 1
 
 /obj/machinery/power/apc/talon/hyper
 	cell_type = /obj/item/cell/hyper
@@ -193,6 +193,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /obj/machinery/alarm/talon
 	req_access = list()
 	req_one_access = list(access_talon)
+	alarms_hidden = 1
 
 /obj/machinery/door/firedoor/glass/talon
 	req_access = list()
@@ -257,7 +258,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 	// closet_appearance = /decl/// closet_appearance/secure_closet/talon/captain
 
 	starts_with = list(
-		/obj/item/storage/backpack/dufflebag/captain,
+		/obj/item/storage/backpack/dufflebag/captain/talon,
 		/obj/item/clothing/suit/storage/vest,
 		/obj/item/melee/telebaton,
 		/obj/item/flash,

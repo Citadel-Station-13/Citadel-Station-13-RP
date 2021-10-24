@@ -238,3 +238,8 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "green holiday shoes"
 	desc = "The tips of these fur lined boots curl slightly, lending them a whimsical flair."
 	icon_state = "christmasbootsg"
+
+/obj/item/clothing/shoes/bountyskin
+	name = "bounty hunter skinsuit (heels)"
+	desc = "The original skinsuit featured agility-boosting heels. These replicas grant no assistance, but look just as stylish."
+	icon_state = "bountyskin"

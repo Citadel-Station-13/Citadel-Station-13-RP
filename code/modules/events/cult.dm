@@ -3,6 +3,7 @@
 #define LOC_RESEARCH	2
 #define LOC_CHAPEL		3
 #define LOC_BRIDGE		4
+#define LOC_TALON		5
 
 /datum/event/cult
 	var/location
@@ -11,6 +12,7 @@
 	var/spawncount = 1
 	var/boss_spawn_count = 1
 	var/cloud_hueshift
+	var/isTalon = 0
 	var/list/players = list()
 	has_skybox_image = TRUE
 
@@ -33,7 +35,9 @@
 
 
 /datum/event/cult/start()
-	location = rand(0,4)
+	sleep(1)
+	if(isTalon == 0)
+		location = rand(0,4)
 	switch(location)
 		if(LOC_LIBRARY)
 			spawn_area_type = /area/library
@@ -60,13 +64,18 @@
 			locstring = "bridge"
 			spawncount = rand(1 * severity, 2 * severity)
 			boss_spawn_count = rand(0,1)
+		if(LOC_TALON) //The Talon. Outside of the random range. Should never be picked randomly.
+			spawn_area_type = /area/talon
+			locstring = "talon"
+			spawncount = rand(1 * severity, 3 * severity)
+			boss_spawn_count = rand(0,2)
 
 /datum/event/cult/end()
 	var/list/vents = list()
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
 		for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in A.contents)
-			if(temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
+			if(temp_vent.network && ((temp_vent.loc.z in GLOB.using_map.station_levels) || isTalon == 1))
 				vents += temp_vent
 
 	var/cult_spawn = list(/mob/living/simple_mob/humanoid/cultist/human,
@@ -98,16 +107,23 @@
 			var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
 			var/spawn_type = pick(cult_boss)
 			new spawn_type(V.loc)
+		isTalon = 0
 
 // Overmap version
 /datum/event/cult/overmap/announce()
-	command_announcement.Announce("Attention [station_name()], the ship has run into a hostile sub-sector and reports of humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Intercepted", new_sound = 'sound/effects/c_alarm.mp3')//,volume=5)
-	return
+	if(istype(victim, /obj/effect/overmap/visitable/ship/talon))
+		command_announcement.Announce("Attention ITV Talon. You have run into a hostile sub-sector. High potential for humanoid and non-humanoid entities to warp on your ship. Brace.", "Screaming Signals Intercepted")
+	else
+		command_announcement.Announce("Attention [station_name()], the ship has run into a hostile sub-sector and reports of humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Intercepted", new_sound = 'sound/effects/c_alarm.mp3')//,volume=5)
+		return
 
 /datum/event/cult/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship
 	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
 		kill()
 		return
+	if(istype(victim, /obj/effect/overmap/visitable/ship/talon)) //Forces the location to be the Talon.
+		isTalon = 1
+		location = 5
 	return ..()
 
 #undef LOC_LIBRARY
@@ -115,3 +131,4 @@
 #undef LOC_RESEARCH
 #undef LOC_CHAPEL
 #undef LOC_BRIDGE
+#undef LOC_TALON

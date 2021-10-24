@@ -19,6 +19,7 @@
 	health = 5
 	maxHealth = 5
 	mob_size = MOB_MINISCULE
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "shoos"
@@ -42,9 +43,8 @@
 
 	attack_sharp = TRUE
 
-/mob/living/simple_mob/animal/passive/lizard/large/Initialize(mapload)
-	. = ..()
-	adjust_scale(rand(12, 20) / 10)
+	mod_min = 90
+	mod_max = 200
 
 /mob/living/simple_mob/animal/passive/lizard/large/defensive
 	maxHealth = 30

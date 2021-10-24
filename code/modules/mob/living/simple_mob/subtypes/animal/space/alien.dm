@@ -55,6 +55,7 @@
 
 	maxHealth = 100
 	health = 100
+	randomized = TRUE
 
 	harm_intent_damage = 5
 	melee_damage_lower = 25
@@ -141,6 +142,9 @@
 	icon_expected_height = 64
 	meat_amount = 5
 
+	mod_min = 80
+	mod_max = 150
+
 /datum/category_item/catalogue/fauna/feral_alien/queen
 	name = "Feral Xenomorph - Queen"
 	desc = "When a Drone reaches a certain level of maturity, she may \
@@ -168,6 +172,8 @@
 	projectilesound = 'sound/weapons/pierce.ogg'
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen)
 
+	mod_min = 90
+	mod_max = 150
 
 	movement_cooldown = 8
 
@@ -228,6 +234,9 @@
 	old_x = -32
 	icon_expected_width = 96
 	icon_expected_height = 96
+
+	mod_min = 100
+	mod_max = 150
 
 /mob/living/simple_mob/animal/space/alien/death()
 	..()

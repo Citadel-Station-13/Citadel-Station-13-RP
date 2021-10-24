@@ -161,6 +161,25 @@
 				parts -= part
 		return
 
+/obj/effect/decal/mecha_wreckage/ripley/geiger
+	name = "Lightweight APLU wreckage"
+	icon_state = "ripley-broken-old"
+
+	New()
+		..()
+		var/list/parts = list(/obj/item/mecha_parts/part/geiger_torso,
+									/obj/item/mecha_parts/part/ripley_left_arm,
+									/obj/item/mecha_parts/part/ripley_right_arm,
+									/obj/item/mecha_parts/part/ripley_left_leg,
+									/obj/item/mecha_parts/part/ripley_right_leg)
+		for(var/i=0;i<2;i++)
+			if(!!length(parts) && prob(40))
+				var/part = pick(parts)
+				welder_salvage += part
+				parts -= part
+		return
+
+
 /obj/effect/decal/mecha_wreckage/ripley/deathripley
 	name = "Death-Ripley wreckage"
 	icon_state = "deathripley-broken"
@@ -229,3 +248,52 @@
 	icon_state = "shuttle_standard-broken"
 	bound_width = 64
 	bound_height = 64
+
+// Honker
+/obj/effect/decal/mecha_wreckage/honker
+	name = "H.O.N.K. wreckage"
+	icon_state = "honker-broken"
+
+	New()
+		..()
+		var/list/parts = list(/obj/item/mecha_parts/part/honker_torso,
+									/obj/item/mecha_parts/part/honker_head,
+									/obj/item/mecha_parts/part/honker_left_arm,
+									/obj/item/mecha_parts/part/honker_right_arm,
+									/obj/item/mecha_parts/part/honker_left_leg,
+									/obj/item/mecha_parts/part/honker_right_leg)
+		for(var/i=0;i<2;i++)
+			if(!!length(parts) && prob(40))
+				var/part = pick(parts)
+				welder_salvage += part
+				parts -= part
+		return
+
+/obj/effect/decal/mecha_wreckage/honker/cluwne
+	name = "C.L.W.U.N.E. wreckage"
+	icon = 'icons/mecha/mecha_vr.dmi'
+	icon_state = "cluwne-broken"
+
+// Reticent
+/obj/effect/decal/mecha_wreckage/reticent
+	name = "Reticent wreckage"
+	icon_state = "reticent-broken"
+
+	New()
+		..()
+		var/list/parts = list(/obj/item/mecha_parts/part/reticent_torso,
+									/obj/item/mecha_parts/part/reticent_head,
+									/obj/item/mecha_parts/part/reticent_left_arm,
+									/obj/item/mecha_parts/part/reticent_right_arm,
+									/obj/item/mecha_parts/part/reticent_left_leg,
+									/obj/item/mecha_parts/part/reticent_right_leg)
+		for(var/i=0;i<2;i++)
+			if(!!length(parts) && prob(40))
+				var/part = pick(parts)
+				welder_salvage += part
+				parts -= part
+		return
+
+/obj/effect/decal/mecha_wreckage/reticent/reticence
+	name = "Reticence wreckage"
+	icon_state = "reticence-broken"

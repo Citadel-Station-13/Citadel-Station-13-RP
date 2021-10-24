@@ -1,21 +1,21 @@
 // Stuff worn on the ears. Items here go in the "ears" sort_category but they must not use
 // the slot_r_ear or slot_l_ear as the slot, or else players will spawn with no headset.
 /datum/gear/ears
-	display_name = "Earmuffs"
+	name = "Earmuffs"
 	path = /obj/item/clothing/ears/earmuffs
 	sort_category = "Earwear"
 
 /datum/gear/ears/headphones
-	display_name = "Headphones"
+	name = "Headphones"
 	path = /obj/item/clothing/ears/earmuffs/headphones
 
 /datum/gear/ears/circuitry
-	display_name = "Earwear - Circuitry"
+	name = "Earwear - Circuitry"
 	path = /obj/item/clothing/ears/circuitry
 
 
 /datum/gear/ears/earrings
-	display_name = "Earring Selection"
+	name = "Earring Selection"
 	description = "A selection of eye-catching earrings."
 	path = /obj/item/clothing/ears/earring
 

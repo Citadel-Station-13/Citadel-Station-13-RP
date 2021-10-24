@@ -27,7 +27,9 @@
 	var/r_wing2 = 30	// Wing extra color
 	var/g_wing2 = 30	// Wing extra color
 	var/b_wing2 = 30	// Wing extra color
-	var/dress_mob = TRUE
+	var/r_gradwing = 30
+	var/g_gradwing = 30
+	var/b_gradwing = 30
 
 // Definition of the stuff for Ears
 /datum/category_item/player_setup_item/vore/ears
@@ -56,6 +58,9 @@
 	S["r_wing2"]		>> pref.r_wing2
 	S["g_wing2"]		>> pref.g_wing2
 	S["b_wing2"]		>> pref.b_wing2
+	S["r_gradwing"]		>> pref.r_gradwing
+	S["g_gradwing"]		>> pref.g_gradwing
+	S["b_gradwing"]		>> pref.b_gradwing
 
 /datum/category_item/player_setup_item/vore/ears/save_character(var/savefile/S)
 	S["ear_style"]		<< pref.ear_style
@@ -79,6 +84,9 @@
 	S["r_wing2"]		<< pref.r_wing2
 	S["g_wing2"]		<< pref.g_wing2
 	S["b_wing2"]		<< pref.b_wing2
+	S["r_gradwing"]		<< pref.r_gradwing
+	S["g_gradwing"]		<< pref.g_gradwing
+	S["b_gradwing"]		<< pref.b_gradwing
 
 /datum/category_item/player_setup_item/vore/ears/sanitize_character()
 	pref.r_ears		= sanitize_integer(pref.r_ears, 0, 255, initial(pref.r_ears))
@@ -99,6 +107,9 @@
 	pref.r_wing2	= sanitize_integer(pref.r_wing2, 0, 255, initial(pref.r_wing2))
 	pref.g_wing2	= sanitize_integer(pref.g_wing2, 0, 255, initial(pref.g_wing2))
 	pref.b_wing2	= sanitize_integer(pref.b_wing2, 0, 255, initial(pref.b_wing2))
+	pref.r_gradwing = sanitize_integer(pref.r_gradwing, 0, 255, initial(pref.r_gradwing))
+	pref.g_gradwing = sanitize_integer(pref.g_gradwing, 0, 255, initial(pref.g_gradwing))
+	pref.b_gradwing = sanitize_integer(pref.b_gradwing, 0, 255, initial(pref.b_gradwing))
 	if(pref.ear_style)
 		pref.ear_style	= sanitize_inlist(pref.ear_style, ear_styles_list, initial(pref.ear_style))
 		var/datum/sprite_accessory/temp_ear_style = ear_styles_list[pref.ear_style]
@@ -137,19 +148,14 @@
 	character.r_wing2			= pref.r_wing2
 	character.b_wing2			= pref.b_wing2
 	character.g_wing2			= pref.g_wing2
+	character.r_gradwing		= pref.r_gradwing
+	character.g_gradwing		= pref.g_gradwing
+	character.b_gradwing		= pref.b_gradwing
 
 
 
 /datum/category_item/player_setup_item/vore/ears/content(var/mob/user)
 	. += "<h2>Appearance and Custom Species Settings</h2>"
-
-	if(!pref.preview_icon)
-		pref.update_preview_icon()
- 	user << browse_rsc(pref.preview_icon, "previewicon.png")
-
-	. += "<b>Preview</b><br>"
-	. += "<div class='statusDisplay'><center><img src=previewicon.png width=[pref.preview_icon.Width()] height=[pref.preview_icon.Height()]></center></div>"
-	. += "<br><a href='?src=\ref[src];toggle_clothing=1'>[pref.dress_mob ? "Hide equipment" : "Show equipment"]</a><br>"
 
 	var/ear_display = "Normal"
 	if(pref.ear_style && (pref.ear_style in ear_styles_list))
@@ -196,8 +202,12 @@
 		var/datum/sprite_accessory/wing/W = wing_styles_list[pref.wing_style]
 		if (W.do_colouration)
 			. += "<a href='?src=\ref[src];wing_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_wing, 2)][num2hex(pref.g_wing, 2)][num2hex(pref.b_wing, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_wing, 2)][num2hex(pref.g_wing, 2)][num2hex(pref.b_wing, 2)]'><tr><td>__</td></tr></table> </font><br>"
+			. += "<b>Gradient</b><br>"
+			. += "<a href='?src=\ref[src];grad_wingcolor=1'>Change Color</a> [color_square(pref.r_gradwing, pref.g_gradwing, pref.b_gradwing)] "
+			. += " Style: <a href='?src=\ref[src];grad_wingstyle=1'>[pref.grad_wingstyle]</a><br>"
 		if (W.extra_overlay)
 			. += "<a href='?src=\ref[src];wing_color2=1'>Change Secondary Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_wing2, 2)][num2hex(pref.g_wing2, 2)][num2hex(pref.b_wing2, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_wing2, 2)][num2hex(pref.g_wing2, 2)][num2hex(pref.b_wing2, 2)]'><tr><td>__</td></tr></table> </font><br>"
+
 
 /datum/category_item/player_setup_item/vore/ears/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(!CanUseTopic(user))
@@ -302,8 +312,20 @@
 			pref.b_wing2 = hex2num(copytext(new_wingc2, 6, 8))
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
-	else if(href_list["toggle_clothing"])
-		pref.dress_mob = !pref.dress_mob
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+	else if(href_list["grad_wingcolor"])
+		var/new_gradwing = input(user, "Choose your character's secondary wing color:", "Character Preference", rgb(pref.r_gradwing, pref.g_gradwing, pref.b_gradwing)) as color|null
+		if(new_gradwing && CanUseTopic(user))
+			pref.r_gradwing = hex2num(copytext(new_gradwing, 2, 4))
+			pref.g_gradwing = hex2num(copytext(new_gradwing, 4, 6))
+			pref.b_gradwing = hex2num(copytext(new_gradwing, 6, 8))
+			return TOPIC_REFRESH_UPDATE_PREVIEW
+
+	else if(href_list["grad_wingstyle"])
+		var/list/valid_gradients = GLOB.hair_gradients
+
+		var/new_grad_wingstyle = input(user, "Choose a color pattern for your wings:", "Character Preference", pref.grad_wingstyle)  as null|anything in valid_gradients
+		if(new_grad_wingstyle && CanUseTopic(user))
+			pref.grad_wingstyle = new_grad_wingstyle
+			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	return ..()

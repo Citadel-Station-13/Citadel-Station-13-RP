@@ -54,7 +54,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL	26	// Used to trigger removal from a processing list.
-#define MAX_GEAR_COST	15	// Used in chargen for accessory loadout limit.
+#define MAX_GEAR_COST					15	// Used in chargen for accessory loadout limit.
+#define MAX_GEAR_COST_HOLIDAY_SPAM		30
 
 
 // For secHUDs and medHUDs and variants. The number is the location of the image on the list hud_list of humans.
@@ -195,6 +196,9 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAT_SUPERMATTER		"supermatter"
 #define MAT_METALHYDROGEN	"mhydrogen"
 #define MAT_OSMIUM			"osmium"
+#define MAT_VAUDIUM			"vaudium"
+#define MAT_BANANIUM		"bananium"
+#define MAT_SILENCIUM		"silencium"
 
 #define SHARD_SHARD			"shard"
 #define SHARD_SHRAPNEL		"shrapnel"
@@ -444,6 +448,7 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //Holy Weapon defines from Main. Lists null rod weapons and classifies them as HOLY.
 #define HOLY_WEAPONS /obj/item/nullrod
+#define HOLY_ICONS /obj/item/godfig
 
 // Used by radios to indicate that they have sent a message via something other than subspace
 #define RADIO_CONNECTION_FAIL 0

@@ -20,6 +20,7 @@
 	faction = "panther"
 	maxHealth = 200
 	health = 200
+	randomized = TRUE
 	movement_cooldown = 4
 
 	melee_damage_lower = 5
