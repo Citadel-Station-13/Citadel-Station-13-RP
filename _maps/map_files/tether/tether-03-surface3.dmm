@@ -25855,7 +25855,7 @@
 	pixel_x = 1;
 	pixel_y = 32
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "aUr" = (
 /obj/structure/disposalpipe/segment{
@@ -25911,7 +25911,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "aUy" = (
 /obj/machinery/door/firedoor/glass,
@@ -25995,7 +25995,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "aUF" = (
 /obj/effect/floor_decal/borderfloor,
@@ -26348,7 +26348,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "aVn" = (
 /obj/structure/bed/chair{
@@ -26567,7 +26567,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "aVG" = (
 /obj/effect/floor_decal/borderfloor{
@@ -26649,7 +26649,7 @@
 	dir = 1;
 	req_one_access = list(19,43,67)
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
 "aVN" = (
 /obj/machinery/door/firedoor/glass,
@@ -26779,7 +26779,7 @@
 	},
 /obj/effect/floor_decal/industrial/outline,
 /obj/machinery/door/window/northleft,
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
 "aWd" = (
 /obj/effect/landmark/start{
@@ -27160,7 +27160,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
 "aWL" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
@@ -27182,7 +27182,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "aWM" = (
 /obj/structure/disposalpipe/segment,
@@ -34250,7 +34250,7 @@
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = 32
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "bkO" = (
 /obj/machinery/transhuman/resleever,
@@ -35930,7 +35930,7 @@
 	name = "Tourbus Pad"
 	},
 /obj/effect/overmap/visitable/ship/landable/tourbus,
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "cbn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -35997,7 +35997,7 @@
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = 32
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "cnO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -36014,7 +36014,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "cpd" = (
 /obj/effect/floor_decal/borderfloor{
@@ -36769,7 +36769,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "dVZ" = (
 /obj/structure/table/woodentable,
@@ -36874,7 +36874,7 @@
 /obj/structure/bed/chair/sofa/brown/right{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "ely" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -36986,7 +36986,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/turf/simulated/wall/shull,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "eHk" = (
 /obj/structure/sign/nosmoking_2{
@@ -37112,7 +37112,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "fgW" = (
 /obj/effect/floor_decal/borderfloor{
@@ -37611,7 +37611,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "gVg" = (
 /obj/structure/cable/green{
@@ -38615,7 +38615,7 @@
 /obj/structure/bed/chair/sofa/brown/left{
 	dir = 1
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "jPW" = (
 /obj/effect/floor_decal/borderfloor{
@@ -38701,7 +38701,7 @@
 	id_tag = "tourbus_right"
 	},
 /obj/effect/map_helper/airlock/door/simple,
-/turf/simulated/floor/tiled/techmaint,
+/turf/simulated/floor/tiled/techfloor,
 /area/shuttle/tourbus/general)
 "jYD" = (
 /turf/simulated/wall,
@@ -38715,7 +38715,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "kdx" = (
 /obj/machinery/power/apc{
@@ -38802,7 +38802,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "kjn" = (
 /obj/structure/disposalpipe/segment{
@@ -38834,7 +38834,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "kmS" = (
 /obj/effect/floor_decal/borderfloor,
@@ -38915,7 +38915,7 @@
 	},
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "kuQ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -39578,7 +39578,7 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "mnO" = (
 /obj/structure/curtain/open,
@@ -39652,7 +39652,7 @@
 /area/tether/surfacebase/security/iaa/officeb)
 "mDf" = (
 /obj/structure/table/marble,
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "mFq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -40263,7 +40263,7 @@
 	},
 /obj/structure/table/marble,
 /obj/item/flame/candle,
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "okB" = (
 /obj/machinery/door/firedoor,
@@ -40529,7 +40529,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "oPG" = (
 /obj/structure/closet/secure_closet/hos,
@@ -40699,7 +40699,7 @@
 	dir = 1;
 	req_one_access = list(19,43,67)
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
 "ple" = (
 /obj/structure/sign/fire{
@@ -40751,7 +40751,7 @@
 	dir = 1;
 	req_one_access = list(19,43,67)
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/plating,
 /area/shuttle/tourbus/general)
 "pph" = (
 /obj/effect/floor_decal/spline/plain{
@@ -41031,9 +41031,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/southhall)
 "pVg" = (
-/obj/structure/bed/chair/bay/shuttle{
-	dir = 1
-	},
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
@@ -41441,7 +41438,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "rct" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
@@ -42033,7 +42030,7 @@
 	id_tag = "tourbus_docker";
 	pixel_x = 28
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "sPb" = (
 /obj/structure/closet/secure_closet/medical_wall/anesthetics{
@@ -42172,7 +42169,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "tdN" = (
 /obj/effect/floor_decal/borderfloor{
@@ -42755,7 +42752,7 @@
 	dir = 8
 	},
 /obj/item/stool/padded,
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "ulW" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -43662,7 +43659,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "wBv" = (
 /obj/structure/table/reinforced,
@@ -43796,7 +43793,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "wQs" = (
 /obj/item/radio/intercom/department/security{
@@ -44323,7 +44320,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/turf/simulated/shuttle/floor/black,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "xQv" = (
 /obj/structure/table/reinforced,
