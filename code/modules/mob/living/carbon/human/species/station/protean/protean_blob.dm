@@ -254,7 +254,7 @@
 
 	setClickCooldown(get_attack_speed())
 
-	. = do_attack(A, their_T)
+	. = do_attack(A)
 
 	if(melee_attack_delay)
 		melee_post_animation(A)
@@ -262,10 +262,10 @@
 	else
 		return ..()
 
-/mob/living/simple_mob/protean_blob/proc/melee_pre_animation(atom/A)
+/mob/living/simple_mob/protean_blob/melee_pre_animation(atom/A)
 	do_windup_animation(A, melee_attack_delay)
 
-/mob/living/simple_mob/protean_blob/proc/melee_post_animation(atom/A)
+/mob/living/simple_mob/protean_blob/melee_post_animation(atom/A)
 
 /mob/living/simple_mob/protean_blob/attackby(var/obj/item/O, var/mob/user)
 	if(refactory && istype(O,/obj/item/stack/material))
