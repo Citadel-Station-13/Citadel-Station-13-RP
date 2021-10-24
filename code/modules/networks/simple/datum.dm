@@ -9,7 +9,7 @@
 /datum/proc/SimpleNetworkSend(id, message, list/data)
 	var/list/devices = SSnetworks.GetSimpleDevices(id)
 	for(var/datum/D as anything in devices)
-		D.SimpleNetworkReceive(id, message, list/data, src)
+		D.SimpleNetworkReceive(id, message, data, src)
 
 /**
  * Called on receiving a simple network message - register to these by adding the element.
