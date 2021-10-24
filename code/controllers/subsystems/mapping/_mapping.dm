@@ -32,7 +32,6 @@ SUBSYSTEM_DEF(mapping)
 	/// "secret" key
 	var/obfuscation_secret
 
-
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
 	if(!config)

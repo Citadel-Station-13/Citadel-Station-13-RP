@@ -2922,6 +2922,7 @@
 #include "code\modules\networks\simple\atom.dm"
 #include "code\modules\networks\simple\datum.dm"
 #include "code\modules\networks\simple\element.dm"
+#include "code\modules\networks\simple\helpers.dm"
 #include "code\modules\nifsoft\nif.dm"
 #include "code\modules\nifsoft\nif_softshop.dm"
 #include "code\modules\nifsoft\nif_statpanel.dm"
