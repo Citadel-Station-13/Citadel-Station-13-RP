@@ -19,6 +19,9 @@
 	if(istype(A, /turf))
 		inflate(user,A)
 
+/obj/item/inflatable/CtrlClick(mob/user)
+	inflate(user,src.loc)
+
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
@@ -142,12 +145,6 @@
 		visible_message("<span class='danger'>The [src] deflates!</span>")
 		spawn(1) puncture()
 	return 1
-
-/obj/structure/inflatable/CtrlClick(mob/user)
-	inflate(user,src.loc)
-
-/obj/structure/inflatable/CtrlClick(mob/user)
-	deflate()
 
 /obj/item/inflatable/door/
 	name = "inflatable door"
