@@ -157,34 +157,11 @@
 /turf/simulated/floor/trap/delayed/sifwood
 	icon_state = "sifwood"
 
+
 /*
+
 /turf/simulated/floor/trap/attack_by()
-*/
 
-/*
-//I guess the baseline trap will be a pitfall? Seems like a classic. Needs a lot of work.
-/turf/simulated/floor/trap/proc/Trigger(atom/A)
-	if(isliving(A))
-		var/mob/living/L = A
-		if(L.hovering) // Flying people are immune to falling down holes, generally.
-			return ..()
-		tripped = 1
-		break_legs()
-		update_icon()
-	..()
+Get dir for plank placement
 
-/turf/simulated/floor/trap/proc/break_legs(mob/victim as mob)
-	var/broken_legs = 0
-	var/mob/living/carbon/human/target = victim
-	var/obj/item/organ/external/left_leg = target.get_organ(BP_L_LEG)
-	if(left_leg && left_leg.fracture())
-		broken_legs++
-	var/obj/item/organ/external/right_leg = target.get_organ(BP_R_LEG)
-	if(right_leg && right_leg.fracture())
-		broken_legs++
-	if(!broken_legs)
-		return ..()
-
-Make an attack_by for planks that boards over and makes the trap safe.
-Same for tiles to reset it.
 */
