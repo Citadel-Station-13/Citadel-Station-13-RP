@@ -5,6 +5,8 @@
 	icon = 'icons/turf/flooring/trap.dmi'
 	icon_state = "steel_dirty"
 	var/tripped = FALSE
+	var/message = "trip"
+	var/id = "trap_debug_controller"
 
 /turf/simulated/floor/trap/Entered(atom/A)
 	if(isliving(A) && !tripped)
@@ -20,6 +22,11 @@
 	visible_message("<span class='danger'>You hear a click nearby!</span>")
 	update_icon()
 	playsound(src, 'sound/machines/click.ogg', 50, 1)
+	SimpleNetworkSend()
+	return
+
+/turf/simulated/floor/trap/SimpleNetworkSend(id, message, list/data)
+	..()
 	return
 
 /turf/simulated/floor/trap/update_icon()

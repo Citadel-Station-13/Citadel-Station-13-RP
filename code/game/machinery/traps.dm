@@ -9,6 +9,11 @@ obj/machinery/trap
 	density = 0
 	var/trap_floor_type = /turf/simulated/floor/water/acid
 	var/tripped = FALSE
+	var/id = "trap_debug_controller"
+
+obj/machinery/trap/Initialize(obj/machinery/trap/T)
+	. = ..()
+	RegisterSimpleNetwork(T.id)
 
 obj/machinery/trap/proc/trip()
 	if(tripped)
