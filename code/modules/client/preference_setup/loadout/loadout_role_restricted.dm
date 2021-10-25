@@ -402,6 +402,11 @@
 	name = "Security Winter Coat"
 	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security
 
+/datum/gear/restricted/security/suit/wintercoat
+	name = "Head of Security's Winter Coat"
+	path = /obj/item/clothing/suit/storage/hooded/wintercoat/security/hos
+	allowed_roles = list("Head of Security")
+
 /datum/gear/restricted/security/suit/operations_coat
 	name = "Security Operations Jacket"
 	path = /obj/item/clothing/suit/storage/toggle/operations_coat

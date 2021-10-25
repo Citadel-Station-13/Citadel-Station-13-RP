@@ -178,6 +178,13 @@
 	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
 	/obj/item/handcuffs,/obj/item/clothing/head/helmet)
 
+/obj/item/clothing/suit/storage/hooded/wintercoat/security/hos
+	name = "head of security's winter coat"
+	desc = "A comfortable winter coat with a robust Kevlar underlayer and a built-in holster. The red and gold insignia on the sleeves denote the wearer's position as Head of Security."
+	icon_state = "coathos"
+	item_state_slots = list(slot_r_hand_str = "coathos", slot_l_hand_str = "coathos")
+	hoodtype = /obj/item/clothing/head/hood/winter/hos
+
 /obj/item/clothing/suit/storage/hooded/wintercoat/medical
 	name = "medical winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs, there's a thick weave of sterile material, good for virus outbreaks!"
