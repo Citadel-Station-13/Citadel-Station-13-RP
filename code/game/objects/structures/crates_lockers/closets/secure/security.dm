@@ -126,7 +126,7 @@
 		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/melee/telebaton,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/security,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/security/hos,
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/gps/security/hos,
 		/obj/item/flashlight/maglight,
