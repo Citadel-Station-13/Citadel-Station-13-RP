@@ -10,6 +10,7 @@
 	faction = "dragon"
 	maxHealth = 500 // Boss
 	health = 500
+	randomized = TRUE
 
 	melee_damage_lower = 5
 	melee_damage_upper = 30
@@ -35,19 +36,6 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 	say_list_type = /datum/say_list/dragonboss
-
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/dragon/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /mob/living/simple_mob/vore/aggressive/dragon/Process_Spacemove(var/check_drift = 0)
 	return 1	//No drifting in space for space dragons!

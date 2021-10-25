@@ -18,7 +18,7 @@
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	density = 0
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	can_atmos_pass = ATMOS_PASS_YES
 	var/obj/machinery/shield_gen/my_gen = null
 	var/strength = 0 // in Renwicks
 	var/ticks_recovering = 10

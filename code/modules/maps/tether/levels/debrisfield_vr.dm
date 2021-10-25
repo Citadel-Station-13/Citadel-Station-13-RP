@@ -122,6 +122,23 @@
 /area/submap/debrisfield_vr/tinyshuttle/engine
 	name = "Systems Bay"
 
+/area/submap/debrisfiled_vr/clownshuttle
+	name = "POI - Covert Clown Shuttle"
+
+/area/submap/debrisfiled_vr/clownshuttle/cockpit
+	name = "Cockpit"
+
+/area/submap/debrisfiled_vr/clownshuttle/engine
+	name = "Engine"
+
+/area/submap/debrisfiled_vr/clownshuttle/atmos
+	name = "Atmospherics"
+/area/submap/debrisfiled_vr/clownshuttle/cargo
+	name = "Cargo"
+
+/area/submap/debrisfiled_vr/clownshuttle/bunk
+	name = "Bunks"
+
 /datum/shuttle/autodock/overmap/tinycarrier
 	name = "Debris Carrier"
 	warmup_time = 0

@@ -20,6 +20,7 @@
 
 	maxHealth = 150
 	health = 150
+	randomized = TRUE
 
 	melee_damage_lower = 2
 	melee_damage_upper = 7
@@ -53,19 +54,6 @@
 	say_list_type = /datum/say_list/rat
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/rat
 
-//Randomization Code
-/mob/living/simple_mob/vore/aggressive/rat/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
-
 /mob/living/simple_mob/vore/aggressive/rat/tame		//not quite tame but does not attack on sight
 	name = "curious giant rat"
 	desc = "In what passes for a hierarchy among verminous rodents, this one is king. It seems to be more interested on scavenging."
@@ -76,6 +64,8 @@
 	name = "Maurice"
 	desc = "The station's resident vermin supreme, he makes the rules for all maintnence rodents. \
 	He appears to have grown quite chubby off gifts of trash and cheese from the crew."
+
+	randomized = FALSE
 
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 

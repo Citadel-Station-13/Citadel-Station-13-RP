@@ -39,6 +39,7 @@
 
 	maxHealth = 50
 	health = 50
+	randomized = TRUE
 	universal_understand = 1
 
 	taser_kill = 0
@@ -88,19 +89,6 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 	var/rank //pyro, operative, ammo, stealth. more to come. Do not leave blank.
-
-//Randomization Code
-/mob/living/simple_mob/animal/space/mouse_army/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /mob/living/simple_mob/animal/space/mouse_army/Initialize(mapload)
 	. = ..()

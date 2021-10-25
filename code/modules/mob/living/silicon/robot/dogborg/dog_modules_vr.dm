@@ -477,3 +477,7 @@
 					src.imp = null
 	else
 		to_chat(usr, "You must target the torso.")
+
+/obj/item/dogborg/mirrortool/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
+	target.active_mr = imp.stored_mind
+	. = ..()
