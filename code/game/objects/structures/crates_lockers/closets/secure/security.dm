@@ -203,7 +203,6 @@
 		/obj/item/storage/box/flashbangs,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
-		/obj/item/gun/projectile/sec/wood,
 		/obj/item/gun/energy/gun/multiphase,
 		/obj/item/melee/telebaton,
 		/obj/item/gps/security/hos,
