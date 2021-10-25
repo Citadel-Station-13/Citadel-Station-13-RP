@@ -435,6 +435,11 @@
 	desc = "A white long sweater with a big yellow star at the chest. It seems like it's made of a soft material."
 	icon_state = "star_sweater"
 
+/obj/item/clothing/accessory/sweater/virgin
+	name = "Virgin Killer Sweater"
+	desc = "A white long sweater with a modest string to keep the otherwise immodest front piece from falling off. Compatible with a variety of chest sizes. It seems like it's made of a soft material."
+	icon_state = "virgin_sweater"
+
 //***
 // End of sweaters
 //***
