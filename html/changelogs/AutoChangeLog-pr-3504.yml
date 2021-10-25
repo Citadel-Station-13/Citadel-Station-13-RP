@@ -1,4 +1,0 @@
-author: "KillianKirilenko"
-delete-after: True
-changes: 
-  - refactor: "Replaced old char directory with a tgui-powered one."
