@@ -1,0 +1,6 @@
+author: "KillianKirilenko"
+delete-after: True
+changes: 
+  - rscadd: "added hardwood material, orderable via cargo"
+  - bugfix: "things made out of alien wood will no longer yield regular wood when disassembled"
+  - bugfix: "the fiftyspawner for alien logs no longer overrides the one for regular logs"
