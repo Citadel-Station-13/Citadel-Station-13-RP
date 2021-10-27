@@ -94,7 +94,17 @@
 	else if(!pref.custom_base || !(pref.custom_base in custom_species_bases))
 		pref.custom_base = SPECIES_HUMAN
 
+	custom_say = lowertext(trim(custom_say))
+	custom_whisper = lowertext(trim(custom_whisper))
+	custom_ask = lowertext(trim(custom_ask))
+	custom_exclaim = lowertext(trim(custom_exclaim))
+
 /datum/category_item/player_setup_item/vore/traits/copy_to_mob(var/mob/living/carbon/human/character)
+	custom_say = lowertext(trim(custom_say))
+	custom_whisper = lowertext(trim(custom_whisper))
+	custom_ask = lowertext(trim(custom_ask))
+	custom_exclaim = lowertext(trim(custom_exclaim))
+
 	character.custom_species	= pref.custom_species
 	character.custom_say		= pref.custom_say
 	character.custom_ask		= pref.custom_ask
