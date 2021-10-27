@@ -3693,7 +3693,7 @@ End Citadel Change */
 	id = "gibbfloat"
 	description = "A tasty, frothy drink."
 	taste_description = "soda float"
-	strength = 100
+	strength = 0
 
 	glass_name = "Gibbfloat"
 	glass_desc = "A tasty, frothy drink"
@@ -4087,7 +4087,7 @@ End Citadel Change */
 	name = "Corn Oil"
 	id = "cornoil"
 	description = "An oil derived from various types of corn."
-	
+
 /datum/reagent/nutriment/triglyceride/oil/tallow
 	name = "Tallow"
 	id = "tallow"
