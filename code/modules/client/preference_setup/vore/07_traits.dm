@@ -104,7 +104,7 @@
 	character.custom_say		= lowertext(trim(pref.custom_say))
 	character.custom_ask		= lowertext(trim(pref.custom_ask))
 	character.custom_whisper	= lowertext(trim(pref.custom_whisper))
-	character.custom_exclaim	= lowertext(trim(lowertext(trim(pref.custom_exclaim))
+	character.custom_exclaim	= lowertext(trim(pref.custom_exclaim))
 	var/datum/species/selected_species = GLOB.all_species[pref.species]
 	if(selected_species.selects_bodytype)
 		var/datum/species/custom/CS = character.species
