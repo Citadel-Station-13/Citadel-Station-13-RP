@@ -75,6 +75,14 @@
 	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	return ..()
 
+/obj/structure/table/hardwoodtable
+	icon_state = "stone_preview"
+	color = "#42291a"
+
+/obj/structure/table/hardwoodtable/Initialize(mapload)
+	material = get_material_by_name("hardwood")
+	return ..()
+
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 

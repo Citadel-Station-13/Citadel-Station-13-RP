@@ -19,6 +19,9 @@
 	if(istype(A, /turf))
 		inflate(user,A)
 
+/obj/item/inflatable/CtrlClick(mob/user)
+	inflate(user,src.loc)
+
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
