@@ -2,7 +2,7 @@
 "a" = (
 /obj/effect/overmap/visitable/sector/debrisfield_vr,
 /turf/space,
-/area/space)
+/area/space/debrisfield/unexplored)
 "b" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/debrisfield_vr/shuttle_buffer;
@@ -26,7 +26,7 @@
 /area/tether_away/debrisfield_vr/shuttle_buffer)
 "h" = (
 /turf/space,
-/area/space)
+/area/space/debrisfield/unexplored)
 
 (1,1,1) = {"
 h
