@@ -144,13 +144,13 @@
 				<br>
 				<h2>STANDARD STARTUP PROCEDURE</h2>
 				<ol>
-				<li>Fill reactor loop and radiator loop with three (3) standard canisters of nitrogen gas each.</li>
+				<li>Fill reactor loop and radiator loop with three (3) standard canisters of phoron gas each.</li>
 				<li>Fill the waste handling radiator loop with one (1) standard canister of carbon dioxide gas.</li>
 				<li>Enable both the high power gas pumps near the thermo-electric generators and maximize the desired output.</li>
-				<li>Enable both the omni-filters and ensure they are set to filter nitrogen back into the system.</li>
+				<li>Enable both the omni-filters and ensure they are set to filter phoron back into the system.</li>
 				<li>Enable the gas pump from the filters to waste handling and maximize the desired output.</li>
 				<li>Close the monitoring room blast doors and open the reactor blast doors,</li>
-				<li>Fire 8-9 pulses from emitter at supermatter crystal. The expected power output is around a megawatt. NOTE: It will take a few minutes to heat up.</li>
+				<li>Fire 8-12 pulses from emitter at supermatter crystal. The expected power output is around a megawatt. NOTE: It will take a few minutes to heat up.</li>
 				<li>Close the reactor blast doors and keep the monitoring room blast doors closed to prevent radiation leaking.</li>
 				</ol>
 				<br>
@@ -219,7 +219,7 @@
 				<br>
 				<h2>STARTUP PROCEDURE</h2>
 				<ol>
-				<li>Bolt and weld down the Field Generators, ensuring they form a complete rectangle.</li>
+				<li>Bolt and weld down the Field Generators, ensuring they form a complete square, giving no room for the tesla to move.</li>
 				<li>Bolt and weld down the Emitters, ensuring their fire will strike the corner Field Generators</li>
 				<li>Bolt down the Tesla Generator inside the rectangle formed by the Field Generators in a spot where it will be struck by fire from the Particle Accelerator</li>
 				<li>Bolt down Telsa Coils and Grounding Rods</li>
@@ -239,7 +239,7 @@
 				<br>
 				<h2>SHUTDOWN PROCEDURE</h2>
 				<ol>
-				<li>De-activate the Particle Accelerator.  The energy ball will begin to shrink and lose mini-balls.</li>
+				<li>Set the Particle Accelerator to -1.  The energy ball will begin to shrink and lose mini-balls.</li>
 				<li>When the energy ball has completely dissipated, the Emitters can be de-activated.</li>
 				</ol>
 				<br>
