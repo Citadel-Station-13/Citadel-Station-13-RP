@@ -12,6 +12,7 @@
 	var/trap_floor_type = /turf/simulated/floor/water/acid
 	var/tripped = FALSE
 	var/id = "trap_debug_controller"
+	var/broken = FALSE
 
 /obj/effect/trap/Initialize()
 	. = ..()
@@ -260,7 +261,9 @@
 /obj/effect/trap/launcher/process(delta_time)
 	if(!tripped)
 		return
-	if(((src.last_shot + src.fire_delay) <= world.time) && (src.tripped))
+	if(broken)
+		return
+	if(((src.last_shot + src.fire_delay) <= world.time) && (!broken) && (src.tripped))
 
 		src.last_shot = world.time
 		if(src.shot_number < burst_shots)
@@ -287,6 +290,42 @@
 
 /obj/effect/trap/launcher/proc/get_projectile()
 	return new projectile_type(get_turf(src))
+
+/obj/effect/trap/launcher/attackby(var/obj/item/W, var/mob/user)
+	if(istype(W,/obj/item/stack/rods))
+		var/obj/item/stack/rods/M = W
+		if(M.amount >= 5)
+			M.use(5)
+			Break()
+			to_chat(user, "<span class='notice'>You slip the rods into the firing mechanism, jamming it.</span>")
+			user.drop_from_inventory(src)
+			qdel(src)
+		else
+			to_chat(user, "<span class='warning'>You need five rods to jam the mechanism.</span>")
+
+	if(istype(W,/obj/item/tool/crowbar))
+		if(broken)
+			Reset()
+			to_chat(user, "<span class='notice'>You pry the obstruction out, resetting the trap.</span>")
+		else
+			to_chat(user, "<span class='warning'>You can't pry this sculpture off of the wall.</span>")
+
+/obj/effect/trap/launcher/proc/Break()
+	update_icon()
+	broken = TRUE
+
+/obj/effect/trap/launcher/proc/Reset()
+	update_icon()
+	broken = FALSE
+	tripped = FALSE
+
+/obj/effect/trap/launcher/update_icon()
+	if(!tripped)
+		icon_state = "[initial(icon_state)]"
+	else if (tripped && !broken)
+		icon_state = "[initial(icon_state)]_visible"
+	else if (tripped && broken)
+		icon_state = "[initial(icon_state)]_jammed"
 
 //Stake Launcher
 /obj/effect/trap/launcher/stake
@@ -325,7 +364,7 @@
 //Set up the Crossed for these.
 /obj/effect/trap/pop_up
 	name = "loose tile"
-	desc = "The edges of this tile are lifted slightly."
+	desc = "The edges of this tile are angled strangely."
 	icon_state = "popup_spear"
 	anchored = 1
 	density = 0
@@ -334,7 +373,6 @@
 	var/max_damage = 25
 	var/health = 200
 	var/maxhealth = 200
-	var/broken
 
 /obj/effect/trap/pop_up/fire()
 	update_icon()
@@ -483,8 +521,149 @@ if (istype(AM, /mob/living))
 
 /*
 General to-do:
-Make Throwers a trap type and move the falling log there, instead of as a pop-up.
-	Falling Log - Have this throw on impact like with skateboards.
 Solve pressure plate multi-signal issue for acid pits. Everything else pops correctly.
 Make more Launcher sprites - sculpture, recessed holes, etc.
+Make Launchers jammable.
 */
+
+//////////////////
+// Tossing Traps
+//////////////////
+
+/obj/effect/trap/thrower
+	name = "crooked tile"
+	desc = "The edges of this tile are lifted slightly."
+	icon_state = "thrower"
+	trap_floor_type = null
+
+/obj/effect/trap/thrower/fire()
+	update_icon()
+	visible_message("<span class='danger'>The floor tile pistons upwards violently!</span>")
+	playsound(src, 'sound/effects/bang.ogg', 100, 1)
+
+/obj/effect/trap/thrower/Crossed(atom/AM as mob|obj)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
+	if(broken)
+		return
+	if(istype(AM, /mob/living))
+		var/mob/living/M = AM
+		var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
+		var/turf/T2 = get_step(AM, pick(throw_dirs))
+		M.throw_at(T2, 1, 1, src)
+		var/head_slot = SLOT_HEAD
+		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
+			M.setBrainLoss(2,5)
+			M.updatehealth()
+		update_icon()
+		playsound(src, 'sound/machines/disposalflush.ogg', 100, 1)
+		visible_message("<span class='danger'>[src] slams into [M], sending them flying!</span>")
+		M.Weaken(12)
+
+/obj/effect/trap/thrower/attackby(var/obj/item/W, var/mob/user)
+	if(istype(W,/obj/item/stack/rods))
+		var/obj/item/stack/rods/M = W
+		if(M.amount >= 3)
+			M.use(3)
+			Break()
+			to_chat(user, "<span class='notice'>You slip the rods between the plate and its base, jamming it.</span>")
+			user.drop_from_inventory(src)
+			qdel(src)
+		else
+			to_chat(user, "<span class='warning'>You need three rods to jam the mechanism.</span>")
+
+	if(istype(W,/obj/item/tool/wirecutters))
+		if(broken)
+			Reset()
+			to_chat(user, "<span class='notice'>You slice the rods and remove them, resetting the trap.</span>")
+		else
+			to_chat(user, "<span class='warning'>You can't disarm the trap this way!</span>")
+
+/obj/effect/trap/thrower/proc/Break()
+	update_icon()
+	broken = TRUE
+
+/obj/effect/trap/thrower/proc/Reset()
+	update_icon()
+	broken = FALSE
+	tripped = FALSE
+
+/obj/effect/trap/thrower/update_icon()
+	if(!tripped)
+		icon_state = "[initial(icon_state)]"
+	else if (tripped && !broken)
+		icon_state = "[initial(icon_state)]_visible"
+	else if (tripped && broken)
+		icon_state = "[initial(icon_state)]_jammed"
+
+//Falling Log
+/obj/effect/trap/thrower/falling_log
+	name = "wavering tile"
+	desc = "There's something strange about the lighting around this tile."
+	icon_state = "log"
+	trap_floor_type = null
+	var/min_damage = 25
+	var/max_damage = 45
+
+/obj/effect/trap/thrower/falling_log/fire()
+	return
+
+/obj/effect/trap/thrower/falling_log/proc/Throw(atom/AM as mob|obj)
+	var/mob/living/M = AM
+	var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
+	var/turf/T2 = get_step(AM, pick(throw_dirs))
+	M.throw_at(T2, 1, 1, src)
+	var/head_slot = SLOT_HEAD
+	if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
+		M.setBrainLoss(2,5)
+		M.updatehealth()
+	Break()
+	update_icon()
+	playsound(src, 'sound/effects/bang.ogg', 100, 1)
+	visible_message("<span class='danger'>[src] slams into [M], sending them flying!</span>")
+	M.Weaken(12)
+
+/obj/effect/trap/thrower/falling_log/Crossed(atom/AM as mob|obj)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
+	if(broken)
+		return
+	if(istype(AM, /mob/living))
+		visible_message("<span class='danger'>A log swings down from overhead!</span>")
+		playsound(src, 'sound/effects/bang.ogg', 100, 1)
+		Throw()
+		return
+
+/obj/effect/trap/thrower/falling_log/attackby(var/obj/item/W, var/mob/user)
+	if(istype(W,/obj/item/stack/cable_coil))
+		var/obj/item/stack/cable_coil/M = W
+		if(M.amount >= 5 && broken)
+			M.use(5)
+			Reset()
+			to_chat(user, "<span class='notice'>You use the coils to raise the log back up, resetting it.</span>")
+			user.drop_from_inventory(src)
+			qdel(src)
+
+	if(istype(W,/obj/item/tool/wirecutters))
+		if(broken)
+			Reset()
+			to_chat(user, "<span class='notice'>You slice the rods and remove them, resetting the trap.</span>")
+
+/obj/effect/trap/thrower/Break()
+	update_icon()
+	broken = TRUE
+
+/obj/effect/trap/thrower/Reset()
+	update_icon()
+	broken = FALSE
+	tripped = FALSE
+
+/obj/effect/trap/thrower/update_icon()
+	if(!tripped)
+		icon_state = "[initial(icon_state)]"
+	else if (tripped && !broken)
+		icon_state = "[initial(icon_state)]_visible"
+	else if (tripped && broken)
+		icon_state = "[initial(icon_state)]_jammed"
