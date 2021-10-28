@@ -339,7 +339,7 @@
 /obj/effect/trap/pop_up/fire()
 	update_icon()
 	visible_message("<span class='danger'>Blades erupt from concealed holes in the floor!</span>")
-	playsound(src, 'sound/effects/holster/holsterout.ogg', 100, 1)
+	playsound(src, 'sound/effects/holster/holsterout.ogg', 100, 1) //Sound is too quiet, same issue as pillar.
 	name = "spear trap"
 	desc = "These knee-high blades look dangerous!"
 
@@ -396,9 +396,9 @@
 /obj/effect/trap/pop_up/update_icon()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
-	else if (tripped)
+	else if (tripped && !broken)
 		icon_state = "[initial(icon_state)]_visible"
-	else if (broken)
+	else if (tripped && broken)
 		icon_state = "[initial(icon_state)]_broken"
 
 //Spinning Blade Column
@@ -410,19 +410,14 @@
 	min_damage = 10
 	max_damage = 30
 
-/obj/effect/trap/pop_up/pillar/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
-	return ..()
-
 /obj/effect/trap/pop_up/pillar/Break()
 	update_icon()
-	Destroy()
 	broken = TRUE
 
 /obj/effect/trap/pop_up/pillar/fire()
 	update_icon()
 	visible_message("<span class='danger'>A bladed pillar pops up from a concealed pit in the floor!</span>")
-	playsound(src, 'sound/effects/holster/holsterout.ogg', 100, 1)
+	playsound(src, 'sound/effects/holster/holsterout.ogg', 100, 1) //Fix sound. It's the gun draw sound, not the blade draw.
 	name = "spinning blade trap"
 	desc = "The blades on this waist-high pillar are spinning violently!"
 
@@ -433,6 +428,15 @@
 	if(broken)
 		return
 	if (istype(AM, /mob/living))
+		var/mob/living/M = AM
+		var/damage = rand(min_damage, max_damage)
+		M.apply_damage(damage, BRUTE)
+		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
+						"<span class='userdanger'>You are slashed by the spinning blades!</span>")
+
+/* This is all per-tick processing stuff. It isn't working the way I want, so I'm reverting it.
+
+if (istype(AM, /mob/living))
 		START_PROCESSING(SSfastprocess, src)
 		var/mob/living/M = AM
 		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
@@ -442,6 +446,11 @@
 	var/mob/living/M = AM
 	var/damage = rand(min_damage, max_damage)
 	M.apply_damage(damage, BRUTE)
+
+/obj/effect/trap/pop_up/pillar/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
+	return ..()
+*/
 
 //Springtrap Buzzsaw
 
@@ -472,12 +481,10 @@
 		M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
 						"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
 
-//Falling Log
-//Have this throw on impact like with skateboards.
-
 /*
 General to-do:
-Plank bridges aren't taking damage/updating. Investigate.
-Test trap breakages. - Consult with Ursa on breaks not popping.
-Solve pressure plate multi-signal issue.
+Make Throwers a trap type and move the falling log there, instead of as a pop-up.
+	Falling Log - Have this throw on impact like with skateboards.
+Solve pressure plate multi-signal issue for acid pits. Everything else pops correctly.
+Make more Launcher sprites - sculpture, recessed holes, etc.
 */

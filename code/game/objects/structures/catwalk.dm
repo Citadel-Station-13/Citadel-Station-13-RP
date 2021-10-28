@@ -178,20 +178,20 @@
 /obj/structure/catwalk/plank/Crossed()
 	. = ..()
 	switch(rand(1,100))
-		if(1,5)
+		if(1 to 5)
 			qdel(src)
 			visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
-		if(6,90)
+		if(6 to 50)
 			take_damage(rand(10,20))
 			visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
-		if(91,100)
+		if(51 to 100)
 			return
 
 /obj/structure/catwalk/plank/take_damage(amount)
 	health -= amount
+	update_icon()
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		new /obj/item/stack/material/wood(get_turf(src))
 		Destroy()
 
 /obj/structure/catwalk/plank/update_icon()
