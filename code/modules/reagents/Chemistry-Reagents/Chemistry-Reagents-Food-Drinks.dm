@@ -3693,7 +3693,7 @@ End Citadel Change */
 	id = "gibbfloat"
 	description = "A tasty, frothy drink."
 	taste_description = "soda float"
-	strength = 0
+	strength = 100
 
 	glass_name = "Gibbfloat"
 	glass_desc = "A tasty, frothy drink"
