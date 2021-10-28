@@ -354,6 +354,7 @@ SUBSYSTEM_DEF(mapping)
 		chosen_type = pick(engine_types)
 	subsystem_log("Chose Engine Map: [chosen_type.name]")
 	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
+	to_chat(world, "<span class='danger'>Engine loaded: [chosen_type.display_name]</span>")
 
 	// Annihilate movable atoms
 	engine_loader.annihilate_bounds()
