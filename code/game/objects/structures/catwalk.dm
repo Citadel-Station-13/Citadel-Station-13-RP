@@ -164,3 +164,42 @@
 	icon_state = "catwalk_platedwhite"
 	tile = /obj/item/stack/tile/floor/white
 	platecolor = "#e8e8e8"
+
+/obj/structure/catwalk/plank
+	name = "plank bridge"
+	desc = "Some flimsy wooden planks, generally set across a hazardous area."
+	plane = DECAL_PLANE
+	layer = ABOVE_UTILITY
+	icon = 'icons/turf/catwalks.dmi'
+	icon_state = "plank"
+	density = 0
+	anchored = 1.0
+
+/obj/structure/catwalk/plank/Crossed()
+	. = ..()
+	switch(rand(1,100))
+		if(1 to 5)
+			qdel(src)
+			visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
+		if(6 to 50)
+			take_damage(rand(10,20))
+			visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
+		if(51 to 100)
+			return
+
+/obj/structure/catwalk/plank/take_damage(amount)
+	health -= amount
+	update_icon()
+	if(health <= 0)
+		visible_message("<span class='warning'>\The [src] breaks down!</span>")
+		Destroy()
+
+/obj/structure/catwalk/plank/update_icon()
+	if(health > 75)
+		icon_state = "[initial(icon_state)]"
+	if(health < 75)
+		icon_state = "[initial(icon_state)]_scuffed"
+	if(health < 50)
+		icon_state = "[initial(icon_state)]_rickety"
+	if(health < 25)
+		icon_state = "[initial(icon_state)]_dangerous"
