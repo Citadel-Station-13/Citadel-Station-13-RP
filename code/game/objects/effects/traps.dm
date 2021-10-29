@@ -519,13 +519,6 @@ if (istype(AM, /mob/living))
 		M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
 						"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
 
-/*
-General to-do:
-Solve pressure plate multi-signal issue for acid pits. Everything else pops correctly.
-Make more Launcher sprites - sculpture, recessed holes, etc.
-Make Launchers jammable.
-*/
-
 //////////////////
 // Tossing Traps
 //////////////////
@@ -540,6 +533,8 @@ Make Launchers jammable.
 	update_icon()
 	visible_message("<span class='danger'>The floor tile pistons upwards violently!</span>")
 	playsound(src, 'sound/effects/bang.ogg', 100, 1)
+	name = "piston trap"
+	desc = "This concealed piston rockets upwards with great force."
 
 /obj/effect/trap/thrower/Crossed(atom/AM as mob|obj)
 	. = ..()
@@ -588,6 +583,8 @@ Make Launchers jammable.
 	update_icon()
 	broken = FALSE
 	tripped = FALSE
+	name = "crooked tile"
+	desc = "The edges of this tile are lifted slightly."
 
 /obj/effect/trap/thrower/update_icon()
 	if(!tripped)
@@ -603,11 +600,37 @@ Make Launchers jammable.
 	desc = "There's something strange about the lighting around this tile."
 	icon_state = "log"
 	trap_floor_type = null
-	var/min_damage = 25
-	var/max_damage = 45
+	var/min_damage = 20
+	var/max_damage = 40
 
 /obj/effect/trap/thrower/falling_log/fire()
 	return
+
+/obj/effect/trap/thrower/falling_log/Crossed(atom/AM as mob|obj)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
+	if(broken)
+		return
+	if(istype(AM, /mob/living) && !tripped)
+		visible_message("<span class='danger'>A log swings down from overhead!</span>")
+		playsound(src, 'sound/effects/bang.ogg', 100, 1)
+		Trip()
+		var/mob/living/M = AM
+		var/damage = rand(min_damage, max_damage)
+		M.apply_damage(damage, BRUTE)
+		return
+
+/obj/effect/trap/thrower/falling_log/proc/Trip()
+	if(tripped)
+		return
+	if(!tripped)
+		tripped = TRUE
+		name = "falling log trap"
+		desc = "A heavy wooden log suspended by ropes. Primitive, but effective."
+		update_icon()
+		Throw()
+		return
 
 /obj/effect/trap/thrower/falling_log/proc/Throw(atom/AM as mob|obj)
 	var/mob/living/M = AM
@@ -618,23 +641,9 @@ Make Launchers jammable.
 	if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 		M.setBrainLoss(2,5)
 		M.updatehealth()
-	Break()
-	update_icon()
 	playsound(src, 'sound/effects/bang.ogg', 100, 1)
-	visible_message("<span class='danger'>[src] slams into [M], sending them flying!</span>")
+	visible_message("<span class='danger'>The falling log slams into [M], sending them flying!</span>")
 	M.Weaken(12)
-
-/obj/effect/trap/thrower/falling_log/Crossed(atom/AM as mob|obj)
-	. = ..()
-	if(AM.is_incorporeal())
-		return
-	if(broken)
-		return
-	if(istype(AM, /mob/living))
-		visible_message("<span class='danger'>A log swings down from overhead!</span>")
-		playsound(src, 'sound/effects/bang.ogg', 100, 1)
-		Throw()
-		return
 
 /obj/effect/trap/thrower/falling_log/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
@@ -647,18 +656,16 @@ Make Launchers jammable.
 			qdel(src)
 
 	if(istype(W,/obj/item/tool/wirecutters))
-		if(broken)
-			Reset()
-			to_chat(user, "<span class='notice'>You slice the rods and remove them, resetting the trap.</span>")
+		if(!broken)
+			Break()
+			to_chat(user, "<span class='notice'>You cut the ropes suspending the log, breaking it.</span>")
 
-/obj/effect/trap/thrower/Break()
-	update_icon()
-	broken = TRUE
-
-/obj/effect/trap/thrower/Reset()
+/obj/effect/trap/thrower/falling_log/Reset()
 	update_icon()
 	broken = FALSE
 	tripped = FALSE
+	name = "wavering tile"
+	desc = "There's something strange about the lighting around this tile."
 
 /obj/effect/trap/thrower/update_icon()
 	if(!tripped)
@@ -667,3 +674,9 @@ Make Launchers jammable.
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && broken)
 		icon_state = "[initial(icon_state)]_jammed"
+
+/*
+General to-do:
+Solve pressure plate multi-signal issue for acid pits. Everything else pops correctly.
+Make more Launcher sprites - sculpture, recessed holes, etc.
+*/
