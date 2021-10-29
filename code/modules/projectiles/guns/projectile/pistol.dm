@@ -86,7 +86,7 @@
 	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash)
+	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash, /obj/item/ammo_magazine/m45/practice)
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
