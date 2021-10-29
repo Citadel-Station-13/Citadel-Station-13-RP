@@ -1113,7 +1113,9 @@ obj/item/clothing/suit/kamishimo
 	icon_state = "laconic"
 	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
 	body_parts_covered = UPPER_TORSO|ARMS
-	valid_accessory_slots = ACCESSORY_SLOT_UTILITY
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_UTILITY)
 
 /obj/item/clothing/suit/imperial_replica
 	name = "replica imperial soldier armor"
