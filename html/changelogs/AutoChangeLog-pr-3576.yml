@@ -1,0 +1,4 @@
+author: "HoneyApples"
+delete-after: True
+changes: 
+  - bugfix: ".45 Pistol from sec now accepts practice magazines"
