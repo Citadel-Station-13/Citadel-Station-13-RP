@@ -104,7 +104,7 @@
 /area/submap/cave/crashed_ufo)
 "ay" = (
 /obj/structure/prop/alien/computer{
-	 = on_state = "console-c";
+	 = null;
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -188,7 +188,7 @@
 /area/submap/cave/crashed_ufo)
 "aO" = (
 /obj/structure/prop/alien/computer{
-	 = on_state = "console-c";
+	 = null;
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alien,
