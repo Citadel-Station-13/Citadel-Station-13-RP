@@ -136,9 +136,6 @@
 	},
 /turf/simulated/floor/outdoors/lava,
 /area/submap/lava_trench)
-"aB" = (
-/turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
 "aC" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/lava_trench)
@@ -639,10 +636,10 @@
 /area/submap/lava_trench)
 
 (1,1,1) = {"
-aB
-aB
-aB
-aB
+aC
+aC
+aC
+aC
 af
 af
 af
@@ -671,7 +668,7 @@ aa
 aa
 "}
 (2,1,1) = {"
-aB
+aC
 ab
 al
 am
