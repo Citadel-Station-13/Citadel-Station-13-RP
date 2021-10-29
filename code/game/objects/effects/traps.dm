@@ -40,12 +40,20 @@ A way to repair and/or reset every variant of Pop-Up would be nice eventually.
 Falling Traps:
 WARNING! A debug variant exists for falling traps. The basic Falling trap (obj/effect/trap/falling) is not intended for use.
 Remember that scene with the AT-ST in Star Wars Ep. VI? I do! These traps plummet from above to totally ruin your day!
-Currently only the falling log exists, but eventually I have plans for wrecking balls, dual rods, pendulum axes, and so on!
+Currently only the falling log exists, but eventually I have plans for wrecking balls, dual logs, pendulum axes, and so on!
 These traps not only smack you with damage flat out, but they can throw you in a random direction, allowing you to potentially send victims into other traps!
 The falling log (and potentially all falling traps) can be broken by using wirecutters on the ropes, and can be repaired/reset using cables.
 
 That about covers it! If you get an idea for a trap, swing it by me, or try your hand at implementing it yourself! If you have any questions, I'm always happy to answer them!
 - Kat
+
+General To-Do/Wants:
+Solve pressure plate multi-signal issue for acid pits? Everything else pops correctly.
+Make more Launcher sprites - sculpture, recessed holes, etc.
+Make Laser sci-fi flavored Launchers - energy beam wall mounts, magical spinning crystals, etc.
+Make it so pop-ups can be damaged by weapon attacks, and not just projectiles?
+Make it so swinging ropes can be cut by knives/swords, and not just wirecutters.
+Add those other swinging traps you mentioned above!
 */
 
 
@@ -762,9 +770,3 @@ if (istype(AM, /mob/living))
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && broken)
 		icon_state = "[initial(icon_state)]_jammed"
-
-/*
-General to-do:
-Solve pressure plate multi-signal issue for acid pits? Everything else pops correctly.
-Make more Launcher sprites - sculpture, recessed holes, etc.
-*/
