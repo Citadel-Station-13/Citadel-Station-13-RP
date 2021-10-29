@@ -42,6 +42,7 @@ WARNING! A debug variant exists for falling traps. The basic Falling trap (obj/e
 Remember that scene with the AT-ST in Star Wars Ep. VI? I do! These traps plummet from above to totally ruin your day!
 Currently only the falling log exists, but eventually I have plans for wrecking balls, dual rods, pendulum axes, and so on!
 These traps not only smack you with damage flat out, but they can throw you in a random direction, allowing you to potentially send victims into other traps!
+The falling log (and potentially all falling traps) can be broken by using wirecutters on the ropes, and can be repaired/reset using cables.
 
 That about covers it! If you get an idea for a trap, swing it by me, or try your hand at implementing it yourself! If you have any questions, I'm always happy to answer them!
 - Kat
