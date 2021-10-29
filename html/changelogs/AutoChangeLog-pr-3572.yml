@@ -1,0 +1,5 @@
+author: "nik707"
+delete-after: True
+changes: 
+  - bugfix: "The self-deleting mirror is a thing of the past."
+  - imageadd: "added new mirror sprites"
