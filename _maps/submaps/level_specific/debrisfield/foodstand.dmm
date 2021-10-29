@@ -4,13 +4,13 @@
 /area/space/debrisfield/explored)
 "b" = (
 /turf/simulated/mineral/vacuum,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/asteroids/rocks)
 "c" = (
 /turf/simulated/mineral/floor/vacuum,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "d" = (
 /turf/simulated/wall/wood,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "e" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/item/reagent_containers/food/snacks/carpmeat,
@@ -24,7 +24,7 @@
 /obj/item/reagent_containers/food/snacks/carpmeat,
 /obj/item/reagent_containers/food/snacks/carpmeat,
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "f" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/condiment/coldsauce{
@@ -39,19 +39,19 @@
 	pixel_x = -8
 	},
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "g" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "h" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "i" = (
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "j" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/food/snacks/taco,
@@ -62,25 +62,25 @@
 /obj/item/reagent_containers/food/snacks/cheeseburrito,
 /obj/item/reagent_containers/food/snacks/cheeseburrito,
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "k" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/taco,
 /obj/item/reagent_containers/food/snacks/taco,
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "l" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/taco,
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 "m" = (
 /obj/structure/table/woodentable,
 /obj/machinery/cash_register{
 	dir = 1
 	},
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/foodstand)
 
 (1,1,1) = {"
 a

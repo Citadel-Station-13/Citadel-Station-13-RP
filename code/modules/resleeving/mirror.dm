@@ -60,6 +60,7 @@
 			user.drop_from_inventory(src)
 			forceMove(MT)
 			MT.imp = src
+			MT.update_icon()
 		else
 			if(istype(I, /obj/item/dogborg/mirrortool))
 				var/obj/item/dogborg/mirrortool/MT = I
@@ -103,8 +104,8 @@
 /obj/item/mirrortool
 	name = "Mirror Installation Tool"
 	desc = "A tool for the installation and removal of Mirrors"
-	icon = 'icons/obj/device_alt.dmi'
-	icon_state = "sleevemate"
+	icon = 'icons/obj/mirror.dmi'
+	icon_state = "mirrortool"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
 	throwforce = 3
@@ -127,8 +128,8 @@
 					M.visible_message("<span class='warning'>[user] has removed [M]'s mirror.</span>")
 					add_attack_logs(user,M,"Mirror removed by [user]")
 					src.imp = M.mirror
-					qdel(M.mirror)
 					M.mirror = null
+					update_icon()
 		else
 			to_chat(usr, "This person has no mirror installed.")
 
@@ -152,6 +153,7 @@
 						if(imp.handle_implant(M))
 							imp.post_implant(M)
 						src.imp = null
+						update_icon()
 	else
 		to_chat(usr, "You must target the torso.")
 
@@ -161,3 +163,11 @@
 	else
 		user.put_in_hands(imp)
 		imp = null
+		update_icon()
+
+/obj/item/mirrortool/update_icon() //uwu
+	..()
+	if(imp == null)
+		icon_state = "mirrortool"
+	else
+		icon_state = "mirrortool_loaded"
