@@ -1,4 +1,52 @@
-//Place traps here. Crossbow trap as basis?
+//////////////////////////////
+//		Traps Readme
+//////////////////////////////
+/*
+Hello! Below you will find a variety of traps designed for map placement.
+Many of these traps were created with a sort of "Tomb" or "Ruins" vibe in mind, but there is always room to expand!
+
+All traps are able to be networked together through the ID variable.
+Most traps are designed to work in conjunction with Pressure Plates, which may be located in 'code/game/turfs/flooring/flooring_traps.dm'.
+Certain traps, like the Falling Log, are designed to trigger when crossed, instead of relying on a pressure plate system to trip.
+Some traps necessarily possess vestigial variables, so make sure to read through them and factor in the nuances of each model!
+
+Traps are split into a couple categories:
+ - Pit
+ - Launcher
+ - Pop-Up
+ - Falling
+
+Pit Traps:
+An undeniable classic. Pit traps are those traps which cause the floor to give way and drop an unsuspecting victim into a hazard.
+Exactly how this works necessarily varies between each form of trap. Acid pits have to replace the entire turf, whereas punji pits simply lay over the floor.
+Be sure to take this into consideration when laying out traps. For some undetermined reason, pit traps do not activate simultaneously, either.
+That is to say, a pressure plate being tripped will only trigger one trap at a time. This is a bug and I have not yet found a solution.
+Pit traps may be temporarily circumvented by laying down wooden planks to form a bridge, but be careful! These planks may not be that sturdy.
+Pit traps may be closed over/reset by using floor tiles on them. This system probably needs more refinement, but it is baseline functional.
+
+Launcher Traps:
+Another Temple Delver favorite, launcher traps fire projectiles in a set direction when set off by a pressure plate.
+These projectiles CAN destroy walls across from them, so be mindful of your placement when designing these, so that they don't undercut other portions of your dungeon.
+Launchers may be jammed by shoving rods into the holes, and unjammed/reset by crowbarring out obstructions.
+More icon variants for launchers are planned.
+
+Pop-Up Traps:
+WARNING! A debug variant exists for pop-up traps. The basic Pop-Up trap (obj/effect/trap/pop_up) is not intended for use.
+These traps hide under the floor, and trigger when set off by a pressure plate.
+They can be incredibly deadly, and must be destroyed to neutralize their threat. Some may be repaired with a welder.
+Some, like the thrower trap, can be jammed with rods, or unjammed with wirecutters. Use throwers to catapult hapless victims into other hazards for maximum carnage!
+A way to repair and/or reset every variant of Pop-Up would be nice eventually.
+
+Falling Traps:
+WARNING! A debug variant exists for falling traps. The basic Falling trap (obj/effect/trap/falling) is not intended for use.
+Remember that scene with the AT-ST in Star Wars Ep. VI? I do! These traps plummet from above to totally ruin your day!
+Currently only the falling log exists, but eventually I have plans for wrecking balls, dual rods, pendulum axes, and so on!
+These traps not only smack you with damage flat out, but they can throw you in a random direction, allowing you to potentially send victims into other traps!
+
+That about covers it! If you get an idea for a trap, swing it by me, or try your hand at implementing it yourself! If you have any questions, I'm always happy to answer them!
+- Kat
+*/
+
 
 /obj/effect/trap
 	name = "strange area"
