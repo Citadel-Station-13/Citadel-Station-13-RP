@@ -7,49 +7,49 @@
 	dir = 9
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "c" = (
 /obj/structure/cliff/automatic,
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "d" = (
 /obj/random/turf/lava,
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "e" = (
 /obj/structure/cliff/automatic{
 	dir = 5
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "f" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 9
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "g" = (
 /turf/simulated/floor/outdoors/lava,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "h" = (
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "i" = (
 /obj/structure/cliff/automatic/corner,
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "j" = (
 /obj/structure/cliff/automatic{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "k" = (
 /obj/structure/cliff/automatic{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "l" = (
 /obj/effect/map_effect/interval/effect_emitter/steam,
 /obj/effect/map_effect/interval/effect_emitter/smoke/bad{
@@ -63,41 +63,41 @@
 	interval_upper_bound = 1200
 	},
 /turf/simulated/floor/outdoors/lava,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "m" = (
 /obj/structure/cliff/automatic{
 	dir = 10
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "n" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 10
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "o" = (
 /obj/structure/cliff/automatic/corner{
 	dir = 6
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "p" = (
 /obj/structure/cliff/automatic{
 	dir = 6
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "q" = (
 /obj/structure/cliff/automatic{
 	dir = 2
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "r" = (
 /obj/random/multiple/minevault,
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 
 (1,1,1) = {"
 a
