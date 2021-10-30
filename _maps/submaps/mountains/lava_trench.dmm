@@ -138,10 +138,7 @@
 /area/submap/lava_trench)
 "aB" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
-"aC" = (
-/turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/lava_trench)
 "aD" = (
 /obj/structure/cliff/automatic,
 /obj/structure/railing{
@@ -305,7 +302,7 @@
 /area/submap/lava_trench/outpost)
 "be" = (
 /turf/simulated/mineral/ignore_mapgen,
-/area/template_noop)
+/area/submap/lava_trench)
 "bf" = (
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/rocks/caves,
@@ -1247,7 +1244,7 @@ be
 be
 "}
 (20,1,1) = {"
-aC
+af
 ai
 af
 af
@@ -1279,7 +1276,7 @@ be
 be
 "}
 (21,1,1) = {"
-aC
+af
 aj
 af
 af
@@ -1311,7 +1308,7 @@ be
 be
 "}
 (22,1,1) = {"
-aC
+af
 ai
 af
 af
