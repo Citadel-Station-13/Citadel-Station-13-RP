@@ -9,6 +9,7 @@ after the sprite has been set you can use it again to remove overlays that may h
 	icon = 'icons/obj/device.dmi'
 	icon_state = "flash"
 	item_state = "flashtool"
+	w_class = ITEMSIZE_SMALL
 	var/path
 	var/state
 
