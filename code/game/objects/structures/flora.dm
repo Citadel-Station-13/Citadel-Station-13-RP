@@ -470,6 +470,7 @@
 	icon = 'icons/obj/flora/pumpkins.dmi'
 	desc = "A healthy, fat pumpkin. It looks as if it was freshly plucked from its vines and shows no signs of decay."
 	icon_state = "decor-pumpkin"
+	density = 1
 
 /obj/effect/landmark/carved_pumpkin_spawn
 	name = "jack o'lantern spawn"
