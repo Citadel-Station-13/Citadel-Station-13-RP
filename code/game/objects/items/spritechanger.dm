@@ -28,10 +28,6 @@ after the sprite has been set you can use it again to remove overlays that may h
 				state =  newState
 				to_chat(user, "<span class='notice'>You set the path to [newPath] and the state to [newState]</span>")
 
-/obj/item/spritechanger/verb/reset()
-	set name = "Reset values"
-	set category = "Object"
-	set src in oview(1)
-
+/obj/item/spritechanger/AltClick(mob/user)
 	path = ""
 	state = ""
