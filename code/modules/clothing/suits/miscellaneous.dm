@@ -435,14 +435,13 @@ obj/item/clothing/suit/kamishimo
 	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
-/obj/item/clothing/suit/storage/toggle/stripe_jacket
+/obj/item/clothing/suit/storage/stripe_jacket
 	name = "striped jacket"
 	desc = "A high collar, a gaudy stripe, clasps that don't actually work. All the ingredients to a fashionable clown! Trust me, they are /definitely/ laughing at your jokes, and not you."
 	icon_state = "stripe_jacket"
 	blood_overlay_type = "coat"
 	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
-	item_state_slots = list(slot_r_hand_str = "stripe_jacket_item", slot_l_hand_str = "stripe_jacket_item")
 /*
  * stripper
  */
