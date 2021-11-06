@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - rscadd: "Added Spritechanger as admin spawn"
+  - imageadd: "Added TGMC Xenomorphsprites"
