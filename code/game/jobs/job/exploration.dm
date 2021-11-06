@@ -154,7 +154,7 @@
 /datum/job/sar
 	title = "Field Medic"
 	flag = SAR
-	departments = list(DEPARTMENT_PLANET, DEPARTMENT_MEDICAL)
+	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 2

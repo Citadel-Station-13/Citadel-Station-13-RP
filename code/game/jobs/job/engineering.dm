@@ -5,7 +5,7 @@
 	title = "Chief Engineer"
 	flag = CHIEF
 	departments_managed = list(DEPARTMENT_ENGINEERING)
-	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_COMMAND)
+	departments = list(DEPARTMENT_ENGINEERING)
 	sorting_order = 2
 	department_flag = ENGSEC
 	disallow_jobhop = TRUE

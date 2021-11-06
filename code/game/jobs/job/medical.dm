@@ -5,7 +5,7 @@
 	title = "Chief Medical Officer"
 	flag = CMO
 	departments_managed = list(DEPARTMENT_MEDICAL)
-	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_COMMAND)
+	departments = list(DEPARTMENT_MEDICAL)
 	sorting_order = 2
 	department_flag = MEDSCI
 	pto_type = PTO_MEDICAL
