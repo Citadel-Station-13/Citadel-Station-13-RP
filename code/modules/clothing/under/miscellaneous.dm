@@ -1663,3 +1663,13 @@
 	name = "bounty hunter skinsuit"
 	desc = "A skintight bodysuit meant to be worn under powered armor. Popularized by a famous bounty hunter."
 	icon_state = "bountyskin"
+
+/obj/item/clothing/under/smooth_gray
+	name = "smooth gray jumpsuit"
+	desc = "An ironed version of the famous, bold, and bald apparel. As smooth as it looks, it does not guarantee being able to slip away."
+	icon_state = "gray_smooth_jumpsuit"
+
+/obj/item/clothing/under/navy_gray
+	name = "navy gray jumpsuit"
+	desc = "The gray, branchless version issued to all who enrolled. Or those who visited the duty-free store on their way out."
+	icon_state = "navy_jumpsuit"
