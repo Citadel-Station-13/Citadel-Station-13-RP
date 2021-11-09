@@ -5,56 +5,56 @@
 "b" = (
 /obj/random/turf/lava,
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "c" = (
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "d" = (
 /obj/structure/fence/corner{
 	dir = 9
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "e" = (
 /obj/structure/fence{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "f" = (
 /obj/structure/fence/corner{
 	dir = 5
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "g" = (
 /obj/structure/fence/cut/large,
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "h" = (
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "i" = (
 /obj/structure/fence,
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "j" = (
 /obj/structure/fence/corner{
 	dir = 10
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "k" = (
 /obj/structure/fence/door/locked,
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "l" = (
 /obj/structure/fence/corner{
 	dir = 6
 	},
 /turf/simulated/floor/outdoors/rocks/caves,
-/area/template_noop)
+/area/submap/cave/random_geyser)
 "m" = (
 /obj/effect/map_effect/interval/effect_emitter/steam,
 /obj/effect/map_effect/interval/effect_emitter/smoke/mist{
@@ -72,7 +72,7 @@
 /turf/simulated/floor/water/deep{
 	outdoors = 0
 	},
-/area/template_noop)
+/area/submap/cave/random_geyser)
 
 (1,1,1) = {"
 a
