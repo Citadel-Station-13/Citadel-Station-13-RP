@@ -1,4 +1,0 @@
-author: "KillianKirilenko"
-delete-after: True
-changes: 
-  - rscadd: "Added atmospheric retention field generators, which can be built after science has done some research."

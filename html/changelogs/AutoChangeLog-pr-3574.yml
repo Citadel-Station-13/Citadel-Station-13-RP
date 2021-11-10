@@ -1,5 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - rscadd: "Adds the stripper gun, same effect as the cell, just as a normal gun"
-  - refactor: "Sizegun and stripper gun file moved to the other gun files"
