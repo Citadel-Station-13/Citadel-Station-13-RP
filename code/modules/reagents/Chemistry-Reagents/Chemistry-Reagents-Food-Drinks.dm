@@ -4087,7 +4087,7 @@ End Citadel Change */
 	name = "Corn Oil"
 	id = "cornoil"
 	description = "An oil derived from various types of corn."
-	
+
 /datum/reagent/nutriment/triglyceride/oil/tallow
 	name = "Tallow"
 	id = "tallow"
@@ -4613,3 +4613,57 @@ End Citadel Change */
 
 	glass_name = "Grape Smoothie"
 	glass_desc = "Icy grape juice mixed with milk and cream." // fuck linters
+
+/datum/reagent/drink/battery
+	name = "Battery"
+	id = "battery"
+	description = "A very bitter-sugary and bright neon green energy drink."
+	taste_description = "bitter sugary neon green"
+	color = "#00ff49"
+	adj_dizzy = -5
+	adj_drowsy = -3
+	adj_sleepy = -2
+
+	glass_name = "Battery"
+	glass_desc = "A very bitter-sugary and bright neon green energy drink."
+	//shocked it works, however when poured into metaglass it shows as brown instead of neon green. Will try to fix this if I can.
+
+/datum/reagent/drink/ramune
+	name = "Ramone"
+	id = "ramune"
+	description = "A sweet marble soda flavored like melon."
+	taste_description = "fizzy melon soda"
+	color = "#E5E5E5"
+
+	glass_name = "Ramone"
+	glass_desc = "A sweet marble soda flavored like melon."
+
+/datum/reagent/drink/dumbjuice
+	name = "DUMB BITCH JUICE!"
+	id = "dumbjuice"
+	description = "A-...uh...it doesn't seem to have much of a taste?"
+	taste_description = "bad choices made easy"
+	color = "#fce5cd"
+
+	glass_name = "DUMB BITCH JUICE!"
+	glass_desc = "A-...uh...it doesn't seem to have much of a taste?"
+/datum/reagent/drink/greentea
+	name = "Green Tea"
+	id = "greentea"
+	description = "A very bitter, yet aromatic green tea."
+	taste_description = "elegant notes of matcha"
+	color = "#51761d"
+
+	glass_name = "Green Tea"
+	glass_desc = "A very bitter, yet aromatic green tea."
+
+/datum/reagent/drink/crystalgibb
+	name = "Crystal Dr. Gibb"
+	id = "crystalgibb"
+	description = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+	taste_description = "clear cherry soda"
+	color = "#0000"
+
+	glass_name = "Crystal Dr. Gibb"
+	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+
