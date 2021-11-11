@@ -126,7 +126,7 @@
 	in_space = 1
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
-
+/* Old Class D waypoint, new one is being handled in classd.dm . Please use that one
 /obj/effect/overmap/visitable/sector/class_d
 	name = "Unidentified Planet"
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
@@ -135,6 +135,7 @@
 	icon_state = "globe"
 	known = FALSE
 	color = "#882933"
+*/
 
 /obj/effect/overmap/visitable/sector/class_h
 	name = "Desert Planet"

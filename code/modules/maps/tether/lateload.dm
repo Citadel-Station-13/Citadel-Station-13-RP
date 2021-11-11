@@ -91,6 +91,8 @@
 
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missionsw
+
+// V4
 /datum/map_template/tether_lateload/away_beach
 	name = "Desert Planet - Z1 Beach"
 	desc = "The beach away mission."
@@ -138,6 +140,8 @@
 /obj/effect/step_trigger/zlevel_fall/beach
 	var/static/target_z
 
+
+// Alienship
 /datum/map_template/tether_lateload/away_alienship
 	name = "Alien Ship - Z1 Ship"
 	desc = "The alien ship away mission."
@@ -147,6 +151,8 @@
 /datum/map_z_level/tether_lateload/away_alienship
 	name = "Away Mission - Alien Ship"
 
+
+// V2
 /datum/map_template/tether_lateload/away_aerostat
 	name = "Remmi Aerostat - Z1 Aerostat"
 	desc = "The Virgo 2 Aerostat away mission."
@@ -173,6 +179,8 @@
 	name = "Away Mission - Aerostat Surface"
 	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/virgo2
 
+// Debrisfield
+
 /datum/map_template/tether_lateload/away_debrisfield
 	name = "Debris Field - Z1 Space"
 	desc = "The Virgo 3 Debris Field away mission."
@@ -187,6 +195,8 @@
 /datum/map_z_level/tether_lateload/away_debrisfield
 	name = "Away Mission - Debris Field"
 
+// Fuel Depot
+
 /datum/map_template/tether_lateload/away_fueldepot
 	name = "Fuel Depot - Z1 Space"
 	desc = "An unmanned fuel depot floating in space."
@@ -195,6 +205,24 @@
 
 /datum/map_z_level/tether_lateload/away_fueldepot
 	name = "Away Mission - Fuel Depot"
+
+// Class D (Virgo 5)
+
+/datum/map_template/tether_lateload/away_class_d
+	name = "Class D - Mountains and Rock Plains"
+	desc = "The previously nuked planet Class D away mission"
+	mappath = '_maps/map_levels/140x140/Class_D.dmm'
+	associated_map_datum = /datum/map_z_level/tether_lateload/away_class_d
+
+/datum/map_template/tether_lateload/away_class_d/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(z), 200, /area/poi_d/unexplored, /datum/map_template/submap/level_specific/class_d)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z, world.maxx - 4, world.maxy - 4)
+	new /datum/random_map/noise/ore/class_d(null, 1, 1, z, 64, 64)
+
+/datum/map_z_level/tether_lateload/away_class_d
+	name = "Away Mission - Class D"
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Gateway submaps go here
