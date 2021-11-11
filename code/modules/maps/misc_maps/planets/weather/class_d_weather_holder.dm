@@ -1,4 +1,4 @@
-///Currently has to be in /map/tether as tether_class_d_weather_holder. Annoyingly has to be there to be loaded properly, will see if I can find a better way of doing this later
+///Currently a copy is in /map/tether as tether_class_d_weather_holder. Annoyingly has to be there to be loaded properly, will see if I can find a better way of doing this later
 
 /*var/datum/planet/class_d/planet_class_d = null
 

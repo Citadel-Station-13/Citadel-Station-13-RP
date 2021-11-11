@@ -112,3 +112,4 @@
 	has_repair_droid = TRUE		//But has repair drone
 	pilot_type = /mob/living/simple_mob/humanoid/possessed/merc/feral	//Possessed rig suit piloting a mech. Tremble in fear
 	movement_shake_radius = 5	//Actually tremble
+
