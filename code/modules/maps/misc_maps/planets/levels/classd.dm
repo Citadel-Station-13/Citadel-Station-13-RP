@@ -252,7 +252,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
 /area/poi_d/Crevices
 	name = "Class D World Crevices"
-	/turf/simulated/mineral/floor/class_d_indoors
+	base_turf = /turf/simulated/mineral/floor/class_d_indoors
 
 /area/poi_d/POIs/solar_farm
 	name = "Prefab Solar Farm"
@@ -260,9 +260,9 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 
 /area/poi_d/POIs/landing_pad
 	name = "Prefab Homestead"
-	/turf/simulated/mineral/floor/class_d
+	base_turf = /turf/simulated/mineral/floor/class_d
 	requires_power = FALSE
 
 /area/poi_d/POIs/reactor
 	name = "Prefab Reactor"
-	/turf/simulated/mineral/floor/class_d_indoors
+	base_turf = /turf/simulated/mineral/floor/class_d_indoors
