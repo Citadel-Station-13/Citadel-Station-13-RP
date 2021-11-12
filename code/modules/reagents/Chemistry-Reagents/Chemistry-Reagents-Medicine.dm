@@ -408,8 +408,19 @@
 			M.make_jittery(4)
 		M.adjustCloneLoss(-30 * removed * chem_effective)//Better version of cryox, but they can work at the same time
 		M.adjustOxyLoss(-30 * removed * chem_effective)
-		M.heal_organ_damage(30 * removed, 30 * removed * chem_effective)
+		M.heal_organ_damage(30 * removed * chem_effective, 30 * removed * chem_effective)
 		M.adjustToxLoss(-30 * removed * chem_effective)
+		if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		for(var/obj/item/organ/I in H.internal_organs)
+			if(I.robotic >= ORGAN_ROBOT)
+				continue
+			if(I.damage > 0) //Peridaxon heals only non-robotic organs
+				I.damage = max(I.damage - removed * chem_effective * 4, 0)
+				H.Confuse(5)
+			if(I.damage <= 5 && I.organ_tag == O_EYES)
+				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
+				H.sdisabilities &= ~BLIND
 
 /datum/reagent/necroxadone
 	name = "Necroxadone"
