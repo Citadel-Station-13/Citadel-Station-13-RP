@@ -226,6 +226,11 @@
 		return
 	if(occupant)
 		if(occupant.stat >= DEAD)
+			if(beaker.reagents.has_any_reagent(list("Necroxadone"=1)))
+				occupant.adjustOxyLoss(-10)
+				occupant.heal_organ_damage(10, 10)
+				occupant.adjustToxLoss(-10)
+				beaker.reagents.remove_reagent("Necroxadone",1))
 			return
 		occupant.bodytemperature += 2*(air_contents.temperature - occupant.bodytemperature)*current_heat_capacity/(current_heat_capacity + air_contents.heat_capacity())
 		occupant.bodytemperature = max(occupant.bodytemperature, air_contents.temperature) // this is so ugly i'm sorry for doing it i'll fix it later i promise
