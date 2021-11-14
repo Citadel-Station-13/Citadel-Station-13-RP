@@ -110,7 +110,7 @@
 		gender = MALE
 		flags = HAIR_VERY_SHORT
 
-	bangs
+	shortbangs
 		name = "Bangs"
 		icon_state = "bangs"
 
@@ -135,6 +135,11 @@
 	bedheadlong
 		name = "Bedhead (Long)"
 		icon_state = "bedhead_long"
+		flags = HAIR_TIEABLE
+
+	bedheadlongest
+		name = "Bedhead (Longest)"
+		icon_state = "bedhead_longest"
 		flags = HAIR_TIEABLE
 
 	beehive
@@ -170,13 +175,13 @@
 
 	bobcurl
 		name = "Bobcurl"
-		icon_state = "bobcurl"
+		icon_state = "bob_curl"
 		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 		flags = HAIR_TIEABLE
 
 	bowl
 		name = "Bowl"
-		icon_state = "bowlcut"
+		icon_state = "bowlcut1"
 
 	bowlcut2
 		name = "Bowl 2"
@@ -184,9 +189,7 @@
 
 	braid
 		name = "Braid (Very Long)"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-		icon_state = "braid"
+		icon_state = "braid1"
 
 	braid2
 		name = "Braid (Long)"
@@ -200,7 +203,7 @@
 
 	mbraid
 		name = "Braid (Medium)"
-		icon_state = "short_braid"
+		icon_state = "braid_medium"
 		flags = HAIR_TIEABLE
 
 
@@ -231,7 +234,7 @@
 
 	bun
 		name = "Bun"
-		icon_state = "bun"
+		icon_state = "bun1"
 		flags = HAIR_TIEABLE
 
 	bun2
@@ -252,12 +255,11 @@
 	tightbun
 		name = "Bun 5"
 		icon_state = "bun5"
-		gender = FEMALE
 		flags = HAIR_VERY_SHORT | HAIR_TIEABLE
 
 	donutbun
-		name = "Bun (Donut)"
-		icon_state = "donutbun"
+		name = "Bun 6"
+		icon_state = "bun6"
 
 	buzz
 		name = "Buzzcut"
