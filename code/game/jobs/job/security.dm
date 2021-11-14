@@ -5,7 +5,7 @@
 	title = "Head of Security"
 	flag = HOS
 	departments_managed = list(DEPARTMENT_SECURITY)
-	departments = list(DEPARTMENT_SECURITY)
+	departments = list(DEPARTMENT_SECURITY, DEPARTMENT_COMMAND)
 	sorting_order = 2
 	department_flag = ENGSEC
 	disallow_jobhop = TRUE

@@ -173,7 +173,7 @@
 		amount_grown = 1
 	get_light_and_color(parent)
 
-/mob/living/simple_mob/animal/roach/roachling/Destroy()
+/mob/living/simple_mob/animal/roach/roachling/death()
 	STOP_PROCESSING(SSobj, src)
 	walk(src, 0) // Because we might have called walk_to, we must stop the walk loop or BYOND keeps an internal reference to us forever.
 	return ..()

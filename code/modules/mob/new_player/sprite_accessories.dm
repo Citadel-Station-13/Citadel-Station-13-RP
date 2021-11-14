@@ -88,6 +88,7 @@
 		icon_state = "amazon"
 		flags = HAIR_TIEABLE
 
+<<<<<<< HEAD
 	antenna
 		name = "Antenna"
 		icon_state = "antenna"
@@ -98,6 +99,8 @@
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "astolfo"
 
+=======
+>>>>>>> 8ebfa29af19d1892d104f3cc8d226a5c2af0b8f7
 	baldfade
 		name = "Balding Fade"
 		icon_state = "baldfade"
@@ -686,9 +689,20 @@
 		icon_state = "ponytail_side1"
 		flags = HAIR_TIEABLE
 
+<<<<<<< HEAD
 	ponytailside2
 		name = "Ponytail (Side) 2"
 		icon_state = "ponytail_side2"
+=======
+	highponytail
+		name = "High Ponytail"
+		icon_state = "hair_highponytail"
+		flags = HAIR_TIEABLE
+
+	poofy
+		name = "Poofy"
+		icon_state = "hair_poofy"
+>>>>>>> 8ebfa29af19d1892d104f3cc8d226a5c2af0b8f7
 		flags = HAIR_TIEABLE
 
 	ponytailside3
@@ -877,6 +891,11 @@
 		gender = MALE
 		flags = HAIR_VERY_SHORT
 
+	undercutlong
+		name = "Undercut Long"
+		icon_state = "hair_undercutlong"
+		flags = HAIR_TIEABLE
+
 	unkept
 		name = "Unkept"
 		icon_state = "unkept"
@@ -906,7 +925,110 @@
 
 	zieglertail
 		name = "Zieglertail"
+<<<<<<< HEAD
 		icon_state = "zieglertail"
+=======
+		icon_state = "hair_ziegler"
+		flags = HAIR_TIEABLE
+
+	glossy
+		name = "Glossy"
+		icon_state = "hair_glossy"
+		flags = HAIR_TIEABLE
+
+	sharpponytail
+		name = "Ponytail Sharp"
+		icon_state = "hair_sharpponytail"
+		flags = HAIR_TIEABLE
+
+	newyou
+		name = "New You"
+		icon_state = "hair_newyou"
+		flags = HAIR_TIEABLE
+
+	partedalt
+		name = "Parted Alt"
+		icon_state = "hair_partedalt"
+
+	amazon
+		name = "Amazon"
+		icon_state = "hair_amazon"
+		flags = HAIR_TIEABLE
+
+	straightlong
+		name = "Straight Long"
+		icon_state = "hair_straightlong"
+		flags = HAIR_TIEABLE
+
+	marysue
+		name = "Mary Sue"
+		icon_state = "hair_marysue"
+
+	sideundercut
+		name = "Side Undercut"
+		icon_state = "hair_sideundercut"
+		flags = HAIR_VERY_SHORT
+
+	donutbun
+		name = "Donut Bun"
+		icon_state = "hair_donutbun"
+
+	gentle2
+		name = "Gentle 2, Long"
+		icon_state = "hair_gentle2long"
+		flags = HAIR_TIEABLE
+
+	sweepshave
+		name = "Sweep Shave"
+		icon_state = "hair_sweepshave"
+
+	beachwave
+		name = "Beach Waves"
+		icon_state = "hair_beachwave"
+		flags = HAIR_TIEABLE
+
+	celebcurls
+		name = "Celeb Curls"
+		icon_state = "hair_celebcurls"
+		flags = HAIR_TIEABLE
+
+	bigcurls
+		name = "Big Curls"
+		icon_state = "hair_bigcurls"
+		flags = HAIR_TIEABLE
+
+	jessica
+		name = "Jessica"
+		icon_state = "hair_jessica"
+		flags = HAIR_TIEABLE
+
+	proper
+		name = "Proper"
+		icon_state = "hair_proper"
+
+	himeup
+		name = "Hime Updo"
+		icon_state = "hair_himeup"
+		flags = HAIR_TIEABLE
+
+	front_braid
+		name = "Braided front"
+		icon_state = "hair_braidfront"
+		flags = HAIR_TIEABLE
+
+	antenna
+		name = "Antenna"
+		icon_state = "hair_antenna"
+
+	protagonist
+		name = "Slightly Long"
+		icon_state = "hair_protagonist"
+		flags = HAIR_TIEABLE
+
+	braidtail
+		name = "Braided Tail"
+		icon_state = "hair_braidtail"
+>>>>>>> 8ebfa29af19d1892d104f3cc8d226a5c2af0b8f7
 		flags = HAIR_TIEABLE
 
 	sidepartlongalt
@@ -914,6 +1036,34 @@
 		icon_state = "hair_longsidepart"
 		flags = HAIR_TIEABLE
 
+<<<<<<< HEAD
+=======
+	miles
+		name = "Miles Hair"
+		icon_state = "hair_miles"
+
+	vivi
+		name = "Vivi"
+		icon_state = "hair_vivi"
+
+	taro
+		name = "Taro"
+		icon_state = "hair_taro"
+		flags = HAIR_TIEABLE
+
+	astolfo
+		name = "Astolfo"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "hair_astolfo"
+
+	awoohair
+		name = "Shoulder-length Messy"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "momijihair"
+
+>>>>>>> 8ebfa29af19d1892d104f3cc8d226a5c2af0b8f7
 	citheronia
 		name = "Citheronia Hair (Kira72)"
 		icon = 'icons/mob/human_face_vr.dmi'
