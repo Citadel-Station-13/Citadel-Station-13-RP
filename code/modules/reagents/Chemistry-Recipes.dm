@@ -19,6 +19,9 @@
 	var/list/inhibitors = list()
 	var/result_amount = 0
 
+	var/min_temperature = T0C
+	var/max_temperature = T20C + 10
+
 	//how far the reaction proceeds each time it is processed. Used with either REACTION_RATE or HALF_LIFE macros.
 	var/reaction_rate = HALF_LIFE(0)
 
@@ -46,6 +49,14 @@
 
 	//check that none of the inhibitors are present in the required amount
 	if(holder.has_any_reagent(inhibitors))
+		return 0
+
+	//Check if temperature is above maximum Temperature
+	if(holder.temperature > max_temperature)
+		return 0
+
+	//Check if temperature is below minimum Temperature
+	if(holder.temperature < min_temperature)
 		return 0
 
 	return 1
