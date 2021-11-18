@@ -64,6 +64,7 @@
 /area/poi_d/explored/underground)
 "lC" = (
 /obj/structure/closet/crate/miningcar,
+/obj/random/plushielarge,
 /turf/simulated/mineral/floor/class_d_indoors,
 /area/poi_d/explored/underground)
 "lJ" = (
@@ -82,6 +83,15 @@
 /turf/simulated/floor/class_d_indoors,
 /area/poi_d/explored/underground)
 "sB" = (
+/turf/simulated/floor/class_d_indoors,
+/area/poi_d/explored/underground)
+"sP" = (
+/obj/item/ammo_casing/spent,
+/obj/structure/foamedmetal,
+/turf/simulated/mineral/floor/class_d_indoors,
+/area/poi_d/explored/underground)
+"sX" = (
+/obj/effect/gibspawner/human,
 /turf/simulated/floor/class_d_indoors,
 /area/poi_d/explored/underground)
 "tb" = (
@@ -243,6 +253,14 @@
 /obj/structure/fence/corner,
 /turf/simulated/mineral/floor/class_d_indoors,
 /area/poi_d/explored)
+"Vr" = (
+/obj/structure/foamedmetal,
+/turf/simulated/mineral/floor/class_d_indoors,
+/area/poi_d/explored/underground)
+"VV" = (
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/class_d_indoors,
+/area/poi_d/explored/underground)
 "WS" = (
 /turf/simulated/mineral/floor/class_d_indoors,
 /area/poi_d/explored/underground)
@@ -254,6 +272,14 @@
 "XC" = (
 /obj/structure/lattice,
 /turf/simulated/mineral/floor/class_d_indoors,
+/area/poi_d/explored/underground)
+"XI" = (
+/obj/structure/sign/signnew/danger,
+/turf/simulated/mineral/class_d_indoors,
+/area/poi_d/explored/underground)
+"Yl" = (
+/obj/effect/gibspawner/robot,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/explored/underground)
 "Yp" = (
 /obj/item/ammo_casing/spent,
@@ -465,7 +491,7 @@ PU
 PU
 sB
 sB
-sB
+sX
 yo
 WZ
 sB
@@ -574,7 +600,7 @@ WS
 To
 To
 ZU
-WS
+VV
 WS
 WS
 XC
@@ -585,7 +611,7 @@ ZU
 ZU
 WS
 WS
-WS
+VV
 ZU
 ZU
 ZU
@@ -613,7 +639,7 @@ Zr
 Ot
 EC
 WS
-WS
+VV
 ZU
 ZU
 ZU
@@ -740,12 +766,12 @@ Pz
 WS
 EC
 sB
-sB
+Yl
 XC
 XC
 Qd
 XC
-sB
+sX
 sB
 oi
 PU
@@ -760,8 +786,8 @@ dN
 cj
 ZU
 ZU
-WS
-To
+Vr
+sP
 ZU
 ZU
 WS
@@ -785,10 +811,10 @@ dN
 (20,1,1) = {"
 dN
 cj
+XI
 ZU
-ZU
-To
-WS
+sP
+Vr
 ZU
 ZU
 WS
@@ -847,7 +873,7 @@ ZU
 ZU
 Zr
 sB
-WS
+VV
 WS
 Ot
 WS

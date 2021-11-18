@@ -133,7 +133,7 @@
 /area/poi_d/explored)
 "P" = (
 /obj/effect/alien/weeds,
-/obj/structure/mob_spawner/scanner/xenos,
+/obj/effect/alien/egg,
 /turf/simulated/mineral/floor/class_d_indoors,
 /area/poi_d/explored)
 "R" = (
