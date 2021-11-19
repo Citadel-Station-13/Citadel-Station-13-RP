@@ -1,7 +1,0 @@
-author: "Jaybirdnerd"
-delete-after: True
-changes: 
-  - rscadd: "Added five more drinks to the Robust Softdrink vendor."
-  - bugfix: "Alphabetized Robust Softdrinks vendor."
-  - soundadd: "A total of one sound for a specific drink included in this."
-  - imageadd: "Five icons for the new drinks added."
