@@ -5,18 +5,17 @@
     result = "topical"
     required_reagents = list("sterilizine" = 5, "foaming_agent" = 5)
     catalysts = list("tungsten" = 5)
-    result_amount = 2//Shitty amounts because you should use the distiller
+    result_amount = 2//Shitty amounts because you should use the heat mechanics
 
-/datum/chemical_reaction/distilling/topical //distiller recipe.
-	name = "Distilling topical"
-	id = "distill_topical"
+/datum/chemical_reaction/topical //distiller recipe.
+	name = "topical gel heat"
+	id = "topical_heat"
 	result = "topical"
 	required_reagents = list("sterilizine" = 1, "foaming_agent" = 1)
 	result_amount = 1
 
-	reaction_rate = HALF_LIFE(10)
-
-	temp_range = list(T0C + 100, T0C + 120)
+	min_temperature = T0C + 100
+	max_temperature = T0C + 120
 
 
 /datum/chemical_reaction/topical/bicarilaze

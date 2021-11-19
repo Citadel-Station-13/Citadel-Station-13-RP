@@ -1,3 +1,4 @@
+/*
 /datum/chemical_reaction/distilling
 //	name = null
 //	id = null
@@ -59,16 +60,6 @@
 
 // Subtypes //
 
-// Biomass
-/datum/chemical_reaction/distilling/biomass
-	name = "Distilling Biomass"
-	id = "distill_biomass"
-	result = "biomass"
-	required_reagents = list("blood" = 1, "sugar" = 1, "phoron" = 0.5)
-	result_amount = 1 // 40 units per sheet, requires actually using the machine, and having blood to spare.
-
-	temp_range = list(T20C + 80, T20C + 130)
-	temp_shift = -2
 
 // Medicinal
 /datum/chemical_reaction/distilling/spacomycaze
@@ -170,3 +161,4 @@
 	reaction_rate = HALF_LIFE(20)
 
 	temp_range = list(T0C + 90, T0C + 95)
+*/

@@ -3221,6 +3221,7 @@
 #include "code\modules\reagents\Misc-Recipes.dm"
 #include "code\modules\reagents\reagent_containers.dm"
 #include "code\modules\reagents\Topical-Recipes.dm"
+#include "code\modules\reagents\Distillery-Adjusted.dm"
 #include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Core.dm"
 #include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Dispenser.dm"
 #include "code\modules\reagents\Chemistry-Reagents\Chemistry-Reagents-Food-Drinks.dm"
