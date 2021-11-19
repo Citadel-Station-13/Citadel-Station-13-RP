@@ -3233,6 +3233,7 @@
 #include "code\modules\reagents\distilling\Distilling-Recipes.dm"
 #include "code\modules\reagents\distilling\distilling.dm"
 #include "code\modules\reagents\machinery\chem_master.dm"
+#include "code\modules\reagents\machinery\reagents_heater.dm"
 #include "code\modules\reagents\machinery\dispenser\_defines.dm"
 #include "code\modules\reagents\machinery\dispenser\cartridge.dm"
 #include "code\modules\reagents\machinery\dispenser\cartridge_presets.dm"

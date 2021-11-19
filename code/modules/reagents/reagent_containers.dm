@@ -144,7 +144,12 @@
 	to_chat(user, "<span class='notice'>You transfer [trans] units of the solution to [target].</span>")
 	return 1
 
-/obj/item/reagent_containers/proc/alterate_temperature(var/energy_in_J)//altering the temperature to access the reagets inside
+/obj/item/reagent_containers/proc/alternate_temperature(var/energy_in_J)//altering the temperature to access the reagets inside
 	var/mass = reagents.total_volume//For now we just go with 1 joule per kelvin per unit, might add specific heat capacity to reagents later
 	var/kelvin_to_heat = mass / energy_in_J
 	reagents.temperature += kelvin_to_heat
+
+/obj/item/reagent_containers/proc/energy_to_temperature(var/target_temperature)//how much energy is needed to achive the target temperature
+	var/mass = reagents.total_volume
+	var/difference_temp = target_temperature - reagents.temperature
+	return mass * difference_temp
