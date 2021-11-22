@@ -14550,18 +14550,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
-"aCu" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/purple/border,
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/tether/exploration/hallway)
 "aCv" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
 /obj/machinery/camera/network/tether{
@@ -14599,7 +14587,8 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "aCy" = (
-/turf/simulated/floor/plating,
+/obj/item/stack/material/animalhide/human,
+/turf/simulated/floor,
 /area/tether/exploration/hallway)
 "aCz" = (
 /obj/structure/bed/chair,
@@ -22020,15 +22009,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload_foyer)
 "gym" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/purple/border,
-/obj/effect/floor_decal/corner/purple/border{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
+/obj/effect/decal/remains/human,
+/turf/simulated/floor,
 /area/tether/exploration/hallway)
 "gAd" = (
 /obj/structure/grille,
@@ -22993,8 +22975,8 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/meeting_room)
 "iPt" = (
-/obj/structure/stairs/spawner/east,
-/turf/simulated/floor/plating,
+/obj/item/material/knife,
+/turf/simulated/floor,
 /area/tether/exploration/hallway)
 "iUL" = (
 /turf/simulated/floor/wood/broken,
@@ -43543,7 +43525,7 @@ siz
 vGo
 fOY
 aaf
-aCu
+aaf
 aaf
 asI
 asI
@@ -43686,7 +43668,7 @@ rKc
 asP
 aaf
 gym
-aaf
+hQZ
 aEG
 aEJ
 auO
@@ -43828,7 +43810,7 @@ rXI
 fwn
 aaf
 aCy
-aaf
+hQZ
 aEH
 aEK
 aus
@@ -43970,7 +43952,7 @@ sPs
 cfk
 aaf
 iPt
-aaf
+hQZ
 aEI
 aEL
 aus
