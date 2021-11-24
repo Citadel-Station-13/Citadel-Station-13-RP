@@ -1283,9 +1283,6 @@
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
-"acP" = (
-/turf/simulated/wall,
-/area/crew_quarters/sleep/spacedorm1)
 "acQ" = (
 /turf/simulated/wall,
 /area/maintenance/station/spacecommandmaint)
@@ -11368,24 +11365,6 @@
 "awu" = (
 /turf/simulated/wall,
 /area/hallway/station/docks)
-"awv" = (
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	id_tag = "spacedorm1";
-	name = "Room 1"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/sleep/spacedorm1)
-"aww" = (
-/turf/simulated/wall,
-/area/crew_quarters/sleep/spacedorm2)
 "awx" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -11455,10 +11434,6 @@
 /area/hallway/station/docks)
 "awG" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock{
-	id_tag = "spacedorm2";
-	name = "Room 2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -11466,8 +11441,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled,
-/area/crew_quarters/sleep/spacedorm2)
+/area/maintenance/station/spacecommandmaint)
 "awH" = (
 /obj/structure/flora/pottedplant,
 /obj/machinery/firealarm{
@@ -11482,38 +11458,7 @@
 	pixel_x = -28
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm1)
-"awJ" = (
-/obj/machinery/button/remote/airlock{
-	id = "spacedorm1";
-	name = "Room 1 Lock";
-	pixel_x = -28;
-	pixel_y = 26;
-	specialfunctions = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm1)
-"awK" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/item/clothing/shoes/black,
-/obj/item/clothing/suit/storage/hooded/wintercoat,
-/obj/random/maintenance/clean,
-/turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm1)
-"awL" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/item/clothing/shoes/black,
-/obj/item/clothing/suit/storage/hooded/wintercoat,
-/obj/random/maintenance/clean,
-/turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm2)
+/area/maintenance/station/spacecommandmaint)
 "awM" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -11746,23 +11691,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
-"axf" = (
-/obj/machinery/button/remote/airlock{
-	id = "spacedorm2";
-	name = "Room 2 Lock";
-	pixel_x = 28;
-	pixel_y = 26;
-	specialfunctions = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm2)
 "axg" = (
 /obj/machinery/light_switch{
 	dir = 8;
@@ -11770,7 +11698,7 @@
 	pixel_y = 8
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm2)
+/area/maintenance/station/spacecommandmaint)
 "axh" = (
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
@@ -11781,13 +11709,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
-"axj" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm1)
 "axk" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/machinery/light{
@@ -11818,18 +11739,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm1)
-"axo" = (
-/obj/structure/table/woodentable,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm1)
+/area/maintenance/station/spacecommandmaint)
 "axp" = (
 /obj/structure/table/woodentable,
 /obj/machinery/alarm{
@@ -11840,7 +11750,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm2)
+/area/maintenance/station/spacecommandmaint)
 "axq" = (
 /obj/machinery/computer/teleporter{
 	dir = 8
@@ -11956,7 +11866,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm2)
+/area/maintenance/station/spacecommandmaint)
 "axG" = (
 /obj/machinery/atmospherics/pipe/tank{
 	dir = 1;
@@ -12016,18 +11926,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm2)
-"axN" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm1)
+/area/maintenance/station/spacecommandmaint)
 "axO" = (
 /obj/structure/table/reinforced,
 /obj/fiftyspawner/glass,
@@ -12073,7 +11972,7 @@
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm1)
+/area/maintenance/station/spacecommandmaint)
 "axT" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/bluedouble,
@@ -12081,7 +11980,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm1)
+/area/maintenance/station/spacecommandmaint)
 "axU" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -12119,7 +12018,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm2)
+/area/maintenance/station/spacecommandmaint)
 "axY" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -12175,7 +12074,7 @@
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm2)
+/area/maintenance/station/spacecommandmaint)
 "aye" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -12187,7 +12086,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood,
-/area/crew_quarters/sleep/spacedorm2)
+/area/maintenance/station/spacecommandmaint)
 "ayg" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -14078,10 +13977,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_science{
-	name = "Exploration";
-	req_one_access = list(19,43,67)
-	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "aCv" = (
@@ -14121,6 +14017,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "aCy" = (
+/obj/random/junk,
 /turf/simulated/floor/plating,
 /area/tether/exploration/hallway)
 "aCz" = (
@@ -21199,6 +21096,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
+/obj/random/junk,
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "gAd" = (
@@ -22164,7 +22062,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/bridge/meeting_room)
 "iPt" = (
-/obj/structure/stairs/spawner/east,
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/tether/exploration/hallway)
 "iUL" = (
@@ -37720,11 +37618,11 @@ awu
 awu
 avK
 awf
-acP
-acP
-acP
-acP
-acP
+acQ
+acQ
+acQ
+acQ
+acQ
 acQ
 acQ
 acQ
@@ -37862,11 +37760,11 @@ awU
 awu
 avK
 awq
-acP
+acQ
 awI
-axj
-axN
-acP
+aBn
+ayg
+acQ
 ayg
 aBn
 aBs
@@ -38004,11 +37902,11 @@ auU
 aJo
 avK
 awi
-awv
-awJ
+awG
+aBI
 axn
 axS
-acP
+acQ
 ayh
 ayJ
 aBI
@@ -38146,11 +38044,11 @@ amW
 awu
 avM
 awj
-acP
-awK
-axo
+acQ
+aBv
+aBr
 axT
-acP
+acQ
 ayj
 aBk
 aBv
@@ -38288,11 +38186,11 @@ avt
 avE
 avN
 awo
-acP
-acP
-acP
-acP
-acP
+acQ
+acQ
+acQ
+acQ
+acQ
 acQ
 acQ
 acQ
@@ -38430,11 +38328,11 @@ avu
 awu
 avO
 awq
-aww
-awL
+acQ
+aBv
 axp
 axX
-aww
+acQ
 aBs
 aBn
 aBv
@@ -38573,10 +38471,10 @@ aJo
 avK
 aqg
 awG
-axf
+aBI
 axF
 ayd
-aww
+acQ
 ayn
 aBo
 aBI
@@ -38714,11 +38612,11 @@ avA
 awu
 avT
 aqx
-aww
+acQ
 axg
 axM
 aye
-aww
+acQ
 ayr
 aBr
 aBs
@@ -38856,11 +38754,11 @@ avC
 awu
 awu
 asB
-aww
-aww
-aww
-aww
-aww
+acQ
+acQ
+acQ
+acQ
+acQ
 acQ
 acQ
 acQ
