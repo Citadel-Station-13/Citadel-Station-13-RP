@@ -8,6 +8,20 @@
 "aac" = (
 /turf/simulated/mineral/vacuum,
 /area/mine/explored/upper_level)
+"aad" = (
+/obj/item/toy/plushie/squid/pink,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/mob/living/simple_mob/animal/sif/fluffy/silky,
+/turf/simulated/floor/outdoors/grass/forest,
+/area/tether/exploration/pathfinder_office)
+"aae" = (
+/obj/structure/table/woodentable,
+/obj/item/cassette_tape/random,
+/obj/machinery/light,
+/turf/simulated/floor/carpet/bcarpet,
+/area/tether/station/visitorhallway/office)
 "aah" = (
 /obj/effect/floor_decal/rust,
 /obj/random/trash,
@@ -2696,10 +2710,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/starboard)
-"alU" = (
-/turf/simulated/floor/carpet/bcarpet,
-/turf/space,
-/area/tether/station/visitorhallway/office)
 "amd" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -9829,11 +9839,6 @@
 /turf/simulated/floor/bluegrid,
 /area/ai_core_foyer)
 "aHk" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
@@ -10880,11 +10885,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
@@ -12384,6 +12384,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
+	},
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
@@ -14173,11 +14178,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "aSF" = (
@@ -14579,11 +14579,12 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "aTA" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 5;
+/obj/machinery/light,
+/obj/machinery/power/apc{
+	name = "south bump";
 	pixel_y = -32
 	},
-/obj/machinery/light,
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "aTC" = (
@@ -14595,6 +14596,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
@@ -15242,13 +15248,22 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "aVp" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
@@ -17092,6 +17107,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 5;
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "bgE" = (
@@ -17115,14 +17134,6 @@
 /obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/tether/station/dock_one)
-"bjw" = (
-/mob/living/simple_mob/animal/sif/fluffy/silky,
-/obj/item/toy/plushie/squid/pink,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/grass/forest,
-/area/tether/exploration/pathfinder_office)
 "blx" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -18890,11 +18901,6 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "ggf" = (
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -19916,6 +19922,7 @@
 "iPF" = (
 /obj/structure/table/woodentable,
 /obj/item/folder/yellow,
+/obj/machinery/light,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/station/visitorhallway/office)
 "iQJ" = (
@@ -23470,18 +23477,6 @@
 "rOs" = (
 /turf/simulated/wall,
 /area/quartermaster/warehouse)
-"rPb" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
-/obj/structure/cable/green{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/tiled,
-/area/tether/station/visitorhallway/lounge)
 "rPu" = (
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled,
@@ -40086,7 +40081,7 @@ ayK
 aWk
 eyk
 wzW
-bjw
+aad
 hJP
 fuK
 aJA
@@ -40531,14 +40526,14 @@ vPY
 ahl
 ahl
 ahl
-deM
+aae
 aUG
 aCc
 tes
 kFb
 aUG
 eUF
-sOB
+aJU
 ukj
 asq
 pdH
@@ -40814,7 +40809,7 @@ qsR
 anl
 mPL
 gpa
-alU
+ahl
 sjZ
 aUG
 axQ
@@ -40963,7 +40958,7 @@ aUG
 aUG
 aUG
 aUG
-aXv
+aVp
 sOB
 ukj
 ukj
@@ -41671,7 +41666,7 @@ qaE
 aJB
 sOB
 sOB
-sOB
+tcX
 sOB
 rfW
 xVD
@@ -42095,7 +42090,7 @@ sOB
 sOB
 qaE
 sOB
-rfW
+sOB
 gtq
 aJB
 aJB
@@ -42237,7 +42232,7 @@ sOB
 sOB
 qaE
 sOB
-rfW
+sOB
 wQK
 sOB
 sOB
@@ -42372,7 +42367,7 @@ wdV
 rKN
 rKN
 ggf
-rKN
+aTU
 aHk
 aLv
 aWn
@@ -42520,8 +42515,8 @@ aGq
 aWg
 dfX
 aSZ
-rPb
-aVp
+sOB
+lyF
 sOB
 sOB
 sOB
