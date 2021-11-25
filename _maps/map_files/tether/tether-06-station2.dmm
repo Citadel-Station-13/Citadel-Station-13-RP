@@ -21009,7 +21009,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
-	id_tag = "dock_d2l_pump"
+	id_tag = "dock_d1l_pump"
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
@@ -26064,7 +26064,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1380;
-	id_tag = "dock_d2l_pump"
+	id_tag = "dock_d1l_pump"
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,

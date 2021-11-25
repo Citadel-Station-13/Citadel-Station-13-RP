@@ -18531,23 +18531,9 @@
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/engines)
 "bHt" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 6
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "dock_d1l_pump"
-	},
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "dock_d1l_sensor";
-	pixel_x = 30;
-	pixel_y = 8
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "bHu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -18698,19 +18684,12 @@
 /turf/simulated/floor,
 /area/tether/station/stairs_one)
 "bQx" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 5
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "dock_d1l";
-	pixel_x = 28
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "bQD" = (
 /obj/machinery/door/firedoor/glass,
@@ -18723,9 +18702,6 @@
 /area/hallway/station/docks)
 "bQF" = (
 /obj/structure/closet/emcloset,
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 8
-	},
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
 	pixel_x = 30
@@ -18787,9 +18763,14 @@
 /turf/simulated/floor/plating,
 /area/hallway/station/docks)
 "bXm" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/dark,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
 /area/hallway/station/docks)
 "bXn" = (
 /obj/machinery/door/firedoor/glass,
@@ -18865,9 +18846,6 @@
 /area/vacant/vacant_restaurant_lower)
 "bYr" = (
 /obj/effect/floor_decal/sign/dock/one,
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "bYt" = (
@@ -19378,8 +19356,8 @@
 /area/engineering/gravity_gen)
 "cEA" = (
 /obj/effect/floor_decal/sign/dock/one,
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
@@ -19714,10 +19692,13 @@
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_lobby)
 "dlV" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/int_door,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "dnP" = (
 /obj/structure/cable/green{
@@ -20678,16 +20659,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/ai_upload_foyer)
 "fAr" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 9
-	},
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/dark,
+/obj/item/radio/beacon,
+/turf/simulated/floor/tiled,
 /area/hallway/station/docks)
 "fAA" = (
 /obj/structure/cable/cyan{
@@ -21186,21 +21159,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/staircase)
-"gOd" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 5
-	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "dock_d2l";
-	pixel_x = 28
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/station/docks)
 "gOv" = (
 /obj/machinery/turretid/stun{
 	control_area = /area/ai_upload;
@@ -21865,11 +21823,6 @@
 /obj/random/junk,
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
-"ipk" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled,
-/area/hallway/station/docks)
 "ipv" = (
 /turf/simulated/floor/tiled/eris/dark/techfloor_grid,
 /area/shuttle/securiship/cockpit)
@@ -22205,18 +22158,6 @@
 "jkm" = (
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
-"jln" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 10
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "dock_d1l_pump"
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/station/docks)
 "jmi" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -22536,8 +22477,8 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/station/docks)
@@ -22734,25 +22675,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
-"kCH" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 6
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "dock_d1l_pump"
-	},
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	id_tag = "dock_d2l_sensor";
-	pixel_x = 30;
-	pixel_y = 8
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/station/docks)
 "kER" = (
 /turf/simulated/floor/wood,
 /area/maintenance/station/eng_lower)
@@ -22810,22 +22732,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
-"kLN" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK"
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/hallway/station/docks)
 "kMF" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -23111,11 +23017,6 @@
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_gen)
-"lGA" = (
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/station/docks)
 "lGX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -23478,20 +23379,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
-"mNU" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1380;
-	master_tag = "dock_d1l";
-	name = "exterior access button";
-	pixel_x = 28;
-	pixel_y = -6;
-	req_access = list(13)
-	},
-/obj/machinery/door/airlock/glass_external,
-/obj/effect/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/tiled/dark,
-/area/hallway/station/docks)
 "mPj" = (
 /obj/machinery/access_button{
 	command = "cycle_interior";
@@ -24008,16 +23895,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
-"odO" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/hallway/station/docks)
 "odW" = (
 /obj/machinery/light{
 	dir = 1
@@ -26008,16 +25885,6 @@
 /turf/simulated/floor,
 /area/maintenance/station/eng_lower)
 "sFB" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1380;
-	master_tag = "dock_d2l";
-	name = "interior access button";
-	pixel_x = -28;
-	pixel_y = -26;
-	req_access = list(13)
-	},
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -26
@@ -33804,10 +33671,10 @@ aJo
 aFY
 aJo
 awu
-awu
-bzq
-bzq
-kLN
+aFZ
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -33946,10 +33813,10 @@ gVQ
 kZv
 bPX
 sFB
-bXm
-fAr
-jln
-lGA
+aCJ
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -34086,12 +33953,12 @@ aDJ
 bHu
 bHu
 cEA
-bHu
-ipk
-dlV
-bQx
-bHt
-mNU
+aBi
+aBi
+aCJ
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -34230,10 +34097,10 @@ aBi
 aBi
 aBi
 bQF
-aJo
-aJi
-aJi
-odO
+aCJ
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -34372,7 +34239,7 @@ aJi
 aJi
 aJi
 awu
-awu
+bXm
 aaa
 aaa
 aaa
@@ -36649,11 +36516,11 @@ awu
 bzq
 bzq
 col
-awu
-awu
-bzq
-bzq
-kLN
+aFZ
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -36791,11 +36658,11 @@ nYL
 aBi
 aBi
 aBi
-sFB
-bXm
-fAr
-jln
-lGA
+aCJ
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -36924,20 +36791,20 @@ fMv
 fMv
 nSf
 jXa
-fMv
-cuX
-fMv
-fMv
-jtH
-mzB
-bHu
-bYr
-bHu
-ipk
+bHt
+bQx
+bHt
+bHt
 dlV
-gOd
-kCH
-mNU
+fAr
+aBi
+bYr
+aBi
+aCJ
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -37075,11 +36942,11 @@ aBi
 aBi
 aBi
 aBi
-bQF
-aJo
-aJi
-aJi
-odO
+aCJ
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -37217,8 +37084,8 @@ bQD
 bQD
 bQD
 bQD
-awu
-awu
+bXm
+aaa
 aaa
 aaa
 aaa
