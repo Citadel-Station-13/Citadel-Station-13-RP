@@ -215,6 +215,7 @@
 	icon_state = "yellow"
 
 // Class D world areas
+/* Moved to Class D's .dm file and edited. Remove before merging
 /area/poi_d/POIs/ship
 	name = "Crashed Ship Fragment"
 	base_turf = /turf/simulated/mineral/floor/vacuum
@@ -261,6 +262,7 @@
 /area/poi_d/POIs/reactor
 	name = "Prefab Reactor"
 	base_turf = /turf/simulated/mineral/floor/vacuum
+*/
 
 // Mining Planet world areas
 /area/poi_h
