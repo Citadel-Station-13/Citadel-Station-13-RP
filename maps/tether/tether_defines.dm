@@ -233,10 +233,10 @@
 	color = "#d35b5b"
 	initial_generic_waypoints = list(
 		"tether_dockarm_d2a", //Top left
-        "tether_dockarm_d2b", //Bottom left,
-        "tether_dockarm_d2r", //Right,
-        "tether_dockarm_d2l", //End of arm,
-        "tether_space_SE", //station1, bottom right of space,
+		"tether_dockarm_d2b", //Bottom left,
+		"tether_dockarm_d2r", //Right,
+		"tether_dockarm_d2l", //End of arm,
+		"tether_space_SE", //station1, bottom right of space,
 		"tether_space_SE", //station1, bottom right of space,
 		"tether_space_NE", //station1, top right of space,
 		"tether_space_SW", //station2, bottom left of space,
