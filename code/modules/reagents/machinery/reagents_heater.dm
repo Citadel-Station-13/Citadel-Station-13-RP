@@ -13,20 +13,25 @@
 	icon_state = "hotplate"
 	//circuit = /obj/item/circuitboard/chem_master
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 20
+	idle_power_usage = 2
 
 	var/image/glow_icon
 	var/image/beaker_icon
 	var/image/on_icon
 
-	var/heater_mode =          HEATER_MODE_HEAT
-	var/list/permitted_types = list(/obj/item/reagent_containers/glass)
-	var/max_temperature =      T0C + 1000
-	var/min_temperature =      TCMB
-	var/heating_power =        10 // K
-	var/last_temperature
-	var/target_temperature
+	var/heater_mode =          	HEATER_MODE_HEAT
+	var/list/permitted_types = 	list(/obj/item/reagent_containers/glass)
+	var/max_temperature =      	T0C + 1000
+	var/min_temperature =      	TCMB
+	var/heating_power =        	20 // 2 seconds to heat a large beaker by one K
+	var/current_temperature =	T20C
+	var/target_temperature =   	T20C
 	var/obj/item/reagent_containers/container
+
+/obj/machinery/reagent_temperature/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>\The [src] has its target set to [target_temperature] K.</span>"
+	. += "<span class='notice'>The Temperature in \the [container] is currently at [current_temperature] K.</span>"
 
 /obj/machinery/reagent_temperature/proc/eject_beaker(mob/user)
 	if(!container)
@@ -37,7 +42,7 @@
 	update_icon()
 
 /obj/machinery/reagent_temperature/AltClick(mob/user)
-	if(CanInteract(user, user.physical_state))
+	if(CanInteract(user, physical_state))
 		eject_beaker(user)
 	else
 		..()
@@ -49,13 +54,17 @@
 		update_icon()
 		return
 
+	if(use_power == USE_POWER_IDLE)
+		return
+
 	if(container && container.reagents)
 		var/needed_energy = container.energy_to_temperature(target_temperature)
+		current_temperature = container.reagents.temperature
 		if(needed_energy == 0)
 			return
 		else if(needed_energy > 0)
 			container.alternate_temperature(max(heating_power, needed_energy))
-		else if(needed_energy < 1)
+		else if(needed_energy < 0)
 			container.alternate_temperature(min(-heating_power, needed_energy))
 
 
@@ -71,12 +80,13 @@
 				else if(user.unEquip(thing))
 					thing.forceMove(src)
 					container = thing
+					current_temperature = container.reagents.temperature
 					visible_message(SPAN_NOTICE("\The [user] places \the [container] on \the [src]."))
 					update_icon()
 				return
 		to_chat(user, SPAN_WARNING("\The [src] cannot accept \the [thing]."))
 
-/obj/machinery/reagent_temperature/on_update_icon()
+/obj/machinery/reagent_temperature/update_icon()
 
 	var/list/adding_overlays
 
@@ -102,34 +112,6 @@
 
 	overlays = adding_overlays
 
-/obj/machinery/reagent_temperature/interact(var/mob/user)
-
-	var/dat = list()
-	dat += "<table>"
-	dat += "<tr><td>Target temperature:</td><td>"
-
-	if(target_temperature > min_temperature)
-		dat += "<a href='?src=\ref[src];adjust_temperature=-[heating_power]'>-</a> "
-
-	dat += "[target_temperature - T0C]C"
-
-	if(target_temperature < max_temperature)
-		dat += " <a href='?src=\ref[src];adjust_temperature=[heating_power]'>+</a>"
-
-	dat += "</td></tr>"
-
-	dat += "<tr><td>Current temperature:</td><td>[min(target_temperature - T0C)]C</td></tr>"
-
-	dat += "<tr><td>Loaded container:</td>"
-	dat += "<td>[container ? "[container.name] ([min(container.reagents.temperature - T0C)]C) <a href='?src=\ref[src];remove_container=1'>Remove</a>" : "None."]</td></tr>"
-
-	dat += "<tr><td>Switched:</td><td><a href='?src=\ref[src];toggle_power=1'>[use_power == USE_POWER_ACTIVE ? "On" : "Off"]</a></td></tr>"
-	dat += "</table>"
-
-	var/datum/browser/popup = new(user, "\ref[src]-reagent_temperature_window", "[capitalize(name)]")
-	popup.set_content(jointext(dat, null))
-	popup.open()
-
 /obj/machinery/reagent_temperature/CanUseTopic(var/mob/user, var/state, var/href_list)
 	if(href_list && href_list["remove_container"])
 		. = ..(user, GLOB.physical_state, href_list)
@@ -148,23 +130,28 @@
 
 	return TOPIC_REFRESH
 
-/obj/machinery/reagent_temperature/OnTopic(var/mob/user, var/href_list)
+/obj/machinery/reagent_temperature/verb/Toggle_On_Off()
+	set name = "Toggle Machine"
+	set category = "Object"
+	set src in oview(1)
 
-	if(href_list["adjust_temperature"])
-		target_temperature = clamp(target_temperature + text2num(href_list["adjust_temperature"]), min_temperature, max_temperature)
-		. = TOPIC_REFRESH
+	if (use_power == USE_POWER_IDLE)
+		update_use_power(USE_POWER_ACTIVE)
+		to_chat(usr, "You turn the [src] on")
+	else
+		update_use_power(USE_POWER_IDLE)
+		to_chat(usr, "You turn the [src] off")
 
-	if(href_list["toggle_power"])
-		. = ToggleUsePower()
-		if(. != TOPIC_REFRESH)
-			to_chat(user, SPAN_WARNING("The button clicks, but nothing happens."))
+/obj/machinery/reagent_temperature/verb/Set_Target()
+	set name = "Set Target Temperature"
+	set category = "Object"
+	set src in oview(1)
 
-	if(href_list["remove_container"])
-		eject_beaker(user)
-		. = TOPIC_REFRESH
-
-	if(. == TOPIC_REFRESH)
-		interact(user)
+	var/N = input("Target-temperature in K:","[src]") as text
+	if(N)
+		var/value = text2num(N)
+		target_temperature = clamp(value, min_temperature, max_temperature)
+		to_chat(usr, "You set the target Temperature to [target_temperature]")
 
 #undef MINIMUM_GLOW_TEMPERATURE
 #undef MINIMUM_GLOW_VALUE

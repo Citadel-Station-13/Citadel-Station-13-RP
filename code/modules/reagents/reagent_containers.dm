@@ -146,7 +146,7 @@
 
 /obj/item/reagent_containers/proc/alternate_temperature(var/energy_in_J)//altering the temperature to access the reagets inside
 	var/mass = reagents.total_volume//For now we just go with 1 joule per kelvin per unit, might add specific heat capacity to reagents later
-	var/kelvin_to_heat = mass / energy_in_J
+	var/kelvin_to_heat = energy_in_J / mass
 	reagents.temperature += kelvin_to_heat
 
 /obj/item/reagent_containers/proc/energy_to_temperature(var/target_temperature)//how much energy is needed to achive the target temperature
