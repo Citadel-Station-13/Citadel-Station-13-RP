@@ -43334,6 +43334,7 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 4
 	},
+/obj/machinery/reagent_temperature,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/chemistry)
 "vYr" = (
