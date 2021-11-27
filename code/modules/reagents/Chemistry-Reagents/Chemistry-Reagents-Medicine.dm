@@ -408,7 +408,7 @@
 			M.make_jittery(4)
 		M.adjustCloneLoss(-30 * removed * chem_effective)//Better version of cryox, but they can work at the same time
 		M.adjustOxyLoss(-30 * removed * chem_effective)
-		M.heal_organ_damage(30 * removed, 30 * removed * chem_effective)
+		M.heal_organ_damage(30 * removed * chem_effective, 30 * removed * chem_effective)
 		M.adjustToxLoss(-30 * removed * chem_effective)
 
 /datum/reagent/necroxadone
