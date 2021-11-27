@@ -450,6 +450,8 @@
 	id = "cryoxadone"
 	result = "cryoxadone"
 	required_reagents = list("dexalin" = 1, "water" = 1, "oxygen" = 1)
+	min_temperature = T0C - 80
+	max_temperature = T0C - 50
 	result_amount = 3
 
 /datum/chemical_reaction/clonexadone
@@ -459,6 +461,8 @@
 	result = "clonexadone"
 	required_reagents = list("cryoxadone" = 1, "sodium" = 1, "phoron" = 0.1)
 	catalysts = list("phoron" = 5)
+	min_temperature = T0C - 130
+	max_temperature = T0C - 100
 	result_amount = 2
 
 /datum/chemical_reaction/leporazine
