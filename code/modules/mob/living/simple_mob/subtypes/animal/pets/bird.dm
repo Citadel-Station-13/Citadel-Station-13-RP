@@ -27,6 +27,7 @@
 	maxHealth = 30
 	melee_damage_lower = 3
 	melee_damage_upper = 3
+	randomized = TRUE
 
 	movement_cooldown = 0
 	hovering = TRUE // Birds can fly.
@@ -54,19 +55,6 @@
 	icon_state = null
 	item_icons = null
 	w_class = ITEMSIZE_SMALL
-
-//Randomization Code
-/mob/living/simple_mob/animal/passive/bird/Initialize()
-    . = ..()
-    var/mod = rand(mod_min,mod_max)/100
-    size_multiplier = mod
-    maxHealth = round(maxHealth*mod)
-    health = round(health*mod)
-    melee_damage_lower = round(melee_damage_lower*mod)
-    melee_damage_upper = round(melee_damage_upper*mod)
-    movement_cooldown = round(movement_cooldown*mod)
-    meat_amount = round(meat_amount*mod)
-    update_icons()
 
 /obj/item/holder/bird/sync(var/mob/living/simple_mob/SM)
 	..()

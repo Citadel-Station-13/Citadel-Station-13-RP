@@ -4,11 +4,11 @@
 /area/space/debrisfield/explored)
 "b" = (
 /turf/simulated/mineral/vacuum,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/asteroids/rocks)
 "c" = (
 /obj/mob_spawner/carp,
 /turf/template_noop,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/asteroids)
 
 (1,1,1) = {"
 a

@@ -215,6 +215,7 @@
 	icon_state = "yellow"
 
 // Class D world areas
+/* Moved to Class D's .dm file and edited. Remove before merging
 /area/poi_d/POIs/ship
 	name = "Crashed Ship Fragment"
 	base_turf = /turf/simulated/mineral/floor/vacuum
@@ -261,6 +262,7 @@
 /area/poi_d/POIs/reactor
 	name = "Prefab Reactor"
 	base_turf = /turf/simulated/mineral/floor/vacuum
+*/
 
 // Mining Planet world areas
 /area/poi_h
@@ -336,8 +338,40 @@
 	icon_state = "debrisunexplored"
 
 /area/debrisfield/derelict
+	name = "POI - Alien Derelict"
 	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+
+/area/space/debrisfield/asteroids
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/asteroids/rocks
+	icon_state = "debrisexplored"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+/area/space/debrisfield/oldshuttle
+	name = "POI - Old Shuttle"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/medshuttlecrash
+	name = "POI - Medical Shuttle Crash"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/scioverrun
+	name = "POI - Overrun Science Ship"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/explodedship
+	name = "POI - Exploded Ship"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/foodstand
+	name = "POI - Foodstand"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/misc_debris
+	name = "Debris"
+	icon_state = "debrisexplored"
 
 //Pirate base
 /area/shuttle/excursion/piratebase

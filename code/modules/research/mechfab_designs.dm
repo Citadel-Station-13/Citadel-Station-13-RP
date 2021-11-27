@@ -361,6 +361,65 @@
 	time = 60
 	materials = list(DEFAULT_WALL_MATERIAL = 37500, "diamond" = 7500, "plastic" = 5000, "bananium" = 20000)
 
+/datum/design/item/mechfab/reticent
+	category = "Reticent"
+
+/datum/design/item/mechfab/reticent/chassis
+	name = "Reticent Chassis"
+	id = "reticent_chassis"
+	build_path = /obj/item/mecha_parts/chassis/reticent
+	time = 10
+	materials = list(DEFAULT_WALL_MATERIAL = 18750)
+
+/datum/design/item/mechfab/reticent/torso
+	name = "Reticent Torso"
+	id = "reticent_torso"
+	build_path = /obj/item/mecha_parts/part/reticent_torso
+	time = 30
+	materials = list(DEFAULT_WALL_MATERIAL = 37500, "glass" = 15000, "osmium" = 5000)
+
+/datum/design/item/mechfab/reticent/head
+	name = "Reticent Head"
+	id = "reticent_head"
+	build_path = /obj/item/mecha_parts/part/reticent_head
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 7500, "osmium" = 5000)
+
+/datum/design/item/mechfab/reticent/left_arm
+	name = "Reticent Left Arm"
+	id = "reticent_left_arm"
+	build_path = /obj/item/mecha_parts/part/reticent_left_arm
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 22500, "plastic" = 12000)
+
+/datum/design/item/mechfab/reticent/right_arm
+	name = "Reticent Right Arm"
+	id = "reticent_right_arm"
+	build_path = /obj/item/mecha_parts/part/reticent_right_arm
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 22500, "plastic" = 12000)
+
+/datum/design/item/mechfab/reticent/left_leg
+	name = "Reticent Left Leg"
+	id = "reticent_left_leg"
+	build_path = /obj/item/mecha_parts/part/reticent_left_leg
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 26250, "plastic" = 15000)
+
+/datum/design/item/mechfab/reticent/right_leg
+	name = "Reticent Right Leg"
+	id = "reticent_right_leg"
+	build_path = /obj/item/mecha_parts/part/reticent_right_leg
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 26250, "plastic" = 15000)
+
+/datum/design/item/mechfab/reticent/armour
+	name = "Reticent Armour Plates"
+	id = "reticent_armour"
+	build_path = /obj/item/mecha_parts/part/reticent_armour
+	time = 60
+	materials = list(DEFAULT_WALL_MATERIAL = 37500, "osmium" = 7500, "plastic" = 5000, "silencium" = 20000)
+
 /datum/design/item/mecha
 	build_type = MECHFAB
 	category = "Exosuit Equipment"
@@ -541,6 +600,20 @@
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/honker
 	materials = list(DEFAULT_WALL_MATERIAL = 13000, "silver" = 1000, "osmium" = 3000, "plastic" = 2000, "bananium" = 4000)
 
+/datum/design/item/mecha/weapon/whisper_blade
+	name = "Reticent Whisper Blade"
+	id = "mech_whisper"
+	req_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 4, TECH_ILLEGAL = 4)
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/whisperblade
+	materials = list(DEFAULT_WALL_MATERIAL = 13000, "gold" = 1000, "osmium" = 3000, "plasteel" = 2000, "silencium" = 4000)
+
+/datum/design/item/mecha/weapon/inferno_blade
+	name = "Reticent Inferno Blade"
+	id = "mech_inferno"
+	req_tech = list(TECH_COMBAT = 5, TECH_MAGNET = 4, TECH_ILLEGAL = 4)
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/infernoblade
+	materials = list(DEFAULT_WALL_MATERIAL = 13000, "gold" = 1000, "lead" = 3000, "plasteel" = 2000, "silencium" = 4000)
+
 /datum/design/item/mecha/weapon/grenade_launcher
 	name = "SGL-6 Grenade Launcher"
 	id = "mech_grenade_launcher"
@@ -661,6 +734,14 @@
 	req_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_ILLEGAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 8000, "gold" = 2000, "silver" = 3000, "phoron" = 5000, "glass" = 3750)
 	build_path = /obj/item/mecha_parts/mecha_equipment/combat_shield
+
+/datum/design/item/mecha/reticent_shield_drone
+	name = "Reticent Wall Projector"
+	desc = "A Le Rien specialty shield drone. Deploys a translucent rectangular shield in one direction."
+	id = "mech_reticent_shield_droid"
+	req_tech = list(TECH_PHORON = 3, TECH_MAGNET = 6, TECH_ILLEGAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 8000, "osmium" = 4000, "silver" = 3000, "silencium" = 10000, "glass" = 3750)
+	build_path = /obj/item/mecha_parts/mecha_equipment/combat_shield/reticent
 
 /datum/design/item/mecha/crisis_drone
 	name = "Crisis Drone"
@@ -796,6 +877,103 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 562, "glass" = 562)
 	build_path = /obj/item/flash/synthetic
 	category = "Misc"
+
+/*
+* Printable Internal Components
+*/
+
+/datum/design/item/mecha_component
+	name = "Mecha Actuator"
+	id = "mactuator"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
+	build_type = MECHFAB
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500)
+	build_path = /obj/item/mecha_parts/component/actuator
+	category = "Components"
+
+/datum/design/item/mecha_component/actuator_high
+	name = "Mecha Actuator - High Speed"
+	id = "mactuatorhigh"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 4000, "gold" = 10000)
+	build_path = /obj/item/mecha_parts/component/actuator/hispeed
+
+/datum/design/item/mecha_component/armor
+	name = "Mecha Plating"
+	id = "marmor"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 2000)
+	build_path = /obj/item/mecha_parts/component/armor
+
+/datum/design/item/mecha_component/armor/blast
+	name = "Mecha Plating - Blast Resistant"
+	id = "marmorblast"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 500, "plasteel" = 2000)
+	build_path = /obj/item/mecha_parts/component/armor/mining
+
+/datum/design/item/mecha_component/armor/lightweight
+	name = "Mecha Plating - Lightweight"
+	id = "marmorlight"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "plastic" = 5000, "gold" = 2000)
+	build_path = /obj/item/mecha_parts/component/armor/lightweight
+
+/datum/design/item/mecha_component/armor/reinforced
+	name = "Mecha Plating - Reinforced"
+	id = "marmorreinf"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 6, TECH_COMBAT = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 15000, "plasteel" = 5000, "uranium" = 5000)
+	build_path = /obj/item/mecha_parts/component/armor/reinforced
+
+/datum/design/item/mecha_component/electrical
+	name = "Mecha Electrical Harness"
+	id = "melectrical"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_POWER = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2000, "plastic" = 1000)
+	build_path = /obj/item/mecha_parts/component/electrical
+
+/datum/design/item/mecha_component/electrical/high_current
+	name = "Mecha Electrical Harness - High Current"
+	id = "melectricalhigh"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_POWER = 5, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 4000, "plastic" = 5000, "gold" = 5000)
+	build_path = /obj/item/mecha_parts/component/electrical
+
+/datum/design/item/mecha_component/hull
+	name = "Mecha Hull"
+	id = "mhull"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 500)
+	build_path = /obj/item/mecha_parts/component/hull
+
+/datum/design/item/mecha_component/hull/durable
+	name = "Mecha Hull - Durable"
+	id = "mhulldura"
+	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 500, "plasteel" = 10000)
+	build_path = /obj/item/mecha_parts/component/hull/durable
+
+/datum/design/item/mecha_component/hull/lightweight
+	name = "Mecha Hull - Lightweight"
+	id = "mhulllight"
+	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 500, "plastic" = 3000)
+	build_path = /obj/item/mecha_parts/component/hull/lightweight
+
+/datum/design/item/mecha_component/gas
+	name = "Mecha Life-Support"
+	id = "mgas"
+	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2, TECH_BIO = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 3000)
+	build_path = /obj/item/mecha_parts/component/gas
+
+/datum/design/item/mecha_component/gas/reinforced
+	name = "Mecha Life-Support - Reinforced"
+	id = "mgasreinf"
+	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 3, TECH_BIO = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 3000, "silver" = 4000)
+	build_path = /obj/item/mecha_parts/component/gas/reinforced
 
 /*
  * Non-Mech Vehicles

@@ -110,7 +110,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/clothing/under/frontier,
 /obj/random_multi/single_item/sfr_headset,
-/obj/item/archaeological_find,
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/DJOutpost1)
 "av" = (
@@ -120,7 +119,6 @@
 "aw" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/radio/intercom{
-	icon_state = "intercom";
 	dir = 8
 	},
 /obj/random/firstaid,
@@ -142,8 +140,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/submap/DJOutpost1)
@@ -161,7 +158,6 @@
 "aA" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/radio/intercom{
-	icon_state = "intercom";
 	dir = 8
 	},
 /obj/item/book/codex/lore/news,
@@ -176,9 +172,7 @@
 /area/submap/DJOutpost1)
 "aC" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -280,7 +274,6 @@
 "aP" = (
 /obj/item/reagent_containers/food/snacks/unajerky,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /obj/random_multi/single_item/sfr_headset,
@@ -289,9 +282,7 @@
 /area/submap/DJOutpost1)
 "aQ" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	dir = 4
 	},
 /obj/machinery/seed_extractor,
 /turf/simulated/floor/tiled/techfloor,
@@ -331,7 +322,6 @@
 "aX" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
 	pixel_x = 15
 	},
 /turf/simulated/floor/tiled/techfloor,

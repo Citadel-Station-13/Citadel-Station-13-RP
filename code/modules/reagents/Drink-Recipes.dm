@@ -1557,3 +1557,108 @@
 	result = "peacetreaty"
 	required_reagents = list("victory_gin" = 1, "messa_mead" = 1, "lemonjuice" = 1)
 	result_amount = 3
+
+/datum/chemical_reaction/drink/russianbastard
+	name = "Russian Bastard"
+	id = "russianbastard"
+	result = "russianbastard"
+	required_reagents = list("milk" = 1, "vodka" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drink/willtolive
+	name = "A Will to Live"
+	id = "willtolive"
+	result = "willtolive"
+	required_reagents = list("cognac" = 1, "kahlua" = 3, "melonliquor" = 3, "ice" = 1, "cream" = 1)
+	result_amount = 9
+
+/datum/chemical_reaction/drink/desiretodie
+	name = "A Desire to Die"
+	id = "desiretodie"
+	result = "desire to die"
+	required_reagents = list("deathbell" = 1, "nuclearwaste" = 1)
+	result_amount = 2
+	
+/datum/chemical_reaction/drink/raspberrybeesknees
+	name = "Raspberry Bee's Knees"
+	id = "raspberrybeesknees"
+	result = "raspberrybeesknees"
+	required_reagents = list("water" = 2, "lemonjuice" = 1, "honey" = 1, "berryjuice" = 2)
+	result_amount = 6
+
+/datum/chemical_reaction/drink/sidecar
+	name = "Sidecar"
+	id = "sidecar"
+	result = "sidecar"
+	required_reagents = list("cognac" = 5, "lemonjuice" = 2, "orangejuice" = 2)
+	result_amount = 9
+
+/datum/chemical_reaction/drink/french75
+	name = "French 75"
+	id = "french75"
+	result = "french75"
+	required_reagents = list("lemonjuice" = 1, "gin" = 2, "champagne" = 4, "sugar" = 1)
+	result_amount = 8
+
+/datum/chemical_reaction/drink/french76
+	name = "French 76"
+	id = "french76"
+	result = "french76"
+	required_reagents = list("lemonjuice" = 1, "vodka" = 2, "champagne" = 4, "sugar" = 1)
+	result_amount = 8
+
+/datum/chemical_reaction/drink/lastword
+	name = "Last Word"
+	id = "lastword"
+	result = "lastword"
+	required_reagents = list("limejuice" = 1, "gin" = 1, "berryjuice" = 2)
+	result_amount = 4
+
+/datum/chemical_reaction/drink/watermelonsmoothie
+	name = "Watermelon Smoothie"
+	id = "watermelonsmoothie"
+	result = "watermelonsmoothie"
+	required_reagents = list("watermelonjuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drink/orangesmoothie
+	name = "Orange Smoothie"
+	id = "orangesmoothie"
+	result = "orangesmoothie"
+	required_reagents = list("orangejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drink/limesmoothie
+	name = "Lime Smoothie"
+	id = "limesmoothie"
+	result = "limesmoothie"
+	required_reagents = list("limejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drink/lemonsmoothie
+	name = "Lemon Smoothie"
+	id = "lemonsmoothie"
+	result = "lemonsmoothie"
+	required_reagents = list("lemonjuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drink/berrysmoothie
+	name = "Berry Smoothie"
+	id = "berrysmoothie"
+	result = "berrysmoothie"
+	required_reagents = list("berryjuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drink/applesmoothie
+	name = "Apple Smoothie"
+	id = "applesmoothie"
+	result = "applesmoothie"
+	required_reagents = list("applejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drink/grapesmoothie
+	name = "Grape Smoothie"
+	id = "grapesmoothie"
+	result = "grapesmoothie"
+	required_reagents = list("grapejuice" = 2, "ice" = 1, "milk" = 1, "cream" = 1)
+	result_amount = 5 // fuck linters

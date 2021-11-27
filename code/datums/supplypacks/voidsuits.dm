@@ -147,6 +147,20 @@
 	containername = "Vey-Med Medical voidsuit crate"
 	access = access_medical_equip
 
+/datum/supply_pack/voidsuits/medical/alt2
+	name = "Vey-Med Plated Medical voidsuits"
+	contains = list(
+			/obj/item/clothing/suit/space/void/medical/alt_plated = 2,
+			/obj/item/clothing/head/helmet/space/void/medical/alt_plated = 2,
+			/obj/item/clothing/mask/breath = 2,
+			/obj/item/clothing/shoes/magboots = 2,
+			/obj/item/tank/oxygen = 2
+			)
+	cost = 50
+	containertype = /obj/structure/closet/crate/secure
+	containername = "Vey-Med Medical voidsuit crate"
+	access = access_medical_equip
+
 /datum/supply_pack/voidsuits/security
 	name = "Security voidsuits"
 	contains = list(

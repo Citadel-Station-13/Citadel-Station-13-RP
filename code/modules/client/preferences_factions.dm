@@ -16,8 +16,8 @@ var/global/list/seen_religions = list()
 var/global/list/citizenship_choices = list(
 	"Earth",
 	"Mars",
-	"Sif",
-	"Binma",
+	"Luna",
+	"Adhomai",
 	"Moghes",
 	"Meralar",
 	"Qerr'balak"
@@ -25,28 +25,20 @@ var/global/list/citizenship_choices = list(
 
 var/global/list/home_system_choices = list(
 	"Sol",
-	"Vir",
+	"S'rand'marr",
 	"Nyx",
 	"Tau Ceti",
 	"Qerr'valis",
 	"Epsilon Ursae Minoris",
-	"Rarkajar"
+	"Rarkajar",
+	"Frontier Space"
 	)
 
 var/global/list/faction_choices = list(
-	"Sol Central",
-	"Vey Med",
-	"Einstein Engines",
-	"Free Trade Union",
 	"NanoTrasen",
+	"Vey Med",
 	"Ward-Takahashi GMB",
-	"Gilthari Exports",
-	"Grayson Manufactories Ltd.",
-	"Aether Atmospherics",
-	"Zeng-Hu Pharmaceuticals",
-	"Hephaestus Industries",
-	"Morpheus Cyberkinetics",
-	"Xion Manufacturing Group"
+	"Free Trade Union"
 	)
 
 var/global/list/antag_faction_choices = list()	//Should be populated after brainstorming. Leaving as blank in case brainstorming does not occur.
@@ -74,6 +66,7 @@ var/global/list/religion_choices = list(
 	"Singulitarian Worship",
 	"Xilar Qall",
 	"Tajr-kii Rarkajar",
+	"The Brass Order",
 	"Agnosticism",
 	"Deism"
 	)

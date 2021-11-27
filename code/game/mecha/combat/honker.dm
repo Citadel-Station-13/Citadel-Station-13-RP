@@ -59,6 +59,7 @@
 	starting_equipment = list(
 		/obj/item/mecha_parts/mecha_equipment/weapon/honker,
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/banana,
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
 		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
 		/obj/item/mecha_parts/mecha_equipment/teleporter
 		)

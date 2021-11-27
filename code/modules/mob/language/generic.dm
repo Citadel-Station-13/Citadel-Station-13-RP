@@ -136,19 +136,6 @@
 	var/obj/item/organ/external/hand/hands = locate() in speaker //you can't sign without hands
 	return (hands || !iscarbon(speaker))
 
-// Rodent language for all the squeaks in the world
-/datum/language/squeakish
-	name = LANGUAGE_SQUEAKISH
-	desc = "A language that the rodents around the region seem to have adopted."
-	signlang_verb = list("nose wiggles")
-	speech_verb = "squeaks"
-	whisper_verb = "squiks"
-	exclaim_verb = "squeaks loudly"
-	colour = "say_quote"
-	key = "e"	// Squeak squeak squeee squik
-	syllables = list ("sque", "uik", "squeak", "squee", "eak", "eek", "uek", "squik",
-			"squeek", "sq", "eek", "squeee", "ee", "ek", "ak", "ueak", "squea")
-
 // Alraune language that's literally just bushes rubbing together.
 /datum/language/vernal
 	name = LANGUAGE_VERNAL

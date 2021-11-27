@@ -168,7 +168,7 @@
 // Species-unique long tails/taurhalves
 
 /datum/sprite_accessory/tail/taur/shadekin_tail
-	name = "Shadekin Tail (Shadekin)"
+	name = "Shadekin Tail"
 	icon_state = "shadekin_s"
 	can_ride = 0
 	hide_body_parts = null
@@ -178,12 +178,21 @@
 	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 
 /datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_2c
-	name = "Shadekin Tail dual-color (Shadekin)"
+	name = "Shadekin Tail dual-color"
 	extra_overlay = "shadekin_markings"
 
 /datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_long
-	name = "Shadekin Long Tail (Shadekin)"
+	name = "Shadekin Long Tail"
 	icon_state = "shadekin_long_s"
+
+/datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_long_2
+	name = "Shadekin Striped Long Tail"
+	icon_state = "shadekin_long_2"
+	extra_overlay = "shadekin_long_marking_2"
+
+/datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_small
+	name = "Shadekin Small Tail"
+	icon_state = "shadekin_s2"
 
 // Tails/taurhalves for everyone
 
@@ -449,8 +458,6 @@
 	icon_state = "drake_s"
 	extra_overlay = "drake_markings"
 	suit_sprites = 'icons/mob/taursuits_drake_vr.dmi'
-	can_loaf = TRUE
-	loaf_offset = 6
 
 /datum/sprite_accessory/tail/taur/otie
 	name = "Otie (Taur)"

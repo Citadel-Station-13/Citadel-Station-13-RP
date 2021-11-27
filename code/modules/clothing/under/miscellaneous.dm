@@ -260,6 +260,13 @@
 	item_state_slots = list(slot_r_hand_str = "orange", slot_l_hand_str = "orange")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
+/obj/item/clothing/under/schoolgirl/pink
+	name = "frilly pink skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a pink collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
+	icon_state = "schoolgirlpink"
+	item_state_slots = list(slot_r_hand_str = "pink", slot_l_hand_str = "pink")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
 /obj/item/clothing/under/overalls
 	name = "laborer's overalls"
 	desc = "A set of durable overalls for getting the job done."
@@ -1644,3 +1651,25 @@
 //Same as Nanotrasen Security Uniforms
 /obj/item/clothing/under/ert
 	armor = list(melee = 5, bullet = 10, laser = 10, energy = 5, bomb = 5, bio = 0, rad = 0)
+
+/obj/item/clothing/under/laconic
+	name = "laconic field suit"
+	desc = "A lightweight black turtleneck with padded gray slacks. It seems comfortable, but practical."
+	icon_state = "laconic"
+	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
+
+
+/obj/item/clothing/under/bountyskin
+	name = "bounty hunter skinsuit"
+	desc = "A skintight bodysuit meant to be worn under powered armor. Popularized by a famous bounty hunter."
+	icon_state = "bountyskin"
+
+/obj/item/clothing/under/smooth_gray
+	name = "smooth gray jumpsuit"
+	desc = "An ironed version of the famous, bold, and bald apparel. As smooth as it looks, it does not guarantee being able to slip away."
+	icon_state = "gray_smooth_jumpsuit"
+
+/obj/item/clothing/under/navy_gray
+	name = "navy gray jumpsuit"
+	desc = "The gray, branchless version issued to all who enrolled. Or those who visited the duty-free store on their way out."
+	icon_state = "navy_jumpsuit"

@@ -122,13 +122,10 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
 /mob/living/carbon/human/update_transform()
-	if(tail_style?.can_loaf)
-		// return early after updating taur type
-		update_tail_showing()
-		return
-
-	var/desired_scale_x = size_multiplier
-	var/desired_scale_y = size_multiplier
+	var/desired_scale_x = size_multiplier * icon_scale_x
+	var/desired_scale_y = size_multiplier * icon_scale_y
+	desired_scale_x *= species.icon_scale_x
+	desired_scale_y *= species.icon_scale_y
 
 	var/matrix/M = matrix()
 	var/anim_time = 3
@@ -143,7 +140,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			M.Turn(-90)
 		else
 			M.Turn(90)
-		M.Scale(desired_scale_x, desired_scale_y)
+		M.Scale(desired_scale_y, desired_scale_x)
 		M.Translate(1,-6)
 		layer = MOB_LAYER -0.01 // Fix for a byond bug where turf entry order no longer matters
 	else
@@ -373,6 +370,20 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	overlays_standing[BLOOD_LAYER] = both
 
 	apply_layer(BLOOD_LAYER)
+
+/mob/living/carbon/human/proc/BloodyMouth()
+
+	var/image/both = image(icon = 'icons/effects/effects.dmi', icon_state = "nothing", layer = BODY_LAYER+BLOOD_LAYER)
+
+	//"lol", said the scorpion, "lmao"
+	var/image/bloodsies	= image(icon = species.get_blood_mask(src), icon_state = "redwings", layer = BODY_LAYER+BLOOD_LAYER)
+	bloodsies.color = src.species.blood_color
+	both.add_overlay(bloodsies)
+
+	overlays_standing[BLOOD_LAYER] = both
+
+	apply_layer(BLOOD_LAYER)
+
 
 //UNDERWEAR OVERLAY
 /mob/living/carbon/human/proc/update_underwear()

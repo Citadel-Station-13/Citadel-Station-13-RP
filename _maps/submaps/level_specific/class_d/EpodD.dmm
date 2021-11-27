@@ -3,9 +3,10 @@
 /turf/template_noop,
 /area/template_noop)
 "e" = (
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d,
 /area/poi_d/explored)
 "i" = (
+/obj/structure/inflatable/door,
 /turf/simulated/shuttle/floor,
 /area/poi_d/explored)
 "p" = (
@@ -25,11 +26,11 @@
 /obj/structure/door_assembly{
 	icon_state = "door_as_gext3"
 	},
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d,
 /area/poi_d/explored)
 "u" = (
 /obj/item/tool/crowbar/red,
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d,
 /area/poi_d/explored)
 "v" = (
 /obj/structure/shuttle/engine/propulsion/burst{
@@ -61,7 +62,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/tank/emergency/oxygen,
 /obj/item/clothing/mask/breath,
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d,
 /area/poi_d/explored)
 "K" = (
 /obj/random/humanoidremains,

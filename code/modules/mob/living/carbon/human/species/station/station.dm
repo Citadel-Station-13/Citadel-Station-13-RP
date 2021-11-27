@@ -821,7 +821,7 @@
 
 	total_health = 110	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
-	burn_mod = 1.10	// Natural enemy of xenomorphs is fire
+	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
 	blood_volume = 560	//Baseline
 	darksight = 4 //Better hunters in the dark.
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.

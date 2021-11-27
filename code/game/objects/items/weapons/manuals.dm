@@ -5,6 +5,34 @@
 	due_date = 0 // Game time in 1/10th seconds
 	unique = 1   // 0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
 
+/obj/item/book/manual/wiki_linked
+	name = "Wiki Linked Book"
+	author = "Buggy Coders"
+	title = "Unknown Wiki Book"
+	/// wiki page
+	var/wiki_page
+
+/obj/item/book/manual/wiki_linked/Initialize(mapload)
+	. = ..()
+	dat = {"
+
+		<html><head>
+		</head>
+
+		<body>
+		<iframe width='100%' height='97%' src="[CONFIG_GET(string/wiki_page_root)][wiki_page]&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+		</body>
+
+		</html>
+
+		"}
+
+/obj/item/book/manual/wiki_linked/sop
+	name = "Standard Operating Procedures"
+	author = "Nanotrasen"
+	title = "Standard Operating Procedures"
+	wiki_page = "Standard_Operating_Procedure"
+
 /obj/item/book/manual/engineering_construction
 	name = "Station Repairs and Construction"
 	icon_state ="bookEngineering"
@@ -116,13 +144,13 @@
 				<br>
 				<h2>STANDARD STARTUP PROCEDURE</h2>
 				<ol>
-				<li>Fill reactor loop and radiator loop with three (3) standard canisters of nitrogen gas each.</li>
+				<li>Fill reactor loop and radiator loop with three (3) standard canisters of phoron gas each.</li>
 				<li>Fill the waste handling radiator loop with one (1) standard canister of carbon dioxide gas.</li>
 				<li>Enable both the high power gas pumps near the thermo-electric generators and maximize the desired output.</li>
-				<li>Enable both the omni-filters and ensure they are set to filter nitrogen back into the system.</li>
+				<li>Enable both the omni-filters and ensure they are set to filter phoron back into the system.</li>
 				<li>Enable the gas pump from the filters to waste handling and maximize the desired output.</li>
 				<li>Close the monitoring room blast doors and open the reactor blast doors,</li>
-				<li>Fire 8-9 pulses from emitter at supermatter crystal. The expected power output is around a megawatt. NOTE: It will take a few minutes to heat up.</li>
+				<li>Fire 8-12 pulses from emitter at supermatter crystal. The expected power output is around a megawatt. NOTE: It will take a few minutes to heat up.</li>
 				<li>Close the reactor blast doors and keep the monitoring room blast doors closed to prevent radiation leaking.</li>
 				</ol>
 				<br>
@@ -191,7 +219,7 @@
 				<br>
 				<h2>STARTUP PROCEDURE</h2>
 				<ol>
-				<li>Bolt and weld down the Field Generators, ensuring they form a complete rectangle.</li>
+				<li>Bolt and weld down the Field Generators, ensuring they form a complete square, giving no room for the tesla to move.</li>
 				<li>Bolt and weld down the Emitters, ensuring their fire will strike the corner Field Generators</li>
 				<li>Bolt down the Tesla Generator inside the rectangle formed by the Field Generators in a spot where it will be struck by fire from the Particle Accelerator</li>
 				<li>Bolt down Telsa Coils and Grounding Rods</li>
@@ -211,7 +239,7 @@
 				<br>
 				<h2>SHUTDOWN PROCEDURE</h2>
 				<ol>
-				<li>De-activate the Particle Accelerator.  The energy ball will begin to shrink and lose mini-balls.</li>
+				<li>Set the Particle Accelerator to -1.  The energy ball will begin to shrink and lose mini-balls.</li>
 				<li>When the energy ball has completely dissipated, the Emitters can be de-activated.</li>
 				</ol>
 				<br>
@@ -248,7 +276,7 @@
 				<br><br>
 				<ol>
 				<li>Enable and max output and input on the SMES in the engine room. This is to power the gyrotrons and pumps.</li>
-				<li>Go into the control room, interact with the fusion core control console. Raise the field size to 201 and turn it on. Any smaller will cause the gyrotrons to blast out the walls. Bigger than 500 will cause the field to immediately fail.</li>
+				<li>Go into the control room, interact with the fusion core control console. Raise the field size to 700 and turn it on. Any smaller will cause the gyrotrons to blast out the walls. Bigger than this will cause the field to immediately fail.</li>
 				<li>Interact with the gyrotron control computer and set all the gyrotrons power and timing to 1.</li>
 				<li>Start the gyrotrons and wait for the field to heat up. Once the field is fully visible, you may switch off the gyrotrons to save power.</li>
 				<li>Insert a can of phoron in the cold loop (green and blue) and a can of CO2 in the hot loop (red and orange).</li>
