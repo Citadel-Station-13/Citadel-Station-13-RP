@@ -23,9 +23,9 @@
 	var/list/permitted_types = 	list(/obj/item/reagent_containers/glass)
 	var/max_temperature =      	T0C + 1000
 	var/min_temperature =      	TCMB
-	var/heating_power =        	20 // 2 seconds to heat a large beaker by one K
 	var/current_temperature =	T20C
 	var/target_temperature =   	T20C
+	var/difference_t_to_c =		0
 	var/obj/item/reagent_containers/container
 
 /obj/machinery/reagent_temperature/examine(mob/user)
@@ -54,18 +54,16 @@
 		update_icon()
 		return
 
-	if(use_power == USE_POWER_IDLE)
-		return
-
 	if(container && container.reagents)
-		var/needed_energy = container.energy_to_temperature(target_temperature)
 		current_temperature = container.reagents.temperature
-		if(needed_energy == 0)
+		if(current_temperature == target_temperature)
+			difference_t_to_c = 0
 			return
-		else if(needed_energy > 0)
-			container.alternate_temperature(max(heating_power, needed_energy))
-		else if(needed_energy < 0)
-			container.alternate_temperature(min(-heating_power, needed_energy))
+		if (difference_t_to_c != 0)
+			container.reagents.temperature += difference_t_to_c / 10
+		else
+			difference_t_to_c = target_temperature - current_temperature
+
 
 
 /obj/machinery/reagent_temperature/attackby(var/obj/item/thing, var/mob/user)
@@ -129,18 +127,6 @@
 	update_icon()
 
 	return TOPIC_REFRESH
-
-/obj/machinery/reagent_temperature/verb/Toggle_On_Off()
-	set name = "Toggle Machine"
-	set category = "Object"
-	set src in oview(1)
-
-	if (use_power == USE_POWER_IDLE)
-		update_use_power(USE_POWER_ACTIVE)
-		to_chat(usr, "You turn the [src] on")
-	else
-		update_use_power(USE_POWER_IDLE)
-		to_chat(usr, "You turn the [src] off")
 
 /obj/machinery/reagent_temperature/verb/Set_Target()
 	set name = "Set Target Temperature"
