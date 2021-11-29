@@ -36,6 +36,7 @@
 /obj/machinery/reagent_temperature/proc/eject_beaker(mob/user)
 	if(!container)
 		return
+	container.reagents.temperature = T20C //Bandaid to just make sure we arent handing out superheated/cooled beakers
 	var/obj/item/reagent_containers/B = container
 	user.put_in_hands(B)
 	container = null
