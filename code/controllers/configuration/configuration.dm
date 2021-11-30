@@ -8,6 +8,7 @@
 	var/list/entries
 	var/list/entries_by_type
 
+#warn redo config
 	var/list/maplist
 	var/datum/map_config/defaultmap
 

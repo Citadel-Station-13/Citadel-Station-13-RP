@@ -155,6 +155,7 @@
 	name = "bluespace"
 	icon = 'icons/turf/space_vr.dmi'
 	icon_state = "bluespace"
+
 /turf/space/bluespace/Initialize(mapload)
 	. = ..()
 	icon = 'icons/turf/space_vr.dmi'
@@ -168,33 +169,3 @@
 /turf/space/sandyscroll/Initialize(mapload)
 	. = ..()
 	icon_state = "desert_ns"
-
-//Sky stuff!
-// A simple turf to fake the appearance of flying.
-/turf/simulated/sky/triumph
-	color = "#FFBBBB"
-
-/turf/simulated/sky/triumph/Initialize(mapload)
-	. = ..()
-	SSplanets.addTurf(src)
-	set_light(2, 2, "#FFBBBB")
-
-/turf/simulated/sky/triumph/north
-	dir = NORTH
-/turf/simulated/sky/triumph/south
-	dir = SOUTH
-/turf/simulated/sky/triumph/east
-	dir = EAST
-/turf/simulated/sky/triumph/west
-	dir = WEST
-
-/turf/simulated/sky/triumph/moving
-	icon_state = "sky_fast"
-/turf/simulated/sky/triumph/moving/north
-	dir = NORTH
-/turf/simulated/sky/triumph/moving/south
-	dir = SOUTH
-/turf/simulated/sky/triumph/moving/east
-	dir = EAST
-/turf/simulated/sky/triumph/moving/west
-	dir = WEST

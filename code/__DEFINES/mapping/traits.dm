@@ -1,17 +1,3 @@
-// Z-level flags bitfield - Set these flags to determine the z level's purpose
-#define MAP_LEVEL_STATION		0x001 // Z-levels the station exists on
-#define MAP_LEVEL_ADMIN			0x002 // Z-levels for admin functionality (Centcom, shuttle transit, etc)
-#define MAP_LEVEL_CONTACT		0x004 // Z-levels that can be contacted from the station, for eg announcements
-#define MAP_LEVEL_PLAYER		0x008 // Z-levels a character can typically reach
-#define MAP_LEVEL_SEALED		0x010 // Z-levels that don't allow random transit at edge
-#define MAP_LEVEL_EMPTY			0x020 // Empty Z-levels that may be used for various things (currently used by bluespace jump)
-#define MAP_LEVEL_CONSOLES		0x040 // Z-levels available to various consoles, such as the crew monitor (when that gets coded in). Defaults to station_levels if unset.
-#define MAP_LEVEL_XENOARCH_EXEMPT 0x080	// Z-levels exempt from xenoarch digsite generation.
-
-// Misc map defines.
-#define SUBMAP_MAP_EDGE_PAD 8 // Automatically created submaps are forbidden from being this close to the main map's edge.	//VOREStation Edit
-
-// TG MAP LOADING SYSTEM PENDING
 /*
 The /tg/ codebase allows mixing of hardcoded and dynamically-loaded z-levels.
 Z-levels can be reordered as desired and their properties are set by "traits".
@@ -34,17 +20,8 @@ Multi-Z stations are supported and multi-Z mining and away missions would
 require only minor tweaks.
 */
 
-/*
-// helpers for modifying jobs, used in various job_changes.dm files
-#define MAP_JOB_CHECK if(SSmapping.config.map_name != JOB_MODIFICATION_MAP_NAME) { return; }
-#define MAP_JOB_CHECK_BASE if(SSmapping.config.map_name != JOB_MODIFICATION_MAP_NAME) { return ..(); }
-#define MAP_REMOVE_JOB(jobpath) /datum/job/##jobpath/map_check() { return (SSmapping.config.map_name != JOB_MODIFICATION_MAP_NAME) && ..() }
-
-#define SPACERUIN_MAP_EDGE_PAD 15
-
 // traits
 // boolean - marks a level as having that property if present
-*/
 #define ZTRAIT_CENTCOM "CentCom"
 #define ZTRAIT_STATION "Station"
 #define ZTRAIT_MINING "Mining"
@@ -110,44 +87,4 @@ require only minor tweaks.
     ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface)
 #define ZTRAITS_REEBE list(ZTRAIT_REEBE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 0.5)
 #define ZTRAITS_VR list(ZTRAIT_VIRTUAL_REALITY = TRUE, ZTRAIT_AWAY = TRUE)
-*/
-
-#define DL_NAME "name"
-#define DL_TRAITS "traits"
-#define DECLARE_LEVEL(NAME, TRAITS) list(DL_NAME = NAME, DL_TRAITS = TRAITS)
-
-// must correspond to _basemap.dm for things to work correctly
-#define DEFAULT_MAP_TRAITS list(\
-	DECLARE_LEVEL("Base Reserve Level", list(ZTRAIT_RESERVEd = TRUE)),\
-)
-
-/*
-// Camera lock flags
-#define CAMERA_LOCK_STATION 1
-#define CAMERA_LOCK_MINING 2
-#define CAMERA_LOCK_CENTCOM 4
-#define CAMERA_LOCK_REEBE 8
-*/
-
-//Reserved/Transit turf type
-#define RESERVED_TURF_TYPE /turf/space
-// #define RESERVED_TURF_TYPE /turf/open/space/basic			//What the turf is when not being used
-
-/*
-//Ruin Generation
-
-#define PLACEMENT_TRIES 100 //How many times we try to fit the ruin somewhere until giving up (really should just swap to some packing algo)
-
-#define PLACE_DEFAULT "random"
-#define PLACE_SAME_Z "same" //On same z level as original ruin
-#define PLACE_SPACE_RUIN "space" //On space ruin z level(s)
-#define PLACE_LAVA_RUIN "lavaland" //On lavaland ruin z levels(s)
-#define PLACE_BELOW "below" //On z levl below - centered on same tile
-#define PLACE_ISOLATED "isolated" //On isolated ruin z level
-//Map type stuff.
-#define MAP_TYPE_STATION "station"
-
-//Random z-levels name defines.
-#define AWAY_MISSION_NAME "Away Mission"
-#define VIRT_REALITY_NAME "Virtual Reality"
 */
