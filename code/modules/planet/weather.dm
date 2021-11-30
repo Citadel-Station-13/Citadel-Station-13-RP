@@ -99,10 +99,10 @@
 	forecast.Cut()
 	build_forecast()
 
-
-
 /datum/weather_holder/proc/update_icon_effects()
 	visuals.icon_state = current_weather.icon_state
+	if(current_weather.icon)
+		visuals.icon = current_weather.icon
 
 /datum/weather_holder/proc/update_temperature()
 	temperature = LERP(current_weather.temp_low, current_weather.temp_high, our_planet.sun_position)

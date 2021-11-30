@@ -1,5 +1,3 @@
-var/datum/planet/gaia_planet/planet_gaia_planet = null
-
 /datum/time/gaia_planet
 	seconds_in_day = 3 HOURS
 
@@ -7,11 +5,9 @@ var/datum/planet/gaia_planet/planet_gaia_planet = null
 	name = "Gaia Class world"
 	desc = "A beautiful lush planet that is owned by the Happy Days and Sunshine Corporation."
 	current_time = new /datum/time/gaia_planet()
-	expected_z_levels = list(14) // Debug testing.
 
 /datum/planet/gaia_planet/New()
 	..()
-	planet_gaia_planet = src
 	weather_holder = new /datum/weather_holder/gaia_planet(src)
 
 /datum/planet/gaia_planet/update_sun()

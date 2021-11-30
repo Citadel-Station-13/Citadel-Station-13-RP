@@ -1,5 +1,3 @@
-var/datum/planet/lavaland/planet_lavaland = null
-
 /datum/time/lavaland
 	seconds_in_day = 2 HOURS
 
@@ -11,7 +9,6 @@ var/datum/planet/lavaland/planet_lavaland = null
 
 /datum/planet/lavaland/New()
 	..()
-	planet_lavaland = src
 	weather_holder = new /datum/weather_holder/lavaland(src)
 
 /datum/planet/lavaland/update_sun()

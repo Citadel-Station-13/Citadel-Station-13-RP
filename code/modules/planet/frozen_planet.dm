@@ -1,5 +1,3 @@
-var/datum/planet/frozen_planet/planet_frozen_planet = null
-
 /datum/time/frozen_planet
 	seconds_in_day = 2 HOURS
 
@@ -7,11 +5,9 @@ var/datum/planet/frozen_planet/planet_frozen_planet = null
 	name = "Frozen Class world"
 	desc = "A frosted world that seems stuck in time."
 	current_time = new /datum/time/frozen_planet()
-	expected_z_levels = list(15) // Debug testing.
 
 /datum/planet/frozen_planet/New()
 	..()
-	planet_frozen_planet = src
 	weather_holder = new /datum/weather_holder/frozen_planet(src)
 
 /datum/planet/frozen_planet/update_sun()

@@ -1,5 +1,3 @@
-var/datum/planet/sif/planet_sif = null
-
 /datum/planet/sif
 	name = "Sif"
 
@@ -17,7 +15,6 @@ var/datum/planet/sif/planet_sif = null
 
 /datum/planet/sif/New()
 	..()
-	planet_sif = src
 	weather_holder = new /datum/weather_holder/sif(src) // Cold weather is also nice.
 
 // This code is horrible.

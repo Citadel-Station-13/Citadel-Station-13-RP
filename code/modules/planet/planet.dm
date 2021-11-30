@@ -15,6 +15,7 @@
 	var/list/sun = list("range","brightness","color","lum_r","lum_g","lum_b")
 	var/list/datum/lighting_corner/sunlit_corners = list()
 	var/list/expected_z_levels = list()
+	#warn rework expected_z_levels
 
 	var/turf/unsimulated/wall/planetary/planetary_wall_type = /turf/unsimulated/wall/planetary
 

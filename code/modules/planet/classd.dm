@@ -1,9 +1,3 @@
-/// Lateloaded by tether.dm after tether_defines.dm
-/// Has to be loaded this way since tether_defines.dm has Z_LEVEL_CLASS_D defined whiiiiiich this .dm uses to designate the z level for the weather to be simulated on.
-
-
-var/datum/planet/class_d/planet_class_d = null
-
 /datum/time/class_d
 	seconds_in_day = 3 HOURS
 
@@ -12,13 +6,11 @@ var/datum/planet/class_d/planet_class_d = null
 	desc = "A rocky moon which has recently had its quarantine lifted following a campaign of nuclear bombings and mercinary \
 	forces fighting to whipe out a large xenomorph infestation."
 	current_time = new /datum/time/class_d()
-	expected_z_levels = list(Z_LEVEL_CLASS_D)		// Designates z level the weather effects should be used one
 	planetary_wall_type = /turf/unsimulated/wall/planetary/class_d
 
 
 /datum/planet/class_d/New()
 	..()
-	planet_class_d = src
 	weather_holder = new /datum/weather_holder/class_d(src)
 
 /datum/planet/class_d/update_sun()

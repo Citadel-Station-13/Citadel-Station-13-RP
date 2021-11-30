@@ -1,5 +1,3 @@
-var/datum/planet/virgo3b/planet_virgo3b = null
-
 /datum/time/virgo3b
 	seconds_in_day = 6 HOURS
 
@@ -9,19 +7,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	amounts of both oxygen and nitrogen. Fortunately, the oxygen is not enough to be combustible in any meaningful way, however \
 	the phoron is desirable by many corporations, including NanoTrasen."
 	current_time = new /datum/time/virgo3b()
-	expected_z_levels = list(
-						Z_LEVEL_SURFACE_LOW,
-						Z_LEVEL_SURFACE_MID,
-						Z_LEVEL_SURFACE_HIGH,
-						Z_LEVEL_SURFACE_MINE,
-						Z_LEVEL_SOLARS,
-						Z_LEVEL_PLAINS
-						)
 	planetary_wall_type = /turf/unsimulated/wall/planetary/virgo3b
 
 /datum/planet/virgo3b/New()
 	..()
-	planet_virgo3b = src
 	weather_holder = new /datum/weather_holder/virgo3b(src)
 
 /datum/planet/virgo3b/update_sun()
