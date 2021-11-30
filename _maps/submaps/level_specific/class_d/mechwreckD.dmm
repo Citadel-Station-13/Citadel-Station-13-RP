@@ -3,13 +3,13 @@
 /turf/template_noop,
 /area/template_noop)
 "c" = (
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d,
 /area/poi_d/explored)
 "d" = (
 /obj/effect/decal/mecha_wreckage/ripley,
 /obj/random/ammo_all,
 /obj/random/tool/alien,
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d,
 /area/poi_d/explored)
 
 (1,1,1) = {"
