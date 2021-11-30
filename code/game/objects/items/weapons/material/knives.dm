@@ -255,10 +255,10 @@
 	dat["curr_x"] = curr.x
 	dat["curr_y"] = curr.y
 	dat["curr_z"] = curr.z
-	dat["curr_z_name"] = GLOB.using_map.get_zlevel_name(curr.z)
+	dat["curr_z_name"] = SSmapping.legacy_map_config.get_zlevel_name(curr.z)
 	var/list/gps_list = list()
 	dat["gps_list"] = gps_list
-	dat["z_level_detection"] = GLOB.using_map.get_map_levels(curr.z, long_range)
+	dat["z_level_detection"] = SSmapping.legacy_map_config.get_map_levels(curr.z, long_range)
 
 	for(var/obj/item/gps/G in GLOB.GPS_list - src)
 		if(!G.tracking || G.emped || G.hide_signal)
@@ -279,7 +279,7 @@
 		if(istype(A, /area/submap))
 			gps_data["area_name"] = "Unknown Area" // Avoid spoilers.
 
-		gps_data["z_name"] = GLOB.using_map.get_zlevel_name(T.z)
+		gps_data["z_name"] = SSmapping.legacy_map_config.get_zlevel_name(T.z)
 		gps_data["direction"] = get_adir(curr, T)
 		gps_data["degrees"] = round(Get_Angle(curr,T))
 		gps_data["distX"] = T.x - curr.x

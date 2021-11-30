@@ -53,7 +53,7 @@
 
 /obj/effect/overmap/Initialize(mapload)
 	. = ..()
-	if(!GLOB.using_map.use_overmap)
+	if(!SSmapping.legacy_map_config.use_overmap)
 		return INITIALIZE_HINT_QDEL
 
 	if(known && !mapload)

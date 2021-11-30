@@ -75,7 +75,7 @@
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
 		for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in A.contents)
-			if(temp_vent.network && ((temp_vent.loc.z in GLOB.using_map.station_levels) || isTalon == 1))
+			if(temp_vent.network && ((temp_vent.loc.z in SSmapping.legacy_map_config.station_levels) || isTalon == 1))
 				vents += temp_vent
 
 	var/cult_spawn = list(/mob/living/simple_mob/humanoid/cultist/human,

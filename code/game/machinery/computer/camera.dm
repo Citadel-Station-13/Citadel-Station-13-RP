@@ -21,7 +21,7 @@
 	camera = new(src, network)
 
 /obj/machinery/computer/security/proc/get_default_networks()
-	. = GLOB.using_map.station_networks.Copy()
+	. = SSmapping.legacy_map_config.station_networks.Copy()
 
 /obj/machinery/computer/security/Destroy()
 	QDEL_NULL(camera)

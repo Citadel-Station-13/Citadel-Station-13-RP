@@ -4,8 +4,8 @@ SUBSYSTEM_DEF(overmaps)
 	init_order = INIT_ORDER_OVERMAPS
 
 /datum/controller/subsystem/overmaps/Initialize()
-	if(GLOB.using_map.use_overmap)
-		GLOB.overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
+	if(SSmapping.legacy_map_config.use_overmap)
+		GLOB.overmap_event_handler.create_events(SSmapping.legacy_map_config.overmap_z, SSmapping.legacy_map_config.overmap_size, SSmapping.legacy_map_config.overmap_event_areas)
 	rebuild_helm_computers()
 	return ..()
 

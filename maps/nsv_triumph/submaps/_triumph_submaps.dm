@@ -201,7 +201,7 @@
 		log_game("Extra z-level [src] has no associated map datum")
 		return
 
-	new associated_map_datum(GLOB.using_map, z)
+	new associated_map_datum(SSmapping.legacy_map_config, z)
 
 /datum/map_z_level/triumph_lateload
 	z = 0

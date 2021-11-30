@@ -95,7 +95,7 @@
 	known_SMESs = new /list()
 
 	var/z = get_z(ui_host())
-	var/datum/map/active = GLOB.using_map
+	var/datum/map/active = SSmapping.legacy_map_config
 	var/list/map_levels = active.get_map_levels(z)
 
 	for(var/obj/machinery/power/smes/buildable/SMES in GLOB.smeses)

@@ -78,7 +78,7 @@
 /datum/file/camnet_key/New()
 	for(var/N in networks)
 		if(N == "ALL")
-			networks = GLOB.using_map.station_networks
+			networks = SSmapping.legacy_map_config.station_networks
 			break
 	return ..()
 

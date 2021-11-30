@@ -13,7 +13,7 @@ var/global/datum/controller/occupations/job_master
 	proc/SetupOccupations(var/faction = "Station")
 		occupations = list()
 		//var/list/all_jobs = typesof(/datum/job)
-		var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
+		var/list/all_jobs = list(/datum/job/assistant) | SSmapping.legacy_map_config.allowed_jobs
 		if(!all_jobs.len)
 			to_world("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return 0
@@ -527,8 +527,8 @@ var/global/datum/controller/occupations/job_master
 		// EMAIL GENERATION
 		// Email addresses will be created under this domain name. Mostly for the looks.
 		var/domain = "freemail.nt"
-		if(GLOB.using_map && LAZYLEN(GLOB.using_map.usable_email_tlds))
-			domain = GLOB.using_map.usable_email_tlds[1]
+		if(SSmapping.legacy_map_config && LAZYLEN(SSmapping.legacy_map_config.usable_email_tlds))
+			domain = SSmapping.legacy_map_config.usable_email_tlds[1]
 		var/sanitized_name = sanitize(replacetext(replacetext(lowertext(H.real_name), " ", "."), "'", ""))
 		var/complete_login = "[sanitized_name]@[domain]"
 
@@ -636,7 +636,7 @@ var/global/datum/controller/occupations/job_master
 
 	//Spawn them at their preferred one
 	if(C && C.prefs.spawnpoint)
-		if(!(C.prefs.spawnpoint in GLOB.using_map.allowed_spawns))
+		if(!(C.prefs.spawnpoint in SSmapping.legacy_map_config.allowed_spawns))
 			if(fail_deadly)
 				to_chat(C, "<span class='warning'>Your chosen spawnpoint is unavailable for this map and your job requires a specific spawnpoint. Please correct your spawn point choice.</span>")
 				return

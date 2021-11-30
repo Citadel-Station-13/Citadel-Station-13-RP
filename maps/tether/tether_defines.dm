@@ -1,36 +1,3 @@
-//Normal map defs
-#define Z_LEVEL_SURFACE_LOW					2
-#define Z_LEVEL_SURFACE_MID					3
-#define Z_LEVEL_SURFACE_HIGH				4
-#define Z_LEVEL_TRANSIT						5
-#define Z_LEVEL_SPACE_LOW					6
-#define Z_LEVEL_SPACE_HIGH					7
-#define Z_LEVEL_SURFACE_MINE				8
-#define Z_LEVEL_SOLARS						9
-#define Z_LEVEL_MISC						10
-#define Z_LEVEL_UNDERDARK					11
-#define Z_LEVEL_PLAINS						12
-#define Z_LEVEL_OFFMAP1						13
-#define Z_LEVEL_OFFMAP2						14
-#define Z_LEVEL_ROGUEMINE_1					15
-#define Z_LEVEL_ROGUEMINE_2					16
-#define Z_LEVEL_BEACH						17
-#define Z_LEVEL_BEACH_CAVE					18
-#define Z_LEVEL_DESERT						19
-#define Z_LEVEL_AEROSTAT					20
-#define Z_LEVEL_AEROSTAT_SURFACE			21
-#define Z_LEVEL_DEBRISFIELD					22
-#define Z_LEVEL_FUELDEPOT					23
-#define Z_LEVEL_GATEWAY						24
-#define Z_LEVEL_CLASS_D						25
-
-//Camera networks
-#define NETWORK_TETHER "Tether"
-#define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
-#define NETWORK_OUTSIDE "Outside"
-#define NETWORK_EXPLORATION "Exploration"
-#define NETWORK_XENOBIO "Xenobiology"
-
 /datum/map/tether/New()
 	..()
 	var/choice = pickweight(list(
@@ -465,3 +432,21 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	name = "Solar Field"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+
+/datum/map/tether/default_internal_channels()
+	return list(
+		num2text(PUB_FREQ) = list(),
+		num2text(AI_FREQ)  = list(access_synth),
+		num2text(ENT_FREQ) = list(),
+		num2text(ERT_FREQ) = list(access_cent_specops),
+		num2text(COMM_FREQ)= list(access_heads),
+		num2text(ENG_FREQ) = list(access_engine_equip, access_atmospherics),
+		num2text(MED_FREQ) = list(access_medical_equip),
+		num2text(MED_I_FREQ)=list(access_medical_equip),
+		num2text(SEC_FREQ) = list(access_security),
+		num2text(SEC_I_FREQ)=list(access_security),
+		num2text(SCI_FREQ) = list(access_tox,access_robotics,access_xenobiology),
+		num2text(SUP_FREQ) = list(access_cargo),
+		num2text(SRV_FREQ) = list(access_janitor, access_hydroponics),
+		num2text(EXP_FREQ) = list(access_explorer)
+	)

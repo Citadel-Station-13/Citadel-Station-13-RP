@@ -26,6 +26,8 @@ require only minor tweaks.
 #define ZTRAIT_STATION "Station"
 #define ZTRAIT_MINING "Mining"
 #define ZTRAIT_FACILITY_SAFETY "FacilityWeaponLock"
+/// Doesn't allow xenoarch spawns
+#define ZTRAIT_XENOARCHEOLOGY_EXEMPT "NoXenoarch"
 /*
 #define ZTRAIT_REEBE "Reebe"
 */

@@ -44,7 +44,7 @@
 
 	var/list/zlevels
 	if(zlevel)
-		zlevels = GLOB.using_map.get_map_levels(zlevel, TRUE)
+		zlevels = SSmapping.legacy_map_config.get_map_levels(zlevel, TRUE)
 
 	Message(message, message_title, zlevels)
 	if(do_newscast)

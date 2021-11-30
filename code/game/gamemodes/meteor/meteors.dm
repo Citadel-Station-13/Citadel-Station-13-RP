@@ -27,7 +27,7 @@
 	if(isnull(startSide))
 		startSide = pick(GLOB.cardinal)
 	if(isnull(startLevel))
-		startLevel = pick(GLOB.using_map.station_levels - GLOB.using_map.sealed_levels)
+		startLevel = pick(SSmapping.legacy_map_config.station_levels - SSmapping.legacy_map_config.sealed_levels)
 
 	var/turf/pickedstart = spaceDebrisStartLoc(startSide, startLevel)
 	var/turf/pickedgoal = spaceDebrisFinishLoc(startSide, startLevel)

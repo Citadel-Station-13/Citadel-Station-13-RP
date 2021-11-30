@@ -15,7 +15,7 @@
 		playsound(ui_host(), "terminal_type", 50, 1)
 
 	var/turf/T = get_turf(usr)
-	if(!T || !(T.z in GLOB.using_map.player_levels))
+	if(!T || !(T.z in SSmapping.legacy_map_config.player_levels))
 		to_chat(usr, "<span class='warning'><b>Unable to establish a connection</b>: You're too far away from the station!</span>")
 		return FALSE
 
@@ -33,7 +33,7 @@
 
 /datum/tgui_module/crew_monitor/ui_interact(mob/user, datum/tgui/ui = null)
 	var/z = get_z(user)
-	var/list/map_levels = GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
+	var/list/map_levels = SSmapping.legacy_map_config.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
 
 	if(!map_levels.len)
 		to_chat(user, "<span class='warning'>The crew monitor doesn't seem like it'll work here.</span>")
@@ -54,7 +54,7 @@
 	data["isAI"] = isAI(user)
 
 	var/z = get_z(user)
-	var/list/map_levels = uniqueList(GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
+	var/list/map_levels = uniqueList(SSmapping.legacy_map_config.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
 	data["map_levels"] = map_levels
 
 	var/list/crewmembers = list()

@@ -753,16 +753,16 @@
 					config_legacy.use_overmap = 1
 /*
 				if("station_levels")
-					GLOB.using_map.station_levels = text2numlist(value, ";")
+					SSmapping.legacy_map_config.station_levels = text2numlist(value, ";")
 
 				if("admin_levels")
-					GLOB.using_map.admin_levels = text2numlist(value, ";")
+					SSmapping.legacy_map_config.admin_levels = text2numlist(value, ";")
 
 				if("contact_levels")
-					GLOB.using_map.contact_levels = text2numlist(value, ";")
+					SSmapping.legacy_map_config.contact_levels = text2numlist(value, ";")
 
 				if("player_levels")
-					GLOB.using_map.player_levels = text2numlist(value, ";")
+					SSmapping.legacy_map_config.player_levels = text2numlist(value, ";")
 */
 				if("expected_round_length")
 					config_legacy.expected_round_length = MinutesToTicks(text2num(value))

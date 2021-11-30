@@ -9,7 +9,7 @@ var/list/cached_space = list()
 	known = 0
 
 /obj/effect/overmap/visitable/sector/temporary/New(var/nx, var/ny, var/nz)
-	loc = locate(nx, ny, GLOB.using_map.overmap_z)
+	loc = locate(nx, ny, SSmapping.legacy_map_config.overmap_z)
 	x = nx
 	y = ny
 	map_z += nz
@@ -30,7 +30,7 @@ var/list/cached_space = list()
 	return 1
 
 proc/get_deepspace(x,y)
-	var/turf/unsimulated/map/overmap_turf = locate(x,y,GLOB.using_map.overmap_z)
+	var/turf/unsimulated/map/overmap_turf = locate(x,y,SSmapping.legacy_map_config.overmap_z)
 	if(!istype(overmap_turf))
 		CRASH("Attempt to get deepspace at ([x],[y]) which is not on overmap: [overmap_turf]")
 	var/obj/effect/overmap/visitable/sector/temporary/res = locate() in overmap_turf
@@ -42,7 +42,7 @@ proc/get_deepspace(x,y)
 		res.forceMove(overmap_turf)
 		return res
 	else
-		return new /obj/effect/overmap/visitable/sector/temporary(x, y, GLOB.using_map.get_empty_zlevel())
+		return new /obj/effect/overmap/visitable/sector/temporary(x, y, SSmapping.legacy_map_config.get_empty_zlevel())
 
 /atom/movable/proc/lost_in_space()
 	for(var/atom/movable/AM in contents)
@@ -126,7 +126,7 @@ proc/overmap_spacetravel(var/turf/space/T, var/atom/movable/A)
 
 	testing("[A] spacemoving from [M] ([M.x], [M.y]).")
 
-	var/turf/map = locate(M.x,M.y,GLOB.using_map.overmap_z)
+	var/turf/map = locate(M.x,M.y,SSmapping.legacy_map_config.overmap_z)
 	var/obj/effect/overmap/visitable/TM
 	for(var/obj/effect/overmap/visitable/O in map)
 		if(O != M && O.in_space && prob(50))

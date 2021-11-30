@@ -32,11 +32,11 @@
 		holoMiniMaps[z] = generateHoloMinimap(z)
 
 	// Generate the area overlays, small maps, etc for the station levels.
-	for (var/z in GLOB.using_map.station_levels)
+	for (var/z in SSmapping.legacy_map_config.station_levels)
 		generateStationMinimap(z)
 
-	if(GLOB.using_map.holomap_smoosh)
-		for(var/smoosh_list in GLOB.using_map.holomap_smoosh)
+	if(SSmapping.legacy_map_config.holomap_smoosh)
+		for(var/smoosh_list in SSmapping.legacy_map_config.holomap_smoosh)
 			smooshTetherHolomaps(smoosh_list)
 
 	holomaps_initialized = TRUE

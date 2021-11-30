@@ -95,7 +95,7 @@
 		var/turf/T = get_turf(R)
 		if(!T)
 			continue
-		if(!(T.z in GLOB.using_map.player_levels))
+		if(!(T.z in SSmapping.legacy_map_config.player_levels))
 			continue
 		var/tmpname = T.loc.name
 		if(areaindex[tmpname])

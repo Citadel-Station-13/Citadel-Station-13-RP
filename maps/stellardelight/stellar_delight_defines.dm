@@ -1,22 +1,3 @@
-//Normal map defs
-#define Z_LEVEL_SHIP_LOW					1
-#define Z_LEVEL_SHIP_MID					2
-#define Z_LEVEL_SHIP_HIGH					3
-#define Z_LEVEL_CENTCOM						4
-#define Z_LEVEL_MISC						5
-#define Z_LEVEL_BEACH						6
-#define Z_LEVEL_BEACH_CAVE					7
-#define Z_LEVEL_AEROSTAT					8
-#define Z_LEVEL_AEROSTAT_SURFACE			9
-#define Z_LEVEL_DEBRISFIELD					10
-#define Z_LEVEL_FUELDEPOT					11
-#define Z_LEVEL_OVERMAP						12
-#define Z_LEVEL_OFFMAP1						13
-#define Z_LEVEL_GATEWAY						14
-
-//Camera networks
-#define NETWORK_HALLS "Halls"
-
 /datum/map/stellar_delight/New()
 	..()
 	var/choice = pickweight(list(
@@ -31,7 +12,7 @@
 
 /datum/map/stellar_delight
 	name = "StellarDelight"
-	full_name = "NRV Stellar Delight"
+	full_name = "NSV Stellar Delight"
 	path = "stellardelight"
 
 	use_overmap = TRUE

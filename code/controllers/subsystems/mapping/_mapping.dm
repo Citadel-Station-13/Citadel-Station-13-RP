@@ -6,6 +6,15 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	flags = SS_NO_FIRE
 
+	// Map System
+	#warn this
+	/// Current map config
+	var/datum/map_config/map
+	/// Next map config
+	var/datum/map_config/next_map
+	/// Usage of this var is banned, this is only for legacy vars that need access to this
+	var/datum/map/legacy_map_config
+
 	var/list/areas_in_z = list()
 
 	var/list/turf/unused_turfs = list()				//Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
@@ -61,11 +70,11 @@ SUBSYSTEM_DEF(mapping)
 	loadEngine()
 	preloadShelterTemplates()
 	// Mining generation probably should be here too
-	GLOB.using_map.perform_map_generation()
+	SSmapping.legacy_map_config.perform_map_generation()
 	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
-	if(GLOB.using_map)
+	if(SSmapping.legacy_map_config)
 		loadLateMaps()
-	if(!GLOB.using_map.overmap_z)
+	if(!SSmapping.legacy_map_config.overmap_z)
 		build_overmap()
 
 	// basemap - REEVALUATE when runtime maploading is in
@@ -363,8 +372,8 @@ SUBSYSTEM_DEF(mapping)
 	chosen_type.load(T)
 
 /datum/controller/subsystem/mapping/proc/loadLateMaps()
-	var/list/deffo_load = GLOB.using_map.lateload_z_levels
-	var/list/maybe_load = GLOB.using_map.lateload_single_pick
+	var/list/deffo_load = SSmapping.legacy_map_config.lateload_z_levels
+	var/list/maybe_load = SSmapping.legacy_map_config.lateload_single_pick
 
 	for(var/list/maplist in deffo_load)
 		if(!islist(maplist))

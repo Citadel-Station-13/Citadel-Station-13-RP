@@ -8,15 +8,15 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 	screen_loc = "1,1"
 
 /obj/effect/lobby_image/Initialize(mapload)
-	icon = GLOB.using_map.lobby_icon
+	icon = SSmapping.legacy_map_config.lobby_icon
 	var/known_icon_states = icon_states(icon)
-	for(var/lobby_screen in GLOB.using_map.lobby_screens)
+	for(var/lobby_screen in SSmapping.legacy_map_config.lobby_screens)
 		if(!(lobby_screen in known_icon_states))
 			log_world("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
-			GLOB.using_map.lobby_screens -= lobby_screen
+			SSmapping.legacy_map_config.lobby_screens -= lobby_screen
 
-	if(GLOB.using_map.lobby_screens.len)
-		icon_state = pick(GLOB.using_map.lobby_screens)
+	if(SSmapping.legacy_map_config.lobby_screens.len)
+		icon_state = pick(SSmapping.legacy_map_config.lobby_screens)
 	else
 		icon_state = known_icon_states[1]
 	. = ..()
