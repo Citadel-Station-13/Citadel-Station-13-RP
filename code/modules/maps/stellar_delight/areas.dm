@@ -292,4 +292,3 @@
 	name = "Deck Two Exterior"
 /area/stellardelight/deck3/exterior
 	name = "Deck Three Exterior"
-

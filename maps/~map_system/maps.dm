@@ -24,17 +24,6 @@ var/list/all_maps = list()
 	var/list/zlevels = list()
 	var/zlevel_datum_type			 // If populated, all subtypes of this type will be instantiated and used to populate the *_levels lists.
 
-	var/list/station_levels = list() // Z-levels the station exists on
-	var/list/admin_levels = list()	 // Z-levels for admin functionality (Centcom, shuttle transit, etc)
-	var/list/contact_levels = list() // Z-levels that can be contacted from the station, for eg announcements
-	var/list/player_levels = list()	 // Z-levels a character can typically reach
-	var/list/sealed_levels = list()	 // Z-levels that don't allow random transit at edge
-	var/list/xenoarch_exempt_levels = list()	// Z-levels exempt from xenoarch finds and digsites spawning.
-	var/list/empty_levels = null	 // Empty Z-levels that may be used for various things (currently used by bluespace jump)
-
-	var/list/map_levels				 // Z-levels available to various consoles, such as the crew monitor (when that gets coded in). Defaults to station_levels if unset.
-	var/list/base_turf_by_z = list() // Custom base turf by Z-level. Defaults to world.turf for unlisted Z-levels
-
 	var/list/usable_email_tlds = list("freemail.nt")
 	// This list contains the z-level numbers which can be accessed via space travel and the percentile chances to get there.
 	var/list/accessible_z_levels = list()
