@@ -3617,7 +3617,6 @@
 #include "interface\interface.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
-#include "maps\submaps\_healpers.dm"
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\engine_submaps_vr\tether\_engine_submaps.dm"
 #include "maps\tether\tether.dm"
