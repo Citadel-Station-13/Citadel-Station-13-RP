@@ -235,13 +235,11 @@
 	icon_state = "globe"
 	color = "#d35b5b"
 	initial_generic_waypoints = list(
-		"tether_dockarm_d1a1", //Bottom left,
-		"tether_dockarm_d1a2", //Top left,
-		"tether_dockarm_d1a3", //Left on inside,
-		"tether_dockarm_d2a1", //Bottom right,
-		"tether_dockarm_d2a2", //Top right,
-		"tether_dockarm_d1l", //End of left arm,
-		"tether_dockarm_d2l", //End of right arm,
+		"tether_dockarm_d2a", //Top left
+		"tether_dockarm_d2b", //Bottom left,
+		"tether_dockarm_d2r", //Right,
+		"tether_dockarm_d2l", //End of arm,
+		"tether_space_SE", //station1, bottom right of space,
 		"tether_space_SE", //station1, bottom right of space,
 		"tether_space_NE", //station1, top right of space,
 		"tether_space_SW", //station2, bottom left of space,
