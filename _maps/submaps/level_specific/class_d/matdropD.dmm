@@ -22,7 +22,7 @@
 /turf/simulated/floor/tiled,
 /area/poi_d/POIs/landing_pad)
 "g" = (
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/POIs/landing_pad)
 "i" = (
 /turf/simulated/floor/tiled,
@@ -48,8 +48,8 @@
 /turf/simulated/floor/tiled,
 /area/poi_d/POIs/landing_pad)
 "n" = (
-/turf/simulated/mineral/floor/vacuum,
-/area/template_noop)
+/turf/simulated/mineral/floor/class_d,
+/area/poi_d/explored)
 "p" = (
 /obj/machinery/door/airlock/maintenance/int,
 /turf/simulated/floor/tiled/white,
@@ -59,7 +59,7 @@
 	dir = 8;
 	id = "matdropcargo"
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/poi_d/POIs/landing_pad)
 "r" = (
 /obj/structure/closet/crate,
@@ -97,7 +97,7 @@
 	dir = 4
 	},
 /obj/structure/grille,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/POIs/landing_pad)
 "B" = (
 /obj/structure/closet/crate,
@@ -143,7 +143,7 @@
 /turf/simulated/floor/tiled,
 /area/poi_d/POIs/landing_pad)
 "N" = (
-/turf/simulated/wall/titanium,
+/turf/simulated/wall,
 /area/poi_d/POIs/landing_pad)
 "P" = (
 /obj/structure/bed,
@@ -179,7 +179,7 @@
 	dir = 8;
 	id = "matdropcargo"
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/poi_d/POIs/landing_pad)
 "W" = (
 /obj/structure/closet/crate,
@@ -194,7 +194,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor,
 /area/poi_d/POIs/landing_pad)
 "Y" = (
 /obj/structure/toilet{

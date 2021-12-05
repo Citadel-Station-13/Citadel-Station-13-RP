@@ -163,3 +163,9 @@
 
 /obj/item/rig/merc/old/spring
 	springtrapped = 1
+
+/mob/living/simple_mob/humanoid/possessed/merc/feral	// Special one that moves faster attacks faster. Intended as a special mech pilot
+	desc = "A blood-red hardsuit featuring some fairly illegal technology. Seems to be worn down and damaged but moving with surprising speed!"
+	movement_cooldown 				= 2		//You can try running
+	base_attack_cooldown 			= 3		//You will just die tired
+	melee_miss_chance				= 25	//Not very coordinated though

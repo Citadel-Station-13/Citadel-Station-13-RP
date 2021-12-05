@@ -122,18 +122,10 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
 /mob/living/carbon/human/update_transform()
-	if(tail_style?.can_loaf)
-		// return early after updating taur type
-		update_tail_showing()
-		return
-
 	var/desired_scale_x = size_multiplier * icon_scale_x
 	var/desired_scale_y = size_multiplier * icon_scale_y
 	desired_scale_x *= species.icon_scale_x
 	desired_scale_y *= species.icon_scale_y
-	appearance_flags |= PIXEL_SCALE
-	if(fuzzy)
-		appearance_flags &= ~PIXEL_SCALE
 
 	var/matrix/M = matrix()
 	var/anim_time = 3

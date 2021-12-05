@@ -24,12 +24,11 @@ var/global/list/wing_icon_cache = list()
 
 	//If you have a custom tail selected
 	if(tail_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL && !isTaurTail(tail_style)))
-		var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = (tail_style.can_loaf && resting) ? "[tail_style.icon_state]_loaf" : (wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state))
-		pixel_y = (tail_style.can_loaf && resting) ? -tail_style.loaf_offset : 0 //move player down, then taur up, to fit the overlays correctly
+		var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state)
 		if(tail_style.do_colouration)
 			tail_s.Blend(rgb(src.r_tail, src.g_tail, src.b_tail), tail_style.color_blend_mode)
 		if(tail_style.extra_overlay)
-			var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = (tail_style?.can_loaf && resting) ? "[tail_style.extra_overlay]_loaf" : tail_style.extra_overlay)
+			var/icon/overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay)
 			if(wagging && tail_style.ani_state)
 				overlay = new/icon("icon" = tail_style.icon, "icon_state" = tail_style.extra_overlay_w)
 				overlay.Blend(rgb(src.r_tail2, src.g_tail2, src.b_tail2), tail_style.color_blend_mode)
@@ -45,7 +44,7 @@ var/global/list/wing_icon_cache = list()
 			if(taurtype.can_ride && !riding_datum)
 				riding_datum = new /datum/riding/taur(src)
 				verbs |= /mob/living/carbon/human/proc/taur_mount
-			return image(tail_s, "pixel_x" = -16, "pixel_y" = (tail_style.can_loaf && resting) ? tail_style.loaf_offset : 0)
+			return image(tail_s, "pixel_x" = -16)
 		else
 			return image(tail_s)
 	return null
