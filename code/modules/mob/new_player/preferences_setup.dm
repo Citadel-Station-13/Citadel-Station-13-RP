@@ -257,10 +257,10 @@
 		regen_limbs = 0
 	dress_preview_mob(mannequin)
 	mannequin.update_transform()
-	COMPILE_OVERLAYS(mannequin)
 	// purge hud lists manually until we get less garbage huds that don't render 24/7
 	mannequin.cut_overlay(mannequin.hud_list)
 	// end
+	COMPILE_OVERLAYS(mannequin)
 	update_character_previews(new /mutable_appearance(mannequin))
 
 //TFF 5/8/19 - add randomised sensor setting for random button clicking
