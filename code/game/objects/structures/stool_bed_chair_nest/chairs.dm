@@ -256,6 +256,9 @@
 /obj/structure/bed/chair/sofa
 	sofa_material = "black"
 
+/obj/structure/bed/chair/sofa/brown
+	sofa_material = "leather"
+
 /obj/structure/bed/chair/sofa/red
 	sofa_material = "carpet"
 
