@@ -293,7 +293,6 @@
 	current_location = "triumph_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
 	landmark_transition = "nav_transit_exploration"
-	fuel_consumption = 3
 	move_time = 20
 
 /area/shuttle/excursion

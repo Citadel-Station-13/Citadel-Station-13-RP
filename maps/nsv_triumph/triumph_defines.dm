@@ -49,7 +49,7 @@
 
 	admin_levels = list()
 	sealed_levels = list()
-	empty_levels = list()
+	empty_levels = null
 	station_levels = list(Z_LEVEL_DECK_ONE,
 		Z_LEVEL_DECK_TWO,
 		Z_LEVEL_DECK_THREE,

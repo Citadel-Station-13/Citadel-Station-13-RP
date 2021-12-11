@@ -89,7 +89,6 @@
 			S.engines |= controller
 			if(dir != S.fore_dir)
 				set_broken(TRUE)
-			break
 
 /obj/machinery/atmospherics/unary/engine/Destroy()
 	QDEL_NULL(controller)
