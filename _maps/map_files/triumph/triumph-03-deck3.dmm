@@ -65,7 +65,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/sleeper)
 "abH" = (
-/obj/structure/stairs/north,
+/obj/structure/stairs/spawner/north,
 /turf/simulated/floor/tiled,
 /area/rnd/research_foyer_auxiliary)
 "abM" = (
@@ -1867,8 +1867,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
+"bFt" = (
+/obj/structure/stairs/spawner/north,
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_three)
 "bFw" = (
-/obj/machinery/atmospherics/unary/engine/small{
+/obj/machinery/atmospherics/unary/engine{
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -6685,10 +6689,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
-"fEu" = (
-/obj/structure/stairs/south,
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
 "fEI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -9177,12 +9177,11 @@
 /area/assembly/robotics/surgery)
 "hHp" = (
 /obj/machinery/access_button{
-	master_tag = null;
+	master_tag = "deck3_airlock";
 	name = "exterior access button";
 	pixel_x = 32;
 	pixel_y = 23
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /turf/space,
 /area/space)
 "hHP" = (
@@ -10018,9 +10017,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "irr" = (
-/obj/structure/stairs/west,
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/fancy/wood,
+/obj/structure/stairs/spawner/west,
 /turf/simulated/floor/wood,
 /area/hallway/primary/aft)
 "isq" = (
@@ -13291,11 +13290,10 @@
 "loh" = (
 /obj/machinery/access_button{
 	dir = 1;
-	master_tag = null;
+	master_tag = "deck3_airlock";
 	name = "interior access button";
 	pixel_y = -23
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "loD" = (
@@ -18188,9 +18186,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/button/ext_button,
 /obj/machinery/access_button{
-	master_tag = null;
+	master_tag = "deck3_emt_lock";
 	name = "exterior access button";
 	pixel_x = 32;
 	pixel_y = -8
@@ -19886,6 +19883,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"qjI" = (
+/obj/structure/stairs/spawner/south,
+/turf/simulated/floor/tiled,
+/area/triumph/station/stairs_three)
 "qjP" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -22892,10 +22893,6 @@
 /obj/effect/floor_decal/corner/mauve/border,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
-"sws" = (
-/obj/structure/stairs/north,
-/turf/simulated/floor/tiled,
-/area/triumph/station/stairs_three)
 "swA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -23327,7 +23324,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 21
 	},
-/obj/machinery/pros_fabricator,
+/obj/machinery/mecha_part_fabricator/pros,
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
 "sMd" = (
@@ -27465,10 +27462,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/int_door,
-/obj/effect/map_helper/airlock/button/int_button,
 /obj/machinery/access_button{
 	dir = 1;
-	master_tag = null;
+	master_tag = "deck3_emt_lock";
 	name = "interior access button";
 	pixel_x = -25;
 	pixel_y = 25
@@ -36217,7 +36213,7 @@ dct
 gYe
 vcU
 duK
-sws
+bFt
 uGD
 taT
 nJf
@@ -36225,7 +36221,7 @@ ylr
 dmV
 jSv
 uGD
-fEu
+qjI
 ioO
 ykq
 yiY
@@ -36359,7 +36355,7 @@ xqe
 jEz
 rKa
 duK
-sws
+bFt
 uGD
 jgE
 kcx
@@ -36367,7 +36363,7 @@ iQG
 mfT
 yjF
 uGD
-fEu
+qjI
 ioO
 ykq
 xZU
@@ -46016,13 +46012,13 @@ oLu
 tix
 uGD
 uGD
-fEu
+qjI
 ioO
 mzl
 xhr
 jfg
 ioO
-sws
+bFt
 uGD
 uGD
 djB
@@ -46158,13 +46154,13 @@ clf
 tix
 uGD
 uGD
-fEu
+qjI
 ioO
 uGD
 wZI
 uGD
 ioO
-sws
+bFt
 uGD
 uGD
 djB

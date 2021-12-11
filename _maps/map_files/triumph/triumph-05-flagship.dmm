@@ -660,14 +660,14 @@
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
-/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/licensed,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2412,7 +2412,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "dT" = (
-/obj/machinery/pros_fabricator,
+/obj/machinery/mecha_part_fabricator/pros,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "dU" = (
@@ -5722,11 +5722,6 @@
 /area/centcom/security)
 "kH" = (
 /obj/structure/table/rack,
-/obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	dir = 5;
@@ -16001,6 +15996,12 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
+"FL" = (
+/obj/item/gun/energy/stripper,
+/turf/unsimulated/floor{
+	icon_state = "dark"
+	},
+/area/centcom/control)
 "Gp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -30515,7 +30516,7 @@ cK
 cK
 dm
 dw
-dt
+FL
 dm
 ex
 eS

@@ -749,7 +749,7 @@
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
 "aFX" = (
-/obj/machinery/atmospherics/unary/engine/small{
+/obj/machinery/atmospherics/unary/engine{
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -1307,7 +1307,7 @@
 	dir = 9
 	},
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "bfs" = (
 /obj/structure/bookcase/legal/combo,
@@ -1688,7 +1688,7 @@
 	},
 /obj/structure/flora/ausbushes/fernybush,
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "bum" = (
 /obj/machinery/computer/guestpass{
@@ -1761,7 +1761,7 @@
 /turf/space,
 /area/space)
 "bwh" = (
-/obj/machinery/atmospherics/unary/engine/small{
+/obj/machinery/atmospherics/unary/engine{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -2711,14 +2711,13 @@
 	},
 /obj/machinery/access_button{
 	dir = 1;
-	master_tag = null;
+	master_tag = "deck4_dockarm1";
 	name = "exterior access button";
 	pixel_x = -24;
 	pixel_y = 9;
 	req_one_access = list(13)
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "cgH" = (
@@ -3002,13 +3001,12 @@
 /obj/machinery/shield_diffuser,
 /obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
-	master_tag = null;
+	master_tag = "deck4_dockarm2";
 	name = "exterior access button";
 	pixel_x = -24;
 	pixel_y = -9;
 	req_one_access = list(13)
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "ctb" = (
@@ -3492,7 +3490,7 @@
 	dir = 10
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "cKZ" = (
 /obj/machinery/door/airlock/maintenance/command,
@@ -6817,7 +6815,7 @@
 	dir = 6
 	},
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "flL" = (
 /obj/structure/table/reinforced,
@@ -7665,7 +7663,7 @@
 	id_tag = null
 	},
 /obj/machinery/access_button{
-	master_tag = null;
+	master_tag = "expshuttle_docker";
 	pixel_x = 27
 	},
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
@@ -7677,7 +7675,6 @@
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/obj/effect/map_helper/airlock/button/ext_button,
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -7953,7 +7950,7 @@
 	},
 /obj/structure/flora/ausbushes/fernybush,
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "glA" = (
 /obj/structure/cable/green{
@@ -9044,9 +9041,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "gYA" = (
-/obj/structure/bed/chair/sofa/right{
-	icon_state = "sofaend_right"
-	},
+/obj/structure/bed/chair/sofa/right,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "gZa" = (
@@ -10897,7 +10892,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/deep/pool,
 /area/triumph/surfacebase/sauna)
 "inp" = (
 /obj/machinery/power/breakerbox/activated{
@@ -11017,7 +11012,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "iqx" = (
 /obj/effect/floor_decal/borderfloor{
@@ -11507,7 +11502,7 @@
 /area/security/hanger)
 "iNL" = (
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "iNN" = (
 /obj/machinery/computer/security{
@@ -11666,7 +11661,7 @@
 	dir = 4
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "iSV" = (
 /turf/simulated/floor/carpet,
@@ -11858,8 +11853,7 @@
 /area/maintenance/security/starboard)
 "jde" = (
 /obj/structure/bed/chair/sofa/left{
-	dir = 4;
-	icon_state = "sofaend_left"
+	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/maintenance/security/starboard)
@@ -12674,8 +12668,7 @@
 /area/hallway/secondary/docking_hallway)
 "jJf" = (
 /obj/structure/bed/chair/sofa/left{
-	dir = 8;
-	icon_state = "sofaend_left"
+	dir = 8
 	},
 /turf/simulated/floor/carpet,
 /area/maintenance/security/starboard)
@@ -16461,7 +16454,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "mJI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -17054,12 +17047,11 @@
 /obj/machinery/shield_diffuser,
 /obj/machinery/access_button{
 	dir = 1;
+	master_tag = "triumph_civvie_home";
 	name = "exterior access button";
 	pixel_x = 6;
-	pixel_y = 22;
-	req_one_access = null
+	pixel_y = 22
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -17489,13 +17481,11 @@
 	command = "cycle_exterior";
 	dir = 8;
 	frequency = 1380;
-	master_tag = "d1b_dock";
+	master_tag = "deck4_airlock";
 	name = "exterior access button";
 	pixel_x = -9;
-	pixel_y = 24;
-	req_one_access = null
+	pixel_y = 24
 	},
-/obj/effect/map_helper/airlock/button/ext_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "nvw" = (
@@ -17690,9 +17680,7 @@
 /turf/simulated/floor/plating,
 /area/security/warden)
 "nBX" = (
-/obj/structure/bed/chair/sofa/left{
-	icon_state = "sofaend_left"
-	},
+/obj/structure/bed/chair/sofa/left,
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -18061,9 +18049,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "nVn" = (
-/obj/structure/bed/chair/sofa/left{
-	icon_state = "sofaend_left"
-	},
+/obj/structure/bed/chair/sofa/left,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "nVK" = (
@@ -18790,8 +18776,7 @@
 /area/exploration/excursion_dock)
 "ouU" = (
 /obj/structure/bed/chair/sofa/right{
-	dir = 8;
-	icon_state = "sofaend_right"
+	dir = 8
 	},
 /turf/simulated/floor/carpet,
 /area/maintenance/security/starboard)
@@ -18855,12 +18840,12 @@
 /obj/structure/railing,
 /obj/structure/flora/ausbushes/stalkybush,
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "oxJ" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "oxK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -18992,13 +18977,12 @@
 	command = "cycle_interior";
 	dir = 1;
 	frequency = 1380;
-	master_tag = "d1a_dock";
+	master_tag = "deck4_dockarm2";
 	name = "interior access button";
 	pixel_x = -32;
 	pixel_y = 9;
 	req_one_access = list(13)
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "oEE" = (
@@ -20107,7 +20091,7 @@
 	dir = 4
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "prp" = (
 /obj/machinery/light,
@@ -20778,11 +20762,10 @@
 	id_tag = null
 	},
 /obj/machinery/access_button{
-	master_tag = null;
+	master_tag = "expshuttle_docker";
 	pixel_x = -27
 	},
 /obj/effect/map_helper/airlock/door/int_door,
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "pTM" = (
@@ -21990,7 +21973,7 @@
 	dir = 10
 	},
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "qDt" = (
 /obj/machinery/door/firedoor,
@@ -22005,7 +21988,7 @@
 /obj/structure/sign/warning/falling{
 	pixel_y = 34
 	},
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "qEc" = (
 /obj/structure/table/rack/shelf/steel,
@@ -22130,8 +22113,7 @@
 /area/security/brig)
 "qHU" = (
 /obj/structure/bed/chair/sofa/right{
-	dir = 4;
-	icon_state = "sofaend_right"
+	dir = 4
 	},
 /turf/simulated/floor/carpet,
 /area/maintenance/security/starboard)
@@ -22815,7 +22797,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "reN" = (
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/deep/pool,
 /area/triumph/surfacebase/sauna)
 "rff" = (
 /obj/structure/cable/green{
@@ -23185,7 +23167,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "rrA" = (
 /obj/structure/closet/secure_closet/security,
@@ -24021,7 +24003,7 @@
 "rZq" = (
 /obj/structure/flora/ausbushes/stalkybush,
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "rZF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -24139,8 +24121,6 @@
 	pixel_x = 6;
 	pixel_y = -1
 	},
-/obj/item/gun/projectile/shotgun/pump/USDF,
-/obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/item/gun/projectile/shotgun/pump/combat,
 /obj/item/gun/projectile/shotgun/pump/combat,
 /obj/item/gun/projectile/shotgun/pump/combat,
@@ -25490,12 +25470,11 @@
 	name = "Docking Port Airlock"
 	},
 /obj/machinery/access_button{
+	master_tag = "triumph_civvie_home";
 	name = "interior access button";
 	pixel_x = -6;
-	pixel_y = -25;
-	req_one_access = null
+	pixel_y = -25
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -25886,13 +25865,12 @@
 	dir = 1
 	},
 /obj/machinery/access_button{
-	master_tag = null;
+	master_tag = "deck4_dockarm1";
 	name = "interior access button";
 	pixel_x = 32;
 	pixel_y = 23;
 	req_one_access = list(13)
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "tnk" = (
@@ -27181,7 +27159,7 @@
 	dir = 5
 	},
 /obj/effect/mist,
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "uoi" = (
 /obj/structure/cable/green{
@@ -28099,7 +28077,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "uXX" = (
 /obj/structure/closet/crate/trashcart,
@@ -29714,7 +29692,7 @@
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/fancy,
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "vXc" = (
 /obj/structure/cable/green{
@@ -29849,12 +29827,11 @@
 	},
 /obj/machinery/access_button{
 	dir = 4;
-	master_tag = null;
+	master_tag = "deck4_airlock";
 	name = "interior access button";
 	pixel_x = -23;
 	pixel_y = 32
 	},
-/obj/effect/map_helper/airlock/button/int_button,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "wbC" = (
@@ -30127,7 +30104,7 @@
 	dir = 4
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "wkX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -30728,7 +30705,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/water/indoors,
+/turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
 "wHh" = (
 /obj/structure/table/woodentable,
@@ -31709,7 +31686,7 @@
 	dir = 9
 	},
 /obj/machinery/shield_diffuser,
-/turf/simulated/floor/outdoors/water,
+/turf/simulated/floor/water/deep/pool,
 /area/hydroponics/garden)
 "xqV" = (
 /obj/structure/closet/crate/bin{
@@ -32286,9 +32263,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "xKG" = (
-/obj/structure/bed/chair/sofa/right{
-	icon_state = "sofaend_right"
-	},
+/obj/structure/bed/chair/sofa/right,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "xKQ" = (
