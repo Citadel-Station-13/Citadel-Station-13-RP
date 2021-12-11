@@ -218,7 +218,6 @@
 	icon_state = "1"
 
 /obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
-	var/static/target_z
 	affect_ghosts = 1
 
 /obj/effect/step_trigger/zlevel_fall/Initialize(mapload)

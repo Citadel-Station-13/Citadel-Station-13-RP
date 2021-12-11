@@ -22,6 +22,7 @@
 	#include "../../_maps/map_files/tether/tether-09-solars.dmm"
 
 	#include "submaps/_tether_submaps.dm"
+	#include "submaps/_beach.dm"
 
 	#define USING_MAP_DATUM /datum/map/tether
 

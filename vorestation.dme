@@ -3602,7 +3602,6 @@
 #include "maps\submaps\_healpers.dm"
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\engine_submaps\engine.dm"
-#include "maps\tether\submaps\_beach.dm"
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\code\global_cit.dm"
 #include "modular_citadel\code\defines\obj\weapon.dm"
