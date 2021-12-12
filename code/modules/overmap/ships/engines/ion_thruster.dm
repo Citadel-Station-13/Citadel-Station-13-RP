@@ -61,10 +61,6 @@
 		var/obj/effect/overmap/visitable/ship/S = ship
 		if(S.check_ownership(src))
 			S.engines |= controller
-			if(dir != S.fore_dir)
-				set_broken(TRUE)
-			else
-				set_broken(FALSE)
 			linked = TRUE
 
 /obj/machinery/ion_engine/Destroy()
