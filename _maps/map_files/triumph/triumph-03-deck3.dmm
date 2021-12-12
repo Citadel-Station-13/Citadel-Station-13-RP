@@ -6688,9 +6688,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "fEu" = (
-/obj/structure/stairs{
-	 = 
-	},
+/obj/structure/stairs,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "fEI" = (
