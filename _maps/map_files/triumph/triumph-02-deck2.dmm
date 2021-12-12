@@ -597,7 +597,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "bR" = (
-/obj/machinery/atmospherics/unary/engine/small{
+/obj/machinery/atmospherics/unary/engine{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless/carry,
@@ -2988,7 +2988,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "iB" = (
-/obj/structure/stairs/south,
+/obj/structure/stairs{
+	 = 
+	},
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "iD" = (
@@ -7639,7 +7641,9 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "vC" = (
-/obj/structure/stairs/west,
+/obj/structure/stairs{
+	dir = 8
+	},
 /obj/structure/railing,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
@@ -10281,7 +10285,9 @@
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)
 "DI" = (
-/obj/structure/stairs/north,
+/obj/structure/stairs{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "DK" = (
@@ -11288,7 +11294,9 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "GE" = (
-/obj/structure/stairs/west,
+/obj/structure/stairs{
+	dir = 8
+	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -13787,7 +13795,9 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "OF" = (
-/obj/structure/stairs/west,
+/obj/structure/stairs{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "OG" = (
