@@ -38,7 +38,6 @@
 	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
 	current_location = "triumph_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
-	fuel_consumption = 2
 
 /area/shuttle/excursion
 	name = "Excursion Shuttle"
