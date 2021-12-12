@@ -2988,9 +2988,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/fitness)
 "iB" = (
-/obj/structure/stairs{
-	 = 
-	},
+/obj/structure/stairs
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "iD" = (
