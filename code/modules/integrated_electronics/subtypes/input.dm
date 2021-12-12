@@ -532,7 +532,7 @@
 		if(speaking)
 			if(!speaking.machine_understands)
 				msg = speaking.scramble(msg)
-			if(!istype(speaking, /datum/language/common))
+			if(!istype(speaking, /datum/language/common) && !istype(speaking, /datum/language/noise))
 				translated = TRUE
 		set_pin_data(IC_OUTPUT, 1, M.GetVoice())
 		set_pin_data(IC_OUTPUT, 2, msg)
