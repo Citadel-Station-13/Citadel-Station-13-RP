@@ -2197,11 +2197,6 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/red,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
-"bQu" = (
-/obj/machinery/light/small,
-/obj/random/trash,
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "bRh" = (
 /obj/machinery/firealarm{
 	layer = 3.3;
@@ -2316,6 +2311,7 @@
 	frequency = 1380;
 	id_tag = "emt_shuttle_interior"
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "bWQ" = (
@@ -5302,7 +5298,6 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/research)
 "ewB" = (
@@ -6371,6 +6366,7 @@
 	pixel_x = -30;
 	pixel_y = 10
 	},
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "fqT" = (
@@ -9749,12 +9745,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "ieP" = (
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
-	frequency = null;
-	id_tag = null
+	frequency = 1380;
+	id_tag = "deck3_emt_lock"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
 "ieT" = (
@@ -11439,6 +11435,7 @@
 	frequency = 1380;
 	id_tag = "emt_shuttle_exterior"
 	},
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "jNC" = (
@@ -12694,8 +12691,8 @@
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
-	frequency = null;
-	id_tag = null
+	frequency = 1380;
+	id_tag = "deck3_emt_lock"
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
@@ -13175,6 +13172,7 @@
 	id_tag = "emt_vent"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "lid" = (
@@ -15344,11 +15342,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
-"mUL" = (
-/obj/structure/loot_pile/maint/trash,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/research)
 "mVj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -16378,6 +16371,8 @@
 	pixel_x = 25
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "nRA" = (
@@ -18186,11 +18181,11 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button{
+/obj/machinery/access_button/airlock_exterior{
+	dir = 1;
+	frequency = 1380;
 	master_tag = "deck3_emt_lock";
-	name = "exterior access button";
-	pixel_x = 32;
-	pixel_y = -8
+	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
@@ -19004,7 +18999,8 @@
 "pFM" = (
 /obj/machinery/airlock_sensor{
 	dir = 1;
-	id_tag = null;
+	frequency = 1380;
+	id_tag = "deck3_emt_lock";
 	pixel_y = 22
 	},
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
@@ -20211,6 +20207,7 @@
 	pixel_x = -20;
 	pixel_y = -5
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "qzn" = (
@@ -27462,12 +27459,11 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_external,
 /obj/effect/map_helper/airlock/door/int_door,
-/obj/machinery/access_button{
+/obj/machinery/access_button/airlock_interior{
 	dir = 1;
+	frequency = 1380;
 	master_tag = "deck3_emt_lock";
-	name = "interior access button";
-	pixel_x = -25;
-	pixel_y = 25
+	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
 /area/medical/patient_wing)
@@ -33081,7 +33077,7 @@ slN
 slN
 mRm
 czP
-mUL
+ezT
 ezT
 ezT
 vLu
@@ -42730,7 +42726,7 @@ niJ
 sIP
 slN
 tWd
-bQu
+hnF
 slN
 xkT
 tnM
@@ -45460,7 +45456,7 @@ ioO
 gVh
 gVh
 pYD
-gVh
+vhq
 gVh
 pYD
 gVh
@@ -47602,7 +47598,7 @@ gVh
 gVh
 gVh
 gVh
-vhq
+gVh
 gVh
 gVh
 gVh

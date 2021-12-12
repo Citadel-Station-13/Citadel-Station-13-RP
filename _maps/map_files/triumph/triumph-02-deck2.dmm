@@ -188,6 +188,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "aB" = (
@@ -4710,18 +4711,13 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "nm" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "solar_outer";
-	locked = 1;
-	name = "Solars"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "nn" = (
@@ -7311,15 +7307,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	id_tag = "solar_dock";
-	pixel_x = -24;
-	req_one_access = null;
-	tag_airpump = "solar_pump";
-	tag_chamber_sensor = "solar_sensor";
-	tag_exterior_door = "solar_outer";
-	tag_interior_door = "solar_inner"
-	},
 /obj/machinery/airlock_sensor{
 	id_tag = "solar_sensor";
 	pixel_x = 28;
@@ -7330,6 +7317,11 @@
 	id = "dist_aux_meter";
 	name = "Distribution Loop"
 	},
+/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
+	id_tag = "solar_dock";
+	pixel_x = -24
+	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "uC" = (
@@ -11782,13 +11774,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "solar_inner";
-	locked = 1;
-	name = "Solars"
-	},
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "In" = (
