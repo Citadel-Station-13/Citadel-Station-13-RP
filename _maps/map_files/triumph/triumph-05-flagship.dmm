@@ -660,14 +660,14 @@
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large,
+/obj/item/ammo_magazine/m9mm/large,
+/obj/item/ammo_magazine/m9mm/large,
+/obj/item/ammo_magazine/m9mm/large,
+/obj/item/ammo_magazine/m9mm/large,
+/obj/item/ammo_magazine/m9mm/large,
+/obj/item/ammo_magazine/m9mm/large,
+/obj/item/ammo_magazine/m9mm/large,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -5719,14 +5719,6 @@
 "kG" = (
 /obj/structure/sign/department/eva,
 /turf/unsimulated/wall,
-/area/centcom/security)
-"kH" = (
-/obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/turf/unsimulated/floor{
-	dir = 5;
-	icon_state = "vault"
-	},
 /area/centcom/security)
 "kI" = (
 /obj/structure/table/rack,
@@ -15996,12 +15988,6 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
-"FL" = (
-/obj/item/gun/energy/stripper,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/control)
 "Gp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -30516,7 +30502,7 @@ cK
 cK
 dm
 dw
-FL
+dt
 dm
 ex
 eS
@@ -31388,7 +31374,7 @@ ja
 ig
 ig
 ho
-kH
+kI
 kI
 ig
 kd
