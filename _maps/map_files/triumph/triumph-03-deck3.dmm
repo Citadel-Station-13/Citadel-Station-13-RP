@@ -5590,20 +5590,16 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "eHG" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4;
+	id_tag = "deck3_airlock"
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
 	id_tag = "deck3_airlock";
-	pixel_y = 26;
-	tag_airpump = null;
-	tag_chamber_sensor = null;
-	tag_exterior_door = null;
-	tag_interior_door = null
+	pixel_y = 32
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 4;
-	id_tag = null
-	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -9173,6 +9169,7 @@
 /area/assembly/robotics/surgery)
 "hHp" = (
 /obj/machinery/access_button{
+	frequency = 1380;
 	master_tag = "deck3_airlock";
 	name = "exterior access button";
 	pixel_x = 32;
@@ -13288,6 +13285,7 @@
 "loh" = (
 /obj/machinery/access_button{
 	dir = 1;
+	frequency = 1380;
 	master_tag = "deck3_airlock";
 	name = "interior access button";
 	pixel_y = -23
@@ -13417,14 +13415,14 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "lyq" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 4;
-	id_tag = null
-	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4;
+	id_tag = "deck3_airlock"
+	},
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},
@@ -13887,15 +13885,16 @@
 "lSr" = (
 /obj/machinery/airlock_sensor{
 	dir = 1;
-	id_tag = null;
+	frequency = 1380;
+	id_tag = "deck3_airlock";
 	pixel_y = -22
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 4;
-	id_tag = null
 	},
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 4;
+	id_tag = "deck3_airlock"
+	},
 /turf/simulated/floor/tiled{
 	icon_state = "techmaint"
 	},

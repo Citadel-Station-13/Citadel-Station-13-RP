@@ -652,17 +652,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
-"cc" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1379;
-	master_tag = "bar_dock";
-	name = "exterior access button";
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/turf/simulated/wall/r_wall,
-/area/crew_quarters/bar)
 "cd" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -7692,6 +7681,13 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1379;
+	master_tag = "bar_dock";
+	name = "interior access button";
+	pixel_x = 26
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "vO" = (
@@ -14057,14 +14053,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
 "PJ" = (
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1379;
-	master_tag = "bar_dock";
-	name = "interior access button";
-	pixel_x = 26;
-	pixel_y = 26
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
@@ -15011,6 +14999,13 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/shield_diffuser,
+/obj/machinery/access_button{
+	command = "cycle_exterior";
+	frequency = 1379;
+	master_tag = "bar_dock";
+	name = "exterior access button";
+	pixel_x = -24
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "SC" = (
@@ -21555,7 +21550,7 @@ ii
 ii
 ii
 ii
-cc
+eH
 eH
 eH
 eH
@@ -30226,7 +30221,7 @@ dD
 dD
 dD
 dD
-Gy
+dD
 GJ
 ou
 Bt
@@ -30507,7 +30502,7 @@ aC
 mR
 Sv
 Sv
-Gy
+dD
 Hp
 NB
 dR
