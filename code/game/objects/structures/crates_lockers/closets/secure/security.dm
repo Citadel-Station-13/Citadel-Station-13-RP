@@ -341,7 +341,7 @@
 
 	starts_with = list(
 		/obj/item/clothing/accessory/badge/holo/detective,
-		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/gloves/forensic,
 		/obj/item/gun/projectile/revolver/detective45,
 		/obj/item/ammo_magazine/s45/rubber,
 		/obj/item/ammo_magazine/s45/rubber,
