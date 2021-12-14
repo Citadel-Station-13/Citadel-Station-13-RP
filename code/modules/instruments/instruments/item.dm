@@ -263,7 +263,7 @@
 		slot_r_hand_str = 'icons/mob/inhands/equipment/horns_righthand.dmi'
 		)
 	attack_verb = list("beautifully honks")
-	allowed_instrument_ids = "bikehorn"
+	allowed_instrument_ids = list("honk", "bikehorn")
 	w_class = WEIGHT_CLASS_TINY
 	force = 0
 	throw_speed = 3
