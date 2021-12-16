@@ -151,7 +151,7 @@
 			"can_be_drop_pred"		= can_be_drop_pred,
 			"belly_prefs"			= belly_prefs,
 			"permit_size_trample"	= permit_size_trample,
-			"permit_size_pickup"	= permit_Size_pickup,
+			"permit_size_pickup"	= permit_size_pickup,
 			"permit_sizegun"		= permit_sizegun
 		)
 
