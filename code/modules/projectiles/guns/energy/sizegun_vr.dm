@@ -70,19 +70,22 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-	on_hit(var/atom/target)
-		var/mob/living/M = target
-		if(ishuman(target))
-			var/mob/living/carbon/human/H = M
-			H.resize(set_size, TRUE)
-			H.show_message("<font color=#4F49AF> The beam fires into your body, changing your size!</font>")
-			H.updateicon()
-		else if (istype(target, /mob/living/))
-			var/mob/living/H = M
-			H.resize(set_size, TRUE)
-			H.updateicon()
-		else
-			return 1
+/obj/item/projectile/beam/sizelaser/on_hit(var/atom/target)
+	var/mob/living/M = target
+	if(!M.permit_sizegun)
+		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = M
+		H.resize(set_size, TRUE)
+		H.show_message("<font color=#4F49AF> The beam fires into your body, changing your size!</font>")
+		H.updateicon()
+	else if (istype(target, /mob/living/))
+		var/mob/living/H = M
+		H.resize(set_size, TRUE)
+		H.updateicon()
+	else
+		return 1
 
 
 /obj/item/projectile/beam/sizelaser/shrink
