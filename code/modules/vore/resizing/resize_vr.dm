@@ -238,7 +238,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
 			to_chat(src, "<span class='warning'>[tmob] skitters past your legs.</span>")
 			to_chat(tmob, "<span class='warning'>You narrowly dodge [src]'s step.</span>")
-			return
+		return
 
 	//Depending on intent...
 	switch(a_intent)
