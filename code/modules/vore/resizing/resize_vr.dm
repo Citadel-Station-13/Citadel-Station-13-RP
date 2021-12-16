@@ -140,7 +140,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	if(M.buckled)
 		to_chat(usr,"<span class='notice'>You have to unbuckle \the [M] before you pick them up.</span>")
 		return 0
-	if(M.get_effective_size() >= RESIZE_PREF_LIMIT && !M.allow_size_pickup)
+	if(M.get_effective_size() >= RESIZE_PREF_LIMIT && !M.permit_size_pickup)
 		to_chat(src, "<span class='warning'>[M] is far too skittish to casually scoop up.</span>")
 		return FALSE
 	if(size_diff >= 0.50)
@@ -234,7 +234,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		//If they're not human, steppy shouldn't happen
 		return FALSE
 
-	if(tmob.get_effective_size >= RESIZE_PREF_LIMIT && !tmob.allow_size_trample)
+	if(tmob.get_effective_size() >= RESIZE_PREF_LIMIT && !tmob.permit_size_trample)
 		if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
 			to_chat(src, "<span class='warning'>[tmob] skitters past your legs.</span>")
 			to_chat(tmob, "<span class='warning'>You narrowly dodge [src]'s step.</span>")
