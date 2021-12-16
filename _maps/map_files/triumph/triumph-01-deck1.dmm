@@ -159,9 +159,6 @@
 /obj/machinery/light/small/emergency{
 	dir = 4
 	},
-/obj/structure/railing{
-	dir = 8
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "aL" = (
@@ -634,10 +631,6 @@
 	dir = 1
 	},
 /obj/random/trash_pile,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "cx" = (
@@ -689,9 +682,6 @@
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
-	},
-/obj/structure/railing{
-	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -928,9 +918,8 @@
 /area/tcommsat/chamber)
 "dC" = (
 /obj/random/trash_pile,
-/obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/maintenance/engi_engine)
+/area/maintenance/engineering)
 "dD" = (
 /obj/machinery/atmospherics/pipe/zpipe/up/supply{
 	dir = 4
@@ -2231,13 +2220,11 @@
 /turf/simulated/floor/tiled,
 /area/station/stairs_one)
 "id" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
+/obj/machinery/light/small/emergency{
+	dir = 1
 	},
-/obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering)
+/area/maintenance/engi_engine)
 "ie" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/red,
 /turf/simulated/wall,
@@ -3372,9 +3359,6 @@
 	dir = 8;
 	name = "west bump";
 	pixel_x = -30
-	},
-/obj/structure/railing{
-	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -7172,14 +7156,6 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
-"zp" = (
-/obj/random/trash_pile,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/engi_engine)
 "zu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -20671,7 +20647,7 @@ Rr
 wZ
 xY
 yz
-mc
+Yp
 ke
 xv
 fN
@@ -20813,7 +20789,7 @@ Tc
 RH
 ve
 yz
-mc
+Yp
 ke
 xv
 Zj
@@ -22091,7 +22067,7 @@ HN
 Tf
 hY
 IN
-mc
+Yp
 ke
 xv
 ID
@@ -22233,7 +22209,7 @@ IN
 tW
 sI
 IN
-mc
+Yp
 ke
 xv
 ID
@@ -22375,7 +22351,7 @@ sz
 bC
 HA
 WV
-mc
+Yp
 ke
 xv
 ID
@@ -22517,7 +22493,7 @@ ZJ
 Qx
 oC
 WV
-dC
+Kq
 ke
 xv
 ID
@@ -22659,7 +22635,7 @@ EK
 wE
 zd
 WV
-mc
+Yp
 ke
 xv
 ID
@@ -22801,7 +22777,7 @@ GR
 Qx
 EE
 WV
-qT
+id
 ke
 xv
 ID
@@ -23653,7 +23629,7 @@ yF
 qv
 jt
 WV
-zp
+Kq
 wH
 xv
 xv
@@ -24337,7 +24313,7 @@ Yb
 Ix
 LZ
 xx
-xx
+Yb
 aK
 DT
 xx
@@ -24607,7 +24583,7 @@ fN
 LO
 ID
 dv
-id
+gY
 qb
 mS
 OS
@@ -24749,7 +24725,7 @@ fN
 LO
 ID
 dv
-iu
+Yb
 qb
 mS
 bz
@@ -26169,7 +26145,7 @@ fN
 LO
 ID
 dv
-iu
+Yb
 qb
 Se
 kF
@@ -26311,7 +26287,7 @@ fN
 LO
 ID
 dv
-id
+gY
 qb
 Se
 JA
@@ -26598,16 +26574,16 @@ dv
 aa
 qb
 dc
-ho
-ho
+Yb
+Yb
 vR
 ho
 ho
 Hh
 ho
 ho
-ho
-vR
+Yb
+aG
 Hh
 ho
 dv
@@ -27771,7 +27747,7 @@ Ff
 mI
 MZ
 ru
-iu
+Yb
 qb
 dv
 ID
@@ -27893,7 +27869,7 @@ Lg
 ID
 dv
 qb
-pO
+Yb
 yk
 oN
 FC
@@ -27913,7 +27889,7 @@ Ip
 Tb
 KY
 ie
-iu
+Yb
 qb
 dv
 ID
@@ -28035,7 +28011,7 @@ eE
 ID
 dv
 Da
-pO
+Yb
 yk
 VA
 FC
@@ -28177,7 +28153,7 @@ cL
 ID
 dv
 qb
-tX
+dC
 yk
 pS
 FC
@@ -28319,7 +28295,7 @@ LO
 ID
 dv
 qb
-pO
+Yb
 yk
 Cw
 FC
@@ -28907,7 +28883,7 @@ nS
 em
 nS
 em
-Nk
+dC
 qb
 dv
 ID
@@ -29049,7 +29025,7 @@ Af
 TD
 WO
 em
-iu
+Yb
 qb
 dv
 ID
@@ -29313,7 +29289,7 @@ LO
 ID
 kB
 qb
-pO
+Yb
 OD
 IT
 rE
@@ -29455,7 +29431,7 @@ eE
 ID
 kB
 qb
-pO
+Yb
 OD
 HR
 QE
@@ -29745,7 +29721,7 @@ jZ
 Yb
 Yb
 dc
-ho
+Yb
 Hh
 XH
 hZ
