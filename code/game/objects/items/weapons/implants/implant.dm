@@ -713,7 +713,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		var/mob/living/H = imp_in
 		if(findtext(msg,"implant-toggle"))
 			active = !active
-		if(!H.allow_sizegun)
+		if(!H.permit_sizegun)
 			return
 		if(active)
 			if(findtext(msg,"grow"))
