@@ -183,7 +183,7 @@
 		var/datum/effect_system/spark_spread/s = new
 		s.set_up(5, 1, src)
 		s.start()
-
+/* //Moved to the origional objects dm file to make it play nice when other station maps are loaded
 // Tram air scrubbers for keeping arrivals clean - they work even with no area power
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram
 	name = "\improper Tram Air Scrubber"
@@ -192,6 +192,7 @@
 
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram/powered()
 	return TRUE // Always be powered
+*/
 
 //Chemistry 'chemavator'
 /obj/machinery/smartfridge/chemistry/chemvator
@@ -323,6 +324,8 @@ var/global/list/latejoin_tram   = list()
 /obj/machinery/power/supermatter/touch_map_edge()
 	qdel(src)
 
+
+/*	//Moved to vending.dm
 //Airlock antitox vendor
 /obj/machinery/vending/wallmed_airlock
 	name = "Airlock NanoMed"
@@ -333,10 +336,14 @@ var/global/list/latejoin_tram   = list()
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
 	req_log_access = access_cmo
 	has_logs = 1
+*/
 
+/*	//Moved to origional obj's dm file
 /obj/machinery/vending/wallmed1/public
 	products = list(/obj/item/stack/medical/bruise_pack = 8,/obj/item/stack/medical/ointment = 8,/obj/item/reagent_containers/hypospray/autoinjector = 16,/obj/item/healthanalyzer = 4)
+*/
 
+/* //Moved to pill_vr.dm with all the other pills
 /obj/item/reagent_containers/pill/airlock
 	name = "\'Airlock\' Pill"
 	desc = "Neutralizes toxins and provides a mild analgesic effect."
@@ -346,6 +353,7 @@ var/global/list/latejoin_tram   = list()
 	. = ..()
 	reagents.add_reagent("anti_toxin", 15)
 	reagents.add_reagent("paracetamol", 5)
+*/
 
 //"Red" Armory Door
 /obj/machinery/door/airlock/security/armory
