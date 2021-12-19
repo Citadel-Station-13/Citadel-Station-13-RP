@@ -8741,14 +8741,6 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
-"gFu" = (
-/obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1384;
-	id_tag = "civvie_shuttle_exterior"
-	},
-/obj/effect/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/tiled/old_tile/green,
-/area/space)
 "gFZ" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -26213,22 +26205,6 @@
 /obj/structure/barricade,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
-"tii" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1384;
-	master_tag = "civvie_docker";
-	pixel_x = 5;
-	pixel_y = 25
-	},
-/obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1384;
-	id_tag = "civvie_shuttle_interior"
-	},
-/obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/old_tile/green,
-/area/space)
 "tiI" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -26305,32 +26281,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
-"tmH" = (
-/obj/machinery/access_button{
-	command = "cycle_exterior";
-	frequency = 1384;
-	master_tag = "civvie_docker";
-	pixel_y = -21
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1384;
-	id_tag = "civvie_shuttle_exterior"
-	},
-/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
-	frequency = 1384;
-	id_tag = "civvie_exterior_sensor";
-	master_tag = "civvie_docker";
-	pixel_y = -40
-	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
-/obj/effect/map_helper/airlock/door/ext_door,
-/turf/simulated/floor/tiled/old_tile/green,
-/area/space)
 "tnk" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -27719,15 +27669,6 @@
 /obj/item/toy/figure/secofficer,
 /turf/simulated/floor/tiled,
 /area/security/lobby)
-"urq" = (
-/obj/machinery/door/airlock/voidcraft/vertical{
-	frequency = 1384;
-	id_tag = "civvie_shuttle_interior"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/old_tile/green,
-/area/space)
 "urK" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -48438,8 +48379,8 @@ nIK
 nIK
 nIK
 nIK
-gFu
-tmH
+nIK
+nIK
 nIK
 nIK
 nIK
@@ -48722,8 +48663,8 @@ nIK
 nIK
 nIK
 nIK
-tii
-urq
+nIK
+nIK
 nIK
 nIK
 nIK
