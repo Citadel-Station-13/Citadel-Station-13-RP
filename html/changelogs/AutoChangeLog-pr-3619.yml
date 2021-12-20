@@ -1,4 +1,0 @@
-author: "Solaris-Shade"
-delete-after: True
-changes: 
-  - rscdel: "Removed two pipes from the SME Engine Submap."
