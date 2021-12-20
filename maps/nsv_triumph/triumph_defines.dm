@@ -23,6 +23,10 @@
 
 #define Z_LEVEL_TRADEPORT				20
 #define Z_LEVEL_LAVALAND				21
+
+#define Z_LEVEL_OFFMAP1					22	//I think these are the Talon Z levels, correct me if Im wrong -Bloop
+#define Z_LEVEL_OFFMAP2					23
+
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
 #define NETWORK_TCOMMS "Telecommunications"
@@ -115,7 +119,9 @@
 							NETWORK_COMMUNICATORS,
 							NETWORK_ALARM_ATMOS,
 							NETWORK_ALARM_POWER,
-							NETWORK_ALARM_FIRE
+							NETWORK_ALARM_FIRE,
+							NETWORK_TALON_HELMETS,
+							NETWORK_TALON_SHIP
 							)
 
 	bot_patrolling = FALSE
