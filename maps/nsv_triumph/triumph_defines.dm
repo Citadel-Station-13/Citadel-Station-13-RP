@@ -24,8 +24,8 @@
 #define Z_LEVEL_TRADEPORT				20
 #define Z_LEVEL_LAVALAND				21
 
-#define Z_LEVEL_OFFMAP1					22	//I think these are the Talon Z levels, correct me if Im wrong -Bloop
-#define Z_LEVEL_OFFMAP2					23
+#define Z_LEVEL_TALON1					22
+#define Z_LEVEL_TALON2					23
 
 // Camera Networks
 #define NETWORK_TRIUMPH "Triumph"
@@ -157,6 +157,7 @@
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
 		list("Away Mission - Mining Planet"),//Mining planet
+		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2"),//I swear to god this better work -Bloop
 		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
 		list("Gaia Planet - Z3 Planet"), // Gaia Planet
