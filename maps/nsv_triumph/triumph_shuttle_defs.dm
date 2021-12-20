@@ -38,21 +38,26 @@
 
 //////////////////////////////////////////////////////////////
 // TODO - Zandario/Enzo - Get these compatible
-
 // Trade Ship
-/*
 /datum/shuttle/autodock/multi/trade
 	name = "Trade"
-	current_location = "cc_trade_dock"
+	current_location = "trade_dock"
 	shuttle_area = /area/shuttle/trade
 	docking_controller_tag = "trade_shuttle"
 	warmup_time = 10	// Want some warmup time so people can cancel.
 	destination_tags = list(
 		"cc_trade_dock",
 		"nav_capitalship_docking1",
-		"nav_capitalship_docking2"
+		"nav_capitalship_docking2",
+		"trade_dock",
+		"tether_dockarm_d1l",
+		"aerostat_south",
+		"beach_e",
+		"beach_c",
+		"beach_nw"
 	)
-*/
+	defer_initialisation = TRUE
+	move_direction = WEST
 
 //////////////////////////////////////////////////////////////
 // Mercenary Shuttle
