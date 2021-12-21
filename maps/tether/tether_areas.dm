@@ -1274,11 +1274,9 @@
 /area/tether/station/visitorhallway/laundry
 	name = "\improper Space Laundry"
 	icon_state = "dk_yellow"
-	lightswitch = 0
 /area/tether/station/visitorhallway/lounge
 	name = "\improper Visitor Lounge"
 	icon_state = "dk_yellow"
-	lightswitch = 0
 
 /area/maintenance/station
 	icon_state = "fsmaint"

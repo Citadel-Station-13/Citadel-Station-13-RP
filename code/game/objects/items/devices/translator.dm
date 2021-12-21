@@ -54,7 +54,7 @@
 	if (language && (language.flags & NONVERBAL))
 		return //Not gonna translate sign language
 
-	if (!(language.machine_understands & omni)) // cit change - omni check
+	if (!language.machine_understands && !omni) // cit change - omni check
 		return //Any other languages that it can't translate.
 
 	if (visual && ((L.sdisabilities & BLIND) || L.eye_blind))

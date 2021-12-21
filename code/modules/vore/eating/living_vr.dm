@@ -32,6 +32,12 @@
 	var/adminbus_trash = FALSE			// For abusing trash eater for event shenanigans.
 	var/bitten = 0
 	var/painmsg = 1
+	/// pending refactor - allow size gun on us?
+	var/permit_sizegun = TRUE
+	/// pending refactor - allow being trampled when not a micro?
+	var/permit_size_trample = TRUE
+	/// pending refactor - allow being picked up when not a micro?
+	var/permit_size_pickup = TRUE
 
 //
 // Hook for generic creation of stuff on new creatures
@@ -229,6 +235,9 @@
 	P.permit_healbelly = src.permit_healbelly
 	P.can_be_drop_prey = src.can_be_drop_prey
 	P.can_be_drop_pred = src.can_be_drop_pred
+	P.permit_sizegun = src.permit_sizegun
+	P.permit_size_trample = src.permit_size_trample
+	P.permit_size_pickup = src.permit_size_pickup
 
 	var/list/serialized = list()
 	for(var/belly in src.vore_organs)
@@ -259,6 +268,9 @@
 	permit_healbelly = P.permit_healbelly
 	can_be_drop_prey = P.can_be_drop_prey
 	can_be_drop_pred = P.can_be_drop_pred
+	permit_sizegun = P.permit_sizegun
+	permit_size_trample = P.permit_size_trample
+	permit_size_pickup = P.permit_size_pickup
 
 	release_vore_contents(silent = TRUE)
 	vore_organs.Cut()
