@@ -2030,7 +2030,6 @@
 /obj/item/gun/energy/frontier,
 /obj/item/gun/energy/frontier,
 /obj/item/gun/energy/frontier,
-/obj/item/gun/energy/frontier,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "qY" = (
@@ -3684,16 +3683,7 @@
 /area/talon/deckone/engine)
 "CY" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/cell/device/weapon{
-	pixel_x = -5;
-	pixel_y = 1
-	},
-/obj/item/cell/device/weapon{
-	pixel_x = 5;
-	pixel_y = 1
-	},
-/obj/item/cell/device/weapon,
-/obj/item/gun/energy/gun/burst,
+/obj/item/storage/box/flare,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "De" = (
@@ -5861,7 +5851,6 @@
 	pixel_y = 1
 	},
 /obj/item/cell/device/weapon,
-/obj/item/gun/energy/gun,
 /turf/simulated/floor/tiled/eris/white/danger,
 /area/talon/deckone/armory)
 "UA" = (
