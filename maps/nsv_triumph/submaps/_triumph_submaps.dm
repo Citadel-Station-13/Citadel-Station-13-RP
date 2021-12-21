@@ -218,7 +218,6 @@
 	icon_state = "1"
 
 /obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
-	var/static/target_z
 	affect_ghosts = 1
 
 /obj/effect/step_trigger/zlevel_fall/Initialize(mapload)
@@ -304,3 +303,29 @@
 	name = "Belt 4"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	z = Z_LEVEL_ROGUEMINE_4
+
+// Lets see if dropping this in here works -Bloop
+// Talon offmap spawn
+/datum/map_template/triumph_lateload/offmap/talon1
+	name = "Offmap Ship - Talon Z1"
+	desc = "Offmap spawn ship, the Talon."
+	mappath = "_maps/map_levels/140x140/talon/talon1.dmm"
+	associated_map_datum = /datum/map_z_level/triumph_lateload/talon1
+
+/datum/map_template/triumph_lateload/offmap/talon2
+	name = "Offmap Ship - Talon Z2"
+	desc = "Offmap spawn ship, the Talon."
+	mappath = "_maps/map_levels/140x140/talon/talon2.dmm"
+	associated_map_datum = /datum/map_z_level/triumph_lateload/talon2
+
+/datum/map_z_level/triumph_lateload/talon1
+	name = "Talon Deck One"
+	flags = MAP_LEVEL_PLAYER
+	base_turf = /turf/space
+	z = Z_LEVEL_TALON1
+
+/datum/map_z_level/triumph_lateload/talon2
+	name = "Talon Deck Two"
+	flags = MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/open
+	z = Z_LEVEL_TALON2

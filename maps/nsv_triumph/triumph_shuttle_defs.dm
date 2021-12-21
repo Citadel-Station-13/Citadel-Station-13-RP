@@ -38,20 +38,26 @@
 
 //////////////////////////////////////////////////////////////
 // TODO - Zandario/Enzo - Get these compatible
-
 // Trade Ship
-/*
 /datum/shuttle/autodock/multi/trade
 	name = "Trade"
-	current_location = "cc_trade_dock"
+	current_location = "trade_dock"
 	shuttle_area = /area/shuttle/trade
 	docking_controller_tag = "trade_shuttle"
 	warmup_time = 10	// Want some warmup time so people can cancel.
 	destination_tags = list(
 		"cc_trade_dock",
 		"nav_capitalship_docking1",
-		"nav_capitalship_docking2"
+		"nav_capitalship_docking2",
+		"trade_dock",
+		"tether_dockarm_d1l",
+		"aerostat_south",
+		"beach_e",
+		"beach_c",
+		"beach_nw"
 	)
+	defer_initialisation = TRUE
+	move_direction = WEST
 
 //////////////////////////////////////////////////////////////
 // Mercenary Shuttle
@@ -61,24 +67,24 @@
 	move_time = 60
 	current_location = "merc_base"
 	shuttle_area = /area/shuttle/mercenary
-	destinations = list(
+	destination_tags = list(
 		"merc_base",
 		"aerostat_south",
 		"beach_e",
 		"beach_nw",
-		"tether_solars_ne",
-		"tether_solars_sw",
-		"tether_mine_nw",
-		"tether_space_NE",
-		"tether_space_SE",
-		"tether_space_SW",
-		"tether_dockarm_d2l"	// End of right docking arm
+		"triumph_space_port_3",
+		"triumph_space_starboard_3",
+		"triumph_space_port_2",
+		"triumph_space_starboard_2",
+		"triumph_space_port_1",
+		"triumph_space_starboard_1"
 		)
 	docking_controller_tag = "merc_shuttle"
 	announcer = "Automated Traffic Control"
-	arrival_message = "Attention. An unregistered vessel is approaching Virgo-3B."
-	departure_message = "Attention. A unregistered vessel is now leaving Virgo-3B."
-
+	arrival_message = "Attention. An unregistered vessel is approaching NSV Triumph."
+	departure_message = "Attention. A unregistered vessel is now leaving NSV Triumph."
+	defer_initialisation = TRUE
+	move_direction = WEST
 
 //////////////////////////////////////////////////////////////
 // Ninja Shuttle
@@ -91,23 +97,22 @@
 	current_location = "ninja_base"
 	landmark_transition = "ninja_transit"
 	shuttle_area = /area/shuttle/ninja
-	destinations = list(
+	destination_tags = list(
 		"ninja_base",
 		"aerostat_northeast",
 		"beach_e",
 		"beach_nw",
-		"tether_solars_ne",
-		"tether_solars_sw",
-		"tether_mine_nw",
-		"tether_space_NE",
-		"tether_space_SE",
-		"tether_space_SW",
-		"tether_dockarm_d1a3"	// Inside of left dockarm
+		"triumph_space_port_3",
+		"triumph_space_starboard_3",
+		"triumph_space_port_2",
+		"triumph_space_starboard_2",
+		"triumph_space_port_1",
+		"triumph_space_starboard_1"
 		)
 	docking_controller_tag = "ninja_shuttle"
 	announcer = "Automated Traffic Control"
-	arrival_message = "Attention. An unregistered vessel is approaching Virgo-3B."
-	departure_message = "Attention. A unregistered vessel is now leaving Virgo-3B."
+	arrival_message = "Attention. An unregistered vessel is approaching NSV Triumph."
+	departure_message = "Attention. A unregistered vessel is now leaving NSV Triumph."
 
 //////////////////////////////////////////////////////////////
 // Skipjack
@@ -120,28 +125,30 @@
 	current_location = "skipjack_base"
 	landmark_transition = "skipjack_transit"
 	shuttle_area = /area/shuttle/skipjack
-	destinations = list(
+	destination_tags = list(
+		"piratebase_hanger",
 		"skipjack_base",
 		"aerostat_south",
 		"beach_e",
 		"beach_nw",
-		"tether_solars_ne",
-		"tether_solars_sw",
-		"tether_mine_nw",
-		"tether_space_NE",
-		"tether_space_SE",
-		"tether_space_SW",
-		"tether_dockarm_d1l"	// End of left dockarm
+		"triumph_space_port_3",
+		"triumph_space_starboard_3",
+		"triumph_space_port_2",
+		"triumph_space_starboard_2",
+		"triumph_space_port_1",
+		"triumph_space_starboard_1"
 		)
+	/* // Whatever this is doesnt work, will have to fix later
 	//docking_controller_tag = ??? doesn't have one?
 	destination_dock_targets = list(
 		"Mercenary base" = "merc_base",
 		"Tether spaceport" = "nuke_shuttle_dock_airlock",
 		)
+	*/
 	announcer = "Automated Traffic Control"
 
-	arrival_message = "Attention. An unregistered vessel is approaching Virgo-3B."
-	departure_message = "Attention. A unregistered vessel is now leaving Virgo-3B."
+	arrival_message = "Attention. An unregistered vessel is approaching NSV Triumph."
+	departure_message = "Attention. A unregistered vessel is now leaving NSV Triumph."
 
 //////////////////////////////////////////////////////////////
 // ERT Shuttle
@@ -157,21 +164,18 @@
 	destination_tags = list(
 		"specops_base",
 		"aerostat_northwest",
-		"beach_e",
-		"beach_nw",
-		"tether_solars_ne",
-		"tether_solars_sw",
-		"tether_mine_nw",
-		"tether_space_NE",
-		"tether_space_SE",
-		"tether_space_SW",
-		"tether_dockarm_d2a2"	// Top of right docking arm
+		"triumph_space_port_3",
+		"triumph_space_starboard_3",
+		"triumph_space_port_2",
+		"triumph_space_starboard_2",
+		"triumph_space_port_1",
+		"triumph_space_starboard_1"
 		)
 	docking_controller_tag = "specops_shuttle_hatch"
 	announcer = "Automated Traffic Control"
-	arrival_message = "Attention. An NT support vessel is approaching Virgo-3B."
-	departure_message = "Attention. A NT support vessel is now leaving Virgo-3B."
-*/
+	arrival_message = "Attention. An NT support vessel is approaching NSV Triumph."
+	departure_message = "Attention. A NT support vessel is now leaving NSV Triumph."
+
 //////////////////////////////////////////////////////////////
 // RogueMiner "Belter: Shuttle
 // TODO - Not implemented yet on new map

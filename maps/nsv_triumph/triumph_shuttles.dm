@@ -261,27 +261,24 @@
 ////////////////////////////////////////
 //////// Excursion Shuttle /////////////
 ////////////////////////////////////////
-/*
+
 // The 'shuttle' of the excursion shuttle
 /datum/shuttle/autodock/overmap/excursion
 	name = "Excursion Shuttle"
 	warmup_time = 0
 	current_location = "triumph_excursion_hangar"
 	docking_controller_tag = "expshuttle_dock"
-	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
-	//fuel_consumption = 3
-	fuel_consumption = 0	//inf fuel for testing purposes
+	shuttle_area = list(/area/shuttle/excursion/triumph)
+	fuel_consumption = 3
+
 
 // The 'ship' of the excursion shuttle
 /obj/effect/overmap/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
-	desc = "The traditional Excursion Shuttle. NT Approved!"
-	vessel_mass = 10000
+	desc = "The traditional Excursion Shuttle."
+	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"
-	start_x = 4
-	start_y = 5
-*/
 
 
 // EXCURSION SHUTTLE DATA
@@ -289,14 +286,14 @@
 /datum/shuttle/autodock/overmap/excursion
 	name = "Excursion Shuttle"
 	warmup_time = 0
-	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
+	shuttle_area = list(/area/shuttle/excursion/triumph)
+	//shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
 	current_location = "triumph_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
 	landmark_transition = "nav_transit_exploration"
-	fuel_consumption = 3
 	move_time = 20
 
-/area/shuttle/excursion
+/area/shuttle/excursion/triumph
 	name = "Excursion Shuttle"
 	icon_state = "shuttle"
 

@@ -48,10 +48,20 @@
 	var/on = 1
 	var/burn_cost = 7500
 	var/generated_thrust = 2.5
+	var/linked = FALSE
 
 /obj/machinery/ion_engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
+	if(SSshuttle.subsystem_initialized)
+		link_to_ship()
+
+/obj/machinery/ion_engine/proc/link_to_ship()
+	for(var/ship in SSshuttle.ships)
+		var/obj/effect/overmap/visitable/ship/S = ship
+		if(S.check_ownership(src))
+			S.engines |= controller
+			linked = TRUE
 
 /obj/machinery/ion_engine/Destroy()
 	QDEL_NULL(controller)

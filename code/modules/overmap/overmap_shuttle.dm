@@ -52,11 +52,6 @@
 /datum/shuttle/autodock/overmap/can_force()
 	return ..() && can_go()
 
-/datum/shuttle/autodock/overmap/get_travel_time()
-	var/distance_mod = get_dist(waypoint_sector(current_location),waypoint_sector(next_location))
-	var/skill_mod = 0.2*(skill_needed - operator_skill)
-	return move_time * (1 + distance_mod + skill_mod)
-
 /datum/shuttle/autodock/overmap/process_launch()
 	if(prob(10*max(0, skill_needed - operator_skill)))
 		var/places = get_possible_destinations()

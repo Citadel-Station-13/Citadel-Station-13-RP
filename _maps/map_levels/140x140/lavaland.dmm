@@ -547,6 +547,8 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1384;
 	name = "interior access button";
 	pixel_x = -10;
 	pixel_y = 25;
@@ -598,12 +600,11 @@
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "oj" = (
-/obj/structure/bed/chair/sofa/left{
-	dir = 1;
-	icon_state = "sofaend_left"
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
+	},
+/obj/structure/bed/chair/sofa/right{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
@@ -674,9 +675,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "pJ" = (
-/obj/structure/bed/chair/sofa/left{
-	icon_state = "sofaend_left"
-	},
+/obj/structure/bed/chair/sofa/left,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
@@ -1333,12 +1332,11 @@
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "Dm" = (
-/obj/structure/bed/chair/sofa/right{
-	dir = 1;
-	icon_state = "sofaend_right"
-	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
+	},
+/obj/structure/bed/chair/sofa/left{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
@@ -1656,7 +1654,9 @@
 	req_one_access = list(48)
 	},
 /obj/machinery/access_button{
+	command = "cycle_exterior";
 	dir = 1;
+	frequency = 1384;
 	name = "exterior access button";
 	pixel_x = 10;
 	pixel_y = -25;
@@ -1842,9 +1842,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "QN" = (
-/obj/structure/bed/chair/sofa/right{
-	icon_state = "sofaend_right"
-	},
+/obj/structure/bed/chair/sofa/right,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},

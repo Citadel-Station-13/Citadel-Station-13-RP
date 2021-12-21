@@ -88,7 +88,7 @@
 
 //are we ready for docking?
 /datum/computer/file/embedded_program/docking/airlock/ready_for_docking()
-	return airlock_program.done_cycling()
+	return !airlock_program || airlock_program.done_cycling()
 
 //we are docked, open the doors or whatever.
 /datum/computer/file/embedded_program/docking/airlock/finish_docking()
