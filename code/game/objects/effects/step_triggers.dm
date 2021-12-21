@@ -36,7 +36,7 @@
 	var/list/affecting = list()
 
 	Trigger(var/atom/A)
-		if(!A || !istype(A, /atom/movable) || isobserver(A))
+		if(!A || !istype(A, /atom/movable))
 			return
 		var/atom/movable/AM = A
 		var/curtiles = 0

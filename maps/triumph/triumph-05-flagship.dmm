@@ -660,14 +660,14 @@
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
 /obj/item/gun/projectile/p92x,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
-/obj/item/ammo_magazine/m9mm/large/licensed,
+/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/preban,
+/obj/item/ammo_magazine/m9mm/large/preban,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2115,6 +2115,7 @@
 /area/centcom/control)
 "dy" = (
 /obj/structure/bed/chair,
+/obj/item/handcuffs,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2411,7 +2412,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "dT" = (
-/obj/machinery/mecha_part_fabricator/pros,
+/obj/machinery/pros_fabricator,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "dU" = (
@@ -2525,11 +2526,11 @@
 /turf/unsimulated/wall,
 /area/tdome/tdomeadmin)
 "ej" = (
-/turf/simulated/wall{
-	can_open = 1;
-	icon = 'icons/turf/walls.dmi';
-	icon_state = "riveted"
+/obj/machinery/door/airlock/centcom{
+	name = "Private";
+	req_access = list(105)
 	},
+/turf/unsimulated/floor/steel,
 /area/centcom/control)
 "ek" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -2968,15 +2969,7 @@
 	},
 /area/centcom/control)
 "fi" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
-/obj/machinery/shower{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 5
-	},
+/obj/structure/kitchenspike,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -5729,6 +5722,11 @@
 /area/centcom/security)
 "kH" = (
 /obj/structure/table/rack,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
+/obj/item/gun/projectile/shotgun/pump/USDF,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	dir = 5;
@@ -6249,11 +6247,6 @@
 	},
 /obj/effect/floor_decal/carpet{
 	dir = 8
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "ADMINFUN";
-	name = "Restricted Armory Access";
-	req_access = list(109)
 	},
 /turf/unsimulated/floor{
 	dir = 5;
@@ -15964,18 +15957,6 @@
 	icon_state = "white"
 	},
 /area/centcom/medical)
-"Eb" = (
-/obj/machinery/button/remote/airlock{
-	dir = 4;
-	id = "ADMINFUN";
-	name = "Door Bolts";
-	pixel_x = 28;
-	pixel_y = 28;
-	req_access = list(109);
-	specialfunctions = 4
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/security)
 "Ej" = (
 /obj/structure/bed/chair/shuttle,
 /obj/machinery/light{
@@ -16014,33 +15995,12 @@
 	},
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
-"Fc" = (
-/obj/machinery/door/airlock/vault/bolted{
-	id_tag = "the_end";
-	name = "RESTRICTED";
-	req_access = list(109)
-	},
-/obj/machinery/door/blast/regular{
-	id = "ADMINFUN";
-	name = "RESTRICTED"
-	},
-/turf/simulated/floor/reinforced,
-/area/centcom/command)
 "FF" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
-"FL" = (
-/obj/item/gun/energy/stripper,
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 8
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/control)
 "Gp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -16092,15 +16052,6 @@
 /obj/structure/window/reinforced,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
-"Hw" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Silicon's Living Quarters";
-	req_access = list(105)
-	},
-/turf/unsimulated/floor{
-	icon_state = "carpet"
-	},
-/area/centcom/control)
 "IA" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
@@ -16126,12 +16077,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"JW" = (
-/obj/machinery/porta_turret/crescent{
-	density = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/centcom/command)
 "Kt" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1380;
@@ -16147,24 +16092,6 @@
 /obj/machinery/vending/cola,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/escape)
-"Mk" = (
-/obj/item/grenade/supermatter,
-/obj/structure/table/rack/steel,
-/obj/machinery/door/window/brigdoor{
-	req_access = list(109)
-	},
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced,
-/area/centcom/command)
-"Mt" = (
-/turf/simulated/floor/reinforced,
-/area/centcom/command)
 "MG" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -16181,18 +16108,6 @@
 "MJ" = (
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
-"Nb" = (
-/obj/machinery/door/airlock/vault/bolted{
-	id_tag = "the_end";
-	name = "RESTRICTED";
-	req_access = list(109)
-	},
-/obj/machinery/door/blast/regular{
-	id = "ADMINFUN";
-	name = "RESTRICTED"
-	},
-/turf/simulated/floor/reinforced,
-/area/centcom/security)
 "Nt" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/unsimulated/floor{
@@ -16271,19 +16186,6 @@
 /obj/machinery/door/airlock/command,
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/escape)
-"TF" = (
-/obj/machinery/turretid/lethal{
-	check_access = 0;
-	check_anomalies = 0;
-	check_arrest = 0;
-	check_records = 0;
-	control_area = "\improper Centcom Command";
-	pixel_y = 26;
-	req_access = list(109);
-	req_one_access = list(109)
-	},
-/turf/simulated/floor/reinforced,
-/area/centcom/command)
 "TZ" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -16307,18 +16209,6 @@
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/escape)
-"Ul" = (
-/obj/item/handcuffs/legcuffs/fuzzy,
-/obj/item/handcuffs/legcuffs/fuzzy,
-/obj/item/handcuffs/legcuffs/fuzzy,
-/obj/item/handcuffs/fuzzy,
-/obj/item/handcuffs/fuzzy,
-/obj/item/handcuffs/fuzzy,
-/obj/structure/table/rack/steel,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/control)
 "UC" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/stack/cable_coil,
@@ -16331,14 +16221,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"UD" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
-	dir = 10
-	},
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/control)
 "UU" = (
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = null
@@ -16374,12 +16256,6 @@
 	icon_state = "dark"
 	},
 /area/centcom/specops)
-"ZB" = (
-/obj/effect/floor_decal/corner_techfloor_grid,
-/turf/unsimulated/floor{
-	icon_state = "dark"
-	},
-/area/centcom/control)
 "ZK" = (
 /obj/structure/table/steel,
 /obj/random/firstaid,
@@ -30355,7 +30231,7 @@ cI
 cV
 dm
 du
-ZB
+dt
 dm
 dm
 dm
@@ -30497,12 +30373,12 @@ cJ
 cJ
 dm
 dv
-UD
+dt
 ej
 ev
 eR
 fg
-Hw
+fz
 em
 em
 em
@@ -30639,7 +30515,7 @@ cK
 cK
 dm
 dw
-FL
+dt
 dm
 ex
 eS
@@ -31065,7 +30941,7 @@ cM
 cW
 dm
 dy
-Ul
+dt
 dt
 dt
 eT
@@ -34638,7 +34514,7 @@ ho
 kt
 kO
 lh
-Eb
+kp
 ml
 mw
 mN
@@ -34780,7 +34656,7 @@ hX
 hX
 hX
 hX
-Nb
+hX
 hX
 hX
 hX
@@ -34918,15 +34794,15 @@ iQ
 iQ
 iQ
 iQ
-nK
-nK
-nK
-nK
-TF
-nK
-nK
-nK
-nK
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
 iQ
 iQ
 iQ
@@ -35060,15 +34936,15 @@ iQ
 iQ
 iQ
 iQ
-nK
-JW
-Mt
-nK
-Fc
-nK
-Mt
-JW
-nK
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
 iQ
 iQ
 iQ
@@ -35202,15 +35078,15 @@ iQ
 iQ
 iQ
 iQ
-nK
-Mt
-Mt
-Mt
-Mt
-Mt
-Mt
-Mt
-nK
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
 iQ
 iQ
 iQ
@@ -35344,15 +35220,15 @@ iQ
 iQ
 iQ
 iQ
-nK
-Mt
-Mt
-Mt
-Mt
-Mt
-Mt
-Mt
-nK
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
 iQ
 iQ
 iQ
@@ -35486,15 +35362,15 @@ iQ
 iQ
 iQ
 iQ
-nK
-JW
-Mt
-Mt
-Mk
-Mt
-Mt
-JW
-nK
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
 iQ
 iQ
 iQ
@@ -35628,15 +35504,15 @@ iQ
 iQ
 iQ
 iQ
-nK
-Mt
-Mt
-Mt
-Mt
-Mt
-Mt
-Mt
-nK
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
 iQ
 iQ
 iQ
@@ -35770,15 +35646,15 @@ iQ
 iQ
 iQ
 iQ
-nK
-Mt
-Mt
-Mt
-Mt
-Mt
-Mt
-Mt
-nK
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
 iQ
 iQ
 iQ
@@ -35912,15 +35788,15 @@ iQ
 iQ
 iQ
 iQ
-nK
-JW
-Mt
-Mt
-JW
-Mt
-Mt
-JW
-nK
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
 iQ
 iQ
 iQ
@@ -36054,15 +35930,15 @@ iQ
 iQ
 iQ
 iQ
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
+iQ
 iQ
 iQ
 iQ

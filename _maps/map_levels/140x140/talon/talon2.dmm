@@ -495,8 +495,9 @@
 /area/talon/decktwo/central_hallway)
 "gK" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/random/weapon/guarenteed,
 /obj/item/cell/device/weapon/empty,
-/obj/item/gun/energy/gun/eluger,
+/obj/random/energy,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "gN" = (
@@ -3982,15 +3983,10 @@
 /area/talon/decktwo/central_hallway)
 "Rr" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/random/weapon/guarenteed,
 /obj/item/cell/device/weapon/empty,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/lasertag/omni,
-/obj/item/gun/energy/lasertag/omni,
-/obj/item/gun/energy/lasertag/omni,
-/obj/item/gun/energy/lasertag/omni,
-/obj/item/gun/energy/lasertag/omni,
+/obj/random/energy,
+/obj/random/projectile,
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "Ru" = (
