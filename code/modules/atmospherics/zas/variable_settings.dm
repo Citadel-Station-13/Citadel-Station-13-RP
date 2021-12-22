@@ -29,7 +29,8 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 		/datum/variable_setting_entry/atmos/phoron/eye_burns = 1,
 		/datum/variable_setting_entry/atmos/phoron/contamination_loss = 0.02,
 		/datum/variable_setting_entry/atmos/phoron/hallucination = FALSE,
-		/datum/variable_setting_entry/atmos/n2o/hallucination = TRUE
+		/datum/variable_setting_entry/atmos/n2o/hallucination = TRUE,
+		/datum/variable_setting_entry/atmos/hepipes/thermal_conductivity = 23500
 	)
 	presets = list(
 	"ZAS - Standard" = list(
@@ -283,3 +284,11 @@ GLOBAL_DATUM_INIT(atmos_vsc, /datum/variable_settings_controller/atmospherics, n
 /datum/variable_setting_entry/atmos/n2o/hallucination
 	name = "Hallucinations"
 	desc = "Does being in sleeping gas cause hallucinations?"
+
+
+/datum/variable_setting_entry/atmos/hepipes
+	category = "Heat Exchanger Pipes"
+
+/datum/variable_setting_entry/atmos/hepipes/thermal_conductivity
+	name = "Thermal Conductivity in cW / (m * K)"
+	desc = "How well do these pipes conduct?"
