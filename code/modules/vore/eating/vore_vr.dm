@@ -133,7 +133,7 @@
 	if(isnull(permit_size_trample))
 		permit_size_trample = TRUE
 	if(isnull(permit_size_pickup))
-		permit_Size_pickup = TRUE
+		permit_size_pickup = TRUE
 	if(isnull(belly_prefs))
 		belly_prefs = list()
 
