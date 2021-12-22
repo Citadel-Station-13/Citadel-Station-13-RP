@@ -143,7 +143,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	if(size_diff >= 0.50)
 		if(M.get_effective_size() >= RESIZE_PREF_LIMIT && !M.permit_size_pickup)
 			to_chat(src, "<span class='warning'>[M] is far too skittish to casually scoop up.</span>")
-			return FALSE
+			return TRUE
 		holder_type = /obj/item/holder/micro
 		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
