@@ -128,6 +128,12 @@
 		can_be_drop_prey = FALSE
 	if(isnull(can_be_drop_pred))
 		can_be_drop_pred = FALSE
+	if(isnull(permit_sizegun))
+		permit_sizegun = TRUE
+	if(isnull(permit_size_trample))
+		permit_size_trample = TRUE
+	if(isnull(permit_size_pickup))
+		permit_Size_pickup = TRUE
 	if(isnull(belly_prefs))
 		belly_prefs = list()
 
