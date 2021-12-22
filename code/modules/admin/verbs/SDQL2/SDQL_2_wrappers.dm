@@ -150,6 +150,9 @@
 /proc/_sin(X)
 	return sin(X)
 
+/proc/_list_construct(...)
+	. = args.Copy()
+
 /proc/_list_add(list/L, ...)
 	if (args.len < 2)
 		return
@@ -250,3 +253,9 @@
  */
 /atom/proc/_contents()
 	return contents.Copy()
+
+/client/proc/admin_winset(control, params)
+	winset(src, control, params)
+
+/client/proc/admin_winget(control, params)
+	return winget(src, control, params)
