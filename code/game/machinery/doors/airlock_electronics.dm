@@ -10,7 +10,6 @@
 	var/list/conf_access = null
 	var/one_access = 0 //if set to 1, door would receive req_one_access instead of req_access
 	var/last_configurator = null
-	var/locked = 1
 
 /obj/item/airlock_electronics/attack_self(mob/user as mob)
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
@@ -21,28 +20,23 @@
 	if (last_configurator)
 		t1 += "Operator: [last_configurator]<br>"
 
-	if (locked)
-		t1 += "<a href='?src=\ref[src];login=1'>Unlock Interface</a><hr>"
-	else
-		t1 += "<a href='?src=\ref[src];logout=1'>Lock Interface</a><hr>"
+	t1 += "Access requirement is set to "
+	t1 += one_access ? "<a style='color: green' href='?src=\ref[src];one_access=1'>ONE</a><hr>" : "<a style='color: red' href='?src=\ref[src];one_access=1'>ALL</a><hr>"
 
-		t1 += "Access requirement is set to "
-		t1 += one_access ? "<a style='color: green' href='?src=\ref[src];one_access=1'>ONE</a><hr>" : "<a style='color: red' href='?src=\ref[src];one_access=1'>ALL</a><hr>"
+	t1 += conf_access == null ? "<font color=red>All</font><br>" : "<a href='?src=\ref[src];access=all'>All</a><br>"
 
-		t1 += conf_access == null ? "<font color=red>All</font><br>" : "<a href='?src=\ref[src];access=all'>All</a><br>"
+	t1 += "<br>"
 
-		t1 += "<br>"
+	var/list/accesses = get_available_accesses(user)
+	for (var/acc in accesses)
+		var/aname = get_access_desc(acc)
 
-		var/list/accesses = get_available_accesses(user)
-		for (var/acc in accesses)
-			var/aname = get_access_desc(acc)
-
-			if (!conf_access || !conf_access.len || !(acc in conf_access))
-				t1 += "<a href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
-			else if(one_access)
-				t1 += "<a style='color: green' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
-			else
-				t1 += "<a style='color: red' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+		if (!conf_access || !conf_access.len || !(acc in conf_access))
+			t1 += "<a href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+		else if(one_access)
+			t1 += "<a style='color: green' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+		else
+			t1 += "<a style='color: red' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
 
 	t1 += text("<p><a href='?src=\ref[];close=1'>Close</a></p>\n", src)
 
@@ -53,36 +47,10 @@
 	..()
 	if (usr.stat || usr.restrained() || (!ishuman(usr) && !istype(usr,/mob/living/silicon)))
 		return
+	
 	if (href_list["close"])
 		usr << browse(null, "window=airlock")
 		return
-
-	if (href_list["login"])
-		else if(issilicon(usr))
-			src.locked = 0
-			src.last_configurator = usr.name
-		else if(isliving(usr))
-			var/obj/item/card/id/id
-			if(ishuman(usr))
-				var/mob/living/carbon/human/H = usr
-				id = H.get_idcard()
-				// In their ID slot?
-				if(id && src.check_access(id))
-					src.locked = 0
-					src.last_configurator = id.registered_name
-			// Still locked, human handling didn't do it!
-			if(locked)
-				var/obj/item/I = usr.get_active_hand()
-				id = I?.GetID()
-				if(id && src.check_access(id))
-					src.locked = 0
-					src.last_configurator = id.registered_name
-
-	if (locked)
-		return
-
-	if (href_list["logout"])
-		locked = 1
 
 	if (href_list["one_access"])
 		one_access = !one_access
