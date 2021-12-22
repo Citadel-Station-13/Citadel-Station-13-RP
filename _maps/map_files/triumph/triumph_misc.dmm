@@ -420,11 +420,12 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "supply_shuttle_hatch";
+	locked = 1;
 	name = "Shuttle Hatch"
 	},
-/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "bR" = (
@@ -542,13 +543,30 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"cq" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"cr" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wqueen,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "cs" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "supply_shuttle_hatch";
+	locked = 1;
 	name = "Shuttle Hatch"
 	},
-/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
 "ct" = (
@@ -602,13 +620,17 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"cE" = (
+/obj/item/chess/brook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "cO" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "supply_shuttle";
 	pixel_x = -25;
 	req_one_access = list(13,31);
-	tag_door = null
+	tag_door = "supply_shuttle_hatch"
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
@@ -702,16 +724,17 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
 "dh" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
-	name = "Shuttle Hatch"
-	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "QMLoad"
 	},
-/obj/effect/map_helper/airlock/door/simple,
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "supply_shuttle_hatch";
+	locked = 1;
+	name = "Shuttle Hatch"
+	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "dj" = (
@@ -1630,6 +1653,18 @@
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
+"hj" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/brook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"hs" = (
+/obj/item/chess/bqueen,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "hx" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_seating)
@@ -1744,6 +1779,22 @@
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
+"iR" = (
+/obj/item/chess/bknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"jc" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bpawn,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"jd" = (
+/obj/item/chess/bbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "mD" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -1751,6 +1802,13 @@
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
+"oc" = (
+/obj/effect/floor_decal/sign/dock/one,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"oo" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "oP" = (
 /turf/space/transit/east,
 /area/space)
@@ -1767,6 +1825,22 @@
 	},
 /turf/space/transit/east,
 /area/space)
+"oY" = (
+/obj/effect/floor_decal/sign/b,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"rb" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"rh" = (
+/obj/item/chess/bpawn,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "uc" = (
 /turf/unsimulated/wall,
 /area/centcom/suppy)
@@ -1795,16 +1869,51 @@
 	icon_state = "dark"
 	},
 /area/centcom/suppy)
+"vY" = (
+/obj/item/chess/wpawn,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"wj" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wpawn,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"wU" = (
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"yc" = (
+/obj/effect/floor_decal/sign/c,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"yH" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bking,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"zg" = (
+/obj/effect/floor_decal/sign/dock/three,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
 "zT" = (
 /obj/effect/step_trigger/teleporter/random,
 /obj/effect/step_trigger/teleporter/random,
 /turf/space,
 /area/space)
+"An" = (
+/obj/effect/floor_decal/sign/a,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
 "Bb" = (
 /obj/structure/shuttle/engine/propulsion,
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
-	base_turf = /turf/space;
+	base_turf = /turf/simulated/floor/airless/ceiling;
 	landmark_tag = "supply_cc";
 	name = "Centcom Supply Depot"
 	},
@@ -1816,9 +1925,60 @@
 "Fb" = (
 /turf/unsimulated/map/edge,
 /area/overmap)
+"Gx" = (
+/obj/item/chess/wrook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"Iz" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"Jj" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "JB" = (
 /turf/unsimulated/map,
 /area/overmap)
+"MB" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"Ot" = (
+/obj/item/chess/wking,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"Rw" = (
+/obj/effect/floor_decal/sign/dock/two,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"Tv" = (
+/obj/item/chess/wknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"Xx" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wrook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"YS" = (
+/obj/item/chess/wbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 
 (1,1,1) = {"
 ap
@@ -10648,17 +10808,17 @@ aI
 aI
 aI
 ar
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ar
 ap
 ap
 ap
@@ -10789,18 +10949,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+wU
+wU
+wU
+wU
+wU
+zg
+Rw
+oc
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -10931,18 +11091,18 @@ dF
 dF
 ec
 dF
+dA
+wU
+hj
+rh
+Jj
+oo
+Jj
+oo
+wj
+Gx
+An
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11073,18 +11233,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+iR
+jc
+oo
+Jj
+oo
+Jj
+vY
+MB
+oY
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11215,18 +11375,18 @@ ec
 dF
 dF
 dF
+dA
+wU
+cq
+rh
+Jj
+oo
+Jj
+oo
+wj
+YS
+yc
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11357,18 +11517,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+hs
+jc
+oo
+Jj
+oo
+Jj
+vY
+cr
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11499,18 +11659,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+yH
+rh
+Jj
+oo
+Jj
+oo
+wj
+Ot
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11641,18 +11801,18 @@ dF
 dF
 ec
 dF
+dA
+wU
+jd
+jc
+oo
+Jj
+oo
+Jj
+vY
+rb
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11783,18 +11943,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+Iz
+rh
+Jj
+oo
+Jj
+oo
+wj
+Tv
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11925,18 +12085,18 @@ ec
 dF
 dF
 dF
+dA
+wU
+cE
+jc
+oo
+Jj
+oo
+Jj
+vY
+Xx
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -12067,18 +12227,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+wU
+wU
+wU
+wU
+wU
+wU
+wU
+wU
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -12210,17 +12370,17 @@ aL
 aL
 aL
 ar
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+bb
+ar
 ap
 ap
 ap

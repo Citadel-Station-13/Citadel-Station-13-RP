@@ -6246,7 +6246,7 @@
 	dir = 1;
 	icon_state = "4-8"
 	},
-/turf/space,
+/turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "fkU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{

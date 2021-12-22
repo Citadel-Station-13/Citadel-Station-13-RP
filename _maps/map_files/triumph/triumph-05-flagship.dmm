@@ -16041,6 +16041,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/control)
+"FZ" = (
+/obj/structure/fake_stairs/north/bottom{
+	_stair_tag = "stairtest"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/security)
 "Gp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -16101,6 +16107,11 @@
 	icon_state = "carpet"
 	},
 /area/centcom/control)
+"Ig" = (
+/obj/machinery/light,
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/tiled/steel,
+/area/centcom/security)
 "IA" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
@@ -16143,6 +16154,10 @@
 	icon_state = "dark"
 	},
 /area/shuttle/specops/centcom)
+"KW" = (
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/tiled/steel,
+/area/centcom/security)
 "Lf" = (
 /obj/machinery/vending/cola,
 /turf/simulated/shuttle/floor/darkred,
@@ -16346,10 +16361,19 @@
 /obj/structure/fans/tiny,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
+"UY" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/security)
 "VU" = (
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/escape)
+"Wt" = (
+/turf/simulated/floor/tiled/steel,
+/area/centcom/security)
 "Xa" = (
 /obj/machinery/space_heater,
 /turf/unsimulated/floor{
@@ -16380,6 +16404,12 @@
 	icon_state = "dark"
 	},
 /area/centcom/control)
+"ZJ" = (
+/obj/structure/fake_stairs/south/top{
+	_stair_tag = "stairtest"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/centcom/security)
 "ZK" = (
 /obj/structure/table/steel,
 /obj/random/firstaid,
@@ -26682,12 +26712,12 @@ iB
 iU
 ei
 iQ
-iQ
-iQ
-iQ
-iQ
-iQ
-iQ
+ho
+ho
+ho
+ho
+ho
+ho
 jK
 mF
 nb
@@ -26824,12 +26854,12 @@ iB
 iU
 ei
 iQ
-iQ
-iQ
-iQ
-iQ
-iQ
-iQ
+ho
+Wt
+ZJ
+UY
+KW
+ho
 jK
 mE
 na
@@ -26966,12 +26996,12 @@ iB
 iU
 ei
 iQ
-iQ
-iQ
-iQ
-iQ
-iQ
-iQ
+ho
+ho
+ho
+UY
+Ig
+ho
 jK
 mE
 na
@@ -27108,12 +27138,12 @@ iB
 iU
 ei
 iQ
-iQ
-iQ
-iQ
-iQ
-iQ
-iQ
+ho
+ho
+ho
+UY
+KW
+ho
 jK
 mG
 nc
@@ -27250,12 +27280,12 @@ iB
 iU
 ei
 iQ
-iQ
-iQ
-iQ
-iQ
-iQ
-iQ
+ho
+FZ
+Wt
+UY
+KW
+ho
 jK
 jK
 jK
@@ -27392,12 +27422,12 @@ ei
 ei
 ei
 iQ
-iQ
-iQ
-iQ
-iQ
-iQ
-iQ
+ho
+ho
+ho
+ho
+ho
+ho
 cP
 dj
 dk
