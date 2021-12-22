@@ -121,7 +121,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for(var/path in paths)
 		var/datum/sprite_accessory/hair/H = new path()
 		hair_styles_list[H.name] = H
-		ASSERT(istext(H.name))
+		if(!istext(H.name))
+			stack_trace("[H] ([path]) had no valid name.")
+			continue
 		switch(H.gender)
 			if(MALE)	hair_styles_male_list += H.name
 			if(FEMALE)	hair_styles_female_list += H.name
@@ -135,7 +137,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 	facial_hair_styles_list = list()
 	for(var/path in paths)
 		var/datum/sprite_accessory/facial_hair/H = new path()
-		ASSERT(istext(H.name))
+		if(!istext(H.name))
+			stack_trace("[H] ([path]) had no valid name.")
+			continue
 		facial_hair_styles_list[H.name] = H
 		switch(H.gender)
 			if(MALE)	facial_hair_styles_male_list += H.name
@@ -150,7 +154,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 	body_marking_styles_list = list()
 	for(var/path in paths)
 		var/datum/sprite_accessory/marking/M = new path()
-		ASSERT(istext(M.name))
+		if(!istext(M.name))
+			stack_trace("[M] ([path]) had no valid name.")
+			continue
 		body_marking_styles_list[M.name] = M
 	sortTim(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
