@@ -6,21 +6,11 @@
 
 	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 50)
 
-	req_one_access = list(access_engine) // Access to unlock the device, ignored if emagged
-	var/list/apply_any_access = list(access_engine) // Can apply any access, not just their own
-
 	var/secure = 0 //if set, then wires will be randomized and bolts will drop if the door is broken
 	var/list/conf_access = null
 	var/one_access = 0 //if set to 1, door would receive req_one_access instead of req_access
 	var/last_configurator = null
 	var/locked = 1
-	var/emagged = 0
-
-/obj/item/airlock_electronics/emag_act(var/remaining_charges, var/mob/user)
-	if(!emagged)
-		emagged = 1
-		to_chat(user, "<span class='notice'>You remove the access restrictions on [src]!</span>")
-		return 1
 
 /obj/item/airlock_electronics/attack_self(mob/user as mob)
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
@@ -68,9 +58,6 @@
 		return
 
 	if (href_list["login"])
-		if(emagged)
-			src.locked = 0
-			src.last_configurator = usr.name
 		else if(issilicon(usr))
 			src.locked = 0
 			src.last_configurator = usr.name
@@ -147,7 +134,3 @@
 	desc = "designed to be somewhat more resistant to hacking than standard electronics."
 	origin_tech = list(TECH_DATA = 2)
 	secure = 1
-
-/obj/item/airlock_electronics/secure/emag_act(var/remaining_charges, var/mob/user)
-	to_chat(user, "<span class='warning'>You don't appear to be able to bypass this hardened device!</span>")
-	return -1
