@@ -89,13 +89,7 @@
 	if(!id || !id.access)
 		return list()
 
-	// Has engineer access, can put any access
-	else if(has_access(null, apply_any_access, id.access))
-		return get_all_station_access()
-
-	// Not an engineer, can only pick your own accesses to program
-	else
-		return id.access
+	return id.access
 
 /obj/item/airlock_electronics/secure
 	name = "secure airlock electronics"
