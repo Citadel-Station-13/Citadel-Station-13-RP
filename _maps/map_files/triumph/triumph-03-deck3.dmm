@@ -1206,13 +1206,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "aYo" = (
-/obj/structure/table/standard,
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "Station Intercom (General)";
-	pixel_y = 26
-	},
 /obj/structure/window/reinforced,
+/obj/structure/flora/pottedplant{
+	icon_state = "plant-10"
+	},
+/obj/machinery/alarm{
+	frequency = 1441;
+	pixel_y = 22
+	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "aZa" = (
@@ -1722,6 +1723,7 @@
 /area/maintenance/research)
 "bwZ" = (
 /obj/machinery/light,
+/obj/structure/table/standard,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "byl" = (
@@ -6246,7 +6248,7 @@
 	dir = 1;
 	icon_state = "4-8"
 	},
-/turf/space,
+/turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
 "fkU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
@@ -13283,6 +13285,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/structure/table/bench/padded,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "lbF" = (
@@ -16269,11 +16272,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "nyC" = (
-/obj/machinery/alarm{
-	frequency = 1441;
-	pixel_y = 22
-	},
 /obj/machinery/camera/network/civilian,
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "nyT" = (
@@ -43707,7 +43711,7 @@ ijh
 mfs
 lcy
 gny
-gNq
+wqC
 wqC
 dWw
 dsM

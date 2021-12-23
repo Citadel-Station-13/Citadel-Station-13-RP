@@ -1027,13 +1027,8 @@
 /area/crew_quarters/sleep/Dorm_5)
 "dq" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
-	name = "Cargo Docking Hatch"
-	},
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "dr" = (
@@ -2476,13 +2471,8 @@
 	dir = 8;
 	id = "QMLoad2"
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
-	name = "Cargo Docking Hatch"
-	},
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "hh" = (
@@ -3935,17 +3925,12 @@
 /area/crew_quarters/sleep/Dorm_1)
 "ln" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
-	name = "Cargo Docking Hatch"
-	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "QMLoad"
 	},
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "lo" = (
@@ -5811,11 +5796,8 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "qu" = (
-/obj/structure/closet/hydrant{
-	pixel_x = -32
-	},
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "qw" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -7376,10 +7358,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "uC" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -23
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -7509,12 +7487,12 @@
 "uY" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
-	base_turf = /turf/space;
-	docking_controller = "supply_shuttle";
+	base_turf = /turf/simulated/floor/airless/ceiling;
+	docking_controller = "cargo_bay";
 	landmark_tag = "supply_dock";
 	name = "NSV Triumph Cargo Dock"
 	},
-/turf/space,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "uZ" = (
 /obj/structure/cable/green{
@@ -10626,7 +10604,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/wall,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "Ex" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -12778,6 +12756,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/station/stairs_two)
+"KK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "KO" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -14459,6 +14446,9 @@
 "Qf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/closet/hydrant{
+	pixel_x = -32
+	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "Qg" = (
@@ -14710,18 +14700,13 @@
 /area/maintenance/bar/lower)
 "QZ" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
-	name = "Cargo Docking Hatch"
-	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "QMLoad"
 	},
 /obj/machinery/shield_diffuser,
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "Rc" = (
@@ -16023,13 +16008,8 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/shield_diffuser,
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
-	name = "Cargo Docking Hatch"
-	},
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/plating,
 /area/quartermaster/warehouse)
 "UI" = (
@@ -17274,30 +17254,21 @@
 /turf/simulated/floor/plating,
 /area/triumph/surfacebase/mining_main/storage)
 "XI" = (
-/obj/machinery/embedded_controller/radio/simple_docking_controller{
-	frequency = 1380;
-	id_tag = "supply_shuttle";
-	layer = 3.3;
-	name = "cargo bay hatch controller";
-	pixel_x = 30;
-	req_one_access = list(13,31);
-	tag_door = "cargo_bay_door"
-	},
 /obj/machinery/camera/network/cargo{
 	dir = 8
+	},
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	frequency = 1380;
+	id_tag = "cargo_bay";
+	pixel_x = 28
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "XJ" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1380;
-	icon_state = "door_locked";
-	id_tag = "cargo_bay_door";
-	locked = 1;
-	name = "Cargo Docking Hatch"
-	},
 /obj/machinery/shield_diffuser,
+/obj/machinery/door/airlock/glass_external,
+/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "XK" = (
@@ -30361,19 +30332,19 @@ Ed
 ii
 ii
 Ed
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 aC
 yx
@@ -30503,19 +30474,19 @@ kD
 ii
 ii
 rC
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 Sb
 Ne
@@ -30645,19 +30616,19 @@ Ed
 ii
 ii
 rC
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 uv
 dD
@@ -30787,18 +30758,18 @@ Ed
 ii
 ii
 rC
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 uY
 Rj
 aC
@@ -30816,7 +30787,7 @@ NB
 mQ
 mQ
 mQ
-sD
+mQ
 nM
 FC
 Lm
@@ -30929,19 +30900,19 @@ kD
 Ed
 Ed
 rC
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 aC
 Gy
@@ -30955,7 +30926,7 @@ lP
 tN
 YM
 NB
-qu
+xj
 uC
 GM
 mQ
@@ -31071,19 +31042,19 @@ Ed
 ii
 ii
 Ed
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 RX
 Bj
@@ -31213,19 +31184,19 @@ Ed
 ii
 ii
 Ed
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
-ii
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 Rj
 Rj
@@ -31239,7 +31210,7 @@ lP
 vq
 XU
 NB
-GY
+KK
 bb
 xj
 wH
