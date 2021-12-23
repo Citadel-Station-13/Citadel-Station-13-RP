@@ -27,9 +27,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"ad" = (
-/turf/simulated/floor/airless/ceiling,
-/area/space)
 "ae" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -5799,11 +5796,8 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
 "qu" = (
-/obj/structure/closet/hydrant{
-	pixel_x = -32
-	},
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "qw" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -7364,10 +7358,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "uC" = (
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -23
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -12766,6 +12756,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/station/stairs_two)
+"KK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/alarm{
+	pixel_y = 22
+	},
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "KO" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -14447,6 +14446,9 @@
 "Qf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/closet/hydrant{
+	pixel_x = -32
+	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_shop)
 "Qg" = (
@@ -30330,19 +30332,19 @@ Ed
 ii
 ii
 Ed
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 aC
 yx
@@ -30472,19 +30474,19 @@ kD
 ii
 ii
 rC
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 Sb
 Ne
@@ -30614,19 +30616,19 @@ Ed
 ii
 ii
 rC
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 uv
 dD
@@ -30756,18 +30758,18 @@ Ed
 ii
 ii
 rC
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 uY
 Rj
 aC
@@ -30785,7 +30787,7 @@ NB
 mQ
 mQ
 mQ
-sD
+mQ
 nM
 FC
 Lm
@@ -30898,19 +30900,19 @@ kD
 Ed
 Ed
 rC
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 aC
 Gy
@@ -30924,7 +30926,7 @@ lP
 tN
 YM
 NB
-qu
+xj
 uC
 GM
 mQ
@@ -31040,19 +31042,19 @@ Ed
 ii
 ii
 Ed
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 RX
 Bj
@@ -31182,19 +31184,19 @@ Ed
 ii
 ii
 Ed
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
+qu
 Rj
 Rj
 Rj
@@ -31208,7 +31210,7 @@ lP
 vq
 XU
 NB
-GY
+KK
 bb
 xj
 wH
