@@ -12,10 +12,6 @@
 	taken to calling these creatures 'Shadekin', and the name has generally stuck and spread. "		//TODO: Something that's not wiki copypaste
 	wikilink = "https://wiki.vore-station.net/Shadekin"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
-	inherent_verbs = list(
-		/mob/living/proc/eat_trash,
-		/mob/living/carbon/human/proc/lick_wounds
-		)
 
 	language = LANGUAGE_SHADEKIN
 	assisted_langs = list()
@@ -54,8 +50,6 @@
 	blood_color = "#A10808"
 	base_color = "#f0f0f0"
 	color_mult = 1
-
-	inherent_verbs = list(/mob/living/proc/shred_limb)
 
 	has_glowing_eyes = TRUE
 
@@ -111,6 +105,11 @@
 
 /datum/species/shadekin/New()
 	..()
+	inherent_verbs += list(
+		/mob/living/proc/shred_limb,
+		/mob/living/proc/eat_trash,
+		/mob/living/carbon/human/proc/lick_wounds
+		)
 	for(var/power in shadekin_abilities)
 		var/datum/power/shadekin/SKP = new power(src)
 		shadekin_ability_datums.Add(SKP)
