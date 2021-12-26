@@ -27,11 +27,11 @@
 
 	t1 += "<br>"
 
-	var/list/accesses = get_all_station_accesses()
+	var/list/accesses = get_all_station_access()
 	var/list/user_has = get_available_accesses(user)
 	for (var/acc in accesses)
 		var/aname = get_access_desc(acc)
-		rendered_name = user_has.Find(acc)? "<b>[aname]</b>" : aname
+		var/rendered_name = user_has.Find(acc)? "<b>[aname]</b>" : aname
 
 		if (!conf_access || !conf_access.len || !(acc in conf_access))
 			t1 += "<a href='?src=\ref[src];access=[acc]'>[rendered_name]</a><br>"
