@@ -2694,6 +2694,11 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_FOOT,BP_L_LEG)
 
+	motheyes
+		name = "Moth Eyes"
+		icon_state = "motheyes"
+		body_parts = list(BP_HEAD)
+
 	animeeyesinner
 		name = "Anime Eyes Inner"
 		icon_state = "animeeyesinner"

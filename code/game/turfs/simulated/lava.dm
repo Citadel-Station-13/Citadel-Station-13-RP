@@ -12,6 +12,7 @@
 	light_color = LIGHT_COLOR_LAVA
 	flags = TURF_HAS_EDGES
 	movement_cost = 2
+	special_temperature = T0C + 2200
 
 /turf/simulated/floor/outdoors/lava/indoors
 	outdoors = TRUE

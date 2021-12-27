@@ -3,6 +3,8 @@
 var/const/RESIZE_HUGE = 2
 var/const/RESIZE_BIG = 1.5
 var/const/RESIZE_NORMAL = 1
+/// god forgive me for i have sinned by using a const
+var/const/RESIZE_PREF_LIMIT = 0.75
 var/const/RESIZE_SMALL = 0.5
 var/const/RESIZE_TINY = 0.25
 
@@ -139,6 +141,9 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		to_chat(usr,"<span class='notice'>You have to unbuckle \the [M] before you pick them up.</span>")
 		return 0
 	if(size_diff >= 0.50)
+		if(M.get_effective_size() >= RESIZE_PREF_LIMIT && !M.permit_size_pickup)
+			to_chat(src, "<span class='warning'>[M] is far too skittish to casually scoop up.</span>")
+			return TRUE
 		holder_type = /obj/item/holder/micro
 		var/obj/item/holder/m_holder = get_scooped(M)
 		holder_type = holder_default
@@ -228,6 +233,12 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	else
 		//If they're not human, steppy shouldn't happen
 		return FALSE
+
+	if(tmob.get_effective_size() >= RESIZE_PREF_LIMIT && !tmob.permit_size_trample)
+		if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
+			to_chat(src, "<span class='warning'>[tmob] skitters past your legs.</span>")
+			to_chat(tmob, "<span class='warning'>You narrowly dodge [src]'s step.</span>")
+		return
 
 	//Depending on intent...
 	switch(a_intent)

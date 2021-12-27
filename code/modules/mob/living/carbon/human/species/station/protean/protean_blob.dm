@@ -522,6 +522,8 @@
 	//Return ourselves in case someone wants it
 	return src
 
+/mob/living/simple_mob/protean_blob/say_understands()
+	return humanform? humanform.say_understands(arglist(args)) : ..()
 
 /mob/living/simple_mob/protean_blob/proc/appearanceswitch()
 	set name = "Switch Appearance"
