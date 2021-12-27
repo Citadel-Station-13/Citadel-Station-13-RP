@@ -98,6 +98,10 @@ var/list/possible_cable_coil_colours = list(
 	d1 = text2num( copytext( icon_state, 1, dash ) )
 
 	d2 = text2num( copytext( icon_state, dash+1 ) )
+	
+	if(d1 && !d2)
+		stack_trace("Cable with no d2 but with d1 found, deleeting. Proper format is d1=0 instead of d2=0.")
+		return INITIALIZE_HINT_QDEL
 
 	var/turf/T = src.loc			// hide if turf is not intact
 	if(level==1)
