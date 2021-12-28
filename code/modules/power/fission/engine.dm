@@ -417,10 +417,9 @@
 		var/decaying_rods = 0
 		var/decay_heat = 0
 		for(var/obj/item/fuelrod/rod in rods)
-			var/obj/item/fuelrod/rod = rods[i]
 			if(rod.life > 0 && rod.decay_heat > 0)
 				decay_heat += rod.tick_life()
-			decaying_rods++
+				decaying_rods++
 			rod.meltdown()
 		var/rad_power = decay_heat / REACTOR_RADS_TO_MJ
 		if(announce)
