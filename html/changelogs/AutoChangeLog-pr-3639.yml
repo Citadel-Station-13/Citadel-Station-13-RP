@@ -1,0 +1,4 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - balance: "Fission reactors are good for exploding again, even if they're a bad power source."
