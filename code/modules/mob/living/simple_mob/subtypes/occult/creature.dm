@@ -30,6 +30,7 @@
 	attack_armor_pen = 5	//It's a horror from beyond, I ain't gotta explain 5 AP
 	attack_sharp = 1
 	attack_edge = 1
+	taser_kill = 0 //See the Above on why you can't tase it.
 
 	attacktext = list("chomped")
 	attack_sound = 'sound/weapons/bite.ogg'
