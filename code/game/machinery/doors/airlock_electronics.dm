@@ -11,7 +11,7 @@
 	var/one_access = 0 //if set to 1, door would receive req_one_access instead of req_access
 	var/last_configurator = null
 
-/obj/item/airlock_electronics/attack_self(mob/user as mob)
+/obj/item/airlock_electronics/attack_self(mob/user)
 	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
 		return ..(user)
 
@@ -27,16 +27,18 @@
 
 	t1 += "<br>"
 
-	var/list/accesses = get_available_accesses(user)
+	var/list/accesses = get_all_station_access()
+	var/list/user_has = get_available_accesses(user)
 	for (var/acc in accesses)
 		var/aname = get_access_desc(acc)
+		var/rendered_name = user_has.Find(acc)? "<b>[aname]</b>" : aname
 
 		if (!conf_access || !conf_access.len || !(acc in conf_access))
-			t1 += "<a href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+			t1 += "<a href='?src=\ref[src];access=[acc]'>[rendered_name]</a><br>"
 		else if(one_access)
-			t1 += "<a style='color: green' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+			t1 += "<a style='color: green' href='?src=\ref[src];access=[acc]'>[rendered_name]</a><br>"
 		else
-			t1 += "<a style='color: red' href='?src=\ref[src];access=[acc]'>[aname]</a><br>"
+			t1 += "<a style='color: red' href='?src=\ref[src];access=[acc]'>[rendered_name]</a><br>"
 
 	t1 += text("<p><a href='?src=\ref[];close=1'>Close</a></p>\n", src)
 
