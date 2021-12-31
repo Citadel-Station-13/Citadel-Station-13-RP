@@ -35,7 +35,7 @@
 	landmark_station = "supply_dock"
 	docking_controller_tag = "supply_shuttle"
 	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
-
+/*
 //////////////////////////////////////////////////////////////
 // TODO - Zandario/Enzo - Get these compatible
 // Trade Ship
@@ -152,6 +152,7 @@
 
 //////////////////////////////////////////////////////////////
 // ERT Shuttle
+
 /datum/shuttle/autodock/multi/specialops
 	name = "NDV Phantom"
 	can_cloak = TRUE
@@ -175,7 +176,7 @@
 	announcer = "Automated Traffic Control"
 	arrival_message = "Attention. An NT support vessel is approaching NSV Triumph."
 	departure_message = "Attention. A NT support vessel is now leaving NSV Triumph."
-
+*/
 //////////////////////////////////////////////////////////////
 // RogueMiner "Belter: Shuttle
 // TODO - Not implemented yet on new map

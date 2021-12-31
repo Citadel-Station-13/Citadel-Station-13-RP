@@ -643,12 +643,13 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "ct" = (
-/obj/machinery/atmospherics/unary/heater{
-	dir = 4;
-	name = "fuel pre-heater"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/starboardnacelle)
+/obj/structure/closet/crate,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "cw" = (
 /obj/machinery/light/small/emergency{
 	dir = 1
@@ -1115,6 +1116,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "ee" = (
@@ -1210,16 +1212,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
-"ew" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/fuel{
-	dir = 9
-	},
-/obj/machinery/shield_diffuser,
-/turf/simulated/wall/r_wall,
-/area/engineering/portnacelle)
 "eD" = (
 /turf/simulated/wall/r_wall,
 /area/space)
@@ -1236,21 +1228,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "eG" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /obj/structure/ladder/up,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
-	dir = 8
+/obj/effect/floor_decal/industrial/warning{
+	dir = 9
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
@@ -1323,12 +1307,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled,
 /area/maintenance/engi_engine)
-"eW" = (
-/obj/machinery/atmospherics/unary/engine{
-	dir = 4
-	},
-/turf/space,
-/area/engineering/portnacelle)
 "eX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
@@ -1561,7 +1539,6 @@
 "fL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /obj/machinery/alarm{
 	dir = 4;
 	pixel_x = -23
@@ -2120,12 +2097,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "hH" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold4w/visible/fuel,
+/obj/machinery/shield_diffuser,
+/obj/machinery/atmospherics/pipe/manifold/visible/fuel,
 /turf/simulated/wall/r_wall,
-/area/engineering/starboardnacelle)
+/area/engineering/portnacelle)
 "hJ" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -2900,6 +2875,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
+"kf" = (
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/turf/simulated/floor/plating,
+/area/maintenance/engi_engine)
 "kg" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -3162,11 +3141,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tcommsat/entrance)
 "lc" = (
-/obj/machinery/atmospherics/unary/engine{
-	dir = 4
-	},
 /turf/space,
-/area/engineering/starboardnacelle)
+/area/engineering/portnacelle)
 "le" = (
 /obj/turbolift_map_holder/triumph,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -3185,11 +3161,10 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
 "lh" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/shield_diffuser,
+/obj/machinery/atmospherics/pipe/manifold/visible/fuel{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold4w/visible/fuel,
-/obj/machinery/shield_diffuser,
 /turf/simulated/wall/r_wall,
 /area/engineering/portnacelle)
 "lj" = (
@@ -3207,6 +3182,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"ln" = (
+/obj/random/trash,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/turf/simulated/floor/wood,
+/area/maintenance/dormitory)
 "lp" = (
 /obj/machinery/camera/network/engineering{
 	dir = 8
@@ -3251,13 +3231,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
 /obj/structure/cable/green{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
@@ -3375,6 +3356,11 @@
 	},
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/atmos)
+"lV" = (
+/obj/structure/table/woodentable,
+/obj/random/maintenance/security,
+/turf/simulated/floor/wood,
+/area/maintenance/dormitory)
 "lZ" = (
 /obj/machinery/camera/network/engineering,
 /obj/machinery/atmospherics/valve/digital{
@@ -4030,6 +4016,10 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "oe" = (
@@ -4304,7 +4294,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "pd" = (
-/obj/machinery/telecomms/broadcaster/preset_right,
+/obj/machinery/telecomms/broadcaster/preset_right/triumph,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -4421,7 +4411,6 @@
 "pu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
@@ -4591,9 +4580,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/portnacelle)
 "pX" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
 	dir = 10
 	},
@@ -4645,6 +4631,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
+"qf" = (
+/obj/machinery/shield_diffuser,
+/obj/machinery/atmospherics/pipe/simple/visible/fuel{
+	dir = 9
+	},
+/turf/simulated/wall/r_wall,
+/area/engineering/portnacelle)
 "qg" = (
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
@@ -5266,14 +5259,9 @@
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
 "su" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/fuel{
-	dir = 9
-	},
+/obj/machinery/shield_diffuser,
 /turf/simulated/wall/r_wall,
-/area/engineering/starboardnacelle)
+/area/engineering/portnacelle)
 "sx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -5608,7 +5596,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
 	},
-/obj/structure/disposalpipe/junction,
+/obj/structure/disposalpipe/junction/yjunction{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "tx" = (
@@ -5886,6 +5876,12 @@
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer_mezzenine)
+"uo" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engi_engine)
 "uq" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
@@ -6149,16 +6145,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
-"vm" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/visible/fuel{
-	dir = 4
-	},
-/obj/machinery/shield_diffuser,
-/turf/simulated/wall/r_wall,
-/area/engineering/starboardnacelle)
 "vn" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -6670,6 +6656,11 @@
 /obj/machinery/vending/assist,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"wT" = (
+/obj/structure/table/woodentable,
+/obj/random/maintenance,
+/turf/simulated/floor/wood,
+/area/maintenance/dormitory)
 "wU" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor,
@@ -7047,6 +7038,8 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techmaint,
@@ -7880,10 +7873,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 1
@@ -8829,6 +8818,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/monitoring)
 "EU" = (
@@ -8997,11 +8987,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/smes/buildable/engine{
-	charge = 3e+006;
-	input_level_max = 750000;
-	output_level_max = 750000
-	},
+/obj/machinery/power/smes/buildable/engine/rust,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_smes)
 "Fo" = (
@@ -9194,6 +9180,8 @@
 	dir = 8;
 	layer = 2.6
 	},
+/obj/fiftyspawner/glass,
+/obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/glass,
 /turf/simulated/floor/tiled/techmaint,
@@ -9419,11 +9407,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway/lower)
 "GA" = (
-/obj/machinery/atmospherics/pipe/simple/visible/universal{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/starboardnacelle)
+/obj/structure/ladder/up,
+/turf/simulated/floor/airless,
+/area/space)
 "GB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -10121,10 +10107,8 @@
 	dir = 8
 	},
 /obj/structure/table/rack,
-/obj/item/stack/rods,
-/obj/item/stack/material/steel{
-	amount = 50
-	},
+/obj/fiftyspawner/rods,
+/obj/fiftyspawner/steel,
 /turf/simulated/floor/airless/ceiling,
 /area/maintenance/engi_engine)
 "Jh" = (
@@ -10918,15 +10902,6 @@
 	},
 /turf/space,
 /area/space)
-"LT" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/fuel{
-	dir = 10
-	},
-/turf/simulated/wall/r_wall,
-/area/engineering/starboardnacelle)
 "LU" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
@@ -11121,11 +11096,11 @@
 /turf/space,
 /area/space)
 "MF" = (
-/obj/machinery/computer/ship/engines{
+/obj/machinery/atmospherics/unary/engine/biggest{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/starboardnacelle)
+/turf/space,
+/area/engineering/portnacelle)
 "MG" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -11653,6 +11628,7 @@
 /area/engineering/workshop)
 "Od" = (
 /obj/structure/table/woodentable,
+/obj/random/maintenance,
 /turf/simulated/floor/carpet,
 /area/maintenance/dormitory)
 "Oe" = (
@@ -12169,7 +12145,7 @@
 "Qe" = (
 /obj/structure/catwalk,
 /obj/structure/table/rack,
-/obj/item/stack/rods,
+/obj/fiftyspawner/rods,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "Qh" = (
@@ -12904,13 +12880,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/locker_room)
 "Sk" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/visible/fuel{
-	dir = 4
-	},
 /obj/machinery/shield_diffuser,
+/obj/machinery/atmospherics/pipe/simple/visible/fuel,
 /turf/simulated/wall/r_wall,
 /area/engineering/portnacelle)
 "Sl" = (
@@ -12962,6 +12933,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
+"Su" = (
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "Sw" = (
 /obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -13059,6 +13034,7 @@
 /area/engineering/atmos/storage)
 "SG" = (
 /obj/structure/closet/crate/solar,
+/obj/fiftyspawner/glass,
 /turf/simulated/floor/airless/ceiling,
 /area/maintenance/engi_engine)
 "SH" = (
@@ -13377,6 +13353,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "TH" = (
+/obj/structure/barricade,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/dormitory)
 "TI" = (
@@ -13531,6 +13508,7 @@
 /obj/machinery/light_construct{
 	dir = 8
 	},
+/obj/random/maintenance,
 /turf/simulated/floor/carpet,
 /area/maintenance/dormitory)
 "Uz" = (
@@ -14194,6 +14172,11 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
+"WI" = (
+/obj/random/trash,
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
+/turf/simulated/floor/carpet,
+/area/maintenance/dormitory)
 "WJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -18714,12 +18697,12 @@ fN
 LO
 ID
 al
-fN
-fN
-fN
-fN
-fN
-fN
+lc
+lc
+MF
+lc
+lc
+MF
 fN
 DM
 Fh
@@ -18745,12 +18728,12 @@ XU
 He
 fN
 fN
-fN
-fN
-fN
-fN
-fN
-fN
+lc
+lc
+MF
+lc
+lc
+MF
 If
 ID
 ns
@@ -18856,12 +18839,12 @@ fN
 LO
 ID
 We
-fN
-fN
-fN
-fN
-fN
-fN
+lc
+lc
+lc
+lc
+lc
+lc
 fN
 fN
 Rg
@@ -18887,12 +18870,12 @@ Bs
 Fh
 fN
 fN
-fN
-fN
-fN
-fN
-fN
-fN
+lc
+lc
+lc
+lc
+lc
+lc
 cL
 ID
 ns
@@ -18998,12 +18981,12 @@ fN
 LO
 ID
 We
-eW
-eW
-eW
-eW
-eW
-fN
+lc
+lc
+lc
+lc
+lc
+lc
 fN
 fN
 Rg
@@ -19029,7 +19012,7 @@ Bs
 Jc
 fN
 fN
-fN
+lc
 lc
 lc
 lc
@@ -19143,9 +19126,9 @@ We
 pX
 Sk
 lh
-Sk
-ew
-fN
+qf
+su
+su
 fN
 fN
 Rg
@@ -19171,11 +19154,11 @@ Bs
 Fh
 fN
 fN
-fN
-LT
-vm
+pX
+Sk
+Sk
 hH
-vm
+su
 su
 cL
 ID
@@ -19313,12 +19296,12 @@ Bs
 Jc
 Zj
 Zj
-Iy
-Qt
-MF
-GA
-ct
-Qt
+sc
+Ch
+cE
+mw
+cR
+Ch
 Iy
 ID
 ns
@@ -21260,11 +21243,11 @@ Zj
 iC
 iC
 iC
-Zj
-Zj
 iC
 iC
-Zj
+eD
+iC
+iC
 dX
 Zj
 iC
@@ -21397,15 +21380,15 @@ fN
 fN
 fN
 Zj
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
-fN
+Pg
+Pg
+Zj
+Pg
+Pg
+Pg
+Pg
+GA
+Pg
 Pg
 fN
 fN
@@ -21539,14 +21522,14 @@ fN
 fN
 fN
 Zj
+Pg
 fN
 fN
+Pg
+Zj
+Zj
 fN
-fN
-fN
-fN
-fN
-fN
+Pg
 Zj
 Pg
 fN
@@ -21681,14 +21664,14 @@ fN
 fN
 fN
 Zj
+Zj
+fN
+fN
+Pg
 fN
 fN
 fN
-fN
-fN
-fN
-fN
-fN
+Pg
 Zj
 Pg
 fN
@@ -21826,11 +21809,11 @@ Zj
 fN
 fN
 fN
-fN
 Pg
 Pg
 Pg
-fN
+Pg
+Pg
 Zj
 Pg
 fN
@@ -22272,7 +22255,7 @@ TW
 ID
 xv
 qZ
-to
+eG
 zz
 ZZ
 ZZ
@@ -22299,7 +22282,7 @@ ID
 ib
 Tz
 Od
-jd
+WI
 ht
 Px
 fN
@@ -22414,7 +22397,7 @@ bx
 Be
 xv
 Vz
-Yp
+uo
 IN
 sB
 SB
@@ -22697,7 +22680,7 @@ Ce
 vf
 PM
 xv
-eG
+Vz
 dU
 xv
 xv
@@ -22724,9 +22707,9 @@ xv
 ID
 ib
 RM
-SH
-SH
-YP
+wT
+lV
+ln
 ib
 fN
 fN
@@ -24140,7 +24123,7 @@ jt
 WV
 Kq
 wH
-xv
+Qw
 xv
 xv
 fN
@@ -24282,8 +24265,8 @@ MK
 MK
 cw
 wH
-xv
-Yp
+Qw
+kf
 xv
 xv
 Zj
@@ -24424,7 +24407,7 @@ xi
 ft
 wH
 wH
-xv
+Qw
 Yp
 Kq
 xv
@@ -25234,7 +25217,7 @@ fN
 LO
 ID
 dv
-Yb
+ct
 qb
 mS
 bz
@@ -28398,7 +28381,7 @@ Ip
 Tb
 KY
 ie
-Yb
+ct
 qb
 dv
 ID
@@ -30795,7 +30778,7 @@ ID
 We
 dv
 vK
-Yb
+Su
 NL
 bh
 Yq

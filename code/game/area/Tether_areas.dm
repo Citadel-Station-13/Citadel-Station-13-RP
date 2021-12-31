@@ -1,5 +1,3 @@
-//	Moved to code/game/areas
-/*
 // //Debug areas
 /area/tether/surfacebase
 	name = "Tether Debug Surface"
@@ -1653,5 +1651,3 @@ area/shuttle/mining_outpost/shuttle
 	excluded |= /area/teleporter/departing
 	excluded |= /area/hallway/station/upper
 	..()
-
-*/
