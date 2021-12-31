@@ -1819,6 +1819,13 @@
 		species_allowed = list(SPECIES_XENOHYBRID)
 		gender = NEUTER
 
+	xeno_head_hybrid_color1
+		name = "Xenohybrid dome 1"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "xeno_hybrid_1"
+		species_allowed = list(SPECIES_XENOHYBRID)
+		gender = NEUTER
 // Shadekin stuffs
 	shadekin_hair_short
 		name = "Shadekin Short Hair"
