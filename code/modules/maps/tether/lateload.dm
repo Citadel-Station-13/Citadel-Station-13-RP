@@ -152,6 +152,7 @@
 	name = "Away Mission - Alien Ship"
 
 
+/* Temporarily commenting this out until we can figure out why the docking controller is throwing runtimes - Bloop
 // V2
 /datum/map_template/tether_lateload/away_aerostat
 	name = "Remmi Aerostat - Z1 Aerostat"
@@ -178,6 +179,8 @@
 /datum/map_z_level/tether_lateload/away_aerostat_surface
 	name = "Away Mission - Aerostat Surface"
 	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/virgo2
+
+*/
 
 // Debrisfield
 

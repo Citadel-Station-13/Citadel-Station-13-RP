@@ -119,12 +119,13 @@
 							NETWORK_ALARM_POWER,
 							NETWORK_ALARM_FIRE,
 							NETWORK_TALON_HELMETS,
-							NETWORK_TALON_SHIP
+							NETWORK_TALON_SHIP,
+							NETWORK_TRADE_STATION
 							)
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage","ITV Talon Cryo")
+	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage","ITV Talon Cryo","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/tram
 	spawnpoint_left = /datum/spawnpoint/tram
 	spawnpoint_stayed = /datum/spawnpoint/cryo
