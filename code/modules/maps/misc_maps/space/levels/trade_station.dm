@@ -122,7 +122,8 @@ var/global/list/latejoin_trade = list()
 	base_area = /area/tradeport/dock
 
 // Todo
-
+/*
 /obj/machinery/camera/network/trade
 	network = list(NETWORK_TRADE_STATION)
+*/
 
