@@ -178,6 +178,16 @@
 		src.add_fingerprint(usr)
 		M.put_in_active_hand(src)
 
+//LOADOUT ITEM
+/obj/item/storage/secure/briefcase/portable
+	name = "Portable Secure Briefcase"
+	desc = "A not-so large briefcase with a digital locking system. Holds less, but fits into more."
+	w_class = ITEMSIZE_NORMAL
+
+	starts_with = list(
+		/obj/item/paper,
+		/obj/item/pen
+	)
 //DONATOR ITEM
 
 /obj/item/storage/secure/briefcase/vicase

@@ -405,6 +405,18 @@
 	icon_opened = "largebinopen"
 	icon_closed = "largebin"
 
+/obj/structure/closet/crate/bin/attackby(obj/item/W as obj, mob/user as mob)
+	if(W.is_wrench() && !src.opened)
+		if(anchored)
+			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
+			playsound(src, O.usesound, 50, 1)
+			anchored = FALSE
+
+		else if(!anchored)
+			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
+			playsound(src, O.usesound, 50, 1)
+			anchored = TRUE
+
 /obj/structure/closet/crate/radiation
 	name = "radioactive gear crate"
 	desc = "A crate with a radiation sign on it."
