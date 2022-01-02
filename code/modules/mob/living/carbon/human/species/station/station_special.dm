@@ -53,7 +53,8 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_wings,
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
-		/mob/living/carbon/human/proc/regenerate) //Xenochimera get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/regenerate,
+		/mob/living/carbon/human/proc/commune) //Xenochimera get all the special verbs since they can't select traits.
 
 	virus_immune = 1 // They practically ARE one.
 	min_age = 18
