@@ -409,12 +409,12 @@
 	if(W.is_wrench() && !src.opened)
 		if(anchored)
 			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
-			playsound(src, O.usesound, 50, 1)
+			playsound(src, W.usesound, 50, 1)
 			anchored = FALSE
 
 		else if(!anchored)
 			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
-			playsound(src, O.usesound, 50, 1)
+			playsound(src, W.usesound, 50, 1)
 			anchored = TRUE
 
 /obj/structure/closet/crate/radiation
