@@ -456,7 +456,7 @@
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
-				target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel maded anew.</span>")
+				target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
 
 
 /mob/living/carbon/human/proc/biothermic_adapt(mob/living/carbon/human/target in view(1))
@@ -547,7 +547,7 @@
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
-				target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel maded anew.</span>")
+				target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
 
 /mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Atmospheric Biomorph"
