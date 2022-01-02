@@ -428,6 +428,9 @@
 		choice = input(src, "How should we adapt our respiration?") as null|anything in gas_choices
 	if(!choice || !target)
 		return
+	if(target.isSynthetic())
+		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
+		return
 	var/resp_biomorph = gas_choices[choice]
 	if(target == src)
 		to_chat(src,"<span class = 'Notice'>We begin modifying our internal structure.</span>")
@@ -477,6 +480,9 @@
 		biothermic_adapt = input(src, "How should we modify our core temperature?") as null|anything in temperature_options
 
 	if(!biothermic_adapt || !target)
+		return
+	if(target.isSynthetic())
+		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
 		return
 	if(target == src)
 		to_chat(src, "<span class = 'Notice'>We begin modifying our internal biothermic structure.</span>")
@@ -567,7 +573,9 @@
 		atmos_biomorph = input(src, "How should we modify our atmospheric sensitivity?") as null|anything in pressure_options
 	if(!atmos_biomorph || !target)
 		return
-
+	if(target.isSynthetic())
+		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
+		return
 	if(target == src)
 		to_chat("<span class = 'Notice'>We begin modifying our skin...</span>")
 	else
