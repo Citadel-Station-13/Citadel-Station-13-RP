@@ -19,7 +19,7 @@
 	base_species = "Xenochimera"
 	selects_bodytype = TRUE
 
-	num_alternate_languages = 2
+	num_alternate_languages = 5
 	secondary_langs = list("Sol Common")
 
 	//color_mult = 1 //It seemed to work fine in testing, but I've been informed it's unneeded.
@@ -57,7 +57,7 @@
 
 	virus_immune = 1 // They practically ARE one.
 	min_age = 18
-	max_age = 80
+	max_age = 200
 
 	blurb = "Some amalgamation of different species from across the universe,with extremely unstable DNA, making them unfit for regular cloners. \
 	Widely known for their voracious nature and violent tendencies when stressed or left unfed for long periods of time. \
