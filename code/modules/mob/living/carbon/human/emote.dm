@@ -30,7 +30,7 @@
 				m_type = 1
 
 		//Machine-only emotes
-		if("ping", "beep", "buzz", "yes", "ye", "no", "rcough", "rsneeze")
+		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze")
 
 			if(!isSynthetic())
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
@@ -59,6 +59,12 @@
 			else if(act == "no")
 				display_msg = "emits a negative blip"
 				use_sound = 'sound/machines/synth_no.ogg'
+			else if(act == "dwoop")
+				display_msg = "chirps happily"
+				use_sound = 'sound/machines/dwoop.ogg'
+			else if(act == "scary")
+				display_msg = "emits a disconcerting tone"
+				use_sound = 'sound/machines/synth_scary.ogg'
 			else if(act == "rcough")
 				display_msg = "emits a robotic cough"
 				if(get_gender() == FEMALE)
