@@ -4,9 +4,17 @@
 /obj/effect/landmark/map_data/virgo3b
     height = 6
 
+/obj/effect/overmap/visitable/sector/virgo3b // Just a placeholder for when the map isnt loaded
+
 // Triumph
 /obj/effect/landmark/map_data/triumph
 	height = 4
+
+
+// See beach.dm for more details on this. Placeholder for now to stop compiling issues -Bloop
+/obj/away_mission_init/beachcave
+	name = "away mission initializer - beachcave"
+
 
 
 

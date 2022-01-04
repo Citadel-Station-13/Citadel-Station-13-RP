@@ -54,3 +54,46 @@
 /obj/machinery/computer/shuttle_control/explore/securiship
 	name = "short jump console"
 	shuttle_tag = "Securiship Shuttle"
+
+////////////////////////////////////////
+////////      Medivac      /////////////
+////////////////////////////////////////
+/*
+/datum/shuttle/autodock/overmap/medivac
+	name = "Medivac Shuttle"
+	warmup_time = 0
+	current_location = "tether_medivac_dock"
+	docking_controller_tag = "medivac_docker"
+	shuttle_area = list(/area/shuttle/medivac/cockpit, /area/shuttle/medivac/general, /area/shuttle/medivac/engines)
+	fuel_consumption = 2
+	move_direction = EAST
+*/
+
+// The 'ship' of the excursion shuttle
+/obj/effect/overmap/visitable/ship/landable/medivac
+	name = "Medivac Shuttle"
+	desc = "A medical evacuation shuttle."
+	vessel_mass = 4000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Medivac Shuttle"
+	fore_dir = EAST
+
+/obj/machinery/computer/shuttle_control/explore/medivac
+	name = "short jump console"
+	shuttle_tag = "Medivac Shuttle"
+
+
+/////////////////////////////
+///Tether specific Shuttles
+/obj/machinery/computer/shuttle_control/tether_backup
+	name = "tether backup shuttle control console"
+	shuttle_tag = "Tether Backup"
+	req_one_access = list(access_heads,access_pilot)
+
+/obj/machinery/computer/shuttle_control/surface_mining_outpost
+	name = "surface mining outpost shuttle control console"
+	shuttle_tag = "Mining Outpost"
+	req_one_access = list(access_mining)
+
+//////////////////////
+
