@@ -537,6 +537,10 @@
 		icon_state = "mohawk"
 		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 
+	mud
+		name = "Mud"
+		icon_state = "mud"
+
 	regulationmohawk
 		name = "Mohawk (Regulation)"
 		icon_state = "mohawk_regulation"
