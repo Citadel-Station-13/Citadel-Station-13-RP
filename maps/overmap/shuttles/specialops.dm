@@ -24,7 +24,7 @@
 	departure_message = "Attention. A NT support vessel is now leaving NSV Triumph."
 
 */
-/*
+
 /datum/shuttle/autodock/overmap/specialops2
 	name = "NDV Phantom"
 	warmup_time = 0
@@ -32,7 +32,7 @@
 	docking_controller_tag = "ert_docker"
 	shuttle_area = list(/area/shuttle/specops/centcom2)
 	fuel_consumption = 0
-*/
+	defer_initialisation = TRUE
 
 // The 'ship' of the excursion shuttle
 /obj/effect/overmap/visitable/ship/landable/specialops2

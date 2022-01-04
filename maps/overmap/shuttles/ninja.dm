@@ -28,7 +28,7 @@
 	departure_message = "Attention. A unregistered vessel is now leaving NSV Triumph."
 
 */
-/*
+
 /datum/shuttle/autodock/overmap/ninja
 	name = "Ninja Shuttle"
 	warmup_time = 0
@@ -36,7 +36,7 @@
 	docking_controller_tag = "ninja_shuttle_docker"
 	shuttle_area = list(/area/shuttle/ninja)
 	fuel_consumption = 0	//Ninja craft dont need fuel
-*/
+	defer_initialisation = TRUE
 
 // The 'ship' of the shuttle
 /obj/effect/overmap/visitable/ship/landable/ninja

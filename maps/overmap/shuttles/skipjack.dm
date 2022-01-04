@@ -23,7 +23,7 @@
 		"triumph_space_starboard_1"
 		)
 */
-/*
+
 /datum/shuttle/autodock/overmap/skipjack
 	name = "Skipjack Shuttle"
 	warmup_time = 0
@@ -31,7 +31,7 @@
 	docking_controller_tag = "skipjack_docker"
 	shuttle_area = list(/area/shuttle/skipjack)
 	fuel_consumption = 0
-*/
+	defer_initialisation = TRUE
 
 // The 'ship' of the excursion shuttle
 /obj/effect/overmap/visitable/ship/landable/skipjack

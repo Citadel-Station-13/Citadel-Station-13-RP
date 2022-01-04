@@ -2277,6 +2277,7 @@
 #include "code\modules\maps\tether\levels\alienship.dm"
 #include "code\modules\maps\tether\levels\debrisfield_vr.dm"
 #include "code\modules\maps\tether\levels\fueldepot.dm"
+#include "code\modules\maps\tether\levels\tether_turfs.dm"
 #include "code\modules\maps\tether\levels\underdark_things.dm"
 #include "code\modules\maps\tether\levels\virgo2.dm"
 #include "code\modules\maps\tether\levels\virgo4.dm"
