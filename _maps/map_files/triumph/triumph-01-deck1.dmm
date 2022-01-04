@@ -4175,6 +4175,9 @@
 /area/tcommsat/computer)
 "oM" = (
 /obj/structure/ladder/up,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "oN" = (
@@ -9038,6 +9041,9 @@
 /area/engineering/break_room)
 "Fy" = (
 /obj/structure/ladder/up,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "FA" = (
@@ -10110,6 +10116,12 @@
 /obj/fiftyspawner/rods,
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/airless/ceiling,
+/area/maintenance/engi_engine)
+"Jg" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
 /area/maintenance/engi_engine)
 "Jh" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/purple{
@@ -22559,7 +22571,7 @@ HN
 Tf
 hY
 IN
-Yp
+Jg
 ke
 xv
 ID

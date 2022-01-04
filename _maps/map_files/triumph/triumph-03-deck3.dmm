@@ -12153,6 +12153,9 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "kcr" = (
@@ -34706,8 +34709,8 @@ oPl
 oPl
 itT
 xuV
-uHP
 eRM
+uHP
 hwo
 hju
 uHP

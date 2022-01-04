@@ -912,6 +912,10 @@
 /obj/machinery/camera/network/cargo,
 /turf/simulated/floor/tiled/steel_grid,
 /area/triumph/surfacebase/mining_main/refinery)
+"cQ" = (
+/obj/structure/grille,
+/turf/simulated/floor/airless,
+/area/space)
 "cV" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -8878,6 +8882,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "zd" = (
@@ -11749,6 +11754,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Hz" = (
@@ -13237,6 +13245,12 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/fitness)
+"Mg" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "Mi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -14481,6 +14495,9 @@
 "PZ" = (
 /obj/structure/railing{
 	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 10
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
@@ -16125,6 +16142,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
+"UJ" = (
+/obj/structure/ladder/up,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/dormitory)
 "UK" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -23946,7 +23970,7 @@ CR
 WE
 dx
 Ki
-oE
+Mg
 gC
 tA
 ii
@@ -24088,7 +24112,7 @@ CR
 WE
 ci
 Ki
-Ou
+UJ
 gC
 tA
 ii
@@ -24475,9 +24499,9 @@ ii
 ii
 ii
 ii
-rC
+cQ
 FO
-rC
+cQ
 Rx
 Ll
 Ht

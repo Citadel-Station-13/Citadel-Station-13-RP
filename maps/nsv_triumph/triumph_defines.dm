@@ -28,12 +28,6 @@
 #define Z_LEVEL_TALON2					23
 
 // Camera Networks
-#define NETWORK_TRIUMPH "Triumph"
-#define NETWORK_TCOMMS "Telecommunications"
-#define NETWORK_OUTSIDE "Outside"
-#define NETWORK_EXPLORATION "Exploration"
-#define NETWORK_XENOBIO "Xenobiology"
-
 /datum/map/triumph
 	name = "Triumph"
 	full_name = "NSV Triumph"
