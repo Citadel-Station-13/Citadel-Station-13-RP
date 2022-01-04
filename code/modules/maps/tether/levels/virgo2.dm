@@ -39,7 +39,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 // -- Datums -- //
 
-/* Temporary Triumph bandaid fix. Throws runtime errors since the map the shuttle is on is not loaded -Bloop
+/* Temporarily added a copy to tether_things.dm as a shuttle datum for a shuttle that isnt loaded in throws runtimes. -Bloop
 /datum/shuttle/autodock/ferry/aerostat
 	name = "Aerostat Ferry"
 	shuttle_area = /area/shuttle/aerostat

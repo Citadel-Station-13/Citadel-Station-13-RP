@@ -1,5 +1,4 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-
 /obj/machinery/computer/security
 	name = "security camera monitor"
 	desc = "Used to access the various cameras on the station."
@@ -146,7 +145,8 @@
 	light_color = "#F9BBFC"
 
 /obj/item/circuitboard/security/xenobio
-	name = T_BOARD("xenobiology camera monitor")
+//	name = T_BOARD("xenobiology camera monitor")  // Macro is loaded after this, dont want to mess with changing its location so just gonna manually name this one
+	name = "xenobiology camera monitor tech board"
 	build_path = /obj/machinery/computer/security/xenobio
 	network = list(NETWORK_XENOBIO)
 	req_access = list()
