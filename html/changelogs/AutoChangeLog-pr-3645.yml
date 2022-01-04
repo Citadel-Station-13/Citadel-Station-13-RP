@@ -1,0 +1,5 @@
+author: "FreeStylaLT"
+delete-after: True
+changes: 
+  - rscadd: "Xenochimera gets 5 alternate languages now.
+tweak: Xenochimera max age set to 200."
