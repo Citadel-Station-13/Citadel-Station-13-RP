@@ -164,102 +164,21 @@ var/global/list/latejoin_shuttle   = list()
 	. = ..()
 	turfs = latejoin_shuttle
 
-//
-// Holodorms
-//
-/obj/machinery/computer/HolodeckControl/holodorm
-	name = "Don't use this one!!!"
-	powerdown_program = "Off"
-	default_program = "Off"
-
-	//Smollodeck
-	active_power_usage = 500
-	item_power_usage = 100
-
-	supported_programs = list(
-	"Off"			= new/datum/holodeck_program(/area/holodeck/holodorm/source_off),
-	"Basic Dorm"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_basic),
-	"Table Seating"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_seating),
-	"Beach Sim"		= new/datum/holodeck_program(/area/holodeck/holodorm/source_beach),
-	"Desert Area"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_desert),
-	"Snow Field"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_snow),
-	"Flower Garden"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_garden),
-	"Space Sim"		= new/datum/holodeck_program(/area/holodeck/holodorm/source_space),
-	"Boxing Ring"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_boxing)
-	)
-
-/obj/machinery/computer/HolodeckControl/holodorm/one
-	name = "dorm one holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_1/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/three
-	name = "dorm three holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_3/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/five
-	name = "dorm five holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_5/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/seven
-	name = "dorm seven holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_7/holo
-
-// Small Ship Holodeck
-/obj/machinery/computer/HolodeckControl/houseboat
-	projection_area = /area/houseboat/holodeck_area
-	powerdown_program = "Turn Off"
-	default_program = "Empty Court"
-
-	supported_programs = list(
-	"Basketball" 		= new/datum/holodeck_program(/area/houseboat/holodeck/basketball),
-	"Thunderdome"		= new/datum/holodeck_program(/area/houseboat/holodeck/thunderdome, list('sound/music/THUNDERDOME.ogg')),
-	"Beach" 			= new/datum/holodeck_program(/area/houseboat/holodeck/beach),
-	"Desert" 			= new/datum/holodeck_program(/area/houseboat/holodeck/desert,
-													list(
-														'sound/effects/weather/wind/wind_2_1.ogg',
-											 			'sound/effects/weather/wind/wind_2_2.ogg',
-											 			'sound/effects/weather/wind/wind_3_1.ogg',
-											 			'sound/effects/weather/wind/wind_4_1.ogg',
-											 			'sound/effects/weather/wind/wind_4_2.ogg',
-											 			'sound/effects/weather/wind/wind_5_1.ogg'
-												 		)
-		 											),
-	"Snowfield" 		= new/datum/holodeck_program(/area/houseboat/holodeck/snow,
-													list(
-														'sound/effects/weather/wind/wind_2_1.ogg',
-											 			'sound/effects/weather/wind/wind_2_2.ogg',
-											 			'sound/effects/weather/wind/wind_3_1.ogg',
-											 			'sound/effects/weather/wind/wind_4_1.ogg',
-											 			'sound/effects/weather/wind/wind_4_2.ogg',
-											 			'sound/effects/weather/wind/wind_5_1.ogg'
-												 		)
-		 											),
-	"Space" 			= new/datum/holodeck_program(/area/houseboat/holodeck/space,
-													list(
-														'sound/ambience/ambispace.ogg',
-														'sound/music/main.ogg',
-														'sound/music/space.ogg',
-														'sound/music/traitor.ogg',
-														)
-													),
-	"Picnic Area" 		= new/datum/holodeck_program(/area/houseboat/holodeck/picnic, list('sound/music/title2.ogg')),
-	"Gaming" 			= new/datum/holodeck_program(/area/houseboat/holodeck/gaming, list('sound/music/traitor.ogg')),
-	"Bunking"			= new/datum/holodeck_program(/area/houseboat/holodeck/bunking, list()),
-	"Turn Off" 			= new/datum/holodeck_program(/area/houseboat/holodeck/off, list())
-	)
 
 // Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
 /obj/machinery/power/supermatter/touch_map_edge()
 	qdel(src)
 
-//Airlock antitox vendor
+
+/* This is extranious, commenting out just to make sure there is no funkyness going on before deleteing - Bloop
+//Airlock antitox venedor
 /obj/machinery/vending/wallmed_airlock
 	name = "Airlock NanoMed"
 	desc = "Wall-mounted Medical Equipment dispenser. This limited-use version dispenses antitoxins with mild painkillers for surface EVAs."
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/reagent_containers/pill/airlock = 10,/obj/item/healthanalyzer = 1)
+	products = list( = 10,/obj/item/healthanalyzer = 1)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
 	req_log_access = access_cmo
 	has_logs = 1
@@ -273,35 +192,13 @@ var/global/list/latejoin_shuttle   = list()
 	. = ..()
 	reagents.add_reagent("anti_toxin", 15)
 	reagents.add_reagent("paracetamol", 5)
-
-//"Red" Armory Door
-/obj/machinery/door/airlock/security/armory
-	name = "Red Armory"
-	//color = ""
-
-/obj/machinery/door/airlock/security/armory/allowed(mob/user)
-	if(get_security_level() in list("green","blue"))
-		return FALSE
-
-	return ..(user)
-
+*/
 
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/shuttle
 
-//Tether-unique network cameras
-/obj/machinery/camera/network/tether
-	network = list(NETWORK_TRIUMPH)
 
-/obj/machinery/camera/network/tcomms
-	network = list(NETWORK_TCOMMS)
-
-/obj/machinery/camera/network/outside
-	network = list(NETWORK_OUTSIDE)
-
-/obj/machinery/camera/network/exploration
-	network = list(NETWORK_EXPLORATION)
 /*
 // Underdark mob spawners
 /obj/tether_away_spawner/underdark_normal
@@ -343,24 +240,8 @@ var/global/list/latejoin_shuttle   = list()
 	)
 */
 
-/obj/machinery/camera/network/research/xenobio
-	network = list(NETWORK_RESEARCH, NETWORK_XENOBIO)
 
-//Camera monitors
-/obj/machinery/computer/security/xenobio
-	name = "xenobiology camera monitor"
-	desc = "Used to access the xenobiology cell cameras."
-	icon_keyboard = "mining_key"
-	icon_screen = "mining"
-	network = list(NETWORK_XENOBIO)
-	circuit = /obj/item/circuitboard/security/xenobio
-	light_color = "#F9BBFC"
 
-/obj/item/circuitboard/security/xenobio
-	name = T_BOARD("xenobiology camera monitor")
-	build_path = /obj/machinery/computer/security/xenobio
-	network = list(NETWORK_XENOBIO)
-	req_access = list()
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/shuttle

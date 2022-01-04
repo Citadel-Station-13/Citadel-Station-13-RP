@@ -276,49 +276,6 @@ var/global/list/latejoin_tram   = list()
 	..()
 	turfs = latejoin_tram
 
-//
-// Holodorms
-//
-/obj/machinery/computer/HolodeckControl/holodorm
-	name = "Don't use this one!!!"
-	powerdown_program = "Off"
-	default_program = "Off"
-
-	//Smollodeck
-	active_power_usage = 500
-	item_power_usage = 100
-
-	supported_programs = list(
-	"Off"			= new/datum/holodeck_program(/area/holodeck/holodorm/source_off),
-	"Basic Dorm"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_basic),
-	"Table Seating"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_seating),
-	"Beach Sim"		= new/datum/holodeck_program(/area/holodeck/holodorm/source_beach),
-	"Desert Area"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_desert),
-	"Snow Field"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_snow),
-	"Flower Garden"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_garden),
-	"Space Sim"		= new/datum/holodeck_program(/area/holodeck/holodorm/source_space),
-	"Boxing Ring"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_boxing)
-	)
-
-/obj/machinery/computer/HolodeckControl/holodorm/one
-	name = "dorm one holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_1/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/three
-	name = "dorm three holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_3/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/five
-	name = "dorm five holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_5/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/seven
-	name = "dorm seven holodeck control"
-	projection_area = /area/crew_quarters/sleep/Dorm_7/holo
-
-/obj/machinery/computer/HolodeckControl/holodorm/warship
-	name = "warship holodeck control"
-	projection_area = /area/mothership/holodeck/holo
 
 // Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
 /obj/machinery/power/supermatter/touch_map_edge()
@@ -355,53 +312,10 @@ var/global/list/latejoin_tram   = list()
 	reagents.add_reagent("paracetamol", 5)
 */
 
-//"Red" Armory Door
-/obj/machinery/door/airlock/security/armory
-	name = "Red Armory"
-	//color = ""
-
-/obj/machinery/door/airlock/security/armory/allowed(mob/user)
-	if(get_security_level() in list("green","blue"))
-		return FALSE
-
-	return ..(user)
-
-
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
 
-//Tether-unique network cameras
-/obj/machinery/camera/network/tether
-	network = list(NETWORK_TETHER)
-
-/obj/machinery/camera/network/tcomms
-	network = list(NETWORK_TCOMMS)
-
-/obj/machinery/camera/network/outside
-	network = list(NETWORK_OUTSIDE)
-
-/obj/machinery/camera/network/exploration
-	network = list(NETWORK_EXPLORATION)
-
-/obj/machinery/camera/network/research/xenobio
-	network = list(NETWORK_RESEARCH, NETWORK_XENOBIO)
-
-//Camera monitors
-/obj/machinery/computer/security/xenobio
-	name = "xenobiology camera monitor"
-	desc = "Used to access the xenobiology cell cameras."
-	icon_keyboard = "mining_key"
-	icon_screen = "mining"
-	network = list(NETWORK_XENOBIO)
-	circuit = /obj/item/circuitboard/security/xenobio
-	light_color = "#F9BBFC"
-
-/obj/item/circuitboard/security/xenobio
-	name = T_BOARD("xenobiology camera monitor")
-	build_path = /obj/machinery/computer/security/xenobio
-	network = list(NETWORK_XENOBIO)
-	req_access = list()
 //
 // ### Wall Machines On Full Windows ###
 // To make sure wall-mounted machines placed on full-tile windows are clickable they must be above the window
