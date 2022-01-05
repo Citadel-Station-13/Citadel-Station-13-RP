@@ -65,8 +65,8 @@
 	path = /obj/item/paicard
 
 /datum/gear/utility/securecase
-	name = "Secure Briefcase"
-	path =/obj/item/storage/secure/briefcase
+	name = "Secure, Portable Briefcase"
+	path =/obj/item/storage/secure/briefcase/portable
 	cost = 2
 
 /datum/gear/utility/laserpointer
