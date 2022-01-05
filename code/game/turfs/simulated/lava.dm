@@ -98,6 +98,6 @@
 		var/obj/item/stack/rods/material = W
 		if(material.get_amount() < 2)
 			return 0
-		else
+		else if(do_after(user, 4))
 			material.use(2)
 			new /obj/structure/catwalk(src)
