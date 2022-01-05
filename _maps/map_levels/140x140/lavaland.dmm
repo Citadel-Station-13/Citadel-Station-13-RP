@@ -2014,6 +2014,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
+"UN" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/curtain/open/privacy{
+	icon_state = "closed";
+	opacity = 1
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "UU" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled,
@@ -7239,7 +7254,7 @@ AO
 AO
 AO
 AO
-TA
+UN
 AO
 AO
 Hr
