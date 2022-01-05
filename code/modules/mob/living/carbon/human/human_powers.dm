@@ -89,6 +89,9 @@
 	var/target = null
 	var/text = null
 
+	if(nutrition < 50)
+		to_chat(src, "<span class 'notice'>You don't have enough energy! Try eating. </span>")
+		return
 	targets += getmobs() //Fill list, prompt user with list
 	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
 
@@ -109,6 +112,7 @@
 	log_say("(COMMUNE to [key_name(M)]) [text]",src)
 
 	to_chat(M, "<font color=#4F49AF>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>")
+	nutrition -= 50
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)

@@ -62,6 +62,7 @@
 	melee_damage_upper = 25
 	attack_sharp = TRUE
 	attack_edge = TRUE
+	taser_kill = 0
 
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'

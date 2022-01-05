@@ -11,6 +11,7 @@
 	min_n2 = 0
 	max_n2 = 0
 	unsuitable_atoms_damage = 15
+	taser_kill = 0 //Humanoid Enemies Are generally not for Taser Kill
 
 	health = 150			// Point of human crit, as of commenting
 	maxHealth = 150
