@@ -416,6 +416,8 @@
 			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
 			playsound(src, W.usesound, 50, 1)
 			anchored = TRUE
+	else
+		..()
 
 /obj/structure/closet/crate/radiation
 	name = "radioactive gear crate"
