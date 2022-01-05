@@ -100,4 +100,4 @@
 			return 0
 		else
 			material.use(2)
-			new /obj/structure/catwalk(src.loc)
+			new /obj/structure/catwalk(src)
