@@ -254,10 +254,13 @@
 //color variations
 
 /obj/structure/bed/chair/sofa
-	sofa_material = "carpet"
+	sofa_material = "black"
 
 /obj/structure/bed/chair/sofa/brown
 	sofa_material = "leather"
+
+/obj/structure/bed/chair/sofa/red
+	sofa_material = "carpet"
 
 /obj/structure/bed/chair/sofa/teal
 	sofa_material = "teal"
@@ -322,6 +325,15 @@
 	icon_state = "sofaend_right"
 
 /obj/structure/bed/chair/sofa/black/corner
+	icon_state = "sofacorner"
+
+/obj/structure/bed/chair/sofa/red/left
+	icon_state = "sofaend_left"
+
+/obj/structure/bed/chair/sofa/red/right
+	icon_state = "sofaend_right"
+
+/obj/structure/bed/chair/sofa/red/corner
 	icon_state = "sofacorner"
 
 /obj/structure/bed/chair/sofa/green/left

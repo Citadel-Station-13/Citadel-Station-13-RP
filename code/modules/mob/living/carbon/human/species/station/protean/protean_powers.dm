@@ -142,7 +142,7 @@
 		return
 
 	//Not enough resources (AND spends the resources, should be the last check)
-	if(!(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < min(10000, refactory.max_storage)))
+	if(refactory.get_stored_material(DEFAULT_WALL_MATERIAL) < min(10000, refactory.max_storage))
 		to_chat(src, "<span class='warning'>You need to be maxed out on normal metal to do this!</span>")
 		return
 

@@ -416,8 +416,7 @@
 			anchor()
 		var/decaying_rods = 0
 		var/decay_heat = 0
-		for(var/i=1,i<=rods.len,i++)
-			var/obj/item/fuelrod/rod = rods[i]
+		for(var/obj/item/fuelrod/rod in rods)
 			if(rod.life > 0 && rod.decay_heat > 0)
 				decay_heat += rod.tick_life()
 				decaying_rods++
@@ -475,18 +474,18 @@
 
 		// Some engines just want to see the world burn.
 		spawn(17 SECONDS)
-			for(var/i=1,i<=rods.len,i++)
-				var/obj/item/fuelrod/rod = rods[i]
-				rod.loc = L
-				rods = new()
-				pipes = new()
+			for(var/obj/item/fuelrod/rod in rods)
+				rod.forceMove(L)
+			rods.Cut()
+			pipes.Cut()
 			empulse(src, decaying_rods * 10, decaying_rods * 100)
 			var/explosion_power = 4 * decaying_rods
 			if(explosion_power < 1) // If you remove the rods but it's over heating, it's still gunna go bang, but without going nuclear.
 				explosion_power = 1
-			if(off_station)
-				explosion_power = explosion_power/3 //Bandaid fix. Reduces effectiveness of using a fission reactor for mining.
 			explosion(L, explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
+/*
+You're stupid.
+I'm commenting this out until I have time to make this less stupid.
 			if(L.z == 13) // underdark z but hardcoded
 				now_you_done_it(L)
 
@@ -504,6 +503,7 @@
 				for (var/i = 0, i < rand(1,3), i++)
 					var/a_problem = /obj/nuclear_mistake_spawner
 					new a_problem(spider_spawn)
+*/
 
 // i know this really shouldn't be the place to put all the code to this but travis is bitching out at me
 // see Citadel-Station-13/Citadel-Station-13-RP#2039 for why i had to shove all this in here

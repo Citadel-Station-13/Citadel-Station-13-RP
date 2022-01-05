@@ -1,0 +1,5 @@
+author: "FreeStylaLT"
+delete-after: True
+changes: 
+  - bugfix: "Large bins can now be wrenched"
+  - rscadd: "a portable version of the secure briefcase, replacing the current one in loadout."
