@@ -35,26 +35,27 @@
 
 
 /proc/generate_chameleon_choices(var/basetype, var/blacklist = list())
-  . = list()
-  var/i = 0 // in case there's a collision with both name/icon_state
-  var/list/icon_state_cache = list()
-  for(var/path in typesof(basetype) - blacklist)
-    i = 0
-    var/obj/item/clothing/C = path
-    var/icon = initial(C.icon)
-    var/icon_state = initial(C.icon_state)
-    if(!icon || !icon_state)
-      continue
-    if(!icon_state_cache[icon])
-      icon_state_cache[icon] = icon_states(icon)
-    if(!(icon_state in icon_state_cache[icon]))      // state doesn't exist, do not let user pick
-      continue
-    var/name = initial(C.name)
-    if(name in .)
-      name += " ([icon_state])"
-    if(name in .)    // STILL?
-      name += " \[[++i]\]"
-    .[name] = path
+	. = list()
+	var/i = 0 // in case there's a collision with both name/icon_state
+	var/list/icon_state_cache = list()
+	for(var/path in typesof(basetype) - blacklist)
+		i = 0
+		var/obj/item/clothing/C = path
+		var/icon = initial(C.icon)
+		var/icon_state = initial(C.icon_state)
+		if(!icon || !icon_state)
+			continue
+		if(!icon_state_cache[icon])
+			icon_state_cache[icon] = icon_states(icon)
+		if(!(icon_state in icon_state_cache[icon]))      // state doesn't exist, do not let user pick
+			continue
+		var/name = initial(C.name)
+		if(name in .)
+			name += " ([icon_state])"
+		if(name in .)    // STILL?
+			name += " \[[++i]\]"
+		.[name] = path
+ 	sortTim(., /proc/cmp_text_asc)
 
 /obj/item/clothing/under/chameleon
 //starts off as black
