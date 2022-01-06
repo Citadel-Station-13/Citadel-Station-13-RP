@@ -9,6 +9,7 @@
 	name = copy.name
 	icon = copy.icon
 	icon_override = copy.icon_override
+	default_worn_icon = copy.default_worn_icon
 	icon_state = copy.icon_state
 	color = copy.color
 	item_state = copy.item_state
