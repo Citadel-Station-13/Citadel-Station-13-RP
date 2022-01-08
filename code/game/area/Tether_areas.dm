@@ -1,5 +1,3 @@
-//	Moved to code/game/areas
-/*
 // //Debug areas
 /area/tether/surfacebase
 	name = "Tether Debug Surface"
@@ -1276,9 +1274,11 @@
 /area/tether/station/visitorhallway/laundry
 	name = "\improper Space Laundry"
 	icon_state = "dk_yellow"
+	lightswitch = 0
 /area/tether/station/visitorhallway/lounge
 	name = "\improper Visitor Lounge"
 	icon_state = "dk_yellow"
+	lightswitch = 0
 
 /area/maintenance/station
 	icon_state = "fsmaint"
@@ -1651,5 +1651,3 @@ area/shuttle/mining_outpost/shuttle
 	excluded |= /area/teleporter/departing
 	excluded |= /area/hallway/station/upper
 	..()
-
-*/

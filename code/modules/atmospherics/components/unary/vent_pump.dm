@@ -67,6 +67,11 @@
 	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_in"
 
+/obj/machinery/atmospherics/unary/vent_pump/positive // For some reason was buried in tether_things.dm -Bloop
+	use_power = USE_POWER_IDLE
+	icon_state = "map_vent_out"
+	external_pressure_bound = ONE_ATMOSPHERE * 1.1
+
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on/atmos
 	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_in"
