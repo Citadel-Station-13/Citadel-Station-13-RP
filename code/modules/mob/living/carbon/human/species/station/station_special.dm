@@ -4,7 +4,7 @@
 
 
 
-/datum/species/xenochimera //Scree's race.
+/datum/species/shapeshifter/xenochimera //Scree's race.
 	name = SPECIES_XENOCHIMERA
 	name_plural = "Xenochimeras"
 	icobase = 'icons/mob/human_races/r_xenochimera.dmi'
@@ -96,6 +96,14 @@
 		"Your skin prickles in the heat."
 		)
 
+	valid_transform_species = list(
+		"Human", "Unathi", "Tajara", "Skrell",
+		"Diona", "Teshari", "Monkey","Sergal",
+		"Akula","Nevrean","Highlander Zorren",
+		"Flatland Zorren", "Vulpkanin", "Vasilissan",
+		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
+		"Wolpin", "Saru", "Sparra")
+
 	//primitive_form = "Farwa"
 
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE//Whitelisted as restricted is broken.
@@ -114,13 +122,14 @@
 		O_INTESTINE =	/obj/item/organ/internal/intestine/xenochimera
 		)
 
+	heal_rate = 0.5
 	flesh_color = "#AFA59E"
 	base_color 	= "#333333"
 	blood_color = "#14AD8B"
 
 	reagent_tag = IS_CHIMERA
 
-/datum/species/xenochimera/handle_environment_special(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/handle_environment_special(var/mob/living/carbon/human/H)
 	//If they're KO'd/dead, they're probably not thinking a lot about much of anything.
 	if(!H.stat)
 		handle_feralness(H)
@@ -147,9 +156,10 @@
 		if(temp_diff >= 50)
 			H.shock_stage = min(H.shock_stage + (temp_diff/20), 160) // Divided by 20 is the same as previous numbers, but a full scale
 			H.eye_blurry = max(5,H.eye_blurry)
+	..()
 
 
-/datum/species/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
 	//Low-ish nutrition has messages and eventually feral
 	var/hungry = H.nutrition <= 200
@@ -339,7 +349,7 @@
 	// HUD update time
 	update_xenochimera_hud(H, danger, feral_state)
 
-/datum/species/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
+/datum/species/shapeshifter/xenochimera/proc/produceCopy(var/datum/species/to_copy,var/list/traits,var/mob/living/carbon/human/H)
 	ASSERT(to_copy)
 	ASSERT(istype(H))
 
@@ -348,7 +358,7 @@
 	if(istext(to_copy))
 		to_copy = GLOB.all_species[to_copy]
 
-	var/datum/species/xenochimera/new_copy = new()
+	var/datum/species/shapeshifter/xenochimera/new_copy = new()
 
 	//Initials so it works with a simple path passed, or an instance
 	new_copy.base_species = to_copy.name
@@ -378,14 +388,14 @@
 
 	return new_copy
 
-/datum/species/xenochimera/get_bodytype()
+/datum/species/shapeshifter/xenochimera/get_bodytype()
 	return base_species
 
-/datum/species/xenochimera/get_race_key()
+/datum/species/shapeshifter/xenochimera/get_race_key()
 	var/datum/species/real = GLOB.all_species[base_species]
 	return real.race_key
 
-/datum/species/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
+/datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)
 	if(H.xenochimera_danger_display)
 		H.xenochimera_danger_display.invisibility = 0
 		if(danger && feral)
@@ -459,7 +469,8 @@
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
-				target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
+				log_and_message_admins("[src]Infected [target] with a virus. (Xenochimera)")
+		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
 
 
 /mob/living/carbon/human/proc/biothermic_adapt(mob/living/carbon/human/target in view(1))
@@ -553,7 +564,8 @@
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
-				target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
+				log_and_message_admins("[src]Infected [target] with a virus. (Xenochimera)")
+		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
 
 /mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Atmospheric Biomorph"
@@ -601,7 +613,8 @@
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
-				target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
+				log_and_message_admins("[src]Infected [target] with a virus. (Xenochimera)")
+		target.visible_message("<span class = 'danger'>[src] pulls the tendrils out!</span>", "<span class = 'warning'>The sensation fades. You feel made anew.</span>")
 
 
 /mob/living/carbon/human/proc/vocal_biomorph()
