@@ -1,0 +1,4 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - bugfix: "masquarade clothing now works with chameleon kits."
