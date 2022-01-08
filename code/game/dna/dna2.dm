@@ -71,7 +71,7 @@ var/global/list/dna_activity_bounds[DNA_SE_LENGTH]
 // Used to determine what each block means (admin hax and species stuff on /vg/, mostly)
 var/global/list/assigned_blocks[DNA_SE_LENGTH]
 
-var/global/list/datum/dna/gene/dna_genes[0]
+var/global/list/datum/gene/dna_genes[0]
 
 /////////////////
 // GENE DEFINES
@@ -213,7 +213,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		//src.species_traits = CS.traits.Copy() //No traits
 		src.base_species = CS.base_species
 		src.blood_color = CS.blood_color
-		
+
 	src.custom_say = character.custom_say
 	src.custom_ask = character.custom_ask
 	src.custom_whisper = character.custom_whisper
