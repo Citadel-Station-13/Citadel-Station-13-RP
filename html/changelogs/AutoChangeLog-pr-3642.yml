@@ -1,0 +1,7 @@
+author: "ktoma36"
+delete-after: True
+changes: 
+  - rscadd: "Checkers holodeck program, mobs in maint (cause people like those?)
+tweak: Added stacks of metal, glass, and rods in various places around the ship"
+  - bugfix: "Runtimes caused by bluespace radios and shuttles"
+  - code_imp: "Ported some old shuttles to use the overmap system. Admin spawn ones still need a little work"
