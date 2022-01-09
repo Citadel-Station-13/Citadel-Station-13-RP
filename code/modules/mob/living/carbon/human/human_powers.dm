@@ -135,7 +135,7 @@
 	src.visible_message("<span class = 'warning'>[src] seems to focus for a few seconds.</span>","You begin to seek [target] out. This may take a while.")
 
 	if(do_after(src, delay))
-		log_and_message_admins("([key_name(src)] COMMUNED to [key_name(M)]) [text]")
+		log_and_message_admins("([key_name(src)] COMMUNED to [key_name(M)]) [text]", src)
 
 		to_chat(M, "<font color=#4F49AF>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <b>[text]</b></font>")
 		nutrition -= 50
