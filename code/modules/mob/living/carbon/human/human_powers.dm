@@ -121,8 +121,9 @@
 	var/distance_modifier
 	var/turf/target_location = get_turf(M.loc)
 	var/delay
-	if(target_location && target_location.z in GLOB.using_map.station_levels)
-		distance_modifier = 0	//No additional values if they're on-station
+	if(target_location)
+		if(target_location.z in GLOB.using_map.station_levels)
+			distance_modifier = 0	//No additional values if they're on-station
 	else
 		distance_modifier = distance_mod	//No quick snapchatting with someone off-station
 
