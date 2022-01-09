@@ -2453,8 +2453,8 @@
 	dir = 8
 	},
 /obj/structure/table/rack/shelf,
-/obj/random/fishing_junk,
 /obj/random/tool,
+/obj/random/toolbox,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "bVl" = (
@@ -2738,8 +2738,8 @@
 /area/hallway/primary/aft)
 "cfh" = (
 /obj/structure/table/rack/shelf,
-/obj/random/fishing_junk,
 /obj/random/tool,
+/obj/random/toolbox,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "cgj" = (
@@ -4580,13 +4580,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
 "dFA" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/maintenance/rnd{
-	req_access = list(47)
+/obj/machinery/atmospherics/pipe/simple/hidden/yellow{
+	dir = 8
 	},
-/obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/plating,
-/area/maintenance/chapel)
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/area/shuttle/excursion/general)
 "dFG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -15771,6 +15769,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
 "lNc" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/gaycarpet,
 /area/crew_quarters/clownoffice)
 "lNi" = (
@@ -19394,6 +19395,9 @@
 /turf/simulated/floor/carpet,
 /area/maintenance/security/starboard)
 "ovo" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/mimeoffice)
 "ovL" = (
@@ -28114,9 +28118,6 @@
 /area/gateway/prep_room)
 "uvs" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable{
-	icon_state = "32-1"
-	},
 /obj/structure/lattice,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
@@ -28130,9 +28131,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+	icon_state = "32-8"
 	},
 /turf/simulated/open,
 /area/maintenance/chapel)
@@ -36204,7 +36203,7 @@ ieD
 qsk
 oKU
 bYS
-hYe
+bYS
 xsI
 xsI
 mAF
@@ -36764,7 +36763,7 @@ nIK
 mAF
 mAF
 ouB
-tFr
+dFA
 hYe
 hYe
 reI
@@ -36773,7 +36772,7 @@ qsk
 cFi
 hYe
 hYe
-hYe
+bYS
 oJL
 mAF
 iWU
@@ -42017,7 +42016,7 @@ wCh
 iEQ
 fwU
 amB
-dFA
+tzK
 kKQ
 akM
 eXX
@@ -45037,7 +45036,7 @@ lsu
 lsu
 lsu
 lJa
-krE
+gMN
 gMN
 lJa
 lsu
@@ -46585,7 +46584,7 @@ vNZ
 ksy
 xwj
 gMN
-krE
+gMN
 lsu
 ugw
 lsu

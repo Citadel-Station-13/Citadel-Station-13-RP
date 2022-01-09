@@ -2096,11 +2096,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
-"hH" = (
-/obj/machinery/shield_diffuser,
-/obj/machinery/atmospherics/pipe/manifold/visible/fuel,
-/turf/simulated/wall/r_wall,
-/area/engineering/portnacelle)
 "hJ" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3162,9 +3157,7 @@
 /area/tcommsat/computer)
 "lh" = (
 /obj/machinery/shield_diffuser,
-/obj/machinery/atmospherics/pipe/manifold/visible/fuel{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/visible/fuel,
 /turf/simulated/wall/r_wall,
 /area/engineering/portnacelle)
 "lj" = (
@@ -4634,13 +4627,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/workshop)
-"qf" = (
-/obj/machinery/shield_diffuser,
-/obj/machinery/atmospherics/pipe/simple/visible/fuel{
-	dir = 9
-	},
-/turf/simulated/wall/r_wall,
-/area/engineering/portnacelle)
 "qg" = (
 /turf/simulated/floor/plating,
 /area/engineering/engine_smes)
@@ -5261,10 +5247,6 @@
 /obj/machinery/vending/snack,
 /turf/simulated/floor/wood,
 /area/engineering/hallway/lower)
-"su" = (
-/obj/machinery/shield_diffuser,
-/turf/simulated/wall/r_wall,
-/area/engineering/portnacelle)
 "sx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -12893,7 +12875,9 @@
 /area/engineering/locker_room)
 "Sk" = (
 /obj/machinery/shield_diffuser,
-/obj/machinery/atmospherics/pipe/simple/visible/fuel,
+/obj/machinery/atmospherics/pipe/manifold/visible/fuel{
+	dir = 4
+	},
 /turf/simulated/wall/r_wall,
 /area/engineering/portnacelle)
 "Sl" = (
@@ -14185,10 +14169,12 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "WI" = (
-/obj/random/trash,
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
-/turf/simulated/floor/carpet,
-/area/maintenance/dormitory)
+/obj/machinery/shield_diffuser,
+/obj/machinery/atmospherics/pipe/simple/visible/fuel{
+	dir = 9
+	},
+/turf/simulated/wall/r_wall,
+/area/engineering/portnacelle)
 "WJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -19138,9 +19124,9 @@ We
 pX
 Sk
 lh
-qf
-su
-su
+Sk
+Sk
+WI
 fN
 fN
 Rg
@@ -19169,9 +19155,9 @@ fN
 pX
 Sk
 Sk
-hH
-su
-su
+lh
+Sk
+WI
 cL
 ID
 ns
@@ -22294,7 +22280,7 @@ ID
 ib
 Tz
 Od
-WI
+jd
 ht
 Px
 fN

@@ -448,10 +448,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/hallway/primary/port)
-"bo" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
-/turf/simulated/floor/plating,
-/area/maintenance/dormitory)
 "bq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -3755,18 +3751,10 @@
 /area/crew_quarters/sleep/Dorm_2)
 "kF" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable{
-	icon_state = "32-1"
-	},
 /obj/structure/lattice,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
 	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
 	},
 /obj/structure/railing,
 /obj/structure/railing{
@@ -3774,6 +3762,9 @@
 	},
 /obj/structure/railing{
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "32-8"
 	},
 /turf/simulated/open,
 /area/maintenance/cargo)
@@ -17494,9 +17485,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
-	},
-/obj/machinery/door/airlock/maintenance/rnd{
-	req_access = list(47)
 	},
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -35042,7 +35030,7 @@ Jw
 MJ
 ai
 oE
-bo
+oE
 tA
 ii
 ii

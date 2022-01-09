@@ -23540,9 +23540,6 @@
 /area/space)
 "sCx" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/cable{
-	icon_state = "32-1"
-	},
 /obj/structure/lattice,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
@@ -23556,9 +23553,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+	icon_state = "32-8"
 	},
 /turf/simulated/open,
 /area/maintenance/fore)
@@ -28966,11 +28961,6 @@
 /obj/structure/bed/roller,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"wIY" = (
-/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison,
-/obj/effect/decal/cleanable/blood/oil,
-/turf/simulated/floor/plating,
-/area/maintenance/medbay/aft)
 "wJC" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -33550,7 +33540,7 @@ lzT
 ezT
 kLL
 sQl
-vrz
+sQl
 sQl
 iCM
 wAm
@@ -33708,7 +33698,7 @@ pRL
 glo
 wwY
 rhL
-wIY
+moW
 suL
 uHP
 uHP
@@ -36521,7 +36511,7 @@ shT
 wpE
 boQ
 nwe
-vrz
+sQl
 iCM
 oRK
 ezT
