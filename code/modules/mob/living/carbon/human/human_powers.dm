@@ -119,12 +119,12 @@
 	//The further the target is, the longer it takes.
 	var/distance = get_dist(M.loc,loc)
 	var/distance_modifier
-	var/target_location = get_turf(M.loc)
+	var/turf/target_location = get_turf(M.loc)
 	var/delay
 	if(target_location && target_location.z in GLOB.using_map.station_levels)
 		distance_modifier = 0	//No additional values if they're on-station
 	else
-		distance_modifier = 60 SECONDS	//No quick snapchatting with someone off-station
+		distance_modifier = distance_mod	//No quick snapchatting with someone off-station
 
 	var/delay_mod = clamp((distance / 2), 1, 30) SECONDS + distance_modifier	//Half of distance worth of seconds, up to thirty, plus 60 if they're off-station. Max: 90, min: 1.
 	if(delay_mod > default_delay)
