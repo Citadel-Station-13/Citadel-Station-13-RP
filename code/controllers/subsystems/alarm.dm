@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(alarms)
 	name = "Alarms"
 	wait = 20
 	init_order = INIT_ORDER_ALARMS
-	flags = SS_NO_TICK_CHECK
+
 	var/static/list/datum/alarm/all_handlers
 	// We manually initialize the alarm handlers instead of looping over all existing types
 	// to make it possible to write: camera.triggerAlarm() rather than alarm_manager.managers[datum/alarm_handler/camera].triggerAlarm() or a variant thereof.

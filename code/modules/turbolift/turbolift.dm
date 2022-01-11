@@ -23,16 +23,18 @@
 		open_doors()
 
 // Enter priority mode, blocking all calls for awhile
-/datum/turbolift/proc/priority_mode(var/time = 30 SECONDS)
+/datum/turbolift/proc/priority_mode(time = 30 SECONDS)
 	priority_mode = TRUE
 	cancel_pending_floors()
 	update_ext_panel_icons()
 	control_panel_interior.audible_message("<span class='info'>This turbolift is responding to a priority call.  Please exit the lift when it stops and make way.</span>")
-	spawn(time)
-		priority_mode = FALSE
-		update_ext_panel_icons()
+	addtimer(CALLBACK(src, .proc/on_prority_finish), time)
 
-/datum/turbolift/proc/update_fire_mode(var/new_fire_mode)
+/datum/turbolift/proc/on_prority_finish()
+	priority_mode = FALSE
+	update_ext_panel_icons()
+
+/datum/turbolift/proc/update_fire_mode(new_fire_mode)
 	if(fire_mode == new_fire_mode)
 		return
 	fire_mode = new_fire_mode
@@ -77,24 +79,20 @@
 		if(floor.ext_panel)
 			floor.ext_panel.update_icon()
 
-/datum/turbolift/proc/doors_are_open(var/datum/turbolift_floor/use_floor = current_floor)
+/datum/turbolift/proc/doors_are_open(datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
 		if(!door.density)
 			return 1
 	return 0
 
-/datum/turbolift/proc/open_doors(var/datum/turbolift_floor/use_floor = current_floor)
+/datum/turbolift/proc/open_doors(datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
-		//door.command("open")
-		spawn(0)
-			door.open()
+		INVOKE_ASYNC(door, /obj/machinery/door/airlock/proc/open)
 	return
 
 /datum/turbolift/proc/close_doors(var/datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
-		//door.command("close")
-		spawn(0)
-			door.close()
+		INVOKE_ASYNC(door, /obj/machinery/door/airlock/proc/close)
 	return
 
 /datum/turbolift/proc/do_move()
@@ -175,7 +173,7 @@
 
 	return (next_floor.delay_time || move_delay || 30)
 
-/datum/turbolift/proc/queue_move_to(var/datum/turbolift_floor/floor)
+/datum/turbolift/proc/queue_move_to(datum/turbolift_floor/floor)
 	if(!floor || !(floor in floors) || (floor in queued_floors))
 		return // STOP PRESSING THE BUTTON.
 	floor.pending_move(src)

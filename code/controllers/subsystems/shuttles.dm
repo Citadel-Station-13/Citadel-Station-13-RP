@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(shuttle)
 	wait = 2 SECONDS
 	priority = FIRE_PRIORITY_SHUTTLES
 	init_order = INIT_ORDER_SHUTTLES
-	flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
+	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
 	var/overmap_halted = FALSE						// Whether ships can move on the overmap; used for adminbus.

@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(lighting)
 	return ..()
 
 /datum/controller/subsystem/lighting/Initialize(timeofday)
-	if(!subsystem_initialized)
+	if(!initialized)
 		if (CONFIG_GET(number/starlight))
 			for(var/I in GLOB.sortedAreas)
 				var/area/A = I
@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(lighting)
 					A.luminosity = 0
 
 		create_all_lighting_objects()
-		subsystem_initialized = TRUE
+		initialized = TRUE
 
 	fire(FALSE, TRUE)
 
@@ -84,5 +84,5 @@ SUBSYSTEM_DEF(lighting)
 
 
 /datum/controller/subsystem/lighting/Recover()
-	subsystem_initialized = SSlighting.subsystem_initialized
+	initialized = SSlighting.initialized
 	..()

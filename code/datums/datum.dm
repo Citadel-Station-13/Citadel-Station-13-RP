@@ -19,25 +19,39 @@
 
 	/// Active timers with this datum as the target
 	var/list/active_timers
-	/// Components attached to this datum
-	var/list/datum_components
 	/// Status traits attached to this datum
 	var/list/status_traits
-	/// Any datum registered to receive signals from this datum is in this list
+	/**
+	  * Components attached to this datum
+	  *
+	  * Lazy associated list in the structure of `type:component/list of components`
+	  */
+	var/list/datum_components
+	/**
+	  * Any datum registered to receive signals from this datum is in this list
+	  *
+	  * Lazy associated list in the structure of `signal:registree/list of registrees`
+	  */
 	var/list/comp_lookup
-	/// List of callbacks for signal procs
+	/// Lazy associated list in the structure of `signals:proctype` that are run when the datum receives that signal
 	var/list/list/datum/callback/signal_procs
+
 	/// Is this datum capable of sending signals?
 	var/signal_enabled = FALSE
+
 	/// Datum level flags
 	var/datum_flags = NONE
 
 	/// A weak reference to another datum
 	var/datum/weakref/weak_reference
 
-#ifdef TESTING
+#ifdef REFERENCE_TRACKING
 	var/running_find_references
 	var/last_find_references = 0
+	#ifdef REFERENCE_TRACKING_DEBUG
+	///Stores info about where refs are found, used for sanity checks and testing
+	var/list/found_refs
+	#endif
 #endif
 
 #ifdef DATUMVAR_DEBUGGING_MODE
@@ -54,38 +68,43 @@
 	SEND_SIGNAL(src, COMSIG_TOPIC, usr, href_list)
 
 /**
-  * Default implementation of clean-up code.
-  *
-  * This should be overridden to remove all references pointing to the object being destroyed, if
-  * you do override it, make sure to call the parent and return it's return value by default
-  *
-  * Return an appropriate QDEL_HINT to modify handling of your deletion;
-  * in most cases this is QDEL_HINT_QUEUE.
-  *
-  * The base case is responsible for doing the following
-  * * Erasing timers pointing to this datum
-  * * Erasing compenents on this datum
-  * * Notifying datums listening to signals from this datum that we are going away
-  *
-  * Returns QDEL_HINT_QUEUE
-  */
+ * Default implementation of clean-up code.
+ *
+ * This should be overridden to remove all references pointing to the object being destroyed, if
+ * you do override it, make sure to call the parent and return it's return value by default
+ *
+ * Return an appropriate [QDEL_HINT][QDEL_HINT_QUEUE] to modify handling of your deletion;
+ * in most cases this is [QDEL_HINT_QUEUE].
+ *
+ * The base case is responsible for doing the following
+ * * Erasing timers pointing to this datum
+ * * Erasing compenents on this datum
+ * * Notifying datums listening to signals from this datum that we are going away
+ *
+ * Returns [QDEL_HINT_QUEUE]
+ */
 /datum/proc/Destroy(force=FALSE, ...)
 	SHOULD_CALL_PARENT(TRUE)
 	tag = null
 	datum_flags &= ~DF_USE_TAG //In case something tries to REF us
-	weak_reference = null	//ensure prompt GCing of weakref.
+	weak_reference = null //ensure prompt GCing of weakref.
 
 	var/list/timers = active_timers
 	active_timers = null
 	for(var/thing in timers)
 		var/datum/timedevent/timer = thing
-		if (timer.spent)
+		if (timer.spent && !(timer.flags & TIMER_DELETE_ME))
 			continue
 		qdel(timer)
 
+	#ifdef REFERENCE_TRACKING
+	#ifdef REFERENCE_TRACKING_DEBUG
+	found_refs = null
+	#endif
+	#endif
+
 	//BEGIN: ECS SHIT
 	signal_enabled = FALSE
-
 	var/list/dc = datum_components
 	if(dc)
 		var/all_components = dc[/datum/component]
@@ -98,6 +117,18 @@
 			qdel(C, FALSE, TRUE)
 		dc.Cut()
 
+	clear_signal_refs()
+	//END: ECS SHIT
+
+	//VORECODE START
+	SSnanoui.close_uis(src)
+	//VORECODE END
+
+	return QDEL_HINT_QUEUE
+
+///Only override this if you know what you're doing. You do not know what you're doing
+///This is a threat
+/datum/proc/clear_signal_refs()
 	var/list/lookup = comp_lookup
 	if(lookup)
 		for(var/sig in lookup)
@@ -113,13 +144,6 @@
 
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
-	//END: ECS SHIT
-
-	//VORECODE START
-	SSnanoui.close_uis(src)
-	//VORECODE END
-
-	return QDEL_HINT_QUEUE
 
 #ifdef DATUMVAR_DEBUGGING_MODE
 /datum/proc/save_vars()

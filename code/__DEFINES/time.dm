@@ -1,20 +1,26 @@
-#define DS2TICKS(DS) ((DS)/world.tick_lag)	// Convert deciseconds to ticks
-#define TICKS2DS(T) ((T) TICKS) 				// Convert ticks to deciseconds
-
-#define SECOND *10
+#define SECOND SECONDS
 #define SECONDS *10
 
-#define MINUTE *600
-#define MINUTES *600
+#define MINUTE MINUTES
+#define MINUTES SECONDS*60
 
-#define HOUR *36000
-#define HOURS *36000
+#define HOUR HOURS
+#define HOURS MINUTES*60
 
-#define DAY *864000
-#define DAYS *864000
+#define DAY DAYS
+#define DAYS HOURS*24
 
-#define TICK *world.tick_lag
 #define TICKS *world.tick_lag
+
+#define MILLISECONDS * 0.01
+
+#define DS2TICKS(DS) ((DS)/world.tick_lag)
+
+#define TICKS2DS(T) ((T) TICKS)
+
+#define MS2DS(T) ((T) MILLISECONDS)
+
+#define DS2MS(T) ((T) * 100)
 
 #define GAMETIMESTAMP(format, wtime) time2text(wtime, format)
 #define WORLDTIME2TEXT(format) GAMETIMESTAMP(format, world.time)

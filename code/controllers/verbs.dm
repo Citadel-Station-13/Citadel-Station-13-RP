@@ -1,6 +1,3 @@
-//TODO: rewrite and standardise all controller datums to the datum/controller type
-//TODO: allow all controllers to be deleted for clean restarts (see WIP master controller stuff) - MC done - lighting done
-
 // Clickable stat() button.
 /obj/effect/statclick
 	name = "Initializing..."
@@ -8,10 +5,20 @@
 
 INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 
-/obj/effect/statclick/Initialize(mapload, text, target) //Don't port this to Initialize it's too critical
+/obj/effect/statclick/Initialize(mapload, text, target)
 	. = ..()
 	name = text
 	src.target = target
+	if(istype(target, /datum)) //Harddel man bad
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/cleanup)
+
+/obj/effect/statclick/Destroy()
+	target = null
+	return ..()
+
+/obj/effect/statclick/proc/cleanup()
+	SIGNAL_HANDLER
+	qdel(src)
 
 /obj/effect/statclick/proc/update(text)
 	name = text
@@ -49,9 +56,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 		if("Master")
 			Recreate_MC()
 			feedback_add_details("admin_verb","RMC")
+			// SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Master Controller")
 		if("Failsafe")
 			new /datum/controller/failsafe()
 			feedback_add_details("admin_verb","RFailsafe")
+			// SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
 
 	message_admins("Admin [key_name_admin(usr)] has restarted the [controller] controller.")
 
@@ -68,41 +77,27 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 /client/proc/debug_controller()
 	set category = "Debug"
 	set name = "Debug Controller"
-	set desc = "Debug the various subsystems/controllers for the game (be careful!)"
+	set desc = "Debug the various periodic loop controllers for the game (be careful!)"
 
 	if(!holder)
 		return
-	var/list/options = list()
-	options["MC"] = Master
-	options["Failsafe"] = Failsafe
-	options["Configuration"] = config
-	options["Legacy Configuration"] = config_legacy
-	for(var/i in Master.subsystems)
-		var/datum/controller/subsystem/S = i
-		if(!istype(S))		//Eh, we're a debug verb, let's have typechecking.
+
+	var/list/controllers = list()
+	var/list/controller_choices = list()
+
+	for (var/datum/controller/controller in world)
+		if (istype(controller, /datum/controller/subsystem))
 			continue
-		var/strtype = "SS[get_end_section_of_type(S.type)]"
-		if(options[strtype])
-			var/offset = 2
-			while(istype(options["[strtype]_[offset] - DUPE ERROR"], /datum/controller/subsystem))
-				offset++
-			options["[strtype]_[offset] - DUPE ERROR"] = S		//Something is very, very wrong.
-		else
-			options[strtype] = S
+		controllers["[controller] (controller.type)"] = controller //we use an associated list to ensure clients can't hold references to controllers
+		controller_choices += "[controller] (controller.type)"
 
-	//Goon PS stuff, and other yet-to-be-subsystem things.
-	options["LEGACY: air_master"] = air_master
-	options["LEGACY: radio_controller"] = radio_controller
-	options["LEGACY: paiController"] = paiController
-	options["LEGACY: cameranet"] = cameranet
-	options["LEGACY: plant_controller"] = plant_controller
+	var/datum/controller/controller_string = input("Select controller to debug", "Debug Controller") as null|anything in controller_choices
+	var/datum/controller/controller = controllers[controller_string]
 
-	var/pick = input(mob, "Choose a controller to debug/view variables of.", "VV controller:") as null|anything in options
-	if(!pick)
+	if (!istype(controller))
 		return
-	var/datum/D = options[pick]
-	if(!istype(D))
-		return
-	feedback_add_details("admin_verb", "DebugController")
-	message_admins("Admin [key_name_admin(mob)] is debugging the [pick] controller.")
-	debug_variables(D)
+	debug_variables(controller)
+
+	feedback_add_details("admin_verb","DebugController")
+	//SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
+	message_admins("Admin [key_name_admin(usr)] is debugging the [controller] controller.")

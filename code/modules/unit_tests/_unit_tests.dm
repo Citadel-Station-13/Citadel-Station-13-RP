@@ -32,6 +32,17 @@
 /// Intended to be used in the manner of `TEST_FOCUS(/datum/unit_test/math)`
 #define TEST_FOCUS(test_path) ##test_path { focus = TRUE; }
 
+/// Constants indicating unit test completion status
+#define UNIT_TEST_PASSED 0
+#define UNIT_TEST_FAILED 1
+#define UNIT_TEST_SKIPPED 2
+
+#define TEST_DEFAULT 1
+#define TEST_DEL_WORLD INFINITY
+
+/// A trait source when adding traits through unit tests
+#define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
+
 // #include "anchored_mobs.dm"
 #include "bespoke_id.dm"
 #include "binary_insert.dm"
@@ -70,6 +81,10 @@
 // #include "teleporters.dm"
 #include "timer_sanity.dm"
 #include "unit_test.dm"
+
+#ifdef REFERENCE_TRACKING //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
+#include "find_reference_sanity.dm"
+#endif
 
 /// CIT TESTS
 // #include "character_saving.dm"
