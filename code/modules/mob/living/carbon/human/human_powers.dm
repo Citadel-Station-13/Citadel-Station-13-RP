@@ -88,8 +88,7 @@
 	var/list/targets = list()
 	var/target = null
 	var/text = null
-	var/default_delay = 5 SECONDS
-	var/distance_mod = 60 SECONDS
+	var/default_distance_mod = #0 SECONDS
 
 	if(nutrition < 50)
 		to_chat(src, "<span class = 'notice'>You don't have enough energy! Try eating. </span>")
@@ -127,15 +126,11 @@
 	else
 		distance_modifier = distance_mod	//No quick snapchatting with someone off-station
 
-	var/delay_mod = clamp((distance / 2), 1, 30) SECONDS + distance_modifier	//Half of distance worth of seconds, up to thirty, plus 60 if they're off-station. Max: 90, min: 1.
-	if(delay_mod > default_delay)
-		delay = delay_mod
-	else
-		delay = default_delay
+	var/delay_mod = clamp((distance / 2), 1, 8) SECONDS + default_distance_modifier	//Half of distance worth of seconds, up to 8, plus 30 if they're off-station. Max: 38, min: 1.
 	src.visible_message("<span class = 'warning'>[src] seems to focus for a few seconds.</span>","You begin to seek [target] out. This may take a while.")
 
 	if(do_after(src, delay))
-		log_and_message_admins("([key_name(src)] COMMUNED to [key_name(M)]) [text]", src)
+		log_and_message_admins("COMMUNED to [key_name(M)]) [text]", src)
 
 		to_chat(M, "<font color=#4F49AF>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <b>[text]</b></font>")
 		nutrition -= 50
