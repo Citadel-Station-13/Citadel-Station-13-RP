@@ -6847,6 +6847,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
+"xE" = (
+/obj/machinery/atmospherics/pipe/simple/visible/fuel{
+	dir = 4
+	},
+/turf/space,
+/area/engineering/portnacelle)
 "xF" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction,
 /obj/machinery/atmospherics/unary/outlet_injector{
@@ -18837,10 +18843,10 @@ fN
 LO
 ID
 We
+xE
 lc
 lc
-lc
-lc
+xE
 lc
 lc
 fN
@@ -18868,10 +18874,10 @@ Bs
 Fh
 fN
 fN
+xE
 lc
 lc
-lc
-lc
+xE
 lc
 lc
 cL
@@ -18979,10 +18985,10 @@ fN
 LO
 ID
 We
+xE
 lc
 lc
-lc
-lc
+xE
 lc
 lc
 fN
@@ -19010,10 +19016,10 @@ Bs
 Jc
 fN
 fN
+xE
 lc
 lc
-lc
-lc
+xE
 lc
 lc
 cL

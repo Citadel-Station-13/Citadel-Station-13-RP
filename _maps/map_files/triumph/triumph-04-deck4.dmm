@@ -9457,13 +9457,6 @@
 /obj/random/tool,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
-"hdR" = (
-/obj/structure/table/woodentable,
-/obj/item/stack/material/steel{
-	amount = 50
-	},
-/turf/simulated/floor/plating,
-/area/vacant/vacant_bar)
 "hdY" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -42430,7 +42423,7 @@ fCb
 lxU
 vyT
 tlr
-hdR
+vAH
 aeS
 iYc
 iYc

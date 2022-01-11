@@ -1397,7 +1397,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_access = list(55)
+	req_one_access = list(30, 35, 47, 77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -5234,11 +5234,11 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "eoP" = (
-/obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "atmos_out";
-	name = "Atmos Intake Control";
-	output_tag = "atmos_in";
-	sensors = list("atmos_intake" = "Tank")
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
@@ -5491,6 +5491,9 @@
 	dir = 4
 	},
 /obj/machinery/meter,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "eDb" = (
@@ -6021,6 +6024,15 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/rnd/xenobiology)
+"eUy" = (
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 6
+	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/test_area)
 "eUH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -7690,9 +7702,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/maintenance/rnd{
-	name = "Xenoflora Maintenance Access";
-	req_access = list(55)
+/obj/machinery/door/airlock/glass_research{
+	name = "Xenoflora Research";
+	req_one_access = list(30, 35, 47, 77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -9043,7 +9055,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_access = list(55)
+	req_one_access = list(30, 35, 47, 77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -9502,6 +9514,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
+"hNf" = (
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/test_area)
 "hNx" = (
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled,
@@ -14867,6 +14885,9 @@
 	name = "Toxins Input Connector"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "mmS" = (
@@ -19804,7 +19825,14 @@
 	},
 /obj/machinery/button/ignition{
 	id = "burn_chamber";
-	pixel_y = 24
+	pixel_y = 36
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "burn_chamber_v";
+	name = "Burn Chamber Vent";
+	pixel_x = 4;
+	pixel_y = 28;
+	req_access = list(55)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
@@ -23664,7 +23692,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_access = list(55)
+	req_one_access = list(30, 35, 47, 77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -26759,6 +26787,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass/hidden/steel{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "uYQ" = (
@@ -27245,7 +27276,11 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/outlet_injector,
+/obj/machinery/atmospherics/unary/outlet_injector{
+	frequency = 1445;
+	id = "burn_in";
+	volume_rate = 700
+	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "vqy" = (
@@ -27558,12 +27593,6 @@
 /area/rnd/xenobiology/xenoflora_storage)
 "vFJ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "atmos_out";
-	name = "Atmos Intake Control";
-	output_tag = "atmos_in";
-	sensors = list("atmos_intake" = "Tank")
-	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -27823,7 +27852,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_access = list(55)
+	req_one_access = list(30, 35, 47, 77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -42756,7 +42785,7 @@ hzF
 htA
 uYQ
 pmg
-eoP
+xUk
 hja
 bgP
 pOf
@@ -43461,7 +43490,7 @@ qEn
 xFZ
 eIF
 mNq
-bHG
+eoP
 xUk
 gzi
 gzi
@@ -43745,7 +43774,7 @@ qEn
 aur
 qSo
 pjO
-xUk
+hNf
 xUk
 xUk
 gzi
@@ -44029,7 +44058,7 @@ qEn
 aur
 qSo
 pjO
-pFA
+eUy
 khI
 rLP
 mUK
