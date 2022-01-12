@@ -8,11 +8,10 @@
 	food_color = "#A34719"
 	can_burn_food = 1
 	var/datum/looping_sound/oven/oven_loop
-	active_power_usage = 60 KILOWATTS
-	//Based on a double deck electric convection oven
-	//Based on these fucking nuts it's the 27th century they can heat up faster
+	active_power_usage = 6 KILOWATTS
+	//Based on a double deck electric convection oven, Edit: Instead of taking
 
-	resistance = 16000
+	resistance = 3200
 	idle_power_usage = 2 KILOWATTS
 	//uses ~3% power to stay warm
 	optimal_power = 0.2
