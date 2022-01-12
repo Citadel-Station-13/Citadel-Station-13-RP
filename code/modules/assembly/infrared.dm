@@ -38,7 +38,7 @@
 	if(on)
 		return
 	on = TRUE
-	Refresh()
+	Rebuild()
 	update_icon()
 	START_PROCESSING(SSfastprocess, src)
 
@@ -46,8 +46,7 @@
 	if(!on)
 		return
 	on = FALSE
-	if(head)
-		QDEL_NULL(head)
+	Rebuild()
 	update_icon()
 	STOP_PROCESSING(SSfastprocess, src)
 
@@ -91,7 +90,7 @@
 		head.Propagate()
 
 /obj/item/assembly/infra/process(delta_time)
-	if(!on || !loc || QDELETED(src)
+	if(!on || !loc || QDELETED(src))
 		Rebuild()
 		return PROCESS_KILL
 	if(!head)
@@ -163,7 +162,7 @@
 	set name = "Rotate Infrared Laser Clockwise"
 	set category = "Object"
 	set src in usr
-	
+
 	setDir(turn(dir, 90))
 
 /***************************IBeam*********************************/
@@ -177,6 +176,7 @@
 	/// the next beam
 	var/obj/effect/beam/i_beam/next
 	/// the previous beam
+	var/obj/effect/beam/i_beam/prev
 	/// master assembly
 	var/obj/item/assembly/infra/master
 	/// are we visible?
@@ -193,7 +193,7 @@
 		visible = _visible
 	if(_prev)
 		prev = _prev
-	invisibility = visible? 0 : INVISIBILITY_ABSTRACT
+	invisibility = visible? 0 : 101
 
 /obj/effect/beam/i_beam/Destroy()
 	master = null
@@ -242,9 +242,8 @@
 		if(propagate > 0)
 			Propagate()
 		return
-	var/turf/T = isturf(loc) && loc
-	// propagate vis and force rest to check
-	invisibility = visible? 0 : INVISIBILITY_ABSTRACT
+	// propagate vis and force rest to checks
+	invisibility = visible? 0 : 101
 	if(next)
 		next.visible = visible
 		next.Refresh()
@@ -252,7 +251,7 @@
 /obj/effect/beam/i_beam/proc/SetVisible(new_vis)
 	visible = new_vis
 	Refresh()
-	
+
 /obj/effect/beam/i_beam/proc/Trigger(atom/A)
 	if(master)
 		master.trigger_beam()
