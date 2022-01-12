@@ -35,3 +35,18 @@
 	helmet_amount = LAZYLEN(helmets)
 	mask_amount = LAZYLEN(masks)
 	boots_amount = LAZYLEN(boots)
+
+/obj/machinery/suit_storage_unit/ui_state(mob/user)
+	return GLOB.notcontained_state
+
+/obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "SuitStorageUnit", name)
+		ui.open()
+
+
+/obj/machinery/suit_storage_unit/massive/ui_data()
+	return ..()
+/obj/machinery/suit_storage_unit/ui_act(action, params)
+	return ..()
