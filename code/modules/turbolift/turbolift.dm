@@ -87,12 +87,12 @@
 
 /datum/turbolift/proc/open_doors(datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
-		INVOKE_ASYNC(door, /obj/machinery/door/airlock/proc/open)
+		INVOKE_ASYNC(door, /obj/machinery/door/proc/open)
 	return
 
 /datum/turbolift/proc/close_doors(var/datum/turbolift_floor/use_floor = current_floor)
 	for(var/obj/machinery/door/airlock/door in (use_floor ? (doors + use_floor.doors) : doors))
-		INVOKE_ASYNC(door, /obj/machinery/door/airlock/proc/close)
+		INVOKE_ASYNC(door, /obj/machinery/door/proc/close)
 	return
 
 /datum/turbolift/proc/do_move()
