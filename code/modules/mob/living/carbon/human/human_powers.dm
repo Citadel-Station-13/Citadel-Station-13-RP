@@ -88,7 +88,7 @@
 	var/list/targets = list()
 	var/target = null
 	var/text = null
-	var/default_distance_mod = #0 SECONDS
+	var/default_distance_mod = 0 SECONDS
 
 	if(nutrition < 50)
 		to_chat(src, "<span class = 'notice'>You don't have enough energy! Try eating. </span>")
