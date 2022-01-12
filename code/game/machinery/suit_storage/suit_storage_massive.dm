@@ -29,7 +29,6 @@
 		LAZYADD(boots, BOOT_TYPE.new())
 
 	update_amounts()
-	update_icon()
 
 /obj/machinery/suit_storage_unit/massive/proc/update_amounts()
 	suit_amount = LAZYLEN(suits)
