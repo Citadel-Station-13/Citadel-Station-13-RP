@@ -16,6 +16,8 @@
 	var/HELMET_TYPE = null
 	var/obj/item/clothing/mask/MASK = null  //All the stuff that's gonna be stored insiiiiiiiiiiiiiiiiiiide, nyoro~n
 	var/MASK_TYPE = null //Erro's idea on standarising SSUs whle keeping creation of other SSU types easy: Make a child SSU, name it something then set the TYPE vars to your desired suit output. New() should take it from there by itself.
+	var/obj/item/clothing/shoes/magboots/BOOT = null
+	var/BOOT_TYPE = null
 	var/isopen = 0
 	var/islocked = 0
 	var/isUV = 0
@@ -42,6 +44,8 @@
 		HELMET = new HELMET_TYPE(src)
 	if(MASK_TYPE)
 		MASK = new MASK_TYPE(src)
+	if(BOOT_TYPE)
+		BOOT = new BOOT_TYPE(src)
 
 /obj/machinery/suit_storage_unit/update_icon()
 	var/hashelmet = 0
@@ -120,6 +124,10 @@
 		data["mask"] = MASK.name
 	else
 		data["mask"] = null
+	if(BOOT)
+		data["boots"] = BOOT.name
+	else
+		data["boots"] = null
 	data["storage"] = null
 	if(OCCUPANT)
 		data["occupied"] = TRUE
@@ -143,6 +151,8 @@
 					dispense_mask(usr)
 				if("suit")
 					dispense_suit(usr)
+				if("boots")
+					dispense_boots(usr)
 			. = TRUE
 		if("uv")
 			start_UV(usr)
@@ -242,6 +252,13 @@
 		MASK = null
 		return
 
+/obj/machinery/suit_storage_unit/proc/dispense_boots(mob/user as mob)
+	if(!BOOT)
+		return
+	else
+		BOOT.loc = src.loc
+		BOOT = null
+		return
 
 /obj/machinery/suit_storage_unit/proc/dump_everything()
 	islocked = 0 //locks go free
@@ -254,6 +271,9 @@
 	if(MASK)
 		MASK.loc = src.loc
 		MASK = null
+	if(BOOT)
+		BOOT.loc = src.loc
+		BOOT = null
 	if(OCCUPANT)
 		eject_occupant(OCCUPANT)
 	return
@@ -320,6 +340,8 @@
 					SUIT.clean_blood()
 				if(MASK)
 					MASK.clean_blood()
+				if(BOOT)
+					BOOT.clean_blood()
 			else //It was supercycling, destroy everything
 				if(HELMET)
 					HELMET = null
@@ -327,6 +349,8 @@
 					SUIT = null
 				if(MASK)
 					MASK = null
+				if(BOOT)
+					BOOT = null
 				visible_message("<font color='red'>With a loud whining noise, the Suit Storage Unit's door grinds open. Puffs of ashen smoke come out of its chamber.</font>", 3)
 				isbroken = 1
 				isopen = 1
@@ -518,12 +542,25 @@
 			return
 		var/obj/item/clothing/mask/M = I
 		if(MASK)
-			to_chat(user, "<font color=#4F49AF>The unit already contains a mask.</font>")
+			to_chat(user, "<font color=#4F49AF>[src] already contains [MASK].</font>")
 			return
 		to_chat(user, "You load the [M.name] into the storage compartment.")
 		user.drop_item()
 		M.loc = src
 		MASK = M
+		update_icon()
+		updateUsrDialog()
+		return
+	if(istype(I,/obj/item/clothing/shoes/magboots))
+		if(!isopen)
+			return
+		var/obj/item/clothing/shoes/magboots/B = I
+		if(BOOT)
+			to_chat(user, "<font color=#4F49AF>The unit already contains [BOOT].</font>")
+			return
+		user.drop_item()
+		B.loc = src
+		BOOT = B
 		update_icon()
 		updateUsrDialog()
 		return
