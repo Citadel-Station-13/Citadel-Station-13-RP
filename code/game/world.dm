@@ -9,6 +9,9 @@
 	5. The gameSSticker is created.
 
 */
+#define RESTART_COUNTER_PATH "data/round_counter.txt"
+
+GLOBAL_VAR(restart_counter)
 
 GLOBAL_VAR_INIT(tgs_initialized, FALSE)
 
@@ -87,7 +90,14 @@ GLOBAL_LIST(topic_status_cache)
 	//Must be done now, otherwise ZAS zones and lighting overlays need to be recreated.
 	createRandomZlevel()
 
-	Master.Initialize(10, FALSE)
+	if(fexists(RESTART_COUNTER_PATH))
+		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
+		fdel(RESTART_COUNTER_PATH)
+
+	if(NO_INIT_PARAMETER in params)
+		return
+
+	Master.Initialize(10, FALSE, TRUE)
 
 	#ifdef UNIT_TESTS
 	HandleTestRun()
@@ -219,8 +229,8 @@ GLOBAL_LIST(topic_status_cache)
 		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
 	else
 		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
-	sleep(0)	//yes, 0, this'll let Reboot finish and prevent byond memes
-	qdel(src)	//shut it down
+	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src) //shut it down
 
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff
@@ -243,7 +253,6 @@ GLOBAL_LIST(topic_status_cache)
 	return
 	#endif
 
-/*
 	if(TgsAvailable())
 		var/do_hard_reboot
 		// check the hard reboot counter
@@ -264,7 +273,6 @@ GLOBAL_LIST(topic_status_cache)
 			log_world("World hard rebooted at [time_stamp()]")
 			shutdown_logging() // See comment below.
 			TgsEndProcess()
-*/
 
 	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.

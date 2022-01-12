@@ -77,6 +77,7 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_SETTING_UP)
 			setup()
 		if(GAME_STATE_PLAYING)
+			mode.process(wait * 0.1)
 			round_process()
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
@@ -117,16 +118,18 @@ SUBSYSTEM_DEF(ticker)
 	if(!delay)
 		delay = CONFIG_GET(number/round_end_countdown) * 10
 
-	if(delay_end)
-		to_chat(world, "<span class='boldannounce'>An admin has delayed the round end.</span>")
+	var/skip_delay = check_rights()
+	if(delay_end && !skip_delay)
+		to_chat(world, span_boldannounce("An admin has delayed the round end."))
 		return
 
-	to_chat(world, "<span class='boldannounce'>Rebooting World in [DisplayTimeText(delay)]. [reason]</span>")
+	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time
 	//UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
 	while(world.time - start_wait < delay)
-		if(delay_end)		//delayed, break loop.
+		if(delay_end && !skip_delay)
+			to_chat(world, span_boldannounce("Reboot was cancelled by an admin."))
 			break
 		var/timeleft = delay - (world.time - start_wait)
 		// If we have less than 10 seconds left.
@@ -146,7 +149,8 @@ SUBSYSTEM_DEF(ticker)
 	if(delay_end)
 		to_chat(world, "<span class='boldannounce'>Reboot was cancelled by an admin.</span>")
 		return
-	log_game("<span class='boldannounce'>World reboot triggered by ticker. [reason]</span>")
+
+	log_game(span_boldannounce("Rebooting World. [reason]"))
 
 	world.Reboot()
 
@@ -431,9 +435,6 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/round_process()
 	if(current_state != GAME_STATE_PLAYING)
 		return 0
-
-	var/dt = (flags & SS_TICKER)? (wait * world.tick_lag * 0.1) : (wait * 0.1)
-	mode.process(dt)
 
 	var/game_finished = 0
 	var/mode_finished = 0
