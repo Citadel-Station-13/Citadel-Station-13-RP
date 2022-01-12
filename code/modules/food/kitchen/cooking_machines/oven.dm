@@ -9,7 +9,7 @@
 	can_burn_food = 1
 	var/datum/looping_sound/oven/oven_loop
 	active_power_usage = 6 KILOWATTS
-	//Based on a double deck electric convection oven, Edit: Instead of taking
+	//Based on a double deck electric convection oven
 
 	resistance = 3200
 	idle_power_usage = 2 KILOWATTS
