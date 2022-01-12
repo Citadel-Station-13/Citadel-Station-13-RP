@@ -872,6 +872,7 @@
 #include "code\game\machinery\pipe\pipe_recipes.dm"
 #include "code\game\machinery\pipe\pipelayer.dm"
 #include "code\game\machinery\suit_storage\suit_cycler.dm"
+#include "code\game\machinery\suit_storage\suit_storage_massive.dm"
 #include "code\game\machinery\suit_storage\suit_storage_prepared.dm"
 #include "code\game\machinery\suit_storage\suit_storage_unit.dm"
 #include "code\game\machinery\telecomms\broadcaster.dm"
