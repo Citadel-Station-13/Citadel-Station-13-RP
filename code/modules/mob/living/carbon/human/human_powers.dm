@@ -119,14 +119,13 @@
 	var/distance = get_dist(M.loc,loc)
 	var/distance_modifier
 	var/turf/target_location = get_turf(M.loc)
-	var/delay
 	if(target_location)
 		if(target_location.z in GLOB.using_map.station_levels)
 			distance_modifier = 0	//No additional values if they're on-station
 	else
-		distance_modifier = distance_mod	//No quick snapchatting with someone off-station
+		distance_modifier = default_distance_mod	//No quick snapchatting with someone off-station
 
-	var/delay_mod = clamp((distance / 2), 1, 8) SECONDS + default_distance_modifier	//Half of distance worth of seconds, up to 8, plus 30 if they're off-station. Max: 38, min: 1.
+	var/delay = clamp((distance / 2), 1, 8) SECONDS + distance_modifier	//Half of distance worth of seconds, up to 8, plus 30 if they're off-station. Max: 38, min: 1.
 	src.visible_message("<span class = 'warning'>[src] seems to focus for a few seconds.</span>","You begin to seek [target] out. This may take a while.")
 
 	if(do_after(src, delay))
