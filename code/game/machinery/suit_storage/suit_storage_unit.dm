@@ -16,7 +16,7 @@
 	var/HELMET_TYPE = null
 	var/obj/item/clothing/mask/MASK = null  //All the stuff that's gonna be stored insiiiiiiiiiiiiiiiiiiide, nyoro~n
 	var/MASK_TYPE = null //Erro's idea on standarising SSUs whle keeping creation of other SSU types easy: Make a child SSU, name it something then set the TYPE vars to your desired suit output. New() should take it from there by itself.
-	var/obj/item/clothing/shoes/magboots/BOOT = null
+	var/obj/item/clothing/shoes/BOOT = null
 	var/BOOT_TYPE = null
 	var/isopen = 0
 	var/islocked = 0
