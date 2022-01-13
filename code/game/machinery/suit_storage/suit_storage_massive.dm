@@ -4,7 +4,12 @@
 /obj/machinery/suit_storage_closet
 	name = "Suit Storage Automated Closet"
 	desc = "A repurposed automated closet to help manage space and voidsuits. Thank Frag Felix Storage for this gift."
+	icon = 'icons/obj/suitstorage.dmi'
 	icon_state = "automatedCloset"
+
+	anchored = 1
+	density = 1
+
 	var/list/obj/item/clothing/suit/space/suits = list()
 	var/suit_stored_TYPE = /obj/item/clothing/suit/space
 	var/suit_amount
@@ -23,6 +28,7 @@
 
 	var/starting_amount = 5
 	var/max_amount = 10
+	var/ispowered = 1
 
 /obj/machinery/suit_storage_closet/Initialize(mapload, newdir)
 	for(var/i=1;i < starting_amount; i++)
@@ -39,14 +45,15 @@
 	mask_amount = LAZYLEN(masks)
 	boots_amount = LAZYLEN(boots)
 
-/obj/machinery/suit_storage_unit/power_change()
+/obj/machinery/suit_storage_closet/power_change()
 	..()
 	if(!(stat & NOPOWER))
 		ispowered = 1
 	else
+		ispowered = 0
 		//Todo: add lockdown
 
-/obj/machinery/suit_storage_unit/ex_act(severity)
+/obj/machinery/suit_storage_closet/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(prob(50))
@@ -57,7 +64,7 @@
 				dump_everything()
 				qdel(src)
 
-/obj/machinery/suit_storage_unit/attack_hand(mob/user as mob)
+/obj/machinery/suit_storage_closet/attack_hand(mob/user as mob)
 	if(..())
 		return
 	if(stat & NOPOWER)
@@ -66,10 +73,10 @@
 		return 0
 	ui_interact(user)
 
-/obj/machinery/suit_storage_unit/ui_state(mob/user)
+/obj/machinery/suit_storage_closet/ui_state(mob/user)
 	return GLOB.notcontained_state
 
-/obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/suit_storage_closet/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "SuitStorageUnit", name)
@@ -79,7 +86,7 @@
 /obj/machinery/suit_storage_closet/ui_data()
 	return ..()
 
-/obj/machinery/suit_storage_unit/ui_act(action, params)
+/obj/machinery/suit_storage_closet/ui_act(action, params)
 	return ..()
 
 /obj/machinery/suit_storage_closet/proc/dispense_helmet(mob/user as mob, var/list_index)
@@ -144,4 +151,96 @@
 		if(dispense_item)
 			dispense_item.loc = src.loc
 			LAZYREMOVE(boots, dispense_item)
+	return
+
+/obj/machinery/suit_storage_closet/attackby(obj/item/I as obj, mob/user as mob)
+	if(!ispowered)
+		return
+	/*if(I.is_screwdriver())
+		panelopen = !panelopen
+		playsound(src, I.usesound, 100, 1)
+		to_chat(user, "<font color=#4F49AF>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
+		updateUsrDialog()
+		return*/
+	/*if(istype(I, /obj/item/grab))
+		var/obj/item/grab/G = I
+		if(!(ismob(G.affecting)))
+			return
+		if(!isopen)
+			to_chat(user, "<font color='red'>The unit's doors are shut.</font>")
+			return
+		if(!ispowered || isbroken)
+			to_chat(user, "<font color='red'>The unit is not operational.</font>")
+			return
+		if((OCCUPANT) || (helmet_stored) || (suit_stored)) //Unit needs to be absolutely empty
+			to_chat(user, "<font color='red'>The unit's storage area is too cluttered.</font>")
+			return
+		visible_message("[user] starts putting [G.affecting.name] into the Suit Storage Unit.", 3)
+		if(do_after(user, 20))
+			if(!G || !G.affecting) return //derpcheck
+			var/mob/M = G.affecting
+			if(M.client)
+				M.client.perspective = EYE_PERSPECTIVE
+				M.client.eye = src
+			M.loc = src
+			OCCUPANT = M
+			isopen = 0 //close ittt
+
+			//for(var/obj/O in src)
+			//	O.loc = src.loc
+			add_fingerprint(user)
+			qdel(G)
+			updateUsrDialog()
+			update_icon()
+			return
+		return*/
+	if(istype(I,/obj/item/clothing/suit/space))
+		var/obj/item/clothing/suit/space/S = I
+		if(suit_amount >= max_amount)
+			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [S] won't fit!</font>")
+			return
+		to_chat(user, "You load the [S.name] into [src].")
+		user.drop_item()
+		S.loc = src
+		LAZYADD(suits, S)
+		update_amounts()
+		updateUsrDialog()
+		return
+	if(istype(I,/obj/item/clothing/head/helmet))
+		var/obj/item/clothing/head/helmet/H = I
+		if(helmet_amount >= max_amount)
+			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [H] won't fit!</font>")
+			return
+		to_chat(user, "You load the [H.name] into [src].")
+		user.drop_item()
+		H.loc = src
+		LAZYADD(helmets, H)
+		update_amounts()
+		updateUsrDialog()
+		return
+	if(istype(I,/obj/item/clothing/mask))
+		var/obj/item/clothing/mask/M = I
+		if(mask_amount >= max_amount)
+			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [M] won't fit!</font>")
+			return
+		to_chat(user, "You load the [M.name] into [src].")
+		user.drop_item()
+		M.loc = src
+		LAZYADD(masks, M)
+		update_amounts()
+		updateUsrDialog()
+		return
+	if(istype(I,/obj/item/clothing/shoes))
+		var/obj/item/clothing/shoes/B = I
+		if(mask_amount >= max_amount)
+			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [B] won't fit!</font>")
+			return
+		to_chat(user, "You load the [B.name] into [src].")
+		user.drop_item()
+		B.loc = src
+		LAZYADD(boots, B)
+		update_amounts()
+		updateUsrDialog()
+		return
+	updateUsrDialog()
 	return
