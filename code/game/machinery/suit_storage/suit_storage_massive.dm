@@ -82,38 +82,66 @@
 /obj/machinery/suit_storage_unit/ui_act(action, params)
 	return ..()
 
-/obj/machinery/suit_storage_unit/proc/dispense_helmet(mob/user as mob, var/list_index)
-	if(helmet_amount =< 0)
+/obj/machinery/suit_storage_closet/proc/dispense_helmet(mob/user as mob, var/list_index)
+	if(helmet_amount <= 0)
 		return
 	else
-		var/helmet_dispense = LAZYACCESS(helmets, list_index)
+		var/obj/item/clothing/head/helmet/space/helmet_dispense = LAZYACCESS(helmets, list_index)
 		LAZYREMOVE(helmets,helmet_dispense)
 		helmet_dispense.loc = src.loc
 		return
 
-/obj/machinery/suit_storage_unit/proc/dispense_mask(mob/user as mob, var/list_index)
-	if(mask_amount =< 0)
+/obj/machinery/suit_storage_closet/proc/dispense_mask(mob/user as mob, var/list_index)
+	if(mask_amount <= 0)
 		return
 	else
-		var/mask_dispense = LAZYACCESS(masks, list_index)
+		var/obj/item/clothing/mask/breath/mask_dispense = LAZYACCESS(masks, list_index)
 		LAZYREMOVE(masks,mask_dispense)
 		mask_dispense.loc = src.loc
 		return
 
-/obj/machinery/suit_storage_unit/proc/dispense_suit(mob/user as mob, var/list_index)
-	if(suit_amount =< 0)
+/obj/machinery/suit_storage_closet/proc/dispense_suit(mob/user as mob, var/list_index)
+	if(suit_amount <= 0)
 		return
 	else
-		var/suit_dispense = LAZYACCESS(suits, list_index)
+		var/obj/item/clothing/suit/space/suit_dispense = LAZYACCESS(suits, list_index)
 		LAZYREMOVE(suits,suit_dispense)
 		suit_dispense.loc = src.loc
 		return
 
-/obj/machinery/suit_storage_unit/proc/dispense_boot(mob/user as mob, var/list_index)
-	if(boot_amount =< 0)
+/obj/machinery/suit_storage_closet/proc/dispense_boot(mob/user as mob, var/list_index)
+	if(boots_amount <= 0)
 		return
 	else
-		var/boot_dispense = LAZYACCESS(boots, list_index)
+		var/obj/item/clothing/shoes/boots/boot_dispense = LAZYACCESS(boots, list_index)
 		LAZYREMOVE(boots,boot_dispense)
 		boot_dispense.loc = src.loc
 		return
+
+/obj/machinery/suit_storage_closet/proc/dump_everything()
+	helmet_amount = 0
+	suit_amount = 0
+	mask_amount = 0
+	boots_amount = 0
+	var/obj/item/clothing/dispense_item = null
+	while(LAZYLEN(suits)>0)
+		dispense_item = SAFEPICK(suits)
+		if(dispense_item)
+			dispense_item.loc = src.loc
+			LAZYREMOVE(suits, dispense_item)
+	while(LAZYLEN(helmets)>0)
+		dispense_item = SAFEPICK(helmets)
+		if(dispense_item)
+			dispense_item.loc = src.loc
+			LAZYREMOVE(helmets, dispense_item)
+	while(LAZYLEN(masks)>0)
+		dispense_item = SAFEPICK(masks)
+		if(dispense_item)
+			dispense_item.loc = src.loc
+			LAZYREMOVE(masks, dispense_item)
+	while(LAZYLEN(boots)>0)
+		dispense_item = SAFEPICK(boots)
+		if(dispense_item)
+			dispense_item.loc = src.loc
+			LAZYREMOVE(boots, dispense_item)
+	return
