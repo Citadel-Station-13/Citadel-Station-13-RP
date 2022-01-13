@@ -3432,6 +3432,7 @@
 #include "code\modules\tgui\modules\crew_monitor.dm"
 #include "code\modules\tgui\modules\overmap.dm"
 #include "code\modules\tgui\modules\rcon.dm"
+#include "code\modules\tgui\modules\atmos_control.dm"
 #include "code\modules\tgui\states\admin.dm"
 #include "code\modules\tgui\states\always.dm"
 #include "code\modules\tgui\states\conscious.dm"
