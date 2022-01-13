@@ -57,6 +57,15 @@
 				dump_everything()
 				qdel(src)
 
+/obj/machinery/suit_storage_unit/attack_hand(mob/user as mob)
+	if(..())
+		return
+	if(stat & NOPOWER)
+		return
+	if(!user.IsAdvancedToolUser())
+		return 0
+	ui_interact(user)
+
 /obj/machinery/suit_storage_unit/ui_state(mob/user)
 	return GLOB.notcontained_state
 
