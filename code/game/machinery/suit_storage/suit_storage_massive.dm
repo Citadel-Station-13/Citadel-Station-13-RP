@@ -31,7 +31,8 @@
 	var/ispowered = 1
 
 /obj/machinery/suit_storage_closet/Initialize(mapload, newdir)
-	for(var/i=1;i < starting_amount; i++)
+	. = ..()
+	for(var/i=0;i < starting_amount; i++)
 		LAZYADD(suits, new suit_stored_TYPE(src))
 		LAZYADD(helmets, new helmet_stored_TYPE(src))
 		LAZYADD(masks, new mask_stored_TYPE(src))
