@@ -1,5 +1,5 @@
 //////////////////////////////////////
-// SUIT STORAGE UNIT /////////////////
+// suit_stored STORAGE UNIT /////////////////
 //////////////////////////////////////
 
 /obj/machinery/suit_storage_unit
@@ -10,14 +10,14 @@
 	anchored = 1
 	density = 1
 	var/mob/living/carbon/human/OCCUPANT = null
-	var/obj/item/clothing/suit/space/SUIT = null
-	var/SUIT_TYPE = null
-	var/obj/item/clothing/head/helmet/space/HELMET = null
-	var/HELMET_TYPE = null
-	var/obj/item/clothing/mask/MASK = null  //All the stuff that's gonna be stored insiiiiiiiiiiiiiiiiiiide, nyoro~n
-	var/MASK_TYPE = null //Erro's idea on standarising SSUs whle keeping creation of other SSU types easy: Make a child SSU, name it something then set the TYPE vars to your desired suit output. New() should take it from there by itself.
-	var/obj/item/clothing/shoes/BOOT = null
-	var/BOOT_TYPE = null
+	var/obj/item/clothing/suit/space/suit_stored = null
+	var/suit_stored_TYPE = null
+	var/obj/item/clothing/head/helmet/space/helmet_stored = null
+	var/helmet_stored_TYPE = null
+	var/obj/item/clothing/mask/mask_stored = null  //All the stuff that's gonna be stored insiiiiiiiiiiiiiiiiiiide, nyoro~n
+	var/mask_stored_TYPE = null //Erro's idea on standarising SSUs whle keeping creation of other SSU types easy: Make a child SSU, name it something then set the TYPE vars to your desired suit output. New() should take it from there by itself.
+	var/obj/item/clothing/shoes/boots_stored = null
+	var/boots_stored_TYPE = null
 	var/isopen = 0
 	var/islocked = 0
 	var/isUV = 0
@@ -32,22 +32,22 @@
 /obj/machinery/suit_storage_unit/Initialize(mapload, newdir)
 	. = ..()
 	update_icon()
-	if(SUIT_TYPE)
-		SUIT = new SUIT_TYPE(src)
-	if(HELMET_TYPE)
-		HELMET = new HELMET_TYPE(src)
-	if(MASK_TYPE)
-		MASK = new MASK_TYPE(src)
-	if(BOOT_TYPE)
-		BOOT = new BOOT_TYPE(src)
+	if(suit_stored_TYPE)
+		suit_stored = new suit_stored_TYPE(src)
+	if(helmet_stored_TYPE)
+		helmet_stored = new helmet_stored_TYPE(src)
+	if(mask_stored_TYPE)
+		mask_stored = new mask_stored_TYPE(src)
+	if(boots_stored_TYPE)
+		boots_stored = new boots_stored_TYPE(src)
 
 /obj/machinery/suit_storage_unit/update_icon()
 	var/hashelmet = 0
 	var/hassuit = 0
 	var/hashuman = 0
-	if(HELMET)
+	if(helmet_stored)
 		hashelmet = 1
-	if(SUIT)
+	if(suit_stored)
 		hassuit = 1
 	if(OCCUPANT)
 		hashuman = 1
@@ -106,20 +106,20 @@
 	data["safeties"] = safetieson
 	data["uv_active"] = isUV
 	data["uv_super"] = issuperUV
-	if(HELMET)
-		data["helmet"] = HELMET.name
+	if(helmet_stored)
+		data["helmet"] = helmet_stored.name
 	else
 		data["helmet"] = null
-	if(SUIT)
-		data["suit"] = SUIT.name
+	if(suit_stored)
+		data["suit"] = suit_stored.name
 	else
 		data["suit"] = null
-	if(MASK)
-		data["mask"] = MASK.name
+	if(mask_stored)
+		data["mask"] = mask_stored.name
 	else
 		data["mask"] = null
-	if(BOOT)
-		data["boots"] = BOOT.name
+	if(boots_stored)
+		data["boots"] = boots_stored.name
 	else
 		data["boots"] = null
 	data["storage"] = null
@@ -221,53 +221,53 @@
 
 
 /obj/machinery/suit_storage_unit/proc/dispense_helmet(mob/user as mob)
-	if(!HELMET)
+	if(!helmet_stored)
 		return //Do I even need this sanity check? Nyoro~n
 	else
-		HELMET.loc = src.loc
-		HELMET = null
+		helmet_stored.loc = src.loc
+		helmet_stored = null
 		return
 
 
 /obj/machinery/suit_storage_unit/proc/dispense_suit(mob/user as mob)
-	if(!SUIT)
+	if(!suit_stored)
 		return
 	else
-		SUIT.loc = src.loc
-		SUIT = null
+		suit_stored.loc = src.loc
+		suit_stored = null
 		return
 
 
 /obj/machinery/suit_storage_unit/proc/dispense_mask(mob/user as mob)
-	if(!MASK)
+	if(!mask_stored)
 		return
 	else
-		MASK.loc = src.loc
-		MASK = null
+		mask_stored.loc = src.loc
+		mask_stored = null
 		return
 
 /obj/machinery/suit_storage_unit/proc/dispense_boots(mob/user as mob)
-	if(!BOOT)
+	if(!boots_stored)
 		return
 	else
-		BOOT.loc = src.loc
-		BOOT = null
+		boots_stored.loc = src.loc
+		boots_stored = null
 		return
 
 /obj/machinery/suit_storage_unit/proc/dump_everything()
 	islocked = 0 //locks go free
-	if(SUIT)
-		SUIT.loc = src.loc
-		SUIT = null
-	if(HELMET)
-		HELMET.loc = src.loc
-		HELMET = null
-	if(MASK)
-		MASK.loc = src.loc
-		MASK = null
-	if(BOOT)
-		BOOT.loc = src.loc
-		BOOT = null
+	if(suit_stored)
+		suit_stored.loc = src.loc
+		suit_stored = null
+	if(helmet_stored)
+		helmet_stored.loc = src.loc
+		helmet_stored = null
+	if(mask_stored)
+		mask_stored.loc = src.loc
+		mask_stored = null
+	if(boots_stored)
+		boots_stored.loc = src.loc
+		boots_stored = null
 	if(OCCUPANT)
 		eject_occupant(OCCUPANT)
 	return
@@ -300,7 +300,7 @@
 	if(OCCUPANT && safetieson)
 		to_chat(user, "<font color='red'><B>WARNING:</B> Biological entity detected in the confines of the Unit's storage. Cannot initiate cycle.</font>")
 		return
-	if(!HELMET && !MASK && !SUIT && !OCCUPANT) //shit's empty yo
+	if(!helmet_stored && !mask_stored && !suit_stored && !OCCUPANT) //shit's empty yo
 		to_chat(user, "<font color='red'>Unit storage bays empty. Nothing to disinfect -- Aborting.</font>")
 		return
 	to_chat(user, "You start the Unit's cauterisation cycle.")
@@ -328,23 +328,23 @@
 					OCCUPANT.take_organ_damage(0,burndamage)
 		if(i==3) //End of the cycle
 			if(!issuperUV)
-				if(HELMET)
-					HELMET.clean_blood()
-				if(SUIT)
-					SUIT.clean_blood()
-				if(MASK)
-					MASK.clean_blood()
-				if(BOOT)
-					BOOT.clean_blood()
+				if(helmet_stored)
+					helmet_stored.clean_blood()
+				if(suit_stored)
+					suit_stored.clean_blood()
+				if(mask_stored)
+					mask_stored.clean_blood()
+				if(boots_stored)
+					boots_stored.clean_blood()
 			else //It was supercycling, destroy everything
-				if(HELMET)
-					HELMET = null
-				if(SUIT)
-					SUIT = null
-				if(MASK)
-					MASK = null
-				if(BOOT)
-					BOOT = null
+				if(helmet_stored)
+					helmet_stored = null
+				if(suit_stored)
+					suit_stored = null
+				if(mask_stored)
+					mask_stored = null
+				if(boots_stored)
+					boots_stored = null
 				visible_message("<font color='red'>With a loud whining noise, the Suit Storage Unit's door grinds open. Puffs of ashen smoke come out of its chamber.</font>", 3)
 				isbroken = 1
 				isopen = 1
@@ -356,12 +356,12 @@
 	return
 
 /*	spawn(200) //Let's clean dat shit after 20 secs  //Eh, this doesn't work
-		if(HELMET)
-			HELMET.clean_blood()
-		if(SUIT)
-			SUIT.clean_blood()
-		if(MASK)
-			MASK.clean_blood()
+		if(helmet_stored)
+			helmet_stored.clean_blood()
+		if(suit_stored)
+			suit_stored.clean_blood()
+		if(mask_stored)
+			mask_stored.clean_blood()
 		isUV = 0 //Cycle ends
 		update_icon()
 		updateUsrDialog()
@@ -437,7 +437,7 @@
 	if(!ispowered || isbroken)
 		to_chat(usr, "<font color='red'>The unit is not operational.</font>")
 		return
-	if((OCCUPANT) || (HELMET) || (SUIT))
+	if((OCCUPANT) || (helmet_stored) || (suit_stored))
 		to_chat(usr, "<font color='red'>It's too cluttered inside for you to fit in!</font>")
 		return
 	visible_message("[usr] starts squeezing into the suit storage unit!", 3)
@@ -481,7 +481,7 @@
 		if(!ispowered || isbroken)
 			to_chat(user, "<font color='red'>The unit is not operational.</font>")
 			return
-		if((OCCUPANT) || (HELMET) || (SUIT)) //Unit needs to be absolutely empty
+		if((OCCUPANT) || (helmet_stored) || (suit_stored)) //Unit needs to be absolutely empty
 			to_chat(user, "<font color='red'>The unit's storage area is too cluttered.</font>")
 			return
 		visible_message("[user] starts putting [G.affecting.name] into the Suit Storage Unit.", 3)
@@ -507,13 +507,13 @@
 		if(!isopen)
 			return
 		var/obj/item/clothing/suit/space/S = I
-		if(SUIT)
+		if(suit_stored)
 			to_chat(user, "<font color=#4F49AF>The unit already contains a suit.</font>")
 			return
 		to_chat(user, "You load the [S.name] into the storage compartment.")
 		user.drop_item()
 		S.loc = src
-		SUIT = S
+		suit_stored = S
 		update_icon()
 		updateUsrDialog()
 		return
@@ -521,13 +521,13 @@
 		if(!isopen)
 			return
 		var/obj/item/clothing/head/helmet/H = I
-		if(HELMET)
+		if(helmet_stored)
 			to_chat(user, "<font color=#4F49AF>The unit already contains a helmet.</font>")
 			return
 		to_chat(user, "You load the [H.name] into the storage compartment.")
 		user.drop_item()
 		H.loc = src
-		HELMET = H
+		helmet_stored = H
 		update_icon()
 		updateUsrDialog()
 		return
@@ -535,13 +535,13 @@
 		if(!isopen)
 			return
 		var/obj/item/clothing/mask/M = I
-		if(MASK)
-			to_chat(user, "<font color=#4F49AF>[src] already contains [MASK].</font>")
+		if(mask_stored)
+			to_chat(user, "<font color=#4F49AF>[src] already contains [mask_stored].</font>")
 			return
 		to_chat(user, "You load the [M.name] into the storage compartment.")
 		user.drop_item()
 		M.loc = src
-		MASK = M
+		mask_stored = M
 		update_icon()
 		updateUsrDialog()
 		return
@@ -549,12 +549,12 @@
 		if(!isopen)
 			return
 		var/obj/item/clothing/shoes/magboots/B = I
-		if(BOOT)
-			to_chat(user, "<font color=#4F49AF>The unit already contains [BOOT].</font>")
+		if(boots_stored)
+			to_chat(user, "<font color=#4F49AF>The unit already contains [boots_stored].</font>")
 			return
 		user.drop_item()
 		B.loc = src
-		BOOT = B
+		boots_stored = B
 		update_icon()
 		updateUsrDialog()
 		return
