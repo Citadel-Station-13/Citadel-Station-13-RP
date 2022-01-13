@@ -1,27 +1,30 @@
 //A variant of the suitstorage that can store multiple suits at once
 //
 
-/obj/machinery/suit_storage_unit/massive
+/obj/machinery/suit_storage_closet
 	name = "Suit Storage Automated Closet"
 	desc = "A repurposed automated closet to help manage space and voidsuits. Thank Frag Felix Storage for this gift."
 	icon_state = "automatedCloset"
 	var/list/obj/item/clothing/suit/space/suits = list()
-	suit_stored_TYPE = /obj/item/clothing/suit/space
+	var/suit_stored_TYPE = /obj/item/clothing/suit/space
 	var/suit_amount
+
 	var/list/obj/item/clothing/head/helmet/space/helmets = list()
-	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space
+	var/helmet_stored_TYPE = /obj/item/clothing/head/helmet/space
 	var/helmet_amount
+
 	var/list/obj/item/clothing/mask/masks = list()
-	mask_stored_TYPE = /obj/item/clothing/mask/breath
+	var/mask_stored_TYPE = /obj/item/clothing/mask/breath
 	var/mask_amount
+
 	var/list/obj/item/clothing/shoes/boots = list()
-	boots_stored_TYPE = /obj/item/clothing/shoes/boots/jackboots
+	var/boots_stored_TYPE = /obj/item/clothing/shoes/boots/jackboots
 	var/boots_amount
 
 	var/starting_amount = 5
 	var/max_amount = 10
 
-/obj/machinery/suit_storage_unit/massive/Initialize(mapload, newdir)
+/obj/machinery/suit_storage_closet/Initialize(mapload, newdir)
 	for(var/i=1;i < starting_amount; i++)
 		LAZYADD(suits, new suit_stored_TYPE(src))
 		LAZYADD(helmets, new helmet_stored_TYPE(src))
@@ -30,11 +33,18 @@
 
 	update_amounts()
 
-/obj/machinery/suit_storage_unit/massive/proc/update_amounts()
+/obj/machinery/suit_storage_closet/proc/update_amounts()
 	suit_amount = LAZYLEN(suits)
 	helmet_amount = LAZYLEN(helmets)
 	mask_amount = LAZYLEN(masks)
 	boots_amount = LAZYLEN(boots)
+
+/obj/machinery/suit_storage_unit/power_change()
+	..()
+	if(!(stat & NOPOWER))
+		ispowered = 1
+	else
+		//Todo: add lockdown
 
 /obj/machinery/suit_storage_unit/ui_state(mob/user)
 	return GLOB.notcontained_state
@@ -46,7 +56,7 @@
 		ui.open()
 
 
-/obj/machinery/suit_storage_unit/massive/ui_data()
+/obj/machinery/suit_storage_closet/ui_data()
 	return ..()
 
 /obj/machinery/suit_storage_unit/ui_act(action, params)
