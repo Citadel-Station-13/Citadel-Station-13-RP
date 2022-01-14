@@ -56,6 +56,16 @@
 		/mob/living/carbon/human/proc/regenerate,
 		/mob/living/carbon/human/proc/commune) //Xenochimera get all the special verbs since they can't select traits.
 
+	inherent_spells = list(
+		/spell/targeted/chimera/thermal_sight,
+		/spell/targeted/chimera/voice_mimic
+	)
+
+	var/feral_spells = list(
+		/spell/aoe_turf/dissonant_shriek
+	)
+
+	var/has_feral_spells = FALSE
 	virus_immune = 1 // They practically ARE one.
 	min_age = 18
 	max_age = 200
@@ -158,6 +168,19 @@
 			H.eye_blurry = max(5,H.eye_blurry)
 	..()
 
+/datum/species/shapeshifter/xenochimera/proc/add_feral_spells(var/mob/living/carbon/human/H)
+	if(!has_feral_spells && LAZYLEN(feral_spells) > 0)
+		has_feral_spells = TRUE
+		for(var/spell_to_add in feral_spells)
+			var/spell/S = new spell_to_add(H)
+			H.add_spell(S)
+	else
+		return
+
+/datum/species/shapeshifter/xenochimera/proc/remove_feral_spells(var/mob/living/carbon/human/H)
+	H.spellremove()	//This removes ALL spells
+	has_feral_spells = FALSE
+	addtimer(CALLBACK(src, .proc/add_inherent_spells,H), 1 SECOND, TIMER_UNIQUE)	//This doesn't work well without a delay, crappy workaround. Resets all cooldowns, too.
 
 /datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
@@ -238,6 +261,10 @@
 		//we're feral
 		feral_state = TRUE
 
+		//We check if the current spell list already has feral spells.
+		if(!has_feral_spells)
+			add_feral_spells(H)
+
 		//Shock due to mostly halloss. More feral.
 		if(shock && 2.5*H.halloss >= H.traumatic_shock)
 			danger = TRUE
@@ -266,6 +293,8 @@
 		//Did we just finish being feral?
 		if(!feral)
 			feral_state = FALSE
+			if(has_feral_spells)
+				remove_feral_spells(H)
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
 			update_xenochimera_hud(H, danger, feral_state)
