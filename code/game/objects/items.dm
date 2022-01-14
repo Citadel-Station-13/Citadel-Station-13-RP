@@ -943,3 +943,98 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // Like the above, but used for RPED sorting of parts.
 /obj/item/proc/rped_rating()
 	return get_rating()
+
+
+GLOBAL_LIST_INIT(default_onmob_icons, list(
+	slot_l_hand_str = 'icons/mob/onmob/items/lefthand.dmi',\
+	slot_r_hand_str = 'icons/mob/onmob/items/righthand.dmi',\
+	slot_belt_str = 'icons/mob/onmob/onmob_belt.dmi',\
+	slot_back_str = 'icons/mob/onmob/onmob_back.dmi',\
+	slot_l_ear_str = 'icons/mob/onmob/onmob_ears.dmi',\
+	slot_r_ear_str = 'icons/mob/onmob/onmob_ears.dmi',\
+	slot_glasses_str = 'icons/mob/onmob/onmob_eyes.dmi',\
+	slot_wear_id_str = 'icons/mob/onmob/onmob_id.dmi',\
+	slot_w_uniform_str = 'icons/mob/onmob/onmob_under.dmi',\
+	slot_wear_suit_str = 'icons/mob/onmob/onmob_suit.dmi',\
+	slot_head_str = 'icons/mob/onmob/onmob_head.dmi',\
+	slot_shoes_str = 'icons/mob/onmob/onmob_feet.dmi',\
+	slot_wear_mask_str = 'icons/mob/onmob/onmob_mask.dmi',\
+	slot_handcuffed_str = 'icons/mob/onmob/onmob_cuff.dmi',\
+	slot_legcuffed_str = 'icons/mob/onmob/onmob_cuff.dmi',\
+	slot_gloves_str = 'icons/mob/onmob/onmob_hands.dmi',\
+	slot_s_store_str = 'icons/mob/onmob/onmob_belt_mirror.dmi',\
+	slot_tie_str = 'icons/mob/onmob/onmob_accessories.dmi'\
+))
+
+
+/obj/item/proc/use_spritesheet(var/bodytype, var/slot, var/icon_state)
+	if(!sprite_sheets || !sprite_sheets[bodytype])
+		return 0
+	if(slot == slot_r_hand_str || slot == slot_l_hand_str)
+		return 0
+
+	if(icon_state in icon_states(sprite_sheets[bodytype]))
+		return 1
+
+	return (slot != slot_wear_suit_str && slot != slot_head_str)
+
+/obj/item/proc/get_icon_state(mob/user_mob, slot)
+	var/mob_state
+	if(item_state_slots && item_state_slots[slot])
+		mob_state = item_state_slots[slot]
+	else if (item_state)
+		mob_state = item_state
+	else
+		mob_state = icon_state
+	return mob_state
+
+/obj/item/proc/get_mob_overlay(mob/user_mob, slot)
+	var/bodytype = "Default"
+	var/mob/living/carbon/human/user_human
+	if(ishuman(user_mob))
+		user_human = user_mob
+		bodytype = user_human.species.get_bodytype(user_human)
+
+	var/mob_state = get_icon_state(user_mob, slot)
+
+	var/mob_icon
+	var/spritesheet = FALSE
+	if(icon_override)
+		mob_icon = icon_override
+		if(slot == 	slot_l_hand_str || slot == slot_l_ear_str)
+			mob_state = "[mob_state]_l"
+		if(slot == 	slot_r_hand_str || slot == slot_r_ear_str)
+			mob_state = "[mob_state]_r"
+	else if(use_spritesheet(bodytype, slot, mob_state))
+		if(slot == slot_l_ear)
+			mob_state = "[mob_state]_l"
+		if(slot == slot_r_ear)
+			mob_state = "[mob_state]_r"
+		spritesheet = TRUE
+		mob_icon = sprite_sheets[bodytype]
+	else if(item_icons && item_icons[slot])
+		mob_icon = item_icons[slot]
+	else
+		mob_icon = GLOB.default_onmob_icons[slot]//Todo replace either the icons in the dmis or write a proc to find our sprites
+
+	if(user_human)
+		return user_human.species.get_offset_overlay_image(spritesheet, mob_icon, mob_state, color, slot)
+	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
+
+/obj/item/clothing/get_mob_overlay(mob/user_mob, slot)
+	var/image/ret = ..()
+
+	if(slot == slot_l_hand_str || slot == slot_r_hand_str)
+		return ret
+
+	if(ishuman(user_mob))
+		var/mob/living/carbon/human/user_human = user_mob
+		if(blood_DNA && user_human.species.blood_mask)
+			var/image/bloodsies = overlay_image(user_human.species.blood_mask, blood_sprite_state, blood_color, RESET_COLOR)
+			bloodsies.appearance_flags |= NO_CLIENT_COLOR
+			ret.overlays	+= bloodsies
+
+	if(accessories.len)
+		for(var/obj/item/clothing/accessory/A in accessories)
+			ret.overlays |= A.get_mob_overlay(user_mob, slot)
+	return ret

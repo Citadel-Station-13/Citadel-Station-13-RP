@@ -1166,6 +1166,14 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	if((. = ..()))
 		update_wing_showing()
 
+//Stolen from bay for shifting equipment by default and not having to resprite it
+/proc/overlay_image(icon,icon_state,color,flags)
+	var/image/ret = image(icon,icon_state)
+	ret.color = color
+	ret.appearance_flags = (PIXEL_SCALE) | flags
+	return ret
+
+
 //Human Overlays Indexes/////////
 #undef MUTATIONS_LAYER
 #undef SKIN_LAYER
