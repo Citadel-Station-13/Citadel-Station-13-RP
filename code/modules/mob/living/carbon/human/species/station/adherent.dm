@@ -16,7 +16,7 @@
 	genders =                 list(PLURAL)
 //	cyborg_noun =             null
 
-//	icon_template =           'icons/mob/human_races/adherent/template.dmi'
+	icon_template =           'icons/mob/human_races/adherent/template.dmi'
 	icobase =                 'icons/mob/human_races/r_adherent.dmi'
 //	deform =                  'icons/mob/human_races/r_adherent.dmi'
 //	preview_icon =            'icons/mob/human_races/adherent/preview.dmi'
