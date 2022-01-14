@@ -162,6 +162,7 @@
 
 	// Body/form vars.
 	var/list/inherent_verbs = list()									// Species-specific verbs.
+	var/list/inherent_spells = list()									// Species-specific spells.
 	var/has_fine_manipulation = 1							// Can use small items.
 	var/siemens_coefficient = 1								// The lower, the thicker the skin and better the insulation.
 	var/darksight = 2										// Native darksight distance.
@@ -414,8 +415,20 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			H.verbs |= verb_path
 	return
 
+/datum/species/proc/add_inherent_spells(var/mob/living/carbon/human/H)
+	if(inherent_spells)
+		for(var/spell_to_add in inherent_spells)
+			var/spell/S = new spell_to_add(H)
+			H.add_spell(S)
+	return
+
+/datum/species/proc/remove_inherent_spells(var/mob/living/carbon/human/H)
+	H.spellremove()
+	return
+
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
+	add_inherent_spells(H)
 	H.mob_bump_flag = bump_flag
 	H.mob_swap_flags = swap_flags
 	H.mob_push_flags = push_flags

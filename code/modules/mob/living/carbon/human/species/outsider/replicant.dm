@@ -36,6 +36,7 @@
 	flash_mod = 0.9
 	sound_mod = 0.9
 	siemens_coefficient = 0.9
+	heal_rate = 0
 
 	spawn_flags = SPECIES_IS_RESTRICTED
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR
