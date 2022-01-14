@@ -7,6 +7,7 @@
 	icon_state = "brain"
 	action_button_name = "Reset Ident"
 	robotic = ORGAN_ROBOT
+	organ_tag = BP_BRAIN
 	var/next_rename
 	var/rename_delay = 15 MINUTES
 
@@ -124,6 +125,7 @@
 //	eye_icon = 'icons/mob/human_races/adherent/eyes.dmi'
 	icon_state = "eyes"
 	status = ORGAN_ROBOT
+	organ_tag = BP_EYES
 	innate_flash_protection = FLASH_PROTECTION_MAJOR
 
 /obj/item/organ/internal/eyes/adherent/Initialize()
@@ -134,6 +136,7 @@
 	name = "piezoelectric core"
 	icon = 'icons/mob/human_races/adherent/organs.dmi'
 	icon_state = "cell"
+	organ_tag = BP_CELL
 
 /obj/item/organ/internal/powered/cooling_fins
 	name = "cooling fins"

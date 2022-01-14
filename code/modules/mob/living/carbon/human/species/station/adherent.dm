@@ -73,7 +73,7 @@
 	)
 */
 	has_limbs = list(
-		BP_CHEST =  list("path" = /obj/item/organ/external/chest/crystal),
+		BP_TORSO =  list("path" = /obj/item/organ/external/chest/crystal),
 		BP_GROIN =  list("path" = /obj/item/organ/external/groin/crystal),
 		BP_HEAD =   list("path" = /obj/item/organ/external/head/crystal),
 		BP_L_ARM =  list("path" = /obj/item/organ/external/arm/crystal),
