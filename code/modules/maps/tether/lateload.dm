@@ -61,9 +61,9 @@
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/mineral/floor/virgo3b
 
-/datum/map_template/tether_lateload/tether_plains/on_map_loaded(z)
-	. = ..()
-	seed_submaps(list(z), 150, /area/tether/outpost/exploration_plains, /datum/map_template/submap/level_specific/plains)
+// /datum/map_template/tether_lateload/tether_plains/on_map_loaded(z)
+// 	. = ..()
+// 	seed_submaps(list(z), 150, /area/tether/outpost/exploration_plains, /datum/map_template/submap/level_specific/plains)
 
 //////////////////////////////////////////////////////////////////////////////
 //Rogue Mines Stuff

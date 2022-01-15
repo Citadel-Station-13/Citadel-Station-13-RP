@@ -17,7 +17,7 @@
 	//Power used to maintain temperature once it's heated.
 	//Going with 25% of the active power. This is a somewhat arbitrary value
 
-	resistance = 20000	// Approx. 8-9 minutes to heat up.
+	resistance = 10000	// Approx. 4-5 minutes to heat up.
 
 	max_contents = 2
 	container_type = /obj/item/reagent_containers/cooking_container/fryer

@@ -920,6 +920,21 @@
 	req_log_access = access_cmo
 	has_logs = 1
 
+// Modified version from tether_things.dm
+/obj/machinery/vending/wallmed1/public
+	products = list(/obj/item/stack/medical/bruise_pack = 8,/obj/item/stack/medical/ointment = 8,/obj/item/reagent_containers/hypospray/autoinjector = 16,/obj/item/healthanalyzer = 4)
+
+//Airlock antitox vendor. Used on the tether map and a few other POIS and such
+/obj/machinery/vending/wallmed_airlock
+	name = "Airlock NanoMed"
+	desc = "Wall-mounted Medical Equipment dispenser. This limited-use version dispenses antitoxins with mild painkillers for surface EVAs."
+	icon_state = "wallmed"
+	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
+	products = list(/obj/item/reagent_containers/pill/airlock = 20)
+	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
+	req_log_access = access_cmo
+	has_logs = 1
+
 /obj/machinery/vending/wallmed2
 	name = "NanoMed"
 	desc = "A wall-mounted version of the NanoMed, containing only vital first aid equipment."
