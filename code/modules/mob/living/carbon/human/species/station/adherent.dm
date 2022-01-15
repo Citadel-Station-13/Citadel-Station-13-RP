@@ -144,7 +144,8 @@
 	return slowdown
 */
 /datum/species/adherent/handle_environment_special(var/mob/living/carbon/human/H)
-	H.our_overlays = list()
+	H.our_overlays = list()//This removes all overlays, including temperature and pressure warnings
+	//Todo: find a better way to adjust clothing, than to wipe all overlays
 
 /datum/species/adherent/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
 	var/float_is_usable = FALSE
