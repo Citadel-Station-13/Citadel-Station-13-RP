@@ -77,19 +77,25 @@
 	var/boot_time = 35
 	var/next_on
 	var/blockage
+	var/linked = FALSE
 
 /obj/machinery/atmospherics/unary/engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles(need_rebuild=1)
+	if(SSshuttle.subsystem_initialized)
+		link_to_ship()
 
+/obj/machinery/atmospherics/unary/engine/proc/link_to_ship()
 	for(var/ship in SSshuttle.ships)
 		var/obj/effect/overmap/visitable/ship/S = ship
 		if(S.check_ownership(src))
 			S.engines |= controller
 			if(dir != S.fore_dir)
 				set_broken(TRUE)
-			break
+			else
+				set_broken(FALSE)
+			linked = TRUE
 
 /obj/machinery/atmospherics/unary/engine/Destroy()
 	QDEL_NULL(controller)

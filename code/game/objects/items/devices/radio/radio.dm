@@ -933,8 +933,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 /obj/item/radio/bluespace_handset/linked
 	var/obj/item/bluespace_radio/base_unit
-	bs_tx_preload_id = "tether_rx" //Transmit to a receiver
-	bs_rx_preload_id = "tether_tx" //Recveive from a transmitter
+	bs_tx_preload_id = "Receiver A"  //Transmit to a receiver
+	bs_rx_preload_id = "Broadcaster A"  //Recveive from a transmitter
 
 /obj/item/radio/bluespace_handset/linked/Initialize(mapload, obj/item/bluespace_radio/radio)
 	base_unit = radio
