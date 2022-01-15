@@ -107,6 +107,12 @@
 		"_black"
 	)
 
+	inherent_verbs = list(
+		/mob/living/proc/flying_toggle,
+		/mob/living/proc/start_wings_hovering,
+		/mob/living/proc/toggle_pass_table
+		)
+
 /datum/species/adherent/New()
 	equip_adjust = list(
 		"[slot_l_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
