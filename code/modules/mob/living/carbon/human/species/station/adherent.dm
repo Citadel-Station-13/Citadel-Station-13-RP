@@ -143,6 +143,9 @@
 /datum/species/adherent/get_slowdown(var/mob/living/carbon/human/H)
 	return slowdown
 */
+/datum/species/adherent/handle_environment_special(var/mob/living/carbon/human/H)
+	H.our_overlays = list()
+
 /datum/species/adherent/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
 	var/float_is_usable = FALSE
 	if(H && H.stat == CONSCIOUS)
