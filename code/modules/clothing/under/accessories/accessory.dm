@@ -50,7 +50,7 @@
 		inv_overlay.appearance_flags = appearance_flags	// Stops has_suit's color from being multiplied onto the accessory
 	return inv_overlay
 
-/obj/item/clothing/accessory/get_mob_overlay()
+/obj/item/clothing/accessory/proc/get_mob_overlay()
 	if(!istype(loc,/obj/item/clothing/))	//don't need special handling if it's worn as normal item.
 		return
 	var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
