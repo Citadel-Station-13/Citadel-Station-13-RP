@@ -27,7 +27,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	force = 0
 	var/points_stored = 0 // Amount of 'exploration points' this device holds.
 	var/scan_range = 3 // How many tiles away it can scan. Changing this also changes the box size.
-	var/credit_sharing_range = 14 // If another person is within this radius, they will also be credited with a successful scan.
+	var/credit_sharing_range = INFINITY // If another person is within this radius, they will also be credited with a successful scan.
 	var/datum/category_item/catalogue/displayed_data = null // Used for viewing a piece of data in the UI.
 	var/busy = FALSE // Set to true when scanning, to stop multiple scans.
 	var/debug = FALSE // If true, can view all catalogue data defined, regardless of unlock status.
@@ -148,11 +148,16 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	// Figure out who may have helped out.
 	var/list/contributers = list()
 	var/list/contributer_names = list()
+	var/turf/T = get_turf(user) || get_turf(target)
+	var/list/contributing_z = GetConnectedZlevels(T.z)
 	for(var/thing in player_list)
 		var/mob/living/L = thing
 		if(L == user)
 			continue
 		if(!istype(L))
+			continue
+		var/turf/other = get_turf(L)
+		if(!(other.z in contributing_z))
 			continue
 		if(get_dist(L, user) <= credit_sharing_range)
 			contributers += L
