@@ -1,0 +1,6 @@
+author: "ktoma36"
+delete-after: True
+changes: 
+  - rscdel: "Hooligan crab spawners (fishing loot spawners)
+tweak: Nerfs station drone variant, gives them a new name"
+  - bugfix: "Wires"
