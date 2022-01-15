@@ -6,7 +6,7 @@
 // Gene is always activated.
 /////////////////////
 
-/datum/dna/gene/disability
+/datum/gene/disability
 	name="DISABILITY"
 
 	// Mutation to give (or 0)
@@ -24,10 +24,10 @@
 	// Yay, you're no longer growing 3 arms
 	var/deactivation_message=""
 
-/datum/dna/gene/disability/can_activate(var/mob/M,var/flags)
+/datum/gene/disability/can_activate(var/mob/M,var/flags)
 	return 1 // Always set!
 
-/datum/dna/gene/disability/activate(var/mob/M, var/connected, var/flags)
+/datum/gene/disability/activate(var/mob/M, var/connected, var/flags)
 	if(mutation && !(mutation in M.mutations))
 		M.mutations.Add(mutation)
 	if(disability)
@@ -39,7 +39,7 @@
 	else
 		testing("[name] has no activation message.")
 
-/datum/dna/gene/disability/deactivate(var/mob/M, var/connected, var/flags)
+/datum/gene/disability/deactivate(var/mob/M, var/connected, var/flags)
 	if(mutation && (mutation in M.mutations))
 		M.mutations.Remove(mutation)
 	if(disability)
@@ -52,7 +52,7 @@
 		testing("[name] has no deactivation message.")
 
 // Note: Doesn't seem to do squat, at the moment.
-/datum/dna/gene/disability/hallucinate
+/datum/gene/disability/hallucinate
 	name="Hallucinate"
 	activation_message="Your mind says 'Hello'."
 	mutation=mHallucination
@@ -60,7 +60,7 @@
 	New()
 		block=HALLUCINATIONBLOCK
 
-/datum/dna/gene/disability/epilepsy
+/datum/gene/disability/epilepsy
 	name="Epilepsy"
 	activation_message="You get a headache."
 	disability=EPILEPSY
@@ -68,7 +68,7 @@
 	New()
 		block=HEADACHEBLOCK
 
-/datum/dna/gene/disability/cough
+/datum/gene/disability/cough
 	name="Coughing"
 	activation_message="You start coughing."
 	disability=COUGHING
@@ -76,7 +76,7 @@
 	New()
 		block=COUGHBLOCK
 
-/datum/dna/gene/disability/clumsy
+/datum/gene/disability/clumsy
 	name="Clumsiness"
 	activation_message="You feel lightheaded."
 	mutation=CLUMSY
@@ -84,7 +84,7 @@
 	New()
 		block=CLUMSYBLOCK
 
-/datum/dna/gene/disability/tourettes
+/datum/gene/disability/tourettes
 	name="Tourettes"
 	activation_message="You twitch."
 	disability=TOURETTES
@@ -92,7 +92,7 @@
 	New()
 		block=TWITCHBLOCK
 
-/datum/dna/gene/disability/nervousness
+/datum/gene/disability/nervousness
 	name="Nervousness"
 	activation_message="You feel nervous."
 	disability=NERVOUS
@@ -100,7 +100,7 @@
 	New()
 		block=NERVOUSBLOCK
 
-/datum/dna/gene/disability/blindness
+/datum/gene/disability/blindness
 	name="Blindness"
 	activation_message="You can't seem to see anything."
 	sdisability=BLIND
@@ -108,7 +108,7 @@
 	New()
 		block=BLINDBLOCK
 
-/datum/dna/gene/disability/deaf
+/datum/gene/disability/deaf
 	name="Deafness"
 	activation_message="It's kinda quiet."
 	sdisability=DEAF
@@ -120,7 +120,7 @@
 		..(M,connected,flags)
 		M.ear_deaf = 1
 
-/datum/dna/gene/disability/nearsighted
+/datum/gene/disability/nearsighted
 	name="Nearsightedness"
 	activation_message="Your eyes feel weird..."
 	disability=NEARSIGHTED
