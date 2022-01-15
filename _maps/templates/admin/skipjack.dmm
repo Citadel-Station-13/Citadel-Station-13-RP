@@ -145,22 +145,19 @@
 	},
 /obj/item/soap/syndie,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/skipjack_station)
 "aw" = (
 /obj/structure/undies_wardrobe,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/skipjack_station)
 "ax" = (
 /obj/structure/toilet,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/skipjack_station)
 "ay" = (
@@ -263,21 +260,18 @@
 	pixel_x = -32
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/skipjack_station)
 "aI" = (
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/skipjack_station)
 "aJ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/skipjack_station)
 "aK" = (
@@ -350,19 +344,16 @@
 /area/skipjack_station)
 "aT" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
 	},
 /obj/structure/mirror{
 	dir = 4;
-	pixel_x = -28;
-	pixel_y = 0
+	pixel_x = -28
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/skipjack_station)
 "aU" = (
@@ -370,8 +361,7 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/skipjack_station)
 "aV" = (
@@ -442,7 +432,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/skipjack_station)
@@ -486,7 +475,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/skipjack_station)
@@ -514,8 +502,8 @@
 "bn" = (
 /obj/item/ore,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "asteroid_dug"
+	icon_state = "asteroid_dug";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bp" = (
@@ -532,7 +520,6 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/skipjack_station)
@@ -610,8 +597,8 @@
 	req_access = list(150)
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bB" = (
@@ -631,15 +618,15 @@
 /area/skipjack_station)
 "bD" = (
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bE" = (
 /obj/effect/decal/cleanable/cobweb2,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bF" = (
@@ -675,8 +662,8 @@
 "bJ" = (
 /obj/structure/bed/chair,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bK" = (
@@ -690,16 +677,16 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bM" = (
 /obj/structure/table/steel,
 /obj/item/pda/syndicate,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bN" = (
@@ -707,8 +694,8 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bO" = (
@@ -728,8 +715,8 @@
 /obj/structure/table/steel,
 /obj/item/radio/uplink,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bR" = (
@@ -741,8 +728,8 @@
 "bS" = (
 /obj/item/storage/box/syndie_kit/spy,
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bT" = (
@@ -750,8 +737,8 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	name = "plating";
-	icon_state = "cult"
+	icon_state = "cult";
+	name = "plating"
 	},
 /area/skipjack_station)
 "bU" = (
@@ -813,9 +800,7 @@
 "cc" = (
 /obj/machinery/door/airlock/hatch{
 	frequency = 1331;
-	icon_state = "door_closed";
 	id_tag = "vox_northwest_lock";
-	locked = 0;
 	req_access = list(150)
 	},
 /turf/simulated/shuttle/plating,
@@ -823,9 +808,7 @@
 "cd" = (
 /obj/machinery/door/airlock/hatch{
 	frequency = 1331;
-	icon_state = "door_closed";
 	id_tag = "vox_northeast_lock";
-	locked = 0;
 	req_access = list(150)
 	},
 /turf/simulated/shuttle/plating,
@@ -905,13 +888,12 @@
 	id_tag = "vox_east_sensor";
 	pixel_x = -25
 	},
-/obj/effect/shuttle_landmark/shuttle_initializer{
+/obj/effect/overmap/visitable/ship/landable/skipjack,
+/obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;
-	docking_controller = null;
 	landmark_tag = "skipjack_base";
-	name = "The Hideaway";
-	shuttle_type = /datum/shuttle/autodock/multi/heist
+	name = "The Hideaway"
 	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/skipjack)
@@ -931,14 +913,14 @@
 /area/shuttle/skipjack)
 "cn" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	tag_airpump = "vox_west_vent";
-	tag_exterior_door = "vox_northwest_lock";
 	frequency = 1331;
 	id_tag = "vox_west_control";
-	tag_interior_door = "vox_southwest_lock";
 	pixel_x = 24;
 	req_access = list(150);
-	tag_chamber_sensor = "vox_west_sensor"
+	tag_airpump = "vox_west_vent";
+	tag_chamber_sensor = "vox_west_sensor";
+	tag_exterior_door = "vox_northwest_lock";
+	tag_interior_door = "vox_southwest_lock"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
@@ -949,14 +931,14 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/skipjack)
 "co" = (
-/obj/machinery/computer/station_alert,
+/obj/machinery/computer/ship/engines,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 "cp" = (
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 "cq" = (
-/obj/machinery/computer/shuttle_control/multi/skipjack,
+/obj/machinery/computer/shuttle_control/explore/skipjack,
 /turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 "cr" = (
@@ -968,7 +950,7 @@
 "cs" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1331;
-	id_tag = "skipjack_shuttle";
+	id_tag = "skipjack_docker";
 	pixel_x = -24;
 	req_access = list(150);
 	tag_airpump = "vox_east_vent";
@@ -994,9 +976,7 @@
 "cu" = (
 /obj/machinery/door/airlock/hatch{
 	frequency = 1331;
-	icon_state = "door_closed";
 	id_tag = "vox_southwest_lock";
-	locked = 0;
 	req_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
@@ -1037,9 +1017,7 @@
 "cz" = (
 /obj/machinery/door/airlock/hatch{
 	frequency = 1331;
-	icon_state = "door_closed";
 	id_tag = "vox_southeast_lock";
-	locked = 0;
 	req_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
@@ -1377,7 +1355,6 @@
 /area/shuttle/skipjack)
 "dn" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -1517,9 +1494,7 @@
 "dH" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/skipjack)
@@ -1593,9 +1568,7 @@
 "dS" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/skipjack)
@@ -1664,7 +1637,6 @@
 	},
 /obj/structure/closet/secure_closet/medical_wall{
 	pixel_x = 32;
-	pixel_y = 0;
 	req_access = list(150)
 	},
 /obj/item/storage/firstaid/fire{
@@ -1690,6 +1662,14 @@
 /obj/item/bedsheet/clown,
 /obj/structure/bed/padded,
 /turf/simulated/shuttle/floor/red,
+/area/shuttle/skipjack)
+"wC" = (
+/obj/machinery/computer/ship/sensors,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/skipjack)
+"RW" = (
+/obj/machinery/computer/ship/helm,
+/turf/simulated/shuttle/floor/darkred,
 /area/shuttle/skipjack)
 
 (1,1,1) = {"
@@ -2201,7 +2181,7 @@ aa
 aa
 aa
 ci
-cp
+RW
 cp
 cp
 cp
@@ -2289,7 +2269,7 @@ aa
 aa
 aa
 ci
-cp
+wC
 cp
 cp
 cp

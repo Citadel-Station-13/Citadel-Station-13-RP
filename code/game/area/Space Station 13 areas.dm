@@ -158,6 +158,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Special Ops Shuttle"
 	icon_state = "shuttlered"
 
+/area/shuttle/specops/centcom2
+	name = "\improper Special Ops Shuttle"
+	icon_state = "shuttlered2"
+
 /area/shuttle/specops/station
 	name = "\improper Special Ops Shuttle"
 	icon_state = "shuttlered2"
@@ -1701,6 +1705,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/panic_shelter
 	name = "\improper Panic Shelter"
 
+/area/crew_quarters/clownoffice
+	name = "\improper Clown Office"
+
+/area/crew_quarters/mimeoffice
+	name = "\improper Mime Office"
+
 /area/library
 	name = "\improper Library"
 	icon_state = "library"
@@ -1855,6 +1865,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Holodeck - Chess Board"
 	sound_env = PLAIN
 
+/area/holodeck/source_checker
+	name = "\improper Holodeck - Checker Board"
+	sound_env = PLAIN
 
 //Engineering
 

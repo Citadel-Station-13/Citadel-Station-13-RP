@@ -13,8 +13,8 @@
 
 /turf/simulated/floor/outdoors/grass/sif
 	turf_layers = list(
-		/turf/simulated/floor/outdoors/rocks/triumph,
-		/turf/simulated/floor/outdoors/dirt/triumph
+		/turf/simulated/floor/outdoors/rocks,
+		/turf/simulated/floor/outdoors/dirt
 		)
 
 // Overriding these for the sake of submaps that use them on other planets.

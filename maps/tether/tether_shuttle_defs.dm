@@ -70,7 +70,7 @@
 	//crash_areas = list(/area/shuttle/tether/crash1, /area/shuttle/tether/crash2)
 	docking_controller_tag = "tether_shuttle"
 	move_direction = NORTH
-
+/*
 //////////////////////////////////////////////////////////////
 // Mercenary Shuttle
 /datum/shuttle/autodock/multi/mercenary
@@ -191,6 +191,7 @@
 	departure_message = "Attention. A NT support vessel is now leaving Virgo-3B."
 	defer_initialisation = TRUE
 	move_direction = WEST
+*/
 
 //////////////////////////////////////////////////////////////
 // RogueMiner "Belter: Shuttle
