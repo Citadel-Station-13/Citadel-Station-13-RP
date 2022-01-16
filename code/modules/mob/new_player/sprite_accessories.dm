@@ -454,7 +454,7 @@
 
 	himeup
 		name = "Hime (Updo)"
-		icon_state = "hair_himeup"
+		icon_state = "hime_updo"
 		flags = HAIR_TIEABLE
 
 	shorthime
@@ -485,12 +485,17 @@
 
 	kagami
 		name = "Kagami"
-		icon_state = "_kagami"
+		icon_state = "kagami"
 		flags = HAIR_TIEABLE
 
 	kusangi
 		name = "Kusanagi"
 		icon_state = "kusanagi"
+
+	labrat
+		name = "Labrat"
+		icon_state = "labrat"
+		flags = HAIR_TIEABLE
 
 	long
 		name = "Long"
