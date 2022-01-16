@@ -522,6 +522,11 @@
 		icon_state = "longest"
 		flags = HAIR_TIEABLE
 
+	sidepartlongalt
+		name = "Long Side Part"
+		icon_state = "longsidepart"
+		flags = HAIR_TIEABLE
+
 	manbun
 		name = "Manbun"
 		icon_state = "manbun"
@@ -561,11 +566,11 @@
 
 	marysue
 		name = "Mary Sue"
-		icon_state = "hair_marysue"
+		icon_state = "marysue"
 
 	miles
 		name = "Miles Hair"
-		icon_state = "hair_miles"
+		icon_state = "miles"
 
 	awoohair
 		name = "Momiji"
@@ -634,14 +639,9 @@
 		name = "Pompadour"
 		icon_state = "pompadour"
 
-	dandypompo
+	dandypomp
 		name = "Pompadour (Dandy)"
 		icon_state = "pompadour_dandy"
-
-	ponytail1
-		name = "Ponytail 1"
-		icon_state = "ponytail1"
-		flags = HAIR_TIEABLE|HAIR_VERY_SHORT
 
 	poofy1
 		name = "Poofy 1"
@@ -652,6 +652,11 @@
 		name = "Poofy 2"
 		icon_state = "poofy2"
 		flags = HAIR_TIEABLE
+
+	ponytail1
+		name = "Ponytail 1"
+		icon_state = "ponytail1"
+		flags = HAIR_TIEABLE|HAIR_VERY_SHORT
 
 	ponytail2
 		name = "Ponytail 2"
@@ -680,32 +685,29 @@
 
 	ponytail6_fixed
 		name = "Ponytail 6 (Alt)"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-		icon_state = "hair_ponytail6alt"
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA,SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR)
+		icon_state = "ponytail6_alt"
 
 	sharpponytail
 		name = "Ponytail (Sharp)"
 		icon_state = "ponytail_sharp"
 		flags = HAIR_TIEABLE
 
-	ponytailside1
+	sideponytail
 		name = "Ponytail (Side) 1"
 		icon_state = "ponytail_side1"
 		flags = HAIR_TIEABLE
 
-	ponytailside2
+	sideponytail2
 		name = "Ponytail (Side) 2"
 		icon_state = "ponytail_side2"
 		flags = HAIR_TIEABLE
 
-	ponytailside3
+	sideponytail3
 		name = "Ponytail (Side) 3"
 		icon_state = "ponytail_side3"
 		flags = HAIR_TIEABLE
 
-	ponytailside4
+	sideponytail4
 		name = "Ponytail (Side) 4"
 		icon_state = "ponytail_side4"
 		flags = HAIR_TIEABLE
@@ -749,12 +751,7 @@
 
 	rows2
 		name = "Rows 2"
-		icon_state = "hair_rows2"
-		flags = HAIR_TIEABLE
-
-	rowdualbraid
-		name = "Row (Braid)"
-		icon_state = "rows_braid"
+		icon_state = "rows2"
 		flags = HAIR_TIEABLE
 
 	rowbun
@@ -764,14 +761,19 @@
 
 	rowbraid
 		name = "Row Braid"
-		icon_state = "hair_rowbraid"
+		icon_state = "rows_braid"
+		flags = HAIR_TIEABLE
+
+	rowdualbraid
+		name = "Row Braid (Dual)"
+		icon_state = "rows_braiddual"
 		flags = HAIR_TIEABLE
 
 	scully
 		name = "Scully"
 		icon_state = "scully"
 
-	shaven
+	shavehair
 		name = "Shaven"
 		icon_state = "shaven"
 		flags = HAIR_VERY_SHORT
@@ -790,8 +792,6 @@
 		name = "Short 2 (Alt)"
 		icon_state = "short2_alt"
 		flags = HAIR_VERY_SHORT
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
 
 	short3
 		name = "Short 3"
@@ -856,40 +856,40 @@
 		icon_state = "topknot"
 		flags = HAIR_TIEABLE
 
-	trimflat
-		name = "Trimmed (Flat)"
-		icon_state = "trimflat"
-		gender = MALE
-		flags = HAIR_VERY_SHORT
-
 	trimmed
 		name = "Trimmed"
 		icon_state = "trimmed"
-		gender = MALE
+		flags = HAIR_VERY_SHORT
+
+	trimflat
+		name = "Trimmed (Flat)"
+		icon_state = "trimmed_flat"
 		flags = HAIR_VERY_SHORT
 
 	twintail
-		name = "Twintaisl"
+		name = "Twintails"
 		icon_state = "twintails"
 		flags = HAIR_TIEABLE
 
 	undercut1
 		name = "Undercut 1"
 		icon_state = "undercut1"
-		gender = MALE
 		flags = HAIR_VERY_SHORT
 
 	undercut2
 		name = "Undercut 2"
 		icon_state = "undercut2"
-		gender = MALE
 		flags = HAIR_VERY_SHORT
 
 	undercut3
 		name = "Undercut 3"
 		icon_state = "undercut3"
-		gender = MALE
 		flags = HAIR_VERY_SHORT
+
+	undercutlong
+		name = "Undercut 4"
+		icon_state = "undercut4"
+		flags = HAIR_TIEABLE
 
 	unkept
 		name = "Unkept"
@@ -919,13 +919,8 @@
 		flags = HAIR_TIEABLE
 
 	zieglertail
-		name = "Zieglertail"
-		icon_state = "zieglertail"
-		flags = HAIR_TIEABLE
-
-	sidepartlongalt
-		name = "Long Side Part"
-		icon_state = "hair_longsidepart"
+		name = "Ziegler"
+		icon_state = "ziegler"
 		flags = HAIR_TIEABLE
 
 	citheronia
