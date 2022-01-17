@@ -26,8 +26,9 @@
 
 	siemens_coefficient =     0
 	rarity_value =            6
-	min_age =                 8000
+	min_age =                 10000
 	max_age =                 12000
+	num_alternate_languages = 3
 //	antaghud_offset_y =       14
 	warning_low_pressure =    50
 	hazard_low_pressure =     -1
@@ -51,7 +52,7 @@
 	blood_color = "#2de00d"
 	flesh_color = "#90edeb"
 	base_color = "#066000"
-	slowdown = -1
+	slowdown = -0.5
 	hud_type = /datum/hud_data/adherent
 /*
 	available_cultural_info = list(
