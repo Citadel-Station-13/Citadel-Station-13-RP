@@ -28,7 +28,6 @@
 	rarity_value =            6
 	min_age =                 10000
 	max_age =                 12000
-	num_alternate_languages = 3
 //	antaghud_offset_y =       14
 	warning_low_pressure =    50
 	hazard_low_pressure =     -1
@@ -46,13 +45,21 @@
 	heat_level_1 = 500
 	heat_level_2 = 1000
 	heat_level_3 = 2000
-	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
-	spawn_flags =   SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_EYE_COLOR | BASE_SKIN_COLOR
+
+	flags =				NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
+	spawn_flags =		SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	appearance_flags =	HAS_EYE_COLOR | BASE_SKIN_COLOR
+
+	language = 			LANGUAGE_ADHERENT
+	species_language = 	LANGUAGE_ADHERENT
+	num_alternate_languages = 2
+
 	blood_color = "#2de00d"
 	flesh_color = "#90edeb"
 	base_color = "#066000"
+
 	slowdown = -0.5
+
 	hud_type = /datum/hud_data/adherent
 /*
 	available_cultural_info = list(
