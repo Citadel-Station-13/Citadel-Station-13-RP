@@ -528,7 +528,7 @@
 		if(target == src)
 			to_chat("<span class = 'Notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
@@ -623,7 +623,7 @@
 		if(target == src)
 			to_chat(src, "<span class = 'Notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
@@ -672,7 +672,7 @@
 		if(target == src)
 			to_chat(src, "<span class = 'notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
