@@ -1523,9 +1523,9 @@
 	set_trait(TRAIT_YIELD,6)
 	set_trait(TRAIT_POTENCY,30)
 	set_trait(TRAIT_PRODUCT_ICON,"disho")
-	set_trait(TRAIT_PRODUCT_COLOUR,"#514147")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#E13D8B")
 	set_trait(TRAIT_PLANT_ICON,"carrot")
-	set_trait(TRAIT_PLANT_COLOUR, "#514147")
+	set_trait(TRAIT_PLANT_COLOUR, "#E13D8B")
 	set_trait(TRAIT_PLANT_ICON,"carrot")
 	set_trait(TRAIT_IDEAL_HEAT, 298)
 	set_trait(TRAIT_IDEAL_LIGHT, 10)
@@ -1553,13 +1553,7 @@
 	set_trait(TRAIT_PRODUCTION,2)
 	set_trait(TRAIT_YIELD,7)
 	set_trait(TRAIT_POTENCY,45)
-	set_trait(TRAIT_PRODUCT_ICON,"disho")
-	set_trait(TRAIT_PRODUCT_COLOUR,"#514147")
-	set_trait(TRAIT_PLANT_ICON,"carrot")
-	set_trait(TRAIT_PLANT_COLOUR, "#514147")
-	set_trait(TRAIT_PLANT_ICON,"carrot")
 	set_trait(TRAIT_IDEAL_HEAT, 334)
-	set_trait(TRAIT_IDEAL_LIGHT, 10)
 
 
 /datum/seed/disho/thatch
