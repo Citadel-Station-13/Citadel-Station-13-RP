@@ -33,7 +33,7 @@
 #define FIRE_DAMAGE_MODIFIER 0.0215 // Higher values result in more external fire damage to the skin. (default 0.0215)
 #define  AIR_DAMAGE_MODIFIER 2.025  // More means less damage from hot air scalding lungs, less = more damage. (default 2.025)
 
-// Organ defines.
+// Organ defines. Bitflag into organ.status
 #define ORGAN_CUT_AWAY   (1<<0)
 #define ORGAN_BLEEDING   (1<<1)
 #define ORGAN_BROKEN     (1<<2)
@@ -48,6 +48,7 @@
 // Damage above this value must be repaired with surgery.
 #define ROBOLIMB_REPAIR_CAP 30
 
+//The codition defines. /SET/ into organ.robotic [example: if(organ.robotic == ORGAN_NANOFORM) to_chat("Organ is nanites")]
 #define ORGAN_FLESH    0 // Normal organic organs.
 #define ORGAN_ASSISTED 1 // Like pacemakers, not robotic
 #define ORGAN_ROBOT    2 // Fully robotic, no organic parts
