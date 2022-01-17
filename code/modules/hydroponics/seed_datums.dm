@@ -1536,7 +1536,7 @@
 	desc = "A hardy root plant native to the desert world of Osmon. \
 	Remarkably resistant to pests, weeds and adverse enviromental conditions make it a relatively common crop on most hot worlds. \
 	However, it requires high temperatures and strong lighting to grow, and as such is not as common in temperature-controlled or cold environments. . \
-	Mutated varieties include the medicinal variety "Thatch", used to make healing poultices, and the variety "Brick", used to treat radiation burns."
+	Mutated varieties include the medicinal variety \"Thatch\", used to make healing poultices, and the variety \"Brick\", used to treat radiation burns."
 	value = CATALOGUER_REWARD_TRIVIAL
 
 
