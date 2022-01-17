@@ -184,4 +184,4 @@
 	)
 
 /datum/species/adherent/post_organ_rejuvenate(var/obj/item/organ/org, var/mob/living/carbon/human/H)
-	org.status |= (ORGAN_BRITTLE|ORGAN_CRYSTAL|ORGAN_ROBOT)
+	org.status = ORGAN_CRYSTAL
