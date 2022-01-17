@@ -1511,9 +1511,13 @@
 	kitchen_tag = "disho"
 	chems = list("capsaicin" = list(1,3), "nutriment" = list(5,25))
 	mutants = list("brickdisho, thatchdisho")
+	catalog_data_grown = list(/datum/category_item/catalogue/flora/disho)
 
 /datum/seed/disho/New()
 	..()
+	set_trait(TRAIT_TOXINS_TOLERANCE,     6)
+	set_trait(TRAIT_PEST_TOLERANCE,       10)
+	set_trait(TRAIT_WEED_TOLERANCE,       7)
 	set_trait(TRAIT_MATURATION,4)
 	set_trait(TRAIT_PRODUCTION,4)
 	set_trait(TRAIT_YIELD,6)
@@ -1525,6 +1529,16 @@
 	set_trait(TRAIT_PLANT_ICON,"carrot")
 	set_trait(TRAIT_IDEAL_HEAT, 298)
 	set_trait(TRAIT_IDEAL_LIGHT, 10)
+
+
+/datum/category_item/catalogue/flora/disho
+	name = "Flora - Disho"
+	desc = "A hardy root plant native to the desert world of Osmon. \
+	Remarkably resistant to pests, weeds and adverse enviromental conditions make it a relatively common crop on most hot worlds. \
+	However, it requires high temperatures and strong lighting to grow, and as such is not as common in temperature-controlled or cold environments. . \
+	Mutated varieties include the medicinal variety "Thatch", used to make healing poultices, and the variety "Brick", used to treat radiation burns."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 
 /datum/seed/disho/brick
 	name = "brickdisho"
