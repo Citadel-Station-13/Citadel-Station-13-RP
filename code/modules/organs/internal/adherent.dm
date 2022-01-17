@@ -8,6 +8,7 @@
 	action_button_name = "Reset Ident"
 	robotic = ORGAN_ROBOT
 	organ_tag = O_BRAIN
+	status = ORGAN_CRYSTAL
 	var/next_rename
 	var/rename_delay = 15 MINUTES
 
@@ -81,6 +82,7 @@
 	use_descriptor = "adjust your vector"
 	organ_tag = BP_JETS
 	parent_organ = BP_TORSO
+	status = ORGAN_CRYSTAL
 	gender = PLURAL
 	icon_state = "jets"
 	base_action_state = "adherent-pack"
@@ -110,6 +112,7 @@
 	action_button_name = "Toggle Antigravity"
 	organ_tag = BP_FLOAT
 	parent_organ = BP_GROIN
+	status = ORGAN_CRYSTAL
 	icon_state = "float"
 	use_descriptor = "hover"
 	base_action_state = "adherent-float"
@@ -124,7 +127,7 @@
 	icon = 'icons/mob/human_races/adherent/organs.dmi'
 //	eye_icon = 'icons/mob/human_races/adherent/eyes.dmi'
 	icon_state = "eyes"
-	status = ORGAN_ROBOT
+	status = ORGAN_ROBOT | ORGAN_CRYSTAL
 	organ_tag = O_EYES
 	innate_flash_protection = FLASH_PROTECTION_MAJOR
 
@@ -137,6 +140,7 @@
 	icon = 'icons/mob/human_races/adherent/organs.dmi'
 	icon_state = "cell"
 	organ_tag = O_CELL
+	status = ORGAN_CRYSTAL
 
 /obj/item/organ/internal/powered/cooling_fins
 	name = "cooling fins"
@@ -145,6 +149,7 @@
 	action_button_name = "Toggle Cooling"
 	organ_tag = BP_COOLING_FINS
 	parent_organ = BP_GROIN
+	status = ORGAN_CRYSTAL
 	icon_state = "fins"
 	maintenance_cost = 0
 	use_descriptor = "radiate heat"
