@@ -79,6 +79,13 @@ var/list/ai_status_emotions = list(
 		attack_hand(user)
 	return
 
+/obj/machinery/ai_status_display/attack_ai/(mob/user as mob)
+	var/list/ai_emotions = get_ai_emotions(user.ckey)
+	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions
+	var/datum/ai_emotion/ai_emotion = ai_status_emotions[emote]
+	set_picture(ai_emotion.overlay)
+
+
 /obj/machinery/ai_status_display/process(delta_time)
 	return
 
