@@ -10,8 +10,7 @@
 	min_broken_damage =       25
 //	arterial_bleed_severity = 0
 	encased = "ceramic hull"
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_HEALS_OVERKILL
 
 /obj/item/organ/external/groin/crystal
