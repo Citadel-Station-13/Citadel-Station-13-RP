@@ -23,8 +23,7 @@
 	min_broken_damage =       25
 	gendered_icon = 		  0
 	encased = "ceramic hull"
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/head/crystal
@@ -39,8 +38,7 @@
 	encased = "ceramic hull"
 	eye_icon_location = 'icons/mob/human_races/adherent/eyes.dmi'
 	eye_icon = "eyes"
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/arm/crystal
@@ -52,8 +50,7 @@
 	dislocated =              -1
 	max_damage =              20
 	min_broken_damage =       10
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/arm/right/crystal
@@ -65,8 +62,7 @@
 	dislocated =              -1
 	max_damage =              20
 	min_broken_damage =       10
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/hand/crystal
@@ -78,8 +74,7 @@
 	dislocated =              -1
 	max_damage =              20
 	min_broken_damage =       10
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/hand/right/crystal
@@ -91,8 +86,8 @@
 	dislocated =              -1
 	max_damage =              20
 	min_broken_damage =       10
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
+
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/leg/tendril
@@ -106,19 +101,15 @@
 	dislocated =              -1
 	max_damage =              20
 	min_broken_damage =       10
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
 //	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_CAN_GRASP | ORGAN_FLAG_CAN_STAND | ORGAN_FLAG_CAN_BREAK
 
 /obj/item/organ/external/leg/right/tendril
 	name =                    "second tendril"
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
 /obj/item/organ/external/foot/tendril
 	name =                    "third tendril"
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
 /obj/item/organ/external/foot/right/tendril
 	name =                    "fourth tendril"
-	robotic = ORGAN_ROBOT
-	status = ORGAN_CRYSTAL
+	robotic = ORGAN_CRYSTAL
