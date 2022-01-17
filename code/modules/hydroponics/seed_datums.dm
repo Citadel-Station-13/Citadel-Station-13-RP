@@ -1502,3 +1502,69 @@
 	set_trait(TRAIT_PRODUCT_ICON,"mushroom6")
 	set_trait(TRAIT_PLANT_ICON,"tree")
 	set_trait(TRAIT_PRODUCT_COLOUR,"#DADA00")
+
+// Disho.
+/datum/seed/disho
+	name = "disho"
+	seed_name = "disho"
+	display_name = "disho root"
+	kitchen_tag = "disho"
+	chems = list("capsaicin" = list(1,3), "nutriment" = list(5,25))
+	mutants = list("brickdisho, thatchdisho")
+
+/datum/seed/disho/New()
+	..()
+	set_trait(TRAIT_MATURATION,4)
+	set_trait(TRAIT_PRODUCTION,4)
+	set_trait(TRAIT_YIELD,6)
+	set_trait(TRAIT_POTENCY,30)
+	set_trait(TRAIT_PRODUCT_ICON,"disho")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#514147")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_PLANT_COLOUR, "#514147")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_IDEAL_HEAT, 298)
+	set_trait(TRAIT_IDEAL_LIGHT, 10)
+
+/datum/seed/disho/brick
+	name = "brickdisho"
+	seed_name = "brick disho"
+	display_name = "brick disho root"
+	kitchen_tag = "brickdisho"
+	chems = list("ethanol" = list(1,2), "nutriment" = list(1,5), "cleansalaze" = list (5,15))
+
+/datum/seed/disho/brick/New()
+	..()
+	set_trait(TRAIT_MATURATION,10)
+	set_trait(TRAIT_PRODUCTION,2)
+	set_trait(TRAIT_YIELD,7)
+	set_trait(TRAIT_POTENCY,45)
+	set_trait(TRAIT_PRODUCT_ICON,"disho")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#514147")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_PLANT_COLOUR, "#514147")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_IDEAL_HEAT, 334)
+	set_trait(TRAIT_IDEAL_LIGHT, 10)
+
+
+/datum/seed/disho/thatch
+	name = "thatchdisho"
+	seed_name = "thatch disho"
+	display_name = "thatch disho root"
+	kitchen_tag = "thatchdisho"
+	chems = list("ethanol" = list(1,2), "kelotalaze" = list(5,10), "bicarilaze" = list (5,10))
+
+/datum/seed/disho/thatch/New()
+	..()
+	set_trait(TRAIT_MATURATION,10)
+	set_trait(TRAIT_PRODUCTION,2)
+	set_trait(TRAIT_YIELD,7)
+	set_trait(TRAIT_POTENCY,45)
+	set_trait(TRAIT_PRODUCT_ICON,"disho")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#DBD37D")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_PLANT_COLOUR, "#BFAF82")
+	set_trait(TRAIT_PLANT_ICON,"carrot")
+	set_trait(TRAIT_IDEAL_HEAT, 334)
+	set_trait(TRAIT_IDEAL_LIGHT, 10)
