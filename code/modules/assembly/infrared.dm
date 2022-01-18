@@ -11,10 +11,16 @@
 
 	secured = FALSE
 
+	/// on or off?
 	var/on = FALSE
+	/// visible beam?
 	var/visible = FALSE
+	/// head of beam
 	var/obj/effect/beam/i_beam/head
+	/// range of beam - capped to 100
 	var/range = 8
+	/// requires rebuild?
+	var/dirty = FALSE
 
 /obj/item/assembly/infra/activate()
 	. = ..()
@@ -64,16 +70,21 @@
 	head?.SetVisible(visible)
 
 /obj/item/assembly/infra/setDir()
+	var/old = dir
 	. = ..()
+	if(old == dir)
+		return
 	Queue()
 
 /obj/item/assembly/infra/proc/Queue()
-	addtimer(CALLBACK(src, .proc/Rebuild), 0, TIMER_UNIQUE)
+	dirty = TRUE
 
 /obj/item/assembly/infra/proc/Rebuild()
 	if(head)
-		QDEL_NULL(head)
-	if(QDELETED(src) || !loc || !on)
+		if(!QDELETED(head))
+			QDEL_NULL(head)
+		head = null
+	if(QDELETED(src) || !loc || (!isturf(loc) && !isturf(loc.loc)) || !on)	// only allow nesting 1 deep
 		return
 	// spread
 	var/obj/effect/beam/i_beam/I = new(loc, src, range - 1, visible, null)
@@ -88,12 +99,13 @@
 		head = I
 		head.density = FALSE
 		head.Propagate()
+	dirty = FALSE
 
 /obj/item/assembly/infra/process(delta_time)
-	if(!on || !loc || QDELETED(src))
+	if(!on || QDELETED(src))
 		Rebuild()
 		return PROCESS_KILL
-	if(!head)
+	if(QDELETED(head) || dirty)
 		Rebuild()
 		return
 	head.Refresh()
@@ -102,6 +114,7 @@
 	var/old_dir = dir
 	. = ..()
 	setDir(old_dir)
+	Queue()
 
 /obj/item/assembly/infra/doMove()
 	. = ..()
@@ -111,6 +124,7 @@
 	if(!holder)
 		return FALSE
 	setDir(holder.dir)
+	Queue()
 	return TRUE
 
 /obj/item/assembly/infra/proc/trigger_beam()
@@ -204,7 +218,6 @@
 	if(prev)
 		if(prev.next == src)
 			prev.next = null
-		START_PROCESSING(prev, SSfastprocess)
 	return ..()
 
 /**
