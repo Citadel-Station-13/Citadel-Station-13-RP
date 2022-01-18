@@ -100,7 +100,7 @@
 		return
 	if(ismovable(loc)) // register listener
 		if(listening)
-			UnregisterSignal(listening, COMISG_MOVABLE_MOVED)
+			UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
 		listening = loc
 		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/Queue)
 	if(!isturf(loc) && !isturf(loc.loc))	// only allow nesting 1 deep
