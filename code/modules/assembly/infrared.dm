@@ -21,6 +21,13 @@
 	var/range = 8
 	/// requires rebuild?
 	var/dirty = FALSE
+	/// current atom listening to
+	var/atom/movable/listening
+
+/obj/item/assembly/infra/Destroy()
+	if(on)
+		turn_off()
+	return ..()
 
 /obj/item/assembly/infra/activate()
 	. = ..()
@@ -51,6 +58,9 @@
 /obj/item/assembly/infra/proc/turn_off()
 	if(!on)
 		return
+	if(listening)
+		UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
+		listening = null
 	on = FALSE
 	Rebuild()
 	update_icon()
@@ -84,7 +94,16 @@
 		if(!QDELETED(head))
 			QDEL_NULL(head)
 		head = null
-	if(QDELETED(src) || !loc || (!isturf(loc) && !isturf(loc.loc)) || !on)	// only allow nesting 1 deep
+	if(!on || QDELETED(src))
+		return
+	if(!loc)
+		return
+	if(ismovable(loc)) // register listener
+		if(listening)
+			UnregisterSignal(listening, COMISG_MOVABLE_MOVED)
+		listening = loc
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/Queue)
+	if(!isturf(loc) && !isturf(loc.loc))	// only allow nesting 1 deep
 		return
 	// spread
 	var/obj/effect/beam/i_beam/I = new(loc, src, range - 1, visible, null)
@@ -126,6 +145,14 @@
 	setDir(holder.dir)
 	Queue()
 	return TRUE
+
+/obj/item/assembly/infra/Moved(atom/oldloc)
+	. = ..()
+	if(listening)
+		UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
+	if(on && ismovable(loc))
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/Queue)
+		listening = loc
 
 /obj/item/assembly/infra/proc/trigger_beam()
 	if((!secured)||(!on)||(cooldown > 0))
