@@ -13,7 +13,6 @@
 /area/ninja_dojo/dojo)
 "ae" = (
 /turf/unsimulated/floor{
-	dir = 2;
 	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
@@ -22,7 +21,6 @@
 "af" = (
 /obj/effect/floor_decal/asteroid,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
@@ -76,13 +74,9 @@
 /area/ninja_dojo/dojo)
 "an" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion";
 	dir = 1
 	},
 /turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/ninja)
-"ao" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/ninja)
 "ap" = (
 /obj/item/target/syndicate,
@@ -102,7 +96,6 @@
 	dir = 9
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
@@ -111,7 +104,6 @@
 	dir = 1
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
@@ -126,7 +118,6 @@
 	dir = 5
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
@@ -164,13 +155,11 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
 "ay" = (
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
@@ -179,7 +168,6 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
@@ -197,7 +185,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/tank/air{
-	dir = 2;
 	start_pressure = 740.5
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
@@ -219,13 +206,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/structure/table/steel_reinforced,
-/obj/machinery/cell_charger,
+/obj/machinery/computer/ship/engines,
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
 "aH" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -244,6 +229,7 @@
 /obj/machinery/door/airlock{
 	icon = 'icons/obj/doors/Dooruranium.dmi'
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -252,7 +238,7 @@
 "aK" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1331;
-	id_tag = "ninja_shuttle_outer";
+	id_tag = null;
 	name = "Ship External Hatch";
 	req_access = list(150)
 	},
@@ -264,22 +250,29 @@
 	name = "Outer Airlock";
 	opacity = 0
 	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/airlock_sensor{
+	dir = 8;
+	pixel_y = -27;
+	req_access = list(150)
+	},
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aL" = (
-/obj/machinery/airlock_sensor{
-	frequency = 1331;
-	id_tag = "ninja_shuttle_sensor";
-	pixel_x = 0;
-	pixel_y = 28
-	},
-/obj/effect/shuttle_landmark/shuttle_initializer{
+/obj/effect/shuttle_landmark{
 	base_area = /area/ninja_dojo/dojo;
 	base_turf = /turf/unsimulated/floor;
-	landmark_tag = "ninja_base";
-	name = "The Dojo";
-	shuttle_type = /datum/shuttle/autodock/multi/ninja
+	docking_controller = "ninja_shuttle_dock";
+	landmark_tag = "dojo_dock";
+	name = "Dojo"
 	},
+/obj/machinery/airlock_sensor{
+	pixel_y = 28;
+	req_access = list(150)
+	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/overmap/visitable/ship/landable/ninja,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aM" = (
@@ -292,7 +285,6 @@
 /area/shuttle/ninja)
 "aN" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/dark,
@@ -323,21 +315,21 @@
 "aS" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1331;
-	id_tag = "ninja_shuttle";
-	pixel_x = 0;
+	id_tag = "ninja_shuttle_docker";
 	pixel_y = -25;
 	req_access = list(150)
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1331;
-	id_tag = "ninja_shuttle_pump"
+	id_tag = null
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "blastninja";
 	name = "ship lockdown control";
 	pixel_x = -25
 	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aT" = (
@@ -346,33 +338,22 @@
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1331;
-	id_tag = "ninja_shuttle_inner";
+	id_tag = null;
 	name = "Ship Internal Hatch";
 	req_access = list(150)
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aU" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
-	icon_state = "intact";
 	dir = 9
-	},
-/obj/machinery/access_button{
-	command = "cycle_interior";
-	frequency = 1331;
-	master_tag = "ninja_shuttle";
-	name = "interior access button";
-	pixel_x = -25;
-	pixel_y = 25;
-	req_access = list(150)
 	},
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aV" = (
 /obj/structure/table/steel_reinforced,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aW" = (
@@ -384,14 +365,12 @@
 	dir = 10
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
 "aX" = (
 /obj/effect/floor_decal/carpet,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
@@ -404,23 +383,30 @@
 	dir = 6
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
 "aZ" = (
 /obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/airlock_sensor{
 	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	pixel_x = -27;
+	req_access = list(150)
+	},
+/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/machinery/computer/station_alert{
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
 "ba" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1";
-	pixel_x = 0
+	dir = 4
+	},
+/obj/machinery/computer/security{
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
@@ -434,6 +420,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/paicard,
 /obj/item/pda/syndicate,
+/obj/machinery/cell_charger,
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
 "bd" = (
@@ -449,7 +436,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "ninjawindow";
 	name = "remote shutter control";
-	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(150)
 	},
@@ -463,19 +449,19 @@
 	},
 /area/ninja_dojo/dojo)
 "bg" = (
-/obj/machinery/computer/station_alert{
+/obj/machinery/computer/ship/helm{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
 "bh" = (
-/obj/machinery/computer/shuttle_control/multi/ninja{
+/obj/machinery/computer/shuttle_control/explore/ninja{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
 "bi" = (
-/obj/machinery/computer/security{
+/obj/machinery/computer/ship/sensors{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
@@ -549,7 +535,6 @@
 "bn" = (
 /obj/structure/flora/tree/pine,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
@@ -558,7 +543,6 @@
 "bo" = (
 /obj/structure/flora/ausbushes/palebush,
 /turf/unsimulated/floor{
-	dir = 2;
 	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
@@ -570,7 +554,6 @@
 	health = 1e+006
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
@@ -603,7 +586,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	dir = 2;
 	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
@@ -611,9 +593,7 @@
 /area/ninja_dojo/dojo)
 "bu" = (
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "wood"
@@ -681,21 +661,18 @@
 	dir = 4
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/ninja_dojo/dojo)
 "bD" = (
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/ninja_dojo/dojo)
 "bE" = (
 /obj/machinery/recharge_station,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/ninja_dojo/dojo)
 "bH" = (
@@ -713,14 +690,11 @@
 	},
 /obj/random/soap,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/ninja_dojo/dojo)
 "bI" = (
-/obj/machinery/recharger{
-	pixel_y = 0
-	},
+/obj/machinery/recharger,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	dir = 8;
@@ -737,7 +711,6 @@
 /area/ninja_dojo/dojo)
 "bK" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -746,8 +719,7 @@
 	pixel_x = -28
 	},
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/ninja_dojo/dojo)
 "bL" = (
@@ -802,8 +774,7 @@
 "bS" = (
 /obj/machinery/door/morgue,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/ninja_dojo/dojo)
 "bT" = (
@@ -833,21 +804,18 @@
 "bW" = (
 /obj/structure/undies_wardrobe,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/ninja_dojo/dojo)
 "bX" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
 	pixel_x = -5;
 	pixel_y = -1
 	},
 /obj/structure/curtain/open/shower/medical,
 /turf/unsimulated/floor{
-	icon_state = "freezerfloor";
-	dir = 2
+	icon_state = "freezerfloor"
 	},
 /area/ninja_dojo/dojo)
 "bY" = (
@@ -903,6 +871,41 @@
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/wood.dmi';
 	icon_state = "wood_broken3"
+	},
+/area/ninja_dojo/dojo)
+"eW" = (
+/obj/machinery/access_button{
+	command = "cycle_interior";
+	frequency = 1331;
+	master_tag = "ninja_shuttle";
+	name = "interior access button";
+	pixel_x = -25;
+	pixel_y = 25;
+	req_access = list(150)
+	},
+/turf/simulated/shuttle/floor/voidcraft/dark,
+/area/shuttle/ninja)
+"vm" = (
+/obj/machinery/door/airlock{
+	icon = 'icons/obj/doors/Dooruranium.dmi'
+	},
+/obj/effect/map_helper/airlock/door/ext_door,
+/turf/unsimulated/floor{
+	icon_state = "plating";
+	name = "plating"
+	},
+/area/ninja_dojo/dojo)
+"zX" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "ninja_shuttle_dock";
+	pixel_x = 32;
+	req_one_access = list(19,43,67)
+	},
+/turf/unsimulated/floor{
+	icon_state = "plating";
+	name = "plating"
 	},
 /area/ninja_dojo/dojo)
 
@@ -1582,7 +1585,7 @@ ae
 ae
 ae
 at
-aA
+zX
 aA
 aA
 at
@@ -1620,7 +1623,7 @@ ae
 ae
 ab
 ab
-aJ
+vm
 ab
 ab
 ae
@@ -1806,7 +1809,7 @@ an
 ag
 aD
 aN
-aP
+eW
 aP
 aP
 bg
@@ -1839,7 +1842,7 @@ ae
 ae
 ae
 ae
-ao
+aP
 ag
 aE
 aN

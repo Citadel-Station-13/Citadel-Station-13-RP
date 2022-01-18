@@ -1565,9 +1565,9 @@
 			user.visible_message("<span class='danger'>[user] punches the [name]!</span>")
 			playsound(src, 'sound/effects/shieldbash.ogg', 50, 1)
 		last_message = world.time
-		
+
 	//Chess Variants
-	
+
 /obj/item/chess
 	name = "Chess Piece"
 	icon = 'icons/obj/cardboard_cutout.dmi'
@@ -1581,8 +1581,8 @@
 
 /obj/item/chess/bpawn
 	name = "Black Pawn"
-	desc = "A Novelty chess piece in the image of a filthy unionizing employee, representing a black pawn."  
-	icon_state = "cutout_viva" 
+	desc = "A Novelty chess piece in the image of a filthy unionizing employee, representing a black pawn."
+	icon_state = "cutout_viva"
 
 /obj/item/chess/bknight
 	name = "Black Knight"
@@ -1634,3 +1634,28 @@
 	desc = "A Novelty chess piece in the image of the most important asset on the station representing a white king."
 	icon_state = "cutout_ian"
 
+/obj/item/checker
+	name = "Checker Piece"
+	icon = 'icons/mob/robots_vr.dmi'
+	icon_state = "zoomba-combat-shield"
+	desc = "Some sort of novelty checker piece."
+
+/obj/item/checker/black
+	name = "Black Checker"
+	icon_state = "zoomba-standard"
+	desc = "A Novelty checker piece in the image of a noble standard zoomba."
+
+/obj/item/checker/blackking
+	name = "Black Checker King"
+	icon_state = "zoomba-combat-roll"
+	desc = "A Novelty checker piece in the image of the terrifying combat zoomba."
+
+/obj/item/checker/red
+	name = "Red Checker"
+	icon_state = "zoomba-security"
+	desc = "A Novelty checker piece in the image of a fierce security zoomba."
+
+/obj/item/checker/redking
+	name = "Red Checker King"
+	icon_state = "zoomba-crisis"
+	desc = "A Novelty checker piece in the image of the awe inspiring crisis zoomba."

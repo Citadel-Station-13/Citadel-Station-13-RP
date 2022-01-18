@@ -243,7 +243,7 @@
 	var/selectors_used = FALSE
 	var/list/combined_refs = list()
 	do
-		CHECK_TICK
+		stoplag(2)
 		finished = TRUE
 		for(var/i in running)
 			var/datum/SDQL2_query/query = i
@@ -985,11 +985,10 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/v
 	var/static/list/exclude = list("usr", "src", "marked", "global")
 	var/long = start < expression.len
-	var/datum/D
-	if(is_object_datatype(object))
-		D = object
-
-	if (object == world && (!long || expression[start + 1] == ".") && !(expression[start] in exclude)) //3 == length("SS") + 1
+	var/datum/D = is_object_datatype(object) && object
+	var/var_access = expression[start + 1] == "."
+	
+	if (object == world && (!long || var_access) && !(expression[start] in exclude)) //3 == length("SS") + 1
 		to_chat(usr, "<span class='danger'>World variables are not allowed to be accessed. Use global.</span>")
 		return null
 
@@ -1003,14 +1002,14 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 			return null
 		start++
 		long = start < expression.len
-	else if(D != null && (!long || expression[start + 1] == ".") && (expression[start] in D.vars))
+	else if(D && (!long || var_access) && (expression[start] in D.vars))
 		if(D.can_vv_get(expression[start]) || superuser)
 			v = D.vars[expression[start]]
 		else
 			v = "SECRET"
-	else if(D != null && long && expression[start + 1] == ":" && hascall(D, expression[start]))
+	else if(D && long && expression[start + 1] == ":" && hascall(D, expression[start]))
 		v = expression[start]
-	else if(!long || expression[start + 1] == ".")
+	else if(!long || var_access)
 		switch(expression[start])
 			if("usr")
 				v = usr
@@ -1031,58 +1030,24 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				v = Failsafe
 			if("CFG")
 				v = config
-/*
-			//Subsystem switches
-			if("SSgarbage")
-				v = SSgarbage
-			if("SSmachines")
-				v = SSmachines
-			if("SSobj")
-				v = SSobj
-			if("SSresearch")
-				v = SSresearch
-			if("SSprojectiles")
-				v = SSprojectiles
-			if("SSfastprocess")
-				v = SSfastprocess
-			if("SSticker")
-				v = SSticker
-			if("SStimer")
-				v = SStimer
-			if("SSradiation")
-				v = SSradiation
-			if("SSnpcpool")
-				v = SSnpcpool
-			if("SSmobs")
-				v = SSmobs
-			if("SSquirks")
-				v = SSquirks
-			if("SSwet_floors")
-				v = SSwet_floors
-			if("SSshuttle")
-				v = SSshuttle
-			if("SSmapping")
-				v = SSmapping
-			if("SSevents")
-				v = SSevents
-			//End
-*/
 			else
 				return null
 	else if(object == GLOB) // Shitty ass hack kill me.
 		v = expression[start]
 	if(long)
-		if(expression[start + 1] == ".")
-			return SDQL_var(v, expression[start + 2], null, source, superuser, query)
-		else if(expression[start + 1] == ":")
-			return (query.options & SDQL2_OPTION_BLOCKING_CALLS)? query.SDQL_function_async(object, v, expression[start + 2], source) : query.SDQL_function_blocking(object, v, expression[start + 2], source)
-		else if(expression[start + 1] == "\[" && islist(v))
-			var/list/L = v
-			var/index = query.SDQL_expression(source, expression[start + 2])
-			if(isnum(index) && (!ISINTEGER(index) || L.len < index))
-				to_chat(usr, "<span class='danger'>Invalid list index: [index]</span>")
-				return null
-			return L[index]
+		switch(expression[start + 1])
+			if(".")
+				return SDQL_var(v, expression[start + 2], null, source, superuser, query)
+			if(":")
+				return (query.options & SDQL2_OPTION_BLOCKING_CALLS)? query.SDQL_function_async(object, v, expression[start + 2], source) : query.SDQL_function_blocking(object, v, expression[start + 2], source)
+			if("\[")
+				if(islist(v))
+					var/list/L = v
+					var/index = query.SDQL_expression(source, expression[start + 2])
+					if(isnum(index) && (!ISINTEGER(index) || L.len < index))
+						to_chat(usr, "<span class='danger'>Invalid list index: [index]</span>")
+						return null
+					return L[index]
 	return v
 
 /proc/SDQL2_tokenize(query_text)

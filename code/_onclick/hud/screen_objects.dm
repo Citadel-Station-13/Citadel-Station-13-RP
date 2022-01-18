@@ -521,7 +521,7 @@
 
 		if("danger level")
 			var/mob/living/carbon/human/H = usr
-			if(istype(H) && istype(H.species, /datum/species/xenochimera))
+			if(istype(H) && istype(H.species, /datum/species/shapeshifter/xenochimera))
 				if(H.feral > 50)
 					to_chat(usr, "<span class='warning'>You are currently <b>completely feral.</b></span>")
 				else if(H.feral > 10)

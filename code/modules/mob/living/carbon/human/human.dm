@@ -1150,6 +1150,7 @@
 			remove_language(L)
 		// Clear out their species abilities.
 		species.remove_inherent_verbs(src)
+		species.remove_inherent_spells(src)
 		holder_type = null
 
 	species = GLOB.all_species[new_species]
