@@ -1,0 +1,8 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - rscadd: "Adds larger Suit Storage units that can hold up to 10 (ten) suits at once
+tweak: Suit storages have tgui now"
+  - bugfix: "Fixes the issue of suitstorages not haveing tgui"
+  - code_imp: "Prefilled suitstorages to make mapping them in easier"
+  - refactor: "Suit cyclers and suit storage are now in their own files"
