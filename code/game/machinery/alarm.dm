@@ -506,7 +506,7 @@
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)*/
-
+/*
 /obj/machinery/alarm/proc/populate_status(var/data)
 	var/turf/location = get_turf(src)
 	var/datum/gas_mixture/environment = location.return_air()
@@ -525,7 +525,7 @@
 	data["environment"] = environment_data
 	data["atmos_alarm"] = alarm_area.atmosalm
 	data["fire_alarm"] = alarm_area.fire != null
-	data["target_temperature"] = "[target_temperature - T0C]C"
+	data["target_temperature"] = "[target_temperature - T0C]C"*/
 
 /obj/machinery/alarm/ui_status(mob/user)
 	if(isAI(user) && aidisabled)
@@ -546,7 +546,7 @@
 	var/list/data = list(
 		"locked" = locked,
 		"siliconUser" = issilicon(user),
-		//"remoteUser" = !!ui.parent_ui,
+		"remoteUser" = !!ui.parent_ui,
 		"danger_level" = danger_level,
 		"target_temperature" = "[target_temperature - T0C]C",
 		"rcon" = rcon_setting,
