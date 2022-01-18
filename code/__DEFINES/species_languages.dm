@@ -60,7 +60,7 @@
 #define LANGUAGE_ZADDAT "Vedahq"
 #define LANGUAGE_GIBBERISH "Babel"
 #define LANGUAGE_VERNAL "Vernal"
-#define LANGUAGE_ADHERENT "Protocol"
+#define LANGUAGE_ADHERENT "Vibrant"
 
 //Languages from _vr file
 #define LANGUAGE_SLAVIC "Pan-Slavic"
