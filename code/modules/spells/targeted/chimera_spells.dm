@@ -39,7 +39,6 @@
 ////////////////////////
 //Timed thermal sight.//
 ////////////////////////
-
 /spell/targeted/chimera/thermal_sight
 	name = "Thermal Sight"
 	desc = "We focus ourselves, able to sense prey and threat through walls or mist. We cannot sustain this for long."
@@ -56,22 +55,24 @@
 
 
 /spell/targeted/chimera/thermal_sight/cast(list/targets, mob/user = usr)
-	if(user.stat != DEAD)
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			toggle_sight(user)
-			addtimer(CALLBACK(src, .proc/toggle_sight,H), duration, TIMER_UNIQUE)
-	..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		toggle_sight(user)
+		addtimer(CALLBACK(src, .proc/toggle_sight,H), duration, TIMER_UNIQUE)
+		..()
 
 /spell/targeted/chimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H)
 	if(!active)
 		to_chat(H, "<span class='notice'>We focus outward, gaining a keen sense of all those around us.</span>")
 		H.species.vision_flags |= SEE_MOBS
+		H.species.has_glowing_eyes = TRUE
 		active = TRUE
 	else
 		to_chat(H, "<span class='notice'>Our senses dull.</span>")
 		H.species.vision_flags &= ~SEE_MOBS
+		H.species.has_glowing_eyes = FALSE
 		active = FALSE
+	H.update_eyes()
 
 ///////////////
 //Voice Mimic//
