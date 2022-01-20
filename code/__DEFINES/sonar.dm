@@ -15,3 +15,4 @@
 #define SONAR_RESOLUTION_BLOCKY				3
 /// can't see
 #define SONAR_RESOLUTION_NONE				4
+

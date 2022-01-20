@@ -1466,6 +1466,8 @@
 			if(!isRemoteObserve && client && !client.adminobs)
 				remoteview_target = null
 				reset_view(null, 0)
+	/// snowflake silicons edit - sonar requires this
+	sight |= SEE_INFRA
 	return 1
 
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)

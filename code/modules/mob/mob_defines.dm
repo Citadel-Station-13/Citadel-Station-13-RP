@@ -4,6 +4,7 @@
 	plane = MOB_PLANE
 	animate_movement = 2
 	flags = PROXMOVE | HEAR
+	sight = SEE_INFRA
 
 	// Intents
 	/// How are we intending to move? Walk/run/etc.
