@@ -5,18 +5,10 @@
 	desc = "The self-contained, self-supporting internal 'brain' of an Adherent unit."
 	icon = 'icons/mob/human_races/adherent/organs.dmi'
 	icon_state = "brain"
-	action_button_name = "Reset Ident"
 	robotic = ORGAN_ROBOT
 	organ_tag = O_BRAIN
 	robotic = ORGAN_CRYSTAL
-	var/next_rename
-	var/rename_delay = 15 MINUTES
 
-/obj/item/organ/internal/brain/adherent/refresh_action_button()
-	. = ..()
-	if(.)
-		action.button_icon_state = "adherent-brain"
-		if(action.button) action.button.UpdateIcon()
 /*
 /obj/item/organ/internal/brain/adherent/attack_self(var/mob/user)
 	. = ..()
@@ -43,7 +35,7 @@
 */
 /obj/item/organ/internal/powered
 	icon = 'icons/mob/human_races/adherent/organs.dmi'
-	var/maintenance_cost = 1
+	var/maintenance_cost = 0.5
 	var/base_action_state
 	var/active = FALSE
 	var/use_descriptor
@@ -86,20 +78,31 @@
 	gender = PLURAL
 	icon_state = "jets"
 	base_action_state = "adherent-pack"
-	maintenance_cost = 2
+	maintenance_cost = 0.2
 
 /obj/item/organ/internal/powered/jets/Initialize()
 	. = ..()
-	verbs |= /obj/item/organ/internal/powered/jets/proc/activatej
+	//verbs |= /obj/item/organ/internal/powered/jets/proc/activatej
+
+/obj/item/organ/internal/powered/jets/ui_action_click()
+	activatej()
 
 /obj/item/organ/internal/powered/jets/proc/activatej()
-	var/mob/living/carbon/human/C = src.owner
-	set name = "Toggle Maneuvering Pack"
+	/*set name = "Toggle Maneuvering Pack"
 	set desc = "Toggles your manuevering jets"
-	set category = "Abilities"
+	set category = "Abilities"*/
 
-	active = !active
-	to_chat(C, "You toggle your jets [active ? "on" : "off"] ")
+	var/mob/living/carbon/human/C = src.owner
+	if(C.incapacitated(INCAPACITATION_ALL))
+		to_chat(C, "You cannot fly in this state!")
+		return
+	if(C.nutrition < 25 && !C.flying) //Don't have any food in you?" You can't fly.
+		to_chat(C, "<span class='notice'>You lack the energy to fly.</span>")
+		return
+	owner.pass_flags ^= PASSTABLE
+	C.flying = !C.flying
+	C.update_floating()
+	to_chat(C, "<span class='notice'>You have [C.flying?"started":"stopped"] flying.</span>")
 
 /obj/item/organ/internal/powered/jets/process()
 	var/mob/living/carbon/human/C = src.owner
@@ -119,9 +122,11 @@
 
 /obj/item/organ/internal/powered/float/Initialize()
 	. = ..()
-	verbs |= /obj/item/organ/internal/powered/float/proc/flying_toggle
+	//verbs |= /obj/item/organ/internal/powered/float/proc/flying_toggle
 	verbs |= /obj/item/organ/internal/powered/float/proc/hover
 
+/obj/item/organ/internal/powered/float/ui_action_click()
+	hover()
 /obj/item/organ/internal/eyes/adherent
 	name = "receptor prism"
 	icon = 'icons/mob/human_races/adherent/organs.dmi'
@@ -162,6 +167,9 @@
 	. = ..()
 	verbs |= /obj/item/organ/internal/powered/cooling_fins/proc/activatecf
 
+/obj/item/organ/internal/powered/cooling_fins/ui_action_click()
+	activatecf()
+
 /obj/item/organ/internal/powered/cooling_fins/proc/activatecf()
 	var/mob/living/carbon/human/C = src.owner
 	set name = "Toggle Cooling Fins"
@@ -183,7 +191,7 @@
 			maintenance_cost = 0
 
 /obj/item/organ/internal/powered/float/proc/flying_toggle()
-	set name = "Toggle Flight"
+	/*set name = "Toggle Flight"
 	set desc = "While flying over open spaces, you will use up some energy. If you run out energy, you will fall. Additionally, you can't fly if you are too heavy."
 	set category = "Abilities"
 
@@ -197,7 +205,7 @@
 	owner.pass_flags ^= PASSTABLE
 	C.flying = !C.flying
 	C.update_floating()
-	to_chat(C, "<span class='notice'>You have [C.flying?"started":"stopped"] flying.</span>")
+	to_chat(C, "<span class='notice'>You have [C.flying?"started":"stopped"] flying.</span>")*/
 
 /obj/item/organ/internal/powered/float/proc/hover()
 	set name = "Hover"
