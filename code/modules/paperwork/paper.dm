@@ -643,3 +643,15 @@
 /obj/item/paper/particle_info
 	name = "Particle Control Panel - A Troubleshooter's Guide"
 	info = "If the Particle Control panel is not responding to inputs, simply toggle power to equipment and/or flip the breaker on your local Area Power Controller (APC). Turn the power off, and then back on again. This will resolve the issue."
+
+/obj/item/paper/xenogene_info
+	name = "partial genetic information transcript"
+	info = "N/A"
+
+/obj/item/paper/xenogene_info/Initialize()
+	..()
+	var/info_to_tell = 4
+	for(var/mask in plant_controller.gene_tag_masks)
+		if(prob(80) && info_to_tell > 0)
+			info += "[mask]: [plant_controller.gene_tag_masks[mask]]")
+			info_to_tell--
