@@ -47,7 +47,7 @@
 			w_class = ITEMSIZE_NORMAL
 		update_icon()
 
-//Boop //New and improved, now a simple reagent sniffer.
+//Boop //Newer and better, can sniff reagents, tanks, and boop people!
 /obj/item/dogborg/boop_module
 	name = "boop module"
 	icon = 'icons/mob/dogborg_vr.dmi'
