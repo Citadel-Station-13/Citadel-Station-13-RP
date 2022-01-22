@@ -1554,7 +1554,8 @@
 	set_trait(TRAIT_YIELD,7)
 	set_trait(TRAIT_POTENCY,45)
 	set_trait(TRAIT_IDEAL_HEAT, 334)
-
+	set_trait(TRAIT_PRODUCT_COLOUR,"#D02C7A")
+	set_trait(TRAIT_PLANT_COLOUR, "#D02C7A")
 
 /datum/seed/disho/thatch
 	name = "thatchdisho"

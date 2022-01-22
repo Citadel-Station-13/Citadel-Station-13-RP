@@ -90,3 +90,14 @@
 	if(!is_safe() && !L.hovering)
 		return FALSE
 	return ..()
+
+/turf/simulated/floor/outdoors/lava/attackby(obj/item/W as obj, mob/user as mob)
+	if(!istype(W))
+		return
+	else if(istype(W,/obj/item/stack/rods))
+		var/obj/item/stack/rods/material = W
+		if(material.get_amount() < 2)
+			return 0
+		else if(do_after(user, 4))
+			material.use(2)
+			new /obj/structure/catwalk(src)

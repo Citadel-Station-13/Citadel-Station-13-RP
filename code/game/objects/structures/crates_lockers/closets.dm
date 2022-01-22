@@ -314,6 +314,8 @@
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
 			if(do_after(user, 20 * S.toolspeed))
+				if(opened)
+					return
 				playsound(src, S.usesound, 50)
 				src.sealed = !src.sealed
 				src.update_icon()
