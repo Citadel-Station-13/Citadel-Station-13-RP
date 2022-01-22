@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-//			These are species-aimed spells meant to be used by the Xenochimera species			 //
+//			These are spells meant to be used by the Xenochimera species			 			 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /spell/targeted/chimera
 	name = "A Chimera Spell"
@@ -13,7 +13,7 @@
 	max_targets = 1
 	cooldown_min = 0
 	duration = 0
-
+	still_recharging_msg = "<span class='notice'>We are not yet ready to use this.</span>"
 	hud_state = "wiz_jaunt"
 	override_base = "cult"
 	var/nutrition_cost_minimum = 50
@@ -130,8 +130,8 @@
 	duration = 0
 	nutrition_cost_minimum = 500
 	nutrition_cost_proportional = 75
-	var/healing_amount = 30
-	var/delay = 2 MINUTES
+	var/healing_amount = 60
+	var/delay = 1 MINUTE
 
 
 /spell/targeted/chimera/regenerate/cast_check(skipcharge = 0,mob/user = usr)
@@ -155,11 +155,11 @@
 			H.adjustOxyLoss(-healing_amount)
 			H.adjustCloneLoss(-healing_amount)
 			H.adjustBrainLoss(-healing_amount)
-			H.blinded = 0
-			H.SetBlinded(0)
-			H.eye_blurry = 0
-			H.ear_deaf = 0
-			H.ear_damage = 0
+			H.blinded = FALSE
+			H.SetBlinded(FALSE)
+			H.eye_blurry = FALSE
+			H.ear_deaf = FALSE
+			H.ear_damage = FALSE
 
 			H.regenerate_icons()
 
@@ -257,7 +257,7 @@
 	var/braindamage = (H.brainloss * 0.6) //Can only heal half brain damage.
 
 	H.revive()
-	H.mutations.Remove(HUSK)
+	LAZYREMOVE(H.mutations, HUSK)
 	H.nutrition = 50		//Hungy, also guarantees ferality without any other tweaking
 	H.setBrainLoss(braindamage)
 
@@ -331,6 +331,7 @@
 	hud_state = "ling_resonant_shriek"
 	spell_flags = INCLUDEUSER
 	range = 8
+	still_recharging_msg = "<span class='notice'>We have shrieked already! It tires us! Get away!</span>"
 	//Slightly more potent than an EMP grenade
 	var/emp_heavy = 3
 	var/emp_med = 6
