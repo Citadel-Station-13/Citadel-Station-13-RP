@@ -1566,6 +1566,12 @@
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
+"boh" = (
+/obj/structure/window/reinforced/full,
+/obj/structure/grille,
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plating,
+/area/rnd/xenobiology/xenoflora/lab_atmos)
 "boO" = (
 /obj/structure/closet/secure_closet/RD,
 /obj/item/aicard,
@@ -3363,6 +3369,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
+"cMJ" = (
+/obj/structure/table/standard,
+/obj/machinery/smartfridge/seeds,
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "cMX" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
@@ -17079,6 +17090,7 @@
 /obj/item/reagent_containers/dropper,
 /obj/item/reagent_containers/dropper,
 /obj/item/reagent_containers/dropper,
+/obj/item/paper/xenogene_info,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "odT" = (
@@ -19322,6 +19334,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"pBx" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/mauve/border{
+	dir = 4
+	},
+/obj/machinery/smartfridge/secure{
+	name = "\improper Xenobotanical Sample Storage";
+	req_access = 47
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology/xenoflora)
 "pBE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -21186,7 +21211,7 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
-/obj/machinery/vending/hydronutrients,
+/obj/machinery/seed_storage/xenobotany,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "qQl" = (
@@ -23902,9 +23927,7 @@
 /obj/machinery/requests_console/preset/research{
 	pixel_x = 32
 	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
+/obj/machinery/vending/hydronutrients,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "sPF" = (
@@ -25399,6 +25422,14 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/aft)
+"tRO" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/mauve/border,
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology/xenoflora)
 "tRQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -36104,7 +36135,7 @@ jYb
 tPc
 xDW
 lSq
-lSq
+cMJ
 xDW
 orO
 uzP
@@ -36959,7 +36990,7 @@ cqe
 aeN
 hTO
 wDY
-uBN
+tRO
 qon
 mQO
 oBt
@@ -37948,7 +37979,7 @@ pYD
 nhp
 sOK
 wpT
-vhM
+pBx
 xEz
 qYO
 vhM
@@ -38090,7 +38121,7 @@ pYD
 gVh
 dXj
 gsE
-gsE
+boh
 gsE
 sFS
 gsE

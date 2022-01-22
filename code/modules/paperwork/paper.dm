@@ -651,7 +651,8 @@
 /obj/item/paper/xenogene_info/Initialize()
 	..()
 	var/info_to_tell = 4
+	info = ""
 	for(var/mask in plant_controller.gene_tag_masks)
 		if(prob(80) && info_to_tell > 0)
-			info += "[mask]: [plant_controller.gene_tag_masks[mask]]")
+			info += "[mask]: [plant_controller.gene_tag_masks[mask]] \n"
 			info_to_tell--
