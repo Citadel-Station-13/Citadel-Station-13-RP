@@ -152,6 +152,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	character.g_synth			= pref.g_synth
 	character.b_synth			= pref.b_synth
 	character.synth_markings 	= pref.synth_markings
+	character.s_base			= pref.s_base
 
 	// Destroy/cyborgize organs and limbs.
 	character.synthetic = null

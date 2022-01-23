@@ -154,10 +154,10 @@ var/global/list/limb_icon_cache = list()
 				mob_icon = new /icon('icons/mob/human_races/r_skeleton.dmi', "[icon_name][gender ? "_[gender]" : ""]")
 			else if (robotic >= ORGAN_ROBOT && species == !SPECIES_ADHERENT)
 				mob_icon = new /icon('icons/mob/human_races/robotic.dmi', "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
-				apply_colouration(mob_icon)
 			else
-				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
-				apply_colouration(mob_icon)
+				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
+				log_qdel("generated a [species] specific [src] with [icon_name] and _[s_base]")
+			apply_colouration(mob_icon)
 
 			//Body markings, actually does not include head this time. Done separately above.
 			if(!istype(src,/obj/item/organ/external/head))
