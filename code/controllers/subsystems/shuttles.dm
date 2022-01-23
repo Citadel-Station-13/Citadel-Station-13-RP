@@ -80,6 +80,15 @@ SUBSYSTEM_DEF(shuttle)
 	hook_up_motherships(shuttles_made)
 	hook_up_shuttle_objects(shuttles_made)
 	shuttles_to_initialize = null
+	/// citadel edit - initialize overmaps shuttles here until we rewrite overmaps to not be a dumpster fire god damnit
+	for(var/obj/machinery/atmospherics/unary/engine/E in world)
+		if(E.linked)
+			continue
+		E.link_to_ship()
+	for(var/obj/machinery/ion_engine/E in world)
+		if(E.linked)
+			continue
+		E.link_to_ship()
 
 /datum/controller/subsystem/shuttle/proc/initialize_sectors()
 	for(var/sector in sectors_to_initialize)

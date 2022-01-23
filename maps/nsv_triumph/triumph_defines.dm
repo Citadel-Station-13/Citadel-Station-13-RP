@@ -23,13 +23,11 @@
 
 #define Z_LEVEL_TRADEPORT				20
 #define Z_LEVEL_LAVALAND				21
-// Camera Networks
-#define NETWORK_TRIUMPH "Triumph"
-#define NETWORK_TCOMMS "Telecommunications"
-#define NETWORK_OUTSIDE "Outside"
-#define NETWORK_EXPLORATION "Exploration"
-#define NETWORK_XENOBIO "Xenobiology"
 
+#define Z_LEVEL_TALON1					22
+#define Z_LEVEL_TALON2					23
+
+// Camera Networks
 /datum/map/triumph
 	name = "Triumph"
 	full_name = "NSV Triumph"
@@ -49,7 +47,7 @@
 
 	admin_levels = list()
 	sealed_levels = list()
-	empty_levels = list()
+	empty_levels = null
 	station_levels = list(Z_LEVEL_DECK_ONE,
 		Z_LEVEL_DECK_TWO,
 		Z_LEVEL_DECK_THREE,
@@ -115,7 +113,9 @@
 							NETWORK_COMMUNICATORS,
 							NETWORK_ALARM_ATMOS,
 							NETWORK_ALARM_POWER,
-							NETWORK_ALARM_FIRE
+							NETWORK_ALARM_FIRE,
+							NETWORK_TALON_HELMETS,
+							NETWORK_TALON_SHIP
 							)
 
 	bot_patrolling = FALSE
@@ -157,7 +157,8 @@
 		list("Forzen Planet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land")
+		list("Away Mission - Lava Land"),
+		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2")//I swear to god this better work -Bloop
 	)
 
 	ai_shell_restricted = TRUE

@@ -69,3 +69,11 @@
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/death()
 	..(null,"is smashed into pieces!")
 	qdel(src)
+
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison
+	name = "Derelict Maintenance Drone"
+	base_attack_cooldown = 8 // Slower attack rate
+	melee_damage_lower = 4	// Slightly less DPS for this version
+	poison_chance = 0	// No welding fuel poison
+//	pass_flags = Null // Lets see if this stops the bastards from going under barricades
+

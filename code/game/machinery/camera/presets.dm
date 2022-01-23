@@ -130,6 +130,19 @@ var/global/list/engineering_networks = list(
 	. = ..()
 	upgradeXRay()
 
+//Tether-unique network cameras
+/obj/machinery/camera/network/tether
+	network = list(NETWORK_TRIUMPH)
+
+/obj/machinery/camera/network/tcomms
+	network = list(NETWORK_TCOMMS)
+
+/obj/machinery/camera/network/outside
+	network = list(NETWORK_OUTSIDE)
+
+/obj/machinery/camera/network/exploration
+	network = list(NETWORK_EXPLORATION)
+
 // MOTION
 
 /obj/machinery/camera/motion/Initialize(mapload)
