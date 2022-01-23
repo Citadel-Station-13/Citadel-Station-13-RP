@@ -103,7 +103,7 @@
 		BP_COOLING_FINS = /obj/item/organ/internal/powered/cooling_fins
 		)
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/snake
-
+	//If you wanna copy this for your mob, dont
 	base_skin_colours = list(
 		"",
 		"_green",
