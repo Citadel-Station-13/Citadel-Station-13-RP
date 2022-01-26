@@ -119,11 +119,14 @@ GLOBAL_LIST_EMPTY(mannequins)
 	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
 	hair_styles_list = list()
 	for(var/path in paths)
-		var/datum/sprite_accessory/hair/H = new path()
-		hair_styles_list[H.name] = H
+		var/datum/sprite_accessory/hair/H = new path
 		if(!istext(H.name))
-			stack_trace("[H] ([path]) had no valid name.")
+			qdel(H)
 			continue
+		if(hair_styles_list[H.name])
+			stack_trace("Duplicate name [H.name] detected - [hair_styles_list[H.name]] vs [H]")
+			continue
+		hair_styles_list[H.name] = H
 		switch(H.gender)
 			if(MALE)	hair_styles_male_list += H.name
 			if(FEMALE)	hair_styles_female_list += H.name
@@ -138,7 +141,10 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for(var/path in paths)
 		var/datum/sprite_accessory/facial_hair/H = new path()
 		if(!istext(H.name))
-			stack_trace("[H] ([path]) had no valid name.")
+			qdel(H)
+			continue
+		if(facial_hair_styles_list[H.name])
+			stack_trace("Duplicate name [H.name] detected - [facial_hair_styles_list[H.name]] vs [H]")
 			continue
 		facial_hair_styles_list[H.name] = H
 		switch(H.gender)
@@ -155,8 +161,12 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for(var/path in paths)
 		var/datum/sprite_accessory/marking/M = new path()
 		if(!istext(M.name))
-			stack_trace("[M] ([path]) had no valid name.")
+			qdel(M)
 			continue
+		if(body_marking_styles_list[M.name])
+			stack_trace("Duplicate name [M.name] detected - [body_marking_styles_list[M.name]] vs [M]")
+			continue
+
 		body_marking_styles_list[M.name] = M
 	sortTim(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
@@ -168,7 +178,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 		joblist[J.title] = J
 
 	//Languages and species.
-	paths = typesof(/datum/language)-/datum/language
+	paths = subtypesof(/datum/language)
 	for(var/T in paths)
 		var/datum/language/L = new T
 		GLOB.all_languages[L.name] = L
