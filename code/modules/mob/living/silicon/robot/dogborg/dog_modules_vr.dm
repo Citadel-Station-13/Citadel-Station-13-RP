@@ -97,7 +97,7 @@
 
 	if(ismob(target))
 		user.visible_message("<span class='notice'>\the [user] boops \the [target.name]!</span>", "<span class='notice'>You boop \the [target.name]!</span>")
-		playsound(src.loc, 'sound/misc/slip.ogg', 50, 1)
+		playsound(src, 'sound/weapons/thudswoosh.ogg', 25, 1, -1)
 	else
 		user.visible_message("<span class='notice'>[user] sniffs at \the [target.name].</span>", "<span class='notice'>You sniff \the [target.name]...</span>")
 		if(!isnull(target.reagents))
