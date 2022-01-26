@@ -17,7 +17,7 @@
 //	cyborg_noun =             null
 
 	icon_template =           'icons/mob/human_races/adherent/template.dmi'
-	icobase =                 'icons/mob/human_races/r_adherent.dmi'
+	icobase =                 'icons/mob/human_races/adherent/body.dmi'
 //	deform =                  'icons/mob/human_races/r_adherent.dmi'
 //	preview_icon =            'icons/mob/human_races/adherent/preview.dmi'
 	damage_overlays =         'icons/mob/human_races/adherent/damage_overlay.dmi'
@@ -48,7 +48,7 @@
 
 	flags =				NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
 	spawn_flags =		SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags =	HAS_EYE_COLOR | BASE_SKIN_COLOR
+	appearance_flags =	HAS_EYE_COLOR | HAS_SKIN_COLOR//BASE_SKIN_COLOR
 
 	language = 			LANGUAGE_ADHERENT
 	species_language = 	LANGUAGE_ADHERENT
