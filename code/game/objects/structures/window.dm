@@ -163,6 +163,10 @@
 		return 0
 	return 1
 
+/obj/structure/window/setDir(newdir)
+	. = ..()
+	update_nearby_tiles(need_rebuild = TRUE)
+
 /obj/structure/window/hitby(AM as mob|obj)
 	..()
 	visible_message("<span class='danger'>[src] was hit by [AM].</span>")
@@ -283,12 +287,14 @@
 			update_nearby_icons()
 			update_verbs()
 			playsound(src, W.usesound, 75, 1)
+			update_nearby_tiles(need_rebuild = TRUE)
 			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the frame [anchored ? "to" : "from"] the floor.</span>")
 		else if(!reinf)
 			anchored = !anchored
 			update_nearby_icons()
 			update_verbs()
 			playsound(src, W.usesound, 75, 1)
+			update_nearby_tiles(need_rebuild = TRUE)
 			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the window [anchored ? "to" : "from"] the floor.</span>")
 	else if(W.is_crowbar() && reinf && state <= 1)
 		state = 1 - state
@@ -361,12 +367,8 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.setDir(turn(src.dir, 90))
+	setDir(turn(dir, 90))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
-
 
 /obj/structure/window/verb/rotate_clockwise()
 	set name = "Rotate Window Clockwise"
@@ -383,11 +385,8 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.setDir(turn(src.dir, 270))
+	setDir(turn(dir, 270))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
 
 /obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
 	. = ..(mapload)
@@ -404,9 +403,8 @@
 
 	ini_dir = dir
 
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles(need_rebuild = TRUE)
 	update_nearby_icons()
-
 
 /obj/structure/window/Destroy()
 	density = 0
@@ -418,10 +416,12 @@
 
 /obj/structure/window/Move()
 	var/ini_dir = dir
-	update_nearby_tiles(need_rebuild=1)
-	..()
+	. = ..()
 	setDir(ini_dir)
-	update_nearby_tiles(need_rebuild=1)
+
+/obj/structure/window/Moved()
+	. = ..()
+	update_nearby_tiles(need_rebuild = TRUE)
 
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()

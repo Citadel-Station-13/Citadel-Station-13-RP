@@ -3,51 +3,51 @@
 /turf/template_noop,
 /area/poi_d/explored)
 "b" = (
-/turf/simulated/wall,
+/turf/simulated/wall/class_d_indoors,
 /area/poi_d/explored)
 "c" = (
 /obj/machinery/door/airlock/glass_engineering,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "d" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "e" = (
 /obj/structure/sign/warning/radioactive,
-/turf/simulated/wall,
+/turf/simulated/wall/class_d_indoors,
 /area/poi_d/explored)
 "f" = (
 /obj/structure/sign/warning/radioactive,
 /obj/effect/map_effect/interval/sound_emitter/geiger/high,
-/turf/simulated/wall,
+/turf/simulated/wall/class_d_indoors,
 /area/poi_d/explored)
 "g" = (
 /obj/item/geiger,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "h" = (
 /obj/effect/map_effect/radiation_emitter/strong,
 /obj/item/poi/brokenoldreactor,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "i" = (
 /obj/effect/map_effect/interval/sound_emitter/geiger/ext,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "n" = (
 /obj/random/tool/power,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "r" = (
 /obj/mob_spawner/drone_spawner,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 
 (1,1,1) = {"

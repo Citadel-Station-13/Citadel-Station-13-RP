@@ -420,11 +420,12 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "supply_shuttle_hatch";
+	locked = 1;
 	name = "Shuttle Hatch"
 	},
-/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "bR" = (
@@ -542,13 +543,37 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
+"ci" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_checker)
+"cq" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"cr" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wqueen,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "cs" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "supply_shuttle_hatch";
+	locked = 1;
 	name = "Shuttle Hatch"
 	},
-/obj/effect/map_helper/airlock/door/simple,
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
 "ct" = (
@@ -602,13 +627,17 @@
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
+"cE" = (
+/obj/item/chess/brook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "cO" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "supply_shuttle";
 	pixel_x = -25;
 	req_one_access = list(13,31);
-	tag_door = null
+	tag_door = "supply_shuttle_hatch"
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
@@ -702,16 +731,17 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
 "dh" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = null;
-	id_tag = null;
-	name = "Shuttle Hatch"
-	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "QMLoad"
 	},
-/obj/effect/map_helper/airlock/door/simple,
+/obj/machinery/door/airlock/glass_external{
+	frequency = 1380;
+	icon_state = "door_locked";
+	id_tag = "supply_shuttle_hatch";
+	locked = 1;
+	name = "Shuttle Hatch"
+	},
 /turf/simulated/shuttle/plating,
 /area/shuttle/supply)
 "dj" = (
@@ -1602,38 +1632,62 @@
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
 "gN" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_checker)
+"gO" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/holodorm/source_desert)
-"gO" = (
-/turf/simulated/floor/holofloor/desert,
-/area/holodeck/holodorm/source_desert)
 "gP" = (
-/obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/holodorm/source_desert)
 "gQ" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/holofloor/desert,
+/area/holodeck/holodorm/source_desert)
+"gR" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
-"gR" = (
+"gS" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
-"gS" = (
+"gU" = (
+/obj/structure/railing,
+/obj/structure/lattice,
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"hg" = (
 /turf/simulated/floor/holofloor/reinforced,
 /area/holodeck/holodorm/source_off)
-"hg" = (
+"hj" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/brook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"hs" = (
+/obj/item/chess/bqueen,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"hx" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/effect/landmark{
 	name = "Catgirl Spawn"
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
-"hx" = (
+"hy" = (
+/obj/item/checker/black,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_checker)
+"hz" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_seating)
-"hy" = (
+"hA" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8
 	},
@@ -1645,14 +1699,14 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
-"hz" = (
+"hB" = (
 /obj/structure/bed/chair/holochair,
 /obj/effect/floor_decal/carpet{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
-"hA" = (
+"hC" = (
 /obj/effect/floor_decal/carpet{
 	dir = 1
 	},
@@ -1664,52 +1718,59 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
-"hB" = (
+"hD" = (
 /obj/structure/table/holotable,
 /obj/item/clothing/gloves/boxing/hologlove,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
-"hC" = (
+"hE" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
-"hD" = (
+"hF" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
-"hE" = (
+"hH" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/lattice,
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"hJ" = (
 /obj/effect/floor_decal/corner/green{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
-"hF" = (
+"hK" = (
 /turf/simulated/floor/holofloor/space,
 /area/holodeck/holodorm/source_space)
-"hJ" = (
-/obj/structure/bed/chair/holochair{
-	dir = 4
-	},
-/obj/effect/floor_decal/carpet{
-	dir = 8
-	},
-/turf/simulated/floor/holofloor/carpet,
-/area/holodeck/holodorm/source_seating)
-"hK" = (
-/obj/structure/table/woodentable/holotable,
-/turf/simulated/floor/holofloor/carpet,
-/area/holodeck/holodorm/source_seating)
 "hL" = (
 /obj/structure/bed/chair/holochair{
-	dir = 8
+	dir = 4
 	},
 /obj/effect/floor_decal/carpet{
-	dir = 4
+	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
 "hO" = (
+/obj/structure/table/woodentable/holotable,
+/turf/simulated/floor/holofloor/carpet,
+/area/holodeck/holodorm/source_seating)
+"hP" = (
+/obj/structure/bed/chair/holochair{
+	dir = 8
+	},
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/carpet,
+/area/holodeck/holodorm/source_seating)
+"hQ" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8
 	},
@@ -1719,31 +1780,45 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
-"hP" = (
+"hR" = (
 /obj/structure/bed/chair/holochair{
 	dir = 1
 	},
 /obj/effect/floor_decal/carpet,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
-"hQ" = (
-/obj/effect/floor_decal/carpet{
+"iR" = (
+/obj/item/chess/bknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"jc" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
-	dir = 6
-	},
-/turf/simulated/floor/holofloor/carpet,
-/area/holodeck/holodorm/source_seating)
-"hR" = (
-/obj/structure/table/holotable,
-/obj/item/clothing/gloves/boxing/hologlove{
-	icon_state = "boxinggreen";
-	item_state = "boxinggreen"
-	},
+/obj/item/chess/bpawn,
 /turf/simulated/floor/holofloor/tiled/dark,
-/area/holodeck/holodorm/source_boxing)
+/area/holodeck/source_chess)
+"jd" = (
+/obj/item/chess/bbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"jj" = (
+/obj/structure/railing,
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"lN" = (
+/obj/structure/lattice,
+/obj/structure/railing,
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"ml" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/simulated/floor/holofloor/space,
+/area/space)
 "mD" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -1751,6 +1826,20 @@
 	},
 /turf/simulated/shuttle/floor,
 /area/shuttle/supply)
+"oc" = (
+/obj/effect/floor_decal/sign/dock/one,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"oo" = (
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"oH" = (
+/obj/structure/catwalk,
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/reinforced,
+/area/space)
 "oP" = (
 /turf/space/transit/east,
 /area/space)
@@ -1766,6 +1855,41 @@
 	name = "Escape Shuttle Transit"
 	},
 /turf/space/transit/east,
+/area/space)
+"oY" = (
+/obj/effect/floor_decal/sign/b,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"rb" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"rh" = (
+/obj/item/chess/bpawn,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"rw" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"sM" = (
+/obj/effect/floor_decal/sign/dock/three,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"tT" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/holofloor/space,
 /area/space)
 "uc" = (
 /turf/unsimulated/wall,
@@ -1795,16 +1919,83 @@
 	icon_state = "dark"
 	},
 /area/centcom/suppy)
+"vY" = (
+/obj/item/chess/wpawn,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"we" = (
+/obj/structure/lattice,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"wj" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wpawn,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"wt" = (
+/obj/effect/floor_decal/sign/c,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"wE" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice,
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"wU" = (
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"xD" = (
+/obj/effect/floor_decal/sign/dock/two,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"yc" = (
+/obj/effect/floor_decal/sign/c,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"yH" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bking,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"zg" = (
+/obj/effect/floor_decal/sign/dock/three,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
 "zT" = (
 /obj/effect/step_trigger/teleporter/random,
 /obj/effect/step_trigger/teleporter/random,
 /turf/space,
 /area/space)
+"An" = (
+/obj/effect/floor_decal/sign/a,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"AW" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/space,
+/area/space)
 "Bb" = (
 /obj/structure/shuttle/engine/propulsion,
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
-	base_turf = /turf/space;
+	base_turf = /turf/simulated/floor/airless/ceiling;
 	landmark_tag = "supply_cc";
 	name = "Centcom Supply Depot"
 	},
@@ -1813,12 +2004,205 @@
 	dir = 1
 	},
 /area/shuttle/supply)
+"Db" = (
+/obj/structure/lattice,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"Et" = (
+/obj/effect/floor_decal/sign/b,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"EW" = (
+/obj/structure/catwalk,
+/obj/structure/table/holotable,
+/turf/simulated/floor/holofloor/reinforced,
+/area/space)
 "Fb" = (
 /turf/unsimulated/map/edge,
 /area/overmap)
+"Gx" = (
+/obj/item/chess/wrook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"Hx" = (
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"HU" = (
+/obj/structure/lattice,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"HV" = (
+/obj/structure/table/holotable,
+/obj/item/clothing/gloves/boxing/hologlove{
+	icon_state = "boxinggreen";
+	item_state = "boxinggreen"
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/holodorm/source_boxing)
+"Ip" = (
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/obj/item/checker/blackking,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"Iz" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"IW" = (
+/obj/effect/floor_decal/sign/a,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"Jj" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "JB" = (
 /turf/unsimulated/map,
 /area/overmap)
+"JH" = (
+/obj/structure/catwalk,
+/obj/structure/bed/chair/sofa/black/right,
+/turf/simulated/floor/holofloor/reinforced,
+/area/space)
+"Kp" = (
+/obj/item/checker/red,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_checker)
+"Mo" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"MB" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"Nf" = (
+/obj/structure/lattice,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"Or" = (
+/obj/structure/catwalk,
+/obj/structure/bed/chair/sofa/black/right{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/reinforced,
+/area/space)
+"Ot" = (
+/obj/item/chess/wking,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"Qm" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/holofloor/reinforced,
+/area/space)
+"Qy" = (
+/obj/structure/catwalk,
+/obj/structure/bed/chair/sofa/black/left,
+/turf/simulated/floor/holofloor/reinforced,
+/area/space)
+"QH" = (
+/turf/simulated/floor/holofloor/tiled,
+/area/space)
+"QK" = (
+/obj/structure/lattice,
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"Rw" = (
+/obj/effect/floor_decal/sign/dock/two,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
+"Ry" = (
+/obj/effect/floor_decal/carpet{
+	dir = 4
+	},
+/obj/effect/floor_decal/carpet,
+/obj/effect/floor_decal/carpet{
+	dir = 6
+	},
+/turf/simulated/floor/holofloor/carpet,
+/area/holodeck/holodorm/source_seating)
+"Tb" = (
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/obj/item/checker/redking,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"Tv" = (
+/obj/item/chess/wknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"UB" = (
+/obj/effect/floor_decal/sign/dock/one,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"Vo" = (
+/obj/structure/catwalk,
+/obj/structure/holostool,
+/turf/simulated/floor/holofloor/reinforced,
+/area/space)
+"Xx" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wrook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"XO" = (
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_checker)
+"YE" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/holofloor/space,
+/area/space)
+"YS" = (
+/obj/item/chess/wbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 
 (1,1,1) = {"
 ap
@@ -10648,17 +11032,17 @@ aI
 aI
 aI
 ar
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ar
 ap
 ap
 ap
@@ -10789,18 +11173,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+wU
+wU
+wU
+wU
+wU
+zg
+Rw
+oc
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -10931,18 +11315,18 @@ dF
 dF
 ec
 dF
+dA
+wU
+hj
+rh
+Jj
+oo
+Jj
+oo
+wj
+Gx
+An
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11073,18 +11457,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+iR
+jc
+oo
+Jj
+oo
+Jj
+vY
+MB
+oY
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11215,18 +11599,18 @@ ec
 dF
 dF
 dF
+dA
+wU
+cq
+rh
+Jj
+oo
+Jj
+oo
+wj
+YS
+yc
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11357,18 +11741,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+hs
+jc
+oo
+Jj
+oo
+Jj
+vY
+cr
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11499,18 +11883,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+yH
+rh
+Jj
+oo
+Jj
+oo
+wj
+Ot
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11641,18 +12025,18 @@ dF
 dF
 ec
 dF
+dA
+wU
+jd
+jc
+oo
+Jj
+oo
+Jj
+vY
+rb
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11783,18 +12167,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+Iz
+rh
+Jj
+oo
+Jj
+oo
+wj
+Tv
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -11925,18 +12309,18 @@ ec
 dF
 dF
 dF
+dA
+wU
+cE
+jc
+oo
+Jj
+oo
+Jj
+vY
+Xx
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -12067,18 +12451,18 @@ dF
 dF
 dF
 dF
+dA
+wU
+wU
+wU
+wU
+wU
+wU
+wU
+wU
+wU
+wU
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -12210,17 +12594,17 @@ aL
 aL
 aL
 ar
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+ar
 ap
 ap
 ap
@@ -12351,18 +12735,18 @@ dG
 fG
 dG
 dG
+dA
+XO
+XO
+XO
+XO
+XO
+XO
+sM
+xD
+UB
+XO
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -12493,18 +12877,18 @@ dG
 dG
 eT
 dG
+dA
+XO
+ci
+Kp
+ci
+gN
+ci
+hy
+ci
+hy
+IW
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -12635,18 +13019,18 @@ dG
 dG
 dG
 dG
+dA
+XO
+Kp
+ci
+Kp
+ci
+gN
+ci
+hy
+ci
+Et
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -12777,18 +13161,18 @@ dG
 dG
 eJ
 dG
+dA
+XO
+ci
+Kp
+ci
+gN
+ci
+hy
+ci
+hy
+wt
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -12919,18 +13303,18 @@ ed
 dG
 dG
 fG
+dA
+XO
+Kp
+ci
+Kp
+ci
+gN
+ci
+hy
+ci
+XO
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -13061,18 +13445,18 @@ dG
 fG
 dG
 dG
+dA
+XO
+ci
+Kp
+ci
+gN
+ci
+hy
+ci
+hy
+XO
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -13203,18 +13587,18 @@ eJ
 dG
 eT
 dG
+dA
+XO
+Kp
+ci
+Kp
+ci
+gN
+ci
+hy
+ci
+XO
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -13345,18 +13729,18 @@ dG
 dG
 dG
 dG
+dA
+XO
+ci
+Kp
+ci
+gN
+ci
+hy
+ci
+hy
+XO
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -13487,18 +13871,18 @@ dG
 dG
 eJ
 dG
+dA
+XO
+Kp
+ci
+Kp
+ci
+gN
+ci
+hy
+ci
+XO
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -13629,18 +14013,18 @@ ed
 dG
 dG
 fG
+dA
+Tb
+XO
+XO
+XO
+XO
+XO
+XO
+XO
+XO
+Ip
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -13772,17 +14156,17 @@ aL
 aL
 aL
 ar
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+ar
 ap
 ap
 ap
@@ -13913,18 +14297,18 @@ eK
 eK
 eK
 eK
+dA
+Hx
+Hx
+Hx
+jj
+Qm
+Qm
+hH
+QK
+Hx
+Hx
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -14055,18 +14439,18 @@ fn
 fn
 fO
 eK
+dA
+Hx
+Hx
+QK
+gU
+Qm
+Qm
+YE
+Hx
+Hx
+Hx
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -14197,18 +14581,18 @@ fo
 fo
 fP
 eK
+dA
+Hx
+Hx
+Hx
+gU
+Qm
+Qm
+YE
+Hx
+QK
+QK
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -14339,18 +14723,18 @@ fo
 fo
 fP
 eK
+dA
+Hx
+QK
+ml
+we
+Qm
+Qm
+rw
+Mo
+QK
+Hx
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -14481,18 +14865,18 @@ fo
 fo
 fP
 eK
+dA
+Hx
+jj
+JH
+Qm
+Qm
+Qm
+Qm
+oH
+hH
+QK
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -14623,18 +15007,18 @@ fo
 fo
 fP
 eK
+dA
+Hx
+jj
+Qy
+Qm
+Qm
+Qm
+Qm
+Or
+hH
+Hx
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -14765,18 +15149,18 @@ fo
 fo
 fP
 eK
+dA
+Hx
+Hx
+Nf
+HU
+Vo
+Vo
+AW
+tT
+QK
+Hx
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -14907,18 +15291,18 @@ fp
 fH
 fQ
 eK
+dA
+Hx
+Hx
+Hx
+lN
+EW
+EW
+Db
+QK
+QK
+QK
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -15049,19 +15433,19 @@ eK
 eK
 eK
 eK
+dA
+Hx
+Hx
+QK
+QK
+wE
+tT
+Hx
+Hx
+QK
+Hx
 fZ
-aI
-aI
-aI
-ar
-aI
-aI
-aI
-ar
-aI
-aI
-aI
-ar
+ap
 ap
 ap
 ap
@@ -15192,18 +15576,18 @@ eL
 eL
 eL
 dA
-ga
-ga
-ga
-dB
-gN
-gO
-gO
-dB
-hx
-hx
-hx
+Hx
+Hx
+Hx
+Hx
+Hx
+Hx
+Hx
+Hx
+Hx
+Hx
 fZ
+ap
 ap
 ap
 ap
@@ -15333,19 +15717,19 @@ aL
 aL
 aL
 aL
-as
-gb
-ga
-gq
-dB
-gO
-gO
-gP
-dB
-hy
-hJ
-hO
-fZ
+ar
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+ar
+ap
 ap
 ap
 ap
@@ -15476,18 +15860,18 @@ dJ
 dJ
 dJ
 dA
-gc
-ga
-gc
-dB
-gO
-gO
-gO
-dB
-hz
-hK
-hP
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -15618,18 +16002,18 @@ dJ
 dK
 dK
 dA
-gd
-ga
-ga
-dB
-gO
-gN
-gO
-dB
-hz
-hK
-hP
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -15760,18 +16144,18 @@ fI
 dL
 dL
 dA
-gc
-ga
-gq
-dB
-gO
-gO
-gO
-dB
-hA
-hL
-hQ
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -15902,18 +16286,18 @@ fz
 fz
 fS
 dA
-gc
-ga
-gc
-dB
-gP
-gO
-gO
-dB
-hx
-hx
-hx
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -16043,19 +16427,19 @@ ei
 ei
 ei
 fJ
+dA
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
-aL
-aL
-aL
-ar
-aL
-aL
-aL
-ar
-aL
-aL
-aL
-ar
+ap
 ap
 ap
 ap
@@ -16186,18 +16570,18 @@ fJ
 fz
 fS
 dA
-ge
-gl
-gr
-dB
-gQ
-gR
-gQ
-dB
-hB
-hD
-hD
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -16328,18 +16712,18 @@ fJ
 ei
 fT
 dA
-gf
-gl
-gr
-dB
-gR
-gQ
-gR
-dB
-hC
-hC
-hC
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -16470,18 +16854,18 @@ fJ
 fA
 fU
 dA
-gg
-gl
-gr
-dB
-gQ
-hg
-gQ
-dB
-hD
-hD
-hD
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -16612,18 +16996,18 @@ ei
 ei
 fJ
 dA
-gh
-gl
-gr
-dB
-gR
-gQ
-gR
-dB
-hD
-hD
-hD
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -16754,18 +17138,18 @@ fA
 fA
 fU
 dA
-gi
-gl
-gr
-dB
-gQ
-gR
-gQ
-dB
-hE
-hE
-hE
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -16895,19 +17279,19 @@ aL
 aL
 aL
 aL
-as
-gf
-gl
-gr
-dB
-gR
-gQ
-gR
-dB
-hD
-hD
-hR
-fZ
+ar
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+ar
+ap
 ap
 ap
 ap
@@ -17037,19 +17421,19 @@ dQ
 fK
 fR
 fR
+dA
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
-aL
-aL
-aL
-ar
-aL
-aL
-aL
-ar
-aL
-aL
-aL
-ar
+ap
 ap
 ap
 ap
@@ -17180,18 +17564,18 @@ fK
 fR
 fR
 dA
-gj
-gk
-gs
-dB
-gS
-gS
-gS
-dB
-hF
-hF
-hF
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -17322,18 +17706,18 @@ fK
 fR
 fR
 dA
-gk
-gm
-gk
-dB
-gS
-gS
-gS
-dB
-hF
-hF
-hF
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -17464,18 +17848,18 @@ fK
 fR
 fR
 dA
-gk
-gn
-gk
-dB
-gS
-gS
-gS
-dB
-hF
-hF
-hF
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -17606,18 +17990,18 @@ fK
 fR
 fR
 dA
-gk
-go
-gk
-dB
-gS
-gS
-gS
-dB
-hF
-hF
-hF
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -17748,18 +18132,18 @@ fK
 fR
 fR
 dA
-gk
-gk
-gk
-dB
-gS
-gS
-gS
-dB
-hF
-hF
-hF
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -17890,18 +18274,18 @@ fK
 fR
 fR
 dA
-gk
-gk
-gt
-dB
-gS
-gS
-gS
-dB
-hF
-hF
-hF
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
+ap
 ap
 ap
 ap
@@ -18031,19 +18415,19 @@ dQ
 fK
 fR
 fR
+dA
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
-bb
-bb
-bb
-ar
-bb
-bb
-bb
-ar
-bb
-bb
-bb
-ar
+ap
 ap
 ap
 ap
@@ -18173,18 +18557,18 @@ dQ
 fK
 fR
 fR
+dA
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -18315,18 +18699,18 @@ dQ
 fK
 fR
 fR
+dA
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
+QH
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -18458,17 +18842,17 @@ aL
 aL
 aL
 ar
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+aL
+fZ
 ap
 ap
 ap
@@ -18600,18 +18984,18 @@ dR
 dR
 dR
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+aI
+aI
+aI
+ar
+aI
+aI
+aI
+ar
+aI
+aI
+aI
+ar
 ap
 ap
 ap
@@ -18741,19 +19125,19 @@ dS
 dR
 dS
 dS
+dA
+ga
+ga
+ga
+dB
+gO
+gP
+gP
+dB
+hz
+hz
+hz
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -18883,19 +19267,19 @@ dT
 fL
 dT
 dT
+dA
+gb
+ga
+gq
+dB
+gP
+gP
+gQ
+dB
+hA
+hL
+hQ
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -19025,19 +19409,19 @@ fB
 fB
 fB
 fV
+dA
+gc
+ga
+gc
+dB
+gP
+gP
+gP
+dB
+hB
+hO
+hR
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -19167,19 +19551,19 @@ em
 em
 em
 fW
+dA
+gd
+ga
+ga
+dB
+gP
+gO
+gP
+dB
+hB
+hO
+hR
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -19309,19 +19693,19 @@ em
 em
 em
 fW
+dA
+gc
+ga
+gq
+dB
+gP
+gP
+gP
+dB
+hC
+hP
+Ry
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -19451,19 +19835,19 @@ em
 em
 em
 fW
+dA
+gc
+ga
+gc
+dB
+gQ
+gP
+gP
+dB
+hz
+hz
+hz
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -19594,18 +19978,18 @@ em
 em
 fW
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+aL
+aL
+aL
+ar
+aL
+aL
+aL
+ar
+aL
+aL
+aL
+ar
 ap
 ap
 ap
@@ -19735,19 +20119,19 @@ em
 em
 em
 fW
+dA
+ge
+gl
+gr
+dB
+gR
+gS
+gR
+dB
+hD
+hF
+hF
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -19877,19 +20261,19 @@ fC
 fC
 fC
 fX
+dA
+gf
+gl
+gr
+dB
+gS
+gR
+gS
+dB
+hE
+hE
+hE
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -20019,19 +20403,19 @@ aL
 aL
 aL
 aL
-ar
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+dA
+gg
+gl
+gr
+dB
+gR
+hx
+gR
+dB
+hF
+hF
+hF
+fZ
 ap
 ap
 ap
@@ -20161,19 +20545,19 @@ dY
 dY
 dY
 dY
+dA
+gh
+gl
+gr
+dB
+gS
+gR
+gS
+dB
+hF
+hF
+hF
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -20303,19 +20687,19 @@ eo
 dY
 dY
 dY
+dA
+gi
+gl
+gr
+dB
+gR
+gS
+gR
+dB
+hJ
+hJ
+hJ
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -20445,19 +20829,19 @@ eN
 dY
 dY
 dY
+dA
+gf
+gl
+gr
+dB
+gS
+gR
+gS
+dB
+hF
+hF
+HV
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -20588,18 +20972,18 @@ fM
 eo
 dY
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+aL
+aL
+aL
+ar
+aL
+aL
+aL
+ar
+aL
+aL
+aL
+ar
 ap
 ap
 ap
@@ -20729,19 +21113,19 @@ fD
 fM
 eo
 dY
+dA
+gj
+gk
+gs
+dB
+hg
+hg
+hg
+dB
+hK
+hK
+hK
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -20871,19 +21255,19 @@ fD
 fM
 eo
 dY
+dA
+gk
+gm
+gk
+dB
+hg
+hg
+hg
+dB
+hK
+hK
+hK
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -21013,19 +21397,19 @@ fE
 fN
 dY
 dY
+dA
+gk
+gn
+gk
+dB
+hg
+hg
+hg
+dB
+hK
+hK
+hK
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -21155,19 +21539,19 @@ eR
 dY
 dY
 dY
+dA
+gk
+go
+gk
+dB
+hg
+hg
+hg
+dB
+hK
+hK
+hK
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -21297,19 +21681,19 @@ eo
 dY
 dY
 fY
+dA
+gk
+gk
+gk
+dB
+hg
+hg
+hg
+dB
+hK
+hK
+hK
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -21439,19 +21823,19 @@ dY
 dY
 dY
 fY
+dA
+gk
+gk
+gt
+dB
+hg
+hg
+hg
+dB
+hK
+hK
+hK
 fZ
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -21582,18 +21966,18 @@ bb
 bb
 bb
 ar
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+bb
+bb
+bb
+ar
+bb
+bb
+bb
+ar
+bb
+bb
+bb
+ar
 ap
 ap
 ap

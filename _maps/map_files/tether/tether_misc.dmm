@@ -2262,6 +2262,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "iF" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
 /obj/item/chess/wpawn,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
@@ -2328,12 +2332,8 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/restaurant)
 "jK" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/wqueen,
-/turf/simulated/floor/holofloor/tiled,
+/obj/item/chess/wking,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "jL" = (
 /obj/effect/shuttle_landmark{
@@ -2408,7 +2408,11 @@
 	},
 /area/space)
 "lw" = (
-/obj/item/chess/bqueen,
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bking,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "lF" = (
@@ -2466,6 +2470,10 @@
 	},
 /area/space)
 "mh" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
 /obj/item/chess/wrook,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
@@ -2562,7 +2570,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "nQ" = (
-/obj/item/chess/wknight,
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wbishop,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "nW" = (
@@ -2584,13 +2596,6 @@
 /obj/item/reagent_containers/food/snacks/lasagna,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
-"of" = (
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/white/full,
-/turf/simulated/floor/holofloor/tiled,
-/area/holodeck/source_chess)
 "ol" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/toastedsandwich{
@@ -2746,7 +2751,11 @@
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
 "rd" = (
-/obj/item/chess/wking,
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wqueen,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "rg" = (
@@ -2830,12 +2839,8 @@
 /turf/unsimulated/map,
 /area/overmap)
 "sH" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
 /obj/item/chess/wpawn,
-/turf/simulated/floor/holofloor/tiled,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "sM" = (
 /obj/machinery/vending/medical,
@@ -2962,12 +2967,8 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/escape)
 "tZ" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
 /obj/item/chess/wrook,
-/turf/simulated/floor/holofloor/tiled,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "uc" = (
 /turf/unsimulated/wall,
@@ -3092,6 +3093,10 @@
 /turf/unsimulated/wall,
 /area/centcom/control)
 "wM" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
 /obj/item/chess/bpawn,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
@@ -3134,12 +3139,8 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "wX" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/wknight,
-/turf/simulated/floor/holofloor/tiled,
+/obj/item/chess/wbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "wZ" = (
 /turf/unsimulated/floor{
@@ -3305,6 +3306,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "yN" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
 /obj/item/chess/bbishop,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
@@ -3543,12 +3548,8 @@
 /turf/unsimulated/beach/sand,
 /area/beach)
 "BJ" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
 /obj/item/chess/bpawn,
-/turf/simulated/floor/holofloor/tiled,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "BK" = (
 /turf/space,
@@ -3943,7 +3944,11 @@
 /turf/space/transit/north,
 /area/space)
 "Hg" = (
-/obj/item/chess/wbishop,
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wknight,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "Hn" = (
@@ -3953,12 +3958,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "Ho" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/wbishop,
-/turf/simulated/floor/holofloor/tiled,
+/obj/item/chess/wknight,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "Hq" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -3973,12 +3974,8 @@
 	},
 /area/space)
 "Hz" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
 /obj/item/chess/bbishop,
-/turf/simulated/floor/holofloor/tiled,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "HA" = (
 /obj/effect/floor_decal/corner/paleblue{
@@ -4226,6 +4223,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/centcom/simulated/medical)
 "KI" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
 /obj/item/chess/brook,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
@@ -4313,12 +4314,8 @@
 	},
 /area/space)
 "Mq" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
 /obj/item/chess/brook,
-/turf/simulated/floor/holofloor/tiled,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "MA" = (
 /obj/machinery/door/airlock,
@@ -4381,12 +4378,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
 "NC" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/obj/item/chess/bking,
-/turf/simulated/floor/holofloor/tiled,
+/obj/item/chess/bqueen,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "NJ" = (
 /obj/machinery/vending/snack{
@@ -5722,6 +5715,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "Wf" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "Wh" = (
@@ -6136,11 +6133,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "XT" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
-/turf/simulated/floor/holofloor/tiled,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "XU" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -6688,6 +6681,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "ZH" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
 /obj/item/chess/bknight,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
@@ -6703,12 +6700,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "ZN" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
-	dir = 4
-	},
 /obj/item/chess/bknight,
-/turf/simulated/floor/holofloor/tiled,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "ZQ" = (
 /obj/effect/floor_decal/sign/dock/three,
@@ -14548,7 +14541,7 @@ pf
 yN
 BJ
 Wf
-of
+XT
 Wf
 XT
 iF

@@ -27,6 +27,7 @@ GLOBAL_LIST(topic_status_cache)
 
 	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
+	setupgenetics()
 
 
 	GLOB.revdata = new

@@ -251,3 +251,21 @@
 		return
 
 	..()
+
+// Tether tram air scrubbers for keeping arrivals clean - they work even with no area power
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram
+	name = "\improper Tram Air Scrubber"
+	icon_state = "scrubber:1"
+	on = TRUE
+
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram/powered()
+	return TRUE // Always be powered
+
+// Triumph shuttle air scrubbers for keeping arrivals clean - they work even with no area power
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/shuttle
+	name = "\improper Shuttle Air Scrubber"
+	icon_state = "scrubber:1"
+	on = TRUE
+
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/shuttle/powered()
+	return TRUE // Always be powered

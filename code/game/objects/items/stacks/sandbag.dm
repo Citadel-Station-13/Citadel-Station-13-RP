@@ -115,7 +115,7 @@ var/list/sandbag_icon_cache = list()
 	var/maxhealth = 100
 	var/vestigial = TRUE
 
-	var/list/connections = list("nw0", "ne0", "sw0", "se0")
+	connections = list("nw0", "ne0", "sw0", "se0")
 
 /obj/structure/sandbag/Initialize(mapload, material_name)
 	. = ..()

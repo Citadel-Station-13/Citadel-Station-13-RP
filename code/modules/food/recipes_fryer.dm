@@ -5,6 +5,11 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/fries
 
+/datum/recipe/dishofries
+	appliance = FRYER
+	fruit = list("disho" = 1)
+	coating = /datum/reagent/nutriment/coating/batter
+	result = /obj/item/reagent_containers/food/snacks/dishofries
 
 /datum/recipe/jpoppers
 	appliance = FRYER

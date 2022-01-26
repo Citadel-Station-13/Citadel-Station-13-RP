@@ -2,7 +2,7 @@
 // POWERS
 ///////////////////////////////////
 
-/datum/dna/gene/basic/nobreath
+/datum/gene/basic/nobreath
 	name="No Breathing"
 	activation_messages=list("You feel no need to breathe.")
 	mutation=mNobreath
@@ -10,7 +10,7 @@
 	New()
 		block=NOBREATHBLOCK
 
-/datum/dna/gene/basic/remoteview
+/datum/gene/basic/remoteview
 	name="Remote Viewing"
 	activation_messages=list("Your mind expands.")
 	mutation=mRemote
@@ -22,7 +22,7 @@
 		..(M,connected,flags)
 		M.verbs += /mob/living/carbon/human/proc/remoteobserve
 
-/datum/dna/gene/basic/regenerate
+/datum/gene/basic/regenerate
 	name="Regenerate"
 	activation_messages=list("You feel better.")
 	mutation=mRegen
@@ -30,7 +30,7 @@
 	New()
 		block=REGENERATEBLOCK
 
-/datum/dna/gene/basic/increaserun
+/datum/gene/basic/increaserun
 	name="Super Speed"
 	activation_messages=list("Your leg muscles pulsate.")
 	mutation=mRun
@@ -38,7 +38,7 @@
 	New()
 		block=INCREASERUNBLOCK
 
-/datum/dna/gene/basic/remotetalk
+/datum/gene/basic/remotetalk
 	name="Telepathy"
 	activation_messages=list("You expand your mind outwards.")
 	mutation=mRemotetalk
@@ -50,7 +50,7 @@
 		..(M,connected,flags)
 		M.verbs += /mob/living/carbon/human/proc/remotesay
 
-/datum/dna/gene/basic/morph
+/datum/gene/basic/morph
 	name="Morph"
 	activation_messages=list("Your skin feels strange.")
 	mutation=mMorph
@@ -63,7 +63,7 @@
 		M.verbs += /mob/living/carbon/human/proc/morph
 
 /* Not used on bay
-/datum/dna/gene/basic/heat_resist
+/datum/gene/basic/heat_resist
 	name="Heat Resistance"
 	activation_messages=list("Your skin is icy to the touch.")
 	mutation=mHeatres
@@ -73,7 +73,7 @@
 
 	can_activate(var/mob/M,var/flags)
 		if(flags & MUTCHK_FORCED)
-			return !(/datum/dna/gene/basic/cold_resist in M.active_genes)
+			return !(/datum/gene/basic/cold_resist in M.active_genes)
 		// Probability check
 		var/_prob = 15
 		if(COLD_RESISTANCE in M.mutations)
@@ -85,7 +85,7 @@
 		return "cold[fat]_s"
 */
 
-/datum/dna/gene/basic/cold_resist
+/datum/gene/basic/cold_resist
 	name="Cold Resistance"
 	activation_messages=list("Your body is filled with warmth.")
 	mutation=COLD_RESISTANCE
@@ -96,7 +96,7 @@
 	can_activate(var/mob/M,var/flags)
 		if(flags & MUTCHK_FORCED)
 			return 1
-		//	return !(/datum/dna/gene/basic/heat_resist in M.active_genes)
+		//	return !(/datum/gene/basic/heat_resist in M.active_genes)
 		// Probability check
 		var/_prob=30
 		//if(mHeatres in M.mutations)
@@ -107,7 +107,7 @@
 	OnDrawUnderlays(var/mob/M,var/g,var/fat)
 		return "fire[fat]_s"
 
-/datum/dna/gene/basic/noprints
+/datum/gene/basic/noprints
 	name="No Prints"
 	activation_messages=list("Your fingers feel numb.")
 	mutation=mFingerprints
@@ -115,7 +115,7 @@
 	New()
 		block=NOPRINTSBLOCK
 
-/datum/dna/gene/basic/noshock
+/datum/gene/basic/noshock
 	name="Shock Immunity"
 	activation_messages=list("Your skin feels strange.")
 	mutation=mShock
@@ -123,7 +123,7 @@
 	New()
 		block=SHOCKIMMUNITYBLOCK
 
-/datum/dna/gene/basic/midget
+/datum/gene/basic/midget
 	name="Midget"
 	activation_messages=list("Your skin feels rubbery.")
 	mutation=mSmallsize
@@ -145,7 +145,7 @@
 		..(M,connected,flags)
 		M.pass_flags &= ~1 //This may cause issues down the track, but offhand I can't think of any other way for humans to get passtable short of varediting so it should be fine. ~Z
 
-/datum/dna/gene/basic/hulk
+/datum/gene/basic/hulk
 	name="Hulk"
 	activation_messages=list("Your muscles hurt.")
 	mutation=HULK
@@ -174,7 +174,7 @@
 			M.Weaken(3)
 			M.emote("collapse")
 
-/datum/dna/gene/basic/xray
+/datum/gene/basic/xray
 	name="X-Ray Vision"
 	activation_messages=list("The walls suddenly disappear.")
 	mutation=XRAY
@@ -182,7 +182,7 @@
 	New()
 		block=XRAYBLOCK
 
-/datum/dna/gene/basic/tk
+/datum/gene/basic/tk
 	name="Telekenesis"
 	activation_messages=list("You feel smarter.")
 	mutation=TK

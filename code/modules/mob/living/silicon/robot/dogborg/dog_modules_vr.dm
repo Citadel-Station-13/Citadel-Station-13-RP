@@ -47,7 +47,7 @@
 			w_class = ITEMSIZE_NORMAL
 		update_icon()
 
-//Boop //New and improved, now a simple reagent sniffer.
+//Boop //Newer and better, can sniff reagents, tanks, and boop people!
 /obj/item/dogborg/boop_module
 	name = "boop module"
 	icon = 'icons/mob/dogborg_vr.dmi'
@@ -84,30 +84,36 @@
 			to_chat(user, "<span class='notice'>[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
 		to_chat(user, "<span class='notice'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</span>")
 
-/obj/item/dogborg/boop_module/afterattack(obj/O, mob/user as mob, proximity)
+/obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
 		return
 	if (user.stat)
 		return
-	if(!istype(O))
+	if(!istype(target) && !ismob(target))
 		return
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	user.visible_message("<span class='notice'>[user] sniffs at \the [O.name].</span>", "<span class='notice'>You sniff \the [O.name]...</span>")
 
-	if(!isnull(O.reagents))
-		var/dat = ""
-		if(O.reagents.reagent_list.len > 0)
-			for (var/datum/reagent/R in O.reagents.reagent_list)
-				dat += "\n \t <span class='notice'>[R]</span>"
 
-		if(dat)
-			to_chat(user, "<span class='notice'>Your BOOP module indicates: [dat]</span>")
-		else
-			to_chat(user, "<span class='notice'>No active chemical agents smelled in [O].</span>")
+	if(ismob(target))
+		user.visible_message("<span class='notice'>\the [user] boops \the [target.name]!</span>", "<span class='notice'>You boop \the [target.name]!</span>")
+		playsound(src, 'sound/weapons/thudswoosh.ogg', 25, 1, -1)
 	else
-		to_chat(user, "<span class='notice'>No significant chemical agents smelled in [O].</span>")
-
+		user.visible_message("<span class='notice'>[user] sniffs at \the [target.name].</span>", "<span class='notice'>You sniff \the [target.name]...</span>")
+		if(!isnull(target.reagents))
+			var/dat = ""
+			if(target.reagents.reagent_list.len > 0)
+				for (var/datum/reagent/R in target.reagents.reagent_list)
+					dat += "\n \t <span class='notice'>[R]</span>"
+			if(dat)
+				to_chat(user, "<span class='notice'>Your BOOP module indicates: [dat]</span>")
+			else
+				to_chat(user, "<span class='notice'>No active chemical agents smelled in [target].</span>")
+		else
+			if(istype(target, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
+				analyze_gases(target, user)
+			else
+				to_chat(user, "<span class='notice'>No significant chemical agents smelled in [target].</span>")
 	return
 
 

@@ -623,3 +623,12 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid4.ogg'))
 /turf/simulated/floor/tiled/freezer/cold
 	temperature = T0C - 5
+
+/decl/flooring/trap
+	name = "suspicious flooring"
+	desc = "There's something off about this tile."
+	icon = 'icons/turf/flooring/plating_vr.dmi'
+	icon_base = "plating"
+	build_type = null
+	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
+	can_paint = null

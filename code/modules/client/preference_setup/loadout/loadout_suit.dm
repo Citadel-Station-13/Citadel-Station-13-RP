@@ -401,3 +401,19 @@ datum/gear/suit/duster
 /datum/gear/suit/laconic
 	name = "Laconic Field Coat"
 	path = /obj/item/clothing/suit/laconic
+
+/datum/gear/suit/blue_navy_coat
+	name = "Navy Blue Coat"
+	path = /obj/item/clothing/suit/storage/toggle/navy_coat_blue
+
+/datum/gear/suit/brown_navy_coat
+	name = "Navy Brown Coat"
+	path = /obj/item/clothing/suit/storage/toggle/navy_coat_brown
+
+/datum/gear/suit/green_navy_coat
+	name = "Navy Green Coat"
+	path = /obj/item/clothing/suit/storage/toggle/navy_coat_green
+
+/datum/gear/suit/jacket_stripe
+	name = "Striped Jacket"
+	path = /obj/item/clothing/suit/storage/stripe_jacket

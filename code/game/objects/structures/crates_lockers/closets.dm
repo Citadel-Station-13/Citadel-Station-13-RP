@@ -34,6 +34,8 @@
 
 /obj/structure/closet/Initialize(mapload)
 	. = ..()
+	if(mapload && !opened)
+		addtimer(CALLBACK(src, .proc/take_contents), 0)
 	PopulateContents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
@@ -43,20 +45,23 @@
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
-
-	if(!opened)		// if closed, any item at the crate's loc is put in the contents
-		if(istype(loc, /mob/living)) return //VOREStation Edit - No collecting mob organs if spawned inside mob
-		var/obj/item/I
-		for(I in src.loc)
-			if(I.density || I.anchored || I == src) continue
-			I.forceMove(src)
-		// adjust locker size to hold all items with 5 units of free store room
-		var/content_size = 0
-		for(I in src.contents)
-			content_size += CEILING(I.w_class/2, 1)
-		if(content_size > storage_capacity-5)
-			storage_capacity = content_size + 5
 	update_icon()
+
+/obj/structure/closet/proc/take_contents()
+	// if(istype(loc, /mob/living))
+	//	return //VOREStation Edit - No collecting mob organs if spawned inside mob
+	// I'll leave this out, if someone dies to this from voring someone who made a closet go yell at a coder to
+	// fix the fact you can build closets inside living people, not try to make it work you numbskulls.
+	var/obj/item/I
+	for(I in src.loc)
+		if(I.density || I.anchored || I == src) continue
+		I.forceMove(src)
+	// adjust locker size to hold all items with 5 units of free store room
+	var/content_size = 0
+	for(I in src.contents)
+		content_size += CEILING(I.w_class/2, 1)
+	if(content_size > storage_capacity-5)
+		storage_capacity = content_size + 5
 
 /**
   * The proc that fills the closet with its initial contents.
@@ -309,6 +314,8 @@
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
 			if(do_after(user, 20 * S.toolspeed))
+				if(opened)
+					return
 				playsound(src, S.usesound, 50)
 				src.sealed = !src.sealed
 				src.update_icon()
