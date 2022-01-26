@@ -42,7 +42,9 @@
 	var/no_air = null
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
+	var/list/all_arfgs = null		//Similar, but a list of all arfgs adjacent to this area
 	var/firedoors_closed = 0
+	var/arfgs_active = 0
 	var/list/ambience = list()
 	var/list/forced_ambience = null
 	var/sound_env = STANDARD_STATION
@@ -227,6 +229,7 @@
 /area/proc/firedoors_update()
 	if(fire || party || atmosalm)
 		firedoors_close()
+		arfgs_activate()
 		// VOREStation Edit - Make the lights colored!
 		if(fire)
 			for(var/obj/machinery/light/L in src)
@@ -237,6 +240,7 @@
 		// VOREStation Edit End
 	else
 		firedoors_open()
+		arfgs_deactivate()
 		// VOREStation Edit - Put the lights back!
 		for(var/obj/machinery/light/L in src)
 			L.reset_alert()
@@ -269,6 +273,26 @@
 				else if(E.density)
 					spawn(0)
 						E.open()
+
+// Activate all retention fields!
+/area/proc/arfgs_activate()
+	if(!arfgs_active)
+		arfgs_active = TRUE
+		if(!all_arfgs)
+			return
+		for(var/obj/machinery/atmospheric_field_generator/E in all_arfgs)
+			E.generate_field() //don't need to check powered state like doors, the arfgs handles it on its end
+			E.wasactive = TRUE
+
+// Deactivate retention fields!
+/area/proc/arfgs_deactivate()
+	if(arfgs_active)
+		arfgs_active = FALSE
+		if(!all_arfgs)
+			return
+		for(var/obj/machinery/atmospheric_field_generator/E in all_arfgs)
+			E.disable_field()
+			E.wasactive = FALSE
 
 
 /area/proc/fire_alert()

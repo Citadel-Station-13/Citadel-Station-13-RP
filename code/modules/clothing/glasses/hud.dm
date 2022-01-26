@@ -236,7 +236,7 @@
 	mode = "best"
 	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED)
+	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED, VIS_AUGMENTED)
 
 /obj/item/clothing/glasses/hud/security/eyepatch
     name = "Security Hudpatch"
@@ -244,7 +244,7 @@
     icon_state = "hudpatch"
     item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
     body_parts_covered = 0
-    enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM)
+    enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM, VIS_AUGMENTED)
     var/eye = null
 
 /obj/item/clothing/glasses/hud/security/eyepatch/verb/switcheye()
@@ -302,4 +302,4 @@
 	icon_state = "medpatch"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
+	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP, VIS_AUGMENTED)

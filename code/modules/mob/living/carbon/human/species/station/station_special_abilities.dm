@@ -92,18 +92,10 @@
 
 		//Dead when hatching
 		if(stat == DEAD)
-			//Check again for nutriment (necessary?)
-			if(hasnutriment())
-				chimera_hatch()
-				adjustBrainLoss(10) // if they're reviving from dead, they come back with 10 brainloss on top of whatever's unhealed.
-				visible_message("<span class='danger'><p><font size=4>The lifeless husk of [src] bursts open, revealing a new, intact copy in the pool of viscera.</font></p></span>") //Bloody hell...
-				return
-
-			//Don't have nutriment to hatch! Or you somehow died in between completing your revive and hitting hatch.
-			else
-				to_chat(src, "Your body was unable to regenerate, what few living cells remain require additional nutrients to complete the process.")
-				verbs -= /mob/living/carbon/human/proc/hatch
-				revive_ready = REVIVING_READY //reset their cooldown they can try again when they're given a kickstart
+			chimera_hatch()
+			adjustBrainLoss(10) // if they're reviving from dead, they come back with 10 brainloss on top of whatever's unhealed.
+			visible_message("<span class='danger'><p><font size=4>The lifeless husk of [src] bursts open, revealing a new, intact copy in the pool of viscera.</font></p></span>") //Bloody hell...
+			return
 
 		//Alive when hatching
 		else

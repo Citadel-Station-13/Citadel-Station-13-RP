@@ -83,16 +83,18 @@
 	if(isEmpty())
 		to_chat(usr,"<span class='warning'>The ore box is empty.</span>")
 		return
+	
+	var/mob/living/user = usr
+	to_chat(user, "<span class='notice'>You begin emptying the ore box.</span>")
 
-	to_chat(usr,"<span class='notice'>You begin emptying the ore box.</span>")
 	if(do_after(usr,15,src))
 		while(!isEmpty())
-			if(!do_after(usr,5,src))
-				to_chat(usr,"<span class='notice'>You stop emptying the ore box.</span>")
+			if(!do_after(user, 5, src))
+				to_chat(user,"<span class='notice'>You stop emptying the ore box.</span>")
 				return
 			var/atom/A = drop_location()
-			if(!A || length(A.contents > 1000))
-				to_chat(usr, "<span class='warning'>The area under the box is too full.</span>")
+			if(!A || (length(A.contents) > 1000))
+				to_chat(user, "<span class='warning'>The area under the box is too full.</span>")
 				return
 			for(var/i in 1 to 20)
 				deposit(A)

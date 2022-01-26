@@ -1,0 +1,7 @@
+author: "Funkeronipasta"
+delete-after: True
+changes: 
+  - rscadd: "*flip emote"
+  - rscadd: "*dwoop emote"
+  - rscadd: "*flip emote"
+  - rscadd: "A random space in the dm that literally does nothing."

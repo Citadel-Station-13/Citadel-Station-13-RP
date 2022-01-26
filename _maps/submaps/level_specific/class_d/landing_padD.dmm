@@ -14,6 +14,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/poi_d/POIs/landing_pad)
 "d" = (
@@ -30,7 +31,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d,
 /area/poi_d/POIs/landing_pad)
 "f" = (
 /obj/machinery/door/airlock/glass_external/public{
@@ -80,7 +81,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d,
 /area/poi_d/POIs/landing_pad)
 "m" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -98,16 +99,16 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d,
 /area/poi_d/POIs/landing_pad)
 "q" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d,
 /area/poi_d/POIs/landing_pad)
 "r" = (
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d,
 /area/poi_d/POIs/landing_pad)
 "s" = (
 /obj/effect/decal/cleanable/dirt,
@@ -144,7 +145,7 @@
 /turf/simulated/floor/tiled/kafel_full,
 /area/poi_d/POIs/landing_pad)
 "w" = (
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d,
 /area/poi_d/POIs/landing_pad)
 "x" = (
 /obj/effect/floor_decal/rust,
@@ -157,7 +158,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d,
 /area/poi_d/POIs/landing_pad)
 "z" = (
 /obj/effect/decal/cleanable/dirt,
@@ -174,6 +175,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/poi_d/POIs/landing_pad)
 "B" = (
@@ -183,6 +185,7 @@
 	frequency = 1379;
 	id_tag = "rnd_s_airlock_pump"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/poi_d/POIs/landing_pad)
 "C" = (
@@ -195,6 +198,11 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/turf/simulated/floor/tiled,
+/area/poi_d/POIs/landing_pad)
+"E" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled,
 /area/poi_d/POIs/landing_pad)
 "F" = (
@@ -250,7 +258,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d,
 /area/poi_d/POIs/landing_pad)
 "N" = (
 /obj/machinery/door/airlock/glass_external/public{
@@ -263,7 +271,7 @@
 /area/poi_d/POIs/landing_pad)
 "P" = (
 /obj/machinery/floodlight,
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d,
 /area/poi_d/POIs/landing_pad)
 "Q" = (
 /obj/effect/decal/cleanable/dirt,
@@ -271,7 +279,7 @@
 /area/poi_d/POIs/landing_pad)
 "R" = (
 /obj/effect/floor_decal/techfloor/orange,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d,
 /area/poi_d/POIs/landing_pad)
 "S" = (
 /obj/effect/floor_decal/rust,
@@ -290,13 +298,13 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d,
 /area/poi_d/POIs/landing_pad)
 "V" = (
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d,
 /area/poi_d/POIs/landing_pad)
 "W" = (
 /obj/effect/floor_decal/rust,
@@ -390,7 +398,7 @@ a
 (4,1,1) = {"
 n
 a
-Q
+E
 B
 N
 T

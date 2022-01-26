@@ -104,7 +104,6 @@
 /area/submap/cave/crashed_ufo)
 "ay" = (
 /obj/structure/prop/alien/computer{
-	 icon_state = "console-c";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -138,14 +137,12 @@
 /area/submap/cave/crashed_ufo)
 "aF" = (
 /obj/structure/prop/alien/computer/camera/flipped{
-	 icon_state = "camera_flipped";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo)
 "aG" = (
 /obj/structure/prop/alien/computer/camera{
-	 icon_state = "camera";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alien,
@@ -188,7 +185,6 @@
 /area/submap/cave/crashed_ufo)
 "aO" = (
 /obj/structure/prop/alien/computer{
-	 icon_state = "console-c";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alien,
@@ -286,7 +282,6 @@
 /area/submap/cave/crashed_ufo)
 "bj" = (
 /obj/machinery/porta_turret/alien/destroyed{
-	 icon_state = "destroyed_target_prism";
 	dir = 6
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -297,7 +292,6 @@
 /area/submap/cave/crashed_ufo)
 "bl" = (
 /obj/machinery/porta_turret/alien/destroyed{
-	 icon_state = "destroyed_target_prism";
 	dir = 10
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -346,7 +340,23 @@
 /area/submap/cave/crashed_ufo)
 "bv" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/crashed_ufo_frigate)
+"eP" = (
+/turf/simulated/shuttle/floor/alienplating,
+/area/submap/cave/crashed_ufo_frigate)
+"KG" = (
+/turf/simulated/shuttle/wall/alien/hard_corner,
+/area/submap/cave/crashed_ufo_frigate)
+"Nn" = (
+/obj/machinery/door/airlock/alien/public,
+/turf/simulated/shuttle/floor/alienplating,
+/area/submap/cave/crashed_ufo_frigate)
+"Ql" = (
+/turf/simulated/shuttle/wall/alien,
+/area/submap/cave/crashed_ufo_frigate)
+"St" = (
+/turf/simulated/shuttle/floor/alienplating/external,
+/area/submap/cave/crashed_ufo_frigate)
 
 (1,1,1) = {"
 aa
@@ -751,7 +761,7 @@ af
 af
 ac
 ab
-ab
+St
 bv
 bv
 "}
@@ -788,7 +798,7 @@ ac
 af
 ac
 ac
-ab
+St
 bv
 bv
 "}
@@ -825,7 +835,7 @@ ac
 af
 af
 ac
-ab
+St
 bv
 bv
 "}
@@ -862,8 +872,8 @@ ac
 as
 ag
 as
-ab
-ab
+St
+St
 bv
 "}
 (15,1,1) = {"
@@ -899,8 +909,8 @@ ac
 af
 af
 ac
-ac
-ab
+Ql
+St
 bv
 "}
 (16,1,1) = {"
@@ -936,8 +946,8 @@ bj
 af
 bk
 af
-as
-ab
+KG
+St
 bv
 "}
 (17,1,1) = {"
@@ -973,8 +983,8 @@ bk
 af
 af
 as
-as
-as
+KG
+KG
 bv
 "}
 (18,1,1) = {"
@@ -1010,8 +1020,8 @@ af
 bm
 af
 bt
-af
-bt
+eP
+Nn
 bv
 "}
 (19,1,1) = {"
@@ -1047,8 +1057,8 @@ af
 bn
 bq
 as
-as
-as
+KG
+KG
 bv
 "}
 (20,1,1) = {"
@@ -1084,8 +1094,8 @@ bl
 bo
 br
 bu
-ac
-ab
+Ql
+St
 bv
 "}
 (21,1,1) = {"
@@ -1121,8 +1131,8 @@ ac
 bp
 bs
 ac
-ac
-ab
+Ql
+St
 bv
 "}
 (22,1,1) = {"
@@ -1158,8 +1168,8 @@ ac
 as
 ag
 as
-ab
-ab
+St
+St
 bv
 "}
 (23,1,1) = {"
@@ -1195,7 +1205,7 @@ ac
 af
 af
 ac
-ab
+St
 bv
 bv
 "}
@@ -1232,7 +1242,7 @@ ac
 af
 ac
 ac
-ab
+St
 bv
 bv
 "}
@@ -1269,7 +1279,7 @@ af
 af
 ac
 ab
-ab
+St
 bv
 bv
 "}

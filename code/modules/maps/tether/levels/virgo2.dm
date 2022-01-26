@@ -39,12 +39,14 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 // -- Datums -- //
 
+/* Temporarily added a copy to tether_things.dm as a shuttle datum for a shuttle that isnt loaded in throws runtimes. -Bloop
 /datum/shuttle/autodock/ferry/aerostat
 	name = "Aerostat Ferry"
 	shuttle_area = /area/shuttle/aerostat
 	warmup_time = 10	//want some warmup time so people can cancel.
 	landmark_station = "aerostat_east"
 	landmark_offsite = "aerostat_surface"
+*/
 
 /datum/random_map/noise/ore/virgo2
 	descriptor = "virgo 2 ore distribution map"

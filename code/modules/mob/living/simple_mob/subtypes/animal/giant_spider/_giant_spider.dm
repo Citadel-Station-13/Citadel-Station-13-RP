@@ -77,6 +77,7 @@
 	movement_cooldown = 10
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	poison_resist = 0.5
+	taser_kill = 0 //These seem like they won't be bothered by a taser
 
 	see_in_dark = 10
 

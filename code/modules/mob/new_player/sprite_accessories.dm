@@ -83,7 +83,6 @@
 		flags = HAIR_VERY_SHORT
 		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //Lets all the races be bald if they want.
 
-
 	baldfade
 		name = "Balding Fade"
 		icon_state = "hair_baldfade"
@@ -594,6 +593,11 @@
 		icon_state = "hair_spikyponytail"
 		flags = HAIR_TIEABLE
 
+	highponytail
+		name = "High Ponytail"
+		icon_state = "hair_highponytail"
+		flags = HAIR_TIEABLE
+
 	poofy
 		name = "Poofy"
 		icon_state = "hair_poofy"
@@ -785,6 +789,11 @@
 		gender = MALE
 		flags = HAIR_VERY_SHORT
 
+	undercutlong
+		name = "Undercut Long"
+		icon_state = "hair_undercutlong"
+		flags = HAIR_TIEABLE
+
 	unkept
 		name = "Unkept"
 		icon_state = "hair_unkept"
@@ -874,6 +883,11 @@
 		icon_state = "hair_celebcurls"
 		flags = HAIR_TIEABLE
 
+	bigcurls
+		name = "Big Curls"
+		icon_state = "hair_bigcurls"
+		flags = HAIR_TIEABLE
+
 	jessica
 		name = "Jessica"
 		icon_state = "hair_jessica"
@@ -934,6 +948,11 @@
 	vivi
 		name = "Vivi"
 		icon_state = "hair_vivi"
+
+	taro
+		name = "Taro"
+		icon_state = "hair_taro"
+		flags = HAIR_TIEABLE
 
 	astolfo
 		name = "Astolfo"
@@ -1800,6 +1819,13 @@
 		species_allowed = list(SPECIES_XENOHYBRID)
 		gender = NEUTER
 
+	xeno_head_hybrid_color1
+		name = "Xenohybrid dome 1"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "cxeno_hybrid1"
+		species_allowed = list(SPECIES_XENOHYBRID)
+		gender = NEUTER
 // Shadekin stuffs
 	shadekin_hair_short
 		name = "Shadekin Short Hair"
@@ -2674,6 +2700,11 @@
 		icon_state = "osocks"
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_FOOT,BP_L_LEG)
+
+	motheyes
+		name = "Moth Eyes"
+		icon_state = "motheyes"
+		body_parts = list(BP_HEAD)
 
 	animeeyesinner
 		name = "Anime Eyes Inner"

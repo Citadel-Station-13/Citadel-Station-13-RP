@@ -1,22 +1,22 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/space,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/misc_debris)
 "b" = (
 /obj/structure/lattice,
 /turf/space,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/misc_debris)
 "c" = (
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/misc_debris)
 "n" = (
 /obj/mob_spawner/carp,
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/misc_debris)
 "p" = (
 /obj/random/maintenance/security,
 /turf/simulated/floor/airless,
-/area/space/debrisfield/explored)
+/area/space/debrisfield/misc_debris)
 
 (1,1,1) = {"
 a

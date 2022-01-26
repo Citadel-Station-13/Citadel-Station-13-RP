@@ -84,6 +84,7 @@
 								"Components",
 								"Other",
 								"Misc",
+								"Augments"
 								)
 
 /obj/machinery/mecha_part_fabricator/Initialize()

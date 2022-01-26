@@ -1065,10 +1065,6 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	var/clip_mask_state = null //Icon state to generate clip mask. Clip mask is used to 'clip' off the lower part of clothing such as jumpsuits & full suits.
 	var/icon/clip_mask = null //Instantiated clip mask of given icon and state
 
-	//Loafing vars
-	var/can_loaf = FALSE
-	var/loaf_offset = 0
-
 /datum/sprite_accessory/tail/New()
 	. = ..()
 	if(clip_mask_icon && clip_mask_state)

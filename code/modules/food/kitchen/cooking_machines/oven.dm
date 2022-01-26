@@ -11,9 +11,9 @@
 	active_power_usage = 6 KILOWATTS
 	//Based on a double deck electric convection oven
 
-	resistance = 16000
+	resistance = 3200
 	idle_power_usage = 2 KILOWATTS
-	//uses ~30% power to stay warm
+	//uses ~3% power to stay warm
 	optimal_power = 0.2
 
 	light_x = 2

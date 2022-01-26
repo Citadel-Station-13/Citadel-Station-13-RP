@@ -1,6 +1,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// Drinks.
 ////////////////////////////////////////////////////////////////////////////////
+//custom_open_sound is for a sound path to use instead of the default opening
+//example: custom_open_sound = 'sound/effects/Explosion1.ogg'
 /obj/item/reagent_containers/food/drinks
 	name = "drink"
 	desc = "yummy"
@@ -11,6 +13,7 @@
 	flags = OPENCONTAINER
 	amount_per_transfer_from_this = 5
 	volume = 50
+	var/custom_open_sound
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change()
 	if (reagents.reagent_list.len > 0)
@@ -26,7 +29,10 @@
 		open(user)
 
 /obj/item/reagent_containers/food/drinks/proc/open(mob/user)
-	playsound(loc,"canopen", rand(10,50), 1)
+	if(custom_open_sound)
+		playsound(loc,custom_open_sound, rand(10,50), 1)
+	else
+		playsound(loc,"canopen", rand(10,50), 1)
 	to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
 	flags |= OPENCONTAINER
 

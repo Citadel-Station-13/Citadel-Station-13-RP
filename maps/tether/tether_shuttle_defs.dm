@@ -64,13 +64,13 @@
 	warmup_time = 5
 	move_time = 45
 	landmark_offsite = "tether_backup_low"
-	landmark_station = "tether_dockarm_d1a3"
+	landmark_station = "tether_customs_shuttle"
 	landmark_transition = "tether_backup_transit"
 	shuttle_area = /area/shuttle/tether
 	//crash_areas = list(/area/shuttle/tether/crash1, /area/shuttle/tether/crash2)
 	docking_controller_tag = "tether_shuttle"
 	move_direction = NORTH
-
+/*
 //////////////////////////////////////////////////////////////
 // Mercenary Shuttle
 /datum/shuttle/autodock/multi/mercenary
@@ -191,6 +191,7 @@
 	departure_message = "Attention. A NT support vessel is now leaving Virgo-3B."
 	defer_initialisation = TRUE
 	move_direction = WEST
+*/
 
 //////////////////////////////////////////////////////////////
 // RogueMiner "Belter: Shuttle

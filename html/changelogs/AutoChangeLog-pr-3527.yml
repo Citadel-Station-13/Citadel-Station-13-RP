@@ -1,5 +1,0 @@
-author: "KillianKirilenko"
-delete-after: True
-changes: 
-  - rscadd: "added x/y scaling neutral traits"
-  - refactor: "refactored character preview for greater efficiency"

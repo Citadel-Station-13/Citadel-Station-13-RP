@@ -177,6 +177,11 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
+"hY" = (
+/obj/effect/shuttle_landmark/triumph/pirate,
+/obj/effect/overmap/visitable/ship/landable/pirate,
+/turf/simulated/floor/reinforced,
+/area/shuttle/pirate/general)
 "ie" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/food/snacks/dionaroast,
@@ -621,7 +626,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "Ea" = (
-/obj/machinery/computer/shuttle_control/explore{
+/obj/machinery/computer/shuttle_control/explore/pirate{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -12140,7 +12145,7 @@ zT
 zT
 yw
 tJ
-iI
+hY
 Lg
 iI
 DH

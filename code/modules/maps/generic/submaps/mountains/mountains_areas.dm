@@ -136,6 +136,15 @@
 	requires_power = FALSE
 	icon_state = "submap2"
 
+/area/submap/cave/random_geyser
+	name = "POI - Geyser"
+
+/area/submap/cave/random_cliff
+	name = "POI = Cliffs"
+
+/area/submap/cave/misc_poi
+
+
 //Citadel change
 /area/submap/cave/cultmine
 	name = "Cult Mine"

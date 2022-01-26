@@ -128,6 +128,11 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 
 /datum/category_item/catalogue/flora
 
+/datum/category_item/catalogue/flora/common
+	name = "Flora - Common"
+	desc = "A common type of plant, whose seeds are typically commercially available."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /datum/category_item/catalogue/fauna
 
 /datum/category_item/catalogue/fauna/humans

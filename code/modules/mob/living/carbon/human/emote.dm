@@ -30,7 +30,7 @@
 				m_type = 1
 
 		//Machine-only emotes
-		if("ping", "beep", "buzz", "yes", "ye", "no", "rcough", "rsneeze")
+		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze")
 
 			if(!isSynthetic())
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
@@ -59,6 +59,12 @@
 			else if(act == "no")
 				display_msg = "emits a negative blip"
 				use_sound = 'sound/machines/synth_no.ogg'
+			else if(act == "dwoop")
+				display_msg = "chirps happily"
+				use_sound = 'sound/machines/dwoop.ogg'
+			else if(act == "scary")
+				display_msg = "emits a disconcerting tone"
+				use_sound = 'sound/machines/synth_scary.ogg'
 			else if(act == "rcough")
 				display_msg = "emits a robotic cough"
 				if(get_gender() == FEMALE)
@@ -283,6 +289,28 @@
 				else
 					message = "makes a strong noise."
 					m_type = 2
+
+		if("bcough")
+			if(miming)
+				message = "appears to cough up blood!"
+				m_type = 1
+			else
+				if(!muzzled)
+					var/robotic = 0
+					m_type = 2
+					if(should_have_organ(O_LUNGS))
+						var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+						if(L && L.robotic == 2)	//Hard-coded to 2, incase we add lifelike robotic lungs
+							robotic = 1
+					if(!robotic)
+						message = "coughs up a small amount of blood!"
+						BloodyMouth()
+						if(get_gender() == FEMALE)
+							if(species.female_cough_sounds)
+								playsound(src, pick(species.female_cough_sounds), 120)
+						else
+							if(species.male_cough_sounds)
+								playsound(src, pick(species.male_cough_sounds), 120)
 
 		if ("frown")
 			message = "frowns."
@@ -1047,4 +1075,3 @@
 	set desc = "Switch tail layer on top."
 	tail_alt = !tail_alt
 	update_tail_showing()
-

@@ -33,6 +33,9 @@
 	var/permit_healbelly = FALSE
 	var/can_be_drop_prey = FALSE
 	var/can_be_drop_pred = FALSE
+	var/permit_sizegun = TRUE
+	var/permit_size_trample = TRUE
+	var/permit_size_pickup = TRUE
 
 	//Mechanically required
 	var/path
@@ -104,6 +107,9 @@
 	can_be_drop_prey = json_from_file["can_be_drop_prey"]
 	can_be_drop_pred = json_from_file["can_be_drop_pred"]
 	belly_prefs = json_from_file["belly_prefs"]
+	permit_sizegun = json_from_file["permit_sizegun"]
+	permit_size_trample = json_from_file["permit_size_trample"]
+	permit_size_pickup = json_from_file["permit_size_pickup"]
 
 	//Quick sanitize
 	if(isnull(digestable))
@@ -122,6 +128,12 @@
 		can_be_drop_prey = FALSE
 	if(isnull(can_be_drop_pred))
 		can_be_drop_pred = FALSE
+	if(isnull(permit_sizegun))
+		permit_sizegun = TRUE
+	if(isnull(permit_size_trample))
+		permit_size_trample = TRUE
+	if(isnull(permit_size_pickup))
+		permit_size_pickup = TRUE
 	if(isnull(belly_prefs))
 		belly_prefs = list()
 
@@ -144,6 +156,9 @@
 			"can_be_drop_prey"		= can_be_drop_prey,
 			"can_be_drop_pred"		= can_be_drop_pred,
 			"belly_prefs"			= belly_prefs,
+			"permit_size_trample"	= permit_size_trample,
+			"permit_size_pickup"	= permit_size_pickup,
+			"permit_sizegun"		= permit_sizegun
 		)
 
 	//List to JSON
