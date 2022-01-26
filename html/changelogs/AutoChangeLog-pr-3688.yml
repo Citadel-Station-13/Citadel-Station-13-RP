@@ -1,5 +1,0 @@
-author: "MediHound"
-delete-after: True
-changes: 
-  - rscadd: "Boop module can now scan tanks"
-  - rscadd: "Boop module can now boop people and simplemobs"
