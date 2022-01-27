@@ -1,5 +1,0 @@
-author: "MediHound"
-delete-after: True
-changes: 
-  - rscadd: "Enables Borgs to install NIFs and Implants"
-  - rscadd: "Enables Borgs to pick up Implants with the Medical Gripper"
