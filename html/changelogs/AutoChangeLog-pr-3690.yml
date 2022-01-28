@@ -1,5 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - bugfix: "Fixes Integration failures"
-  - code_imp: "Macro list access to prevent invalid index access in reader.dm"
