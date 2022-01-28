@@ -1,4 +1,4 @@
-/* Moved to code/modules/maps/tether/levels
+ Moved to code/modules/maps/tether/levels
 //Simulated
 VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b

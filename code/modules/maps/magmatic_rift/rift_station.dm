@@ -17,4 +17,4 @@
 #define MAGMATIC_RIFT_TURF_CREATE(x)	x/magmatic_rift/initial_gas_mix=ATMOSPHERE_ID_MAGMATIC_RIFT;x/magmatic_rift/outdoors=TRUE
 #define MAGMATIC_RIFT_TURF_CREATE_UN(x)	x/magmatic_rift/initial_gas_mix=ATMOSPHERE_ID_MAGMATIC_RIFT
 
-MAGMATIC_RIFT_TURF_CREATE(/turf/simulated/open)
+//MAGMATIC_RIFT_TURF_CREATE(/turf/simulated/open)

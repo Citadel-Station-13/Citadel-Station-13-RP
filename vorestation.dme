@@ -3624,7 +3624,7 @@
 #include "maps\tether\tether.dm"
 #include "maps\tether\magmatic_rift\rift_turfs.dm"
 #include "maps\tether\submaps\_beach.dm"
-#include "maps\submaps\engine_submaps\engine.dm"
+//include "maps\submaps\engine_submaps\engine.dm"
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\code\global_cit.dm"
 #include "modular_citadel\code\defines\obj\weapon.dm"
