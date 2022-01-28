@@ -446,7 +446,7 @@
 #define SPECIES_VASILISSAN		"Vasilissan"
 #define SPECIES_VULPKANIN		"Vulpkanin"
 #define SPECIES_XENOCHIMERA		"Xenochimera"
-#define SPECIES_XENOHYBRID		"Neomorph"
+#define SPECIES_XENOHYBRID		"Xenomorph Hybrid"
 #define SPECIES_ZORREN_FLAT		"Flatland Zorren"
 #define SPECIES_ZORREN_HIGH		"Highlander Zorren"
 #define SPECIES_CUSTOM			"Custom Species"

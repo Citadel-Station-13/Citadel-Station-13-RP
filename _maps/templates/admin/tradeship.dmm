@@ -55,8 +55,8 @@
 "ak" = (
 /obj/structure/closet/crate,
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 1
+	dir = 1;
+	icon_state = "vault"
 	},
 /area/syndicate_mothership)
 "al" = (
@@ -84,8 +84,8 @@
 /area/syndicate_mothership)
 "ap" = (
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 1
+	dir = 1;
+	icon_state = "vault"
 	},
 /area/syndicate_mothership)
 "aq" = (
@@ -113,8 +113,8 @@
 	name = "Warehouse Shutters"
 	},
 /turf/unsimulated/floor{
-	icon_state = "vault";
-	dir = 1
+	dir = 1;
+	icon_state = "vault"
 	},
 /area/syndicate_mothership)
 "av" = (
@@ -131,7 +131,6 @@
 /area/syndicate_mothership)
 "ax" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
 	req_access = list(160)
 	},
 /turf/simulated/shuttle/floor/white,
@@ -141,7 +140,6 @@
 /area/syndicate_mothership)
 "az" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -173,7 +171,6 @@
 	id_tag = "trade_shuttle_bay";
 	name = "shuttle bay controller";
 	pixel_x = 25;
-	pixel_y = 0;
 	req_one_access = list(160);
 	tag_door = "trade_shuttle_bay_door"
 	},
@@ -263,31 +260,30 @@
 /obj/effect/shuttle_landmark/shuttle_initializer{
 	base_area = /area/space;
 	base_turf = /turf/space;
+	desc = "/datum/shuttle/autodock/multi/trade";
 	docking_controller = "trade_shuttle_bay";
 	landmark_tag = "trade_dock";
 	name = "Trader Station";
-	shuttle_type = /datum/shuttle/autodock/multi/trade
+	shuttle_type = null
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "aM" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "aN" = (
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater";
 	dir = 4
 	},
 /turf/simulated/shuttle/plating/airless,
 /area/shuttle/trade)
 "aO" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_r";
-	dir = 4
+	dir = 4;
+	icon_state = "propulsion_r"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -339,16 +335,13 @@
 	frequency = 1380;
 	id_tag = "trade_shuttle";
 	pixel_x = -25;
-	pixel_y = 0;
 	req_one_access = list(160);
 	tag_door = "trade_shuttle_hatch"
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "aX" = (
-/obj/machinery/sleep_console{
-	dir = 8
-	},
+/obj/machinery/sleep_console,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "aY" = (
@@ -456,10 +449,7 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/item/storage/box/masks{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/storage/box/masks,
 /obj/item/storage/box/gloves{
 	pixel_x = 3;
 	pixel_y = 4
@@ -485,8 +475,7 @@
 /area/shuttle/trade)
 "bm" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -595,9 +584,7 @@
 "bz" = (
 /obj/vehicle/train/engine,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -618,8 +605,8 @@
 /area/shuttle/trade)
 "bD" = (
 /obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_l";
-	dir = 4
+	dir = 4;
+	icon_state = "propulsion_l"
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
@@ -655,7 +642,6 @@
 /area/shuttle/trade)
 "bI" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black,
@@ -707,7 +693,6 @@
 /area/shuttle/trade)
 "bP" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
 	req_access = list(160)
 	},
 /turf/simulated/shuttle/floor/black,
@@ -772,7 +757,6 @@
 /obj/item/clothing/gloves/sterile/latex,
 /obj/item/clothing/mask/surgical,
 /obj/item/surgical/retractor{
-	pixel_x = 0;
 	pixel_y = 6
 	},
 /obj/item/surgical/scalpel,
@@ -886,7 +870,6 @@
 /area/shuttle/trade)
 "ch" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -896,7 +879,6 @@
 /area/shuttle/trade)
 "ci" = (
 /obj/structure/mirror{
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/simulated/shuttle/floor/white,
@@ -932,9 +914,7 @@
 /area/shuttle/trade)
 "cm" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1009,7 +989,6 @@
 /area/shuttle/trade)
 "cv" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /obj/structure/largecrate/animal/cow,
@@ -1017,7 +996,6 @@
 /area/shuttle/trade)
 "cw" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /obj/structure/closet/crate/freezer/rations,
@@ -1026,7 +1004,6 @@
 "cx" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /obj/item/kit/paint/ripley/death,
@@ -1037,7 +1014,6 @@
 /area/shuttle/trade)
 "cy" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /obj/structure/closet/crate/secure,
@@ -1045,7 +1021,6 @@
 /area/shuttle/trade)
 "cz" = (
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 1
 	},
 /obj/structure/largecrate/hoverpod,
@@ -1259,7 +1234,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "trade";
 	name = "Shop Shutters";
-	pixel_x = 0;
 	pixel_y = -26;
 	req_access = list(160)
 	},
@@ -1377,7 +1351,6 @@
 /area/shuttle/trade)
 "dk" = (
 /obj/machinery/atmospherics/pipe/tank/air{
-	dir = 2;
 	start_pressure = 740.5
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1618,9 +1591,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/closet/crate/solar,
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1885,8 +1856,7 @@
 /area/shuttle/trade)
 "eg" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1331;
@@ -1930,7 +1900,6 @@
 /area/shuttle/trade)
 "jo" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4;
 	req_access = newlist()
 	},
 /turf/simulated/shuttle/floor/black,

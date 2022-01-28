@@ -88,37 +88,57 @@
 	var/list/targets = list()
 	var/target = null
 	var/text = null
+	var/default_distance_mod = 0 SECONDS
 
 	if(nutrition < 50)
-		to_chat(src, "<span class 'notice'>You don't have enough energy! Try eating. </span>")
+		to_chat(src, "<span class = 'notice'>You don't have enough energy! Try eating. </span>")
 		return
-	targets += getmobs() //Fill list, prompt user with list
-	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
 
-	if(!target) return
+
+
+	for(var/datum/mind/possible_target in SSticker.minds)
+		if (istype(possible_target.current, /mob/living) && possible_target != src.mind)
+			LAZYADD(targets,possible_target.current)
+
+	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
+	if(!target)
+		return
 
 	text = input("What would you like to say?", "Speak to creature", null, null)
-
 	text = sanitize(text)
 
-	if(!text) return
+	if(!text)
+		return
 
-	var/mob/M = targets[target]
-
-	if(istype(M, /mob/observer/dead) || M.stat == DEAD)
+	var/mob/living/M = target
+	if(M.stat == DEAD)
 		to_chat(src, "Not even a [src.species.name] can speak to the dead.")
 		return
 
-	log_say("(COMMUNE to [key_name(M)]) [text]",src)
+	//The further the target is, the longer it takes.
+	var/distance = get_dist(M.loc,loc)
+	var/distance_modifier
+	var/turf/target_location = get_turf(M.loc)
+	if(target_location)
+		if(target_location.z in GLOB.using_map.station_levels)
+			distance_modifier = 0	//No additional values if they're on-station
+	else
+		distance_modifier = default_distance_mod	//No quick snapchatting with someone off-station
 
-	to_chat(M, "<font color=#4F49AF>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</font>")
-	nutrition -= 50
-	if(istype(M,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = M
-		if(H.species.name == src.species.name)
-			return
-		to_chat(H, "<font color='red'>Your nose begins to bleed...</font>")
-		H.drip(1)
+	var/delay = clamp((distance / 2), 1, 8) SECONDS + distance_modifier	//Half of distance worth of seconds, up to 8, plus 30 if they're off-station. Max: 38, min: 1.
+	src.visible_message("<span class = 'warning'>[src] seems to focus for a few seconds.</span>","You begin to seek [target] out. This may take a while.")
+
+	if(do_after(src, delay))
+		log_and_message_admins("COMMUNED to [key_name(M)]) [text]", src)
+
+		to_chat(M, "<font color=#4F49AF>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <b>[text]</b></font>")
+		nutrition -= 50
+		if(istype(M,/mob/living/carbon/human))
+			var/mob/living/carbon/human/H = M
+			if(H.species.name == src.species.name)
+				return
+			to_chat(H, "<font color='red'>Your nose begins to bleed...</font>")
+			H.drip(1)
 
 /mob/living/carbon/human/proc/regurgitate()
 	set name = "Regurgitate"

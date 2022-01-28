@@ -97,6 +97,7 @@
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/blood,
 		/obj/item/stack/material/phoron,
+		/obj/item/implant,
 		/obj/item/nif
 		)
 

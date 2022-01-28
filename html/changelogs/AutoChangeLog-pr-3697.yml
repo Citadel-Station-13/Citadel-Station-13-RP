@@ -1,0 +1,6 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - bugfix: "Fixes neomorphs being no longer lore compliant"
+  - config: "Neomorphs are named back to xenomorph hybrids"
+  - admin: "Breaks Xenohybrid whitelist"

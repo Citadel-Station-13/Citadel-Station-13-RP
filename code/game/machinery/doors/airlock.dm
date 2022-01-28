@@ -589,6 +589,19 @@
 	normalspeed = FALSE // So it closes faster and hopefully keeps the warm air inside.
 	hackProof = TRUE //VOREStation Edit - No borgos
 
+//"Red" Armory Door
+/obj/machinery/door/airlock/security/armory
+	name = "Red Armory"
+	//color = ""
+
+/obj/machinery/door/airlock/security/armory/allowed(mob/user)
+	if(get_security_level() in list("green","blue"))
+		return FALSE
+
+	return ..(user)
+
+
+
 /*
 About the new airlock wires panel:
 *	An airlock wire dialog can be accessed by the normal way or by using wirecutters or a multitool on the door while the wire-panel is open. This would show the following wires, which you can either wirecut/mend or send a multitool pulse through. There are 9 wires.
