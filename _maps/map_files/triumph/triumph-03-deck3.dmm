@@ -2365,11 +2365,11 @@
 /area/medical/medbay3)
 "bWI" = (
 /obj/machinery/door/firedoor/glass,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
-	id_tag = "emt_shuttle_interior"
+	id_tag = null
 	},
-/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "bWQ" = (
@@ -6496,7 +6496,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
-	id_tag = "emt_shuttle_exterior"
+	id_tag = null
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -11757,16 +11757,11 @@
 /area/medical/recoveryrestroom)
 "jNn" = (
 /obj/machinery/door/firedoor/glass,
+/obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
-	id_tag = "emt_shuttle_exterior"
+	id_tag = null
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	pixel_x = 24
-	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "jNC" = (
@@ -13576,13 +13571,13 @@
 	},
 /area/rnd/research)
 "lhX" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "emt_vent"
+	id_tag = "emt_shuttle_docker_pump"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "lid" = (
@@ -14639,6 +14634,10 @@
 "mfr" = (
 /obj/machinery/atmospherics/binary/pump{
 	name = "main fuel pump"
+	},
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = 29
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -16838,17 +16837,18 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "nRz" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "emt_vent"
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	frequency = 1380;
+	id_tag = "emt_shuttle_docker";
 	pixel_x = 24
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "emt_shuttle_docker_pump"
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -20733,7 +20733,7 @@
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
-	id_tag = "emt_shuttle_interior"
+	id_tag = null
 	},
 /obj/machinery/access_button{
 	dir = 1;
@@ -30604,11 +30604,6 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/machinery/airlock_sensor{
-	frequency = 1380;
-	pixel_y = 24
-	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "xOy" = (

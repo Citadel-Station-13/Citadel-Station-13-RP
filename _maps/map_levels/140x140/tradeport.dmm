@@ -53,12 +53,12 @@
 	frequency = 8018;
 	id_tag = "trade_space_lock";
 	pixel_x = -25;
-	tag_airpump = "trade_pump";
-	tag_chamber_sensor = "trade_sensor";
-	tag_exterior_door = "trade_ext_lock";
-	tag_exterior_sensor = "trade_ext_sensor";
-	tag_interior_door = "trade_int_lock";
-	tag_interior_sensor = "trade_int_sensor"
+	tag_airpump = null;
+	tag_chamber_sensor = null;
+	tag_exterior_door = null;
+	tag_exterior_sensor = null;
+	tag_interior_door = null;
+	tag_interior_sensor = null
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -526,17 +526,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
-"cQ" = (
-/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
-	frequency = 8018;
-	id_tag = "beru_ex_sensor";
-	master_tag = "tradeport_hangar_docker";
-	pixel_x = -8;
-	pixel_y = -10
-	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/simulated/shuttle/wall/voidcraft,
-/area/shuttle/trade_ship/general)
 "cR" = (
 /obj/machinery/light,
 /obj/structure/flora/pottedplant/drooping,
@@ -626,13 +615,6 @@
 /area/tradeport)
 "dd" = (
 /obj/machinery/suit_cycler/syndicate,
-/obj/machinery/airlock_sensor/airlock_interior{
-	frequency = 8018;
-	id_tag = "beru_int_sensor";
-	master_tag = "tradeport_hangar_docker";
-	pixel_x = 25;
-	pixel_y = 5
-	},
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
@@ -641,7 +623,6 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "de" = (
@@ -690,14 +671,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "dA" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 8018;
-	icon_state = "door_locked";
-	id_tag = "trade_int_lock";
-	locked = 1;
-	name = "Shuttle Hatch";
-	req_one_access = null
-	},
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 8018;
@@ -705,6 +678,11 @@
 	pixel_x = -25;
 	pixel_y = -5
 	},
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch"
+	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "dB" = (
@@ -1979,14 +1957,16 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	frequency = 8018;
-	id_tag = "trade_pump"
+	id_tag = "trade_space_lock_pump"
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 8018;
-	id_tag = "trade_sensor";
-	master_tag = "trade_space_lock";
+	id_tag = "trade_space_lock";
+	master_tag = null;
 	pixel_x = 25
 	},
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "iX" = (
@@ -2007,6 +1987,10 @@
 /area/tradeport/engineering)
 "iY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = 29
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "iZ" = (
@@ -2481,12 +2465,12 @@
 	frequency = 8018;
 	id_tag = "tradeport_hangar_docker";
 	pixel_x = -25;
-	tag_airpump = "beru_pump";
-	tag_chamber_sensor = "beru_sensor";
-	tag_exterior_door = "beru_outer";
-	tag_exterior_sensor = "beru_ex_sensor";
-	tag_interior_door = "beru_inner";
-	tag_interior_sensor = "beru_int_sensor"
+	tag_airpump = null;
+	tag_chamber_sensor = null;
+	tag_exterior_door = null;
+	tag_exterior_sensor = null;
+	tag_interior_door = null;
+	tag_interior_sensor = null
 	},
 /obj/effect/shuttle_landmark/triumph/trade/hangar,
 /obj/effect/overmap/visitable/ship/landable/trade,
@@ -2564,22 +2548,22 @@
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 8018;
-	id_tag = "beru_sensor";
-	master_tag = "tradeport_hangar_docker";
+	id_tag = "tradeport_hangar_docker";
+	master_tag = null;
 	pixel_x = 25
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 8018;
-	id_tag = "beru_pump"
+	id_tag = "tradeport_hangar_docker_pump"
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "lC" = (
@@ -3839,14 +3823,6 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "sg" = (
-/obj/machinery/atmospherics/pipe/simple/visible,
-/obj/machinery/door/airlock/glass_external{
-	frequency = 8018;
-	icon_state = "door_locked";
-	id_tag = "beru_inner";
-	locked = 1;
-	name = "Ship Hatch"
-	},
 /obj/machinery/access_button{
 	command = "cycle_interior";
 	frequency = 8018;
@@ -3855,6 +3831,10 @@
 	pixel_y = 5
 	},
 /obj/effect/map_helper/airlock/door/int_door,
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "si" = (
@@ -4458,13 +4438,6 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "uR" = (
-/obj/machinery/door/airlock/glass_external{
-	frequency = 8018;
-	icon_state = "door_locked";
-	id_tag = "beru_inner";
-	locked = 1;
-	name = "Ship Hatch"
-	},
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -4472,17 +4445,10 @@
 	icon_state = "1-2"
 	},
 /obj/effect/map_helper/airlock/door/int_door,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/trade_ship/general)
-"uT" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 8018;
-	icon_state = "door_locked";
-	id_tag = "beru_outer";
-	locked = 1;
+	frequency = null;
 	name = "Ship Hatch"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "uU" = (
@@ -5622,13 +5588,10 @@
 	pixel_y = 5
 	},
 /obj/machinery/door/airlock/glass_external{
-	frequency = 8018;
-	icon_state = "door_locked";
-	id_tag = "trade_ext_lock";
-	locked = 1;
-	name = "Shuttle Hatch";
-	req_one_access = null
+	frequency = null;
+	name = "Ship Hatch"
 	},
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "zU" = (
@@ -8359,19 +8322,16 @@
 	pixel_x = 25;
 	pixel_y = -5
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 8018;
-	icon_state = "door_locked";
-	id_tag = "beru_outer";
-	locked = 1;
-	name = "Ship Hatch"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
+/obj/machinery/door/airlock/glass_external{
+	frequency = null;
+	name = "Ship Hatch"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Ms" = (
@@ -8709,20 +8669,10 @@
 /area/shuttle/trade_ship/general)
 "NN" = (
 /obj/machinery/door/airlock/glass_external{
-	frequency = 8018;
-	icon_state = "door_locked";
-	id_tag = "trade_ext_lock";
-	locked = 1;
-	name = "Shuttle Hatch";
-	req_one_access = null
+	frequency = null;
+	name = "Ship Hatch"
 	},
-/obj/machinery/airlock_sensor{
-	frequency = 8018;
-	id_tag = "trade_ext_sensor";
-	master_tag = "trade_space_lock";
-	pixel_x = -25;
-	pixel_y = 10
-	},
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "NP" = (
@@ -10664,20 +10614,10 @@
 "WF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/glass_external{
-	frequency = 8018;
-	icon_state = "door_locked";
-	id_tag = "trade_int_lock";
-	locked = 1;
-	name = "Shuttle Hatch";
-	req_one_access = null
+	frequency = null;
+	name = "Ship Hatch"
 	},
-/obj/machinery/airlock_sensor{
-	frequency = 8018;
-	id_tag = "trade_int_sensor";
-	master_tag = "trade_space_lock";
-	pixel_x = 25;
-	pixel_y = -10
-	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "WG" = (
@@ -26608,7 +26548,7 @@ ZP
 GY
 rd
 tm
-cQ
+tm
 nG
 wR
 jQ
@@ -27036,7 +26976,7 @@ Rm
 Wc
 sg
 lq
-uT
+NN
 jn
 bB
 Yo
