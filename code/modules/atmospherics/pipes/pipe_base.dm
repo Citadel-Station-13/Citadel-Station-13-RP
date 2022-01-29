@@ -131,7 +131,7 @@
 
 /obj/machinery/atmospherics/pipe/hide(var/i)
 	if(istype(loc, /turf/simulated))
-		invisibility = i ? 101 : 0
+		invisibility = i ? 100 : 0
 	update_icon()
 
 /obj/machinery/atmospherics/pipe/process(delta_time)
