@@ -3101,11 +3101,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "cqx" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "expshuttle_dock";
+	pixel_y = 10
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/general)
+/turf/simulated/wall/r_wall,
+/area/exploration/explorer_prep)
 "cqJ" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/porta_turret/stationary{
@@ -4494,11 +4496,6 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/airlock_sensor{
-	pixel_x = 26;
-	pixel_y = 38
-	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "dwx" = (
@@ -5234,11 +5231,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
 "dXI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/general)
+/obj/machinery/meter{
+	frequency = 1443;
+	id = "dist_aux_meter";
+	name = "Distribution Loop"
+	},
+/turf/simulated/floor/plating,
+/area/exploration/explorer_prep)
 "dXT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5612,9 +5614,6 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -6447,10 +6446,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/triumph/surfacebase/tram)
 "eLS" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/wall_mounted,
-/obj/effect/map_helper/airlock/atmos/pump_out_external,
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/general)
+/obj/machinery/access_button/airlock_exterior{
+	frequency = 1380;
+	master_tag = "expshuttle_dock"
+	},
+/turf/simulated/wall/r_wall,
+/area/exploration/explorer_prep)
 "eMf" = (
 /obj/structure/cable/cyan{
 	d1 = 4;
@@ -8113,7 +8114,6 @@
 /area/crew_quarters/captain)
 "fUd" = (
 /obj/effect/map_helper/airlock/door/ext_door,
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -8121,15 +8121,14 @@
 	name = "Shuttle Lockdown";
 	opacity = 0
 	},
-/obj/machinery/access_button/airlock_exterior{
-	frequency = 1380;
-	master_tag = "expshuttle_docker";
-	pixel_x = 24
+/obj/machinery/door/airlock/voidcraft/vertical{
+	id_tag = null
 	},
-/obj/machinery/airlock_sensor{
-	pixel_x = -56
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/machinery/airlock_sensor/airlock_exterior{
+	id_tag = "expshuttle_docker";
+	pixel_x = 26
 	},
-/obj/machinery/door/airlock/voidcraft/vertical,
 /turf/simulated/shuttle/plating,
 /area/shuttle/excursion/general)
 "fVF" = (
@@ -9002,9 +9001,6 @@
 "gBL" = (
 /obj/machinery/camera/network/exploration,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -9891,9 +9887,6 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "hjs" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -11349,9 +11342,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "ifn" = (
@@ -12322,6 +12312,7 @@
 	},
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor{
+	id_tag = "expshuttle_docker";
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled,
@@ -13861,18 +13852,16 @@
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "kdF" = (
-/obj/effect/map_helper/airlock/atmos/pump_out_internal,
-/obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
-	cycle_to_external_air = 1;
 	frequency = 1380;
 	id_tag = "expshuttle_docker";
-	pixel_x = -22
-	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1380;
-	id_tag = null
+	pixel_x = -22;
+	tag_airpump = null;
+	tag_chamber_sensor = null;
+	tag_exterior_door = null;
+	tag_exterior_sensor = null;
+	tag_interior_door = null;
+	tag_interior_sensor = null
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
@@ -13987,7 +13976,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
-	id_tag = null
+	id_tag = "expshuttle_docker_pump"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
@@ -14230,7 +14219,6 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "kvv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
@@ -18234,15 +18222,11 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
 "nnI" = (
-/obj/effect/map_helper/airlock/atmos/pump_out_internal,
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1380;
-	id_tag = null
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/shuttle/excursion/general)
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/exploration/excursion_dock)
 "nnL" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_security{
@@ -18546,9 +18530,6 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -21365,8 +21346,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
@@ -21921,10 +21902,6 @@
 /area/hydroponics/garden)
 "pSB" = (
 /obj/effect/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "expshuttle_docker";
-	pixel_x = -24
-	},
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -21932,7 +21909,14 @@
 	name = "Shuttle Lockdown";
 	opacity = 0
 	},
-/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/machinery/door/airlock/voidcraft/vertical{
+	id_tag = null
+	},
+/obj/machinery/airlock_sensor/airlock_interior{
+	id_tag = "expshuttle_docker";
+	pixel_x = -26
+	},
+/obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "pTM" = (
@@ -22678,7 +22662,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "qmR" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
@@ -25116,9 +25099,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "rSv" = (
@@ -26532,9 +26512,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
 "sNZ" = (
@@ -27344,9 +27321,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	d2 = 4;
 	icon_state = "0-4"
@@ -27696,9 +27670,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "tFr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -28240,10 +28211,6 @@
 /obj/machinery/librarycomp,
 /turf/simulated/floor/wood,
 /area/library)
-"ufP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/excursion/general)
 "ugl" = (
 /obj/structure/catwalk,
 /obj/machinery/alarm{
@@ -28672,9 +28639,6 @@
 	pixel_y = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -37014,7 +36978,7 @@ jtp
 nai
 sJC
 mAF
-wlr
+nnI
 vcd
 uDH
 nmi
@@ -37294,7 +37258,7 @@ mLN
 rSv
 pxT
 uxK
-aXJ
+dXI
 rzm
 sJC
 mAF
@@ -37867,10 +37831,10 @@ rXj
 foe
 hCv
 nxR
-eLS
-ufP
-cqx
-dXI
+hYe
+hYe
+hYe
+hYe
 bYS
 hdl
 ieD
@@ -38003,16 +37967,16 @@ xOb
 yeU
 cVO
 baW
-sJC
+cqx
 iDF
 cVO
 cyS
-sJC
-wlr
+eLS
+nnI
 fUd
 pTM
 kdF
-nnI
+ieD
 pSB
 dvW
 mpE
@@ -38150,7 +38114,7 @@ dSS
 dSS
 dSS
 skC
-wlr
+nnI
 hYe
 iRC
 kln
@@ -38292,7 +38256,7 @@ eee
 qJu
 sJC
 mAF
-wlr
+nnI
 hYe
 oZY
 obo
@@ -38718,7 +38682,7 @@ pCc
 hqy
 gxG
 mAF
-wlr
+nnI
 dzk
 gQk
 xnp
@@ -39002,7 +38966,7 @@ pLf
 gaT
 rsy
 mAF
-wlr
+nnI
 dzk
 lTt
 lTt
@@ -39144,7 +39108,7 @@ pLf
 hqy
 mHf
 mAF
-wlr
+nnI
 rWY
 mmQ
 mmQ
@@ -39428,7 +39392,7 @@ hqy
 hqy
 eXs
 mXx
-wlr
+nnI
 xsI
 rkC
 xsI

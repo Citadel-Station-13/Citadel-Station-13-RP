@@ -534,6 +534,7 @@
 	pixel_x = -8;
 	pixel_y = -10
 	},
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/trade_ship/general)
 "cR" = (
@@ -640,6 +641,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "de" = (
@@ -2576,6 +2578,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "lC" = (
@@ -3850,6 +3854,7 @@
 	pixel_x = -25;
 	pixel_y = 5
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "si" = (
@@ -4466,6 +4471,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "uT" = (
@@ -4476,6 +4482,7 @@
 	locked = 1;
 	name = "Ship Hatch"
 	},
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "uU" = (
@@ -8364,6 +8371,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Ms" = (
