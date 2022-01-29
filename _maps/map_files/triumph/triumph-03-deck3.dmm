@@ -15088,11 +15088,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/crew_quarters/medbreak/surgery)
 "mrJ" = (
-/obj/machinery/recharge_station,
 /obj/machinery/camera/network/research{
 	dir = 8;
 	network = list("Research","Toxins Test Area")
 	},
+/obj/structure/closet/secure_closet/guncabinet/robotics,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
 "mth" = (
@@ -21142,6 +21142,15 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
+"qOn" = (
+/obj/machinery/computer/cryopod/robot{
+	pixel_y = -30
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/purple,
+/area/assembly/robotics)
 "qOA" = (
 /obj/structure/sink{
 	dir = 8;
@@ -30266,11 +30275,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "xDR" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
-/obj/machinery/computer/cryopod/robot{
-	pixel_y = -30
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
@@ -35956,7 +35965,7 @@ vGq
 rxU
 eus
 vGq
-wgM
+qOn
 wor
 vrf
 wfK
@@ -37515,7 +37524,7 @@ jgu
 wQJ
 dXc
 jEz
-rKa
+rLt
 sGT
 oYT
 oNN
