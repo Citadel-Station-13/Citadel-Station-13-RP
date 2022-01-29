@@ -15068,8 +15068,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_medical{
-	name = "Patient Psychiatric Ward A";
-	req_one_access = list(5)
+	name = "Patient Psychiatric Ward A"
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -23663,8 +23662,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 32;
-	d2 = 8;
 	icon_state = "32-8"
 	},
 /turf/simulated/open,
