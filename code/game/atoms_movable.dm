@@ -426,6 +426,10 @@
 
 /atom/movable/proc/ghost_tag(text)
 	var/atom/movable/ghost_tag_container/G = locate() in vis_contents
+	if(!length(text) || !istext(text))
+		if(G)
+			qdel(G)
+		return
 	if(!G)
 		G = new(src)
 	G.master = src
@@ -439,6 +443,7 @@
 	vis_contents += G
 	if(G.loc != src)
 		G.forceMove(src)
+	return G
 
 /atom/movable/ghost_tag_container
 	var/atom/master
