@@ -335,7 +335,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
-	slot = ACCESSORY_SLOT_OVER
+	slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/buttonup/untucked
 	name = "button up shirt (untucked)"
