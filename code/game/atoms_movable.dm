@@ -425,7 +425,9 @@
 	return
 
 /atom/movable/proc/ghost_tag(text)
-	var/atom/movable/ghost_tag_container/G = new(src)
+	var/atom/movable/ghost_tag_container/G = locate() in vis_contents
+	if(!G)
+		G = new(src)
 	G.master = src
 	// for the love of god macro this when we get runechat
 	G.maptext = "<center><span style="font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1;">[text]</span></center>"
@@ -442,6 +444,7 @@
 	var/atom/master
 
 /atom/movable/ghost_tag_container/Destroy()
-	if(master)
+	if(istype(master))
 		master.vis_contents -= src
+		master = null
 	return ..()
