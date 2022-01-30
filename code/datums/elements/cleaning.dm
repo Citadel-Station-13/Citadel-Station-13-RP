@@ -3,7 +3,7 @@
 	if(!ismovable(target))
 		return ELEMENT_INCOMPATIBLE
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/Clean)
-
+//Funny comment for tutorial
 /datum/element/cleaning/Detach(datum/target)
 	. = ..()
 	UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
