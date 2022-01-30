@@ -446,7 +446,7 @@
 	return G
 
 /atom/movable/ghost_tag_container
-	var/atom/master
+	var/atom/movable/master
 
 /atom/movable/ghost_tag_container/Destroy()
 	if(istype(master))
