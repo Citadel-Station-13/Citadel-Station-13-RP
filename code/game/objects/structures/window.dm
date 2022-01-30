@@ -156,12 +156,14 @@
 		return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES // If it's anchored, it'll block air.
 	return ATMOS_PASS_YES // Don't stop airflow from the other sides.
 
-/obj/structure/window/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
+/obj/structure/window/CheckExit(atom/movable/AM, turf/target)
+	if(is_fulltile())
+		return TRUE
+	if(AM.checkpass(PASSGLASS))
+		return TRUE
+	if(get_dir(AM.loc, target) == dir)
+		return FALSE
+	return TRUE
 
 /obj/structure/window/setDir(newdir)
 	. = ..()
