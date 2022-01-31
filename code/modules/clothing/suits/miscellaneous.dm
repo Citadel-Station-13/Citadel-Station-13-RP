@@ -1162,8 +1162,8 @@ obj/item/clothing/suit/kamishimo
 	icon_state = "ge_armorcent"
 
 /obj/item/clothing/suit/darkfur
-	name = "fashionable fur lined coat"
-	desc = "A sleek jacket with a dark fur lining around the collar."
+	name = "vexatious coat"
+	desc = "A sleek jacket with a dark fur lining around the collar. All the rage on Infernum."
 	icon_state = "darkfur_jacket"
 	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
 	body_parts_covered = UPPER_TORSO|ARMS

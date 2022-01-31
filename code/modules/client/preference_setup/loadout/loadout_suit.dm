@@ -419,5 +419,5 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/suit/storage/stripe_jacket
 
 /datum/gear/suit/jacket_darkfur
-	name = "Jacket w/ Dark Fur Lining (Colorable)"
+	name = "Vexatious Coat w/ Dark Fur Lining"
 	path = /obj/item/clothing/suit/darkfur
