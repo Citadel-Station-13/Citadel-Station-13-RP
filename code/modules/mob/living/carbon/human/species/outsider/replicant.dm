@@ -18,7 +18,7 @@
 
 	show_ssd = "eerily still."
 
-	min_age = 0
+	min_age = 18
 	max_age = 999
 
 	health_hud_intensity = 1.5

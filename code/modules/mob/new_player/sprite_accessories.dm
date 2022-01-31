@@ -2039,9 +2039,14 @@
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN)
 
 	tanlines
-		name = "Tan Lines (One Piece)"
+		name = "Tan Lines (One Piece, F)"
 		icon_state = "tan_op"
 		icon = "icons/mob/human_races/markings.dmi"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_m
+		name = "Tan Lines (One Piece, M)"
+		icon_state = "tan_mop"
 		body_parts = list(BP_TORSO,BP_GROIN)
 
 	tanlines_bikini
