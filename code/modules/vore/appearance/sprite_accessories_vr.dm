@@ -174,6 +174,13 @@
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "demon-horns4-ring"
 
+/datum/sprite_accessory/ears/demon_horns5
+	name = "demon horns, colorable (stubby)"
+	desc = ""
+	icon_state = "demon-horns5"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/ears/dragon_horns
 	name = "dragon horns, colorable"
 	desc = ""

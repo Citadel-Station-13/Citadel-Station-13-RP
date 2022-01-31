@@ -417,3 +417,7 @@ datum/gear/suit/duster
 /datum/gear/suit/jacket_stripe
 	name = "Striped Jacket"
 	path = /obj/item/clothing/suit/storage/stripe_jacket
+
+/datum/gear/suit/jacket_darkfur
+	name = "Jacket w/ Dark Fur Lining (Colorable)"
+	path = /obj/item/clothing/suit/darkfur
