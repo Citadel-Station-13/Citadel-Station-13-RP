@@ -11,8 +11,8 @@
 	name_language = LANGUAGE_SCHECHI
 	species_language = LANGUAGE_SCHECHI
 
-	min_age = 12
-	max_age = 45
+	min_age = 18
+	max_age = 75
 
 	economic_modifier = 6
 
