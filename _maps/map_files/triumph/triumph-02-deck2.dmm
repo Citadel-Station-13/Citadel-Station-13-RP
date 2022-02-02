@@ -10484,15 +10484,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/foyer)
-"DT" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
 "DX" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
@@ -11183,29 +11174,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"FQ" = (
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
 "FR" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -16072,17 +16040,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
-"UE" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
 "UF" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/conveyor{
@@ -29178,9 +29135,9 @@ pX
 aV
 aV
 Or
-DT
-FQ
-UE
+nM
+oc
+Lm
 Uy
 UU
 NX
@@ -32580,7 +32537,7 @@ Ed
 Ed
 Rj
 aC
-vo
+mQ
 vo
 vo
 vo
