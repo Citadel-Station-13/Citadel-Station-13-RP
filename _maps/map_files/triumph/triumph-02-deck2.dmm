@@ -373,7 +373,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "aY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -395,12 +395,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"bb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
 "bd" = (
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -485,12 +479,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_10)
-"by" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
 "bC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -812,11 +800,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
 "cz" = (
-/obj/structure/table/rack/shelf,
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "cB" = (
 /obj/machinery/camera/network/outside{
@@ -1353,7 +1340,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "ep" = (
 /obj/effect/landmark{
@@ -1985,10 +1972,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"fP" = (
-/obj/structure/table/rack/shelf,
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
 "fQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -7419,7 +7402,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "uE" = (
 /obj/structure/cable/green{
@@ -8261,9 +8244,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
-"xj" = (
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
 "xk" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
@@ -10499,12 +10479,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
-"DV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/vacant/vacant_shop)
 "DX" = (
 /obj/machinery/computer/ship/navigation/telescreen{
 	pixel_y = -37
@@ -11412,7 +11386,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Gx" = (
 /obj/machinery/firealarm{
@@ -12004,7 +11978,7 @@
 /area/maintenance/dormitory)
 "In" = (
 /obj/machinery/camera/network/civilian,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Io" = (
 /obj/structure/cable/green{
@@ -13613,7 +13587,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Nr" = (
 /obj/structure/bed/chair/comfy/teal{
@@ -14546,7 +14520,7 @@
 /obj/structure/closet/hydrant{
 	pixel_x = -32
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Qg" = (
 /obj/structure/cable/green{
@@ -14584,7 +14558,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Ql" = (
 /obj/structure/bed/chair/comfy/teal{
@@ -15606,7 +15580,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Tk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -31041,7 +31015,7 @@ lP
 tN
 YM
 NB
-xj
+Pz
 uC
 GM
 mQ
@@ -31326,8 +31300,8 @@ vq
 XU
 NB
 KK
-bb
-xj
+wn
+Pz
 wH
 nM
 FC
@@ -31467,8 +31441,8 @@ mj
 vQ
 zD
 NB
-DV
-bb
+GY
+wn
 eM
 CJ
 vb
@@ -31753,7 +31727,7 @@ Qj
 Qf
 cN
 Hu
-by
+Pz
 mQ
 nM
 Gl
@@ -31893,7 +31867,7 @@ VZ
 SM
 mQ
 uf
-DV
+GY
 wn
 Tj
 mQ
@@ -32035,9 +32009,9 @@ Rj
 Sb
 mQ
 Gw
-DV
+GY
 wn
-xj
+Pz
 sD
 Yp
 Qg
@@ -32179,7 +32153,7 @@ mQ
 In
 aX
 GC
-xj
+Pz
 sD
 nM
 FC
@@ -32318,10 +32292,10 @@ ii
 Rj
 tV
 mQ
-xj
-xj
-xj
-xj
+Pz
+Pz
+Pz
+Pz
 mQ
 Je
 Ha
@@ -32460,10 +32434,10 @@ ii
 Rj
 aC
 mQ
-fP
-fP
+Pz
+Pz
 cz
-fP
+Pz
 mQ
 lf
 FC
