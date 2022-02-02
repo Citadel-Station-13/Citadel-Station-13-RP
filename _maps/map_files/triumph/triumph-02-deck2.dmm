@@ -479,6 +479,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_10)
+"by" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/machinery/station_map{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/starboard)
 "bC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9963,11 +9972,16 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "Cq" = (
-/obj/machinery/alarm{
-	pixel_y = 22
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled,
@@ -14802,15 +14816,6 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/quartermaster/foyer)
-"Rf" = (
-/obj/machinery/station_map{
-	pixel_y = 32
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 1
-	},
-/turf/simulated/floor/tiled,
-/area/hallway/primary/starboard)
 "Rh" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -30735,8 +30740,8 @@ ED
 Rn
 iH
 GJ
+lf
 Cq
-FC
 tY
 zk
 KW
@@ -30877,7 +30882,7 @@ mQ
 mQ
 mQ
 mQ
-nM
+by
 FC
 Lm
 zk
@@ -31019,7 +31024,7 @@ Pz
 uC
 GM
 mQ
-Rf
+nM
 FC
 hT
 zk
