@@ -203,6 +203,27 @@ var/last_chew = 0
 /obj/item/handcuffs/cable/tape/cyborg
 	dispenser = TRUE
 
+/*
+/obj/item/handcuffs/disruptor
+	name = "disruptor cuffs"
+	icon_state = "disruptorcuff"
+	desc = "These next gen handcuffs distribute disruptive multispectrum pulses designed to interfere with complex synthetic restructuring."
+
+/obj/item/handcuffs/disruptor/get_worn_icon_state(var/slot_name)
+	if(slot_name == slot_handcuffed_str)
+		return "disruptorcuff1" //Simple
+
+	return ..()
+
+/obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
+	. = ..()
+	if(slot == slot_handcuffed)
+		user.drop_r_hand()
+		user.drop_l_hand()
+		user.stop_pulling()
+		ADD_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
+*/
+
 //Legcuffs. Not /really/ handcuffs, but its close enough.
 /obj/item/handcuffs/legcuffs
 	name = "legcuffs"

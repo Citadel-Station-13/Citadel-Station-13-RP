@@ -159,6 +159,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // item traits
 */
 #define TRAIT_NODROP            "nodrop"
+#define TRAIT_DISRUPTED			"disrupted"
 /*
 #define TRAIT_T_RAY_VISIBLE     "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
@@ -210,7 +211,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define CURSED_ITEM_TRAIT "cursed-item" // The item is magically cursed
 #define ABSTRACT_ITEM_TRAIT "abstract-item"
 #define STATUS_EFFECT_TRAIT "status-effect"
+*/
 #define CLOTHING_TRAIT "clothing"
+/*
 #define GLASSES_TRAIT "glasses"
 #define VEHICLE_TRAIT "vehicle" // inherited from riding vehicles
 #define INNATE_TRAIT "innate"
