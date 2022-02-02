@@ -1119,17 +1119,6 @@ About the new airlock wires panel:
 		if((W.pry == 1) && !arePowerSystemsOn())
 			if(locked)
 				to_chat(user, "<span class='notice'>The airlock's bolts prevent it from being forced.</span>")
-			else if( !welded && operating)
-				if(istype(C, /obj/item/tool/crowbar/power))
-					visible_message("<span class='alert'>\The [user] begins forcing \the [src] open!</span>")
-					if(do_after(user, 5 SECONDS,src))
-						playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
-						visible_message("<span class='danger'>\The [user] forces \the [src] open!</span>")
-						open(1)
-				else
-					visible_message("<span class='danger'>\The [user] forces \the [src] closed!</span>")
-					close(1)
-
 			else if( !welded && !operating )
 				if(istype(C, /obj/item/material/twohanded/fireaxe)) // If this is a fireaxe, make sure it's held in two hands.
 					var/obj/item/material/twohanded/fireaxe/F = C
