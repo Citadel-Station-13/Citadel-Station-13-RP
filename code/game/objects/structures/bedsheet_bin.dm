@@ -91,6 +91,11 @@ LINEN BINS
 /obj/item/bedsheet/ian
 	icon_state = "sheetian"
 
+/obj/item/bedsheet/cosmos
+	name = "cosmic space bedsheet"
+	desc = "Made from the dreams of those who wonder at the stars."
+	icon_state = "sheetcosmos"
+
 /obj/item/bedsheet/double
 	icon_state = "doublesheet"
 	item_state = "sheet"
@@ -158,6 +163,9 @@ LINEN BINS
 /obj/item/bedsheet/iandouble
 	icon_state = "doublesheetian"
 	item_state = "sheetian"
+
+/obj/item/bedsheet/cosmosdouble
+	icon_state = "doublesheetcosmos"
 
 /obj/structure/bedsheetbin
 	name = "linen bin"

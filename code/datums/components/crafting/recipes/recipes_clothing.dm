@@ -50,6 +50,7 @@
 				/obj/item/clothing/mask/breath = 1)
 	category = CAT_CLOTHING
 
+/*
 /datum/crafting_recipe/armwraps
 	name = "Armwraps"
 	result = /obj/item/clothing/gloves/fingerless/pugilist/crafted
@@ -73,6 +74,7 @@
 				/obj/item/stack/sheet/sinew = 1,
 				/obj/item/stack/sheet/mineral/gold = 50)
 	category = CAT_CLOTHING
+*/
 
 ////////
 //Huds//
@@ -80,7 +82,7 @@
 
 /datum/crafting_recipe/hudsunsec
 	name = "Security HUDsunglasses"
-	result = /obj/item/clothing/glasses/hud/security/sunglasses
+	result = /obj/item/clothing/glasses/sunglasses/sechud
 	time = 20
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
 	parts = list(/obj/item/clothing/glasses/hud/security = 1,
@@ -95,12 +97,12 @@
 	result = /obj/item/clothing/glasses/sunglasses
 	time = 20
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	reqs = list(/obj/item/clothing/glasses/hud/security/sunglasses = 1)
+	reqs = list(/obj/item/clothing/glasses/sunglasses/sechud = 1)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/hudsunmed
 	name = "Medical HUDsunglasses"
-	result = /obj/item/clothing/glasses/hud/health/sunglasses
+	result = /obj/item/clothing/glasses/sunglasses/medhud
 	time = 20
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
 	parts = list(/obj/item/clothing/glasses/hud/health = 1,
@@ -115,9 +117,10 @@
 	result = /obj/item/clothing/glasses/sunglasses
 	time = 20
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	reqs = list(/obj/item/clothing/glasses/hud/health/sunglasses = 1)
+	reqs = list(/obj/item/clothing/glasses/sunglasses/medhud = 1)
 	category = CAT_CLOTHING
 
+/* These don't exist in our code, and I'm not entirely sure that they can, as they are.
 /datum/crafting_recipe/beergoggles
 	name = "Beer Goggles"
 	result = /obj/item/clothing/glasses/sunglasses/reagent
@@ -156,7 +159,7 @@
 	reqs = list(/obj/item/clothing/glasses/hud/diagnostic/sunglasses = 1)
 	category = CAT_CLOTHING
 
-/* //Kevinz doesn't want it as a recipe for now, leaving it in if anything ever changes to let it in
+//Kevinz doesn't want it as a recipe for now, leaving it in if anything ever changes to let it in
 /datum/crafting_recipe/stunglasses
 	name = "Stunglasses"
 	result = /obj/item/clothing/glasses/sunglasses/stunglasses
@@ -166,9 +169,8 @@
 				  /obj/item/clothing/glasses/sunglasses = 1,
 				  /obj/item/stack/cable_coil = 5)
 	category = CAT_CLOTHING
-*/
 
-// Eyepatch Glasses
+// Eyepatch Glasses We don't have these yet.
 
 /datum/crafting_recipe/secpatch
 	name = "Security Eyepatch HUD"
@@ -245,6 +247,7 @@
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
 	reqs = list(/obj/item/clothing/glasses/meson/eyepatch = 1)
 	category = CAT_CLOTHING
+*/
 
 /datum/crafting_recipe/ghostsheet
 	name = "Ghost Sheet"
@@ -259,11 +262,12 @@
 	result = /obj/item/storage/briefcase/crafted
 	time = 35
 	tools = list(TOOL_WIRECUTTER)
-	reqs = list(/obj/item/stack/sheet/cardboard = 1,
-				/obj/item/stack/sheet/cloth = 2,
-				/obj/item/stack/sheet/leather = 5)
+	reqs = list(/obj/item/stack/material/cardboard = 1,
+				/obj/item/stack/material/cloth = 2,
+				/obj/item/stack/material/leather = 5)
 	category = CAT_CLOTHING
 
+/* Disabling these two for now because I can't find any mob icons for them.
 /datum/crafting_recipe/medolier
 	name = "Medolier"
 	result =  /obj/item/storage/belt/medolier
@@ -282,7 +286,7 @@
 	time = 70
 	category = CAT_CLOTHING
 
-
+//Leaving the Durathread stuff out for now too, because I think this only matters for item health or something? I need more info before I even think about working with a new material type.
 /datum/crafting_recipe/durathread_reinforcement_kit
 	name = "Durathread Reinforcement Kit"
 	result = /obj/item/armorkit
@@ -338,16 +342,17 @@
 				/obj/item/stack/sheet/leather = 10)
 	time = 70
 	category = CAT_CLOTHING
+*/
 
 /datum/crafting_recipe/wintercoat_cosmic
 	name = "Cosmic Winter Coat"
-	result = /obj/item/clothing/suit/hooded/wintercoat/cosmic
-	reqs = list(/obj/item/clothing/suit/hooded/wintercoat = 1,
+	result = /obj/item/clothing/suit/storage/hooded/wintercoat/cosmic
+	reqs = list(/obj/item/clothing/suit/storage/hooded/wintercoat = 1,
 				/obj/item/bedsheet/cosmos = 1)
 	time = 60
 	category = CAT_CLOTHING
 
-
+/* We don't have garlic yet.
 /datum/crafting_recipe/garlic_necklace
 	name = "Garlic Necklace"
 	result = /obj/item/clothing/neck/garlic_necklace
@@ -356,6 +361,7 @@
 	time = 100 //Takes awhile to put all the garlics on the coil and knot it.
 	category = CAT_CLOTHING
 
+//Bro I don't even know what these DO.
 /datum/crafting_recipe/gripperoffbrand
 	name = "Improvised Gripper Gloves"
 	reqs = list(
@@ -368,3 +374,4 @@
 	category = CAT_CLOTHING
 	tools = list(TOOL_WIRECUTTER)
 	time = 20
+*/

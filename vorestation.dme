@@ -340,6 +340,7 @@
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\crafting\guncrafting.dm"
 #include "code\datums\components\crafting\recipes.dm"
+#include "code\datums\components\crafting\recipes\recipes_clothing.dm"
 #include "code\datums\elements\_element.dm"
 #include "code\datums\elements\conflict_checking.dm"
 #include "code\datums\elements\persistence.dm"
