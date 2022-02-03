@@ -177,3 +177,9 @@
 
 /datum/reagent/proc/reaction_mob(var/mob/target)
 	touch_mob(target)
+
+/datum/reagent/proc/on_move(mob/M)
+	return
+
+/datum/reagent/proc/on_update(atom/A)
+	return
