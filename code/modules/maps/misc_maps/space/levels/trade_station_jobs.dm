@@ -10,7 +10,7 @@
 /datum/job/trader
 	title = "Trader"
 	flag = TRADER
-	department = "Trader"
+//	department = "Trader"
 	//department_flag = TRADE
 	department_flag = CIVILIAN
 	//departments_managed = list(DEPARTMENT_TRADE)
