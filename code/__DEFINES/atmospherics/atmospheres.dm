@@ -24,3 +24,6 @@
 
 /// Class D planetary atmosphere ID
 #define ATMOSPHERE_ID_CLASSD			/datum/atmosphere/planet/class_d
+
+/// Magmatic rift atmosphere ID
+#define ATMOSPHERE_ID_MAGMATIC_RIFT		/datum/atmosphere/planet/magmatic_rift
