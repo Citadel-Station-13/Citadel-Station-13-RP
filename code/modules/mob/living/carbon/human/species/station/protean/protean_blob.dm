@@ -52,8 +52,7 @@
 	var/obj/prev_left_hand
 	var/obj/prev_right_hand
 
-	//Bandaid Ventcrawl Nerf Annotation: former text "...you have metal in you, and you can ventcrawl!"
-	player_msg = "In this form, you can move a little faster, your health will regenerate as long as you have metal in you!"
+	player_msg = "In this form, you can move a little faster, your health will regenerate as long as you have metal in you, and you can ventcrawl!"
 	holder_type = /obj/item/holder/protoblob
 	can_buckle = TRUE //Blobsurfing
 
@@ -71,7 +70,7 @@
 		humanform = H
 		updatehealth()
 		refactory = locate() in humanform.internal_organs
-		//verbs |= /mob/living/proc/ventcrawl
+		verbs |= /mob/living/proc/ventcrawl
 		verbs |= /mob/living/proc/hide
 		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
 		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
@@ -149,10 +148,8 @@
 	else
 		..()
 
-/*
 /mob/living/simple_mob/protean_blob/ventcrawl_carry()
 	return TRUE //proteans can have literally any small inside them and should still be able to ventcrawl regardless.
-*/
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
 	if(humanform)
