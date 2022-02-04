@@ -30,7 +30,7 @@
 				m_type = 1
 
 		//Machine-only emotes
-		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze")
+		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze", "honk", "buzz2", "warn", "chime")
 
 			if(!isSynthetic())
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
@@ -50,6 +50,18 @@
 			if(act == "buzz")
 				display_msg = "buzzes"
 				use_sound = 'sound/machines/buzz-sigh.ogg'
+			else if(act == "chime")
+				display_msg = "chimes"
+				use_sound = 'sound/machines/chime.ogg'
+			else if(act == "buzz2")
+				display_msg = "buzzes twice"
+				use_sound = 'sound/machines/buzz-two.ogg'
+			else if(act == "warn")
+				display_msg = "blares an alarm"
+				use_sound = 'sound/machines/warning-buzzer.ogg'
+			else if(act == "honk")
+				display_msg = "honks"
+				use_sound = 'sound/items/bikehorn.ogg'
 			else if(act == "ping")
 				display_msg = "pings"
 				use_sound = 'sound/machines/ping.ogg'
