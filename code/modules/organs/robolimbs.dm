@@ -346,7 +346,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/psyche/moth.dmi'
 	blood_color = "#808000"
 	lifelike = 1
-	skin_color = TRUE
+	skin_tone = TRUE
 	speech_bubble_appearance = "normal"
 
 /datum/robolimb/insect
@@ -355,7 +355,7 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/psyche/insect.dmi'
 	blood_color = "#808000"
 	lifelike = 1
-	skin_color = TRUE
+	skin_tone = TRUE
 	speech_bubble_appearance = "normal"
 
 
