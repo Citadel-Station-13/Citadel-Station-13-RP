@@ -1,0 +1,4 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds the ability to extract firing pins from guns."
