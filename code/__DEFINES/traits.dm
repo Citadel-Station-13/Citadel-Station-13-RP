@@ -63,7 +63,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /*
 //mob traits
 #define TRAIT_BLIND 			"blind"
+*/
 #define TRAIT_MUTE				"mute"
+/*
 #define TRAIT_EMOTEMUTE			"emotemute"
 #define TRAIT_DEAF				"deaf"
 #define TRAIT_NEARSIGHT			"nearsighted"
@@ -82,6 +84,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DISFIGURED		"disfigured"
 */
 #define TRAIT_XENO_HOST			"xeno_host"	//Tracks whether we're gonna be a baby alien's mummy.
+#define TRAIT_MIMING			"miming" //Tracks whether you're a mime or not.
 /*
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
@@ -201,6 +204,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 #define ROUNDSTART_TRAIT "roundstart" //cannot be removed without admin intervention
 #define JOB_TRAIT "job"
+#define TRAIT_MIME "mime" //Mime trait.
 /*
 #define CYBORG_ITEM_TRAIT "cyborg-item"
 */
