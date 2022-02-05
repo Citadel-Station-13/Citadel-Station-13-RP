@@ -2365,11 +2365,11 @@
 /area/medical/medbay3)
 "bWI" = (
 /obj/machinery/door/firedoor/glass,
+/obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
-	id_tag = "emt_shuttle_interior"
+	id_tag = null
 	},
-/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "bWQ" = (
@@ -6496,7 +6496,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
-	id_tag = "emt_shuttle_exterior"
+	id_tag = null
 	},
 /obj/structure/cable/green{
 	d1 = 1;
@@ -6504,6 +6504,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/access_button{
+	frequency = 1380;
 	master_tag = "emt_shuttle_docker";
 	name = "exterior access button";
 	pixel_x = -30;
@@ -11756,15 +11757,11 @@
 /area/medical/recoveryrestroom)
 "jNn" = (
 /obj/machinery/door/firedoor/glass,
+/obj/effect/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
-	id_tag = "emt_shuttle_exterior"
+	id_tag = null
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
-/obj/machinery/airlock_sensor{
-	pixel_x = 24
-	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "jNC" = (
@@ -13574,13 +13571,13 @@
 	},
 /area/rnd/research)
 "lhX" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
-	id_tag = "emt_vent"
+	id_tag = "emt_shuttle_docker_pump"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "lid" = (
@@ -14638,6 +14635,10 @@
 /obj/machinery/atmospherics/binary/pump{
 	name = "main fuel pump"
 	},
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_x = 29
+	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "mfs" = (
@@ -15068,8 +15069,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_medical{
-	name = "Patient Psychiatric Ward A";
-	req_one_access = list(5)
+	name = "Patient Psychiatric Ward A"
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -15089,11 +15089,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/crew_quarters/medbreak/surgery)
 "mrJ" = (
-/obj/machinery/recharge_station,
 /obj/machinery/camera/network/research{
 	dir = 8;
 	network = list("Research","Toxins Test Area")
 	},
+/obj/structure/closet/secure_closet/guncabinet/robotics,
 /turf/simulated/floor/tiled/techfloor,
 /area/assembly/chargebay)
 "mth" = (
@@ -16837,16 +16837,18 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "nRz" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "emt_vent"
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
+	frequency = 1380;
+	id_tag = "emt_shuttle_docker";
 	pixel_x = 24
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1380;
+	id_tag = "emt_shuttle_docker_pump"
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
@@ -19480,6 +19482,7 @@
 	dir = 1
 	},
 /obj/machinery/airlock_sensor{
+	frequency = 1380;
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -20730,10 +20733,11 @@
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
 	frequency = 1380;
-	id_tag = "emt_shuttle_interior"
+	id_tag = null
 	},
 /obj/machinery/access_button{
 	dir = 1;
+	frequency = 1380;
 	master_tag = "emt_shuttle_docker";
 	name = "interior access button";
 	pixel_x = -20;
@@ -21143,6 +21147,15 @@
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
+"qOn" = (
+/obj/machinery/computer/cryopod/robot{
+	pixel_y = -30
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/old_cargo/purple,
+/area/assembly/robotics)
 "qOA" = (
 /obj/structure/sink{
 	dir = 8;
@@ -23663,8 +23676,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 32;
-	d2 = 8;
 	icon_state = "32-8"
 	},
 /turf/simulated/open,
@@ -30269,11 +30280,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay/fore)
 "xDR" = (
-/obj/structure/closet/crate/bin{
-	anchored = 1
-	},
-/obj/machinery/computer/cryopod/robot{
-	pixel_y = -30
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = -28
 	},
 /turf/simulated/floor/tiled/old_cargo/purple,
 /area/assembly/robotics)
@@ -30593,10 +30604,6 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/machinery/airlock_sensor{
-	pixel_y = 24
-	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "xOy" = (
@@ -35959,7 +35966,7 @@ vGq
 rxU
 eus
 vGq
-wgM
+qOn
 wor
 vrf
 wfK
@@ -37518,7 +37525,7 @@ jgu
 wQJ
 dXc
 jEz
-rKa
+rLt
 sGT
 oYT
 oNN

@@ -1161,6 +1161,16 @@ obj/item/clothing/suit/kamishimo
 	desc = "Not all heroes wear capes, but it'd be cooler if they did. This appears less sturdy than the authentic article."
 	icon_state = "ge_armorcent"
 
+/obj/item/clothing/suit/darkfur
+	name = "vexatious coat"
+	desc = "A sleek jacket with a dark fur lining around the collar. All the rage on Infernum."
+	icon_state = "darkfur_jacket"
+	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
+	body_parts_covered = UPPER_TORSO|ARMS
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_UTILITY)
+
 /obj/item/clothing/suit/ghost_sheet
 	name = "ghost sheet"
 	desc = "The hands float by themselves, so it's extra spooky."
