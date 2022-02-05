@@ -72,12 +72,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "as" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/turf/simulated/floor/plating,
-/area/space)
+/obj/machinery/computer/shuttle_control/explore/trade{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/trade_ship/cockpit)
 "au" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -93,15 +92,6 @@
 	},
 /turf/simulated/wall/r_wall,
 /area/tradeport/atmospherics)
-"aw" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "ax" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -511,15 +501,6 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
-"cy" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "cA" = (
 /obj/machinery/light{
 	dir = 8;
@@ -557,12 +538,6 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
-"cF" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/space)
 "cH" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/blue,
@@ -824,15 +799,6 @@
 	},
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
-"dI" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/space)
 "dL" = (
 /obj/machinery/gibber,
 /turf/simulated/floor/tiled/freezer,
@@ -5761,7 +5727,8 @@
 	dir = 6;
 	id = "trade-ship-secure";
 	name = "Shutter Control";
-	pixel_y = 24
+	pixel_y = 24;
+	req_access = list(160)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -6127,7 +6094,7 @@
 /area/tradeport/facility)
 "yI" = (
 /obj/item/material/ashtray/plastic,
-/obj/structure/table/glass,
+/obj/structure/table/hardwoodtable,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
 "yM" = (
@@ -11162,7 +11129,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "Sh" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/bay/comfy/captain{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_cargo/red,
@@ -22762,9 +22729,9 @@ wN
 wN
 wN
 wN
-aw
-aw
-aw
+wN
+wN
+wN
 wN
 wN
 wN
@@ -22903,11 +22870,11 @@ wN
 wN
 wN
 wN
-as
 wN
-cF
 wN
-dI
+wN
+wN
+wN
 wN
 wN
 wN
@@ -23045,11 +23012,11 @@ wN
 wN
 wN
 wN
-as
 wN
-cF
 wN
-dI
+wN
+wN
+wN
 wN
 wN
 wN
@@ -23187,11 +23154,11 @@ wN
 wN
 wN
 wN
-as
 wN
 wN
 wN
-dI
+wN
+wN
 wN
 wN
 wN
@@ -23330,9 +23297,9 @@ wN
 wN
 wN
 wN
-cy
-cy
-cy
+wN
+wN
+wN
 wN
 wN
 wN
@@ -25466,7 +25433,7 @@ nG
 tm
 Hl
 pr
-IA
+as
 Hl
 tm
 nG
@@ -25607,7 +25574,7 @@ nG
 nG
 Re
 mo
-qt
+Sh
 Sh
 SA
 qx

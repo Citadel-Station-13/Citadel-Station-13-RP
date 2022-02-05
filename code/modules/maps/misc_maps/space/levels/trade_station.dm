@@ -110,9 +110,6 @@ var/global/list/latejoin_trade = list()
 /area/shuttle/trade_ship/cockpit
 	name = "\improper Beruang Trade Ship Cockpit"
 
-/obj/machinery/computer/shuttle_control/explore/trade
-	name = "short jump commerce console"
-
 // Shuttle landmarks. Need to be removed at some point and generic waypoints used
 
 /obj/effect/shuttle_landmark/triumph/trade
