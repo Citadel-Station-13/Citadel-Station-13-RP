@@ -1,3 +1,44 @@
+//Overmap Controller
+/obj/effect/overmap/visitable/sector/trade_post
+	name = "Nebula Gas Food Mart"
+	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
+	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
+	in_space = 1
+	known = TRUE
+	icon_state = "fueldepot"
+	color = "#8F6E4C"
+
+	initial_generic_waypoints = list(
+		"nebula_pad_1",
+		"nebula_pad_2",
+		"nebula_space_SW",
+		"nebula_pad_3a",
+		"nebula_pad_3b",
+		"nebula_pad_3c",
+		"nebula_pad_4a",
+		"nebula_pad_4b",
+		"nebula_pad_4c",
+		"nebula_pad_5",
+		"nebula_pad_6",
+		"nebula_space_SE",
+		"nebula_space_S",
+		"nebula_space_SW"
+		)
+
+	initial_restricted_waypoints = list(
+		"Beruang Trade Ship" = list("tradeport_hangar")
+		)
+/* // Old Restricted list. Leaving commented out for reference - Bloop
+	initial_restricted_waypoints = list(
+		"Beruang Trade Ship" = list("tradeport_hangar"),
+		"Mining Shuttle" = list("nebula_pad_2"),
+		"Excursion Shuttle" = list("nebula_pad_3"),
+		"Pirate Skiff" = list("nebula_pad_4"),
+		"Dart EMT Shuttle" = list("nebula_pad_5"),
+		"Civilian Transport" = list("nebula_pad_6")
+		)
+*/
+
 ///////////////////////////
 //// Spawning and despawning
 var/global/list/latejoin_trade = list()
@@ -6,7 +47,7 @@ var/global/list/latejoin_trade = list()
 	delete_me = 1
 
 /obj/effect/landmark/trade/New()
-	latejoin_trade += loc // Register this turf as tram latejoin.
+	latejoin_trade += loc // Register this turf as trade latejoin.
 	..()
 
 /datum/spawnpoint/trade
