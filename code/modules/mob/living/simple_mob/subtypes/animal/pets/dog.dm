@@ -19,6 +19,7 @@
 
 	health = 20
 	maxHealth = 20
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "bops"
@@ -35,7 +36,6 @@
 
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
-
 
 /mob/living/simple_mob/animal/passive/dog/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/newspaper))
@@ -124,6 +124,7 @@
 /mob/living/simple_mob/animal/passive/dog/corgi/puppy/Bockscar
 	name = "Bockscar"
 	real_name = "Bockscar"
+	randomized = FALSE
 
 //Sir Pogsley. (Sec Pet)
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley
@@ -134,6 +135,7 @@
 	makes_dirt = FALSE
 	var/turns_since_scan = 0
 	var/obj/movement_target
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Life()
 	..()
@@ -192,6 +194,7 @@
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	makes_dirt = FALSE	//VOREStation edit: no more dirt
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/dog/corgi/Ian/Life()
 	..()
@@ -256,6 +259,7 @@
 	response_harm   = "kicks"
 	var/turns_since_scan = 0
 	var/puppies = 0
+	randomized = FALSE
 
 //Lisa already has a cute bow!
 /mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Topic(href, href_list)
@@ -309,3 +313,4 @@
 	real_name = "Spice"	//Intended to hold the name without altering it.
 	gender = FEMALE
 	desc = "It's a tamaskan, the name Spice can be found on its collar."
+	randomized = FALSE

@@ -82,7 +82,9 @@
 			if("starlit path of angessa martei")
 				B.name = "Quotations of Exalted Martei"
 			else
-				B.name = "The Holy Book of [new_religion]"
+				var/book_name = sanitize(input(H, "What would you like your holy book to be called? Default is The Holy Book of <religion>", "Holy book name", "The Holy Book of [new_religion]"), MAX_NAME_LEN)
+				B.name = book_name
+				//B.name = "The Holy Book of [new_religion]" -- replaced by the above line
 		feedback_set_details("religion_name","[new_religion]")
 	spawn(1)
 		var/deity_name = "Hashem"

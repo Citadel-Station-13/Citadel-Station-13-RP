@@ -10679,6 +10679,7 @@
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/computer/timeclock/premade/west,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "ask" = (
@@ -15560,6 +15561,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
+/obj/machinery/computer/timeclock/premade/south,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "azP" = (
@@ -31148,7 +31150,9 @@
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/steel,
 /obj/fiftyspawner/glass,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "bqz" = (
 /obj/structure/cable/orange{
@@ -31182,7 +31186,9 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate,
 /obj/random/maintenance/clean,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "byn" = (
 /obj/effect/floor_decal/steeldecal/steel_decals6,
@@ -31472,7 +31478,9 @@
 	},
 /obj/random/tool,
 /obj/random/tool,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "cpp" = (
 /obj/machinery/door/firedoor/glass,
@@ -31537,7 +31545,9 @@
 	name = "Construction Tram Airlock";
 	req_access = newlist()
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "csb" = (
 /obj/structure/railing{
@@ -31904,7 +31914,9 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "dEV" = (
 /obj/structure/fence,
@@ -31956,7 +31968,9 @@
 /obj/structure/closet/crate,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "dLt" = (
 /obj/effect/floor_decal/borderfloor{
@@ -32056,7 +32070,9 @@
 	name = "Tram Shutters Control";
 	pixel_x = 32
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "dYd" = (
 /obj/machinery/firealarm{
@@ -32118,7 +32134,9 @@
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/clean,
 /obj/random/junk,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "eeo" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
@@ -32373,7 +32391,9 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "eQz" = (
 /turf/simulated/floor,
@@ -33389,7 +33409,9 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "hTw" = (
 /obj/structure/cable/green{
@@ -33618,7 +33640,9 @@
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/yellow/border,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "iEk" = (
 /obj/machinery/button/remote/blast_door{
@@ -33745,7 +33769,9 @@
 	dir = 1
 	},
 /obj/random/trash,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "jgW" = (
 /obj/structure/bed/chair/wood{
@@ -33910,7 +33936,9 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "jGq" = (
 /obj/structure/stairs/spawner/north,
@@ -33960,7 +33988,9 @@
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/clean,
 /obj/random/junk,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "jNb" = (
 /obj/effect/floor_decal/borderfloor{
@@ -33981,7 +34011,9 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "jNF" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -34077,7 +34109,9 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "jXR" = (
 /obj/machinery/power/apc{
@@ -34540,7 +34574,9 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "kWs" = (
 /obj/random/trash_pile,
@@ -34600,7 +34636,9 @@
 	},
 /obj/structure/ladder/up,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "ldI" = (
 /obj/structure/disposalpipe/segment{
@@ -34873,7 +34911,9 @@
 	},
 /obj/random/tool,
 /obj/random/tool,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "lPQ" = (
 /obj/item/stack/cable_coil/random_belt,
@@ -35020,7 +35060,9 @@
 	dir = 10
 	},
 /obj/random/trash,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "meS" = (
 /turf/simulated/floor/carpet/gaycarpet,
@@ -35072,7 +35114,9 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "mrj" = (
 /obj/random/cutout,
@@ -35292,7 +35336,9 @@
 /turf/simulated/mineral,
 /area/holodeck_control)
 "mOe" = (
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "mOn" = (
 /obj/machinery/door/airlock{
@@ -35501,7 +35547,9 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "nis" = (
 /obj/effect/floor_decal/borderfloor,
@@ -35677,7 +35725,9 @@
 "nsv" = (
 /obj/structure/table/standard,
 /obj/random/toolbox,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "ntU" = (
 /obj/structure/sign/atmos_air{
@@ -35800,7 +35850,9 @@
 "nER" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/light,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "nGS" = (
 /obj/effect/floor_decal/borderfloor{
@@ -36009,7 +36061,9 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "oli" = (
 /obj/machinery/light,
@@ -36435,6 +36489,15 @@
 "pNR" = (
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/tunnel)
+"pQk" = (
+/obj/structure/cable/orange{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/media/jukebox,
+/turf/simulated/floor/wood,
+/area/crew_quarters/visitor_dining)
 "pUI" = (
 /obj/structure/railing{
 	dir = 1
@@ -36664,7 +36727,9 @@
 	name = "Construction Tram Airlock";
 	req_access = newlist()
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "qqL" = (
 /obj/random/trash,
@@ -36853,7 +36918,9 @@
 	info = "I am being laid off tomorrow, nine months on this tram line to no-where and after all that its only half done. Colony is out of money they say. BULLSHIT! I have been staring at that forsaken space elevator for the better part of a year, watching them embezzel all their cash into it, Ten Thousand Thalers for a Couch? More like ten thousand for the Colony Director's Martian Hedge Fund. Bullshit! This entire colony is one big scam. If anyone finds this note, tell those bigwigs up in colony command that Thomas the Engineer, gives them a middle finger.";
 	name = "dusty note"
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "qPR" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
@@ -37133,7 +37200,9 @@
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /obj/random/junk,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "rDs" = (
 /obj/machinery/light/small/emergency{
@@ -37188,7 +37257,9 @@
 /area/tether/surfacebase/funny/mimeoffice)
 "rJi" = (
 /obj/structure/bed/chair/office/dark,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "rJv" = (
 /turf/simulated/floor/plating,
@@ -37681,7 +37752,9 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner2{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "tvk" = (
 /obj/structure/cable{
@@ -37756,7 +37829,9 @@
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
 /obj/random/junk,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "tCV" = (
 /obj/structure/catwalk,
@@ -37802,7 +37877,9 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "tLx" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -38041,7 +38118,9 @@
 	name = "Tram Shutters Control";
 	pixel_x = -32
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "uiK" = (
 /turf/simulated/wall,
@@ -38146,7 +38225,9 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "uDy" = (
 /obj/machinery/light/spot{
@@ -38274,7 +38355,9 @@
 /area/maintenance/lower/mining_eva)
 "uIQ" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "uKS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -38340,7 +38423,9 @@
 	dir = 6
 	},
 /obj/random/trash,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "vfy" = (
 /obj/effect/floor_decal/borderfloor{
@@ -38370,7 +38455,9 @@
 "vhH" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/random/junk,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "vhI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -38477,7 +38564,9 @@
 	dir = 1
 	},
 /obj/random/junk,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "vCb" = (
 /obj/machinery/portable_atmospherics/powered/pump/filled,
@@ -38543,7 +38632,9 @@
 	dir = 8
 	},
 /obj/random/tool,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "vHE" = (
 /obj/structure/closet{
@@ -38585,7 +38676,9 @@
 /obj/machinery/computer{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "vNb" = (
 /obj/effect/floor_decal/rust,
@@ -38674,6 +38767,20 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/brig)
+"wjD" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals7,
+/obj/effect/floor_decal/steeldecal/steel_decals7{
+	dir = 4
+	},
+/obj/machinery/computer/timeclock/premade/north,
+/turf/simulated/floor/tiled,
+/area/tether/surfacebase/lowernorthhall)
 "wnS" = (
 /obj/machinery/computer{
 	dir = 1
@@ -38684,7 +38791,9 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "wpZ" = (
 /obj/machinery/door/airlock/glass_security{
@@ -38754,7 +38863,9 @@
 /obj/effect/floor_decal/corner/yellow/border,
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/yellow/bordercorner2,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "wvV" = (
 /obj/structure/cable{
@@ -39068,7 +39179,9 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "xnn" = (
 /obj/machinery/holoposter,
@@ -39275,7 +39388,9 @@
 /area/tether/surfacebase/security/lowerhall)
 "xWh" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "xYx" = (
 /obj/structure/table/steel,
@@ -39320,7 +39435,9 @@
 	dir = 5
 	},
 /obj/structure/closet/wardrobe/engineering_yellow,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "xZZ" = (
 /turf/simulated/mineral/virgo3b,
@@ -39367,7 +39484,9 @@
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
 /obj/item/stack/cable_coil/random,
-/turf/simulated/floor/tiled/steel_dirty/virgo3b,
+/turf/simulated/floor/tiled/steel_dirty/virgo3b{
+	outdoors = 0
+	},
 /area/tether/surfacebase/old_tram)
 "yey" = (
 /obj/structure/sink{
@@ -50954,7 +51073,7 @@ aAI
 aAI
 aAI
 aef
-aeS
+wjD
 afO
 aBC
 aCr
@@ -54699,7 +54818,7 @@ aHI
 aIt
 aJn
 aJV
-kxU
+pQk
 aLj
 aLU
 aMF

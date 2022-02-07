@@ -16,6 +16,8 @@
 	icon_state = "wolf"
 	icon = 'icons/mob/vore.dmi'
 
+	randomized = TRUE
+
 	movement_cooldown = 5
 
 	harm_intent_damage = 5

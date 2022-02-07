@@ -18,7 +18,8 @@
 					"L3P1-D0T" = "Glitterfly-Standard",
 					"Convict" = "servitor",
 					"Miss M" = "miss-standard",
-					"Coffin" = "coffin-Standard"
+					"Coffin" = "coffin-Standard",
+					"X-88" = "xeightyeight-standard"
 
 					)
 

@@ -319,6 +319,15 @@ obj/item/clothing/suit/kamishimo
 	item_state_slots = list(slot_r_hand_str = "leather_jacket", slot_l_hand_str = "leather_jacket")
 	flags_inv = HIDEHOLSTER
 
+/obj/item/clothing/suit/overcoat
+	name = "leather overcoat"
+	desc = "A fashionable leather overcoat."
+	icon_state = "leathercoat"
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_inv = HIDEHOLSTER
+
 /obj/item/clothing/suit/browncoat
 	name = "brown leather coat"
 	desc = "A long, brown leather coat."
@@ -1088,3 +1097,33 @@ obj/item/clothing/suit/kamishimo
 	name = "Colonial Red Coat"
 	desc = "A thick cotton long coat, adorned with antique buttons. Dyed a brilliant red, it's hard not to be seen in this."
 	icon_state = "pineapple_trench"
+
+/obj/item/clothing/suit/samurai_replica
+	name = "replica karuta-gane"
+	desc = "An utterly ancient suit of Earth armor, reverently maintained and restored over the years. This appears less sturdy than the authentic article."
+	icon_state = "samurai_colorable"
+	item_state_slots = list(slot_r_hand_str = "leather_coat", slot_l_hand_str = "leather_coat")
+	w_class = ITEMSIZE_LARGE
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	flags_inv = HIDETIE|HIDEHOLSTER
+
+/obj/item/clothing/suit/laconic
+	name = "laconic field coat"
+	desc = "A hardy coat designed to protect its wearer as much in the lab as on an expedition."
+	icon_state = "laconic"
+	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
+	body_parts_covered = UPPER_TORSO|ARMS
+	valid_accessory_slots = ACCESSORY_SLOT_UTILITY
+
+/obj/item/clothing/suit/imperial_replica
+	name = "replica imperial soldier armor"
+	desc = "Made out of an especially light metal, it lets you conquer in style. This appears less sturdy than the authentic article."
+	icon_state = "ge_armor"
+	icon = 'icons/obj/clothing/suits_vr.dmi'
+	icon_override = 'icons/mob/suit_vr.dmi'
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/suit/imperial/officer_replica
+	name = "replica imperial officer armor"
+	desc = "Not all heroes wear capes, but it'd be cooler if they did. This appears less sturdy than the authentic article."
+	icon_state = "ge_armorcent"

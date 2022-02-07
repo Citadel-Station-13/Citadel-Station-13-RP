@@ -185,6 +185,15 @@
 	if(prob(5))
 		M.vomit()
 
+/datum/reagent/toxin/mold/miasma
+	name = "Miasma"
+	id = "miasma"
+	description = "A toxic cloud of decay, caused by the rotting of corpses."
+	taste_description = "rot and decay"
+	reagent_state = REAGENT_GAS
+	color = "#006000"
+	strength = 10
+
 /datum/reagent/toxin/expired_medicine
 	name = "Expired Medicine"
 	id = "expired_medicine"

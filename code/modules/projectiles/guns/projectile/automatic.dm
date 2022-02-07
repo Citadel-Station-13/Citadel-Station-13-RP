@@ -342,6 +342,21 @@
 	else
 		icon_state = "mini-uzi-custom-empty"
 
+/obj/item/gun/projectile/automatic/mini_uzi/taj
+	name = "\improper Adhomai Uzi"
+	desc = "The Hotak's Arms machine pistol has developed a fierce reputation for its use by guerillas of the Democratic People's Republic of Adhomai. Its top loading magazine allows one to go completely prone in the deep snow banks of Adhomai while maintaining good weapon stability."
+	icon_state = "mini-uzi-taj"
+	item_state = "mini-uzi-taj"
+
+/obj/item/gun/projectile/automatic/mini_uzi/taj/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "mini-uzi-taj"
+		item_state = "mini-uzi-taj"
+	else
+		icon_state = "mini-uzi-taj-empty"
+		item_state = "mini-uzi-taj-empty"
+
 /obj/item/gun/projectile/automatic/p90
 	name = "personal defense weapon"
 	desc = "The H90K is a compact, large capacity submachine gun produced by Hephaestus Industries. Despite its fierce reputation, it still manages to feel like a toy. Uses 9mm rounds."
@@ -482,6 +497,14 @@ obj/item/gun/projectile/automatic/automat/holy
 	ammo_type = /obj/item/ammo_casing/a762/silver
 	holy = TRUE
 
+obj/item/gun/projectile/automatic/automat/taj
+	name = "Adhomai automat"
+	desc = "The Hadii-Wrack Avtomat, is an aging internal magazine automatic rifle of the People's Republic of Adhomai's Grand People's Army whose long and storied service life is coming to an end as it is phased out in favor of more modern automatics."
+	icon_state = "automat-taj"
+	item_state = "automat-taj"
+	wielded_item_state = "automat-taj-wielded"
+	fire_anim = ""
+
 /obj/item/gun/projectile/automatic/holyshot
 	name = "Holy automatic shotgun"
 	desc = "Based off of an ancient design, this hand crafted weapon has been gilded with the gold of melted icons and inscribed with sacred runes and hexagrammic wards. Works best with blessed 12g rounds."
@@ -511,3 +534,35 @@ obj/item/gun/projectile/automatic/automat/holy
 	else
 		icon_state = "holyshotgun_empty"
 	return
+
+//Clown Rifle
+/obj/item/gun/projectile/automatic/clown_rifle
+	name = "clown assault rifle"
+	desc = "The WSS-29m6 is the latest version of the standard Columbina service rifle. Originally a cheap knock-off of the STS-35, the m6 now matches its inspiration in durability. Utilizing a proprietary ROF system, the m6 is able to fire unorthodox, yet effective, weaponry."
+	icon_state = "clownrifle"
+	item_state = "clownrifle"
+	wielded_item_state = "clownrifle_wielded"
+	w_class = ITEMSIZE_LARGE
+	force = 10
+	caliber = "organic"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 4)
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/mcompressedbio/large/banana
+	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/large/banana)
+	projectile_type = /obj/item/projectile/bullet/organic
+
+	one_handed_penalty = 30
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=6,    burst_accuracy=list(60,50,45), dispersion=list(0.0, 0.6, 0.6))
+//		list(mode_name="short bursts", 	burst=5, fire_delay=null, move_delay=6,    burst_accuracy=list(0,-15,-30,-30,-45), dispersion=list(0.6, 1.0, 1.0, 1.0, 1.2)),
+		)
+
+/obj/item/gun/projectile/automatic/clown_rifle/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-empty"

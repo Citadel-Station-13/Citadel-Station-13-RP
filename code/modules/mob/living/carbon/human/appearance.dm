@@ -64,6 +64,21 @@
 	update_hair()
 	return 1
 
+/mob/living/carbon/human/proc/change_wing_gradient(var/wing_gradient)
+	if(!wing_gradient)
+		return
+
+	if(grad_wingstyle == wing_gradient)
+		return
+
+	if(!(wing_gradient in GLOB.hair_gradients))
+		return
+
+	grad_wingstyle = wing_gradient
+
+	update_wing_showing()
+	return 1
+
 /mob/living/carbon/human/proc/change_facial_hair(var/facial_hair_style)
 	if(!facial_hair_style)
 		return

@@ -14,6 +14,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/invasive_fish)
 
 	mob_size = MOB_SMALL
+	randomized = TRUE
 	// So fish are actually underwater.
 	plane = TURF_PLANE
 	layer = UNDERWATER_LAYER

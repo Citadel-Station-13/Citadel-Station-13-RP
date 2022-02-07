@@ -544,3 +544,4 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+5)
 			index = findtext(t, char)
 	return t
+

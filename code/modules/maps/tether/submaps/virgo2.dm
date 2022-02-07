@@ -156,3 +156,9 @@
 	desc = "An old, bloody butcher's shack. Get your meat here!"
 	suffix = "butchershack.dmm"
 	cost = 5
+
+/datum/map_template/submap/level_specific/virgo2/CrashedSmuggler
+	name = "Crashed Smuggler Shuttle"
+	desc = "This vessel's idenfiticaton data has been scrubbed, and its tracker is disabled. It's impossible to tell what happened here."
+	suffix = "CrashedSmuggler.dmm"
+	cost = 20

@@ -21,6 +21,7 @@
 
 	maxHealth = 20
 	health = 20
+	randomized = TRUE
 
 	attacktext = list("bites")
 	attack_sound = 'sound/weapons/bite.ogg'

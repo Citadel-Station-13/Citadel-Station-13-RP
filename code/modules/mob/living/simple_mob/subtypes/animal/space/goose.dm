@@ -18,6 +18,7 @@
 
 	maxHealth = 30
 	health = 30
+	randomized = TRUE
 
 	response_help = "pets the"
 	response_disarm = "gently pushes aside the"

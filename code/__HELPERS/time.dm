@@ -96,6 +96,20 @@ var/last_round_duration = 0
 		return midnight_rollovers++
 	return midnight_rollovers
 
+/proc/weekdayofthemonth()
+	var/DD = text2num(time2text(world.timeofday, "DD")) 	// get the current day
+	switch(DD)
+		if(8 to 13)
+			return 2
+		if(14 to 20)
+			return 3
+		if(21 to 27)
+			return 4
+		if(28 to INFINITY)
+			return 5
+		else
+			return 1
+
 //Takes a value of time in deciseconds.
 //Returns a text value of that number in hours, minutes, or seconds.
 /proc/DisplayTimeText(time_value, round_seconds_to = 0.1)

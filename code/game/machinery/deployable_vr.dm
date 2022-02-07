@@ -36,7 +36,7 @@
 		return
 	toppled = TRUE
 	icon_state = "cutout_pushed_over"
-	density = 0
+	density = 0	
 	name = initial(name)
 	desc = initial(desc)
 	visible_message("<span class='warning'>[src] topples over!</span>")
@@ -163,6 +163,8 @@
 	human_name = FALSE
 	fake_name = "Beepsky"
 	construct_name = "lawful robot"
+
+
 
 /obj/random/cutout //Random wooden standup figure
 	name = "random wooden figure"

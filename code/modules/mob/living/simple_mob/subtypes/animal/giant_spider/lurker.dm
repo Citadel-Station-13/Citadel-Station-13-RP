@@ -54,6 +54,9 @@
 	var/stealth_cooldown = 10 SECONDS	// Amount of time needed to re-stealth after losing it.
 	var/last_unstealth = 0			// world.time
 
+	mod_min = 70
+	mod_max = 110
+
 
 /mob/living/simple_mob/animal/giant_spider/lurker/proc/stealth()
 	if(stealthed)

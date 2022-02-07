@@ -935,7 +935,7 @@
 	icon = 'icons/turf/flooring/eris/plating.dmi'
 	descriptor = "support beams"
 	icon_base = "under"
-	flags = TURF_HAS_CORNERS | TURF_HAS_EDGES | TURF_CAN_BURN | TURF_CAN_BREAK
+	flags = TURF_HAS_CORNERS | TURF_HAS_EDGES | TURF_CAN_BURN | TURF_CAN_BREAK | TURF_REMOVE_SCREWDRIVER
 	has_base_range = 0
 	is_plating = TRUE
 

@@ -60,6 +60,15 @@
 			user.drop_from_inventory(src)
 			forceMove(MT)
 			MT.imp = src
+		else
+			if(istype(I, /obj/item/dogborg/mirrortool))
+				var/obj/item/dogborg/mirrortool/MT = I
+				if(MT.imp)
+					to_chat(usr, "The mirror tool already contains a mirror.")
+					return // It's full.
+				user.drop_from_inventory(src)
+				forceMove(MT)
+				MT.imp = src
 
 
 /obj/item/implant/mirror/positronic

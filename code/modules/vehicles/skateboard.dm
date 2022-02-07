@@ -206,6 +206,13 @@
 	icon_state = "skateboard"
 	board_icon = "skateboard"
 
+/obj/vehicle/skateboard/beginner
+	name = "skateboard"
+	desc = "A XTREME SPORTZ brand skateboard for beginners. Ages 8 and up."
+	board_item_type = /obj/item/melee/skateboard/beginner
+	icon_state = "skateboard"
+	board_icon = "skateboard"
+
 /obj/vehicle/skateboard/pro
 	name = "skateboard"
 	desc = "A RaDSTORMz brand professional skateboard. Looks a lot more stable than the average board."

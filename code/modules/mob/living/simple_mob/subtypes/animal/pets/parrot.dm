@@ -16,6 +16,8 @@
 	has_langs = list("Galactic Common", "Bird")
 	catalogue_data = list(/datum/category_item/catalogue/fauna/parrot)
 
+	randomized = TRUE
+
 	ai_holder_type = /datum/ai_holder/simple_mob/passive/parrot
 
 	// A headset, so that talking parrots can yell at the crew over comms.
@@ -122,6 +124,7 @@
 	tt_desc = "E Ara macao"
 	my_headset = /obj/item/radio/headset/headset_eng
 	say_list_type = /datum/say_list/bird/polly
+	randomized = FALSE
 
 // Best Bird with best headset.
 /mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate

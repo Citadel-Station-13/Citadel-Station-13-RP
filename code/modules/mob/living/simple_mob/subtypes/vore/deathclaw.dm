@@ -10,7 +10,7 @@
 	desc = "Big! Big! The size of three men! Claws as long as my forearm! Ripped apart! Ripped apart!"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/deathclaw)
 
-	icon_dead = "deathclaw-dead"
+	icon_dead = "deathclaw_dead"
 	icon_living = "deathclaw"
 	icon_state = "deathclaw"
 	icon = 'icons/mob/64x64.dmi'
@@ -37,6 +37,10 @@
 	buckle_lying = FALSE
 	mount_offset_x = 5
 	mount_offset_y = 30
+
+	randomized = TRUE
+	mod_min = 90
+	mod_max = 140
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/deathclaw
 

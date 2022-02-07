@@ -12,7 +12,8 @@
 					"Handy" = "handy-science",
 					"Insekt" = "insekt-Sci",
 					"L3P1-D0T" = "Glitterfly-Research",
-					"Coffsearch" = "coffin-Research"
+					"Coffsearch" = "coffin-Research",
+					"X-88" = "xeightyeight-science"
 
 					)
 
@@ -79,25 +80,33 @@
 /obj/item/robot_module/robot/science/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
+	src.modules += new /obj/item/portable_destructive_analyzer(src)
 	src.modules += new /obj/item/dogborg/jaws/small(src)
 	src.modules += new /obj/item/dogborg/boop_module(src)
 	src.modules += new /obj/item/gripper/research(src)
+	src.modules += new /obj/item/gripper/circuit(src)
 	src.modules += new /obj/item/gripper/no_use/organ/robotics(src)
 	src.modules += new /obj/item/gripper/no_use/mech(src)
 	src.modules += new /obj/item/gripper/no_use/loader(src)
 	src.modules += new /obj/item/tool/screwdriver/cyborg(src)
 	src.modules += new /obj/item/tool/wrench/cyborg(src)
 	src.modules += new /obj/item/robotanalyzer(src)
-	src.modules += new /obj/item/stack/cable_coil/cyborg(src)
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
 	src.modules += new /obj/item/multitool(src)
 	src.modules += new /obj/item/reagent_containers/glass/beaker/large(src)
+	src.modules += new /obj/item/reagent_containers/syringe(src)
 	src.modules += new /obj/item/storage/part_replacer(src)
 	src.modules += new /obj/item/card/robot(src)
 	src.modules += new /obj/item/shockpaddles/robot/jumper(src)
 	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
+	src.modules += new /obj/item/melee/baton/slime/robot(src)
+	src.modules += new /obj/item/gun/energy/taser/xeno/robot(src)
+	src.modules += new /obj/item/surgical/scalpel/cyborg(src)
+	src.modules += new /obj/item/surgical/circular_saw/cyborg(src)
 	src.emag = new /obj/item/hand_tele(src)
-	src.modules += new /obj/item/dogborg/jaws/small(src)
+
+	var/datum/matter_synth/nanite = new /datum/matter_synth/nanite(10000)
+	synths += nanite
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
 	water.name = "Water reserves"
@@ -107,6 +116,12 @@
 
 	var/datum/matter_synth/wire = new /datum/matter_synth/wire()
 	synths += wire
+
+	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
+	N.uses_charge = 1
+	N.charge_costs = list(1000)
+	N.synths = list(nanite)
+	src.modules += N
 
 	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
 	T.water = water
@@ -132,4 +147,4 @@
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
-	..()
+

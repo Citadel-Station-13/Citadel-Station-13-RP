@@ -224,6 +224,10 @@
 
 		// Technically custom_species is not part of the UI, but this place avoids merge problems.
 		H.custom_species = dna.custom_species
+		H.custom_say = dna.custom_say
+		H.custom_ask = dna.custom_ask
+		H.custom_whisper = dna.custom_whisper
+		H.custom_exclaim = dna.custom_exclaim
 		if(istype(H.species,/datum/species/custom))
 			var/datum/species/custom/CS = H.species
 			var/datum/species/custom/new_CS = CS.produceCopy(dna.base_species,dna.species_traits,src)

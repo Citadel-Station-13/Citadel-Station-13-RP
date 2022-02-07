@@ -49,6 +49,11 @@
 	var/b_tail2 = 30
 
 	var/datum/sprite_accessory/wing/wing_style = null
+	var/r_gradwing = 0
+	var/g_gradwing = 0
+	var/b_gradwing = 0
+	var/grad_wingstyle = "None"
+
 	var/r_wing = 30
 	var/g_wing = 30
 	var/b_wing = 30

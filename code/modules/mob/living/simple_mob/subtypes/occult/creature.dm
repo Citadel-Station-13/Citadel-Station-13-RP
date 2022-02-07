@@ -19,6 +19,9 @@
 
 	maxHealth = 40
 	health = 40
+	randomized = TRUE
+	mod_min = 80
+	mod_max = 130
 
 	harm_intent_damage = 8
 

@@ -239,6 +239,11 @@ var/list/flooring_types
 	icon_base = "tealcarpet"
 	build_type = /obj/item/stack/tile/carpet/teal
 
+/decl/flooring/carpet/arcadecarpet
+	name = "arcade carpet"
+	icon_base = "arcade"
+	build_type = /obj/item/stack/tile/carpet/arcadecarpet
+
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
@@ -381,6 +386,94 @@ var/list/flooring_types
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_base = "darkmarble"
 	build_type = /obj/item/stack/tile/bmarble
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/bananium
+	name = "bananium floor"
+	desc = "Have you ever seen a clown frown?"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "bananium"
+	build_type = /obj/item/stack/tile/bananium
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/silencium
+	name = "silencium floor"
+	desc = "Surprisingly, doesn't mask your footsteps."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "silencium"
+	build_type = /obj/item/stack/tile/silencium
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/silencium
+	name = "silencium floor"
+	desc = "Surprisingly, doesn't mask your footsteps."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "silencium"
+	build_type = /obj/item/stack/tile/silencium
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/plasteel
+	name = "plasteel floor"
+	desc = "Sturdy metal flooring. Almost certainly a waste."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "plasteel"
+	build_type = /obj/item/stack/tile/plasteel
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/durasteel
+	name = "durasteel floor"
+	desc = "Incredibly sturdy metal flooring. Definitely a waste."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "durasteel"
+	build_type = /obj/item/stack/tile/durasteel
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/silver
+	name = "silver floor"
+	desc = "This opulent flooring reminds you of the ocean. Almost certainly a waste."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "silver"
+	build_type = /obj/item/stack/tile/silver
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/gold
+	name = "gold floor"
+	desc = "This richly tooled flooring makes you feel powerful."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "gold"
+	build_type = /obj/item/stack/tile/gold
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/phoron
+	name = "phoron floor"
+	desc = "Although stable for now, this solid phoron flooring radiates danger."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "phoron"
+	build_type = /obj/item/stack/tile/phoron
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/uranium
+	name = "uranium floor"
+	desc = "This flooring literally radiates danger."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "uranium"
+	build_type = /obj/item/stack/tile/uranium
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/diamond
+	name = "diamond floor"
+	desc = "This flooring proves that you are a king among peasants. It's virtually impossible to scuff."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "diamond"
+	build_type = /obj/item/stack/tile/diamond
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/brass
+	name = "brass floor"
+	desc = "There's something strange about this tile. If you listen closely, it sounds like it's ticking."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "clockwork_floor"
+	build_type = /obj/item/stack/tile/brass
 	flags = TURF_REMOVE_CROWBAR
 
 /decl/flooring/wood

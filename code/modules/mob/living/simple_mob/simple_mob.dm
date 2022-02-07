@@ -155,9 +155,28 @@
 	// contained in a cage
 	var/in_stasis = 0
 
+	//Randomization code base
+	var/mod_min = 70
+	var/mod_max = 130
+	var/randomized = FALSE
+
+//randomization code.
+/mob/living/simple_mob/proc/randomize()
+	if(randomized == TRUE)
+		var/mod = rand(mod_min,mod_max)/100
+		size_multiplier = mod
+		maxHealth = round(maxHealth*mod)
+		health = round(health*mod)
+		melee_damage_lower = round(melee_damage_lower*mod)
+		melee_damage_upper = round(melee_damage_upper*mod)
+		movement_cooldown = round(movement_cooldown*mod)
+		meat_amount = round(meat_amount*mod)
+		update_icons()
+
 /mob/living/simple_mob/Initialize(mapload)
 	verbs -= /mob/verb/observe
 	health = maxHealth
+	randomize()
 
 	for(var/L in has_langs)
 		languages |= GLOB.all_languages[L]

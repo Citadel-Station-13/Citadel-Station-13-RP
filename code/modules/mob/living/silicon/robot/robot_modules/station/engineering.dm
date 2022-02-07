@@ -23,7 +23,8 @@
 					"L3P1-D0T" = "Glitterfly-Engineering",
 					"Miss M" = "miss-engineer",
 					"Coffstruction" = "coffin-Construction",
-					"Coffgineer" = "coffin-Engineering"
+					"Coffgineer" = "coffin-Engineering",
+					"X-88" = "xeightyeight-engineering"
 
 					)
 
@@ -184,10 +185,11 @@
 	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
 	src.modules += new /obj/item/multitool(src)
 	src.modules += new /obj/item/t_scanner(src)
+	src.modules += new /obj/item/rcd/electric/mounted/borg(src)
 	src.modules += new /obj/item/analyzer(src)
 	src.modules += new /obj/item/barrier_tape_roll/engineering(src)
 	src.modules += new /obj/item/inflatable_dispenser/robot(src)
-	src.modules += new /obj/item/pickaxe(src)
+	src.modules += new /obj/item/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/dogborg/jaws/small(src)
 	src.modules += new /obj/item/dogborg/boop_module(src)
 	src.modules += new /obj/item/geiger(src)
@@ -298,4 +300,5 @@
 		sprites += "Alina"
 		sprites["Alina"] = "alina-eng"
 
-	..()
+
+

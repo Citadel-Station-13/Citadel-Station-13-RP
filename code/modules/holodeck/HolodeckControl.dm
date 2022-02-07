@@ -30,6 +30,7 @@
 	"Basketball" 		= new/datum/holodeck_program(/area/holodeck/source_basketball),
 	"Thunderdome"		= new/datum/holodeck_program(/area/holodeck/source_thunderdomecourt, list('sound/music/THUNDERDOME.ogg')),
 	"Beach" 			= new/datum/holodeck_program(/area/holodeck/source_beach),
+	"Chess Board" 		= new/datum/holodeck_program(/area/holodeck/source_chess),
 	"Desert" 			= new/datum/holodeck_program(/area/holodeck/source_desert,
 													list(
 														'sound/effects/weather/wind/wind_2_1.ogg',

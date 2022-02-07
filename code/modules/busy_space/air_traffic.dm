@@ -39,7 +39,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	// 450 was the original time. Reducing to 300 due to lower init times on the server. If this is a problem, revert back to 450 as we had no ATC issues with that time.
 	spawn(300 SECONDS) //Lots of lag at the start of a shift. Yes, the following lines *have* to be indented or they're not delayed by the spawn properly.
 		/// HEY! if we have listiners for ssticker go use that instead of this snowflake.
-		msg("Crew transfer complete for all vessels. As a reminder, this shift's fleet frequencies are as follows for this shift: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
+		msg("Crew transfer complete. This shift's frequencies are as follows: Emergency Responders: [ertchannel]. Medical: [medchannel]. Engineering: [engchannel]. Security: [secchannel]. System Defense: [sdfchannel].")
 		next_message = world.time + initial_delay
 		START_PROCESSING(SSobj, src)
 
@@ -77,14 +77,16 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	// OKAY what's happening here is a lot less agony inducing than it might seem. All that's happening here is a weighted RNG choice between the listed options in a variable.
 	// The first, [1], is for NanoTrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
 	// ALL the companies and items this list pulls from can be found in the organizations.dm file in this same folder (busy_space).
-	var/datum/lore/organization/source = GLOB.loremaster.organizations[pickweight(list(GLOB.loremaster.organizations[1]=90,pick(GLOB.loremaster.organizations)=20))]
+	// I'm restoring this to unweighted: with further local tests NT is still *outrageously* common, far more common than the weighting implies
+	// With a small list of ship names/identifiers, this can lead to situations like seemingly-identical ships landing multiple times without taking off again.
+	var/datum/lore/organization/source = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
 
-		/// repurposed for new fun stuff
+	/// repurposed for new fun stuff
 	var/datum/lore/organization/secondary = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
 
 	//Let's get some mission parameters, pick our first ship
-	/// get the name
-	var/source_name = source.name
+	/// get the name - don't need to for now! uncommented to avoid compile warnings.
+	//var/source_name = source.name
 
 	/// Use the short name
 	var/source_owner = source.short_name
@@ -101,17 +103,11 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	/// Destination is where?
 	var/source_destname = pick(source.destination_names)
 
-	/// do we fully observe system law (or are we otherwise favored by the system owners, i.e. NT)?
-	var/source_law_abiding = source.lawful
+	/// Which faction class do we belong to?
+	var/source_org_type = source.org_type
 
-	/// or are we part of a pirate group
-	var/source_law_breaker = source.hostile
-
-	/// are we actually system law/SDF? unlocks the SDF-specific events
-	var/source_system_defense = source.sysdef
-
-	/// Are we part of the fleet?
-	var/source_fleet = source.fleet
+	/// Are we part of the fleet? Not needed whilst fleet events are disabled
+	// var/source_fleet = source.fleet
 
 	/////////////
 
@@ -124,18 +120,12 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	/// Pick a random ship name
 	var/secondary_shipname = pick(secondary.ship_names)
 
-	/// Law abiding?
-	var/secondary_law_abiding = secondary.lawful
-
-	/// Part of the syndicats?
-	var/secondary_law_breaker = secondary.hostile
-
-	/// mostly here as a secondary check to ensure SDF don't interrogate other SDF
-	var/secondary_system_defense = secondary.sysdef
+	/// Which faction class do we belong to?
+	var/secondary_org_type = secondary.org_type
 
 	/// Is this ship part of the fleet too?
 	// Not set up yet. Leaving commented out until then.
-	//var/secdonary_fleet = secondary.fleet
+	//var/secondary_fleet = secondary.fleet
 
 	var/combined_first_name = "[source_owner][source_prefix] |[source_shipname]|"
 	var/combined_second_name = "[secondary_owner][secondary_prefix] |[secondary_shipname]|"
@@ -147,14 +137,14 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	if(source.complex_tasks)
 		mission_noun = "[pick(source.task_types)] [pick(source.flight_types)]"
 
-	//First response is 'yes', second is 'no'
+	//First response is 'yes', second is 'no', we need both or this falls over
 	var/list/requests = list(
 		"special flight rules" = list("authorizing special flight rules", "denying special flight rules, not allowed for your traffic class"),
 		"current solar weather info" = list("sending you the relevant information via tightbeam", "your request has been queued, stand by"),
 		"aerospace priority" = list("affirmative, aerospace priority is yours", "negative, another vessel has priority right now"),
 		"system traffic info" = list("sending you current traffic info", "request queued, please hold"),
 		"refueling information" = list("sending refueling information now", "depots currently experiencing fuel shortages, advise you move on"),
-		"a current system time sync" = list("sending time sync ping to you now"),
+		"a current system time sync" = list("sending time sync ping to you now", "your ship isn't compatible with our time sync, set time manually"),
 		"current system starcharts" = list("transmitting current starcharts", "your request is queued, overloaded right now")
 	)
 
@@ -162,57 +152,56 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/chatter_type = "normal"
 	if(force_chatter_type)
 		chatter_type = force_chatter_type
-	//I have to offload this from the chatter_type switch below and do it here. Byond should throw a shitfit because this isn't how you use pick.
+	//I have to offload this from the chatter_type switch below and do it here.
+	/*
 	else if(source_law_abiding && source_fleet)
 		chatter_type = pickweight(list("fleettraffic" = 90, "emerg" = 10, "dockingrequestgeneric" = 10,"dockingrequestsupply" = 10,
 		"dockingrequestrepair" = 10,"undockingrequest" = 5, "normal"))
+	*/
 
-	else if(source_law_abiding && !source_system_defense)
+	//RIP MBT. this might make travel advisories a little more common, but probably not significantly so given the odds involved
+	else if(source_org_type == "retired" || secondary_org_type == "retired")
+		chatter_type = "traveladvisory"
+		
+	//this is ugly but when I tried to use (not-smuggler-or-not-pirate)-and-pirate it tripped a pirate-v-pirate skirmish, still not sure why even after doublechecking all the orgtypes and the logic itself. might as well stick it up here so it takes priority over other combos.
+	else if((source_org_type == "government" || source_org_type == "neutral" || source_org_type == "military" || source_org_type == "corporate" || source_org_type == "system defense") && secondary_org_type == "pirate")
+		chatter_type = "distress"
+
+	//this can probably just be retired in favour of the final 'else' block below at this point? not sure.
+	else if((source_org_type == "government" || source_org_type == "neutral" || source_org_type == "military" || source_org_type == "corporate"))
 		chatter_type = pickweight(list("emerg" = 5, "policescan" = 25, "traveladvisory" = 25,
-		"pathwarning" = 30, "dockingrequestgeneric" = 30, "dockingrequestdenied" = 30,
-		"dockingrequestdelayed" = 30, "dockingrequestsupply" = 30, "dockingrequestrepair" = 30,
-		"dockingrequestmedical" = 30, "dockingrequestsecurity" = 30, "undockingrequest" = 30,
-		"undockingdenied" = 30, "undockingdelayed" = 30, "normal"))
+		"pathwarning" = 30, "docking_request_chain" = 150, "undocking_request_chain" = 120,
+		"normal"))
 
 	//The following filters *always* fire their 'unique' event when they're tripped, simply because the conditions behind them are quite rare to begin with
-	//just straight up funnel smugglers into always being caught, otherwise we get them asking for traffic info and stuff
-	else if(source_name == "Smugglers" && !secondary_system_defense)
+	//just straight up funnel smugglers into always being caught, otherwise we get them asking for traffic info and stuff. if their disguises work then nobody is any the wiser.
+	else if(source_org_type == "smugglers" && secondary_org_type != "system defense")
 		chatter_type = "policeflee"
 
 	//ditto, if an SDF ship catches them
-	else if(source_name == "Smugglers" && secondary_system_defense)
+	else if(source_org_type == "smugglers" && secondary_org_type == "system defense")
 		chatter_type = "policeshipflee"
 
-	else if(source_law_abiding && secondary_law_breaker) //on the offchance that we manage to roll a goodguy and a badguy, run a new distress event - it's like emerg but better
-		chatter_type = "distress"
-
-	else if(source_law_breaker && secondary_system_defense) //if we roll this combo instead, time for the SDF to do their fucking job
+	else if(source_org_type == "pirate" && secondary_org_type == "system defense") //if we roll this combo instead, time for the SDF to do their fucking job
 		chatter_type = "policeshipcombat"
 
-	else if(source_law_breaker && !secondary_system_defense) //but if we roll THIS combo, time to alert the SDF to get off their asses
+	else if(source_org_type == "pirate" && secondary_org_type != "system defense") //but if we roll THIS combo, time to alert the SDF to get off their asses
 		chatter_type = "hostiledetected"
 
 	//SDF-specific events that need to filter based on the second party (basically just the following SDF-unique list with the soft-result ship scan thrown in)
-	else if(source_system_defense && secondary_law_abiding && !secondary_system_defense) //let's see if we can narrow this down, I didn't see many ship-to-ship scans
-		chatter_type = pickweight(list("policeshipscan" = 45, "sdfpatrolupdate", "sdfendingpatrol" = 75,
-		"dockingrequestgeneric" = 30, "dockingrequestdelayed" = 30, "dockingrequestsupply" = 30,
-		"dockingrequestrepair" = 30, "dockingrequestmedical" = 30, "dockingrequestsecurity" = 30,
-		"undockingrequest" = 20, "sdfbeginpatrol" = 75, "normal"))
+	else if(source_org_type == "system defense" && (secondary_org_type == "government" || secondary_org_type == "neutral" || secondary_org_type == "military" || secondary_org_type == "corporate")) //let's see if we can narrow this down, I didn't see many ship-to-ship scans
+		chatter_type = pickweight(list("policeshipscan" = 45, "sdfpatrolupdate", 
+		"docking_request_chain" = 200, "undocking_request_chain" = 80, "normal"))
 
 	//SDF-specific events that don't require the secondary at all, in the event that we manage to roll SDF + hostile/smuggler or something
-	else if(source_system_defense)
-		chatter_type = pickweight(list("sdfpatrolupdate", "sdfendingpatrol" = 60, "dockingrequestgeneric" = 30,
-		"dockingrequestdelayed" = 30, "dockingrequestsupply" = 30, "dockingrequestrepair" = 30,
-		"dockingrequestmedical" = 30, "dockingrequestsecurity" = 30, "undockingrequest" = 20,
-		"sdfbeginpatrol" = 80, "normal"))
+	else if(source_org_type == "system defense")
+		chatter_type = pickweight(list("sdfpatrolupdate", "docking_request_chain" = 60, "undocking_request_chain" = 60, "normal"))
 
 	//if we somehow don't match any of the other existing filters once we've run through all of them
 	else
 		chatter_type = pickweight(list("emerg" = 10, "policescan" = 25, "traveladvisory" = 25,
-		"pathwarning" = 30, "dockingrequestgeneric" = 30, "dockingrequestdelayed" = 30,
-		"dockingrequestdenied" = 30, "dockingrequestsupply" = 30, "dockingrequestrepair" = 30,
-		"dockingrequestmedical" = 30, "dockingrequestsecurity" = 30, "undockingrequest" = 30,
-		"undockingdenied" = 30, "undockingdelayed" = 30,"normal"))
+		"pathwarning" = 30, "docking_request_chain" = 150, "undocking_request_chain" = 120,
+		"normal"))
 
 	//I probably should do some kind of pass here to work through all the possible combinations of major factors and see if the filtering list needs reordering or modifying, but I really can't be arsed
 
@@ -221,7 +210,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/request = pick(requests)
 	var/callname = pick(alt_atc_names)
 	var/response = requests[request][yes ? 1 : 2] //1 is yes, 2 is no
-	var/number = rand(1,15)
+	var/number = rand(1,42)
 	var/zone = pick("Alpha", "Beta", "Gamma", "Delta", "Epsilon", "Zeta", "Eta",
 		"Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omicron", "Pi",
 		"Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega")
@@ -301,14 +290,15 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 			sleep(5 SECONDS)
 			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control, copy. Switch to emergency responder channel [ertchannel].")
 			sleep(5 SECONDS)
-			msg("Understood [GLOB.using_map.dock_name] Control, switching now.","[source_prefix] [source_shipname]")
+			msg("Understood [GLOB.using_map.dock_name] Control, switching now!","[source_prefix] [source_shipname]")
 		//Control scan event: soft outcome
 		if("policescan")
+			var/confirm = pick("Understood","Roger that","Affirmative","Copy that")
 			var/complain = pick("I hope this doesn't take too long.","Can we hurry this up?","Make it quick.","This better not take too long.","Is this really necessary?")
 			var/completed = pick("You're free to proceed.","Everything looks fine, carry on.","You're clear, move along.","Apologies for the delay, you're clear.","Switch to channel [sdfchannel] and await further instruction.")
 			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control, your [pick("ship","vessel","starship")] has been flagged for routine inspection. Hold position and prepare to be scanned.")
 			sleep(5 SECONDS)
-			msg("[pick("Understood", "Roger that", "Affirmative")] [GLOB.using_map.dock_name] Control, holding position.","[source_prefix] [source_shipname]")
+			msg("[confirm] [GLOB.using_map.dock_name] Control, holding position.","[source_prefix] [source_shipname]")
 			sleep(5 SECONDS)
 			msg("Your compliance is appreciated, [combined_first_name]. Scan commencing.")
 			sleep(10 SECONDS)
@@ -325,7 +315,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 			msg("This is [GLOB.using_map.starsys_name] Defense Control to all local assets: vector to interdict and detain [combined_first_name]. Control out.","[GLOB.using_map.starsys_name] Defense Control")
 		//SDF scan event: soft outcome
 		if("policeshipscan")
-			var/confirm = pick("Understood","Roger that","Affirmative")
+			var/confirm = pick("Understood","Roger that","Affirmative","Copy that")
 			var/complain = pick("I hope this doesn't take too long.","Can we hurry this up?","Make it quick.","This better not take too long.","Is this really necessary?")
 			var/completed = pick("You're free to proceed.","Everything looks fine, carry on.","You're clear. Move along.","Apologies for the delay, you're clear.","Switch to channel [sdfchannel] and await further instruction.")
 			msg("[combined_second_name], this is [combined_first_name], your [pick("ship","vessel","starship")] has been flagged for routine inspection. Hold position and prepare to be scanned.","[source_prefix] [source_shipname]")
@@ -359,15 +349,6 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 			msg("[GLOB.using_map.starsys_name] Defense Control, this is [combined_first_name] reporting in, [statusupdate], over.","[source_prefix] [source_shipname]")
 			sleep(5 SECONDS)
 			msg("[GLOB.using_map.starsys_name] Defense Control copies, [combined_first_name]. Keep us updated, out.","[GLOB.using_map.starsys_name] Defense Control")
-		//SDF event: end patrol
-		if("sdfendingpatrol")
-			var/appreciation = pick("Copy","Understood","Affirmative","10-4","Roger that")
-			var/dockingplan = pick("Starting final approach now.","Commencing landing procedures.","Autopilot engaged.","Approach vector locked in.","In the pipe, five by five.")
-			msg("[callname], this is [combined_first_name], returning from our system patrol route, requesting permission to [landing_short].","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in.")
-			sleep(5 SECONDS)
-			msg("[appreciation], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
 		//DefCon event: hostile found
 		if("hostiledetected")
 			var/orders = pick("Engage on sight","Engage with caution","Engage with extreme prejudice","Engage at will","Search and destroy","Bring them in alive, if possible","Interdict and detain","Keep your eyes peeled","Bring them in, dead or alive","Stay alert")
@@ -380,12 +361,12 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 			sleep(5 SECONDS)
 			msg("[combined_first_name], this is [GLOB.using_map.starsys_name] Defense Control, copy. SDF is en route, contact on [sdfchannel].")
 			sleep(5 SECONDS)
-			msg("Understood [GLOB.using_map.starsys_name] Defense Control, switching now.","[source_prefix] [source_shipname]")
+			msg("Understood [GLOB.using_map.starsys_name] Defense Control, switching now!","[source_prefix] [source_shipname]")
 		//Control event: travel advisory
 		if("traveladvisory")
 			var/flightwarning = pick("Solar flare activity is spiking and expected to cause issues along main flight lanes [rand(1,33)], [rand(34,67)], and [rand(68,100)]",
-			"Pirate activity is on the rise, stay close to System Defense vessels","We're seeing a rise in illegal salvage operations, please report any unusual activity to the nearest SDF vessel via channel [sdfchannel]",
-			"Vox Marauder activity is higher than usual, report any unusual activity to the nearest System Defense vessel",
+			"Pirate activity is on the rise, stay close to System Defense vessels","We're seeing [pick("a rise","an increase","a surge")] in [pick("illegal","unauthorized","illicit","unlicensed")] salvage operations, please report any [pick("unusual","suspicious")] activity to the nearest SDF vessel via channel [sdfchannel]",
+			"Vox Marauder activity is higher than usual, report any [pick("unusual","suspicious")] activity to the nearest System Defense vessel",
 			"A quarantined [pick("fleet","convoy")] is passing through the system along route [rand(1,100)], please observe minimum safe distance",
 			"A prison [pick("fleet","convoy")] is passing through the system along route [rand(1,100)], please observe minimum safe distance",
 			"Traffic volume is higher than normal, expect processing delays","Anomalous bluespace activity detected along route [rand(1,100)], exercise caution",
@@ -410,125 +391,129 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 			msg("[confirm] [GLOB.using_map.dock_name] Control, adjusting course.","[source_prefix] [source_shipname]")
 			sleep(5 SECONDS)
 			msg("Your compliance is appreciated, [combined_first_name]. [safetravels].")
-		//Ship event: docking request (generic)
-		if("dockingrequestgeneric")
-			var/appreciation = pick("Much appreciated","Many thanks","Understood","Cheers")
+
+		//Ship event: docking request chained
+		if("docking_request_chain")
+			var/path
+			if(source_org_type == "system defense") //SDF won't get completely denied, that would look weird
+				path = pickweight(list("generic" = 50, "sdf patrol" = 75, "resupply" = 25,"emergency" = 25,"delayed" = 25))
+			else
+				path = pickweight(list("generic" = 75,"resupply" = 25,"emergency" = 25,"denied" = 25,"delayed" = 25))
+			var/subpath = pick("repair","security","medical")
 			var/dockingplan = pick("Starting final approach now.","Commencing landing procedures.","Autopilot engaged.","Approach vector locked in.","In the pipe, five by five.")
-			msg("[callname], this is [combined_first_name], [pick("stopping by","passing through")] on our way to [source_destname], requesting permission to [landing_short].","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in.")
-			sleep(5 SECONDS)
-			msg("[appreciation], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
-		//Ship event: docking request (denied)
-		if("dockingrequestdenied")
-			var/reason = pick("we don't have any landing pads large enough for your vessel","we don't have the necessary facilities for your vessel type or class")
-			var/disappointed = pick("That's unfortunate. [combined_first_name], out.","Damn shame. We'll just have to keep moving. [combined_first_name], out.","[combined_first_name], out.")
-			msg("[callname], this is [combined_first_name], [pick("stopping by","passing through")] on our way to [source_destname], requesting permission to [landing_move].","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Request denied, [reason].")
-			sleep(5 SECONDS)
-			msg("Understood, [GLOB.using_map.dock_name] Control. [disappointed]","[source_prefix] [source_shipname]")
-		//Ship event: docking request (delayed)
-		if("dockingrequestdelayed")
-			var/reason = pick("we don't have any free landing pads right now, please hold for three minutes","you're too far away, please close to ten thousand meters","we're seeing heavy traffic around the landing pads right now, please hold for three minutes","we're currently cleaning up a fuel spill on one of our free pads, please hold for three minutes","there are loose containers on our free pads, stand by for a couple of minutes whilst we secure them","another vessel has aerospace priority right now, please hold for three minutes")
-			var/appreciation = pick("Much appreciated","Many thanks","Understood","Perfect, thank you","Excellent, thanks","Great","Copy that")
-			var/dockingplan = pick("Starting final approach now.","Commencing landing procedures.","Autopilot engaged.","Approach vector locked in.","In the pipe, five by five.")
-			msg("[callname], this is [combined_first_name], [pick("stopping by","passing through")] on our way to [source_destname], requesting permission to [landing_short].","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Request denied, [reason] and resubmit your request.")
-			sleep(5 SECONDS)
-			msg("Understood, [GLOB.using_map.dock_name] Control.","[source_prefix] [source_shipname]")
-			sleep(180 SECONDS)
-			msg("[callname], this is [combined_first_name], resubmitting [landing_move].","[source_prefix] [source_shipname]")
-			sleep (5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Everything appears to be in order now, permission granted, proceed to [landing_zone]. Follow the green lights on your way in.")
-			sleep(5 SECONDS)
-			msg("[appreciation], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
-		//Ship event: docking request (resupply)
-		if("dockingrequestsupply")
-			var/preintensifier = pick(75;"getting ",75;"running ","") //whitespace hack, sometimes they'll add a preintensifier, but not always
-			var/intensifier = pick("very","pretty","critically","extremely","dangerously","desperately","kinda","a little","a bit","rather","sorta")
-			var/low_thing = pick("ammunition","munitions","clean water","food","spare parts","medical supplies","reaction mass","gas","hydrogen fuel","phoron fuel","fuel",10;"tea",10;"coffee",10;"soda",10;"pizza",10;"beer",10;"booze",10;"vodka",10;"snacks") //low chance of a less serious shortage
-			var/appreciation = pick("Much appreciated","Many thanks","Understood","You're a lifesaver","We owe you one","I owe you one","Perfect, thank you")
-			var/dockingplan = pick("Starting final approach now.","Commencing landing procedures.","Autopilot engaged.","Approach vector locked in.","In the pipe, five by five.")
-			msg("[callname], this is [combined_first_name]. We're [preintensifier][intensifier] low on [low_thing]. Requesting permission to [landing_short] for resupply.","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in.")
-			sleep(5 SECONDS)
-			msg("[appreciation], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
-		//Ship event: docking request (repair/maint)
-		if("dockingrequestrepair")
-			var/damagestate = pick("We've experienced some hull damage","We're suffering minor system malfunctions","We're having some technical issues","We're overdue maintenance","We have several minor space debris impacts","We've got some battle damage here","Our reactor output is fluctuating","We're hearing some weird noises from the [pick("engines","pipes","ducting","HVAC")]","Our artificial gravity generator has failed","Our life support is failing","Our environmental controls are busted","Our water recycling system has shorted out","Our navcomp is freaking out","Our systems are glitching out","We just got caught in a solar flare","We had a close call with an asteroid","We have a minor [pick("fuel","water","oxygen","gas")] leak","We have depressurized compartments","We have a hull breach","Our shield generator is on the fritz","Our RCS is acting up","One of our [pick("hydraulic","pneumatic")] systems has depressurized","Our repair bots are malfunctioning")
-			var/appreciation = pick("Much appreciated","Many thanks","Understood","You're a lifesaver","We owe you one","I owe you one","Perfect, thank you")
-			var/dockingplan = pick("Starting final approach now.","Commencing landing procedures.","Autopilot engaged.","Approach vector locked in.","In the pipe, five by five.")
-			msg("[callname], this is [combined_first_name]. [damagestate]. Requesting permission to [landing_short] for repairs and maintenance.","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in. Repair crews are standing by, contact them on channel [engchannel].")
-			sleep(5 SECONDS)
-			msg("[appreciation], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
-		//Ship event: docking request (medical)
-		if("dockingrequestmedical")
-			var/medicalstate = pick("multiple casualties","several cases of radiation sickness","an unknown virus","an unknown infection","a critically injured VIP","sick refugees","multiple cases of food poisoning","injured passengers","sick passengers","injured engineers","wounded marines","a delicate situation","a pregnant passenger","injured castaways","recovered escape pods","unknown escape pods")
-			var/appreciation = pick("Much appreciated","Many thanks","Understood","You're a lifesaver","We owe you one","I owe you one","Perfect, thank you")
-			var/dockingplan = pick("Starting final approach now.","Commencing landing procedures.","Autopilot engaged.","Approach vector locked in.","In the pipe, five by five.")
-			msg("[callname], this is [combined_first_name]. We have [medicalstate] on board. Requesting permission to [landing_short] for medical assistance.","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in. Medtechs are standing by, contact them on channel [medchannel].")
-			sleep(5 SECONDS)
-			msg("[appreciation], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
-		//Ship event: docking request (security)
-		if("dockingrequestsecurity")
-			var/species = pick("human","unathi","lizard","tajaran","feline","skrell","akula","promethean","sergal","synthetic","robotic","teshari","avian","vulpkanin","canine","vox","zorren","hybrid","mixed-species","vox","grey","alien")
-			var/securitystate = pick("several [species] convicts","a captured pirate","a wanted criminal","[species] stowaways","incompetent [species] shipjackers","a delicate situation","a disorderly passenger","disorderly [species] passengers","ex-mutineers","a captured vox marauder","captured vox marauders","stolen goods","a container full of confiscated contraband","containers full of confiscated contraband",5;"a very lost shadekin",5;"a raging case of [pick("spiders","crabs")]") //gotta have a little something to lighten the mood now and then
-			var/appreciation = pick("Much appreciated","Many thanks","Understood","You're a lifesaver","Perfect, thank you")
-			var/dockingplan = pick("Starting final approach now.","Commencing docking procedures.","Autopilot engaged.","Approach vector locked in.","In the pipe, five by five.")
-			msg("[callname], this is [combined_first_name]. We have [securitystate] on board and require security assistance. Requesting permission to [landing_short].","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in. Security teams are standing by, contact them on channel [secchannel].")
-			sleep(5 SECONDS)
-			msg("[appreciation], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
-		//Ship event: undocking request
-		if("undockingrequest")
-			var/safetravels = pick("Fly safe out there","Good luck","Safe travels","See you next week","Godspeed","Stars guide you")
-			var/thanks = pick("Appreciated","Thanks","Don't worry about us","We'll be fine","You too","So long")
-			var/takeoff = pick("depart","launch")
-			msg("[callname], this is [combined_first_name], requesting permission to [takeoff] from [landing_zone].","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted. Docking clamps released. [safetravels].")
-			sleep(5 SECONDS)
-			msg("[thanks], [GLOB.using_map.dock_name] Control. This is [combined_first_name] setting course for [source_destname], out.","[source_prefix] [source_shipname]")
-		//SDF event: starting patrol
-		if("sdfbeginpatrol")
-			var/safetravels = pick("Fly safe out there","Good luck","Good hunting","Safe travels","Godspeed","Stars guide you")
-			var/thanks = pick("Appreciated","Thanks","Don't worry about us","We'll be fine","You too")
+			var/confirm_positive = pick("Much appreciated","Many thanks","Understood","Perfect, thank you","Excellent, thanks","Great","Copy that") //standard confirms
+			var/confirm_negative = pick("Understood","Copy that")
+			var/confirm_special = pick("Much appreciated","Many thanks","Understood","Perfect, thank you","Excellent, thanks","Great","Copy that","You're a lifesaver","We owe you one","I owe you one","Perfect, thank you") //used for resupply/emergency subs
+			if(path == "emergency")
+				subpath = pick("security","medical","repair")
+			if(path == "generic")
+				msg("[callname], this is [combined_first_name], [pick("stopping by","passing through")] on our way to [source_destname], requesting permission to [landing_short].","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in.")
+				sleep(5 SECONDS)
+				msg("[confirm_positive], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
+			if(path == "sdf patrol")
+				confirm_positive = pick("Copy","Understood","Affirmative","10-4","Roger that")
+				msg("[callname], this is [combined_first_name], returning from our system patrol route, requesting permission to [landing_short].","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in.")
+				sleep(5 SECONDS)
+				msg("[confirm_positive], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
+			else if(path == "resupply")
+				var/preintensifier = pick(75;"getting ",75;"running ","") //whitespace hack, sometimes they'll add a preintensifier, but not always
+				var/intensifier = pick("very","pretty","critically","extremely","dangerously","desperately","kinda","a little","a bit","rather","sorta")
+				var/low_thing = pick("ammunition","munitions","clean water","food","spare parts","medical supplies","reaction mass","gas","hydrogen fuel","phoron fuel","fuel",10;"tea",10;"coffee",10;"soda",10;"pizza",10;"beer",10;"booze",10;"vodka",10;"snacks") //low chance of a less serious shortage
+				msg("[callname], this is [combined_first_name]. We're [preintensifier][intensifier] low on [low_thing]. Requesting permission to [landing_short] for resupply.","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in.")
+				sleep(5 SECONDS)
+				msg("[confirm_special], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
+			else if(path == "emergency")
+				if(subpath == "repair")
+					var/damagestate = pick("We've experienced some hull damage","We're suffering minor system malfunctions","We're having some technical issues","We're overdue maintenance","We have several minor space debris impacts","We've got some battle damage here","Our reactor output is fluctuating","We're hearing some weird noises from the [pick("engines","pipes","ducting","HVAC")]","Our artificial gravity generator has failed","Our life support is failing","Our environmental controls are busted","Our water recycling system has shorted out","Our navcomp is freaking out","Our systems are glitching out","We just got caught in a solar flare","We had a close call with an asteroid","We have a minor [pick("fuel","water","oxygen","gas")] leak","We have depressurized compartments","We have a hull breach","Our shield generator is on the fritz","Our RCS is acting up","One of our [pick("hydraulic","pneumatic")] systems has depressurized","Our repair bots are malfunctioning")
+					msg("[callname], this is [combined_first_name]. [damagestate]. Requesting permission to [landing_short] for repairs and maintenance.","[source_prefix] [source_shipname]")
+					sleep(5 SECONDS)
+					msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in. Repair crews are standing by, contact them on channel [engchannel].")
+					sleep(5 SECONDS)
+					msg("[confirm_special], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
+				else if(subpath == "medical")
+					var/medicalstate = pick("multiple casualties","several cases of radiation sickness","an unknown virus","an unknown infection","a critically injured VIP","sick refugees","multiple cases of food poisoning","injured passengers","sick passengers","injured engineers","wounded marines","a delicate situation","a pregnant passenger","injured castaways","recovered escape pods","unknown escape pods")
+					msg("[callname], this is [combined_first_name]. We have [medicalstate] on board. Requesting permission to [landing_short] for medical assistance.","[source_prefix] [source_shipname]")
+					sleep(5 SECONDS)
+					msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in. Medtechs are standing by, contact them on channel [medchannel].")
+					sleep(5 SECONDS)
+					msg("[confirm_special], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
+				else if(subpath == "security")
+					var/species = pick("human","unathi","lizard","tajaran","feline","skrell","akula","promethean","sergal","synthetic","robotic","teshari","avian","vulpkanin","canine","vox","zorren","hybrid","mixed-species","vox","grey","alien")
+					var/securitystate = pick("several [species] convicts","a captured pirate","a wanted criminal","[species] stowaways","incompetent [species] shipjackers","a delicate situation","a disorderly passenger","disorderly [species] passengers","ex-mutineers","a captured vox marauder","captured vox marauders","stolen goods","a container full of confiscated contraband","containers full of confiscated contraband",5;"a very lost shadekin",5;"a raging case of [pick("spiders","crabs")]") //gotta have a little something to lighten the mood now and then
+					msg("[callname], this is [combined_first_name]. We have [securitystate] on board and require security assistance. Requesting permission to [landing_short].","[source_prefix] [source_shipname]")
+					sleep(5 SECONDS)
+					msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted, proceed to [landing_zone]. Follow the green lights on your way in. Security teams are standing by, contact them on channel [secchannel].")
+					sleep(5 SECONDS)
+					msg("[confirm_special], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
+			else if(path == "denied")
+				var/reason = pick("we don't have any landing pads large enough for your vessel","we don't have the necessary facilities for your vessel type or class")
+				var/disappointed = pick("That's unfortunate. [combined_first_name], out.","Damn shame. We'll just have to keep moving. [combined_first_name], out.","[combined_first_name], out.")
+				msg("[callname], this is [combined_first_name], [pick("stopping by","passing through")] on our way to [source_destname], requesting permission to [landing_short].","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Request denied, [reason].")
+				sleep(5 SECONDS)
+				msg("[confirm_negative], [GLOB.using_map.dock_name] Control. [disappointed]","[source_prefix] [source_shipname]")
+			else if(path == "delayed")
+				var/delay = rand(2,5) //base delay in minutes
+				var/reason = pick("we don't have any free landing pads right now, please hold for [num2text(delay)] minutes","you're too far away, please close to ten thousand meters","we're seeing heavy traffic around the landing pads right now, please hold for [num2text(delay)] minutes","we're currently cleaning up a fuel spill on one of our free pads, please hold for [num2text(delay)] minutes","there are loose containers on our free pads, stand by for a couple of minutes whilst we secure them","another vessel has aerospace priority right now, please hold for [num2text(delay)] minutes")
+				msg("[callname], this is [combined_first_name], [pick("stopping by","passing through")] on our way to [source_destname], requesting permission to [landing_short].","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Request denied, [reason] and resubmit your request.")
+				sleep(5 SECONDS)
+				msg("[confirm_negative], [GLOB.using_map.dock_name] Control.","[source_prefix] [source_shipname]")
+				sleep(delay MINUTES)
+				msg("[callname], this is [combined_first_name], resubmitting [landing_move].","[source_prefix] [source_shipname]")
+				sleep (5 SECONDS)
+				msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Everything appears to be in order now, permission granted, proceed to [landing_zone]. Follow the green lights on your way in.")
+				sleep(5 SECONDS)
+				msg("[confirm_positive], [GLOB.using_map.dock_name] Control. [dockingplan]","[source_prefix] [source_shipname]")
+		//Ship event: undocking request chain
+		if("undocking_request_chain")
+			var/path
+			if(source_org_type == "system defense") //SDF won't get completely denied, that would look weird
+				path = pickweight(list("standard" = 50, "sdf patrol start" = 75, "delayed" = 25))
+			else
+				path = pickweight(list("standard" = 75, "denied" = 25,"delayed" = 25))
 			var/takeoff = pick("depart","launch","take off","dust off")
-			msg("[callname], this is [combined_first_name], requesting permission to [takeoff] from [landing_zone] to begin system patrol.","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted. Docking clamps released. [safetravels].")
-			sleep(5 SECONDS)
-			msg("[thanks], [GLOB.using_map.dock_name] Control. This is [combined_first_name] beginning system patrol, out.","[source_prefix] [source_shipname]")
-		//Ship event: undocking request (denied)
-		if("undockingdenied")
-			var/takeoff = pick("depart","launch")
-			var/denialreason = pick("Security is requesting a full cargo inspection","Your ship has been impounded for multiple [pick("security","safety")] violations","Your ship is currently under quarantine lockdown","We have reason to believe there's an issue with your papers","Security personnel are currently searching for a fugitive and have ordered all outbound ships remain grounded until further notice")
-			msg("[callname], this is [combined_first_name], requesting permission to [takeoff] from [landing_zone].","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("Negative [combined_first_name], request denied. [denialreason].")
-		//Ship event: undocking request (delayed)
-		if("undockingdelayed")
-			var/denialreason = pick("Docking clamp malfunction, please hold","Fuel lines have not been secured","Ground crew are still on the pad","Loose containers are on the pad","Exhaust deflectors are not yet in position, please hold","There's heavy traffic right now, it's not safe for your vessel to launch","Another vessel has aerospace priority at this moment","Port officials are still aboard")
-			var/takeoff = pick("depart","launch")
 			var/safetravels = pick("Fly safe out there","Good luck","Safe travels","See you next week","Godspeed","Stars guide you")
-			var/thanks = pick("Appreciated","Thanks","Don't worry about us","We'll be fine","You too","So long")
-			msg("[callname], this is [combined_first_name], requesting permission to [takeoff] from [landing_zone].","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("Negative [combined_first_name], request denied. [denialreason]. Try again in three minutes.")
-			sleep(180 SECONDS) //yes, three minutes
-			msg("[callname], this is [combined_first_name], re-requesting permission to depart from [landing_zone].","[source_prefix] [source_shipname]")
-			sleep(5 SECONDS)
-			msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Everything appears to be in order now, permission granted. Docking clamps released. [safetravels].")
-			sleep(5 SECONDS)
-			msg("[thanks], [GLOB.using_map.dock_name] Control. This is [combined_first_name] setting course for [source_destname], out.","[source_prefix] [source_shipname]")
+			var/thanks = pick("Copy that","Understood","Appreciated","Thanks","Don't worry about us","We'll be fine","You too","So long")
+			var/denialreason
+			if(path == "standard")
+				msg("[callname], this is [combined_first_name], requesting permission to [takeoff] from [landing_zone].","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted. Docking clamps released. [safetravels].")
+				sleep(5 SECONDS)
+				msg("[thanks], [GLOB.using_map.dock_name] Control. This is [combined_first_name] setting course for [source_destname], out.","[source_prefix] [source_shipname]")
+			else if(path == "sdf patrol start")
+				safetravels = pick("Fly safe out there","Good luck","Safe travels","Good hunting","Godspeed","Stars guide you")
+				msg("[callname], this is [combined_first_name], requesting permission to [takeoff] from [landing_zone] to begin system patrol.","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Permission granted. Docking clamps released. [safetravels].")
+				sleep(5 SECONDS)
+				msg("[thanks], [GLOB.using_map.dock_name] Control. This is [combined_first_name] beginning system patrol, out.","[source_prefix] [source_shipname]")
+			else if(path == "denied")
+				denialreason = pick("Security is requesting a full cargo inspection","Your ship has been impounded for multiple [pick("security","safety")] violations","Your ship is currently under quarantine lockdown","We have reason to believe there's an issue with your papers","Security personnel are currently searching for a fugitive in the docking area and have ordered all outbound ships remain grounded until further notice")
+				msg("[callname], this is [combined_first_name], requesting permission to [takeoff] from [landing_zone].","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("Negative [combined_first_name], request denied. [denialreason].")
+			else if(path == "delayed")
+				var/delay = rand(2,5) //base delay in minutes
+				denialreason = pick("Docking clamp malfunction, please hold","Fuel lines have not been secured","Ground crew are still on the pad","Loose containers are on the pad","Exhaust deflectors are not yet in position, please hold","There's heavy traffic right now, it's not safe for your vessel to launch","Another vessel has aerospace priority at this moment","Port officials are still aboard")
+				msg("[callname], this is [combined_first_name], requesting permission to [takeoff] from [landing_zone].","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("Negative [combined_first_name], request denied. [denialreason]. Try again in [num2text(delay)] minutes.")
+				sleep(delay MINUTES)
+				msg("[callname], this is [combined_first_name], re-requesting permission to depart from [landing_zone].","[source_prefix] [source_shipname]")
+				sleep(5 SECONDS)
+				msg("[combined_first_name], this is [GLOB.using_map.dock_name] Control. Everything appears to be in order now, permission granted. Docking clamps released. [safetravels].")
+				sleep(5 SECONDS)
+				msg("[thanks], [GLOB.using_map.dock_name] Control. This is [combined_first_name] setting course for [source_destname], out.","[source_prefix] [source_shipname]")
 		else //time for generic message
 			msg("[callname], this is [combined_first_name] on [source_mission] [pick(mission_noun)] to [source_destname], requesting [request].","[source_prefix] [source_shipname]")
 			sleep(5 SECONDS)

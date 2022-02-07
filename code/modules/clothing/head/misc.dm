@@ -612,3 +612,38 @@
 	desc = "A wide brimmed hat made of sturdy material. Its floppy, pointed top is similar to those worn by Old Earth bards or sorcerors."
 	icon_state = "traveller"
 	//addblends = "traveller_a"
+
+/obj/item/clothing/head/samurai_replica
+	name = "replica kabuto"
+	desc = "An authentic antique, this helmet from old Earth belongs to an ancient martial tradition. The advent of firearms made this style of protection obsolete. Unfortunately, this remains the case. This version appears less sturdy."
+	icon_state = "kabuto_colorable"
+
+/obj/item/clothing/head/ankh
+	name = "aegyptian circlet"
+	desc = "Perfect for when you want to deliver a stern look from on high."
+	icon_state = "ankh"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/roman_replica
+	name = "Roman Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman"
+
+/obj/item/clothing/head/romancent_replica
+	name = "Roman Crested Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman_c"
+
+/obj/item/clothing/head/imperial_replica
+	name = "imperial soldier helmet"
+	desc = "Reproduction headgear fashioned after the standard helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helm"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+
+/obj/item/clothing/head/imperial_officer_replica
+	name = "imperial officer helmet"
+	desc = "Reproduction headgear fashioned after the officer's helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helmcent"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'

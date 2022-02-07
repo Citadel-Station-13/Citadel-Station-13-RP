@@ -705,8 +705,10 @@
 					/obj/item/reagent_containers/food/drinks/bottle/vodka = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/whiskey = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/wine = 5,
-          /obj/item/reagent_containers/food/drinks/bottle/whitewine = 5,
+         			/obj/item/reagent_containers/food/drinks/bottle/whitewine = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/bitters = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/victory_gin = 3,
+					/obj/item/reagent_containers/food/drinks/bottle/messa_mead = 3,
 					/obj/item/reagent_containers/food/drinks/bottle/small/ale = 15,
 					/obj/item/reagent_containers/food/drinks/bottle/small/beer = 15,
 					/obj/item/reagent_containers/food/drinks/bottle/small/cider = 15,
@@ -961,7 +963,7 @@
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
 					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3)
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
-					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2,)
+					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2)
 	premium = list(/obj/item/toy/waterflower = 1)
 
 /**
@@ -2270,6 +2272,7 @@
 					/obj/item/clothing/suit/storage/toggle/labcoat/red = 5,
 					/obj/item/clothing/suit/storage/toggle/labcoat/yellow = 5,
 					/obj/item/clothing/suit/leathercoat = 5,
+					/obj/item/clothing/suit/overcoat = 5,
 					/obj/item/clothing/suit/storage/toggle/leather_jacket = 5,
 					/obj/item/clothing/suit/storage/leather_jacket_alt = 5,
 					/obj/item/clothing/suit/storage/toggle/brown_jacket = 5,
@@ -2359,6 +2362,7 @@
 					/obj/item/clothing/suit/storage/toggle/labcoat/red = 25,
 					/obj/item/clothing/suit/storage/toggle/labcoat/yellow = 25,
 					/obj/item/clothing/suit/leathercoat = 25,
+					/obj/item/clothing/suit/overcoat = 25,
 					/obj/item/clothing/suit/storage/toggle/leather_jacket = 25,
 					/obj/item/clothing/suit/storage/leather_jacket_alt = 25,
 					/obj/item/clothing/suit/storage/toggle/brown_jacket = 25,

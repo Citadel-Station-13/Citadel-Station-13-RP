@@ -196,3 +196,8 @@
 
 	if(!user.mind.isholy)
 		to_chat(user, "<font color='red'>You're not sure what language this is.</font>")
+
+/obj/item/clothing/gloves/bountyskin
+	name = "bounty hunter skinsuit (gloves)"
+	desc = "These gloves were originally integrated into the bounty hunter skinsuit. Later iterations were made removable for practicality."
+	icon_state = "bountyskin"

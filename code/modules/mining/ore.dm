@@ -126,3 +126,10 @@
 		C.sample_item(src, user)
 	else
 		return ..()
+
+//Vaudium
+/obj/item/ore/vaudium
+	name = "raw vaudium"
+	icon_state = "ore_vaudium"
+	material = MAT_VAUDIUM
+	origin_tech = list(TECH_MATERIAL = 7)

@@ -111,3 +111,6 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_surgery_priority_asc(datum/surgery_step/A, datum/surgery_step/B)
 	return B.priority - A.priority
+
+/proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
+	return A.priority - B.priority

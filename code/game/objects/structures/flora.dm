@@ -502,3 +502,30 @@
 /obj/structure/flora/pumpkin/carved/owo
 	desc = "A fat, freshly picked pumpkin. This one has a face carved into it! This one has large, round eyes and a squiggly, cat-like smiling mouth. Its pleasantly surprised expression seems to suggest that the pumpkin has noticed something about you."
 	icon_state = "decor-jackolantern-owo"
+
+//Halloween Gift Spawner
+/obj/structure/flora/pumpkin/pumpkin_patch
+	name = "pumpkin patch"
+	desc = "A big pile of pumpkins, guarded by a spooky scarecrow!"
+	icon = 'icons/obj/flora/pinetrees.dmi'
+	icon_state = "pumpkinpatch"
+
+/obj/structure/flora/pumpkin/pumpkin_patch/presents
+	desc = "A big pile of pumpkins, guarded by a spooky scarecrow! It has presents!"
+	var/gift_type = /obj/item/b_gift
+	var/list/ckeys_that_took = list()
+
+/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/living/user)
+	. = ..()
+	if(.)
+		return
+	if(!user.ckey)
+		return
+
+	if(ckeys_that_took[user.ckey])
+		to_chat(user, span("warning", "There are no pumpkins that look familiar to you."))
+		return
+	to_chat(user, span("notice", "After a bit of searching, you locate a pumpkin with your face carved into it!"))
+	ckeys_that_took[user.ckey] = TRUE
+	var/obj/item/G = new gift_type(src)
+	user.put_in_hands(G)

@@ -172,6 +172,7 @@
 	var/health = 15
 	var/obj/effect/alien/weeds/node/linked_node = null
 	var/static/list/weedImageCache
+	color = "#332342"
 
 /obj/effect/alien/weeds/Destroy()
 	var/turf/T = get_turf(src)
@@ -448,25 +449,21 @@ Alien plants should do something if theres a lot of poison
 	desc = "It looks like a weird egg"
 	name = "egg"
 //	icon_state = "egg_growing" // So the egg looks 'grown', even though it's not.
-	icon_state = "egg"
+	icon_state = "egg_growing"
 	density = 0
 	anchored = 1
 
 	var/health = 100
-	var/status = BURST //can be GROWING, GROWN or BURST; all mutually exclusive
+	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
 	flags = PROXMOVE
 
 /obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
-
-/*
-	if(config_legacy.aliens_allowed)
-		..()
-		spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
+	START_PROCESSING(SSobj, src)
+	spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
+		if((status == GROWING) && (BURST == 0))
 			Grow()
-	else
-		qdel(src)
-*/
+
 /obj/effect/alien/egg/attack_hand(user as mob)
 
 	var/mob/living/carbon/M = user
@@ -478,7 +475,7 @@ Alien plants should do something if theres a lot of poison
 			to_chat(user, "<span class='warning'>You clear the hatched egg.</span>")
 			qdel(src)
 			return
-/*		if(GROWING)
+		if(GROWING)
 			to_chat(user, "<span class='warning'>The child is not developed yet.</span>")
 			return
 		if(GROWN)
@@ -486,24 +483,24 @@ Alien plants should do something if theres a lot of poison
 			Burst(0)
 			return
 
-/obj/effect/alien/egg/proc/GetFacehugger() // Commented out for future edit.
+/obj/effect/alien/egg/proc/GetFacehugger()
 	return locate(/obj/item/clothing/mask/facehugger) in contents
 
 /obj/effect/alien/egg/proc/Grow()
 	icon_state = "egg"
-//	status = GROWN
-	status = BURST
-//	new /obj/item/clothing/mask/facehugger(src)
+	status = GROWN
+	new /obj/item/clothing/mask/facehugger(src)
 	return
-*/
+
 /obj/effect/alien/egg/proc/Burst(var/kill = 1) //drops and kills the hugger if any is remaining
 	if(status == GROWN || status == GROWING)
-//		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
-		icon_state = "egg_hatched"
-/*		flick("egg_opening", src)
+		var/obj/item/clothing/mask/facehugger/child = GetFacehugger()
+		icon_state = "egg_opened"
+		flick("egg_opening", src)
 		status = BURSTING
 		spawn(15)
 			status = BURST
+			icon_state = "egg_opened"
 			child.loc = get_turf(src)
 
 			if(kill && istype(child))
@@ -513,7 +510,8 @@ Alien plants should do something if theres a lot of poison
 					if(CanHug(M))
 						child.Attach(M)
 						break
-*/
+		return 1
+
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
 	..()
@@ -522,6 +520,7 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/egg/attack_generic(var/mob/user, var/damage, var/attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
+	playsound(src.loc, 'sound/effects/attackblob.ogg', 100, 1)
 	user.do_attack_animation(src)
 	health -= damage
 	healthcheck()
@@ -534,7 +533,8 @@ Alien plants should do something if theres a lot of poison
 
 
 /obj/effect/alien/egg/attackby(var/obj/item/W, var/mob/user)
-	if(health <= 0)
+	if((health <= 0) && (BURST == 0))
+		Burst()
 		return
 	if(W.attack_verb.len)
 		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -550,26 +550,32 @@ Alien plants should do something if theres a lot of poison
 			playsound(src.loc, 'sound/items/Welder.ogg', 100, 1)
 
 	src.health -= damage
-	src.healthcheck()
+	healthcheck()
 
 
 /obj/effect/alien/egg/proc/healthcheck()
-	if(health <= 0)
+	if((health <= 0) && (BURST == 0))
 		Burst()
 
 /obj/effect/alien/egg/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > 500 + T0C)
 		health -= 5
 		healthcheck()
-/*
-/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
+
+/*/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
 	if(status == GROWN)
 		if(!CanHug(AM))
 			return
 
 		var/mob/living/carbon/C = AM
-		if(C.stat == CONSCIOUS && C.status_flags & XENO_HOST)
+		if(C.stat == CONSCIOUS && C.status_flags & TRAIT_XENO_HOST)
 			return
 
-		Burst(0)
-*/
+		Burst(0)*/
+
+/obj/effect/alien/egg/process()
+	if(GROWN)
+		var/turf/mainloc = get_turf(src)
+		for(var/mob/living/A in range(3,mainloc))
+			if (CanHug(A))
+				Burst(0)

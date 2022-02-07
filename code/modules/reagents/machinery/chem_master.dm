@@ -1,6 +1,6 @@
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
-	desc = "Used to seperate and package chemicals in to lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
+	desc = "Used to seperate and package chemicals in to autoinjectors, lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
 	density = 1
 	anchored = 1
 	icon = 'icons/obj/chemical.dmi'
@@ -15,12 +15,15 @@
 	var/useramount = 15 // Last used amount
 	var/pillamount = 10
 	var/lolliamount = 5
+	var/autoamount = 5
 	var/list/bottle_styles
 	var/bottlesprite = 1
 	var/pillsprite = 1
 	var/lollisprite = 1
+	var/autosprite = 1
 	var/max_pill_count = 20
 	var/max_lolli_count = 10
+	var/max_auto_count = 5
 	var/printing = FALSE
 	flags = OPENCONTAINER
 	clicksound = "button"
@@ -123,6 +126,7 @@
 	data["pillsprite"] = pillsprite
 	data["bottlesprite"] = bottlesprite
 	data["lollisprite"] = lollisprite
+	data["autosprite"] = autosprite
 	data["mode"] = mode
 	data["printing"] = printing
 
@@ -242,6 +246,21 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_modal_input(src, id, "Please enter the amount of lollipops to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, lolliamount, 5)
+				if("create_autoinjector")
+					if(condi || !reagents.total_volume)
+						return
+					var/num = round(text2num(arguments["num"] || 1))
+					if(!num)
+						return
+					arguments["num"] = num
+					var/amount_per_auto = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_AUTO)
+					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_auto]u)"
+					var/auto_text = num == 1 ? "new autoinjector" : "[num] new autoinjectors"
+					ui_modal_input(src, id, "Please name your [auto_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
+				if("create_autoinjector_multiple")
+					if(condi || !reagents.total_volume)
+						return
+					ui_modal_input(src, id, "Please enter the amount of autoinjectors to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, autoamount, 5)
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
 						return
@@ -256,7 +275,7 @@
 				if("create_bottle_multiple")
 					if(condi || !reagents.total_volume)
 						return
-					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
+					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, 2, 5)//two bottles on default
 				if("change_bottle_style")
 					var/list/choices = list()
 					for(var/i = 1 to MAX_BOTTLE_SPRITE)
@@ -390,6 +409,31 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_act("modal_open", list("id" = "create_lollipop", "arguments" = list("num" = answer)), ui, state)
+				if("create_autoinjector")
+					if(condi || !reagents.total_volume)
+						return
+					var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
+					if(!count)
+						return
+
+					if(!length(answer))
+						answer = reagents.get_master_reagent_name()
+					var/amount_per_auto = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_AUTO)
+					// var/is_medical_patch = chemical_safety_check(reagents)
+					while(count--)
+						if(reagents.total_volume <= 0)
+							to_chat(usr, "<span class='notice'>Not enough reagents to create these injectors!</span>")
+							return
+
+						var/obj/item/reagent_containers/hypospray/autoinjector/A = new(loc)
+						A.name = "[answer] autoinjector"
+						A.pixel_x = rand(-7, 7) // random position
+						A.pixel_y = rand(-7, 7)
+						reagents.trans_to_obj(A, amount_per_auto)
+				if("create_autoinjector_multiple")
+					if(condi || !reagents.total_volume)
+						return
+					ui_act("modal_open", list("id" = "create_autoinjector", "arguments" = list("num" = answer)), ui, state)
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
 						return

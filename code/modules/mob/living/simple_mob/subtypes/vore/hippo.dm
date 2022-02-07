@@ -19,6 +19,9 @@
 
 	maxHealth = 200
 	health = 200
+	randomized = TRUE
+	mod_min = 100
+	mod_max = 150
 	movement_cooldown = 5
 	see_in_dark = 3
 

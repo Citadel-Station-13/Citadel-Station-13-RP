@@ -3,7 +3,19 @@
 	set name = "Join Into Soulcatcher"
 	set desc = "Select a player with a working NIF + Soulcatcher NIFSoft to join into it."
 
-	var/picked = input("Pick a friend with NIF and Soulcatcher to join into. Harrass strangers, get banned. Not everyone has a NIF w/ Soulcatcher.","Select a player") as null|anything in player_list
+	var/list/filtered_list = player_list.Copy()
+	for(var/i in filtered_list)
+		var/mob/living/carbon/human/H = i
+		if(!istype(H))
+			filtered_list -= i
+			continue
+		if(!H.nif)
+			filtered_list -= i
+			continue
+		if(!H.nif.imp_check(NIF_SOULCATCHER))
+			filtered_list -= i
+			continue
+	var/picked = input("Pick a friend with NIF and Soulcatcher to join into. Harrass strangers, get banned. Not everyone has a NIF w/ Soulcatcher (you can't see them in this list if so).","Select a player") as null|anything in filtered_list
 
 	//Didn't pick anyone or picked a null
 	if(!picked)

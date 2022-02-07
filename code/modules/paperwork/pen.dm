@@ -325,3 +325,15 @@
 /obj/item/pen/crayon/marker/Initialize(mapload)
 	. = ..()
 	name = "[colourName] marker"
+
+/obj/item/pen/crayon/chalk
+	name = "ritual chalk"
+	desc = "A stick of blessed chalk, used in rituals."
+	icon_state = "chalkwhite"
+
+/obj/item/pen/crayon/chalk/Initialize(mapload)
+	. = ..()
+	name = "[colourName] chalk"
+
+/obj/item/pen/crayon/chalk/attack_self()
+	return

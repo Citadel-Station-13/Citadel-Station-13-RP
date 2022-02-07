@@ -234,6 +234,14 @@ I said no!
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeykabob
 
+/datum/recipe/meatkabob
+	items = list(
+		/obj/item/stack/rods,
+		/obj/item/reagent_containers/food/snacks/meatsteak,
+		/obj/item/reagent_containers/food/snacks/meatsteak
+	)
+	result = /obj/item/reagent_containers/food/snacks/meatkabob
+
 /datum/recipe/syntikabob
 	items = list(
 		/obj/item/stack/rods,

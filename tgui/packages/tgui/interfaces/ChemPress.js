@@ -43,6 +43,13 @@ export const ChemPress = (props, context) => {
                 })}
               />
               <Button.Checkbox
+                content="Autoinjectors"
+                checked={product === "autoinjector"}
+                onClick={() => act('change_product', {
+                  product: "autoinjector",
+                })}
+              />
+              <Button.Checkbox
                 content="Bottles"
                 checked={product === "bottle"}
                 onClick={() => act('change_product', {

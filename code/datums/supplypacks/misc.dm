@@ -274,7 +274,7 @@
 /datum/supply_pack/misc/skatepack1
 	name = "Beginner Skateboard Pack"
 	contains = list(
-			/obj/vehicle/skateboard = 3,
+			/obj/vehicle/skateboard/beginner = 3,
 			/obj/item/clothing/head/helmet/bike_helmet/random = 3
 			)
 	cost = 100

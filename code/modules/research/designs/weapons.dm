@@ -337,6 +337,8 @@
 
 // Energy Weapons
 
+//Commenting this weapon out pending further review.
+/*
 /datum/design/item/weapon/energy/protector
 	name = "\'Myrmidon\' code-locked e-gun"
 	desc = "The 'Myrmidon' is a common energy gun that cannot fired lethally on Code Green, requiring Code Blue or higher to unlock its deadly capabilities."
@@ -345,6 +347,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, MAT_GLASS = 2000, MAT_SILVER = 1000)
 	build_path = /obj/item/gun/energy/protector
 	sort_string = "MAAAH"
+*/
 
 /datum/design/item/weapon/energy/netgun
 	name = "\'Retiarius\' capture gun"

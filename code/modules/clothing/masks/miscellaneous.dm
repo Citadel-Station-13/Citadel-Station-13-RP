@@ -194,6 +194,10 @@
 	gas_transfer_coefficient = 0.10
 	permeability_coefficient = 0.50
 
+/obj/item/clothing/mask/samurai/colorable
+	name = "menpo (colorable)"
+	icon_state = "menpo_colorable"
+
 //Bandanas
 /obj/item/clothing/mask/bandana
 	name = "black bandana"

@@ -304,3 +304,18 @@
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 	allowed = list(/obj/item/melee/fluffstuff/wolfgirlsword)
+
+/obj/item/shield/fluff/roman
+	name = "replica scutum"
+	desc = "A replica shield for close quarters engagement.  It looks sturdy enough to withstand foam weapons, and nothing more."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "roman_shield"
+	slot_flags = SLOT_BACK
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			)
+	force = 5.0
+	throwforce = 5.0
+	throw_speed = 2
+	throw_range = 6

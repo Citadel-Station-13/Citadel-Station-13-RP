@@ -2261,6 +2261,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
+"iF" = (
+/obj/item/chess/wpawn,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "iK" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/meatsteak,
@@ -2323,6 +2327,14 @@
 	},
 /turf/unsimulated/wall,
 /area/centcom/simulated/restaurant)
+"jK" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wqueen,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "jL" = (
 /obj/effect/shuttle_landmark{
 	base_area = null;
@@ -2395,6 +2407,14 @@
 	initial_flooring = null
 	},
 /area/space)
+"lw" = (
+/obj/item/chess/bqueen,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
+"lF" = (
+/obj/effect/floor_decal/sign/c,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
 "lL" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 5
@@ -2445,6 +2465,10 @@
 	initial_flooring = null
 	},
 /area/space)
+"mh" = (
+/obj/item/chess/wrook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "mq" = (
 /obj/machinery/door/airlock/medical{
 	name = "Operating Theatre";
@@ -2537,6 +2561,10 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
+"nQ" = (
+/obj/item/chess/wknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "nW" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -2556,6 +2584,13 @@
 /obj/item/reagent_containers/food/snacks/lasagna,
 /turf/simulated/floor/wood,
 /area/centcom/simulated/restaurant)
+"of" = (
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/white/full,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "ol" = (
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/food/snacks/toastedsandwich{
@@ -2599,7 +2634,7 @@
 /area/centcom/control)
 "pf" = (
 /turf/simulated/floor/holofloor/wood,
-/area/space)
+/area/holodeck/source_chess)
 "pk" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
@@ -2710,6 +2745,10 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/lino,
 /area/centcom/simulated/bar)
+"rd" = (
+/obj/item/chess/wking,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "rg" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -2790,6 +2829,14 @@
 /obj/effect/overmap/bluespace_rift,
 /turf/unsimulated/map,
 /area/overmap)
+"sH" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wpawn,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "sM" = (
 /obj/machinery/vending/medical,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -2914,6 +2961,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/escape)
+"tZ" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wrook,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "uc" = (
 /turf/unsimulated/wall,
 /area/centcom/suppy)
@@ -3036,6 +3091,10 @@
 "wy" = (
 /turf/unsimulated/wall,
 /area/centcom/control)
+"wM" = (
+/obj/item/chess/bpawn,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "wN" = (
 /obj/item/perfect_tele_beacon{
 	tele_name = "Transfer"
@@ -3074,6 +3133,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
+"wX" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wknight,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "wZ" = (
 /turf/unsimulated/floor{
 	icon_state = "sandwater"
@@ -3237,6 +3304,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
+"yN" = (
+/obj/item/chess/bbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "yU" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 4
@@ -3471,6 +3542,14 @@
 /obj/effect/overlay/palmtree_r,
 /turf/unsimulated/beach/sand,
 /area/beach)
+"BJ" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bpawn,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "BK" = (
 /turf/space,
 /turf/space/internal_edge/bottomleft,
@@ -3863,12 +3942,24 @@
 	},
 /turf/space/transit/north,
 /area/space)
+"Hg" = (
+/obj/item/chess/wbishop,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "Hn" = (
 /obj/structure/closet/secure_closet/brig{
 	id = "Cell 3"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
+"Ho" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/wbishop,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "Hq" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2
@@ -3881,6 +3972,14 @@
 	icon_state = "rock"
 	},
 /area/space)
+"Hz" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bbishop,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "HA" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 9
@@ -4088,6 +4187,10 @@
 	opacity = 1
 	},
 /area/beach)
+"JY" = (
+/obj/effect/floor_decal/sign/dock/one,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
 "JZ" = (
 /turf/space/internal_edge/right,
 /area/space)
@@ -4112,12 +4215,20 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
+"Kv" = (
+/obj/effect/floor_decal/sign/dock/two,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
 "Ky" = (
 /obj/structure/morgue{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/centcom/simulated/medical)
+"KI" = (
+/obj/item/chess/brook,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "KJ" = (
 /obj/machinery/porta_turret/crescent{
 	density = 1
@@ -4168,6 +4279,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/bathroom)
+"Lq" = (
+/obj/effect/floor_decal/sign/b,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
 "Lz" = (
 /obj/effect/step_trigger/teleporter/planetary_fall/virgo3b,
 /turf/simulated/sky/virgo3b/south,
@@ -4197,6 +4312,14 @@
 	initial_flooring = null
 	},
 /area/space)
+"Mq" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/brook,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "MA" = (
 /obj/machinery/door/airlock,
 /turf/simulated/floor/lino,
@@ -4257,6 +4380,14 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
+"NC" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bking,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "NJ" = (
 /obj/machinery/vending/snack{
 	dir = 1
@@ -4816,6 +4947,10 @@
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/shuttle/floor/alien,
 /area/unknown/dorm4)
+"SM" = (
+/obj/effect/floor_decal/sign/a,
+/turf/simulated/floor/holofloor/wood,
+/area/holodeck/source_chess)
 "SN" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/shuttle/floor/alien,
@@ -5587,8 +5722,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "Wf" = (
-/turf/simulated/floor/holofloor,
-/area/space)
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "Wh" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -6000,6 +6135,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
+"XT" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "XU" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -6545,6 +6687,10 @@
 /obj/machinery/camera/network/crescent,
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
+"ZH" = (
+/obj/item/chess/bknight,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/holodeck/source_chess)
 "ZJ" = (
 /obj/machinery/door/airlock{
 	id_tag = null;
@@ -6556,10 +6702,18 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
+"ZN" = (
+/obj/effect/floor_decal/corner/white/full,
+/obj/effect/floor_decal/corner/white{
+	dir = 4
+	},
+/obj/item/chess/bknight,
+/turf/simulated/floor/holofloor/tiled,
+/area/holodeck/source_chess)
 "ZQ" = (
-/obj/effect/floor_decal/sign,
+/obj/effect/floor_decal/sign/dock/three,
 /turf/simulated/floor/holofloor/wood,
-/area/space)
+/area/holodeck/source_chess)
 "ZR" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
@@ -13852,25 +14006,25 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
 ap
 Xl
 OY
@@ -13966,13 +14120,13 @@ ap
 as
 pf
 pf
+pf
+pf
+pf
+pf
 ZQ
-ZQ
-ZQ
-ZQ
-ZQ
-ZQ
-ZQ
+Kv
+JY
 pf
 dB
 af
@@ -13994,25 +14148,25 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+cd
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+cd
 ap
 Xl
 OY
@@ -14107,15 +14261,15 @@ ap
 (54,1,1) = {"
 as
 pf
+KI
+BJ
 Wf
+XT
 Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-ZQ
+XT
+iF
+tZ
+SM
 dB
 af
 af
@@ -14136,25 +14290,25 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+cd
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+cd
 ap
 Xl
 OY
@@ -14249,15 +14403,15 @@ iO
 (55,1,1) = {"
 as
 pf
+ZN
+wM
+XT
 Wf
+XT
 Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-ZQ
+sH
+Hg
+Lq
 dB
 af
 af
@@ -14278,25 +14432,25 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+cd
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+cd
 ap
 Xl
 OY
@@ -14391,15 +14545,15 @@ iO
 (56,1,1) = {"
 as
 pf
+yN
+BJ
 Wf
+of
 Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-ZQ
+XT
+iF
+wX
+lF
 dB
 af
 af
@@ -14420,25 +14574,25 @@ ap
 ap
 ap
 ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+cd
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+cd
 ap
 Xl
 OY
@@ -14533,15 +14687,15 @@ iO
 (57,1,1) = {"
 as
 pf
+NC
+wM
+XT
 Wf
+XT
 Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-ZQ
+sH
+rd
+pf
 dB
 af
 af
@@ -14554,25 +14708,6 @@ ai
 af
 af
 fZ
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
 ap
 ap
 ap
@@ -14581,6 +14716,25 @@ ap
 ap
 ap
 ap
+cd
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+cd
 ap
 Xl
 OY
@@ -14675,15 +14829,15 @@ iO
 (58,1,1) = {"
 as
 pf
+lw
+BJ
 Wf
+XT
 Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-ZQ
+XT
+iF
+jK
+pf
 dB
 af
 af
@@ -14696,6 +14850,14 @@ ai
 af
 af
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -14715,14 +14877,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 OY
@@ -14817,15 +14971,15 @@ iO
 (59,1,1) = {"
 as
 pf
+Hz
+wM
+XT
 Wf
+XT
 Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-ZQ
+sH
+nQ
+pf
 dB
 af
 af
@@ -14838,6 +14992,14 @@ ai
 af
 af
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -14857,14 +15019,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 OY
@@ -14959,15 +15113,15 @@ iO
 (60,1,1) = {"
 as
 pf
+ZH
+BJ
 Wf
+XT
 Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-ZQ
+XT
+iF
+Ho
+pf
 dB
 af
 af
@@ -14980,6 +15134,14 @@ ai
 af
 af
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -14999,14 +15161,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 OY
@@ -15101,15 +15255,15 @@ iO
 (61,1,1) = {"
 as
 pf
+Mq
+wM
+XT
 Wf
+XT
 Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-Wf
-ZQ
+sH
+mh
+pf
 dB
 af
 af
@@ -15122,6 +15276,14 @@ af
 af
 af
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -15141,14 +15303,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 Xl
@@ -15264,6 +15418,14 @@ af
 af
 af
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -15283,14 +15445,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -15406,6 +15560,14 @@ aL
 aL
 aL
 ar
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -15425,14 +15587,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 ap
 ap
@@ -15548,6 +15702,14 @@ dF
 dF
 dF
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -15567,14 +15729,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 Xl
@@ -15690,6 +15844,14 @@ dF
 ec
 dF
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -15709,14 +15871,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 OY
@@ -15832,6 +15986,14 @@ dF
 dF
 dF
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -15851,14 +16013,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 OY
@@ -15974,6 +16128,14 @@ dF
 dF
 dF
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -15993,14 +16155,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 OY
@@ -16116,6 +16270,14 @@ dF
 dF
 dF
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -16135,14 +16297,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 OY
@@ -16258,6 +16412,14 @@ dF
 dF
 dF
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
 ci
 ci
@@ -16277,14 +16439,6 @@ ci
 ci
 ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
 ap
 Xl
 OY
@@ -16400,33 +16554,33 @@ dF
 ec
 dF
 fZ
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 cd
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
 cd
-ap
-ap
-ap
-ap
-ap
-ap
-ap
-ap
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd
 ap
 Xl
 OY
@@ -16542,25 +16696,25 @@ dF
 dF
 dF
 fZ
-cd
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-cd
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 ap
 ap
 ap
@@ -16684,25 +16838,25 @@ dF
 dF
 dF
 fZ
-cd
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-cd
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 ap
 ap
 ap
@@ -16826,25 +16980,25 @@ dF
 dF
 dF
 fZ
-cd
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-cd
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 ap
 ap
 ap
@@ -16968,25 +17122,25 @@ aL
 aL
 aL
 ar
-cd
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-ci
-cd
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 ap
 ap
 ap
@@ -17110,25 +17264,25 @@ fG
 dG
 dG
 fZ
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
-cd
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
+ap
 ap
 ap
 ap

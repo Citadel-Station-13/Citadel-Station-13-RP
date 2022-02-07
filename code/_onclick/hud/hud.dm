@@ -24,6 +24,11 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/obj/screen/meson
 	var/obj/screen/science
 	var/obj/screen/material
+	var/obj/screen/yellow
+	var/obj/screen/blue
+	var/obj/screen/pink
+	var/obj/screen/beige
+	var/obj/screen/orange
 	var/obj/screen/holomap
 
 /datum/global_hud/proc/setup_overlay(var/icon_state)
@@ -79,6 +84,11 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	meson = setup_overlay("meson_hud")
 	science = setup_overlay("science_hud")
 	material = setup_overlay("material_hud")
+	yellow = setup_overlay("yellow_hud")
+	blue = setup_overlay("blue_hud")
+	pink = setup_overlay("pink_hud")
+	beige = setup_overlay("beige_hud")
+	orange = setup_overlay("orange_hud")
 
 	// The holomap screen object is actually totally invisible.
 	// Station maps work by setting it as an images location before sending to client, not

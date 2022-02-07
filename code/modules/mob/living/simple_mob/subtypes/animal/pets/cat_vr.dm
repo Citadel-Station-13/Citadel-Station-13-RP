@@ -51,6 +51,7 @@
 	meat_amount = 0
 	maxHealth = 50
 	health = 50
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/cat/tabiranth/handle_special()
 	. = ..()

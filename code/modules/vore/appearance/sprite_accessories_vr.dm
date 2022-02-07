@@ -313,6 +313,13 @@
 	color_blend_mode = ICON_MULTIPLY
 	extra_overlay = "deer"
 
+/datum/sprite_accessory/ears/antlercrown
+	name = "antler crown"
+	desc = ""
+	icon_state = "antlercrown"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
+
 /datum/sprite_accessory/ears/deer
 	name = "deer ears"
 	desc = ""

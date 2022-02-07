@@ -11,7 +11,7 @@
 	/// Name prior to being scanned if !known
 	var/unknown_name = "unknown sector"
 	/// Icon_state prior to being scanned if !known
-	var/unknown_state = "field"
+	var/unknown_state = "unknown"
 
 	var/list/map_z = list()
 	var/list/extra_z_levels //if you need to manually insist that these z-levels are part of this sector, for things like edge-of-map step trigger transitions rather than multi-z complexes

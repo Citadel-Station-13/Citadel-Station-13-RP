@@ -1565,3 +1565,72 @@
 			user.visible_message("<span class='danger'>[user] punches the [name]!</span>")
 			playsound(src, 'sound/effects/shieldbash.ogg', 50, 1)
 		last_message = world.time
+		
+	//Chess Variants
+	
+/obj/item/chess
+	name = "Chess Piece"
+	icon = 'icons/obj/cardboard_cutout.dmi'
+	icon_state = "cutout_basic"
+	desc = "Some sort of novelty chess piece."
+
+/obj/item/chess/wpawn
+	name = "White Pawn"
+	desc = "A Novelty chess piece in the image of an assistant representing a white pawn."
+	icon_state = "cutout_greytide"
+
+/obj/item/chess/bpawn
+	name = "Black Pawn"
+	desc = "A Novelty chess piece in the image of a filthy unionizing employee, representing a black pawn."  
+	icon_state = "cutout_viva" 
+
+/obj/item/chess/bknight
+	name = "Black Knight"
+	desc = "A Novelty chess piece in the image of a corporate traitor representing a black knight."
+	icon_state = "cutout_traitor"
+
+/obj/item/chess/wknight
+	icon_state = "cutout_clown"
+	name = "White Knight"
+	desc = "A Novelty chess piece in the image of a brave clown representing a white knight."
+
+/obj/item/chess/brook
+	name = "Black Rook"
+	desc = "A Novelty chess piece in the image of a mercenary commando representing a black rook."
+	icon_state = "cutout_fluke"
+
+/obj/item/chess/wrook
+	name = "White Rook"
+	desc = "A Novelty chess piece in the image of a loyal security officer representing a white rook."
+	icon_state = "cutout_ntsec"
+
+/obj/item/chess/bbishop
+	name = "Black Bishop"
+	desc = "A Novelty chess piece in the image of a vile mercenary swordsman representing a black bishop."
+	icon_state = "cutout_stabfluke"
+
+/obj/item/chess/wbishop
+	name = "White Bishop"
+	desc = "A Novelty chess piece in the image of a noble mime representing a white bishop."
+	icon_state = "cutout_mime"
+
+/obj/item/chess/bqueen
+	name = "Black Queen"
+	desc = "A Novelty chess piece in the image of a super elite mercenary raider representing a black queen."
+	icon_state = "cutout_supfluke"
+
+/obj/item/chess/wqueen
+	name = "White Queen"
+	desc = "A Novelty chess piece in the image of a heoric member of asset protection representing a white queen."
+	icon_state = "cutout_deathsquad"
+
+/obj/item/chess/bking
+	name = "Black King"
+	desc = "A Novelty chess piece in the image of a strange and vile creature representing a black king."
+	icon_state = "cutout_gondola"
+
+/obj/item/chess/wking
+	name = "White King"
+	desc = "A Novelty chess piece in the image of the most important asset on the station representing a white king."
+	icon_state = "cutout_ian"
+

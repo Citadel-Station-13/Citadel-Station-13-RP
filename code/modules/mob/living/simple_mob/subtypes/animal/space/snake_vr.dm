@@ -21,6 +21,7 @@
 
 	maxHealth = 20
 	health = 20
+	randomized = TRUE
 
 	movement_cooldown = 8 // SLOW-ASS MUTHAFUCKA, I hope.
 
@@ -47,6 +48,7 @@
 
 	var/turns_since_scan = 0
 	var/obj/movement_target
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/snake/noodle/Life()
 	..()

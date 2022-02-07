@@ -52,6 +52,7 @@
 
 	maxHealth = 15
 	health = 15
+	randomized = TRUE
 
 	armor = list(
 				"melee" = 5,
@@ -116,6 +117,18 @@
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
 
 	taser_kill = 0
+
+//Unrandom the pet...?
+/mob/living/simple_mob/animal/roach/Greta/Initialize()
+    . = ..()
+    size_multiplier = 1
+    maxHealth = maxHealth
+    health = health
+    melee_damage_lower = melee_damage_lower
+    melee_damage_upper = melee_damage_upper
+    movement_cooldown = movement_cooldown
+    meat_amount = meat_amount
+    update_icons()
 
 /mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
 	. = ..()

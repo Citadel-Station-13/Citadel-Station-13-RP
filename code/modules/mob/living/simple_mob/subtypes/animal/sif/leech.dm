@@ -36,6 +36,7 @@
 
 	maxHealth = 100
 	health = 100
+	randomized = TRUE
 
 	universal_understand = 1
 

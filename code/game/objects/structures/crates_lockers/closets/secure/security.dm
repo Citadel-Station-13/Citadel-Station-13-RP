@@ -162,8 +162,10 @@
 		/obj/item/clothing/under/rank/head_of_security/corp,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt,
+		/obj/item/clothing/under/oricon/mildress/marine/command/fake,
 		/obj/item/clothing/suit/storage/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/storage/vest/hoscoat,
+		/obj/item/clothing/suit/storage/vest/hos_overcoat,
 		/obj/item/clothing/suit/dress/marine/command/hos,
 		/obj/item/clothing/head/helmet/dermal,
 		/obj/item/radio/headset/heads/hos,
@@ -199,6 +201,7 @@
 		/obj/item/storage/box/flashbangs,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
+		/obj/item/gun/energy/taser,
 		/obj/item/gun/energy/gun/multiphase,
 		/obj/item/melee/telebaton,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
@@ -207,7 +210,6 @@
 		/obj/item/gps/security/hos,
 		/obj/item/flashlight/maglight,
 		/obj/item/clothing/under/rank/head_of_security/turtleneck)
-
 
 /obj/structure/closet/secure_closet/warden
 	name = "warden's locker"
@@ -352,9 +354,11 @@
 		/obj/item/storage/box/evidence,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
+		/obj/item/clothing/suit/storage/vest/,
 		/obj/item/clothing/suit/storage/vest/detective,
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/clothing/accessory/holster/armpit,
+		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/flashlight/maglight,
 		/obj/item/reagent_containers/food/drinks/flask/detflask,
 		/obj/item/storage/briefcase/crimekit,

@@ -44,6 +44,8 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	health = 10
 	maxHealth = 10
 
+	randomized = TRUE
+
 	pass_flags = PASSTABLE
 	mob_size = MOB_SMALL
 

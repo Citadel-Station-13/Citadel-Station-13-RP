@@ -85,6 +85,8 @@
 
 /obj/item/digestion_remains/Initialize(mapload, mob/living/pred)
 	. = ..(mapload)
+	if(!pred)
+		return
 	pred_ckey = pred.ckey
 	pred_name = pred.name
 
