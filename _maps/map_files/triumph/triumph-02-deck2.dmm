@@ -11653,17 +11653,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
-"Hu" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/turf/simulated/wall,
-/area/vacant/vacant_shop)
 "Hv" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -31987,7 +31976,7 @@ Gw
 cN
 DT
 Pz
-Hu
+mQ
 Yp
 Qg
 ct
