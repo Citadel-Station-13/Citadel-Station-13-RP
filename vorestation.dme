@@ -13,6 +13,7 @@
 #include "_maps\_basemap.dm"
 #include "_maps\triumph.dm"
 #include "_maps\map_files\generic\reservation_base_level.dmm"
+#include "_maps\map_files\magmatic_rift_station\location_file.dm"
 #include "_maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
 #include "code\_compile_options.dm"
 #include "code\_macros.dm"
