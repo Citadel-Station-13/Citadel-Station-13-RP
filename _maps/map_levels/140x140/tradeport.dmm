@@ -3984,6 +3984,17 @@
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
+/obj/effect/shuttle_landmark/triumph/trade/mining,
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
+"rZ" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
 /area/tradeport/pads)
 "sb" = (
 /obj/structure/table/steel_reinforced,
@@ -4774,6 +4785,9 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/tiled/old_cargo/beige,
 /area/tradeport/engineering)
+/obj/effect/shuttle_landmark/triumph/trade/pirate,
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "vl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -7451,6 +7465,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
+"HD" = (
+/obj/effect/shuttle_landmark/triumph/trade/excursion,
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "HE" = (
 /obj/machinery/door/window/westleft{
 	dir = 2
@@ -7534,6 +7552,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
+"Ih" = (
+/obj/effect/shuttle_landmark/triumph/trade/emt,
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "Ij" = (
 /obj/structure/flora/pumpkin/carved/owo,
 /turf/simulated/floor/outdoors/dirt,
@@ -11151,6 +11173,10 @@
 	},
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
+"YQ" = (
+/obj/effect/shuttle_landmark/triumph/trade/civvie,
+/turf/simulated/floor/reinforced,
+/area/tradeport/pads)
 "YV" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -25195,6 +25221,7 @@ Ft
 Ft
 Ft
 yN
+HD
 Ft
 Ft
 Ft
@@ -25212,6 +25239,7 @@ Ft
 Ft
 Ft
 zl
+Ih
 Ft
 Ft
 Ft
@@ -25327,6 +25355,7 @@ XO
 Ft
 Ft
 yp
+rY
 Ft
 Ft
 Ft
@@ -28053,6 +28082,7 @@ Ft
 Ft
 Ft
 zq
+YQ
 Ft
 Ft
 Ft
@@ -29453,6 +29483,7 @@ gV
 Ft
 Ft
 yK
+vk
 Ft
 Ft
 Ft
