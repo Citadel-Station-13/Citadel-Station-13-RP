@@ -1211,3 +1211,6 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
+
+/mob/living/proc/OpenCraftingMenu()
+	return

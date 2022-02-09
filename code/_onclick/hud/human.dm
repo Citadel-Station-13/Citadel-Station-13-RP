@@ -343,11 +343,13 @@
 	mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
 	hud_elements |= mymob.zone_sel
 
-	mymob.crafting = new /obj/screen/crafting
+	/*
+	mymob.crafting = new /obj/screen/crafting(null)
 	mymob.crafting.icon = ui_style
 	mymob.crafting.color = ui_color
 	mymob.crafting.alpha = ui_alpha
 	hud_elements |= mymob.crafting
+	*/
 
 	//Handle the gun settings buttons
 	mymob.gun_setting_icon = new /obj/screen/gun/mode(null)

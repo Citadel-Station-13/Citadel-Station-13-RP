@@ -5,10 +5,10 @@
 /datum/component/personal_crafting/proc/create_mob_button(mob/user, client/CL)
 	var/datum/hud/H = user.hud_used
 	for(var/huds in H.static_inventory)
-		if(istype(huds, /obj/screen/crafting))
+		if(istype(huds, /obj/screen/craft))
 			return
 	//We don't want to be stacking multiple crafting huds on relogs
-	var/obj/screen/crafting/C = new()
+	var/obj/screen/craft/C = new()
 	C.icon = H.ui_style
 	H.static_inventory += C
 	CL.screen += C
@@ -320,7 +320,7 @@
 		Deletion.Cut(Deletion.len)
 		qdel(DL)
 
-/datum/component/personal_crafting/proc/component_ui_interact(obj/screen/crafting/image, location, control, params, user)
+/datum/component/personal_crafting/proc/component_ui_interact(obj/screen/craft/image, location, control, params, user)
 	if(user == parent)
 		ui_interact(user)
 
@@ -328,15 +328,17 @@
 	return GLOB.not_incapacitated_state
 
 //For the UI related things we're going to assume the user is a mob rather than typesetting it to an atom as the UI isn't generated if the parent is an atom
-/datum/component/personal_crafting/ui_interact(mob/user, datum/tgui/ui)
+/datum/component/personal_crafting/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
+		/*
 		cur_category = categories[1]
 		if(islist(categories[cur_category]))
 			var/list/subcats = categories[cur_category]
 			cur_subcategory = subcats[1]
 		else
 			cur_subcategory = CAT_NONE
+		*/
 		ui = new(user, src, "PersonalCrafting")
 		ui.open()
 
