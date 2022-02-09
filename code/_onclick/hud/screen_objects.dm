@@ -181,6 +181,18 @@
 	icon_state = "craft"
 	screen_loc = ui_crafting
 
+/obj/screen/crafting/Click(location, control,params)
+	if(!usr)
+		return 1
+	if(!usr.canClick())
+		return
+
+	if(usr.stat || usr.restrained() || usr.stunned || usr.lying)
+		return 1
+
+	usr.ui_act()
+	return 1
+
 /obj/screen/Click(location, control, params)
 	if(!usr)	return 1
 	switch(name)
