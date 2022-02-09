@@ -144,6 +144,12 @@ var/last_chew = 0
 	desc = "Use this to keep... 'prisoners' in line."
 	breakouttime = 30 //3sec breakout time. why did this not exist before. bruh moment.
 
+/obj/item/handcuffs/sinew
+	name = "sinew cuffs"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "sinewcuff"
+	desc = "A complex weave of sinew repurposed as handcuffs."
+
 /obj/item/handcuffs/cable
 	name = "cable restraints"
 	desc = "Looks like some cables tied together. Could be used to tie something up."

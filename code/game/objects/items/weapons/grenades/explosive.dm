@@ -74,3 +74,28 @@
 	num_fragments = 20
 	spread_range = 3
 	explosion_size = 1
+
+/obj/item/grenade/explosive/ied
+	name = "mini fragmentation grenade"
+	desc = "A miniaturized fragmentation grenade, this one poses relatively little threat on its own."
+	icon_state = "minifrag"
+	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong)
+	num_fragments = 20
+	spread_range = 3
+	explosion_size = 1
+	num_fragments = 63  //total number of fragments produced by the grenade
+	explosion_size = 2   //size of the center explosion
+	spread_range = 7
+	det_time = 50
+	var/range = 3
+	var/list/times
+
+/obj/item/grenade/explosive/ied/Initialize()
+	. = ..()
+	times = list("5" = 10, "-1" = 20, "[rand(30,80)]" = 50, "[rand(65,180)]" = 20)// "Premature, Dud, Short Fuse, Long Fuse"=[weighting value]
+	det_time = text2num(pickweight(times))
+	if(det_time < 0) //checking for 'duds'
+		range = 1
+		det_time = rand(30,80)
+	else
+		range = pick(2,2,2,3,3,3,4)

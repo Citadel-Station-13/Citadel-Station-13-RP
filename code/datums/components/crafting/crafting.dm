@@ -22,6 +22,7 @@
 				CAT_WEAPONRY = list(
 					CAT_WEAPON,
 					CAT_AMMO,
+					CAT_OTHER,
 				),
 				CAT_ROBOT = CAT_NONE,
 				CAT_MISCELLANEOUS = list(

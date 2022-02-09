@@ -36,7 +36,7 @@
 	name = "telescopic baton"
 	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "telebaton0"
+	icon_state = "telebaton"
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
 	force = 3
@@ -53,7 +53,7 @@
 		user.visible_message("<span class='warning'>With a flick of their wrist, [user] extends their telescopic baton.</span>",\
 		"<span class='warning'>You extend the baton.</span>",\
 		"You hear an ominous click.")
-		icon_state = "telebaton1"
+		src.icon_state = "[icon_state]_1"
 		w_class = ITEMSIZE_NORMAL
 		force = on_force //quite robust
 		attack_verb = list("struck", "beat")
@@ -61,7 +61,7 @@
 		user.visible_message("<span class='notice'>\The [user] collapses their telescopic baton.</span>",\
 		"<span class='notice'>You collapse the baton.</span>",\
 		"You hear a click.")
-		icon_state = "telebaton0"
+		src.icon_state = "[icon_state]_0"
 		w_class = ITEMSIZE_SMALL
 		force = off_force //not so robust now
 		attack_verb = list("poked", "jabbed")
@@ -110,6 +110,16 @@
 		force = old_force
 	else
 		return ..()
+
+/obj/item/melee/classic_baton/telescopic/newspaper
+	name = "The Daily Whiplash"
+	desc = "A newspaper wrapped around a telescopic baton in such a way that it looks like you're beating people with a rolled up newspaper."
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "newspaper"
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			)
 
 /obj/item/melee/disruptor
 	name = "disruptor blade"
@@ -185,3 +195,95 @@
 		on = 0
 
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+
+/obj/item/melee/bokken // parrying stick
+	name = "bokken"
+	desc = "A training sword made of wood and shaped like a katana."
+	icon_state = "bokken"
+	slot_flags = SLOT_BELT | SLOT_BACK
+	damtype = HALLOSS
+	force = 5
+	throwforce = 5
+	attack_verb = list("whacked", "smacked", "struck")
+	hitsound = 'sound/weapons/genhit3.ogg'
+	var/reinforced = FALSE
+	var/burnt = FALSE
+	var/burned_in
+
+/obj/item/melee/bokken/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/pen))
+		var/new_name = stripped_input(user, "What do you wish to name [src]?", "New Name", "bokken", 30)
+		if(new_name)
+			name = new_name
+	if(I.tool_behaviour == TOOL_WELDER)
+		var/new_burn = stripped_input(user, "What do you wish to burn into [src]?", "Burnt Inscription","", 140)
+		if(new_burn)
+			burned_in = new_burn
+			if(!burnt)
+				icon_state += "_burnt"
+				item_state += "_burnt"
+				burnt = TRUE
+			update_icon()
+	if(istype(I, /obj/item/stack/rods))
+		var/obj/item/stack/rods/R = I
+		if(!reinforced)
+			if(R.use(1))
+				src.force = (force + 5)
+				reinforced = TRUE
+				to_chat(user, "<span class='notice'>You slide a metal rod into [src]\'s hilt. It feels a little heftier in your hands.")
+		else
+			to_chat(user, "<span class='notice'>[src] already has a weight slid into the hilt.")
+
+/obj/item/melee/bokken/examine(mob/user)
+	. = ..()
+	if(reinforced)
+		. += "There's a metal rod shoved into the base."
+	if(burnt)
+		. += "Burned into the \"blade\" is [burned_in]."
+
+/obj/item/melee/bokken/hardwood
+	name = "hardwood bokken"
+	desc = "A blunt katana made from hardwood, a dense organic wood."
+	icon_state = "bokken_hard"
+	item_state = "bokken_hard"
+	force = 10
+
+/obj/item/melee/bokken/waki
+	name = "wakizashi bokken"
+	desc = "A space-Japanese training sword made of wood and shaped like a wakizashi."
+	icon_state = "wakibokken"
+	item_state = "wakibokken"
+	slot_flags = SLOT_BELT
+	force = 5
+
+/obj/item/melee/bokken/waki/hardwood
+	name = "wakizashi hardwood bokken"
+	desc = "A blunt wakizashi made from hardwood, a dense organic wood."
+	icon_state = "wakibokken_hard"
+	item_state = "wakibokken_hard"
+	force = 10
+
+/obj/item/bokken_hilt
+	name = "bokken hilt"
+	desc = "A wooden hilt wrapped in grip tape."
+	icon_state = "bokken_hilt"
+
+/obj/item/bokken_blade
+	name = "bokken blade"
+	desc = "A wooden katana blade, used for training on old Terra."
+	icon_state = "bokken_blade"
+
+/obj/item/wakibokken_blade
+	name = "wakibokken blade"
+	desc = "A wooden wakizashi blade, used for training on old Terra."
+	icon_state = "wakibokken_blade"
+
+/obj/item/bokken_blade/hardwood
+	name = "hardwood bokken blade"
+	desc = "A sturdy wooden katana blade, used for training on old Terra."
+	icon_state = "bokken_blade_h"
+
+/obj/item/wakibokken_blade/hardwood
+	name = "hardwood wakibokken blade"
+	desc = "A sturdy wooden wakizashi blade, used for training on old Terrae."
+	icon_state = "wakibokken_blade_h"

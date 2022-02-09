@@ -496,3 +496,12 @@
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/bone
+	name = "bone"
+	desc = "These dense calcium structures are a common support system for organic life."
+	icon_state = "sheet-bone"
+	default_type = "bone"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'

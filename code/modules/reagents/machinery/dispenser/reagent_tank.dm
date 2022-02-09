@@ -471,3 +471,16 @@
 /obj/structure/reagent_dispenser/he3/Initialize()
 	..()
 	reagents.add_reagent("helium3",1000)
+
+//Oil from Main. Seems like it could fit into Robotics as well as Surt stuff.
+/obj/structure/reagent_dispensers/oil
+	name = "Oil Dispenser"
+	desc = "A dispenser of crude oil for industrial processes."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "oiltank"
+	amount_per_transfer_from_this = 10
+	anchored = 1
+
+/obj/structure/reagent_dispensers/oil/Initialize()
+	. = ..()
+	reagents.add_reagent("oil", 1000)

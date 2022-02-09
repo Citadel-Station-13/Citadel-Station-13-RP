@@ -303,6 +303,57 @@
 	projectile_type = /obj/item/projectile/bullet/shotgun/stake
 	matter = list(DEFAULT_WALL_MATERIAL = 500)
 
+//Techshell & Derivatives
+/obj/item/ammo_casing/a12g/techshell
+	name = "unloaded technological shell"
+	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
+	icon_state = "cshell"
+	caliber = "12g"
+	projectile_type = null
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "phoron" = 200)
+
+/obj/item/ammo_casing/a12g/techshell/meteorslug
+	name = "meteorslug shell"
+	desc = "A shotgun shell rigged with CMC technology, which launches a massive slug when fired."
+	icon_state = "mshell"
+	projectile_type = /obj/item/projectile/meteor/slug
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "gold" = 200)
+
+/obj/item/ammo_casing/a12g/techshell/pulseslug
+	name = "pulse slug"
+	desc = "A delicate device which can be loaded into a shotgun. The primer acts as a button which triggers the gain medium and fires a powerful \
+	energy blast. While the heat and power drain limit it to one use, it can still allow an operator to engage targets that ballistic ammunition \
+	would have difficulty with."
+	icon_state = "plshell"
+	projectile_type = /obj/item/projectile/beam/pulse/shotgun
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "silver" = 200)
+
+/obj/item/ammo_casing/a12g/techshell/dragonsbreath
+	name = "dragonsbreath shell"
+	desc = "A shotgun shell which fires a spread of incendiary pellets."
+	icon_state = "ishell2"
+	projectile_type = /obj/item/projectile/bullet/incendiary/shotgun
+
+/obj/item/ammo_casing/a12g/techshell/frag12
+	name = "FRAG-12 slug"
+	desc = "A high explosive breaching round for a 12 gauge shotgun."
+	icon_state = "heshell"
+	projectile_type = /obj/item/projectile/bullet/shotgun/frag12
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "phoron" = 200)
+
+/obj/item/ammo_casing/a12g/techshell/improvised
+	name = "improvised shell"
+	desc = "An extremely weak shotgun shell with multiple small pellets made out of metal shards."
+	icon_state = "improvshell"
+	projectile_type = /obj/item/projectile/bullet/pellet/shotgun_improvised
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200)
+/obj/item/ammo_casing/a12g/techshell/laserslug
+	name = "scatter laser shell"
+	desc = "An advanced shotgun shell that uses a micro laser to replicate the effects of a scatter laser weapon in a ballistic package."
+	icon_state = "lshell"
+	projectile_type = /obj/item/projectile/scatter/laser
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200)
+
 /*
  * 7.62mm
  */

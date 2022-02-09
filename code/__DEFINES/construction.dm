@@ -104,6 +104,7 @@
 #define CAT_PARTS	"Weapon Parts"
 #define CAT_ROBOT	"Robots"
 #define CAT_MISCELLANEOUS	"Miscellaneous"
+#define CAT_OTHER	"Other"
 #define CAT_TOOL	"Tools & Storage"
 #define CAT_FURNITURE	"Furniture"
 #define CAT_PRIMAL  "Tribal"

@@ -89,5 +89,12 @@
 	caliber = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/a762
 
-
-
+/obj/item/gun/projectile/contender/pipegun
+	name = "improvised pipe rifle"
+	desc = "A single shot, handmade pipe rifle. It almost functions like a bolt action. Accepts shotgun shells."
+	icon_state = "pipegun"
+	icon_retracted = "pipegun-empty"
+	item_state = "revolver"
+	caliber = "12g"
+	ammo_type = /obj/item/ammo_casing/a12g
+	projectile_type = /obj/item/projectile/bullet/shotgun

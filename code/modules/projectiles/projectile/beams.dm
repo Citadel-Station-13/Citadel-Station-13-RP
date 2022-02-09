@@ -131,6 +131,10 @@
 		target.ex_act(2)
 	..()
 
+/obj/item/projectile/beam/pulse/shotgun
+	damage = 40
+	armor_penetration = 25
+
 /obj/item/projectile/beam/emitter
 	name = "emitter beam"
 	icon_state = "emitter"

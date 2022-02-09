@@ -611,3 +611,12 @@
 	min_distance = 2
 	skill_mod = -1
 */
+
+/obj/item/clothing/gloves/bracer
+	name = "bone bracers"
+	desc = "For when you're expecting to get slapped on the wrist. Offers modest protection to your arms."
+	icon_state = "bracers"
+	body_parts_covered = ARMS
+	cold_protection = HANDS
+	heat_protection = HANDS
+	armor = list("melee" = 15, "bullet" = 5, "laser" = 5, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 15, "acid" = 0)

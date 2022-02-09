@@ -5,7 +5,6 @@
 /obj/item/weaponcrafting/receiver
 	name = "modular receiver"
 	desc = "A prototype modular receiver and trigger assembly for a firearm."
-	icon = 'icons/obj/gun/improvised.dmi'
 	icon_state = "receiver"
 
 /obj/item/weaponcrafting/stock
