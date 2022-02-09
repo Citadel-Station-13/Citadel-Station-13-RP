@@ -1673,3 +1673,8 @@
 	name = "navy gray jumpsuit"
 	desc = "The gray, branchless version issued to all who enrolled. Or those who visited the duty-free store on their way out."
 	icon_state = "navy_jumpsuit"
+
+/obj/item/clothing/under/chiming_dress
+    name = "chiming dress"
+    desc = "This stylish yet rugged dress is inspired by recovered depictions of ancient Surt's native inhabitants. Composed of many integrated panels, it allows for excellent breathability whilst also retaining a strong profile."
+    icon_state = "chiming_dress"

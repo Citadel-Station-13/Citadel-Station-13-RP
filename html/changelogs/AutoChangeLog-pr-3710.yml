@@ -1,6 +1,0 @@
-author: "Captain277"
-delete-after: True
-changes: 
-  - rscadd: "Adds MUTE trait."
-  - rscdel: "Removes miming variable.
-tweak: Hexadecimal refactor."
