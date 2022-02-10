@@ -1,5 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - rscadd: "moth robots"
-  - rscadd: "*honk *buzz2 *warn *chime"
