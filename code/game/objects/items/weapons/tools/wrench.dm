@@ -21,6 +21,18 @@
 /obj/item/tool/wrench/is_wrench()
 	return TRUE
 
+/obj/item/tool/wrench/bone
+	name = "bone wrench"
+	desc = "A primitive wrench carved from bone. It does not grip consistently."
+	icon_state = "wrench_bone"
+	toolspeed = 1.25
+
+/obj/item/tool/wrench/brass
+	name = "brass wrench"
+	desc = "A brass plated wrench. Its finely tuned mechanism allows for a strong grip."
+	icon_state = "wrench_brass"
+	toolspeed = 0.75
+
 /obj/item/tool/wrench/cyborg
 	name = "automatic wrench"
 	desc = "An advanced robotic wrench. Can be found in industrial synthetic shells."

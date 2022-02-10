@@ -505,3 +505,12 @@
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/copper
+	name = "copper"
+	desc = "This common metal remains a popular choice as an electrical and thermal conductor due to how easily it can be worked."
+	icon_state = "sheet-copper"
+	default_type = "copper"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'

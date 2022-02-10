@@ -30,6 +30,19 @@
 	icon_state = "red_crowbar"
 	item_state = "crowbar_red"
 
+/obj/item/tool/crowbar/bone
+	name = "bone crowbar"
+	desc = "A sturdy, carved bone used to remove floors and to pry open doors."
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "crowbar_bone"
+	toolspeed = 1.25
+
+/obj/item/tool/crowbar/brass
+	name = "brass crowbar"
+	desc = "An etched piece of brass plated metal, used to remove floors and to pry open doors."
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "crowbar_brass"
+	toolspeed = 0.75
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_crowbar
 	name = "Precursor Alpha Object - Hard Light Pry Tool"
