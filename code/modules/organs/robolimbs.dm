@@ -632,6 +632,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Tajara"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_tajaran
 	company = "DSI - Tajaran"
@@ -646,6 +647,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Unathi"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_lizard
 	company = "DSI - Lizard"
@@ -660,6 +662,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Sergal"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_sergal
 	company = "DSI - Sergal"
@@ -674,6 +677,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Nevrean"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_nevrean
 	company = "DSI - Nevrean"
@@ -688,6 +692,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Vulpkanin"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_vulpkanin
 	company = "DSI - Vulpkanin"
@@ -702,6 +707,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Akula"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_akula
 	company = "DSI - Akula"
@@ -716,6 +722,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Vasilissan"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_spider
 	company = "DSI - Vasilissan"
@@ -727,6 +734,7 @@ END OF CITADEL CHANGES */
 	lifelike = 1
 	skin_tone = 1
 	suggested_species = "Teshari"
+	speech_bubble_appearance = "normal"
 
 /datum/robolimb/dsi_teshari/New()
 	species_cannot_use = GLOB.all_species.Copy()
