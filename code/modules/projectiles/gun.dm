@@ -290,9 +290,7 @@
 			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
 			playsound(src, A.usesound, 50, 1)
 			if(do_after(user, 60 * A.toolspeed))
-				if(!do_after())
-					return
-				else switch(rand(1,100))
+				switch(rand(1,100))
 					if(1 to 10)
 						to_chat(user, "<span class='danger'>The electronic pin suite detects the intrusion and explodes!</span>")
 						user.show_message("<span class='danger'>SELF-DESTRUCTING...</span><br>", 2)
@@ -312,9 +310,7 @@
 			to_chat(user, "<span class='notice'>You attempt to remove \the firing pin from \the [src].</span>")
 			playsound(src, A.usesound, 50, 1)
 			if(do_after(user, 60* A.toolspeed))
-				if(!do_after())
-					return
-				else switch(rand(1,100))
+				switch(rand(1,100))
 					if(1 to 10)
 						to_chat(user, "<span class='danger'>You twist \the firing pin as you tug, destroying the firing pin.</span>")
 						pin = null
@@ -325,6 +321,8 @@
 						to_chat(user, "<span class='notice'>You remove \the firing pin from \the [src].</span>")
 						user.put_in_hands(src.pin)
 						pin = null
+			else if(!do_after())
+				return
 		else if(pin && !scrambled)
 			to_chat(user, "<span class='notice'>The \the firing pin is firmly locked into \the [src].</span>")
 		else
