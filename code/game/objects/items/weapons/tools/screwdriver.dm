@@ -71,7 +71,7 @@
 
 
 /obj/item/tool/screwdriver/bone
-	name = "bone screwdriver"
+	name = "primitive screwdriver"
 	desc = "A whittled bone with a tapered point, used to remove screws, or stab."
 	icon_state = "screwdriver_bone"
 	random_color = FALSE

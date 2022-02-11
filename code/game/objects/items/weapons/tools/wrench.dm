@@ -22,7 +22,7 @@
 	return TRUE
 
 /obj/item/tool/wrench/bone
-	name = "bone wrench"
+	name = "primitive wrench"
 	desc = "A primitive wrench carved from bone. It does not grip consistently."
 	icon_state = "wrench_bone"
 	toolspeed = 1.25

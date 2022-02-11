@@ -46,7 +46,7 @@
 	return TRUE
 
 /obj/item/tool/wirecutters/bone
-	name = "bone wirecutters"
+	name = "primitive wirecutters"
 	desc = "Dull wirecutters knapped from bone."
 	icon_state = "cutters_bone"
 	toolspeed = 1.25

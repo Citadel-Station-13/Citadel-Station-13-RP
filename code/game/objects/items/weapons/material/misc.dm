@@ -25,7 +25,7 @@
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
 /obj/item/material/knife/machete/hatchet/bone
-	name = "bone hatchet"
+	name = "primitive hatchet"
 	desc = "A broad, flat piece of bone knapped to a sharp edge. A truly primitive weapon."
 	icon_state = "hatchet_bone"
 

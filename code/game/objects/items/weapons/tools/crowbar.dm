@@ -31,7 +31,7 @@
 	item_state = "crowbar_red"
 
 /obj/item/tool/crowbar/bone
-	name = "bone crowbar"
+	name = "primitive crowbar"
 	desc = "A sturdy, carved bone used to remove floors and to pry open doors."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar_bone"

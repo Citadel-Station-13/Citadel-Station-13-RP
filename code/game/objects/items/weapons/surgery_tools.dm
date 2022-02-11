@@ -208,7 +208,6 @@
 	throw_range = 5
 	attack_verb = list("attacked", "hit", "bludgeoned")
 
-
 /*
  * Bio Regen
  */
@@ -280,3 +279,73 @@
 /obj/item/surgical/bone_clamp/alien
 	icon = 'icons/obj/abductor.dmi'
 	toolspeed = 0.75
+
+// Primitive Items
+
+
+/obj/item/surgical/retractor_primitive
+	name = "primitive retractor"
+	desc = "An archaic retractor fashioned out of bone and treated sinew."
+	icon_state = "retractor_bone"
+	matter = list("bone" = 5000)
+	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
+
+/obj/item/surgical/hemostat_primitive
+	name = "primitive hemostat"
+	desc = "Two long bones connected by sinew, used as fine clamps."
+	icon_state = "hemostat_bone"
+	matter = list("bone" = 5000)
+	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
+	attack_verb = list("attacked", "pinched")
+
+/obj/item/surgical/cautery_primitive
+	name = "primitive cautery"
+	desc = "An arcane gemstone inserted into whittled bone. It seems to be useful for stopping bleeding."
+	icon_state = "cautery_bone"
+	matter = list("bone" = 5000)
+	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
+	attack_verb = list("burnt")
+
+/obj/item/surgical/scalpel_primitive
+	name = "primitive scalpel"
+	desc = "Finely knapped glass attached to a carved bone by sinew. It seems like it'd be good at cutting."
+	icon_state = "scalpel_bone"
+	force = 10.0
+	sharp = 1
+	edge = 1
+	w_class = ITEMSIZE_TINY
+	slot_flags = SLOT_EARS
+	throwforce = 5.0
+	throw_speed = 3
+	throw_range = 5
+	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
+	matter = list("bone" = 5000, "glass" = 2500)
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+	suicide_act(mob/user)
+		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
+		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
+		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
+		return (BRUTELOSS)
+
+/obj/item/surgical/saw_primitive
+	name = "primitive bone saw"
+	desc = "An admittedly complex, yet still inferior tool, this bone saw uses knapped volcanic glass as cutting teeth."
+	icon_state = "saw_bone"
+	force = 15.0
+	w_class = ITEMSIZE_NORMAL
+	throwforce = 9.0
+	throw_speed = 3
+	throw_range = 5
+	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
+	matter = list("bone" = 6000, "glass" = 4000)
+	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	sharp = 1
+	edge = 1
+
+/obj/item/surgical/bonesetter_primitive
+	name = "primitive bone setter"
+	desc = "Large leg bones whittled down and woven together with sinew. Used to set other bones."
+	icon_state = "bone_setter_bone"
+	matter = list("bone" = 5000)

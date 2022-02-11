@@ -156,3 +156,70 @@
             /obj/item/shovel = 1)
 	result = /obj/item/shovel/bone
 	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bonehatchet
+	name = "Bone Hatchet"
+	always_availible = FALSE
+	reqs = list(
+            /obj/item/stack/material/bone = 6,
+            /obj/item/stack/sheet/sinew = 2)
+	result = /obj/item/material/knife/machete/hatchet/bone
+	category = CAT_PRIMAL
+
+//Surgical Tools - I've added these to this crafting menu after I found the sprites on Main and brought them over for the novelty.
+/datum/crafting_recipe/primalretractor
+	name = "Primitive Retractor"
+	always_availible = FALSE
+	reqs = list(
+            /obj/item/stack/material/bone = 5,
+            /obj/item/stack/sheet/sinew = 2)
+	result = /obj/item/surgical/retractor_primitive
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/primalhemostat
+	name = "Primitive Hemostat"
+	always_availible = FALSE
+	reqs = list(
+            /obj/item/stack/material/bone = 4,
+            /obj/item/stack/sheet/sinew = 3)
+	result = /obj/item/surgical/hemostat_primitive
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/primalcautery
+	name = "Primitive Cautery"
+	always_availible = FALSE
+	reqs = list(
+            /obj/item/stack/material/bone = 3,
+            /obj/item/stack/sheet/sinew = 2,
+			/obj/item/soulstone = 1)
+	result = /obj/item/surgical/cautery_primitive
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/primalscalpel
+	name = "Primitive Scalpel"
+	always_availible = FALSE
+	reqs = list(
+            /obj/item/stack/material/bone = 3,
+            /obj/item/stack/sheet/sinew = 1,
+			/obj/item/material/shard = 1)
+	result = /obj/item/surgical/scalpel_primitive
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/primalsaw
+	name = "Primitive Bone Saw"
+	always_availible = FALSE
+	reqs = list(
+            /obj/item/stack/material/bone = 6,
+            /obj/item/stack/sheet/sinew = 4,
+			/obj/item/material/shard = 3)
+	result = /obj/item/surgical/saw_primitive
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/primalsetter
+	name = "Primitive Bone Setter"
+	always_availible = FALSE
+	reqs = list(
+            /obj/item/stack/material/bone = 5,
+            /obj/item/stack/sheet/sinew = 3)
+	result = /obj/item/surgical/bonesetter_primitive
+	category = CAT_PRIMAL
