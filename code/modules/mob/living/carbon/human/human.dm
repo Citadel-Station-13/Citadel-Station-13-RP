@@ -21,6 +21,10 @@
 	var/active_regen_delay = 300
 	var/spam_flag = FALSE	//throws byond:tm: errors if placed in human/emote, but not here
 
+	var/old_slow
+	var/old_hunger
+	var/healing = FALSE
+
 /mob/living/carbon/human/Initialize(mapload, var/new_species = null)
 	if(!dna)
 		dna = new /datum/dna(null)
@@ -37,6 +41,9 @@
 		name = real_name
 		if(mind)
 			mind.name = real_name
+
+		old_slow = species.slowdown
+		old_hunger = species.hunger_factor
 
 
 	nutrition = rand(200,400)

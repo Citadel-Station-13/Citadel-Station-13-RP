@@ -2544,6 +2544,8 @@
 #include "code\modules\mob\living\carbon\human\species\station\traits\neutral.dm"
 #include "code\modules\mob\living\carbon\human\species\station\traits\positive.dm"
 #include "code\modules\mob\living\carbon\human\species\station\traits\trait.dm"
+#include "code\modules\mob\living\carbon\human\species\station\xenomorph_hybrids\hybrid_abilities.dm"
+#include "code\modules\mob\living\carbon\human\species\station\xenomorph_hybrids\xeno_hybrids.dm"
 #include "code\modules\mob\living\carbon\human\species\virtual_reality\avatar.dm"
 #include "code\modules\mob\living\carbon\human\species\virtual_reality\opaque_form.dm"
 #include "code\modules\mob\living\carbon\human\species\xenomorphs\alien_embryo.dm"
