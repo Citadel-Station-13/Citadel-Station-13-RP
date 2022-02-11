@@ -1,11 +1,20 @@
+/obj/item/stack/material/animalhide
+	name = "animal hide"
+	desc = "Intact skin stripped off from a creature's body."
+	singular_name = "hide piece"
+	icon_state = "sheet-hide"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/cloth.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
+
+/obj/item/stack/material/animalhide/grey
+	icon_state = "sheet-greyhide"
+
 /obj/item/stack/material/animalhide/human
 	name = "human skin"
 	desc = "The by-product of human farming."
 	singular_name = "human skin piece"
 	icon_state = "sheet-hide"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/cloth.ogg'
-	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
 /obj/item/stack/material/animalhide/human
 	amount = 50
@@ -80,7 +89,7 @@
 
 /obj/item/stack/material/hairlesshide
 	name = "hairless hide"
-	desc = "This hide was stripped of it's hair, but still needs tanning."
+	desc = "This smooth hide needs tanning before it can become leather."
 	singular_name = "hairless hide piece"
 	icon_state = "sheet-hairlesshide"
 	no_variants = FALSE
