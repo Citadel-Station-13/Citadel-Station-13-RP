@@ -1,0 +1,4 @@
+author: "Ghostcoffeee"
+delete-after: True
+changes: 
+  - bugfix: "Made lifelike limbs give the organic speechbubble"
