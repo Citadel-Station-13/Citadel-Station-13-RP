@@ -106,6 +106,7 @@
 
 	var/obj/item/firing_pin/pin = /obj/item/firing_pin
 	var/no_pin_required = 0
+	var/scrambled = 0
 
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
@@ -283,6 +284,52 @@
 				verbs -= /obj/item/gun/verb/allow_dna
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
+
+	if(A.is_multitool())
+		if(!scrambled)
+			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
+			playsound(src, A.usesound, 50, 1)
+			if(do_after(user, 60 * A.toolspeed))
+				if(!do_after())
+					return
+				else switch(rand(1,100))
+					if(1 to 10)
+						to_chat(user, "<span class='danger'>The electronic pin suite detects the intrusion and explodes!</span>")
+						user.show_message("<span class='danger'>SELF-DESTRUCTING...</span><br>", 2)
+						explosion(get_turf(src), -1, 0, 2, 3)
+						qdel(src)
+					if(11 to 49)
+						to_chat(user, "<span class='notice'>You fail to disrupt \the electronic warfare suite.</span>")
+						return
+					if(50 to 100)
+						to_chat(user, "<span class='notice'>You disrupt \the electronic warfare suite.</span>")
+						scrambled = 1
+		else
+			to_chat(user, "<span class='warning'>\The [src] does not have an active electronic warfare suite!</span>")
+
+	if(A.is_wirecutter())
+		if(pin && scrambled)
+			to_chat(user, "<span class='notice'>You attempt to remove \the firing pin from \the [src].</span>")
+			playsound(src, A.usesound, 50, 1)
+			if(do_after(user, 60* A.toolspeed))
+				if(!do_after())
+					return
+				else switch(rand(1,100))
+					if(1 to 10)
+						to_chat(user, "<span class='danger'>You twist \the firing pin as you tug, destroying the firing pin.</span>")
+						pin = null
+					if(11 to 74)
+						to_chat(user, "<span class='notice'>You grasp the firing pin, but it slips free!</span>")
+						return
+					if(75 to 100)
+						to_chat(user, "<span class='notice'>You remove \the firing pin from \the [src].</span>")
+						user.put_in_hands(src.pin)
+						pin = null
+		else if(pin && !scrambled)
+			to_chat(user, "<span class='notice'>The \the firing pin is firmly locked into \the [src].</span>")
+		else
+			to_chat(user, "<span class='warning'>\The [src] does not have a firing pin installed!</span>")
+
 	..()
 
 /obj/item/gun/emag_act(var/remaining_charges, var/mob/user)

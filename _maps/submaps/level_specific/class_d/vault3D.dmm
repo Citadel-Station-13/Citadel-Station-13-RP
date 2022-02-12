@@ -2,21 +2,18 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
-"b" = (
-/turf/simulated/mineral/vacuum,
-/area/template_noop)
 "c" = (
 /turf/simulated/wall/r_wall,
 /area/poi_d/explored)
 "d" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "e" = (
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/effect/decal/cleanable/dirt,
 /obj/fiftyspawner/mhydrogen,
-/turf/simulated/floor/tiled/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "w" = (
 /turf/simulated/mineral/vacuum,
@@ -25,46 +22,46 @@
 (1,1,1) = {"
 a
 a
-b
-b
+w
+w
 a
 a
 "}
 (2,1,1) = {"
 a
-b
-b
-b
-b
+w
+w
+w
+w
 a
 "}
 (3,1,1) = {"
-b
-b
-b
-b
-b
+w
+w
+w
+w
+w
 w
 "}
 (4,1,1) = {"
-b
-b
-b
-b
+w
+w
+w
+w
 w
 c
 "}
 (5,1,1) = {"
-b
-b
-b
+w
+w
+w
 w
 d
 c
 "}
 (6,1,1) = {"
-b
-b
+w
+w
 w
 w
 e

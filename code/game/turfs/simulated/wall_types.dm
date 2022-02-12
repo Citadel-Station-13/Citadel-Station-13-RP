@@ -79,6 +79,9 @@
 /turf/simulated/wall/sifwood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload, MAT_SIFWOOD)
 
+/turf/simulated/wall/hardwood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+	return ..(mapload, MAT_HARDWOOD)
+
 /turf/simulated/wall/log/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload, MAT_LOG)
 

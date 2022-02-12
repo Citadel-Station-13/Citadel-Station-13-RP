@@ -411,6 +411,37 @@ obj/item/clothing/suit/kamishimo
 	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
+/obj/item/clothing/suit/storage/toggle/navy_coat_blue
+	name = "blue navy coat"
+	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is blue, which is not what the ocean's color is anymore."
+	icon_state = "blue_navy_jacket"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/navy_coat_brown
+	name = "brown navy coat"
+	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is brown, which makes you feel like you're back in the rust-colored oceans."
+	icon_state = "brown_navy_jacket"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/navy_coat_green
+	name = "brown navy coat"
+	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is green, like the 'vegan rations' you were dared to eat. It was actually bottom-deck gunk. It smelled nicer than this coat."
+	icon_state = "green_navy_jacket"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/stripe_jacket
+	name = "striped jacket"
+	desc = "A high collar, a gaudy stripe, clasps that don't actually work. All the ingredients to a fashionable clown! Trust me, they are /definitely/ laughing at your jokes, and not you."
+	icon_state = "stripe_jacket"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	flags_inv = HIDEHOLSTER
 /*
  * stripper
  */
@@ -1113,7 +1144,9 @@ obj/item/clothing/suit/kamishimo
 	icon_state = "laconic"
 	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
 	body_parts_covered = UPPER_TORSO|ARMS
-	valid_accessory_slots = ACCESSORY_SLOT_UTILITY
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_UTILITY)
 
 /obj/item/clothing/suit/imperial_replica
 	name = "replica imperial soldier armor"
@@ -1127,3 +1160,13 @@ obj/item/clothing/suit/kamishimo
 	name = "replica imperial officer armor"
 	desc = "Not all heroes wear capes, but it'd be cooler if they did. This appears less sturdy than the authentic article."
 	icon_state = "ge_armorcent"
+
+/obj/item/clothing/suit/darkfur
+	name = "vexatious coat"
+	desc = "A sleek jacket with a dark fur lining around the collar. All the rage on Infernum."
+	icon_state = "darkfur_jacket"
+	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
+	body_parts_covered = UPPER_TORSO|ARMS
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_UTILITY)

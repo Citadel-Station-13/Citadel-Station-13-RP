@@ -207,6 +207,10 @@ proc/get_radio_key_from_channel(var/channel)
 		speaking.broadcast(src,trim(message))
 		return 1
 
+	if(HAS_TRAIT(GLOB, TRAIT_MUTE))
+		to_chat(src, "<span class='danger'>You are not capable of speech!</span>")
+		return
+
 	//Self explanatory.
 	if(is_muzzled() && !(speaking && (speaking.flags & SIGNLANG)))
 		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")

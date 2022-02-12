@@ -149,6 +149,10 @@
 	name = "black tie"
 	icon_state = "blacktie"
 
+/obj/item/clothing/accessory/tie/black_clip
+	name = "black tie with a clip"
+	icon_state = "blackcliptie"
+
 /obj/item/clothing/accessory/tie/darkgreen
 	name = "dark green tie"
 	icon_state = "dgreentie"

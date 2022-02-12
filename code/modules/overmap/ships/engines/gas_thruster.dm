@@ -77,19 +77,25 @@
 	var/boot_time = 35
 	var/next_on
 	var/blockage
+	var/linked = FALSE
 
 /obj/machinery/atmospherics/unary/engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles(need_rebuild=1)
+	if(SSshuttle.subsystem_initialized)
+		link_to_ship()
 
+/obj/machinery/atmospherics/unary/engine/proc/link_to_ship()
 	for(var/ship in SSshuttle.ships)
 		var/obj/effect/overmap/visitable/ship/S = ship
 		if(S.check_ownership(src))
 			S.engines |= controller
 			if(dir != S.fore_dir)
 				set_broken(TRUE)
-			break
+			else
+				set_broken(FALSE)
+			linked = TRUE
 
 /obj/machinery/atmospherics/unary/engine/Destroy()
 	QDEL_NULL(controller)
@@ -166,7 +172,7 @@
 		new/obj/effect/engine_exhaust(T, exhaust_dir, air_contents.check_combustability() && air_contents.temperature >= PHORON_MINIMUM_BURN_TEMPERATURE)
 
 /obj/machinery/atmospherics/unary/engine/proc/calculate_thrust(datum/gas_mixture/propellant, used_part = 1)
-	return round(sqrt(propellant.get_mass() * used_part * sqrt(air_contents.return_pressure()/200)),0.1)
+	return round((propellant.get_mass() * used_part * (air_contents.return_pressure()/200) ** 0.5) ** 0.85,0.1)
 
 /obj/machinery/atmospherics/unary/engine/RefreshParts()
 	..()

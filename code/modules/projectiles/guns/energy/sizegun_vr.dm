@@ -70,19 +70,22 @@
 	tracer_type = /obj/effect/projectile/tracer/xray
 	impact_type = /obj/effect/projectile/impact/xray
 
-	on_hit(var/atom/target)
-		var/mob/living/M = target
-		if(ishuman(target))
-			var/mob/living/carbon/human/H = M
-			H.resize(set_size, TRUE)
-			H.show_message("<font color=#4F49AF> The beam fires into your body, changing your size!</font>")
-			H.updateicon()
-		else if (istype(target, /mob/living/))
-			var/mob/living/H = M
-			H.resize(set_size, TRUE)
-			H.updateicon()
-		else
-			return 1
+/obj/item/projectile/beam/sizelaser/on_hit(var/atom/target)
+	var/mob/living/M = target
+	if(!M.permit_sizegun)
+		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = M
+		H.resize(set_size, TRUE)
+		H.show_message("<font color=#4F49AF> The beam fires into your body, changing your size!</font>")
+		H.updateicon()
+	else if (istype(target, /mob/living/))
+		var/mob/living/H = M
+		H.resize(set_size, TRUE)
+		H.updateicon()
+	else
+		return 1
 
 
 /obj/item/projectile/beam/sizelaser/shrink
@@ -91,3 +94,19 @@
 
 /obj/item/projectile/beam/sizelaser/grow
 	set_size = 2.0 //200% of current size
+
+
+/obj/item/gun/energy/stripper//Because it can be fun
+	name = "stripper gun"
+	desc = "A gun designed to remove unnessary layers from people. For external use only!"
+	icon = 'icons/obj/gun/energy.dmi'
+	icon_state = "sizegun-shrink100" // Someone can probably do better. -Ace
+	item_state = null	//so the human update icon uses the icon_state instead
+	fire_sound = 'sound/weapons/wave.ogg'
+	charge_cost = 240
+	projectile_type = /obj/item/projectile/bullet/stripper
+	origin_tech = list(TECH_BLUESPACE = 4)
+	modifystate = "sizegun-shrink"
+	no_pin_required = 1
+	battery_lock = 1
+	firemodes = list()

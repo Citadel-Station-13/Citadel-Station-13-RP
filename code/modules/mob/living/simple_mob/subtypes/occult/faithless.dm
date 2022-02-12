@@ -28,6 +28,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 18
 	attack_armor_pen = 5	//It's a horror from beyond, I ain't gotta explain 5 AP
+	taser_kill = 0 //See Above
 
 	attacktext = list("gripped")
 	attack_sound = 'sound/hallucinations/growl1.ogg'

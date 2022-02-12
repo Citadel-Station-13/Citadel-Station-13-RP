@@ -156,12 +156,18 @@
 		return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES // If it's anchored, it'll block air.
 	return ATMOS_PASS_YES // Don't stop airflow from the other sides.
 
-/obj/structure/window/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
+/obj/structure/window/CheckExit(atom/movable/AM, turf/target)
+	if(is_fulltile())
+		return TRUE
+	if(AM.checkpass(PASSGLASS))
+		return TRUE
+	if(get_dir(AM.loc, target) == dir)
+		return FALSE
+	return TRUE
+
+/obj/structure/window/setDir(newdir)
+	. = ..()
+	update_nearby_tiles(need_rebuild = TRUE)
 
 /obj/structure/window/hitby(AM as mob|obj)
 	..()
@@ -283,12 +289,14 @@
 			update_nearby_icons()
 			update_verbs()
 			playsound(src, W.usesound, 75, 1)
+			update_nearby_tiles(need_rebuild = TRUE)
 			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the frame [anchored ? "to" : "from"] the floor.</span>")
 		else if(!reinf)
 			anchored = !anchored
 			update_nearby_icons()
 			update_verbs()
 			playsound(src, W.usesound, 75, 1)
+			update_nearby_tiles(need_rebuild = TRUE)
 			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the window [anchored ? "to" : "from"] the floor.</span>")
 	else if(W.is_crowbar() && reinf && state <= 1)
 		state = 1 - state
@@ -361,12 +369,8 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.setDir(turn(src.dir, 90))
+	setDir(turn(dir, 90))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
-
 
 /obj/structure/window/verb/rotate_clockwise()
 	set name = "Rotate Window Clockwise"
@@ -383,11 +387,8 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.setDir(turn(src.dir, 270))
+	setDir(turn(dir, 270))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
 
 /obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
 	. = ..(mapload)
@@ -404,9 +405,8 @@
 
 	ini_dir = dir
 
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles(need_rebuild = TRUE)
 	update_nearby_icons()
-
 
 /obj/structure/window/Destroy()
 	density = 0
@@ -418,10 +418,12 @@
 
 /obj/structure/window/Move()
 	var/ini_dir = dir
-	update_nearby_tiles(need_rebuild=1)
-	..()
+	. = ..()
 	setDir(ini_dir)
-	update_nearby_tiles(need_rebuild=1)
+
+/obj/structure/window/Moved()
+	. = ..()
+	update_nearby_tiles(need_rebuild = TRUE)
 
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()

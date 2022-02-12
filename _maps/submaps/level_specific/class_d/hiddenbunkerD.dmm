@@ -10,12 +10,12 @@
 /turf/simulated/floor/tiled/white,
 /area/poi_d/Mountain)
 "da" = (
-/turf/simulated/mineral/vacuum,
+/turf/simulated/mineral/class_d_indoors,
 /area/poi_d/explored)
 "dI" = (
 /obj/random/trash_pile,
 /obj/structure/closet/cabinet,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/explored)
 "ga" = (
 /obj/item/stool/padded,
@@ -27,7 +27,7 @@
 /area/poi_d/Mountain)
 "gT" = (
 /obj/random/trash,
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d_indoors,
 /area/poi_d/explored)
 "gW" = (
 /obj/machinery/door/airlock/multi_tile,
@@ -41,6 +41,7 @@
 /area/poi_d/Mountain)
 "hZ" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume,
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "is" = (
@@ -53,7 +54,7 @@
 /obj/structure/sign/warning{
 	pixel_x = 32
 	},
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/explored)
 "jx" = (
 /obj/random/trash_pile,
@@ -89,6 +90,7 @@
 	id_tag = "bunkerD_internal";
 	locked = 1
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "pq" = (
@@ -126,7 +128,7 @@
 /area/poi_d/Mountain)
 "vX" = (
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/Mountain)
 "wt" = (
 /obj/structure/table/reinforced,
@@ -155,11 +157,14 @@
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "zZ" = (
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
+/obj/machinery/access_button{
 	frequency = 804;
-	id_tag = "bunkerD"
+	master_tag = "bunkerD";
+	pixel_y = 25
 	},
-/turf/simulated/wall,
+/turf/simulated/wall{
+	can_open = 1
+	},
 /area/poi_d/Mountain)
 "Ac" = (
 /obj/machinery/door/airlock/freezer,
@@ -178,9 +183,6 @@
 	},
 /turf/simulated/floor/tiled/kafel_full,
 /area/poi_d/Mountain)
-"Ch" = (
-/turf/simulated/mineral/floor/vacuum,
-/area/poi_d/unexplored)
 "CA" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/clotting,
@@ -199,18 +201,15 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/poi_d/Mountain)
+"DS" = (
+/turf/template_noop,
+/area/poi_d/unexplored)
 "Ex" = (
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 804;
 	id_tag = "bunkerD";
 	pixel_x = 24;
 	pixel_y = -2
-	},
-/obj/machinery/airlock_sensor{
-	frequency = 804;
-	id_tag = "bunkerD_sensor";
-	pixel_x = 24;
-	pixel_y = 6
 	},
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/tiled,
@@ -229,22 +228,22 @@
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "HS" = (
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/Mountain)
 "HX" = (
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/explored)
 "Ij" = (
 /obj/random/trash,
 /obj/random/trash,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/explored)
 "Jh" = (
 /mob/living/simple_mob/mechanical/viscerator/mercenary,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "JG" = (
-/turf/simulated/mineral/floor/vacuum,
+/turf/simulated/mineral/floor/class_d_indoors,
 /area/poi_d/explored)
 "KB" = (
 /turf/simulated/wall,
@@ -264,7 +263,7 @@
 	pixel_x = 32
 	},
 /obj/random/trash,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/explored)
 "Nd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -321,6 +320,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
+"TG" = (
+/obj/machinery/access_button{
+	frequency = 804;
+	master_tag = "bunkerD";
+	pixel_y = 25
+	},
+/turf/simulated/floor/tiled,
+/area/poi_d/Mountain)
 "TI" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/projectile/automatic/tommygun,
@@ -346,11 +353,19 @@
 	frequency = 1379;
 	id_tag = "rnd_s_airlock_pump"
 	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/airlock_sensor{
+	frequency = 804;
+	id_tag = "bunkerD_sensor";
+	pixel_x = 24;
+	pixel_y = 6
+	},
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "Wd" = (
 /obj/random/trash,
-/turf/simulated/floor/airless,
+/turf/simulated/floor/class_d_indoors,
 /area/poi_d/explored)
 "Xh" = (
 /obj/structure/sink{
@@ -371,6 +386,10 @@
 /obj/random/ammo,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
+"XO" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/class_d_indoors,
+/area/poi_d/explored)
 "XU" = (
 /obj/machinery/door/airlock/external/glass{
 	frequency = 804;
@@ -381,6 +400,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
+/obj/effect/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 "Ys" = (
@@ -400,6 +420,7 @@
 	id_tag = "bunkerD_external";
 	locked = 1
 	},
+/obj/effect/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled,
 /area/poi_d/Mountain)
 
@@ -414,21 +435,21 @@ da
 da
 da
 da
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
+JG
+JG
+JG
+JG
+JG
+JG
+JG
+JG
+DS
+DS
+DS
+DS
+DS
+DS
+DS
 "}
 (2,1,1) = {"
 mn
@@ -445,17 +466,17 @@ da
 da
 da
 da
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
+JG
+JG
+JG
+JG
+JG
+JG
+JG
+JG
+JG
+JG
+DS
 "}
 (3,1,1) = {"
 mn
@@ -473,16 +494,16 @@ da
 da
 da
 da
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
-Ch
+JG
+JG
+JG
+JG
+JG
+JG
+JG
+JG
+JG
+DS
 "}
 (4,1,1) = {"
 mn
@@ -490,9 +511,9 @@ da
 da
 da
 da
-jx
+XO
 Wd
-jx
+XO
 da
 da
 da
@@ -507,9 +528,9 @@ da
 da
 da
 da
-Ch
-Ch
-Ch
+JG
+JG
+DS
 "}
 (5,1,1) = {"
 mn
@@ -520,7 +541,7 @@ jx
 HX
 Wd
 Wd
-jx
+XO
 da
 da
 da
@@ -535,8 +556,8 @@ da
 da
 da
 da
-Ch
-Ch
+JG
+JG
 "}
 (6,1,1) = {"
 mn
@@ -545,7 +566,7 @@ da
 da
 HX
 Wd
-jx
+XO
 HX
 HX
 Wd
@@ -562,18 +583,18 @@ da
 da
 da
 da
-Ch
-Ch
+JG
+JG
 "}
 (7,1,1) = {"
 mn
 da
 da
-jx
+XO
 Wd
 HX
-jx
-jx
+XO
+XO
 Wd
 Wd
 Wd
@@ -589,8 +610,8 @@ da
 da
 da
 da
-Ch
-Ch
+JG
+JG
 "}
 (8,1,1) = {"
 mn
@@ -598,7 +619,7 @@ da
 da
 HX
 Wd
-jx
+XO
 HX
 HX
 HX
@@ -617,13 +638,13 @@ da
 da
 da
 da
-Ch
+DS
 "}
 (9,1,1) = {"
 mn
 da
 da
-jx
+XO
 Wd
 Wd
 Ij
@@ -644,7 +665,7 @@ da
 da
 da
 da
-Ch
+DS
 "}
 (10,1,1) = {"
 mn
@@ -654,7 +675,7 @@ da
 js
 Wd
 Mc
-jx
+XO
 da
 da
 da
@@ -671,7 +692,7 @@ KB
 da
 da
 da
-Ch
+DS
 "}
 (11,1,1) = {"
 mn
@@ -698,7 +719,7 @@ KB
 da
 da
 da
-Ch
+DS
 "}
 (12,1,1) = {"
 mn
@@ -725,7 +746,7 @@ KB
 da
 da
 da
-Ch
+DS
 "}
 (13,1,1) = {"
 mn
@@ -752,7 +773,7 @@ KB
 da
 da
 da
-Ch
+DS
 "}
 (14,1,1) = {"
 mn
@@ -779,14 +800,14 @@ KB
 da
 da
 da
-Ch
+DS
 "}
 (15,1,1) = {"
 mn
 da
 da
+KB
 zZ
-PI
 HS
 HS
 Nd
@@ -806,7 +827,7 @@ KB
 da
 da
 da
-Ch
+DS
 "}
 (16,1,1) = {"
 da
@@ -817,7 +838,7 @@ KB
 Zm
 Zm
 Nd
-uD
+TG
 uD
 is
 uD
@@ -833,7 +854,7 @@ KB
 da
 da
 da
-Ch
+DS
 "}
 (17,1,1) = {"
 da
@@ -860,7 +881,7 @@ KB
 da
 da
 da
-Ch
+DS
 "}
 (18,1,1) = {"
 da
@@ -887,7 +908,7 @@ KB
 da
 da
 da
-Ch
+DS
 "}
 (19,1,1) = {"
 da
@@ -914,7 +935,7 @@ da
 da
 da
 da
-Ch
+DS
 "}
 (20,1,1) = {"
 da
@@ -941,7 +962,7 @@ da
 da
 da
 da
-Ch
+DS
 "}
 (21,1,1) = {"
 da

@@ -4,106 +4,96 @@
 /area/template_noop)
 "b" = (
 /obj/structure/cliff/automatic/corner{
-	icon_state = "cliffbuilder-corner";
 	dir = 6
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "c" = (
 /obj/structure/cliff/automatic{
-	icon_state = "cliffbuilder";
 	dir = 2
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "d" = (
 /obj/structure/cliff/automatic/corner{
-	icon_state = "cliffbuilder-corner";
 	dir = 10
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "e" = (
 /obj/structure/cliff/automatic{
-	icon_state = "cliffbuilder";
 	dir = 6
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "f" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "g" = (
 /obj/structure/cliff/automatic{
-	icon_state = "cliffbuilder";
 	dir = 10
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "h" = (
 /obj/structure/cliff/automatic{
-	icon_state = "cliffbuilder";
 	dir = 4
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "i" = (
 /mob/living/simple_mob/humanoid/merc/ranged/grenadier,
 /turf/simulated/floor/cult,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "j" = (
 /turf/simulated/floor/cult,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "k" = (
 /obj/random/tool/power,
 /obj/random/tech_supply,
 /turf/simulated/floor/cult,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "l" = (
 /obj/structure/cliff/automatic{
-	icon_state = "cliffbuilder";
 	dir = 8
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "m" = (
 /obj/structure/bonfire/permanent/sifwood,
 /obj/structure/grille/rustic,
 /turf/simulated/floor/cult,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "n" = (
 /obj/random/multiple/minevault,
 /turf/simulated/floor/cult,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "o" = (
 /obj/structure/cliff/automatic/corner,
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "p" = (
 /obj/structure/cliff/automatic{
-	icon_state = "cliffbuilder";
 	dir = 5
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "q" = (
 /obj/structure/cliff/automatic{
-	icon_state = "cliffbuilder";
 	dir = 9
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "r" = (
 /obj/structure/cliff/automatic/corner{
-	icon_state = "cliffbuilder-corner";
 	dir = 9
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 "s" = (
 /obj/structure/cliff/automatic,
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/misc_poi)
 
 (1,1,1) = {"
 a

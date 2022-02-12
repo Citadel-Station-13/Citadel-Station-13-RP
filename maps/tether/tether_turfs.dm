@@ -1,3 +1,4 @@
+/* Moved to code/modules/maps/tether/levels
 //Simulated
 VIRGO3B_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/virgo3b
@@ -28,6 +29,12 @@ VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/techfloor/grid)
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/maglev)
 /turf/simulated/floor/maglev/virgo3b
 	outdoors = TRUE
+
+/turf/simulated/floor/wood/virgo3b
+	initial_gas_mix = ATMOSPHERE_ID_VIRGO3B
+
+/turf/simulated/floor/wood/sif/virgo3b
+	initial_gas_mix = ATMOSPHERE_ID_VIRGO3B
 
 VIRGO3B_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 /turf/simulated/floor/outdoors/dirt/virgo3b

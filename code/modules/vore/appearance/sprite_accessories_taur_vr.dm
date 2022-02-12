@@ -458,8 +458,6 @@
 	icon_state = "drake_s"
 	extra_overlay = "drake_markings"
 	suit_sprites = 'icons/mob/taursuits_drake_vr.dmi'
-	can_loaf = TRUE
-	loaf_offset = 6
 
 /datum/sprite_accessory/tail/taur/otie
 	name = "Otie (Taur)"

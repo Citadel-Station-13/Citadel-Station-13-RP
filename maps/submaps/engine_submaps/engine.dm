@@ -7,11 +7,19 @@
 	desc = "It would be boring to have the same engine every day right?"
 	// annihilate = TRUE - Would wipe out in a rectangular area unfortunately
 	allow_duplicates = FALSE
+	/// world announce name
+	var/display_name
+
+/datum/map_template/engine/New()
+	. = ..()
+	if(isnull(display_name))
+		display_name = name
 
 /datum/map_template/engine/rust
 	name = "EngineSubmap_RUST"
 	desc = "R-UST Fusion Tokamak Engine"
 	mappath = "_maps/templates/engines/triumph/triumph_engine_rust.dmm"
+	display_name = "Budget Star"
 
 /*
 /datum/map_template/engine/singulo
@@ -24,6 +32,7 @@
 	name = "EngineSubmap_SM"
 	desc = "Old Faithful Supermatter"
 	mappath = "_maps/templates/engines/triumph/triumph_engine_sme.dmm"
+	display_name = "Angry Rock"
 
 /*
 /datum/map_template/engine/tesla
@@ -31,16 +40,18 @@
 	desc = "The Telsa Engine"
 	mappath = '_maps/templates/engines/triumph/engine_tesla.dmm'
 */
+
 /datum/map_template/engine/burnchamber
 	name = "EngineSubmap_Burn"
 	desc = "Burn Chamber Engine"
 	mappath = "_maps/templates/engines/triumph/triumph_engine_burnchamber.dmm"
-
+	display_name = "Toxins Lab"
 
 /datum/map_template/engine/fission
 	name = "EngineSubmap_Fission"
 	desc = "The Fission Reactor"
 	mappath = "_maps/templates/engines/triumph/triumph_engine_fission.dmm"
+	display_name = "Nuclear Bomb"
 
 // Landmark for where to load in the engine on permament map
 /obj/effect/landmark/engine_loader

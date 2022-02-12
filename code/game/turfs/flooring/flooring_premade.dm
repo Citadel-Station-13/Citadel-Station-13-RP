@@ -334,9 +334,18 @@
 
 /turf/simulated/floor/bananium
 	name = "bananium"
+	desc = "This floor feels vaguely springy and rubbery, and has an almost pleasant bounce when stepped on."
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "bananium"
 	initial_flooring = /decl/flooring/bananium
+
+/turf/simulated/floor/bananium/Entered(atom/A)
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.hovering) // Flying things shouldn't make footprints.
+			return ..()
+		playsound(src, 'sound/items/bikehorn.ogg', 75, 1)
+	..()
 
 /turf/simulated/floor/silencium
 	name = "silencium"

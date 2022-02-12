@@ -670,3 +670,15 @@ Swimsuits
 /datum/gear/uniform/bountyskin
 	name = "Bounty Hunter's Skinsuit"
 	path = /obj/item/clothing/under/bountyskin
+
+/datum/gear/uniform/navy_jumpsuit
+	name = "Navy Gray Jumpsuit"
+	path = /obj/item/clothing/under/navy_gray
+
+/datum/gear/uniform/gray_smooth
+	name = "Gray Smooth Jumpsuit"
+	path = /obj/item/clothing/under/smooth_gray
+
+/datum/gear/uniform/chiming_dress
+	name = "Chiming Dress"
+	path = /obj/item/clothing/under/chiming_dress

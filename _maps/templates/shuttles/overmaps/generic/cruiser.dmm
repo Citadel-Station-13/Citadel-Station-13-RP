@@ -7144,9 +7144,13 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/obj/machinery/computer/HolodeckControl/holodorm/warship,
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/item/modular_computer/console,
+/obj/item/paper{
+	info = "Holo Deck is currently nonfunctional, blame Jerry";
+	name = "Notice"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/holodeck)
