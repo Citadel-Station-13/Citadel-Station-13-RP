@@ -3391,6 +3391,7 @@
 #include "code\modules\spells\aoe_turf\conjure\forcewall.dm"
 #include "code\modules\spells\general\area_teleport.dm"
 #include "code\modules\spells\general\rune_write.dm"
+#include "code\modules\spells\targeted\chimera_spells.dm"
 #include "code\modules\spells\targeted\ethereal_jaunt.dm"
 #include "code\modules\spells\targeted\genetic.dm"
 #include "code\modules\spells\targeted\harvest.dm"

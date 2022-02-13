@@ -36,7 +36,6 @@
 /mob/proc/add_spell(var/spell/spell_to_add, var/spell_base = "wiz_spell_ready", var/master_type = /obj/screen/movable/spell_master)
 	if(!spell_masters)
 		spell_masters = list()
-
 	if(spell_masters.len)
 		for(var/obj/screen/movable/spell_master/spell_master in spell_masters)
 			if(spell_master.type == master_type)
