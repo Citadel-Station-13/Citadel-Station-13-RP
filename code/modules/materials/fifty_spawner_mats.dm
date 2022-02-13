@@ -128,6 +128,14 @@
 	name = "stack of reinforced borosilicate glass"
 	type_to_spawn = /obj/item/stack/material/glass/phoronrglass
 
+/obj/fiftyspawner/brass
+	name = "stack of brass"
+	type_to_spawn = /obj/item/stack/material/brass
+
+/obj/fiftyspawner/copper
+	name = "stack of copper"
+	type_to_spawn = /obj/item/stack/material/copper
+
 //R-UST port
 /obj/fiftyspawner/deuterium
 	name = "stack of deuterium"

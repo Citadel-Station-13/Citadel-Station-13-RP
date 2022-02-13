@@ -1211,3 +1211,11 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
+
+/mob/living/proc/OpenCraftingMenu()
+	return
+
+/* Enable this one if you're enabling the butchering component. Otherwise it's useless.
+/mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
+	return
+*/

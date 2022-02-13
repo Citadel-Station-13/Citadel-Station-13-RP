@@ -918,7 +918,7 @@ var/list/name_to_material
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
 	integrity = 65	//a bit stronger than regular wood
-	hardness = 20	
+	hardness = 20
 	weight = 20	//likewise, heavier
 
 /datum/material/cardboard
@@ -1215,3 +1215,11 @@ var/list/name_to_material
 	icon_colour = "#CAC955"
 	integrity = 150
 	stack_type = /obj/item/stack/material/brass
+
+/datum/material/copper
+	name = "copper"
+	icon_colour = "#b45c13"
+	weight = 15
+	hardness = 30
+	conductivity = 35
+	stack_type = /obj/item/stack/material/copper

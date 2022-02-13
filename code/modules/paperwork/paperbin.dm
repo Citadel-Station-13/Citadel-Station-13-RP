@@ -110,3 +110,14 @@
 		icon_state = "paper_bin0"
 	else
 		icon_state = "paper_bin1"
+
+/obj/item/paper_bin/bundlenatural
+	name = "natural paper bundle"
+	desc = "A bundle of paper created using traditional methods."
+	icon_state = "paper_bundle"
+	papers = /obj/item/paper/natural
+
+/obj/item/paper_bin/bundlenatural/attack_hand(mob/user)
+	if(amount < 1)
+		qdel(src)
+	return ..()

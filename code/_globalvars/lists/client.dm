@@ -19,3 +19,6 @@ GLOBAL_LIST_INIT(_kbMap, list(
 	"SHIFT" = "Shift",
 	"CONTROL" = "Ctrl"
 	))
+
+//We don't have globalvars/objects, so I'm putting it here.
+GLOBAL_LIST_EMPTY(crafting_recipes)

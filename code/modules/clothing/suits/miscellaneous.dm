@@ -1170,3 +1170,14 @@ obj/item/clothing/suit/kamishimo
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_UTILITY)
+
+/obj/item/clothing/suit/ghost_sheet
+	name = "ghost sheet"
+	desc = "The hands float by themselves, so it's extra spooky."
+	icon_state = "ghost_sheet"
+	item_state = "ghost_sheet"
+	throwforce = 0
+	throw_speed = 1
+	throw_range = 2
+	flags_inv = HIDEFACE|BLOCKHAIR
+	body_parts_covered = HEAD|UPPER_TORSO|LOWER_TORSO|LEGS
