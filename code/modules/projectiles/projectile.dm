@@ -91,6 +91,8 @@
 	var/list/submunitions = list() // Assoc list of the paths of any submunitions, and how many they are. [projectilepath] = [projectilecount].
 	var/submunition_spread_max = 30 // Divided by 10 to get the percentile dispersion.
 	var/submunition_spread_min = 5 // Above.
+	/// randomize spread? if so, evenly space between 0 and max on each side.
+	var/submunition_constant_spread = FALSE
 	var/force_max_submunition_spread = FALSE // Do we just force the maximum?
 	var/spread_submunition_damage = FALSE // Do we assign damage to our sub projectiles based on our main projectile damage?
 

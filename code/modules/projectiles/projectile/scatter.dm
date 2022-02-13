@@ -28,13 +28,10 @@
 		)
 
 /obj/item/projectile/scatter/laser
-	damage = 40
-
-	submunition_spread_max = 60
-	submunition_spread_min = 30
+	submunition_spread_max = 30
 
 	submunitions = list(
-		/obj/item/projectile/beam = 4
+		/obj/item/projectile/beam/blaster/pellet = 6
 		)
 
 /obj/item/projectile/scatter/laser/weak
