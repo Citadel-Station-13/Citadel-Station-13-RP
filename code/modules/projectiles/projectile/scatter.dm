@@ -29,6 +29,7 @@
 
 /obj/item/projectile/scatter/laser
 	submunition_spread_max = 30
+	submunition_constant_spread = TRUE
 
 	submunitions = list(
 		/obj/item/projectile/beam/blaster/pellet = 6
