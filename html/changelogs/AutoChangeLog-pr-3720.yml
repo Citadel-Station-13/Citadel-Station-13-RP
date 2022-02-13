@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - rscadd: "Adds up to 6 linebreaks per emote, works both for subtle and me."
+  - code_imp: "sanatize() proc now allows up to 6 linebreaks per message before removeing them all."
