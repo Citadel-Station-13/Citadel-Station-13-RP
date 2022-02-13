@@ -226,6 +226,10 @@
 	edge = 1
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
+/obj/item/nullrod/scythe/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
+
 /obj/item/nullrod/scythe/vibro
 	icon_state = "hfrequency0"
 	item_state = "hfrequency1"
@@ -262,6 +266,7 @@
 /obj/item/nullrod/chainsaw/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 /obj/item/nullrod/clown
 	icon = 'icons/obj/wizard.dmi'
@@ -331,6 +336,7 @@
 /obj/item/nullrod/armblade/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 /obj/item/nullrod/armblade/claw
 	name = "profane blessing"
@@ -405,6 +411,10 @@
 	edge = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/nullrod/tribal_knife/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 /obj/item/nullrod/tribal_knife/process(delta_time)
 	slowdown = rand(-2, 2)

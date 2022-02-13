@@ -34,8 +34,8 @@
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323		//Above 50 Degrees Celcius
 
-	meat_amount = 1
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/fox
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/fox = 1, /obj/item/stack/material/bone = 1)
+	guaranteed_butcher_results = list(/obj/item/stack/material/animalhide = 1)
 
 	say_list_type = /datum/say_list/fox
 	ai_holder_type = /datum/ai_holder/simple_mob/fox

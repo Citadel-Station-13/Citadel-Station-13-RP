@@ -36,6 +36,9 @@
 	say_list_type = /datum/say_list/TinyTim
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	butcher_results = list(/obj/item/stack/sheet/sinew = 1, /obj/item/stack/material/bone = 3)
+	guaranteed_butcher_results = list(/obj/item/stack/material/hairlesshide = 5)
+
 /mob/living/simple_mob/horror/TinyTim/death()
 	playsound(src, 'sound/h_sounds/shitty_tim.ogg', 50, 1)
 	..()

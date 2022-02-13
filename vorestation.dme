@@ -336,6 +336,7 @@
 #include "code\datums\browser\preflikepicker.dm"
 #include "code\datums\components\_component.dm"
 #include "code\datums\components\anti_magic.dm"
+#include "code\datums\components\butchering.dm"
 #include "code\datums\components\orbiter.dm"
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\crafting\guncrafting.dm"

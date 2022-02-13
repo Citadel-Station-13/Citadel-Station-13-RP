@@ -73,7 +73,7 @@
 	attack_edge = TRUE
 	melee_attack_delay = 1 SECOND
 
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/crab
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/crab = 1)
 
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"

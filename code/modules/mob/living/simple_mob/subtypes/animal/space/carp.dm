@@ -52,8 +52,7 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	attacktext = list("bitten")
 
-	meat_amount = 3
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat = 3, /obj/item/stack/material/bone = 3)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
@@ -91,7 +90,7 @@
 	icon_expected_width = 64
 	icon_expected_height = 32
 
-	meat_amount = 5
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat = 5, /obj/item/stack/material/bone = 4)
 
 	mod_min = 90
 	mod_max = 140
@@ -117,8 +116,7 @@
 	icon_expected_width = 64
 	icon_expected_height = 64
 
-	meat_amount = 10
-
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat = 10, /obj/item/stack/material/bone = 7)
 
 /mob/living/simple_mob/animal/space/carp/holographic
 	name = "holographic carp"
@@ -130,8 +128,8 @@
 	icon_dead = "holo-carp"
 	alpha = 127
 	icon_gib = null
-	meat_amount = 0
-	meat_type = null
+
+	butcher_results = list(null)
 
 	mob_class = MOB_CLASS_PHOTONIC // Xeno-taser won't work on this as its not a 'real' carp.
 

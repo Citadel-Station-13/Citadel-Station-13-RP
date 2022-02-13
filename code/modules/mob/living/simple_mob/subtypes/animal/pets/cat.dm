@@ -34,6 +34,9 @@
 	var/named = FALSE //have I been named yet?
 	var/friend_name = null //VOREStation Edit - Lock befriending to this character
 
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 2, /obj/item/stack/material/bone = 2)
+	guaranteed_butcher_results = list(/obj/item/stack/material/animalhide/cat = 5)
+
 /mob/living/simple_mob/animal/passive/cat/Initialize(mapload)
 	icon_living = "[initial(icon_state)]"
 	icon_dead = "[initial(icon_state)]_dead"

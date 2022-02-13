@@ -109,6 +109,10 @@
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
+/obj/item/material/twohanded/fireaxe/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
+
 /obj/item/material/twohanded/fireaxe/update_held_icon()
 	var/mob/living/M = loc
 	if(istype(M) && !issmall(M) && M.item_is_in_hands(src) && !M.hands_are_full())
@@ -201,6 +205,10 @@
 	slowdown = 1.05
 	var/obj/item/grenade/explosive = null
 	var/war_cry = "AAAAARGH!!!"
+
+/obj/item/material/twohanded/spear/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 /obj/item/material/twohanded/spear/examine(mob/user)
 	. = ..()

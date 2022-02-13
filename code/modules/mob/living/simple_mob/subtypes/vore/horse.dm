@@ -37,8 +37,8 @@
 	melee_damage_upper = 5
 	attacktext = list("kicked")
 
-	meat_amount = 4
-	meat_type = /obj/item/reagent_containers/food/snacks/horsemeat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/horsemeat = 4, /obj/item/stack/material/bone = 2, /obj/item/stack/sheet/sinew = 2)
+	guaranteed_butcher_results = list(/obj/item/stack/material/animalhide = 4)
 
 	max_buckled_mobs = 1 //Yeehaw
 	can_buckle = TRUE

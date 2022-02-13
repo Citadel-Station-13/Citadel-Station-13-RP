@@ -49,8 +49,8 @@
 	pixel_x = -16
 	pixel_y = 0
 
-	meat_amount = 10 //Infinite meat!
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 10, /obj/item/stack/material/bone = 6)
+	guaranteed_butcher_results = list(/obj/item/stack/material/hairlesshide = 6)
 
 	max_buckled_mobs = 1 //Yeehaw
 	can_buckle = TRUE

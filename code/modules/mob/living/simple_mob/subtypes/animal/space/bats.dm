@@ -40,7 +40,8 @@
 
 	has_langs = list("Mouse")
 
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 1, /obj/item/stack/material/bone = 1)
+	guaranteed_butcher_results = list(/obj/item/stack/material/animalhide = 1)
 
 	say_list_type = /datum/say_list/mouse	// Close enough
 

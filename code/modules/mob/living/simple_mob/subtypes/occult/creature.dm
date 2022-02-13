@@ -39,6 +39,9 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
+	butcher_results = list(/obj/item/stack/sheet/sinew = 3)
+	guaranteed_butcher_results = list(/obj/item/stack/material/hairlesshide = 4)
+
 // Strong Variant
 /mob/living/simple_mob/creature/strong
 	maxHealth = 160

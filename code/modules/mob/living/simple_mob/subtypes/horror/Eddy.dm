@@ -36,6 +36,9 @@
 	say_list_type = /datum/say_list/Eddy
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	butcher_results = list(/obj/item/stack/sheet/sinew = 5, /obj/item/stack/material/bone = 1)
+	guaranteed_butcher_results = list(/obj/item/stack/material/hairlesshide = 1)
+
 /mob/living/simple_mob/horror/Eddy/death()
 	playsound(src, 'sound/h_sounds/headcrab.ogg', 50, 1)
 	..()

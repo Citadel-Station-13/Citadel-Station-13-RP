@@ -21,7 +21,7 @@
 
 	holder_type = /obj/item/holder/fish
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat/fish = 1, /obj/item/stack/material/bone = 1)
 
 	// By default they can be in any water turf.  Subtypes might restrict to deep/shallow etc
 	var/global/list/suitable_turf_types =  list(
@@ -157,7 +157,8 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/javelin)
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat/sif = 1, /obj/item/stack/material/bone = 1)
+
 
 /datum/category_item/catalogue/fauna/icebass
 	name = "Sivian Fauna - Glitter Bass"
@@ -184,7 +185,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/icebass)
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat/sif = 1, /obj/item/stack/material/bone = 1)
 
 	var/max_red = 150
 	var/min_red = 50
@@ -269,7 +270,7 @@
 
 	var/image/head_image
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat/sif = 1, /obj/item/stack/material/bone = 1)
 
 /mob/living/simple_mob/animal/passive/fish/rockfish/Initialize(mapload)
 	. = ..()
@@ -313,7 +314,7 @@
 
 	has_eye_glow = TRUE
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat/sif = 1, /obj/item/stack/material/bone = 1)
 
 /datum/category_item/catalogue/fauna/murkin
 	name = "Sivian Fauna - Murkfish"
@@ -340,4 +341,4 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/murkin)
 
-	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/sif/murkfish
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat/sif/murkfish = 1, /obj/item/stack/material/bone = 1)

@@ -43,6 +43,9 @@
 	say_list_type = /datum/say_list/Steve
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	butcher_results = list(/obj/item/stack/sheet/sinew = 2)
+	guaranteed_butcher_results = list(/obj/item/stack/material/hairlesshide = 1)
+
 /mob/living/simple_mob/horror/Steve/death()
 	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 	..()

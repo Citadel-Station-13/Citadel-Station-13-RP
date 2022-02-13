@@ -620,14 +620,6 @@
 					if(istype(H.species, /datum/species/diona))
 						src.composition_reagent = "nutriment"
 
-	//if the mob is a simple animal with a defined meat quantity
-	if (istype(src, /mob/living/simple_mob))
-		var/mob/living/simple_mob/SA = src
-		if (SA.meat_amount)
-			src.composition_reagent_quantity = SA.meat_amount*2*9
-
-		//The quantity of protein is based on the meat_amount, but multiplied by 2
-
 	var/size_reagent = (src.mob_size * src.mob_size) * 3//The quantity of protein is set to 3x mob size squared
 	if (size_reagent > src.composition_reagent_quantity)//We take the larger of the two
 		src.composition_reagent_quantity = size_reagent

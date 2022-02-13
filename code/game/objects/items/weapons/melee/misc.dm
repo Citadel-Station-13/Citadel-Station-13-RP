@@ -27,6 +27,10 @@
 	origin_tech = list(TECH_COMBAT = 4)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
+/obj/item/melee/sabre/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
+
 /obj/item/melee/sabre/suicide_act(mob/user)
 	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 	visible_message(span("danger", "[user] is slitting [TU.his] stomach open with \the [src.name]! It looks like [TU.hes] trying to commit seppuku."), span("danger", "You slit your stomach open with \the [src.name]!"), span("danger", "You hear the sound of flesh tearing open.")) // gory, but it gets the point across
@@ -82,6 +86,9 @@
 	can_speak = 1
 	var/list/voice_mobs = list() //The curse of the sword is that it has someone trapped inside.
 
+/obj/item/melee/cursedblade/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 /obj/item/melee/cursedblade/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(50))
@@ -178,12 +185,20 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	hitsound = 'sound/items/bikehorn.ogg'
 
+/obj/item/melee/clownstaff/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
+
 //Clown Dagger
 /obj/item/melee/clownop
 	name = "clown knife"
 	desc = "This curved blade is painted to look like a banana, disguising its deadly edge."
 	icon_state = "clownrender"
 	item_state = "clown_dagger"
+
+/obj/item/melee/clownop/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 //Chainswords Babyyy
 /obj/item/melee/chainsaw_sword
@@ -201,3 +216,6 @@
 	hitsound = 'sound/weapons/chainsaw_attack.ogg'
 	armor_penetration = 30
 
+/obj/item/melee/chainsaw_sword/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)

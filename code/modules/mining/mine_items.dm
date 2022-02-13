@@ -31,6 +31,10 @@
 	var/excavation_amount = 200
 	var/destroy_artefacts = FALSE // some mining tools will destroy artefacts completely while avoiding side-effects.
 
+/obj/item/pickaxe/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
+
 /obj/item/pickaxe/silver
 	name = "silver pickaxe"
 	icon_state = "spickaxe"
@@ -145,6 +149,10 @@
 	edge = 1
 	var/digspeed = 40
 
+/obj/item/shovel/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
+
 /obj/item/shovel/spade
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."
@@ -152,6 +160,7 @@
 	item_state = "spade"
 	force = 5.0
 	throwforce = 7.0
+	edge = 0
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/shovel/bone

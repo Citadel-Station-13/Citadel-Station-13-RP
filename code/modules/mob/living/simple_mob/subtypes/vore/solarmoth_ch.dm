@@ -39,7 +39,7 @@
 
 	movement_cooldown = 5
 
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 4)
 
 	response_help = "pokes"
 	response_disarm = "pushes"

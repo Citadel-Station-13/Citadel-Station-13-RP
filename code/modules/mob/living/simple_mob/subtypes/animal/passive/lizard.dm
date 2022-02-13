@@ -33,6 +33,9 @@
 
 	say_list_type = /datum/say_list/lizard
 
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 1, /obj/item/stack/material/bone = 1)
+	guaranteed_butcher_results = list(/obj/item/stack/material/hairlesshide = 1)
+
 /mob/living/simple_mob/animal/passive/lizard/large
 	desc = "A cute, big lizard."
 	maxHealth = 20

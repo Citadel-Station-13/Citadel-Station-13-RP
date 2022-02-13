@@ -27,7 +27,6 @@
 	response_harm = "hits the"
 	attacktext = list("mauled")
 	friendly = list("nuzzles", "slobberlicks", "noses softly at", "noseboops", "headbumps against", "leans on", "nibbles affectionately on")
-	meat_amount = 6
 	old_x = -16
 	old_y = 0
 	default_pixel_x = -16
@@ -46,6 +45,9 @@
 	var/mob/living/carbon/human/friend
 	var/tamed = 0
 	var/tame_chance = 50 //It's a fiddy-fiddy default you may get a buddy pal or you may get mauled and ate. Win-win!
+
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 6, /obj/item/stack/material/bone = 2)
+	guaranteed_butcher_results = list(/obj/item/stack/material/animalhide = 2)
 
 // Activate Noms!
 

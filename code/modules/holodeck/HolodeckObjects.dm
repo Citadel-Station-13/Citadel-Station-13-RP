@@ -472,8 +472,6 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	icon_dead = "holo4"
 	alpha = 127
 	icon_gib = null
-	meat_amount = 0
-	meat_type = null
 
 /mob/living/simple_mob/animal/space/carp/holodeck/Initialize(mapload)
 	. = ..()

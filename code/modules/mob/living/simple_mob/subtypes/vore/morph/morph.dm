@@ -37,8 +37,7 @@
 	attacktext = "glomps"
 	attack_sound = 'sound/effects/blobattack.ogg'
 
-	meat_amount = 2
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 2)
 
 	showvoreprefs = 0
 	vore_active = 1

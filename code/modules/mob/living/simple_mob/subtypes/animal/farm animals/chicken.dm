@@ -58,8 +58,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 
 	say_list_type = /datum/say_list/chicken
 
-	meat_amount = 2
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/chicken = 2)
 
 	var/eggsleft = 0
 	var/body_color
@@ -158,8 +157,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 
 	say_list_type = /datum/say_list/chick
 
-	meat_amount = 1
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat= 1)
 
 	var/amount_grown = 0
 

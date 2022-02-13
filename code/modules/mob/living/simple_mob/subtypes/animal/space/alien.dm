@@ -67,7 +67,8 @@
 	attacktext = list("slashed")
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 
-	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/xenomeat = 3)
+	guaranteed_butcher_results = list(/obj/item/stack/material/xenochitin = 3)
 
 /datum/category_item/catalogue/fauna/feral_alien/drone
 	name = "Feral Xenomorph - Drone"
@@ -141,7 +142,8 @@
 	old_x = -16
 	icon_expected_width = 64
 	icon_expected_height = 64
-	meat_amount = 5
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/xenomeat = 5)
+	guaranteed_butcher_results = list(/obj/item/stack/material/xenochitin = 5)
 
 	mod_min = 80
 	mod_max = 150
@@ -198,8 +200,10 @@
 	icon_rest = "queen_sleep"
 	maxHealth = 1000
 	health = 1000
-	meat_amount = 5
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress)
+
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/xenomeat = 5)
+	guaranteed_butcher_results = list(/obj/item/stack/material/xenochitin = 10)
 
 	pixel_x = -16
 	old_x = -16
@@ -226,10 +230,12 @@
 	icon_rest = "empress_rest"
 	maxHealth = 600
 	health = 600
-	meat_amount = 10
 	melee_damage_lower = 15
 	melee_damage_upper = 25
 	catalogue_data = list(/datum/category_item/catalogue/fauna/feral_alien/queen/empress/mother)
+
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/xenomeat = 10)
+	guaranteed_butcher_results = list(/obj/item/stack/material/xenochitin = 10)
 
 	pixel_x = -32
 	old_x = -32

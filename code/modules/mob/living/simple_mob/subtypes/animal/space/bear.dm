@@ -35,7 +35,8 @@
 	melee_attack_delay = 1 SECOND
 	attacktext = list("mauled")
 
-	meat_type = /obj/item/reagent_containers/food/snacks/bearmeat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/bearmeat = 5, /obj/item/stack/material/bone = 3)
+	guaranteed_butcher_results = list(/obj/item/stack/material/animalhide = 5)
 
 	say_list_type = /datum/say_list/bear
 

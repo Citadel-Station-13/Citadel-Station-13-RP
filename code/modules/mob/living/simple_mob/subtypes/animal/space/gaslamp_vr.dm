@@ -66,6 +66,8 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	min_n2 = 0
 	max_n2 = 0
 
+	butcher_results = list(/obj/item/stack/sheet/sinew = 5)
+
 /datum/say_list/gaslamp
 	emote_see = list("looms", "sways gently")
 

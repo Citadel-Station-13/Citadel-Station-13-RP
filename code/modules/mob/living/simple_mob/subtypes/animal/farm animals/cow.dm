@@ -31,8 +31,8 @@
 
 	say_list_type = /datum/say_list/cow
 
-	meat_amount = 6
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat= 6, /obj/item/stack/material/bone = 4)
+	guaranteed_butcher_results = list(/obj/item/stack/material/animalhide = 5)
 
 	var/datum/reagents/udder = null
 

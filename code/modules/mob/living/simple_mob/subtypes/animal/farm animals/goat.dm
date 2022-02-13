@@ -34,8 +34,7 @@
 	say_list_type = /datum/say_list/goat
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 
-	meat_amount = 4
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat= 4, /obj/item/stack/material/bone = 1)
 
 	var/datum/reagents/udder = null
 

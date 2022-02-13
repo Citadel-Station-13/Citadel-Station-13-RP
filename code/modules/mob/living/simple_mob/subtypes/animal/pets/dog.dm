@@ -31,8 +31,8 @@
 
 	say_list_type = /datum/say_list/dog
 
-	meat_amount = 3
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/corgi
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/corgi = 3, /obj/item/stack/material/bone = 2)
+	guaranteed_butcher_results = list(/obj/item/stack/material/animalhide/corgi = 5)
 
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back

@@ -192,10 +192,8 @@
 	// Some mobs have specific meat item types.
 	if(istype(src.occupant,/mob/living/simple_mob))
 		var/mob/living/simple_mob/critter = src.occupant
-		if(critter.meat_amount)
-			slab_count = critter.meat_amount
-		if(critter.meat_type)
-			slab_type = critter.meat_type
+		if(critter.butcher_results)
+			slab_count = critter.butcher_results
 	else if(istype(src.occupant,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = occupant
 		slab_name = src.occupant.real_name

@@ -139,6 +139,10 @@
 	var/SA_bonus_damage = 35 // 50 total against animals and aberrations.
 	var/SA_vulnerability = MOB_CLASS_ANIMAL | MOB_CLASS_ABERRATION
 
+/obj/item/melee/disruptor/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
+
 /obj/item/melee/disruptor/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 	if(isliving(target))

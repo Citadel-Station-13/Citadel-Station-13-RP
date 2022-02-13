@@ -36,6 +36,9 @@
 
 	ai_holder_type = null
 
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 5, /obj/item/stack/sheet/sinew = 3)
+	guaranteed_butcher_results = list(/obj/item/stack/material/hairlesshide = 10)
+
 /mob/living/simple_mob/horror/Master/death()
 	playsound(src, 'sound/h_sounds/imbeciles.ogg', 50, 1)
 	..()

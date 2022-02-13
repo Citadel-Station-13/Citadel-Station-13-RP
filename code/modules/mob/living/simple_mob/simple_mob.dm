@@ -55,8 +55,6 @@
 	var/response_harm   = "tries to hurt"	// If clicked on harm intent
 	var/list/friends = list()		// Mobs on this list wont get attacked regardless of faction status.
 	var/harm_intent_damage = 3		// How much an unarmed harm click does to this mob.
-	var/meat_amount = 0				// How much meat to drop from this mob when butchered
-	var/obj/meat_type				// The meat object to drop
 	var/list/loot_list = list()		// The list of lootable objects to drop, with "/path = prob%" structure
 	var/obj/item/card/id/myid// An ID card if they have one to give them access to stuff.
 
@@ -170,7 +168,6 @@
 		melee_damage_lower = round(melee_damage_lower*mod)
 		melee_damage_upper = round(melee_damage_upper*mod)
 		movement_cooldown = round(movement_cooldown*mod)
-		meat_amount = round(meat_amount*mod)
 		update_icons()
 
 /mob/living/simple_mob/Initialize(mapload)
@@ -293,7 +290,7 @@
 /mob/living/simple_mob/get_speech_ending(verb, var/ending)
 	return verb
 
-
+/* // This was the code for harvesting prior to the Butchering component's usage. Archiving for now.
 // Harvest an animal's delicious byproducts
 /mob/living/simple_mob/proc/harvest(var/mob/user)
 	var/actual_meat_amount = max(1,(meat_amount/2))
@@ -308,8 +305,9 @@
 		else
 			user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
 			gib()
+*/
 
-/* Replace the above ^^^^ with this if enabling the butchering component.
+
 /mob/living/simple_mob/gib()
 	if(butcher_results || guaranteed_butcher_results)
 		var/list/butcher = list()
@@ -322,7 +320,6 @@
 			for(var/i in 1 to butcher[path])
 				new path(Tsec)
 	..()
-*/
 
 /mob/living/simple_mob/is_sentient()
 	return mob_class & MOB_CLASS_HUMANOID|MOB_CLASS_ANIMAL|MOB_CLASS_SLIME // Update this if needed.

@@ -25,7 +25,7 @@
 	response_harm   = "stomps"
 	friendly = "pinches"
 
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/crab
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/crab = 1)
 
 	say_list_type = /datum/say_list/crab
 

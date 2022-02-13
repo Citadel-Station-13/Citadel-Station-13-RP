@@ -19,6 +19,7 @@
 	R.my_atom = src
 	R.add_reagent("fuel", max_fuel)
 	START_PROCESSING(SSobj, src)
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 /obj/item/chainsaw/Destroy()
 	STOP_PROCESSING(SSobj, src)

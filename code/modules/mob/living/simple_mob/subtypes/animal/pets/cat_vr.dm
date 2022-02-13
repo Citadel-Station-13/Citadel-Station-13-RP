@@ -48,7 +48,6 @@
 	holder_type = /obj/item/holder/cat/fluff/tabiranth
 	friend_name = "Ascian"
 	digestable = 0
-	meat_amount = 0
 	maxHealth = 50
 	health = 50
 	randomized = FALSE

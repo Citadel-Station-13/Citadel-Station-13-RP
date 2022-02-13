@@ -31,7 +31,7 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
-	meat_type = /obj/item/reagent_containers/food/snacks/tomatomeat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/tomatomeat = 2)
 
 /mob/living/simple_mob/hostile/tomato/space
 	min_oxy = 0

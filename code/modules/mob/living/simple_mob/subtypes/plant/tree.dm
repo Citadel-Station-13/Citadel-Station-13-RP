@@ -33,7 +33,7 @@
 	attacktext = list("bitten")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	meat_type = /obj/item/reagent_containers/food/snacks/xenomeat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/xenomeat = 1)
 
 	pixel_x = -16
 

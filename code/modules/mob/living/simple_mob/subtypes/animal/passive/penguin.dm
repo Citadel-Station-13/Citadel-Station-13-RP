@@ -32,7 +32,7 @@
 
 	has_langs = list("Bird")
 
-	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken/penguin
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/chicken/penguin = 2, /obj/item/stack/material/bone = 1)
 
 /mob/living/simple_mob/animal/passive/penguin/tux
 	name = "Tux"

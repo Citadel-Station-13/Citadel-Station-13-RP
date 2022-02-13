@@ -36,6 +36,9 @@
 	say_list_type = /datum/say_list/Rickey
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/human = 4, /obj/item/stack/sheet/sinew = 2, /obj/item/stack/material/bone = 2)
+	guaranteed_butcher_results = list(/obj/item/stack/material/hairlesshide = 2)
+
 /mob/living/simple_mob/horror/Rickey/death()
 	playsound(src, 'sound/h_sounds/headcrab.ogg', 50, 1)
 	..()

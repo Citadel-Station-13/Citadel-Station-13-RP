@@ -8,6 +8,10 @@
 	var/advanced = 0	//Determines if you can pierce the heavens or not. Used in diamond drill.
 	required_type = list(/obj/mecha/working/ripley)
 
+/obj/item/mecha_parts/mecha_equipment/drill/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
+
 /obj/item/mecha_parts/mecha_equipment/tool/drill/action(atom/target)
 	if(!action_checks(target)) return
 	if(isobj(target))
@@ -67,12 +71,8 @@
 	else if(istype(target, /mob/living/simple_mob))
 		var/mob/living/simple_mob/S = target
 		if(target.stat == DEAD)
-			if(S.meat_amount > 0)
-				S.harvest(user)
-				return
-			else
-				S.gib()
-				return
+			S.gib()
+			return
 		else
 			S.apply_damage(drill_force)
 			return

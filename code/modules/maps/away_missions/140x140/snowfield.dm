@@ -82,7 +82,8 @@
 	minbodytemp = 0
 
 	//speak_chance = 1 //VORESTATION AI TEMPORARY REMOVAL
-	meat_type = /obj/item/reagent_containers/food/snacks/bearmeat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/bearmeat = 6, /obj/item/stack/material/bone = 4)
+	guaranteed_butcher_results = list(/obj/item/stack/sheet/animalhide/goliath_hide/polar_bear_hide = 4)
 /datum/say_list/polar_bear
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
 	emote_hear = list("rawrs","grumbles","grawls")

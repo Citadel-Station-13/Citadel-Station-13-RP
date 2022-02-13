@@ -36,6 +36,9 @@
 	say_list_type = /datum/say_list/Willy
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/human = 3, /obj/item/stack/material/bone = 1)
+	guaranteed_butcher_results = list(/obj/item/stack/material/cloth = 10)
+
 /mob/living/simple_mob/horror/Willy/death()
 	playsound(src, 'sound/h_sounds/sampler.ogg', 50, 1)
 	..()

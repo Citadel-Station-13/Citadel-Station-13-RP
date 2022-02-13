@@ -82,6 +82,8 @@
 	var/poison_per_bite = 3
 	var/poison_type = "neurophage_nanites"
 
+	butcher_results = list(/obj/item/stack/material/bone = 8)
+
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/apply_melee_effects(var/atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
@@ -132,6 +134,8 @@
  // How long the leap telegraphing is.
 	var/leap_warmup = 2 SECOND
 	var/leap_sound = 'sound/weapons/spiderlunge.ogg'
+
+	butcher_results = list(/obj/item/stack/sheet/sinew = 10)
 
  // Multiplies damage if the victim is stunned in some form, including a successful leap.
 /mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/apply_bonus_melee_damage(atom/A, damage_amount)
@@ -201,6 +205,9 @@
 
 	armor = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
+
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/vox = 2, /obj/item/stack/material/bone = 4)
+
  // Hit and run mob
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran
 	name = "Tajaran cyber stalker"
@@ -223,6 +230,8 @@
  // world.time
 	var/last_unstealth = 0
 
+	butcher_results = list(/obj/item/stack/material/bone = 2)
+	guaranteed_butcher_results = list(/obj/item/stack/material/animalhide/grey = 5)
 
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/stealth()
 	if(stealthed)

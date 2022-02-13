@@ -32,7 +32,7 @@
 
 	has_langs = list("Bird")
 
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat = 1, /obj/item/stack/material/bone = 1)
 
 /datum/say_list/goose
 	speak = list("HONK!")
