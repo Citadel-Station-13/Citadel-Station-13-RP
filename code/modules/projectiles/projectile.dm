@@ -716,7 +716,7 @@
 					SM.damage = damage_override
 				if(submunition_constant_spread)
 					SM.dispersion = 0
-					var/calculated = Angle + round((count / num_pellets - 0.5) * submunition_spread_max, 1)
+					var/calculated = Angle + round((count / amt - 0.5) * submunition_spread_max, 1)
 					SM.launch_projectile(target, target_zone, user, params, calculated)
 				else
 					SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
