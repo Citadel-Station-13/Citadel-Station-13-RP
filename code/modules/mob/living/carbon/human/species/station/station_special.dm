@@ -658,8 +658,16 @@
 	tail = "tail" //Spider tail.
 	icobase_tail = 1
 
+	is_weaver = TRUE
+	silk_reserve = 500
+	silk_max_reserve = 1000
+
 	inherent_verbs = list(
-		/mob/proc/weaveWebBindings,
+		/mob/living/carbon/human/proc/check_silk_amount,
+		/mob/living/carbon/human/proc/toggle_silk_production,
+		/mob/living/carbon/human/proc/weave_structure,
+		/mob/living/carbon/human/proc/weave_item,
+		/mob/living/carbon/human/proc/set_silk_color,
 		/mob/living/carbon/human/proc/tie_hair
 		)
 

@@ -244,6 +244,13 @@
 	var/icobase_wing
 	var/wikilink = null //link to wiki page for species
 
+	//Vorestation Pull for weaver abilities
+	var/is_weaver = FALSE
+	var/silk_production = FALSE
+	var/silk_reserve = 100
+	var/silk_max_reserve = 500
+	var/silk_color = "#FFFFFF"
+
 /datum/species/New()
 	if(hud_type)
 		hud = new hud_type()

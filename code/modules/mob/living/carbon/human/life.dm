@@ -76,7 +76,8 @@
 		//Organs and blood
 		handle_organs()
 		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
-		weightgain() //VORESTATION EDIT
+		weightgain() 			//VORESTATION EDIT
+		process_weaver_silk()	//VOREStation Addition
 		handle_shock()
 
 		handle_pain()
@@ -1893,6 +1894,14 @@
 
 		else if (nutrition <= MAX_NUTRITION_TO_LOSE && stat != 2 && weight > MIN_MOB_WEIGHT && weight_loss)
 			weight -= species.metabolism*(0.01*weight_loss) // starvation weight loss
+
+/mob/living/carbon/human/proc/process_weaver_silk()
+	if(!species || !(species.is_weaver))
+		return
+
+	if(species.silk_reserve < species.silk_max_reserve && species.silk_production == TRUE && nutrition > 100)
+		species.silk_reserve = min(species.silk_reserve + 2, species.silk_max_reserve)
+		nutrition -= 0.4//suck nutrition from the user
 
 /mob/living/carbon/human/proc/handle_hud_list_vr()
 
