@@ -42,6 +42,8 @@
 	var/flags_inv = 0
 	var/body_parts_covered = 0 //see setup.dm for appropriate bit flags
 
+	var/tool_behaviour = NONE
+
 	var/item_flags = 0 //Miscellaneous flags pertaining to equippable objects.
 
 	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible

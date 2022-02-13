@@ -97,6 +97,10 @@
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
 	applies_material_colour = 1
 
+/obj/item/material/knife/tacknife/combatknife/bone
+	icon_state = "boneknife"
+	default_material = "bone"
+
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
 /obj/item/material/knife/tacknife/boot
@@ -182,6 +186,12 @@
 	applies_material_colour = FALSE
 	default_material = "plasteel" //VOREStation Edit
 	toolspeed = 2 // Use a real axe if you want to chop logs.
+
+/obj/item/material/knife/tacknife/survival/bone
+	name = "primitive survival knife"
+	desc = "A hunting grade survival knife with a sleek leather grip."
+	applies_material_colour =TRUE
+	default_material = "bone" //VOREStation Edit
 
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"
