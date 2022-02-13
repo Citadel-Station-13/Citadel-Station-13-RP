@@ -117,21 +117,9 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock/floor)
 			UpdateMineral()
 
 //Unsimulated
-/turf/unsimulated/wall/planetary/lythios43c
-	name = "facility wall"
-	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
-	alpha = 0xFF
-	LYTHIOS43C_SET_ATMOS
 
 /turf/unsimulated/icerock/lythios43c
 	blocks_air = TRUE
-
-/*MOVE TO code/game/turfs/unsimulated/sky_vr.dm
-
-*/
-/turf/unsimulated/floor/outdoors/snow/lythios43c
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
-	icon_state = "steel"
 
 /turf/unsimulated/floor/steel
 	icon = 'icons/turf/flooring/tiles_vr.dmi'

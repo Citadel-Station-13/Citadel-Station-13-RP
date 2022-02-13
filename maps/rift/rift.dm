@@ -14,6 +14,7 @@
 	#include "rift-02-underground1.dmm"
 	#include "rift-03-surface1.dmm"
 	#include "rift-04-surface2.dmm"
+	#include "rift-05-surface3.dmm"
 
 	#define USING_MAP_DATUM /datum/map/rift
 

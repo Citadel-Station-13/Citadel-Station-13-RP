@@ -82,8 +82,8 @@
 	. = ..()
 
 /turf/unsimulated/floor/sky/depths
-	name = "darkness
-	desc = "A straight drop down into the depths below.
+	name = "darkness"
+	desc = "A straight drop down into the depths below."
 	color ="#303030"
 
 /turf/unsimulated/floor/sky/depths/Initialize(mapload)

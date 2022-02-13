@@ -120,31 +120,8 @@
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c/find_planet()
 	planet = planet_lythios43c
 
-/obj/effect/step_trigger/lost_in_space
-	var/deathmessage = "You drift off into space, floating alone in the void until your life support runs out."
-
-/obj/effect/step_trigger/lost_in_space/Trigger(var/atom/movable/A) //replacement for shuttle dump zones because there's no empty space levels to dump to
-	if(ismob(A))
-		to_chat(A, "<span class='danger'>[deathmessage]</span>")
-	qdel(A)
-
-/obj/effect/step_trigger/lost_in_space/bluespace
-	deathmessage = "Everything goes blue as your component particles are scattered throughout the known and unknown universe."
-	var/last_sound = 0
-
-/obj/effect/step_trigger/lost_in_space/bluespace/Trigger(A)
-	if(world.time - last_sound > 5 SECONDS)
-		last_sound = world.time
-		playsound(get_turf(src), 'sound/effects/supermatter.ogg', 75, 1)
-	if(ismob(A) && prob(5))//lucky day
-		var/destturf = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),pick(GLOB.using_map.station_levels))
-		new /datum/teleport/instant(A, destturf, 0, 1, null, null, null, 'sound/effects/phasein.ogg')
-	else
-		return ..()
-
 /obj/effect/step_trigger/lost_in_space/tram
 	deathmessage = "You fly down the tunnel of the tram at high speed for a few moments before impact kills you with sheer concussive force."
-
 
 // Invisible object that blocks z transfer to/from its turf and the turf above.
 /obj/effect/ceiling
@@ -206,28 +183,6 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/tram/powered()
 	return TRUE // Always be powered
 */
-//Chemistry 'chemavator'
-/obj/machinery/smartfridge/chemistry/chemvator
-	name = "\improper Smart Chemavator - Upper"
-	desc = "A refrigerated storage unit for medicine and chemical storage. Now sporting a fancy system of pulleys to lift bottles up and down."
-	var/obj/machinery/smartfridge/chemistry/chemvator/attached
-
-/obj/machinery/smartfridge/chemistry/chemvator/down/Destroy()
-	attached = null
-	return ..()
-
-/obj/machinery/smartfridge/chemistry/chemvator/down
-	name = "\improper Smart Chemavator - Lower"
-
-/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize()
-	. = ..()
-	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator,get_zstep(src,UP))
-	if(istype(above))
-		above.attached = src
-		attached = above
-		item_records = attached.item_records
-	else
-		to_chat(world,"<span class='danger'>[src] at [x],[y],[z] cannot find the unit above it!</span>")
 
 // Tram departure cryo doors that turn into ordinary airlock doors at round end
 /obj/machinery/cryopod/robot/door/tram
@@ -269,26 +224,6 @@
 		var/mob/observer/dead/newghost = user.ghostize()
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
-
-// Tram arrival point landmarks and datum
-var/global/list/latejoin_tram   = list()
-
-/obj/effect/landmark/tram
-	name = "JoinLateTram"
-	delete_me = 1
-
-/obj/effect/landmark/tram/New()
-	latejoin_tram += loc // Register this turf as tram latejoin.
-	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
-	..()
-
-/datum/spawnpoint/tram
-	display_name = "Tram Station"
-	msg = "has arrived on the tram"
-
-/datum/spawnpoint/tram/New()
-	..()
-	turfs = latejoin_tram
 
 //
 // Holodorms

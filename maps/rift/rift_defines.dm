@@ -4,35 +4,79 @@
 #define LYTHIOS43C_TURF_CREATE_UN(x)	x/lythios43c/initial_gas_mix=ATMOSPHERE_ID_LYTHIOS43C
 
 //Normal map defs
-#define Z_LEVEL_UNDERGROUND_DEEP			1
-#define Z_LEVEL_UNDERGROUND					2
-#define Z_LEVEL_SURFACE_LOW					3
-#define Z_LEVEL_SURFACE_MID					4
-#define Z_LEVEL_SURFACE_HIGH				5
-#define Z_LEVEL_TRANSIT						6
+#define Z_LEVEL_UNDERGROUND_DEEP		2
+#define Z_LEVEL_UNDERGROUND				3
+#define Z_LEVEL_SURFACE_LOW				4
+#define Z_LEVEL_SURFACE_MID				5
+#define Z_LEVEL_SURFACE_HIGH			6
+#define Z_LEVEL_CENTCOM					7
+#define Z_LEVEL_MISC					8
+#define Z_LEVEL_SHIPS					9
+
+#define Z_LEVEL_DEBRISFIELD				10
+#define Z_LEVEL_PIRATEBASE				11
+#define Z_LEVEL_MININGPLANET			12
+#define Z_LEVEL_UNKNOWN_PLANET			13
+#define Z_LEVEL_DESERT_PLANET			14
+#define Z_LEVEL_GAIA_PLANET				15
+#define Z_LEVEL_FROZEN_PLANET			16
+
+#define Z_LEVEL_ROGUEMINE_1				17
+#define Z_LEVEL_ROGUEMINE_2				18
+#define Z_LEVEL_ROGUEMINE_3				19
+#define Z_LEVEL_ROGUEMINE_4				20
+
+#define Z_LEVEL_TRADEPORT				21
+
+#define Z_LEVEL_TALON1					22
+#define Z_LEVEL_TALON2					23
 
 /datum/map/rift
 	name = "Rift"
 	full_name = "NSB Atlas"
 	path = "rift"
 
+	use_overmap = TRUE
+	overmap_z = Z_LEVEL_MISC
+	overmap_size = 60
+	overmap_event_areas = 50
+	usable_email_tlds = list("lythios.nt")
+
 	zlevel_datum_type = /datum/map_z_level/rift
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6")
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm
-/*
-	holomap_smoosh = list(list(
+
+	admin_levels = list()
+	sealed_levels = list()
+	empty_levels = null
+	station_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
+		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_SPACE_LOW,
-		Z_LEVEL_SPACE_MID,
-		Z_LEVEL_SPACE_HIGH))
-*/
+		Z_LEVEL_SURFACE_HIGH)
+	contact_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
+		Z_LEVEL_UNDERGROUND,
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID)
+	player_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
+		Z_LEVEL_UNDERGROUND,
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID,
+		Z_LEVEL_SURFACE_HIGH)
+
+	holomap_smoosh = list(list(
+		Z_LEVEL_UNDERGROUND_DEEP,
+		Z_LEVEL_UNDERGROUND,
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID,
+		Z_LEVEL_SURFACE_HIGH))
+
 	station_name  = "NSB Atlas"
 	station_short = "Raytheon"
 	dock_name     = "NSC Raytheon Orbital Relay"
+	dock_type     = "surface"
 	boss_name     = "Central Command"
 	boss_short    = "CentCom"
 	company_name  = "NanoTrasen"
@@ -42,6 +86,7 @@
 	shuttle_docked_message = "The scheduled NSV Herra spaceplane flight to the %dock_name% has arrived. It will depart in approximately %ETD%."
 	shuttle_leaving_dock = "The NSV Herra has left the station. Estimate %ETA% until the spaceplane arrives at the %dock_name%."
 	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The NSV Herra will be arriving shortly. Those departing should proceed to departures within %ETA%."
+	shuttle_name = "Automated Spaceplane"
 	shuttle_recall_message = "The scheduled crew transfer flight has been cancelled."
 	emergency_shuttle_docked_message = "The evacuation flight has landed at the landing pad. You have approximately %ETD% to board the vessel."
 	emergency_shuttle_leaving_dock = "The emergency flight has left the station. Estimate %ETA% until the vessel arrives at %dock_name%."
@@ -50,28 +95,46 @@
 
 	station_networks = list(
 							NETWORK_CARGO,
+							NETWORK_CIRCUITS,
 							NETWORK_CIVILIAN,
 							NETWORK_COMMAND,
 							NETWORK_ENGINE,
 							NETWORK_ENGINEERING,
-							NETWORK_ENGINEERING_OUTPOST,
-							NETWORK_DEFAULT,
+							NETWORK_EXPLORATION,
+							//NETWORK_DEFAULT,  //Is this even used for anything? Robots show up here, but they show up in ROBOTS network too,
 							NETWORK_MEDICAL,
 							NETWORK_MINE,
+							NETWORK_OUTSIDE,
 							NETWORK_RESEARCH,
 							NETWORK_RESEARCH_OUTPOST,
 							NETWORK_ROBOTS,
-							NETWORK_PRISON,
 							NETWORK_SECURITY,
-							NETWORK_INTERROGATION
+							NETWORK_TCOMMS//,
+//							NETWORK_LYTHIOS
+							)
+	secondary_networks = list(
+							NETWORK_ERT,
+							NETWORK_MERCENARY,
+							NETWORK_THUNDER,
+							NETWORK_COMMUNICATORS,
+							NETWORK_ALARM_ATMOS,
+							NETWORK_ALARM_POWER,
+							NETWORK_ALARM_FIRE,
+							NETWORK_TALON_HELMETS,
+							NETWORK_TALON_SHIP
 							)
 
-	allowed_spawns = list("Docking Pad","Gateway","Cryogenic Storage","Cyborg Storage")
-	spawnpoint_died = /datum/spawnpoint/tram
-	spawnpoint_left = /datum/spawnpoint/tram
+	bot_patrolling = FALSE
+
+	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage")
+	spawnpoint_died = /datum/spawnpoint/shuttle
+	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
 
 	meteor_strike_areas = list(/area/rift/surfacebase/outside/outside3)
+
+	default_skybox = /datum/skybox_settings/lythios
+
 /*
 	unit_test_exempt_areas = list(
 		/area/rift/surfacebase/outside/outside1,
@@ -89,18 +152,56 @@
 		/area/tether/surfacebase/emergency_storage/rnd,
 		/area/tether/surfacebase/emergency_storage/atrium)
 */
-/*
+/* Finish this when you have a ship and the locations for it to access
+	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
+	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
+	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
+						 		 Z_LEVEL_ROGUEMINE_2,
+						 	 	 Z_LEVEL_ROGUEMINE_3,
+								 Z_LEVEL_ROGUEMINE_4)
+*/
 	lateload_z_levels = list(
-		list("Tether - Misc","Tether - Ships","Tether - Underdark"), //Stock Tether lateload maps
-		list("Alien Ship - Z1 Ship"),
-		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave"),
-		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
-		)
+		list("Lythios - Misc","Lythios - Ships",), // Stock Triumph lateload maps
+		list("Debris Field - Z1 Space"), // Debris Field
+		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
+		list("Away Mission - Mining Planet"),//Mining planet
+		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
+		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
+		list("Gaia Planet - Z3 Planet"), // Gaia Planet
+		list("Forzen Planet - Z4 Planet"), // Frozen Planet
+		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
+		list("Away Mission - Trade Port"), // Trading Post
+		list("Away Mission - Lava Land"),
+		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2")//I swear to god this better work -Bloop
+	)
+
+	ai_shell_restricted = TRUE
+	ai_shell_allowed_levels = list(
+	Z_LEVEL_UNDERGROUND_DEEP,
+		Z_LEVEL_UNDERGROUND,
+		Z_LEVEL_SURFACE_LOW,
+		Z_LEVEL_SURFACE_MID,
+		Z_LEVEL_SURFACE_HIGH,
+		Z_LEVEL_DEBRISFIELD,
+		Z_LEVEL_PIRATEBASE,
+		Z_LEVEL_MININGPLANET,
+		Z_LEVEL_UNKNOWN_PLANET,
+		Z_LEVEL_DESERT_PLANET,
+		Z_LEVEL_GAIA_PLANET,
+		Z_LEVEL_FROZEN_PLANET,
+		Z_LEVEL_TRADEPORT)
 
 	lateload_single_pick = null //Nothing right now.
-*/
-/*
-/datum/map/tether/perform_map_generation()
+
+/datum/map/lythios/perform_map_generation()
+	return 1
+
+/datum/skybox_settings/lythios/New()
+	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
+	return icon_state
+
+/* ERRORS - Lacks Z_LEVEL_SURFACE_MINE etc..
+/datum/map/lythios/perform_map_generation()
 
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SURFACE_MINE, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_MINE, 64, 64)         // Create the mining ore distribution map.
@@ -110,40 +211,6 @@
 
 	return 1
 */
-// Short range computers see only the six main levels, others can see the surrounding surface levels.
-/datum/map/rift/get_map_levels(var/srcz, var/long_range = TRUE)
-	if (long_range && (srcz in map_levels))
-		return map_levels
-	else if (srcz == Z_LEVEL_TRANSIT)
-		return list() // Nothing on transit!
-	else if (srcz >= Z_LEVEL_UNDERGROUND_DEEP && srcz <= Z_LEVEL_SURFACE_MID)
-		return list(
-			Z_LEVEL_UNDERGROUND_DEEP,
-			Z_LEVEL_UNDERGROUND,
-			Z_LEVEL_SURFACE_LOW,
-			Z_LEVEL_SURFACE_MID)
-	else
-		return list(srcz)
-/*
-/datum/map/southern_cross/get_map_levels(var/srcz, var/long_range = TRUE)
-	if (long_range && (srcz in map_levels))
-		return map_levels
-	else if (srcz == Z_LEVEL_TRANSIT)
-		return list() // Nothing on transit!
-	else if (srcz >= Z_LEVEL_STATION_ONE && srcz <= Z_LEVEL_STATION_THREE) // Station can see other decks.
-		return list(
-			Z_LEVEL_STATION_ONE,
-			Z_LEVEL_STATION_TWO,
-			Z_LEVEL_STATION_THREE)
-	else if(srcz in list(Z_LEVEL_SURFACE, Z_LEVEL_SURFACE_MINE, Z_LEVEL_SURFACE_WILD)) // Being on the surface lets you see other surface Zs.
-		return list(
-			Z_LEVEL_SURFACE,
-			Z_LEVEL_SURFACE_MINE,
-			Z_LEVEL_SURFACE_WILD)
-	else
-		return ..()
-*/
-
 /*
 // For making the 6-in-1 holomap, we calculate some offsets
 #define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
@@ -167,7 +234,7 @@
 	z = Z_LEVEL_UNDERGROUND
 	name = "Underground 1"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/open
+	base_turf = /turf/simulated/floor/outdoors/ice/lythios43c
 
 /datum/map_z_level/rift/station/surface_low
 	z = Z_LEVEL_SURFACE_LOW
@@ -181,70 +248,29 @@
 /datum/map_z_level/tether/station/surface_mid
 	z = Z_LEVEL_SURFACE_MID
 	name = "Surface 2"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/open
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
-/*
+
 /datum/map_z_level/tether/station/surface_high
 	z = Z_LEVEL_SURFACE_HIGH
 	name = "Surface 3"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/open
-	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
+//	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
+//	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
 
-/datum/map_z_level/tether/transit
-	z = Z_LEVEL_TRANSIT
-	name = "Transit"
-	flags = MAP_LEVEL_SEALED|MAP_LEVEL_PLAYER|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-
-/datum/map_z_level/tether/station/space_low
-	z = Z_LEVEL_SPACE_LOW
-	name = "Asteroid 1"
-	base_turf = /turf/space
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
-
-/datum/map_z_level/tether/station/space_mid
-	z = Z_LEVEL_SPACE_MID
-	name = "Asteroid 2"
-	base_turf = /turf/simulated/open
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
-
-/datum/map_z_level/tether/station/space_high
-	z = Z_LEVEL_SPACE_HIGH
-	name = "Asteroid 3"
-	base_turf = /turf/simulated/open
-	transit_chance = 33
-	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
-	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
-
-/datum/map_z_level/tether/mine
-	z = Z_LEVEL_SURFACE_MINE
-	name = "Mining Outpost"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-
-/datum/map_z_level/tether/solars
-	z = Z_LEVEL_SOLARS
-	name = "Solar Field"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
-
-/datum/map_z_level/tether/colony
+/datum/map_z_level/lythios/colony
 	z = Z_LEVEL_CENTCOM
-	name = "Colony"
+	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
-/datum/map_z_level/tether/misc
+/datum/map_z_level/lythios/misc
 	z = Z_LEVEL_MISC
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
-*/
+
 /*
 /datum/map_z_level/tether/wilderness
 	name = "Wilderness"
