@@ -7,6 +7,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "screwdriver"
 	slot_flags = SLOT_BELT | SLOT_EARS
+	tool_behaviour = TOOL_SCREWDRIVER
 	force = 6
 	w_class = ITEMSIZE_TINY
 	throwforce = 5

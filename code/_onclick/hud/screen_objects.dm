@@ -181,6 +181,10 @@
 	icon_state = "craft"
 	screen_loc = ui_crafting
 
+/obj/screen/craft/Click(location, control, params)
+	var/datum/component/personal_crafting/C = usr.GetComponent(/datum/component/personal_crafting)
+	C?.ui_interact(usr)
+
 /obj/screen/Click(location, control, params)
 	if(!usr)	return 1
 	switch(name)

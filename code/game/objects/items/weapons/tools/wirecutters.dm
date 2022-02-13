@@ -7,6 +7,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "cutters"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_WIRECUTTER
 	force = 6
 	throw_speed = 2
 	throw_range = 9

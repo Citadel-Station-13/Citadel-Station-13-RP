@@ -113,6 +113,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 	// Circuits
 	initialize_integrated_circuits_list()
 
+	//Recipes
+	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
+
 	var/list/paths
 
 	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name

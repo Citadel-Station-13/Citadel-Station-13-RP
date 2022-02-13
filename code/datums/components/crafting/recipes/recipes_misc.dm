@@ -60,7 +60,7 @@
 	time = 150
 	subcategory = CAT_FURNITURE
 	category = CAT_MISCELLANEOUS
-	always_availible = TRUE
+	always_available = TRUE
 
 /datum/crafting_recipe/bloodsucker/meatcoffin
 	name = "Meat Coffin"
@@ -72,7 +72,7 @@
 	time = 150
 	subcategory = CAT_FURNITURE
 	category = CAT_MISCELLANEOUS
-	always_availible = TRUE
+	always_available = TRUE
 
 /datum/crafting_recipe/bloodsucker/metalcoffin
 	name = "Metal Coffin"
@@ -83,7 +83,7 @@
 	time = 100
 	subcategory = CAT_FURNITURE
 	category = CAT_MISCELLANEOUS
-	always_availible = TRUE
+	always_available = TRUE
 
 /datum/crafting_recipe/bloodsucker/vassalrack
 	name = "Persuasion Rack"
@@ -106,7 +106,7 @@
 	time = 150
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
-	always_availible = FALSE	// Disabled until learned
+	always_available = FALSE	// Disabled until learned
 
 
 /datum/crafting_recipe/bloodsucker/candelabrum
@@ -123,7 +123,7 @@
 	time = 100
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
-	always_availible = FALSE	// Disabled til learned
+	always_available = FALSE	// Disabled til learned
 */
 
 /*
@@ -380,7 +380,7 @@
 	time = 150
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
-	always_availible = FALSE
+	always_available = FALSE
 */
 
 ////////////

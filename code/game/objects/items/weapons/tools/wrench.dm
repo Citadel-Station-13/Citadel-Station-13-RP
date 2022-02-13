@@ -7,6 +7,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "wrench"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_WRENCH
 	force = 6
 	throwforce = 7
 	w_class = ITEMSIZE_SMALL

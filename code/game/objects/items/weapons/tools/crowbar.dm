@@ -8,6 +8,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "crowbar"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_CROWBAR
 	force = 6
 	throwforce = 7
 	pry = 1

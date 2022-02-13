@@ -114,7 +114,7 @@
 	name = "Sandstone Bow Making Manual"
 	result = /obj/item/book/granter/crafting_recipe/bone_bow
 	time = 200 //Scribing // don't care
-	always_availible = FALSE
+	always_available = FALSE
 	reqs = list(/obj/item/stack/rods = 1,
 				 /obj/item/stack/sheet/mineral/sandstone = 4)
 	category = CAT_PRIMAL
@@ -122,7 +122,7 @@
 
 /datum/crafting_recipe/rib
 	name = "Collosal Rib"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 10,
             /datum/reagent/oil = 5)
@@ -131,7 +131,7 @@
 
 /datum/crafting_recipe/skull
 	name = "Skull Carving"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 6,
             /datum/reagent/oil = 5)
@@ -140,7 +140,7 @@
 
 /datum/crafting_recipe/halfskull
 	name = "Cracked Skull Carving"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 3,
             /datum/reagent/oil = 5)
@@ -149,7 +149,7 @@
 
 /datum/crafting_recipe/boneshovel
 	name = "Serrated Bone Shovel"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 4,
             /datum/reagent/oil = 5,
@@ -159,7 +159,7 @@
 
 /datum/crafting_recipe/bonehatchet
 	name = "Bone Hatchet"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 6,
             /obj/item/stack/sheet/sinew = 2)
@@ -169,7 +169,7 @@
 //Surgical Tools - I've added these to this crafting menu after I found the sprites on Main and brought them over for the novelty.
 /datum/crafting_recipe/primalretractor
 	name = "Primitive Retractor"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 5,
             /obj/item/stack/sheet/sinew = 2)
@@ -178,7 +178,7 @@
 
 /datum/crafting_recipe/primalhemostat
 	name = "Primitive Hemostat"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 4,
             /obj/item/stack/sheet/sinew = 3)
@@ -187,7 +187,7 @@
 
 /datum/crafting_recipe/primalcautery
 	name = "Primitive Cautery"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 3,
             /obj/item/stack/sheet/sinew = 2,
@@ -197,7 +197,7 @@
 
 /datum/crafting_recipe/primalscalpel
 	name = "Primitive Scalpel"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 3,
             /obj/item/stack/sheet/sinew = 1,
@@ -207,7 +207,7 @@
 
 /datum/crafting_recipe/primalsaw
 	name = "Primitive Bone Saw"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 6,
             /obj/item/stack/sheet/sinew = 4,
@@ -217,7 +217,7 @@
 
 /datum/crafting_recipe/primalsetter
 	name = "Primitive Bone Setter"
-	always_availible = FALSE
+	//always_available = FALSE
 	reqs = list(
             /obj/item/stack/material/bone = 5,
             /obj/item/stack/sheet/sinew = 3)
