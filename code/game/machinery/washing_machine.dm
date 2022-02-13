@@ -59,8 +59,8 @@
 		I.decontaminate()
 
 	//Tanning!
-	for(var/obj/item/stack/material/hairlesshide/HH in washing)
-		var/obj/item/stack/material/wetleather/WL = new(src)
+	for(var/obj/item/stack/hairlesshide/HH in washing)
+		var/obj/item/stack/wetleather/WL = new(src)
 		WL.amount = HH.amount
 		qdel(HH)
 
@@ -118,7 +118,7 @@
 		to_chat(user, "<span class='warning'>You can't fit \the [W] inside.</span>")
 		return
 
-	else if(istype(W, /obj/item/clothing) || istype(W, /obj/item/bedsheet))
+	else if(istype(W, /obj/item/clothing) || istype(W, /obj/item/bedsheet) || istype(W, /obj/item/stack/hairlesshide) || istype(W, /obj/item/stack/wetleather))
 		if(washing.len < 5)
 			if(state in list(1, 3))
 				user.drop_item()
@@ -191,8 +191,8 @@
 		I.decontaminate()
 
 	//Tanning!
-	for(var/obj/item/stack/material/hairlesshide/HH in washing)
-		var/obj/item/stack/material/wetleather/WL = new(src)
+	for(var/obj/item/stack/hairlesshide/HH in washing)
+		var/obj/item/stack/wetleather/WL = new(src)
 		WL.amount = HH.amount
 		qdel(HH)
 
