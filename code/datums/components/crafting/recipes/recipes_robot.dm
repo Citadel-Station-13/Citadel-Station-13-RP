@@ -84,7 +84,7 @@
 	time = 30
 	tools = list(TOOL_WIRECUTTER)
 	reqs = list(/obj/item/aicard = 1,
-				"potato" = 1,
+				/obj/item/cell/potato = 1,
 				/obj/item/stack/cable_coil = 5)
 	category = CAT_ROBOT
 
@@ -94,6 +94,6 @@
 	time = 30
 	tools = list(TOOL_WIRECUTTER)
 	reqs = list(/obj/item/aicard = 1,
-					"pumpkin" = 1,
-					/obj/item/stack/cable_coil = 5)
+				/obj/item/clothing/head/pumpkinhead = 1,
+				/obj/item/stack/cable_coil = 5)
 	category = CAT_ROBOT

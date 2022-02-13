@@ -236,6 +236,16 @@
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
+/datum/crafting_recipe/shovel
+	name = "Shovel"
+	result = /obj/item/shovel
+	tools = list(/obj/item/tool/screwdriver)
+	reqs = list(/obj/item/stack/material/steel = 1,
+				/obj/item/stack/material/wood = 5)
+	time = 30
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS
+
 /*
 /datum/crafting_recipe/toolboxhammer
 	name = "Toolbox Hammer"
