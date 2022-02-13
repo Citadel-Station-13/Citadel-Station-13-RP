@@ -322,7 +322,7 @@
 	name = "ion shell"
 	desc = "An advanced shotgun round that creates a small EMP when it strikes a target."
 	icon_state = "empshell"
-	projectile_type = /obj/item/projectile/ion
+	projectile_type = /obj/item/projectile/scatter/ion
 //	projectile_type = /obj/item/projectile/bullet/shotgun/ion
 	matter = list(DEFAULT_WALL_MATERIAL = 360, "uranium" = 240)
 

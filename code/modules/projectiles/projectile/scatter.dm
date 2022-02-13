@@ -99,7 +99,7 @@
 	damage = 20
 
 	submunition_spread_max = 60
-	submunition_spread_min = 20
+	submunition_constant_spread = TRUE
 
 	submunitions = list(
 		/obj/item/projectile/bullet/shotgun/ion = 3

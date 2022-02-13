@@ -237,7 +237,7 @@
 
 /obj/item/projectile/bullet/shotgun/ion/on_hit(var/atom/target, var/blocked = 0)
 	..()
-	empulse(target, 0, 0, 0, 0)	//Only affects what it hits
+	empulse(target, 0, 0, 2, 0)	//Only affects what it hits
 	return 1
 
 //Frag shot
