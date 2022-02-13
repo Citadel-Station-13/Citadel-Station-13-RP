@@ -94,7 +94,7 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 5000)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
-	suicide_act(mob/user)
+/obj/item/surgical/scalpel/suicide_act(mob/user)
 		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
@@ -322,7 +322,7 @@
 	matter = list("bone" = 5000, "glass" = 2500)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
-	suicide_act(mob/user)
+/obj/item/surgical/scalpel_primitive/suicide_act(mob/user)
 		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \

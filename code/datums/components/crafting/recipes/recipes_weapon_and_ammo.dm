@@ -344,7 +344,7 @@
 	reqs = list(/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/receiver = 1,
 				/obj/item/weaponcrafting/stock = 1,
-				/obj/item/packageWrap = 5)
+				/obj/item/duct_tape_piece = 5)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 100
 	category = CAT_WEAPONRY
@@ -397,6 +397,18 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 
+/datum/crafting_recipe/improvisedslug
+	name = "Improvised Shotgun Shell"
+	result = /obj/item/ammo_casing/a12g/improvised
+	reqs = list(/obj/item/grenade/chem_grenade = 1,
+				/obj/item/stack/material/steel = 1,
+				/obj/item/stack/cable_coil = 1,
+				/datum/reagent/fuel = 10)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 5
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
 /datum/crafting_recipe/meteorslug
 	name = "Meteorslug Shell"
 	result = /obj/item/ammo_casing/a12g/techshell/meteorslug
@@ -443,22 +455,10 @@
 
 /datum/crafting_recipe/ionslug
 	name = "Ion Scatter Shell"
-	result = /obj/item/ammo_casing/a12g/emp
+	result = /obj/item/ammo_casing/a12g/techshell/emp
 	reqs = list(/obj/item/ammo_casing/a12g/techshell = 1,
 				/obj/item/stock_parts/micro_laser/ultra = 1,
 				/obj/item/stock_parts/subspace/crystal = 1)
-	tools = list(TOOL_SCREWDRIVER)
-	time = 5
-	category = CAT_WEAPONRY
-	subcategory = CAT_AMMO
-
-/datum/crafting_recipe/improvisedslug
-	name = "Improvised Shotgun Shell"
-	result = /obj/item/ammo_casing/a12g/techshell/improvised
-	reqs = list(/obj/item/grenade/chem_grenade = 1,
-				/obj/item/stack/material/steel = 1,
-				/obj/item/stack/cable_coil = 1,
-				/datum/reagent/fuel = 10)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 5
 	category = CAT_WEAPONRY

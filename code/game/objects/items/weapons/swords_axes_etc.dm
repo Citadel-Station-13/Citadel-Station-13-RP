@@ -221,7 +221,6 @@
 			burned_in = new_burn
 			if(!burnt)
 				icon_state += "_burnt"
-				item_state += "_burnt"
 				burnt = TRUE
 			update_icon()
 	if(istype(I, /obj/item/stack/rods))
@@ -245,14 +244,12 @@
 	name = "hardwood bokken"
 	desc = "A blunt katana made from hardwood, a dense organic wood."
 	icon_state = "bokken_hard"
-	item_state = "bokken_hard"
 	force = 10
 
 /obj/item/melee/bokken/waki
 	name = "wakizashi bokken"
 	desc = "A space-Japanese training sword made of wood and shaped like a wakizashi."
 	icon_state = "wakibokken"
-	item_state = "wakibokken"
 	slot_flags = SLOT_BELT
 	force = 5
 
@@ -260,7 +257,6 @@
 	name = "wakizashi hardwood bokken"
 	desc = "A blunt wakizashi made from hardwood, a dense organic wood."
 	icon_state = "wakibokken_hard"
-	item_state = "wakibokken_hard"
 	force = 10
 
 /obj/item/bokken_hilt

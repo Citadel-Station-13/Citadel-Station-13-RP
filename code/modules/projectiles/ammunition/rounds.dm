@@ -256,6 +256,13 @@
 	projectile_type = /obj/item/projectile/bullet/shotgun/beanbag
 	matter = list(DEFAULT_WALL_MATERIAL = 180)
 
+/obj/item/ammo_casing/a12g/improvised
+	name = "improvised shell"
+	desc = "An extremely weak shotgun shell with multiple small pellets made out of metal shards."
+	icon_state = "improvshell"
+	projectile_type = /obj/item/projectile/bullet/pellet/shotgun_improvised
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200)
+
 //Can stun in one hit if aimed at the head, but
 //is blocked by clothing that stops tasers and is vulnerable to EMP
 /obj/item/ammo_casing/a12g/stunshell
@@ -276,14 +283,6 @@
 	icon_state = "fshell"
 	projectile_type = /obj/item/projectile/energy/flash/flare
 	matter = list(DEFAULT_WALL_MATERIAL = 90, "glass" = 90)
-
-/obj/item/ammo_casing/a12g/emp
-	name = "ion shell"
-	desc = "An advanced shotgun round that creates a small EMP when it strikes a target."
-	icon_state = "empshell"
-	projectile_type = /obj/item/projectile/ion
-//	projectile_type = /obj/item/projectile/bullet/shotgun/ion
-	matter = list(DEFAULT_WALL_MATERIAL = 360, "uranium" = 240)
 
 //Silver 12g
 /obj/item/ammo_casing/a12g/silver
@@ -319,6 +318,14 @@
 	projectile_type = /obj/item/projectile/meteor/slug
 	matter = list(DEFAULT_WALL_MATERIAL = 500, "gold" = 200)
 
+/obj/item/ammo_casing/a12g/techshell/emp
+	name = "ion shell"
+	desc = "An advanced shotgun round that creates a small EMP when it strikes a target."
+	icon_state = "empshell"
+	projectile_type = /obj/item/projectile/ion
+//	projectile_type = /obj/item/projectile/bullet/shotgun/ion
+	matter = list(DEFAULT_WALL_MATERIAL = 360, "uranium" = 240)
+
 /obj/item/ammo_casing/a12g/techshell/pulseslug
 	name = "pulse slug"
 	desc = "A delicate device which can be loaded into a shotgun. The primer acts as a button which triggers the gain medium and fires a powerful \
@@ -331,7 +338,7 @@
 /obj/item/ammo_casing/a12g/techshell/dragonsbreath
 	name = "dragonsbreath shell"
 	desc = "A shotgun shell which fires a spread of incendiary pellets."
-	icon_state = "ishell2"
+	icon_state = "ishell"
 	projectile_type = /obj/item/projectile/bullet/incendiary/shotgun
 
 /obj/item/ammo_casing/a12g/techshell/frag12
@@ -341,12 +348,6 @@
 	projectile_type = /obj/item/projectile/bullet/shotgun/frag12
 	matter = list(DEFAULT_WALL_MATERIAL = 500, "phoron" = 200)
 
-/obj/item/ammo_casing/a12g/techshell/improvised
-	name = "improvised shell"
-	desc = "An extremely weak shotgun shell with multiple small pellets made out of metal shards."
-	icon_state = "improvshell"
-	projectile_type = /obj/item/projectile/bullet/pellet/shotgun_improvised
-	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200)
 /obj/item/ammo_casing/a12g/techshell/laserslug
 	name = "scatter laser shell"
 	desc = "An advanced shotgun shell that uses a micro laser to replicate the effects of a scatter laser weapon in a ballistic package."
