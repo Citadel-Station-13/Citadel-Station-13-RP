@@ -179,14 +179,6 @@
 		return
 	if(target_loc != target.loc)
 		return
-	if(user.z > src.z)
-		var/turf/T
-		var/turf/above = GetAbove(T)
-		if(above && isopenspace(above))
-			msg = "[user.name] falls into the [src] from above!"
-			to_chat(user, "You fall into the [src]!")
-			add_attack_logs(user,"Fell into disposals")
-		user.forceMove(src)
 	if(target == user && !user.stat && !user.weakened && !user.stunned && !user.paralysis)	// if drop self, then climbed in
 											// must be awake, not stunned or whatever
 		msg = "[user.name] climbs into the [src]."

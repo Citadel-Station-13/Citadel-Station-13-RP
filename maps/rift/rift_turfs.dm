@@ -2,6 +2,7 @@
 LYTHIOS43C_TURF_CREATE(/turf/simulated/open)
 /turf/simulated/open/lythios43c
 	edge_blending_priority = 0.5 //Turfs which also have e_b_p and higher than this will plop decorative edges onto this turf
+
 /turf/simulated/open/lythios43c/Initialize(mapload)
 	. = ..()
 	if(outdoors)
@@ -124,6 +125,13 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock/floor)
 
 /turf/unsimulated/icerock/lythios43c
 	blocks_air = TRUE
+
+/*MOVE TO code/game/turfs/unsimulated/sky_vr.dm
+
+*/
+/turf/unsimulated/floor/outdoors/snow/lythios43c
+	icon = 'icons/turf/flooring/tiles_vr.dmi'
+	icon_state = "steel"
 
 /turf/unsimulated/floor/steel
 	icon = 'icons/turf/flooring/tiles_vr.dmi'
