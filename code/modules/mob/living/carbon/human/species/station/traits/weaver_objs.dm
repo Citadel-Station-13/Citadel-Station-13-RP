@@ -134,4 +134,4 @@ var/global/list/weavable_items = list()
 	item_state = "web_bindings_mob"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
-	
+
