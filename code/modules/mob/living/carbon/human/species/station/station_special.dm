@@ -26,7 +26,6 @@
 	tail = "tail" //Scree's tail. Can be disabled in the vore tab by choosing "hide species specific tail sprite"
 	icobase_tail = 1
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/reconstitute_form,
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
@@ -40,7 +39,7 @@
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
-		/mob/living/carbon/human/proc/lick_wounds ,
+		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/resp_biomorph,
 		/mob/living/carbon/human/proc/biothermic_adapt,
 		/mob/living/carbon/human/proc/atmos_biomorph,
@@ -53,9 +52,25 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_wings,
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
-		/mob/living/carbon/human/proc/regenerate,
-		/mob/living/carbon/human/proc/commune) //Xenochimera get all the special verbs since they can't select traits.
+		/mob/living/carbon/human/proc/shapeshifter_select_shape,
+		/mob/living/carbon/human/proc/commune
+		) //Xenochimera get all the special verbs since they can't select traits.
 
+	inherent_spells = list(
+		/spell/targeted/chimera/thermal_sight,
+		/spell/targeted/chimera/voice_mimic,
+		/spell/targeted/chimera/regenerate,
+		/spell/targeted/chimera/hatch,
+		/spell/targeted/chimera/no_breathe
+	)
+
+	var/list/feral_spells = list(
+		/spell/aoe_turf/dissonant_shriek
+	)
+
+	var/list/removable_spells = list()
+
+	var/has_feral_spells = FALSE
 	virus_immune = 1 // They practically ARE one.
 	min_age = 18
 	max_age = 200
@@ -102,7 +117,7 @@
 		"Akula","Nevrean","Highlander Zorren",
 		"Flatland Zorren", "Vulpkanin", "Vasilissan",
 		"Rapala", "Neaera", "Stok", "Farwa", "Sobaka",
-		"Wolpin", "Saru", "Sparra")
+		"Wolpin", "Saru", "Sparra", "Vox")
 
 	//primitive_form = "Farwa"
 
@@ -123,6 +138,7 @@
 		)
 
 	heal_rate = 0.5
+	infect_wounds = 1
 	flesh_color = "#AFA59E"
 	base_color 	= "#333333"
 	blood_color = "#14AD8B"
@@ -158,6 +174,47 @@
 			H.eye_blurry = max(5,H.eye_blurry)
 	..()
 
+/datum/species/shapeshifter/xenochimera/add_inherent_spells(var/mob/living/carbon/human/H)
+	var/master_type = /obj/screen/movable/spell_master/chimera
+	var/obj/screen/movable/spell_master/chimera/new_spell_master = new master_type
+
+	if(!H.spell_masters)
+		H.spell_masters = list()
+
+	if(H.client)
+		H.client.screen += new_spell_master
+	new_spell_master.spell_holder = H
+	H.spell_masters.Add(new_spell_master)
+
+	for(var/spell_to_add in inherent_spells)
+		var/spell/S = new spell_to_add(H)
+		H.add_spell(S, "cult", master_type)
+
+/datum/species/shapeshifter/xenochimera/proc/add_feral_spells(var/mob/living/carbon/human/H)
+	if(!has_feral_spells)
+		var/check = FALSE
+		var/master_type = /obj/screen/movable/spell_master/chimera
+		for(var/spell/S as anything in feral_spells)
+			var/spell/spell_to_add = new S(H)
+			check = H.add_spell(spell_to_add, "cult", master_type)
+			removable_spells += spell_to_add
+		if(check)
+			has_feral_spells = TRUE
+		else
+			return
+	else
+		return
+
+/datum/species/shapeshifter/xenochimera/proc/remove_feral_spells(var/mob/living/carbon/human/H)
+	for(var/spell/S as anything in removable_spells)
+		S.remove_self(H)
+	removable_spells.Cut()
+	has_feral_spells = FALSE
+
+/datum/species/shapeshifter/xenochimera/handle_post_spawn(mob/living/carbon/human/H)
+	..()
+	for(var/spell/S as anything in feral_spells)
+		S = new S(H)
 
 /datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
@@ -238,6 +295,10 @@
 		//we're feral
 		feral_state = TRUE
 
+		//We check if the current spell list already has feral spells.
+		if(!has_feral_spells)
+			add_feral_spells(H)
+
 		//Shock due to mostly halloss. More feral.
 		if(shock && 2.5*H.halloss >= H.traumatic_shock)
 			danger = TRUE
@@ -266,6 +327,8 @@
 		//Did we just finish being feral?
 		if(!feral)
 			feral_state = FALSE
+			if(has_feral_spells)
+				remove_feral_spells(H)
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
 			update_xenochimera_hud(H, danger, feral_state)
@@ -423,7 +486,7 @@
 /mob/living/carbon/human/proc/resp_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Respiratory Biomorph"
 	set desc = "Changes the gases we need to breathe."
-	set category = "Abilities"
+	set category = "Chimera"
 
 	var/list/gas_choices = list(
 		"oxygen" = /datum/gas/oxygen,
@@ -465,7 +528,7 @@
 		if(target == src)
 			to_chat("<span class = 'Notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
@@ -476,7 +539,7 @@
 /mob/living/carbon/human/proc/biothermic_adapt(mob/living/carbon/human/target in view(1))
 	set name = "Biothermic Adaptation"
 	set desc = "Changes our core body temperature."
-	set category = "Abilities"
+	set category = "Chimera"
 
 	var/list/temperature_options = list(
 	"warm-blooded",
@@ -560,7 +623,7 @@
 		if(target == src)
 			to_chat(src, "<span class = 'Notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
@@ -570,7 +633,7 @@
 /mob/living/carbon/human/proc/atmos_biomorph(mob/living/carbon/human/target in view(1))
 	set name = "Atmospheric Biomorph"
 	set desc = "Changes our sensitivity to atmospheric pressure."
-	set category = "Abilities"
+	set category = "Chimera"
 
 
 	var/list/pressure_options = list(
@@ -609,7 +672,7 @@
 		if(target == src)
 			to_chat(src, "<span class = 'notice'>It is done.</span>")
 		else
-			if(prob(80))
+			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
 				virus2.makerandom()
 				infect_virus2(target, virus2)
@@ -620,7 +683,7 @@
 /mob/living/carbon/human/proc/vocal_biomorph()
 	set name = "Vocalization Biomorph"
 	set desc = "Changes our speech pattern."
-	set category = "Abilities"
+	set category = "Chimera"
 
 	var/vocal_biomorph = input(src, "How should we adjust our speech?") as null|anything in list("common", "unathi", "tajaran")
 	if(!vocal_biomorph)
