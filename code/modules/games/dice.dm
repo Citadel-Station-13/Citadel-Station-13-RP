@@ -57,6 +57,10 @@
 /obj/item/dice/attack_self(mob/user as mob)
 	rollDice(user, 0)
 
+/obj/item/dice/AltClick(mob/user)
+	if (Adjacent(user))
+		rollDice(user,0)
+
 /obj/item/dice/proc/rollDice(mob/user as mob, var/silent = 0)
 	result = rand(1, sides)
 	icon_state = "[name][result]"
