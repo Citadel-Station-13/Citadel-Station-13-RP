@@ -4,12 +4,33 @@
 	flags = 0 //starts closed
 	drop_sound = 'sound/items/drop/soda.ogg'
 	pickup_sound = 'sound/items/pickup/soda.ogg'
+	var/punctured = 0
+	var/modified_type = /obj/item/reagent_containers/food/drinks/cans/modified
+
+/obj/item/reagent_containers/food/drinks/cans/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(istype(W, /obj/item/tool/screwdriver))
+		if(!reagents || reagents.total_volume == 0)
+			to_chat(user, "<span class='warning'>You pierce the [src] with the screwdriver.</span>")
+			var/turf/T = get_turf(src)
+			new modified_type(T)
+			qdel(src)
+
+/obj/item/reagent_containers/food/drinks/cans/modified
+	name = "\improper punctured container"
+	desc = "This drink container has had a hole punched into the side."
+	flags = OPENCONTAINER
+	volume = 0
+
+/obj/item/reagent_containers/food/drinks/cans/modified/standard_dispenser_refill(var/mob/user, var/atom/target) // This goes into afterattack and yes, it's atom-level
+	to_chat(user, "<span class='notice'>The liquid pours out of the giant hole in the [target].</span>")
+	return 0
 
 //DRINKS
 
 /obj/item/reagent_containers/food/drinks/cans/cola
 	name = "\improper Space Cola"
-	desc = "Cola. in space."
+	desc = "Cola. In space."
 	icon_state = "cola"
 	center_of_mass = list("x"=16, "y"=10)
 

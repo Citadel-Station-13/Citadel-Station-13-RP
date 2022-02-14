@@ -221,14 +221,22 @@
 	subcategory = CAT_WEAPON
 */
 
+/datum/crafting_recipe/punctured_can
+	name = "Punctured Can"
+	result = /obj/item/reagent_containers/food/drinks/cans/modified
+	reqs = list(/obj/item/reagent_containers/food/drinks/cans = 1)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 15
+	category = CAT_WEAPONRY
+	subcategory = CAT_OTHER
+
 /datum/crafting_recipe/IED
 	name = "IED"
 	result = /obj/item/grenade/explosive/ied
-	reqs = list(/datum/reagent/fuel = 50,
-				/obj/item/stack/cable_coil = 1,
+	reqs = list(/obj/item/stack/cable_coil = 1,
 				/obj/item/assembly/igniter = 1,
-				/obj/item/reagent_containers/food/drinks/cans = 1)
-	parts = list(/obj/item/reagent_containers/food/drinks/cans = 1)
+				/obj/item/reagent_containers/food/drinks/cans/modified = 1)
+	tools = list(TOOL_WELDER)
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_OTHER
