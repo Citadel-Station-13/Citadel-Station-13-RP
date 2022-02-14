@@ -844,6 +844,8 @@ var/list/name_to_material
 	var/mob/living/carbon/M = user
 	if(istype(M) && locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
 		return 1
+	if(istype(M) && locate(/obj/item/organ/internal/xenos/weak_hivenode) in M.internal_organs)
+		return 1
 	return 0
 
 /datum/material/resin/wall_touch_special(var/turf/simulated/wall/W, var/mob/living/L)

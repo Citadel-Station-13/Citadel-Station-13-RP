@@ -1,5 +1,5 @@
 
-/mob/living/human/proc/sprint()
+/mob/living/carbon/human/proc/sprint()
     set name = "Sprinting"
     set desc = "Allows you to move much faster at the cost of increased hunger."
     set category = "Abilities"
@@ -18,7 +18,7 @@
         to_chat(C, "<span class='notice'>You begin to move slower again.</span>")
     else
         to_chat(C, "<span class='notice'>You begin to move faster.</span>")
-        C.species.slowdown -= 1
+        C.species.slowdown -= 0.1
         C.species.hunger_factor += 0.05
 
 /mob/living/carbon/human/proc/active_heal()
@@ -31,3 +31,15 @@
         to_chat(src, "<span class='notice'>You begin to heal faster.</span>")
     else
         to_chat(src, "<span class='notice'>You stop healing faster.</span>")
+
+/mob/living/carbon/human/proc/hybrid_plant()
+	set name = "Plant Weed (30)"
+	set desc = "Plants some alien weeds"
+	set category = "Abilities"
+
+	if(check_alien_ability(30,1,O_RESIN))
+		visible_message("<span class='alium'><B>[src] has planted some alien weeds!</B></span>")
+		var/obj/O = new /obj/effect/alien/weeds(loc)
+		if(O)
+			O.color = "#321D37"
+	return

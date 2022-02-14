@@ -43,7 +43,11 @@
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
-        /mob/living/human/proc/sprint,
+        /mob/living/carbon/human/proc/sprint,
+		/mob/living/carbon/human/proc/psychic_whisper,
+		//mob/living/carbon/human/proc/neurotoxin,//need the acid organ which I dont wanna just give them
+		/mob/living/carbon/human/proc/resin,
+		/mob/living/carbon/human/proc/hybrid_plant,//replaced from the normal to place a singular /obj/effect/alien/weeds
         /mob/living/carbon/human/proc/active_heal
 		)
 
@@ -81,11 +85,15 @@
 		O_LIVER =		/obj/item/organ/internal/liver,
 		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
 		O_BRAIN =		/obj/item/organ/internal/brain,
-		//O_EYES =		/obj/item/organ/internal/eyes,
+		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/hunter,//Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
 		O_STOMACH =		/obj/item/organ/internal/stomach,
-		O_INTESTINE =	/obj/item/organ/internal/intestine
+		O_INTESTINE =	/obj/item/organ/internal/intestine,
+		O_RESIN =    	/obj/item/organ/internal/xenos/resinspinner,
+		O_HIVE =		/obj/item/organ/internal/xenos/weak_hivenode
 		)
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
+
+	reagent_tag = IS_XENOHYBRID
 
 /datum/species/xenohybrid/can_breathe_water()
 	return TRUE	//they dont quite breathe
@@ -126,3 +134,9 @@
             heal_amount -= posion_damage
 
         H.nutrition += heal_amount
+
+/obj/item/organ/internal/xenos/weak_hivenode//For hybrids to allow them to use resin doors
+	name = "underdeveloped hive node"
+	parent_organ = BP_TORSO
+	icon_state = "xenode"
+	organ_tag = O_HIVE
