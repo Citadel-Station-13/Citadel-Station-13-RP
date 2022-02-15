@@ -10,6 +10,7 @@ var/global/list/sparring_attack_cache = list()
 	var/shredding = 0 // Calls the old attack_alien() behavior on objects/mobs when on harm intent.
 	var/sharp = 0
 	var/edge = 0
+	var/infected_wound_probability = 10
 
 	var/damage_type = BRUTE
 	var/sparring_variant_type = /datum/unarmed_attack/light_strike
@@ -88,6 +89,30 @@ var/global/list/sparring_attack_cache = list()
 		else
 			target.visible_message("<span class='danger'>[target] has been weakened!</span>")
 		target.apply_effect(3, WEAKEN, armour)
+
+	if(user.species.infect_wounds)		//Creates a pre-damaged, pre-infected wound. As nasty as this code.
+		if(prob(infected_wound_probability))
+			var/obj/item/organ/external/affecting = target.get_organ(zone)
+			var/attack_message
+			var/datum/wound/W
+			if(edge)
+				W = new /datum/wound/cut/small(5)
+				W.force_infect()
+				attack_message = "leaves behind infested residue in [target]!"
+			else
+				W = new /datum/wound/bruise(5)
+				W.force_infect()
+				attack_message = "scratches and pummels, their infested fluids mixing with [target]!"
+			if(LAZYLEN(affecting.wounds))
+				for(var/datum/wound/other in affecting.wounds)
+					if(other.can_merge(W))
+						other.merge_wound(W)
+						W = null
+						break
+			if(W)
+				affecting.wounds += W
+
+			target.visible_message("<span class='danger'><i>[user] [attack_message]</i></span>")
 
 /datum/unarmed_attack/proc/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)

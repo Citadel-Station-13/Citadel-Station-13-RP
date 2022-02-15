@@ -8,9 +8,8 @@
 	check_armour = "laser"
 	eyeblur = 4
 	var/frequency = 1
-	hitscan = 1
+	hitscan = TRUE
 	embed_chance = 0
-	invisibility = 99	//beam projectiles are invisible as they are rendered by the effect engine
 	light_range = 2
 	light_power = 0.5
 	light_color = "#FF0D00"
@@ -130,6 +129,10 @@
 	if(isturf(target))
 		target.ex_act(2)
 	..()
+
+/obj/item/projectile/beam/pulse/shotgun
+	damage = 50
+	armor_penetration = 25
 
 /obj/item/projectile/beam/emitter
 	name = "emitter beam"

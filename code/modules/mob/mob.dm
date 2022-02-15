@@ -38,6 +38,7 @@
 	gun_setting_icon = null
 	spell_masters = null
 	zone_sel = null
+	crafting = null
 
 /mob/Initialize(mapload)
 	GLOB.mob_list += src

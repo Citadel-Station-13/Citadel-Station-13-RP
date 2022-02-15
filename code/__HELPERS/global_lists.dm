@@ -113,12 +113,22 @@ GLOBAL_LIST_EMPTY(mannequins)
 	// Circuits
 	initialize_integrated_circuits_list()
 
+	//Recipes
+	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
+
 	var/list/paths
 
 	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
 	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
+	hair_styles_list = list()
 	for(var/path in paths)
-		var/datum/sprite_accessory/hair/H = new path()
+		var/datum/sprite_accessory/hair/H = new path
+		if(!istext(H.name))
+			qdel(H)
+			continue
+		if(hair_styles_list[H.name])
+			stack_trace("Duplicate name [H.name] detected - [hair_styles_list[H.name]] vs [H]")
+			continue
 		hair_styles_list[H.name] = H
 		switch(H.gender)
 			if(MALE)	hair_styles_male_list += H.name
@@ -126,11 +136,19 @@ GLOBAL_LIST_EMPTY(mannequins)
 			else
 				hair_styles_male_list += H.name
 				hair_styles_female_list += H.name
+	sortTim(hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
 	//Facial Hair - Initialise all /datum/sprite_accessory/facial_hair into an list indexed by facialhair-style name
 	paths = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
+	facial_hair_styles_list = list()
 	for(var/path in paths)
 		var/datum/sprite_accessory/facial_hair/H = new path()
+		if(!istext(H.name))
+			qdel(H)
+			continue
+		if(facial_hair_styles_list[H.name])
+			stack_trace("Duplicate name [H.name] detected - [facial_hair_styles_list[H.name]] vs [H]")
+			continue
 		facial_hair_styles_list[H.name] = H
 		switch(H.gender)
 			if(MALE)	facial_hair_styles_male_list += H.name
@@ -138,12 +156,22 @@ GLOBAL_LIST_EMPTY(mannequins)
 			else
 				facial_hair_styles_male_list += H.name
 				facial_hair_styles_female_list += H.name
+	sortTim(facial_hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
 	//Body markings - Initialise all /datum/sprite_accessory/marking into an list indexed by marking name
 	paths = typesof(/datum/sprite_accessory/marking) - /datum/sprite_accessory/marking
+	body_marking_styles_list = list()
 	for(var/path in paths)
 		var/datum/sprite_accessory/marking/M = new path()
+		if(!istext(M.name))
+			qdel(M)
+			continue
+		if(body_marking_styles_list[M.name])
+			stack_trace("Duplicate name [M.name] detected - [body_marking_styles_list[M.name]] vs [M]")
+			continue
+
 		body_marking_styles_list[M.name] = M
+	sortTim(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
 	//List of job. I can't believe this was calculated multiple times per tick!
 	paths = typesof(/datum/job)-/datum/job
@@ -153,7 +181,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 		joblist[J.title] = J
 
 	//Languages and species.
-	paths = typesof(/datum/language)-/datum/language
+	paths = subtypesof(/datum/language)
 	for(var/T in paths)
 		var/datum/language/L = new T
 		GLOB.all_languages[L.name] = L

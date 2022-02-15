@@ -179,6 +179,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/obj/screen/action_intent
 	var/obj/screen/move_intent
 
+	var/list/static_inventory = list() //the screen objects which are static
+
 	var/list/adding
 	var/list/other
 	var/list/miniobjs
@@ -221,6 +223,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 //	item_action_list = null // ?
 	mymob = null
 	minihuds = null
+
+	QDEL_LIST(static_inventory)
 
 /datum/hud/proc/hidden_inventory_update()
 	if(!mymob) return

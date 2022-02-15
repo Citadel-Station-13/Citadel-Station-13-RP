@@ -30,11 +30,11 @@
 	if (mixture && mixture.total_moles > 0)
 		var/pressure = mixture.return_pressure()
 		var/total_moles = mixture.total_moles
-		results += "<span class='notice'>Pressure: [round(pressure,0.01)] kPa</span>"
+		results += "<span class='notice'>Pressure: [QUANTIZE(pressure)] kPa</span>"
 		for(var/mix in mixture.gas)
-			results += "<span class='notice'>[GLOB.meta_gas_names[mix]]: [round((mixture.gas[mix] / total_moles) * 100)]%</span>"
-		results += "<span class='notice'>Temperature: [round(mixture.temperature-T0C)]&deg;C</span>"
-		results += "<span class='notice'>Total Moles: [round(total_moles,0.01)]</span>"
+			results += "<span class='notice'>[GLOB.meta_gas_names[mix]]: [QUANTIZE((mixture.gas[mix] / total_moles) * 100)]%</span>"
+		results += "<span class='notice'>Temperature: [QUANTIZE(mixture.temperature-T0C)]&deg;C</span>"
+		results += "<span class='notice'>Total Moles: [QUANTIZE(total_moles)]</span>"
 	else
 		results += "<span class='notice'>\The [target] is empty!</span>"
 

@@ -559,35 +559,29 @@
 	desc = "A simple crown, fashioned out of gold."
 	icon_state = "crown"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/crown/fancy
 	name = "coronation crown"
 	desc = "An opulent crown, crafted for ceremonial purposes."
 	icon_state = "fancycrown"
-	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/scarecrow
 	name = "field hat"
 	desc = "A ragged burlap hat, bleached and worn by years of exposure to blistering sunlight."
 	icon_state = "scarecrow_hat"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/holiday
 	name = "red holiday hat"
 	desc = "A floppy, fur lined cap. Made famous by an Old Earth mythical figure."
 	icon_state = "christmashat"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/holiday/green
 	name = "green holiday hat"
 	desc = "A floppy, fur lined cap. Made famous by a cabal of toy crafting elves."
 	icon_state = "christmashatg"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/telegram
 	name = "telegram cap"
@@ -647,3 +641,15 @@
 	icon_state = "ge_helmcent"
 	icon = 'icons/obj/clothing/hats_vr.dmi'
 	icon_override = 'icons/mob/head_vr.dmi'
+
+/obj/item/clothing/head/papersack
+	name = "paper sack hat"
+	desc = "A paper sack with crude holes cut out for eyes. Useful for hiding one's identity or ugliness."
+	icon_state = "papersack"
+	flags_inv = BLOCKHAIR|HIDEFACE
+
+/obj/item/clothing/head/papersack/smiley
+	name = "paper sack hat"
+	desc = "A paper sack with crude holes cut out for eyes and a sketchy smile drawn on the front. Not creepy at all."
+	icon_state = "papersack_smile"
+	flags_inv = BLOCKHAIR|HIDEFACE

@@ -26,6 +26,7 @@
 		MAT_PLASTEEL = 0,
 		"gold" = 0,
 		"silver" = 0,
+		MAT_COPPER = 0,
 		MAT_LEAD = 0,
 		"osmium" = 0,
 		"diamond" = 0,

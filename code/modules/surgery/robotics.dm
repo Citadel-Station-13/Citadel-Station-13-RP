@@ -68,6 +68,7 @@
 /datum/surgery_step/robotics/open_hatch
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
 		/obj/item/material/kitchen/utensil = 50
 	)
 
@@ -105,6 +106,7 @@
 /datum/surgery_step/robotics/close_hatch
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
 		/obj/item/material/kitchen/utensil = 50
 	)
 

@@ -24,6 +24,11 @@
 	drop_sound = 'sound/items/drop/axe.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 
+/obj/item/material/knife/machete/hatchet/bone
+	name = "primitive hatchet"
+	desc = "A broad, flat piece of bone knapped to a sharp edge. A truly primitive weapon."
+	icon_state = "hatchet_bone"
+
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."

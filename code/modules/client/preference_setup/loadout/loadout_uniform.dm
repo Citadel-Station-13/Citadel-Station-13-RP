@@ -678,3 +678,7 @@ Swimsuits
 /datum/gear/uniform/gray_smooth
 	name = "Gray Smooth Jumpsuit"
 	path = /obj/item/clothing/under/smooth_gray
+
+/datum/gear/uniform/chiming_dress
+	name = "Chiming Dress"
+	path = /obj/item/clothing/under/chiming_dress

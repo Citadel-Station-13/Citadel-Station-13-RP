@@ -14,6 +14,16 @@
 
 	var/mob/living/silicon/ai/carded_ai
 
+/obj/item/aicard/aitater
+	name = "intelliTater"
+	desc = "A stylish upgrade (?) to the intelliCard."
+	icon_state = "aitater"
+
+/obj/item/aicard/aispook
+	name = "intelliLantern"
+	desc = "A spoOoOoky upgrade to the intelliCard."
+	icon_state = "aispook"
+
 /obj/item/aicard/attack(mob/living/silicon/decoy/M as mob, mob/user as mob)
 	if (!istype (M, /mob/living/silicon/decoy))
 		return ..()

@@ -21,7 +21,8 @@
 /datum/surgery_step/open_encased/saw
 	allowed_tools = list(
 		/obj/item/surgical/circular_saw = 100, \
-		/obj/item/material/knife/machete/hatchet = 75
+		/obj/item/material/knife/machete/hatchet = 75,	\
+		/obj/item/surgical/saw_primitive = 60
 	)
 
 	min_duration = 50
@@ -69,7 +70,8 @@
 
 /datum/surgery_step/open_encased/retract
 	allowed_tools = list(
-		/obj/item/surgical/retractor = 100
+		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75
 	)
 
 	allowed_procs = list(IS_CROWBAR = 75)
@@ -123,6 +125,7 @@
 /datum/surgery_step/open_encased/close
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75
 	)
 
 	allowed_procs = list(IS_CROWBAR = 75)
