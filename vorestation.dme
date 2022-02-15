@@ -2281,6 +2281,7 @@
 #include "code\modules\maps\misc_maps\planets\levels\classd.dm"
 #include "code\modules\maps\misc_maps\planets\submaps\class_d.dm"
 #include "code\modules\maps\misc_maps\space\levels\trade_station.dm"
+#include "code\modules\maps\misc_maps\space\levels\trade_station_jobs.dm"
 #include "code\modules\maps\talon\talon.dm"
 #include "code\modules\maps\talon\talon_areas.dm"
 #include "code\modules\maps\tether\away_spawner.dm"
