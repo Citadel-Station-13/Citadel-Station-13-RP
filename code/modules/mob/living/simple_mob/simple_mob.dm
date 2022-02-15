@@ -309,6 +309,21 @@
 			user.visible_message("<span class='danger'>[user] butchers \the [src] messily!</span>")
 			gib()
 
+/* Replace the above ^^^^ with this if enabling the butchering component.
+/mob/living/simple_mob/gib()
+	if(butcher_results || guaranteed_butcher_results)
+		var/list/butcher = list()
+		if(butcher_results)
+			butcher += butcher_results
+		if(guaranteed_butcher_results)
+			butcher += guaranteed_butcher_results
+		var/atom/Tsec = drop_location()
+		for(var/path in butcher)
+			for(var/i in 1 to butcher[path])
+				new path(Tsec)
+	..()
+*/
+
 /mob/living/simple_mob/is_sentient()
 	return mob_class & MOB_CLASS_HUMANOID|MOB_CLASS_ANIMAL|MOB_CLASS_SLIME // Update this if needed.
 

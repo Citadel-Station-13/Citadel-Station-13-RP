@@ -122,6 +122,12 @@
 	else
 		return 0
 
+/obj/item/projectile/meteor/slug
+	name = "meteor"
+	damage = 25
+	damage_type = BRUTE
+	nodamage = 0
+
 /obj/item/projectile/energy/floramut
 	name = "alpha somatoray"
 	icon_state = "energy"

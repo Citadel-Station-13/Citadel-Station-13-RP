@@ -210,12 +210,12 @@
 	desc = "It has a picture of a gun and several warning symbols on the front."
 	icon_state = "empshot_box"
 	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
-	starts_with = list(/obj/item/ammo_casing/a12g/emp = 8)
+	starts_with = list(/obj/item/ammo_casing/a12g/techshell/emp = 8)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
 /obj/item/storage/box/empshells/large
-	starts_with = list(/obj/item/ammo_casing/a12g/emp = 16)
+	starts_with = list(/obj/item/ammo_casing/a12g/techshell/emp = 16)
 
 /obj/item/storage/box/sniperammo
 	name = "box of 14.5mm shells"

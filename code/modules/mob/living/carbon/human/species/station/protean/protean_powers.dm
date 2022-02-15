@@ -271,6 +271,9 @@
 	else if(stat)
 		to_chat(src,"<span class='warning'>You can only do this while not stunned.</span>")
 		return
+	else if(HAS_TRAIT(src, TRAIT_DISRUPTED))
+		to_chat(src,"<span class='warning'>You can't do this while disrupted!</span>")
+		return
 	else
 		nano_intoblob()
 

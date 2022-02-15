@@ -8,6 +8,7 @@
 	icon_state = "welder"
 	item_state = "welder"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_WELDER
 
 	//Amount of OUCH when it's thrown
 	force = 3.0
@@ -376,6 +377,23 @@
 	change_icons = 0
 	toolspeed = 2
 	eye_safety_modifier = 1 // Safer on eyes.
+
+/obj/item/weldingtool/bone
+	name = "primitive welding tool"
+	desc = "A curious welding tool that uses an anomalous ignition method."
+	icon_state = "ashwelder"
+	max_fuel = 20
+	matter = list(MAT_METAL = 30, MAT_BONE = 10)
+	toolspeed = 1.5
+	eye_safety_modifier = 1 // Safer on eyes.
+
+/obj/item/weldingtool/brass
+	name = "brass welding tool"
+	desc = "A brass plated welder utilizing an antiquated, yet incredibly efficient, fuel system."
+	icon_state = "brasswelder"
+	max_fuel = 40
+	matter = list(DEFAULT_WALL_MATERIAL = 70, "brass" = 60)
+	toolspeed = 0.75
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_welder
 	name = "Precursor Alpha Object - Self Refueling Exothermic Tool"

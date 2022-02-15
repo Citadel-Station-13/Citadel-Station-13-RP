@@ -1,11 +1,20 @@
+/obj/item/stack/material/animalhide
+	name = "animal hide"
+	desc = "Intact skin stripped off from a creature's body."
+	singular_name = "hide piece"
+	icon_state = "sheet-hide"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/cloth.ogg'
+	pickup_sound = 'sound/items/pickup/cloth.ogg'
+
+/obj/item/stack/material/animalhide/grey
+	icon_state = "sheet-greyhide"
+
 /obj/item/stack/material/animalhide/human
 	name = "human skin"
 	desc = "The by-product of human farming."
 	singular_name = "human skin piece"
 	icon_state = "sheet-hide"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/cloth.ogg'
-	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
 /obj/item/stack/material/animalhide/human
 	amount = 50
@@ -80,13 +89,71 @@
 
 /obj/item/stack/material/hairlesshide
 	name = "hairless hide"
-	desc = "This hide was stripped of it's hair, but still needs tanning."
+	desc = "This smooth hide needs tanning before it can become leather."
 	singular_name = "hairless hide piece"
 	icon_state = "sheet-hairlesshide"
 	no_variants = FALSE
 
 /obj/item/stack/material/hairlesshide
 	amount = 50
+
+/*
+ * Leather Sheet
+ */
+/obj/item/stack/sheet/leather
+	name = "leather"
+	desc = "The by-product of mob grinding."
+	singular_name = "leather piece"
+	icon_state = "sheet-leather"
+	item_state = "sheet-leather"
+
+/*
+ * Sinew
+ */
+/obj/item/stack/sheet/sinew
+	name = "sinew"
+	desc = "Long stringy filaments which presumably came from an organic creature."
+	singular_name = "sinew"
+	icon_state = "sheet-sinew"
+
+/obj/item/stack/sheet/sinew/watcher
+	name = "watcher sinew"
+	desc = "Long stringy filaments which presumably came from a watcher's wings."
+	singular_name = "watcher sinew"
+
+/obj/item/stack/sheet/sinew/wolf
+	name = "wolf sinew"
+	desc = "Long stringy filaments which came from the insides of a wolf."
+	singular_name = "wolf sinew"
+
+/*
+ * Plates
+*/
+/obj/item/stack/sheet/animalhide/goliath_hide
+	name = "goliath hide plates"
+	desc = "Pieces of a goliath's rocky hide, these might be able to make your suit a bit more durable to attack from the local fauna."
+	icon_state = "sheet-goliath_hide"
+	singular_name = "hide plate"
+	max_amount = 6
+	item_flags = NOBLUDGEON
+	w_class = WEIGHT_CLASS_NORMAL
+	layer = MOB_LAYER
+
+/obj/item/stack/sheet/animalhide/goliath_hide/polar_bear_hide
+	name = "polar bear hides"
+	desc = "Pieces of a polar bear's fur, these might be able to make your suit a bit more durable to attack from the local fauna."
+	icon_state = "sheet-polar_bear_hide"
+	singular_name = "polar bear hide"
+
+/obj/item/stack/sheet/animalhide/ashdrake
+	name = "ash drake hide"
+	desc = "The strong, scaled hide of an ash drake."
+	icon_state = "sheet-dragon_hide"
+	singular_name = "drake plate"
+	max_amount = 10
+	item_flags = NOBLUDGEON
+	w_class = WEIGHT_CLASS_NORMAL
+	layer = MOB_LAYER
 
 /obj/item/stack/material/wetleather
 	name = "wet leather"
@@ -144,3 +211,4 @@
 			HS.amount = 1
 			wetness = initial(wetness)
 			src.use(1)
+

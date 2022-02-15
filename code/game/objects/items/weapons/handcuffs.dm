@@ -144,6 +144,12 @@ var/last_chew = 0
 	desc = "Use this to keep... 'prisoners' in line."
 	breakouttime = 30 //3sec breakout time. why did this not exist before. bruh moment.
 
+/obj/item/handcuffs/sinew
+	name = "sinew cuffs"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "sinewcuff"
+	desc = "A complex weave of sinew repurposed as handcuffs."
+
 /obj/item/handcuffs/cable
 	name = "cable restraints"
 	desc = "Looks like some cables tied together. Could be used to tie something up."
@@ -202,6 +208,25 @@ var/last_chew = 0
 
 /obj/item/handcuffs/cable/tape/cyborg
 	dispenser = TRUE
+
+/obj/item/handcuffs/disruptor
+	name = "disruptor cuffs"
+	icon_state = "disruptorcuff"
+	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acuasal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
+
+/obj/item/handcuffs/disruptor/get_worn_icon_state(var/slot_name)
+	if(slot_name == slot_handcuffed_str)
+		return "disruptorcuff1" //Simple
+
+	return ..()
+
+/obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
+	. = ..()
+	if(slot == slot_handcuffed)
+		user.drop_r_hand()
+		user.drop_l_hand()
+		user.stop_pulling()
+		ADD_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
 
 //Legcuffs. Not /really/ handcuffs, but its close enough.
 /obj/item/handcuffs/legcuffs

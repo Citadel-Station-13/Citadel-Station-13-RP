@@ -51,7 +51,8 @@
 
 /datum/surgery_step/set_bone
 	allowed_tools = list(
-		/obj/item/surgical/bonesetter = 100
+		/obj/item/surgical/bonesetter = 100,
+		/obj/item/surgical/bonesetter_primitive = 60
 	)
 
 	allowed_procs = list(IS_WRENCH = 75)
@@ -95,7 +96,8 @@
 
 /datum/surgery_step/mend_skull
 	allowed_tools = list(
-		/obj/item/surgical/bonesetter = 100
+		/obj/item/surgical/bonesetter = 100,
+		/obj/item/surgical/bonesetter_primitive = 60
 	)
 
 	allowed_procs = list(IS_WRENCH = 75)

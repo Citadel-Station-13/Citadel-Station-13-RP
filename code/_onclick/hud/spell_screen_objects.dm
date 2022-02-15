@@ -218,3 +218,12 @@
 
 	spell.perform(usr)
 	update_charge(1)
+
+
+
+//Xenochimera, literally just different icons
+/obj/screen/movable/spell_master/chimera
+	name = "Chimera Abilities"
+	icon_state = "cult_spell_ready"
+	open_state = "genetics_open"
+	closed_state = "genetics_closed"
