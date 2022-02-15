@@ -720,4 +720,19 @@ var/global/list/remainless_species = list(SPECIES_PROMETHEAN,
 			continue
 		custom_species_bases += species_name
 
+	// Weaver recipe stuff
+	paths = subtypesof(/datum/weaver_recipe/structure)
+	for(var/path in paths)
+		var/datum/weaver_recipe/instance = new path()
+		if(!instance.title)
+			continue //A prototype or something
+		weavable_structures[instance.title] = instance
+
+	paths = subtypesof(/datum/weaver_recipe/item)
+	for(var/path in paths)
+		var/datum/weaver_recipe/instance = new path()
+		if(!instance.title)
+			continue //A prototype or something
+		weavable_items[instance.title] = instance
+
 	return 1 // Hooks must return 1
