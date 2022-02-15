@@ -143,3 +143,11 @@
 	name = "dirty fancy plate"
 	icon = 'icons/obj/trash_vr.dmi'
 	icon_state = "fancyplate"
+
+//IED Component
+/obj/item/trash/punctured_can
+	name = "\improper punctured container"
+	desc = "This drink container has had a hole punched into the side, rendering it useless."
+	icon_state = "punctured"
+	drop_sound = 'sound/items/drop/soda.ogg'
+	pickup_sound = 'sound/items/pickup/soda.ogg'

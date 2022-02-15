@@ -223,7 +223,7 @@
 
 /datum/crafting_recipe/punctured_can
 	name = "Punctured Can"
-	result = /obj/item/reagent_containers/food/drinks/cans/modified
+	result = /obj/item/trash/punctured_can
 	reqs = list(/obj/item/reagent_containers/food/drinks/cans = 1)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 15
@@ -235,7 +235,7 @@
 	result = /obj/item/grenade/explosive/ied
 	reqs = list(/obj/item/stack/cable_coil = 1,
 				/obj/item/assembly/igniter = 1,
-				/obj/item/reagent_containers/food/drinks/cans/modified = 1)
+				/obj/item/trash/punctured_can = 1)
 	tools = list(TOOL_WELDER)
 	time = 15
 	category = CAT_WEAPONRY
