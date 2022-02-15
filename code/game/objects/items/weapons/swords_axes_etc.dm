@@ -36,7 +36,7 @@
 	name = "telescopic baton"
 	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded."
 	icon = 'icons/obj/weapons.dmi'
-	icon_state = "telebaton0"
+	icon_state = "telebaton"
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
 	force = 3
@@ -48,20 +48,23 @@
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
 /obj/item/melee/telebaton/attack_self(mob/user as mob)
-	on = !on
-	if(on)
+	if(src.icon_state == initial(icon_state))
+		on = 1
 		user.visible_message("<span class='warning'>With a flick of their wrist, [user] extends their telescopic baton.</span>",\
 		"<span class='warning'>You extend the baton.</span>",\
 		"You hear an ominous click.")
-		icon_state = "telebaton1"
+		src.icon_state = "[icon_state]_1"
+		src.item_state = "[item_state]_1"
 		w_class = ITEMSIZE_NORMAL
 		force = on_force //quite robust
 		attack_verb = list("struck", "beat")
 	else
+		on = 0
 		user.visible_message("<span class='notice'>\The [user] collapses their telescopic baton.</span>",\
 		"<span class='notice'>You collapse the baton.</span>",\
 		"You hear a click.")
-		icon_state = "telebaton0"
+		src.icon_state = initial(icon_state)
+		src.item_state = initial(item_state)
 		w_class = ITEMSIZE_SMALL
 		force = off_force //not so robust now
 		attack_verb = list("poked", "jabbed")
@@ -105,11 +108,12 @@
 	else
 		return ..()
 
-/obj/item/melee/classic_baton/telescopic/newspaper
+/obj/item/melee/telebaton/newspaper
 	name = "The Daily Whiplash"
 	desc = "A newspaper wrapped around a telescopic baton in such a way that it looks like you're beating people with a rolled up newspaper."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "newspaper"
+	item_state = "newspaper"
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',

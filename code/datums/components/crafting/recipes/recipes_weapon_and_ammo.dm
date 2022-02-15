@@ -74,7 +74,7 @@
 
 /datum/crafting_recipe/newsbaton
 	name = "Newspaper Baton"
-	result = /obj/item/melee/classic_baton/telescopic/newspaper
+	result = /obj/item/melee/telebaton/newspaper
 	reqs = list(/obj/item/melee/telebaton = 1,
 				/obj/item/newspaper = 1,
 				/obj/item/duct_tape_piece = 2)
