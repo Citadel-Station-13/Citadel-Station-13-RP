@@ -55,7 +55,7 @@
 	reqs = list(/obj/item/stack/material/cloth = 1,
 				/obj/item/stack/material/mineral/wood = 5,
 				/obj/item/stack/material/metal = 1)
-				///obj/item/stack/packageWrap = 8,
+				///obj/item/duct_tape_piece = 8,,
 				///obj/item/pipe = 2)
 	time = 150
 	subcategory = CAT_FURNITURE

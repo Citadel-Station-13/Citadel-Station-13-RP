@@ -304,7 +304,7 @@
 	tools = list(TOOL_WELDER, TOOL_WRENCH)
 	reqs = list(/obj/item/cannonframe = 1,
 				/obj/item/stack/material/steel = 4,
-				/obj/item/packageWrap = 8,
+				/obj/item/duct_tape_piece = 8,
 				/obj/item/pipe = 2)
 	time = 300
 	category = CAT_WEAPONRY
@@ -331,7 +331,7 @@
 	reqs = list(/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/receiver = 1,
 				/obj/item/weaponcrafting/stock = 1,
-				/obj/item/packageWrap = 5)
+				/obj/item/duct_tape_piece = 5,)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 100
 	category = CAT_WEAPONRY
