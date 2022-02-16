@@ -43,9 +43,7 @@
 /area/lavaland/base/common)
 "bG" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/portable_atmospherics/canister/phoron{
-	start_pressure = 12000
-	},
+/obj/machinery/portable_atmospherics/canister/phoron/engine_setup,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "bJ" = (
@@ -61,6 +59,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/base/common)
+"cF" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/explored)
 "cY" = (
 /obj/structure/table/standard,
 /obj/item/towel/random,
@@ -379,12 +383,6 @@
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"jU" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 6
-	},
-/turf/simulated/floor/plating,
-/area/lavaland/base/common)
 "ki" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -428,10 +426,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
 "kH" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/lava/lavaland,
+/turf/simulated/wall/solidrock,
 /area/lavaland/explored)
 "lm" = (
 /obj/machinery/atmospherics/binary/pump/high_power/on{
@@ -453,6 +448,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
+"lt" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 10
+	},
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/explored)
 "lA" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -470,12 +471,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"lS" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 10
-	},
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/explored)
 "lX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -543,6 +538,20 @@
 	dir = 1
 	},
 /obj/structure/window/phoronreinforced/full,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"nq" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced/full,
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 5
+	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "nr" = (
@@ -786,12 +795,10 @@
 /area/lavaland/base/common)
 "ra" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/machinery/portable_atmospherics/canister/phoron{
-	start_pressure = 12000
-	},
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/machinery/portable_atmospherics/canister/phoron/engine_setup,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "re" = (
@@ -843,21 +850,6 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/machinery/portable_atmospherics/canister/phoron{
-	start_pressure = 12000
-	},
-/turf/simulated/floor/plating,
-/area/lavaland/base/common)
-"sw" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor{
-	req_one_access = list(48)
-	},
-/obj/structure/curtain/black,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "sN" = (
@@ -886,16 +878,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"th" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(48)
+"sX" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 6
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
-/obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "tv" = (
@@ -1065,20 +1051,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
-"xc" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(48)
-	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 5
-	},
-/turf/simulated/floor/plating,
-/area/lavaland/base/common)
 "xd" = (
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/unexplored)
@@ -1101,12 +1073,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
-"xQ" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/explored)
 "yp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/polarized{
@@ -1145,7 +1111,17 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/red,
+/obj/machinery/atmospherics/binary/passive_gate{
+	icon_state = "on";
+	target_pressure = 14900;
+	unlocked = 1
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"zf" = (
+/obj/machinery/atmospherics/binary/pump/high_power{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "zk" = (
@@ -1199,6 +1175,18 @@
 "Au" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
+/area/lavaland/base/common)
+"Ay" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced/full,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow,
+/turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "AA" = (
 /obj/machinery/light/small{
@@ -1420,6 +1408,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
+"DY" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/curtain/black,
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "EE" = (
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
@@ -1461,12 +1461,6 @@
 /obj/structure/bed/chair,
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/base/common)
-"FK" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 9
-	},
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/explored)
 "FQ" = (
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1478,13 +1472,14 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/machinery/portable_atmospherics/canister/phoron{
-	start_pressure = 12000
-	},
 /obj/machinery/alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -27;
 	req_one_access = list(48)
+	},
+/obj/machinery/portable_atmospherics/canister/phoron/engine_setup{
+	release_pressure = 1000;
+	start_pressure = 9000
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
@@ -1560,6 +1555,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
+"Hi" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/explored)
 "Hr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -1694,20 +1693,6 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/purcarpet,
-/area/lavaland/base/common)
-"Ks" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(48)
-	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced/full,
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 10
-	},
-/turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "KB" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
@@ -1857,6 +1842,12 @@
 /obj/structure/undies_wardrobe,
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/base/common)
+"ON" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 9
+	},
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/explored)
 "OV" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
@@ -1909,6 +1900,12 @@
 /area/lavaland/base/common)
 "Qs" = (
 /obj/structure/catwalk,
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/explored)
+"Qu" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 5
+	},
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/explored)
 "QC" = (
@@ -2005,6 +2002,20 @@
 "SJ" = (
 /turf/simulated/floor/reinforced/airmix,
 /area/lavaland/base/common)
+"SM" = (
+/obj/machinery/door/firedoor{
+	req_one_access = list(48)
+	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced/full,
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 10
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "SZ" = (
 /obj/structure/table/standard,
 /obj/item/roller,
@@ -2045,10 +2056,6 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
-"TK" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/explored)
 "TQ" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -2105,6 +2112,12 @@
 /obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
+"Vv" = (
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/explored)
 "Vw" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
@@ -2282,12 +2295,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/base/common)
-"XS" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/explored)
 "Yb" = (
 /obj/machinery/door/airlock/glass_medical{
 	name = "Triage";
@@ -7328,7 +7335,7 @@ AO
 AO
 AO
 AO
-sw
+DY
 AO
 AO
 Hr
@@ -7451,10 +7458,10 @@ gy
 gy
 MX
 RL
-MX
-MX
-MX
-MX
+kH
+kH
+kH
+kH
 AO
 AO
 AO
@@ -7593,11 +7600,11 @@ gy
 gy
 MX
 RL
-RL
+kH
 WX
-TK
-XS
-th
+Hi
+Vv
+Ay
 pQ
 Mw
 Pu
@@ -7735,14 +7742,14 @@ gy
 gy
 RL
 RL
-RL
 kH
+cF
 WX
-XS
-xc
-jU
+Vv
+nq
+sX
 gv
-Pu
+zf
 so
 FQ
 AO
@@ -7877,11 +7884,11 @@ gy
 MX
 RL
 MX
-RL
 kH
-lS
-xQ
-Ks
+cF
+lt
+Qu
+SM
 zd
 km
 EE
@@ -8019,10 +8026,10 @@ gy
 MX
 RL
 MX
-RL
 kH
+cF
 WX
-FK
+ON
 mN
 lm
 CX
@@ -8161,10 +8168,10 @@ gy
 MX
 RL
 RL
-RL
 kH
-lS
-xQ
+cF
+lt
+Qu
 mN
 YJ
 WZ
@@ -8303,10 +8310,10 @@ gy
 MX
 RL
 MX
-RL
 kH
+cF
 WX
-FK
+ON
 mN
 bG
 oK
@@ -8445,10 +8452,10 @@ gy
 MX
 MX
 MX
-RL
 kH
-lS
-xQ
+cF
+lt
+Qu
 mN
 ra
 oK
@@ -8587,10 +8594,10 @@ gy
 MX
 MX
 MX
-RL
 kH
+cF
 WX
-FK
+ON
 AO
 AO
 HA
@@ -8729,10 +8736,10 @@ gy
 MX
 RL
 MX
-RL
 kH
-lS
-xQ
+cF
+lt
+Qu
 AO
 CB
 Zh
@@ -8871,10 +8878,10 @@ gy
 MX
 MX
 MX
-RL
 kH
+cF
 WX
-FK
+ON
 AO
 TJ
 zv
@@ -9013,10 +9020,10 @@ MX
 MX
 RL
 MX
-RL
 kH
-lS
-xQ
+cF
+lt
+Qu
 AO
 AO
 AO
@@ -9155,11 +9162,11 @@ MX
 MX
 MX
 MX
-RL
 kH
+cF
 WX
-FK
-MX
+ON
+kH
 MX
 MX
 MX
@@ -9297,11 +9304,11 @@ MX
 MX
 RL
 MX
-RL
 kH
-lS
-xQ
-MX
+cF
+lt
+Qu
+kH
 MX
 MX
 MX
@@ -9439,11 +9446,11 @@ MX
 RL
 MX
 MX
-RL
 kH
+cF
 WX
-FK
-MX
+ON
+kH
 MX
 MX
 MX
@@ -9581,11 +9588,11 @@ MX
 MX
 RL
 MX
-RL
 kH
-lS
-xQ
-MX
+cF
+lt
+Qu
+kH
 MX
 MX
 MX
@@ -9723,11 +9730,11 @@ MX
 MX
 RL
 MX
-RL
 kH
+cF
 WX
-FK
-MX
+ON
+kH
 MX
 MX
 MX
@@ -9865,11 +9872,11 @@ MX
 MX
 MX
 RL
-RL
 kH
-lS
-xQ
-MX
+cF
+lt
+Qu
+kH
 MX
 MX
 MX
@@ -10007,11 +10014,11 @@ MX
 RL
 RL
 MX
-RL
 kH
+cF
 WX
-FK
-MX
+ON
+kH
 MX
 MX
 MX
@@ -10149,15 +10156,15 @@ MX
 MX
 RL
 MX
-RL
 kH
-lS
-xQ
+cF
+lt
+Qu
+kH
 MX
 MX
 MX
 MX
-DG
 MX
 MX
 MX
@@ -10291,16 +10298,16 @@ MX
 RL
 RL
 MX
-RL
 kH
+cF
 WX
-FK
-MX
-MX
-MX
-MX
-DG
-MX
+ON
+kH
+kH
+kH
+kH
+kH
+kH
 MX
 RL
 RL
@@ -10433,16 +10440,16 @@ MX
 MX
 MX
 MX
-RL
 kH
-lS
-TK
-TK
-TK
-TK
-TK
-xQ
-MX
+cF
+lt
+Hi
+Hi
+Hi
+Hi
+Hi
+Qu
+kH
 MX
 RL
 RL
@@ -10575,16 +10582,16 @@ MX
 RL
 MX
 MX
-RL
 kH
+cF
 WX
-xQ
+Qu
 WX
-xQ
+Qu
 WX
-xQ
+Qu
+cF
 kH
-MX
 MX
 RL
 RL
@@ -10717,16 +10724,16 @@ MX
 MX
 RL
 MX
-RL
 kH
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+cF
 kH
-kH
-kH
-kH
-kH
-kH
-kH
-MX
 MX
 RL
 RL
@@ -10859,16 +10866,16 @@ MX
 MX
 RL
 RL
-RL
-lS
-FK
-lS
-FK
-lS
-FK
-lS
-FK
-MX
+kH
+lt
+ON
+lt
+ON
+lt
+ON
+lt
+ON
+kH
 MX
 RL
 RL
@@ -11001,16 +11008,16 @@ RL
 RL
 MX
 RL
-RL
-MX
-MX
-MX
-MX
-MX
-MX
-MX
-DG
-MX
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
 MX
 RL
 RL
