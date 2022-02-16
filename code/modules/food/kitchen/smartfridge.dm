@@ -149,6 +149,10 @@
 		var/obj/item/reagent_containers/food/snacks/S = O
 		if (S.dried_type)
 			return 1
+	if(istype(O, /obj/item/stack/wetleather))
+		var/obj/item/stack/wetleather/WL = 0
+		if (WL.wetness == 30)
+			return 1
 	return 0
 
 /obj/machinery/smartfridge/drying_rack/process(delta_time)
@@ -176,6 +180,14 @@
 		if(!not_working)
 			overlays += "drying_rack_drying"
 
+/obj/machinery/smartfridge/drying_rack/attackby(var/obj/item/O as obj, mob/user)
+	. = ..()
+	if(istype(O, /obj/item/stack/wetleather))
+		var/obj/item/stack/wetleather/WL = O
+		user.remove_from_mob(WL)
+		stock(WL)
+		user.visible_message("<span class='notice'>[user] has added \the [WL] to \the [src].</span>", "<span class='notice'>You add \the [WL] to \the [src].</span>")
+
 /obj/machinery/smartfridge/drying_rack/proc/dry()
 	for(var/datum/stored_item/I in item_records)
 		for(var/obj/item/reagent_containers/food/snacks/S in I.instances)
@@ -191,6 +203,9 @@
 				new D(get_turf(src))
 				qdel(S)
 			return
+		for(var/obj/item/stack/wetleather/WL in I.instances)
+			WL.wetness = 0
+			WL.fire_act()
 	return
 
 /obj/machinery/smartfridge/process(delta_time)
