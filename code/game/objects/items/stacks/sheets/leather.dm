@@ -197,8 +197,7 @@
 	else
 		..()
 
-
-//Step two - washing..... it's actually in washing machine code.
+//Step two - This was originally busted washing machine code. Now it's a sink attack.
 
 //Step three - drying
 /obj/item/stack/wetleather/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)

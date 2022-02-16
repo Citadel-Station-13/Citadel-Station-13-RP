@@ -31,6 +31,14 @@
 		return
 	return ..()
 
+/obj/item/melee/classic_baton/tonfa
+	name = "tonfa"
+	desc = "A versatile wooden baton from Old Earth, designed for both attack and defense."
+	icon_state = "tonfa"
+	item_state = "tonfa"
+	flags = NOBLOODY
+	defend_chance = 15
+
 //Telescopic baton
 /obj/item/melee/telebaton
 	name = "telescopic baton"

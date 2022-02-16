@@ -128,6 +128,26 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
 
+/datum/crafting_recipe/knuckle_dusters
+	name = "Brass Knuckles"
+	result = /obj/item/clothing/gloves/knuckledusters
+	tools = list(TOOL_WELDER)
+	reqs = list(/obj/item/stack/material/brass = 5,
+				/obj/item/stack/material/steel = 5)
+	time = 40
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
+
+/datum/crafting_recipe/tonfa
+	name = "Tonfa"
+	result = /obj/item/melee/classic_baton/tonfa
+	tools = list(/obj/item/material/knife/machete/hatchet)
+	reqs = list(/obj/item/stack/material/wood = 6,
+				/obj/item/stack/material/steel = 2)
+	time = 40
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
+
 /datum/crafting_recipe/bola
 	name = "Bola"
 	result = /obj/item/handcuffs/legcuffs/bola
