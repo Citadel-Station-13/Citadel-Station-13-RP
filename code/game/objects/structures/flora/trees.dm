@@ -291,3 +291,14 @@
 	var/image/glow = image(icon = icon, icon_state = "[base_state][light_shift]_glow")
 	glow.plane = PLANE_LIGHTING_ABOVE
 	overlays = list(glow)
+
+//Magmatic Rift Trees
+/obj/structure/flora/magmatic_rift
+	name = "partial petrified Tree"
+	icon = 'icons/obj/flora/magmarift.dmi'
+	icon_state = "lavaTree"
+	randomize_size = FALSE
+
+/obj/structure/flora/magmatic_rift/obsidian
+	name = "Obsidian Spike"
+	icon_state = "obsidianSpike"
