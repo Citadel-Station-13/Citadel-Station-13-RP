@@ -59,7 +59,8 @@
 	contact_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID)
+		Z_LEVEL_SURFACE_MID,
+		Z_LEVEL_SURFACE_HIGH)
 	player_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
 		Z_LEVEL_UNDERGROUND,
 		Z_LEVEL_SURFACE_LOW,
@@ -191,7 +192,17 @@
 		Z_LEVEL_FROZEN_PLANET,
 		Z_LEVEL_TRADEPORT)
 
+/*	belter_docked_z = 		list(Z_LEVEL_SPACE_HIGH)
+	belter_transit_z =	 	list(Z_LEVEL_MISC)
+	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
+						 		 Z_LEVEL_ROGUEMINE_2)
+
+	mining_station_z =		list(Z_LEVEL_SPACE_HIGH)
+	mining_outpost_z =		list(Z_LEVEL_SURFACE_MINE)
+*/
 	lateload_single_pick = null //Nothing right now.
+
+	planet_datums_to_make = list(/datum/planet/lythios43c)
 
 /datum/map/lythios/perform_map_generation()
 	return 1
@@ -234,14 +245,14 @@
 	z = Z_LEVEL_UNDERGROUND
 	name = "Underground 1"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
-	base_turf = /turf/simulated/floor/outdoors/ice/lythios43c
+	base_turf = /turf/simulated/open
 
 /datum/map_z_level/rift/station/surface_low
 	z = Z_LEVEL_SURFACE_LOW
 	name = "Surface 1"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	transit_chance = 100
-	base_turf = /turf/simulated/floor/outdoors/ice/lythios43c
+	base_turf = /turf/simulated/open
 //	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 //	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 

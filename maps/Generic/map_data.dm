@@ -10,6 +10,9 @@
 /obj/effect/landmark/map_data/triumph
 	height = 4
 
+// Lythios
+/obj/effect/landmark/map_data/lythios43c
+    height = 5
 
 // See beach.dm for more details on this. Placeholder for now to stop compiling issues -Bloop
 /obj/away_mission_init/beachcave
