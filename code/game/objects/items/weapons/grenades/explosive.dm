@@ -83,10 +83,7 @@
 	num_fragments = 20
 	spread_range = 3
 	explosion_size = 1
-	num_fragments = 63  //total number of fragments produced by the grenade
-	explosion_size = 2   //size of the center explosion
-	spread_range = 7
-	det_time = 50
+	det_time = 20
 	var/range = 3
 	var/list/times
 
