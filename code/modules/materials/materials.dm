@@ -1046,12 +1046,12 @@ var/list/name_to_material
 
 /datum/material/bone
 	name = "bone"
-	icon_colour = "#35343a"
+	icon_colour = "#e6dfc8"
 	icon_base = "bone"
 	icon_reinf = "reinf_mesh"
 	melting_point = T0C+300
-	sheet_singular_name = "bone"
-	sheet_plural_name = "boness"
+	sheet_singular_name = "fragment"
+	sheet_plural_name = "fragments"
 	conductive = 0
 	explosion_resistance = 60
 	radiation_resistance = 10

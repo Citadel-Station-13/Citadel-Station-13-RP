@@ -94,6 +94,9 @@
 
 	// Death vars.
 	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
+	var/bone_type = /obj/item/stack/material/bone
+	var/hide_type = /obj/item/stack/animalhide/human
+	var/exotic_type = /obj/item/stack/sinew
 	var/remains_type = /obj/effect/decal/remains/xeno
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
@@ -244,6 +247,13 @@
 	var/wing_animation
 	var/icobase_wing
 	var/wikilink = null //link to wiki page for species
+
+	//Vorestation Pull for weaver abilities
+	var/is_weaver = FALSE
+	var/silk_production = FALSE
+	var/silk_reserve = 100
+	var/silk_max_reserve = 500
+	var/silk_color = "#FFFFFF"
 
 /datum/species/New()
 	if(hud_type)

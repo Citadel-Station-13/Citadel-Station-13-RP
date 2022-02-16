@@ -74,7 +74,7 @@
 
 /datum/crafting_recipe/newsbaton
 	name = "Newspaper Baton"
-	result = /obj/item/melee/classic_baton/telescopic/newspaper
+	result = /obj/item/melee/telebaton/newspaper
 	reqs = list(/obj/item/melee/telebaton = 1,
 				/obj/item/newspaper = 1,
 				/obj/item/duct_tape_piece = 2)
@@ -124,6 +124,26 @@
 	reqs = list(/obj/item/wakibokken_blade/hardwood = 1,
 				/obj/item/bokken_hilt = 1,
 				/obj/item/stack/material/cloth = 1)
+	time = 40
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
+
+/datum/crafting_recipe/knuckle_dusters
+	name = "Brass Knuckles"
+	result = /obj/item/clothing/gloves/knuckledusters
+	tools = list(TOOL_WELDER)
+	reqs = list(/obj/item/stack/material/brass = 5,
+				/obj/item/stack/material/steel = 5)
+	time = 40
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
+
+/datum/crafting_recipe/tonfa
+	name = "Tonfa"
+	result = /obj/item/melee/classic_baton/tonfa
+	tools = list(/obj/item/material/knife/machete/hatchet)
+	reqs = list(/obj/item/stack/material/wood = 6,
+				/obj/item/stack/material/steel = 2)
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
@@ -221,14 +241,22 @@
 	subcategory = CAT_WEAPON
 */
 
+/datum/crafting_recipe/punctured_can
+	name = "Punctured Can"
+	result = /obj/item/trash/punctured_can
+	reqs = list(/obj/item/reagent_containers/food/drinks/cans = 1)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 15
+	category = CAT_WEAPONRY
+	subcategory = CAT_OTHER
+
 /datum/crafting_recipe/IED
 	name = "IED"
 	result = /obj/item/grenade/explosive/ied
-	reqs = list(/datum/reagent/fuel = 50,
-				/obj/item/stack/cable_coil = 1,
+	reqs = list(/obj/item/stack/cable_coil = 1,
 				/obj/item/assembly/igniter = 1,
-				/obj/item/reagent_containers/food/drinks/cans = 1)
-	parts = list(/obj/item/reagent_containers/food/drinks/cans = 1)
+				/obj/item/trash/punctured_can = 1)
+	tools = list(TOOL_WELDER)
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_OTHER

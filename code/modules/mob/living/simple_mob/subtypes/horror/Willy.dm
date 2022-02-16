@@ -36,6 +36,12 @@
 	say_list_type = /datum/say_list/Willy
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	meat_amount = 3
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/human
+	bone_amount = 1
+	hide_amount = 10
+	hide_type = /obj/item/stack/material/cloth
+
 /mob/living/simple_mob/horror/Willy/death()
 	playsound(src, 'sound/h_sounds/sampler.ogg', 50, 1)
 	..()

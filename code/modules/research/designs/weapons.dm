@@ -134,6 +134,7 @@
 	build_path = /obj/item/ammo_magazine/m9mmp90
 	sort_string = "MABBD"
 
+/*
 /datum/design/item/weapon/ballistic/ammo/m10x24/small
 	name = "M41A magazine, small"
 	id = "ammo_10x24_small"
@@ -202,6 +203,7 @@
 	desc = "A 96 armor piercing round magazine for the M41A pulse rifle."
 	build_path = /obj/item/ammo_magazine/m10x24mm/large/ap
 	sort_string = "MABCI"
+*/
 
 // Phase weapons
 

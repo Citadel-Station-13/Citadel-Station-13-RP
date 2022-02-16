@@ -427,6 +427,16 @@
 					"<span class='danger'>[user] was stunned by [TU.his] wet [O]!</span>", \
 					"<span class='userdanger'>[user] was stunned by [TU.his] wet [O]!</span>")
 				return 1
+	else if(istype (O, /obj/item/stack/hairlesshide))
+		var/obj/item/stack/hairlesshide/HH = O
+		usr.visible_message("<span class='notice'>\The [usr] starts soaking \the [HH]</span>", "<span class='notice'>You start soaking \the [HH]</span>", "You hear the sound of something being submerged")
+		if(do_after(user,30))
+			to_chat(usr, "<span class='notice'>You completely saturate the [HH.singular_name]</span>")
+			HH.use(1)
+			var/turf/T = get_turf(usr)
+			new /obj/item/stack/wetleather(T)
+		else
+			return 1
 	else if(istype(O, /obj/item/mop))
 		O.reagents.add_reagent("water", 5)
 		to_chat(user, "<span class='notice'>You wet \the [O] in \the [src].</span>")
