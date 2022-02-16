@@ -443,9 +443,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "lt" = (
@@ -726,6 +724,15 @@
 	anchored = 1;
 	dir = 8
 	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
+"qd" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/binary/pump/high_power,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "qp" = (
@@ -1313,7 +1320,9 @@
 /area/lavaland/base/common)
 "CB" = (
 /obj/machinery/power/smes/buildable/main{
-	charge = 4e+007
+	charge = 4e+007;
+	input_attempt = 1;
+	inputting = 2
 	},
 /obj/structure/cable{
 	d2 = 4;
@@ -1848,6 +1857,14 @@
 	},
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/explored)
+"OQ" = (
+/obj/machinery/atmospherics/unary/freezer{
+	cooling = 1;
+	dir = 8;
+	set_temperature = 80
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/base/common)
 "OV" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
@@ -8458,9 +8475,9 @@ lt
 Qu
 mN
 ra
-oK
+qd
 Gu
-EE
+OQ
 AO
 AO
 AO
