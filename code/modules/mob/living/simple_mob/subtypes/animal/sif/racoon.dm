@@ -65,6 +65,9 @@
 	say_list_type = /datum/say_list/sakimm
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative/sakimm
 
+	bone_amount = 2
+	hide_amount = 2
+
 	var/obj/item/clothing/head/hat = null // The hat the Sakimm may be wearing.
 	var/list/friend_loot_list = list(/obj/item/coin)	// What will make this animal non-hostile if held?
 	var/randomize_size = TRUE

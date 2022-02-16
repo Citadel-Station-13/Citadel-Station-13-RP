@@ -6,6 +6,7 @@
 	w_class = ITEMSIZE_TINY
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+	var/amount = 20
 
 	toolspeed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
 
@@ -125,6 +126,20 @@
 			else
 				return ..()
 			return 1
+
+/obj/item/duct_tape_roll/attack_self(mob/user)
+	to_chat(user, "You remove a piece of tape from the roll.")
+	var/obj/item/duct_tape_piece/tape = new(get_turf(src))
+	user.put_in_hands(tape)
+	use(1)
+
+/obj/item/duct_tape_roll/proc/use(var/used)
+	amount -= used
+	if (amount <= 0)
+		if(usr)
+			usr.remove_from_mob(src, null)
+		qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
+	return 1
 
 /obj/item/duct_tape_roll/proc/stick(var/obj/item/W, mob/user)
 	if(!istype(W, /obj/item/paper))
