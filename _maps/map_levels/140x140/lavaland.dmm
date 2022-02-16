@@ -732,7 +732,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/binary/pump/high_power,
+/obj/machinery/atmospherics/binary/pump/high_power/on{
+	target_pressure = 15000
+	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "qp" = (
@@ -1859,9 +1861,10 @@
 /area/lavaland/explored)
 "OQ" = (
 /obj/machinery/atmospherics/unary/freezer{
-	cooling = 1;
 	dir = 8;
-	set_temperature = 80
+	icon_state = "freezer_1";
+	set_temperature = 65;
+	use_power = 1
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
