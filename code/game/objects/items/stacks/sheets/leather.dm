@@ -145,11 +145,19 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	layer = MOB_LAYER
 
+/obj/fiftyspawner/animalhide/goliath_hide
+	name = "goliath hide plates"
+	type_to_spawn = /obj/item/stack/animalhide/goliath_hide
+
 /obj/item/stack/animalhide/goliath_hide/polar_bear_hide
 	name = "polar bear hides"
 	desc = "Pieces of a polar bear's fur, these might be able to make your suit a bit more durable to attack from the local fauna."
 	icon_state = "sheet-polar_bear_hide"
 	singular_name = "polar bear hide"
+
+/obj/fiftyspawner/animalhide/goliath_hide/polar_bear_hide
+	name = "polar bear hide plates"
+	type_to_spawn = /obj/item/stack/animalhide/goliath_hide/polar_bear_hide
 
 /obj/item/stack/animalhide/ashdrake
 	name = "ash drake hide"
