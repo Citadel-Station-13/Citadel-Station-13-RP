@@ -57,6 +57,18 @@
 
 	for(var/obj/item/I in washing)
 		I.decontaminate()
+
+	//Tanning!
+	for(var/obj/item/stack/hairlesshide/HH in washing)
+		var/obj/item/stack/wetleather/WL = new(src)
+		WL.amount = HH.amount
+		qdel(HH)
+
+	if(locate(/mob,washing))
+		state = 7
+		gibs_ready = 1
+	else
+		state = 4
 	update_icon()
 
 /obj/machinery/washing_machine/verb/climb_out()
@@ -177,4 +189,16 @@
 
 	for(var/obj/item/I in washing)
 		I.decontaminate()
+
+	//Tanning!
+	for(var/obj/item/stack/hairlesshide/HH in washing)
+		var/obj/item/stack/wetleather/WL = new(src)
+		WL.amount = HH.amount
+		qdel(HH)
+
+	if(locate(/mob,washing))
+		state = 7
+		gibs_ready = 1
+	else
+		state = 4
 	update_icon()
