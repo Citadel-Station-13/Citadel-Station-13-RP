@@ -638,3 +638,17 @@
 	if(!M.confused) M.confused = 1
 	M.confused = max(M.confused, 20)
 	return
+
+/datum/reagent/oil
+	name = "Oil"
+	description = "Burns in a small smoky fire, mostly used to get Ash."
+	reagent_state = REAGENT_LIQUID
+	color = "#292929"
+	taste_description = "oil"
+
+/datum/reagent/ash
+	name = "Ash"
+	description = "Supposedly phoenixes rise from these, but you've never seen it."
+	reagent_state = REAGENT_LIQUID
+	color = "#665c56"
+	taste_description = "ash"

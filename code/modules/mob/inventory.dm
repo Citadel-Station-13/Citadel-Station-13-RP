@@ -325,3 +325,6 @@ var/list/slot_equipment_priority = list( \
 	for(var/entry in get_equipped_items())
 		drop_from_inventory(entry)
 		qdel(entry)
+
+/mob/proc/transferItemToLoc(obj/item/I, newloc = null, force = FALSE, silent = TRUE)
+	return src.unEquip(I, force, newloc, FALSE, silent)

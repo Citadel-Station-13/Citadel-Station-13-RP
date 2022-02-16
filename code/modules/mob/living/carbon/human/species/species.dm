@@ -177,6 +177,7 @@
 	var/has_glowing_eyes = 0								// Whether the eyes are shown above all lighting
 	var/water_movement = 0									// How much faster or slower the species is in water
 	var/snow_movement = 0									// How much faster or slower the species is on snow
+	var/infect_wounds = 0									// Whether the species can infect wounds, only works with claws / bites
 
 
 	var/item_slowdown_mod = 1								// How affected by item slowdown the species is.
@@ -243,6 +244,13 @@
 	var/wing_animation
 	var/icobase_wing
 	var/wikilink = null //link to wiki page for species
+
+	//Vorestation Pull for weaver abilities
+	var/is_weaver = FALSE
+	var/silk_production = FALSE
+	var/silk_reserve = 100
+	var/silk_max_reserve = 500
+	var/silk_color = "#FFFFFF"
 
 /datum/species/New()
 	if(hud_type)
@@ -419,7 +427,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		for(var/spell_to_add in inherent_spells)
 			var/spell/S = new spell_to_add(H)
 			H.add_spell(S)
-	return
 
 /datum/species/proc/remove_inherent_spells(var/mob/living/carbon/human/H)
 	H.spellremove()

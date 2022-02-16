@@ -59,3 +59,7 @@
 	icon_state = "medical"
 	item_state = "medical"
 	permeability_coefficient = 0.01
+
+/obj/item/clothing/mask/balaclava/breath
+	name = "breathaclava"
+	clothing_flags = ALLOWINTERNALS

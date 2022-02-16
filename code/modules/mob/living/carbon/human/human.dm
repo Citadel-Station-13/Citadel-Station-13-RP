@@ -41,6 +41,8 @@
 
 	nutrition = rand(200,400)
 
+	AddComponent(/datum/component/personal_crafting)
+
 	human_mob_list |= src
 
 	. = ..()

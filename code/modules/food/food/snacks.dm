@@ -5356,7 +5356,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/sliceable/brownies/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 2)
+	reagents.add_reagent("nutriment", 4)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/browniesslice
@@ -5373,7 +5373,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/browniesslice/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 1)
+	reagents.add_reagent("nutriment", 2)
 
 /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies
 	name = "cosmic brownies"
@@ -5389,7 +5389,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 2)
+	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("space_drugs", 2)
 	reagents.add_reagent("bicaridine", 1)
 	reagents.add_reagent("kelotane", 1)
@@ -5410,7 +5410,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/cosmicbrowniesslice/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 1)
+	reagents.add_reagent("nutriment", 2)
 
 
 /obj/item/reagent_containers/food/snacks/wormsickly

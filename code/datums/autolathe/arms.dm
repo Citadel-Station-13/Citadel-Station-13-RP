@@ -2,6 +2,10 @@
 	name = "syringe gun cartridge"
 	path =/obj/item/syringe_cartridge
 
+/datum/category_item/autolathe/arms/receiver
+	name = "receiver"
+	path =/obj/item/weaponcrafting/receiver
+
 ////////////////
 /*Ammo casings*/
 ////////////////

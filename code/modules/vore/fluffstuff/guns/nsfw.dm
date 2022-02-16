@@ -280,6 +280,9 @@
 	check_armour = "melee"
 
 /obj/item/projectile/bullet/stripper/on_hit(var/atom/stripped)
+	if(!M.permit_stripped)
+		M.visible_message("<span class='warning'>[src] has no effect on [M].</span>")
+		return
 	if(ishuman(stripped))
 		var/mob/living/carbon/human/H = stripped
 		if(H.wear_suit)

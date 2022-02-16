@@ -79,6 +79,7 @@
 	allowed_tools = list(
 		/obj/item/surgical/cautery = 100,			\
 		/obj/item/clothing/mask/smokable/cigarette = 75,	\
+		/obj/item/surgical/cautery_primitive = 70,	\
 		/obj/item/flame/lighter = 50,			\
 		/obj/item/weldingtool = 25
 	)
@@ -158,6 +159,7 @@
 /datum/surgery_step/cavity/implant_removal
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,	\
+		/obj/item/surgical/hemostat_primitive = 50, \
 		/obj/item/material/kitchen/utensil/fork = 20
 	)
 

@@ -472,3 +472,41 @@
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"
+
+//***Oil well puddles from Main.
+/obj/structure/sink/oil_well	//You're not going to enjoy bathing in this...
+	name = "oil well"
+	desc = "A bubbling pool of oil.This would probably be valuable, had bluespace technology not destroyed the need for fossil fuels 200 years ago."
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "puddle-oil"
+	var/dispensedreagent = /datum/reagent/oil
+
+/obj/structure/sink/oil_well/Initialize()
+	.=..()
+	create_reagents(20)
+	reagents.add_reagent(dispensedreagent, 20)
+
+/* Okay, just straight up, I tried to code this like blood overlays, but I just do NOT understand the system. If someone wants to sort it, enable this too.
+/obj/structure/sink/oil_well/attack_hand(mob/M)
+	flick("puddle-oil-splash",src)
+	reagents.reaction(M, 20) //Covers target in 20u of oil.
+	to_chat(M, "<span class='notice'>You touch the pool of oil, only to get oil all over yourself. It would be wise to wash this off with water.</span>")
+*/
+
+/obj/structure/sink/oil_well/attackby(obj/item/O, mob/user, params)
+	flick("puddle-oil-splash",src)
+	if(O == /obj/item/shovel) //attempt to deconstruct the puddle with a shovel
+		to_chat(user, "You fill in the oil well with soil.")
+		qdel()
+		return 1
+	if(istype(O, /obj/item/reagent_containers)) //Refilling bottles with oil
+		var/obj/item/reagent_containers/RG = O
+		if (istype(RG) && RG.is_open_container())
+			RG.reagents.add_reagent("oil", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
+			user.visible_message("<span class='notice'>[user] fills \the [RG] using \the [src].</span>","<span class='notice'>You fill \the [RG] using \the [src].</span>")
+			return 1
+	if(user.a_intent != INTENT_HARM)
+		to_chat(user, "<span class='notice'>You won't have any luck getting \the [O] out if you drop it in the oil.</span>")
+		return 1
+	else
+		return ..()
