@@ -213,8 +213,13 @@
 			panic = 0
 
 	var/list/toggle = list()
-
-	if(!isnull(signal.data["o2_scrub"]) && text2num(signal.data["o2_scrub"]) != (/datum/gas/oxygen in scrubbing_gas))
+	for(var/gas_path in GLOB.meta_gas_ids)
+		var/gasID = GLOB.meta_gas_ids[gas_path]
+		log_qdel("checking signal for [gasID]")
+		if(!isnull(signal.data["[gasID]_scrub"]) && text2num(signal.data["[gasID]_scrub"]) != (GLOB.meta_gas_id_lookup[gasID] in scrubbing_gas))
+			log_qdel("toggling [gasID]_scrub")
+			toggle += GLOB.meta_gas_id_lookup[gasID]
+	/*if(!isnull(signal.data["o2_scrub"]) && text2num(signal.data["o2_scrub"]) != (/datum/gas/oxygen in scrubbing_gas))
 		toggle += /datum/gas/oxygen
 	else if(signal.data["toggle_o2_scrub"])
 		toggle += /datum/gas/oxygen
@@ -242,7 +247,7 @@
 	if(!isnull(signal.data["fuel_scrub"]) && text2num(signal.data["fuel_scrub"]) != (/datum/gas/volatile_fuel in scrubbing_gas))
 		toggle += /datum/gas/volatile_fuel
 	else if(signal.data["toggle_fuel_scrub"])
-		toggle += /datum/gas/volatile_fuel
+		toggle += /datum/gas/volatile_fuel*/
 
 	scrubbing_gas ^= toggle
 

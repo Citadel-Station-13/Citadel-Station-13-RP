@@ -85,6 +85,8 @@
 
 	var/alarms_hidden = FALSE //If the alarms from this machine are visible on consoles
 
+	var/list/filter_commands = list()
+
 /obj/machinery/alarm/nobreach
 	breach_detection = 0
 
@@ -105,6 +107,8 @@
 	TLV["pressure"] =		list(0,ONE_ATMOSPHERE*0.10,ONE_ATMOSPHERE*1.40,ONE_ATMOSPHERE*1.60) /* kpa */
 	TLV["temperature"] =	list(20, 40, 140, 160) // K
 	target_temperature = 90
+	//Init filter commands
+
 
 /obj/machinery/alarm/Destroy()
 	unregister_radio(src, frequency)
@@ -559,12 +563,16 @@
 						"panic"		= info["panic"],
 						"filters"	= list()
 					)
-				scrubbers[scrubbers.len]["filters"] += list(list("name" = "Oxygen",			"command" = "o2_scrub",	"val" = info["filter_o2"]))
+				for(var/gas_id in GLOB.meta_gas_ids)
+					scrubbers[scrubbers.len]["filters"] += list(list("name" = "[GLOB.meta_gas_names[gas_id]]","command" = "[GLOB.meta_gas_ids[gas_id]]_scrub",	"val" = info["filter_[GLOB.meta_gas_ids[gas_id]]"]))
+					//log_qdel("scrubbers got expanded with name = [GLOB.meta_gas_names[gas_id]], command = [GLOB.meta_gas_ids[gas_id]]_scrub, and val = info'filter_[GLOB.meta_gas_ids[gas_id]]' ")
+				/*scrubbers[scrubbers.len]["filters"] += list(list("name" = "Oxygen",			"command" = "o2_scrub",	"val" = info["filter_o2"]))
 				scrubbers[scrubbers.len]["filters"] += list(list("name" = "Nitrogen",		"command" = "n2_scrub",	"val" = info["filter_n2"]))
 				scrubbers[scrubbers.len]["filters"] += list(list("name" = "Carbon Dioxide", "command" = "co2_scrub","val" = info["filter_co2"]))
 				scrubbers[scrubbers.len]["filters"] += list(list("name" = "Toxin"	, 		"command" = "tox_scrub","val" = info["filter_phoron"]))
 				scrubbers[scrubbers.len]["filters"] += list(list("name" = "Nitrous Oxide",	"command" = "n2o_scrub","val" = info["filter_n2o"]))
 				scrubbers[scrubbers.len]["filters"] += list(list("name" = "Fuel",			"command" = "fuel_scrub","val" = info["filter_fuel"]))
+				scrubbers[scrubbers.len]["filters"] += list(list("name" = "Fuel",			"command" = "fuel_scrub","val" = info["filter_fuel"]))*/
 			data["scrubbers"] = scrubbers
 		if(AALARM_SCREEN_MODE)
 			var/modes[0]
@@ -662,7 +670,7 @@
 				if("reset_external_pressure")
 					send_signal(device_id, list(href_list["command"] = ONE_ATMOSPHERE))
 					return 1
-
+				//cant find a way to make this  work dynamicly
 				if( "power",
 					"adjust_external_pressure",
 					"checks",
@@ -671,11 +679,27 @@
 					"co2_scrub",
 					"tox_scrub",
 					"n2o_scrub",
-					"fuel_scrub",
+					"volatile_fuel_scrub",
+					"helium_scrub",
+					"carbon monoxide_scrub",
+					"methyl bromide_scrub",
+					"nitrogen dioxide_scrub",
+					"nitric oxide_scrub",
+					"methane_scrub",
+					"argon_scrub",
+					"krypton_scrub",
+					"neon_scrub",
+					"ammonia_scrub",
+					"xenon_scrub",
+					"chlorine_scrub",
+					"sulfur dioxide_scrub",
+					"tritium_scrub",
+					"deuterium_scrub",
+					"hydrogen_scrub",
 					"panic_siphon",
 					"scrubbing",
 					"direction")
-
+					log_qdel("Command recived [href_list["command"]] writing [href_list["val"]] in it")
 					send_signal(device_id, list(href_list["command"] = text2num(href_list["val"])))
 					return 1
 

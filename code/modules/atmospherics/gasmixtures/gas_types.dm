@@ -310,8 +310,8 @@ datum/gas/neon
 	//value = 0.25
 
 datum/gas/ammonia
-	id = "Ammonia"
-	name = "ammonia"
+	id = "ammonia"
+	name = "Ammonia"
 	specific_heat = 20
 	molar_mass = 0.017
 	//gas_symbol_html = "NH<sub>3</sub>"
@@ -325,8 +325,8 @@ datum/gas/ammonia
 	//overdose = 5
 
 datum/gas/xenon
-	id = "Xenon"
-	name = "xenon"
+	id = "xenon"
+	name = "Xenon"
 	specific_heat = 3
 	molar_mass = 0.054
 	//gas_symbol_html = "Xe"
@@ -391,7 +391,7 @@ datum/gas/hydrogen/tritium
 	gas_symbol = "T"*/
 
 datum/gas/hydrogen/deuterium
-	id = "Deuterium"
+	id = "deuterium"
 	name = "Deuterium"
 	/*lore_text = "One of the two stable isotopes of hydrogen; also known as heavy hydrogen. Useful as a chemically synthesised fusion reactor fuel material."
 	mechanics_text = "Deuterium can be converted into a fuel rod suitable for a R-UST fusion plant injector by using a fuel compressor. It is the most 'basic' fusion fuel."
