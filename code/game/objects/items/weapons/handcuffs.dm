@@ -333,9 +333,13 @@ var/last_chew = 0
 	breakouttime = 30
 	cuff_sound = 'sound/weapons/towelwipe.ogg' //Is there anything this sound can't do?
 
-/obj/item/handcuffs/legcuffs/bola/throw_impact(var/mob/living/carbon/target)
-	. = ..()
-	place_legcuffs()
+/obj/item/handcuffs/legcuffs/bola/can_place(var/mob/target, var/mob/user)
+	if(user) //A ranged legcuff, until proper implementation as items it remains a projectile-only thing.
+		return 1
+
+/obj/item/handcuffs/legcuffs/bola/throw_impact(var/atom/target, var/mob/user)
+	var/mob/living/L = target
+	place_legcuffs(L, user)
 
 /obj/item/handcuffs/legcuffs/bola/place_legcuffs(var/mob/living/carbon/target, var/mob/user)
 	playsound(src.loc, cuff_sound, 30, 1, -2)

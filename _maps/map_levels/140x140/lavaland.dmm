@@ -51,6 +51,7 @@
 	dir = 6
 	},
 /obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "ch" = (
@@ -175,7 +176,7 @@
 /area/lavaland/base/common)
 "fw" = (
 /mob/living/simple_mob/construct/shade/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/explored)
 "fX" = (
 /obj/machinery/light/small{
@@ -224,7 +225,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "gy" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/explored)
 "gE" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -349,7 +350,7 @@
 /area/lavaland/base/common)
 "ix" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/unexplored)
 "iz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -473,7 +474,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "mm" = (
@@ -567,9 +567,9 @@
 	dir = 4
 	},
 /obj/machinery/access_button{
-	command = "cycle_interior";
+	dir = 4;
 	frequency = 1384;
-	name = "interior access button";
+	master_tag = "mining_outpost";
 	pixel_x = -10;
 	pixel_y = 25;
 	req_one_access = list(48)
@@ -717,7 +717,7 @@
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/base/common)
 "qc" = (
 /obj/machinery/atmospherics/binary/circulator{
@@ -871,11 +871,20 @@
 /area/lavaland/base/common)
 "sP" = (
 /obj/machinery/airlock_sensor{
-	dir = 6;
+	dir = 1;
+	frequency = 1384;
+	id_tag = "mining_outpost";
 	pixel_y = -25
 	},
 /obj/effect/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1384;
+	id_tag = "mining_outpost";
+	power_rating = 20000
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "sQ" = (
@@ -922,7 +931,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
@@ -935,7 +944,7 @@
 	name = "\improper MEMETIC HAZARD";
 	pixel_x = -32
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/base/common)
 "ui" = (
 /obj/machinery/door/airlock{
@@ -950,9 +959,10 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
+/obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "uE" = (
@@ -980,7 +990,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "vA" = (
@@ -1295,9 +1304,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/cobweb2,
-/obj/machinery/airlock_sensor/airlock_interior{
-	pixel_y = 25
-	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
@@ -1407,6 +1413,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
+"Dv" = (
+/obj/machinery/airlock_sensor/airlock_exterior{
+	dir = 4;
+	frequency = 1384;
+	id_tag = "mining_outpost";
+	pixel_x = -23;
+	pixel_y = -36
+	},
+/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/lavaland/explored)
 "DG" = (
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/explored)
@@ -1432,6 +1449,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "EE" = (
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "EX" = (
@@ -1448,7 +1466,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "Ft" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/unexplored)
 "FF" = (
 /obj/machinery/door/firedoor/multi_tile{
@@ -1503,14 +1521,14 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "Gj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	frequency = 1384;
-	id_tag = "lava_lock";
+	id_tag = "mining_outpost";
 	pixel_y = 25;
 	req_one_access = list(48)
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
@@ -1621,12 +1639,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "Iq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "IR" = (
@@ -1706,10 +1719,13 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/lavaland/base/common)
 "KB" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1
-	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1384;
+	id_tag = "mining_outpost";
+	power_rating = 20000
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "KC" = (
@@ -1726,10 +1742,9 @@
 	req_one_access = list(48)
 	},
 /obj/machinery/access_button{
-	command = "cycle_exterior";
-	dir = 1;
+	dir = 8;
 	frequency = 1384;
-	name = "exterior access button";
+	master_tag = "mining_outpost";
 	pixel_x = 10;
 	pixel_y = -25;
 	req_one_access = list(48)
@@ -1912,6 +1927,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
+"PZ" = (
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1384;
+	id_tag = "mining_outpost";
+	power_rating = 20000
+	},
+/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled,
+/area/lavaland/base/common)
 "Qo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1955,7 +1980,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/base/common)
 "RJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -1963,6 +1988,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
@@ -2265,11 +2293,6 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/obj/machinery/airlock_sensor/airlock_exterior{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 25
-	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
@@ -2325,10 +2348,9 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/base/common)
 "Yn" = (
-/obj/machinery/atmospherics/portables_connector{
+/obj/machinery/atmospherics/pipe/tank/air{
 	dir = 4
 	},
-/obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/plating,
 /area/lavaland/base/common)
 "YJ" = (
@@ -10340,7 +10362,7 @@ MX
 gy
 ip
 QC
-KB
+PZ
 xF
 gy
 gy
@@ -10624,7 +10646,7 @@ MX
 gy
 ub
 gy
-gy
+Dv
 RE
 gy
 gy
