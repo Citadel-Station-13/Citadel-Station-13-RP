@@ -276,18 +276,15 @@
 ///GUNS CRAFTING//
 //////////////////
 
-
-/* Removed due to the scope of getting Archery to work, for now.
 /datum/crafting_recipe/pipebow
 	name = "Pipe Bow"
-	result =  /obj/item/gun/ballistic/bow/pipe
+	result =  /obj/item/gun/projectile/bow/pipe
 	reqs = list(/obj/item/pipe = 5,
-	/obj/item/stack/sheet/plastic = 15,
+	/obj/item/stack/material/plastic = 15,
 	/obj/item/weaponcrafting/string = 5)
 	time = 150
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
-*/
 
 /datum/crafting_recipe/dartgun
 	name = "prototype dart gun"
@@ -382,39 +379,39 @@
 ///AMMO CRAFTING//
 //////////////////
 
-/* As above. This is a feature to port on its own.
+//Arrows
 /datum/crafting_recipe/arrow
 	name = "Arrow"
-	result = /obj/item/ammo_casing/caseless/arrow/wood
+	result = /obj/item/ammo_casing/arrow/wood
 	time = 5 // these only do 15 damage
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 1,
-				 /obj/item/stack/sheet/cloth = 1,
+	reqs = list(/obj/item/stack/material/wood = 1,
+				 /obj/item/stack/material/cloth = 1,
 				 /obj/item/stack/rods = 1) // 1 metal sheet = 2 rods = 2 arrows
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 
 /datum/crafting_recipe/bone_arrow
 	name = "Bone Arrow"
-	result = /obj/item/ammo_casing/caseless/arrow/bone
+	result = /obj/item/ammo_casing/arrow/bone
 	time = 5
-	always_available = FALSE
-	reqs = list(/obj/item/stack/sheet/bone = 1,
-				 /obj/item/stack/sheet/sinew = 1,
-				 /obj/item/ammo_casing/caseless/arrow/ash = 1)
+	//always_available = FALSE
+	reqs = list(/obj/item/stack/material/bone = 1,
+				 /obj/item/stack/sinew = 1,
+				 /obj/item/ammo_casing/arrow/ash = 1)
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 
 /datum/crafting_recipe/ashen_arrow
 	name = "Ashen Arrow"
-	result = /obj/item/ammo_casing/caseless/arrow/ash
+	result = /obj/item/ammo_casing/arrow/ash
 	tools = list(TOOL_WELDER)
 	time = 10 // 1.5 seconds minimum per actually worthwhile arrow excluding interface lag
-	always_available = FALSE
-	reqs = list(/obj/item/ammo_casing/caseless/arrow/wood = 1)
+	//always_available = FALSE
+	reqs = list(/obj/item/ammo_casing/arrow/wood = 1)
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
-*/
 
+//Munitions
 /datum/crafting_recipe/smartdart
 	name = "chemical dart"
 	result =  /obj/item/ammo_casing/chemdart
