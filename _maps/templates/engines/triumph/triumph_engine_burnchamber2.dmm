@@ -455,7 +455,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_room)
 "Gd" = (
-/obj/machinery/atmospherics/omni/mixer,
+/obj/machinery/atmospherics/trinary/mixer/m_mixer{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_room)
 "Gn" = (
