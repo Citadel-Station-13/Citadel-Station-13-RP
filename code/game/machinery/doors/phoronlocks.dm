@@ -106,7 +106,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 			var/datum/gas_mixture/removed = env.remove_ratio(0.99)
 			if(removed)
 				var/heat_transfer = removed.get_thermal_energy_change(target_temp)
-				removed.add_thermal_energy(min(heating_power,heat_transfer))
+				removed.add_thermal_energy(clamp(heating_power,-heat_transfer,heat_transfer))
 				env.merge(removed)
 
 		var/transfer_moles = min(1, volume_rate/env.volume)*env.total_moles
