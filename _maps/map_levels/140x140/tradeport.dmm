@@ -12231,6 +12231,13 @@
 /obj/structure/barricade,
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
+"VR" = (
+/obj/effect/landmark/trade,
+/obj/machinery/computer/cryopod/robot{
+	pixel_y = -30
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/commons)
 "VS" = (
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
@@ -12256,6 +12263,13 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
+"VV" = (
+/obj/effect/landmark/trade,
+/obj/machinery/computer/cryopod{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/tradeport/commons)
 "VX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -28287,7 +28301,7 @@ Gc
 XS
 oV
 hH
-TV
+VR
 Zo
 vC
 oI
@@ -28429,7 +28443,7 @@ wn
 Qm
 oV
 TV
-TV
+VV
 Zo
 nK
 pv
