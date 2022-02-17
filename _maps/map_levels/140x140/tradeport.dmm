@@ -2249,14 +2249,14 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/trade_ship/general)
 "iU" = (
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
 /obj/machinery/power/apc/alarms_hidden{
 	dir = 1;
 	name = "north bump";
 	pixel_y = 28;
 	req_access = list(160)
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
@@ -2610,8 +2610,10 @@
 /turf/simulated/floor/grass,
 /area/tradeport)
 "kg" = (
-/turf/simulated/wall/r_wall,
-/area/tradeport/exterior)
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/random/multiple/corp_crate/no_weapons,
+/turf/simulated/floor/tiled/dark,
+/area/tradeport/facility)
 "kh" = (
 /obj/machinery/light,
 /obj/structure/table/standard,
@@ -2771,6 +2773,7 @@
 "kP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
+/obj/random/cutout,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
 "kQ" = (
@@ -2952,6 +2955,13 @@
 "lv" = (
 /turf/simulated/wall/r_wall,
 /area/tradeport/expansion)
+"lw" = (
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/plushie,
+/obj/random/plushie,
+/turf/simulated/floor/tiled/dark,
+/area/tradeport/facility)
 "ly" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -3033,6 +3043,12 @@
 	},
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport)
+"lL" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/tradeport/atmospherics)
 "lM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/floor_decal/industrial/warning{
@@ -3168,6 +3184,7 @@
 	},
 /obj/structure/closet/firecloset,
 /obj/effect/floor_decal/rust,
+/obj/random/coin,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "mx" = (
@@ -3199,7 +3216,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_cargo/beige,
-/area/tradeport/exterior)
+/area/tradeport/atmospherics)
 "mD" = (
 /obj/item/radio/intercom/trader{
 	dir = 8;
@@ -3615,9 +3632,6 @@
 	icon_state = "2-8"
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
 "nT" = (
@@ -4083,8 +4097,11 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "px" = (
-/turf/simulated/floor/tiled/old_cargo/beige,
-/area/tradeport/exterior)
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/toy,
+/turf/simulated/floor/tiled/dark,
+/area/tradeport/facility)
 "py" = (
 /obj/vehicle/train/engine,
 /obj/machinery/light,
@@ -4436,6 +4453,9 @@
 /obj/machinery/door/airlock{
 	name = "Custodial Supplies";
 	req_access = list(160)
+	},
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/atmospherics)
@@ -4906,7 +4926,7 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/mop,
 /turf/simulated/floor/tiled/old_cargo/beige,
-/area/tradeport/exterior)
+/area/tradeport/atmospherics)
 "sL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/old_tile/beige,
@@ -5072,7 +5092,7 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/reagent_containers/spray/cleaner/drone,
 /turf/simulated/floor/tiled/old_cargo/beige,
-/area/tradeport/exterior)
+/area/tradeport/atmospherics)
 "tr" = (
 /obj/structure/fence/corner{
 	dir = 8
@@ -5819,6 +5839,12 @@
 	},
 /turf/simulated/floor/beach/sand,
 /area/tradeport/safarizoo)
+"wb" = (
+/obj/effect/floor_decal/industrial/outline/grey,
+/obj/structure/table/rack/shelf/steel,
+/obj/random/mre,
+/turf/simulated/floor/tiled/dark,
+/area/tradeport/facility)
 "wc" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/effect/map_helper/airlock/door/ext_door,
@@ -5926,6 +5952,7 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light,
+/obj/random/mre,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "wA" = (
@@ -6548,6 +6575,9 @@
 /obj/machinery/door/airlock/glass{
 	name = "Storage"
 	},
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
 "yx" = (
@@ -6883,6 +6913,9 @@
 /obj/machinery/door/airlock{
 	name = "Custodial Supplies";
 	req_access = list(160)
+	},
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/atmospherics)
@@ -7800,9 +7833,6 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/warning,
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
 "DR" = (
@@ -8875,8 +8905,8 @@
 /area/tradeport)
 "ID" = (
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/structure/closet/crate,
 /obj/machinery/light,
+/obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "IE" = (
@@ -10424,8 +10454,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
@@ -10742,6 +10774,9 @@
 /obj/machinery/door/airlock/glass_medical{
 	name = "Infirmary";
 	req_one_access = null
+	},
+/obj/machinery/door/firedoor{
+	req_one_access = list(160)
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
@@ -11841,6 +11876,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
@@ -26549,9 +26589,9 @@ TK
 TK
 TK
 gx
-kg
-kg
-SR
+TK
+TK
+TK
 sm
 sm
 sm
@@ -26693,7 +26733,7 @@ TK
 iK
 mB
 sF
-SR
+TK
 SR
 sm
 sm
@@ -26833,9 +26873,9 @@ uB
 YM
 TK
 jX
-px
+XF
 tp
-SR
+lL
 SR
 SR
 SR
@@ -26977,7 +27017,7 @@ TK
 uw
 XF
 wB
-TK
+lL
 TC
 Tk
 Tk
@@ -31482,14 +31522,14 @@ Ln
 Ah
 bA
 UJ
-Hy
+kg
 UJ
 Hy
 UJ
-Hy
+kg
 bA
 UJ
-jy
+px
 UJ
 jy
 UJ
@@ -31624,11 +31664,11 @@ Ak
 Ah
 bA
 UJ
-Hy
+kg
 UJ
 Hy
 UJ
-Hy
+kg
 bA
 UJ
 jy
@@ -31766,16 +31806,16 @@ UJ
 Ah
 bA
 UJ
-Hy
+kg
 UJ
 Hy
 UJ
-Hy
+kg
 bA
 UJ
 jy
 UJ
-jy
+wb
 UJ
 jy
 bA
@@ -31908,14 +31948,14 @@ iu
 py
 bA
 KE
-Hy
+kg
 UJ
 Hy
 iu
 ID
 bA
 KE
-jy
+lw
 UJ
 jy
 iu
