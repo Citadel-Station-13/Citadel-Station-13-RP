@@ -1,0 +1,5 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - rscadd: "Added Adherent space squids"
+  - bugfix: "Fixes us not having adherent"

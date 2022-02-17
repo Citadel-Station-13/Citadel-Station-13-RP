@@ -54,6 +54,7 @@
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat
+	bone_amount = 3
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
@@ -92,6 +93,7 @@
 	icon_expected_height = 32
 
 	meat_amount = 5
+	bone_amount = 4
 
 	mod_min = 90
 	mod_max = 140
@@ -118,6 +120,7 @@
 	icon_expected_height = 64
 
 	meat_amount = 10
+	bone_amount = 7
 
 
 /mob/living/simple_mob/animal/space/carp/holographic

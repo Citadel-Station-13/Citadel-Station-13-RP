@@ -227,12 +227,22 @@
 /datum/crafting_recipe/goldenbox
 	name = "Gold Plated Toolbox"
 	result = /obj/item/storage/toolbox/gold_fake
-	tools = list(/obj/item/cell/high)
+	tools = list(/obj/item/cell/high,
+				/obj/item/reagent_containers/glass/beaker)
 	reqs = list(/obj/item/stack/material/cardboard = 1, //so we dont null items in crafting
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/gold = 1,
-				/datum/reagent/water  = 15)
+				/obj/item/stack/material/gold = 1)
 	time = 40
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/shovel
+	name = "Shovel"
+	result = /obj/item/shovel
+	tools = list(/obj/item/tool/screwdriver)
+	reqs = list(/obj/item/stack/material/steel = 1,
+				/obj/item/stack/material/wood = 5)
+	time = 30
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 

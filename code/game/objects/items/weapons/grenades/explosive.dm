@@ -76,17 +76,14 @@
 	explosion_size = 1
 
 /obj/item/grenade/explosive/ied
-	name = "mini fragmentation grenade"
-	desc = "A miniaturized fragmentation grenade, this one poses relatively little threat on its own."
-	icon_state = "minifrag"
+	name = "improvised explosive device"
+	desc = "A crude explosive device made out of common household materials, designed to rupture and send shrapnel out in a wide radius."
+	icon_state = "ied"
 	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment/weak, /obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong)
 	num_fragments = 20
 	spread_range = 3
 	explosion_size = 1
-	num_fragments = 63  //total number of fragments produced by the grenade
-	explosion_size = 2   //size of the center explosion
-	spread_range = 7
-	det_time = 50
+	det_time = 20
 	var/range = 3
 	var/list/times
 

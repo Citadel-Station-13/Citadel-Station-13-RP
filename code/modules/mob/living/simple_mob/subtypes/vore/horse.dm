@@ -39,6 +39,9 @@
 
 	meat_amount = 4
 	meat_type = /obj/item/reagent_containers/food/snacks/horsemeat
+	bone_amount = 2
+	hide_amount = 4
+	exotic_amount = 2
 
 	max_buckled_mobs = 1 //Yeehaw
 	can_buckle = TRUE

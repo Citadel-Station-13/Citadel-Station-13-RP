@@ -31,6 +31,14 @@
 		return
 	return ..()
 
+/obj/item/melee/classic_baton/tonfa
+	name = "tonfa"
+	desc = "A versatile wooden baton from Old Earth, designed for both attack and defense."
+	icon_state = "tonfa"
+	item_state = "tonfa"
+	flags = NOBLOODY
+	defend_chance = 15
+
 //Telescopic baton
 /obj/item/melee/telebaton
 	name = "telescopic baton"
@@ -48,42 +56,39 @@
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
 /obj/item/melee/telebaton/attack_self(mob/user as mob)
-	on = !on
-	if(on)
+	if(src.icon_state == initial(icon_state))
+		on = 1
 		user.visible_message("<span class='warning'>With a flick of their wrist, [user] extends their telescopic baton.</span>",\
 		"<span class='warning'>You extend the baton.</span>",\
 		"You hear an ominous click.")
 		src.icon_state = "[icon_state]_1"
+		src.item_state = "[item_state]_1"
 		w_class = ITEMSIZE_NORMAL
 		force = on_force //quite robust
 		attack_verb = list("struck", "beat")
 	else
+		on = 0
 		user.visible_message("<span class='notice'>\The [user] collapses their telescopic baton.</span>",\
 		"<span class='notice'>You collapse the baton.</span>",\
 		"You hear a click.")
-		src.icon_state = "[icon_state]_0"
+		src.icon_state = initial(icon_state)
+		src.item_state = initial(item_state)
 		w_class = ITEMSIZE_SMALL
 		force = off_force //not so robust now
 		attack_verb = list("poked", "jabbed")
-
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		H.update_inv_l_hand()
 		H.update_inv_r_hand()
-
 	playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 	add_fingerprint(user)
-
 	if(blood_overlay && blood_DNA && (blood_DNA.len >= 1)) //updates blood overlay, if any
 		overlays.Cut()//this might delete other item overlays as well but eeeeeeeh
-
 		var/icon/I = new /icon(src.icon, src.icon_state)
 		I.Blend(new /icon('icons/effects/blood.dmi', rgb(255,255,255)),ICON_ADD)
 		I.Blend(new /icon('icons/effects/blood.dmi', "itemblood"),ICON_MULTIPLY)
 		blood_overlay = I
-
 		overlays += blood_overlay
-
 	return
 
 /obj/item/melee/telebaton/attack(mob/target as mob, mob/living/user as mob)
@@ -111,11 +116,12 @@
 	else
 		return ..()
 
-/obj/item/melee/classic_baton/telescopic/newspaper
+/obj/item/melee/telebaton/newspaper
 	name = "The Daily Whiplash"
 	desc = "A newspaper wrapped around a telescopic baton in such a way that it looks like you're beating people with a rolled up newspaper."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "newspaper"
+	item_state = "newspaper"
 	item_icons = list(
 			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
 			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
