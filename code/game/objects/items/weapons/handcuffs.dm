@@ -324,10 +324,18 @@ var/last_chew = 0
 			if(user.hud_used && user.hud_used.move_intent)
 				user.hud_used.move_intent.icon_state = "walking"
 
+/obj/item/handcuffs/legcuffs/fuzzy
+	name = "fuzzy legcuffs"
+	desc = "Use this to keep... 'prisoners' in line."
+	icon = 'icons/obj/items_vr.dmi'
+	icon_state = "fuzzylegcuff"
+	breakouttime = 30 //3sec
+
 
 /obj/item/handcuffs/legcuffs/bola
 	name = "bola"
-	desc = "Keeps prey in line."
+	desc = "A ranged snare used to tangle up a target's legs."
+	icon_state = "bola"
 	elastic = 1
 	use_time = 0
 	breakouttime = 30
@@ -367,9 +375,27 @@ var/last_chew = 0
 			target.hud_used.move_intent.icon_state = "walking"
 	return 1
 
-/obj/item/handcuffs/legcuffs/fuzzy
-	name = "fuzzy legcuffs"
-	desc = "Use this to keep... 'prisoners' in line."
-	icon = 'icons/obj/items_vr.dmi'
-	icon_state = "fuzzylegcuff"
-	breakouttime = 30 //3sec
+/obj/item/handcuffs/legcuffs/bola/tactical
+	name = "reinforced bola"
+	desc = "A strong bola, made with a long steel chain. It looks heavy, enough so that it could trip somebody."
+	icon_state = "bola_r"
+	breakouttime = 70
+
+/obj/item/handcuffs/legcuffs/bola/cult
+	name = "\improper paranatural bola"
+	desc = "A strong bola, bound with dark magic that allows it to pass harmlessly through allied cultists. Throw it to trip and slow your victim."
+	icon_state = "bola_cult"
+	breakouttime = 60
+
+/obj/item/handcuffs/legcuffs/bola/cult/pickup(mob/living/user)
+	. = ..()
+	if(!iscultist(user))
+		to_chat(user, "<span class='warning'>The bola seems to take on a life of its own!</span>")
+		place_legcuffs(user)
+
+/obj/item/handcuffs/legcuffs/bola/cult/throw_impact(var/atom/target, var/mob/user, mob/living/carbon/human/H)
+	if(iscultist(user))
+		return
+	if(H.mind.isholy)
+		return
+	. = ..()
