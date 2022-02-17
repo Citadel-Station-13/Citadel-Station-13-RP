@@ -61,14 +61,14 @@
 	departments = list(DEPARTMENT_RESEARCH)
 	department_flag = MEDSCI
 	faction = "Station"
-	total_positions = 5
-	spawn_positions = 3
+	total_positions = 7
+	spawn_positions = 5
 	supervisors = "the Research Director"
 	selection_color = "#633D63"
 	idtype = /obj/item/card/id/science/scientist
 	economic_modifier = 7
-	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch)
-	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch)
+	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch, access_xenobotany)
+	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch, access_xenobiology, access_xenobotany)
 
 	minimal_player_age = 14
 
@@ -85,7 +85,9 @@
 		"Anomalist" = /datum/alt_title/anomalist, \
 		"Phoron Researcher" = /datum/alt_title/phoron_research,
 		"Circuit Designer" = /datum/alt_title/scientist/circuit,
-		"Research Field Technician" = /datum/alt_title/scientist/fieldtech
+		"Research Field Technician" = /datum/alt_title/scientist/fieldtech,
+		"Xenobotanist" = /datum/alt_title/scientist/xenobotanist,
+		"Xenobiologist" = /datum/alt_title/scientist/xenobiologist
 		)
 
 // Scientist Alt Titles
@@ -126,6 +128,19 @@
 /datum/alt_title/scientist/fieldtech
 	title = "Research Field Technician"
 
+/datum/alt_title/scientist/xenobiologist
+	title = "Xenobiologist"
+	title_blurb = "A Xenobiologist studies esoteric lifeforms, usually in the relative safety of their lab. They attempt to find ways to benefit \
+						from the byproducts of these lifeforms, and their main subject at present is the Giant Slime."
+	title_outfit = /decl/hierarchy/outfit/job/science/xenobiologist
+						
+/datum/alt_title/scientist/xenobotanist
+	title = "Xenobotanist"
+	title_blurb = "A Xenobotanist grows and cares for a variety of abnormal, custom made, and frequently dangerous plant life. When the products of these plants \
+					are both safe and beneficial to the station, they may choose to introduce it to the rest of the crew."
+	title_outfit = /decl/hierarchy/outfit/job/science/xenobiologist
+					
+/* Demoted to alt title for now
 //////////////////////////////////
 //			Xenobiologist
 //////////////////////////////////
@@ -198,6 +213,7 @@
 
 /datum/alt_title/xenohydroponicist
 	title = "Xenohydroponicist"
+*/
 
 //////////////////////////////////
 //			Roboticist
