@@ -59,6 +59,12 @@
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/excursion_dock
 
+/obj/effect/shuttle_landmark/triumph/deck4/courser
+	name = "NSV Triumph - Courser Hanger"
+	landmark_tag = "triumph_courser_hangar"
+	docking_controller = "courser_dock"
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid
+	base_area = /area/exploration/courser_dock
 
 // ON STATION NAV POINTS
 
@@ -112,6 +118,10 @@
 /obj/effect/shuttle_landmark/transit/triumph/excursion
 	name = "In transit"
 	landmark_tag = "nav_transit_exploration"
+
+/obj/effect/shuttle_landmark/transit/triumph/courser
+	name = "In transit"
+	landmark_tag = "nav_transit_courser"
 
 /obj/effect/shuttle_landmark/transit/triumph/pirate
 	name = "In transit"
@@ -249,6 +259,46 @@
 /obj/machinery/computer/shuttle_control/explore/excursion
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
+	req_one_access = list(access_pilot)
+
+//Courser Scout Vessel
+/datum/shuttle/autodock/overmap/courser
+	name = "Courser Scouting Vessel"
+	warmup_time = 0
+	current_location = "triumph_courser_hangar"
+	docking_controller_tag = "courser_dock"
+	shuttle_area = list(/area/shuttle/courser)
+	fuel_consumption = 3
+
+
+// The 'ship' of the courser
+/obj/effect/overmap/visitable/ship/landable/courser
+	name = "Courser Scouting Vessel"
+	desc = "A lightweight reconnaissance ship repurposed for expeditionary field work."
+	vessel_mass = 8000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Courser Scouting Vessel"
+
+
+// COURSER SHUTTLE DATA
+
+/datum/shuttle/autodock/overmap/courser
+	name = "Courser Scouting Vessel"
+	warmup_time = 0
+	shuttle_area = list(/area/shuttle/courser/cockpit, /area/shuttle/courser/general, /area/shuttle/courser/battery)
+	//shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
+	current_location = "triumph_courser_hangar"
+	docking_controller_tag = "courser_docker"
+	landmark_transition = "nav_transit_courser"
+	move_time = 15
+
+/area/shuttle/courser
+	name = "Courser Scouting Vessel"
+	icon_state = "shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/courser
+	name = "short jump console"
+	shuttle_tag = "Courser Scouting Vessel"
 	req_one_access = list(access_pilot)
 
 // Public Civilian Shuttle

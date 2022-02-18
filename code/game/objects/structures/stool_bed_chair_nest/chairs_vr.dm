@@ -208,13 +208,12 @@
 	name = "shuttle seat"
 	desc = "A comfortable, secure seat. It has a sturdy-looking buckling system for smoother flights."
 	base_icon = "shuttle_chair"
-	icon_state = "shuttle_chair_preview"
+	icon_state = "shuttle_chair"
 	buckle_movable = 0
 	var/buckling_sound = 'sound/effects/metal_close.ogg'
-	var/padding = "blue"
 
-/obj/structure/bed/chair/bay/shuttle/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, DEFAULT_WALL_MATERIAL, padding)
+/obj/structure/bed/chair/bay/shuttle/Initialize(mapload, new_material)
+	return ..(mapload, DEFAULT_WALL_MATERIAL)
 
 /obj/structure/bed/chair/bay/shuttle/post_buckle_mob()
 	playsound(src,buckling_sound,75,1)
@@ -230,8 +229,8 @@
 		var/image/I = image(icon, "[base_icon]_special")
 		I.plane = MOB_PLANE
 		I.layer = ABOVE_MOB_LAYER
-		if(applies_material_colour)
-			I.color = material.icon_colour
+		//if(applies_material_colour)
+			//I.color = material.icon_colour
 		add_overlay(I)
 
 /obj/structure/bed/chair/bay/chair/padded/red/smallnest
