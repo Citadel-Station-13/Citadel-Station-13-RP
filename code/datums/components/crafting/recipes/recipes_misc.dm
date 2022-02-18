@@ -2,16 +2,14 @@
 //Large Objects//
 /////////////////
 
-/* There's not really a use for this, currently?
 /datum/crafting_recipe/plunger
 	name = "Plunger"
 	result = /obj/item/plunger
 	time = 1
 	reqs = list(/obj/item/stack/material/plastic = 1,
-				/obj/item/stack/material/mineral/wood = 1)
+				/obj/item/stack/material/wood = 1)
 	category = CAT_MISCELLANEOUS
 	subcategory = CAT_TOOL
-*/
 
 /datum/crafting_recipe/showercurtain
 	name = "Shower Curtains"
@@ -659,3 +657,34 @@
 				/obj/item/clothing/under/rank/security = 1)
 	subcategory = CAT_FURNITURE
 	category = CAT_MISCELLANEOUS
+
+//Double Air Tanks
+/datum/crafting_recipe/double_tank_oxygen
+	name = "Double Emergency Oxygen Tank"
+	result = /obj/item/tank/emergency/oxygen/double
+	time = 30
+	reqs = list(/obj/item/tank/emergency/oxygen = 2,
+				/obj/item/duct_tape_piece = 5)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_WRENCH, TOOL_WELDER)
+
+/datum/crafting_recipe/double_tank_phoron
+	name = "Double Emergency Phoron Tank"
+	result = /obj/item/tank/emergency/phoron/double
+	time = 30
+	reqs = list(/obj/item/tank/emergency/phoron = 2,
+				/obj/item/duct_tape_piece = 5)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_WRENCH, TOOL_WELDER)
+
+/datum/crafting_recipe/double_tank_nitrogen
+	name = "Double Emergency Nitrogen Tank"
+	result = /obj/item/tank/emergency/nitrogen/double
+	time = 30
+	reqs = list(/obj/item/tank/emergency/nitrogen = 2,
+				/obj/item/duct_tape_piece = 5)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_WRENCH, TOOL_WELDER)

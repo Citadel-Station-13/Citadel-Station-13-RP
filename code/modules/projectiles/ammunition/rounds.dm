@@ -558,3 +558,10 @@
 	desc = "An arrow made of wood, tipped with bronze. The tip is dense enough to provide some armor penetration."
 	icon_state = "bronzearrow"
 	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bronze
+
+//Plunger
+/obj/item/ammo_casing/arrow/plunger
+	name = "plunger"
+	desc = "It's a plunger, for plunging."
+	icon_state = "plunger"
+	projectile_type = /obj/item/projectile/bullet/reusable/plunger
