@@ -1,0 +1,6 @@
+author: "ktoma36"
+delete-after: True
+changes: 
+  - rscadd: "More areas, new job role for nebulous gas, and such"
+  - bugfix: "Wonky wire, people should be able to land now"
+  - code_imp: "Touched up on some code for job roles, didnt go full out and make nebulous its own job class like talon (I looked into preference code and it causes me fear)"

@@ -213,6 +213,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	in_space = 0
 
+/*
 /obj/effect/overmap/visitable/sector/trade_post
 	name = "Nebula Gas Food Mart"
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
@@ -232,3 +233,4 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		"Dart EMT Shuttle" = list("nebula_pad_5"),
 		"Civilian Transport" = list("nebula_pad_6")
 		)
+*/

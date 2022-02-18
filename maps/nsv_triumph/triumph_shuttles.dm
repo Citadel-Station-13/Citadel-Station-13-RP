@@ -362,10 +362,6 @@
 /area/shuttle/trade_ship/cockpit
 	name = "\improper Beruang Trade Ship Cockpit"
 
-/obj/machinery/computer/shuttle_control/explore/trade
-	name = "short jump commerce console"
-	shuttle_tag = "Beruang Trade Ship"
-
 //EMT Shuttle
 /datum/shuttle/autodock/overmap/emt
 	name = "Dart EMT Shuttle"
