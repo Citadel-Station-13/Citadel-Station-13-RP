@@ -579,3 +579,13 @@
 		/obj/item/gun/projectile/pistol,
 		/obj/item/gun/projectile/pirate
 		)
+
+/obj/item/storage/belt/quiver
+	name = "leather quiver"
+	desc = "A quiver made from the hide of some animal. Used to hold arrows."
+	icon_state = "quiver"
+	storage_slots = 15
+	max_w_class = ITEMSIZE_NORMAL
+	can_hold = list(
+		/obj/item/ammo_casing/arrow
+		)

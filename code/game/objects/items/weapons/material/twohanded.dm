@@ -214,9 +214,11 @@
 		user.say("[war_cry]")
 		explosive.detonate()
 
-/obj/item/material/twohanded/spear/proc/grenade_prime_react(obj/item/grenade/nade) //Citadel edit, removes throw_impact because memes
-	nade.forceMove(get_turf(src))
-	qdel(src)
+/obj/item/material/twohanded/spear/throw_impact(atom/hit_atom)
+	. = ..()
+	if(explosive)
+		explosive.detonate()
+		qdel(src)
 
 /obj/item/material/twohanded/spear/AltClick(mob/user)
 	. = ..()

@@ -2,16 +2,14 @@
 //Large Objects//
 /////////////////
 
-/* There's not really a use for this, currently?
 /datum/crafting_recipe/plunger
 	name = "Plunger"
 	result = /obj/item/plunger
 	time = 1
 	reqs = list(/obj/item/stack/material/plastic = 1,
-				/obj/item/stack/material/mineral/wood = 1)
+				/obj/item/stack/material/wood = 1)
 	category = CAT_MISCELLANEOUS
 	subcategory = CAT_TOOL
-*/
 
 /datum/crafting_recipe/showercurtain
 	name = "Shower Curtains"
@@ -55,7 +53,7 @@
 	reqs = list(/obj/item/stack/material/cloth = 1,
 				/obj/item/stack/material/mineral/wood = 5,
 				/obj/item/stack/material/metal = 1)
-				///obj/item/stack/packageWrap = 8,
+				///obj/item/duct_tape_piece = 8,,
 				///obj/item/pipe = 2)
 	time = 150
 	subcategory = CAT_FURNITURE
@@ -275,67 +273,75 @@
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
-/* I need to set up the bronze material for these.
-/datum/crafting_recipe/bronze_driver
-	name = "Bronze Plated Screwdriver"
-	tools = list(/obj/item/stock_parts/cell/high)
-	result = /obj/item/screwdriver/bronze
-	reqs = list(/obj/item/screwdriver = 1,
+/datum/crafting_recipe/brass_driver
+	name = "Brass Screwdriver"
+	tools = list(/obj/item/cell/high,
+				/obj/item/reagent_containers/glass/beaker)
+	result = /obj/item/tool/screwdriver/brass
+	reqs = list(/obj/item/tool/screwdriver = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/bronze = 1,
+				/obj/item/stack/material/brass = 1,
 				/datum/reagent/water  = 15)
 	time = 40
+	//always_available = FALSE
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
-/datum/crafting_recipe/bronze_welder
-	name = "Bronze Plated Welding Tool"
-	tools = list(/obj/item/stock_parts/cell/high)
-	result = /obj/item/weldingtool/bronze
+/datum/crafting_recipe/brass_welder
+	name = "Brass Welding Tool"
+	tools = list(/obj/item/cell/high,
+				/obj/item/reagent_containers/glass/beaker)
+	result = /obj/item/weldingtool/brass
 	reqs = list(/obj/item/weldingtool = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/bronze = 1,
+				/obj/item/stack/material/brass = 1,
 				/datum/reagent/water  = 15)
 	time = 40
+	//always_available = FALSE
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
-/datum/crafting_recipe/bronze_wirecutters
-	name = "Bronze Plated Wirecutters"
-	tools = list(/obj/item/stock_parts/cell/high)
-	result = /obj/item/wirecutters/bronze
-	reqs = list(/obj/item/wirecutters = 1,
+/datum/crafting_recipe/brass_wirecutters
+	name = "Brass Wirecutters"
+	tools = list(/obj/item/cell/high,
+				/obj/item/reagent_containers/glass/beaker)
+	result = /obj/item/tool/wirecutters/brass
+	reqs = list(/obj/item/tool/wirecutters = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/bronze = 1,
+				/obj/item/stack/material/brass = 1,
 				/datum/reagent/water  = 15)
 	time = 40
+	//always_available = FALSE
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
-/datum/crafting_recipe/bronze_crowbar
-	name = "Bronze Plated Crowbar"
-	tools = list(/obj/item/stock_parts/cell/high)
-	result = /obj/item/crowbar/bronze
-	reqs = list(/obj/item/crowbar = 1,
+/datum/crafting_recipe/brass_crowbar
+	name = "Brass Crowbar"
+	tools = list(/obj/item/cell/high,
+				/obj/item/reagent_containers/glass/beaker)
+	result = /obj/item/tool/crowbar/brass
+	reqs = list(/obj/item/tool/crowbar = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/bronze = 1,
+				/obj/item/stack/material/brass = 1,
 				/datum/reagent/water  = 15)
 	time = 40
+	//always_available = FALSE
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
-/datum/crafting_recipe/bronze_wrench
-	name = "Bronze Plated Wrench"
-	tools = list(/obj/item/cell/high)
-	result = /obj/item/wrench/bronze
-	reqs = list(/obj/item/wrench = 1,
+/datum/crafting_recipe/brass_wrench
+	name = "Brass Wrench"
+	tools = list(/obj/item/cell/high,
+				/obj/item/reagent_containers/glass/beaker)
+	result = /obj/item/tool/wrench/brass
+	reqs = list(/obj/item/tool/wrench = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/bronze = 1,
+				/obj/item/stack/material/brass = 1,
 				/datum/reagent/water  = 15)
 	time = 40
+	//always_available = FALSE
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
-*/
 
 /* Not gonna code this right now. This is bound to be nuts.
 /datum/crafting_recipe/rcl
@@ -651,3 +657,34 @@
 				/obj/item/clothing/under/rank/security = 1)
 	subcategory = CAT_FURNITURE
 	category = CAT_MISCELLANEOUS
+
+//Double Air Tanks
+/datum/crafting_recipe/double_tank_oxygen
+	name = "Double Emergency Oxygen Tank"
+	result = /obj/item/tank/emergency/oxygen/double
+	time = 30
+	reqs = list(/obj/item/tank/emergency/oxygen = 2,
+				/obj/item/duct_tape_piece = 5)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_WRENCH, TOOL_WELDER)
+
+/datum/crafting_recipe/double_tank_phoron
+	name = "Double Emergency Phoron Tank"
+	result = /obj/item/tank/emergency/phoron/double
+	time = 30
+	reqs = list(/obj/item/tank/emergency/phoron = 2,
+				/obj/item/duct_tape_piece = 5)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_WRENCH, TOOL_WELDER)
+
+/datum/crafting_recipe/double_tank_nitrogen
+	name = "Double Emergency Nitrogen Tank"
+	result = /obj/item/tank/emergency/nitrogen/double
+	time = 30
+	reqs = list(/obj/item/tank/emergency/nitrogen = 2,
+				/obj/item/duct_tape_piece = 5)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_WRENCH, TOOL_WELDER)

@@ -221,3 +221,6 @@
 		materials_list += matter[i]
 		. += "<u>It is made out of [materials_list]</u>."
 	return
+
+/obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+	return
