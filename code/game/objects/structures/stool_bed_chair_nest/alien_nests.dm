@@ -51,7 +51,7 @@
 	if(istype(victim) && locate(/obj/item/organ/internal/xenos/hivenode) in victim.internal_organs)
 		return
 
-	if(istype(xenos) && (!(locate(/obj/item/organ/internal/xenos/hivenode) in xenos.internal_organs) || locate(/obj/item/organ/internal/xenos/weak_hivenode) in M.internal_organs))
+	if(istype(xenos) && !(locate(/obj/item/organ/internal/xenos/hivenode) in xenos.internal_organs))
 		return
 
 	if(M == usr)
