@@ -93,23 +93,23 @@
 	category = CAT_PRIMAL
 */
 
-/* Leaving these commented out until we have bows and archery.
 /datum/crafting_recipe/quiver
 	name = "Quiver"
 	result = /obj/item/storage/belt/quiver
 	time = 80
-	reqs = list(/obj/item/stack/sheet/leather = 3,
-				 /obj/item/stack/sheet/sinew = 4)
+	reqs = list(/obj/item/stack/material/leather = 3,
+				 /obj/item/stack/sinew = 4)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bone_bow
 	name = "Bone Bow"
-	result = /obj/item/gun/ballistic/bow/ashen
+	result = /obj/item/gun/projectile/bow/ashen
 	time = 120 // 80+120 = 200
 	reqs = list(/obj/item/stack/material/bone = 8,
-				 /obj/item/stack/sheet/sinew = 4)
+				 /obj/item/stack/sinew = 4)
 	category = CAT_PRIMAL
 
+/* Leaving this out until I decide to fuck with the recipe knowledge stuff.
 /datum/crafting_recipe/bow_tablet
 	name = "Sandstone Bow Making Manual"
 	result = /obj/item/book/granter/crafting_recipe/bone_bow
