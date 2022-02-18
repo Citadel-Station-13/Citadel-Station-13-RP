@@ -203,12 +203,16 @@
 	var/list/misc = list()
 	var/list/offduty = list()
 	var/list/talon = list()
+	var/list/trade = list()
 	for(var/datum/data/record/R in data_core.general)
 		var/name = R.fields["name"]
 		var/rank = R.fields["rank"]
 		var/real_rank = make_list_rank(R.fields["real_rank"])
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_TALON))
 			talon[name] = rank
+			continue
+		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_TRADE))
+			trade[name] = rank
 			continue
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_SECURITY))
 			security[name] = rank
@@ -265,6 +269,8 @@
 		.["Off Duty"] = offduty
 	if(talon.len)
 		.["Talon"] = talon
+	if(trade.len)
+		.["Trade"] = trade
 	return json_encode(.)
 
 /datum/world_topic/jsonrevision
