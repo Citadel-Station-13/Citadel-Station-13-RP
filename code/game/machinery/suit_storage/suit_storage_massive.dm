@@ -74,21 +74,35 @@
 		return 0
 	ui_interact(user)
 
-/obj/machinery/suit_storage_closet/ui_state(mob/user)
-	return GLOB.notcontained_state
+/obj/machinery/suit_storage_closet/proc/removal_menu(var/mob/user)
+	if (can_remove_items(user))
+		var/list/menuoptions = list(
+			"Helmet",
+			"Suit",
+			"Boots",
+			"Mask"
+		)
+		var/selection = input(user, "Which type would you like to remove?", "Remove Contents") as null|anything in menuoptions
+		switch(selection)
+			if("Helmet")
+				var/helmet_selection = input(user, "Which Helmet would you like to remove?", "Remove Contents") as null|anything in helmets
+			if("Suit")
+				var/suit_selection = input(user, "Which Suit would you like to remove?", "Remove Contents") as null|anything in suits
+			if("Boots")
+				var/boot_selection = input(user, "Which Boots would you like to remove?", "Remove Contents") as null|anything in helmets
+			if("Mask")
+				var/mask_selection = input(user, "Which Mask would you like to remove?", "Remove Contents") as null|anything in masks
+		return 1
+	return 0
 
-/obj/machinery/suit_storage_closet/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "SuitStorageUnit", name)
-		ui.open()
+/obj/machinery/suit_storage_closet/proc/can_remove_items(var/mob/user)
+	if (!Adjacent(user))
+		return 0
 
+	if (isanimal(user))
+		return 0
 
-/obj/machinery/suit_storage_closet/ui_data()
-	return ..()
-
-/obj/machinery/suit_storage_closet/ui_act(action, params)
-	return ..()
+	return 1
 
 /obj/machinery/suit_storage_closet/proc/dispense_helmet(mob/user as mob, var/list_index)
 	if(helmet_amount <= 0)
