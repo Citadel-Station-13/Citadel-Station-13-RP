@@ -540,13 +540,13 @@
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/pilot/alt
 			parent_suit = /obj/item/clothing/suit/space/void/pilot/alt
 		//Special styles
-		if("^%###^%$" || "Mercenary")
+		if("^%###^%$", "Mercenary")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/merc
 			parent_suit = /obj/item/clothing/suit/space/void/merc
 		if("Charring")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/merc/fire
 			parent_suit = /obj/item/clothing/suit/space/void/merc/fire
-		if("Gem-Encrusted" || "Wizard")
+		if("Gem-Encrusted", "Wizard")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/wizard
 			parent_suit = /obj/item/clothing/suit/space/void/wizard
 		if("Director")
