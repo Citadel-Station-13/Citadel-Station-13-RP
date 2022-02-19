@@ -47,7 +47,7 @@
 		/mob/living/carbon/human/proc/psychic_whisper,
 		//mob/living/carbon/human/proc/neurotoxin,//need the acid organ which I dont wanna just give them
 		/mob/living/carbon/human/proc/resin,
-		/mob/living/carbon/human/proc/hybrid_plant,//replaced from the normal to place a singular /obj/effect/alien/weeds
+		/mob/living/carbon/human/proc/hybrid_plant,//replaced from the normal weed node to place a singular weed
         /mob/living/carbon/human/proc/active_heal
 		)
 
