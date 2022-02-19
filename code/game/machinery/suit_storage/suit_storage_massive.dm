@@ -72,26 +72,53 @@
 		return
 	if(!user.IsAdvancedToolUser())
 		return 0
-	ui_interact(user)
+	removal_menu(user)
 
 /obj/machinery/suit_storage_closet/proc/removal_menu(var/mob/user)
 	if (can_remove_items(user))
-		var/list/menuoptions = list(
-			"Helmet",
-			"Suit",
-			"Boots",
-			"Mask"
-		)
+		var/list/menuoptions = list()
+		if(helmet_amount > 0)
+			menuoptions += "Helmet"
+		if(suit_amount > 0)
+			menuoptions += "Suit"
+		if(boots_amount > 0)
+			menuoptions += "Boots"
+		if(mask_amount > 0)
+			menuoptions += "Mask"
 		var/selection = input(user, "Which type would you like to remove?", "Remove Contents") as null|anything in menuoptions
 		switch(selection)
 			if("Helmet")
-				var/helmet_selection = input(user, "Which Helmet would you like to remove?", "Remove Contents") as null|anything in helmets
+				if(helmet_amount <= 0)
+					to_chat(user, "<span class='warning'>There are no helmets stored in this storage unit</span>")
+				var/obj/item/clothing/head/helmet/space/helmet_selection = input(user, "Which Helmet would you like to remove?", "Remove Contents") as null|anything in helmets
+				if(istype(helmet_selection))
+					helmet_selection.loc = src.loc
+					LAZYREMOVE(helmets, helmet_selection)
+					update_amounts()
 			if("Suit")
-				var/suit_selection = input(user, "Which Suit would you like to remove?", "Remove Contents") as null|anything in suits
+				if(suit_amount <= 0)
+					to_chat(user, "<span class='warning'>There are no suits stored in this storage unit</span>")
+				var/obj/item/clothing/suit/space/suit_selection = input(user, "Which Suit would you like to remove?", "Remove Contents") as null|anything in suits
+				if(istype(suit_selection))
+					suit_selection.loc = src.loc
+					LAZYREMOVE(suits, suit_selection)
+					update_amounts()
 			if("Boots")
-				var/boot_selection = input(user, "Which Boots would you like to remove?", "Remove Contents") as null|anything in helmets
+				if(boots_amount <= 0)
+					to_chat(user, "<span class='warning'>There are no suits stored in this storage unit</span>")
+				var/obj/item/clothing/shoes/boot_selection = input(user, "Which Boots would you like to remove?", "Remove Contents") as null|anything in boots
+				if(istype(boot_selection))
+					boot_selection.loc = src.loc
+					LAZYREMOVE(suits, boot_selection)
+					update_amounts()
 			if("Mask")
-				var/mask_selection = input(user, "Which Mask would you like to remove?", "Remove Contents") as null|anything in masks
+				if(mask_amount <= 0)
+					to_chat(user, "<span class='warning'>There are no masks stored in this storage unit</span>")
+				var/obj/item/clothing/mask/mask_selection = input(user, "Which Mask would you like to remove?", "Remove Contents") as null|anything in masks
+				if(istype(mask_selection))
+					mask_selection.loc = src.loc
+					LAZYREMOVE(suits, mask_selection)
+					update_amounts()
 		return 1
 	return 0
 
@@ -103,7 +130,7 @@
 		return 0
 
 	return 1
-
+/*
 /obj/machinery/suit_storage_closet/proc/dispense_helmet(mob/user as mob, var/list_index)
 	if(helmet_amount <= 0)
 		return
@@ -138,7 +165,7 @@
 		var/obj/item/clothing/shoes/boots/boot_dispense = LAZYACCESS(boots, list_index)
 		LAZYREMOVE(boots,boot_dispense)
 		boot_dispense.loc = src.loc
-		return
+		return*/
 
 /obj/machinery/suit_storage_closet/proc/dump_everything()
 	helmet_amount = 0
@@ -219,7 +246,6 @@
 		S.loc = src
 		LAZYADD(suits, S)
 		update_amounts()
-		updateUsrDialog()
 		return
 	if(istype(I,/obj/item/clothing/head/helmet))
 		var/obj/item/clothing/head/helmet/H = I
@@ -231,7 +257,6 @@
 		H.loc = src
 		LAZYADD(helmets, H)
 		update_amounts()
-		updateUsrDialog()
 		return
 	if(istype(I,/obj/item/clothing/mask))
 		var/obj/item/clothing/mask/M = I
@@ -243,7 +268,6 @@
 		M.loc = src
 		LAZYADD(masks, M)
 		update_amounts()
-		updateUsrDialog()
 		return
 	if(istype(I,/obj/item/clothing/shoes))
 		var/obj/item/clothing/shoes/B = I
@@ -255,7 +279,5 @@
 		B.loc = src
 		LAZYADD(boots, B)
 		update_amounts()
-		updateUsrDialog()
 		return
-	updateUsrDialog()
 	return
