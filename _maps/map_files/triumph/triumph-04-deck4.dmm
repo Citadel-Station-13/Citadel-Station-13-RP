@@ -30785,9 +30785,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = -22
 	},
-/obj/item/ammo_magazine/m762garand,
-/obj/item/ammo_magazine/m762garand,
-/obj/item/gun/projectile/garand,
+/obj/item/gun/projectile/shotgun/pump/rifle/practice,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/security/range)
 "uWf" = (
