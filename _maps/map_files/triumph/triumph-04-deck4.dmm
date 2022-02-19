@@ -1497,7 +1497,6 @@
 	id_tag = "courser_docker";
 	pixel_x = 25
 	},
-/obj/structure/catwalk,
 /obj/effect/shuttle_landmark/triumph/deck4/courser,
 /obj/effect/overmap/visitable/ship/landable/courser,
 /turf/simulated/floor/plating,
@@ -3030,12 +3029,12 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/sign/warning/bomb_range{
 	name = "\improper LIVE ORDINANCE";
 	pixel_x = 32
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "cky" = (
@@ -3205,12 +3204,13 @@
 	dir = 1;
 	id = "courser_magazine_2"
 	},
+/obj/machinery/door/window/southleft,
 /obj/machinery/door/blast/regular{
 	id = "courser_loading_2";
 	name = "Magazine Two Input"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "crT" = (
 /obj/machinery/door/airlock/glass_external{
 	frequency = null;
@@ -3696,11 +3696,12 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "cGq" = (
-/obj/machinery/disperser/front{
-	dir = 4
+/obj/machinery/door/blast/regular{
+	id = "courser_cannon_shroud";
+	name = "Cannon Barrel Shutter"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "cGK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -4725,10 +4726,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
 	},
-/obj/structure/catwalk,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "dBa" = (
@@ -5307,8 +5308,10 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "dTt" = (
-/turf/simulated/shuttle/wall/voidcraft/blue,
-/area/shuttle/courser/battery)
+/obj/machinery/recharge_station,
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/plating,
+/area/shuttle/courser/cockpit)
 "dTy" = (
 /obj/structure/table/bench/steel,
 /obj/effect/landmark/start{
@@ -7216,19 +7219,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "eZs" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/machinery/light,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "eZw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -7287,11 +7281,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 1
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /obj/structure/handrail,
 /obj/structure/catwalk,
@@ -9610,12 +9599,13 @@
 /obj/machinery/conveyor{
 	id = "courser_magazine_1"
 	},
+/obj/machinery/door/window/northleft,
 /obj/machinery/door/blast/regular{
 	id = "courser_loading_1";
 	name = "Magazine One Input"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "gMN" = (
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
@@ -12106,11 +12096,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "ipJ" = (
@@ -12593,7 +12583,7 @@
 	name = "Cannon Magazine Two"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "iIE" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -12670,15 +12660,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/hallway/primary/aft)
 "iLP" = (
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "courser_magazine_2"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "iMq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -14429,13 +14416,8 @@
 	name = "battery hatch"
 	},
 /obj/structure/catwalk,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "kcg" = (
 /obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/wood,
@@ -14478,8 +14460,8 @@
 "kdZ" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
-	id = "courser_cannon_shutter";
-	name = "Cannon Blast Shroud";
+	id = "courser_cannon_shroud";
+	name = "Cannon Barrel Shutter";
 	pixel_y = -23
 	},
 /obj/machinery/button/remote/blast_door{
@@ -14512,6 +14494,12 @@
 	},
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "courser_cannon_chamber";
+	name = "Cannon Chamber Shroud";
+	pixel_y = -34
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -14611,15 +14599,12 @@
 	dir = 4;
 	id = "courser_battery"
 	},
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/machinery/door/blast/regular{
-	id = "courser_cannon_shroud";
-	name = "Cannon Blast Shroud"
+	id = "courser_cannon_chamber";
+	name = "Cannon Chamber Shroud"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "kjA" = (
 /obj/machinery/status_display,
 /turf/simulated/wall/r_wall,
@@ -14822,6 +14807,10 @@
 	volume = 20000
 	},
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "ktq" = (
@@ -15146,6 +15135,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "kJf" = (
@@ -16257,7 +16247,7 @@
 	name = "Cannon Magazine One"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "lst" = (
 /obj/structure/dogbed,
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley,
@@ -16506,12 +16496,14 @@
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "lzp" = (
-/obj/machinery/door/blast/regular{
-	id = "courser_cannon_shroud";
-	name = "Cannon Blast Shroud"
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/cockpit)
 "lzU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16897,13 +16889,12 @@
 /turf/simulated/floor/tiled,
 /area/exploration/pathfinder_office)
 "lMh" = (
-/obj/structure/railing,
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "courser_magazine_1"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "lNa" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/hallway/primary/aft)
@@ -18821,6 +18812,11 @@
 	dir = 9
 	},
 /obj/structure/catwalk,
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "ncM" = (
@@ -18930,6 +18926,11 @@
 	dir = 5
 	},
 /obj/structure/catwalk,
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "nkd" = (
@@ -19556,6 +19557,10 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "nCJ" = (
@@ -22507,12 +22512,13 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "pGw" = (
+/obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "courser_battery"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "pHl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -23793,10 +23799,15 @@
 /obj/item/gun/projectile/shotgun/flare,
 /obj/item/storage/box/flashshells,
 /obj/item/duct_tape_roll,
-/obj/structure/closet/walllocker/emerglocker{
-	dir = 8;
+/obj/structure/closet/hydrant{
 	pixel_x = -32
 	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "qpA" = (
@@ -23961,6 +23972,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "qwt" = (
@@ -24044,13 +24060,15 @@
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "qyC" = (
-/obj/structure/plasticflaps/mining,
+/obj/machinery/disperser/back{
+	dir = 4
+	},
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "courser_battery"
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "qzc" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -24113,13 +24131,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/structure/cable/green{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "qAn" = (
@@ -24333,8 +24346,15 @@
 /area/maintenance/tool_storage)
 "qGe" = (
 /obj/structure/catwalk,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "qGf" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
@@ -25851,10 +25871,15 @@
 	pixel_y = -28
 	},
 /obj/structure/cable/cyan,
-/obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "rEn" = (
@@ -26004,10 +26029,10 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "rIM" = (
@@ -26628,11 +26653,6 @@
 	power_rating = 20000
 	},
 /obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -26695,11 +26715,6 @@
 "she" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
 	name = "cockpit hatch"
-	},
-/obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /obj/effect/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
@@ -26960,9 +26975,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"srJ" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/shuttle/courser/battery)
 "srT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -28490,11 +28502,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/structure/railing,
+/obj/structure/handrail,
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "tpS" = (
@@ -29225,13 +29238,13 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 10
 	},
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "tUk" = (
@@ -30126,6 +30139,12 @@
 /obj/structure/panic_button{
 	pixel_x = -32
 	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "uxr" = (
@@ -30886,15 +30905,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/hallway/secondary/civilian_hallway_mid)
 "uZt" = (
-/obj/machinery/disperser/back{
+/obj/machinery/disperser/middle{
 	dir = 4
 	},
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "courser_battery"
-	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "uZM" = (
 /turf/simulated/wall/r_wall,
 /area/library/study)
@@ -31436,6 +31451,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/central)
 "vrP" = (
+/obj/structure/handrail{
+	dir = 4
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "vrV" = (
@@ -32533,11 +32557,11 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "vWc" = (
-/obj/machinery/disperser/middle{
+/obj/machinery/disperser/front{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/shuttle/courser/battery)
+/area/shuttle/courser/general)
 "vWr" = (
 /obj/structure/table/reinforced,
 /obj/item/forensics/sample_kit/powder,
@@ -33887,12 +33911,12 @@
 	name = "south bump";
 	pixel_y = -28
 	},
-/obj/structure/cable/green{
-	d2 = 4;
-	icon_state = "0-4"
+/obj/machinery/light,
+/obj/structure/cable/cyan{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /obj/structure/catwalk,
-/obj/machinery/light,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "wSZ" = (
@@ -39424,7 +39448,7 @@ mAN
 srW
 wau
 srW
-vrP
+dTt
 vxn
 eOD
 bFX
@@ -39566,7 +39590,7 @@ ncL
 vrP
 qpp
 uxl
-vrP
+lzp
 iyE
 eOD
 bFX
@@ -40698,11 +40722,11 @@ bFX
 bFX
 bFX
 bFX
-srJ
-srJ
+qfR
+qfR
 eZs
-srJ
-srJ
+qfR
+qfR
 bFX
 bFX
 bFX
@@ -40982,11 +41006,11 @@ bFX
 bFX
 bFX
 bFX
-srJ
+qfR
 lso
 kjj
 iIz
-srJ
+qfR
 bFX
 bFX
 bFX
@@ -41124,11 +41148,11 @@ bFX
 bFX
 bFX
 bFX
-dTt
-srJ
+eOD
+qfR
 pGw
-srJ
-dTt
+qfR
+eOD
 bFX
 bFX
 bFX
@@ -41266,11 +41290,11 @@ bFX
 bFX
 bFX
 bFX
-dTt
-dTt
+eOD
+eOD
 qyC
-dTt
-dTt
+eOD
+eOD
 bFX
 bFX
 bFX
@@ -41408,11 +41432,11 @@ bFX
 bFX
 bFX
 bFX
-dTt
-dTt
+eOD
+qfR
 uZt
-dTt
-dTt
+qfR
+eOD
 bFX
 bFX
 bFX
@@ -41550,11 +41574,11 @@ dRj
 bFX
 bFX
 bFX
-dTt
-srJ
+bFX
+eOD
 vWc
-srJ
-dTt
+eOD
+bFX
 bFX
 bFX
 bFX
@@ -41693,9 +41717,9 @@ bFX
 bFX
 bFX
 bFX
-dTt
+eOD
 cGq
-dTt
+eOD
 bFX
 bFX
 bFX
@@ -41835,9 +41859,9 @@ bFX
 bFX
 bFX
 bFX
-dTt
-lzp
-dTt
+bFX
+bFX
+bFX
 bFX
 bFX
 bFX
