@@ -46,7 +46,7 @@
 				if(SPECIES_SERGAL)
 					new /obj/item/digestion_remains/skull/sergal(src,owner)
 					skull_amount--
-				if(SPECIES_ZORREN_FLAT || SPECIES_ZORREN_HIGH)
+				if(SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH)
 					new /obj/item/digestion_remains/skull/zorren(src,owner)
 					skull_amount--
 				if(SPECIES_NEVREAN)
