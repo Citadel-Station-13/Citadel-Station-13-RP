@@ -121,7 +121,7 @@ var/const/SCI_FREQ = 1351
 var/const/SRV_FREQ = 1349
 var/const/SUP_FREQ = 1347
 var/const/EXP_FREQ = 1361
-var/const/TALON_FREQ = 1363
+var/const/TALON_FREQ = 1363	// No need to remove at the moment, Talon equipment can still be used and such - Bloop
 
 // internal department channels
 var/const/MED_I_FREQ = 1485

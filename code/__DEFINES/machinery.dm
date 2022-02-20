@@ -72,7 +72,7 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define NETWORK_XENOBIO "Xenobiology"
 
 // Off Station Camera Networks
-#define NETWORK_TALON_HELMETS "TalonHelmets" //VOREStation Add
+#define NETWORK_TALON_HELMETS "TalonHelmets" //VOREStation Add //We can keep these for now
 #define NETWORK_TALON_SHIP "TalonShip" //VOREStation Add
 #define NETWORK_TRADE_STATION "Beruang Trade Station"
 

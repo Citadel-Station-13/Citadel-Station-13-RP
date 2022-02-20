@@ -958,9 +958,10 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	handset = /obj/item/radio/bluespace_handset/linked/talon_prelinked
 
 /obj/item/radio/bluespace_handset/linked/talon_prelinked
+/* // Commenting out for now while Talon is not in use
 	bs_tx_preload_id = "talon_aio" //Transmit to a receiver
 	bs_rx_preload_id = "talon_aio" //Recveive from a transmitter
-
+*/
 /obj/item/bluespace_radio/commerce
 	name = "commercial subspace radio"
 	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or NanoTrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."
