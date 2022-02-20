@@ -103,7 +103,7 @@
 	name = "Burn Chamber Air Control";
 	output_tag = "burn_chamber1_out";
 	pressure_setting = 0;
-	sensors = list("burn_chamber1_phoronsensor" = "Phoron Conent", "burn_chamber1_temperature_sensor" = "Temperature")
+	sensors = list("burn_chamber1_phoronsensor" = "Phoron Conent",)
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/engineering/engine_room)
@@ -328,17 +328,6 @@
 	dir = 4;
 	id = "EngineVent2";
 	name = "Reactor Vent"
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/engineering/engine_room)
-"vA" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 4
-	},
-/obj/machinery/air_sensor{
-	frequency = 1445;
-	id_tag = "burn_chamber1_temperature_sensor";
-	output = 2
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
@@ -939,7 +928,7 @@ Yi
 Yi
 KZ
 KZ
-vA
+kL
 ZG
 eW
 KZ
