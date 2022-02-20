@@ -40,9 +40,6 @@
 		if(mind)
 			mind.name = real_name
 
-		old_slow = species.slowdown
-		old_hunger = species.hunger_factor
-
 
 	nutrition = rand(200,400)
 
