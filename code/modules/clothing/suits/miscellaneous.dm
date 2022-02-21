@@ -1179,5 +1179,28 @@ obj/item/clothing/suit/kamishimo
 	throwforce = 0
 	throw_speed = 1
 	throw_range = 2
-	flags_inv = HIDEFACE|BLOCKHAIR
+	flags_inv = HIDEEARS|BLOCKHEADHAIR
 	body_parts_covered = HEAD|UPPER_TORSO|LOWER_TORSO|LEGS
+
+//Main's Formal Coats
+/obj/item/clothing/suit/storage/parade_coat
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal"
+
+/obj/item/clothing/suit/storage/parade_coat/hos
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "hosformal"
+
+/obj/item/clothing/suit/storage/parade_coat/centcom
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "centcomformal"
+
+/* For when I gender these later.
+/obj/item/clothing/suit/storage/parade_coat/female
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal"
+*/
