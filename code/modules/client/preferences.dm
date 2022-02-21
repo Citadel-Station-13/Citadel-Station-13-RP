@@ -60,6 +60,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/r_skin = 238					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
 	var/g_skin = 206					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
 	var/b_skin = 179					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
+	var/s_base = ""						//For Adherent
 	var/r_eyes = 0						//Eye color
 	var/g_eyes = 0						//Eye color
 	var/b_eyes = 0						//Eye color
@@ -402,6 +403,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	// VOREStation Edit - Sync up all their organs and species one final time
 	character.force_update_organs()
+//	character.s_base = s_base //doesn't work, fuck me
 
 	if(icon_updates)
 		character.force_update_limbs()

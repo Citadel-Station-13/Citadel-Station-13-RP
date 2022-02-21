@@ -158,3 +158,8 @@
 /obj/fiftyspawner/silencium
 	name = "stack of silencium"
 	type_to_spawn = /obj/item/stack/material/silencium
+
+//Biological Components
+/obj/fiftyspawner/bone
+	name = "stack of bones"
+	type_to_spawn = /obj/item/stack/material/bone

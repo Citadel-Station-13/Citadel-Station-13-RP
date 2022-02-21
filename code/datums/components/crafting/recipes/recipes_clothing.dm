@@ -375,3 +375,79 @@
 	tools = list(TOOL_WIRECUTTER)
 	time = 20
 */
+
+//Holsters
+/datum/crafting_recipe/holster_shoulder
+	name = "Holster (Shoulder)"
+	result = /obj/item/clothing/accessory/holster
+	time = 35
+	tools = list(TOOL_WIRECUTTER,
+				TOOL_SCREWDRIVER)
+	reqs = list(/obj/item/stack/material/plastic = 2,
+				/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/leather = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/holster_armpit
+	name = "Holster (Armpit)"
+	result = /obj/item/clothing/accessory/holster/armpit
+	time = 35
+	tools = list(TOOL_WIRECUTTER,
+				TOOL_SCREWDRIVER)
+	reqs = list(/obj/item/stack/material/plastic = 2,
+				/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/leather = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/holster_waist
+	name = "Holster (Waist)"
+	result = /obj/item/clothing/accessory/holster/waist
+	time = 35
+	tools = list(TOOL_WIRECUTTER,
+				TOOL_SCREWDRIVER)
+	reqs = list(/obj/item/stack/material/plastic = 2,
+				/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/leather = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/holster_hip
+	name = "Holster (Hip)"
+	result = /obj/item/clothing/accessory/holster/hip
+	time = 35
+	tools = list(TOOL_WIRECUTTER,
+				TOOL_SCREWDRIVER)
+	reqs = list(/obj/item/stack/material/plastic = 2,
+				/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/leather = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/holster_leg
+	name = "Holster (Leg))"
+	result = /obj/item/clothing/accessory/holster/leg
+	time = 35
+	tools = list(TOOL_WIRECUTTER,
+				TOOL_SCREWDRIVER)
+	reqs = list(/obj/item/stack/material/plastic = 2,
+				/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/leather = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/holster_machete
+	name = "Holster (Machete)"
+	result = /obj/item/clothing/accessory/holster/machete
+	time = 35
+	tools = list(TOOL_WIRECUTTER,
+				TOOL_SCREWDRIVER)
+	reqs = list(/obj/item/stack/material/plastic = 4,
+				/obj/item/stack/material/leather = 6)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/holster_kineticaccel
+	name = "Holster (Kinetic Accelerator)"
+	result = /obj/item/clothing/accessory/holster/waist/kinetic_accelerator
+	time = 35
+	tools = list(TOOL_WIRECUTTER,
+				TOOL_SCREWDRIVER)
+	reqs = list(/obj/item/stack/material/steel = 3,
+				/obj/item/stack/material/leather = 8)
+	category = CAT_CLOTHING

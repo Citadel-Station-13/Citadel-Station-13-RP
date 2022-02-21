@@ -45,3 +45,8 @@
 	suit_stored_TYPE = /obj/item/clothing/suit/space/void/pilot
 	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void/pilot
 	mask_stored_TYPE = /obj/item/clothing/mask/breath
+
+/obj/machinery/suit_storage_unit/syndicate
+	suit_stored_TYPE = /obj/item/clothing/suit/space/void/merc
+	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void/merc
+	mask_stored_TYPE = /obj/item/clothing/mask/breath

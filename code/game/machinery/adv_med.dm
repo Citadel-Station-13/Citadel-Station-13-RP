@@ -392,7 +392,7 @@
 			for(var/obj/item/organ/I in H.internal_organs)
 				var/organData[0]
 				organData["name"] = I.name
-				if(I.status & ORGAN_ASSISTED)
+				if(I.robotic == ORGAN_ASSISTED)
 					organData["desc"] = "Assisted"
 				else if(I.robotic >= ORGAN_ROBOT)
 					organData["desc"] = "Mechanical"
@@ -588,7 +588,7 @@
 			for(var/obj/item/organ/i in occupant.internal_organs)
 				var/mech = ""
 				var/i_dead = ""
-				if(i.status & ORGAN_ASSISTED)
+				if(i.robotic == ORGAN_ASSISTED)
 					mech = "Assisted:"
 				if(i.robotic >= ORGAN_ROBOT)
 					mech = "Mechanical:"

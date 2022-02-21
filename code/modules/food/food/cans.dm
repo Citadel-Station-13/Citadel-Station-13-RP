@@ -4,12 +4,22 @@
 	flags = 0 //starts closed
 	drop_sound = 'sound/items/drop/soda.ogg'
 	pickup_sound = 'sound/items/pickup/soda.ogg'
+	var/modified_type = /obj/item/trash/punctured_can
+
+/obj/item/reagent_containers/food/drinks/cans/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(istype(W, /obj/item/tool/screwdriver))
+		if(!reagents || reagents.total_volume == 0)
+			to_chat(user, "<span class='warning'>You pierce the [src] with the screwdriver.</span>")
+			var/turf/T = get_turf(src)
+			new modified_type(T)
+			qdel(src)
 
 //DRINKS
 
 /obj/item/reagent_containers/food/drinks/cans/cola
 	name = "\improper Space Cola"
-	desc = "Cola. in space."
+	desc = "Cola. In space."
 	icon_state = "cola"
 	center_of_mass = list("x"=16, "y"=10)
 

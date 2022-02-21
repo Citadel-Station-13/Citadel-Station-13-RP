@@ -455,6 +455,19 @@
 	name = "\improper C&K Showroom"
 	icon_state = "red"
 
+/area/tradeport/medical
+	icon_state = "blue"
+
+/area/tradeport/atmospherics
+	icon_state = "yellow"
+
+/area/tradeport/exterior
+
+/area/tradeport/cafeteria
+	icon_state = "green"
+
+/area/tradeport/expansion
+
 
 //////// Mothership areas ////////
 /area/mothership
