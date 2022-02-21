@@ -677,7 +677,7 @@
 					"o2_scrub",
 					"n2_scrub",
 					"co2_scrub",
-					"tox_scrub",
+					"phoron_scrub",
 					"n2o_scrub",
 					"volatile_fuel_scrub",
 					"helium_scrub",
