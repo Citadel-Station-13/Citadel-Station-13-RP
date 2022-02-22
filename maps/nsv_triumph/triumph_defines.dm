@@ -24,9 +24,6 @@
 #define Z_LEVEL_TRADEPORT				20
 #define Z_LEVEL_LAVALAND				21
 
-#define Z_LEVEL_TALON1					22
-#define Z_LEVEL_TALON2					23
-
 // Camera Networks
 /datum/map/triumph
 	name = "Triumph"
@@ -114,14 +111,12 @@
 							NETWORK_ALARM_ATMOS,
 							NETWORK_ALARM_POWER,
 							NETWORK_ALARM_FIRE,
-							NETWORK_TALON_HELMETS,
-							NETWORK_TALON_SHIP,
 							NETWORK_TRADE_STATION
 							)
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","ITV Talon Cryo","Beruang Trading Corp Cryo")
+	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -158,8 +153,7 @@
 		list("Forzen Planet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land"),
-		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2")//I swear to god this better work -Bloop
+		list("Away Mission - Lava Land")
 	)
 
 	ai_shell_restricted = TRUE

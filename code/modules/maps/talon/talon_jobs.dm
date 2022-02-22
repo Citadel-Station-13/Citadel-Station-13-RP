@@ -6,6 +6,9 @@
 */
 ///////////////////////////////////
 //// Talon Jobs
+
+/* ///On request of Maintainer I am commenting this out for now. Maybe in the future we can find a new purpose for Talon -Bloop 2-17-2022
+
 /datum/department/talon
 	name = DEPARTMENT_TALON
 	short_name = "Talon"
@@ -222,3 +225,4 @@
 	messenger_bag = /obj/item/storage/backpack/messenger/engi
 	uniform = /obj/item/clothing/under/rank/atmospheric_technician
 	belt = /obj/item/storage/belt/utility/atmostech
+*/

@@ -7,7 +7,6 @@
 	#include "tether_shuttle_defs.dm"
 	#include "tether_shuttles.dm"
 	#include "tether_telecomms.dm"
-	#include "talon_jobs.dm"
 	#include "tether_virgo3b.dm"					//Virgo3b Weather
 	#include "tether_virgo4.dm"						//Virgo4 Weather
 	#include "tether_class_d_weather_holder.dm"		//Virgo5 (class_d) Weather

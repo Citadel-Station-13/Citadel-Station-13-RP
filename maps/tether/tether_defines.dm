@@ -118,14 +118,12 @@
 							NETWORK_ALARM_ATMOS,
 							NETWORK_ALARM_POWER,
 							NETWORK_ALARM_FIRE,
-							NETWORK_TALON_HELMETS,
-							NETWORK_TALON_SHIP,
 							NETWORK_TRADE_STATION
 							)
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage","ITV Talon Cryo","Beruang Trading Corp Cryo")
+	allowed_spawns = list("Tram Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/tram
 	spawnpoint_left = /datum/spawnpoint/tram
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -159,7 +157,6 @@
 
 	lateload_z_levels = list(
 		list("Tether - Misc","Tether - Underdark","Tether - Plains"), //Stock Tether lateload maps
-		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2"),
 		list("Asteroid Belt 1","Asteroid Belt 2"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert"),
 		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),
