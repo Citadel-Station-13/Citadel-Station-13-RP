@@ -549,7 +549,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	name = "magical power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Magically produces power."
 	capacity = 9000000
-	output_level = 250000
+	output_level = 2500000
 	should_be_mapped = 1
 
 /obj/machinery/power/smes/magical/process(delta_time)
