@@ -39,7 +39,7 @@
 	src.modules += new /obj/item/shockpaddles/robot/jumper(src)
 	src.modules += new /obj/item/melee/baton/slime/robot(src)
 	src.modules += new /obj/item/gun/energy/taser/xeno/robot(src)
-	src.emag = new /obj/item/hand_tele(src)
+	src.emag = new /obj/item/borg/combat/shield(src)
 
 	var/datum/matter_synth/nanite = new /datum/matter_synth/nanite(10000)
 	synths += nanite
@@ -96,7 +96,7 @@
 	src.modules += new /obj/item/card/robot(src)
 	src.modules += new /obj/item/shockpaddles/robot/jumper(src)
 	src.modules += new /obj/item/tool/wirecutters/cyborg(src)
-	src.emag = new /obj/item/hand_tele(src)
+	src.emag = new /obj/item/borg/combat/shield(src)
 	src.modules += new /obj/item/dogborg/jaws/small(src)
 
 	var/datum/matter_synth/water = new /datum/matter_synth(500)
@@ -132,4 +132,4 @@
 	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
-	..()
+
