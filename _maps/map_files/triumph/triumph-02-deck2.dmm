@@ -205,7 +205,7 @@
 	desc = "Electric Hazard Behind. Enter at own risk";
 	dir = 1;
 	name = "Electron Reservoir";
-	req_one_access = list(31)
+	req_one_access = list()
 	},
 /turf/simulated/floor/crystal,
 /area/station/stairs_two)
@@ -260,7 +260,6 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = null;
 	name = "Bathroom"
 	},
 /turf/simulated/floor/tiled/white,
@@ -1615,8 +1614,7 @@
 	master_tag = "solar_dock";
 	name = "exterior access button";
 	pixel_x = -26;
-	pixel_y = 26;
-	req_one_access = null
+	pixel_y = 26
 	},
 /obj/machinery/shield_diffuser,
 /turf/simulated/floor/airless,
@@ -2579,8 +2577,6 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	id_tag = "mining_fore_airlock";
 	pixel_y = -26;
-	req_access = null;
-	req_one_access = null;
 	tag_airpump = "mining_fore_pump";
 	tag_chamber_sensor = "mining_fore_sensor";
 	tag_exterior_door = "mining_fore_outer";
@@ -4858,7 +4854,6 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
 	name = "Kitchen";
-	req_access = null;
 	req_one_access = list(28)
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8371,7 +8366,6 @@
 "xo" = (
 /obj/machinery/door/airlock{
 	name = "Kitchen";
-	req_access = null;
 	req_one_access = list(28)
 	},
 /obj/machinery/door/firedoor,
@@ -10683,7 +10677,6 @@
 "Eo" = (
 /obj/machinery/door/airlock{
 	name = "Kitchen";
-	req_access = null;
 	req_one_access = list(28)
 	},
 /obj/machinery/door/firedoor,
@@ -15443,7 +15436,6 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = null;
 	name = "Bathroom"
 	},
 /turf/simulated/floor/tiled/white,
@@ -15619,8 +15611,7 @@
 	name = "Belting Dock Controller";
 	pixel_x = 24;
 	pixel_y = 30;
-	req_one_access = list(13,31);
-	tag_door = null
+	req_one_access = list(13,31)
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -16159,7 +16150,6 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock{
-	id_tag = null;
 	name = "Bathroom"
 	},
 /turf/simulated/floor/tiled/white,
