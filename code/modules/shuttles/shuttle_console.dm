@@ -20,6 +20,8 @@
 		return 1
 
 	ui_interact(user)
+/obj/machinery/computer/shuttle_control/attackby(I as obj, user as mob)
+	. = ..(I,user)
 
 /obj/machinery/computer/shuttle_control/proc/shuttlerich_ui_data(var/datum/shuttle/autodock/shuttle)
 	var/shuttle_state
