@@ -147,8 +147,10 @@
 /obj/item/clothing/head/ushanka
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
+	icon = 'modular_citadel/icons/obj/clothing/hats_cit.dmi'
 	icon_state = "ushankadown"
 	flags_inv = HIDEEARS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user as mob)
 	if(src.icon_state == "ushankadown")

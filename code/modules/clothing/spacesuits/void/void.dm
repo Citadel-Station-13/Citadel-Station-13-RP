@@ -51,11 +51,17 @@
 		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
 		)
 	sprite_sheets_obj = list(
-		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/suits.dmi',
-		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/suits.dmi',
-		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/suits.dmi',
-		SPECIES_TESHARI = 'icons/obj/clothing/species/teshari/suits.dmi',
-		SPECIES_VOX = 'icons/obj/clothing/species/vox/suits.dmi'
+		SPECIES_TAJ				= 'icons/obj/clothing/species/tajaran/suits.dmi',
+		SPECIES_SKRELL			= 'icons/obj/clothing/species/skrell/suits.dmi',
+		SPECIES_UNATHI			= 'icons/obj/clothing/species/unathi/suits.dmi',
+		SPECIES_TESHARI			= 'icons/obj/clothing/species/teshari/suits.dmi',
+		SPECIES_NEVREAN			= 'icons/obj/clothing/species/nevrean/suits.dmi',
+		SPECIES_AKULA			= 'modular_citadel/icons/obj/clothing/species/akula/suits.dmi',
+		SPECIES_SERGAL			= 'icons/obj/clothing/species/sergal/suits.dmi',
+		SPECIES_ZORREN_FLAT		= 'icons/obj/clothing/species/fennec/suits.dmi',
+		SPECIES_ZORREN_HIGH		= 'icons/obj/clothing/species/fox/suits.dmi',
+		SPECIES_VULPKANIN		= 'icons/obj/clothing/species/vulpkanin/suits.dmi',
+		SPECIES_PROMETHEAN		= 'icons/obj/clothing/species/skrell/suits.dmi'
 		)
 
 	//Breach thresholds, should ideally be inherited by most (if not all) voidsuits.
