@@ -107,3 +107,19 @@ datum/design/item/general/laserpointer
 	materials = list(DEFAULT_WALL_MATERIAL = 9000, MAT_GLASS = 3000, MAT_URANIUM = 5000, MAT_PHORON = 6000, MAT_DIAMOND = 1000) // Cit change until we have more of a need for titanium, MAT_TITANIUM = 2000)
 	build_path = /obj/item/inducer/unloaded
 	sort_string = "TAVAC"
+
+/datum/design/item/general/translator_all
+	name = "handheld omni-translator"
+	id = "translator_all"
+	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 3000, "gold" = 500, "silver" = 500)
+	build_path = /obj/item/universal_translator/all
+	sort_string = "TAACC"
+
+/datum/design/item/general/ear_translator_all
+	name = "earpiece omni-translator"
+	id = "ear_translator_all"
+	req_tech = list(TECH_DATA = 6, TECH_ENGINEERING = 6)	//dude what hte fuck lmao
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000, "gold" = 2000, "silver" = 2000)
+	build_path = /obj/item/universal_translator/ear/all
+	sort_string = "TAACD"

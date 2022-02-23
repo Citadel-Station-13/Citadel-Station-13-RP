@@ -83,6 +83,10 @@
 	damage = 5
 	agony = 80
 
+/obj/item/projectile/energy/electrode/goldenbolt	// MIGHTY GOLDEN BOLT
+	name = "taser bolt"
+	agony = 80
+
 /obj/item/projectile/energy/declone
 	name = "declone"
 	icon_state = "declone"
