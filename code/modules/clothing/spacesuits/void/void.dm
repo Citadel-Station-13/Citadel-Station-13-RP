@@ -56,7 +56,7 @@
 		SPECIES_UNATHI			= 'icons/obj/clothing/species/unathi/suits.dmi',
 		SPECIES_TESHARI			= 'icons/obj/clothing/species/teshari/suits.dmi',
 		SPECIES_NEVREAN			= 'icons/obj/clothing/species/nevrean/suits.dmi',
-		SPECIES_AKULA			= 'modular_citadel/icons/obj/clothing/species/akula/suits.dmi',
+		SPECIES_AKULA			= 'icons/obj/clothing/species/akula/suits.dmi',
 		SPECIES_SERGAL			= 'icons/obj/clothing/species/sergal/suits.dmi',
 		SPECIES_ZORREN_FLAT		= 'icons/obj/clothing/species/fennec/suits.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/obj/clothing/species/fox/suits.dmi',

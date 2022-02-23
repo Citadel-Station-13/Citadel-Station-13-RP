@@ -1,8 +1,8 @@
 /obj/item/storage/backpack/satchel/donator
 	name = "base donator backpack"
 	desc = "Here for ease of use when adding donator backpacks"
-	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	icon = 'icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'icons/mob/donatorclothing.dmi'
 
 /obj/item/storage/backpack/satchel/donator/carrot
 	name = "carrot satchel"

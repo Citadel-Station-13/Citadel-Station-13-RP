@@ -69,10 +69,10 @@
 /obj/item/gun/energy/gun/multiphase
 	name = "\improper X-01 MultiPhase Energy Gun"
 	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
-	icon = 'modular_citadel/icons/obj/multiphase.dmi'
+	icon = 'icons/obj/multiphase.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'modular_citadel/icons/mob/inhands/guns_left.dmi',
-		slot_r_hand_str = 'modular_citadel/icons/mob/inhands/guns_right.dmi',
+		slot_l_hand_str = 'icons/mob/inhands/guns_left.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/guns_right.dmi',
 		)
 	icon_state = "multiphasedis100"
 	projectile_type = /obj/item/projectile/beam/stun/disabler

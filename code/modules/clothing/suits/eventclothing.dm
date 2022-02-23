@@ -2,16 +2,16 @@
 	name = "Miko Garb"
 	desc = "The creative reinterpretation of Shinto miko attire."
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	icon = 'modular_citadel/icons/obj/clothing/eventclothing.dmi'
-	icon_override = 'modular_citadel/icons/mob/eventclothing.dmi'
+	icon = 'icons/obj/clothing/eventclothing.dmi'
+	icon_override = 'icons/mob/eventclothing.dmi'
 	icon_state = "foxmiko"
 	item_state = "foxmiko"
 	rolled_sleeves = -1 //Don't want to try and roll sleeves like you can with a normal jumpsuit
 	rolled_down = -1
 	var/kimono = 0 //Custom vars for tracking kimono and skirt state
 	var/skirt = 0
-    
-	
+
+
 /obj/item/clothing/under/event_reward/foxmiko/verb/partkimono() //Verb for parting kimono - kinky. User reporting, flips state, and updates icon
     set name = "Adjust Kimono"
     set category = "Object"
@@ -20,20 +20,20 @@
         return
     if(usr.stat)
         return
-    
+
     if(kimono) //User reporting
         to_chat(usr, "You correct your kimono.")
     else
         to_chat(usr, "You part your kimono.")
-    
+
     kimono = !kimono //Switch state parted -> unparted, or unparted -> parted
     switchsprite() //Proc call - handles the two states of kimono and skirt
-	
+
     var/mob/M = src.loc //And finally update the icon
     M.update_inv_w_uniform()
     update_clothing_icon()
-    
-    
+
+
 /obj/item/clothing/under/event_reward/foxmiko/verb/liftskirt() //Verb for parting skirt - lewd. User reporting, flips state, and updates icon
     set name = "Adjust Skirt"
     set category = "Object"
@@ -42,20 +42,20 @@
         return
     if(usr.stat)
         return
-    
+
     if(skirt) //User reporting
         to_chat(usr, "You drop your skirt.")
     else
         to_chat(usr, "You lift your skirt.")
-    
+
     skirt = !skirt //Switch state lifted -> unlifeted, or unlifted -> lifted
     switchsprite() //Proc call - handles the two states of kimono and skirt
-    
+
     var/mob/M = src.loc //And finally update the icon
     M.update_inv_w_uniform()
     update_clothing_icon()
-    
-    
+
+
 /obj/item/clothing/under/event_reward/foxmiko/proc/switchsprite() //Handles the ultimate state of the icon as well as what parts of body the attire covers
 	body_parts_covered = initial(body_parts_covered) //Resets to default coverage for this uniform - upper and lower body
 	if(kimono) //If the kimono is parted
@@ -89,11 +89,11 @@
 		A.icon_state = "" //Hide icon state
 		A.overlay_state = "" //Hide overlay state - certain accessories use both
 		to_chat(usr, "You hide [A] among your [src].") //And reports to user
-		
+
 	var/mob/M = src.loc //And updates the icon
 	M.update_inv_w_uniform()
 	update_clothing_icon()
-	
+
 
 /obj/item/clothing/under/event_reward/foxmiko/verb/hidetie() //Verb for concealing assessory icons on mob spirt - this is a hack of the original code to remove accessories
 	set name = "Hide Accessory"

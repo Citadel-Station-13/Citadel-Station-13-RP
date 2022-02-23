@@ -1,7 +1,7 @@
 /obj/machinery/appliance/cooker/oven
 	name = "oven"
 	desc = "Cookies are ready, dear."
-	icon = 'modular_citadel/icons/obj/cooking_machines.dmi'
+	icon = 'icons/obj/cooking_machines.dmi'
 	icon_state = "ovenopen"
 	cook_type = "baked"
 	appliancetype = OVEN

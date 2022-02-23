@@ -3668,5 +3668,4 @@
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\engine_submaps\engine.dm"
 #include "maps\~map_system\maps.dm"
-#include "modular_citadel\icons\icon_overrides.dm"
 // END_INCLUDE

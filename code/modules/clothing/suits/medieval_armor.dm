@@ -2,8 +2,8 @@
 /obj/item/clothing/head/helmet/medieval
 	name = "medieval helmet"
 	desc = "A classic metal helmet, effective at stopping melee attacks."
-	icon = 'modular_citadel/icons/obj/clothing/medieval_helmet.dmi'
-	icon_override = 'modular_citadel/icons/mob/medieval_helmet.dmi'
+	icon = 'icons/obj/clothing/medieval_helmet.dmi'
+	icon_override = 'icons/mob/medieval_helmet.dmi'
 	icon_state = "knight"
 	item_state = "knight"
 	armor = list(melee = 40, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 0, rad = 0)
@@ -31,8 +31,8 @@
 	name = "plate armour"
 	desc = "A classic suit of plate armour, effective at stopping melee attacks."
 	armor = list(melee = 50, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
-	icon = 'modular_citadel/icons/obj/clothing/medieval_armor.dmi'
-	icon_override = 'modular_citadel/icons/mob/medieval_armor.dmi'
+	icon = 'icons/obj/clothing/medieval_armor.dmi'
+	icon_override = 'icons/mob/medieval_armor.dmi'
 	icon_state = "knight"
 	item_state = "knight"
 	slowdown = 1
@@ -119,8 +119,8 @@
 /obj/item/clothing/head/medievalfake
 	name = "medieval helmet replica"
 	desc = "A plastic replica of knight helmet. Great for tabletop and LARP sessions, not great at stopping melee attacks."
-	icon = 'modular_citadel/icons/obj/clothing/medieval_helmet.dmi'
-	icon_override = 'modular_citadel/icons/mob/medieval_helmet.dmi'
+	icon = 'icons/obj/clothing/medieval_helmet.dmi'
+	icon_override = 'icons/mob/medieval_helmet.dmi'
 	icon_state = "knight"
 	item_state = "knight"
 	body_parts_covered = HEAD|FACE|EYES
@@ -146,8 +146,8 @@
 /obj/item/clothing/suit/medievalfake
 	name = "plate armour replica"
 	desc = "A plastic replica of knight armor. Great for tabletop and LARP sessions, not great at stopping melee attacks."
-	icon = 'modular_citadel/icons/obj/clothing/medieval_armor.dmi'
-	icon_override = 'modular_citadel/icons/mob/medieval_armor.dmi'
+	icon = 'icons/obj/clothing/medieval_armor.dmi'
+	icon_override = 'icons/mob/medieval_armor.dmi'
 	icon_state = "knight"
 	item_state = "knight"
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER

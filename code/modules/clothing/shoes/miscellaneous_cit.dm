@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/galoshes/citadel
-	icon = 'modular_citadel/icons/obj/clothing/shoes_cit.dmi'
-	icon_override = 'modular_citadel/icons/mob/feet_cit.dmi'
+	icon = 'icons/obj/clothing/shoes_cit.dmi'
+	icon_override = 'icons/mob/feet_cit.dmi'
 
 // The things folks do for fashion...
 /obj/item/clothing/shoes/galoshes/citadel/black

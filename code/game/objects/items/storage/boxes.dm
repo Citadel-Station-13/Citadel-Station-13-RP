@@ -416,6 +416,7 @@
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
 	starts_with = list(/obj/item/storage/pill_bottle = 7)
+	icon_state = "pillbox"
 
 /obj/item/storage/box/snappops
 	name = "snap pop box"

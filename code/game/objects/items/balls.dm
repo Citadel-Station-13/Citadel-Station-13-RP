@@ -3,12 +3,12 @@
 /obj/item/toy/tennis
 	name = "tennis ball"
 	desc = "A classical tennis ball. It appears to have faint bite marks scattered all over its surface."
-	icon = 'modular_citadel/icons/obj/balls.dmi'
+	icon = 'icons/obj/balls.dmi'
 	icon_state = "tennis_classic"
 	item_icons = list(
-		slot_l_hand_str = 'modular_citadel/icons/mob/inhands/balls_left.dmi',
-		slot_r_hand_str = 'modular_citadel/icons/mob/inhands/balls_right.dmi',
-		slot_wear_mask_str = 'modular_citadel/icons/mob/mouthball.dmi'
+		slot_l_hand_str = 'icons/mob/inhands/balls_left.dmi',
+		slot_r_hand_str = 'icons/mob/inhands/balls_right.dmi',
+		slot_wear_mask_str = 'icons/mob/mouthball.dmi'
 		)
 	item_state = "tennis_classic"
 	slot_flags = SLOT_MASK

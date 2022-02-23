@@ -2,22 +2,19 @@
 
 //code/game/machinery/kitchen/microwave.dm
 /obj/machinery/microwave
-	icon = 'modular_citadel/icons/obj/kitchen.dmi'
+	icon = 'icons/obj/kitchen.dmi'
 
 //code/game/machinery/newscaster.dm
 /obj/item/newspaper
-	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
-
-/obj/item/storage/box/pillbottles
-	icon_state = "pillbox"
+	icon = 'icons/obj/bureaucracy.dmi'
 
 //code/game/objects/structures/crates_lockers/closets.dm
 /obj/structure/closet
-	icon = 'modular_citadel/icons/obj/closet.dmi'
+	icon = 'icons/obj/closet.dmi'
 
 //code/game/objects/structures/crates_lockers/closets/secure/secure_closets.dm
 /obj/structure/closet/secure_closet
-	icon = 'modular_citadel/icons/obj/closet.dmi'
+	icon = 'icons/obj/closet.dmi'
 
 //code/game/objects/structures/crates_lockers/crates.dm
 /obj/structure/closet/crate
@@ -29,56 +26,53 @@
 
 //code/game/objects/structures/under_wardrobe.dm
 /obj/structure/undies_wardrobe
-	icon = 'modular_citadel/icons/obj/closet.dmi'
+	icon = 'icons/obj/closet.dmi'
 
 //code/modules/library/lib_machines.dm
 /obj/machinery/libraryscanner
-	icon = 'modular_citadel/icons/obj/library.dmi'
+	icon = 'icons/obj/library.dmi'
 
 /obj/machinery/bookbinder
-	icon = 'modular_citadel/icons/obj/library.dmi'
+	icon = 'icons/obj/library.dmi'
 
 //code/modules/paperwork/filingcabinet.dm
 /obj/structure/filingcabinet
-	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
+	icon = 'icons/obj/bureaucracy.dmi'
 
 //code/modules/paperwork/paperbin.dm
 /obj/item/paper_bin
-	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
+	icon = 'icons/obj/bureaucracy.dmi'
 
 //code/modules/paperwork/pen.dm
 /obj/item/pen
-	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
+	icon = 'icons/obj/bureaucracy.dmi'
 
 //code/modules/paperwork/photocopier.dm
 /obj/machinery/photocopier
-	icon = 'modular_citadel/icons/obj/library.dmi'
+	icon = 'icons/obj/library.dmi'
 
 //code/modules/paperwork/stamps.dm
 /obj/item/stamp
-	icon = 'modular_citadel/icons/obj/bureaucracy.dmi'
+	icon = 'icons/obj/bureaucracy.dmi'
 
 //code/modules/reagents/dispenser/dispenser2.dm
 /obj/machinery/chemical_dispenser
-	icon = 'modular_citadel/icons/obj/chemical.dmi'
+	icon = 'icons/obj/chemical.dmi'
 
 //code/modules/reagents/dispenser/dispenser_presets.dm
 /obj/machinery/chemical_dispenser/bar_soft
-	icon = 'modular_citadel/icons/obj/chemical.dmi'
+	icon = 'icons/obj/chemical.dmi'
 
 /obj/machinery/chemical_dispenser/bar_alc
-	icon = 'modular_citadel/icons/obj/chemical.dmi'
-
-/obj/machinery/chemical_dispenser/bar_coffee
 	icon = 'icons/obj/chemical.dmi'
 
 //code/modules/paperwork/faxmachine.dm
 /obj/machinery/photocopier/faxmachine
-	icon = 'modular_citadel/icons/obj/library.dmi'
+	icon = 'icons/obj/library.dmi'
 
 //code/game/machinery/vending.dm
 /obj/machinery/vending
-	icon = 'modular_citadel/icons/obj/vending.dmi'
+	icon = 'icons/obj/vending.dmi'
 
 /* This section lists all the vending machines that will inherit from the above without specific overrides
 /obj/machinery/vending/coffee
@@ -140,13 +134,13 @@
 
 //code/modules/economy/atm.dm
 /obj/machinery/atm
-	icon = 'modular_citadel/icons/obj/terminals.dmi'
+	icon = 'icons/obj/terminals.dmi'
 
 //code/game/objects/items/weapons/storage/briefcase.dm
 /obj/item/storage/briefcase
 	item_icons = list(
-		slot_l_hand_str = 'modular_citadel/icons/mob/items/lefthand_storage.dmi',
-		slot_r_hand_str = 'modular_citadel/icons/mob/items/righthand_storage.dmi',
+		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
 		)
 
 /obj/item/storage/briefcase/clutch
@@ -164,6 +158,6 @@
 //code/game/objects/items/weapons/storage/secure.dm
 /obj/item/storage/secure/briefcase
 	item_icons = list(
-		slot_l_hand_str = 'modular_citadel/icons/mob/items/lefthand_storage.dmi',
-		slot_r_hand_str = 'modular_citadel/icons/mob/items/righthand_storage.dmi',
+		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
+		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
 		)
