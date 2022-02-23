@@ -472,7 +472,7 @@
 /obj/item/ammo_magazine/m57x28mm/ap
 	name = "magazine (5.7x28mm armor piercing)"
 	desc = "A standard capacity magazine loaded with armor piercing bullets."
-	icon_state = "fiveseven_ap"
+	ammo_mark = "ap"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
 
 /obj/item/ammo_magazine/m57x28mm/hp
@@ -495,6 +495,7 @@
 /obj/item/ammo_magazine/m57x28mm/large/ap
 	name = "large capacity magazine (5.7x28mm armor piercing)"
 	desc = "A high capacity magazine loaded with armor piercing bullets."
+	ammo_mark = "ap"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
 /obj/item/ammo_magazine/m57x28mm/large/hp
 	name = "large capacity magazine (5.7x28mm hollow-point)"
