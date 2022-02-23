@@ -148,7 +148,7 @@
 /obj/item/ammo_casing/a57x28mm
 	desc = "A 5.7x28mm bullet casing."
 	caliber = "5.7x28mm"
-	projectile_type = /obj/item/projectile/bullet/pistol
+	projectile_type = /obj/item/projectile/bullet/pistol/lap
 	matter = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 30)
 
 /obj/item/ammo_casing/a57x28mm/ap

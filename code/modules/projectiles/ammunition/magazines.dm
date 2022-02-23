@@ -460,13 +460,14 @@
 /////// 5.7x28mm ////////
 /obj/item/ammo_magazine/m57x28mm
 	name = "magazine (5.7x28mm)"
+	desc = "A sturdy double stack magazine with a reinforced spring, designed for withstanding rough treatment."
 	icon_state = "fiveseven"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	matter = list(DEFAULT_WALL_MATERIAL = 300, "copper" = 300)
 	caliber = "5.7x28mm"
 	ammo_type = /obj/item/ammo_casing/a57x28mm
-	max_ammo = 10
+	max_ammo = 15
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m57x28mm/ap
@@ -477,10 +478,12 @@
 
 /obj/item/ammo_magazine/m57x28mm/hp
 	name = "magazine (5.7x28mm hollow-point)"
+	ammo_mark = "hp"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
 
 /obj/item/ammo_magazine/m57x28mm/hunter
 	name = "magazine (5.7x28mm hunter)"
+	ammo_mark = "hunter"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
 
 /obj/item/ammo_magazine/m57x28mm/empty
@@ -489,7 +492,7 @@
 /obj/item/ammo_magazine/m57x28mm/large
 	name = "large capacity magazine (5.7x28mm)"
 	icon_state = "fiveseven_highcap"
-	max_ammo = 20
+	max_ammo = 30
 	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
 
 /obj/item/ammo_magazine/m57x28mm/large/ap
@@ -499,10 +502,12 @@
 	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
 /obj/item/ammo_magazine/m57x28mm/large/hp
 	name = "large capacity magazine (5.7x28mm hollow-point)"
+	ammo_mark = "hp"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
 
 /obj/item/ammo_magazine/m57x28mm/large/hunter
 	name = "large capacity magazine (5.7x28mm hunter)"
+	ammo_mark = "hunter"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
 
 /obj/item/ammo_magazine/m57x28mm/large/empty
