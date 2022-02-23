@@ -88,7 +88,6 @@
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine,
 		O_RESIN =    	/obj/item/organ/internal/xenos/resinspinner,
-		O_HIVE =		/obj/item/organ/internal/xenos/weak_hivenode
 		)
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
@@ -134,8 +133,4 @@
 
         H.nutrition += heal_amount
 
-/obj/item/organ/internal/xenos/weak_hivenode//For hybrids to allow them to use resin doors
-	name = "underdeveloped hive node"
-	parent_organ = BP_TORSO
-	icon_state = "xenode"
-	organ_tag = O_HIVE
+
