@@ -22,3 +22,9 @@
 
 /obj/item/material/star/ninja
 	default_material = "uranium"
+
+/obj/item/material/star/plasteel
+	default_material = "plasteel"
+
+/obj/item/material/star/durasteel
+	default_material = "durasteel"
