@@ -182,7 +182,7 @@
 
 	if(H.head == helmet)
 		to_chat(H, "<span class='notice'>You retract your suit helmet.</span>")
-		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 		helmet.canremove = 1
 		H.drop_from_inventory(helmet)
 		helmet.forceMove(src)
@@ -194,7 +194,7 @@
 			helmet.pickup(H)
 			helmet.canremove = 0
 			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
-			playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+			playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	helmet.update_light(H)
 
 /obj/item/clothing/suit/space/void/verb/toggle_magboots()

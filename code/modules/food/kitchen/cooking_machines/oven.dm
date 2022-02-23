@@ -92,7 +92,7 @@
 		loss = (active_power_usage / resistance)*4
 		//When the oven door is opened, heat is lost MUCH faster
 
-	playsound(src, 'modular_citadel/sound/machines/hatch_open.ogg', 20, 1)
+	playsound(src, 'sound/machines/hatch_open.ogg', 20, 1)
 	update_icon()
 
 /obj/machinery/appliance/cooker/oven/can_insert(var/obj/item/I, var/mob/user)

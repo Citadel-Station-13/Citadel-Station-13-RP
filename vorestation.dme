@@ -3669,5 +3669,4 @@
 #include "maps\submaps\engine_submaps\engine.dm"
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\icons\icon_overrides.dm"
-#include "modular_citadel\maps\tether\tether_defines.dm"
 // END_INCLUDE

@@ -22,9 +22,9 @@
 	item_state = "tennis_rainbow"
 
 	var/list/squeak_sounds = list(
-		'modular_citadel/sound/items/toysqueak1.ogg',
-		'modular_citadel/sound/items/toysqueak2.ogg',
-		'modular_citadel/sound/items/toysqueak3.ogg'
+		'sound/items/toysqueak1.ogg',
+		'sound/items/toysqueak2.ogg',
+		'sound/items/toysqueak3.ogg'
 		)
 
 /obj/item/toy/tennis/rainbow/attack_self(mob/user as mob)

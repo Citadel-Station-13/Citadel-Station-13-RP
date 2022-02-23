@@ -172,7 +172,7 @@
 			"<span class='notice'>You retract [src], folding it away with a click and a hiss.</span>",
 			"<span class='notice'>You hear a threatening click and a hiss.</span>"
 			)
-		playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	else
 		to_chat(user, "Something fucked up and the armblade got out of a module. Please report this bug.")
 		qdel(src)

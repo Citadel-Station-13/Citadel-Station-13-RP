@@ -39,9 +39,9 @@
 	var/const/crayonfont = "Comic Sans MS"
 
 	var/list/stamp_sounds = list(
-		'modular_citadel/sound/items/stamp1.ogg',
-		'modular_citadel/sound/items/stamp2.ogg',
-		'modular_citadel/sound/items/stamp3.ogg'
+		'sound/items/stamp1.ogg',
+		'sound/items/stamp2.ogg',
+		'sound/items/stamp3.ogg'
 		)
 
 /obj/item/paper/card
