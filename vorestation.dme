@@ -3645,7 +3645,6 @@
 #include "maps\submaps\engine_submaps\engine.dm"
 #include "maps\~map_system\maps.dm"
 #include "modular_citadel\code\global_cit.dm"
-#include "modular_citadel\code\defines\obj\weapon.dm"
 #include "modular_citadel\code\game\objects\items\balls.dm"
 #include "modular_citadel\code\game\objects\items\donator_item.dm"
 #include "modular_citadel\code\game\objects\items\trash.dm"
