@@ -1674,13 +1674,7 @@
 	},
 /obj/machinery/camera/network/cargo,
 /obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
-	},
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
-	},
-/obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
@@ -10663,7 +10657,7 @@
 	dir = 1
 	},
 /obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
@@ -12717,7 +12711,7 @@
 	dir = 1
 	},
 /obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
@@ -17222,7 +17216,7 @@
 	dir = 1
 	},
 /obj/machinery/suit_storage_unit/mining{
-	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
@@ -18211,10 +18205,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/eva)
-"ZN" = (
-/obj/item/clothing/shoes/magboots,
-/turf/simulated/floor/tiled,
-/area/triumph/surfacebase/mining_main/storage)
 "ZP" = (
 /obj/machinery/light_switch{
 	dir = 4;
@@ -28426,7 +28416,7 @@ ym
 as
 eY
 li
-ZN
+Js
 Js
 yA
 eJ
