@@ -568,6 +568,10 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "bI" = (
@@ -1662,12 +1666,6 @@
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
 	},
-/obj/structure/table/rack,
-/obj/item/clothing/head/helmet/space/void/mining,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/mining_scanner,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -1675,8 +1673,15 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/cargo,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/machinery/suit_storage_unit/mining{
+	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	},
+/obj/machinery/suit_storage_unit/mining{
+	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	},
+/obj/machinery/suit_storage_unit/mining{
+	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "eZ" = (
@@ -3093,8 +3098,11 @@
 "iI" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
-/obj/item/storage/box/nifsofts_mining,
 /obj/structure/table/reinforced,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
+/obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "iK" = (
@@ -5923,13 +5931,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "qy" = (
-/obj/item/clothing/suit/space/void,
-/obj/item/clothing/head/helmet/space/void,
-/obj/structure/table/rack,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/tank/jetpack/oxygen,
+/obj/machinery/suit_storage_unit/standard_unit,
 /obj/item/suit_cooling_unit,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
@@ -7092,9 +7097,6 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/eva)
 "tH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -9906,6 +9908,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/miningdock)
 "BR" = (
@@ -10649,20 +10656,15 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "El" = (
-/obj/structure/table/rack,
-/obj/item/clothing/head/helmet/space/void/mining,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/mining_scanner,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/item/tank/jetpack/oxygen,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/machinery/suit_storage_unit/mining{
+	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "En" = (
@@ -12535,9 +12537,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "JC" = (
@@ -12598,6 +12597,9 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
@@ -12700,19 +12702,12 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "Kf" = (
-/obj/structure/table/rack,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/helmet/space/void/mining,
-/obj/item/mining_scanner,
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 5
 	},
-/obj/item/tank/jetpack/oxygen,
 /obj/item/radio/intercom{
 	dir = 1;
 	name = "Station Intercom (General)";
@@ -12721,7 +12716,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/machinery/suit_storage_unit/mining{
+	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "Ki" = (
@@ -13488,15 +13485,16 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/freezer)
 "MM" = (
-/obj/item/clothing/suit/space/void,
-/obj/item/clothing/head/helmet/space/void,
-/obj/structure/table/rack,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/tank/jetpack/oxygen,
 /obj/machinery/light/small,
 /obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/item/suit_cooling_unit,
+/obj/machinery/suit_storage_unit/standard_unit,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "MO" = (
@@ -15077,6 +15075,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/refinery)
 "RA" = (
@@ -15686,14 +15687,11 @@
 /turf/simulated/floor/crystal,
 /area/station/stairs_two)
 "Tc" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/item/suit_cooling_unit,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/table/rack,
-/obj/item/tank/jetpack/oxygen,
-/obj/item/clothing/suit/space/void,
-/obj/item/clothing/head/helmet/space/void,
-/obj/item/suit_cooling_unit,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "Td" = (
@@ -17217,20 +17215,15 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/obj/structure/table/rack,
-/obj/item/clothing/head/helmet/space/void/mining,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/mining_scanner,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/item/tank/jetpack/oxygen,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/machinery/suit_storage_unit/mining{
+	boots_stored_TYPE = /obj/item/clothing/shoes/magbootsss
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "Xe" = (
@@ -18219,13 +18212,9 @@
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/eva)
 "ZN" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/effect/floor_decal/spline/fancy/wood,
-/turf/simulated/floor/wood,
-/area/station/stairs_two)
+/obj/item/clothing/shoes/magboots,
+/turf/simulated/floor/tiled,
+/area/triumph/surfacebase/mining_main/storage)
 "ZP" = (
 /obj/machinery/light_switch{
 	dir = 4;
@@ -27156,8 +27145,8 @@ rB
 GA
 TV
 ah
+Ky
 aH
-Is
 De
 Is
 Is
@@ -28437,7 +28426,7 @@ ym
 as
 eY
 li
-Js
+ZN
 Js
 yA
 eJ
@@ -35137,7 +35126,7 @@ DQ
 Et
 bg
 Rl
-ZN
+it
 MH
 bx
 Qk
