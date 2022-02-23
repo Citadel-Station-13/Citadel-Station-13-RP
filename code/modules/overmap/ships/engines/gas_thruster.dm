@@ -68,31 +68,34 @@
 
 	use_power = USE_POWER_OFF
 	power_channel = EQUIP
-	idle_power_usage = 21600 //6 Wh per tick for default 2 capacitor. Gives them a reason to turn it off, really to nerf backup battery
+	idle_power_usage = 1000
 
 	var/datum/ship_engine/gas_thruster/controller
 	var/thrust_limit = 1		//Value between 1 and 0 to limit the resulting thrust
 	var/volume_per_burn = 15	//20 litres(with bin)
-	var/charge_per_burn = 36000	//10Wh for default 2 capacitor, chews through that battery power! Makes a trade off of fuel efficient vs energy efficient
+	var/charge_per_burn = 3600
 	var/boot_time = 35
 	var/next_on
 	var/blockage
+	var/linked = FALSE
 
 /obj/machinery/atmospherics/unary/engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles(need_rebuild=1)
+	if(SSshuttle.subsystem_initialized)
+		link_to_ship()
 
-	//Disabling this "Broken" segment until someone can figure out why it's not accepting valid dirs and reporting broken.
-	/*
+/obj/machinery/atmospherics/unary/engine/proc/link_to_ship()
 	for(var/ship in SSshuttle.ships)
 		var/obj/effect/overmap/visitable/ship/S = ship
 		if(S.check_ownership(src))
 			S.engines |= controller
 			if(dir != S.fore_dir)
 				set_broken(TRUE)
-			break
-	*/
+			else
+				set_broken(FALSE)
+			linked = TRUE
 
 /obj/machinery/atmospherics/unary/engine/Destroy()
 	QDEL_NULL(controller)
@@ -103,18 +106,17 @@
 	. = list()
 	.+= "Location: [get_area(src)]."
 	if(stat & NOPOWER)
-		.+= "<span class='average'>Insufficient power to operate.</span>"
+		.+= list(list("Insufficient power to operate.", "bad"))
 	if(!check_fuel())
-		.+= "<span class='average'>Insufficient fuel for a burn.</span>"
+		.+= list(list("Insufficient fuel for a burn.", "bad"))
 	if(stat & BROKEN)
-		.+= "<span class='average'>Inoperable engine configuration.</span>"
+		.+= list(list("Inoperable engine configuration.", "bad"))
 	if(blockage)
-		.+= "<span class='average'>Obstruction of airflow detected.</span>"
+		.+= list(list("Obstruction of airflow detected.", "bad"))
 
 	.+= "Propellant total mass: [round(air_contents.get_mass(),0.01)] kg."
 	.+= "Propellant used per burn: [round(air_contents.get_mass() * volume_per_burn * thrust_limit / air_contents.volume,0.01)] kg."
 	.+= "Propellant pressure: [round(air_contents.return_pressure()/1000,0.1)] MPa."
-	. = jointext(.,"<br>")
 
 /obj/machinery/atmospherics/unary/engine/power_change()
 	. = ..()
@@ -150,7 +152,7 @@
 /obj/machinery/atmospherics/unary/engine/proc/burn()
 	if(!is_on())
 		return 0
-	if(!check_fuel() || (0 < use_power_oneoff(charge_per_burn)) || check_blockage())
+	if(!check_fuel() || (use_power_oneoff(charge_per_burn) < charge_per_burn) || check_blockage())
 		audible_message(src,"<span class='warning'>[src] coughs once and goes silent!</span>")
 		update_use_power(USE_POWER_OFF)
 		return 0
@@ -159,7 +161,7 @@
 	if(!removed)
 		return 0
 	. = calculate_thrust(removed)
-	playsound(loc, 'sound/machines/thruster.ogg', 100 * thrust_limit, 0, world.view * 4, 0.1)
+	playsound(src, 'sound/machines/thruster.ogg', 100 * thrust_limit, 0, world.view * 4, 0.1)
 	if(network)
 		network.update = 1
 
@@ -170,7 +172,7 @@
 		new/obj/effect/engine_exhaust(T, exhaust_dir, air_contents.check_combustability() && air_contents.temperature >= PHORON_MINIMUM_BURN_TEMPERATURE)
 
 /obj/machinery/atmospherics/unary/engine/proc/calculate_thrust(datum/gas_mixture/propellant, used_part = 1)
-	return round(sqrt(propellant.get_mass() * used_part * sqrt(air_contents.return_pressure()/200)),0.1)
+	return round((propellant.get_mass() * used_part * (air_contents.return_pressure()/200) ** 0.5) ** 0.85,0.1)
 
 /obj/machinery/atmospherics/unary/engine/RefreshParts()
 	..()
@@ -212,19 +214,6 @@
 		/obj/item/pipe = 2,
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/capacitor = 2)
-
-//Smaller Scale "nerfed" version for small ships/shuttles. Essentially a fusion of Ion stats with gas economy (hopefully).
-/obj/machinery/atmospherics/unary/engine/small
-	name = "small rocket nozzle"
-	desc = "A small rocket nozzle, expelling gas at hypersonic velocities to propel a shuttle or small vessel."
-
-	power_channel = EQUIP
-	idle_power_usage = 150
-
-	thrust_limit = 1		//Value between 1 and 0 to limit the resulting thrust
-	volume_per_burn = 50
-	charge_per_burn = 1000
-	boot_time = 10
 
 // Not Implemented - Variant that pulls power from cables.  Too complicated without bay's power components.
 // /obj/machinery/atmospherics/unary/engine/terminal

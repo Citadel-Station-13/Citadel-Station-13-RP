@@ -301,6 +301,10 @@ Swimsuits, for general use, to avoid arriving to work with your swimsuit.
 	name = "Sexy Captain capsule"
 	has_items = list(/obj/item/clothing/under/swimsuit/stripper/captain)
 
+/obj/item/storage/box/fluff/swimsuit/highclass
+	name = "High Class Swimsuit capsule"
+	has_items = list(/obj/item/clothing/under/swimsuit/highclass)
+
 //Monkey boxes for the new primals we have
 /obj/item/storage/box/monkeycubes/sobakacubes
 	name = "sobaka cube box"

@@ -14,19 +14,19 @@
 
 //Predefined materials go here.
 /obj/item/material/twohanded/baseballbat/metal/Initialize(mapload, material_key)
-	..(mapload,"steel")
+	return ..(mapload,"steel")
 
 /obj/item/material/twohanded/baseballbat/uranium/Initialize(mapload, material_key)
-	..(mapload,"uranium")
+	return ..(mapload,"uranium")
 
 /obj/item/material/twohanded/baseballbat/gold/Initialize(mapload, material_key)
-	..(mapload,"gold")
+	return ..(mapload,"gold")
 
 /obj/item/material/twohanded/baseballbat/platinum/Initialize(mapload, material_key)
-	..(mapload,"platinum")
+	return ..(mapload,"platinum")
 
 /obj/item/material/twohanded/baseballbat/diamond/Initialize(mapload, material_key)
-	..(mapload,"diamond")
+	return ..(mapload,"diamond")
 
 /obj/item/material/twohanded/baseballbat/penbat
 	name = "penetrator"

@@ -35,7 +35,7 @@
 	modifystate = "fm-2tstun"
 
 //	requires_two_hands = 1
-//	one_handed_penalty = 30
+	one_handed_penalty = 30
 
 	firemodes = list(
 		list(mode_name="stun", burst=1, projectile_type=/obj/item/projectile/beam/stun/weak, modifystate="fm-2tstun", charge_cost = 100),
@@ -59,7 +59,7 @@
 	modifystate = null
 
 //	requires_two_hands = 1
-//	one_handed_penalty = 15 // It's rather bulky, so holding it in one hand is a little harder than with two, however it's not 'required'.
+	one_handed_penalty = 5 // It's rather bulky, so holding it in one hand is a little harder than with two, however it's not 'required'.
 
 	firemodes = list(
 		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun, modifystate="nucgunstun", charge_cost = 240),

@@ -191,3 +191,6 @@
 	name = "pathfinder radio encryption key"
 	icon_state = "com_cypherkey"
 	channels = list("Supply" = 1, "Explorer" = 1, "Science" = 1)
+
+/obj/item/encryptionkey/talon
+	channels = list("Talon" = 1)

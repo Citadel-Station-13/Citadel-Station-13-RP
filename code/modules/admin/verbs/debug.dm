@@ -604,8 +604,6 @@
 	message_admins("<font color=#4F49AF>[key_name_admin(usr)] setup the supermatter engine  [response == "Setup except coolant" ? "without coolant": ""]</font>", 1)
 	return
 
-
-
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"
 	set name = "Debug Mob Lists"
@@ -624,15 +622,6 @@
 			to_chat(usr, jointext(dead_mob_list,","))
 		if("Clients")
 			to_chat(usr, jointext(GLOB.clients,","))
-
-/client/proc/cmd_debug_using_map()
-	set category = "Debug"
-	set name = "Debug Map Datum"
-	set desc = "Debug the map metadata about the currently compiled in map."
-
-	if(!check_rights(R_DEBUG))
-		return
-	debug_variables(GLOB.using_map)
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)

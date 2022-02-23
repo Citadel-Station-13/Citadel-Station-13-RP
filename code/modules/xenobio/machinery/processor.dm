@@ -8,15 +8,21 @@
 	icon_state = "processor1"
 	density = TRUE
 	anchored = TRUE
+	/// Autointaking
+	var/auto_mode = FALSE
 	var/processing = FALSE // So I heard you like processing.
 	var/list/to_be_processed = list()
 	var/monkeys_recycled = 0
-	description_info = "Clickdrag dead slimes or monkeys to it to insert them.  It will make a new monkey cube for every four monkeys it processes."
+	description_info = "Clickdrag dead slimes or monkeys to it to insert them.  It will make a new monkey cube for every four monkeys it processes. Alt click to enable auto-intake."
 
 /obj/item/circuitboard/processor
 	name = T_BOARD("slime processor")
 	build_path = /obj/machinery/processor
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
+
+/obj/machinery/processor/examine(mob/user)
+	. = ..()
+	. += "<span class='boldnotice'>The automatic intake switch is in the [auto_mode? "On" : "Off"] position.</span>"
 
 /obj/machinery/processor/attack_hand(mob/living/user)
 	if(processing)
@@ -30,6 +36,11 @@
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 
+/obj/machinery/processor/attackby(obj/item/W, mob/user, params, attack_modifier)
+	if(default_unfasten_wrench(user, W, 40))
+		return
+	return ..()
+
 // Verb to remove everything.
 /obj/machinery/processor/verb/eject()
 	set category = "Object"
@@ -42,6 +53,17 @@
 	add_fingerprint(usr)
 	return
 
+/obj/machinery/processor/AltClick(mob/user)
+	. = ..()
+	if(user.stat || user.incapacitated(INCAPACITATION_DISABLED) || !Adjacent(user))
+		return
+	auto_mode = !auto_mode
+	to_chat(user, "<span class='notice'>You turn the automatic intake [auto_mode? "On" : "Off"].</span>")
+	if(auto_mode)
+		START_PROCESSING(SSobj, src)
+	else
+		STOP_PROCESSING(SSobj, src)
+
 // Ejects all the things out of the machine.
 /obj/machinery/processor/proc/empty()
 	for(var/atom/movable/AM in to_be_processed)
@@ -50,7 +72,7 @@
 
 // Ejects all the things out of the machine.
 /obj/machinery/processor/proc/insert(var/atom/movable/AM, var/mob/living/user)
-	if(!Adjacent(AM))
+	if((!Adjacent(user) && !Adjacent(AM)) || !user.Adjacent(AM))
 		return
 	if(!can_insert(AM))
 		to_chat(user, "<span class='warning'>\The [src] cannot process \the [AM] at this time.</span>")
@@ -59,6 +81,21 @@
 	to_be_processed.Add(AM)
 	AM.forceMove(src)
 	visible_message("<span class='notice'>\the [user] places [AM] inside \the [src].</span>")
+
+/obj/machinery/processor/proc/auto_insert(atom/movable/AM)
+	if(!can_insert(AM) || !isturf(AM.loc))
+		return
+	to_be_processed.Add(AM)
+	AM.forceMove(src)
+	visible_message("<span class='notice'>[src] sucks up [AM].</span>")
+
+/obj/machinery/processor/process(delta_time)
+	if(!auto_mode)
+		return PROCESS_KILL
+	for(var/mob/living/simple_mob/slime/AM in range(1, src))
+		auto_insert(AM)
+	for(var/mob/living/carbon/human/AM in range(1, src))
+		auto_insert(AM)
 
 /obj/machinery/processor/proc/begin_processing()
 	if(processing)
@@ -98,6 +135,8 @@
 		sleep(1 SECOND)
 
 /obj/machinery/processor/proc/can_insert(var/atom/movable/AM)
+	if(AM.loc == src)
+		return FALSE
 	if(istype(AM, /mob/living/simple_mob/slime))
 		var/mob/living/simple_mob/slime/S = AM
 		if(S.stat != DEAD)

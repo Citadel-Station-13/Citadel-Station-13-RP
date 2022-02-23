@@ -10,8 +10,8 @@
 	icon_dead = "puddle"
 
 	faction = "neutral"
-	maxHealth = 200
-	health = 200
+	maxHealth = 250
+	health = 250
 	say_list_type = /datum/say_list/protean_blob
 
 	// ai_inactive = TRUE //Always off //VORESTATION AI TEMPORARY REMOVAL
@@ -23,7 +23,7 @@
 
 	harm_intent_damage = 2
 	melee_damage_lower = 10
-	melee_damage_upper = 15 // Mild increase to blob damage
+	melee_damage_upper = 10
 	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
 
 	aquatic_movement = 1
@@ -36,8 +36,14 @@
 	min_n2 = 0
 	max_n2 = 0
 	minbodytemp = 0
-	maxbodytemp = 900
-	movement_cooldown = 0
+	maxbodytemp = INFINITY
+	heat_resist = 1
+	cold_resist = 1
+	shock_resist = 0.9
+	poison_resist = 1
+
+	movement_cooldown = 0.5
+	base_attack_cooldown = 10
 
 	var/mob/living/carbon/human/humanform
 	var/obj/item/organ/internal/nano/refactory/refactory
@@ -94,9 +100,12 @@
 /mob/living/simple_mob/protean_blob/updatehealth()
 	if(humanform)
 		//Set the max
-		maxHealth = humanform.getMaxHealth() * 1.6 //As the base humanoid health was increased, the number was changed to make the maxhealth stay at 200
+		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
+		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
-		health = maxHealth - humanform.getOxyLoss() - humanform.getToxLoss() - humanform.getCloneLoss() - humanform.getActualFireLoss() - humanform.getActualBruteLoss()
+		health = maxHealth - E.brute_dam - E.burn_dam
+		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 35
+		base_attack_cooldown = 10 + max(0, (maxHealth - health) - 100) / 15
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -135,7 +144,7 @@
 
 /mob/living/simple_mob/protean_blob/adjustBruteLoss(var/amount,var/include_robo)
 	if(humanform)
-		humanform.adjustBruteLoss(amount)
+		humanform.adjustBruteLossByPart(amount, BP_TORSO)
 	else
 		..()
 
@@ -144,7 +153,7 @@
 
 /mob/living/simple_mob/protean_blob/adjustFireLoss(var/amount,var/include_robo)
 	if(humanform)
-		humanform.adjustFireLoss(amount)
+		humanform.adjustFireLossByPart(amount, BP_TORSO)
 	else
 		..()
 
@@ -177,18 +186,19 @@
 /mob/living/simple_mob/protean_blob/Life()
 	. = ..()
 	if(. && istype(refactory) && humanform)
-		if(!healing && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 100)
+		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= 100 && refactory.processingbuffs)
 			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
-		else if(healing && health == maxHealth)
-			healing.expire()
-			healing = null
+		else if(humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health >= maxHealth)
+			humanform.remove_a_modifier_of_type(/datum/modifier/protean/steelBlob)
 
 /mob/living/simple_mob/protean_blob/lay_down()
 	..()
 	if(resting)
+		to_chat(src, "<span class='warning'>You blend into the floor beneath you. <b>You will not be able to heal while doing so.</b></span>")
 		animate(src,alpha = 40,time = 1 SECOND)
 		mouse_opacity = 0
 	else
+		to_chat(src, "<span class='warning'>You get up from the floor.</span>")
 		mouse_opacity = 1
 		icon_state = "wake"
 		animate(src,alpha = 255,time = 1 SECOND)
@@ -268,6 +278,12 @@
 		get_scooped(H, TRUE)
 	else
 		return ..()
+
+/mob/living/simple_mob/protean_blob/emp_act(severity)
+	to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
+	to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
+	to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Navigation systems offline. Restarting...</span></font>")
+	return humanform.emp_act(severity)
 
 /mob/living/simple_mob/protean_blob/MouseEntered(location,control,params)
 	if(resting)
@@ -443,8 +459,6 @@
 	else
 		to_chat(src, "You are not in RIG form.")
 
-
-
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
@@ -508,6 +522,8 @@
 	//Return ourselves in case someone wants it
 	return src
 
+/mob/living/simple_mob/protean_blob/say_understands()
+	return humanform?.say_understands(arglist(args)) || ..()
 
 /mob/living/simple_mob/protean_blob/proc/appearanceswitch()
 	set name = "Switch Appearance"
@@ -526,6 +542,10 @@
 			icon_living = "puddle0"
 			update_icon()
 
+/mob/living/simple_mob/protean_blob/Login()
+	..()
+	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+
 /datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp/ventcrawling
 	name = "Protean Blob Effect - Steel"
 	desc = "You're affected by the presence of steel."
@@ -536,15 +556,23 @@
 	material_name = MAT_STEEL
 
 /datum/modifier/protean/steelBlob/tick()
-
 	..()
-	holder.adjustBruteLoss(-20 ,include_robo = TRUE) //This is for the blob-regen. As there's now non-blob regen, I've increased it to have a reason to blob other than ventcrawling
-	holder.adjustFireLoss(-7.7 ,include_robo = TRUE) // Both brute and burn are ~10/s for blob regen
-	holder.adjustToxLoss(-36) // Still keeping these in, for the just-in-case scenario
-	holder.radiation = max(holder.radiation - 90, 0)
-
-
+	if(holder.temporary_form?.resting)
+		return
+	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	var/heal = 5 * dt
+	var/brute_heal_left = max(0, heal - E.brute_dam)
+	var/burn_heal_left = max(0, heal - E.burn_dam)
+
+	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
+
+	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
+	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
+	holder.adjustToxLoss(-10)
+	holder.radiation = max(holder.radiation - 50, 0)
+
 	for(var/organ in H.internal_organs)
 		var/obj/item/organ/O = organ
 		// Fix internal damage

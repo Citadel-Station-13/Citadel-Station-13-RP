@@ -2,14 +2,20 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"b" = (
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/tether_away/beach/desert/poi/tomb)
 "c" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "d" = (
 /obj/random/mob/spider/nurse,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
+"e" = (
+/turf/simulated/wall/sandstone/classh,
+/area/tether_away/beach/desert/poi/tomb)
 "k" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -18,11 +24,11 @@
 	},
 /obj/item/clothing/ears/earring/dangle/glass,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "l" = (
 /turf/simulated/wall/sandstone,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/poi/tomb)
 "m" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -30,21 +36,21 @@
 	lit = 1
 	},
 /obj/item/clothing/accessory/necklace,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "n" = (
 /turf/simulated/mineral/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "o" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "p" = (
 /obj/random/mob/spider,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "q" = (
 /turf/simulated/wall/sandstone/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "w" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -53,11 +59,8 @@
 	},
 /obj/item/clothing/gloves/ring/material/iron,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
-"E" = (
-/turf/simulated/wall/sandstonediamond/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "H" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -65,28 +68,24 @@
 	lit = 1
 	},
 /obj/item/clothing/ears/earring/stud/steel,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "K" = (
 /mob/living/simple_mob/animal/giant_spider,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "L" = (
-/obj/effect/floor_decal/plaque{
-	desc = "The carving that used to be here has worn beyond any recoginition.";
-	name = "dusty plaque"
-	},
 /turf/simulated/wall/sandstonediamond/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/poi/tomb)
 "N" = (
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "O" = (
 /obj/structure/table/marble,
 /obj/effect/decal/remains/mummy2,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "S" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -95,13 +94,13 @@
 	},
 /obj/item/clothing/ears/skrell/chain,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "T" = (
 /obj/structure/table/marble,
 /obj/effect/decal/remains/mummy1,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "U" = (
 /obj/structure/table/marble,
 /obj/item/flame/candle/candelabra/everburn{
@@ -109,26 +108,26 @@
 	lit = 1
 	},
 /obj/item/clothing/gloves/ring/material/silver,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "W" = (
 /turf/simulated/wall/sandstone/classh{
 	can_open = 1
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/poi/tomb)
 "X" = (
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "Y" = (
 /obj/random/mob/spider/mutant,
 /obj/effect/spider/stickyweb,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 "Z" = (
 /obj/effect/decal/remains/mummy1,
 /obj/random/multiple/treasure,
-/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/wmarble,
+/area/tether_away/beach/desert/poi/tomb)
 
 (1,1,1) = {"
 a
@@ -181,15 +180,15 @@ n
 n
 l
 l
-q
-q
-E
+e
+e
 L
-E
-q
-q
-q
-q
+L
+L
+e
+e
+e
+e
 n
 n
 n
@@ -203,7 +202,7 @@ n
 n
 l
 Z
-q
+e
 Y
 N
 X
@@ -211,7 +210,7 @@ N
 Y
 W
 Z
-q
+e
 n
 n
 n
@@ -221,19 +220,19 @@ o
 (5,1,1) = {"
 n
 n
-q
-q
-q
+e
+e
+e
 W
-q
+e
 N
 U
 O
 k
 N
-q
-q
-q
+e
+e
+e
 n
 n
 n
@@ -243,17 +242,17 @@ q
 (6,1,1) = {"
 n
 n
-q
+e
 N
 N
 d
-q
+e
 X
 X
 K
 X
 N
-q
+e
 n
 n
 n
@@ -265,19 +264,19 @@ c
 (7,1,1) = {"
 n
 n
-E
+L
 N
 S
 X
-q
-q
+e
+e
 X
 X
-q
-q
-q
-q
-q
+e
+e
+e
+e
+e
 o
 q
 c
@@ -287,7 +286,7 @@ o
 (8,1,1) = {"
 n
 n
-E
+L
 N
 T
 X
@@ -299,7 +298,7 @@ p
 X
 X
 X
-c
+b
 c
 c
 c
@@ -309,7 +308,7 @@ c
 (9,1,1) = {"
 n
 n
-E
+L
 X
 T
 X
@@ -331,19 +330,19 @@ o
 (10,1,1) = {"
 a
 n
-E
+L
 N
 m
 X
-q
-q
+e
+e
 X
 X
-q
-q
-q
-q
-q
+e
+e
+e
+e
+e
 o
 q
 c
@@ -353,17 +352,17 @@ o
 (11,1,1) = {"
 a
 n
-q
+e
 N
 N
 d
-q
+e
 N
 K
 X
 X
 K
-q
+e
 n
 n
 o
@@ -375,17 +374,17 @@ c
 (12,1,1) = {"
 a
 n
-q
-q
-q
-q
-q
+e
+e
+e
+e
+e
 N
 w
 O
 H
 X
-q
+e
 n
 n
 n
@@ -401,13 +400,13 @@ n
 n
 n
 n
-q
+e
 N
 Y
 X
 X
 Y
-q
+e
 n
 n
 n
@@ -423,13 +422,13 @@ n
 n
 n
 n
-q
-q
-E
+e
+e
 L
-E
-q
-q
+L
+L
+e
+e
 n
 n
 n

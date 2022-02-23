@@ -1,13 +1,34 @@
 /obj/item/gunbox
-	name = "security sidearm box"
-	desc = "A secure box containing a security sidearm."
+	name = "security sidearm box (standard)"
+	desc = "A secure box containing a security LTL sidearm."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "gunbox"
 
 /obj/item/gunbox/attack_self(mob/living/user)
 	var/list/options = list()
-	options["M1911 Dynamic (.45)"] = list(/obj/item/gun/projectile/colt/detective, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/rubber)
-	//options["NT Mk58 (.45)"] = list(/obj/item/gun/projectile/sec, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/rubber)
+	options["NT Mk58 (.45)"] = list(/obj/item/gun/projectile/sec, /obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash)
 	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/projectile/revolver/detective45, /obj/item/ammo_magazine/s45/rubber, /obj/item/ammo_magazine/s45/rubber)
-	options["P92X (9mm)"] = list(/obj/item/gun/projectile/p92x/sec, /obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/rubber)
+	options["P92X (9mm)"] = list(/obj/item/gun/projectile/p92x/sec, /obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
+	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
+	if(src && choice)
+		var/list/things_to_spawn = options[choice]
+		for(var/new_type in things_to_spawn) // Spawn all the things, the gun and the ammo.
+			var/atom/movable/AM = new new_type(get_turf(src))
+			if(istype(AM, /obj/item/gun))
+				to_chat(user, "You have chosen \the [AM]. Say hello to your new friend.")
+		qdel(src)
+
+/obj/item/gunbox/lethal
+	name = "security sidearm box (lethal)"
+	desc = "A secure box containing a lethal security sidearm."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "gunbox"
+
+/obj/item/gunbox/lethal/attack_self(mob/living/user)
+	var/list/options = list()
+	options["M1911 Dynamic (.45)"] = list(/obj/item/gun/projectile/colt, /obj/item/ammo_magazine/m45, /obj/item/ammo_magazine/m45)
+	options["SW 625 Revolver (.45)"] = list(/obj/item/gun/projectile/revolver/detective45, /obj/item/ammo_magazine/s45, /obj/item/ammo_magazine/s45)
+	options["P92X (9mm)"] = list(/obj/item/gun/projectile/p92x, /obj/item/ammo_magazine/m9mm, /obj/item/ammo_magazine/m9mm)
 	var/choice = input(user,"Would you prefer a pistol or a revolver?") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]

@@ -7,110 +7,124 @@
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "e" = (
 /obj/structure/closet/coffin,
-/obj/item/digestion_remains/skull,
-/obj/item/digestion_remains/ribcage,
 /obj/item/clothing/gloves/ring/material/gold,
 /obj/item/clothing/ears/earring/stud/silver,
 /obj/item/clothing/ears/skrell/chain/bluejewels,
 /obj/item/coin/gold,
 /obj/item/coin/gold,
 /obj/item/coin/gold,
+/obj/item/bone/ribs,
+/obj/item/bone/skull,
+/obj/item/bone/arm,
+/obj/item/bone/arm,
+/obj/item/bone/leg,
+/obj/item/bone/leg,
 /turf/simulated/floor/wmarble,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "i" = (
 /obj/structure/fence/corner{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
+"j" = (
+/obj/structure/fence/door/locked{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/tether_away/beach/desert/poi/graveyard)
 "k" = (
 /obj/structure/fence/door/locked{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "l" = (
 /obj/structure/fence/cut/large{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "n" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wmarble,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "s" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "v" = (
 /obj/structure/fence/corner,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "y" = (
 /obj/structure/closet/coffin,
-/obj/item/digestion_remains/skull,
-/obj/item/digestion_remains/ribcage,
 /obj/item/clothing/gloves/ring/material/silver,
 /obj/item/clothing/ears/earring/dangle/platinum,
 /obj/item/clothing/ears/skrell/chain/redjewels,
 /obj/item/coin/gold,
 /obj/item/coin/gold,
 /obj/item/coin/gold,
+/obj/item/bone/ribs,
+/obj/item/bone/skull,
+/obj/item/bone/arm,
+/obj/item/bone/arm,
+/obj/item/bone/leg,
+/obj/item/bone/leg,
 /turf/simulated/floor/wmarble,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "C" = (
 /obj/structure/fence/corner{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "D" = (
 /obj/item/material/gravemarker{
 	material = MAT_WOOD
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "F" = (
 /obj/item/flame/lighter/zippo/engraved,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "H" = (
 /turf/simulated/wall/sandstone/classh,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "K" = (
 /obj/structure/fence{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "O" = (
 /obj/structure/fence/cut/large{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "T" = (
 /obj/item/shovel,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "U" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "X" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 "Y" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/POIs/graveyard)
+/area/tether_away/beach/desert/poi/graveyard)
 
 (1,1,1) = {"
 a
@@ -155,7 +169,7 @@ K
 K
 K
 K
-K
+j
 K
 K
 K
@@ -325,7 +339,7 @@ K
 K
 K
 K
-K
+j
 K
 K
 K

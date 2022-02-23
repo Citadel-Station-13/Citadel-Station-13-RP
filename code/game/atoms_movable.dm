@@ -50,6 +50,12 @@
 	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 
+	var/cloaked = FALSE //If we're cloaked or not
+	var/image/cloaked_selfimage //The image we use for our client to let them see where we are
+
+	///Reference to atom being orbited
+	var/atom/orbit_target
+
 /atom/movable/Destroy()
 	. = ..()
 	if(reagents)
@@ -304,7 +310,7 @@
 
 //Called when touching a blood pool.
 /atom/movable/proc/blood_act()
-	acid_act(null, 500, 50)
+	blood_act(null, 500, 50)
 
 /**
   * Sets our movement type.
@@ -324,3 +330,126 @@
 	. = ..()
 	if(riding_datum)
 		riding_datum.handle_ride(user, direction)
+
+// Procs to cloak/uncloak
+/atom/movable/proc/cloak()
+	if(cloaked)
+		return FALSE
+	cloaked = TRUE
+	. = TRUE // We did work
+
+	var/static/animation_time = 1 SECOND
+	cloaked_selfimage = get_cloaked_selfimage()
+
+	//Wheeee
+	cloak_animation(animation_time)
+
+	//Needs to be last so people can actually see the effect before we become invisible
+	if(cloaked) // Ensure we are still cloaked after the animation delay
+		plane = CLOAKED_PLANE
+
+/atom/movable/proc/uncloak()
+	if(!cloaked)
+		return FALSE
+	cloaked = FALSE
+	. = TRUE // We did work
+
+	var/static/animation_time = 1 SECOND
+	QDEL_NULL(cloaked_selfimage)
+
+	//Needs to be first so people can actually see the effect, so become uninvisible first
+	plane = initial(plane)
+
+	//Oooooo
+	uncloak_animation(animation_time)
+
+
+// Animations for cloaking/uncloaking
+/atom/movable/proc/cloak_animation(var/length = 1 SECOND)
+	//Save these
+	var/initial_alpha = alpha
+
+	//Animate alpha fade
+	animate(src, alpha = 0, time = length)
+
+	//Animate a cloaking effect
+	var/our_filter = filters.len+1 //Filters don't appear to have a type that can be stored in a var and accessed. This is how the DM reference does it.
+	filters += filter(type="wave", x = 0, y = 16, size = 0, offset = 0, flags = WAVE_SIDEWAYS)
+	animate(filters[our_filter], offset = 1, size = 8, time = length, flags = ANIMATION_PARALLEL)
+
+	//Wait for animations to finish
+	sleep(length+5)
+
+	//Remove those
+	filters -= filter(type="wave", x = 0, y = 16, size = 8, offset = 1, flags = WAVE_SIDEWAYS)
+
+	//Back to original alpha
+	alpha = initial_alpha
+
+/atom/movable/proc/uncloak_animation(var/length = 1 SECOND)
+	//Save these
+	var/initial_alpha = alpha
+
+	//Put us back to normal, but no alpha
+	alpha = 0
+
+	//Animate alpha fade up
+	animate(src, alpha = initial_alpha, time = length)
+
+	//Animate a cloaking effect
+	var/our_filter = filters.len+1 //Filters don't appear to have a type that can be stored in a var and accessed. This is how the DM reference does it.
+	filters += filter(type="wave", x=0, y = 16, size = 8, offset = 1, flags = WAVE_SIDEWAYS)
+	animate(filters[our_filter], offset = 0, size = 0, time = length, flags = ANIMATION_PARALLEL)
+
+	//Wait for animations to finish
+	sleep(length+5)
+
+	//Remove those
+	filters -= filter(type="wave", x=0, y = 16, size = 0, offset = 0, flags = WAVE_SIDEWAYS)
+
+
+// So cloaked things can see themselves, if necessary
+/atom/movable/proc/get_cloaked_selfimage()
+	var/icon/selficon = icon(icon, icon_state)
+	selficon.MapColors(0,0,0, 0,0,0, 0,0,0, 1,1,1) //White
+	var/image/selfimage = image(selficon)
+	selfimage.color = "#0000FF"
+	selfimage.alpha = 100
+	selfimage.layer = initial(layer)
+	selfimage.plane = initial(plane)
+	selfimage.loc = src
+
+	return selfimage
+
+/atom/movable/proc/get_cell()
+	return
+
+/atom/movable/proc/ghost_tag(text)
+	var/atom/movable/ghost_tag_container/G = locate() in vis_contents
+	if(!length(text) || !istext(text))
+		if(G)
+			qdel(G)
+		return
+	if(!G)
+		G = new(src)
+	G.master = src
+	// for the love of god macro this when we get runechat
+	G.maptext = "<center><span style=\"font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1;\">[text]</span></center>"
+	G.maptext_height = 256
+	G.maptext_width = 256
+	G.maptext_x = -128 + (world.icon_size * 0.5)
+	G.maptext_y = 32
+	G.plane = PLANE_GHOSTS
+	vis_contents += G
+	if(G.loc != src)
+		G.forceMove(src)
+	return G
+
+/atom/movable/ghost_tag_container
+	var/atom/movable/master
+
+/atom/movable/ghost_tag_container/Destroy()
+	if(istype(master))
+		master.vis_contents -= src
+		master = null
+	return ..()

@@ -34,6 +34,7 @@
 		new /datum/data/mining_equipment("Digital Tablet - Advanced",	/obj/item/modular_computer/tablet/preset/custom_loadout/advanced,	100),
 		new /datum/data/mining_equipment("Nanopaste Tube",				/obj/item/stack/nanopaste,											100),
 		new /datum/data/mining_equipment("Mini-Translocator",			/obj/item/perfect_tele/one_beacon,							120),
+		new /datum/data/mining_equipment("AR-V Glasses",			/obj/item/clothing/glasses/omnihud/exp,                         350),
 		new /datum/data/mining_equipment("Space Cash",					/obj/item/spacecash/c100,									100),
 		new /datum/data/mining_equipment("Jump Boots",					/obj/item/clothing/shoes/bhop,										250),
 		new /datum/data/mining_equipment("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,							310),

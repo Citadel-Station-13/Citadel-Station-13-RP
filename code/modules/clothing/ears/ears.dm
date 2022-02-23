@@ -15,7 +15,7 @@
 	var/headphones_on = 0
 	icon_state = "headphones_off"
 	item_state_slots = list(slot_r_hand_str = "headphones", slot_l_hand_str = "headphones")
-	slot_flags = SLOT_EARS | SLOT_TWOEARS
+	slot_flags = SLOT_EARS
 
 /obj/item/clothing/ears/earmuffs/headphones/verb/togglemusic()
 	set name = "Toggle Headphone Music"
@@ -37,6 +37,13 @@
 
 	update_clothing_icon()
 
+/obj/item/clothing/ears/earmuffs/headphones/AltClick(mob/user)
+	if(!Adjacent(user))
+		return
+	else if(!headphones_on)
+		togglemusic()
+	else
+		togglemusic()
 /*
 	Skrell tentacle wear
 */

@@ -22,6 +22,7 @@
 		"uranium" = /obj/item/ore/uranium,
 		"gold" = /obj/item/ore/gold,
 		"silver" = /obj/item/ore/silver,
+		"copper" = /obj/item/ore/copper,
 		"diamond" = /obj/item/ore/diamond,
 		"phoron" = /obj/item/ore/phoron,
 		"osmium" = /obj/item/ore/osmium,
@@ -310,7 +311,7 @@
 	var/obj/structure/ore_box/B = locate() in orange(1)
 	if(B)
 		for(var/obj/item/ore/O in contents)
-			O.loc = B
+			B.take(O)
 		to_chat(usr, "<span class='notice'>You unload the drill's storage cache into the ore box.</span>")
 	else
 		to_chat(usr, "<span class='notice'>You must move an ore box up to the drill before you can unload it.</span>")

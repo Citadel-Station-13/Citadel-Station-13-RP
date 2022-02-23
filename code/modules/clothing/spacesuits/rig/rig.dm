@@ -85,7 +85,7 @@
 	var/offline_slowdown = 3                                  // If the suit is deployed and unpowered, it sets slowdown to this.
 	var/vision_restriction
 	var/offline_vision_restriction = 1                        // 0 - none, 1 - welder vision, 2 - blind. Maybe move this to helmets.
-	var/airtight = 1 //If set, will adjust AIRTIGHT flag and pressure protections on components. Otherwise it should leave them untouched.
+	var/airtight = 1 //If set, will adjust ALLOWINTERNALS flag and pressure protections on components. Otherwise it should leave them untouched.
 	var/rigsuit_max_pressure = 10 * ONE_ATMOSPHERE			  // Max pressure the rig protects against when sealed
 	var/rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
 
@@ -96,6 +96,13 @@
 	var/datum/wires/rig/wires
 	var/datum/effect_system/spark_spread/spark_system
 	var/datum/mini_hud/rig/minihud
+
+	//Traps, too.
+	var/isTrapped = 0 //Will it lock you in?
+	var/trapSprung = 0 //Don't define this one. It's if it's procced.
+	var/springtrapped = 0 //Will it cause severe bodily harm?
+	var/trapDelay = 300 //in deciseconds
+	var/warn = 1 //If the suit will warn you if it can't deploy a part. Will always end back at 1.
 
 /obj/item/rig/get_cell()
 	return cell
@@ -219,17 +226,20 @@
 	if(seal == 1)
 		piece.min_pressure_protection = rigsuit_min_pressure
 		piece.max_pressure_protection = rigsuit_max_pressure
-		piece.item_flags |= AIRTIGHT
+		piece.item_flags |= ALLOWINTERNALS
 	else
 		piece.min_pressure_protection = null
 		piece.max_pressure_protection = null
-		piece.item_flags &= ~AIRTIGHT
+		piece.item_flags &= ~ALLOWINTERNALS
 	return
 
 
 /obj/item/rig/proc/reset()
 	offline = 2
 	canremove = 1
+	//Reset the trap and upgrade it. Won't affect standard rigs.
+	trapSprung = 0
+	springtrapped = 1
 	for(var/obj/item/piece in list(helmet,boots,gloves,chest))
 		if(!piece) continue
 		piece.icon_state = "[suit_state]"
@@ -237,12 +247,57 @@
 			update_airtight(piece, 0) // Unseal
 	update_icon(1)
 
+/obj/item/rig/proc/trap(var/mob/living/carbon/human/M)
+	warn = 0
+	sleep(trapDelay)
+	if(!suit_is_deployed())//Check if it's deployed. Interrupts taking it off.
+		toggle_piece("helmet", M, ONLY_DEPLOY)
+		toggle_piece("gauntlets", M, ONLY_DEPLOY)
+		toggle_piece("chest", M, ONLY_DEPLOY)
+		toggle_piece("boots", M, ONLY_DEPLOY)
+		if(suit_is_deployed())
+			playsound(src.loc, 'sound/weapons/empty.ogg', 40, 1)
+			to_chat(M, "<span class='warning'>[src] makes a distinct clicking noise.")
+			trapSprung = 1
+		else
+			trap(M)
+			warn = 1
+	else
+		trap(M)
+		warn = 1
+
+/obj/item/rig/proc/springtrap(var/mob/living/carbon/human/M)
+	warn = 0
+	sleep(trapDelay)
+	if(!suit_is_deployed())
+		toggle_piece("helmet", M, ONLY_DEPLOY)
+		toggle_piece("gauntlets", M, ONLY_DEPLOY)
+		toggle_piece("chest", M, ONLY_DEPLOY)
+		toggle_piece("boots", M, ONLY_DEPLOY)
+		if(suit_is_deployed())
+			M.adjustBruteLossByPart(70, BP_TORSO)
+			for(var/harm = 8; harm > 0; harm--)
+				M.adjustBruteLoss(10)
+			playsound(src.loc, 'sound/weapons/gunshot_generic_rifle.ogg', 40, 1)
+			to_chat(M, "<span class ='userdanger'>[src] clamps down hard, support rods and wires shooting forth, piercing you all over!")
+			trapSprung = 1
+		else
+			springtrap(M)
+			warn = 1
+	else
+		springtrap(M)
+		warn = 1
+
 /obj/item/rig/proc/toggle_seals(var/mob/living/carbon/human/M,var/instant)
 
 	if(sealing) return
 
 	if(!check_power_cost(M))
 		return 0
+
+	if(trapSprung == 1)
+		to_chat(M, "<span class='warning'>The [src] doesn't respond to your inputs.")
+		return
 
 	deploy(M,instant)
 
@@ -358,6 +413,11 @@
 	spawn(40)
 		M.client.screen -= booting_R
 		qdel(booting_R)
+
+	if(isTrapped == 1 && springtrapped == 1)
+		springtrap(M)
+	if(isTrapped == 1 && springtrapped == 0)
+		trap(M)
 
 	if(canremove)
 		for(var/obj/item/rig_module/module in installed_modules)
@@ -769,6 +829,10 @@
 	if(usr == wearer && (usr.stat||usr.paralysis||usr.stunned)) // If the usr isn't wearing the suit it's probably an AI.
 		return
 
+	if(trapSprung == 1)
+		to_chat(H, "<span class='warning'>The [src] doesn't respond to your inputs.")
+		return
+
 	var/obj/item/check_slot
 	var/equip_to
 	var/obj/item/use_obj
@@ -817,7 +881,7 @@
 			use_obj.forceMove(H)
 			if(!H.equip_to_slot_if_possible(use_obj, equip_to, 0, 1))
 				use_obj.forceMove(src)
-				if(check_slot)
+				if(check_slot && warn == 1)
 					to_chat(H, "<span class='danger'>You are unable to deploy \the [piece] as \the [check_slot] [check_slot.gender == PLURAL ? "are" : "is"] in the way.</span>")
 					return
 			else

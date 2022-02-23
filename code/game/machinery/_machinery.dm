@@ -108,6 +108,7 @@ Class Procs:
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
 	var/power_channel = EQUIP //EQUIP, ENVIRON or LIGHT
+	var/power_init_complete = FALSE
 	var/list/component_parts = null //list of all the parts used to build it, if made from certain kinds of frames.
 	var/uid
 	var/panel_open = 0
@@ -157,8 +158,7 @@ Class Procs:
 	return ..()
 
 /obj/machinery/process(delta_time)//If you dont use process or power why are you here
-	if(!(use_power || idle_power_usage || active_power_usage))
-		return PROCESS_KILL
+	return PROCESS_KILL
 
 /obj/machinery/emp_act(severity)
 	if(use_power && stat == 0)
@@ -191,18 +191,20 @@ Class Procs:
 		else
 	return
 
-//sets the use_power var and then forces an area power update
-/obj/machinery/proc/update_use_power(var/new_use_power)
-	use_power = new_use_power
-
-/obj/machinery/proc/auto_use_power()
-	if(!powered(power_channel))
-		return 0
-	if(use_power == USE_POWER_IDLE)
-		use_power(idle_power_usage, power_channel, 1)
-	else if(use_power >= USE_POWER_ACTIVE)
-		use_power(active_power_usage, power_channel, 1)
-	return 1
+/obj/machinery/vv_edit_var(var/var_name, var/new_value)
+	if(var_name == NAMEOF(src, use_power))
+		update_use_power(new_value)
+		return TRUE
+	else if(var_name == NAMEOF(src, power_channel))
+		update_power_channel(new_value)
+		return TRUE
+	else if(var_name == NAMEOF(src, idle_power_usage))
+		update_idle_power_usage(new_value)
+		return TRUE
+	else if(var_name == NAMEOF(src, active_power_usage))
+		update_active_power_usage(new_value)
+		return TRUE
+	return ..()
 
 /obj/machinery/proc/operable(var/additional_flags = 0)
 	return !inoperable(additional_flags)

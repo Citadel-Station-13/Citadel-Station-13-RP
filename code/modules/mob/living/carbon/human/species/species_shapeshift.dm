@@ -12,8 +12,9 @@ var/list/wrapped_species_by_ref = list()
 		)
 
 	var/list/valid_transform_species = list()
-	var/monochromatic
+	var/monochromatic = FALSE
 	var/default_form = SPECIES_HUMAN
+	var/heal_rate = 0
 
 /datum/species/shapeshifter/get_valid_shapeshifter_forms(var/mob/living/carbon/human/H)
 	return valid_transform_species
@@ -183,7 +184,7 @@ var/list/wrapped_species_by_ref = list()
 
 	last_special = world.time + 50
 
-	var/new_skin = input("Please select a new body color.", "Shapeshifter Colour") as color
+	var/new_skin = input(usr, "Please select a new body color.", "Shapeshifter Colour", rgb(r_skin, g_skin, b_skin)) as color|null
 	if(!new_skin)
 		return
 	shapeshifter_set_colour(new_skin)
@@ -221,15 +222,15 @@ var/list/wrapped_species_by_ref = list()
 
 	last_special = world.time + 50
 
-	var/new_hair = input("Please select a new hair color.", "Hair Colour") as color
+	var/new_hair = input(usr, "Please select a new hair color.", "Hair Colour", rgb(r_hair, g_hair, b_hair)) as color|null
 	if(!new_hair)
 		return
 	shapeshifter_set_hair_color(new_hair)
-	var/new_grad = input("Please select a new hair gradient color.", "Hair Gradient Colour") as color
+	var/new_grad = input(usr, "Please select a new hair gradient color.", "Hair Gradient Colour", rgb(r_grad, g_grad, b_grad)) as color|null
 	if(!new_grad)
 		return
 	shapeshifter_set_grad_color(new_grad)
-	var/new_fhair = input("Please select a new facial hair color.", "Facial Hair Color") as color
+	var/new_fhair = input(usr, "Please select a new facial hair color.", "Facial Hair Color", rgb(r_facial, g_facial, b_facial)) as color|null
 	if(!new_fhair)
 		return
 	shapeshifter_set_facial_color(new_fhair)
@@ -493,3 +494,41 @@ var/list/wrapped_species_by_ref = list()
 	visible_message("<span class='notice'>\The [src]'s interal composition seems to change.</span>")
 	update_icons_body()
 
+/datum/species/shapeshifter/handle_environment_special(var/mob/living/carbon/human/H)
+/* VOREStation Removal - Too crazy with our uncapped hunger and slowdown stuff.
+	var/turf/T = H.loc
+	if(istype(T))
+		var/obj/effect/decal/cleanable/C = locate() in T
+		if(C && !(H.shoes || (H.wear_suit && (H.wear_suit.body_parts_covered & FEET))))
+			qdel(C)
+			if (istype(T, /turf/simulated))
+				var/turf/simulated/S = T
+				S.dirt = 0
+
+			H.nutrition = min(500, max(0, H.nutrition + rand(15, 30)))
+VOREStation Removal End */
+	// Heal remaining damage.
+	if(H.fire_stacks >= 0 && heal_rate > 0)
+		if(H.getBruteLoss() || H.getFireLoss() || H.getOxyLoss() || H.getToxLoss())
+			var/nutrition_cost = 0
+			var/nutrition_debt = H.getBruteLoss()
+			var/starve_mod = 1
+			if(H.nutrition <= 25)
+				starve_mod = 0.75
+			H.adjustBruteLoss(-heal_rate * starve_mod)
+			nutrition_cost += nutrition_debt - H.getBruteLoss()
+
+			nutrition_debt = H.getFireLoss()
+			H.adjustFireLoss(-heal_rate * starve_mod)
+			nutrition_cost += nutrition_debt - H.getFireLoss()
+
+			nutrition_debt = H.getOxyLoss()
+			H.adjustOxyLoss(-heal_rate * starve_mod)
+			nutrition_cost += nutrition_debt - H.getOxyLoss()
+
+			nutrition_debt = H.getToxLoss()
+			H.adjustToxLoss(-heal_rate * starve_mod)
+			nutrition_cost += nutrition_debt - H.getToxLoss()
+			H.nutrition -= (2 * nutrition_cost) //Costs Nutrition when damage is being repaired, corresponding to the amount of damage being repaired.
+			H.nutrition = max(0, H.nutrition) //Ensure it's not below 0.
+	..()

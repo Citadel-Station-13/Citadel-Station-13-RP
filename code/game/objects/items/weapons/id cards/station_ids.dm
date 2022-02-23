@@ -119,7 +119,7 @@
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
-	var/datum/job/J = SSjobs.GetJob(rank)
+	var/datum/job/J = SSjob.get_job(rank)
 	if(J)
 		access = J.get_access()
 
@@ -338,7 +338,7 @@
 	name = "xenobiologist ID"
 	assignment = "Xenobiologist"
 	rank = "Xenobiologist"
-	job_access_type = /datum/job/xenobiologist
+	job_access_type = /datum/job/scientist // /datum/job/xenobiologist
 
 /obj/item/card/id/science/roboticist
 	name = "roboticist ID"

@@ -59,6 +59,7 @@
 		bitesize = 1+round(reagents.total_volume / 2, 1)
 	if(seed.get_trait(TRAIT_STINGS))
 		force = 1
+	catalogue_data = seed.catalog_data_grown
 
 /obj/item/reagent_containers/food/snacks/grown/proc/update_desc()
 
@@ -161,7 +162,8 @@
 				var/mob/living/carbon/human/H = M
 				if(H.shoes && H.shoes.item_flags & NOSLIP)
 					return
-
+				if(H.flags & NO_SLIP)//Species that dont slip naturally
+					return
 			M.stop_pulling()
 			to_chat(M, "<span class='notice'>You slipped on the [name]!</span>")
 			playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)

@@ -24,6 +24,11 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/obj/screen/meson
 	var/obj/screen/science
 	var/obj/screen/material
+	var/obj/screen/yellow
+	var/obj/screen/blue
+	var/obj/screen/pink
+	var/obj/screen/beige
+	var/obj/screen/orange
 	var/obj/screen/holomap
 
 /datum/global_hud/proc/setup_overlay(var/icon_state)
@@ -79,6 +84,11 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	meson = setup_overlay("meson_hud")
 	science = setup_overlay("science_hud")
 	material = setup_overlay("material_hud")
+	yellow = setup_overlay("yellow_hud")
+	blue = setup_overlay("blue_hud")
+	pink = setup_overlay("pink_hud")
+	beige = setup_overlay("beige_hud")
+	orange = setup_overlay("orange_hud")
 
 	// The holomap screen object is actually totally invisible.
 	// Station maps work by setting it as an images location before sending to client, not
@@ -169,6 +179,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/obj/screen/action_intent
 	var/obj/screen/move_intent
 
+	var/list/static_inventory = list() //the screen objects which are static
+
 	var/list/adding
 	var/list/other
 	var/list/miniobjs
@@ -177,6 +189,11 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
 	var/list/slot_info
+
+	// pending hardsync
+	var/icon/ui_style
+	var/ui_color
+	var/ui_alpha
 
 	var/list/minihuds = list()
 
@@ -206,6 +223,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 //	item_action_list = null // ?
 	mymob = null
 	minihuds = null
+
+	QDEL_LIST(static_inventory)
 
 /datum/hud/proc/hidden_inventory_update()
 	if(!mymob) return
@@ -296,9 +315,9 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 /datum/hud/proc/instantiate()
 	if(!ismob(mymob)) return 0
 	if(!mymob.client) return 0
-	var/ui_style = ui_style2icon(mymob.client.prefs.UI_style)
-	var/ui_color = mymob.client.prefs.UI_style_color
-	var/ui_alpha = mymob.client.prefs.UI_style_alpha
+	ui_style = ui_style2icon(mymob.client.prefs.UI_style)
+	ui_color = mymob.client.prefs.UI_style_color
+	ui_alpha = mymob.client.prefs.UI_style_alpha
 
 	if(ishuman(mymob))
 		human_hud(ui_style, ui_color, ui_alpha, mymob) // Pass the player the UI style chosen in preferences

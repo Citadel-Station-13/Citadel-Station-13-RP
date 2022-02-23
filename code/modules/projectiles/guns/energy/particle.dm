@@ -39,6 +39,7 @@
 	battery_lock = 1
 	recharge_time = 6 // every 6 ticks, recharge 2 shots. Slightly slower than AEG.
 	charge_delay = 10 //Starts recharging faster after firing than an AEG though.
+	one_handed_penalty = 15
 
 /obj/item/gun/energy/particle/cannon //particle version of laser cannon
 	name = "Anti-particle cannon"
@@ -53,7 +54,7 @@
 	fire_delay = 15 // fires faster than a laser cannon. c'mon, it's an awesome-but-impractical endgame gun.
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	force = 10
-	one_handed_penalty = 8 // The thing's heavy and huge.
+	one_handed_penalty = 60 // The thing's heavy and huge.
 	accuracy = 70
 	charge_cost = 400 // 6 shots
 	self_recharge = 1

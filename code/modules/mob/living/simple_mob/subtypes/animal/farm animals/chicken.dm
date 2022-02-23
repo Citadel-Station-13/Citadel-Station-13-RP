@@ -1,6 +1,37 @@
 GLOBAL_VAR_CONST(MAX_CHICKENS, 50)	// How many chickens CAN we have?
 GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 
+/datum/category_item/catalogue/fauna/livestock
+	name = "Livestock"
+	desc = "Organisms raised and traded across the galaxy for utility purposes, \
+	such as labor, material harvesting, and most often - food. Many forms of livestock \
+	imported to the Frontier come from Confederation space, and trace their genetic \
+	origin points back to Earth."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/livestock)
+
+// Obtained by scanning all X.
+/datum/category_item/catalogue/fauna/all_livestock
+	name = "Collection - Livestock"
+	desc = "You have scanned a large array of different types of Livestock, \
+	and therefore you have been granted a small sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_EASY
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/livestock/chicken,
+		/datum/category_item/catalogue/fauna/livestock/cow,
+		/datum/category_item/catalogue/fauna/livestock/goat
+		)
+
+/datum/category_item/catalogue/fauna/livestock/chicken
+	name = "Livestock - Chicken"
+	desc = "An avian species hailing from Earth, chickens are actually \
+	the descendants of an ancient Earth clade known as Dinosaurs. Often regarded \
+	as a previously dominant life form, these creatures were largely driven to \
+	extinction by climate change. Chickens are popular Frontier livestock due to \
+	their edible ovum and their own versatility as a meat product."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/chicken
 	name = "chicken"
 	desc = "Hopefully the eggs are good this season."
@@ -8,9 +39,12 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	icon_state = "chicken"
 	icon_living = "chicken"
 	icon_dead = "chicken_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/chicken)
 
 	health = 10
 	maxHealth = 10
+
+	randomized = TRUE
 
 	pass_flags = PASSTABLE
 	mob_size = MOB_SMALL
@@ -26,6 +60,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken
+	bone_amount = 1
 
 	var/eggsleft = 0
 	var/body_color
@@ -125,7 +160,6 @@ GLOBAL_VAR_INIT(chicken_count, 0)	// How mant chickens DO we have?
 	say_list_type = /datum/say_list/chick
 
 	meat_amount = 1
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	var/amount_grown = 0
 

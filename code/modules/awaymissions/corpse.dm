@@ -233,3 +233,9 @@
 	corpseid = 1
 	corpseidjob = "Commander"
 	corpseidaccess = "Captain"
+
+/obj/effect/landmark/corpse/vintage/pilot
+	name = "Unknown Pilot"
+	corpsesuit = /obj/item/clothing/suit/space/void/refurb/pilot
+	corpsehelmet = /obj/item/clothing/head/helmet/space/void/refurb/pilot
+	corpseidjob = "Pilot"

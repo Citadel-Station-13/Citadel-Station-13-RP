@@ -1,7 +1,7 @@
 /datum/lore/codex/category/political_factions
 	name = "Political Factions"
 	data = "Those wishing to immigrate to somewhere in Vir, or otherwise plan to stay for a long time should get to know human politics.  \
-	There are presently three major political parties that exist throughout SolGov space, being the Icarus Front, the Shadow Coalition, and \
+	There are presently three major political parties that exist throughout OriCon space, being the Icarus Front, the Shadow Coalition, and \
 	the Sol Economic Organization, and several smaller ones which tend to align themselves among one of the major parties.  In the Vir system, the \
 	Icarus Front's influence is much less than somewhere closer to Sol, and the other two parties being more popular."
 	children = list(
@@ -20,7 +20,7 @@
 /datum/lore/codex/page/icarus_front/add_content()
 	name = "Icarus Front"
 	keywords += list("Icarus", "IF")
-	data = "The political group with the most seats in the [quick_link("SolGov")] legislature and control over the heartworlds of humanity, the Icarus Front is a \
+	data = "The political group with the most seats in the [quick_link("OriCon")] legislature and control over the heartworlds of humanity, the Icarus Front is a \
 	conservative body with a long history, tracing its linage back to the political unrest that created the Sol Confederate Government. Icarus calls \
 	for severe restrictions on \"transformative technologies\" any technology with the power to fundamentally alter humanity, such as advanced artificial \
 	intelligence and human genetic augmentation. Previously an unbeatable political force, recent changes have lead to its power backsliding. It remains a \
@@ -36,7 +36,7 @@
 /datum/lore/codex/page/sol_economic_organization/add_content()
 	name = "Sol Economic Organization"
 	keywords += list("SEO")
-	data = "The newest force in [quick_link("SolGov")] politics, backed by the massive [quick_link("TSC", "Trans-Stellar Corporations")] and the [quick_link("Free Trade Union")], \
+	data = "The newest force in [quick_link("OriCon")] politics, backed by the massive [quick_link("TSC", "Trans-Stellar Corporations")] and the [quick_link("Free Trade Union")], \
 	as well as former [quick_link("Icarus")] warhawks. The SEO campaigns for minimal regulation on the development of new technologies, seeing them as anti-capitalist and \
 	inefficient, and have gained significant traction among futurists, those wishing for a more impressive human military, and employee-residents of TSC \
 	corporate towns, such as the [quick_link("Northern Star")].\
@@ -82,9 +82,9 @@
 /datum/lore/codex/page/multinational_movement/add_content()
 	name = "Multinational Movement"
 	keywords += list("Multinational")
-	data = "The barely-unified voice of [quick_link("SolGov", "SolGov's")] various independence movements, encompassing Terran governments wishing for a lighter touch \
-	from SolGov, fringe colonies who balk at the call of distant masters, anarchist movements who want the freedom to live without government oversight, and the rare \
-	Trans-Stellar who no longer see a benefit in working with SolGov. Full colonial independence is still a political impossibility so long as the \
+	data = "The barely-unified voice of [quick_link("OriCon", "OriCon's")] various independence movements, encompassing Terran governments wishing for a lighter touch \
+	from OriCon, fringe colonies who balk at the call of distant masters, anarchist movements who want the freedom to live without government oversight, and the rare \
+	Trans-Stellar who no longer see a benefit in working with OriCon. Full colonial independence is still a political impossibility so long as the \
 	[quick_link("Icarus Front")] holds any sway, and so the Movement is focused primarily on securing more autonomy in governance, although a growing revolutionary sub-group \
 	wants to force their change on the government en masse. The Multinational Movement finds themselves in an uneasy alliance with the [quick_link("SEO")], connected by their corporate, \
 	fringe-system membership, and often provide a dissenting voice to SEO's war hawks."
@@ -95,5 +95,5 @@
 	data = "A softer counterpoint to the [quick_link("SEO")], the FTU is a party representing small businesses, workers' syndicates, and trade unions, who advocate for government \
 	measures to reduce the amount of power held by the TSCs. In many ways a holdover from the days before the [quick_link("Shadow Coalition")], where corporate malfeasance took \
 	the place of technological development as the primary issue of debate, the FTU has found itself adopting technological positions similar to the SEO as a matter \
-	of pragmatism, although the views of individual members vary. The FTU is known for their intense lobbying of SolGov to add tax rebates to the purchases of \
+	of pragmatism, although the views of individual members vary. The FTU is known for their intense lobbying of OriCon to add tax rebates to the purchases of \
 	personal lathes and the creation of open-source firmware for experimental autolathes, but have thus far found little success."

@@ -201,29 +201,40 @@
 	var/list/civilian = list()
 	var/list/silicons = list()
 	var/list/misc = list()
+	var/list/offduty = list()
+	var/list/talon = list()
+	var/list/trade = list()
 	for(var/datum/data/record/R in data_core.general)
 		var/name = R.fields["name"]
 		var/rank = R.fields["rank"]
 		var/real_rank = make_list_rank(R.fields["real_rank"])
-		if(real_rank in security_positions)
+		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_TALON)) // Not touching this for now as I dont know if it will break things -Bloop
+			talon[name] = rank
+			continue
+		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_TRADE))
+			trade[name] = rank
+			continue
+		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_SECURITY))
 			security[name] = rank
-		else if(real_rank in engineering_positions)
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_ENGINEERING))
 			engineering[name] = rank
-		else if(real_rank in medical_positions)
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_MEDICAL))
 			medical[name] = rank
-		else if(real_rank in science_positions)
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_RESEARCH))
 			science[name] = rank
-		else if(real_rank in cargo_positions)
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CARGO))
 			cargo[name] = rank
-		else if(real_rank in civilian_positions)
+		else if(SSjob.is_job_in_department(real_rank, DEPARTMENT_CIVILIAN))
 			civilian[name] = rank
 		else
 			misc[name] = rank
 		// mixed departments, /datum/department when?
-		if(real_rank in command_positions)
+		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_COMMAND))
 			command[name] = rank
-		if(real_rank in planet_positions)
+		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_PLANET))
 			exploration[name] = rank
+		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_OFFDUTY))
+			offduty[name] = rank
 
 	// Synthetics don't have actual records, so we will pull them from here.
 	for(var/mob/living/silicon/ai/ai in GLOB.mob_list)
@@ -234,16 +245,32 @@
 		if(!robot.scrambledcodes && !robot.shell && !(robot.module && robot.module.hide_on_manifest))
 			silicons[robot.name] = "[robot.modtype] [robot.braintype]"
 	. = list()
-	.["Command"] = command
-	.["Security"] = security
-	.["Engineering"] = engineering
-	.["Medical"] = medical
-	.["Science"] = science
-	.["Cargo"] = cargo
-	.["Exploration"] = exploration
-	.["Civilian"] = civilian
-	.["Silicons"] = silicons
-	.["Misc"] = misc
+	if(command.len)
+		.["Command"] = command
+	if(security.len)
+		.["Security"] = security
+	if(engineering.len)
+		.["Engineering"] = engineering
+	if(medical.len)
+		.["Medical"] = medical
+	if(science.len)
+		.["Science"] = science
+	if(cargo.len)
+		.["Cargo"] = cargo
+	if(exploration.len)
+		.["Exploration"] = exploration
+	if(civilian.len)
+		.["Civilian"] = civilian
+	if(silicons.len)
+		.["Silicons"] = silicons
+	if(misc.len)
+		.["Misc"] = misc
+	if(offduty.len)
+		.["Off Duty"] = offduty
+	if(talon.len)
+		.["Talon"] = talon
+	if(trade.len)
+		.["Trade"] = trade
 	return json_encode(.)
 
 /datum/world_topic/jsonrevision

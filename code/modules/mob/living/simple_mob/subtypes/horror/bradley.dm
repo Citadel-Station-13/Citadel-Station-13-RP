@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/bradley
+	name = "&$IT*^^!SEES#"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/bradley
 	name = "Bradley"
 	desc = "What you see is a ball of seemingly melty flesh, stitched together hastily over large, bulging scars. Four metal legs extend out of its sides, The two in the front are larger than the back; and all of the legs are segmented with a unique steel looking metal. In the middle of this monstrosity is a constantly tremmoring eye. While the eye never blinks, it is dyed faintly yellow, with a vertical, read pupil. It seems like it's crying, a weird, oil like liquid seeping from its socket."
@@ -9,6 +15,7 @@
 	faction = "horror"
 	icon = 'icons/mob/horror_show/GHPS.dmi'
 	icon_gib = "generic_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/bradley)
 
 	attack_sound = 'sound/h_sounds/holla.ogg'
 
@@ -28,6 +35,10 @@
 
 	say_list_type = /datum/say_list/bradley
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
+
+	bone_amount = 4
+	hide_amount = 2
+	exotic_amount = 5
 
 /mob/living/simple_mob/horror/bradley/death()
 	playsound(src, 'sound/h_sounds/mumble.ogg', 50, 1)

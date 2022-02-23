@@ -4,12 +4,22 @@
 	flags = 0 //starts closed
 	drop_sound = 'sound/items/drop/soda.ogg'
 	pickup_sound = 'sound/items/pickup/soda.ogg'
+	var/modified_type = /obj/item/trash/punctured_can
+
+/obj/item/reagent_containers/food/drinks/cans/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(istype(W, /obj/item/tool/screwdriver))
+		if(!reagents || reagents.total_volume == 0)
+			to_chat(user, "<span class='warning'>You pierce the [src] with the screwdriver.</span>")
+			var/turf/T = get_turf(src)
+			new modified_type(T)
+			qdel(src)
 
 //DRINKS
 
 /obj/item/reagent_containers/food/drinks/cans/cola
 	name = "\improper Space Cola"
-	desc = "Cola. in space."
+	desc = "Cola. In space."
 	icon_state = "cola"
 	center_of_mass = list("x"=16, "y"=10)
 
@@ -28,6 +38,25 @@
 /obj/item/reagent_containers/food/drinks/cans/waterbottle/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("water", 30)
+/obj/item/reagent_containers/food/drinks/cans/battery
+	name = "Battery"
+	desc = "A very tall energy drink can with a large green battery icon on the front."
+	icon_state = "battry"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/battery/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("battery", 60)
+
+/obj/item/reagent_containers/food/drinks/cans/ochamidori
+	name = "Ocha Midori"
+	desc = "A small bottle of green tea with japanese text written along the wrapper."
+	icon_state = "greentea"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/ochamidori/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("greentea", 30)
 
 /obj/item/reagent_containers/food/drinks/cans/space_mountain_wind
 	name = "\improper Space Mountain Wind"
@@ -55,9 +84,31 @@
 	icon_state = "dr_gibb"
 	center_of_mass = list("x"=16, "y"=10)
 
+
 /obj/item/reagent_containers/food/drinks/cans/dr_gibb/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dr_gibb", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/crystalgibb
+	name = "Crystal Dr. Gibb"
+	desc = "A delicious mixture of 42 different flavors, now crystal clear!"
+	icon_state = "crystalgibb"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/crystalgibb/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("crystalgibb", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/ramune
+	name = "Ramone"
+	desc = "A soda bottle with a large glass ball inside that rattles around when shook."
+	icon_state = "ramune"
+	center_of_mass = list("x"=16, "y"=10)
+	drop_sound = "sound/items/drop/ramunedrop.ogg"
+
+/obj/item/reagent_containers/food/drinks/cans/ramune/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("ramune", 20)
 
 /obj/item/reagent_containers/food/drinks/cans/starkist
 	name = "\improper Star-kist"
@@ -135,6 +186,19 @@
 	icon_state = "gingerale"
 	center_of_mass = list("x"=16, "y"=10)
 
+
+
 /obj/item/reagent_containers/food/drinks/cans/gingerale/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("gingerale", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/dumbjuice
+	name = "DUMB BITCH JUICE!"
+	desc = "A tall can of...what one could assume to be a type of soda? There's a very confused looking female vulp on the front."
+	icon_state = "dumbjuice"
+	center_of_mass = list("x"=16, "y"=10)
+
+
+/obj/item/reagent_containers/food/drinks/cans/dumbjuice/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("dumbjuice", 30)

@@ -4,6 +4,14 @@
 // Therefore that functionality is disabled for now.  But it can be turned on by uncommenting this.
 // #define FLOORBOT_PATCHES_HOLES 1
 
+/datum/category_item/catalogue/technology/bot/floorbot
+	name = "Bot - Floorbot"
+	desc = "The standard Floorbot is an oft forgotten automaton \
+	utilized by Engineering teams to help rapidly patch catastrophic \
+	breaches. Although roughly as effective as a trained Engineer working \
+	by hand, Floorbots are most effectively deployed as force multipliers."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/floorbot
 	name = "Floorbot"
 	desc = "A little floor repairing robot, it looks so excited!"
@@ -11,6 +19,7 @@
 	req_one_access = list(access_robotics, access_construction)
 	wait_if_pulled = 1
 	min_target_dist = 0
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/floorbot)
 
 	var/amount = 10 // 1 for tile, 2 for lattice
 	var/maxAmount = 60

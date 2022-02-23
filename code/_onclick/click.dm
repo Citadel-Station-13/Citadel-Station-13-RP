@@ -242,6 +242,10 @@
 	return
 */
 
+/*
+	Shift middle click
+	Used for pointing.
+*/
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	pointed(A)
 	return
@@ -254,10 +258,10 @@
 /mob/proc/ShiftClickOn(var/atom/A)
 	A.ShiftClick(src)
 	return
+
 /atom/proc/ShiftClick(var/mob/user)
-	if(user.client && user.client.eye == user)
+	if(user.client && user.allow_examine(src))
 		user.examinate(src)
-	return
 
 /*
 	Ctrl click

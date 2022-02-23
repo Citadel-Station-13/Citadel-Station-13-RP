@@ -17,7 +17,7 @@
 	//Power used to maintain temperature once it's heated.
 	//Going with 25% of the active power. This is a somewhat arbitrary value
 
-	resistance = 20000	// Approx. 8-9 minutes to heat up.
+	resistance = 10000	// Approx. 4-5 minutes to heat up.
 
 	max_contents = 2
 	container_type = /obj/item/reagent_containers/cooking_container/fryer
@@ -42,7 +42,7 @@
 		//Sometimes the fryer will start with much less than full oil, significantly impacting efficiency until filled
 		//hm yes 20% of the time we will make fryers start with less this is very fun and interactive
 		variance = rand()*0.5
-	oil.add_reagent("cornoil", optimal_oil*(1 - variance))
+	oil.add_reagent("tallow", optimal_oil*(1 - variance))
 
 /obj/machinery/appliance/cooker/fryer/heat_up()
 	if (..())

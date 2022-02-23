@@ -43,7 +43,7 @@
 	/obj/item/surgical/bonesetter,
 	/obj/item/material/knife/butch,
 	/obj/item/caution,
-	/obj/item/caution/cone,
+	/obj/item/clothing/head/cone,
 	/obj/item/tool/crowbar,
 	/obj/item/clipboard,
 	/obj/item/cell,

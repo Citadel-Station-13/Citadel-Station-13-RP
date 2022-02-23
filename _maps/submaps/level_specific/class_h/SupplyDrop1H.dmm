@@ -1,28 +1,25 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/simulated/mineral/vacuum,
-/area/template_noop)
 "b" = (
 /turf/template_noop,
 /area/template_noop)
 "d" = (
 /turf/simulated/wall/titanium,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "e" = (
 /obj/structure/droppod_door{
 	dir = 1
 	},
 /turf/simulated/wall/titanium,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "f" = (
 /turf/simulated/floor/reinforced,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "g" = (
 /obj/structure/droppod_door{
 	dir = 8
 	},
 /turf/simulated/wall/titanium,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "h" = (
 /obj/structure/closet/crate,
 /obj/item/gun/energy/stunrevolver,
@@ -40,20 +37,20 @@
 /obj/item/flame/lighter/random,
 /obj/item/gps,
 /turf/simulated/floor/reinforced,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "i" = (
 /obj/structure/droppod_door{
 	dir = 4
 	},
 /turf/simulated/wall/titanium,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "j" = (
 /obj/structure/droppod_door,
 /turf/simulated/wall/titanium,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "k" = (
-/turf/simulated/mineral/floor/classh,
-/area/template_noop)
+/turf/simulated/floor/outdoors/beach/sand/dirt/classh,
+/area/tether_away/beach/desert/explored)
 "I" = (
 /turf/simulated/floor/outdoors/beach/sand/dirt/classh,
 /area/template_noop)
@@ -87,82 +84,82 @@ b
 I
 I
 k
-I
-I
-I
-I
+k
+k
+k
+k
 I
 I
 "}
 (4,1,1) = {"
 b
 I
-I
+k
 k
 d
 g
 d
-I
-I
+k
+k
 I
 "}
 (5,1,1) = {"
 b
 I
-I
+k
 d
 d
 f
 d
 d
-I
+k
 I
 "}
 (6,1,1) = {"
 I
 I
-I
+k
 e
 f
 h
 f
 j
-I
+k
 I
 "}
 (7,1,1) = {"
 I
 I
-a
+k
 d
 d
 f
 d
 d
-I
+k
 I
 "}
 (8,1,1) = {"
 I
 I
-I
-I
+k
+k
 d
 i
 d
-I
-I
+k
+k
 I
 "}
 (9,1,1) = {"
 I
 I
+I
 k
 k
-I
-I
-I
-I
+k
+k
+k
 I
 I
 "}

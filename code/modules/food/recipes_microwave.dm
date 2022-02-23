@@ -234,6 +234,14 @@ I said no!
 	)
 	result = /obj/item/reagent_containers/food/snacks/monkeykabob
 
+/datum/recipe/meatkabob
+	items = list(
+		/obj/item/stack/rods,
+		/obj/item/reagent_containers/food/snacks/meatsteak,
+		/obj/item/reagent_containers/food/snacks/meatsteak
+	)
+	result = /obj/item/reagent_containers/food/snacks/meatkabob
+
 /datum/recipe/syntikabob
 	items = list(
 		/obj/item/stack/rods,
@@ -402,6 +410,11 @@ I said no!
 	reagents = list("water" = 10)
 	items = list(/obj/item/reagent_containers/food/snacks/meat)
 	result = /obj/item/reagent_containers/food/snacks/stew
+
+/datum/recipe/dishostew
+	fruit = list("disho" = 3, "mushroom" = 2, "chili" = 1)
+	reagents = list("water" = 10)
+	result = /obj/item/reagent_containers/food/snacks/dishostew
 
 /datum/recipe/slimetoast
 	reagents = list("slimejelly" = 5)
@@ -614,6 +627,11 @@ I said no!
 	fruit = list("whitebeet" = 1, "cabbage" = 1)
 	reagents = list("water" = 10)
 	result = /obj/item/reagent_containers/food/snacks/beetsoup
+
+/datum/recipe/dishosoup
+	fruit = list("disho" = 1)
+	reagents = list("water" = 10)
+	result = /obj/item/reagent_containers/food/snacks/dishosoup
 
 /datum/recipe/tossedsalad
 	fruit = list("cabbage" = 2, "tomato" = 1, "carrot" = 1, "apple" = 1)
@@ -1172,11 +1190,26 @@ I said no!
 
 //BEGIN CITADEL CHANGES
 
+/datum/recipe/sushi_gen
+	fruit = list("cabbage" = 1)
+	reagents = list("rice" = 20)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/carpmeat
+	)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi
+
 /datum/recipe/sushi // Changed to take fish and not steak meat OMEGALUL
 	fruit = list("cabbage" = 1)
 	reagents = list("rice" = 20)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/carpmeat/fish,
+		/obj/item/reagent_containers/food/snacks/carpmeat/fish
+	)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi
+
+/datum/recipe/sushi_sif
+	fruit = list("cabbage" = 1)
+	reagents = list("rice" = 20)
+	items = list(
 		/obj/item/reagent_containers/food/snacks/carpmeat/fish
 	)
 	result = /obj/item/reagent_containers/food/snacks/sliceable/sushi

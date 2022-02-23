@@ -194,7 +194,7 @@
 		/obj/item/pen/crayon/chalk
 	)
 	starts_with = list(
-		/obj/item/pen/crayon/chalk,
+		/obj/item/pen/crayon/chalk/white,
 		/obj/item/pen/crayon/chalk/red,
 		/obj/item/pen/crayon/chalk/black,
 		/obj/item/pen/crayon/chalk/blue

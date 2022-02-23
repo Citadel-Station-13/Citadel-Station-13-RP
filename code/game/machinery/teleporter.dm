@@ -406,14 +406,5 @@
 	else
 		icon_state = "controller"
 
-
-/obj/effect/laser/Bump()
-	range--
-	return
-
-/obj/effect/laser/Move()
-	range--
-	return
-
 /atom/proc/laserhit(L as obj)
 	return 1

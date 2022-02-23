@@ -170,3 +170,22 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	spread_chance = 20
 	ore = /obj/item/ore/lead
 	scan_icon = "mineral_rare"
+
+/datum/ore/vaudium
+	name = MAT_VAUDIUM
+	display_name = "raw vaudium"
+	smelts_to = "bananium"
+	compresses_to = "silencium"
+	result_amount = 5
+	spread_chance = 20
+	ore = /obj/item/ore/vaudium
+	scan_icon = "mineral_rare"
+
+/datum/ore/copper
+	name = MAT_COPPER
+	display_name = "raw copper"
+	smelts_to = "copper"
+	result_amount = 4
+	spread_chance = 20
+	ore = /obj/item/ore/copper
+	scan_icon = "mineral_common"

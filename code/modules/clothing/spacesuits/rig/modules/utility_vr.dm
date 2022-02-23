@@ -83,8 +83,8 @@
 
 	var/username = FindNameFromID(H) || "Unknown"
 	var/message = "[username] has overridden [A] (airlock) in \the [get_area(A)] at [A.x],[A.y],[A.z] with \the [src]."
-	global_announcer.autosay(message, "Security Subsystem", "Command")
-	global_announcer.autosay(message, "Security Subsystem", "Security")
+	GLOB.global_announcer.autosay(message, "Security Subsystem", "Command")
+	GLOB.global_announcer.autosay(message, "Security Subsystem", "Security")
 	return 1
 
 /obj/item/rig_module/rescue_pharm

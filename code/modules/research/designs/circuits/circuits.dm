@@ -422,6 +422,13 @@ CIRCUITS BELOW
 	build_path = /obj/item/circuitboard/skills
 	sort_string = "LAAAC"
 
+/datum/design/circuit/arf_generator
+	name = "atmospheric field generator"
+	id = "arf_generator"
+	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 4, TECH_BIO = 3)
+	build_path = /obj/item/circuitboard/arf_generator
+	sort_string = "LAAAD"
+
 /datum/design/circuit/mecha
 	req_tech = list(TECH_DATA = 3)
 
@@ -504,6 +511,48 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/mecha/durand/targeting
 	sort_string = "NAADC"
+
+/datum/design/circuit/mecha/honker_main
+	name = "'H.O.N.K.' central control"
+	id = "honker_main"
+	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/honker/main
+	sort_string = "NAAEA"
+
+/datum/design/circuit/mecha/honker_peri
+	name = "'H.O.N.K.' peripherals control"
+	id = "honker_peri"
+	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/honker/peripherals
+	sort_string = "NAAEB"
+
+/datum/design/circuit/mecha/honker_targ
+	name = "'H.O.N.K.' weapon control and targeting"
+	id = "honker_targ"
+	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/honker/targeting
+	sort_string = "NAAEC"
+
+/datum/design/circuit/mecha/reticent_main
+	name = "'Reticent' central control"
+	id = "reticent_main"
+	req_tech = list(TECH_DATA = 5, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/reticent/main
+	sort_string = "NAAFA"
+
+/datum/design/circuit/mecha/reticent_peri
+	name = "'Reticent' peripherals control"
+	id = "reticent_peri"
+	req_tech = list(TECH_DATA = 5, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/reticent/peripherals
+	sort_string = "NAAFB"
+
+/datum/design/circuit/mecha/reticent_targ
+	name = "'Reticent' weapon control and targeting"
+	id = "reticent_targ"
+	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/reticent/targeting
+	sort_string = "NAAFC"
 
 /datum/design/circuit/tcom
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
@@ -615,3 +664,16 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/dnarevive
 	sort_string = "ZAAAA"
+/datum/design/circuit/pointdefense
+	name = "point defense battery"
+	id = "pointdefense"
+	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 3, TECH_COMBAT = 4)
+	build_path = /obj/item/circuitboard/pointdefense
+	sort_string = "OAABA"
+
+/datum/design/circuit/pointdefense_control
+	name = "point defense control"
+	id = "pointdefense_control"
+	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_COMBAT = 2)
+	build_path = /obj/item/circuitboard/pointdefense_control
+	sort_string = "OAABB"

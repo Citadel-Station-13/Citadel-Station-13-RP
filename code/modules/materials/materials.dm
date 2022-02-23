@@ -826,7 +826,7 @@ var/list/name_to_material
 
 /datum/material/resin
 	name = "resin"
-	icon_colour = "#35343a"
+	icon_colour = "#261438"
 	icon_base = "resin"
 	dooropen_noise = 'sound/effects/attackblob.ogg'
 	door_icon_base = "resin"
@@ -894,6 +894,11 @@ var/list/name_to_material
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/log/sif
 
+/datum/material/wood/log/hard
+	name = MAT_HARDLOG
+	icon_colour = "#6f432a"
+	stack_type = /obj/item/stack/material/log/hard
+
 /datum/material/wood/holographic
 	name = "holowood"
 	display_name = "wood"
@@ -902,9 +907,19 @@ var/list/name_to_material
 
 /datum/material/wood/sif
 	name = MAT_SIFWOOD
-//	stack_type = /obj/item/stack/material/wood/sif
+	stack_type = /obj/item/stack/material/wood/sif
 	icon_colour = "#0099cc" // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.
+
+/datum/material/wood/hardwood
+	name = MAT_HARDWOOD
+	stack_type = /obj/item/stack/material/wood/hard
+	icon_colour = "#42291a"
+	icon_base = "stone"
+	icon_reinf = "reinf_stone"
+	integrity = 65	//a bit stronger than regular wood
+	hardness = 20
+	weight = 20	//likewise, heavier
 
 /datum/material/cardboard
 	name = "cardboard"
@@ -973,28 +988,6 @@ var/list/name_to_material
 	conductive = 0
 	pass_stack_colors = TRUE
 
-/datum/material/emptysandbag
-	name = "empty sandbag"
-	stack_type = /obj/item/stack/material/emptysandbag
-	icon_colour = "#D9C179"
-	weight = 1
-	hardness = 1
-	protectiveness = 0 // 0%
-	conductive = 0
-	sheet_singular_name = "empty sandbag"
-	sheet_plural_name = "empty sandbags"
-
-/datum/material/sandbags
-	name = "sandbag"
-	stack_type = /obj/item/stack/material/sandbags
-	icon_colour = "#D9C179"
-	weight = 5
-	hardness = 50
-	protectiveness = 5 // 20%
-	conductive = 0
-	sheet_singular_name = "sandbag"
-	sheet_plural_name = "sandbags"
-
 /datum/material/cult
 	name = "cult"
 	display_name = "disturbing stone"
@@ -1053,12 +1046,12 @@ var/list/name_to_material
 
 /datum/material/bone
 	name = "bone"
-	icon_colour = "#35343a"
+	icon_colour = "#e6dfc8"
 	icon_base = "bone"
 	icon_reinf = "reinf_mesh"
 	melting_point = T0C+300
-	sheet_singular_name = "bone"
-	sheet_plural_name = "boness"
+	sheet_singular_name = "fragment"
+	sheet_plural_name = "fragments"
 	conductive = 0
 	explosion_resistance = 60
 	radiation_resistance = 10
@@ -1200,43 +1193,33 @@ var/list/name_to_material
 	protectiveness = 0 // 0%
 	conductive = 0
 
-//CitMain Sandbag port.
-/obj/item/stack/material/emptysandbag
-	name = "empty sandbag"
-	desc = "A bag to be filled with sand."
-	icon_state = "sandbag"
-	max_amount = 50
-	description_info = "Fill with sand to convert this into a sandbag."
-	no_variants = FALSE
-	fill_type = /obj/item/stack/material/sandbags
+//Vaudium products
+/datum/material/bananium
+	name = "bananium"
+	stack_type = /obj/item/stack/material/bananium
+	integrity = 150
+	conductivity = 0 // Weird rubber metal.
+	protectiveness = 10 // 33%
+	icon_colour = "#d6c100"
 
-	default_type = "emptysandbag"
-	perunit = 1
+/datum/material/stone/silencium
+	name = "silencium"
+	icon_colour = "#AAAAAA"
+	weight = 26
+	hardness = 30 //VOREStation Edit - Please.
+	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
+	stack_type = /obj/item/stack/material/silencium
 
-/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W, /obj/item/ore/glass))
-		var/time = (3 SECONDS)
-		user.setClickCooldown(time)
-		if(do_after(user, time, src) && use(1))
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
-	else
-		return ..()
+/datum/material/brass
+	name = "brass"
+	icon_colour = "#CAC955"
+	integrity = 150
+	stack_type = /obj/item/stack/material/brass
 
-/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
-		if(do_after(user, 3 SECONDS, src) && use(1) && qdel(W))
-			var/turf/T = get_turf(user)
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
-			new /obj/item/stack/material/sandbags && !get(T)
-	else
-		return ..()
-
-/obj/item/stack/material/sandbags
-	name = "sandbags"
-	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
-	singular_name = "sandbag"
-	icon_state = "sandbags"
-	no_variants = FALSE
-
-	default_type = "sandbags"
-	perunit = 1
+/datum/material/copper
+	name = "copper"
+	icon_colour = "#b45c13"
+	weight = 15
+	hardness = 30
+	conductivity = 35
+	stack_type = /obj/item/stack/material/copper

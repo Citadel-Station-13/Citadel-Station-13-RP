@@ -57,10 +57,23 @@
 	var/maw_cooldown = 30 SECONDS
 	var/open_maw = FALSE	// Are we trying to eat things?
 
+
+/datum/category_item/catalogue/fauna/space_worm
+	name = "Space Worm"
+	desc = "Space Worms are a relatively rare form of alien life sometimes \
+	encountered on the Frontier. Comprised of a long, segmented body, the \
+	Space Worm ambulates through space via the metabolic production of monopropellant \
+	gases. It is currently speculated that these gases are generated in a metabolic \
+	process similar to plant photosynthesis, although this is yet to be confirmed. \
+	The curious nature of the Space Worm's biology has made the capture and study \
+	of corpses difficult. Samples and scans are considered especially valuable."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/animal/space/space_worm/head
 	name = "space worm"
 	icon_state = "spacewormhead"
 	icon_living = "spacewormhead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/space_worm)
 
 	anchored = FALSE	// You can pull the head to pull the body.
 

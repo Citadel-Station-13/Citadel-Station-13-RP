@@ -43,6 +43,84 @@ var/list/flooring_types
 	var/flags
 	var/can_paint
 	var/list/footstep_sounds = list() // key=species name, value = list of soundss
+	var/is_plating = FALSE
+	var/list/flooring_cache = list() // Cached overlays for our edges and corners and junk
+
+	//Plating types, can be overridden
+	var/plating_type = null
+
+	//Resistance is subtracted from all incoming damage
+	//var/resistance = RESISTANCE_FRAGILE
+
+	//Damage the floor can take before being destroyed
+	//var/health = 50
+
+	//var/removal_time = WORKTIME_FAST * 0.75
+
+	//Flooring Icon vars
+	var/smooth_nothing = FALSE //True/false only, optimisation
+	//If true, all smoothing logic is entirely skipped
+
+	//The rest of these x_smooth vars use one of the following options
+	//SMOOTH_NONE: Ignore all of type
+	//SMOOTH_ALL: Smooth with all of type
+	//SMOOTH_WHITELIST: Ignore all except types on this list
+	//SMOOTH_BLACKLIST: Smooth with all except types on this list
+	//SMOOTH_GREYLIST: Objects only: Use both lists
+
+	//How we smooth with other flooring
+	var/floor_smooth = SMOOTH_NONE
+	var/list/flooring_whitelist = list() //Smooth with nothing except the contents of this list
+	var/list/flooring_blacklist = list() //Smooth with everything except the contents of this list
+
+	//How we smooth with walls
+	var/wall_smooth = SMOOTH_NONE
+	//There are no lists for walls at this time
+
+	//How we smooth with space and openspace tiles
+	var/space_smooth = SMOOTH_NONE
+	//There are no lists for spaces
+
+	/*
+	How we smooth with movable atoms
+	These are checked after the above turf based smoothing has been handled
+	SMOOTH_ALL or SMOOTH_NONE are treated the same here. Both of those will just ignore atoms
+	Using the white/blacklists will override what the turfs concluded, to force or deny smoothing
+
+	Movable atom lists are much more complex, to account for many possibilities
+	Each entry in a list, is itself a list consisting of three items:
+		Type: The typepath to allow/deny. This will be checked against istype, so all subtypes are included
+		Priority: Used when items in two opposite lists conflict. The one with the highest priority wins out.
+		Vars: An associative list of variables (varnames in text) and desired values
+			Code will look for the desired vars on the target item and only call it a match if all desired values match
+			This can be used, for example, to check that objects are dense and anchored
+			there are no safety checks on this, it will probably throw runtimes if you make typos
+
+	Common example:
+	Don't smooth with dense anchored objects except airlocks
+
+	smooth_movable_atom = SMOOTH_GREYLIST
+	movable_atom_blacklist = list(
+		list(/obj, list("density" = TRUE, "anchored" = TRUE), 1)
+		)
+	movable_atom_whitelist = list(
+	list(/obj/machinery/door/airlock, list(), 2)
+	)
+
+	*/
+	var/smooth_movable_atom = SMOOTH_NONE
+	var/list/movable_atom_whitelist = list()
+	var/list/movable_atom_blacklist = list()
+
+/decl/flooring/proc/get_plating_type(var/turf/T)
+	return plating_type
+
+/decl/flooring/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0, var/layer = BUILTIN_DECAL_LAYER)
+	if(!flooring_cache[cache_key])
+		var/image/I = image(icon = icon, icon_state = icon_base, dir = icon_dir)
+		I.layer = layer
+		flooring_cache[cache_key] = I
+	return flooring_cache[cache_key]
 
 /decl/flooring/proc/drop_product(atom/A)
 	if(ispath(build_type, /obj/item/stack))
@@ -160,6 +238,11 @@ var/list/flooring_types
 	name = "teal carpet"
 	icon_base = "tealcarpet"
 	build_type = /obj/item/stack/tile/carpet/teal
+
+/decl/flooring/carpet/arcadecarpet
+	name = "arcade carpet"
+	icon_base = "arcade"
+	build_type = /obj/item/stack/tile/carpet/arcadecarpet
 
 /decl/flooring/tiling
 	name = "floor"
@@ -302,6 +385,94 @@ var/list/flooring_types
 	build_type = /obj/item/stack/tile/bmarble
 	flags = TURF_REMOVE_CROWBAR
 
+/decl/flooring/bananium
+	name = "bananium floor"
+	desc = "Have you ever seen a clown frown?"
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "bananium"
+	build_type = /obj/item/stack/tile/bananium
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/silencium
+	name = "silencium floor"
+	desc = "Surprisingly, doesn't mask your footsteps."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "silencium"
+	build_type = /obj/item/stack/tile/silencium
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/silencium
+	name = "silencium floor"
+	desc = "Surprisingly, doesn't mask your footsteps."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "silencium"
+	build_type = /obj/item/stack/tile/silencium
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/plasteel
+	name = "plasteel floor"
+	desc = "Sturdy metal flooring. Almost certainly a waste."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "plasteel"
+	build_type = /obj/item/stack/tile/plasteel
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/durasteel
+	name = "durasteel floor"
+	desc = "Incredibly sturdy metal flooring. Definitely a waste."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "durasteel"
+	build_type = /obj/item/stack/tile/durasteel
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/silver
+	name = "silver floor"
+	desc = "This opulent flooring reminds you of the ocean. Almost certainly a waste."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "silver"
+	build_type = /obj/item/stack/tile/silver
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/gold
+	name = "gold floor"
+	desc = "This richly tooled flooring makes you feel powerful."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "gold"
+	build_type = /obj/item/stack/tile/gold
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/phoron
+	name = "phoron floor"
+	desc = "Although stable for now, this solid phoron flooring radiates danger."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "phoron"
+	build_type = /obj/item/stack/tile/phoron
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/uranium
+	name = "uranium floor"
+	desc = "This flooring literally radiates danger."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "uranium"
+	build_type = /obj/item/stack/tile/uranium
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/diamond
+	name = "diamond floor"
+	desc = "This flooring proves that you are a king among peasants. It's virtually impossible to scuff."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "diamond"
+	build_type = /obj/item/stack/tile/diamond
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/brass
+	name = "brass floor"
+	desc = "There's something strange about this tile. If you listen closely, it sounds like it's ticking."
+	icon = 'icons/turf/flooring/misc.dmi'
+	icon_base = "clockwork_floor"
+	build_type = /obj/item/stack/tile/brass
+	flags = TURF_REMOVE_CROWBAR
+
 /decl/flooring/wood
 	name = "wooden floor"
 	desc = "Polished redwood planks."
@@ -395,8 +566,14 @@ var/list/flooring_types
 		'sound/effects/footstep/grass3.ogg',
 		'sound/effects/footstep/grass4.ogg'))
 
-/decl/flooring/outdoors/water
+/decl/flooring/outdoors/grass/sif
+	name = "growth"
+	icon = 'icons/turf/outdoors.dmi'
+	icon_base = "grass_sif"
+
+/decl/flooring/water
 	name = "water"
+	desc = "Water is wet, gosh, who knew!"
 	icon = 'icons/turf/outdoors.dmi'
 	icon_base = "seashallow"
 	footstep_sounds = list("human" = list(
@@ -414,7 +591,6 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
-
 
 /turf/simulated/floor/flesh
 	name = "flesh"
@@ -435,7 +611,7 @@ var/list/flooring_types
 	desc = "This slick flesh ripples and squishes under your touch"
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_base = "flesh_floor"
-  
+
 /decl/flooring/outdoors/beach/sand/desert
 	name = "sand"
 	icon = 'icons/turf/outdoors.dmi'
@@ -445,4 +621,14 @@ var/list/flooring_types
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
+/turf/simulated/floor/tiled/freezer/cold
+	temperature = T0C - 5
 
+/decl/flooring/trap
+	name = "suspicious flooring"
+	desc = "There's something off about this tile."
+	icon = 'icons/turf/flooring/plating_vr.dmi'
+	icon_base = "plating"
+	build_type = null
+	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
+	can_paint = null

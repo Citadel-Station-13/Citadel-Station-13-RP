@@ -24,7 +24,7 @@
 /*
 	if(character && !istype(character,/mob/living/carbon/human/dummy))
 		character.vantag_pref = pref.vantag_preference
-		ENABLE_BITFIELD(character.hud_updateflag, VANTAG_HUD)		- whoever made hud updateflags is a curse
+		BITSET(character.hud_updateflag, VANTAG_HUD)		- whoever made hud updateflags is a curse
 */
 
 /datum/category_item/player_setup_item/vore/vantag/content(var/mob/user)

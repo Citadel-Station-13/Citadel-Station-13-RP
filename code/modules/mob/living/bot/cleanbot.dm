@@ -1,9 +1,18 @@
+/datum/category_item/catalogue/technology/bot/cleanbot
+	name = "Bot - Cleanbot"
+	desc = "Cleanbots are little more than stabilized mop buckets \
+	on wheels, programmed with basic pathfinding abilities and onboard \
+	filth sensors. The cleanbot deploys its mop, utilizing a heavily concentrated\
+	Space Cleaner solution which will generally last it an entire shift."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/cleanbot
 	name = "Cleanbot"
 	desc = "A little cleaning robot, it looks so excited!"
 	icon_state = "cleanbot0"
 	req_one_access = list(access_robotics, access_janitor)
 	botcard_access = list(access_janitor)
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot)
 
 	locked = 0 // Start unlocked so roboticist can set them to patrol.
 	wait_if_pulled = 1
@@ -223,6 +232,19 @@
 		user.drop_from_inventory(src)
 		qdel(src)
 
+	else if(istype(W, /obj/item/stack/material/steel))
+		var/obj/item/stack/material/steel/M = W
+		if(M.amount >= 5)
+			M.use(5)
+			var/turf/T = get_turf(loc)
+			var/mob/living/bot/cleanbot/roomba/A = new /mob/living/bot/cleanbot/roomba(T)
+			A.name = created_name
+			to_chat(user, "<span class='notice'>You add the metal sheets onto and around the bucket and sensor assembly. Beep boop!</span>")
+			user.drop_from_inventory(src)
+			qdel(src)
+		else
+			to_chat(user, "<span class='warning'>You need five sheets of metal to encase the sensor.</span>")
+
 	else if(istype(W, /obj/item/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
 		if(!t)
@@ -230,3 +252,105 @@
 		if(!in_range(src, usr) && src.loc != usr)
 			return
 		created_name = t
+
+//Port of Roombas and the Roomba Maid from /vg/station.
+
+/mob/living/bot/cleanbot/roomba
+	desc = "A small, plate-like cleaning robot. It looks quite concerned."
+	icon_state = "roombot0"
+	var/created_name = "Roombot"
+	var/armed = 0
+	var/coolingdown = 0
+	var/attackcooldown = 0
+
+/mob/living/bot/cleanbot/roomba/attackby(var/obj/item/W, mob/user)
+	if(istype(W, /obj/item/material/kitchen/utensil/fork) && !armed && user.a_intent != INTENT_HARM)
+		qdel(W)
+		to_chat(user, "<span class='notice'>You attach \the [W] to \the [src]. It looks increasingly concerned about its current situation.</span>")
+		armed++
+		icon_state = "roombot_battle[on]"
+		update_icon_state(src)
+
+	else if(istype(W, /obj/item/flame/lighter) && !armed && user.a_intent != INTENT_HARM)
+		qdel(W)
+		to_chat(user, "<span class='notice'>You attach \the [W] to \the [src]. It appears to roll its sensor in disappointment before carrying on with its work.</span>")
+		armed++
+		icon_state = "roombot_battle[on]"
+		update_icon_state(src)
+
+	else if (istype(W, /obj/item/clothing/head/headband/maid))
+		qdel(W)
+		var/mob/living/bot/cleanbot/roomba/meido/M = new(get_turf(src))
+		qdel(src)
+
+		if(name != initial(name))
+			M.name = name
+		else
+			name = "maidbot"
+	else
+		. = ..()
+
+/mob/living/bot/cleanbot/roomba/Crossed(atom/A)
+	if(isliving(A))
+		var/mob/living/L = A
+		annoy(L)
+	..()
+
+/mob/living/bot/cleanbot/roomba/proc/attack_cooldown()
+	coolingdown = TRUE
+	spawn(attackcooldown)
+		coolingdown = FALSE
+
+/mob/living/bot/cleanbot/roomba/proc/annoy(var/mob/living/L)
+	if(coolingdown == FALSE)
+		switch(armed)
+			if(1)
+				L.visible_message("<span class = 'warning'>\The [src] [pick("prongs","pokes","pricks")] \the [L]", "<span class = 'warning'>The little shit, \the [src], stabs you with its attached fork!</span>")
+				var/damage = rand(1,5)
+				L.adjustBruteLoss(damage)
+			if(2)
+				L.visible_message("<span class = 'warning'>\The [src] prongs and singes \the [L]</span>", "<span class = 'warning'>The little shit, \the [src], singes and stabs you with its attached fork and lighter!</span>")
+				var/damage = rand(3,12)
+				L.adjustBruteLoss(damage)
+				L.adjustFireLoss(damage/2)
+		attack_cooldown()
+
+/mob/living/bot/cleanbot/roomba/update_icons()
+	if(busy)
+		icon_state = "roombot-c"
+	else
+		icon_state = "roombot[on]"
+
+/mob/living/bot/cleanbot/roomba/meido
+	name = "maidbot"
+	desc = "A small, plate-like cleaning robot. It looks quite concerned. This one has a frilly headband attached to the top."
+	icon_state = "maidbot0"
+	armed = 0
+
+/mob/living/bot/cleanbot/roomba/meido/attackby(var/obj/item/W, mob/user)
+	if(istype(W, /obj/item/material/kitchen/utensil/fork) || istype(W, /obj/item/flame/lighter))
+		to_chat(user, "<span class='notice'>\The [src] buzzes and recoils at \the [W]. Perhaps it would prefer something more refined?</span>")
+		return
+	else if (istype(W, /obj/item/clothing/head/headband/maid))
+		to_chat(user, "<span class='notice'>\The [src] is already wearing one of those!</span>")
+		return
+	else if(W.type == /obj/item/material/knife && !armed && user.a_intent != INTENT_HARM)
+		qdel(W)
+		to_chat(user, "<span class='notice'>\the [src] extends a tiny arm from a hidden compartment and grasps \the [W]. Its light blinks excitedly for a moment before returning to normal.</span>")
+		armed++
+		icon_state = "maidbot_battle[on]"
+		update_icon_state(src)
+	else
+		. = ..()
+
+/mob/living/bot/cleanbot/roomba/meido/update_icons()
+	if(busy)
+		icon_state = "maidbot-c"
+	else
+		icon_state = "maidbot[on]"
+
+/mob/living/bot/cleanbot/roomba/meido/annoy(var/mob/living/L)
+	if(!coolingdown && armed)
+		L.visible_message("<span class = 'warning'>\The [src] [pick("jabs","stabs","pokes")] \the [L]", "<span class = 'warning'>The little shit, \the [src], stabs you with its knife!</span>")
+		L.adjustBruteLoss(rand(4,8))
+	attack_cooldown()

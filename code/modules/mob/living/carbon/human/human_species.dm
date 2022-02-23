@@ -1,15 +1,3 @@
-/mob/living/carbon/human/dummy
-	real_name = "Test Dummy"
-	status_flags = GODMODE|CANPUSH
-	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
-
-/mob/living/carbon/human/dummy/mannequin/Initialize()
-	. = ..()
-	GLOB.mob_list -= src
-	living_mob_list -= src
-	dead_mob_list -= src
-	delete_inventory()
-
 /mob/living/carbon/human/skrell/Initialize(var/new_loc)
 	h_style = "Skrell Short Tentacles"
 	return ..(new_loc, SPECIES_SKRELL)
@@ -85,8 +73,35 @@
 /mob/living/carbon/human/alraune/Initialize(mapload)
 	return ..(mapload, "Alraune")
 
+/mob/living/carbon/human/apidaen/Initialize(mapload)
+	return ..(mapload, "Apidaen")
+
+/mob/living/carbon/human/vetala_ruddy/Initialize(mapload)
+	return ..(mapload, "Vetala (Ruddy)")
+
+/mob/living/carbon/human/vetala_pale/Initialize(mapload)
+	return ..(mapload, "Vetala (Pale)")
+
+/mob/living/carbon/human/auril/Initialize(mapload)
+	return ..(mapload, "Auril")
+
+/mob/living/carbon/human/dremachir/Initialize(mapload)
+	return ..(mapload, "Dremachir")
+
 /mob/living/carbon/human/shadekin/Initialize(mapload)
 	return ..(mapload, SPECIES_SHADEKIN)
+
+/mob/living/carbon/human/dummy
+	real_name = "Test Dummy"
+	status_flags = GODMODE|CANPUSH
+	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
+
+// /mob/living/carbon/human/dummy/mannequin/Initialize()
+// 	. = ..()
+// 	GLOB.mob_list -= src
+// 	living_mob_list -= src
+// 	dead_mob_list -= src
+// 	delete_inventory()
 
 //Fashion Mannequins
 /mob/living/carbon/human/dummy/mannequin/Initialize()
@@ -266,3 +281,6 @@
 			if(!gloves)
 				H.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather, slot_wear_suit)
 				H.update_inv_gloves()
+
+/mob/living/carbon/human/adherent/New(var/new_loc)
+	..(new_loc, SPECIES_ADHERENT)

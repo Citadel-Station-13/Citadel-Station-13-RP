@@ -156,12 +156,18 @@
 		return anchored ? ATMOS_PASS_NO : ATMOS_PASS_YES // If it's anchored, it'll block air.
 	return ATMOS_PASS_YES // Don't stop airflow from the other sides.
 
-/obj/structure/window/CheckExit(atom/movable/O as mob|obj, target as turf)
-	if(istype(O) && O.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(O.loc, target) == dir)
-		return 0
-	return 1
+/obj/structure/window/CheckExit(atom/movable/AM, turf/target)
+	if(is_fulltile())
+		return TRUE
+	if(AM.checkpass(PASSGLASS))
+		return TRUE
+	if(get_dir(AM.loc, target) == dir)
+		return FALSE
+	return TRUE
+
+/obj/structure/window/setDir(newdir)
+	. = ..()
+	update_nearby_tiles(need_rebuild = TRUE)
 
 /obj/structure/window/hitby(AM as mob|obj)
 	..()
@@ -283,12 +289,14 @@
 			update_nearby_icons()
 			update_verbs()
 			playsound(src, W.usesound, 75, 1)
+			update_nearby_tiles(need_rebuild = TRUE)
 			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the frame [anchored ? "to" : "from"] the floor.</span>")
 		else if(!reinf)
 			anchored = !anchored
 			update_nearby_icons()
 			update_verbs()
 			playsound(src, W.usesound, 75, 1)
+			update_nearby_tiles(need_rebuild = TRUE)
 			to_chat(user, "<span class='notice'>You have [anchored ? "" : "un"]fastened the window [anchored ? "to" : "from"] the floor.</span>")
 	else if(W.is_crowbar() && reinf && state <= 1)
 		state = 1 - state
@@ -361,12 +369,8 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.setDir(turn(src.dir, 90))
+	setDir(turn(dir, 90))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
-
 
 /obj/structure/window/verb/rotate_clockwise()
 	set name = "Rotate Window Clockwise"
@@ -383,11 +387,8 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	update_nearby_tiles(need_rebuild=1) //Compel updates before
-	src.setDir(turn(src.dir, 270))
+	setDir(turn(dir, 270))
 	updateSilicate()
-	update_nearby_tiles(need_rebuild=1)
-	return
 
 /obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
 	. = ..(mapload)
@@ -404,9 +405,8 @@
 
 	ini_dir = dir
 
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles(need_rebuild = TRUE)
 	update_nearby_icons()
-
 
 /obj/structure/window/Destroy()
 	density = 0
@@ -418,10 +418,12 @@
 
 /obj/structure/window/Move()
 	var/ini_dir = dir
-	update_nearby_tiles(need_rebuild=1)
-	..()
+	. = ..()
 	setDir(ini_dir)
-	update_nearby_tiles(need_rebuild=1)
+
+/obj/structure/window/Moved()
+	. = ..()
+	update_nearby_tiles(need_rebuild = TRUE)
 
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()
@@ -476,7 +478,7 @@
 
 /obj/structure/window/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > maximal_heat)
-		hit(damage_per_fire_tick, 0)
+		take_damage(damage_per_fire_tick)
 	..()
 
 
@@ -486,7 +488,7 @@
 	icon_state = "window"
 	basestate = "window"
 	glasstype = /obj/item/stack/material/glass
-	maximal_heat = T0C + 100
+	maximal_heat = T0C + 500 // Bumping it up a bit, so that a small fire doesn't instantly melt it. Also, makes sense as glass starts softening at around ~700 C
 	damage_per_fire_tick = 2.0
 	maxhealth = 12.0
 	force_threshold = 3
@@ -503,7 +505,7 @@
 	icon_state = "phoronwindow"
 	shardtype = /obj/item/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronglass
-	maximal_heat = T0C + 2000
+	maximal_heat = INFINITY // This is high-grade atmospherics glass. Let's not have it burn, mmmkay?
 	damage_per_fire_tick = 1.0
 	maxhealth = 40.0
 	force_threshold = 5
@@ -521,7 +523,7 @@
 	shardtype = /obj/item/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronrglass
 	reinf = 1
-	maximal_heat = T0C + 4000
+	maximal_heat = INFINITY // Same here. The reinforcement is just structural anyways
 	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
 	maxhealth = 80.0
 	force_threshold = 10
@@ -538,7 +540,7 @@
 	basestate = "rwindow"
 	maxhealth = 40.0
 	reinf = 1
-	maximal_heat = T0C + 750
+	maximal_heat = T0C + 1000 // Bumping this as well, as most fires quickly get over 800 C
 	damage_per_fire_tick = 2.0
 	glasstype = /obj/item/stack/material/glass/reinforced
 	force_threshold = 6

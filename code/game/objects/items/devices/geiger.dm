@@ -13,6 +13,8 @@
 	var/radiation_count = 0
 	var/datum/looping_sound/geiger/soundloop
 
+	matter = list(DEFAULT_WALL_MATERIAL = 200,"glass" = 100)
+
 /obj/item/geiger/Initialize(mapload)
 	soundloop = new(list(src), FALSE)
 	return ..()

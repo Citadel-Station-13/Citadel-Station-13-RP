@@ -44,6 +44,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Plate Carrier crate"
+	access = access_armory
 
 /datum/supply_pack/security/carriertags
 	name = "Armor - Plate carrier tags"
@@ -97,6 +98,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Armor plate crate"
+	access = access_armory
 
 /datum/supply_pack/randomised/security/carrierarms
 	name = "Armor - Security armguard attachments"
@@ -114,6 +116,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Armor plate crate"
+	access = access_armory
 
 /datum/supply_pack/randomised/security/carrierlegs
 	name = "Armor - Security legguard attachments"
@@ -131,6 +134,7 @@
 	cost = 50
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Armor plate crate"
+	access = access_armory
 
 /datum/supply_pack/randomised/security/carrierbags
 	name = "Armor - Security pouch attachments"
@@ -150,6 +154,7 @@
 	cost = 60
 	containertype = /obj/structure/closet/crate/secure/gear
 	containername = "Armor plate crate"
+	access = access_armory
 
 /datum/supply_pack/security/riot_gear
 	name = "Gear - Riot"

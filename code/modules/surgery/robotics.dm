@@ -68,6 +68,7 @@
 /datum/surgery_step/robotics/open_hatch
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
 		/obj/item/material/kitchen/utensil = 50
 	)
 
@@ -105,6 +106,7 @@
 /datum/surgery_step/robotics/close_hatch
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
 		/obj/item/material/kitchen/utensil = 50
 	)
 
@@ -472,7 +474,7 @@
 		while(!new_name && target.client)
 			if(!target) return
 			var/try_name = input(target,"Pick a name for your new form!", "New Name", target.name)
-			var/clean_name = sanitizeName(try_name, allow_numbers = TRUE)
+			var/clean_name = sanitizeName(try_name)
 			if(clean_name)
 				var/okay = alert(target,"New name will be '[clean_name]', ok?", "Confirmation","Cancel","Ok")
 				if(okay == "Ok")
@@ -565,7 +567,7 @@
 		while(!new_name)
 			if(!target) return
 			var/try_name = input(target,"Pick a name for your new form!", "New Name", target.name)
-			var/clean_name = sanitizeName(try_name, allow_numbers = TRUE)
+			var/clean_name = sanitizeName(try_name)
 			if(clean_name)
 				var/okay = alert(target,"New name will be '[clean_name]', ok?", "Confirmation","Cancel","Ok")
 				if(okay == "Ok")

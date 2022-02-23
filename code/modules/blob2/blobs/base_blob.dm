@@ -58,6 +58,7 @@ var/list/blobs = list()
 		var/obj/item/projectile/P = mover
 		if(istype(P.firer) && P.firer.faction == "blob")
 			return TRUE
+	return FALSE
 
 /obj/structure/blob/examine(mob/user)
 	. = ..()

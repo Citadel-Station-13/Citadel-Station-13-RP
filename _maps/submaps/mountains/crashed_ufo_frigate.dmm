@@ -10,7 +10,7 @@
 /area/submap/cave/crashed_ufo_frigate)
 "ad" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/crashed_ufo_frigate)
 "ae" = (
 /obj/effect/alien/egg,
 /turf/simulated/shuttle/floor/alienplating,
@@ -35,9 +35,11 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "aj" = (
-/obj/random/outcrop,
-/turf/simulated/floor/outdoors/ice,
-/area/template_noop)
+/obj/machinery/porta_turret/alien/destroyed{
+	dir = 5
+	},
+/turf/simulated/shuttle/floor/alienplating,
+/area/submap/cave/crashed_ufo_frigate)
 "ak" = (
 /obj/machinery/porta_turret/alien{
 	faction = "xeno"
@@ -92,9 +94,6 @@
 /obj/structure/prop/alien/pod/open,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
-"ax" = (
-/turf/simulated/floor/outdoors/ice,
-/area/template_noop)
 "ay" = (
 /obj/structure/loot_pile/surface/bones,
 /turf/simulated/floor/outdoors/ice,
@@ -205,20 +204,20 @@
 /area/submap/cave/crashed_ufo_frigate)
 "aX" = (
 /obj/structure/prop/alien/computer/camera/flipped{
-	icon_state = "camera_flipped";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "aY" = (
 /obj/structure/prop/alien/computer/camera{
-	icon_state = "camera";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "aZ" = (
-/obj/machinery/porta_turret/alien/destroyed,
+/obj/machinery/porta_turret/alien/destroyed{
+	dir = 6
+	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
 "ba" = (
@@ -306,7 +305,6 @@
 /area/submap/cave/crashed_ufo_frigate)
 "br" = (
 /obj/structure/prop/alien/computer{
-	icon_state = "console-c";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -354,21 +352,19 @@
 "bA" = (
 /obj/item/brokenbug,
 /turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
+/area/submap/cave/crashed_ufo_frigate)
 "bB" = (
 /mob/living/simple_mob/animal/space/alien/sentinel,
 /turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo_frigate)
 "bC" = (
 /obj/structure/prop/alien/computer/camera/flipped{
-	icon_state = "camera_flipped";
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alien,
 /area/submap/cave/crashed_ufo_frigate)
 "bD" = (
 /obj/structure/prop/alien/computer/camera{
-	icon_state = "camera";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alien,
@@ -381,10 +377,6 @@
 /obj/structure/prop/blackbox/xenofrigate,
 /turf/simulated/shuttle/floor/alienplating,
 /area/submap/cave/crashed_ufo_frigate)
-"bG" = (
-/obj/random/outcrop,
-/turf/simulated/mineral/floor/ignore_mapgen,
-/area/template_noop)
 "bH" = (
 /obj/structure/loot_pile/maint/junk,
 /turf/simulated/shuttle/floor/alienplating,
@@ -396,7 +388,6 @@
 /area/submap/cave/crashed_ufo_frigate)
 "bJ" = (
 /obj/structure/window/phoronreinforced{
-	icon_state = "phoronrwindow";
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -463,7 +454,6 @@
 /area/submap/cave/crashed_ufo_frigate)
 "bT" = (
 /obj/structure/window/phoronreinforced{
-	icon_state = "phoronrwindow";
 	dir = 8
 	},
 /obj/structure/window/phoronreinforced,
@@ -543,13 +533,6 @@
 (1,1,1) = {"
 aa
 aa
-ad
-aa
-aa
-aa
-aa
-aa
-ad
 aa
 aa
 aa
@@ -559,17 +542,24 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ax
-ax
 aa
 aa
 aa
-ax
-ax
-ad
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -584,15 +574,6 @@ aa
 (2,1,1) = {"
 aa
 aa
-bG
-ax
-aa
-aa
-ad
-ax
-bG
-ad
-ad
 aa
 aa
 aa
@@ -605,18 +586,27 @@ aa
 aa
 aa
 aa
-ad
 aa
 aa
 aa
-ad
-bG
-ax
 aa
 aa
-ad
-ad
-ad
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -624,14 +614,14 @@ aa
 "}
 (3,1,1) = {"
 aa
-ax
-ad
-ax
 aa
-ad
-ad
-ax
-ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -651,26 +641,26 @@ aa
 aa
 aa
 aa
-ad
-ax
-ax
 aa
 aa
-ax
-ad
-ad
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
 "}
 (4,1,1) = {"
-ax
-ax
-ad
-ad
-ad
-ad
-ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -697,20 +687,20 @@ aa
 aa
 aa
 aa
-aj
-ax
-ad
-bG
+aa
+aa
+aa
+aa
 aa
 aa
 "}
 (5,1,1) = {"
-bG
-ad
-ad
-ad
-bG
-ad
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -739,18 +729,18 @@ aa
 aa
 aa
 aa
-ax
-ad
-ax
+aa
+aa
+aa
 aa
 aa
 "}
 (6,1,1) = {"
 aa
-ax
-ad
-ad
-ad
+aa
+aa
+aa
+aa
 aa
 aa
 ab
@@ -780,17 +770,17 @@ ab
 ab
 aa
 aa
-bG
-ad
-ax
-ax
+aa
+aa
+aa
+aa
 aa
 "}
 (7,1,1) = {"
 aa
-ax
-ax
-ad
+aa
+aa
+aa
 aa
 aa
 ab
@@ -822,15 +812,15 @@ ab
 ab
 aa
 aa
-ad
-ad
-ax
+aa
+aa
+aa
 aa
 "}
 (8,1,1) = {"
 aa
-bG
-ax
+aa
+aa
 aa
 aa
 ab
@@ -864,8 +854,8 @@ ab
 ab
 aa
 aa
-bG
-ad
+aa
+aa
 aa
 "}
 (9,1,1) = {"
@@ -906,7 +896,7 @@ ab
 ab
 aa
 aa
-ad
+aa
 aa
 "}
 (10,1,1) = {"
@@ -1686,11 +1676,11 @@ ab
 ab
 aa
 aa
-bG
+aa
 "}
 (29,1,1) = {"
 aa
-aj
+aa
 aa
 aa
 ab
@@ -1726,13 +1716,13 @@ ab
 ab
 aa
 aa
-ad
-ad
+aa
+aa
 "}
 (30,1,1) = {"
 aa
-ax
-ad
+aa
+aa
 aa
 aa
 ab
@@ -1767,14 +1757,14 @@ ab
 aa
 aa
 aa
-ad
+aa
 aa
 "}
 (31,1,1) = {"
 aa
-ad
-ax
-ad
+aa
+aa
+aa
 aa
 aa
 ab
@@ -1807,15 +1797,15 @@ ab
 aa
 aa
 aa
-ad
-ax
+aa
+aa
 aa
 "}
 (32,1,1) = {"
 aa
 aa
-ad
-bG
+aa
+aa
 aa
 aa
 aa
@@ -1847,17 +1837,17 @@ ab
 aa
 aa
 aa
-bG
-ad
-ax
+aa
+aa
+aa
 aa
 "}
 (33,1,1) = {"
 aa
 aa
-ad
-ad
-ad
+aa
+aa
+aa
 aa
 aa
 aa
@@ -1887,22 +1877,22 @@ aa
 aa
 aa
 aa
-ax
-ad
-ad
-bG
+aa
+aa
+aa
+aa
 aa
 "}
 (34,1,1) = {"
 aa
-ad
-ax
-ad
-ad
-ad
-ax
-ax
-aj
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 ab
@@ -1927,24 +1917,24 @@ aa
 aa
 aa
 aa
-ad
-ax
-ad
-ad
+aa
+aa
+aa
+aa
 aa
 aa
 "}
 (35,1,1) = {"
 aa
-ax
-ax
 aa
-ad
-ad
-ad
-ad
-ax
-ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -1967,52 +1957,52 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-ad
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
 (36,1,1) = {"
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+al
+ad
+ad
+ad
+ad
 aj
-aa
-aa
-ax
-ad
-ad
-aa
-aa
-aa
-aa
-aa
-aa
-ax
-ad
-ad
-ad
-ad
-aZ
 ac
 aZ
 ad
 ad
 ad
-ax
+al
 aa
 aa
 aa
 aa
 aa
 aa
-ad
-ad
-ad
-ad
-ax
-ax
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -2021,9 +2011,6 @@ aa
 aa
 aa
 aa
-ax
-ax
-ad
 aa
 aa
 aa
@@ -2032,28 +2019,31 @@ aa
 aa
 aa
 aa
-ax
-ax
-ad
-ad
+aa
+aa
+aa
+al
+al
 ad
 ad
 ad
 ad
 ad
-aa
-aa
-aa
-aa
-aa
-aa
-ad
-bG
 ad
 ad
-ad
-ax
-bG
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 "}
@@ -2062,8 +2052,8 @@ aa
 aa
 aa
 aa
-ad
-aj
+aa
+aa
 aa
 aa
 aa
@@ -2079,8 +2069,8 @@ ad
 ad
 bA
 ad
-ax
-ax
+al
+al
 aa
 aa
 aa
@@ -2088,12 +2078,12 @@ aa
 aa
 aa
 aa
-ad
-ad
-ad
 aa
-ad
-ad
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa

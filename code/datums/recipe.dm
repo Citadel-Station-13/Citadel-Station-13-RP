@@ -194,9 +194,11 @@
 	if (items && items.len)
 		for (var/i in items)
 			var/obj/item/I = locate(i) in container
-			if (I && I.reagents)
+			if(!I)
+				continue
+			if(I.reagents)
 				I.reagents.trans_to_holder(temp.reagents,I.reagents.total_volume)
-				qdel(I)
+			qdel(I)
 
 	//Find fruits
 	if (fruit && fruit.len)

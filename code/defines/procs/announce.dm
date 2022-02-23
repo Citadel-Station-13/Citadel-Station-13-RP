@@ -32,7 +32,7 @@
 	title = "Security Announcement"
 	announcement_type = "Security Announcement"
 
-/datum/announcement/proc/Announce(var/message as text, var/new_title = "", var/new_sound = null, var/do_newscast = newscast, var/msg_sanitized = 0)
+/datum/announcement/proc/Announce(var/message as text, var/new_title = "", var/new_sound = null, var/do_newscast = newscast, var/msg_sanitized = 0, zlevel)
 	if(!message)
 		return
 	var/message_title = new_title ? new_title : title
@@ -42,26 +42,35 @@
 		message = sanitize(message, extra = 0)
 	message_title = sanitizeSafe(message_title)
 
-	Message(message, message_title)
+	var/list/zlevels
+	if(zlevel)
+		zlevels = GLOB.using_map.get_map_levels(zlevel, TRUE)
+
+	Message(message, message_title, zlevels)
 	if(do_newscast)
 		NewsCast(message, message_title)
-	Sound(message_sound)
+	Sound(message_sound, zlevels)
 	Log(message, message_title)
 
-datum/announcement/proc/Message(message as text, message_title as text)
-	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME)
+/datum/announcement/proc/Message(message as text, message_title as text, var/list/zlevels)
+	for(var/mob/M in player_list)
+		if(!istype(M,/mob/new_player) && !isdeaf(M))
+			to_chat(M, "<h2 class='alert'>[title]</h2>")
+			to_chat(M, "<span class='alert'>[message]</span>")
+			if (announcer)
+				to_chat(M, "<span class='alert'> -[html_encode(announcer)]</span>")
 
-datum/announcement/minor/Message(message as text, message_title as text)
-	global_announcer.autosay(message, announcer ? announcer : ANNOUNCER_NAME)
+/datum/announcement/minor/Message(message as text, message_title as text, var/list/zlevels)
+	GLOB.global_announcer.autosay(message, announcer ? announcer : ANNOUNCER_NAME, channel = "Common", zlevels = zlevels)
 
-datum/announcement/priority/Message(message as text, message_title as text)
-	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME)
+/datum/announcement/priority/Message(var/message as text, var/message_title as text, var/list/zlevels)
+	GLOB.global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", announcer ? announcer : ANNOUNCER_NAME, channel = "Common", zlevels = zlevels)
 
-datum/announcement/priority/command/Message(message as text, message_title as text)
-	global_announcer.autosay("<span class='alert'>[command_name()] - [message_title]:</span> [message]", ANNOUNCER_NAME)
+/datum/announcement/priority/command/Message(var/message as text, var/message_title as text, var/list/zlevels)
+	GLOB.global_announcer.autosay("<span class='alert'>[command_name()] - [message_title]:</span> [message]", ANNOUNCER_NAME, channel = "Common", zlevels = zlevels)
 
-datum/announcement/priority/security/Message(message as text, message_title as text)
-	global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", ANNOUNCER_NAME)
+/datum/announcement/priority/security/Message(var/message as text, var/message_title as text, var/list/zlevels)
+	GLOB.global_announcer.autosay("<span class='alert'>[message_title]:</span> [message]", ANNOUNCER_NAME, channel = "Common", zlevels = zlevels)
 
 datum/announcement/proc/NewsCast(message as text, message_title as text)
 	if(!newscast)
@@ -75,15 +84,25 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 	news.can_be_redacted = 0
 	announce_newscaster_news(news)
 
-datum/announcement/proc/PlaySound(var/message_sound)
+/datum/announcement/proc/PlaySound(var/message_sound, var/list/zlevels)
+	for(var/mob/M in player_list)
+		if(zlevels && !(M.z in zlevels))
+			continue
+		if(!istype(M,/mob/new_player) && !isdeaf(M))
+			SEND_SOUND(M, 'sound/AI/preamble.ogg')
+
 	if(!message_sound)
 		return
-	for(var/mob/M in player_list)
-		if(!istype(M,/mob/new_player) && !isdeaf(M))
-			SEND_SOUND(M, message_sound)
 
-datum/announcement/proc/Sound(var/message_sound)
-	PlaySound(message_sound)
+	spawn(22) // based on length of preamble.ogg + arbitrary delay
+		for(var/mob/M in player_list)
+			if(zlevels && !(M.z in zlevels))
+				continue
+			if(!istype(M,/mob/new_player) && !isdeaf(M))
+				SEND_SOUND(M, message_sound)
+
+/datum/announcement/proc/Sound(var/message_sound, var/list/zlevels)
+	PlaySound(message_sound, zlevels)
 
 datum/announcement/priority/Sound(var/message_sound)
 	if(message_sound)
@@ -114,4 +133,4 @@ datum/announcement/proc/Log(message as text, message_title as text)
 		AnnounceArrivalSimple(character.real_name, rank, join_message)
 
 /proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "will arrive at the station shortly") //VOREStation Edit - Remove shuttle reference
-	global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer")
+	GLOB.global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer")

@@ -78,15 +78,15 @@ obj/var/contaminated = 0
 		var/burn_eyes = 1
 
 		//Check for protective glasses
-		if(glasses && (glasses.body_parts_covered & EYES) && (glasses.item_flags & AIRTIGHT))
+		if(glasses && (glasses.body_parts_covered & EYES) && (glasses.item_flags & ALLOWINTERNALS))
 			burn_eyes = 0
 
 		//Check for protective maskwear
-		if(burn_eyes && wear_mask && (wear_mask.body_parts_covered & EYES) && (wear_mask.item_flags & AIRTIGHT))
+		if(burn_eyes && wear_mask && (wear_mask.body_parts_covered & EYES) && (wear_mask.item_flags & ALLOWINTERNALS))
 			burn_eyes = 0
 
 		//Check for protective helmets
-		if(burn_eyes && head && (head.body_parts_covered & EYES) && (head.item_flags & AIRTIGHT))
+		if(burn_eyes && head && (head.body_parts_covered & EYES) && (head.item_flags & ALLOWINTERNALS))
 			burn_eyes = 0
 
 		//VOREStation Edit - NIF Support

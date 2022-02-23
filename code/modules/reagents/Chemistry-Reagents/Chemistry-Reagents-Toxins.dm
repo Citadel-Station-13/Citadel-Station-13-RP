@@ -185,6 +185,15 @@
 	if(prob(5))
 		M.vomit()
 
+/datum/reagent/toxin/mold/miasma
+	name = "Miasma"
+	id = "miasma"
+	description = "A toxic cloud of decay, caused by the rotting of corpses."
+	taste_description = "rot and decay"
+	reagent_state = REAGENT_GAS
+	color = "#006000"
+	strength = 10
+
 /datum/reagent/toxin/expired_medicine
 	name = "Expired Medicine"
 	id = "expired_medicine"
@@ -385,18 +394,36 @@
 		alien_weeds.healthcheck()
 
 /datum/reagent/toxin/plantbgone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_DIONA)
-		M.adjustToxLoss(50 * removed)
-
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(50 * removed)
 
 /datum/reagent/toxin/plantbgone/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
-	if(alien == IS_DIONA)
-		M.adjustToxLoss(50 * removed)
-
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(50 * removed)
+
+/datum/reagent/toxin/pestbgone
+	name = "Pest-B-Gone"
+	id = "pestbgone"
+	description = "A harmful toxic mixture designed to kill insects and pests. Do not ingest!"
+	taste_mult = 1
+	reagent_state = REAGENT_LIQUID
+	color = "#8FB97C"
+	strength = 4
+
+/datum/reagent/toxin/pestbgone/touch_obj(var/mob/living/simple_mob/animal/A, var/removed)
+	if(istype(A, /mob/living/simple_mob/animal/roach))
+		A.adjustToxLoss(10 * removed)
+	else if(istype(A, /mob/living/simple_mob/animal/giant_spider))
+		A.adjustToxLoss(5 * removed)
+
+/datum/reagent/toxin/pestbgone/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_APIDAEN)
+		M.adjustToxLoss(50 * removed)
+
+/datum/reagent/toxin/pestbgone/affect_touch(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_APIDAEN)
+		M.adjustToxLoss(50 * removed)
+
 /datum/reagent/toxin/sifslurry
 	name = "Sivian Sap"
 	id = "sifsap"

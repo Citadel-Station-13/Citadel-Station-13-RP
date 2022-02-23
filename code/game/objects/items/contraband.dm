@@ -123,9 +123,11 @@
 						/obj/item/rig/combat,
 						/obj/item/shield/energy,
 						/obj/item/stamp/centcomm,
-						/obj/item/stamp/solgov,
+						/obj/item/stamp/oricon,
 						/obj/item/storage/fancy/cigar/havana,
 						/obj/item/storage/fancy/cigar/cohiba,
+						/obj/item/storage/fancy/cigar/taj,
+						/obj/item/storage/fancy/cigar/taj/premium,
 						/obj/item/xenos_claw,
 						/obj/random/contraband,
 						/obj/random/contraband,
@@ -148,6 +150,21 @@
 	desc = "If Havana cigars were meant for the black tie reception, then these are meant to be family heirlooms instead of being smoked. These are the pinnacle of smoking luxury, make no mistake."
 	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba)
 	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba = 7)
+
+/obj/item/storage/fancy/cigar/taj
+	name = "\improper S'rendarr's Hand case"
+	desc = "A luxury medicinal cigar exported from Adhomai. The trifecta flag on the case showing a symbol of unity amongst producers of S'rendarr's from all Tajaran nations."
+	icon_state = "cigarcase-taj"
+	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj)
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj = 7)
+
+/obj/item/storage/fancy/cigar/taj/premium
+	name = "\improper S'rendarr's Own case"
+	desc = "Truly luxurious medicinal cigars bearing the proof marks of the Confederate Commonwealth, the \"united\" galactic lobbying body of all three Tajaran states, marking these cigars as the best Adhomai has to offer."
+	icon_state = "cigarcase-tajalt"
+	can_hold = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium)
+	starts_with = list(/obj/item/clothing/mask/smokable/cigarette/cigar/taj/premium = 7)
+
 
 /obj/item/stolenpackageplus
 	name = "curated stolen package"
@@ -201,9 +218,11 @@
 						/obj/item/rig/combat,
 						/obj/item/shield/energy,
 						/obj/item/stamp/centcomm,
-						/obj/item/stamp/solgov,
+						/obj/item/stamp/oricon,
 						/obj/item/storage/fancy/cigar/havana,
 						/obj/item/storage/fancy/cigar/cohiba,
+						/obj/item/storage/fancy/cigar/taj,
+						/obj/item/storage/fancy/cigar/taj/premium,
 						/obj/item/storage/belt/spike_bandolier,
 						/obj/random/weapon/guarenteed)
 		new loot(usr.drop_location())

@@ -1,4 +1,18 @@
  //Fodder
+
+/datum/category_item/catalogue/fauna/cyberhorror
+	name = "Cyber Horror"
+	desc = "First witnessed on Surt, the entities hence dubbed 'Cyber Horrors' have \
+	begun to appear at various sites across the Frontier. Based on recordings and logs \
+	found at the mining colony on Surt, these creatures were created via the introduction \
+	of an unidentified Nanite pathogen into organic hosts. The infestation of the host was \
+	treated by the workers on Surt as a form of religious ritual intended to bring the \
+	victim closer to the creators of the pathogen. After those who resisted the plague on \
+	Surt fell, the perpetrators of the incident are believed to have escaped to spread \
+	the affliction to other hosts."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/cyberhorror)
+
 /mob/living/simple_mob/mechanical/cyber_horror
 	name = "Cyber horror"
 	desc = "What was once a man, twisted and warped by machine."
@@ -6,6 +20,7 @@
 	icon_state = "cyber_horror"
 	icon_dead = "cyber_horror_dead"
 	icon_gib = "cyber_horror_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cyberhorror)
 
 	faction = "synthtide"
 
@@ -67,6 +82,9 @@
 	var/poison_per_bite = 3
 	var/poison_type = "neurophage_nanites"
 
+	bone_amount = 8
+	bone_type = /obj/item/stack/material/bone
+
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/apply_melee_effects(var/atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
@@ -117,6 +135,9 @@
  // How long the leap telegraphing is.
 	var/leap_warmup = 2 SECOND
 	var/leap_sound = 'sound/weapons/spiderlunge.ogg'
+
+	exotic_amount = 10
+	exotic_type = /obj/item/stack/sinew
 
  // Multiplies damage if the victim is stunned in some form, including a successful leap.
 /mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/apply_bonus_melee_damage(atom/A, damage_amount)
@@ -186,6 +207,12 @@
 
 	armor = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
+
+	meat_amount = 2
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
+	bone_amount = 2
+	bone_type = /obj/item/stack/material/bone
+
  // Hit and run mob
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran
 	name = "Tajaran cyber stalker"
@@ -196,77 +223,82 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
 
-	var/cloaked = FALSE
+	var/stealthed = FALSE
  // Lower = Harder to see.
-	var/cloaked_alpha = 30
+	var/stealthed_alpha = 30
  // This is added on top of the normal melee damage.
-	var/cloaked_bonus_damage = 30
+	var/stealthed_bonus_damage = 30
  // How long to stun for.
-	var/cloaked_weaken_amount = 3
- // Amount of time needed to re-cloak after losing it.
-	var/cloak_cooldown = 10 SECONDS
+	var/stealthed_weaken_amount = 3
+ // Amount of time needed to re-stealth after losing it.
+	var/stealth_cooldown = 10 SECONDS
  // world.time
-	var/last_uncloak = 0
+	var/last_unstealth = 0
+
+	bone_amount = 2
+	bone_type = /obj/item/stack/material/bone
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/grey
 
 
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/cloak()
-	if(cloaked)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/stealth()
+	if(stealthed)
 		return
-	animate(src, alpha = cloaked_alpha, time = 1 SECOND)
-	cloaked = TRUE
+	animate(src, alpha = stealthed_alpha, time = 1 SECOND)
+	stealthed = TRUE
 
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/uncloak()
- // This is assigned even if it isn't cloaked already, to 'reset' the timer if the spider is continously getting attacked.
-	last_uncloak = world.time
-	if(!cloaked)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/unstealth()
+ // This is assigned even if it isn't stealthed already, to 'reset' the timer if the spider is continously getting attacked.
+	last_unstealth = world.time
+	if(!stealthed)
 		return
 	animate(src, alpha = initial(alpha), time = 1 SECOND)
-	cloaked = FALSE
+	stealthed = FALSE
 
 
-// Check if cloaking if possible.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/can_cloak()
+// Check if stealthing if possible.
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/can_stealth()
 	if(stat)
 		return FALSE
-	if(last_uncloak + cloak_cooldown > world.time)
+	if(last_unstealth + stealth_cooldown > world.time)
 		return FALSE
 
 	return TRUE
 
 
-// Called by things that break cloaks, like Technomancer wards.
+// Called by things that break stealths, like Technomancer wards.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/break_cloak()
-	uncloak()
+	unstealth()
 
 
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/is_cloaked()
-	return cloaked
+	return stealthed
 
 
 // Cloaks the tajaran automatically, if possible.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/handle_special()
-	if(!cloaked && can_cloak())
-		cloak()
+	if(!stealthed && can_stealth())
+		stealth()
 
 
-// Applies bonus base damage if cloaked.
+// Applies bonus base damage if stealthed.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/apply_bonus_melee_damage(atom/A, damage_amount)
-	if(cloaked)
-		return damage_amount + cloaked_bonus_damage
+	if(stealthed)
+		return damage_amount + stealthed_bonus_damage
 	return ..()
 
-// Applies stun, then uncloaks.
+// Applies stun, then unstealths.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/apply_melee_effects(atom/A)
-	if(cloaked)
+	if(stealthed)
 		if(isliving(A))
 			var/mob/living/L = A
-			L.Weaken(cloaked_weaken_amount)
+			L.Weaken(stealthed_weaken_amount)
 			to_chat(L, span("danger", "\The [src] tears into you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
-	uncloak()
+	unstealth()
 	..() // For the poison.
 
-// Force uncloaking if attacked.
+// Force unstealthing if attacked.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/bullet_act(obj/item/projectile/P)
 	. = ..()
 	break_cloak()

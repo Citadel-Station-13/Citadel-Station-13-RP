@@ -1,7 +1,16 @@
+/datum/category_item/catalogue/fauna/panther
+	name = "Panther"
+	desc = "Sometimes imported to the Frontier by exotic animal collectors, \
+	Panthers are big cats native to Earth. Driven to near extinction after \
+	the Final War, they have since seen a resurgence in population due to cloning \
+	and environmentalist initiatives."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/aggressive/panther
 	name = "panther"
 	desc = "Runtime's larger, less cuddly cousin."
 	tt_desc = "Panthera pardus"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/panther)
 
 	icon_state = "panther"
 	icon_living = "panther"
@@ -11,6 +20,7 @@
 	faction = "panther"
 	maxHealth = 200
 	health = 200
+	randomized = TRUE
 	movement_cooldown = 4
 
 	melee_damage_lower = 5

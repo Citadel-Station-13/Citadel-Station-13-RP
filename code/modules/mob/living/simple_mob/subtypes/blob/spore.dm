@@ -3,9 +3,19 @@
 // When attacking, spores will hit harder if near other friendly spores.
 // Some blobs can infest dead non-robotic mobs, making them into Not Zombies.
 
+/datum/category_item/catalogue/fauna/blob/spore
+	name = "Blob - Spore"
+	desc = "Formed as a dual-purpose offensive/defensive solution, the Blob Spore \
+	works to deter aggression. When destroyed, spores release clouds of gas - sometimes \
+	toxic, based on the chemical makeup of their orignator's gelatin structure. On top \
+	of this, Spores are able to infest the corpses of nearby organic life and pilot it \
+	for their own purposes, turning into fragile, yet tenacious 'blob zombies'."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/blob/spore
 	name = "blob spore"
 	desc = "A floating, fragile spore."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/blob/spore)
 
 	icon_state = "blobpod"
 	icon_living = "blobpod"

@@ -144,6 +144,12 @@ var/last_chew = 0
 	desc = "Use this to keep... 'prisoners' in line."
 	breakouttime = 30 //3sec breakout time. why did this not exist before. bruh moment.
 
+/obj/item/handcuffs/sinew
+	name = "sinew cuffs"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "sinewcuff"
+	desc = "A complex weave of sinew repurposed as handcuffs."
+
 /obj/item/handcuffs/cable
 	name = "cable restraints"
 	desc = "Looks like some cables tied together. Could be used to tie something up."
@@ -202,6 +208,25 @@ var/last_chew = 0
 
 /obj/item/handcuffs/cable/tape/cyborg
 	dispenser = TRUE
+
+/obj/item/handcuffs/disruptor
+	name = "disruptor cuffs"
+	icon_state = "disruptorcuff"
+	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acuasal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
+
+/obj/item/handcuffs/disruptor/get_worn_icon_state(var/slot_name)
+	if(slot_name == slot_handcuffed_str)
+		return "disruptorcuff1" //Simple
+
+	return ..()
+
+/obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
+	. = ..()
+	if(slot == slot_handcuffed)
+		user.drop_r_hand()
+		user.drop_l_hand()
+		user.stop_pulling()
+		ADD_TRAIT(user, TRAIT_DISRUPTED, CLOTHING_TRAIT)
 
 //Legcuffs. Not /really/ handcuffs, but its close enough.
 /obj/item/handcuffs/legcuffs
@@ -299,10 +324,18 @@ var/last_chew = 0
 			if(user.hud_used && user.hud_used.move_intent)
 				user.hud_used.move_intent.icon_state = "walking"
 
+/obj/item/handcuffs/legcuffs/fuzzy
+	name = "fuzzy legcuffs"
+	desc = "Use this to keep... 'prisoners' in line."
+	icon = 'icons/obj/items_vr.dmi'
+	icon_state = "fuzzylegcuff"
+	breakouttime = 30 //3sec
+
 
 /obj/item/handcuffs/legcuffs/bola
 	name = "bola"
-	desc = "Keeps prey in line."
+	desc = "A ranged snare used to tangle up a target's legs."
+	icon_state = "bola"
 	elastic = 1
 	use_time = 0
 	breakouttime = 30
@@ -312,10 +345,9 @@ var/last_chew = 0
 	if(user) //A ranged legcuff, until proper implementation as items it remains a projectile-only thing.
 		return 1
 
-/obj/item/handcuffs/legcuffs/bola/dropped()
-	. = ..()
-	visible_message("<span class='notice'>\The [src] falls apart!</span>")
-	qdel(src)
+/obj/item/handcuffs/legcuffs/bola/throw_impact(var/atom/target, var/mob/user)
+	var/mob/living/L = target
+	place_legcuffs(L, user)
 
 /obj/item/handcuffs/legcuffs/bola/place_legcuffs(var/mob/living/carbon/target, var/mob/user)
 	playsound(src.loc, cuff_sound, 30, 1, -2)
@@ -343,9 +375,27 @@ var/last_chew = 0
 			target.hud_used.move_intent.icon_state = "walking"
 	return 1
 
-/obj/item/handcuffs/legcuffs/fuzzy
-	name = "fuzzy legcuffs"
-	desc = "Use this to keep... 'prisoners' in line."
-	icon = 'icons/obj/items_vr.dmi'
-	icon_state = "fuzzylegcuff"
-	breakouttime = 30 //3sec
+/obj/item/handcuffs/legcuffs/bola/tactical
+	name = "reinforced bola"
+	desc = "A strong bola, made with a long steel chain. It looks heavy, enough so that it could trip somebody."
+	icon_state = "bola_r"
+	breakouttime = 70
+
+/obj/item/handcuffs/legcuffs/bola/cult
+	name = "\improper paranatural bola"
+	desc = "A strong bola, bound with dark magic that allows it to pass harmlessly through allied cultists. Throw it to trip and slow your victim."
+	icon_state = "bola_cult"
+	breakouttime = 60
+
+/obj/item/handcuffs/legcuffs/bola/cult/pickup(mob/living/user)
+	. = ..()
+	if(!iscultist(user))
+		to_chat(user, "<span class='warning'>The bola seems to take on a life of its own!</span>")
+		place_legcuffs(user)
+
+/obj/item/handcuffs/legcuffs/bola/cult/throw_impact(var/atom/target, var/mob/user, mob/living/carbon/human/H)
+	if(iscultist(user))
+		return
+	if(H.mind.isholy)
+		return
+	. = ..()

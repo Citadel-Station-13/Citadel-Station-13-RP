@@ -49,7 +49,7 @@ OPTIONAL: steam.attach(mob)
 steam.start() -- spawns the effect
 */
 /////////////////////////////////////////////
-/obj/effect/effect/steam
+/obj/effect/steam
 	name = "steam"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
@@ -70,7 +70,7 @@ steam.start() -- spawns the effect
 			spawn(0)
 				if(holder)
 					src.location = get_turf(holder)
-				var/obj/effect/effect/steam/steam = new /obj/effect/effect/steam(src.location)
+				var/obj/effect/steam/steam = new /obj/effect/steam(src.location)
 				var/direction
 				if(src.cardinals)
 					direction = pick(GLOB.cardinal)
@@ -89,14 +89,15 @@ steam.start() -- spawns the effect
 // will always spawn at the items location.
 /////////////////////////////////////////////
 
-/obj/effect/effect/sparks
+/obj/effect/sparks
 	name = "sparks"
+	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
 	var/amount = 6.0
 	anchored = 1.0
 	mouse_opacity = 0
 
-/obj/effect/effect/sparks/Initialize(mapload)
+/obj/effect/sparks/Initialize(mapload)
 	. = ..()
 	playsound(src, "sparks", 100, 1)
 	var/turf/T = src.loc
@@ -104,13 +105,13 @@ steam.start() -- spawns the effect
 		T.hotspot_expose(1000,100)
 	QDEL_IN(src, 5 SECONDS)
 
-/obj/effect/effect/sparks/Destroy()
+/obj/effect/sparks/Destroy()
 	var/turf/T = src.loc
 	if (istype(T, /turf))
 		T.hotspot_expose(1000,100)
 	return ..()
 
-/obj/effect/effect/sparks/Move()
+/obj/effect/sparks/Move()
 	..()
 	var/turf/T = src.loc
 	if (istype(T, /turf))
@@ -138,7 +139,7 @@ steam.start() -- spawns the effect
 			spawn(0)
 				if(holder)
 					src.location = get_turf(holder)
-				var/obj/effect/effect/sparks/sparks = new /obj/effect/effect/sparks(src.location)
+				var/obj/effect/sparks/sparks = new /obj/effect/sparks(src.location)
 				src.total_sparks++
 				var/direction
 				if(src.cardinals)
@@ -160,7 +161,7 @@ steam.start() -- spawns the effect
 /////////////////////////////////////////////
 
 
-/obj/effect/effect/smoke
+/obj/effect/smoke
 	name = "smoke"
 	icon_state = "smoke"
 	opacity = 1
@@ -174,26 +175,26 @@ steam.start() -- spawns the effect
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/effect/smoke/Initialize(mapload)
+/obj/effect/smoke/Initialize(mapload)
 	. = ..()
 	if(time_to_live)
 		QDEL_IN(src, time_to_live)
 
-/obj/effect/effect/smoke/Crossed(mob/living/carbon/M as mob )
+/obj/effect/smoke/Crossed(mob/living/carbon/M as mob )
 	if(M.is_incorporeal())
 		return
 	..()
 	if(istype(M))
 		affect(M)
 
-/obj/effect/effect/smoke/proc/affect(var/mob/living/carbon/M)
+/obj/effect/smoke/proc/affect(var/mob/living/carbon/M)
 	if (!istype(M))
 		return 0
-	if(M.wear_mask && (M.wear_mask.item_flags & AIRTIGHT))
+	if(M.wear_mask && (M.wear_mask.item_flags & ALLOWINTERNALS))
 		return 0
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
-		if(H.head && (H.head.item_flags & AIRTIGHT))
+		if(H.head && (H.head.item_flags & ALLOWINTERNALS))
 			return 0
 	return 1
 
@@ -201,13 +202,13 @@ steam.start() -- spawns the effect
 // Illumination
 /////////////////////////////////////////////
 
-/obj/effect/effect/smoke/illumination
+/obj/effect/smoke/illumination
 	name = "illumination"
 	opacity = 0
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
 
-/obj/effect/effect/smoke/illumination/Initialize(mapload, lifetime = 10, range, power, color)
+/obj/effect/smoke/illumination/Initialize(mapload, lifetime = 10, range, power, color)
 	time_to_live=lifetime
 	. = ..(mapload)
 	set_light(range, power, color)
@@ -216,16 +217,16 @@ steam.start() -- spawns the effect
 // Bad smoke
 /////////////////////////////////////////////
 
-/obj/effect/effect/smoke/bad
+/obj/effect/smoke/bad
 	time_to_live = 600
 	//var/list/projectiles
 
-/obj/effect/effect/smoke/bad/Move()
+/obj/effect/smoke/bad/Move()
 	..()
 	for(var/mob/living/L in get_turf(src))
 		affect(L)
 
-/obj/effect/effect/smoke/bad/affect(var/mob/living/L)
+/obj/effect/smoke/bad/affect(var/mob/living/L)
 	if (!..())
 		return 0
 	if(L.needs_to_breathe())
@@ -234,18 +235,18 @@ steam.start() -- spawns the effect
 			L.emote("cough")
 
 /* Not feasile until a later date
-/obj/effect/effect/smoke/bad/Crossed(atom/movable/M as mob|obj)
+/obj/effect/smoke/bad/Crossed(atom/movable/M as mob|obj)
 	..()
 	if(istype(M, /obj/item/projectile/beam))
 		var/obj/item/projectile/beam/B = M
 		if(!(B in projectiles))
 			B.damage = (B.damage/2)
 			projectiles += B
-			destroyed_event.register(B, src, /obj/effect/effect/smoke/bad/proc/on_projectile_delete)
+			destroyed_event.register(B, src, /obj/effect/smoke/bad/proc/on_projectile_delete)
 		to_chat(world, "Damage is: [B.damage]")
 	return 1
 
-/obj/effect/effect/smoke/bad/proc/on_projectile_delete(obj/item/projectile/beam/proj)
+/obj/effect/smoke/bad/proc/on_projectile_delete(obj/item/projectile/beam/proj)
 	projectiles -= proj
 */
 
@@ -253,31 +254,31 @@ steam.start() -- spawns the effect
 // 'Elemental' smoke
 /////////////////////////////////////////////
 
-/obj/effect/effect/smoke/elemental
+/obj/effect/smoke/elemental
 	name = "cloud"
 	desc = "A cloud of some kind that seems really generic and boring."
 	opacity = FALSE
 	var/strength = 5 // How much damage to do inside each affect()
 
-/obj/effect/effect/smoke/elemental/Initialize(mapload)
+/obj/effect/smoke/elemental/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/effect/smoke/elemental/Destroy()
+/obj/effect/smoke/elemental/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/effect/smoke/elemental/Move()
+/obj/effect/smoke/elemental/Move()
 	..()
 	for(var/mob/living/L in range(1, src))
 		affect(L)
 
-/obj/effect/effect/smoke/elemental/process(delta_time)
+/obj/effect/smoke/elemental/process(delta_time)
 	for(var/mob/living/L in range(1, src))
 		affect(L)
 
 
-/obj/effect/effect/smoke/elemental/fire
+/obj/effect/smoke/elemental/fire
 	name = "burning cloud"
 	desc = "A cloud of something that is on fire."
 	color = "#FF9933"
@@ -285,34 +286,34 @@ steam.start() -- spawns the effect
 	light_range = 2
 	light_power = 5
 
-/obj/effect/effect/smoke/elemental/fire/affect(mob/living/L)
+/obj/effect/smoke/elemental/fire/affect(mob/living/L)
 	L.inflict_heat_damage(strength)
 	L.add_modifier(/datum/modifier/fire, 6 SECONDS) // Around 15 damage per stack.
 
-/obj/effect/effect/smoke/elemental/frost
+/obj/effect/smoke/elemental/frost
 	name = "freezing cloud"
 	desc = "A cloud filled with brutally cold mist."
 	color = "#00CCFF"
 
-/obj/effect/effect/smoke/elemental/frost/affect(mob/living/L)
+/obj/effect/smoke/elemental/frost/affect(mob/living/L)
 	L.inflict_cold_damage(strength)
 
-/obj/effect/effect/smoke/elemental/shock
+/obj/effect/smoke/elemental/shock
 	name = "charged cloud"
 	desc = "A cloud charged with electricity."
 	color = "#4D4D4D"
 
-/obj/effect/effect/smoke/elemental/shock/affect(mob/living/L)
+/obj/effect/smoke/elemental/shock/affect(mob/living/L)
 	L.inflict_shock_damage(strength)
 
-/obj/effect/effect/smoke/elemental/mist
+/obj/effect/smoke/elemental/mist
 	name = "misty cloud"
 	desc = "A cloud filled with water vapor."
 	color = "#CCFFFF"
 	alpha = 128
 	strength = 1
 
-/obj/effect/effect/smoke/elemental/mist/affect(mob/living/L)
+/obj/effect/smoke/elemental/mist/affect(mob/living/L)
 	L.water_act(strength)
 
 /////////////////////////////////////////////
@@ -322,7 +323,7 @@ steam.start() -- spawns the effect
 /datum/effect_system/smoke_spread
 	var/total_smoke = 0 // To stop it being spammed and lagging!
 	var/direction
-	var/smoke_type = /obj/effect/effect/smoke
+	var/smoke_type = /obj/effect/smoke
 
 /datum/effect_system/smoke_spread/set_up(n = 5, c = 0, loca, direct)
 	if(n > 10)
@@ -344,7 +345,7 @@ steam.start() -- spawns the effect
 		spawn(0)
 			if(holder)
 				src.location = get_turf(holder)
-			var/obj/effect/effect/smoke/smoke = new smoke_type(src.location)
+			var/obj/effect/smoke/smoke = new smoke_type(src.location)
 			src.total_smoke++
 			if(I)
 				smoke.color = I
@@ -362,19 +363,19 @@ steam.start() -- spawns the effect
 				src.total_smoke--
 
 /datum/effect_system/smoke_spread/bad
-	smoke_type = /obj/effect/effect/smoke/bad
+	smoke_type = /obj/effect/smoke/bad
 
 /datum/effect_system/smoke_spread/fire
-	smoke_type = /obj/effect/effect/smoke/elemental/fire
+	smoke_type = /obj/effect/smoke/elemental/fire
 
 /datum/effect_system/smoke_spread/frost
-	smoke_type = /obj/effect/effect/smoke/elemental/frost
+	smoke_type = /obj/effect/smoke/elemental/frost
 
 /datum/effect_system/smoke_spread/shock
-	smoke_type = /obj/effect/effect/smoke/elemental/shock
+	smoke_type = /obj/effect/smoke/elemental/shock
 
 /datum/effect_system/smoke_spread/mist
-	smoke_type = /obj/effect/effect/smoke/elemental/mist
+	smoke_type = /obj/effect/smoke/elemental/mist
 
 /////////////////////////////////////////////
 //////// Attach an Ion trail to any object, that spawns when it moves (like for the jetpack)
@@ -383,7 +384,7 @@ steam.start() -- spawns the effect
 /// and don't call start() in a loop that will be repeated otherwise it'll get spammed!
 /////////////////////////////////////////////
 
-/obj/effect/effect/ion_trails
+/obj/effect/ion_trails
 	name = "ion trails"
 	icon_state = "ion_trails"
 	anchored = 1.0
@@ -412,7 +413,7 @@ steam.start() -- spawns the effect
 	var/turf/current = get_turf(holder)
 	if(current != oldposition)
 		if(isturf(current))
-			var/obj/effect/effect/ion_trails/I = new /obj/effect/effect/ion_trails(oldposition)
+			var/obj/effect/ion_trails/I = new /obj/effect/ion_trails(oldposition)
 			oldposition = current
 			I.setDir(src.holder.dir)
 			flick("ion_fade", I)
@@ -448,7 +449,7 @@ steam.start() -- spawns the effect
 			src.processing = 0
 			spawn(0)
 				if(src.number < 3)
-					var/obj/effect/effect/steam/I = new /obj/effect/effect/steam(src.oldposition)
+					var/obj/effect/steam/I = new /obj/effect/steam(src.oldposition)
 					src.number++
 					src.oldposition = get_turf(holder)
 					I.setDir(src.holder.dir)
@@ -529,7 +530,7 @@ steam.start() -- spawns the effect
 				round(min(flash, BOMBCAP_FLASH_RADIUS))
 				)
 
-/obj/effect/effect/teleport_greyscale
+/obj/effect/teleport_greyscale
 	name = "teleportation"
 	icon_state = "teleport_greyscale"
 	anchored = 1
@@ -537,7 +538,7 @@ steam.start() -- spawns the effect
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 
-/obj/effect/effect/teleport_greyscale/Initialize(mapload)
+/obj/effect/teleport_greyscale/Initialize(mapload)
 	. = ..()
 	QDEL_IN(src, 2 SECONDS)
 
@@ -552,5 +553,5 @@ steam.start() -- spawns the effect
 		color = cl
 
 	start()
-		var/obj/effect/effect/teleport_greyscale/tele = new /obj/effect/effect/teleport_greyscale(src.location)
+		var/obj/effect/teleport_greyscale/tele = new /obj/effect/teleport_greyscale(src.location)
 		tele.color = color

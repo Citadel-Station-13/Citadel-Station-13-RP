@@ -59,6 +59,7 @@
 	fire_sound_text = "a solid thunk"
 	fire_delay = 25
 	slot_flags = SLOT_BACK
+	one_handed_penalty = 10
 
 	var/obj/item/bolt
 	var/tension = 0                         // Current draw on the bow.

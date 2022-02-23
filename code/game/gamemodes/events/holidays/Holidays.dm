@@ -106,13 +106,13 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 		if(6)	//Jun
 			switch(DD)
 				if(6)
-					Holiday["Sapient Rights Day"] = "This holiday celebrates the passing of the Declaration of Sapient Rights by SolGov, which guarantees the \
+					Holiday["Sapient Rights Day"] = "This holiday celebrates the passing of the Declaration of Sapient Rights by OriCon, which guarantees the \
 					same protections humans are granted to all sapient, living species."
 				if(14)
 					Holiday["Blood Donor Day"] = "This holiday was created to raise awareness of the need for safe blood and blood products, \
 					and to thank blood donors for their voluntary, life-saving gifts of blood."
 				if(20)
-					Holiday["Civil Servant's Day"] = "Civil Servant's Day is a holiday observed in SCG member states that honors civil servants everywhere,\
+					Holiday["Civil Servant's Day"] = "Civil Servant's Day is a holiday observed in OCG member states that honors civil servants everywhere,\
 +					(especially those who are members of the armed forces and the emergency services), or have been or have been civil servants in the past."
 
 		if(7)	//Jul
@@ -156,10 +156,6 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 				if(16)
 					Holiday["Boss' Day"] = "Boss' Day has traditionally been a day for employees to thank their bosses for the difficult work that they do \
 					throughout the year. This day was created for the purpose of strengthening the bond between employer and employee."
-				if(31)
-					Holiday["Halloween"] = "Originating from Earth, Halloween is also known as All Saints' Eve, and \
-					is celebrated by some by attending costume parties, trick-or-treating, carving faces in pumpkins, or visiting \
-					'haunted' locations.  Some people make it a goal to scare other people."
 
 		if(11)	//Nov
 			switch(DD)
@@ -182,18 +178,11 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 				if(10)
 					Holiday["Human-Rights Day"] = "An old holiday created by an intergovernmental organization known back than as the United Nations, \
 					human rights were not recognized globally at the time, and the holiday was made in honor of the Universal Declaration of Human Rights.  \
-					These days, SolGov ensures that past efforts were not in vein, and continues to honor this holiday across the galaxy."
+					These days, OriCon ensures that past efforts were not in vain, and continues to honor this holiday across the galaxy."
 				if(22)
 					Holiday["Vertalliq-qixim"] = "A Skrellian holiday that celebrates the Skrell's first landing on one of \
 					their moons.  It's often celebrated with grand festivals."
-				if(24)
-					Holiday["Christmas Eve"] = "The eve of Christmas, an old holiday from Earth that mainly involves gift \
-					giving, decorating, family reunions, and a fat red human breaking into people's homes to steal milk and cookies."
-				if(25)
-					Holiday["Christmas"] = "Christmas is a very old holiday that originated in Earth, Sol.  It was a \
-					religious holiday for the Christian religion, which would later form Unitarianism.  Nowdays, the holiday is celebrated \
-					generally by giving gifts, symbolic decoration, and reuniting with one's family.  It also features a mythical fat \
-					red human, known as Santa, who broke into people's homes to loot cookies and milk."
+
 				if(31)
 					Holiday["New Year's Eve"] = "The eve of the New Year for Sol.  It is traditionally celebrated by counting down to midnight, as that is \
 					when the new year begins.  Other activities include planning for self-improvement over the new year, attending New Year's parties, or \
@@ -242,39 +231,8 @@ var/global/list/Holiday = list() //Holidays are lists now, so we can have more t
 		if(holiday_blurbs.len != 0)
 			for(var/blurb in holiday_blurbs)
 				to_chat(world, "<div align='center'><font color=#4F49AF>[blurb]</font></div>")
-		switch(Holiday)			//special holidays
-			if("Easter")
-				//do easter stuff
-			if("Christmas Eve","Christmas")
-				Christmas_Game_Start()
-
-	return
 
 //Nested in the random events loop. Will be triggered every 2 minutes
 /proc/Holiday_Random_Event()
 	if(!length(Holiday))
 		return 0
-	switch(Holiday)			//special holidays
-		if("Easter")		//I'll make this into some helper procs at some point
-/*			var/list/turf/simulated/floor/Floorlist = list()
-			for(var/turf/simulated/floor/T)
-				if(T.contents)
-					Floorlist += T
-			var/turf/simulated/floor/F = Floorlist[rand(1,Floorlist.len)]
-			Floorlist = null
-			var/obj/structure/closet/C = locate(/obj/structure/closet) in F
-			var/obj/item/reagent_containers/food/snacks/chocolateegg/wrapped/Egg
-			if( C )			Egg = new(C)
-			else			Egg = new(F)
-*/
-/*			var/list/obj/containers = list()
-			for(var/obj/item/storage/S in world)
-				if(isNotStationLevel(S.z))	continue
-				containers += S
-
-			message_admins("<span class='notice'>DEBUG: Event: Egg spawned at [Egg.loc] ([Egg.x],[Egg.y],[Egg.z])</span>")*/
-		if("End of the World")
-			if(prob(eventchance))	GameOver()
-
-		if("Christmas","Christmas Eve")
-			if(prob(eventchance))	ChristmasEvent()

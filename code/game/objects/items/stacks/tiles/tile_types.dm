@@ -41,6 +41,30 @@
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/herb.ogg'
 	pickup_sound = 'sound/items/pickup/herb.ogg'
+
+/obj/item/stack/tile/grass/Initialize(mapload, new_amount, merge)
+	. = ..()
+	recipes = grass_recipes
+	update_icon()
+
+var/global/list/datum/stack_recipe/grass_recipes = list( \
+	new/datum/stack_recipe("bush", /obj/structure/flora/ausbushes, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("reeds", /obj/structure/flora/ausbushes/reedbush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("leafy bush", /obj/structure/flora/ausbushes/leafybush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("sparse bush", /obj/structure/flora/ausbushes/palebush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("stalks", /obj/structure/flora/ausbushes/stalkybush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("ferns", /obj/structure/flora/ausbushes/fernybush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("sapling", /obj/structure/flora/ausbushes/sunnybush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("leafy sapling", /obj/structure/flora/ausbushes/genericbush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("needled sapling", /obj/structure/flora/ausbushes/pointybush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("sparse flowers", /obj/structure/flora/ausbushes/lavendergrass, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("yellow flowers", /obj/structure/flora/ausbushes/ywflowers, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("colorful flowers", /obj/structure/flora/ausbushes/brflowers, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("purple flowers", /obj/structure/flora/ausbushes/ppflowers, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("lush grass", /obj/structure/flora/ausbushes/grassybush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("grass", /obj/structure/flora/ausbushes/fullgrass, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("sparse grass", /obj/structure/flora/ausbushes/sparsegrass, 1, one_per_turf = 0, on_floor = 1))
+
 /*
  * Wood
  */
@@ -110,6 +134,8 @@
 	icon_state = "tile-carpet"
 /obj/item/stack/tile/carpet/oracarpet
 	icon_state = "tile-carpet"
+/obj/item/stack/tile/carpet/arcadecarpet
+	icon_state = "tile-carpet-arcade"
 
 /obj/item/stack/tile/floor
 	name = "floor tile"
@@ -243,3 +269,115 @@
 	charge_costs = list(250)
 	stacktype = /obj/item/stack/tile/roofing
 	build_type = /obj/item/stack/tile/roofing
+
+/obj/item/stack/tile/bananium
+	name = "bananium tile"
+	singular_name = "bananium tile"
+	desc = "The pinnacle of trolling."
+	icon_state = "tile-bananium"
+	force = 6.0
+	throwforce = 10.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/silencium
+	name = "silencium tile"
+	singular_name = "silencium tile"
+	desc = "If a tear falls off a mime, and no one's around to see it, does it still not make a sound?"
+	icon_state = "tile-silencium"
+	force = 6.0
+	throwforce = 10.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/plasteel
+	name = "plasteel tile"
+	singular_name = "plasteel tile"
+	icon_state = "tile-plasteel"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/durasteel
+	name = "durasteel tile"
+	singular_name = "durasteel tile"
+	icon_state = "tile-durasteel"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/silver
+	name = "silver tile"
+	singular_name = "silver tile"
+	icon_state = "tile-silver"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/gold
+	name = "gold tile"
+	singular_name = "gold tile"
+	icon_state = "tile-gold"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/phoron
+	name = "phoron tile"
+	singular_name = "phoron tile"
+	icon_state = "tile-phoron"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/uranium
+	name = "uranium tile"
+	singular_name = "uranium tile"
+	icon_state = "tile-uranium"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/diamond
+	name = "diamond tile"
+	singular_name = "diamond tile"
+	icon_state = "tile-diamond"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/brass
+	name = "brass tile"
+	singular_name = "brass tile"
+	icon_state = "tile-brass"
+	force = 6.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	flags = 0
+	no_variants = FALSE

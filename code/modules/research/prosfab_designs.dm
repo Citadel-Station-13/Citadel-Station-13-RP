@@ -1,15 +1,15 @@
 /datum/design/item/prosfab
 	build_type = PROSFAB
-	category = "Misc"
+	category = list("Misc")
 	req_tech = list(TECH_MATERIAL = 1)
 
 /datum/design/item/prosfab/pros
-	category = "Prosthetics"
+	category = list("Prosthetics")
 
 // Make new external organs and make 'em robotish
 /datum/design/item/prosfab/pros/Fabricate(var/newloc, var/fabricator)
-	if(istype(fabricator, /obj/machinery/pros_fabricator))
-		var/obj/machinery/pros_fabricator/prosfab = fabricator
+	if(istype(fabricator, /obj/machinery/mecha_part_fabricator/pros))
+		var/obj/machinery/mecha_part_fabricator/pros/prosfab = fabricator
 		var/obj/item/organ/O = new build_path(newloc)
 		if(prosfab.manufacturer)
 			var/datum/robolimb/manf = all_robolimbs[prosfab.manufacturer]
@@ -37,8 +37,8 @@
 
 // Deep Magic for the torso since it needs to be a new mob
 /datum/design/item/prosfab/pros/torso/Fabricate(var/newloc, var/fabricator)
-	if(istype(fabricator, /obj/machinery/pros_fabricator))
-		var/obj/machinery/pros_fabricator/prosfab = fabricator
+	if(istype(fabricator, /obj/machinery/mecha_part_fabricator/pros))
+		var/obj/machinery/mecha_part_fabricator/pros/prosfab = fabricator
 		var/newspecies = "Human"
 
 		var/datum/robolimb/manf = all_robolimbs[prosfab.manufacturer]
@@ -53,7 +53,7 @@
 				newspecies = prosfab.species
 
 		var/mob/living/carbon/human/H = new(newloc,newspecies)
-		H.stat = DEAD
+		H.set_stat(DEAD)
 		H.gender = gender
 		for(var/obj/item/organ/external/EO in H.organs)
 			if(EO.organ_tag == BP_TORSO || EO.organ_tag == BP_GROIN)
@@ -62,7 +62,7 @@
 				EO.remove_rejuv()
 
 		for(var/obj/item/organ/external/O in H.organs)
-			O.species = GLOB.all_species[newspecies] //VOREStation Edit with species suggestion above
+			O.species = GLOB.all_species[newspecies]
 
 			if(!(O.organ_tag in manf.parts))	// Make sure we're using an actually present icon.
 				manf = all_robolimbs["Unbranded"]
@@ -102,7 +102,7 @@
 	build_path = /obj/item/organ/external/chest
 	gender = MALE
 
-/obj/item/organ/external/chest/f //To satisfy Travis. :|
+/obj/item/organ/external/chest/f //To satisfy CI. :|
 
 /datum/design/item/prosfab/pros/torso/female
 	name = "FBP Torso (F)"
@@ -175,7 +175,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 2813)
 
 /datum/design/item/prosfab/pros/internal
-	category = "Prosthetics, Internal"
+	category = list("Prosthetics, Internal")
 
 /datum/design/item/prosfab/pros/internal/cell
 	name = "Prosthetic Powercell"
@@ -192,6 +192,34 @@
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 5625, "glass" = 5625)
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
+
+// /datum/design/item/prosfab/pros/internal/hydraulic
+// 	name = "Hydraulic Hub"
+// 	id = "pros_hydraulic"
+// 	build_path = /obj/item/organ/internal/heart/machine
+// 	time = 15
+// 	materials = list(DEFAULT_WALL_MATERIAL = 7500, MAT_PLASTIC = 3000)
+
+// /datum/design/item/prosfab/pros/internal/reagcycler
+// 	name = "Reagent Cycler"
+// 	id = "pros_reagcycler"
+// 	build_path = /obj/item/organ/internal/stomach/machine
+// 	time = 15
+// 	materials = list(DEFAULT_WALL_MATERIAL = 7500, MAT_PLASTIC = 3000)
+
+// /datum/design/item/prosfab/pros/internal/heatsink
+// 	name = "Heatsink"
+// 	id = "pros_heatsink"
+// 	build_path = /obj/item/organ/internal/robotic/heatsink
+// 	time = 15
+// 	materials = list(DEFAULT_WALL_MATERIAL = 7500, MAT_PLASTIC = 3000)
+
+// /datum/design/item/prosfab/pros/internal/diagnostic
+// 	name = "Diagnostic Controller"
+// 	id = "pros_diagnostic"
+// 	build_path = /obj/item/organ/internal/robotic/diagnostic
+// 	time = 15
+// 	materials = list(DEFAULT_WALL_MATERIAL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/item/prosfab/pros/internal/heart
 	name = "Prosthetic Heart"
@@ -240,9 +268,85 @@
 	time = 15
 	materials = list(DEFAULT_WALL_MATERIAL = 2000, MAT_GLASS = 750, MAT_PLASTIC = 500)
 
+/datum/design/item/prosfab/pros/internal/backup_battery
+	name = "Synthetic Back-Up Battery"
+	id = "synth_backup_battery"
+	build_path = /obj/item/fbp_backup_cell
+	time = 10
+	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 1500)
+//////////////// Cybernetic Augments //////////////////
+
+/datum/design/item/prosfab/augment
+	category = list("Augments")
+	time = 20
+	materials = list(DEFAULT_WALL_MATERIAL = 3750, "glass" = 1750)
+
+/datum/design/item/prosfab/augment/hand
+	name = "resonant analyzer"
+	id = "aug_hand"
+	req_tech = list(TECH_BIO = 3, TECH_MAGNET = 4, TECH_DATA = 2)
+	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500, "plastic" = 500)
+	build_path = /obj/item/organ/internal/augment/armmounted/hand
+
+/datum/design/item/prosfab/augment/shoulder
+	name = "rotary toolkit"
+	id = "aug_shoulder"
+	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 4, TECH_ENGINEERING = 4, TECH_DATA = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 500, "plastic" = 1000)
+	build_path = /obj/item/organ/internal/augment/armmounted/shoulder/multiple
+
+/datum/design/item/prosfab/augment/arm
+	name = "implanted taser"
+	id = "aug_arm"
+	req_tech = list(TECH_BIO = 4, TECH_COMBAT = 4, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 500, "plastic" = 2000)
+	build_path = /obj/item/organ/internal/augment/armmounted/taser
+
+/datum/design/item/prosfab/augment/shoulder_med
+	name = "rotary medical kit"
+	id = "aug_shouldermed"
+	req_tech = list(TECH_BIO = 5, TECH_MATERIAL = 4, TECH_DATA = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 1000, "plastic" = 1000)
+	build_path = /obj/item/organ/internal/augment/armmounted/shoulder/multiple/medical
+
+/datum/design/item/prosfab/augment/shoulder_combat
+	name = "muscular overclocker"
+	id = "aug_shouldercombat"
+	req_tech = list(TECH_BIO = 5, TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_ENGINEERING = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 2000, "plastic" = 3000, "silver" = 1000, "gold" = 500)
+	build_path = /obj/item/organ/internal/augment/armmounted/shoulder/surge
+
+/datum/design/item/prosfab/augment/pelvis
+	name = "locomotive optimizer"
+	id = "aug_pelvis"
+	req_tech = list(TECH_BIO = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 1500, "plastic" = 2000, "silver" = 500, "gold" = 1000)
+	build_path = /obj/item/organ/internal/augment/bioaugment/sprint_enhance
+
+/datum/design/item/prosfab/augment/arm_laser
+	name = "implanted laser rifle"
+	id = "aug_armlaser"
+	req_tech = list(TECH_BIO = 5, TECH_COMBAT = 5, TECH_MATERIAL = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 1000, "plastic" = 2000, "gold" = 2000)
+	build_path = /obj/item/organ/internal/augment/armmounted
+
+/datum/design/item/prosfab/augment/eyes
+	name = "thermolensing sunglasses"
+	id = "aug_eyes"
+	req_tech = list(TECH_BIO = 6, TECH_ILLEGAL = 4, TECH_MATERIAL = 4, TECH_DATA = 5)
+	materials = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 1000, "plastic" = 1500, "gold" = 1000, "diamond" = 2000)
+	build_path = /obj/item/organ/internal/augment/bioaugment/thermalshades
+
+/datum/design/item/prosfab/augment/hand_sword
+	name = "implanted energy blade"
+	id = "aug_handsword"
+	req_tech = list(TECH_BIO = 6, TECH_COMBAT = 6, TECH_ILLEGAL = 4, TECH_MATERIAL = 4)
+	materials = list(DEFAULT_WALL_MATERIAL = 1500, "glass" = 500, "plastic" = 2000, "gold" = 2000, "uranium" = 1500, "diamond" = 2500)
+	build_path = /obj/item/organ/internal/augment/armmounted/hand/sword
+
 //////////////////// Cyborg Parts ////////////////////
 /datum/design/item/prosfab/cyborg
-	category = "Cyborg Parts"
+	category = list("Cyborg Parts")
 	time = 20
 	materials = list(DEFAULT_WALL_MATERIAL = 3750)
 
@@ -298,7 +402,7 @@
 
 //////////////////// Cyborg Internals ////////////////////
 /datum/design/item/prosfab/cyborg/component
-	category = "Cyborg Internals"
+	category = list("Cyborg Internals")
 	build_type = PROSFAB
 	time = 12
 	materials = list(DEFAULT_WALL_MATERIAL = 7500)
@@ -329,9 +433,14 @@
 	build_path = /obj/item/robot_parts/robot_component/camera
 
 /datum/design/item/prosfab/cyborg/component/armour
-	name = "Armour Plating"
+	name = "Armour Plating (Robot)"
 	id = "armour"
 	build_path = /obj/item/robot_parts/robot_component/armour
+
+// /datum/design/item/prosfab/cyborg/component/armour_heavy
+// 	name = "Armour Plating (Platform)"
+// 	id = "platform_armour"
+// 	build_path = /obj/item/robot_parts/robot_component/armour_platform
 
 /datum/design/item/prosfab/cyborg/component/ai_shell
 	name = "AI Remote Interface"
@@ -340,7 +449,7 @@
 
 //////////////////// Cyborg Modules ////////////////////
 /datum/design/item/prosfab/robot_upgrade
-	category = "Cyborg Modules"
+	category = list("Cyborg Modules")
 	build_type = PROSFAB
 	time = 12
 	materials = list(DEFAULT_WALL_MATERIAL = 7500)
@@ -348,7 +457,7 @@
 /datum/design/item/prosfab/robot_upgrade/rename
 	name = "Rename Module"
 	desc = "Used to rename a cyborg."
-	id = "borg_rename_module"
+	id = "borg_rename_s"
 	build_path = /obj/item/borg/upgrade/rename
 
 /datum/design/item/prosfab/robot_upgrade/reset

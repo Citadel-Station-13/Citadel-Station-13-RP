@@ -629,9 +629,9 @@ default behaviour is:
 		if (C.legcuffed && !initial(C.legcuffed))
 			C.drop_from_inventory(C.legcuffed)
 		C.legcuffed = initial(C.legcuffed)
-	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
-	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
-	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
+	BITSET(hud_updateflag, HEALTH_HUD)
+	BITSET(hud_updateflag, STATUS_HUD)
+	BITSET(hud_updateflag, LIFE_HUD)
 	ExtinguishMob()
 	fire_stacks = 0
 	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
@@ -681,9 +681,9 @@ default behaviour is:
 	// make the icons look correct
 	regenerate_icons()
 
-	ENABLE_BITFIELD(hud_updateflag, HEALTH_HUD)
-	ENABLE_BITFIELD(hud_updateflag, STATUS_HUD)
-	ENABLE_BITFIELD(hud_updateflag, LIFE_HUD)
+	BITSET(hud_updateflag, HEALTH_HUD)
+	BITSET(hud_updateflag, STATUS_HUD)
+	BITSET(hud_updateflag, LIFE_HUD)
 
 	failed_last_breath = 0 //So mobs that died of oxyloss don't revive and have perpetual out of breath.
 	reload_fullscreen()
@@ -934,8 +934,12 @@ default behaviour is:
 
 	if(lying)
 		density = 0
-		if(l_hand) unEquip(l_hand)
-		if(r_hand) unEquip(r_hand)
+		if(l_hand)
+			unEquip(l_hand)
+		if(r_hand)
+			unEquip(r_hand)
+		for(var/obj/item/holder/H in get_mob_riding_slots())
+			unEquip(H)
 		update_water() // Submerges the mob.
 	else
 		density = initial(density)
@@ -962,6 +966,10 @@ default behaviour is:
 		//VOREStation Add End
 
 	return canmove
+
+// Mob holders in these slots will be spilled if the mob goes prone.
+/mob/living/proc/get_mob_riding_slots()
+	return list(back)
 
 // Adds overlays for specific modifiers.
 // You'll have to add your own implementation for non-humans currently, just override this proc.
@@ -1008,8 +1016,8 @@ default behaviour is:
 
 /mob/living/update_transform()
 	// First, get the correct size.
-	var/desired_scale_x = size_multiplier
-	var/desired_scale_y = size_multiplier
+	var/desired_scale_x = size_multiplier * icon_scale_x
+	var/desired_scale_y = size_multiplier * icon_scale_y
 
 	// Now for the regular stuff.
 	var/matrix/M = matrix()
@@ -1203,3 +1211,11 @@ default behaviour is:
   */
 /mob/living/proc/get_standard_pixel_y_offset(lying = 0)
 	return default_pixel_y
+
+/mob/living/proc/OpenCraftingMenu()
+	return
+
+/* Enable this one if you're enabling the butchering component. Otherwise it's useless.
+/mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
+	return
+*/

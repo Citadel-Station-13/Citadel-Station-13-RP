@@ -1,88 +1,85 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/unexplored)
 "b" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "e" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 9
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "g" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/water/shoreline/classh,
+/area/tether_away/beach/desert/explored)
 "h" = (
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "i" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 10
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "j" = (
-/turf/simulated/floor/outdoors/water/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/water/classh,
+/area/tether_away/beach/desert/explored)
 "q" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 1
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "s" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 8
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "u" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 5
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "A" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 8
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "B" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 6
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "C" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 1
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "I" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh,
-/area/poi_h/explored)
+/turf/simulated/floor/water/shoreline/corner/classh,
+/area/tether_away/beach/desert/explored)
 "N" = (
-/turf/simulated/floor/outdoors/water/shoreline/corner/classh{
+/turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 4
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "V" = (
-/turf/simulated/floor/outdoors/water/shoreline/classh{
+/turf/simulated/floor/water/shoreline/classh{
 	dir = 4
 	},
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
 "}
 (2,1,1) = {"
-a
+b
 h
 b
 I
@@ -91,10 +88,10 @@ A
 A
 s
 h
-a
+b
 "}
 (3,1,1) = {"
-a
+b
 b
 I
 B
@@ -103,10 +100,10 @@ j
 j
 u
 s
-a
+b
 "}
 (4,1,1) = {"
-a
+b
 I
 B
 j
@@ -115,10 +112,10 @@ j
 j
 j
 q
-a
+b
 "}
 (5,1,1) = {"
-a
+b
 g
 j
 j
@@ -127,10 +124,10 @@ j
 j
 e
 N
-a
+b
 "}
 (6,1,1) = {"
-a
+b
 g
 j
 j
@@ -139,10 +136,10 @@ j
 e
 N
 h
-a
+b
 "}
 (7,1,1) = {"
-a
+b
 C
 i
 j
@@ -151,10 +148,10 @@ j
 q
 b
 b
-a
+b
 "}
 (8,1,1) = {"
-a
+b
 b
 C
 i
@@ -163,10 +160,10 @@ e
 N
 b
 b
-a
+b
 "}
 (9,1,1) = {"
-a
+b
 h
 b
 C
@@ -175,17 +172,17 @@ N
 h
 b
 b
-a
+b
 "}
 (10,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
 "}

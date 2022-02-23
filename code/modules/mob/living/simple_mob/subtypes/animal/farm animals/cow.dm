@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/livestock/cow
+	name = "Livestock - Cow"
+	desc = "The premier source of meat from old Earth, the cow is a lumbering \
+	herbivore. The milk produced by cows is safe for human consumption, and has \
+	been a staple of the Human diet for millenia. The meat of the cow is rich, \
+	flavorful, and versatile. Beef remains a popular food source across the \
+	Frontier."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/cow
 	name = "cow"
 	desc = "Known for their milk, just don't tip them over."
@@ -6,9 +15,14 @@
 	icon_living = "cow"
 	icon_dead = "cow_dead"
 	icon_gib = "cow_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/livestock/cow)
 
 	health = 50
 	maxHealth = 50
+
+	mod_min = 80
+	mod_max = 150
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
@@ -18,7 +32,8 @@
 	say_list_type = /datum/say_list/cow
 
 	meat_amount = 6
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	bone_amount = 4
+	hide_amount = 6
 
 	var/datum/reagents/udder = null
 

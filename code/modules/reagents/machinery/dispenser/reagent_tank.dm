@@ -62,12 +62,12 @@
 			return
 		if(2.0)
 			if (prob(50))
-				new /obj/effect/effect/water(src.loc)
+				new /obj/effect/water(src.loc)
 				qdel(src)
 				return
 		if(3.0)
 			if (prob(5))
-				new /obj/effect/effect/water(src.loc)
+				new /obj/effect/water(src.loc)
 				qdel(src)
 				return
 		else
@@ -438,16 +438,16 @@
 	reagents.add_reagent("sacid", 1000)
 
 //Cooking oil refill tank
-/obj/structure/reagent_dispensers/cookingoil
-	name = "cooking oil tank"
-	desc = "A fifty-litre tank of commercial-grade corn oil, intended for use in large scale deep fryers. Store in a cool, dark place"
+/obj/structure/reagent_dispensers/tallow
+	name = "tallow tank"
+	desc = "A fifty-litre tank of commercial-grade tallow, intended for use in large scale deep fryers. Store in a cool, dark place"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "oiltank"
 	amount_per_transfer_from_this = 120
 
-/obj/structure/reagent_dispensers/cookingoil/Initialize()
+/obj/structure/reagent_dispensers/tallow/Initialize()
 	. = ..()
-	reagents.add_reagent("cornoil", 5000)
+	reagents.add_reagent("tallow", 5000)
 
 /obj/structure/reagent_dispensers/cookingoil/bullet_act(var/obj/item/projectile/Proj)
 	if(Proj.get_structure_damage())
@@ -471,3 +471,16 @@
 /obj/structure/reagent_dispenser/he3/Initialize()
 	..()
 	reagents.add_reagent("helium3",1000)
+
+//Oil from Main. Seems like it could fit into Robotics as well as Surt stuff.
+/obj/structure/reagent_dispensers/oil
+	name = "Oil Dispenser"
+	desc = "A dispenser of crude oil for industrial processes."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "oiltank"
+	amount_per_transfer_from_this = 10
+	anchored = 1
+
+/obj/structure/reagent_dispensers/oil/Initialize()
+	. = ..()
+	reagents.add_reagent("oil", 1000)

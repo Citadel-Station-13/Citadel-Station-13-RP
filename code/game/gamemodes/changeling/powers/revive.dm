@@ -41,9 +41,9 @@
 				current_limb.relocate()
 				current_limb.open = 0
 
-		ENABLE_BITFIELD(H.hud_updateflag, HEALTH_HUD)
-		ENABLE_BITFIELD(H.hud_updateflag, STATUS_HUD)
-		ENABLE_BITFIELD(H.hud_updateflag, LIFE_HUD)
+		BITSET(H.hud_updateflag, HEALTH_HUD)
+		BITSET(H.hud_updateflag, STATUS_HUD)
+		BITSET(H.hud_updateflag, LIFE_HUD)
 
 		if(H.handcuffed)
 			var/obj/item/W = H.handcuffed

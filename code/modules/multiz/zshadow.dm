@@ -75,7 +75,7 @@
 		var/turf/simulated/open/OS = GetAbove(src)
 		while(OS && istype(OS))
 			if(!M.shadow)
-				M.shadow = new /mob/zshadow(M.loc, M)
+				M.shadow = new /mob/zshadow(M, M)
 			M.shadow.forceMove(OS)
 			M = M.shadow
 			OS = GetAbove(M)

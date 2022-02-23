@@ -2,6 +2,16 @@
 //			Wraith
 ////////////////////////////
 
+/datum/category_item/catalogue/fauna/construct/wraith
+	name = "Constructs - Wraith"
+	desc = "Employed during the incursion on the NDV Marksman as a flanker and assasin, \
+	the Wraith is an agile construct capble of rapidly outmaneuvering its foes. Worryingly, \
+	the Wraith possesses the abilty to phase out of the material world and jaunt through \
+	solid barriers. This ability allows it to bypass fortifications with ease, or close the \
+	distance to a firing line without exposing itself. Extreme caution must be exhibited when \
+	facing Constructs, as the Wraith can often ambush teams that over-extend themselves."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/construct/wraith
 	name = "Wraith"
 	real_name = "Wraith"
@@ -23,6 +33,8 @@
 	construct_spells = list(/spell/targeted/ethereal_jaunt/shift,
 							/spell/targeted/ambush_mode
 							)
+
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/wraith)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 

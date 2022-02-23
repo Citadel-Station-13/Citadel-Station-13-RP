@@ -47,12 +47,16 @@
 	var/icon_add = 'icons/mob/human_face.dmi'
 	//Enhanced colours and hair for all
 	var/color_blend_mode = ICON_MULTIPLY
-	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW) //This lets all races use the default hairstyles.
+	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This lets all races use the default hairstyles.
 	var/flags
 
 	eighties
 		name = "80's"
 		icon_state = "hair_80s"
+
+	eighties_alt
+		name = "80's (Alternative)"
+		icon_state = "hair_80s_alt"
 
 	afro
 		name = "Afro"
@@ -77,8 +81,7 @@
 		icon_state = "bald"
 		gender = MALE
 		flags = HAIR_VERY_SHORT
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST) //Lets all the races be bald if they want.
-
+		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //Lets all the races be bald if they want.
 
 	baldfade
 		name = "Balding Fade"
@@ -133,7 +136,7 @@
 	bob
 		name = "Bob"
 		icon_state = "hair_bobcut"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR)
 		flags = HAIR_TIEABLE
 
 	bobcutalt
@@ -144,7 +147,7 @@
 	bobcurl
 		name = "Bobcurl"
 		icon_state = "hair_bobcurl"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 		flags = HAIR_TIEABLE
 
 	bowl
@@ -179,14 +182,17 @@
 	bun
 		name = "Bun"
 		icon_state = "hair_bun"
+		flags = HAIR_TIEABLE
 
 	bun2
 		name = "Bun 2"
 		icon_state = "hair_bun2"
+		flags = HAIR_TIEABLE
 
 	bun3
 		name = "Bun 3"
 		icon_state = "hair_bun3"
+		flags = HAIR_TIEABLE
 
 	bun
 		name = "Bun Casual"
@@ -208,7 +214,7 @@
 		name = "Buzzcut"
 		icon_state = "hair_buzzcut"
 		flags = HAIR_VERY_SHORT
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 
 	crono
 		name = "Chrono"
@@ -450,11 +456,12 @@
 	modern
 		name = "Modern"
 		icon_state = "hair_modern"
+		flags = HAIR_TIEABLE
 
 	mohawk
 		name = "Mohawk"
 		icon_state = "hair_d"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 
 	regulationmohawk
 		name = "Mohawk Regulation"
@@ -574,7 +581,7 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "hair_ponytail6"
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA,SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST)
+		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA,SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR)
 
 	sharpponytail
 		name = "Ponytail Sharp"
@@ -584,6 +591,11 @@
 	spikyponytail
 		name = "Ponytail Spiky"
 		icon_state = "hair_spikyponytail"
+		flags = HAIR_TIEABLE
+
+	highponytail
+		name = "High Ponytail"
+		icon_state = "hair_highponytail"
 		flags = HAIR_TIEABLE
 
 	poofy
@@ -712,7 +724,7 @@
 	spiky
 		name = "Spiky"
 		icon_state = "hair_spikey"
-		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI)
+		species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN,SPECIES_UNATHI,SPECIES_APIDAEN,SPECIES_VETALA_PALE,SPECIES_VETALA_RUDDY,SPECIES_AURIL,SPECIES_DREMACHIR)
 
 	thinning
 		name = "Thinning"
@@ -776,6 +788,11 @@
 		icon_state = "hair_undercut3"
 		gender = MALE
 		flags = HAIR_VERY_SHORT
+
+	undercutlong
+		name = "Undercut Long"
+		icon_state = "hair_undercutlong"
+		flags = HAIR_TIEABLE
 
 	unkept
 		name = "Unkept"
@@ -866,6 +883,11 @@
 		icon_state = "hair_celebcurls"
 		flags = HAIR_TIEABLE
 
+	bigcurls
+		name = "Big Curls"
+		icon_state = "hair_bigcurls"
+		flags = HAIR_TIEABLE
+
 	jessica
 		name = "Jessica"
 		icon_state = "hair_jessica"
@@ -927,6 +949,11 @@
 		name = "Vivi"
 		icon_state = "hair_vivi"
 
+	taro
+		name = "Taro"
+		icon_state = "hair_taro"
+		flags = HAIR_TIEABLE
+
 	astolfo
 		name = "Astolfo"
 		icon = 'icons/mob/human_face_vr.dmi'
@@ -965,13 +992,6 @@
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
 		icon_state = "hair_twincurl"
-
-	inkling
-		name = "colorable mature inkling hair"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_state = "inkling-colorable"
-		color_blend_mode = ICON_MULTIPLY
-		do_colouration = 1
 
 	myopia
 		name = "Myopia"
@@ -1028,20 +1048,20 @@
 /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/human_face_or_vr.dmi'
 	var/color_blend_mode = ICON_MULTIPLY
-	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST) //This lets all races use the facial hair styles.
+	species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This lets all races use the facial hair styles.
 
 	shaved
 		name = "Shaved"
 		icon_state = "bald"
 		gender = NEUTER
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST) //This needed to be manually defined, apparantly.
+		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This needed to be manually defined, apparantly.
 
 	neck_fluff
 		name = "Neck Fluff"
 		icon = 'icons/mob/human_face_or_vr.dmi'
 		icon_state = "facial_neckfluff"
 		gender = NEUTER
-		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST)
+		species_allowed = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_SERGAL, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR)
 
 	vulp_none
 		name = "None"
@@ -1799,6 +1819,13 @@
 		species_allowed = list(SPECIES_XENOHYBRID)
 		gender = NEUTER
 
+	xeno_head_hybrid_color1
+		name = "Xenohybrid dome 1"
+		icon = 'icons/mob/human_face_vr.dmi'
+		icon_add = 'icons/mob/human_face_vr_add.dmi'
+		icon_state = "cxeno_hybrid1"
+		species_allowed = list(SPECIES_XENOHYBRID)
+		gender = NEUTER
 // Shadekin stuffs
 	shadekin_hair_short
 		name = "Shadekin Short Hair"
@@ -2010,6 +2037,27 @@
 		name = "Tattoo (Tiger Stripes, Body)"
 		icon_state = "tat_tiger"
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND,BP_TORSO,BP_GROIN)
+
+	tanlines
+		name = "Tan Lines (One Piece, F)"
+		icon_state = "tan_op"
+		icon = "icons/mob/human_races/markings.dmi"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_m
+		name = "Tan Lines (One Piece, M)"
+		icon_state = "tan_mop"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_bikini
+		name = "Tan Lines (Bikini)"
+		icon_state = "tan_bikini"
+		body_parts = list(BP_TORSO,BP_GROIN)
+
+	tanlines_b_strap
+		name = "Tan Lines (Bikini, Strapless)"
+		icon_state = "tan_bikini_strap"
+		body_parts = list(BP_TORSO,BP_GROIN)
 
 	taj_paw_socks
 		name = "Socks Coloration (Taj)"
@@ -2658,6 +2706,11 @@
 		color_blend_mode = ICON_MULTIPLY
 		body_parts = list(BP_L_FOOT,BP_L_LEG)
 
+	motheyes
+		name = "Moth Eyes"
+		icon_state = "motheyes"
+		body_parts = list(BP_HEAD)
+
 	animeeyesinner
 		name = "Anime Eyes Inner"
 		icon_state = "animeeyesinner"
@@ -2767,7 +2820,7 @@
 		name = "Heterochromia"
 		icon_state = "heterochromia"
 		body_parts = list(BP_HEAD)
-		species_allowed = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN) //This lets all races use the default hairstyles.
+		species_allowed = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_NEVREAN, SPECIES_AKULA, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_VASILISSAN, SPECIES_RAPALA, SPECIES_PROTEAN, SPECIES_ALRAUNE, SPECIES_WEREBEAST, SPECIES_SHADEKIN, SPECIES_APIDAEN, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_AURIL, SPECIES_DREMACHIR) //This lets all races use the default hairstyles.
 
 	werewolf_nose
 		name = "Werewolf nose"
@@ -2894,6 +2947,18 @@
 		body_parts = list(BP_L_FOOT,BP_R_FOOT,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_L_HAND,BP_R_HAND)
 		color_blend_mode = ICON_ADD
 
+
+	jackal_backpattern
+		name = "Jackal Backpattern"
+		icon_state = "jackal_backpattern"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_ARM,BP_R_ARM,BP_TORSO)
+
+	jackal_bareback
+		name = "Jackal Bareback"
+		icon_state = "jackal_bareback"
+		color_blend_mode = ICON_MULTIPLY
+		body_parts = list(BP_L_ARM,BP_R_ARM,BP_GROIN,BP_TORSO)
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery

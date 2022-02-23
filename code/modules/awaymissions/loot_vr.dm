@@ -52,7 +52,7 @@
 				var/amount = rand(2,6)
 				var/quantity = rand(10,50)
 				var/list/possible_spawns = list()
-				for(var/bar_type in typesof(/obj/item/stack/material) - /obj/item/stack/material - /obj/item/stack/material/animalhide - typesof(/obj/item/stack/material/cyborg))
+				for(var/bar_type in typesof(/obj/item/stack/material) - /obj/item/stack/material - /obj/item/stack/animalhide - typesof(/obj/item/stack/material/cyborg))
 					possible_spawns += bar_type
 
 				var/bar_type = pick(possible_spawns)
@@ -156,7 +156,7 @@
 					prob(7);/obj/item/gun/projectile/automatic/sts35,\
 					prob(7);/obj/item/gun/projectile/automatic/z8,\
 					prob(7);/obj/item/gun/energy/gun/burst,\
-					prob(7);/obj/item/gun/projectile/shotgun/pump/USDF,\
+					prob(7);/obj/item/gun/projectile/shotgun/pump/JSDF,\
 					prob(7);/obj/item/gun/projectile/deagle,\
 					prob(7);/obj/item/gun/launcher/grenade,\
 				/*	prob(6);/obj/item/gun/projectile/SVD,\*/
@@ -394,3 +394,8 @@
 /obj/structure/symbol/sa
 	desc = "It looks like a right triangle with a dot to the side. It reminds you of a wooden strut between a wall and ceiling."
 	icon_state = "sa"
+
+/obj/structure/symbol/maint
+	name = "maintenance panel"
+	desc = "This sign suggests that the wall it's attached to can be opened somehow."
+	icon_state = "maintenance_panel"

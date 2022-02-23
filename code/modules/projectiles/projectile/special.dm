@@ -122,6 +122,12 @@
 	else
 		return 0
 
+/obj/item/projectile/meteor/slug
+	name = "meteor"
+	damage = 25
+	damage_type = BRUTE
+	nodamage = 0
+
 /obj/item/projectile/energy/floramut
 	name = "alpha somatoray"
 	icon_state = "energy"
@@ -348,3 +354,26 @@
 /obj/item/projectile/bullet/honker/Initialize(mapload)
 	. = ..()
 	SpinAnimation()
+
+/obj/item/projectile/bullet/honker/lethal
+	damage = 20
+	nodamage = FALSE
+	damage_type = BRUTE
+
+/obj/item/projectile/bullet/honker/lethal/Initialize(mapload)
+	. = ..()
+	SpinAnimation()
+
+/obj/item/projectile/bullet/honker/lethal/light
+	damage = 10
+
+/obj/item/projectile/bullet/honker/lethal/heavy
+	damage = 40
+
+//Bio-Organic
+/obj/item/projectile/bullet/organic
+	damage = 10
+	damage_type = BRUTE
+	check_armour = "bullet"
+	hitsound = 'sound/effects/splat.ogg'
+	icon_state = "organic"

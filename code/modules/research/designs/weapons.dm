@@ -107,6 +107,15 @@
 	build_path = /obj/item/ammo_magazine/m9mmAdvanced
 	sort_string = "MABBA"
 
+/datum/design/item/weapon/ballistic/ammo/techshell
+	name = "unloaded tech shell"
+	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
+	id = "techshell"
+	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
+	materials = list(DEFAULT_WALL_MATERIAL = 500, MAT_PHORON = 200)
+	build_path = /obj/item/ammo_casing/a12g/techshell
+	sort_string = "MABBB"
+
 /datum/design/item/weapon/ballistic/ammo/stunshell
 	name = "stun shell"
 	desc = "A stunning shell for a shotgun."
@@ -114,7 +123,7 @@
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
 	materials = list(DEFAULT_WALL_MATERIAL = 360, MAT_GLASS = 720)
 	build_path = /obj/item/ammo_casing/a12g/stunshell
-	sort_string = "MABBB"
+	sort_string = "MABBC"
 
 /datum/design/item/weapon/ballistic/ammo/m9mmp90
 	name = "H90K magazine"
@@ -123,8 +132,9 @@
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials = list(DEFAULT_WALL_MATERIAL = 2250, MAT_PLASTIC = 1500, MAT_URANIUM = 50)
 	build_path = /obj/item/ammo_magazine/m9mmp90
-	sort_string = "MABBC"
+	sort_string = "MABBD"
 
+/*
 /datum/design/item/weapon/ballistic/ammo/m10x24/small
 	name = "M41A magazine, small"
 	id = "ammo_10x24_small"
@@ -193,6 +203,7 @@
 	desc = "A 96 armor piercing round magazine for the M41A pulse rifle."
 	build_path = /obj/item/ammo_magazine/m10x24mm/large/ap
 	sort_string = "MABCI"
+*/
 
 // Phase weapons
 
@@ -337,6 +348,8 @@
 
 // Energy Weapons
 
+//Commenting this weapon out pending further review.
+/*
 /datum/design/item/weapon/energy/protector
 	name = "\'Myrmidon\' code-locked e-gun"
 	desc = "The 'Myrmidon' is a common energy gun that cannot fired lethally on Code Green, requiring Code Blue or higher to unlock its deadly capabilities."
@@ -345,6 +358,7 @@
 	materials = list(DEFAULT_WALL_MATERIAL = 4000, MAT_GLASS = 2000, MAT_SILVER = 1000)
 	build_path = /obj/item/gun/energy/protector
 	sort_string = "MAAAH"
+*/
 
 /datum/design/item/weapon/energy/netgun
 	name = "\'Retiarius\' capture gun"

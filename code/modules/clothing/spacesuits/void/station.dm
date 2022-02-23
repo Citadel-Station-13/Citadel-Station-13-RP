@@ -44,7 +44,7 @@
 	item_state_slots = list(slot_r_hand_str = "eng_helm_con", slot_l_hand_str = "eng_helm_con")
 
 /obj/item/clothing/suit/space/void/engineering/construction
-	name = "contstruction voidsuit"
+	name = "construction voidsuit"
 	icon_state = "rig-engineering_con"
 	item_state_slots = list(slot_r_hand_str = "eng_voidsuit_con", slot_l_hand_str = "eng_voidsuit_con")
 
@@ -163,12 +163,26 @@
 	armor = list(melee = 20, bullet = 5, laser = 20,energy = 5, bomb = 15, bio = 100, rad = 30)
 	light_overlay = "helmet_light_dual_blue"
 
+/obj/item/clothing/head/helmet/space/void/medical/alt_plated
+	name = "streamlined medical voidsuit helmet"
+	desc = "A trendy, fully biohazard and radiation-shielded voidsuit helmet trimmed in a sleek blue."
+	icon_state = "rig0-medicalalt2"
+	armor = list(melee = 35, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
+	light_overlay = "helmet_light_dual_blue"
+
 /obj/item/clothing/suit/space/void/medical/alt
 	icon_state = "rig-medicalalt"
 	name = "streamlined medical voidsuit"
 	desc = "A more recent model of Vey-Med voidsuit, exchanging physical protection for fully unencumbered movement and a complete range of motion."
 	slowdown = 0
 	armor = list(melee = 20, bullet = 5, laser = 20,energy = 5, bomb = 15, bio = 100, rad = 30)
+
+/obj/item/clothing/suit/space/void/medical/alt_plated
+	icon_state = "rig-medicalalt2"
+	name = "plated medical voidsuit"
+	desc = "An iteration of an existing Vey-Med voidsuit, allowing full biohazard, radiation and increased close-quarters protection, at the expense of projectile and ranged layers."
+	slowdown = 0
+	armor = list(melee = 35, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
 
 //Security
 /obj/item/clothing/head/helmet/space/void/security

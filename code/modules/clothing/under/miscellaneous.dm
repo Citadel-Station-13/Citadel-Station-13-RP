@@ -40,7 +40,7 @@
 
 /obj/item/clothing/under/customs
 	name = "customs uniform"
-	desc = "A standard SolGov customs uniform.  Complete with epaulettes."
+	desc = "A standard OriCon customs uniform.  Complete with epaulettes."
 	icon_state = "cu_suit"
 
 /obj/item/clothing/under/customs/khaki
@@ -258,6 +258,13 @@
 	desc = "A clean white shirt with a orange collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
 	icon_state = "schoolgirlorange"
 	item_state_slots = list(slot_r_hand_str = "orange", slot_l_hand_str = "orange")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/under/schoolgirl/pink
+	name = "frilly pink skirt" //Citadel change REEEFETISHCONTENT
+	desc = "A clean white shirt with a pink collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
+	icon_state = "schoolgirlpink"
+	item_state_slots = list(slot_r_hand_str = "pink", slot_l_hand_str = "pink")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/overalls
@@ -814,6 +821,11 @@
 	desc = "A revealing stripper's costume patterned after the Captain's uniform."
 	icon_state = "lewdcap"
 
+/obj/item/clothing/under/swimsuit/highclass
+	name = "high class swimsuit"
+	desc = "An elegant swimsuit with a white bikini top and black bikini bottom. Thin black silk drapes down the back and goes to the upper thighs, and authentic gold rings hold the top together at the bust and back."
+	icon_state = "swim_highclass"
+
 /*
  * pyjamas
  */
@@ -1135,6 +1147,11 @@
     name = "fashionable miniskirt"
     desc = "An impractically short miniskirt allegedly making waves through the local fashion scene."
     icon_state = "miniskirt_fashion"
+
+/obj/item/clothing/under/bodysuit
+	name = "standard bodysuit"
+	desc = "A skin-tight synthetic bodysuit designed for comfort and mobility underneath hardsuits and voidsuits. This basic version is a sleek onyx grey comes with the standard induction ports."
+	icon_state = "bodysuit"
 
 /obj/item/clothing/under/bodysuit/bodysuiteva
 	name = "\improper EVA bodysuit"
@@ -1519,3 +1536,145 @@
 	name = "blue tracksuit"
 	desc = "A dark blue tracksuit. It calls to mind images of excercise, particularly squats."
 	icon_state = "tracksuit_blue"
+
+/obj/item/clothing/under/druidic_gown
+	name = "flowery tunic"
+	desc = "A simple linen tunic with a half-skirt of flowers covering one side."
+	icon_state = "druidic_gown"
+
+/obj/item/clothing/under/tribal_tunic
+	name = "simple tunic"
+	desc = "A simple linen tunic. Smells faintly of earth and flowers"
+	icon_state = "tribal_tunic"
+
+/obj/item/clothing/var/hides_bulges = FALSE // OwO wats this?
+
+/obj/item/clothing/under/permit
+	name = "public nudity permit"
+	desc = "This permit entitles the bearer to conduct their duties without a uniform. Normally issued to furred crewmembers or those with nothing to hide."
+	icon = 'icons/obj/card_cit.dmi'
+	icon_state = "permit-civilian"
+	body_parts_covered = 0
+	equip_sound = null
+
+	sprite_sheets = list()
+
+	item_state = "golem"  //This is dumb and hacky but was here when I got here.
+	worn_state = "golem"  //It's basically just a coincidentally black iconstate in the file.
+
+/obj/item/clothing/under/bluespace
+	name = "bluespace jumpsuit"
+	icon_state = "lingchameleon"
+	item_icons = list(
+			slot_l_hand_str = 'icons/mob/items/lefthand_uniforms.dmi',
+			slot_r_hand_str = 'icons/mob/items/righthand_uniforms.dmi',
+			)
+	item_state = "lingchameleon"
+	worn_state = "lingchameleon"
+	desc = "Do you feel like warping spacetime today? Because it seems like that's on the agenda, now. \
+			Allows one to resize themselves at will, and conceals their true weight."
+	hides_bulges = TRUE
+	var/original_size
+
+/obj/item/clothing/under/bluespace/verb/toggle_fibers()
+	set category = "Object"
+	set name = "Adjust fibers"
+	set desc = "Adjust your suit fibers. This makes it so your stomach(s) will show or not."
+	set src in usr
+
+	adjust_fibers(usr)
+
+/obj/item/clothing/under/bluespace/proc/adjust_fibers(mob/user)
+	if(hides_bulges == FALSE)
+		hides_bulges = TRUE
+		to_chat(user, "You tense the suit fibers, hiding your stomach(s).")
+	else
+		hides_bulges = FALSE
+		to_chat(user, "You relax the suit fibers, showing your stomach(s).")
+
+/obj/item/clothing/under/bluespace/verb/resize()
+	set name = "Adjust Size"
+	set category = "Object"
+	set src in usr
+	bluespace_size(usr)
+
+/obj/item/clothing/under/bluespace/proc/bluespace_size(mob/usr as mob)
+	if (!ishuman(usr))
+		return
+
+	var/mob/living/carbon/human/H = usr
+
+	if (H.stat || H.restrained())
+		return
+
+	if (src != H.w_uniform)
+		to_chat(H,"<span class='warning'>You must be WEARING the uniform to change your size.</span>")
+		return
+
+	var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num|null
+
+	//Check AGAIN because we accepted user input which is blocking.
+	if (src != H.w_uniform)
+		to_chat(H,"<span class='warning'>You must be WEARING the uniform to change your size.</span>")
+		return
+
+	if (H.stat || H.restrained())
+		return
+
+	if (isnull(H.size_multiplier))
+		to_chat(H,"<span class='warning'>The uniform panics and corrects your apparently microscopic size.</span>")
+		H.resize(RESIZE_NORMAL)
+		H.update_icons() //Just want the matrix transform
+		return
+
+	if (!ISINRANGE(new_size,25,200))
+		to_chat(H,"<span class='notice'>The safety features of the uniform prevent you from choosing this size.</span>")
+		return
+
+	else if(new_size)
+		if(new_size != H.size_multiplier)
+			if(!original_size)
+				original_size = H.size_multiplier
+			H.resize(new_size/100)
+			H.visible_message("<span class='warning'>The space around [H] distorts as they change size!</span>","<span class='notice'>The space around you distorts as you change size!</span>")
+		else //They chose their current size.
+			return
+
+/obj/item/clothing/under/bluespace/mob_can_unequip(mob/M, slot, disable_warning = 0)
+	. = ..()
+	if(. && ishuman(M) && original_size)
+		var/mob/living/carbon/human/H = M
+		H.resize(original_size)
+		original_size = null
+		H.visible_message("<span class='warning'>The space around [H] distorts as they return to their original size!</span>","<span class='notice'>The space around you distorts as you return to your original size!</span>")
+
+//Same as Nanotrasen Security Uniforms
+/obj/item/clothing/under/ert
+	armor = list(melee = 5, bullet = 10, laser = 10, energy = 5, bomb = 5, bio = 0, rad = 0)
+
+/obj/item/clothing/under/laconic
+	name = "laconic field suit"
+	desc = "A lightweight black turtleneck with padded gray slacks. It seems comfortable, but practical."
+	icon_state = "laconic"
+	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
+
+
+/obj/item/clothing/under/bountyskin
+	name = "bounty hunter skinsuit"
+	desc = "A skintight bodysuit meant to be worn under powered armor. Popularized by a famous bounty hunter."
+	icon_state = "bountyskin"
+
+/obj/item/clothing/under/smooth_gray
+	name = "smooth gray jumpsuit"
+	desc = "An ironed version of the famous, bold, and bald apparel. As smooth as it looks, it does not guarantee being able to slip away."
+	icon_state = "gray_smooth_jumpsuit"
+
+/obj/item/clothing/under/navy_gray
+	name = "navy gray jumpsuit"
+	desc = "The gray, branchless version issued to all who enrolled. Or those who visited the duty-free store on their way out."
+	icon_state = "navy_jumpsuit"
+
+/obj/item/clothing/under/chiming_dress
+    name = "chiming dress"
+    desc = "This stylish yet rugged dress is inspired by recovered depictions of ancient Surt's native inhabitants. Composed of many integrated panels, it allows for excellent breathability whilst also retaining a strong profile."
+    icon_state = "chiming_dress"

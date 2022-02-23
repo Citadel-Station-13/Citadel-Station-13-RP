@@ -1,3 +1,24 @@
+/datum/category_item/catalogue/fauna/silicon
+	name = "Silicons"
+	desc = "Silicon based life, in all its myriad forms, began as a \
+	tool of some kind. This history has lead to a disconnect between \
+	synthetic and organic life which varies in severity across cultures."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/silicon)
+
+// Obtained by scanning all X.
+/datum/category_item/catalogue/fauna/all_silicons
+	name = "Collection - Silicons"
+	desc = "You have scanned a large array of different types of Silicons, \
+	and therefore you have been granted a fair sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_MEDIUM
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/silicon/ai,
+		/datum/category_item/catalogue/fauna/silicon/pai,
+		/datum/category_item/catalogue/fauna/silicon/robot
+		)
+
 /mob/living/silicon
 	gender = NEUTER
 	voice_name = "synthesized voice"
@@ -393,7 +414,7 @@
 	//Handle job slot/tater cleanup.
 	var/job = mind.assigned_role
 
-	SSjobs.FreeRole(job)
+	job_master.FreeRole(job)
 
 	if(mind.objectives.len)
 		qdel(mind.objectives)

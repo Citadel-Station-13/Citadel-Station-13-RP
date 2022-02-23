@@ -19,7 +19,8 @@
 		/obj/item/clothing/under/swimsuit/white,
 		/obj/item/clothing/under/swimsuit/earth,
 		/obj/item/clothing/mask/snorkel = 2,
-		/obj/item/clothing/shoes/swimmingfins = 2)
+		/obj/item/clothing/shoes/swimmingfins = 2,
+		/obj/item/reagent_containers/spray/squirt = 2)
 
 /obj/structure/closet/boxinggloves
 	name = "boxing gloves"

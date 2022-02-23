@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/mouse
+	name = "Mouse"
+	desc = "An ancient Old Earth rodent, mice have served as both pest and pet \
+	to Humanity for millenia. Originally brought into space for scientific testing \
+	due to genetic similarities with Humans, mice have since bred their way back \
+	to pest status, and spread freely across the Frontier."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/mouse
 	name = "mouse"
 	real_name = "mouse"
@@ -7,9 +15,11 @@
 	item_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/mouse)
 
 	maxHealth = 5
 	health = 5
+	randomized = TRUE
 
 	mob_size = MOB_MINISCULE
 	pass_flags = PASSTABLE
@@ -29,7 +39,10 @@
 	has_langs = list("Mouse")
 
 	holder_type = /obj/item/holder/mouse
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+
+	meat_amount = 1
+	bone_amount = 1
+	hide_amount = 1
 
 	say_list_type = /datum/say_list/mouse
 
@@ -109,16 +122,16 @@
 	maxHealth = 20
 	health = 20
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	mod_min = 90
+	mod_max = 120
 
-/mob/living/simple_mob/animal/passive/mouse/rat/Initialize(mapload)
-	. = ..()
-	adjust_scale(1.2)
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/mouse/brown/Tom/Initialize(mapload)
 	. = ..()

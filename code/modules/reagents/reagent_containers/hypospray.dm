@@ -360,3 +360,154 @@
 	if(.) // Will occur if successfully injected.
 		infect_mob_random_lesser(H)
 		add_attack_logs(user, H, "Infected \the [H] with \the [src], by \the [user].")
+
+//Hjorthorn's Drug Injectors
+/obj/item/reagent_containers/hypospray/glukoz
+	name = "Tizzy"
+	desc = "A colorful plastic autoinjector – it’s well past its expiry date. This one is quite scuffed and is largely illegible. A sticker reading ‘50% OFF!’ is peeling off the side."
+	icon_state = "tizzy"
+	amount_per_transfer_from_this = 20
+	volume = 20
+	filled = 1
+	flags = OPENCONTAINER
+	origin_tech = list(TECH_BIO = 4, TECH_ILLEGAL = 3)
+	filled_reagents = list("impedrezene" = 15, "toxin" = 5)
+	preserve_item = 0
+	var/closed = 1
+
+/obj/item/reagent_containers/hypospray/glukoz/on_reagent_change()
+	..()
+	update_icon()
+/obj/item/reagent_containers/hypospray/glukoz/empty
+	filled = 0
+	filled_reagents = list()
+
+/obj/item/reagent_containers/hypospray/glukoz/used/Initialize(mapload)
+	. = ..()
+	flags &= ~OPENCONTAINER
+
+	icon_state = "[initial(icon_state)]_used"
+
+/obj/item/reagent_containers/hypospray/glukoz/attack_self(mob/user)
+	. = ..()
+	if (closed)
+		closed = 0
+		playsound(loc,"canopen", rand(10,50), 1)
+		to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
+		update_icon()
+	else
+		return
+
+/obj/item/reagent_containers/hypospray/glukoz/attack(mob/living/H as mob, mob/user as mob)
+	if(closed)
+		to_chat(user, "<span class='notice'>You can't use [src] until you open it!</span>")
+		return
+	if(!filled)
+		to_chat(user, "<span class='notice'>This [src] is empty!</span>")
+		return
+	if(!closed)
+		do_injection(H, user)
+		return
+
+/obj/item/reagent_containers/hypospray/glukoz/do_injection(mob/living/carbon/human/H, mob/living/user)
+	. = ..()
+	if(.) // Will occur if successfully injected.
+		flags &= ~OPENCONTAINER
+		to_chat(user, "<span class='notice'>You jab the [src] needle into your skin!</span>")
+		icon_state = "[initial(icon_state)]_used"
+		filled = 0
+		filled_reagents = list()
+
+/obj/item/reagent_containers/hypospray/glukoz/update_icon()
+	if(closed)
+		icon_state = "[initial(icon_state)]_closed"
+	else
+		icon_state = "[initial(icon_state)]_ready"
+
+/obj/item/reagent_containers/hypospray/glukoz/examine(mob/user)
+	. = ..()
+	if(reagents && reagents.reagent_list.len)
+		. += "<span class='notice'>It is currently loaded.</span>"
+	else
+		. += "<span class='notice'>It is spent.</span>"
+
+//Glukoz Brand Injectors:
+/obj/item/reagent_containers/hypospray/glukoz/viraplus
+	name = "Viraplus"
+	desc = "A colorful plastic autoinjector. This one depicts a virus getting shot by a beam."
+	icon_state = "viraplus"
+	filled_reagents = list("corophizine" = 15, "toxin" = 5)
+
+/obj/item/reagent_containers/hypospray/glukoz/pyrholidon
+	name = "Pyrholidon"
+	desc = "A plain steel autoinjector with a worn label. ‘Experimental: use only to treat acute radiation poisoning. Side effects include may include feelings of euphoria, and bleeding from the eyes and nose.’"
+	icon_state = "pyrholidon"
+	filled_reagents = list("space_drugs" = 10, "arithrazine" = 10)
+
+/obj/item/reagent_containers/hypospray/glukoz/oxyduo
+	name = "OxyDuo"
+	desc = "A colorful plastic autoinjector. ‘10% more opiate than leading competitors!’"
+	icon_state = "oxyduo"
+	filled_reagents = list("oxycodone" = 15, "toxin" = 5)
+
+/obj/item/reagent_containers/hypospray/glukoz/numplus
+	name = "Numplus"
+	desc = "A colorful plastic autoinjector. This one depicts a stick figure gripping its knee in pain."
+	icon_state = "numplus"
+	filled_reagents = list("tramadol" = 15, "toxin" = 5)
+
+/obj/item/reagent_containers/hypospray/glukoz/multibuzz
+	name = "Multibuzz"
+	desc = "A colorful plastic autoinjector. ‘Our premium blend of narcotics is guaranteed to ease tension!’"
+	icon_state = "multibuzz"
+	filled_reagents = list("mindbreaker" = 10, "paroxetine" = 10)
+
+/obj/item/reagent_containers/hypospray/glukoz/medcon
+	name = "Medcon"
+	desc = "A colorful plastic autoinjector. ‘Intended for emergency use only. One dose relieves pain and fights internal bleeding.’"
+	icon_state = "medcon"
+	filled_reagents = list("myelamine" = 15, "oxycodone" = 5)
+
+/obj/item/reagent_containers/hypospray/glukoz/hypnogamma
+	name = "Hypnogamma"
+	desc = "A colorful plastic autoinjector. ‘Our premium blend of performance enhancers will help you rise to the occasion.’"
+	icon_state = "hypnogamma"
+	filled_reagents = list("hyperzine" = 5, "methylphenidate" = 15)
+
+/obj/item/reagent_containers/hypospray/glukoz/hangup
+	name = "Hangup"
+	desc = "A colorful plastic autoinjector. ‘The only hangover cure that really works!’"
+	icon_state = "hangup"
+	filled_reagents = list("ethylredoxrazine" = 15, "toxin" = 5)
+
+/obj/item/reagent_containers/hypospray/glukoz/fuckit
+	name = "FUCK!T"
+	desc = "A colorful steel autoinjector with a menacing aura. ‘A LAST RESORT YOU CAN COUNT ON! Danger: amphetamines are highly addictive. Use only in times of extreme duress.’"
+	icon_state = "fuckit"
+	amount_per_transfer_from_this = 60
+	volume = 60
+	filled_reagents = list("stimm" = 40, "oxycodone" = 20)
+
+/obj/item/reagent_containers/hypospray/glukoz/downer
+	name = "Downer"
+	desc = "A colorful plastic autoinjector. ‘For when you’ve got too much on your mind!’"
+	icon_state = "downer"
+	filled_reagents = list("cryptobiolin" = 20)
+
+/obj/item/reagent_containers/hypospray/glukoz/certaphil
+	name = "Certaphil"
+	desc = "A colorful plastic autoinjector. ‘Clinical trials have proven Certaphil to be the market’s leading sleep aid. Please use responsibly.’"
+	icon_state = "cosbytrine"
+	filled_reagents = list("stoxin" = 20)
+
+/obj/item/reagent_containers/hypospray/glukoz/assisticide
+	name = "Assisticide"
+	desc = "A plain steel autoinjector with large warning label. ‘Please consult with your doctor before deciding if Assisticide is right for you. Please use responsibly.’"
+	icon_state = "assisticide"
+	filled_reagents = list("chloralhydrate" = 20)
+
+/obj/item/reagent_containers/hypospray/glukoz/ankh
+	name = "Ankh"
+	desc = "A plain brass autoinjector with an esoteric label. ‘Take a day trip to the Field of Reeds.’"
+	icon_state = "ankh"
+	filled_reagents = list("zombiepowder" = 20)

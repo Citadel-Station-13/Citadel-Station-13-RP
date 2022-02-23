@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/brain/assisted
+	name = "Heuristics - Assisted"
+	desc = "The Man Machine Interface, or MMI, is comparatively ancient \
+	technology. Originally designed to allow full interfacing between organic \
+	processors and ungoverned robotics, MMIs have been the center of vast sapient \
+	rights campaigns and ethical debates."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/mmi
@@ -8,6 +16,7 @@
 	w_class = ITEMSIZE_NORMAL
 	can_speak = 1
 	origin_tech = list(TECH_BIO = 3)
+	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/assisted)
 
 	req_access = list(access_robotics)
 
@@ -305,6 +314,15 @@
 	to_chat(brainmob, "<span class='notify'>You feel slightly disoriented. That's normal when you're little more than a complex circuit.</span>")
 	return
 
+/datum/category_item/catalogue/fauna/brain/posibrain
+	name = "Heuristics - Positronic"
+	desc = "Positronic brains, unlike their organic counterparts, are the \
+	products of intelligent design, rather than evolution. Crafted by various \
+	sapient species using a variety of design philosophies and languages, all \
+	positronic brains are considered fully Sapient creatures, just like their \
+	organic counterparts."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /obj/item/mmi/digital/posibrain
 	name = "positronic brain"
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves."
@@ -314,6 +332,7 @@
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4, TECH_BLUESPACE = 2, TECH_DATA = 4)
 	ghost_query_type = /datum/ghost_query/posi_brain
+	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/posibrain)
 
 /obj/item/mmi/digital/posibrain/request_player()
 	icon_state = "posibrain-searching"

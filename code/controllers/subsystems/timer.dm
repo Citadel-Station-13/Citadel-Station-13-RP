@@ -1,9 +1,18 @@
+/// Seconds of timers to keep, **including the first tick**. 60 = 0 to 59.95 seconds are in buckets (or really 0 to anywhere from 59.95 to 119.90 with practical_offset rollover)
+#define BUCKET_AMOUNT_SECONDS (1 * 60)
 /// Controls how many buckets should be kept, each representing a tick. (1 minutes worth)
-#define BUCKET_LEN (world.fps*1*60)
+#define BUCKET_LEN (world.fps * BUCKET_AMOUNT_SECONDS)
 /// Helper for getting the correct bucket for a given timer
-#define BUCKET_POS(timer) (((round((timer.timeToRun - SStimer.head_offset) / world.tick_lag)+1) % BUCKET_LEN)||BUCKET_LEN)
-/// Gets the maximum time at which timers will be invoked from buckets, used for deferring to secondary queue
-#define TIMER_MAX (world.time + TICKS2DS(min(BUCKET_LEN-(SStimer.practical_offset-DS2TICKS(world.time - SStimer.head_offset))-1, BUCKET_LEN-1)))
+#define BUCKET_POS(timer) ((round(DS2TICKS(timer.timeToRun - SStimer.head_offset)) % BUCKET_LEN) + 1)
+// #define BUCKET_POS(timer) (((round((timer.timeToRun - SStimer.head_offset) / world.tick_lag)+1) % BUCKET_LEN)||BUCKET_LEN) - OLD FROM /tg/
+/// Gets the maximum time at which timers will be invoked from buckets, used for deferring to secondary queue.
+#define TIMER_MAX (SStimer.head_offset + (BUCKET_AMOUNT_SECONDS SECONDS) - world.tick_lag + TICKS2DS(SStimer.practical_offset - 1))
+// Explanation of the above:
+// Head offset is front of timer queue
+// We then store BUCKET_AMOUNT_SECONDS seconds of timers after that, **minus** world.tick_lag because buckets[1] is actually the 0th tick, not the 1st tick,
+// so buckets[buckets.len] is the second to last tick, while the last tick rolls over
+// Then, practical offset is added to it, because we can roll timers over from the "next" set of timers marked by head_offset as long as we don't insert to the same or a forward bucket from practical offset.
+// #define TIMER_MAX (world.time + TICKS2DS(min(BUCKET_LEN-(SStimer.practical_offset-DS2TICKS(world.time - SStimer.head_offset))-1, BUCKET_LEN-1))) - OLD FROM /tg/
 /// Max float with integer precision
 #define TIMER_ID_MAX (2**24)
 
@@ -47,6 +56,10 @@ SUBSYSTEM_DEF(timer)
 	var/static/last_invoke_warning = 0
 	/// Boolean operator controlling if the timer SS will automatically reset buckets if it fails to invoke callbacks for an extended period of time
 	var/static/bucket_auto_reset = TRUE
+#ifdef TIMER_LOOP_DEBUGGING
+	/// subsystem log all looping timers
+	var/log_all_loop_flagged = FALSE
+#endif
 
 /datum/controller/subsystem/timer/PreInit()
 	bucket_list.len = BUCKET_LEN
@@ -160,6 +173,10 @@ SUBSYSTEM_DEF(timer)
 				CRASH("Invalid timer: [get_timer_debug_string(timer)] world.time: [world.time], \
 					head_offset: [head_offset], practical_offset: [practical_offset]")
 
+#ifdef TIMER_LOOP_DEBUGGING
+			var/bucketOld = practical_offset
+#endif
+
 			timer.bucketEject() //pop the timer off of the bucket list.
 
 			// Invoke callback if possible
@@ -171,7 +188,13 @@ SUBSYSTEM_DEF(timer)
 			if (timer.flags & TIMER_LOOP) // Prepare looping timers to re-enter the queue
 				timer.spent = 0
 				timer.timeToRun = world.time + timer.wait
+#ifdef TIMER_LOOP_DEBUGGING
+				var/bucketNew = timer.bucketJoin()
+				if(log_all_loop_flagged-- > 0)
+					subsystem_log("TIMER DEBUG: Looping timer reinserted from buckets [bucketOld] --> [bucketNew]: [get_timer_debug_string(timer)] at head offset [head_offset], practical offset [practical_offset], world time [world.time]")
+#else
 				timer.bucketJoin()
+#endif
 			else
 				qdel(timer)
 
@@ -417,6 +440,105 @@ SUBSYSTEM_DEF(timer)
 	prev = null
 	return QDEL_HINT_IWILLGC
 
+
+#ifdef TIMER_LOOP_DEBUGGING
+
+/**
+ * Debug proc : Find our location in timers, and then ensure bucketeject is able to eject us properly.
+ */
+/datum/timedevent/proc/testEject()
+	var/bucketpos = BUCKET_POS(src)
+	to_chat(usr, "Bucketpos: [bucketpos]")
+	var/should_second_queue = timeToRun > TIMER_MAX
+	to_chat(usr, should_second_queue? "Should be in second queue" : "Should be in buckets")
+	to_chat(usr, "Finding timer...")
+	if(should_second_queue)
+		var/pos = SStimer.second_queue.Find(src)
+		if(!pos)
+			to_chat(usr, "NOT FOUND - should be in second queue. Using advanced bucket search...")
+			searchAdvBucketList()
+			return
+		else
+			to_chat(usr, "Found in expected location: second queue at index [pos]")
+	else
+		var/datum/timedevent/buckethead = SStimer.bucket_list[bucketpos]
+		if(buckethead == src)
+			to_chat(usr, "Found ourselves in bucket head position")
+		else if(buckethead)
+			var/start = buckethead
+			buckethead = buckethead.next
+			var/i = 1
+			var/found = FALSE
+			while(buckethead != start)
+				if(buckethead == src)
+					found = TRUE
+					break
+				buckethead = buckethead.next
+			if(found)
+				to_chat(usr, "Found ourselves: [i] positions from head")
+			else
+				to_chat(usr, "NOT FOUND - should be in bucket list. Using advanced bucket search...")
+				searchAdvBucketList()
+				return
+		else
+			to_chat(usr, "NOT FOUNd - Bucket was empty. Using advanced bucket search...")
+			searchAdvBucketList()
+			return
+
+	to_chat(usr, "Testing eject...")
+	bucketEject()
+	if(should_second_queue)
+		if(SStimer.second_queue.Find(src))
+			to_chat(usr, "Could not properly eject from second queue.")
+		else
+			to_chat(usr, "Ejected successfully from second queue.")
+	else
+		var/datum/timedevent/buckethead = SStimer.bucket_list[bucketpos]
+		if(buckethead == src)
+			to_chat(usr, "Failed to eject from bucket list. Head was still us.")
+		else if(buckethead)
+			var/start = buckethead
+			buckethead = buckethead.next
+			var/i = 1
+			var/found = FALSE
+			while(buckethead != start)
+				if(buckethead == src)
+					found = TRUE
+					break
+				buckethead = buckethead.next
+			if(found)
+				to_chat(usr, "Failed to eject from bucket list: [i] positions from head")
+			else
+				to_chat(usr, "Successfully ejected from bucket list")
+		else
+			to_chat(usr, "Bucket position was empty, this is probably a success.")
+
+/**
+ * Debugging: Brute force searches bucket lists for ourselves
+ */
+/datum/timedevent/proc/searchAdvBucketList()
+	to_chat(usr, "Searching for [name] in SStimer.bucket_list")
+	for(var/pos in 1 to BUCKET_LEN)
+		var/datum/timedevent/buckethead = SStimer.bucket_list[pos]
+		if(buckethead == src)
+			to_chat(usr, "Found at position [pos] as head.")
+			break
+		else if(buckethead)
+			var/start = buckethead
+			buckethead = buckethead.next
+			var/i = 1
+			var/found = FALSE
+			while(buckethead != start)
+				if(buckethead == src)
+					found = TRUE
+					break
+				buckethead = buckethead.next
+			if(found)
+				to_chat(usr, "Found at position [pos] with offset [i] from head")
+				break
+	to_chat(usr, "Search concluded")
+#endif
+
 /**
  * Removes this timed event from any relevant buckets, or the secondary queue
  */
@@ -495,7 +617,11 @@ SUBSYSTEM_DEF(timer)
 	// and we can just set this event to that position
 	if (!bucket_head)
 		bucket_list[bucket_pos] = src
+#ifdef TIMER_LOOP_DEBUGGING
+		return bucket_pos
+#else
 		return
+#endif
 
 	// Otherwise, we merely add this timed event into the bucket, which is a
 	// circularly doubly-linked list
@@ -505,6 +631,9 @@ SUBSYSTEM_DEF(timer)
 	prev = bucket_head.prev
 	next.prev = src
 	prev.next = src
+#ifdef TIMER_LOOP_DEBUGGING
+	return bucket_pos
+#endif
 
 /**
  * Returns a string of the type of the callback for this timer
@@ -607,6 +736,7 @@ SUBSYSTEM_DEF(timer)
 	var/datum/timedevent/timer = SStimer.timer_id_dict[id]
 	return (timer && !timer.spent) ? timer.timeToRun - world.time : null
 
+#undef BUCKET_AMOUNT_SECONDS
 #undef BUCKET_LEN
 #undef BUCKET_POS
 #undef TIMER_MAX

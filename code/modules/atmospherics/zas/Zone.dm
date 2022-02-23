@@ -75,7 +75,7 @@ Class Procs:
 		fire_tiles.Add(T)
 		air_master.active_fire_zones |= src
 		if(fuel) fuel_objs += fuel
-	if(T.allow_gas_overlays)
+	if(T.allow_gas_overlays && !T.outdoors)
 		T.vis_contents += turf_graphics
 
 /zone/proc/remove(turf/simulated/T)
@@ -157,7 +157,7 @@ Class Procs:
 		var/list/added = returned - turf_graphics
 		for(var/turf/simulated/T in contents)
 			T.vis_contents -= removed
-			if(T.allow_gas_overlays)
+			if(T.allow_gas_overlays && !T.outdoors)
 				T.vis_contents += added
 		turf_graphics = returned
 

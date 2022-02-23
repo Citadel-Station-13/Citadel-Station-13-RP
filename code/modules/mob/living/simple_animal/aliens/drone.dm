@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/malf_drone
+	name = "Malfunctioning Combat Drone"
+	desc = "Many drones like this are fielded by Corporate naval fleets. \
+	Armed with heavy lasers, powerful combat shielding, armored frames, and \
+	self destruct cores, stumbling across one of these in the field is an almost \
+	guaranteed death sentence. When a combat drone malfunctions, it becomes twice \
+	as deadly, as it will attack anything it sees - even former allies."
+	value = CATALOGUER_REWARD_MEDIUM
 
 //malfunctioning combat drones
 /mob/living/simple_mob/hostile/malf_drone

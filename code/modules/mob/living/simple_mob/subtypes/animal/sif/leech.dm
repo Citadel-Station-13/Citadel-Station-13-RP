@@ -36,6 +36,7 @@
 
 	maxHealth = 100
 	health = 100
+	randomized = TRUE
 
 	universal_understand = 1
 
@@ -148,7 +149,7 @@
 		randomized_reagent = pick(produceable_chemicals)
 
 	var/turf/T = get_turf(src)
-	if(istype(T, /turf/simulated/floor/outdoors/water) && src.loc == T && !stat)	// Are we sitting in water, and alive?
+	if(istype(T, /turf/simulated/floor/water) && src.loc == T && !stat)	// Are we sitting in water, and alive?
 		alpha = max(5, alpha - 10)
 		if(chemicals + 1 < max_chemicals / 3)
 			chemicals++
@@ -225,7 +226,7 @@
 		if(ai_holder)
 			ai_holder.hostile = initial(ai_holder.hostile)
 
-	if(host && host.stat == DEAD && istype(get_turf(host), /turf/simulated/floor/outdoors/water))
+	if(host && host.stat == DEAD && istype(get_turf(host), /turf/simulated/floor/water))
 		leave_host()
 
 /mob/living/simple_mob/animal/sif/leech/verb/infest()
@@ -469,9 +470,9 @@
 
 /datum/ai_holder/simple_mob/intentional/leech/handle_special_strategical()
 	var/mob/living/simple_mob/animal/sif/leech/SL = holder
-	if(!SL.host && !istype(get_turf(SL), /turf/simulated/floor/outdoors/water))
+	if(!SL.host && !istype(get_turf(SL), /turf/simulated/floor/water))
 		var/list/nearby_water = list()
-		for(var/turf/simulated/floor/outdoors/water/W in view(holder, 10))
+		for(var/turf/simulated/floor/water/W in view(holder, 10))
 			nearby_water |= W
 		if(nearby_water && nearby_water.len)
 			var/turf/T = pick(nearby_water)
@@ -481,7 +482,7 @@
 /datum/ai_holder/simple_mob/intentional/leech/special_flee_check()
 	var/mob/living/simple_mob/animal/sif/leech/SL = holder
 
-	if(!SL.host && !istype(get_turf(SL), /turf/simulated/floor/outdoors/water))
+	if(!SL.host && !istype(get_turf(SL), /turf/simulated/floor/water))
 		return TRUE
 
 /datum/ai_holder/simple_mob/intentional/leech/pre_special_attack(atom/A)

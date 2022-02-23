@@ -28,6 +28,7 @@
 	head = /obj/item/clothing/head/det
 	uniform = /obj/item/clothing/under/det
 	suit = /obj/item/clothing/suit/storage/det_trench
+	gloves = /obj/item/clothing/gloves/forensic
 	l_pocket = /obj/item/flame/lighter/zippo
 	shoes = /obj/item/clothing/shoes/laceup
 	r_hand = /obj/item/storage/briefcase/crimekit
@@ -42,6 +43,11 @@
 	head = null
 	suit = /obj/item/clothing/suit/storage/forensics/blue
 
+/decl/hierarchy/outfit/job/security/detective/vice
+	name = OUTFIT_JOB_NAME("Vice Investigator")
+	head = null
+	uniform = /obj/item/clothing/under/hawaiian
+	suit = null
 /decl/hierarchy/outfit/job/security/officer
 	name = OUTFIT_JOB_NAME("Security Officer")
 	uniform = /obj/item/clothing/under/rank/security

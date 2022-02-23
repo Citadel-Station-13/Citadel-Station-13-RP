@@ -23,13 +23,8 @@
 
 #define Z_LEVEL_TRADEPORT				20
 #define Z_LEVEL_LAVALAND				21
-// Camera Networks
-#define NETWORK_TRIUMPH "Triumph"
-#define NETWORK_TCOMMS "Telecommunications"
-#define NETWORK_OUTSIDE "Outside"
-#define NETWORK_EXPLORATION "Exploration"
-#define NETWORK_XENOBIO "Xenobiology"
 
+// Camera Networks
 /datum/map/triumph
 	name = "Triumph"
 	full_name = "NSV Triumph"
@@ -49,7 +44,7 @@
 
 	admin_levels = list()
 	sealed_levels = list()
-	empty_levels = list()
+	empty_levels = null
 	station_levels = list(Z_LEVEL_DECK_ONE,
 		Z_LEVEL_DECK_TWO,
 		Z_LEVEL_DECK_THREE,
@@ -115,12 +110,13 @@
 							NETWORK_COMMUNICATORS,
 							NETWORK_ALARM_ATMOS,
 							NETWORK_ALARM_POWER,
-							NETWORK_ALARM_FIRE
+							NETWORK_ALARM_FIRE,
+							NETWORK_TRADE_STATION
 							)
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage")
+	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo

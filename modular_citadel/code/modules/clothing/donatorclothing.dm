@@ -210,3 +210,78 @@
 	icon_state = "mikuleggings"
 	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+
+/obj/item/clothing/head/donator/dancer
+	name = "belly dancer headscarf"
+	desc = "A lightweight silk headscarf meant to accentuate and flow freely."
+	icon_state = "dancer_scarf"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+/obj/item/clothing/mask/donator/dancer
+	name = "belly dancer veil"
+	desc = "A heavy, ornate veil meant to mask the identity of the user, in spite of its subtle opacity."
+	icon_state = "dancer_veil"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	flags_inv = HIDEFACE
+	action_button_name = "Adjust Veil"
+	var/hanging = 0
+
+/obj/item/clothing/mask/donator/dancer/proc/adjust_mask(mob/user)
+	if(!user.incapacitated() && !user.restrained() && !user.stat)
+		hanging = !hanging
+		if (hanging)
+			body_parts_covered = body_parts_covered & ~FACE
+			icon_state = "dancer_veil_down"
+			to_chat(user, "You drape the veil to one side.")
+		else
+			body_parts_covered = initial(body_parts_covered)
+			item_flags = initial(item_flags)
+			icon_state = initial(icon_state)
+			to_chat(user, "You pull the veil over to cover your face.")
+		update_clothing_icon()
+
+/obj/item/clothing/mask/donator/dancer/attack_self(mob/user)
+	adjust_mask(user)
+
+/obj/item/clothing/mask/donator/dancer/verb/toggle()
+		set category = "Object"
+		set name = "Adjust veil"
+		set src in usr
+
+		adjust_mask(usr)
+/obj/item/clothing/gloves/donator/dancer
+	name = "belly dancer sleeves"
+	desc = "Lightweight silk sleeves designed to flow during acrobatic displays."
+	icon_state = "dancer_sleeves"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+/obj/item/clothing/under/donator/dancer
+	name = "belly dancer costume"
+	desc = "An custom made ornate silk outfit, designed to be provocative without revealing too much of the wearer's body. A small tag bearing an embroidered 'K' is the only manufacturer's mark."
+	icon_state = "dancer_costume"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'
+	rolled_sleeves = -1
+	rolled_down = -1
+	action_button_name = "Reconfigure Suit"
+
+/obj/item/clothing/under/donator/dancer/verb/switchsprite()
+    set name = "Reconfigure Suit"
+    set category = "Object"
+    set src in usr
+    if(!istype(usr, /mob/living))
+        return
+    if(usr.stat)
+        return
+    to_chat(usr, "You rearrange the suit's configuration.")
+    if(worn_state == "dancer_costume_s")
+        worn_state = "dancer_costume_d_s"
+    if(worn_state == "dancer_costume_d_s")
+        worn_state = "dancer_costume_s"
+/obj/item/clothing/shoes/donator/dancer
+	name = "belly dancer footwraps"
+	desc = "Soft silk wraps meant to provide some protection without hampering agility."
+	icon_state = "dancer_wraps"
+	icon = 'modular_citadel/icons/obj/clothing/donatorclothing.dmi'
+	icon_override = 'modular_citadel/icons/mob/donatorclothing.dmi'

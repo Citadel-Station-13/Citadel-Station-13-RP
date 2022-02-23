@@ -192,9 +192,6 @@
 /obj/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 	return
 
-/obj/proc/get_cell()
-	return
-
 // Used to mark a turf as containing objects that are dangerous to step onto.
 /obj/proc/register_dangerous_to_step()
 	var/turf/T = get_turf(src)
@@ -223,4 +220,7 @@
 			i++
 		materials_list += matter[i]
 		. += "<u>It is made out of [materials_list]</u>."
+	return
+
+/obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
 	return

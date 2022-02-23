@@ -202,9 +202,9 @@
 	var/datum/job/previewJob
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	if(job_civilian_low & ASSISTANT)
-		previewJob = SSjobs.GetJob(USELESS_JOB)
+		previewJob = SSjob.get_job(USELESS_JOB)
 	else
-		for(var/datum/job/job in SSjobs.occupations)
+		for(var/datum/job/job in SSjob.occupations)
 			var/job_flag
 			switch(job.department_flag)
 				if(CIVILIAN)
@@ -251,49 +251,15 @@
 /datum/preferences/proc/update_preview_icon()
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
 	mannequin.delete_inventory(TRUE)
+	if(regen_limbs)
+		var/datum/species/current_species = GLOB.all_species[species]
+		current_species.create_organs(mannequin)
+		regen_limbs = 0
 	dress_preview_mob(mannequin)
+	mannequin.update_transform()
 	COMPILE_OVERLAYS(mannequin)
 
-	preview_icon = icon('icons/effects/128x48.dmi', bgstate)
-	preview_icon.Scale(48+32, 16+32)
-
-	var/icon/stamp = getFlatIcon(mannequin, defdir=NORTH)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 25, 17)
-
-	stamp = getFlatIcon(mannequin, defdir=WEST)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 1, 9)
-
-	stamp = getFlatIcon(mannequin, defdir=SOUTH)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 49, 1)
-
-	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
-
-//Taur support & sensor setting in prefs.
-/datum/preferences/update_preview_icon() // Lines up and un-overlaps character edit previews. Also un-splits taurs.
-	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
-	mannequin.delete_inventory(TRUE)
-	dress_preview_mob(mannequin)
-	COMPILE_OVERLAYS(mannequin)
-
-	preview_icon = icon('icons/effects/128x72_vr.dmi', bgstate)
-	preview_icon.Scale(128, 72)
-
-	mannequin.dir = NORTH
-	var/icon/stamp = getFlatIcon(mannequin)
-	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 64-stamp.Width()/2, 5)
-
-	mannequin.dir = WEST
-	stamp = getFlatIcon(mannequin)
-	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 16-stamp.Width()/2, 5)
-
-	mannequin.dir = SOUTH
-	stamp = getFlatIcon(mannequin)
-	stamp.Scale(stamp.Width()*size_multiplier,stamp.Height()*size_multiplier)
-	preview_icon.Blend(stamp, ICON_OVERLAY, 112-stamp.Width()/2, 5)
-
-	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
+	update_character_previews(new /mutable_appearance(mannequin))
 
 //TFF 5/8/19 - add randomised sensor setting for random button clicking
 /datum/preferences/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)

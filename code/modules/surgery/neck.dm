@@ -102,6 +102,7 @@
 	priority = 3 //Do this instead of picking around for implants.
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,
+		/obj/item/surgical/hemostat_primitive = 50,
 		/obj/item/melee/changeling/claw = 40) //Surprisingly, claws are kind of okay at picking things out.
 
 	allowed_procs = list(IS_WIRECUTTER = 60)
@@ -219,6 +220,7 @@
 	priority = 3 //Do this instead of searching for objects in the skull.
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,
+		/obj/item/surgical/hemostat_primitive = 50,
 		/obj/item/melee/changeling/claw = 20) //Claws. Good for digging, not so much for moving.
 
 	allowed_procs = list(IS_WIRECUTTER = 60)

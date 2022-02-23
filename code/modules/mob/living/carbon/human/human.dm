@@ -41,6 +41,8 @@
 
 	nutrition = rand(200,400)
 
+	AddComponent(/datum/component/personal_crafting)
+
 	human_mob_list |= src
 
 	. = ..()
@@ -410,7 +412,7 @@
 										modified = 1
 
 										spawn()
-											ENABLE_BITFIELD(hud_updateflag, WANTED_HUD)
+											BITSET(hud_updateflag, WANTED_HUD)
 											if(istype(usr,/mob/living/carbon/human))
 												var/mob/living/carbon/human/U = usr
 												U.handle_regular_hud_updates()
@@ -1140,7 +1142,7 @@
 
 	if(species)
 
-		if(species.name && species.name == new_species)
+		if(species.name && species.name == new_species && species.name != "Custom Species")
 			return
 		if(species.language)
 			remove_language(species.language)
@@ -1150,6 +1152,7 @@
 			remove_language(L)
 		// Clear out their species abilities.
 		species.remove_inherent_verbs(src)
+		species.remove_inherent_spells(src)
 		holder_type = null
 
 	species = GLOB.all_species[new_species]
@@ -1160,8 +1163,8 @@
 	if(species.default_language)
 		add_language(species.default_language)
 
-	//if(species.icon_scale_x != 1 || species.icon_scale_y != 1)	//VOREStation Removal
-	//	update_transform()											//VOREStation Removal
+	if(species.icon_scale_x != 1 || species.icon_scale_y != 1)
+		update_transform()
 
 	if(example)						//VOREStation Edit begin
 		if(!(example == src))
@@ -1288,17 +1291,13 @@
 	if(isSynthetic())
 		switch(severity)
 			if(1)
-				src.take_organ_damage(0,20,emp=1)
-				Confuse(20)
-			if(2)
-				src.take_organ_damage(0,15,emp=1)
-				Confuse(15)
-			if(3)
-				src.take_organ_damage(0,10,emp=1)
 				Confuse(10)
-			if(4)
-				src.take_organ_damage(0,5,emp=1)
+			if(2)
+				Confuse(7)
+			if(3)
 				Confuse(5)
+			if(4)
+				Confuse(2)
 		flash_eyes()
 		to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
 		to_chat(src, "<font face='fixedsys'><span class='danger'>Warning: Electromagnetic pulse detected.</span></font>")
@@ -1640,3 +1639,6 @@
 	alt_farmanimals -= src
 
 	. = ..()
+
+/mob/living/carbon/human/get_mob_riding_slots()
+	return list(back, head, wear_suit)

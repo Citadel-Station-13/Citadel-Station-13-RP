@@ -16,6 +16,10 @@
 	if(eyeobj)
 		return eyeobj.zMove(direction)
 
+	if(istype(loc,/obj/mecha))
+		var/obj/mecha/mech = loc
+		return mech.relaymove(src,direction)
+
 	if(!can_ztravel())
 		to_chat(src, "<span class='warning'>You lack means of travel in that direction.</span>")
 		return
@@ -33,7 +37,7 @@
 	if(is_incorporeal())
 		forceMove(destination)
 		return 1
-		
+
 	if(!start.CanZPass(src, direction))
 		to_chat(src, "<span class='warning'>\The [start] is in the way.</span>")
 		return 0
@@ -293,20 +297,14 @@
 
 // Things that prevent objects standing on them from falling into turf below
 /obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(target.x == x && target.y == y && target.z == z - 1)
-		return FALSE
-	return TRUE
+	return FALSE
 
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
 
 /obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	if(mover.checkpass(PASSGRILLE))
-		return TRUE
-	if(target.x == x && target.y == y && target.z == z - 1)
-		return FALSE
-	return TRUE
+	return mover.checkpass(PASSGRILLE)
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
@@ -476,7 +474,10 @@
 			adjustBruteLoss(rand(damage_min, damage_max))
 		Weaken(4)
 		updatehealth()
-		return
+
+/mob/living/carbon/human/fall_impact(atom/hit_atom, damage_min, damage_max, silent, planetary)
+	if(!species?.handle_falling(src, hit_atom, damage_min, damage_max, silent, planetary))
+		..()
 
 //Using /atom/movable instead of /obj/item because I'm not sure what all humans can pick up or wear
 /atom/movable

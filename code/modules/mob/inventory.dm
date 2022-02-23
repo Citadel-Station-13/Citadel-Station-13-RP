@@ -268,10 +268,10 @@ var/list/slot_equipment_priority = list( \
 
 
 //This differs from remove_from_mob() in that it checks if the item can be unequipped first.
-/mob/proc/unEquip(obj/item/I, force = 0) //Force overrides NODROP for things like wizarditis and admin undress.
+/mob/proc/unEquip(obj/item/I, force = 0, target) //Force overrides NODROP for things like wizarditis and admin undress.
 	if(!(force || canUnEquip(I)))
 		return
-	drop_from_inventory(I)
+	drop_from_inventory(I, target)
 	return 1
 
 
@@ -325,3 +325,6 @@ var/list/slot_equipment_priority = list( \
 	for(var/entry in get_equipped_items())
 		drop_from_inventory(entry)
 		qdel(entry)
+
+/mob/proc/transferItemToLoc(obj/item/I, newloc = null, force = FALSE, silent = TRUE)
+	return src.unEquip(I, force, newloc, FALSE, silent)

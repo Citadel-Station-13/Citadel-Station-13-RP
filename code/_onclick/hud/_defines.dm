@@ -30,6 +30,7 @@
 #define ui_swaphand2 "CENTER:16,SOUTH+1:5"
 #define ui_storage1 "CENTER+1:16,SOUTH:5"
 #define ui_storage2 "CENTER+2:16,SOUTH:5"
+#define ui_crafting "EAST-4:18,SOUTH:4"
 
 #define ui_alien_head "CENTER-3:12,SOUTH:5"		//aliens
 #define ui_alien_oclothing "CENTER-2:14,SOUTH:5"//aliens
@@ -75,6 +76,16 @@
 #define ui_ai_pda_log "SOUTH:6,WEST+11:16"
 #define ui_ai_take_picture "SOUTH:6,WEST+12:16"
 #define ui_ai_view_images "SOUTH:6,WEST+13:16"
+#define ui_ai_multicam "SOUTH+1:6,WEST+11:16"
+#define ui_ai_add_multicam "SOUTH+1:6,WEST+12:16"
+#define ui_ai_updown "SOUTH+1:6,WEST+13:16"
+
+//Upper-middle right (alerts)
+#define ui_alert1 "EAST-1:28,CENTER+5:27"
+#define ui_alert2 "EAST-1:28,CENTER+4:25"
+#define ui_alert3 "EAST-1:28,CENTER+3:23"
+#define ui_alert4 "EAST-1:28,CENTER+2:21"
+#define ui_alert5 "EAST-1:28,CENTER+1:19"
 
 //Gun buttons
 #define ui_gun1 "EAST-2:26,SOUTH+2:7"

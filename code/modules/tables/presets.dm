@@ -75,6 +75,14 @@
 	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
 	return ..()
 
+/obj/structure/table/hardwoodtable
+	icon_state = "stone_preview"
+	color = "#42291a"
+
+/obj/structure/table/hardwoodtable/Initialize(mapload)
+	material = get_material_by_name("hardwood")
+	return ..()
+
 /obj/structure/table/gamblingtable
 	icon_state = "gamble_preview"
 
@@ -132,6 +140,23 @@
 /obj/structure/table/alien/dismantle(obj/item/tool/wrench/W, mob/user)
 	to_chat(user, "<span class='warning'>You cannot dismantle \the [src].</span>")
 	return
+
+/obj/structure/table/bananium
+	icon_state = "plain_preview"
+	color = "#d6c100"
+
+/obj/structure/table/bananium/Initialize(mapload)
+	material = get_material_by_name("bananium")
+	return ..()
+
+/obj/structure/table/bananium_reinforced
+	icon_state = "reinf_preview"
+	color = "#d6c100"
+
+/obj/structure/table/bananium_reinforced/Initialize(mapload)
+	material = get_material_by_name("bananium")
+	reinforced = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	return ..()
 
 //BENCH PRESETS
 /obj/structure/table/bench/standard
@@ -239,29 +264,3 @@
 	material = get_material_by_name("holowood")
 	..()
 */
-
-//Sandbags.
-/obj/structure/table/sandbags
-	name = "sandbag barrier"
-	icon = 'icons/obj/tables.dmi'
-	icon_state = "sandbags"
-	desc = "A barrier made of stacked sandbags."
-	density = 1
-	anchored = 1
-	climbable = 1
-	layer = TABLE_LAYER
-	throwpass = 1
-	surgery_odds = 66
-	can_plate = 0
-	can_reinforce = 0
-	flipped = -1
-	maxhealth = 100
-	health = 100
-	item_place = TRUE
-	item_pixel_place = FALSE
-
-	connections = list("nw0", "ne0", "sw0", "se0")
-
-/obj/structure/table/sandbags/Initialize(mapload)
-	material = get_material_by_name("sandbag")
-	return ..()

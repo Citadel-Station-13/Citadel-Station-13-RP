@@ -254,6 +254,34 @@
 					GS.make_spiderling()
 			qdel(src)
 
+//Rather than kneecap all spiderlings, I figure I'll just make a spiderling cousin that doesn't have the ability.
+/obj/effect/spider/spiderling/no_crawl
+
+/obj/effect/spider/spiderling/no_crawl/skitter()
+	if(isturf(loc))
+		if(prob(25))
+			var/list/nearby = trange(5, src) - loc
+			if(nearby.len)
+				var/target_atom = pick(nearby)
+				walk_to(src, target_atom, 5)
+				if(prob(25))
+					src.visible_message("<span class='notice'>\The [src] skitters[pick(" away"," around","")].</span>")
+		else if(prob(0))
+			//vent crawl!
+			for(var/obj/machinery/atmospherics/unary/vent_pump/v in view(7,src))
+				if(!v.welded)
+					entry_vent = v
+					walk_to(src, entry_vent, 5)
+					break
+		if(amount_grown >= 100)
+			var/spawn_type = pick(grow_as)
+			var/mob/living/simple_mob/animal/giant_spider/GS = new spawn_type(src.loc, src)
+			if(stunted)
+				spawn(2)
+					GS.make_spiderling()
+			qdel(src)
+
+
 /obj/effect/spider/spiderling/stunted
 	stunted = TRUE
 

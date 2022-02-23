@@ -189,6 +189,7 @@
 	prescription = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
 
+
 /obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user)
 	if(!active)
 		toggleprojector()
@@ -215,6 +216,19 @@
 			to_chat(usr, "You activate the retinal projector on the [src].")
 		usr.update_action_buttons()
 
+/obj/item/clothing/glasses/omnihud/exp
+	name = "\improper AR-V goggles"
+	desc = "The VM-62-V AR goggles are a design from Vey Med. \
+	These have been upgraded with an integrated zoom function and rudimentary health scanner."
+	mode = "exp"
+	icon_state = "pf_goggles"
+	prescription = 1
+	action_button_name = "Toggle Zoom"
+	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
+
+/obj/item/clothing/glasses/omnihud/exp/ui_action_click()
+	zoom(wornslot = slot_glasses)
+
 /obj/item/clothing/glasses/omnihud/all
 	name = "\improper AR-B glasses"
 	desc = "The CC-62-B AR glasses are a design from Nanotrasen Central Command. \
@@ -222,7 +236,7 @@
 	mode = "best"
 	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED)
+	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED, VIS_AUGMENTED)
 
 /obj/item/clothing/glasses/hud/security/eyepatch
     name = "Security Hudpatch"
@@ -230,7 +244,7 @@
     icon_state = "hudpatch"
     item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
     body_parts_covered = 0
-    enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM)
+    enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM, VIS_AUGMENTED)
     var/eye = null
 
 /obj/item/clothing/glasses/hud/security/eyepatch/verb/switcheye()
@@ -288,4 +302,4 @@
 	icon_state = "medpatch"
 	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
 	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
+	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP, VIS_AUGMENTED)

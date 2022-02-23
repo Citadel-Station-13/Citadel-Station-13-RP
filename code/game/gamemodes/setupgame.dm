@@ -70,8 +70,8 @@
 
 	// And the genes that actually do the work. (domutcheck improvements)
 	var/list/blocks_assigned[DNA_SE_LENGTH]
-	for(var/gene_type in typesof(/datum/dna/gene))
-		var/datum/dna/gene/G = new gene_type
+	for(var/gene_type in typesof(/datum/gene))
+		var/datum/gene/G = new gene_type
 		if(G.block)
 			if(G.block in blocks_assigned)
 				warning("DNA2: Gene [G.name] trying to use already-assigned block [G.block] (used by [english_list(blocks_assigned[G.block])])")

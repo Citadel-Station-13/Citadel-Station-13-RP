@@ -81,7 +81,6 @@ SUBSYSTEM_DEF(input)
 	"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 	"F1" = "adminhelp",
 	"F2" = "ooc",
-	"H" = "holster"
 	)
 
 	macroset_classic_hotkey |= hard_bind_anti_collision
@@ -95,7 +94,6 @@ SUBSYSTEM_DEF(input)
 	"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 	"F1" = "adminhelp",
 	"F2" = "ooc",
-	"H" = "holster"
 	)
 
 	macroset_hotkey |= hard_bind_anti_collision

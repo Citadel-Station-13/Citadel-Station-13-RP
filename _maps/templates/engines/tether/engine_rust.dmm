@@ -12,11 +12,9 @@
 "ad" = (
 /obj/machinery/computer/general_air_control/supermatter_core{
 	dir = 1;
-	frequency = 1438;
 	input_tag = "cooling_in";
 	name = "Engine Cooling Control";
 	output_tag = "cooling_out";
-	pressure_setting = 100;
 	sensors = list("engine_sensor" = "Engine Core");
 	throwpass = 1
 	},
@@ -35,7 +33,6 @@
 	desc = "A remote control-switch for the engine control room blast doors.";
 	id = "EngineBlast";
 	name = "Engine Monitoring Room Blast Doors";
-	pixel_x = 0;
 	pixel_y = -3;
 	req_access = list(10)
 	},
@@ -83,10 +80,8 @@
 "al" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "EngineVent";
-	name = "Reactor Vent";
-	p_open = 0
+	name = "Reactor Vent"
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_room)
@@ -94,9 +89,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
 	icon_state = "radiation";
-	name = "RADIOACTIVE AREA";
-	pixel_x = 0;
-	pixel_y = 0
+	name = "RADIOACTIVE AREA"
 	},
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_room)
@@ -179,8 +172,7 @@
 /area/engineering/engine_room)
 "aB" = (
 /obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -256,8 +248,7 @@
 "aM" = (
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -500,29 +491,25 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bv" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bw" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -572,7 +559,6 @@
 	id = "EngineRadiatorViewport";
 	name = "Engine Radiator Viewport Shutters";
 	pixel_x = -25;
-	pixel_y = 0;
 	req_access = list(10)
 	},
 /turf/simulated/floor,
@@ -711,8 +697,7 @@
 /area/engineering/engine_room)
 "bT" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 10;
-	icon_state = "intact"
+	dir = 10
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
@@ -724,8 +709,7 @@
 "bV" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 8;
-	icon_state = "map"
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -806,8 +790,7 @@
 "cd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4;
-	icon_state = "warning"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -1023,24 +1006,21 @@
 /area/engineering/engine_room)
 "cB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 5;
-	icon_state = "intact"
+	dir = 5
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 6;
-	icon_state = "intact"
+	dir = 6
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "cD" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
-	dir = 4;
-	icon_state = "map"
+	dir = 4
 	},
 /obj/machinery/meter,
 /turf/simulated/floor,
@@ -1078,7 +1058,6 @@
 	desc = "A remote control-switch for the engine control room blast doors.";
 	id = "EngineEmitterPortWest";
 	name = "Engine Room Blast Doors";
-	pixel_x = 0;
 	pixel_y = -25;
 	req_access = null;
 	req_one_access = list(11,24)
@@ -1104,8 +1083,7 @@
 /area/engineering/engine_room)
 "cM" = (
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4;
-	icon_state = "warning"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -1119,7 +1097,6 @@
 	id_tag = "eng_al_int_snsr";
 	master_tag = "engine_room_airlock";
 	pixel_x = 22;
-	pixel_y = 0;
 	req_access = list(10)
 	},
 /turf/simulated/floor,
@@ -1127,7 +1104,6 @@
 "cO" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "EngineEmitterPortWest";
 	layer = 3.3;
 	name = "Engine Gas Storage"
@@ -1193,7 +1169,6 @@
 	desc = "A remote control-switch for the engine control room blast doors.";
 	id = "EngineEmitterPortWest";
 	name = "Engine Room Blast Doors";
-	pixel_x = 0;
 	pixel_y = 25;
 	req_access = null;
 	req_one_access = list(11,24)
@@ -1205,7 +1180,6 @@
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
-	icon_state = "extinguisher_closed";
 	pixel_y = 32
 	},
 /turf/simulated/floor,
@@ -1218,7 +1192,6 @@
 /obj/machinery/button/remote/blast_door{
 	id = "EngineVent";
 	name = "Reactor Ventillatory Control";
-	pixel_x = 0;
 	pixel_y = -25;
 	req_access = list(10)
 	},
@@ -1244,26 +1217,22 @@
 /area/engineering/engine_room)
 "dc" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4;
-	icon_state = "intact"
+	dir = 4
 	},
 /obj/machinery/alarm{
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 9;
-	icon_state = "intact"
+	dir = 9
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "de" = (
 /obj/item/radio/intercom{
-	dir = 2;
 	pixel_y = -24
 	},
 /turf/simulated/floor,
@@ -1293,13 +1262,11 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /obj/machinery/alarm{
 	dir = 8;
-	pixel_x = 25;
-	pixel_y = 0
+	pixel_x = 25
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
@@ -1307,8 +1274,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HIGH VOLTAGE'";
 	icon_state = "shock";
-	name = "HIGH VOLTAGE";
-	pixel_y = 0
+	name = "HIGH VOLTAGE"
 	},
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_room)
@@ -1316,8 +1282,7 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
@@ -1392,7 +1357,6 @@
 	id = "EngineEmitterPortWest2";
 	name = "Engine Room Blast Doors";
 	pixel_x = 25;
-	pixel_y = 0;
 	req_access = null;
 	req_one_access = list(11,24)
 	},
@@ -1402,9 +1366,7 @@
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
 	icon_state = "radiation";
-	name = "RADIOACTIVE AREA";
-	pixel_x = 0;
-	pixel_y = 0
+	name = "RADIOACTIVE AREA"
 	},
 /turf/simulated/wall/r_wall,
 /area/template_noop)
@@ -1412,7 +1374,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "EngineEmitterPortWest2";
 	layer = 3.3;
 	name = "Engine Gas Storage"
@@ -1430,7 +1391,6 @@
 	},
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	icon_state = "pdoor1";
 	id = "EngineEmitterPortWest2";
 	layer = 3.3;
 	name = "Engine Gas Storage"
@@ -1479,11 +1439,14 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning{
-	dir = 4;
-	icon_state = "warning"
+	dir = 4
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"Ah" = (
+/obj/machinery/power/smes/buildable/engine/rust,
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
 aa
@@ -2328,7 +2291,7 @@ ab
 ab
 ab
 bc
-aa
+Ah
 aa
 aa
 aa

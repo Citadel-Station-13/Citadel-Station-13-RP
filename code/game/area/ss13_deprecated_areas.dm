@@ -152,7 +152,6 @@
 	icon_state = "shuttle"
 
 /area/supply
-	flags = BLUE_SHIELDED
 
 /area/supply/station
 	name = "Supply Shuttle"

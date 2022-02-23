@@ -29,6 +29,7 @@
 /datum/surgery_step/generic/cut_open
 	allowed_tools = list(
 		/obj/item/surgical/scalpel = 100,		\
+		/obj/item/surgical/scalpel_primitive = 80,
 		/obj/item/material/knife = 75,	\
 		/obj/item/material/shard = 50, 		\
 	)
@@ -166,6 +167,7 @@
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,	\
 		/obj/item/stack/cable_coil = 75, 	\
+		/obj/item/surgical/hemostat_primitive = 50,	\
 		/obj/item/assembly/mousetrap = 20
 	)
 
@@ -204,6 +206,7 @@
 /datum/surgery_step/generic/retract_skin
 	allowed_tools = list(
 		/obj/item/surgical/retractor = 100,	\
+		/obj/item/surgical/retractor_primitive = 75, \
 		/obj/item/material/kitchen/utensil/fork = 50
 	)
 
@@ -265,6 +268,7 @@
 	allowed_tools = list(
 		/obj/item/surgical/cautery = 100,			\
 		/obj/item/clothing/mask/smokable/cigarette = 75,	\
+		/obj/item/surgical/cautery_primitive = 70,	\
 		/obj/item/flame/lighter = 50,			\
 		/obj/item/weldingtool = 25
 	)
@@ -305,7 +309,8 @@
 /datum/surgery_step/generic/amputate
 	allowed_tools = list(
 		/obj/item/surgical/circular_saw = 100, \
-		/obj/item/material/knife/machete/hatchet = 75
+		/obj/item/material/knife/machete/hatchet = 75, \
+		/obj/item/surgical/circular_saw = 60
 	)
 	req_open = 0
 

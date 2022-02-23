@@ -23,6 +23,9 @@
 		"Mining Shuttle" = list("triumph_mining_port")
 		)
 
+//////////////////////////////////////////////////////////////////////////
+// There is literally a dm file for triumph shuttles, why are these here//
+//////////////////////////////////////////////////////////////////////////
 // EXCURSION SHUTTLE DATA
 /obj/effect/overmap/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
@@ -38,7 +41,6 @@
 	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
 	current_location = "triumph_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
-	fuel_consumption = 2
 
 /area/shuttle/excursion
 	name = "Excursion Shuttle"
@@ -126,7 +128,7 @@
 	in_space = 1
 	initial_generic_waypoints = list("triumph_excursion_debrisfield")
 
-
+/* Old Class D waypoint, new one is being handled in classd.dm . Please use that one -Bloop
 /obj/effect/overmap/visitable/sector/class_d
 	name = "Unidentified Planet"
 	desc = "ASdlke ERROR%%%% UNABLE TO----."
@@ -135,6 +137,7 @@
 	icon_state = "globe"
 	known = FALSE
 	color = "#882933"
+*/
 
 /obj/effect/overmap/visitable/sector/class_h
 	name = "Desert Planet"
@@ -200,6 +203,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	in_space = 0
 
+/*
 /obj/effect/overmap/visitable/sector/trade_post
 	name = "Nebula Gas Food Mart"
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
@@ -219,3 +223,4 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		"Dart EMT Shuttle" = list("nebula_pad_5"),
 		"Civilian Transport" = list("nebula_pad_6")
 		)
+*/

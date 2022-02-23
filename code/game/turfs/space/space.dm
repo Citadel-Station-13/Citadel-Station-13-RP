@@ -146,7 +146,7 @@
 		addtimer(CALLBACK(src, .proc/on_atom_edge_touch, A), 0)
 
 /turf/space/proc/on_atom_edge_touch(atom/movable/AM)
-	if((AM.loc == src) && !QDELETED(AM))
+	if(!QDELETED(AM) && (AM.loc == src))
 		AM.touch_map_edge()
 
 /turf/space/proc/Sandbox_Spacemove(atom/movable/A as mob|obj)

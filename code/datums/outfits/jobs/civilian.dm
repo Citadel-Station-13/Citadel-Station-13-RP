@@ -97,6 +97,17 @@
 	id_type = /obj/item/card/id/civilian/librarian
 	pda_type = /obj/item/pda/librarian
 
+/decl/hierarchy/outfit/job/librarian/reporter
+	name = OUTFIT_JOB_NAME("Reporter")
+	uniform = /obj/item/clothing/under/suit_jacket/red
+	id_type = /obj/item/card/id/civilian/librarian
+	pda_type = /obj/item/pda/librarian
+	belt = /obj/item/camera
+	backpack_contents = list(/obj/item/clothing/accessory/badge/corporate_tag/press = 1,
+							/obj/item/tape_recorder = 1,
+							/obj/item/camera_film = 1
+							)
+
 /decl/hierarchy/outfit/job/internal_affairs_agent
 	name = OUTFIT_JOB_NAME("Internal affairs agent")
 	l_ear = /obj/item/radio/headset/ia

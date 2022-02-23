@@ -44,7 +44,7 @@
 	armor = list(melee = 60, bullet = 50, laser = 40, energy = 15, bomb = 30, bio = 100, rad = 50)
 	siemens_coefficient = 0.2
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL | AIRTIGHT
+	item_flags = THICKMATERIAL | ALLOWINTERNALS
 	flags_inv = 0
 	species_restricted = list(SPECIES_VOX)
 

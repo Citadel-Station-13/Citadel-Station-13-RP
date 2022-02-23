@@ -13,6 +13,7 @@
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 	projectile_type = /obj/item/projectile/bullet/shotgun
 	handle_casings = HOLD_CASINGS
+	one_handed_penalty = 15
 	var/recentpump = 0 // to prevent spammage
 	var/action_sound = 'sound/weapons/shotgunpump.ogg'
 	var/animated_pump = 0 //This is for cyling animations.
@@ -130,10 +131,11 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 1)
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
+
 	burst_delay = 0
 	firemodes = list(
-		list(mode_name="fire one barrel at a time", burst=1),
-		list(mode_name="fire both barrels at once", burst=2),
+		list(mode_name="fire one barrel at a time", one_handed_penalty = 15, burst=1),
+		list(mode_name="fire both barrels at once", one_handed_penalty = 35, burst=2),
 		)
 
 /obj/item/gun/projectile/shotgun/doublebarrel/pellet
@@ -187,6 +189,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 	w_class = ITEMSIZE_NORMAL
 	force = 5
+	one_handed_penalty = 5
 
 /obj/item/gun/projectile/shotgun/doublebarrel/sawn/alt
 	icon_state = "shotpistol"
@@ -248,6 +251,7 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	accuracy = -15 //Its a flaregun and you expected accuracy?
 	ammo_type = /obj/item/ammo_casing/a12g/flare
 	projectile_type = /obj/item/projectile/energy/flash
+	one_handed_penalty = 0
 
 /obj/item/gun/projectile/shotgun/flare/paramed
 	name = "Paramedic Flare Gun"

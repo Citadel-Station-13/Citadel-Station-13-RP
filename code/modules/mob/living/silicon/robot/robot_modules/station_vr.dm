@@ -33,7 +33,8 @@
 					LANGUAGE_CANILUNZT	= 1,
 					LANGUAGE_ECUREUILIAN= 1,
 					LANGUAGE_DAEMON		= 1,
-					LANGUAGE_ENOCHIAN	= 1
+					LANGUAGE_ENOCHIAN	= 1,
+					LANGUAGE_SQUEAKISH	= 1
 					)
 
 //Just add a new proc with the robot_module type if you wish to run some other vore code

@@ -5,58 +5,58 @@
 "m" = (
 /obj/random/multiple/ores,
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "q" = (
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "r" = (
 /obj/item/storage/mre/random,
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "s" = (
 /turf/simulated/mineral/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "u" = (
 /obj/random/multiple/miningdrills,
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "C" = (
 /obj/random/multiple/ores,
 /obj/structure/closet/crate/miningcar,
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "D" = (
 /obj/structure/sink/puddle,
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "E" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "K" = (
 /obj/random/obstruction,
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "M" = (
 /obj/random/outcrop,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "N" = (
 /obj/structure/closet/crate/miningcar,
 /obj/random/multiple/ores,
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "R" = (
 /obj/item/flashlight/lantern,
 /turf/simulated/mineral/floor/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "S" = (
 /obj/random/obstruction,
 /turf/simulated/mineral/classh,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 "W" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/tether_away/beach/desert/explored)
 
 (1,1,1) = {"
 a

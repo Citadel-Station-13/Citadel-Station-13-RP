@@ -164,7 +164,7 @@
 					prob(3);/obj/item/pda,
 					prob(3);/obj/item/radio/headset,
 					prob(3);/obj/item/camera_assembly,
-					prob(3);/obj/item/caution/cone,
+					prob(3);/obj/item/clothing/head/cone,
 					prob(3);/obj/item/cell/high,
 					prob(3);/obj/item/spacecash/c10,
 					prob(3);/obj/item/spacecash/c20,
@@ -213,6 +213,7 @@
 					prob(1);/obj/item/spacecash/c50,
 					prob(1);/obj/item/storage/backpack/dufflebag/syndie,
 					prob(1);/obj/item/storage/box/cups,
+					prob(1);/obj/item/gun/energy/stripper,
 					prob(1);/obj/item/pizzavoucher)
 
 	var/obj/item/I = new path()
@@ -223,6 +224,7 @@
 					prob(4);/obj/item/storage/pill_bottle/happy,
 					prob(4);/obj/item/storage/pill_bottle/zoom,
 					prob(4);/obj/item/gun/energy/sizegun,
+					prob(4);/obj/item/gun/energy/stripper,
 					prob(3);/obj/item/material/butterfly,
 					prob(3);/obj/item/material/butterfly/switchblade,
 					prob(3);/obj/item/clothing/gloves/knuckledusters,

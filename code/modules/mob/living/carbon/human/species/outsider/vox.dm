@@ -46,7 +46,7 @@
 	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 0.2
 
-	flags = NO_SCAN
+	flags = NO_SCAN | CONTAMINATION_IMMUNE
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 

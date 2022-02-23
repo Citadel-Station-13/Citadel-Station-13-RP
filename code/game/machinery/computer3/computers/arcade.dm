@@ -24,7 +24,9 @@
 							/obj/item/toy/prize/odysseus					= 1,
 							/obj/item/toy/prize/phazon						= 1,
 							/obj/item/toy/cowgirlprize						= 1,
-							/obj/item/toy/snakeoilprize						= 1
+							/obj/item/toy/snakeoilprize						= 1,
+							/obj/item/reagent_containers/spray/squirt		= 1,
+							/obj/item/reagent_containers/spray/squirt/nt	= 1
 							)
 
 /obj/item/part/computer/toybox/allow_attackby(var/obj/item/I, var/mob/user)

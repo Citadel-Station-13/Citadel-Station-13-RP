@@ -32,6 +32,7 @@
 
 	maxHealth = 65
 	health = 65
+	randomized = TRUE
 
 	pass_flags = PASSTABLE
 

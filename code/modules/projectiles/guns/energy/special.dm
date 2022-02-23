@@ -9,6 +9,7 @@
 	force = 10
 	slot_flags = SLOT_BACK
 	projectile_type = /obj/item/projectile/ion
+	one_handed_penalty = 15
 
 /obj/item/gun/energy/ionrifle/emp_act(severity)
 	..(max(severity, 4)) //so it doesn't EMP itself, I guess
@@ -94,6 +95,7 @@
 	self_recharge = 1
 	recharge_time = 5 //Time it takes for shots to recharge (in ticks)
 	charge_meter = 0
+	one_handed_penalty = 20
 
 /obj/item/gun/energy/meteorgun/pen
 	name = "meteor pen"
@@ -103,6 +105,7 @@
 	item_state = "pen"
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_BELT
+	one_handed_penalty = 0
 
 
 /obj/item/gun/energy/mindflayer
@@ -110,6 +113,7 @@
 	desc = "A custom-built weapon of some kind."
 	icon_state = "xray"
 	projectile_type = /obj/item/projectile/beam/mindflayer
+	one_handed_penalty = 15
 
 /obj/item/gun/energy/toxgun
 	name = "phoron pistol"
@@ -189,6 +193,7 @@ obj/item/gun/energy/staff/focus
 	accuracy = 75 // Suppressive weapons don't work too well if there's no risk of being hit.
 	burst_delay = 1 // Burst faster than average.
 	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6, TECH_ILLEGAL = 6)
+	one_handed_penalty = 60
 
 	firemodes = list(
 		list(mode_name="single shot", burst = 1, burst_accuracy = list(75), dispersion = list(0), charge_cost = 24),
@@ -322,6 +327,7 @@ obj/item/gun/energy/staff/focus
 	charge_cost = 480	//to compensate a bit for self-recharging
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
+	one_handed_penalty = 0
 
 /obj/item/gun/energy/service/attack_self(mob/user)
 	cycle_weapon(user)

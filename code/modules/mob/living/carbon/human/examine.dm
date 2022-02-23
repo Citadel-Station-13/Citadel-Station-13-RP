@@ -295,8 +295,8 @@
 
 	if(attempt_vr(src,"examine_weight",args))
 		. += attempt_vr(src,"examine_weight",args) //VOREStation Code
-	if(attempt_vr(src,"examine_nutrition",args))
-		. += attempt_vr(src,"examine_nutrition",args) //VOREStation Code
+//	if(attempt_vr(src,"examine_nutrition",args))
+//		. += attempt_vr(src,"examine_nutrition",args) //VOREStation Code
 	if(attempt_vr(src,"examine_bellies",args))
 		. += attempt_vr(src,"examine_bellies",args) //VOREStation Code
 	if(attempt_vr(src,"examine_pickup_size",args))
@@ -556,7 +556,7 @@
 		else
 			message += "<span class='warning'>[t_He] [t_is] so morbidly obese, you wonder how [t_he] can even stand, let alone waddle around the station. [t_He] can't get any fatter without being immobilized.</span>"
 	return message //Credit to Aronai for helping me actually get this working!
-
+/*
 /mob/living/carbon/human/proc/examine_nutrition()
 	if(!show_pudge()) //Some clothing or equipment can hide this.
 		return null
@@ -610,6 +610,7 @@
 		if(4075 to INFINITY) // Four or more people.
 			message = "<span class='warning'>[t_He] [t_is] so absolutely stuffed that you aren't sure how it's possible to move. [t_He] can't seem to swell any bigger. The surface of [t_his] belly looks sorely strained!</span>"
 	return message
+*/
 
 //For OmniHUD records access for appropriate models
 /proc/hasHUD_vr(mob/living/carbon/human/H, hudtype)

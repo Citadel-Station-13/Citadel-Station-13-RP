@@ -58,12 +58,6 @@
 	for(var/obj/item/I in washing)
 		I.decontaminate()
 
-	//Tanning!
-	for(var/obj/item/stack/material/hairlesshide/HH in washing)
-		var/obj/item/stack/material/wetleather/WL = new(src)
-		WL.amount = HH.amount
-		qdel(HH)
-
 	if(locate(/mob,washing))
 		state = 7
 		gibs_ready = 1
@@ -167,4 +161,32 @@
 			state = 1
 			washing.Cut()
 
+	update_icon()
+
+/obj/machinery/washing_machine/AltClick(mob/user)
+	if(!istype(usr, /mob/living)) //ew ew ew usr, but it's the only way to check.
+		return
+
+	if(state != 4)
+		to_chat(usr, "The washing machine cannot run in this state.")
+		return
+
+	if(locate(/mob,washing))
+		state = 8
+	else
+		state = 5
+	update_icon()
+	playsound(src, 'sound/items/washingmachine.ogg', 50, 1, 1)
+	sleep(200)
+	for(var/atom/A in washing)
+		A.clean_blood()
+
+	for(var/obj/item/I in washing)
+		I.decontaminate()
+
+	if(locate(/mob,washing))
+		state = 7
+		gibs_ready = 1
+	else
+		state = 4
 	update_icon()

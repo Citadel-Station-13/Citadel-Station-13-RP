@@ -84,6 +84,7 @@
 	fire_delay = 20
 	charge_cost = 600
 	projectile_type = /obj/item/projectile/energy/plasmastun
+	one_handed_penalty = 5
 
 /obj/item/gun/energy/taser/civ
 	name = "Palm Taser"

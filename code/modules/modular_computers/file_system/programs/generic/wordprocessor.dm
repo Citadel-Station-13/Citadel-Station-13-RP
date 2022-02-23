@@ -96,8 +96,7 @@
 		\[row\] - New table row.
 		\[cell\] - New table cell.
 		\[logo\] - Inserts NT logo image.
-		\[redlogo\] - Inserts red NT logo image.
-		\[sglogo\] - Inserts Solgov insignia image."}
+		\[redlogo\] - Inserts red NT logo image."}
 
 		to_chat(usr, help)
 		return 1

@@ -109,7 +109,7 @@
 /datum/supply_pack/supply/stolen
 	name = "Stolen Supply Crate"
 	contains = list(/obj/item/stolenpackage = 1)
-	cost = 150
+	cost = 75
 	containertype = /obj/structure/closet/crate
 	containername = "shady crate"
 	contraband = 1
@@ -125,6 +125,7 @@
 	containertype = /obj/structure/closet/crate
 	containername = "shadier crate"
 	contraband = 1
+	group = "Supplies"
 
 /datum/supply_pack/supply/wolfgirl
 	name = "Wolfgirl Crate"

@@ -15,7 +15,7 @@
 	var/mat_efficiency = 1
 	var/speed = 1
 
-	materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, MAT_PLASTEEL = 0, "plastic" = 0, "gold" = 0, "silver" = 0, "osmium" = 0, MAT_LEAD = 0, "phoron" = 0, "uranium" = 0, "diamond" = 0, MAT_DURASTEEL = 0, MAT_VERDANTIUM = 0, MAT_MORPHIUM = 0, MAT_METALHYDROGEN = 0, MAT_SUPERMATTER = 0)
+	materials = list(DEFAULT_WALL_MATERIAL = 0, "glass" = 0, MAT_PLASTEEL = 0, "plastic" = 0, "gold" = 0, "silver" = 0, MAT_COPPER = 0, "osmium" = 0, MAT_LEAD = 0, "phoron" = 0, "uranium" = 0, "diamond" = 0, MAT_DURASTEEL = 0, MAT_VERDANTIUM = 0, MAT_MORPHIUM = 0, MAT_METALHYDROGEN = 0, MAT_SUPERMATTER = 0)
 
 	hidden_materials = list(MAT_PLASTEEL, MAT_DURASTEEL, MAT_VERDANTIUM, MAT_MORPHIUM, MAT_METALHYDROGEN, MAT_SUPERMATTER)
 
@@ -199,8 +199,7 @@
 		reagents.remove_reagent(C, D.chemicals[C] * mat_efficiency)
 
 	if(D.build_path)
-		var/obj/new_item = D.Fabricate(src, src)
-		new_item.loc = loc
+		var/obj/new_item = D.Fabricate(drop_location(), src)
 		if(mat_efficiency != 1) // No matter out of nowhere
 			if(new_item.matter && new_item.matter.len > 0)
 				for(var/i in new_item.matter)

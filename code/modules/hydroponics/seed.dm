@@ -25,6 +25,7 @@
 	var/apply_color_to_mob = TRUE  // Do we color the mob to match the plant?
 	var/has_item_product           // Item products. (Eggy)
 	var/force_layer
+	var/catalog_data_grown = list(/datum/category_item/catalogue/flora/common)
 
 /datum/seed/New()
 

@@ -39,7 +39,9 @@ var/list/outfits_decls_by_type_
 	var/suit_store = null
 	var/r_hand = null
 	var/l_hand = null
-	var/list/backpack_contents = list() // In the list(path=count,otherpath=count) format
+	// In the list(path=count,otherpath=count) format
+	var/list/uniform_accessories = list() // webbing, armbands etc - fits in slot_tie
+	var/list/backpack_contents = list()
 
 	var/id_type
 	var/id_desc
@@ -87,7 +89,7 @@ var/list/outfits_decls_by_type_
 /decl/hierarchy/outfit/proc/equip(mob/living/carbon/human/H, var/rank, var/assignment)
 	equip_base(H)
 
-	rank = id_pda_assignment || rank
+	rank = rank || id_pda_assignment
 	assignment = id_pda_assignment || assignment || rank
 	var/obj/item/card/id/W = equip_id(H, rank, assignment)
 	if(W)
@@ -101,6 +103,7 @@ var/list/outfits_decls_by_type_
 			H.equip_to_slot_or_del(new path(H), slot_in_backpack)
 
 	post_equip(H)
+
 	if(W) // We set ID info last to ensure the ID photo is as correct as possible.
 		H.set_id_info(W)
 	return 1
@@ -144,6 +147,12 @@ var/list/outfits_decls_by_type_
 		H.put_in_l_hand(new l_hand(H))
 	if(r_hand)
 		H.put_in_r_hand(new r_hand(H))
+
+	for(var/path in uniform_accessories)
+		var/number = uniform_accessories[path]
+		for(var/i=0,i<number,i++)
+			H.equip_to_slot_or_del(new path(H), slot_tie)
+
 	if(H.species)
 		H.species.equip_survival_gear(H, flags&OUTFIT_EXTENDED_SURVIVAL, flags&OUTFIT_COMPREHENSIVE_SURVIVAL)
 
@@ -180,12 +189,12 @@ var/list/outfits_decls_by_type_
 
 //VR FILE MERGE
 
-/decl/hierarchy/outfit/USDF/Marine
-	name = "USDF marine"
-	uniform = /obj/item/clothing/under/solgov/utility/marine/green
+/decl/hierarchy/outfit/JSDF/Marine
+	name = "JSDF marine"
+	uniform = /obj/item/clothing/under/oricon/utility/marine/green
 	shoes = /obj/item/clothing/shoes/boots/jackboots
 	gloves = /obj/item/clothing/gloves/combat
-	l_ear = /obj/item/radio/headset/centcom
+	l_ear = /obj/item/radio/headset
 	r_pocket = /obj/item/ammo_magazine/m95
 	l_pocket = /obj/item/ammo_magazine/m95
 	l_hand = /obj/item/ammo_magazine/m95
@@ -193,26 +202,23 @@ var/list/outfits_decls_by_type_
 	back = /obj/item/gun/projectile/automatic/battlerifle
 	backpack_contents = list(/obj/item/storage/box = 1)
 	hierarchy_type = /decl/hierarchy/outfit/wizard
-	head = /obj/item/clothing/head/helmet/combat/USDF
-	suit = /obj/item/clothing/suit/armor/combat/USDF
+	head = /obj/item/clothing/head/helmet/combat/JSDF
+	suit = /obj/item/clothing/suit/armor/combat/JSDF
 	belt = /obj/item/storage/belt/security/tactical
 
-/decl/hierarchy/outfit/USDF/Marine/equip_id(mob/living/carbon/human/H)
+/decl/hierarchy/outfit/JSDF/Marine/equip_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/C = ..()
 	C.name = "[H.real_name]'s military ID Card"
 	C.icon_state = "lifetime"
-	C.access = get_all_station_access()
-	C.access += get_all_centcom_access()
-	C.assignment = "USDF"
+	C.assignment = "JSDF"
 	C.registered_name = H.real_name
 	return C
 
-/decl/hierarchy/outfit/USDF/Officer
-	name = "USDF officer"
+/decl/hierarchy/outfit/JSDF/Officer
+	name = "JSDF officer"
 	head = /obj/item/clothing/head/dress/marine/command/admiral
 	shoes = /obj/item/clothing/shoes/boots/jackboots
-	l_ear = /obj/item/radio/headset/centcom
-	uniform = /obj/item/clothing/under/solgov/mildress/marine/command
+	uniform = /obj/item/clothing/under/oricon/mildress/marine/command
 	back = /obj/item/storage/backpack/satchel
 	belt = /obj/item/gun/projectile/revolver/consul
 	l_pocket = /obj/item/ammo_magazine/s44
@@ -220,18 +226,16 @@ var/list/outfits_decls_by_type_
 	r_hand = /obj/item/clothing/accessory/holster/hip
 	l_hand = /obj/item/clothing/accessory/tie/black
 
-/decl/hierarchy/outfit/USDF/Officer/equip_id(mob/living/carbon/human/H)
+/decl/hierarchy/outfit/JSDF/Officer/equip_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/C = ..()
 	C.name = "[H.real_name]'s military ID Card"
 	C.icon_state = "lifetime"
-	C.access = get_all_station_access()
-	C.access += get_all_centcom_access()
-	C.assignment = "USDF"
+	C.assignment = "JSDF"
 	C.registered_name = H.real_name
 	return C
 
-/decl/hierarchy/outfit/solgov/representative
-	name = "SolGov Representative"
+/decl/hierarchy/outfit/oricon/representative
+	name = "Confederation Representative"
 	shoes = /obj/item/clothing/shoes/laceup
 	l_ear = /obj/item/radio/headset/centcom
 	uniform = /obj/item/clothing/under/suit_jacket/navy
@@ -241,13 +245,11 @@ var/list/outfits_decls_by_type_
 	r_hand = /obj/item/pda/centcom
 	l_hand = /obj/item/clipboard
 
-/decl/hierarchy/outfit/solgov/representative/equip_id(mob/living/carbon/human/H)
+/decl/hierarchy/outfit/oricon/representative/equip_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/C = ..()
-	C.name = "[H.real_name]'s SolGov ID Card"
+	C.name = "[H.real_name]'s OriCon ID Card"
 	C.icon_state = "lifetime"
-	C.access = get_all_station_access()
-	C.access += get_all_centcom_access()
-	C.assignment = "SolGov Representative"
+	C.assignment = "OriCon Representative"
 	C.registered_name = H.real_name
 	return C
 

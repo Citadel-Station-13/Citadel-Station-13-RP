@@ -152,7 +152,14 @@
 
 	if(istype(target, /turf/simulated))
 		var/turf/simulated/modeled_location = target
-
+		if(modeled_location.special_temperature)//First do special interactions then the usuall stuff
+			CACHE_VSC_PROP(atmos_vsc, /atmos/hepipes/thermal_conductivity, thermal_conductivity_setting)
+			var/delta_temp = modeled_location.special_temperature - air.temperature//2200C - 20C = 2180K
+			//assuming aluminium with thermal conductivity 235 W * K / m, Copper (400), Silver (430), steel (50), gold (320)
+			var/heat_gain = thermal_conductivity_setting * 100 * delta_temp//assuming 1 cm wall thickness, so delta_temp isnt multiplied
+			air.add_thermal_energy(heat_gain)
+			if(network)
+				network.update = 1
 		if(modeled_location.blocks_air)
 
 			if((modeled_location.heat_capacity>0) && (partial_heat_capacity>0))

@@ -1,4 +1,3 @@
-
 /datum/shuttle/autodock/ferry
 	var/location  = FERRY_LOCATION_STATION	// 0 = at area_station,  1 = at area_offsite
 	var/direction = FERRY_GOING_TO_STATION	// 0 = going to station, 1 = going to offsite.
@@ -46,3 +45,9 @@
 /datum/shuttle/autodock/ferry/process_arrived()
 	..()
 	next_location = get_location_waypoint(!location)
+
+// Ferry shuttles should generally always be able to dock.  So read the docking codes off of the target.
+/datum/shuttle/autodock/ferry/update_docking_target(var/obj/effect/shuttle_landmark/location)
+	..()
+	if(active_docking_controller && active_docking_controller.docking_codes)
+		set_docking_codes(active_docking_controller.docking_codes)

@@ -31,6 +31,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 10 //makes it so 4 max dmg hits don't instakill you.
 	grab_resist = 100
+	taser_kill = 0 //This Mechanical Dog should probably not be harmed by tasers
 
 	response_help = "pets the"
 	response_disarm = "bops the"

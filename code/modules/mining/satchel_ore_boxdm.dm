@@ -25,7 +25,6 @@
 		S.hide_from(usr)
 		for(var/obj/item/ore/O in S.contents)
 			S.remove_from_storage(O, src) //This will move the item to this item's contents
-			take(O)
 
 /obj/structure/ore_box/examine(mob/user)
 	. = ..()
@@ -35,7 +34,15 @@
 		var/obj/item/ore/O = ore
 		to_chat(user,"- [stored_ore[ore]] [initial(O.name)]")
 
+/// Sigh.
+/obj/structure/ore_box/Entered(atom/movable/AM, atom/oldLoc)
+	. = ..()
+	if(istype(AM, /obj/item/ore))
+		take(AM)
+
 /obj/structure/ore_box/proc/take(obj/item/ore/O)
+	if(!istype(O))
+		return
 	if(!stored_ore[O.type])
 		stored_ore[O.type] = 1
 	else
@@ -76,16 +83,18 @@
 	if(isEmpty())
 		to_chat(usr,"<span class='warning'>The ore box is empty.</span>")
 		return
+	
+	var/mob/living/user = usr
+	to_chat(user, "<span class='notice'>You begin emptying the ore box.</span>")
 
-	to_chat(usr,"<span class='notice'>You begin emptying the ore box.</span>")
 	if(do_after(usr,15,src))
 		while(!isEmpty())
-			if(!do_after(usr,5,src))
-				to_chat(usr,"<span class='notice'>You stop emptying the ore box.</span>")
+			if(!do_after(user, 5, src))
+				to_chat(user,"<span class='notice'>You stop emptying the ore box.</span>")
 				return
 			var/atom/A = drop_location()
-			if(!A || length(A.contents > 1000))
-				to_chat(usr, "<span class='warning'>The area under the box is too full.</span>")
+			if(!A || (length(A.contents) > 1000))
+				to_chat(user, "<span class='warning'>The area under the box is too full.</span>")
 				return
 			for(var/i in 1 to 20)
 				deposit(A)

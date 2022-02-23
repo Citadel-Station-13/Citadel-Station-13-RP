@@ -175,3 +175,11 @@
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/reagent_containers/food/snacks/spreads/butter(location)
 	return
+
+/datum/chemical_reaction/food/tallow
+	name = "Tallow"
+	id = "tallow"
+	result = "tallow"
+	required_reagents = list("protein" = 3, "nutriment" = 1)
+	catalysts = list("enzyme" = 5)
+	result_amount = 4

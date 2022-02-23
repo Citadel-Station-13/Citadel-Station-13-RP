@@ -5,8 +5,8 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	blurb = "Humanity originated in the Sol system, and over the last five centuries has spread \
 	colonies across a wide swathe of space. They hold a wide range of forms and creeds.<br/><br/> \
-	While the central Sol government maintains control of its far-flung people, powerful corporate \
-	interests, rampant cyber and bio-augmentation and secretive factions make life on most human \
+	While the Orion Confederation government represents humanity at large, on the Frontier powerful corporate \
+	interests, rampant cyber and bio-augmentation initiatives, and secretive factions make life on most human \
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
 	num_alternate_languages = 3
@@ -378,7 +378,7 @@
 	min_age = 18
 	max_age = 90
 
-	blurb = "The Zaddat are an Unathi client race only recently introduced to SolGov space. Having evolved on \
+	blurb = "The Zaddat are an Unathi client race only recently introduced to OriCon space. Having evolved on \
 	the high-pressure and post-apocalyptic world of Xohok, Zaddat require an environmental suit called a Shroud \
 	to survive in usual planetary and station atmospheres. Despite these restrictions, worsening conditions on \
 	Xohok and the blessing of the Moghes Hegemony have lead the Zaddat to enter human space in search of work \
@@ -466,172 +466,7 @@
 		if(!(K in covered))
 			H.apply_damage(light_amount/4, BURN, K, 0, 0, "Abnormal growths")
 
-
-/datum/species/diona
-	name = SPECIES_DIONA
-	name_plural = "Dionaea"
-	icobase = 'icons/mob/human_races/r_diona.dmi'
-	deform = 'icons/mob/human_races/r_def_plant.dmi'
-	language = LANGUAGE_ROOTLOCAL
-	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/diona)
-	//primitive_form = "Nymph"
-	slowdown = 5
-	snow_movement = -2 	//Ignore light snow
-	water_movement = -4	//Ignore shallow water
-	rarity_value = 3
-	hud_type = /datum/hud_data/diona
-	siemens_coefficient = 0.3
-	show_ssd = "completely quiescent"
-	health_hud_intensity = 2.5
-	item_slowdown_mod = 0.1
-
-	num_alternate_languages = 2
-	name_language = LANGUAGE_ROOTLOCAL
-	species_language = LANGUAGE_ROOTLOCAL
-	secondary_langs = list(LANGUAGE_ROOTGLOBAL)
-	assisted_langs = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
-	min_age = 18
-	max_age = 300
-
-	economic_modifier = 4
-
-	blurb = "Commonly referred to (erroneously) as 'plant people', the Dionaea are a strange space-dwelling collective \
-	species hailing from Epsilon Ursae Minoris. Each 'diona' is a cluster of numerous cat-sized organisms called nymphs; \
-	there is no effective upper limit to the number that can fuse in gestalt, and reports exist	of the Epsilon Ursae \
-	Minoris primary being ringed with a cloud of singing space-station-sized entities.<br/><br/>The Dionaea coexist peacefully with \
-	all known species, especially the Skrell. Their communal mind makes them slow to react, and they have difficulty understanding \
-	even the simplest concepts of other minds. Their alien physiology allows them survive happily off a diet of nothing but light, \
-	water and other radiation."
-	catalogue_data = list(/datum/category_item/catalogue/fauna/dionaea)
-
-	has_organ = list(
-		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,
-		O_STRATA =   /obj/item/organ/internal/diona/strata,
-		O_BRAIN = /obj/item/organ/internal/brain/cephalon,
-		O_RESPONSE = /obj/item/organ/internal/diona/node,
-		O_GBLADDER = /obj/item/organ/internal/diona/bladder,
-		O_POLYP =    /obj/item/organ/internal/diona/polyp,
-		O_ANCHOR =   /obj/item/organ/internal/diona/ligament
-		)
-
-	has_limbs = list(
-		BP_TORSO =  list("path" = /obj/item/organ/external/diona/chest),
-		BP_GROIN =  list("path" = /obj/item/organ/external/diona/groin),
-		BP_HEAD =   list("path" = /obj/item/organ/external/head/no_eyes/diona),
-		BP_L_ARM =  list("path" = /obj/item/organ/external/diona/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/diona/arm/right),
-		BP_L_LEG =  list("path" = /obj/item/organ/external/diona/leg),
-		BP_R_LEG =  list("path" = /obj/item/organ/external/diona/leg/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/diona/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/diona/hand/right),
-		BP_L_FOOT = list("path" = /obj/item/organ/external/diona/foot),
-		BP_R_FOOT = list("path" = /obj/item/organ/external/diona/foot/right)
-		)
-
-	inherent_verbs = list(
-		/mob/living/carbon/human/proc/diona_split_nymph,
-		/mob/living/carbon/human/proc/regenerate
-		)
-
-	warning_low_pressure = 50
-	hazard_low_pressure = -1
-
-	cold_level_1 = 50
-	cold_level_2 = -1
-	cold_level_3 = -1
-
-	heat_level_1 = 2000
-	heat_level_2 = 3000
-	heat_level_3 = 4000
-
-	body_temperature = T0C + 15		//make the plant people have a bit lower body temperature, why not
-
-	flags = NO_SCAN | IS_PLANT | NO_PAIN | NO_SLIP | NO_MINOR_CUT
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-
-	blood_color = "#004400"
-	flesh_color = "#907E4A"
-
-	reagent_tag = IS_DIONA
-
-	genders = list(PLURAL)
-
-	wikilink="https://wiki.vore-station.net/Diona"
-
-/datum/species/diona/can_understand(var/mob/other)
-	var/mob/living/carbon/alien/diona/D = other
-	if(istype(D))
-		return 1
-	return 0
-
-/datum/species/diona/equip_survival_gear(var/mob/living/carbon/human/H)
-	if(H.backbag == 1)
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H), slot_r_hand)
-	else
-		H.equip_to_slot_or_del(new /obj/item/flashlight/flare(H.back), slot_in_backpack)
-
-/datum/species/diona/handle_post_spawn(var/mob/living/carbon/human/H)
-	H.gender = NEUTER
-	return ..()
-
-/datum/species/diona/handle_death(var/mob/living/carbon/human/H)
-
-	var/mob/living/carbon/alien/diona/S = new(get_turf(H))
-
-	if(H.mind)
-		H.mind.transfer_to(S)
-
-	if(H.isSynthetic())
-		H.visible_message("<span class='danger'>\The [H] collapses into parts, revealing a solitary diona nymph at the core.</span>")
-
-		H.species = GLOB.all_species[SPECIES_HUMAN] // This is hard-set to default the body to a normal FBP, without changing anything.
-
-		for(var/obj/item/organ/internal/diona/Org in H.internal_organs) // Remove Nymph organs.
-			qdel(Org)
-
-		// Purge the diona verbs.
-		H.verbs -= /mob/living/carbon/human/proc/diona_split_nymph
-		H.verbs -= /mob/living/carbon/human/proc/regenerate
-
-		return
-
-	for(var/mob/living/carbon/alien/diona/D in H.contents)
-		if(D.client)
-			D.forceMove(get_turf(H))
-		else
-			qdel(D)
-
-	H.visible_message("<span class='danger'>\The [H] splits apart with a wet slithering noise!</span>")
-
-/datum/species/diona/handle_environment_special(var/mob/living/carbon/human/H)
-	if(H.inStasisNow())
-		return
-
-	var/obj/item/organ/internal/diona/node/light_organ = locate() in H.internal_organs
-
-	if(light_organ && !light_organ.is_broken())
-		var/light_amount = 0 //how much light there is in the place, affects receiving nutrition and healing
-		if(isturf(H.loc)) //else, there's considered to be no light
-			var/turf/T = H.loc
-			light_amount = T.get_lumcount() * 10
-		H.nutrition += light_amount
-		H.shock_stage -= light_amount
-
-		if(H.nutrition > 450)
-			H.nutrition = 450
-		if(light_amount >= 3) //if there's enough light, heal
-			H.adjustBruteLoss(-(round(light_amount/2)))
-			H.adjustFireLoss(-(round(light_amount/2)))
-			H.adjustToxLoss(-(light_amount))
-			H.adjustOxyLoss(-(light_amount))
-			//TODO: heal wounds, heal broken limbs.
-
-	else if(H.nutrition < 200)
-		H.take_overall_damage(2,0)
-
-		//traumatic_shock is updated every tick, incrementing that is pointless - shock_stage is the counter.
-		//Not that it matters much for diona, who have NO_PAIN.
-		H.shock_stage++
+//Diona moved to their own file
 
 /datum/species/sergal
 	name = SPECIES_SERGAL
@@ -939,31 +774,36 @@
 
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
-	name_plural = "Xenomorphs"
+	name_plural = "Xenomorph Hybrids"
 	icobase = 'icons/mob/human_races/r_xenomorph.dmi'
 	deform = 'icons/mob/human_races/r_def_xenomorph.dmi'
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	darksight = 4 //Better hunters in the dark.
-	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 	num_alternate_languages = 2
 
 	min_age = 18
-	max_age = 80
+	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 
-	blurb = "Xenomorphs hybrids are a mixture of xenomorph DNA and some other humanoid species. \
-	Xenomorph hyrids mostly have had had their natural aggression removed due to the gene modification process \
-	although there are some exceptions, such as when they are harmed. Most xenomorph hybrids are female, due to their natural xenomorph genes, \
-	but there are multiple exceptions. All xenomorph hybrids have had their ability to lay eggs containing facehuggers \
-	removed if they had the ability to, although hybrids that previously contained this ability is extremely rare."
+	blurb = "Xenohybrids are descendens of an isolated Xenomorph Hive that lost its Hivemind. \
+	Xenohybrids are civilised and capable of communicating with other species, without knowing their language. \
+	Over the years crusading the stars xenomorphs gathered genetic material of almost all known species(and probably some unknown as well), \
+	allowing Xenohybrids to reproduce with most other species. This reproduction is not as invasive as the facehuggers of their relatives, \
+	but can still be dangerous to the host. Their chitinous exoskeleton allows them to endure low pressure and freezing cold \
+	quite well, but leaves them vurnerable to fire and heat."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)
-	// No wiki page for xenohybrids at present
+	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
 
 	//primitive_form = "" //None for these guys
+	language = "Xenomorph"
+	name_language = "Xenomorph"
+	species_language = "Xenomorph"
+	secondary_langs = list("Xenomorph")
+	num_alternate_languages = 3
 
+	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
-	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
+	appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	blood_color = "#12ff12"
 	flesh_color = "#201730"
@@ -978,6 +818,49 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair
 		)
+
+	total_health = 110	//Exoskeleton makes you tougher than baseline
+	brute_mod = 0.95 // Chitin is somewhat hard to crack
+	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
+	blood_volume = 560	//Baseline
+	darksight = 4 //Better hunters in the dark.
+	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
+
+	slowdown = -0.2//Speedboost Tesh have -0.5
+
+	warning_low_pressure = 30//lower than baseline, still not vacuum prove
+	hazard_low_pressure = -1
+
+	warning_high_pressure = 325//Both baseline
+	hazard_high_pressure = 550
+
+	//Doesnt work, defaults are set at checks
+	//breath_type = null	//they don't breathe
+	//poison_type = null
+
+	cold_level_1 = 90	//Space if fucking cold, so we need low temperature tolerance
+	cold_level_2 = -1
+	cold_level_3 = -1
+
+	heat_level_1 = 350	//dont like the heat
+	heat_level_2 = 400
+	heat_level_3 = 700
+
+	//Organ-List to remove need to breath(?)
+	has_organ = list(
+		O_HEART =		/obj/item/organ/internal/heart,
+		O_VOICE = 		/obj/item/organ/internal/voicebox,
+		O_LIVER =		/obj/item/organ/internal/liver,
+		O_KIDNEYS =		/obj/item/organ/internal/kidneys,
+		O_BRAIN =		/obj/item/organ/internal/brain,
+		//O_EYES =		/obj/item/organ/internal/eyes,
+		O_STOMACH =		/obj/item/organ/internal/stomach,
+		O_INTESTINE =	/obj/item/organ/internal/intestine
+		)
+	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
+
+/datum/species/xenohybrid/can_breathe_water()
+	return TRUE	//they dont quite breathe
 
 /datum/species/harpy
 	name = SPECIES_RAPALA
@@ -1068,7 +951,7 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise)
+	flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise); CitadelRP: Now able to walk over shards of glass like regular shadekins
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
@@ -1106,7 +989,7 @@
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine
 		)
-	
+
 	has_limbs = list(
 		BP_TORSO =  list("path" = /obj/item/organ/external/chest/crewkin),
 		BP_GROIN =  list("path" = /obj/item/organ/external/groin/crewkin),
@@ -1125,5 +1008,5 @@
 	return SPECIES_SHADEKIN
 
 /datum/species/shadekin/can_breathe_water()
-	return TRUE	//they dont quite breathe 
+	return TRUE	//they dont quite breathe
 

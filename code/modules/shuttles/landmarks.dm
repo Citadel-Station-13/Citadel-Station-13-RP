@@ -54,14 +54,14 @@
 	if(!istype(docking_controller))
 		log_error("Could not find docking controller for shuttle waypoint '[name]', docking tag was '[docking_tag]'.")
 	if(GLOB.using_map.use_overmap)
-		var/obj/effect/overmap/visitable/location = map_sectors["[z]"]
+		var/obj/effect/overmap/visitable/location = get_overmap_sector(z)
 		if(location && location.docking_codes)
 			docking_controller.docking_codes = location.docking_codes
 
 /obj/effect/shuttle_landmark/forceMove()
-	var/obj/effect/overmap/visitable/map_origin = map_sectors["[z]"]
+	var/obj/effect/overmap/visitable/map_origin = get_overmap_sector(z)
 	. = ..()
-	var/obj/effect/overmap/visitable/map_destination = map_sectors["[z]"]
+	var/obj/effect/overmap/visitable/map_destination = get_overmap_sector(z)
 	if(map_origin != map_destination)
 		if(map_origin)
 			map_origin.remove_landmark(src, shuttle_restricted)
@@ -123,14 +123,16 @@
 	name = "Navpoint"
 	landmark_tag = "navpoint"
 	flags = SLANDMARK_FLAG_AUTOSET
+	var/original_name = null // Save our mapped-in name so we can rebuild our name when moving sectors.
 
 /obj/effect/shuttle_landmark/automatic/Initialize(mapload)
+	original_name = name
 	landmark_tag += "-[x]-[y]-[z]-[random_id("landmarks",1,9999)]"
 	return ..()
 
 /obj/effect/shuttle_landmark/automatic/sector_set(var/obj/effect/overmap/visitable/O)
 	..()
-	name = ("[O.name] - [initial(name)] ([x],[y])")
+	name = ("[O.name] - [original_name] ([x],[y])")
 
 // Subtype that calls explosion on init to clear space for shuttles
 /obj/effect/shuttle_landmark/automatic/clearing

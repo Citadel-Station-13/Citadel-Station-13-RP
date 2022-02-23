@@ -8,6 +8,7 @@
 	icon_state = "welder"
 	item_state = "welder"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_WELDER
 
 	//Amount of OUCH when it's thrown
 	force = 3.0
@@ -377,6 +378,23 @@
 	toolspeed = 2
 	eye_safety_modifier = 1 // Safer on eyes.
 
+/obj/item/weldingtool/bone
+	name = "primitive welding tool"
+	desc = "A curious welding tool that uses an anomalous ignition method."
+	icon_state = "ashwelder"
+	max_fuel = 20
+	matter = list(MAT_METAL = 30, MAT_BONE = 10)
+	toolspeed = 1.5
+	eye_safety_modifier = 1 // Safer on eyes.
+
+/obj/item/weldingtool/brass
+	name = "brass welding tool"
+	desc = "A brass plated welder utilizing an antiquated, yet incredibly efficient, fuel system."
+	icon_state = "brasswelder"
+	max_fuel = 40
+	matter = list(DEFAULT_WALL_MATERIAL = 70, "brass" = 60)
+	toolspeed = 0.75
+
 /datum/category_item/catalogue/anomalous/precursor_a/alien_welder
 	name = "Precursor Alpha Object - Self Refueling Exothermic Tool"
 	desc = "An unwieldly tool which somewhat resembles a weapon, due to \
@@ -646,5 +664,27 @@
 
 /obj/item/weldingtool/electric/mounted/cyborg
 	toolspeed = 0.5
+
+/obj/item/weldingtool/electric/mounted/exosuit
+	var/obj/item/mecha_parts/mecha_equipment/equip_mount = null
+	flame_intensity = 1
+	eye_safety_modifier = 2
+	always_process = TRUE
+
+/obj/item/weldingtool/electric/mounted/exosuit/Initialize()
+	. = ..()
+
+	if(istype(loc, /obj/item/mecha_parts/mecha_equipment))
+		equip_mount = loc
+
+/obj/item/weldingtool/electric/mounted/exosuit/process()
+	..()
+
+	if(equip_mount && equip_mount.chassis)
+		var/obj/mecha/M = equip_mount.chassis
+		if(M.selected == equip_mount && get_fuel())
+			setWelding(TRUE, M.occupant)
+		else
+			setWelding(FALSE, M.occupant)
 
 #undef WELDER_FUEL_BURN_INTERVAL

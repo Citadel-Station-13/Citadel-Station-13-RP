@@ -2,6 +2,16 @@
 #define SECBOT_THREAT_ARREST 4		//threat level at which we decide to arrest someone
 #define SECBOT_THREAT_ATTACK 8		//threat level at which was assume immediate danger and attack right away
 
+/datum/category_item/catalogue/technology/bot/secbot
+	name = "Bot - Securitron"
+	desc = "The Securitron is a proprietary support bot designed by NanoTrasen. \
+	Utilizing the standard Security department helmet, this wheeled automaton moves \
+	over floors at high speed to intercept flagged personnel. It is capable of pacifying \
+	suspects with its stun baton, and may assist in the arrest process by cuffing disabled \
+	targets. Frighteningly effective, these bots are both a boon and a plague thanks to \
+	significant vulnerabilities in their electronic warfare systems."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/secbot
 	name = "Securitron"
 	desc = "A little security robot.  He looks less than thrilled."
@@ -12,6 +22,7 @@
 	botcard_access = list(access_security, access_sec_doors, access_forensics_lockers, access_maint_tunnels)
 	patrol_speed = 2
 	target_speed = 3
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot)
 
 	density = 1
 
@@ -49,20 +60,42 @@
 				var/mob/living/L = pulledby
 				UnarmedAttack(L)
 				say("Do not interfere with active law enforcement routines!")
-				global_announcer.autosay("[src] was interfered with in <b>[get_area(src)]</b>, activating defense routines.", "[src]", "Security")
+				GLOB.global_announcer.autosay("[src] was interfered with in <b>[get_area(src)]</b>, activating defense routines.", "[src]", "Security")
 //VOREStation Add End
+
+/datum/category_item/catalogue/technology/bot/secbot/beepsky
+	name = "Bot - Officer Beepsky"
+	desc = "Officer Beepsky was designed to be the mascot for \
+	NanoTrasen's unveiling of the Securitron line. A favorite among \
+	NanoTrasen workers due to its iconic profile and tendency to break out into \
+	wild bouts of profanity, the Beepsky pattern chassis is often replicated \
+	on individual NanoTrasen facilities as a form of morale booster. \
+	The model's increased durability ensures Officer Beepsky stands wheels and visors \
+	above its inferior peers."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/secbot/beepsky
 	name = "Officer Beepsky"
-	desc = "It's Officer Beep O'sky! Powered by a potato and a shot of whiskey."
+	desc = "It's Officer Beepsky! Powered by a potato and a shot of whiskey."
 	will_patrol = TRUE
 	maxHealth = 130
 	health = 130
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot/beepsky)
+
+/datum/category_item/catalogue/technology/bot/secbot/slime
+	name = "Bot - Slime Securitron"
+	desc = "A rare NanoTrasen variant of their Securitron designs, \
+	Slime Securitrons utilize the same technology and programming as \
+	the standard model, but with equipment and parameters designed to \
+	pacify Slimes. Prometheans often view these bots with suspicion."
+	value = CATALOGUER_REWARD_TRIVIAL
 
 /mob/living/bot/secbot/slime
 	name = "Slime Securitron"
 	desc = "A little security robot, with a slime baton subsituted for the regular one."
 	default_icon_state = "slimesecbot"
 	stun_strength = 10 // Slimebatons aren't meant for humans.
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot/slime)
 
 	xeno_harm_strength = 9 // Weaker than regular slimesky but they can stun.
 	baton_glow = "#33CCFF"
@@ -71,11 +104,19 @@
 	used_weapon = /obj/item/melee/baton/slime
 	var/xeno_stun_strength = 5 // How hard to slimebatoned()'d naughty slimes. 5 works out to 2 discipline and 5 weaken.
 
+/datum/category_item/catalogue/technology/bot/secbot/slime/slimesky
+	name = "Bot - Doctor Slimesky"
+	desc = "Although less popular than its inspiration - Officer Beepsky, \
+	Doctor Slimesky is still viewed with respect by Xenobiologists due to its \
+	equally robust up-armored frame."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/secbot/slime/slimesky
 	name = "Doctor Slimesky"
-	desc = "An old friend of Officer Beep O'sky.  He prescribes beatings to rowdy slimes so that real doctors don't need to treat the xenobiologists."
+	desc = "An old friend of Officer Beepsky.  He prescribes beatings to rowdy slimes so that real doctors don't need to treat the xenobiologists."
 	maxHealth = 130
 	health = 130
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot/slime/slimesky)
 
 /mob/living/bot/secbot/update_icons()
 	if(on && busy)
@@ -173,7 +214,7 @@
 
 	if(!target)
 		playsound(src.loc, pick(threat_found_sounds), 50)
-		global_announcer.autosay("[src] was attacked by a hostile <b>[target_name(attacker)]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
+		GLOB.global_announcer.autosay("[src] was attacked by a hostile <b>[target_name(attacker)]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
 	target = attacker
 	attacked = TRUE
 
@@ -181,7 +222,7 @@
 /mob/living/bot/secbot/proc/demand_surrender(mob/target, var/threat)
 	var/suspect_name = target_name(target)
 	if(declare_arrests)
-		global_announcer.autosay("[src] is [arrest_type ? "detaining" : "arresting"] a level [threat] suspect <b>[suspect_name]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
+		GLOB.global_announcer.autosay("[src] is [arrest_type ? "detaining" : "arresting"] a level [threat] suspect <b>[suspect_name]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
 	say("Down on the floor, [suspect_name]! You have [SECBOT_WAIT_TIME*2] seconds to comply.")
 	playsound(src.loc, pick(preparing_arrest_sounds), 50)
 	// Register to be told when the target moves
@@ -236,7 +277,7 @@
 			var/action = arrest_type ? "detaining" : "arresting"
 			if(!ishuman(target))
 				action = "fighting"
-			global_announcer.autosay("[src] is [action] a level [threat] [action != "fighting" ? "suspect" : "threat"] <b>[target_name(target)]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
+			GLOB.global_announcer.autosay("[src] is [action] a level [threat] [action != "fighting" ? "suspect" : "threat"] <b>[target_name(target)]</b> in <b>[get_area(src)]</b>.", "[src]", "Security")
 		UnarmedAttack(target)
 
 /mob/living/bot/secbot/handlePanic()	// Speed modification based on alert level.

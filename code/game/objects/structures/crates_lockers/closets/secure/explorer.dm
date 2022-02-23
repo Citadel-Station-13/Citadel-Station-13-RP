@@ -16,6 +16,7 @@
 		/obj/item/clothing/mask/gas/explorer,
 		/obj/item/clothing/shoes/boots/winter/explorer,
 		/obj/item/clothing/gloves/black,
+		/obj/item/gun/energy/frontier/locked/holdout,
 		/obj/item/radio/headset/explorer,
 		/obj/item/flashlight,
 		/obj/item/gps/explorer,
@@ -208,7 +209,7 @@
 		/obj/item/geiger,
 		/obj/item/cell/device,
 		/obj/item/radio,
-		/obj/item/subspaceradio,
+		/obj/item/bluespace_radio,
 		/obj/item/stack/marker_beacon/thirty,
 		/obj/item/storage/box/survival_knife,
 		/obj/item/material/knife/machete/deluxe,
@@ -220,6 +221,7 @@
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/card/mining_point_card/survey/gimmick,
+		/obj/item/clothing/glasses/omnihud/exp,
 		/obj/item/cataloguer/compact/pathfinder)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize(mapload)

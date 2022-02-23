@@ -91,6 +91,8 @@
 	var/list/submunitions = list() // Assoc list of the paths of any submunitions, and how many they are. [projectilepath] = [projectilecount].
 	var/submunition_spread_max = 30 // Divided by 10 to get the percentile dispersion.
 	var/submunition_spread_min = 5 // Above.
+	/// randomize spread? if so, evenly space between 0 and max on each side.
+	var/submunition_constant_spread = FALSE
 	var/force_max_submunition_spread = FALSE // Do we just force the maximum?
 	var/spread_submunition_damage = FALSE // Do we assign damage to our sub projectiles based on our main projectile damage?
 
@@ -309,6 +311,9 @@
 		after_z_change(old, target)
 
 /obj/item/projectile/proc/fire(angle, atom/direct_target)
+	if(only_submunitions)	// refactor projectiles whwen holy shit this is awful lmao
+		qdel(src)
+		return
 	//If no angle needs to resolve it from xo/yo!
 	if(direct_target)
 		direct_target.bullet_act(src, def_zone)
@@ -664,14 +669,21 @@
 
 	return TRUE
 
-
-/obj/item/projectile/proc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+/**
+ * i hate everything
+ *
+ * todo: refactor guns
+ * projectiles
+ * and everything else
+ *
+ * i am losing my fucking mind
+ * this shouldn't have to fucking exist because the ammo casing and/or gun should be doing it
+ * and submunitions SHOULDNT BE HANDLED HERE!!
+ */
+/obj/item/projectile/proc/launch_projectile_common(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	original = target
 	def_zone = check_zone(target_zone)
 	firer = user
-	var/direct_target
-	if(get_turf(target) == get_turf(src))
-		direct_target = target
 
 	if(use_submunitions && submunitions.len)
 		var/temp_min_spread = 0
@@ -695,16 +707,28 @@
 			damage_override = round(damage_override / max(1, projectile_count))
 
 		for(var/path in submunitions)
-			for(var/count = 1 to submunitions[path])
+			var/amt = submunitions[path]
+			for(var/count in 1 to amt)
 				var/obj/item/projectile/SM = new path(get_turf(loc))
 				SM.shot_from = shot_from
 				SM.silenced = silenced
-				SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
 				if(!isnull(damage_override))
 					SM.damage = damage_override
-				SM.launch_projectile(target, target_zone, user, params, angle_override)
+				if(submunition_constant_spread)
+					SM.dispersion = 0
+					var/calculated = Angle + round((count / amt - 0.5) * submunition_spread_max, 1)
+					SM.launch_projectile(target, target_zone, user, params, calculated)
+				else
+					SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
+					SM.launch_projectile(target, target_zone, user, params, angle_override)
+
+/obj/item/projectile/proc/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+	var/direct_target
+	if(get_turf(target) == get_turf(src))
+		direct_target = target
 
 	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
+	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
 	return fire(angle_override, direct_target)
 
 //called to launch a projectile from a gun
@@ -716,45 +740,12 @@
 	return launch_projectile(target, target_zone, user, params, angle_override, forced_spread)
 
 /obj/item/projectile/proc/launch_projectile_from_turf(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
-	original = target
-	def_zone = check_zone(target_zone)
-	firer = user
 	var/direct_target
 	if(get_turf(target) == get_turf(src))
 		direct_target = target
 
-	if(use_submunitions && submunitions.len)
-		var/temp_min_spread = 0
-		if(force_max_submunition_spread)
-			temp_min_spread = submunition_spread_max
-		else
-			temp_min_spread = submunition_spread_min
-
-		var/damage_override = null
-
-		if(spread_submunition_damage)
-			damage_override = damage
-			if(nodamage)
-				damage_override = 0
-
-			var/projectile_count = 0
-
-			for(var/proj in submunitions)
-				projectile_count += submunitions[proj]
-
-			damage_override = round(damage_override / max(1, projectile_count))
-
-		for(var/path in submunitions)
-			for(var/count = 1 to submunitions[path])
-				var/obj/item/projectile/SM = new path(get_turf(loc))
-				SM.shot_from = shot_from
-				SM.silenced = silenced
-				SM.dispersion = rand(temp_min_spread, submunition_spread_max) / 10
-				if(!isnull(damage_override))
-					SM.damage = damage_override
-				SM.launch_projectile_from_turf(target, target_zone, user, params, angle_override)
-
-	preparePixelProjectile(target, get_turf(src), params, forced_spread)
+	preparePixelProjectile(target, user? user : get_turf(src), params, forced_spread)
+	launch_projectile_common(target, target_zone, user, params, angle_override, forced_spread)
 	return fire(angle_override, direct_target)
 
 /**

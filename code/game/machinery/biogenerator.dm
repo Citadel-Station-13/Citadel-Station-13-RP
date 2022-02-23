@@ -108,6 +108,7 @@
 					dat += "<A href='?src=\ref[src];action=create;item=milk;cost=20'>10 milk</A> <FONT COLOR=blue>([round(20/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=milk5;cost=95'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=cream;cost=30'>10 cream</A> <FONT COLOR=blue>([round(30/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=cream5;cost=120'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=meat;cost=50'>Slab of meat</A> <FONT COLOR=blue>([round(50/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=meat5;cost=24s0'>x5</A><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=eggbox;cost=80'>A dozen eggs</A> <FONT COLOR=blue>([round(80/build_eff)])</FONT><BR>"
 					dat += "Nutrient:<BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=ez;cost=60'>E-Z-Nutrient</A> <FONT COLOR=blue>([round(60/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=ez5;cost=300'>x5</A><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=l4z;cost=120'>Left 4 Zed</A> <FONT COLOR=blue>([round(120/build_eff)])</FONT> | <A href='?src=\ref[src];action=create;item=l4z5;cost=600'>x5</A><BR>"
@@ -204,6 +205,8 @@
 			new/obj/item/reagent_containers/food/snacks/meat(loc)
 			new/obj/item/reagent_containers/food/snacks/meat(loc)
 			new/obj/item/reagent_containers/food/snacks/meat(loc)
+		if("eggbox")
+			new/obj/item/storage/fancy/egg_box(loc)
 		if("ez")
 			new/obj/item/reagent_containers/glass/bottle/eznutrient(loc)
 		if("l4z")

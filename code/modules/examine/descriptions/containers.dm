@@ -8,7 +8,7 @@
 	description_fluff = "This cola was allegedly made after Vasily Federov, the son of Nikolas Federov and the second CEO of Federov Beverages Inc., went on a climbing expedition to an arctic planet.  He then created this citris flavored soft drink.  Scientists claim that it can eat through styrafoam in a matter of weeks, but people drink it anyway."
 
 /obj/item/reagent_containers/food/drinks/cans/thirteenloko
-	description_fluff = "A beverage loved by college students.  The Thirteen Loko Company created this highly alcoholic beverage as an energy drink.  It is illegal in much of SolGov space and most of Skrell space.  This drink has been regulated more than any other in known space, and doctors strongly advise not to drink it."
+	description_fluff = "A beverage loved by college students.  The Thirteen Loko Company created this highly alcoholic beverage as an energy drink.  It is illegal in much of OriCon and Skrell space.  This drink has been regulated more than any other in known space, and doctors strongly advise not to drink it."
 
 /obj/item/reagent_containers/food/drinks/cans/dr_gibb
 	description_fluff = "Originally made by a doctor seeking to mix several different flavors, this soda has become widely popular in the past decade.  The drink has become so popular, in fact, that Nikolas Beverages bought it.  Ever since then, the drink has never been the same.  As a result, people all across known space beg for the old formula, but Nikolas Beverages does not appear to be listening."

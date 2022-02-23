@@ -115,6 +115,92 @@
 	qdel(src)
 	return
 
+/obj/item/b_gift
+	name = "gift"
+	desc = "It's slimy inside!"
+	icon = 'icons/obj/flora/pumpkins.dmi'
+	icon_state = "decor-pumpkin"
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/b_gift/Initialize(mapload)
+	. = ..()
+	pixel_x = rand(-10,10)
+	pixel_y = rand(-10,10)
+
+/obj/item/gift/attack_self(mob/user as mob)
+	user.drop_item()
+	if(src.gift)
+		user.put_in_active_hand(gift)
+		src.gift.add_fingerprint(user)
+	else
+		to_chat(user, "<span class='warning'>The pumpkin was empty!</span>")
+	qdel(src)
+	return
+
+/obj/item/b_gift/ex_act()
+	qdel(src)
+	return
+
+/obj/item/b_gift/attack_self(mob/M as mob)
+	var/gift_type = pick(
+		/obj/item/reagent_containers/hard_candy/lollipop,
+		/obj/item/reagent_containers/hard_candy/lollipop/bicard,
+		/obj/item/reagent_containers/hard_candy/lollipop/citalopram,
+		/obj/item/reagent_containers/hard_candy/lollipop/dexalin,
+		/obj/item/reagent_containers/hard_candy/lollipop/dylovene,
+		/obj/item/reagent_containers/hard_candy/lollipop/kelotane,
+		/obj/item/reagent_containers/hard_candy/lollipop/tricord,
+		/obj/item/reagent_containers/food/snacks/candy,
+		/obj/item/reagent_containers/food/snacks/candy_corn,
+		/obj/item/reagent_containers/food/snacks/cookie,
+		/obj/item/reagent_containers/food/snacks/chocolatebar,
+		/obj/item/reagent_containers/food/snacks/organ,
+		/obj/item/reagent_containers/food/snacks/donkpocket,
+		/obj/item/reagent_containers/food/snacks/donkpocket/sinpocket,
+		/obj/item/reagent_containers/food/snacks/ghostburger,
+		/obj/item/reagent_containers/food/snacks/brainburger,
+		/obj/item/reagent_containers/food/snacks/no_raisin,
+		/obj/item/clothing/mask/gas/plaguedoctor,
+		/obj/item/clothing/mask/gas/guy,
+		/obj/item/clothing/mask/gas/goblin,
+		/obj/item/clothing/mask/gas/demon,
+		/obj/item/clothing/mask/gas/monkeymask,
+		/obj/item/clothing/mask/gas/owl_mask,
+		/obj/item/clothing/mask/gas/pig,
+		/obj/item/clothing/mask/gas/shark,
+		/obj/item/clothing/mask/gas/dolphin,
+		/obj/item/clothing/mask/gas/horsehead,
+		/obj/item/clothing/mask/gas/frog,
+		/obj/item/clothing/mask/gas/rat,
+		/obj/item/clothing/mask/gas/fox,
+		/obj/item/clothing/mask/gas/bee,
+		/obj/item/clothing/mask/gas/bear,
+		/obj/item/clothing/mask/gas/bat,
+		/obj/item/clothing/mask/gas/raven,
+		/obj/item/clothing/mask/gas/jackal,
+		/obj/item/clothing/mask/gas/bumba,
+		/obj/item/clothing/mask/gas/scarecrow,
+		/obj/item/clothing/mask/gas/mummy,
+		/obj/item/clothing/mask/gas/skeleton,
+		/obj/fiftyspawner/bananium,
+		/obj/item/storage/backpack/holding,
+		/obj/item/grenade/smokebomb,
+		/obj/item/toy/crossbow,
+		/obj/item/gun/projectile/revolver/capgun,
+		/obj/item/toy/katana,
+		/obj/item/toy/sword,
+		/obj/item/storage/belt/utility/full)
+
+	if(!ispath(gift_type,/obj/item))	return
+
+	var/obj/item/I = new gift_type(M)
+	M.remove_from_mob(src)
+	M.put_in_hands(I)
+	I.add_fingerprint(M)
+	qdel(src)
+	return
+
 /*
  * Wrapping Paper
  */

@@ -21,6 +21,8 @@
 	var/energy_drain = 0
 	var/obj/mecha/chassis = null
 	var/range = MELEE //bitflags
+	/// Bitflag. Used by exosuit fabricator to assign sub-categories based on which exosuits can equip this.
+	var/mech_flags = NONE
 	var/salvageable = 1
 	var/required_type = /obj/mecha //may be either a type or a list of allowed types
 	var/equip_type = null //mechaequip2
@@ -28,18 +30,23 @@
 	var/ready_sound = 'sound/mecha/mech_reload_default.ogg' //Sound to play once the fire delay passed.
 	var/enable_special = FALSE	// Will the tool do its special?
 
+	var/step_delay = 0	// Does the component slow/speed up the suit?
+
 /obj/item/mecha_parts/mecha_equipment/proc/do_after_cooldown(target=1)
 	sleep(equip_cooldown)
 	set_ready_state(1)
 	if(ready_sound) //Kind of like the kinetic accelerator.
-		playsound(loc, ready_sound, 50, 1, -1)
+		playsound(src, ready_sound, 50, 1, -1)
 	if(target && chassis)
 		return 1
 	return 0
 
 /obj/item/mecha_parts/mecha_equipment/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>\The [src] will fill [equip_type?"a [equip_type]":"any"] slot.</span>"
+	. += "<span class='notice'>[src] will fill [equip_type?"a [equip_type]":"any"] slot.</span>"
+
+/obj/item/mecha_parts/mecha_equipment/proc/add_equip_overlay(obj/mecha/M as obj)
+	return
 
 /obj/item/mecha_parts/mecha_equipment/proc/update_chassis_page()
 	if(chassis)
@@ -88,19 +95,19 @@
 		if(istype(src, /obj/item/mecha_parts/mecha_equipment/weapon))//Gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
-					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/weapdestrnano.ogg',volume=70))
+					src.chassis.occupant << sound('sound/mecha/weapdestrnano.ogg',volume=70)
 				if(MECH_FACTION_SYNDI)
-					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/weapdestrsyndi.ogg',volume=60))
+					src.chassis.occupant  << sound('sound/mecha/weapdestrsyndi.ogg',volume=60)
 				else
-					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/weapdestr.ogg',volume=50))
+					src.chassis.occupant  << sound('sound/mecha/weapdestr.ogg',volume=50)
 		else //Not a gun
 			switch(chassis.mech_faction)
 				if(MECH_FACTION_NT)
-					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/critdestrnano.ogg',volume=70))
+					src.chassis.occupant  << sound('sound/mecha/critdestrnano.ogg',volume=70)
 				if(MECH_FACTION_SYNDI)
-					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/critdestrsyndi.ogg',volume=70))
+					src.chassis.occupant  << sound('sound/mecha/critdestrsyndi.ogg',volume=70)
 				else
-					SEND_SOUND(src.chassis.occupant, sound('sound/mecha/critdestr.ogg',volume=50))
+					src.chassis.occupant  << sound('sound/mecha/critdestr.ogg',volume=50)
 	spawn
 		qdel(src)
 	return
@@ -140,9 +147,6 @@
 	if(energy_drain && !chassis.has_charge(energy_drain))
 		return 0
 	return 1
-
-/obj/item/mecha_parts/mecha_equipment/proc/handle_movement_action() //Any modules that have special effects or needs when taking a step or floating through space.
-	return
 
 /obj/item/mecha_parts/mecha_equipment/proc/action(atom/target)
 	return
@@ -235,9 +239,9 @@
 				if(EQUIP_SPECIAL)
 					chassis.special_equipment -= src
 				//VOREStation Addition begin: MICROMECHS
-				if(EQUIP_UTILITY)
+				if(EQUIP_MICRO_UTILITY)
 					chassis.micro_utility_equipment -= src
-				if(EQUIP_SPECIAL)
+				if(EQUIP_MICRO_WEAPON)
 					chassis.micro_weapon_equipment -= src
 				//VOREStation Addition end: MICROMECHS
 		if(chassis.selected == src)
@@ -262,7 +266,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/proc/occupant_message(message)
 	if(chassis)
-		chassis.occupant_message("[icon2html(thing = src, target = chassis.occupant)] [message]")
+		chassis.occupant_message("[icon2html(src, world)] [message]")
 	return
 
 /obj/item/mecha_parts/mecha_equipment/proc/log_message(message)
@@ -272,3 +276,6 @@
 
 /obj/item/mecha_parts/mecha_equipment/proc/MoveAction() //Allows mech equipment to do an action upon the mech moving
 	return
+
+/obj/item/mecha_parts/mecha_equipment/proc/get_step_delay() // Equipment returns its slowdown or speedboost.
+	return step_delay

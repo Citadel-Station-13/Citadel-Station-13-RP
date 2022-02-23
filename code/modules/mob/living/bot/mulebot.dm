@@ -7,6 +7,15 @@
 #define MULE_PATH_DONE 11
 // IF YOU CHANGE THOSE, UPDATE THEM IN pda.tmpl TOO
 
+/datum/category_item/catalogue/technology/bot/mulebot
+	name = "Bot - Mulebot"
+	desc = "Mulebots are a favorite option for logistical services in \
+	Frontier space. Equipped with semi-sophisticated pathfinding systems, \
+	Mulebots can work out their own routes between destination tags. Some \
+	technicians can alter these routines to allow for human riders or faster \
+	motion, although this does often risk overriding vital safety protocols."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/mulebot
 	name = "Mulebot"
 	desc = "A Multiple Utility Load Effector bot."
@@ -16,6 +25,7 @@
 	health = 150
 	maxHealth = 150
 	mob_bump_flag = HEAVY
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/mulebot)
 
 	min_target_dist = 0
 	max_target_dist = 250

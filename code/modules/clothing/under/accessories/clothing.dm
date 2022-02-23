@@ -321,6 +321,27 @@
 	icon_state = "sweatervest_red"
 	item_state = "sweatervest_red"
 
+//Button-up Shirts.
+/obj/item/clothing/accessory/buttonup
+	name = "button up shirt"
+	desc = "The standard dress shirt. Simple, versatile, clean."
+	icon_state = "button_tucked"
+	item_state = "button_tucked"
+	icon_override = 'icons/mob/ties.dmi'
+	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
+	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	slot_flags = SLOT_OCLOTHING | SLOT_TIE
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	siemens_coefficient = 0.9
+	w_class = ITEMSIZE_NORMAL
+	slot = ACCESSORY_SLOT_DECOR
+
+/obj/item/clothing/accessory/buttonup/untucked
+	name = "button up shirt (untucked)"
+	icon_state = "button_untucked"
+	item_state = "button_untucked"
+
 //Sweaters.
 
 /obj/item/clothing/accessory/sweater
@@ -434,6 +455,11 @@
 	name = "Star Sweater"
 	desc = "A white long sweater with a big yellow star at the chest. It seems like it's made of a soft material."
 	icon_state = "star_sweater"
+
+/obj/item/clothing/accessory/sweater/virgin
+	name = "Virgin Killer Sweater"
+	desc = "A white long sweater with a modest string to keep the otherwise immodest front piece from falling off. Compatible with a variety of chest sizes. It seems like it's made of a soft material."
+	icon_state = "virgin_sweater"
 
 //***
 // End of sweaters

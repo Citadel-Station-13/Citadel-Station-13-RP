@@ -7,7 +7,7 @@
 
 /obj/item/clothing/head/centhat/customs
 	name = "Customs Hat"
-	desc = "A formal hat for SolGov Customs Officers."
+	desc = "A formal hat for OriCon Customs Officers."
 	icon_state = "customshat"
 
 /obj/item/clothing/head/pin
@@ -559,35 +559,29 @@
 	desc = "A simple crown, fashioned out of gold."
 	icon_state = "crown"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/crown/fancy
 	name = "coronation crown"
 	desc = "An opulent crown, crafted for ceremonial purposes."
 	icon_state = "fancycrown"
-	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/scarecrow
 	name = "field hat"
 	desc = "A ragged burlap hat, bleached and worn by years of exposure to blistering sunlight."
 	icon_state = "scarecrow_hat"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/holiday
 	name = "red holiday hat"
 	desc = "A floppy, fur lined cap. Made famous by an Old Earth mythical figure."
 	icon_state = "christmashat"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/holiday/green
 	name = "green holiday hat"
 	desc = "A floppy, fur lined cap. Made famous by a cabal of toy crafting elves."
 	icon_state = "christmashatg"
 	body_parts_covered = HEAD
-	flags_inv = BLOCKHAIR
 
 /obj/item/clothing/head/telegram
 	name = "telegram cap"
@@ -609,5 +603,53 @@
 
 /obj/item/clothing/head/traveller
 	name = "traveller's hat"
-	desc = "A wide brimmed hat made of sturdy material. Its floppy, poitned top is similar to those worn by Old Earth bards or sorcerors."
+	desc = "A wide brimmed hat made of sturdy material. Its floppy, pointed top is similar to those worn by Old Earth bards or sorcerors."
 	icon_state = "traveller"
+	//addblends = "traveller_a"
+
+/obj/item/clothing/head/samurai_replica
+	name = "replica kabuto"
+	desc = "An authentic antique, this helmet from old Earth belongs to an ancient martial tradition. The advent of firearms made this style of protection obsolete. Unfortunately, this remains the case. This version appears less sturdy."
+	icon_state = "kabuto_colorable"
+
+/obj/item/clothing/head/ankh
+	name = "aegyptian circlet"
+	desc = "Perfect for when you want to deliver a stern look from on high."
+	icon_state = "ankh"
+	body_parts_covered = 0
+
+/obj/item/clothing/head/roman_replica
+	name = "Roman Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman"
+
+/obj/item/clothing/head/romancent_replica
+	name = "Roman Crested Galea"
+	desc = "A reproduction helmet fashioned to look like an ancient Roman Galea. The material is too flimsy to provide protection."
+	icon_state = "roman_c"
+
+/obj/item/clothing/head/imperial_replica
+	name = "imperial soldier helmet"
+	desc = "Reproduction headgear fashioned after the standard helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helm"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+
+/obj/item/clothing/head/imperial_officer_replica
+	name = "imperial officer helmet"
+	desc = "Reproduction headgear fashioned after the officer's helmet of the ill fated Neo Macedonian Empire. The material is too flimsy to provide protection."
+	icon_state = "ge_helmcent"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+
+/obj/item/clothing/head/papersack
+	name = "paper sack hat"
+	desc = "A paper sack with crude holes cut out for eyes. Useful for hiding one's identity or ugliness."
+	icon_state = "papersack"
+	flags_inv = BLOCKHAIR|HIDEFACE
+
+/obj/item/clothing/head/papersack/smiley
+	name = "paper sack hat"
+	desc = "A paper sack with crude holes cut out for eyes and a sketchy smile drawn on the front. Not creepy at all."
+	icon_state = "papersack_smile"
+	flags_inv = BLOCKHAIR|HIDEFACE

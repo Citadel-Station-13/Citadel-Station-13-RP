@@ -24,7 +24,7 @@
 /area/triumph/surfacebase/outside/wilderness
 	name = "Outside - Wilderness"
 	icon_state = "invi"
-	forced_ambience = list('sound/music/Sacred_Grove.ogg')
+
 /area/triumph/surfacebase/temple
 	name = "Outside - Wilderness" // ToDo: Make a way to hide spoiler areas off the list of areas ghosts can jump to.
 	icon_state = "red"
@@ -155,11 +155,11 @@
 /area/shuttle/triumph/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/triumph
+	base_turf = /turf/simulated/floor/outdoors/dirt
 /area/shuttle/triumph/crash2
 	name = "\improper Crash Site 2"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt/triumph
+	base_turf = /turf/simulated/floor/outdoors/dirt
 
 // Frozen planet world areas
 /area/frozen_planet
@@ -215,6 +215,7 @@
 	icon_state = "yellow"
 
 // Class D world areas
+/* Moved to Class D's .dm file and edited. Remove before merging
 /area/poi_d/POIs/ship
 	name = "Crashed Ship Fragment"
 	base_turf = /turf/simulated/mineral/floor/vacuum
@@ -261,6 +262,7 @@
 /area/poi_d/POIs/reactor
 	name = "Prefab Reactor"
 	base_turf = /turf/simulated/mineral/floor/vacuum
+*/
 
 // Mining Planet world areas
 /area/poi_h
@@ -336,8 +338,40 @@
 	icon_state = "debrisunexplored"
 
 /area/debrisfield/derelict
+	name = "POI - Alien Derelict"
 	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
+
+/area/space/debrisfield/asteroids
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/asteroids/rocks
+	icon_state = "debrisexplored"
+	base_turf = /turf/simulated/mineral/floor/vacuum
+
+/area/space/debrisfield/oldshuttle
+	name = "POI - Old Shuttle"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/medshuttlecrash
+	name = "POI - Medical Shuttle Crash"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/scioverrun
+	name = "POI - Overrun Science Ship"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/explodedship
+	name = "POI - Exploded Ship"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/foodstand
+	name = "POI - Foodstand"
+	icon_state = "debrisexplored"
+
+/area/space/debrisfield/misc_debris
+	name = "Debris"
+	icon_state = "debrisexplored"
 
 //Pirate base
 /area/shuttle/excursion/piratebase
@@ -420,6 +454,19 @@
 /area/tradeport/cyndishow
 	name = "\improper C&K Showroom"
 	icon_state = "red"
+
+/area/tradeport/medical
+	icon_state = "blue"
+
+/area/tradeport/atmospherics
+	icon_state = "yellow"
+
+/area/tradeport/exterior
+
+/area/tradeport/cafeteria
+	icon_state = "green"
+
+/area/tradeport/expansion
 
 
 //////// Mothership areas ////////
@@ -869,3 +916,115 @@
 
 /area/awaymission/zoo/pirateship
 	icon_state = "bluenew"
+
+//Jungle Areas
+/area/jungle/temple_one
+	icon_state = "red"
+/area/jungle/temple_two
+	icon_state = "yellow"
+/area/jungle/temple_three
+	icon_state = "green"
+/area/jungle/temple_four
+	icon_state = "blue"
+/area/jungle/temple_five
+	icon_state = "purple"
+/area/jungle/temple_six
+	icon_state = "away"
+/area/jungle/crash_ship_one
+	icon_state = "red"
+/area/jungle/crash_ship_two
+	icon_state = "yellow"
+/area/jungle/crash_ship_three
+	icon_state = "green"
+/area/jungle/crash_ship_four
+	icon_state = "blue"
+/area/jungle/crash_ship_source
+	icon_state = "purple"
+/area/jungle/crash_ship_clean
+	icon_state = "away"
+
+//Challenge
+/area/awaymission/challenge/start
+	icon_state = "red"
+/area/awaymission/challenge/laser_retro
+	icon_state = "yellow"
+/area/awaymission/challenge/main
+	icon_state = "green"
+/area/awaymission/challenge/end
+	icon_state = "blue"
+
+//Labyrinth
+/area/awaymission/labyrinth/temple/north_west
+	icon_state = "red"
+/area/awaymission/labyrinth/temple/north
+	icon_state = "yellow"
+/area/awaymission/labyrinth/temple/north_east
+	icon_state = "green"
+/area/awaymission/labyrinth/temple/center
+	icon_state = "blue"
+/area/awaymission/labyrinth/temple/east
+	icon_state = "red"
+/area/awaymission/labyrinth/temple/west
+	icon_state = "yellow"
+/area/awaymission/labyrinth/temple/south_east
+	icon_state = "green"
+/area/awaymission/labyrinth/temple/south
+	icon_state = "blue"
+/area/awaymission/labyrinth/temple/south_west
+	icon_state = "red"
+/area/awaymission/labyrinth/arrival
+	icon_state = "yellow"
+/area/awaymission/labyrinth/temple/entry
+	icon_state = "green"
+/area/awaymission/labyrinth/boss
+	icon_state = "blue"
+/area/awaymission/labyrinth/cave
+	icon_state = "red"
+//Station Collison
+/area/awaymission/northblock
+	icon_state = "red"
+/area/awaymission/syndishuttle
+	icon_state = "yellow"
+/area/awaymission/research
+	icon_state = "green"
+/area/awaymission/midblock
+	icon_state = "blue"
+/area/awaymission/arrivalblock
+	icon_state = "purple"
+/area/awaymission/southblock
+	icon_state = "red"
+/area/awaymission/gateroom
+	icon_state = "yellow"
+//ZResearch
+/area/awaymission/labs/cave
+	icon_state = "red"
+/area/awaymission/labs/researchdivision
+	icon_state = "yellow"
+/area/awaymission/labs/gateway
+	icon_state = "green"
+/area/awaymission/labs/militarydivision
+	icon_state = "blue"
+/area/awaymission/labs/solars
+	icon_state = "purple"
+/area/awaymission/labs/command
+	icon_state = "red"
+/area/awaymission/labs/cargo
+	icon_state = "yellow"
+/area/awaymission/labs/civilian
+	icon_state = "green"
+/area/awaymission/labs/security
+	icon_state = "blue"
+/area/awaymission/labs/medical
+	icon_state = "purple"
+//Academy
+/area/awaymission/academy
+	icon_state = "red"
+/area/awaymission/academy/headmaster
+	icon_state = "yellow"
+/area/awaymission/academy/classrooms
+	icon_state = "green"
+/area/awaymission/academy/academyaft
+	icon_state = "blue"
+/area/awaymission/academy/academygate
+	icon_state = "purple"
+

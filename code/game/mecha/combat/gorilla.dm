@@ -1,3 +1,4 @@
+
 /obj/mecha/combat/gorilla
 	name = "Gorilla"
 	desc = "<b>Blitzkrieg!</b>" //stop using all caps in item descs i will fight you. its redundant with the bold.
@@ -29,7 +30,7 @@
 	zoom_possible = 1
 	thrusters_possible = 1
 
-/obj/mecha/combat/gorilla/Initialize(mapload)
+/obj/mecha/combat/gorilla/Initialize()
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src) // This thing basically cannot function without an external power supply.
 	ME.attach(src)
@@ -90,7 +91,6 @@
 		use_power(tmp_step_energy_drain)
 		return 1
 	return 0
-
 
 
 /obj/mecha/combat/gorilla/get_stats_part()

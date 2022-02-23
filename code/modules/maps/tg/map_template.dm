@@ -21,6 +21,8 @@
 
 	/// Zlevel traits
 	var/list/ztraits
+	/// abstract type
+	var/abstract_type = /datum/map_template
 
 /datum/map_template/New(path = null, rename = null)
 	if(path)

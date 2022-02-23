@@ -42,6 +42,8 @@
 	var/flags_inv = 0
 	var/body_parts_covered = 0 //see setup.dm for appropriate bit flags
 
+	var/tool_behaviour = NONE
+
 	var/item_flags = 0 //Miscellaneous flags pertaining to equippable objects.
 
 	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
@@ -69,6 +71,15 @@
 	// If icon_override or sprite_sheets are set they will take precendence over this, assuming they apply to the slot in question.
 	// Only slot_l_hand/slot_r_hand are implemented at the moment. Others to be implemented as needed.
 	var/list/item_icons = list()
+
+	//Dimensions of the icon file used when this item is worn, eg: hats.dmi
+	//eg: 32x32 sprite, 64x64 sprite, etc.
+	//allows inhands/worn sprites to be of any size, but still centered on a mob properly
+	var/worn_x_dimension = 32
+	var/worn_y_dimension = 32
+	//Same as above but for inhands, uses the lefthand_ and righthand_ file vars
+	var/inhand_x_dimension = 32
+	var/inhand_y_dimension = 32
 
 	//** These specify item/icon overrides for _species_
 
@@ -695,7 +706,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 //Looking through a scope or binoculars should /not/ improve your periphereal vision. Still, increase viewsize a tiny bit so that sniping isn't as restricted to NSEW
 
 // this is shitcode holy crap
-/obj/item/proc/zoom(tileoffset = 14, viewsize = 9, mob/user = usr) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
+/obj/item/proc/zoom(tileoffset = 14, viewsize = 9, mob/user = usr, wornslot = FALSE) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view. slot determines whether the item needs to be held in-hand (by being set to FALSE) OR worn on a specific slot to look through
 
 	var/devicename
 
@@ -712,8 +723,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else if(!zoom && (GLOB.global_hud.darkMask[1] in user.client.screen))
 		to_chat(user, "Your visor gets in the way of looking through the [devicename]")
 		cannotzoom = 1
-	else if(!zoom && user.get_active_hand() != src)
+	else if(!zoom && user.get_active_hand() != src && wornslot == FALSE)
 		to_chat(user, "You are too distracted to look through the [devicename], perhaps if it was in your active hand this might work better")
+		cannotzoom = 1
+	else if(!zoom && user.get_equipped_item(wornslot) != src && wornslot != FALSE)
+		to_chat(user, "You need to wear the [devicename] to look through it properly")
 		cannotzoom = 1
 
 	//We checked above if they are a human and returned already if they weren't.
@@ -807,6 +821,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		apply_addblends(icon2use,standing_icon)		//Some items have ICON_ADD blend shaders
 
 	var/image/standing = image(standing_icon)
+	standing = center_image(standing, inhands ? inhand_x_dimension : worn_x_dimension, inhands ? inhand_y_dimension : worn_y_dimension)
 	standing.alpha = alpha
 	standing.color = color
 	standing.layer = layer2use

@@ -76,7 +76,8 @@
 		//Organs and blood
 		handle_organs()
 		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
-		weightgain() //VORESTATION EDIT
+		weightgain() 			//VORESTATION EDIT
+		process_weaver_silk()	//VOREStation Addition
 		handle_shock()
 
 		handle_pain()
@@ -132,10 +133,21 @@
 			var/obj/item/clothing/suit/space/S = wear_suit
 			if(S.can_breach && S.damage)
 				pressure_adjustment_coefficient += S.damage * 0.1
-
+	//check for EVA capable uniforms
 	else
-		// Missing key protection
-		pressure_adjustment_coefficient = 1
+		if(w_uniform && w_uniform.max_pressure_protection != null && w_uniform.min_pressure_protection != null)
+			pressure_adjustment_coefficient = 0
+			// Pressure is too high
+			if(w_uniform.max_pressure_protection < pressure)
+				// Protection scales down from 100% at the boundary to 0% at 10% in excess of the boundary
+				pressure_adjustment_coefficient += round((pressure - w_uniform.max_pressure_protection) / (w_uniform.max_pressure_protection/10))
+
+			// Pressure is too low
+			if(w_uniform.min_pressure_protection > pressure)
+				pressure_adjustment_coefficient += round((w_uniform.min_pressure_protection - pressure) / (w_uniform.min_pressure_protection/10))
+		else
+			// Missing key protection
+			pressure_adjustment_coefficient = 1
 
 	// Check hat
 	if(head && head.max_pressure_protection != null && head.min_pressure_protection != null)
@@ -252,7 +264,7 @@
 	// DNA2 - Gene processing.
 	// The HULK stuff that was here is now in the hulk gene.
 	if(!isSynthetic())
-		for(var/datum/dna/gene/gene in dna_genes)
+		for(var/datum/gene/gene in dna_genes)
 			if(!gene.block)
 				continue
 			if(gene.is_active(src))
@@ -358,7 +370,7 @@
 			if(!rig.offline && (rig.air_supply && internal == rig.air_supply))
 				rig_supply = rig.air_supply
 
-		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.item_flags & AIRTIGHT)) || (head && (head.item_flags & AIRTIGHT))))
+		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.item_flags & ALLOWINTERNALS)) || (head && (head.item_flags & ALLOWINTERNALS))))
 			internal = null
 
 		if(internal)
@@ -921,18 +933,13 @@
 			for(var/obj/item/I in src)
 				if(I.contaminated)
 					if(check_belly(I)) continue //VOREStation Edit
-					if(src.species && src.species.get_bodytype() != "Vox" && src.species.get_bodytype() != "Shadekin")	//VOREStation Edit: shadekin
+					if(src.species && !(src.species.flags & CONTAMINATION_IMMUNE))	//VOREStation Edit: shadekin; CitadelRP: Black-Eyed Shadekin don't get afflicted from contaminated clothing
 						// This is hacky, I'm so sorry.
 						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
-						else if(I == l_hand)	//If the item is in your hands, but you're wearing protection, you might be alright.
-							var/l_hand_blocked = 0
-							l_hand_blocked = 1-(100-getarmor(BP_L_HAND, "bio"))/100	//This should get a number between 0 and 1
-							total_phoronloss += loss_per_part * l_hand_blocked
-						else if(I == r_hand)	//If the item is in your hands, but you're wearing protection, you might be alright.
-							var/r_hand_blocked = 0
-							r_hand_blocked = 1-(100-getarmor(BP_R_HAND, "bio"))/100	//This should get a number between 0 and 1
-							total_phoronloss += loss_per_part * r_hand_blocked
+						else if((I == l_hand | I == r_hand) && !((src.wear_suit.body_parts_covered & HANDS) | src.gloves | (src.w_uniform.body_parts_covered & HANDS)))	//If the item is in your hands, but you're wearing protection, you might be alright.
+							//If you hold it in hand, and your hands arent covered by anything
+							total_phoronloss += loss_per_part
 			if(total_phoronloss)
 				if(!(status_flags & GODMODE))
 					adjustToxLoss(total_phoronloss)
@@ -1140,8 +1147,8 @@
 
 	return 1
 
-/mob/living/carbon/human/proc/set_stat(var/new_stat)
-	stat = new_stat
+/mob/living/carbon/human/set_stat(var/new_stat)
+	. = ..()
 	if(stat)
 		update_skin(1)
 
@@ -1156,7 +1163,7 @@
 
 	..()
 
-	client.screen.Remove(GLOB.global_hud.blurry, GLOB.global_hud.druggy, GLOB.global_hud.vimpaired, GLOB.global_hud.darkMask, GLOB.global_hud.nvg, GLOB.global_hud.thermal, GLOB.global_hud.meson, GLOB.global_hud.science, GLOB.global_hud.material, GLOB.global_hud.whitense)
+	client.screen.Remove(GLOB.global_hud.blurry, GLOB.global_hud.druggy, GLOB.global_hud.vimpaired, GLOB.global_hud.darkMask, GLOB.global_hud.nvg, GLOB.global_hud.thermal, GLOB.global_hud.meson, GLOB.global_hud.science, GLOB.global_hud.material, GLOB.global_hud.yellow, GLOB.global_hud.blue, GLOB.global_hud.pink, GLOB.global_hud.beige, GLOB.global_hud.orange, GLOB.global_hud.whitense)
 
 	if(istype(client.eye,/obj/machinery/camera))
 		var/obj/machinery/camera/cam = client.eye
@@ -1384,8 +1391,6 @@
 
 /mob/living/carbon/human/handle_vision()
 	if(stat == DEAD)
-		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-		see_in_dark = 8
 		if(client)
 			if(client.view != world.view) // If mob dies while zoomed in with device, unzoom them.
 				for(var/obj/item/item in contents)
@@ -1394,7 +1399,6 @@
 						break
 
 	else //We aren't dead
-		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
 
 		if(XRAY in mutations)
@@ -1732,7 +1736,7 @@
 	This proc below is only called when those HUD elements need to change as determined by the mobs hud_updateflag.
 */
 /mob/living/carbon/human/proc/handle_hud_list()
-	if (CHECK_BITFIELD(hud_updateflag, HEALTH_HUD))
+	if (BITTEST(hud_updateflag, HEALTH_HUD))
 		var/image/holder = grab_hud(HEALTH_HUD)
 		if(stat == DEAD)
 			holder.icon_state = "-100" 	// X_X
@@ -1740,7 +1744,7 @@
 			holder.icon_state = RoundHealth((health-config_legacy.health_threshold_crit)/(getMaxHealth()-config_legacy.health_threshold_crit)*100)
 		apply_hud(HEALTH_HUD, holder)
 
-	if (CHECK_BITFIELD(hud_updateflag, LIFE_HUD))
+	if (BITTEST(hud_updateflag, LIFE_HUD))
 		var/image/holder = grab_hud(LIFE_HUD)
 		if(isSynthetic())
 			holder.icon_state = "hudrobo"
@@ -1750,7 +1754,7 @@
 			holder.icon_state = "hudhealthy"
 		apply_hud(LIFE_HUD, holder)
 
-	if (CHECK_BITFIELD(hud_updateflag, STATUS_HUD))
+	if (BITTEST(hud_updateflag, STATUS_HUD))
 		var/foundVirus = 0
 		for (var/ID in virus2)
 			if (ID in virusDB)
@@ -1783,7 +1787,7 @@
 		apply_hud(STATUS_HUD, holder)
 		apply_hud(STATUS_HUD_OOC, holder2)
 
-	if (CHECK_BITFIELD(hud_updateflag, ID_HUD))
+	if (BITTEST(hud_updateflag, ID_HUD))
 		var/image/holder = grab_hud(ID_HUD)
 		if(wear_id)
 			var/obj/item/card/id/I = wear_id.GetID()
@@ -1796,7 +1800,7 @@
 
 		apply_hud(ID_HUD, holder)
 
-	if (CHECK_BITFIELD(hud_updateflag, WANTED_HUD))
+	if (BITTEST(hud_updateflag, WANTED_HUD))
 		var/image/holder = grab_hud(WANTED_HUD)
 		holder.icon_state = "hudblank"
 		var/perpname = name
@@ -1823,9 +1827,9 @@
 
 		apply_hud(WANTED_HUD, holder)
 
-	if (  CHECK_BITFIELD(hud_updateflag, IMPLOYAL_HUD) \
-	   || CHECK_BITFIELD(hud_updateflag,  IMPCHEM_HUD) \
-	   || CHECK_BITFIELD(hud_updateflag, IMPTRACK_HUD))
+	if (  BITTEST(hud_updateflag, IMPLOYAL_HUD) \
+	   || BITTEST(hud_updateflag,  IMPCHEM_HUD) \
+	   || BITTEST(hud_updateflag, IMPTRACK_HUD))
 
 		var/image/holder1 = grab_hud(IMPTRACK_HUD)
 		var/image/holder2 = grab_hud(IMPLOYAL_HUD)
@@ -1849,7 +1853,7 @@
 		apply_hud(IMPLOYAL_HUD, holder2)
 		apply_hud(IMPCHEM_HUD, holder3)
 
-	if (CHECK_BITFIELD(hud_updateflag, SPECIALROLE_HUD))
+	if (BITTEST(hud_updateflag, SPECIALROLE_HUD))
 		var/image/holder = grab_hud(SPECIALROLE_HUD)
 		holder.icon_state = "hudblank"
 		if(mind && mind.special_role)
@@ -1888,24 +1892,32 @@
 		else if (nutrition <= MAX_NUTRITION_TO_LOSE && stat != 2 && weight > MIN_MOB_WEIGHT && weight_loss)
 			weight -= species.metabolism*(0.01*weight_loss) // starvation weight loss
 
+/mob/living/carbon/human/proc/process_weaver_silk()
+	if(!species || !(species.is_weaver))
+		return
+
+	if(species.silk_reserve < species.silk_max_reserve && species.silk_production == TRUE && nutrition > 100)
+		species.silk_reserve = min(species.silk_reserve + 2, species.silk_max_reserve)
+		nutrition -= 0.4//suck nutrition from the user
+
 /mob/living/carbon/human/proc/handle_hud_list_vr()
 
 	//Right-side status hud updates with left side one.
-	if (CHECK_BITFIELD(hud_updateflag, STATUS_HUD))
+	if (BITTEST(hud_updateflag, STATUS_HUD))
 		var/image/other_status = hud_list[STATUS_HUD]
 		var/image/status_r = grab_hud(STATUS_R_HUD)
 		status_r.icon_state = other_status.icon_state
 		apply_hud(STATUS_R_HUD, status_r)
 
 	//Our custom health bar HUD
-	if (CHECK_BITFIELD(hud_updateflag, HEALTH_HUD))
+	if (BITTEST(hud_updateflag, HEALTH_HUD))
 		var/image/other_health = hud_list[HEALTH_HUD]
 		var/image/health_us = grab_hud(HEALTH_VR_HUD)
 		health_us.icon_state = other_health.icon_state
 		apply_hud(HEALTH_VR_HUD, health_us)
 
 	//Backup implant hud status
-	if (CHECK_BITFIELD(hud_updateflag, BACKUP_HUD))
+	if (BITTEST(hud_updateflag, BACKUP_HUD))
 		var/image/holder = grab_hud(BACKUP_HUD)
 
 		holder.icon_state = "hudblank"
@@ -1924,7 +1936,7 @@
 		apply_hud(BACKUP_HUD, holder)
 
 	//VOREStation Antag Hud
-	if (CHECK_BITFIELD(hud_updateflag, VANTAG_HUD))
+	if (BITTEST(hud_updateflag, VANTAG_HUD))
 		var/image/vantag = grab_hud(VANTAG_HUD)
 		if(vantag_pref)
 			vantag.icon_state = vantag_pref

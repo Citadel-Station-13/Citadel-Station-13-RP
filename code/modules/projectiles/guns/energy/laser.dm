@@ -12,7 +12,7 @@
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
 	projectile_type = /obj/item/projectile/beam/midlaser
-//	one_handed_penalty = 30
+	one_handed_penalty = 30
 
 	firemodes = list(
 		list(mode_name="normal", fire_delay=8, projectile_type=/obj/item/projectile/beam/midlaser, charge_cost = 240),
@@ -131,7 +131,7 @@
 	battery_lock = 1
 	fire_delay = 20
 	w_class = ITEMSIZE_LARGE
-//	one_handed_penalty = 90 // The thing's heavy and huge.
+	one_handed_penalty = 90 // The thing's heavy and huge.
 	accuracy = 75
 	charge_cost = 600
 
@@ -174,7 +174,7 @@
 	accuracy = 25 //shooting at the hip
 	scoped_accuracy = 80
 //	requires_two_hands = 1
-//	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
+	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 
 /obj/item/gun/energy/sniperrifle/verb/scope()
 	set category = "Object"

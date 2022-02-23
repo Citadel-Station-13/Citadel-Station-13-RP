@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/dog
+	name = "Dog"
+	desc = "Canines have been a consistent companion of Humanity for \
+	tens of thousands of years. Descended from Wolves, a larger pack \
+	animal, the modern canine was selectively bred down into its modern \
+	role. Trained to assist with hunting, rescue, or security, dogs have \
+	gone on to be regarded as true friends by many Humans."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/dog
 	name = "dog"
 	real_name = "dog"
@@ -6,9 +15,11 @@
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/dog)
 
 	health = 20
 	maxHealth = 20
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "bops"
@@ -22,10 +33,12 @@
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/corgi
+	bone_amount = 2
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/corgi
 
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
-
 
 /mob/living/simple_mob/animal/passive/dog/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/newspaper))
@@ -114,6 +127,7 @@
 /mob/living/simple_mob/animal/passive/dog/corgi/puppy/Bockscar
 	name = "Bockscar"
 	real_name = "Bockscar"
+	randomized = FALSE
 
 //Sir Pogsley. (Sec Pet)
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley
@@ -124,6 +138,7 @@
 	makes_dirt = FALSE
 	var/turns_since_scan = 0
 	var/obj/movement_target
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Life()
 	..()
@@ -182,6 +197,7 @@
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	makes_dirt = FALSE	//VOREStation edit: no more dirt
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/dog/corgi/Ian/Life()
 	..()
@@ -246,6 +262,7 @@
 	response_harm   = "kicks"
 	var/turns_since_scan = 0
 	var/puppies = 0
+	randomized = FALSE
 
 //Lisa already has a cute bow!
 /mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Topic(href, href_list)
@@ -299,3 +316,4 @@
 	real_name = "Spice"	//Intended to hold the name without altering it.
 	gender = FEMALE
 	desc = "It's a tamaskan, the name Spice can be found on its collar."
+	randomized = FALSE

@@ -1,4 +1,6 @@
-//Debug areas
+//	Moved to code/game/areas
+/*
+// //Debug areas
 /area/tether/surfacebase
 	name = "Tether Debug Surface"
 
@@ -46,32 +48,26 @@
 /area/turbolift/t_surface/level2
 	name = "surface (level 2)"
 	lift_floor_label = "Surface 2"
-	lift_floor_name = "Atmos, Chapel, Maintenance"
+	lift_floor_name = "Atmos, Maintenance"
 	lift_announce_str = "Arriving at Base Level 2."
 
 /area/turbolift/t_surface/level3
 	name = "surface (level 3)"
 	lift_floor_label = "Surface 3"
-	lift_floor_name = "Bridge, Science, Bar, Pool"
+	lift_floor_name = "Bar, Bridge, Pool, Science"
 	lift_announce_str = "Arriving at Base Level 3."
 
 /area/turbolift/t_station/level1
 	name = "asteroid (level 1)"
 	lift_floor_label = "Asteroid 1"
-	lift_floor_name = "Eng, Secondary Bridge, Park, Cryo, Visitor Offices"
+	lift_floor_name = "AI Core, Eng, Exploration, Secondary Bridge"
 	lift_announce_str = "Arriving at Station Level 1."
 
 /area/turbolift/t_station/level2
 	name = "asteroid (level 2)"
 	lift_floor_label = "Asteroid 2"
-	lift_floor_name = "Exploration, AI Core, EVA Gear"
+	lift_floor_name = "Chapel, Cargo, EVA, Gateway"
 	lift_announce_str = "Arriving at Station Level 2."
-
-/area/turbolift/t_station/level3
-	name = "asteroid (level 3)"
-	lift_floor_label = "Asteroid 3"
-	lift_floor_name = "Medical, Security, Cargo"
-	lift_announce_str = "Arriving at Station Level 3."
 
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
@@ -162,13 +158,24 @@
 /area/tether/surfacebase/outside/outside3
 	icon_state = "outside3"
 
+/area/tether/surfacebase/old_tram
+	name = "\improper Construction Tram LL-26"
+
+/area/tether/surfacebase/tunnel
+	name = "Orange Line Tram Tunnel"
+
+/area/tether/surfacebase/old_shelter
+	name = "Abandoned Mining Shelter"
+
+/area/tether/surfacebase/cave
+	name = "Shallow Cave"
+
 /area/tether/surfacebase/outside/empty
 	name = "Outside - Empty Area"
 
 /area/tether/surfacebase/outside/wilderness
 	name = "Outside - Wilderness"
 	icon_state = "invi"
-	forced_ambience = list('sound/music/Sacred_Grove.ogg')
 
 /area/tether/surfacebase/temple
 	name = "Outside - Wilderness" // ToDo: Make a way to hide spoiler areas off the list of areas ghosts can jump to.
@@ -585,6 +592,7 @@
 /area/tether/surfacebase/security/briefingroom
 	name = "\improper Security Briefing Room"
 	lightswitch = 0
+
 /area/tether/surfacebase/security/iaa
 	name = "\improper Internal Affairs"
 /area/tether/surfacebase/security/iaa/officea
@@ -715,6 +723,7 @@
 // Research
 /area/rnd/xenobiology/xenoflora/lab_atmos
 	name = "\improper Xenoflora Atmospherics Lab"
+	ambience = AMBIENCE_ATMOS
 /area/rnd/breakroom
 	name = "\improper Research Break Room"
 	icon_state = "research"
@@ -790,6 +799,7 @@
 /area/rnd/outpost
 	name = "\improper Research Outpost Hallway"
 	icon_state = "research"
+	ambience = AMBIENCE_OUTPOST
 
 /area/rnd/outpost/breakroom
 	name = "\improper Research Outpost Breakroom"
@@ -806,26 +816,31 @@
 /area/rnd/outpost/chamber
 	name = "\improper Research Outpost Burn Chamber"
 	icon_state = "engine"
+	ambience = AMBIENCE_ATMOS
 
 /area/rnd/outpost/atmos
 	name = "Research Outpost Atmospherics"
 	icon_state = "atmos"
+	ambience = AMBIENCE_ATMOS
 
 /area/rnd/outpost/storage
 	name = "\improper Research Outpost Gas Storage"
 	icon_state = "toxstorage"
+	ambience = AMBIENCE_ATMOS
 
 /area/rnd/outpost/mixing
 	name = "\improper Research Outpost Gas Mixing"
 	icon_state = "toxmix"
+	ambience = AMBIENCE_ATMOS
 
 /area/rnd/outpost/heating
 	name = "\improper Research Outpost Gas Heating"
 	icon_state = "toxmix"
+	ambience = AMBIENCE_ATMOS
 
-/area/rnd/outpost/testing
+/area/rnd/outpost/testing_lab
 	name = "\improper Research Outpost Testing"
-
+	ambience = AMBIENCE_ATMOS
 
 /area/maintenance/substation/outpost
 	name = "Research Outpost Substation"
@@ -833,9 +848,11 @@
 /area/rnd/outpost/anomaly_lab
 	name = "\improper Research Outpost Anomaly Lab"
 	icon_state = "research"
+
 /area/rnd/outpost/anomaly_lab/analysis
 	name = "\improper Anomaly Lab Analysis Chamber"
 	icon_state = "research"
+
 /area/rnd/outpost/anomaly_lab/testing
 	name = "\improper Anomaly Lab Testing Chamber"
 
@@ -997,177 +1014,177 @@
 
 //TFF 28/8/19 - cleanup of areas placement
 /area/crew_quarters/sleep/vistor_room_1
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_2
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_3
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_4
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_5
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_6
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_7
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_8
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_9
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_10
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_11
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_12
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_1
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_2
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_3
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_4
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_5
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_6
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_7
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_8
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_9
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_10
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_1/holo
 	name = "\improper Dorm 1 Holodeck"
 	icon_state = "dk_yellow"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_3/holo
 	name = "\improper Dorm 3 Holodeck"
 	icon_state = "dk_yellow"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_5/holo
 	name = "\improper Dorm 5 Holodeck"
 	icon_state = "dk_yellow"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_7/holo
 	name = "\improper Dorm 7 Holodeck"
 	icon_state = "dk_yellow"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/spacedorm1
 	name = "\improper Visitor Lodging 1"
 	icon_state = "dk_yellow"
 	lightswitch = 0
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/crew_quarters/sleep/spacedorm2
 	name = "\improper Visitor Lodging 2"
 	icon_state = "dk_yellow"
 	lightswitch = 0
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/crew_quarters/sleep/spacedorm3
 	name = "\improper Visitor Lodging 3"
 	icon_state = "dk_yellow"
 	lightswitch = 0
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/crew_quarters/sleep/spacedorm4
 	name = "\improper Visitor Lodging 4"
 	icon_state = "dk_yellow"
 	lightswitch = 0
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/holodeck/holodorm/source_basic
 	name = "\improper Holodeck Source"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_desert
 	name = "\improper Holodeck Source"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_seating
 	name = "\improper Holodeck Source"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_beach
 	name = "\improper Holodeck Source"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_garden
 	name = "\improper Holodeck Source"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_boxing
 	name = "\improper Holodeck Source"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_snow
 	name = "\improper Holodeck Source"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_space
 	name = "\improper Holodeck Source"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_off
 	name = "\improper Holodeck Source"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	flags = RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/ai_core_foyer
@@ -1213,6 +1230,9 @@
 /area/security/recstorage
 	name = "\improper Brig Recreation Storage"
 	icon_state = "brig"
+/area/security/customs
+	name = "\improper Security Customs Checkpoint"
+	icon_state = "security"
 
 /area/engineering/atmos/backup
 	name = "\improper Backup Atmospherics"
@@ -1256,11 +1276,9 @@
 /area/tether/station/visitorhallway/laundry
 	name = "\improper Space Laundry"
 	icon_state = "dk_yellow"
-	lightswitch = 0
 /area/tether/station/visitorhallway/lounge
 	name = "\improper Visitor Lounge"
 	icon_state = "dk_yellow"
-	lightswitch = 0
 
 /area/maintenance/station
 	icon_state = "fsmaint"
@@ -1475,7 +1493,6 @@ area/shuttle/mining_outpost/shuttle
 	flags = BLUE_SHIELDED
 
 /area/supply
-	flags = BLUE_SHIELDED
 
 // Add rad shielding to maintenance and construction sites
 /area/vacant
@@ -1544,6 +1561,12 @@ area/shuttle/mining_outpost/shuttle
 
 /area/unknown/dorm4
 	name = "Unknown Dorm 4"
+
+/area/unknown/dorm5
+	name = "Unknown Dorm 5"
+
+/area/unknown/dorm6
+	name = "Unknown Dorm 6"
 
 // ERT/Deathsquad Shuttle
 /area/shuttle/specialops/centcom
@@ -1628,3 +1651,5 @@ area/shuttle/mining_outpost/shuttle
 	excluded |= /area/teleporter/departing
 	excluded |= /area/hallway/station/upper
 	..()
+
+*/

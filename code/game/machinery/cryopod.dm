@@ -219,6 +219,7 @@
 	var/on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
 	var/on_store_visible_message_1 = "hums and hisses as it moves" //We need two variables because byond doesn't let us have variables inside strings at compile-time.
 	var/on_store_visible_message_2 = "into storage."
+	var/announce_channel = "Common"
 	var/allow_occupant_types = list(/mob/living/carbon/human)
 	var/disallow_occupant_types = list()
 
@@ -378,11 +379,13 @@
 
 // This function can not be undone; do not call this unless you are sure
 // Also make sure there is a valid control computer
-/obj/machinery/cryopod/proc/despawn_occupant(var/mob/to_despawn)
+/obj/machinery/cryopod/proc/despawn_occupant(var/mob/to_despawn, silent = FALSE)
 	//Recursively despawn mobs
 	for(var/mob/M in to_despawn)
 		despawn_occupant(M)
-	SStranscore.m_backup(to_despawn)
+	if(to_despawn.mind && ishuman(to_despawn))
+		var/mob/living/carbon/human/H = to_despawn
+		SStranscore.m_backup(H.mind, H.nif, TRUE)
 	// VOREStation
 	hook_vr("despawn", list(to_despawn, src))
 	if(isliving(to_despawn))
@@ -404,7 +407,7 @@
 				var/datum/nifsoft/soulcatcher/SC = H.nif.imp_check(NIF_SOULCATCHER)
 				if(SC)
 					for(var/bm in SC.brainmobs)
-						despawn_occupant(bm)
+						despawn_occupant(bm, TRUE)
 	// VOREStation
 
 	//Drop all items into the pod.
@@ -474,7 +477,7 @@
 	//Handle job slot/tater cleanup.
 	var/job = to_despawn.mind.assigned_role
 
-	SSjobs.FreeRole(job)
+	job_master.FreeRole(job)
 
 	if(to_despawn.mind.objectives.len)
 		qdel(to_despawn.mind.objectives)
@@ -504,14 +507,15 @@
 	//TODO: Check objectives/mode, update new targets if this mob is the target, spawn new antags?
 
 
-	//Make an announcement and log the person entering storage.
-	control_computer.frozen_crew += "[to_despawn.real_name], [to_despawn.mind.role_alt_title] - [stationtime2text()]"
+	if(!silent)
+		//Make an announcement and log the person entering storage.
+		control_computer.frozen_crew += "[to_despawn.real_name], [to_despawn.mind.role_alt_title] - [stationtime2text()]"
+		announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]", announce_channel, GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
+		//visible_message("<span class='notice'>\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage.</span>", 3)
+		visible_message("<span class='notice'>\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2].</span>", 3)
 	control_computer._admin_logs += "[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) at [stationtime2text()]"
 	log_and_message_admins("[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) entered cryostorage.")
 
-	announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]")
-	//visible_message("<span class='notice'>\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage.</span>", 3)
-	visible_message("<span class='notice'>\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2].</span>", 3)
 
 	//VOREStation Edit begin: Dont delete mobs-in-mobs
 	if(to_despawn.client && to_despawn.stat<2)

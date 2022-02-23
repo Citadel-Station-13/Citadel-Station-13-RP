@@ -1,9 +1,19 @@
+/datum/category_item/catalogue/technology/bot/medbot
+	name = "Bot - Medibot"
+	desc = "Medibots have become vital additions to hazardous workplaces \
+	across the galaxy. A common sight on the Frontier, Medibots utilize \
+	chemical synthesizers to deliver payloads of healing medications to injured \
+	parties. Although not capable of more complex treatments, the standard Medibot \
+	can stabilize a severely injured worker as easily as it can treat a minor scrape."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/bot/medbot
 	name = "Medibot"
 	desc = "A little medical robot. He looks somewhat underwhelmed."
 	icon_state = "medibot0"
 	req_one_access = list(access_robotics, access_medical)
 	botcard_access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
+	catalogue_data = list(/datum/category_item/catalogue/technology/bot/medbot)
 
 	var/skin = null //Set to "tox", "ointment" or "o2" for the other two firstaid kits.
 
@@ -113,7 +123,7 @@
 	visible_message("<span class='warning'>[src] is trying to inject [H]!</span>")
 	if(declare_treatment)
 		var/area/location = get_area(src)
-		global_announcer.autosay("[src] is treating <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
+		GLOB.global_announcer.autosay("[src] is treating <b>[H]</b> in <b>[location]</b>", "[src]", "Medical")
 	busy = 1
 	update_icons()
 	if(do_mob(src, H, 30))

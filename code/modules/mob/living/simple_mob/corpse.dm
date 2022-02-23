@@ -141,7 +141,44 @@
 	corpseidjob = "Clown"
 	corpseidaccess = "Clown"
 
+/obj/effect/landmark/mobcorpse/clown/clownop
+	name = "Clown Commando"
+	corpseuniform = /obj/item/clothing/under/rank/clown
+	corpsesuit = /obj/item/clothing/suit/armor/pcarrier/clownop
+	corpseshoes = /obj/item/clothing/shoes/clown_shoes
+	corpseradio = /obj/item/radio/headset
+	corpsemask = /obj/item/clothing/mask/gas/clown_hat
+	corpsepocket1 = /obj/item/bikehorn
+	corpseback = /obj/item/storage/backpack/clown
+	corpseid = 1
+	corpseidjob = "Commando"
+	corpseidaccess = "Syndicate"
 
+/obj/effect/landmark/mobcorpse/clown/clownop/space
+	name = "Clown Commando"
+	corpseuniform = /obj/item/clothing/under/rank/clown
+	corpsesuit = /obj/item/clothing/suit/space/void/clownop
+	corpseshoes = /obj/item/clothing/shoes/clown_shoes
+	corpseradio = /obj/item/radio/headset
+	corpsemask = /obj/item/clothing/mask/gas/clown_hat
+	corpsehelmet = /obj/item/clothing/head/helmet/space/void/clownop
+	corpsepocket1 = /obj/item/bananapeel
+	corpseid = 1
+	corpseidjob = "Commando"
+	corpseidaccess = "Syndicate"
+
+/obj/effect/landmark/mobcorpse/clown/clownop/space/alt
+	name = "Clown Commando"
+	corpseuniform = /obj/item/clothing/under/rank/clown
+	corpsesuit = /obj/item/clothing/suit/space/void/clownop
+	corpseshoes = /obj/item/clothing/shoes/clown_shoes
+	corpseradio = /obj/item/radio/headset
+	corpsemask = /obj/item/clothing/mask/gas/clown_hat
+	corpsehelmet = /obj/item/clothing/head/helmet/space/void/clownop/alt
+	corpsepocket1 = /obj/item/bananapeel
+	corpseid = 1
+	corpseidjob = "Commando"
+	corpseidaccess = "Syndicate"
 
 /obj/effect/landmark/mobcorpse/pirate
 	name = "Pirate"

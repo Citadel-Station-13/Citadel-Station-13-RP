@@ -69,7 +69,8 @@
 		"adminordrazine" =  1,
 		"eznutrient" =      1,
 		"robustharvest" =   1,
-		"left4zed" =        1
+		"left4zed" =        1,
+		"ash" =				1,
 		)
 	var/global/list/weedkiller_reagents = list(
 		"fluorine" =       -4,
@@ -79,7 +80,8 @@
 		"sacid" =          -2,
 		"pacid" =          -4,
 		"plantbgone" =     -8,
-		"adminordrazine" = -5
+		"adminordrazine" = -5,
+		"ash" =		       -2
 		)
 	var/global/list/pestkiller_reagents = list(
 		"sugar" =           2,
@@ -115,7 +117,8 @@
 		"radium" =         list( -1.5,  0,   0.2),
 		"adminordrazine" = list(  1,    1,   1  ),
 		"robustharvest" =  list(  0,    0.2, 0  ),
-		"left4zed" =       list(  0,    0,   0.2)
+		"left4zed" =       list(  0,    0,   0.2),
+		"ash" =		       list(  0,    0.2, 0)
 		)
 
 	// Mutagen list specifies minimum value for the mutation to take place, rather
@@ -221,7 +224,6 @@
 	. = ..()
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return TRUE
-	return FALSE
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/check_health()
 	if(seed && !dead && health <= 0)

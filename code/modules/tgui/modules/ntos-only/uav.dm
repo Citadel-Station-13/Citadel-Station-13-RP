@@ -31,7 +31,7 @@
 	var/obj/item/modular_computer/mc_host = ui_host()
 	if(istype(mc_host))
 		for(var/puav in mc_host.paired_uavs)
-			var/weakref/wr = puav
+			var/datum/weakref/wr = puav
 			var/obj/item/uav/U = wr.resolve()
 			paired_map.Add(list(list("name" = "[U ? U.nickname : "!!Missing!!"]", "uavref" = "\ref[U]")))
 
@@ -60,7 +60,7 @@
 			var/refstring = params["del_uav"] //This is a \ref to the UAV itself
 			var/obj/item/modular_computer/mc_host = ui_host()
 			//This is so we can really scrape up any weakrefs that can't resolve
-			for(var/weakref/wr in mc_host.paired_uavs)
+			for(var/datum/weakref/wr in mc_host.paired_uavs)
 				if(wr.ref == refstring)
 					if(current_uav?.weakref == wr)
 						set_current(null)
@@ -83,7 +83,7 @@
 			else if(current_uav.toggle_power())
 				//Clean up viewers faster
 				if(LAZYLEN(viewers))
-					for(var/weakref/W in viewers)
+					for(var/datum/weakref/W in viewers)
 						var/M = W.resolve()
 						if(M)
 							unlook(M)
@@ -97,7 +97,7 @@
 	current_uav = U
 
 	if(LAZYLEN(viewers))
-		for(var/weakref/W in viewers)
+		for(var/datum/weakref/W in viewers)
 			var/M = W.resolve()
 			if(M)
 				if(current_uav)
@@ -127,8 +127,8 @@
 		else
 			return 0
 
-	var/list/zlevels_in_range = using_map.get_map_levels(their_z, FALSE)
-	var/list/zlevels_in_long_range = using_map.get_map_levels(their_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE) - zlevels_in_range
+	var/list/zlevels_in_range = GLOB.using_map.get_map_levels(their_z, FALSE)
+	var/list/zlevels_in_long_range = GLOB.using_map.get_map_levels(their_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE) - zlevels_in_range
 	var/their_signal = 0
 	for(var/relay in ntnet_global.relays)
 		var/obj/machinery/ntnet_relay/R = relay
@@ -155,7 +155,7 @@
 /* All handling viewers */
 /datum/tgui_module/uav/Destroy()
 	if(LAZYLEN(viewers))
-		for(var/weakref/W in viewers)
+		for(var/datum/weakref/W in viewers)
 			var/M = W.resolve()
 			if(M)
 				unlook(M)
@@ -169,7 +169,7 @@
 		return
 	unlook(user)
 
-/datum/tgui_module/uav/tgui_close(mob/user)
+/datum/tgui_module/uav/ui_close(mob/user)
 	. = ..()
 	unlook(user)
 

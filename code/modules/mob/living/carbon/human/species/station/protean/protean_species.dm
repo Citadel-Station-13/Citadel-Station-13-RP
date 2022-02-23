@@ -1,5 +1,6 @@
 #define DAM_SCALE_FACTOR 0.01
 #define METAL_PER_TICK 100
+
 /datum/species/protean
 	name =             SPECIES_PROTEAN
 	name_plural =      "Proteans"
@@ -17,11 +18,11 @@
 	flesh_color = "#505050"
 	base_color = "#FFFFFF" //Color mult, start out with this
 
-	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
+	flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | CONTAMINATION_IMMUNE
 	appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
 	spawn_flags		 = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	health_hud_intensity = 2
-	num_alternate_languages = 3  // Let's not make them know every language, past me.
+	num_alternate_languages = 5  // Let's not make them know every language, past me.
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
 
@@ -35,10 +36,12 @@
 	min_age =		18
 	max_age =		200
 
-	total_health =	125  // Makes them Unathi level tough. Nothing too much, also mildly justified as proteans can't ever go into crit, as they blob instead
+	total_health =	200
+	/// damage to blob
+	var/damage_to_blob = 100
 
-	brute_mod =		0.5 // 50% brute reduction
-	burn_mod =		1.3 //30% burn weakness. This, combined with the increased total health makes them able to survive more than 1 laser shot before being blobbed. The cap's still 2 shots, though -- The previous value of 1.4 was 40% weakness, not 60%
+	brute_mod =		1
+	burn_mod =		1
 	oxy_mod =		0
 	radiation_mod = 0 // Their blobforms have rad immunity, so it only makes sense that their humanoid forms do too
 	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
@@ -203,7 +206,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	return rgb(80,80,80,230)
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
-	var/deathmsg = "<span class='warning'>You died as a Protean. Please sit out of the round for at least 30 minutes before respawning, to represent the time it would take to ship a new-you to the station.</span>"
+	var/deathmsg = "<span class='userdanger'>You have died as a Protean. You may be revived by nanite chambers (once available), but otherwise, you may roleplay as your disembodied posibrain or respawn on another character.</span>"
 	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
 		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
 		to_chat(B, deathmsg)
@@ -211,8 +214,12 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		to_chat(H)
 		H.gib()
 
+/datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	return E.brute_dam + E.burn_dam
+
 /datum/species/protean/handle_environment_special(var/mob/living/carbon/human/H)
-	if((H.getActualBruteLoss() + H.getActualFireLoss()) > H.maxHealth*0.85 && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
+	if((getActualDamage(H) > damage_to_blob) && isturf(H.loc)) //So, only if we're not a blob (we're in nullspace) or in someone (or a locker, really, but whatever).
 		H.nano_intoblob()
 		return ..() //Any instakill shot runtimes since there are no organs after this. No point to not skip these checks, going to nullspace anyway.
 
@@ -220,7 +227,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	if(refactory && !(refactory.status & ORGAN_DEAD) && refactory.processingbuffs)
 
 		//Steel adds regen
-		if(H.health < H.maxHealth && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
+		if(protean_requires_healing(H) && refactory.get_stored_material(DEFAULT_WALL_MATERIAL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
 			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 
 		//MHydrogen adds speeeeeed
@@ -271,12 +278,12 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/modifier/protean/on_applied()
 	. = ..()
 	if(holder.temporary_form)
-		to_chat(holder.temporary_form,on_created_text)
+		to_chat(holder.temporary_form, on_created_text)
 
 /datum/modifier/protean/on_expire()
 	. = ..()
 	if(holder.temporary_form)
-		to_chat(holder.temporary_form,on_expired_text)
+		to_chat(holder.temporary_form, on_expired_text)
 
 /datum/modifier/protean/check_if_valid()
 	//No origin set
@@ -345,27 +352,35 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	on_expired_text = "<span class='notice'>Your steel supply has either run out, or is no longer needed, and your healing stops.</span>"
 
 	material_name = MAT_STEEL
+	material_use = METAL_PER_TICK / 5		// 5 times weaker
+
+/datum/modifier/protean/steel/check_if_valid()
+	if(!protean_requires_healing(holder) || istype(holder.temporary_form, /mob/living/simple_mob/protean_blob))
+		expire()
+		return
+	return ..()
 
 /datum/modifier/protean/steel/tick()
-
 	..()
-	holder.adjustBruteLoss(-3.3 ,include_robo = TRUE) //This is for non-blob regen and equals out to ~2 hp/s
-	holder.adjustFireLoss(-1.6 ,include_robo = TRUE) //Same with burns
-	holder.adjustToxLoss(-12) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
+	var/dt = 2	// put it on param sometime but for now assume 2
+	var/mob/living/carbon/human/H = holder
+	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	var/heal = 1 * dt
+	var/brute_heal_left = max(0, heal - E.brute_dam)
+	var/burn_heal_left = max(0, heal - E.burn_dam)
+
+	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
+
+	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
+	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
+	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
 
-	// I'm a bad coder, so you'll have to manually disable material augments to make the steel ticking stop. Otherwise, it'll turn off automatically when steel runs out
+/proc/protean_requires_healing(mob/living/carbon/human/H)
+	if(!istype(H))
+		return FALSE
+	return H.getActualBruteLoss() || H.getActualFireLoss() || H.getToxLoss()
 
-	/* var/mob/living/carbon/human/H = holder
-	for(var/organ in H.internal_organs)
-		var/obj/item/organ/O = organ
-		// Fix internal damage
-		if(O.damage > 0)
-			O.damage = max(0,O.damage-0.1)
-		// If not damaged, but dead, fix it
-		else if(O.status & ORGAN_DEAD)
-			O.status &= ~ORGAN_DEAD //Unset dead if we repaired it entirely
-	*/ //Commented out, so the only way to regen organ damage is blobform.
 // PAN Card
 /obj/item/clothing/accessory/permit/nanotech
 	name = "\improper P.A.N. card"

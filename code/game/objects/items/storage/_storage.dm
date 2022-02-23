@@ -70,8 +70,8 @@
 		if (!( istype(over_object, /obj/screen) ))
 			return ..()
 
-		//makes sure that the storage is equipped, so that we can't drag it into our hand from miles away.
-		//there's got to be a better way of doing this.
+		// Makes sure that the storage is equipped, so that we can't drag it into our hand from miles away.
+		// There's got to be a better way of doing this.
 		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
 			return
 
@@ -90,6 +90,15 @@
 				usr.put_in_l_hand(src)
 		src.add_fingerprint(usr)
 
+/obj/item/storage/AltClick(mob/user)
+	if(user in is_seeing)
+		src.close(user)
+	// I would think there should be some incap check here or something
+	// But MouseDrop doesn't use one (as of this writing), so...
+	else if(isliving(user) && Adjacent(user))
+		src.open(user)
+	else
+		return ..()
 
 /obj/item/storage/proc/return_inv()
 

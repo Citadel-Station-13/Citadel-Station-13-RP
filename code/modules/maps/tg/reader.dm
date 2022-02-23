@@ -348,11 +348,15 @@
 	var/turf/crds = locate(xcrd,ycrd,zcrd)
 
 	//first instance the /area and remove it from the members list
-	index = members.len
-	if(members[index] != /area/template_noop)
-		var/atype = members[index]
-		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
-		var/atom/instance = areaCache[atype]
+	index = LAZYLEN(members)
+	if(LAZYACCESS(members,index) != /area/template_noop)
+		if(!ispath(LAZYACCESS(members,index), /area))
+			// you see, some people are bad memes and break things by doing this
+			// this is a far more descriptive error than the "bad loc" you'd get otherwise.
+			CRASH("The last entry in a .dmm's key was not an /area. This will lead to serious errors if allowed to continue. Crashing read proc.")
+		var/atype = LAZYACCESS(members,index)
+		world.preloader_setup(LAZYACCESS(members_attributes,index), atype)//preloader for assigning  set variables on atom creation
+		var/atom/instance = LAZYACCESS(areaCache,atype)
 		if (!instance)
 			instance = GLOB.areas_by_type[atype]
 			if (!instance)

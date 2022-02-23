@@ -14,7 +14,7 @@
 	var/cell_type = /obj/item/cell/high //Type of cell to spawn in it
 	var/charge_guns = FALSE //Can it charge guns?
 
-	var/datum/effect/effect/system/spark_spread/spark_system
+	var/datum/effect_system/spark_spread/spark_system
 	var/obj/item/cell/cell
 	var/recharging = FALSE
 	var/opened = FALSE

@@ -14,13 +14,16 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/invasive_fish)
 
 	mob_size = MOB_SMALL
+	randomized = TRUE
 	// So fish are actually underwater.
 	plane = TURF_PLANE
 	layer = UNDERWATER_LAYER
 
 	holder_type = /obj/item/holder/fish
 
+	meat_amount = 1
 	meat_type = /obj/item/reagent_containers/food/snacks/carpmeat/fish
+	bone_amount = 1
 
 	// By default they can be in any water turf.  Subtypes might restrict to deep/shallow etc
 	var/global/list/suitable_turf_types =  list(
@@ -28,7 +31,7 @@
 		/turf/simulated/floor/outdoors/beach/coastline,
 		/turf/simulated/floor/holofloor/beach/water,
 		/turf/simulated/floor/holofloor/beach/coastline,
-		/turf/simulated/floor/outdoors/water
+		/turf/simulated/floor/water
 	)
 
 // Makes the AI unable to willingly go on land.

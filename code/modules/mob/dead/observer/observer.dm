@@ -110,7 +110,11 @@
 			var/mob/living/carbon/human/H = body
 			icon = H.icon
 			icon_state = H.icon_state
-			add_overlay(H.overlays_standing) //All our equipment sprites
+			if(H.overlays_standing)
+				for(var/i in 1 to length(H.overlays_standing))
+					if(!H.overlays_standing[i])
+						continue
+					add_overlay(H.overlays_standing[i])
 		else
 			icon = body.icon
 			icon_state = body.icon_state
@@ -351,7 +355,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	orbitsize -= (orbitsize/world.icon_size)*(world.icon_size*0.25)
 
 	orbit(target, orbitsize)
-	pixel_x = (orbitsize) //Bandaid until someone fixes the orbit datum. Or I do.
 
 /mob/observer/dead/orbit()
 	setDir(2) //reset dir so the right directional sprites show up

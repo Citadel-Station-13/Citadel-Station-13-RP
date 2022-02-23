@@ -1,5 +1,5 @@
 /obj/item/material/twohanded/baseballbat/foam/Initialize(mapload, material_key)
-	..(mapload,"foam")
+	return ..(mapload,"foam")
 
 /obj/item/material/sword/foam
 	attack_verb = list("bonked","whacked")
@@ -15,7 +15,7 @@
 	unbreakable = 1
 
 /obj/item/material/sword/foam/Initialize(mapload, material_key)
-	..(mapload,"foam")
+	return ..(mapload,"foam")
 
 /obj/item/material/twohanded/spear/foam
 	attack_verb = list("bonked","whacked")
@@ -28,7 +28,8 @@
 	unbreakable = 1
 
 /obj/item/material/twohanded/spear/foam/Initialize(mapload, material_key)
-	..(mapload,"foam")
+	return ..(mapload,"foam")
+
 /*
 /obj/item/material/twohanded/fireaxe/foam
 	attack_verb = list("bonked","whacked")

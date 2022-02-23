@@ -39,11 +39,8 @@
 	var/originhash = md5("[origin]")
 	var/timehash = copytext(md5("[world.time]"),1,10)
 	var/text = null
-	var/logo = alert(usr, "Do you want the header of your fax to have a NanoTrasen or SolGov logo?","Fax Logo","NanoTrasen","SolGov")
-	if(logo == "SolGov")
-		logo = "sglogo.png"
-	else
-		logo = "ntlogo.png"
+	var/logo = "ntlogo.png"
+
 	//TODO change logo based on who you're contacting.
 	text = "<center><img src = [logo]></br>"
 	text += "<b>[origin] Quantum Uplink Signed Message</b><br>"

@@ -29,11 +29,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define NOT_IMPLEMENTED	"NOT_IMPLEMENTED"
 
-// Turf-only flags.
-#define NOJAUNT			1	// This is used in literally one place, turf.dm, to block ethereal jaunt.
-
-#define TRANSITIONEDGE	1	// Distance from edge to move to another z-level.
-
 // Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
 #define INVISIBILITY_LIGHTING		20
 #define INVISIBILITY_LEVEL_ONE		35
@@ -59,7 +54,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL	26	// Used to trigger removal from a processing list.
-#define MAX_GEAR_COST	15	// Used in chargen for accessory loadout limit.
+#define MAX_GEAR_COST					15	// Used in chargen for accessory loadout limit.
+#define MAX_GEAR_COST_HOLIDAY_SPAM		30
 
 
 // For secHUDs and medHUDs and variants. The number is the location of the image on the list hud_list of humans.
@@ -175,6 +171,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAT_STEEL			"steel"
 #define MAT_PLASTIC			"plastic"
 #define MAT_GLASS			"glass"
+#define MAT_COPPER			"copper"
 #define MAT_SILVER			"silver"
 #define MAT_GOLD			"gold"
 #define MAT_URANIUM			"uranium"
@@ -186,6 +183,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAT_LOG				"log"
 #define MAT_SIFWOOD			"alien wood"
 #define MAT_SIFLOG			"alien log"
+#define MAT_HARDWOOD			"hardwood"
+#define MAT_HARDLOG			"hardwood log"
 #define MAT_STEELHULL		"steel hull"
 #define MAT_PLASTEEL		"plasteel"
 #define MAT_PLASTEELHULL	"plasteel hull"
@@ -200,6 +199,9 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAT_SUPERMATTER		"supermatter"
 #define MAT_METALHYDROGEN	"mhydrogen"
 #define MAT_OSMIUM			"osmium"
+#define MAT_VAUDIUM			"vaudium"
+#define MAT_BANANIUM		"bananium"
+#define MAT_SILENCIUM		"silencium"
 
 #define SHARD_SHARD			"shard"
 #define SHARD_SHRAPNEL		"shrapnel"
@@ -269,16 +271,31 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 
 // Job groups
-#define ROLE_COMMAND			"command"
-#define ROLE_SECURITY			"security"
-#define ROLE_ENGINEERING		"engineering"
-#define ROLE_MEDICAL			"medical"
-#define ROLE_RESEARCH			"research"
-#define ROLE_CARGO				"cargo"
-#define ROLE_CIVILIAN			"civilian"
-#define ROLE_SYNTHETIC			"synthetic"
-#define ROLE_UNKNOWN			"unknown"
-#define ROLE_EVERYONE			"everyone"
+#define DEPARTMENT_COMMAND			"command"
+#define DEPARTMENT_SECURITY			"security"
+#define DEPARTMENT_ENGINEERING		"engineering"
+#define DEPARTMENT_MEDICAL			"medical"
+#define DEPARTMENT_RESEARCH			"research"
+#define DEPARTMENT_CARGO				"cargo"
+#define DEPARTMENT_CIVILIAN			"civilian"
+#define DEPARTMENT_SYNTHETIC			"synthetic"
+#define DEPARTMENT_UNKNOWN			"unknown"
+#define DEPARTMENT_EVERYONE			"everyone"
+#define DEPARTMENT_PLANET			"exploration"
+#define DEPARTMENT_OFFDUTY			"offduty"
+#define DEPARTMENT_TALON			"talon"			// Leaving this definition in place, can perhaps use it in the future but removing it will require digging into other stuff im not comfortable with -BLoop
+#define DEPARTMENT_TRADE			"trade"
+
+// vorstation off-duty time
+#define PTO_SECURITY		"Security"
+#define PTO_MEDICAL			"Medical"
+#define PTO_ENGINEERING 	"Engineering"
+#define PTO_SCIENCE			"Science"
+#define PTO_EXPLORATION 	"Exploration"
+#define PTO_CARGO			"Cargo"
+#define PTO_CIVILIAN		"Civilian"
+#define PTO_CYBORG			"Cyborg"
+#define PTO_COMMAND			"Command"
 
 // Canonical spellings of TSCs, so typos never have to happen again due to human error.
 #define TSC_NT		"NanoTrasen"
@@ -435,3 +452,18 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 //Holy Weapon defines from Main. Lists null rod weapons and classifies them as HOLY.
 #define HOLY_WEAPONS /obj/item/nullrod
+#define HOLY_ICONS /obj/item/godfig
+
+// Used by radios to indicate that they have sent a message via something other than subspace
+#define RADIO_CONNECTION_FAIL 0
+#define RADIO_CONNECTION_NON_SUBSPACE 1
+
+#define JOB_CARBON			0x1
+#define JOB_SILICON_ROBOT	0x2
+#define JOB_SILICON_AI		0x4
+#define JOB_SILICON			0x6 // 2|4, probably don't set jobs to this, but good for checking
+
+#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
+#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+#define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+#define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"

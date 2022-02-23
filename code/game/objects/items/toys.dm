@@ -937,9 +937,25 @@
 	pokephrase = "Rya!"
 
 /obj/item/toy/plushie/mouse
-	name = "mouse plush"
+	name = "mouse plush (brown)"
 	desc = "A plushie of a delightful mouse! What was once considered a vile rodent is now your very best friend."
 	icon_state = "mouseplushie"	//TFF 12/11/19 - updated icon to show a sprite that doesn't replicate a dead mouse. Heck you for that! >:C
+	item_state = "mouseplushie_brown"
+	slot_flags = SLOT_HEAD
+	pokephrase = "Squeak!"
+
+/obj/item/toy/plushie/mouse/grey
+	name = "mouse plush (grey)"
+	desc = "A plushie of a delightful mouse! What was once considered a vile rodent is now your very best friend. Now in fuzzy grey!"
+	icon_state = "mouseplushie_grey"	//TFF 12/11/19 - updated icon to show a sprite that doesn't replicate a dead mouse. Heck you for that! >:C
+	item_state = "mouseplushie_grey"
+	pokephrase = "Squeak!"
+
+/obj/item/toy/plushie/mouse/white
+	name = "mouse plush (white)"
+	desc = "A plushie of a delightful mouse! What was once considered a vile rodent is now your very best friend. Now in labcoat white!"
+	icon_state = "mouseplushie_white"	//TFF 12/11/19 - updated icon to show a sprite that doesn't replicate a dead mouse. Heck you for that! >:C
+	item_state = "mouseplushie_white"
 	pokephrase = "Squeak!"
 
 /obj/item/toy/plushie/kitten
@@ -990,6 +1006,11 @@
 	name = "facehugger plushie"
 	icon_state = "huggable"
 	pokephrase = "Hug!"
+
+/obj/item/toy/plushie/voxie
+	name = "vox plushie"
+	icon_state = "voxie"
+	pokephrase = "Skree!"
 
 //foxes are basically the best
 /obj/item/toy/plushie/red_fox
@@ -1498,3 +1519,143 @@
 	w_class = ITEMSIZE_TINY
 	force = 1
 	throwforce = 1
+
+//Dakimakuras, ported from Main.
+
+/obj/item/storage/daki
+	name = "dakimakura"
+	desc = "A large pillow depicting a girl in a compromising position. Featuring as many dimensions as you."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "daki_base"
+	slot_flags = SLOT_BACK
+	var/cooldowntime = 20
+	var/static/list/dakimakura_options = list("Callie","Casca","Chaika","Elisabeth","Foxy Grandpa","Haruko","Holo","Ian","Jolyne","Kurisu","Marie","Mugi","Nar'Sie","Patchouli","Plutia","Rei","Reisen","Naga","Squid","Squigly","Tomoko","Toriel","Umaru","Yaranaika","Yoko") //Kurisu is the ideal girl." - Me, Logos.
+	w_class = ITEMSIZE_NORMAL
+	slot_flags = SLOT_BACK
+	max_w_class = ITEMSIZE_SMALL
+	max_storage_space = INVENTORY_BOX_SPACE
+
+/obj/item/storage/daki/attack_self(mob/living/user)
+	var/body_choice
+	var/custom_name
+
+	if(icon_state == "daki_base")
+		body_choice = input("Pick a body.") in dakimakura_options
+		icon_state = "daki_[body_choice]"
+		custom_name = stripped_input(user, "What's her name?")
+		if(length(custom_name) > MAX_NAME_LEN)
+			to_chat(user,"<span class='danger'>Name is too long!</span>")
+			return FALSE
+		if(custom_name)
+			name = custom_name
+			desc = "A large pillow depicting [custom_name] in a compromising position. Featuring as many dimensions as you."
+	else
+		if(world.time - last_message <= 1 SECOND)
+			return
+		if(user.a_intent == INTENT_HELP)
+			user.visible_message("<span class='notice'>[user] hugs the [name].</span>")
+			playsound(src, "rustle", 50, 1, -5)
+		else if(user.a_intent == INTENT_DISARM)
+			user.visible_message("<span class='notice'>[user] kisses the [name].</span>")
+			playsound(src, "rustle", 50, 1, -5)
+		else if(user.a_intent == INTENT_GRAB)
+			user.visible_message("<span class='warning'>[user] holds the [name]!</span>")
+			playsound(src, 'sound/items/bikehorn.ogg', 50, 1)
+		else if(user.a_intent == INTENT_HARM)
+			user.visible_message("<span class='danger'>[user] punches the [name]!</span>")
+			playsound(src, 'sound/effects/shieldbash.ogg', 50, 1)
+		last_message = world.time
+
+	//Chess Variants
+
+/obj/item/chess
+	name = "Chess Piece"
+	icon = 'icons/obj/cardboard_cutout.dmi'
+	icon_state = "cutout_basic"
+	desc = "Some sort of novelty chess piece."
+
+/obj/item/chess/wpawn
+	name = "White Pawn"
+	desc = "A Novelty chess piece in the image of an assistant representing a white pawn."
+	icon_state = "cutout_greytide"
+
+/obj/item/chess/bpawn
+	name = "Black Pawn"
+	desc = "A Novelty chess piece in the image of a filthy unionizing employee, representing a black pawn."
+	icon_state = "cutout_viva"
+
+/obj/item/chess/bknight
+	name = "Black Knight"
+	desc = "A Novelty chess piece in the image of a corporate traitor representing a black knight."
+	icon_state = "cutout_traitor"
+
+/obj/item/chess/wknight
+	icon_state = "cutout_clown"
+	name = "White Knight"
+	desc = "A Novelty chess piece in the image of a brave clown representing a white knight."
+
+/obj/item/chess/brook
+	name = "Black Rook"
+	desc = "A Novelty chess piece in the image of a mercenary commando representing a black rook."
+	icon_state = "cutout_fluke"
+
+/obj/item/chess/wrook
+	name = "White Rook"
+	desc = "A Novelty chess piece in the image of a loyal security officer representing a white rook."
+	icon_state = "cutout_ntsec"
+
+/obj/item/chess/bbishop
+	name = "Black Bishop"
+	desc = "A Novelty chess piece in the image of a vile mercenary swordsman representing a black bishop."
+	icon_state = "cutout_stabfluke"
+
+/obj/item/chess/wbishop
+	name = "White Bishop"
+	desc = "A Novelty chess piece in the image of a noble mime representing a white bishop."
+	icon_state = "cutout_mime"
+
+/obj/item/chess/bqueen
+	name = "Black Queen"
+	desc = "A Novelty chess piece in the image of a super elite mercenary raider representing a black queen."
+	icon_state = "cutout_supfluke"
+
+/obj/item/chess/wqueen
+	name = "White Queen"
+	desc = "A Novelty chess piece in the image of a heoric member of asset protection representing a white queen."
+	icon_state = "cutout_deathsquad"
+
+/obj/item/chess/bking
+	name = "Black King"
+	desc = "A Novelty chess piece in the image of a strange and vile creature representing a black king."
+	icon_state = "cutout_gondola"
+
+/obj/item/chess/wking
+	name = "White King"
+	desc = "A Novelty chess piece in the image of the most important asset on the station representing a white king."
+	icon_state = "cutout_ian"
+
+/obj/item/checker
+	name = "Checker Piece"
+	icon = 'icons/mob/robots_vr.dmi'
+	icon_state = "zoomba-combat-shield"
+	desc = "Some sort of novelty checker piece."
+
+/obj/item/checker/black
+	name = "Black Checker"
+	icon_state = "zoomba-standard"
+	desc = "A Novelty checker piece in the image of a noble standard zoomba."
+
+/obj/item/checker/blackking
+	name = "Black Checker King"
+	icon_state = "zoomba-combat-roll"
+	desc = "A Novelty checker piece in the image of the terrifying combat zoomba."
+
+/obj/item/checker/red
+	name = "Red Checker"
+	icon_state = "zoomba-security"
+	desc = "A Novelty checker piece in the image of a fierce security zoomba."
+
+/obj/item/checker/redking
+	name = "Red Checker King"
+	icon_state = "zoomba-crisis"
+	desc = "A Novelty checker piece in the image of the awe inspiring crisis zoomba."

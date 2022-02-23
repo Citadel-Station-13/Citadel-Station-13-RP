@@ -94,6 +94,9 @@
 
 	// Death vars.
 	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
+	var/bone_type = /obj/item/stack/material/bone
+	var/hide_type = /obj/item/stack/animalhide/human
+	var/exotic_type = /obj/item/stack/sinew
 	var/remains_type = /obj/effect/decal/remains/xeno
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
@@ -152,6 +155,8 @@
 	var/light_dam											// If set, mob will be damaged in light over this value and heal in light below its negative.
 	var/minimum_breath_pressure = 16						// Minimum required pressure for breath, in kPa
 
+	var/list/equip_adjust = list()							//Used for adherent currently so I dont have to create a bunch of snowflake .dmi s, see adherent to learn the way
+	var/list/equip_overlays = list()
 
 	var/metabolic_rate = 1
 
@@ -162,6 +167,7 @@
 
 	// Body/form vars.
 	var/list/inherent_verbs = list()									// Species-specific verbs.
+	var/list/inherent_spells = list()									// Species-specific spells.
 	var/has_fine_manipulation = 1							// Can use small items.
 	var/siemens_coefficient = 1								// The lower, the thicker the skin and better the insulation.
 	var/darksight = 2										// Native darksight distance.
@@ -176,6 +182,7 @@
 	var/has_glowing_eyes = 0								// Whether the eyes are shown above all lighting
 	var/water_movement = 0									// How much faster or slower the species is in water
 	var/snow_movement = 0									// How much faster or slower the species is on snow
+	var/infect_wounds = 0									// Whether the species can infect wounds, only works with claws / bites
 
 
 	var/item_slowdown_mod = 1								// How affected by item slowdown the species is.
@@ -217,6 +224,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 		)
 
+	var/list/base_skin_colours
 	var/list/genders = list(MALE, FEMALE)
 	var/ambiguous_genders = FALSE // If true, people examining a member of this species whom are not also the same species will see them as gender neutral.	Because aliens.
 
@@ -242,6 +250,13 @@
 	var/wing_animation
 	var/icobase_wing
 	var/wikilink = null //link to wiki page for species
+
+	//Vorestation Pull for weaver abilities
+	var/is_weaver = FALSE
+	var/silk_production = FALSE
+	var/silk_reserve = 100
+	var/silk_max_reserve = 500
+	var/silk_color = "#FFFFFF"
 
 /datum/species/New()
 	if(hud_type)
@@ -271,8 +286,8 @@
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
 
-/datum/species/proc/sanitize_name(var/name, var/robot = 0)
-	return sanitizeName(name, MAX_NAME_LEN, robot)
+/datum/species/proc/sanitize_name(var/name)
+	return sanitizeName(name, MAX_NAME_LEN)
 
 GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	/datum/gas/oxygen = /obj/item/tank/emergency/oxygen,
@@ -413,8 +428,19 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			H.verbs |= verb_path
 	return
 
+/datum/species/proc/add_inherent_spells(var/mob/living/carbon/human/H)
+	if(inherent_spells)
+		for(var/spell_to_add in inherent_spells)
+			var/spell/S = new spell_to_add(H)
+			H.add_spell(S)
+
+/datum/species/proc/remove_inherent_spells(var/mob/living/carbon/human/H)
+	H.spellremove()
+	return
+
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
+	add_inherent_spells(H)
 	H.mob_bump_flag = bump_flag
 	H.mob_swap_flags = swap_flags
 	H.mob_push_flags = push_flags
@@ -485,6 +511,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/can_overcome_gravity(var/mob/living/carbon/human/H)
 	return FALSE
 
+/datum/species/proc/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
+	return FALSE
+
 // Used for any extra behaviour when falling and to see if a species will fall at all.
 /datum/species/proc/can_fall(var/mob/living/carbon/human/H)
 	return TRUE
@@ -511,3 +540,32 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	unarmed_types += /datum/unarmed_attack/bite/sharp/numbing
 	for(var/u_type in unarmed_types)
 		unarmed_attacks += new u_type()
+
+/datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
+	return FALSE
+
+/datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
+
+	// If we don't actually need to offset this, don't bother with any of the generation/caching.
+	if(!spritesheet && equip_adjust.len && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))
+
+		// Check the cache for previously made icons.
+		var/image_key = "[mob_icon]-[mob_state]-[color]"
+		if(!equip_overlays[image_key])
+
+			var/icon/final_I = new(icon_template)
+			var/list/shifts = equip_adjust[slot]
+
+			// Apply all pixel shifts for each direction.
+			for(var/shift_facing in shifts)
+				var/list/facing_list = shifts[shift_facing]
+				var/use_dir = text2num(shift_facing)
+				var/icon/equip = new(mob_icon, icon_state = mob_state, dir = use_dir)
+				var/icon/canvas = new(icon_template)
+				canvas.Blend(equip, ICON_OVERLAY, facing_list["x"]+1, facing_list["y"]+1)
+				final_I.Insert(canvas, dir = use_dir)
+			equip_overlays[image_key] = overlay_image(final_I, color = color, flags = RESET_COLOR)
+		var/image/I = new() // We return a copy of the cached image, in case downstream procs mutate it.
+		I.appearance = equip_overlays[image_key]
+		return I
+	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)

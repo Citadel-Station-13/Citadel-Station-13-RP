@@ -844,10 +844,6 @@
 /obj/machinery/mecha_part_fabricator,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
-"cO" = (
-/obj/machinery/pros_fabricator,
-/turf/simulated/floor/tiled,
-/area/submap/Rockybase)
 "cP" = (
 /obj/structure/table/standard,
 /obj/item/mecha_parts/mecha_equipment/repair_droid,
@@ -1966,7 +1962,7 @@ bS
 at
 cl
 ca
-cO
+cN
 dc
 bL
 dt

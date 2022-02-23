@@ -12,6 +12,7 @@ var/list/spawntypes = list()
 	var/display_name //Name used in preference setup.
 	var/list/restrict_job = null
 	var/list/disallow_job = null
+	var/announce_channel = "Common"
 
 	proc/check_job_spawning(job)
 		if(restrict_job && !(job in restrict_job))

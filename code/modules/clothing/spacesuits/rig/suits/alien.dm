@@ -145,6 +145,11 @@
 		return
 	forced_move(direction, user, FALSE)
 
+/obj/item/rig/protean/check_suit_access(mob/living/carbon/human/user)
+	if(user == myprotean)
+		return TRUE
+	return ..()
+
 /obj/item/clothing/head/helmet/space/rig/protean
 	name = "mass"
 	desc = "A helmet-shaped clump of nanomachines."
@@ -167,4 +172,4 @@
 	desc = "A body-hugging mass of nanomachines."
 	can_breach = 0
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_VASILISSAN, SPECIES_ALRAUNE) //anything that's roughly humanoid, ie uses human spritesheets
-	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/storage/backpack,/obj/item/subspaceradio)
+	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton,/obj/item/storage/backpack,/obj/item/bluespace_radio)

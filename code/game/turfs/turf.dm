@@ -117,7 +117,32 @@
 
 /turf/attack_hand(mob/user)
 	. = ..()
-	user.move_pulled_towards(src)
+	//QOL feature, clicking on turf can toggle doors, unless pulling something
+	if(!user.pulling)
+		var/obj/machinery/door/airlock/AL = locate(/obj/machinery/door/airlock) in src.contents
+		if(AL)
+			AL.attack_hand(user)
+			return TRUE
+		var/obj/machinery/door/firedoor/FD = locate(/obj/machinery/door/firedoor) in src.contents
+		if(FD)
+			FD.attack_hand(user)
+			return TRUE
+
+	if(!(user.canmove) || user.restrained() || !(user.pulling))
+		return 0
+	if(user.pulling.anchored || !isturf(user.pulling.loc))
+		return 0
+	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
+		return 0
+	if(ismob(user.pulling))
+		var/mob/M = user.pulling
+		var/atom/movable/t = M.pulling
+		M.stop_pulling()
+		step(user.pulling, get_dir(user.pulling.loc, src))
+		M.start_pulling(t)
+	else
+		step(user.pulling, get_dir(user.pulling.loc, src))
+	return 1
 
 /turf/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage))
@@ -310,3 +335,16 @@
 		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
 		return TRUE
 	return FALSE
+
+// We're about to be the A-side in a turf translation
+/turf/proc/pre_translate_A(var/turf/B)
+	return
+// We're about to be the B-side in a turf translation
+/turf/proc/pre_translate_B(var/turf/A)
+	return
+// We were the the A-side in a turf translation
+/turf/proc/post_translate_A(var/turf/B)
+	return
+// We were the the B-side in a turf translation
+/turf/proc/post_translate_B(var/turf/A)
+	return

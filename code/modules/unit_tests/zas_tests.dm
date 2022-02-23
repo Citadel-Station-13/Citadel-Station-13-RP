@@ -78,7 +78,7 @@
 	name = "ZAS: Supply Shuttle"
 	area_path = /area/shuttle/supply
 
-/datum/unit_test/zas_area_test/emergency_shuttle
+/datum/unit_test/zas_area_test/SSemergencyshuttle
 	name = "ZAS: Emergency Shuttle"
 	area_path = /area/shuttle/escape
 

@@ -2,6 +2,16 @@
 //	Yargh Yargh Fiddle De Di
 ///////////////////////////////
 
+/datum/category_item/catalogue/fauna/pirate
+	name = "Pirates"
+	desc = "Life on the Frontier is often harsh, and there are many \
+	natural hazards which must be navigated and accounted for. In the \
+	face of such constant adversity, some colonists will resort to crime \
+	and piracy to try and make their way. From misguided attempts at \
+	survival to malicious profiteering, Piracy is a constant concern \
+	on the Frontier, and is punished harshly by every Megacorporation."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 ///////////////////////////////
 //		Knife Priate
 ///////////////////////////////
@@ -13,6 +23,7 @@
 	icon_state = "piratemelee"
 	icon_living = "piratemelee"
 	icon_dead = "piratemelee_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/pirate)
 
 	faction = "pirate"
 
@@ -435,10 +446,6 @@
 
 /mob/living/simple_mob/humanoid/pirate/captain/Initialize(mapload)
 	shields = new /obj/item/shield_projector/rectangle/automatic/drone(src)
-	return ..()
-
-/mob/living/simple_mob/humanoid/pirate/captain/Destroy()
-	QDEL_NULL(shields)
 	return ..()
 
 /mob/living/simple_mob/humanoid/pirate/captain/Process_Spacemove(var/check_drift = 0)

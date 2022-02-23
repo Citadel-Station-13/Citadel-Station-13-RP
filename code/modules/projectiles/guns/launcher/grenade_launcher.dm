@@ -5,6 +5,7 @@
 	item_state = "riotgun"
 	w_class = ITEMSIZE_LARGE
 	force = 10
+	one_handed_penalty = 5
 
 	fire_sound = 'sound/weapons/grenade_launcher.ogg'
 	fire_sound_text = "a metallic thunk"

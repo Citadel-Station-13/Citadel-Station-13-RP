@@ -59,8 +59,8 @@
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/submap/HeadscientistHQ)
 "cb" = (
-/mob/living/simple_mob/humanoid/merc/ranged/smg,
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_mob/humanoid/merc/ranged/smg,
 /turf/simulated/shuttle/floor,
 /area/submap/HeadscientistHQ)
 "cp" = (
@@ -196,7 +196,7 @@
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "kr" = (
-/obj/structure/table/sandbags,
+/obj/structure/sandbag,
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "kD" = (
@@ -265,16 +265,12 @@
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/shuttle/floor,
 /area/submap/HeadscientistHQ)
-"nh" = (
-/obj/machinery/pros_fabricator,
-/turf/simulated/shuttle/floor/purple,
-/area/submap/HeadscientistHQ)
 "nA" = (
-/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor,
 /obj/structure/bed/chair/comfy/teal{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor,
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/HeadscientistHQ)
 "nZ" = (
@@ -362,8 +358,8 @@
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "tN" = (
-/mob/living/simple_mob/humanoid/merc/melee/sword,
 /obj/effect/decal/cleanable/blood/oil,
+/mob/living/simple_mob/humanoid/merc/melee/sword,
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "tU" = (
@@ -401,8 +397,8 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "va" = (
-/mob/living/simple_mob/humanoid/merc/ranged/space/shotgun,
 /obj/effect/decal/cleanable/blood/oil,
+/mob/living/simple_mob/humanoid/merc/ranged/space/shotgun,
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "ve" = (
@@ -416,8 +412,8 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/HeadscientistHQ)
 "vk" = (
-/mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "ws" = (
@@ -463,13 +459,13 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "zD" = (
-/mob/living/simple_mob/humanoid/merc/ranged/space,
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "zG" = (
-/mob/living/simple_mob/humanoid/merc/ranged/garand,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged/garand,
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "zK" = (
@@ -638,8 +634,8 @@
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "Gs" = (
-/mob/living/simple_mob/humanoid/merc/ranged/space,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "Hb" = (
@@ -778,11 +774,6 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/HeadscientistHQ)
-"PO" = (
-/mob/living/simple_mob/mechanical/viscerator/mercenary,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/shuttle/floor/red,
-/area/submap/HeadscientistHQ)
 "Qz" = (
 /obj/machinery/light{
 	dir = 1
@@ -802,8 +793,8 @@
 /turf/simulated/shuttle/floor/purple,
 /area/submap/HeadscientistHQ)
 "RN" = (
-/mob/living/simple_mob/humanoid/merc/ranged,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
 "Sm" = (
@@ -858,7 +849,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/template_noop)
 "Vz" = (
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/burstlaser,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/shuttle/floor/red,
 /area/submap/HeadscientistHQ)
@@ -2181,7 +2172,7 @@ Yi
 Yi
 Yi
 YH
-nh
+Ek
 UV
 Xf
 OR
@@ -2655,7 +2646,7 @@ nd
 YH
 pb
 Hl
-PO
+By
 Kp
 YH
 Yi

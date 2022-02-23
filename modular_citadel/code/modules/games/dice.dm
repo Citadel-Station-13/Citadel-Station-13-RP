@@ -11,7 +11,7 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 
-	visible_message("<span class='notice'>The [src] lands on [result]. [comment]</span>", "", "")
+	visible_message("<span class='notice'>[src] lands on [result]. [comment]</span>", "", "")
 	
 // snowflake patch
 /obj/item/dice

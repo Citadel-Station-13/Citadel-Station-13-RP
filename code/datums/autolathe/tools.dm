@@ -1,6 +1,8 @@
 /datum/category_item/autolathe/general/cable
 	name = "cable"
 	path =/obj/item/stack/cable_coil
+	is_stack = TRUE
+	no_scale = TRUE //prevents material duplication exploits
 
 /datum/category_item/autolathe/tools/crowbar
 	name = "crowbar"

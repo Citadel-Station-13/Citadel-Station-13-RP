@@ -65,8 +65,8 @@
 	name = "cargo rubber stamp"
 	icon_state = "stamp-cargo"
 
-/obj/item/stamp/solgov
-	name = "\improper Sol Government rubber stamp"
+/obj/item/stamp/oricon
+	name = "\improper Orion Confederation rubber stamp"
 	icon_state = "stamp-sg"
 
 

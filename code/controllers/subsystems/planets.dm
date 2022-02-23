@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(planets)
 	..()
 
 /datum/controller/subsystem/planets/proc/createPlanets()
-	var/list/planet_datums = subtypesof(/datum/planet)
+	var/list/planet_datums = GLOB.using_map.planet_datums_to_make
 	for(var/P in planet_datums)
 		var/datum/planet/NP = new P()
 		planets.Add(NP)
@@ -154,8 +154,7 @@ SUBSYSTEM_DEF(planets)
 	var/lum_g = new_brightness * GetGreenPart(new_color) / 255
 	var/lum_b = new_brightness * GetBluePart (new_color) / 255
 	var/static/update_gen = -1 // Used to prevent double-processing corners. Otherwise would happen when looping over adjacent turfs.
-	for(var/I in P.planet_floors)
-		var/turf/simulated/T = I
+	for(var/turf/simulated/T as anything in P.planet_floors)
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()
 		for(var/C in list(T.lc_bottomleft, T.lc_bottomright, T.lc_topleft, T.lc_topright))

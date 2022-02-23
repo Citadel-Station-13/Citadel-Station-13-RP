@@ -12,15 +12,16 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define ALIEN_SELECT_AFK_BUFFER 1	// How many minutes that a person can be AFK before not being allowed to be an alien.
 
 // Constants for machine's use_power
-#define USE_POWER_OFF	 0	// No continuous power use
-#define USE_POWER_IDLE	 1	// Machine is using power at its idle power level
+#define USE_POWER_OFF    0	// No continuous power use
+#define USE_POWER_IDLE   1	// Machine is using power at its idle power level
 #define USE_POWER_ACTIVE 2	// Machine is using power at its active power level
 
 // Channel numbers for power.
-#define EQUIP	1
-#define LIGHT	2
-#define ENVIRON	3
-#define TOTAL	4	// For total power used only.
+#define CURRENT_CHANNEL -1 // Passed as an argument this means "use whatever current channel is"
+#define EQUIP   1
+#define LIGHT   2
+#define ENVIRON 3
+#define TOTAL   4 // For total power used only.
 
 // Bitflags for machine stat variable.
 #define BROKEN	 0x1
@@ -65,10 +66,38 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define NETWORK_ALARM_ATMOS "Atmosphere Alarms"
 #define NETWORK_ALARM_POWER "Power Alarms"
 #define NETWORK_ALARM_FIRE "Fire Alarms"
+#define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
+#define NETWORK_OUTSIDE "Outside"
+#define NETWORK_EXPLORATION "Exploration"
+#define NETWORK_XENOBIO "Xenobiology"
+
+// Off Station Camera Networks
+#define NETWORK_TALON_HELMETS "TalonHelmets" //VOREStation Add //We can keep these for now
+#define NETWORK_TALON_SHIP "TalonShip" //VOREStation Add
+#define NETWORK_TRADE_STATION "Beruang Trade Station"
+
+// Station Specific Camera Networks
+#define NETWORK_TRIUMPH "Triumph"
+#define NETWORK_TETHER "Tether"
 
 // Those networks can only be accessed by pre-existing terminals. AIs and new terminals can't use them.
 var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret", NETWORK_COMMUNICATORS)
 
+#define TRANSMISSION_WIRE		0 //Is this ever used? I don't think it is.
+#define TRANSMISSION_RADIO		1 //Radio transmissions (like airlock controller to pump)
+#define TRANSMISSION_SUBSPACE	2 //Like headsets
+#define TRANSMISSION_BLUESPACE	3 //Point-to-point links
+
+#define SIGNAL_NORMAL	0 //Normal subspace signals
+#define SIGNAL_SIMPLE	1 //Normal inter-machinery(?) signals
+#define SIGNAL_FAKE		2 //Untrackable signals
+#define SIGNAL_TEST		4 //Unlogged signals
+
+#define DATA_NORMAL		0 //Normal data
+#define DATA_INTERCOM	1 //Intercoms only
+#define DATA_LOCAL		2 //Intercoms and SBRs
+#define DATA_ANTAG		3 //Antag interception
+#define DATA_FAKE		4 //Not from a real mob
 
 //singularity defines
 #define STAGE_ONE 	1

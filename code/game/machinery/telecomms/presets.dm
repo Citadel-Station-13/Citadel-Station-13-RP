@@ -69,7 +69,7 @@
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("receiverCent")
-	freq_listening = list(ERT_FREQ, DTH_FREQ)
+	freq_listening = list(ERT_FREQ, DTH_FREQ, SYND_FREQ)
 
 
 //Buses
@@ -86,7 +86,7 @@
 	freq_listening = list(SUP_FREQ, SRV_FREQ)
 	autolinkers = list("processor2", "supply", "service", "unused")
 
-/obj/machinery/telecomms/bus/preset_two/Initialize(mapload)
+/obj/machinery/telecomms/bus/preset_two/Initialize()
 	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
 		if(i == PUB_FREQ)
 			continue
@@ -108,7 +108,7 @@
 /obj/machinery/telecomms/bus/preset_cent
 	id = "CentCom Bus"
 	network = "tcommsat"
-	freq_listening = list(ERT_FREQ, DTH_FREQ)
+	freq_listening = list(ERT_FREQ, DTH_FREQ, SYND_FREQ)
 	produces_heat = 0
 	autolinkers = list("processorCent", "centcom")
 
@@ -177,7 +177,7 @@
 	freq_listening = list()
 	autolinkers = list("unused")
 
-/obj/machinery/telecomms/server/presets/unused/Initialize(mapload)
+/obj/machinery/telecomms/server/presets/unused/Initialize()
 	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
 		if(i == AI_FREQ || i == PUB_FREQ)
 			continue
@@ -201,7 +201,7 @@
 
 /obj/machinery/telecomms/server/presets/centcomm
 	id = "CentCom Server"
-	freq_listening = list(ERT_FREQ, DTH_FREQ)
+	freq_listening = list(ERT_FREQ, DTH_FREQ, SYND_FREQ)
 	produces_heat = 0
 	autolinkers = list("centcom")
 
@@ -220,12 +220,3 @@
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("broadcasterCent")
-
-/obj/machinery/telecomms/relay/preset/houseboat
-	id = "Nearby Ship Relay"
-	hide = 1
-	produces_heat = 0
-	autolinkers = list("hb_relay")
-
-/obj/machinery/telecomms/relay/proc/reset_z()
-	listening_level = z

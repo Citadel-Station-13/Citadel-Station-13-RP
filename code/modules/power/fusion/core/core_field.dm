@@ -500,12 +500,12 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	var/stablemessage = "Containment field returning to stable conditions."
 
 	if(percent_unstable >= warnpoint) //we're unstable, start warning engineering
-		global_announcer.autosay(warnmessage, "Field Stability Monitor", "Engineering")
+		GLOB.global_announcer.autosay(warnmessage, "Field Stability Monitor", "Engineering")
 		stable = 0 //we know we're not stable, so let's not state the safe message.
 		sleep(20)
 		return
 	if(percent_unstable < warnpoint && stable == 0) //The field is stable again. Let's set our safe variable and state the safe message.
-		global_announcer.autosay(stablemessage, "Field Stability Monitor", "Engineering")
+		GLOB.global_announcer.autosay(stablemessage, "Field Stability Monitor", "Engineering")
 		stable = 1
 		return
 
@@ -566,7 +566,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	visible_message("<span class='danger'>\The [src] shudders like a dying animal before flaring to eye-searing brightness and rupturing!</span>")
 	set_light(15, 15, "#CCCCFF")
 	empulse(get_turf(src), CEILING(plasma_temperature/1000, 1), CEILING(plasma_temperature/300, 1))
-	global_announcer.autosay("WARNING: FIELD RUPTURE IMMINENT!", "Containment Monitor")
+	GLOB.global_announcer.autosay("WARNING: FIELD RUPTURE IMMINENT!", "Containment Monitor")
 	RadiateAll()
 	var/list/things_in_range = range(10, owned_core)
 	var/list/turfs_in_range = list()
@@ -592,7 +592,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 /obj/effect/fusion_em_field/proc/MRC() //spews electromagnetic pulses in an area around the core.
 	visible_message("<span class='danger'>\The [src] glows an extremely bright pink and flares out of existance!</span>")
-	global_announcer.autosay("Warning! Magnetic Resonance Cascade detected! Brace for electronic system distruption.", "Field Stability Monitor")
+	GLOB.global_announcer.autosay("Warning! Magnetic Resonance Cascade detected! Brace for electronic system distruption.", "Field Stability Monitor")
 	set_light(15, 15, "#ff00d8")
 	var/list/things_in_range = range(15, owned_core)
 	var/list/turfs_in_range = list()
@@ -606,7 +606,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	return
 
 /obj/effect/fusion_em_field/proc/QuantumFluxCascade() //spews hot phoron and oxygen in a radius around the RUST. Will probably set fire to things
-	global_announcer.autosay("Warning! Quantum fluxuation detected! Flammable gas release expected.", "Field Stability Monitor")
+	GLOB.global_announcer.autosay("Warning! Quantum fluxuation detected! Flammable gas release expected.", "Field Stability Monitor")
 	var/list/things_in_range = range(15, owned_core)
 	var/list/turfs_in_range = list()
 	var/turf/T
@@ -627,7 +627,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	return
 
 /obj/effect/fusion_em_field/proc/MagneticQuench() //standard hard shutdown. dumps hot oxygen/phoron into the core's area and releases an EMP in the area around the core.
-	global_announcer.autosay("Warning! Magnetic Quench event detected, engaging hard shutdown.", "Field Stability Monitor")
+	GLOB.global_announcer.autosay("Warning! Magnetic Quench event detected, engaging hard shutdown.", "Field Stability Monitor")
 	empulse(owned_core, 10, 15)
 	var/turf/TT = get_turf(owned_core)
 	if(istype(TT))
@@ -647,7 +647,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	visible_message("<span class='danger'>\The [src] shudders like a dying animal before flaring to eye-searing brightness and rupturing!</span>")
 	set_light(15, 15, "#CCCCFF")
 	empulse(get_turf(src), CEILING(plasma_temperature/1000, 1), CEILING(plasma_temperature/300, 1))
-	global_announcer.autosay("WARNING: FIELD RUPTURE IMMINENT!", "Containment Monitor")
+	GLOB.global_announcer.autosay("WARNING: FIELD RUPTURE IMMINENT!", "Containment Monitor")
 	RadiateAll()
 	var/list/things_in_range = range(10, owned_core)
 	var/list/turfs_in_range = list()

@@ -17,19 +17,19 @@
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
 
-/obj/item/clothing/head/helmet/solgov
-	name = "\improper Solar Confederate Government helmet"
+/obj/item/clothing/head/helmet/oricon
+	name = "\improper Orion Confederation Government helmet"
 	desc = "A helmet painted in Peacekeeper blue. Stands out like a sore thumb."
 	icon_state = "helmet_sol"
 	armor = list(melee = 50, bullet = 50, laser = 50,energy = 25, bomb = 30, bio = 0, rad = 0)
 	valid_accessory_slots = null
 
-/obj/item/clothing/head/helmet/solgov/command
+/obj/item/clothing/head/helmet/oricon/command
 	name = "command helmet"
-	desc = "A helmet with 'Solar Confederate Government' printed on the back in gold lettering."
+	desc = "A helmet with 'Orion Confederation Government' printed on the back in gold lettering."
 	icon_state = "helmet_command"
 
-/obj/item/clothing/head/helmet/solgov/security
+/obj/item/clothing/head/helmet/oricon/security
 	name = "security helmet"
 	desc = "A helmet with 'MASTER AT ARMS' printed on the back in silver lettering."
 	icon_state = "helmet_security"
@@ -297,3 +297,45 @@
 		flash_protection = FLASH_PROTECTION_NONE
 		blessed = FALSE
 		to_chat(user, "<font color=#4F49AF>The hat does not respond to you.</font>")
+
+/obj/item/clothing/head/helmet/bike_helmet
+	name = "riding helmet"
+	desc = "Safety gear designed to protect the head from impacts. It's a bit dorky."
+	icon_state = "sport"
+	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+
+	color = "#ffffff"
+
+/obj/item/clothing/head/helmet/bike_helmet/random/Initialize(mapload)
+	. = ..()
+	color = rgb(rand(1,255),rand(1,255),rand(1,255))
+
+/obj/item/clothing/head/helmet/oricon
+	name = "\improper Orion Confederation Government helmet"
+	desc = "A helmet painted in Peacekeeper blue. Stands out like a sore thumb."
+
+/obj/item/clothing/head/helmet/oricon/command
+	name = "\improper Orion Central commander helmet"
+	desc = "A helmet with 'Orion Confederation Government' printed on the back in gold lettering."
+
+/obj/item/clothing/head/helmet/combat/JSDF
+	name = "marine helmet"
+	desc = "If you wanna to keep your brain inside yo' head, you'd best put this on!"
+	icon_state = "unsc_helm"
+	item_state = "unsc_helm"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+
+/obj/item/clothing/head/helmet/combat/imperial
+	name = "imperial soldier helmet"
+	desc = "Veni, vidi, vici; I came, I saw, I conquered."
+	icon_state = "ge_helm"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'
+
+/obj/item/clothing/head/helmet/combat/imperial/centurion
+	name = "imperial centurion helmet"
+	desc = "Vendi, vidi, visa; I came, I saw, I realised this hat was too expensive."
+	icon_state = "ge_helmcent"
+	icon = 'icons/obj/clothing/hats_vr.dmi'
+	icon_override = 'icons/mob/head_vr.dmi'

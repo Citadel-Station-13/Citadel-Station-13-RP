@@ -97,6 +97,10 @@
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
 	applies_material_colour = 1
 
+/obj/item/material/knife/tacknife/combatknife/bone
+	icon_state = "boneknife"
+	default_material = "bone"
+
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
 /obj/item/material/knife/tacknife/boot
@@ -175,7 +179,7 @@
 
 /obj/item/material/knife/tacknife/survival
 	name = "streamlined survival knife"
-	desc = "A hunting grade survival knife. The bulky storage handle and inlaid circuitry have been replaced with a sleek grip and the ability to easily upgrade the blade."
+	desc = "A hunting grade survival knife. The bulky storage handle has been replaced with a sleek grip and the ability to easily upgrade the blade."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "survivalknife"
 	item_state = "knife"
@@ -183,12 +187,11 @@
 	default_material = "plasteel" //VOREStation Edit
 	toolspeed = 2 // Use a real axe if you want to chop logs.
 
-/*Placing this here, in the interests of adding it to a Dataknife further down the line
-
-/obj/item/storage/box/survival_knife/is_multitool()
-	return TRUE
-
-*/
+/obj/item/material/knife/tacknife/survival/bone
+	name = "primitive survival knife"
+	desc = "A hunting grade survival knife with a sleek leather grip."
+	applies_material_colour =TRUE
+	default_material = "bone" //VOREStation Edit
 
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"
@@ -196,3 +199,157 @@
 	icon = 'icons/obj/weapons_vr.dmi'
 	icon_state = "machetedx"
 	item_state = "machete"
+
+//The Return of the Data Knife
+/obj/item/material/knife/tacknife/dataknife
+	name = "data knife"
+	desc = "A special operations close combat weapon. Its razor sharp blade is inlaid with complex circuitry capable of hacking a variety of electronics."
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "dataknife"
+	item_state = "knife"
+	applies_material_colour = FALSE
+	default_material = "plasteel" //VOREStation Edit
+	toolspeed = 2 // Use a real axe if you want to chop logs.
+	var/gps_tag = "DAT&#%F0"
+	var/emped = FALSE
+	var/tracking = TRUE		// Will not show other signals or emit its own signal if false.
+	var/long_range = FALSE		// If true, can see farther, depending on get_map_levels().
+	var/local_mode = TRUE		// If true, only GPS signals of the same Z level are shown.
+	var/hide_signal = TRUE	// If true, signal is not visible to other GPS devices.
+	var/can_hide_signal = TRUE	// If it can toggle the above var.
+
+/obj/item/material/knife/tacknife/dataknife/is_multitool()
+	return TRUE
+
+/obj/item/material/knife/tacknife/dataknife/AltClick(mob/user)
+	toggletracking(user)
+
+/obj/item/material/knife/tacknife/dataknife/proc/toggletracking(mob/living/user)
+	if(!istype(user))
+		return
+	if(emped)
+		to_chat(user, "It's busted!")
+		return
+	if(tracking)
+		to_chat(user, "[src] is no longer tracking, or visible to GPS devices.")
+		tracking = FALSE
+		update_icon()
+	else
+		to_chat(user, "[src] is now tracking, and visible to GPS devices.")
+		tracking = TRUE
+		update_icon()
+
+/obj/item/material/knife/tacknife/dataknife/emp_act(severity)
+	if(emped) // Without a fancy callback system, this will have to do.
+		return
+	var/severity_modifier = severity ? severity : 4 // In case emp_act gets called without any arguments.
+	var/duration = 5 MINUTES / severity_modifier
+	emped = TRUE
+	update_icon()
+
+	spawn(duration)
+		emped = FALSE
+		update_icon()
+		visible_message("\The [src] appears to be functional again.")
+
+/obj/item/material/knife/tacknife/dataknife/attack_self(mob/user)
+	display(user)
+
+/obj/item/material/knife/tacknife/dataknife/proc/display_list()
+	var/list/dat = list()
+
+	var/turf/curr = get_turf(src)
+	var/area/my_area = get_area(src)
+
+	dat["my_area_name"] = my_area.name
+	dat["curr_x"] = curr.x
+	dat["curr_y"] = curr.y
+	dat["curr_z"] = curr.z
+	dat["curr_z_name"] = GLOB.using_map.get_zlevel_name(curr.z)
+	var/list/gps_list = list()
+	dat["gps_list"] = gps_list
+	dat["z_level_detection"] = GLOB.using_map.get_map_levels(curr.z, long_range)
+
+	for(var/obj/item/gps/G in GLOB.GPS_list - src)
+		if(!G.tracking || G.emped || G.hide_signal)
+			continue
+
+		var/turf/T = get_turf(G)
+		if(local_mode && curr.z != T.z)
+			continue
+		if(!(T.z in dat["z_level_detection"]))
+			continue
+
+		var/list/gps_data[0]
+		gps_data["ref"] = G
+		gps_data["gps_tag"] = G.gps_tag
+
+		var/area/A = get_area(G)
+		gps_data["area_name"] = A.name
+		if(istype(A, /area/submap))
+			gps_data["area_name"] = "Unknown Area" // Avoid spoilers.
+
+		gps_data["z_name"] = GLOB.using_map.get_zlevel_name(T.z)
+		gps_data["direction"] = get_adir(curr, T)
+		gps_data["degrees"] = round(Get_Angle(curr,T))
+		gps_data["distX"] = T.x - curr.x
+		gps_data["distY"] = T.y - curr.y
+		gps_data["distance"] = get_dist(curr, T)
+		gps_data["local"] = (curr.z == T.z)
+		gps_data["x"] = T.x
+		gps_data["y"] = T.y
+		gps_list[++gps_list.len] = gps_data
+
+	return dat
+
+/obj/item/material/knife/tacknife/dataknife/proc/display(mob/user)
+	if(!tracking)
+		to_chat(user, "The device is off. Alt-click it to turn it on.")
+		return
+	if(emped)
+		to_chat(user, "It's busted!")
+		return
+
+	var/list/dat = list()
+	var/list/gps_data = display_list()
+
+	dat += "Current location: [gps_data["my_area_name"]] <b>([gps_data["curr_x"]], [gps_data["curr_y"]], [gps_data["curr_z_name"]])</b>"
+	dat += "[hide_signal ? "Tagged" : "Broadcasting"] as '[gps_tag]'. <a href='?src=\ref[src];tag=1'>\[Change Tag\]</a> \
+	<a href='?src=\ref[src];range=1'>\[Toggle Scan Range\]</a> \
+	[can_hide_signal ? "<a href='?src=\ref[src];hide=1'>\[Toggle Signal Visibility\]</a>":""]"
+
+	var/list/gps_list = gps_data["gps_list"]
+	if(gps_list.len)
+		dat += "Detected signals;"
+		for(var/gps in gps_data["gps_list"])
+			if(istype(gps_data["ref"], /obj/item/gps/internal/poi))
+				dat += "    [gps["gps_tag"]]: [gps["area_name"]] - [gps["local"] ? "[gps["direction"]] Dist: [round(gps["distance"], 10)]m" : "in \the [gps["z_name"]]"]"
+			else
+				dat += "    [gps["gps_tag"]]: [gps["area_name"]], ([gps["x"]], [gps["y"]]) - [gps["local"] ? "[gps["direction"]] Dist: [gps["distX"] ? "[abs(round(gps["distX"], 1))]m [(gps["distX"] > 0) ? "E" : "W"], " : ""][gps["distY"] ? "[abs(round(gps["distY"], 1))]m [(gps["distY"] > 0) ? "N" : "S"]" : ""]" : "in \the [gps["z_name"]]"]"
+	else
+		dat += "No other signals detected."
+
+	var/result = dat.Join("<br>")
+	to_chat(user, result)
+
+/obj/item/material/knife/tacknife/dataknife/Topic(var/href, var/list/href_list)
+	if(..())
+		return 1
+
+	if(href_list["tag"])
+		var/a = input("Please enter desired tag.", name, gps_tag) as text
+		a = uppertext(copytext(sanitize(a), 1, 11))
+		if(in_range(src, usr))
+			gps_tag = a
+			name = "data knife"
+			to_chat(usr, "You set the data knife's tag to '[gps_tag]'.")
+
+	if(href_list["range"])
+		local_mode = !local_mode
+		to_chat(usr, "You set the signal receiver to [local_mode ? "'NARROW'" : "'BROAD'"].")
+
+	if(href_list["hide"])
+		if(!can_hide_signal)
+			return
+		hide_signal = !hide_signal
+		to_chat(usr, "You set the device to [hide_signal ? "not " : ""]broadcast a signal while scanning for other signals.")

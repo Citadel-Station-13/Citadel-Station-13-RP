@@ -68,6 +68,11 @@
 		to_chat(M, "Your gun is now sprited as [choice]. Say hello to your new friend.")
 		return 1
 
+/obj/item/gun/projectile/colt/taj
+	name = "Adhomai Pistol"
+	desc = "The Adar'Mazy pistol, produced by the Hadii-Wrack group. This pistol is the primary sidearm for low ranking officers and officals in the People's Republic of Adhomai."
+	icon_state = "colt-taj"
+
 /*//apart of reskins that have two sprites, touching may result in frustration and breaks
 /obj/item/gun/projectile/colt/detective/attack_hand(var/mob/living/user)
 	if(!unique_reskin && loc == user)
@@ -78,10 +83,10 @@
 
 /obj/item/gun/projectile/sec
 	name = ".45 pistol"
-	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. Uses .45 rounds."
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. This one is a less-lethal variant that only accepts .45 rubber or flash magazines."
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/m45/rubber
-	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash)
+	allowed_magazines = list(/obj/item/ammo_magazine/m45/rubber, /obj/item/ammo_magazine/m45/flash, /obj/item/ammo_magazine/m45/practice)
 	projectile_type = /obj/item/projectile/bullet/pistol/medium
 	caliber = ".45"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
@@ -99,8 +104,8 @@
 	magazine_type = /obj/item/ammo_magazine/m45/flash
 
 /obj/item/gun/projectile/sec/wood
-	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip. Uses .45 rounds."
-	name = "custom .45 Pistol"
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip and only accepts .45 rubber or flash magazines."
+	name = "custom .45 pistol"
 	icon_state = "secgundark"
 
 /obj/item/gun/projectile/sec/wood/update_icon()
@@ -153,6 +158,11 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .44 rounds."
 	icon_state = "deaglecamo"
 	item_state = "deagleg"
+
+/obj/item/gun/projectile/deagle/taj
+	name = "Adhomai Hand Cannon"
+	desc = "The Nal'dor heavy pistol, a powerful Hadii-Wrack group handcannon that has gained an infamous reputation through its use by Commissars of the People's Republic of Adhomai."
+	icon_state = "deagle-taj"
 
 /obj/item/gun/projectile/gyropistol // Does this even appear anywhere outside of admin abuse?
 	name = "gyrojet pistol"
@@ -323,16 +333,18 @@
 		icon_state = "[initial(icon_state)]-e"
 
 /obj/item/gun/projectile/p92x/sec
+	desc = "A widespread sidearm called the P92X which is used by military, police, and security forces across the galaxy. This one is a less-lethal variant that only accepts 9mm rubber or flash magazines."
 	magazine_type = /obj/item/ammo_magazine/m9mm/rubber
+	allowed_magazines = list(/obj/item/ammo_magazine/m9mm/rubber, /obj/item/ammo_magazine/m9mm/flash)
 
 //Ported this over from the _vr before deletion. Commenting them out because I'm not sure we want these in.
 /*
-/obj/item/gun/projectile/p92x/large/preban
+/obj/item/gun/projectile/p92x/large/licensed
 	icon_state = "p92x-brown"
-	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban // Spawns with big magazines that are legal.
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/licensed // Spawns with big magazines that are legal.
 
-/obj/item/gun/projectile/p92x/large/preban/hp
-	magazine_type = /obj/item/ammo_magazine/m9mm/large/preban/hp // Spawns with legal hollow-point mag
+/obj/item/gun/projectile/p92x/large/licensed/hp
+	magazine_type = /obj/item/ammo_magazine/m9mm/large/licensed/hp // Spawns with legal hollow-point mag
 */
 
 /obj/item/gun/projectile/p92x/brown
@@ -356,3 +368,23 @@
 	desc = "Ah, the choice of an avid gun collector! It's a nice gun, stranger."
 	ammo_type = /obj/item/ammo_casing/a9mm/silver
 	holy = TRUE
+
+/obj/item/gun/projectile/clown_pistol
+	name = "clown pistol"
+	desc = "This curious weapon feeds from a compressed biomatter cartridge, and seems to fabricate its ammunition from that supply."
+	icon_state = "clownpistol"
+	item_state = "revolver"
+	caliber = "organic"
+	load_method = MAGAZINE
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
+	magazine_type = /obj/item/ammo_magazine/mcompressedbio/compact
+	allowed_magazines = list(/obj/item/ammo_magazine/mcompressedbio/compact)
+	projectile_type = /obj/item/projectile/bullet/organic
+
+/obj/item/gun/projectile/clown_pistol/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "[initial(icon_state)]"
+	else
+		icon_state = "[initial(icon_state)]-e"

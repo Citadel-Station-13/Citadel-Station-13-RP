@@ -71,3 +71,10 @@
 	var/looking_elsewhere = FALSE //If the mob's view has been relocated to somewhere else, like via a camera or with binocs
 
 	var/image/selected_image = null // Used for buildmode AI control stuff.
+
+	//Pending Refactor, as per Kev.
+	//var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+
+	var/list/butcher_results = null //these will be yielded from butchering with a probability chance equal to the butcher item's effectiveness
+	var/list/guaranteed_butcher_results = null //these will always be yielded from butchering
+	var/butcher_difficulty = 0 //effectiveness prob. is modified negatively by this amount; positive numbers make it more difficult, negative ones make it easier

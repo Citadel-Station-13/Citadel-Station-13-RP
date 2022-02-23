@@ -45,6 +45,9 @@
 	if(prob(5))
 		icon_state = "desert[rand(0,4)]"
 
+/turf/simulated/floor/outdoors/beach/sand/desert/indoors
+	outdoors = FALSE
+
 /turf/simulated/floor/outdoors/beach/sand/lowdesert
 	name = "\improper low desert"
 	icon = 'icons/turf/desert.dmi'
@@ -75,7 +78,7 @@
 /turf/simulated/floor/outdoors/beach/water
 	name = "Water"
 	icon_state = "water"
-	initial_flooring = /decl/flooring/outdoors/water
+	initial_flooring = /decl/flooring/water
 
 /turf/simulated/floor/outdoors/beach/water/ocean
 	icon_state = "seadeep"

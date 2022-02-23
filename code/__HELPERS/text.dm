@@ -31,7 +31,9 @@
 		input = copytext(input,1,max_length)
 
 	if(extra)
-		input = replace_characters(input, list("\n"=" ","\t"=" "))
+		var/temp_input = replace_characters(input, list("\n"="  ","\t"=" "))//one character is replaced by two
+		if(length(input) < (length(temp_input) - 6))//6 is the number of linebreaks allowed per message
+			input = replace_characters(temp_input,list("  "=" "))//replace again, this time the double spaces with single ones
 
 	if(encode)
 		// The below \ escapes have a space inserted to attempt to enable Travis auto-checking of span class usage. Please do not remove the space.
@@ -71,7 +73,7 @@
 	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra)
 
 //Filters out undesirable characters from names
-/proc/sanitizeName(var/input, var/max_length = MAX_NAME_LEN, var/allow_numbers = 0)
+/proc/sanitizeName(var/input, var/max_length = MAX_NAME_LEN)
 	if(!input || length(input) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
@@ -98,7 +100,6 @@
 			// 0  .. 9
 			if(48 to 57)			//Numbers
 				if(!last_char_group)		continue	//suppress at start of string
-				if(!allow_numbers)			continue	// If allow_numbers is 0, then don't do this.
 				output += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 3
@@ -112,7 +113,6 @@
 			// ~   |   @  :  #  $  %  &  *  +
 			if(126,124,64,58,35,36,37,38,42,43)			//Other symbols that we'll allow (mainly for AI)
 				if(!last_char_group)		continue	//suppress at start of string
-				if(!allow_numbers)			continue
 				output += ascii2text(ascii_char)
 				last_char_group = 2
 
@@ -546,3 +546,4 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 			t = copytext(t, 1, index) + repl_chars[char] + copytext(t, index+5)
 			index = findtext(t, char)
 	return t
+

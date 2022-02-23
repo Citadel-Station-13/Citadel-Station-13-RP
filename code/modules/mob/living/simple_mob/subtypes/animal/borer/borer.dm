@@ -2,6 +2,19 @@
 // IMO they're a relic of several ages we're long past, their code and their design showing this plainly, but removing them would
 // make certain people Unhappy so here we are. They need a complete redesign but thats beyond the scope of the rewrite.
 
+/datum/category_item/catalogue/fauna/borer
+	name = "Cortical Borer"
+	desc = "Cortical Borers are one of the many parasitic life forms \
+	encountered on the Frontier. Often treated - justifiably - with disgust \
+	and fear, evidence of a cortical borer can send a community spiralling \
+	into panic and paranoia. Borers hijack the cortex of their hosts, fully \
+	taking control of their victim's motor functions and speech, effectively \
+	locking the host inside their own body. Borers reproduce inside their host \
+	bodies, making it vital to their life cycle that they remain undetected. \
+	Cortical borers are notably vulnerable to sugar, a fact often exploited when \
+	screening for infested hosts."
+	value = CATALOGUER_REWARD_HARD
+
 /mob/living/simple_mob/animal/borer
 	name = "cortical borer"
 	desc = "A small, quivering sluglike creature."
@@ -9,6 +22,7 @@
 	item_state = "brainslug"
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/borer)
 
 	response_help  = "pokes"
 	response_disarm = "prods"
