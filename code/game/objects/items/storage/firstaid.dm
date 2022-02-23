@@ -14,6 +14,7 @@
 	icon_state = "firstaid"
 	throw_speed = 2
 	throw_range = 8
+	slot_flags = SLOT_BELT
 	max_storage_space = ITEMSIZE_COST_SMALL * 7 // 14
 //	var/list/icon_variety // VOREStation edit
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
