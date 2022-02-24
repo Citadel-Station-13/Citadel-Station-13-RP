@@ -179,7 +179,7 @@
 
 // Frozen Planet Zone.
 /datum/map_template/triumph_lateload/frozen_planet
-	name = "Forzen Planet - Z4 Planet"
+	name = "Frozen Planet - Z4 Planet"
 	desc = "A Cold Frozen Planet."
 	mappath = "_maps/map_levels/140x140//frozen_planet.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/frozen_planet
