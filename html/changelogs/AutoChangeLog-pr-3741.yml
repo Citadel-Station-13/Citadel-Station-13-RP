@@ -1,0 +1,12 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds the Courser Scouting Vessel."
+  - rscadd: "Adds an airlock to Lavaland's engine.
+tweak: Tweaks the Ghost Sheet to be a head item, not a suit.
+tweak: Nerfs the Sec Armory substantially.
+tweak: Nerfs the Pathfinder's round-start ballistic."
+  - rscadd: "Adds the 5.7 pistol
+add; Adds the 5.7x28mm ammunition type
+tweak: The H90K now fires 5.7x28mm"
+  - bugfix: "Fixes Copper oregen so it actually shows up."

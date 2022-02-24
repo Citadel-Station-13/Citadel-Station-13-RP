@@ -157,11 +157,6 @@
 	name = "top-mounted SMG magazine (9mm flash)"
 	path =/obj/item/ammo_magazine/m9mmt/flash
 
-/datum/category_item/autolathe/arms/smg_9mmp90h
-	name = "large capacity top mounted magazine (9mm hunter)"
-	path =/obj/item/ammo_magazine/m9mmp90/hunter
-	hidden = 1
-
 /////// 10mm
 /datum/category_item/autolathe/arms/smg_10mm
 	name = "SMG magazine (10mm)"

@@ -331,7 +331,7 @@
 
 /obj/item/gun/projectile/automatic/mini_uzi/custom
 	name = "\improper custom Uzi"
-	desc = "The icon Uzi si a lightweight, compact, fast firing machine pistol. These traits make it a popular holdout option for Pathfinders assigned to hazardous expeditions. Uses .45 rounds."
+	desc = "The iconic Uzi is a lightweight, compact, fast firing machine pistol. These traits make it a popular holdout option for Pathfinders assigned to hazardous expeditions. Uses .45 rounds."
 	icon_state = "mini-uzi-custom"
 	pin = /obj/item/firing_pin/explorer
 
@@ -363,13 +363,13 @@
 	icon_state = "p90smg"
 	item_state = "p90"
 	w_class = ITEMSIZE_NORMAL
-	caliber = "9mm"
+	caliber = "5.7x28mm"
 	fire_sound = 'sound/weapons/gunshot/gunshot_uzi.wav'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT // ToDo: Belt sprite.
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/m9mmp90
-	allowed_magazines = list(/obj/item/ammo_magazine/m9mmp90, /obj/item/ammo_magazine/m9mmt) // ToDo: New sprite for the different mag.
+	magazine_type = /obj/item/ammo_magazine/m57x28mmp90
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mmp90) // ToDo: New sprite for the different mag.
 
 	firemodes = list(
 		list(mode_name="semiauto", burst=1, fire_delay=0),
@@ -383,7 +383,7 @@
 	name = "custom personal defense weapon"
 	desc = "An H90K from Hephaestus Industries. This one has a different colored receiver and a sling."
 	icon_state = "p90smgC"
-	magazine_type = /obj/item/ammo_magazine/m9mmp90/hunter
+	magazine_type = /obj/item/ammo_magazine/m57x28mmp90/hunter
 	slot_flags = SLOT_BELT|SLOT_BACK
 	pin = /obj/item/firing_pin/explorer
 

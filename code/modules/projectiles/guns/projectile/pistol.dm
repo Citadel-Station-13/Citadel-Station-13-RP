@@ -55,7 +55,6 @@
 	options["NT Mk. 58"] = "secguncomp"
 	options["NT Mk. 58 Custom"] = "secgundark"
 	options["Colt M1911"] = "colt"
-	options["FiveSeven"] = "fnseven"
 	options["USP"] = "usp"
 	options["H&K VP"] = "VP78"
 	options["P08 Luger"] = "p08"
@@ -388,3 +387,24 @@
 		icon_state = "[initial(icon_state)]"
 	else
 		icon_state = "[initial(icon_state)]-e"
+
+/obj/item/gun/projectile/fnseven
+	name = "5.7 sidearm"
+	desc = "This classic sidearm design utilizes an adaptable round considered to be superior to 9mm parabellum. It shares a round type with the H90K."
+	icon_state = "fnseven"
+	caliber = "5.7x28mm"
+	load_method = MAGAZINE
+	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
+	magazine_type = /obj/item/ammo_magazine/m57x28mm
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm)
+	projectile_type = /obj/item/projectile/bullet/pistol
+
+/obj/item/gun/projectile/fnseven/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "fnseven"
+	else
+		icon_state = "fnseven-e"
+
+/obj/item/gun/projectile/fnseven/pathfinder
+	pin = /obj/item/firing_pin/explorer

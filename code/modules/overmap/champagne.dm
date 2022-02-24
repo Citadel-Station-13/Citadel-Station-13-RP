@@ -18,7 +18,7 @@
 /obj/item/champagne/afterattack(var/atom/A, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	var/obj/machinery/computer/shuttle_control/explore/comp = A
+	var/obj/machinery/computer/shuttle_control/comp = A
 	if(!istype(comp))
 		return
 
