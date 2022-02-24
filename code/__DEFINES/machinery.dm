@@ -66,8 +66,19 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 #define NETWORK_ALARM_ATMOS "Atmosphere Alarms"
 #define NETWORK_ALARM_POWER "Power Alarms"
 #define NETWORK_ALARM_FIRE "Fire Alarms"
-#define NETWORK_TALON_HELMETS "TalonHelmets" //VOREStation Add
+#define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
+#define NETWORK_OUTSIDE "Outside"
+#define NETWORK_EXPLORATION "Exploration"
+#define NETWORK_XENOBIO "Xenobiology"
+
+// Off Station Camera Networks
+#define NETWORK_TALON_HELMETS "TalonHelmets" //VOREStation Add //We can keep these for now
 #define NETWORK_TALON_SHIP "TalonShip" //VOREStation Add
+#define NETWORK_TRADE_STATION "Beruang Trade Station"
+
+// Station Specific Camera Networks
+#define NETWORK_TRIUMPH "Triumph"
+#define NETWORK_TETHER "Tether"
 
 // Those networks can only be accessed by pre-existing terminals. AIs and new terminals can't use them.
 var/list/restricted_camera_networks = list(NETWORK_ERT,NETWORK_MERCENARY,"Secret", NETWORK_COMMUNICATORS)

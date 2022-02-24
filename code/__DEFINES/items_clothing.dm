@@ -42,22 +42,22 @@
 
 // Bitmasks for the /obj/item/var/flags_inv variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
 // WARNING: The following flags apply only to the external suit!
-#define HIDEGLOVES      0x1
-#define HIDESUITSTORAGE 0x2
-#define HIDEJUMPSUIT    0x4
-#define HIDESHOES       0x8
-#define HIDETAIL        0x10
-#define HIDETIE         0x20
-#define HIDEHOLSTER     0x40 //Some clothing hides holsters, but not all accessories
+#define HIDEGLOVES      	(1<<0)
+#define HIDESUITSTORAGE 	(1<<1)
+#define HIDEJUMPSUIT    	(1<<2)
+#define HIDESHOES       	(1<<3)
+#define HIDETAIL        	(1<<4)
+#define HIDETIE         	(1<<5)
+#define HIDEHOLSTER     	(1<<6)	//Some clothing hides holsters, but not all accessories
 
 // WARNING: The following flags apply only to the helmets and masks!
-#define HIDEMASK 0x1
-#define HIDEEARS 0x2 // Headsets and such.
-#define HIDEEYES 0x4 // Glasses.
-#define HIDEFACE 0x8 // Dictates whether we appear as "Unknown".
+#define HIDEMASK 			(1<<7)
+#define HIDEEARS			(1<<8) // Headsets and such.
+#define HIDEEYES			(1<<9) // Glasses.
+#define HIDEFACE			(1<<10) // Dictates whether we appear as "Unknown".
 
-#define BLOCKHEADHAIR   0x20    // Hides the user's hair overlay. Leaves facial hair.
-#define BLOCKHAIR       0x40    // Hides the user's hair, facial and otherwise.
+#define BLOCKHEADHAIR		(1<<11) // Hides the user's hair overlay. Leaves facial hair.
+#define BLOCKHAIR			(1<<12) // Hides the user's hair, facial and otherwise.
 
 // Slots as numbers //
 //Hands

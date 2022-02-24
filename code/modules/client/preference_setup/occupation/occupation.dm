@@ -365,6 +365,7 @@
 					pref.job_engsec_med |= job.flag
 				if(3)
 					pref.job_engsec_low |= job.flag
+/*	// Commenting out for now (Just in case this breaks everything)
 		//VOREStation Add
 		if(TALON)
 			pref.job_talon_low &= ~job.flag
@@ -379,6 +380,7 @@
 				if(3)
 					pref.job_talon_low |= job.flag
 		//VOREStation Add End
+*/
 
 	return 1
 
@@ -433,6 +435,7 @@
 					return job_engsec_med
 				if(3)
 					return job_engsec_low
+/*	// I really hope this doesnt break anything. It shouldnt, but it always worries me -Bloop
 		//VOREStation Add
 		if(TALON)
 			switch(level)
@@ -443,4 +446,5 @@
 				if(3)
 					return job_talon_low
 		//VOREStation Add End
+*/
 	return 0

@@ -42,6 +42,7 @@
 		MAT_PLASTEEL = 0,
 		"gold" = 0,
 		"silver" = 0,
+		MAT_COPPER = 0,
 		MAT_LEAD = 0,
 		"osmium" = 0,
 		"diamond" = 0,
@@ -51,8 +52,8 @@
 		MAT_VERDANTIUM = 0,
 		MAT_MORPHIUM = 0,
 		MAT_METALHYDROGEN = 0,
-		"bananium" = 0,
-		"silencium" = 0,
+		MAT_BANANIUM = 0,
+		MAT_SILENCIUM = 0,
 		MAT_SUPERMATTER = 0)
 	var/res_max_amount = 200000
 
@@ -66,6 +67,7 @@
 								"Gygax",
 								"Durand",
 								"H.O.N.K.",
+								"Reticent",
 								"Janus",
 								"Vehicle",
 								"Rigsuit",
@@ -80,8 +82,10 @@
 								"Cybernetics",
 								"Implants",
 								"Control Interfaces",
+								"Components",
 								"Other",
 								"Misc",
+								"Augments"
 								)
 
 /obj/machinery/mecha_part_fabricator/Initialize()

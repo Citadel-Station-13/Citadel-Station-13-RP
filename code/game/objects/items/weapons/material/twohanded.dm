@@ -159,6 +159,12 @@
 /obj/item/material/twohanded/fireaxe/foam/afterattack()
 	return
 
+/obj/item/material/twohanded/fireaxe/bone
+	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
+	default_material = "bone"
+
+/obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
+	return ..(mapload,"bone")
 /obj/item/material/twohanded/fireaxe/scythe
 	icon_state = "scythe0"
 	base_icon = "scythe"
@@ -193,6 +199,59 @@
 	reach = 2 // Spears are long.
 	attackspeed = 20
 	slowdown = 1.05
+	var/obj/item/grenade/explosive = null
+	var/war_cry = "AAAAARGH!!!"
+
+/obj/item/material/twohanded/spear/examine(mob/user)
+	. = ..()
+	if(explosive)
+		. += "<span class='notice'>Alt-click to set your war cry.</span>"
+		. += "<span class='notice'>Right-click in combat mode to activate the attached explosive.</span>"
+
+/obj/item/material/twohanded/spear/afterattack(atom/movable/AM, mob/user, proximity)
+	. = ..()
+	if(explosive && wielded) //Citadel edit removes qdel and explosive.forcemove(AM)
+		user.say("[war_cry]")
+		explosive.detonate()
+
+/obj/item/material/twohanded/spear/throw_impact(atom/hit_atom)
+	. = ..()
+	if(explosive)
+		explosive.detonate()
+		qdel(src)
+
+/obj/item/material/twohanded/spear/AltClick(mob/user)
+	. = ..()
+	if(usr)
+		..()
+		if(!explosive)
+			return
+		if(istype(user) && loc == user)
+			var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
+			if(input)
+				src.war_cry = input
+		return TRUE
+
+/obj/item/material/twohanded/spear/CheckParts(list/parts_list)
+	var/obj/item/material/twohanded/spear/S = locate() in parts_list
+	if(S)
+		if(S.explosive)
+			S.explosive.forceMove(get_turf(src))
+			S.explosive = null
+		parts_list -= S
+		qdel(S)
+	..()
+	var/obj/item/grenade/G = locate() in contents
+	if(G)
+		explosive = G
+		name = "explosive lance"
+		desc = "A makeshift spear with \a [G] attached to it."
+	update_icon()
+
+/obj/item/material/twohanded/spear/bone
+	name = "spear"
+	desc = "A primitive yet deadly weapon of ancient design."
+	default_material = "bone"
 
 //Sledgehammers. Slightly less force than fire axes, but breaks bones easier.
 

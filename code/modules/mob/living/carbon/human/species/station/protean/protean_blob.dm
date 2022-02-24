@@ -23,7 +23,7 @@
 
 	harm_intent_damage = 2
 	melee_damage_lower = 10
-	melee_damage_upper = 15 // Mild increase to blob damage
+	melee_damage_upper = 10
 	attacktext = list("smashed", "rammed") // Why would an amorphous blob be slicing stuff?
 
 	aquatic_movement = 1
@@ -42,7 +42,8 @@
 	shock_resist = 0.9
 	poison_resist = 1
 
-	movement_cooldown = 0
+	movement_cooldown = 0.5
+	base_attack_cooldown = 10
 
 	var/mob/living/carbon/human/humanform
 	var/obj/item/organ/internal/nano/refactory/refactory
@@ -103,6 +104,8 @@
 		var/obj/item/organ/external/E = humanform.get_organ(BP_TORSO)
 		//Set us to their health, but, human health ignores robolimbs so we do it 'the hard way'
 		health = maxHealth - E.brute_dam - E.burn_dam
+		movement_cooldown = 0.5 + max(0, (maxHealth - health) - 100) / 35
+		base_attack_cooldown = 10 + max(0, (maxHealth - health) - 100) / 15
 
 		//Alive, becoming dead
 		if((stat < DEAD) && (health <= 0))
@@ -191,9 +194,11 @@
 /mob/living/simple_mob/protean_blob/lay_down()
 	..()
 	if(resting)
+		to_chat(src, "<span class='warning'>You blend into the floor beneath you. <b>You will not be able to heal while doing so.</b></span>")
 		animate(src,alpha = 40,time = 1 SECOND)
 		mouse_opacity = 0
 	else
+		to_chat(src, "<span class='warning'>You get up from the floor.</span>")
 		mouse_opacity = 1
 		icon_state = "wake"
 		animate(src,alpha = 255,time = 1 SECOND)
@@ -517,6 +522,8 @@
 	//Return ourselves in case someone wants it
 	return src
 
+/mob/living/simple_mob/protean_blob/say_understands()
+	return humanform?.say_understands(arglist(args)) || ..()
 
 /mob/living/simple_mob/protean_blob/proc/appearanceswitch()
 	set name = "Switch Appearance"
@@ -550,6 +557,8 @@
 
 /datum/modifier/protean/steelBlob/tick()
 	..()
+	if(holder.temporary_form?.resting)
+		return
 	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder
 	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)

@@ -174,6 +174,16 @@
 	overlays.Cut()
 	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
 
+//Crafting Screen Port
+/obj/screen/craft
+	name = "crafting menu"
+	icon = 'icons/mob/screen/midnight.dmi'
+	icon_state = "craft"
+	screen_loc = ui_crafting
+
+/obj/screen/craft/Click(location, control, params)
+	var/datum/component/personal_crafting/C = usr.GetComponent(/datum/component/personal_crafting)
+	C?.ui_interact(usr)
 
 /obj/screen/Click(location, control, params)
 	if(!usr)	return 1
@@ -521,7 +531,7 @@
 
 		if("danger level")
 			var/mob/living/carbon/human/H = usr
-			if(istype(H) && istype(H.species, /datum/species/xenochimera))
+			if(istype(H) && istype(H.species, /datum/species/shapeshifter/xenochimera))
 				if(H.feral > 50)
 					to_chat(usr, "<span class='warning'>You are currently <b>completely feral.</b></span>")
 				else if(H.feral > 10)
@@ -555,3 +565,21 @@
 			return 0
 
 	return 1
+
+
+// Character setup stuff
+/obj/screen/setup_preview
+
+	var/datum/preferences/pref
+
+/obj/screen/setup_preview/Destroy()
+	pref = null
+	return ..()
+
+// Background 'floor'
+/obj/screen/setup_preview/bg
+	mouse_over_pointer = MOUSE_HAND_POINTER
+
+/obj/screen/setup_preview/bg/Click(params)
+	pref?.bgstate = next_list_item(pref.bgstate, pref.bgstate_options)
+	pref?.update_preview_icon()

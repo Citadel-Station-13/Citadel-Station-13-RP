@@ -93,6 +93,56 @@
 	icon_state = "redws"
 	canister_color = "redws"
 
+/obj/machinery/portable_atmospherics/canister/helium
+	name = "Canister \[Helium\]"
+
+/obj/machinery/portable_atmospherics/canister/carbon_monoxide
+	name = "Canister \[Carbon Monoxide\]"
+
+/obj/machinery/portable_atmospherics/canister/methyl_bromide
+	name = "Canister \[Methyl Bromide\]"
+
+/obj/machinery/portable_atmospherics/canister/nitrodioxide
+	name = "Canister \[Nitrogen Dioxide\]"
+
+/obj/machinery/portable_atmospherics/canister/nitricoxide
+	name = "Canister \[Nitric Oxide\]"
+
+/obj/machinery/portable_atmospherics/canister/methane
+	name = "Canister \[Methane\]"
+
+/obj/machinery/portable_atmospherics/canister/argon
+	name = "Canister \[Argon\]"
+
+/obj/machinery/portable_atmospherics/canister/krypton
+	name = "Canister \[Krypton\]"
+
+/obj/machinery/portable_atmospherics/canister/neon
+	name = "Canister \[Neon\]"
+
+/obj/machinery/portable_atmospherics/canister/ammonia
+	name = "Canister \[Ammonia\]"
+
+/obj/machinery/portable_atmospherics/canister/xenon
+	name = "Canister \[Xenon\]"
+
+/obj/machinery/portable_atmospherics/canister/chlorine
+	name = "Canister \[Chlorine\]"
+
+/obj/machinery/portable_atmospherics/canister/sulfur_dioxide
+	name = "Canister \[Sulfur Dioxide\]"
+
+/obj/machinery/portable_atmospherics/canister/hydrogen
+	name = "Canister \[Hydrogen\]"
+
+/obj/machinery/portable_atmospherics/canister/tritium
+	name = "Canister \[Tritium\]"
+
+/obj/machinery/portable_atmospherics/canister/deuterium
+	name = "Canister \[Deuterium\]"
+
+
+
 /obj/machinery/portable_atmospherics/canister/proc/check_change()
 	var/old_flag = update_flag
 	update_flag = 0
@@ -382,6 +432,86 @@ update_flag
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/Initialize(mapload)
 	. = ..()
 	air_contents.adjust_gas(/datum/gas/nitrous_oxide, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/helium/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/helium, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/carbon_monoxide/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/carbon_monoxide, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/methyl_bromide/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/methyl_bromide, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/nitrodioxide/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/nitrodioxide, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/nitricoxide/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/nitricoxide, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/methane/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/methane, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/argon/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/argon, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/krypton/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/krypton, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/neon/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/neon, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/ammonia/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/ammonia, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/xenon/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/xenon, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/chlorine/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/chlorine, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/sulfur_dioxide/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/sulfur_dioxide, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/hydrogen/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/hydrogen, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/tritium/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/hydrogen/tritium, MolesForPressure())
+	src.update_icon()
+
+/obj/machinery/portable_atmospherics/canister/deuterium/Initialize(mapload)
+	. = ..()
+	src.air_contents.adjust_gas(/datum/gas/hydrogen/deuterium, MolesForPressure())
 	src.update_icon()
 
 //Dirty way to fill room with gas. However it is a bit easier to do than creating some floor/engine/n2o -rastaf0

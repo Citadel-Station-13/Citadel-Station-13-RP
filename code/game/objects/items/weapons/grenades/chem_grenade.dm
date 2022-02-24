@@ -356,7 +356,7 @@
 	stage = 2
 	path = 1
 
-/obj/item/grenade/chem_grenade/lube/Initialize(mapload)
+/obj/item/grenade/chem_grenade/lube_tactical/Initialize(mapload)
 	. = ..()
 	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
 	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)

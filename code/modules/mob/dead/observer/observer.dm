@@ -110,7 +110,11 @@
 			var/mob/living/carbon/human/H = body
 			icon = H.icon
 			icon_state = H.icon_state
-			add_overlay(H.overlays_standing) //All our equipment sprites
+			if(H.overlays_standing)
+				for(var/i in 1 to length(H.overlays_standing))
+					if(!H.overlays_standing[i])
+						continue
+					add_overlay(H.overlays_standing[i])
 		else
 			icon = body.icon
 			icon_state = body.icon_state

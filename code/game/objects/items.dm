@@ -42,6 +42,8 @@
 	var/flags_inv = 0
 	var/body_parts_covered = 0 //see setup.dm for appropriate bit flags
 
+	var/tool_behaviour = NONE
+
 	var/item_flags = 0 //Miscellaneous flags pertaining to equippable objects.
 
 	//var/heat_transfer_coefficient = 1 //0 prevents all transfers, 1 is invisible
@@ -69,6 +71,15 @@
 	// If icon_override or sprite_sheets are set they will take precendence over this, assuming they apply to the slot in question.
 	// Only slot_l_hand/slot_r_hand are implemented at the moment. Others to be implemented as needed.
 	var/list/item_icons = list()
+
+	//Dimensions of the icon file used when this item is worn, eg: hats.dmi
+	//eg: 32x32 sprite, 64x64 sprite, etc.
+	//allows inhands/worn sprites to be of any size, but still centered on a mob properly
+	var/worn_x_dimension = 32
+	var/worn_y_dimension = 32
+	//Same as above but for inhands, uses the lefthand_ and righthand_ file vars
+	var/inhand_x_dimension = 32
+	var/inhand_y_dimension = 32
 
 	//** These specify item/icon overrides for _species_
 
@@ -810,6 +821,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		apply_addblends(icon2use,standing_icon)		//Some items have ICON_ADD blend shaders
 
 	var/image/standing = image(standing_icon)
+	standing = center_image(standing, inhands ? inhand_x_dimension : worn_x_dimension, inhands ? inhand_y_dimension : worn_y_dimension)
 	standing.alpha = alpha
 	standing.color = color
 	standing.layer = layer2use

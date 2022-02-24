@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "b" = (
-/turf/simulated/wall/titanium,
+/turf/simulated/wall/class_d_indoors,
 /area/poi_d/explored)
 "c" = (
 /obj/structure/closet/crate/mimic/dangerous,
@@ -10,11 +10,11 @@
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
-/turf/simulated/floor/tiled/white/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "d" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/white/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "e" = (
 /obj/structure/closet/crate/mimic,
@@ -22,17 +22,17 @@
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
 /obj/random/roguemineloot,
-/turf/simulated/floor/tiled/white/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "f" = (
 /obj/structure/simple_door/silver,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/tiled/white/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 "h" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/random/junk,
-/turf/simulated/floor/tiled/white/airless,
+/turf/simulated/floor/tiled/class_d_indoors,
 /area/poi_d/explored)
 
 (1,1,1) = {"

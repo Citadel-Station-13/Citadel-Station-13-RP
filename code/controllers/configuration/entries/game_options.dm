@@ -5,3 +5,6 @@
 	key_mode = KEY_MODE_TEXT
 	value_mode = VALUE_MODE_NUM
 	lowercase = TRUE
+
+/datum/config_entry/flag/allow_holidays
+	config_entry_value = TRUE

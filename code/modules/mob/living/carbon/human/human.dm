@@ -41,6 +41,8 @@
 
 	nutrition = rand(200,400)
 
+	AddComponent(/datum/component/personal_crafting)
+
 	human_mob_list |= src
 
 	. = ..()
@@ -1140,7 +1142,7 @@
 
 	if(species)
 
-		if(species.name && species.name == new_species)
+		if(species.name && species.name == new_species && species.name != "Custom Species")
 			return
 		if(species.language)
 			remove_language(species.language)
@@ -1150,6 +1152,7 @@
 			remove_language(L)
 		// Clear out their species abilities.
 		species.remove_inherent_verbs(src)
+		species.remove_inherent_spells(src)
 		holder_type = null
 
 	species = GLOB.all_species[new_species]
@@ -1160,8 +1163,8 @@
 	if(species.default_language)
 		add_language(species.default_language)
 
-	//if(species.icon_scale_x != 1 || species.icon_scale_y != 1)	//VOREStation Removal
-	//	update_transform()											//VOREStation Removal
+	if(species.icon_scale_x != 1 || species.icon_scale_y != 1)
+		update_transform()
 
 	if(example)						//VOREStation Edit begin
 		if(!(example == src))

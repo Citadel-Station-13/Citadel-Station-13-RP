@@ -319,6 +319,15 @@ obj/item/clothing/suit/kamishimo
 	item_state_slots = list(slot_r_hand_str = "leather_jacket", slot_l_hand_str = "leather_jacket")
 	flags_inv = HIDEHOLSTER
 
+/obj/item/clothing/suit/overcoat
+	name = "leather overcoat"
+	desc = "A fashionable leather overcoat."
+	icon_state = "leathercoat"
+	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	flags_inv = HIDEHOLSTER
+
 /obj/item/clothing/suit/browncoat
 	name = "brown leather coat"
 	desc = "A long, brown leather coat."
@@ -402,6 +411,37 @@ obj/item/clothing/suit/kamishimo
 	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
 	flags_inv = HIDEHOLSTER
 
+/obj/item/clothing/suit/storage/toggle/navy_coat_blue
+	name = "blue navy coat"
+	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is blue, which is not what the ocean's color is anymore."
+	icon_state = "blue_navy_jacket"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/navy_coat_brown
+	name = "brown navy coat"
+	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is brown, which makes you feel like you're back in the rust-colored oceans."
+	icon_state = "brown_navy_jacket"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/toggle/navy_coat_green
+	name = "brown navy coat"
+	desc = "A coat to show off your mandatory enrollment for those sweet, sweet 5% tax savings and stickers. Who sails a boat nowadays, anyway? This one is green, like the 'vegan rations' you were dared to eat. It was actually bottom-deck gunk. It smelled nicer than this coat."
+	icon_state = "green_navy_jacket"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	flags_inv = HIDEHOLSTER
+
+/obj/item/clothing/suit/storage/stripe_jacket
+	name = "striped jacket"
+	desc = "A high collar, a gaudy stripe, clasps that don't actually work. All the ingredients to a fashionable clown! Trust me, they are /definitely/ laughing at your jokes, and not you."
+	icon_state = "stripe_jacket"
+	blood_overlay_type = "coat"
+	allowed = list(/obj/item/gun/projectile/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight,/obj/item/gun/energy,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/uv_light)
+	flags_inv = HIDEHOLSTER
 /*
  * stripper
  */
@@ -1097,3 +1137,59 @@ obj/item/clothing/suit/kamishimo
 	w_class = ITEMSIZE_LARGE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDETIE|HIDEHOLSTER
+
+/obj/item/clothing/suit/laconic
+	name = "laconic field coat"
+	desc = "A hardy coat designed to protect its wearer as much in the lab as on an expedition."
+	icon_state = "laconic"
+	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
+	body_parts_covered = UPPER_TORSO|ARMS
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_UTILITY)
+
+/obj/item/clothing/suit/imperial_replica
+	name = "replica imperial soldier armor"
+	desc = "Made out of an especially light metal, it lets you conquer in style. This appears less sturdy than the authentic article."
+	icon_state = "ge_armor"
+	icon = 'icons/obj/clothing/suits_vr.dmi'
+	icon_override = 'icons/mob/suit_vr.dmi'
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/suit/imperial/officer_replica
+	name = "replica imperial officer armor"
+	desc = "Not all heroes wear capes, but it'd be cooler if they did. This appears less sturdy than the authentic article."
+	icon_state = "ge_armorcent"
+
+/obj/item/clothing/suit/darkfur
+	name = "vexatious coat"
+	desc = "A sleek jacket with a dark fur lining around the collar. All the rage on Infernum."
+	icon_state = "darkfur_jacket"
+	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
+	body_parts_covered = UPPER_TORSO|ARMS
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_UTILITY)
+
+//Main's Formal Coats
+/obj/item/clothing/suit/storage/parade_coat
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal"
+
+/obj/item/clothing/suit/storage/parade_coat/hos
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "hosformal"
+
+/obj/item/clothing/suit/storage/parade_coat/centcom
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "centcomformal"
+
+/* For when I gender these later.
+/obj/item/clothing/suit/storage/parade_coat/female
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal"
+*/

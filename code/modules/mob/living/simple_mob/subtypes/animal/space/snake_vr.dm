@@ -36,6 +36,10 @@
 	say_list_type = /datum/say_list/snake
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
 
+	bone_amount = 5
+	hide_amount = 1
+	hide_type = /obj/item/stack/hairlesshide
+
 /datum/say_list/snake
 	emote_hear = list("hisses")
 

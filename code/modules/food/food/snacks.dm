@@ -1245,13 +1245,25 @@
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/monkeykabob
+	name = "Monkey-kabob"
+	icon_state = "kabob"
+	desc = "Delicious monkey meat, on a stick."
+	trash = /obj/item/stack/rods
+	filling_color = "#A85340"
+
+/obj/item/reagent_containers/food/snacks/monkeykabob/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 8)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/meatkabob
 	name = "Meat-kabob"
 	icon_state = "kabob"
 	desc = "Delicious meat, on a stick."
 	trash = /obj/item/stack/rods
 	filling_color = "#A85340"
 
-/obj/item/reagent_containers/food/snacks/monkeykabob/Initialize(mapload)
+/obj/item/reagent_containers/food/snacks/meatkabob/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("protein", 8)
 	bitesize = 2
@@ -1636,6 +1648,15 @@
 	. = ..()
 	reagents.add_reagent("water", 5)
 	bitesize = 5
+
+/obj/item/reagent_containers/food/snacks/dishosoup
+	name = "Disho soup"
+	desc = "A somewhat bland soup made from the root and leaves of a disho."
+	icon_state = "dishosoup"
+	trash = /obj/item/trash/snack_bowl
+	filling_color = "#514147"
+	nutriment_amt = 6
+	nutriment_desc = list("disho" = 1)
 
 /obj/item/reagent_containers/food/snacks/nettlesoup
 	name = "Nettle soup"
@@ -2027,6 +2048,21 @@
 	reagents.add_reagent("water", 5)
 	bitesize = 10
 
+
+/obj/item/reagent_containers/food/snacks/dishostew
+	name = "Disho Stew"
+	desc = "A hot and spicy stew with disho and bits of chopped mushroom and chili."
+	icon_state = "dishostew"
+	filling_color = "#9E673A"
+	nutriment_amt = 6
+	nutriment_desc = list("disho" = 2, "chili" = 1, "mushroom" = 2)
+
+/obj/item/reagent_containers/food/snacks/dishostew/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("nutriment", 8)
+	reagents.add_reagent("water", 5)
+	bitesize = 10
+
 /obj/item/reagent_containers/food/snacks/jelliedtoast
 	name = "Jellied Toast"
 	desc = "A slice of bread covered with delicious jam."
@@ -2185,6 +2221,19 @@
 /obj/item/reagent_containers/food/snacks/carrotfries/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("imidazoline", 3)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/dishofries // Buff 3 >> 5
+	name = "Disho Fries"
+	desc = "A little bit radish-y, a little bit zucchini-y, very spicy and fried!"
+	icon_state = "dishofries"
+	trash = /obj/item/trash/plate
+	filling_color = "#514147"
+	nutriment_amt = 5
+	nutriment_desc = list("disho" = 3, "salt" = 1)
+
+/obj/item/reagent_containers/food/snacks/carrotfries/Initialize(mapload)
+	. = ..()
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/superbiteburger // Balance (25 >> 15 Nutri / 25 >> 35 Protein)
@@ -5307,7 +5356,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/sliceable/brownies/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 2)
+	reagents.add_reagent("nutriment", 4)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/browniesslice
@@ -5324,7 +5373,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/browniesslice/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 1)
+	reagents.add_reagent("nutriment", 2)
 
 /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies
 	name = "cosmic brownies"
@@ -5340,7 +5389,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 2)
+	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("space_drugs", 2)
 	reagents.add_reagent("bicaridine", 1)
 	reagents.add_reagent("kelotane", 1)
@@ -5361,7 +5410,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/cosmicbrowniesslice/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 1)
+	reagents.add_reagent("nutriment", 2)
 
 
 /obj/item/reagent_containers/food/snacks/wormsickly

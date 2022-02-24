@@ -448,10 +448,6 @@
 	shields = new /obj/item/shield_projector/rectangle/automatic/drone(src)
 	return ..()
 
-/mob/living/simple_mob/humanoid/pirate/captain/Destroy()
-	QDEL_NULL(shields)
-	return ..()
-
 /mob/living/simple_mob/humanoid/pirate/captain/Process_Spacemove(var/check_drift = 0)
 	return TRUE
 

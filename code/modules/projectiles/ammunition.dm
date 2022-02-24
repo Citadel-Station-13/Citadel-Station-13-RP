@@ -90,6 +90,7 @@
 	//because BYOND doesn't support numbers as keys in associative lists
 	var/list/icon_keys = list()		//keys
 	var/list/ammo_states = list()	//values
+	var/ammo_mark = null			//Used for overlays simulated paint or tape bands on magazines. Cuts down on bloat.
 
 /obj/item/ammo_magazine/Initialize(mapload)
 	. = ..()
@@ -182,6 +183,8 @@
 				new_state = ammo_states[idx]
 				break
 		icon_state = (new_state)? new_state : initial(icon_state)
+	if(ammo_mark)
+		overlays += "[initial(icon_state)]_[ammo_mark]"
 
 /obj/item/ammo_magazine/examine(mob/user)
 	. = ..()

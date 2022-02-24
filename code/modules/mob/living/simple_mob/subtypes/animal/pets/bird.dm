@@ -44,6 +44,9 @@
 	say_list_type = /datum/say_list/bird
 	holder_type = /obj/item/holder/bird
 
+	meat_amount = 1
+	bone_amount = 1
+
 /datum/say_list/bird
 	speak = list("Chirp!","Caw!","Screech!","Squawk!")
 	emote_hear = list("chirps","caws")

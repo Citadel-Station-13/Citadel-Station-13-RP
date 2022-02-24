@@ -30,7 +30,7 @@
 				m_type = 1
 
 		//Machine-only emotes
-		if("ping", "beep", "buzz", "yes", "ye", "no", "rcough", "rsneeze")
+		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze", "honk", "buzz2", "warn", "chime")
 
 			if(!isSynthetic())
 				to_chat(src, "<span class='warning'>You are not a synthetic.</span>")
@@ -50,6 +50,18 @@
 			if(act == "buzz")
 				display_msg = "buzzes"
 				use_sound = 'sound/machines/buzz-sigh.ogg'
+			else if(act == "chime")
+				display_msg = "chimes"
+				use_sound = 'sound/machines/chime.ogg'
+			else if(act == "buzz2")
+				display_msg = "buzzes twice"
+				use_sound = 'sound/machines/buzz-two.ogg'
+			else if(act == "warn")
+				display_msg = "blares an alarm"
+				use_sound = 'sound/machines/warning-buzzer.ogg'
+			else if(act == "honk")
+				display_msg = "honks"
+				use_sound = 'sound/items/bikehorn.ogg'
 			else if(act == "ping")
 				display_msg = "pings"
 				use_sound = 'sound/machines/ping.ogg'
@@ -59,6 +71,12 @@
 			else if(act == "no")
 				display_msg = "emits a negative blip"
 				use_sound = 'sound/machines/synth_no.ogg'
+			else if(act == "dwoop")
+				display_msg = "chirps happily"
+				use_sound = 'sound/machines/dwoop.ogg'
+			else if(act == "scary")
+				display_msg = "emits a disconcerting tone"
+				use_sound = 'sound/machines/synth_scary.ogg'
 			else if(act == "rcough")
 				display_msg = "emits a robotic cough"
 				if(get_gender() == FEMALE)
@@ -143,7 +161,7 @@
 			if (input2 == "Visible")
 				m_type = 1
 			else if (input2 == "Hearable")
-				if (src.miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					return
 				m_type = 2
 			else
@@ -184,7 +202,7 @@
 			m_type = 1
 
 		if ("choke")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "clutches [T.his] throat desperately!"
 				m_type = 1
 			else
@@ -200,21 +218,21 @@
 				message = "claps."
 				playsound(src.loc, 'sound/misc/clapping.ogg')
 				m_type = 2
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					m_type = 1
 
 		if ("flap")
 			if (!src.restrained())
 				message = "flaps [T.his] wings."
 				m_type = 2
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					m_type = 1
 
 		if ("aflap")
 			if (!src.restrained())
 				message = "flaps [T.his] wings ANGRILY!"
 				m_type = 2
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					m_type = 1
 
 		if ("drool")
@@ -226,7 +244,7 @@
 			m_type = 1
 
 		if ("chuckle")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to chuckle."
 				m_type = 1
 			else
@@ -253,7 +271,7 @@
 			m_type = 1
 
 		if("cough", "coughs")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to cough!"
 				m_type = 1
 			else
@@ -284,6 +302,28 @@
 					message = "makes a strong noise."
 					m_type = 2
 
+		if("bcough")
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+				message = "appears to cough up blood!"
+				m_type = 1
+			else
+				if(!muzzled)
+					var/robotic = 0
+					m_type = 2
+					if(should_have_organ(O_LUNGS))
+						var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
+						if(L && L.robotic == 2)	//Hard-coded to 2, incase we add lifelike robotic lungs
+							robotic = 1
+					if(!robotic)
+						message = "coughs up a small amount of blood!"
+						BloodyMouth()
+						if(get_gender() == FEMALE)
+							if(species.female_cough_sounds)
+								playsound(src, pick(species.female_cough_sounds), 120)
+						else
+							if(species.male_cough_sounds)
+								playsound(src, pick(species.male_cough_sounds), 120)
+
 		if ("frown")
 			message = "frowns."
 			m_type = 1
@@ -301,7 +341,7 @@
 			m_type = 1
 
 		if ("gasp")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to be gasping!"
 				m_type = 1
 			else
@@ -317,7 +357,7 @@
 			m_type = 1
 
 		if ("giggle")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "giggles silently!"
 				m_type = 1
 			else
@@ -380,7 +420,7 @@
 			m_type = 1
 
 		if ("cry")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "cries."
 				m_type = 1
 			else
@@ -392,7 +432,7 @@
 					m_type = 2
 
 		if ("sigh")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "sighs."
 				m_type = 1
 			else
@@ -404,7 +444,7 @@
 					m_type = 2
 
 		if ("laugh")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "acts out a laugh."
 				m_type = 1
 			else
@@ -429,11 +469,11 @@
 		if ("mumble")
 			message = "mumbles!"
 			m_type = 2
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				m_type = 1
 
 		if ("grumble")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "grumbles!"
 				m_type = 1
 			if (!muzzled)
@@ -444,7 +484,7 @@
 				m_type = 2
 
 		if ("groan")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to groan!"
 				m_type = 1
 			else
@@ -456,7 +496,7 @@
 					m_type = 2
 
 		if ("moan")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to moan!"
 				m_type = 1
 			else
@@ -470,7 +510,7 @@
 			if (!M)
 				param = null
 			else
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					message = "takes a drag from a cigarette and blows \"[M]\" out in smoke."
 					m_type = 1
 				else
@@ -532,7 +572,7 @@
 		if ("shiver")
 			message = "shivers."
 			m_type = 2
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				m_type = 1
 
 		if ("pale")
@@ -544,7 +584,7 @@
 			m_type = 1
 
 		if("sneeze", "sneezes")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "sneezes."
 				m_type = 1
 			else
@@ -577,11 +617,11 @@
 		if ("sniff")
 			message = "sniffs."
 			m_type = 2
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				m_type = 1
 
 		if ("snore")
-			if (miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "sleeps soundly."
 				m_type = 1
 			else
@@ -593,7 +633,7 @@
 					m_type = 2
 
 		if ("whimper")
-			if (miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears hurt."
 				m_type = 1
 			else
@@ -612,14 +652,14 @@
 			if (!muzzled)
 				message = "yawns."
 				m_type = 2
-				if(miming)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 					m_type = 1
 
 		if ("collapse")
 			Paralyse(2)
 			message = "collapses!"
 			m_type = 2
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				m_type = 1
 
 		if("hug")
@@ -729,7 +769,7 @@
 					//adding damage for aslaps to stop the spam
 
 		if("scream", "screams")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "acts out a scream!"
 				m_type = 1
 			else
@@ -751,7 +791,7 @@
 					message = "makes a very loud noise."
 					m_type = 2
 		if("squeak","squeaks")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "acts out a soft squeak."
 				m_type = 1
 			else
@@ -761,7 +801,7 @@
 					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
 
 		if("meow", "meows")
-			if(miming)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "acts out a soft mrowl."
 				m_type = 1
 			else
@@ -808,7 +848,7 @@
 			vomit()
 			return
 
-		if("whistle" || "whistles")
+		if("whistle", "whistles")
 			if(!muzzled)
 				message = "whistles a tune."
 				playsound(loc, 'sound/misc/longwhistle.ogg') //praying this doesn't get abused
@@ -1047,4 +1087,3 @@
 	set desc = "Switch tail layer on top."
 	tail_alt = !tail_alt
 	update_tail_showing()
-

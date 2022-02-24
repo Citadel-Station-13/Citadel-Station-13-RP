@@ -50,8 +50,10 @@ var/const/ASSISTANT			=(1<<11)
 var/const/BRIDGE			=(1<<12)
 var/const/PILOT 			=(1<<13) //VOREStation Add
 var/const/ENTERTAINER		=(1<<14) //VOREStation Add
+var/const/TRADER			=(1<<15)
 
 //VOREStation Add
+/* // Commenting out on maintainer's request, leaving framewhere her though for the future in case we want to bring Talon back (with a rework of course) -Bloop
 var/const/TALON				=(1<<3)
 
 var/const/TALCAP			=(1<<0)
@@ -59,7 +61,9 @@ var/const/TALPIL			=(1<<1)
 var/const/TALDOC			=(1<<2)
 var/const/TALSEC			=(1<<3)
 var/const/TALENG			=(1<<4)
+*/
 //VOREStation Add End
+
 
 /proc/guest_jobbans(var/job)
 	return ( (job in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND)) || (job in SSjob.get_job_titles_in_department(DEPARTMENT_SYNTHETIC)) || (job in SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY)) )

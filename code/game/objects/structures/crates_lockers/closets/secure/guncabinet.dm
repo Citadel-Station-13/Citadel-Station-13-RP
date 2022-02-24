@@ -89,3 +89,13 @@
 /obj/structure/closet/secure_closet/guncabinet/robotics
 	name = "exosuit equipment cabinet"
 	req_one_access = list(access_robotics,access_research)
+
+/obj/structure/closet/secure_closet/guncabinet/excursion
+	name = "expedition weaponry cabinet"
+	req_one_access = list(access_explorer,access_armory)
+
+/obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
+	for(var/i in 1 to 4)
+		new /obj/item/gun/energy/frontier/locked(src)
+	for(var/i in 1 to 4)
+		new /obj/item/gun/energy/frontier/locked/holdout

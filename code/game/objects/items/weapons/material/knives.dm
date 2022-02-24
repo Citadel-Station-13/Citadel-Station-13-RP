@@ -97,6 +97,10 @@
 	attack_verb = list("sliced", "stabbed", "chopped", "cut")
 	applies_material_colour = 1
 
+/obj/item/material/knife/tacknife/combatknife/bone
+	icon_state = "boneknife"
+	default_material = "bone"
+
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
 /obj/item/material/knife/tacknife/boot
@@ -118,13 +122,6 @@
 	desc = "The unearthly energies that once powered this blade are now dormant."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "render"
-	applies_material_colour = 0
-
-/obj/item/material/knife/clownop
-	name = "clown knife"
-	desc = "This curved blade is painted to look like a banana, disguising its deadly edge."
-	icon_state = "clownrender"
-	item_state = "clown_dagger"
 	applies_material_colour = 0
 
 /obj/item/material/knife/butch
@@ -189,6 +186,12 @@
 	applies_material_colour = FALSE
 	default_material = "plasteel" //VOREStation Edit
 	toolspeed = 2 // Use a real axe if you want to chop logs.
+
+/obj/item/material/knife/tacknife/survival/bone
+	name = "primitive survival knife"
+	desc = "A hunting grade survival knife with a sleek leather grip."
+	applies_material_colour =TRUE
+	default_material = "bone" //VOREStation Edit
 
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"

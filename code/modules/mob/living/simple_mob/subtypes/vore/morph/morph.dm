@@ -38,7 +38,6 @@
 	attack_sound = 'sound/effects/blobattack.ogg'
 
 	meat_amount = 2
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
 
 	showvoreprefs = 0
 	vore_active = 1

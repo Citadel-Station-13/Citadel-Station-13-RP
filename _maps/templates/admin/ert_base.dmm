@@ -162,7 +162,7 @@
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
-	id_tag = "ert1_control";
+	id_tag = "ert_docker";
 	pixel_x = -25;
 	req_access = list(103);
 	tag_airpump = "ert1_vent";
@@ -170,12 +170,13 @@
 	tag_exterior_door = "ert1_shuttle_outer";
 	tag_interior_door = "ert1_shuttle_inner"
 	},
-/obj/effect/shuttle_landmark/shuttle_initializer{
+/obj/effect/overmap/visitable/ship/landable/specialops2,
+/obj/effect/shuttle_landmark/premade{
 	base_area = /area/centcom/specops;
 	base_turf = /turf/unsimulated/floor;
+	docking_controller = "ert_shuttle_bay";
 	landmark_tag = "specops_base";
-	name = "ERT Shuttle Bay";
-	shuttle_type = /datum/shuttle/autodock/multi/specialops
+	name = "ERT Shuttle Bay"
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
@@ -863,18 +864,11 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bM" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 8
-	},
-/obj/item/pen{
-	pixel_y = 4
-	},
+/obj/machinery/computer/ship/sensors,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bN" = (
-/obj/machinery/vending/food,
+/obj/machinery/computer/ship/engines,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bO" = (
@@ -952,7 +946,9 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/specops/centcom)
 "bV" = (
-/obj/structure/frame/computer,
+/obj/machinery/computer/ship/helm{
+	dir = 4
+	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bW" = (
@@ -1133,7 +1129,7 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/specops/centcom)
 "co" = (
-/obj/machinery/computer/shuttle_control/multi/specops{
+/obj/machinery/computer/shuttle_control/explore/specialops2{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/black,
@@ -2087,6 +2083,10 @@
 /obj/item/rig/ert/engineer,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
+"py" = (
+/obj/machinery/shipsensors,
+/turf/simulated/shuttle/floor/black,
+/area/shuttle/specops/centcom)
 "rB" = (
 /obj/structure/table/rack/steel,
 /obj/item/suit_cooling_unit,
@@ -2485,7 +2485,7 @@ aj
 aj
 bD
 bM
-bd
+cp
 cp
 cz
 cJ
@@ -2748,14 +2748,14 @@ ay
 aH
 ay
 ap
-aj
+py
 ap
 bR
 ap
 cr
 cF
 ap
-aj
+aH
 ap
 dq
 aH
@@ -3346,7 +3346,7 @@ ac
 af
 af
 af
-ag
+af
 ac
 ag
 ak

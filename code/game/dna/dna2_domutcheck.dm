@@ -5,7 +5,7 @@
 // flags: See below, bitfield.
 #define MUTCHK_FORCED        1
 /proc/domutcheck(var/mob/living/M, var/connected=null, var/flags=0)
-	for(var/datum/dna/gene/gene in dna_genes)
+	for(var/datum/gene/gene in dna_genes)
 		if(!M || !M.dna)
 			return
 		if(!gene.block)

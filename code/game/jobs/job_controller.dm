@@ -393,7 +393,7 @@ var/global/datum/controller/occupations/job_master
 
 					// If they aren't, tell them
 					if(!permitted)
-						to_chat(H, "<span class='warning'>Your current species, job or whitelist status does not permit you to spawn with [thing]!</span>")
+						to_chat(H, "<span class='warning'>Your current species, job or whitelist status does not permit you to spawn with [G.display_name]!</span>")
 						continue
 
 					// Implants get special treatment
@@ -404,18 +404,22 @@ var/global/datum/controller/occupations/job_master
 						continue
 
 					// Try desperately (and sorta poorly) to equip the item. Now with increased desperation!
+					// why are we stuffing metadata in assoclists?
+					// because client might not be valid later down, so
+					// we're gonna just grab it once and call it a day
+					// sigh.
+					var/metadata = H.client.prefs.gear[G.name]
 					if(G.slot && !(G.slot in custom_equip_slots))
-						var/metadata = H.client.prefs.gear[G.display_name]
 						if(G.slot == slot_wear_mask || G.slot == slot_wear_suit || G.slot == slot_head)
-							custom_equip_leftovers += thing
+							custom_equip_leftovers[thing] = metadata
 						else if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-							to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
+							to_chat(H, "<span class='notice'>Equipping you with \the [G.display_name]!</span>")
 							if(G.slot != slot_tie)
 								custom_equip_slots.Add(G.slot)
 						else
-							custom_equip_leftovers.Add(thing)
+							custom_equip_leftovers[thing] = metadata
 					else
-						spawn_in_storage += thing
+						spawn_in_storage[thing] = metadata
 
 			// Set up their account
 			job.setup_account(H)
@@ -434,14 +438,13 @@ var/global/datum/controller/occupations/job_master
 			for(var/thing in custom_equip_leftovers)
 				var/datum/gear/G = gear_datums[thing]
 				if(G.slot in custom_equip_slots)
-					spawn_in_storage += thing
+					spawn_in_storage[thing] = custom_equip_leftovers[thing]
 				else
-					var/metadata = H.client.prefs.gear[G.display_name]
-					if(H.equip_to_slot_or_del(G.spawn_item(H, metadata), G.slot))
-						to_chat(H, "<span class='notice'>Equipping you with \the [thing]!</span>")
+					if(H.equip_to_slot_or_del(G.spawn_item(H, custom_equip_leftovers[thing]), G.slot))
+						to_chat(H, "<span class='notice'>Equipping you with \the [G.display_name]!</span>")
 						custom_equip_slots.Add(G.slot)
 					else
-						spawn_in_storage += thing
+						spawn_in_storage[thing] = custom_equip_leftovers[thing]
 		else
 			to_chat(H, "Your job is [rank] and the game just can't handle it! Please report this bug to an administrator.")
 
@@ -486,10 +489,9 @@ var/global/datum/controller/occupations/job_master
 
 				if(!isnull(B))
 					for(var/thing in spawn_in_storage)
-						to_chat(H, "<span class='notice'>Placing \the [thing] in your [B.name]!</span>")
 						var/datum/gear/G = gear_datums[thing]
-						var/metadata = H.client.prefs.gear[G.display_name]
-						G.spawn_item(B, metadata)
+						G.spawn_item(B, spawn_in_storage[thing])
+						to_chat(H, "<span class='notice'>Placing \the [G.display_name] in your [B.name]!</span>")
 				else
 					to_chat(H, "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no arms and no backpack or this is a bug.</span>")
 

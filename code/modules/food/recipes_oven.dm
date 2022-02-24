@@ -259,7 +259,7 @@
 		/obj/item/paper
 	)
 	result = /obj/item/reagent_containers/food/snacks/fortunecookie
-	make_food(var/obj/container as obj)
+	/* make_food(var/obj/container as obj) -- Commented out because it breaks the recipe, causing fortune cookies to be made with *just* 5 sugar, which conflicted with other recipes
 
 		var/obj/item/paper/paper
 
@@ -297,7 +297,7 @@
 				return 0
 			if (!paper.info)
 				return 0
-		return .
+		return . */
 
 /datum/recipe/poppypretzel
 	appliance = OVEN

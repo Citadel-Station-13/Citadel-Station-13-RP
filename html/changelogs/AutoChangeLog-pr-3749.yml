@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - bugfix: "fixed that champagne doesnt interact with shuttle consoles"

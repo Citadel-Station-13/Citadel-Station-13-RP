@@ -239,6 +239,9 @@
 /obj/machinery/door/airlock/hatch,
 /turf/simulated/shuttle/floor/yellow/airless,
 /area/submap/debrisfiled_vr/clownshuttle/cockpit)
+"lQ" = (
+/turf/simulated/shuttle/wall/hard_corner,
+/area/submap/debrisfiled_vr/clownshuttle)
 "mi" = (
 /turf/simulated/shuttle/wall,
 /area/submap/debrisfiled_vr/clownshuttle/atmos)
@@ -1222,7 +1225,7 @@ Aq
 (5,1,1) = {"
 Aq
 bw
-bw
+ow
 Wo
 Yj
 dd
@@ -1247,7 +1250,7 @@ Aq
 Aq
 Aq
 bw
-bw
+ow
 oX
 YA
 Ay
@@ -1262,7 +1265,7 @@ ge
 wi
 LJ
 Wc
-mi
+zR
 mi
 Aq
 Aq
@@ -1272,7 +1275,7 @@ Aq
 Aq
 Aq
 bw
-bw
+ow
 PL
 XK
 vc
@@ -1285,7 +1288,7 @@ nG
 ri
 kY
 Tz
-mi
+zR
 mi
 Aq
 Aq
@@ -1301,15 +1304,15 @@ bJ
 mA
 mA
 mA
-mA
+lQ
 Ax
 Gm
+lQ
 mA
 mA
 mA
 mA
-mA
-mA
+lQ
 Aq
 Aq
 Aq
@@ -1333,7 +1336,7 @@ oo
 oo
 oo
 eF
-mA
+lQ
 mA
 mA
 mA
@@ -1405,7 +1408,7 @@ FY
 FY
 RR
 al
-mA
+lQ
 mA
 mA
 mA
@@ -1421,15 +1424,15 @@ bJ
 mA
 mA
 mA
-mA
+lQ
 Ax
 Gm
+lQ
 mA
 mA
 mA
 mA
-mA
-mA
+lQ
 Aq
 Aq
 Aq
@@ -1440,7 +1443,7 @@ Aq
 Aq
 yI
 oA
-oA
+qr
 HT
 mN
 Vl
@@ -1453,7 +1456,7 @@ hF
 Pw
 Yn
 hF
-nI
+Hx
 nI
 Aq
 Aq
@@ -1463,7 +1466,7 @@ Aq
 Aq
 Aq
 oA
-oA
+qr
 ve
 PD
 Um
@@ -1478,7 +1481,7 @@ JT
 rO
 wP
 Is
-nI
+Hx
 nI
 Aq
 Aq
@@ -1486,7 +1489,7 @@ Aq
 (16,1,1) = {"
 Aq
 oA
-oA
+qr
 YO
 an
 an

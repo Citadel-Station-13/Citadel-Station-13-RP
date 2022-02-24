@@ -37,6 +37,7 @@
 	var/active = 0
 
 	var/memory
+	var/list/learned_recipes
 
 	var/assigned_role
 	var/special_role

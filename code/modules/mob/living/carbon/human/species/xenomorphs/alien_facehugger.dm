@@ -240,7 +240,9 @@ var/const/MAX_ACTIVE_TIME = 400
 		..()
 
 /obj/item/clothing/mask/facehugger/proc/Die()
-	visible_message("<span class='alert'>[src] dies!</span>")
+	if(stat != DEAD)
+		visible_message("<span class='alert'>[src] dies!</span>")
+		stat = DEAD
 	STOP_PROCESSING(SSobj, src)
 	walk(src, 0)
 	DeathIcon()

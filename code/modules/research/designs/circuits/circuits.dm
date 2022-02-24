@@ -422,6 +422,13 @@ CIRCUITS BELOW
 	build_path = /obj/item/circuitboard/skills
 	sort_string = "LAAAC"
 
+/datum/design/circuit/arf_generator
+	name = "atmospheric field generator"
+	id = "arf_generator"
+	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 4, TECH_BIO = 3)
+	build_path = /obj/item/circuitboard/arf_generator
+	sort_string = "LAAAD"
+
 /datum/design/circuit/mecha
 	req_tech = list(TECH_DATA = 3)
 
@@ -525,6 +532,27 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
 	build_path = /obj/item/circuitboard/mecha/honker/targeting
 	sort_string = "NAAEC"
+
+/datum/design/circuit/mecha/reticent_main
+	name = "'Reticent' central control"
+	id = "reticent_main"
+	req_tech = list(TECH_DATA = 5, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/reticent/main
+	sort_string = "NAAFA"
+
+/datum/design/circuit/mecha/reticent_peri
+	name = "'Reticent' peripherals control"
+	id = "reticent_peri"
+	req_tech = list(TECH_DATA = 5, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/reticent/peripherals
+	sort_string = "NAAFB"
+
+/datum/design/circuit/mecha/reticent_targ
+	name = "'Reticent' weapon control and targeting"
+	id = "reticent_targ"
+	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
+	build_path = /obj/item/circuitboard/mecha/reticent/targeting
+	sort_string = "NAAFC"
 
 /datum/design/circuit/tcom
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)

@@ -60,6 +60,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/r_skin = 238					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
 	var/g_skin = 206					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
 	var/b_skin = 179					//Skin color // Vorestation edit, so color multi sprites can aren't BLACK AS THE VOID by default.
+	var/s_base = ""						//For Adherent
 	var/r_eyes = 0						//Eye color
 	var/g_eyes = 0						//Eye color
 	var/b_eyes = 0						//Eye color
@@ -86,7 +87,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/antag_vis = "Hidden"			//How visible antag association is to others.
 
 		//Mob preview
-	var/icon/preview_icon = null
+	var/list/char_render_holders		//Should only be a key-value list of north/south/east/west = obj/screen.
+	var/static/list/preview_screen_locs = list(
+		"1" = "character_preview_map:2,7",
+		"2" = "character_preview_map:2,5",
+		"4"  = "character_preview_map:2,3",
+		"8"  = "character_preview_map:2,1",
+		"BG" = "character_preview_map:1,1 to 3,8"
+	)
 
 		//Jobs, uses bitflags
 	var/job_civilian_high = 0
@@ -156,6 +164,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/lastnews // Hash of last seen lobby news content.
 
 	var/show_in_directory = 1	//TFF 5/8/19 - show in Character Directory
+	var/directory_tag = "Unset" //Sorting tag to use in character directory
+	var/directory_erptag = "Unset"	//ditto, but for non-vore scenes
+	var/directory_ad = ""		//Advertisement stuff to show in character directory.
 	var/sensorpref = 5			//TFF 5/8/19 - set character's suit sensor level
 
 	// Should we automatically fit the viewport?
@@ -184,6 +195,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.update_movement_keys(src)
+
+/datum/preferences/Destroy()
+	. = ..()
+	QDEL_LIST_ASSOC_VAL(char_render_holders)
 
 /datum/preferences/proc/ZeroSkills(var/forced = 0)
 	for(var/V in SKILLS) for(var/datum/skill/S in SKILLS[V])
@@ -246,6 +261,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		close_load_dialog(user)
 		return
 
+	if(!char_render_holders)
+		update_preview_icon()
+	show_character_previews()
+
 	var/dat = "<html><body><center>"
 
 	if(path)
@@ -266,9 +285,50 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	dat += "</html></body>"
 	//user << browse(dat, "window=preferences;size=635x736")
-	var/datum/browser/popup = new(user, "Character Setup","Character Setup", 800, 800, src)
+	winshow(user, "preferences_window", TRUE)
+	var/datum/browser/popup = new(user, "preferences_browser", "Character Setup", 800, 800)
 	popup.set_content(dat)
-	popup.open()
+	popup.open(FALSE) // Skip registring onclose on the browser pane
+	onclose(user, "preferences_window", src) // We want to register on the window itself
+
+/datum/preferences/proc/update_character_previews(mutable_appearance/MA)
+	if(!client)
+		return
+
+	var/obj/screen/setup_preview/bg/BG= LAZYACCESS(char_render_holders, "BG")
+	if(!BG)
+		BG = new
+		BG.plane = TURF_PLANE
+		BG.icon = 'icons/effects/setup_backgrounds_vr.dmi'
+		BG.pref = src
+		LAZYSET(char_render_holders, "BG", BG)
+		client.screen |= BG
+	BG.icon_state = bgstate
+	BG.screen_loc = preview_screen_locs["BG"]
+
+	for(var/D in GLOB.cardinal)
+		var/obj/screen/setup_preview/O = LAZYACCESS(char_render_holders, "[D]")
+		if(!O)
+			O = new
+			O.pref = src
+			LAZYSET(char_render_holders, "[D]", O)
+			client.screen |= O
+		O.appearance = MA
+		O.dir = D
+		O.screen_loc = preview_screen_locs["[D]"]
+
+/datum/preferences/proc/show_character_previews()
+	if(!client || !char_render_holders)
+		return
+	for(var/render_holder in char_render_holders)
+		client.screen |= char_render_holders[render_holder]
+
+/datum/preferences/proc/clear_character_previews()
+	for(var/index in char_render_holders)
+		var/obj/screen/S = char_render_holders[index]
+		client?.screen -= S
+		qdel(S)
+	char_render_holders = null
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
 	if(!user)	return
@@ -318,6 +378,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		overwrite_character(text2num(href_list["overwrite"]))
 		sanitize_preferences()
 		close_load_dialog(usr)
+	else if(href_list["close"])
+		// User closed preferences window, cleanup anything we need to.
+		clear_character_previews()
+		return 1
 	else
 		return 0
 
@@ -339,6 +403,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	// VOREStation Edit - Sync up all their organs and species one final time
 	character.force_update_organs()
+//	character.s_base = s_base //doesn't work, fuck me
 
 	if(icon_updates)
 		character.force_update_limbs()

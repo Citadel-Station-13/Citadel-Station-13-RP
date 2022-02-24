@@ -220,17 +220,19 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/poi/covert_post)
 "U" = (
-/obj/machinery/door/airlock/gold{
-	name = "Hidden Outpost"
-	},
 /obj/item/bananapeel,
+/obj/machinery/door/airlock/bananium,
+/turf/simulated/floor/tiled/white,
+/area/tether_away/beach/desert/poi/covert_post)
+"V" = (
+/mob/living/simple_mob/animal/passive/honkpet{
+	name = "Hunkle"
+	},
 /turf/simulated/floor/tiled/white,
 /area/tether_away/beach/desert/poi/covert_post)
 "W" = (
-/obj/machinery/door/airlock/gold{
-	name = "Shrine"
-	},
 /obj/item/bananapeel,
+/obj/machinery/door/airlock/bananium,
 /turf/simulated/floor/bananium,
 /area/tether_away/beach/desert/poi/covert_post)
 "X" = (
@@ -244,9 +246,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether_away/beach/desert/poi/covert_post)
 "Z" = (
-/obj/machinery/door/airlock/gold{
-	name = "Dormitory"
-	},
+/obj/machinery/door/airlock/bananium,
 /turf/simulated/floor/wood,
 /area/tether_away/beach/desert/poi/covert_post)
 
@@ -430,7 +430,7 @@ I
 r
 y
 C
-C
+V
 y
 y
 J

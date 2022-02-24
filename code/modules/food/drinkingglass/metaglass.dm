@@ -916,3 +916,49 @@ Drinks Data
 
 /datum/reagent/drink/greenstuff
 	glass_icon_state = "greenstuff"
+
+/datum/reagent/ethanol/russianbastard
+	glass_icon_state = "ginvodkaglass"
+	glass_center_of_mass = list("x"=16, "y"=12)
+
+/datum/reagent/ethanol/willtolive
+	glass_icon_state = "willtolive"
+
+/datum/reagent/ethanol/desiretodie
+	glass_icon_state = "desiretodie"
+
+/datum/reagent/drink/raspberrybeesknees
+	glass_icon_state = "raspberrybeesknees"
+
+/datum/reagent/drink/sidecar
+	glass_icon_state = "sidecar"
+
+/datum/reagent/drink/french75
+	glass_icon_state = "french75"
+
+/datum/reagent/drink/french76
+	glass_icon_state = "french75"
+
+/datum/reagent/drink/lastword
+	glass_icon_state = "lastword"
+
+/datum/reagent/drink/watermelonsmoothie
+	glass_icon_state = "watermelonsmoothie"
+
+/datum/reagent/drink/orangesmoothie
+	glass_icon_state = "orangesmoothie"
+
+/datum/reagent/drink/limesmoothie
+	glass_icon_state = "limesmoothie"
+
+/datum/reagent/drink/lemonsmoothie
+	glass_icon_state = "lemonsmoothie"
+
+/datum/reagent/drink/berrysmoothie
+	glass_icon_state = "berrysmoothie"
+
+/datum/reagent/drink/applesmoothie
+	glass_icon_state = "applesmoothie"
+
+/datum/reagent/drink/grapesmoothie
+	glass_icon_state = "grapesmoothie" // fuck linters

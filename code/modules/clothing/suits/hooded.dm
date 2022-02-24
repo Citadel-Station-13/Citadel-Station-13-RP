@@ -178,6 +178,13 @@
 	/obj/item/reagent_containers/spray/pepper,/obj/item/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,
 	/obj/item/handcuffs,/obj/item/clothing/head/helmet)
 
+/obj/item/clothing/suit/storage/hooded/wintercoat/security/hos
+	name = "head of security's winter coat"
+	desc = "A comfortable winter coat with a robust Kevlar underlayer and a built-in holster. The red and gold insignia on the sleeves denote the wearer's position as Head of Security."
+	icon_state = "coathos"
+	item_state_slots = list(slot_r_hand_str = "coathos", slot_l_hand_str = "coathos")
+	hoodtype = /obj/item/clothing/head/hood/winter/hos
+
 /obj/item/clothing/suit/storage/hooded/wintercoat/medical
 	name = "medical winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs, there's a thick weave of sterile material, good for virus outbreaks!"
@@ -467,3 +474,24 @@
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/material/knife)
 
+/obj/item/clothing/suit/storage/hooded/cloak/goliath
+	name = "goliath cloak"
+	desc = "A staunch, practical cape made out of numerous monster materials, it is coveted amongst exiles & hermits."
+	icon_state = "goliath_cloak"
+	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
+	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone, /obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone)
+	armor = list("melee" = 35, "bullet" = 10, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60) //a fair alternative to bone armor, requiring alternative materials and gaining a suit slot
+	hoodtype = /obj/item/clothing/head/hood/goliath
+	body_parts_covered = UPPER_TORSO|ARMS|LEGS
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+
+/obj/item/clothing/suit/storage/hooded/cloak/drake
+	name = "drake armour"
+	icon_state = "dragon"
+	desc = "A suit of armour fashioned from the remains of an ash drake."
+	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/mining_scanner/advanced, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/material/twohanded/spear)
+	armor = list("melee" = 70, "bullet" = 20, "laser" = 35, "energy" = 25, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
+	hoodtype = /obj/item/clothing/head/hood/drake
+	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE

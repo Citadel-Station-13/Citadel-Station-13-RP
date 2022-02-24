@@ -174,6 +174,7 @@
 		"hematite" = 1,
 		"carbon" = 1,
 		"phoron" = 15,
+		"copper" = 15,
 		"silver" = 16,
 		"gold" = 18,
 		"marble" = 20,
