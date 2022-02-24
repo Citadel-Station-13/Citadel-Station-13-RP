@@ -630,21 +630,73 @@
 	base_turf = /turf/simulated/floor/outdoors/lavaland
 	dynamic_lighting = 1
 
-/area/lavaland/base
-	name = "Lava Land - Mining Base"
+/area/lavaland/central/base
+	name = "Lava Land (Center) - Mining Base"
 	icon_state = "green"
 	requires_power = 0
 
-/area/lavaland/base/common
-	name = "Lava Land - Mining Base"
+/area/lavaland/central/base/common
+	name = "Lava Land (Center) - Mining Base"
 	icon_state = "blue"
 	requires_power = 1
-/area/lavaland/explored
-	name = "Lava Land - Thoroughfare"
+/area/lavaland/central/explored
+	name = "Lava Land (Center) - Thoroughfare"
 	icon_state = "red"
 
-/area/lavaland/unexplored
-	name = "Lava Land - Unknown"
+/area/lavaland/central/unexplored
+	name = "Lava Land (Center) - Unknown"
+	icon_state = "yellow"
+
+/area/lavaland/north/explored
+	name = "Lava Land (North) - Thoroughfare"
+	icon_state = "red"
+
+/area/lavaland/north/unexplored
+	name = "Lava Land (North) - Unknown"
+	icon_state = "yellow"
+
+/area/lavaland/south/explored
+	name = "Lava Land (South) - Thoroughfare"
+	icon_state = "red"
+
+/area/lavaland/south/unexplored
+	name = "Lava Land (South) - Unknown"
+	icon_state = "yellow"
+
+/area/lavaland/east/explored
+	name = "Lava Land (East) - Thoroughfare"
+	icon_state = "red"
+
+/area/lavaland/east/unexplored
+	name = "Lava Land (East) - Unknown"
+	icon_state = "yellow"
+
+/area/lavaland/east/lab
+	name = "Lava Land (East) - S4"
+	icon_state = "green"
+	requires_power = 0
+
+/area/lavaland/east/lab/core
+	name = "Lava Land (East) - S4"
+	icon_state = "blue"
+	requires_power = 1
+
+/area/lavaland/east/lab/containment
+	name = "Lava Land (East) - S4 Containment"
+	icon_state = "blue"
+	requires_power = 1
+
+/area/lavaland/east/lab/bunker
+	name = "Lava Land (East) - S4 Bunker"
+	icon_state = "blue"
+	requires_power = 1
+
+/area/lavaland/west/explored
+	name = "Lava Land (West) - Thoroughfare"
+	icon_state = "red"
+
+/area/lavaland/west/unexplored
+	name = "Lava Land (West) - Unknown"
 	icon_state = "yellow"
 
 

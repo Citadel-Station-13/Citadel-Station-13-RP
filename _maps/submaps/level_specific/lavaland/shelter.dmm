@@ -71,7 +71,7 @@
 "U" = (
 /obj/structure/table/woodentable,
 /obj/item/paper/crumpled/bloody{
-	info = "The rumbling keeps getting louder. Ariel left to get supplies, even though the drones are still out of control. If she takes too much longer I'll have to seal the doors. It feels like the roof is going to come down.";
+	info = "The rumbling keeps getting louder. Alice left to get supplies, even though the drones are still out of control. If she takes too much longer I'll have to seal the doors. It feels like the roof is going to come down.";
 	name = "journal scrap"
 	},
 /turf/simulated/floor/wood,

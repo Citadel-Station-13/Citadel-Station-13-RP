@@ -23,6 +23,7 @@
 
 #define Z_LEVEL_TRADEPORT				20
 #define Z_LEVEL_LAVALAND				21
+#define Z_LEVEL_LAVALAND_EAST			22
 
 // Camera Networks
 /datum/map/triumph
@@ -150,10 +151,11 @@
 		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
 		list("Gaia Planet - Z3 Planet"), // Gaia Planet
-		list("Forzen Planet - Z4 Planet"), // Frozen Planet
+		list("Frozen Planet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land")
+		list("Away Mission - Lava Land"),
+		list("Away Mission - Lava Land (East)")
 	)
 
 	ai_shell_restricted = TRUE
@@ -170,7 +172,8 @@
 		Z_LEVEL_GAIA_PLANET,
 		Z_LEVEL_FROZEN_PLANET,
 		Z_LEVEL_TRADEPORT,
-		Z_LEVEL_LAVALAND)
+		Z_LEVEL_LAVALAND,
+		Z_LEVEL_LAVALAND_EAST)
 
 	lateload_single_pick = null //Nothing right now.
 

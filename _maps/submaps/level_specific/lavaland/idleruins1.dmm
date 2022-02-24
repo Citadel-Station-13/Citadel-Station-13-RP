@@ -59,7 +59,7 @@
 "H" = (
 /obj/structure/table/woodentable,
 /obj/item/paper/crumpled/bloody{
-	info = "Jacob stayed behind at the shelter, so I know he'll be okay. We've been bunkered down for days now. The seismic activity is getting worse, but the barricades are holding. They're adapting, we think. Someone says they saw a cat, probably from the colony. Sick bastards. We're talking about trying to move out for the shuttles at first light. Jacob, if you're reading this, meet me there. I love you. -A";
+	info = "Jason stayed behind at the shelter, so I know he'll be okay. We've been bunkered down for days now. The seismic activity is getting worse, but the barricades are holding. They're adapting, we think. Someone says they saw a cat, probably from the colony. Sick bastards. We're talking about trying to move out for the shuttles at first light. Jason, if you're reading this, meet me there. I love you. -A";
 	name = "weathered note"
 	},
 /turf/simulated/floor/wood,
