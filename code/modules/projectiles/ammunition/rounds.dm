@@ -121,7 +121,6 @@
 	projectile_type = /obj/item/projectile/bullet/pistol/hunter
 	matter = list(DEFAULT_WALL_MATERIAL = 80)
 
-
 /obj/item/ammo_casing/a9mm/flash
 	desc = "A 9mm flash shell casing."
 	icon_state = "r-casing"
@@ -142,6 +141,30 @@
 	icon_state = "ag-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
+
+/*
+ * 5.7
+ */
+/obj/item/ammo_casing/a57x28mm
+	desc = "A 5.7x28mm bullet casing."
+	caliber = "5.7x28mm"
+	projectile_type = /obj/item/projectile/bullet/pistol/lap
+	matter = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/ap
+	desc = "A 5.7x28mm armor-piercing bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/ap
+	matter = list(DEFAULT_WALL_MATERIAL = 80, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/hp
+	desc = "A 5.7x28mm hollow-point bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hp
+	matter = list(DEFAULT_WALL_MATERIAL = 60, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/hunter
+	desc = "A 5.7x28mm hunting bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hunter
+	matter = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 50)
 
 /*
  * .45

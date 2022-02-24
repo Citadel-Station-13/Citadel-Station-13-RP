@@ -405,23 +405,6 @@
 	name = "top mounted magazine (9mm practice)"
 	ammo_type = /obj/item/ammo_casing/a9mm/practice
 
-/obj/item/ammo_magazine/m9mmp90
-	name = "large capacity top mounted magazine (9mm armor-piercing)"
-	icon_state = "p90"
-	mag_type = MAGAZINE
-	ammo_type = /obj/item/ammo_casing/a9mm/ap
-	matter = list(DEFAULT_WALL_MATERIAL = 3000)
-	caliber = "9mm"
-	max_ammo = 50
-	multiple_sprites = 1
-
-/obj/item/ammo_magazine/m9mmp90/hunter
-	name = "large capacity top mounted magazine (9mm hunter)"
-	ammo_type = /obj/item/ammo_casing/a9mm/hunter
-
-/obj/item/ammo_magazine/m9mmp90/empty
-	initial_ammo = 0
-
 /obj/item/ammo_magazine/clip/c9mm
 	name = "ammo clip (9mm)"
 	icon_state = "clip_pistol"
@@ -472,6 +455,80 @@
 	matter = list(DEFAULT_WALL_MATERIAL = 2000)
 
 /obj/item/ammo_magazine/m9mmR/saber/empty
+	initial_ammo = 0
+
+/////// 5.7x28mm ////////
+/obj/item/ammo_magazine/m57x28mm
+	name = "magazine (5.7x28mm)"
+	desc = "A sturdy double stack magazine with a reinforced spring, designed for withstanding rough treatment."
+	icon_state = "fiveseven"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 300, "copper" = 300)
+	caliber = "5.7x28mm"
+	ammo_type = /obj/item/ammo_casing/a57x28mm
+	max_ammo = 15
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m57x28mm/ap
+	name = "magazine (5.7x28mm armor piercing)"
+	desc = "A standard capacity magazine loaded with armor piercing bullets."
+	ammo_mark = "ap"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
+
+/obj/item/ammo_magazine/m57x28mm/hp
+	name = "magazine (5.7x28mm hollow-point)"
+	ammo_mark = "hp"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
+
+/obj/item/ammo_magazine/m57x28mm/hunter
+	name = "magazine (5.7x28mm hunter)"
+	ammo_mark = "hunter"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
+
+/obj/item/ammo_magazine/m57x28mm/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/m57x28mm/large
+	name = "large capacity magazine (5.7x28mm)"
+	icon_state = "fiveseven_highcap"
+	max_ammo = 30
+	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
+
+/obj/item/ammo_magazine/m57x28mm/large/ap
+	name = "large capacity magazine (5.7x28mm armor piercing)"
+	desc = "A high capacity magazine loaded with armor piercing bullets."
+	ammo_mark = "ap"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
+/obj/item/ammo_magazine/m57x28mm/large/hp
+	name = "large capacity magazine (5.7x28mm hollow-point)"
+	ammo_mark = "hp"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
+
+/obj/item/ammo_magazine/m57x28mm/large/hunter
+	name = "large capacity magazine (5.7x28mm hunter)"
+	ammo_mark = "hunter"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
+
+/obj/item/ammo_magazine/m57x28mm/large/empty
+	initial_ammo = 0
+
+//p90
+/obj/item/ammo_magazine/m57x28mmp90
+	name = "large capacity top mounted magazine (5.7x28mm armor-piercing)"
+	icon_state = "p90"
+	mag_type = MAGAZINE
+	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
+	matter = list(DEFAULT_WALL_MATERIAL = 1500, "copper" = 1500)
+	caliber = "5.7x28mm"
+	max_ammo = 50
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/m57x28mmp90/hunter
+	name = "large capacity top mounted magazine (5.7x28mm hunter)"
+	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
+
+/obj/item/ammo_magazine/m57x28mmp90/empty
 	initial_ammo = 0
 
 ///////// 10mm /////////
