@@ -647,3 +647,65 @@
 /obj/item/paper/particle_info
 	name = "Particle Control Panel - A Troubleshooter's Guide"
 	info = "If the Particle Control panel is not responding to inputs, simply toggle power to equipment and/or flip the breaker on your local Area Power Controller (APC). Turn the power off, and then back on again. This will resolve the issue."
+
+//Lava Land Colony Notes
+/obj/item/paper/lavaland
+	name = "Informal Incident Report"
+	icon_state = "paper_words"
+	info = "<I>\[The script on the page is precise and legible, although damage to the corner suggests it was ripped from a larger document.]</I><BR><I>...olonists don't know what got out yet. Following protocol, I have disabled all outbound communications systems. \nParapet didn't get down the Firebreak in time. Presumed dead.<BR>\nRations may last the quarantine period, but it'll be tight.<BR>\nI'm starting to lose track of the days. I can barely sleep. The rations might last another week. They should have at least sent an Agent by now. I'm destroying the hard copy documentation of our research, and I've set the laptop drive to format if I stop inputting updates.</I>"
+
+/obj/item/paper/lavaland/alice
+	name = "from Alice"
+	icon_state = "scrap_bloodied"
+	info = "<I>\[This crumpled note is smeared with dry blood. The text has been written around the stains, implying it was damaged prior to the note being written.]</I><BR><I>It's clear no one is coming. I sent Ruth and Milo to the pump substation. Neither of them asked how they were getting back. \nI was glad. \nI hadn't thought up a good lie for the occasion. \nSoon, the failsafes will be vaporized and the caldera will fill with lava, cleansing the abomination for good. If you're somehow reading this, whoever you are, don't let them forget what happened here. \n- Alice Rostlin</I>"
+
+/obj/item/paper/lavaland/goodbye
+	name = "goodbye"
+	info = "<I>\[The edges of this sheet of paper are singed and torn. The script is legible and neatly written, but grows more unsteady near the end.]</I><BR><I>This is it. \nMilo's already made his way down the staircase. He understood when I asked for a moment alone. \nAlice explained that when the charges go off, the pumps won't be able to keep the lava out, so the entire caldera will fill up. It's a small comfort, to know that even if my body survives the explosion, the lava will spare me the fate of the other colonists. \nGod. I'm not ready for this. I'll see you soon Cara.</I>"
+
+/obj/item/paper/lavaland/kitchen
+	name = "Watch Out!"
+	info = "<I>If you're reading this, stay away from the Town Hall! They broke through the barricades this morning! Me and Tyson are gonna try and hole up in the kitchen. Should be plenty of food in there.</I>"
+
+/obj/item/paper/lavaland/medical
+	name = "Medical Report - Unknown Patient"
+	info = "<I>\[This is an excerpt from a larger document. Parts of the paper have been neatly cut out after the fact.]</I><BR><I>...ame screaming into the Infirmary, claiming to be one of the Researchers from the...to the North. Patient claimed that they were sick and then collapsed. \nWe are not equipped to handle a viral outbreak. \nI have attempted to radio Command, but have since been advised by Alice that the comms network is temporarily down. \nStudy of the patient's injuries has yiel...</I>"
+
+/obj/item/paper/lavaland/miner
+	name = "hastily scrawled note"
+	icon_state = "scrap_bloodied"
+	info = "<I>\[This crumpled paper is splattered with blood. What text is visible appears to have been written down quickly with an unsteady hand.]</I><BR><I>...m sorry im not coming home we had to fall back to the refinery they know were here no one is coming why is no one comin...</I>"
+
+/obj/item/paper/lavaland/noise
+	name = "Page from a Journal"
+	info = "<I>\[This is the last page from a missing journal There is only one entry.]</I><BR><I>The Doc has been acting so weird since that guy came screaming into town. Now him and all those colonists who've been listening to his speeches are out building themselves a chapel on the edge of the colony. \nI don't care what people believe, but they should keep it down! \nI'm going to the Mayor with this if they don't stop making such a racket.</I>"
+
+/obj/item/paper/lavaland/rockin
+	name = "Keep On Rockin'"
+	info = "<I>\[This paper is coated in grease smugdges and snack dust.]</I><BR><I>Vending machine ran out of snacks a week ago. Alice said rescue would be here last month, before she took her group over the ridge. \nThe thing that used to be Kayla still talks to me through the door sometimes. I don't wanna hear it any more. \nI'm cracking open the stash, not like anyone's testing us anyways. Maybe I'll stop hearing them walk around then. \nSomeone else's problem now. \nGonna ride the wave one last time, baby.</I>"
+
+/obj/item/paper/lavaland/sermon
+	name = "Sermon"
+	info = "<I>\[This sheet of paper is splattered with blood and what seems to be oil. The text is still legible, although it was written by an unsteady hand.]</I><BR><I>We go now to commune with the Great Designer, who hath sent his messenger - The Changed One. \nThe heretics seek to batter down our doors, but we have already drunk from the Cup of the Sacrament, and now we hasten our escape from the bondage of meat. \nGlory! Glory! Glory to the Great Designer!</I>"
+
+/obj/item/paper/lavaland/townhall
+	name = "Page Torn from a Journal"
+	icon_state = "scrap"
+	info = "<I>\[This page appears to have been ripped from a missing journal mid-entry.]</I><BR><I>...he Mayor says we just need to bunker down here and wait for rescue. Alice says the comms net has been down for a week and no one even knows we're in trouble. \nShe left for the other side of the ridge with a few of the miners last night. Mayor says that's the last we'll see of them. \nSELENIUM thinks keeping the curtains closed will be good enou-</I>"
+
+/*
+//These are being phased out of their respective POI maps due to clashes with the updated story, and their habit of appearing multiple times on a Z level due to POI Gen.
+
+/obj/item/paper/lavaland/bunker
+	name = "journal scrap"
+	info = "<I>The rumbling keeps getting louder. Alice left to get supplies, even though the drones are still out of control. If she takes too much longer I'll have to seal the doors. It feels like the roof is going to come down.</I>"
+
+//I really like this one, but POI gen...
+/obj/item/paper/lavaland/botany
+	name = "oil streaked note"
+	info = "<I>Them bastards went and finally cracked 'er up, jus like I've been sayin' they would. Well t' hell with all of 'em. That girl Alice stopped by earlier, tellin' me the survivors are tryin' to band together at th' landing pads. Well those fools are gonna need food if they want to last more'n a day. So what does that leave me to do but stay here? Damn fools, the lot of 'em. I've got sturdy walls and plenty of soil. They can starve, like they deserve.</I>"
+
+/obj/item/paper/lavaland/oldtownhall
+	name = "weathered note"
+	info = "<I>Jason stayed behind at the shelter, so I know he'll be okay. We've been bunkered down for days now. The seismic activity is getting worse, but the barricades are holding. They're adapting, we think. Someone says they saw a cat, probably from the colony. Sick bastards. We're talking about trying to move out for the shuttles at first light. Jason, if you're reading this, meet me there. I love you. -A</I>"
+*/

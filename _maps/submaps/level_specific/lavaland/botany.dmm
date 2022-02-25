@@ -18,14 +18,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
-"g" = (
-/obj/structure/table/woodentable,
-/obj/item/paper/crumpled{
-	desc = "oil streaked note";
-	info = "Them bastards went and finally cracked 'er up, jus like I've been sayin' they would. Well t' hell with all of 'em. That girl Alice stopped by earlier, tellin' me the survivors are tryin' to band together at th' landing pads. Well those fools are gonna need food if they want to last more'n a day. So what does that leave me to do but stay here? Damn fools, the lot of 'em. I've got sturdy walls and plenty of soil. They can starve, like they deserve."
-	},
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/idleruins)
 "k" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/lavaland,
@@ -267,7 +259,7 @@ c
 W
 W
 Q
-g
+k
 v
 N
 W

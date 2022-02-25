@@ -65,14 +65,6 @@
 /obj/structure/table,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
-"U" = (
-/obj/structure/table/woodentable,
-/obj/item/paper/crumpled/bloody{
-	info = "The rumbling keeps getting louder. Alice left to get supplies, even though the drones are still out of control. If she takes too much longer I'll have to seal the doors. It feels like the roof is going to come down.";
-	name = "journal scrap"
-	},
-/turf/simulated/floor/wood/lavaland,
-/area/lavaland/idleruins)
 "W" = (
 /obj/structure/bed/double,
 /turf/simulated/floor/wood/lavaland,
@@ -120,7 +112,7 @@ a
 (4,1,1) = {"
 a
 n
-U
+r
 O
 O
 O
