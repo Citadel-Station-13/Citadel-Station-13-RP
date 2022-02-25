@@ -201,3 +201,44 @@
 	hitsound = 'sound/weapons/chainsaw_attack.ogg'
 	armor_penetration = 30
 
+//Lalilulelo?
+/obj/item/melee/nanite_knife
+	name = "writhing blade"
+	desc = "A jagged blade made out of a strangely shimmering metal. Its wicked shape splits and curls in on itself with cold mutability."
+	icon_state = "writhing"
+	item_state = "knife"
+	slot_flags = SLOT_BELT
+	force = 30
+	throwforce = 10
+	w_class = ITEMSIZE_NORMAL
+	sharp = 1
+	edge = 1
+	attack_verb = list("grasped", "torn", "cut", "pierced", "lashed")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	armor_penetration = 10
+	var/poison_chance = 100
+	var/poison_amount = 5
+	var/poison_type = "shredding_nanites"
+
+/obj/item/melee/nanite_knife/attack(mob/living/M, mob/living/user, target_zone, attack_modifier)
+	. = ..()
+	if(isliving(M))
+		if(M.reagents)
+			target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
+			if(M.can_inject(src, null, target_zone))
+				inject_poison(M, target_zone)
+
+ // Does actual poison injection, after all checks passed.
+/obj/item/melee/nanite_knife/proc/inject_poison(mob/living/M, target_zone)
+	if(prob(poison_chance))
+		to_chat(M, "<span class='warning'>You feel nanites digging into your skin!</span>")
+		M.reagents.add_reagent(poison_type, poison_amount)
+
+/obj/item/melee/nanite_knife/suicide_act(mob/user)
+	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	user.visible_message(pick("<span class='danger'>\The [user] is shoving \the [src] into [TU.is] chest! It looks like [TU.he] [TU.is] trying to commit suicide.</span>",\
+		"<span class='danger'>\The [user] is stabbing themselves with \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
+	var/turf/T = get_turf(src)
+	user.gib()
+	new /mob/living/simple_mob/mechanical/cyber_horror(T)
+	return
