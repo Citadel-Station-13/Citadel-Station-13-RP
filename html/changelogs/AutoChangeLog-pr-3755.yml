@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - bugfix: "Fixed the Phoronlock Stationary scrubber cooling gas instantly"
