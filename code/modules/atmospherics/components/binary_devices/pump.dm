@@ -271,6 +271,11 @@ Thus, the two variables affect pump operation are set in New():
 		update_icon()
 
 /obj/machinery/atmospherics/binary/pump/attackby(var/obj/item/W as obj, var/mob/user as mob)
+	if(istype(W, /obj/item/pen))
+		var/new_name = input(user, "Please enter the new name for this device:", "New Name")  as text|null
+		new_name = trim(new_name)
+		name = (new_name? new_name : name)
+		return
 	if (!W.is_wrench())
 		return ..()
 	if (!(stat & NOPOWER) && use_power)
