@@ -2,7 +2,7 @@
 "a" = (
 /obj/structure/table/woodentable,
 /obj/item/flame/candle/candelabra/everburn,
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "c" = (
 /obj/structure/table/woodentable,
@@ -10,56 +10,65 @@
 	dat = "The majority of the text has faded or been defaced. Several snippets of prayers are legible, but not enough to determine their intent. The phrases 'Great Designer', 'change', and 'flesh' appear repeatedly.";
 	name = "Tenets of The Great Designer"
 	},
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "i" = (
 /obj/structure/girder,
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
+/area/lavaland/horrors)
+"j" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/structure/bed/chair/pew/left{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "k" = (
 /turf/simulated/wall/r_wall,
 /area/lavaland/horrors)
 "m" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/horrors)
 "o" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/structure/table/bench/sifwooden/padded,
-/turf/simulated/floor/bmarble,
+/obj/structure/bed/chair/pew/right{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "q" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "u" = (
 /turf/template_noop,
 /area/template_noop)
 "v" = (
 /obj/structure/girder/displaced,
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "x" = (
 /obj/structure/statue/gold/rd,
-/turf/simulated/floor/bmarble,
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "y" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/horrors)
 "A" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "E" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "I" = (
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "M" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/template_noop)
 "N" = (
 /turf/template_noop,
@@ -67,33 +76,35 @@
 "O" = (
 /obj/item/flame/candle/candelabra/everburn,
 /obj/structure/table/woodentable,
-/turf/simulated/floor/bmarble,
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "P" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/wmarble,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
 "U" = (
 /obj/structure/table,
 /obj/item/flame/candle/candelabra,
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "V" = (
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/horrors)
 "X" = (
-/turf/simulated/floor,
+/turf/simulated/floor/lavaland,
 /area/lavaland/horrors)
 "Y" = (
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/table/bench/sifwooden/padded,
-/turf/simulated/floor/bmarble,
+/obj/structure/bed/chair/pew/left{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "Z" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/horrors)
 
 (1,1,1) = {"
@@ -189,7 +200,7 @@ k
 E
 Y
 I
-o
+j
 I
 Y
 U
@@ -238,11 +249,11 @@ u
 k
 O
 I
-o
+j
 P
 Y
 I
-o
+j
 I
 X
 N

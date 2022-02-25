@@ -671,6 +671,11 @@
 	name = "Lava Land (East) - Unknown"
 	icon_state = "yellow"
 
+/area/lavaland/east/colony
+	name = "Lava Land (East) - Colony"
+	icon_state = "blue"
+	requires_power = 1
+
 /area/lavaland/east/lab
 	name = "Lava Land (East) - S4"
 	icon_state = "green"

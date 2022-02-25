@@ -7,41 +7,41 @@
 /obj/structure/closet/crate,
 /obj/random/multiple/treasure,
 /obj/item/bone/skull,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/bosses)
 "m" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/bosses)
 "B" = (
 /mob/living/simple_mob/vore/aggressive/corrupthound/surt,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 "D" = (
 /obj/structure/loot_pile/surface/bones,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 "I" = (
 /obj/effect/decal/remains/posi,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 "O" = (
 /obj/effect/decal/remains/unathi,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 "T" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 "U" = (
-/turf/simulated/floor/outdoors/lava,
+/turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/bosses)
 "X" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 "Z" = (
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 
 (1,1,1) = {"
