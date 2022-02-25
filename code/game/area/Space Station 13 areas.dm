@@ -1034,6 +1034,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper AI Maintenance"
 	sound_env = SEWER_PIPE
 
+/area/maintenance/cave
+	name = "\improper Natural Caves"
+
+/area/maintenance/cave/lower
+	name = "\improper lower Natural Caves"
+
+/area/maintenance/cave/upper
+	name = "\improper upper Natural Caves"
 
 // SUBSTATIONS (Subtype of maint, that should let them serve as shielded area during radstorm)
 
@@ -3388,6 +3396,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/exploration/pathfinder_office
 	name = "\improper Pathfinder's Office"
 
+/area/exploration/pathfinder_dorm
+	name = "\improper Pathfinder's Dorm"
 
 //Elevator areas
 // Used for creating the exchange areas.
@@ -3433,6 +3443,44 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lift_floor_name = "Exploration, Arrivals & Departures, Security, Command, Chapel, Sauna, Docking Arm, Library, Garden, Tool Storage"
 	lift_announce_str = "Arriving at Deck 4."
 
+//Magmarift elevators:
+//cargo lift:
+/area/turbolift/magmatic_rift/cargo/lower
+	name = "Mining Access - Lift"
+	lift_floor_label = "Mining Access - Under construction"
+	lift_floor_name = "Mining field access, Caverns"
+	lift_announce_str = "Arriving at Mining Access"
+
+/area/turbolift/magmatic_rift/cargo/secondary
+	name = "Secondary Cargo Office - Lift"
+	lift_floor_label = "Secondary Cargo Office"
+	lift_floor_name = "Secondary Cargo Office"
+	lift_announce_str = "Arriving at the secondary office"
+
+/area/turbolift/magmatic_rift/cargo/main
+	name = "Main Cargo Office - Lift"
+	lift_floor_label = "Main Cargo Office"
+	lift_floor_name = "Main Cargo Office, Mining Refinery, Airfield"
+	lift_announce_str = "Arriving at Main Cargo Office"
+
+//Main station Lift
+/area/turbolift/magmatic_rift/lower
+	name = "Lower Level - Lift"
+	lift_floor_label = "Lower Station"
+	lift_floor_name = "Holodeck, Gym, Theater, Caves"
+	lift_announce_str = "Arriving at Station Lower"
+
+/area/turbolift/magmatic_rift/middle
+	name = "Primary Level - Lift"
+	lift_floor_label = "Primary Station Level"
+	lift_floor_name = "Bar, Kitchen, Command, Science, Security, Engineering, Medical Bay"
+	lift_announce_str = "Arriving at Primary Level"
+
+/area/turbolift/magmatic_rift/upper
+	name = "Upper Level - Lift"
+	lift_floor_label = "Upper Station"
+	lift_floor_name = "Airfield, Chapel, Cargo, Pools, Anomaly Lab, Toxins Lab"
+	lift_announce_str = "Arriving at Station Upper"
 
 //Debug/Code areas
 
@@ -3472,6 +3520,22 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/triumph/station/dock_two
 	name = "\improper Dock Two"
 	icon_state = "dk_yellow"
+
+//Outside areas
+/area/outside
+	name = "\improper Proximity - Outside"
+	sound_env = MOUNTAINS
+
+//Outside areas for the magnetic rift station
+/area/outside/magmatic_rift/lava_lake
+	name = "\improper Outside - Lava Beach"
+
+/area/outside/magamatic_rift/main_level
+	name = "\improper Outside - Cliff surface"
+
+/area/outside/magmatic_rift/cliff_top
+	name = "\improper Outside - Plateau"
+
 
 /////////////////////////////////////////////////////////////////////
 /*
