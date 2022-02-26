@@ -170,16 +170,16 @@
 	dynamic_lighting = 1
 
 /area/frozen_planet/facility
-	name = "Gaia Planet - Facility"
+	name = "Class F World - Facility"
 	requires_power = 1
 	icon_state = "red"
 
 /area/frozen_planet/ruins
-	name = "Gaia Planet - Ruins"
+	name = "Class F World - Ruins"
 	icon_state = "green"
 
 /area/frozen_planet/outside
-	name = "Gaia Planet - Outside (UE)"
+	name = "Class F World - Unexplored (UE)"
 	icon_state = "yellow"
 
 //Gaia planet world areas

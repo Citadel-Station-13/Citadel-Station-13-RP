@@ -80,6 +80,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
+"aW" = (
+/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "ba" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -213,6 +217,29 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"df" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/artifact_harvester,
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
+"dk" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/brigdoor/eastright,
+/obj/item/archaeological_find,
+/obj/structure/anomaly_container{
+	name = "ACH-S4-3Ca"
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/containment)
 "dx" = (
 /obj/structure/sink{
 	dir = 8;
@@ -443,6 +470,12 @@
 "hM" = (
 /turf/simulated/wall/lavaland,
 /area/lavaland/east/colony)
+"hR" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/blue/border,
+/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/surt,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "ia" = (
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled,
@@ -482,8 +515,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/anomaly_container,
 /obj/machinery/door/window/brigdoor/westleft,
+/obj/item/archaeological_find,
+/obj/structure/anomaly_container{
+	name = "ACH-S4-2Kz"
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
 "ji" = (
@@ -569,8 +605,9 @@
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "kg" = (
+/obj/structure/railing,
 /obj/structure/boulder,
-/turf/simulated/mineral/ignore_mapgen/lavaland,
+/turf/simulated/floor/outdoors/rocks/lavaland,
 /area/lavaland/east/colony)
 "kh" = (
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -727,6 +764,10 @@
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
+"nb" = (
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/east/colony)
 "nc" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/nanotrasen,
@@ -872,6 +913,11 @@
 	},
 /obj/effect/decal/cleanable/vomit,
 /turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"oY" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "oZ" = (
 /obj/structure/bed,
@@ -1029,6 +1075,10 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"sm" = (
+/mob/living/simple_mob/mechanical/cyber_horror/corgi/surt,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "sJ" = (
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/simulated/floor/water/lavaland,
@@ -1149,6 +1199,7 @@
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Power - Solar Array";
 	cur_coils = 3;
+	lastcharge = 0;
 	output_attempt = 0;
 	outputting = 0
 	},
@@ -1166,8 +1217,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
+"vk" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/area/lavaland/east/colony)
 "vl" = (
-/obj/structure/closet/crate/freezer/rations,
+/obj/structure/closet/crate/freezer{
+	name = "emergency rations"
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/bunker)
 "vs" = (
@@ -1261,6 +1319,10 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"wF" = (
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "wL" = (
@@ -1402,6 +1464,13 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"yV" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/surt,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "yY" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Cell One"
@@ -1463,8 +1532,11 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/anomaly_container,
 /obj/machinery/door/window/brigdoor/eastleft,
+/obj/item/archaeological_find,
+/obj/structure/anomaly_container{
+	name = "ACH-S4-1Md"
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
 "Am" = (
@@ -1542,6 +1614,10 @@
 "BB" = (
 /turf/simulated/mineral/ignore_mapgen/lavaland,
 /area/lavaland/east/unexplored)
+"BC" = (
+/mob/living/simple_mob/mechanical/cyber_horror/corgi/surt,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/lavaland/east/colony)
 "BE" = (
 /obj/machinery/optable,
 /obj/machinery/oxygen_pump/anesthetic{
@@ -1762,6 +1838,8 @@
 	dir = 4
 	},
 /obj/effect/gibspawner/generic,
+/obj/item/melee/nanite_knife,
+/mob/living/simple_mob/mechanical/cyber_horror/surt,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "FJ" = (
@@ -1878,13 +1956,8 @@
 /area/lavaland/east/colony)
 "Jn" = (
 /obj/structure/boulder,
-/obj/structure/fake_stairs{
-	name = "collapsed staircase"
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/lavaland,
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/rocks/lavaland,
 /area/lavaland/east/colony)
 "Jo" = (
 /obj/structure/bed/chair/wood{
@@ -1987,6 +2060,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
+"LQ" = (
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
+/turf/simulated/floor/outdoors/grass/lavaland,
+/area/lavaland/east/colony)
 "LU" = (
 /obj/structure/bed,
 /obj/item/bedsheet/rainbow,
@@ -2027,6 +2104,10 @@
 /area/lavaland/east/colony)
 "NR" = (
 /obj/machinery/vending/snack,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"NU" = (
+/mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror/surt,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "NY" = (
@@ -2200,6 +2281,10 @@
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
+/area/lavaland/east/colony)
+"QA" = (
+/mob/living/simple_mob/mechanical/cyber_horror/corgi/surt,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "QF" = (
 /obj/structure/cable{
@@ -2379,8 +2464,11 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/anomaly_container,
 /obj/machinery/door/window/brigdoor/eastright,
+/obj/item/archaeological_find,
+/obj/structure/anomaly_container{
+	name = "ACH-S4-3Bd"
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
 "Tm" = (
@@ -2500,6 +2588,11 @@
 /obj/machinery/porta_turret/poi,
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
+"UP" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/surt,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/east/colony)
 "Ve" = (
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/east/explored)
@@ -2528,6 +2621,10 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/blue/bordercorner2,
 /obj/effect/gibspawner/human,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"We" = (
+/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/surt,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Wk" = (
@@ -2715,6 +2812,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
+"YC" = (
+/mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/surt,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "YF" = (
 /obj/machinery/light{
 	dir = 1
@@ -2763,9 +2864,13 @@
 /area/lavaland/east/colony)
 "YY" = (
 /obj/machinery/power/apc{
+	cell_type = /obj/item/cell/high/empty;
+	chargelevel = 0;
+	chargemode = 0;
 	dir = 8;
 	name = "west bump";
-	pixel_x = -28
+	pixel_x = -28;
+	start_charge = 0
 	},
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -2826,8 +2931,11 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/anomaly_container,
 /obj/machinery/door/window/brigdoor/westright,
+/obj/item/archaeological_find,
+/obj/structure/anomaly_container{
+	name = "LET-S4-1Ob"
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
 "ZE" = (
@@ -7672,7 +7780,7 @@ IC
 IC
 IC
 IC
-Cu
+vk
 rS
 rS
 wP
@@ -9645,7 +9753,7 @@ XF
 IP
 Qv
 ZL
-Ly
+NU
 Ly
 Dl
 hM
@@ -9806,7 +9914,7 @@ rS
 rS
 rS
 hM
-Ly
+sm
 Ly
 Ly
 Ly
@@ -10068,12 +10176,12 @@ rS
 op
 Qc
 Ly
-Ly
+aW
 TB
 Ly
 SV
 Ly
-Dl
+hR
 hM
 rS
 rS
@@ -10658,7 +10766,7 @@ rS
 rS
 rS
 hM
-Ly
+aW
 SU
 SU
 Xd
@@ -11685,7 +11793,7 @@ BB
 BB
 BB
 fk
-NP
+kg
 NP
 NP
 NP
@@ -11826,7 +11934,7 @@ BB
 BB
 BB
 BB
-kg
+fk
 Jn
 IC
 NP
@@ -11882,7 +11990,7 @@ Qh
 Qh
 Qh
 Qh
-Qh
+ww
 ww
 ww
 Qh
@@ -12024,7 +12132,7 @@ Qh
 Qh
 Qh
 Qh
-Qh
+ww
 ww
 ww
 Qh
@@ -12165,10 +12273,10 @@ Qh
 Qh
 Qh
 Qh
-Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
+ww
 ww
 Qh
 Qh
@@ -12307,10 +12415,10 @@ Qh
 Qh
 Qh
 Qh
-Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
+ww
 ww
 Qh
 Qh
@@ -12450,9 +12558,9 @@ Qh
 Qh
 Qh
 Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
 Qh
 Qh
 Qh
@@ -12592,9 +12700,9 @@ Qh
 Qh
 Qh
 Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
 Qh
 Qh
 Qh
@@ -12734,9 +12842,9 @@ wP
 Qh
 Qh
 Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
 Qh
 Qh
 Qh
@@ -12776,7 +12884,7 @@ Cz
 Cz
 Cz
 RK
-KG
+LQ
 KG
 Qv
 rS
@@ -12876,9 +12984,9 @@ Am
 Qh
 Qh
 Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
 Qh
 Qh
 Qh
@@ -13017,11 +13125,11 @@ Am
 Am
 Qh
 Qh
-Qh
-Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
+ww
+ww
 Qh
 Qh
 wP
@@ -13159,10 +13267,10 @@ Am
 Am
 Qh
 Qh
-Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
+ww
 Qh
 Qh
 Qh
@@ -13184,7 +13292,7 @@ tH
 Ly
 yn
 hM
-Ly
+sm
 Ly
 lt
 Ly
@@ -13300,10 +13408,10 @@ Am
 Am
 Qh
 Qh
-Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
+ww
 Qh
 Qh
 Qh
@@ -13320,7 +13428,7 @@ hM
 Ly
 wy
 RA
-Ly
+We
 Ly
 Ly
 Ly
@@ -13442,10 +13550,10 @@ Am
 Am
 Qh
 Qh
-Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
+ww
 Qh
 Qh
 Qh
@@ -13498,7 +13606,7 @@ zT
 Ly
 Ly
 Kh
-Ly
+YC
 Ly
 Be
 uK
@@ -13584,10 +13692,10 @@ Am
 Am
 Qh
 Qh
-Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
+ww
 Qh
 Qh
 Qh
@@ -13726,9 +13834,9 @@ Am
 Am
 Qh
 Qh
-Qh
-Qh
-Qh
+ww
+ww
+ww
 ww
 Qh
 Qh
@@ -13868,7 +13976,7 @@ Am
 Am
 Qh
 Qh
-Qh
+ww
 ww
 ww
 ww
@@ -14473,7 +14581,7 @@ rS
 rS
 rS
 op
-KG
+LQ
 KG
 KG
 KG
@@ -14676,9 +14784,9 @@ wP
 wP
 wP
 wP
-wP
-wP
-wP
+ww
+ww
+ww
 ww
 ww
 ww
@@ -14818,14 +14926,14 @@ wP
 wP
 wP
 wP
+ww
+ww
 wP
 wP
 wP
-wP
-wP
-wP
-wP
-wP
+ww
+ww
+ww
 ww
 ww
 ww
@@ -14960,17 +15068,17 @@ wP
 wP
 wP
 wP
+ww
 wP
 wP
 wP
 wP
-wP
-wP
-wP
-wP
-wP
-wP
-wP
+ww
+ww
+ww
+ww
+ww
+ww
 ww
 ww
 ww
@@ -15101,19 +15209,19 @@ wP
 wP
 wP
 wP
+ww
+ww
 wP
 wP
 wP
-wP
-wP
-wP
-wP
-wP
-wP
-wP
-wP
-wP
-wP
+ww
+ww
+ww
+ww
+ww
+ww
+ww
+ww
 ww
 ww
 ww
@@ -15243,16 +15351,16 @@ wP
 wP
 wP
 wP
+ww
+ww
 wP
 wP
 wP
-wP
-wP
-wP
-wP
-wP
-wP
-wP
+ww
+ww
+ww
+ww
+ww
 wP
 wP
 wP
@@ -15385,14 +15493,14 @@ wP
 wP
 wP
 wP
+ww
+ww
 wP
 wP
-wP
-wP
-wP
-wP
-wP
-wP
+ww
+ww
+ww
+ww
 wP
 wP
 wP
@@ -15527,13 +15635,13 @@ wP
 wP
 wP
 wP
+ww
+ww
 wP
-wP
-wP
-wP
-wP
-wP
-wP
+ww
+ww
+ww
+ww
 wP
 wP
 Am
@@ -15669,13 +15777,13 @@ wP
 wP
 wP
 wP
+ww
+ww
 wP
-wP
-wP
-wP
-wP
-wP
-wP
+ww
+ww
+ww
+ww
 wP
 Am
 Am
@@ -15811,13 +15919,13 @@ wP
 wP
 wP
 wP
-wP
-wP
-wP
-wP
-wP
-wP
-wP
+ww
+ww
+ww
+ww
+ww
+ww
+ww
 wP
 Am
 Am
@@ -15953,12 +16061,12 @@ wP
 wP
 wP
 wP
+ww
+ww
+ww
 wP
-wP
-wP
-wP
-wP
-wP
+ww
+ww
 wP
 Am
 Am
@@ -16094,10 +16202,10 @@ wP
 wP
 wP
 wP
-wP
-wP
-wP
-wP
+ww
+ww
+ww
+ww
 ww
 ww
 ww
@@ -16235,7 +16343,7 @@ wP
 wP
 wP
 wP
-wP
+ww
 ww
 ww
 ww
@@ -16447,7 +16555,7 @@ gC
 hM
 hM
 VC
-Ly
+aW
 Ly
 hM
 rS
@@ -16760,7 +16868,7 @@ Ly
 Ly
 ZS
 Ty
-Ty
+QA
 Ty
 RI
 Di
@@ -16888,7 +16996,7 @@ Ly
 Ly
 XW
 Ly
-Lk
+yV
 Ly
 hM
 rS
@@ -17109,7 +17217,7 @@ TC
 Tj
 ak
 XM
-Tj
+dk
 zY
 TC
 fk
@@ -17295,7 +17403,7 @@ hM
 hM
 hM
 YO
-Ly
+wF
 sj
 hM
 hM
@@ -17526,7 +17634,7 @@ Am
 BB
 fk
 Au
-YF
+df
 WC
 wl
 WC
@@ -18094,7 +18202,7 @@ BB
 BB
 fk
 Au
-YF
+df
 WC
 EC
 WC
@@ -18552,7 +18660,7 @@ zg
 zg
 zg
 zg
-rS
+BC
 RK
 zg
 zg
@@ -19567,7 +19675,7 @@ Uj
 xH
 hM
 Po
-Ly
+aW
 fC
 hM
 Fa
@@ -19829,7 +19937,7 @@ rS
 rS
 mP
 jz
-Ty
+nb
 Ty
 be
 Ty
@@ -20138,7 +20246,7 @@ Ly
 Ly
 Ly
 oo
-Ly
+aW
 Lk
 fk
 fk
@@ -20968,7 +21076,7 @@ PZ
 Ty
 DF
 Ot
-PZ
+oY
 Ty
 mP
 rS
@@ -21249,10 +21357,10 @@ rS
 rS
 mP
 Ty
-PZ
+oY
 DF
 Ot
-PZ
+UP
 Ty
 mP
 rS
