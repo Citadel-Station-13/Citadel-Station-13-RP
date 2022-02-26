@@ -13,7 +13,6 @@
 	var/obj/item/bug_monitor/linkedmonitor
 	var/brokentype = /obj/item/brokenbug
 
-//	var/obj/item/radio/bug/radio
 	var/obj/machinery/camera/bug/camera
 	var/camtype = /obj/machinery/camera/bug
 
@@ -28,10 +27,7 @@
 		new brokentype(get_turf(src))
 		spawn(0)
 		qdel(src)
-/*	else
-		user.set_machine(radio)
-		radio.interact(user)
-*/
+
 /obj/item/camerabug/verb/reset()
 	set name = "Reset camera bug"
 	set category = "Object"
@@ -124,10 +120,7 @@
 		linkedmonitor.unpair(src)
 	linkedmonitor = null
 	..()
-/*
-/obj/item/camerabug/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
-	radio.hear_talk(M, msg, speaking)
-*/
+
 /obj/item/bug_monitor
 	name = "mobile camera pod monitor"
 	desc = "A portable camera console designed to work with mobile camera pods."
@@ -200,11 +193,8 @@
 		to_chat(user, "<span class='warning'>Bring a camera in contact with this device to pair the camera.</span>")
 		return
 
-	return 1
-/*
-/obj/item/bug_monitor/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
-	return radio.hear_talk(M, msg, speaking)
-*/
+	return TRUE
+
 /obj/item/bug_monitor/spy
 	name = "\improper PDA"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
@@ -218,7 +208,7 @@
 	. += "The time '12:00' is blinking in the corner of the screen and \the [src] looks very cheaply made."
 
 /obj/machinery/camera/bug/check_eye(var/mob/user as mob)
-	return 0
+	return FALSE
 
 /obj/machinery/camera/bug
 	network = list(NETWORK_SECURITY)
@@ -236,21 +226,3 @@
 	. = ..()
 	name = "DV-136ZB #[rand(1000,9999)]"
 	c_tag = name
-
-/* //These were originally supposed to have radios in them. Doesn't work.
-/obj/item/radio/bug
-	listening = 0 //turn it on first
-	frequency = 1359 //sec comms
-	broadcasting = 0
-	canhear_range = 1
-	name = "camera bug device"
-	icon_state = "syn_cypherkey"
-
-/obj/item/radio/bug/spy
-	listening = 0
-	frequency = 1473
-	broadcasting = 0
-	canhear_range = 1
-	name = "spy device"
-	icon_state = "syn_cypherkey"
-	*/

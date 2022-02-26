@@ -3419,7 +3419,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/lift_announce_str = "Ding!"
 	var/arrival_sound = 'sound/machines/ding.ogg'
 	var/delay_time = 2 SECONDS
-	forced_ambience = list('sound/music/elevator.ogg')
+	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
 	dynamic_lighting = FALSE //Temporary fix for elevator lighting
 
 	requires_power = FALSE

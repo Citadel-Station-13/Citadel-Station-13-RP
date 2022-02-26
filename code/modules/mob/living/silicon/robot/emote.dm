@@ -282,7 +282,7 @@
 			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
 				message = "lets out a bark."
 
-				playsound(loc, 'modular_citadel/sound/voice/bark2.ogg', 50, 1, -1)
+				playsound(loc, 'sound/voice/bark2.ogg', 50, 1, -1)
 				m_type = 2
 			else
 				to_chat(src, "You're not a dog!")
@@ -290,7 +290,7 @@
 			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
 				message = "lets out an A R F E."
 
-				playsound(loc, 'modular_citadel/sound/voice/arfe.ogg', 50, 1, -1)
+				playsound(loc, 'sound/voice/arfe.ogg', 50, 1, -1)
 				m_type = 2
 			else
 				to_chat(src, "You're not a dog!")
