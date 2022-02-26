@@ -1,6 +1,0 @@
-author: "yeayea130"
-delete-after: True
-changes: 
-  - rscadd: "Added the combat shield generator from the combat borg to the science borg/dogborg's illegal module listing."
-  - rscdel: "Removed the hand teleporter from the science borg/dogborg's illegal module listing."
-  - imageadd: "Added a bunch of shield overlays for the science borg types, except the coffin."
