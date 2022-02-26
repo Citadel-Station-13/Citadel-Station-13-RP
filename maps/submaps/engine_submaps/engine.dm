@@ -39,7 +39,7 @@
 	name = "Edison's Bane"
 	desc = "The Telsa Engine"
 	mappath = '_maps/templates/engines/triumph/engine_tesla.dmm'
-*/
+
 
 /datum/map_template/engine/burnchamber
 	name = "EngineSubmap_Burn"
@@ -52,6 +52,7 @@
 	desc = "The Fission Reactor"
 	mappath = "_maps/templates/engines/triumph/triumph_engine_fission.dmm"
 	display_name = "Nuclear Bomb"
+*/
 
 // Landmark for where to load in the engine on permament map
 /obj/effect/landmark/engine_loader
