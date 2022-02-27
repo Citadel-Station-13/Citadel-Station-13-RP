@@ -3360,7 +3360,7 @@
 /obj/item/reagent_containers/food/snacks/bun/Initialize(mapload)
 	. = ..()
 
-/* BEGIN CITADEL CHANGE - Moved to /modular_citadel/code/modules/food/food/snacks.dm for Aurora kitchen port
+/* BEGIN CITADEL CHANGE - Moved to /code/modules/food/food/snacks.dm for Aurora kitchen port
 /obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_containers/food/snacks/meatball))
@@ -3856,7 +3856,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/macncheese
 	name = "macaroni and cheese"
 	desc = "The perfect combination of noodles and dairy."
-	icon = 'modular_citadel/icons/obj/food_cit.dmi'
+	icon = 'icons/obj/food_cit.dmi'
 	icon_state = "macncheese"
 	trash = /obj/item/trash/snack_bowl
 	nutriment_amt = 9

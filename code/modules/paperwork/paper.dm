@@ -28,15 +28,21 @@
 	var/fields		//Amount of user created fields
 	var/free_space = MAX_PAPER_MESSAGE_LEN
 	var/list/stamped
-	var/list/ico[0]      //Icons and
-	var/list/offset_x[0] //offsets stored for later
-	var/list/offset_y[0] //usage by the photocopier
+	var/list/ico[0]			//Icons and
+	var/list/offset_x[0]	//offsets stored for later
+	var/list/offset_y[0]	//usage by the photocopier
 	var/rigged = 0
 	var/spam_flag = 0
 
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
+
+	var/list/stamp_sounds = list(
+		'sound/items/stamp1.ogg',
+		'sound/items/stamp2.ogg',
+		'sound/items/stamp3.ogg'
+		)
 
 /obj/item/paper/card
 	name = "blank card"
@@ -467,6 +473,9 @@
 	return ..()
 
 /obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
+	. = ..()
+
+/obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
 	..()
 	var/clown = 0
 	if(user.mind && (user.mind.assigned_role == "Clown"))
@@ -540,6 +549,7 @@
 	else if(istype(P, /obj/item/stamp) || istype(P, /obj/item/clothing/gloves/ring/seal))
 		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
 			return
+		playsound(P, pick(stamp_sounds), 30, 1, -1)
 
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
 

@@ -238,3 +238,10 @@
 	set category = "Admin"
 	SSevents.Interact(usr)
 	feedback_add_details("admin_verb","EMP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/*
+/datum/event_manager/New()
+	..()
+	allEvents = typesof(/datum/event) - /datum/event
+	report_at_round_end = 1 //So people can see what admins have been up to regarding events. Can be disabled by admins for a round.
+*/

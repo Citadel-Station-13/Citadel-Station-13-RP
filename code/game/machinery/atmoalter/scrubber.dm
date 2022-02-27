@@ -17,7 +17,10 @@
 	var/minrate = 0
 	var/maxrate = 10 * ONE_ATMOSPHERE
 
-	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide, /datum/gas/volatile_fuel, /datum/gas/phoron, /datum/gas/nitrous_oxide)
+	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide, /datum/gas/volatile_fuel, /datum/gas/phoron, /datum/gas/nitrous_oxide,
+		/datum/gas/helium, /datum/gas/carbon_monoxide, /datum/gas/methyl_bromide, /datum/gas/nitrodioxide, /datum/gas/nitricoxide,
+		/datum/gas/methane, /datum/gas/argon, /datum/gas/krypton, /datum/gas/neon, /datum/gas/ammonia, /datum/gas/xenon, /datum/gas/chlorine,
+		/datum/gas/sulfur_dioxide, /datum/gas/hydrogen)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
 	. = ..()

@@ -23,6 +23,9 @@
 		var/obj/item/clothing/head/hood/H = new hoodtype(src)
 		hood = H
 
+/obj/item/clothing/suit/storage/hooded/AltClick()
+	ToggleHood()
+
 /obj/item/clothing/suit/storage/hooded/ui_action_click()
 	ToggleHood()
 
