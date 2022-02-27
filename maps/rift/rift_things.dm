@@ -9,9 +9,9 @@
 
 /obj/item/reagent_containers/food/condiment/cursed/Initialize()
 	..()
-	reagents.add_reagent(pick("uranium", "phoron", "hydrophoron"), 50)
-	name = "\improper cursed condiment bottle"
-	desc = "Used in cooking?"
+	reagents.add_reagent(pick("condensedcapsaicin_v", "hydrophoron"), 50)
+	name = "NileRed's Red Hot, Hot Sauce"
+	desc = "An unknown brand of supposedly synthetic hotsauce. A disclaimer sticker says, 'Do not try at home.' Good thing you're at work."
 	icon_state = "ketchup"
 
 /obj/structure/metal_edge
