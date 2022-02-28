@@ -8,8 +8,8 @@
 	door_icon_base = "resin"
 	icon_reinf = "reinf_mesh"
 	melting_point = T0C+200//we melt faster this isnt a building material you wanna built engines from
-	sheet_singular_name = "compound bar"
-	sheet_plural_name = "compound bars"
+	sheet_singular_name = "bar"
+	sheet_plural_name = "bars"
 	conductive = 0
 	explosion_resistance = 20//normal resin has 60, we are much softer
 	radiation_resistance = 10
