@@ -57,7 +57,7 @@
 		if("resin membrane")
 			O = new /obj/effect/alien/hybrid_resin/membrane(loc)
 		if("resin nest")
-			O = new /obj/structure/bed/hybrid_nest(loc, new_material = "resin compound", new_padding_material = "resin compound")
+			O = new /obj/structure/bed/hybrid_nest(loc)
 		if("resin compound")
 			O = new /obj/item/stack/material/hybrid_resin(loc)
 
@@ -75,6 +75,8 @@
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "nest"
 	color = "#321a49"
+	material = "resin compound"
+	padding_material = "resin compound"
 	var/health = 100
 
 /obj/structure/bed/hybrid_nest/update_icon()
