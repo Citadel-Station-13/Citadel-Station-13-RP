@@ -77,6 +77,9 @@
 	color = "#321a49"
 	var/health = 100
 
+/obj/structure/bed/hybrid_nest/update_icon()
+	return
+	
 /obj/structure/bed/hybrid_nest/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	if(buckled_mob)
 		if(buckled_mob.buckled == src)
