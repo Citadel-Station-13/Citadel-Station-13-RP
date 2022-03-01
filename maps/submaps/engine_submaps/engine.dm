@@ -39,13 +39,14 @@
 	name = "Edison's Bane"
 	desc = "The Telsa Engine"
 	mappath = '_maps/templates/engines/triumph/engine_tesla.dmm'
-*/
+
 
 /datum/map_template/engine/burnchamber
 	name = "EngineSubmap_Burn"
 	desc = "Burn Chamber Engine"
 	mappath = "_maps/templates/engines/triumph/triumph_engine_burnchamber.dmm"
 	display_name = "Toxins Lab"
+*/
 
 /datum/map_template/engine/fission
 	name = "EngineSubmap_Fission"
@@ -82,4 +83,3 @@
 					++deleted_atoms
 					qdel(AM)
 	admin_notice("<span class='danger'>Annihilated [deleted_atoms] objects.</span>", R_DEBUG)
-
