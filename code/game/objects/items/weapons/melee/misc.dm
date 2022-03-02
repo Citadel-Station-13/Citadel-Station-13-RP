@@ -184,20 +184,3 @@
 	desc = "This curved blade is painted to look like a banana, disguising its deadly edge."
 	icon_state = "clownrender"
 	item_state = "clown_dagger"
-
-//Chainswords Babyyy
-/obj/item/melee/chainsaw_sword
-	name = "chainsaw sword"
-	desc = "This weapon requires extensive training to wield effectively. Its spinning teeth are able to cut through metal as easily as flesh. Handle with care."
-	icon_state = "chainswordon"
-	item_state = "chainswordon"
-	slot_flags = SLOT_BELT
-	force = 30
-	throwforce = 10
-	w_class = ITEMSIZE_NORMAL
-	sharp = 1
-	edge = 1
-	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
-	hitsound = 'sound/weapons/chainsaw_attack.ogg'
-	armor_penetration = 30
-
