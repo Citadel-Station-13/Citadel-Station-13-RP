@@ -326,3 +326,8 @@ var/global/photo_count = 0
 		p.id = id
 
 	return p
+
+/obj/item/camera/spooky
+	name = "camera obscura"
+	desc = "A polaroid camera, some say it can see ghosts!"
+	//see_ghosts = CAMERA_SEE_GHOSTS_BASIC (We should discuss whether this should exist before I bother coding it.)

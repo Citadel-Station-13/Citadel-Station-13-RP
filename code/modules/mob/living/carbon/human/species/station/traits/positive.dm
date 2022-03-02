@@ -189,3 +189,17 @@
 /datum/trait/size_change/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	H.verbs |= /mob/living/proc/set_size
+
+/datum/trait/positive/weaver
+	name = "Weaver"
+	desc = "You can produce silk and create various articles of clothing and objects."
+	cost = 2
+	var_changes = list("is_weaver" = 1)
+
+/datum/trait/positive/weaver/apply(var/datum/species/S,var/mob/living/carbon/human/H)
+	..()
+	H.verbs |= /mob/living/carbon/human/proc/check_silk_amount
+	H.verbs |= /mob/living/carbon/human/proc/toggle_silk_production
+	H.verbs |= /mob/living/carbon/human/proc/weave_structure
+	H.verbs |= /mob/living/carbon/human/proc/weave_item
+	H.verbs |= /mob/living/carbon/human/proc/set_silk_color

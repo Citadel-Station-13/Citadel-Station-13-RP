@@ -58,6 +58,11 @@
 	origin_tech = list(TECH_MATERIAL = 2)
 	material = "phoron"
 
+/obj/item/ore/copper
+	name = "native copper ore"
+	icon_state = "ore_copper"
+	origin_tech = list(TECH_MATERIAL = 2)
+	material = "copper"
 /obj/item/ore/silver
 	name = "native silver ore"
 	icon_state = "ore_silver"

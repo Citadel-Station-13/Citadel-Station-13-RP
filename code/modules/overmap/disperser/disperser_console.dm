@@ -2,15 +2,14 @@
 
 /obj/machinery/computer/ship/disperser
 	name = "obstruction removal ballista control"
-	icon = 'icons/obj/computer.dmi'
-	icon_state = "computer"
+	icon = 'icons/obj/computer_vr.dmi'
+	icon_keyboard = "security_key"
+	icon_screen = "disperser"
+	light_color = "#7faaff"
 	circuit = /obj/item/circuitboard/disperser
 
 	core_skill = /datum/skill/pilot
 	var/skill_offset = SKILL_ADEPT - 1 //After which skill level it starts to matter. -1, because we have to index from zero
-
-	icon_keyboard = "rd_key"
-	icon_screen = "teleport"
 
 	var/obj/machinery/disperser/front/front
 	var/obj/machinery/disperser/middle/middle

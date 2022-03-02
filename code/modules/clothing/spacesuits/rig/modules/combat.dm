@@ -326,7 +326,7 @@
 			"<span class='notice'>You extend \the [held_blade] from \the [holder] with a click!</span>",
 			"<span class='notice'>You hear a hiss and a click.</span>")
 
-	playsound(src, 'modular_citadel/sound/items/helmetdeploy.ogg', 40, 1)
+	playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	M.put_in_hands(held_blade)
 
 /obj/item/rig_module/armblade/deactivate()

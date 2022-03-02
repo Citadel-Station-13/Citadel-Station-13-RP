@@ -143,6 +143,11 @@
 	desc = "It's an orange backpack which was designed to hold beakers, pill bottles and bottles."
 	icon_state = "chempack"
 
+/obj/item/storage/backpack/voyager
+	name = "voyager backpack"
+	desc = "A leather pack designed for expeditions, covered in multi-purpose pouches and pockets."
+	icon_state = "explorerpack"
+
 /*
  * Duffle Types
  */
@@ -278,6 +283,16 @@
 /obj/item/storage/backpack/satchel/cap/talon
 	name = "Talon captain's satchel"
 	desc = "An exclusive satchel for the Talon's captain."
+
+/obj/item/storage/backpack/satchel/voyager
+	name = "voyager satchel"
+	desc = "A leather satchel designed for expeditions."
+	icon_state = "satchel_explorer"
+
+/obj/item/storage/backpack/satchel/bone
+	name = "bone satchel"
+	desc = "A grotesque satchel made of sinew and bone."
+	icon_state = "satchel_bone"
 
 //ERT backpacks.
 /obj/item/storage/backpack/ert

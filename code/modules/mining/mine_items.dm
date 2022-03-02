@@ -154,6 +154,16 @@
 	throwforce = 7.0
 	w_class = ITEMSIZE_SMALL
 
+/obj/item/shovel/bone
+	name = "serrated bone shovel"
+	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient tribal designs."
+	icon_state = "shovel_bone"
+	force = 15
+	throwforce = 12
+	toolspeed = 0.7
+	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
+	sharp = 1
+
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 

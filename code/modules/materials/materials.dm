@@ -918,7 +918,7 @@ var/list/name_to_material
 	icon_base = "stone"
 	icon_reinf = "reinf_stone"
 	integrity = 65	//a bit stronger than regular wood
-	hardness = 20	
+	hardness = 20
 	weight = 20	//likewise, heavier
 
 /datum/material/cardboard
@@ -1046,12 +1046,12 @@ var/list/name_to_material
 
 /datum/material/bone
 	name = "bone"
-	icon_colour = "#35343a"
+	icon_colour = "#e6dfc8"
 	icon_base = "bone"
 	icon_reinf = "reinf_mesh"
 	melting_point = T0C+300
-	sheet_singular_name = "bone"
-	sheet_plural_name = "boness"
+	sheet_singular_name = "fragment"
+	sheet_plural_name = "fragments"
 	conductive = 0
 	explosion_resistance = 60
 	radiation_resistance = 10
@@ -1215,3 +1215,11 @@ var/list/name_to_material
 	icon_colour = "#CAC955"
 	integrity = 150
 	stack_type = /obj/item/stack/material/brass
+
+/datum/material/copper
+	name = "copper"
+	icon_colour = "#b45c13"
+	weight = 15
+	hardness = 30
+	conductivity = 35
+	stack_type = /obj/item/stack/material/copper

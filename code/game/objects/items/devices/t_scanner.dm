@@ -23,6 +23,9 @@
 /obj/item/t_scanner/update_icon()
 	icon_state = "t-ray[on]"
 
+/obj/item/t_scanner/AltClick()
+	set_active(!on)
+
 /obj/item/t_scanner/attack_self(mob/user)
 	set_active(!on)
 

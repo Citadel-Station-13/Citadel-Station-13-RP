@@ -338,7 +338,7 @@
 	name = "xenobiologist ID"
 	assignment = "Xenobiologist"
 	rank = "Xenobiologist"
-	job_access_type = /datum/job/xenobiologist
+	job_access_type = /datum/job/scientist // /datum/job/xenobiologist
 
 /obj/item/card/id/science/roboticist
 	name = "roboticist ID"

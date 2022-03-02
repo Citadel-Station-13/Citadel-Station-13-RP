@@ -171,6 +171,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAT_STEEL			"steel"
 #define MAT_PLASTIC			"plastic"
 #define MAT_GLASS			"glass"
+#define MAT_COPPER			"copper"
 #define MAT_SILVER			"silver"
 #define MAT_GOLD			"gold"
 #define MAT_URANIUM			"uranium"
@@ -282,7 +283,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define DEPARTMENT_EVERYONE			"everyone"
 #define DEPARTMENT_PLANET			"exploration"
 #define DEPARTMENT_OFFDUTY			"offduty"
-#define DEPARTMENT_TALON			"talon"
+#define DEPARTMENT_TALON			"talon"			// Leaving this definition in place, can perhaps use it in the future but removing it will require digging into other stuff im not comfortable with -BLoop
+#define DEPARTMENT_TRADE			"trade"
 
 // vorstation off-duty time
 #define PTO_SECURITY		"Security"

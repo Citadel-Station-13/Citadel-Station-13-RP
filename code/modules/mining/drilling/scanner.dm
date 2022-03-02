@@ -50,7 +50,7 @@
 				switch(metal)
 					if("silicates", "carbon", "hematite", "marble")
 						ore_type = "surface minerals"
-					if("gold", "silver", "diamond", "lead")
+					if("gold", "silver", "diamond", "lead", "copper")
 						ore_type = "precious metals"
 					if("uranium")
 						ore_type = "nuclear fuel"

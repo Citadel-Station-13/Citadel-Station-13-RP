@@ -128,6 +128,14 @@
 	name = "stack of reinforced borosilicate glass"
 	type_to_spawn = /obj/item/stack/material/glass/phoronrglass
 
+/obj/fiftyspawner/brass
+	name = "stack of brass"
+	type_to_spawn = /obj/item/stack/material/brass
+
+/obj/fiftyspawner/copper
+	name = "stack of copper"
+	type_to_spawn = /obj/item/stack/material/copper
+
 //R-UST port
 /obj/fiftyspawner/deuterium
 	name = "stack of deuterium"
@@ -150,3 +158,8 @@
 /obj/fiftyspawner/silencium
 	name = "stack of silencium"
 	type_to_spawn = /obj/item/stack/material/silencium
+
+//Biological Components
+/obj/fiftyspawner/bone
+	name = "stack of bones"
+	type_to_spawn = /obj/item/stack/material/bone

@@ -200,3 +200,4 @@
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
 	hitsound = 'sound/weapons/chainsaw_attack.ogg'
 	armor_penetration = 30
+

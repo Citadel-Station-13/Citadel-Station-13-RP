@@ -121,7 +121,6 @@
 	projectile_type = /obj/item/projectile/bullet/pistol/hunter
 	matter = list(DEFAULT_WALL_MATERIAL = 80)
 
-
 /obj/item/ammo_casing/a9mm/flash
 	desc = "A 9mm flash shell casing."
 	icon_state = "r-casing"
@@ -142,6 +141,30 @@
 	icon_state = "ag-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
+
+/*
+ * 5.7
+ */
+/obj/item/ammo_casing/a57x28mm
+	desc = "A 5.7x28mm bullet casing."
+	caliber = "5.7x28mm"
+	projectile_type = /obj/item/projectile/bullet/pistol/lap
+	matter = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/ap
+	desc = "A 5.7x28mm armor-piercing bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/ap
+	matter = list(DEFAULT_WALL_MATERIAL = 80, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/hp
+	desc = "A 5.7x28mm hollow-point bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hp
+	matter = list(DEFAULT_WALL_MATERIAL = 60, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/hunter
+	desc = "A 5.7x28mm hunting bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hunter
+	matter = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 50)
 
 /*
  * .45
@@ -256,6 +279,13 @@
 	projectile_type = /obj/item/projectile/bullet/shotgun/beanbag
 	matter = list(DEFAULT_WALL_MATERIAL = 180)
 
+/obj/item/ammo_casing/a12g/improvised
+	name = "improvised shell"
+	desc = "An extremely weak shotgun shell with multiple small pellets made out of metal shards."
+	icon_state = "improvshell"
+	projectile_type = /obj/item/projectile/bullet/pellet/shotgun_improvised
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200)
+
 //Can stun in one hit if aimed at the head, but
 //is blocked by clothing that stops tasers and is vulnerable to EMP
 /obj/item/ammo_casing/a12g/stunshell
@@ -277,14 +307,6 @@
 	projectile_type = /obj/item/projectile/energy/flash/flare
 	matter = list(DEFAULT_WALL_MATERIAL = 90, "glass" = 90)
 
-/obj/item/ammo_casing/a12g/emp
-	name = "ion shell"
-	desc = "An advanced shotgun round that creates a small EMP when it strikes a target."
-	icon_state = "empshell"
-	projectile_type = /obj/item/projectile/ion
-//	projectile_type = /obj/item/projectile/bullet/shotgun/ion
-	matter = list(DEFAULT_WALL_MATERIAL = 360, "uranium" = 240)
-
 //Silver 12g
 /obj/item/ammo_casing/a12g/silver
 	name = " Silver shotgun shell"
@@ -302,6 +324,59 @@
 	caliber = "12g"
 	projectile_type = /obj/item/projectile/bullet/shotgun/stake
 	matter = list(DEFAULT_WALL_MATERIAL = 500)
+
+//Techshell & Derivatives
+/obj/item/ammo_casing/a12g/techshell
+	name = "unloaded technological shell"
+	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
+	icon_state = "cshell"
+	caliber = "12g"
+	projectile_type = null
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "phoron" = 200)
+
+/obj/item/ammo_casing/a12g/techshell/meteorslug
+	name = "meteorslug shell"
+	desc = "A shotgun shell rigged with CMC technology, which launches a massive slug when fired."
+	icon_state = "mshell"
+	projectile_type = /obj/item/projectile/meteor/slug
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "gold" = 200)
+
+/obj/item/ammo_casing/a12g/techshell/emp
+	name = "ion shell"
+	desc = "An advanced shotgun round that creates a small EMP when it strikes a target."
+	icon_state = "empshell"
+	projectile_type = /obj/item/projectile/scatter/ion
+//	projectile_type = /obj/item/projectile/bullet/shotgun/ion
+	matter = list(DEFAULT_WALL_MATERIAL = 360, "uranium" = 240)
+
+/obj/item/ammo_casing/a12g/techshell/pulseslug
+	name = "pulse slug"
+	desc = "A delicate device which can be loaded into a shotgun. The primer acts as a button which triggers the gain medium and fires a powerful \
+	energy blast. While the heat and power drain limit it to one use, it can still allow an operator to engage targets that ballistic ammunition \
+	would have difficulty with."
+	icon_state = "plshell"
+	projectile_type = /obj/item/projectile/beam/pulse/shotgun
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "silver" = 200)
+
+/obj/item/ammo_casing/a12g/techshell/dragonsbreath
+	name = "dragonsbreath shell"
+	desc = "A shotgun shell which fires a spread of incendiary pellets."
+	icon_state = "ishell"
+	projectile_type = /obj/item/projectile/bullet/incendiary/shotgun
+
+/obj/item/ammo_casing/a12g/techshell/frag12
+	name = "FRAG-12 slug"
+	desc = "A high explosive breaching round for a 12 gauge shotgun."
+	icon_state = "heshell"
+	projectile_type = /obj/item/projectile/bullet/shotgun/frag12
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "phoron" = 200)
+
+/obj/item/ammo_casing/a12g/techshell/laserslug
+	name = "scatter laser shell"
+	desc = "An advanced shotgun shell that uses a micro laser to replicate the effects of a scatter laser weapon in a ballistic package."
+	icon_state = "lshell"
+	projectile_type = /obj/item/projectile/scatter/laser
+	matter = list(DEFAULT_WALL_MATERIAL = 500, "glass" = 200)
 
 /*
  * 7.62mm
@@ -473,3 +548,43 @@
 	icon_state = "globule"
 	projectile_type = /obj/item/projectile/bullet/organic
 	matter = list("flesh" = 100)
+
+//Arrows
+/obj/item/ammo_casing/arrow
+	name = "arrow of questionable material"
+	desc = "You shouldn't be seeing this arrow."
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow
+	caliber = "arrow"
+	icon_state = "arrow"
+	throwforce = 3 //good luck hitting someone with the pointy end of the arrow
+	throw_speed = 3
+	caseless = 1
+
+/obj/item/ammo_casing/arrow/wood
+	name = "wooden arrow"
+	desc = "An arrow made of wood, typically fired from a bow."
+
+/obj/item/ammo_casing/arrow/ash
+	name = "ashen arrow"
+	desc = "An arrow made of wood, hardened by fire."
+	icon_state = "ashenarrow"
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/ash
+
+/obj/item/ammo_casing/arrow/bone
+	name = "bone arrow"
+	desc = "An arrow made of bone and sinew. The tip is sharp enough to pierce through a goliath plate."
+	icon_state = "bonearrow"
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bone
+
+/obj/item/ammo_casing/arrow/bronze
+	name = "bronze arrow"
+	desc = "An arrow made of wood, tipped with bronze. The tip is dense enough to provide some armor penetration."
+	icon_state = "bronzearrow"
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bronze
+
+//Plunger
+/obj/item/ammo_casing/arrow/plunger
+	name = "plunger"
+	desc = "It's a plunger, for plunging."
+	icon_state = "plunger"
+	projectile_type = /obj/item/projectile/bullet/reusable/plunger

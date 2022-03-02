@@ -174,6 +174,16 @@
 	overlays.Cut()
 	overlays += image('icons/mob/zone_sel.dmi', "[selecting]")
 
+//Crafting Screen Port
+/obj/screen/craft
+	name = "crafting menu"
+	icon = 'icons/mob/screen/midnight.dmi'
+	icon_state = "craft"
+	screen_loc = ui_crafting
+
+/obj/screen/craft/Click(location, control, params)
+	var/datum/component/personal_crafting/C = usr.GetComponent(/datum/component/personal_crafting)
+	C?.ui_interact(usr)
 
 /obj/screen/Click(location, control, params)
 	if(!usr)	return 1

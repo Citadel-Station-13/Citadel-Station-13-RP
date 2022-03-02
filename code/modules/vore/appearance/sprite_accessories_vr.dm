@@ -13,6 +13,9 @@
 	// Ckey of person allowed to use this, if defined.
 	var/list/ckeys_allowed = null
 	var/apply_restrictions = FALSE		//whether to apply restrictions for specific tails/ears/wings
+	var/center = FALSE
+	var/dimension_x = 32
+	var/dimension_y = 32
 
 /*
 ////////////////////////////
@@ -723,6 +726,8 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	var/desc = "You should not see this..."
 	var/ani_state // State when flapping/animated
 	var/extra_overlay_w // Flapping state for extra overlay
+	/// use front/behind, citadel snowflake for now
+	var/front_behind_system = FALSE
 
 /datum/sprite_accessory/wing/shock //Unable to split the tail from the wings in the sprite, so let's just classify it as wings.
 	name = "pharoah hound tail (Shock Diamond)"
@@ -762,6 +767,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "moth wings"
 	desc = ""
 	icon_state = "moth"
+	clothing_can_hide = FALSE
 
 /datum/sprite_accessory/wing/mothc
 	name = "moth wings, colorable"
@@ -899,6 +905,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	name = "firewatch moth wings"
 	desc = ""
 	icon_state = "moth_firewatch"
+	front_behind_system = TRUE
 
 /datum/sprite_accessory/wing/moth_deathhead
 	name = "death's-head hawkmoth wings"
