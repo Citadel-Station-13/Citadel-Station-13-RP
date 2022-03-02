@@ -664,6 +664,48 @@
 		return TRUE
 	. = ..()
 
+/obj/structure/window/wooden
+	name = "wooden panel"
+	desc = "A set of wooden panelling, designed to hide the drab grey walls."
+	icon_state = "woodpanel"
+	basestate = "woodpanel"
+	glasstype = /obj/item/stack/material/wood
+	shardtype = /obj/item/material/shard/wood
+	maximal_heat = T0C + 300 // Same as wooden walls "melting"
+	damage_per_fire_tick = 2.0
+	maxhealth = 10.0
+	force_threshold = 3
+	opacity = 1
+
+/obj/structure/window/wooden/take_damage(var/damage = 0,  var/sound_effect = 1)
+	var/initialhealth = health
+
+	health = max(0, health - damage)
+
+	if(health <= 0)
+		shatter()
+	else
+		if(sound_effect)
+			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
+		if(health < maxhealth / 4 && initialhealth >= maxhealth / 4)
+			visible_message("[src] looks like it's about to fall apart!" )
+			update_icon()
+		else if(health < maxhealth / 2 && initialhealth >= maxhealth / 2)
+			visible_message("[src] looks seriously damaged!" )
+			update_icon()
+		else if(health < maxhealth * 3/4 && initialhealth >= maxhealth * 3/4)
+			visible_message("Cracks begin to appear in [src]!" )
+			update_icon()
+	return
+
+/obj/structure/window/wooden/shatter(var/display_message = 1)
+	//playsound(src, "shatter", 70, 1)
+	if(display_message)
+		visible_message("[src] falls apart!")
+	new shardtype(loc)
+	qdel(src)
+	return
+
 /obj/structure/window/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
@@ -680,3 +722,4 @@
 			qdel(src)
 			return TRUE
 	return FALSE
+
