@@ -167,7 +167,7 @@
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/dirt
 	requires_power = 0
-	dynamic_lighting = 0
+	dynamic_lighting = 1
 
 /area/frozen_planet/facility
 	name = "Frozen Planet - Facility"
@@ -188,7 +188,7 @@
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/dirt
 	requires_power = 0
-	dynamic_lighting = 0
+	dynamic_lighting = 1
 
 /area/gaia_planet/inside
 	name = "Gaia Planet - Inside (E)"
@@ -269,7 +269,7 @@
 	name = "Class H World"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	requires_power = 0
-	dynamic_lighting = 0
+	dynamic_lighting = 1
 
 /area/poi_h/POIs/WW_Town
 	name = "Ghost Town"
@@ -588,7 +588,7 @@
 	name = "Lava Land"
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/lavaland
-	dynamic_lighting = 0
+	dynamic_lighting = 1
 
 /area/lavaland/horrors
 	name = "Lava Land - Horrors"
