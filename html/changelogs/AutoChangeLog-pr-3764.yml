@@ -1,0 +1,4 @@
+author: "MalricB"
+delete-after: True
+changes: 
+  - rscadd: "18 songs to jukebox config"
