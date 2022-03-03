@@ -167,19 +167,19 @@
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/dirt
 	requires_power = 0
-	dynamic_lighting = 1
+	dynamic_lighting = 0
 
 /area/frozen_planet/facility
-	name = "Gaia Planet - Facility"
+	name = "Frozen Planet - Facility"
 	requires_power = 1
 	icon_state = "red"
 
 /area/frozen_planet/ruins
-	name = "Gaia Planet - Ruins"
+	name = "Frozen Planet - Ruins"
 	icon_state = "green"
 
 /area/frozen_planet/outside
-	name = "Gaia Planet - Outside (UE)"
+	name = "Frozen Planet - Outside (UE)"
 	icon_state = "yellow"
 
 //Gaia planet world areas
@@ -188,7 +188,7 @@
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/dirt
 	requires_power = 0
-	dynamic_lighting = 1
+	dynamic_lighting = 0
 
 /area/gaia_planet/inside
 	name = "Gaia Planet - Inside (E)"
@@ -264,31 +264,12 @@
 	base_turf = /turf/simulated/mineral/floor/vacuum
 */
 
-// Mining Planet world areas
-/area/poi_h
-	name = "Mining Planet"
-	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
-	requires_power = 0
-	dynamic_lighting = 1
-
-/area/poi_h/explored
-	name = "Mining Planet - Explored (E)"
-	icon_state = "red"
-	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
-
-/area/poi_h/unexplored
-	name = "Mining Planet - Unexplored (UE)"
-	icon_state = "yellow"
-
-/area/shuttle/excursion/poi_h
-	name = "Shuttle Landing Point"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
-	flags = RAD_SHIELDED
-
+// Desert Planet world areas
 /area/poi_h
 	name = "Class H World"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
+	requires_power = 0
+	dynamic_lighting = 0
 
 /area/poi_h/POIs/WW_Town
 	name = "Ghost Town"
@@ -605,7 +586,9 @@
 
 /area/lavaland
 	name = "Lava Land"
+	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/lavaland
+	dynamic_lighting = 0
 
 /area/lavaland/horrors
 	name = "Lava Land - Horrors"
@@ -623,12 +606,6 @@
 	name = "Lava Land - Boss"
 	base_turf = /turf/simulated/floor/outdoors/lavaland
 	requires_power = 0
-
-/area/lavaland
-	name = "Lava Land"
-	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-	dynamic_lighting = 1
 
 /area/lavaland/base
 	name = "Lava Land - Mining Base"

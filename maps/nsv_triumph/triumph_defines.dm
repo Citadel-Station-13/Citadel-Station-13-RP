@@ -173,6 +173,11 @@
 		Z_LEVEL_LAVALAND)
 
 	lateload_single_pick = null //Nothing right now.
+	
+	planet_datums_to_make = list(/datum/planet/lavaland,
+								/datum/planet/classh,
+								/datum/planet/frozen_planet,
+								/datum/planet/gaia_planet)
 
 /datum/map/triumph/perform_map_generation()
 	return 1
