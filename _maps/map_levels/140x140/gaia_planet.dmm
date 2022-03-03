@@ -28,7 +28,7 @@
 /area/gaia_planet/outside)
 "aW" = (
 /obj/structure/bed/chair/wood/wings,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "ba" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -63,13 +63,13 @@
 /turf/simulated/floor/tiled/white,
 /area/gaia_planet/inside)
 "bA" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "bD" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "bE" = (
 /obj/machinery/light{
@@ -160,7 +160,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "eu" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -208,7 +208,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "fC" = (
 /obj/structure/sink/puddle{
@@ -243,7 +243,7 @@
 /area/gaia_planet/inside)
 "gm" = (
 /obj/machinery/biogenerator,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "gn" = (
 /obj/structure/grille,
@@ -390,7 +390,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "jg" = (
 /obj/structure/fence,
@@ -415,7 +415,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "jz" = (
 /turf/simulated/floor/water/gaia_world,
@@ -436,7 +436,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "kz" = (
 /obj/structure/closet/crate/bin{
@@ -451,7 +451,7 @@
 "kU" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/reagentgrinder,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "lp" = (
 /obj/structure/flora/ausbushes/brflowers,
@@ -592,7 +592,7 @@
 "oc" = (
 /obj/machinery/light,
 /obj/structure/closet/crate/trashcart,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "om" = (
 /mob/living/simple_mob/animal/passive/cat,
@@ -614,7 +614,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "oC" = (
 /obj/machinery/door/airlock/glass,
@@ -639,7 +639,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "pn" = (
 /obj/structure/flora/ausbushes/ywflowers,
@@ -649,11 +649,15 @@
 /obj/item/bone/skull/unknown,
 /turf/simulated/mineral/floor/gaia_world,
 /area/gaia_planet/outside)
+"pv" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
+/area/gaia_planet/inside)
 "pF" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "pQ" = (
 /obj/structure/fence,
@@ -673,7 +677,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "pV" = (
 /obj/machinery/light{
@@ -744,7 +748,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "re" = (
 /obj/structure/fence/corner{
@@ -787,7 +791,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "rT" = (
 /obj/structure/closet/crate/bin{
@@ -813,7 +817,7 @@
 /area/gaia_planet/outside)
 "sd" = (
 /obj/structure/fence/door,
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "sk" = (
 /obj/structure/table/marble,
@@ -877,7 +881,7 @@
 	pixel_y = -32
 	},
 /obj/machinery/light,
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "tf" = (
 /obj/structure/simple_door/wood,
@@ -929,13 +933,13 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "us" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "uv" = (
 /obj/structure/fence{
@@ -970,7 +974,7 @@
 /turf/simulated/floor/tiled/gaia_world,
 /area/gaia_planet/inside)
 "vi" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "vn" = (
 /obj/machinery/appliance/cooker/oven,
@@ -1111,7 +1115,7 @@
 /area/gaia_planet/outside)
 "yW" = (
 /obj/machinery/light,
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "yY" = (
 /obj/machinery/shower{
@@ -1188,9 +1192,6 @@
 /obj/machinery/vending/giftvendor,
 /turf/simulated/floor/carpet,
 /area/gaia_planet/inside)
-"zZ" = (
-/turf/simulated/floor/tiled,
-/area/gaia_planet/outside)
 "Ah" = (
 /obj/machinery/light{
 	dir = 1
@@ -1198,7 +1199,7 @@
 /obj/structure/sign/greencross{
 	pixel_y = 32
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "Al" = (
 /obj/machinery/button/remote/airlock{
@@ -1279,7 +1280,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "BJ" = (
 /obj/structure/sign/warning/secure_area/armory{
@@ -1290,7 +1291,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "BU" = (
 /turf/simulated/floor/outdoors/beach/sand/gaia_world,
@@ -1352,7 +1353,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "Dv" = (
 /obj/structure/flora/pottedplant/flower,
@@ -1372,7 +1373,7 @@
 /turf/simulated/floor/wood/gaia_world,
 /area/gaia_planet/inside)
 "DJ" = (
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "DU" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -1394,7 +1395,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "Ex" = (
 /obj/item/bee_pack,
@@ -1438,7 +1439,7 @@
 	dir = 4
 	},
 /obj/structure/table/glass,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "Fl" = (
 /obj/machinery/vending/hydronutrients,
@@ -1449,7 +1450,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/gaia_planet/inside)
 "Fv" = (
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "FA" = (
 /turf/simulated/floor/tiled/dark,
@@ -1466,7 +1467,7 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/minitree,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "Ga" = (
 /obj/structure/closet/crate/hydroponics,
@@ -1489,7 +1490,7 @@
 /area/gaia_planet/inside)
 "Ge" = (
 /obj/machinery/seed_extractor,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "Gp" = (
 /obj/machinery/light{
@@ -1503,7 +1504,7 @@
 	},
 /obj/structure/railing,
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "GH" = (
 /obj/machinery/door/airlock{
@@ -1682,7 +1683,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "Ky" = (
 /obj/machinery/door/window/westleft,
@@ -1699,7 +1700,7 @@
 	dir = 8
 	},
 /obj/structure/flora/pottedplant/minitree,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "KM" = (
 /obj/structure/flora/ausbushes/grassybush,
@@ -1708,7 +1709,7 @@
 /area/gaia_planet/outside)
 "KR" = (
 /obj/structure/railing,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "KY" = (
 /obj/structure/fence/post,
@@ -1749,7 +1750,7 @@
 /obj/machinery/vending/wallmed1{
 	pixel_x = -32
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "LW" = (
 /turf/simulated/floor/tiled/freezer,
@@ -1777,7 +1778,7 @@
 /area/gaia_planet/outside)
 "Nb" = (
 /obj/structure/railing,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "Ne" = (
 /turf/simulated/wall/gaia_world,
@@ -1786,13 +1787,13 @@
 /obj/machinery/vending/wallmed1{
 	pixel_x = 32
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "NE" = (
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "NM" = (
 /obj/machinery/light/small,
@@ -1840,7 +1841,7 @@
 	name = "NO WEAPONS BEYOND THIS POINT";
 	pixel_x = 32
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "Pa" = (
 /obj/structure/flora/tree/jungle_small,
@@ -1881,7 +1882,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "Qp" = (
 /obj/machinery/door/airlock/glass{
@@ -1954,7 +1955,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "gaia_1"
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "Rp" = (
 /obj/machinery/door/airlock{
@@ -2034,7 +2035,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "gaia_2"
 	},
-/turf/simulated/floor/tiled/gaia_world,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/outside)
 "Td" = (
 /turf/simulated/floor/water/shoreline/gaia_world{
@@ -2163,7 +2164,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "Wc" = (
 /obj/structure/flora/pottedplant/largebush,
@@ -2179,7 +2180,7 @@
 /area/gaia_planet/inside)
 "Wz" = (
 /obj/structure/flora/pottedplant/orientaltree,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "WT" = (
 /obj/machinery/vending/wallmed1{
@@ -2218,14 +2219,14 @@
 	dir = 4
 	},
 /obj/structure/table/bench/marble,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "XB" = (
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/structure/table/glass,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/gaia_world/outdoors,
 /area/gaia_planet/inside)
 "XE" = (
 /obj/structure/table/standard,
@@ -7299,7 +7300,7 @@ OD
 iY
 iY
 OD
-vx
+Fv
 BU
 BU
 BU
@@ -7441,7 +7442,7 @@ DD
 xc
 xc
 DD
-vx
+Fv
 BU
 BU
 BU
@@ -7583,7 +7584,7 @@ DD
 xc
 xc
 DD
-vx
+Fv
 BU
 BU
 BU
@@ -7725,7 +7726,7 @@ DD
 xc
 xc
 DD
-vx
+Fv
 BU
 BU
 BU
@@ -7867,7 +7868,7 @@ DD
 xc
 xc
 DD
-vx
+Fv
 BU
 BU
 BU
@@ -8009,7 +8010,7 @@ nG
 nG
 nG
 nG
-vx
+Fv
 BU
 BU
 BU
@@ -8110,8 +8111,8 @@ Tx
 Tx
 El
 Tx
-zZ
-zZ
+DJ
+DJ
 Qp
 vx
 vx
@@ -8131,27 +8132,27 @@ vx
 vx
 vx
 Qp
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
 BU
 BU
 BU
@@ -8252,8 +8253,8 @@ Tx
 El
 Tx
 Tx
-zZ
-zZ
+DJ
+DJ
 Qp
 vx
 vx
@@ -8273,27 +8274,27 @@ vx
 vx
 vx
 Qp
-vx
-vx
-gG
+Fv
+Fv
+pv
 Ne
 bD
-vx
-vx
-gG
+Fv
+Fv
+pv
 Ne
 bD
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
 BU
 BU
 BU
@@ -8394,8 +8395,8 @@ Tx
 Tx
 Tx
 Tx
-zZ
-zZ
+DJ
+DJ
 Qp
 vx
 vx
@@ -8415,27 +8416,27 @@ vx
 vx
 vx
 Qp
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
 BU
 BU
 BU
@@ -8564,9 +8565,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -8577,7 +8578,7 @@ Lt
 ma
 CD
 rD
-vx
+Fv
 BU
 BU
 BU
@@ -8706,9 +8707,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 tb
 Tx
 Tx
@@ -8719,7 +8720,7 @@ iY
 iY
 xc
 DD
-vx
+Fv
 BU
 BU
 BU
@@ -8848,9 +8849,9 @@ wl
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 tb
 Tx
 Tx
@@ -8861,7 +8862,7 @@ iY
 DD
 xc
 DD
-vx
+Fv
 BU
 BU
 BU
@@ -8990,9 +8991,9 @@ wl
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 tb
 Tx
@@ -9003,7 +9004,7 @@ iY
 iY
 xc
 DD
-vx
+Fv
 BU
 BU
 BU
@@ -9132,9 +9133,9 @@ wl
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -9145,7 +9146,7 @@ iY
 DD
 xc
 DD
-vx
+Fv
 BU
 BU
 BU
@@ -9274,9 +9275,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -9287,7 +9288,7 @@ iY
 iY
 xc
 DD
-vx
+Fv
 BU
 BU
 BU
@@ -9416,9 +9417,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -9429,7 +9430,7 @@ AH
 AL
 xc
 mm
-vx
+Fv
 BU
 BU
 BU
@@ -9558,9 +9559,9 @@ tb
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -9700,7 +9701,7 @@ Tx
 Tx
 Tx
 Tx
-gG
+pv
 Ne
 bD
 Tx
@@ -9842,9 +9843,9 @@ Tx
 Dj
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -9984,9 +9985,9 @@ Tx
 Dj
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -10126,9 +10127,9 @@ Dj
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 El
@@ -10268,9 +10269,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 El
 El
 El
@@ -10410,9 +10411,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 El
 El
 Tx
@@ -10552,9 +10553,9 @@ Tx
 Tx
 wl
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -10694,9 +10695,9 @@ tb
 Tx
 wl
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 pn
@@ -10836,9 +10837,9 @@ tb
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 pn
@@ -10978,9 +10979,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 pn
@@ -11120,9 +11121,9 @@ tb
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -11262,9 +11263,9 @@ tb
 tb
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 El
 El
 El
@@ -11404,7 +11405,7 @@ Tx
 Tx
 Tx
 Tx
-gG
+pv
 Ne
 bD
 El
@@ -11546,9 +11547,9 @@ pn
 pn
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -11688,9 +11689,9 @@ Tx
 pn
 pn
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -11830,9 +11831,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -11972,9 +11973,9 @@ mP
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Hl
@@ -12114,9 +12115,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Hl
 Hl
 Hl
@@ -12256,9 +12257,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Hl
 Tx
 Tx
@@ -12398,9 +12399,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Hl
 Tx
@@ -12540,9 +12541,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Hl
 Tx
@@ -12682,9 +12683,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Hl
 Tx
@@ -12824,9 +12825,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Hl
 Tx
@@ -12966,7 +12967,7 @@ Tx
 OM
 Tx
 Tx
-gG
+pv
 Ne
 bD
 Tx
@@ -13108,9 +13109,9 @@ Tx
 OM
 OM
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Hl
@@ -13250,9 +13251,9 @@ Tx
 Tx
 OM
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -13392,9 +13393,9 @@ mP
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Hl
 Tx
 Tx
@@ -13534,9 +13535,9 @@ Hl
 OM
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Hl
 Tx
 Tx
@@ -13676,9 +13677,9 @@ OM
 OM
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Hl
 Tx
 Tx
@@ -13818,9 +13819,9 @@ Tx
 Vs
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Hl
 Tx
 Tx
@@ -13960,9 +13961,9 @@ Tx
 El
 El
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -14102,9 +14103,9 @@ El
 Tx
 El
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Hl
@@ -14244,9 +14245,9 @@ Tx
 Vs
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Hl
 Hl
@@ -14386,9 +14387,9 @@ Hl
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Hl
 Tx
@@ -14528,7 +14529,7 @@ Tx
 Tx
 Tx
 Tx
-gG
+pv
 Ne
 bD
 Tx
@@ -14670,9 +14671,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -14812,9 +14813,9 @@ mP
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -14954,9 +14955,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -15096,9 +15097,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -15238,9 +15239,9 @@ mP
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -15380,9 +15381,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 pn
 Tx
 Tx
@@ -15522,9 +15523,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -15664,9 +15665,9 @@ Tx
 wl
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 pn
 pn
 Tx
@@ -15806,9 +15807,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 pn
@@ -15948,9 +15949,9 @@ wl
 Tx
 mP
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -16090,9 +16091,9 @@ wl
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 BU
@@ -16232,7 +16233,7 @@ Tx
 Tx
 Tx
 Tx
-gG
+pv
 Ne
 bD
 Tx
@@ -16374,9 +16375,9 @@ Tx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -16516,9 +16517,9 @@ hx
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -16658,9 +16659,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -16800,9 +16801,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -16942,9 +16943,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 pn
 Tx
 Tx
@@ -17084,9 +17085,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 pn
 Tx
 Tx
@@ -17226,9 +17227,9 @@ JE
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 pn
 Tx
 Tx
@@ -17368,9 +17369,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -17510,9 +17511,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -17652,9 +17653,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 pn
@@ -17794,9 +17795,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -17936,9 +17937,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 pn
 Tx
@@ -18078,9 +18079,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 pn
 Tx
 Tx
@@ -18220,7 +18221,7 @@ gy
 Tx
 Tx
 Tx
-gG
+pv
 Ne
 bD
 pn
@@ -18362,9 +18363,9 @@ JE
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -18504,9 +18505,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -18646,9 +18647,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -18788,9 +18789,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -18930,9 +18931,9 @@ gy
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -19072,9 +19073,9 @@ JE
 Tx
 Tx
 Tx
-vx
-vx
-vx
+Fv
+Fv
+Fv
 Tx
 Tx
 Tx
@@ -19209,19 +19210,19 @@ DJ
 DJ
 DJ
 DJ
-vx
+Fv
 sd
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-vx
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
 sd
-vx
+Fv
 DJ
 DJ
 DJ
@@ -19354,14 +19355,14 @@ DJ
 tc
 Ne
 bD
-vx
-vx
-vx
-vx
-vx
-vx
-vx
-gG
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+Fv
+pv
 Ne
 BJ
 DJ
@@ -19493,19 +19494,19 @@ DJ
 DJ
 DJ
 DJ
-vx
+Fv
 sd
 NC
-vx
+Fv
 ep
 OU
-vx
+Fv
 OU
 ep
-vx
+Fv
 NC
 sd
-vx
+Fv
 DJ
 DJ
 DJ

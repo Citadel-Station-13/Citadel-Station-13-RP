@@ -193,9 +193,21 @@
 	result = /obj/item/chainsaw
 	reqs = list(/obj/item/surgical/circular_saw = 1,
 				/obj/item/stack/cable_coil = 3,
+				/obj/item/stock_parts/motor = 1,
 				/obj/item/stack/material/plasteel = 5)
 	tools = list(TOOL_WELDER)
 	time = 50
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
+
+/datum/crafting_recipe/chainsword
+	name = "Chainsaw Sword"
+	result = /obj/item/chainsaw/chainsword
+	reqs = list(/obj/item/chainsaw = 1,
+				/obj/item/stock_parts/motor = 1,
+				/obj/item/stack/material/durasteel = 5)
+	tools = list(TOOL_WELDER)
+	time = 100
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
 
