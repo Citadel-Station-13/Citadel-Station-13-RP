@@ -519,7 +519,7 @@
 	name = "plain choker"
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	desc = "A simple, plain choker. Or maybe it's a collar? Use in-hand to customize it."
-	icon = 'icons/obj/clothing/collars_vr.dmi'
+	icon = 'icons/obj/clothing/collars.dmi'
 	icon_override = 'icons/mob/ties.dmi'
 	icon_state = "choker_cst"
 	item_state = "choker_cst_overlay"
@@ -540,17 +540,19 @@
 
 /obj/item/clothing/accessory/collar
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
-	icon = 'icons/obj/clothing/collars_vr.dmi'
+	icon = 'icons/obj/clothing/collars.dmi'
 	icon_override = 'icons/mob/ties.dmi'
-	var/icon_previous_override //yw addition
+	var/icon_previous_override
 	var/writtenon = 0
 
-//ywedit start. forces different sprite sheet on equip
+// Forces different sprite sheet on equip
 /obj/item/clothing/accessory/collar/Initialize(mapload)
 	. = ..()
 	icon_previous_override = icon_override
 
-/obj/item/clothing/accessory/collar/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+// Solution for race-specific sprites for an accessory which is also a suit.
+// Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+/obj/item/clothing/accessory/collar/equipped()
 	..()
 	setUniqueSpeciesSprite()
 
@@ -574,7 +576,6 @@
 /obj/item/clothing/accessory/collar/dropped()
 	. = ..()
 	icon_override = icon_previous_override
-//ywedit end
 
 /obj/item/clothing/accessory/collar/silver
 	name = "Silver tag collar"
