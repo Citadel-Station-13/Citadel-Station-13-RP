@@ -731,7 +731,7 @@
 	},
 /area/frozen_planet/facility)
 "Dw" = (
-/turf/simulated/floor/frozen_world,
+/turf/simulated/floor/frozen_world/outdoors,
 /area/frozen_planet/outside)
 "EH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -763,7 +763,7 @@
 /turf/simulated/floor/frozen_world,
 /area/frozen_planet/facility)
 "Go" = (
-/turf/simulated/floor/wood/frozen_world,
+/turf/simulated/floor/wood/frozen_world/outdoors,
 /area/frozen_planet/outside)
 "Gw" = (
 /obj/structure/cable{
@@ -1000,7 +1000,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "frozen"
 	},
-/turf/simulated/floor/frozen_world,
+/turf/simulated/floor/frozen_world/outdoors,
 /area/frozen_planet/outside)
 "Rn" = (
 /obj/machinery/artifact_harvester,

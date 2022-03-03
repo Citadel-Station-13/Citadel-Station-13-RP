@@ -74,9 +74,9 @@
 	company_short	= "NT"
 	starsys_name	= "Sigmar Concord"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the %station_name%. The scheduled crew transfer shuttle has docked with the %station_name%. Departing crew should board the shuttle within %ETD%."
+	shuttle_docked_message = "This is the %dock_name% calling to the NSV Triupmh. The scheduled crew transfer shuttle has docked with the NSV Triumph. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "This is the %dock_name% calling to the %station_name%. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
+	shuttle_called_message = "This is the %dock_name% calling to the NSV Triupmh. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Crew Hands Transfer"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
