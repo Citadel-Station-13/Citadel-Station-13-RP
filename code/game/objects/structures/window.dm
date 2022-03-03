@@ -355,7 +355,7 @@
 
 
 /obj/structure/window/verb/rotate_counterclockwise()
-	set name = "Rotate Window Counterclockwise"
+	set name = "Rotate Counterclockwise" // Temporary fix until someone more intelligent figures out how to add proper rotation verbs to the panels
 	set category = "Object"
 	set src in oview(1)
 
@@ -373,7 +373,7 @@
 	updateSilicate()
 
 /obj/structure/window/verb/rotate_clockwise()
-	set name = "Rotate Window Clockwise"
+	set name = "Rotate Clockwise"
 	set category = "Object"
 	set src in oview(1)
 
@@ -699,7 +699,7 @@
 	return
 
 /obj/structure/window/wooden/shatter(var/display_message = 1)
-	//playsound(src, "shatter", 70, 1)
+	playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
 	if(display_message)
 		visible_message("[src] falls apart!")
 	new shardtype(loc)
