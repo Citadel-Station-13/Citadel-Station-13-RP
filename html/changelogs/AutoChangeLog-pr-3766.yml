@@ -1,0 +1,4 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - bugfix: "Class H, Gaia Worlds, Frozen Planet, and LAvaland, now have weather and Day/Night Cycles. Dynamic Lighting now enabled to take advantage of day night cycles."
