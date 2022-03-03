@@ -149,8 +149,8 @@
 	hitsound = 'sound/hallucinations/growl1.ogg'
 
 /obj/item/nullrod/claymore/chainsaw_sword
-	icon_state = "chainswordon"
-	item_state = "chainswordon"
+	icon_state = "chainsword1"
+	item_state = "chainsword1"
 	name = "sacred chainsaw sword"
 	desc = "Suffer not a heretic to live."
 	slot_flags = SLOT_BELT

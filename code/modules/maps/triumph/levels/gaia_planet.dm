@@ -34,3 +34,10 @@ GAIA_TURF_CREATE(/turf/simulated/mineral)
 GAIA_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 GAIA_TURF_CREATE(/turf/simulated/mineral/floor)
 GAIA_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
+
+//Exterior Turfs for weather effects.
+/turf/simulated/floor/tiled/gaia_world/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/wood/gaia_world/outdoors
+	outdoors = TRUE
