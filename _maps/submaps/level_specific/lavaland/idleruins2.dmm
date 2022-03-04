@@ -16,7 +16,7 @@
 "hv" = (
 /obj/structure/shuttle/window,
 /obj/structure/grille,
-/turf/space,
+/turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "hH" = (
 /obj/structure/table/rack,
@@ -27,6 +27,10 @@
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/idleruins)
+"kt" = (
+/obj/effect/decal/cleanable/generic,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/idleruins)
 "nr" = (
 /obj/structure/frame,
 /turf/simulated/shuttle/floor/lavaland,
@@ -36,7 +40,7 @@
 /area/template_noop)
 "oN" = (
 /obj/item/material/shard/shrapnel,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/idleruins)
 "qO" = (
 /obj/structure/table/standard,
@@ -51,7 +55,7 @@
 /area/lavaland/idleruins)
 "rw" = (
 /obj/item/stack/material/steel,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/idleruins)
 "rG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -106,7 +110,7 @@
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "EJ" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/idleruins)
 "IJ" = (
 /obj/effect/decal/cleanable/vomit,
@@ -141,7 +145,7 @@
 /area/lavaland/idleruins)
 "Oo" = (
 /obj/item/stack/rods,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/idleruins)
 "Qp" = (
 /obj/structure/frame/computer{
@@ -170,7 +174,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/simulated/floor/plating/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/idleruins)
 "VZ" = (
 /turf/simulated/shuttle/wall/hard_corner,
@@ -204,7 +208,7 @@
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "YZ" = (
-/turf/simulated/shuttle/wall,
+/turf/simulated/shuttle/wall/lavaland,
 /area/lavaland/idleruins)
 "Zb" = (
 /obj/effect/decal/cleanable/generic,
@@ -280,7 +284,7 @@ WH
 Wd
 XA
 Of
-jd
+kt
 YZ
 or
 "}
@@ -396,7 +400,7 @@ Sk
 IO
 YZ
 Xu
-YZ
+VZ
 hH
 ri
 ri

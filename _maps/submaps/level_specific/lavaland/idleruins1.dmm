@@ -2,6 +2,10 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
+"b" = (
+/obj/effect/floor_decal/asteroid,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/idleruins)
 "c" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood/lavaland,
@@ -47,7 +51,7 @@
 "y" = (
 /obj/item/bone,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/idleruins)
 "D" = (
 /mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror/surt,
@@ -60,6 +64,9 @@
 /obj/structure/barricade,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
+"M" = (
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/idleruins)
 "N" = (
 /obj/structure/loot_pile/surface/bones,
 /obj/effect/decal/cleanable/blood,
@@ -68,7 +75,7 @@
 "P" = (
 /obj/structure/loot_pile/surface/bones,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/idleruins)
 "T" = (
 /obj/effect/decal/cleanable/blood/gibs,
@@ -98,13 +105,13 @@ E
 E
 E
 E
-E
-E
-E
-E
-E
-E
-E
+M
+M
+M
+M
+M
+M
+M
 a
 a
 a
@@ -121,7 +128,7 @@ I
 I
 w
 w
-E
+M
 a
 a
 a
@@ -138,7 +145,7 @@ q
 q
 t
 w
-E
+M
 a
 a
 a
@@ -155,9 +162,9 @@ d
 d
 d
 w
-E
-E
-E
+M
+M
+M
 a
 "}
 (6,1,1) = {"
@@ -172,9 +179,9 @@ d
 c
 c
 w
-E
-E
-E
+M
+M
+M
 a
 "}
 (7,1,1) = {"
@@ -189,9 +196,9 @@ d
 d
 d
 w
-E
-E
-E
+M
+M
+M
 a
 "}
 (8,1,1) = {"
@@ -206,7 +213,7 @@ j
 c
 c
 w
-E
+M
 a
 a
 a
@@ -234,7 +241,7 @@ E
 E
 E
 v
-v
+b
 y
 d
 c

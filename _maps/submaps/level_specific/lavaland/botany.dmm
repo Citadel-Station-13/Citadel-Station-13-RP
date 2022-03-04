@@ -85,6 +85,9 @@
 /obj/item/material/knife/machete/hatchet,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/idleruins)
+"T" = (
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/idleruins)
 "U" = (
 /obj/item/seeds/killertomatoseed,
 /turf/simulated/floor/tiled/lavaland,
@@ -140,10 +143,10 @@ I
 I
 I
 I
-M
-M
-M
-M
+T
+T
+T
+T
 I
 I
 a
@@ -160,9 +163,9 @@ N
 N
 N
 N
-M
-M
-M
+T
+T
+T
 a
 "}
 (4,1,1) = {"
@@ -177,9 +180,9 @@ m
 m
 m
 N
-M
-M
-M
+T
+T
+T
 a
 "}
 (5,1,1) = {"
@@ -194,9 +197,9 @@ W
 W
 W
 N
-M
-M
-M
+T
+T
+T
 a
 "}
 (6,1,1) = {"
@@ -212,8 +215,8 @@ W
 X
 N
 N
-M
-M
+T
+T
 a
 "}
 (7,1,1) = {"
@@ -229,8 +232,8 @@ k
 W
 N
 W
-M
-M
+T
+T
 a
 "}
 (8,1,1) = {"
@@ -246,8 +249,8 @@ k
 W
 v
 W
-M
-M
+T
+T
 a
 "}
 (9,1,1) = {"
@@ -263,8 +266,8 @@ k
 v
 N
 W
-M
-M
+T
+T
 a
 "}
 (10,1,1) = {"
@@ -280,8 +283,8 @@ W
 W
 N
 N
-M
-M
+T
+T
 a
 "}
 (11,1,1) = {"

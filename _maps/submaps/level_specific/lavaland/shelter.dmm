@@ -2,10 +2,6 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
-"b" = (
-/obj/machinery/door/blast/regular,
-/turf/simulated/floor/plating,
-/area/lavaland/idleruins)
 "e" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/wood/lavaland,
@@ -22,7 +18,7 @@
 /area/lavaland/idleruins)
 "q" = (
 /obj/machinery/door/blast/regular,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "r" = (
 /obj/structure/table/woodentable,
@@ -30,7 +26,7 @@
 /area/lavaland/idleruins)
 "x" = (
 /obj/structure/boulder,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/template_noop)
 "y" = (
 /obj/structure/boulder,
@@ -38,7 +34,7 @@
 /area/lavaland/idleruins)
 "z" = (
 /obj/structure/girder/displaced,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "B" = (
 /obj/structure/bookcase,
@@ -47,7 +43,7 @@
 "C" = (
 /obj/structure/boulder,
 /obj/machinery/door/blast/regular/open,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "E" = (
 /obj/item/material/twohanded/spear/plasteel,
@@ -58,7 +54,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "P" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/template_noop)
 "R" = (
 /obj/structure/boulder,
@@ -70,7 +66,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "X" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/idleruins)
 
 (1,1,1) = {"
@@ -141,7 +137,7 @@ O
 O
 O
 O
-b
+q
 a
 a
 "}

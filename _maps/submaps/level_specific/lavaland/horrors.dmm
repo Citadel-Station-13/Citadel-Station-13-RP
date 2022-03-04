@@ -12,6 +12,9 @@
 	},
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
+"d" = (
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/horrors)
 "i" = (
 /obj/structure/girder,
 /turf/simulated/floor/lavaland,
@@ -26,9 +29,9 @@
 "k" = (
 /turf/simulated/wall/r_wall,
 /area/lavaland/horrors)
-"m" = (
+"n" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/horrors)
 "o" = (
 /obj/effect/decal/cleanable/blood/gibs,
@@ -54,7 +57,7 @@
 /area/lavaland/horrors)
 "y" = (
 /obj/effect/floor_decal/asteroid,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/horrors)
 "A" = (
 /obj/effect/decal/cleanable/blood,
@@ -67,8 +70,8 @@
 "I" = (
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
-"M" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+"K" = (
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/template_noop)
 "N" = (
 /turf/template_noop,
@@ -83,14 +86,14 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/horrors)
+"Q" = (
+/obj/effect/decal/cleanable/generic,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/horrors)
 "U" = (
 /obj/structure/table,
 /obj/item/flame/candle/candelabra,
 /turf/simulated/floor/lavaland,
-/area/lavaland/horrors)
-"V" = (
-/obj/effect/decal/cleanable/generic,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/horrors)
 "X" = (
 /turf/simulated/floor/lavaland,
@@ -102,9 +105,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/horrors)
-"Z" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/horrors)
 
 (1,1,1) = {"
@@ -127,15 +127,15 @@ u
 (2,1,1) = {"
 u
 N
-Z
+d
 N
 N
 N
 u
-M
+K
 u
-M
-M
+K
+K
 u
 u
 u
@@ -143,16 +143,16 @@ u
 "}
 (3,1,1) = {"
 u
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-m
+d
+d
+d
+d
+d
+d
+d
+d
+d
+n
 N
 N
 u
@@ -160,16 +160,16 @@ u
 "}
 (4,1,1) = {"
 u
-Z
-m
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-Z
+d
+n
+d
+d
+d
+d
+d
+d
+d
+d
 N
 N
 u
@@ -178,7 +178,7 @@ u
 (5,1,1) = {"
 u
 N
-Z
+d
 k
 k
 k
@@ -186,7 +186,7 @@ k
 y
 X
 i
-V
+Q
 N
 N
 u
@@ -228,7 +228,7 @@ u
 "}
 (8,1,1) = {"
 u
-M
+K
 k
 x
 I
@@ -238,8 +238,8 @@ I
 I
 I
 I
-Z
-Z
+d
+d
 u
 u
 "}
@@ -290,7 +290,7 @@ k
 k
 k
 k
-Z
+d
 u
 u
 "}
@@ -298,16 +298,16 @@ u
 u
 u
 N
-Z
-Z
-Z
-V
-Z
-m
-Z
-Z
-Z
-Z
+d
+d
+d
+Q
+d
+n
+d
+d
+d
+d
 u
 u
 "}
@@ -317,14 +317,14 @@ u
 N
 N
 N
-Z
-Z
-Z
-Z
-Z
-Z
-Z
-Z
+d
+d
+d
+d
+d
+d
+d
+d
 u
 u
 "}
@@ -335,14 +335,14 @@ u
 u
 u
 u
-M
-M
-M
-M
-M
-M
-M
-M
+K
+K
+K
+K
+K
+K
+K
+K
 u
 "}
 (15,1,1) = {"

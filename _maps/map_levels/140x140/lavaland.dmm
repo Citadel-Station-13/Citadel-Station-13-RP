@@ -47,7 +47,7 @@
 	name = "to_east";
 	portal_id = "eaststep"
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/central/explored)
 "bG" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -133,7 +133,7 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 8
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/central/explored)
 "ew" = (
 /turf/simulated/floor/tiled,
@@ -211,7 +211,7 @@
 /area/lavaland/central/base/common)
 "fw" = (
 /mob/living/simple_mob/construct/shade/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/central/explored)
 "fX" = (
 /obj/machinery/light/small{
@@ -260,7 +260,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "gy" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/central/explored)
 "gE" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -385,7 +385,7 @@
 /area/lavaland/central/base/common)
 "ix" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/central/unexplored)
 "iz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -812,7 +812,7 @@
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 4
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/central/base/common)
 "qc" = (
 /obj/machinery/atmospherics/binary/circulator{
@@ -1076,7 +1076,7 @@
 	name = "\improper MEMETIC HAZARD";
 	pixel_x = -32
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/central/base/common)
 "ui" = (
 /obj/machinery/door/airlock{
@@ -1630,7 +1630,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Ft" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/central/unexplored)
 "FF" = (
 /obj/machinery/door/firedoor/multi_tile{
@@ -2221,7 +2221,7 @@
 	pixel_y = -4
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/central/base/common)
 "RJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -22226,8 +22226,8 @@ RX
 RX
 MX
 RL
-RL
-gy
+MX
+MX
 gy
 gy
 gy
@@ -22368,13 +22368,13 @@ MX
 MX
 RL
 RL
-RL
+MX
 gy
 gy
 gy
 gy
 gy
-RL
+MX
 MX
 MX
 MX

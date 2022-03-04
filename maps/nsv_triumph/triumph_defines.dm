@@ -23,7 +23,8 @@
 
 #define Z_LEVEL_TRADEPORT				20
 #define Z_LEVEL_LAVALAND				21
-#define Z_LEVEL_LAVALAND_EAST			22
+#define Z_LEVEL_LAVALAND_DUNGEON		22
+#define Z_LEVEL_LAVALAND_EAST			23
 
 // Camera Networks
 /datum/map/triumph
@@ -144,6 +145,7 @@
 								 Z_LEVEL_ROGUEMINE_4)
 
 	lavaland_levels =		list(Z_LEVEL_LAVALAND,
+								 Z_LEVEL_LAVALAND_DUNGEON,
 								 Z_LEVEL_LAVALAND_EAST)
 
 	lateload_z_levels = list(
@@ -157,7 +159,7 @@
 		list("Frozen Planet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land","Away Mission - Lava Land (East)")
+		list("Away Mission - Lava Land","Away Mission - Lava Land (Dungeon)","Away Mission - Lava Land (East)")
 	)
 
 	ai_shell_restricted = TRUE
@@ -175,10 +177,11 @@
 		Z_LEVEL_FROZEN_PLANET,
 		Z_LEVEL_TRADEPORT,
 		Z_LEVEL_LAVALAND,
+		Z_LEVEL_LAVALAND_DUNGEON,
 		Z_LEVEL_LAVALAND_EAST)
 
 	lateload_single_pick = null //Nothing right now.
-	
+
 	planet_datums_to_make = list(/datum/planet/lavaland,
 								/datum/planet/classh,
 								/datum/planet/frozen_planet,

@@ -685,6 +685,14 @@
 	name = "Lava Land (West) - Unknown"
 	icon_state = "yellow"
 
+/area/lavaland/dungeon/exterior
+	name = "Lava Land (Dungeon) - Unknown"
+	icon_state = "yellow"
+
+/area/lavaland/dungeon/facility
+	name = "Lava Land (Dungeon) - Pump Facility"
+	icon_state = "blue"
+	requires_power = 1
 
 // Aerostat
 /area/shuttle/excursion/away_aerostat
