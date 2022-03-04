@@ -167,7 +167,7 @@
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/dirt
 	requires_power = 0
-	dynamic_lighting = 1
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /area/frozen_planet/facility
 	name = "Frozen Planet - Facility"
@@ -177,10 +177,12 @@
 /area/frozen_planet/ruins
 	name = "Frozen Planet - Ruins"
 	icon_state = "green"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /area/frozen_planet/outside
 	name = "Frozen Planet - Outside (UE)"
 	icon_state = "yellow"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 //Gaia planet world areas
 /area/gaia_planet
@@ -188,22 +190,24 @@
 	icon_state = "away"
 	base_turf = /turf/simulated/floor/outdoors/dirt
 	requires_power = 0
-	dynamic_lighting = 1
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /area/gaia_planet/inside
 	name = "Gaia Planet - Inside (E)"
 	icon_state = "red"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /area/gaia_planet/outside
 	name = "Gaia Planet - Outside (UE)"
 	icon_state = "yellow"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 // Mining Planet world areas
 /area/mining_planet
 	name = "Mining Planet"
 	icon_state = "away"
 	base_turf = /turf/simulated/mineral/floor/
-	dynamic_lighting = 1
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /area/mining_planet/explored
 	name = "Mining Planet - Explored (E)"
@@ -269,7 +273,7 @@
 	name = "Class H World"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	requires_power = 0
-	dynamic_lighting = 1
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /area/poi_h/POIs/WW_Town
 	name = "Ghost Town"
@@ -298,10 +302,12 @@
 /area/poi_h/explored
 	name = "Class H World - Explored (E)"
 	icon_state = "explored"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /area/poi_h/unexplored
 	name = "Class H World - Unexplored (UE)"
 	icon_state = "unexplored"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 //Debris field
 /area/shuttle/excursion/debrisfield
