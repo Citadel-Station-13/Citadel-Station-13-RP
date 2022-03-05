@@ -26,17 +26,9 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ak" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/brigdoor/eastleft,
-/turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
+/mob/living/simple_mob/animal/space/bats/surt,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/unexplored)
 "al" = (
 /obj/structure/girder,
 /obj/structure/boulder,
@@ -51,6 +43,19 @@
 "az" = (
 /turf/simulated/wall/r_wall,
 /area/lavaland/east/lab/bunker)
+"aC" = (
+/obj/structure/table/woodentable,
+/obj/structure/sign/poster/nanotrasen{
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/east/colony)
+"aE" = (
+/obj/structure/fence/door/opened{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/dirt/lavaland,
+/area/lavaland/east/colony)
 "aL" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Maintenance"
@@ -202,6 +207,7 @@
 "cQ" = (
 /obj/structure/table/glass,
 /obj/random/medical,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "cU" = (
@@ -225,23 +231,16 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
 "dk" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/brigdoor/eastright,
-/turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/area/lavaland/east/colony)
 "dx" = (
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "dI" = (
@@ -304,6 +303,24 @@
 	name = "ATTN: PARAPET"
 	},
 /turf/simulated/floor/plating,
+/area/lavaland/east/lab/core)
+"eQ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
 "eS" = (
 /obj/structure/cable{
@@ -392,6 +409,26 @@
 /obj/structure/closet/crate/xion,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"fZ" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 10
+	},
+/obj/structure/sign/warning{
+	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
+	name = "\improper MEMETIC HAZARD";
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "ge" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -433,6 +470,13 @@
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
+"gI" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "gK" = (
 /obj/machinery/mineral/processing_unit_console{
 	density = 0;
@@ -442,22 +486,37 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "gT" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
+/obj/machinery/artifact_scanpad,
+/obj/item/soulstone,
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
+"gV" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"gX" = (
+/mob/living/simple_mob/mechanical/cyber_horror/corgi/surt,
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/machinery/door/window/brigdoor/westleft,
-/turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "hn" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"hr" = (
+/obj/effect/gibspawner/human,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "hu" = (
@@ -467,6 +526,18 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"hG" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/bunker)
 "hM" = (
 /turf/simulated/wall/lavaland,
 /area/lavaland/east/colony)
@@ -478,6 +549,12 @@
 /area/lavaland/east/colony)
 "ia" = (
 /obj/structure/dispenser/oxygen,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 6
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
 "if" = (
@@ -499,6 +576,13 @@
 "ix" = (
 /turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/east/explored)
+"iL" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/area/lavaland/east/colony)
 "iX" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
@@ -507,21 +591,14 @@
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "jd" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
+/obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
-/obj/machinery/door/window/brigdoor/westleft,
-/obj/item/archaeological_find,
-/obj/structure/anomaly_container{
-	name = "ACH-S4-2Kz"
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 9
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
+/area/lavaland/east/lab/core)
 "ji" = (
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/east/colony)
@@ -540,6 +617,15 @@
 "jx" = (
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
@@ -640,6 +726,10 @@
 "kx" = (
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
+"kL" = (
+/obj/structure/fence/corner,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/colony)
 "kQ" = (
 /obj/structure/toilet{
 	dir = 4
@@ -684,7 +774,10 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/lavaland,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "lp" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -709,6 +802,30 @@
 /obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"lS" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
+"mw" = (
+/obj/structure/bed/chair/wood{
+	dir = 8
+	},
+/obj/structure/sign/poster{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "mA" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Operations"
@@ -724,11 +841,27 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
+"mG" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/area/lavaland/east/colony)
 "mI" = (
 /obj/structure/bed/chair/pew/right{
 	dir = 4
 	},
 /turf/simulated/floor/wood/lavaland,
+/area/lavaland/east/colony)
+"mJ" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "mK" = (
 /obj/machinery/power/solar,
@@ -741,6 +874,16 @@
 "mP" = (
 /turf/simulated/wall/wood/lavaland,
 /area/lavaland/east/colony)
+"mT" = (
+/obj/machinery/porta_turret/poi,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "mW" = (
 /obj/structure/table/rack,
 /obj/item/storage/belt/archaeology,
@@ -806,9 +949,24 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
+"nD" = (
+/obj/structure/fence/door/opened{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/dirt/lavaland,
+/area/lavaland/east/colony)
 "nF" = (
 /obj/machinery/door/airlock{
 	name = "N. Kramer"
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"nJ" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -828,6 +986,11 @@
 	dir = 4
 	},
 /obj/structure/curtain/open/shower,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "od" = (
@@ -881,6 +1044,16 @@
 /obj/item/paper/lavaland/medical,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"oD" = (
+/obj/machinery/porta_turret/poi,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "oI" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -1016,6 +1189,12 @@
 	},
 /obj/item/material/shard,
 /obj/structure/curtain/open/shower,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "re" = (
@@ -1042,20 +1221,24 @@
 	dir = 4
 	},
 /obj/structure/curtain/open/shower,
-/turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
-"rK" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/machinery/door/window/brigdoor/westright,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"rE" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
+"rK" = (
+/mob/living/simple_mob/construct/shade/surt,
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "rS" = (
 /turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/east/colony)
@@ -1070,8 +1253,25 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"sk" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "sm" = (
 /mob/living/simple_mob/mechanical/cyber_horror/corgi/surt,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"sx" = (
+/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "sJ" = (
@@ -1174,6 +1374,16 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
+"uc" = (
+/mob/living/simple_mob/animal/space/bats/surt,
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/east/unexplored)
+"uE" = (
+/obj/structure/sign/warning/secure_area{
+	pixel_y = 32
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/colony)
 "uJ" = (
 /obj/machinery/vending/snack,
 /obj/machinery/light{
@@ -1205,13 +1415,34 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "vh" = (
+/obj/machinery/door/airlock/highsecurity{
+	icon_state = "door_locked";
+	locked = 1;
+	name = "Containment Storage"
+	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "site_four_lockdown";
+	name = "Containment Blast Doors";
+	opacity = 0
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
+"vi" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/area/lavaland/east/colony)
 "vk" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
@@ -1226,6 +1457,9 @@
 "vs" = (
 /obj/structure/bed,
 /obj/item/bedsheet/cosmos,
+/obj/structure/sign/poster{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "vy" = (
@@ -1270,6 +1504,10 @@
 /obj/effect/gibspawner/generic,
 /obj/item/pickaxe/hand,
 /turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"vS" = (
+/obj/structure/fence,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/east/colony)
 "wl" = (
 /obj/structure/grille,
@@ -1318,6 +1556,10 @@
 /area/lavaland/east/colony)
 "wF" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "wL" = (
@@ -1351,6 +1593,15 @@
 /obj/item/bedsheet/red,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"xe" = (
+/obj/structure/sign/warning/docking_area{
+	pixel_x = -32
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/colony)
 "xk" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/lavaland,
@@ -1358,6 +1609,27 @@
 "xm" = (
 /obj/structure/table,
 /turf/simulated/floor/lavaland,
+/area/lavaland/east/colony)
+"xr" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
+"xw" = (
+/obj/structure/sign/poster{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "xz" = (
 /obj/structure/cable/yellow{
@@ -1368,6 +1640,16 @@
 	stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
+/area/lavaland/east/colony)
+"xG" = (
+/obj/effect/gibspawner/human,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "xH" = (
 /obj/structure/bed/chair/wood{
@@ -1410,6 +1692,12 @@
 /area/lavaland/east/colony)
 "yz" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
 "yB" = (
@@ -1488,6 +1776,16 @@
 	},
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
+"zv" = (
+/obj/machinery/porta_turret/poi,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "zC" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -1496,6 +1794,13 @@
 	},
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
+/area/lavaland/east/colony)
+"zD" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "zH" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1519,21 +1824,14 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "zY" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
 	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
+/obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/item/archaeological_find,
-/obj/structure/anomaly_container{
-	name = "ACH-S4-1Md"
-	},
 /turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
+/area/lavaland/east/lab/core)
 "Am" = (
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/east/unexplored)
@@ -1547,6 +1845,27 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"AN" = (
+/mob/living/simple_mob/mechanical/cyber_horror/surt,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"AV" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"AY" = (
+/mob/living/simple_mob/animal/space/bats/surt,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/explored)
 "Ba" = (
 /obj/structure/table/woodentable,
 /obj/item/paper/lavaland/noise,
@@ -1613,6 +1932,18 @@
 /mob/living/simple_mob/mechanical/cyber_horror/corgi/surt,
 /turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/east/colony)
+"BD" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/brigdoor/eastright,
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/containment)
 "BE" = (
 /obj/machinery/optable,
 /obj/machinery/oxygen_pump/anesthetic{
@@ -1677,6 +2008,22 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/plating,
 /area/lavaland/east/lab/core)
+"CK" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/brigdoor/eastleft,
+/obj/item/archaeological_find,
+/obj/structure/anomaly_container{
+	name = "ACH-S4-1Md"
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/containment)
 "Di" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
@@ -1699,7 +2046,10 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/lavaland,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "Dt" = (
 /obj/structure/cable/yellow{
@@ -1709,12 +2059,40 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
+"Dx" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/westleft,
+/obj/structure/anomaly_container{
+	name = "STX-S4-5Ts"
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/containment)
+"DA" = (
+/obj/structure/fence/cut/large{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/colony)
 "DB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
+/area/lavaland/east/colony)
+"DE" = (
+/obj/structure/fence/corner{
+	dir = 1
+	},
+/obj/structure/fence,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/east/colony)
 "DF" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1796,7 +2174,19 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/lavaland,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
+/area/lavaland/east/colony)
+"Fx" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/structure/sign/warning/high_voltage{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "Fy" = (
 /obj/machinery/door/airlock/glass_external{
@@ -1847,6 +2237,28 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"FU" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"GE" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "GF" = (
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled/lavaland,
@@ -1859,6 +2271,23 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
+"GZ" = (
+/obj/structure/sign/poster/nanotrasen{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"Hz" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "HD" = (
 /obj/structure/toilet{
 	dir = 8
@@ -1893,6 +2322,20 @@
 /obj/structure/barricade,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
+"Ia" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/bunker)
 "IC" = (
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
@@ -1953,6 +2396,15 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"Jm" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "Jo" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
@@ -1968,6 +2420,12 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
@@ -1993,6 +2451,22 @@
 /obj/item/stack/material/wood,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"Km" = (
+/obj/effect/floor_decal/rust,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"Kt" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "Kv" = (
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 4
@@ -2013,6 +2487,12 @@
 "KG" = (
 /turf/simulated/floor/outdoors/grass/lavaland,
 /area/lavaland/east/colony)
+"KJ" = (
+/obj/structure/fence/cut/medium{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/colony)
 "KQ" = (
 /obj/structure/table/steel,
 /obj/item/paper/lavaland/townhall,
@@ -2022,6 +2502,13 @@
 /obj/structure/toilet,
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
+"Ld" = (
+/obj/effect/floor_decal/corner/red/diagonal,
+/obj/structure/sign/poster{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "Lg" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -2040,6 +2527,16 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"Lo" = (
+/obj/machinery/porta_turret/poi,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "Ly" = (
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -2063,12 +2560,65 @@
 /obj/item/bedsheet/rainbow,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"LX" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/westright,
+/obj/item/soulstone,
+/obj/structure/anomaly_container{
+	name = "STX-S4-5Tt"
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/containment)
 "Me" = (
 /obj/structure/bed/chair/backed_red{
 	dir = 8
 	},
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
+"Mf" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"Ml" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"Mv" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "Mw" = (
 /obj/structure/girder/displaced,
 /obj/structure/sink{
@@ -2084,6 +2634,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
+"Nh" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/colony)
 "Ns" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/medical,
@@ -2093,6 +2649,40 @@
 /obj/structure/bed/chair/backed_red,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
+"Nz" = (
+/obj/machinery/porta_turret/poi,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
+"NB" = (
+/obj/structure/fence/cut/large,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/colony)
+"NF" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"NO" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/containment)
 "NP" = (
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
@@ -2176,6 +2766,10 @@
 /area/lavaland/east/colony)
 "Pc" = (
 /obj/machinery/light,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/borderfloorblack/corner2,
+/obj/effect/floor_decal/corner/purple/bordercorner2,
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
 "Pd" = (
@@ -2198,6 +2792,13 @@
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
+"Pn" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/effect/floor_decal/borderfloorblack/corner2,
+/obj/effect/floor_decal/corner/purple/bordercorner2,
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "Po" = (
 /obj/structure/bed/chair/sofa/black/right,
 /turf/simulated/floor/tiled/lavaland,
@@ -2218,6 +2819,22 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
+"PH" = (
+/obj/machinery/porta_turret/poi,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "PJ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -2280,19 +2897,33 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
+"Qy" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "QA" = (
 /mob/living/simple_mob/mechanical/cyber_horror/corgi/surt,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "QF" = (
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/westleft,
+/obj/item/archaeological_find,
+/obj/structure/anomaly_container{
+	name = "ACH-S4-2Kz"
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
@@ -2302,6 +2933,7 @@
 "QK" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/paper/lavaland/goodbye,
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "Re" = (
@@ -2320,7 +2952,10 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/lavaland,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "RA" = (
 /obj/structure/table/steel,
@@ -2332,6 +2967,25 @@
 /obj/structure/boulder,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
+"RH" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "RI" = (
 /obj/structure/bed/chair/bar_stool,
@@ -2371,6 +3025,18 @@
 /obj/item/material/shard,
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
+"RS" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/structure/sign/warning/lethal_turrets{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "RT" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Central Park";
@@ -2429,6 +3095,12 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
 "SS" = (
@@ -2453,6 +3125,28 @@
 /obj/item/material/kitchen/rollingpin,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"SZ" = (
+/obj/structure/fence/cut/medium{
+	dir = 1
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/colony)
+"Ti" = (
+/obj/machinery/porta_turret/poi,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "Tj" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/window/reinforced{
@@ -2469,6 +3163,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
+"Tl" = (
+/obj/structure/bed/chair/wood,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "Tm" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/lavaland,
@@ -2521,25 +3220,19 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "TT" = (
-/obj/machinery/door/airlock/highsecurity{
-	icon_state = "door_locked";
-	locked = 1;
-	name = "Containment Storage"
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "site_four_lockdown";
-	name = "Containment Blast Doors";
-	opacity = 0
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
+/area/lavaland/east/lab/core)
 "TX" = (
 /obj/effect/map_effect/portal/master/side_b{
 	dir = 4;
@@ -2563,6 +3256,15 @@
 /obj/machinery/artifact_scanpad,
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
+"Ui" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "Uj" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/lavaland,
@@ -2576,6 +3278,25 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
+"Uq" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/area/lavaland/east/colony)
 "Uz" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
@@ -2584,6 +3305,24 @@
 /area/lavaland/east/colony)
 "UA" = (
 /obj/machinery/porta_turret/poi,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 10
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
 "UP" = (
@@ -2594,6 +3333,21 @@
 "Ve" = (
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/east/explored)
+"Vh" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
 "Vk" = (
 /obj/structure/boulder,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -2686,10 +3440,18 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "WT" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor/westright,
+/obj/item/archaeological_find,
+/obj/structure/anomaly_container{
+	name = "LET-S4-1Ob"
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
@@ -2731,6 +3493,15 @@
 /obj/structure/flora/tree/jungle_small,
 /turf/simulated/floor/outdoors/grass/lavaland,
 /area/lavaland/east/colony)
+"Xo" = (
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/area/lavaland/east/colony)
 "Xr" = (
 /obj/structure/boulder,
 /obj/machinery/light{
@@ -2767,12 +3538,38 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "XM" = (
-/obj/machinery/porta_turret/poi,
-/obj/machinery/light{
-	dir = 8
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
+"XS" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/core)
+"XU" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/east/colony)
 "XW" = (
 /obj/machinery/door/airlock{
 	density = 0;
@@ -2783,9 +3580,13 @@
 /area/lavaland/east/colony)
 "Yi" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
@@ -2828,8 +3629,34 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
+"YG" = (
+/obj/structure/barricade,
+/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/floor_decal/steeldecal/steel_decals4{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/lavaland,
+/area/lavaland/east/colony)
 "YL" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled,
@@ -2931,21 +3758,20 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Zz" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/purple/border{
+	dir = 9
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 1
 	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/brigdoor/westright,
-/obj/item/archaeological_find,
-/obj/structure/anomaly_container{
-	name = "LET-S4-1Ob"
+/obj/effect/floor_decal/corner/purple/bordercorner2{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
+/area/lavaland/east/lab/core)
 "ZE" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
@@ -2967,6 +3793,13 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"ZP" = (
+/obj/machinery/porta_turret/poi,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/containment)
 "ZS" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/door/airlock/glass_external{
@@ -2975,6 +3808,18 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"ZT" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window/brigdoor/eastleft,
+/turf/simulated/floor/tiled,
+/area/lavaland/east/lab/containment)
 "ZX" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/freezer/rations,
@@ -4779,7 +5624,7 @@ kx
 ix
 ix
 ix
-ix
+AY
 ix
 ix
 ix
@@ -6147,7 +6992,7 @@ wP
 wP
 wP
 wP
-wP
+ak
 wP
 wP
 wP
@@ -6222,12 +7067,12 @@ Wk
 Wk
 Wk
 Wk
-rS
-rS
-rS
-rS
-rS
-rS
+vS
+SZ
+vS
+vS
+vS
+DE
 rS
 wP
 wP
@@ -6369,7 +7214,7 @@ fL
 fL
 fL
 ZE
-rS
+XU
 rS
 wP
 wP
@@ -6505,13 +7350,13 @@ Wk
 Wk
 Wk
 IC
-IC
-IC
+dk
+dk
 IC
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -6651,9 +7496,9 @@ IC
 IC
 IC
 IC
-IC
+dk
 Cu
-rS
+KJ
 rS
 wP
 wP
@@ -6784,7 +7629,7 @@ ww
 ww
 wP
 rS
-rS
+XU
 Wk
 Wk
 Wk
@@ -6795,7 +7640,7 @@ IC
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -6926,7 +7771,7 @@ ww
 ww
 wP
 rS
-rS
+XU
 lp
 Wk
 Wk
@@ -6937,7 +7782,7 @@ IC
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -7068,7 +7913,7 @@ ww
 ww
 ww
 rS
-rS
+XU
 lp
 Wk
 Wk
@@ -7079,7 +7924,7 @@ Wk
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -7210,7 +8055,7 @@ ww
 ww
 ww
 Wk
-rS
+XU
 lp
 IC
 Wk
@@ -7221,7 +8066,7 @@ Wk
 IC
 IC
 Cu
-rS
+KJ
 rS
 wP
 wP
@@ -7352,18 +8197,18 @@ ww
 ww
 ww
 Wk
-rS
+DA
 lp
 IC
 Wk
 Wk
 IC
 Wk
-IC
+dk
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -7472,7 +8317,7 @@ ix
 ix
 ix
 ix
-ix
+AY
 ix
 ix
 ix
@@ -7494,7 +8339,7 @@ ww
 ww
 ww
 Wk
-rS
+XU
 lp
 IC
 IC
@@ -7505,7 +8350,7 @@ IC
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -7636,7 +8481,7 @@ ww
 ww
 ww
 rS
-rS
+XU
 lp
 IC
 IC
@@ -7644,10 +8489,10 @@ IC
 IC
 IC
 IC
-IC
+dk
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -7778,18 +8623,18 @@ ww
 ww
 wP
 rS
-rS
+XU
 lp
 IC
 IC
+dk
 IC
 IC
 IC
-IC
-IC
+dk
 IC
 vk
-rS
+XU
 rS
 wP
 wP
@@ -7920,7 +8765,7 @@ ww
 ww
 wP
 rS
-rS
+XU
 lp
 IC
 IC
@@ -7928,10 +8773,10 @@ IC
 IC
 IC
 IC
-IC
+dk
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -8062,7 +8907,7 @@ ww
 ww
 wP
 rS
-rS
+XU
 lp
 IC
 IC
@@ -8071,9 +8916,9 @@ IC
 IC
 IC
 IC
-IC
+dk
 Cu
-rS
+DA
 rS
 wP
 wP
@@ -8204,7 +9049,7 @@ ww
 ww
 ww
 rS
-rS
+KJ
 lp
 IC
 IC
@@ -8215,7 +9060,7 @@ IC
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -8346,9 +9191,9 @@ ww
 ww
 ww
 rS
-rS
+XU
 lp
-IC
+dk
 IC
 IC
 IC
@@ -8357,7 +9202,7 @@ IC
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -8488,7 +9333,7 @@ wP
 ww
 ww
 Wk
-rS
+XU
 lp
 IC
 IC
@@ -8499,7 +9344,7 @@ IC
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -8578,7 +9423,7 @@ wP
 wP
 wP
 wP
-wP
+ak
 wP
 Qh
 Qh
@@ -8630,18 +9475,18 @@ wP
 wP
 ww
 Wk
-rS
+XU
 lp
 IC
 IC
 IC
-IC
-IC
+dk
+dk
 IC
 IC
 IC
 Cu
-rS
+XU
 rS
 wP
 wP
@@ -8772,18 +9617,18 @@ wP
 wP
 wP
 rS
-rS
+XU
 OH
 OM
 OM
+vi
 OM
 OM
-OM
-OM
+vi
 OM
 OM
 bd
-rS
+XU
 rS
 wP
 wP
@@ -8914,18 +9759,18 @@ wP
 wP
 wP
 rS
-rS
-rS
-rS
-rS
-rS
-RK
-RK
-rS
-rS
-rS
-rS
-rS
+kL
+vS
+vS
+vS
+hM
+aE
+nD
+hM
+vS
+NB
+vS
+kL
 rS
 wP
 wP
@@ -9060,10 +9905,10 @@ rS
 rS
 rS
 rS
-rS
+xe
 RK
 RK
-rS
+Nh
 rS
 rS
 rS
@@ -9169,7 +10014,7 @@ ix
 ix
 ix
 ix
-ix
+AY
 ix
 ix
 ix
@@ -9577,7 +10422,7 @@ wP
 wP
 wP
 wP
-wP
+ak
 wP
 wP
 wP
@@ -9616,11 +10461,11 @@ rS
 hM
 Qc
 Ly
-Ly
+Qy
 IK
-kp
+xG
 Ly
-kp
+hr
 bv
 hM
 rS
@@ -9922,7 +10767,7 @@ rS
 rS
 rS
 hM
-sm
+gX
 Ly
 Ly
 Ly
@@ -10027,7 +10872,7 @@ QJ
 ix
 ix
 wP
-wP
+ak
 wP
 Am
 Am
@@ -10104,7 +10949,7 @@ wP
 wP
 wP
 wP
-wP
+ak
 ww
 ww
 ww
@@ -10131,7 +10976,7 @@ wP
 wP
 wP
 wP
-wP
+ak
 wP
 wP
 wP
@@ -10183,10 +11028,10 @@ wP
 rS
 op
 Qc
-Ly
-aW
+mJ
+AN
 TB
-Ly
+Kt
 SV
 Ly
 hR
@@ -10206,7 +11051,7 @@ rS
 rS
 rS
 hM
-Ly
+mJ
 Ly
 Ly
 Ly
@@ -10329,8 +11174,8 @@ IH
 VR
 Qv
 Zd
-Ly
-Ly
+zD
+zD
 lg
 hM
 rS
@@ -10614,7 +11459,7 @@ rS
 rS
 hM
 Ly
-Ly
+mJ
 hM
 rS
 rS
@@ -10634,7 +11479,7 @@ rS
 hM
 Ly
 Ly
-Ly
+mJ
 Ly
 hM
 wP
@@ -10755,8 +11600,8 @@ rS
 rS
 rS
 hM
-yn
-yn
+YG
+YG
 hM
 rS
 rS
@@ -10916,7 +11761,7 @@ rS
 rS
 rS
 hM
-Ly
+Km
 Ly
 vP
 Ly
@@ -11440,7 +12285,7 @@ ww
 Qh
 Qh
 wP
-wP
+ak
 wP
 wP
 wP
@@ -11662,7 +12507,7 @@ fk
 DN
 NP
 IC
-IC
+dk
 hM
 ww
 ww
@@ -12037,7 +12882,7 @@ WM
 KG
 KG
 KG
-KG
+RK
 KG
 XE
 KG
@@ -12396,7 +13241,7 @@ Am
 Am
 Am
 ww
-ww
+uc
 ww
 ww
 ww
@@ -12614,10 +13459,10 @@ Qv
 rS
 rS
 RK
-hM
+rS
 op
 Ly
-Ly
+Ml
 Ly
 Qv
 rS
@@ -12756,13 +13601,13 @@ Qv
 rS
 rS
 RK
-hM
+rS
 RR
 Ly
 Ly
-Ly
+mJ
 Qv
-hM
+rS
 rS
 rS
 rS
@@ -12898,13 +13743,13 @@ Qv
 rS
 rS
 RK
-hM
+rS
 RR
-Ly
-Ly
+mJ
+gI
 Ly
 Yr
-hM
+rS
 rS
 rS
 rS
@@ -13040,7 +13885,7 @@ Qv
 rS
 rS
 RK
-hM
+rS
 hM
 hM
 Wn
@@ -13158,7 +14003,7 @@ tH
 Sg
 yn
 Qf
-Ly
+Kt
 Ly
 hM
 Ly
@@ -13185,7 +14030,7 @@ RK
 rS
 hM
 CA
-Ly
+Ml
 PU
 hM
 fF
@@ -13301,10 +14146,10 @@ Ly
 yn
 hM
 sm
-Ly
+Ui
 lt
-Ly
-Ly
+Kt
+Ui
 lt
 RK
 RK
@@ -13324,7 +14169,7 @@ Be
 nq
 eW
 RK
-hM
+rS
 hM
 GF
 Ly
@@ -13433,7 +14278,7 @@ rS
 rS
 rS
 hM
-Ly
+xw
 wy
 RA
 We
@@ -13466,13 +14311,13 @@ RT
 IC
 RT
 RK
-hM
+rS
 Yr
-Ly
+mJ
 Kf
 Ly
 hM
-Ly
+GZ
 Ly
 Be
 Sn
@@ -13585,10 +14430,10 @@ Ly
 Ly
 hM
 Ly
-Ly
+Ui
 lt
-Ly
-Ly
+Kt
+Ui
 lt
 RK
 RK
@@ -13607,11 +14452,11 @@ RK
 Be
 Zk
 Um
+RK
 rS
-hM
 op
 zT
-Ly
+mJ
 Ly
 Kh
 YC
@@ -13726,7 +14571,7 @@ tH
 Ly
 Ly
 Qf
-Ly
+Kt
 Ly
 hM
 Ly
@@ -13750,7 +14595,7 @@ Qv
 rS
 rS
 RK
-hM
+rS
 RR
 BA
 TS
@@ -13892,7 +14737,7 @@ Qv
 rS
 rS
 RK
-hM
+rS
 hM
 BA
 Ly
@@ -14040,7 +14885,7 @@ TS
 RO
 RO
 hM
-Ly
+mJ
 Ly
 Be
 bm
@@ -14182,7 +15027,7 @@ Zk
 RR
 Zk
 hM
-Ly
+mJ
 Ly
 Be
 TE
@@ -14216,7 +15061,7 @@ wP
 wP
 wP
 wP
-wP
+ak
 wP
 wP
 wP
@@ -14320,9 +15165,9 @@ rS
 RK
 rS
 rS
-hM
-hM
-hM
+rS
+rS
+rS
 hM
 Ly
 wz
@@ -14877,7 +15722,7 @@ KG
 KG
 KG
 KG
-KG
+RK
 KG
 KG
 KG
@@ -15515,7 +16360,7 @@ wP
 wP
 wP
 wP
-wP
+ak
 wP
 wP
 ww
@@ -16290,7 +17135,7 @@ hM
 hM
 hM
 rz
-Ly
+mJ
 tu
 hM
 hM
@@ -16417,7 +17262,7 @@ if
 tw
 hM
 Pa
-Ly
+gI
 vz
 hM
 Uj
@@ -16432,11 +17277,11 @@ Ly
 tw
 hM
 qN
-Ly
+gI
 Mw
 hM
 tw
-Ly
+mJ
 Ly
 hM
 rS
@@ -16455,7 +17300,7 @@ Ty
 RI
 Di
 Tv
-Tv
+Ld
 hM
 lP
 Cx
@@ -16554,7 +17399,7 @@ rS
 rS
 rS
 hM
-VC
+mw
 Ly
 Ly
 hM
@@ -16577,7 +17422,7 @@ hM
 Zh
 hM
 hM
-Ly
+GZ
 Ly
 eo
 hM
@@ -16599,7 +17444,7 @@ Di
 Tv
 Tv
 cO
-Ly
+nJ
 Ly
 Ly
 hM
@@ -16697,29 +17542,29 @@ rS
 rS
 hM
 yQ
-wz
-Ly
+Mf
+Ui
 et
-Ly
-Ly
-Ly
+Kt
+Ml
+Ui
 wX
-Ly
+Kt
 wz
-Ly
+mJ
 hM
 rS
 rS
 hM
 Fa
 Kx
-Ly
+Qy
 pu
-Ly
-Ly
-Ly
+Kt
+Ml
+Ui
 nF
-Ly
+Kt
 TJ
 Uj
 hM
@@ -16730,8 +17575,8 @@ RK
 rS
 RK
 hu
-Ly
-Ly
+NF
+Ui
 Jh
 Ty
 Ty
@@ -16741,7 +17586,7 @@ cH
 Tv
 Tv
 hM
-Ly
+mJ
 BQ
 pJ
 hM
@@ -16842,7 +17687,7 @@ hM
 hM
 hM
 hM
-Ly
+mJ
 Ly
 Ly
 hM
@@ -16872,8 +17717,8 @@ RK
 RK
 RK
 hu
-Ly
-Ly
+NF
+Ui
 ZS
 Ty
 QA
@@ -16937,13 +17782,13 @@ ji
 ji
 fk
 fk
-fk
-fk
-fk
-fk
-fk
-fk
-fk
+TC
+TC
+TC
+TC
+TC
+TC
+TC
 fk
 ji
 ji
@@ -16982,28 +17827,28 @@ rS
 hM
 tw
 Lk
-Ly
+Ui
 WQ
+FU
 Ly
-Ly
-Ly
+Ui
 FJ
-Ly
+Kt
 Lk
 Ly
 hM
 rS
 rS
 hM
-Ly
-Lk
-Ly
+GZ
+sk
+Ui
 qP
+Kt
 Ly
-Ly
-Ly
+Qy
 XW
-Ly
+Kt
 yV
 Ly
 hM
@@ -17025,9 +17870,9 @@ Di
 Tv
 Tv
 cO
-Ly
+nJ
 rX
-Ly
+mJ
 hM
 rS
 wP
@@ -17080,11 +17925,11 @@ fk
 fk
 fk
 TC
-TC
-TC
-TC
-TC
-TC
+Tj
+ZT
+ZP
+BD
+CK
 TC
 fk
 fk
@@ -17130,7 +17975,7 @@ NR
 kp
 ah
 hM
-Ly
+mJ
 Ly
 wL
 hM
@@ -17146,7 +17991,7 @@ Ly
 cX
 hM
 Jo
-Ly
+mJ
 Ly
 hM
 rS
@@ -17222,11 +18067,11 @@ fk
 fk
 fk
 TC
-Tj
-ak
-XM
-dk
-zY
+Sv
+Sv
+Sv
+Sv
+Sv
 TC
 fk
 fk
@@ -17264,7 +18109,7 @@ rS
 rS
 rS
 hM
-Ly
+mJ
 DL
 Ba
 hM
@@ -17284,7 +18129,7 @@ xH
 tw
 hM
 fC
-Ly
+mJ
 sj
 hM
 Uj
@@ -17301,7 +18146,7 @@ rS
 rS
 rS
 hM
-JO
+aC
 JO
 Ty
 Ty
@@ -17364,9 +18209,9 @@ fk
 fk
 fk
 TC
-Sv
-Sv
-Sv
+XM
+NO
+rE
 Sv
 Sv
 TC
@@ -17426,7 +18271,7 @@ hM
 hM
 hM
 NR
-Ly
+gI
 lf
 hM
 hM
@@ -17509,8 +18354,8 @@ TC
 QF
 WT
 Yi
-Sv
-Sv
+Dx
+LX
 TC
 fk
 fk
@@ -17646,13 +18491,13 @@ df
 WC
 wl
 WC
-WC
-TC
-jd
-Zz
-vh
-gT
 rK
+TC
+TC
+TC
+vh
+TC
+TC
 TC
 Au
 Au
@@ -17694,8 +18539,8 @@ rS
 rS
 rS
 op
-Ly
-Ly
+mJ
+gV
 Ly
 Qv
 rS
@@ -17710,7 +18555,7 @@ rS
 rS
 op
 Ly
-Ly
+Ml
 Ly
 Qv
 rS
@@ -17784,26 +18629,26 @@ Am
 BB
 fk
 Au
-Ub
+gT
 WC
 wl
 bL
 WC
-TC
-TC
-TC
+Au
+Zz
+fZ
 TT
-TC
-TC
-TC
-UA
+XS
+Jm
+Au
+zv
 jx
-UA
+Lo
 Au
 rS
 wP
 wP
-wP
+ak
 wP
 wP
 wP
@@ -17837,7 +18682,7 @@ rS
 rS
 Yr
 Ly
-Ly
+gI
 Ly
 Qv
 rS
@@ -17851,8 +18696,8 @@ rS
 rS
 rS
 op
-Ly
-Ly
+mJ
+gI
 Ly
 Qv
 rS
@@ -17929,20 +18774,20 @@ Au
 EZ
 WC
 yY
-WC
-WC
+jd
+zY
 Bz
-WC
+jd
 WC
 ec
 WC
-WC
+Hz
 pR
+Vh
 WC
-WC
-WC
+Hz
 Au
-rS
+uE
 wP
 wP
 wP
@@ -18078,11 +18923,11 @@ YF
 WC
 ec
 WC
-WC
+zY
 jp
+jd
 WC
-WC
-WC
+zY
 Ow
 rS
 wP
@@ -18213,18 +19058,18 @@ Au
 df
 WC
 EC
-WC
-WC
+jd
+zY
 Fz
-WC
+jd
 pM
 ad
 WC
 Pc
 Au
+xr
 WC
-WC
-WC
+Pn
 Au
 rS
 wP
@@ -18358,15 +19203,15 @@ wl
 bL
 WC
 Au
-WC
-ec
-WC
+Mv
+GE
+lS
 yz
 ia
 Au
-UA
+mT
 SM
-UA
+oD
 Au
 fk
 wP
@@ -18643,8 +19488,8 @@ Au
 Au
 Au
 UA
-ec
-UA
+TT
+Nz
 Au
 Wr
 ea
@@ -18780,13 +19625,13 @@ fk
 Au
 KR
 Pk
+jd
 WC
-WC
-WC
+zY
 Xz
-WC
+jd
 ec
-WC
+Hz
 Au
 Ec
 PJ
@@ -18926,7 +19771,7 @@ mW
 WC
 Jt
 Au
-YF
+eQ
 PK
 JF
 aL
@@ -19068,9 +19913,9 @@ od
 WC
 Jt
 Au
-WC
+RS
 ec
-WC
+Pn
 Au
 ex
 CG
@@ -19115,7 +19960,7 @@ rS
 rS
 op
 Ly
-Ly
+gV
 Ly
 Yr
 rS
@@ -19147,7 +19992,7 @@ rS
 rS
 RR
 IC
-IC
+dk
 IC
 Qv
 rS
@@ -19210,9 +20055,9 @@ Au
 Au
 Au
 Au
-UA
-ec
-UA
+PH
+GE
+Ti
 Au
 Au
 Au
@@ -19257,7 +20102,7 @@ rS
 rS
 op
 Ly
-Ly
+gI
 Ly
 Yr
 rS
@@ -19289,7 +20134,7 @@ rS
 rS
 Yr
 uS
-YV
+mG
 MA
 Qv
 rS
@@ -19495,7 +20340,7 @@ fk
 fk
 fk
 az
-ou
+Ia
 az
 fk
 fk
@@ -19540,8 +20385,8 @@ hM
 hM
 hM
 hM
-lf
-Ly
+AV
+Ml
 YO
 hM
 hM
@@ -19572,8 +20417,8 @@ rS
 rS
 rS
 rS
-lp
-IC
+Fx
+Xo
 Cu
 rS
 rS
@@ -19686,7 +20531,7 @@ Po
 aW
 fC
 hM
-Fa
+Tl
 Uj
 fk
 fk
@@ -19714,7 +20559,7 @@ rS
 rS
 rS
 rS
-lp
+iL
 vF
 Cu
 rS
@@ -19828,7 +20673,7 @@ oh
 Ly
 uJ
 hM
-Ly
+mJ
 Ly
 RF
 cJ
@@ -19845,7 +20690,7 @@ Wk
 Wk
 fk
 qh
-Ly
+mJ
 hM
 rS
 rS
@@ -19963,14 +20808,14 @@ fk
 fk
 hM
 tw
-wz
-Ly
+Mf
+Ui
 IE
+Kt
 Ly
-Ly
-Ly
+Qy
 Su
-Ly
+Kt
 wz
 tw
 cJ
@@ -20000,7 +20845,7 @@ GX
 Yx
 IC
 vF
-IC
+dk
 jE
 GX
 GX
@@ -20142,7 +20987,7 @@ mK
 mK
 IC
 vF
-IC
+dk
 xz
 xz
 xz
@@ -20248,14 +21093,14 @@ fk
 fk
 SK
 Lk
-Ly
+Ui
 kw
-Ly
-Ly
-Ly
+Kt
+gI
+Ui
 oo
-aW
-Lk
+sx
+sk
 fk
 fk
 fk
@@ -20388,8 +21233,8 @@ Wk
 fk
 fk
 cJ
-Ly
-Ly
+mJ
+mJ
 oL
 hM
 hM
@@ -20412,7 +21257,7 @@ fk
 fk
 fk
 fk
-Ly
+mJ
 Uj
 hM
 rS
@@ -20489,7 +21334,7 @@ fk
 fk
 fk
 az
-ou
+hG
 az
 fk
 fk
@@ -20535,7 +21380,7 @@ vs
 Sj
 hM
 dx
-Ly
+Ml
 kW
 hM
 Uj
@@ -20708,10 +21553,10 @@ ge
 YR
 YR
 YR
-IC
+dk
 wx
 Dt
-tt
+RH
 tt
 tt
 aQ
@@ -20773,7 +21618,7 @@ fk
 fk
 az
 iw
-ou
+Ia
 vl
 az
 fk
@@ -21131,15 +21976,15 @@ rS
 rS
 rS
 ge
-YR
-YR
+Uq
+Uq
 YR
 Dt
 wx
 Dt
 YV
 tt
-tt
+RH
 aQ
 rS
 rS
@@ -21420,7 +22265,7 @@ xz
 xz
 IC
 vF
-IC
+dk
 mK
 mK
 xz

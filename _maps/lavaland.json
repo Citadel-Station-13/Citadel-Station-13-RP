@@ -2,17 +2,11 @@
 	"map_name":"Lavaland",
 	"map_path":"map_levels/140x140",
 	"map_file":[
-		 "lavaland.dmm",
 		 "lavaland_dungeon.dmm",
-		 "lavaland_east.dmm"
+		 "lavaland_east.dmm",
+		 "lavaland.dmm"
 	],
 	"traits":[
-		{
-			"Station":false,
-			"Linkage":null,
-			"Gravity":true,
-			"Baseturf":"/turf/simulated/floor/outdoors/lava/lavaland"
-		  },
 	   {
 		 "Up":1,
 		 "Station":false,
@@ -26,6 +20,12 @@
 		 "Linkage":null,
 		 "Gravity":true,
 		 "Baseturf":"/turf/simulated/floor/outdoors/lava/lavaland"
+	   },
+	   {
+		"Station":false,
+		"Linkage":null,
+		"Gravity":true,
+		"Baseturf":"/turf/simulated/floor/outdoors/lava/lavaland"
 	   }
 	],
 	"minetype":"lavaland"
