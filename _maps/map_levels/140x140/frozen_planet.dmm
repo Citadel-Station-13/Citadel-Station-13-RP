@@ -661,9 +661,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/power/smes/buildable/point_of_interest{
-	lastcharge = null
-	},
+/obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/old_tile/blue/frozen_world{
 	color = "#8ba7ad";
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
