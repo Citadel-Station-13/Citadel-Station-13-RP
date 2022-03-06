@@ -1401,16 +1401,13 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "uS" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Power - Solar Array";
-	cur_coils = 3;
-	lastcharge = 0;
-	output_attempt = 0;
-	outputting = 0
-	},
 /obj/structure/cable/yellow{
 	d2 = 2;
 	icon_state = "0-2"
+	},
+/obj/machinery/power/smes/buildable{
+	output_attempt = 0;
+	outputting = 0
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
