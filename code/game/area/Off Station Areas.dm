@@ -208,7 +208,7 @@
 	name = "Mining Planet"
 	icon_state = "away"
 	base_turf = /turf/simulated/mineral/floor/
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	dynamic_lighting = 1
 
 /area/mining_planet/explored
 	name = "Mining Planet - Explored (E)"
