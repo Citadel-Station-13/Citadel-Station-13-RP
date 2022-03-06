@@ -88,12 +88,10 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "ge" = (
-/obj/machinery/power/smes/buildable/point_of_interest{
-	lastcharge = 0
-	},
 /obj/structure/cable/cyan{
 	dir = 8
 	},
+/obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "gv" = (

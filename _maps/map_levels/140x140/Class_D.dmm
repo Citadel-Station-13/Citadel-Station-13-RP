@@ -980,9 +980,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/power/smes/buildable/offmap_spawn/empty{
-	lastcharge = 0
-	},
+/obj/machinery/power/smes/buildable/offmap_spawn/empty,
 /turf/simulated/floor/class_d_indoors,
 /area/poi_d/wildcat_mining_base/interior/utility_room)
 "zi" = (
