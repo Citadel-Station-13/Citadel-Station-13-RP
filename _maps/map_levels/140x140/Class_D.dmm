@@ -981,7 +981,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable/offmap_spawn/empty{
-	lastcharge = 0
+	lastcharge = null
 	},
 /turf/simulated/floor/class_d_indoors,
 /area/poi_d/wildcat_mining_base/interior/utility_room)
