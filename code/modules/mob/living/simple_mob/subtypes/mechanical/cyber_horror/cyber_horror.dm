@@ -419,12 +419,12 @@
 	movement_cooldown = 8
 	special_attack_cooldown = 45 SECONDS
 	special_attack_min_range = 2
-	special_attack_max_range = 7
+	special_attack_max_range = 8
 	var/poison_chance = 75
 	var/poison_per_bite = 3
 	var/poison_type = "neurophage_nanites"
 
-	base_attack_cooldown = 10
+	base_attack_cooldown = 30
 	projectiletype = /obj/item/projectile/arc/blue_energy/priest
 	projectilesound = 'sound/weapons/Laser.ogg'
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/priest
@@ -475,34 +475,35 @@
 	set waitfor = FALSE
 
 	// Warm-up
-	Beam(target, icon_state = "sat_beam", time = 3.5 SECONDS, maxdistance = INFINITY)
-	visible_message(span("warning", "\A glowing port opens up in the [src]'s carapace!"))
+	Beam(target, icon_state = "sat_beam", time = 2 SECONDS, maxdistance = INFINITY)
+	visible_message(span("warning", "A glowing port opens up in the [src]'s carapace!"))
 	playsound(src, 'sound/effects/turret/move1.wav', 50, 1)
-	sleep(0.5 SECONDS)
+	sleep(2 SECONDS)
 
-	for(var/i = 1 to 3)
+	for(var/i = 1 to 1)
 		if(target) // Might get deleted in the meantime.
 			var/turf/T = get_turf(target)
 			if(T)
-				visible_message(span("warning", "\The [src] discharges a beam of concentrated energy!"))
+				visible_message(span("warning", "[src] discharges a beam of concentrated energy!"))
 				playsound(src, 'sound/weapons/lasercannonfire.ogg', 70, 1)
 				face_atom(T)
-				var/obj/item/projectile/arc/blue_energy/priest/ball = new(loc)
+				var/obj/item/projectile/arc/radioactive/priest/ball = new(loc)
 				ball.old_style_target(T, src)
 				ball.fire()
-				sleep(1 SECOND)
+				sleep(2 SECONDS)
 
-	visible_message(span("warning", "\The [src] closes its reactor port."))
+	visible_message(span("warning", "[src] closes its reactor port."))
 	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
 
 /obj/item/projectile/arc/radioactive/priest
 	name  = "superheated plama discharge"
-	icon_state = "force_missile"
+	icon_state = "plasma3"
+	rad_power = 10
 
 /obj/item/projectile/arc/radioactive/priest/on_impact(turf/T)
 	new /obj/effect/explosion(T)
 	SSradiation.radiate(T, rad_power)
-	explosion(T, 0, 4, 2, adminlog = FALSE)
+	explosion(T, 0, 1, 4, adminlog = FALSE)
 
 ////////////////////////
 //Lavaland Cyber_Horrors
