@@ -89,6 +89,7 @@
 	var/flash_mod =     1									// Stun from blindness modifier.
 	var/flash_burn =    0									// how much damage to take from being flashed if light hypersensitive
 	var/sound_mod =     1									// Stun from sounds, I.E. flashbangs.
+	var/chemOD_threshold =		1							// Multiplier to overdose threshold; lower = easier overdosing
 	var/chemOD_mod =	1									// Damage modifier for overdose
 	var/vision_flags = SEE_SELF								// Same flags as glasses.
 

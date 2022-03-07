@@ -23,13 +23,14 @@
 			break
 	return selected
 
-#define CLONE_BIOMASS 30 //VOREstation Edit
+#define CLONE_BIOMASS 30
+#define MINIMUM_HEAL_LEVEL 40
 
 /obj/machinery/clonepod
 	name = "cloning pod"
 	desc = "An electronically-lockable pod for growing organic tissue."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/clonepod
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "pod_0"
@@ -37,14 +38,17 @@
 	var/mob/living/occupant
 	var/heal_level = 20				// The clone is released once its health reaches this level.
 	var/heal_rate = 1
-	var/locked = 0
+	var/locked = FALSE
 	var/obj/machinery/computer/cloning/connected = null //So we remember the connected clone machine.
-	var/mess = 0					// Need to clean out it if it's full of exploded clone.
-	var/attempting = 0				// One clone attempt at a time thanks
-	var/eject_wait = 0				// Don't eject them as soon as they are created fuckkk
+	var/mess = FALSE					// Need to clean out it if it's full of exploded clone.
+	var/attempting = FALSE				// One clone attempt at a time thanks
+	var/eject_wait = FALSE				// Don't eject them as soon as they are created fuckkk
 
 	var/list/containers = list()	// Beakers for our liquid biomass
 	var/container_limit = 3			// How many beakers can the machine hold?
+
+	var/speed_coeff
+	var/efficiency
 
 /obj/machinery/clonepod/Initialize(mapload, newdir)
 	. = ..()
@@ -75,27 +79,27 @@
 //Start growing a human clone in the pod!
 /obj/machinery/clonepod/proc/growclone(var/datum/dna2/record/R)
 	if(mess || attempting)
-		return 0
+		return FALSE
 	var/datum/mind/clonemind = locate(R.mind)
 
 	if(!istype(clonemind, /datum/mind))	//not a mind
-		return 0
+		return FALSE
 	if(clonemind.current && clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
-		return 0
+		return FALSE
 	if(clonemind.active)	//somebody is using that mind
 		if(ckey(clonemind.key) != R.ckey)
-			return 0
+			return FALSE
 	else
 		for(var/mob/observer/dead/G in player_list)
 			if(G.ckey == R.ckey)
 				if(G.can_reenter_corpse)
 					break
 				else
-					return 0
+					return FALSE
 
 	for(var/modifier_type in R.genetic_modifiers)	//Can't be cloned, even if they had a previous scan
 		if(istype(modifier_type, /datum/modifier/no_clone))
-			return 0
+			return FALSE
 
 	// Remove biomass when the cloning is started, rather than when the guy pops out
 	remove_biomass(CLONE_BIOMASS)
@@ -172,7 +176,7 @@
 	H.flavor_texts = R.flavor.Copy()
 	H.suiciding = 0
 	attempting = 0
-	return 1
+	return TRUE
 
 //Grow clones to maturity then kick them out.  FREELOADERS
 /obj/machinery/clonepod/process(delta_time)
@@ -284,28 +288,31 @@
 	to_chat(user, "You force an emergency ejection.")
 	locked = 0
 	go_out()
-	return 1
+	return TRUE
 
 //Put messages in the connected computer's temp var for display.
 /obj/machinery/clonepod/proc/connected_message(var/message)
 	if((isnull(connected)) || (!istype(connected, /obj/machinery/computer/cloning)))
-		return 0
+		return FALSE
 	if(!message)
-		return 0
+		return FALSE
 
 	connected.temp = "[name] : [message]"
 	connected.updateUsrDialog()
-	return 1
+	return TRUE
 
 /obj/machinery/clonepod/RefreshParts()
 	..()
-	var/rating = 0
-	for(var/obj/item/stock_parts/P in component_parts)
-		if(istype(P, /obj/item/stock_parts/scanning_module) || istype(P, /obj/item/stock_parts/manipulator))
-			rating += P.rating
+	speed_coeff = 0
+	efficiency = 0
+	for(var/obj/item/stock_parts/scanning_module/S in component_parts)
+		efficiency += S.rating
+	for(var/obj/item/stock_parts/manipulator/P in component_parts)
+		speed_coeff += P.rating
+	heal_level = max(min((efficiency * 15) + 10, 100), MINIMUM_HEAL_LEVEL)
 
-	heal_level = rating * 10 - 20
-	heal_rate = round(rating / 4)
+/obj/machinery/clonepod/proc/get_completion()
+	. = (100 * ((occupant.health + 100) / (heal_level + 100)))
 
 /obj/machinery/clonepod/verb/eject()
 	set name = "Eject Cloner"
@@ -374,8 +381,8 @@
 					else
 						continue
 			else
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 // Empties all of the beakers from the cloning pod, used to refill it
 /obj/machinery/clonepod/verb/empty_beakers()
@@ -400,7 +407,7 @@
 				G.forceMove(T)
 				containers -= G
 		return	1
-	return 0
+	return FALSE
 
 /obj/machinery/clonepod/proc/malfunction()
 	if(occupant)

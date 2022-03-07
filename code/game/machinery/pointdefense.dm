@@ -37,7 +37,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!id_tag)
 		. += "[desc_panel_image("multitool")]to set ident tag"
 
-/obj/machinery/pointdefense_control/tgui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/pointdefense_control/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "PointDefenseControl") // 400, 600
@@ -46,10 +46,10 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 /obj/machinery/pointdefense_control/attack_hand(mob/user)
 	if(..())
 		return TRUE
-	tgui_interact(user)
+	ui_interact(user)
 	return TRUE
 
-/obj/machinery/pointdefense_control/tgui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/pointdefense_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
@@ -70,7 +70,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 			PD.Deactivate()
 		return TRUE
 
-/obj/machinery/pointdefense_control/tgui_data(mob/user)
+/obj/machinery/pointdefense_control/ui_data(mob/user)
 	var/list/data = list()
 	data["id"] = id_tag
 	var/list/turrets = list()
@@ -167,7 +167,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/power/pointdefense/default_unfasten_wrench(var/mob/user, var/obj/item/weapon/W, var/time)
+/obj/machinery/power/pointdefense/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time)
 	if((. = ..()))
 		src.transform = null // Reset rotation if we're anchored/unanchored
 

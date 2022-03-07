@@ -78,7 +78,7 @@ input. The input's `action` and `params` are passed to the proc.
 /obj/machinery/my_machine/ui_act(action, params)
   . = ..()
   if(.)
-    return
+    return TRUE
   if(action == "change_color")
     var/new_color = params["color"]
     if(!(color in allowed_coors))
@@ -313,7 +313,7 @@ upon code review):
 
 /obj/copypasta/ui_act(action, params)
   if(..())
-    return
+    return TRUE
   switch(action)
     if("copypasta")
       var/newvar = params["var"]
