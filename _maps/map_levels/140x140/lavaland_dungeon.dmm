@@ -55,13 +55,6 @@
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/dungeon/facility)
-"cj" = (
-/obj/machinery/magma_reservoir{
-	on = 1
-	},
-/obj/structure/disposalpipe/trunk,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
 "cn" = (
 /obj/machinery/door/airlock{
 	name = "Janitorial Closet"
@@ -75,7 +68,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "cR" = (
-/obj/structure/broken_reservoir,
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
@@ -247,15 +239,6 @@
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
-"kG" = (
-/obj/machinery/magma_pump{
-	on = 1
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
 "kN" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -395,11 +378,6 @@
 "ri" = (
 /turf/simulated/wall/r_wall,
 /area/lavaland/dungeon/facility)
-"rn" = (
-/obj/machinery/magma_reservoir,
-/obj/structure/disposalpipe/trunk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
 "sd" = (
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/lavaland,
@@ -483,15 +461,6 @@
 	},
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
-"uh" = (
-/obj/machinery/magma_pump{
-	on = 1
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/dungeon/facility)
 "vf" = (
 /turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
 /area/lavaland/dungeon/exterior)
@@ -555,11 +524,6 @@
 	},
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
-"xA" = (
-/obj/structure/broken_reservoir,
-/obj/structure/disposalpipe/trunk,
-/turf/simulated/floor/lavaland,
-/area/lavaland/dungeon/facility)
 "xE" = (
 /obj/machinery/computer/power_monitor{
 	dir = 4;
@@ -616,7 +580,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "zo" = (
-/obj/machinery/magma_pump,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
@@ -633,7 +596,6 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/dungeon/facility)
 "zW" = (
-/obj/structure/broken_pump,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
@@ -782,9 +744,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "FJ" = (
-/obj/machinery/magma_reservoir{
-	on = 1
-	},
 /obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
@@ -11353,7 +11312,7 @@ xN
 dE
 zW
 RY
-xA
+FJ
 eM
 oH
 Hx
@@ -11637,7 +11596,7 @@ xN
 dE
 zo
 Lx
-xA
+FJ
 eM
 oH
 Hx
@@ -11921,7 +11880,7 @@ hY
 dE
 zW
 RY
-xA
+FJ
 eM
 oH
 vf
@@ -12203,9 +12162,9 @@ vf
 Lx
 xN
 dE
-kG
+zW
 RY
-cj
+cR
 eM
 oH
 Lx
@@ -12487,7 +12446,7 @@ Cj
 Lx
 hY
 dE
-uh
+zo
 RY
 cR
 eM
@@ -12773,7 +12732,7 @@ hY
 dE
 zW
 Lx
-rn
+FJ
 eM
 oH
 Lx
