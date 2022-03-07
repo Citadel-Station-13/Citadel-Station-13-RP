@@ -688,7 +688,7 @@
 
 /obj/item/paper/lavaland/noise
 	name = "Page from a Journal"
-	info = "<I>\[This is the last page from a missing journal There is only one entry.]</I><BR><I>The Doc has been acting so weird since that guy came screaming into town. Now him and all those colonists who've been listening to his speeches are out building themselves a chapel on the edge of the colony. \nI don't care what people believe, but they should keep it down! \nI'm going to the Mayor with this if they don't stop making such a racket.</I>"
+	info = "<I>\[This is the last page from a missing journal. There is only one entry.]</I><BR><I>The Doc has been acting so weird since that guy came screaming into town. Now him and all those colonists who've been listening to his speeches are out building themselves a chapel on the edge of the colony. \nI don't care what people believe, but they should keep it down! \nI'm going to the Mayor with this if they don't stop making such a racket.</I>"
 
 /obj/item/paper/lavaland/rockin
 	name = "Keep On Rockin'"
