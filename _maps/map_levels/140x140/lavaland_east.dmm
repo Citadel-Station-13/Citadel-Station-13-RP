@@ -485,11 +485,6 @@
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
-"gT" = (
-/obj/machinery/artifact_scanpad,
-/obj/item/soulstone,
-/turf/simulated/floor/tiled,
-/area/lavaland/east/lab/core)
 "gV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
@@ -2005,22 +2000,6 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/plating,
 /area/lavaland/east/lab/core)
-"CK" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/brigdoor/eastleft,
-/obj/item/archaeological_find,
-/obj/structure/anomaly_container{
-	name = "ACH-S4-1Md"
-	},
-/turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
 "Di" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
@@ -2056,21 +2035,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
-"Dx" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/brigdoor/westleft,
-/obj/structure/anomaly_container{
-	name = "STX-S4-5Ts"
-	},
-/turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
 "DA" = (
 /obj/structure/fence/cut/large{
 	dir = 4
@@ -2557,22 +2521,6 @@
 /obj/item/bedsheet/rainbow,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
-"LX" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/window/brigdoor/westright,
-/obj/item/soulstone,
-/obj/structure/anomaly_container{
-	name = "STX-S4-5Tt"
-	},
-/turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
 "Me" = (
 /obj/structure/bed/chair/backed_red{
 	dir = 8
@@ -2701,7 +2649,8 @@
 /area/lavaland/east/colony)
 "Oi" = (
 /obj/structure/railing,
-/turf/simulated/open,
+/obj/structure/boulder,
+/turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
 "Oj" = (
 /obj/structure/flora/tree/jungle_small,
@@ -2918,10 +2867,6 @@
 	dir = 4
 	},
 /obj/machinery/door/window/brigdoor/westleft,
-/obj/item/archaeological_find,
-/obj/structure/anomaly_container{
-	name = "ACH-S4-2Kz"
-	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
 "QJ" = (
@@ -3144,22 +3089,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/core)
-"Tj" = (
-/obj/effect/floor_decal/industrial/outline/red,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/window/brigdoor/eastright,
-/obj/item/archaeological_find,
-/obj/structure/anomaly_container{
-	name = "ACH-S4-3Bd"
-	},
-/turf/simulated/floor/tiled,
-/area/lavaland/east/lab/containment)
 "Tl" = (
 /obj/structure/bed/chair/wood,
 /obj/effect/floor_decal/rust,
@@ -3446,10 +3375,6 @@
 	dir = 4
 	},
 /obj/machinery/door/window/brigdoor/westright,
-/obj/item/archaeological_find,
-/obj/structure/anomaly_container{
-	name = "LET-S4-1Ob"
-	},
 /turf/simulated/floor/tiled,
 /area/lavaland/east/lab/containment)
 "WU" = (
@@ -17922,11 +17847,11 @@ fk
 fk
 fk
 TC
-Tj
+BD
 ZT
 ZP
 BD
-CK
+ZT
 TC
 fk
 fk
@@ -18351,8 +18276,8 @@ TC
 QF
 WT
 Yi
-Dx
-LX
+QF
+WT
 TC
 fk
 fk
@@ -18626,7 +18551,7 @@ Am
 BB
 fk
 Au
-gT
+Ub
 WC
 wl
 bL
