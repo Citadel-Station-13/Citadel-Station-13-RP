@@ -6,7 +6,7 @@
 
 /datum/surgery_step/internal/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 
-	if (!hasorgans(target))
+	if(!hasorgans(target))
 		return 0
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -35,7 +35,7 @@
 			embryo = 1
 			break
 
-		if (!hasorgans(target))
+		if(!hasorgans(target))
 			return
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
 		return ..() && affected && embryo && affected.open == 3 && target_zone == BP_TORSO
@@ -67,7 +67,7 @@
 	max_duration = 90
 
 /datum/surgery_step/internal/fix_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	if (!hasorgans(target))
+	if(!hasorgans(target))
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(!affected)
@@ -81,12 +81,12 @@
 
 /datum/surgery_step/internal/fix_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/tool_name = "\the [tool]"
-	if (istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
+	if(istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
 		tool_name = "regenerative membrane"
-	else if (istype(tool, /obj/item/stack/medical/bruise_pack))
+	else if(istype(tool, /obj/item/stack/medical/bruise_pack))
 		tool_name = "the bandaid"
 
-	if (!hasorgans(target))
+	if(!hasorgans(target))
 		return
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -102,12 +102,12 @@
 
 /datum/surgery_step/internal/fix_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/tool_name = "\the [tool]"
-	if (istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
+	if(istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
 		tool_name = "regenerative membrane"
-	if (istype(tool, /obj/item/stack/medical/bruise_pack))
+	if(istype(tool, /obj/item/stack/medical/bruise_pack))
 		tool_name = "the bandaid"
 
-	if (!hasorgans(target))
+	if(!hasorgans(target))
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
@@ -124,7 +124,7 @@
 					target.SetLosebreath(0)
 
 /datum/surgery_step/internal/fix_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	if (!hasorgans(target))
+	if(!hasorgans(target))
 		return
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
@@ -132,9 +132,9 @@
 	"<span class='warning'>Your hand slips, getting mess and tearing the inside of [target]'s [affected.name] with \the [tool]!</span>")
 	var/dam_amt = 2
 
-	if (istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
+	if(istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
 		target.adjustToxLoss(5)
-	else if (istype(tool, /obj/item/stack/medical/bruise_pack))
+	else if(istype(tool, /obj/item/stack/medical/bruise_pack))
 		dam_amt = 5
 		target.adjustToxLoss(10)
 		affected.createwound(CUT, 5)
@@ -160,7 +160,10 @@
 	max_duration = 110
 
 /datum/surgery_step/internal/detatch_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	if (!..())
+	if(!..())
+		return 0
+
+	if(!istype(tool))
 		return 0
 
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -224,7 +227,10 @@
 	max_duration = 80
 
 /datum/surgery_step/internal/remove_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	if (!..())
+	if(!..())
+		return 0
+
+	if(!istype(tool))
 		return 0
 
 	target.op_stage.current_organ = null
@@ -281,7 +287,7 @@
 	var/obj/item/organ/internal/O = tool
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 
-	if(!affected)
+	if(!affected || !istype(O))
 		return
 
 	var/organ_compatible
@@ -358,7 +364,10 @@
 	max_duration = 120
 
 /datum/surgery_step/internal/attach_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	if (!..())
+	if(!..())
+		return 0
+
+	if(!istype(tool))
 		return 0
 
 	target.op_stage.current_organ = null
@@ -414,7 +423,10 @@
 	max_duration = 80
 
 /datum/surgery_step/internal/rip_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	if (!..())
+	if(!..())
+		return 0
+
+	if(!istype(tool))
 		return 0
 
 	target.op_stage.current_organ = null

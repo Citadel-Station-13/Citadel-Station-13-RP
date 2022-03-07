@@ -1,8 +1,8 @@
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
 	desc = "Used to seperate and package chemicals in to autoinjectors, lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	circuit = /obj/item/circuitboard/chem_master
@@ -95,11 +95,6 @@
 		ui = new(user, src, "ChemMaster", name)
 		ui.open()
 
-/**
- *  Display the NanoUI window for the chem master.
- *
- *  See NanoUI documentation for details.
- */
 /obj/machinery/chem_master/ui_data(mob/user)
 	var/list/data = list()
 

@@ -8,27 +8,27 @@
 	priority = 1
 	can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 		if(!hasorgans(target))
-			return 0
+			return FALSE
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
 		return affected && affected.open == (affected.encased ? 3 : 2) && !(affected.status & ORGAN_BLEEDING)
 
 	proc/get_max_wclass(var/obj/item/organ/external/affected)
 		switch (affected.organ_tag)
-			if (BP_HEAD)
+			if(BP_HEAD)
 				return ITEMSIZE_TINY
-			if (BP_TORSO)
+			if(BP_TORSO)
 				return ITEMSIZE_NORMAL
-			if (BP_GROIN)
+			if(BP_GROIN)
 				return ITEMSIZE_SMALL
-		return 0
+		return FALSE
 
 	proc/get_cavity(var/obj/item/organ/external/affected)
 		switch (affected.organ_tag)
-			if (BP_HEAD)
+			if(BP_HEAD)
 				return "cranial"
-			if (BP_TORSO)
+			if(BP_TORSO)
 				return "thoracic"
-			if (BP_GROIN)
+			if(BP_GROIN)
 				return "abdominal"
 		return ""
 
@@ -117,6 +117,8 @@
 	max_duration = 100
 
 /datum/surgery_step/cavity/place_item/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
+	if(!istype(tool))
+		return 0
 	if(..())
 		var/obj/item/organ/external/affected = target.get_organ(target_zone)
 		//if(istype(user,/mob/living/silicon/robot))
@@ -141,7 +143,7 @@
 
 	user.visible_message("<font color=#4F49AF>[user] puts \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>", \
 	"<font color=#4F49AF>You put \the [tool] inside [target]'s [get_cavity(affected)] cavity.</font>" )
-	if (tool.w_class > get_max_wclass(affected)/2 && prob(50) && (affected.robotic < ORGAN_ROBOT))
+	if(tool.w_class > get_max_wclass(affected)/2 && prob(50) && (affected.robotic < ORGAN_ROBOT))
 		to_chat(user, "<font color='red'> You tear some blood vessels trying to fit such a big object in this cavity.</font>")
 		var/datum/wound/internal_bleeding/I = new (10)
 		affected.wounds += I
@@ -190,20 +192,20 @@
 
 	var/find_prob = 0
 
-	if (affected.implants.len)
+	if(affected.implants.len)
 
 		var/obj/item/obj = pick(affected.implants)
 
 		if(istype(obj,/obj/item/implant))
 			var/obj/item/implant/imp = obj
-			if (imp.islegal())
+			if(imp.islegal())
 				find_prob +=60
 			else
 				find_prob +=40
 		else
 			find_prob +=50
 
-		if (prob(find_prob))
+		if(prob(find_prob))
 			user.visible_message("<font color=#4F49AF>[user] takes something out of incision on [target]'s [affected.name] with \the [tool]!</font>", \
 			"<font color=#4F49AF>You take [obj] out of incision on [target]'s [affected.name]s with \the [tool]!</font>" )
 			affected.implants -= obj
@@ -238,10 +240,10 @@
 /datum/surgery_step/cavity/implant_removal/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	..()
 	var/obj/item/organ/external/chest/affected = target.get_organ(target_zone)
-	if (affected.implants.len)
+	if(affected.implants.len)
 		var/fail_prob = 10
 		fail_prob += 100 - tool_quality(tool)
-		if (prob(fail_prob))
+		if(prob(fail_prob))
 			var/obj/item/implant/imp = affected.implants[1]
 			user.visible_message("<font color='red'> Something beeps inside [target]'s [affected.name]!</font>")
 			playsound(imp.loc, 'sound/items/countdown.ogg', 75, 1, -3)

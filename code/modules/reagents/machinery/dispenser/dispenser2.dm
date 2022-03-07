@@ -66,7 +66,7 @@
 	if(W.is_wrench())
 		playsound(src, W.usesound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to [anchored ? "un" : ""]fasten \the [src].</span>")
-		if (do_after(user, 20 * W.toolspeed))
+		if(do_after(user, 20 * W.toolspeed))
 			user.visible_message(
 				"<span class='notice'>\The [user] [anchored ? "un" : ""]fastens \the [src].</span>",
 				"<span class='notice'>You have [anchored ? "un" : ""]fastened \the [src].</span>",

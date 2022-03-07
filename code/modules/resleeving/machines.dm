@@ -19,12 +19,12 @@
 /obj/machinery/clonepod/transhuman/growclone(var/datum/transhuman/body_record/current_project)
 	//Manage machine-specific stuff.
 	if(mess || attempting)
-		return 0
-	attempting = 1 //One at a time!!
-	locked = 1
-	eject_wait = 1
+		return FALSE
+	attempting = TRUE //One at a time!!
+	locked = TRUE
+	eject_wait = TRUE
 	spawn(30)
-		eject_wait = 0
+		eject_wait = FALSE
 
 	// Remove biomass when the cloning is started, rather than when the guy pops out
 	remove_biomass(CLONE_BIOMASS)
@@ -118,7 +118,7 @@
 	//Machine specific stuff at the end
 	update_icon()
 	attempting = 0
-	return 1
+	return TRUE
 
 /obj/machinery/clonepod/transhuman/process(delta_time)
 	if(stat & NOPOWER)
@@ -168,6 +168,12 @@
 
 	return
 
+/obj/machinery/clonepod/transhuman/get_completion()
+	if(occupant)
+		return 100 * ((occupant.health + abs(config_legacy.health_threshold_dead)) / (occupant.maxHealth + abs(config_legacy.health_threshold_dead)))
+	return FALSE
+
+
 //Synthetic version
 /obj/machinery/transhuman/synthprinter
 	name = "SynthFab 3000"
@@ -177,14 +183,14 @@
 	icon = 'icons/obj/machines/synthpod.dmi'
 	icon_state = "pod_0"
 	circuit = /obj/item/circuitboard/transhuman_synthprinter
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 
 	var/list/stored_material =  list(DEFAULT_WALL_MATERIAL = 30000, "glass" = 30000)
-	var/connected      //What console it's done up with
-	var/busy = 0       //Busy cloning
-	var/body_cost = 15000  //Cost of a cloned body (metal and glass ea.)
-	var/max_res_amount = 30000 //Max the thing can hold
+	var/connected		//What console it's done up with
+	var/busy = FALSE	//Busy cloning
+	var/body_cost = 15000		//Cost of a cloned body (metal and glass ea.)
+	var/max_res_amount = 30000	//Max the thing can hold
 	var/datum/transhuman/body_record/current_project
 	var/broken = 0
 	var/burn_value = 45
@@ -239,16 +245,16 @@
 
 /obj/machinery/transhuman/synthprinter/proc/print(var/datum/transhuman/body_record/BR)
 	if(!istype(BR) || busy)
-		return 0
+		return FALSE
 
 	if(stored_material[DEFAULT_WALL_MATERIAL] < body_cost || stored_material["glass"] < body_cost)
-		return 0
+		return FALSE
 
 	current_project = BR
 	busy = 5
 	update_icon()
 
-	return 1
+	return TRUE
 
 /obj/machinery/transhuman/synthprinter/proc/make_body()
 	//Manage machine-specific stuff
@@ -341,7 +347,7 @@
 	busy = 0
 	update_icon()
 
-	return 1
+	return TRUE
 
 /obj/machinery/transhuman/synthprinter/attack_hand(mob/user as mob)
 	if((busy == 0) || (stat & NOPOWER))
@@ -404,9 +410,9 @@
 	icon = 'icons/obj/machines/implantchair.dmi'
 	icon_state = "implantchair"
 	circuit = /obj/item/circuitboard/transhuman_resleever
-	density = 1
-	opacity = 0
-	anchored = 1
+	density = TRUE
+	opacity = FALSE
+	anchored = TRUE
 	var/blur_amount
 	var/confuse_amount
 
@@ -439,28 +445,40 @@
 	blur_amount = (48 - manip_rating * 8)
 
 /obj/machinery/transhuman/resleever/attack_hand(mob/user as mob)
-	user.set_machine(src)
-	var/health_text = ""
-	var/mind_text = ""
-	if(src.occupant)
-		if(src.occupant.stat >= DEAD)
-			health_text = "<FONT color=red>DEAD</FONT>"
-		else if(src.occupant.health < 0)
-			health_text = "<FONT color=red>[round(src.occupant.health,0.1)]</FONT>"
-		else
-			health_text = "[round(src.occupant.health,0.1)]"
+	ui_interact(user)
 
-		if(src.occupant.mind)
-			mind_text = "Mind present: [occupant.mind.name]"
-		else
-			mind_text = "Mind absent."
+/obj/machinery/transhuman/resleever/ui_interact(mob/user, datum/tgui/ui = null)
+	if(stat & (NOPOWER|BROKEN))
+		return
 
-	var/dat ="<B>Resleever Status</B><BR>"
-	dat +="<B>Current occupant:</B> [src.occupant ? "<BR>Name: [src.occupant]<BR>Health: [health_text]<BR>" : "<FONT color=red>None</FONT>"]<BR>"
-	dat +="<B>Mind status:</B> [mind_text]<BR>"
-	user.set_machine(src)
-	user << browse(dat, "window=resleever")
-	onclose(user, "resleever")
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ResleevingPod", "Resleever")
+		ui.open()
+
+/obj/machinery/transhuman/resleever/ui_data(mob/user)
+	var/list/data = list()
+
+	data["occupied"] = !!occupant
+	if(occupant)
+		data["name"] = occupant.name
+		data["health"] = occupant.health
+		data["maxHealth"] = occupant.maxHealth
+		data["stat"] = occupant.stat
+		data["mindStatus"] = !!occupant.mind
+		data["mindName"] = occupant.mind?.name
+
+/*		if(occupant.has_modifier_of_type(/datum/modifier/resleeving_sickness) || occupant.has_modifier_of_type(/datum/modifier/faux_resleeving_sickness))
+			data["resleeveSick"] = TRUE
+		else
+			data["resleeveSick"] = FALSE
+*/
+		if(occupant.confused || occupant.eye_blurry)
+			data["initialSick"] = TRUE
+		else
+			data["initialSick"] = FALSE
+
+	return data
 
 /obj/machinery/transhuman/resleever/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -530,13 +548,13 @@
 
 /obj/machinery/transhuman/resleever/proc/putmind(var/datum/transhuman/mind_record/MR, mode = 1, var/mob/living/carbon/human/override = null)
 	if((!occupant || !istype(occupant) || occupant.stat >= DEAD) && mode == 1)
-		return 0
+		return FALSE
 
 	if(mode == 2 && sleevecards) //Card sleeving
 		var/obj/item/sleevecard/card = new /obj/item/sleevecard(get_turf(src))
 		card.sleeveInto(MR)
 		sleevecards--
-		return 1
+		return TRUE
 
 	//If we're sleeving a subtarget, briefly swap them to not need to duplicate tons of code.
 	var/mob/living/carbon/human/original_occupant
@@ -598,12 +616,12 @@
 		occupant = original_occupant
 
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 100, 1) // Play our sound at the end of the mind injection!
-	return 1
+	return TRUE
 
 /obj/machinery/transhuman/resleever/proc/go_out(var/mob/M)
 	if(!( src.occupant ))
 		return
-	if (src.occupant.client)
+	if(src.occupant.client)
 		src.occupant.client.eye = src.occupant.client.mob
 		src.occupant.client.perspective = MOB_PERSPECTIVE
 	src.occupant.loc = src.loc
@@ -626,7 +644,7 @@
 	src.occupant = M
 	src.add_fingerprint(usr)
 	icon_state = "implantchair_on"
-	return 1
+	return TRUE
 
 /obj/machinery/transhuman/resleever/verb/get_out()
 	set name = "EJECT Occupant"
