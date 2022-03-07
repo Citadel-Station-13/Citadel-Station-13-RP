@@ -87,6 +87,7 @@
 #include "code\__DEFINES\variable_settings.dm"
 #include "code\__DEFINES\vote.dm"
 #include "code\__DEFINES\vv.dm"
+#include "code\__DEFINES\wires.dm"
 #include "code\__DEFINES\xenoarcheaology.dm"
 #include "code\__DEFINES\_flags\_flags.dm"
 #include "code\__DEFINES\_flags\do_after.dm"
