@@ -1843,6 +1843,7 @@
 #include "code\modules\clothing\spacesuits\rig\rig.dm"
 #include "code\modules\clothing\spacesuits\rig\rig_attackby.dm"
 #include "code\modules\clothing\spacesuits\rig\rig_pieces.dm"
+#include "code\modules\clothing\spacesuits\rig\rig_tgui.dm"
 #include "code\modules\clothing\spacesuits\rig\rig_verbs.dm"
 #include "code\modules\clothing\spacesuits\rig\rig_wiring.dm"
 #include "code\modules\clothing\spacesuits\rig\modules\combat.dm"

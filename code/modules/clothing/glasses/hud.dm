@@ -143,13 +143,13 @@
 	flash_protection = FLASH_PROTECTION_MAJOR
 	prescription = 1
 	action_button_name = "AR Console (Security Alerts)"
-	arscreen_path = /datum/nano_module/alarm_monitor/security
+	tgarscreen_path = /datum/tgui_module/alarm_monitor/security/glasses
 	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_WANTED,VIS_AUGMENTED)
 
 /obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
-	if(arscreen)
-		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
-	return 1
+	if(tgarscreen)
+		tgarscreen.ui_interact(user)
+	return TRUE
 
 /obj/item/clothing/glasses/omnihud/eng
 	name = "\improper AR-E glasses"
@@ -159,12 +159,12 @@
 	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
 	action_button_name = "AR Console (Station Alerts)"
-	arscreen_path = /datum/nano_module/alarm_monitor/engineering
+	tgarscreen_path = /datum/tgui_module/alarm_monitor/engineering/glasses
 
 /obj/item/clothing/glasses/omnihud/eng/ar_interact(var/mob/living/carbon/human/user)
-	if(arscreen)
-		arscreen.nano_ui_interact(user,"main",null,1,glasses_state)
-	return 1
+	if(tgarscreen)
+		tgarscreen.ui_interact(user)
+	return TRUE
 
 /obj/item/clothing/glasses/omnihud/rnd
 	name = "\improper AR-R glasses"

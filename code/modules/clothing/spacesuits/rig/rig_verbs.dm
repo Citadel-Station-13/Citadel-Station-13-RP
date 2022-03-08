@@ -7,7 +7,7 @@
 	set src = usr.contents
 
 	if(wearer && (wearer.back == src || wearer.belt == src))
-		nano_ui_interact(usr)
+		ui_interact(usr)
 
 /obj/item/rig/verb/toggle_vision()
 
