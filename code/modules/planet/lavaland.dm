@@ -7,7 +7,7 @@ var/datum/planet/lavaland/planet_lavaland = null
 	name = "Lava Land"
 	desc = "The fabled."
 	current_time = new /datum/time/lavaland()
-	expected_z_levels = list(21) // Debug testing.
+	expected_z_levels = list(21, 22) // Debug testing.
 
 /datum/planet/lavaland/New()
 	..()
