@@ -109,7 +109,7 @@
 		return
 
 	src.add_fingerprint(usr)
-	nano_ui_interact(user)
+	ui_interact(user)
 	return
 
 /obj/machinery/atmospherics/omni/proc/build_icons()
