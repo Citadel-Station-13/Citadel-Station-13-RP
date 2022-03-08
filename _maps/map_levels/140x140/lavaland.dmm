@@ -163,7 +163,7 @@
 /area/lavaland/central/base/common)
 "eY" = (
 /obj/machinery/door/blast/shutters{
-	dir = 4;
+	dir = 8;
 	id = "ll_cent_shutter_east";
 	name = "East Transit Shutter"
 	},
@@ -219,7 +219,7 @@
 /area/lavaland/central/base/common)
 "fw" = (
 /mob/living/simple_mob/construct/shade/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "fX" = (
 /obj/machinery/light/small{
@@ -268,7 +268,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "gy" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "gE" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -393,7 +393,7 @@
 /area/lavaland/central/base/common)
 "ix" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/unexplored)
 "iz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -690,7 +690,7 @@
 	name = "\improper MEMETIC HAZARD";
 	pixel_x = 32
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "oC" = (
 /obj/structure/closet/secure_closet/personal,
@@ -831,7 +831,7 @@
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 4
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "qc" = (
 /obj/machinery/atmospherics/binary/circulator{
@@ -1095,7 +1095,7 @@
 	name = "\improper MEMETIC HAZARD";
 	pixel_x = -32
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "ui" = (
 /obj/machinery/door/airlock{
@@ -1649,7 +1649,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Ft" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/unexplored)
 "FF" = (
 /obj/machinery/door/firedoor/multi_tile{
@@ -1846,7 +1846,7 @@
 	id = "ll_cent_shutter_east";
 	pixel_x = 25
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "Jl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -2266,7 +2266,7 @@
 	pixel_y = -4
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "RJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{

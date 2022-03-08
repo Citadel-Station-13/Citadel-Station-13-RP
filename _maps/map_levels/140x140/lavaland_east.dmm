@@ -22,7 +22,7 @@
 /area/lavaland/east/colony)
 "ak" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/unexplored)
 "al" = (
 /obj/structure/girder,
@@ -152,7 +152,7 @@
 	pixel_x = -25;
 	pixel_y = -1
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "bL" = (
 /turf/simulated/floor/tiled/dark/lavaland,
@@ -172,7 +172,7 @@
 /area/lavaland/east/colony)
 "cH" = (
 /obj/machinery/door/blast/shutters{
-	dir = 8;
+	dir = 4;
 	id = "ll_east_shutter";
 	name = "East Transit Shutter"
 	},
@@ -210,7 +210,7 @@
 	name = "\improper MEMETIC HAZARD";
 	pixel_x = -32
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "dk" = (
 /obj/effect/floor_decal/rust,
@@ -408,7 +408,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ix" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "iL" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -526,7 +526,7 @@
 /area/lavaland/east/explored)
 "kL" = (
 /obj/structure/fence/corner,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "kQ" = (
 /obj/structure/toilet{
@@ -918,7 +918,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "rS" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "rX" = (
 /obj/effect/gibspawner/human,
@@ -1146,7 +1146,7 @@
 /area/lavaland/east/colony)
 "vS" = (
 /obj/structure/fence,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "wn" = (
 /obj/effect/gibspawner/human,
@@ -1199,7 +1199,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "wP" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/unexplored)
 "wQ" = (
 /obj/structure/bed/chair/backed_red{
@@ -1230,7 +1230,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "xk" = (
 /obj/structure/table/steel_reinforced,
@@ -1352,7 +1352,7 @@
 /area/lavaland/east/colony)
 "zg" = (
 /obj/structure/barricade,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "zl" = (
 /obj/machinery/door/airlock/glass_medical{
@@ -1432,7 +1432,7 @@
 /area/lavaland/east/colony)
 "AY" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "Be" = (
 /obj/structure/grille,
@@ -1560,7 +1560,7 @@
 /obj/structure/fence/cut/large{
 	dir = 4
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "DB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1574,7 +1574,7 @@
 	dir = 1
 	},
 /obj/structure/fence,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "DF" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1854,7 +1854,7 @@
 /obj/structure/fence/cut/medium{
 	dir = 4
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "Ld" = (
 /obj/effect/floor_decal/corner/red/diagonal,
@@ -1933,7 +1933,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "Ns" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1946,7 +1946,7 @@
 /area/lavaland/east/colony)
 "NB" = (
 /obj/structure/fence/cut/large,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "NF" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -2262,7 +2262,7 @@
 /obj/structure/fence/cut/medium{
 	dir = 1
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "Tl" = (
 /obj/structure/bed/chair/wood,
@@ -2525,7 +2525,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "XW" = (
 /obj/machinery/door/airlock{

@@ -7,7 +7,7 @@ var/datum/planet/lavaland/planet_lavaland = null
 	name = "Lava Land"
 	desc = "The fabled."
 	current_time = new /datum/time/lavaland()
-	expected_z_levels = list(21) // Debug testing.
+	expected_z_levels = list(21, 22) // Debug testing.
 
 /datum/planet/lavaland/New()
 	..()
@@ -157,11 +157,11 @@ var/datum/planet/lavaland/planet_lavaland = null
 	wind_low = 3
 	flight_failure_modifier = 50
 	sky_visible = FALSE
-	timer_low_bound = 1			// How long this weather must run before it tries to change, in minutes
-	timer_high_bound = 1		// How long this weather can run before it tries to change, in minutes
+	timer_low_bound = 2			// How long this weather must run before it tries to change, in minutes
+	timer_high_bound = 10		// How long this weather can run before it tries to change, in minutes
 	transition_chances = list(
-		WEATHER_ASH_STORM = 5,
-		WEATHER_CLEAR = 95
+		WEATHER_ASH_STORM = 15,
+		WEATHER_CLEAR = 85
 		)
 	observed_message = "All that can be seen is black smoldering ash."
 	transition_messages = list(
