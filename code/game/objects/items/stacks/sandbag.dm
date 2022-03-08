@@ -223,9 +223,6 @@ var/list/sandbag_icon_cache = list()
 	qdel(src)
 	return
 
-
-//All this table icon code is gibberish to me.
-/*
 /proc/get_sandbag_image(var/icon/sicon,var/siconstate,var/sdir)
 	var/icon_cache_key = "\ref[sicon]-[siconstate]-[sdir]"
 	var/image/I = sandbag_icon_cache[icon_cache_key]
@@ -261,7 +258,7 @@ var/list/sandbag_icon_cache = list()
 				type += "+"
 
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
-/obj/structure/sandbag/proc/update_connections(propagate=0)
+/obj/structure/sandbag/update_connections(propagate=0)
 	if(!vestigial)
 		connections = list("0", "0", "0", "0")
 		if(propagate)
@@ -313,4 +310,3 @@ var/list/sandbag_icon_cache = list()
 				S.update_icon()
 
 	connections = dirs_to_corner_states(connection_dirs)
-*/

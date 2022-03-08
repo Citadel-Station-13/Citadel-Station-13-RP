@@ -21,6 +21,7 @@ var/list/mining_overlay_cache = list()
 	density = 1
 	blocks_air = 1
 	can_dirty = FALSE
+	edge_blending_priority = 0
 
 	var/datum/ore/mineral
 	var/sand_dug

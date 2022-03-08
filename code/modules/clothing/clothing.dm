@@ -493,7 +493,7 @@
 		) //custom species support.
 	blood_sprite_state = "maskblood"
 	sprite_sheets = list(
-		SPECIES_TESHARI		= 'icons/mob/species/teshari/masks_vr.dmi',
+		SPECIES_TESHARI		= 'icons/mob/species/teshari/masks.dmi',
 		SPECIES_VOX 		= 'icons/mob/species/vox/masks.dmi',
 		SPECIES_TAJ 		= 'icons/mob/species/tajaran/mask_vr.dmi',
 		SPECIES_UNATHI 		= 'icons/mob/species/unathi/mask_vr.dmi',
