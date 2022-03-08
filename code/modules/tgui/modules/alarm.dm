@@ -35,7 +35,7 @@
 // Subtype for nif_state
 /datum/tgui_module/alarm_monitor/engineering/nif
 /datum/tgui_module/alarm_monitor/engineering/nif/ui_state(mob/user)
-	return GLOB.tgui_nif_state
+	return GLOB.ui_nif_state
 
 // Subtype for NTOS
 /datum/tgui_module/alarm_monitor/engineering/ntos

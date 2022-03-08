@@ -62,7 +62,7 @@
 
 	user.verbs |= /mob/living/carbon/human/proc/nif_menu
 
-/datum/component/nif_menu/proc/nif_menu_click(source, location, control, params, user)
+/datum/component/nif_menu/proc/nif_menu_click(obj/screen/nif/image, location, control, params, user)
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && H.nif)
 		INVOKE_ASYNC(H.nif, .proc/ui_interact, user)
@@ -92,7 +92,7 @@
  * The NIF State ensures that only our authorized implanted user can touch us.
  */
 /obj/item/nif/ui_state(mob/user)
-	return GLOB.tgui_nif_main_state
+	return GLOB.ui_nif_main_state
 
 /**
  * Standard TGUI stub to open the NIF.js template.
