@@ -29,7 +29,7 @@
 /area/lavaland/idleruins)
 "kt" = (
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "nr" = (
 /obj/structure/frame,
@@ -40,7 +40,7 @@
 /area/template_noop)
 "oN" = (
 /obj/item/material/shard/shrapnel,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "qO" = (
 /obj/structure/table/standard,
@@ -55,7 +55,7 @@
 /area/lavaland/idleruins)
 "rw" = (
 /obj/item/stack/material/steel,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "rG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -110,7 +110,7 @@
 /turf/simulated/shuttle/floor/lavaland,
 /area/lavaland/idleruins)
 "EJ" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "IJ" = (
 /obj/effect/decal/cleanable/vomit,
@@ -145,7 +145,7 @@
 /area/lavaland/idleruins)
 "Oo" = (
 /obj/item/stack/rods,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "Qp" = (
 /obj/structure/frame/computer{

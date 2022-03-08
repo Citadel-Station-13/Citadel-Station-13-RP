@@ -100,6 +100,18 @@
 	turf_layers = list(/turf/simulated/mineral/floor/lavaland)
 	initial_flooring = /decl/flooring/outdoors/lavaland
 
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior
+	outdoors = 1
+
+/turf/simulated/floor/water/lavaland/interior
+	outdoors = 0
+
+/turf/simulated/floor/outdoors/grass/lavaland/interior
+	outdoors = 0
+
+/turf/simulated/floor/outdoors/dirt/lavaland/interior
+	outdoors = 0
+
 // This is a special subtype of the thing that generates ores on a map
 // It will generate more rich ores because of the lower numbers than the normal one
 /datum/random_map/noise/ore/lavaland

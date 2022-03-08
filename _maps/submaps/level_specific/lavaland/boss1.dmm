@@ -6,21 +6,19 @@
 /turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
 "e" = (
-/mob/living/simple_mob/mechanical/cyber_horror/grey/surt,
-/turf/simulated/floor/greengrid/lavaland,
+/mob/living/simple_mob/mechanical/cyber_horror/priest/surt,
+/turf/simulated/floor/bluegrid/lavaland,
 /area/lavaland/bosses)
 "h" = (
 /obj/effect/decal/remains/xeno,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/template_noop)
 "j" = (
 /obj/effect/decal/remains/mummy2,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/template_noop)
 "l" = (
-/obj/structure/railing{
-	dir = 8
-	},
+/obj/effect/floor_decal/corner_techfloor_grid,
 /turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
 "m" = (
@@ -36,7 +34,7 @@
 /area/lavaland/bosses)
 "u" = (
 /obj/effect/decal/remains/ribcage,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/template_noop)
 "v" = (
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
@@ -48,55 +46,41 @@
 /area/lavaland/bosses)
 "A" = (
 /obj/effect/decal/remains/mummy1,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/template_noop)
 "C" = (
 /turf/simulated/wall/titanium,
 /area/lavaland/bosses)
 "D" = (
-/obj/effect/forcefield/swarm,
+/mob/living/simple_mob/mechanical/cyber_horror/grey/surt,
 /turf/simulated/floor/bluegrid/lavaland,
-/area/lavaland/bosses)
-"E" = (
-/obj/effect/floor_decal/corner_steel_grid,
-/turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
 "F" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
 "G" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/template_noop)
 "H" = (
 /obj/effect/decal/remains/deer,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/template_noop)
 "I" = (
 /obj/effect/decal/remains/tajaran,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/template_noop)
-"J" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
 "M" = (
-/obj/effect/floor_decal/corner_techfloor_grid,
-/turf/simulated/floor/greengrid/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "O" = (
 /obj/effect/floor_decal/corner_techfloor_grid/diagonal,
 /turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
-"Q" = (
-/obj/effect/forcefield/swarm,
-/turf/simulated/floor/greengrid/lavaland,
-/area/lavaland/bosses)
 "R" = (
 /obj/random/multiple/treasure,
 /obj/structure/closet/crate,
+/obj/random/multiple/treasure,
 /turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
 "S" = (
@@ -107,7 +91,7 @@
 /turf/simulated/wall/solidrock,
 /area/template_noop)
 "V" = (
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
+/mob/living/simple_mob/mechanical/cyber_horror/grey/surt,
 /turf/simulated/floor/greengrid/lavaland,
 /area/lavaland/bosses)
 
@@ -410,17 +394,17 @@ a
 a
 a
 G
-c
-c
+M
+M
 c
 c
 c
 c
 r
 c
-c
-c
-c
+M
+M
+M
 G
 G
 a
@@ -442,17 +426,17 @@ a
 a
 a
 G
+M
+M
+M
 r
 c
-c
-r
-c
+l
 c
 c
-c
-c
-r
-c
+M
+M
+M
 G
 a
 a
@@ -474,17 +458,17 @@ a
 a
 a
 a
-c
-c
+M
+M
 r
 v
-E
+c
 r
 C
 C
-r
-c
-c
+D
+M
+M
 U
 a
 a
@@ -506,7 +490,7 @@ a
 a
 a
 a
-c
+M
 C
 c
 m
@@ -516,7 +500,7 @@ c
 c
 c
 C
-c
+M
 a
 a
 a
@@ -540,11 +524,11 @@ a
 a
 c
 z
-Q
-J
-r
+c
 c
 e
+c
+c
 r
 c
 C
@@ -572,8 +556,8 @@ a
 a
 c
 C
-D
-J
+r
+c
 c
 R
 c
@@ -604,7 +588,7 @@ a
 j
 c
 C
-l
+c
 F
 c
 r
@@ -644,7 +628,7 @@ c
 c
 c
 r
-c
+M
 a
 a
 a
@@ -666,7 +650,7 @@ a
 a
 a
 G
-c
+M
 V
 C
 v
@@ -675,8 +659,8 @@ s
 c
 C
 C
-c
-c
+M
+M
 G
 a
 a
@@ -698,7 +682,7 @@ a
 a
 a
 G
-c
+M
 M
 r
 c
@@ -707,8 +691,8 @@ r
 c
 c
 S
-c
-r
+M
+M
 G
 a
 a
@@ -730,17 +714,17 @@ a
 a
 a
 G
-c
-c
-c
+M
+M
+M
 c
 c
 c
 c
 r
-c
-c
-c
+M
+M
+M
 G
 G
 a

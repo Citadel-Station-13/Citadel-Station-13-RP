@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "j" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "k" = (
 /obj/structure/catwalk,
@@ -16,17 +16,21 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/bosses)
+"p" = (
+/obj/structure/catwalk,
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland,
+/area/lavaland/bosses)
 "B" = (
 /mob/living/simple_mob/vore/aggressive/corrupthound/surt,
 /turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/bosses)
 "D" = (
 /obj/structure/loot_pile/surface/bones,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "I" = (
 /obj/effect/decal/remains/posi,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "O" = (
 /obj/effect/decal/remains/unathi,
@@ -34,18 +38,22 @@
 /area/lavaland/bosses)
 "R" = (
 /mob/living/simple_mob/vore/aggressive/corrupthound/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "T" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "U" = (
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/bosses)
+"W" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/bosses)
 "X" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/bosses)
 "Z" = (
 /turf/simulated/mineral/floor/ignore_mapgen/lavaland,
@@ -126,9 +134,9 @@ U
 Z
 Z
 T
-j
+W
 m
-j
+W
 R
 j
 I
@@ -159,12 +167,12 @@ a
 U
 Z
 Z
-j
+W
 j
 U
 j
 j
-j
+W
 j
 U
 a
@@ -193,12 +201,12 @@ a
 U
 Z
 Z
-j
+W
 j
 U
 D
 j
-j
+W
 j
 U
 a
@@ -228,9 +236,9 @@ U
 Z
 B
 Z
-Z
+p
 m
-Z
+p
 Z
 Z
 Z
@@ -249,7 +257,7 @@ Z
 U
 Z
 Z
-Z
+p
 Z
 U
 a

@@ -77,7 +77,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "aW" = (
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
@@ -92,13 +92,13 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "bd" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "be" = (
 /obj/effect/gibspawner/human,
@@ -137,7 +137,7 @@
 /area/lavaland/east/colony)
 "bs" = (
 /obj/structure/flora/tree/jungle,
-/turf/simulated/floor/outdoors/grass/lavaland,
+/turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "bv" = (
 /obj/structure/closet/crate/medical/blood,
@@ -269,7 +269,7 @@
 /area/lavaland/east/colony)
 "fv" = (
 /obj/structure/flora/ausbushes,
-/turf/simulated/floor/outdoors/grass/lavaland,
+/turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "fC" = (
 /obj/machinery/vending/cola,
@@ -283,7 +283,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "fO" = (
 /obj/machinery/computer/operating,
@@ -304,7 +304,7 @@
 /obj/machinery/power/solar{
 	stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "fT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -325,7 +325,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "gm" = (
 /obj/machinery/door/airlock/glass_external{
@@ -419,7 +419,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "iX" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -449,7 +449,7 @@
 /obj/machinery/power/solar{
 	stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "jG" = (
 /obj/machinery/door/airlock/glass_external{
@@ -492,6 +492,9 @@
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
+"jX" = (
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
+/area/lavaland/east/colony)
 "kh" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/power/solar,
@@ -499,7 +502,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "kj" = (
 /obj/structure/table/standard,
@@ -585,7 +588,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "lt" = (
 /obj/machinery/door/airlock/glass_external{
@@ -641,7 +644,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "mP" = (
 /turf/simulated/wall/wood/lavaland,
@@ -671,7 +674,7 @@
 /obj/machinery/power/solar{
 	stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "nh" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -723,7 +726,7 @@
 /area/lavaland/east/colony)
 "nL" = (
 /obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/outdoors/grass/lavaland,
+/turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "nR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10,
@@ -903,7 +906,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "rz" = (
 /obj/machinery/shower{
@@ -954,7 +957,7 @@
 /area/lavaland/east/colony)
 "sJ" = (
 /obj/structure/flora/ausbushes/stalkybush,
-/turf/simulated/floor/water/lavaland,
+/turf/simulated/floor/water/lavaland/interior,
 /area/lavaland/east/colony)
 "sR" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -975,7 +978,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "tk" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
@@ -986,7 +989,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "tp" = (
 /obj/structure/catwalk,
@@ -1008,7 +1011,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "tu" = (
 /obj/structure/toilet{
@@ -1054,7 +1057,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "uc" = (
 /mob/living/simple_mob/animal/space/bats/surt,
@@ -1094,12 +1097,12 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "vk" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "vs" = (
 /obj/structure/bed,
@@ -1132,7 +1135,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "vH" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1145,7 +1148,7 @@
 /obj/machinery/power/solar{
 	stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "vP" = (
 /obj/effect/gibspawner/generic,
@@ -1180,7 +1183,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "wy" = (
 /obj/structure/bed/chair,
@@ -1262,7 +1265,7 @@
 /obj/machinery/power/solar{
 	stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "xG" = (
 /obj/effect/gibspawner/human,
@@ -1404,7 +1407,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "zT" = (
 /obj/structure/ore_box,
@@ -1513,7 +1516,7 @@
 /area/lavaland/east/colony)
 "Cu" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Cx" = (
 /obj/machinery/appliance/cooker/oven,
@@ -1523,7 +1526,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Cz" = (
-/turf/simulated/floor/water/lavaland,
+/turf/simulated/floor/water/lavaland/interior,
 /area/lavaland/east/colony)
 "CA" = (
 /obj/structure/dispenser/oxygen,
@@ -1562,7 +1565,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "DA" = (
 /obj/structure/fence/cut/large{
@@ -1613,7 +1616,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "EI" = (
 /obj/structure/bed/chair/wood{
@@ -1642,7 +1645,7 @@
 /obj/structure/sign/warning/high_voltage{
 	pixel_x = -32
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Fy" = (
 /obj/machinery/door/airlock/glass_external{
@@ -1688,6 +1691,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"Gy" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
+/area/lavaland/east/colony)
 "GF" = (
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled/lavaland,
@@ -1698,7 +1705,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "GZ" = (
 /obj/structure/sign/poster/nanotrasen{
@@ -1782,7 +1789,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Jh" = (
 /obj/effect/floor_decal/spline/plain,
@@ -1855,9 +1862,6 @@
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
-"KG" = (
-/turf/simulated/floor/outdoors/grass/lavaland,
-/area/lavaland/east/colony)
 "KJ" = (
 /obj/structure/fence/cut/medium{
 	dir = 4
@@ -1889,11 +1893,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "LQ" = (
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
-/turf/simulated/floor/outdoors/grass/lavaland,
+/turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "LU" = (
 /obj/structure/bed,
@@ -1992,7 +1995,7 @@
 /area/lavaland/east/colony)
 "Oj" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/dirt/lavaland,
+/turf/simulated/floor/outdoors/dirt/lavaland/interior,
 /area/lavaland/east/colony)
 "Ot" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -2012,19 +2015,19 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "OH" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "OM" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Pa" = (
 /obj/structure/sink{
@@ -2061,7 +2064,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "PU" = (
 /obj/structure/table/rack,
@@ -2098,6 +2101,9 @@
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
+/area/lavaland/east/colony)
+"Qx" = (
+/turf/simulated/floor/outdoors/dirt/lavaland/interior,
 /area/lavaland/east/colony)
 "Qy" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -2166,7 +2172,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "RI" = (
 /obj/structure/bed/chair/bar_stool,
@@ -2189,7 +2195,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "RN" = (
 /obj/machinery/light{
@@ -2283,7 +2289,7 @@
 /area/lavaland/east/colony)
 "Tm" = (
 /obj/structure/flora/ausbushes/grassybush,
-/turf/simulated/floor/outdoors/grass/lavaland,
+/turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "To" = (
 /obj/structure/catwalk,
@@ -2317,7 +2323,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "TJ" = (
 /obj/structure/bed/chair/wood,
@@ -2347,7 +2353,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Ui" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -2388,7 +2394,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Uz" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -2455,7 +2461,7 @@
 /obj/machinery/power/solar{
 	stat = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "WH" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -2464,7 +2470,7 @@
 /area/lavaland/east/colony)
 "WM" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/outdoors/grass/lavaland,
+/turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "WO" = (
 /obj/structure/bed/chair/backed_red{
@@ -2501,7 +2507,7 @@
 /area/lavaland/east/colony)
 "Xn" = (
 /obj/structure/flora/tree/jungle_small,
-/turf/simulated/floor/outdoors/grass/lavaland,
+/turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "Xo" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -2510,7 +2516,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Xr" = (
 /obj/structure/boulder,
@@ -2521,7 +2527,7 @@
 /area/lavaland/east/colony)
 "XE" = (
 /obj/structure/flora/ausbushes/palebush,
-/turf/simulated/floor/outdoors/grass/lavaland,
+/turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "XF" = (
 /obj/structure/table/glass,
@@ -2574,7 +2580,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "YB" = (
 /obj/effect/decal/cleanable/blood,
@@ -2614,7 +2620,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "YU" = (
 /obj/structure/toilet{
@@ -2628,7 +2634,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "YY" = (
 /obj/machinery/power/apc{
@@ -2694,7 +2700,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland,
+/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "ZL" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -6248,12 +6254,12 @@ Wk
 Wk
 Wk
 Wk
-IC
-dk
-dk
-IC
-IC
-IC
+jX
+Gy
+Gy
+jX
+jX
+jX
 Cu
 XU
 rS
@@ -6390,12 +6396,12 @@ Wk
 Wk
 Wk
 Wk
-IC
-IC
-IC
-IC
-IC
-dk
+jX
+jX
+jX
+jX
+jX
+Gy
 Cu
 KJ
 rS
@@ -6535,9 +6541,9 @@ Wk
 Wk
 Wk
 Wk
-IC
-IC
-IC
+jX
+jX
+jX
 Cu
 XU
 rS
@@ -6677,9 +6683,9 @@ Wk
 Wk
 Wk
 Wk
-IC
-IC
-IC
+jX
+jX
+jX
 Cu
 XU
 rS
@@ -6820,8 +6826,8 @@ Wk
 Wk
 Wk
 Wk
-IC
-IC
+jX
+jX
 Cu
 XU
 rS
@@ -6956,14 +6962,14 @@ ww
 Wk
 XU
 lp
-IC
+jX
 Wk
-IC
-IC
+jX
+jX
 Wk
 Wk
-IC
-IC
+jX
+jX
 Cu
 KJ
 rS
@@ -7098,14 +7104,14 @@ ww
 Wk
 DA
 lp
-IC
+jX
 Wk
 Wk
-IC
+jX
 Wk
-dk
-IC
-IC
+Gy
+jX
+jX
 Cu
 XU
 rS
@@ -7240,14 +7246,14 @@ ww
 Wk
 XU
 lp
-IC
-IC
+jX
+jX
 Wk
 Wk
 Wk
-IC
-IC
-IC
+jX
+jX
+jX
 Cu
 XU
 rS
@@ -7382,14 +7388,14 @@ ww
 rS
 XU
 lp
-IC
-IC
-IC
-IC
-IC
-IC
-dk
-IC
+jX
+jX
+jX
+jX
+jX
+jX
+Gy
+jX
 Cu
 XU
 rS
@@ -7524,14 +7530,14 @@ wP
 rS
 XU
 lp
-IC
-IC
-dk
-IC
-IC
-IC
-dk
-IC
+jX
+jX
+Gy
+jX
+jX
+jX
+Gy
+jX
 vk
 XU
 rS
@@ -7666,14 +7672,14 @@ wP
 rS
 XU
 lp
-IC
-IC
-IC
-IC
-IC
-IC
-dk
-IC
+jX
+jX
+jX
+jX
+jX
+jX
+Gy
+jX
 Cu
 XU
 rS
@@ -7808,14 +7814,14 @@ wP
 rS
 XU
 lp
-IC
-IC
-IC
-IC
-IC
-IC
-IC
-dk
+jX
+jX
+jX
+jX
+jX
+jX
+jX
+Gy
 Cu
 DA
 rS
@@ -7950,14 +7956,14 @@ ww
 rS
 KJ
 lp
-IC
-IC
-IC
-IC
-IC
-IC
-IC
-IC
+jX
+jX
+jX
+jX
+jX
+jX
+jX
+jX
 Cu
 XU
 rS
@@ -8092,14 +8098,14 @@ ww
 rS
 XU
 lp
-dk
-IC
-IC
-IC
-IC
-IC
-IC
-IC
+Gy
+jX
+jX
+jX
+jX
+jX
+jX
+jX
 Cu
 XU
 rS
@@ -8234,14 +8240,14 @@ ww
 Wk
 XU
 lp
-IC
-IC
-IC
-IC
-IC
-IC
-IC
-IC
+jX
+jX
+jX
+jX
+jX
+jX
+jX
+jX
 Cu
 XU
 rS
@@ -8376,14 +8382,14 @@ ww
 Wk
 XU
 lp
-IC
-IC
-IC
-dk
-dk
-IC
-IC
-IC
+jX
+jX
+jX
+Gy
+Gy
+jX
+jX
+jX
 Cu
 XU
 rS
@@ -11778,14 +11784,14 @@ rS
 rS
 op
 WM
-KG
-KG
-KG
-RK
-KG
+LQ
+LQ
+LQ
+Qx
+LQ
 XE
-KG
-KG
+LQ
+LQ
 Qv
 rS
 rS
@@ -11919,15 +11925,15 @@ RK
 rS
 rS
 op
-KG
-KG
-KG
-KG
-RK
+LQ
+LQ
+LQ
+LQ
+Qx
 Xn
-KG
-KG
-KG
+LQ
+LQ
+LQ
 Qv
 rS
 RK
@@ -12061,14 +12067,14 @@ RK
 rS
 rS
 op
-KG
-KG
-KG
+LQ
+LQ
+LQ
 bs
-RK
-KG
-KG
-KG
+Qx
+LQ
+LQ
+LQ
 Xn
 Qv
 rS
@@ -12203,15 +12209,15 @@ RK
 rS
 rS
 op
-KG
-KG
-KG
+LQ
+LQ
+LQ
 RK
-RK
-RK
-KG
-KG
-KG
+Qx
+Qx
+LQ
+LQ
+LQ
 Qv
 rS
 RK
@@ -12345,14 +12351,14 @@ RK
 rS
 rS
 op
-KG
+LQ
 fv
-RK
+Qx
 RK
 Cz
-RK
-RK
-KG
+Qx
+Qx
+LQ
 nL
 Qv
 rS
@@ -12487,15 +12493,15 @@ RK
 rS
 rS
 op
-KG
-KG
-RK
+LQ
+LQ
+Qx
 Cz
 Cz
 Cz
-RK
+Qx
 bs
-KG
+LQ
 Qv
 rS
 rS
@@ -12629,15 +12635,15 @@ RK
 rS
 rS
 op
-KG
-nL
-RK
-Cz
-Cz
-Cz
-RK
 LQ
-KG
+nL
+Qx
+Cz
+Cz
+Cz
+Qx
+LQ
+LQ
 Qv
 rS
 rS
@@ -12771,15 +12777,15 @@ RK
 rS
 rS
 op
-KG
-RK
-RK
+LQ
+Qx
+Qx
 Cz
 Cz
 Cz
-RK
-RK
-KG
+Qx
+Qx
+LQ
 Qv
 rS
 rS
@@ -12913,14 +12919,14 @@ RK
 rS
 rS
 op
-KG
-RK
+LQ
+Qx
 Cz
 Cz
 Cz
 sJ
 Cz
-RK
+Qx
 WM
 Qv
 rS
@@ -13055,15 +13061,15 @@ RK
 yh
 nq
 Be
-RK
+Qx
 Cz
 Cz
-RK
-RK
-RK
+Qx
+Qx
+Qx
 Cz
 Cz
-RK
+Qx
 Be
 nq
 eW
@@ -13197,15 +13203,15 @@ RK
 RT
 IC
 RT
-RK
+Qx
 Cz
 Cz
-RK
+Qx
 Oj
-RK
+Qx
 Cz
 Cz
-RK
+Qx
 RT
 IC
 RT
@@ -13339,15 +13345,15 @@ RK
 bo
 Zk
 Be
-RK
+Qx
 Cz
 Cz
-RK
-RK
-RK
+Qx
+Qx
+Qx
 Cz
 Cz
-RK
+Qx
 Be
 Zk
 Um
@@ -13482,14 +13488,14 @@ rS
 rS
 op
 Tm
-RK
+Qx
 Cz
 Cz
 Cz
 Cz
 Cz
-RK
-KG
+Qx
+LQ
 Qv
 rS
 rS
@@ -13623,15 +13629,15 @@ rS
 rS
 rS
 op
-KG
-RK
-RK
+LQ
+Qx
+Qx
 sJ
 Cz
 Cz
-RK
-RK
-KG
+Qx
+Qx
+LQ
 Qv
 rS
 rS
@@ -13765,15 +13771,15 @@ rS
 rS
 rS
 op
-KG
+LQ
 Xn
-RK
+Qx
 Cz
 Cz
 Cz
-RK
-KG
-KG
+Qx
+LQ
+LQ
 Qv
 rS
 rS
@@ -13907,14 +13913,14 @@ rS
 rS
 rS
 op
-KG
-KG
-RK
+LQ
+LQ
+Qx
 Cz
 Cz
 Cz
-RK
-KG
+Qx
+LQ
 Xn
 Qv
 rS
@@ -14051,13 +14057,13 @@ rS
 op
 XE
 nL
-RK
-RK
+Qx
+Qx
 Cz
-RK
-RK
-KG
-KG
+Qx
+Qx
+LQ
+LQ
 Qv
 rS
 rS
@@ -14191,15 +14197,15 @@ rS
 rS
 rS
 op
-KG
-KG
+LQ
+LQ
 Xn
-RK
-RK
-RK
-KG
+Qx
+Qx
+Qx
+LQ
 Tm
-KG
+LQ
 Qv
 rS
 rS
@@ -14334,14 +14340,14 @@ rS
 rS
 op
 LQ
-KG
-KG
-KG
-RK
+LQ
+LQ
+LQ
+Qx
 bs
-KG
+LQ
 fv
-KG
+LQ
 Qv
 rS
 rS
@@ -14475,14 +14481,14 @@ rS
 rS
 rS
 op
-KG
+LQ
 WM
-KG
-KG
-RK
-KG
-KG
-KG
+LQ
+LQ
+Qx
+LQ
+LQ
+LQ
 Xn
 Qv
 rS
@@ -14617,15 +14623,15 @@ rS
 rS
 rS
 op
-KG
-KG
-KG
-KG
-RK
-KG
-KG
-KG
-KG
+LQ
+LQ
+LQ
+LQ
+Qx
+LQ
+LQ
+LQ
+LQ
 Qv
 rS
 RK
@@ -19742,9 +19748,9 @@ vH
 jE
 GX
 Yx
-IC
+jX
 vF
-dk
+Gy
 jE
 GX
 GX
@@ -19884,9 +19890,9 @@ Wp
 xz
 mK
 mK
-IC
+jX
 vF
-dk
+Gy
 xz
 xz
 xz
@@ -20168,9 +20174,9 @@ vH
 jE
 jE
 jE
-IC
+jX
 vF
-IC
+jX
 jE
 jE
 jE
@@ -20310,9 +20316,9 @@ Wp
 xz
 xz
 xz
-IC
+jX
 vF
-IC
+jX
 mK
 xz
 mK
@@ -20452,7 +20458,7 @@ ge
 YR
 YR
 YR
-dk
+Gy
 wx
 Dt
 RH
@@ -20594,9 +20600,9 @@ vH
 GX
 jE
 GX
-IC
+jX
 vF
-IC
+jX
 jE
 GX
 GX
@@ -20736,9 +20742,9 @@ Wp
 xz
 xz
 xz
-IC
+jX
 vF
-IC
+jX
 xz
 xz
 xz
@@ -21020,9 +21026,9 @@ vH
 jE
 GX
 GX
-IC
+jX
 vF
-IC
+jX
 GX
 jE
 jE
@@ -21162,9 +21168,9 @@ Wp
 mK
 xz
 xz
-IC
+jX
 vF
-dk
+Gy
 mK
 mK
 xz
