@@ -302,14 +302,14 @@
 
 /obj/machinery/camera/proc/triggerCameraAlarm(var/duration = 0)
 	alarm_on = 1
-	SSalarms.camera_alarm.triggerAlarm(loc, src, duration)
+	camera_alarm.triggerAlarm(loc, src, duration)
 
 /obj/machinery/camera/proc/cancelCameraAlarm()
 	if(wires.is_cut(WIRE_CAM_ALARM))
 		return
 
 	alarm_on = 0
-	SSalarms.camera_alarm.clearAlarm(loc, src)
+	camera_alarm.clearAlarm(loc, src)
 
 //if false, then the camera is listed as DEACTIVATED and cannot be used
 /obj/machinery/camera/proc/can_use()
@@ -437,7 +437,7 @@
 		network.Cut()
 		update_coverage(1)
 
-/obj/machinery/camera/proc/nano_structure()
+/obj/machinery/camera/proc/ui_structure()
 	var/cam[0]
 	cam["name"] = sanitize(c_tag)
 	cam["deact"] = !can_use()

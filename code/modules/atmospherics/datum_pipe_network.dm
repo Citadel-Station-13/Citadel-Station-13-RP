@@ -8,6 +8,8 @@ var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SS
 	var/list/datum/pipeline/line_members = list()
 		//membership roster to go through for updates and what not
 
+	var/list/leaks = list()
+
 	var/update = 1
 	//var/datum/gas_mixture/air_transient = null
 
@@ -18,6 +20,7 @@ var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SS
 	for(var/obj/machinery/atmospherics/normal_member in normal_members)
 		normal_member.reassign_network(src, null)
 	gases.Cut()  // Do not qdel the gases, we don't own them
+	leaks.Cut()
 	return ..()
 
 /datum/pipe_network/process(delta_time)
@@ -26,7 +29,7 @@ var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SS
 		update = 0
 		reconcile_air() //equalize_gases(gases)
 
-	//listclearnulls(leaks) // Let's not have forever-seals.
+	listclearnulls(leaks) // Let's not have forever-seals.
 
 	//Give pipelines their process call for pressure checking and what not. Have to remove pressure checks for the time being as pipes dont radiate heat - Mport
 	//for(var/datum/pipeline/line_member in line_members)
@@ -56,6 +59,7 @@ var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SS
 
 	line_members |= giver.line_members
 
+	leaks |= giver.leaks
 
 	for(var/obj/machinery/atmospherics/normal_member in giver.normal_members)
 		normal_member.reassign_network(giver, src)

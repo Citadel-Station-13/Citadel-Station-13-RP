@@ -82,7 +82,7 @@
 
 /obj/machinery/computer/aifixer/ui_act(action, params)
 	if(..())
-		return
+		return TRUE
 	if(!occupier)
 		restoring = FALSE
 

@@ -5,6 +5,9 @@
 	var/list/obj/machinery/atmospherics/pipe/members
 	var/list/obj/machinery/atmospherics/pipe/edges //Used for building networks
 
+	// Nodes that are leaking. Used for A.S. Valves.
+	var/list/leaks = list()
+
 	var/datum/pipe_network/network
 
 	var/alert_pressure = 0
@@ -18,6 +21,7 @@
 		P.parent = null
 	members = null
 	edges = null
+	leaks = null
 	. = ..()
 
 /datum/pipeline/process(delta_time)//This use to be called called from the pipe networks
@@ -55,6 +59,8 @@
 	else
 		air = new
 
+	if(base.leaking)
+		leaks |= base
 
 	while(possible_expansions.len>0)
 		for(var/obj/machinery/atmospherics/pipe/borderline in possible_expansions)
@@ -80,6 +86,8 @@
 						if(item.air_temporary)
 							air.merge(item.air_temporary)
 
+						if(item.leaking)
+							leaks |= item
 
 					edge_check--
 
@@ -98,6 +106,8 @@
 	new_network.line_members += src
 
 	network = new_network
+
+	network.leaks |= leaks
 
 	for(var/obj/machinery/atmospherics/pipe/edge in edges)
 		for(var/obj/machinery/atmospherics/result in edge.pipeline_expansion())

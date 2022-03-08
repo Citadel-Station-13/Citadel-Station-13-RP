@@ -75,7 +75,7 @@
 // Subtype for glasses_state
 /datum/tgui_module/crew_monitor/glasses
 /datum/tgui_module/crew_monitor/glasses/ui_state(mob/user)
-	return GLOB.ui_glasses_state
+	return GLOB.glasses_state
 
 // Subtype for self_state
 /datum/tgui_module/crew_monitor/robot
@@ -85,4 +85,4 @@
 // Subtype for nif_state
 /datum/tgui_module/crew_monitor/nif
 /datum/tgui_module/crew_monitor/nif/ui_state(mob/user)
-	return GLOB.ui_nif_state
+	return GLOB.nif_state

@@ -6,6 +6,7 @@
 	var/datum/gas_mixture/air_temporary // used when reconstructing a pipeline that broke
 	var/datum/pipeline/parent
 	var/volume = 0
+	var/leaking = FALSE // Do not set directly, use set_leaking(TRUE/FALSE)
 
 	layer = PIPES_LAYER
 	use_power = USE_POWER_OFF
@@ -29,6 +30,31 @@
 
 /obj/machinery/atmospherics/pipe/hides_under_flooring()
 	return level != 2
+
+/obj/machinery/atmospherics/pipe/proc/set_leaking(var/new_leaking)
+	if(new_leaking && !leaking)
+		if(!speed_process)
+			START_MACHINE_PROCESSING(src)
+		else
+			START_PROCESSING(SSfastprocess, src)
+		leaking = TRUE
+		if(parent)
+			parent.leaks |= src
+			if(parent.network)
+				parent.network.leaks |= src
+	else if (!new_leaking && leaking)
+		if(!speed_process)
+			STOP_MACHINE_PROCESSING(src)
+		else
+			STOP_PROCESSING(SSfastprocess, src)
+		leaking = FALSE
+		if(parent)
+			parent.leaks -= src
+			if(parent.network)
+				parent.network.leaks -= src
+
+/obj/machinery/atmospherics/pipe/proc/handle_leaking()	// Used specifically to update leaking status on different pipes.
+	return
 
 /obj/machinery/atmospherics/pipe/proc/pipeline_expansion()
 	return null

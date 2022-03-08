@@ -32,7 +32,7 @@
 		detectTime = world.time // start the clock
 	if (!(target in motionTargets))
 		motionTargets += target
-	return 1
+	return TRUE
 
 /obj/machinery/camera/proc/lostTarget(var/mob/target)
 	if (target in motionTargets)
@@ -42,23 +42,22 @@
 
 /obj/machinery/camera/proc/cancelAlarm()
 	if (!status || (stat & NOPOWER))
-		return 0
+		return FALSE
 	if (detectTime == -1)
-		SSalarms.motion_alarm.clearAlarm(loc, src)
+		motion_alarm.clearAlarm(loc, src)
 	detectTime = 0
-	return 1
+	return TRUE
 
 /obj/machinery/camera/proc/triggerAlarm()
 	if (!status || (stat & NOPOWER))
-		return 0
+		return FALSE
 	if (!detectTime) return 0
-	SSalarms.motion_alarm.triggerAlarm(loc, src)
+	motion_alarm.triggerAlarm(loc, src)
 	detectTime = -1
-	return 1
+	return TRUE
 
 /obj/machinery/camera/HasProximity(atom/movable/AM as mob|obj)
 	// Motion cameras outside of an "ai monitored" area will use this to detect stuff.
 	if (!area_motion)
 		if(isliving(AM))
 			newTarget(AM)
-

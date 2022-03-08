@@ -17,7 +17,7 @@ GLOBAL_DATUM_INIT(inventory_state, /datum/ui_state/inventory_state, new)
 		return UI_CLOSE
 	return user.shared_ui_interaction(src_object)
 
-GLOBAL_DATUM_INIT(ui_glasses_state, /datum/ui_state/glasses_state, new)
+GLOBAL_DATUM_INIT(glasses_state, /datum/ui_state/glasses_state, new)
 
 /datum/ui_state/glasses_state/can_use_topic(var/src_object, var/mob/user)
 	if(ishuman(user))
@@ -27,7 +27,7 @@ GLOBAL_DATUM_INIT(ui_glasses_state, /datum/ui_state/glasses_state, new)
 
 	return UI_CLOSE
 
-GLOBAL_DATUM_INIT(ui_nif_state, /datum/ui_state/nif_state, new)
+GLOBAL_DATUM_INIT(nif_state, /datum/ui_state/nif_state, new)
 
 /datum/ui_state/nif_state/can_use_topic(var/src_object, var/mob/user)
 	if(ishuman(user))

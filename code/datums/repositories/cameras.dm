@@ -26,7 +26,7 @@ var/global/datum/repository/cameras/camera_repository = new()
 
 	cameranet.process_sort()
 	for(var/obj/machinery/camera/C in cameranet.cameras)
-		var/cam = C.nano_structure()
+		var/cam = C.ui_structure()
 		for(var/network in C.network)
 			if(!networks[network])
 				networks[network] = list()
