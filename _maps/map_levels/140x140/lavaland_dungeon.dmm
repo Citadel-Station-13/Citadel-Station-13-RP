@@ -360,7 +360,7 @@
 /area/lavaland/dungeon/facility)
 "qa" = (
 /obj/random/outcrop,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/dungeon/exterior)
 "qU" = (
 /obj/structure/disposalpipe/segment{
@@ -462,7 +462,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "vf" = (
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/dungeon/exterior)
 "vx" = (
 /obj/structure/sink{
@@ -510,7 +510,7 @@
 /area/lavaland/dungeon/facility)
 "wY" = (
 /mob/living/simple_mob/animal/space/bats/surt,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/dungeon/exterior)
 "xj" = (
 /obj/machinery/drone_fabricator{
@@ -768,7 +768,7 @@
 /area/lavaland/dungeon/exterior)
 "GA" = (
 /obj/structure/boulder,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/dungeon/exterior)
 "Hx" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -1134,7 +1134,7 @@
 /area/lavaland/dungeon/facility)
 "Wm" = (
 /mob/living/simple_mob/animal/roach/uberfallen,
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/dungeon/exterior)
 "WH" = (
 /obj/structure/stairs/spawner/west,
