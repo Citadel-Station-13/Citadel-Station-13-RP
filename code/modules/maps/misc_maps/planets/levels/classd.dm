@@ -1,13 +1,10 @@
 // Datums //
 
 /datum/atmosphere/planet/class_d
-	base_gases = list(
-	/datum/gas/nitrogen = 0.16,
-	/datum/gas/carbon_dioxide = 0.84
-	)
-	base_target_pressure = 40
-	minimum_pressure = 40
-	maximum_pressure = 40
+	base_gases = list()
+	base_target_pressure = 0
+	minimum_pressure = 0
+	maximum_pressure = 0
 	minimum_temp = 203
 	maximum_temp = 203
 
