@@ -21,6 +21,7 @@
 		to_chat(usr, "<span class='warning'>[type] initialization failure. Click dropped. Contact a coder or admin.</span>")
 		return
 	if(src)
+		SEND_SIGNAL(src, COMSIG_CLICK, location, control, params, usr)
 		usr.ClickOn(src, params)
 
 /atom/DblClick(var/location, var/control, var/params)
