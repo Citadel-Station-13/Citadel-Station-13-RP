@@ -3,7 +3,7 @@
 	flags = APPEARANCE_ALL
 
 /datum/tgui_module/appearance_changer/vore/ui_state(mob/user)
-	return GLOB.tgui_conscious_state
+	return GLOB.conscious_state
 
 /datum/tgui_module/appearance_changer/vore/ui_status(mob/user, datum/ui_state/state)
 	if(!isbelly(owner.loc))

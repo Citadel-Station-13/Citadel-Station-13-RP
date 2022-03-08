@@ -155,12 +155,12 @@
 		if(D != holder)
 			exclude += D.effect.type
 	holder.majormutate(exclude)
-	if (prob(5) && prob(100-resistance)) // The more resistant the disease,the lower the chance of randomly developing the antibodies
+	if(prob(5) && prob(100-resistance)) // The more resistant the disease,the lower the chance of randomly developing the antibodies
 		antigen = list(pick(ALL_ANTIGENS))
 		antigen |= pick(ALL_ANTIGENS)
-	if (prob(5) && GLOB.all_species.len)
+	if(prob(5) && GLOB.all_species.len)
 		affected_species = get_infectable_species()
-	if (prob(10))
+	if(prob(10))
 		resistance += rand(1,9)
 		if(resistance > 90 && resistance < 100)
 			resistance = 90
@@ -199,7 +199,7 @@
 		if(!(type in types2))
 			equal = 0
 
-	if (antigen != disease.antigen)
+	if(antigen != disease.antigen)
 		equal = 0
 	return equal
 
@@ -215,7 +215,7 @@ var/global/list/virusDB = list()
 
 /datum/disease2/disease/proc/name()
 	.= "stamm #[add_zero("[uniqueID]", 4)]"
-	if ("[uniqueID]" in virusDB)
+	if("[uniqueID]" in virusDB)
 		var/datum/data/record/V = virusDB["[uniqueID]"]
 		.= V.fields["name"]
 
@@ -244,6 +244,27 @@ var/global/list/virusDB = list()
 
 	return r
 
+/datum/disease2/disease/proc/get_tgui_info()
+	. = list(
+		"name" = name(),
+		"spreadtype" = spreadtype,
+		"antigen" = antigens2string(antigen),
+		"rate" = stageprob * 10,
+		"resistance" = resistance,
+		"species" = jointext(affected_species, ", "),
+		"ref" = "\ref[src]",
+	)
+
+	var/list/symptoms = list()
+	for(var/datum/disease2/effectholder/E in effects)
+		symptoms.Add(list(list(
+			"stage" = E.stage,
+			"name" = E.effect.name,
+			"strength" = "[E.multiplier >= 3 ? "Severe" : E.multiplier > 1 ? "Above Average" : "Average"]",
+			"aggressiveness" = E.chance * 15,
+		)))
+	.["symptoms"] = symptoms
+
 /datum/disease2/disease/proc/addToDB()
 	if ("[uniqueID]" in virusDB)
 		return 0
@@ -251,6 +272,8 @@ var/global/list/virusDB = list()
 	v.fields["id"] = uniqueID
 	v.fields["name"] = name()
 	v.fields["description"] = get_info()
+	v.fields["tgui_description"] = get_tgui_info()
+	v.fields["tgui_description"]["record"] = "\ref[v]"
 	v.fields["antigen"] = antigens2string(antigen)
 	v.fields["spread type"] = spreadtype
 	virusDB["[uniqueID]"] = v

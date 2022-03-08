@@ -13,8 +13,9 @@
  *
  * required user mob The mob who opened/is using the UI.
  * optional ui datum/tgui The UI to be updated, if it exists.
+ * optional parent_ui datum/tgui A parent UI that, when closed, closes this UI as well.
  */
-/datum/proc/ui_interact(mob/user, datum/tgui/ui)
+/datum/proc/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null)
 	return FALSE // Not implemented.
 
 /**
@@ -27,7 +28,7 @@
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user)
+/datum/proc/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return list() // Not implemented.
 
 /**
@@ -145,6 +146,27 @@
  * client/verb/uiclose(), which closes the ui window
  */
 /datum/proc/ui_close(mob/user)
+
+/**
+ * verb
+ *
+ * Used by a client to fix broken TGUI windows caused by opening a UI window before assets load.
+ * Probably not very performant and forcibly destroys a bunch of windows, so it has some warnings attached.
+ * Conveniently, also allows devs to force a dev server reattach without relogging, since it yeets windows.
+ */
+/client/verb/tgui_fix_white()
+	set desc = "Only use this if you have a broken TGUI window occupying your screen!"
+	set name = "Fix TGUI"
+	set category = "OOC"
+
+	if(alert(src, "Only use this verb if you have a white TGUI window stuck on your screen.", "Fix TGUI", "Continue", "Nevermind") != "Continue")
+		return
+
+	SStgui.close_user_uis(mob)
+	if(alert(src, "Did that fix the problem?", "Fix TGUI", "Yes", "No") == "No")
+		SStgui.force_close_all_windows(mob)
+		alert(src, "UIs should be fixed now. If not, please cry to your nearest coder.", "Fix TGUI")
+
 
 /**
  * verb

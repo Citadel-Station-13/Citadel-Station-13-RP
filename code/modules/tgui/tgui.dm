@@ -33,8 +33,12 @@
 	var/status = UI_INTERACTIVE
 	/// Topic state used to determine status/interactability.
 	var/datum/ui_state/state = null
-	// The map z-level to display.
+	/// The map z-level to display.
 	var/map_z_level = 1
+	/// The Parent UI
+	var/datum/tgui/parent_ui
+	/// Children of this UI
+	var/list/children = list()
 
 /**
  * public
@@ -45,12 +49,13 @@
  * required src_object datum The object or datum which owns the UI.
  * required interface string The interface used to render the UI.
  * optional title string The title of the UI.
+ * optional parent_ui datum/tgui The parent of this UI.
  * optional ui_x int Deprecated: Window width.
  * optional ui_y int Deprecated: Window height.
  *
  * return datum/tgui The requested UI.
  */
-/datum/tgui/New(mob/user, datum/src_object, interface, title, ui_x, ui_y)
+/datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui, ui_x, ui_y)
 	log_tgui(user,
 		"new [interface] fancy [user?.client?.prefs.tgui_fancy]",
 		src_object = src_object)
@@ -61,6 +66,9 @@
 	if(title)
 		src.title = title
 	src.state = src_object.ui_state()
+	src.parent_ui = parent_ui
+	if(parent_ui)
+		parent_ui.children += src
 	// Deprecated
 	if(ui_x && ui_y)
 		src.window_size = list(ui_x, ui_y)
@@ -116,10 +124,13 @@
  *
  * optional can_be_suspended bool
  */
-/datum/tgui/proc/close(can_be_suspended = TRUE)
+/datum/tgui/proc/close(can_be_suspended = TRUE, logout = FALSE)
 	if(closing)
 		return
 	closing = TRUE
+	for(var/datum/tgui/child in children)
+		child.close(can_be_suspended, logout)
+	children.Cut()
 	// If we don't have window_id, open proc did not have the opportunity
 	// to finish, therefore it's safe to skip this whole block.
 	if(window)
@@ -127,10 +138,11 @@
 		// and we want to keep them around, to allow user to read
 		// the error message properly.
 		window.release_lock()
-		window.close(can_be_suspended)
+		window.close(can_be_suspended, logout)
 		src_object.ui_close(user)
 		SStgui.on_close(src)
 	state = null
+	parent_ui = null
 	qdel(src)
 
 /**
@@ -229,7 +241,7 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/data = custom_data || with_data && src_object.ui_data(user)
+	var/data = custom_data || with_data && src_object.ui_data(user, src, state)
 	if(data)
 		json_data["data"] = data
 	var/static_data = with_static_data && src_object.ui_static_data(user)
@@ -262,7 +274,7 @@
 		return
 	// Update through a normal call to ui_interact
 	if(status != UI_DISABLED && (autoupdate || force))
-		src_object.ui_interact(user, src)
+		src_object.ui_interact(user, src, parent_ui)
 		return
 	// Update status only
 	var/needs_update = process_status()
@@ -289,6 +301,8 @@
 /datum/tgui/proc/process_status()
 	var/prev_status = status
 	status = src_object.ui_status(user, state)
+	if(parent_ui)
+		status = min(status, parent_ui.status)
 	return prev_status != status
 
 /**
