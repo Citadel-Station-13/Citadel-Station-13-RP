@@ -110,6 +110,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	//Draw me yo.
 	update_icon()
 
+	if(!our_statclick)
+		our_statclick = new(null, "Open", src)
+
 // Creates software after the mob is hopefully loaded in
 /obj/item/nif/proc/install_free_return_software()
 	var/old = durability
@@ -371,6 +374,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 //Prints 'AR' messages to the user
 /obj/item/nif/proc/notify(var/message,var/alert = 0)
 	if(!human || stat == NIF_TEMPFAIL) return
+
+	last_notification = message // TGUI Hook
 
 	to_chat(human,"<b>\[[icon2html(thing = src.big_icon, target = human)]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
 	if(prob(1)) human.visible_message("<span class='notice'>\The [human.real_name] [pick(look_messages)].</span>")
