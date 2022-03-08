@@ -22,7 +22,7 @@
 	// REPAIRING: Use Nanopaste to repair 10-20 integrity points.
 	if(istype(P, /obj/item/stack/nanopaste))
 		var/obj/item/stack/nanopaste/T = P
-		if (integrity < 100)               								//Damaged, let's repair!
+		if (integrity < 100)	//Damaged, let's repair!
 			if (T.use(1))
 				integrity = between(0, integrity + rand(10,20), 100)
 				to_chat(usr, "You apply the Nanopaste to [src], repairing some of the damage.")
