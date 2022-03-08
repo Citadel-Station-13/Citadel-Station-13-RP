@@ -1,7 +1,9 @@
 // Datums //
 
 /datum/atmosphere/planet/class_d
-	base_gases = list()
+	base_gases = list(
+	/datum/gas/nitrogen = 100
+	)
 	base_target_pressure = 0
 	minimum_pressure = 0
 	maximum_pressure = 0
