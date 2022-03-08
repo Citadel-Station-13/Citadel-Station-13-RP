@@ -12,7 +12,7 @@
 
 // Turfmakers
 
-#define CLASSD_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSD;x/class_d/outdoors=TRUE
+#define CLASSD_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSD
 #define CLASSD_TURF_CREATE(x)	x/class_d/initial_gas_mix=ATMOSPHERE_ID_CLASSD;x/class_d/color="#eaa17c"
 
 
