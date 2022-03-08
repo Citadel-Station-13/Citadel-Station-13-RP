@@ -630,6 +630,11 @@
 	name = "Lava Land (Center) - Unknown"
 	icon_state = "yellow"
 
+/area/lavaland/central/transit
+	name = "Lava Land (Center) - Transit"
+	icon_state = "blue"
+	requires_power = 1
+
 /area/lavaland/north/explored
 	name = "Lava Land (North) - Thoroughfare"
 	icon_state = "red"
@@ -656,6 +661,11 @@
 
 /area/lavaland/east/colony
 	name = "Lava Land (East) - Colony"
+	icon_state = "blue"
+	requires_power = 1
+
+/area/lavaland/east/transit
+	name = "Lava Land (East) - Transit"
 	icon_state = "blue"
 	requires_power = 1
 

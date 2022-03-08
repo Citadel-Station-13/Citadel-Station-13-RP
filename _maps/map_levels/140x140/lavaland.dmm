@@ -47,8 +47,8 @@
 	name = "to_east";
 	portal_id = "eaststep"
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
-/area/lavaland/central/explored)
+/turf/simulated/floor/tiled/dark/lavaland,
+/area/lavaland/central/transit)
 "bG" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/phoron/engine_setup,
@@ -133,8 +133,8 @@
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 8
 	},
-/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
-/area/lavaland/central/explored)
+/turf/simulated/floor/tiled/dark/lavaland,
+/area/lavaland/central/transit)
 "ew" = (
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -161,6 +161,14 @@
 /obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"eY" = (
+/obj/machinery/door/blast/shutters{
+	dir = 4;
+	id = "ll_cent_shutter_east";
+	name = "East Transit Shutter"
+	},
+/turf/simulated/floor/lavaland,
+/area/lavaland/central/transit)
 "fg" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -676,6 +684,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"oy" = (
+/obj/structure/sign/warning{
+	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
+	name = "\improper MEMETIC HAZARD";
+	pixel_x = 32
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/central/explored)
 "oC" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -703,6 +719,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"pf" = (
+/turf/simulated/floor/tiled/dark/lavaland,
+/area/lavaland/central/transit)
 "pg" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
@@ -1821,6 +1840,14 @@
 /obj/item/bedsheet/red,
 /turf/simulated/floor/carpet/blucarpet,
 /area/lavaland/central/base/common)
+"IV" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "ll_cent_shutter_east";
+	pixel_x = 25
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland/lavaland,
+/area/lavaland/central/explored)
 "Jl" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -1955,6 +1982,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"La" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark/lavaland,
+/area/lavaland/central/transit)
 "Lg" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -2002,6 +2035,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"LO" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "ll_cent_shutter_east";
+	pixel_x = -25;
+	pixel_y = -1
+	},
+/turf/simulated/floor/tiled/dark/lavaland,
+/area/lavaland/central/transit)
 "Mc" = (
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
@@ -2017,6 +2059,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"MV" = (
+/turf/simulated/wall/lavaland,
+/area/lavaland/central/transit)
 "MX" = (
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/central/explored)
@@ -2305,6 +2350,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"SN" = (
+/obj/machinery/power/apc{
+	cell_type = /obj/item/cell/infinite;
+	name = "south bump";
+	pixel_y = -28
+	},
+/turf/simulated/floor/tiled/dark/lavaland,
+/area/lavaland/central/transit)
 "SZ" = (
 /obj/structure/table/standard,
 /obj/item/roller,
@@ -21802,7 +21855,7 @@ RX
 RX
 MX
 RL
-RL
+gy
 gy
 gy
 gy
@@ -21941,15 +21994,15 @@ RX
 RX
 RX
 RX
-MX
-MX
-RL
-RL
+Ru
+Ru
+oy
 gy
 gy
 gy
-MX
-MX
+IV
+Ru
+Ru
 MX
 RX
 RX
@@ -22083,15 +22136,15 @@ RX
 RX
 RX
 MX
-MX
-RL
-RL
-gy
-gy
-gy
-gy
-MX
-MX
+Ru
+MV
+MV
+eY
+eY
+eY
+MV
+MV
+Ru
 MX
 RX
 RX
@@ -22225,15 +22278,15 @@ RX
 RX
 RX
 MX
-RL
-MX
-MX
-gy
-gy
-gy
-gy
-MX
-MX
+Ru
+MV
+pf
+pf
+pf
+pf
+LO
+MV
+Ru
 MX
 RX
 RX
@@ -22367,15 +22420,15 @@ MX
 MX
 MX
 RL
-RL
-MX
-gy
-gy
-gy
-gy
-gy
-MX
-MX
+Ru
+MV
+La
+pf
+pf
+pf
+SN
+MV
+Ru
 MX
 MX
 MX
@@ -22510,13 +22563,13 @@ Ru
 Ru
 Ru
 Ru
-Ru
+MV
 bu
 eb
 eb
 eb
 eb
-Ru
+MV
 Ru
 Ru
 Ru
