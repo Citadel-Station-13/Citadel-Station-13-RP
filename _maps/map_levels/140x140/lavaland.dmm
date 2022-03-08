@@ -221,6 +221,10 @@
 /mob/living/simple_mob/construct/shade/surt,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
+"fx" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/central/unexplored)
 "fX" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -2525,6 +2529,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"Wd" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/central/explored)
 "Wf" = (
 /obj/machinery/air_sensor{
 	frequency = 1443;
@@ -6474,10 +6482,10 @@ RX
 Ft
 Ft
 Ft
-Ft
+fx
 mr
 mr
-Ft
+fx
 Ft
 Ft
 Ft
@@ -6616,10 +6624,10 @@ RX
 Ft
 Ft
 Ft
-Ft
+fx
 mr
 mr
-Ft
+fx
 Ft
 Ft
 RX
@@ -13209,8 +13217,8 @@ MX
 MX
 MX
 DG
-gy
-gy
+Wd
+Wd
 DG
 DG
 DG
@@ -14061,8 +14069,8 @@ MX
 DG
 DG
 DG
-gy
-gy
+Wd
+Wd
 MX
 MX
 MX
@@ -16617,8 +16625,8 @@ MX
 MX
 MX
 DG
-gy
-gy
+Wd
+Wd
 DG
 DG
 DG
@@ -17611,8 +17619,8 @@ DG
 DG
 DG
 DG
-gy
-gy
+Wd
+Wd
 RL
 RL
 MX
@@ -20803,10 +20811,10 @@ RX
 RX
 RX
 Ft
-Ft
+fx
 mr
 mr
-Ft
+fx
 Ft
 Ft
 Ft
@@ -20945,10 +20953,10 @@ RX
 Ft
 Ft
 Ft
-Ft
+fx
 mr
 mr
-Ft
+fx
 Ft
 Ft
 Ft

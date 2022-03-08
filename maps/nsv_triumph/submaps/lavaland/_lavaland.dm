@@ -96,8 +96,6 @@
 	icon = 'icons/turf/flooring/asteroid.dmi'
 	icon_state = "asteroid"
 	outdoors = 1
-	flags = TURF_HAS_EDGES
-	edge_blending_priority = 3
 	base_icon_state = "asteroid"
 	turf_layers = list(/turf/simulated/mineral/floor/lavaland)
 	initial_flooring = /decl/flooring/outdoors/lavaland
