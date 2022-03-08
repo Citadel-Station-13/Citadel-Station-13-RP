@@ -110,9 +110,6 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	//Draw me yo.
 	update_icon()
 
-	if(!our_statclick)
-		our_statclick = new(null, "Open", src)
-
 // Creates software after the mob is hopefully loaded in
 /obj/item/nif/proc/install_free_return_software()
 	var/old = durability
@@ -144,6 +141,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		human.nif = src
 		stat = NIF_INSTALLING
 		H.verbs |= /mob/living/carbon/human/proc/set_nif_examine
+		menu = H.AddComponent(/datum/component/nif_menu)
 		return TRUE
 
 	return FALSE
@@ -164,6 +162,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		forceMove(parent)
 		parent.implants += src
 		spawn(0) //Let the character finish spawning yo.
+			if(!H) //Or letting them get deleted
+				return
 			if(H.mind)
 				owner = H.mind.name
 			implant(H)
@@ -180,6 +180,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	stat = NIF_PREINSTALL
 	vis_update()
 	H.verbs -= /mob/living/carbon/human/proc/set_nif_examine
+	QDEL_NULL(menu)
 	H.nif = null
 	human = null
 	install_done = null
@@ -208,6 +209,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	wear *= (rand(85,115) / 100) //Apparently rand() only takes integers.
 	durability -= wear
 
+	if(human)
+		persist_nif_data(human)
+
 	if(durability <= 0)
 		stat = NIF_TEMPFAIL
 		update_icon()
@@ -215,6 +219,13 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		if(human)
 			notify("Danger! General system insta#^!($",TRUE)
 			to_chat(human,"<span class='danger'>Your NIF vision overlays disappear and your head suddenly seems very quiet...</span>")
+
+//Repair update/check proc
+/obj/item/nif/proc/repair(var/repair = 0)
+	durability = min(durability + repair, initial(durability))
+
+	if(human)
+		persist_nif_data(human)
 
 //Attackby proc, for maintenance
 /obj/item/nif/attackby(obj/item/W, mob/user as mob)
@@ -351,8 +362,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			//nif_hud.process_hud(human,1) //TODO VIS
 
 			//Process all the ones that want that
-			for(var/S in nifsofts_life)
-				var/datum/nifsoft/nifsoft = S
+			for(var/datum/nifsoft/nifsoft as anything in nifsofts_life)
 				nifsoft.life(human)
 
 		if(NIF_POWFAIL)
@@ -398,6 +408,29 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 	//Was enough, reduce and return.
 	human.nutrition -= use_charge
+	return TRUE
+
+// This operates on a nifsoft *path*, not an instantiation.
+// It tells the nifsoft shop if it's installation will succeed, to prevent it
+// from charging the user for incompatible software.
+/obj/item/nif/proc/can_install(var/datum/nifsoft/path)
+	if(stat == NIF_TEMPFAIL)
+		return FALSE
+
+	if(nifsofts[initial(path.list_pos)])
+		notify("The software \"[initial(path.name)]\" is already installed.", TRUE)
+		return FALSE
+
+	if(human)
+		var/applies_to = initial(path.applies_to)
+		var/synth = human.isSynthetic()
+		if(synth && !(applies_to & NIF_SYNTHETIC))
+			notify("The software \"[initial(path.name)]\" is not supported on your chassis type.",TRUE)
+			return FALSE
+		if(!synth && !(applies_to & NIF_ORGANIC))
+			notify("The software \"[initial(path.name)]\" is not supported in organic life.",TRUE)
+			return FALSE
+
 	return TRUE
 
 //Install a piece of software

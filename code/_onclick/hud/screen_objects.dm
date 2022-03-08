@@ -179,7 +179,7 @@
 	name = "crafting menu"
 	icon = 'icons/mob/screen/midnight.dmi'
 	icon_state = "craft"
-	screen_loc = ui_crafting
+	screen_loc = ui_smallquad
 
 /obj/screen/craft/Click(location, control, params)
 	var/datum/component/personal_crafting/C = usr.GetComponent(/datum/component/personal_crafting)

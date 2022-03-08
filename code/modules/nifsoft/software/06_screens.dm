@@ -20,7 +20,7 @@
 		arscreen.ui_interact(nif.human)
 		return TRUE
 
-/datum/nifsoft/crewmonitor/deactivate()
+/datum/nifsoft/crewmonitor/deactivate(var/force = FALSE)
 	if((. = ..()))
 		return TRUE
 
@@ -49,7 +49,7 @@
 		arscreen.ui_interact(nif.human)
 		return TRUE
 
-/datum/nifsoft/alarmmonitor/deactivate()
+/datum/nifsoft/alarmmonitor/deactivate(var/force = FALSE)
 	if((. = ..()))
 		return TRUE
 
