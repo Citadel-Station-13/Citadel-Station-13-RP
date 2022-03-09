@@ -5,206 +5,139 @@
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
 	icon_state = "infrared"
 	origin_tech = list(TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
+	matter = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 
 	wires = WIRE_PULSE
 
-	secured = FALSE
+	secured = 0
 
-	/// on or off?
-	var/on = FALSE
-	/// visible beam?
-	var/visible = FALSE
-	/// head of beam
-	var/obj/effect/beam/i_beam/head
-	/// range of beam - capped to 100
-	var/range = 8
-	/// requires rebuild?
-	var/dirty = FALSE
-	/// current atom listening to
-	var/atom/movable/listening
-
-/obj/item/assembly/infra/Destroy()
-	if(on)
-		turn_off()
-	return ..()
+	var/on = 0
+	var/visible = 0
+	var/list/i_beams = null
 
 /obj/item/assembly/infra/activate()
-	. = ..()
-	if(!.)
-		return
-	if(on)
-		turn_off()
-	else
-		turn_on()
+	if(!..())
+		return FALSE
+	on = !on
+	update_icon()
+	return TRUE
 
 /obj/item/assembly/infra/toggle_secure()
 	secured = !secured
 	if(!secured)
-		turn_off()
+		toggle_state(FALSE)
+	update_icon()
 	return secured
 
-/obj/item/assembly/infra/proc/turn_on()
-	if(!secured)
-		turn_off()
-		return
-	if(on)
-		return
-	on = TRUE
-	Rebuild()
-	update_icon()
-	START_PROCESSING(SSfastprocess, src)
+/obj/item/assembly/infra/proc/toggle_state(var/picked)
+	if(!isnull(picked))
+		on = picked
+	else
+		on = !on
 
-/obj/item/assembly/infra/proc/turn_off()
-	if(!on)
-		return
-	if(listening)
-		UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
-		listening = null
-	on = FALSE
-	Rebuild()
-	update_icon()
-	STOP_PROCESSING(SSfastprocess, src)
+	if(secured && on)
+		START_PROCESSING(SSobj, src)
+	else
+		STOP_PROCESSING(SSobj, src)
+		QDEL_LIST_NULL(i_beams)
+	return on
 
 /obj/item/assembly/infra/update_icon()
-	overlays.Cut()
-	attached_overlays = list()
+	cut_overlays()
+	LAZYCLEARLIST(attached_overlays)
 	if(on)
-		overlays += "infrared_on"
-		attached_overlays += "infrared_on"
+		add_overlay("infrared_on")
+		LAZYADD(attached_overlays, "infrared_on")
+
 	if(holder)
-		holder.update_icon()
+		holder.update_icon(2)
 
-/obj/item/assembly/infra/proc/toggle_visible()
-	visible = !visible
-	head?.SetVisible(visible)
+/obj/item/assembly/infra/process()
+	if(!on && i_beams)
+		QDEL_LIST_NULL(i_beams)
+		return
 
-/obj/item/assembly/infra/setDir()
-	var/old = dir
-	. = ..()
-	if(old == dir)
-		return
-	Queue()
+	if(!i_beams && secured && (istype(loc, /turf) || (holder && istype(holder.loc, /turf))))
+		create_beams()
 
-/obj/item/assembly/infra/proc/Queue()
-	dirty = TRUE
+/obj/item/assembly/infra/proc/create_beams(var/limit = 8)
+	var/current_spot = get_turf(src)
+	for(var/i = 1 to limit)
+		var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam(current_spot)
+		I.master = src
+		I.density = TRUE
+		I.set_dir(dir)
+		if(!step(I, I.dir)) //Try to take a step in that direction
+			return //Couldn't, oh well, we hit a wall or something. Beam should qdel itself in it's Bump().
+		I.density = FALSE
+		i_beams |= I
+		I.visible = visible
 
-/obj/item/assembly/infra/proc/Rebuild()
-	if(head)
-		if(!QDELETED(head))
-			QDEL_NULL(head)
-		head = null
-	if(!on || QDELETED(src))
-		return
-	if(!loc)
-		return
-	if(ismovable(loc)) // register listener
-		if(listening)
-			UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
-		listening = loc
-		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/Queue)
-	if(!isturf(loc) && !isturf(loc.loc))	// only allow nesting 1 deep
-		return
-	// spread
-	var/obj/effect/beam/i_beam/I = new(loc, src, range - 1, visible, null)
-	I.density = TRUE
-	I.setDir(dir)
-	step(I, I.dir)
-	// did it work?
-	if(QDELETED(I))
-		// nope
-		return
-	else
-		head = I
-		head.density = FALSE
-		head.Propagate()
-	dirty = FALSE
-
-/obj/item/assembly/infra/process(delta_time)
-	if(!on || QDELETED(src))
-		Rebuild()
-		return PROCESS_KILL
-	if(QDELETED(head) || dirty)
-		Rebuild()
-		return
-	head.Refresh()
+/obj/item/assembly/infra/attack_hand()
+	QDEL_LIST_NULL(i_beams)
+	..()
 
 /obj/item/assembly/infra/Move()
-	var/old_dir = dir
+	var/t = dir
 	. = ..()
-	setDir(old_dir)
-	Queue()
+	set_dir(t)
 
-/obj/item/assembly/infra/doMove()
+/obj/item/assembly/infra/Moved(atom/old_loc, direction, forced = FALSE)
 	. = ..()
-	Queue()
+	QDEL_LIST_NULL(i_beams)
 
 /obj/item/assembly/infra/holder_movement()
 	if(!holder)
 		return FALSE
-	setDir(holder.dir)
-	Queue()
+	QDEL_LIST_NULL(i_beams)
 	return TRUE
 
-/obj/item/assembly/infra/Moved(atom/oldloc)
-	. = ..()
-	if(listening)
-		UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
-	if(on && ismovable(loc))
-		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/Queue)
-		listening = loc
-
 /obj/item/assembly/infra/proc/trigger_beam()
-	if((!secured)||(!on)||(cooldown > 0))
+	if(!process_cooldown())
 		return FALSE
 	pulse(0)
+	QDEL_LIST_NULL(i_beams) //They will get recreated next process() if the situation is still appropriate
 	if(!holder)
-		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*")
-	cooldown = 2
-	addtimer(CALLBACK(src, /obj/item/assembly/proc/process_cooldown), 10)
+		visible_message("[icon2html(src)] *beep* *beep*")
 
-/obj/item/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
+/obj/item/assembly/infra/ui_interact(mob/user, datum/tgui/ui)
 	if(!secured)
-		return
-	user.set_machine(src)
-	var/dat = text("<TT><B>Infrared Laser</B>\n<B>Status</B>: []<BR>\n<B>Visibility</B>: []<BR>\n</TT>", (on ? text("<A href='?src=\ref[];state=0'>On</A>", src) : text("<A href='?src=\ref[];state=1'>Off</A>", src)), (src.visible ? text("<A href='?src=\ref[];visible=0'>Visible</A>", src) : text("<A href='?src=\ref[];visible=1'>Invisible</A>", src)))
-	dat += "<BR><BR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
-	dat += "<BR><BR><A href='?src=\ref[src];close=1'>Close</A>"
-	user << browse(dat, "window=infra")
-	onclose(user, "infra")
+		to_chat(user, "<span class='warning'>[src] is unsecured!</span>")
+		return FALSE
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AssemblyInfrared", name)
+		ui.open()
 
-/obj/item/assembly/infra/Topic(href, href_list, state = deep_inventory_state)
-	. = ..()
-	if(.)
-		return
-	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=infra")
-		onclose(usr, "infra")
-		return
+/obj/item/assembly/infra/ui_data(mob/user)
+	var/list/data = ..()
 
-	if(href_list["state"])
-		if(on)
-			turn_off()
-		else
-			turn_on()
-		interact(usr)
-		return
+	data["on"] = on
+	data["visible"] = visible
 
-	if(href_list["visible"])
-		toggle_visible()
-		interact(usr)
-		return
+	return data
 
-	if(href_list["close"])
-		usr << browse(null, "window=infra")
-		return
+/obj/item/assembly/infra/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
+
+	switch(action)
+		if("state")
+			toggle_state()
+			return TRUE
+		if("visible")
+			visible = !visible
+			for(var/obj/effect/beam/i_beam/I as anything in i_beams)
+				I.visible = visible
+				CHECK_TICK
+			return TRUE
 
 /obj/item/assembly/infra/verb/rotate_clockwise()
 	set name = "Rotate Infrared Laser Clockwise"
 	set category = "Object"
 	set src in usr
 
-	setDir(turn(dir, 90))
+	set_dir(turn(dir, 270))
 
 /***************************IBeam*********************************/
 
@@ -212,107 +145,37 @@
 	name = "i beam"
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "ibeam"
+	var/obj/item/assembly/infra/master = null
+	var/visible = 0
 	anchored = TRUE
-	pass_flags = PASSTABLE|PASSGLASS|PASSGRILLE
-	/// the next beam
-	var/obj/effect/beam/i_beam/next
-	/// the previous beam
-	var/obj/effect/beam/i_beam/prev
-	/// master assembly
-	var/obj/item/assembly/infra/master
-	/// are we visible?
-	var/visible = FALSE
-	/// beam segments left, excluding this one
-	var/propagate = 0
 
-/obj/effect/beam/i_beam/Initialize(mapload, _master, _propagate, _visible, _prev)
-	if(_propagate)
-		src.propagate = min(100, _propagate)
-	if(_master)
-		src.master = _master
-	if(_visible)
-		visible = _visible
-	if(_prev)
-		prev = _prev
-	invisibility = visible? 0 : 101
+/obj/effect/beam/i_beam/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
 
 /obj/effect/beam/i_beam/Destroy()
+	STOP_PROCESSING(SSobj, src)
 	master = null
-	if(next)
-		if(!QDELETED(next))
-			qdel(next)
-		next = null
-	if(prev)
-		if(prev.next == src)
-			prev.next = null
 	return ..()
 
-/**
- * Both handles beam propagation, and triggering if the beam suddenly finds itself on an dense atom.
- */
-/obj/effect/beam/i_beam/proc/Propagate()
-	propagate = min(100, propagate)
-	if(next)
-		if(!QDELETED(next))
-			qdel(next)
-		next = null
-	if(!loc || !master)
-		if(!QDELETED(src))
-			qdel(src)
-		return
-	if(propagate <= 0)
-		return
-	if(!next)
-		// spread
-		var/obj/effect/beam/i_beam/I = new type(loc, master, propagate - 1, visible, src)
-		I.density = TRUE
-		I.setDir(dir)
-		step(I, I.dir)
-		// did it work?
-		if(QDELETED(I))
-			// nope
-			return
-		else
-			next = I
-			next.density = FALSE
-			next.Propagate()
-
-/obj/effect/beam/i_beam/proc/Refresh()
-	if(!next)
-		if(propagate > 0)
-			Propagate()
-		return
-	// propagate vis and force rest to checks
-	invisibility = visible? 0 : 101
-	if(next)
-		next.visible = visible
-		next.Refresh()
-
-/obj/effect/beam/i_beam/proc/SetVisible(new_vis)
-	visible = new_vis
-	Refresh()
-
-/obj/effect/beam/i_beam/proc/Trigger(atom/A)
-	if(master)
-		master.trigger_beam()
+/obj/effect/beam/i_beam/proc/hit()
+	master?.trigger_beam()
 	qdel(src)
 
-/obj/effect/beam/i_beam/Bump(atom/movable/AM)
-	. = ..()
+/obj/effect/beam/i_beam/process()
+	if(loc?.density || !master)
+		qdel(src)
+		return
+
+/obj/effect/beam/i_beam/Bump()
 	qdel(src)
 
-// only useful during Propagate() since density is TRUE there.
-/obj/effect/beam/i_beam/Bumped(atom/movable/AM)
-	. = ..()
-	Trigger(AM)
+/obj/effect/beam/i_beam/Bumped()
+	hit()
 
-// we need to refactor this at some point holy shit, infrared grids are so awful right now.
-/obj/effect/beam/i_beam/Crossed(atom/movable/AM)
-	. = ..()
+/obj/effect/beam/i_beam/Crossed(var/atom/movable/AM)
 	if(AM.is_incorporeal())
 		return
 	if(istype(AM, /obj/effect/beam))
 		return
-	if(isobserver(AM))
-		return
-	Trigger(AM)
+	hit()

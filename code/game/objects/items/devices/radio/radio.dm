@@ -153,7 +153,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/radio/ui_data(mob/user)
 	var/data[0]
 
-	data["rawfreq"] = num2text(frequency)
+	data["rawfreq"] = frequency
 	data["listening"] = listening
 	data["broadcasting"] = broadcasting
 	data["subspace"] = subspace_transmission

@@ -37,15 +37,6 @@
 /obj/item/assembly/signaler/update_icon()
 	if(holder)
 		holder.update_icon()
-	return
-
-/obj/item/assembly/signaler/interact(mob/user)
-	if(..())
-		return TRUE
-	ui_interact(user)
-
-/obj/item/assembly/signaler/ui_state(mob/user)
-	return GLOB.deep_inventory_state
 
 /obj/item/assembly/signaler/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

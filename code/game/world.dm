@@ -66,9 +66,6 @@ GLOBAL_LIST(topic_status_cache)
 
 	. = ..()
 
-	// Set up roundstart seed list.
-	plant_controller = new
-
 	// *sighs*
 	job_master = new
 	job_master.SetupOccupations()

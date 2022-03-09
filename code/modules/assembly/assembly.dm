@@ -129,54 +129,20 @@
 
 
 /obj/item/assembly/attack_self(mob/user as mob)
-	if(!user)	return 0
+	if(!user)
+		return FALSE
 	user.set_machine(src)
-	interact(user)
-	return 1
+	ui_interact(user)
+	return TRUE
 
 
-/obj/item/assembly/interact(mob/user as mob)
-	return //HTML MENU FOR WIRES GOES HERE
+/obj/item/assembly/ui_state(mob/user)
+	return GLOB.deep_inventory_state
 
-/obj/item/assembly/nano_host()
-    if(istype(loc, /obj/item/assembly_holder))
-        return loc.nano_host()
-    return ..()
+/obj/item/assembly/ui_interact(mob/user, datum/tgui/ui)
+	return // tgui goes here
 
-/*
-	var/small_icon_state = null//If this obj will go inside the assembly use this for icons
-	var/list/small_icon_state_overlays = null//Same here
-	var/obj/holder = null
-	var/cooldown = 0//To prevent spam
-
-	proc
-		Activate()//Called when this assembly is pulsed by another one
-		Process_cooldown()//Call this via spawn(10) to have it count down the cooldown var
-		Attach_Holder(var/obj/H, var/mob/user)//Called when an assembly holder attempts to attach, sets src's loc in here
-
-
-	Activate()
-		if(cooldown > 0)
-			return 0
-		cooldown = 2
-		spawn(10)
-			Process_cooldown()
-		//Rest of code here
-		return 0
-
-
-	Process_cooldown()
-		cooldown--
-		if(cooldown <= 0)	return 0
-		spawn(10)
-			Process_cooldown()
-		return 1
-
-
-	Attach_Holder(var/obj/H, var/mob/user)
-		if(!H)	return 0
-		if(!H.IsAssemblyHolder())	return 0
-		//Remember to have it set its loc somewhere in here
-
-
-*/
+/obj/item/assembly/ui_host()
+	if(istype(loc, /obj/item/assembly_holder))
+		return loc.ui_host()
+	return ..()

@@ -522,7 +522,6 @@
 
 /datum/asset/spritesheet/sheetmaterials/register()
 	InsertAll("", 'icons/obj/stacks.dmi')
-
 	..()
 
 

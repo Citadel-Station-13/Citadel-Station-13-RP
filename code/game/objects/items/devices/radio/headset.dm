@@ -83,6 +83,9 @@
 
 	return "[..()][append]"
 
+/obj/item/radio/headset/ui_state(mob/user)
+	return GLOB.inventory_state
+
 /obj/item/radio/headset/syndicate
 	origin_tech = list(TECH_ILLEGAL = 3)
 	syndie = 1
