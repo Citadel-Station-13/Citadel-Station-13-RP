@@ -29,7 +29,7 @@
 		src.animatechatmsg(message, usr)
 
 /obj/item/text_to_speech/proc/animatechatmsg(var/message, /mob/usr, var/datum/language/speaking = null)
-	usr.say_overhead(message)
+	src.say_overhead(message)
 	var/list/speech_bubble_hearers = list()
 	var/italics = 0
 	for(var/mob/M in get_mobs_in_view(7, src))

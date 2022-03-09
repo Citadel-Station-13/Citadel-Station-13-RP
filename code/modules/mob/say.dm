@@ -1,10 +1,12 @@
 /mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
-/mob/proc/say_overhead(var/message, var/datum/language/speaking = null)
+/atom/proc/say_overhead(var/message, whispering, message_range, var/datum/language/speaking = null)
 	var/list/speech_bubble_hearers = list()
-	var/italics = 0
-	for(var/mob/M in get_mobs_in_view(7, src))
+	var/italics
+	if(whispering)
+		italics = TRUE
+	for(var/mob/M in get_mobs_in_view(message_range, src))
 		if(M.client)
 			speech_bubble_hearers += M.client
 	if(length(speech_bubble_hearers))

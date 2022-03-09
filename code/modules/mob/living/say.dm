@@ -380,10 +380,9 @@ proc/get_radio_key_from_channel(var/channel)
 					listening[item] = z_speech_bubble
 			listening_obj |= results["objs"]
 		above = above.shadow
-	if(!used_radios.len)
-		if(!isobserver(usr) || !IsAdminGhost(usr))
-			if(!whispering)
-				usr.say_overhead(say_emphasis_strip(message), speaking)
+	var/atom/emitter = src
+	if(!isobserver(usr) || !IsAdminGhost(usr))
+		emitter.say_overhead(say_emphasis_strip(message), whispering, message_range, speaking)
 
 
 	//Main 'say' and 'whisper' message delivery

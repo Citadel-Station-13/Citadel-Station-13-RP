@@ -40,6 +40,7 @@ var/list/floating_chat_colors = list()
 				C.images += understood
 			else
 				C.images += gibberish
+#define MAPTEXT(text) {"<span class='maptext'>[##text]</span>"}
 
 /proc/generate_floating_text(atom/movable/holder, message, style, size, duration, show_to)
 	var/image/I = image(null, holder)
@@ -53,7 +54,7 @@ var/list/floating_chat_colors = list()
 
 	//style = "font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: [size]px; [style]"
 
-	I.maptext = "<center><span style=\"[style] font: 'Small Fonts'; -dm-text-outline: 1px black; \">[message]</span></center>"
+	I.maptext = MAPTEXT(message)
 	animate(I, 1, alpha = 255, pixel_y = 16)
 
 	for(var/image/old in holder.stored_chat_text)

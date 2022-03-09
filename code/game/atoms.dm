@@ -18,8 +18,8 @@
 	var/throwpass = 0
 	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
-	var/bubble_icon = "normal" ///what icon the atom uses for speechbubbles
 	var/atom_say_verb = "says"
+	var/bubble_icon = "normal" ///what icon the atom uses for speechbubbles
 	var/fluorescent // Shows up under a UV light.
 
 	var/list/atom_colours	 //used to store the different colors on an atom
@@ -601,6 +601,7 @@
 
 	var/range = hearing_distance || world.view
 	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
+
 	var/list/hearing_mobs = hear["mobs"]
 	var/list/hearing_objs = hear["objs"]
 
@@ -646,6 +647,23 @@
 	return "" //Desc itself is often too long to use
 
 /atom/proc/GenerateTag()
+	return
+
+/atom/proc/atom_say(message)
+	if(!message)
+		return
+	var/list/speech_bubble_hearers = list()
+	for(var/mob/M in get_hearers_in_view(7, src))
+		M.show_message("<span class='game say'><span class='name'>[src]</span> [atom_say_verb], \"[message]\"</span>", 2, null, 1)
+		if(M.client)
+			speech_bubble_hearers += M.client
+
+	if(length(speech_bubble_hearers))
+		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
+		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
+
+/atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
 
 /*

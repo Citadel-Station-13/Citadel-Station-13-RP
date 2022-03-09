@@ -130,5 +130,6 @@ BIG IMG.icon 			{width: 32px; height: 32px;}
 .debug_info						{}
 .debug_debug					{color:#0000FF;}
 .debug_trace					{color:#888888;}
+.maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; }
 
 </style>"}
