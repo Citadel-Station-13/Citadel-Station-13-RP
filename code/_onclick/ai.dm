@@ -121,56 +121,57 @@
 
 /obj/machinery/door/airlock/AIShiftClick(mob/user)  // Opens and closes doors!
 	add_hiddenprint(user)
-	toggle_open(user)//instead of topic() procs
-	return 1
+	user_toggle_open(user)
+	return TRUE
 
 /atom/proc/AICtrlClick(mob/user)
 	return
 
 /obj/machinery/door/airlock/AICtrlClick(mob/user) // Bolts doors
 	add_hiddenprint(user)
-	toggle_bolt(user)//apparently this is better than the topic function
-	return 1
+	toggle_bolt(user)
+	return TRUE
 
 /obj/machinery/power/apc/AICtrlClick(mob/user) // turns off/on APCs.
 	add_hiddenprint(user)
-	toggle_breaker(user)
-	return 1
+	toggle_breaker()
+	return TRUE
 
 /obj/machinery/turretid/AICtrlClick(mob/user) //turns off/on Turrets
 	add_hiddenprint(user)
 	enabled = !enabled //toggles the turret on/off
-	return 1
+	return TRUE
 
 /atom/proc/AIAltClick(var/atom/A)
 	return AltClick(A)
 
 /obj/machinery/door/airlock/AIAltClick(mob/user) // Electrifies doors.
+	add_hiddenprint(user)
 	if(electrified_until)
 		electrify(0, 1)
 	else
 		electrify(-1,1)
-	return 1
+	return TRUE
 
 /obj/machinery/turretid/AIAltClick(mob/user) //toggles lethal on turrets
 	add_hiddenprint(user)
 	lethal = !lethal
-	return 1
+	return TRUE
 
 /atom/proc/AIMiddleClick(var/mob/living/silicon/user)
-	return 0
+	return FALSE
 
 /obj/machinery/door/airlock/AIMiddleClick(mob/user) // Toggles door bolt lights.
 	if(..())
 		return
 	add_hiddenprint(user)
 	if(wires.is_cut(WIRE_BOLT_LIGHT))
-		to_chat(user, "The lights are not responsive to your command.")
+		to_chat(user, "The bolt lights wire is cut - The door bolt lights are permanently disabled.")
 		return
 	lights = !lights
-	to_chat(user, "<span class='notice'>Lights are now [lights ? "enabled." : "disabled."]</span>")
+	to_chat(user, "<span class='notice'>Lights are now [lights ? "on." : "off."]</span>")
 	update_icon()
-	return 1
+	return TRUE
 
 //
 // Override AdjacentQuick for AltClicking

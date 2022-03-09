@@ -91,7 +91,7 @@
 		if("change_supplied_law_position")
 			var/new_position = input(usr, "Enter new supplied law position between 1 and [MAX_SUPPLIED_LAW_NUMBER], inclusive. Inherent laws at the same index as a supplied law will not be stated.", "Law Position", supplied_law_position) as num|null
 			if(isnum(new_position) && can_still_topic(usr, state))
-				supplied_law_position = CLAMP(new_position, 1, MAX_SUPPLIED_LAW_NUMBER)
+				supplied_law_position = clamp(new_position, 1, MAX_SUPPLIED_LAW_NUMBER)
 			return TRUE
 
 		if("edit_law")
@@ -217,8 +217,8 @@
 
 /datum/tgui_module/law_manager/robot
 /datum/tgui_module/law_manager/robot/ui_state(mob/user)
-	return GLOB.tgui_self_state
+	return GLOB.self_state
 
 /datum/tgui_module/law_manager/admin
 /datum/tgui_module/law_manager/admin/ui_state(mob/user)
-	return GLOB.tgui_admin_state
+	return GLOB.admin_state
