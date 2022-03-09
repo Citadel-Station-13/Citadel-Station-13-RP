@@ -8,7 +8,7 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("minitest1", "minitest2")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
+	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'	// TODO - Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
 	sealed_levels = list()

@@ -331,30 +331,37 @@
 	item_state = "electronic"
 	slot_flags = SLOT_BELT
 
-	proc/openwindow(mob/user as mob)
-		var/dat = "<tt><center><h1><b>TagMaster 2.3</b></h1></center>"
+/obj/item/destTagger/ui_state(mob/user)
+	return GLOB.inventory_state
 
-		dat += "<table style='width:100%; padding:4px;'><tr>"
-		for(var/i = 1, i <= tagger_locations.len, i++)
-			dat += "<td><a href='?src=\ref[src];nextTag=[tagger_locations[i]]'>[tagger_locations[i]]</a></td>"
+/obj/item/destTagger/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DestinationTagger", name)
+		ui.open()
 
-			if (i%4==0)
-				dat += "</tr><tr>"
+/obj/item/destTagger/ui_data(mob/user, datum/tgui/ui)
+	var/list/data = ..()
 
-		dat += "</tr></table><br>Current Selection: [currTag ? currTag : "None"]</tt>"
+	data["currTag"] = currTag
+	data["taggerLocs"] = GLOB.tagger_locations
 
-		user << browse(dat, "window=destTagScreen;size=450x350")
-		onclose(user, "destTagScreen")
+	return data
 
-	attack_self(mob/user as mob)
-		openwindow(user)
-		return
+/obj/item/destTagger/attack_self(mob/user as mob)
+	ui_interact(user)
 
-	Topic(href, href_list)
-		src.add_fingerprint(usr)
-		if(href_list["nextTag"] && (href_list["nextTag"] in tagger_locations))
-			src.currTag = href_list["nextTag"]
-		openwindow(usr)
+/obj/item/destTagger/ui_act(action, params)
+	if(..())
+		return TRUE
+	add_fingerprint(usr)
+	switch(action)
+		if("set_tag")
+			var/new_tag = params["tag"]
+			if(!(new_tag in GLOB.tagger_locations))
+				return FALSE
+			currTag = new_tag
+			. = TRUE
 
 /obj/machinery/disposal/deliveryChute
 	name = "Delivery chute"

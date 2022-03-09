@@ -14,14 +14,14 @@
 	botcard_access = list(access_janitor)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot)
 
-	locked = 0 // Start unlocked so roboticist can set them to patrol.
-	wait_if_pulled = 1
-	min_target_dist = 0
+	locked = FALSE // Start unlocked so roboticist can set them to patrol.
+	wait_if_pulled = TRUE
+	min_target_dist = FALSE
 
-	var/cleaning = 0
-	var/screwloose = 0
-	var/oddbutton = 0
-	var/blood = 1
+	var/cleaning = FALSE
+	var/wet_floors = FALSE
+	var/spray_blood = FALSE
+	var/blood = TRUE
 	var/list/target_types = list()
 
 /mob/living/bot/cleanbot/Initialize(mapload)
@@ -29,16 +29,16 @@
 	get_targets()
 
 /mob/living/bot/cleanbot/handleIdle()
-	if(!screwloose && !oddbutton && prob(2))
+	if(!wet_floors && !spray_blood && prob(2))
 		custom_emote(2, "makes an excited booping sound!")
 		playsound(src.loc, 'sound/machines/synth_yes.ogg', 50, 0)
 
-	if(screwloose && prob(5)) // Make a mess
+	if(wet_floors && prob(5)) // Make a mess
 		if(istype(loc, /turf/simulated))
 			var/turf/simulated/T = loc
 			T.wet_floor()
 
-	if(oddbutton && prob(5)) // Make a big mess
+	if(spray_blood && prob(5)) // Make a big mess
 		visible_message("Something flies out of [src]. It seems to be acting oddly.")
 		var/obj/effect/decal/cleanable/blood/gibs/gib = new /obj/effect/decal/cleanable/blood/gibs(loc)
 		// TODO - I have a feeling weakrefs will not work in ignore_list, verify this ~Leshana
@@ -48,7 +48,7 @@
 			ignore_list -= g
 
 /mob/living/bot/cleanbot/handlePanic()	// Speed modification based on alert level.
-	. = 0
+	. = FALSE
 	switch(get_security_level())
 		if("green")
 			. = 0
@@ -81,11 +81,11 @@
 
 /mob/living/bot/cleanbot/confirmTarget(var/obj/effect/decal/cleanable/D)
 	if(!..())
-		return 0
+		return FALSE
 	for(var/T in target_types)
 		if(istype(D, T))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /mob/living/bot/cleanbot/handleAdjacentTarget()
 	if(get_turf(target) == src.loc)
@@ -101,7 +101,7 @@
 	if(D.loc != loc)
 		return
 
-	busy = 1
+	busy = TRUE
 	if(prob(20))
 		custom_emote(2, "begins to clean up \the [D]")
 	update_icons()
@@ -109,7 +109,7 @@
 	if(do_after(src, cleantime))
 		if(istype(loc, /turf/simulated))
 			var/turf/simulated/f = loc
-			f.dirt = 0
+			f.dirt = FALSE
 		if(!D)
 			return
 		qdel(D)
@@ -119,7 +119,7 @@
 	update_icons()
 
 /mob/living/bot/cleanbot/explode()
-	on = 0
+	on = FALSE
 	visible_message("<span class='danger'>[src] blows apart!</span>")
 	var/turf/Tsec = get_turf(src)
 
@@ -141,57 +141,66 @@
 		icon_state = "cleanbot[on]"
 
 /mob/living/bot/cleanbot/attack_hand(var/mob/user)
-	var/dat
-	dat += "<TT><B>Automatic Station Cleaner v1.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=\ref[src];operation=start'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<BR>"
-	dat += "Maintenance panel is [open ? "opened" : "closed"]"
-	if(!locked || issilicon(user))
-		dat += "<BR>Cleans Blood: <A href='?src=\ref[src];operation=blood'>[blood ? "Yes" : "No"]</A><BR>"
-		if(GLOB.using_map.bot_patrolling)
-			dat += "<BR>Patrol station: <A href='?src=\ref[src];operation=patrol'>[will_patrol ? "Yes" : "No"]</A><BR>"
-	if(open && !locked)
-		dat += "Odd looking screw twiddled: <A href='?src=\ref[src];operation=screw'>[screwloose ? "Yes" : "No"]</A><BR>"
-		dat += "Weird button pressed: <A href='?src=\ref[src];operation=oddbutton'>[oddbutton ? "Yes" : "No"]</A>"
+	ui_interact(user)
 
-	user << browse("<HEAD><TITLE>Cleaner v1.0 controls</TITLE></HEAD>[dat]", "window=autocleaner")
-	onclose(user, "autocleaner")
-	return
+/mob/living/bot/cleanbot/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Cleanbot", name)
+		ui.open()
 
-/mob/living/bot/cleanbot/Topic(href, href_list)
+/mob/living/bot/cleanbot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
+	data["on"] = on
+	data["open"] = open
+	data["locked"] = locked
+
+	data["blood"] = blood
+	data["patrol"] = will_patrol
+
+	data["wet_floors"] = wet_floors
+	data["spray_blood"] = spray_blood
+	data["version"] = "v2.0"
+	return data
+
+/mob/living/bot/cleanbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return
+		return TRUE
 	usr.set_machine(src)
 	add_fingerprint(usr)
-	switch(href_list["operation"])
+	switch(action)
 		if("start")
 			if(on)
 				turn_off()
 			else
 				turn_on()
+			. = TRUE
 		if("blood")
 			blood = !blood
 			get_targets()
+			. = TRUE
 		if("patrol")
 			will_patrol = !will_patrol
 			patrol_path = null
-		if("screw")
-			screwloose = !screwloose
+			. = TRUE
+		if("wet_floors")
+			wet_floors = !wet_floors
 			to_chat(usr, "<span class='notice'>You twiddle the screw.</span>")
-		if("oddbutton")
-			oddbutton = !oddbutton
+			. = TRUE
+		if("spray_blood")
+			spray_blood = !spray_blood
 			to_chat(usr, "<span class='notice'>You press the weird button.</span>")
-	attack_hand(usr)
+			. = TRUE
 
 /mob/living/bot/cleanbot/emag_act(var/remaining_uses, var/mob/user)
 	. = ..()
-	if(!screwloose || !oddbutton)
+	if(!wet_floors || !spray_blood)
 		if(user)
 			to_chat(user, "<span class='notice'>The [src] buzzes and beeps.</span>")
 			playsound(src.loc, 'sound/machines/buzzbeep.ogg', 50, 0)
-		oddbutton = 1
-		screwloose = 1
-		return 1
+		spray_blood = TRUE
+		wet_floors = TRUE
+		return TRUE
 
 /mob/living/bot/cleanbot/proc/get_targets()
 	target_types = list()

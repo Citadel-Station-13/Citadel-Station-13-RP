@@ -37,7 +37,7 @@
 	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
 /*
 //////////////////////////////////////////////////////////////
-// TODO - Zandario/Enzo - Get these compatible
+// TODO - Get these compatible - Zandario
 // Trade Ship
 /datum/shuttle/autodock/multi/trade
 	name = "Trade"

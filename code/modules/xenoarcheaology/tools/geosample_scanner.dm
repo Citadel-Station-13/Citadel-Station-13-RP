@@ -1,45 +1,45 @@
 /obj/machinery/radiocarbon_spectrometer
 	name = "radiocarbon spectrometer"
 	desc = "A specialised, complex scanner for gleaning information on all manner of small things."
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	icon = 'icons/obj/virology.dmi'
 	icon_state = "analyser"
 
-	use_power = USE_POWER_IDLE			//1 = idle, 2 = active
+	use_power = USE_POWER_IDLE //1 = idle, 2 = active
 	idle_power_usage = 20
 	active_power_usage = 300
 
 	//var/obj/item/reagent_containers/glass/coolant_container
-	var/scanning = 0
+	var/scanning = FALSE
 	var/report_num = 0
-	//
+
 	var/obj/item/scanned_item
 	var/last_scan_data = "No scans on record."
-	//
+
 	var/last_process_worldtime = 0
-	//
+
 	var/scanner_progress = 0
-	var/scanner_rate = 1.25			//80 seconds per scan
+	var/scanner_rate = 1.25 //80 seconds per scan
 	var/scanner_rpm = 0
 	var/scanner_rpm_dir = 1
 	var/scanner_temperature = 0
 	var/scanner_seal_integrity = 100
-	//
-	var/coolant_usage_rate = 0		//measured in u/microsec
+
+	var/coolant_usage_rate = 0 //measured in u/microsec
 	var/fresh_coolant = 0
 	var/coolant_purity = 0
 	var/datum/reagents/coolant_reagents
 	var/used_coolant = 0
 	var/list/coolant_reagents_purity = list()
-	//
+
 	var/maser_wavelength = 0
 	var/optimal_wavelength = 0
 	var/optimal_wavelength_target = 0
 	var/tleft_retarget_optimal_wavelength = 0
 	var/maser_efficiency = 0
-	//
-	var/radiation = 0				//0-100 mSv
+
+	var/radiation = 0 //0-100 mSv
 	var/t_left_radspike = 0
 	var/rad_shield = 0
 
@@ -58,9 +58,6 @@
 	coolant_reagents_purity["cryoxadone"] = 0.9
 	coolant_reagents_purity["coolant"] = 1
 	coolant_reagents_purity["adminordrazine"] = 2
-
-/obj/machinery/radiocarbon_spectrometer/attack_hand(var/mob/user as mob)
-	nano_ui_interact(user)
 
 /obj/machinery/radiocarbon_spectrometer/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(scanning)
@@ -118,49 +115,85 @@
 	if(total_purity && fresh_coolant)
 		coolant_purity = total_purity / fresh_coolant
 
-/obj/machinery/radiocarbon_spectrometer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/radiocarbon_spectrometer/attack_hand(mob/user)
+	ui_interact(user)
 
-	if(user.stat)
-		return
+/obj/machinery/radiocarbon_spectrometer/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "XenoarchSpectrometer", name)
+		ui.open()
 
-	// this is the data which will be sent to the ui
-	var/data[0]
+/obj/machinery/radiocarbon_spectrometer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
+
 	data["scanned_item"] = (scanned_item ? scanned_item.name : "")
 	data["scanned_item_desc"] = (scanned_item ? (scanned_item.desc ? scanned_item.desc : "No information on record.") : "")
 	data["last_scan_data"] = last_scan_data
-	//
+
 	data["scan_progress"] = round(scanner_progress)
 	data["scanning"] = scanning
-	//
+
 	data["scanner_seal_integrity"] = round(scanner_seal_integrity)
 	data["scanner_rpm"] = round(scanner_rpm)
 	data["scanner_temperature"] = round(scanner_temperature)
-	//
-	data["coolant_usage_rate"] = "[coolant_usage_rate]"
+
+	data["coolant_usage_rate"] = coolant_usage_rate
+	data["coolant_usage_max"] = 10
 	data["unused_coolant_abs"] = round(fresh_coolant)
 	data["unused_coolant_per"] = round(fresh_coolant / reagents.maximum_volume * 100)
-	data["coolant_purity"] = "[coolant_purity * 100]"
-	//
+	data["coolant_purity"] = coolant_purity * 100
+
 	data["optimal_wavelength"] = round(optimal_wavelength)
 	data["maser_wavelength"] = round(maser_wavelength)
+	data["maser_wavelength_max"] = 10000
 	data["maser_efficiency"] = round(maser_efficiency * 100)
-	//
+
 	data["radiation"] = round(radiation)
 	data["t_left_radspike"] = round(t_left_radspike)
 	data["rad_shield_on"] = rad_shield
 
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "geoscanner.tmpl", "High Res Radiocarbon Spectrometer", 900, 825)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
-		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
+	return data
+
+/obj/machinery/radiocarbon_spectrometer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
+
+	add_fingerprint(usr)
+	switch(action)
+		if("scanItem")
+			if(scanning)
+				stop_scanning()
+			else
+				if(scanned_item)
+					if(scanner_seal_integrity > 0)
+						scanner_progress = 0
+						scanning = 1
+						t_left_radspike = pick(5,10,15)
+						to_chat(usr, "<span class='notice'>Scan initiated.</span>")
+					else
+						to_chat(usr, "<span class='warning'>Could not initiate scan, seal requires replacing.</span>")
+				else
+					to_chat(usr, "<span class='warning'>Insert an item to scan.</span>")
+			return TRUE
+
+		if("maserWavelength")
+			maser_wavelength = clamp(text2num(params["wavelength"]), 1, 10000)
+			return TRUE
+
+		if("coolantRate")
+			coolant_usage_rate = clamp(text2num(params["coolant"]), 0, 10)
+			return TRUE
+
+		if("toggle_rad_shield")
+			rad_shield = !rad_shield
+			return TRUE
+
+		if("ejectItem")
+			if(scanned_item)
+				scanned_item.forceMove(loc)
+				scanned_item = null
+			return TRUE
 
 /obj/machinery/radiocarbon_spectrometer/process(delta_time)
 	if(scanning)
@@ -322,42 +355,3 @@
 
 		scanned_item.loc = loc
 		scanned_item = null
-
-/obj/machinery/radiocarbon_spectrometer/Topic(href, href_list)
-	if(stat & (NOPOWER|BROKEN))
-		return 0 // don't update UIs attached to this object
-
-	if(href_list["scanItem"])
-		if(scanning)
-			stop_scanning()
-		else
-			if(scanned_item)
-				if(scanner_seal_integrity > 0)
-					scanner_progress = 0
-					scanning = 1
-					t_left_radspike = pick(5,10,15)
-					to_chat(usr, "<span class='notice'>Scan initiated.</span>")
-				else
-					to_chat(usr, "<span class='warning'>Could not initiate scan, seal requires replacing.</span>")
-			else
-				to_chat(usr, "<span class='warning'>Insert an item to scan.</span>")
-
-	if(href_list["maserWavelength"])
-		maser_wavelength = max(min(maser_wavelength + 1000 * text2num(href_list["maserWavelength"]), 10000), 1)
-
-	if(href_list["coolantRate"])
-		coolant_usage_rate = max(min(coolant_usage_rate + text2num(href_list["coolantRate"]), 10000), 0)
-
-	if(href_list["toggle_rad_shield"])
-		if(rad_shield)
-			rad_shield = 0
-		else
-			rad_shield = 1
-
-	if(href_list["ejectItem"])
-		if(scanned_item)
-			scanned_item.loc = loc
-			scanned_item = null
-
-	add_fingerprint(usr)
-	return 1 // update UIs attached to this object

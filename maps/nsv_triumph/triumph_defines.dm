@@ -41,7 +41,7 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\triumph\triumph_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
+	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'	// TODO - Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
 	sealed_levels = list()
