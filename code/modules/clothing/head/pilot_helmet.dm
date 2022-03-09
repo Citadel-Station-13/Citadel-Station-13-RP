@@ -30,7 +30,7 @@
 	raw_images = list()
 
 	pilot_hud = new(src)
-	pilot_hud.screen_loc = "1,1"
+	pilot_hud.screen_loc = "CENTER-7,CENTER-7"
 	pilot_hud.icon = 'icons/obj/piloting_overlay.dmi'
 	pilot_hud.icon_state = "dimmer"
 	pilot_hud.layer = SCREEN_LAYER

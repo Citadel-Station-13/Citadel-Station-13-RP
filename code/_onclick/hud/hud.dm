@@ -31,40 +31,46 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/obj/screen/orange
 	var/obj/screen/holomap
 
-/datum/global_hud/proc/setup_overlay(var/icon_state)
+/datum/global_hud/proc/setup_overlay(var/icon_state, color)
 	var/obj/screen/screen = new /obj/screen()
-	screen.screen_loc = "1,1"
+	screen.screen_loc = "CENTER-7,CENTER-7"
 	screen.icon = 'icons/obj/hud_full.dmi'
 	screen.icon_state = icon_state
 	screen.layer = SCREEN_LAYER
 	screen.plane = PLANE_FULLSCREEN
 	screen.mouse_opacity = 0
-
+	screen.alpha = 125
+	screen.color = color
+	screen.blend_mode = BLEND_MULTIPLY
 	return screen
 
+
 /obj/screen/global_screen
-	screen_loc = ui_entire_screen
+	screen_loc = "CENTER,CENTER"
 	plane = PLANE_FULLSCREEN
 	mouse_opacity = 0
 
-/datum/global_hud/New()
+/datum/global_hud/New(client/C)
+	var/matrix/M = matrix()
+	M.Scale(ceil(C.last_view_x_dim/7),ceil(C.last_view_y_dim/7))
+
 	//420erryday psychedellic colours screen overlay for when you are high
 	druggy = new /obj/screen/global_screen()
 	druggy.icon_state = "druggy"
-
+	druggy.transform = M
 	//that white blurry effect you get when you eyes are damaged
 	blurry = new /obj/screen/global_screen()
 	blurry.icon_state = "blurry"
-
+	blurry.transform = M
 	//static overlay effect for cameras and the like
 	whitense = new /obj/screen/global_screen()
 	whitense.icon = 'icons/effects/static.dmi'
 	whitense.icon_state = "1 light"
-
+	whitense.transform = M
 	//darksight 'hanger' for attached icons
 	darksight = new /obj/screen()
 	darksight.icon = null
-	darksight.screen_loc = "1,1"
+	darksight.screen_loc = "CENTER-7,CENTER-7"
 	darksight.plane = PLANE_LIGHTING
 
 	//Marks the center of the screen, for things like ventcrawl
@@ -79,17 +85,14 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	centermarker.icon_state = "centermarker"
 	centermarker.screen_loc = "CENTER,CENTER"
 
-	nvg = setup_overlay("nvg_hud")
-	thermal = setup_overlay("thermal_hud")
-	meson = setup_overlay("meson_hud")
-	science = setup_overlay("science_hud")
-	material = setup_overlay("material_hud")
-	yellow = setup_overlay("yellow_hud")
-	blue = setup_overlay("blue_hud")
-	pink = setup_overlay("pink_hud")
-	beige = setup_overlay("beige_hud")
-	orange = setup_overlay("orange_hud")
-
+	nvg = setup_overlay("scanline", "#06ff00")
+	thermal = setup_overlay("scanline", "#ff0000")
+	meson = setup_overlay("scanline", "#9fd800")
+	science = setup_overlay("scanline", "#d600d6")
+	nvg.transform = M
+	thermal.transform = M
+	meson.transform = M
+	science.transform = M
 	// The holomap screen object is actually totally invisible.
 	// Station maps work by setting it as an images location before sending to client, not
 	// actually changing the icon or icon state of the screen object itself!
@@ -103,7 +106,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	holomap.mouse_opacity = 0
 
 	var/obj/screen/O
-	var/i
 	//that nasty looking dither you  get when you're short-sighted
 	vimpaired = newlist(/obj/screen,/obj/screen,/obj/screen,/obj/screen)
 	O = vimpaired[1]
@@ -120,7 +122,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	O.plane = PLANE_FULLSCREEN
 
 	//welding mask overlay black/dither
-	darkMask = newlist(/obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen)
+/* 	darkMask = newlist(/obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen)
 	O = darkMask[1]
 	O.screen_loc = "WEST+2,SOUTH+2 to WEST+4,NORTH-2"
 	O = darkMask[2]
@@ -153,7 +155,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 		O = darkMask[i]
 		O.icon_state = "black"
 		O.plane = PLANE_FULLSCREEN
-		O.mouse_opacity = 2
+		O.mouse_opacity = 2 */
 
 /*
 	The hud datum

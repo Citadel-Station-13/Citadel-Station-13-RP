@@ -176,6 +176,7 @@
 
 /mob/Login()
 	. = ..()
+	client.SetWindowIconSize(client.prefs.icon_size)
 	if(ability_master)
 		ability_master.toggle_open(1)
 		client.screen -= ability_master

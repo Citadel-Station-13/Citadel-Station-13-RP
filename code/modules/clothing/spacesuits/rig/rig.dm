@@ -1160,7 +1160,7 @@
 
 //Boot animation screen objects
 /obj/screen/rig_booting
-	screen_loc = "1,1"
+	screen_loc = "CENTER-7,CENTER-7"
 	icon = 'icons/obj/rig_boot.dmi'
 	icon_state = ""
 	layer = SCREEN_LAYER

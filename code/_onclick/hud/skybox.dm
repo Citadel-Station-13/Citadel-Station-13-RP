@@ -1,7 +1,7 @@
 #define SKYBOX_PADDING	4	// How much larger we want the skybox image to be than client's screen (in turfs)
 #define SKYBOX_PIXELS	736	// Size of skybox image in pixels
 #define SKYBOX_TURFS	(SKYBOX_PIXELS/WORLD_ICON_SIZE)
-
+#define SKYBOX_MAX_BOUND 736
 // Skybox screen object.
 /obj/screen/skybox
 	name = "skybox"
@@ -13,7 +13,17 @@
 	screen_loc = "CENTER,CENTER"
 	plane = SKYBOX_PLANE
 	blend_mode = BLEND_MULTIPLY	// You actually need to do it this way or you see it in occlusion.
-
+	screen_loc = "CENTER,CENTER"
+	var/transform_animate_time = 0
+	var/static/max_view_dim
+	var/static/const/parallax_bleed_percent = 0.2 // 20% parallax offset when going from x=1 to x=max
+	var/base_x_dim = 7
+	var/base_y_dim = 7
+	var/base_offset_x = -224 // -(world.view x dimension * world.icon_size)
+	var/base_offset_y = -224 // -(world.view y dimension * world.icon_size)
+/obj/screen/skybox/Initialize()
+	screen_loc = "CENTER:[base_offset_x],CENTER:[base_offset_y]"
+	. = ..()
 // Adjust transform property to scale for client's view var. We assume the skybox is 736x736 px
 /obj/screen/skybox/proc/scale_to_view(var/view)
 	var/matrix/M = matrix()
@@ -26,21 +36,6 @@
 
 /client
 	var/obj/screen/skybox/skybox
-
-/client/proc/update_skybox(rebuild)
-	if(!skybox)
-		skybox = new()
-		skybox.scale_to_view(src.view)
-		screen += skybox
-		rebuild = 1
-
-	var/turf/T = get_turf(eye)
-	if(T)
-		if(rebuild)
-			skybox.overlays.Cut()
-			skybox.overlays += SSskybox.get_skybox(T.z)
-			screen |= skybox
-		skybox.screen_loc = "CENTER:[(world.maxx>>1) - T.x],CENTER:[(world.maxy>>1) - T.y]"
 
 /mob/Login()
 	. = ..()

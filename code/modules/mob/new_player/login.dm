@@ -5,7 +5,7 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 /obj/effect/lobby_image
 	name = "Citadel Station 13"
 	desc = "How are you reading this?"
-	screen_loc = "1,1"
+	screen_loc = "CENTER-7,CENTER-7"
 
 /obj/effect/lobby_image/Initialize(mapload)
 	icon = GLOB.using_map.lobby_icon
