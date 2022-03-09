@@ -26,4 +26,5 @@
 
 #define ARGS_DEBUG log_debug("[__FILE__] - [__LINE__]") ; for(var/arg in args) { log_debug("\t[log_info_line(arg)]") }
 
+#define JOINTEXT(X) jointext(X, null)
 //thank you Kevin for not running checks again, now I have to update one file with a comment - Papalus

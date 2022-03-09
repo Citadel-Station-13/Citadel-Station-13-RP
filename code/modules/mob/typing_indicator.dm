@@ -1,14 +1,10 @@
-/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER)
-	var/image/I = image('icons/mob/talk_vr.dmi', bubble_loc, speech_state, set_layer)  //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
-	I.appearance_flags |= (RESET_COLOR|PIXEL_SCALE)			//VOREStation Edit
-	/*			//VOREStation Removal Start
-	if(istype(bubble_loc, /atom/movable))
-		var/atom/movable/AM = bubble_loc
-		var/x_scale = AM.get_icon_scale_x()
-		if(abs(x_scale) < 2) // reset transform on bubbles, except for the Very Large
-			I.pixel_z = (AM.icon_expected_height * (x_scale-1))
-			I.appearance_flags |= RESET_TRANSFORM
-	*/			//VOREStation Removal Start
+/proc/generate_speech_bubble(var/bubble_loc, var/speech_state, var/set_layer = FLOAT_LAYER, list/show_to, duration)
+	var/image/I = image('icons/mob/talk_vr.dmi')  //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
+	for(var/client/C in show_to)
+		C.images += I
+	animate(I, transform = 0, alpha = 255, time = 0.2 SECONDS, easing = EASE_IN)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/fade_out, I, show_to), (duration - 0.5 SECONDS))
+
 	return I
 
 /mob/proc/init_typing_indicator(var/set_state = "typing")
