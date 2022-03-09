@@ -201,7 +201,6 @@ GLOBAL_LIST_EMPTY(all_turbines)
 		ui.open()
 
 /obj/machinery/power/generator/ui_data(mob/user)
-	// this is the data which will be sent to the ui
 	var/vertical = 0
 	if (dir == NORTH || dir == SOUTH)
 		vertical = 1
@@ -234,58 +233,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 		data["secondary"]["outletTemperature"] = circ2.air2.temperature
 
 	return data
-/*
-/obj/machinery/power/generator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	// this is the data which will be sent to the ui
-	var/vertical = 0
-	if (dir == NORTH || dir == SOUTH)
-		vertical = 1
 
-	var/data[0]
-	data["totalOutput"] = effective_gen/1000
-	data["maxTotalOutput"] = max_power/1000
-	data["thermalOutput"] = last_thermal_gen/1000
-	data["circConnected"] = 0
-
-	if(circ1)
-		//The one on the left (or top)
-		data["primaryDir"] = vertical ? "top" : "left"
-		data["primaryOutput"] = last_circ1_gen/1000
-		data["primaryFlowCapacity"] = circ1.volume_capacity_used*100
-		data["primaryInletPressure"] = circ1.air1.return_pressure()
-		data["primaryInletTemperature"] = circ1.air1.temperature
-		data["primaryOutletPressure"] = circ1.air2.return_pressure()
-		data["primaryOutletTemperature"] = circ1.air2.temperature
-
-	if(circ2)
-		//Now for the one on the right (or bottom)
-		data["secondaryDir"] = vertical ? "bottom" : "right"
-		data["secondaryOutput"] = last_circ2_gen/1000
-		data["secondaryFlowCapacity"] = circ2.volume_capacity_used*100
-		data["secondaryInletPressure"] = circ2.air1.return_pressure()
-		data["secondaryInletTemperature"] = circ2.air1.temperature
-		data["secondaryOutletPressure"] = circ2.air2.return_pressure()
-		data["secondaryOutletTemperature"] = circ2.air2.temperature
-
-	if(circ1 && circ2)
-		data["circConnected"] = 1
-	else
-		data["circConnected"] = 0
-
-
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "generator.tmpl", "Thermoelectric Generator", 450, 500)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
-		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
-*/
 /obj/machinery/power/generator/power_change()
 	..()
 	updateicon()
@@ -339,4 +287,3 @@ GLOBAL_LIST_EMPTY(all_turbines)
 					sleep(1)
 				if(i >= limit)
 					break
-

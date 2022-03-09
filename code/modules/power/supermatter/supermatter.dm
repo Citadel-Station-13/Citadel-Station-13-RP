@@ -421,32 +421,6 @@
 
 	return data
 
-/*
-// This is purely informational UI that may be accessed by AIs or robots
-/obj/machinery/power/supermatter/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
-
-	data["integrity_percentage"] = round(get_integrity())
-	var/datum/gas_mixture/env = null
-	if(!istype(src.loc, /turf/space))
-		env = src.loc.return_air()
-
-	if(!env)
-		data["ambient_temp"] = 0
-		data["ambient_pressure"] = 0
-	else
-		data["ambient_temp"] = round(env.temperature)
-		data["ambient_pressure"] = round(env.return_pressure())
-	data["detonating"] = grav_pulling
-
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "supermatter_crystal.tmpl", "Supermatter Crystal", 500, 300)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-*/
-
 /obj/machinery/power/supermatter/attackby(obj/item/W as obj, mob/living/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
 		"<span class=\"danger\">You touch \the [W] to \the [src] when everything suddenly goes silent.\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\

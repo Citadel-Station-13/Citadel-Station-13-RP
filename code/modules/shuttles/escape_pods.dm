@@ -46,6 +46,7 @@
 	name = "escape pod controller"
 	program = /datum/computer/file/embedded_program/docking/simple
 	var/datum/shuttle/autodock/ferry/escape_pod/pod
+	valid_actions = list("toggle_override", "force_door")
 
 /obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/ui_data(mob/user)
 	var/datum/computer/file/embedded_program/docking/simple/docking_program = program // Cast to proper type
