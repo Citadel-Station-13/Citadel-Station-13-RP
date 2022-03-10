@@ -12,6 +12,10 @@
 	QDEL_NULL(pockets)
 	. = ..()
 
+/obj/item/clothing/suit/storage/toggle/AltClick()	// This only works for things that can be toggled, of course.
+	..()
+	toggle()
+
 /obj/item/clothing/suit/storage/attack_hand(mob/user as mob)
 	if (pockets.handle_attack_hand(user))
 		..(user)
@@ -109,4 +113,3 @@
 			to_chat(usr, "\The [src] does not have a badge.")
 			return
 		update_clothing_icon()
-

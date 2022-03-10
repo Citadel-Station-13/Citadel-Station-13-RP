@@ -7,12 +7,12 @@
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
 	hitsound = 'sound/weapons/genhit3.ogg'
 	default_material = "wood"
-	force_divisor = 1           // 20 when wielded with weight 20 (steel)
-	unwielded_force_divisor = 0.7 // 15 when unwielded based on above.
-	dulled_divisor = 0.8		  // A "dull" bat is still gonna hurt
+	force_divisor = 1				// 20 when wielded with weight 20 (steel)
+	unwielded_force_divisor = 0.7	// 15 when unwielded based on above.
+	dulled_divisor = 0.8			// A "dull" bat is still gonna hurt
 	slot_flags = SLOT_BACK
 
-//Predefined materials go here.
+// Predefined materials go here.
 /obj/item/material/twohanded/baseballbat/metal/Initialize(mapload, material_key)
 	return ..(mapload,"steel")
 
@@ -27,6 +27,12 @@
 
 /obj/item/material/twohanded/baseballbat/diamond/Initialize(mapload, material_key)
 	return ..(mapload,"diamond")
+
+/obj/item/material/twohanded/baseballbat/plasteel/Initialize(mapload, material_key)
+	return ..(mapload,"plasteel")
+
+/obj/item/material/twohanded/baseballbat/durasteel/Initialize(mapload, material_key)
+	return ..(mapload,"durasteel")
 
 /obj/item/material/twohanded/baseballbat/penbat
 	name = "penetrator"

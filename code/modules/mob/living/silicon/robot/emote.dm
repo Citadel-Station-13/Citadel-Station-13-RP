@@ -219,6 +219,47 @@
 			playsound(src.loc, 'sound/machines/synth_no.ogg', 50, 0)
 			m_type = 1
 
+		if("scary")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if (param)
+				message = "emits a disconcerting tone at [param]."
+			else
+				message = "emits a disconcerting tone."
+			playsound(src.loc, 'sound/machines/synth_scary.ogg', 50, 0)
+			m_type = 1
+
+		if("dwoop")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if (param)
+				message = "chirps happily at [param]."
+			else
+				message = "chirps happily."
+			playsound(src.loc, 'sound/machines/dwoop.ogg', 50, 0)
+			m_type = 1
+
+		if("flip")
+			if(src.sleeping || src.resting || src.buckled || src.weakened || src.restrained())
+				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
+			else
+				src.SpinAnimation(7,1)
+				m_type = 1
+
 		if("law")
 			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/knine)) //VOREStation Add - K9
 				message = "shows its legal authorization barcode."
@@ -241,7 +282,7 @@
 			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
 				message = "lets out a bark."
 
-				playsound(loc, 'modular_citadel/sound/voice/bark2.ogg', 50, 1, -1)
+				playsound(loc, 'sound/voice/bark2.ogg', 50, 1, -1)
 				m_type = 2
 			else
 				to_chat(src, "You're not a dog!")
@@ -249,7 +290,7 @@
 			if (istype(module,/obj/item/robot_module/robot/knine) || istype(module,/obj/item/robot_module/robot/medihound) || istype(module,/obj/item/robot_module/robot/scrubpup) || istype(module,/obj/item/robot_module/robot/ert) || istype(module,/obj/item/robot_module/robot/science) || istype(module,/obj/item/robot_module/robot/engiedog) || istype(module,/obj/item/robot_module/robot/clerical/brodog))
 				message = "lets out an A R F E."
 
-				playsound(loc, 'modular_citadel/sound/voice/arfe.ogg', 50, 1, -1)
+				playsound(loc, 'sound/voice/arfe.ogg', 50, 1, -1)
 				m_type = 2
 			else
 				to_chat(src, "You're not a dog!")
@@ -270,6 +311,7 @@
 				message = "gonks."
 			playsound(src.loc, 'sound/machines/gonk.ogg', 50, 0)
 			m_type = 1
+
 
 		if ("help")
 			to_chat(src, "salute, bow-(none)/mob, clap, flap, aflap, twitch, twitch_s, nod, deathgasp, glare-(none)/mob, stare-(none)/mob, look, beep, ping, \nbuzz, law, halt, yes, no")

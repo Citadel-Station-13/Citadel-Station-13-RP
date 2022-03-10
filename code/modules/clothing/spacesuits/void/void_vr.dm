@@ -164,7 +164,7 @@
 		SPECIES_VULPKANIN		= 'icons/mob/species/vulpkanin/suit_vr.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/mob/species/vulpkanin/suit_vr.dmi',
 		SPECIES_FENNEC			= 'icons/mob/species/vulpkanin/suit_vr.dmi',
-		SPECIES_TESHARI			= 'icons/mob/species/teshari/suit_vr.dmi'
+		SPECIES_TESHARI			= 'icons/mob/species/teshari/suit.dmi'
 		)
 	sprite_sheets_obj = list(
 		SPECIES_TAJ			= 'icons/obj/clothing/suits_vr.dmi',
@@ -176,7 +176,7 @@
 		SPECIES_VULPKANIN		= 'icons/obj/clothing/suits_vr.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/obj/clothing/suits_vr.dmi',
 		SPECIES_FENNEC			= 'icons/obj/clothing/suits_vr.dmi',
-		SPECIES_TESHARI			= 'icons/obj/clothing/suits_vr.dmi'
+		SPECIES_TESHARI			= 'icons/obj/clothing/suits.dmi'
 		)
 
 /obj/item/clothing/suit/space/void/autolok/Initialize()
@@ -243,7 +243,7 @@
 		SPECIES_VULPKANIN		= 'icons/mob/species/vulpkanin/helmet_vr.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/mob/species/vulpkanin/helmet_vr.dmi',
 		SPECIES_FENNEC			= 'icons/mob/species/vulpkanin/helmet_vr.dmi',
-		SPECIES_TESHARI			= 'icons/mob/species/teshari/helmet_vr.dmi'
+		SPECIES_TESHARI			= 'icons/mob/species/teshari/head.dmi'
 		)
 	sprite_sheets_obj = list(
 		SPECIES_TAJ 			= 'icons/obj/clothing/hats_vr.dmi',
@@ -255,6 +255,6 @@
 		SPECIES_VULPKANIN		= 'icons/obj/clothing/hats_vr.dmi',
 		SPECIES_ZORREN_HIGH		= 'icons/obj/clothing/hats_vr.dmi',
 		SPECIES_FENNEC			= 'icons/obj/clothing/hats_vr.dmi',
-		SPECIES_TESHARI			= 'icons/obj/clothing/hats_vr.dmi'
+		SPECIES_TESHARI			= 'icons/obj/clothing/hats.dmi'
 		)
 	sprite_sheets_refit = list()	//have to nullify this as well just to be thorough

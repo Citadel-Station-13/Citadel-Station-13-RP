@@ -7,8 +7,10 @@
 	#include "triumph_shuttles.dm"
 	#include "triumph_telecomms.dm"
 	#include "triumph_overmap.dm"
-	#include "talon_jobs.dm"
-
+	#include "classh.dm"
+	#include "frozen_planet.dm"
+	#include "gaia_planet.dm"
+	#include "lavaland.dm"
 
 	#include "submaps/_triumph_submaps.dm"
 

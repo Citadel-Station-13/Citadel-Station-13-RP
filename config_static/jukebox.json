@@ -727,6 +727,26 @@
 "genre": "Country and Western"
 },
 {
+"url": "https://files.catbox.moe/qk800a.mp3",
+"title": "Beat You There",
+"duration": 2730,
+"artist": "Will Dempsey",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/3gv8rr.mp3",
+"title": "Beautiful Crazy",
+"duration": 1950,
+"artist": "Luke Combs",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
 "url": "https://files.catbox.moe/7ibtm1.m4a",
 "title": "Bed Of Roses",
 "duration": 1480,
@@ -767,6 +787,16 @@
 "genre": "Country and Western"
 },
 {
+"url": "https://files.catbox.moe/zju9y1.mp3",
+"title": "Chasin' You",
+"duration": 2050,
+"artist": "Morgan Wallen",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
 "url": "https://files.catbox.moe/qvd0qg.m4a",
 "title": "Cottonwood Tree",
 "duration": 2370,
@@ -797,10 +827,40 @@
 "genre": "Country and Western"
 },
 {
+"url": "https://files.catbox.moe/x0ogqp.mp3",
+"title": "Don't Ya",
+"duration": 1820,
+"artist": "Brett Eldredge",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/8e5dnw.mp3",
+"title": "Drunk On Your Love",
+"duration": 1720,
+"artist": "Brett Eldredge",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
 "url": "https://files.catbox.moe/hbc1vd.m4a",
 "title": "Flowers on the Wall",
 "duration": 1390,
 "artist": "The Statler Brothers",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/z5wb6w.mp3",
+"title": "Flower Shops",
+"duration": 2060,
+"artist": "Ernest",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -837,6 +897,16 @@
 "genre": "Country and Western"
 },
 {
+"url": "https://files.catbox.moe/7xzf3p.mp3",
+"title": "Heartless (ft. Morgan Wallen)",
+"duration": 1690,
+"artist": "Diplo",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
 "url": "https://files.catbox.moe/3941ms.m4a",
 "title": "House Building",
 "duration": 2200,
@@ -847,10 +917,40 @@
 "genre": "Country and Western"
 },
 {
+"url": "https://files.catbox.moe/epmo21.mp3",
+"title": "If Whiskey Could Talk",
+"duration": 2310,
+"artist": "Tyler Childers",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/y9yvla.mp3",
+"title": "If You're Reading This",
+"duration": 2520,
+"artist": "Tim McGraw",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
 "url": "https://files.catbox.moe/zg7gkh.m4a",
 "title": "In The Shadow of the Valley",
 "duration": 1870,
 "artist": "Lost Weekend Western Swing Band",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/6u1so1.mp3",
+"title": "Letters From Home",
+"duration": 2670,
+"artist": "John Michael Montgomery",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -877,6 +977,16 @@
 "genre": "Country and Western"
 },
 {
+"url": "https://files.catbox.moe/u5jbgp.mp3",
+"title": "Love Someone",
+"duration": 2110,
+"artist": "Brett Eldredge",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
 "url": "https://files.catbox.moe/8z0ueu.m4a",
 "title": "Mr. Shorty",
 "duration": 3030,
@@ -891,6 +1001,16 @@
 "title": "New York City",
 "duration": 1710,
 "artist": "The Statler Brothers",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/e2t770.mp3",
+"title": "One Mississippi",
+"duration": 2260,
+"artist": "Brett Eldredge",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -929,10 +1049,30 @@
 "genre": "Country and Western"
 },
 {
+"url": "https://files.catbox.moe/fc6s50.mp3",
+"title": "Raymond",
+"duration": 2180,
+"artist": "Brett Eldredge",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
 "url": "https://files.catbox.moe/3ae5p2.m4a",
 "title": "Rhinestone Cowboy",
 "duration": 2090,
 "artist": "Glen Campbell",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/8qqzct.mp3",
+"title": "Sand In My Boots",
+"duration": 1990,
+"artist": "Morgan Wallen",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -963,6 +1103,16 @@
 "title": "Take Me Home, Country Roads",
 "duration": 1980,
 "artist": "John Denver",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/5n2j9r.mp3",
+"title": "Tennessee Whiskey",
+"duration": 2930,
+"artist": "Chris Stapleton",
 "secret": false,
 "lobby": false,
 "jukebox": true,
@@ -1009,10 +1159,40 @@
 "genre": "Country and Western"
 },
 {
+"url": "https://files.catbox.moe/hud8lo.mp3",
+"title": "Wasted On You",
+"duration": 1780,
+"artist": "Morgan Wallen",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
 "url": "https://files.catbox.moe/5sgpkn.m4a",
 "title": "Wish It Was True",
 "duration": 2280,
 "artist": "The White Buffalo",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/mftudd.mp3",
+"title": "When It Rains It Pours",
+"duration": 2990,
+"artist": "Luke Combs",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Country and Western"
+},
+{
+"url": "https://files.catbox.moe/30390p.mp3",
+"title": "Whiskey Glasses",
+"duration": 2340,
+"artist": "Morgan Wallen",
 "secret": false,
 "lobby": false,
 "jukebox": true,

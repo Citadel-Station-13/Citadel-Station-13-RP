@@ -4363,17 +4363,17 @@
 "ii" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
-/obj/item/ammo_magazine/m9mmp90,
 /obj/machinery/camera/network/crescent,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
+/obj/item/ammo_magazine/m57x28mmp90,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"

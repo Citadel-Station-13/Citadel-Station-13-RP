@@ -7,6 +7,7 @@
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "cutters"
 	slot_flags = SLOT_BELT
+	tool_behaviour = TOOL_WIRECUTTER
 	force = 6
 	throw_speed = 2
 	throw_range = 9
@@ -45,6 +46,19 @@
 /obj/item/tool/wirecutters/is_wirecutter()
 	return TRUE
 
+/obj/item/tool/wirecutters/bone
+	name = "primitive wirecutters"
+	desc = "Dull wirecutters knapped from bone."
+	icon_state = "cutters_bone"
+	toolspeed = 1.25
+	random_color = FALSE
+
+/obj/item/tool/wirecutters/brass
+	name = "brass wirecutters"
+	desc = "Brass plated wirecutters that never seem to lose their edge."
+	icon_state = "cutters_brass"
+	toolspeed = 0.75
+	random_color = FALSE
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_wirecutters
 	name = "Precursor Alpha Object - Wire Seperator"

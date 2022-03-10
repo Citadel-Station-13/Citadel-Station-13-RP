@@ -44,6 +44,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 
 	movement_cooldown = 8
 
+	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
 
 	response_help = "pokes"
@@ -110,7 +111,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 			PN = null
 
 		// CHOMPEDIT Start, Rykka waz here. *pawstamp*
-		if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift. 
+		if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift.
 			anchored = 0
 			PN = attached.powernet
 			release_vore_contents()

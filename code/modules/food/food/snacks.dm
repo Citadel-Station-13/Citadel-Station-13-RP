@@ -387,8 +387,19 @@
 	nutriment_amt = 5
 	nutriment_desc = list("sugar" = 3, "protein" = 2)
 	slot_flags = SLOT_MASK
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/masks_vr.dmi', SPECIES_VOX = 'icons/mob/species/vox/masks.dmi', SPECIES_TAJ = 'icons/mob/species/tajaran/mask_vr.dmi', SPECIES_UNATHI = 'icons/mob/species/unathi/mask_vr.dmi', SPECIES_SERGAL = 'icons/mob/species/sergal/mask_vr.dmi', SPECIES_NEVREAN = 'icons/mob/species/nevrean/mask_vr.dmi', SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask_vr.dmi', SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi', SPECIES_AKULA = 'icons/mob/species/akula/mask_vr.dmi', SPECIES_VULPKANIN = 'icons/mob/species/vulpkanin/mask.dmi', SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask_vr.dmi')
-
+	sprite_sheets = list(
+		SPECIES_TESHARI = 'icons/mob/species/teshari/masks.dmi',
+		SPECIES_VOX = 'icons/mob/species/vox/masks.dmi',
+		SPECIES_TAJ = 'icons/mob/species/tajaran/mask_vr.dmi',
+		SPECIES_UNATHI = 'icons/mob/species/unathi/mask_vr.dmi',
+		SPECIES_SERGAL = 'icons/mob/species/sergal/mask_vr.dmi',
+		SPECIES_NEVREAN = 'icons/mob/species/nevrean/mask_vr.dmi',
+		SPECIES_ZORREN_HIGH = 'icons/mob/species/fox/mask_vr.dmi',
+		SPECIES_ZORREN_FLAT = 'icons/mob/species/fennec/mask_vr.dmi',
+		SPECIES_AKULA = 'icons/mob/species/akula/mask_vr.dmi',
+		SPECIES_VULPKANIN = 'icons/mob/species/vulpkanin/mask.dmi',
+		SPECIES_XENOCHIMERA = 'icons/mob/species/tajaran/mask_vr.dmi'
+		)
 /obj/item/reagent_containers/food/snacks/dtreat/Initialize(mapload)
 	. = ..()
 	bitesize = 1
@@ -3360,7 +3371,7 @@
 /obj/item/reagent_containers/food/snacks/bun/Initialize(mapload)
 	. = ..()
 
-/* BEGIN CITADEL CHANGE - Moved to /modular_citadel/code/modules/food/food/snacks.dm for Aurora kitchen port
+/* BEGIN CITADEL CHANGE - Moved to /code/modules/food/food/snacks.dm for Aurora kitchen port
 /obj/item/reagent_containers/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_containers/food/snacks/meatball))
@@ -3856,7 +3867,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/macncheese
 	name = "macaroni and cheese"
 	desc = "The perfect combination of noodles and dairy."
-	icon = 'modular_citadel/icons/obj/food_cit.dmi'
+	icon = 'icons/obj/food_cit.dmi'
 	icon_state = "macncheese"
 	trash = /obj/item/trash/snack_bowl
 	nutriment_amt = 9
@@ -5356,7 +5367,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/sliceable/brownies/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 2)
+	reagents.add_reagent("nutriment", 4)
 	bitesize = 2
 
 /obj/item/reagent_containers/food/snacks/browniesslice
@@ -5373,7 +5384,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/browniesslice/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 1)
+	reagents.add_reagent("nutriment", 2)
 
 /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies
 	name = "cosmic brownies"
@@ -5389,7 +5400,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/sliceable/cosmicbrownies/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 2)
+	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("space_drugs", 2)
 	reagents.add_reagent("bicaridine", 1)
 	reagents.add_reagent("kelotane", 1)
@@ -5410,7 +5421,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/cosmicbrowniesslice/filled/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("protein", 1)
+	reagents.add_reagent("nutriment", 2)
 
 
 /obj/item/reagent_containers/food/snacks/wormsickly

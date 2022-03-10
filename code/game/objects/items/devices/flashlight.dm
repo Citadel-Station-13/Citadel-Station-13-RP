@@ -95,6 +95,9 @@
 			else if(cell.charge > cell.maxcharge*0.75 && cell.charge <= cell.maxcharge)
 				. += "It appears to have a high amount of power remaining."
 
+/obj/item/flashlight/AltClick(mob/user)
+	attack_self(user)
+
 /obj/item/flashlight/attack_self(mob/user)
 	if(power_use)
 		if(!isturf(user.loc))

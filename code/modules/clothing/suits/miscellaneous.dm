@@ -1160,3 +1160,36 @@ obj/item/clothing/suit/kamishimo
 	name = "replica imperial officer armor"
 	desc = "Not all heroes wear capes, but it'd be cooler if they did. This appears less sturdy than the authentic article."
 	icon_state = "ge_armorcent"
+
+/obj/item/clothing/suit/darkfur
+	name = "vexatious coat"
+	desc = "A sleek jacket with a dark fur lining around the collar. All the rage on Infernum."
+	icon_state = "darkfur_jacket"
+	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
+	body_parts_covered = UPPER_TORSO|ARMS
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER\
+		|ACCESSORY_SLOT_UTILITY)
+
+//Main's Formal Coats
+/obj/item/clothing/suit/storage/parade_coat
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal"
+
+/obj/item/clothing/suit/storage/parade_coat/hos
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "hosformal"
+
+/obj/item/clothing/suit/storage/parade_coat/centcom
+	name = "head of security's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "centcomformal"
+
+/* For when I gender these later.
+/obj/item/clothing/suit/storage/parade_coat/female
+	name = "captain's formal jerkin"
+	desc = "A stylish jerkin made out of a fine, yet durable, felt. Gold embroidery and polished buttons make this gleam elegantly."
+	icon_state = "capformal"
+*/

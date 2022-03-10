@@ -1,7 +1,7 @@
 //SC Exploration Secure Closets Port
 /obj/structure/closet/secure_closet/explorer
 	name = "explorer locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secureexp1"
 	icon_closed = "secureexp"
 	icon_locked = "secureexp1"
@@ -184,7 +184,7 @@
 //Pathfinder
 /obj/structure/closet/secure_closet/pathfinder
 	name = "pathfinder locker"
-	icon = 'icons/obj/closet_vr.dmi'
+	icon = 'icons/obj/closet.dmi'
 	icon_state = "secureexp1"
 	icon_closed = "secureexp"
 	icon_locked = "secureexp1"
@@ -214,9 +214,9 @@
 		/obj/item/storage/box/survival_knife,
 		/obj/item/material/knife/machete/deluxe,
 		/obj/item/gun/energy/frontier/locked/carbine,
-		/obj/item/gun/projectile/automatic/mini_uzi/custom,
-		/obj/item/ammo_magazine/m45uzi,
-		/obj/item/ammo_magazine/m45uzi,
+		/obj/item/gun/projectile/fnseven,
+		/obj/item/ammo_magazine/m57x28mm,
+		/obj/item/ammo_magazine/m57x28mm,
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,

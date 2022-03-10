@@ -23,9 +23,7 @@
 
 #define Z_LEVEL_TRADEPORT				20
 #define Z_LEVEL_LAVALAND				21
-
-#define Z_LEVEL_TALON1					22
-#define Z_LEVEL_TALON2					23
+#define Z_LEVEL_LAVALAND_EAST			22
 
 // Camera Networks
 /datum/map/triumph
@@ -77,9 +75,9 @@
 	company_short	= "NT"
 	starsys_name	= "Sigmar Concord"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the Triumph. A shift transfer is commencing for crew that need to depart. The transfer shuttle will arrive in %ETD%. %dock_name% out."
+	shuttle_docked_message = "This is the %dock_name% calling to the NSV Triupmh. The scheduled crew transfer shuttle has docked with the NSV Triumph. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "A scheduled crew transfer to the %dock_name% is occuring. The shuttle be arriving shortly. Those departing should proceed to the shuttle bay within %ETA%."
+	shuttle_called_message = "This is the %dock_name% calling to the NSV Triupmh. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Crew Hands Transfer"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
@@ -114,13 +112,12 @@
 							NETWORK_ALARM_ATMOS,
 							NETWORK_ALARM_POWER,
 							NETWORK_ALARM_FIRE,
-							NETWORK_TALON_HELMETS,
-							NETWORK_TALON_SHIP
+							NETWORK_TRADE_STATION
 							)
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage")
+	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
@@ -146,6 +143,9 @@
 						 	 	 Z_LEVEL_ROGUEMINE_3,
 								 Z_LEVEL_ROGUEMINE_4)
 
+	lavaland_levels =		list(Z_LEVEL_LAVALAND,
+								 Z_LEVEL_LAVALAND_EAST)
+
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
@@ -154,11 +154,10 @@
 		list("ExoPlanet - Z1 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z2 Planet"), // Desert Exoplanet
 		list("Gaia Planet - Z3 Planet"), // Gaia Planet
-		list("Forzen Planet - Z4 Planet"), // Frozen Planet
+		list("Frozen Planet - Z4 Planet"), // Frozen Planet
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
 		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land"),
-		list("Offmap Ship - Talon Z1","Offmap Ship - Talon Z2")//I swear to god this better work -Bloop
+		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)")
 	)
 
 	ai_shell_restricted = TRUE
@@ -175,9 +174,15 @@
 		Z_LEVEL_GAIA_PLANET,
 		Z_LEVEL_FROZEN_PLANET,
 		Z_LEVEL_TRADEPORT,
-		Z_LEVEL_LAVALAND)
+		Z_LEVEL_LAVALAND,
+		Z_LEVEL_LAVALAND_EAST)
 
 	lateload_single_pick = null //Nothing right now.
+
+	planet_datums_to_make = list(/datum/planet/lavaland,
+								/datum/planet/classh,
+								/datum/planet/frozen_planet,
+								/datum/planet/gaia_planet)
 
 /datum/map/triumph/perform_map_generation()
 	return 1

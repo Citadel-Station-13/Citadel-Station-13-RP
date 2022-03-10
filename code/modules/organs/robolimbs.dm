@@ -79,6 +79,10 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	var/robo_brute_mod = 1								 // Multiplier for incoming brute damage.
 	var/robo_burn_mod = 1								 // As above for burn.
 
+	var/includes_tail			//Cyberlimbs dmi includes a tail sprite to wear.
+	var/includes_wing			//Cyberlimbs dmi includes a wing sprite to wear.
+	var/list/whitelisted_to		//List of ckeys that are allowed to pick this in charsetup.
+
 /datum/robolimb/unbranded_monitor
 	company = "Unbranded Monitor"
 	desc = "A generic unbranded interpretation of a popular prosthetic head model. It looks rudimentary and cheaply constructed."
@@ -123,8 +127,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/unbranded/unbranded_teshari.dmi'
 	unavailable_to_build = 0
 
-
-
 /datum/robolimb/nanotrasen
 	company = "NanoTrasen"
 	desc = "A simple but efficient robotic limb, created by NanoTrasen."
@@ -148,8 +150,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	desc = "A simple but efficient robotic limb, created by NanoTrasen."
 	icon = 'icons/mob/human_races/cyberlimbs/nanotrasen/nanotrasen_unathi.dmi'
 	unavailable_to_build = 1
-
-
 
 /datum/robolimb/bishop
 	company = "Bishop"
@@ -178,8 +178,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
 
-
-
 /datum/robolimb/cenilimicybernetics_teshari
 	company = "Cenilimi Cybernetics"
 	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT)
@@ -188,8 +186,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	desc = "Made by a Teshari-owned company, for Teshari."
 	icon = 'icons/mob/human_races/cyberlimbs/cenilimicybernetics/cenilimicybernetics_teshari.dmi'
 	unavailable_to_build = 1
-
-
 
 /datum/robolimb/gestaltframe
 	company = "Skrellian Exoskeleton"
@@ -203,8 +199,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	// Dionaea are naturally very tanky, so the robotic limbs are actually far weaker than their normal bodies.
 	robo_brute_mod = 1.3
 	robo_burn_mod = 1.3
-
-
 
 /datum/robolimb/cybersolutions
 	company = "Cyber Solutions"
@@ -225,15 +219,11 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	icon = 'icons/mob/human_races/cyberlimbs/cybersolutions/cybersolutions_alt1.dmi'
 	unavailable_to_build = 1
 
-
-
 /datum/robolimb/einstein
 	company = "Einstein Engines"
 	desc = "This limb is lightweight with a sleek design."
 	icon = 'icons/mob/human_races/cyberlimbs/einstein/einstein_main.dmi'
 	unavailable_to_build = 1
-
-
 
 /datum/robolimb/grayson
 	company = "Grayson"
@@ -265,8 +255,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	unavailable_to_build = 1
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
-
-
 
 /datum/robolimb/hephaestus
 	company = "Hephaestus"
@@ -304,8 +292,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
 
-
-
 /datum/robolimb/morpheus
 	company = "Morpheus"
 	desc = "This limb is simple and functional; no effort has been made to make it look human."
@@ -327,8 +313,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	unavailable_to_build = 1
 	parts = list(BP_HEAD)
 
-
-
 /datum/robolimb/veymed
 	company = "Vey-Med"
 	desc = "This high quality limb is nearly indistinguishable from an organic one."
@@ -342,19 +326,29 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	//robo_brute_mod = 1.1 //VOREStation Edit
 	//robo_burn_mod = 1.1 //VOREStation Edit
 
-/datum/robolimb/veymed_skrell
+/datum/robolimb/veymed/skrell
 	company = "Vey-Med - Skrell"
-	desc = "This high quality limb is nearly indistinguishable from an organic one."
-	icon = 'icons/mob/human_races/cyberlimbs/veymed/veymed_skrell.dmi'
-	unavailable_to_build = 1
-	lifelike = 1
-	skin_color = TRUE
 	species_cannot_use = list(SPECIES_TESHARI, SPECIES_PROMETHEAN, SPECIES_TAJ, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_DIONA, SPECIES_ZADDAT)
 	blood_color = "#4451cf"
-	speech_bubble_appearance = "normal"
-	robo_brute_mod = 1.05
-	robo_burn_mod = 1.05
 
+// thanks kraso
+/datum/robolimb/moth
+	company = "Psyche - Moth"
+	desc = "This high quality limb is nearly indistinguishable from an organic one."
+	icon = 'icons/mob/human_races/cyberlimbs/psyche/moth.dmi'
+	blood_color = "#808000"
+	lifelike = 1
+	skin_tone = TRUE
+	speech_bubble_appearance = "normal"
+
+/datum/robolimb/insect
+	company = "Psyche - Insect"
+	desc = "This high quality limb is nearly indistinguishable from an organic one."
+	icon = 'icons/mob/human_races/cyberlimbs/psyche/insect.dmi'
+	blood_color = "#808000"
+	lifelike = 1
+	skin_tone = TRUE
+	speech_bubble_appearance = "normal"
 
 
 /datum/robolimb/wardtakahashi
@@ -383,8 +377,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	unavailable_to_build = 1
 	parts = list(BP_HEAD)
 	monitor_styles = standard_monitor_styles
-
-
 
 /datum/robolimb/xion
 	company = "Xion"
@@ -450,8 +442,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 	unavailable_to_build = 1
 	parts = list(BP_HEAD)
 	monitor_styles = cyberbeast_monitor_styles
-
-
 
 /obj/item/disk/limb
 	name = "Limb Blueprints"
@@ -542,27 +532,6 @@ var/const/cyberbeast_monitor_styles = "blank=cyber_blank;\
 /obj/item/disk/species/zaddat
 	species = SPECIES_ZADDAT
 
-//Port of _vr files.
-/datum/robolimb
-	var/includes_tail			//Cyberlimbs dmi includes a tail sprite to wear.
-	var/includes_wing			//Cyberlimbs dmi includes a wing sprite to wear.
-	var/list/whitelisted_to		//List of ckeys that are allowed to pick this in charsetup.
-/* CITADEL CHANGE - Removes these ckey whitelisted special snowflake limbs
-//////////////// For-specific-character fluff ones /////////////////
-// silencedmp5a5 : Serdykov Antoz
-/datum/robolimb/white_kryten
-	company = "White Kryten Cybernetics"
-	desc = "This limb feels realistic to the touch, with soft fur. Were it not for the bright orange lights embedded in it, you might have trouble telling it from a non synthetic limb!"
-	icon = 'icons/mob/human_races/cyberlimbs/_fluff_vr/serdykov.dmi'
-	blood_color = "#ff6a00"
-	unavailable_to_build = 1
-	includes_tail = 1
-	whitelisted_to = list("silencedmp5a5")
-
-/obj/item/disk/limb/white_kryten
-	company = "White Kryten Cybernetics"
-END OF CITADEL CHANGES */
-// verkister : Rahwoof Boop
 /datum/robolimb/eggnerdltd
 	company = "Eggnerd Prototyping Ltd."
 	desc = "This limb has a slight salvaged handicraft vibe to it. The CE-marking on it is definitely not the standardized one, it looks more like a hand-written sharpie monogram."
@@ -632,6 +601,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Tajara"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_tajaran
 	company = "DSI - Tajaran"
@@ -646,6 +616,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Unathi"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_lizard
 	company = "DSI - Lizard"
@@ -660,6 +631,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Sergal"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_sergal
 	company = "DSI - Sergal"
@@ -674,6 +646,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Nevrean"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_nevrean
 	company = "DSI - Nevrean"
@@ -688,6 +661,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Vulpkanin"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_vulpkanin
 	company = "DSI - Vulpkanin"
@@ -702,6 +676,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Akula"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_akula
 	company = "DSI - Akula"
@@ -716,6 +691,7 @@ END OF CITADEL CHANGES */
 	includes_tail = 1
 	skin_tone = 1
 	suggested_species = "Vasilissan"
+	speech_bubble_appearance = "normal"
 
 /obj/item/disk/limb/dsi_spider
 	company = "DSI - Vasilissan"
@@ -727,6 +703,7 @@ END OF CITADEL CHANGES */
 	lifelike = 1
 	skin_tone = 1
 	suggested_species = "Teshari"
+	speech_bubble_appearance = "normal"
 
 /datum/robolimb/dsi_teshari/New()
 	species_cannot_use = GLOB.all_species.Copy()
@@ -766,3 +743,13 @@ END OF CITADEL CHANGES */
 
 /obj/item/disk/limb/antares
 	company = "Antares Robotics"
+
+
+/datum/robolimb/adherent
+	company = "NULL DATA."                            // Shown when selecting the limb.
+	desc = "NULL DATA." // Seen when examining a limb.
+	icon = 'icons/mob/human_races/r_adherent.dmi'       // Icon base to draw from.
+	species_cannot_use = list(SPECIES_UNATHI, SPECIES_PROMETHEAN, SPECIES_DIONA, SPECIES_HUMAN, SPECIES_VOX, SPECIES_HUMAN_VATBORN, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_ZADDAT, SPECIES_TESHARI)
+	unavailable_at_chargen = TRUE                            // If set, not available at chargen.
+	unavailable_to_build = TRUE						 // If set, can't be constructed.
+	suggested_species = SPECIES_ADHERENT						 //If it should make the torso a species

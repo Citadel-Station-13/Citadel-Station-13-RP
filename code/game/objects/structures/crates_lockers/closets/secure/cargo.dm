@@ -52,6 +52,7 @@
 		/obj/item/clothing/shoes/brown,
 		/obj/item/radio/headset/headset_cargo,
 		/obj/item/radio/headset/headset_cargo/alt,
+		/obj/item/radio/headset/headset_mine,
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/gloves/fingerless,
 		/obj/item/clothing/suit/fire/firefighter,

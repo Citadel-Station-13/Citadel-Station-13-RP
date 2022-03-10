@@ -1,8 +1,8 @@
 //Here you find suit storage units prefilled to make mapping in easier
 
 /obj/machinery/suit_storage_unit/standard_unit
-	suit_stored_TYPE = /obj/item/clothing/suit/space
-	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space
+	suit_stored_TYPE = /obj/item/clothing/suit/space/void
+	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void
 	mask_stored_TYPE = /obj/item/clothing/mask/breath
 
 /obj/machinery/suit_storage_unit/atmos
@@ -44,4 +44,9 @@
 /obj/machinery/suit_storage_unit/pilot
 	suit_stored_TYPE = /obj/item/clothing/suit/space/void/pilot
 	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void/pilot
+	mask_stored_TYPE = /obj/item/clothing/mask/breath
+
+/obj/machinery/suit_storage_unit/syndicate
+	suit_stored_TYPE = /obj/item/clothing/suit/space/void/merc
+	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void/merc
 	mask_stored_TYPE = /obj/item/clothing/mask/breath

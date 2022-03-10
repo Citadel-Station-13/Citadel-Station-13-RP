@@ -22,3 +22,10 @@
 	w_class = ITEMSIZE_NORMAL
 	max_w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_COST_SMALL * 4
+
+/obj/item/storage/briefcase/crafted
+	desc = "Hand crafted suitcase made of leather and cloth."
+	force = 6
+
+/obj/item/storage/briefcase/crafted/PopulateContents()
+	return //So we dont spawn items

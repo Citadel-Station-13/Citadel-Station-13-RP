@@ -219,9 +219,12 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 	//Create a new, blank icon for our mob to use.
 	var/icon/stand_icon = new(species.icon_template ? species.icon_template : 'icons/mob/human.dmi', icon_state = "blank")
 
+	var/g = gender == FEMALE ? "f" : "m"
+	/* 	This was the prior code before the above line. It was faulty and has been commented out.
 	var/g = "male"
 	if(gender == FEMALE)
 		g = "female"
+	*/
 
 	var/icon_key = "[species.get_race_key(src)][g][s_tone][r_skin][g_skin][b_skin]"
 	if(lip_style)
@@ -1017,10 +1020,17 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 
 	remove_layer(WING_LAYER)
 
-	var/image/vr_wing_image = get_wing_image()
+	overlays_standing[WING_LAYER] = list()
+
+	var/image/vr_wing_image = get_wing_image(TRUE)
 	if(vr_wing_image)
 		vr_wing_image.layer = BODY_LAYER+WING_LAYER
-		overlays_standing[WING_LAYER] = vr_wing_image
+		overlays_standing[WING_LAYER] += vr_wing_image
+
+	if(wing_style?.front_behind_system)
+		var/image/vr_wing_image_2 = get_wing_image(FALSE)
+		vr_wing_image_2.layer = BODY_LAYER - WING_LAYER
+		overlays_standing[WING_LAYER] += vr_wing_image_2
 
 	apply_layer(WING_LAYER)
 // VOREStation Edit end
@@ -1126,7 +1136,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		overlays_standing[SURGERY_LAYER] = total
 		apply_layer(SURGERY_LAYER)
 
-/mob/living/carbon/human/proc/get_wing_image() //redbull gives you wings
+/mob/living/carbon/human/proc/get_wing_image(front) //redbull gives you wings
 	var/icon/grad_swing
 	if(QDESTROYING(src))
 		return
@@ -1138,8 +1148,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		return image(wing_s)
 
 	//If you have custom wings selected
-	if(wing_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
-		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : wing_style.icon_state)
+	if(wing_style && (!(wear_suit && wear_suit.flags_inv & HIDETAIL) || !wing_style.clothing_can_hide))
+		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state))
 		if(wing_style.do_colouration)
 			if(grad_wingstyle)
 				grad_swing = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])
@@ -1153,6 +1163,8 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			overlay.Blend(rgb(src.r_wing2, src.g_wing2, src.b_wing2), wing_style.color_blend_mode)
 			wing_s.Blend(overlay, ICON_OVERLAY)
 			qdel(overlay)
+		if(wing_style.center)
+			center_image(wing_style, wing_style.dimension_x, wing_style.dimension_y)
 		return image(wing_s)
 
 // TODO - Move this to where it should go ~Leshana
@@ -1165,6 +1177,14 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 /mob/living/carbon/human/stop_flying()
 	if((. = ..()))
 		update_wing_showing()
+
+//Stolen from bay for shifting equipment by default and not having to resprite it
+/proc/overlay_image(icon,icon_state,color,flags)
+	var/image/ret = image(icon,icon_state)
+	ret.color = color
+	ret.appearance_flags = (PIXEL_SCALE) | flags
+	return ret
+
 
 //Human Overlays Indexes/////////
 #undef MUTATIONS_LAYER

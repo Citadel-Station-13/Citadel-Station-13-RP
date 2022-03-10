@@ -149,6 +149,10 @@
 	name = "black tie"
 	icon_state = "blacktie"
 
+/obj/item/clothing/accessory/tie/black_clip
+	name = "black tie with a clip"
+	icon_state = "blackcliptie"
+
 /obj/item/clothing/accessory/tie/darkgreen
 	name = "dark green tie"
 	icon_state = "dgreentie"
@@ -515,7 +519,7 @@
 	name = "plain choker"
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	desc = "A simple, plain choker. Or maybe it's a collar? Use in-hand to customize it."
-	icon = 'icons/obj/clothing/collars_vr.dmi'
+	icon = 'icons/obj/clothing/collars.dmi'
 	icon_override = 'icons/mob/ties.dmi'
 	icon_state = "choker_cst"
 	item_state = "choker_cst_overlay"
@@ -536,17 +540,19 @@
 
 /obj/item/clothing/accessory/collar
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
-	icon = 'icons/obj/clothing/collars_vr.dmi'
+	icon = 'icons/obj/clothing/collars.dmi'
 	icon_override = 'icons/mob/ties.dmi'
-	var/icon_previous_override //yw addition
+	var/icon_previous_override
 	var/writtenon = 0
 
-//ywedit start. forces different sprite sheet on equip
+// Forces different sprite sheet on equip
 /obj/item/clothing/accessory/collar/Initialize(mapload)
 	. = ..()
 	icon_previous_override = icon_override
 
-/obj/item/clothing/accessory/collar/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+// Solution for race-specific sprites for an accessory which is also a suit.
+// Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+/obj/item/clothing/accessory/collar/equipped()
 	..()
 	setUniqueSpeciesSprite()
 
@@ -570,7 +576,6 @@
 /obj/item/clothing/accessory/collar/dropped()
 	. = ..()
 	icon_override = icon_previous_override
-//ywedit end
 
 /obj/item/clothing/accessory/collar/silver
 	name = "Silver tag collar"
@@ -843,3 +848,22 @@
 /obj/item/clothing/accessory/medal/silver/unity
 	name = "medal of unity"
 	desc = "A silver medal awarded to a group which has demonstrated exceptional teamwork to achieve a notable feat."
+
+//Primal
+/obj/item/clothing/accessory/talisman
+	name = "bone talisman"
+	desc = "A hunter's talisman, some say the old gods smile on those who wear it."
+	icon_state = "talisman"
+	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+
+/obj/item/clothing/accessory/skullcodpiece
+	name = "skull codpiece"
+	desc = "A skull shaped ornament, intended to protect the important things in life."
+	icon_state = "skull"
+	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+
+/obj/item/clothing/accessory/skullcodpiece/fake
+	name = "false codpiece"
+	desc = "A plastic ornament, intended to protect the important things in life. It's not very good at it."
+	icon_state = "skull"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)

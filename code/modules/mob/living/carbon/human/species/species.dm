@@ -67,8 +67,8 @@
 
 	//Soundy emotey things.
 	var/scream_verb = "screams"
-	var/male_scream_sound		= list('modular_citadel/sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_m2.ogg')
-	var/female_scream_sound		= list('modular_citadel/sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'modular_citadel/sound/voice/screams/sound_voice_scream_scream_f3.ogg')
+	var/male_scream_sound		= list('sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'sound/voice/screams/sound_voice_scream_scream_m2.ogg')
+	var/female_scream_sound		= list('sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'sound/voice/screams/sound_voice_scream_scream_f3.ogg')
 	var/male_cough_sounds = list('sound/effects/mob_effects/m_cougha.ogg','sound/effects/mob_effects/m_coughb.ogg', 'sound/effects/mob_effects/m_coughc.ogg')
 	var/female_cough_sounds = list('sound/effects/mob_effects/f_cougha.ogg','sound/effects/mob_effects/f_coughb.ogg')
 	var/male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
@@ -94,6 +94,9 @@
 
 	// Death vars.
 	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
+	var/bone_type = /obj/item/stack/material/bone
+	var/hide_type = /obj/item/stack/animalhide/human
+	var/exotic_type = /obj/item/stack/sinew
 	var/remains_type = /obj/effect/decal/remains/xeno
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
@@ -152,6 +155,8 @@
 	var/light_dam											// If set, mob will be damaged in light over this value and heal in light below its negative.
 	var/minimum_breath_pressure = 16						// Minimum required pressure for breath, in kPa
 
+	var/list/equip_adjust = list()							//Used for adherent currently so I dont have to create a bunch of snowflake .dmi s, see adherent to learn the way
+	var/list/equip_overlays = list()
 
 	var/metabolic_rate = 1
 
@@ -177,6 +182,7 @@
 	var/has_glowing_eyes = 0								// Whether the eyes are shown above all lighting
 	var/water_movement = 0									// How much faster or slower the species is in water
 	var/snow_movement = 0									// How much faster or slower the species is on snow
+	var/infect_wounds = 0									// Whether the species can infect wounds, only works with claws / bites
 
 
 	var/item_slowdown_mod = 1								// How affected by item slowdown the species is.
@@ -218,6 +224,7 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 		)
 
+	var/list/base_skin_colours
 	var/list/genders = list(MALE, FEMALE)
 	var/ambiguous_genders = FALSE // If true, people examining a member of this species whom are not also the same species will see them as gender neutral.	Because aliens.
 
@@ -243,6 +250,13 @@
 	var/wing_animation
 	var/icobase_wing
 	var/wikilink = null //link to wiki page for species
+
+	//Vorestation Pull for weaver abilities
+	var/is_weaver = FALSE
+	var/silk_production = FALSE
+	var/silk_reserve = 100
+	var/silk_max_reserve = 500
+	var/silk_color = "#FFFFFF"
 
 /datum/species/New()
 	if(hud_type)
@@ -419,7 +433,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		for(var/spell_to_add in inherent_spells)
 			var/spell/S = new spell_to_add(H)
 			H.add_spell(S)
-	return
 
 /datum/species/proc/remove_inherent_spells(var/mob/living/carbon/human/H)
 	H.spellremove()
@@ -498,6 +511,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/can_overcome_gravity(var/mob/living/carbon/human/H)
 	return FALSE
 
+/datum/species/proc/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
+	return FALSE
+
 // Used for any extra behaviour when falling and to see if a species will fall at all.
 /datum/species/proc/can_fall(var/mob/living/carbon/human/H)
 	return TRUE
@@ -527,3 +543,29 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 
 /datum/species/proc/handle_falling(mob/living/carbon/human/H, atom/hit_atom, damage_min, damage_max, silent, planetary)
 	return FALSE
+
+/datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
+
+	// If we don't actually need to offset this, don't bother with any of the generation/caching.
+	if(!spritesheet && equip_adjust.len && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))
+
+		// Check the cache for previously made icons.
+		var/image_key = "[mob_icon]-[mob_state]-[color]"
+		if(!equip_overlays[image_key])
+
+			var/icon/final_I = new(icon_template)
+			var/list/shifts = equip_adjust[slot]
+
+			// Apply all pixel shifts for each direction.
+			for(var/shift_facing in shifts)
+				var/list/facing_list = shifts[shift_facing]
+				var/use_dir = text2num(shift_facing)
+				var/icon/equip = new(mob_icon, icon_state = mob_state, dir = use_dir)
+				var/icon/canvas = new(icon_template)
+				canvas.Blend(equip, ICON_OVERLAY, facing_list["x"]+1, facing_list["y"]+1)
+				final_I.Insert(canvas, dir = use_dir)
+			equip_overlays[image_key] = overlay_image(final_I, color = color, flags = RESET_COLOR)
+		var/image/I = new() // We return a copy of the cached image, in case downstream procs mutate it.
+		I.appearance = equip_overlays[image_key]
+		return I
+	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)

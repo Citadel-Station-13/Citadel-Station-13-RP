@@ -50,6 +50,15 @@ GLOBAL_LIST_INIT(bitfields, list(
 		FLAG(VENTCRAWLING),
 		FLAG(FLOATING)
 		),
+	"reagents_holder_flags" = list(
+		"INJECTABLE" = INJECTABLE,
+		"DRAWABLE" = DRAWABLE,
+		"REFILLABLE" = REFILLABLE,
+		"DRAINABLE" = DRAINABLE,
+		"TRANSPARENT" = TRANSPARENT,
+		"AMOUNT_VISIBLE" = AMOUNT_VISIBLE,
+		"NO_REACT" = NO_REACT,
+		),
 /*
 	"sight" = list(
 		"SEE_INFRA" = SEE_INFRA,
@@ -66,7 +75,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 	"obj_flags" = list(
 		"EMAGGED" = EMAGGED,
 		"CAN_BE_HIT" = CAN_BE_HIT
-	)
+		),
 /*
 	"obj_flags" = list(
 		"EMAGGED" = EMAGGED,
@@ -183,6 +192,7 @@ GLOBAL_LIST_INIT(bitfields, list(
 	"car_traits" = list(
 		"CAN_KIDNAP" = CAN_KIDNAP,
 		),
+*/
 	"mobility_flags" = list(
 		"MOVE" = MOBILITY_MOVE,
 		"STAND" = MOBILITY_STAND,
@@ -190,8 +200,9 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"USE" = MOBILITY_USE,
 		"UI" = MOBILITY_UI,
 		"STORAGE" = MOBILITY_STORAGE,
-		"PULL" = MOBILITY_PULL,
-		),
+		"PULL" = MOBILITY_PULL
+	)
+/*
 	"rad_flags" = list(
 		"RAD_PROTECT_CONTENTS" = RAD_PROTECT_CONTENTS,
 		"RAD_NO_CONTAMINATE" = RAD_NO_CONTAMINATE,

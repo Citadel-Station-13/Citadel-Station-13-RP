@@ -208,7 +208,7 @@
 			),
 			prob(1);list(
 				/obj/item/gun/projectile/automatic/p90,
-				/obj/item/ammo_magazine/m9mmp90
+				/obj/item/ammo_magazine/m57x28mmp90
 			),
 			prob(1);list(
 				/obj/item/gun/projectile/automatic/mini_uzi/taj,

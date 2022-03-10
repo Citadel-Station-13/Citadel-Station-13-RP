@@ -76,7 +76,8 @@
 		//Organs and blood
 		handle_organs()
 		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
-		weightgain() //VORESTATION EDIT
+		weightgain() 			//VORESTATION EDIT
+		process_weaver_silk()	//VOREStation Addition
 		handle_shock()
 
 		handle_pain()
@@ -1390,8 +1391,6 @@
 
 /mob/living/carbon/human/handle_vision()
 	if(stat == DEAD)
-		sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-		see_in_dark = 8
 		if(client)
 			if(client.view != world.view) // If mob dies while zoomed in with device, unzoom them.
 				for(var/obj/item/item in contents)
@@ -1400,7 +1399,6 @@
 						break
 
 	else //We aren't dead
-		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 		see_invisible = see_in_dark>2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default
 
 		if(XRAY in mutations)
@@ -1893,6 +1891,14 @@
 
 		else if (nutrition <= MAX_NUTRITION_TO_LOSE && stat != 2 && weight > MIN_MOB_WEIGHT && weight_loss)
 			weight -= species.metabolism*(0.01*weight_loss) // starvation weight loss
+
+/mob/living/carbon/human/proc/process_weaver_silk()
+	if(!species || !(species.is_weaver))
+		return
+
+	if(species.silk_reserve < species.silk_max_reserve && species.silk_production == TRUE && nutrition > 100)
+		species.silk_reserve = min(species.silk_reserve + 2, species.silk_max_reserve)
+		nutrition -= 0.4//suck nutrition from the user
 
 /mob/living/carbon/human/proc/handle_hud_list_vr()
 

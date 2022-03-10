@@ -40,7 +40,7 @@
 	src.modules += new /obj/item/shockpaddles/robot/jumper(src)
 	src.modules += new /obj/item/melee/baton/slime/robot(src)
 	src.modules += new /obj/item/gun/energy/taser/xeno/robot(src)
-	src.emag = new /obj/item/hand_tele(src)
+	src.emag = new /obj/item/borg/combat/shield(src)
 
 	var/datum/matter_synth/nanite = new /datum/matter_synth/nanite(10000)
 	synths += nanite
@@ -103,7 +103,7 @@
 	src.modules += new /obj/item/gun/energy/taser/xeno/robot(src)
 	src.modules += new /obj/item/surgical/scalpel/cyborg(src)
 	src.modules += new /obj/item/surgical/circular_saw/cyborg(src)
-	src.emag = new /obj/item/hand_tele(src)
+	src.emag = new /obj/item/borg/combat/shield(src)
 
 	var/datum/matter_synth/nanite = new /datum/matter_synth/nanite(10000)
 	synths += nanite

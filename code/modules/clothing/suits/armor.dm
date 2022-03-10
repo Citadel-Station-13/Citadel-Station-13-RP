@@ -786,3 +786,10 @@
 	name = "imperial centurion armor"
 	desc = "Not all heroes wear capes, but it'd be cooler if they did."
 	icon_state = "ge_armorcent"
+
+/obj/item/clothing/suit/armor/bone
+	name = "bone armor"
+	desc = "A tribal armor plate, crafted from animal bone."
+	icon_state = "bonearmor"
+	armor = list("melee" = 35, "bullet" = 25, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "wound" = 10)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS

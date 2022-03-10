@@ -35,7 +35,9 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 
 	meat_amount = 4
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	bone_amount = 2
+	hide_amount = 3
+	exotic_amount = 2
 
 	var/datum/reagents/udder = null
 

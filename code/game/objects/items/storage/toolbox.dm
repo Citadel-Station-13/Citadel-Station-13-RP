@@ -92,6 +92,13 @@
 		/obj/item/analyzer
 	)
 
+/obj/item/storage/toolbox/gold_fake // used in crafting
+	name = "golden toolbox"
+	desc = "A gold plated toolbox, fancy and harmless due to the gold plating being on cardboard!"
+	icon_state = "gold"
+	force = 0
+	throwforce = 0
+
 /obj/item/storage/toolbox/lunchbox
 	max_storage_space = ITEMSIZE_COST_SMALL * 4 //slightly smaller than a toolbox
 	name = "rainbow lunchbox"
