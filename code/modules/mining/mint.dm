@@ -13,6 +13,7 @@
 	var/amt_bananium = 0
 	var/amt_mhydrogen = 0
 	var/amt_durasteel = 0
+	var/amt_platinum = 0
 	var/amt_diamond = 0
 	var/amt_uranium = 0
 	var/amt_phoron = 0
@@ -59,6 +60,8 @@
 					amt_mhydrogen += 100 * O.get_amount()
 				if("durasteel")
 					amt_durasteel += 100 * O.get_amount()
+				if("platinum")
+					amt_platinum += 100 * O.get_amount()
 				if("diamond")
 					amt_diamond += 100 * O.get_amount()
 				if("uranium")
@@ -109,7 +112,11 @@
 		dat += text("chosen")
 	else
 		dat += text("<A href='?src=\ref[src];choose=durasteel'>Choose</A>")
-
+	dat += text("<br><font color='#375064'><b>Platinum inserted: </b>[amt_platinum]</font> ")
+	if (chosen == "platinum")
+		dat += text("chosen")
+	else
+		dat += text("<A href='?src=\ref[src];choose=platinum'>Choose</A>")
 	dat += text("<br><font color='#509edd'><b>Diamond inserted: </b>[amt_diamond]</font> ")
 	if (chosen == "diamond")
 		dat += text("chosen")
@@ -222,6 +229,18 @@
 							M = new/obj/item/moneybag(output.loc)
 						new /obj/item/coin/durasteel(M)
 						amt_durasteel -= 20
+						coinsToProduce--
+						newCoins++
+						src.updateUsrDialog()
+						sleep(5);
+				if("platinum")
+					while(amt_platinum > 0 && coinsToProduce > 0)
+						if (locate(/obj/item/moneybag,output.loc))
+							M = locate(/obj/item/moneybag,output.loc)
+						else
+							M = new/obj/item/moneybag(output.loc)
+						new /obj/item/coin/platinum(M)
+						amt_platinum -= 20
 						coinsToProduce--
 						newCoins++
 						src.updateUsrDialog()

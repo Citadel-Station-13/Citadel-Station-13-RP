@@ -13,6 +13,7 @@
 	var/amt_bananium = 0
 	var/amt_mhydrogen = 0
 	var/amt_durasteel = 0
+	var/amt_platinum = 0
 	var/amt_diamond = 0
 	var/amt_uranium = 0
 	var/amt_phoron = 0
@@ -30,6 +31,8 @@
 			amt_mhydrogen++;
 		if (istype(C,/obj/item/coin/durasteel))
 			amt_durasteel++;
+		if (istype(C,/obj/item/coin/platinum))
+			amt_platinum++;
 		if (istype(C,/obj/item/coin/diamond))
 			amt_diamond++;
 		if (istype(C,/obj/item/coin/uranium))
@@ -54,6 +57,8 @@
 		dat += text("Mythril coins: [amt_mhydrogen] <A href='?src=\ref[src];remove=mhydrogen'>Remove one</A><br>")
 	if (amt_durasteel)
 		dat += text("Durasteel coins: [amt_durasteel] <A href='?src=\ref[src];remove=durasteel'>Remove one</A><br>")
+	if (amt_platinum)
+		dat += text("Platinum coins: [amt_platinum] <A href='?src=\ref[src];remove=platinum'>Remove one</A><br>")
 	if (amt_diamond)
 		dat += text("Diamond coins: [amt_diamond] <A href='?src=\ref[src];remove=diamond'>Remove one</A><br>")
 	if (amt_uranium)
@@ -100,6 +105,8 @@
 				COIN = locate(/obj/item/coin/mhydrogen,src.contents)
 			if("durasteel")
 				COIN = locate(/obj/item/coin/durasteel,src.contents)
+			if("platinum")
+				COIN = locate(/obj/item/coin/platinum,src.contents)
 			if("diamond")
 				COIN = locate(/obj/item/coin/diamond,src.contents)
 			if("uranium")

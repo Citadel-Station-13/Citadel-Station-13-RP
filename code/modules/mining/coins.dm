@@ -46,6 +46,10 @@
 	name = "diamond coin"
 	icon_state = "coin_diamond"
 
+/obj/item/coin/platinum
+	name = "platinum coin"
+	icon_state = "coin_platinum"
+
 /obj/item/coin/durasteel
 	name = "adamantine coin"
 	icon_state = "coin_adamantine"
