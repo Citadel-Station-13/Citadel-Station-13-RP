@@ -1684,6 +1684,9 @@ End Citadel Change */
 	nutrition = 1
 	color = "#302000"
 
+	glass_name = "Dry Ramen"
+	glass_desc = "A glass of dry noodles. Wait, why did you put this into a glass?"
+
 /datum/reagent/drink/hot_ramen
 	name = "Hot Ramen"
 	id = "hot_ramen"
@@ -1694,6 +1697,9 @@ End Citadel Change */
 	nutrition = 5
 	adj_temp = 5
 
+	glass_name = "Hot Ramen"
+	glass_desc = "A glass of spicy noodles. Wait, why did you put this into a glass?"
+
 /datum/reagent/drink/hell_ramen
 	name = "Hell Ramen"
 	id = "hell_ramen"
@@ -1703,6 +1709,9 @@ End Citadel Change */
 	reagent_state = REAGENT_LIQUID
 	color = "#302000"
 	nutrition = 5
+
+	glass_name = "Hell Ramen"
+	glass_desc = "A glass of extremely spicy noodles. Wait, why did you put this into a glass?"
 
 /datum/reagent/drink/hell_ramen/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -2316,6 +2325,9 @@ End Citadel Change */
 	taste_description = "minty"
 	strength = 90
 
+	glass_name = "Peppermint Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, minty taste."
+
 /datum/reagent/ethanol/peachschnapps
 	name = "Peach Schnapps"
 	id = "schnapps_pea"
@@ -2323,12 +2335,18 @@ End Citadel Change */
 	taste_description = "peachy"
 	strength = 90
 
+	glass_name = "Peach Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, peachy taste."
+
 /datum/reagent/ethanol/lemonadeschnapps
 	name = "Lemonade Schnapps"
 	id = "schnapps_lem"
 	description = "A flavoured grain liqueur with a fresh, lemony taste."
 	taste_description = "lemony"
 	strength = 90
+
+	glass_name = "Lemonade Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, lemony taste."
 
 /datum/reagent/ethanol/wine/champagne
 	name = "Champagne"
@@ -2339,7 +2357,6 @@ End Citadel Change */
 
 	glass_name = "Champagne"
 	glass_desc = "An even classier looking drink."
-
 
 /datum/reagent/ethanol/cider
 	name = "Cider"
@@ -3705,6 +3722,9 @@ End Citadel Change */
 	taste_description = "mint infused whiskey"
 	strength = 80
 
+	glass_name = "Mint Julep"
+	glass_desc = "Really not just watery whiskey.. I think."
+
 /datum/reagent/ethanol/planterspunch
 	name = "Planters Punch"
 	id = "planterspunch"
@@ -3723,12 +3743,18 @@ End Citadel Change */
 	taste_description = "stronge coffee infused booze"
 	strength = 35
 
+	glass_name = "Olympus Mons"
+	glass_desc = "For those that need the extra kick."
+
 /datum/reagent/ethanol/sazerac
 	name = "Sazerac"
 	id = "sazerac"
 	description = "When a regular whiskey cocktail isn't enough."
 	taste_description = "a strong bite of flavor"
 	strength = 20
+
+	glass_name = "Sazerac"
+	glass_desc = "When a regular whiskey cocktail isn't enough."
 
 /datum/reagent/ethanol/junglejuice
 	name = "Jungle Juice"
@@ -3737,12 +3763,18 @@ End Citadel Change */
 	taste_description = "fruits and bad decisions"
 	strength = 55
 
+	glass_name = "Jungle Juice"
+	glass_desc = "An overload of sweetness and sugary goodness."
+
 /datum/reagent/ethanol/gimlet
 	name = "Gimlet"
 	id = "gimlet"
 	description = "For those who want to look fancy with their gin."
 	taste_description = "lime infused tree"
 	strength = 20
+
+	glass_name = "Gimlet"
+	glass_desc = "For those who want to look fancy with their gin."
 
 /datum/reagent/ethanol/firepunch
 	name = "Fire Punch"
@@ -3751,6 +3783,9 @@ End Citadel Change */
 	taste_description = "rum and sugar"
 	strength = 70
 	targ_temp = 300
+
+	glass_name = "Fire Punch"
+	glass_desc = "A spicy take on a summer classic."
 
 /datum/reagent/ethanol/alcsassafras
 	name = "CC's Hard Rootbeer"
