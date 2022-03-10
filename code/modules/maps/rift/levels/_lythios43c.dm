@@ -1,8 +1,7 @@
 /datum/atmosphere/planet/lythios43c
 	base_gases = list(
-	/datum/gas/nitrogen = 0.64,
-	/datum/gas/oxygen = 0.32,
-	/datum/gas/carbon_dioxide = 0.04
+	/datum/gas/nitrogen = 0.66,
+	/datum/gas/oxygen = 0.34
 	)
 	base_target_pressure = 76.9
 	minimum_pressure = 76.9
@@ -25,3 +24,5 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/ice)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/floor)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/mineral/icerock/floor)

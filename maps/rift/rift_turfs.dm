@@ -9,7 +9,6 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/open)
 		SSplanets.addTurf(src)
 
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor)
-
 /turf/simulated/floor/lythios43c_indoors
 	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C
 

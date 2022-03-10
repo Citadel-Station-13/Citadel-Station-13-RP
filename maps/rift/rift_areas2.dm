@@ -22,6 +22,16 @@
 	name = "\improper Maintenance Bar"
 	icon_state = "fsmaint"
 
+/area/crew_quarters/bar_backroom
+	name = "\improper Bar Backroom"
+	icon_state = "bar"
+	sound_env = SMALL_SOFTFLOOR
+
+/area/crew_quarters/game_room
+	name = "\improper Game Room"
+	icon_state = "bar"
+	sound_env = SMALL_SOFTFLOOR
+
 /area/rift/surfaceeva
 	name = "\improper Primary Surface EVA"
 
@@ -57,28 +67,19 @@
 	name = "\improper Surface Two Substation"
 	icon_state = "substation"
 
-//
-// Medbay
-//
-
-/area/rift/surfacebase/medical
-	icon_state = "medical"
-/area/rift/surfacebase/medical/lobby
-	name = "\improper Emergency Medical Triage Lobby"
-/area/rift/surfacebase/medical/triage
-	name = "\improper Emergency Medical Triage"
-/area/rift/surfacebase/medical/first_aid
-	name = "\improper First Aid Post"
+/area/maintenance/substation/surface_three
+	name = "\improper Surface Two Substation"
+	icon_state = "substation"
 
 //
 // Hallways
 //
 
-/area/hallway/primary/undertwo
-	name = "\improper Central Primary Hallway - Underground Two"
-	icon_state = "hallC"
 /area/hallway/primary/underone
 	name = "\improper Central Primary Hallway - Underground One"
+	icon_state = "hallC"
+/area/hallway/primary/undertwo
+	name = "\improper Central Primary Hallway - Underground Two"
 	icon_state = "hallC"
 /area/hallway/primary/surfaceone
 	name = "\improper Central Primary Hallway - Surface One"
@@ -88,9 +89,6 @@
 	icon_state = "hallC"
 /area/hallway/primary/surfacethree
 	name = "\improper Central Primary Hallway - Surface Three"
-	icon_state = "hallC"
-/area/hallway/primary/surfacefour
-	name = "\improper Central Primary Hallway - Surface Four"
 	icon_state = "hallC"
 
 //
@@ -144,24 +142,6 @@
 /area/tether/surfacebase/north_stairs_three
 	name = "\improper North Stairwell Third Floor"
 	icon_state = "dk_yellow"
-
-/area/tether/surfacebase/public_garden_one
-	name = "\improper Public Garden First Floor"
-	icon_state = "green"
-/area/tether/surfacebase/public_garden_two
-	name = "\improper Public Garden Second Floor"
-	icon_state = "green"
-/area/tether/surfacebase/public_garden_three
-	name = "\improper Public Garden Third Floor"
-	icon_state = "green"
-/area/tether/surfacebase/public_garden
-	name = "\improper Public Garden"
-	icon_state = "purple"
-/area/tether/surfacebase/bar_backroom
-	name = "\improper Bar Backroom"
-	icon_state = "red"
-	sound_env = SMALL_SOFTFLOOR
-
 
 
 // /area/tether/surfacebase/east_stairs_one //This is just part of a lower hallway
