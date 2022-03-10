@@ -113,8 +113,8 @@ var/datum/planet/lavaland/planet_lavaland = null
 
 /datum/weather/lavaland/clear
 	name = "clear"
-	timer_low_bound = 4			// How long this weather must run before it tries to change, in minutes
-	timer_high_bound = 4		// How long this weather can run before it tries to change, in minutes
+	timer_low_bound = 6			// How long this weather must run before it tries to change, in minutes
+	timer_high_bound = 15		// How long this weather can run before it tries to change, in minutes
 	transition_chances = list(
 		WEATHER_CLEAR = 75,
 		WEATHER_PRE_ASH_STORM = 25
