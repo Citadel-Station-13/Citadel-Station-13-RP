@@ -99,7 +99,7 @@
 		dat += text("chosen")
 	else
 		dat += text("<A href='?src=\ref[src];choose=bananium'>Choose</A>")
-	dat += text("<br><font color=''#8d3d5f'><b>Metallic Hydrogen inserted: </b>[amt_mhydrogen]</font> ")
+	dat += text("<br><font color='#8d3d5f'><b>Metallic Hydrogen inserted: </b>[amt_mhydrogen]</font> ")
 	if (chosen == "mhydrogen")
 		dat += text("chosen")
 	else
