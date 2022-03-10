@@ -121,7 +121,6 @@
 	projectile_type = /obj/item/projectile/bullet/pistol/hunter
 	matter = list(DEFAULT_WALL_MATERIAL = 80)
 
-
 /obj/item/ammo_casing/a9mm/flash
 	desc = "A 9mm flash shell casing."
 	icon_state = "r-casing"
@@ -142,6 +141,30 @@
 	icon_state = "ag-casing"
 	projectile_type = /obj/item/projectile/bullet/pistol/silver
 	matter = list(DEFAULT_WALL_MATERIAL = 130, "silver" = 100)
+
+/*
+ * 5.7
+ */
+/obj/item/ammo_casing/a57x28mm
+	desc = "A 5.7x28mm bullet casing."
+	caliber = "5.7x28mm"
+	projectile_type = /obj/item/projectile/bullet/pistol/lap
+	matter = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/ap
+	desc = "A 5.7x28mm armor-piercing bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/ap
+	matter = list(DEFAULT_WALL_MATERIAL = 80, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/hp
+	desc = "A 5.7x28mm hollow-point bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hp
+	matter = list(DEFAULT_WALL_MATERIAL = 60, "copper" = 30)
+
+/obj/item/ammo_casing/a57x28mm/hunter
+	desc = "A 5.7x28mm hunting bullet casing."
+	projectile_type = /obj/item/projectile/bullet/pistol/hunter
+	matter = list(DEFAULT_WALL_MATERIAL = 30, "copper" = 50)
 
 /*
  * .45
@@ -525,3 +548,43 @@
 	icon_state = "globule"
 	projectile_type = /obj/item/projectile/bullet/organic
 	matter = list("flesh" = 100)
+
+//Arrows
+/obj/item/ammo_casing/arrow
+	name = "arrow of questionable material"
+	desc = "You shouldn't be seeing this arrow."
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow
+	caliber = "arrow"
+	icon_state = "arrow"
+	throwforce = 3 //good luck hitting someone with the pointy end of the arrow
+	throw_speed = 3
+	caseless = 1
+
+/obj/item/ammo_casing/arrow/wood
+	name = "wooden arrow"
+	desc = "An arrow made of wood, typically fired from a bow."
+
+/obj/item/ammo_casing/arrow/ash
+	name = "ashen arrow"
+	desc = "An arrow made of wood, hardened by fire."
+	icon_state = "ashenarrow"
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/ash
+
+/obj/item/ammo_casing/arrow/bone
+	name = "bone arrow"
+	desc = "An arrow made of bone and sinew. The tip is sharp enough to pierce through a goliath plate."
+	icon_state = "bonearrow"
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bone
+
+/obj/item/ammo_casing/arrow/bronze
+	name = "bronze arrow"
+	desc = "An arrow made of wood, tipped with bronze. The tip is dense enough to provide some armor penetration."
+	icon_state = "bronzearrow"
+	projectile_type = /obj/item/projectile/bullet/reusable/arrow/bronze
+
+//Plunger
+/obj/item/ammo_casing/arrow/plunger
+	name = "plunger"
+	desc = "It's a plunger, for plunging."
+	icon_state = "plunger"
+	projectile_type = /obj/item/projectile/bullet/reusable/plunger

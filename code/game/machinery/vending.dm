@@ -4,7 +4,7 @@
 /obj/machinery/vending
 	name = "Vendomat"
 	desc = "A generic vending machine."
-	icon = 'icons/obj/vending_vr.dmi' //VOREStation Edit - Eris vending machine sprites
+	icon = 'icons/obj/vending.dmi'
 	icon_state = "generic"
 	anchored = 1
 	density = 1
@@ -1035,7 +1035,7 @@
 	products = list(
 	/obj/item/tray = 8,
 	/obj/item/material/kitchen/utensil/fork = 6,
-	/obj/item/material/knife = 6,
+	/obj/item/material/knife/plastic = 6,
 	/obj/item/material/kitchen/utensil/spoon = 6,
 	/obj/item/material/knife = 3,
 	/obj/item/material/kitchen/rollingpin = 2,
@@ -1044,7 +1044,6 @@
 	/obj/item/glass_extra/stick = 15,
 	/obj/item/glass_extra/straw = 15,
 	/obj/item/clothing/suit/chef/classic = 2,
-	/obj/item/storage/bag/food = 2,
 	/obj/item/storage/toolbox/lunchbox = 3,
 	/obj/item/storage/toolbox/lunchbox/heart = 3,
 	/obj/item/storage/toolbox/lunchbox/cat = 3,
@@ -1053,7 +1052,12 @@
 	/obj/item/storage/toolbox/lunchbox/cti = 3,
 	/obj/item/storage/toolbox/lunchbox/nymph = 3,
 	/obj/item/storage/toolbox/lunchbox/syndicate = 3,
-	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3)
+	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3,
+	/obj/item/trash/bowl = 30,
+	/obj/item/reagent_containers/cooking_container/oven = 5,
+	/obj/item/reagent_containers/cooking_container/fryer = 4
+	)
+
 	contraband = list(/obj/item/material/knife/butch = 2)
 
 /obj/machinery/vending/sovietsoda
@@ -1253,34 +1257,7 @@
 					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4)
 
 //Custom vendors
-/obj/machinery/vending/dinnerware
-	name = "Dinnerware"
-	desc = "A kitchen and restaurant equipment vendor."
-	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
-	icon_state = "dinnerware"
-	products = list(
-	/obj/item/tray = 8,
-	/obj/item/material/kitchen/utensil/fork = 6,
-	/obj/item/material/knife/plastic = 6,
-	/obj/item/material/kitchen/utensil/spoon = 6,
-	/obj/item/material/knife = 3,
-	/obj/item/material/kitchen/rollingpin = 2,
-	/obj/item/reagent_containers/food/drinks/glass2/square = 8,
-	/obj/item/reagent_containers/food/drinks/glass2/shake = 8,
-	/obj/item/glass_extra/stick = 15,
-	/obj/item/glass_extra/straw = 15,
-	/obj/item/clothing/suit/chef/classic = 2,
-	/obj/item/storage/toolbox/lunchbox = 3,
-	/obj/item/storage/toolbox/lunchbox/heart = 3,
-	/obj/item/storage/toolbox/lunchbox/cat = 3,
-	/obj/item/storage/toolbox/lunchbox/nt = 3,
-	/obj/item/storage/toolbox/lunchbox/mars = 3,
-	/obj/item/storage/toolbox/lunchbox/cti = 3,
-	/obj/item/storage/toolbox/lunchbox/nymph = 3,
-	/obj/item/storage/toolbox/lunchbox/syndicate = 3,
-	/obj/item/storage/toolbox/lunchbox/cyancowgirl = 3,
-	/obj/item/trash/bowl = 30)
-	contraband = list(/obj/item/material/knife/butch = 2)
+
 
 //I want this not just as part of the zoo. ;v
 /obj/machinery/vending/food

@@ -36,6 +36,12 @@
 	say_list_type = /datum/say_list/Rickey
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	meat_amount = 4
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/human
+	bone_amount = 2
+	hide_amount = 2
+	exotic_amount = 2
+
 /mob/living/simple_mob/horror/Rickey/death()
 	playsound(src, 'sound/h_sounds/headcrab.ogg', 50, 1)
 	..()

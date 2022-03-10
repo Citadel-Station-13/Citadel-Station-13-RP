@@ -226,6 +226,9 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	update_icon()
 	ui_interact(user)
 
+/obj/item/communicator/AltClick(mob/user)
+	attack_self(user)
+
 // Proc: MouseDrop()
 //Same thing PDAs do
 /obj/item/communicator/MouseDrop(obj/over_object as obj)
@@ -362,4 +365,3 @@ var/global/list/obj/item/communicator/all_communicators = list()
 		return
 
 	icon_state = initial(icon_state)
-

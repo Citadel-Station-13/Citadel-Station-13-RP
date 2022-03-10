@@ -283,7 +283,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define DEPARTMENT_EVERYONE			"everyone"
 #define DEPARTMENT_PLANET			"exploration"
 #define DEPARTMENT_OFFDUTY			"offduty"
-#define DEPARTMENT_TALON			"talon"
+#define DEPARTMENT_TALON			"talon"			// Leaving this definition in place, can perhaps use it in the future but removing it will require digging into other stuff im not comfortable with -BLoop
+#define DEPARTMENT_TRADE			"trade"
 
 // vorstation off-duty time
 #define PTO_SECURITY		"Security"

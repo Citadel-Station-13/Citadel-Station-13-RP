@@ -82,6 +82,9 @@
 	var/poison_per_bite = 3
 	var/poison_type = "neurophage_nanites"
 
+	bone_amount = 8
+	bone_type = /obj/item/stack/material/bone
+
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/apply_melee_effects(var/atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
@@ -132,6 +135,9 @@
  // How long the leap telegraphing is.
 	var/leap_warmup = 2 SECOND
 	var/leap_sound = 'sound/weapons/spiderlunge.ogg'
+
+	exotic_amount = 10
+	exotic_type = /obj/item/stack/sinew
 
  // Multiplies damage if the victim is stunned in some form, including a successful leap.
 /mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/apply_bonus_melee_damage(atom/A, damage_amount)
@@ -201,6 +207,12 @@
 
 	armor = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
+
+	meat_amount = 2
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
+	bone_amount = 2
+	bone_type = /obj/item/stack/material/bone
+
  // Hit and run mob
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran
 	name = "Tajaran cyber stalker"
@@ -222,6 +234,11 @@
 	var/stealth_cooldown = 10 SECONDS
  // world.time
 	var/last_unstealth = 0
+
+	bone_amount = 2
+	bone_type = /obj/item/stack/material/bone
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/grey
 
 
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/stealth()
@@ -381,6 +398,113 @@
 	damage = 12
 	damage_type = BURN
 
+//Boss Mob - The High Priest
+/mob/living/simple_mob/mechanical/cyber_horror/priest
+	name = "hulking cyber horror"
+	desc = "A gnarled, still living convert forcibly integrated into a heavy walker platform composed of living metal."
+	icon = 'icons/mob/64x64.dmi'
+	icon_state = "the_changed"
+	icon_dead = "the_changed_dead"
+	maxHealth = 450
+	health = 450
+	armor = list(melee = 30, bullet = 20, laser = 20, bio = 100, rad = 100)
+	response_harm = "harmlessly punches"
+	harm_intent_damage = 0
+	melee_damage_lower = 5
+	melee_damage_upper = 15
+	attack_armor_pen = 20
+	mob_class = MOB_CLASS_ABERRATION
+	mob_size = MOB_HUGE
+	taser_kill = FALSE
+	movement_cooldown = 8
+	special_attack_cooldown = 45 SECONDS
+	special_attack_min_range = 2
+	special_attack_max_range = 8
+	var/poison_chance = 75
+	var/poison_per_bite = 3
+	var/poison_type = "neurophage_nanites"
+
+	base_attack_cooldown = 30
+	projectiletype = /obj/item/projectile/arc/blue_energy/priest
+	projectilesound = 'sound/weapons/Laser.ogg'
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/priest
+
+/obj/item/projectile/arc/blue_energy/priest
+	name = "nanite cloud"
+	icon_state = "particle-heavy"
+	damage = 15
+	damage_type = BRUTE
+
+/obj/item/projectile/arc/blue_energy/priest/on_hit(var/atom/target, var/blocked = 0)
+	if(ishuman(target))
+		var/mob/living/carbon/human/M = target
+		M.Confuse(rand(3,5))
+
+/datum/ai_holder/simple_mob/ranged/aggressive/priest //Adopted from the Blood Hunter.
+	pointblank = FALSE
+	closest_distance = 0
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/apply_melee_effects(var/atom/A)
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.reagents)
+			var/target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
+			if(L.can_inject(src, null, target_zone))
+				inject_poison(L, target_zone)
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/proc/inject_poison(mob/living/L, target_zone)
+	if(prob(poison_chance))
+		to_chat(L, "<span class='warning'>You feel nanites digging into your skin!</span>")
+		L.reagents.add_reagent(poison_type, poison_per_bite)
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/should_special_attack(atom/A)
+	var/mob_count = 0				// Are there enough mobs?
+	var/turf/T = get_turf(A)
+	for(var/mob/M in range(T, 2))
+		if(M.faction == faction) 	// Don't grenade our friends
+			return FALSE
+		if(M in oview(src, special_attack_max_range))
+			if(!M.stat)
+				mob_count ++
+	if(mob_count < 2)
+		return FALSE
+	else
+		return TRUE
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/do_special_attack(atom/target)
+	set waitfor = FALSE
+
+	// Warm-up
+	Beam(target, icon_state = "sat_beam", time = 2 SECONDS, maxdistance = INFINITY)
+	visible_message(span("warning", "A glowing port opens up in the [src]'s carapace!"))
+	playsound(src, 'sound/effects/turret/move1.wav', 50, 1)
+	sleep(2 SECONDS)
+
+	for(var/i = 1 to 1)
+		if(target) // Might get deleted in the meantime.
+			var/turf/T = get_turf(target)
+			if(T)
+				visible_message(span("warning", "[src] discharges a beam of concentrated energy!"))
+				playsound(src, 'sound/weapons/lasercannonfire.ogg', 70, 1)
+				face_atom(T)
+				var/obj/item/projectile/arc/radioactive/priest/ball = new(loc)
+				ball.old_style_target(T, src)
+				ball.fire()
+				sleep(2 SECONDS)
+
+	visible_message(span("warning", "[src] closes its reactor port."))
+	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
+
+/obj/item/projectile/arc/radioactive/priest
+	name  = "superheated plama discharge"
+	icon_state = "plasma3"
+	rad_power = 10
+
+/obj/item/projectile/arc/radioactive/priest/on_impact(turf/T)
+	new /obj/effect/explosion(T)
+	SSradiation.radiate(T, rad_power)
+	explosion(T, 0, 1, 4, adminlog = FALSE)
+
 ////////////////////////
 //Lavaland Cyber_Horrors
 ////////////////////////
@@ -450,5 +574,25 @@
 /mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror/surt
 	name = "smoldering hunter drone"
 	desc = "This creature, formerly a cat, has had arachnid legs crudely grafted to its body. It moves with frightening acuity."
+
+	heat_resist = 1
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/surt
+	name = "warped cyber horror"
+	desc = "A gnarled, still living convert forcibly integrated into a heavy walker platform composed of living metal. The metal has bubbled and warped unnaturally from the heat."
+
+	heat_resist = 1
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/thechanged
+	name = "The Changed One"
+	desc = "The casing and writhing flesh of this body have been adorned in ritual wax and religious icons. Burned prayer sheets daubed in its own dripping blood flap in the stifling air. The cruciform body integrated into the machine wriggles feebly, its jaw tightly wagging up and down - it has no mouth."
+	maxHealth = 1500
+	health = 1500
+	armor = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
+	movement_cooldown = 4
+	melee_damage_lower = 15
+	melee_damage_upper = 25
+	attack_armor_pen = 25
+	base_attack_cooldown = 7
 
 	heat_resist = 1

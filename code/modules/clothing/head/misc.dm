@@ -398,6 +398,7 @@
 	icon_state = "beanie"
 	addblends = "beanie_a"
 	body_parts_covered = 0
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/beanie_loose
 	name = "loose beanie"
@@ -405,6 +406,7 @@
 	icon_state = "beanie_hang"
 	addblends = "beanie_hang_a"
 	body_parts_covered = 0
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/head/beretg
 	name = "beret"
@@ -645,11 +647,22 @@
 /obj/item/clothing/head/papersack
 	name = "paper sack hat"
 	desc = "A paper sack with crude holes cut out for eyes. Useful for hiding one's identity or ugliness."
-	icon_state = "papersack"
+	icon_state = "paperbag_None"
 	flags_inv = BLOCKHAIR|HIDEFACE
 
 /obj/item/clothing/head/papersack/smiley
 	name = "paper sack hat"
 	desc = "A paper sack with crude holes cut out for eyes and a sketchy smile drawn on the front. Not creepy at all."
-	icon_state = "papersack_smile"
+	icon_state = "paperbag_SmileyFace"
 	flags_inv = BLOCKHAIR|HIDEFACE
+
+/obj/item/clothing/head/ghost_sheet
+	name = "ghost sheet"
+	desc = "The hands float by themselves, so it's extra spooky."
+	icon_state = "ghost_sheet"
+	item_state = "ghost_sheet"
+	throwforce = 0
+	throw_speed = 1
+	throw_range = 2
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|HEAD|FACE
+	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEGLOVES|HIDETIE|HIDEHOLSTER

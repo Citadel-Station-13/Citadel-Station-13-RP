@@ -68,6 +68,10 @@
 	fire_sound = 'sound/weapons/weaponsounds_smallpistolshot.ogg'
 	damage = 20
 
+/obj/item/projectile/bullet/pistol/lap //Light Armor Piercing
+	damage = 20
+	armor_penetration = 10
+
 /obj/item/projectile/bullet/pistol/ap
 	damage = 15
 	armor_penetration = 30

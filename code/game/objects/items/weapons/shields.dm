@@ -174,6 +174,7 @@
 	name = "metal shield"
 	desc = "A large shield made of wired and welded sheets of metal. The handle is made of cloth and leather, making it unwieldy."
 	armor = list("melee" = 25, "bullet" = 25, "laser" = 5, "energy" = 0, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 80)
+	icon = 'icons/obj/weapons.dmi'
 	icon_state = "makeshift_shield"
 	item_state = "metal"
 	slot_flags = null
