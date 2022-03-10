@@ -35,7 +35,6 @@
 #include "code\__DEFINES\damage_organs.dm"
 #include "code\__DEFINES\dna.dm"
 #include "code\__DEFINES\exosuit_fab.dm"
-#include "code\__defines\exosuit_fab.dm"
 #include "code\__DEFINES\gamemode.dm"
 #include "code\__DEFINES\holidays.dm"
 #include "code\__DEFINES\holomap.dm"
