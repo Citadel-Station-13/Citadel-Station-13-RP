@@ -384,7 +384,7 @@
 				prob(4);/obj/item/coin/gold,
 				prob(3);/obj/item/coin/phoron,
 				prob(1);/obj/item/coin/uranium,
-				prob(2);/obj/item/coin/platinum,
+				prob(2);/obj/item/coin/durasteel,
 				prob(1);/obj/item/coin/diamond)
 
 /obj/random/action_figure
