@@ -7,14 +7,8 @@
 	var/obj/item/tank/tank_two
 	var/obj/item/assembly/attached_device
 	var/mob/attacher = null
-	var/valve_open = FALSE
-	var/toggle = TRUE
-	flags = PROXMOVE
-
-/obj/item/transfer_valve/proc/process_activation(var/obj/item/D)
-
-/obj/item/transfer_valve/IsAssemblyHolder()
-	return TRUE
+	var/valve_open = 0
+	var/toggle = 1
 
 /obj/item/transfer_valve/attackby(obj/item/item, mob/user)
 	var/turf/location = get_turf(src) // For admin logs
@@ -61,16 +55,16 @@
 		SStgui.update_uis(src) // update all UIs attached to src
 	return
 
+
 /obj/item/transfer_valve/HasProximity(turf/T, atom/movable/AM, old_loc)
 	attached_device?.HasProximity(T, AM, old_loc)
 
 /obj/item/transfer_valve/Moved(old_loc, direction, forced)
 	. = ..()
 	if(isturf(old_loc))
-		unsense_proximity(callback = .HasProximity, center = old_loc)
+		unsense_proximity(callback = /atom/proc/HasProximity, center = old_loc)
 	if(isturf(loc))
-		sense_proximity(callback = .HasProximity)
-
+		sense_proximity(callback = /atom/proc/HasProximity)
 
 /obj/item/transfer_valve/attack_self(mob/user)
 	ui_interact(user)
@@ -90,7 +84,6 @@
 	data["tank_two"] = tank_two ? tank_two.name : null
 	data["attached_device"] = attached_device ? attached_device.name : null
 	data["valve"] = valve_open
-
 	return data
 
 /obj/item/transfer_valve/ui_act(action, params)
@@ -119,15 +112,14 @@
 		update_icon()
 		add_fingerprint(usr)
 
-/obj/item/transfer_valve/process_activation(var/obj/item/D)
+/obj/item/transfer_valve/proc/process_activation(var/obj/item/D)
 	if(toggle)
-		toggle = 0
+		toggle = FALSE
 		toggle_valve()
-		spawn(50) // To stop a signal being spammed from a proxy sensor constantly going off or whatever
-			toggle = 1
+		VARSET_IN(src, toggle, TRUE, 5 SECONDS)
 
 /obj/item/transfer_valve/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	underlays = null
 
 	if(!tank_one && !tank_two && !attached_device)
@@ -136,13 +128,13 @@
 	icon_state = "valve"
 
 	if(tank_one)
-		overlays += "[tank_one.icon_state]"
+		add_overlay("[tank_one.icon_state]")
 	if(tank_two)
 		var/icon/J = new(icon, icon_state = "[tank_two.icon_state]")
 		J.Shift(WEST, 13)
 		underlays += J
 	if(attached_device)
-		overlays += "device"
+		add_overlay("device")
 
 /obj/item/transfer_valve/proc/remove_tank(obj/item/tank/T)
 	if(tank_one == T)

@@ -245,11 +245,11 @@ var/list/global/tank_gauge_cache = list()
 		data["connected"] = FALSE
 
 	data["maskConnected"] = FALSE
-	if(C.wear_mask && (C.wear_mask.item_flags & AIRTIGHT))
+	if(C.wear_mask && (C.wear_mask.item_flags & ALLOWINTERNALS))
 		data["maskConnected"] = TRUE
 	else if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		if(H.head && (H.head.item_flags & AIRTIGHT))
+		if(H.head && (H.head.item_flags & ALLOWINTERNALS))
 			data["maskConnected"] = TRUE
 
 	return data

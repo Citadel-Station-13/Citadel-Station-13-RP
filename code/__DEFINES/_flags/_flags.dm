@@ -67,14 +67,6 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define NO_LAVA_GEN					(1<<5)	// Blocks lava rivers being generated on the turf
 #define NO_RUINS					(1<<6)	// Blocks ruins spawning on the turf
 
-//Flags for items (equipment) - Used in /obj/item/var/item_flags
-#define THICKMATERIAL			(1<<0)	// Prevents syringes, parapens and hyposprays if equipped to slot_suit or slot_head.
-#define AIRTIGHT				(1<<1)	// Functions with internals.
-#define NOSLIP					(1<<2)	// Prevents from slipping on wet floors, in space, etc.
-#define BLOCK_GAS_SMOKE_EFFECT	(1<<3)	// Blocks the effect that chemical clouds would have on a mob -- glasses, mask and helmets ONLY! (NOTE: flag shared with ONESIZEFITSALL)
-#define FLEXIBLEMATERIAL		(1<<4)	// At the moment, masks with this flag will not prevent eating even if they are covering your face.
-#define ALLOW_SURVIVALFOOD		(1<<5)	// Allows special survival food items to be eaten through it
-
 // Flags for pass_flags. - Used in /atom/var/pass_flags
 #define PASSTABLE				(1<<0)
 #define PASSGLASS				(1<<1)

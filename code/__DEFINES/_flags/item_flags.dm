@@ -32,9 +32,12 @@
 #define LAVAPROTECT				(1<<0)
 #define STOPSPRESSUREDAMAGE		(1<<1)	// SUIT and HEAD items which stop pressure damage. To stop you taking all pressure damage you must have both a suit and head item with this flag.
 */
-#define BLOCK_GAS_SMOKE_EFFECT	(1<<2)	// Blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY! (NOTE: flag shared with ONESIZEFITSALL)
-#define ALLOWINTERNALS			(1<<3)	// Mask allows internals
-#define NOSLIP					(1<<4)	// Prevents from slipping on wet floors, in space etc
+//Flags for items (equipment) - Used in /obj/item/var/item_flags
+#define ALLOWINTERNALS			(1<<0)	// Functions with internals.
+#define NOSLIP					(1<<1)	// Prevents from slipping on wet floors, in space, etc.
+#define BLOCK_GAS_SMOKE_EFFECT	(1<<2)	// Blocks the effect that chemical clouds would have on a mob -- glasses, mask and helmets ONLY! (NOTE: flag shared with ONESIZEFITSALL)
+#define FLEXIBLEMATERIAL		(1<<3)	// At the moment, masks with this flag will not prevent eating even if they are covering your face.
+#define ALLOW_SURVIVALFOOD		(1<<4)	// Allows special survival food items to be eaten through it
 /*
 #define NOSLIP_ICE				(1<<5)	// Prevents from slipping on frozen floors
 */
