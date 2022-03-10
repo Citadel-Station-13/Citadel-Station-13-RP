@@ -38,7 +38,7 @@
 		)
 
 /datum/turbolift
-	music = list('sound/music/elevator.ogg')  // Woo elevator music!
+//	music = list('sound/music/elevator.ogg')  // Woo elevator music!
 
 /obj/machinery/atmospherics/unary/vent_pump/positive
 	use_power = USE_POWER_IDLE
