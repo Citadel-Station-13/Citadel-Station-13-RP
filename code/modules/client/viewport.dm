@@ -50,7 +50,7 @@ var/global/list/valid_icon_sizes = list(32, 48, 64, 96, 128)
 			eye = last_eye
 
 		// Recenter skybox and lighting.
-//		set_skybox_offsets(last_view_x_dim, last_view_y_dim)
+//		set_skybox_offsets(last_view_x_dim, last_view_y_dim) // bork bork
 		if(mob)
 			mob.reload_fullscreen()
 	verb/force_onresize_view_update()
@@ -58,7 +58,6 @@ var/global/list/valid_icon_sizes = list(32, 48, 64, 96, 128)
 		set src = usr
 		set category = "Debug"
 		OnResize()
-
 	verb/show_winset_debug_values()
 		set name = "Show Client View Debug Values"
 		set src = usr
@@ -71,7 +70,7 @@ var/global/list/valid_icon_sizes = list(32, 48, 64, 96, 128)
 		to_chat(usr, "Icon size: [divisor]")
 		to_chat(usr, "xDim: [round(text2num(winsize_string) / divisor)]")
 		to_chat(usr, "yDim: [round(text2num(copytext(winsize_string,findtext(winsize_string,"x")+1,0)) / divisor)]")
-/* 	proc/set_skybox_offsets(var/x_dim, var/y_dim)
+/* 	proc/set_skybox_offsets(var/x_dim, var/y_dim) // This is fucky.
 		if(!skybox)
 			update_skybox(TRUE)
 			return

@@ -838,7 +838,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(view == world.view)
 		view = input("Select view range:", "FUCK YE", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,128)
 	else
-		OnResize()
+		SetWindowIconSize(prefs.icon_size)
 	mob.set_viewsize(view)
 
 	log_admin("[key_name(usr)] changed their view range to [view].")
