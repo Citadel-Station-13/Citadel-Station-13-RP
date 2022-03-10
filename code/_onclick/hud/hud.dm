@@ -52,7 +52,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 /datum/global_hud/New(client/C)
 	var/matrix/M = matrix()
-	M.Scale(ceil(C.last_view_x_dim/7),ceil(C.last_view_y_dim/7))
+	M.Scale(ceil(C.last_view_x_dim/7),ceil(C.last_view_y_dim/7)) // probably doesn't work.
 
 	//420erryday psychedellic colours screen overlay for when you are high
 	druggy = new /obj/screen/global_screen()
@@ -84,7 +84,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	centermarker.icon = 'icons/mob/screen1.dmi'
 	centermarker.icon_state = "centermarker"
 	centermarker.screen_loc = "CENTER,CENTER"
-
+	// These probably don't work and need a refactor.
 	nvg = setup_overlay("scanline", "#06ff00")
 	thermal = setup_overlay("scanline", "#ff0000")
 	meson = setup_overlay("scanline", "#9fd800")
@@ -122,7 +122,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	O.plane = PLANE_FULLSCREEN
 
 	//welding mask overlay black/dither
-/* 	darkMask = newlist(/obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen)
+/* 	darkMask = newlist(/obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen) // We must fix this.
 	O = darkMask[1]
 	O.screen_loc = "WEST+2,SOUTH+2 to WEST+4,NORTH-2"
 	O = darkMask[2]
