@@ -169,3 +169,29 @@
 					var/mob/living/caller = src
 					return GLOB.all_languages[caller.default_language]
 	return null
+
+/datum/multilingual_say_piece
+	var/datum/language/speaking = null
+	var/message = ""
+
+/datum/multilingual_say_piece/New(datum/language/new_speaking, new_message)
+	. = ..()
+	speaking = new_speaking
+	if(new_message)
+		message = new_message
+
+/* These are here purely because it would be hell to try to convert everything over to using the multi-lingual system at once */
+/proc/message_to_multilingual(message, datum/language/speaking = null)
+	. = list(new /datum/multilingual_say_piece(speaking, message))
+
+/proc/multilingual_to_message(list/message_pieces, var/requires_machine_understands = FALSE, var/with_capitalization = FALSE)
+	. = ""
+	for(var/datum/multilingual_say_piece/S in message_pieces)
+		var/message_to_append = S.message
+		if(S.speaking)
+			if(with_capitalization)
+				message_to_append = S.speaking.format_message_plain(S.message)
+			if(requires_machine_understands && !S.speaking.machine_understands)
+				message_to_append = S.speaking.scramble(S.message)
+		. += message_to_append + " "
+	. = trim_right(.)

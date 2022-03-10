@@ -35,8 +35,12 @@
 				// /obj/machinery/message_server/proc/send_pda_message(var/recipient = "",var/sender = "",var/message = "")
 				var/obj/item/pda/P
 				var/list/viables = list()
-				for(var/obj/item/pda/check_pda in GLOB.PDAs)
-					if (!check_pda.owner||check_pda.toff||check_pda == src||check_pda.hidden)
+				for(var/obj/item/pda/check_pda in GLOB.PDA_Manifest)
+					if (!check_pda.owner || check_pda == src || check_pda.hidden)
+						continue
+
+					var/datum/data/pda/app/messenger/M = check_pda.find_program(/datum/data/pda/app/messenger)
+					if(!M || M.toff)
 						continue
 					viables.Add(check_pda)
 
@@ -112,11 +116,6 @@
 				//Commented out because we don't send messages like this anymore.  Instead it will just popup in their chat window.
 				//P.tnote += "<i><b>&larr; From [sender] (Unknown / spam?):</b></i><br>[message]<br>"
 
-				if (!P.message_silent)
-					playsound(P.loc, 'sound/machines/twobeep.ogg', 50, 1)
-				for (var/mob/O in hearers(3, P.loc))
-					if(!P.message_silent)
-						to_chat(O, "[icon2html(thing = P, target = O)] *[P.ringtone]*")
 				//Search for holder of the PDA.
 				var/mob/living/L = null
 				if(P.loc && isliving(P.loc))

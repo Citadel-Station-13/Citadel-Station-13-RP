@@ -108,6 +108,7 @@ var/global/list/default_pai_software = list()
 			S.toggle(src)
 		else
 			nano_ui_interact(src, ui_key = soft)
+			S.ui_interact(src)
 		return 1
 
 	else if(href_list["stopic"])

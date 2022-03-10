@@ -64,6 +64,47 @@ This actually tests if they have the same entries and values.
 /proc/sortKey(list/L, order=1)
 	return sortTim(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
 
+//Mergsort: does the actual sorting and returns the results back to sortAtom
+/proc/mergeKey(var/list/client/L, var/list/client/R, var/order = 1)
+	var/Li=1
+	var/Ri=1
+	var/list/result = new()
+	while(Li <= L.len && Ri <= R.len)
+		var/client/rL = L[Li]
+		var/client/rR = R[Ri]
+		if(sorttext(rL.ckey, rR.ckey) == order)
+			result += L[Li++]
+		else
+			result += R[Ri++]
+
+	if(Li <= L.len)
+		return (result + L.Copy(Li, 0))
+	return (result + R.Copy(Ri, 0))
+
+//Mergesort: divides up the list into halves to begin the sort
+/proc/sortAtom(var/list/atom/L, var/order = 1)
+	if(isnull(L) || L.len < 2)
+		return L
+	var/middle = L.len / 2 + 1
+	return mergeAtoms(sortAtom(L.Copy(0,middle)), sortAtom(L.Copy(middle)), order)
+
+//Mergsort: does the actual sorting and returns the results back to sortAtom
+/proc/mergeAtoms(var/list/atom/L, var/list/atom/R, var/order = 1)
+	var/Li=1
+	var/Ri=1
+	var/list/result = new()
+	while(Li <= L.len && Ri <= R.len)
+		var/atom/rL = L[Li]
+		var/atom/rR = R[Ri]
+		if(sorttext(rL.name, rR.name) == order)
+			result += L[Li++]
+		else
+			result += R[Ri++]
+
+	if(Li <= L.len)
+		return (result + L.Copy(Li, 0))
+	return (result + R.Copy(Ri, 0))
+
 //Specifically for record datums in a list.
 /proc/sortRecord(list/L, field = "name", order = 1)
 	GLOB.cmp_field = field

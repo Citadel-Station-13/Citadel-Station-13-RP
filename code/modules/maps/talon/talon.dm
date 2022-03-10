@@ -491,7 +491,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 // Just in case someone decides to clean up radio.dm and remove this Im going to leave a copy commented out here. Might save someone some trouble later trying to find this. Bloop
 /*
-/obj/item/bluespace_radio/talon_prelinked
+/obj/item/radio/bluespacehandset/talon_prelinked
 	name = "bluespace radio (talon)"
 	handset = /obj/item/radio/bluespace_handset/linked/talon_prelinked
 

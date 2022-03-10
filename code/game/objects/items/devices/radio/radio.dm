@@ -1,5 +1,5 @@
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
-GLOBAL_LIST_INIT(default_internal_channels, list(
+var/global/list/default_internal_channels = list(
 	num2text(PUB_FREQ) = list(),
 	num2text(AI_FREQ)  = list(access_synth),
 	num2text(ENT_FREQ) = list(),
@@ -10,21 +10,22 @@ GLOBAL_LIST_INIT(default_internal_channels, list(
 	num2text(MED_I_FREQ)=list(access_medical_equip),
 	num2text(SEC_FREQ) = list(access_security),
 	num2text(SEC_I_FREQ)=list(access_security),
-	num2text(SCI_FREQ) = list(access_tox, access_robotics, access_xenobiology, access_explorer),
+	num2text(SCI_FREQ) = list(access_tox, access_robotics, access_xenobiology),
 	num2text(SUP_FREQ) = list(access_cargo, access_mining_station),
 	num2text(SRV_FREQ) = list(access_janitor, access_library, access_hydroponics, access_bar, access_kitchen),
-	num2text(EXP_FREQ) = list(access_explorer, access_pilot, access_rd)
-))
+	num2text(EXP_FREQ) = list(access_explorer, access_pilot)
+)
 
-GLOBAL_LIST_INIT(default_medbay_channels, list(
+var/global/list/default_medbay_channels = list(
 	num2text(PUB_FREQ) = list(),
-	num2text(MED_FREQ) = list(access_medical_equip),
-	num2text(MED_I_FREQ) = list(access_medical_equip)
-))
+	num2text(MED_FREQ) = list(),
+	num2text(MED_I_FREQ) = list()
+)
 
 /obj/item/radio
 	icon = 'icons/obj/radio_vr.dmi'
 	name = "shortwave radio"
+	desc = "Used to talk to people when headsets don't function. Range is limited."
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "radio"
@@ -58,7 +59,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	var/bs_tx_preload_id
 	var/bs_rx_preload_id
 
-	matter = list("glass" = 25,DEFAULT_WALL_MATERIAL = 75)
+	matter = list(MAT_GLASS = 25,MAT_STEEL = 75)
 	var/const/FREQ_LISTENING = 1
 	var/list/internal_channels
 
@@ -70,11 +71,25 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CHAT)
 
-/obj/item/radio/Initialize(mapload)
-	. = ..()
+/obj/item/radio/New()
+	..()
 	wires = new(src)
-	internal_channels = GLOB.default_internal_channels.Copy()
+	internal_channels = default_internal_channels.Copy()
 	listening_objects += src
+
+/obj/item/radio/Destroy()
+	qdel(wires)
+	wires = null
+	listening_objects -= src
+	if(radio_controller)
+		radio_controller.remove_object(src, frequency)
+		for (var/ch_name in channels)
+			radio_controller.remove_object(src, radiochannels[ch_name])
+	return ..()
+
+
+/obj/item/radio/Initialize()
+	. = ..()
 	if(frequency < RADIO_LOW_FREQ || frequency > RADIO_HIGH_FREQ)
 		frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
 	set_frequency(frequency)
@@ -97,8 +112,6 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 						bs_tx_weakref = WEAKREF(AIO)
 						AIO.link_radio(src)
 						break
-			if(!bs_tx_weakref)
-				stack_trace("A radio [src] at [x],[y],[z] specified bluespace prelink IDs, but the machines with corresponding IDs ([bs_tx_preload_id], [bs_rx_preload_id]) couldn't be found.")
 
 		if(bs_rx_preload_id)
 			var/found = 0
@@ -115,18 +128,6 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 						AIO.link_radio(src)
 						found = 1
 						break
-			if(!found)
-				stack_trace("A radio [src] at [x],[y],[z] specified bluespace prelink IDs, but the machines with corresponding IDs ([bs_tx_preload_id], [bs_rx_preload_id]) couldn't be found.")
-
-/obj/item/radio/Destroy()
-	qdel(wires)
-	wires = null
-	listening_objects -= src
-	if(radio_controller)
-		radio_controller.remove_object(src, frequency)
-		for (var/ch_name in channels)
-			radio_controller.remove_object(src, radiochannels[ch_name])
-	return ..()
 
 /obj/item/radio/proc/recalculateChannels()
 	return
@@ -144,10 +145,10 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	return ui_interact(user)
 
-/obj/item/radio/ui_interact(mob/user, datum/tgui/ui)
+/obj/item/radio/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Radio", name)
+		ui = new(user, src, "Radio", name, parent_ui)
 		ui.open()
 
 /obj/item/radio/ui_data(mob/user)
@@ -228,6 +229,11 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/radio/proc/ToggleReception()
 	listening = !listening && !(wires.is_cut(WIRE_RADIO_RECEIVER) || wires.is_cut(WIRE_RADIO_SIGNAL))
 
+/obj/item/radio/CanUseTopic()
+	if(!on)
+		return UI_CLOSE
+	return ..()
+
 /obj/item/radio/ui_act(action, params)
 	if(..())
 		return TRUE
@@ -284,28 +290,33 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(. && iscarbon(usr))
 		playsound(src, "button", 10)
 
-/obj/item/radio/proc/autosay(var/message, var/from, var/channel, list/zlevels = list(0)) //BS12 EDIT
+GLOBAL_DATUM(autospeaker, /mob/living/silicon/ai/announcer)
+
+/obj/item/radio/proc/autosay(var/message, var/from, var/channel, var/list/zlevels)
+	if(!GLOB.autospeaker)
+		return
 	var/datum/radio_frequency/connection = null
 	if(channel && channels && channels.len > 0)
-		if (channel == "department")
-			//to_chat(world, "DEBUG: channel=\"[channel]\" switching to \"[channels[1]]\"")
+		if(channel == "department")
 			channel = channels[1]
 		connection = secure_radio_connections[channel]
 	else
 		connection = radio_connection
 		channel = null
-	if (!istype(connection))
+	if(!istype(connection))
 		return
 
-	var/static/mob/living/silicon/ai/announcer/A = new /mob/living/silicon/ai/announcer(null, null, null, 1)
-	A.SetName(from)
-	Broadcast_Message(connection, A,
+	if(!LAZYLEN(zlevels))
+		zlevels = list(0)
+
+	GLOB.autospeaker.SetName(from)
+	Broadcast_Message(connection, GLOB.autospeaker,
 						0, "*garbled automated announcement*", src,
-						message, from, "Automated Announcement", from, "synthesized voice",
-						4, 0, zlevels, connection.frequency, "states")
+						message_to_multilingual(message), from, "Automated Announcement", from, "synthesized voice",
+						DATA_FAKE, 0, zlevels, connection.frequency, "states")
 
 // Interprets the message mode when talking into a radio, possibly returning a connection datum
-/obj/item/radio/proc/handle_message_mode(mob/living/M as mob, message, message_mode)
+/obj/item/radio/proc/handle_message_mode(mob/living/M as mob, list/message_pieces, message_mode)
 	// If a channel isn't specified, send to common.
 	if(!message_mode || message_mode == "headset")
 		return radio_connection
@@ -319,13 +330,13 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 			return secure_radio_connections[message_mode]
 
 	// If we were to send to a channel we don't have, drop it.
-	return null
+	return RADIO_CONNECTION_FAIL
 
-/obj/item/radio/talk_into(mob/living/M as mob, message, channel, var/verb = "says", var/datum/language/speaking = null)
+/obj/item/radio/talk_into(mob/living/M as mob, list/message_pieces, channel, var/verb = "says")
 	if(!on)
 		return FALSE // the device has to be on
 	//  Fix for permacell radios, but kinda eh about actually fixing them.
-	if(!M || !message)
+	if(!M || !message_pieces)
 		return FALSE
 
 	if(istype(M))
@@ -351,7 +362,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	*/
 
 	//#### Grab the connection datum ####//
-	var/message_mode = handle_message_mode(M, message, channel)
+	var/message_mode = handle_message_mode(M, message_pieces, channel)
 	switch(message_mode)
 		if(RADIO_CONNECTION_FAIL)
 			return FALSE
@@ -423,7 +434,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		"name" = displayname,	// the mob's display name
 		"job" = jobname,		// the mob's job
 		"key" = mobkey,			// the mob's key
-		"vmessage" = pick(M.speak_emote), // the message to display if the voice wasn't understood
+		"vmessage" = message_to_multilingual(pick(M.speak_emote)), // the message to display if the voice wasn't understood
 		"vname" = M.voice_name, // the name to display if the voice wasn't understood
 		"vmask" = voicemask,	// 1 if the mob is using a voice gas mask
 
@@ -432,7 +443,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 		// Other tags:
 		"compression" = rand(45,50), // compressed radio signal
-		"message" = message, // the actual sent message
+		"message" = message_pieces, // the actual sent message
 		"connection" = connection, // the radio connection to use
 		"radio" = src, // stores the radio used for transmission
 		"slow" = 0, // how much to sleep() before broadcasting - simulates net lag
@@ -441,8 +452,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		"server" = null, // the last server to log this signal
 		"reject" = 0,	// if nonzero, the signal will not be accepted by any broadcasting machinery
 		"level" = pos_z, // The source's z level
-		"verb" = verb,
-		"language" = speaking
+		"verb" = verb
 	)
 	signal.frequency = connection.frequency // Quick frequency set
 
@@ -471,7 +481,7 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 		var/list/jamming = is_jammed(src)
 		if(jamming)
 			var/distance = jamming["distance"]
-			to_chat(M, "<span class='danger'>[icon2html(src, world)] You hear the [distance <= 2 ? "loud hiss" : "soft hiss"] of static.</span>")
+			to_chat(M, "<span class='danger'>[icon2html(src)] You hear the [distance <= 2 ? "loud hiss" : "soft hiss"] of static.</span>")
 			return FALSE
 
 		// First, we want to generate a new radio signal
@@ -525,33 +535,19 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	//Nothing handled any sort of remote radio-ing and returned before now, just squawk on this zlevel.
 	return Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
-		src, message, displayname, jobname, real_name, M.voice_name,
-		filter_type, signal.data["compression"], GLOB.using_map.get_map_levels(pos_z), connection.frequency, verb, speaking)
+		src, message_pieces, displayname, jobname, real_name, M.voice_name,
+		filter_type, signal.data["compression"], GLOB.using_map.get_map_levels(pos_z), connection.frequency, verb)
 
-/obj/item/radio/hear_talk(mob/M as mob, msg, var/verb = "says", var/datum/language/speaking = null)
-	if (broadcasting)
+
+/obj/item/radio/hear_talk(mob/M as mob, list/message_pieces, var/verb = "says")
+	if(broadcasting)
 		if(get_dist(src, M) <= canhear_range)
-			talk_into(M, msg,null,verb,speaking)
-
-
-/*
-/obj/item/radio/proc/accept_rad(obj/item/radio/R as obj, message)
-
-	if ((R.frequency == frequency && message))
-		return TRUE
-	else if
-
-	else
-		return null
-	return
-*/
-
+			talk_into(M, message_pieces, null, verb)
 
 /obj/item/radio/proc/receive_range(freq, level)
 	// check if this radio can receive on the given frequency, and if so,
 	// what the range is in which mobs will hear the radio
 	// returns: -1 if can't receive, range otherwise
-
 	if(wires.is_cut(WIRE_RADIO_RECEIVER))
 		return -1
 	if(!listening)
@@ -559,8 +555,8 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 	if(is_jammed(src))
 		return -1
 	if(!(0 in level))
-		var/turf/position = get_turf(src)
-		if((!position || !(position.z in level)) && !bluespace_radio) //VOREStation Edit
+		var/pos_z = get_z(src)
+		if(!(pos_z in level))
 			return -1
 	if(freq in ANTAG_FREQS)
 		if(!(src.syndie))//Checks to see if it's allowed on that frequency, based on the encryption keys
@@ -593,12 +589,12 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 /obj/item/radio/examine(mob/user)
 	. = ..()
-	if ((in_range(src, user) || loc == user))
-		if (b_stat)
+
+	if((in_range(src, user) || loc == user))
+		if(b_stat)
 			. += "<span class='notice'>\The [src] can be attached and modified!</span>"
 		else
 			. += "<span class='notice'>\The [src] can not be modified or attached!</span>"
-	return
 
 /obj/item/radio/attackby(obj/item/W as obj, mob/user as mob)
 	..()
@@ -717,7 +713,9 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 
 	for (var/ch_name in src.channels)
 		if(!radio_controller)
-			src.name = "CONTACT CODERS: NO RADIO CONTROLLER"
+			sleep(30) // Waiting for the radio_controller to be created.
+		if(!radio_controller)
+			src.name = "broken radio"
 			return
 
 		secure_radio_connections[ch_name] = radio_controller.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
@@ -749,165 +747,6 @@ GLOBAL_LIST_INIT(default_medbay_channels, list(
 /obj/item/radio/phone/medbay
 	frequency = MED_I_FREQ
 
-/obj/item/radio/phone/medbay/Initialize(mapload)
-	. = ..()
-	internal_channels = GLOB.default_medbay_channels.Copy()
-
-//Consolidation from radio_vr.
-/obj/item/radio/phone
-	subspace_transmission = 1
-	canhear_range = 0
-	adhoc_fallback = TRUE
-
-/obj/item/radio/emergency
-	name = "Medbay Emergency Radio Link"
-	icon_state = "med_walkietalkie"
-	frequency = MED_I_FREQ
-	subspace_transmission = 1
-	adhoc_fallback = TRUE
-
-/obj/item/radio/emergency/Initialize(mapload)
-	. = ..()
-	internal_channels = GLOB.default_medbay_channels.Copy()
-
-//Pathfinder's Subspace Radio
-/obj/item/bluespace_radio
-	name = "subspace radio"
-	desc = "A powerful new radio originally gifted to Nanotrasen from Ward Takahashi. Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere."
-	catalogue_data = list()///datum/category_item/catalogue/information/organization/ward_takahashi)
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_override = 'icons/mob/back_vr.dmi'
-	icon_state = "radiopack"
-	item_state = "radiopack"
-	slot_flags = SLOT_BACK
-	force = 5
-	throwforce = 6
-	preserve_item = 1
-	w_class = ITEMSIZE_LARGE
-	action_button_name = "Remove/Replace Handset"
-
-	var/obj/item/radio/bluespace_handset/linked/handset = /obj/item/radio/bluespace_handset/linked
-
-/obj/item/bluespace_radio/Initialize(Mapload) //starts without a cell for rnd
-	. = ..()
-	handset = new(src, src)
-
-/obj/item/bluespace_radio/Destroy()
-	. = ..()
-	QDEL_NULL(handset)
-
-/obj/item/bluespace_radio/ui_action_click()
-	toggle_handset()
-
-/obj/item/bluespace_radio/attack_hand(mob/user)
-	if(loc == user)
-		toggle_handset()
-	else
-		..()
-
-/obj/item/bluespace_radio/MouseDrop()
-	if(ismob(loc))
-		if(!CanMouseDrop(src))
-			return
-		var/mob/M = loc
-		if(!M.unEquip(src))
-			return
-		add_fingerprint(usr)
-		M.put_in_any_hand_if_possible(src)
-
-/obj/item/bluespace_radio/attackby(obj/item/W, mob/user, params)
-	if(W == handset)
-		reattach_handset(user)
-	else
-		return ..()
-
-/obj/item/bluespace_radio/verb/toggle_handset()
-	set name = "Toggle Handset"
-	set category = "Object"
-
-	var/mob/living/carbon/human/user = usr
-	if(!handset)
-		to_chat(user, "<span class='warning'>The handset is missing!</span>")
-		return
-
-	if(handset.loc != src)
-		reattach_handset(user) //Remove from their hands and back onto the defib unit
-		return
-
-	if(!slot_check())
-		to_chat(user, "<span class='warning'>You need to equip [src] before taking out [handset].</span>")
-	else
-		if(!usr.put_in_hands(handset)) //Detach the handset into the user's hands
-			to_chat(user, "<span class='warning'>You need a free hand to hold the handset!</span>")
-		update_icon() //success
-
-//checks that the base unit is in the correct slot to be used
-/obj/item/bluespace_radio/proc/slot_check()
-	var/mob/M = loc
-	if(!istype(M))
-		return 0 //not equipped
-
-	if((slot_flags & SLOT_BACK) && M.get_equipped_item(slot_back) == src)
-		return 1
-	if((slot_flags & SLOT_BACK) && M.get_equipped_item(slot_s_store) == src)
-		return 1
-
-	return 0
-
-/obj/item/bluespace_radio/dropped(mob/user)
+/obj/item/radio/phone/medbay/New()
 	..()
-	reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
-
-/obj/item/bluespace_radio/proc/reattach_handset(mob/user)
-	if(!handset) return
-
-	if(ismob(handset.loc))
-		var/mob/M = handset.loc
-		if(M.drop_from_inventory(handset, src))
-			to_chat(user, "<span class='notice'>\The [handset] snaps back into the main unit.</span>")
-	else
-		handset.forceMove(src)
-
-//Subspace Radio Handset
-/obj/item/radio/bluespace_handset
-	name = "subspace radio handset"
-	desc = "A large walkie talkie attached to the subspace radio by a retractable cord. It sits comfortably on a slot in the radio when not in use."
-	bluespace_radio = TRUE
-	icon_state = "signaller"
-	slot_flags = null
-	w_class = ITEMSIZE_LARGE
-
-/obj/item/radio/bluespace_handset/linked
-	var/obj/item/bluespace_radio/base_unit
-	bs_tx_preload_id = "Receiver A"  //Transmit to a receiver
-	bs_rx_preload_id = "Broadcaster A"  //Recveive from a transmitter
-
-/obj/item/radio/bluespace_handset/linked/Initialize(mapload, obj/item/bluespace_radio/radio)
-	base_unit = radio
-	return ..(mapload)
-
-/obj/item/radio/bluespace_handset/linked/Destroy()
-	if(base_unit)
-		//ensure the base unit's icon updates
-		if(base_unit.handset == src)
-			base_unit.handset = null
-		base_unit = null
-	return ..()
-
-/obj/item/radio/bluespace_handset/linked/dropped(mob/user)
-	..() //update twohanding
-	if(base_unit)
-		base_unit.reattach_handset(user) //handset attached to a base unit should never exist outside of their base unit or the mob equipping the base unit
-
-/obj/item/bluespace_radio/talon_prelinked
-	name = "bluespace radio (talon)"
-	handset = /obj/item/radio/bluespace_handset/linked/talon_prelinked
-
-/obj/item/radio/bluespace_handset/linked/talon_prelinked
-/* // Commenting out for now while Talon is not in use
-	bs_tx_preload_id = "talon_aio" //Transmit to a receiver
-	bs_rx_preload_id = "talon_aio" //Recveive from a transmitter
-*/
-/obj/item/bluespace_radio/commerce
-	name = "commercial subspace radio"
-	desc = "Immensely expensive, this communications device has the ability to send and recieve transmissions from anywhere. Only a few of these devices have been sold by either Ward Takahashi or NanoTrasen. This device is incredibly rare and mind-numbingly expensive. Do not lose it."
+	internal_channels = default_medbay_channels.Copy()
