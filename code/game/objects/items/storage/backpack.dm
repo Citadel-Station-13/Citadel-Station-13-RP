@@ -387,6 +387,12 @@
 /obj/item/storage/backpack/messenger/black
 	icon_state = "courierbagblk"
 
+//RIG Spines
+/obj/item/storage/backpack/rig
+	name = "resource integration gear"
+	desc = "An advanced system that mounts to the user's spine to serve as a load bearing structure with medical utilities. More complex variants have a wider array of functions and uses."
+	icon_state = "civilian_rig"
+	item_state_slots = list(slot_r_hand_str = "backpack", slot_l_hand_str = "backpack")
 
 //Purses
 /obj/item/storage/backpack/purse
