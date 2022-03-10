@@ -51,8 +51,10 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	mouse_opacity = 0
 
 /datum/global_hud/New(client/C)
+
 	var/matrix/M = matrix()
-	M.Scale(ceil(C.last_view_x_dim/7),ceil(C.last_view_y_dim/7)) // probably doesn't work.
+	if(client)
+		M.Scale(ceil(client.last_view_x_dim/7),ceil(client.last_view_y_dim/7)) // probably doesn't work.
 
 	//420erryday psychedellic colours screen overlay for when you are high
 	druggy = new /obj/screen/global_screen()
