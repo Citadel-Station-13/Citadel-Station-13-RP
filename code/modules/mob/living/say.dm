@@ -381,7 +381,7 @@ proc/get_radio_key_from_channel(var/channel)
 			listening_obj |= results["objs"]
 		above = above.shadow
 	var/atom/emitter = src
-	if(!isobserver(usr) || !IsAdminGhost(usr))
+	if(!isobserver(emitter) || !IsAdminGhost(emitter))
 		emitter.say_overhead(say_emphasis_strip(message), whispering, message_range, speaking)
 
 

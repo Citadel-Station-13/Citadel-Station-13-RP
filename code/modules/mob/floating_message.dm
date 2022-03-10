@@ -40,10 +40,14 @@ var/list/floating_chat_colors = list()
 				C.images += understood
 			else
 				C.images += gibberish
+
 #define MAPTEXT(text) {"<span class='maptext'>[##text]</span>"}
 
 /proc/generate_floating_text(atom/movable/holder, message, style, size, duration, show_to)
 	var/image/I = image(null, holder)
+	var/mob/living/X
+	if(isliving(holder))
+		X = holder
 	I.plane = PLANE_PLAYER_HUD
 	I.layer = PLANE_PLAYER_HUD_ITEMS
 	I.alpha = 15
@@ -54,8 +58,8 @@ var/list/floating_chat_colors = list()
 
 	//style = "font: 'Small Fonts'; -dm-text-outline: 1px black; font-size: [size]px; [style]"
 
-	I.maptext = MAPTEXT(message)
-	animate(I, 1, alpha = 255, pixel_y = 16)
+	I.maptext = "<span style=\"[style]\"><center>[MAPTEXT(message)]</center></span>" // whoa calm down!!
+	animate(I, 1, alpha = 255, pixel_y = 24 * X.size_multiplier)
 
 	for(var/image/old in holder.stored_chat_text)
 		animate(old, 2, pixel_y = old.pixel_y + 8)
