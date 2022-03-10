@@ -34,10 +34,10 @@ var/global/list/minor_air_alarms = list()
 	var/list/major_alarms = list()
 	var/list/minor_alarms = list()
 
-	for(var/datum/alarm/alarm in atmosphere_alarm.major_alarms())
+	for(var/datum/alarm/alarm in atmosphere_alarm.major_alarms(get_z(src)))
 		major_alarms[++major_alarms.len] = list("name" = sanitize(alarm.alarm_name()), "ref" = "\ref[alarm]")
 
-	for(var/datum/alarm/alarm in atmosphere_alarm.minor_alarms())
+	for(var/datum/alarm/alarm in atmosphere_alarm.minor_alarms(get_z(src)))
 		minor_alarms[++minor_alarms.len] = list("name" = sanitize(alarm.alarm_name()), "ref" = "\ref[alarm]")
 
 	data["priority_alarms"] = major_alarms
