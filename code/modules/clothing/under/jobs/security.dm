@@ -19,7 +19,9 @@
 
 /obj/item/clothing/under/rank/warden/skirt_pleated
 	name = "warden's pleated skirt"
+	desc = "A pleated skirt made up of a slightly sturdier material than your average jumpsuit. It has the word 'Warden' writton on the shoulders."
 	icon_state = "rwarden_skirt"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/rank/security
 	name = "security officer's jumpsuit"
@@ -32,7 +34,9 @@
 
 /obj/item/clothing/under/rank/security/skirt_pleated
 	name = "security officer's pleated skirt"
+	desc = "A pleated skirt made up of a slightly sturdier material than most jumpsuits, allowing more robust protection."
 	icon_state = "sec_skirt"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/rank/security/turtleneck
 	name = "security turtleneck"
@@ -108,6 +112,7 @@
 
 /obj/item/clothing/under/det/grey/skirt_pleated
 	name = "detective's grey pleated skirt"
+	desc = "A sertous-looking pleated skirt paired with a freshly-pressed white shirt and a gold-clipped tie."
 	icon_state = "greydet_skirt"
 
 /obj/item/clothing/under/det/black
@@ -152,11 +157,15 @@
 
 /obj/item/clothing/under/rank/head_of_security/skirt_pleated
 	name = "head of security's pleated skirt"
+	desc = "A pleated skirt worn by those few with the dedication to achieve the position of 'Head of Security'. It bears additional armour to protect the wearer."
 	icon_state = "rhos_skirt"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/rank/head_of_security/skirt_pleated/alt
 	name = "dark head of security's pleated skirt"
+	desc = "A pleated skirt worn by those few with the dedication to achieve the position of 'Head of Security'. It bears additional armour to protect the wearer."
 	icon_state = "hosalt_skirt"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/rank/head_of_security/corp
 	icon_state = "hos_corporate"

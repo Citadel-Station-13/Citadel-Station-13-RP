@@ -1074,13 +1074,13 @@
 /obj/item/clothing/under/parameduniskirtlight
 	name = "\improper Paramedic Uniskirt"
 	desc = "A light jumpskirt for those brave souls who have to deal with a CMO who thinks they're the do everything person."
-	icon_state = "paramedic-light_skirt"
+	icon_state = "paramedic_skirt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/dutchuniform
 	name = "\improper Western suit"
 	desc = "We can't always fight nature. We can't fight change, we can't fight gravity, we can't fight nothing."
-	icon_state = "DutchUniform"
+	icon_state = "dutchuniform"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/victorianblred
@@ -1088,20 +1088,40 @@
     desc = "Don't you see? I have thirteen lives."
     icon_state = "victorianblred"
 
+/obj/item/clothing/under/fem_victorianblred
+	name = "red shirted victorian suit"
+	desc = "Don't you see? I have thirteen lives."
+	icon_state = "victorianblred-fem"
+
 /obj/item/clothing/under/victorianredvest
     name = "red vested victorian suit"
-    desc = "Why are we going to the back of the ship? Because the front crashes first. Think it though."
+    desc = "Why are we going to the back of the ship? Because the front crashes first. Think it through."
     icon_state = "victorianredvest"
+
+/obj/item/clothing/under/fem_victorianredvest
+	name = "red vested victorian suit"
+	desc = "Why are we going to the back of the ship? Because the front crashes first. Think it through."
+	icon_state = "victorianredvest-fem"
 
 /obj/item/clothing/under/victorianvest
     name = "victorian suit"
     desc = "Four minutes? That's ages. What if I get bored, or need a television, couple of books? Anyone for chess? Bring me knitting."
     icon_state = "victorianvest"
 
+/obj/item/clothing/under/fem_victorianvest
+	name = "victorian suit"
+	desc = "Four minutes? That's ages. What if I get bored, or need a television, couple of books? Anyone for chess? Bring me knitting."
+	icon_state = "victorianvest-fem"
+
 /obj/item/clothing/under/victorianlightfire
     name = "light blue shirted victorian suit"
-    desc = "Have you ever thought what it's like to be wanderers in the Fourth Dimension?"
+    desc = "Have you ever thought about what it's like to be wanderers in the Fourth Dimension? Yes, I'm asking you."
     icon_state = "victorianlightfire"
+
+/obj/item/clothing/under/fem_victorianlightfire
+	name = "light blue shirted victorian suit"
+	desc = "Have you ever thought about what it's like to be wanderers in the Fourth Dimension? Yes, I'm asking you."
+	icon_state = "victorianlightfire-fem"
 
 /obj/item/clothing/under/victorianreddress
     name = "red victorian dress"
@@ -1546,6 +1566,11 @@
 	name = "simple tunic"
 	desc = "A simple linen tunic. Smells faintly of earth and flowers"
 	icon_state = "tribal_tunic"
+
+/obj/item/clothing/under/skirt/pleated
+	name = "pleated skirt"
+	icon_state = "pleated"
+
 
 /obj/item/clothing/var/hides_bulges = FALSE // OwO wats this?
 

@@ -5,7 +5,7 @@
 	slot = slot_w_uniform
 	sort_category = "Uniforms and Casual Dress"
 
-/datum/gear/uniform/blazerskirt
+/datum/gear/uniform/blazer_skirt
 	name = "Blazer - Skirt "
 	path = /obj/item/clothing/under/blazer/skirt
 
@@ -389,6 +389,7 @@
 /datum/gear/uniform/marine/tan
 	name = "Uniform - Tan Fatigues"
 	path = /obj/item/clothing/under/oricon/utility/marine/tan
+
 /datum/gear/uniform/sleekoverall
 	name = "Overalls - Sleek"
 	path = /obj/item/clothing/under/overalls/sleek
@@ -469,47 +470,63 @@
 	name = "Little Black Dress"
 	path = /obj/item/clothing/under/littleblackdress
 
-datum/gear/uniform/dutchsuit
+/datum/gear/uniform/dutchsuit
 	name = "Western Suit"
 	path = /obj/item/clothing/under/dutchuniform
 
-datum/gear/uniform/victorianredshirt
-	name = "Red Shirt Victorian Suit"
+/datum/gear/uniform/victorianredshirt
+	name = "Red Shirted Victorian Suit"
 	path = /obj/item/clothing/under/victorianblred
 
-datum/gear/uniform/victorianredvest
+/datum/gear/uniform/victorianredshirt/female
+	name = "Red Shirted Victorian Suit - Female"
+	path = /obj/item/clothing/under/fem_victorianblred
+
+/datum/gear/uniform/victorianredvest
 	name = "Red Vested Victorian Suit"
 	path = /obj/item/clothing/under/victorianredvest
 
-datum/gear/uniform/victoriansuit
+/datum/gear/uniform/victorianredvest/female
+	name = "Red Vested Victorian Suit - Female"
+	path = /obj/item/clothing/under/fem_victorianredvest
+
+/datum/gear/uniform/victoriansuit
 	name = "Victorian Suit"
 	path = /obj/item/clothing/under/victorianvest
 
-datum/gear/uniform/victorianbluesuit
+/datum/gear/uniform/victoriansuit/female
+	name = "Victorian Suit - Female"
+	path = /obj/item/clothing/under/fem_victorianvest
+
+/datum/gear/uniform/victorianbluesuit
 	name = "Blue Shirted Victorian Suit"
 	path = /obj/item/clothing/under/victorianlightfire
 
-datum/gear/uniform/victorianreddress
+/datum/gear/uniform/victorianbluesuit/female
+	name = "Blue Shirted Victorian Suit - Female"
+	path = /obj/item/clothing/under/fem_victorianlightfire
+
+/datum/gear/uniform/victorianreddress
 	name = "Victorian Red Dress"
 	path = /obj/item/clothing/under/victorianreddress
 
-datum/gear/uniform/victorianblackdress
+/datum/gear/uniform/victorianblackdress
 	name = "Victorian Black Dress"
 	path = /obj/item/clothing/under/victorianblackdress
 
-datum/gear/uniform/fiendsuit
+/datum/gear/uniform/fiendsuit
 	name = "Fiendish Suit"
 	path = /obj/item/clothing/under/fiendsuit
 
-datum/gear/uniform/fienddress
+/datum/gear/uniform/fienddress
 	name = "Fiendish Dress"
 	path = /obj/item/clothing/under/fienddress
 
-datum/gear/uniform/leotard
+/datum/gear/uniform/leotard
 	name = "Black Leotard"
 	path = /obj/item/clothing/under/leotard
 
-datum/gear/uniform/leotardcolor
+/datum/gear/uniform/leotardcolor
 	name = "Colored Leotard"
 	path = /obj/item/clothing/under/leotardcolor
 
@@ -517,11 +534,11 @@ datum/gear/uniform/leotardcolor
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
-datum/gear/uniform/verglasdress
+/datum/gear/uniform/verglasdress
 	name = "Verglas Dress"
 	path = /obj/item/clothing/under/verglasdress
 
-datum/gear/uniform/fashionminiskirt
+/datum/gear/uniform/fashionminiskirt
 	name = "Fashionable Miniskirt"
 	path = /obj/item/clothing/under/fashionminiskirt
 
@@ -529,11 +546,11 @@ datum/gear/uniform/fashionminiskirt
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
-datum/gear/uniform/bodysuit
+/datum/gear/uniform/bodysuit
 	name = "Standard Bodysuit"
 	path = /obj/item/clothing/under/bodysuit
 
-datum/gear/uniform/bodysuiteva
+/datum/gear/uniform/bodysuiteva
 	name = "EVA Bodysuit"
 	path = /obj/item/clothing/under/bodysuit/bodysuiteva
 
