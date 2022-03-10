@@ -2,18 +2,17 @@
 
 /datum/atmosphere/planet/class_d
 	base_gases = list(
-	/datum/gas/nitrogen = 0.16,
-	/datum/gas/carbon_dioxide = 0.84
+	/datum/gas/nitrogen = 0.01
 	)
-	base_target_pressure = 40
-	minimum_pressure = 40
-	maximum_pressure = 40
+	base_target_pressure = 0.1
+	minimum_pressure = 0.1
+	maximum_pressure = 0.5
 	minimum_temp = 203
 	maximum_temp = 203
 
 // Turfmakers
 
-#define CLASSD_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSD;x/class_d/outdoors=TRUE
+#define CLASSD_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSD
 #define CLASSD_TURF_CREATE(x)	x/class_d/initial_gas_mix=ATMOSPHERE_ID_CLASSD;x/class_d/color="#eaa17c"
 
 

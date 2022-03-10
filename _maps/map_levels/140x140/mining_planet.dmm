@@ -8,22 +8,22 @@
 /area/mining_planet/unexplored)
 "j" = (
 /obj/effect/shuttle_landmark/automatic,
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen/mining_planet,
 /area/mining_planet/explored)
 "r" = (
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen/mining_planet,
 /area/mining_planet/explored)
 "w" = (
-/turf/simulated/mineral/rich/triumph,
+/turf/simulated/mineral/rich/triumph/mining_planet,
 /area/mining_planet/unexplored)
 "A" = (
-/turf/simulated/mineral/triumph,
+/turf/simulated/mineral/triumph/mining_planet,
 /area/mining_planet/unexplored)
 "F" = (
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen/mining_planet,
 /area/mining_planet/unexplored)
 "N" = (
-/turf/simulated/mineral/floor,
+/turf/simulated/mineral/floor/mining_planet,
 /area/mining_planet/unexplored)
 
 (1,1,1) = {"
