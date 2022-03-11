@@ -1,6 +1,9 @@
 /obj/item/radio/sleevecard
 	canhear_range = 0
 
+/obj/item/radio/sleevecard/ui_state(mob/user)
+	return GLOB.always_state
+
 /obj/item/sleevecard
 	name = "sleevecard"
 	desc = "This Vey-Med upgraded pAI module has enough capacity to run a whole mind of human-level intelligence."

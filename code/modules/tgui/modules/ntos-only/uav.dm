@@ -188,14 +188,14 @@
 		user.set_machine(ui_host())
 	user.reset_view(current_uav)
 	current_uav.add_master(user)
-	LAZYDISTINCTADD(viewers, weakref(user))
+	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module/uav/proc/unlook(mob/user)
 	user.unset_machine()
 	user.reset_view()
 	if(current_uav)
 		current_uav.remove_master(user)
-	LAZYREMOVE(viewers, weakref(user))
+	LAZYREMOVE(viewers, WEAKREF(user))
 
 /datum/tgui_module/uav/check_eye(mob/user)
 	if(get_dist(user, ui_host()) > 1 || user.blinded || !current_uav)
@@ -222,7 +222,7 @@
 /datum/tgui_module/uav/apply_visual(mob/M)
 	if(!M.client)
 		return
-	if(weakref(M) in viewers)
+	if(WEAKREF(M) in viewers)
 		M.overlay_fullscreen("fishbed",/obj/screen/fullscreen/fishbed)
 		M.overlay_fullscreen("scanlines",/obj/screen/fullscreen/scanline)
 

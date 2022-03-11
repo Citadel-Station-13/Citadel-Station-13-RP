@@ -52,7 +52,6 @@ var/list/random_useful_
 	if(prob(70)) // Misc. junk
 		if(!random_junk_)
 			random_junk_ = subtypesof(/obj/item/trash)
-			random_junk_ += typesof(/obj/item/cigbutt)
 			random_junk_ += /obj/effect/decal/cleanable/spiderling_remains
 			random_junk_ += /obj/effect/decal/remains/mouse
 			random_junk_ += /obj/effect/decal/remains/robot
@@ -140,4 +139,3 @@ var/list/multi_point_spawns
 		for(var/entry in spawn_points)
 			qdel(entry)
 	return 1
-

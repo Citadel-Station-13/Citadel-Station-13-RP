@@ -117,7 +117,7 @@
 /datum/integrated_io/list/display_pin_type()
 	return IC_FORMAT_LIST
 
-/datum/integrated_io/list/Topic(href, href_list, state = interactive_state)
+/datum/integrated_io/list/Topic(href, href_list, state = GLOB.always_state)
 	if(!holder.check_interactivity(usr))
 		return
 	if(..())
@@ -146,4 +146,3 @@
 
 	holder.interact(usr) // Refresh the main UI,
 	interact(usr) // and the list UI.
-

@@ -55,9 +55,9 @@
 			old_turf.unregister_dangerous_object(src)
 			new_turf.register_dangerous_object(src)
 
-/obj/Topic(href, href_list, var/datum/topic_state/state = default_state)
+/obj/Topic(href, href_list, var/datum/ui_state/state = GLOB.default_state)
 	if(usr && ..())
-		return 1
+		return TRUE
 
 	// In the far future no checks are made in an overriding Topic() beyond if(..()) return
 	// Instead any such checks are made in CanUseTopic()
@@ -68,7 +68,7 @@
 	CouldNotUseTopic(usr)
 	return 1
 
-/obj/CanUseTopic(var/mob/user, var/datum/topic_state/state = default_state)
+/obj/CanUseTopic(var/mob/user, var/datum/ui_state/state = GLOB.default_state)
 	if(user.CanUseObjTopic(src))
 		return ..()
 	to_chat(user, "<span class='danger'>[icon2html(thing = src, target = user)] Access Denied!</span>")
@@ -82,7 +82,7 @@
 	return 1
 
 /obj/proc/CouldUseTopic(var/mob/user)
-	var/atom/host = nano_host()
+	var/atom/host = ui_host()
 	host.add_hiddenprint(user)
 
 /obj/proc/CouldNotUseTopic(var/mob/user)
@@ -148,7 +148,7 @@
 			in_use = 0
 
 /obj/attack_ghost(mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 	..()
 
 /mob/proc/unset_machine()

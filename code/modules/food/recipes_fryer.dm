@@ -91,13 +91,11 @@
 	result = /obj/item/reagent_containers/food/snacks/donut/jelly
 	result_quantity = 2
 
-/datum/recipe/jellydonut/slime
-	appliance = FRYER
+/datum/recipe/jellydonut/slime // Subtypes of jellydonut, appliance inheritance applies.
 	reagents = list("slimejelly" = 10, "sugar" = 10)
 	result = /obj/item/reagent_containers/food/snacks/donut/slimejelly
 
-/datum/recipe/jellydonut/cherry
-	appliance = FRYER
+/datum/recipe/jellydonut/cherry // Subtypes of jellydonut, appliance inheritance applies.
 	reagents = list("cherryjelly" = 10, "sugar" = 10)
 	result = /obj/item/reagent_containers/food/snacks/donut/cherryjelly
 

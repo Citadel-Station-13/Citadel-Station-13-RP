@@ -25,6 +25,8 @@ var/list/fusion_cores = list()
 	var/field_strength = 1//0.01
 	var/id_tag
 
+	var/reactant_dump = FALSE	// Does the tokomak actively try to syphon materials?
+
 /obj/machinery/power/fusion_core/mapped
 	anchored = 1
 

@@ -689,7 +689,7 @@
 			to_chat(src, "<span class='notice'>You can taste the flavor of spicy cardboard.</span>")
 		else if(istype(I,/obj/item/flashlight/glowstick))
 			to_chat(src, "<span class='notice'>You found out the glowy juice only tastes like regret.</span>")
-		else if(istype(I,/obj/item/cigbutt))
+		else if(istype(I,/obj/item/trash/cigbutt))
 			to_chat(src, "<span class='notice'>You can taste the flavor of bitter ash. Classy.</span>")
 		else if(istype(I,/obj/item/clothing/mask/smokable))
 			var/obj/item/clothing/mask/smokable/C = I

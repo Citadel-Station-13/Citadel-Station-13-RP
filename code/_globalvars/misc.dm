@@ -7,13 +7,3 @@ GLOBAL_VAR_INIT(Debug2, FALSE)
 GLOBAL_DATUM_INIT(global_underwear, /datum/category_collection/underwear, new)
 
 GLOBAL_VAR_INIT(internal_tick_usage, 0.2 * world.tick_lag)
-
-// All religion stuff
-GLOBAL_VAR(religion)
-GLOBAL_VAR(deity)
-GLOBAL_VAR(bible_name)
-GLOBAL_VAR(bible_icon_state)
-GLOBAL_VAR(bible_item_state)
-GLOBAL_VAR(holy_weapon_type)
-GLOBAL_VAR(holy_armor_type)
-GLOBAL_VAR(holy_icon_type)

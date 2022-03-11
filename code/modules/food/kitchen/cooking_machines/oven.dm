@@ -93,6 +93,7 @@
 		//When the oven door is opened, heat is lost MUCH faster
 
 	playsound(src, 'sound/machines/hatch_open.ogg', 20, 1)
+	to_chat(user, "<span class='notice'>You [open ? "open" : "close"] the oven door.</span>")
 	update_icon()
 
 /obj/machinery/appliance/cooker/oven/can_insert(var/obj/item/I, var/mob/user)
@@ -113,10 +114,11 @@
 		if (temperature > T.temperature)
 			equalize_temperature()
 
-/obj/machinery/appliance/cooker/oven/can_remove_items(var/mob/user)
+/obj/machinery/appliance/cooker/oven/can_remove_items(var/mob/user, show_warning = TRUE)
 	if (!open)
-		to_chat(user, "<span class='warning'>You can't take anything out while the door is closed!</span>")
-		return 0
+		if(show_warning)
+			to_chat(user, "<span class='warning'>You can't take anything out while the door is closed!</span>")
+		return FALSE
 
 	else
 		return ..()

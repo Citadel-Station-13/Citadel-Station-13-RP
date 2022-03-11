@@ -154,8 +154,9 @@
 	return TRUE
 
 /obj/machinery/turretid/AIAltClick(mob/user) //toggles lethal on turrets
-	add_hiddenprint(user)
-	lethal = !lethal
+	if(lethal_is_configurable)
+		lethal = !lethal
+		updateTurrets()
 	return TRUE
 
 /atom/proc/AIMiddleClick(var/mob/living/silicon/user)

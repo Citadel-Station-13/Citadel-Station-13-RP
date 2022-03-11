@@ -41,9 +41,9 @@
 	add_fingerprint(user)
 	if(stat & (BROKEN|NOPOWER))
 		return
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/computer/fission_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/fission_monitor/ui_interact(mob/user, var/datum/tgui/ui = null)
 	if(!src.powered())
 		return
 
@@ -55,7 +55,7 @@
 		data = linked.ui_data(TRUE)
 		data["not_connected"] = 0
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "fission_monitor.tmpl", "Nuclear Fission Core", 500, 600)
 		ui.set_initial_data(data)

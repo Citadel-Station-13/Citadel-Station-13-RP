@@ -3,6 +3,7 @@
 	icon_state = "submap"
 	flags = RAD_SHIELDED
 	ambience = AMBIENCE_RUINS
+	flags = AREA_FLAG_IS_NOT_PERSISTENT
 
 /area/submap/event //To be used for Events not for regular PoIs
 	name = "Unknown"

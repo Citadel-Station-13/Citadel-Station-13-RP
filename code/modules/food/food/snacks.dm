@@ -150,13 +150,13 @@
 
 /obj/item/reagent_containers/food/snacks/examine(mob/user)
 	. = ..()
-	if (coating) // BEGIN CITADEL CHANGE
+	if(coating)
 		. += "<span class='notice'>It's coated in [coating.name]!</span>"
-	if (bitecount==0)
+	if(bitecount==0)
 		return
-	else if (bitecount==1)
+	else if(bitecount==1)
 		. += "<font color=#4F49AF>\The [src] was bitten by someone!</font>"
-	else if (bitecount<=3)
+	else if(bitecount<=3)
 		. += "<font color=#4F49AF>\The [src] was bitten [bitecount] times!</font>"
 	else
 		. += "<font color=#4F49AF>\The [src] was bitten multiple times!</font>"

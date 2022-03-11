@@ -1,121 +1,72 @@
 /obj/machinery/mineral/equipment_vendor/survey
 	name = "exploration equipment vendor"
 	desc = "An equipment vendor for explorers, points collected with a survey scanner can be spent here."
-	icon = 'icons/obj/machines/mining_machines_vr.dmi' //VOREStation Edit
-	icon_state = "exploration" //VOREStation Edit
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'
+	icon_state = "exploration"
 	density = TRUE
 	anchored = TRUE
 	circuit = /obj/item/circuitboard/exploration_equipment_vendor
-	icon_deny = "exploration-deny" //VOREStation Edit
-	var/icon_vend = "exploration-vend" //VOREStation Add
-	//VOREStation Edit Start - Heavily modified list
-	prize_list = list(
-		new /datum/data/mining_equipment("1 Marker Beacon",			/obj/item/stack/marker_beacon,										1),
-		new /datum/data/mining_equipment("10 Marker Beacons",			/obj/item/stack/marker_beacon/ten,									10),
-		new /datum/data/mining_equipment("30 Marker Beacons",			/obj/item/stack/marker_beacon/thirty,								30),
-		new /datum/data/mining_equipment("GPS Device",					/obj/item/gps/explorer,										10),
-		new /datum/data/mining_equipment("Whiskey",					/obj/item/reagent_containers/food/drinks/bottle/whiskey,		10),
-		new /datum/data/mining_equipment("Absinthe",					/obj/item/reagent_containers/food/drinks/bottle/absinthe,	10),
-		new /datum/data/mining_equipment("Cigar",						/obj/item/clothing/mask/smokable/cigarette/cigar/havana,			15),
-		new /datum/data/mining_equipment("Soap",						/obj/item/soap/nanotrasen,									20),
-		new /datum/data/mining_equipment("Laser Pointer",				/obj/item/laser_pointer,										90),
-		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger,											75),
-		new /datum/data/mining_equipment("Plush Toy",					/obj/random/plushie,												30),
-		new /datum/data/mining_equipment("Extraction Equipment - Fulton Beacon",	/obj/item/fulton_core,									300),
-		new /datum/data/mining_equipment("Extraction Equipment - Fulton Pack",		/obj/item/extraction_pack,								125),
-		new /datum/data/mining_equipment("Umbrella",					/obj/item/melee/umbrella/random,								20),
-		new /datum/data/mining_equipment("Shelter Capsule",			/obj/item/survivalcapsule,									50),
-		new /datum/data/mining_equipment("Point Transfer Card",			/obj/item/card/mining_point_card/survey,						50),
-		new /datum/data/mining_equipment("Survival Medipen",			/obj/item/reagent_containers/hypospray/autoinjector/miner,	50),
-		new /datum/data/mining_equipment("Injector (L) - Glucose",/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,	50),
-		new /datum/data/mining_equipment("Injector (L) - Panacea",/obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,	50),
-		new /datum/data/mining_equipment("Injector (L) - Trauma",/obj/item/reagent_containers/hypospray/autoinjector/biginjector/brute,	50),
-		new /datum/data/mining_equipment("Digital Tablet - Standard",	/obj/item/modular_computer/tablet/preset/custom_loadout/standard,	50),
-		new /datum/data/mining_equipment("Digital Tablet - Advanced",	/obj/item/modular_computer/tablet/preset/custom_loadout/advanced,	100),
-		new /datum/data/mining_equipment("Nanopaste Tube",				/obj/item/stack/nanopaste,											100),
-		new /datum/data/mining_equipment("Mini-Translocator",			/obj/item/perfect_tele/one_beacon,							120),
-		new /datum/data/mining_equipment("AR-V Glasses",			/obj/item/clothing/glasses/omnihud/exp,                         350),
-		new /datum/data/mining_equipment("Space Cash",					/obj/item/spacecash/c100,									100),
-		new /datum/data/mining_equipment("Jump Boots",					/obj/item/clothing/shoes/bhop,										250),
-		new /datum/data/mining_equipment("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,							310),
-		new /datum/data/mining_equipment("Industrial Equipment - Phoron Bore",	/obj/item/gun/magnetic/matfed,						300),
-		new	/datum/data/mining_equipment("Colonial Recce Pack",		/obj/item/storage/lockbox/colonial,						350),
-		new	/datum/data/mining_equipment("Gateway Guardian Pack",		/obj/item/storage/lockbox/gateway,						800),
-		new	/datum/data/mining_equipment("Cyan Posse Pack",		/obj/item/storage/lockbox/cowboy,						800),
-		new	/datum/data/mining_equipment("Conscript Pack",		/obj/item/storage/lockbox/russian,						250),
-		new	/datum/data/mining_equipment("Holy Crusade Pack",		/obj/item/storage/lockbox/crusade,						200),
-		new	/datum/data/mining_equipment("Maniple Pack",		/obj/item/storage/lockbox/maniple,						200),
-		new /datum/data/mining_equipment("Away Team Pack",		/obj/item/storage/lockbox/away,							550),
-		new /datum/data/mining_equipment("Survey Tools - Shovel",		/obj/item/shovel,											40),
-		new /datum/data/mining_equipment("Survey Tools - Mechanical Trap",	/obj/item/beartrap,										50),
-		new /datum/data/mining_equipment("Defense Equipment - Smoke Bomb",/obj/item/grenade/smokebomb,								10),
-		new /datum/data/mining_equipment("Defense Equipment - Razor Drone Deployer",/obj/item/grenade/spawnergrenade/manhacks/station/locked,	100),
-		new /datum/data/mining_equipment("Defense Equipment - Sentry Drone Deployer",/obj/item/grenade/spawnergrenade/ward,			150),
-		new /datum/data/mining_equipment("Defense Equipment - Steel Machete",	/obj/item/material/knife/machete,					75),
-		new /datum/data/mining_equipment("Defense Equipment - Kinetic Dagger",	/obj/item/kinetic_crusher/dagger,					75),
-		new /datum/data/mining_equipment("Defense Equipment - Marksman Box",	/obj/item/gunbox/marksman,					1500),
-		new /datum/data/mining_equipment("Fishing Net",					/obj/item/material/fishing_net,								50),
-		new /datum/data/mining_equipment("Titanium Fishing Rod",		/obj/item/material/fishing_rod/modern,						100),
-		new /datum/data/mining_equipment("Durasteel Fishing Rod",		/obj/item/material/fishing_rod/modern/strong,				750),
-		new /datum/data/mining_equipment("Bar Shelter Capsule",		/obj/item/survivalcapsule/luxurybar,							1000)
-		)
-		//VOREStation Edit End
+	icon_deny = "exploration-deny"
 
-/obj/machinery/mineral/equipment_vendor/survey/interact(mob/user)
-	user.set_machine(src)
+/obj/machinery/mineral/equipment_vendor/survey/Initialize(mapload)
+	. = ..()
+	prize_list = list()
+	prize_list["Gear"] = list(
+		EQUIPMENT("Defense Equipment - Plasteel Machete",		/obj/item/material/knife/machete,							500),
+		EQUIPMENT("Defense Equipment - Razor Drone Deployer",	/obj/item/grenade/spawnergrenade/manhacks/station/locked,	1000),
+		EQUIPMENT("Defense Equipment - Sentry Drone Deployer",	/obj/item/grenade/spawnergrenade/ward,						1500),
+		EQUIPMENT("Defense Equipment - Smoke Bomb",				/obj/item/grenade/smokebomb,								100),
+		EQUIPMENT("Durasteel Fishing Rod",						/obj/item/material/fishing_rod/modern/strong,				7500),
+		EQUIPMENT("Fishing Net",								/obj/item/material/fishing_net,								500),
+		EQUIPMENT("Titanium Fishing Rod",						/obj/item/material/fishing_rod/modern,						1000),
+		EQUIPMENT("Fulton Beacon",								/obj/item/fulton_core,										500),
+		EQUIPMENT("Geiger Counter",								/obj/item/geiger,											750),
+		EQUIPMENT("GPS Device",									/obj/item/gps/mining,										100),
+		EQUIPMENT("Jump Boots",									/obj/item/clothing/shoes/bhop,								2500),
+		EQUIPMENT("Mini-Translocator",							/obj/item/perfect_tele/one_beacon,							1200),
+		//EQUIPMENT("Survival Equipment - Insulated Poncho",		/obj/random/thermalponcho,									750),
+	)
+	prize_list["Consumables"] = list(
+		EQUIPMENT("1 Marker Beacon",		/obj/item/stack/marker_beacon,												10),
+		EQUIPMENT("10 Marker Beacons",		/obj/item/stack/marker_beacon/ten,											100),
+		EQUIPMENT("30 Marker Beacons",		/obj/item/stack/marker_beacon/thirty,										300),
+		EQUIPMENT("Fulton Pack",			/obj/item/extraction_pack,													1200),
+		EQUIPMENT("Injector (L) - Glucose",	/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,	500),
+		EQUIPMENT("Injector (L) - Panacea",	/obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,		500),
+		EQUIPMENT("Injector (L) - Trauma",	/obj/item/reagent_containers/hypospray/autoinjector/biginjector/brute,		500),
+		EQUIPMENT("Nanopaste Tube",			/obj/item/stack/nanopaste,													1000),
+		EQUIPMENT("Point Transfer Card",	/obj/item/card/mining_point_card/survey,									500),
+		EQUIPMENT("Shelter Capsule",		/obj/item/survivalcapsule,													500),
+		//EQUIPMENT("Burn Medipen",			/obj/item/reagent_containers/hypospray/autoinjector/burn,					250),
+		EQUIPMENT("Detox Medipen",			/obj/item/reagent_containers/hypospray/autoinjector/detox,					250),
+		//EQUIPMENT("Oxy Medipen",			/obj/item/reagent_containers/hypospray/autoinjector/oxy,					250),
+		//EQUIPMENT("Trauma Medipen",			/obj/item/reagent_containers/hypospray/autoinjector/trauma,					250),
+	)
+	prize_list["Digging Tools"] = list(
+		EQUIPMENT("Survey Tools - Shovel",			/obj/item/shovel,	40),
+		EQUIPMENT("Survey Tools - Mechanical Trap",	/obj/item/beartrap,	50),
+	)
+	prize_list["Miscellaneous"] = list(
+		EQUIPMENT("Absinthe",					/obj/item/reagent_containers/food/drinks/bottle/absinthe,			125),
+		EQUIPMENT("Bar Shelter Capsule",		/obj/item/survivalcapsule/luxurybar,								10000),
+		EQUIPMENT("Cigar",						/obj/item/clothing/mask/smokable/cigarette/cigar/havana,			150),
+		EQUIPMENT("Digital Tablet - Advanced",	/obj/item/modular_computer/tablet/preset/custom_loadout/advanced,	1000),
+		EQUIPMENT("Digital Tablet - Standard",	/obj/item/modular_computer/tablet/preset/custom_loadout/standard,	500),
+		EQUIPMENT("Industrial Equipment - Phoron Bore",	/obj/item/gun/magnetic/matfed,								3000),
+		EQUIPMENT("Laser Pointer",				/obj/item/laser_pointer,											900),
+		EQUIPMENT("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,									3100),
+		EQUIPMENT("Plush Toy",					/obj/random/plushie,												300),
+		EQUIPMENT("Soap",						/obj/item/soap/nanotrasen,											200),
+		EQUIPMENT("Thalers - 100",				/obj/item/spacecash/c100,											1000),
+		EQUIPMENT("Umbrella",					/obj/item/melee/umbrella/random,									200),
+		EQUIPMENT("UAV - Recon Skimmer",		/obj/item/uav,														400),
+		EQUIPMENT("Whiskey",					/obj/item/reagent_containers/food/drinks/bottle/whiskey,			125),
+	)
 
-	var/dat
-	dat +="<div class='statusDisplay'>"
-	if(istype(inserted_id))
-		dat += "You have [inserted_id.survey_points] survey points collected. <A href='?src=\ref[src];choice=eject'>Eject ID.</A><br>"
-	else
-		dat += "No ID inserted.  <A href='?src=\ref[src];choice=insert'>Insert ID.</A><br>"
-	dat += "</div>"
-	dat += "<br><b>Equipment point cost list:</b><BR><table border='0' width='100%'>"
-	for(var/datum/data/mining_equipment/prize in prize_list)
-		dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Purchase</A></td></tr>"
-	dat += "</table>"
-	var/datum/browser/popup = new(user, "miningvendor", "Survey Equipment Vendor", 400, 600)
-	popup.set_content(dat)
-	popup.open()
+/obj/machinery/mineral/equipment_vendor/survey/get_points(obj/item/card/id/target)
+	if(!istype(target))
+		return FALSE
+	return target.survey_points
 
-/obj/machinery/mineral/equipment_vendor/survey/Topic(href, href_list)
-	if(..())
-		return 1
-
-	if(href_list["choice"])
-		if(istype(inserted_id))
-			if(href_list["choice"] == "eject")
-				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
-				usr.put_in_hands(inserted_id)
-				inserted_id = null
-		else if(href_list["choice"] == "insert")
-			var/obj/item/card/id/I = usr.get_active_hand()
-			if(istype(I) && !inserted_id && usr.unEquip(I))
-				I.forceMove(src)
-				inserted_id = I
-				interact(usr)
-				to_chat(usr, "<span class='notice'>You insert the ID into [src]'s card slot.</span>")
-			else
-				to_chat(usr, "<span class='warning'>No valid ID.</span>")
-				flick(icon_deny, src)
-
-	if(href_list["purchase"])
-		if(istype(inserted_id))
-			var/datum/data/mining_equipment/prize = locate(href_list["purchase"])
-			if (!prize || !(prize in prize_list))
-				to_chat(usr, "<span class='warning'>Error: Invalid choice!</span>")
-				flick(icon_deny, src)
-				return
-			if(prize.cost > inserted_id.survey_points)
-				to_chat(usr, "<span class='warning'>Error: Insufficent points for [prize.equipment_name]!</span>")
-				flick(icon_deny, src)
-			else
-				inserted_id.survey_points -= prize.cost
-				to_chat(usr, "<span class='notice'>[src] clanks to life briefly before vending [prize.equipment_name]!</span>")
-				flick(icon_vend, src) //VOREStation Add
-				new prize.equipment_path(drop_location())
-		else
-			to_chat(usr, "<span class='warning'>Error: Please insert a valid ID!</span>")
-			flick(icon_deny, src)
-	updateUsrDialog()
+/obj/machinery/mineral/equipment_vendor/survey/remove_points(obj/item/card/id/target, amt)
+	target.survey_points -= amt

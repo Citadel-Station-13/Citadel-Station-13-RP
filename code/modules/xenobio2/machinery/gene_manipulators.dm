@@ -57,7 +57,7 @@
 	return attack_hand(user)
 
 /obj/machinery/xenobio/attack_hand(mob/user as mob)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/xenobio/attackby(obj/item/W as obj, mob/user as mob)
 	if(default_deconstruction_screwdriver(user, W))
@@ -148,7 +148,7 @@
 		return
 	..()
 
-/obj/machinery/xenobio/extractor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/xenobio/extractor/ui_interact(mob/user, ui_key = "main", var/datum/tgui/ui = null, var/force_open = 1)
 	if(!user)
 		return
 
@@ -179,7 +179,7 @@
 		data["hasGenetics"] = 0
 		data["sourceName"] = 0
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "xenobio_isolator.tmpl", "B.P.D. Analyzer UI", 470, 450)
 		ui.set_initial_data(data)
@@ -295,7 +295,7 @@
 	..()
 
 
-/obj/machinery/xenobio/editor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/xenobio/editor/ui_interact(mob/user, ui_key = "main", var/datum/tgui/ui = null, var/force_open = 1)
 
 	if(!user)
 		return
@@ -328,7 +328,7 @@
 	else
 		data["loaded"] = 0
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "xenobio_editor.tmpl", "biological genetic bombarder UI", 470, 450)
 		ui.set_initial_data(data)

@@ -179,7 +179,7 @@
 	},
 /area/submap/cave/qShuttle)
 "aB" = (
-/obj/item/cigbutt,
+/obj/item/trash/cigbutt,
 /obj/item/tank/emergency/oxygen,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_yellow"
@@ -372,7 +372,7 @@
 /turf/simulated/shuttle/floor,
 /area/submap/cave/qShuttle)
 "ba" = (
-/obj/item/cigbutt,
+/obj/item/trash/cigbutt,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_white"
 	},

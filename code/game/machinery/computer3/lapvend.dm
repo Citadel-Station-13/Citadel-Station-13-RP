@@ -34,11 +34,11 @@
 	if(vendmode == 1 && I)
 		scan_id(I, W)
 		vendmode = 0
-		SSnanoui.update_uis(src)
+		SStgui.update_uis(src)
 	if(vendmode == 2 && I)
 		if(reimburse_id(I, W))
 			vendmode = 0
-			SSnanoui.update_uis(src)
+			SStgui.update_uis(src)
 	if(vendmode == 0)
 		if(istype(W, /obj/item/laptop))
 			var/obj/item/laptop/L = W
@@ -48,7 +48,7 @@
 			L.loc = src
 			vendmode = 2
 			to_chat(user, "<span class='notice'>You slot your [L.name] into \The [src.name]</span>")
-			SSnanoui.update_uis(src)
+			SStgui.update_uis(src)
 	else
 		..()
 
@@ -57,14 +57,14 @@
 	if(stat & (BROKEN|NOPOWER))
 		return
 
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /**
  *  Display the NanoUI window for the vending machine.
  *
  *  See NanoUI documentation for details.
  */
-/obj/machinery/lapvend/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/lapvend/ui_interact(mob/user, ui_key = "main", var/datum/tgui/ui = null, var/force_open = 1)
 	user.set_machine(src)
 
 	var/list/data = list()
@@ -77,7 +77,7 @@
 	data["power"] = power
 	data["total"] = total()
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "laptop_vendor.tmpl", src.name, 480, 425)
 		ui.set_initial_data(data)
@@ -136,7 +136,7 @@
 			vendmode = 0
 
 	src.add_fingerprint(usr)
-	SSnanoui.update_uis(src)
+	SStgui.update_uis(src)
 
 /obj/machinery/lapvend/proc/vend()
 	if(cardreader > 0)

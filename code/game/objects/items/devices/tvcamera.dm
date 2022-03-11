@@ -55,9 +55,9 @@
 	popup.set_content(jointext(dat,null))
 	popup.open()
 
-/obj/item/tvcamera/Topic(bred, href_list, state = physical_state)
+/obj/item/tvcamera/Topic(bred, href_list, state = GLOB.physical_state)
 	if(..())
-		return 1
+		return TRUE
 	if(href_list["channel"])
 		var/nc = input(usr, "Channel name", "Select new channel name", channel) as text|null
 		if(nc)

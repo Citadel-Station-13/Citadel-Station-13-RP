@@ -99,6 +99,7 @@
 				src.broken = 0 // just to be sure
 				src.icon_state = "mw"
 				src.flags |= OPENCONTAINER
+				SStgui.update_uis(src)
 		else //Otherwise bad luck!!
 			to_chat(user, "<span class='warning'>It's dirty!</span>")
 			return 1
@@ -113,6 +114,7 @@
 			user.visible_message( \
 				"<span class='notice'>\The [user] has added one of [O] to \the [src].</span>", \
 				"<span class='notice'>You add one of [O] to \the [src].</span>")
+			SStgui.update_uis(src)
 			return
 		else
 		//	user.remove_from_mob(O)	//This just causes problems so far as I can tell. -Pete
@@ -122,8 +124,8 @@
 				"<span class='notice'>You add \the [O] to \the [src].</span>")
 			return
 	else if(istype(O,/obj/item/reagent_containers/glass) || \
-	        istype(O,/obj/item/reagent_containers/food/drinks) || \
-	        istype(O,/obj/item/reagent_containers/food/condiment) \
+			istype(O,/obj/item/reagent_containers/food/drinks) || \
+			istype(O,/obj/item/reagent_containers/food/condiment) \
 		)
 		if (!O.reagents)
 			return 1
@@ -153,83 +155,167 @@
 
 		to_chat(user, "<span class='warning'>You have no idea what you can cook with this [O].</span>")
 	..()
-	src.updateUsrDialog()
+	SStgui.update_uis(src)
+
+/obj/machinery/microwave/ui_state(mob/user)
+	return GLOB.physical_state
 
 /obj/machinery/microwave/attack_ai(mob/user as mob)
-	if(istype(user, /mob/living/silicon/robot) && Adjacent(user))
-		attack_hand(user)
+	attack_hand(user)
 
 /obj/machinery/microwave/attack_hand(mob/user as mob)
-	user.set_machine(src)
-	interact(user)
+	ui_interact(user)
 
 /*******************
 *   Microwave Menu
 ********************/
+/obj/machinery/microwave/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Microwave", name)
+		ui.open()
 
-/obj/machinery/microwave/interact(mob/user as mob) // The microwave Menu
-	var/dat = ""
-	if(src.broken > 0)
-		dat = {"<TT>Bzzzzttttt</TT>"}
-	else if(src.operating)
-		dat = {"<TT>Microwaving in progress!<BR>Please wait...!</TT>"}
-	else if(src.dirty==100)
-		dat = {"<TT>This microwave is dirty!<BR>Please clean it before use!</TT>"}
-	else
-		var/list/items_counts = new
-		var/list/items_measures = new
-		var/list/items_measures_p = new
-		for (var/obj/O in contents)
-			var/display_name = O.name
-			if (istype(O,/obj/item/reagent_containers/food/snacks/egg))
-				items_measures[display_name] = "egg"
-				items_measures_p[display_name] = "eggs"
-			if (istype(O,/obj/item/reagent_containers/food/snacks/tofu))
-				items_measures[display_name] = "tofu chunk"
-				items_measures_p[display_name] = "tofu chunks"
-			if (istype(O,/obj/item/reagent_containers/food/snacks/meat)) //any meat
-				items_measures[display_name] = "slab of meat"
-				items_measures_p[display_name] = "slabs of meat"
-			if (istype(O,/obj/item/reagent_containers/food/snacks/donkpocket))
-				display_name = "Turnovers"
-				items_measures[display_name] = "turnover"
-				items_measures_p[display_name] = "turnovers"
-			if (istype(O,/obj/item/reagent_containers/food/snacks/carpmeat))
-				items_measures[display_name] = "fillet of meat"
-				items_measures_p[display_name] = "fillets of meat"
-			items_counts[display_name]++
-		for (var/O in items_counts)
-			var/N = items_counts[O]
-			if (!(O in items_measures))
-				dat += {"<B>[capitalize(O)]:</B> [N] [lowertext(O)]\s<BR>"}
-			else
-				if (N==1)
-					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures[O]]<BR>"}
-				else
-					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures_p[O]]<BR>"}
+/obj/machinery/microwave/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
 
-		for (var/datum/reagent/R in reagents.reagent_list)
-			var/display_name = R.name
-			if (R.id == "capsaicin")
-				display_name = "Hotsauce"
-			if (R.id == "frostoil")
-				display_name = "Coldsauce"
-			dat += {"<B>[display_name]:</B> [R.volume] unit\s<BR>"}
+	data["broken"] = broken
+	data["operating"] = operating
+	data["dirty"] = dirty == 100
+	data["items"] = get_items_list()
 
-		if (items_counts.len==0 && reagents.reagent_list.len==0)
-			dat = {"<B>The microwave is empty</B><BR>"}
+	return data
+
+/obj/machinery/microwave/proc/get_items_list()
+	var/list/data = list()
+
+	var/list/items_counts = list()
+	var/list/items_measures = list()
+	var/list/items_measures_p = list()
+	for(var/obj/O in ((contents - component_parts) - circuit))
+		var/display_name = O.name
+		if(istype(O,/obj/item/reagent_containers/food/snacks/egg))
+			items_measures[display_name] = "egg"
+			items_measures_p[display_name] = "eggs"
+		if(istype(O,/obj/item/reagent_containers/food/snacks/tofu))
+			items_measures[display_name] = "tofu chunk"
+			items_measures_p[display_name] = "tofu chunks"
+		if(istype(O,/obj/item/reagent_containers/food/snacks/meat)) //any meat
+			items_measures[display_name] = "slab of meat"
+			items_measures_p[display_name] = "slabs of meat"
+		if(istype(O,/obj/item/reagent_containers/food/snacks/donkpocket))
+			display_name = "Turnovers"
+			items_measures[display_name] = "turnover"
+			items_measures_p[display_name] = "turnovers"
+		if(istype(O,/obj/item/reagent_containers/food/snacks/carpmeat))
+			items_measures[display_name] = "fillet of meat"
+			items_measures_p[display_name] = "fillets of meat"
+		items_counts[display_name]++
+	for(var/O in items_counts)
+		var/N = items_counts[O]
+		if(!(O in items_measures))
+			data.Add(list(list(
+				"name" = capitalize(O),
+				"amt" = N,
+				"extra" = "[lowertext(O)][N > 1 ? "s" : ""]",
+			)))
 		else
-			dat = {"<b>Ingredients:</b><br>[dat]"}
-		dat += {"<HR><BR>\
-<A href='?src=\ref[src];action=cook'>Turn on!<BR>\
-<A href='?src=\ref[src];action=dispose'>Eject ingredients!<BR>\
-"}
+			data.Add(list(list(
+				"name" = capitalize(O),
+				"amt" = N,
+				"extra" = N == 1 ? items_measures[O] : items_measures_p[O],
+			)))
 
-	user << browse("<HEAD><TITLE>Microwave Controls</TITLE></HEAD><TT>[dat]</TT>", "window=microwave")
-	onclose(user, "microwave")
-	return
+	for(var/datum/reagent/R in reagents.reagent_list)
+		var/display_name = R.name
+		if(R.id == "capsaicin")
+			display_name = "Hotsauce"
+		if(R.id == "frostoil")
+			display_name = "Coldsauce"
+		data.Add(list(list(
+			"name" = display_name,
+			"amt" = R.volume,
+			"extra" = "unit[R.volume > 1 ? "s" : ""]"
+		)))
 
+	return data
 
+/obj/machinery/microwave/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return TRUE
+
+	if(operating)
+		return TRUE
+
+	switch(action)
+		if("cook")
+			cook()
+			return TRUE
+
+		if("dispose")
+			dispose()
+			return TRUE
+
+// /obj/machinery/microwave/interact(mob/user as mob) // The microwave Menu
+// 	var/dat = ""
+// 	if(src.broken > 0)
+// 		dat = {"<TT>Bzzzzttttt</TT>"}
+// 	else if(src.operating)
+// 		dat = {"<TT>Microwaving in progress!<BR>Please wait...!</TT>"}
+// 	else if(src.dirty==100)
+// 		dat = {"<TT>This microwave is dirty!<BR>Please clean it before use!</TT>"}
+// 	else
+// 		var/list/items_counts = new
+// 		var/list/items_measures = new
+// 		var/list/items_measures_p = new
+// 		for (var/obj/O in ((contents - component_parts) - circuit))
+// 			var/display_name = O.name
+// 			if (istype(O,/obj/item/reagent_containers/food/snacks/egg))
+// 				items_measures[display_name] = "egg"
+// 				items_measures_p[display_name] = "eggs"
+// 			if (istype(O,/obj/item/reagent_containers/food/snacks/tofu))
+// 				items_measures[display_name] = "tofu chunk"
+// 				items_measures_p[display_name] = "tofu chunks"
+// 			if (istype(O,/obj/item/reagent_containers/food/snacks/meat)) //any meat
+// 				items_measures[display_name] = "slab of meat"
+// 				items_measures_p[display_name] = "slabs of meat"
+// 			if (istype(O,/obj/item/reagent_containers/food/snacks/donkpocket))
+// 				display_name = "Turnovers"
+// 				items_measures[display_name] = "turnover"
+// 				items_measures_p[display_name] = "turnovers"
+// 			if (istype(O,/obj/item/reagent_containers/food/snacks/carpmeat))
+// 				items_measures[display_name] = "fillet of meat"
+// 				items_measures_p[display_name] = "fillets of meat"
+// 			items_counts[display_name]++
+// 		for (var/O in items_counts)
+// 			var/N = items_counts[O]
+// 			if (!(O in items_measures))
+// 				dat += {"<B>[capitalize(O)]:</B> [N] [lowertext(O)]\s<BR>"}
+// 			else
+// 				if (N==1)
+// 					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures[O]]<BR>"}
+// 				else
+// 					dat += {"<B>[capitalize(O)]:</B> [N] [items_measures_p[O]]<BR>"}
+
+// 		for (var/datum/reagent/R in reagents.reagent_list)
+// 			var/display_name = R.name
+// 			if (R.id == "capsaicin")
+// 				display_name = "Hotsauce"
+// 			if (R.id == "frostoil")
+// 				display_name = "Coldsauce"
+// 			dat += {"<B>[display_name]:</B> [R.volume] unit\s<BR>"}
+
+// 		if (items_counts.len==0 && reagents.reagent_list.len==0)
+// 			dat = {"<B>The microwave is empty</B><BR>"}
+// 		else
+// 			dat = {"<b>Ingredients:</b><br>[dat]"}
+// 		dat += {"<HR><BR>\
+// <A href='?src=\ref[src];action=cook'>Turn on!<BR>\
+// <A href='?src=\ref[src];action=dispose'>Eject ingredients!<BR>\
+// "}
+
+// 	user << browse("<HEAD><TITLE>Microwave Controls</TITLE></HEAD><TT>[dat]</TT>", "window=microwave")
+// 	onclose(user, "microwave")
+// 	return
 
 /***********************************
 *   Microwave Menu Handling/Cooking
@@ -349,18 +435,18 @@
 	src.visible_message("<span class='notice'>The microwave turns on.</span>", "<span class='notice'>You hear a microwave.</span>")
 	src.operating = 1
 	src.icon_state = "mw1"
-	src.updateUsrDialog()
+	SStgui.update_uis(src)
 
 /obj/machinery/microwave/proc/abort()
 	src.operating = 0 // Turn it off again aferwards
 	src.icon_state = "mw"
-	src.updateUsrDialog()
+	SStgui.update_uis(src)
 
 /obj/machinery/microwave/proc/stop()
 	playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
 	src.operating = 0 // Turn it off again aferwards
 	src.icon_state = "mw"
-	src.updateUsrDialog()
+	SStgui.update_uis(src)
 
 /obj/machinery/microwave/proc/dispose(var/message = 1)
 	for (var/atom/movable/A in contents)
@@ -370,7 +456,7 @@
 	src.reagents.clear_reagents()
 	if (message)
 		to_chat(usr, "<span class='notice'>You dispose of the microwave contents.</span>")
-	src.updateUsrDialog()
+	SStgui.update_uis(src)
 
 /obj/machinery/microwave/proc/muck_start()
 	playsound(src.loc, 'sound/effects/splat.ogg', 50, 1) // Play a splat sound
@@ -383,7 +469,7 @@
 	src.flags &= ~OPENCONTAINER //So you can't add condiments
 	src.icon_state = "mwbloody" // Make it look dirty too
 	src.operating = 0 // Turn it off again aferwards
-	src.updateUsrDialog()
+	SStgui.update_uis(src)
 
 /obj/machinery/microwave/proc/broke()
 	var/datum/effect_system/spark_spread/s = new
@@ -394,7 +480,7 @@
 	src.broken = 2 // Make it broken so it can't be used util fixed
 	src.flags &= ~OPENCONTAINER //So you can't add condiments
 	src.operating = 0 // Turn it off again aferwards
-	src.updateUsrDialog()
+	SStgui.update_uis(src)
 
 /obj/machinery/microwave/proc/fail()
 	var/obj/item/reagent_containers/food/snacks/badrecipe/ffuu = new(src)
@@ -410,23 +496,6 @@
 	ffuu.reagents.add_reagent("carbon", amount)
 	ffuu.reagents.add_reagent("toxin", amount/10)
 	return ffuu
-
-/obj/machinery/microwave/Topic(href, href_list)
-	if(..())
-		return
-
-	usr.set_machine(src)
-	if(src.operating)
-		src.updateUsrDialog()
-		return
-
-	switch(href_list["action"])
-		if ("cook")
-			cook()
-
-		if ("dispose")
-			dispose()
-	return
 
 /obj/machinery/microwave/verb/Eject()
 	set src in oview(1)

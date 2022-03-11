@@ -23,7 +23,7 @@
 		"tgui-panel.bundle.css" = 'tgui/public/tgui-panel.bundle.css',
 	)
 
-/*
+
 /datum/asset/simple/headers
 	assets = list(
 		"alarm_green.gif" = 'icons/program_icons/alarm_green.gif',
@@ -51,8 +51,8 @@
 		"smmon_3.gif" = 'icons/program_icons/smmon_3.gif',
 		"smmon_4.gif" = 'icons/program_icons/smmon_4.gif',
 		"smmon_5.gif" = 'icons/program_icons/smmon_5.gif',
-		"smmon_6.gif" = 'icons/program_icons/smmon_6.gif',
-		"borg_mon.gif" = 'icons/program_icons/borg_mon.gif'
+		"smmon_6.gif" = 'icons/program_icons/smmon_6.gif'
+		//"borg_mon.gif" = 'icons/program_icons/borg_mon.gif'
 	)
 
 /datum/asset/simple/radar_assets
@@ -61,7 +61,7 @@
 		"ntosradarpointer.png" = 'icons/UI_Icons/tgui/ntosradar_pointer.png',
 		"ntosradarpointerS.png" = 'icons/UI_Icons/tgui/ntosradar_pointer_S.png'
 	)
-*/
+
 /datum/asset/spritesheet/simple/pda
 	name = "pda"
 	assets = list(
@@ -152,39 +152,6 @@
 		"changelog.css" = 'html/changelog.css'
 	)
 	parents = list("changelog.html" = 'html/changelog.html')
-
-/datum/asset/simple/namespaced/nanoui
-	keep_local_name = TRUE
-
-/datum/asset/simple/namespaced/nanoui/register()
-	var/list/static_dirs = list(
-		"nano/css/",
-		"nano/images/",
-		"nano/images/status_icons/",
-		"nano/images/modular_computers/",
-	)
-
-	var/list/parent_dirs = list(
-		"nano/js/",
-		"nano/templates/"
-	)
-
-	var/list/filenames = null
-	for(var/path in static_dirs)
-		filenames = flist(path)
-		for(var/filename in filenames)
-			if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
-				continue
-			if(fexists(path + filename))
-				assets[filename] = file(path + filename)
-	for(var/path in parent_dirs)
-		filenames = flist(path)
-		for(var/filename in filenames)
-			if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
-				continue
-			if(fexists(path + filename))
-				parents[filename] = file(path + filename)
-	. = ..()
 
 /datum/asset/simple/jquery
 	legacy = TRUE
@@ -291,7 +258,7 @@
 		"minor_button.png" = 'html/minor_button.png',
 		"none_button.png" = 'html/none_button.png',
 	)
-
+*/
 /datum/asset/simple/arcade
 	assets = list(
 		"boss1.gif" = 'icons/UI_Icons/Arcade/boss1.gif',
@@ -301,7 +268,6 @@
 		"boss5.gif" = 'icons/UI_Icons/Arcade/boss5.gif',
 		"boss6.gif" = 'icons/UI_Icons/Arcade/boss6.gif',
 	)
-*//*
 /datum/asset/spritesheet/simple/achievements
 	name ="achievements"
 	assets = list(
@@ -344,7 +310,7 @@
 		"traitor" = 'icons/UI_Icons/Achievements/Mafia/traitor.png',
 		"basemafia" ='icons/UI_Icons/Achievements/basemafia.png'
 	)
-*/
+
 /*
 /datum/asset/spritesheet/simple/minesweeper
 	name = "minesweeper"
@@ -467,27 +433,44 @@
 
 /datum/asset/spritesheet/vending
 	name = "vending"
-
+*/
 /datum/asset/spritesheet/vending/register()
-	for (var/k in GLOB.vending_products)
+	for(var/k in GLOB.vending_products)
 		var/atom/item = k
-		if (!ispath(item, /atom))
+		if(!ispath(item, /atom))
 			continue
 
 		var/icon_file = initial(item.icon)
 		var/icon_state = initial(item.icon_state)
+/*
+		// I really don't like the fact that I have to do this, but what the hell else *can* I do to make all of these
+		// random special items work?
+		if(ispath(item, /obj/item/reagent_containers/food/drinks/glass2) && !ispath(item, /obj/item/reagent_containers/food/drinks/glass2/fitnessflask))
+			var/obj/item/reagent_containers/food/drinks/glass2/G = item
+			icon_state = initial(G.base_icon)
+		if(ispath(item, /obj/item/clothing/suit))
+			var/obj/item/clothing/suit/U = item
+			if(initial(U.index))
+				icon_file = "icons/obj/clothing/suits_[initial(U.index)].dmi"
+		if(ispath(item, /obj/item/clothing/under))
+			var/obj/item/clothing/under/U = item
+			if(initial(U.index))
+				icon_file = "icons/obj/clothing/uniforms_[initial(U.index)].dmi"
+		if(ispath(item, /obj/item/reagent_containers/hypospray/autoinjector))
+			icon_state += "0"
+*/
 		var/icon/I
 
 		var/icon_states_list = icon_states(icon_file)
 		if(icon_state in icon_states_list)
 			I = icon(icon_file, icon_state, SOUTH)
 			var/c = initial(item.color)
-			if (!isnull(c) && c != "#FFFFFF")
+			if(!isnull(c) && c != "#FFFFFF")
 				I.Blend(c, ICON_MULTIPLY)
 		else
 			var/icon_states_string
-			for (var/an_icon_state in icon_states_list)
-				if (!icon_states_string)
+			for(var/an_icon_state in icon_states_list)
+				if(!icon_states_string)
 					icon_states_string = "[json_encode(an_icon_state)](\ref[an_icon_state])"
 				else
 					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
@@ -498,7 +481,7 @@
 
 		Insert(imgid, I)
 	return ..()
-
+/*
 /datum/asset/simple/genetics
 	assets = list(
 		"dna_discovered.gif" = 'html/dna_discovered.gif',
@@ -553,7 +536,6 @@
 	// It REALLY doesnt matter too much if these arent up to date
 	// They are relatively big
 	assets = list(
-		// VOREStation Edit: We don't need Southern Cross
 		// "southern_cross_nanomap_z1.png"		= 'icons/_nanomaps/southern_cross_nanomap_z1.png',
 		// "southern_cross_nanomap_z10.png"	= 'icons/_nanomaps/southern_cross_nanomap_z10.png',
 		// "southern_cross_nanomap_z2.png"		= 'icons/_nanomaps/southern_cross_nanomap_z2.png',
@@ -572,7 +554,6 @@
 		"tether_nanomap_z10.png"			= 'icons/_nanomaps/tether_nanomap_z10.png',
 		"tether_nanomap_z13.png"			= 'icons/_nanomaps/tether_nanomap_z13.png',
 		"tether_nanomap_z14.png"			= 'icons/_nanomaps/tether_nanomap_z14.png',
-		// VOREStation Edit End
 	)
 
 

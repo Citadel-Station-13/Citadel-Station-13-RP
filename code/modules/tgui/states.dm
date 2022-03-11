@@ -137,3 +137,7 @@
 	// if(dna.check_mutation(TK) && tkMaxRangeCheck(src, src_object))
 	// 	return UI_INTERACTIVE
 	return ..()
+
+// Topic Extensions for old UIs
+/datum/proc/CanUseTopic(var/mob/user, var/datum/ui_state/state)
+	return ui_status(user, state)

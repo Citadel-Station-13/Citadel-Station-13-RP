@@ -29,11 +29,11 @@
 		return
 	if(!anchored)
 		return
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/structure/musician/nano_ui_interact(mob/user)
+/obj/structure/musician/ui_interact(mob/user)
 	. = ..()
-	song.nano_ui_interact(user)
+	song.ui_interact(user)
 
 /obj/structure/musician/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())

@@ -31,9 +31,10 @@ var/global/datum/ntnet/ntnet_global = new()
 /datum/ntnet/New()
 	if(ntnet_global && (ntnet_global != src))
 		ntnet_global = src // There can be only one.
-	for(var/obj/machinery/ntnet_relay/R in machines)
-		relays.Add(R)
-		R.NTNet = src
+	if (SSatoms && SSatoms.initialized > INITIALIZATION_INSSATOMS)
+		for(var/obj/machinery/ntnet_relay/R in machines)
+			relays.Add(R)
+			R.NTNet = src
 	build_software_lists()
 	build_news_list()
 	build_emails_list()
@@ -180,5 +181,7 @@ var/global/datum/ntnet/ntnet_global = new()
 			return 1
 	return 0
 
-
-
+/datum/ntnet/proc/get_chat_channel_by_id(id)
+	for(var/datum/ntnet_conversation/chan in chat_channels)
+		if(chan.id == id)
+			return chan

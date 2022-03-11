@@ -21,6 +21,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/invisimin,				//allows our mob to go invisible/visible,
 	/client/proc/getserverlogs,		/*for accessing server logs*/
 	/client/proc/getcurrentlogs,		/*for accessing server logs*/
+	/datum/admins/proc/view_persistent_data,
 	/datum/admins/proc/show_traitor_panel,	//interface which shows a mob's mind.,
 	/datum/admins/proc/show_game_mode,  //Configuration window for the current game mode.,
 	/datum/admins/proc/force_mode_latespawn, //Force the mode to try a latespawn proc,
@@ -144,7 +145,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/roll_dices,
 	/datum/admins/proc/call_supply_drop,
 	/datum/admins/proc/call_drop_pod,
-	/client/proc/smite_vr, //VOREStation Add,
+	/client/proc/smite_vr,
 	/client/proc/smite,
 	/client/proc/admin_lightning_strike
 	)
@@ -156,7 +157,7 @@ var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_plant,
 	/datum/admins/proc/spawn_atom,		//allows us to spawn instances,
 	/client/proc/respawn_character,
-	/client/proc/spawn_character_mob,  //VOREStation Add,
+	/client/proc/spawn_character_mob,
 	/client/proc/virus2_editor,
 	/client/proc/spawn_chemdisp_cartridge,
 	/client/proc/map_template_load,
@@ -173,6 +174,7 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/delay_start,
 	/datum/admins/proc/delay_end,
 	/datum/admins/proc/toggleaban,
+	/datum/admins/proc/togglepersistence,
 	/client/proc/cmd_mod_say,
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,

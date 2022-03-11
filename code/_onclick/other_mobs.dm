@@ -68,7 +68,7 @@
 	else
 		add_fingerprint(user)
 	// if(interaction_flags_atom & INTERACT_ATOM_UI_INTERACT)
-	return (ui_interact(user) || nano_ui_interact(user))
+	return (ui_interact(user))
 	// return FALSE
 
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A)

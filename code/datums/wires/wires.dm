@@ -95,7 +95,7 @@
 		ui.open()
 
 /datum/wires/ui_state(mob/user)
-	return physical_state
+	return GLOB.physical_state
 
 /datum/wires/ui_data(mob/user)
 	var/list/data = list()

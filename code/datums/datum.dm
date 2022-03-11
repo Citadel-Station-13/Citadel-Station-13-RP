@@ -75,6 +75,7 @@
 	datum_flags &= ~DF_USE_TAG //In case something tries to REF us
 	weak_reference = null	//ensure prompt GCing of weakref.
 
+	//Clear timers
 	var/list/timers = active_timers
 	active_timers = null
 	for(var/thing in timers)
@@ -115,10 +116,7 @@
 		UnregisterSignal(target, signal_procs[target])
 	//END: ECS SHIT
 
-	//VORECODE START
-	SSnanoui.close_uis(src)
-	//VORECODE END
-
+	SStgui.close_uis(src)
 	return QDEL_HINT_QUEUE
 
 #ifdef DATUMVAR_DEBUGGING_MODE

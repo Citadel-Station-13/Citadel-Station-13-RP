@@ -78,7 +78,7 @@ export const NtosJobManagerContent = (props, context) => {
                 })} />
               <Button
                 content="Close"
-                disabled={!slot.status_close}
+                disabled={!slot.UI_CLOSE}
                 onClick={() => act('PRG_close_job', {
                   target: slot.title,
                 })} />

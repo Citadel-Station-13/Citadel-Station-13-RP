@@ -64,7 +64,7 @@
 	if(opened)
 		wires.Interact(user)
 
-	return nano_ui_interact(user)
+	return ui_interact(user)
 
 /obj/machinery/power/grid_checker/proc/power_failure(var/announce = TRUE)
 	if(announce)

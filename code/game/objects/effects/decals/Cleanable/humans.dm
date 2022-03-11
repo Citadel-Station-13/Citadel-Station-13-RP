@@ -21,6 +21,8 @@ var/global/list/image/splatter_cache=list()
 	var/list/datum/disease2/disease/virus2 = list()
 	var/amount = 5
 	var/drytime
+	generic_filth = TRUE
+	persistent = FALSE
 
 /obj/effect/decal/cleanable/blood/reveal_blood()
 	if(!fluorescent)
@@ -135,8 +137,8 @@ var/global/list/image/splatter_cache=list()
 		user.verbs += /mob/living/carbon/human/proc/bloody_doodle
 
 /obj/effect/decal/cleanable/blood/splatter
-        random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
-        amount = 2
+	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
+	amount = 2
 
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"

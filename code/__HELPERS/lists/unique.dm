@@ -14,3 +14,5 @@
 		else
 			L[key] = temp[key]
 	return L
+
+#define listequal(A, B) (A.len == B.len && !length(A^B))

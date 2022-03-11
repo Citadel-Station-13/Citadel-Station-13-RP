@@ -9,7 +9,7 @@
 
 /datum/wires/smes/interactable(mob/user)
 	var/obj/machinery/power/smes/buildable/S = holder
-	if(S.open_hatch)
+	if(S.panel_open)
 		return TRUE
 	return FALSE
 

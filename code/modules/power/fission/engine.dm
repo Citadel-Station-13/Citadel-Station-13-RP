@@ -107,28 +107,30 @@
 	SSradiation.radiate(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0))
 
 /obj/machinery/power/fission/attack_hand(mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/power/fission/attack_robot(mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/power/fission/attack_ai(mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/power/fission/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
+/obj/machinery/power/fission/ui_interact(mob/user, datum/tgui/ui = null)
 	if(!powered() || !anchored)
 		return
 
-	var/data = nuke_ui_data()
-
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "fission_engine.tmpl", "Nuclear Fission Core", 500, 600)
-		ui.set_initial_data(data)
+		ui = new(user, src, "FissionEngine", "Nuclear Fission Core")
 		ui.open()
-		ui.set_auto_update(1)
 
-/obj/machinery/power/fission/proc/nuke_ui_data(need_power = FALSE)
+	// ui = SStgui.try_update_ui(user, src, ui_key, ui, data)
+	// if(!ui)
+	// 	ui = new(user, src, ui_key, "fission_engine.tmpl", "Nuclear Fission Core", 500, 600)
+	// 	ui.set_initial_data(data)
+	// 	ui.open()
+	// 	ui.set_auto_update(1)
+
+/obj/machinery/power/fission/proc/ui_data(need_power = FALSE)
 	var/data[0]
 
 	data["integrity_percentage"] = round(get_integrity())

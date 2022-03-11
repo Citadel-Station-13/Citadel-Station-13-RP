@@ -23,7 +23,7 @@ var/global/file_uid = 0
 	if(holder.holder2 && holder.holder2.active_program == src)
 		holder.holder2.kill_program(1)
 	holder = null
-	..()
+	return ..()
 
 // Returns independent copy of this file.
 /datum/computer_file/proc/clone(var/rename = 0)
@@ -36,4 +36,4 @@ var/global/file_uid = 0
 	else
 		temp.filename = filename
 	temp.filetype = filetype
-	return temp 
+	return temp

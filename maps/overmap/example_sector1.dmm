@@ -595,7 +595,7 @@
 /turf/simulated/floor,
 /area/tcommsat/computer)
 "bx" = (
-/obj/item/cigbutt,
+/obj/item/trash/cigbutt,
 /obj/machinery/light,
 /turf/simulated/floor,
 /area/tcommsat/computer)

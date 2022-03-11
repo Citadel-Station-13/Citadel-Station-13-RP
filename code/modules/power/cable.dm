@@ -117,7 +117,7 @@ var/list/possible_cable_coil_colours = list(
 		user.examinate(src)
 		// following code taken from attackby (multitool)
 		if(powernet && (powernet.avail > 0))
-			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
+			to_chat(user, "<span class='warning'>[DisplayPower(powernet.avail)] in power network.</span>")
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
 	return
@@ -233,7 +233,7 @@ var/list/possible_cable_coil_colours = list(
 	else if(istype(W, /obj/item/multitool))
 
 		if(powernet && (powernet.avail > 0))		// is it powered?
-			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
+			to_chat(user, "<span class='warning'>[DisplayPower(powernet.avail)] in power network.</span>")
 
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
@@ -606,6 +606,13 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		. += "A piece of power cable."
 	else
 		. += "A coil of power cable. There are [get_amount()] lengths of cable in the coil."
+
+/obj/item/stack/cable_coil/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/multitool))
+		var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in possible_cable_coil_colours
+		set_cable_color(selected_type, usr)
+		return
+	return ..()
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"

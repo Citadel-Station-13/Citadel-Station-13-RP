@@ -158,7 +158,7 @@
 	if(portData.len)
 		data["ports"] = portData
 	if(output)
-		data["set_flow_rate"] = round(set_flow_rate*10)		//because nanoui can't handle rounded decimals.
+		data["set_flow_rate"] = round(set_flow_rate*10)		//because tgui can't handle rounded decimals.
 		data["last_flow_rate"] = round(last_flow_rate*10)
 
 	return data

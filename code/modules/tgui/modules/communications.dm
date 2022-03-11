@@ -39,7 +39,7 @@
 
 /datum/tgui_module/communications/New(host)
 	. = ..()
-	ATC = atc
+	ATC = GLOB.lore_atc
 	crew_announcement = new()
 	crew_announcement.newscast = TRUE
 
@@ -146,12 +146,12 @@
 	data["msg_cooldown"] = message_cooldown ? (round((message_cooldown - world.time) / 10)) : 0
 	data["cc_cooldown"] = centcomm_message_cooldown ? (round((centcomm_message_cooldown - world.time) / 10)) : 0
 
-	data["esc_callable"] = emergency_shuttle.location() && !emergency_shuttle.online() ? TRUE : FALSE
-	data["esc_recallable"] = emergency_shuttle.location() && emergency_shuttle.online() ? TRUE : FALSE
+	data["esc_callable"] = SSemergencyshuttle.location() && !SSemergencyshuttle.online() ? TRUE : FALSE
+	data["esc_recallable"] = SSemergencyshuttle.location() && SSemergencyshuttle.online() ? TRUE : FALSE
 	data["esc_status"] = FALSE
-	if(emergency_shuttle.has_eta())
-		var/timeleft = emergency_shuttle.estimate_arrival_time()
-		data["esc_status"] = emergency_shuttle.online() ? "ETA:" : "RECALLING:"
+	if(SSemergencyshuttle.has_eta())
+		var/timeleft = SSemergencyshuttle.estimate_arrival_time()
+		data["esc_status"] = SSemergencyshuttle.online() ? "ETA:" : "RECALLING:"
 		data["esc_status"] += " [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 	return data
 
@@ -274,7 +274,7 @@
 				return
 
 			call_shuttle_proc(usr)
-			if(emergency_shuttle.online())
+			if(SSemergencyshuttle.online())
 				post_status(src, "shuttle", user = usr)
 			setMenuState(usr, COMM_SCREEN_MAIN)
 
@@ -376,112 +376,3 @@
 
 /datum/tgui_module/communications/ntos
 	ntos = TRUE
-
-/* Etc global procs */
-/proc/enable_prison_shuttle(var/mob/user)
-	for(var/obj/machinery/computer/prison_shuttle/PS in machines)
-		PS.allowedtocall = !(PS.allowedtocall)
-
-/proc/call_shuttle_proc(var/mob/user)
-	if ((!( ticker ) || !emergency_shuttle.location()))
-		return
-
-	if(!universe.OnShuttleCall(usr))
-		to_chat(user, "<span class='notice'>Cannot establish a bluespace connection.</span>")
-		return
-
-	if(deathsquad.deployed)
-		to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
-		return
-
-	if(emergency_shuttle.deny_shuttle)
-		to_chat(user, "The emergency shuttle may not be sent at this time. Please try again later.")
-		return
-
-	if(world.time < 6000) // Ten minute grace period to let the game get going without lolmetagaming. -- TLE
-		to_chat(user, "The emergency shuttle is refueling. Please wait another [round((6000-world.time)/600)] minute\s before trying again.")
-		return
-
-	if(emergency_shuttle.going_to_centcom())
-		to_chat(user, "The emergency shuttle may not be called while returning to [GLOB.using_map.boss_short].")
-		return
-
-	if(emergency_shuttle.online())
-		to_chat(user, "The emergency shuttle is already on its way.")
-		return
-
-	if(ticker.mode.name == "blob")
-		to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
-		return
-
-	emergency_shuttle.call_evac()
-	log_game("[key_name(user)] has called the shuttle.")
-	message_admins("[key_name_admin(user)] has called the shuttle.", 1)
-	admin_chat_message(message = "Emergency evac beginning! Called by [key_name(user)]!", color = "#CC2222") //VOREStation Add
-
-	return
-
-/proc/init_shift_change(var/mob/user, var/force = 0)
-	if ((!( ticker ) || !emergency_shuttle.location()))
-		return
-
-	if(emergency_shuttle.going_to_centcom())
-		to_chat(user, "The shuttle may not be called while returning to [GLOB.using_map.boss_short].")
-		return
-
-	if(emergency_shuttle.online())
-		to_chat(user, "The shuttle is already on its way.")
-		return
-
-	// if force is 0, some things may stop the shuttle call
-	if(!force)
-		if(emergency_shuttle.deny_shuttle)
-			to_chat(user, "[GLOB.using_map.boss_short] does not currently have a shuttle available in your sector. Please try again later.")
-			return
-
-		if(deathsquad.deployed == 1)
-			to_chat(user, "[GLOB.using_map.boss_short] will not allow the shuttle to be called. Consider all contracts terminated.")
-			return
-
-		if(world.time < 54000) // 30 minute grace period to let the game get going
-			to_chat(user, "The shuttle is refueling. Please wait another [round((54000-world.time)/60)] minutes before trying again.")
-			return
-
-		if(ticker.mode.auto_recall_shuttle)
-			//New version pretends to call the shuttle but cause the shuttle to return after a random duration.
-			emergency_shuttle.auto_recall = 1
-
-		if(ticker.mode.name == "blob" || ticker.mode.name == "epidemic")
-			to_chat(user, "Under directive 7-10, [station_name()] is quarantined until further notice.")
-			return
-
-	emergency_shuttle.call_transfer()
-
-	//delay events in case of an autotransfer
-	if (isnull(user))
-		SSevents.delay_events(EVENT_LEVEL_MODERATE, 9000) //15 minutes
-		SSevents.delay_events(EVENT_LEVEL_MAJOR, 9000)
-
-	log_game("[user? key_name(user) : "Autotransfer"] has called the shuttle.")
-	message_admins("[user? key_name_admin(user) : "Autotransfer"] has called the shuttle.", 1)
-	admin_chat_message(message = "Autotransfer shuttle dispatched, shift ending soon.", color = "#2277BB") //VOREStation Add
-
-	return
-
-/proc/cancel_call_proc(var/mob/user)
-	if (!( ticker ) || !emergency_shuttle.can_recall())
-		return
-	if((ticker.mode.name == "blob")||(ticker.mode.name == "Meteor"))
-		return
-
-	if(!emergency_shuttle.going_to_centcom()) //check that shuttle isn't already heading to CentCom
-		emergency_shuttle.recall()
-		log_game("[key_name(user)] has recalled the shuttle.")
-		message_admins("[key_name_admin(user)] has recalled the shuttle.", 1)
-	return
-
-/proc/is_relay_online()
-	for(var/obj/machinery/telecomms/relay/M in world)
-		if(M.stat == 0)
-			return 1
-	return 0

@@ -51,7 +51,7 @@
 		to_chat(user, "<span class='warning'>\The [src] only accepts used swabs.</span>")
 		return
 
-/obj/machinery/dnaforensics/nano_ui_interact(mob/user, ui_key = "main",var/datum/nanoui/ui = null)
+/obj/machinery/dnaforensics/ui_interact(mob/user, ui_key = "main",var/datum/tgui/ui = null)
 	if(stat & (NOPOWER)) return
 	if(user.stat || user.restrained()) return
 	var/list/data = list()
@@ -61,7 +61,7 @@
 	data["bloodsamp_desc"] = (bloodsamp ? (bloodsamp.desc ? bloodsamp.desc : "No information on record.") : "")
 	data["lidstate"] = closed
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data)
 	if (!ui)
 		ui = new(user, src, ui_key, "dnaforensics.tmpl", "QuikScan DNA Analyzer", 540, 326)
 		ui.set_initial_data(data)
@@ -139,10 +139,10 @@
 	return
 
 /obj/machinery/dnaforensics/attack_ai(mob/user as mob)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/dnaforensics/attack_hand(mob/user as mob)
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/dnaforensics/verb/toggle_lid()
 	set category = "Object"

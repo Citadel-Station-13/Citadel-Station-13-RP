@@ -3,12 +3,13 @@
 	desc = "A wall-mounted touchscreen computer."
 	icon = 'icons/obj/modular_telescreen.dmi'
 	icon_state = "telescreen"
+	layer = ABOVE_WINDOW_LAYER
 	icon_state_unpowered = "telescreen"
 	icon_state_menu = "menu"
 	icon_state_screensaver = "standby"
 	hardware_flag = PROGRAM_TELESCREEN
 	anchored = TRUE
-	density = 0
+	density = FALSE
 	base_idle_power_usage = 75
 	base_active_power_usage = 300
 	max_hardware_size = 2
@@ -18,8 +19,8 @@
 	broken_damage = 150
 	w_class = ITEMSIZE_HUGE
 
-/obj/item/modular_computer/telescreen/Initialize(mapload)
-	. = ..()
+/obj/item/modular_computer/telescreen/New()
+	..()
 	// Allows us to create "north bump" "south bump" etc. named objects, for more comfortable mapping.
 	name = "telescreen"
 
@@ -33,7 +34,7 @@
 			pixel_y = 0
 			to_chat(user, "You unsecure \the [src].")
 		else
-			var/choice = input(user, "Where do you want to place \the [src]?", "Offset selection") in list("North", "South", "West", "East", "This tile", "Cancel")
+			var/choice = tgui_input_list(user, "Where do you want to place \the [src]?", "Offset selection", list("North", "South", "West", "East", "This tile", "Cancel"))
 			var/valid = FALSE
 			switch(choice)
 				if("North")
@@ -52,7 +53,7 @@
 					valid = TRUE
 
 			if(valid)
-				anchored = 1
+				anchored = TRUE
 				screen_on = TRUE
 				to_chat(user, "You secure \the [src].")
 			return

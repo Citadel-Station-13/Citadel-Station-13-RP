@@ -72,7 +72,6 @@ var/global/list/latejoin_talon = list()
 	shuttle_type = /datum/shuttle/autodock/overmap/talonboat
 
 // The talon's boat
-
 /datum/shuttle/autodock/overmap/talonboat
 	name = "Talon's boat"
 	current_location = "offmap_spawn_talonboat"

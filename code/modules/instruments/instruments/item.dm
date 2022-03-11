@@ -75,14 +75,14 @@
 */
 
 /obj/item/instrument/interact(mob/user)
-	nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/item/instrument/nano_ui_interact(mob/living/user)
+/obj/item/instrument/ui_interact(mob/user)
 	if(!isliving(user) || user.stat || user.restrained())
 		return
 
 	user.set_machine(src)
-	song.nano_ui_interact(user)
+	song.ui_interact(user)
 
 /obj/item/instrument/violin
 	name = "space violin"

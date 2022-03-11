@@ -23,7 +23,7 @@
 	reagent_mix = RECIPE_REAGENT_REPLACE
 	result = /obj/item/reagent_containers/food/snacks/ribplate
 
-/datum/recipe/teshariroast
+/datum/recipe/teshariroast	//Pure evil. - Zandario
 	appliance = OVEN
 	fruit = list("lemon" = 1)
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)

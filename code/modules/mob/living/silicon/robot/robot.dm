@@ -380,12 +380,6 @@
 		updatename()
 		updateicon()
 
-// this verb lets cyborgs see the stations manifest
-/mob/living/silicon/robot/verb/cmd_station_manifest()
-	set category = "Robot Commands"
-	set name = "Show Crew Manifest"
-	show_station_manifest()
-
 /mob/living/silicon/robot/proc/self_diagnosis()
 	if(!is_component_functioning("diagnosis unit"))
 		return null
@@ -404,7 +398,7 @@
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
 	handle_light()
-	updateicon() //VOREStation Add - Since dogborgs have sprites for this
+	updateicon() // Since dogborgs have sprites for this
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()
 	set category = "Robot Commands"

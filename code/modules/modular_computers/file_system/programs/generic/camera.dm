@@ -15,6 +15,10 @@
 			return access_research
 		if(NETWORK_ERT)
 			return access_cent_specops
+		if(NETWORK_TALON_SHIP)
+			return access_talon
+		if(NETWORK_TALON_HELMETS)
+			return access_talon
 
 	if(network in GLOB.using_map.station_networks)
 		return access_security // Default for all other station networks

@@ -26,7 +26,7 @@
  * ui_status() is middlewere for objects to add little exceptions or special cases to the state they use.
  * In this case, we're using it in order to make the UI refuse to let the user press any buttons if they're
  * not authorized to do so.
- * This saves us two lines of code in tgui_act().
+ * This saves us two lines of code in ui_act().
  */
 /obj/item/rig/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
@@ -119,7 +119,7 @@
  * ui_act() is the TGUI equivelent of Topic(). It's responsible for all of the "actions" you can take in the UI.
  */
 /obj/item/rig/ui_act(action, params)
-	// This parent call is very important, as it's responsible for invoking tgui_status and checking our state's rules.
+	// This parent call is very important, as it's responsible for invoking ui_status and checking our state's rules.
 	if(..())
 		return TRUE
 

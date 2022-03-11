@@ -30,14 +30,7 @@ SUBSYSTEM_DEF(ticker)
 	var/event_time = null
 	var/event = 0
 
-	// var/login_music			// music played in pregame lobby // VOREStation Edit - We do music differently
-
 	var/list/datum/mind/minds = list()//The people in the game. Used for objective tracking.
-
-	var/Bible_icon_state	// icon_state the chaplain has chosen for his bible
-	var/Bible_item_state	// item_state the chaplain has chosen for his bible
-	var/Bible_name			// name of the bible
-	var/Bible_deity_name
 
 	var/random_players = 0 	// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
 

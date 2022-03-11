@@ -26,7 +26,7 @@
 /obj/machinery/computer/xenobio2/attack_hand(mob/user)
 	if(..())
 		return 1
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/computer/xenobio2/attackby(var/obj/item/W, var/mob/user)
 
@@ -46,7 +46,7 @@
 
 	..()
 
-/obj/machinery/computer/xenobio2/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+/obj/machinery/computer/xenobio2/ui_interact(mob/user, ui_key = "main", var/datum/tgui/ui = null, var/force_open = 1)
 	if(!user)
 		return
 	if(!injector)
@@ -81,7 +81,7 @@
 		data["occupantHealth"] = null
 		data["occupantHealthMax"] = null
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "xenobio_computer.tmpl", "Injector Control Console UI", 470, 450)
 		ui.set_initial_data(data)

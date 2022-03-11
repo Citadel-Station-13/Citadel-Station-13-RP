@@ -106,7 +106,7 @@
 // -- Items -- //
 
 // For fake solar power.
-/obj/machinery/power/fractal_reactor/fluff/smes
+/obj/machinery/power/debug_items/infinite_generator/fluff/smes
 	name = "power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. The controls are locked."
 	icon_state = "smes"

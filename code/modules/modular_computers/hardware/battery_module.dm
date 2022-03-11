@@ -8,7 +8,7 @@
 	malfunction_probability = 1
 	origin_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 1)
 	var/battery_rating = 750
-	var/obj/item/cell/battery = /obj/item/cell
+	var/obj/item/cell/battery = null
 
 /obj/item/computer_hardware/battery_module/advanced
 	name = "advanced battery"
@@ -55,24 +55,28 @@
 	icon_state = "battery_lambda"
 	hardware_size = 1
 	battery_rating = 30000
-	battery = /obj/item/cell/infinite
+
+/obj/item/computer_hardware/battery_module/lambda/New()
+	..()
+	battery = new/obj/item/cell/infinite(src)
 
 /obj/item/computer_hardware/battery_module/diagnostics(var/mob/user)
 	..()
 	to_chat(user, "Internal battery charge: [battery.charge]/[battery.maxcharge] CU")
 
-/obj/item/computer_hardware/battery_module/Initialize(mapload)
-	if(ispath(battery))
-		battery = new battery
-	if(battery)
-		battery.maxcharge = battery_rating
-		battery.charge = 0
-	return ..()
+/obj/item/computer_hardware/battery_module/New()
+	battery = new/obj/item/cell(src)
+	battery.maxcharge = battery_rating
+	battery.charge = 0
+	..()
 
 /obj/item/computer_hardware/battery_module/Destroy()
 	QDEL_NULL(battery)
 	return ..()
 
 /obj/item/computer_hardware/battery_module/proc/charge_to_full()
-	if(battery)//nolonger checks for a valid path, instead checks if battery is set.
+	if(battery)
 		battery.charge = battery.maxcharge
+
+/obj/item/computer_hardware/battery_module/get_cell()
+	return battery

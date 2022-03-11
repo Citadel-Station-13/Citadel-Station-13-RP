@@ -14,6 +14,8 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
+	var/static/cell_uid = 1		// Unique ID of this power cell. Used to reduce bunch of uglier code in nanoUI.
+	var/c_uid
 	/// Are we EMP immune?
 	var/emp_proof = FALSE
 	var/charge
@@ -33,6 +35,7 @@
 
 /obj/item/cell/Initialize(mapload)
 	. = ..()
+	c_uid = cell_uid++
 	if(isnull(charge))
 		charge = maxcharge
 	update_icon()

@@ -54,7 +54,7 @@
 	data["fabricator"] = dronefab
 	data["fabPower"] = dronefab?.produce_drones
 
-	data["areas"] = tagger_locations
+	data["areas"] = GLOB.tagger_locations
 	data["selected_area"] = "[drone_call_area]"
 
 	return data
@@ -66,7 +66,7 @@
 	switch(action)
 		if("set_dcall_area")
 			var/t_area = params["area"]
-			if(!t_area || !(t_area in tagger_locations))
+			if(!t_area || !(t_area in GLOB.tagger_locations))
 				return
 
 			drone_call_area = t_area

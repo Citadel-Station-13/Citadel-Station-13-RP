@@ -12,7 +12,7 @@
 	// If the command requires a gyrotron, and we can't find it, we don't need to check any further
 	var/obj/machinery/power/emitter/gyrotron/G = null
 	if(params["gyro"])
-		G = locate(params["gyro"]) in GLOB.gyrotrons
+		G = locate(params["gyro"]) in gyrotrons
 		if(!istype(G))
 			return FALSE
 

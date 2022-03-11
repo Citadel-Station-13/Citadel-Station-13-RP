@@ -1,7 +1,7 @@
 /datum/computer_file/program/fission_monitor
 	filename = "fismon"
 	filedesc = "Fission Monitoring"
-	nanomodule_path = /datum/nano_module/fission_monitor/
+	nanomodule_path = /datum/tgui_module/fission_monitor/
 	program_icon_state = "smmon_0"
 	program_key_state = "tech_key"
 	program_menu_icon = "notice"
@@ -15,7 +15,7 @@
 
 /datum/computer_file/program/fission_monitor/process_tick()
 	..()
-	var/datum/nano_module/fission_monitor/NMS = NM
+	var/datum/tgui_module/fission_monitor/NMS = NM
 	var/new_status = istype(NMS) ? NMS.get_status() : 0
 	if(last_status != new_status)
 		last_status = new_status
@@ -24,24 +24,24 @@
 		if(istype(computer))
 			computer.update_icon()
 
-/datum/nano_module/fission_monitor
+/datum/tgui_module/fission_monitor
 	name = "Fission monitor"
 	var/list/fissioncores
 	var/obj/machinery/power/fission/active = null		// Currently selected fission core.
 
-/datum/nano_module/fission_monitor/Destroy()
+/datum/tgui_module/fission_monitor/Destroy()
 	. = ..()
 	active = null
 	fissioncores = null
 
-/datum/nano_module/fission_monitor/New()
+/datum/tgui_module/fission_monitor/New()
 	..()
 	refresh()
 
 // Refreshes list of active fission cores
-/datum/nano_module/fission_monitor/proc/refresh()
+/datum/tgui_module/fission_monitor/proc/refresh()
 	fissioncores = list()
-	var/z = get_z(nano_host())
+	var/z = get_z(ui_host())
 	if(!z)
 		return
 	var/valid_z_levels = GLOB.using_map.get_map_levels(z)
@@ -54,15 +54,15 @@
 	if(!(active in fissioncores))
 		active = null
 
-/datum/nano_module/fission_monitor/proc/get_status()
+/datum/tgui_module/fission_monitor/proc/get_status()
 	. = FALSE
 	for(var/obj/machinery/power/fission/F in fissioncores)
 		if(F.anchored && F.powered())
 			. = TRUE
 			break
 
-/datum/nano_module/fission_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
-	var/list/data = host.initial_data()
+/datum/tgui_module/fission_monitor/ui_interact(mob/user, ui_key = "main", var/datum/tgui/ui = null, var/force_open = 1, var/datum/ui_state/state = default_state)
+	var/list/data = ui_host.initial_data()
 
 	if(istype(active) && active.anchored)
 		data = data + active.ui_data(TRUE)
@@ -85,7 +85,7 @@
 		data["active"] = 0
 		data["fissioncores"] = FCS
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "fission_monitor_prog.tmpl", "Nuclear Fission Core", 500, 600, state = state)
 		if(host.update_layout())
@@ -94,7 +94,7 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/datum/nano_module/fission_monitor/Topic(href, href_list)
+/datum/tgui_module/fission_monitor/Topic(href, href_list)
 	if(..())
 		return 1
 	if( href_list["clear"] )

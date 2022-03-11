@@ -1307,7 +1307,7 @@
 					cell.ex_act(3)
 	return
 
-/obj/machinery/power/apc/disconnect_terminal()
+/obj/machinery/power/apc/disconnect_terminal(var/obj/machinery/power/terminal/term)
 	if(terminal)
 		terminal.master = null
 		terminal = null

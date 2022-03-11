@@ -364,6 +364,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	features += config_legacy.abandon_allowed ? "respawn" : "no respawn"
 
+	features += config_legacy.persistence_enabled ? "persistence enabled" : "persistence disabled"
+
 	if (config && config_legacy.allow_vote_mode)
 		features += "vote"
 

@@ -46,11 +46,12 @@
 /obj/item/computer_hardware/proc/diagnostics(var/mob/user)
 	to_chat(user, "Hardware Integrity Test... (Corruption: [damage]/[max_damage]) [damage > damage_failure ? "FAIL" : damage > damage_malfunction ? "WARN" : "PASS"]")
 
-/obj/item/computer_hardware/Initialize(mapload)
+/obj/item/computer_hardware/New(var/obj/L)
+	..()
 	w_class = hardware_size
-	if(istype(loc, /obj/item/modular_computer))
-		holder2 = loc
-	return ..()
+	if(istype(L, /obj/item/modular_computer))
+		holder2 = L
+		return
 
 /obj/item/computer_hardware/Destroy()
 	holder2 = null
@@ -71,7 +72,7 @@
 	// Good to go.
 	return 1
 
-/obj/item/computer_hardware/examine(mob/user)
+/obj/item/computer_hardware/examine(var/mob/user)
 	. = ..()
 	if(damage > damage_failure)
 		. += "<span class='danger'>It seems to be severely damaged!</span>"

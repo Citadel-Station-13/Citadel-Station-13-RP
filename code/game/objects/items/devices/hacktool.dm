@@ -5,7 +5,7 @@
 	var/in_hack_mode = 0
 	var/list/known_targets
 	var/list/supported_types
-	var/datum/topic_state/default/must_hack/hack_state
+	var/datum/ui_state/default/must_hack/hack_state
 
 /obj/item/multitool/hacktool/Initialize(mapload)
 	. = ..()
@@ -37,10 +37,11 @@
 		return ..()
 
 	if(!attempt_hack(user, W))
-		return 0
+		return FALSE
 
-	W.nano_ui_interact(user, state = hack_state)
-	return 1
+	// Note, if you ever want to expand supported_types, you must manually add the custom state argument to their ui_interact
+	W.ui_interact(user, custom_state = hack_state)
+	return TRUE
 
 /obj/item/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)
 	if(is_hacking)
@@ -83,18 +84,18 @@
 /obj/item/multitool/hacktool/proc/on_target_destroy(var/target)
 	known_targets -= target
 
-/datum/topic_state/default/must_hack
+/datum/ui_state/default/must_hack
 	var/obj/item/multitool/hacktool/hacktool
 
-/datum/topic_state/default/must_hack/New(var/hacktool)
+/datum/ui_state/default/must_hack/New(var/hacktool)
 	src.hacktool = hacktool
 	..()
 
-/datum/topic_state/default/must_hack/Destroy()
+/datum/ui_state/default/must_hack/Destroy()
 	hacktool = null
 	return ..()
 
-/datum/topic_state/default/must_hack/can_use_topic(var/src_object, var/mob/user)
+/datum/ui_state/default/must_hack/can_use_topic(src_object, mob/user)
 	if(!hacktool || !hacktool.in_hack_mode || !(src_object in hacktool.known_targets))
 		return UI_CLOSE
 	return ..()

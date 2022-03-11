@@ -283,5 +283,5 @@ var/global/list/changeling_fabricated_clothing = list(
 	if(!registered_user)
 		registered_user = usr
 		usr.set_id_info(src)
-	nano_ui_interact(registered_user)
+	ui_interact(registered_user)
 	. = ..()

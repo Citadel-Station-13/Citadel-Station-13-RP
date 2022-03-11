@@ -19,7 +19,7 @@ fundamental differences
 
 /obj/machinery/appliance/mixer/examine(var/mob/user)
 	. = ..()
-	. += "<span class = 'notice'>It is currently set to make a [selected_option].</span>"
+		. += "<span class='notice'>It is currently set to make a [selected_option]</span>"
 
 /obj/machinery/appliance/mixer/Initialize(mapload, newdir)
 	. = ..()
@@ -36,7 +36,7 @@ fundamental differences
 
 //Mixers cannot-not do combining mode. So the default option is removed from this. A combine target must be chosen
 /obj/machinery/appliance/mixer/choose_output()
-	set src in oview(1)
+	set src in view(1)
 	set name = "Choose output"
 	set category = "Object"
 
@@ -61,19 +61,21 @@ fundamental differences
 /obj/machinery/appliance/mixer/has_space(var/obj/item/I)
 	var/datum/cooking_item/CI = cooking_objs[1]
 	if (!CI || !CI.container)
-		return 0
+		return FALSE
 
 	if (CI.container.can_fit(I))
 		return CI
 
-	return 0
+	return FALSE
 
 
-/obj/machinery/appliance/mixer/can_remove_items(var/mob/user)
-	if (stat)
-		return 1
+/obj/machinery/appliance/mixer/can_remove_items(var/mob/user, show_warning = TRUE)
+	if(stat)
+		return TRUE
 	else
-		to_chat(user, span("warning", "You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish."))
+		if(show_warning)
+			to_chat(user, "<span class='warning'>You can't remove ingredients while it's turned on! Turn it off first or wait for it to finish.</span>")
+		return FALSE
 
 //Container is not removable
 /obj/machinery/appliance/mixer/removal_menu(var/mob/user)
@@ -95,12 +97,11 @@ fundamental differences
 			if (!user || !user.put_in_hands(I))
 				I.forceMove(get_turf(src))
 			update_icon()
-		return 1
-	return 0
-
+		return TRUE
+	return FALSE
 
 /obj/machinery/appliance/mixer/toggle_power()
-	set src in view()
+	set src in view(1)
 	set name = "Toggle Power"
 	set category = "Object"
 

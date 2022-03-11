@@ -413,6 +413,10 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define RADIATION_THRESHOLD_CUTOFF	0.1	// Radiation will not affect a tile when below this value.
 
 
+//Persistence
+#define AREA_FLAG_IS_NOT_PERSISTENT 8 // SSpersistence will not track values from this area.
+
+
 #define PR_ANNOUNCEMENTS_PER_ROUND	5
 
 //https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
@@ -478,3 +482,30 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define APPEARANCECHANGER_CHANGED_F_HAIRSTYLE "Facial Hair Style"
 #define APPEARANCECHANGER_CHANGED_F_HAIRCOLOR "Facial Hair Color"
 #define APPEARANCECHANGER_CHANGED_EYES "Eye Color"
+
+//Various stuff used in Persistence
+
+#define send_output(target, msg, control) target << output(msg, control)
+
+#define send_link(target, url) target << link(url)
+
+#define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
+
+#define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
+
+#define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+
+#define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"
+
+#define FONT_SMALL(X) "<font size='1'>[X]</font>"
+
+#define FONT_NORMAL(X) "<font size='2'>[X]</font>"
+
+#define FONT_LARGE(X) "<font size='3'>[X]</font>"
+
+#define FONT_HUGE(X) "<font size='4'>[X]</font>"
+
+#define FONT_GIANT(X) "<font size='5'>[X]</font>"
+
+#define SMES_TGUI_INPUT 1
+#define SMES_TGUI_OUTPUT 2

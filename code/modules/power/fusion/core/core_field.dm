@@ -163,6 +163,13 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 			dormant_reactant_quantities[reactant] -= radiate
 			radiation += radiate
 
+		if(owned_core.reactant_dump)
+			var/datum/material/Mat = get_material_by_name(reactant)
+
+			// If the reactor won't be able to produce a sheet during shutdown with the material, it can syphon it from the field into internal storage.
+			if(!Mat && amount > 1000 && owned_core.reagents.add_reagent(reactant, 0.1))	// If you want to get ingots / sheets from the tokomak, you have to shut it down, hopefully safely. Reactor reactants are either gas with a corresponding reagent IE Oxygen, Phoron, a Material which condenses uniquely on its own, or just a reagent.
+				dormant_reactant_quantities[reactant] -= 1000
+
 	var/use_range
 	var/use_power
 	if(plasma_temperature <= 6000)

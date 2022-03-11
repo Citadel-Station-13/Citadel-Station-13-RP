@@ -7,10 +7,10 @@
 	if(!can_use())
 		. = min(., UI_UPDATE)
 
-/obj/item/pda/ui_interact(mob/user, datum/tgui/ui)
+/obj/item/device/pda/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Pda", "Personal Data Assistant")
+		ui = new(user, src, "Pda", "Personal Data Assistant", parent_ui)
 		ui.open()
 
 /obj/item/pda/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)

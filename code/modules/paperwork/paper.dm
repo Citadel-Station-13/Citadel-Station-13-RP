@@ -33,6 +33,8 @@
 	var/list/offset_y[0]	//usage by the photocopier
 	var/rigged = 0
 	var/spam_flag = 0
+	var/age = 0
+	var/last_modified_ckey
 
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
@@ -232,6 +234,15 @@
 					H.lip_style = null
 					H.update_icons_body()
 
+/obj/item/paper/proc/set_content(text,title)
+	if(title)
+		name = title
+	info = html_encode(text)
+	info = parsepencode(text)
+	update_icon()
+	update_space(info)
+	updateinfolinks()
+
 /obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
 	var/locid = 0
 	var/laststart = 1
@@ -429,7 +440,10 @@
 
 
 		// if paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
-		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
+		if(istype(loc, /obj/item/clipboard) || istype(loc, /obj/structure/noticeboard) || istype(loc, /obj/item/folder))
+			if(loc.loc != usr && !in_range(loc, usr))
+				return
+		else if(loc != usr && !Adjacent(usr))
 			return
 /*
 		t = checkhtml(t)
@@ -460,6 +474,8 @@
 		else
 			info += t // Oh, he wants to edit to the end of the file, let him.
 			updateinfolinks()
+
+		last_modified_ckey = usr.ckey
 
 		update_space(t)
 
