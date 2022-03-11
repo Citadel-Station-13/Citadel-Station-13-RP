@@ -1018,7 +1018,7 @@
 	path = /obj/item/clothing/under/rank/roboticist/skirt
 	allowed_roles = list("Research Director", "Roboticist")
 
-/datum/gear/restircted/science/uniform/skirt/roboticist_pleated
+/datum/gear/restricted/science/uniform/skirt/roboticist_pleated
 	name = "Roboticist's Pleated Skirt"
 	path = /obj/item/clothing/under/rank/roboticist/skirt_pleated
 	allowed_roles = list("Research Director", "Roboticist")
