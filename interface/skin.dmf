@@ -243,8 +243,7 @@ window "mainwindow"
 		left = "mapwindow"
 		right = "infowindow"
 		is-vert = true
-		onsize = "OnResize"
-
+		on-size = "OnResize"
 	elem "asset_cache_browser"
 		type = BROWSER
 		pos = 0,0
@@ -271,7 +270,7 @@ window "mapwindow"
 		anchor2 = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		onsize = "OnResize"
+		on-size = "OnResize"
 	elem "map"
 		type = MAP
 		pos = 0,0
