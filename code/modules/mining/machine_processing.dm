@@ -188,7 +188,7 @@
 
 /obj/machinery/mineral/processing_unit/Initialize(mapload)
 	. = ..()
-	// TODO - Eschew input/output machinery and just use dirs ~Leshana
+	// TODO: Eschew input/output machinery and just use dirs ~Leshana
 	//Locate our output and input machinery.
 	for (var/dir in GLOB.cardinal)
 		src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))

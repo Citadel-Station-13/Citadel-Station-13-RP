@@ -13,7 +13,7 @@
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/station_map
 
-	// TODO - Port use_auto_lights from /vg - for now declare here
+	// TODO: Port use_auto_lights from /vg - for now declare here
 	var/use_auto_lights = 1
 	var/light_power_on = 1
 	var/light_range_on = 2
@@ -106,7 +106,7 @@
 
 	// EH JUST HACK IT FOR NOW SO WE CAN SEE HOW IT LOOKS! STOP OBSESSING, ITS BEEN AN HOUR NOW!
 
-	// TODO - This part!! ~Leshana
+	// TODO: This part!! ~Leshana
 	if(isliving(user) && anchored && !(stat & (NOPOWER|BROKEN)))
 		if(user.client)
 			holomap_datum.station_map.loc = GLOB.global_hud.holomap  // Put the image on the holomap hud
@@ -114,7 +114,7 @@
 			animate(holomap_datum.station_map, alpha = 255, time = 5, easing = LINEAR_EASING)
 			flick("station_map_activate", src)
 			// Wait, if wea re not modifying the holomap_obj... can't it be part of the global hud?
-			user.client.screen |= GLOB.global_hud.holomap // TODO - HACK! This should be there permenently really.
+			user.client.screen |= GLOB.global_hud.holomap // TODO: HACK! This should be there permenently really.
 			user.client.images |= holomap_datum.station_map
 
 			watching_mob = user
@@ -129,7 +129,7 @@
 				to_chat(user, "<span class='notice'>A hologram of the station appears before your eyes.</span>")
 
 /obj/machinery/station_map/attack_ai(var/mob/living/silicon/robot/user)
-	return // TODO - Implement for AI ~Leshana
+	return // TODO: Implement for AI ~Leshana
 	// user.station_holomap.toggleHolomap(user, isAI(user))
 
 /obj/machinery/station_map/process(delta_time)
@@ -156,7 +156,7 @@
 /obj/machinery/station_map/power_change()
 	. = ..()
 	update_icon()
-	// TODO - Port use_auto_lights from /vg - For now implement it manually here
+	// TODO: Port use_auto_lights from /vg - For now implement it manually here
 	if(stat & NOPOWER)
 		set_light(0)
 	else

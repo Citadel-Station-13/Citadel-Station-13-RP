@@ -306,9 +306,9 @@
 		new /obj/item/robot_parts/l_arm(Tsec)
 	var/obj/item/stack/tile/floor/T = new /obj/item/stack/tile/floor(Tsec)
 	T.amount = amount
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(3, 1, src)
+	sparks.start()
 	qdel(src)
 
 /mob/living/bot/floorbot/proc/addTiles(var/am)

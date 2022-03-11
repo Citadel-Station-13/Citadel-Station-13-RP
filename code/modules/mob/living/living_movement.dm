@@ -136,7 +136,7 @@
 			if (handle_micro_bump_helping(tmob))
 				now_pushing = 0
 				return
-			// TODO - Check if we need to do something about the slime.UpdateFeed() we are skipping below.
+			// TODO: Check if we need to do something about the slime.UpdateFeed() we are skipping below.
 			// VOREStation Edit - End
 			tmob.forceMove(oldloc)
 			if(old_pulling)

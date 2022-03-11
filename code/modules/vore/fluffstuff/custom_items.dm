@@ -545,31 +545,31 @@
 
 //Stobarico - Alexis Bloise
 /obj/item/cane/wand
-    name = "Ancient wand"
-    desc = "A really old looking wand with floating parts and cyan crystals, wich seem to radiate a cyan glow. The wand has a golden plaque on the side that would say Corncobble, but it is covered by a sSSticker saying Bloise."
-    icon = 'icons/vore/custom_items_vr.dmi'
-    icon_state = "alexiswand"
-    item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
-    item_state_slots = list(slot_r_hand_str = "alexiswandmob_r", slot_l_hand_str = "alexiswandmob_l")
-    force = 1.0
-    throwforce = 2.0
-    w_class = ITEMSIZE_SMALL
-    matter = list(DEFAULT_WALL_MATERIAL = 50)
-    attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
-    hitsound = 'sound/weapons/sparkle.ogg'
-    var/last_use = 0
-    var/cooldown = 30
+	name = "Ancient wand"
+	desc = "A really old looking wand with floating parts and cyan crystals, wich seem to radiate a cyan glow. The wand has a golden plaque on the side that would say Corncobble, but it is covered by a sSSticker saying Bloise."
+	icon = 'icons/vore/custom_items_vr.dmi'
+	icon_state = "alexiswand"
+	item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
+	item_state_slots = list(slot_r_hand_str = "alexiswandmob_r", slot_l_hand_str = "alexiswandmob_l")
+	force = 1.0
+	throwforce = 2.0
+	w_class = ITEMSIZE_SMALL
+	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
+	hitsound = 'sound/weapons/sparkle.ogg'
+	var/last_use = 0
+	var/cooldown = 30
 
 /obj/item/cane/wand/attack_self(mob/user)
-    if(last_use + cooldown >= world.time)
-        return
-    playsound(loc, 'sound/weapons/sparkle.ogg', 50, 1)
-    user.visible_message("<span class='warning'> [user] swings their wand.</span>")
-    var/datum/effect_system/spark_spread/s = new
-    s.set_up(3, 1, src)
-    s.start()
-    last_use = world.time
-    qdel ()
+	if(last_use + cooldown >= world.time)
+		return
+	playsound(loc, 'sound/weapons/sparkle.ogg', 50, 1)
+	user.visible_message("<span class='warning'> [user] swings their wand.</span>")
+	var/datum/effect_system/spark_spread/sparks = new
+	sparks.set_up(3, 1, src)
+	sparks.start()
+	last_use = world.time
+	qdel()
 
 /obj/item/fluff/id_kit_ivy
 	name = "Holo-ID reprinter"

@@ -11,6 +11,12 @@
 						/datum/category_item/catalogue/technology/resleeving)
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "backup_implant"
+	//known_implant = TRUE
+
+	// Resleeving database this machine interacts with. Blank for default database
+	// Needs a matching /datum/transcore_db with key defined in code
+	var/db_key
+	var/datum/transcore_db/our_db // These persist all round and are never destroyed, just keep a hard ref
 
 /obj/item/implant/backup/get_data()
 	var/dat = {"
@@ -25,14 +31,22 @@
 <b>Integrity:</b> Sturdy, weak against acidic compounds."}
 	return dat
 
+/obj/item/implant/backup/New(newloc, db_key)
+	. = ..()
+	src.db_key = db_key
+
+/obj/item/implant/backup/Initialize(mapload)
+	. = ..()
+	our_db = SStranscore.db_by_key(db_key)
+
 /obj/item/implant/backup/Destroy()
-	SStranscore.implants -= src
+	our_db.implants -= src
 	return ..()
 
 /obj/item/implant/backup/post_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
 		BITSET(H.hud_updateflag, BACKUP_HUD)
-		SStranscore.implants |= src
+		our_db.implants |= src
 
 		return 1
 
@@ -52,10 +66,12 @@
 	var/list/obj/item/implant/backup/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
 
+	var/db_key // To give to the baby implants
+
 /obj/item/backup_implanter/Initialize(mapload)
 	. = ..()
 	for(var/i = 1 to max_implants)
-		var/obj/item/implant/backup/imp = new(src)
+		var/obj/item/implant/backup/imp = new(src, db_key)
 		imps |= imp
 		imp.germ_level = 0
 	update()

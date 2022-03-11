@@ -77,6 +77,9 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 			host.minimize_program(usr)
 			return TRUE
 
+/datum/tgui_module/proc/relaymove(mob/user, direction)
+	return FALSE
+
 // Just a nice little default interact in case the subtypes don't need any special behavior here
 /datum/tgui_module/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -84,5 +87,35 @@ Code is pretty much ripped verbatim from nano modules, but with un-needed stuff 
 		ui = new(user, src, tgui_id, name, parent_ui)
 		ui.open()
 
-/datum/tgui_module/proc/relaymove(mob/user, direction)
-	return FALSE
+// This is a helper for anything that wants to render the map.
+/datum/tgui_module/proc/get_plane_masters()
+	. = list()
+	// 'Utility' planes
+	. += new /obj/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
+	. += new /obj/screen/plane_master/lighting							//Lighting system (but different!)
+	. += new /obj/screen/plane_master/ghosts							//Ghosts!
+	. += new /obj/screen/plane_master{plane = PLANE_AI_EYE}				//AI Eye!
+
+	. += new /obj/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
+	. += new /obj/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
+	. += new /obj/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
+	. += new /obj/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
+	. += new /obj/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
+	. += new /obj/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
+	. += new /obj/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
+	. += new /obj/screen/plane_master{plane = PLANE_CH_IMPCHEM}			//Chemical implants
+	. += new /obj/screen/plane_master{plane = PLANE_CH_SPECIAL}			//"Special" role stuff
+	. += new /obj/screen/plane_master{plane = PLANE_CH_STATUS_OOC}		//OOC status HUD
+
+	. += new /obj/screen/plane_master{plane = PLANE_ADMIN1}				//For admin use
+	. += new /obj/screen/plane_master{plane = PLANE_ADMIN2}				//For admin use
+	. += new /obj/screen/plane_master{plane = PLANE_ADMIN3}				//For admin use
+
+	. += new /obj/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
+//	. += new /obj/screen/plane_master{plane = PLANE_BUILDMODE}			//Things that only show up while in build mode
+
+	// Real tangible stuff planes
+	. += new /obj/screen/plane_master/main{plane = TURF_PLANE}
+	. += new /obj/screen/plane_master/main{plane = OBJ_PLANE}
+	. += new /obj/screen/plane_master/main{plane = MOB_PLANE}
+	. += new /obj/screen/plane_master/cloaked							//Cloaked atoms!

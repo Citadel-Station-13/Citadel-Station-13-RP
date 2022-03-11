@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(shuttle)
 		// Historical note:  No need to call shuttle.init_docking_controllers(), controllers register themselves
 		// and shuttles fetch refs in New().  Shuttles also dock() themselves in new if they want.
 
-// TODO - Leshana to hook up more of this when overmap is ported.
+// TODO: Leshana to hook up more of this when overmap is ported.
 /datum/controller/subsystem/shuttle/proc/hook_up_motherships(shuttles_list)
 	for(var/datum/shuttle/S in shuttles_list)
 		if(S.mothershuttle && !S.motherdock)

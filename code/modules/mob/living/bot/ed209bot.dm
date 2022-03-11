@@ -55,9 +55,9 @@
 		else
 			new /obj/item/clothing/suit/storage/vest(Tsec)
 
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(3, 1, src)
+	sparks.start()
 
 	new /obj/effect/decal/cleanable/blood/oil(Tsec)
 	qdel(src)

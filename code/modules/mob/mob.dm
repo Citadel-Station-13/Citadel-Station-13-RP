@@ -1240,3 +1240,6 @@ mob/proc/yank_out_object()
  */
 /mob/proc/allow_examine(atom/A)
 	return client && (client.eye == src)
+
+/mob/proc/GetAltName()
+	return ""

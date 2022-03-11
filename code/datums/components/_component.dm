@@ -502,5 +502,5 @@
 /**
   * Return the object that is the host of any UI's that this component has
   */
-/datum/component/nano_host()
+/datum/component/ui_host()
 	return parent

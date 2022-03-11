@@ -11,8 +11,6 @@
 	drop_sound = 'sound/items/drop/food.ogg'
 	pickup_sound = 'sound/items/pickup/food.ogg'
 
-	var/list/center_of_mass = list() // Used for table placement
-
 /obj/item/reagent_containers/food/Initialize(mapload)
 	. = ..()
 	if (center_of_mass.len && !pixel_x && !pixel_y)

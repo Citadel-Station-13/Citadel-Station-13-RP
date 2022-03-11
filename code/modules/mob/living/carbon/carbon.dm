@@ -91,9 +91,9 @@
 			if(31 to INFINITY)
 				Weaken(10) //This should work for now, more is really silly and makes you lay there forever
 
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, loc)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(5, 1, loc)
+	sparks.start()
 
 	return shock_damage
 

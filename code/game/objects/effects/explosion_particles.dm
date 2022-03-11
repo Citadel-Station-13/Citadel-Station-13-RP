@@ -57,9 +57,9 @@
 	P.set_up(10,location)
 	P.start()
 	spawn(5)
-		var/datum/effect_system/smoke_spread/S = new/datum/effect_system/smoke_spread()
-		S.set_up(5,0,location,null)
-		S.start()
+		var/datum/effect_system/smoke_spread/smoke = new/datum/effect_system/smoke_spread()
+		smoke.set_up(5,0,location,null)
+		smoke.start()
 
 /datum/effect/system/explosion/smokeless/start()
 	new/obj/effect/explosion(location)

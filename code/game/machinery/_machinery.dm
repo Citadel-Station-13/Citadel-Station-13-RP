@@ -212,6 +212,13 @@ Class Procs:
 /obj/machinery/proc/inoperable(var/additional_flags = 0)
 	return (stat & (NOPOWER | BROKEN | additional_flags))
 
+// Duplicate of below because we don't want to fuck around with CanUseTopic in TGUI
+// TODO: Replace this with can_interact from /tg/
+/obj/machinery/ui_status(mob/user)
+	if(!interact_offline && (stat & (NOPOWER | BROKEN)))
+		return UI_CLOSE
+	return ..()
+
 /obj/machinery/CanUseTopic(var/mob/user)
 	if(!interact_offline && (stat & (NOPOWER | BROKEN)))
 		return UI_CLOSE
@@ -281,12 +288,12 @@ Class Procs:
 
 /obj/machinery/proc/shock(mob/user, prb)
 	if(inoperable())
-		return 0
+		return FALSE
 	if(!prob(prb))
-		return 0
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, src)
-	s.start()
+		return FALSE
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(5, 1, src)
+	sparks.start()
 	if(electrocute_mob(user, get_area(src), src, 0.7))
 		var/area/temp_area = get_area(src)
 		if(temp_area)
@@ -295,8 +302,8 @@ Class Procs:
 			if(temp_apc && temp_apc.terminal && temp_apc.terminal.powernet)
 				temp_apc.terminal.powernet.trigger_warning()
 		if(user.stunned)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/machinery/proc/default_apply_parts()
 	var/obj/item/circuitboard/CB = circuit
@@ -304,6 +311,16 @@ Class Procs:
 		return
 	CB.apply_default_parts(src)
 	RefreshParts()
+
+/obj/machinery/proc/default_use_hicell()
+	var/obj/item/cell/C = locate(/obj/item/cell) in component_parts
+	if(C)
+		component_parts -= C
+		qdel(C)
+		C = new /obj/item/cell/high(src)
+		component_parts += C
+		RefreshParts()
+		return C
 
 /obj/machinery/proc/default_part_replacement(var/mob/user, var/obj/item/storage/part_replacer/R)
 	if(!istype(R))

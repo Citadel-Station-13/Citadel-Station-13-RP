@@ -166,7 +166,7 @@
 		if(T.density)
 			return TRUE
 
-// TODO - Leshana Experimental
+// TODO: Leshana Experimental
 
 //Execution by grand piano!
 /atom/movable/proc/get_fall_damage()
@@ -248,7 +248,7 @@
 			if(is_client_moving) M.client.moving = 1
 			handle_fall(below)
 			if(is_client_moving) M.client.moving = 0
-		// TODO - handle fall on damage!
+		// TODO: handle fall on damage!
 
 //For children to override
 /atom/movable/proc/can_fall()
@@ -324,7 +324,7 @@
 	for(var/atom/A in landing)
 		if(!A.CanPass(src, src.loc, 1, 0))
 			return FALSE
-	// TODO - Stairs should operate thru a different mechanism, not falling, to allow side-bumping.
+	// TODO: Stairs should operate thru a different mechanism, not falling, to allow side-bumping.
 
 	// this is shitcode lmao
 	var/obj/structure/stairs = locate() in landing

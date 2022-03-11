@@ -95,10 +95,10 @@
 			var/injecting = min(5,max(1,get_trait(TRAIT_POTENCY)/3))
 			R.add_reagent(rid,injecting)
 
-	var/datum/effect_system/smoke_spread/chem/spores/S = new(name)
-	S.attach(T)
-	S.set_up(R, round(get_trait(TRAIT_POTENCY)/4), 0, T)
-	S.start()
+	var/datum/effect_system/smoke_spread/chem/spores/spores = new(name)
+	spores.attach(T)
+	spores.set_up(R, round(get_trait(TRAIT_POTENCY)/4), 0, T)
+	spores.start()
 
 // Does brute damage to a target.
 /datum/seed/proc/do_thorns(var/mob/living/carbon/human/target, var/obj/item/fruit, var/target_limb)
@@ -330,9 +330,9 @@
 
 		if(turfs.len)
 			// Moves the mob, causes sparks.
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(3, 1, get_turf(target))
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(3, 1, get_turf(target))
+			sparks.start()
 			var/turf/picked = get_turf(pick(turfs))                      // Just in case...
 			new/obj/effect/decal/cleanable/molten_item(get_turf(target)) // Leave a pile of goo behind for dramatic effect...
 			target.loc = picked                                          // And teleport them to the chosen location.

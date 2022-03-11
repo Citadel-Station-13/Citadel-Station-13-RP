@@ -14,23 +14,12 @@
 	anchored = TRUE
 	var/list/processing = list()
 	var/activecolor = "#FFFFFF"
-	var/list/color_matrix_last
-	var/matrix_mode = FALSE
 	var/list/allowed_types = list(
 			/obj/item/clothing,
 			/obj/item/storage/backpack,
 			/obj/item/storage/belt,
 			/obj/item/toy
 			)
-
-/obj/machinery/gear_painter/Initialize(mapload)
-	. = ..()
-	color_matrix_last = list(
-		1, 0, 0,
-		0, 1, 0,
-		0, 0, 1,
-		0, 0, 0
-	)
 
 /obj/machinery/gear_painter/update_icon()
 	if(panel_open)
@@ -110,30 +99,6 @@
 				CHECK_TICK
 			playsound(src, 'sound/effects/spray3.ogg', 50, 1)
 			. = TRUE
-
-	if(href_list["toggle_matrix_mode"])
-		matrix_mode = !matrix_mode
-
-	if(href_list["matrix_paint"])
-		// assemble matrix
-		var/list/cm = rgb_construct_color_matrix(
-			text2num(href_list["rr"]),
-			text2num(href_list["rg"]),
-			text2num(href_list["rb"]),
-			text2num(href_list["gr"]),
-			text2num(href_list["gg"]),
-			text2num(href_list["gb"]),
-			text2num(href_list["br"]),
-			text2num(href_list["bg"]),
-			text2num(href_list["bb"]),
-			text2num(href_list["cr"]),
-			text2num(href_list["cg"]),
-			text2num(href_list["cb"])
-		)
-		color_matrix_last = cm.Copy()
-		for(var/atom/movable/AM in processing)
-			AM.add_atom_colour(cm, FIXED_COLOUR_PRIORITY)
-		playsound(src, 'sound/effects/spray3.ogg', 50, 1)
 
 		if("clear")
 			for(var/atom/movable/O in processing)

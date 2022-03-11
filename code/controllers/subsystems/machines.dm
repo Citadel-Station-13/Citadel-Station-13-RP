@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(machines)
 	var/cost_powernets     = 0
 	var/cost_power_objects = 0
 
-	// TODO - PHASE 2 - Switch these from globals to instance vars
+	// TODO: PHASE 2 - Switch these from globals to instance vars
 	// var/list/pipenets      = list()
 	// var/list/machinery     = list()
 	// var/list/powernets     = list()
@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(machines)
 // rebuild all power networks from scratch - only called at world creation or by the admin verb
 // The above is a lie. Turbolifts also call this proc.
 /datum/controller/subsystem/machines/proc/makepowernets()
-	// TODO - check to not run while in the middle of a tick!
+	// TODO: check to not run while in the middle of a tick!
 	for(var/datum/powernet/PN in powernets)
 		qdel(PN)
 	powernets.Cut()
@@ -164,7 +164,7 @@ SUBSYSTEM_DEF(machines)
 			return
 
 /datum/controller/subsystem/machines/Recover()
-	// TODO - PHASE 2
+	// TODO: PHASE 2
 	// if (istype(SSmachines.pipenets))
 	// 	pipenets = SSmachines.pipenets
 	// if (istype(SSmachines.machinery))

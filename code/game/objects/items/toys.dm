@@ -312,9 +312,9 @@
 
 	throw_impact(atom/hit_atom)
 		..()
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(3, 1, src)
+		sparks.start()
 		new /obj/effect/decal/cleanable/ash(src.loc)
 		src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
 		playsound(src, 'sound/effects/snap.ogg', 50, 1)
@@ -329,9 +329,9 @@
 		if(M.m_intent == "run")
 			to_chat(M, "<span class='warning'>You step on the snap pop!</span>")
 
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(2, 0, src)
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(2, 0, src)
+			sparks.start()
 			new /obj/effect/decal/cleanable/ash(src.loc)
 			src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
 			playsound(src, 'sound/effects/snap.ogg', 50, 1)

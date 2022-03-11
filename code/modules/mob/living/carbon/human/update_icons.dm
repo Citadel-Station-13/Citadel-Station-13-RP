@@ -1005,7 +1005,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 		set_tail_state("[species.get_tail(src)]_idle[rand(0,9)]")
 	else
 		set_tail_state("[species.get_tail(src)]_static")
-		toggle_tail_vr(FALSE) //VOREStation Add - So tails stop when someone dies. TODO - Fix this hack ~Leshana
+		toggle_tail_vr(FALSE) //VOREStation Add - So tails stop when someone dies. TODO: Fix this hack ~Leshana
 
 /mob/living/carbon/human/proc/animate_tail_stop()
 	if(QDESTROYING(src))
@@ -1167,7 +1167,7 @@ var/global/list/damage_icon_parts = list() //see UpdateDamageIcon()
 			center_image(wing_style, wing_style.dimension_x, wing_style.dimension_y)
 		return image(wing_s)
 
-// TODO - Move this to where it should go ~Leshana
+// TODO: Move this to where it should go ~Leshana
 /mob/proc/stop_flying()
 	if(QDESTROYING(src))
 		return

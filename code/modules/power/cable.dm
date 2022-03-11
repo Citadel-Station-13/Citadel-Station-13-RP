@@ -249,14 +249,14 @@ var/list/possible_cable_coil_colours = list(
 // shock the user with probability prb
 /obj/structure/cable/proc/shock(mob/user, prb, var/siemens_coeff = 1.0)
 	if(!prob(prb))
-		return 0
+		return FALSE
 	if (electrocute_mob(user, powernet, src, siemens_coeff))
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(5, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(5, 1, src)
+		sparks.start()
 		if(usr.stunned)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 //explosion handling
 /obj/structure/cable/ex_act(severity)

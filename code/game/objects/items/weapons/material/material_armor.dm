@@ -124,9 +124,9 @@ Protectiveness | Armor %
 		var/turf/picked = pick(turfs)
 		if(!isturf(picked)) return
 
-		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-		spark_system.set_up(5, 0, user.loc)
-		spark_system.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+		sparks.set_up(5, 0, user.loc)
+		sparks.start()
 		playsound(user.loc, 'sound/effects/teleport.ogg', 50, 1)
 
 		user.loc = picked

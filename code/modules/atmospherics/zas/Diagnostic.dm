@@ -3,7 +3,7 @@ client/proc/ZoneTick()
 	set name = "Process Atmos"
 	set desc = "Manually run a single tick of the air subsystem"
 
-	// TODO - This might be a useful diagnostic tool.  However its complicated to do with StonedMC
+	// TODO: This might be a useful diagnostic tool.  However its complicated to do with StonedMC
 	// Therefore it is left unimplemented for now until its use actually becomes required. ~Leshana
 	/*
 	if(!check_rights(R_DEBUG)) return

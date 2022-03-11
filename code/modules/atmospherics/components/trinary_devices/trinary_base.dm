@@ -193,7 +193,7 @@
 	return null
 
 // Trinary init_dir() logic in a separate proc so it can be referenced from "trinary-ish" places like T-Valves
-// TODO - Someday refactor those places under atmospherics/trinary
+// TODO: Someday refactor those places under atmospherics/trinary
 /proc/get_initialize_directions_trinary(var/dir, var/mirrored = FALSE, var/tee = FALSE)
 	if(tee)
 		switch(dir)

@@ -18,13 +18,13 @@
 	wires = new(src)
 
 /obj/effect/mine/proc/explode(var/mob/living/M)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 	triggered = 1
-	s.set_up(3, 1, src)
-	s.start()
+	sparks.set_up(3, 1, src)
+	sparks.start()
 	explosion(loc, 0, 2, 3, 4) //land mines are dangerous, folks.
 	visible_message("\The [src.name] detonates!")
-	qdel(s)
+	qdel(sparks)
 	qdel(src)
 
 /obj/effect/mine/bullet_act()
@@ -73,17 +73,17 @@
 	mineitemtype = /obj/item/mine/dnascramble
 
 /obj/effect/mine/dnascramble/explode(var/mob/living/M)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 	triggered = 1
-	s.set_up(3, 1, src)
-	s.start()
+	sparks.set_up(3, 1, src)
+	sparks.start()
 	if(M)
 		M.radiation += 50
 		randmutb(M)
 		domutcheck(M,null)
 	visible_message("\The [src.name] flashes violently before disintegrating!")
 	spawn(0)
-		qdel(s)
+		qdel(sparks)
 		qdel(src)
 
 /obj/effect/mine/stun
@@ -91,14 +91,14 @@
 
 /obj/effect/mine/stun/explode(var/mob/living/M)
 	triggered = 1
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+	sparks.set_up(3, 1, src)
+	sparks.start()
 	if(M)
 		M.Stun(30)
 	visible_message("\The [src.name] flashes violently before disintegrating!")
 	spawn(0)
-		qdel(s)
+		qdel(sparks)
 		qdel(src)
 
 /obj/effect/mine/n2o
@@ -130,14 +130,14 @@
 	mineitemtype = /obj/item/mine/kick
 
 /obj/effect/mine/kick/explode(var/mob/living/M)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 	triggered = 1
-	s.set_up(3, 1, src)
-	s.start()
+	sparks.set_up(3, 1, src)
+	sparks.start()
 	if(M)
 		qdel(M.client)
 	spawn(0)
-		qdel(s)
+		qdel(sparks)
 		qdel(src)
 
 /obj/effect/mine/frag
@@ -148,17 +148,17 @@
 	var/spread_range = 7
 
 /obj/effect/mine/frag/explode(var/mob/living/M)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 	triggered = 1
-	s.set_up(3, 1, src)
-	s.start()
+	sparks.set_up(3, 1, src)
+	sparks.start()
 	var/turf/O = get_turf(src)
 	if(!O)
 		return
 	src.fragmentate(O, 20, 7, list(/obj/item/projectile/bullet/pellet/fragment)) //only 20 weak fragments because you're stepping directly on it
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
-		qdel(s)
+		qdel(sparks)
 		qdel(src)
 
 /obj/effect/mine/training	//Name and Desc commented out so it's possible to trick people with the training mines
@@ -177,9 +177,9 @@
 	mineitemtype = /obj/item/mine/emp
 
 /obj/effect/mine/emp/explode(var/mob/living/M)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+	sparks.set_up(3, 1, src)
+	sparks.start()
 	visible_message("\The [src.name] flashes violently before disintegrating!")
 	empulse(loc, 2, 4, 7, 10, 1) // As strong as an EMP grenade
 	spawn(0)
@@ -190,9 +190,9 @@
 
 /obj/effect/mine/incendiary/explode(var/mob/living/M)
 	triggered = 1
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+	sparks.set_up(3, 1, src)
+	sparks.start()
 	if(M)
 		M.adjust_fire_stacks(5)
 		M.fire_act()

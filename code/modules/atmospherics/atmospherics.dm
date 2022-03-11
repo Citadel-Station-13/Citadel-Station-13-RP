@@ -65,7 +65,7 @@ Pipelines + Other Objects -> Pipe network
 // When we're being constructed at runtime, atmos_init() is called by the construction code.
 // When dynamically loading a map atmos_init is called by the maploader (initTemplateBounds proc)
 // But during initial world creation its called by the master_controller.
-// TODO - Consolidate these different ways of being called once SSatoms is created.
+// TODO: Consolidate these different ways of being called once SSatoms is created.
 /obj/machinery/atmospherics/proc/atmos_init()
 	return
 
@@ -178,18 +178,18 @@ Pipelines + Other Objects -> Pipe network
 /obj/machinery/atmospherics/proc/on_construction(obj_color, set_layer)
 	pipe_color = obj_color
 	setPipingLayer(set_layer)
-	// TODO - M.connect_types = src.connect_types - Or otherwise copy from item? Or figure it out from piping layer?
+	// TODO: M.connect_types = src.connect_types - Or otherwise copy from item? Or figure it out from piping layer?
 	var/turf/T = get_turf(src)
 	level = !T.is_plating() ? 2 : 1
 	atmos_init()
 	if(QDELETED(src))
-		return // TODO - Eventually should get rid of the need for this.
+		return // TODO: Eventually should get rid of the need for this.
 	build_network()
 	var/list/nodes = get_neighbor_nodes_for_init()
 	for(var/obj/machinery/atmospherics/A in nodes)
 		A.atmos_init()
 		A.build_network()
-	// TODO - Should we do src.build_network() before or after the nodes?
+	// TODO: Should we do src.build_network() before or after the nodes?
 	// We've historically done before, but /tg does after. TODO research if there is a difference.
 
 // This sets our piping layer.  Hopefully its cool.

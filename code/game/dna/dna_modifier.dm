@@ -474,13 +474,13 @@
 
 /obj/machinery/computer/scan_consolenew/ui_act(action, params)
 	if(..())
-		return FALSE // don't update uis
+		return TRUE
 	if(!istype(usr.loc, /turf))
-		return FALSE // don't update uis
+		return TRUE
 	if(!src || !src.connected)
-		return FALSE // don't update uis
+		return TRUE
 	if(irradiating) // Make sure that it isn't already irradiating someone...
-		return FALSE // don't update uis
+		return TRUE
 
 	add_fingerprint(usr)
 

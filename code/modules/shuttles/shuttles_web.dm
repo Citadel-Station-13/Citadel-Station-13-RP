@@ -35,7 +35,7 @@
 	return ..()
 
 /datum/shuttle/autodock/web_shuttle/current_dock_target()
-	// TODO - Probably don't even need to override this right?  Debug testing code below will check!
+	// TODO: Probably don't even need to override this right?  Debug testing code below will check!
 	. = web_master?.get_current_destination()?.my_landmark?.docking_controller?.id_tag
 	if (. != ..())
 		warning("Web shuttle [src] had current_dock_target()=[.] but autodock.current_dock_target() = [..()]")
@@ -363,7 +363,7 @@
 			WS.web_master.reset_autopath() // Deviating from the path will almost certainly confuse the autopilot, so lets just reset its memory.
 
 			var/travel_time = new_route.travel_time * WS.flight_time_modifier
-			// TODO - Leshana - Change this to use proccess stuff of autodock!
+			// TODO: Leshana - Change this to use proccess stuff of autodock!
 			if(new_route.interim && new_route.travel_time)
 				WS.long_jump(target_destination.my_landmark, new_route.interim, travel_time / 10)
 			else

@@ -41,7 +41,7 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'	// TODO - Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
+	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi'	// TODO: Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
 	sealed_levels = list()
@@ -136,15 +136,15 @@
 		/area/engineering/engineering_airlock,
 		/area/solar/)
 
-	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
-	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
-	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
-						 		 Z_LEVEL_ROGUEMINE_2,
-						 	 	 Z_LEVEL_ROGUEMINE_3,
-								 Z_LEVEL_ROGUEMINE_4)
+	belter_docked_z =	list(Z_LEVEL_DECK_TWO)
+	belter_transit_z =	list(Z_LEVEL_SHIPS)
+	belter_belt_z =		list(Z_LEVEL_ROGUEMINE_1,
+							 Z_LEVEL_ROGUEMINE_2,
+							 Z_LEVEL_ROGUEMINE_3,
+							 Z_LEVEL_ROGUEMINE_4)
 
-	lavaland_levels =		list(Z_LEVEL_LAVALAND,
-								 Z_LEVEL_LAVALAND_EAST)
+	lavaland_levels_z =	list(Z_LEVEL_LAVALAND,
+							 Z_LEVEL_LAVALAND_EAST)
 
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps

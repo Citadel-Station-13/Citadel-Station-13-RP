@@ -7,6 +7,7 @@
 	anchored = 1
 	var/ore_key
 	var/image/scanner_image
+	var/ore_reagent	// Reagent from pumping water near this ore.
 
 // taemp check
 /obj/effect/mineral/New(loc, datum/ore/O)
@@ -17,6 +18,8 @@
 	. = ..()
 	name = "[M.display_name] deposit"
 	ore_key = M.name
+	if(M.reagent)
+		ore_reagent = M.reagent
 	icon_state = "rock_[ore_key]"
 	var/turf/T = get_turf(src)
 	layer = T.layer+0.1

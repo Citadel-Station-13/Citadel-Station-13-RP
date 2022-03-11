@@ -2,6 +2,8 @@
 #define GENERAL_RECORD_MAINT 3
 #define GENERAL_RECORD_DATA 4
 
+#define FIELD(N, V, E) list(field = N, value = V, edit = E)
+
 /obj/machinery/computer/skills//TODO:SANITY
 	name = "employment records console"
 	desc = "Used to view, edit and maintain employment records."
@@ -312,7 +314,7 @@
 		<br>\n
 		<center><b>Comments/Log</b></center><br>"}
 		for(var/c in active1.fields["comments"])
-			P.info += "[c]<br>"
+			P.info += "[c["header"]]<br>[c["text"]]<br>"
 	else
 		P.info += "<b>General Record Lost!</b><br>"
 	P.info += "</tt>"

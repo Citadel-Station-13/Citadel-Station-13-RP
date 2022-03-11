@@ -59,9 +59,9 @@
 	A.updateicon()
 
 	flick("echair1", src)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(12, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(12, 1, src)
+	sparks.start()
 	if(has_buckled_mobs())
 		for(var/a in buckled_mobs)
 			var/mob/living/L = a

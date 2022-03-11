@@ -150,7 +150,7 @@
 	B.human_prey_swallow_time = swallowTime
 	B.nonhuman_prey_swallow_time = swallowTime
 	B.vore_verb = "swallow"
-	// TODO - Customizable per mob
+	// TODO: Customizable per mob
 	B.emote_lists[DM_HOLD] = list(
 		"The walls gently squeeze against you. The wet sounds of shifting flesh against your form fill the air.",
 		"The hot, humid air rushes around you for a moment as the creature urps. The walls clench in around you for a moment, before relaxing again.",

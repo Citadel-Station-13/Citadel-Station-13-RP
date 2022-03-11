@@ -34,7 +34,7 @@
 	sleep(10)  // TODO see if this is needed
 
 // Update when moving between areas.
-// TODO - While this direct override might technically be faster, probably better code to use observer or hooks ~Leshana
+// TODO: While this direct override might technically be faster, probably better code to use observer or hooks ~Leshana
 /area/Entered(var/mob/living/M)
 	// Note, we cannot call ..() first, because it would update lastarea.
 	if(!istype(M))

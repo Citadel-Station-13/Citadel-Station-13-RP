@@ -72,7 +72,7 @@
 
 
 // Handle interacting with and taking damage from atmos
-// TODO - Refactor this to use handle_environment() like a good /mob/living
+// TODO: Refactor this to use handle_environment() like a good /mob/living
 /mob/living/simple_mob/proc/handle_atmos()
 	var/atmos_unsuitable = 0
 

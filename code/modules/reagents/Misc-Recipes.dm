@@ -347,9 +347,9 @@
 
 /datum/chemical_reaction/flash_powder/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(2, 1, location)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(2, 1, location)
+	sparks.start()
 	for(var/mob/living/carbon/M in viewers(world.view, location))
 		switch(get_dist(M, location))
 			if(0 to 3)
@@ -435,16 +435,14 @@
 
 /datum/chemical_reaction/chemsmoke/on_reaction(var/datum/reagents/holder, var/created_volume)
 	var/location = get_turf(holder.my_atom)
-	var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
-	S.attach(location)
-	S.set_up(holder, created_volume, 0, location)
+	var/datum/effect_system/smoke_spread/chem/smoke = new /datum/effect_system/smoke_spread/chem
+	smoke.attach(location)
+	smoke.set_up(holder, created_volume, 0, location)
 	playsound(location, 'sound/effects/smoke.ogg', 50, 1, -3)
 	spawn(0)
-		S.start()
-	//VOREStation Edit Start
+		smoke.start()
 	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
 		holder.clear_reagents()
-	//VOREStation Edit End
 	return
 
 /datum/chemical_reaction/foam
@@ -461,13 +459,11 @@
 	for(var/mob/M in viewers(5, location))
 		to_chat(M, "<span class='warning'>The solution spews out foam!</span>")
 
-	var/datum/effect_system/foam_spread/s = new()
-	s.set_up(created_volume, location, holder, 0)
-	s.start()
-	//VOREStation Edit Start
+	var/datum/effect_system/foam_spread/foam = new()
+	foam.set_up(created_volume, location, holder, 0)
+	foam.start()
 	if(!isliving(holder.my_atom)) //No more powergaming by creating a tiny amount of this
 		holder.clear_reagents()
-	//VOREStation Edit End
 	return
 
 /datum/chemical_reaction/metalfoam
@@ -483,9 +479,9 @@
 	for(var/mob/M in viewers(5, location))
 		to_chat(M, "<span class='warning'>The solution spews out a metalic foam!</span>")
 
-	var/datum/effect_system/foam_spread/s = new()
-	s.set_up(created_volume, location, holder, 1)
-	s.start()
+	var/datum/effect_system/foam_spread/foam = new()
+	foam.set_up(created_volume, location, holder, 1)
+	foam.start()
 	return
 
 /datum/chemical_reaction/ironfoam
@@ -501,9 +497,9 @@
 	for(var/mob/M in viewers(5, location))
 		to_chat(M, "<span class='warning'>The solution spews out a metalic foam!</span>")
 
-	var/datum/effect_system/foam_spread/s = new()
-	s.set_up(created_volume, location, holder, 2)
-	s.start()
+	var/datum/effect_system/foam_spread/foam = new()
+	foam.set_up(created_volume, location, holder, 2)
+	foam.start()
 	return
 
 /* Paint */

@@ -315,7 +315,7 @@
 
 /obj/machinery/bodyscanner/ui_act(action, params)
 	if(..())
-		return
+		return TRUE
 
 	. = TRUE
 	switch(action)

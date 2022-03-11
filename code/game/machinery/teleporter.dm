@@ -17,7 +17,7 @@
 	id = "[rand(1000, 9999)]"
 	..()
 	underlays.Cut()
-	underlays += image('icons/obj/stationobjs_vr.dmi', icon_state = "telecomp-wires")	//VOREStation Edit: different direction for wires to account for dirs
+	underlays += image('icons/obj/stationobjs_vr.dmi', icon_state = "telecomp-wires")	// Different direction for wires to account for dirs
 
 /obj/machinery/computer/teleporter/Initialize(mapload)
 	. = ..()
@@ -79,7 +79,7 @@
 					var/amount = rand(2,5)
 					for(var/i=0;i<amount;i++)
 						new /mob/living/simple_mob/animal/space/carp(get_turf(H))
-				//
+
 			else
 				for(var/mob/O in hearers(src, null))
 					O.show_message("<span class='notice'>Locked In</span>", 2)
@@ -122,8 +122,8 @@
 /obj/machinery/teleport
 	name = "teleport"
 	icon = 'icons/obj/stationobjs.dmi'
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	var/lockeddown = 0
 
 //////
@@ -132,7 +132,7 @@
 /obj/machinery/teleport/hub
 	name = "teleporter hub"
 	desc = "It's the hub of a teleporting machine."
-	icon = 'icons/obj/teleporter_vr.dmi' //VOREStation Add
+	icon = 'icons/obj/teleporter_vr.dmi'
 	icon_state = "tele0"
 	dir = 4
 	var/accurate = 0
@@ -142,7 +142,7 @@
 	circuit = /obj/item/circuitboard/teleporter_hub
 	var/obj/machinery/computer/teleporter/com
 
-/obj/machinery/teleport/hub/Initialize()
+/obj/machinery/teleport/hub/Initialize(mapload)
 	. = ..()
 	underlays += image('icons/obj/stationobjs.dmi', icon_state = "tele-wires")
 	default_apply_parts()
@@ -184,9 +184,9 @@
 			com.one_time_use = 0
 			com.teleport_control.locked = null
 	else
-		var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
-		s.set_up(5, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(5, 1, src)
+		sparks.start()
 		accurate = 1
 		spawn(3000)	accurate = 0 //Accurate teleporting for 5 minutes
 		for(var/mob/B in hearers(src, null))
@@ -210,7 +210,7 @@
 	circuit = /obj/item/circuitboard/teleporter_station
 	var/obj/machinery/teleport/hub/com
 
-/obj/machinery/teleport/station/Initialize()
+/obj/machinery/teleport/station/Initialize(mapload)
 	. = ..()
 	add_overlay("controller-wires")
 	default_apply_parts()

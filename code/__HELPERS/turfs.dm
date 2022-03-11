@@ -97,7 +97,7 @@
 	// You can stay, though.
 	if(istype(T,/turf/space))
 		log_debug("Tried to translate a space turf: src=[log_info_line(T)] dst=[log_info_line(B)]")
-		return FALSE	// TODO - Is this really okay to do nothing?
+		return FALSE	// TODO: Is this really okay to do nothing?
 
 	var/turf/X	// New Destination Turf
 

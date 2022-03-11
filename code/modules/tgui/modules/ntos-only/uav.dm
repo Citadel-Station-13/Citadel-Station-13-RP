@@ -36,6 +36,7 @@
 			paired_map.Add(list(list("name" = "[U ? U.nickname : "!!Missing!!"]", "uavref" = "\ref[U]")))
 
 	data["paired_uavs"] = paired_map
+
 	return data
 
 /datum/tgui_module/uav/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -61,8 +62,8 @@
 			var/obj/item/modular_computer/mc_host = ui_host()
 			//This is so we can really scrape up any weakrefs that can't resolve
 			for(var/datum/weakref/wr in mc_host.paired_uavs)
-				if(wr.ref == refstring)
-					if(current_uav?.weakref == wr)
+				if(wr.reference == refstring)
+					if(istype(wr,/datum/weakref))
 						set_current(null)
 					LAZYREMOVE(mc_host.paired_uavs, wr)
 			return TRUE
@@ -174,7 +175,7 @@
 	unlook(user)
 
 /datum/tgui_module/uav/proc/viewing_uav(mob/user)
-	return (weakref(user) in viewers)
+	return (WEAKREF(user) in viewers)
 
 /datum/tgui_module/uav/proc/look(mob/user)
 	if(issilicon(user)) //Too complicated for me to want to mess with at the moment

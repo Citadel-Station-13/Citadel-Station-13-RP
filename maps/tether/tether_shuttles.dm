@@ -142,7 +142,7 @@
 	#undef MOVE_PER
 //
 // The repairable engines
-// TODO - These need a more advanced fixing sequence.
+// TODO: These need a more advanced fixing sequence.
 //
 /obj/structure/shuttle/engine
 	var/wear = 0

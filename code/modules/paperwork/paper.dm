@@ -36,6 +36,8 @@
 	var/age = 0
 	var/last_modified_ckey
 
+	var/was_maploaded = FALSE // This tracks if the paper was created on mapload.
+
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
@@ -123,6 +125,9 @@
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
+
+	if(mapload) // Jank, but we do this to prevent maploaded papers from somehow stacking across rounds if re-added to the board by a player.
+		was_maploaded = TRUE
 
 	spawn(2)
 		update_icon()
@@ -462,6 +467,7 @@
 		//t = html_encode(t)
 		t = replacetext(t, "\n", "<BR>")
 		t = parsepencode(t, i, usr, iscrayon) // Encode everything from pencode to html
+		was_maploaded = FALSE // Set this to FALSE because a user has written on us. This is for persistence purposes.
 
 
 		if(fields > 50)//large amount of fields creates a heavy load on the server, see updateinfolinks() and addtofield()

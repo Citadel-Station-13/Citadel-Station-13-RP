@@ -93,16 +93,16 @@
 	//repair a bit of damage
 	if(prob(1))
 		src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] shudders and shakes as some of it's damaged systems come back online.</font>")
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(3, 1, src)
+		sparks.start()
 		health += rand(25,100)
 
 	//spark for no reason
 	if(prob(5))
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(3, 1, src)
+		sparks.start()
 
 	//sometimes our targetting sensors malfunction, and we attack anyone nearby
 	if(prob(disabled ? 0 : 1))
@@ -142,9 +142,9 @@
 			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] begins to spark and shake violenty!</font>")
 		else
 			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] sparks and shakes like it's about to explode!</font>")
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(3, 1, src)
+		sparks.start()
 
 	if(!exploding && !disabled && prob(explode_chance))
 		exploding = 1
@@ -172,9 +172,9 @@
 /mob/living/simple_mob/hostile/malf_drone/Destroy()
 	//More advanced than the default S_A loot system, for visual effect and random tech levels.
 	if(has_loot)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(3, 1, src)
+		sparks.start()
 		var/obj/O
 
 		//shards

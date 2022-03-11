@@ -13,7 +13,7 @@
 ** - Phase 1 of this project adds the machine and basic operation.
 ** - Phase 2 will enhance usability by making & labeling boxes with a set of parts.
 **
-** TODO - Implement phase 2 by adding cardboard boxes
+** TODO: Implement phase 2 by adding cardboard boxes
 */
 
 /obj/machinery/partslathe

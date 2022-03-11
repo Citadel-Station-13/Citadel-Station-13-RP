@@ -117,7 +117,7 @@
 			A.being_used = 0
 			scanned_object = null
 
-//hardcoded responses, oh well	// TODO - Unhardcode this. - Zandario
+//hardcoded responses, oh well	// TODO: Unhardcode this. - Zandario
 /obj/machinery/artifact_analyser/proc/get_scan_info(var/obj/scanned_obj)
 	switch(scanned_obj.type)
 		if(/obj/machinery/auto_cloner)

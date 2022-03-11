@@ -52,3 +52,15 @@
 /datum/category_item/autolathe/tools/prybar
 	name = "prybar"
 	path =/obj/item/tool/prybar
+
+/datum/category_item/autolathe/tools/spraybottle
+	name = "spray bottle"
+	path = /obj/item/reagent_containers/spray
+	resources = list(MAT_PLASTIC = 2000)
+
+/datum/category_item/autolathe/tools/spraynozzle
+	name = "spray nozzle"
+	path = /obj/item/reagent_containers/spray
+	resources = list(MAT_PLASTIC = 5000, DEFAULT_WALL_MATERIAL = 2000)
+	hidden = 1
+	man_rating = 2

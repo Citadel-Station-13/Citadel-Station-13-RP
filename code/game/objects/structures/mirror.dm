@@ -4,13 +4,14 @@
 	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
-	density = 0
-	anchored = 1
-	var/shattered = 0
-	var/list/ui_users = list()
-	var/glass = 1
+	density = FALSE
+	anchored = TRUE
+	var/shattered = FALSE
+	var/glass = TRUE
+	var/datum/tgui_module/appearance_changer/mirror/M
 
 /obj/structure/mirror/Initialize(mapload, dir, building = FALSE, mob/user)
+	M = new(src, null)
 	. = ..()
 	if(building)
 		glass = 0
@@ -18,17 +19,16 @@
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -28 : 28)
 		pixel_y = (dir & 3)? (dir == 1 ? -30 : 30) : 0
 
+/obj/structure/mirror/Destroy()
+	QDEL_NULL(M)
+	. = ..()
+
 /obj/structure/mirror/attack_hand(mob/user as mob)
 	if(!glass) return
 	if(shattered)	return
 
 	if(ishuman(user))
-		var/datum/tgui_module/appearance_changer/AC = ui_users[user]
-		if(!AC)
-			AC = new(src, user)
-			AC.name = "SalonPro Nano-Mirror&trade;"
-			ui_users[user] = AC
-		AC.ui_interact(user)
+		M.ui_interact(user)
 
 /obj/structure/mirror/proc/shatter()
 	if(!glass) return

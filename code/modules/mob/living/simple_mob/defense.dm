@@ -127,9 +127,9 @@
 	apply_damage(damage = shock_damage, damagetype = BURN, def_zone = null, blocked = null, blocked = resistance, used_weapon = null, sharp = FALSE, edge = FALSE)
 	playsound(loc, "sparks", 50, 1, -1)
 
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, loc)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(5, 1, loc)
+	sparks.start()
 
 /mob/living/simple_mob/get_shock_protection()
 	return shock_resist

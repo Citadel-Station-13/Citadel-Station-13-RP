@@ -165,7 +165,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define DEFAULT_TABLE_MATERIAL	"plastic"
 #define DEFAULT_WALL_MATERIAL	"steel"
 
-// TODO - Standarize this, some mats don't have these. - Zandario
+// TODO: Standarize this, some mats don't have these. - Zandario
 #define MAT_IRON			"iron"
 #define MAT_MARBLE			"marble"
 #define MAT_STEEL			"steel"

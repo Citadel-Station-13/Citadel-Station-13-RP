@@ -202,7 +202,7 @@
 /datum/tgui_input_dialog/New(mob/user, message, title, default, timeout)
 	src.title = title
 	src.message = message
-	// TODO - Do we need to sanitize the initial value for illegal characters?
+	// TODO: Do we need to sanitize the initial value for illegal characters?
 	src.initial = default
 	if (timeout)
 		src.timeout = timeout

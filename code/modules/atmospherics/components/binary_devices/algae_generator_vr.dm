@@ -42,7 +42,7 @@
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 	default_apply_parts()
 	update_icon()
-	// TODO - Make these in actual icon states so its not silly like this
+	// TODO: Make these in actual icon states so its not silly like this
 	var/image/I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = dir)
 	I.color = PIPE_COLOR_BLUE
 	overlays += I
@@ -229,7 +229,7 @@
 			. = TRUE
 
 
-// TODO - These should be replaced with materials datum.
+// TODO: These should be replaced with materials datum.
 
 // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 /obj/machinery/atmospherics/binary/algae_farm/proc/eject_materials(var/material_name, var/amount)

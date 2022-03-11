@@ -472,9 +472,9 @@
 	SStgui.update_uis(src)
 
 /obj/machinery/microwave/proc/broke()
-	var/datum/effect_system/spark_spread/s = new
-	s.set_up(2, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new
+	sparks.set_up(2, 1, src)
+	sparks.start()
 	src.icon_state = "mwb" // Make it look all busted up and shit
 	src.visible_message("<span class='warning'>The microwave breaks!</span>") //Let them know they're stupid
 	src.broken = 2 // Make it broken so it can't be used util fixed

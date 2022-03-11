@@ -45,6 +45,9 @@
 	if (QDELETED(src))
 		return
 
+	if(light_system != STATIC_LIGHT)
+		CRASH("update_light() for [src] with following light_system value: [light_system]")
+
 	if (!light_power || !light_range) // We won't emit light anyways, destroy the light source.
 		QDEL_NULL(light)
 	else

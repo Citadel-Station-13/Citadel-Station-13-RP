@@ -6,8 +6,8 @@
 	var/name
 	var/filename
 	var/tokens_per_line
-	var/entries_expire_at
-	var/entries_decay_at
+	var/entries_expire_at	// Set in rounds, this controls when the item is finally removed permanently regardless if cleaned or not.
+	var/entries_decay_at	// Set in rounds. This controls when item messages start getting scrambled.
 	var/entry_decay_weight = 0.5
 	var/file_entry_split_character = "\t"
 	var/file_entry_substitute_character = " "
@@ -73,7 +73,7 @@
 			return
 
 	var/_z = tokens["z"]
-	if(_z in using_map.station_levels)
+	if(_z in GLOB.using_map.station_levels)
 		. = GetValidTurf(locate(tokens["x"], tokens["y"], _z), tokens)
 		if(.)
 			CreateEntryInstance(., tokens)
@@ -84,7 +84,7 @@
 	if(GetEntryAge(entry) >= entries_expire_at)
 		return FALSE
 	var/turf/T = get_turf(entry)
-	if(!T || !(T.z in using_map.station_levels) )
+	if(!T || !(T.z in GLOB.using_map.station_levels) )
 		return FALSE
 	var/area/A = get_area(T)
 	if(!A || (A.flags & AREA_FLAG_IS_NOT_PERSISTENT))

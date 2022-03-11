@@ -275,7 +275,7 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/projectile/automatic/carbine/fluff/ufarc/update_icon(var/ignore_inhands)
 	..()
-	// TODO - Fix this for spriting different size magazines
+	// TODO: Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "ufarc" : "ufarc-empty"
 	item_state = (ammo_magazine)? "bullpup" : "bullpup-empty"
 	if(!ignore_inhands) update_held_icon()
@@ -293,7 +293,7 @@ END OF CITADEL CHANGES */
 
 /obj/item/gun/projectile/automatic/carbine/fluff/g44/update_icon(var/ignore_inhands)
 	..()
-	// TODO - Fix this for spriting different size magazines
+	// TODO: Fix this for spriting different size magazines
 	icon_state = (ammo_magazine)? "g44" : "g44-empty"
 	item_state = (ammo_magazine)? "bullpup" : "bullpup-empty"
 	if(!ignore_inhands) update_held_icon()

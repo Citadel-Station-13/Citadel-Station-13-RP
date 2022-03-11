@@ -21,7 +21,7 @@
 	throw_speed = 4
 	throw_range = 20
 	origin_tech = list(TECH_MAGNET = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 400)
+	matter = list(MAT_STEEL = 400)
 
 /obj/item/locator/attack_self(mob/user as mob)
 	user.set_machine(src)
@@ -76,7 +76,7 @@ Frequency:
 										direct = "very weak"
 							src.temp += "[W.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
 
-				src.temp += "<B>Extranneous Signals:</B><BR>"
+				src.temp += "<B>Extraneous Signals:</B><BR>"
 				for (var/obj/item/implant/tracking/W in GLOB.all_tracking_implants)
 					if (!W.implanted || !(istype(W.loc,/obj/item/organ/external) || ismob(W.loc) || W.malfunction))
 						continue
@@ -127,7 +127,7 @@ Frequency:
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MAGNET = 1, TECH_BLUESPACE = 3)
-	matter = list(DEFAULT_WALL_MATERIAL = 10000)
+	matter = list(MAT_STEEL = 10000)
 	preserve_item = 1
 
 /obj/item/hand_tele/attack_self(mob/user as mob)
@@ -147,11 +147,11 @@ Frequency:
 					if(com)
 						break
 				break
-		if (istype(com, /obj/machinery/computer/teleporter) && com.locked && !com.one_time_use)
+		if (istype(com, /obj/machinery/computer/teleporter) && com.teleport_control.locked && !com.one_time_use)
 			if(R.icon_state == "tele1")
-				L["[com.id] (Active)"] = com.locked
+				L["[com.id] (Active)"] = com.teleport_control.locked
 			else
-				L["[com.id] (Inactive)"] = com.locked
+				L["[com.id] (Inactive)"] = com.teleport_control.locked
 	var/list/turfs = list(	)
 	for(var/turf/T in orange(10))
 		if(T.x>world.maxx-8 || T.x<8)	continue	//putting them at the edge is dumb
@@ -160,7 +160,9 @@ Frequency:
 		turfs += T
 	if(turfs.len)
 		L["None (Dangerous)"] = pick(turfs)
-	var/t1 = input(user, "Please select a teleporter to lock in on.", "Hand Teleporter") in L
+	var/t1 = tgui_input_list(user, "Please select a teleporter to lock in on.", "Hand Teleporter", L)
+	if(!t1)
+		return
 	if ((user.get_active_hand() != src || user.stat || user.restrained()))
 		return
 	var/count = 0	//num of portals from this teleport in world

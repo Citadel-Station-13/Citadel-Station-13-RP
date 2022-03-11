@@ -80,7 +80,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /decl/overmap_event_handler, new)
 		var/datum/event/E = new event_type(EM)
 		E.startWhen = 0
 		E.endWhen = INFINITY
-		// TODO - Leshana - Note: event.setup() is called before these are set!
+		// TODO: Leshana - Note: event.setup() is called before these are set!
 		E.affecting_z = ship.map_z
 		E.victim = ship
 		LAZYADD(ship_events[ship], E)
@@ -157,7 +157,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /decl/overmap_event_handler, new)
 					if(A.difficulty >= E.difficulty)
 						return TRUE
 					else
-						hazards -= A	// TODO - Improve this SPAGHETTI CODE! Done only when called from update_hazards. ~Leshana
+						hazards -= A	// TODO: Improve this SPAGHETTI CODE! Done only when called from update_hazards. ~Leshana
 				else
 					if(A.difficulty == E.difficulty)
 						return TRUE

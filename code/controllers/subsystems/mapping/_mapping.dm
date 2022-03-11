@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(mapping)
 	preloadShelterTemplates()
 	// Mining generation probably should be here too
 	GLOB.using_map.perform_map_generation()
-	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
+	// TODO: Other stuff related to maps and areas could be moved here too.  Look at /tg
 	if(GLOB.using_map)
 		loadLateMaps()
 	if(!GLOB.using_map.overmap_z)

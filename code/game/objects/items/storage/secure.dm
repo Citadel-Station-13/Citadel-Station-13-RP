@@ -34,9 +34,9 @@
 /obj/item/storage/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(locked)
 		if (istype(W, /obj/item/melee/energy/blade) && emag_act(INFINITY, user, "You slice through the lock of \the [src]"))
-			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
-			spark_system.set_up(5, 0, src.loc)
-			spark_system.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+			sparks.set_up(5, 0, src.loc)
+			sparks.start()
 			playsound(src.loc, 'sound/weapons/blade1.ogg', 50, 1)
 			playsound(src.loc, "sparks", 50, 1)
 			return

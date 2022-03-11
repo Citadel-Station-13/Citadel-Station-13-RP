@@ -58,8 +58,8 @@
 
 /datum/event/atmos_leak/start()
 	// Okay, time to actually put the gas in the room!
-	// TODO - Would be nice to break a waste pipe perhaps?
-	// TODO - Maybe having it released from a single point and thus causing airflow to blow stuff around
+	// TODO: Would be nice to break a waste pipe perhaps?
+	// TODO: Maybe having it released from a single point and thus causing airflow to blow stuff around
 
 	// Fow now just add a bunch of it to the air
 	var/datum/gas_mixture/air_contents = new

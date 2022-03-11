@@ -130,7 +130,7 @@
 	// 	ui.open()
 	// 	ui.set_auto_update(1)
 
-/obj/machinery/power/fission/proc/ui_data(need_power = FALSE)
+/obj/machinery/power/fission/ui_data(need_power = FALSE)
 	var/data[0]
 
 	data["integrity_percentage"] = round(get_integrity())

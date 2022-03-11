@@ -14,7 +14,7 @@
 /mob/living/carbon/human/var/obj/item/implant/mirror/mirror
 
 /obj/item/implant/mirror/digest_act(var/atom/movable/item_storage = null)
-    return FALSE
+	return FALSE
 
 /obj/item/implant/get_data()
 	var/dat = {"
@@ -36,7 +36,7 @@
 		H.mirror = src
 		return
 	else
-		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
+		stored_mind = SStranscore.m_backup(H.mind, one_time = TRUE)
 		icon_state = "mirror_implant"
 		human = H
 		human.mirror = src
@@ -79,7 +79,7 @@
 /obj/item/implant/mirror/positronic/post_implant(var/mob/living/carbon/human/H)
 	spawn(20)
 	if((H.client.prefs.organ_data[O_BRAIN] != null))
-		stored_mind = SStranscore.m_backupE(H.mind, one_time = TRUE)
+		stored_mind = SStranscore.m_backup(H.mind, one_time = TRUE)
 		icon_state = "mirror_implant"
 		H.mirror = src
 	else

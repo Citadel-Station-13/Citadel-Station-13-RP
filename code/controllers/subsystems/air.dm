@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(air)
 	init_order = INIT_ORDER_AIR
 	priority = FIRE_PRIORITY_AIR
 	wait = 2 SECONDS // seconds (We probably can speed this up actually)
-	flags = SS_BACKGROUND // TODO - Should this really be background? It might be important.
+	flags = SS_BACKGROUND // TODO: Should this really be background? It might be important.
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	var/static/list/part_names = list("turfs", "edges", "fire zones", "hotspots", "zones")
 
@@ -149,7 +149,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 		#endif
 		if(MC_TICK_CHECK)
 			return
-	
+
 	if(LAZYLEN(selfblock_deferred) != 0)
 		stack_trace("WARNING: selfblock_deffered was not empty (length [LAZYLEN(selfblock_deferred)])")
 	src.selfblock_deferred = null
@@ -162,7 +162,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	while(currentrun.len)
 		var/connection_edge/edge = currentrun[currentrun.len]
 		currentrun.len--
-		if(edge) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
+		if(edge) // TODO: Do we need to check this? Old one didn't, but old one was single-threaded.
 			edge.tick()
 		if(MC_TICK_CHECK)
 			return
@@ -175,7 +175,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	while(currentrun.len)
 		var/zone/Z = currentrun[currentrun.len]
 		currentrun.len--
-		if(Z) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
+		if(Z) // TODO: Do we need to check this? Old one didn't, but old one was single-threaded.
 			Z.process_fire()
 		if(MC_TICK_CHECK)
 			return
@@ -189,7 +189,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	while(currentrun.len)
 		var/obj/fire/fire = currentrun[currentrun.len]
 		currentrun.len--
-		if(fire) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
+		if(fire) // TODO: Do we need to check this? Old one didn't, but old one was single-threaded.
 			fire.process(dt)
 		if(MC_TICK_CHECK)
 			return
@@ -211,7 +211,7 @@ Total Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_coun
 	while(currentrun.len)
 		var/zone/zone = currentrun[currentrun.len]
 		currentrun.len--
-		if(zone) // TODO - Do we need to check this? Old one didn't, but old one was single-threaded.
+		if(zone) // TODO: Do we need to check this? Old one didn't, but old one was single-threaded.
 			zone.tick()
 			zone.needs_update = 0
 		if(MC_TICK_CHECK)

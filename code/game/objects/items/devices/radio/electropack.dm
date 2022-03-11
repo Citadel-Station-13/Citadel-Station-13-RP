@@ -96,9 +96,9 @@
 				if(M)
 					M.moved_recently = 0
 		to_chat(M, "<span class='danger'>You feel a sharp shock!</span>")
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, M)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(3, 1, M)
+		sparks.start()
 
 		M.Weaken(10)
 

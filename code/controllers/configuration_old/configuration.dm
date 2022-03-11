@@ -241,7 +241,8 @@
 	var/dooc_allowed = 1
 	var/dsay_allowed = 1
 
-	var/persistence_enabled = 1
+	var/persistence_disabled = FALSE
+	var/persistence_ignore_mapload = FALSE
 
 	var/static/starlight = 0	// Whether space turfs have ambient light or not
 
@@ -269,6 +270,9 @@
 	var/autostart_solars = FALSE // If true, specifically mapped in solar control computers will set themselves up when the round starts.
 
 	var/list/gamemode_cache = list()
+
+	// whether or not to use the nightshift subsystem to perform lighting changes
+	var/static/enable_night_shifts = FALSE
 
 /datum/configuration_legacy/New()
 	var/list/L = subtypesof(/datum/game_mode)
@@ -555,8 +559,11 @@
 				if("protect_roles_from_antagonist")
 					config_legacy.protect_roles_from_antagonist = 1
 
-				if ("persistence_enabled")
-					config.persistence_enabled = 1
+				if("persistence_disabled")
+					config_legacy.persistence_disabled = TRUE
+
+				if("persistence_ignore_mapload")
+					config_legacy.persistence_ignore_mapload = TRUE
 
 				if ("probability")
 					var/prob_pos = findtext(value, " ")
@@ -866,6 +873,9 @@
 
 				if("second_topic_limit")
 					config_legacy.second_topic_limit = text2num(value)
+
+				if("enable_night_shifts")
+					config_legacy.enable_night_shifts = TRUE
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")

@@ -338,13 +338,15 @@
 		if(removed)
 			removed.add_thermal_energy(power_avail*5)
 			env.merge(removed)
+
 	var/turf/T = get_turf(src)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, 5)
 	T.assume_gas(/datum/gas/volatile_fuel, 5, T20C)
 	T.hotspot_expose(700,400)
-	var/datum/effect_system/spark_spread/s = new
-	s.set_up(5, 0, T)
-	s.start()
+
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(5, 0, T)
+	sparks.start()
 	visible_message("<span class='warning'>\The [src] bursts into flame!</span>")
 
 #undef MODE_IDLE

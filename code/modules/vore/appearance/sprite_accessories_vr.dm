@@ -722,7 +722,7 @@ datum/sprite_accessory/ears/tesh_pattern_ear_male
 	var/extra_overlay // Icon state of an additional overlay to blend in.
 	var/extra_overlay2
 	var/clothing_can_hide = 1 // If true, clothing with HIDETAIL hides it. If the clothing is bulky enough to hide a tail, it should also hide wings.
-	// var/show_species_tail = 1 // Just so // TODO - Seems not needed ~Leshana
+	// var/show_species_tail = 1 // Just so // TODO: Seems not needed ~Leshana
 	var/desc = "You should not see this..."
 	var/ani_state // State when flapping/animated
 	var/extra_overlay_w // Flapping state for extra overlay

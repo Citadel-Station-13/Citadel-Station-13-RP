@@ -1,3 +1,9 @@
+/mob/living/carbon/human/GetAltName()
+	if(name != GetVoice())
+		return " (as [get_id_name("Unknown")])"
+
+	return ..()
+
 var/list/department_radio_keys = list(
 	  ":r" = "right ear",	".r" = "right ear",
 	  ":l" = "left ear",	".l" = "left ear",
@@ -454,7 +460,7 @@ proc/get_radio_key_from_channel(var/channel)
 /obj/effect/speech_bubble
 	var/mob/parent
 
-/mob/living/proc/GetVoice()
+/mob/proc/GetVoice()
 	return name
 
 /mob/proc/speech_bubble_appearance()

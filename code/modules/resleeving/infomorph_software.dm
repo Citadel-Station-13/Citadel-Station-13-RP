@@ -42,7 +42,7 @@
 	var/list/data = ..()
 	if(data_core)
 		data_core.get_manifest_list()
-	data["manifest"] = PDA_Manifest
+	data["manifest"] = GLOB.PDA_Manifest
 	return data
 
 /datum/infomorph_software/med_records
@@ -358,7 +358,7 @@
 				spawn(0)
 					R.send_signal("ACTIVATE")
 				for(var/mob/O in hearers(1, R.loc))
-					O.show_message("[bicon(R)] *beep* *beep*", 3, "*beep* *beep*", 2)
+					O.show_message("[icon2html(R)] *beep* *beep*", 3, "*beep* *beep*", 2)
 			if("freq")
 				var/frequency = unformat_frequency(params["freq"])
 				frequency = sanitize_frequency(frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)

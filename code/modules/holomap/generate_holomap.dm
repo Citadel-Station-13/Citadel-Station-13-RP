@@ -42,7 +42,7 @@
 	holomaps_initialized = TRUE
 	admin_notice("<span class='notice'>Holomaps initialized in [round(0.1*(world.timeofday-start_time),0.1)] seconds.</span>", R_DEBUG)
 
-	// TODO - Check - They had a delayed init perhaps?
+	// TODO: Check - They had a delayed init perhaps?
 	for (var/obj/machinery/station_map/S in station_holomaps)
 		S.setup_holomap()
 
@@ -150,13 +150,13 @@
 		extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAP]_[zLevel]"] = big_map
 		extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[zLevel]"] = actual_small_map
 
-// TODO - Holomap Markers!
+// TODO: Holomap Markers!
 // /proc/generateMinimapMarkers(var/zLevel)
 // 	// Save these values now to avoid a bazillion array lookups
 // 	var/offset_x = HOLOMAP_PIXEL_OFFSET_X(zLevel)
 // 	var/offset_y = HOLOMAP_PIXEL_OFFSET_Y(zLevel)
 
-// 	// TODO - Holomap markers
+// 	// TODO: Holomap markers
 // 	for(var/filter in list(HOLOMAP_FILTER_STATIONMAP))
 // 		var/icon/canvas = icon(HOLOMAP_ICON, "blank")
 // 		for(/datum/holomap_marker/holomarker in holomap_markers)

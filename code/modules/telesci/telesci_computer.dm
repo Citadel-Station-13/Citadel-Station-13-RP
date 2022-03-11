@@ -151,7 +151,7 @@
 
 		if("setMemory")
 			if(last_target && inserted_gps)
-				// TODO - What was this even supposed to do??
+				// TODO: What was this even supposed to do??
 				//inserted_gps.locked_location = last_target
 				temp_msg = "Location saved."
 			else
@@ -180,9 +180,9 @@
 
 /obj/machinery/computer/telescience/proc/sparks()
 	if(telepad)
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
-		s.set_up(5, 1, get_turf(telepad))
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+		sparks.set_up(5, 1, get_turf(telepad))
+		sparks.start()
 	else
 		return
 

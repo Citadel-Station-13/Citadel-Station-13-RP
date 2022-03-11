@@ -161,7 +161,7 @@
 		return //just leave them
 
 // Attempt to eat target
-// TODO - Review this.  Could be some issues here
+// TODO: Review this.  Could be some issues here
 /mob/living/simple_mob/proc/EatTarget(var/mob/living/M)
 	//ai_log("vr/EatTarget() [M]",2) //VORESTATION AI TEMPORARY REMOVAL
 	//stop_automated_movement = 1 //VORESTATION AI TEMPORARY REMOVAL

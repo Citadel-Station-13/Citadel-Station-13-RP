@@ -28,8 +28,8 @@
 				"Gamma", "Eta", "Iota", "Kappa", "Lambda", "Omicron", "Theta",
 				"Rho", "Sigma", "Tau", "Upsilon", "Omega", "Psi", "Zeta")
 			// Poof them onto the station!
-			var/datum/effect_system/steam_spread/s = new
-			s.set_up(3, 0, target)
-			s.start()
+			var/datum/effect_system/steam_spread/steam = new
+			steam.set_up(3, 0, target)
+			steam.start()
 			return
 	// Sadly no ian feasible.

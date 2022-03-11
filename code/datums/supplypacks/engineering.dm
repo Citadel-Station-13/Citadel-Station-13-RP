@@ -309,7 +309,7 @@
 	containername = "Tritium crate"
 	containertype = /obj/structure/closet/crate/engineering
 	contains = list(/obj/fiftyspawner/tritium)
-
+/*
 /datum/supply_pack/eng/engine/fission
 	name = "Fission Starter crate"
 	contains = list(/obj/machinery/power/fission,
@@ -332,7 +332,7 @@
 	containertype = /obj/structure/closet/crate/secure/engineering
 	containername = "fission expansion crate"
 	access = access_ce
-
+*/
 /datum/supply_pack/eng/thermoregulator
 	contains = list(/obj/machinery/power/thermoregulator)
 	name = "Thermal Regulator"

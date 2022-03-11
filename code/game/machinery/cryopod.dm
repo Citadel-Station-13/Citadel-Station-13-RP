@@ -441,15 +441,9 @@
 				to_chat(O.owner.current, "<span class='warning'>You get the feeling your target is no longer within your reach...</span>")
 			qdel(O)
 
-	//VOREStation Edit - Resleeving.
+	// Resleeving.
 	if(to_despawn.mind)
-		if(to_despawn.mind.name in SStranscore.backed_up)
-			var/datum/transhuman/mind_record/MR = SStranscore.backed_up[to_despawn.mind.name]
-			SStranscore.stop_backup(MR)
-		if(to_despawn.mind.name in SStranscore.body_scans) //This uses mind names to avoid people cryo'ing a printed body to delete body scans.
-			var/datum/transhuman/body_record/BR = SStranscore.body_scans[to_despawn.mind.name]
-			SStranscore.remove_body(BR)
-	//VOREStation Edit End - Resleeving.
+		SStranscore.leave_round(to_despawn)
 
 	//Handle job slot/tater cleanup.
 	var/job = to_despawn.mind.assigned_role

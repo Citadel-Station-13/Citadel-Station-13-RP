@@ -57,7 +57,7 @@
 
 	switch(wire)
 		if(WIRE_MAIN_POWER1)
-			// TODO - Actually make machine electrified or something.
+			// TODO: Actually make machine electrified or something.
 			A.shock(usr, 90)
 
 		if(WIRE_JUKEBOX_HACK)

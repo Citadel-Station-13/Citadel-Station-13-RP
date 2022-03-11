@@ -114,6 +114,8 @@
 	// drop sound - this is the default
 	var/drop_sound = 'sound/items/drop/device.ogg'
 
+	var/randpixel = 0
+
 	var/deploytype = null	//Deploytype for switchtools. Only really used on switchtool subtype items, but this is on a general item level in case admins want to do some wierd fucky shit with custom switchtools.
 /obj/item/Initialize(mapload)
 	. = ..()
@@ -796,6 +798,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/in_inactive_hand(mob/user)
 	return
 
+//Used for selecting a random pixel placement, usually on initialize. Checks for pixel_x/y to not interfere with mapped in items.
+/obj/item/proc/randpixel_xy()
+	if(!pixel_x && !pixel_y)
+		pixel_x = rand(-randpixel, randpixel)
+		pixel_y = rand(-randpixel, randpixel)
+		return TRUE
+	else
+		return FALSE
+
 //Worn icon generation for on-mob sprites
 /obj/item/proc/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
 	//Get the required information about the base icon
@@ -945,3 +956,59 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 // Like the above, but used for RPED sorting of parts.
 /obj/item/proc/rped_rating()
 	return get_rating()
+
+/// How are you described if at all when in pockets (or other 'usually not visible' places)
+/obj/item/proc/pocket_description(mob/haver, mob/examiner)
+	return null // most things are hidden
+
+#define CELLS 8								//Amount of cells per row/column in grid
+#define CELLSIZE (world.icon_size/CELLS)	//Size of a cell in pixels
+
+/*
+Automatic alignment of items to an invisible grid, defined by CELLS and CELLSIZE.
+Since the grid will be shifted to own a cell that is perfectly centered on the turf, we end up with two 'cell halves'
+on edges of each row/column.
+Each item defines a center_of_mass, which is the pixel of a sprite where its projected center of mass toward a turf
+surface can be assumed. For a piece of paper, this will be in its center. For a bottle, it will be (near) the bottom
+of the sprite.
+auto_align() will then place the sprite so the defined center_of_mass is at the bottom left corner of the grid cell
+closest to where the cursor has clicked on.
+Note: This proc can be overwritten to allow for different types of auto-alignment.
+*/
+
+/obj/item/var/list/center_of_mass = list("x" = 16,"y" = 16)
+
+/proc/auto_align(obj/item/W, click_parameters, var/animate = FALSE)
+	if(!W.center_of_mass)
+		W.randpixel_xy()
+		return
+
+	if(!click_parameters)
+		return
+
+	var/list/mouse_control = params2list(click_parameters)
+
+	var/mouse_x = text2num(mouse_control["icon-x"])
+	var/mouse_y = text2num(mouse_control["icon-y"])
+
+	if(isnum(mouse_x) && isnum(mouse_y))
+		var/cell_x = max(0, min(CELLS-1, round(mouse_x/CELLSIZE)))
+		var/cell_y = max(0, min(CELLS-1, round(mouse_y/CELLSIZE)))
+
+		var/target_x = (CELLSIZE * (0.5 + cell_x)) - W.center_of_mass["x"]
+		var/target_y = (CELLSIZE * (0.5 + cell_y)) - W.center_of_mass["y"]
+		if(animate)
+			var/dist_x = abs(W.pixel_x - target_x)
+			var/dist_y = abs(W.pixel_y - target_y)
+			var/dist = sqrt((dist_x*dist_x)+(dist_y*dist_y))
+			animate(W, pixel_x=target_x, pixel_y=target_y,time=dist*0.5)
+		else
+			W.pixel_x = target_x
+			W.pixel_y = target_y
+
+#undef CELLS
+#undef CELLSIZE
+
+// this gets called when the item gets chucked by the vending machine
+/obj/item/proc/vendor_action(var/obj/machinery/vending/V)
+	return

@@ -18,7 +18,7 @@
 	layer = ABOVE_WINDOW_LAYER
 
 /obj/machinery/embedded_controller/radio/airlock/Destroy()
-	// TODO - Leshana - Implement dummy terminals
+	// TODO: Leshana - Implement dummy terminals
 	//for(var/thing in dummy_terminals)
 	//	var/obj/machinery/dummy_airlock_controller/dummy = thing
 	//	dummy.master_controller = null

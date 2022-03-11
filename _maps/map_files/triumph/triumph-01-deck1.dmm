@@ -12544,7 +12544,7 @@
 /turf/space,
 /area/space)
 "Rh" = (
-/obj/machinery/computer/fission_monitor,
+/obj/machinery/computer,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},

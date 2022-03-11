@@ -37,7 +37,7 @@
 	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
 /*
 //////////////////////////////////////////////////////////////
-// TODO - Get these compatible - Zandario
+// TODO: Get these compatible - Zandario
 // Trade Ship
 /datum/shuttle/autodock/multi/trade
 	name = "Trade"
@@ -179,7 +179,7 @@
 */
 //////////////////////////////////////////////////////////////
 // RogueMiner "Belter: Shuttle
-// TODO - Not implemented yet on new map
+// TODO: Not implemented yet on new map
 
 /datum/shuttle/autodock/ferry/belter
 	name = "Belter"

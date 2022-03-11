@@ -18,13 +18,13 @@
 	health = 100
 
 	light_system = MOVABLE_LIGHT_DIRECTIONAL
-	light_cone_y_offset = 5
+	//light_cone_y_offset = 5
 	light_range = 4
 	light_power = 4
 	var/power_per_process = 50 // About 6.5 minutes of use on a high-cell (10,000)
 	var/state = UAV_OFF
 
-	var/datum/effect/effect/system/ion_trail_follow/ion_trail
+	var/datum/effect_system/ion_trail_follow/ion_trail
 
 	var/list/mob/living/masters
 
@@ -52,7 +52,7 @@
 	if(!cell && cell_type)
 		cell = new cell_type
 
-	ion_trail = new /datum/effect/effect/system/ion_trail_follow()
+	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
 	ion_trail.stop()
 
@@ -113,7 +113,7 @@
 /obj/item/uav/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/modular_computer) && state == UAV_PAIRING)
 		var/obj/item/modular_computer/MC = I
-		LAZYDISTINCTADD(MC.paired_uavs, weakref(src))
+		LAZYDISTINCTADD(MC.paired_uavs, WEAKREF(src))
 		playsound(src, 'sound/machines/buttonbeep.ogg', 50, 1)
 		visible_message("<span class='notice'>[user] pairs [I] to [nickname]</span>")
 		toggle_pairing()
@@ -243,7 +243,7 @@
 	state = UAV_ON
 	update_icon()
 	start_hover()
-	set_light_on(TRUE)
+	//set_light_on(TRUE)
 	START_PROCESSING(SSobj, src)
 	no_masters_time = 0
 	visible_message("<span class='notice'>[nickname] buzzes and lifts into the air.</span>")
@@ -255,7 +255,7 @@
 	state = UAV_OFF
 	update_icon()
 	stop_hover()
-	set_light_on(FALSE)
+	//set_light_on(FALSE)
 	LAZYCLEARLIST(masters)
 	STOP_PROCESSING(SSobj, src)
 	visible_message("<span class='notice'>[nickname] gracefully settles onto the ground.</span>")
@@ -310,7 +310,7 @@
 /obj/item/uav/hear_talk(var/mob/M, list/message_pieces, verb)
 	var/name_used = M.GetVoice()
 	for(var/wr_master in masters)
-		var/weakref/wr = wr_master
+		var/datum/weakref/wr = wr_master
 		var/mob/master = wr.resolve()
 		var/list/combined = master.combine_message(message_pieces, verb, M)
 		var/message = combined["formatted"]
@@ -319,14 +319,14 @@
 
 /obj/item/uav/see_emote(var/mob/living/M, text)
 	for(var/wr_master in masters)
-		var/weakref/wr = wr_master
+		var/datum/weakref/wr = wr_master
 		var/mob/master = wr.resolve()
 		var/rendered = "<i><span class='game say'>UAV received, <span class='message'>[text]</span></span></i>"
 		master.show_message(rendered, 2)
 
 /obj/item/uav/show_message(msg, type, alt, alt_type)
 	for(var/wr_master in masters)
-		var/weakref/wr = wr_master
+		var/datum/weakref/wr = wr_master
 		var/mob/master = wr.resolve()
 		var/rendered = "<i><span class='game say'>UAV received, <span class='message'>[msg]</span></span></i>"
 		master.show_message(rendered, type)

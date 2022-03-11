@@ -200,7 +200,7 @@ obj/machinery/airlock_sensor/phoron/airlock_exterior
 	switch(state)
 		if(STATE_IDLE)
 			if(target_state == TARGET_INOPEN)
-				// TODO - Check if okay to just open immediately
+				// TODO: Check if okay to just open immediately
 				close_doors()
 				state = STATE_PREPARE
 			else if(target_state == TARGET_OUTOPEN)

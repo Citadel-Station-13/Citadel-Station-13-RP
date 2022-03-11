@@ -204,9 +204,9 @@
 			toggle()
 		if(heat > critical_heat)
 			src.visible_message("<span class='danger'>\The [src] violently spews out sparks!</span>")
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
-			s.set_up(3, 1, src)
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+			sparks.set_up(3, 1, src)
+			sparks.start()
 
 			take_damage(rand(10,50))
 			toggle()

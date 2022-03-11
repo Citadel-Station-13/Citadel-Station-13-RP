@@ -26,11 +26,17 @@
 	var/obj/machinery/transhuman/resleever/selected_sleever
 	var/hasmirror = null
 
+	// Resleeving database this machine interacts with. Blank for default database
+	// Needs a matching /datum/transcore_db with key defined in code
+	var/db_key
+	var/datum/transcore_db/our_db // These persist all round and are never destroyed, just keep a hard ref
+
 /obj/machinery/computer/transhuman/resleeving/Initialize(mapload)
 	. = ..()
 	pods = list()
 	spods = list()
 	sleevers = list()
+	our_db = SStranscore.db_by_key(db_key)
 	updatemodules()
 
 /obj/machinery/computer/transhuman/resleeving/Destroy()
@@ -83,7 +89,7 @@
 			P.connected = src
 			P.name = "[initial(P.name)] #[pods.len]"
 			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
-	else if(istype(W, /obj/item/disk/transcore) && SStranscore && !SStranscore.core_dumped)
+	else if(istype(W, /obj/item/disk/transcore) && !our_db.core_dumped)
 		user.unEquip(W)
 		disk = W
 		disk.forceMove(src)
@@ -210,7 +216,7 @@
 	data["sleevers"] = temppods.Copy()
 	temppods.Cut()
 
-	data["coredumped"] = SStranscore.core_dumped
+	data["coredumped"] = our_db.core_dumped
 	data["emergency"] = disk
 	data["temp"] = temp
 	data["selected_pod"] = "\ref[selected_pod]"
@@ -219,14 +225,14 @@
 
 
 	var/bodyrecords_list_ui[0]
-	for(var/N in SStranscore.body_scans)
-		var/datum/transhuman/body_record/BR = SStranscore.body_scans[N]
+	for(var/N in our_db.body_scans)
+		var/datum/transhuman/body_record/BR = our_db.body_scans[N]
 		bodyrecords_list_ui[++bodyrecords_list_ui.len] = list("name" = N, "recref" = "\ref[BR]")
 	data["bodyrecords"] = bodyrecords_list_ui
 
 	var/mindrecords_list_ui[0]
-	for(var/N in SStranscore.backed_up)
-		var/datum/transhuman/mind_record/MR = SStranscore.backed_up[N]
+	for(var/N in our_db.backed_up)
+		var/datum/transhuman/mind_record/MR = our_db.backed_up[N]
 		mindrecords_list_ui[++mindrecords_list_ui.len] = list("name" = N, "recref" = "\ref[MR]")
 	data["mindrecords"] = mindrecords_list_ui
 
@@ -235,7 +241,7 @@
 
 /obj/machinery/computer/transhuman/resleeving/ui_act(action, params)
 	if(..())
-		return
+		return TRUE
 
 	. = TRUE
 	switch(ui_modal_act(src, action, params))
@@ -325,7 +331,7 @@
 				set_temp("Error: Record missing.", "bad")
 		if("coredump")
 			if(disk)
-				SStranscore.core_dump(disk)
+				our_db.core_dump(disk)
 				sleep(5)
 				visible_message("<span class='warning'>\The [src] spits out \the [disk].</span>")
 				disk.forceMove(get_turf(src))
@@ -470,7 +476,7 @@
 
 					//They were dead, or otherwise available.
 					if(!temp)
-						sleever.putmind(active_mr,mode,override)
+						sleever.putmind(active_mr,mode,override,db_key = db_key)
 						set_temp("Initiating resleeving...")
 						menu = 1
 						return

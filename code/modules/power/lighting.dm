@@ -191,8 +191,17 @@ var/global/list/light_type_cache = list()
 
 	var/auto_flicker = FALSE // If true, will constantly flicker, so long as someone is around to see it (otherwise its a waste of CPU).
 
+	var/nightshift_enabled = FALSE
+	var/nightshift_allowed = TRUE
+	var/brightness_range_ns
+	var/brightness_power_ns
+	var/brightness_color_ns
+
 /obj/machinery/light/flicker
 	auto_flicker = TRUE
+
+/obj/machinery/light/no_nightshift
+	nightshift_allowed = FALSE
 
 // the smaller bulb light fixture
 
@@ -202,13 +211,13 @@ var/global/list/light_type_cache = list()
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light/bulb
 	construct_type = /obj/machinery/light_construct/small
-	shows_alerts = FALSE	//VOREStation Edit
+	shows_alerts = FALSE
 
 /obj/machinery/light/small/flicker
 	auto_flicker = TRUE
 
 /obj/machinery/light/flamp
-	icon = 'icons/obj/lighting.dmi' //VOREStation Edit
+	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flamp1"
 	base_state = "flamp"
 	plane = OBJ_PLANE
@@ -216,7 +225,7 @@ var/global/list/light_type_cache = list()
 	desc = "A floor lamp."
 	light_type = /obj/item/light/bulb
 	construct_type = /obj/machinery/light_construct/flamp
-	shows_alerts = FALSE	//VOREStation Edit
+	shows_alerts = FALSE
 	var/lamp_shade = 1
 
 /obj/machinery/light/flamp/Initialize(mapload, obj/machinery/light_construct/construct)
@@ -237,17 +246,15 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/spot
 	name = "spotlight"
 	light_type = /obj/item/light/tube/large
-	shows_alerts = FALSE	//VOREStation Edit
+	shows_alerts = FALSE
 
 /obj/machinery/light/spot/flicker
 	auto_flicker = TRUE
 
-//VOREStation Add - Shadeless!
 /obj/machinery/light/flamp/noshade/Initialize(mapload, obj/machinery/light_construct/construct)
 	. = ..()
 	lamp_shade = 0
 	update(0)
-//VOREStation Add End
 
 // create a new lighting fixture
 /obj/machinery/light/Initialize(mapload, obj/machinery/light_construct/construct)
@@ -278,12 +285,10 @@ var/global/list/light_type_cache = list()
 
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
-			//VOREStation Edit Start
 			if(shows_alerts && current_alert && on)
 				icon_state = "[base_state]-alert-[current_alert]"
 			else
 				icon_state = "[base_state][on]"
-			//VOREStation Edit End
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
 			on = 0
@@ -314,7 +319,6 @@ var/global/list/light_type_cache = list()
 	else
 		base_state = "flamp"
 		..()
-//VOREStation Edit Start
 /obj/machinery/light/proc/set_alert_atmos()
 	if(shows_alerts)
 		current_alert = "atmos"
@@ -335,20 +339,21 @@ var/global/list/light_type_cache = list()
 		brightness_color = initial(brightness_color) || "" // Workaround for BYOND stupidity. Can't set it to null or it won't clear.
 		if(on)
 			update()
-//VOREstation Edit End
+
 // update lighting
 /obj/machinery/light/proc/update(var/trigger = 1)
 	update_icon()
-	//VOREStation Edit Start
 	if(!on)
 		needsound = TRUE // Play sound next time we turn on
 	else if(needsound)
 		playsound(src.loc, 'sound/effects/lighton.ogg', 65, 1)
 		needsound = FALSE // Don't play sound again until we've been turned off
-	//VOREStation Edit End
 
 	if(on)
-		if(light_range != brightness_range || light_power != brightness_power || light_color != brightness_color)
+		var/correct_range = nightshift_enabled ? brightness_range_ns : brightness_range
+		var/correct_power = nightshift_enabled ? brightness_power_ns : brightness_power
+		var/correct_color = nightshift_enabled ? brightness_color_ns : brightness_color
+		if(light_range != correct_range || light_power != correct_power || light_color != correct_color)
 			if(!auto_flicker)
 				switchcount++
 			if(rigged)
@@ -366,13 +371,20 @@ var/global/list/light_type_cache = list()
 					set_light(0)
 			else
 				update_use_power(USE_POWER_ACTIVE)
-				set_light(brightness_range, brightness_power, brightness_color)
+				set_light(correct_range, correct_power, correct_color)
 	else
 		update_use_power(USE_POWER_IDLE)
 		set_light(0)
 
 	active_power_usage = ((light_range * light_power) * LIGHTING_POWER_FACTOR)
 
+/obj/machinery/light/proc/nightshift_mode(var/state)
+	if(!nightshift_allowed)
+		return
+
+	if(state != nightshift_enabled)
+		nightshift_enabled = state
+		update(FALSE)
 
 /obj/machinery/light/attack_generic(var/mob/user, var/damage)
 	if(!damage)
@@ -428,9 +440,14 @@ var/global/list/light_type_cache = list()
 	status = L.status
 	switchcount = L.switchcount
 	rigged = L.rigged
+
 	brightness_range = L.brightness_range
 	brightness_power = L.brightness_power
 	brightness_color = L.brightness_color
+
+	brightness_range_ns = L.nightshift_range
+	brightness_power_ns = L.nightshift_power
+	brightness_color_ns = L.nightshift_color
 
 // attack with item - insert light (if right type), otherwise try to break the light
 
@@ -512,9 +529,9 @@ var/global/list/light_type_cache = list()
 
 		to_chat(user, "You stick \the [W] into the light socket!")
 		if(has_power() && !(W.flags & NOCONDUCT))
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(3, 1, src)
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(3, 1, src)
+			sparks.start()
 			//if(!user.mutations & COLD_RESISTANCE)
 			if (prob(75))
 				electrocute_mob(user, get_area(src), src, rand(0.7,1.0))
@@ -658,9 +675,9 @@ var/global/list/light_type_cache = list()
 		if(status == LIGHT_OK || status == LIGHT_BURNED)
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 		if(on)
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(3, 1, src)
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(3, 1, src)
+			sparks.start()
 	status = LIGHT_BROKEN
 	update()
 
@@ -742,6 +759,11 @@ var/global/list/light_type_cache = list()
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
 	var/brightness_color = LIGHT_COLOR_INCANDESCENT_TUBE
+
+	var/nightshift_range = 8
+	var/nightshift_power = 0.7
+	var/nightshift_color = LIGHT_COLOR_NIGHTSHIFT
+
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
@@ -754,6 +776,9 @@ var/global/list/light_type_cache = list()
 	matter = list("glass" = 100)
 	brightness_range = 12	// luminosity when on, also used in power calculation //VOREStation Edit
 	brightness_power = 1
+
+	nightshift_range = 10
+	nightshift_power = 0.9
 
 /obj/item/light/tube/large
 	w_class = ITEMSIZE_SMALL
@@ -771,6 +796,9 @@ var/global/list/light_type_cache = list()
 	brightness_range = 5
 	brightness_power = 1
 	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
+
+	nightshift_range = 3
+	nightshift_power = 0.35
 
 /obj/item/light/throw_impact(atom/hit_atom)
 	..()

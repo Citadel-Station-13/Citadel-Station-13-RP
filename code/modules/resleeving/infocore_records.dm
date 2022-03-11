@@ -15,6 +15,7 @@
 	var/dead_state = 0
 	var/last_update = 0
 	var/last_notification
+	var/do_notify = TRUE
 
 	//Backend
 	var/ckey = ""
@@ -31,7 +32,7 @@
 
 	var/one_time = FALSE
 
-/datum/transhuman/mind_record/New(var/datum/mind/mind, var/mob/living/carbon/human/M, var/add_to_db = TRUE, var/one_time = FALSE)
+/datum/transhuman/mind_record/New(var/datum/mind/mind, var/mob/living/carbon/human/M, var/add_to_db = TRUE, var/one_time = FALSE, var/database_key)
 	ASSERT(mind)
 
 	src.one_time = one_time
@@ -62,7 +63,7 @@
 	last_update = world.time
 
 	if(add_to_db)
-		SStranscore.add_backup(src)
+		SStranscore.add_backup(src, database_key = database_key)
 
 /////// Body Record ///////
 /datum/transhuman/body_record
@@ -101,7 +102,7 @@
 	organ_data.Cut()
 	return QDEL_HINT_HARDDEL // For now at least there is no easy way to clear references to this in machines etc.
 
-/datum/transhuman/body_record/proc/init_from_mob(var/mob/living/carbon/human/M, var/add_to_db = 0, var/ckeylock = 0)
+/datum/transhuman/body_record/proc/init_from_mob(var/mob/living/carbon/human/M, var/add_to_db = 0, var/ckeylock = 0, var/database_key)
 	ASSERT(!QDELETED(M))
 	ASSERT(istype(M))
 
@@ -186,7 +187,7 @@
 			genetic_modifiers.Add(mod.type)
 
 	if(add_to_db)
-		SStranscore.add_body(src)
+		SStranscore.add_body(src, database_key = database_key)
 
 
 /**

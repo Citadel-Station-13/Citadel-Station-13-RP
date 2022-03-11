@@ -1070,9 +1070,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ke" = (
-/obj/machinery/computer/fusion_core_control{
-	id_tag = "engine"
-	},
+/obj/machinery/computer/fusion_core_control,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_room)
 "Ki" = (

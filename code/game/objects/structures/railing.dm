@@ -22,7 +22,7 @@
 
 /obj/structure/railing/Initialize(mapload, constructed = FALSE)
 	. = ..()
-	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
+	// TODO: "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
 		anchored = 0
 	if(climbable)
@@ -325,7 +325,7 @@
 			return 0
 	return 1
 
-// TODO - This here might require some investigation
+// TODO: This here might require some investigation
 /obj/structure/proc/neighbor_turf_impassable()
 	var/turf/T = get_step(src, src.dir)
 	if(!T || !istype(T))

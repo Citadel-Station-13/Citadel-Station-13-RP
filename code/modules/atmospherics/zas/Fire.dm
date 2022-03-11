@@ -160,7 +160,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 				if(!enemy_tile.zone || enemy_tile.fire)
 					continue
 
-				//if(!enemy_tile.zone.fire_tiles.len) TODO - optimize
+				//if(!enemy_tile.zone.fire_tiles.len) TODO: optimize
 				var/datum/gas_mixture/acs = enemy_tile.return_air()
 				var/obj/effect/decal/cleanable/liquid_fuel/liquid = locate() in enemy_tile
 				if(!acs || !acs.check_combustability(liquid))

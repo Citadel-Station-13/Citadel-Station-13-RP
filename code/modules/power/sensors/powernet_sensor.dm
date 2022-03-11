@@ -45,7 +45,7 @@
 
 /obj/machinery/power/sensor/Destroy()
 	. = ..()
-	// TODO - Switch power_monitor to register deletion events instead of this.
+	// TODO: Switch power_monitor to register deletion events instead of this.
 	for(var/obj/machinery/computer/power_monitor/PM in machines)
 		if(PM.power_monitor)
 			PM.power_monitor.refresh_sensors()

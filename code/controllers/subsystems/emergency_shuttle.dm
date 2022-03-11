@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	wait = 20
 
 /datum/controller/subsystem/emergencyshuttle
-	var/datum/shuttle/autodock/ferry/emergency/shuttle	// Set in shuttle_emergency.dm TODO - is it really?
+	var/datum/shuttle/autodock/ferry/emergency/shuttle	// Set in shuttle_emergency.dm TODO: is it really?
 	var/list/escape_pods
 
 	var/launch_time			//the time at which the shuttle will be launched

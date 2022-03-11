@@ -199,7 +199,7 @@
 
 /obj/machinery/computer/med_data/ui_act(action, params)
 	if(..())
-		return
+		return TRUE
 
 	if(!data_core.general.Find(active1))
 		active1 = null
@@ -443,7 +443,7 @@
 		<br>\n
 		<center><b>Comments/Log</b></center><br>"}
 		for(var/c in active2.fields["comments"])
-			P.info += "[c]<br>"
+			P.info += "[c["header"]]<br>[c["text"]]<br>"
 	else
 		P.info += "<b>Medical Record Lost!</b><br>"
 	P.info += "</tt>"
@@ -500,5 +500,8 @@
 	icon_state = "laptop"
 	icon_keyboard = "laptop_key"
 	icon_screen = "medlaptop"
-	throwpass = 1 //VOREStation Edit - Really???
-	density = FALSE			//THIS IS A LAPTOP.	--CITADEL EDIT
+	throwpass = TRUE // Really???
+	density = FALSE	// THIS IS A LAPTOP.
+
+#undef FIELD
+#undef MED_FIELD

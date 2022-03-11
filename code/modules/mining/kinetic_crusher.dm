@@ -31,7 +31,7 @@
 	var/charge_time = 15
 	var/detonation_damage = 50
 	var/backstab_bonus = 30
-	var/light_on = FALSE
+	var/kc_light_on = FALSE
 	var/brightness_on = 7
 	var/wielded = FALSE // track wielded status on item
 	/// Damage penalty factor to detonation damage to non simple mobs
@@ -214,13 +214,13 @@
 		playsound(src.loc, 'sound/weapons/kenetic_reload.ogg', 60, 1)
 
 /obj/item/kinetic_crusher/ui_action_click(mob/user, actiontype)
-	light_on = !light_on
+	kc_light_on = !kc_light_on
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_brightness(user)
 	update_icon()
 
 /obj/item/kinetic_crusher/proc/update_brightness(mob/user = null)
-	if(light_on)
+	if(kc_light_on)
 		set_light(brightness_on)
 	else
 		set_light(0)
@@ -233,7 +233,7 @@
 	. = ..()
 	if(!charged && charge_overlay)
 		. += "[icon_state]_uncharged"
-	if(light_on)
+	if(kc_light_on)
 		. += "[icon_state]_lit"
 
 /*
@@ -614,4 +614,3 @@
 /obj/effect/temp_visual/hierophant/wall/crusher
 	duration = 75
 */
-

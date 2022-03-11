@@ -17,7 +17,7 @@
 	var/disposals = FALSE
 
 
-// TODO - Its about time to make this NanoUI don't we think?
+// TODO: Its about time to make this NanoUI don't we think?
 /obj/machinery/pipedispenser/attack_hand(var/mob/user as mob)
 	if((. = ..()))
 		return

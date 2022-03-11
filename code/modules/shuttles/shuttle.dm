@@ -114,7 +114,7 @@
 		return
 
 	var/obj/effect/shuttle_landmark/start_location = current_location
-	// TODO - Figure out exactly when to play sounds.  Before warmup_time delay? Should there be a sleep for waiting for sounds? or no?
+	// TODO: Figure out exactly when to play sounds.  Before warmup_time delay? Should there be a sleep for waiting for sounds? or no?
 	moving_status = SHUTTLE_WARMUP
 	spawn(warmup_time*10)
 
@@ -142,7 +142,7 @@
 
 		make_sounds(HYPERSPACE_END)
 
-// TODO - Far Future - Would be great if this was driven by process too.
+// TODO: Far Future - Would be great if this was driven by process too.
 /datum/shuttle/proc/long_jump(var/obj/effect/shuttle_landmark/destination, var/obj/effect/shuttle_landmark/interim, var/travel_time)
 	//to_world("shuttle/long_jump: current_location=[current_location], destination=[destination], interim=[interim], travel_time=[travel_time]")
 	if(moving_status != SHUTTLE_IDLE)
@@ -152,7 +152,7 @@
 		return
 
 	var/obj/effect/shuttle_landmark/start_location = current_location
-	// TODO - Figure out exactly when to play sounds.  Before warmup_time delay? Should there be a sleep for waiting for sounds? or no?
+	// TODO: Figure out exactly when to play sounds.  Before warmup_time delay? Should there be a sleep for waiting for sounds? or no?
 	moving_status = SHUTTLE_WARMUP
 	spawn(warmup_time*10)
 
@@ -290,7 +290,7 @@
 			if(our_area.has_gravity != new_grav)
 				our_area.gravitychange(new_grav)
 
-	// TODO - Old code used to throw stuff out of the way instead of squashing.  Should we?
+	// TODO: Old code used to throw stuff out of the way instead of squashing.  Should we?
 
 	// Move, gib, or delete everything in our way!
 	for(var/turf/src_turf in turf_translation)
@@ -325,7 +325,7 @@
 					else
 						to_chat(M, "<font color='red'>The floor lurches beneath you!</font>")
 						shake_camera(M, 10, 1)
-						// TODO - tossing?
+						// TODO: tossing?
 						//M.visible_message("<span class='warning'>[M.name] is tossed around by the sudden acceleration!</span>")
 						//M.throw_at_random(FALSE, 4, 1)
 						if(istype(M, /mob/living/carbon))

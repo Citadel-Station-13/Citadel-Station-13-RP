@@ -129,6 +129,9 @@
 	var/global/list/status_overlays_environ
 	var/alarms_hidden = FALSE //If power alarms from this APC are visible on consoles
 
+	var/nightshift_lights = FALSE
+	var/last_nightshift_switch = 0
+
 /obj/machinery/power/apc/updateDialog()
 	if (stat & (BROKEN|MAINT))
 		return
@@ -564,9 +567,9 @@
 			if(C.amount >= 10 && !terminal && opened && has_electronics != APC_HAS_ELECTRONICS_SECURED)
 				var/obj/structure/cable/N = T.get_cable_node()
 				if(prob(50) && electrocute_mob(usr, N, N))
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(5, 1, src)
-					s.start()
+					var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+					sparks.set_up(5, 1, src)
+					sparks.start()
 					if(user.stunned)
 						return
 				C.use(10)
@@ -586,9 +589,9 @@
 		if(do_after(user, 50 * W.toolspeed))
 			if(terminal && opened && has_electronics != APC_HAS_ELECTRONICS_SECURED)
 				if(prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(5, 1, src)
-					s.start()
+					var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+					sparks.set_up(5, 1, src)
+					sparks.start()
 					if(usr.stunned)
 						return
 				new /obj/item/stack/cable_coil(loc,10)
@@ -816,6 +819,7 @@
 		"gridCheck" = grid_check,
 		"coverLocked" = coverlocked,
 		"siliconUser" = issilicon(user) || (isobserver(user) && is_admin(user)), //I add observer here so admins can have more control, even if it makes 'siliconUser' seem inaccurate.
+		"nightshiftLights" = nightshift_lights,
 
 		"powerChannels" = list(
 			list(
@@ -1022,6 +1026,13 @@
 		update_icon()
 		update()
 
+	else if(href_list["nightshift"])
+		if(last_nightshift_switch > world.time + 10 SECONDS) // don't spam...
+			to_chat(usr, "<span class='warning'>[src]'s night lighting circuit breaker is still cycling!</span>")
+			return 0
+		last_nightshift_switch = world.time
+		set_nightshift(!nightshift_lights)
+
 	else if (href_list["overload"])
 		if(istype(usr, /mob/living/silicon))
 			src.overload_lighting()
@@ -1054,9 +1065,9 @@
 			smoke.set_up(3, 0, src.loc)
 			smoke.attach(src)
 			smoke.start()
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(3, 1, src)
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(3, 1, src)
+			sparks.start()
 			visible_message("<span class='danger'>The [src.name] suddenly lets out a blast of smoke and some sparks!</span>", \
 							"<span class='danger'>You hear sizzling electronics.</span>")
 */
@@ -1431,6 +1442,15 @@
 		area = NA
 		name = "[area.name] APC"
 	update()
+
+/obj/machinery/power/apc/proc/set_nightshift(on, var/automated)
+	set waitfor = FALSE
+	if(automated && istype(area, /area/shuttle))
+		return
+	nightshift_lights = on
+	for(var/obj/machinery/light/L in area)
+		L.nightshift_mode(on)
+		CHECK_TICK
 
 #undef APC_UPDATE_ICON_COOLDOWN
 

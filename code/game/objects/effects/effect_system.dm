@@ -387,10 +387,11 @@ steam.start() -- spawns the effect
 /obj/effect/ion_trails
 	name = "ion trails"
 	icon_state = "ion_trails"
-	anchored = 1.0
+	anchored = TRUE
 
 /datum/effect_system/ion_trail_follow
 	var/turf/oldposition
+	var/processing = TRUE
 	var/on = TRUE
 
 /datum/effect_system/ion_trail_follow/Destroy()
@@ -402,12 +403,39 @@ steam.start() -- spawns the effect
 	oldposition = get_turf(atom)
 
 /datum/effect_system/ion_trail_follow/start()
-	if(on)
-		return
-	if(!ismovable(holder))
-		return
-	START_PROCESSING(SSfastprocess, src)
-	on = TRUE
+	if(!src.on)
+		src.on = 1
+		src.processing = 1
+	if(src.processing)
+		src.processing = 0
+		spawn(0)
+			var/turf/T
+			if(istype(holder, /atom/movable))
+				var/atom/movable/AM = holder
+				if(AM.locs && AM.locs.len)
+					T = get_turf(pick(AM.locs))
+				else
+					T = get_turf(AM)
+			else //when would this ever be attached a non-atom/movable?
+				T = get_turf(src.holder)
+			if(T != src.oldposition)
+				if(isturf(T))
+					var/obj/effect/ion_trails/I = new /obj/effect/ion_trails(src.oldposition)
+					src.oldposition = T
+					I.set_dir(src.holder.dir)
+					flick("ion_fade", I)
+					I.icon_state = "blank"
+					spawn( 20 )
+						qdel(I)
+				spawn(2)
+					if(src.on)
+						src.processing = 1
+						src.start()
+			else
+				spawn(2)
+					if(src.on)
+						src.processing = 1
+						src.start()
 
 /datum/effect_system/ion_trail_follow/process(wait)
 	var/turf/current = get_turf(holder)
@@ -489,9 +517,9 @@ steam.start() -- spawns the effect
 
 	start()
 		if (amount <= 2)
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
-			s.set_up(2, 1, location)
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+			sparks.set_up(2, 1, location)
+			sparks.start()
 
 			for(var/mob/M in viewers(5, location))
 				to_chat(M, "<span class='warning'>The solution violently explodes.</span>")

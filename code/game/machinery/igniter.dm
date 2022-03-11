@@ -96,9 +96,9 @@
 		return
 
 	flick("[base_state]-spark", src)
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(2, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(2, 1, src)
+	sparks.start()
 	last_spark = world.time
 	use_power(1000)
 	var/turf/location = src.loc

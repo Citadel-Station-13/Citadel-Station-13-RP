@@ -136,9 +136,9 @@
 
 		playsound(src.loc, 'sound/weapons/emitter.ogg', 25, 1)
 		if(prob(35))
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(5, 1, src)
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(5, 1, src)
+			sparks.start()
 
 		var/obj/item/projectile/beam/emitter/A = get_emitter_beam()
 		A.damage = round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER)

@@ -41,7 +41,7 @@
 	if(spray_blood && prob(5)) // Make a big mess
 		visible_message("Something flies out of [src]. It seems to be acting oddly.")
 		var/obj/effect/decal/cleanable/blood/gibs/gib = new /obj/effect/decal/cleanable/blood/gibs(loc)
-		// TODO - I have a feeling weakrefs will not work in ignore_list, verify this ~Leshana
+		// TODO: I have a feeling weakrefs will not work in ignore_list, verify this ~Leshana
 		var/datum/weakref/g = WEAKREF(gib)
 		ignore_list += g
 		spawn(600)
@@ -128,9 +128,9 @@
 	if(prob(50))
 		new /obj/item/robot_parts/l_arm(Tsec)
 
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(3, 1, src)
-	s.start()
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(3, 1, src)
+	sparks.start()
 	qdel(src)
 	return
 

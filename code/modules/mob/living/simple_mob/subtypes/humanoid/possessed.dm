@@ -112,9 +112,9 @@
 	/*Broken smoke spawn code. Above line is a bandaid.
 	var/datum/reagents/R = new/datum/reagents(30)
 	reagents.add_reagent("miasma", 30)
-	var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
-	S.attach(droploc)
-	S.set_up(R, 30, 0, droploc)
+	var/datum/effect_system/smoke_spread/chem/smoke = new /datum/effect_system/smoke_spread/chem
+	smoke.attach(droploc)
+	smoke.set_up(R, 30, 0, droploc)
 	spawn(0)
 		S.start()*/
 	..()

@@ -51,7 +51,7 @@ GLOBAL_LIST(topic_status_cache)
 		// dumb and hardcoded but I don't care~
 		config_legacy.server_name += " #[(world.port % 1000) / 100]"
 
-	// TODO - Figure out what this is. Can you assign to world.log?
+	// TODO: Figure out what this is. Can you assign to world.log?
 	// if(config && config_legacy.log_runtime)
 	// 	log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
@@ -364,7 +364,9 @@ GLOBAL_LIST(topic_status_cache)
 
 	features += config_legacy.abandon_allowed ? "respawn" : "no respawn"
 
-	features += config_legacy.persistence_enabled ? "persistence enabled" : "persistence disabled"
+	features += config.persistence_disabled ? "persistence disabled" : "persistence enabled"
+
+	features += config.persistence_ignore_mapload ? "persistence mapload disabled" : "persistence mapload enabled"
 
 	if (config && config_legacy.allow_vote_mode)
 		features += "vote"

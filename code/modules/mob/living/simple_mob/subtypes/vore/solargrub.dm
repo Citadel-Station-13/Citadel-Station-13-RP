@@ -142,9 +142,9 @@ GLOBAL_LIST_EMPTY(solargrubs)
 			L.Weaken(4)
 			L.Stun(4)
 			L.stuttering = max(L.stuttering, 4)
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(5, 1, L)
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+			sparks.set_up(5, 1, L)
+			sparks.start()
 			visible_message("<span class='danger'>The grub releases a powerful shock!</span>")
 		else
 			if(L.reagents)

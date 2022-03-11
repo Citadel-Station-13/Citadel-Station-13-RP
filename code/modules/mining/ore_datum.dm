@@ -23,6 +23,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 		"million" = 999
 		)
 	var/xarch_source_mineral = "iron"
+	var/reagent = "silicate"
 
 /datum/ore/New()
 	. = ..()
@@ -42,6 +43,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 		"million" = 704
 		)
 	xarch_source_mineral = "potassium"
+	reagent = "uranium"
 
 /datum/ore/hematite
 	name = "hematite"
@@ -52,6 +54,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	spread_chance = 30
 	ore = /obj/item/ore/iron
 	scan_icon = "mineral_common"
+	reagent = "iron"
 
 /datum/ore/coal
 	name = "carbon"
@@ -62,6 +65,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	spread_chance = 30
 	ore = /obj/item/ore/coal
 	scan_icon = "mineral_common"
+	reagent = "carbon"
 
 /datum/ore/glass
 	name = "sand"
@@ -86,6 +90,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 		"billion_lower" = 10
 		)
 	xarch_source_mineral = "phoron"
+	reagent = "phoron"
 
 /datum/ore/silver
 	name = "silver"
@@ -95,6 +100,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	spread_chance = 18
 	ore = /obj/item/ore/silver
 	scan_icon = "mineral_uncommon"
+	reagent = "silver"
 
 /datum/ore/gold
 	smelts_to = "gold"
@@ -110,6 +116,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 		"billion" = 4,
 		"billion_lower" = 3
 		)
+	reagent = "gold"
 
 /datum/ore/diamond
 	name = "diamond"
@@ -121,6 +128,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	ore = /obj/item/ore/diamond
 	scan_icon = "mineral_rare"
 	xarch_source_mineral = "nitrogen"
+	reagent = "carbon"
 
 /datum/ore/platinum
 	name = "platinum"
@@ -132,6 +140,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	spread_chance = 15
 	ore = /obj/item/ore/osmium
 	scan_icon = "mineral_rare"
+	reagent = "platinum"
 
 /datum/ore/hydrogen
 	name = "mhydrogen"
@@ -139,6 +148,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	smelts_to = "tritium"
 	compresses_to = "mhydrogen"
 	scan_icon = "mineral_rare"
+	reagent = "hydrogen"
 
 /datum/ore/verdantium
 	name = MAT_VERDANTIUM
@@ -152,6 +162,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 		"billion" = 13,
 		"billion_lower" = 10
 		)
+	reagent = "calciumcarbonate"
 
 /datum/ore/marble
 	name = MAT_MARBLE
@@ -170,6 +181,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	spread_chance = 20
 	ore = /obj/item/ore/lead
 	scan_icon = "mineral_rare"
+	reagent = "lead"
 
 /datum/ore/vaudium
 	name = MAT_VAUDIUM

@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(supply)
 			"uranium" = 1	// CIT CHANGE: Uranium is now worth 1 cargo point per sheet
 		)
 
-// TODO - Refactor to use the Supply Subsystem (SSsupply)
+// TODO: Refactor to use the Supply Subsystem (SSsupply)
 
 // Supply packs are in /code/datums/supplypacks
 // Computers are in /code/game/machinery/computer/supply.dm

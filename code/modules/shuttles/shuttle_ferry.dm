@@ -2,7 +2,7 @@
 	var/location  = FERRY_LOCATION_STATION	// 0 = at area_station,  1 = at area_offsite
 	var/direction = FERRY_GOING_TO_STATION	// 0 = going to station, 1 = going to offsite.
 
-	var/always_process = FALSE	// TODO -why should this exist?
+	var/always_process = FALSE	// TODO:why should this exist?
 
 	var/obj/effect/shuttle_landmark/landmark_station	// This variable is type-abused initially: specify the landmark_tag, not the actual landmark.
 	var/obj/effect/shuttle_landmark/landmark_offsite	// This variable is type-abused initially: specify the landmark_tag, not the actual landmark.

@@ -367,9 +367,9 @@
 				take_damage(300)
 		if(3.0)
 			if(prob(80))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(2, 1, src)
-				s.start()
+				var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+				sparks.set_up(2, 1, src)
+				sparks.start()
 			else
 				take_damage(150)
 	return

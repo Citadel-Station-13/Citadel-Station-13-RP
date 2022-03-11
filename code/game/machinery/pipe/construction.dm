@@ -199,7 +199,7 @@ Buildable meters
 
 	var/obj/machinery/atmospherics/A = new pipe_type(loc)
 	build_pipe(A)
-	// TODO - Evaluate and remove the "need at least one thing to connect to" thing ~Leshana
+	// TODO: Evaluate and remove the "need at least one thing to connect to" thing ~Leshana
 	// With how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment.
 	if (QDELETED(A))
 		to_chat(user, "<span class='warning'>There's nothing to connect this pipe section to!</span>")
@@ -230,7 +230,7 @@ Buildable meters
 	. = ..()
 
 // Lookup the initialize_directions for a given atmos machinery instance facing dir.
-// TODO - Right now this determines the answer by instantiating an instance and checking!
+// TODO: Right now this determines the answer by instantiating an instance and checking!
 // There has to be a better way... ~Leshana
 /datum/controller/subsystem/machines/proc/get_init_dirs(type, dir)
 	var/static/list/pipe_init_dirs_cache = list()

@@ -24,9 +24,9 @@
 		var/obj/effect/decal/cleanable/blood/gibs/gib = null
 
 		if(sparks)
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
-			s.set_up(2, 1, get_turf(location)) // Not sure if it's safe to pass an arbitrary object to set_up, todo
-			s.start()
+			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+			sparks.set_up(2, 1, get_turf(location)) // Not sure if it's safe to pass an arbitrary object to set_up, todo
+			sparks.start()
 
 		for(var/i = 1, i<= gibtypes.len, i++)
 			if(gibamounts[i])

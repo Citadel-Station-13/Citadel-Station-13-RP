@@ -36,7 +36,7 @@
 /datum/event/electrical_storm/tick()
 	..()
 	// See if shields can stop it first (It would be nice to port baystation's cooler shield gens perhaps)
-	// TODO - We need a better shield generator system to handle this properly.
+	// TODO: We need a better shield generator system to handle this properly.
 	if(!valid_apcs.len)
 		log_debug("No valid APCs found for electrical storm event ship=[victim]!")
 		return

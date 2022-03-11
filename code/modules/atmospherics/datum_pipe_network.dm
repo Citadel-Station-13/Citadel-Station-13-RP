@@ -1,4 +1,4 @@
-var/global/list/datum/pipe_network/pipe_networks = list()	// TODO - Move into SSmachines
+var/global/list/datum/pipe_network/pipe_networks = list()	// TODO: Move into SSmachines
 
 /datum/pipe_network
 	var/list/datum/gas_mixture/gases = list() //All of the gas_mixtures continuously connected in this network

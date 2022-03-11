@@ -105,9 +105,9 @@
 // This also causes the SMES to quickly discharge, and has small chance of breaking lights connected to APCs in the powernet.
 /obj/machinery/power/smes/buildable/process(delta_time)
 	if(!grounding && (Percentage() > 5))
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(5, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(5, 1, src)
+		sparks.start()
 		charge -= (output_level_max * SMESRATE)
 		if(prob(1)) // Small chance of overload occuring since grounding is disabled.
 			apcs_overload(0,10)
@@ -189,7 +189,7 @@
 
 
 	// Preparations
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 	// Check if user has protected gloves.
 	var/user_protected = 0
 	if(h_user.gloves)
@@ -205,7 +205,7 @@
 		if(0 to 15)
 			// Small overcharge
 			// Sparks, Weak shock
-			s.set_up(2, 1, src)
+			sparks.set_up(2, 1, src)
 			if(user_protected && prob(80))
 				to_chat(h_user, "A small electrical arc almost burns your hand. Luckily you had your gloves on!")
 			else
@@ -216,7 +216,7 @@
 		if(16 to 35)
 			// Medium overcharge
 			// Sparks, Medium shock, Weak EMP
-			s.set_up(4,1,src)
+			sparks.set_up(4,1,src)
 			if(user_protected && prob(25))
 				to_chat(h_user, "A medium electrical arc sparks and almost burns your hand. Luckily you had your gloves on!")
 			else
@@ -229,7 +229,7 @@
 		if(36 to 60)
 			// Strong overcharge
 			// Sparks, Strong shock, Strong EMP, 10% light overload. 1% APC failure
-			s.set_up(7,1,src)
+			sparks.set_up(7,1,src)
 			if(user_protected)
 				to_chat(h_user, "A strong electrical arc sparks between you and [src], ignoring your gloves and burning your hand!")
 				h_user.adjustFireLossByPart(rand(25,60), used_hand)
@@ -245,7 +245,7 @@
 		if(61 to INFINITY)
 			// Massive overcharge
 			// Sparks, Near - instantkill shock, Strong EMP, 25% light overload, 5% APC failure. 50% of SMES explosion. This is bad.
-			s.set_up(10,1,src)
+			sparks.set_up(10,1,src)
 			to_chat(h_user, "A massive electrical arc sparks between you and [src]. The last thing you can think about is \"Oh shit...\"")
 			// Remember, we have few gigajoules of electricity here.. Turn them into crispy toast.
 			h_user.electrocute_act(rand(150,195), src, def_zone = BP_TORSO)
@@ -272,7 +272,7 @@
 					// Not sure if this is necessary, but just in case the SMES *somehow* survived..
 					qdel(src)
 
-	s.start()
+	sparks.start()
 	charge = 0
 
 
@@ -372,31 +372,3 @@
 				recalc_coils()
 			else
 				to_chat(user, "<font color='red'>You can't insert more coils into this SMES unit!</font>")
-
-// Proc: toggle_input()
-// Parameters: None
-// Description: Switches the input on/off depending on previous setting
-/obj/machinery/power/smes/buildable/proc/toggle_input()
-	inputting(!input_attempt)
-	update_icon()
-
-// Proc: toggle_output()
-// Parameters: None
-// Description: Switches the output on/off depending on previous setting
-/obj/machinery/power/smes/buildable/proc/toggle_output()
-	outputting(!output_attempt)
-	update_icon()
-
-// Proc: set_input()
-// Parameters: 1 (new_input - New input value in Watts)
-// Description: Sets input setting on this SMES. Trims it if limits are exceeded.
-/obj/machinery/power/smes/buildable/proc/set_input(var/new_input = 0)
-	input_level = between(0, new_input, input_level_max)
-	update_icon()
-
-// Proc: set_output()
-// Parameters: 1 (new_output - New output value in Watts)
-// Description: Sets output setting on this SMES. Trims it if limits are exceeded.
-/obj/machinery/power/smes/buildable/proc/set_output(var/new_output = 0)
-	output_level = between(0, new_output, output_level_max)
-	update_icon()

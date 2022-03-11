@@ -74,9 +74,9 @@
 /turf/simulated/floor/maglev/proc/track_zap(var/mob/living/user)
 	if (!istype(user)) return
 	if (electrocute_mob(user, shock_area, src))
-		var/datum/effect_system/spark_spread/s = new
-		s.set_up(5, 1, src)
-		s.start()
+		var/datum/effect_system/spark_spread/sparks = new
+		sparks.set_up(5, 1, src)
+		sparks.start()
 
 
 //////////////////////////////////////////////////////////////////

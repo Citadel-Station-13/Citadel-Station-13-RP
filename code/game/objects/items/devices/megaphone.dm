@@ -154,9 +154,9 @@
 			else
 				user.audible_message("<span class='critical'>*BZZZZzzzzzt*</span>")
 				if(prob(40) && insults <= 0)
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(2, 1, get_turf(user))
-					s.start()
+					var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+					sparks.set_up(2, 1, get_turf(user))
+					sparks.start()
 					user.visible_message("<span class='warning'>\The [src] sparks violently!</span>")
 					spawn(30)
 						explosion(get_turf(src), -1, -1, 1, 3, adminlog = 1)
