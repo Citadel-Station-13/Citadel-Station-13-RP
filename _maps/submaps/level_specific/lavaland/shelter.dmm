@@ -2,16 +2,9 @@
 "a" = (
 /turf/template_noop,
 /area/template_noop)
-"b" = (
-/obj/machinery/door/blast/regular,
-/turf/simulated/floor/plating,
-/area/lavaland/idleruins)
-"d" = (
-/turf/simulated/floor/wood,
-/area/lavaland/idleruins)
 "e" = (
 /obj/effect/decal/remains/human,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "i" = (
 /turf/simulated/wall,
@@ -21,15 +14,15 @@
 /area/lavaland/idleruins)
 "p" = (
 /obj/effect/gibspawner/robot,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "q" = (
 /obj/machinery/door/blast/regular,
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "r" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "x" = (
 /obj/structure/boulder,
@@ -37,28 +30,28 @@
 /area/template_noop)
 "y" = (
 /obj/structure/boulder,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "z" = (
 /obj/structure/girder/displaced,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "B" = (
 /obj/structure/bookcase,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "C" = (
 /obj/structure/boulder,
 /obj/machinery/door/blast/regular/open,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
 "E" = (
 /obj/item/material/twohanded/spear/plasteel,
 /obj/effect/decal/remains/lizard,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "O" = (
-/turf/simulated/floor/wood/broken,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "P" = (
 /turf/simulated/floor/outdoors/lavaland,
@@ -66,19 +59,11 @@
 "R" = (
 /obj/structure/boulder,
 /obj/structure/table,
-/turf/simulated/floor/wood/broken,
-/area/lavaland/idleruins)
-"U" = (
-/obj/structure/table/woodentable,
-/obj/item/paper/crumpled/bloody{
-	info = "The rumbling keeps getting louder. Ariel left to get supplies, even though the drones are still out of control. If she takes too much longer I'll have to seal the doors. It feels like the roof is going to come down.";
-	name = "journal scrap"
-	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "W" = (
 /obj/structure/bed/double,
-/turf/simulated/floor/wood/broken,
+/turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "X" = (
 /turf/simulated/floor/outdoors/lavaland,
@@ -111,10 +96,10 @@ a
 (3,1,1) = {"
 a
 n
-d
-d
+O
+O
 W
-d
+O
 B
 n
 a
@@ -123,10 +108,10 @@ a
 (4,1,1) = {"
 a
 n
-U
-d
-d
-d
+r
+O
+O
+O
 B
 n
 a
@@ -136,7 +121,7 @@ a
 a
 n
 R
-d
+O
 p
 O
 B
@@ -148,11 +133,11 @@ a
 a
 n
 r
-d
-d
-d
-d
-b
+O
+O
+O
+O
+q
 a
 a
 "}
@@ -160,10 +145,10 @@ a
 a
 n
 E
-d
-d
-d
-d
+O
+O
+O
+O
 C
 a
 a
@@ -174,7 +159,7 @@ n
 e
 O
 y
-d
+O
 X
 q
 P

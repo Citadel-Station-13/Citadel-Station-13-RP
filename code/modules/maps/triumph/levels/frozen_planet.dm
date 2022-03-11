@@ -31,3 +31,10 @@ FROZEN_TURF_CREATE(/turf/simulated/mineral)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/floor)
 FROZEN_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
+
+//Exterior Turfs for weather effects.
+/turf/simulated/floor/frozen_world/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/wood/frozen_world/outdoors
+	outdoors = TRUE

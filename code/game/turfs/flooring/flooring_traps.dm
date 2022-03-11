@@ -157,6 +157,31 @@
 /turf/simulated/floor/trap/delayed/sifwood
 	icon_state = "sifwood"
 
+//Lavaland Subtypes
+/turf/simulated/floor/trap/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/plating/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/steel/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/wood/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/delayed/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/delayed/steel/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/delayed/plating/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
+/turf/simulated/floor/trap/delayed/wood/lavaland
+	initial_gas_mix = ATMOSPHERE_ID_LAVALAND
+
 
 /*
 

@@ -90,14 +90,14 @@ var/global/list/latejoin_trade = list()
 
 /obj/effect/overmap/visitable/ship/landable/trade
 	name = "Beruang Trade Ship"
-	desc = " "
+	desc = "You know our motto: 'We deliver!'"
 	vessel_mass = 4000
 	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Beruang Shuttle"
+	shuttle = "Beruang Trade Ship"
 
 /obj/machinery/computer/shuttle_control/explore/trade
 	name = "short jump console"
-	shuttle_tag = "Beruang Shuttle"
+	shuttle_tag = "Beruang Trade Ship"
 
 
 /area/shuttle/trade_ship

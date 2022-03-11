@@ -71,6 +71,9 @@ var/list/all_maps = list()
 	var/list/mining_station_z = list()
 	var/list/mining_outpost_z = list()
 
+	//Lavaland Stuff
+	var/list/lavaland_levels = list()
+
 	var/station_name  = "BAD Station"
 	var/station_short = "Baddy"
 	var/dock_name	  = "THE PirateBay"

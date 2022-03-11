@@ -661,9 +661,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/power/smes/buildable/point_of_interest{
-	lastcharge = 0
-	},
+/obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/old_tile/blue/frozen_world{
 	color = "#8ba7ad";
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
@@ -731,7 +729,7 @@
 	},
 /area/frozen_planet/facility)
 "Dw" = (
-/turf/simulated/floor/frozen_world,
+/turf/simulated/floor/frozen_world/outdoors,
 /area/frozen_planet/outside)
 "EH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -763,7 +761,7 @@
 /turf/simulated/floor/frozen_world,
 /area/frozen_planet/facility)
 "Go" = (
-/turf/simulated/floor/wood/frozen_world,
+/turf/simulated/floor/wood/frozen_world/outdoors,
 /area/frozen_planet/outside)
 "Gw" = (
 /obj/structure/cable{
@@ -1000,7 +998,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "frozen"
 	},
-/turf/simulated/floor/frozen_world,
+/turf/simulated/floor/frozen_world/outdoors,
 /area/frozen_planet/outside)
 "Rn" = (
 /obj/machinery/artifact_harvester,

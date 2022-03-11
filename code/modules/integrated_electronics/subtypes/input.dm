@@ -576,18 +576,20 @@
 		my_langs |= newlang
 
 /obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
-	var/translated = FALSE
+	var/signlang = FALSE
 	if(M && msg)
 		if(speaking)
 			if(!((speaking.flags & NONVERBAL) || (speaking.flags & SIGNLANG)))
-				translated = TRUE
+				signlang = FALSE
 				msg = speaking.scramble(msg, my_langs)
+			else
+				signlang = TRUE
 		set_pin_data(IC_OUTPUT, 1, M.GetVoice())
 		set_pin_data(IC_OUTPUT, 2, msg)
 
 	push_data()
 	activate_pin(1)
-	if(translated)
+	if(signlang)
 		activate_pin(2)
 
 /obj/item/integrated_circuit/input/microphone/sign/hear_signlang(text, verb, datum/language/speaking, mob/M as mob)
