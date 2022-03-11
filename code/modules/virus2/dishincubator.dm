@@ -1,7 +1,8 @@
 /obj/machinery/disease2/incubator/
 	name = "pathogenic incubator"
-	density = 1
-	anchored = 1
+	desc = "Encourages the growth of diseases. This model comes with a dispenser system and a small radiation generator."
+	density = TRUE
+	anchored = TRUE
 	icon = 'icons/obj/virology.dmi'
 	icon_state = "incubator"
 	var/obj/item/virusdish/dish
@@ -50,13 +51,19 @@
 		src.attack_hand(user)
 
 /obj/machinery/disease2/incubator/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN)) return
+	if(stat & (NOPOWER|BROKEN))
+		return
 	ui_interact(user)
 
-/obj/machinery/disease2/incubator/ui_interact(mob/user, datum/tgui/ui = null)
-	user.set_machine(src)
+/obj/machinery/disease2/incubator/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DishIncubator", name)
+		ui.set_autoupdate(FALSE)
+		ui.open()
 
-	var/data[0]
+/obj/machinery/disease2/incubator/ui_data(mob/user)
+	var/list/data = list()
 	data["chemicals_inserted"] = !!beaker
 	data["dish_inserted"] = !!dish
 	data["food_supply"] = foodsupply
@@ -73,22 +80,19 @@
 	data["can_breed_virus"] = null
 	data["blood_already_infected"] = null
 
-	if (beaker)
+	if(beaker)
 		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in beaker.reagents.reagent_list
 		data["can_breed_virus"] = dish && dish.virus2 && B
 
-		if (B)
-			if (!B.data["virus2"])
+		if(B)
+			if(!B.data["virus2"])
 				B.data["virus2"] = list()
 
 			var/list/virus = B.data["virus2"]
 			for (var/ID in virus)
 				data["blood_already_infected"] = virus[ID]
 
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "dish_incubator")// 400, 600
-		ui.open()
+	return data
 
 /obj/machinery/disease2/incubator/process(delta_time)
 	if(dish && on && dish.virus2)
@@ -135,7 +139,7 @@
 				foodsupply += 10
 			SStgui.update_uis(src)
 
-		if (locate(/datum/reagent/toxin) in beaker.reagents.reagent_list && toxins < 100)
+		if(locate(/datum/reagent/toxin) in beaker.reagents.reagent_list && toxins < 100)
 			for(var/datum/reagent/toxin/T in beaker.reagents.reagent_list)
 				toxins += max(T.strength,1)
 				beaker.reagents.remove_reagent(T.id,1)
@@ -144,62 +148,54 @@
 					break
 			SStgui.update_uis(src)
 
-/obj/machinery/disease2/incubator/Topic(href, href_list)
-	if (..()) return 1
+/obj/machinery/disease2/incubator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(..())
+		return
 
 	var/mob/user = usr
-	var/datum/tgui/ui = SStgui.get_open_ui(user, src, "main")
+	add_fingerprint(user)
+	switch(action)
+		if("ejectchem")
+			if(beaker)
+				beaker.loc = src.loc
+				beaker = null
+			. = TRUE
 
-	src.add_fingerprint(user)
+		if("power")
+			if(dish)
+				on = !on
+				icon_state = on ? "incubator_on" : "incubator"
+			. = TRUE
 
-	if (href_list["close"])
-		user.unset_machine()
-		ui.close()
-		return 0
+		if("ejectdish")
+			if(dish)
+				dish.loc = src.loc
+				dish = null
+			. = TRUE
 
-	if (href_list["ejectchem"])
-		if(beaker)
-			beaker.loc = src.loc
-			beaker = null
-		return 1
+		if("rad")
+			radiation = min(100, radiation + 10)
+			. = TRUE
 
-	if (href_list["power"])
-		if (dish)
-			on = !on
-			icon_state = on ? "incubator_on" : "incubator"
-		return 1
+		if("flush")
+			radiation = 0
+			toxins = 0
+			foodsupply = 0
+			. = TRUE
 
-	if (href_list["ejectdish"])
-		if(dish)
-			dish.loc = src.loc
-			dish = null
-		return 1
+		if("virus")
+			if(!dish)
+				return TRUE
 
-	if (href_list["rad"])
-		radiation = min(100, radiation + 10)
-		return 1
+			var/datum/reagent/blood/B = locate(/datum/reagent/blood) in beaker.reagents.reagent_list
+			if(!B)
+				return TRUE
 
-	if (href_list["flush"])
-		radiation = 0
-		toxins = 0
-		foodsupply = 0
-		return 1
+			if(!B.data["virus2"])
+				B.data["virus2"] = list()
 
-	if(href_list["virus"])
-		if (!dish)
-			return 1
+			var/list/virus = list("[dish.virus2.uniqueID]" = dish.virus2.getcopy())
+			B.data["virus2"] += virus
 
-		var/datum/reagent/blood/B = locate(/datum/reagent/blood) in beaker.reagents.reagent_list
-		if (!B)
-			return 1
-
-		if (!B.data["virus2"])
-			B.data["virus2"] = list()
-
-		var/list/virus = list("[dish.virus2.uniqueID]" = dish.virus2.getcopy())
-		B.data["virus2"] += virus
-
-		ping("\The [src] pings, \"Injection complete.\"")
-		return 1
-
-	return 0
+			ping("\The [src] pings, \"Injection complete.\"")
+			. = TRUE
