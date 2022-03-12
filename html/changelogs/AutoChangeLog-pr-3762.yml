@@ -1,0 +1,4 @@
+author: "TheLordME"
+delete-after: True
+changes: 
+  - bugfix: "Fixed solar space suits not being able to be refitted"
