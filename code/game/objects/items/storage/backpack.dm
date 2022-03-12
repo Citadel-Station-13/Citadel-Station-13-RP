@@ -394,6 +394,106 @@
 	icon_state = "civilian_rig"
 	item_state_slots = list(slot_r_hand_str = "backpack", slot_l_hand_str = "backpack")
 
+/* //Icon State version.
+/obj/item/storage/backpack/rig/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/storage/backpack/rig/process(mob/living/M)
+	if(M.health <= M.maxHealth)
+		update_icon()
+
+/obj/item/storage/backpack/rig/update_icon(mob/living/M)
+	if(M.stat > 1) // Dead
+		icon_state = "[initial(icon_state)]_0"
+		item_state = "[initial(icon_state)]_0"
+		M.update_inv_back()
+	else if(round((M.health/M.getMaxHealth())*100) <= 25)
+		icon_state = "[initial(icon_state)]_25"
+		item_state = "[initial(icon_state)]_25"
+		M.update_inv_back()
+	else if(round((M.health/M.getMaxHealth())*100) <= 50)
+		icon_state = "[initial(icon_state)]_50"
+		item_state = "[initial(icon_state)]_50"
+		M.update_inv_back()
+	else if(round((M.health/M.getMaxHealth())*100) <= 75)
+		icon_state = "[initial(icon_state)]_75"
+		item_state = "[initial(icon_state)]_75"
+		M.update_inv_back()
+	else
+		icon_state = "[initial(icon_state)]_100"
+		item_state = "[initial(icon_state)]_100"
+		M.update_inv_back()
+*/
+
+/* //Overlay Version
+
+	var/overlay_100 = "civilian_rig_100"
+	var/overlay_75 = "civilian_rig_75"
+	var/overlay_50 = "civilian_rig_50"
+	var/overlay_25 = "civilian_rig_25"
+	var/last_overlay_state = null // Used to optimize update_icon() calls.
+
+//[M.stat > 1 ? "dead" : "[round((M.health/M.getMaxHealth())*100) ]% healthy"]
+
+/obj/item/storage/backpack/rig/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/storage/backpack/rig/process(mob/living/M)
+	M.getMaxHealth
+	if(M.health < M.maxHealth)
+		update_icon()
+
+#define OVERLAY_100	4
+#define OVERLAY_75	3
+#define OVERLAY_50	2
+#define OVERLAY_25	1
+#define OVERLAY_0	0
+
+/obj/item/storage/backpack/rig/update_icon(mob/living/M)
+	var/new_overlay = null // The overlay that is needed.
+	// If it's different than the current overlay, then it'll get changed.
+	// Otherwise nothing happens, to save on CPU.
+
+	if(M.health < 0.01) // Dead
+		new_overlay = OVERLAY_0
+		if(last_overlay_state != new_overlay)
+			cut_overlays()
+
+	else if(M.health < 26)
+		new_overlay = OVERLAY_25
+		if(last_overlay_state != new_overlay)
+			cut_overlay(overlay_50)
+			add_overlay(overlay_25)
+
+	else if(M.health < 51)
+		new_overlay = OVERLAY_50
+		if(last_overlay_state != new_overlay)
+			cut_overlay(overlay_75)
+			add_overlay(overlay_50)
+
+	else if(M.health < 76)
+		new_overlay = OVERLAY_75
+		if(last_overlay_state != new_overlay)
+			cut_overlay(overlay_100)
+			add_overlay(overlay_75)
+
+	else
+		new_overlay = OVERLAY_100
+		if(last_overlay_state != new_overlay)
+			cut_overlay(overlay_75)
+			add_overlay(overlay_100)
+
+	last_overlay_state = new_overlay
+
+#undef OVERLAY_100
+#undef OVERLAY_75
+#undef OVERLAY_50
+#undef OVERLAY_25
+#undef OVERLAY_0
+*/
+
 //Purses
 /obj/item/storage/backpack/purse
 	name = "purse"
