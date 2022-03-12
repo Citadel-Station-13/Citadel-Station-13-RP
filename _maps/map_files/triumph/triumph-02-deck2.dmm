@@ -842,8 +842,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/table/gamblingtable,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "cB" = (
 /obj/machinery/camera/network/outside{
@@ -4803,6 +4802,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
+"no" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_shop)
 "np" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -6133,6 +6144,9 @@
 "ra" = (
 /turf/simulated/wall,
 /area/vacant/vacant_office)
+"rb" = (
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "rd" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
@@ -7657,14 +7671,10 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/effect/floor_decal/corner/red{
+	dir = 9
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/obj/structure/table/gamblingtable,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "vc" = (
 /obj/structure/cable/green{
@@ -11085,6 +11095,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/kitchen)
+"Fj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_shop)
 "Fk" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 2
@@ -11303,8 +11325,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "FQ" = (
-/obj/structure/table/gamblingtable,
-/turf/simulated/floor/wood,
+/obj/effect/floor_decal/corner/red{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "FR" = (
 /obj/structure/cable/yellow{
@@ -11562,14 +11586,12 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/effect/floor_decal/corner/red,
+/obj/effect/floor_decal/corner/red{
+	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/obj/structure/table/gamblingtable,
-/turf/simulated/floor/wood,
+/obj/structure/musician/piano,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "GD" = (
 /obj/structure/table/woodentable,
@@ -11814,6 +11836,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
+"Hu" = (
+/obj/effect/floor_decal/corner/red,
+/obj/structure/table/bench/padded,
+/turf/simulated/floor/tiled,
+/area/vacant/vacant_shop)
 "Hv" = (
 /obj/structure/cable/green{
 	d1 = 2;
@@ -12108,6 +12135,9 @@
 /area/maintenance/dormitory)
 "In" = (
 /obj/machinery/camera/network/civilian,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "Io" = (
@@ -12927,6 +12957,7 @@
 	pixel_y = 22
 	},
 /obj/structure/table/fancyblack,
+/obj/structure/spirit_board/prop,
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "KO" = (
@@ -14216,6 +14247,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/janitor)
+"OL" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/vacant/vacant_shop)
 "OM" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 4
@@ -14461,15 +14501,13 @@
 /turf/simulated/floor/wood,
 /area/vacant/vacant_shop)
 "Pz" = (
-/obj/machinery/door/window/eastright{
-	dir = 8;
-	name = "Stage"
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/floor_decal/corner/red{
 	dir = 8
 	},
-/obj/structure/table/gamblingtable,
-/turf/simulated/floor/wood,
+/obj/effect/floor_decal/corner/red{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "PB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17722,14 +17760,10 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/effect/floor_decal/corner/red{
+	dir = 9
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/obj/structure/table/gamblingtable,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/tiled,
 /area/vacant/vacant_shop)
 "Ym" = (
 /obj/machinery/firealarm{
@@ -32354,9 +32388,9 @@ Rj
 aC
 mQ
 In
-cN
-DT
-KF
+no
+Fj
+OL
 mQ
 nM
 FC
@@ -32638,9 +32672,9 @@ Rj
 aC
 mQ
 FQ
-FQ
+rb
 cz
-FQ
+Hu
 mQ
 lf
 FC
