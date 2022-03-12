@@ -62,7 +62,7 @@ export const Cleanbot = (props, context) => {
                   {vocal ? "On" : "Off"}
                 </Button>
               </LabeledList.Item>
-              {/* VOREStation Edit: Not really used on Vore.*/}
+              {/* Not really used on Citadel.*/}
               {/* <LabeledList.Item label="Patrol">
                 <Button
                   fluid
@@ -72,7 +72,7 @@ export const Cleanbot = (props, context) => {
                   {patrol ? "On" : "Off"}
                 </Button>
               </LabeledList.Item> */}
-              {/* VOREStation Edit End */}
+              {/* Edit End */}
             </LabeledList>
           </Section>
         ) || null}

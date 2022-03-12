@@ -141,7 +141,7 @@ const SecurityRecordsView = (_properties, context) => {
           content="Delete Record (All)"
           color="bad"
           onClick={() => act('del_r_2')}
-        />
+        />        
         <Button
           icon={printing ? 'spinner' : 'print'}
           disabled={printing}
@@ -318,3 +318,4 @@ const SecurityRecordsNavigation = (_properties, context) => {
     </Tabs>
   );
 };
+

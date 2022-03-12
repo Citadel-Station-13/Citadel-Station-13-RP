@@ -45,6 +45,15 @@ $scrollbar-color-multiplier: 1 !default;
 }
 
 .Layout__content--scrollable {
-  overflow-y: scroll;
-  margin-bottom: 0;
+  overflow-y: auto; // Use auto, not scroll.
+}
+
+.Layout__content--flexRow {
+  display: flex;
+  flex-flow: row;
+}
+
+.Layout__content--flexColumn {
+  display: flex;
+  flex-flow: column;
 }

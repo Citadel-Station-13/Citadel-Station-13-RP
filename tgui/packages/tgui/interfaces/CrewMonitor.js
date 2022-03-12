@@ -27,7 +27,7 @@ const getStatColor = cm => {
 
 export const CrewMonitor = () => {
   return (
-    <Window
+    <Window 
       width={800}
       height={600}
       resizable>
@@ -141,12 +141,12 @@ export const CrewMonitorContent = (props, context) => {
           onClick={() => setTabIndex(0)}>
           <Icon name="table" /> Data View
         </Tabs.Tab>
-        {/* <Tabs.Tab
+        <Tabs.Tab
           key="MapView"
           selected={1 === tabIndex}
           onClick={() => setTabIndex(1)}>
           <Icon name="map-marked-alt" /> Map View
-        </Tabs.Tab> */}
+        </Tabs.Tab>
       </Tabs>
       <Box m={2}>
         {body}
@@ -161,7 +161,7 @@ const CrewMonitorMapView = (props, context) => {
   return (
     <Box height="526px" mb="0.5rem" overflow="hidden">
       <NanoMap onZoom={v => setZoom(v)}>
-        {data.crewmembers.filter(x =>
+        {data.crewmembers.filter(x => 
           (x.sensor_type === 3 && ~~x.realZ === ~~config.mapZLevel)
         ).map(cm => (
           <NanoMap.Marker

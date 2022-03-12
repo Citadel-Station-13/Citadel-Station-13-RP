@@ -34,10 +34,13 @@ export interface BoxProps {
   opacity?: number;
   textAlign?: string | BooleanLike;
   verticalAlign?: string | BooleanLike;
+  textTransform?: string | BooleanLike;
+  unselectable?: string | BooleanLike;
   inline?: BooleanLike;
   bold?: BooleanLike;
   italic?: BooleanLike;
   nowrap?: BooleanLike;
+  preserveWhitespace?: BooleanLike;
   m?: string | BooleanLike;
   mx?: string | BooleanLike;
   my?: string | BooleanLike;
@@ -55,6 +58,18 @@ export interface BoxProps {
   color?: string | BooleanLike;
   textColor?: string | BooleanLike;
   backgroundColor?: string | BooleanLike;
+  // Flex props
+  order?: string | BooleanLike,
+  flexDirection?: string | BooleanLike,
+  flexGrow?: string | BooleanLike,
+  flexShrink?: string | BooleanLike,
+  flexWrap?: string | BooleanLike,
+  flexFlow?: string | BooleanLike,
+  flexBasis?: string | BooleanLike,
+  flex?: string | BooleanLike,
+  alignItems?: string | BooleanLike,
+  justifyContent?: string | BooleanLike,
+  alignSelf?: string | BooleanLike,
   fillPositionedParent?: boolean;
 }
 
@@ -131,10 +146,7 @@ const mapColorPropTo = attrName => (style, value) => {
 
 const styleMapperByPropName = {
   // Direct mapping
-  display: mapRawPropTo('display'),
   position: mapRawPropTo('position'),
-  float: mapRawPropTo('float'),
-  clear: mapRawPropTo('clear'),
   overflow: mapRawPropTo('overflow'),
   overflowX: mapRawPropTo('overflow-x'),
   overflowY: mapRawPropTo('overflow-y'),
@@ -162,12 +174,13 @@ const styleMapperByPropName = {
   textAlign: mapRawPropTo('text-align'),
   verticalAlign: mapRawPropTo('vertical-align'),
   textTransform: mapRawPropTo('text-transform'),
-  wordWrap: mapRawPropTo('word-wrap'),
+  unselectable: mapRawPropTo('unselectable'),
   // Boolean props
   inline: mapBooleanPropTo('display', 'inline-block'),
   bold: mapBooleanPropTo('font-weight', 'bold'),
   italic: mapBooleanPropTo('font-style', 'italic'),
   nowrap: mapBooleanPropTo('white-space', 'nowrap'),
+  preserveWhitespace: mapBooleanPropTo('white-space', 'pre-wrap'),
   // Margins
   m: mapDirectionalUnitPropTo('margin', halfUnit, [
     'top', 'bottom', 'left', 'right',
@@ -227,9 +240,6 @@ const styleMapperByPropName = {
 export const computeBoxProps = (props: BoxProps) => {
   const computedProps: HTMLAttributes<any> = {};
   const computedStyles = {};
-  if (props.double) {
-    computedStyles["transform"] = "scale(2);";
-  }
   // Compute props
   for (let propName of Object.keys(props)) {
     if (propName === 'style') {

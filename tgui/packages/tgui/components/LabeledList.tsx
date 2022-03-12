@@ -30,6 +30,7 @@ type LabeledListItemProps = {
   labelColor?: string | BooleanLike;
   color?: string | BooleanLike;
   textAlign?: string | BooleanLike;
+  verticalAlign?: string | BooleanLike;
   buttons?: InfernoNode,
   /** @deprecated */
   content?: any,
@@ -43,9 +44,11 @@ const LabeledListItem = (props: LabeledListItemProps) => {
     labelColor = 'label',
     color,
     textAlign,
+    verticalAlign,
     buttons,
     content,
     children,
+    ...rest
   } = props;
   return (
     <tr
@@ -55,6 +58,7 @@ const LabeledListItem = (props: LabeledListItemProps) => {
       ])}>
       <Box
         as="td"
+        verticalAlign={verticalAlign}
         color={labelColor}
         className={classes([
           'LabeledList__cell',
@@ -66,11 +70,13 @@ const LabeledListItem = (props: LabeledListItemProps) => {
         as="td"
         color={color}
         textAlign={textAlign}
+        verticalAlign={verticalAlign}
         className={classes([
           'LabeledList__cell',
           'LabeledList__content',
         ])}
-        colSpan={buttons ? undefined : 2}>
+        colSpan={buttons ? undefined : 2}
+        {...rest}>
         {content}
         {children}
       </Box>

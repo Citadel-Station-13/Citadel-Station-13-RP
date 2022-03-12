@@ -22,15 +22,13 @@ export const Button = props => {
     iconRotation,
     iconSpin,
     iconColor,
-    iconSize,
     iconPosition,
+    iconSize,
     color,
     disabled,
     selected,
     tooltip,
     tooltipPosition,
-    tooltipScale,
-    tooltipOverrideLong,
     ellipsis,
     compact,
     circular,
@@ -51,7 +49,7 @@ export const Button = props => {
   }
   // IE8: Use a lowercase "onclick" because synthetic events are fucked.
   // IE8: Use an "unselectable" prop because "user-select" doesn't work.
-  return (
+  let buttonContent = (
     <Box
       className={classes([
         'Button',
@@ -106,16 +104,22 @@ export const Button = props => {
           name={icon}
           color={iconColor}
           rotation={iconRotation}
-          spin={iconSpin} />
-      )}
-      {tooltip && (
-        <Tooltip
-          content={tooltip}
-          overrideLong={tooltipOverrideLong}
-          position={tooltipPosition} />
+          spin={iconSpin}
+          fontSize={iconSize}
+        />
       )}
     </Box>
   );
+
+  if (tooltip) {
+    buttonContent = (
+      <Tooltip content={tooltip} position={tooltipPosition}>
+        {buttonContent}
+      </Tooltip>
+    );
+  }
+
+  return buttonContent;
 };
 
 Button.defaultHooks = pureComponentHooks;
@@ -236,14 +240,13 @@ export class ButtonInput extends Component {
       iconSpin,
       tooltip,
       tooltipPosition,
-      tooltipOverrideLong,
       color = 'default',
       placeholder,
       maxLength,
       ...rest
     } = this.props;
 
-    return (
+    let buttonContent = (
       <Box
         className={classes([
           'Button',
@@ -283,15 +286,21 @@ export class ButtonInput extends Component {
             }
           }}
         />
-        {tooltip && (
-          <Tooltip
-            content={tooltip}
-            overrideLong={tooltipOverrideLong}
-            position={tooltipPosition}
-          />
-        )}
       </Box>
     );
+
+    if (tooltip) {
+      buttonContent = (
+        <Tooltip
+          content={tooltip}
+          position={tooltipPosition}
+        >
+          {buttonContent}
+        </Tooltip>
+      );
+    }
+
+    return buttonContent;
   }
 }
 

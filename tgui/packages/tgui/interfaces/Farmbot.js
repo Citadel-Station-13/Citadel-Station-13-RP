@@ -22,7 +22,7 @@ export const Farmbot = (props, context) => {
   return (
     <Window width={450} height={540}>
       <Window.Content scrollable>
-        <Section title="Automatic Hyrdoponic Assisting Unit v2.0" buttons={
+        <Section title="Automatic Hydroponic Assistance Unit v2.0" buttons={
           <Button
             icon="power-off"
             selected={on}
@@ -93,7 +93,7 @@ export const Farmbot = (props, context) => {
                 </LabeledList.Item>
               </LabeledList>
             </Section>
-            {/* VOREStation Edit: No automatic hydroponics with the lagbot */}
+            {/* No automatic hydroponics with the lagbot :( */}
             {/* <Section level={2} title="Plant controls">
               <LabeledList>
                 <LabeledList.Item label="Collect produce">
@@ -114,7 +114,7 @@ export const Farmbot = (props, context) => {
                 </LabeledList.Item>
               </LabeledList>
             </Section> */}
-            {/* VOREStation Edit End */}
+            {/* Edit End */}
           </Section>
         ) || null}
       </Window.Content>

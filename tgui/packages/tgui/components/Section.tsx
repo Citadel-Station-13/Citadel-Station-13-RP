@@ -16,6 +16,9 @@ interface SectionProps extends BoxProps {
   fill?: boolean;
   fitted?: boolean;
   scrollable?: boolean;
+  flexGrow?: boolean;
+  noTopPadding?: boolean;
+  stretchContents?: boolean;
   /** @deprecated This property no longer works, please remove it. */
   level?: boolean;
   /** @deprecated Please use `scrollable` property */
@@ -36,6 +39,9 @@ export class Section extends Component<SectionProps> {
     if (this.scrollable) {
       addScrollableNode(this.scrollableRef.current);
     }
+    if (this.props.autoFocus) {
+      setTimeout(() => this.scrollableRef.current.focus(), 1);
+    }
   }
 
   componentWillUnmount() {
@@ -52,6 +58,9 @@ export class Section extends Component<SectionProps> {
       fill,
       fitted,
       scrollable,
+      flexGrow,
+      noTopPadding,
+      stretchContents,
       children,
       ...rest
     } = this.props;
@@ -64,6 +73,7 @@ export class Section extends Component<SectionProps> {
           fill && 'Section--fill',
           fitted && 'Section--fitted',
           scrollable && 'Section--scrollable',
+          flexGrow && 'Section--flex',
           className,
           computeBoxClassName(rest),
         ])}
@@ -79,7 +89,11 @@ export class Section extends Component<SectionProps> {
           </div>
         )}
         <div className="Section__rest">
-          <div ref={this.scrollableRef} className="Section__content">
+          <div ref={this.scrollableRef} className={classes([
+            "Section__content",
+            !!stretchContents && "Section__content--stretchContents",
+            !!noTopPadding && "Section__content--noTopPadding",
+          ])}>
             {children}
           </div>
         </div>

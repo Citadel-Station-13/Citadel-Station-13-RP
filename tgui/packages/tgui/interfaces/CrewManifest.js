@@ -36,20 +36,16 @@ export const CrewManifestContent = (props, context) => {
 
   return (
     <Section title="Crew Manifest" noTopPadding>
-      {manifest.map(category => !!category.elems.length && (
+      {manifest.map(cat => !!cat.elems.length && (
         <Section
           title={(
-            <Box
-              backgroundColor={COLORS.department[category.cat.toLowerCase()]}
-              m={-1}
-              pt={1}
-              pb={1}>
+            <Box backgroundColor={COLORS.manifest[cat.cat.toLowerCase()]} m={-1} pt={1} pb={1}>
               <Box ml={1} textAlign="center" fontSize={1.4}>
-                {category.cat}
+                {cat.cat}
               </Box>
             </Box>
           )}
-          key={category.cat}
+          key={cat.cat}
           level={2}>
           <Table>
             <Table.Row header color="white">
@@ -57,7 +53,7 @@ export const CrewManifestContent = (props, context) => {
               <Table.Cell>Rank</Table.Cell>
               <Table.Cell>Active</Table.Cell>
             </Table.Row>
-            {category.elems.map(person => (
+            {cat.elems.map(person => (
               <Table.Row color="average" key={person.name + person.rank}>
                 <Table.Cell>{decodeHtmlEntities(person.name)}</Table.Cell>
                 <Table.Cell>{person.rank}</Table.Cell>

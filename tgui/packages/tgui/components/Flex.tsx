@@ -11,6 +11,7 @@ export interface FlexProps extends BoxProps {
   direction?: string | BooleanLike;
   wrap?: string | BooleanLike;
   align?: string | BooleanLike;
+  alignContent?: string | BooleanLike;
   justify?: string | BooleanLike;
   inline?: BooleanLike;
 }
@@ -24,8 +25,6 @@ export const computeFlexProps = (props: FlexProps) => {
     alignContent,
     justify,
     inline,
-    spacing = 0,
-    spacingPrecise = 0,
     ...rest
   } = props;
   return {
@@ -37,8 +36,6 @@ export const computeFlexProps = (props: FlexProps) => {
           : 'Flex--iefix'
       ),
       inline && 'Flex--inline',
-      spacing > 0 && 'Flex--spacing--' + spacing,
-      spacingPrecise > 0 && 'Flex--spacingPrecise--' + spacingPrecise,
       className,
     ]),
     style: {
