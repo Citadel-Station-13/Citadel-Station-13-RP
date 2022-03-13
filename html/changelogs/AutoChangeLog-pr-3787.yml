@@ -1,4 +1,0 @@
-author: "Ghostcoffeee"
-delete-after: True
-changes: 
-  - bugfix: "Fixes some drinks defaulting to Ethanol when put into metamorphic glasses"
