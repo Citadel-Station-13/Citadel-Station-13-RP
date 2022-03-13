@@ -1,0 +1,6 @@
+author: "Captain277"
+delete-after: True
+changes: 
+  - rscadd: "Adds mimics."
+  - rscdel: "Removes all corrupt maint drone spawns."
+  - rscadd: "Adds a Community Theater."
