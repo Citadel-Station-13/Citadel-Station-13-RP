@@ -5,8 +5,8 @@
 	desc = "A high scale quantum entangled teleportation device for secure short distance travel."
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "hpad"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	var/obj/machinery/hyperpad/centre/primary
 
 /obj/machinery/hyperpad/centre

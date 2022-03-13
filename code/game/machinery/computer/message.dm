@@ -98,18 +98,19 @@
 		data["linkedServer"]["active"] = linkedServer.active
 		data["linkedServer"]["broke"] = linkedServer.stat & (NOPOWER|BROKEN)
 
-		data["linkedServer"]["pda_msgs"] = list()
+		var/list/pda_msgs = list()
 		for(var/datum/data_pda_msg/pda in linkedServer.pda_msgs)
-			data["linkedServer"]["pda_msgs"].Add(list(list(
+			pda_msgs.Add(list(list(
 				"ref" = "\ref[pda]",
 				"sender" = pda.sender,
 				"recipient" = pda.recipient,
 				"message" = pda.message,
 			)))
+		data["linkedServer"]["pda_msgs"] = pda_msgs
 
-		data["linkedServer"]["rc_msgs"] = list()
+		var/list/rc_msgs = list()
 		for(var/datum/data_rc_msg/rc in linkedServer.rc_msgs)
-			data["linkedServer"]["rc_msgs"].Add(list(list(
+			rc_msgs.Add(list(list(
 				"ref" = "\ref[rc]",
 				"sender" = rc.send_dpt,
 				"recipient" = rc.rec_dpt,
@@ -118,19 +119,21 @@
 				"id_auth" = rc.id_auth,
 				"priority" = rc.priority,
 			)))
+		data["linkedServer"]["rc_msgs"] = rc_msgs
 
 		var/spamIndex = 0
-		data["linkedServer"]["spamFilter"] = list()
+		var/list/spamfilter = list()
 		for(var/token in linkedServer.spamfilter)
 			spamIndex++
-			data["linkedServer"]["spamFilter"].Add(list(list(
+			spamfilter.Add(list(list(
 				"index" = spamIndex,
 				"token" = token,
 			)))
+		data["linkedServer"]["spamFilter"] = spamfilter
 
 		//Get out list of viable PDAs
 		var/list/obj/item/pda/sendPDAs = list()
-		for(var/obj/item/pda/P in GLOB.PDA_Manifest)
+		for(var/obj/item/pda/P in PDAs)
 			if(!P.owner || P.hidden)
 				continue
 			var/datum/data/pda/app/messenger/M = P.find_program(/datum/data/pda/app/messenger)

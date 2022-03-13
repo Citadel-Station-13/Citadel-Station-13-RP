@@ -64,7 +64,7 @@
 
 /obj/item/beartrap/proc/activate()
 	deployed = 1
-	anchored = 1
+	anchored = TRUE
 	update_icon()
 
 /obj/item/beartrap/attack_hand(mob/user as mob)
@@ -78,7 +78,7 @@
 			user.visible_message("<span class='notice'>[victim] has been freed from \the [src] by [user].</span>")
 			for(var/A in buckled_mobs)
 				unbuckle_mob(A)
-			anchored = 0
+			anchored = FALSE
 	else if(deployed && can_use(user))
 		user.visible_message(
 			"<span class='danger'>[user] starts to disarm \the [src].</span>",
@@ -93,7 +93,7 @@
 				"<span class='notice'>You have disarmed \the [src]!</span>"
 				)
 			deployed = 0
-			anchored = 0
+			anchored = FALSE
 			update_icon()
 	else
 		..()
@@ -121,7 +121,7 @@
 
 	//trap the victim in place
 	setDir(L.dir)
-	can_buckle = 1
+	can_buckle = TRUE
 	buckle_mob(L)
 	L.Stun(stun_length)
 	to_chat(L, "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>")
@@ -141,7 +141,7 @@
 				)
 			attack_mob(L)
 			if(!has_buckled_mobs())
-				anchored = 0
+				anchored = FALSE
 			deployed = 0
 			update_icon()
 	..()

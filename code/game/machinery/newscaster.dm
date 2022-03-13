@@ -150,7 +150,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	var/hitstaken = 0      //Death at 3 hits from an item with force>=15
 	var/datum/feed_channel/viewing_channel = null
 	light_range = 0
-	anchored = 1
+	anchored = TRUE
 	var/obj/machinery/exonet_node/node = null
 	circuit = /obj/item/circuitboard/newscaster
 	// TGUI

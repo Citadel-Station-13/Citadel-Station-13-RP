@@ -79,7 +79,7 @@
 
 /area/ship/scrap
 	name = "\improper Bearcat"
-	has_gravity = 0		//predates artificial gravity - won't matter much due to all the walls to push off of!
+	has_gravity = FALSE		//predates artificial gravity - won't matter much due to all the walls to push off of!
 
 /area/shuttle/bearcat/crew
 	name = "\improper Bearcat Crew Compartments"

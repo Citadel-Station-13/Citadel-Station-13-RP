@@ -37,7 +37,7 @@
 
 #define isairlock(A) istype(A, /obj/machinery/door/airlock)
 
-#define isbelly(A)		istype(A, /obj/belly)
+#define isbelly(A)	istype(A, /obj/belly)
 
 //Areas
 

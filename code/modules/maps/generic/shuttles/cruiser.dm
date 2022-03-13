@@ -109,11 +109,11 @@
 
 /area/mothership/telecomms1
 	name = "Daedalus - Hangar 1"
-	has_gravity = 0
+	has_gravity = FALSE
 
 /area/mothership/telecomms2
 	name = "Daedalus - Hangar 2"
-	has_gravity = 0
+	has_gravity = FALSE
 
 /datum/map_template/shuttle/overmap/generic/cruiser
 	name = "OM Ship - Daedalus (New Z)"

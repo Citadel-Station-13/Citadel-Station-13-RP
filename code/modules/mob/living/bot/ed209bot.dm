@@ -13,7 +13,7 @@
 	desc = "A security robot.  He looks less than thrilled."
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "ed2090"
-	density = 1
+	density = TRUE
 	health = 200
 	maxHealth = 200
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/ed209)

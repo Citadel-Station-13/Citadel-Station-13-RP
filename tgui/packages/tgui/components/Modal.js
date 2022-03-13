@@ -15,7 +15,7 @@ export const Modal = props => {
     onEnter,
     ...rest
   } = props;
-  Start
+  Start;
   let handleKeyDown;
   if (onEnter) {
     handleKeyDown = e => {
@@ -25,7 +25,7 @@ export const Modal = props => {
       }
     };
   }
-  End
+  End;
   return (
     <Dimmer
       onKeyDown={handleKeyDown}>

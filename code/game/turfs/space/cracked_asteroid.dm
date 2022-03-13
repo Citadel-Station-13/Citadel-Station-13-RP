@@ -5,7 +5,7 @@
 	name = "cracked sand"
 	desc = "Rough sand with a huge crack.  It probably leads out into the void."
 	icon_state = "asteroid_cracked"
-	dynamic_lighting = TRUE
+	dynamic_lighting = 1
 	keep_sprite = TRUE
 
 /turf/space/cracked_asteroid/is_space() // So people don't start floating when standing on it.

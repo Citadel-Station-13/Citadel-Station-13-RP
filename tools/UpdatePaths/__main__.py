@@ -157,7 +157,7 @@ def main(args):
         updates = [args.update_source]
     else:
         with open(args.update_source) as f:
-            updates = [line for line in f if line and not line.startswith("#") and not line.isspace()]
+            updates = [line for line in f if line and not line.startswith("#") and not line.isspaceturf()]
         print(f"Using {len(updates)} replacements from file:", args.update_source)
 
     if args.map:

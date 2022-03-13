@@ -7,8 +7,8 @@
 	icon_keyboard = "generic_key"
 	icon_screen = "comm_logs"
 	light_color = "#00b000"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/atmoscontrol
 	req_access = list(access_ce)
 	var/list/monitored_alarm_ids = null
@@ -20,7 +20,7 @@
 	icon_screen = "atmoslaptop"
 	icon_state = "laptop"
 	icon_keyboard = "laptop_key"
-	density = 0
+	density = FALSE
 
 /obj/machinery/computer/atmoscontrol/attack_ai(var/mob/user as mob)
 	ui_interact(user)

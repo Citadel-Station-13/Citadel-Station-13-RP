@@ -136,7 +136,7 @@ var/redspace_abduction_z
 /area/redspace_abduction
 	name = "Another Time And Place"
 	requires_power = FALSE
-	dynamic_lighting = FALSE
+	dynamic_lighting = 0
 
 /proc/redspace_abduction(mob/living/target, user)
 	if(redspace_abduction_z < 0)

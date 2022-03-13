@@ -10,7 +10,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	name = "effect"
 	icon = 'icons/effects/effects.dmi'
 	mouse_opacity = 0
-	unacidable = 1//So effect are not targeted by alien acid.
+	unacidable = TRUE//So effect are not targeted by alien acid.
 	pass_flags = PASSTABLE | PASSGRILLE
 
 /datum/effect_system
@@ -53,7 +53,7 @@ steam.start() -- spawns the effect
 	name = "steam"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "extinguish"
-	density = 0
+	density = FALSE
 
 /datum/effect_system/steam_spread
 
@@ -94,7 +94,7 @@ steam.start() -- spawns the effect
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "sparks"
 	var/amount = 6.0
-	anchored = 1.0
+	anchored = TRUE
 	mouse_opacity = 0
 
 /obj/effect/sparks/Initialize(mapload)
@@ -165,7 +165,7 @@ steam.start() -- spawns the effect
 	name = "smoke"
 	icon_state = "smoke"
 	opacity = 1
-	anchored = 0.0
+	anchored = FALSE
 	mouse_opacity = 0
 	var/amount = 6.0
 	var/time_to_live = 100
@@ -561,7 +561,7 @@ steam.start() -- spawns the effect
 /obj/effect/teleport_greyscale
 	name = "teleportation"
 	icon_state = "teleport_greyscale"
-	anchored = 1
+	anchored = TRUE
 	mouse_opacity = 0
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER

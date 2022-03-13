@@ -26,36 +26,39 @@
 GLOBAL_LIST_INIT(bitflags, list(
 	1<<0,  1<<1,  1<<2,  1<<3,  1<<4,  1<<5,  1<<6,  1<<7,
 	1<<8,  1<<9,  1<<10, 1<<11, 1<<12, 1<<13, 1<<14, 1<<15,
-	1<<16, 1<<17, 1<<18, 1<<19, 1<<20, 1<<21, 1<<22, 1<<23
+	1<<16, 1<<17, 1<<18, 1<<19, 1<<20, 1<<21, 1<<22
 ))
 
 // for /datum/var/datum_flags
-#define DF_USE_TAG		(1<<0)
-#define DF_VAR_EDITED	(1<<1)
-#define DF_ISPROCESSING (1<<2)
+#define DF_USE_TAG					(1<<0)
+#define DF_VAR_EDITED				(1<<1)
+#define DF_ISPROCESSING 			(1<<2)
 
 ///FLAG BITMASKS - Used in /atom/var/flags
 #define ADMIN_SPAWNED				(1<<3)	// Atom is admin spawned
 #define HEAR						(1<<4)	// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
 #define INITIALIZED					(1<<5)	// The atom is initialized
-#define NOBLOODY					(1<<6)	// Used for items if they don't want to get a blood overlay.
-#define NOBLUDGEON					(1<<7)	// When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
-#define NOREACT						(1<<8)	// Reagents don't react inside this container.
-#define NOCONDUCT					(1<<9)	// Doesn't Conduct electricity. (metal etc.)
-#define ON_BORDER					(1<<10)	// Item has priority to check when entering or leaving.
-#define OPENCONTAINER				(1<<11)	// Is an open container for chemistry purposes.
-#define OVERLAY_QUEUED				(1<<12)	// Atom queued to SSoverlay for COMPILE_OVERLAYS
-#define PHORONGUARD					(1<<13)	// Does not get contaminated by phoron.
-#define PROXMOVE					(1<<14)	// Does this object require proximity checking in Enter()?
-///CITMAIN FLAG BITMASKS - Completely unused
-#define BLOCK_FACE_ATOM				(1<<15)	// Early returns mob.face_atom()
-#define SHOCKED						(1<<16)	// Prevents mobs from getting chainshocked by teslas and the supermatter.
-#define DEFAULT_RICOCHET			(1<<17)	// Projectiles will use default chance-based ricochet handling on things with this.
-#define NODECONSTRUCT				(1<<18)	// For machines and structures that should not break into parts, eg, holodeck stuff.
-#define PREVENT_CLICK_UNDER			(1<<19)	// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
-#define HOLOGRAM					(1<<20)
-#define PREVENT_CONTENTS_EXPLOSION	(1<<21)	// should not get harmed if this gets caught by an explosion?
 
+#define NOBLUDGEON					(1<<5)	// When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
+#define NOCONDUCT					(1<<6)	// Conducts electricity. (metal etc.)
+#define ON_BORDER					(1<<7)	// Item has priority to check when entering or leaving.
+#define NOBLOODY					(1<<8)	// Used for items if they don't want to get a blood overlay.
+#define OPENCONTAINER				(1<<9)	// Is an open container for chemistry purposes.
+#define PHORONGUARD					(1<<10)	// Does not get contaminated by phoron.
+#define	NOREACT						(1<<11)	// Reagents don't react inside this container.
+#define OVERLAY_QUEUED				(1<<12)	// Atom queued to SSoverlay for COMPILE_OVERLAYS
+#define IS_BUSY						(1<<13)	// Atom has a TASK_TARGET_EXCLUSIVE do_after with it as the target.
+
+///CITMAIN FLAG BITMASKS - Completely unused
+#define BLOCK_FACE_ATOM				(1<<14)	// Early returns mob.face_atom()
+#define SHOCKED						(1<<15)	// Prevents mobs from getting chainshocked by teslas and the supermatter.
+#define DEFAULT_RICOCHET			(1<<16)	// Projectiles will use default chance-based ricochet handling on things with this.
+#define NODECONSTRUCT				(1<<17)	// For machines and structures that should not break into parts, eg, holodeck stuff.
+#define PREVENT_CLICK_UNDER			(1<<18)	// Prevent clicking things below it on the same turf eg. doors/ fulltile windows.
+#define HOLOGRAM					(1<<19)
+#define PREVENT_CONTENTS_EXPLOSION	(1<<20)	// should not get harmed if this gets caught by an explosion?
+
+#define PROXMOVE					(1<<21) // Temporarily keeping this to not fuck movement code.
 
 ///TURF FLAGS
 #define NO_JAUNT					(1<<0)	// This is used in literally one place, turf.dm, to block ethereal jaunt.
@@ -73,6 +76,11 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define PASSGRILLE				(1<<2)
 #define PASSBLOB				(1<<3)
 #define PASSMOB					(1<<4)
+
+// Flags for do_after/do_mob exclusivity.
+#define TASK_TARGET_EXCLUSIVE	(1<<1)
+#define TASK_USER_EXCLUSIVE		(1<<2)
+#define TASK_ALL_EXCLUSIVE		TASK_TARGET_EXCLUSIVE | TASK_USER_EXCLUSIVE
 
 // Flags for the clothing_flags var on /obj/item/clothing
 //flags for clothing_flags. only 1 exists at the moment because this is an examine refactor not aclothing refactor

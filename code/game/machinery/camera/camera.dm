@@ -13,7 +13,7 @@
 	var/c_tag = null
 	var/c_tag_order = 999
 	var/status = 1
-	anchored = 1.0
+	anchored = TRUE
 	var/invuln = 0
 	var/bugged = 0
 	var/obj/item/camera_assembly/assembly = null
@@ -69,6 +69,8 @@
 	// VOREStation Edit End
 
 /obj/machinery/camera/Destroy()
+	if(isMotion())
+		unsense_proximity(callback = /atom/proc/HasProximity)
 	deactivate(null, 0) //kick anyone viewing out
 	if(assembly)
 		qdel(assembly)
@@ -172,7 +174,7 @@
 		if(weld(W, user))
 			if(assembly)
 				assembly.loc = src.loc
-				assembly.anchored = 1
+				assembly.anchored = TRUE
 				assembly.camera_name = c_tag
 				assembly.camera_network = english_list(network, NETWORK_DEFAULT, ",", ",")
 				assembly.update_icon()

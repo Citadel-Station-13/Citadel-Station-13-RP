@@ -13,7 +13,7 @@
 	light_color = "#00b000"
 	req_one_access = list(access_heads)
 	circuit = /obj/item/circuitboard/skills
-	density = 0
+	density = FALSE
 	var/obj/item/card/id/scan = null
 	var/authenticated = null
 	var/rank = null

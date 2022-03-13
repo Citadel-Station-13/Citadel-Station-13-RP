@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 				var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 				sparks.set_up(5, 0, get_turf(src))
 				sparks.start()
-			anchored = 1
+			anchored = TRUE
 			PN = attached.powernet
 			PN.draw_power(powerdraw) // previous value 150000 // CHOMPEDIT Start, Rykka waz here. *pawstamp*
 			charge = charge + (powerdraw/1000) //This adds raw powerdraw to charge(Charge is in Ks as in 1 = 1000) // CHOMPEDIT End, Rykka waz here. *pawstamp*
@@ -107,12 +107,12 @@ GLOBAL_LIST_EMPTY(solargrubs)
 						var/drain_val = min(apc_drain_rate, cur_charge)
 						A.cell.use(drain_val * CELLRATE)
 		else if(!attached && anchored)
-			anchored = 0
+			anchored = FALSE
 			PN = null
 
 		// CHOMPEDIT Start, Rykka waz here. *pawstamp*
 		if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift.
-			anchored = 0
+			anchored = FALSE
 			PN = attached.powernet
 			release_vore_contents()
 			prey_excludes.Cut()
@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
 /mob/living/simple_mob/vore/solargrub/death()
-	src.anchored = 0
+	src.anchored = FALSE
 	set_light(0)
 	..()
 //	This funny bit is questionable atm
@@ -174,6 +174,6 @@ GLOBAL_LIST_EMPTY(solargrubs)
 		return 1
 
 /datum/ai_holder/simple_mob/retaliate/solargrub/react_to_attack(atom/movable/attacker)
-	holder.anchored = 0
+	holder.anchored = FALSE
 	holder.set_AI_busy(FALSE)
 	..()

@@ -4,8 +4,8 @@
 	desc = "Placeholder. Yell at Firecage if you SOMEHOW see this."
 	icon = 'icons/obj/statue.dmi'
 	icon_state = ""
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/hardness = 1
 	var/oreAmount = 7
@@ -13,7 +13,7 @@
 	var/material = "steel"
 
 /obj/structure/statue/Destroy()
-	density = 0
+	density = FALSE
 	return ..()
 
 /obj/structure/statue/attackby(obj/item/tool/W, mob/living/user, params)
@@ -28,7 +28,7 @@
 					return
 				user.visible_message("[user] loosened the [name]'s bolts!", \
 									 "<span class='notice'>You loosen the [name]'s bolts!</span>")
-				anchored = 0
+				anchored = FALSE
 		else
 			if (!istype(src.loc, /turf/simulated/floor))
 				user.visible_message("<span class='warning'>A floor must be present to secure the [name]!</span>")
@@ -41,7 +41,7 @@
 					return
 				user.visible_message("[user] has secured the [name]'s bolts.", \
 									 "<span class='notice'>You have secured the [name]'s bolts.</span>")
-				anchored = 1
+				anchored = TRUE
 
 	else if(istype(W, /obj/item/pickaxe/plasmacutter))
 		playsound(src, 'sound/items/Welder.ogg', 100, 1)

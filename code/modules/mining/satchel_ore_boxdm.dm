@@ -6,7 +6,7 @@
 	icon_state = "orebox0"
 	name = "ore box"
 	desc = "A heavy box used for storing ore."
-	density = 1
+	density = TRUE
 	var/last_update = 0
 	var/list/stored_ore = list()
 
@@ -83,7 +83,7 @@
 	if(isEmpty())
 		to_chat(usr,"<span class='warning'>The ore box is empty.</span>")
 		return
-	
+
 	var/mob/living/user = usr
 	to_chat(user, "<span class='notice'>You begin emptying the ore box.</span>")
 

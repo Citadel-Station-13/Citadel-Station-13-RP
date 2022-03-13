@@ -4,7 +4,7 @@
 //
 /datum/effect_system/grav_pull
 	var/pull_radius = 3
-	var/pull_anchored = 0
+	var/pull_anchored = FALSE
 	var/break_windows = 0
 
 /datum/effect_system/grav_pull/set_up(range, num, loca)

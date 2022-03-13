@@ -2,7 +2,7 @@
 /area/survivalpod
 	name = "\improper Emergency Shelter"
 	icon_state = "away"
-	dynamic_lighting = TRUE
+	dynamic_lighting = 1
 	requires_power = FALSE
 	has_gravity = TRUE
 

@@ -3,8 +3,8 @@
 	desc = "A board for pinning important notices upon."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "nboard00"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	var/list/notices
 	var/base_icon_state = "nboard0"
 	var/const/max_notices = 5
@@ -114,15 +114,15 @@
 /obj/structure/noticeboard/ui_data(mob/user)
 	var/list/data = ..()
 
-	data["notices"] = list()
-	for(var/obj/item/I in notices)
-		data["notices"].Add(list(list(
+	var/list/tgui_notices = list()
+	for(var/obj/item/I in src.notices)
+		tgui_notices.Add(list(list(
 			"ispaper" = istype(I, /obj/item/paper),
 			"isphoto" = istype(I, /obj/item/photo),
 			"name" = I.name,
 			"ref" = "\ref[I]",
 		)))
-
+	data["notices"] = tgui_notices
 	return data
 
 /obj/structure/noticeboard/ui_act(action, params)

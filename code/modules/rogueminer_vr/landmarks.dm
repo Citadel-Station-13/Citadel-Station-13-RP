@@ -8,7 +8,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x2"
 	invisibility = 101
-	anchored = 1
+	anchored = TRUE
 	var/datum/rogue/asteroid/myasteroid
 
 /obj/asteroid_spawner/Initialize(mapload)
@@ -22,7 +22,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"
 	invisibility = 101
-	anchored = 1
+	anchored = TRUE
 	var/mob/mymob
 
 /obj/rogue_mobspawner/Initialize(mapload)

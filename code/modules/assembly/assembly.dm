@@ -12,7 +12,7 @@
 	pickup_sound =  'sound/items/pickup/component.ogg'
 	origin_tech = list(TECH_MAGNET = 1)
 
-	var/secured = 1
+	var/secured = TRUE
 	var/list/attached_overlays = null
 	var/obj/item/assembly_holder/holder = null
 	var/cooldown = 0//To prevent spam

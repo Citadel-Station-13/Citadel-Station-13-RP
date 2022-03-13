@@ -28,7 +28,7 @@
 	opened = !opened
 	EA.opened = opened
 	to_chat(user, "<span class='notice'>You [opened ? "opened" : "closed"] \the [src].</span>")
-	secured = 1
+	secured = TRUE
 	update_icon()
 
 /obj/item/assembly/electronic_assembly/update_icon()

@@ -26,7 +26,7 @@
 	icon_opened = "grave_open"
 	seal_tool = null
 	breakout_sound = 'sound/weapons/thudswoosh.ogg'
-	anchored = 1
+	anchored = TRUE
 	max_closets = 1
 	opened = 1
 

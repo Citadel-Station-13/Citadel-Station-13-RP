@@ -12,7 +12,7 @@
 	volume = 60
 	w_class = ITEMSIZE_SMALL
 	flags = NOCONDUCT
-	unacidable = 0 //tissues does dissolve in acid
+	unacidable = FALSE //tissues does dissolve in acid
 	drop_sound = 'sound/effects/splat.ogg'
 	pickup_sound = 'sound/effects/squelch1.ogg'
 

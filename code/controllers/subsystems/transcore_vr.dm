@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(transcore)
 
 	var/list/current_run = list()
 
-/datum/controller/subsystem/transcore/Initialize()
+/datum/controller/subsystem/transcore/Initialize(mapload)
 	default_db = new()
 	databases["default"] = default_db
 	for(var/t in subtypesof(/datum/transcore_db))

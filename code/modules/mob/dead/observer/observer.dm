@@ -1,7 +1,7 @@
 /mob/observer
 	name = "observer"
 	desc = "This shouldn't appear"
-	density = 0
+	density = FALSE
 
 /mob/observer/dead
 	name = "ghost"
@@ -14,7 +14,7 @@
 	stat = DEAD
 	canmove = 0
 	blinded = 0
-	anchored = 1	//  don't get pushed around
+	anchored = TRUE	//  don't get pushed around
 	invisibility = INVISIBILITY_OBSERVER
 	/// Do we set dir on move
 	var/updatedir = TRUE

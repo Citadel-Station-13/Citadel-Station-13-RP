@@ -18,7 +18,7 @@
 
 	var/debug = 0
 	var/requires_power = 1
-	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
+	var/always_unpowered = FALSE	//this gets overriden to 1 for space in area/New()
 
 	// Power channel status - Is it currently energized?
 	var/power_equip = TRUE
@@ -37,7 +37,7 @@
 
 	var/music = null
 
-	var/has_gravity = 1
+	var/has_gravity = TRUE
 	var/obj/machinery/power/apc/apc = null
 	var/no_air = null
 //	var/list/lights				// list of all lights on this area

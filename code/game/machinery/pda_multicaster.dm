@@ -3,8 +3,8 @@
 	desc = "This machine mirrors messages sent to it to specific departments."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "controller"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/telecomms/pda_multicaster
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 750

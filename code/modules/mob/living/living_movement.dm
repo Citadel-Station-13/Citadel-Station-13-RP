@@ -19,6 +19,15 @@
 /mob/CanZASPass(turf/T, is_zone)
 	return ATMOS_PASS_YES
 
+/mob/living/SelfMove(turf/n, direct, movetime)
+	// If on walk intent, don't willingly step into hazardous tiles.
+	// Unless the walker is confused.
+	if(m_intent == "walk" && confused <= 0)
+		if(!n.is_safe_to_enter(src))
+			to_chat(src, span("warning", "\The [n] is dangerous to move into."))
+			return FALSE // In case any code wants to know if movement happened.
+	return ..() // Parent call should make the mob move.
+
 /**
   * Toggle the move intent of the mob
   *
@@ -224,3 +233,20 @@
 				step(G:assailant, get_dir(G:assailant, AM))
 				G.adjust_position()
 		now_pushing = 0
+
+/mob/living/proc/inertial_drift()
+	if(x > 1 && x < (world.maxx) && y > 1 && y < (world.maxy))
+		if(Process_Spacemove(1))
+			inertia_dir = 0
+			return
+
+		var/locthen = loc
+		spawn(5)
+			if(!anchored && !pulledby && loc == locthen)
+				var/stepdir = inertia_dir ? inertia_dir : last_move
+				if(!stepdir)
+					return
+				var/turf/T = get_step(src, stepdir)
+				if(!T)
+					return
+				Move(T, stepdir, 5)

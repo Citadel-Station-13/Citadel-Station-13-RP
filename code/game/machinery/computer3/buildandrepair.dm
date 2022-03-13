@@ -1,7 +1,7 @@
 // Computer3 circuitboard specifically
 /obj/item/part/computer/circuitboard
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	w_class = ITEMSIZE_SMALL
 	name = "Circuit board"
 	icon = 'icons/obj/module.dmi'
@@ -23,8 +23,8 @@
 
 
 /obj/structure/computer3frame
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	name = "computer frame"
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "0"
@@ -82,7 +82,7 @@
 				playsound(src.loc, P.usesound, 50, 1)
 				if(do_after(user, 20 * P.toolspeed))
 					to_chat(user, "<span class='notice'>You wrench the frame into place.</span>")
-					src.anchored = 1
+					src.anchored = TRUE
 					src.state = 1
 			if(istype(P, /obj/item/weldingtool))
 				var/obj/item/weldingtool/WT = P
@@ -100,7 +100,7 @@
 				playsound(src.loc, P.usesound, 50, 1)
 				if(do_after(user, 20 * P.toolspeed))
 					to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
-					src.anchored = 0
+					src.anchored = FALSE
 					src.state = 0
 			if(istype(P, /obj/item/circuitboard) && !circuit)
 				var/obj/item/circuitboard/B = P
@@ -299,5 +299,3 @@
 		if(/obj/item/part/computer/networking)
 			if(net)
 				to_chat(usr, "There is already \an [net] in [src]!")
-
-

@@ -3,15 +3,15 @@
 	desc = "A mysterious gateway built by unknown hands.  It allows for faster than light travel to far-flung locations and even alternate realities."  //VOREStation Edit
 	icon = 'icons/obj/machines/gateway.dmi'
 	icon_state = "off"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/active = 0
 
 
 /obj/machinery/gateway/Initialize(mapload)
 	update_icon()
 	if(dir == SOUTH)
-		density = 0
+		density = FALSE
 	. = ..()
 
 /obj/machinery/gateway/update_icon()
@@ -24,7 +24,7 @@
 
 //this is da important part wot makes things go
 /obj/machinery/gateway/centerstation
-	density = 1
+	density = TRUE
 	icon_state = "offcenter"
 	use_power = USE_POWER_IDLE
 
@@ -39,7 +39,7 @@
 	wait = world.time + config_legacy.gateway_delay	//+ thirty minutes default
 	awaygate = locate(/obj/machinery/gateway/centeraway)
 	. = ..()
-	density = 1 //VOREStation Add
+	density = TRUE //VOREStation Add
 
 /obj/machinery/gateway/centerstation/update_icon()
 	if(active)
@@ -151,7 +151,7 @@
 
 
 /obj/machinery/gateway/centeraway
-	density = 1
+	density = TRUE
 	icon_state = "offcenter"
 	use_power = USE_POWER_OFF
 	var/calibrated = 1
@@ -164,7 +164,7 @@
 	update_icon()
 	stationgate = locate(/obj/machinery/gateway/centerstation)
 	. = ..()
-	density = 1 //VOREStation Add
+	density = TRUE //VOREStation Add
 
 
 /obj/machinery/gateway/centeraway/update_icon()

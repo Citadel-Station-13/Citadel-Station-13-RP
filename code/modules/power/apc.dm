@@ -77,7 +77,7 @@
 	icon_state = "apc0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_OFF
 	req_access = list(access_engine_equip)
 	var/area/area
@@ -195,9 +195,9 @@
 /obj/machinery/power/apc/Destroy()
 	update()
 	area.apc = null
-	area.power_light = 0
-	area.power_equip = 0
-	area.power_environ = 0
+	area.power_light = FALSE
+	area.power_equip = FALSE
+	area.power_environ = FALSE
 	area.power_change()
 	qdel(wires)
 	wires = null
@@ -926,9 +926,9 @@
 //			spawn(10)
 //				to_chat(world, " [area.name] [area.power_equip]")
 	else
-		area.power_light = 0
-		area.power_equip = 0
-		area.power_environ = 0
+		area.power_light = FALSE
+		area.power_equip = FALSE
+		area.power_environ = FALSE
 //		if (area.name == "AI Chamber")
 //			to_chat(world, "[area.power_equip]")
 	area.power_change()

@@ -17,8 +17,8 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	desc = "This advanced pump draws magma from subterranean reservoirs and diverts it. Its extremely hardy materials make it difficult to disrupt, once in action."
 	icon = 'icons/obj/machines/event.dmi'
 	icon_state = "pump"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
@@ -97,8 +97,8 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	desc = "This pump has been damaged by a devastating explosion. It is beyond salvaging, but it might be dismantled still."
 	icon = 'icons/obj/machines/event.dmi'
 	icon_state = "pump_broken"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/sliced = 0
 	var/gutted = 0
 
@@ -158,8 +158,8 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	desc = "A hardy backflow reservoir where the pumps store magma and magma until it can be diverted. Its extremely hardy materials make it difficult to disrupt, once in action."
 	icon = 'icons/obj/machines/event.dmi'
 	icon_state = "reservoir"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
@@ -235,8 +235,8 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 	desc = "This reservoir has been shattered by a devastating explosion. It is beyond salvaging, but it might be dismantled still."
 	icon = 'icons/obj/machines/event.dmi'
 	icon_state = "reservoir_broken"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/sliced = 0
 	var/gutted = 0
 

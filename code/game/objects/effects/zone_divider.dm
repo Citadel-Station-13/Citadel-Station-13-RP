@@ -4,8 +4,8 @@
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x3"
 	invisibility = 101 		//nope, can't see this
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	opacity = 0
 
 /obj/effect/zone_divider/CanZASPass(turf/T, is_zone)

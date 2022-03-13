@@ -10,11 +10,11 @@
 
 	invisibility = 101
 
-	density = 0
+	density = FALSE
 	stat = 2
 	canmove = 0
 
-	anchored = 1	// Don't get pushed around
+	anchored = TRUE	// Don't get pushed around
 
 /mob/new_player/Initialize(mapload)
 	GLOB.mob_list += src

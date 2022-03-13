@@ -10,22 +10,23 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 // This should be used when someone is examining while the case is opened.
 /obj/item/integrated_circuit/proc/internal_examine(mob/user)
-	to_chat(user, "This board has [inputs.len] input pin\s, [outputs.len] output pin\s and [activators.len] activation pin\s.")
+	. = list()
+	. += "This board has [inputs.len] input pin\s, [outputs.len] output pin\s and [activators.len] activation pin\s."
 	for(var/datum/integrated_io/I in inputs)
 		if(I.linked.len)
-			to_chat(user, "The '[I]' is connected to [I.get_linked_to_desc()].")
+			. += "The '[I]' is connected to [I.get_linked_to_desc()]."
 	for(var/datum/integrated_io/O in outputs)
 		if(O.linked.len)
-			to_chat(user, "The '[O]' is connected to [O.get_linked_to_desc()].")
+			. += "The '[O]' is connected to [O.get_linked_to_desc()]."
 	for(var/datum/integrated_io/activate/A in activators)
 		if(A.linked.len)
-			to_chat(user, "The '[A]' is connected to [A.get_linked_to_desc()].")
-	any_examine(user)
+			. += "The '[A]' is connected to [A.get_linked_to_desc()]."
+	. += any_examine(user)
 	ui_interact(user)
 
 // This should be used when someone is examining from an 'outside' perspective, e.g. reading a screen or LED.
 /obj/item/integrated_circuit/proc/external_examine(mob/user)
-	any_examine(user)
+	return any_examine(user)
 
 /obj/item/integrated_circuit/proc/any_examine(mob/user)
 	return
@@ -33,10 +34,8 @@ a creative player the means to solve many problems.  Circuits are held inside an
 /obj/item/integrated_circuit/Initialize(mapload)
 	. = ..()
 	displayed_name = name
-	if(!size)
-		size = w_class
-	if(size == -1)
-		size = 0
+	if(!size) size = w_class
+	if(size == -1) size = 0
 	setup_io(inputs, /datum/integrated_io, inputs_default)
 	setup_io(outputs, /datum/integrated_io, outputs_default)
 	setup_io(activators, /datum/integrated_io/activate)
@@ -101,17 +100,17 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	data["power_draw_per_use"] = power_draw_per_use
 	data["extended_desc"] = extended_desc
 
-	data["inputs"] = list()
+	var/list/inputs_list = list()
+	var/list/outputs_list = list()
+	var/list/activators_list = list()
 	for(var/datum/integrated_io/io in inputs)
-		data["inputs"].Add(list(ui_pin_data(io)))
+		inputs_list.Add(list(tgui_pin_data(io)))
 
-	data["outputs"] = list()
 	for(var/datum/integrated_io/io in outputs)
-		data["outputs"].Add(list(ui_pin_data(io)))
+		outputs_list.Add(list(tgui_pin_data(io)))
 
-	data["activators"] = list()
 	for(var/datum/integrated_io/io in activators)
-		var/list/activator = list(
+		var/list/list/activator = list(
 			"ref" = REF(io),
 			"name" = io.name,
 			"pulse_out" = io.data,
@@ -125,11 +124,15 @@ a creative player the means to solve many problems.  Circuits are held inside an
 				"holder_name" = linked.holder.displayed_name,
 			)))
 
-		data["activators"].Add(list(activator))
+		activators_list.Add(list(activator))
+
+	data["inputs"] = inputs_list
+	data["outputs"] = outputs_list
+	data["activators"] = activators_list
 
 	return data
 
-/obj/item/integrated_circuit/proc/ui_pin_data(datum/integrated_io/io)
+/obj/item/integrated_circuit/proc/tgui_pin_data(datum/integrated_io/io)
 	if(!istype(io))
 		return list()
 	var/list/pindata = list()
@@ -137,14 +140,15 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	pindata["name"] = io.name
 	pindata["data"] = io.display_data(io.data)
 	pindata["ref"] = REF(io)
-	pindata["linked"] = list()
+	var/list/linked_list = list()
 	for(var/datum/integrated_io/linked in io.linked)
-		pindata["linked"].Add(list(list(
+		linked_list.Add(list(list(
 			"ref" = REF(linked),
 			"name" = linked.name,
 			"holder_ref" = REF(linked.holder),
 			"holder_name" = linked.holder.displayed_name,
 		)))
+	pindata["linked"] = linked_list
 	return pindata
 
 /obj/item/integrated_circuit/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

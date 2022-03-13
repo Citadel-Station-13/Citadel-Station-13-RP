@@ -223,7 +223,7 @@
 		..(act, type, desc)
 
 
-/mob/living/simple_mob/SelfMove(turf/n, direct)
+/mob/living/simple_mob/SelfMove(turf/n, direct, movetime)
 	var/turf/old_turf = get_turf(src)
 	var/old_dir = dir
 	. = ..()

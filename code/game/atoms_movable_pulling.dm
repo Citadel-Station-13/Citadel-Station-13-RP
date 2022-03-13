@@ -73,7 +73,6 @@
 			stop_pulling()
 			return
 		if(pullee && !isturf(pullee.loc) && pullee.loc != loc) //to be removed once all code that changes an object's loc uses forceMove().
-			stack_trace("[src]'s pull on [pullee] wasn't broken despite [pullee] being in [pullee.loc]. Pull stopped manually.")
 			stop_pulling()
 			return
 		if(pulling.anchored)// || pulling.move_resist > move_force)

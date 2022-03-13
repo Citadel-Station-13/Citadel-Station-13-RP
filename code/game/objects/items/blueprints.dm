@@ -149,14 +149,14 @@
 		return
 	var/area/A = new
 	A.name = str
-	A.power_equip = 0
-	A.power_light = 0
-	A.power_environ = 0
-	A.always_unpowered = 0
+	A.power_equip = FALSE
+	A.power_light = FALSE
+	A.power_environ = FALSE
+	A.always_unpowered = FALSE
 	move_turfs_to_area(turfs, A)
 	A.addSorted()
 
-	A.always_unpowered = 0
+	A.always_unpowered = FALSE
 
 	spawn(5)
 		interact()

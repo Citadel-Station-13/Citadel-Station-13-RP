@@ -3,8 +3,8 @@
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "disposalbio"
 	var/list/accepts = list(/obj/item/clothing,/obj/item/virusdish/,/obj/item/diseasedisk,/obj/item/reagent_containers)
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 
 /obj/machinery/disease2/biodestroyer/attackby(var/obj/I as obj, var/mob/user as mob)
 	for(var/path in accepts)

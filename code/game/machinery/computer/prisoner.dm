@@ -27,11 +27,8 @@
 		ui.open()
 
 /obj/machinery/computer/prisoner/ui_data(mob/user)
-	var/list/data = list()
-
-	data["locked"] = !screen
-	data["chemImplants"] = list()
-	data["trackImplants"] = list()
+	var/list/chemImplants = list()
+	var/list/trackImplants = list()
 	if(screen)
 		for(var/obj/item/implant/chem/C in GLOB.all_chem_implants)
 			var/turf/T = get_turf(C)
@@ -39,7 +36,7 @@
 				continue
 			if(!C.implanted)
 				continue
-			data["chemImplants"].Add(list(list(
+			chemImplants.Add(list(list(
 				"host" = C.imp_in,
 				"units" = C.reagents.total_volume,
 				"ref" = "\ref[C]"
@@ -56,14 +53,14 @@
 				loc_display = T.loc
 			if(track.malfunction)
 				loc_display = pick(teleportlocs)
-			data["trackImplants"].Add(list(list(
+			trackImplants.Add(list(list(
 				"host" = L,
 				"ref" = "\ref[track]",
 				"id" = "[track.id]",
 				"loc" = "[loc_display]",
 			)))
 
-	return data
+	return list("locked" = !screen, "chemImplants" = chemImplants, "trackImplants" = trackImplants)
 
 /obj/machinery/computer/prisoner/ui_act(action, list/params)
 	if(..())

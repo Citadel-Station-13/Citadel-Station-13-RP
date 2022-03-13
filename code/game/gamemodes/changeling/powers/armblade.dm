@@ -54,7 +54,7 @@
 	icon_state = "arm_blade"
 	w_class = ITEMSIZE_HUGE
 	force = 5
-	anchored = 1
+	anchored = TRUE
 	throwforce = 0 //Just to be on the safe side
 	throw_range = 0
 	throw_speed = 0

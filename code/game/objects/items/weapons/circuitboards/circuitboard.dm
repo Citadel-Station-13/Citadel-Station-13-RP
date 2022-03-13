@@ -9,8 +9,8 @@
 	icon = 'icons/obj/module.dmi'
 	icon_state = "id_mod"
 	origin_tech = list(TECH_DATA = 2)
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	w_class = ITEMSIZE_SMALL
 	force = 5.0
 	throwforce = 5.0
@@ -62,4 +62,3 @@
 				continue
 			nice_list += list("[req_components[A]] [initial(A.name)]")
 		. += "<span class='notice'>Required components: [english_list(nice_list)].</span>"
-

@@ -7,7 +7,7 @@
 
 	wires = WIRE_PULSE
 
-	secured = 0
+	secured = FALSE
 
 	var/timing = 0
 	var/time = 10

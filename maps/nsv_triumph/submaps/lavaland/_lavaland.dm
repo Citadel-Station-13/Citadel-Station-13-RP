@@ -22,7 +22,7 @@
 	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads."
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "qpad-idle"
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	interact_offline = 0
 
@@ -59,7 +59,7 @@
 	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads."
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "qpad-idle"
-	anchored = 1
+	anchored = TRUE
 
 
 	attack_hand(mob/living/user as mob)

@@ -3,7 +3,7 @@
 
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "psiphon:0"
-	density = 1
+	density = TRUE
 	w_class = ITEMSIZE_NORMAL
 
 	var/on = 0
@@ -192,7 +192,7 @@
 	name = "Huge Air Pump"
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "siphon:0"
-	anchored = 1
+	anchored = TRUE
 	volume = 500000
 
 	use_power = USE_POWER_IDLE

@@ -53,8 +53,8 @@ var/list/ai_verbs_default = list(
 	name = "AI"
 	icon = 'icons/mob/AI.dmi'//
 	icon_state = "ai"
-	anchored = 1 // -- TLE
-	density = 1
+	anchored = TRUE // -- TLE
+	density = TRUE
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
 	shouldnt_see = list(/obj/effect/rune)
 	var/list/network = list(NETWORK_DEFAULT)
@@ -127,9 +127,9 @@ var/list/ai_verbs_default = list(
 	if(!is_dummy)
 		aiPDA = new/obj/item/pda/ai(src)
 	SetName(pickedName)
-	anchored = 1
+	anchored = TRUE
 	canmove = 0
-	density = 1
+	density = TRUE
 
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/communicator/integrated(src)
@@ -776,7 +776,7 @@ var/list/ai_verbs_default = list(
 				user.visible_message("<font color=#4F49AF>\The [user] decides not to unbolt \the [src].</font>")
 				return
 			user.visible_message("<font color=#4F49AF>\The [user] finishes unfastening \the [src]!</font>")
-			anchored = 0
+			anchored = FALSE
 			return
 		else
 			playsound(src, W.usesound, 50, 1)
@@ -785,7 +785,7 @@ var/list/ai_verbs_default = list(
 				user.visible_message("<font color=#4F49AF>\The [user] decides not to bolt \the [src].</font>")
 				return
 			user.visible_message("<font color=#4F49AF>\The [user] finishes fastening down \the [src]!</font>")
-			anchored = 1
+			anchored = TRUE
 			return
 	else
 		return ..()

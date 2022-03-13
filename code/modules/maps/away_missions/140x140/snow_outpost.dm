@@ -19,7 +19,7 @@
 
 /area/awaymission/snow_outpost/outside
 	icon_state = "away1"
-	always_unpowered = 1
+	always_unpowered = TRUE
 	dynamic_lighting = 0
 	mobcountmax = 50
 	floracountmax = 300
@@ -42,7 +42,7 @@
 /area/awaymission/snow_outpost/dark
 	icon_state = "red"
 	requires_power = 1
-	always_unpowered = 1
+	always_unpowered = TRUE
 	dynamic_lighting = 1
 
 /area/awaymission/snow_outpost/outside/nospawn

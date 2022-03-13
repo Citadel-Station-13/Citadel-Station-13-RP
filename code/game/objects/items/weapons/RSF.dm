@@ -11,8 +11,8 @@ RSF
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "rsf"
 	opacity = 0
-	density = 0
-	anchored = 0.0
+	density = FALSE
+	anchored = FALSE
 	var/stored_matter = 30
 	var/mode = 1
 	var/obj/item/reagent_containers/glasstype = /obj/item/reagent_containers/food/drinks/metaglass

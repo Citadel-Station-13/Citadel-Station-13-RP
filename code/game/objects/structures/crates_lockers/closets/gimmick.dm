@@ -25,7 +25,7 @@
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
 	icon_opened = "syndicate1open"
-	anchored = 0
+	anchored = FALSE
 
 /obj/structure/closet/gimmick/russian
 	name = "russian surplus closet"
@@ -59,7 +59,7 @@
 	icon_state = "syndicate"
 	icon_closed = "syndicate"
 	icon_opened = "syndicateopen"
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/closet/thunderdome/tdred
 	name = "red-team Thunderdome closet"

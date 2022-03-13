@@ -19,7 +19,7 @@ fundamental differences
 
 /obj/machinery/appliance/mixer/examine(var/mob/user)
 	. = ..()
-		. += "<span class='notice'>It is currently set to make a [selected_option]</span>"
+	. += "<span class='notice'>It is currently set to make a [selected_option]</span>"
 
 /obj/machinery/appliance/mixer/Initialize(mapload, newdir)
 	. = ..()

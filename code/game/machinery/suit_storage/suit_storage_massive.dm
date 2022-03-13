@@ -7,8 +7,8 @@
 	icon = 'icons/obj/suitstorage.dmi'
 	icon_state = "automatedCloset"
 
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
 	var/list/obj/item/clothing/suit/space/suits = list()
 	var/suit_stored_TYPE = /obj/item/clothing/suit/space

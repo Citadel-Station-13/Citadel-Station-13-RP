@@ -55,7 +55,7 @@
 /turf/unsimulated/floor/lava
 	name = "lava"
 	icon_state = "lava"
-	density = 1
+	density = TRUE
 	luminosity = 3
 
 /obj/structure/HonkMother
@@ -81,7 +81,7 @@
 	desc = "This wall tile seems loose. Try pushing on it."
 	icon_state = ""
 //	mineral = "cultspecial"
-	density = 1
+	density = TRUE
 	opacity = 1
 */
 

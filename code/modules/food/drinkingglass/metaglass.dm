@@ -4,7 +4,7 @@
 	icon_state = "glass_empty"
 	amount_per_transfer_from_this = 5
 	volume = 30
-	unacidable = 1 //glass
+	unacidable = TRUE //glass
 	center_of_mass = list("x"=16, "y"=10)
 	matter = list("glass" = 500)
 	icon = 'icons/obj/drinks.dmi'
@@ -434,11 +434,11 @@ Drinks Data
 /datum/reagent/ethanol/unsweettea
 	glass_icon_state = "unsweetteaglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/drink/sweettea
 	glass_icon_state = "sweetteaglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/ethanol/originalsin
 	glass_icon_state = "originalsinglass"
 	glass_center_of_mass = list("x"=16, "y"=9)
@@ -446,15 +446,15 @@ Drinks Data
 /datum/reagent/ethanol/lovemaker
 	glass_icon_state = "lovemaker2"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/drink/soda/orangeale
 	glass_icon_state = "orangeale"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/ethanol/slimeshot
 	glass_icon_state = "namedbullet"
 	glass_center_of_mass = list("x"=16, "y"=8)
-	
+
 /datum/reagent/ethanol/beer
 	glass_icon_state = "beerglass"
 	glass_center_of_mass = list("x"=16, "y"=8)

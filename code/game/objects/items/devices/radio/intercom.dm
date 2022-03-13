@@ -5,7 +5,7 @@
 	icon_state = "intercom"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	w_class = ITEMSIZE_LARGE
 	canhear_range = 2
 	flags = NOBLOODY
@@ -154,7 +154,7 @@
 		A.pixel_y = pixel_y
 		A.circuit = M
 		A.setDir(dir)
-		A.anchored = 1
+		A.anchored = TRUE
 		A.state = 2
 		A.update_icon()
 		M.deconstruct(src)

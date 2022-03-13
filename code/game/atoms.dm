@@ -188,9 +188,9 @@
 		return flags & INSERT_CONTAINER
 */
 
-// If you want to use this, the atom must have the PROXMOVE flag, and the moving
-// atom must also have the PROXMOVE flag currently to help with lag. ~ ComicIronic
-/atom/proc/HasProximity(atom/movable/AM as mob|obj)
+// Used to be for the PROXMOVE flag, but that was terrible, so instead it's just here as a stub for
+// all the atoms that still have the proc, but get events other ways.
+/atom/proc/HasProximity(turf/T, atom/movable/AM, old_loc)
 	return
 
 //Register listeners on turfs in a certain range
@@ -209,9 +209,9 @@
 	for(var/turf/T as anything in turfs)
 		GLOB.turf_entered_event.unregister(T, src, callback)
 
+
 /atom/proc/emp_act(var/severity)
 	return
-
 
 /atom/proc/bullet_act(obj/item/projectile/P, def_zone)
 	P.on_hit(src, 0, def_zone)

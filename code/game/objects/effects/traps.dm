@@ -62,8 +62,8 @@ Add those other swinging traps you mentioned above!
 	desc = "The dust hangs strangely in the air here."
 	icon = 'icons/turf/flooring/trap.dmi'
 	icon_state = "trap_frame"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	//invisibility = INVISIBILITY_MAXIMUM  - Commented this invis variant out due to balancing issues/its blocking of warning text and effect icons.
 	//mouse_opacity = MOUSE_OPACITY_TRANSPARENT - Commented out for admin QOL and cleanup.
 	var/trap_floor_type = /turf/simulated/floor/water/acid
@@ -296,8 +296,8 @@ Add those other swinging traps you mentioned above!
 	name = "odd sculpture"
 	desc = "This sculpture on the wall seems vaguely threatening."
 	icon_state = "launcher"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	dir = 2
 	trap_floor_type = null
 	var/projectile_type
@@ -423,8 +423,8 @@ Add those other swinging traps you mentioned above!
 	name = "pop up trap"
 	desc = "You shouldn't be seeing this! Contact an admin!"
 	icon_state = "popup_spear"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	trap_floor_type = null
 	var/min_damage = 15
 	var/max_damage = 25

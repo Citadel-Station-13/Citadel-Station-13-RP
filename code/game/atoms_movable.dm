@@ -28,7 +28,7 @@
 	/// Our default glide_size.
 	var/default_glide_size = 0
 
-	var/anchored = 0
+	var/anchored = FALSE
 	var/move_speed = 10
 	var/l_move_time = 1
 	var/m_flag = 1
@@ -47,7 +47,7 @@
 	var/icon_expected_width = 32
 	var/old_x = 0
 	var/old_y = 0
-	var/datum/riding/riding_datum //VOREStation Add - Moved from /obj/vehicle
+	var/datum/riding/riding_datum = null
 	var/does_spin = TRUE // Does the atom spin when thrown (of course it does :P)
 
 	var/cloaked = FALSE //If we're cloaked or not
@@ -213,7 +213,7 @@
 //Overlays
 /atom/movable/overlay
 	var/atom/master = null
-	anchored = 1
+	anchored = TRUE
 
 /atom/movable/overlay/attackby(a, b)
 	if (src.master)

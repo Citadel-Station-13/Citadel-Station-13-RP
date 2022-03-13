@@ -276,8 +276,8 @@
 	icon_off = "medical_wall_off"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	wall_mounted = 1
 	req_access = list(access_medical_equip)
 

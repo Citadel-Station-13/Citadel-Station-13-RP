@@ -2,8 +2,8 @@
 	name = "computer"
 	icon = 'icons/obj/computer3.dmi'
 	icon_state = "frame"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 
 	idle_power_usage	= 20
 	active_power_usage	= 50

@@ -6,8 +6,8 @@
 	icon_state = "x"
 	invisibility = 101
 	mouse_opacity = 0
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 
 	//Weighted with values (not %chance, but relative weight)
 	//Can be left value-less for all equally likely

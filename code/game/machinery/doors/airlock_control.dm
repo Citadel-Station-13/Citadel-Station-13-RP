@@ -151,7 +151,7 @@ obj/machinery/airlock_sensor
 	name = "airlock sensor"
 	desc = "Sends atmospheric readings to a nearby controller."
 
-	anchored = 1
+	anchored = TRUE
 	power_channel = ENVIRON
 
 	var/id_tag
@@ -235,7 +235,7 @@ obj/machinery/access_button
 	icon_state = "access_button_standby"
 	name = "access button"
 
-	anchored = 1
+	anchored = TRUE
 	power_channel = ENVIRON
 
 	var/master_tag

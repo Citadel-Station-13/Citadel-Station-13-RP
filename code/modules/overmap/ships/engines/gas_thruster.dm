@@ -191,7 +191,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	light_color = "#ed9200"
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/engine_exhaust/Initialize(mapload, ndir, flame)
 	. = ..(mapload)

@@ -3,8 +3,8 @@
 	desc = "Stick 'em up!"
 	icon = 'icons/effects/Targeted.dmi'
 	icon_state = "locking"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	opacity = 0
 	plane = ABOVE_PLANE
 	simulated = 0
@@ -224,4 +224,3 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	aiming_at = null
 	moveToNullspace()
 	STOP_PROCESSING(SSobj, src)
-

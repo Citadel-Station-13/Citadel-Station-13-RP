@@ -13,8 +13,8 @@
 	name = "mark"
 	desc = "This is a strange looking disturbance."
 	opacity = 0
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 
 //This is global, to avoid looping through a list of all objects, or god forbid, looping through world.
 /var/global/obj/effect/mark_spell/mark_spell_ref = null
@@ -108,4 +108,3 @@
 	else
 		to_chat(user, "<span class='warning'>You can't afford the energy cost!</span>")
 		return 0
-

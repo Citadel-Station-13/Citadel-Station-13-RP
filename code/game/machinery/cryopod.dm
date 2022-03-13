@@ -14,7 +14,7 @@
 	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/cryopodcontrol
-	density = 0
+	density = FALSE
 	interact_offline = 1
 	var/mode = null
 
@@ -96,10 +96,17 @@
 	data["allow_items"] = allow_items
 	data["crew"] = frozen_crew
 
-	data["items"] = list()
+	var/list/items = list()
 	if(allow_items)
 		for(var/F in frozen_items)
-			data["items"].Add(F)
+			items.Add(F) // VOREStation Edit
+			/* VOREStation Removal
+			items.Add(list(list(
+				"name" = "[F]",
+				"ref" = REF(F),
+			)))
+			VOREStation Removal End */
+	data["items"] = items
 
 	return data
 
@@ -109,8 +116,8 @@
 
 	add_fingerprint(usr)
 
-	return FALSE //Prevents topic exploits
-
+	return FALSE // VOREStation Edit - prevent topic exploits
+	/* VOREStation Edit - Unreachable due to above
 	switch(action)
 		if("item")
 			if(!allow_items)
@@ -142,6 +149,7 @@
 			for(var/obj/item/I in frozen_items)
 				I.forceMove(get_turf(src))
 				frozen_items -= I
+	*/
 
 /obj/item/circuitboard/cryopodcontrol
 	name = "Circuit board (Cryogenic Oversight Console)"
@@ -175,7 +183,7 @@
 	desc = "A bewildering tangle of machinery and pipes."
 	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
 	icon_state = "cryo_rear"
-	anchored = 1
+	anchored = TRUE
 	dir = WEST
 
 //Cryopods themselves.
@@ -184,8 +192,8 @@
 	desc = "A man-sized pod for entering suspended animation."
 	icon = 'icons/obj/Cryogenic2_vr.dmi' //VOREStation Edit - New Icon
 	icon_state = "cryopod_0" //VOREStation Edit - New Icon
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	dir = WEST
 
 	var/base_icon_state = "cryopod_0" //VOREStation Edit - New Icon

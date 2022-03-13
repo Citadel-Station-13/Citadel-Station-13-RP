@@ -149,24 +149,24 @@
 	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "long_mir_m"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 
 /obj/structure/mirror/long/left
 	name = "mirror"
 	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "long_mir_l"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 
 /obj/structure/mirror/long/right
 	name = "mirror"
 	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "long_mir_r"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 
 //Shattered versions.
 /obj/structure/mirror/long/broke
@@ -174,8 +174,8 @@
 	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "long_mir_m_broke"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	shattered = 1
 
 /obj/structure/mirror/long/left_broke
@@ -183,8 +183,8 @@
 	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "long_mir_l_broke"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	shattered = 1
 
 /obj/structure/mirror/long/right_broke
@@ -192,5 +192,5 @@
 	desc = "A SalonPro Nano-Mirror(TM) brand mirror! The leading technology in hair salon products, utilizing nano-machinery to style your hair just right."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "long_mir_r_broke"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE

@@ -17,7 +17,7 @@
 
 /area/abductor/exterior
 	name = "Abductor Ship Exterior"
-	has_gravity = 0
+	has_gravity = FALSE
 
 // The 'Abductor Ship'
 /obj/effect/overmap/visitable/ship/abductor
@@ -80,4 +80,3 @@ You will find a dispenser within the room you started in which contains some bas
 /obj/machinery/power/port_gen/abductor/built/abductor
 	name = "Void Core"
 	power_gen = 5000000
-

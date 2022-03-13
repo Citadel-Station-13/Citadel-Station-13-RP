@@ -130,7 +130,7 @@
 	original_temp = heating_power //We remember our old goal, for use in non perpetual heating level increase
 
 /mob/living/simple_mob/vore/solarmoth/proc/explode()
-	src.anchored = 0
+	src.anchored = FALSE
 	set_light(0)
 	if(empulse(src, emp_heavy, emp_med, emp_light, emp_long))
 		qdel(src)

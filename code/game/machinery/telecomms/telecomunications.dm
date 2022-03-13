@@ -247,8 +247,8 @@
 	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "broadcast receiver"
 	desc = "This machine has a dish-like shape and green lights. It is designed to detect and process subspace radio activity."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 600
 	machinetype = 1
@@ -335,8 +335,8 @@
 	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "hub"
 	desc = "A mighty piece of hardware used to send/receive massive amounts of data."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1600
 	machinetype = 7
@@ -372,8 +372,8 @@
 	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "relay"
 	desc = "A mighty piece of hardware used to send massive amounts of data far away."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 600
 	machinetype = 8
@@ -432,8 +432,8 @@
 	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "bus"
 	desc = "A mighty piece of hardware used to send massive amounts of data quickly."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1000
 	machinetype = 2
@@ -488,8 +488,8 @@
 	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "processor"
 	desc = "This machine is used to process large quantities of information."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 600
 	machinetype = 3
@@ -530,8 +530,8 @@
 	//icon = 'icons/obj/stationobjs.dmi' //VOREStation Removal - use parent icon
 	icon_state = "comm_server"
 	desc = "A machine used to store data and network statistics."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	machinetype = 4

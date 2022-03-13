@@ -1,7 +1,7 @@
 /obj/item/integrated_circuit/reagent
 	category_text = "Reagent"
 	var/volume = 0
-	unacidable = 1
+	unacidable = TRUE
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 2)
 
 /obj/item/integrated_circuit/reagent/Initialize(mapload)
@@ -355,6 +355,3 @@
 					source.reagents.trans_id_to(target, G.id, transfer_amount)
 		activate_pin(2)
 		push_data()
-
-
-

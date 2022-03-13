@@ -35,9 +35,9 @@
 /obj/structure/fake_stairs
 	name = "use a subtype! - stairs"
 	icon = 'icons/obj/stairs.dmi'
-	density = 1
+	density = TRUE
 	opacity = 0
-	anchored = 1
+	anchored = TRUE
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER

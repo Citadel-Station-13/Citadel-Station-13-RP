@@ -4,7 +4,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "exonet_node"
 	idle_power_usage = 2500
-	density = 1
+	density = TRUE
 	var/on = 1
 	var/toggle = 1
 

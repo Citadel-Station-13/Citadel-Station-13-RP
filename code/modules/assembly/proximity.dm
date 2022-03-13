@@ -4,10 +4,9 @@
 	icon_state = "prox"
 	origin_tech = list(TECH_MAGNET = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 800, "glass" = 200)
-	flags = PROXMOVE
 	wires = WIRE_PULSE
 
-	secured = 0
+	secured = FALSE
 
 	var/scanning = 0
 	var/timing = 0
@@ -16,10 +15,10 @@
 	var/range = 2
 
 /obj/item/assembly/prox_sensor/activate()
-	if(!..())	return 0//Cooldown check
+	if(!..())	return FALSE //Cooldown check
 	timing = !timing
 	update_icon()
-	return 0
+	return TRUE
 
 
 /obj/item/assembly/prox_sensor/toggle_secure()
@@ -34,7 +33,7 @@
 	return secured
 
 
-/obj/item/assembly/prox_sensor/HasProximity(atom/movable/AM as mob|obj)
+/obj/item/assembly/prox_sensor/HasProximity(turf/T, atom/movable/AM, old_loc)
 	if(!istype(AM))
 		log_debug("DEBUG: HasProximity called with [AM] on [src] ([usr]).")
 		return
@@ -100,12 +99,13 @@
 		grenade.primed(scanning)
 	return
 
-
-/obj/item/assembly/prox_sensor/Move()
-	..()
+/obj/item/assembly/prox_sensor/Moved(atom/old_loc, direction, forced = FALSE)
+	. = ..()
+	if(isturf(old_loc))
+		unsense_proximity(range = range, callback = /atom/proc/HasProximity, center = old_loc)
+	if(isturf(loc))
+		sense_proximity(range = range, callback = /atom/proc/HasProximity)
 	sense()
-	return
-
 
 /obj/item/assembly/prox_sensor/ui_interact(mob/user, datum/tgui/ui)
 	if(!secured)

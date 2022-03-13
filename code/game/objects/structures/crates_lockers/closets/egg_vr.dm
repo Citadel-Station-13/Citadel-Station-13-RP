@@ -3,7 +3,7 @@
 	desc = "It's an egg; it's smooth to the touch." //This is the default egg.
 	icon = 'icons/obj/egg_vr.dmi'
 	icon_state = "egg"
-	density = 0 //Just in case there's a lot of eggs, so it doesn't block hallways/areas.
+	density = FALSE //Just in case there's a lot of eggs, so it doesn't block hallways/areas.
 	icon_closed = "egg"
 	icon_opened = "egg_open"
 	icon_locked = "egg"

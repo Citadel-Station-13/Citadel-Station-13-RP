@@ -2,8 +2,8 @@
 	name = "Washing Machine"
 	icon = 'icons/obj/machines/washing_machine.dmi'
 	icon_state = "wm_10"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/washing
 	var/state = 1
 	//1 = empty, open door

@@ -41,7 +41,7 @@
 			p3.master = R
 			R.status = explosive
 			p1.b_stat = 0
-			p2.secured = 1
+			p2.secured = TRUE
 			p3.air_contents.temperature = btemp + T0C
 
 		// proximity
@@ -59,10 +59,10 @@
 			R.status = explosive
 
 			p3.air_contents.temperature = btemp + T0C
-			p2.secured = 1
+			p2.secured = TRUE
 
 			if(src.active)
-				R.part1.secured = 1
+				R.part1.secured = TRUE
 				R.part1.icon_state = text("motion[]", 1)
 				R.c_state(1, src)
 
@@ -81,7 +81,7 @@
 			R.status = explosive
 
 			p3.air_contents.temperature = btemp + T0C
-			p2.secured = 1
+			p2.secured = TRUE
 		//bombvest
 		if(3)
 			var/obj/item/clothing/suit/armor/a_i_a_ptank/R = new /obj/item/clothing/suit/armor/a_i_a_ptank(src.loc)
@@ -100,7 +100,7 @@
 			R.status = explosive
 
 			p4.air_contents.temperature = btemp + T0C
-			p2.secured = 1
+			p2.secured = TRUE
 
 	qdel(src)
 */

@@ -33,15 +33,13 @@
 		ui.open()
 
 /obj/machinery/computer/area_atmos/ui_data(mob/user)
-	var/list/data = list()
-
-	data["scrubbers"] = list()
+	var/list/working = list()
 	for(var/id in connectedscrubbers)
 		var/obj/machinery/portable_atmospherics/powered/scrubber/huge/scrubber = connectedscrubbers[id]
 		if(!validscrubber(scrubber))
 			connectedscrubbers -= scrubber
 			continue
-		data["scrubbers"].Add(list(list(
+		working.Add(list(list(
 			"id" = id,
 			"name" = scrubber.name,
 			"on" = scrubber.on,
@@ -51,7 +49,7 @@
 			"area" = get_area(scrubber),
 		)))
 
-	return data
+	return list("scrubbers" = working)
 
 /obj/machinery/computer/area_atmos/ui_act(action, params)
 	if(..())

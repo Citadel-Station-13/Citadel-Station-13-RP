@@ -4,8 +4,8 @@
 	name = "fossil DNA extraction system"
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "pod_0"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	power_channel = EQUIP
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10

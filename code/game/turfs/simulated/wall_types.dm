@@ -93,7 +93,7 @@
 	name = "autojoin wall"
 	icon_state = "light"
 	opacity = 1
-	density = 1
+	density = TRUE
 	blocks_air = 1
 
 	var/base_state = "light" //The base iconstate to base sprites on
@@ -258,7 +258,7 @@
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "flesh"
 	opacity = 1
-	density = 1
+	density = TRUE
 	blocks_air = 1
 
 /turf/simulated/flesh/colour
@@ -267,7 +267,7 @@
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "colorable-wall"
 	opacity = 1
-	density = 1
+	density = TRUE
 	blocks_air = 1
 
 /turf/simulated/flesh/attackby()
@@ -305,7 +305,7 @@ var/list/flesh_overlay_cache = list()
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "bone"
 	opacity = 1
-	density = 1
+	density = TRUE
 	blocks_air = 1
 
 /turf/simulated/bone/attackby()

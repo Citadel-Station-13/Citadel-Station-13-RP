@@ -9,7 +9,7 @@
 	var/obj/item/reagent_containers/glass/beaker = null
 	var/radiation = 0
 
-	var/on = 0
+	var/on = FALSE
 	var/power = 0
 
 	var/foodsupply = 0

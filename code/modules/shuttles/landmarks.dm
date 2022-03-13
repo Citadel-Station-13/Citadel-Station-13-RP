@@ -3,8 +3,8 @@
 	name = "Nav Point"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
-	anchored = 1
-	unacidable = 1
+	anchored = TRUE
+	unacidable = TRUE
 	simulated = 0
 	invisibility = 101
 	flags = SLANDMARK_FLAG_AUTOSET	// We generally want to use current area/turf as base.
@@ -181,7 +181,7 @@
 		return
 
 	active = 1
-	anchored = 1
+	anchored = TRUE
 
 	var/obj/effect/shuttle_landmark/automatic/mark = new(T)
 	mark.name = ("Beacon signal ([T.x],[T.y])")

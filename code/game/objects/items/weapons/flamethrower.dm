@@ -202,6 +202,6 @@
 	weldtool = new /obj/item/weldingtool(src)
 	weldtool.status = 0
 	igniter = new /obj/item/assembly/igniter(src)
-	igniter.secured = 0
+	igniter.secured = FALSE
 	status = 1
 	update_icon()

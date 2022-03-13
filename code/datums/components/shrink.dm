@@ -10,7 +10,7 @@
 	parent_atom.transform = parent_atom.transform.Scale(0.5,0.5)
 	olddens = parent_atom.density
 	oldopac = parent_atom.opacity
-	parent_atom.density = 0
+	parent_atom.density = FALSE
 	parent_atom.opacity = 0
 	if(isliving(parent_atom))
 		var/mob/living/L = parent_atom

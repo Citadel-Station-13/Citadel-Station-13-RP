@@ -67,7 +67,7 @@
 //	can_pull_size = ITEMSIZE_TINY
 //	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
-	density = 0
+	density = FALSE
 
 	response_help  = "strokes"
 	response_disarm = "awkwardly scoots past"

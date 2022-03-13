@@ -65,6 +65,8 @@
 	if(add_to_db)
 		SStranscore.add_backup(src, database_key = database_key)
 
+	return ..()
+
 /////// Body Record ///////
 /datum/transhuman/body_record
 	var/datum/dna2/record/mydna
@@ -85,6 +87,7 @@
 	var/sizemult
 	var/weight
 	var/aflags
+	var/breath_type = "oxygen"
 
 /datum/transhuman/body_record/New(var/copyfrom, var/add_to_db = 0, var/ckeylock = 0)
 	..()

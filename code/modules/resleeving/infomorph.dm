@@ -85,6 +85,7 @@ var/list/infomorph_emotions = list(
 	var/datum/data/record/securityActive2
 
 /mob/living/silicon/infomorph/Initialize(mapload, obj/item/sleevecard/SC, name = "Unknown", db_key)
+	. = ..()
 	ASSERT(SC)
 	name = "[initial(name)] ([name])"
 	src.forceMove(SC)
@@ -120,7 +121,6 @@ var/list/infomorph_emotions = list(
 		if(M)
 			M.toff = TRUE
 
-	return ..()
 
 /////////// STAT PANEL
 /mob/living/silicon/infomorph/Stat()

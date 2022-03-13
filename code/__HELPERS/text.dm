@@ -95,7 +95,7 @@
 	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra)
 
 //Filters out undesirable characters from names
-/proc/sanitizeName(var/input, var/max_length = MAX_NAME_LEN)
+/proc/sanitizeName(var/input, var/max_length = MAX_NAME_LEN, var/allow_numbers = 0)
 	if(!input || length(input) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
@@ -121,7 +121,7 @@
 
 			// 0  .. 9
 			if(48 to 57)			//Numbers
-				if(!last_char_group)		continue	//suppress at start of string
+				if(!allow_numbers)			continue	// If allow_numbers is 0, then don't do this.
 				output += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 3
@@ -135,6 +135,7 @@
 			// ~   |   @  :  #  $  %  &  *  +
 			if(126,124,64,58,35,36,37,38,42,43)			//Other symbols that we'll allow (mainly for AI)
 				if(!last_char_group)		continue	//suppress at start of string
+				if(!allow_numbers)			continue
 				output += ascii2text(ascii_char)
 				last_char_group = 2
 

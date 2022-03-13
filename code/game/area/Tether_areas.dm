@@ -25,7 +25,7 @@
 /area/turbolift
 	delay_time = 2 SECONDS
 	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
-	dynamic_lighting = FALSE //Temporary fix for elevator lighting
+	dynamic_lighting = 0 //Temporary fix for elevator lighting
 
 	requires_power = FALSE
 
@@ -1447,7 +1447,7 @@ area/shuttle/mining_outpost/shuttle
 	name = "\improper Tether Elevator"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "elevator"
-	dynamic_lighting = FALSE
+	dynamic_lighting = 0
 
 	requires_power = FALSE
 

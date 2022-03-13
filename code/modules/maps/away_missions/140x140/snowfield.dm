@@ -19,11 +19,11 @@
 /area/awaymission/snowfield/outside
 	icon_state = "green"
 	requires_power = 1
-	always_unpowered = 1
+	always_unpowered = TRUE
 	dynamic_lighting = 1
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
 	mobcountmax = 40
 	floracountmax = 2000
 

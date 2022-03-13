@@ -26,21 +26,21 @@
 /obj/item/multitool/hacktool/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_screwdriver())
 		in_hack_mode = !in_hack_mode
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src, W.usesound, 50, 1)
 	else
 		..()
 
-/obj/item/multitool/hacktool/resolve_attackby(obj/item/W, mob/user, params, attack_modifier)
+/obj/item/multitool/hacktool/afterattack(atom/A, mob/user)
 	sanity_check()
 
 	if(!in_hack_mode)
 		return ..()
 
-	if(!attempt_hack(user, W))
+	if(!attempt_hack(user, A))
 		return FALSE
 
-	// Note, if you ever want to expand supported_types, you must manually add the custom state argument to their ui_interact
-	W.ui_interact(user, custom_state = hack_state)
+	// Note, if you ever want to expand supported_types, you must manually add the custom state argument to their tgui_interact
+	A.ui_interact(user, custom_state = hack_state)
 	return TRUE
 
 /obj/item/multitool/hacktool/proc/attempt_hack(var/mob/user, var/atom/target)

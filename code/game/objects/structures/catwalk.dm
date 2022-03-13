@@ -6,7 +6,7 @@
 	layer = ABOVE_UTILITY
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "catwalk"
-	density = 0
+	density = FALSE
 	var/health = 100
 	var/maxhealth = 100
 	var/obj/item/stack/tile/plated_tile = null
@@ -14,7 +14,7 @@
 		/obj/item/stack/tile/floor = "#858a8f",
 		/obj/item/stack/tile/floor/dark = "#4f4f4f",
 		/obj/item/stack/tile/floor/white = "#e8e8e8")
-	anchored = 1.0
+	anchored = TRUE
 
 /obj/structure/catwalk/Initialize(mapload)
 	. = ..()
@@ -115,8 +115,8 @@
 	name = "plated catwalk spawner"
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "catwalk_plated"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	var/activated = FALSE
 	plane = DECAL_PLANE
 	layer = ABOVE_UTILITY
@@ -172,8 +172,8 @@
 	layer = ABOVE_UTILITY
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "plank"
-	density = 0
-	anchored = 1.0
+	density = FALSE
+	anchored = TRUE
 
 /obj/structure/catwalk/plank/Crossed()
 	. = ..()

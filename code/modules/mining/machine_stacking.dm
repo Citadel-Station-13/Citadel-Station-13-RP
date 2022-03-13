@@ -4,8 +4,8 @@
 	name = "stacking machine console"
 	icon = 'icons/obj/machines/mining_machines_vr.dmi'  // VOREStation Edit
 	icon_state = "console"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/obj/machinery/mineral/stacking_machine/machine = null
 	//var/machinedir = SOUTHEAST //This is really dumb, so lets burn it with fire.
 
@@ -37,15 +37,15 @@
 /obj/machinery/mineral/stacking_unit_console/ui_data(mob/user)
 	var/list/data = ..()
 
-	data["stacktypes"] = list()
+	var/list/stacktypes = list()
 	for(var/stacktype in machine.stack_storage)
 		if(machine.stack_storage[stacktype] > 0)
-			data["stacktypes"].Add(list(list(
+			stacktypes.Add(list(list(
 				"type" = stacktype,
 				"amt" = machine.stack_storage[stacktype],
 			)))
+	data["stacktypes"] = stacktypes
 	data["stackingAmt"] = machine.stack_amt
-
 	return data
 
 /obj/machinery/mineral/stacking_unit_console/ui_act(action, list/params)
@@ -76,8 +76,8 @@
 	name = "stacking machine"
 	icon = 'icons/obj/machines/mining_machines_vr.dmi' // VOREStation Edit
 	icon_state = "stacker"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	var/obj/machinery/mineral/stacking_unit_console/console
 	var/obj/machinery/mineral/input = null
 	var/obj/machinery/mineral/output = null

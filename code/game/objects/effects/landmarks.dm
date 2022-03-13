@@ -2,8 +2,8 @@
 	name = "landmark"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x2"
-	anchored = 1.0
-	unacidable = 1
+	anchored = TRUE
+	unacidable = TRUE
 	simulated = 0
 	invisibility = 100
 	var/delete_me = 0
@@ -105,7 +105,7 @@
 	name = "start"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"
-	anchored = 1.0
+	anchored = TRUE
 
 /obj/effect/landmark/start/New()
 	..()
@@ -118,7 +118,7 @@
 	name = "virtual_reality"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x"
-	anchored = 1.0
+	anchored = TRUE
 
 /obj/effect/landmark/virtual_reality/New()
 	..()

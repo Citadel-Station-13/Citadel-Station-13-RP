@@ -38,7 +38,7 @@
 	desc = "A trolly designed to transport security personnel or prisoners."
 	icon = 'icons/obj/vehicles_vr.dmi'
 	icon_state = "paddy_trailer"
-	anchored = 0
+	anchored = FALSE
 	passenger_allowed = 1
 	locked = 0
 
@@ -382,6 +382,6 @@
 	src.active_engines = active_engines
 
 	if(!lead && !tow)
-		anchored = 0
+		anchored = FALSE
 	else
-		anchored = 1
+		anchored = TRUE

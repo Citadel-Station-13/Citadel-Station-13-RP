@@ -24,7 +24,7 @@
 	target_speed = 3
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/secbot)
 
-	density = 1
+	density = TRUE
 
 	var/default_icon_state = "secbot"
 	var/idcheck = FALSE // If true, arrests for having weapons without authorization.

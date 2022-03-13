@@ -1,8 +1,8 @@
 /obj/effect/mine
 	name = "land mine"	//The name and description are deliberately NOT modified, so you can't game the mines you find.
 	desc = "A small explosive land mine."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "uglymine"
 	var/triggered = 0

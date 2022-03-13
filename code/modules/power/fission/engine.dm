@@ -5,8 +5,8 @@
 
 /obj/machinery/power/fission
 	icon = 'icons/obj/machines/power/fission.dmi'
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	name = "fission core"
 	icon_state = "engine"
 	var/announce = 1
@@ -361,7 +361,7 @@
 
 /obj/machinery/power/fission/proc/anchor()
 	if(!anchored)
-		anchored = 1
+		anchored = TRUE
 		var/list/datum/pipeline/pipelines = new()
 		for(var/obj/machinery/atmospherics/pipe/simple/pipe in loc)
 			if (!(pipe.parent in pipelines))
@@ -380,7 +380,7 @@
 				pipes += pipe
 				pipelines += pipe.parent
 	else
-		anchored = 0
+		anchored = FALSE
 		pipes = new()
 
 /obj/machinery/power/fission/proc/announce_warning(var/meltedrods, var/meltingrods, var/core_overheat)
@@ -518,8 +518,8 @@ I'm commenting this out until I have time to make this less stupid.
 	icon_state = "x"
 	invisibility = 101
 	mouse_opacity = 0
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 
 	//Weighted with values (not %chance, but relative weight)
 	//Can be left value-less for all equally likely

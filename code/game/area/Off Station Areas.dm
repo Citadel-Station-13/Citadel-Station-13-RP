@@ -184,7 +184,7 @@
 	name = "Frozen Planet - Outside (UE)"
 	icon_state = "yellow"
 	dynamic_lighting = 1
-	
+
 //Gaia planet world areas
 /area/gaia_planet
 	name = "Gaia Planet"
@@ -275,7 +275,7 @@
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	requires_power = 0
 	dynamic_lighting = 1
-	
+
 /area/poi_h/POIs/WW_Town
 	name = "Ghost Town"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
@@ -731,21 +731,21 @@
 	icon_state = "away"
 	base_turf = /turf/unsimulated/floor/sky/virgo2_sky
 	requires_power = FALSE
-	dynamic_lighting = FALSE
+	dynamic_lighting = 0
 
 /area/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
 	icon_state = "crew_quarters"
 	base_turf = /turf/simulated/floor/plating/virgo2
 	requires_power = TRUE
-	dynamic_lighting = TRUE
+	dynamic_lighting = 1
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
 
 /area/aerostat/solars
 	name = "\improper Away Mission - Aerostat Solars"
 	icon_state = "crew_quarters"
 	base_turf = /turf/simulated/floor/plating/virgo2
-	dynamic_lighting = TRUE
+	dynamic_lighting = 1
 
 /area/aerostat/surface
 	flags = RAD_SHIELDED
@@ -890,11 +890,11 @@
 /area/awaymission/snow_outpost/outside
 	icon_state = "away1"
 	requires_power = 1
-	always_unpowered = 1
+	always_unpowered = TRUE
 	dynamic_lighting = 1
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
 	mobcountmax = 100
 	floracountmax = 7000
 	valid_mobs = list(/mob/living/simple_mob/animal/sif/savik, /mob/living/simple_mob/animal/wolf, /mob/living/simple_mob/animal/sif/shantak,
@@ -930,11 +930,11 @@
 /area/awaymission/snowfield/outside
 	icon_state = "green"
 	requires_power = 1
-	always_unpowered = 1
+	always_unpowered = TRUE
 	dynamic_lighting = 1
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
 	mobcountmax = 40
 	floracountmax = 2000
 
@@ -1090,4 +1090,3 @@
 	icon_state = "blue"
 /area/awaymission/academy/academygate
 	icon_state = "purple"
-

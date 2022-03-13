@@ -3,7 +3,7 @@
 
 	icon = 'icons/obj/atmos.dmi'
 	icon_state = "pscrubber:0"
-	density = 1
+	density = TRUE
 	w_class = ITEMSIZE_NORMAL
 
 	var/on = 0
@@ -158,7 +158,7 @@
 	name = "Huge Air Scrubber"
 	icon = 'icons/obj/atmos_vr.dmi' //VOREStation Edit - New Sprite
 	icon_state = "scrubber:0"
-	anchored = 1
+	anchored = TRUE
 	volume = 500000
 	volume_rate = 7000
 

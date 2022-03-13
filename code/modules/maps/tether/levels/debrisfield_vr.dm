@@ -53,12 +53,12 @@
 	icon_state = "debrisexplored"
 	name = "\improper Space"
 	requires_power = 1
-	always_unpowered = 1
+	always_unpowered = TRUE
 	dynamic_lighting = 0
-	has_gravity = 0
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
+	has_gravity = FALSE
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
 	ambience = AMBIENCE_SPACE
 
 /area/submap/debrisfield_vr
@@ -117,7 +117,7 @@
 
 /area/submap/debrisfield_vr/tinyshuttle/hangar
 	name = "Hangar"
-	has_gravity = 0
+	has_gravity = FALSE
 
 /area/submap/debrisfield_vr/tinyshuttle/engine
 	name = "Systems Bay"
@@ -230,8 +230,8 @@
 
 /area/submap/debrisfield_vr/misc_debris //for random bits of debris that should use dynamic lights
 	requires_power = 1
-	always_unpowered = 1
-	has_gravity = 0
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
+	always_unpowered = TRUE
+	has_gravity = FALSE
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE

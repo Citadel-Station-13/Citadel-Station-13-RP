@@ -3,13 +3,12 @@
 	icon = 'icons/obj/assemblies/new_assemblies.dmi'
 	icon_state = "holder"
 	item_state = "assembly"
-	flags = PROXMOVE
 	throwforce = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 3
 	throw_range = 10
 
-	var/secured = 0
+	var/secured = FALSE
 	var/obj/item/assembly/a_left = null
 	var/obj/item/assembly/a_right = null
 	var/obj/special_assembly = null
@@ -94,11 +93,18 @@
 	return
 
 
-/obj/item/assembly_holder/HasProximity(atom/movable/AM as mob|obj)
+/obj/item/assembly_holder/Moved(atom/old_loc, direction, forced = FALSE)
+	. = ..()
+	if(isturf(old_loc))
+		unsense_proximity(callback = /atom/proc/HasProximity, center = old_loc)
+	if(isturf(loc))
+		sense_proximity(callback = /atom/proc/HasProximity)
+
+/obj/item/assembly_holder/HasProximity(turf/T, atom/movable/AM, old_loc)
 	if(a_left)
-		a_left.HasProximity(AM)
+		a_left.HasProximity(T, AM, old_loc)
 	if(a_right)
-		a_right.HasProximity(AM)
+		a_right.HasProximity(T, AM, old_loc)
 	if(special_assembly)
 		special_assembly.HasProximity(AM)
 
@@ -229,16 +235,16 @@
 		..()
 
 		var/obj/item/assembly/igniter/ign = new(src)
-		ign.secured = 1
+		ign.secured = TRUE
 		ign.holder = src
 		var/obj/item/assembly/timer/tmr = new(src)
 		tmr.time=5
-		tmr.secured = 1
+		tmr.secured = TRUE
 		tmr.holder = src
 		START_PROCESSING(SSobj, tmr)
 		a_left = tmr
 		a_right = ign
-		secured = 1
+		secured = TRUE
 		update_icon()
 		name = initial(name) + " ([tmr.time] secs)"
 

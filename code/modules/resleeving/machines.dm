@@ -552,7 +552,7 @@
 
 	if(mode == 2 && sleevecards) //Card sleeving
 		var/obj/item/sleevecard/card = new /obj/item/sleevecard(get_turf(src))
-		card.sleeveInto(MR, db_key = db_key)
+		card.sleeveInto(MR/*, db_key = db_key*/)
 		sleevecards--
 		return TRUE
 

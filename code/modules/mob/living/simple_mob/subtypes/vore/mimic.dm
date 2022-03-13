@@ -145,8 +145,8 @@
 	icon_opened = "amimicopen"
 	icon_closed = "amimic"
 	mimic_chance = 30
-	anchored = 1 //You will not be able to push back the airlock mimic
-	density = 1
+	anchored = TRUE //You will not be able to push back the airlock mimic
+	density = TRUE
 	opacity = 1
 
 /obj/structure/closet/crate/mimic/airlock/open()
@@ -331,8 +331,8 @@
 /obj/effect/floormimic //As Floor Mimics are triggered by bumps rather than click interaction... They are effects rather than structures
 	name = "loose wooden floor"
 	desc = "The boards here look rather loose."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	icon = 'icons/mob/mimic.dmi'
 	icon_state = "wmimic"
 	var/mimic_chance = 30

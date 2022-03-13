@@ -1,4 +1,4 @@
-/obj/effect/plant/HasProximity(var/atom/movable/AM)
+/obj/effect/plant/HasProximity(turf/T, atom/movable/AM, old_loc)
 
 	if(!is_mature() || seed.get_trait(TRAIT_SPREAD) != 2)
 		return
@@ -33,6 +33,14 @@
 
 	if(!M.apply_damage(base_damage, BRUTE, target_zone, blocked, soaked, used_weapon=src))
 		return 0
+
+/obj/effect/plant/Moved(atom/old_loc, direction, forced = FALSE)
+	. = ..()
+	if(seed.get_trait(TRAIT_SPREAD)==2)
+		if(isturf(old_loc))
+			unsense_proximity(callback = /atom/proc/HasProximity, center = old_loc)
+		if(isturf(loc))
+			sense_proximity(callback = /atom/proc/HasProximity)
 
 /obj/effect/plant/attack_hand(var/mob/user)
 	manual_unbuckle(user)

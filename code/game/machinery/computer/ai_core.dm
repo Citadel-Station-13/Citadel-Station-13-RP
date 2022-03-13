@@ -1,6 +1,6 @@
 /obj/structure/AIcore
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	name = "\improper AI core"
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "0"
@@ -18,7 +18,7 @@
 				playsound(loc, P.usesound, 50, 1)
 				if(do_after(user, 20 * P.toolspeed))
 					to_chat(user, "<span class='notice'>You wrench the frame into place.</span>")
-					anchored = 1
+					anchored = TRUE
 					state = 1
 			if(istype(P, /obj/item/weldingtool))
 				var/obj/item/weldingtool/WT = P
@@ -36,7 +36,7 @@
 				playsound(loc, P.usesound, 50, 1)
 				if(do_after(user, 20 * P.toolspeed))
 					to_chat(user, "<span class='notice'>You unfasten the frame.</span>")
-					anchored = 0
+					anchored = FALSE
 					state = 0
 			if(istype(P, /obj/item/circuitboard/aicore) && !circuit)
 				playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -187,7 +187,7 @@ GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactiva
 	name = "inactive AI"
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "ai-empty"
-	anchored = 1
+	anchored = TRUE
 	state = 20//So it doesn't interact based on the above. Not really necessary.
 
 /obj/structure/AIcore/deactivated/Destroy()
@@ -240,7 +240,7 @@ GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactiva
 				user.visible_message("<span class='notice'>\The [user] decides not to unbolt \the [src].</span>")
 				return
 			user.visible_message("<span class='notice'>\The [user] finishes unfastening \the [src]!</span>")
-			anchored = 0
+			anchored = FALSE
 			return
 		else
 			user.visible_message("<span class='notice'>\The [user] starts to bolt \the [src] to the plating...</span>")
@@ -249,7 +249,7 @@ GLOBAL_LIST_BOILERPLATE(all_deactivated_AI_cores, /obj/structure/AIcore/deactiva
 				user.visible_message("<span class='notice'>\The [user] decides not to bolt \the [src].</span>")
 				return
 			user.visible_message("<span class='notice'>\The [user] finishes fastening down \the [src]!</span>")
-			anchored = 1
+			anchored = TRUE
 			return
 	else
 		return ..()

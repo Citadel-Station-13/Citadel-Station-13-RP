@@ -12,7 +12,7 @@
 	desc = "A conveyor belt."
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/conveyor
 	speed_process = TRUE
 	/// What we set things to glide size to when they are being moved by us
@@ -218,7 +218,7 @@
 	var/id = "" 				// must match conveyor IDs to control them
 
 	var/list/conveyors		// the list of converyors that are controlled by this switch
-	anchored = 1
+	anchored = TRUE
 
 
 

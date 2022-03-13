@@ -57,8 +57,8 @@
 	else
 		filler1 = new/obj/machinery/filler_object (src.loc)
 		filler2 = new/obj/machinery/filler_object (get_step(src,NORTH))
-	filler1.density = 0
-	filler2.density = 0
+	filler1.density = FALSE
+	filler2.density = FALSE
 	filler1.set_opacity(opacity)
 	filler2.set_opacity(opacity)
 
@@ -78,7 +78,7 @@
 	name = ""
 	icon = 'icons/obj/doors/rapid_pdoor.dmi'
 	icon_state = ""
-	density = 0
+	density = FALSE
 
 /obj/machinery/door/airlock/multi_tile/metal/mait
 	icon = 'icons/obj/doors/Door2x1_Maint.dmi'

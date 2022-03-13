@@ -126,7 +126,7 @@
 
 /area/outpost/engineering/solarsoutside
 	requires_power = 1
-	always_unpowered = 1
+	always_unpowered = TRUE
 	dynamic_lighting = 0
 
 	aft

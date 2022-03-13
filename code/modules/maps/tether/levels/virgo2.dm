@@ -159,21 +159,21 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 	icon_state = "away"
 	base_turf = /turf/unsimulated/floor/sky/virgo2_sky
 	requires_power = FALSE
-	dynamic_lighting = FALSE
+	dynamic_lighting = 0
 
 /area/tether_away/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
 	icon_state = "crew_quarters"
 	base_turf = /turf/simulated/floor/plating/virgo2
 	requires_power = TRUE
-	dynamic_lighting = TRUE
+	dynamic_lighting = 1
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
 
 /area/tether_away/aerostat/solars
 	name = "\improper Away Mission - Aerostat Solars"
 	icon_state = "crew_quarters"
 	base_turf = /turf/simulated/floor/plating/virgo2
-	dynamic_lighting = TRUE
+	dynamic_lighting = 1
 
 /area/tether_away/aerostat/surface
 	flags = RAD_SHIELDED

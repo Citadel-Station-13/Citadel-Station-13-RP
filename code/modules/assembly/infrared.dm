@@ -9,7 +9,7 @@
 
 	wires = WIRE_PULSE
 
-	secured = 0
+	secured = FALSE
 
 	var/on = 0
 	var/visible = 0
@@ -149,7 +149,7 @@
 	var/visible = 0
 	anchored = TRUE
 
-/obj/effect/beam/i_beam/Initialize()
+/obj/effect/beam/i_beam/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -173,7 +173,8 @@
 /obj/effect/beam/i_beam/Bumped()
 	hit()
 
-/obj/effect/beam/i_beam/Crossed(var/atom/movable/AM)
+/obj/effect/beam/i_beam/Crossed(atom/movable/AM as mob|obj)
+	. = ..()
 	if(AM.is_incorporeal())
 		return
 	if(istype(AM, /obj/effect/beam))

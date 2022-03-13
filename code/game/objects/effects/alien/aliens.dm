@@ -23,9 +23,9 @@
 	desc = "Looks like some kind of slimy growth."
 	icon_state = "resin"
 
-	density = 1
+	density = TRUE
 	opacity = 1
-	anchored = 1
+	anchored = TRUE
 	can_atmos_pass = ATMOS_PASS_NO
 	var/health = 200
 	//var/mob/living/affecting = null
@@ -54,7 +54,7 @@
 
 /obj/effect/alien/resin/proc/healthcheck()
 	if(health <=0)
-		density = 0
+		density = FALSE
 		qdel(src)
 	return
 
@@ -165,8 +165,8 @@
 	desc = "Weird purple weeds."
 	icon_state = "weeds"
 
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	var/health = 15
@@ -385,9 +385,9 @@ Alien plants should do something if theres a lot of poison
 	desc = "Burbling corrossive stuff. I wouldn't want to touch it."
 	icon_state = "acid"
 
-	density = 0
+	density = FALSE
 	opacity = 0
-	anchored = 1
+	anchored = TRUE
 
 	var/atom/target
 	var/ticks = 0
@@ -450,12 +450,11 @@ Alien plants should do something if theres a lot of poison
 	name = "egg"
 //	icon_state = "egg_growing" // So the egg looks 'grown', even though it's not.
 	icon_state = "egg_growing"
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 
 	var/health = 100
 	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
-	flags = PROXMOVE
 
 /obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
@@ -561,17 +560,6 @@ Alien plants should do something if theres a lot of poison
 	if(exposed_temperature > 500 + T0C)
 		health -= 5
 		healthcheck()
-
-/*/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
-	if(status == GROWN)
-		if(!CanHug(AM))
-			return
-
-		var/mob/living/carbon/C = AM
-		if(C.stat == CONSCIOUS && C.status_flags & TRAIT_XENO_HOST)
-			return
-
-		Burst(0)*/
 
 /obj/effect/alien/egg/process()
 	if(GROWN)

@@ -14,10 +14,10 @@
 	icon = 'icons/obj/machines/shielding.dmi'
 	icon_state = "shield"
 	alpha = 100
-	anchored = 1
+	anchored = TRUE
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
-	density = 0
+	density = FALSE
 	can_atmos_pass = ATMOS_PASS_YES
 	var/obj/machinery/shield_gen/my_gen = null
 	var/strength = 0 // in Renwicks
@@ -95,13 +95,13 @@
 
 		ticks_recovering = min(ticks_recovering + 2, 10)
 		if(strength < 1) // We broke
-			density = 0
+			density = FALSE
 			ticks_recovering = 10
 			strength = 0
 
 	else if(amount > 0) // Healing damage.
 		if(strength >= 1)
-			density = 1
+			density = TRUE
 
 	if(density != old_density)
 		update_icon()
@@ -146,4 +146,3 @@
 					for(var/obj/effect/energy_field/F in T)
 						if(!(F in affected_shields))
 							F.impact_effect(i, affected_shields) // Spread the effect to them.
-

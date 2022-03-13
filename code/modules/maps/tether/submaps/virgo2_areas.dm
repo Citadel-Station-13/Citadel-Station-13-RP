@@ -1,7 +1,7 @@
 /area/submap/virgo2
 	name = "Submap Area"
 	icon_state = "submap"
-	dynamic_lighting = FALSE
+	dynamic_lighting = 0
 	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/virgo2
 
 /area/submap/virgo2/spider1

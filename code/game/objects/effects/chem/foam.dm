@@ -7,8 +7,8 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "foam"
 	opacity = 0
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	layer = OBJ_LAYER + 0.9
 	mouse_opacity = 0
 	animate_movement = 0
@@ -136,9 +136,9 @@
 /obj/structure/foamedmetal
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "metalfoam"
-	density = 1
+	density = TRUE
 	opacity = 1 // changed in New()
-	anchored = 1
+	anchored = TRUE
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
 	can_atmos_pass = ATMOS_PASS_NO
@@ -149,7 +149,7 @@
 	update_nearby_tiles(1)
 
 /obj/structure/foamedmetal/Destroy()
-	density = 0
+	density = FALSE
 	update_nearby_tiles(1)
 	return ..()
 

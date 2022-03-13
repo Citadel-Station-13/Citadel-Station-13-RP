@@ -2,8 +2,8 @@
 	name = "Pipe Dispenser"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "pipe_d"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/unwrenched = 0
 	var/wait = 0
 	var/p_layer = PIPING_LAYER_REGULAR
@@ -116,7 +116,7 @@
 					"<span class='notice'>[user] unfastens \the [src].</span>", \
 					"<span class='notice'>You have unfastened \the [src]. Now it can be pulled somewhere else.</span>", \
 					"You hear ratchet.")
-				src.anchored = 0
+				src.anchored = FALSE
 				src.stat |= MAINT
 				src.unwrenched = 1
 				if (usr.machine==src)
@@ -129,7 +129,7 @@
 					"<span class='notice'>[user] fastens \the [src].</span>", \
 					"<span class='notice'>You have fastened \the [src]. Now it can dispense pipes.</span>", \
 					"You hear ratchet.")
-				src.anchored = 1
+				src.anchored = TRUE
 				src.stat &= ~MAINT
 				src.unwrenched = 0
 				power_change()
@@ -160,9 +160,9 @@
 
 // adding a pipe dispensers that spawn unhooked from the ground
 /obj/machinery/pipedispenser/orderable
-	anchored = 0
+	anchored = FALSE
 	unwrenched = 1
 
 /obj/machinery/pipedispenser/disposal/orderable
-	anchored = 0
+	anchored = FALSE
 	unwrenched = 1

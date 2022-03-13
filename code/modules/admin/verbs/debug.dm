@@ -549,7 +549,7 @@
 		if(istype(M.loc.loc,/area/engineering/engine_room))
 			if(istype(M,/obj/machinery/power/rad_collector))
 				var/obj/machinery/power/rad_collector/Rad = M
-				Rad.anchored = 1
+				Rad.anchored = TRUE
 				Rad.connect_to_network()
 
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)

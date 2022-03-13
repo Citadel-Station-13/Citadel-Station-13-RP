@@ -13,7 +13,7 @@
 	name = "\proper space"
 	icon = 'icons/turf/space.dmi'
 	icon_state = "0"
-	dynamic_lighting = FALSE
+	dynamic_lighting = 0
 
 /turf/unsimulated/fake_space/Initialize(mapload)
 	. = ..()

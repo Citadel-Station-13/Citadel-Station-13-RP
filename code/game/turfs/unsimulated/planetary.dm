@@ -6,7 +6,7 @@
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "riveted"
 	opacity = 1
-	density = 1
+	density = TRUE
 	alpha = 0
 	blocks_air = 0
 	// Set these to get your desired planetary atmosphere.
@@ -56,7 +56,7 @@
 	desc = "You see nothing but featureless flat desert stretching outwards far beyond what the eye can see."
 	icon_state = "desert"
 	opacity = 0
-	density = 1
+	density = TRUE
 	alpha = 0
 	blocks_air = 0
 	initial_gas_mix = GAS_STRING_STP_HOT

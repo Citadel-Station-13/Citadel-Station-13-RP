@@ -8,8 +8,8 @@
 	desc = "A machine for creating slimes from cores. Amazing!"
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "restruct_0"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/slimereplicator
 	var/obj/item/xenoproduct/slime/core/core = null
 	var/inuse
@@ -145,4 +145,3 @@
 							/obj/item/stock_parts/matter_bin = 1,
 							/obj/item/stock_parts/micro_laser = 1
 							)
-

@@ -5,8 +5,8 @@
 	icon_state = "extinguisher_closed"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	var/obj/item/extinguisher/has_extinguisher
 	var/opened = 0
 

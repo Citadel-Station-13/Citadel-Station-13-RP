@@ -11,7 +11,7 @@
 	plane = PLATING_PLANE
 	layer = PIPES_LAYER - 0.05 //Just below pipes
 	color = null
-	unacidable = 1
+	unacidable = TRUE
 	var/id = null
 
 /obj/structure/cable/ender/get_connections(var/powernetless_only = 0)
@@ -36,4 +36,3 @@
 // Because they cannot be rebuilt, they are hard to destroy
 /obj/structure/cable/ender/ex_act(severity)
 	return
-

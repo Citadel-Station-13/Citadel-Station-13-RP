@@ -6,8 +6,8 @@
 	name = "Body Scanner"
 	icon = 'icons/obj/Cryogenic2_vr.dmi'
 	icon_state = "scanner_open"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/body_scanner
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 60

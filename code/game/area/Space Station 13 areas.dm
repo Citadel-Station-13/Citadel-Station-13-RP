@@ -6,7 +6,7 @@
 	name = "NICE NAME" 				(not required but makes things really nice)
 	icon = "ICON FILENAME" 			(defaults to areas.dmi)
 	icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
-	requires_power = 0 				(defaults to 1)
+	requires_power = FALSE 				(defaults to 1)
 	music = "music/music.ogg"		(defaults to "music/music.ogg")
 
 NOTE: there are two lists of areas in the end of this file: centcom and station itself. Please maintain these lists valid. --rastaf0
@@ -22,14 +22,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/space
 	name = "\improper Space"
 	icon_state = "space"
-	requires_power = 1
-	always_unpowered = 1
+	requires_power = TRUE
+	always_unpowered = TRUE
 	dynamic_lighting = 0
 	has_gravity = FALSE
-	power_light = 0
-	has_gravity = 0
-	power_equip = 0
-	power_environ = 0
+	power_light = FALSE
+	has_gravity = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
 	base_turf = /turf/space
 	ambience = AMBIENCE_SPACE
 	flags = AREA_FLAG_IS_NOT_PERSISTENT
@@ -50,7 +50,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	return
 
 /area/arrival
-	requires_power = 0
+	requires_power = FALSE
 
 /area/arrival/start
 	name = "\improper Arrival Area"
@@ -69,7 +69,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // All shuttles should now be under shuttle since we have smooth-wall code.
 
 /area/shuttle
-	requires_power = 0
+	requires_power = FALSE
 	flags = RAD_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
 	sound_env = SMALL_ENCLOSED
 	base_turf = /turf/space
@@ -85,7 +85,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/escape
 	name = "\improper Emergency Shuttle"
 	music = "music/escape.ogg"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/shuttle/escape_pod1
 	name = "\improper Escape Pod One"
@@ -139,12 +139,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/alien/base
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Base"
-	requires_power = 1
+	requires_power = TRUE
 
 /area/shuttle/alien/mine
 	icon_state = "shuttle"
 	name = "\improper Alien Shuttle Mine"
-	requires_power = 1
+	requires_power = TRUE
 
 /area/shuttle/prison/
 	name = "\improper Prison Shuttle"
@@ -249,7 +249,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 // Excursion Shuttle
 /area/shuttle/excursion
-	requires_power = 1
+	requires_power = TRUE
 	icon_state = "shuttle2"
 
 /area/shuttle/excursion/general
@@ -263,7 +263,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 //Courser
 /area/shuttle/courser
-	requires_power = 1
+	requires_power = TRUE
 	icon_state = "shuttle"
 
 /area/shuttle/courser/general
@@ -278,7 +278,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 // Pirate Skiff
 /area/shuttle/pirate
-	requires_power = 1
+	requires_power = TRUE
 	icon_state = "shuttle2"
 
 /area/shuttle/pirate/general
@@ -292,7 +292,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 // Civilian Transport
 /area/shuttle/civvie
-	requires_power = 1
+	requires_power = TRUE
 	icon_state = "shuttle2"
 
 /area/shuttle/civvie/general
@@ -303,7 +303,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 // Mining Shuttle
 /area/shuttle/mining_ship
-	requires_power = 1
+	requires_power = TRUE
 	icon_state = "shuttle2"
 
 /area/shuttle/mining_ship/general
@@ -311,7 +311,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 //Trade Ship
 /area/shuttle/trade_ship
-	requires_power = 1
+	requires_power = TRUE
 	icon_state = "shuttle2"
 	flags = RAD_SHIELDED
 
@@ -323,7 +323,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 //EMT Shuttle
 /area/shuttle/emt
-	requires_power = 1
+	requires_power = TRUE
 	icon_state = "shuttle2"
 
 /area/shuttle/emt/general
@@ -334,7 +334,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 // Tourbus
 /area/shuttle/tourbus
-	requires_power = 1
+	requires_power = TRUE
 	icon_state = "shuttle2"
 
 /area/shuttle/tourbus/general
@@ -349,7 +349,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // Antag
 /area/antag/antag_base
 	name = "\improper Syndicate Outpost"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = 0
 
 // Antag Space Shuttle.	// Also Known as "ASS"
@@ -434,7 +434,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/centcom
 	name = "\improper CentCom"
 	icon_state = "centcom"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = 0
 	flags = AREA_FLAG_IS_NOT_PERSISTENT
 
@@ -512,7 +512,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/syndicate_mothership
 	name = "\improper Mercenary Base"
 	icon_state = "syndie-ship"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = 0
 	ambience = AMBIENCE_HIGHSEC
 	flags = AREA_FLAG_IS_NOT_PERSISTENT
@@ -530,14 +530,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/asteroid
 	name = "\improper Moon"
 	icon_state = "asteroid"
-	requires_power = 0
+	requires_power = FALSE
 	sound_env = ASTEROID
 	flags = AREA_FLAG_IS_NOT_PERSISTENT
 
 /area/asteroid/cave
 	name = "\improper Moon - Underground"
 	icon_state = "cave"
-	requires_power = 0
+	requires_power = FALSE
 	sound_env = ASTEROID
 
 /area/asteroid/artifactroom
@@ -569,12 +569,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/planet/clown
 	name = "\improper Clown Planet"
 	icon_state = "honk"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/tdome
 	name = "\improper Thunderdome"
 	icon_state = "thunder"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = 0
 	sound_env = ARENA
 	flags = AREA_FLAG_IS_NOT_PERSISTENT
@@ -601,7 +601,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/syndicate_station
 	name = "\improper Independent Station"
 	icon_state = "yellow"
-	requires_power = 0
+	requires_power = FALSE
 	flags = RAD_SHIELDED
 	base_turf = /turf/space
 	ambience = AMBIENCE_HIGHSEC
@@ -658,7 +658,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/wizard_station
 	name = "\improper Wizard's Den"
 	icon_state = "yellow"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = 0
 	ambience = AMBIENCE_OTHERWORLDLY
 	flags = AREA_FLAG_IS_NOT_PERSISTENT
@@ -666,7 +666,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/skipjack_station
 	name = "\improper Skipjack"
 	icon_state = "yellow"
-	requires_power = 0
+	requires_power = FALSE
 	base_turf = /turf/space
 	ambience = AMBIENCE_HIGHSEC
 	flags = AREA_FLAG_IS_NOT_PERSISTENT
@@ -709,7 +709,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/prison/arrival_airlock
 	name = "\improper Prison Station Airlock"
 	icon_state = "green"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/prison/control
 	name = "\improper Prison Security Checkpoint"
@@ -758,7 +758,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/prison/solar
 	name = "\improper Prison Solar Array"
 	icon_state = "storage"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/prison/podbay
 	name = "\improper Prison Podbay"
@@ -1198,7 +1198,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Shuttle Dock Hallway - Dock Two"
 	icon_state = "entry_D2"
 	base_turf = /turf/space
-	requires_power = 0
+	requires_power = FALSE
 
 /area/hallway/secondary/entry/D3
 	name = "\improper Shuttle Dock Hallway - Dock Three"
@@ -1844,7 +1844,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/holodeck/source_thunderdomecourt
 	name = "\improper Holodeck - Thunderdome Court"
-	requires_power = 0
+	requires_power = FALSE
 	sound_env = ARENA
 
 /area/holodeck/source_courtroom
@@ -1883,7 +1883,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/holodeck/source_space
 	name = "\improper Holodeck - Space"
-	has_gravity = 0
+	has_gravity = FALSE
 	sound_env = SPACE
 
 /area/holodeck/source_desert
@@ -2048,8 +2048,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Solars
 
 /area/solar
-	requires_power = 1
-	always_unpowered = 1
+	requires_power = TRUE
+	always_unpowered = TRUE
 	dynamic_lighting = 0
 	ambience = AMBIENCE_SPACE
 
@@ -2121,9 +2121,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/assembly/assembly_line //Derelict Assembly Line
 	name = "\improper Assembly Line"
 	icon_state = "ass_line"
-	power_equip = 0
-	power_light = 0
-	power_environ = 0
+	power_equip = FALSE
+	power_light = FALSE
+	power_environ = FALSE
 
 //Teleporter
 
@@ -2935,7 +2935,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "auxstorage"
 
 /area/storage/testroom
-	requires_power = 0
+	requires_power = FALSE
 	name = "\improper Test Room"
 	icon_state = "storage"
 
@@ -3253,7 +3253,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Alien base"
 	icon_state = "yellow"
 	flags = RAD_SHIELDED | AREA_FLAG_IS_NOT_PERSISTENT
-	requires_power = 0
+	requires_power = FALSE
 
 /area/alien/unknown
 	icon_state = "red2"
@@ -3271,7 +3271,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "yellow"
 	luminosity = 1
 	dynamic_lighting = 0
-	requires_power = 0
+	requires_power = FALSE
 
 /area/wreck
 	ambience = AMBIENCE_RUINS
@@ -3302,7 +3302,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/bigship
 	name = "Bigship"
-	requires_power = 0
+	requires_power = FALSE
 	flags = RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 	base_turf = /turf/space
@@ -3313,7 +3313,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/houseboat
 	name = "Small Cruiser"
-	requires_power = 0
+	requires_power = FALSE
 	flags = RAD_SHIELDED
 	base_turf = /turf/space
 	icon_state = "red2"
@@ -3434,7 +3434,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/turbolift
 	name = "Turbolift"
 	base_turf = /turf/simulated/open
-	requires_power = 0
+	requires_power = FALSE
 	sound_env = SMALL_ENCLOSED
 
 	var/lift_floor_label = null
@@ -3443,7 +3443,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/arrival_sound = 'sound/machines/ding.ogg'
 	var/delay_time = 2 SECONDS
 	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
-	dynamic_lighting = FALSE //Temporary fix for elevator lighting
+	dynamic_lighting = 0 //Temporary fix for elevator lighting
 
 	requires_power = FALSE
 
@@ -3485,11 +3485,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/triumph/transit
 	name = "Triumph Debug Transit"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/triumph/space
 	name = "Triumph Debug Space"
-	requires_power = 0
+	requires_power = FALSE
 
 
 //Z-Transit areas (Stairs, elevators, automated shuttles)
