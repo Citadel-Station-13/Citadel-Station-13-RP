@@ -590,7 +590,7 @@
 "cf" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
-	
+
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)
@@ -678,7 +678,7 @@
 "cx" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Security";
-	
+
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -703,7 +703,7 @@
 "cB" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrator";
-	
+
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -1002,7 +1002,7 @@
 "dm" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Gateway Access";
-	
+
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)
@@ -1050,7 +1050,7 @@
 /area/awaymission/challenge/end)
 "ds" = (
 /obj/structure/cable,
-/obj/machinery/power/smes/magical,
+/obj/machinery/power/smes/buildable/hybrid,
 /turf/simulated/floor/bluegrid,
 /area/awaymission/challenge/end)
 "dt" = (

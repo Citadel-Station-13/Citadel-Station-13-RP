@@ -427,10 +427,7 @@
 	},
 /area/awaymission/spacebattle/cruiser)
 "cx" = (
-/obj/machinery/power/smes/magical{
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit.";
-	name = "power storage unit"
-	},
+/obj/machinery/power/smes/buildable/hybrid,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "cy" = (

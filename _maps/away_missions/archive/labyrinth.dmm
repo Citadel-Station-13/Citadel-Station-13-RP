@@ -539,7 +539,7 @@
 	},
 /area/awaymission/labyrinth/arrival)
 "bN" = (
-/obj/machinery/power/smes/magical,
+/obj/machinery/power/smes/buildable/hybrid,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},

@@ -8519,10 +8519,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "wh" = (
-/obj/machinery/power/smes/magical{
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit.";
-	name = "power storage unit"
-	},
+/obj/machinery/power/smes/buildable/hybrid,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)

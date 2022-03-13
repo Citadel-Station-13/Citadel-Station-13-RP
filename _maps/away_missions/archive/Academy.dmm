@@ -1928,7 +1928,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/academy/academyaft)
 "hr" = (
-/obj/machinery/power/smes/magical,
+/obj/machinery/power/smes/buildable/hybrid,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -2196,7 +2196,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/power/smes/magical,
+/obj/machinery/power/smes/buildable/hybrid,
 /turf/simulated/floor/plating,
 /area/awaymission/academy/academyaft)
 "hZ" = (
@@ -2255,7 +2255,7 @@
 /turf/simulated/floor,
 /area/awaymission/academy/academyaft)
 "ii" = (
-/obj/machinery/power/smes/magical,
+/obj/machinery/power/smes/buildable/hybrid,
 /obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/awaymission/academy/academyaft)

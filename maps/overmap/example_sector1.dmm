@@ -2130,7 +2130,7 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/entrance)
 "es" = (
-/obj/machinery/power/smes/magical,
+/obj/machinery/power/smes/buildable/hybrid,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2";
