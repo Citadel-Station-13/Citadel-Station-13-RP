@@ -31,6 +31,7 @@
 #define IS_SHADEKIN 13
 #define IS_ALRAUNE 14
 #define IS_APIDAEN 15
+#define IS_XENOHYBRID 16
 
 #define CE_STABLE "stable" // Inaprovaline
 #define CE_ANTIBIOTIC "antibiotic" // Antibiotics
