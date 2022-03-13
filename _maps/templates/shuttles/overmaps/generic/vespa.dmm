@@ -4528,7 +4528,7 @@
 	icon_state = "bordercolor";
 	dir = 1
 	},
-/obj/item/clothing/under/hephaestus,
+/obj/item/clothing/under/brandjumpsuit/hephaestus,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/shoes/boots/duty,
 /obj/item/clothing/head/beret,
@@ -12691,7 +12691,7 @@
 	icon_state = "bordercolor";
 	dir = 1
 	},
-/obj/item/clothing/under/hephaestus,
+/obj/item/clothing/under/brandjumpsuit/hephaestus,
 /obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/shoes/boots/duty,
 /obj/item/clothing/head/beret,
