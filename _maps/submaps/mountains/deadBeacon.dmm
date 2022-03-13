@@ -162,7 +162,7 @@
 /turf/simulated/floor/plating,
 /area/submap/cave/deadBeacon)
 "D" = (
-/obj/item/cigbutt,
+/obj/item/trash/cigbutt,
 /obj/item/tool/wrench,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/asteroid_steel,

@@ -217,8 +217,8 @@
 
 /datum/tgui_module/law_manager/robot
 /datum/tgui_module/law_manager/robot/ui_state(mob/user)
-	return GLOB.tgui_self_state
+	return GLOB.self_state
 
 /datum/tgui_module/law_manager/admin
 /datum/tgui_module/law_manager/admin/ui_state(mob/user)
-	return GLOB.tgui_admin_state
+	return GLOB.admin_state

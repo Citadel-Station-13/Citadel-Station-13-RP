@@ -1,4 +1,4 @@
-#define DRYING_TIME 5 * 60*10                        //for 1 unit of depth in puddle (amount var)
+#define DRYING_TIME 5 * 60*10 // For 1 unit of depth in puddle (amount var)
 
 var/global/list/image/splatter_cache=list()
 
@@ -20,6 +20,9 @@ var/global/list/image/splatter_cache=list()
 	var/synthblood = 0
 	var/list/datum/disease2/disease/virus2 = list()
 	var/amount = 5
+	generic_filth = TRUE
+	persistent = FALSE
+
 	var/drytime
 
 /obj/effect/decal/cleanable/blood/reveal_blood()

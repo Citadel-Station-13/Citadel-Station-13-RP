@@ -78,7 +78,7 @@
 /datum/world_topic/auto_bunker_passthrough
 	keyword = "auto_bunker_override"
 	require_comms_key = TRUE
-
+/*
 /datum/world_topic/auto_bunker_passthrough/Run(list/input)
 	if(!CONFIG_GET(flag/allow_cross_server_bunker_override))
 		return "Function Disabled"
@@ -95,7 +95,7 @@
 	return "Success"
 
 
-/*
+
 /datum/world_topic/ahelp_relay
 	keyword = "Ahelp"
 	require_comms_key = TRUE
@@ -309,6 +309,7 @@
 	.["version"] = game_version
 	.["mode"] = master_mode
 	.["respawn"] = config_legacy.abandon_allowed
+	.["persistance"] = config_legacy.persistence_enabled
 	.["enter"] = config_legacy.enter_allowed
 	.["vote"] = config_legacy.allow_vote_mode
 	.["ai"] = config_legacy.allow_ai

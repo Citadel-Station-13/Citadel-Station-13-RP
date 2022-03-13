@@ -271,7 +271,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
 	attack_verb = list("burnt", "singed")
-	type_butt = /obj/item/cigbutt
+	type_butt = /obj/item/trash/cigbutt
 	chem_volume = 15
 	max_smoketime = 300
 	smoketime = 300
@@ -328,7 +328,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "premium cigar"
 	desc = "A brown roll of tobacco and... well, you're not quite sure. This thing's huge!"
 	icon_state = "cigar2"
-	type_butt = /obj/item/cigbutt/cigarbutt
+	type_butt = /obj/item/trash/cigbutt/cigarbutt
 	throw_speed = 0.5
 	item_state = "cigar"
 	max_smoketime = 1500
@@ -377,7 +377,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(nicotine_amt)
 		reagents.add_reagent("bicaridine", nicotine_amt)
 
-/obj/item/cigbutt
+/obj/item/trash/cigbutt
 	name = "cigarette butt"
 	desc = "A manky old cigarette butt."
 	icon = 'icons/obj/clothing/masks.dmi'
@@ -386,13 +386,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	slot_flags = SLOT_EARS
 	throwforce = 1
 
-/obj/item/cigbutt/Initialize(mapload)
+/obj/item/trash/cigbutt/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-10,10)
 	pixel_y = rand(-10,10)
 	transform = turn(transform,rand(0,360))
 
-/obj/item/cigbutt/cigarbutt
+/obj/item/trash/cigbutt/cigarbutt
 	name = "cigar butt"
 	desc = "A manky old cigar butt."
 	icon_state = "cigarbutt"

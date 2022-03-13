@@ -105,11 +105,11 @@ var/list/admin_verbs_admin = list(
 	/client/proc/toggle_attack_logs,
 	/datum/admins/proc/paralyze_mob,
 	/client/proc/fixatmos,
-	/datum/admins/proc/quick_nif, //VOREStation Add,
+	/datum/admins/proc/quick_nif,
 	/datum/admins/proc/sendFax,
 	/client/proc/despawn_player,
-	/client/proc/addbunkerbypass,
-	/client/proc/revokebunkerbypass,
+//	/client/proc/addbunkerbypass,
+//	/client/proc/revokebunkerbypass,
 	/client/proc/toggle_AI_interact,
 	/client/proc/list_event_volunteers
 	)
@@ -173,6 +173,7 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/delay_start,
 	/datum/admins/proc/delay_end,
 	/datum/admins/proc/toggleaban,
+	/datum/admins/proc/togglepersistence,
 	/client/proc/cmd_mod_say,
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
@@ -189,9 +190,9 @@ var/list/admin_verbs_server = list(
 	/client/proc/nanomapgen_DumpImage,
 	/client/proc/modify_server_news,
 	/client/proc/recipe_dump,
-	/client/proc/panicbunker,
-	/client/proc/ip_reputation,
-	/client/proc/paranoia_logging
+//	/client/proc/panicbunker,
+//	/client/proc/ip_reputation,
+//	/client/proc/paranoia_logging
 	)
 
 var/list/admin_verbs_debug = list(
@@ -353,14 +354,15 @@ var/list/admin_verbs_mod = list(
 	/client/proc/aooc,
 	/client/proc/jobbans,
 	/client/proc/toggle_attack_logs,
-	/client/proc/cmd_admin_subtle_message, 	//send an message to somebody as a 'voice in their head',
+	/client/proc/cmd_admin_subtle_message, // Send an message to somebody as a 'voice in their head'
 	/client/proc/cmd_admin_icsubtle_message,
 	/datum/admins/proc/paralyze_mob,
 	/client/proc/cmd_admin_direct_narrate,
-	/client/proc/allow_character_respawn,   // Allows a ghost to respawn ,
+	/client/proc/allow_character_respawn, // Allows a ghost to respawn
 	/datum/admins/proc/sendFax,
-	/client/proc/addbunkerbypass,
-	/client/proc/revokebunkerbypass
+	/datum/admins/proc/view_persistent_data,
+//	/client/proc/addbunkerbypass,
+//	/client/proc/revokebunkerbypass
 )
 
 var/list/admin_verbs_event_manager = list(
@@ -889,7 +891,7 @@ var/list/admin_verbs_event_manager = list(
 	if(!H) return
 
 	log_and_message_admins("is altering the appearance of [H].")
-	H.change_appearance(APPEARANCE_ALL, usr, usr, check_species_whitelist = 0, state = admin_state)
+	H.change_appearance(APPEARANCE_ALL, usr, usr, check_species_whitelist = 0, state = GLOB.admin_state)
 	feedback_add_details("admin_verb","CHAA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/change_human_appearance_self()

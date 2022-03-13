@@ -506,7 +506,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/sql_computerid = sql_sanitize_text(src.computer_id)
 	var/sql_admin_rank = sql_sanitize_text(admin_rank)
 
-	//Panic bunker code
+/*	//Panic bunker code
 	if ((player_age == -1) && !(ckey in GLOB.bunker_passthrough)) //first connection
 		if (config_legacy.panic_bunker && !holder && !deadmin_holder)
 			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
@@ -515,7 +515,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return "BUNKER_DROPPED"
 	if(player_age == -1)
 		player_age = 0		//math requires this to not be -1.
-
+*/
 	if(config_legacy.ip_reputation)
 		if(config_legacy.ipr_allow_existing && player_age >= config_legacy.ipr_minimum_age)
 			log_admin("Skipping IP reputation check on [key] with [address] because of player age")

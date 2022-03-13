@@ -527,8 +527,8 @@
 				/obj/item/assembly/mousetrap/armed,
 				/obj/effect/decal/cleanable/spiderling_remains,
 				/obj/effect/decal/cleanable/ash,
-				/obj/item/cigbutt,
-				/obj/item/cigbutt/cigarbutt,
+				/obj/item/trash/cigbutt,
+				/obj/item/trash/cigbutt/cigarbutt,
 				/obj/effect/decal/remains/mouse)
 
 /obj/random/alcohol //cit change starts

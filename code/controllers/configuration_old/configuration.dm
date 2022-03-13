@@ -241,6 +241,8 @@
 	var/dooc_allowed = 1
 	var/dsay_allowed = 1
 
+	var/persistence_enabled = 1
+
 	var/static/starlight = 0	// Whether space turfs have ambient light or not
 
 	var/list/ert_species = list(SPECIES_HUMAN)
@@ -552,6 +554,9 @@
 
 				if("protect_roles_from_antagonist")
 					config_legacy.protect_roles_from_antagonist = 1
+
+				if ("persistence_enabled")
+					config_legacy.persistence_enabled = 1
 
 				if ("probability")
 					var/prob_pos = findtext(value, " ")

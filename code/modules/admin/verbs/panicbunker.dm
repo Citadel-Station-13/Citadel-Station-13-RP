@@ -1,5 +1,5 @@
 GLOBAL_LIST_EMPTY(bunker_passthrough)
-
+#warn Remember to reimplement The Panic Bunker you asshole.
 /client/proc/panicbunker()
 	set category = "Server"
 	set name = "Toggle Panic Bunker"

@@ -42,6 +42,7 @@ var/list/flooring_types
 	var/descriptor = "tiles"
 	var/flags
 	var/can_paint
+	var/can_engrave = FALSE
 	var/list/footstep_sounds = list() // key=species name, value = list of soundss
 	var/is_plating = FALSE
 	var/list/flooring_cache = list() // Cached overlays for our edges and corners and junk
@@ -253,7 +254,8 @@ var/list/flooring_types
 	damage_temperature = T0C+1400
 	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
 	build_type = /obj/item/stack/tile/floor
-	can_paint = 1
+	can_paint = TRUE
+	can_engrave = TRUE
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/floor1.ogg',
 		'sound/effects/footstep/floor2.ogg',

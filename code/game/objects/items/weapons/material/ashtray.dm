@@ -46,7 +46,7 @@ var/global/list/ashtray_cache = list()
 /obj/item/material/ashtray/attackby(obj/item/W as obj, mob/user as mob)
 	if (health <= 0)
 		return
-	if (istype(W,/obj/item/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/flame/match))
+	if (istype(W,/obj/item/trash/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/flame/match))
 		if (contents.len >= max_butts)
 			to_chat(user, "\The [src] is full.")
 			return

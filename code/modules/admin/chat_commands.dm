@@ -136,8 +136,8 @@ GLOBAL_LIST(round_end_notifiees)
 	admin_only = TRUE
 
 /datum/tgs_chat_command/whitelist/Run(datum/tgs_chat_user/sender, params)
-	GLOB.bunker_passthrough |= ckey(params)
-	GLOB.bunker_passthrough[ckey(params)] = world.realtime
+//	GLOB.bunker_passthrough |= ckey(params)
+//	GLOB.bunker_passthrough[ckey(params)] = world.realtime
 	return "Added [ckey(params)] to the bypass list."
 
 /datum/tgs_chat_command/dewhitelist
@@ -146,5 +146,5 @@ GLOBAL_LIST(round_end_notifiees)
 	admin_only = TRUE
 
 /datum/tgs_chat_command/dewhitelist/Run(datum/tgs_chat_user/sender, params)
-	GLOB.bunker_passthrough -= ckey(params)
+//	GLOB.bunker_passthrough -= ckey(params)
 	return "Removed [ckey(params)] from the bypass list if they were on it."

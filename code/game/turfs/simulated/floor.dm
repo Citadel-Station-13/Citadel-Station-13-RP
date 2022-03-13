@@ -20,7 +20,7 @@
 		'sound/effects/footstep/plating4.ogg',
 		'sound/effects/footstep/plating5.ogg'))
 
-	var/list/old_decals = null // VOREStation Edit - Remember what decals we had between being pried up and replaced.
+	var/list/old_decals = null // Remember what decals we had between being pried up and replaced.
 
 	// Flooring data.
 	var/flooring_override
@@ -52,11 +52,10 @@
 	make_plating(defer_icon_update = TRUE, strip_bare = TRUE)
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds
-	// VOREStation Edit - We are plating switching to flooring, swap out old_decals for decals
+	// We are plating switching to flooring, swap out old_decals for decals
 	var/list/overfloor_decals = old_decals
 	old_decals = decals
 	decals = overfloor_decals
-	// VOREStation Edit End
 	update_icon(1)
 	levelupdate()
 
@@ -65,12 +64,14 @@
 /turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare = FALSE)
 
 	cut_overlays()
-	// VOREStation Edit - We are flooring switching to plating, swap out old_decals for decals.
+	// We are flooring switching to plating, swap out old_decals for decals.
 	if(flooring)
 		var/list/underfloor_decals = old_decals
 		old_decals = decals
 		decals = underfloor_decals
-	// VOREStation Edit End
+
+	for(var/obj/effect/decal/writing/W in src)
+		qdel(W)
 
 	name = base_name
 	desc = base_desc
@@ -98,6 +99,9 @@
 /turf/simulated/floor/levelupdate()
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && src.flooring)
+
+/turf/simulated/floor/can_engrave()
+	return (!flooring || flooring.can_engrave)
 
 /turf/simulated/floor/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)

@@ -1862,8 +1862,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
 "gH" = (
-/obj/item/cigbutt,
-/obj/item/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
 /obj/structure/sign/nosmoking_1{
 	pixel_y = -30
 	},
@@ -3860,7 +3860,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/item/cigbutt,
+/obj/item/trash/cigbutt,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "nG" = (
@@ -13654,7 +13654,7 @@
 /area/maintenance/engineering)
 "US" = (
 /obj/machinery/light/small,
-/obj/item/cigbutt/cigarbutt,
+/obj/item/trash/cigbutt/cigarbutt,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "UT" = (
@@ -13878,7 +13878,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "Vt" = (
-/obj/item/cigbutt,
+/obj/item/trash/cigbutt,
 /obj/structure/table/reinforced,
 /obj/random/cigarettes,
 /turf/simulated/floor/plating,

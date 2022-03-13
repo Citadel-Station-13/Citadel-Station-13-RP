@@ -135,7 +135,7 @@
 /turf/simulated/floor,
 /area/awaymission/example)
 "ar" = (
-/obj/item/cigbutt,
+/obj/item/trash/cigbutt,
 /turf/simulated/floor,
 /area/awaymission/example)
 "as" = (
@@ -436,7 +436,7 @@
 "bG" = (
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms";
-	
+
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/example)
@@ -604,7 +604,7 @@
 	info = "Remember, friday is David Bowie night! You guys had better fucking <i>be there!</i>";
 	name = "friday night"
 	},
-/obj/item/cigbutt,
+/obj/item/trash/cigbutt,
 /turf/simulated/floor/wood,
 /area/awaymission/example)
 "cp" = (

@@ -81,6 +81,9 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 //	Shuttles.
 
+//Persistence
+#define AREA_FLAG_IS_NOT_PERSISTENT 8 // SSpersistence will not track values from this area.
+
 // These define the time taken for the shuttle to get to the space station, and the time before it leaves again.
 #define SHUTTLE_PREPTIME				300	// 5 minutes = 300 seconds - after this time, the shuttle departs centcom and cannot be recalled.
 #define SHUTTLE_LEAVETIME				180	// 3 minutes = 180 seconds - the duration for which the shuttle will wait at the station after arriving.
@@ -467,3 +470,9 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
 #define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
 #define SPAN_OCCULT(X) "<span class='cult'>[X]</span>"
+
+#define FONT_SMALL(X) "<font size='1'>[X]</font>"
+#define FONT_NORMAL(X) "<font size='2'>[X]</font>"
+#define FONT_LARGE(X) "<font size='3'>[X]</font>"
+#define FONT_HUGE(X) "<font size='4'>[X]</font>"
+#define FONT_GIANT(X) "<font size='5'>[X]</font>"

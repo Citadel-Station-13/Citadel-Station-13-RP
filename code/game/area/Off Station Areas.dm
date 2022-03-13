@@ -184,7 +184,7 @@
 	name = "Frozen Planet - Outside (UE)"
 	icon_state = "yellow"
 	dynamic_lighting = 1
-	
+
 //Gaia planet world areas
 /area/gaia_planet
 	name = "Gaia Planet"
@@ -275,7 +275,7 @@
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	requires_power = 0
 	dynamic_lighting = 1
-	
+
 /area/poi_h/POIs/WW_Town
 	name = "Ghost Town"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
@@ -767,6 +767,7 @@
 	name = "\improper Strange Location"
 	icon_state = "away"
 	ambience = AMBIENCE_FOREBODING
+	flags = AREA_FLAG_IS_NOT_PERSISTENT
 
 /area/awaymission/gateway
 	name = "\improper Gateway"
@@ -1090,4 +1091,3 @@
 	icon_state = "blue"
 /area/awaymission/academy/academygate
 	icon_state = "purple"
-

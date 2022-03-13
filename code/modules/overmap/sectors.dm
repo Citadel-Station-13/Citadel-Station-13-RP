@@ -77,7 +77,7 @@
 	unregister_z_levels()
 	return ..()
 
-//This is called later in the init order by SSshuttles to populate sector objects. Importantly for subtypes, shuttles will be created by then.
+//This is called later in the init order by SSshuttle to populate sector objects. Importantly for subtypes, shuttles will be created by then.
 /obj/effect/overmap/visitable/proc/populate_sector_objects()
 
 /obj/effect/overmap/visitable/proc/get_areas()
