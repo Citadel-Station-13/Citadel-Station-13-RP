@@ -826,6 +826,11 @@
 	desc = "An elegant swimsuit with a white bikini top and black bikini bottom. Thin black silk drapes down the back and goes to the upper thighs, and authentic gold rings hold the top together at the bust and back."
 	icon_state = "swim_highclass"
 
+/obj/item/clothing/under/swimsuit/latex
+	name = "latex swimsuit"
+	desc = "A tight latex one piece. It clings tightly to the flesh, leaving very little to the imagination."
+	icon_state = "swim_latex"
+
 /*
  * pyjamas
  */
