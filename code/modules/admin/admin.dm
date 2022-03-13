@@ -906,15 +906,29 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set category = "Server"
 	set desc="Whether persistent data will be saved from now on."
 	set name="Toggle Persistent Data"
-	config_legacy.persistence_enabled = !(config_legacy.persistence_enabled)
-	if(config_legacy.persistence_enabled)
+	config_legacy.persistence_disabled = !(config_legacy.persistence_disabled)
+	if(!config_legacy.persistence_disabled)
 		to_world("<B>Persistence is now enabled..</B>")
 	else
 		to_world("<B>Persistence is no longer enabled.</B>")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled persistence to [config_legacy.persistence_enabled ? "On" : "Off"].</font>", 1)
-	log_admin("[key_name(usr)] toggled persistence to [config_legacy.persistence_enabled ? "On" : "Off"].")
+	message_admins("<font color='blue'>[key_name_admin(usr)] toggled persistence to [config_legacy.persistence_disabled ? "Off" : "On"].</font>", 1)
+	log_admin("[key_name(usr)] toggled persistence to [config_legacy.persistence_disabled ? "Off" : "On"].")
 	world.update_status()
 	feedback_add_details("admin_verb","TPD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/datum/admins/proc/togglemaploadpersistence()
+	set category = "Server"
+	set desc="Whether mapload persistent data will be saved from now on."
+	set name="Toggle Mapload Persistent Data"
+	config_legacy.persistence_ignore_mapload = !(config_legacy.persistence_ignore_mapload)
+	if(!config_legacy.persistence_ignore_mapload)
+		to_world("<B>Persistence is now enabled..</B>")
+	else
+		to_world("<B>Persistence is no longer enabled.</B>")
+	message_admins("<font color='blue'>[key_name_admin(usr)] toggled persistence to [config_legacy.persistence_ignore_mapload ? "Off" : "On"].</font>", 1)
+	log_admin("[key_name(usr)] toggled persistence to [config_legacy.persistence_ignore_mapload ? "Off" : "On"].")
+	world.update_status()
+	feedback_add_details("admin_verb","TMPD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/toggle_aliens()
 	set category = "Server"

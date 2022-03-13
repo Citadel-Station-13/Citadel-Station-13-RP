@@ -309,7 +309,7 @@
 	.["version"] = game_version
 	.["mode"] = master_mode
 	.["respawn"] = config_legacy.abandon_allowed
-	.["persistance"] = config_legacy.persistence_enabled
+	.["persistance"] = config_legacy.persistence_disabled
 	.["enter"] = config_legacy.enter_allowed
 	.["vote"] = config_legacy.allow_vote_mode
 	.["ai"] = config_legacy.allow_ai

@@ -36,6 +36,8 @@
 	var/age = 0
 	var/last_modified_ckey
 
+	var/was_maploaded = FALSE // This tracks if the paper was created on mapload.
+
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
@@ -112,18 +114,24 @@
 
 /obj/item/paper/Initialize(mapload)
 	. = ..()
+	if(mapload) // Jank, but we do this to prevent maploaded papers from somehow stacking across rounds if re-added to the board by a player.
+		was_maploaded = TRUE
+
+/obj/item/paper/New(var/newloc, var/text, var/title)
+	..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
-
+	if(!isnull(title))
+		name = title
 	if(name != "paper")
 		desc = "This is a paper titled '" + name + "'."
-
+	if(!isnull(text))
+		info = text
 	if(info != initial(info))
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
-
 	spawn(2)
 		update_icon()
 		update_space(info)
@@ -459,6 +467,7 @@
 		//t = html_encode(t)
 		t = replacetext(t, "\n", "<BR>")
 		t = parsepencode(t, i, usr, iscrayon) // Encode everything from pencode to html
+		was_maploaded = FALSE // Set this to FALSE because a user has written on us. This is for persistence purposes.
 
 
 		if(fields > 50)//large amount of fields creates a heavy load on the server, see updateinfolinks() and addtofield()

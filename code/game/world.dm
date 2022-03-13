@@ -368,7 +368,9 @@ GLOBAL_LIST(topic_status_cache)
 
 	features += config_legacy.abandon_allowed ? "respawn" : "no respawn"
 
-	features += config_legacy.persistence_enabled ? "persistence enabled" : "persistence disabled"
+	features += config_legacy.persistence_disabled ? "persistence disabled" : "persistence enabled"
+
+	features += config_legacy.persistence_ignore_mapload ? "persistence mapload disabled" : "persistence mapload enabled"
 
 	if (config && config_legacy.allow_vote_mode)
 		features += "vote"

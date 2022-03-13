@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(persistence)
 
 /datum/controller/subsystem/persistence/proc/track_value(var/atom/value, var/track_type)
 
-	if(config_legacy.persistence_enabled == 0) //if the config is not set to persistent nothing will save or load.
+	if(config_legacy.persistence_disabled) //if the config is set to persistence disabled, nothing will save or load.
 		return
 
 	var/turf/T = get_turf(value)

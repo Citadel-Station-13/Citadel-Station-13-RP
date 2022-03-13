@@ -241,7 +241,8 @@
 	var/dooc_allowed = 1
 	var/dsay_allowed = 1
 
-	var/persistence_enabled = 1
+	var/persistence_disabled = FALSE
+	var/persistence_ignore_mapload = FALSE
 
 	var/static/starlight = 0	// Whether space turfs have ambient light or not
 
@@ -555,8 +556,11 @@
 				if("protect_roles_from_antagonist")
 					config_legacy.protect_roles_from_antagonist = 1
 
-				if ("persistence_enabled")
-					config_legacy.persistence_enabled = 1
+				if("persistence_disabled")
+					config_legacy.persistence_disabled = TRUE // Previously this forcibly set persistence enabled in the saves.
+
+				if("persistence_ignore_mapload")
+					config_legacy.persistence_ignore_mapload = TRUE
 
 				if ("probability")
 					var/prob_pos = findtext(value, " ")
