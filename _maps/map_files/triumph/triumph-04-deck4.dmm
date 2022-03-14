@@ -654,6 +654,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/sign/painting/public{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/primary/aft)
 "aAj" = (
@@ -1256,6 +1259,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/sign/painting/public{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/tram)
 "aZk" = (
@@ -1734,6 +1740,9 @@
 	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/structure/sign/painting/library_secure{
+	pixel_y = 32
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
@@ -3764,6 +3773,9 @@
 /obj/machinery/light,
 /obj/structure/table/steel,
 /obj/item/deck/cards,
+/obj/structure/sign/painting/public{
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled,
 /area/security/brig)
 "cKH" = (
@@ -4953,6 +4965,9 @@
 	dir = 1
 	},
 /obj/item/tape_recorder,
+/obj/structure/sign/painting/library_private{
+	pixel_y = -32
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
 "dGn" = (
@@ -9834,6 +9849,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
+"gUE" = (
+/obj/structure/sign/painting/library_secure{
+	pixel_y = 32
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "gUF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -11518,6 +11539,9 @@
 "hWX" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/structure/table/woodentable,
+/obj/structure/sign/painting/chapel_secure{
+	pixel_x = -32
+	},
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "hXk" = (
@@ -11875,6 +11899,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/exploration)
+"iiw" = (
+/obj/structure/sign/painting/chapel_secure{
+	pixel_y = -32
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/chapel/main)
 "ijD" = (
 /obj/structure/window/phoronreinforced{
 	dir = 8
@@ -14004,6 +14034,15 @@
 	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
+"jKa" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/structure/sign/painting/library_secure{
+	pixel_y = 32
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
@@ -16701,6 +16740,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/structure/sign/painting/chapel_secure{
+	pixel_x = 32
+	},
 /turf/simulated/floor/wood,
 /area/hallway/secondary/docking_hallway)
 "lEQ" = (
@@ -19036,6 +19078,9 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/structure/sign/painting/public{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/hop)
@@ -27721,6 +27766,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
+"sQq" = (
+/obj/structure/sign/painting/public{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled,
+/area/triumph/surfacebase/tram)
 "sQF" = (
 /obj/machinery/light{
 	dir = 1
@@ -28945,6 +28996,15 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
+"tNt" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/sign/painting/library_secure{
+	pixel_y = 32
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "tOa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -33182,6 +33242,9 @@
 	},
 /obj/item/radio/intercom{
 	pixel_y = -28
+	},
+/obj/structure/sign/painting/library_private{
+	pixel_x = -32
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
@@ -41234,7 +41297,7 @@ ejc
 qzc
 pET
 bqH
-fFW
+sQq
 aZj
 fFW
 fFW
@@ -43049,7 +43112,7 @@ cVO
 vcE
 xvG
 cgH
-ixL
+jKa
 mRY
 wFO
 pei
@@ -43333,7 +43396,7 @@ cVO
 vcE
 bra
 cgH
-xZu
+tNt
 qVU
 ush
 mMK
@@ -43475,7 +43538,7 @@ lVm
 agH
 sTa
 cgH
-wFO
+gUE
 riS
 ush
 jjh
@@ -45900,7 +45963,7 @@ lEu
 rbU
 laL
 fne
-vIh
+iiw
 ttb
 oge
 amB
@@ -46752,7 +46815,7 @@ biq
 caM
 vxc
 pAA
-vIh
+iiw
 ttb
 vZm
 hCx

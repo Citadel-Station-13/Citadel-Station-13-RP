@@ -1235,6 +1235,12 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/wood,
 /area/quartermaster/foyer)
+"dQ" = (
+/obj/structure/sign/painting/public{
+	pixel_x = -32
+	},
+/turf/simulated/floor/wood,
+/area/quartermaster/foyer)
 "dR" = (
 /obj/machinery/appliance/cooker/fryer,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -13251,6 +13257,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/sign/painting/public{
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "LB" = (
@@ -16360,6 +16369,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"UL" = (
+/obj/structure/sign/painting/public{
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/turcarpet,
+/area/crew_quarters/recreation_area_hallway)
 "UM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -28137,7 +28152,7 @@ rL
 Rs
 gV
 OA
-WV
+UL
 rO
 LP
 zh
@@ -28549,7 +28564,7 @@ uT
 nc
 of
 SK
-uT
+dQ
 mQ
 mQ
 mQ

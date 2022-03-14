@@ -299,6 +299,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"gQ" = (
+/obj/structure/sign/painting/away_areas{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "gR" = (
 /obj/machinery/power/generator{
 	anchored = 1
@@ -1687,6 +1693,12 @@
 /obj/structure/bed/chair,
 /turf/simulated/floor/carpet/bcarpet,
 /area/lavaland/central/base/common)
+"FL" = (
+/obj/structure/sign/painting/away_areas{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "FQ" = (
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2538,6 +2550,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
+	},
+/obj/structure/sign/painting/away_areas{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -7990,7 +8005,7 @@ db
 db
 db
 db
-ew
+FL
 SH
 Fq
 xF
@@ -8416,7 +8431,7 @@ db
 db
 db
 db
-ew
+FL
 SH
 jk
 xF
@@ -8977,7 +8992,7 @@ ZG
 OB
 db
 Wb
-ew
+gQ
 db
 db
 db

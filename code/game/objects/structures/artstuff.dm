@@ -113,7 +113,6 @@
 			update_appearance()
 			return
 
-
 	if(user.a_intent == INTENT_HELP)
 		ui_interact(user)
 	else
@@ -313,7 +312,6 @@
 	else
 		return ..()
 
-
 /obj/item/frame/painting
 	name = "painting frame"
 	desc = "The perfect showcase for your favorite deathtrap memories."
@@ -512,6 +510,11 @@
 		if(initial(new_canvas.width) == w && initial(new_canvas.height) == h)
 			new_canvas = new T(src)
 			break
+
+	if(!new_canvas)
+		warning("Couldn't find a canvas to match [w]x[h] of painting")
+		return
+
 	new_canvas.fill_grid_from_icon(I)
 	new_canvas.generated_icon = I
 	new_canvas.icon_generated = TRUE
@@ -532,6 +535,7 @@
 		return
 	if(!current_canvas.painting_name)
 		current_canvas.painting_name = "Untitled Artwork"
+
 	var/data = current_canvas.get_data_string()
 	var/md5 = md5(lowertext(data))
 	for(var/list/entry in SSpersistence.all_paintings)
